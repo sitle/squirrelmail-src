@@ -267,113 +267,49 @@ while ( $line = <FILE> ) {
     }
 }
 close FILE;
-if ( lc($useSendmail) ne "true" ) {
-    $useSendmail = "false";
-}
-if ( !$sendmail_path ) {
-    $sendmail_path = "/usr/sbin/sendmail";
-}
-if ( !$pop_before_smtp ) {
-    $pop_before_smtp = "false";
-}
-if ( !$default_unseen_notify ) {
-    $default_unseen_notify = 2;
-}
-if ( !$default_unseen_type ) {
-    $default_unseen_type = 1;
-}
-if ( !$config_use_color ) {
-    $config_use_color = 0;
-}
-if ( !$invert_time ) {
-    $invert_time = "false";
-}
-if ( !$force_username_lowercase ) {
-    $force_username_lowercase = "false";
-}
-if ( !$optional_delimiter ) {
-    $optional_delimiter = "detect";
-}
-if ( !$auto_create_special ) {
-    $auto_create_special = "false";
-}
-if ( !$default_use_priority ) {
-    $default_use_priority = "true";
-}
-if ( !$hide_sm_attributions ) {
-    $hide_sm_attributions = "false";
-}
-if ( !$default_use_mdn ) {
-    $default_use_mdn = "true";
-}
-if ( !$delete_folder ) {
-    $delete_folder = "false";
-}
-if ( !$noselect_fix_enable ) {
-    $noselect_fix_enable = "false";
-}
-if ( !$frame_top ) {
-    $frame_top = "_top";
-}
 
-if ( !$provider_uri ) {
-    $provider_uri = "http://www.squirrelmail.org/";
-}
+# Default values used when option is missing
+$useSendmail = "false"                 if ( lc($useSendmail) ne "true" );
+$sendmail_path = "/usr/sbin/sendmail"  if ( !$sendmail_path );
+$pop_before_smtp = "false"             if ( !$pop_before_smtp ) ;
+$default_unseen_notify = 2             if ( !$default_unseen_notify );
+$default_unseen_type = 1               if ( !$default_unseen_type );
+$config_use_color = 0                  if ( !$config_use_color );
+$invert_time = "false"                 if ( !$invert_time );
+$force_username_lowercase = "false"    if ( !$force_username_lowercase );
+$optional_delimiter = "detect"         if ( !$optional_delimiter );
+$auto_create_special = "false"         if ( !$auto_create_special );
+$default_use_priority = "true"         if ( !$default_use_priority );
+$hide_sm_attributions = "false"        if ( !$hide_sm_attributions );
+$default_use_mdn = "true"              if ( !$default_use_mdn );
+$delete_folder = "false"               if ( !$delete_folder );
+$noselect_fix_enable = "false"         if ( !$noselect_fix_enable );
+$frame_top = "_top"                    if ( !$frame_top );
 
-if ( !$provider_name ) {
-    $provider_name = "SquirrelMail";
-}
+$provider_uri = "http://www.squirrelmail.org/" if ( !$provider_uri );
+$provider_name = "SquirrelMail"        if ( !$provider_name );
 
-if ( !$edit_identity ) {
-    $edit_identity = "true";
-}
-if ( !$edit_name ) {
-    $edit_name = "true";
-}
-if ( !$allow_thread_sort ) {
-    $allow_thread_sort = 'false';
-}
-if ( !$allow_server_sort ) {
-    $allow_server_sort = 'false';
-}
-if ( !$uid_support ) {
-    $uid_support = 'true';
-}
-if ( !$no_list_for_subscribe ) {
-    $no_list_for_subscribe = 'false';
-}
-if ( !$allow_charset_search ) {
-    $allow_charset_search = 'true';
-}
-if ( !$prefs_user_field ) {
-    $prefs_user_field = 'user';
-}
-if ( !$prefs_key_field ) {
-    $prefs_key_field = 'prefkey';
-}
-if ( !$prefs_val_field ) {
-    $prefs_val_field = 'prefval';
-}
+$edit_identity = "true"                if ( !$edit_identity );
+$edit_name = "true"                    if ( !$edit_name );
+$allow_thread_sort = 'false'           if ( !$allow_thread_sort ) ;
+$allow_server_sort = 'false'           if ( !$allow_server_sort );
+$uid_support = 'true'                  if ( !$uid_support );
+$no_list_for_subscribe = 'false'       if ( !$no_list_for_subscribe );
+$allow_charset_search = 'true'         if ( !$allow_charset_search );
 
-if ( !$use_smtp_tls) {
-    $use_smtp_tls= 'false';
-}
+$prefs_user_field = 'user'             if ( !$prefs_user_field );
+$prefs_key_field = 'prefkey'           if ( !$prefs_key_field );
+$prefs_val_field = 'prefval'           if ( !$prefs_val_field );
 
-if ( !$smtp_auth_mech ) {
-    $smtp_auth_mech = 'none';
-}
+$use_smtp_tls= 'false'                 if ( !$use_smtp_tls);
+$smtp_auth_mech = 'none'               if ( !$smtp_auth_mech );
 
-if ( !$use_imap_tls ) {
-    $use_imap_tls = 'false';
-}
+$use_imap_tls = 'false'                if ( !$use_imap_tls );
+$imap_auth_mech = 'login'              if ( !$imap_auth_mech );
 
-if ( !$imap_auth_mech ) {
-    $imap_auth_mech = 'login';
-}
-
-if (!$session_name ) {
-    $session_name = 'SQMSESSID';
-}
+$session_name = 'SQMSESSID'            if (!$session_name );
+# Added in 1.4.4 and 1.5.1
+$lossy_encoding = 'false'              if ( !$lossy_encoding );
 
 if ( $ARGV[0] eq '--install-plugin' ) {
     print "Activating plugin " . $ARGV[1] . "\n";
@@ -421,6 +357,7 @@ while ( ( $command ne "q" ) && ( $command ne "Q" ) ) {
         print "7.  Message of the Day (MOTD)\n";
         print "8.  Plugins\n";
         print "9.  Database\n";
+        print "10. Languages\n";
         print "\n";
         print "D.  Set pre-defined settings for specific IMAP servers\n";
         print "\n";
@@ -431,10 +368,9 @@ while ( ( $command ne "q" ) && ( $command ne "Q" ) ) {
         print "3.  Org. Logo Width/Height : $WHT($org_logo_width/$org_logo_height)$NRM\n";
         print "4.  Organization Title     : $WHT$org_title$NRM\n";
         print "5.  Signout Page           : $WHT$signout_page$NRM\n";
-        print "6.  Default Language       : $WHT$squirrelmail_default_language$NRM\n";
-        print "7.  Top Frame              : $WHT$frame_top$NRM\n";
-        print "8.  Provider link          : $WHT$provider_uri$NRM\n";
-        print "9.  Provider name          : $WHT$provider_name$NRM\n";
+        print "6.  Top Frame              : $WHT$frame_top$NRM\n";
+        print "7.  Provider link          : $WHT$provider_uri$NRM\n";
+        print "8.  Provider name          : $WHT$provider_name$NRM\n";
 
         print "\n";
         print "R   Return to Main Menu\n";
@@ -526,21 +462,20 @@ while ( ( $command ne "q" ) && ( $command ne "Q" ) ) {
         print "R   Return to Main Menu\n";
     } elsif ( $menu == 4 ) {
         print $WHT. "General Options\n" . $NRM;
-        print "1.  Default Charset             : $WHT$default_charset$NRM\n";
-        print "2.  Data Directory              : $WHT$data_dir$NRM\n";
-        print "3.  Attachment Directory        : $WHT$attachment_dir$NRM\n";
-        print "4.  Directory Hash Level        : $WHT$dir_hash_level$NRM\n";
-        print "5.  Default Left Size           : $WHT$default_left_size$NRM\n";
-        print "6.  Usernames in Lowercase      : $WHT$force_username_lowercase$NRM\n";
-        print "7.  Allow use of priority       : $WHT$default_use_priority$NRM\n";
-        print "8.  Hide SM attributions        : $WHT$hide_sm_attributions$NRM\n";
-        print "9.  Allow use of receipts       : $WHT$default_use_mdn$NRM\n";
-        print "10. Allow editing of identity   : $WHT$edit_identity$NRM/$WHT$edit_name$NRM\n";
-        print "11. Allow server thread sort    : $WHT$allow_thread_sort$NRM\n";
-        print "12. Allow server-side sorting   : $WHT$allow_server_sort$NRM\n";
-        print "13. Allow server charset search : $WHT$allow_charset_search$NRM\n";
-        print "14. Enable UID support          : $WHT$uid_support$NRM\n";
-        print "15. PHP session name            : $WHT$session_name$NRM\n";
+        print "1.  Data Directory              : $WHT$data_dir$NRM\n";
+        print "2.  Attachment Directory        : $WHT$attachment_dir$NRM\n";
+        print "3.  Directory Hash Level        : $WHT$dir_hash_level$NRM\n";
+        print "4.  Default Left Size           : $WHT$default_left_size$NRM\n";
+        print "5.  Usernames in Lowercase      : $WHT$force_username_lowercase$NRM\n";
+        print "6.  Allow use of priority       : $WHT$default_use_priority$NRM\n";
+        print "7.  Hide SM attributions        : $WHT$hide_sm_attributions$NRM\n";
+        print "8.  Allow use of receipts       : $WHT$default_use_mdn$NRM\n";
+        print "9. Allow editing of identity   : $WHT$edit_identity$NRM/$WHT$edit_name$NRM\n";
+        print "10. Allow server thread sort    : $WHT$allow_thread_sort$NRM\n";
+        print "11. Allow server-side sorting   : $WHT$allow_server_sort$NRM\n";
+        print "12. Allow server charset search : $WHT$allow_charset_search$NRM\n";
+        print "13. Enable UID support          : $WHT$uid_support$NRM\n";
+        print "14. PHP session name            : $WHT$session_name$NRM\n";
         print "\n";
         print "R   Return to Main Menu\n";
     } elsif ( $menu == 5 ) {
@@ -620,6 +555,13 @@ while ( ( $command ne "q" ) && ( $command ne "Q" ) ) {
         print "7.  Field for prefs value  : $WHT$prefs_val_field$NRM\n";
         print "\n";
         print "R   Return to Main Menu\n";
+    } elsif ( $menu == 10 ) {
+        print $WHT. "Language preferences\n" . $NRM;
+        print "1.  Default Language       : $WHT$squirrelmail_default_language$NRM\n";
+        print "2.  Default Charset        : $WHT$default_charset$NRM\n";
+        print "3.  Enable lossy encoding  : $WHT$lossy_encoding$NRM\n";
+        print "\n";
+        print "R   Return to Main Menu\n";
     }
     if ( $config_use_color == 1 ) {
         print "C   Turn color off\n";
@@ -666,19 +608,18 @@ while ( ( $command ne "q" ) && ( $command ne "Q" ) ) {
     } else {
         $saved = 0;
         if ( $menu == 0 ) {
-            if ( ( $command > 0 ) && ( $command < 10 ) ) {
+            if ( ( $command > 0 ) && ( $command < 11 ) ) {
                 $menu = $command;
             }
         } elsif ( $menu == 1 ) {
             if    ( $command == 1 ) { $org_name                      = command1(); }
             elsif ( $command == 2 ) { $org_logo                      = command2(); }
-            elsif ( $command == 3 ) { ($org_logo_width,$org_logo_height)  = command2a(); }
-            elsif ( $command == 4 ) { $org_title                     = command3(); }
-            elsif ( $command == 5 ) { $signout_page                  = command4(); }
-            elsif ( $command == 6 ) { $squirrelmail_default_language = command5(); }
-            elsif ( $command == 7 ) { $frame_top                     = command6(); }
-            elsif ( $command == 8 ) { $provider_uri                  = command7(); }
-            elsif ( $command == 9 ) { $provider_name                 = command8(); }
+            elsif ( $command == 3 ) { ($org_logo_width,$org_logo_height)  = command3(); }
+            elsif ( $command == 4 ) { $org_title                     = command4(); }
+            elsif ( $command == 5 ) { $signout_page                  = command5(); }
+            elsif ( $command == 6 ) { $frame_top                     = command6(); }
+            elsif ( $command == 7 ) { $provider_uri                  = command7(); }
+            elsif ( $command == 8 ) { $provider_name                 = command8(); }
 
         } elsif ( $menu == 2 ) {
             if ( $command eq "a" )    { $show_imap_settings = 1; $show_smtp_settings = 0; }
@@ -725,21 +666,20 @@ while ( ( $command ne "q" ) && ( $command ne "Q" ) ) {
             elsif ( $command == 17 ) { $delete_folder                  = command215(); }
             elsif ( $command == 18 ) { $noselect_fix_enable            = command216(); }
         } elsif ( $menu == 4 ) {
-            if    ( $command == 1 )  { $default_charset          = command31(); }
-            elsif ( $command == 2 )  { $data_dir                 = command33a(); }
-            elsif ( $command == 3 )  { $attachment_dir           = command33b(); }
-            elsif ( $command == 4 )  { $dir_hash_level           = command33c(); }
-            elsif ( $command == 5 )  { $default_left_size        = command35(); }
-            elsif ( $command == 6 )  { $force_username_lowercase = command36(); }
-            elsif ( $command == 7 )  { $default_use_priority     = command37(); }
-            elsif ( $command == 8 )  { $hide_sm_attributions     = command38(); }
-            elsif ( $command == 9 )  { $default_use_mdn          = command39(); }
-            elsif ( $command == 10 ) { $edit_identity            = command310(); }
-            elsif ( $command == 11 ) { $allow_thread_sort        = command312(); }
-            elsif ( $command == 12 ) { $allow_server_sort        = command313(); }
-            elsif ( $command == 13 ) { $allow_charset_search     = command314(); }
-            elsif ( $command == 14 ) { $uid_support              = command315(); }
-            elsif ( $command == 15 ) { $session_name             = command316(); }
+            if    ( $command == 1 )  { $data_dir                 = command31(); }
+            elsif ( $command == 2 )  { $attachment_dir           = command32(); }
+            elsif ( $command == 3 )  { $dir_hash_level           = command33(); }
+            elsif ( $command == 4 )  { $default_left_size        = command34(); }
+            elsif ( $command == 5 )  { $force_username_lowercase = command35(); }
+            elsif ( $command == 6 )  { $default_use_priority     = command36(); }
+            elsif ( $command == 7 )  { $hide_sm_attributions     = command37(); }
+            elsif ( $command == 8 )  { $default_use_mdn          = command38(); }
+            elsif ( $command == 9 )  { $edit_identity            = command39(); }
+            elsif ( $command == 10 ) { $allow_thread_sort        = command310(); }
+            elsif ( $command == 11 ) { $allow_server_sort        = command311(); }
+            elsif ( $command == 12 ) { $allow_charset_search     = command312(); }
+            elsif ( $command == 13 ) { $uid_support              = command313(); }
+            elsif ( $command == 14 ) { $session_name             = command314(); }
         } elsif ( $menu == 5 ) {
             if ( $command == 1 ) { command41(); }
             elsif ( $command == 2 ) { $theme_css = command42(); }
@@ -758,6 +698,10 @@ while ( ( $command ne "q" ) && ( $command ne "Q" ) ) {
             elsif ( $command == 5 ) { $prefs_user_field = command95(); }
             elsif ( $command == 6 ) { $prefs_key_field  = command96(); }
             elsif ( $command == 7 ) { $prefs_val_field  = command97(); }
+        } elsif ( $menu == 10 ) {
+            if    ( $command == 1 ) { $squirrelmail_default_language = commandA1(); }
+            elsif ( $command == 2 ) { $default_charset  = commandA2(); }
+            elsif ( $command == 3 ) { $lossy_encoding   = commandA3(); }
         }
     }
 }
@@ -770,7 +714,7 @@ print "\nExiting conf.pl.\n".
 
 
 ####################################################################################
-
+#### Organization preferences ####
 # org_name
 sub command1 {
     print "We have tried to make the name SquirrelMail as transparent as\n";
@@ -817,7 +761,7 @@ sub command2 {
 }
 
 # org_logo_width
-sub command2a {
+sub command3 {
     print "Your organization's logo is an image that will be displayed at\n";
     print "different times throughout SquirrelMail.  Width\n";
     print "and Height of your logo image.  Use '0' to disable.\n";
@@ -842,7 +786,7 @@ sub command2a {
 }
 
 # org_title
-sub command3 {
+sub command4 {
     print "A title is what is displayed at the top of the browser window in\n";
     print "the titlebar.  Usually this will end up looking something like:\n";
     print "\"Netscape: $org_title\"\n";
@@ -865,7 +809,7 @@ sub command3 {
 }
 
 # signout_page
-sub command4 {
+sub command5 {
     print "When users click the Sign Out button they will be logged out and\n";
     print "then sent to signout_page.  If signout_page is left empty,\n";
     print "(hit space and then return) they will be taken, as normal,\n";
@@ -875,23 +819,6 @@ sub command4 {
     $new_signout_page = <STDIN>;
     if ( $new_signout_page eq "\n" ) {
         $new_signout_page = $signout_page;
-    } else {
-        $new_signout_page =~ s/[\r|\n]//g;
-        $new_signout_page =~ s/^\s+$//g;
-    }
-    return $new_signout_page;
-}
-
-# Default language
-sub command5 {
-    print "SquirrelMail attempts to set the language in many ways.  If it\n";
-    print "can not figure it out in another way, it will default to this\n";
-    print "language.  Please use the code for the desired language.\n";
-    print "\n";
-    print "[$WHT$squirrelmail_default_language$NRM]: $WHT";
-    $new_signout_page = <STDIN>;
-    if ( $new_signout_page eq "\n" ) {
-        $new_signout_page = $squirrelmail_default_language;
     } else {
         $new_signout_page =~ s/[\r|\n]//g;
         $new_signout_page =~ s/^\s+$//g;
@@ -948,7 +875,7 @@ sub command8 {
 }
 
 ####################################################################################
-
+#### Server settings ####
 # domain
 sub command11 {
     print "The domain name is the suffix at the end of all email addresses.  If\n";
@@ -1357,13 +1284,13 @@ sub command113 {
 
 }
 
-
-# MOTD
+####################################################################################
+#### MOTD ####
 sub command71 {
     print "\nYou can now create the welcome message that is displayed\n";
     print "every time a user logs on.  You can use HTML or just plain\n";
     print
-"text.  If you do not wish to have one, just make it blank.\n\n(Type @ on a blank line to exit)\n";
+"text. If you do not wish to have one, just make it blank.\n\n(Type @ on a blank line to exit)\n";
 
     $new_motd = "";
     do {
@@ -1382,8 +1309,8 @@ sub command71 {
     return $new_motd;
 }
 
-################# PLUGINS ###################
-
+####################################################################################
+#### PLUGINS ####
 sub command81 {
     $command =~ s/[\s|\n|\r]*//g;
     if ( $command > 0 ) {
@@ -1414,8 +1341,8 @@ sub command81 {
     return @plugins;
 }
 
-################# FOLDERS ###################
-
+####################################################################################
+#### FOLDERS #####
 # default_folder_prefix
 sub command21 {
     print "Some IMAP servers (UW, for example) store mail and folders in\n";
@@ -1861,29 +1788,11 @@ sub command216 {
     }
     return $noselect_fix_enable;
 }
-############# GENERAL OPTIONS #####################
 
-# Default Charset
-sub command31 {
-    print "This option controls what character set is used when sending\n";
-    print "mail and when sending HTML to the browser.  Do not set this\n";
-    print "to US-ASCII, use ISO-8859-1 instead.  For cyrillic, it is best\n";
-    print "to use KOI8-R, since this implementation is faster than most\n";
-    print "of the alternatives\n";
-    print "\n";
-
-    print "[$WHT$default_charset$NRM]: $WHT";
-    $new_default_charset = <STDIN>;
-    if ( $new_default_charset eq "\n" ) {
-        $new_default_charset = $default_charset;
-    } else {
-        $new_default_charset =~ s/[\r|\n]//g;
-    }
-    return $new_default_charset;
-}
-
+####################################################################################
+#### GENERAL OPTIONS ####
 # Data directory
-sub command33a {
+sub command31 {
     print "Specify the location for your data directory.\n";
     print "The path name can be absolute or relative (to the config directory).\n";
     print "It doesn't matter.  Here are two examples:\n";
@@ -1914,7 +1823,7 @@ sub command33a {
 }
 
 # Attachment directory
-sub command33b {
+sub command32 {
     print "Path to directory used for storing attachments while a mail is\n";
     print "being sent. The path name can be absolute or relative (to the config directory).\n";
     print "It doesn't matter.  Here are two examples:\n";
@@ -1953,7 +1862,7 @@ sub command33b {
     return $new_attachment_dir;
 }
 
-sub command33c {
+sub command33 {
     print "The directory hash level setting allows you to configure the level\n";
     print "of hashing that Squirremail employs in your data and attachment\n";
     print "directories. This value must be an integer ranging from 0 to 4.\n";
@@ -1989,9 +1898,9 @@ sub command33c {
     return $new_dir_hash_level;
 }
 
-sub command35 {
+sub command34 {
     print "This is the default size (in pixels) of the left folder list.\n";
-    print "Default is 200, but you can set it to whatever you wish.  This\n";
+    print "Default is 150, but you can set it to whatever you wish.  This\n";
     print "is a user preference, so this will only show up as their default.\n";
     print "\n";
     print "[$WHT$default_left_size$NRM]: $WHT";
@@ -2004,7 +1913,7 @@ sub command35 {
     return $new_default_left_size;
 }
 
-sub command36 {
+sub command35 {
     print "Some IMAP servers only have lowercase letters in the usernames\n";
     print "but they still allow people with uppercase to log in.  This\n";
     print "causes a problem with the user's preference files.  This option\n";
@@ -2024,7 +1933,7 @@ sub command36 {
     return "false";
 }
 
-sub command37 {
+sub command36 {
     print "";
     print "\n";
 
@@ -2042,7 +1951,7 @@ sub command37 {
     return "false";
 }
 
-sub command38 {
+sub command37 {
     print "";
     print "\n";
 
@@ -2060,7 +1969,7 @@ sub command38 {
     return "false";
 }
 
-sub command39 {
+sub command38 {
     print "";
     print "\n";
 
@@ -2078,7 +1987,7 @@ sub command39 {
     return "false";
 }
 
-sub command310 {
+sub command39 {
     print "This allows you to prevent the editing of the user's name and ";
     print "email address. This is mainly useful when used with the ";
     print "retrieveuserdata plugin\n";
@@ -2096,12 +2005,12 @@ sub command310 {
         $edit_name = "true";
     } else {
         $edit_identity = "false";
-        $edit_name = command311();
+        $edit_name = command39a();
     }
     return $edit_identity;
 }
 
-sub command311 {
+sub command39a {
     print "As a follow-up, this option allows you to choose if the user ";
     print "can edit their full name even when you don't want them to ";
     print "change their username\n";
@@ -2122,7 +2031,7 @@ sub command311 {
     return $edit_name;
 }
 
-sub command312 {
+sub command310 {
     print "This option allows you to choose if users can use thread sorting\n";
     print "Your IMAP server must support the THREAD command for this to work\n";
     print "PHP versions later than 4.0.3 recommended\n";
@@ -2143,7 +2052,7 @@ sub command312 {
     return $allow_thread_sort;
 }
 
-sub command313 {
+sub command311 {
     print "This option allows you to choose if SM uses server-side sorting\n";
     print "Your IMAP server must support the SORT  command for this to work\n";
     print "\n";
@@ -2163,7 +2072,7 @@ sub command313 {
     return $allow_server_sort;
 }
 
-sub command314 {
+sub command312 {
     print "This option allows you to choose if SM uses charset search\n";
     print "Your IMAP server must support the SEARCH CHARSET command for this to work\n";
     print "\n";
@@ -2183,7 +2092,7 @@ sub command314 {
     return $allow_charset_search;
 }
 
-sub command315 {
+sub command313 {
     print "This option allows you to enable unique identifier (UID) support.\n";
     print "\n";
 
@@ -2202,7 +2111,7 @@ sub command315 {
     return $uid_support;
 }
 
-sub command316 {
+sub command314 {
     print "This option allows you to change the name of the PHP session used\n";
     print "by SquirrelMail.  Unless you know what you are doing, you probably\n";
     print "don't need or want to change this from the default of SQMSESSID.\n";
@@ -2215,8 +2124,8 @@ sub command316 {
     return $new_session_name;
 }
 
-
-
+####################################################################################
+#### THEMES ####
 sub command41 {
     print "\nDefine the themes that you wish to use.  If you have added ";
     print "a theme of your own, just follow the instructions (?) about how to add ";
@@ -2388,7 +2297,9 @@ sub command42 {
     $new_theme_css =~ s/^\s*//;
     return $new_theme_css;
 }
-
+####################################################################################
+#### Address books ####
+# LDAP
 sub command61 {
     print "You can now define different LDAP servers.\n";
     print "[ldap] command (?=help) > ";
@@ -2569,6 +2480,7 @@ sub command61 {
     }
 }
 
+# Javascript or html address book
 sub command62 {
     print "Some of our developers have come up with very good javascript interface\n";
     print "for searching through address books, however, our original goals said\n";
@@ -2596,6 +2508,8 @@ sub command62 {
     return $default_use_javascript_addr_book;
 }
 
+####################################################################################
+#### Database ####
 sub command91 {
     print "If you want to store your users address book details in a database then\n";
     print "you need to set this DSN to a valid value. The format for this is:\n";
@@ -2720,6 +2634,69 @@ sub command97 {
     return $new_field;
 }
 
+####################################################################################
+#### Languages ####
+# Default language
+sub commandA1 {
+    print "SquirrelMail attempts to set the language in many ways.  If it\n";
+    print "can not figure it out in another way, it will default to this\n";
+    print "language.  Please use the code for the desired language.\n";
+    print "\n";
+    print "[$WHT$squirrelmail_default_language$NRM]: $WHT";
+    $new_language = <STDIN>;
+    if ( $new_language eq "\n" ) {
+        $new_language = $squirrelmail_default_language;
+    } else {
+        $new_language =~ s/[\r|\n]//g;
+        $new_language =~ s/^\s+$//g;
+    }
+    return $new_language;
+}
+
+# Default Charset
+sub commandA2 {
+    print "This option controls what character set is used when sending\n";
+    print "mail and when sending HTML to the browser.\n";
+    print "\n";
+    print "This option is used only when default language is 'en_US'.\n";
+    print "\n";
+
+    print "[$WHT$default_charset$NRM]: $WHT";
+    $new_default_charset = <STDIN>;
+    if ( $new_default_charset eq "\n" ) {
+        $new_default_charset = $default_charset;
+    } else {
+        $new_default_charset =~ s/[\r|\n]//g;
+    }
+    return $new_default_charset;
+}
+
+# Lossy encoding
+sub commandA3 {
+    print "Enable this option if you want to allow lossy charset encoding in message\n";
+    print "composition pages. This option allows charset conversions when output\n";
+    print "charset does not support all symbols used in original charset. Symbols\n";
+    print "unsupported by output charset will be replaced with question marks.\n";
+    print "\n";
+
+    if ( lc($lossy_encoding) eq 'true' ) {
+        $default_value = "y";
+    } else {
+        $default_value = "n";
+    }
+    print "Enable lossy encoding? (y/n) [$WHT$default_value$NRM]: $WHT";
+    $lossy_encoding = <STDIN>;
+    if ( ( $lossy_encoding =~ /^y\n/i ) || ( ( $lossy_encoding =~ /^\n/ ) && ( $default_value eq "y" ) ) ) {
+        $lossy_encoding = 'true';
+    } else {
+        $lossy_encoding = 'false';
+    }
+    return $lossy_encoding;
+}
+
+#### End of menu functions
+####################################################################################
+
 sub save_data {
     $tab = "    ";
     if ( open( CF, ">config.php" ) ) {
@@ -2767,11 +2744,17 @@ sub save_data {
     # string that can contain variables
         print CF "\$motd = \"$motd\";\n";
         print CF "\n";
-    
+
+    # Language preferences    
     # string
         print CF "\$squirrelmail_default_language = '$squirrelmail_default_language';\n";
+    # string
+        print CF "\$default_charset       = '$default_charset';\n";
+    # boolean
+        print CF "\$lossy_encoding        = $lossy_encoding;\n";
         print CF "\n";
 
+    # Server settings
     # string
         print CF "\$domain                 = '$domain';\n";
     # string
@@ -2837,8 +2820,7 @@ sub save_data {
 
         print CF "\n";
 
-    # string
-        print CF "\$default_charset          = '$default_charset';\n";
+    # General options
     # string
         print CF "\$data_dir                 = " . &change_to_SM_path($data_dir) . ";\n";
     # string that can contain a variable
