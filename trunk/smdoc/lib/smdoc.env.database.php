@@ -10,7 +10,6 @@
  */
 
 require_once 'DB.php';
-include_once(SM_DIR.'env.database.php');
 include_once(SM_DIR.'smdoc.env.cache.php');
 
 /**
@@ -18,8 +17,44 @@ include_once(SM_DIR.'smdoc.env.cache.php');
  * Uses PEAR to manage backends,
  * provides some customized function
  */
-class smdoc_db extends foowd_db 
+class smdoc_db  
 {
+  /**
+   * The database connect resource.
+   *
+   * @var resource
+   */
+  var $conn;
+
+  /**
+   * The date/time format used by this storage medium. This string should be
+   * a PHP date function compatible date/time formatting string.
+   *
+   * @var str
+   */
+  var $dateTimeFormat = 'Y-m-d H:i:s';
+
+  /**
+   * An array of references to all objects loaded from this database.
+   *
+   * @var array
+   */
+  var $objects;
+
+  /**
+   * The default table to use.
+   * 
+   * @var str
+   */
+  var $table;
+
+  /**
+   * Reference to the Foowd object.
+   *
+   * @var object
+   */
+  var $foowd;
+
   /** 
    * Time in seconds since last update of object before checking for old
    * archived versions to delete. Default 1 day (86400 seconds).
@@ -151,12 +186,33 @@ class smdoc_db extends foowd_db
   }
 
   /**
+   * Execute query
+   *
+   * @abstract
+   * @access protected
+   * @param str query The query to execute
+   * @return array The array of all resulting records
+   */
+  function &queryAll($query)
+  {
+    $this->foowd->debug('sql', $query);
+    $records =& $this->conn->getAll($query);
+    if (DB::isError($records)) 
+    {
+      $this->foowd->debug('msg', $result->getMessage());
+      return FALSE;
+    }
+    return $records;
+  }
+
+  /**
    * Escape a string for use in SQL string
    *
    * @param str str String to escape
    * @return str The escaped string
    */
-  function escape($str) {
+  function escape($str) 
+  {
     return $this->conn->quote($str);
   }
 
@@ -166,7 +222,8 @@ class smdoc_db extends foowd_db
    * @param resource result Result set to get results from
    * @return array The results as an associative array
    */
-  function fetch($result) {
+  function fetch($result) 
+  {
     // fetchRow() returns the row, NULL on no more data or a  
     // DB_Error, when an error occurs.
     $row = $result->fetchRow();
@@ -187,7 +244,8 @@ class smdoc_db extends foowd_db
    * @param resource result Result set to get results from
    * @return int The number of rows in the result set
    */
-  function num_rows($result) {
+  function num_rows($result) 
+  {
     return $result->numRows();
   }
 
@@ -197,7 +255,8 @@ class smdoc_db extends foowd_db
    * @param resource result The query result to check
    * @return bool If the query affected any rows
    */
-  function query_success($result) {
+  function query_success($result) 
+  {
     return $this->conn->affectedRows() > 0;
   }
 
@@ -208,7 +267,8 @@ class smdoc_db extends foowd_db
    * @param array indexes Array of indexes and values to find object by
    * @param object object Reference of the object to add
    */
-  function addToLoadedReference(&$object) {
+  function addToLoadedReference(&$object) 
+  {
     $this->objects->addToLoadedReference($object);
   }
 
@@ -219,7 +279,8 @@ class smdoc_db extends foowd_db
    * @param array indexes Array of indexes and values to find object by
    * @param str source The source to fetch the object from
    */
-  function &checkLoadedReference($indexes, $source) {
+  function &checkLoadedReference($indexes, $source) 
+  {
     return $this->objects->checkLoadedReference($indexes, $source);
   }
 
@@ -257,36 +318,160 @@ class smdoc_db extends foowd_db
   }
 
   /**
+   * Build where clause from indexes array.
+   *
+   * @access protected
+   * @param array indexes Array of indexes and values to find object by
+   * @param str conjuction Operand to use to join the elements of the clause
+   * @return str The generated where clause.
+   */
+  function buildWhere($indexes, $conjunction = 'AND')  
+  {
+    // array('raw_where' => 'WHERE classid <> ERROR_CLASS_ID');
+    if ( isset($index['raw_where']) )
+        return $index['raw_where'];
+
+    $where = '';
+
+    if ( $conjunction != 'AND' )
+      $conjunction = ' OR';
+
+    foreach ($indexes as $key => $index) 
+    {
+      if ( !isset($index) )
+        continue;
+
+      $where .= $conjunction;
+
+      // array('classid' => ERROR_CLASS_ID, 'objectid' => 83921);
+      if (!is_array($index)) 
+      {
+        $where .= ' '.$key.' = ';
+        $where .= is_numeric($index) ? $index : $this->escape($index);
+        $where .= ' ';
+      } 
+      else 
+      {
+        // dealing with an array:
+        // Array (
+        //   [0] => OR
+        //   [1] => Array (
+        //            [index] => classid
+        //            [op] => =
+        //            [value] => 84324322
+        //        )
+        //   [2] => Array (
+        //            [index] => classid
+        //            [op] => =
+        //            [value] => 4324324324
+        //        )
+        // )
+        // SO, the key is a conjunction, 
+        // and $index is an array containing clauses that should 
+        // be grouped together with that conjunction
+        if ( !isset($index['index']) ) 
+          $where .= $this->buildWhere($index, $key);
+        else 
+        {
+          // otherwise, we have an index/op/value array
+          if ( !isset($index['value']) ) 
+          {
+            trigger_error('No value given for index "'.$index['index'].'".');
+            $index['value'] = '';
+          }
+
+          if ( !isset($index['op']) )
+            $index['op'] = '=';
+          elseif ( $index['op'] == '!=' )
+            $index['op'] = '<>';
+
+          if ( !isset($index['value']) ) {
+            trigger_error('No value given for index "'.$index['index'].'".');
+            $value = '';
+          } else {
+            $value = $index['value'];
+          }
+
+          $where .= ' '.$index['index'].' '.$index['op'].' ';
+          $where .= is_numeric($value) ? $value : $this->escape($value);
+          $where .= ' ';
+        }
+      }
+    }
+    return ' ('.substr($where, 3).') ';
+  }
+
+  /**
+   * Add workspaceid index to index array if one does not exist at the top level.
+   *
+   * @access protected
+   * @param array indexes Array of indexes and values to find object by
+   */
+  function setWorkspace(&$indexes)
+  {
+    if (is_array($indexes)) 
+    {
+      foreach($indexes as $key => $index) 
+      {
+        if ( $key == 'workspaceid' ||
+             ( is_array($index) && 
+               isset($index['index']) && 
+               $index['index'] == 'workspaceid') )
+          return; // Found workspace id in indexes, return early 
+      }
+    }
+
+    $workspaceid['index'] = 'workspaceid';
+    $workspaceid['op'] = '=';
+    if ( isset($this->foowd->user->workspaceid) ) 
+      $workspaceid['value'] = $this->foowd->user->workspaceid;
+    else
+      $workspaceid['value'] = 0;
+
+    $indexes[] = $workspaceid;
+  }
+
+  /**
    * Get lastest version of an object.
    *
-   * @param array indexes Array of indexes and values to find object by
-   * @param array joins Array of sources and indexes of objects to also fetch based upon indexes of first object
-   * @param str source The source to fetch the object from
+   * @param  array where Array of values to find object by
+   * @param  mixed in_source Source to get object from
+   * @param  array indexes Array of indexes to fetch
+   * @param  bool  setWorkspace get specific workspace id (or any workspace ok)
    * @return mixed The retrieved object or an array containing the retrieved object and the joined objects.
    */
-//  function &getObj($indexes, $joins = NULL, $in_source = NULL)
-//  {
-//    if ($object = &$this->checkLoadedReference($indexes, $in_source)) 
-//      return $object;
-//
-//    $this->foowd->track('smdoc_db->getObj');
-//
-//    $this->getSource($in_source,$source,$makeTable);
-//    $this->setWorkspace($indexes);
-//
-//    $join = '';
-//    $fields = '';
-//    $orderby = '';
-//
-//
-//    if (isset($indexes['version']) && $indexes['version'] == 0)
-//      unset($indexes['version']);
-//
-//    $where = ' WHERE'.$this->buildWhere($indexes);
-//
-//
-//    $this->foowd->track();
-//  }
+  function &getObj($where = NULL, $in_source = NULL, $setWorkspace = TRUE)
+  {
+    if ($object = &$this->checkLoadedReference($where, $in_source)) 
+      return $object;
+
+    $this->foowd->track('smdoc_db->getObj');
+
+    $this->getSource($in_source,$source,$makeTable);
+    if ( $setWorkspace )
+      $this->setWorkspace($where);
+
+    if ( $where == NULL )
+      $where = '';
+    else
+      $where = ' WHERE' . $this->buildWhere($where);
+   
+    $select = 'SELECT '.$source.'.object AS object';
+    $select .= ' FROM '.$source.$where;
+    $object = FALSE;
+
+    if ( ($query = $this->query($select)) &&
+         ($result = $this->fetch($query)) )
+    {
+      $object = $this->unserializeObject($source, $result);
+      $object->foowd = &$this->foowd; // create Foowd reference
+      $object->foowd_source = $in_source; // set source for object
+      $this->addToLoadedReference($object, $in_source);
+    }
+
+    $this->foowd->track();
+    return $object;
+  }
 
 
   /**
@@ -309,10 +494,8 @@ class smdoc_db extends foowd_db
     $select = 'SELECT object, classid, version FROM '.$source
               .$where.' ORDER BY version DESC';
 
-    $this->foowd->debug('sql', $select);
-    $records =& $this->conn->getAll($select);
-
-    if (DB::isError($records)) 
+    $records =& $this->queryAll($select);
+    if ( $records === FALSE ) 
     {
       $this->foowd->track(); 
       return FALSE;
@@ -322,7 +505,7 @@ class smdoc_db extends foowd_db
     $latest = 0;
     foreach ($records as $record) 
     {
-      $return[$record['version']] = $this->foowd->unserialize($record['object']. $record['classid']);
+      $return[$record['version']] = $this->unserializeObject($source, $record);
       $return[$record['version']]->foowd = &$this->foowd; // create Foowd reference
       $this->addToLoadedReference($return[$record['version']]);
       if ($record['version'] > $latest) {
@@ -401,10 +584,9 @@ class smdoc_db extends foowd_db
     }
     $select .= ' FROM '.$source.$where.$order.$limit;
 
-    $this->foowd->debug('sql', $select);
-    $records =& $this->conn->getAll($select);
+    $records =& $this->queryAll($select);
 
-    if (DB::isError($records)) 
+    if ( $records === FALSE ) 
     {
       $this->foowd->track(); 
       return FALSE;
@@ -421,7 +603,7 @@ class smdoc_db extends foowd_db
       {
         if ($returnObjects) 
         {
-          $return[$id] = $this->unserializeObject($source, $record) ;
+          $return[$id] = $this->unserializeObject($source, $record);
           $return[$id]->foowd = &$this->foowd; // create Foowd reference
           $return[$id]->source = $source;
           $this->addToLoadedReference($return[$id]);
@@ -485,11 +667,13 @@ class smdoc_db extends foowd_db
     {
       $source = $in_source['table'];
       $makeTable = $in_source['table_create'];
+      return;
     }
     elseif ( isset($in_source) )
       $source = $in_source;
     else
       $source = $this->table;
+    $makeTable = FALSE;
   }
 
 
@@ -579,7 +763,7 @@ class smdoc_db extends foowd_db
     elseif ( $this->query_success($this->query($insert)) )
       $saveResult = 2;
     // if fail, modify table to include indexes from class definition
-    elseif ( $this->alterTable($source, $fieldArray) )
+    elseif ( $this->alterTable($object->foowd_source, $fieldArray) )
     {
       // indexes were altered, retry update
       if ( $this->query_success($this->query($update)) ) 
@@ -624,4 +808,201 @@ class smdoc_db extends foowd_db
     return $this->query_success($result);
   }
 
+  /**
+   * Tidy an objects archived versions.
+   *
+   * @param object object The object to delete
+   * @return bool Success or failure.
+   */
+  function tidy(&$object) 
+  {
+    $this->foowd->track('foowd_db->tidy');
+    $this->getSource($object->foowd_source, $source, $makeTable);
+
+    if ( !in_array('version',$object->foowd_primary_key) ||
+         !in_array('updated',$object->foowd_primary_key) )
+      return FALSE;
+
+    $delete = 'DELETE FROM '.$source.' WHERE ';
+    $first = 1;
+    foreach ($object->foowd_primary_key as $key)
+    {
+      if ( !isset($object->foowd_original_access_vars[$key]) )
+        continue;
+
+      if ( $first ) 
+        $first = 0; 
+      else 
+        $delete .= ' AND ';
+
+      if ( $key == 'version' )
+        $delete .= 'version < '.($object->foowd_original_access_vars['version'] - $this->foowd->minimum_number_of_archived_versions);
+      elseif ( $key == 'updated' )
+        $delete .= 'updated < \''.date($this->foowd->database->dateTimeFormat, strtotime($this->foowd->destroy_older_than)).'\'';
+      else
+        $delete .= $key.' = '.$object->foowd_original_access_vars[$key];
+    }
+
+    $result = $this->query($delete);
+
+    $this->foowd->track();
+    return ( $result ) ? TRUE : FALSE;    
+  }
+
+  /**
+   * Get the fields for this table. If it fails, this method presumes that that
+   * is because the table does not exist, so tries to create it.
+   *
+   * @access protected
+   * @param mixed in_source Source specified by the caller
+   * @return array Array of field names
+   */
+  function getFields($in_source)
+  {
+    $select = 'SELECT * FROM '.$table.' LIMIT 1';
+    if ( $query = $this->query($select) )
+    {
+      if ($record = $this->fetch($query))
+      {
+        $return = array();
+        foreach ($record as $field => $value)
+        {
+          if (!is_numeric($field))
+		    $return[] = $field;
+        }
+        return $return;
+      }
+    }
+    else
+    {
+      // If couldn't query table fields, table might not exist.
+      // try creating it - if it succeeds, retry request,
+      // if not, return FALSE
+      $this->getSource($in_source, $source, $makeTable);
+      if ( $makeTable )
+        $result = call_user_func($makeTable, $this->foowd);
+      else
+        $result = $this->query('CREATE TABLE '.$source.' (
+				\'objectid\' int(11) NOT NULL default \'0\',
+				\'version\' int(10) unsigned NOT NULL default \'1\',
+				\'classid\' int(11) NOT NULL default \'0\',
+				\'workspaceid\' int(11) NOT NULL default \'0\',
+				\'object\' longblob,
+				\'title\' varchar(255) NOT NULL default \'\',
+				\'updated\' datetime NOT NULL default \'0000-00-00 00:00:00\',
+				PRIMARY KEY (\'objectid\',\'version\',\'classid\',\'workspaceid\'),
+				KEY \'idxtblObjectTitle\'(\'title\'),
+				KEY \'idxtblObjectupdated\'(\'updated\'),
+				KEY \'idxtblObjectObjectid\'(\'objectid\'),
+				KEY \'idxtblObjectClassid\'(\'classid\'),
+				KEY \'idxtblObjectVersion\'(\'version\'),
+			  KEY \'idxtblObjectWorkspaceid\'(\'workspaceid\')
+			)');
+      
+      // create table worked, try getFields again.
+      if ( $result !== FALSE )
+        return $this->getFields($in_source);
+    }
+    return FALSE;
+  } 
+
+  /**
+   * Do a SQL ALTER TABLE statement.
+   *
+   * @access protected
+   * @param mixed in_source Source specified by the caller
+   * @param array fieldArray An array of column clause elements.
+   * @return bool TRUE on success.
+   */
+  function alterTable($in_source, $fieldArray) 
+  {
+    $fields = $this->getFields($in_source);
+    if ( $fields === FALSE )
+      return FALSE;
+
+    $missingFields = array();
+    foreach ($fieldArray as $field => $value)
+    {
+      if ( !in_array($field, $fields) && $field != 'object')
+        $missingFields[] = $object->foowd_indexes[$field];
+    }
+
+    // Return TRUE - nothing missing.
+    // This could happen if table was created by getFields..
+    if ( count($missingFields) <= 0 )
+      return TRUE;
+
+    $this->getSource($in_source, $source, $makeTable);
+    $SQLString = 'ALTER TABLE '.$source.' ADD COLUMN (';
+    $indexes = array();
+    $PrimaryKeyString = '';
+
+    foreach ( $missingFields as $column )
+    {
+      if ( $column['name'] == '' || $column['type'] == '' )
+        continue;
+
+      $SQLString .= $column['name'].' '.$this->dataTypes[$column['type']];
+
+      if ( isset($column['length']) && is_numeric($column['length']) )
+        $SQLString .= ' ('.$column['length'].')';
+
+      if ( (isset($column['primary']) && $column['primary']) ||
+           (isset($column['notnull']) && $column['notnull']) )
+        $SQLString .= ' '.$this->keywords['notnull'];
+
+      if ( isset($column['default']) && is_numeric($column['default']) ) 
+        $SQLString .= ' '.$this->keywords['default'].' '.$column['default'];
+      elseif ( isset($column['default']) )
+        $SQLString .= ' '.$this->keywords['default'].' "'.$column['default'].'"';
+
+      if ( isset($column['identity']) && $column['identity'] ) 
+        $SQLString .= ' '.$this->keywords['identity'];
+
+      if ( isset($column['primary']) && $column['primary'] ) 
+        $PrimaryKeyString .= $column['name'].', ';
+      
+      if (isset($column['index']))
+        $indexes[] = $column['index'];
+
+      $SQLString .= ', ';
+    }
+    $SQLString = substr($SQLString, 0, -2);
+
+    if ($PrimaryKeyString != '') 
+      $SQLString .= 'PRIMARY KEY ('.substr($PrimaryKeyString, 0, -2).')';
+
+    $SQLString .= ')';
+
+    $result = $this->query($SQLString);
+    if ( $result === FALSE )
+      return FALSE;
+
+    if ( count($indexes) > 0 )
+    {
+      foreach ( $indexes as $column )
+        $this->createIndex($in_source, $column);
+    }
+
+    return TRUE;
+  }
+
+  /**
+   * Do a SQL CREATE INDEX statement.
+   *
+   * @access protected
+   * @param mixed in_source Source specified by the caller
+   * @param str column The column to add the index on.
+   * @return bool TRUE on success.
+   */
+  function createIndex($table, $column) 
+  {
+    $this->getSource($in_source, $table, $makeTable);
+
+    if ($this->query('CREATE INDEX idx'.$table.$column.' ON '.$table.' ('.$column.')'))
+      return TRUE;
+
+    return FALSE;
+  }
+  
 }
