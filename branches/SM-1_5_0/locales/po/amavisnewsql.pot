@@ -8,13 +8,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-04-03 15:19+0300\n"
+"POT-Creation-Date: 2004-04-16 16:20+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
+
+msgid "Edit Address"
+msgstr ""
 
 msgid "Add New Address"
 msgstr ""
@@ -40,9 +43,6 @@ msgstr ""
 msgid "domain only including the "
 msgstr ""
 
-msgid "Whitelist Everyone In Your Address Book"
-msgstr ""
-
 msgid "Type:"
 msgstr ""
 
@@ -53,6 +53,12 @@ msgid "Blacklist"
 msgstr ""
 
 msgid "Priority:"
+msgstr ""
+
+msgid "Whitelist Everyone In Your Address Book"
+msgstr ""
+
+msgid "Global White/Black Lists"
 msgstr ""
 
 msgid "Address"
@@ -86,6 +92,12 @@ msgid "Action"
 msgstr ""
 
 msgid "No Personal Addresses Defined"
+msgstr ""
+
+msgid "Edit"
+msgstr ""
+
+msgid "Delete"
 msgstr ""
 
 msgid "Description"
@@ -207,6 +219,16 @@ msgid ""
 "The tag level is the numerical score required to identify a message as being "
 "spam.  This will cause *SPAM* to be added to the subject line and the X-Spam-"
 "Flag header to be set to YES."
+msgstr ""
+
+msgid "The "
+msgstr ""
+
+msgid ""
+" is the numerical score required to prevent delivery of a message at the "
+"server.  This level should be higher or equal to Tag Level and high enough "
+"to avoid catching legitimate email. As your custom whitelist grows you "
+"should adjust these two levels to tag and block more spam."
 msgstr ""
 
 msgid "No Messages in Quarantine"
