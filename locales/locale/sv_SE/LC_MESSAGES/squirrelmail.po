@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: squirrelmail HEADPOT-Creation-Date: 2003-09-20 11:04"
 "+0300\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-02-24 20:39+0200\n"
-"PO-Revision-Date: 2004-02-25 08:25+0100\n"
+"POT-Creation-Date: 2003-10-05 12:27+0300\n"
+"PO-Revision-Date: 2004-02-28 21:37+0100\n"
 "Last-Translator: Fredrik Jervfors <sqm_admin@fimbul.net>\n"
 "Language-Team: Swedish <squirrelmail-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -741,7 +741,7 @@ msgid "You have been successfully signed out."
 msgstr "Du har loggats ut."
 
 msgid "Click here to log back in."
-msgstr "Klicka här för att logga in igen."
+msgstr "Logga in igen"
 
 msgid "Viewing a Business Card"
 msgstr "Visar ett visitkort"
@@ -1281,9 +1281,6 @@ msgstr "ladda ner"
 msgid "sec_remove_eng.png"
 msgstr "sec_remove_sv_SE.png"
 
-msgid "This external link will open in a new window"
-msgstr "Denna externa länk kommer att öppnas i ett nytt fönster"
-
 #, c-format
 msgid "Option Type '%s' Not Found"
 msgstr "Valet '%s' finns inte"
@@ -1419,11 +1416,8 @@ msgstr "Brevvisning och -skrivning"
 msgid "Wrap Incoming Text At"
 msgstr "Radbryt mottagen text vid"
 
-msgid "Width of Editor Window"
-msgstr "Textfönstrets bredd"
-
-msgid "Height of Editor Window"
-msgstr "Textfönstrets höjd"
+msgid "Size of Editor Window"
+msgstr "Textfönstrets storlek"
 
 msgid "Location of Buttons when Composing"
 msgstr "Knapparnas placering vid brevskrivning"
@@ -1481,18 +1475,6 @@ msgstr "Höjd på redigeringsfönstret"
 
 msgid "Append Signature before Reply/Forward Text"
 msgstr "Lägg till en brevfot innan innehållet besvaras eller vidarebefordras"
-
-msgid "Cursor Position when Replying"
-msgstr "Markörens position vid svar"
-
-msgid "To: field"
-msgstr "Till-fältet"
-
-msgid "Focus in body"
-msgstr "Fokus på texten"
-
-msgid "Select body"
-msgstr "Välj text"
 
 msgid "Enable Sort by of Receive Date"
 msgstr "Aktivera sortering på ankomstdatum"
@@ -1581,15 +1563,6 @@ msgstr "Aktivera avisering vid ökande antal olästa brev"
 msgid "Show Clock on Folders Panel"
 msgstr "Visa klockan i mapp-panelen"
 
-msgid "Show weekday and time"
-msgstr "Visa veckodag och klockslag"
-
-msgid "Show time with seconds"
-msgstr "Visa klockslag med sekunder"
-
-msgid "Show time"
-msgstr "Visa klockslag"
-
 msgid "No Clock"
 msgstr "Ingen klocka"
 
@@ -1665,9 +1638,6 @@ msgstr "AVSÄNDAREN skrev"
 msgid "Quote Who XML"
 msgstr "XML Citat"
 
-msgid "On DATE, AUTHOR Said"
-msgstr "DATUMET skrev AVSÄNDAREN"
-
 msgid "User-Defined"
 msgstr "Användardefinierat"
 
@@ -1684,7 +1654,7 @@ msgid "Use Signature"
 msgstr "Använd brevfot"
 
 msgid "Prefix Signature with '-- ' Line"
-msgstr "Inled brevfoten med '-- '"
+msgstr "Inled brevfoten med avskiljaren '---'"
 
 msgid "Take Address"
 msgstr "Spara adress"
@@ -1987,87 +1957,6 @@ msgstr ""
 "Denna modul tillåter administratörer att ändra SquirrelMails gemensamma "
 "konfiguration."
 
-msgid "Submit a Bug Report"
-msgstr "Skicka in en felrapport"
-
-msgid ""
-"Before you send your bug report, please make sure to check this checklist "
-"for any common problems."
-msgstr ""
-"Vänligen gå igenom denna lista över vanliga problem innan du skickar in din "
-"felrapport."
-
-msgid ""
-"Make sure that you are running the most recent copy of <a href=\"http://www."
-"squirrelmail.org/\">SquirrelMail</a>."
-msgstr ""
-"Säkerställ att du använder den senaste versionen av <a href=\"http://www."
-"squirrelmail.org/\">SquirrelMail</a>."
-
-#, c-format
-msgid "You are currently using version %s."
-msgstr "Nu använder du version %s."
-
-msgid ""
-"Check to see if you bug is already listed in the <a href=\"http://"
-"sourceforge.net/bugs/?group_id=311\">Bug List</a> on SourceForge. If it is, "
-"we already know about it and are trying to fix it."
-msgstr ""
-"Kontrollera om felet redan är anmält till <a href=\"http://sourceforge.net/"
-"bugs/?group_id=311\">Felanmälningslistan</a> på SourceForge. Om felet är "
-"anmält känner vi redan till det och försöker åtgärda det."
-
-msgid ""
-"Try to make sure that you can repeat it. If the bug happens sporatically, "
-"try to document what you did when it happened. If it always occurs when you "
-"view a specific message, keep that message around so maybe we can see it."
-msgstr ""
-"Försök säkerställ att du kan få felet att inträffa igen. Om felet uppstår "
-"sporadiskt, försök dokumentera vad du gjorde när det inträffade. Om det "
-"alltid uppstår när du läser ett specifikt brev, spara det brevet så att "
-"felsökarna kan få se det vid behov."
-
-msgid ""
-"If there were warnings displayed above, try to resolve them yourself. Read "
-"the guides in the <tt>doc/</tt> directory where SquirrelMail was installed."
-msgstr ""
-"Om det visades varningar, försök att själv åtgärda dem. Läs guiden i "
-"SquirrelMail-installationens mapp <tt>doc/</tt>."
-
-msgid ""
-"Pressing the button below will start a mail message to the developers of "
-"SquirrelMail that will contain a lot of information about your system, your "
-"browser, how SquirrelMail is set up, and your IMAP server. It will also "
-"prompt you for information. Just fill out the sections at the top. If you "
-"like, you can scroll down in the message to see what else is being sent."
-msgstr ""
-"När du trycker på knappen nedan kommer ett brev att skickas till utvecklarna "
-"av SquirrelMail. Brevet innehåller information om ditt system, din "
-"webbläsare, hur SquirrelMail är konfigurerat och din IMAP-server. Du kommer "
-"även att behöva fylla i viss information själv. Fyll i de översta "
-"sektionerna. Om du vill kan du bläddra ned och läsa vad som kommer att "
-"skickas."
-
-msgid ""
-"Please make sure to fill out as much information as you possibly can to give "
-"everyone a good chance of finding and removing the bug. Submitting your bug "
-"like this will not have it automatically added to the bug list on "
-"SourceForge, but someone who gets your message may add it for you."
-msgstr ""
-"Var snäll och fyll i så mycket information som möjligt, så att du ger "
-"utvecklarna en chans att hitta och åtgärda felet. Genom att skicka in "
-"felrapporten kommer det inte automatiskt att synas på SourceForges lista, "
-"men någon som tar emot det kanske lägger till det åt dig."
-
-msgid "This bug involves"
-msgstr "Detta fel involverar"
-
-msgid "the general program"
-msgstr "programmet i sig"
-
-msgid "a specific plugin"
-msgstr "en specifik insticksmodul"
-
 msgid "Bug Reports:"
 msgstr "Felrapporter:"
 
@@ -2283,7 +2172,7 @@ msgstr "FRI - SPAMhaus - En lista med välkända skräppostkällor."
 
 msgid ""
 "FREE, for now - SPAMCOP - An interesting solution that lists servers that "
-"have a very high spam to legit email ratio (85 percent or more)."
+"have a very high spam to legit email ratio (85% or more)."
 msgstr ""
 "FRI, än så länge - SPAMCOP - Intressant lösning som listar servrar som har "
 "mycket hög andel skräppost (85% eller mer)."
@@ -2296,15 +2185,15 @@ msgstr ""
 "FRI - visi.com - Relay Stop List. Väldigt konservativ lista över "
 "vidarebefordrare."
 
-msgid "FREE - ahbl.org Open Relays - Another list of Open Relays."
+msgid "FREE - 2mbit.com Open Relays - Another list of Open Relays."
 msgstr ""
-"FRI - ahbl.org Open Relays - En annan lista över öppna vidarebefordrare."
+"FRI - 2mbit.com Open Relays - En annan lista över öppna vidarebefordrare."
 
-msgid "FREE - ahbl.org SPAM Source - List of Direct SPAM Sources."
-msgstr "FRI - ahbl.org SPAM Source - Lista över kända skräppostkällor."
+msgid "FREE - 2mbit.com SPAM Source - List of Direct SPAM Sources."
+msgstr "FRI - 2mbit.com SPAM Source - Lista över kända skräppostkällor."
 
-msgid "FREE - ahbl.org SPAM ISPs - List of SPAM-friendly ISPs."
-msgstr "FRI - ahbl.org SPAM ISPs - Lista över skräppostvänliga ISP:er."
+msgid "FREE - 2mbit.com SPAM ISPs - List of SPAM-friendly ISPs."
+msgstr "FRI - 2mbit.com SPAM ISPs - Lista över skräppostvänliga ISP:er."
 
 msgid ""
 "FREE - Leadmon DUL - Another list of Dial-up or otherwise dynamically "
@@ -2939,16 +2828,8 @@ msgstr "Nytt brev"
 msgid "SquirrelMail Notice:"
 msgstr "Avisering från SquirrelMail:"
 
-msgid "You have"
-msgstr "Du har"
-
-#, c-format
-msgid "%s new message"
-msgstr "%s nytt brev"
-
-#, c-format
-msgid "%s new messages"
-msgstr "%s nya brev"
+msgid "You have new mail!"
+msgstr "Du har nya/olästa brev!"
 
 msgid "NewMail Options"
 msgstr "Avisering vid nyinkomna brev"
@@ -2998,166 +2879,6 @@ msgstr "Varje år"
 msgid "Base Sent Folder"
 msgstr "Mapp för skickade brev"
 
-msgid "Enabled"
-msgstr "Möjliggjord"
-
-msgid "Disable it"
-msgstr "Möjliggör det"
-
-msgid "Enable it"
-msgstr "Omöjliggör det"
-
-msgid "Spam reporting"
-msgstr "Skräppostrapportering"
-
-msgid "SpamCop link is:"
-msgstr "Länken till SpamCop är:"
-
-msgid "Delete spam when reported:"
-msgstr "Kasta skräppost som rapporterats:"
-
-msgid "Only works with email-based reporting"
-msgstr "Fungerar bara med e-postbaserad rapportering"
-
-msgid "Spam Reporting Method:"
-msgstr "Skräppostrapporteringsmetod:"
-
-msgid "Quick email-based reporting"
-msgstr "Snabb e-postbaserad rapportering"
-
-msgid "Thorough email-based reporting"
-msgstr "Grundlig e-postbaserad rapportering"
-
-msgid "Web-based form"
-msgstr "Webbaserat formulär"
-
-msgid "Your SpamCop authorization code:"
-msgstr "Din behörighetskod till SpamCop:"
-
-msgid "see below"
-msgstr "se nedan"
-
-msgid ""
-"SpamCop is a free service that greatly assists in finding the true source of "
-"the spam and helps in letting the proper people know about the abuse."
-msgstr ""
-"SpamCop är en gratistjänst som är till stor hjälp när det gäller att hitta "
-"källan till skäppost och för att vidarebefordra detta till rätt instans."
-
-msgid ""
-"To use it, you must get a SpamCop authorization code. There is a free <a "
-"href=\"http://spamcop.net/anonsignup.shtml\">sign up page</a> so you can use "
-"SpamCop."
-msgstr ""
-"För att använda SpamCop måste du ha en behörighetskod. Det finns en <a href="
-"\"http://spamcop.net/anonsignup.shtml\">anmälningssida</a> så att du kan "
-"börja använda SpamCop."
-
-msgid ""
-"<b>Before you sign up, be warned:</b> Some users have reported that the "
-"email addresses used with SpamCop find their way onto spam lists. To be "
-"safe, you can just create an email forwarding account and have all SpamCop "
-"reports get sent to there. Also, if it gets flooded with spam, you can then "
-"just delete that account with no worries about losing your real email "
-"address. Just go create an email forwarder somewhere (<a href=\"http://www."
-"yahoo.com/\">Yahoo!</a> has a <a href=\"http://dir.yahoo.com/"
-"Business_and_Economy/Business_to_Business/Communications_and_Networking/"
-"Internet_and_World_Wide_Web/Email_Providers/Forwarding_Services/"
-"Free_Forwarding/\">list of places</a>) so that messages from system "
-"administrators and whatnot can be sent to you."
-msgstr ""
-"<b>Läs detta innan du anmäler dig:</b> En del användare har rapporterat att "
-"de e-postadresser de använt med SpamCop har dykt upp på skräppostlistor. Om "
-"du vill vara säker bör du skapa en ny adress med vidarebefordring som du "
-"låter SpamCop skicka sina rapporter till. Ifall du får en massa skräppost "
-"till denna adress kan du säga upp den utan risk för att bli av med din "
-"egentliga e-postadress. Skapa alltså en vidarebefordringsadress någonstans "
-"(<a href=\"http://www.yahoo.com/\">Yahoo!</a> har en <a href=\"http://dir."
-"yahoo.com/Business_and_Economy/Business_to_Business/"
-"Communications_and_Networking/Internet_and_World_Wide_Web/Email_Providers/"
-"Forwarding_Services/Free_Forwarding/\">lista med ställen</a>) så att brev "
-"från systemadministratörer m.m. kan skickas till dig."
-
-msgid ""
-"Once you have signed up with SpamCop and have received your SpamCop "
-"authorization code, you need to enable this plugin -- just click the link "
-"above.  Once enabled, you go about your normal life.  If you encounter a "
-"spam message in your mailbox, just view it.  On the right-hand side, near "
-"the top of where the message is displayed, you will see a link to report "
-"this message as spam.  Clicking on it brings you to a confirmation page. "
-"Confirming that you want the spam report sent will do different things with "
-"different reporting methods."
-msgstr ""
-"När du har anmält dig till SpamCop och fått din behörighetskod behöver du "
-"aktivera denna insticksmodul. Klicka bara på länken ovan. Sedan är det bara "
-"att använda din e-post som vanligt. När du stöter på ett skäppostbrev är det "
-"bara att öppna det. Uppe till höger kommer du att finna en länk för att "
-"rapportera brevet som skräppost. När du klickar på länken får du upp en sida "
-"för bekräftelse. När du bekräftar att rapporten ska skickas sker ett antal "
-"olika saker med hjälp av olika rapportmetoder."
-
-msgid "Email-based Reporting"
-msgstr "E-postbaserad rapportering"
-
-msgid ""
-"Pressing the button forwards the message to the SpamCop service and will "
-"optionally delete the message.  From there, you just need to go to your "
-"INBOX and quite soon a message should appear from SpamCop.  (It gets sent to "
-"the account you registered with, so make sure that your mail forwarder "
-"works!) Open it up, click on the appropriate link at the top, and a new "
-"browser window will open."
-msgstr ""
-"När du trycker på knappen skickas brevet till SpamCop och om så önskas "
-"kastas originalet. Relativt snart kommer ett brev från SpamCop till din "
-"inkorg. (Det skickas till den adress som du registrerade hos SpamCop, så se "
-"till att vidarebefordran fungerar som den ska.) När du öppnat brevet klickar "
-"du på tillämpbar länk, vilket öppnar ett nytt fönster."
-
-msgid ""
-"Currently, the quick reporting just forwards the request to the thorough "
-"reporting.  Also, it appears that this is for members (non-free) only. "
-"Hopefully this will change soon."
-msgstr ""
-"För närvarande skickar snabbrapporteringen bara vidare till den grundliga "
-"rapporteringen. Dessutom verkar det som om detta endast är för medlemmar (ej "
-"gratis). Förhoppningsvis ändras detta snart."
-
-msgid "Web-based Reporting"
-msgstr "Webbaserad rapportering"
-
-msgid ""
-"When you press the button on the confirmation page, this will pop open a new "
-"browser window and the SpamCop service should appear inside. The message "
-"will not be deleted (working on that part), but you won't need to wait for a "
-"response email to start the spam reporting."
-msgstr ""
-"När du trycker på knappen på bekräftelsesidan öppnas ett nytt fönster, vari "
-"SpamCop-tjänsten visas. Brevet kommer inte att kastas (detta kommer i "
-"framtiden), men du behöver inte vänta på ett svar via e-post för att kunna "
-"rapportera skräppost."
-
-msgid ""
-"The SpamCop service will display information as it finds it, so scroll down "
-"until you see a form button.  It might pause a little while it is looking up "
-"information, so be a little patient.  Read what it says, and submit the "
-"spam.  Close the browser window.  Press Cancel or click on the appropriate "
-"mail folder to see messages and/or delete the spam."
-msgstr ""
-"SpamCop-tjänsten visar informationen som den fått den, så bläddra nedåt till "
-"dess du ser en knapp. Det kan ta ett tag medan informationen kontrolleras, "
-"så ha tålamod. Läs vad det står och skicka sedan in rapporten. Stäng "
-"fönstret. Klicka på avbryt eller tillämpbar mapp för att se skräpposten och/"
-"eller kasta den."
-
-msgid ""
-"<b>For more information</b> about SpamCop, it's services, spam in general, "
-"and many related topics, try reading through SpamCop's <a href=\"http://"
-"spamcop.net/help.shtml\">Help and Feedback</a> section."
-msgstr ""
-"<b>För mer information</b> om SpamCop, deras tjänster, skräppost i allmänhet "
-"och många relaterade ämnen, se SpamCops <a href=\"http://spamcop.net/help."
-"shtml\">Help and Feedback</a>-sektion."
-
 msgid "Report as Spam"
 msgstr "Anmäl som skräppost"
 
@@ -3172,17 +2893,6 @@ msgstr ""
 "Hjälp till att bekämpa oönskad e-post. SpamCop läser igenom oönskad e-post "
 "och tar fram rätt instans att klaga hos. Ganska snabbt, väldigt intelligent, "
 "och enkel att använda."
-
-msgid ""
-"Sending this spam report will give you back a reply with URLs that you can "
-"click on to properly report this spam message to the proper authorities. "
-"This is a free service.  By pressing the \"Send Spam Report\" button, you "
-"agree to follow SpamCop's rules/terms of service/etc."
-msgstr ""
-"När du skickar in denna skräppostrapport kommer du att få tillbaka ett brev "
-"med länkar som du kan klicka på för att rapportera skräpposten till rätt "
-"instanser. Denna tjänst är gratis. Genom att klicka på knappen \"Skicka "
-"skräppostrapport\" går du med på SpamCops regler, villkor för tjänsten o.s.v."
 
 msgid "SpellChecker Options"
 msgstr "Inställningar för rättstavning"
@@ -3630,43 +3340,33 @@ msgstr "Vilken översättare skall användas om du får brev i ett annat språk?"
 msgid "%s to %s"
 msgstr "%s till %s"
 
-#, c-format
 msgid "English"
 msgstr "Engelska"
 
-#, c-format
 msgid "Chinese"
 msgstr "Kinesiska"
 
-#, c-format
 msgid "French"
 msgstr "Franska"
 
-#, c-format
 msgid "German"
 msgstr "Tyska"
 
-#, c-format
 msgid "Italian"
 msgstr "Italienska"
 
-#, c-format
 msgid "Japanese"
 msgstr "Japanska"
 
-#, c-format
 msgid "Korean"
 msgstr "Koreanska"
 
-#, c-format
 msgid "Portuguese"
 msgstr "Portugisiska"
 
-#, c-format
 msgid "Spanish"
 msgstr "Spanska"
 
-#, c-format
 msgid "Russian"
 msgstr "Ryska"
 
@@ -3688,7 +3388,6 @@ msgstr "Tjeckiska"
 msgid "Danish"
 msgstr "Danska"
 
-#, c-format
 msgid "Dutch"
 msgstr "Holländska"
 
@@ -3698,7 +3397,6 @@ msgstr "Europeisk spanska"
 msgid "Finnish"
 msgstr "Finska"
 
-#, c-format
 msgid "Greek"
 msgstr "Grekiska"
 
@@ -3752,307 +3450,6 @@ msgstr "Språk för gränssnittet"
 
 msgid "Translation direction"
 msgstr "Översättningsriktning"
-
-msgid "Add to:"
-msgstr "Lägg till:"
-
-msgid "Add to address book"
-msgstr "Lägg till i adressboken"
-
-msgid "Your Message has been sent."
-msgstr "Brevet har skickats."
-
-msgid "Bypass Trash"
-msgstr "Kringgå papperskorgen"
-
-msgid "Please enter something to search for"
-msgstr "Ange något att söka efter"
-
-msgid "There must be at least one criteria to search for"
-msgstr "Det måste finnas minst ett sökkriterium"
-
-msgid "Error in criteria argument"
-msgstr "Fel i kriteriumet"
-
-msgid "(Illegal date)"
-msgstr "(Otillåtet datum)"
-
-msgid "(Wrong date)"
-msgstr "(Fel datum)"
-
-msgid "In"
-msgstr "In"
-
-msgid "(Missing argument)"
-msgstr "(Saknat argument)"
-
-msgid "(Spurious argument)"
-msgstr "(Falskt argument)"
-
-msgid "Saved Searches"
-msgstr "Sparade sökningar"
-
-msgid "Missing"
-msgstr "Saknas"
-
-msgid "and&nbsp;subfolders:"
-msgstr "och&nbsp;undermappar:"
-
-msgid "Exclude Criteria:"
-msgstr "Uteslutningskriterier:"
-
-msgid "Search Criteria"
-msgstr "Sökkriterier"
-
-msgid "Add New Criteria"
-msgstr "Lägg till nya kriterier"
-
-msgid "Remove Excluded Criteria"
-msgstr "Ta bort uteslutningskriterier"
-
-msgid "Remove All Criteria"
-msgstr "Ta bort alla kriterier"
-
-msgid "Answered"
-msgstr "Besvarad"
-
-msgid "Before"
-msgstr "Innan"
-
-msgid "Message Body"
-msgstr "Brevtext"
-
-msgid "Deleted"
-msgstr "Borttagen"
-
-msgid "Draft"
-msgstr "Utkast"
-
-msgid "Flagged"
-msgstr "Flaggad"
-
-msgid "Sent By"
-msgstr "Skickad av"
-
-msgid "Header Field"
-msgstr "Fält i huvud"
-
-msgid "Keyword"
-msgstr "Nyckelord"
-
-msgid "Larger Than"
-msgstr "Större än"
-
-msgid "Old"
-msgstr "Gammal"
-
-msgid "On"
-msgstr "På"
-
-msgid "Recent"
-msgstr "Nyligen"
-
-msgid "Seen"
-msgstr "Läst"
-
-msgid "Sent Before"
-msgstr "Skickat innan"
-
-msgid "Sent On"
-msgstr "Skickat den"
-
-msgid "Sent Since"
-msgstr "Skickat sedan"
-
-msgid "Since"
-msgstr "Sedan"
-
-msgid "Smaller Than"
-msgstr "Mindre än"
-
-msgid "Subject Contains"
-msgstr "Ärendet innehåller"
-
-msgid "Header and Body"
-msgstr "Huvud och text"
-
-msgid "Sent To"
-msgstr "Skickat till"
-
-msgid "Not"
-msgstr "Inte"
-
-msgid "And In"
-msgstr "och i"
-
-msgid "Or In"
-msgstr "eller i"
-
-msgid "And"
-msgstr "och"
-
-msgid "Or"
-msgstr "eller"
-
-msgid "Folder List"
-msgstr "Lista över mappar"
-
-msgid "Possible reason : "
-msgstr "Trolig orsak : "
-
-msgid "The imap server failed to handle threading."
-msgstr "IMAP-server kan inte hantera korrespondensvyer."
-
-msgid "Click here to unset thread view for this mailbox and start again."
-msgstr ""
-"Klicka här för att ta bort korrespondansvyer för denna brevlåda och börja om."
-
-msgid "ERROR : Bad function call."
-msgstr "FEL : Felaktigt funktionsanrop."
-
-msgid "Reason:"
-msgstr "Orsak:"
-
-msgid "Click here to change the sorting of the message list"
-msgstr "Klicka här för att ändra sorteringen av brevlistan"
-
-msgid "Message Flags Icon Theme"
-msgstr "Tema för brevikoner"
-
-msgid "Length of From/To Field (0 for full)"
-msgstr "Längd på från-/till-fältet (0 för full längd)"
-
-msgid "Length of Subject Field (0 for full)"
-msgstr "Längd på ärendefältet (0 för full längd)"
-
-msgid "Show recipient name if the message is from your default identity"
-msgstr "Visa mottagarnamn om brevet är från din egen huvudidentitet"
-
-msgid "Strip signature when replying"
-msgstr "Avlägsna brevfot vid svar"
-
-msgid "Show 'Delete & Prev/Next' Links"
-msgstr "Visa Kasta och visa föregående/nästa-länkar."
-
-msgid "Save Replies with Original Message"
-msgstr "Spara svar ihop med det ursprungliga brevet"
-
-msgid "Enable Collapsable Folders"
-msgstr "Tillåt att underliggande mappar döljs"
-
-msgid "Folder"
-msgstr "Mapp"
-
-msgid "Subfolder"
-msgstr "Undermapp"
-
-msgid "Global address book DSN"
-msgstr "Global adressboks-DSN"
-
-msgid "Global address book table"
-msgstr "Global adressbokstabell"
-
-msgid "Allow writing into global address book"
-msgstr "Tillåt att skriva i den globala adressboken"
-
-msgid "Allow listing of global address book"
-msgstr "Tillåt att lista den globala adressboken"
-
-msgid "Language settings"
-msgstr "Språkinställningar"
-
-msgid "Show alternative language names"
-msgstr "Visa alternativa språknamn"
-
-msgid "Available languages"
-msgstr "Tillgängliga språk"
-
-msgid "Use agresive decoding"
-msgstr "Använd aggressiv avkodning"
-
-msgid "Tweaks"
-msgstr "Finjusteringar"
-
-msgid "Use advanced tree folder listing"
-msgstr "Använd avancerad mappträdlista"
-
-msgid "Use old folder listing functions"
-msgstr "Använd gamla mapplistefunktioner"
-
-msgid "Use php recode functions"
-msgstr "Använd PHP-omkodningsfunktioner"
-
-msgid "Use php iconv functions"
-msgstr "Använd PHP:s iconv-funktioner"
-
-msgid ""
-"Note: it is recommended that you configure your system using conf.pl, and "
-"not this plugin. conf.pl contains additional information regarding the "
-"purpose of variables and appropriate values, as well as additional "
-"verification steps."
-msgstr ""
-"OBS: Det är rekommenderat att du konfigurerar systemet med conf.pl, och inte "
-"med denna insticksmodul. conf.pl innehåller extra information om syftet med "
-"variabler och deras tillämpbara värden, såväl som extra "
-"verifikationsåtgärder."
-
-msgid ""
-"Run or consult conf.pl should you run into difficulty with your "
-"configuration."
-msgstr ""
-"Om du stöter på problem med konfigurationen, kör eller konsultera conf.pl."
-
-msgid "No POP3 servers configured yet."
-msgstr "Inga POP3-servrar är konfigurerade."
-
-msgid "Click here to go to the options page."
-msgstr "Tillbaka till inställningar"
-
-msgid "Spam Service Type:"
-msgstr "Typ av skräpposttjänst:"
-
-msgid "Free reporting"
-msgstr "Gratis rapportering"
-
-msgid "Member services"
-msgstr "Medlemstjänster"
-
-msgid ""
-"The SpamCop service will display information as it finds it, so scroll down "
-"until you see a form button. It might pause a little while it is looking up "
-"information, so be a little patient. Read what it says, and submit the spam. "
-"Close the browser window.  Press Cancel or click on the appropriate mail "
-"folder to see messages and/or delete the spam."
-msgstr ""
-"SpamCop-tjänsten visar informationen som den fått den, så bläddra nedåt till "
-"dess du ser en knapp. Det kan ta ett tag medan informationen kontrolleras, "
-"så ha tålamod. Läs vad det står och skicka in rapporten. Stäng fönstret. "
-"Klicka på avbryt eller tillämpbar mapp för att se skräpposten och/eller "
-"kasta den."
-
-msgid "Spamcop Service Type"
-msgstr "Typ av SpamCop-tjänst"
-
-msgid ""
-"Service type option allows selecting which spamcop services you are using. "
-"Member services use different web reporting forms  and does not display "
-"nags. You can purchase these services, if you want to support SpamCop."
-msgstr ""
-"Tjänstetypen tillåter dig att välja vilken tjänst du använder. "
-"Medlemstjänster använder andra webbrapporteringsformulär och visar inte "
-"irriterande meddelanden. Du kan köpa dessa tjänster om du vill stödja "
-"SpamCop."
-
-msgid "Filipino (Tagalog)"
-msgstr "Filippinska (Tagalog)"
-
-#, c-format
-msgid "Simplified Chinese"
-msgstr "Kinsiska, förenklad"
-
-#, c-format
-msgid "Traditional Chinese"
-msgstr "Kinesiska, traditionel"
 
 msgid "Delivery error report"
 msgstr "Rapport om leveransfel"
