@@ -11,7 +11,7 @@
  * $Id$
  */
 
-header("Location: src/login.php\n\n");
-exit();
+header('Location: src/login.php');
 
 ?>
+<html></html>
