@@ -1058,9 +1058,9 @@ class smdoc_db
         $SQLString .= ' NOT NULL';
 
       if ( isset($column['default']) && is_numeric($column['default']) ) 
-        $SQLString .= ' '.$this->keywords['default'].' '.$column['default'];
+        $SQLString .= ' DEFAULT '.$column['default'];
       elseif ( isset($column['default']) )
-        $SQLString .= ' '.$this->keywords['default'].' "'.$column['default'].'"';
+        $SQLString .= ' DEFAULT "'.$column['default'].'"';
 
       if ( isset($column['identity']) && $column['identity'] ) 
         $SQLString .= ' '.$this->keywords['identity'];
