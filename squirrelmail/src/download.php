@@ -19,12 +19,10 @@
    include("../functions/mime.php");
    include("../functions/date.php");
    include("../functions/i18n.php");
+   include("../src/load_prefs.php");
 
-   session_start();
    header("Pragma: ");
    header("Cache-Control: cache");
-
-   include("../src/load_prefs.php");
 
    function viewText($color, $body, $id, $entid, $mailbox, $type1, $wrap_at) {
       global $where, $what, $charset;
