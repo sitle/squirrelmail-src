@@ -15,6 +15,8 @@ Version 1.4.2 -- CVS
     Closes #772371.
   - Fix that when user has no theme preference set, Alien Glow would be selected under
     display preferences instead of Default.
+  - Updated 'action' to be 'smaction' so that plugins can modify the submit/action of
+    forms.  This was suggested for the gpg plugin, but might be useful elsewhere.
 
 Version 1.4.1 -- 7 July 2003
 ----------------------------
