@@ -31,6 +31,12 @@ session_start();
 if (isset($_SESSION['username'])) {
     $username = $_SESSION['username'];
 }
+if (isset($_SESSION['delimiter'])) {
+    $delimiter = $_SESSION['delimiter'];
+}
+if (isset($_SESSION['onetimepad'])) {
+    $onetimepad = $_SESSION['onetimepad'];
+}
 if (isset($_GET['right_frame'])) {
     $right_frame = $_GET['right_frame'];
 }
