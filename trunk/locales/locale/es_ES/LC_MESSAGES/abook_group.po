@@ -1,0 +1,208 @@
+# Spanish Language Translation
+# Copyright (C) 2003 abook_group v0.32
+# This file is distributed under the same license as the abook_group package.
+# Rodolfo Gonzalez Gonzalez <rodolfo@equinoxe.g-networks.net>, 2003
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: abook_group-0.32\n"
+"POT-Creation-Date: 2003-10-27 08:23-0500\n"
+"PO-Revision-Date: 2003-10-27 08:23-0500\n"
+"Last-Translator: Rodolfo Gonzalez Gonzalez <rodolfo@equinoxe.g-networks.net>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=ISO-8859-1\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: abook_group_database.php:390 abook_group_database.php:440
+msgid "$groupName does not exist"
+msgstr "$groupName nombre no existe"
+
+#: addrbook_search.php:316 addrbook_search.php:343
+msgid "Add"
+msgstr "Agregue"
+
+#: abook_group_functions.php:91
+msgid "Add New Members"
+msgstr "Agregar nuevos miembros"
+
+#: addrbook_search.php:184 addrbook_search.php:212
+msgid "Add Successful"
+msgstr "Se agregó exitosamente la dirección"
+
+#: addrbook_search.php:302
+msgid "Add to Existing Group: "
+msgstr "Agrega a un grupo existente:"
+
+#: addrbook_search.php:334
+msgid "Add to New Group (supply group name):"
+msgstr "Agregar a un grupo nuevo (proporcione el nombre del grupo):"
+
+#: setup.php:41
+msgid "Address Groups"
+msgstr "Grupos de Direcciones"
+
+#: abook_group_database.php:215 abook_group_database.php:308
+#: abook_group_database.php:371 abook_group_database.php:421
+msgid "Addressbook is read-only"
+msgstr "La libreta de direcciones es de solo lectura"
+
+#: addrbook_search.php:145
+msgid "All address books"
+msgstr "Todas las libretas de direcciones"
+
+#: abook_group_database.php:455
+msgid "Another $newGroupName already exists"
+msgstr "Ya existe un grupo llamado $newGroupName"
+
+#: addrbook_search.php:163
+msgid "Close window"
+msgstr "Cerrar ventana"
+
+#: abook_group_database.php:109 abook_group_database.php:141
+#: abook_group_database.php:189 abook_group_database.php:291
+#: abook_group_database.php:359 abook_group_database.php:409
+#: abook_group_database.php:474
+#, c-format
+msgid "Database error: %s"
+msgstr "Error de la base de datos: %s"
+
+#: list_abook_group.php:74
+msgid "Delete"
+msgstr "Cancelación"
+
+#: abook_group_interface.php:66 addrbook_search.php:31
+msgid "E-mail"
+msgstr "E-mail"
+
+#: abook_group_database.php:59
+msgid "Global address book"
+msgstr "Libreta de direcciones global"
+
+#: abook_group_database.php:236
+msgid "Group $groupName already exists"
+msgstr "El grupo $groupName ya existe"
+
+#: abook_group_interface.php:140 list_abook_group.php:51 setup.php:65
+msgid "Groups"
+msgstr "Grupos"
+
+#: abook_group_interface.php:67 addrbook_search.php:32
+msgid "Info"
+msgstr "Información"
+
+#: list_abook_group.php:75
+msgid "List"
+msgstr "Lista"
+
+#: abook_group_functions.php:91
+msgid "List All Groups"
+msgstr "Desplegar todos los grupos"
+
+#: addrbook_search.php:160
+msgid "List all"
+msgstr "Desplegar todos"
+
+#: listMembers.php:90
+msgid "Members"
+msgstr "Miembros"
+
+#: list_abook_group.php:73 modifyGroup.php:122
+msgid "Modify"
+msgstr "Modificar"
+
+#: modifyGroup.php:79
+msgid "Modify Group Name"
+msgstr "Modificar el nombre del grupo"
+
+#: abook_group_interface.php:65 addrbook_search.php:30
+msgid "Name"
+msgstr "Nombre"
+
+#: modifyGroup.php:107
+msgid "New Group Name"
+msgstr "Nuevo Nombre De Grupo"
+
+#: addrbook_search.php:193
+msgid "New Group Name is Empty"
+msgstr "El nombre del nuevo grupo está vacío"
+
+#: addrbook_search.php:253 addrbook_search.php:282
+msgid "No persons matching your search was found"
+msgstr "Su búsqueda no produjo resultados"
+
+#: addrbook_search.php:325
+msgid "OR"
+msgstr "Ó"
+
+#: modifyGroup.php:95
+msgid "Old Group Name"
+msgstr "Nombre anterior del grupo"
+
+#: listMembers.php:137
+msgid "Remove"
+msgstr "Quite"
+
+#: listMembers.php:69
+msgid "Remove Successful"
+msgstr "Remoción exitosa"
+
+#: addrbook_search.php:159
+msgid "Search"
+msgstr "Buscar"
+
+#: addrbook_search.php:134
+msgid "Search for address to add"
+msgstr "Buscar una dirección para agregar"
+
+#: abook_group_interface.php:74 addrbook_search.php:35
+msgid "Source"
+msgstr "Fuente"
+
+#: abook_group_interface.php:171
+msgid "There are no groups available for selection"
+msgstr "No hay grupos disponibles para la selección"
+
+#: addrbook_search.php:28
+msgid "Toggle All"
+msgstr "Cambiar todos"
+
+#: addrbook_search.php:236
+#, c-format
+msgid "Unable to list addresses from %s"
+msgstr "No se pueden desplegar las direcciones de %s"
+
+#: abook_group_interface.php:105
+msgid "Use Addresses"
+msgstr "Usar las direcciones"
+
+#: abook_group_database.php:270
+msgid "User Already Exists in The Group"
+msgstr "El usuario ya existe en el grupo"
+
+#: abook_group_database.php:338
+msgid "User Does Not Exist in The Group"
+msgstr "El usuario no existe en el grupo"
+
+#: list_abook_group.php:90
+msgid "You Currently Do Not Have Any Groups"
+msgstr "No tiene ningún grupo"
+
+#: listMembers.php:125
+msgid "You Currently Do Not Have Any Members In This Group"
+msgstr "No hay miembros en este grup"
+
+#: setup.php:43
+msgid ""
+"You can create address groups and add email addresses from your address book"
+msgstr ""
+"Usted puede crear grupos de direcciones y agregar direcciones de e-mail "
+"desde su libreta de direcciones"
+
+#: addrbook_search.php:271
+msgid "Your search failed with the following error(s)"
+msgstr "La búsqueda falló con los siguientes errores"
+
+#: addrbook_search.php:144
+msgid "in"
+msgstr "en"
