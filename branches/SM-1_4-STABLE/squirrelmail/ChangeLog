@@ -2,8 +2,8 @@
 *** SquirrelMail Stable Series 1.4 ***
 **************************************
 
-Version 1.4.2 -- CVS
---------------------
+Version 1.4.2
+-------------
   - Fix message highlighting for text containing spaces.
   - Added feature to allow user to switch on full date display in mailboxes instead
     of just partial date/time based on time of email, and current date.
@@ -40,13 +40,14 @@ Version 1.4.2 -- CVS
     and include the time of the event in its tooltip.
   - Fix nbsp instead of space and allow wider character set in filename when
     downloading attachment.
-  - Fix to prevent mailboxes are deleted in selected stage which is against
+  - Fix to prevent mailboxes being deleted in selected state which is against
     RFC3501.
   - Fix reply all address string in case the personal name contained a comma 
     (address separator).
-  - Added Malay translation.
+  - Added Malaysian translation.
   - conf.pl will no longer offer to detect login methods if TLS is being used,
     as the detection code does not support it.
+  - Fix somewhat uncommon bug in paginator (bug #767289)
 
 Version 1.4.1 -- 7 July 2003
 ----------------------------
