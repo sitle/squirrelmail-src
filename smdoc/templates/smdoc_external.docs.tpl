@@ -42,3 +42,6 @@
     </td>
   </tr>
 </table>
+
+<?php
+// vim: syntax=php

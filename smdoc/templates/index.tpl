@@ -269,3 +269,6 @@ if ($foowd->debug)
 ?>
 </body>
 </html>
+
+<?php
+// vim: syntax=php

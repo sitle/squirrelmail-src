@@ -81,4 +81,5 @@ function object_history_body(&$foowd, $className, $method, &$user, &$object, &$t
 </p>
 <?php
 }
-?>
+
+// vim: syntax=php

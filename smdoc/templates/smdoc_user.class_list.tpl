@@ -155,3 +155,5 @@ function user_list_body(&$foowd, $className, $method, &$user, &$object, &$t)
 <?php
 } // end user_list_body
 
+
+// vim: syntax=php

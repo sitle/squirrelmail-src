@@ -39,3 +39,5 @@
 <?php } ?>
   </table>
 
+<?php
+// vim: syntax=php

@@ -44,4 +44,4 @@ function default_body(&$foowd, $className, $method, &$user, &$object, &$t)
     }
 }
 
-?>
+// vim: syntax=php

@@ -20,3 +20,6 @@
 /** Include base template */
 include_once(TEMPLATE_PATH.'index.tpl');
 ?>
+
+<?php
+// vim: syntax=php

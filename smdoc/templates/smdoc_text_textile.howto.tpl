@@ -73,3 +73,5 @@
 <p class="small_center"><b><a target="_blank" href="http://textpattern.com/help/?item=intro" onclick="window.open(this.href, 'popupwindow', 'width=400,height=400,scrollbars,resizable'); return false;">More on Textile</a></b></p>
  
 
+<?php
+// vim: syntax=php
