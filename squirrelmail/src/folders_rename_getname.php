@@ -14,6 +14,7 @@
 
 require_once('../src/validate.php');
 require_once('../functions/imap.php');
+require_once('../functions/display_messages.php');
 
 /* get globals we may need */
 
