@@ -10,15 +10,19 @@
  *
  * This file is included from compose.php
  *
- * $Id$
+ * @version $Id$
+ * @package squirrelmail
  */
 
-/* Path for SquirrelMail required files. */
+/** 
+ * Path for SquirrelMail required files.
+ * @ignore
+ */
 if (! defined('SM_PATH') ) {
-	define('SM_PATH','../');
+    define('SM_PATH','../');
 }
 
-/* SquirrelMail required files. */
+/** SquirrelMail required files. */
 require_once(SM_PATH . 'include/validate.php');
 require_once(SM_PATH . 'functions/global.php');
 require_once(SM_PATH . 'functions/date.php');
@@ -34,7 +38,9 @@ sqgetGlobalVar('addrquery', $addrquery, SQ_POST);
 sqgetGlobalVar('listall',   $listall,   SQ_POST);
 sqgetGlobalVar('backend',   $backend,   SQ_POST);
 
-/* Insert hidden data */
+/**
+ * Insert hidden data
+ */
 function addr_insert_hidden() {
     global $body, $subject, $send_to, $send_to_cc, $send_to_bcc, $mailbox,
            $identity, $session;
@@ -47,16 +53,20 @@ function addr_insert_hidden() {
 
    echo addHidden('session', $session).
         addHidden('subject', $subject).
-	addHidden('send_to', $send_to).
-	addHidden('send_to_bcc', $send_to_bcc).
-	addHidden('send_to_cc', $send_to_cc).
-	addHidden('identity', $identity).
-	addHidden('mailbox', $mailbox).
-	addHidden('from_htmladdr_search', 'true');
+        addHidden('send_to', $send_to).
+        addHidden('send_to_bcc', $send_to_bcc).
+        addHidden('send_to_cc', $send_to_cc).
+        addHidden('identity', $identity).
+        addHidden('mailbox', $mailbox).
+        addHidden('from_htmladdr_search', 'true');
 }
 
 
-/* List search results */
+/**
+ * List search results
+ * @param array $res Array containing results of search
+ * @param bool $includesource UNDOCUMENTED [Default=true]
+ */
 function addr_display_result($res, $includesource = true) {
     global $color, $javascript_on, $PHP_SELF, $squirrelmail_language;
 
@@ -81,9 +91,9 @@ if ($javascript_on) {
         "}\n" .
         "//-->\n" .
         "</script>\n";
-    $chk_all = '<a href="#" onClick="CheckAll(\'T\');">' . _("All") . '</a>&nbsp;<font color="'.$color[9].'">To</font>'.
+    $chk_all = '<a href="#" onClick="CheckAll(\'T\');">' . _("All") . '</a>&nbsp;<font color="'.$color[9].'">'._("To").'</font>'.
             '&nbsp;&nbsp;'.
-            '<a href="#" onClick="CheckAll(\'C\');">' . _("All") . '</a>&nbsp;<font color="'.$color[9].'">Cc</font>'.
+            '<a href="#" onClick="CheckAll(\'C\');">' . _("All") . '</a>&nbsp;<font color="'.$color[9].'">'._("Cc").'</font>'.
             '&nbsp;&nbsp;'.
             '<a href="#" onClick="CheckAll(\'B\');">' . _("All") . '</a>';
     }
@@ -111,12 +121,12 @@ if ($javascript_on) {
             {
         echo html_tag( 'tr', '', '', $tr_bgcolor, 'nowrap' ) .
         html_tag( 'td',
-             '<input type=checkbox name="send_to_search[T' . $line . ']" value = "' .
-             htmlspecialchars($email) . '">&nbsp;' . _("To") . '&nbsp;' .
-             '<input type=checkbox name="send_to_search[C' . $line . ']" value = "' .
-             htmlspecialchars($email) . '">&nbsp;' . _("Cc") . '&nbsp;' .
-             '<input type=checkbox name="send_to_search[B' . $line . ']" value = "' .
-             htmlspecialchars($email) . '">&nbsp;' . _("Bcc") . '&nbsp;' ,
+             '<input type="checkbox" name="send_to_search[T' . $line . ']" value = "' .
+             htmlspecialchars($email) . '" />&nbsp;' . _("To") . '&nbsp;' .
+             '<input type="checkbox" name="send_to_search[C' . $line . ']" value = "' .
+             htmlspecialchars($email) . '" />&nbsp;' . _("Cc") . '&nbsp;' .
+             '<input type="checkbox" name="send_to_search[B' . $line . ']" value = "' .
+             htmlspecialchars($email) . '" />&nbsp;' . _("Bcc") . '&nbsp;' ,
         'center', '', 'width="5%" nowrap' ) .
         html_tag( 'td', '&nbsp;' . htmlspecialchars($row['lastname']) . ' ' . htmlspecialchars($row['firstname']) . '&nbsp;', 'left', '', 'nowrap' ) .
         html_tag( 'td', '&nbsp;' . htmlspecialchars($row['email']) . '&nbsp;', 'left', '', 'nowrap' ) .
@@ -124,12 +134,12 @@ if ($javascript_on) {
             } else {
         echo html_tag( 'tr', '', '', $tr_bgcolor, 'nowrap' ) .
         html_tag( 'td',
-	    addCheckBox('send_to_search[T'.$line.']', FALSE, $email).
+            addCheckBox('send_to_search[T'.$line.']', FALSE, $email).
             '&nbsp;' . _("To") . '&nbsp;' .
-	    addCheckBox('send_to_search[C'.$line.']', FALSE, $email).
-	    '&nbsp;' . _("Cc") . '&nbsp;' .
-	    addCheckBox('send_to_search[B'.$line.']', FALSE, $email).
-	    '&nbsp;' . _("Bcc") . '&nbsp;' ,
+            addCheckBox('send_to_search[C'.$line.']', FALSE, $email).
+            '&nbsp;' . _("Cc") . '&nbsp;' .
+            addCheckBox('send_to_search[B'.$line.']', FALSE, $email).
+            '&nbsp;' . _("Bcc") . '&nbsp;' ,
         'center', '', 'width="5%" nowrap' ) .
         html_tag( 'td', '&nbsp;' . htmlspecialchars($row['name']) . '&nbsp;', 'left', '', 'nowrap' ) .
         html_tag( 'td', '&nbsp;' . htmlspecialchars($row['email']) . '&nbsp;', 'left', '', 'nowrap' ) .
@@ -145,13 +155,13 @@ if ($javascript_on) {
     if ($includesource) { $td_colspan = '5'; } else { $td_colspan = '4'; }
     echo html_tag( 'tr',
                 html_tag( 'td',
-                        '<INPUT TYPE=submit NAME="addr_search_done" VALUE="' .
-                        _("Use Addresses") . '">' ,
+                        '<input type="submit" name="addr_search_done" value="' .
+                        _("Use Addresses") . '" />' ,
                 'center', '', 'colspan="'. $td_colspan .'"' )
             ) .
-         '</TABLE>' .
-	 addHidden('html_addr_search_done', '1').
-         '</FORM>';
+         '</table>' .
+         addHidden('html_addr_search_done', '1').
+         '</form>';
 }
 
 /* --- End functions --- */
@@ -166,7 +176,7 @@ else {
 $abook = addressbook_init();
 
 
-echo '<br>' .
+echo '<br />' .
 html_tag( 'table',
     html_tag( 'tr',
         html_tag( 'td', '<b>' . _("Address Book Search") . '</b>', 'center', $color[0] )
@@ -179,9 +189,9 @@ echo '<center>' .
     html_tag( 'table', '', 'center', '', 'border="0"' ) .
     html_tag( 'tr' ) .
     html_tag( 'td', '', 'left', '', 'nowrap valign="middle"' ) . "\n" .
-    addForm($PHP_SELF.'?html_addr_search=true', 'POST', 'f').
-    "\n<CENTER>\n" .
-    '  <nobr><STRONG>' . _("Search for") . "</STRONG>\n";
+    addForm($PHP_SELF.'?html_addr_search=true', 'post', 'f').
+    "\n<center>\n" .
+    '  <nobr><strong>' . _("Search for") . "</strong>\n";
 addr_insert_hidden();
 if (! isset($addrquery))
     $addrquery = '';
@@ -190,13 +200,13 @@ echo addInput('addrquery', $addrquery, 26);
 /* List all backends to allow the user to choose where to search */
 if (!isset($backend)) { $backend = ''; }
 if ($abook->numbackends > 1) {
-    echo '<STRONG>' . _("in") . '</STRONG>&nbsp;';
+    echo '<strong>' . _("in") . '</strong>&nbsp;';
     
     $selopts['-1'] = _("All address books"); 
     $ret = $abook->get_backend_list();
     
     while (list($undef,$v) = each($ret)) {
-    	$selopts[$v->bnum] = $v->sname;
+        $selopts[$v->bnum] = $v->sname;
     }
     echo addSelect('backend', $selopts, $backend, TRUE);
 } else {
@@ -206,10 +216,10 @@ if (isset($session)) {
     echo addHidden('session', $session);
 }
 
-echo '<INPUT TYPE=submit VALUE="' . _("Search") . '">' .
-     '&nbsp;|&nbsp;<INPUT TYPE=submit VALUE="' . _("List all") .
-     '" NAME=listall>' . "\n" .
-     '</FORM></center></TD></TR></TABLE>' . "\n";
+echo '<input type="submit" value="' . _("Search") . '" />' .
+     '&nbsp;|&nbsp;<input type="submit" value="' . _("List all") .
+     '" name="listall" />' . "\n" .
+     '</form></center></td></tr></table>' . "\n";
 addr_insert_hidden();
 echo '</center>';
 do_hook('addrbook_html_search_below');
@@ -228,7 +238,7 @@ if ($addrquery == '' && empty($listall)) {
             $backend = $abook->localbackend;
         }
 
-        /* echo '<H3 ALIGN=center>' . $abook->backends[$backend]->sname) . "</H3>\n"; */
+        /* echo '<h3 align="center">' . $abook->backends[$backend]->sname) . "</h3>\n"; */
 
         $res = $abook->list_addr($backend);
 
@@ -236,7 +246,7 @@ if ($addrquery == '' && empty($listall)) {
             usort($res,'alistcmp');
             addr_display_result($res, false);
         } else {
-            echo html_tag( 'p', '<strong><br>' .
+            echo html_tag( 'p', '<strong><br />' .
                  sprintf(_("Unable to list addresses from %s"), 
                  $abook->backends[$backend]->sname) . "</strong>\n" ,
             'center' );
@@ -261,17 +271,17 @@ else {
         }
 
         if (!is_array($res)) {
-            echo html_tag( 'p', '<b><br>' .
+            echo html_tag( 'p', '<b><br />' .
                              _("Your search failed with the following error(s)") .
-                            ':<br>' . $abook->error . "</b>\n" ,
+                            ':<br />' . $abook->error . "</b>\n" ,
                    'center' ) .
-            "\n</BODY></HTML>\n";
+            "\n</body></html>\n";
         } else {
             if (sizeof($res) == 0) {
-                echo html_tag( 'p', '<br><b>' .
+                echo html_tag( 'p', '<br /><b>' .
                                  _("No persons matching your search were found") . "</b>\n" ,
                        'center' ) .
-                "\n</BODY></HTML>\n";
+                "\n</body></html>\n";
             } else {
                 addr_display_result($res);
             }
@@ -280,11 +290,11 @@ else {
 }
 
 if ($addrquery == '' || sizeof($res) == 0) {
-    /* printf('<center><FORM METHOD=post NAME=k ACTION="compose.php">'."\n", $PHP_SELF); */
+    /* printf('<center><form method="post" name="k" action="compose.php">'."\n", $PHP_SELF); */
     echo '<center>'.
-    	addForm('compose.php','POST','k');
+        addForm('compose.php','POST','k');
     addr_insert_hidden();
-    echo '<INPUT TYPE=submit VALUE="' . _("Return") . '" NAME=return>' . "\n" .
+    echo '<input type="submit" value="' . _("Return") . '" name="return" />' . "\n" .
          '</form></center></nobr>';
 }
 
