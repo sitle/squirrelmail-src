@@ -25,7 +25,7 @@ if [ ! $SM_DEBUG ] ; then
  XGETTEXT_OPTIONS="${XGETTEXT_OPTIONS} --no-location";
 fi
 
-# Allows controling language option
+# Allows controlling language option
 # (gettext v.0.10.40 = -C, gettext 0.11+ = -L php).
 if [ $SM_LANG_PHP ] ; then
  XGETTEXT_OPTIONS="${XGETTEXT_OPTIONS} -L php";
