@@ -1,0 +1,320 @@
+# translation of sasql.po into Russian
+# This file is distributed under the same license as the PACKAGE package.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER.
+# Gregory Mokhin <mok@kde.ru>, 2004.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: sasql\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2004-03-29 21:19+0300\n"
+"PO-Revision-Date: 2004-10-16 16:52-0400\n"
+"Last-Translator: Gregory Mokhin <mok@kde.ru>\n"
+"Language-Team: Russian <kde-russian@lists.kde.ru>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.10\n"
+"Plural-Forms:  nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+#: dspam.inc.php:82
+msgid "dspam Settings"
+msgstr "Параметры dspam"
+
+#: dspam.inc.php:89
+msgid ""
+"dspam is a learning system that filters spam based on what <i>you</i> tell "
+"it is spam and what isn't. Messages are analyzed as they are delivered and "
+"are assigned a spam probability between 0 and 1. The more messages you "
+"receive, both spam and innocent, the better dspam learns what <i>you</i> "
+"think is spam and what is not."
+msgstr "dspam - это обучаемая система, которой <i>вы сами</i> говорите, какие письма - это спам, а какие - нет. Поступающим сообщениям присваивается вероятностный рейтинг спама (в пределах от 0 до 1). Чем больше будет обработано писем, и обычных, и спама, тем лучше dspam будет знать, что именно <i>вы сами</i> считаете спамом."
+
+#: dspam.inc.php:95
+msgid "Warning"
+msgstr "Предупреждение"
+
+#: dspam.inc.php:97
+msgid "Enabling dspam will disable SpamAssassin scanning of your email."
+msgstr "Если включить dspam, то обработка писем с помощью SpamAssassin будет отключена."
+
+#: dspam.inc.php:100
+msgid "SpamAssassin settings and white/blacklists will not be used by dspam."
+msgstr "dspam не использует параметры SpamAssassin и его черные и белые списки."
+
+#: dspam.inc.php:105
+msgid ""
+"This <a href='http://www.nuclearelephant.com/projects/dspam/faq.html#1.7' "
+"target='_blank'>FAQ</a> from the dspam web site explains the differences "
+"between SpamAssassin and dspam and why you might want to use dspam instead "
+"of SpamAssassin."
+msgstr "На странице <a href='http://www.nuclearelephant.com/projects/dspam/faq.html#1.7' target='_blank'>Вопросов и ответов</a> сайта dspam объясняется разница между SpamAssassin и dspam и в каких случаях предпочтительнее использовать dspam."
+
+#: dspam.inc.php:110
+msgid "Reporting Spam"
+msgstr "Сообщения о спаме"
+
+#: dspam.inc.php:113
+msgid ""
+"If you receive a spam message in your Inbox, forward the message to "
+"<nobr>username-spam@domain</nobr> and it will be learned as spam. For "
+"example, if your address is joe@example.com, you would forward the message "
+"to <nobr>joe-spam@example.com</nobr>."
+msgstr ""
+"Если вам пришел спам, перешлите это письмо на адрес "
+"<nobr>username-spam@domain</nobr>, чтобы программа внесла его в свою базу спама. Например, если ваш адрес - это  joe@example.com, сообщение следует переслать на адрес "
+"<nobr>joe-spam@example.com</nobr>."
+
+#: dspam.inc.php:119
+#, c-format
+msgid ""
+"You can also move your spam messages to the <i>%s</i> folder. This folder is "
+"periodically checked for messages which are then learned as spam and "
+"deleted. You do not need to move messages from your %s folder here because "
+"they have already been learned as spam."
+msgstr ""
+"Можно также поместить спам в папку <i>%s</i>. Эта папка будет периодически проверяться на наличие писем, "
+"и все новые письма в ней будут заноситься в базу данных программы как спам и удаляться. Сообщения из папки %s сейчас перемещать не нужно, поскольку они уже были занесены в базу спама."
+
+#: dspam.inc.php:124
+msgid "Reporting False Positives"
+msgstr "Сообщения о ложных срабатываниях"
+
+#: dspam.inc.php:127
+msgid ""
+"From time to time, dspam will catch an innocent messages as spam. These "
+"messages are called \"false positives\". There is no way to prevent false "
+"positives entirely. If you find a false positive, forward the message to "
+"<nobr>username-fp@domain</nobr> and it will be learned as an innocent "
+"message. For example, if your email address is joe@example.com, you would "
+"forward the message to <nobr>joe-fp@example.com</nobr>."
+msgstr "Изредка dspam принимает за спам обычные сообщения. Это называется ложным срабатыванием. Полностью этого избежать практически невозможно. Если это случилось, перешлите письмо на адрес <nobr>username-fp@domain</nobr>, и оно будет занесено в базу как не спам. Например, если ваш адрес - это  joe@example.com, сообщение следует переслать на адрес <nobr>joe-fp@example.com</nobr>."
+
+#: dspam.inc.php:133
+#, c-format
+msgid ""
+"You can also move your false positives to the <i>%s</i> folder from the %s "
+"folder. This folder is periodically checked for messages which are then "
+"learned as false positives and deleted."
+msgstr ""
+"Можно также перемещать такие ни в чем не повинные письма из папки %s в папку <i>%s</i>. Эта папка будет периодически проверяться на наличие писем, "
+"и все новые письма в ней будут заноситься в базу данных программы как ложные срабатывания и удаляться."
+
+#: dspam.inc.php:138
+msgid "Disclaimer"
+msgstr "Внимание"
+
+#: dspam.inc.php:141
+msgid ""
+"dspam is a learning system. It only knows what is spam based on what you "
+"teach it is spam and what is not. Due to dspam's nature, you are more likely "
+"to see errors in spam detection until it is trained on your email. If you do "
+"not report a message as spam within ten days, the message will be "
+"permanently learned as innocent and you will be more likely to receive more "
+"spam."
+msgstr "dspam - это обучаемая программа. Она узнает о том, что такое спам, и что такое не спам от вас. Программа устроена так, что ошибок в распознавании спама будет всё меньше и меньше по мере того, как программа обучается на вашей корреспонденции. Если в течение десяти дней вы не сообщили программе о том, что пришедшее письмо - это спам, оно будет автоматически считаться обычным письмом, и таким образом шансы того, что спам пройдет через фильтры, увеличатся."
+
+#: dspam.inc.php:159
+msgid "Use dspam"
+msgstr "Использовать dspam"
+
+#: dspam.inc.php:169
+#, c-format
+msgid "Clean out your %s folder on opt-in?"
+msgstr "Очищать папку %s после обработки?"
+
+#: purge.inc.php:22
+msgid "Purge $spam_folder Folder"
+msgstr "Очистить папку $spam_folder"
+
+#: purge.inc.php:30
+msgid "Purge"
+msgstr "Очистить"
+
+#: purge.inc.php:33
+#, c-format
+msgid "Delete all messages from your %s folder."
+msgstr "Удалить все сообщения из папки %s."
+
+#: purge.inc.php:37
+msgid "Note"
+msgstr "Примечание"
+
+#: purge.inc.php:38
+#, c-format
+msgid ""
+"Your %s folder may be unavailable during the purge. It will become available "
+"again when the purge is complete."
+msgstr "Во время очистки папка %s будет недоступна. Она вновь станет доступна по завершении очистки."
+
+#: sa_abooksync.inc.php:20
+msgid "Allow Senders from Address Book"
+msgstr "Разрешать отправителей из адресной книги"
+
+#: sa_abooksync.inc.php:27
+msgid "Allow all address in the address book."
+msgstr "Будут разрешены все адреса, включенные в адресную книгу."
+
+#: sa_settings.inc.php:105
+msgid "General Settings"
+msgstr "Общие параметры"
+
+#: sasql_db.php:11
+#, c-format
+msgid "sasql_DBConnect Database error: %s"
+msgstr "Ошибка базы данных sasql_DBConnect: %s"
+
+#: sasql_db.php:29
+msgid "sasql_ReadWBList Database error: $s"
+msgstr "Ошибка базы данных sasql_ReadWBList: $s"
+
+#: sasql_db.php:109
+#, c-format
+msgid "sasql_ReadPrefs Database error: %s"
+msgstr "Ошибка базы данных sasql_ReadPrefs: %s"
+
+#: sasql_db.php:148
+#, c-format
+msgid "sasql_UpdatePref Database error: %s"
+msgstr "Ошибка базы данных sasql_UpdatePref: %s"
+
+#: sasql_db.php:167
+#, c-format
+msgid "sasql_UpdatePref_multiple Database error: %s"
+msgstr "Ошибка базы данных sasql_UpdatePref_multiple: %s"
+
+#: sasql_db.php:181
+#, c-format
+msgid "sasql_AddPref Database error: %s"
+msgstr "Ошибка базы данных sasql_AddPref: %s"
+
+#: sasql_db.php:201
+#, c-format
+msgid "sasql_AddPref_multiple Database error: %s"
+msgstr "Ошибка базы данных sasql_AddPref_multiple: %s"
+
+#: sasql_db.php:217 sasql_db.php:230
+#, c-format
+msgid "sasql_DelPref Database error: %s"
+msgstr "Ошибка базы данных sasql_DelPref: %s"
+
+#: sasql_db.php:242 sasql_db.php:268
+msgid "sasql_GetPref Database error: $s"
+msgstr "Ошибка базы данных sasql_GetPref: $s"
+
+#: sasql_hooks.php:104 sasql_options.php:62
+msgid "Spam Filter Configuration"
+msgstr "Параметры защиты от спама"
+
+#: sasql_hooks.php:106
+msgid "Here you may configure the behavior of the spam filtering software."
+msgstr "Здесь настраиваются параметры программ, защищающих от спама."
+
+#: sasql_hooks.php:183
+msgid "Allow Sender"
+msgstr "Разрешить отправителя"
+
+#: sasql_hooks.php:185
+msgid "remove"
+msgstr "удалить"
+
+#: sasql_hooks.php:197
+msgid "Whitelisted"
+msgstr "В белом списке"
+
+#: sasql_hooks.php:208
+msgid "Blacklisted"
+msgstr "В черном списке"
+
+#: sasql_options.php:62
+msgid "Options"
+msgstr "Параметры"
+
+#: sasql_wblist.php:41 sa_whitelist.inc.php:42
+msgid "Error: You must include an e-mail address."
+msgstr "Следует указать электронный адрес."
+
+#: sasql_wblist.php:48 sa_whitelist.inc.php:48
+msgid "Error: You have entered an invalid e-mail address."
+msgstr "Указан неверный электронный адрес."
+
+#: sasql_wblist.php:53
+msgid "Error: Missing option."
+msgstr "Параметр не указан."
+
+#: sa_whitelist.inc.php:52
+msgid "Error: You must select Allow or Deny."
+msgstr "Следует выбрать Разрешить или Запретить."
+
+#: sa_whitelist.inc.php:75
+msgid "Global Allow / Deny Address List"
+msgstr "Список глобально разрешенных или запрещенных адресов"
+
+#: sa_whitelist.inc.php:82 sa_whitelist.inc.php:130
+msgid "Address"
+msgstr "Адрес"
+
+#: sa_whitelist.inc.php:83 sa_whitelist.inc.php:131
+msgid "Type"
+msgstr "Тип"
+
+#: sa_whitelist.inc.php:102 sa_whitelist.inc.php:159
+msgid "Whitelist From"
+msgstr "Белый список - От"
+
+#: sa_whitelist.inc.php:104 sa_whitelist.inc.php:161
+msgid "Don't Whitelist From"
+msgstr ""
+
+#: sa_whitelist.inc.php:106 sa_whitelist.inc.php:163
+msgid "Blacklist From"
+msgstr "Черный список - От"
+
+#: sa_whitelist.inc.php:108 sa_whitelist.inc.php:165
+msgid "Don't Blacklist From"
+msgstr ""
+
+#: sa_whitelist.inc.php:110 sa_whitelist.inc.php:167
+msgid "Whitelist To"
+msgstr "Белый список - Кому"
+
+#: sa_whitelist.inc.php:123
+msgid "Personal Allow / Deny Address List"
+msgstr "Список личных разрешенных или запрещенных адресов"
+
+#: sa_whitelist.inc.php:132
+msgid "Action"
+msgstr "Действие"
+
+#: sa_whitelist.inc.php:139
+msgid "Address Removed"
+msgstr "Адрес удален"
+
+#: sa_whitelist.inc.php:175
+msgid "Delete"
+msgstr "Удалить"
+
+#: sa_whitelist.inc.php:181
+msgid "Edit"
+msgstr "Изменить"
+
+#: sa_whitelist.inc.php:195
+msgid "Edit Address"
+msgstr "Изменить адрес"
+
+#: sa_whitelist.inc.php:201
+msgid "Add New Address"
+msgstr "Добавить адрес"
+
+#: sa_whitelist.inc.php:227
+msgid "Address:"
+msgstr "Адрес:"
+
+#: sa_whitelist.inc.php:231
+msgid "Type:"
+msgstr "Тип:"
+
+#: sa_whitelist.inc.php:252
+msgid "Description"
+msgstr "Описание"
+
