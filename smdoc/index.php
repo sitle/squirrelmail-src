@@ -106,7 +106,7 @@ if ( $objectOK && sqGetGlobalVar('form_cancel', $value, SQ_FORM) )
       $uri_arr['version']  = $version_q->value;
   }
 
-  $foowd->loc_forward( getURI($uri_arr, FALSE));
+  $foowd->loc_forward(getURI($uri_arr, FALSE));
   exit;
 }
 

@@ -59,7 +59,7 @@ PATH_PHPDOC=/home/elh/sqmail/phpDocumentor-1.2.3/phpdoc
 #  *
 #  * @var               string PATH_DOCS
 #  */
-PATH_DOCS=$PWD/docs
+PATH_DOCS=$PWD/sqmdocs
 
 #/**
 #  * what outputformat to use (html/pdf)
