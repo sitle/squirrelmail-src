@@ -12,7 +12,7 @@
 /* NOTHINGFOUNDID defined in wtf.config.php */
 $HARDTHING[NOTHINGFOUNDID]['func'] = 'nothingfound';
 $HARDTHING[NOTHINGFOUNDID]['title'] = 'Nothing Found';
-$HARDTHING[NOTHINGFOUNDID]['lastmodified'] = $Date$;
+$HARDTHING[NOTHINGFOUNDID]['lastmodified'] = '$Date$';
 
 function nothingfound() {
     global $wtf;
