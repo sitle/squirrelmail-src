@@ -16,7 +16,6 @@ function sqmNavMenu(&$thing) {
     echo '<usermenu>';
 // user Login/Logout/Register
     if ($wtf->op == 'login') {
-      echo "WHEEEE LOGIN!";
     }
 	if ($wtf->user->objectid == ANONYMOUSUSERID) {
         echo 'Anonymous User ';
