@@ -363,7 +363,8 @@ exit();
 function newMail () {
     global $forward_id, $imapConnection, $msg, $ent_num, $body_ary, $body,
            $reply_id, $send_to, $send_to_cc, $mailbox, $send_to_bcc, $editor_size,
-           $draft_id, $use_signature, $composesession, $forward_cc, $passed_id;
+           $draft_id, $use_signature, $composesession, $forward_cc, $passed_id,
+           $edit_as_new;
 
     $send_to = decodeHeader($send_to, false);
     $send_to_cc = decodeHeader($send_to_cc, false);
@@ -415,7 +416,7 @@ function newMail () {
         sqUnWordWrap($body);
         
         /* this corrects some wrapping/quoting problems on replies */
-        if ($reply_id) {
+        if ($reply_id || $edit_as_new || $forward_id) {
             $rewrap_body = explode("\n", $body);
             for ($i=0;$i<count($rewrap_body);$i++) {
                 sqWordWrap($rewrap_body[$i], ($editor_size - 2));
