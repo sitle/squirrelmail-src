@@ -5,8 +5,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: squirrelmail VERSION\n"
-"POT-Creation-Date: 2004-03-22 11:54+0200\n"
-"PO-Revision-Date: 2004-03-23 23:05+0200\n"
+"POT-Creation-Date: 2004-07-03 09:34+0200\n"
+"PO-Revision-Date: 2004-07-14 00:35+0200\n"
 "Last-Translator: M.J. Prinsen <translation@prinsenonline.com>\n"
 "Language-Team: Dutch <squirrelmail-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -16,9 +16,6 @@ msgstr ""
 
 msgid "Address Book"
 msgstr "Adresboek"
-
-msgid "All"
-msgstr "Alle"
 
 msgid "Name"
 msgstr "Naam"
@@ -32,20 +29,8 @@ msgstr "Informatie"
 msgid "Source"
 msgstr "Bron"
 
-msgid "To"
-msgstr "Aan"
-
-msgid "Cc"
-msgstr "CC"
-
-msgid "Bcc"
-msgstr "BCC"
-
-msgid "Use Addresses"
-msgstr "Gebruik adressen"
-
-msgid "Address Book Search"
-msgstr "Zoek in adresboek"
+msgid "No persons matching your search were found"
+msgstr "Geen personen gevonden die voldoen aan de zoekopdracht"
 
 msgid "Search for"
 msgstr "Zoek naar"
@@ -62,6 +47,9 @@ msgstr "Zoek"
 msgid "List all"
 msgstr "Toon alles"
 
+msgid "Close"
+msgstr "Sluit"
+
 #, c-format
 msgid "Unable to list addresses from %s"
 msgstr "Niet mogelijk om adressen te tonen van %s"
@@ -69,14 +57,26 @@ msgstr "Niet mogelijk om adressen te tonen van %s"
 msgid "Your search failed with the following error(s)"
 msgstr "Uw zoekopdracht is mislukt door de volgende fouten"
 
-msgid "No persons matching your search was found"
-msgstr "Geen personen gevonden die voldoen aan de zoekopdracht."
+msgid "All"
+msgstr "Alle"
+
+msgid "To"
+msgstr "Aan"
+
+msgid "Cc"
+msgstr "CC"
+
+msgid "Bcc"
+msgstr "BCC"
+
+msgid "Use Addresses"
+msgstr "Gebruik adressen"
+
+msgid "Address Book Search"
+msgstr "Zoek in adresboek"
 
 msgid "Return"
 msgstr "Terug"
-
-msgid "Close"
-msgstr "Sluit"
 
 msgid "Nickname"
 msgstr "Bijnaam"
@@ -156,7 +156,7 @@ msgstr "Kan het bestand niet verplaatsen/kopieren. Bestand niet toegevoegd."
 msgid "Draft Saved"
 msgstr "Concept e-mail bewaard"
 
-msgid "Your Message has been sent"
+msgid "Your Message has been sent."
 msgstr "Uw bericht is verzonden"
 
 msgid "From:"
@@ -175,7 +175,7 @@ msgid "Subject:"
 msgstr "Onderwerp:"
 
 msgid "Send"
-msgstr "Zend"
+msgstr "Verstuur"
 
 msgid "Attach:"
 msgstr "Bijlage:"
@@ -219,34 +219,12 @@ msgstr "Bewaar concept"
 msgid "You have not filled in the \"To:\" field."
 msgstr "U heeft het \"Aan:\" veld niet ingevuld."
 
-msgid "Draft folder"
-msgstr "Concept map"
+#, c-format
+msgid "Error: Draft folder %s does not exist."
+msgstr "Fout: Concepts map %s bestaat niet."
 
 msgid "Server replied: "
 msgstr "Server reageerde: "
-
-msgid "Illegal folder name.  Please select a different name."
-msgstr "Deze mapnaam is niet toegestaan, gebruik een andere naam."
-
-msgid "Click here to go back"
-msgstr "Klik hier om terug te gaan"
-
-msgid "You have not selected a folder to delete. Please do so."
-msgstr ""
-"U heeft geen map geselecteerd om te verwijderen. Selecteer een map a.u.b."
-
-msgid "Delete Folder"
-msgstr "Verwijder map"
-
-#, c-format
-msgid "Are you sure you want to delete %s?"
-msgstr "Weet u zeker dat u %s wilt verwijderen?"
-
-msgid "Yes"
-msgstr "Ja"
-
-msgid "No"
-msgstr "Nee"
 
 msgid "Folders"
 msgstr "Mappen"
@@ -299,6 +277,9 @@ msgstr "Hernoem"
 msgid "No folders found"
 msgstr "Geen mappen gevonden"
 
+msgid "Delete Folder"
+msgstr "Verwijder map"
+
 msgid "Delete"
 msgstr "Verwijder"
 
@@ -316,6 +297,26 @@ msgstr "Geen mappen gevonden om bij aan te melden!"
 
 msgid "Subscribe to:"
 msgstr "Aanmelden bij:"
+
+msgid "Illegal folder name. Please select a different name."
+msgstr "Deze mapnaam is niet toegestaan. Kies een andere naam a.u.b."
+
+msgid "Click here to go back"
+msgstr "Klik hier om terug te gaan"
+
+msgid "You have not selected a folder to delete. Please do so."
+msgstr ""
+"U heeft geen map geselecteerd om te verwijderen. Selecteer een map a.u.b."
+
+#, c-format
+msgid "Are you sure you want to delete %s?"
+msgstr "Weet u zeker dat u %s wilt verwijderen?"
+
+msgid "Yes"
+msgstr "Ja"
+
+msgid "No"
+msgstr "Nee"
 
 msgid "You have not selected a folder to rename. Please do so."
 msgstr "U heeft geen map geselecteerd om te hernoemen."
@@ -337,10 +338,10 @@ msgstr "Help"
 
 #, c-format
 msgid ""
-"The help has not been translated to %s.  It will be displayed in English "
+"The help has not been translated to %s. It will be displayed in English "
 "instead."
 msgstr ""
-"De helppagina's zijn nog niet vertaald in %s. Ze zullen worden getoond in "
+"De helppagina's zijn nog niet vertaald in %s. Ze worden daarom getoond in "
 "het Engels."
 
 msgid "Some or all of the help documents are not present!"
@@ -367,7 +368,6 @@ msgstr "Bekijk bericht"
 msgid "Download this as a file"
 msgstr "Download dit als een bestand"
 
-#, c-format
 msgid "INBOX"
 msgstr "INBOX"
 
@@ -407,11 +407,64 @@ msgstr "Wachtwoord:"
 msgid "No messages were selected."
 msgstr "Geen berichten geselecteerd."
 
-msgid "Options"
-msgstr "Opties"
+msgid "Personal Information"
+msgstr "Persoonlijke informatie"
+
+msgid "Display Preferences"
+msgstr "Weergavevoorkeuren"
 
 msgid "Message Highlighting"
 msgstr "Berichten weergave"
+
+msgid "Folder Preferences"
+msgstr "Mapvoorkeuren"
+
+msgid "Index Order"
+msgstr "Kolomvolgorde"
+
+msgid "Options"
+msgstr "Opties"
+
+msgid "Successfully Saved Options"
+msgstr "Persoonlijke informatie is opgeslagen!"
+
+msgid "Refresh Folder List"
+msgstr "Vernieuw mappenlijst"
+
+msgid "Refresh Page"
+msgstr "Vernieuw pagina"
+
+msgid ""
+"This contains personal information about yourself such as your name, your "
+"email address, etc."
+msgstr ""
+"Dit bevat persoonlijke informatie over uzelf, zoals uw naam, uw e-mailadres, "
+"etc."
+
+msgid ""
+"You can change the way that SquirrelMail looks and displays information to "
+"you, such as the colors, the language, and other settings."
+msgstr ""
+"U kunt hier zelf instellen hoe alles weergegeven moet worden. Hier kunnen "
+"onder andere kleuren en de taal ingesteld worden."
+
+msgid ""
+"Based upon given criteria, incoming messages can have different background "
+"colors in the message list. This helps to easily distinguish who the "
+"messages are from, especially for mailing lists."
+msgstr ""
+"Gebaseerd op de opgegeven criteria kunnen bepaalde binnengekomen berichten "
+"een andere achtergrondkleur in de berichtenlijst krijgen, zodat u berichten "
+"eenvoudig uit elkaar kunt houden."
+
+msgid ""
+"These settings change the way your folders are displayed and manipulated."
+msgstr "Deze opties bepalen hoe uw mappen worden gebruikt en weergegeven."
+
+msgid ""
+"The order of the message index can be rearranged and changed to contain the "
+"headers in any order you want."
+msgstr "De kolomvolgorde van het berichtenoverzicht kan hier worden veranderd."
 
 msgid "New"
 msgstr "Nieuw"
@@ -525,9 +578,6 @@ msgstr "Maak standaard"
 msgid "Move Up"
 msgstr "Verplaats omhoog"
 
-msgid "Index Order"
-msgstr "Kolomvolgorde"
-
 msgid "Checkbox"
 msgstr "Aankruisvak"
 
@@ -539,8 +589,8 @@ msgstr "Omvang"
 
 msgid ""
 "The index order is the order that the columns are arranged in the message "
-"index.  You can add, remove, and move columns around to customize them to "
-"fit your needs."
+"index. You can add, remove, and move columns around to customize them to fit "
+"your needs."
 msgstr ""
 "De kolomvolgorde is de volgorde waarin de kolommen weergegeven worden in het "
 "berichtenoverzicht. U kunt kolommen toevoegen, verplaatsen en verwijderen."
@@ -556,56 +606,6 @@ msgstr "verwijder"
 
 msgid "Return to options page"
 msgstr "Terug naar Opties"
-
-msgid "Personal Information"
-msgstr "Persoonlijke informatie"
-
-msgid "Display Preferences"
-msgstr "Weergavevoorkeuren"
-
-msgid "Folder Preferences"
-msgstr "Mapvoorkeuren"
-
-msgid "Successfully Saved Options"
-msgstr "Persoonlijke informatie is opgeslagen!"
-
-msgid "Refresh Folder List"
-msgstr "Vernieuw mappenlijst"
-
-msgid "Refresh Page"
-msgstr "Vernieuw pagina"
-
-msgid ""
-"This contains personal information about yourself such as your name, your "
-"email address, etc."
-msgstr ""
-"Dit bevat persoonlijke informatie over uzelf, zoals uw naam, uw e-mailadres, "
-"etc."
-
-msgid ""
-"You can change the way that SquirrelMail looks and displays information to "
-"you, such as the colors, the language, and other settings."
-msgstr ""
-"U kunt hier zelf instellen hoe alles weergegeven moet worden. Hier kunnen "
-"onder andere kleuren en de taal ingesteld worden."
-
-msgid ""
-"Based upon given criteria, incoming messages can have different background "
-"colors in the message list.  This helps to easily distinguish who the "
-"messages are from, especially for mailing lists."
-msgstr ""
-"Gebaseerd op de opgegeven criteria kunnen bepaalde binnengekomen berichten "
-"een andere achtergrondkleur krijgen, zodat u berichten eenvoudig uit elkaar "
-"kunt houden."
-
-msgid ""
-"These settings change the way your folders are displayed and manipulated."
-msgstr "Deze opties bepalen hoe uw mappen worden gebruikt en weergegeven."
-
-msgid ""
-"The order of the message index can be rearranged and changed to contain the "
-"headers in any order you want."
-msgstr "De kolomvolgorde van het berichtenoverzicht kan hier worden veranderd."
 
 msgid "Message not printable"
 msgstr "Bericht niet printbaar"
@@ -666,7 +666,7 @@ msgstr ""
 msgid "Send read receipt now"
 msgstr "Verzend leesbevestiging nu"
 
-msgid "Search results"
+msgid "Search Results"
 msgstr "Zoek resultaten"
 
 msgid "Message List"
@@ -722,7 +722,7 @@ msgid "save"
 msgstr "Bewaar"
 
 msgid "forget"
-msgstr "vergeet"
+msgstr "Vergeet"
 
 msgid "Current Search"
 msgstr "Huidige map"
@@ -735,9 +735,6 @@ msgstr "Inhoud"
 
 msgid "Everywhere"
 msgstr "Overal"
-
-msgid "Search Results"
-msgstr "Zoek resultaten"
 
 msgid "No Messages Found"
 msgstr "Bekijk bericht"
@@ -753,6 +750,14 @@ msgstr "Klik hier om opnieuw aan te melden."
 
 msgid "Viewing a Business Card"
 msgstr "Bekijk een visitekaartje"
+
+#, c-format
+msgid ""
+"vCard Version %s is not supported. Some information might not be converted "
+"correctly."
+msgstr ""
+"vCard Versie %s wordt niet ondersteund. Sommige informatie kan niet correct "
+"zijn weergegeven."
 
 msgid "Title"
 msgstr "Titel"
@@ -787,14 +792,36 @@ msgstr "Aantekening"
 msgid "Add to Addressbook"
 msgstr "Voeg toe aan adresboek"
 
+msgid "Nickname:"
+msgstr "Bijnaam:"
+
+msgid "Note Field Contains:"
+msgstr "Aantekeningveld bevat:"
+
 msgid "Title & Org. / Dept."
 msgstr "Titel & Org. / Afd."
+
+msgid "Add to Address Book"
+msgstr "Voeg toe aan adresboek"
 
 msgid "Viewing Full Header"
 msgstr "Bekijk volledige berichtinformatie"
 
 msgid "Viewing a text attachment"
 msgstr "Bekijk een tekst bijlage"
+
+msgid ""
+"Could not include PEAR database functions required for the database backend."
+msgstr ""
+"Kan de PEAR database functies, voor de database backend, niet includen."
+
+#, c-format
+msgid "Is PEAR installed, and is the include path set correctly to find %s?"
+msgstr ""
+"Is PEAR geinstalleerd en is het path ernaar goed ingevuld om %s te vinden? "
+
+msgid "Please contact your system administrator and report this error."
+msgstr "Neem contact op met uw systeembeheerder en rapporteer deze fout."
 
 msgid "Personal address book"
 msgstr "Persoonlijk adresboek"
@@ -1012,12 +1039,6 @@ msgstr "D, G:i"
 msgid "Preference database error (%s). Exiting abnormally"
 msgstr "Bestand met voorkeuren (%s) niet gevonden. Programma afgebroken."
 
-msgid "Unknown user or password incorrect."
-msgstr "Onbekende gebruiker of verkeerd wachtwoord"
-
-msgid "Click here to try again"
-msgstr "Klik hier om het nog eens te proberen"
-
 #, c-format
 msgid "Click here to return to %s"
 msgstr "Klik hier om terug te gaan naar %s"
@@ -1063,9 +1084,6 @@ msgstr "Fout bij openen %s"
 
 msgid "Default preference file not found or not readable!"
 msgstr "Standaard bestand met voorkeuren niet gevonden of niet leesbaar!"
-
-msgid "Please contact your system administrator and report this error."
-msgstr "Neem contact op met uw systeembeheerder."
 
 msgid "Could not create initial preference file!"
 msgstr "Kan bestand met voorkeuren niet aanmaken!"
@@ -1147,6 +1165,9 @@ msgstr "Onbekende fout: %s"
 msgid "Read data:"
 msgstr "Lees data:"
 
+msgid "Unknown user or password incorrect."
+msgstr "Onbekende gebruiker of verkeerd wachtwoord"
+
 msgid "ERROR : Could not append message to"
 msgstr "FOUT : Kan bericht niet toevoegen aan"
 
@@ -1187,19 +1208,14 @@ msgstr "Onbekende datum"
 msgid "A"
 msgstr "A"
 
-msgid ""
-"Thread sorting is not supported by your IMAP server.<br>Please report this "
-"to the system administrator."
-msgstr ""
-"Sorteren als boomstructuur wordt niet ondersteund door uw IMAP server."
-"<br>Neem contact op met uw systeembeheerder."
+msgid "Thread sorting is not supported by your IMAP server."
+msgstr "Sorteren als boomstructuur wordt niet ondersteund door uw IMAP server."
 
-msgid ""
-"Server-side sorting is not supported by your IMAP server.<br>Please report "
-"this to the system administrator."
-msgstr ""
-"Server-side sorteren wordt niet ondersteund door uw IMAP server.<br>Neem "
-"contact op met uw systeembeheerder."
+msgid "Please report this to the system administrator."
+msgstr "Neem contact op met uw systeembeheerder."
+
+msgid "Server-side sorting is not supported by your IMAP server."
+msgstr "Server-side sorteren wordt niet ondersteund door uw IMAP server."
 
 msgid "THIS FOLDER IS EMPTY"
 msgstr "DEZE MAP IS LEEG"
@@ -1241,12 +1257,12 @@ msgid "Select All"
 msgstr "Alles selecteren"
 
 #, c-format
-msgid "Viewing Messages: <B>%s</B> to <B>%s</B> (%s total)"
-msgstr "Bekijk berichten: <B>%s</B> t/m <B>%s</B> (%s totaal)"
+msgid "Viewing Messages: %s to %s (%s total)"
+msgstr "Bekijk berichten: %s t/m %s (%s totaal)"
 
 #, c-format
-msgid "Viewing Message: <B>%s</B> (1 total)"
-msgstr "Bekijk bericht: <B>%s</B> (1 totaal)"
+msgid "Viewing Message: %s (1 total)"
+msgstr "Bekijk bericht: %s (1 totaal)"
 
 msgid "Paginate"
 msgstr "Pagineer"
@@ -1289,7 +1305,7 @@ msgid "download"
 msgstr "download"
 
 msgid "sec_remove_eng.png"
-msgstr ""
+msgstr "sec_remove_nl.png"
 
 msgid "This external link will open in a new window"
 msgstr "Deze externe link zal openen in een nieuw venster"
@@ -1580,14 +1596,23 @@ msgstr "Alleen ongelezen"
 msgid "Unseen and Total"
 msgstr "Ongelezen en Totaal"
 
-msgid "Enable Collapsible Folders"
-msgstr "Maak uitklapbare mappen mogelijk"
+msgid "Enable Collapsable Folders"
+msgstr "Activeer uitklapbare mappen"
 
 msgid "Enable Cumulative Unread Message Notification"
 msgstr "Activeer Herhaaldelijk Ongelezen bericht notificatie"
 
 msgid "Show Clock on Folders Panel"
 msgstr "Toon klok in mappenbalk"
+
+msgid "International date and time"
+msgstr "Internationale datum en tijd"
+
+msgid "American date and time"
+msgstr "Amerikaanse datum en tijd"
+
+msgid "European date and time"
+msgstr "Europese datum en tijd"
 
 msgid "Show weekday and time"
 msgstr "Toon dag van de week en tijd"
@@ -1708,8 +1733,8 @@ msgstr "Probeer adressen te verifieren"
 msgid "Config File Version"
 msgstr "Versie configuratiebestand"
 
-msgid "Squirrelmail Version"
-msgstr "SquirrelMail versie"
+msgid "SquirrelMail Version"
+msgstr "SquirrelMail Versie"
 
 msgid "PHP Version"
 msgstr "PHP versie"
@@ -1780,8 +1805,8 @@ msgstr "Geen van de bovenstaande servers"
 msgid "IMAP Folder Delimiter"
 msgstr "IMAP map scheidingsteken"
 
-msgid "Use \"detect\" to auto-detect."
-msgstr "Gebruik \"detect\" voor auto-detectie."
+msgid "Use &quot;detect&quot; to auto-detect."
+msgstr "Gebruik &quot;detect&quot; voor auto-detectie."
 
 msgid "Use TLS for IMAP Connections"
 msgstr "Gebruik TLS voor IMAP connecties"
@@ -1792,8 +1817,14 @@ msgstr "PHP 4.3.x vereist! Experimenteel."
 msgid "IMAP Authentication Type"
 msgstr "IMAP authorisatie type"
 
+msgid "IMAP login"
+msgstr "IMAP login"
+
 msgid "Use Sendmail Binary"
 msgstr "Gebruik Sendmail"
+
+msgid "Choose &quot;no&quot; for SMTP"
+msgstr "Kies &quot;no&quot; voor SMTP"
 
 msgid "Sendmail Path"
 msgstr "Sendmail Path"
@@ -1809,6 +1840,12 @@ msgstr "Gebruik TLS voor SMTP connecties"
 
 msgid "SMTP Authentication Type"
 msgstr "SMTP authorisatie type"
+
+msgid "No SMTP auth"
+msgstr "Geen SMTP auth"
+
+msgid "Login (plain text)"
+msgstr "Aanmelden (platte text)"
 
 msgid "POP3 Before SMTP?"
 msgstr "POP3 voor SMTP?"
@@ -1858,7 +1895,7 @@ msgstr "Standaard ongelezen type"
 msgid "Auto Create Special Folders"
 msgstr "Automatisch aanmaken speciale mappen"
 
-msgid "Default Javascript Adrressbook"
+msgid "Default Javascript Addressbook"
 msgstr "Standaard Javascript adresboek"
 
 msgid "Auto delete folders"
@@ -1969,6 +2006,21 @@ msgstr "Gebruik indexnummer van thema"
 msgid "Configuration Administrator"
 msgstr "Configuratie Administrator"
 
+msgid ""
+"Note: it is recommended that you configure your system using conf.pl, and "
+"not this plugin. conf.pl contains additional information regarding the "
+"purpose of variables and appropriate values, as well as additional "
+"verification steps."
+msgstr ""
+"NB. Het is aanbevolen dat u uw systeem configureerd met conf.pl en niet met "
+"deze plugin. conf.pl bevat extra informatie over het doel en gebruik van de "
+"variabelen en de juiste waarden alsmede extra verificatie stappen."
+
+msgid ""
+"Run or consult conf.pl should you run into difficulty with your "
+"configuration."
+msgstr "Gebruik conf.pl als u in moeilijkheden raakt met uw configuratie."
+
 msgid "Theme Name"
 msgstr "Thema naam"
 
@@ -1978,8 +2030,15 @@ msgstr "Thema path"
 msgid "Plugins"
 msgstr "Plugins"
 
+#, c-format
+msgid "Plugin directory could not be found: %s"
+msgstr "Plugin directory is niet gevonden: %s"
+
 msgid "Change Settings"
 msgstr "Verander instellingen"
+
+msgid "Test Configuration"
+msgstr "Test configuratie"
 
 msgid "Config file can't be opened. Please check config.php."
 msgstr "Configuratie file kan niet worden geopend. Check config.php."
@@ -2004,25 +2063,21 @@ msgstr ""
 "Voordat u uw fout rapportage verzendt, zorgt u er dan voor de checklist te "
 "doorlopen met algemeen voorkomende problemen."
 
+#, c-format
 msgid ""
-"Make sure that you are running the most recent copy of <a href=\"http://www."
-"squirrelmail.org/\">SquirrelMail</a>."
+"Make sure that you are running the most recent copy of %s. You are currently "
+"using version %s."
 msgstr ""
-"Zorg dat u de meest recente versie van <a href=\"http://www.squirrelmail.org/"
-"\">SquirrelMail</a> heeft."
+"Zorg dat u de meest recente versie van %s heeft. U gebruikt momenteel versie "
+"%s."
 
 #, c-format
-msgid "You are currently using version %s."
-msgstr "U gebruikt momenteel versie %s."
-
 msgid ""
-"Check to see if you bug is already listed in the <a href=\"http://"
-"sourceforge.net/bugs/?group_id=311\">Bug List</a> on SourceForge. If it is, "
-"we already know about it and are trying to fix it."
+"Check to see if your bug is already listed in the %sBug List%s on "
+"SourceForge. If it is, we already know about it and are trying to fix it."
 msgstr ""
-"Check of uw fout voorkomt in de<a href=\"http://sourceforge.net/bugs/?"
-"group_id=311\">Bug List</a> op SourceForge. Als dit het geval is, dan kennen "
-"we de bug al en proberen we deze te corrigeren."
+"Check of uw fout voorkomt in de %sBug List%s op SourceForge. Als dit het "
+"geval is, dan kennen we de bug al en proberen we deze te corrigeren."
 
 msgid ""
 "Try to make sure that you can repeat it. If the bug happens sporatically, "
@@ -2034,13 +2089,14 @@ msgstr ""
 "Als de fout altijd optreed bij een bepaald bericht, bewaar dan dat bericht, "
 "zodat wij het eventueel kunnen zien."
 
+#, c-format
 msgid ""
 "If there were warnings displayed above, try to resolve them yourself. Read "
-"the guides in the <tt>doc/</tt> directory where SquirrelMail was installed."
+"the guides in the %s directory where SquirrelMail was installed."
 msgstr ""
 "Als er foutmeldingen worden weergegeven, probeer deze dan zelf op te lossen."
-"Lees de handleidingen in de <tt>doc</tt> directory op de plek waar "
-"SquirrelMail is geinstalleerd."
+"Lees de handleidingen in de %s directory op de plek waar SquirrelMail is "
+"geinstalleerd."
 
 msgid ""
 "Pressing the button below will start a mail message to the developers of "
@@ -2077,21 +2133,27 @@ msgstr "het algemene programma"
 msgid "a specific plugin"
 msgstr "een specifieke plugin"
 
+msgid "Start Bug Report Form"
+msgstr "Start fout rapportage"
+
+msgid "Bug"
+msgstr "Fout"
+
 msgid "Bug Reports:"
 msgstr "Fout rapportages:"
 
 msgid "Show button in toolbar"
 msgstr "Toon knop in menu"
 
-#, c-format
-msgid "Could not write calendar file %s"
-msgstr "Kan kalenderbestand %s niet wegschrijven"
-
 msgid "TODAY"
 msgstr "VANDAAG"
 
 msgid "Go"
 msgstr "Ga"
+
+#, c-format
+msgid "Could not write calendar file %s"
+msgstr "Kan kalenderbestand %s niet wegschrijven"
 
 msgid "l, F j Y"
 msgstr "l, j F Y"
@@ -2229,15 +2291,15 @@ msgstr ""
 
 msgid ""
 "COMMERCIAL - Servers that are configured (or misconfigured) to allow spam to "
-"be relayed through their system will be banned with this.  Another good one "
+"be relayed through their system will be banned with this. Another good one "
 "to use."
 msgstr ""
-"COMMERCIAL - Server die geconfigureerd zijn om spam door te geven zullen "
+"COMMERCIAL - Servers die geconfigureerd zijn om spam door te geven zullen "
 "worden geblokkeerd met dit."
 
 msgid ""
 "COMMERCIAL - Dial-up users are often filtered out since they should use "
-"their ISP's mail servers to send mail.  Spammers typically get a dial-up "
+"their ISP's mail servers to send mail. Spammers typically get a dial-up "
 "account and send spam directly from there."
 msgstr ""
 "COMMERCIAL - Inbel gebruikers worden vaak gefilterd aangezien zij hun ISP "
@@ -2296,7 +2358,7 @@ msgid "FREE - SPAMhaus - A list of well-known SPAM sources."
 msgstr "FREE - SPAMhaus - Een lijst van bekende SPAM bronnen."
 
 msgid ""
-"FREE, for now - SPAMCOP - An interesting solution that lists servers that "
+"FREE, for now - SpamCop - An interesting solution that lists servers that "
 "have a very high spam to legit email ratio (85 percent or more)."
 msgstr ""
 "FREE, tot nu toe - SPAMCOP - Een interessant alternatief dat servers bevat "
@@ -2385,6 +2447,12 @@ msgstr ""
 msgid "FREE - Distributed Sender Boycott List - UN-Confirmed Relays"
 msgstr "FREE - Gedistribueerde zender boycot lijst - Onbevestigde relays"
 
+msgid ""
+"WARNING! Header filters should be of the format &quot;Header: value&quot;"
+msgstr ""
+"WAARSCHUWING! Berichtkop filters moeten van het volgende formaat zijn &quot;"
+"Berichtkop: waarde&quot;"
+
 msgid "Saved Scan type"
 msgstr "Bewaarde scan type"
 
@@ -2413,8 +2481,8 @@ msgid "Contains:"
 msgstr "Bevat:"
 
 #, c-format
-msgid "If <b>%s</b> contains <b>%s</b> then move to <b>%s</b>"
-msgstr "Als <b>%s</b> bevat <b>%s</b> verplaats dan naar <b>%s</b>"
+msgid "If %s contains %s then move to %s"
+msgstr "Als %s bevat %s verplaats dan naar %s"
 
 msgid "Message Filters"
 msgstr "Berichtfilters"
@@ -2437,13 +2505,18 @@ msgstr ""
 "verschillende op DNS gebaseerde zwarte lijsten in uw INBOX en het te "
 "verplaatsen naar een andere map (bijv. Verwijderde Items)."
 
+msgid "You must select a spam folder."
+msgstr "U moet een spam map selecteren."
+
+msgid "You must select a scan type."
+msgstr "U moet een scan type selecteren"
+
 msgid "Spam Filtering"
 msgstr "Spam Filtering"
 
-msgid "WARNING! Tell your admin to set the SpamFilters_YourHop variable"
-msgstr ""
-"WAARSCHUWING! Vraag uw administrator om de SpamFilters_YourHop variabele te "
-"activeren"
+#, c-format
+msgid "WARNING! Tell the administrator to set the %s variable."
+msgstr "WAARSCHUWING! Vraag uw administrator om de %s variabele te activeren"
 
 msgid "Move spam to:"
 msgstr "Verplaats spam naar:"
@@ -2461,12 +2534,16 @@ msgstr ""
 "de map periodiek wordt geleegd, zodat u van een grote mailbox gevrijwaard "
 "blijft."
 
+msgid "Unread messages only"
+msgstr "Alleen ongelezen berichten"
+
 msgid ""
-"The more messages you scan, the longer it takes.  I would suggest that you "
-"scan only new messages.  If you make a change to your filters, I would set "
-"it to scan all messages, then go view my INBOX, then come back and set it to "
-"scan only new messages.  That way, your new spam filters will be applied and "
-"you'll scan even the spam you read with the new filters."
+"The more messages scanned, the longer it takes. It's recommended to scan "
+"unread messages only. If a change to the filters is made, it's recommended "
+"to set it to scan all messages, then go view the INBOX, then come back and "
+"set it to scan unread messages only. That way, the new spam filters will be "
+"applied and even the spam you didn't catch with the old filters will be "
+"scanned."
 msgstr ""
 "Des te meer berichten u scanned, des te langer het duurt. Voorgesteld wordt "
 "om alleen nieuwe berichten te scannen. Als u een wijziging in uw filters "
@@ -2476,21 +2553,15 @@ msgstr ""
 "leest met de nieuwe spamfilters."
 
 #, c-format
-msgid "Spam is sent to <b>%s</b>"
-msgstr "Spam wordt verplaatst naar <b>%s</b>"
+msgid "Spam is sent to %s."
+msgstr "Spam wordt verplaatst naar %s"
 
-msgid "[<i>not set yet</i>]"
-msgstr "[<i>not set yet</i>]"
+msgid "not set yet"
+msgstr "not set yet"
 
 #, c-format
-msgid "Spam scan is limited to <b>%s</b>"
-msgstr "Spam scan wordt beperkt tot <b>%s</b>"
-
-msgid "New Messages Only"
-msgstr "Alleen ongelezen berichten"
-
-msgid "All Messages"
-msgstr "Alle berichten"
+msgid "Spam scan is limited to %s."
+msgstr "Spam scan wordt beperkt tot %s"
 
 msgid "ON"
 msgstr "AAN"
@@ -2515,12 +2586,13 @@ msgstr "IMAP-server informatie"
 
 msgid ""
 "Run some test IMAP commands, displaying both the command and the result. "
-"These tests use the Squirrelmail IMAP commands and your current Squirrelmail "
+"These tests use the SquirrelMail IMAP commands and your current SquirrelMail "
 "configuration. Custom command strings can be used."
 msgstr ""
 "Voer enkele IMAP commando/'s uit, het commando en het resultaat worden "
-"getoond.Deze testen gebruiken de Squirrelmail IMAP commando/'s en uw huidige "
-"Squirrelmail configuratie. Aangepaste commandoregels kunnen worden gebruikt."
+"getoond. Deze testen gebruiken de Squirrelmail IMAP commando/'s en uw "
+"huidige Squirrelmail configuratie. Aangepaste commandoregels kunnen worden "
+"gebruikt."
 
 msgid "Mailinglist"
 msgstr "Mailinglist"
@@ -2576,12 +2648,6 @@ msgstr "Geen server gespecificeerd"
 msgid "Error "
 msgstr "Fout "
 
-msgid "POP3 noop:"
-msgstr "POP3 noop:"
-
-msgid "No connection to server"
-msgstr "Geen verbinding met server"
-
 msgid "POP3 user:"
 msgstr "POP3 user:"
 
@@ -2602,6 +2668,9 @@ msgstr "authorisatie mislukt "
 
 msgid "POP3 apop:"
 msgstr "POP3 apop:"
+
+msgid "No connection to server"
+msgstr "Geen verbinding met server"
 
 msgid "No login ID submitted"
 msgstr "Geen gebruikersnaam opgegeven"
@@ -2693,11 +2762,9 @@ msgstr "Aanmelden OK: Geen nieuwe berichten"
 msgid "Login OK: Inbox EMPTY"
 msgstr "Aanmelden OK: Inbox LEEG"
 
-msgid "Login OK: Inbox contains ["
-msgstr "Aanmelden OK: Inbox bevat ["
-
-msgid "] messages"
-msgstr "] berichten"
+#, c-format
+msgid "Login OK: Inbox contains %s messages"
+msgstr "Aanmelden OK: Inbox bevat %s berichten"
 
 msgid "Fetching UIDL..."
 msgstr "Ophalen UIDL ..."
@@ -2752,7 +2819,7 @@ msgstr "Externe POP-server instellingen"
 
 msgid ""
 "You should be aware that the encryption used to store your password is not "
-"perfectly secure.  However, if you are using pop, there is inherently no "
+"perfectly secure. However, if you are using pop, there is inherently no "
 "encryption anyway. Additionally, the encryption that we do to save it on the "
 "server can be undone by a hacker reading the source to this file."
 msgstr ""
@@ -2839,14 +2906,14 @@ msgstr "Waarschuwing, "
 msgid "Mail Fetch Result:"
 msgstr "Resultaten:"
 
-msgid "Simple POP3 Fetch Mail"
+msgid "POP3 Fetch Mail"
 msgstr "POP3-toegang externe e-mailaccounts"
 
 msgid ""
-"This configures settings for downloading email from a pop3 mailbox to your "
+"This configures settings for downloading email from a POP3 mailbox to your "
 "account on this server."
 msgstr ""
-"Instellingen voor het downloaden van e-mail van een externe pop3-server naar "
+"Instellingen voor het downloaden van e-mail van een externe POP3-server naar "
 "uw account op deze server."
 
 msgid "Message Details"
@@ -2860,97 +2927,6 @@ msgstr "Bewaar bericht"
 
 msgid "View Message details"
 msgstr "Bekijk berichtdetails"
-
-msgid "New Mail Notification"
-msgstr "Geen notificatie nieuw bericht"
-
-msgid ""
-"Select <b>Enable Media Playing</b> to turn on playing a media file when "
-"unseen mail is in your folders. When enabled, you can specify the media file "
-"to play in the provided file box."
-msgstr ""
-"Selecteer <b>Activeer afspelen geluid</b> om een geluid te laten horen als "
-"er een nieuw bericht in uw mappen verschijnt. U kunt het geluid dat te horen "
-"zal zijn zelf specificeren."
-
-msgid ""
-"The <b>Check all boxes, not just INBOX</b> option will check ALL of your "
-"folders for unseen mail, not just the inbox for notification."
-msgstr ""
-"De optie <b>Controleer alle mappen, niet alleen INBOX</b> zal ALLE mappen op "
-"nieuwe berichten controleren en niet alleen de INBOX."
-
-msgid ""
-"Selecting the <b>Show popup</b> option will enable the showing of a popup "
-"window when unseen mail is in your folders (requires JavaScript)."
-msgstr ""
-"Selectie van <b>Toon popupvenster bij nieuw bericht</b> zorgt voor "
-"activering van een popup indien er een nieuw bericht in een van uw mappen "
-"verschijnt (Javascript is nodig!)."
-
-msgid ""
-"Use the <b>Check RECENT</b> to only check for messages that are recent. "
-"Recent messages are those that have just recently showed up and have not "
-"been \"viewed\" or checked yet.  This can prevent being continuously annoyed "
-"by sounds or popups for unseen mail."
-msgstr ""
-"Gebruik de optie <b>Controleer alleen RECENT</b> om uitsluitend te "
-"controleren op berichten die recent zijn. Recente berichten zijn berichten "
-"die net gearriveerd zijn en nog niet bekeken of gecontroleerd zijn. Dit "
-"voorkomt dat u continu door popups of geluid wordt lastig gevallen bij een "
-"nieuw bericht."
-
-msgid ""
-"Selecting the <b>Change title</b> option will change the title in some "
-"browsers to let you know when you have new mail (requires JavaScript, and "
-"only works in IE but you won't see errors with other browsers).  This will "
-"always tell you if you have new mail, even if you have <b>Check RECENT</b> "
-"enabled."
-msgstr ""
-"De optie <b>Verander titelaanduiding</b> zal in sommige browsers te "
-"titelaanduiding veranderen bij een nieuw bericht. (Javascript is nodig en "
-"het werkt alleen met IE (Internet Explorer). U zal geen fouten zien indien u "
-"een andere browser gebruikt.) Deze optie zal u altijd vertellen of u nieuwe "
-"berichten hebt, zelfs al heeft u de optie <b>Controleer alleen RECENT</b> "
-"geactiveerd."
-
-msgid ""
-"Select from the list of <b>server files</b> the media file to play when new "
-"mail arrives.  If no file is specified, \"(none)\", no sound will be used."
-msgstr ""
-"Selecteer het bestand dat u wilt afspelen bij een nieuw bericht van de lijst "
-"met <b>server bestanden</b>. Indien er geen bestand wordt gespecificeerd, "
-"\"(geen)\", zal geen geluid worden gebruikt."
-
-msgid "Enable Media Playing"
-msgstr "Activeer afspelen geluid"
-
-msgid "Check all boxes, not just INBOX"
-msgstr "Controleer alle mappen, niet alleen INBOX"
-
-msgid "Count only messages that are RECENT"
-msgstr "Controleer alleen RECENT"
-
-msgid "Change title on supported browsers."
-msgstr "Verander titelaanduiding"
-
-msgid "requires JavaScript to work"
-msgstr "Javascript is nodig"
-
-msgid "Show popup window on new mail"
-msgstr "Toon popupvenster bij nieuw bericht"
-
-msgid "Select server file:"
-msgstr "Selecteer bestand van server:"
-
-msgid "(none)"
-msgstr "(geen)"
-
-msgid "Try"
-msgstr "Test"
-
-msgid "Current File:"
-msgstr "Huidig bestand:"
 
 msgid "New Mail"
 msgstr "Nieuw bericht"
@@ -2968,6 +2944,98 @@ msgstr "%s nieuw bericht"
 #, c-format
 msgid "%s new messages"
 msgstr "%s nieuwe berichten"
+
+msgid "New Mail Notification"
+msgstr "Geen notificatie nieuw bericht"
+
+#, c-format
+msgid ""
+"The %s option will check ALL of your folders for unseen mail, not just the "
+"inbox for notification."
+msgstr ""
+"De optie %s zal ALLE mappen op nieuwe berichten controleren en niet alleen "
+"de INBOX."
+
+msgid "Check all boxes, not just INBOX"
+msgstr "Controleer alle mappen, niet alleen INBOX"
+
+#, c-format
+msgid ""
+"Selecting the %s option will enable the showing of a popup window when "
+"unseen mail is in your folders (requires JavaScript)."
+msgstr ""
+"Selectie van %s zorgt voor activering van een popup indien er een nieuw "
+"berichtin een van uw mappen verschijnt (Javascript is nodig!)."
+
+msgid "Show popup window on new mail"
+msgstr "Toon popupvenster bij nieuw bericht"
+
+#, c-format
+msgid ""
+"Use the %s option to only check for messages that are recent. Recent "
+"messages are those that have just recently showed up and have not been "
+"\"viewed\" or checked yet. This can prevent being continuously annoyed by "
+"sounds or popups for unseen mail."
+msgstr ""
+"Gebruik de optie %s om uitsluitend te controleren op berichten die recent "
+"zijn. Recente berichten zijn berichten die net gearriveerd zijn en nog niet "
+"bekeken of gecontroleerd zijn. Dit voorkomt dat u continu door popups of "
+"geluid wordt lastig gevallen bij een nieuw bericht."
+
+msgid "Count only messages that are RECENT"
+msgstr "Controleer alleen RECENT"
+
+#, c-format
+msgid ""
+"Selecting the %s option will change the title in some browsers to let you "
+"know when you have new mail (requires JavaScript, and only works in IE but "
+"you won't see errors with other browsers). This will always tell you if you "
+"have new mail, even if you have %s enabled."
+msgstr ""
+"De optie %s zal in sommige browsers te titelaanduiding veranderen bij een "
+"nieuw bericht. (Javascript is nodig en het werkt alleen met IE (Internet "
+"Explorer). U zal geen fouten zien indien u een andere browser gebruikt.) "
+"Deze optie zal u altijd vertellen of u nieuwe berichten hebt, zelfs al heeft "
+"u de optie %s geactiveerd."
+
+msgid "Change title on supported browsers"
+msgstr "Verander titelaanduiding"
+
+#, c-format
+msgid ""
+"Select %s to turn on playing a media file when unseen mail is in your "
+"folders. When enabled, you can specify the media file to play in the "
+"provided file box."
+msgstr ""
+"Selecteer %s om een geluid te laten horen als er een nieuw bericht in uw "
+"mappen verschijnt. U kunt het geluid dat te horen zal zijn zelf specificeren."
+
+msgid "Enable Media Playing"
+msgstr "Activeer afspelen geluid"
+
+#, c-format
+msgid ""
+"Select from the list of %s the media file to play when new mail arrives. If "
+"no file is specified, %s, no sound will be used."
+msgstr ""
+"Selecteer het bestand dat u wilt afspelen bij een nieuw bericht van de lijst "
+"met %s. Indien er geen bestand wordt gespecificeerd, %s, zal geen geluid "
+"worden gebruikt."
+
+msgid "Select server file"
+msgstr "Selecteer bestand van server"
+
+msgid "(none)"
+msgstr "(geen)"
+
+msgid "requires JavaScript to work"
+msgstr "Javascript is nodig"
+
+msgid "Try"
+msgstr "Test"
+
+msgid "Current File:"
+msgstr "Huidig bestand:"
 
 msgid "NewMail Options"
 msgstr "Nieuw bericht opties"
@@ -3050,11 +3118,20 @@ msgstr "Grondige op e-mail gebaseerde rapportage"
 msgid "Web-based form"
 msgstr "Webformulier"
 
+msgid "Save Method"
+msgstr "Bewaarmethode"
+
 msgid "Your SpamCop authorization code:"
 msgstr "Uw SpamCop authorisatiecode:"
 
 msgid "see below"
 msgstr "zie onder"
+
+msgid "Save ID"
+msgstr "Bewaar ID"
+
+msgid "About SpamCop"
+msgstr "Over SpamCop"
 
 msgid ""
 "SpamCop is a free service that greatly assists in finding the true source of "
@@ -3064,47 +3141,42 @@ msgstr ""
 "ware bron van de spam en in het informeren van integere mensen over het "
 "misbruik."
 
+#, c-format
 msgid ""
-"To use it, you must get a SpamCop authorization code. There is a free <a "
-"href=\"http://spamcop.net/anonsignup.shtml\">sign up page</a> so you can use "
-"SpamCop."
+"To use it, you must get a SpamCop authorization code. There is a free %ssign "
+"up page%s so you can use SpamCop."
 msgstr ""
 "Om het te gebruiken moet u een SpamCop authorisatiecode aanvragen. Er is een "
-"vrije <a href=\"http://spamcop.net/anonsignup.shtml\">aanmeldingspagina</a> "
-"om SpamCop te kunnen gebruiken."
+"vrije %saanmeldingspagina%s om SpamCop te kunnen gebruiken."
 
+msgid "Before you sign up, be warned"
+msgstr "Voordat u zich aanmeld, wees gewaarschuwd"
+
+#, c-format
 msgid ""
-"<b>Before you sign up, be warned:</b> Some users have reported that the "
-"email addresses used with SpamCop find their way onto spam lists. To be "
-"safe, you can just create an email forwarding account and have all SpamCop "
-"reports get sent to there. Also, if it gets flooded with spam, you can then "
-"just delete that account with no worries about losing your real email "
-"address. Just go create an email forwarder somewhere (<a href=\"http://www."
-"yahoo.com/\">Yahoo!</a> has a <a href=\"http://dir.yahoo.com/"
-"Business_and_Economy/Business_to_Business/Communications_and_Networking/"
-"Internet_and_World_Wide_Web/Email_Providers/Forwarding_Services/"
-"Free_Forwarding/\">list of places</a>) so that messages from system "
-"administrators and whatnot can be sent to you."
+"Some users have reported that the email addresses used with SpamCop find "
+"their way onto spam lists. To be safe, you can just create an email "
+"forwarding account and have all SpamCop reports get sent to there. Also, if "
+"it gets flooded with spam, you can then just delete that account with no "
+"worries about losing your real email address. Just go create an email "
+"forwarder somewhere (%s has a %slist of places%s) so that messages from "
+"system administrators and what not can be sent to you."
 msgstr ""
-"<b>Voordat u zichzelf aanmeldt, wees gewaarschuwd:</b> Sommige gebruikers "
-"hebben gerapporteerd dat de e-mailadressen gebruikt bij SpamCop op "
-"spamlijsten terechtkomen. Om veilig te zijn kunt u een e-mail forwarding "
-"account aanmaken en alle SpamCop rapportages daarheen laten verzenden. Als "
-"dit e-mailadres overspoeld wordt met spam, dan kan u het verwijderen zonder "
-"uw echte e-mailadres te verliezen. Maak een e-mail forwarder ergens (<a href="
-"\"http://www.yahoo.com/\">Yahoo!</a> heeft een <a href=\"http://dir.yahoo."
-"com/Business_and_Economy/Business_to_Business/Communications_and_Networking/"
-"Internet_and_World_Wide_Web/Email_Providers/Forwarding_Services/"
-"Free_Forwarding/\">lijst met plekken</a>) zodat berichten van systeem "
-"administrators en anderen naar u kunnen worden verzonden."
+"Sommige gebruikers hebben gerapporteerd dat de e-mailadressen gebruikt bij "
+"SpamCop op spamlijsten terechtkomen. Om veilig te zijn kunt u een e-mail "
+"forwarding account aanmaken en alle SpamCop rapportages daarheen laten "
+"verzenden. Als dit e-mailadres overspoeld wordt met spam, dan kan u het "
+"verwijderen zonder uw echte e-mailadres te verliezen. Maak een e-mail "
+"forwarder ergens (%s heeft een %slijst met plekken%s) zodat berichten van "
+"systeem administrators en anderen naar u kunnen worden verzonden."
 
 msgid ""
 "Once you have signed up with SpamCop and have received your SpamCop "
-"authorization code, you need to enable this plugin -- just click the link "
-"above.  Once enabled, you go about your normal life.  If you encounter a "
-"spam message in your mailbox, just view it.  On the right-hand side, near "
-"the top of where the message is displayed, you will see a link to report "
-"this message as spam.  Clicking on it brings you to a confirmation page. "
+"authorization code, you need to enable this plugin by clicking the link "
+"above. Once enabled, you go about your normal life. If you encounter a spam "
+"message in your mailbox, just view it. On the right-hand side, near the top "
+"of where the message is displayed, you will see a link to report this "
+"message as spam. Clicking on it brings you to a confirmation page. "
 "Confirming that you want the spam report sent will do different things with "
 "different reporting methods."
 msgstr ""
@@ -3116,16 +3188,16 @@ msgstr ""
 "Bevestiging dat u de spam rapportage wilt verzenden, zal verschillende "
 "dingen doen met verschillende rapportage methoden."
 
-msgid "Email-based Reporting"
+msgid "Email-based reporting"
 msgstr "Op e-mail gebaseerde rapportage"
 
 msgid ""
 "Pressing the button forwards the message to the SpamCop service and will "
-"optionally delete the message.  From there, you just need to go to your "
-"INBOX and quite soon a message should appear from SpamCop.  (It gets sent to "
-"the account you registered with, so make sure that your mail forwarder "
-"works!) Open it up, click on the appropriate link at the top, and a new "
-"browser window will open."
+"optionally delete the message. From there, you just need to go to your INBOX "
+"and quite soon a message should appear from SpamCop. (It gets sent to the "
+"account you registered with, so make sure that your mail forwarder works!) "
+"Open it up, click on the appropriate link at the top, and a new browser "
+"window will open."
 msgstr ""
 "Een druk op de knop stuurt het bericht door naar de SpamCop service en zal "
 "het bericht optioneel verwijderen. In uw INBOX zal nu vrij snel een bericht "
@@ -3136,14 +3208,14 @@ msgstr ""
 
 msgid ""
 "Currently, the quick reporting just forwards the request to the thorough "
-"reporting.  Also, it appears that this is for members (non-free) only. "
+"reporting. Also, it appears that this is for members (non-free) only. "
 "Hopefully this will change soon."
 msgstr ""
 "Momenteel wordt de snelle rapportage alleen doorgestuurd naar de grondige "
 "rapportage. Deze is alleen voor leden (niet-vrij). Hopelijk zal dit spoedig "
 "veranderen."
 
-msgid "Web-based Reporting"
+msgid "Web-based reporting"
 msgstr "Op het web gebaseerde rapportage"
 
 msgid ""
@@ -3159,10 +3231,10 @@ msgstr ""
 
 msgid ""
 "The SpamCop service will display information as it finds it, so scroll down "
-"until you see a form button.  It might pause a little while it is looking up "
-"information, so be a little patient.  Read what it says, and submit the "
-"spam.  Close the browser window.  Press Cancel or click on the appropriate "
-"mail folder to see messages and/or delete the spam."
+"until you see a form button. It might pause a little while it is looking up "
+"information, so be a little patient. Read what it says, and submit the spam. "
+"Close the browser window. Press Cancel or click on the appropriate mail "
+"folder to see messages and/or delete the spam."
 msgstr ""
 "De SpamCop service zal gevonden informatie tonen. Bekijk de pagina totdat u "
 "een formulierknop ziet. Afhankelijk van de informatie, kan het wat langer "
@@ -3170,14 +3242,29 @@ msgstr ""
 "Annuleren of klik op de map met e-mail om de berichten te zien en/of de spam "
 "te verwijderen."
 
+msgid "SpamCop service type"
+msgstr "Spamcop Service Type"
+
 msgid ""
-"<b>For more information</b> about SpamCop, it's services, spam in general, "
-"and many related topics, try reading through SpamCop's <a href=\"http://"
-"spamcop.net/help.shtml\">Help and Feedback</a> section."
+"Service type option allows selecting which SpamCop services you are using. "
+"Member services use different web reporting forms and does not display nags. "
+"You can purchase these services, if you want to support SpamCop."
 msgstr ""
-"<b>Voor meer informatie</b> over SpamCop, de services, spam in het algemeen "
-"en gerelateerde onderwerpen, probeer de sectie <a href=\"http://spamcop.net/"
-"help.shtml\">Help en Feedback</a>."
+"Met de service type optie kunt u selecteren welke spamcop services uw "
+"gebruikt. Gebruikers services gebruiken andere webformulieren en tonen geen "
+"irritante informatie. U kunt deze services aanschaffen als u SpamCop wilt "
+"steunen."
+
+msgid "More information"
+msgstr "Meer informatie"
+
+#, c-format
+msgid ""
+"For more information about SpamCop, it's services, spam in general, and many "
+"related topics, try reading through SpamCop's %sHelp and Feedback%s section."
+msgstr ""
+"Voor meer informatie over SpamCop, de services, spam in het algemeen en "
+"gerelateerde onderwerpen, probeer de sectie %sHelp en Feedback%s."
 
 msgid "Report as Spam"
 msgstr "Raporteer als Spam"
@@ -3186,8 +3273,8 @@ msgid "SpamCop - Spam Reporting"
 msgstr "SpamCop - Spamrapportage"
 
 msgid ""
-"Help fight the battle against unsolicited email.  SpamCop reads the spam "
-"email and determines the correct addresses to send complaints to.  Quite "
+"Help fight the battle against unsolicited email. SpamCop reads the spam "
+"email and determines the correct addresses to send complaints to. Quite "
 "fast, really smart, and easy to use."
 msgstr ""
 "Help in de strijd tegen ongewenste e-mail. SpamCop leest de e-mail (spam) en "
@@ -3197,13 +3284,19 @@ msgstr ""
 msgid ""
 "Sending this spam report will give you back a reply with URLs that you can "
 "click on to properly report this spam message to the proper authorities. "
-"This is a free service.  By pressing the \"Send Spam Report\" button, you "
+"This is a free service. By pressing the \"Send Spam Report\" button, you "
 "agree to follow SpamCop's rules/terms of service/etc."
 msgstr ""
 "Verzending van deze spamrapportage zal u een antwoord doen toekomen met "
 "URLs, die u kunt aanklikken om het bericht als spam te markeren bij integere "
 "autoriteiten. Dit is een vrije service. Door te klikken op de knop \"Send "
 "Spam Report\", gaat u akkoord met de voorwaarden van SpamCop."
+
+msgid "Cancel / Done"
+msgstr "Annuleren / Klaar"
+
+msgid "Send Spam Report"
+msgstr "Verstuur Spamrapportage"
 
 msgid "SpellChecker Options"
 msgstr "Spellingscontrole opties"
@@ -3230,17 +3323,17 @@ msgid ""
 "likely due to the fact that you have changed your mailbox password. In order "
 "to proceed, you will have to supply your old password so that SquirrelSpell "
 "can decrypt your personal dictionary. It will be re-encrypted with your new "
-"password after this.<br>If you haven't encrypted your dictionary, then it "
-"got mangled and is no longer valid. You will have to delete it and start "
-"anew. This is also true if you don't remember your old password -- without "
-"it, the encrypted data is no longer accessible."
+"password after this. If you haven't encrypted your dictionary, then it got "
+"mangled and is no longer valid. You will have to delete it and start anew. "
+"This is also true if you don't remember your old password -- without it, the "
+"encrypted data is no longer accessible."
 msgstr ""
 "SquirrelSpell kan uw persoonlijke woordenboek niet lezen. Dit wordt "
 "waarschijnlijk veroorzaakt door het wijzigen van uw mailbox wachtwoord.Om "
 "door te gaan moet u uw oude wachtwoord ingeven, zodat SquirrelSpell uw "
 "persoonlijke woordenboek kan lezen. Het zal hierna met uw nieuwe wachtwoord "
-"worden beveiligd.<br>Als u uw woordenboek niet heeft beveiligd, zal deze "
-"niet langer geldig zijn. U zal het moeten verwijderen en een nieuwe moeten "
+"worden beveiligd. Als u uw woordenboek niet heeft beveiligd, zal deze niet "
+"langer geldig zijn. U zal het moeten verwijderen en een nieuwe moeten "
 "beginnen.Dit geldt ook als u uw oude wachtwoord bent vergeten. Zonder "
 "wachtwoord is uw data niet toegankelijk."
 
@@ -3359,6 +3452,22 @@ msgstr ""
 msgid "No errors found"
 msgstr "Geen fouten gevonden"
 
+msgid ""
+"Your personal dictionary has been encrypted and is now stored in an "
+"encrypted format."
+msgstr ""
+"Uw persoonlijke woordenboek is beveiligd en is nuopgeslagen in beveiligd "
+"formaat."
+
+msgid ""
+"Your personal dictionary has been decrypted and is now stored as plain text."
+msgstr ""
+"Uw persoonlijke woordenboek is ontcijferd en is nu opgeslagen als platte "
+"tekst."
+
+msgid "Personal Dictionary Crypto Settings"
+msgstr "Persoonlijk woordenboek beveiligingsinstellingen"
+
 msgid "Your personal dictionary was erased."
 msgstr "Uw persoonlijk woordenboek is verwijderd"
 
@@ -3382,7 +3491,7 @@ msgstr ""
 "Uw persoonlijk woordenboek is succesvol beveiligd. Ga terug naar het &quot;"
 "Spellingscontrole opties&quot; menu en selecteer opnieuw."
 
-msgid "Successful Re-encryption"
+msgid "Successful re-encryption"
 msgstr "Succesvolle beveiliging"
 
 msgid ""
@@ -3395,23 +3504,6 @@ msgstr ""
 
 msgid "Dictionary re-encrypted"
 msgstr "Woordenboek beveiligd"
-
-msgid ""
-"Your personal dictionary has been <strong>encrypted</strong> and is now "
-"stored in an <strong>encrypted format</strong>."
-msgstr ""
-"Uw persoonlijke woordenboek is <strong>beveiligd</strong> en is nu "
-"opgeslagen in <strong>beveiligd formaat</strong>."
-
-msgid ""
-"Your personal dictionary has been <strong>decrypted</strong> and is now "
-"stored as <strong>clear text</strong>."
-msgstr ""
-"Uw persoonlijke woordenboek is <strong>ontcijferd</strong> en is nu "
-"opgeslagen als <strong>platte tekst</strong>."
-
-msgid "Personal Dictionary Crypto Settings"
-msgstr "Persoonlijk woordenboek beveiligingsinstellingen"
 
 msgid "Personal Dictionary"
 msgstr "Persoonlijk woordenboek"
@@ -3443,32 +3535,36 @@ msgstr ""
 "formaat. Doorgaan?"
 
 msgid ""
-"This will decrypt your personal dictionary and store it in a clear-text "
+"This will decrypt your personal dictionary and store it in a plain text "
 "format. Proceed?"
 msgstr ""
-"Dit ontcijfert uw persoonlijk woordenboek slaat het in platte tekst op."
+"Dit ontcijfert uw persoonlijk woordenboek slaat het in platte tekst op. "
+"Doorgaan?"
+
+msgid "Your personal dictionary is currently encrypted."
+msgstr "Uw persoonlijk woordenboek is momenteel beveiligd"
 
 msgid ""
-"<p>Your personal dictionary is <strong>currently encrypted</strong>. This "
-"helps protect your privacy in case the web-mail system gets compromized and "
-"your personal dictionary ends up stolen. It is currently encrypted with the "
-"password you use to access your mailbox, making it hard for anyone to see "
-"what is stored in your personal dictionary.</p> <p><strong>ATTENTION:</"
-"strong> If you forget your password, your personal dictionary will become "
+"This helps protect your privacy in case the web-mail system gets compromized "
+"and your personal dictionary ends up stolen. It is currently encrypted with "
+"the password you use to access your mailbox, making it hard for anyone to "
+"see what is stored in your personal dictionary."
+msgstr ""
+"Dit beschermt uw privacy voor het geval dat men uw webmail kraakt en dat men "
+"uw persoonlijke woordenboek steelt. Dit is nu beveiligd met het password "
+"waarmee u ook toegang heeft tot uw mailbox. Het maakt het moeilijk voor "
+"iemand te zien wat er in uw persoonlijk woordenboek staat."
+
+msgid ""
+"If you forget your password, your personal dictionary will become "
 "unaccessible, since it can no longer be decrypted. If you change your "
 "mailbox password, SquirrelSpell will recognize it and prompt you for your "
-"old password in order to re-encrypt the dictionary with a new key.</p>"
+"old password in order to re-encrypt the dictionary with a new key."
 msgstr ""
-"<p>Uw persoonlijk woordenboek is <strong>momenteel beveiligd</strong>. Dit "
-"zorgt voor bescherming van uw privacy in het geval dat het webmail systeem "
-"wordt gekraakt en uw persoonlijke woordenboek wordt gestolen. Het is "
-"momenteel beveiligd met het wachtwoord dat u ook gebruik bij het aanmelden, "
-"zodat niemand kan zien wat in uw persoonlijk woordenboek is opgenomen.</p> "
-"<p><strong>LET OP:</strong> Als u uw wachtwoord vergeet wordt uw persoonlijk "
-"woordenboek ontoegankelijk, omdat het dan niet meer ontcijferd kan worden. "
-"Als u uw wachtwoord verandert zal SquirrelSpel dit herkennen en u vragen "
-"naar uw oude wachtwoord om het woordenboek met het nieuwe wachtwoord te "
-"beveiligen.</p>"
+"Als u uw wachtwoord vergeet dan wordt uw persoonlijke woordenboek "
+"ontoegankelijk, omdat het niet meer kan worden ontcijfert. Als uw mailbox "
+"wachtwoord wijzigt, zal SquirrelSpell dit herkennen en uw vragen om uw oude "
+"password zodat uw woordenboek kan worden omgezet."
 
 msgid ""
 "Please decrypt my personal dictionary and store it in a clear-text format."
@@ -3477,33 +3573,36 @@ msgstr "Ontcijfer mijn persoonlijk woordenboek en sla het in platte tekst op."
 msgid "Change crypto settings"
 msgstr "Verander beveiligingsinstellingen"
 
+msgid "Your personal dictionary is currently not encrypted."
+msgstr "Uw persoonlijk woordenboek is momenteel niet beveiligd."
+
 msgid ""
-"<p>Your personal dictionary is <strong>currently not encrypted</strong>. You "
-"may wish to encrypt your personal dictionary to protect your privacy in case "
-"the webmail system gets compromized and your personal dictionary file gets "
-"stolen. When encrypted, the file's contents look garbled and are hard to "
-"decrypt without knowing the correct key (which is your mailbox password).</"
-"p> <strong>ATTENTION:</strong> If you decide to encrypt your personal "
-"dictionary, you must remember that it gets &quot;hashed&quot; with your "
-"mailbox password. If you forget your mailbox password and the administrator "
-"changes it to a new value, your personal dictionary will become useless and "
-"will have to be created anew. However, if you or your system administrator "
-"change your mailbox password but you still have the old password at hand, "
-"you will be able to enter the old key to re-encrypt the dictionary with the "
-"new value.</p>"
+"You may wish to encrypt your personal dictionary to protect your privacy in "
+"case the webmail system gets compromized and your personal dictionary file "
+"gets stolen. When encrypted, the file's contents look garbled and are hard "
+"to decrypt without knowing the correct key (which is your mailbox password)."
 msgstr ""
-"<p>Uw persoonlijk woordenboek is <strong>momenteel niet beveiligd</strong>. "
 "U kan uw persoonlijk woordenboek beveiligen om uw privacy te beschermen in "
 "het geval dat het webmail systeem wordt gekraakt en uw persoonlijke "
 "woordenboek wordt gestolen. Indien het bestand is beveiligd zal het vage "
 "tekens bevatten en niet te ontcijferen zijn zonder de juiste sleutel (uw "
-"inlog-wachtwoord).</p> <strong>LET OP:</strong> Als u besluit om uw "
-"woordenboek te beveiligen met uw wachtwoord dan mag u dat niet vergeten. "
-"Indien u uw wachtwoord vergeet en de systeembeheerder geeft u een nieuw "
-"wachtwoord dan wordt uw woordenboek onleesbaar en moet u een nieuwe "
-"aanmaken. Maar als u uw oude wachtwoord nog weet en u krijgt een nieuw "
-"wachtwoord dan kan u uw woordenboek nog ontcijferen en opnieuw beveiligen "
-"met het nieuwe wachtwoord.</p>"
+"inlog-wachtwoord)."
+
+msgid ""
+"If you decide to encrypt your personal dictionary, you must remember that it "
+"gets &quot;hashed&quot; with your mailbox password. If you forget your "
+"mailbox password and the administrator changes it to a new value, your "
+"personal dictionary will become useless and will have to be created anew. "
+"However, if you or your system administrator change your mailbox password "
+"but you still have the old password at hand, you will be able to enter the "
+"old key to re-encrypt the dictionary with the new value."
+msgstr ""
+"Als u besluit om uw woordenboek te beveiligen met uw wachtwoord dan mag u "
+"dat niet vergeten. Indien u uw wachtwoord vergeet en de systeembeheerder "
+"geeft u een nieuw wachtwoord dan wordt uw woordenboek onleesbaar en moet u "
+"een nieuwe aanmaken. Maar als u uw oude wachtwoord nog weet en u krijgt een "
+"nieuw wachtwoord dan kan u uw woordenboek nog ontcijferen en opnieuw "
+"beveiligen met het nieuwe wachtwoord."
 
 msgid ""
 "Please encrypt my personal dictionary and store it in an encrypted format."
@@ -3511,8 +3610,8 @@ msgstr ""
 "Beveilig mijn persoonlijk woordenboek en sla het op in beveiligd formaat."
 
 #, c-format
-msgid "Deleting the following entries from <strong>%s</strong> dictionary:"
-msgstr "Verwijder de volgende selecties van <strong>%s</strong> woordenboek:"
+msgid "Deleting the following entries from %s dictionary:"
+msgstr "Verwijder de volgende selecties van %s woordenboek:"
 
 msgid "All done!"
 msgstr "Klaar!"
@@ -3537,18 +3636,12 @@ msgid "SquirrelSpell Initiating"
 msgstr "Opstarten SquirrelSpell"
 
 #, c-format
-msgid ""
-"Settings adjusted to: <strong>%s</strong> with <strong>%s</strong> as "
-"default dictionary."
-msgstr ""
-"Instellingen veranderd naar: <strong>%s</strong> met <strong>%s</strong> als "
-"standaard woordenboek."
+msgid "Settings adjusted to: %s with %s as default dictionary."
+msgstr "Instellingen veranderd naar: %s met %s als standaard woordenboek."
 
 #, c-format
-msgid "Using <strong>%s</strong> dictionary (system default) for spellcheck."
-msgstr ""
-"<strong>%s</strong> woordenboek gebruikt als standaard voor "
-"spellingscontrole."
+msgid "Using %s dictionary (system default) for spellcheck."
+msgstr "%s woordenboek gebruikt als standaard voor spellingscontrole."
 
 msgid "International Dictionaries Preferences Updated"
 msgstr "Instellingen voor internationale woordenboeken bijgewerkt"
@@ -3606,7 +3699,7 @@ msgstr "Aantal ondersteunde talenparen: %s"
 msgid "No known limits, powered by Systran"
 msgstr "Geen limieten bekend, powered by Systran "
 
-msgid "No known limits, powered by Translation Experts's InterTran"
+msgid "No known limits, powered by Translation Experts' InterTran"
 msgstr "Geen limieten bekend, powered by Translation Experts's InterTran"
 
 #, c-format
@@ -3668,43 +3761,33 @@ msgstr ""
 msgid "%s to %s"
 msgstr "%s in %s"
 
-#, c-format
 msgid "English"
 msgstr "Engels"
 
-#, c-format
 msgid "Chinese"
 msgstr "Chinees"
 
-#, c-format
 msgid "French"
 msgstr "Frans"
 
-#, c-format
 msgid "German"
 msgstr "Duits"
 
-#, c-format
 msgid "Italian"
 msgstr "Italiaans"
 
-#, c-format
 msgid "Japanese"
 msgstr "Japans"
 
-#, c-format
 msgid "Korean"
 msgstr "Koreaans"
 
-#, c-format
 msgid "Portuguese"
 msgstr "Portugees"
 
-#, c-format
 msgid "Spanish"
 msgstr "Spaans"
 
-#, c-format
 msgid "Russian"
 msgstr "Russisch"
 
@@ -3726,7 +3809,6 @@ msgstr "Tsjechisch"
 msgid "Danish"
 msgstr "Deens"
 
-#, c-format
 msgid "Dutch"
 msgstr "Nederlands"
 
@@ -3736,7 +3818,6 @@ msgstr "Europees Spaans"
 msgid "Finnish"
 msgstr "Fins"
 
-#, c-format
 msgid "Greek"
 msgstr "Grieks"
 
@@ -3794,11 +3875,23 @@ msgstr "Vertaalrichting"
 msgid "Add to:"
 msgstr "Voeg toe aan:"
 
+msgid "sort by nickname"
+msgstr "sorteer op bijnaam"
+
+msgid "sort by name"
+msgstr "sorteer op naam"
+
+msgid "sort by email"
+msgstr "sorteer op e-mail"
+
+msgid "sort by info"
+msgstr "sorteer op info"
+
 msgid "Add to address book"
 msgstr "Voeg toe aan adresboek"
 
-msgid "Your Message has been sent."
-msgstr "Uw bericht is verzonden"
+msgid "As Attachment"
+msgstr "Als bijlage"
 
 msgid "Bypass Trash"
 msgstr "Omzeil Verwijderde Items"
@@ -3827,6 +3920,12 @@ msgstr "(Ontbrekend argument)"
 msgid "(Spurious argument)"
 msgstr "(Vals argument)"
 
+msgid "Fold"
+msgstr "Inklappen"
+
+msgid "Unfold"
+msgstr "Uitklappen"
+
 msgid "Saved Searches"
 msgstr "Opgeslagen zoekopdrachten"
 
@@ -3850,6 +3949,9 @@ msgstr "Verwijder uitsluitende criteria"
 
 msgid "Remove All Criteria"
 msgstr "Verwijder alle criteria"
+
+msgid "Not"
+msgstr "Niet"
 
 msgid "Answered"
 msgstr "Beantwoord"
@@ -3917,9 +4019,6 @@ msgstr "Berichtkop en berichttekst"
 msgid "Sent To"
 msgstr "Verzonden aan"
 
-msgid "Not"
-msgstr "Niet"
-
 msgid "And In"
 msgstr "En in"
 
@@ -3932,19 +4031,24 @@ msgstr "En"
 msgid "Or"
 msgstr "Of"
 
+msgid "Standard search"
+msgstr "Standaard zoekopdrachten"
+
+msgid "Advanced search"
+msgstr "Geavanceerde zoekopdrachten"
+
+msgid "Signout"
+msgstr "Afmelden"
+
 msgid "Folder List"
 msgstr "Mappenlijst"
 
+msgid "Click here to change the sorting of the address list"
+msgstr ""
+"Klik hier om de volgorde van sortering van de adressenlijst te veranderen"
+
 msgid "Possible reason : "
 msgstr "Mogelijke reden : "
-
-msgid "The imap server failed to handle threading."
-msgstr "De IMAP-server kon de threading niet aan."
-
-msgid "Click here to unset thread view for this mailbox and start again."
-msgstr ""
-"Klik hier om de weergave in threads voor deze mailbox te deactiveren en "
-"start opnieuw."
 
 msgid "ERROR : Bad function call."
 msgstr "FOUT : Bad function call."
@@ -3952,11 +4056,17 @@ msgstr "FOUT : Bad function call."
 msgid "Reason:"
 msgstr "Reden:"
 
-msgid "Flag"
-msgstr "Vlag"
+msgid "Server responded:"
+msgstr "Server reageerde:"
+
+msgid "Unknown recipient"
+msgstr "Onbekende ontvanger"
 
 msgid "Unflag"
 msgstr "Ontvlag"
+
+msgid "Flag"
+msgstr "Vlag"
 
 msgid "Click here to change the sorting of the message list"
 msgstr ""
@@ -3978,6 +4088,9 @@ msgid "Show recipient name if the message is from your default identity"
 msgstr ""
 "Toon naam ontvanger als het bericht van uw standaard identiteit afkomstig is"
 
+msgid "Prefix for Original Message when Replying"
+msgstr "Prefix voor oorspronkelijk bericht bij beantwoorden"
+
 msgid "Strip signature when replying"
 msgstr "Verwijder handtekening bij beantwoorden"
 
@@ -3987,14 +4100,29 @@ msgstr "Toon 'Verwijder & Vorige/Volgende' links"
 msgid "Save Replies with Original Message"
 msgstr "Bewaar antwoord bij oorspronkelijk bericht"
 
-msgid "Enable Collapsable Folders"
-msgstr "Activeer uitklapbare mappen"
-
 msgid "Folder"
 msgstr "Map"
 
 msgid "Subfolder"
 msgstr "Submap"
+
+msgid "XP"
+msgstr "XP"
+
+msgid "Hide SquirrelMail Header"
+msgstr "Verberg Squirrelmail berichtinformatie"
+
+msgid "Search functions"
+msgstr "Zoekfuncties"
+
+msgid "Only basic search"
+msgstr "Alleen basis zoekopdrachten"
+
+msgid "Only advanced search"
+msgstr "Alleen geavanceerde zoekopdrachten"
+
+msgid "Both search functions"
+msgstr "Beide zoekfuncties"
 
 msgid "Global address book DSN"
 msgstr "Globaal adresboek DSN"
@@ -4038,39 +4166,131 @@ msgstr "Gebruik php recode functies"
 msgid "Use php iconv functions"
 msgstr "Gebruik php iconv functies"
 
+msgid "Search Mailing List Archives"
+msgstr "Zoek in Mailinglist archieven"
+
+msgid "Search SourceForge Bugtracker"
+msgstr "Zoek SourceForge Bugtracker"
+
+msgid "Search for words:"
+msgstr "Zoek naar woorden:"
+
+msgid "Written by:"
+msgstr "Geschreven door:"
+
+msgid "Email addresses only"
+msgstr "Allen e-mailadressen"
+
+msgid "Mailing list:"
+msgstr "Mailinglist:"
+
+msgid "SquirrelMail users list"
+msgstr "SquirrelMail gebruikerslijst"
+
+msgid "SquirrelMail plugins list"
+msgstr "SquirrelMail plugin lijst"
+
+msgid "SquirrelMail developers list"
+msgstr "SquirrelMail ontwikkelaarslijst"
+
+msgid "SquirrelMail internationalization list"
+msgstr "SquirrelMail vertalingslijst"
+
+msgid "Sort by:"
+msgstr "Sorteren naar:"
+
+msgid "Relevance"
+msgstr "Relevantie"
+
+msgid "Search Archives"
+msgstr "Zoek archieven"
+
+msgid "Reset Form"
+msgstr "Reset formulier"
+
+msgid "Summary keyword:"
+msgstr "Samenvattend sleutelwoord:"
+
+msgid "Sort By:"
+msgstr "Sorteren naar:"
+
+msgid "ID"
+msgstr "ID"
+
+msgid "Summary"
+msgstr "Samenvatting"
+
+msgid "Open Date"
+msgstr "Open datum"
+
+msgid "Close Date"
+msgstr "Sluit datum"
+
+msgid "Submitter"
+msgstr "Beoordeler"
+
+msgid "Assignee"
+msgstr "Gevolmachtigde"
+
+msgid "Order:"
+msgstr "Volgorde:"
+
+msgid "Ascending"
+msgstr "Oplopend"
+
+msgid "Descending"
+msgstr "Aflopend"
+
+msgid "Search Bugtracker"
+msgstr "Zoek Bugtracker"
+
+msgid "Show system specs"
+msgstr "Toon systeemspecificaties"
+
+msgid "Plugin is disabled."
+msgstr "Plugin is uitgeschakeld"
+
+msgid "Server Capability response:"
+msgstr "Server reageert: "
+
 msgid ""
-"Note: it is recommended that you configure your system using conf.pl, and "
-"not this plugin. conf.pl contains additional information regarding the "
-"purpose of variables and appropriate values, as well as additional "
-"verification steps."
+"Select the IMAP commands you would like to run. Most commands require a "
+"selected mailbox so the select command is already setup. You can clear all "
+"the commands and test your own IMAP command strings. The commands are "
+"executed in order. The default values are simple IMAP commands using your "
+"default_charset and folder_prefix from SquirrelMail when needed."
 msgstr ""
-"NB. Het is aanbevolen dat u uw systeem configureerd met conf.pl en niet met "
-"deze plugin. conf.pl bevat extra informatie over het doel en gebruik van de "
-"variabelen en de juiste waarden alsmede extra verificatie stappen."
+"Selecteer de IMAP commando's die u wilt uitvoeren. De meeste commando's "
+"vereisen een geselecteerde mailbox dus het selectiecommando is al ingevoerd. "
+"U kunt alle commando's verwijderen om uw eigen IMAP commando's uit te voeren."
+"De commando's worden op volgorde uitgevoerd. De standaardwaarden zijn "
+"simpele IMAP commando's die gebruik maken van uw default_charset en "
+"folder_prefix van SquirrelMail."
 
 msgid ""
-"Run or consult conf.pl should you run into difficulty with your "
-"configuration."
-msgstr "Gebruik conf.pl als u in moeilijkheden raakt met uw configuratie."
+"NOTE: These commands are live, any changes made will effect your current "
+"email account."
+msgstr ""
+"NB: Deze commando's zijn echt, elke verandering heeft effect op uw huidige e-"
+"mailaccount."
 
-msgid "Test Configuration"
-msgstr "Test configuratie"
+msgid "Select"
+msgstr "Selecteren"
+
+msgid "Test Name"
+msgstr "Test naam"
+
+msgid "IMAP command string"
+msgstr "IMAP commando"
+
+msgid "Request:"
+msgstr "Verzoek:"
 
 msgid "No POP3 servers configured yet."
 msgstr "Nog geen POP3-servers geconfigureerd."
 
 msgid "Click here to go to the options page."
 msgstr "Klik hier om naar de opties pagina te gaan."
-
-msgid "POP3 Fetch Mail"
-msgstr "POP3-toegang externe e-mailaccounts"
-
-msgid ""
-"This configures settings for downloading email from a POP3 mailbox to your "
-"account on this server."
-msgstr ""
-"Instellingen voor het downloaden van e-mail van een externe POP3-server naar "
-"uw account op deze server."
 
 msgid "Spam Service Type:"
 msgstr "Spam Service Type:"
@@ -4081,40 +4301,18 @@ msgstr "Gratis spamrapportage"
 msgid "Member services"
 msgstr "Gebruikers services"
 
-msgid ""
-"The SpamCop service will display information as it finds it, so scroll down "
-"until you see a form button. It might pause a little while it is looking up "
-"information, so be a little patient. Read what it says, and submit the spam. "
-"Close the browser window.  Press Cancel or click on the appropriate mail "
-"folder to see messages and/or delete the spam."
-msgstr ""
-"De SpamCop service zal gevonden informatie tonen. Bekijk de pagina totdat u "
-"een formulierknop ziet. Afhankelijk van de informatie, kan het wat langer "
-"duren. Verzend de spamrapportage. Sluit het browser scherm. Klik op "
-"Annuleren of klik op de map met e-mail om de berichten te zien en/of de spam "
-"te verwijderen."
+msgid "Save Service Type"
+msgstr "Sla Service Type op"
 
-msgid "Spamcop Service Type"
-msgstr "Spamcop Service Type"
-
-msgid ""
-"Service type option allows selecting which spamcop services you are using. "
-"Member services use different web reporting forms  and does not display "
-"nags. You can purchase these services, if you want to support SpamCop."
-msgstr ""
-"Met de service type optie kunt u selecteren welke spamcop services uw "
-"gebruikt. Gebruikers services gebruiken andere webformulieren en tonen geen "
-"irritante informatie. U kunt deze services aanschaffen als u SpamCop wilt "
-"steunen."
+msgid "SpamCop reporting"
+msgstr "SpamCop rapportage"
 
 msgid "Filipino (Tagalog)"
 msgstr "Filipino (Tagalog)"
 
-#, c-format
 msgid "Simplified Chinese"
 msgstr "Simplified Chinese"
 
-#, c-format
 msgid "Traditional Chinese"
 msgstr "Traditional Chinese"
 
@@ -4123,6 +4321,87 @@ msgstr "Bezorgingsfout rapportage"
 
 msgid "Undelivered Message Headers"
 msgstr "Berichtkoppen onbestelbaar bericht"
+
+msgid "This image has been removed for security reasons"
+msgstr "Deze afbeelding is om veiligheidsredenen verwijders"
+
+#~ msgid "Your Message has been sent"
+#~ msgstr "Uw bericht is verzonden"
+
+#~ msgid "Draft folder"
+#~ msgstr "Concept map"
+
+#~ msgid "Click here to try again"
+#~ msgstr "Klik hier om het nog eens te proberen"
+
+#~ msgid "Enable Collapsible Folders"
+#~ msgstr "Maak uitklapbare mappen mogelijk"
+
+#~ msgid "You are currently using version %s."
+#~ msgstr "U gebruikt momenteel versie %s."
+
+#~ msgid "All Messages"
+#~ msgstr "Alle berichten"
+
+#~ msgid "POP3 noop:"
+#~ msgstr "POP3 noop:"
+
+#~ msgid "] messages"
+#~ msgstr "] berichten"
+
+#~ msgid "Simple POP3 Fetch Mail"
+#~ msgstr "POP3-toegang externe e-mailaccounts"
+
+#~ msgid ""
+#~ "This configures settings for downloading email from a pop3 mailbox to "
+#~ "your account on this server."
+#~ msgstr ""
+#~ "Instellingen voor het downloaden van e-mail van een externe pop3-server "
+#~ "naar uw account op deze server."
+
+#~ msgid ""
+#~ "The SpamCop service will display information as it finds it, so scroll "
+#~ "down until you see a form button.  It might pause a little while it is "
+#~ "looking up information, so be a little patient.  Read what it says, and "
+#~ "submit the spam.  Close the browser window.  Press Cancel or click on the "
+#~ "appropriate mail folder to see messages and/or delete the spam."
+#~ msgstr ""
+#~ "De SpamCop service zal gevonden informatie tonen. Bekijk de pagina totdat "
+#~ "u een formulierknop ziet. Afhankelijk van de informatie, kan het wat "
+#~ "langer duren. Verzend de spamrapportage. Sluit het browser scherm. Klik "
+#~ "op Annuleren of klik op de map met e-mail om de berichten te zien en/of "
+#~ "de spam te verwijderen."
+
+#~ msgid ""
+#~ "<p>Your personal dictionary is <strong>currently encrypted</strong>. This "
+#~ "helps protect your privacy in case the web-mail system gets compromized "
+#~ "and your personal dictionary ends up stolen. It is currently encrypted "
+#~ "with the password you use to access your mailbox, making it hard for "
+#~ "anyone to see what is stored in your personal dictionary.</p> "
+#~ "<p><strong>ATTENTION:</strong> If you forget your password, your personal "
+#~ "dictionary will become unaccessible, since it can no longer be decrypted. "
+#~ "If you change your mailbox password, SquirrelSpell will recognize it and "
+#~ "prompt you for your old password in order to re-encrypt the dictionary "
+#~ "with a new key.</p>"
+#~ msgstr ""
+#~ "<p>Uw persoonlijk woordenboek is <strong>momenteel beveiligd</strong>. "
+#~ "Dit zorgt voor bescherming van uw privacy in het geval dat het webmail "
+#~ "systeem wordt gekraakt en uw persoonlijke woordenboek wordt gestolen. Het "
+#~ "is momenteel beveiligd met het wachtwoord dat u ook gebruik bij het "
+#~ "aanmelden, zodat niemand kan zien wat in uw persoonlijk woordenboek is "
+#~ "opgenomen.</p> <p><strong>LET OP:</strong> Als u uw wachtwoord vergeet "
+#~ "wordt uw persoonlijk woordenboek ontoegankelijk, omdat het dan niet meer "
+#~ "ontcijferd kan worden. Als u uw wachtwoord verandert zal SquirrelSpel dit "
+#~ "herkennen en u vragen naar uw oude wachtwoord om het woordenboek met het "
+#~ "nieuwe wachtwoord te beveiligen.</p>"
+
+#~ msgid "The imap server failed to handle threading."
+#~ msgstr "De IMAP-server kon de threading niet aan."
+
+#~ msgid "Click here to unset thread view for this mailbox and start again."
+#~ msgstr ""
+#~ "Klik hier om de weergave in threads voor deze mailbox te deactiveren en "
+#~ "start opnieuw."
 
 #~ msgid "Use Confirmation Flags"
 #~ msgstr "Gebruik bevestigings-flags"
@@ -4244,9 +4523,6 @@ msgstr "Berichtkoppen onbestelbaar bericht"
 #~ msgid "No Messages found"
 #~ msgstr "Geen berichten gevonden"
 
-#~ msgid "Note Field Contains"
-#~ msgstr "Aantekeningveld bevat"
-
 #~ msgid "No To Address"
 #~ msgstr "Geen AAN adres"
 
@@ -4303,9 +4579,6 @@ msgstr "Berichtkoppen onbestelbaar bericht"
 #~ msgstr ""
 #~ "Neem a.u.b. contact op met uw systeembeheerder en rapporteer de volgende "
 #~ "foutmelding:"
-
-#~ msgid "Save to:"
-#~ msgstr "Bewaar in:"
 
 #~ msgid "Extract"
 #~ msgstr "Uitpakken"
