@@ -34,6 +34,7 @@ class Rfc822Header {
         $priority = 3,
         $dnt = '',
         $mlist = array(),
+        $encoding = '',
         $more_headers = array(); /* only needed for constructing headers
                                     in smtp.php */
     function parseHeader($hdr) {
