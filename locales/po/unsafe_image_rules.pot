@@ -1,11 +1,14 @@
 # SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2003-09-25 02:31+0100\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2004-10-19 19:01+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -13,160 +16,223 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: options.php:65
-msgid "Saved Trusted Options"
-msgstr ""
-
-#: options.php:77
-msgid "Options"
-msgstr ""
-
-#: options.php:77 setup.php:270
+#: add.php:47 options.php:89 setup.php:277
 msgid "Unsafe Image Rules"
 msgstr ""
 
-#: options.php:91
+#: add.php:47
+msgid "Safe Sender"
+msgstr ""
+
+#: add.php:53
+msgid ""
+"Use the form below to modify the address that will be added to the Unsafe "
+"Image Rules."
+msgstr ""
+
+#: add.php:60 options.php:218
+msgid "From"
+msgstr ""
+
+#: add.php:65 options.php:238 options.php:273
+msgid "Contains"
+msgstr ""
+
+#: add.php:66 options.php:241 options.php:272
+msgid "Reg.Exp."
+msgstr ""
+
+#: add.php:71 options.php:194
+msgid "Save"
+msgstr ""
+
+#: add.php:101
+msgid ""
+"The following address has been successfully added to the Unsafe Images "
+"Rules: "
+msgstr ""
+
+#: add.php:103 add.php:113
+msgid "Sending you back to the message list in 5 seconds."
+msgstr ""
+
+#: add.php:105 add.php:115
+msgid "If you are not automatically redirected, please click "
+msgstr ""
+
+#: add.php:112
+msgid ""
+"I didn't seem to get a valid email address to add. This shouldn't happen!"
+msgstr ""
+
+#: options.php:74
+msgid "Saved Trusted Options"
+msgstr ""
+
+#: options.php:89
+msgid "Options"
+msgstr ""
+
+#: options.php:103
 msgid "Trust all sources:"
 msgstr ""
 
-#: options.php:97
+#: options.php:109
 msgid "WARNING!"
 msgstr ""
 
-#: options.php:98
+#: options.php:110
 msgid "This is not recommended by the Squirrelmail Development Team."
 msgstr ""
 
-#: options.php:99
+#: options.php:111
 msgid ""
 "Read this <a href=\"http://www.squirrelmail.org/wiki/UnsafeImages\">http://"
 "www.squirrelmail.org/wiki/UnsafeImages</a> for more details. There is a risk "
 "you may receive more spam if you check this option."
 msgstr ""
 
-#: options.php:100
+#: options.php:112
 msgid "If checked unsafe images are always seen."
 msgstr ""
 
-#: options.php:101
+#: options.php:113
 msgid "If this option is checked, the state of other options is irrelevant."
 msgstr ""
 
-#: options.php:110
+#: options.php:122
 msgid "Trust sources in address book:"
 msgstr ""
 
-#: options.php:116
+#: options.php:128
 msgid ""
 "If checked unsafe images are shown for messages from anyone in your address "
 "book."
 msgstr ""
 
-#: options.php:123
+#: options.php:135
 msgid "Trust anything I send:"
 msgstr ""
 
-#: options.php:129
+#: options.php:141
 msgid ""
 "If checked unsafe images are shown for messages sent by any of your "
 "identities."
 msgstr ""
 
-#: options.php:130
+#: options.php:142
 msgid ""
 "You might not want to set this if you forward Spam to other people, and then "
 "go back and read from your 'Sent' folder."
 msgstr ""
 
-#: options.php:137
+#: options.php:149
 msgid "Trust defined sources:"
 msgstr ""
 
-#: options.php:143
+#: options.php:155
 msgid "If checked unsafe images are shown for the sources shown below."
 msgstr ""
 
-#: options.php:151
-msgid "Save"
+#: options.php:164
+msgid ""
+"When viewing a message with unsafe images, you can quickly add the sender's "
+"email address or domain to the Unsafe Image Rules by clicking the 'Add as "
+"Safe Sender' link. The following options set the default behavior when the "
+"address is being added."
 msgstr ""
 
-#: options.php:160
-msgid "Add New Rule"
+#: options.php:167
+msgid "Always add full email address:"
 msgstr ""
 
-#: options.php:161
-msgid "Done"
+#: options.php:174
+msgid "Always add full domain:"
 msgstr ""
 
-#: options.php:169
-msgid "Trust source if "
-msgstr ""
-
-#: options.php:175
-msgid "From"
-msgstr ""
-
-#: options.php:178
-msgid "To"
+#: options.php:179
+msgid ""
+"If selected only the domain of the sender will be added to the Unsafe Image "
+"Rules list."
 msgstr ""
 
 #: options.php:181
+msgid "Always ask:"
+msgstr ""
+
+#: options.php:186
+msgid "Ask what to add to the Unsafe Image Rules list."
+msgstr ""
+
+#: options.php:203
+msgid "Add New Rule"
+msgstr ""
+
+#: options.php:204
+msgid "Done"
+msgstr ""
+
+#: options.php:212
+msgid "Trust source if "
+msgstr ""
+
+#: options.php:221
+msgid "To"
+msgstr ""
+
+#: options.php:224
 msgid "Cc"
 msgstr ""
 
-#: options.php:184
+#: options.php:227
 msgid "To or Cc"
 msgstr ""
 
-#: options.php:187
+#: options.php:230
 msgid "Subject"
 msgstr ""
 
-#: options.php:195 options.php:230
-msgid "Contains"
-msgstr ""
-
-#: options.php:198 options.php:229
-msgid "Reg.Exp."
-msgstr ""
-
-#: options.php:206
+#: options.php:249
 msgid "NB"
 msgstr ""
 
-#: options.php:208
+#: options.php:251
 msgid "When specifying a Reg.Exp you must include delimeters."
 msgstr ""
 
-#: options.php:209
+#: options.php:252
 msgid "The 'Contains' check will be done with case-insensitive match."
 msgstr ""
 
-#: options.php:211
+#: options.php:254
 msgid "Submit"
 msgstr ""
 
-#: options.php:223
+#: options.php:266
 msgid "Edit"
 msgstr ""
 
-#: options.php:225
+#: options.php:268
 msgid "Delete"
 msgstr ""
 
-#: options.php:227
+#: options.php:270
 #, c-format
 msgid "If <b>%s</b> %s <b>%s</b>"
 msgstr ""
 
-#: options.php:235
-msgid "This doesn't look like a valid Reg.Exp."
-msgstr ""
-
-#: options.php:235
+#: options.php:278
 msgid "WARNING:"
 msgstr ""
 
-#: setup.php:272
+#: options.php:278
+msgid "This doesn't look like a valid Reg.Exp."
+msgstr ""
+
+#: setup.php:279
 msgid "Set up rules about how unsafe images in HTML messages are handled."
+msgstr ""
+
+#: setup.php:402
+msgid "Add as Safe Sender"
 msgstr ""
