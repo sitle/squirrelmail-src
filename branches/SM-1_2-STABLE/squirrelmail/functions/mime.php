@@ -777,11 +777,15 @@ function formatBody($imap_stream, $message, $color, $wrap_at) {
         if ($body_message->header->type1 == 'html') {
             if ( $show_html_default <> 1 ) {
                 $entity_conv = array('&nbsp;' => ' ',
+                                     '<p>'    => "\n",
+                                     '<br>'   => "\n",
+                                     '<P>'    => "\n",
+                                     '<BR>'   => "\n",
                                      '&gt;'   => '>',
                                      '&lt;'   => '<');
-                $body = strip_tags( $body );
                 $body = strtr($body, $entity_conv);
                 $body = trim($body);
+                $body = strip_tags($body);
                 translateText($body, $wrap_at, $body_message->header->charset);
             } else {
                 $body = MagicHTML( $body, $id );
