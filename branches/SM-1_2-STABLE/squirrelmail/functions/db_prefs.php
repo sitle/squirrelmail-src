@@ -301,7 +301,7 @@ function setPref($data_dir, $username, $string, $set_to) {
         return;
     }
 
-    if ($set_to == '') {
+    if ($set_to === '') {
         removePref($data_dir, $username, $string);
         return;
     }
