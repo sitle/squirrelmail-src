@@ -9,6 +9,14 @@
 * $Id$
 */
 
+/*
+ * Set a different session name to stop session conflicts on same server
+ * with software such as Gallery.  This *must* be set above all the rest
+ * of the code to stop other items launching a session first
+ */
+
+ini_set('session.name' , 'SQMSESSID');
+
 session_start();
 
 require_once('../functions/i18n.php');
