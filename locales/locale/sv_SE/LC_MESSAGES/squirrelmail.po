@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: SquirrelMail HEAD\n"
-"POT-Creation-Date: 2004-09-01 22:46+0200\n"
-"PO-Revision-Date: 2004-09-12 14:46+0200\n"
+"POT-Creation-Date: 2004-09-28 23:27+0200\n"
+"PO-Revision-Date: 2004-09-28 23:24+0200\n"
 "Last-Translator: Fredrik Jervfors <sqm_admin@fimbul.net>\n"
 "Language-Team: Swedish <squirrelmail-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -2915,6 +2915,21 @@ msgstr ""
 msgid "Message Details"
 msgstr "Brevets detaljer"
 
+msgid "Bodystructure"
+msgstr "Struktur"
+
+msgid "Entity"
+msgstr "Enhet"
+
+msgid "Content-Type"
+msgstr "Typ av innehåll"
+
+msgid "Encoding"
+msgstr "Kodning"
+
+msgid "RFC822 Message body"
+msgstr "Källa (i RFC822-format)"
+
 msgid "Close Window"
 msgstr "Stäng fönstret"
 
@@ -2930,16 +2945,13 @@ msgstr "Nytt brev"
 msgid "SquirrelMail Notice:"
 msgstr "Avisering från SquirrelMail:"
 
-msgid "You have"
-msgstr "Du har"
+#, c-format
+msgid "You have %s new message"
+msgstr "Du har %s nytt brev"
 
 #, c-format
-msgid "%s new message"
-msgstr "%s nytt brev"
-
-#, c-format
-msgid "%s new messages"
-msgstr "%s nya brev"
+msgid "You have %s new messages"
+msgstr "Du har %s nya brev"
 
 msgid "New Mail Notification"
 msgstr "Avisering vid nya brev"
@@ -3360,9 +3372,6 @@ msgstr "Jag försökte exekvera '%s', men fick svaret:"
 msgid "SquirrelSpell is misconfigured."
 msgstr "SquirrelSpell är felkonfigurerat."
 
-msgid "SquirrelSpell Results"
-msgstr "SquirrelSpell-resultat"
-
 msgid "Spellcheck completed. Commit changes?"
 msgstr "Stavningskontrollen är avslutad. Vill du spara förändringarna?"
 
@@ -3371,6 +3380,9 @@ msgstr "Inga ändringar gjordes."
 
 msgid "Now saving your personal dictionary... Please wait."
 msgstr "Sparar din personliga ordlista... Vänligen vänta."
+
+msgid "SquirrelSpell Results"
+msgstr "SquirrelSpell-resultat"
 
 #, c-format
 msgid "Found %s errors"
@@ -3874,6 +3886,9 @@ msgstr "Fel uppstod när inställningarna sparades"
 msgid "Some of your preference changes are not applied."
 msgstr "En del av ändringarna kommer inte att tillämpas."
 
+msgid "Invalid URL"
+msgstr "Ogiltig URL"
+
 msgid "As Attachment"
 msgstr "som bilaga"
 
@@ -4038,6 +4053,13 @@ msgstr "Orsak:"
 
 msgid "Server responded:"
 msgstr "Servern svarade:"
+
+msgid ""
+"TLS is enabled, but this version of PHP does not support TLS sockets, or is "
+"missing the openssl extension."
+msgstr ""
+"TLS är aktiverat, men denna version av PHP stödjer inte TLS-uttag, eller "
+"saknar OpenSSL-utbyggnaden."
 
 msgid "Unknown recipient"
 msgstr "Okänd mottagare"
@@ -4231,12 +4253,6 @@ msgstr "Sök i Bugtracker"
 msgid "Show system specs"
 msgstr "Visa systemspecifikationerna"
 
-msgid "You must type in your current password."
-msgstr "Du måste ange ditt nuvarande lösenord."
-
-msgid "Your current password is not correct."
-msgstr "Ditt nuvarade lösenord är inte korrekt angivet."
-
 msgid "You must type in a new password."
 msgstr "Du måste ange ditt nya lösenord."
 
@@ -4245,6 +4261,12 @@ msgstr "Du måste även ange ditt nya lösenord i verifikationsrutan."
 
 msgid "Your new password does not match the verify password."
 msgstr "Det nya lösenordet och verifikationen därav överensstämmer inte."
+
+msgid "You must type in your current password."
+msgstr "Du måste ange ditt nuvarande lösenord."
+
+msgid "Your current password is not correct."
+msgstr "Ditt nuvarade lösenord är inte korrekt angivet."
 
 #, c-format
 msgid "Your new password should be %s to %s characters long."
@@ -4345,21 +4367,6 @@ msgstr "Inga POP3-servrar är konfigurerade."
 
 msgid "Click here to go to the options page."
 msgstr "Tillbaka till inställningar"
-
-msgid "Bodystructure"
-msgstr "Struktur"
-
-msgid "Entity"
-msgstr "Enhet"
-
-msgid "Content-Type"
-msgstr "Typ av innehåll"
-
-msgid "Encoding"
-msgstr "Kodning"
-
-msgid "RFC822 Message body"
-msgstr "Källa (i RFC822-format)"
 
 msgid "Spam Service Type:"
 msgstr "Typ av skräpposttjänst:"
