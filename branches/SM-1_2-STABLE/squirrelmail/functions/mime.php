@@ -702,7 +702,7 @@ function translateText(&$body, $wrap_at, $charset) {
             $line = '<FONT COLOR="' . $color[13] . '">' . $line . '</FONT>';
         } elseif ($Quotes) {
             if (! isset($color[14])) {
-                $color[13] = '#FF0000';
+                $color[14] = '#FF0000';
             }
             $line = '<FONT COLOR="' . $color[14] . '">' . $line . '</FONT>';
         }
