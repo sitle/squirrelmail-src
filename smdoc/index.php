@@ -40,7 +40,7 @@ $objectOK = TRUE;
  * e.g. object=sqmindex, object=faq, object=privacy, etc.
  */
 $objectName_q = new input_querystring('object', REGEX_TITLE);
-if ( $objectName_q->wasValid )
+if ( $objectName_q->wasSet && $objectName_q->wasValid )
 {
   $lookup =& smdoc_name_lookup::getInstance($foowd);
   $result = $lookup->findObject($objectName_q->value,
