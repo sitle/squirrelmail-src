@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2004-07-02 15:55+0200\n"
+"POT-Creation-Date: 2004-07-03 09:27+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1757,7 +1757,7 @@ msgstr ""
 msgid "IMAP Folder Delimiter"
 msgstr ""
 
-msgid "Use \"detect\" to auto-detect."
+msgid "Use &quot;detect&quot; to auto-detect."
 msgstr ""
 
 msgid "Use TLS for IMAP Connections"
@@ -1769,7 +1769,13 @@ msgstr ""
 msgid "IMAP Authentication Type"
 msgstr ""
 
+msgid "IMAP login"
+msgstr ""
+
 msgid "Use Sendmail Binary"
+msgstr ""
+
+msgid "Choose &quot;no&quot; for SMTP"
 msgstr ""
 
 msgid "Sendmail Path"
@@ -1785,6 +1791,12 @@ msgid "Use TLS for SMTP Connections"
 msgstr ""
 
 msgid "SMTP Authentication Type"
+msgstr ""
+
+msgid "No SMTP auth"
+msgstr ""
+
+msgid "Login (plain text)"
 msgstr ""
 
 msgid "POP3 Before SMTP?"
@@ -1946,6 +1958,18 @@ msgstr ""
 msgid "Configuration Administrator"
 msgstr ""
 
+msgid ""
+"Note: it is recommended that you configure your system using conf.pl, and "
+"not this plugin. conf.pl contains additional information regarding the "
+"purpose of variables and appropriate values, as well as additional "
+"verification steps."
+msgstr ""
+
+msgid ""
+"Run or consult conf.pl should you run into difficulty with your "
+"configuration."
+msgstr ""
+
 msgid "Theme Name"
 msgstr ""
 
@@ -1955,7 +1979,14 @@ msgstr ""
 msgid "Plugins"
 msgstr ""
 
+#, c-format
+msgid "Plugin directory could not be found: %s"
+msgstr ""
+
 msgid "Change Settings"
+msgstr ""
+
+msgid "Test Configuration"
 msgstr ""
 
 msgid "Config file can't be opened. Please check config.php."

@@ -1,16 +1,25 @@
 <?php
 
 /**
- * Administrator Plugin
+ * Administrator Plugin - Options Page
  *
- * Copyright (c) 1999-2004 The SquirrelMail Project Team
- * Licensed under the GNU GPL. For full terms see the file COPYING.
+ * This script creates separate page, that allows to review and modify
+ * SquirrelMail configuration file.
  *
- * Philippe Mingo
- *
- * $Id$
+ * @version $Id$
+ * @author Philippe Mingo
+ * @copyright (c) 1999-2004 The SquirrelMail Project Team
+ * @license http://opensource.org/licenses/gpl-license.php GNU Public License
+ * @package plugins
+ * @subpackage administrator
  */
 
+/**
+ * parse the config file
+ *
+ * @param string $cfg_file
+ * @access private
+ */
 function parseConfig( $cfg_file ) {
 
     global $newcfg;
@@ -36,7 +45,7 @@ function parseConfig( $cfg_file ) {
                 break;
             case 'K':
                 // Key detect
-                if( $line{$j} == ' ' ) {
+                if ( $line{$j} == ' ' ) {
                     $mode = '=';
                 } else {
                     $key .= $line{$j};
@@ -129,14 +138,19 @@ function parseConfig( $cfg_file ) {
     }
 }
 
-/* Change paths containing SM_PATH to admin-friendly paths
-   relative to the config dir, i.e.:
-     ''                          --> <empty string>
-     SM_PATH . 'images/logo.gif' --> ../images/logo.gif
-     '/absolute/path/logo.gif'   --> /absolute/path/logo.gif
-     'http://whatever/'          --> http://whatever
-   Note removal of quotes in returned value
-*/
+/**
+ * Change paths containing SM_PATH to admin-friendly paths
+ * relative to the config dir, i.e.:
+ *    ''                          --> <empty string>
+ *    SM_PATH . 'images/logo.gif' --> ../images/logo.gif
+ *    '/absolute/path/logo.gif'   --> /absolute/path/logo.gif
+ *    'http://whatever/'          --> http://whatever
+ *  Note removal of quotes in returned value
+ *  
+ * @param string $old_path path that has to be converted
+ * @return string new path
+ * @access private
+ */
 function change_to_rel_path($old_path) {
     $new_path = str_replace("SM_PATH . '", "../", $old_path); 
     $new_path = str_replace("../config/","", $new_path);
@@ -144,57 +158,63 @@ function change_to_rel_path($old_path) {
     return $new_path;
 }
 
-/* Change relative path (relative to config dir) to 
-   internal SM_PATH, i.e.:
-     empty_string            --> ''
-     ../images/logo.gif      --> SM_PATH . 'images/logo.gif'
-     images/logo.gif         --> SM_PATH . 'config/images/logo.gif'
-     /absolute/path/logo.gif --> '/absolute/path/logo.gif'
-     http://whatever/        --> 'http://whatever'
+/**
+ * Change relative path (relative to config dir) to 
+ *  internal SM_PATH, i.e.:
+ *     empty_string            --> ''
+ *     ../images/logo.gif      --> SM_PATH . 'images/logo.gif'
+ *     images/logo.gif         --> SM_PATH . 'config/images/logo.gif'
+ *     /absolute/path/logo.gif --> '/absolute/path/logo.gif'
+ *     http://whatever/        --> 'http://whatever'
+ *  
+ * @param string $old_path path that has to be converted
+ * @return string new path
+ * @access private
 */     
 function change_to_sm_path($old_path) {
-   if ( $old_path === '' || $old_path == "''" ) {
-     return "''";
-   } elseif ( preg_match("/^(\/|http)/", $old_path) ) {
-     return "'" . $old_path . "'";
-   } elseif ( preg_match("/^(\$|SM_PATH)/", $old_path) ) {
-     return $old_path;
-   }
+    if ( $old_path === '' || $old_path == "''" ) {
+        return "''";
+    } elseif ( preg_match("/^(\/|http)/", $old_path) ) {
+        return "'" . $old_path . "'";
+    } elseif ( preg_match("/^(\$|SM_PATH)/", $old_path) ) {
+        return $old_path;
+    }
    
-   $new_path = '';
-   $rel_path = explode("../", $old_path);
-   if ( count($rel_path) > 2 ) {
-     // Since we're relative to the config dir, 
-     // more than 1 ../ puts us OUTSIDE the SM tree.
-     // get full path to config.php, then pop the filename
-     $abs_path = explode('/', realpath (SM_PATH . 'config/config.php'));
-     array_pop ($abs_path); 
-     foreach ( $rel_path as $subdir ) {
-       if ( $subdir === '' ) {
-         array_pop ($abs_path);
-       } else {
-         array_push($abs_path, $subdir);
-       }
-     }
-     foreach ($abs_path as $subdir) {
-       $new_path .= $subdir . '/';
-     }
-     $new_path = "'$new_path'";
-   } elseif ( count($rel_path) > 1 ) {
-     // we're within the SM tree, prepend SM_PATH
-     $new_path = str_replace('../',"SM_PATH . '", $old_path . "'");
-   } else {
-     // Last, if it's a relative path without a .. prefix, 
-     // we're somewhere within the config dir, so prepend
-     //  SM_PATH . 'config/  
-     $new_path = "SM_PATH . 'config/" . $old_path . "'";
-   }
-   return $new_path;
+    $new_path = '';
+    $rel_path = explode("../", $old_path);
+    if ( count($rel_path) > 2 ) {
+        // Since we're relative to the config dir, 
+        // more than 1 ../ puts us OUTSIDE the SM tree.
+        // get full path to config.php, then pop the filename
+        $abs_path = explode('/', realpath (SM_PATH . 'config/config.php'));
+        array_pop ($abs_path); 
+        foreach ( $rel_path as $subdir ) {
+            if ( $subdir === '' ) {
+                array_pop ($abs_path);
+            } else {
+                array_push($abs_path, $subdir);
+            }
+        }
+        foreach ($abs_path as $subdir) {
+            $new_path .= $subdir . '/';
+        }
+        $new_path = "'$new_path'";
+    } elseif ( count($rel_path) > 1 ) {
+        // we're within the SM tree, prepend SM_PATH
+        $new_path = str_replace('../',"SM_PATH . '", $old_path . "'");
+    } else {
+        // Last, if it's a relative path without a .. prefix, 
+        // we're somewhere within the config dir, so prepend
+        //  SM_PATH . 'config/  
+        $new_path = "SM_PATH . 'config/" . $old_path . "'";
+    }
+    return $new_path;
 }
 
 
 /* ---------------------- main -------------------------- */
 
+/** @ignore */
 define('SM_PATH','../../');
 
 /* SquirrelMail required files. */
@@ -205,7 +225,7 @@ require_once(SM_PATH . 'include/load_prefs.php');
 require_once(SM_PATH . 'plugins/administrator/defines.php');
 require_once(SM_PATH . 'plugins/administrator/auth.php');
 
-GLOBAL $data_dir, $username;
+global $data_dir, $username;
 
 if ( !adm_check_user() ) {
     header('Location: ' . SM_PATH . 'src/options.php') ;
@@ -237,25 +257,24 @@ $colapse = array( 'Titles' => 'off',
 /* look in $_GET array for 'switch' */
 if ( sqgetGlobalVar('switch', $switch, SQ_GET) ) {
     if ( $colapse[$switch] == 'on' ) {
-       $colapse[$switch] = 'off';
+        $colapse[$switch] = 'off';
     } else {
-       $colapse[$switch] = 'on';
+        $colapse[$switch] = 'on';
     }
     setPref($data_dir, $username, "adm_$switch", $colapse[$switch] );
 }
 
-echo "<form action=options.php method=post name=options>" .
-    "<center><table width=95% bgcolor=\"$color[5]\"><tr><td>".
-    "<table width=100% cellspacing=0 bgcolor=\"$color[4]\">" ,
-    "<tr bgcolor=\"$color[5]\"><th colspan=2>" . _("Configuration Administrator") . "</th></tr>",
-    "<tr bgcolor=\"$color[5]\"><td colspan=2 align=\"center\">";
-?>
-<small>Note: it is recommended that you configure your system using conf.pl, and not this plugin.
-conf.pl contains additional information regarding the purpose of variables and
-appropriate values, as well as additional verification steps.<br />
-Run or consult conf.pl should you run into difficulty with your configuration.</small>
-</td></tr>
-<?php
+echo '<form action="options.php" method="post" name="options">' .
+     '<center><table width="95%" bgcolor="'.$color[5].'"><tr><td>'.
+     '<table width="100%" cellspacing="0" bgcolor="'.$color[4].'">'.
+     '<tr bgcolor="'.$color[5].'"><th colspan="2">'.
+     _("Configuration Administrator").'</th></tr>'.
+     '<tr bgcolor="'.$color[5].'"><td colspan="2" align="center"><small>'.
+     _("Note: it is recommended that you configure your system using conf.pl, and not this plugin. conf.pl contains additional information regarding the purpose of variables and appropriate values, as well as additional verification steps.").
+     '<br />'.
+     _("Run or consult conf.pl should you run into difficulty with your configuration.").
+     '</small></td></tr>';
+
 
 $act_grp = 'Titles';  /* Active group */
 
@@ -296,7 +315,7 @@ foreach ( $newcfg as $k => $v ) {
         $type = SMOPT_TYPE_LDAP;
     }
 
-    if( $type == SMOPT_TYPE_TITLE || $colapse[$act_grp] == 'off' ) {
+    if ( $type == SMOPT_TYPE_TITLE || $colapse[$act_grp] == 'off' ) {
 
         switch ( $type ) {
         case SMOPT_TYPE_LDAP:
@@ -307,7 +326,7 @@ foreach ( $newcfg as $k => $v ) {
         case SMOPT_TYPE_EXTERNAL:
             echo "<tr><td>$name</td><td><b>" .
                  $defcfg[$k]['value'] .
-                 "</b></td></tr>";
+                 '</b></td></tr>';
             break;
         case SMOPT_TYPE_TITLE:
             if ( $colapse[$k] == 'on' ) {
@@ -315,9 +334,9 @@ foreach ( $newcfg as $k => $v ) {
             } else {
                 $sw = '(-)';
             }
-            echo "<tr bgcolor=\"$color[0]\"><th colspan=2>" .
-                 "<a href=options.php?switch=$k STYLE=\"text-decoration:none\"><b>$sw</b> </a>" .
-                 "$name</th></tr>";
+            echo '<tr bgcolor="'.$color[0].'"><th colspan="2">'.
+                 "<a href=\"options.php?switch=$k\" style=\"text-decoration:none\">".
+                 '<b>'.$sw.'</b></a> '.$name.'</th></tr>';
             $act_grp = $k;
             break;
         case SMOPT_TYPE_COMMENT:
@@ -331,13 +350,13 @@ foreach ( $newcfg as $k => $v ) {
             echo "</td></tr>\n";
             break;
         case SMOPT_TYPE_INTEGER:
-	    /* look for variable $e in POST, fill into $v */
+            /* look for variable $e in POST, fill into $v */
             if ( sqgetGlobalVar($e, $v, SQ_POST) ) {
                 $v = intval( $v );
                 $newcfg[$k] = $v;
             }
             echo "<tr><td>$name</td><td>".
-                 "<input size=10 name=\"adm_$n\" value=\"$v\">";
+                 "<input size=\"10\" name=\"adm_$n\" value=\"$v\" />";
             if ( isset( $defcfg[$k]['comment'] ) ) {
                 echo ' &nbsp; ' . $defcfg[$k]['comment'];
             }
@@ -352,7 +371,7 @@ foreach ( $newcfg as $k => $v ) {
             foreach ( $defcfg[$k]['posvals'] as $kp => $vp ) {
                 echo "<option value=\"$kp\"";
                 if ( $kp == $v ) {
-                    echo ' selected';
+                    echo ' selected="selected"';
                 }
                 echo ">$vp</option>";
             }
@@ -372,7 +391,7 @@ foreach ( $newcfg as $k => $v ) {
             foreach ( $defcfg[$k]['posvals'] as $kp => $vp ) {
                 echo "<option value=\"$kp\"";
                 if ( $kp == substr( $v, 1, strlen( $v ) - 2 ) ) {
-                    echo ' selected';
+                    echo ' selected="selected"';
                 }
                 echo ">$vp</option>";
             }
@@ -388,8 +407,8 @@ foreach ( $newcfg as $k => $v ) {
                 $v = '"' . $v . '"';
                 $newcfg[$k] = str_replace( "\n", '', $v );
             }
-            echo "<tr><td valign=top>$name</td><td>".
-                 "<textarea cols=\"$size\" name=\"adm_$n\">" . substr( $v, 1, strlen( $v ) - 2 ) . "</textarea>";
+            echo "<tr><td valign=\"top\">$name</td><td>".
+                 "<textarea cols=\"$size\" rows=\"4\" name=\"adm_$n\">" . substr( $v, 1, strlen( $v ) - 2 ) . "</textarea>";
             if ( isset( $defcfg[$k]['comment'] ) ) {
                 echo ' &nbsp; ' . $defcfg[$k]['comment'];
             }
@@ -405,7 +424,7 @@ foreach ( $newcfg as $k => $v ) {
                 $newcfg[$k] = $v;
             }
             echo "<tr><td>$name</td><td>".
-                 "<input size=\"$size\" name=\"adm_$n\" value=\"" . substr( $v, 1, strlen( $v ) - 2 ) . "\">";
+                 "<input size=\"$size\" name=\"adm_$n\" value=\"" . substr( $v, 1, strlen( $v ) - 2 ) . '" />';
             if ( isset( $defcfg[$k]['comment'] ) ) {
                 echo ' &nbsp; ' . $defcfg[$k]['comment'];
             }
@@ -418,21 +437,21 @@ foreach ( $newcfg as $k => $v ) {
                 $v = strtoupper( $v );
             }
             if ( $v == 'TRUE' ) {
-                $ct = ' checked';
+                $ct = ' checked="checked"';
                 $cf = '';
             } else {
                 $ct = '';
-                $cf = ' checked';
+                $cf = ' checked="checked"';
             }
             echo "<tr><td>$name</td><td>" .
-                 "<INPUT$ct type=radio NAME=\"adm_$n\" value=\"TRUE\">" . _("Yes") .
-                 "<INPUT$cf type=radio NAME=\"adm_$n\" value=\"FALSE\">" . _("No");
+                 "<input$ct type=\"radio\" name=\"adm_$n\" value=\"TRUE\" />" . _("Yes") .
+                 "<input$cf type=\"radio\" name=\"adm_$n\" value=\"FALSE\" />" . _("No");
             if ( isset( $defcfg[$k]['comment'] ) ) {
                 echo ' &nbsp; ' . $defcfg[$k]['comment'];
             }
             echo "</td></tr>\n";
             break;
-	case SMOPT_TYPE_PATH:
+        case SMOPT_TYPE_PATH:
             if (  sqgetGlobalVar($e, $v, SQ_POST) ) {
                $v = change_to_sm_path($v);
                $newcfg[$k] = $v;
@@ -441,13 +460,13 @@ foreach ( $newcfg as $k => $v ) {
                $v = change_to_sm_path($defcfg[$k]['default']);
                $newcfg[$k] = $v;
             }
-	    echo "<tr><td>$name</td><td>".
-                 "<input size=\"$size\" name=\"adm_$n\" value=\"" . change_to_rel_path($v) . "\">";
+            echo "<tr><td>$name</td><td>".
+                 "<input size=\"$size\" name=\"adm_$n\" value=\"" . change_to_rel_path($v) . '" />';
             if ( isset( $defcfg[$k]['comment'] ) ) {
                  echo ' &nbsp; ' . $defcfg[$k]['comment'];
             }
-	    echo "</td></tr>\n";
-	    break;
+            echo "</td></tr>\n";
+            break;
         default:
             echo "<tr><td>$name</td><td>" .
                  "<b><i>$v</i></b>";
@@ -479,15 +498,15 @@ if ( $colapse['Group7'] == 'off' ) {
         $e2 = "theme_path_$i";
         if (  sqgetGlobalVar($e, $v2, SQ_POST) ) {
             $v2 = change_to_sm_path($v2);
-	    $newcfg[$k2] = $v2;
+            $newcfg[$k2] = $v2;
         } else {
             $v2 = $newcfg[$k2];
         }
         $name = substr( $v1, 1, strlen( $v1 ) - 2 );
         $path = change_to_rel_path($v2);
         echo '<tr>'.
-             "<td align=right>$i. <input name=\"$e1\" value=\"$name\" size=30></td>".
-             "<td><input name=\"$e2\" value=\"$path\" size=40></td>".
+             "<td align=\"right\">$i. <input name=\"$e1\" value=\"$name\" size=\"30\" /></td>".
+             "<td><input name=\"$e2\" value=\"$path\" size=\"40\" /></td>".
              "</tr>\n";
         $i++;
 
@@ -500,82 +519,90 @@ if ( $colapse['Group8'] == 'on' ) {
 } else {
     $sw = '(-)';
 }
-echo "<tr bgcolor=\"$color[0]\"><th colspan=2>" .
-     "<a href=options.php?switch=Group8 STYLE=\"text-decoration:none\"><b>$sw</b> </a>" .
-     _("Plugins") . '</th></tr>';
+echo '<tr bgcolor="'.$color[0].'"><th colspan="2">'.
+     '<a href="options.php?switch=Group8" style="text-decoration:none"><b>'.
+     $sw.'</b></a> '._("Plugins").'</th></tr>';
 
-if( $colapse['Group8'] == 'off' ) {
+if ( $colapse['Group8'] == 'off' ) {
 
-  $plugpath = SM_PATH . 'plugins/';
-  if ( file_exists($plugpath) ) {
-      $fd = opendir( $plugpath );
-      $op_plugin = array();
-      $p_count = 0;
-      while (false !== ($file = readdir($fd))) {
-        if ($file != '.' && $file != '..' && $file != 'CVS' && is_dir($plugpath . $file) ) {
-            $op_plugin[] = $file;
-            $p_count++;
-        }
-      }
-      closedir($fd);
-      asort( $op_plugin );
-
-      /* Lets get the plugins that are active */
-      $plugins = array();
-      if (  sqgetGlobalVar('plg', $v, SQ_POST) ) {
-        foreach ( $op_plugin as $plg ) {
-            if (  sqgetGlobalVar("plgs_$plg", $v, SQ_POST) && $v == 'on' ) {
-                $plugins[] = $plg;
+    $plugpath = SM_PATH . 'plugins/';
+    if ( file_exists($plugpath) ) {
+        $fd = opendir( $plugpath );
+        $op_plugin = array();
+        $p_count = 0;
+        while (false !== ($file = readdir($fd))) {
+            if ($file != '.' && $file != '..' && $file != 'CVS' && is_dir($plugpath . $file) ) {
+                $op_plugin[] = $file;
+                $p_count++;
             }
         }
-        $i = 0;
-        foreach ( $plugins as $plg ) {
-            $k = "\$plugins[$i]";
-            $newcfg[$k] = "'$plg'";
-            $i++;
-        }
-        while ( isset( $newcfg["\$plugins[$i]"] ) ) {
-            $k = "\$plugins[$i]";
-            $newcfg[$k] = '';
-            $i++;
-        }
-      } else {
-        $i = 0;
-        while ( isset( $newcfg["\$plugins[$i]"] ) ) {
-            $k = "\$plugins[$i]";
-            $v = $newcfg[$k];
-            $plugins[] = substr( $v, 1, strlen( $v ) - 2 );
-            $i++;
-        }
-      }
-      echo "<tr><td colspan=2><input type=hidden name=plg value=on><center><table><tr><td>";
-      foreach ( $op_plugin as $plg ) {
-        if ( in_array( $plg, $plugins ) ) {
-            $sw = ' checked';
+        closedir($fd);
+        asort( $op_plugin );
+
+        /* Lets get the plugins that are active */
+        $plugins = array();
+        if (  sqgetGlobalVar('plg', $v, SQ_POST) ) {
+            foreach ( $op_plugin as $plg ) {
+                if (  sqgetGlobalVar("plgs_$plg", $v, SQ_POST) && $v == 'on' ) {
+                    $plugins[] = $plg;
+                }
+            }
+            $i = 0;
+            foreach ( $plugins as $plg ) {
+                $k = "\$plugins[$i]";
+                $newcfg[$k] = "'$plg'";
+                $i++;
+            }
+            while ( isset( $newcfg["\$plugins[$i]"] ) ) {
+                $k = "\$plugins[$i]";
+                $newcfg[$k] = '';
+                $i++;
+            }
         } else {
-            $sw = '';
+            $i = 0;
+            while ( isset( $newcfg["\$plugins[$i]"] ) ) {
+                $k = "\$plugins[$i]";
+                $v = $newcfg[$k];
+                $plugins[] = substr( $v, 1, strlen( $v ) - 2 );
+                $i++;
+            }
         }
-        echo '<tr>' .
-             "<td>$plg</td><td><input$sw type=checkbox name=plgs_$plg></td>".
-             "</tr>\n";
-      }
-      echo '</td></tr></table></td></tr>';
-  } else {
-      echo '<tr><td colspan=2 align="center">Plugin directory could not be found: ' . $plugpath . "</td></tr>\n";
-  }
+        echo '<tr><td colspan="2"><input type="hidden" name="plg" value="on" /><center><table>';
+        foreach ( $op_plugin as $plg ) {
+            if ( in_array( $plg, $plugins ) ) {
+                $sw = ' checked="checked"';
+            } else {
+                $sw = '';
+            }
+            echo '<tr><td>';
+            if (file_exists(SM_PATH . "plugins/$plg/README")) {
+                echo "<a href=\"../$plg/README\" target=\"_blank\">$plg</a>";
+            } else {
+                echo $plg;
+            }
+            echo "</td>\n".
+                 "<td><input$sw type=\"checkbox\" name=\"plgs_$plg\" /></td>".
+                 "</tr>\n";
+        }
+        echo '</table></center></td></tr>';
+    } else {
+        echo '<tr><td colspan="2" align="center">'.
+             sprintf(_("Plugin directory could not be found: %s"), $plugpath).
+             "</td></tr>\n";
+    }
 }
-echo "<tr bgcolor=\"$color[5]\"><th colspan=2><input value=\"" .
-     _("Change Settings") . '" type="submit"><br />'.
-     '<a href="'.SM_PATH.'src/configtest.php" target="_blank">' . _("Test Configuration") .
-     "</a></th></tr>\n" .
-     '</table></td></tr></table></form>';
+echo '<tr bgcolor="'.$color[5].'"><th colspan="2"><input value="'.
+     _("Change Settings").'" type="submit" /><br />'.
+     '<a href="'.SM_PATH.'src/configtest.php" target="_blank">'.
+     _("Test Configuration")."</a></th></tr>\n".
+     '</table></td></tr></table></center></form>';
 
 /*
     Write the options to the file.
 */
 
-if( $fp = @fopen( $cfgfile, 'w' ) ) {
-    fwrite( $fp, "<?PHP\n".
+if ( $fp = @fopen( $cfgfile, 'w' ) ) {
+    fwrite( $fp, "<?php\n".
     "/**\n".
     " * SquirrelMail Configuration File\n".
     " * Created using the Administrator Plugin\n".
@@ -584,7 +611,7 @@ if( $fp = @fopen( $cfgfile, 'w' ) ) {
     "global \$version;\n" );
 
     foreach ( $newcfg as $k => $v ) {
-        if ( $k{0} == '$' && $v <> '' ) {
+        if ( $k{0} == '$' && $v <> '' || is_int($v)) {
             if ( substr( $k, 1, 11 ) == 'ldap_server' ) {
                 $v = substr( $v, 0, strlen( $v ) - 1 ) . "\n)";
                 $v = str_replace( 'array(', "array(\n\t", $v );
@@ -596,8 +623,9 @@ if( $fp = @fopen( $cfgfile, 'w' ) ) {
     fwrite( $fp, '?>' );
     fclose( $fp );
 } else {
-    echo '<font size=+1><br>'.
+    echo '<br /><p align="center"><big>'.
          _("Config file can't be opened. Please check config.php.").
-         '</font>';
+         '</big></p>';
 }
 ?>
+</body></html>
