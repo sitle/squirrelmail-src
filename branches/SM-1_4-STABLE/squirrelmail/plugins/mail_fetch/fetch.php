@@ -26,14 +26,6 @@ sqgetGlobalVar('username',   $username,   SQ_SESSION);
 sqgetGlobalVar('key',        $key,        SQ_COOKIE);
 sqgetGlobalVar('onetimepad', $onetimepad, SQ_SESSION);
 sqgetGlobalVar('delimiter',  $delimiter,  SQ_SESSION);
-
-/* FIXME: This form, like the advanced identities form
- * uses dynamic post variable names so we need
- * to extract the whole $_POST array to make
- * things work
- */
-
-extract($_POST);
 /* end globals */
 
     function Mail_Fetch_Status($msg) {
@@ -128,11 +120,10 @@ extract($_POST);
         $mailfetch_server=$mailfetch_server_[$i_loop];
         $mailfetch_port=$mailfetch_port_[$i_loop];
         $mailfetch_user=$mailfetch_user_[$i_loop];
-        if ($mailfetch_pass_[$i_loop]=="") {
-            $tmp="pass_$i_loop";
-            $mailfetch_pass=$$tmp;
+        if ($mailfetch_pass_[$i_loop] == '') {
+            sqgetGlobalVar("pass_$i_loop", $mailfetch_pass, SQ_POST);
         } else {
-            $mailfetch_pass=$mailfetch_pass_[$i_loop];
+            $mailfetch_pass = $mailfetch_pass_[$i_loop];
         }
         $mailfetch_lmos=$mailfetch_lmos_[$i_loop];
         $mailfetch_login=$mailfetch_login_[$i_loop];
