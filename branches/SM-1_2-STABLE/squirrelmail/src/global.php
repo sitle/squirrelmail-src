@@ -24,6 +24,7 @@ if ( (float)substr(PHP_VERSION,0,3) < 4.1 ) {
   global $_COOKIE, $_ENV, $_FILES, $_GET, $_POST, $_SERVER, $_SESSION;
   global $HTTP_COOKIE_VARS, $HTTP_ENV_VARS, $HTTP_POST_FILES, $HTTP_GET_VARS,
          $HTTP_POST_VARS, $HTTP_SERVER_VARS, $HTTP_SESSION_VARS;
+  global $PHP_SELF;
   $_COOKIE  =& $HTTP_COOKIE_VARS;
   $_ENV     =& $HTTP_ENV_VARS;
   $_FILES   =& $HTTP_POST_FILES;
@@ -31,6 +32,7 @@ if ( (float)substr(PHP_VERSION,0,3) < 4.1 ) {
   $_POST    =& $HTTP_POST_VARS;
   $_SERVER  =& $HTTP_SERVER_VARS;
   $_SESSION =& $HTTP_SESSION_VARS;
+  $PHP_SELF =  $HTTP_SERVER_VARS['PHP_SELF'];
 }
 
 /* if running with register_globals = 0 and 
