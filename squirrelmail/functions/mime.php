@@ -95,7 +95,7 @@ function mime_structure ($bodystructure, $flags=array()) {
  */
 
 function mime_fetch_body($imap_stream, $id, $ent_id=1, $fetch_size=0) {
-    global $uid_support; 
+    global $uid_support;
     /* Do a bit of error correction.  If we couldn't find the entity id, just guess
      * that it is the first one.  That is usually the case anyway.
      */
@@ -106,7 +106,7 @@ function mime_fetch_body($imap_stream, $id, $ent_id=1, $fetch_size=0) {
     }
 
     if ($fetch_size!=0) $cmd .= "<0.$fetch_size>";
-    
+
     $data = sqimap_run_command ($imap_stream, $cmd, true, $response, $message, $uid_support);
     do {
         $topline = trim(array_shift($data));
@@ -355,7 +355,7 @@ function formatBody($imap_stream, $message, $color, $wrap_at, $ent_num, $id, $ma
         }
         $link = 'read_body.php?passed_id=' . $id . '&amp;ent_id='.$ent_num.
                 '&amp;mailbox=' . $urlmailbox .'&amp;sort=' . $sort .
-                '&amp;startMessage=' . $startMessage . '&amp;show_more=0'; 
+                '&amp;startMessage=' . $startMessage . '&amp;show_more=0';
         if (isset($passed_ent_id)) {
             $link .= '&amp;passed_ent_id='.$passed_ent_id;
         }
@@ -544,7 +544,7 @@ function decodeHeader ($string, $utfencode=true,$htmlsave=true) {
     if (is_array($string)) {
         $string = implode("\n", $string);
     }
-    
+
     if (isset($languages[$squirrelmail_language]['XTRA_CODE']) &&
         function_exists($languages[$squirrelmail_language]['XTRA_CODE'])) {
         $string = $languages[$squirrelmail_language]['XTRA_CODE']('decodeheader', $string);
@@ -588,7 +588,7 @@ function decodeHeader ($string, $utfencode=true,$htmlsave=true) {
                 break;
             case 'Q':
                 $replace = str_replace('_', ' ', $res[4]);
-                $replace = preg_replace('/=([0-9a-f]{2})/ie', 'chr(hexdec("\1"))', 
+                $replace = preg_replace('/=([0-9a-f]{2})/ie', 'chr(hexdec("\1"))',
                                     $replace);
                 /* Only encode into entities by default. Some places
                  * don't need the encoding, like the compose form.
@@ -613,7 +613,7 @@ function decodeHeader ($string, $utfencode=true,$htmlsave=true) {
                 $ret .= '&nbsp;';
             } else {
                 $ret .= ' ';
-            }        
+            }
         }
 
         if (!$encoded && $htmlsave) {
@@ -631,7 +631,7 @@ function decodeHeader ($string, $utfencode=true,$htmlsave=true) {
             $ret = substr($ret,1);
         }
     }
-    
+
     return $ret;
 }
 
@@ -716,7 +716,7 @@ function encodeHeader ($string) {
                     // do not start encoding in the middle of a string, also take the rest of the word.
                     $sLeadString = substr($string,0,$i);
                     $aLeadString = explode(' ',$sLeadString);
-                    $sToBeEncoded = array_pop($aLeadString);                  
+                    $sToBeEncoded = array_pop($aLeadString);
                     $iEncStart = $i - strlen($sToBeEncoded);
                     $ret .= $sToBeEncoded;
                     $cur_l += strlen($sToBeEncoded);
@@ -773,7 +773,7 @@ function find_ent_id($id, $message) {
             if (strcasecmp($message->entities[$i]->header->id, $id) == 0) {
 //                if (sq_check_save_extension($message->entities[$i])) {
                     return $message->entities[$i]->entity_id;
-//                } 
+//                }
             }
         }
     }
@@ -815,7 +815,7 @@ function sq_unbackslash($attvalue){
  * Kill any tabs, newlines, or carriage returns. Our friends the
  * makers of the browser with 95% market value decided that it'd
  * be funny to make "java[tab]script" be just as good as "javascript".
- * 
+ *
  * @param  attvalue  The attribute value before extraneous spaces removed.
  * @return attvalue  The attribute value after extraneous spaces removed.
  */
@@ -829,7 +829,7 @@ function sq_unspace($attvalue){
 
 /**
  * This function returns the final tag out of the tag name, an array
- * of attributes, and the type of the tag. This function is called by 
+ * of attributes, and the type of the tag. This function is called by
  * sq_sanitize internally.
  *
  * @param  $tagname  the name of the tag.
@@ -873,7 +873,7 @@ function sq_casenormalize(&$val){
 /**
  * This function skips any whitespace from the current position within
  * a string and to the next non-whitespace value.
- * 
+ *
  * @param  $body   the string
  * @param  $offset the offset within the string where we should start
  *                 looking for the next non-whitespace character.
@@ -1028,7 +1028,7 @@ function sq_getnxtag($body, $offset){
      * '>'  indicating the end of the tag entirely.
      * '\s' indicating the end of the tag name.
      * '/'  indicating that this is type-3 xhtml tag.
-     * 
+     *
      * Whatever else we find there indicates an invalid tag.
      */
     switch ($match){
@@ -1266,7 +1266,7 @@ function sq_deent($attvalue){
         for ($asc=1; $asc<256; $asc++){
             if (!in_array($asc, $omit)){
                 $chr = chr($asc);
-                $attvalue = preg_replace("/\&#0*$asc;*(\D)/si", "$chr\\1", 
+                $attvalue = preg_replace("/\&#0*$asc;*(\D)/si", "$chr\\1",
                                          $attvalue);
                 $attvalue = preg_replace("/\&#x0*".dechex($asc).";*(\W)/si",
                                          "$chr\\1", $attvalue);
@@ -1288,8 +1288,8 @@ function sq_deent($attvalue){
  * @param  $id              message id
  * @return                  Array with modified attributes.
  */
-function sq_fixatts($tagname, 
-                    $attary, 
+function sq_fixatts($tagname,
+                    $attary,
                     $rm_attnames,
                     $bad_attvals,
                     $add_attr_to_tag,
@@ -1335,7 +1335,7 @@ function sq_fixatts($tagname,
                          * Second one is replacements
                          */
                         list($valmatch, $valrepl) = $valary;
-                        $newvalue = 
+                        $newvalue =
                             preg_replace($valmatch, $valrepl, $attvalue);
                         if ($newvalue != $attvalue){
                             $attary{$attname} = $newvalue;
@@ -1365,7 +1365,7 @@ function sq_fixatts($tagname,
 /**
  * This function edits the style definition to make them friendly and
  * usable in squirrelmail.
- * 
+ *
  * @param  $message  the message object
  * @param  $id       the message id
  * @param  $content  a string with whatever is between <style> and </style>
@@ -1401,11 +1401,11 @@ function sq_fixstyle($body, $pos, $message, $id){
         $content = preg_replace("|url\s*\(\s*([\'\"])\s*https*:.*?([\'\"])\s*\)|si",
                                 "url(\\1$secremoveimg\\2)", $content);
     }
-   
+
     /**
      * Fix urls that refer to cid:
      */
-    while (preg_match("|url\s*\(\s*([\'\"]\s*cid:.*?[\'\"])\s*\)|si", 
+    while (preg_match("|url\s*\(\s*([\'\"]\s*cid:.*?[\'\"])\s*\)|si",
                       $content, $matches)){
         $cidurl = $matches{1};
         $httpurl = sq_cid2http($message, $id, $cidurl);
@@ -1480,7 +1480,7 @@ function sq_body2div($attary, $mailbox, $message, $id){
             $attvalue = str_replace($quotchar, "", $attvalue);
             switch ($attname){
                 case 'background':
-                    $attvalue = sq_cid2http($message, $id, 
+                    $attvalue = sq_cid2http($message, $id,
                                             $attvalue, $mailbox);
                     $styledef .= "background-image: url('$attvalue'); ";
                     break;
@@ -1519,8 +1519,8 @@ function sq_body2div($attary, $mailbox, $message, $id){
  * @param $id                   message id
  * @return                      sanitized html safe to show on your pages.
  */
-function sq_sanitize($body, 
-                     $tag_list, 
+function sq_sanitize($body,
+                     $tag_list,
                      $rm_tags_with_content,
                      $self_closing_tags,
                      $force_tag_closing,
@@ -1561,7 +1561,7 @@ function sq_sanitize($body,
          * Take care of <style>
          */
         if ($tagname == "style" && $tagtype == 1){
-            list($free_content, $curpos) = 
+            list($free_content, $curpos) =
                 sq_fixstyle($body, $gt+1, $message, $id);
             if ($free_content != FALSE){
                 $trusted .= sq_tagprint($tagname, $attary, $tagtype);
@@ -1586,7 +1586,7 @@ function sq_sanitize($body,
                         if ($tagname == "body"){
                             $tagname = "div";
                         }
-                        if (isset($open_tags{$tagname}) && 
+                        if (isset($open_tags{$tagname}) &&
                             $open_tags{$tagname} > 0){
                             $open_tags{$tagname}--;
                         } else {
@@ -1615,7 +1615,7 @@ function sq_sanitize($body,
                         in_array($tagname, $rm_tags_with_content)){
                         $skip_content = $tagname;
                     } else {
-                        if (($rm_tags == false 
+                        if (($rm_tags == false
                              && in_array($tagname, $tag_list)) ||
                             ($rm_tags == true &&
                              !in_array($tagname, $tag_list))){
@@ -1626,7 +1626,7 @@ function sq_sanitize($body,
                              */
                             if ($tagname == "body"){
                                 $tagname = "div";
-                                $attary = sq_body2div($attary, $mailbox, 
+                                $attary = sq_body2div($attary, $mailbox,
                                                       $message, $id);
                             }
                             if ($tagtype == 1){
@@ -1806,13 +1806,13 @@ function magicHTML($body, $id, $message, $mailbox = 'INBOX') {
     }
 
     $add_attr_to_tag = Array(
-        "/^a$/i" => 
+        "/^a$/i" =>
             Array('target'=>'"_new"',
                   'title'=>'"'._("This external link will open in a new window").'"'
             )
     );
-    $trusted = sq_sanitize($body, 
-                           $tag_list, 
+    $trusted = sq_sanitize($body,
+                           $tag_list,
                            $rm_tags_with_content,
                            $self_closing_tags,
                            $force_tag_closing,
@@ -1825,8 +1825,84 @@ function magicHTML($body, $id, $message, $mailbox = 'INBOX') {
                            );
     if (preg_match("|$secremoveimg|i", $trusted)){
         $has_unsafe_images = true;
-    } 
+    }
     return $trusted;
 }
+
+/**
+ * function SendDownloadHeaders - send file to the browser
+ *
+ * Original Source: SM core src/download.php
+ * moved here to make it available to other code, and separate
+ * front end from back end functionality.
+ *
+ * @param string $type0 first half of mime type
+ * @param string $type1 second half of mime type
+ * @param string $filename filename to tell the browser for downloaded file
+ * @param boolean $force whether to force the download dialog to pop
+ * @return void
+ */
+ function SendDownloadHeaders($type0, $type1, $filename, $force) {
+     global $languages, $squirrelmail_language;
+     $isIE = $isIE6 = 0;
+
+     sqgetGlobalVar('HTTP_USER_AGENT', $HTTP_USER_AGENT, SQ_SERVER);
+
+     if (strstr($HTTP_USER_AGENT, 'compatible; MSIE ') !== false &&
+         strstr($HTTP_USER_AGENT, 'Opera') === false) {
+         $isIE = 1;
+     }
+
+     if (strstr($HTTP_USER_AGENT, 'compatible; MSIE 6') !== false &&
+         strstr($HTTP_USER_AGENT, 'Opera') === false) {
+         $isIE6 = 1;
+     }
+
+     if (isset($languages[$squirrelmail_language]['XTRA_CODE']) &&
+         function_exists($languages[$squirrelmail_language]['XTRA_CODE'])) {
+         $filename =
+             $languages[$squirrelmail_language]['XTRA_CODE']('downloadfilename', $filename, $HTTP_USER_AGENT);
+     } else {
+        $filename = ereg_replace('[\\/:\*\?"<>\|;]', '_', str_replace('&nbsp;', ' ', $filename));
+     }
+
+     // A Pox on Microsoft and it's Office!
+     if (!$force) {
+         // Try to show in browser window
+         header("Content-Disposition: inline; filename=\"$filename\"");
+         header("Content-Type: $type0/$type1; name=\"$filename\"");
+     } else {
+         // Try to pop up the "save as" box
+         // IE makes this hard.  It pops up 2 save boxes, or none.
+         // http://support.microsoft.com/support/kb/articles/Q238/5/88.ASP
+         // But, accordint to Microsoft, it is "RFC compliant but doesn't
+         // take into account some deviations that allowed within the
+         // specification."  Doesn't that mean RFC non-compliant?
+         // http://support.microsoft.com/support/kb/articles/Q258/4/52.ASP
+         //
+         // The best thing you can do for IE is to upgrade to the latest
+         // version
+         if ($isIE && !$isIE6) {
+             // http://support.microsoft.com/support/kb/articles/Q182/3/15.asp
+             // Do not have quotes around filename, but that applied to
+             // "attachment"... does it apply to inline too?
+             //
+             // This combination seems to work mostly.  IE 5.5 SP 1 has
+             // known issues (see the Microsoft Knowledge Base)
+             header("Content-Disposition: inline; filename=$filename");
+             // This works for most types, but doesn't work with Word files
+             header("Content-Type: application/download; name=\"$filename\"");
+
+             // These are spares, just in case.  :-)
+             //header("Content-Type: $type0/$type1; name=\"$filename\"");
+             //header("Content-Type: application/x-msdownload; name=\"$filename\"");
+             //header("Content-Type: application/octet-stream; name=\"$filename\"");
+         } else {
+             header("Content-Disposition: attachment; filename=\"$filename\"");
+             // application/octet-stream forces download for Netscape
+             header("Content-Type: application/octet-stream; name=\"$filename\"");
+         }
+     }
+ }
 
 ?>
