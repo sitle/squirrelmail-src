@@ -8,6 +8,7 @@
     **  $Id$
     **/
 
+   $validate_php = true;
    function data_validate (&$item, $key) {
       // This prevents overriding vars like $config_php
 

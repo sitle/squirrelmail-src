@@ -25,6 +25,9 @@
          if (substr($pref, 0, strpos($pref, "=")) == $string) {
             fclose($file);
             $tmp = trim(substr($pref, strpos($pref, "=")+1));
+            if (strstr($tmp, "<?") || strstr($tmp, "<%") || ereg('<.*script', $add)) {   
+                return '';                                                                
+            }
             return $tmp;
          }
       }
