@@ -254,8 +254,7 @@ function sqimap_subscribe ($imap_stream, $mailbox) {
  * Unsubscribes from an existing folder
  */
 function sqimap_unsubscribe ($imap_stream, $mailbox) {
-    $read_ary = sqimap_run_command($imap_stream, 'UNSUBSCRIBE ' .
-                                   sqimap_encode_mailbox_name($mailbox),
+    $read_ary = sqimap_run_command($imap_stream, "UNSUBSCRIBE \"$mailbox\"",
                                    false, $response, $message);
 }
 
@@ -265,8 +264,7 @@ function sqimap_unsubscribe ($imap_stream, $mailbox) {
 function sqimap_mailbox_delete ($imap_stream, $mailbox) {
     global $data_dir, $username;
     sqimap_unsubscribe ($imap_stream, $mailbox);
-    $read_ary = sqimap_run_command($imap_stream, 'DELETE ' .
-                                   sqimap_encode_mailbox_name($mailbox),
+    $read_ary = sqimap_run_command($imap_stream, "DELETE \"$mailbox\"",
                                    true, $response, $message);
     if ($response !== 'OK') {
         // subscribe again
