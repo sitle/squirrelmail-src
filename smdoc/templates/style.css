@@ -9,31 +9,31 @@ body {
     font-family: verdana, "trebuchet ms", arial; 
 }
 #pagetitle {
-    background: #afad97;
-    height: 92px;
     margin: 0px;
     border-bottom: 1px solid gray;
-    color: #666666;
-    padding-right: 5px;
+    background: #fff url(images/squirrelmail-2small.gif) no-repeat top left;
 }
-#pagetitle .logo {
-    background: #fff url(images/sm_logo.png) no-repeat top left;
+#pagetitle .skip {
+    width: 151px;
+    height: 150px;
 }
 #pagetitle .usermenu {
+    background: url(images/header.gif) no-repeat top left;
     font-size: small;
     text-align: right;
-    padding-top: 2px;
+    padding: 2px;
+    color: #666666;
 }
 #pagetitle .titleblock {
+    color: #FFF;
     font-size: x-large;
     text-align: left;
-    padding-left: 5px;
-    padding-bottom: 2px;
+    padding: 2px 40px;
 }
-#locationmenu {
-    background: #d3d1c2;
-    border-bottom: 1px solid gray;
-    padding: 1px 5px;
+#pagetitle .locationmenu {
+    background: #b0c3c6;
+    border-top: 1px solid gray;
+    padding: 2px;
     font-size: small; 
     color: #666666;    
     margin: 0px;
@@ -57,7 +57,7 @@ body {
     padding: 5px;
 }
 #editmenu {
-    background: #d3d1c2;
+    background: #b0c3c6;
     border-top: 1px solid gray;
     padding: 2px;
     margin: 0px;
@@ -66,25 +66,26 @@ body {
     text-align: center;
 }
 #copyright {
-    background: #afad97;
+    background: #7a9294;
     padding: 2px;
     border-top: 1px solid gray;
     border-bottom: 1px solid gray;
-    color: #666666;
+    color: #cccccc;
     font-size: small;
     text-align: center; 
 }
 #footer {
-    color: gray;
+    color: #666666;
     text-align: center;
     font-size: x-small;
 }
 form { 
     white-space: nowrap; 
-    display: inline; 
+    display: inline;
+    text-align: center;
 }
 .separator {
-    border-bottom: 1px solid #afad97;
+    border-bottom: 1px solid #7a9294;
     margin-bottom: 10px;
 }
 .debug_output {
@@ -105,23 +106,23 @@ h1 {
 h2 {
     font-size: large;
     margin: 10px 0px 5px 0px;
-    color: #afad97; 
+    color: #7a9294; 
     font-weight: bold; 
     text-decoration: none;
     text-align: left;
-    border-bottom: 1px solid #afad97;
+    border-bottom: 1px solid #7a9294;
 }
 h3,
 .debug_output_heading,
 .indexhead {
     margin: 10px 5px 5px 5px;
     padding-right: 5px;
-    color: #afad97; 
+    color: #7a9294; 
     font-weight: bold; 
     text-decoration: none;
     text-align: right;
     font-size: large;
-    border-bottom: 1px solid #afad97;
+    border-bottom: 1px solid #7a9294;
 }
 li { 
     padding-bottom: 5px; 
@@ -145,7 +146,7 @@ a:visited,
 a:active {
     text-decoration: none;
     outline: none;
-    color: #BB0000;
+    color: #006666;
 }
 a:hover {
     text-decoration: underline;
@@ -169,8 +170,9 @@ p.quote {
 	padding: 10px;
 }
 div.preview {
-	background-color: #eeeeee;
 	padding: 5px;
+    margin-bottom: 10px;
+    border: dotted 1px red;
 }
 div.annotation {
 	background-color: #eeeeee;
@@ -202,12 +204,12 @@ tr.diff_same {
 	background-color: #eeeeee;
 }
 td.separator {
-    border-bottom: 1px solid #afad97;
+    border-bottom: 1px solid #7a9294;
     padding: 10px 0px 0px 0px;
     text-align: center;
     font-weight: bold;
     font-size: normal;
-    color: #afad97;
+    color: #7a9294;
 }
 td.heading {
     color: gray;
@@ -243,4 +245,7 @@ OL.upper_roman {
 }
 OL.decimal {
     list-style-type: decimal
+}
+IMG {
+    border: 0px;
 }

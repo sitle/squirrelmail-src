@@ -17,9 +17,11 @@
 
   if ( !sqGetGlobalVar('ok', $ok, SQ_FORM) && isset($t['success']) )
     $ok = $t['success'];
-  elseif ( !sqGetGlobalVar('error', $error,  SQ_FORM) &&  isset($t['failure']) )
+  elseif ( !sqGetGlobalVar('error', $error,  SQ_FORM) && isset($t['failure']) )
     $error = $t['failure'];
-
+ 
+  getStatusStrings($ok, $error); 
+  
 //  smdoc_translation::initialize($foowd);
 //  $flag_links = smdoc_translation::getLink($foowd);
   $loc_url = getURI(array());
@@ -40,13 +42,14 @@
 </head>
 <body>
 <!-- begin page title -->
-<table id="pagetitle" width="100%" cellspacing="0" cellpadding="0">
+<div id="pagetitle">
+<table width="100%" cellspacing="0" cellpadding="0" border="0">
   <tr>
-    <td rowspan="2" width="304" class="logo">
-      <a href="#content"><img src="templates/images/empty.png" alt="skip to content" border="0" /></a>
+    <td rowspan="3" class="skip">
+      <a href="#content"><img src="templates/images/empty.png" alt="skip to content" /></a>
       <?php if ($foowd->debug) { ?>
-          <img src="templates/images/empty.png" alt="|" border="0" />
-          <a href="#debug"><img src="templates/images/empty.png" alt="skip to debug" border="0" /></a>
+          <img src="templates/images/empty.png" alt="|" />
+          <a href="#debug"><img src="templates/images/empty.png" alt="skip to debug" /></a>
        <?php } ?>
     </td>
     <td class="usermenu" valign="top">
@@ -81,7 +84,8 @@
     </td>
   </tr>
   <tr>
-    <td class="titleblock" valign="bottom">
+    <td valign="bottom">
+      <div class="titleblock">
       <?php
           if ( isset($t['classid']) && $t['objectid'] )
           {
@@ -94,35 +98,33 @@
           else
             echo $title;
       ?>
-    </td>
-  </tr>
-</table>
-<!-- end page title -->
-<!-- begin location menu -->
-<div id="locationmenu">
-  <table width="100%" cellspacing="0" cellpadding="0" border="0">
-    <tr>
-      <td align="left" class="subtext">
-        <nobr><?php
+      </div>
+      <table width="100%" cellspacing="0" cellpadding="0" class="locationmenu">
+        <tr>
+          <td align="left" class="subtext">
+            <nobr><?php
           echo '<a href="', $loc_url, '">',            _("Home"), '</a> | ';
           echo '<a href="', $loc_url, '?object=faq">', _("Docs"), '</a> | ';
           echo '<a href="', $loc_url, '?object=faq">', _("Plugins"), '</a> | ';
           echo '<a href="', $loc_url, '?object=faq">', _("Support"), '</a> | ';
           echo '<a href="', $loc_url, '?object=faq">', _("Download"), '</a> | ';
           echo '<a href="', $loc_url, '?object=faq">', _("FAQ"),'</a>';
-        ?></nobr>
-      </td>
-      <td class="subtext">&nbsp;</td>
-      <td align="right" class="subtext">
-        <nobr><?php
+            ?></nobr>
+          </td>
+          <td class="subtext">&nbsp;</td>
+          <td align="right" class="subtext">
+            <nobr><?php
           echo '<a href="', $loc_url, '?object=search">', _("Search"),'</a> | ';
           echo '<a href="', $loc_url, '?object=sqmindex">',_("Index"),'</a> ';
-        ?></nobr>
-      </td>
-    </tr>
-  </table>
+            ?></nobr>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
 </div>
-<!-- end location menu -->
+<!-- end page title -->
 <?php if( $ok != NULL ) { ?>
   <div id="status"><span class="ok"><?php echo $ok; ?></span></div>
 <?php } elseif( $error != NULL ) { ?>
@@ -150,6 +152,12 @@
          $t['classid'] != EXTERNAL_CLASS_ID &&   // is not external object
          $t['classid'] != ERROR_CLASS_ID )         // is not error page
     {
+        echo _("Last Update");
+        if ( $t['workspaceid'] != 0 )
+            echo ' (', getLink($foowd, $t['workspaceid']), ')';
+
+        echo  ': ', date('Y/m/d, H:i T', $object->updated) . "<br />\n";
+
         $methods = get_class_methods($className);
 
         $notfirst = 0;
@@ -180,11 +188,6 @@
         if ( $notfirst )
             echo ' | ';
         echo '<a href="', $loc_url, '?object=sqmchanges">',_("Recent Changes"),"</a><br />\n";
-        echo _("Last Update");
-        if ( $t['workspaceid'] != 0 )
-            echo ' (', getLink($foowd, $t['workspaceid']), ')';
-
-        echo  ': ', date('Y/m/d, H:i T', $object->updated);
     } else { // object not set OR external object
         echo '<a href="', $loc_url, '?object=sqmchanges">',_("Recent Changes"),"</a><br />\n";
     }
