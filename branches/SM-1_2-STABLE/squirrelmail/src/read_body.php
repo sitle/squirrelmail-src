@@ -769,6 +769,7 @@ if ($compose_new_win == '1') {
     $link_close = '">';
 }
 $link_open .= $comp_uri;
+
 if (($mailbox == $draft_folder) && ($save_as_draft)) {
     $draft_uri = "send_to=$url_to_string&amp;".
                  "send_to_cc=$url_cc_string&amp;send_to_bcc=$url_bcc_string&amp;".
@@ -777,8 +778,8 @@ if (($mailbox == $draft_folder) && ($save_as_draft)) {
 
     echo '|&nbsp;' . $link_open . $draft_uri . $link_close .
          _("Resume Draft") . '</a>';
-}
-if ($mailbox == $sent_folder) {
+} elseif(handleAsSent($mailbox)) {
+/* is a 'handleAsSent' mailbox but not Drafts. */
     $sent_uri = "send_to=$url_to_string&amp;".
                 "send_to_cc=$url_cc_string&amp;send_to_bcc=$url_bcc_string&amp;".
                 "subject=$url_subj&amp;".
