@@ -66,17 +66,6 @@ $org_title = "SquirrelMail $version";
 $signout_page = '';
 
 /**
- * Default language
- *
- *   This is the default language. It is used as a last resort
- *   if SquirrelMail can't figure out which language to display.
- *   Language names usually consist of language code, undercore 
- *   symbol and country code
- * @global string $squirrelmail_default_language
- */
-$squirrelmail_default_language = 'en_US';
-
-/**
  * Top frame
  *
  * By default SquirrelMail takes up the whole browser window,
@@ -412,20 +401,6 @@ $noselect_fix_enable = false;
 
 /*** General options ***/
 /**
- * Default Charset
- *
- * This option controls what character set is used when sending mail
- * and when sending HTML to the browser. Do not set this to US-ASCII,
- * use ISO-8859-1 instead.
- *
- * Currently this option is disabled. SquirrelMail uses charset that depends
- * on default language. See $squirrelmail_default_language
- *
- * @global string $default_charset
- */
-$default_charset = 'iso-8859-1';
-
-/**
  * Path to the data/ directory
  *
  *   It is a possible security hole to have a writable directory
@@ -715,6 +690,9 @@ $theme[35]['NAME'] = 'Minimal BW';
 $theme[36]['PATH'] = SM_PATH . 'themes/redmond.php';
 $theme[36]['NAME'] = 'Redmond';
 
+$theme[37]['PATH'] = SM_PATH . 'themes/netstyle_theme.php';
+$theme[37]['NAME'] = 'Net Style';
+
 /**
  * LDAP server(s)
  *   Array of arrays with LDAP server parameters. See
@@ -788,6 +766,44 @@ $prefs_table = 'userprefs';
 $prefs_key_field = 'prefkey';
 $prefs_user_field = 'user';
 $prefs_val_field = 'prefval';
+
+/*** Language settings ***/
+/**
+ * Default language
+ *
+ * This is the default language. It is used as a last resort
+ * if SquirrelMail can't figure out which language to display.
+ * Language names usually consist of language code, undercore 
+ * symbol and country code
+ * @global string $squirrelmail_default_language
+ */
+$squirrelmail_default_language = 'en_US';
+
+/**
+ * Default Charset
+ *
+ * This option controls what character set is used when sending mail
+ * and when sending HTML to the browser. Do not set this to US-ASCII,
+ * use ISO-8859-1 instead.
+ *
+ * This option is active only when default language is en_US. In other
+ * cases SquirrelMail uses charset that depends on default language.
+ * See $squirrelmail_default_language
+ *
+ * @global string $default_charset
+ */
+$default_charset = 'iso-8859-1';
+
+/**
+ * Lossy Encoding Control
+ *
+ * This option allows charset conversions when output charset does not support
+ * all symbols used in original charset. Symbols unsupported by output charset
+ * will be replaced with question marks.
+ * @global bool $lossy_encoding
+ * @since 1.4.4 and 1.5.1
+ */
+$lossy_encoding = false;
 
 /**
  * Subscribe Listing Control
