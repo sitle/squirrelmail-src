@@ -1,6 +1,6 @@
 # Portuguese (Brazil) Squirrelmail Translation
 # Copyright (c) 1999-2002 The Squirrelmail Development Team
-# Marcos Tadeu <marcos@v2r.com.br>, 200205
+# Marcos Tadeu <marcos@v2r.com.br>, 200208.
 # Fabio Mengue <fabio@unicamp.br>, 2002.
 # Henrique Moura <henriquemoura@hotmail.com>, 2000.
 #
@@ -8,8 +8,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: $Id$\n"
-"POT-Creation-Date: 2002-05-28 13:31-0300\n"
-"PO-Revision-Date: 2001-01-19 21:00-0300\n"
+"POT-Creation-Date: 2002-08-24 15:04-0300\n"
+"PO-Revision-Date: 2002-08-24 15:11-0300\n"
 "Last-Translator: Marcos Tadeu <marcos@v2r.com.br>\n"
 "Language-Team: Portuguese (Brazilian) <squirrelmail-i18n@lists.sourceforge."
 "net>\n"
@@ -21,530 +21,531 @@ msgstr ""
 msgid "Address Book"
 msgstr "Livro de Endereços"
 
-#: squirrelmail/src/addrbook_search.php:98
-#: squirrelmail/src/addrbook_search_html.php:88
-#: squirrelmail/src/addressbook.php:285 squirrelmail/src/vcard.php:85
+#: squirrelmail/src/addrbook_search.php:116
+#: squirrelmail/src/addrbook_search_html.php:105
+#: squirrelmail/src/addressbook.php:314 squirrelmail/src/vcard.php:101
 msgid "Name"
 msgstr "Nome"
 
-#: squirrelmail/src/addrbook_search.php:99
-#: squirrelmail/src/addrbook_search_html.php:89
-#: squirrelmail/src/addressbook.php:286
+#: squirrelmail/src/addrbook_search.php:117
+#: squirrelmail/src/addrbook_search_html.php:106
+#: squirrelmail/src/addressbook.php:315
 msgid "E-mail"
 msgstr "E-mail"
 
-#: squirrelmail/src/addrbook_search.php:100
-#: squirrelmail/src/addrbook_search_html.php:90
-#: squirrelmail/src/addressbook.php:287
+#: squirrelmail/src/addrbook_search.php:118
+#: squirrelmail/src/addrbook_search_html.php:107
+#: squirrelmail/src/addressbook.php:316
 msgid "Info"
 msgstr "Informações"
 
-#: squirrelmail/src/addrbook_search.php:103
-#: squirrelmail/src/addrbook_search_html.php:95
+#: squirrelmail/src/addrbook_search.php:121
+#: squirrelmail/src/addrbook_search_html.php:112
 msgid "Source"
 msgstr "Fonte"
 
-#: squirrelmail/src/addrbook_search.php:160
-#: squirrelmail/src/addrbook_search.php:247
-#: squirrelmail/src/addrbook_search_html.php:243
+#: squirrelmail/src/addrbook_search.php:178
+#: squirrelmail/src/addrbook_search.php:265
+#: squirrelmail/src/addrbook_search_html.php:259
 msgid "No persons matching your search was found"
 msgstr "Não foram encontradas pessoas para a pesquisa solicitada."
 
-#: squirrelmail/src/addrbook_search.php:174
-#: squirrelmail/src/addrbook_search_html.php:154
+#: squirrelmail/src/addrbook_search.php:192
+#: squirrelmail/src/addrbook_search_html.php:170
 msgid "Search for"
 msgstr "Procurar por"
 
-#: squirrelmail/src/addrbook_search.php:180
-#: squirrelmail/src/addrbook_search_html.php:164
+#: squirrelmail/src/addrbook_search.php:198
+#: squirrelmail/src/addrbook_search_html.php:180
 msgid "in"
 msgstr "em"
 
-#: squirrelmail/src/addrbook_search.php:181
-#: squirrelmail/src/addrbook_search_html.php:167
+#: squirrelmail/src/addrbook_search.php:199
+#: squirrelmail/src/addrbook_search_html.php:183
 msgid "All address books"
 msgstr "Todos os livros de Endereços"
 
-#: squirrelmail/src/addrbook_search.php:192
-#: squirrelmail/src/addrbook_search_html.php:182
-#: squirrelmail/src/search.php:191 squirrelmail/src/search.php:195
-#: squirrelmail/src/search.php:215 squirrelmail/src/search.php:359
-#: squirrelmail/src/search.php:390 squirrelmail/src/search.php:411
-#: squirrelmail/src/search.php:421 squirrelmail/functions/page_header.php:179
+#: squirrelmail/src/addrbook_search.php:210
+#: squirrelmail/src/addrbook_search_html.php:198
+#: squirrelmail/src/search.php:220 squirrelmail/src/search.php:224
+#: squirrelmail/src/search.php:244 squirrelmail/src/search.php:389
+#: squirrelmail/src/search.php:420 squirrelmail/src/search.php:441
+#: squirrelmail/src/search.php:451 squirrelmail/functions/page_header.php:235
 msgid "Search"
 msgstr "Pesquisar"
 
-#: squirrelmail/src/addrbook_search.php:193
-#: squirrelmail/src/addrbook_search_html.php:183
+#: squirrelmail/src/addrbook_search.php:211
+#: squirrelmail/src/addrbook_search_html.php:199
 msgid "List all"
 msgstr "Listar todos"
 
-#: squirrelmail/src/addrbook_search.php:195 squirrelmail/src/compose.php:618
-#: squirrelmail/plugins/squirrelspell/modules/check_me.mod:119
-#: squirrelmail/plugins/squirrelspell/modules/check_me.mod:427
-#: squirrelmail/plugins/squirrelspell/modules/forget_me_not.mod:70
-#: squirrelmail/plugins/newmail/testsound.php:33
+#: squirrelmail/src/addrbook_search.php:213 squirrelmail/src/compose.php:671
+#: squirrelmail/plugins/squirrelspell/modules/check_me.mod:121
+#: squirrelmail/plugins/squirrelspell/modules/check_me.mod:429
+#: squirrelmail/plugins/squirrelspell/modules/forget_me_not.mod:74
+#: squirrelmail/plugins/newmail/testsound.php:35
 #, fuzzy
 msgid "Close"
 msgstr "Fechar"
 
-#: squirrelmail/src/addrbook_search.php:214
-#: squirrelmail/src/addrbook_search_html.php:213
+#: squirrelmail/src/addrbook_search.php:232
+#: squirrelmail/src/addrbook_search_html.php:229
 #, c-format
 msgid "Unable to list addresses from %s"
 msgstr "Impossível listar endereço para %s"
 
-#: squirrelmail/src/addrbook_search.php:240
-#: squirrelmail/src/addrbook_search_html.php:238
+#: squirrelmail/src/addrbook_search.php:258
+#: squirrelmail/src/addrbook_search_html.php:254
 msgid "Your search failed with the following error(s)"
 msgstr "Sua pesquisa falhou retornando o seguinte erro(s)"
 
-#: squirrelmail/src/addrbook_search_html.php:80
-#: squirrelmail/src/addrbook_search_html.php:82
-#: squirrelmail/src/addrbook_search_html.php:84
-#: squirrelmail/plugins/mail_fetch/fetch.php:65
+#: squirrelmail/src/addrbook_search_html.php:94
+#: squirrelmail/src/addrbook_search_html.php:96
+#: squirrelmail/src/addrbook_search_html.php:98
+#: squirrelmail/plugins/mail_fetch/fetch.php:79
 msgid "All"
 msgstr "Todos"
 
-#: squirrelmail/src/addrbook_search_html.php:105
-#: squirrelmail/src/compose.php:451 squirrelmail/src/download.php:311
-#: squirrelmail/src/download.php:318
-#: squirrelmail/src/options_highlight.php:330
-#: squirrelmail/src/printer_friendly_bottom.php:96
-#: squirrelmail/src/search.php:355
-#: squirrelmail/functions/mailbox_display.php:751
-#: squirrelmail/plugins/filters/options.php:120
+#: squirrelmail/src/addrbook_search_html.php:122
+#: squirrelmail/src/compose.php:500 squirrelmail/src/download.php:366
+#: squirrelmail/src/download.php:373
+#: squirrelmail/src/options_highlight.php:357
+#: squirrelmail/src/printer_friendly_bottom.php:106
+#: squirrelmail/src/search.php:385
+#: squirrelmail/functions/mailbox_display.php:752
+#: squirrelmail/plugins/filters/options.php:147
 msgid "To"
 msgstr "Para"
 
-#: squirrelmail/src/addrbook_search_html.php:107
-#: squirrelmail/src/compose.php:458 squirrelmail/src/options_highlight.php:333
-#: squirrelmail/src/search.php:354
-#: squirrelmail/plugins/filters/options.php:123
+#: squirrelmail/src/addrbook_search_html.php:124
+#: squirrelmail/src/compose.php:507 squirrelmail/src/options_highlight.php:360
+#: squirrelmail/src/search.php:384
+#: squirrelmail/plugins/filters/options.php:150
 msgid "Cc"
 msgstr "CC"
 
-#: squirrelmail/src/addrbook_search_html.php:109
+#: squirrelmail/src/addrbook_search_html.php:126
 msgid "Bcc"
 msgstr ""
 
-#: squirrelmail/src/addrbook_search_html.php:122
+#: squirrelmail/src/addrbook_search_html.php:139
 msgid "Use Addresses"
 msgstr "Use Endereços"
 
-#: squirrelmail/src/addrbook_search_html.php:145
+#: squirrelmail/src/addrbook_search_html.php:161
 msgid "Address Book Search"
 msgstr "Pesquisa no Livro de Endereços"
 
-#: squirrelmail/src/addrbook_search_html.php:256
+#: squirrelmail/src/addrbook_search_html.php:272
 msgid "Return"
 msgstr "Voltar"
 
-#: squirrelmail/src/addressbook.php:39 squirrelmail/src/addressbook.php:285
+#: squirrelmail/src/addressbook.php:68 squirrelmail/src/addressbook.php:314
+#: squirrelmail/src/vcard.php:145
 msgid "Nickname"
 msgstr "Apelido"
 
-#: squirrelmail/src/addressbook.php:40
+#: squirrelmail/src/addressbook.php:69
 msgid "Must be unique"
 msgstr "Deve ser único"
 
-#: squirrelmail/src/addressbook.php:41
+#: squirrelmail/src/addressbook.php:70
 msgid "E-mail address"
 msgstr "Endereço de E-mail"
 
-#: squirrelmail/src/addressbook.php:42
+#: squirrelmail/src/addressbook.php:71
 msgid "First name"
 msgstr "Primeiro Nome"
 
-#: squirrelmail/src/addressbook.php:43
+#: squirrelmail/src/addressbook.php:72
 msgid "Last name"
 msgstr "Sobrenome"
 
-#: squirrelmail/src/addressbook.php:44
+#: squirrelmail/src/addressbook.php:73
 msgid "Additional info"
 msgstr "Informação adicional"
 
-#: squirrelmail/src/addressbook.php:58
+#: squirrelmail/src/addressbook.php:87
 msgid "No personal address book is defined. Contact administrator."
-msgstr "Nenhum livro de endereços pessoais está definido. Contate o administrador."
-"Nenhum Livro de Endereços pessoal foi definido. Contacte o administrador."
+msgstr ""
+"Nenhum livro de endereços pessoais está definido. Contate o administrador."
 
-#: squirrelmail/src/addressbook.php:154
+#: squirrelmail/src/addressbook.php:183
 msgid "You can only edit one address at the time"
 msgstr "Você pode editar somente um endereço por vez"
 
-#: squirrelmail/src/addressbook.php:168 squirrelmail/src/addressbook.php:170
-#: squirrelmail/src/addressbook.php:200 squirrelmail/src/addressbook.php:202
+#: squirrelmail/src/addressbook.php:197 squirrelmail/src/addressbook.php:199
+#: squirrelmail/src/addressbook.php:229 squirrelmail/src/addressbook.php:231
 msgid "Update address"
 msgstr "Atualizar endereço"
 
-#: squirrelmail/src/addressbook.php:191 squirrelmail/src/addressbook.php:239
-#: squirrelmail/functions/display_messages.php:49
-#: squirrelmail/functions/display_messages.php:68
-#: squirrelmail/functions/display_messages.php:85
-#: squirrelmail/functions/display_messages.php:150
+#: squirrelmail/src/addressbook.php:220 squirrelmail/src/addressbook.php:268
+#: squirrelmail/functions/display_messages.php:70
+#: squirrelmail/functions/display_messages.php:89
+#: squirrelmail/functions/display_messages.php:106
+#: squirrelmail/functions/display_messages.php:172
 msgid "ERROR"
 msgstr "ERRO"
 
-#: squirrelmail/src/addressbook.php:214
+#: squirrelmail/src/addressbook.php:243
 msgid "Unknown error"
 msgstr "Erro desconhecido"
 
-#: squirrelmail/src/addressbook.php:258 squirrelmail/src/addressbook.php:344
+#: squirrelmail/src/addressbook.php:287 squirrelmail/src/addressbook.php:375
 msgid "Add address"
 msgstr "Adicionar endereço"
 
-#: squirrelmail/src/addressbook.php:270 squirrelmail/src/addressbook.php:326
+#: squirrelmail/src/addressbook.php:299 squirrelmail/src/addressbook.php:357
 msgid "Edit selected"
 msgstr "Editar selecionados"
 
-#: squirrelmail/src/addressbook.php:272 squirrelmail/src/addressbook.php:328
+#: squirrelmail/src/addressbook.php:301 squirrelmail/src/addressbook.php:359
 msgid "Delete selected"
 msgstr "Apagar selecionados"
 
-#: squirrelmail/src/addressbook.php:341
+#: squirrelmail/src/addressbook.php:372
 #, c-format
 msgid "Add to %s"
 msgstr "Adicionar a %s"
 
-#: squirrelmail/src/compose.php:97
+#: squirrelmail/src/compose.php:140
 msgid "Draft Email Saved"
 msgstr "Rascunho salvo"
 
-#: squirrelmail/src/compose.php:200 squirrelmail/src/compose.php:244
-#: squirrelmail/src/compose.php:254
+#: squirrelmail/src/compose.php:243 squirrelmail/src/compose.php:287
+#: squirrelmail/src/compose.php:297
 msgid "Could not move/copy file. File not attached"
 msgstr "Não posso mover/copiar arquivo. Arquivo não está anexado."
 
-#: squirrelmail/src/compose.php:446
+#: squirrelmail/src/compose.php:495
 msgid "Original Message"
 msgstr "Mensagem Original"
 
-#: squirrelmail/src/compose.php:447 squirrelmail/src/download.php:309
-#: squirrelmail/src/download.php:314
-#: squirrelmail/src/options_highlight.php:339
-#: squirrelmail/src/options_order.php:40
-#: squirrelmail/src/printer_friendly_bottom.php:101
-#: squirrelmail/src/search.php:352
-#: squirrelmail/functions/mailbox_display.php:768
-#: squirrelmail/plugins/filters/options.php:129
+#: squirrelmail/src/compose.php:496 squirrelmail/src/download.php:364
+#: squirrelmail/src/download.php:369
+#: squirrelmail/src/options_highlight.php:366
+#: squirrelmail/src/options_order.php:64
+#: squirrelmail/src/printer_friendly_bottom.php:111
+#: squirrelmail/src/search.php:382
+#: squirrelmail/functions/mailbox_display.php:769
+#: squirrelmail/plugins/filters/options.php:156
 msgid "Subject"
 msgstr "Assunto"
 
-#: squirrelmail/src/compose.php:448 squirrelmail/src/download.php:98
-#: squirrelmail/src/download.php:310 squirrelmail/src/download.php:316
-#: squirrelmail/src/options_highlight.php:327
-#: squirrelmail/src/options_order.php:38
-#: squirrelmail/src/printer_friendly_bottom.php:95
-#: squirrelmail/src/search.php:353
-#: squirrelmail/functions/mailbox_display.php:753
-#: squirrelmail/plugins/filters/options.php:117
+#: squirrelmail/src/compose.php:497 squirrelmail/src/download.php:153
+#: squirrelmail/src/download.php:365 squirrelmail/src/download.php:371
+#: squirrelmail/src/options_highlight.php:354
+#: squirrelmail/src/options_order.php:62
+#: squirrelmail/src/printer_friendly_bottom.php:105
+#: squirrelmail/src/search.php:383
+#: squirrelmail/functions/mailbox_display.php:754
+#: squirrelmail/plugins/filters/options.php:144
 msgid "From"
 msgstr "De"
 
-#: squirrelmail/src/compose.php:449 squirrelmail/src/download.php:312
-#: squirrelmail/src/download.php:320 squirrelmail/src/options_order.php:39
-#: squirrelmail/src/printer_friendly_bottom.php:100
-#: squirrelmail/functions/mailbox_display.php:761
+#: squirrelmail/src/compose.php:498 squirrelmail/src/download.php:367
+#: squirrelmail/src/download.php:375 squirrelmail/src/options_order.php:63
+#: squirrelmail/src/printer_friendly_bottom.php:110
+#: squirrelmail/functions/mailbox_display.php:762
 msgid "Date"
 msgstr "Data"
 
-#: squirrelmail/src/compose.php:610
+#: squirrelmail/src/compose.php:663
 #, fuzzy
 msgid "Draft Saved"
 msgstr "Rascunho salvo"
 
-#: squirrelmail/src/compose.php:613
+#: squirrelmail/src/compose.php:666
 #, fuzzy
 msgid "Your Message has been sent"
 msgstr "Nenhuma mensagem selecionada."
 
-#: squirrelmail/src/compose.php:629 squirrelmail/src/read_body.php:808
-#: squirrelmail/plugins/listcommands/mailout.php:50
+#: squirrelmail/src/compose.php:682 squirrelmail/src/read_body.php:905
+#: squirrelmail/plugins/listcommands/mailout.php:57
 msgid "From:"
 msgstr "De:"
 
-#: squirrelmail/src/compose.php:657 squirrelmail/src/download.php:110
-#: squirrelmail/src/read_body.php:220 squirrelmail/src/read_body.php:825
+#: squirrelmail/src/compose.php:710 squirrelmail/src/download.php:165
+#: squirrelmail/src/read_body.php:222 squirrelmail/src/read_body.php:924
 msgid "To:"
 msgstr "Para:"
 
-#: squirrelmail/src/compose.php:665
+#: squirrelmail/src/compose.php:718
 msgid "CC:"
 msgstr "CC:"
 
-#: squirrelmail/src/compose.php:673
+#: squirrelmail/src/compose.php:726
 msgid "BCC:"
 msgstr "BCC:"
 
-#: squirrelmail/src/compose.php:680 squirrelmail/src/download.php:103
-#: squirrelmail/src/read_body.php:221 squirrelmail/src/read_body.php:779
+#: squirrelmail/src/compose.php:733 squirrelmail/src/download.php:158
+#: squirrelmail/src/read_body.php:223 squirrelmail/src/read_body.php:876
 msgid "Subject:"
 msgstr "Assunto:"
 
-#: squirrelmail/src/compose.php:742 squirrelmail/src/compose.php:833
+#: squirrelmail/src/compose.php:795 squirrelmail/src/compose.php:887
 msgid "Send"
 msgstr "Enviar"
 
-#: squirrelmail/src/compose.php:748
+#: squirrelmail/src/compose.php:801
 msgid "Attach:"
 msgstr "Anexar:"
 
-#: squirrelmail/src/compose.php:753 squirrelmail/src/options_order.php:126
+#: squirrelmail/src/compose.php:806 squirrelmail/src/options_order.php:150
 msgid "Add"
 msgstr "Adicionar"
 
-#: squirrelmail/src/compose.php:772
+#: squirrelmail/src/compose.php:826
 msgid "Delete selected attachments"
 msgstr "Apagar os anexos selecionados"
 
-#: squirrelmail/src/compose.php:802 squirrelmail/src/read_body.php:854
+#: squirrelmail/src/compose.php:856 squirrelmail/src/read_body.php:953
 msgid "Priority"
 msgstr "Prioridade"
 
-#: squirrelmail/src/compose.php:803 squirrelmail/src/read_body.php:626
+#: squirrelmail/src/compose.php:857 squirrelmail/src/read_body.php:693
 #: squirrelmail/plugins/calendar/functions.php:98
 #: squirrelmail/plugins/administrator/defines.php:201
 msgid "High"
 msgstr "Alta"
 
-#: squirrelmail/src/compose.php:804 squirrelmail/src/read_body.php:639
+#: squirrelmail/src/compose.php:858 squirrelmail/src/read_body.php:706
 #: squirrelmail/plugins/calendar/functions.php:97
 msgid "Normal"
 msgstr "Normal"
 
-#: squirrelmail/src/compose.php:805 squirrelmail/src/read_body.php:632
+#: squirrelmail/src/compose.php:859 squirrelmail/src/read_body.php:699
 #: squirrelmail/plugins/administrator/defines.php:198
 msgid "Low"
 msgstr "Baixa"
 
-#: squirrelmail/src/compose.php:811
+#: squirrelmail/src/compose.php:865
 msgid "Receipt"
 msgstr "Pedir Recibo"
 
-#: squirrelmail/src/compose.php:813
+#: squirrelmail/src/compose.php:867
 #, fuzzy
 msgid "On read"
 msgstr "na leitura"
 
-#: squirrelmail/src/compose.php:815
+#: squirrelmail/src/compose.php:869
 msgid "On Delivery"
 msgstr "no envio (nem sempre funciona)"
 
-#: squirrelmail/src/compose.php:820
-#: squirrelmail/src/options_identities.php:329
-#: squirrelmail/src/options_personal.php:99
+#: squirrelmail/src/compose.php:874
+#: squirrelmail/src/options_identities.php:338
+#: squirrelmail/src/options_personal.php:100
 msgid "Signature"
 msgstr "Assinatura"
 
-#: squirrelmail/src/compose.php:823 squirrelmail/src/compose.php:827
-#: squirrelmail/src/compose.php:831 squirrelmail/functions/page_header.php:173
+#: squirrelmail/src/compose.php:877 squirrelmail/src/compose.php:881
+#: squirrelmail/src/compose.php:885 squirrelmail/functions/page_header.php:229
 msgid "Addresses"
 msgstr "Endereços"
 
-#: squirrelmail/src/compose.php:836
+#: squirrelmail/src/compose.php:890
 msgid "Save Draft"
 msgstr "Guardar como rascunho"
 
-#: squirrelmail/src/compose.php:855
+#: squirrelmail/src/compose.php:909
 msgid "You have not filled in the \"To:\" field."
 msgstr "Você não preencheu o campo \"Para:\"."
 
-#: squirrelmail/src/compose.php:947
+#: squirrelmail/src/compose.php:1005
 msgid "said"
 msgstr "disse"
 
-#: squirrelmail/src/compose.php:950
+#: squirrelmail/src/compose.php:1008
 msgid "quote"
 msgstr "quote"
 
-#: squirrelmail/src/compose.php:950
+#: squirrelmail/src/compose.php:1008
 msgid "who"
 msgstr "quem"
 
-#: squirrelmail/src/download.php:31
+#: squirrelmail/src/download.php:73
 msgid "Viewing a text attachment"
 msgstr "Visualizando texto anexado"
 
-#: squirrelmail/src/download.php:34 squirrelmail/src/download.php:36
-#: squirrelmail/src/download.php:72 squirrelmail/src/image.php:31
-#: squirrelmail/src/image.php:35 squirrelmail/src/read_body.php:438
-#: squirrelmail/src/vcard.php:35 squirrelmail/src/vcard.php:39
+#: squirrelmail/src/download.php:79 squirrelmail/src/download.php:84
+#: squirrelmail/src/download.php:127 squirrelmail/src/image.php:47
+#: squirrelmail/src/image.php:51 squirrelmail/src/read_body.php:505
+#: squirrelmail/src/vcard.php:51 squirrelmail/src/vcard.php:55
 msgid "View message"
 msgstr "Ver mensagem"
 
-#: squirrelmail/src/download.php:41 squirrelmail/src/download.php:77
-#: squirrelmail/src/image.php:44 squirrelmail/src/vcard.php:196
+#: squirrelmail/src/download.php:89 squirrelmail/src/download.php:131
+#: squirrelmail/src/image.php:60 squirrelmail/src/vcard.php:212
 #: squirrelmail/functions/mime.php:788
 msgid "Download this as a file"
 msgstr "Fazer o download deste arquivo"
 
-#: squirrelmail/src/download.php:70
+#: squirrelmail/src/download.php:124
 #, fuzzy
 msgid "Viewing a message attachment"
 msgstr "Visualizando texto anexado"
 
-#: squirrelmail/src/download.php:116 squirrelmail/src/read_body.php:816
-#: squirrelmail/plugins/calendar/event_create.php:112
-#: squirrelmail/plugins/calendar/event_delete.php:32
-#: squirrelmail/plugins/calendar/event_edit.php:35
-#: squirrelmail/plugins/calendar/event_edit.php:93
+#: squirrelmail/src/download.php:171 squirrelmail/src/read_body.php:915
+#: squirrelmail/plugins/calendar/event_create.php:156
+#: squirrelmail/plugins/calendar/event_delete.php:87
 #: squirrelmail/plugins/calendar/event_edit.php:106
+#: squirrelmail/plugins/calendar/event_edit.php:164
+#: squirrelmail/plugins/calendar/event_edit.php:177
 msgid "Date:"
 msgstr "Data:"
 
-#: squirrelmail/src/download.php:124
+#: squirrelmail/src/download.php:179
 #, fuzzy
 msgid "Cc:"
 msgstr "CC"
 
-#: squirrelmail/src/download.php:132
+#: squirrelmail/src/download.php:187
 msgid "Bcc:"
 msgstr "Bcc"
 
-#: squirrelmail/src/download.php:149 squirrelmail/src/read_body.php:590
+#: squirrelmail/src/download.php:204 squirrelmail/src/read_body.php:657
 msgid "more"
 msgstr "mais"
 
-#: squirrelmail/src/download.php:150 squirrelmail/src/read_body.php:591
+#: squirrelmail/src/download.php:205 squirrelmail/src/read_body.php:658
 msgid "less"
 msgstr "menos"
 
-#: squirrelmail/src/folders.php:30 squirrelmail/src/left_main.php:622
-#: squirrelmail/functions/page_header.php:175
+#: squirrelmail/src/folders.php:41 squirrelmail/src/left_main.php:250
+#: squirrelmail/functions/page_header.php:231
 msgid "Folders"
 msgstr "Pastas"
 
-#: squirrelmail/src/folders.php:43
+#: squirrelmail/src/folders.php:54
 msgid "Subscribed successfully!"
 msgstr "Inscrito com sucesso!"
 
-#: squirrelmail/src/folders.php:45
+#: squirrelmail/src/folders.php:56
 msgid "Unsubscribed successfully!"
 msgstr "Inscrição cancelada com sucesso!"
 
-#: squirrelmail/src/folders.php:47
+#: squirrelmail/src/folders.php:58
 msgid "Deleted folder successfully!"
 msgstr "Pasta apagada com sucesso!"
 
-#: squirrelmail/src/folders.php:49
+#: squirrelmail/src/folders.php:60
 msgid "Created folder successfully!"
 msgstr "Pasta criada com sucesso!"
 
-#: squirrelmail/src/folders.php:51
+#: squirrelmail/src/folders.php:62
 msgid "Renamed successfully!"
 msgstr "Renomeado com sucesso!"
 
-#: squirrelmail/src/folders.php:54 squirrelmail/src/left_main.php:661
+#: squirrelmail/src/folders.php:65 squirrelmail/src/left_main.php:289
 msgid "refresh folder list"
 msgstr "Atualizar lista de pastas"
 
-#: squirrelmail/src/folders.php:66
+#: squirrelmail/src/folders.php:77
 msgid "Create Folder"
 msgstr "Criar Pasta"
 
-#: squirrelmail/src/folders.php:71
+#: squirrelmail/src/folders.php:82
 msgid "as a subfolder of"
 msgstr "como sub-pasta de"
 
-#: squirrelmail/src/folders.php:75 squirrelmail/src/folders.php:77
+#: squirrelmail/src/folders.php:86 squirrelmail/src/folders.php:88
 #, fuzzy
 msgid "None"
 msgstr "Nenhum"
 
-#: squirrelmail/src/folders.php:102
+#: squirrelmail/src/folders.php:113
 msgid "Let this folder contain subfolders"
 msgstr "Permitir que esta pasta contenha sub-pastas"
 
-#: squirrelmail/src/folders.php:105
+#: squirrelmail/src/folders.php:116
 msgid "Create"
 msgstr "Criar"
 
-#: squirrelmail/src/folders.php:140
+#: squirrelmail/src/folders.php:151
 msgid "Rename a Folder"
 msgstr "Renomear uma Pasta"
 
-#: squirrelmail/src/folders.php:146 squirrelmail/src/folders.php:184
+#: squirrelmail/src/folders.php:157 squirrelmail/src/folders.php:194
 #, fuzzy
 msgid "Select a folder"
 msgstr "Renomear uma pasta"
 
-#: squirrelmail/src/folders.php:165
+#: squirrelmail/src/folders.php:175
 msgid "Rename"
 msgstr "Renomear"
 
-#: squirrelmail/src/folders.php:169 squirrelmail/src/folders.php:206
+#: squirrelmail/src/folders.php:179 squirrelmail/src/folders.php:216
 msgid "No folders found"
 msgstr "Nenhuma pasta encontrada"
 
-#: squirrelmail/src/folders.php:177
+#: squirrelmail/src/folders.php:187
 msgid "Delete Folder"
 msgstr "Apagar Pasta"
 
-#: squirrelmail/src/folders.php:202 squirrelmail/src/options_highlight.php:76
-#: squirrelmail/src/options_identities.php:341
-#: squirrelmail/src/read_body.php:691
-#: squirrelmail/functions/mailbox_display.php:702
-#: squirrelmail/plugins/filters/options.php:189
-#: squirrelmail/plugins/mail_fetch/options.php:163
-#: squirrelmail/plugins/mail_fetch/options.php:170
+#: squirrelmail/src/folders.php:212 squirrelmail/src/options_highlight.php:103
+#: squirrelmail/src/options_identities.php:350
+#: squirrelmail/src/read_body.php:758
+#: squirrelmail/functions/mailbox_display.php:703
+#: squirrelmail/plugins/filters/options.php:216
+#: squirrelmail/plugins/mail_fetch/options.php:207
+#: squirrelmail/plugins/mail_fetch/options.php:214
 msgid "Delete"
 msgstr "Apagar"
 
-#: squirrelmail/src/folders.php:213 squirrelmail/src/folders.php:233
+#: squirrelmail/src/folders.php:223 squirrelmail/src/folders.php:243
 #: squirrelmail/plugins/listcommands/setup.php:34
 msgid "Unsubscribe"
 msgstr "Cancelar inscrição"
 
-#: squirrelmail/src/folders.php:213 squirrelmail/src/folders.php:274
+#: squirrelmail/src/folders.php:223 squirrelmail/src/folders.php:284
 #: squirrelmail/plugins/listcommands/setup.php:33
 msgid "Subscribe"
 msgstr "Inscrever"
 
-#: squirrelmail/src/folders.php:237
+#: squirrelmail/src/folders.php:247
 msgid "No folders were found to unsubscribe from!"
 msgstr "Não foram encontradas pastas para cancelar a inscrição!"
 
-#: squirrelmail/src/folders.php:277
+#: squirrelmail/src/folders.php:287
 msgid "No folders were found to subscribe to!"
 msgstr "Não foi encontrada nenhuma pasta para inscrever!"
 
-#: squirrelmail/src/folders_create.php:29
+#: squirrelmail/src/folders_create.php:42
 msgid "Illegal folder name.  Please select a different name."
 msgstr "Nome ilegal para pasta. Por favor escolha um nome diferente."
 
-#: squirrelmail/src/folders_create.php:29
-#: squirrelmail/src/folders_delete.php:29
-#: squirrelmail/src/folders_rename_getname.php:23
+#: squirrelmail/src/folders_create.php:42
+#: squirrelmail/src/folders_delete.php:39
+#: squirrelmail/src/folders_rename_getname.php:32
 msgid "Click here to go back"
 msgstr "Clique aqui para voltar"
 
-#: squirrelmail/src/folders_delete.php:29
+#: squirrelmail/src/folders_delete.php:39
 msgid "You have not selected a folder to delete. Please do so."
 msgstr "Você não selecionou uma pasta para apagar. Por favor, faça-o."
 
-#: squirrelmail/src/folders_rename_getname.php:23
+#: squirrelmail/src/folders_rename_getname.php:32
 msgid "You have not selected a folder to rename. Please do so."
 msgstr "Você não selecionou uma pasta para renomear. Por favor, faça-o."
 
-#: squirrelmail/src/folders_rename_getname.php:48
+#: squirrelmail/src/folders_rename_getname.php:57
 msgid "Rename a folder"
 msgstr "Renomear uma pasta"
 
-#: squirrelmail/src/folders_rename_getname.php:52
+#: squirrelmail/src/folders_rename_getname.php:61
 msgid "New name:"
 msgstr "Novo nome:"
 
-#: squirrelmail/src/folders_rename_getname.php:59
-#: squirrelmail/src/options_highlight.php:352
-#: squirrelmail/functions/options.php:414
-#: squirrelmail/plugins/filters/options.php:173
-#: squirrelmail/plugins/translate/options.php:160
+#: squirrelmail/src/folders_rename_getname.php:68
+#: squirrelmail/src/options_highlight.php:379
+#: squirrelmail/functions/options.php:416
+#: squirrelmail/plugins/filters/options.php:200
+#: squirrelmail/plugins/translate/options.php:164
 #: squirrelmail/plugins/newmail/newmail_opt.php:146
 msgid "Submit"
 msgstr "Executar"
 
-#: squirrelmail/src/help.php:91 squirrelmail/functions/page_header.php:181
+#: squirrelmail/src/help.php:91 squirrelmail/functions/page_header.php:237
 #: squirrelmail/plugins/listcommands/setup.php:37
 msgid "Help"
 msgstr "Ajuda"
@@ -554,164 +555,160 @@ msgstr "Ajuda"
 msgid ""
 "The help has not been translated to %s.  It will be displayed in English "
 "instead."
-msgstr "As instruções de ajuda não foram traduzidas para %s. Será "
-"apresentado em Inglês."
+msgstr ""
+"As instruções de ajuda não foram traduzidas para %s. Será apresentado em "
+"Inglês."
 
 #: squirrelmail/src/help.php:137
 msgid "Some or all of the help documents are not present!"
 msgstr "Alguns ou todos os documentos de ajuda não estão presentes!"
 
-#: squirrelmail/src/help.php:169 squirrelmail/src/help.php:191
+#: squirrelmail/src/help.php:171 squirrelmail/src/help.php:193
 msgid "Table of Contents"
 msgstr "Índice"
 
-#: squirrelmail/src/help.php:185 squirrelmail/src/help.php:189
-#: squirrelmail/src/read_body.php:725 squirrelmail/src/read_body.php:727
-#: squirrelmail/functions/mailbox_display.php:933
-#: squirrelmail/functions/mailbox_display.php:936
-#: squirrelmail/functions/mailbox_display.php:939
-#: squirrelmail/plugins/delete_move_next/setup.php:166
-#: squirrelmail/plugins/delete_move_next/setup.php:168
-msgid "Previous"
-msgstr "Anterior"
-
-#: squirrelmail/src/help.php:193 squirrelmail/src/help.php:196
-#: squirrelmail/src/read_body.php:731 squirrelmail/src/read_body.php:733
+#: squirrelmail/src/help.php:187 squirrelmail/src/help.php:191
+#: squirrelmail/src/read_body.php:804 squirrelmail/src/read_body.php:806
 #: squirrelmail/functions/mailbox_display.php:934
 #: squirrelmail/functions/mailbox_display.php:937
 #: squirrelmail/functions/mailbox_display.php:940
 #: squirrelmail/plugins/delete_move_next/setup.php:171
 #: squirrelmail/plugins/delete_move_next/setup.php:173
+msgid "Previous"
+msgstr "Anterior"
+
+#: squirrelmail/src/help.php:195 squirrelmail/src/help.php:198
+#: squirrelmail/src/read_body.php:810 squirrelmail/src/read_body.php:812
+#: squirrelmail/functions/mailbox_display.php:935
+#: squirrelmail/functions/mailbox_display.php:938
+#: squirrelmail/functions/mailbox_display.php:941
+#: squirrelmail/plugins/delete_move_next/setup.php:176
+#: squirrelmail/plugins/delete_move_next/setup.php:178
 msgid "Next"
 msgstr "Seguinte"
 
-#: squirrelmail/src/help.php:219
+#: squirrelmail/src/help.php:221
 msgid "Top"
 msgstr "Início"
 
-#: squirrelmail/src/image.php:26
+#: squirrelmail/src/image.php:42
 #, fuzzy
 msgid "Viewing an image attachment"
 msgstr "Visualizando uma imagem anexada"
 
-#: squirrelmail/src/left_main.php:73 squirrelmail/src/search.php:316
-#: squirrelmail/functions/imap_search.php:202
-#: squirrelmail/functions/mailbox_display.php:679
-#: squirrelmail/functions/page_header.php:146
-#: squirrelmail/plugins/mail_fetch/options.php:137
-#: squirrelmail/plugins/mail_fetch/options.php:214
-#: squirrelmail/plugins/delete_move_next/setup.php:218
+#: squirrelmail/src/left_main.php:73 squirrelmail/src/search.php:346
+#: squirrelmail/functions/imap_search.php:218
+#: squirrelmail/functions/mailbox_display.php:680
+#: squirrelmail/functions/page_header.php:203
+#: squirrelmail/plugins/mail_fetch/options.php:181
+#: squirrelmail/plugins/mail_fetch/options.php:258
+#: squirrelmail/plugins/delete_move_next/setup.php:222
 #, fuzzy
 msgid "INBOX"
 msgstr "Entrada"
 
-#: squirrelmail/src/left_main.php:97 squirrelmail/src/left_main.php:250
-#: squirrelmail/src/left_main.php:325
+#: squirrelmail/src/left_main.php:97
 #, fuzzy
 msgid "purge"
 msgstr "Esvaziar"
 
-#: squirrelmail/src/left_main.php:655
+#: squirrelmail/src/left_main.php:283
 msgid "Last Refresh"
 msgstr "Última Atualização"
 
-#: squirrelmail/src/left_main.php:735
-msgid "Save folder tree"
-msgstr "Salvar a árvore de diretórios (pastas)"
-
-#: squirrelmail/src/login.php:102 squirrelmail/src/login.php:156
+#: squirrelmail/src/login.php:105 squirrelmail/src/login.php:159
 msgid "Login"
 msgstr "Login"
 
-#: squirrelmail/src/login.php:124
-#: squirrelmail/functions/display_messages.php:142
+#: squirrelmail/src/login.php:127
+#: squirrelmail/functions/display_messages.php:164
 #, fuzzy, c-format
 msgid "%s Logo"
 msgstr "Logotipo para %s"
 
-#: squirrelmail/src/login.php:127
-#: squirrelmail/functions/display_messages.php:145
+#: squirrelmail/src/login.php:130
+#: squirrelmail/functions/display_messages.php:167
 #, c-format
 msgid "SquirrelMail version %s"
 msgstr "SquirrelMail versão %s"
 
-#: squirrelmail/src/login.php:128
-#: squirrelmail/functions/display_messages.php:146
+#: squirrelmail/src/login.php:131
+#: squirrelmail/functions/display_messages.php:168
 msgid "By the SquirrelMail Development Team"
 msgstr "Pela Equipe de Desenvolvimento Squirrelmail"
 
-#: squirrelmail/src/login.php:134
+#: squirrelmail/src/login.php:137
 #, c-format
 msgid "%s Login"
 msgstr "Login %s"
 
-#: squirrelmail/src/login.php:138
+#: squirrelmail/src/login.php:141
 msgid "Name:"
 msgstr "Nome:"
 
-#: squirrelmail/src/login.php:144
-#: squirrelmail/plugins/mail_fetch/options.php:126
-#: squirrelmail/plugins/mail_fetch/options.php:202
+#: squirrelmail/src/login.php:147
+#: squirrelmail/plugins/mail_fetch/options.php:170
+#: squirrelmail/plugins/mail_fetch/options.php:246
 msgid "Password:"
 msgstr "Senha:"
 
-#: squirrelmail/src/move_messages.php:94
+#: squirrelmail/src/move_messages.php:96
 #, fuzzy
 msgid "<No subject>"
 msgstr "(sem assunto)"
 
-#: squirrelmail/src/move_messages.php:172
-#: squirrelmail/src/move_messages.php:225
-#: squirrelmail/src/move_messages.php:254
+#: squirrelmail/src/move_messages.php:236
+#: squirrelmail/src/move_messages.php:289
+#: squirrelmail/src/move_messages.php:317
 msgid "No messages were selected."
 msgstr "Nenhuma mensagem selecionada."
 
-#: squirrelmail/src/options.php:134 squirrelmail/src/options.php:281
+#: squirrelmail/src/options.php:154 squirrelmail/src/options.php:301
 msgid "Personal Information"
 msgstr "Informações Pessoais"
 
-#: squirrelmail/src/options.php:140 squirrelmail/src/options.php:289
+#: squirrelmail/src/options.php:160 squirrelmail/src/options.php:309
 msgid "Display Preferences"
 msgstr "Preferências de Apresentação"
 
-#: squirrelmail/src/options.php:146 squirrelmail/src/options.php:297
-#: squirrelmail/src/options_highlight.php:62
+#: squirrelmail/src/options.php:166 squirrelmail/src/options.php:317
+#: squirrelmail/src/options_highlight.php:89
 msgid "Message Highlighting"
 msgstr "Destacando mensagem"
 
-#: squirrelmail/src/options.php:152 squirrelmail/src/options.php:305
+#: squirrelmail/src/options.php:172 squirrelmail/src/options.php:325
 msgid "Folder Preferences"
 msgstr "Preferências de Pastas"
 
-#: squirrelmail/src/options.php:158 squirrelmail/src/options.php:313
-#: squirrelmail/src/options_order.php:31
+#: squirrelmail/src/options.php:178 squirrelmail/src/options.php:333
+#: squirrelmail/src/options_order.php:55
 msgid "Index Order"
 msgstr "Ordem de indexação"
 
-#: squirrelmail/src/options.php:198 squirrelmail/src/options_highlight.php:62
-#: squirrelmail/src/options_identities.php:44
-#: squirrelmail/src/options_order.php:31
-#: squirrelmail/functions/page_header.php:177
-#: squirrelmail/plugins/filters/options.php:70
+#: squirrelmail/src/options.php:218 squirrelmail/src/options_highlight.php:89
+#: squirrelmail/src/options_identities.php:53
+#: squirrelmail/src/options_order.php:55
+#: squirrelmail/functions/page_header.php:233
+#: squirrelmail/plugins/filters/options.php:94
 #: squirrelmail/plugins/translate/options.php:94
 #: squirrelmail/plugins/newmail/newmail_opt.php:37
 msgid "Options"
 msgstr "Opções"
 
-#: squirrelmail/src/options.php:264
+#: squirrelmail/src/options.php:284
 #, fuzzy
 msgid "Successfully Saved Options"
 msgstr "Opções gravadas com sucesso!"
 
-#: squirrelmail/src/options.php:269
+#: squirrelmail/src/options.php:289
 msgid "Refresh Folder List"
 msgstr "Atualizar lista de pastas"
 
-#: squirrelmail/src/options.php:271
+#: squirrelmail/src/options.php:291
 msgid "Refresh Page"
 msgstr "Atualizar página"
 
-#: squirrelmail/src/options.php:283
+#: squirrelmail/src/options.php:303
 msgid ""
 "This contains personal information about yourself such as your name, your "
 "email address, etc."
@@ -719,7 +716,7 @@ msgstr ""
 "Contém informações pessoais sobre você, tais como nome, seu endereço de "
 "email, etc."
 
-#: squirrelmail/src/options.php:291
+#: squirrelmail/src/options.php:311
 msgid ""
 "You can change the way that SquirrelMail looks and displays information to "
 "you, such as the colors, the language, and other settings."
@@ -727,24 +724,23 @@ msgstr ""
 "Você pode alterar a forma como o SquirrelMail apresenta informação para "
 "você, como as cores, linguagem e outras características."
 
-#: squirrelmail/src/options.php:299
+#: squirrelmail/src/options.php:319
 msgid ""
 "Based upon given criteria, incoming messages can have different background "
 "colors in the message list.  This helps to easily distinguish who the "
 "messages are from, especially for mailing lists."
 msgstr ""
-"Baseado nos critérios fornecidos, as mensagens recebidas podem ter "
-"cores de fundo diferentes na lista de mensagens. Isto facilita "
-"distinguir quem está enviando as mensagens, especialmente em listas "
-"de mensagens."
+"Baseado nos critérios fornecidos, as mensagens recebidas podem ter cores de "
+"fundo diferentes na lista de mensagens. Isto facilita distinguir quem está "
+"enviando as mensagens, especialmente em listas de mensagens."
 
-#: squirrelmail/src/options.php:307
+#: squirrelmail/src/options.php:327
 msgid ""
 "These settings change the way your folders are displayed and manipulated."
 msgstr ""
 "Estas opções alteram a forma que as pastas são apresentadas e manipuladas."
 
-#: squirrelmail/src/options.php:315
+#: squirrelmail/src/options.php:335
 #, fuzzy
 msgid ""
 "The order of the message index can be rearranged and changed to contain the "
@@ -790,7 +786,7 @@ msgid "Always"
 msgstr "Sempre"
 
 #: squirrelmail/src/options_display.php:99
-#: squirrelmail/src/options_folder.php:122
+#: squirrelmail/src/options_folder.php:127
 msgid "Never"
 msgstr "Nunca"
 
@@ -888,7 +884,8 @@ msgstr "Habilitar o link para &quot;Versão para Impressão&quot;"
 #: squirrelmail/src/options_display.php:234
 msgid "Enable Printer Friendly Clean Display"
 msgstr ""
-"Habilitar o link de &quot;Limpar&quot; para a &quot;Versão para Impressão&quot;"
+"Habilitar o link de &quot;Limpar&quot; para a &quot;Versão para "
+"Impressão&quot;"
 
 #: squirrelmail/src/options_display.php:242
 msgid "Enable request/confirm reading"
@@ -919,324 +916,324 @@ msgstr "Use a data de recebimento para ordenar"
 msgid "Use References header for thread sort"
 msgstr "Use referências do cabeçalho para ordenar por &quot;thread&quot;"
 
-#: squirrelmail/src/options_folder.php:40
+#: squirrelmail/src/options_folder.php:45
 msgid "Special Folder Options"
 msgstr "Opções especiais de pastas"
 
-#: squirrelmail/src/options_folder.php:47
+#: squirrelmail/src/options_folder.php:52
 msgid "Folder Path"
 msgstr "Caminho da pasta"
 
-#: squirrelmail/src/options_folder.php:63
+#: squirrelmail/src/options_folder.php:68
 msgid "Do not use Trash"
 msgstr "Não use Lixeira"
 
-#: squirrelmail/src/options_folder.php:67
+#: squirrelmail/src/options_folder.php:72
 #: squirrelmail/plugins/administrator/defines.php:135
 #, fuzzy
 msgid "Trash Folder"
 msgstr "Lixeira:"
 
-#: squirrelmail/src/options_folder.php:74
+#: squirrelmail/src/options_folder.php:79
 msgid "Do not use Sent"
 msgstr "Não use Enviadas"
 
-#: squirrelmail/src/options_folder.php:78
+#: squirrelmail/src/options_folder.php:83
 #: squirrelmail/plugins/administrator/defines.php:138
 #, fuzzy
 msgid "Sent Folder"
 msgstr "Pasta de Enviadas"
 
-#: squirrelmail/src/options_folder.php:85
+#: squirrelmail/src/options_folder.php:90
 #, fuzzy
 msgid "Do not use Drafts"
 msgstr "Não use Rascunhos"
 
-#: squirrelmail/src/options_folder.php:89
+#: squirrelmail/src/options_folder.php:94
 #: squirrelmail/plugins/administrator/defines.php:141
 #, fuzzy
 msgid "Draft Folder"
 msgstr "Pasta de Rascunhos"
 
-#: squirrelmail/src/options_folder.php:97
+#: squirrelmail/src/options_folder.php:102
 #, fuzzy
 msgid "Folder List Options"
 msgstr "Opções das listas de pastas"
 
-#: squirrelmail/src/options_folder.php:102
+#: squirrelmail/src/options_folder.php:107
 #, fuzzy
 msgid "Location of Folder List"
 msgstr "Localização da lista de pastas"
 
-#: squirrelmail/src/options_folder.php:105
+#: squirrelmail/src/options_folder.php:110
 msgid "Left"
 msgstr "Esquerda"
 
-#: squirrelmail/src/options_folder.php:106
+#: squirrelmail/src/options_folder.php:111
 msgid "Right"
 msgstr "Direita"
 
-#: squirrelmail/src/options_folder.php:111
+#: squirrelmail/src/options_folder.php:116
 #: squirrelmail/plugins/administrator/defines.php:45
 msgid "pixels"
 msgstr "pixels"
 
-#: squirrelmail/src/options_folder.php:115
+#: squirrelmail/src/options_folder.php:120
 #, fuzzy
 msgid "Width of Folder List"
 msgstr "Largura da lista de pastas"
 
-#: squirrelmail/src/options_folder.php:121
+#: squirrelmail/src/options_folder.php:126
 msgid "Minutes"
 msgstr "Minutos"
 
-#: squirrelmail/src/options_folder.php:125
+#: squirrelmail/src/options_folder.php:130
 #, fuzzy
 msgid "Seconds"
 msgstr "Segundos"
 
-#: squirrelmail/src/options_folder.php:127
+#: squirrelmail/src/options_folder.php:132
 msgid "Minute"
 msgstr "Minuto"
 
-#: squirrelmail/src/options_folder.php:134
+#: squirrelmail/src/options_folder.php:139
 #, fuzzy
 msgid "Auto Refresh Folder List"
 msgstr "Atualizar lista de pastas"
 
-#: squirrelmail/src/options_folder.php:142
+#: squirrelmail/src/options_folder.php:147
 #, fuzzy
 msgid "Enable Unread Message Notification"
 msgstr "Notificação para mensagens não lidas"
 
-#: squirrelmail/src/options_folder.php:145
+#: squirrelmail/src/options_folder.php:150
 #: squirrelmail/plugins/administrator/defines.php:162
 #, fuzzy
 msgid "No Notification"
 msgstr "Sem notificação"
 
-#: squirrelmail/src/options_folder.php:146
+#: squirrelmail/src/options_folder.php:151
 #: squirrelmail/plugins/administrator/defines.php:163
 msgid "Only INBOX"
 msgstr "Somente ENTRADA"
 
-#: squirrelmail/src/options_folder.php:147
+#: squirrelmail/src/options_folder.php:152
 #: squirrelmail/plugins/administrator/defines.php:164
 msgid "All Folders"
 msgstr "Todas as Pastas"
 
-#: squirrelmail/src/options_folder.php:152
+#: squirrelmail/src/options_folder.php:157
 #, fuzzy
 msgid "Unread Message Notification Type"
 msgstr "Tipo de notificação para mensagens não lidas"
 
-#: squirrelmail/src/options_folder.php:155
+#: squirrelmail/src/options_folder.php:160
 #: squirrelmail/plugins/administrator/defines.php:167
 #, fuzzy
 msgid "Only Unseen"
 msgstr "Somente não lidas"
 
-#: squirrelmail/src/options_folder.php:156
+#: squirrelmail/src/options_folder.php:161
 #: squirrelmail/plugins/administrator/defines.php:168
 msgid "Unseen and Total"
 msgstr "Não lidas e Total"
 
-#: squirrelmail/src/options_folder.php:161
+#: squirrelmail/src/options_folder.php:166
 msgid "Enable Collapsable Folders"
 msgstr "Permitir pastas com sub-pastas"
 
-#: squirrelmail/src/options_folder.php:168
+#: squirrelmail/src/options_folder.php:173
 msgid "Show Clock on Folders Panel"
 msgstr "Mostra relógio no painel de pastas"
 
-#: squirrelmail/src/options_folder.php:176
+#: squirrelmail/src/options_folder.php:181
 msgid "No Clock"
 msgstr "Sem relógio"
 
-#: squirrelmail/src/options_folder.php:181
+#: squirrelmail/src/options_folder.php:186
 msgid "Hour Format"
 msgstr "Formato da hora"
 
-#: squirrelmail/src/options_folder.php:184
+#: squirrelmail/src/options_folder.php:189
 msgid "12-hour clock"
 msgstr "Relógio de 12 horas"
 
-#: squirrelmail/src/options_folder.php:185
+#: squirrelmail/src/options_folder.php:190
 msgid "24-hour clock"
 msgstr "Relógio de 24 horas"
 
-#: squirrelmail/src/options_folder.php:190
+#: squirrelmail/src/options_folder.php:195
 #, fuzzy
 msgid "Memory Search"
 msgstr "Pesquisar"
 
-#: squirrelmail/src/options_folder.php:193
-#: squirrelmail/plugins/sent_subfolders/setup.php:102
+#: squirrelmail/src/options_folder.php:198
+#: squirrelmail/plugins/sent_subfolders/setup.php:107
 msgid "Disabled"
 msgstr "Desabilitado"
 
-#: squirrelmail/src/options_highlight.php:66
-#: squirrelmail/plugins/filters/options.php:96
+#: squirrelmail/src/options_highlight.php:93
+#: squirrelmail/plugins/filters/options.php:120
 msgid "New"
 msgstr "Novo"
 
-#: squirrelmail/src/options_highlight.php:67
-#: squirrelmail/plugins/filters/options.php:97
-#: squirrelmail/plugins/filters/spamoptions.php:159
-#: squirrelmail/plugins/mail_fetch/fetch.php:225
+#: squirrelmail/src/options_highlight.php:94
+#: squirrelmail/plugins/filters/options.php:121
+#: squirrelmail/plugins/filters/spamoptions.php:168
+#: squirrelmail/plugins/mail_fetch/fetch.php:239
 msgid "Done"
 msgstr "Feito"
 
-#: squirrelmail/src/options_highlight.php:74
-#: squirrelmail/plugins/filters/options.php:187
-#: squirrelmail/plugins/filters/spamoptions.php:158
+#: squirrelmail/src/options_highlight.php:101
+#: squirrelmail/plugins/filters/options.php:214
+#: squirrelmail/plugins/filters/spamoptions.php:167
 msgid "Edit"
 msgstr "Editar"
 
-#: squirrelmail/src/options_highlight.php:87
+#: squirrelmail/src/options_highlight.php:114
 msgid "No highlighting is defined"
 msgstr "Nenhum destaque foi definido"
 
-#: squirrelmail/src/options_highlight.php:259
+#: squirrelmail/src/options_highlight.php:286
 msgid "Identifying name"
 msgstr "Identificando nome"
 
-#: squirrelmail/src/options_highlight.php:273
+#: squirrelmail/src/options_highlight.php:300
 msgid "Color"
 msgstr "Cor"
 
-#: squirrelmail/src/options_highlight.php:277
+#: squirrelmail/src/options_highlight.php:304
 msgid "Dark Blue"
 msgstr "Azul escuro"
 
-#: squirrelmail/src/options_highlight.php:278
+#: squirrelmail/src/options_highlight.php:305
 msgid "Dark Green"
 msgstr "Verde escuro"
 
-#: squirrelmail/src/options_highlight.php:279
+#: squirrelmail/src/options_highlight.php:306
 msgid "Dark Yellow"
 msgstr "Amarelo escuro"
 
-#: squirrelmail/src/options_highlight.php:280
+#: squirrelmail/src/options_highlight.php:307
 msgid "Dark Cyan"
 msgstr "Cyan escuro"
 
-#: squirrelmail/src/options_highlight.php:281
+#: squirrelmail/src/options_highlight.php:308
 msgid "Dark Magenta"
 msgstr "Magenta escuro"
 
-#: squirrelmail/src/options_highlight.php:282
+#: squirrelmail/src/options_highlight.php:309
 msgid "Light Blue"
 msgstr "Azul claro"
 
-#: squirrelmail/src/options_highlight.php:283
+#: squirrelmail/src/options_highlight.php:310
 msgid "Light Green"
 msgstr "Verde claro"
 
-#: squirrelmail/src/options_highlight.php:284
+#: squirrelmail/src/options_highlight.php:311
 msgid "Light Yellow"
 msgstr "Amarelo claro"
 
-#: squirrelmail/src/options_highlight.php:285
+#: squirrelmail/src/options_highlight.php:312
 msgid "Light Cyan"
 msgstr "Cyan claro"
 
-#: squirrelmail/src/options_highlight.php:286
+#: squirrelmail/src/options_highlight.php:313
 msgid "Light Magenta"
 msgstr "Magenta claro"
 
-#: squirrelmail/src/options_highlight.php:287
+#: squirrelmail/src/options_highlight.php:314
 msgid "Dark Gray"
 msgstr "Cinza escuro"
 
-#: squirrelmail/src/options_highlight.php:288
+#: squirrelmail/src/options_highlight.php:315
 msgid "Medium Gray"
 msgstr "Cinza médio"
 
-#: squirrelmail/src/options_highlight.php:289
+#: squirrelmail/src/options_highlight.php:316
 msgid "Light Gray"
 msgstr "Cinza claro"
 
-#: squirrelmail/src/options_highlight.php:290
+#: squirrelmail/src/options_highlight.php:317
 msgid "White"
 msgstr "Branco"
 
-#: squirrelmail/src/options_highlight.php:292
+#: squirrelmail/src/options_highlight.php:319
 msgid "Other:"
 msgstr "Outro:"
 
-#: squirrelmail/src/options_highlight.php:294
+#: squirrelmail/src/options_highlight.php:321
 msgid "Ex: 63aa7f"
 msgstr "Ex: 63aa7f"
 
-#: squirrelmail/src/options_highlight.php:336
-#: squirrelmail/plugins/filters/options.php:126
+#: squirrelmail/src/options_highlight.php:363
+#: squirrelmail/plugins/filters/options.php:153
 msgid "To or Cc"
 msgstr "Para ou CC"
 
-#: squirrelmail/src/options_highlight.php:341
+#: squirrelmail/src/options_highlight.php:368
 #, fuzzy
 msgid "Matches"
 msgstr "Encontrado"
 
-#: squirrelmail/src/options_identities.php:44
+#: squirrelmail/src/options_identities.php:53
 msgid "Advanced Identities"
 msgstr "Identificação Avançada"
 
-#: squirrelmail/src/options_identities.php:55
+#: squirrelmail/src/options_identities.php:64
 msgid "Default Identity"
 msgstr "Identificação Padrão"
 
-#: squirrelmail/src/options_identities.php:66
+#: squirrelmail/src/options_identities.php:75
 #, c-format
 msgid "Alternate Identity %d"
 msgstr "Identificação Alternativa %d"
 
-#: squirrelmail/src/options_identities.php:76
+#: squirrelmail/src/options_identities.php:85
 msgid "Add a New Identity"
 msgstr "Adicionar nova Identidade"
 
-#: squirrelmail/src/options_identities.php:326
-#: squirrelmail/src/options_personal.php:56
-#: squirrelmail/src/options_personal.php:64
+#: squirrelmail/src/options_identities.php:335
+#: squirrelmail/src/options_personal.php:57
+#: squirrelmail/src/options_personal.php:65
 msgid "Full Name"
 msgstr "Nome completo"
 
-#: squirrelmail/src/options_identities.php:327
+#: squirrelmail/src/options_identities.php:336
 msgid "E-Mail Address"
 msgstr "E-Mail"
 
-#: squirrelmail/src/options_identities.php:328
-#: squirrelmail/src/options_personal.php:91
+#: squirrelmail/src/options_identities.php:337
+#: squirrelmail/src/options_personal.php:92
 msgid "Reply To"
 msgstr "Responder a"
 
-#: squirrelmail/src/options_identities.php:336
+#: squirrelmail/src/options_identities.php:345
 msgid "Save / Update"
 msgstr "Armazenar / Atualizar"
 
-#: squirrelmail/src/options_identities.php:339
+#: squirrelmail/src/options_identities.php:348
 msgid "Make Default"
 msgstr "Criar Padrão"
 
-#: squirrelmail/src/options_identities.php:345
+#: squirrelmail/src/options_identities.php:354
 msgid "Move Up"
 msgstr "Mover Acima"
 
-#: squirrelmail/src/options_order.php:37
+#: squirrelmail/src/options_order.php:61
 msgid "Checkbox"
 msgstr "Checkbox"
 
-#: squirrelmail/src/options_order.php:41
+#: squirrelmail/src/options_order.php:65
 msgid "Flags"
 msgstr "Bandeiras"
 
-#: squirrelmail/src/options_order.php:42
-#: squirrelmail/functions/mailbox_display.php:775
+#: squirrelmail/src/options_order.php:66
+#: squirrelmail/functions/mailbox_display.php:776
 msgid "Size"
 msgstr "Tamanho"
 
-#: squirrelmail/src/options_order.php:85
+#: squirrelmail/src/options_order.php:109
 msgid ""
 "The index order is the order that the columns are arranged in the message "
 "index.  You can add, remove, and move columns around to customize them to "
@@ -1246,116 +1243,116 @@ msgstr ""
 "mensagem. Você pode adicionar, remover e mover colunas para adequar à sua "
 "necessidade."
 
-#: squirrelmail/src/options_order.php:94
+#: squirrelmail/src/options_order.php:118
 msgid "up"
 msgstr "para cima"
 
-#: squirrelmail/src/options_order.php:96
+#: squirrelmail/src/options_order.php:120
 msgid "down"
 msgstr "para baixo"
 
-#: squirrelmail/src/options_order.php:101
+#: squirrelmail/src/options_order.php:125
 msgid "remove"
 msgstr "remover"
 
-#: squirrelmail/src/options_order.php:130
+#: squirrelmail/src/options_order.php:154
 msgid "Return to options page"
 msgstr "Voltar para página de opções"
 
-#: squirrelmail/src/options_personal.php:43
+#: squirrelmail/src/options_personal.php:44
 msgid "Name and Address Options"
 msgstr "Opções de Nome e Endereços"
 
-#: squirrelmail/src/options_personal.php:74
-#: squirrelmail/src/options_personal.php:82
+#: squirrelmail/src/options_personal.php:75
+#: squirrelmail/src/options_personal.php:83
 #, fuzzy
 msgid "Email Address"
 msgstr "E-Mail"
 
-#: squirrelmail/src/options_personal.php:108
+#: squirrelmail/src/options_personal.php:109
 msgid "Edit Advanced Identities"
 msgstr "Editar Identidade Avançada"
 
-#: squirrelmail/src/options_personal.php:110
+#: squirrelmail/src/options_personal.php:111
 msgid "(discards changes made on this form so far)"
 msgstr "(descartar este formulário)"
 
-#: squirrelmail/src/options_personal.php:113
+#: squirrelmail/src/options_personal.php:114
 msgid "Multiple Identities"
 msgstr "Múltiplas Identidades"
 
-#: squirrelmail/src/options_personal.php:121
+#: squirrelmail/src/options_personal.php:122
 msgid "Same as server"
 msgstr "a mesma do servidor"
 
-#: squirrelmail/src/options_personal.php:132
+#: squirrelmail/src/options_personal.php:133
 #, fuzzy
 msgid "Timezone Options"
 msgstr "Opções de Tradução"
 
-#: squirrelmail/src/options_personal.php:137
+#: squirrelmail/src/options_personal.php:138
 msgid "Your current timezone"
 msgstr "Seu &quot;timezone&quot;"
 
-#: squirrelmail/src/options_personal.php:145
+#: squirrelmail/src/options_personal.php:146
 msgid "Reply Citation Options"
 msgstr "Opções para citações na resposta"
 
-#: squirrelmail/src/options_personal.php:150
+#: squirrelmail/src/options_personal.php:151
 msgid "Reply Citation Style"
 msgstr "Estilo para citações na resposta"
 
-#: squirrelmail/src/options_personal.php:153
+#: squirrelmail/src/options_personal.php:154
 #, fuzzy
 msgid "No Citation"
 msgstr "Sem citação"
 
-#: squirrelmail/src/options_personal.php:154
+#: squirrelmail/src/options_personal.php:155
 msgid "AUTHOR Said"
 msgstr "Autor Disse"
 
-#: squirrelmail/src/options_personal.php:155
+#: squirrelmail/src/options_personal.php:156
 msgid "Quote Who XML"
 msgstr "Disse XML"
 
-#: squirrelmail/src/options_personal.php:156
+#: squirrelmail/src/options_personal.php:157
 msgid "User-Defined"
 msgstr "Definido pelo usuário"
 
-#: squirrelmail/src/options_personal.php:161
+#: squirrelmail/src/options_personal.php:162
 msgid "User-Defined Citation Start"
 msgstr "Início da citação definida pelo usuário"
 
-#: squirrelmail/src/options_personal.php:169
+#: squirrelmail/src/options_personal.php:170
 msgid "User-Defined Citation End"
 msgstr "Final da citação definida pelo usuário"
 
-#: squirrelmail/src/options_personal.php:176
+#: squirrelmail/src/options_personal.php:177
 #, fuzzy
 msgid "Signature Options"
 msgstr "Opções de assinatura"
 
-#: squirrelmail/src/options_personal.php:181
+#: squirrelmail/src/options_personal.php:182
 #, fuzzy
 msgid "Use Signature"
 msgstr "Usar assinatura"
 
-#: squirrelmail/src/options_personal.php:188
+#: squirrelmail/src/options_personal.php:189
 msgid "Prefix Signature with '-- ' Line"
 msgstr "Iniciar a assinatura com uma linha '--' "
 
-#: squirrelmail/src/printer_friendly_bottom.php:61
+#: squirrelmail/src/printer_friendly_bottom.php:71
 #, fuzzy
 msgid "Message not printable"
 msgstr "Mensagem não pode ser impressa"
 
-#: squirrelmail/src/printer_friendly_bottom.php:90
+#: squirrelmail/src/printer_friendly_bottom.php:100
 #: squirrelmail/src/printer_friendly_main.php:15
 #: squirrelmail/src/printer_friendly_top.php:21
 msgid "Printer Friendly"
 msgstr "Versão para Impressão"
 
-#: squirrelmail/src/printer_friendly_bottom.php:98
+#: squirrelmail/src/printer_friendly_bottom.php:108
 #, fuzzy
 msgid "CC"
 msgstr "CC:"
@@ -1369,92 +1366,92 @@ msgstr "Imprimir"
 msgid "Close Window"
 msgstr "Fechar janela"
 
-#: squirrelmail/src/read_body.php:155
+#: squirrelmail/src/read_body.php:156
 msgid "View Printable Version"
 msgstr "Ver Versão para Impressão"
 
-#: squirrelmail/src/read_body.php:219
+#: squirrelmail/src/read_body.php:221
 #, fuzzy
 msgid "Your message"
 msgstr "Sua mensagem"
 
-#: squirrelmail/src/read_body.php:222
+#: squirrelmail/src/read_body.php:224
 #, fuzzy
 msgid "Sent:"
 msgstr "Enviar"
 
-#: squirrelmail/src/read_body.php:224
+#: squirrelmail/src/read_body.php:226
 #, c-format
 msgid "Was displayed on %s"
 msgstr "Está mostrada em %s"
 
-#: squirrelmail/src/read_body.php:256
+#: squirrelmail/src/read_body.php:258
 #, fuzzy
 msgid "Read:"
 msgstr "Lidas:"
 
-#: squirrelmail/src/read_body.php:427
+#: squirrelmail/src/read_body.php:494
 #, fuzzy
 msgid "Viewing Full Header"
 msgstr "Vendo cabeçalho completo"
 
-#: squirrelmail/src/read_body.php:683
+#: squirrelmail/src/read_body.php:750
 msgid "Message List"
 msgstr "Lista de Mensagens"
 
-#: squirrelmail/src/read_body.php:699
+#: squirrelmail/src/read_body.php:772
 msgid "Resume Draft"
 msgstr "Editar Rascunho"
 
-#: squirrelmail/src/read_body.php:708
+#: squirrelmail/src/read_body.php:787
 msgid "Edit Message as New"
 msgstr "Editar mensagem como nova"
 
-#: squirrelmail/src/read_body.php:748
-#: squirrelmail/functions/mailbox_display.php:691
+#: squirrelmail/src/read_body.php:833
+#: squirrelmail/functions/mailbox_display.php:692
 msgid "Forward"
 msgstr "Encaminhar"
 
-#: squirrelmail/src/read_body.php:757
+#: squirrelmail/src/read_body.php:848
 msgid "Reply"
 msgstr "Responder"
 
-#: squirrelmail/src/read_body.php:766
+#: squirrelmail/src/read_body.php:863
 msgid "Reply All"
 msgstr "Responder a todos"
 
-#: squirrelmail/src/read_body.php:790 squirrelmail/src/read_body.php:793
+#: squirrelmail/src/read_body.php:887 squirrelmail/src/read_body.php:890
 #, fuzzy
 msgid "View Full Header"
 msgstr "Ver cabeçalho completo"
 
-#: squirrelmail/src/read_body.php:868
+#: squirrelmail/src/read_body.php:967
 msgid "Mailer"
 msgstr "Programa de Email"
 
-#: squirrelmail/src/read_body.php:918 squirrelmail/src/read_body.php:931
-#: squirrelmail/src/read_body.php:943 squirrelmail/src/read_body.php:968
-#: squirrelmail/src/read_body.php:1012 squirrelmail/src/read_body.php:1028
+#: squirrelmail/src/read_body.php:1016 squirrelmail/src/read_body.php:1029
+#: squirrelmail/src/read_body.php:1041 squirrelmail/src/read_body.php:1065
+#: squirrelmail/src/read_body.php:1110 squirrelmail/src/read_body.php:1126
 msgid "Read receipt"
 msgstr "Recibo de leitura"
 
-#: squirrelmail/src/read_body.php:920 squirrelmail/src/read_body.php:1014
+#: squirrelmail/src/read_body.php:1018 squirrelmail/src/read_body.php:1112
 #, fuzzy
 msgid "send"
 msgstr "Enviar"
 
-#: squirrelmail/src/read_body.php:933 squirrelmail/src/read_body.php:945
-#: squirrelmail/src/read_body.php:970 squirrelmail/src/read_body.php:1030
+#: squirrelmail/src/read_body.php:1031 squirrelmail/src/read_body.php:1043
+#: squirrelmail/src/read_body.php:1067 squirrelmail/src/read_body.php:1128
 #, fuzzy
 msgid "requested"
 msgstr "pedida."
 
-#: squirrelmail/src/read_body.php:946 squirrelmail/src/read_body.php:971
-#: squirrelmail/src/read_body.php:1031
+#: squirrelmail/src/read_body.php:1044 squirrelmail/src/read_body.php:1068
+#: squirrelmail/src/read_body.php:1129
 msgid "Send read receipt now"
 msgstr "Enviar recibo de leitura"
 
-#: squirrelmail/src/read_body.php:958
+#: squirrelmail/src/read_body.php:1056
 msgid ""
 "The message sender has requested a response to indicate that you have read "
 "this message. Would you like to send a receipt?"
@@ -1462,138 +1459,142 @@ msgstr ""
 "O remetente da mensagem pediu uma resposta que indique que você leu esta "
 "mensagem. Você deseja enviar o recibo?"
 
-#: squirrelmail/src/redirect.php:64 squirrelmail/src/redirect.php:86
+#: squirrelmail/src/redirect.php:80 squirrelmail/src/redirect.php:102
 #: squirrelmail/functions/auth.php:20
 #, fuzzy
 msgid "You must be logged in to access this page."
 msgstr "Você necessita de um usuário e senha válidos para acessar esta página!"
 
-#: squirrelmail/src/redirect.php:82
+#: squirrelmail/src/redirect.php:98
 msgid "There was an error contacting the mail server."
 msgstr "Um erro ocorreu ao contatar o servidor de email."
 
-#: squirrelmail/src/redirect.php:84
+#: squirrelmail/src/redirect.php:100
 msgid "Contact your administrator for help."
 msgstr "Entre em contato com seu administrador para ajuda."
 
-#: squirrelmail/src/search.php:245
+#: squirrelmail/src/search.php:274
 #, fuzzy
 msgid "edit"
 msgstr "Editar"
 
-#: squirrelmail/src/search.php:252 squirrelmail/src/search.php:294
+#: squirrelmail/src/search.php:281 squirrelmail/src/search.php:323
 #, fuzzy
 msgid "search"
 msgstr "Pesquisar"
 
-#: squirrelmail/src/search.php:255
+#: squirrelmail/src/search.php:284
 #, fuzzy
 msgid "delete"
 msgstr "Apagar"
 
-#: squirrelmail/src/search.php:266
+#: squirrelmail/src/search.php:295
 msgid "Recent Searches"
 msgstr "Procurar nos recentes"
 
-#: squirrelmail/src/search.php:286
+#: squirrelmail/src/search.php:315
 #, fuzzy
 msgid "save"
 msgstr "Salvar"
 
-#: squirrelmail/src/search.php:297
+#: squirrelmail/src/search.php:326
 #, fuzzy
 msgid "forget"
 msgstr "esquecer"
 
-#: squirrelmail/src/search.php:306
+#: squirrelmail/src/search.php:335
 #, fuzzy
 msgid "Current Search"
 msgstr "Pesquisa Corrente"
 
-#: squirrelmail/src/search.php:350
+#: squirrelmail/src/search.php:380
 msgid "Body"
 msgstr "Corpo"
 
-#: squirrelmail/src/search.php:351
+#: squirrelmail/src/search.php:381
 msgid "Everywhere"
 msgstr "Todo lugar"
 
-#: squirrelmail/src/search.php:384 squirrelmail/src/search.php:413
+#: squirrelmail/src/search.php:414 squirrelmail/src/search.php:443
 #, fuzzy
 msgid "Search Results"
 msgstr "Resultados da busca de Email:"
 
-#: squirrelmail/src/search.php:404
+#: squirrelmail/src/search.php:434
 #, fuzzy
 msgid "No Messages found"
 msgstr "Nenhuma mensagem encontrada"
 
-#: squirrelmail/src/signout.php:74 squirrelmail/functions/page_header.php:159
+#: squirrelmail/src/signout.php:76 squirrelmail/functions/page_header.php:216
 msgid "Sign Out"
 msgstr "Desconectar"
 
-#: squirrelmail/src/signout.php:80
+#: squirrelmail/src/signout.php:82
 msgid "You have been successfully signed out."
 msgstr "Você se desligou do sistema com sucesso."
 
-#: squirrelmail/src/signout.php:82
+#: squirrelmail/src/signout.php:84
 msgid "Click here to log back in."
 msgstr "Clique aqui para efetuar novamente o login."
 
-#: squirrelmail/src/vcard.php:30
+#: squirrelmail/src/vcard.php:46
 msgid "Viewing a Business Card"
 msgstr "Visualizando um Cartão de Negócios"
 
-#: squirrelmail/src/vcard.php:86 squirrelmail/src/vcard.php:146
+#: squirrelmail/src/vcard.php:102 squirrelmail/src/vcard.php:162
 #, fuzzy
 msgid "Title"
 msgstr "Título"
 
-#: squirrelmail/src/vcard.php:87
+#: squirrelmail/src/vcard.php:103
 #, fuzzy
 msgid "Email"
 msgstr "Email"
 
-#: squirrelmail/src/vcard.php:88 squirrelmail/src/vcard.php:138
+#: squirrelmail/src/vcard.php:104 squirrelmail/src/vcard.php:154
 #, fuzzy
 msgid "Web Page"
 msgstr "Página Web"
 
-#: squirrelmail/src/vcard.php:89 squirrelmail/src/vcard.php:150
+#: squirrelmail/src/vcard.php:105 squirrelmail/src/vcard.php:166
 msgid "Organization / Department"
 msgstr "Organização / Departamento"
 
-#: squirrelmail/src/vcard.php:90 squirrelmail/src/vcard.php:142
+#: squirrelmail/src/vcard.php:106 squirrelmail/src/vcard.php:158
 #, fuzzy
 msgid "Address"
 msgstr "Endereço"
 
-#: squirrelmail/src/vcard.php:91 squirrelmail/src/vcard.php:159
+#: squirrelmail/src/vcard.php:107 squirrelmail/src/vcard.php:175
 msgid "Work Phone"
 msgstr "Telefone do Trabalho"
 
-#: squirrelmail/src/vcard.php:92 squirrelmail/src/vcard.php:163
+#: squirrelmail/src/vcard.php:108 squirrelmail/src/vcard.php:179
 msgid "Home Phone"
 msgstr "Telefone Residencial"
 
-#: squirrelmail/src/vcard.php:93 squirrelmail/src/vcard.php:167
+#: squirrelmail/src/vcard.php:109 squirrelmail/src/vcard.php:183
 msgid "Cellular Phone"
 msgstr "Telefone Celular"
 
-#: squirrelmail/src/vcard.php:94 squirrelmail/src/vcard.php:171
+#: squirrelmail/src/vcard.php:110 squirrelmail/src/vcard.php:187
 msgid "Fax"
 msgstr "Fax"
 
-#: squirrelmail/src/vcard.php:95 squirrelmail/src/vcard.php:175
+#: squirrelmail/src/vcard.php:111 squirrelmail/src/vcard.php:191
 msgid "Note"
 msgstr "Notas"
 
-#: squirrelmail/src/vcard.php:124
+#: squirrelmail/src/vcard.php:140 squirrelmail/src/vcard.php:203
 #, fuzzy
 msgid "Add to Addressbook"
 msgstr "Adicionar ao Livro de Endereços"
 
-#: squirrelmail/src/vcard.php:155
+#: squirrelmail/src/vcard.php:149
+msgid "Note Field Contains"
+msgstr "O campo da nota contém"
+
+#: squirrelmail/src/vcard.php:171
 msgid "Title & Org. / Dept."
 msgstr "Título & Organização/Departamento"
 
@@ -1728,39 +1729,39 @@ msgid "Business Card"
 msgstr "Cartão de Negócios"
 
 #: squirrelmail/functions/date.php:91
-#: squirrelmail/plugins/calendar/calendar.php:49
+#: squirrelmail/plugins/calendar/calendar.php:65
 #, fuzzy
 msgid "Sunday"
 msgstr "Domingo"
 
 #: squirrelmail/functions/date.php:94
-#: squirrelmail/plugins/calendar/calendar.php:50
+#: squirrelmail/plugins/calendar/calendar.php:66
 #, fuzzy
 msgid "Monday"
 msgstr "Segunda"
 
 #: squirrelmail/functions/date.php:97
-#: squirrelmail/plugins/calendar/calendar.php:51
+#: squirrelmail/plugins/calendar/calendar.php:67
 msgid "Tuesday"
 msgstr "Terça"
 
 #: squirrelmail/functions/date.php:100
-#: squirrelmail/plugins/calendar/calendar.php:52
+#: squirrelmail/plugins/calendar/calendar.php:68
 msgid "Wednesday"
 msgstr "Quarta"
 
 #: squirrelmail/functions/date.php:103
-#: squirrelmail/plugins/calendar/calendar.php:53
+#: squirrelmail/plugins/calendar/calendar.php:69
 msgid "Thursday"
 msgstr "Quinta"
 
 #: squirrelmail/functions/date.php:106
-#: squirrelmail/plugins/calendar/calendar.php:54
+#: squirrelmail/plugins/calendar/calendar.php:70
 msgid "Friday"
 msgstr "Sexta"
 
 #: squirrelmail/functions/date.php:109
-#: squirrelmail/plugins/calendar/calendar.php:55
+#: squirrelmail/plugins/calendar/calendar.php:71
 msgid "Saturday"
 msgstr "Sábado"
 
@@ -1842,35 +1843,35 @@ msgstr ""
 msgid "M j, Y"
 msgstr ""
 
-#: squirrelmail/functions/db_prefs.php:56
-#: squirrelmail/functions/db_prefs.php:63
-#: squirrelmail/functions/db_prefs.php:126
-#: squirrelmail/functions/db_prefs.php:129
-#: squirrelmail/functions/db_prefs.php:344
+#: squirrelmail/functions/db_prefs.php:52
+#: squirrelmail/functions/db_prefs.php:59
+#: squirrelmail/functions/db_prefs.php:122
+#: squirrelmail/functions/db_prefs.php:125
+#: squirrelmail/functions/db_prefs.php:340
 #, c-format
 msgid "Preference database error (%s). Exiting abnormally"
 msgstr "Erro na base de Preferências (%s). Terminando"
 
-#: squirrelmail/functions/display_messages.php:52
-#: squirrelmail/functions/imap_general.php:252
+#: squirrelmail/functions/display_messages.php:73
+#: squirrelmail/functions/imap_general.php:202
 msgid "Unknown user or password incorrect."
 msgstr "Usuário desconhecido ou senha incorreta."
 
-#: squirrelmail/functions/display_messages.php:54
+#: squirrelmail/functions/display_messages.php:75
 #, fuzzy
 msgid "Click here to try again"
 msgstr "Clique aqui para tentar novamente."
 
-#: squirrelmail/functions/display_messages.php:75
+#: squirrelmail/functions/display_messages.php:96
 #, fuzzy, c-format
 msgid "Click here to return to %s"
 msgstr "Clique aqui para voltar"
 
-#: squirrelmail/functions/display_messages.php:157
+#: squirrelmail/functions/display_messages.php:179
 msgid "Go to the login page"
 msgstr "Ir para a página de login"
 
-#: squirrelmail/functions/file_prefs.php:39
+#: squirrelmail/functions/file_prefs.php:37
 #, c-format
 msgid ""
 "Preference file, %s, does not exist. Log out, and log back in to create a "
@@ -1879,217 +1880,236 @@ msgstr ""
 "Arquivo de preferências %s não existe. Saia do sistema e entre novamente "
 "para criar um arquivo de preferências padrão."
 
-#: squirrelmail/functions/file_prefs.php:162
+#: squirrelmail/functions/file_prefs.php:43
+#: squirrelmail/functions/file_prefs.php:102
+#, fuzzy, c-format
+msgid ""
+"Preference file, %s, could not be opened. Contact your system administrator "
+"to resolve this issue."
+msgstr "Entre em contato com seu administrador para ajuda."
+
+#: squirrelmail/functions/file_prefs.php:170
 #, fuzzy, c-format
 msgid "Error opening %s"
 msgstr "Erro ao abrir %s"
 
-#: squirrelmail/functions/file_prefs.php:165
+#: squirrelmail/functions/file_prefs.php:173
 msgid "Default preference file not found!"
 msgstr "Arquivo de preferência padrão não encontrado!"
 
-#: squirrelmail/functions/file_prefs.php:166
-#: squirrelmail/functions/file_prefs.php:176
-#: squirrelmail/functions/prefs.php:94
+#: squirrelmail/functions/file_prefs.php:174
+#: squirrelmail/functions/file_prefs.php:187
+#: squirrelmail/functions/prefs.php:102
 #, fuzzy
 msgid "Please contact your system administrator and report this error."
 msgstr "Entre em contato com seu administrador para ajuda."
 
-#: squirrelmail/functions/file_prefs.php:174
+#: squirrelmail/functions/file_prefs.php:185
 msgid "Could not create initial preference file!"
 msgstr "Não foi possível criar um arquivo de preferência inicial!"
 
-#: squirrelmail/functions/file_prefs.php:175
+#: squirrelmail/functions/file_prefs.php:186
 #, c-format
 msgid "%s should be writable by user %s"
 msgstr "%s deve poder ser escrito por %s"
 
-#: squirrelmail/functions/imap_general.php:132
+#: squirrelmail/functions/file_prefs.php:203
+#: squirrelmail/functions/file_prefs.php:221
+#, fuzzy, c-format
 msgid ""
-"Please contact your system administrator and report the following error:"
-msgstr "Por favor informe o seguinte erro ao administrador do sistema:"
+"Signature file, %s, could not be opened. Contact your system administrator "
+"to resolve this issue."
+msgstr "Entre em contato com seu administrador para ajuda."
 
-#: squirrelmail/functions/imap_general.php:163
-#: squirrelmail/functions/imap_messages.php:366
-#: squirrelmail/functions/imap_messages.php:374
-#: squirrelmail/functions/imap_messages.php:580
+#: squirrelmail/functions/imap_general.php:111
+#: squirrelmail/functions/imap_messages.php:367
+#: squirrelmail/functions/imap_messages.php:375
+#: squirrelmail/functions/imap_messages.php:573
 #: squirrelmail/plugins/filters/filters.php:227
 msgid "ERROR : Could not complete request."
 msgstr "Erro: pedido não pode ser completado."
 
-#: squirrelmail/functions/imap_general.php:165
-#: squirrelmail/functions/imap_general.php:176
+#: squirrelmail/functions/imap_general.php:113
+#: squirrelmail/functions/imap_general.php:125
 msgid "Query:"
 msgstr "Requisição:"
 
-#: squirrelmail/functions/imap_general.php:167
+#: squirrelmail/functions/imap_general.php:115
 #: squirrelmail/plugins/filters/filters.php:229
 msgid "Reason Given: "
 msgstr "Razão alegada: "
 
-#: squirrelmail/functions/imap_general.php:174
+#: squirrelmail/functions/imap_general.php:123
 #: squirrelmail/plugins/filters/filters.php:236
 msgid "ERROR : Bad or malformed request."
 msgstr "Erro: Pedido errado ou mal formado."
 
-#: squirrelmail/functions/imap_general.php:178
+#: squirrelmail/functions/imap_general.php:127
 #: squirrelmail/plugins/filters/filters.php:238
 msgid "Server responded: "
 msgstr "Resposta do servidor: "
 
-#: squirrelmail/functions/imap_general.php:211
+#: squirrelmail/functions/imap_general.php:161
 #, c-format
 msgid "Error connecting to IMAP server: %s."
 msgstr "Erro ao conectar com o servidor IMAP: %s."
 
-#: squirrelmail/functions/imap_general.php:227
+#: squirrelmail/functions/imap_general.php:177
 #, c-format
 msgid "Bad request: %s"
 msgstr "Pedido ruim: %s"
 
-#: squirrelmail/functions/imap_general.php:229
+#: squirrelmail/functions/imap_general.php:179
 #, fuzzy, c-format
 msgid "Unknown error: %s"
 msgstr "Erro desconhecido: %s"
 
-#: squirrelmail/functions/imap_general.php:231
+#: squirrelmail/functions/imap_general.php:181
 msgid "Read data:"
 msgstr "Dados lidos:"
 
-#: squirrelmail/functions/imap_messages.php:368
-#: squirrelmail/functions/imap_messages.php:582
+#: squirrelmail/functions/imap_messages.php:369
+#: squirrelmail/functions/imap_messages.php:575
 msgid "Unknown response from IMAP server: "
 msgstr "Resposta desconhecida do servidor IMAP: "
 
-#: squirrelmail/functions/imap_messages.php:376
+#: squirrelmail/functions/imap_messages.php:377
 msgid "Unknown message number in reply from server: "
 msgstr "Número de mensagem desconhecido na resposta do servidor: "
 
-#: squirrelmail/functions/imap_messages.php:396
-#: squirrelmail/functions/imap_messages.php:505
-#: squirrelmail/functions/imap_messages.php:773
-#: squirrelmail/functions/imap_messages.php:837
-#: squirrelmail/functions/mailbox_display.php:1096
+#: squirrelmail/functions/imap_messages.php:397
+#: squirrelmail/functions/imap_messages.php:498
+#: squirrelmail/functions/imap_messages.php:766
+#: squirrelmail/functions/imap_messages.php:830
+#: squirrelmail/functions/mailbox_display.php:1097
 #, fuzzy
 msgid "(no subject)"
 msgstr "(sem assunto)"
 
-#: squirrelmail/functions/imap_messages.php:397
+#: squirrelmail/functions/imap_messages.php:398
 #, fuzzy
 msgid "Unknown Sender"
 msgstr "Remetente Desconhecido"
 
-#: squirrelmail/functions/imap_messages.php:528
+#: squirrelmail/functions/imap_messages.php:521
 #, fuzzy
 msgid "No To Address"
 msgstr "Sem endereço &quot;Para:&quot;"
 
-#: squirrelmail/functions/imap_messages.php:840
+#: squirrelmail/functions/imap_messages.php:833
 #, fuzzy
 msgid "(unknown sender)"
 msgstr "(remetente desconhecido)"
 
-#: squirrelmail/functions/imap_search.php:83
+#: squirrelmail/functions/imap_search.php:99
 #, fuzzy
 msgid "No Messages Found"
 msgstr "Nenhuma mensagem encontrada"
 
-#: squirrelmail/functions/imap_search.php:191
-#: squirrelmail/functions/imap_search.php:199
+#: squirrelmail/functions/imap_search.php:207
+#: squirrelmail/functions/imap_search.php:215
 msgid "Found"
 msgstr "Encontradas"
 
-#: squirrelmail/functions/imap_search.php:191
-#: squirrelmail/functions/imap_search.php:199
+#: squirrelmail/functions/imap_search.php:207
+#: squirrelmail/functions/imap_search.php:215
 #, fuzzy
 msgid "messages"
 msgstr "mensagens"
 
-#: squirrelmail/functions/imap_search.php:206
+#: squirrelmail/functions/imap_search.php:222
 #, fuzzy
 msgid "Folder:"
 msgstr "Pastas"
 
 #: squirrelmail/functions/mailbox_display.php:186
 msgid "A"
-msgstr ""
+msgstr "R"
 
-#: squirrelmail/functions/mailbox_display.php:569
+#: squirrelmail/functions/mailbox_display.php:278
+msgid ""
+"Server-side sorting is not supported by your IMAP server.<br>Please report "
+"this to the system administrator"
+msgstr ""
+"O servidor IMAP em uso não faz ordenação.<BR>Favor avisar ao administrador "
+"deste serviço."
+
+#: squirrelmail/functions/mailbox_display.php:570
 msgid "THIS FOLDER IS EMPTY"
 msgstr "Esta pasta está vazia"
 
-#: squirrelmail/functions/mailbox_display.php:662
+#: squirrelmail/functions/mailbox_display.php:663
 #, fuzzy
 msgid "Move Selected To:"
 msgstr "Mover as selecionadas para:"
 
-#: squirrelmail/functions/mailbox_display.php:665
+#: squirrelmail/functions/mailbox_display.php:666
 msgid "Transform Selected Messages"
 msgstr "Transformar as mensagens selecionadas"
 
-#: squirrelmail/functions/mailbox_display.php:690
-#: squirrelmail/plugins/delete_move_next/setup.php:244
-#: squirrelmail/plugins/delete_move_next/setup.php:268
+#: squirrelmail/functions/mailbox_display.php:691
+#: squirrelmail/plugins/delete_move_next/setup.php:258
+#: squirrelmail/plugins/delete_move_next/setup.php:282
 #, fuzzy
 msgid "Move"
 msgstr "Mover"
 
-#: squirrelmail/functions/mailbox_display.php:697
+#: squirrelmail/functions/mailbox_display.php:698
 #, fuzzy
 msgid "Expunge"
 msgstr "Remover"
 
-#: squirrelmail/functions/mailbox_display.php:698
+#: squirrelmail/functions/mailbox_display.php:699
 msgid "mailbox"
 msgstr ""
 
-#: squirrelmail/functions/mailbox_display.php:700
+#: squirrelmail/functions/mailbox_display.php:701
 #, fuzzy
 msgid "Read"
 msgstr "Lidas"
 
-#: squirrelmail/functions/mailbox_display.php:701
+#: squirrelmail/functions/mailbox_display.php:702
 msgid "Unread"
 msgstr "Não lidas"
 
-#: squirrelmail/functions/mailbox_display.php:710
+#: squirrelmail/functions/mailbox_display.php:711
 #, fuzzy
 msgid "Unthread View"
 msgstr "Não lidas por assunto"
 
-#: squirrelmail/functions/mailbox_display.php:714
+#: squirrelmail/functions/mailbox_display.php:715
 msgid "Thread View"
 msgstr "Visão por assunto"
 
-#: squirrelmail/functions/mailbox_display.php:829
+#: squirrelmail/functions/mailbox_display.php:830
 msgid "Toggle All"
 msgstr "Inverter Todas"
 
-#: squirrelmail/functions/mailbox_display.php:853
+#: squirrelmail/functions/mailbox_display.php:854
 msgid "Unselect All"
 msgstr "Desmarcar Todas"
 
-#: squirrelmail/functions/mailbox_display.php:855
+#: squirrelmail/functions/mailbox_display.php:856
 #, fuzzy
 msgid "Select All"
 msgstr "Marcar Todas"
 
-#: squirrelmail/functions/mailbox_display.php:872
+#: squirrelmail/functions/mailbox_display.php:873
 #, c-format
 msgid "Viewing Messages: <B>%s</B> to <B>%s</B> (%s total)"
 msgstr "Visualizando mensagem: <B>%s</B> a <B>%s</B> (%s total)"
 
-#: squirrelmail/functions/mailbox_display.php:875
+#: squirrelmail/functions/mailbox_display.php:876
 #, c-format
 msgid "Viewing Message: <B>%s</B> (1 total)"
 msgstr "Visualizando mensagem: <B>%s</B> (1 total)"
 
-#: squirrelmail/functions/mailbox_display.php:1059
+#: squirrelmail/functions/mailbox_display.php:1060
 #, fuzzy
 msgid "Paginate"
 msgstr "Imprimir"
 
-#: squirrelmail/functions/mailbox_display.php:1066
+#: squirrelmail/functions/mailbox_display.php:1067
 msgid "Show All"
 msgstr "Mostre todos"
 
@@ -2123,10 +2143,10 @@ msgid "Response:"
 msgstr "Razão alegada: "
 
 #: squirrelmail/functions/mime.php:505
-#: squirrelmail/plugins/calendar/event_create.php:118
-#: squirrelmail/plugins/calendar/event_delete.php:38
-#: squirrelmail/plugins/calendar/event_edit.php:101
-#: squirrelmail/plugins/calendar/event_edit.php:114
+#: squirrelmail/plugins/calendar/event_create.php:162
+#: squirrelmail/plugins/calendar/event_delete.php:93
+#: squirrelmail/plugins/calendar/event_edit.php:172
+#: squirrelmail/plugins/calendar/event_edit.php:185
 #, fuzzy
 msgid "Message:"
 msgstr "Mensagem"
@@ -2154,51 +2174,51 @@ msgstr "Anexados"
 msgid "download"
 msgstr "baixar"
 
-#: squirrelmail/functions/mime.php:1662 squirrelmail/functions/mime.php:1969
+#: squirrelmail/functions/mime.php:1665 squirrelmail/functions/mime.php:1984
 msgid "sec_remove_eng.png"
 msgstr ""
 
-#: squirrelmail/functions/options.php:168
+#: squirrelmail/functions/options.php:169
 #, c-format
 msgid "Option Type '%s' Not Found"
 msgstr "Opção tipo '%s' não encontrada"
 
-#: squirrelmail/functions/options.php:263
-#: squirrelmail/plugins/calendar/event_delete.php:51
-#: squirrelmail/plugins/calendar/event_edit.php:134
-#: squirrelmail/plugins/administrator/options.php:357
+#: squirrelmail/functions/options.php:264
+#: squirrelmail/plugins/calendar/event_delete.php:106
+#: squirrelmail/plugins/calendar/event_edit.php:205
+#: squirrelmail/plugins/administrator/options.php:364
 msgid "Yes"
 msgstr "Sim"
 
-#: squirrelmail/functions/options.php:268
-#: squirrelmail/plugins/calendar/event_delete.php:58
-#: squirrelmail/plugins/calendar/event_edit.php:141
-#: squirrelmail/plugins/administrator/options.php:358
+#: squirrelmail/functions/options.php:269
+#: squirrelmail/plugins/calendar/event_delete.php:113
+#: squirrelmail/plugins/calendar/event_edit.php:212
+#: squirrelmail/plugins/administrator/options.php:365
 msgid "No"
 msgstr "Não"
 
-#: squirrelmail/functions/page_header.php:153
+#: squirrelmail/functions/page_header.php:210
 #, fuzzy
 msgid "Current Folder"
 msgstr "Pasta Corrente"
 
-#: squirrelmail/functions/page_header.php:167
-#: squirrelmail/functions/page_header.php:170
-#: squirrelmail/functions/page_header.php:212
-#: squirrelmail/functions/page_header.php:239
+#: squirrelmail/functions/page_header.php:223
+#: squirrelmail/functions/page_header.php:226
+#: squirrelmail/functions/page_header.php:268
+#: squirrelmail/functions/page_header.php:295
 msgid "Compose"
 msgstr "Escrever"
 
-#: squirrelmail/functions/prefs.php:92
+#: squirrelmail/functions/prefs.php:100
 #, fuzzy, c-format
 msgid "Error creating directory %s."
 msgstr "Erro ao decriptar o dicionário %s."
 
-#: squirrelmail/functions/prefs.php:93
+#: squirrelmail/functions/prefs.php:101
 msgid "Could not create hashed directory structure!"
 msgstr "Não foi possível criar a estrutura de diretório &quot;hashed&quot;"
 
-#: squirrelmail/plugins/filters/filters.php:554
+#: squirrelmail/plugins/filters/filters.php:557
 msgid ""
 "COMMERCIAL - This list contains servers that are verified spam senders. It "
 "is a pretty reliable list to scan spam from."
@@ -2206,7 +2226,7 @@ msgstr ""
 "COMERCIAL - Esta lista contém servidores que são enviadores de SPAM. É uma "
 "lista confiável para verificar e deter enviadores de SPAM."
 
-#: squirrelmail/plugins/filters/filters.php:562
+#: squirrelmail/plugins/filters/filters.php:565
 msgid ""
 "COMMERCIAL - Servers that are configured (or misconfigured) to allow spam to "
 "be relayed through their system will be banned with this.  Another good one "
@@ -2216,7 +2236,7 @@ msgstr ""
 "enviadores de SPAM usem-os, podem ser detidos com esta lista. Bom para ser "
 "usado."
 
-#: squirrelmail/plugins/filters/filters.php:570
+#: squirrelmail/plugins/filters/filters.php:573
 msgid ""
 "COMMERCIAL - Dial-up users are often filtered out since they should use "
 "their ISP's mail servers to send mail.  Spammers typically get a dial-up "
@@ -2226,19 +2246,19 @@ msgstr ""
 "exceto se usarem o servidor de provedor de acesso deles. Enviadores de SPAM "
 "normalmente usam acesso discado para enviar email diretamente deles."
 
-#: squirrelmail/plugins/filters/filters.php:578
+#: squirrelmail/plugins/filters/filters.php:581
 msgid "COMMERCIAL - RBL+ Blackhole entries."
 msgstr "COMERCIAL - lista negra RBL+."
 
-#: squirrelmail/plugins/filters/filters.php:586
+#: squirrelmail/plugins/filters/filters.php:589
 msgid "COMMERCIAL - RBL+ OpenRelay entries."
 msgstr "COMERCIAL - lista negra RBL+ de relays abertos"
 
-#: squirrelmail/plugins/filters/filters.php:594
+#: squirrelmail/plugins/filters/filters.php:597
 msgid "COMMERCIAL - RBL+ Dial-up entries."
 msgstr "COMERCIAL - lista negra RBL+ com acesso discado"
 
-#: squirrelmail/plugins/filters/filters.php:603
+#: squirrelmail/plugins/filters/filters.php:606
 msgid ""
 "FREE - Osirusoft Relays - Osirusofts list of verified open relays. Seems to "
 "include servers used by abuse@uunet.net auto-replies too."
@@ -2247,11 +2267,13 @@ msgstr ""
 "Parece incluir servidores usados pelas respostas automáticas de abuse@uunet."
 "net"
 
-#: squirrelmail/plugins/filters/filters.php:611
+#: squirrelmail/plugins/filters/filters.php:614
 msgid "FREE - Osirusoft Dialups - Osirusofts Dialup Spam Source list."
-msgstr "FREE - Osirusoft Dialups - Lista de acessos discados originadores de SPAM da Osirusofts"
+msgstr ""
+"FREE - Osirusoft Dialups - Lista de acessos discados originadores de SPAM da "
+"Osirusofts"
 
-#: squirrelmail/plugins/filters/filters.php:619
+#: squirrelmail/plugins/filters/filters.php:622
 msgid ""
 "FREE - Osirusoft Confirmed Spam Source - Sites that continually spam and "
 "have been manually added after multiple nominations. Use with caution. Seems "
@@ -2261,7 +2283,7 @@ msgstr ""
 "e foram adcionados manualmente, após múiltiplas acusações. Use com cautela. "
 "Parece travar respostas automáticas de alguns provedores."
 
-#: squirrelmail/plugins/filters/filters.php:627
+#: squirrelmail/plugins/filters/filters.php:630
 msgid ""
 "FREE - Osirusoft Smart Hosts - List of hosts that are secure but relay for "
 "other mail servers that are not secure."
@@ -2269,7 +2291,7 @@ msgstr ""
 "FREE - Osirusoft Smart Hosts - Lista de máquinas que são seguras, mas que "
 "fazem relay para outras máquina não seguras."
 
-#: squirrelmail/plugins/filters/filters.php:635
+#: squirrelmail/plugins/filters/filters.php:638
 msgid ""
 "FREE - Osirusoft Spamware Developers - It is believed that these are IP "
 "ranges of companies that are known to produce spam software. Seems to catch "
@@ -2279,7 +2301,7 @@ msgstr ""
 "companhias que produzem software para SPAM. Parece travar respostas "
 "automáticas de alguns provedores."
 
-#: squirrelmail/plugins/filters/filters.php:643
+#: squirrelmail/plugins/filters/filters.php:646
 msgid ""
 "FREE - Osirusoft Unconfirmed OptIn Servers - List of listservers that opt "
 "users in without confirmation."
@@ -2287,7 +2309,7 @@ msgstr ""
 "FREE - Osirusoft Unconfirmed OptIn Servers - Lista de servidores de listas "
 "de email que permetem a entrada de usuários sem confirmação."
 
-#: squirrelmail/plugins/filters/filters.php:651
+#: squirrelmail/plugins/filters/filters.php:654
 msgid ""
 "FREE - Osirusoft Insecure formmail.cgi scripts - List of insecure formmail."
 "cgi scripts. (planned)."
@@ -2295,12 +2317,12 @@ msgstr ""
 "FREE - Osirusoft Insecure formmail.cgi scripts - Lista de servidores com cgi "
 "de formulários considerados inseguros. (planejado)."
 
-#: squirrelmail/plugins/filters/filters.php:659
+#: squirrelmail/plugins/filters/filters.php:662
 msgid "FREE - Osirusoft Open Proxy Servers - List of Open Proxy Servers."
 msgstr ""
 "FREE - Osirusoft Open Proxy Servers - Lista de servidores proxy abertos."
 
-#: squirrelmail/plugins/filters/filters.php:667
+#: squirrelmail/plugins/filters/filters.php:670
 msgid ""
 "FREE - ORDB was born when ORBS went off the air. It seems to have fewer "
 "false positives than ORBS did though."
@@ -2308,38 +2330,38 @@ msgstr ""
 "FREE - ORDB foi carregado quando o ORBS saiu do ar. Parece ter menosalertas "
 "falsos do que o ORBS."
 
-#: squirrelmail/plugins/filters/filters.php:675
+#: squirrelmail/plugins/filters/filters.php:678
 msgid "FREE - Five-Ten-sg.com - Direct SPAM sources."
 msgstr "FREE - Five-Ten-sg.com - Fontes de SPAM diretos."
 
-#: squirrelmail/plugins/filters/filters.php:683
+#: squirrelmail/plugins/filters/filters.php:686
 msgid "FREE - Five-Ten-sg.com - Dial-up lists - includes some DSL IPs."
 msgstr ""
 "FREE - Five-Ten-sg.com - Listas de acessos discados - Inclui alguns IPs de "
 "xDLS"
 
-#: squirrelmail/plugins/filters/filters.php:691
+#: squirrelmail/plugins/filters/filters.php:694
 msgid "FREE - Five-Ten-sg.com - Bulk mailers that do not use confirmed opt-in."
 msgstr ""
 "FREE - Five-Ten-sg.com - Servidores email que não usam confirmação na entrada"
 
-#: squirrelmail/plugins/filters/filters.php:699
+#: squirrelmail/plugins/filters/filters.php:702
 msgid "FREE - Five-Ten-sg.com - Other misc. servers."
 msgstr "FREE - Five-Ten-sg.com - Outra miscelânea de servidores."
 
-#: squirrelmail/plugins/filters/filters.php:707
+#: squirrelmail/plugins/filters/filters.php:710
 msgid "FREE - Five-Ten-sg.com - Single Stage servers."
 msgstr "FREE - Five-Ten-sg.com - Servidores de estágio único."
 
-#: squirrelmail/plugins/filters/filters.php:715
+#: squirrelmail/plugins/filters/filters.php:718
 msgid "FREE - Five-Ten-sg.com - SPAM Support servers."
 msgstr "FREE - Five-Ten-sg.com - Servidores que dão suporte a SPAM"
 
-#: squirrelmail/plugins/filters/filters.php:723
+#: squirrelmail/plugins/filters/filters.php:726
 msgid "FREE - Five-Ten-sg.com - Web Form IPs."
 msgstr "FREE - Five-Ten-sg.com - IPs de formulários web."
 
-#: squirrelmail/plugins/filters/filters.php:731
+#: squirrelmail/plugins/filters/filters.php:734
 msgid ""
 "FREE - Dorkslayers appears to include only really bad open relays outside "
 "the US to avoid being sued. Interestingly enough, their website recommends "
@@ -2348,11 +2370,11 @@ msgstr ""
 "FREE - Dorkslayers parece incluir apenas os relays abertos fora dos EUA que "
 "são realmente ruins. O próprio website não recomenda seu uso (!?)."
 
-#: squirrelmail/plugins/filters/filters.php:739
+#: squirrelmail/plugins/filters/filters.php:742
 msgid "FREE - SPAMhaus - A list of well-known SPAM sources."
 msgstr "FREE - SPAMhaus - Lista com fontes bem conhecidas de SPAM."
 
-#: squirrelmail/plugins/filters/filters.php:747
+#: squirrelmail/plugins/filters/filters.php:750
 #, c-format
 msgid ""
 "FREE, for now - SPAMCOP - An interesting solution that lists servers that "
@@ -2362,29 +2384,29 @@ msgstr ""
 "servidores que tem um elevado índice de SPAM em relação a emails legítimos "
 "(85% ou mais)."
 
-#: squirrelmail/plugins/filters/filters.php:755
+#: squirrelmail/plugins/filters/filters.php:758
 msgid "FREE - dev.null.dk - I don't have any detailed info on this list."
 msgstr "FREE - dev.null.dk - Não tenho detalhes..."
 
-#: squirrelmail/plugins/filters/filters.php:763
+#: squirrelmail/plugins/filters/filters.php:766
 msgid "FREE - visi.com - Relay Stop List. Very conservative OpenRelay List."
 msgstr ""
-"FREE - visi.com - Lista de relays para bloquear. Uma lista muito conservadora "
-"de relays abertos."
+"FREE - visi.com - Lista de relays para bloquear. Uma lista muito "
+"conservadora de relays abertos."
 
-#: squirrelmail/plugins/filters/filters.php:771
+#: squirrelmail/plugins/filters/filters.php:774
 msgid "FREE - 2mbit.com Open Relays - Another list of Open Relays."
 msgstr "FREE - 2mbit.com Open Relays - Outra lista de relays abertos."
 
-#: squirrelmail/plugins/filters/filters.php:779
+#: squirrelmail/plugins/filters/filters.php:782
 msgid "FREE - 2mbit.com SPAM Source - List of Direct SPAM Sources."
 msgstr "FREE - 2mbit.com SPAM Source - Lista com fontes diretas de SPAM."
 
-#: squirrelmail/plugins/filters/filters.php:787
+#: squirrelmail/plugins/filters/filters.php:790
 msgid "FREE - 2mbit.com SPAM ISPs - List of SPAM-friendly ISPs."
 msgstr "FREE - 2mbit.com SPAM ISPs - Lista de provedores condizentes com SPAM."
 
-#: squirrelmail/plugins/filters/filters.php:795
+#: squirrelmail/plugins/filters/filters.php:798
 msgid ""
 "FREE - Leadmon DUL - Another list of Dial-up or otherwise dynamically "
 "assigned IPs."
@@ -2392,7 +2414,7 @@ msgstr ""
 "FREE - Leadmon DUL - Outra lista de acesso discado ou de qualquer tipo de IP "
 "alocado dinamicamente."
 
-#: squirrelmail/plugins/filters/filters.php:803
+#: squirrelmail/plugins/filters/filters.php:806
 msgid ""
 "FREE - Leadmon SPAM Source - List of IPs Leadmon.net has received SPAM "
 "directly from."
@@ -2400,7 +2422,7 @@ msgstr ""
 "FREE - Leadmon SPAM Source - Lista de provedores dos quais Leadmon.net "
 "recebeu SPAM diretamente."
 
-#: squirrelmail/plugins/filters/filters.php:811
+#: squirrelmail/plugins/filters/filters.php:814
 msgid ""
 "FREE - Leadmon Bulk Mailers - Bulk mailers that do not require confirmed opt-"
 "in or that have allowed known spammers to become clients and abuse their "
@@ -2410,14 +2432,14 @@ msgstr ""
 "requerem confirmação na entrada ou que permitem que enviadores de SPAM sejam "
 "usuários de seus serviços."
 
-#: squirrelmail/plugins/filters/filters.php:819
+#: squirrelmail/plugins/filters/filters.php:822
 msgid ""
 "FREE - Leadmon Open Relays - Single Stage Open Relays that are not listed on "
 "other active RBLs."
 msgstr ""
 "FREE - Leadmon Open Relays - Relays abertos que não estã listados em outros."
 
-#: squirrelmail/plugins/filters/filters.php:827
+#: squirrelmail/plugins/filters/filters.php:830
 msgid ""
 "FREE - Leadmon Multi-stage - Multi-Stage Open Relays that are not listed on "
 "other active RBLs and that have sent SPAM to Leadmon.net."
@@ -2425,7 +2447,7 @@ msgstr ""
 "FREE - Leadmon Multi-stage - Relays abertos de múltiplos estágios que não "
 "estão listados em outros bloquies e que enviaram SPAM para Leadmon.net."
 
-#: squirrelmail/plugins/filters/filters.php:835
+#: squirrelmail/plugins/filters/filters.php:838
 msgid ""
 "FREE - Leadmon SpamBlock - Sites on this listing have sent Leadmon.net "
 "direct SPAM from IPs in netblocks where the entire block has no DNS "
@@ -2436,7 +2458,7 @@ msgstr ""
 "partir de IPs que não possuem DNS reverso. è uma lista de blocos de IPs "
 "usados para enviar SPAM para Leadmon.net."
 
-#: squirrelmail/plugins/filters/filters.php:843
+#: squirrelmail/plugins/filters/filters.php:846
 msgid ""
 "FREE, for now - Not Just Another Blacklist - Both Open Relays and Direct "
 "SPAM Sources."
@@ -2444,80 +2466,80 @@ msgstr ""
 "FREE, poe enquanto - Not Just Another Blacklist - Possui relays aberto e "
 "enviadores diretos de SPAM."
 
-#: squirrelmail/plugins/filters/filters.php:851
+#: squirrelmail/plugins/filters/filters.php:854
 msgid "FREE, for now - Not Just Another Blacklist - Dial-up IPs."
 msgstr "FREE, for now -Not Just Another Blacklist - IPs de acessos discados."
 
-#: squirrelmail/plugins/filters/options.php:60
+#: squirrelmail/plugins/filters/options.php:85
 msgid "Saved Scan type"
 msgstr "Tipo de verificação salva"
 
-#: squirrelmail/plugins/filters/options.php:70
+#: squirrelmail/plugins/filters/options.php:94
 #, fuzzy
 msgid "Message Filtering"
 msgstr "Filtro de mensagem"
 
-#: squirrelmail/plugins/filters/options.php:77
-#: squirrelmail/plugins/filters/spamoptions.php:105
+#: squirrelmail/plugins/filters/options.php:101
+#: squirrelmail/plugins/filters/spamoptions.php:114
 msgid "What to Scan:"
 msgstr "O que verificar:"
 
-#: squirrelmail/plugins/filters/options.php:83
-#: squirrelmail/plugins/filters/spamoptions.php:111
+#: squirrelmail/plugins/filters/options.php:107
+#: squirrelmail/plugins/filters/spamoptions.php:120
 #, fuzzy
 msgid "All messages"
 msgstr "Todas as mensagens"
 
-#: squirrelmail/plugins/filters/options.php:88
-#: squirrelmail/plugins/filters/spamoptions.php:116
+#: squirrelmail/plugins/filters/options.php:112
+#: squirrelmail/plugins/filters/spamoptions.php:125
 msgid "Only unread messages"
 msgstr "Apenas mensagens não lidas"
 
-#: squirrelmail/plugins/filters/options.php:91
-#: squirrelmail/plugins/filters/spamoptions.php:149
+#: squirrelmail/plugins/filters/options.php:115
+#: squirrelmail/plugins/filters/spamoptions.php:158
 msgid "Save"
 msgstr "Salvar"
 
-#: squirrelmail/plugins/filters/options.php:110
+#: squirrelmail/plugins/filters/options.php:137
 #, fuzzy
 msgid "Match:"
 msgstr "Encontrado:"
 
-#: squirrelmail/plugins/filters/options.php:132
+#: squirrelmail/plugins/filters/options.php:159
 #, fuzzy
 msgid "Header"
 msgstr "Lidas"
 
-#: squirrelmail/plugins/filters/options.php:139
+#: squirrelmail/plugins/filters/options.php:166
 msgid "Contains:"
 msgstr "Contém:"
 
-#: squirrelmail/plugins/filters/options.php:151
-#: squirrelmail/plugins/delete_move_next/setup.php:240
-#: squirrelmail/plugins/delete_move_next/setup.php:264
+#: squirrelmail/plugins/filters/options.php:178
+#: squirrelmail/plugins/delete_move_next/setup.php:254
+#: squirrelmail/plugins/delete_move_next/setup.php:278
 msgid "Move to:"
 msgstr "Mova para:"
 
-#: squirrelmail/plugins/filters/options.php:193
+#: squirrelmail/plugins/filters/options.php:220
 #, fuzzy
 msgid "Down"
 msgstr "Baixo"
 
-#: squirrelmail/plugins/filters/options.php:199
+#: squirrelmail/plugins/filters/options.php:226
 msgid "Up"
 msgstr "Cima"
 
-#: squirrelmail/plugins/filters/options.php:202
+#: squirrelmail/plugins/filters/options.php:229
 #, c-format
 msgid "If <b>%s</b> contains <b>%s</b> then move to <b>%s</b>"
 msgstr "Se <b>%s</b> conter <b>%s</b> então mova para <b>%s</b>"
 
-#: squirrelmail/plugins/filters/setup.php:128
+#: squirrelmail/plugins/filters/setup.php:137
 #, fuzzy
 msgid "Message Filters"
 msgstr "Filtros de Mensagens"
 
-#: squirrelmail/plugins/filters/setup.php:130
+#: squirrelmail/plugins/filters/setup.php:139
 msgid ""
 "Filtering enables messages with different criteria to be automatically "
 "filtered into different folders for easier organization."
@@ -2525,12 +2547,12 @@ msgstr ""
 "A filtragem permite que mensagens que se encaixem em certos critérios sejam "
 "movidas para pastas diferentes para uma maior organização."
 
-#: squirrelmail/plugins/filters/setup.php:136
+#: squirrelmail/plugins/filters/setup.php:145
 #, fuzzy
 msgid "SPAM Filters"
 msgstr "Filtros de SPAM"
 
-#: squirrelmail/plugins/filters/setup.php:138
+#: squirrelmail/plugins/filters/setup.php:147
 msgid ""
 "SPAM filters allow you to select from various DNS based blacklists to detect "
 "junk email in your INBOX and move it to another folder (like Trash)."
@@ -2539,20 +2561,20 @@ msgstr ""
 "enviam mensagens de propagranda para sua Caixa de Entrada e envie essas "
 "mensagens automaticamente para outra pasta (como a Lixeira)."
 
-#: squirrelmail/plugins/filters/spamoptions.php:57
+#: squirrelmail/plugins/filters/spamoptions.php:66
 msgid "Spam Filtering"
 msgstr "Filtro de SPAM"
 
-#: squirrelmail/plugins/filters/spamoptions.php:62
+#: squirrelmail/plugins/filters/spamoptions.php:71
 msgid "WARNING! Tell your admin to set the SpamFilters_YourHop variable"
 msgstr ""
 "AVISO! Informe seu administrador para setar a variável SpamFilters_YourHop"
 
-#: squirrelmail/plugins/filters/spamoptions.php:84
+#: squirrelmail/plugins/filters/spamoptions.php:93
 msgid "Move spam to:"
 msgstr "Mova o SPAM para:"
 
-#: squirrelmail/plugins/filters/spamoptions.php:102
+#: squirrelmail/plugins/filters/spamoptions.php:111
 msgid ""
 "Moving spam directly to the trash may not be a good idea at first, since "
 "messages from friends and mailing lists might accidentally be marked as "
@@ -2567,7 +2589,7 @@ msgstr ""
 "seja apagada regularmente, para que não exista uma quantidade muito grande "
 "de mensagens inúteis em suas pastas."
 
-#: squirrelmail/plugins/filters/spamoptions.php:122
+#: squirrelmail/plugins/filters/spamoptions.php:131
 msgid ""
 "The more messages you scan, the longer it takes.  I would suggest that you "
 "scan only new messages.  If you make a change to your filters, I would set "
@@ -2582,35 +2604,35 @@ msgstr ""
 "mensagens. Desta maneira, seus filtros de SPAM serão aplicados e você irá "
 "testar as novas regras com os novos filtros."
 
-#: squirrelmail/plugins/filters/spamoptions.php:160
+#: squirrelmail/plugins/filters/spamoptions.php:169
 #, c-format
 msgid "Spam is sent to <b>%s</b>"
 msgstr "SPAM foi enviado para <b>%s</b>"
 
-#: squirrelmail/plugins/filters/spamoptions.php:160
+#: squirrelmail/plugins/filters/spamoptions.php:169
 msgid "[<i>not set yet</i>]"
 msgstr "[<i>ainda não escolhido</i>]"
 
-#: squirrelmail/plugins/filters/spamoptions.php:162
+#: squirrelmail/plugins/filters/spamoptions.php:171
 #, c-format
 msgid "Spam scan is limited to <b>%s</b>"
 msgstr "Procura por SPAM é limitada a <b>%s</b>"
 
-#: squirrelmail/plugins/filters/spamoptions.php:162
+#: squirrelmail/plugins/filters/spamoptions.php:171
 #, fuzzy
 msgid "New Messages Only"
 msgstr "Apenas novas mensagens"
 
-#: squirrelmail/plugins/filters/spamoptions.php:162
+#: squirrelmail/plugins/filters/spamoptions.php:171
 #, fuzzy
 msgid "All Messages"
 msgstr "Lista de Mensagens"
 
-#: squirrelmail/plugins/filters/spamoptions.php:172
+#: squirrelmail/plugins/filters/spamoptions.php:181
 msgid "ON"
 msgstr "LIGADO"
 
-#: squirrelmail/plugins/filters/spamoptions.php:174
+#: squirrelmail/plugins/filters/spamoptions.php:183
 msgid "OFF"
 msgstr "DESLIGADO"
 
@@ -2631,15 +2653,15 @@ msgstr ""
 msgid "Check Spelling"
 msgstr "Verificar ortografia"
 
-#: squirrelmail/plugins/squirrelspell/sqspell_functions.php:54
+#: squirrelmail/plugins/squirrelspell/sqspell_functions.php:57
 msgid "Back to &quot;SpellChecker Options&quot; page"
 msgstr "Voltar para a página de &quot;Opções do Corretor Ortográfico&quot;"
 
-#: squirrelmail/plugins/squirrelspell/sqspell_functions.php:356
+#: squirrelmail/plugins/squirrelspell/sqspell_functions.php:363
 msgid "ATTENTION:"
 msgstr "Atenção:"
 
-#: squirrelmail/plugins/squirrelspell/sqspell_functions.php:357
+#: squirrelmail/plugins/squirrelspell/sqspell_functions.php:364
 msgid ""
 "SquirrelSpell was unable to decrypt your personal dictionary. This is most "
 "likely due to the fact that you have changed your mailbox password. In order "
@@ -2650,8 +2672,8 @@ msgid ""
 "anew. This is also true if you don't remember your old password -- without "
 "it, the encrypted data is no longer accessible."
 msgstr ""
-"O SquirrelSpell não conseguiu decriptografar seu dicionario pessoal. A "
-"causa mais provável foi a mudança de sua senha para acesso ao sistema. Para "
+"O SquirrelSpell não conseguiu decriptografar seu dicionario pessoal. A causa "
+"mais provável foi a mudança de sua senha para acesso ao sistema. Para "
 "prosseguir, você deve fornecer sua senha antiga para que o SquirrelSpell "
 "possa decriptografar o dicionario, que será criptografado novamente usando "
 "sua nova senha.<br> Se você não criptografou seu dicionário, então ele está "
@@ -2659,169 +2681,169 @@ msgstr ""
 "dicionário. Se você não se lembra da antiga senha, será necessário eliminar "
 "o dicionário."
 
-#: squirrelmail/plugins/squirrelspell/sqspell_functions.php:363
+#: squirrelmail/plugins/squirrelspell/sqspell_functions.php:370
 msgid "Delete my dictionary and start a new one"
 msgstr "Elimine meu dicionário e inicie um novo"
 
-#: squirrelmail/plugins/squirrelspell/sqspell_functions.php:364
+#: squirrelmail/plugins/squirrelspell/sqspell_functions.php:371
 msgid "Decrypt my dictionary with my old password:"
 msgstr "Descriptografe meu dicionário com minha velha senha:"
 
-#: squirrelmail/plugins/squirrelspell/sqspell_functions.php:368
+#: squirrelmail/plugins/squirrelspell/sqspell_functions.php:375
 msgid "Proceed"
 msgstr "Proceda"
 
-#: squirrelmail/plugins/squirrelspell/sqspell_functions.php:374
+#: squirrelmail/plugins/squirrelspell/sqspell_functions.php:381
 msgid "You must make a choice"
 msgstr "Você deve fazer uma escolha"
 
-#: squirrelmail/plugins/squirrelspell/sqspell_functions.php:375
+#: squirrelmail/plugins/squirrelspell/sqspell_functions.php:382
 msgid ""
 "You can either delete your dictionary or type in the old password. Not both."
 msgstr ""
-"Você deve ou apagar seu dicionário ou digitar sua senha antiga. Não os dois."
+"Você pode ou apagar seu dicionário ou digitar sua senha antiga. Não os dois."
 
-#: squirrelmail/plugins/squirrelspell/sqspell_functions.php:376
+#: squirrelmail/plugins/squirrelspell/sqspell_functions.php:383
 #, fuzzy
 msgid "This will delete your personal dictionary file. Proceed?"
 msgstr "Isto irá APAGAR seu dicionário pessoal. Posso fazer?"
 
-#: squirrelmail/plugins/squirrelspell/sqspell_functions.php:385
-#: squirrelmail/plugins/squirrelspell/sqspell_functions.php:388
+#: squirrelmail/plugins/squirrelspell/sqspell_functions.php:392
+#: squirrelmail/plugins/squirrelspell/sqspell_functions.php:395
 msgid "Error Decrypting Dictionary"
 msgstr "Erro ao decriptografar o dicionário"
 
-#: squirrelmail/plugins/squirrelspell/sqspell_functions.php:506
+#: squirrelmail/plugins/squirrelspell/sqspell_functions.php:515
 #, fuzzy
 msgid "Cute."
 msgstr "quote"
 
-#: squirrelmail/plugins/squirrelspell/modules/check_me.mod:115
+#: squirrelmail/plugins/squirrelspell/modules/check_me.mod:117
 #, c-format
 msgid "I tried to execute '%s', but it returned:"
 msgstr "Tentei executar: %s. Mas retornou:"
 
-#: squirrelmail/plugins/squirrelspell/modules/check_me.mod:121
+#: squirrelmail/plugins/squirrelspell/modules/check_me.mod:123
 #, fuzzy
 msgid "SquirrelSpell is misconfigured."
 msgstr "Menu de Opções SquirrelMail"
 
-#: squirrelmail/plugins/squirrelspell/modules/check_me.mod:211
+#: squirrelmail/plugins/squirrelspell/modules/check_me.mod:213
 msgid "SquirrelSpell Results"
 msgstr "Resultados SquirrelSpell"
 
-#: squirrelmail/plugins/squirrelspell/modules/check_me.mod:271
+#: squirrelmail/plugins/squirrelspell/modules/check_me.mod:273
 msgid "Spellcheck completed. Commit changes?"
 msgstr "Verificação ortográfica completada. Aplicar as modificações?"
 
-#: squirrelmail/plugins/squirrelspell/modules/check_me.mod:273
+#: squirrelmail/plugins/squirrelspell/modules/check_me.mod:275
 #, fuzzy
 msgid "No changes were made."
 msgstr "Nenhuma mudança pedida."
 
-#: squirrelmail/plugins/squirrelspell/modules/check_me.mod:275
+#: squirrelmail/plugins/squirrelspell/modules/check_me.mod:277
 #, fuzzy
 msgid "Now saving your personal dictionary... Please wait."
 msgstr "Não existem palavras em seu dicionário pessoal."
 
-#: squirrelmail/plugins/squirrelspell/modules/check_me.mod:296
+#: squirrelmail/plugins/squirrelspell/modules/check_me.mod:298
 #, c-format
 msgid "Found %s errors"
 msgstr "Foram encontrados %s erros"
 
-#: squirrelmail/plugins/squirrelspell/modules/check_me.mod:317
+#: squirrelmail/plugins/squirrelspell/modules/check_me.mod:319
 msgid "Line with an error:"
 msgstr "Linha com algum erro:"
 
-#: squirrelmail/plugins/squirrelspell/modules/check_me.mod:327
+#: squirrelmail/plugins/squirrelspell/modules/check_me.mod:329
 msgid "Error:"
 msgstr "Erro:"
 
-#: squirrelmail/plugins/squirrelspell/modules/check_me.mod:336
+#: squirrelmail/plugins/squirrelspell/modules/check_me.mod:338
 msgid "Suggestions:"
 msgstr "Sugestões:"
 
-#: squirrelmail/plugins/squirrelspell/modules/check_me.mod:343
+#: squirrelmail/plugins/squirrelspell/modules/check_me.mod:345
 msgid "Suggestions"
 msgstr "Sugestões"
 
-#: squirrelmail/plugins/squirrelspell/modules/check_me.mod:351
+#: squirrelmail/plugins/squirrelspell/modules/check_me.mod:353
 msgid "Change to:"
 msgstr "Altere para:"
 
-#: squirrelmail/plugins/squirrelspell/modules/check_me.mod:360
+#: squirrelmail/plugins/squirrelspell/modules/check_me.mod:362
 msgid "Occurs times:"
 msgstr "Frequência da palavra:"
 
-#: squirrelmail/plugins/squirrelspell/modules/check_me.mod:377
+#: squirrelmail/plugins/squirrelspell/modules/check_me.mod:379
 msgid "Change this word"
 msgstr "Altere essa palavra"
 
-#: squirrelmail/plugins/squirrelspell/modules/check_me.mod:378
+#: squirrelmail/plugins/squirrelspell/modules/check_me.mod:380
 msgid "Change"
 msgstr "Altere"
 
-#: squirrelmail/plugins/squirrelspell/modules/check_me.mod:380
+#: squirrelmail/plugins/squirrelspell/modules/check_me.mod:382
 msgid "Change ALL occurances of this word"
 msgstr "Altere Todas as ocorrências desta palavra"
 
-#: squirrelmail/plugins/squirrelspell/modules/check_me.mod:381
+#: squirrelmail/plugins/squirrelspell/modules/check_me.mod:383
 msgid "Change All"
 msgstr "Altere Todas"
 
-#: squirrelmail/plugins/squirrelspell/modules/check_me.mod:383
+#: squirrelmail/plugins/squirrelspell/modules/check_me.mod:385
 msgid "Ignore this word"
 msgstr "Ignore essa palavra"
 
-#: squirrelmail/plugins/squirrelspell/modules/check_me.mod:384
+#: squirrelmail/plugins/squirrelspell/modules/check_me.mod:386
 #, fuzzy
 msgid "Ignore"
 msgstr "Ignore"
 
-#: squirrelmail/plugins/squirrelspell/modules/check_me.mod:386
+#: squirrelmail/plugins/squirrelspell/modules/check_me.mod:388
 msgid "Ignore ALL occurances this word"
 msgstr "Ignore todas as ocorrências desta palavra"
 
-#: squirrelmail/plugins/squirrelspell/modules/check_me.mod:387
+#: squirrelmail/plugins/squirrelspell/modules/check_me.mod:389
 msgid "Ignore All"
 msgstr "Ignore todas"
 
-#: squirrelmail/plugins/squirrelspell/modules/check_me.mod:389
+#: squirrelmail/plugins/squirrelspell/modules/check_me.mod:391
 msgid "Add this word to your personal dictionary"
 msgstr "Adicionar essa palavra ao seu dicionário pessoal"
 
-#: squirrelmail/plugins/squirrelspell/modules/check_me.mod:390
+#: squirrelmail/plugins/squirrelspell/modules/check_me.mod:392
 #, fuzzy
 msgid "Add to Dic"
 msgstr "Adicionar ao Dicionário"
 
-#: squirrelmail/plugins/squirrelspell/modules/check_me.mod:403
+#: squirrelmail/plugins/squirrelspell/modules/check_me.mod:405
 #, fuzzy
 msgid "Close and Commit"
 msgstr "Fechar e aplicar"
 
-#: squirrelmail/plugins/squirrelspell/modules/check_me.mod:405
+#: squirrelmail/plugins/squirrelspell/modules/check_me.mod:407
 msgid "The spellcheck is not finished. Really close and commit changes?"
 msgstr ""
 "O corretor ortográfico ainda não processou o documento todo. Deseja fechar e "
 "aplicar as alterações?"
 
-#: squirrelmail/plugins/squirrelspell/modules/check_me.mod:408
+#: squirrelmail/plugins/squirrelspell/modules/check_me.mod:410
 msgid "Close and Cancel"
 msgstr "Fechar e Cancelar"
 
-#: squirrelmail/plugins/squirrelspell/modules/check_me.mod:410
+#: squirrelmail/plugins/squirrelspell/modules/check_me.mod:412
 msgid "The spellcheck is not finished. Really close and discard changes?"
 msgstr ""
 "O corretor ortográfico ainda não processou o documento todo. Deseja fechar e "
 "descartar as mudanças?"
 
-#: squirrelmail/plugins/squirrelspell/modules/check_me.mod:429
+#: squirrelmail/plugins/squirrelspell/modules/check_me.mod:431
 #, fuzzy
 msgid "No errors found"
 msgstr "Nenhum erro encontrado"
 
-#: squirrelmail/plugins/squirrelspell/modules/crypto.mod:39
+#: squirrelmail/plugins/squirrelspell/modules/crypto.mod:42
 msgid ""
 "Your personal dictionary has been <strong>encrypted</strong> and is now "
 "stored in an <strong>encrypted format</strong>."
@@ -2829,7 +2851,7 @@ msgstr ""
 "Seu dicionário pessoal foi <strong>criptografado</strong> e agora será "
 "armazenado com formato de <strong>arquivo criptografado</strong>."
 
-#: squirrelmail/plugins/squirrelspell/modules/crypto.mod:54
+#: squirrelmail/plugins/squirrelspell/modules/crypto.mod:57
 msgid ""
 "Your personal dictionary has been <strong>decrypted</strong> and is now "
 "stored as <strong>clear text</strong>."
@@ -2837,21 +2859,21 @@ msgstr ""
 "Seu dicionário pessoal foi <strong>decriptografado</strong> e agora será "
 "armazenado como <strong>texto puro</strong>."
 
-#: squirrelmail/plugins/squirrelspell/modules/crypto.mod:65
+#: squirrelmail/plugins/squirrelspell/modules/crypto.mod:68
 #: squirrelmail/plugins/squirrelspell/modules/enc_setup.mod:76
 msgid "Personal Dictionary Crypto Settings"
 msgstr "Opções de criptografia do dicionário pessoal"
 
-#: squirrelmail/plugins/squirrelspell/modules/crypto_badkey.mod:33
+#: squirrelmail/plugins/squirrelspell/modules/crypto_badkey.mod:39
 msgid "Your personal dictionary was erased."
 msgstr "Seu dicionário pessoal foi apagado."
 
-#: squirrelmail/plugins/squirrelspell/modules/crypto_badkey.mod:34
-#: squirrelmail/plugins/squirrelspell/modules/crypto_badkey.mod:47
+#: squirrelmail/plugins/squirrelspell/modules/crypto_badkey.mod:40
+#: squirrelmail/plugins/squirrelspell/modules/crypto_badkey.mod:53
 msgid "Dictionary Erased"
 msgstr "Dicionário apagado"
 
-#: squirrelmail/plugins/squirrelspell/modules/crypto_badkey.mod:41
+#: squirrelmail/plugins/squirrelspell/modules/crypto_badkey.mod:47
 #, fuzzy
 msgid ""
 "Your personal dictionary was erased. Please close this window and click "
@@ -2861,13 +2883,13 @@ msgstr ""
 "no botão \"Verifique a ortografia\" novamente para reiniciar o processo de "
 "verificação ortográfica."
 
-#: squirrelmail/plugins/squirrelspell/modules/crypto_badkey.mod:45
-#: squirrelmail/plugins/squirrelspell/modules/crypto_badkey.mod:77
+#: squirrelmail/plugins/squirrelspell/modules/crypto_badkey.mod:51
+#: squirrelmail/plugins/squirrelspell/modules/crypto_badkey.mod:83
 #, fuzzy
 msgid "Close this Window"
 msgstr "Fechar janela"
 
-#: squirrelmail/plugins/squirrelspell/modules/crypto_badkey.mod:70
+#: squirrelmail/plugins/squirrelspell/modules/crypto_badkey.mod:76
 msgid ""
 "Your personal dictionary was re-encrypted successfully. Now return to the "
 "&quot;SpellChecker options&quot; menu and make your selection again."
@@ -2876,11 +2898,11 @@ msgstr ""
 "agora para o menu das &quot;opções SpellChecker&quot; e faça sua seleção "
 "novamente."
 
-#: squirrelmail/plugins/squirrelspell/modules/crypto_badkey.mod:72
+#: squirrelmail/plugins/squirrelspell/modules/crypto_badkey.mod:78
 msgid "Successful Re-encryption"
 msgstr "Criptografia refeita com sucesso"
 
-#: squirrelmail/plugins/squirrelspell/modules/crypto_badkey.mod:75
+#: squirrelmail/plugins/squirrelspell/modules/crypto_badkey.mod:81
 msgid ""
 "Your personal dictionary was re-encrypted successfully. Please close this "
 "window and click \"Check Spelling\" button again to start your spellcheck "
@@ -2890,12 +2912,12 @@ msgstr ""
 "feche essa janela e clique no botão \"Verifique a ortografia\" novamente "
 "para reiniciar o processo de verificação ortográfica."
 
-#: squirrelmail/plugins/squirrelspell/modules/crypto_badkey.mod:79
+#: squirrelmail/plugins/squirrelspell/modules/crypto_badkey.mod:85
 msgid "Dictionary re-encrypted"
 msgstr "Dicionário criptografado novamente"
 
 #: squirrelmail/plugins/squirrelspell/modules/edit_dic.mod:28
-#: squirrelmail/plugins/squirrelspell/modules/forget_me.mod:77
+#: squirrelmail/plugins/squirrelspell/modules/forget_me.mod:81
 #, fuzzy
 msgid "Personal Dictionary"
 msgstr "Dicionário Pessoal"
@@ -3016,22 +3038,22 @@ msgstr ""
 "Por favor, criptografe meu dicionário pessoal e armazene-o em um formato "
 "criptografado."
 
-#: squirrelmail/plugins/squirrelspell/modules/forget_me.mod:28
+#: squirrelmail/plugins/squirrelspell/modules/forget_me.mod:32
 #, c-format
 msgid "Deleting the following entries from <strong>%s</strong> dictionary:"
 msgstr "Eliminando as seguintes entradas do dicionário <strong>%s</strong>:"
 
-#: squirrelmail/plugins/squirrelspell/modules/forget_me.mod:71
+#: squirrelmail/plugins/squirrelspell/modules/forget_me.mod:75
 #, fuzzy
 msgid "All done!"
 msgstr "Tudo feito!"
 
-#: squirrelmail/plugins/squirrelspell/modules/forget_me.mod:72
-#: squirrelmail/plugins/squirrelspell/modules/forget_me_not.mod:71
+#: squirrelmail/plugins/squirrelspell/modules/forget_me.mod:76
+#: squirrelmail/plugins/squirrelspell/modules/forget_me_not.mod:75
 msgid "Personal Dictionary Updated"
 msgstr "Dicionário pessoal atualizado"
 
-#: squirrelmail/plugins/squirrelspell/modules/forget_me.mod:78
+#: squirrelmail/plugins/squirrelspell/modules/forget_me.mod:82
 #, fuzzy
 msgid "No changes requested."
 msgstr "Nenhuma mudança pedida."
@@ -3049,7 +3071,7 @@ msgstr ""
 "correção ortográfica desta mensagem:"
 
 #: squirrelmail/plugins/squirrelspell/modules/init.mod:53
-#: squirrelmail/plugins/calendar/calendar.php:113
+#: squirrelmail/plugins/calendar/calendar.php:129
 msgid "Go"
 msgstr "Ir"
 
@@ -3057,7 +3079,7 @@ msgstr "Ir"
 msgid "SquirrelSpell Initiating"
 msgstr "Iniciando o SquirrelSpell"
 
-#: squirrelmail/plugins/squirrelspell/modules/lang_change.mod:72
+#: squirrelmail/plugins/squirrelspell/modules/lang_change.mod:76
 #, c-format
 msgid ""
 "Settings adjusted to: <strong>%s</strong> with <strong>%s</strong> as "
@@ -3065,14 +3087,14 @@ msgid ""
 msgstr ""
 "Opções: <strong>%s</strong> com <strong>%s</strong> como dicionário padrão."
 
-#: squirrelmail/plugins/squirrelspell/modules/lang_change.mod:79
+#: squirrelmail/plugins/squirrelspell/modules/lang_change.mod:83
 #, c-format
 msgid "Using <strong>%s</strong> dictionary (system default) for spellcheck."
 msgstr ""
 "Utilizando o dicionário <strong>%s</strong> (padrão) para verificação de "
 "ortografia."
 
-#: squirrelmail/plugins/squirrelspell/modules/lang_change.mod:90
+#: squirrelmail/plugins/squirrelspell/modules/lang_change.mod:94
 msgid "International Dictionaries Preferences Updated"
 msgstr "Preferências dos dicionários internacionais atualizadas"
 
@@ -3125,77 +3147,82 @@ msgstr "Menu de Opções SquirrelMail"
 msgid "Translator"
 msgstr "Tradutor"
 
-#: squirrelmail/plugins/translate/options.php:97
+#: squirrelmail/plugins/translate/options.php:98
+#, fuzzy
+msgid "Saved Translation Options"
+msgstr "Opções de Tradução"
+
+#: squirrelmail/plugins/translate/options.php:101
 msgid "Your server options are as follows:"
 msgstr "Suas opções do servidor são essas:"
 
-#: squirrelmail/plugins/translate/options.php:102
+#: squirrelmail/plugins/translate/options.php:106
 msgid ""
 "13 language pairs, maximum of 1000 characters translated, powered by Systran"
 msgstr "13 pares de línguas, máximo de 1000 caracteres, powered by Systran"
 
-#: squirrelmail/plugins/translate/options.php:105
+#: squirrelmail/plugins/translate/options.php:109
 msgid ""
 "10 language pairs, maximum of 25 kilobytes translated, powered by Systran"
 msgstr "10 pares de línguas, máximo de 25KB traduzidos, powered by Systran"
 
-#: squirrelmail/plugins/translate/options.php:108
+#: squirrelmail/plugins/translate/options.php:112
 msgid "12 language pairs, no known limits, powered by Systran"
 msgstr "12 pares de línguas, sem limites, powered by Systran"
 
-#: squirrelmail/plugins/translate/options.php:111
+#: squirrelmail/plugins/translate/options.php:115
 msgid ""
 "767 language pairs, no known limits, powered by Translation Experts's "
 "InterTran"
 msgstr "767 pares de línguas, sem limites, powered by Translation Experts's "
 
-#: squirrelmail/plugins/translate/options.php:114
+#: squirrelmail/plugins/translate/options.php:118
 msgid ""
 "8 language pairs, no known limits, powered by GPLTrans (free, open source)"
 msgstr ""
 "8 pares de línguas, sem limites, powered by GPLTrans (gratuito, fonte aberta)"
 
-#: squirrelmail/plugins/translate/options.php:120
+#: squirrelmail/plugins/translate/options.php:124
 msgid ""
 "You also decide if you want the translation box displayed, and where it will "
 "be located."
 msgstr ""
 "Você também pode decidir se você quer que o menu seja mostrado, e onde ele "
-"se localiza."
+"será localizado."
 
-#: squirrelmail/plugins/translate/options.php:124
+#: squirrelmail/plugins/translate/options.php:128
 msgid "Select your translator:"
 msgstr "Selecione seu tradutor:"
 
-#: squirrelmail/plugins/translate/options.php:136
+#: squirrelmail/plugins/translate/options.php:140
 msgid "When reading:"
 msgstr "Quando lendo:"
 
-#: squirrelmail/plugins/translate/options.php:141
+#: squirrelmail/plugins/translate/options.php:145
 msgid "Show translation box"
 msgstr "Mostra o menu de tradução"
 
-#: squirrelmail/plugins/translate/options.php:143
+#: squirrelmail/plugins/translate/options.php:147
 msgid "to the left"
 msgstr "para a esquerda"
 
-#: squirrelmail/plugins/translate/options.php:144
+#: squirrelmail/plugins/translate/options.php:148
 msgid "in the center"
 msgstr "no centro"
 
-#: squirrelmail/plugins/translate/options.php:145
+#: squirrelmail/plugins/translate/options.php:149
 msgid "to the right"
 msgstr "para a direita"
 
-#: squirrelmail/plugins/translate/options.php:150
+#: squirrelmail/plugins/translate/options.php:154
 msgid "Translate inside the SquirrelMail frames"
 msgstr "Traduzir dentro das janelas do SquirrelMail"
 
-#: squirrelmail/plugins/translate/options.php:153
+#: squirrelmail/plugins/translate/options.php:157
 msgid "When composing:"
 msgstr "Quando escrevendo:"
 
-#: squirrelmail/plugins/translate/options.php:157
+#: squirrelmail/plugins/translate/options.php:161
 msgid "Not yet functional, currently does nothing"
 msgstr "Ainda não funcional, não realiza nada"
 
@@ -3625,25 +3652,25 @@ msgstr ""
 "Este menu permite configurar eventos de som e/ou janelas de aviso que são "
 "acionados quando novas mensagens chegam."
 
-#: squirrelmail/plugins/newmail/setup.php:129
+#: squirrelmail/plugins/newmail/setup.php:126
 msgid "New Mail Notification options saved"
 msgstr "Opções para notificação de email salvas"
 
-#: squirrelmail/plugins/newmail/setup.php:202
+#: squirrelmail/plugins/newmail/setup.php:198
 #, fuzzy, c-format
 msgid "%s New Messages"
 msgstr "%s mensagens novas"
 
-#: squirrelmail/plugins/newmail/setup.php:206
+#: squirrelmail/plugins/newmail/setup.php:202
 #, fuzzy, c-format
 msgid "%s New Message"
 msgstr "%s nova mensagem"
 
-#: squirrelmail/plugins/newmail/testsound.php:24
+#: squirrelmail/plugins/newmail/testsound.php:26
 msgid "Test Sound"
 msgstr "Som de teste"
 
-#: squirrelmail/plugins/newmail/testsound.php:30
+#: squirrelmail/plugins/newmail/testsound.php:32
 msgid "Loading the sound..."
 msgstr "Carregando o som..."
 
@@ -3827,124 +3854,124 @@ msgstr "Nenhum número de mensagem submetido"
 msgid "Command failed "
 msgstr "Comando falhou "
 
-#: squirrelmail/plugins/mail_fetch/fetch.php:54
+#: squirrelmail/plugins/mail_fetch/fetch.php:68
 msgid "Remote POP server Fetching Mail"
 msgstr "Buscando Email em servidor POP remoto"
 
-#: squirrelmail/plugins/mail_fetch/fetch.php:63
+#: squirrelmail/plugins/mail_fetch/fetch.php:77
 msgid "Select Server:"
 msgstr "Selecione Servidor:"
 
-#: squirrelmail/plugins/mail_fetch/fetch.php:78
+#: squirrelmail/plugins/mail_fetch/fetch.php:92
 #, fuzzy
 msgid "Password for"
 msgstr "Senha:"
 
-#: squirrelmail/plugins/mail_fetch/fetch.php:85
+#: squirrelmail/plugins/mail_fetch/fetch.php:99
 msgid "Fetch Mail"
 msgstr "Buscar Email"
 
-#: squirrelmail/plugins/mail_fetch/fetch.php:117
+#: squirrelmail/plugins/mail_fetch/fetch.php:131
 msgid "Fetching from "
 msgstr "Buscando de "
 
-#: squirrelmail/plugins/mail_fetch/fetch.php:124
-#: squirrelmail/plugins/mail_fetch/fetch.php:184
+#: squirrelmail/plugins/mail_fetch/fetch.php:138
+#: squirrelmail/plugins/mail_fetch/fetch.php:198
 msgid "Oops, "
 msgstr "Epa, "
 
-#: squirrelmail/plugins/mail_fetch/fetch.php:128
+#: squirrelmail/plugins/mail_fetch/fetch.php:142
 msgid "Opening IMAP server"
 msgstr "Abrindo servidor IMAP"
 
-#: squirrelmail/plugins/mail_fetch/fetch.php:131
+#: squirrelmail/plugins/mail_fetch/fetch.php:145
 msgid "Opening POP server"
 msgstr "Abrindo servidor POP"
 
-#: squirrelmail/plugins/mail_fetch/fetch.php:134
-#: squirrelmail/plugins/mail_fetch/setup.php:123
+#: squirrelmail/plugins/mail_fetch/fetch.php:148
+#: squirrelmail/plugins/mail_fetch/setup.php:127
 msgid "Login Failed:"
 msgstr "Login falhou:"
 
-#: squirrelmail/plugins/mail_fetch/fetch.php:151
+#: squirrelmail/plugins/mail_fetch/fetch.php:165
 msgid "Login OK: No new messages"
 msgstr "Login OK: Nenhuma mensagem nova"
 
-#: squirrelmail/plugins/mail_fetch/fetch.php:156
+#: squirrelmail/plugins/mail_fetch/fetch.php:170
 msgid "Login OK: Inbox EMPTY"
 msgstr "Login OK: Caixa de entrada vazia"
 
-#: squirrelmail/plugins/mail_fetch/fetch.php:161
+#: squirrelmail/plugins/mail_fetch/fetch.php:175
 msgid "Login OK: Inbox contains ["
 msgstr "Login OK: Caixa de entrada contém ["
 
-#: squirrelmail/plugins/mail_fetch/fetch.php:161
+#: squirrelmail/plugins/mail_fetch/fetch.php:175
 #, fuzzy
 msgid "] messages"
 msgstr "] mensagem(s)"
 
-#: squirrelmail/plugins/mail_fetch/fetch.php:164
+#: squirrelmail/plugins/mail_fetch/fetch.php:178
 msgid "Fetching UIDL..."
 msgstr "Buscando UIDL..."
 
-#: squirrelmail/plugins/mail_fetch/fetch.php:169
-#: squirrelmail/plugins/mail_fetch/setup.php:154
+#: squirrelmail/plugins/mail_fetch/fetch.php:183
+#: squirrelmail/plugins/mail_fetch/setup.php:158
 msgid "Server does not support UIDL."
 msgstr "Servidor não suporta UIDL"
 
-#: squirrelmail/plugins/mail_fetch/fetch.php:172
+#: squirrelmail/plugins/mail_fetch/fetch.php:186
 msgid "Leaving Mail on Server..."
 msgstr "Deixando mensagens no servidor..."
 
-#: squirrelmail/plugins/mail_fetch/fetch.php:174
+#: squirrelmail/plugins/mail_fetch/fetch.php:188
 msgid "Deleting messages from server..."
 msgstr "Eliminando mensagens do servidor..."
 
-#: squirrelmail/plugins/mail_fetch/fetch.php:178
+#: squirrelmail/plugins/mail_fetch/fetch.php:192
 #, fuzzy
 msgid "Fetching message "
 msgstr "Buscando mensagem "
 
-#: squirrelmail/plugins/mail_fetch/fetch.php:201
+#: squirrelmail/plugins/mail_fetch/fetch.php:215
 msgid "Message appended to mailbox"
 msgstr "Mensagem adicionada à lista de Email"
 
-#: squirrelmail/plugins/mail_fetch/fetch.php:205
+#: squirrelmail/plugins/mail_fetch/fetch.php:219
 #, fuzzy
 msgid "Message "
 msgstr "Lista de Mensagens"
 
-#: squirrelmail/plugins/mail_fetch/fetch.php:205
+#: squirrelmail/plugins/mail_fetch/fetch.php:219
 msgid " deleted from Remote Server!"
 msgstr " eliminado(s) do servidor remoto!"
 
-#: squirrelmail/plugins/mail_fetch/fetch.php:207
+#: squirrelmail/plugins/mail_fetch/fetch.php:221
 #, fuzzy
 msgid "Delete failed:"
 msgstr "Apagar selecionados"
 
-#: squirrelmail/plugins/mail_fetch/fetch.php:212
-#: squirrelmail/plugins/mail_fetch/setup.php:185
+#: squirrelmail/plugins/mail_fetch/fetch.php:226
+#: squirrelmail/plugins/mail_fetch/setup.php:189
 msgid "Error Appending Message!"
 msgstr "Erro na construção da mensagem!"
 
-#: squirrelmail/plugins/mail_fetch/fetch.php:216
+#: squirrelmail/plugins/mail_fetch/fetch.php:230
 msgid "Closing POP"
 msgstr "Fechando o servidor POP"
 
-#: squirrelmail/plugins/mail_fetch/fetch.php:218
+#: squirrelmail/plugins/mail_fetch/fetch.php:232
 msgid "Logging out from IMAP"
 msgstr "Saindo do servidor IMAP"
 
-#: squirrelmail/plugins/mail_fetch/fetch.php:221
+#: squirrelmail/plugins/mail_fetch/fetch.php:235
 msgid "Saving UIDL"
 msgstr "Armazenando UIDL"
 
-#: squirrelmail/plugins/mail_fetch/options.php:105
+#: squirrelmail/plugins/mail_fetch/options.php:149
 msgid "Remote POP server settings"
 msgstr "Configuração do servidor POP remoto"
 
-#: squirrelmail/plugins/mail_fetch/options.php:107
+#: squirrelmail/plugins/mail_fetch/options.php:151
 msgid ""
 "You should be aware that the encryption used to store your password is not "
 "perfectly secure.  However, if you are using pop, there is inherently no "
@@ -3956,129 +3983,129 @@ msgstr ""
 "não existe segurança na transmissão. A criptografia feita pode ser desfeita "
 "por um hacker que tenha acesso ao código fonte deste programa."
 
-#: squirrelmail/plugins/mail_fetch/options.php:109
+#: squirrelmail/plugins/mail_fetch/options.php:153
 msgid "If you leave password empty, it will be required when you fetch mail."
 msgstr "Se você deixar sua senha em branco, ela será pedida quando necessário."
 
-#: squirrelmail/plugins/mail_fetch/options.php:113
+#: squirrelmail/plugins/mail_fetch/options.php:157
 msgid "Encrypt passwords (informative only)"
 msgstr "Criptografar senhas (apenas informativo)"
 
-#: squirrelmail/plugins/mail_fetch/options.php:119
-#: squirrelmail/plugins/mail_fetch/options.php:146
+#: squirrelmail/plugins/mail_fetch/options.php:163
+#: squirrelmail/plugins/mail_fetch/options.php:190
 msgid "Add Server"
 msgstr "Adicionar Servidor"
 
-#: squirrelmail/plugins/mail_fetch/options.php:123
-#: squirrelmail/plugins/mail_fetch/options.php:196
+#: squirrelmail/plugins/mail_fetch/options.php:167
+#: squirrelmail/plugins/mail_fetch/options.php:240
 msgid "Server:"
 msgstr "Servidor:"
 
-#: squirrelmail/plugins/mail_fetch/options.php:124
-#: squirrelmail/plugins/mail_fetch/options.php:198
+#: squirrelmail/plugins/mail_fetch/options.php:168
+#: squirrelmail/plugins/mail_fetch/options.php:242
 msgid "Alias:"
 msgstr "Apelido:"
 
-#: squirrelmail/plugins/mail_fetch/options.php:125
-#: squirrelmail/plugins/mail_fetch/options.php:200
+#: squirrelmail/plugins/mail_fetch/options.php:169
+#: squirrelmail/plugins/mail_fetch/options.php:244
 #, fuzzy
 msgid "Username:"
 msgstr "Novo nome:"
 
-#: squirrelmail/plugins/mail_fetch/options.php:127
-#: squirrelmail/plugins/mail_fetch/options.php:204
+#: squirrelmail/plugins/mail_fetch/options.php:171
+#: squirrelmail/plugins/mail_fetch/options.php:248
 #, fuzzy
 msgid "Store in Folder:"
 msgstr "Pasta de Enviadas:"
 
-#: squirrelmail/plugins/mail_fetch/options.php:143
-#: squirrelmail/plugins/mail_fetch/options.php:224
+#: squirrelmail/plugins/mail_fetch/options.php:187
+#: squirrelmail/plugins/mail_fetch/options.php:268
 msgid "Leave Mail on Server"
 msgstr "Deixar as mensagens no servidor"
 
-#: squirrelmail/plugins/mail_fetch/options.php:144
-#: squirrelmail/plugins/mail_fetch/options.php:226
+#: squirrelmail/plugins/mail_fetch/options.php:188
+#: squirrelmail/plugins/mail_fetch/options.php:270
 msgid "Check mail during login"
 msgstr "Checar Email durante o login"
 
-#: squirrelmail/plugins/mail_fetch/options.php:145
-#: squirrelmail/plugins/mail_fetch/options.php:228
+#: squirrelmail/plugins/mail_fetch/options.php:189
+#: squirrelmail/plugins/mail_fetch/options.php:272
 msgid "Check mail during folder refresh"
 msgstr "Checar Email durante a atualização das pastas"
 
-#: squirrelmail/plugins/mail_fetch/options.php:152
-#: squirrelmail/plugins/mail_fetch/options.php:229
+#: squirrelmail/plugins/mail_fetch/options.php:196
+#: squirrelmail/plugins/mail_fetch/options.php:273
 msgid "Modify Server"
 msgstr "Modificar Servidor"
 
-#: squirrelmail/plugins/mail_fetch/options.php:156
+#: squirrelmail/plugins/mail_fetch/options.php:200
 msgid "Server Name:"
 msgstr "Nome Servidor:"
 
-#: squirrelmail/plugins/mail_fetch/options.php:162
-#: squirrelmail/plugins/mail_fetch/options.php:185
+#: squirrelmail/plugins/mail_fetch/options.php:206
+#: squirrelmail/plugins/mail_fetch/options.php:229
 #, fuzzy
 msgid "Modify"
 msgstr "Corpo"
 
-#: squirrelmail/plugins/mail_fetch/options.php:166
+#: squirrelmail/plugins/mail_fetch/options.php:210
 msgid "No-one server in use. Try to add."
 msgstr "Nenhum servidor está em uso. Tente adicionar."
 
-#: squirrelmail/plugins/mail_fetch/options.php:172
-#: squirrelmail/plugins/mail_fetch/options.php:187
-#: squirrelmail/plugins/mail_fetch/options.php:234
+#: squirrelmail/plugins/mail_fetch/options.php:216
+#: squirrelmail/plugins/mail_fetch/options.php:231
+#: squirrelmail/plugins/mail_fetch/options.php:278
 msgid "Fetching Servers"
 msgstr "Buscando Servidores"
 
-#: squirrelmail/plugins/mail_fetch/options.php:176
+#: squirrelmail/plugins/mail_fetch/options.php:220
 msgid "Confirm Deletion of a Server"
 msgstr "Confirme a eliminação do servidor"
 
-#: squirrelmail/plugins/mail_fetch/options.php:180
+#: squirrelmail/plugins/mail_fetch/options.php:224
 msgid "Selected Server:"
 msgstr "Servidor Selecionado:"
 
-#: squirrelmail/plugins/mail_fetch/options.php:181
+#: squirrelmail/plugins/mail_fetch/options.php:225
 msgid "Confirm delete of selected server?"
 msgstr "Confirma a eliminação do servidor selecionado?"
 
-#: squirrelmail/plugins/mail_fetch/options.php:182
+#: squirrelmail/plugins/mail_fetch/options.php:226
 #, fuzzy
 msgid "Confirm Delete"
 msgstr "Apagar?"
 
-#: squirrelmail/plugins/mail_fetch/options.php:191
+#: squirrelmail/plugins/mail_fetch/options.php:235
 msgid "Mofify a Server"
 msgstr "Modificar um servidor"
 
-#: squirrelmail/plugins/mail_fetch/options.php:237
+#: squirrelmail/plugins/mail_fetch/options.php:281
 msgid "Undefined Function"
 msgstr "Função não definida"
 
-#: squirrelmail/plugins/mail_fetch/options.php:239
+#: squirrelmail/plugins/mail_fetch/options.php:283
 msgid "Hey! Wath do You are looking for?"
 msgstr "O que você está procurando?"
 
-#: squirrelmail/plugins/mail_fetch/setup.php:30
+#: squirrelmail/plugins/mail_fetch/setup.php:29
 #, fuzzy
 msgid "Fetch"
 msgstr "Encontrado"
 
-#: squirrelmail/plugins/mail_fetch/setup.php:115
-#: squirrelmail/plugins/mail_fetch/setup.php:162
+#: squirrelmail/plugins/mail_fetch/setup.php:119
+#: squirrelmail/plugins/mail_fetch/setup.php:166
 msgid "Warning, "
 msgstr "Atenção, "
 
-#: squirrelmail/plugins/mail_fetch/setup.php:198
+#: squirrelmail/plugins/mail_fetch/setup.php:202
 msgid "Mail Fetch Result:"
 msgstr "Resultados da busca de Email:"
 
-#: squirrelmail/plugins/mail_fetch/setup.php:223
+#: squirrelmail/plugins/mail_fetch/setup.php:230
 msgid "Simple POP3 Fetch Mail"
 msgstr "Recebimento de Email de servidor POP3"
 
-#: squirrelmail/plugins/mail_fetch/setup.php:225
+#: squirrelmail/plugins/mail_fetch/setup.php:232
 msgid ""
 "This configures settings for downloading email from a pop3 mailbox to your "
 "account on this server."
@@ -4086,136 +4113,146 @@ msgstr ""
 "Aqui é possível configurar opções para receber email de uma conta POP3 em "
 "sua conta neste servidor."
 
-#: squirrelmail/plugins/bug_report/setup.php:65
+#: squirrelmail/plugins/bug_report/setup.php:64
 msgid "Bug Reports:"
 msgstr "Relatório de defeitos (Bugs):"
 
-#: squirrelmail/plugins/bug_report/setup.php:70
+#: squirrelmail/plugins/bug_report/setup.php:69
 msgid "Show button in toolbar"
 msgstr "Mostrar botão na barra de ferramentas"
 
-#: squirrelmail/plugins/sent_subfolders/setup.php:94
+#: squirrelmail/plugins/sent_subfolders/setup.php:99
 #, fuzzy
 msgid "Sent Subfolders Options"
 msgstr "Opções especias de sub-pastas"
 
-#: squirrelmail/plugins/sent_subfolders/setup.php:99
+#: squirrelmail/plugins/sent_subfolders/setup.php:104
 #, fuzzy
 msgid "Use Sent Subfolders"
 msgstr "Pasta de Enviadas"
 
-#: squirrelmail/plugins/sent_subfolders/setup.php:103
+#: squirrelmail/plugins/sent_subfolders/setup.php:108
 #, fuzzy
 msgid "Monthly"
 msgstr "Mensalmente"
 
-#: squirrelmail/plugins/sent_subfolders/setup.php:104
+#: squirrelmail/plugins/sent_subfolders/setup.php:109
 msgid "Quarterly"
 msgstr "Quadrimestral"
 
-#: squirrelmail/plugins/sent_subfolders/setup.php:105
+#: squirrelmail/plugins/sent_subfolders/setup.php:110
 msgid "Yearly"
 msgstr "Anualmente"
 
-#: squirrelmail/plugins/sent_subfolders/setup.php:120
+#: squirrelmail/plugins/sent_subfolders/setup.php:125
 #, fuzzy
 msgid "Base Sent Folder"
 msgstr "Pasta de Enviadas"
 
-#: squirrelmail/plugins/calendar/calendar.php:75
+#: squirrelmail/plugins/calendar/calendar.php:91
 msgid "TODAY"
 msgstr "HOJE"
 
-#: squirrelmail/plugins/calendar/day.php:79
+#: squirrelmail/plugins/calendar/day.php:55
+#: squirrelmail/plugins/calendar/event_create.php:134
+#: squirrelmail/plugins/calendar/event_delete.php:140
+msgid "l, F j Y"
+msgstr ""
+
+#: squirrelmail/plugins/calendar/day.php:101
 msgid "ADD"
 msgstr "Adicione"
 
-#: squirrelmail/plugins/calendar/day.php:93
+#: squirrelmail/plugins/calendar/day.php:115
 msgid "EDIT"
 msgstr "Edite"
 
-#: squirrelmail/plugins/calendar/day.php:95
+#: squirrelmail/plugins/calendar/day.php:117
 msgid "DEL"
 msgstr "Apague"
 
-#: squirrelmail/plugins/calendar/event_create.php:31
+#: squirrelmail/plugins/calendar/event_create.php:75
 msgid "Start time:"
 msgstr "Hora inicial:"
 
-#: squirrelmail/plugins/calendar/event_create.php:41
-#: squirrelmail/plugins/calendar/event_edit.php:59
+#: squirrelmail/plugins/calendar/event_create.php:85
+#: squirrelmail/plugins/calendar/event_edit.php:130
 msgid "Length:"
 msgstr "Tamanho:"
 
-#: squirrelmail/plugins/calendar/event_create.php:47
-#: squirrelmail/plugins/calendar/event_edit.php:65
-#: squirrelmail/plugins/calendar/event_edit.php:97
-#: squirrelmail/plugins/calendar/event_edit.php:110
+#: squirrelmail/plugins/calendar/event_create.php:91
+#: squirrelmail/plugins/calendar/event_edit.php:136
+#: squirrelmail/plugins/calendar/event_edit.php:168
+#: squirrelmail/plugins/calendar/event_edit.php:181
 #, fuzzy
 msgid "Priority:"
 msgstr "Prioridade"
 
-#: squirrelmail/plugins/calendar/event_create.php:53
-#: squirrelmail/plugins/calendar/event_create.php:116
-#: squirrelmail/plugins/calendar/event_delete.php:36
-#: squirrelmail/plugins/calendar/event_edit.php:71
-#: squirrelmail/plugins/calendar/event_edit.php:99
-#: squirrelmail/plugins/calendar/event_edit.php:112
+#: squirrelmail/plugins/calendar/event_create.php:97
+#: squirrelmail/plugins/calendar/event_create.php:160
+#: squirrelmail/plugins/calendar/event_delete.php:91
+#: squirrelmail/plugins/calendar/event_edit.php:142
+#: squirrelmail/plugins/calendar/event_edit.php:170
+#: squirrelmail/plugins/calendar/event_edit.php:183
 msgid "Title:"
 msgstr "Título:"
 
-#: squirrelmail/plugins/calendar/event_create.php:61
+#: squirrelmail/plugins/calendar/event_create.php:105
 #, fuzzy
 msgid "Set Event"
 msgstr "Criar Evento"
 
-#: squirrelmail/plugins/calendar/event_create.php:111
+#: squirrelmail/plugins/calendar/event_create.php:155
 msgid "Event Has been added!"
 msgstr "O evento foi adicionado"
 
-#: squirrelmail/plugins/calendar/event_create.php:114
-#: squirrelmail/plugins/calendar/event_delete.php:34
-#: squirrelmail/plugins/calendar/event_edit.php:49
-#: squirrelmail/plugins/calendar/event_edit.php:95
+#: squirrelmail/plugins/calendar/event_create.php:158
+#: squirrelmail/plugins/calendar/event_delete.php:89
+#: squirrelmail/plugins/calendar/event_edit.php:120
+#: squirrelmail/plugins/calendar/event_edit.php:166
 #, fuzzy
 msgid "Time:"
 msgstr "Hora:"
 
-#: squirrelmail/plugins/calendar/event_create.php:121
-#: squirrelmail/plugins/calendar/event_delete.php:91
-#: squirrelmail/plugins/calendar/event_edit.php:189
+#: squirrelmail/plugins/calendar/event_create.php:165
+#: squirrelmail/plugins/calendar/event_delete.php:146
+#: squirrelmail/plugins/calendar/event_edit.php:260
 #: squirrelmail/plugins/calendar/functions.php:23
 msgid "Day View"
 msgstr "Visão do dia"
 
-#: squirrelmail/plugins/calendar/event_delete.php:31
+#: squirrelmail/plugins/calendar/event_delete.php:86
 msgid "Do you really want to delete this event?"
 msgstr "Deseja realmente apagar este evento?"
 
-#: squirrelmail/plugins/calendar/event_delete.php:89
+#: squirrelmail/plugins/calendar/event_delete.php:144
 #, fuzzy
 msgid "Event deleted!"
 msgstr "Evento apagado!"
 
-#: squirrelmail/plugins/calendar/event_delete.php:97
+#: squirrelmail/plugins/calendar/event_delete.php:152
 msgid "Nothing to delete!"
 msgstr "Nada para apagar!"
 
-#: squirrelmail/plugins/calendar/event_edit.php:79
+#: squirrelmail/plugins/calendar/event_edit.php:150
 #, fuzzy
 msgid "Update Event"
 msgstr "Evento atualizado"
 
-#: squirrelmail/plugins/calendar/event_edit.php:91
+#: squirrelmail/plugins/calendar/event_edit.php:162
 msgid "Do you really want to change this event from:"
 msgstr "Deseja realmente mudar este evento de:"
 
-#: squirrelmail/plugins/calendar/event_edit.php:104
+#: squirrelmail/plugins/calendar/event_edit.php:175
 #, fuzzy
 msgid "to:"
 msgstr "para:"
 
-#: squirrelmail/plugins/calendar/event_edit.php:187
+#: squirrelmail/plugins/calendar/event_edit.php:241
+msgid "l, F d Y"
+msgstr ""
+
+#: squirrelmail/plugins/calendar/event_edit.php:258
 msgid "Event updated!"
 msgstr "Evento atualizado!"
 
@@ -4279,11 +4316,11 @@ msgstr "6 h."
 msgid "Calendar"
 msgstr "Calendário"
 
-#: squirrelmail/plugins/listcommands/mailout.php:19
+#: squirrelmail/plugins/listcommands/mailout.php:26
 msgid "Mailinglist"
 msgstr "Lista de E-mails"
 
-#: squirrelmail/plugins/listcommands/mailout.php:25
+#: squirrelmail/plugins/listcommands/mailout.php:32
 #, c-format
 msgid ""
 "This will send a message to %s requesting help for this list. You will "
@@ -4292,7 +4329,7 @@ msgstr ""
 "Será enviada uma mensagem para %s requisitando ajuda para esta lista. Você "
 "receberá uma mensagem no endereço abaixo."
 
-#: squirrelmail/plugins/listcommands/mailout.php:28
+#: squirrelmail/plugins/listcommands/mailout.php:35
 #, c-format
 msgid ""
 "This will send a message to %s requesting that you will be subscribed to "
@@ -4301,16 +4338,16 @@ msgstr ""
 "Será enviada uma mensagem para %s requisitando sua inscrição nesta lista. "
 "Você será inscrito com o endereço abaixo."
 
-#: squirrelmail/plugins/listcommands/mailout.php:31
+#: squirrelmail/plugins/listcommands/mailout.php:38
 #, c-format
 msgid ""
 "This will send a message to %s requesting that you will be unsubscribed from "
 "this list. It will try to unsubscribe the adress below."
 msgstr ""
-"Será enviada uma mensagem a %s requisitando sua desinscrição desta "
-"lista. Irá tentar desinscrever o endereço abaixo."
+"Será enviada uma mensagem a %s requisitando sua desinscrição desta lista. "
+"Irá tentar desinscrever o endereço abaixo."
 
-#: squirrelmail/plugins/listcommands/mailout.php:79
+#: squirrelmail/plugins/listcommands/mailout.php:86
 #, fuzzy
 msgid "Send Mail"
 msgstr "Enviar mensagem"
@@ -4338,32 +4375,32 @@ msgstr "Contatar dono da lista"
 msgid "Mailing List:"
 msgstr "Lista de Mensagens"
 
-#: squirrelmail/plugins/delete_move_next/setup.php:176
-#: squirrelmail/plugins/delete_move_next/setup.php:179
+#: squirrelmail/plugins/delete_move_next/setup.php:181
+#: squirrelmail/plugins/delete_move_next/setup.php:184
 #, fuzzy
 msgid "Delete & Prev"
 msgstr "Apagar & Anterior"
 
-#: squirrelmail/plugins/delete_move_next/setup.php:182
-#: squirrelmail/plugins/delete_move_next/setup.php:184
+#: squirrelmail/plugins/delete_move_next/setup.php:187
+#: squirrelmail/plugins/delete_move_next/setup.php:189
 #, fuzzy
 msgid "Delete & Next"
 msgstr "Apagar & Próxima"
 
-#: squirrelmail/plugins/delete_move_next/setup.php:305
+#: squirrelmail/plugins/delete_move_next/setup.php:322
 msgid "Delete/Move/Next Buttons:"
 msgstr "Botões Apagar/Mover/Próxima:"
 
-#: squirrelmail/plugins/delete_move_next/setup.php:311
+#: squirrelmail/plugins/delete_move_next/setup.php:328
 msgid "Display at top"
 msgstr "Mostrar no topo"
 
-#: squirrelmail/plugins/delete_move_next/setup.php:317
-#: squirrelmail/plugins/delete_move_next/setup.php:329
+#: squirrelmail/plugins/delete_move_next/setup.php:334
+#: squirrelmail/plugins/delete_move_next/setup.php:346
 msgid "with move option"
 msgstr "com opção de mover"
 
-#: squirrelmail/plugins/delete_move_next/setup.php:323
+#: squirrelmail/plugins/delete_move_next/setup.php:340
 msgid "Display at bottom"
 msgstr "Mostrar em baixo"
 
@@ -4699,33 +4736,33 @@ msgstr "Temas"
 
 #: squirrelmail/plugins/administrator/defines.php:255
 msgid "Style Sheet URL (css)"
-msgstr ""
+msgstr "URL da folha de estilho (css)"
 
-#: squirrelmail/plugins/administrator/options.php:186
+#: squirrelmail/plugins/administrator/options.php:193
 #, fuzzy
 msgid "Configuration Administrator"
 msgstr "Configuração de administrador"
 
-#: squirrelmail/plugins/administrator/options.php:379
+#: squirrelmail/plugins/administrator/options.php:386
 #, fuzzy
 msgid "Theme Name"
 msgstr "Nome do Tema"
 
-#: squirrelmail/plugins/administrator/options.php:380
+#: squirrelmail/plugins/administrator/options.php:387
 #, fuzzy
 msgid "Theme Path"
 msgstr "Caminho do Tema"
 
-#: squirrelmail/plugins/administrator/options.php:418
+#: squirrelmail/plugins/administrator/options.php:425
 msgid "Plugins"
 msgstr ""
 
-#: squirrelmail/plugins/administrator/options.php:480
+#: squirrelmail/plugins/administrator/options.php:487
 #, fuzzy
 msgid "Change Settings"
 msgstr "Alterar configurações"
 
-#: squirrelmail/plugins/administrator/options.php:531
+#: squirrelmail/plugins/administrator/options.php:538
 msgid "Config file can't be opened. Please check config.php."
 msgstr "O arquivo de configuração não podê ser aberto. Verifique o config.php."
 
@@ -4746,6 +4783,13 @@ msgstr "Relatório de erro de envio"
 #: squirrelmail/po/independent_strings.txt:19
 msgid "Undelivered Message Headers"
 msgstr "Cabeçalho da mensagem não enviada"
+
+#~ msgid ""
+#~ "Please contact your system administrator and report the following error:"
+#~ msgstr "Por favor informe o seguinte erro ao administrador do sistema:"
+
+#~ msgid "Save folder tree"
+#~ msgstr "Salvar a árvore de diretórios (pastas)"
 
 #~ msgid "Close window"
 #~ msgstr "Fechar janela"
