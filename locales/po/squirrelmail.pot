@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2003-10-09 19:49+0300\n"
+"POT-Creation-Date: 2003-10-05 12:27+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -156,7 +156,7 @@ msgstr ""
 msgid "Draft Saved"
 msgstr ""
 
-msgid "Your Message has been sent."
+msgid "Your Message has been sent"
 msgstr ""
 
 msgid "From:"
@@ -687,34 +687,7 @@ msgstr ""
 msgid "You must be logged in to access this page."
 msgstr ""
 
-msgid "All Folders"
-msgstr ""
-
-msgid "Please enter something to search for"
-msgstr ""
-
-msgid "There must be at least one criteria to search for"
-msgstr ""
-
-msgid "Error in criteria argument"
-msgstr ""
-
-msgid "M j, Y"
-msgstr ""
-
-msgid "(Illegal date)"
-msgstr ""
-
-msgid "(Wrong date)"
-msgstr ""
-
-msgid "In"
-msgstr ""
-
-msgid "(Missing argument)"
-msgstr ""
-
-msgid "(Spurious argument)"
+msgid "Folder:"
 msgstr ""
 
 msgid "edit"
@@ -726,7 +699,7 @@ msgstr ""
 msgid "delete"
 msgstr ""
 
-msgid "Saved Searches"
+msgid "Recent Searches"
 msgstr ""
 
 msgid "save"
@@ -735,109 +708,16 @@ msgstr ""
 msgid "forget"
 msgstr ""
 
-msgid "Recent Searches"
+msgid "Current Search"
 msgstr ""
 
-msgid "Missing"
+msgid "All Folders"
 msgstr ""
 
-msgid "Exclude Criteria:"
+msgid "Body"
 msgstr ""
 
-msgid "Search Criteria"
-msgstr ""
-
-msgid "Folder:"
-msgstr ""
-
-msgid "Add New Criteria"
-msgstr ""
-
-msgid "Remove Excluded Criteria"
-msgstr ""
-
-msgid "Remove All Criteria"
-msgstr ""
-
-msgid "Answered"
-msgstr ""
-
-msgid "Before"
-msgstr ""
-
-msgid "Message Body"
-msgstr ""
-
-msgid "Deleted"
-msgstr ""
-
-msgid "Draft"
-msgstr ""
-
-msgid "Flagged"
-msgstr ""
-
-msgid "Sent By"
-msgstr ""
-
-msgid "Header Field"
-msgstr ""
-
-msgid "Keyword"
-msgstr ""
-
-msgid "Larger Than"
-msgstr ""
-
-msgid "Old"
-msgstr ""
-
-msgid "On"
-msgstr ""
-
-msgid "Recent"
-msgstr ""
-
-msgid "Seen"
-msgstr ""
-
-msgid "Sent Before"
-msgstr ""
-
-msgid "Sent On"
-msgstr ""
-
-msgid "Sent Since"
-msgstr ""
-
-msgid "Since"
-msgstr ""
-
-msgid "Smaller Than"
-msgstr ""
-
-msgid "Subject Contains"
-msgstr ""
-
-msgid "Header and Body"
-msgstr ""
-
-msgid "Sent To"
-msgstr ""
-
-msgid "Not"
-msgstr ""
-
-msgid "And In"
-msgstr ""
-
-msgid "Or In"
-msgstr ""
-
-msgid "And"
-msgstr ""
-
-msgid "Or"
+msgid "Everywhere"
 msgstr ""
 
 msgid "Search Results"
@@ -898,9 +778,6 @@ msgid "Viewing Full Header"
 msgstr ""
 
 msgid "Viewing a text attachment"
-msgstr ""
-
-msgid "Folder List"
 msgstr ""
 
 msgid "Personal address book"
@@ -1100,6 +977,9 @@ msgstr ""
 msgid "D, F j, Y G:i"
 msgstr ""
 
+msgid "M j, Y"
+msgstr ""
+
 msgid "g:i a"
 msgstr ""
 
@@ -1114,6 +994,12 @@ msgstr ""
 
 #, c-format
 msgid "Preference database error (%s). Exiting abnormally"
+msgstr ""
+
+msgid "Unknown user or password incorrect."
+msgstr ""
+
+msgid "Click here to try again"
 msgstr ""
 
 #, c-format
@@ -1187,37 +1073,31 @@ msgid ""
 "(using configure option --enable-mbstring)."
 msgstr ""
 
+msgid "ERROR : No available imapstream."
+msgstr ""
+
+msgid "ERROR : Connection dropped by imap-server."
+msgstr ""
+
 msgid "ERROR : Could not complete request."
 msgstr ""
 
+msgid "Query:"
+msgstr ""
+
+msgid "Reason Given: "
+msgstr ""
+
 msgid "ERROR : Bad or malformed request."
+msgstr ""
+
+msgid "Server responded: "
 msgstr ""
 
 msgid "ERROR : Imap server closed the connection."
 msgstr ""
 
 msgid "ERROR : Unknown imap response."
-msgstr ""
-
-msgid "Reason Given: "
-msgstr ""
-
-msgid "Query:"
-msgstr ""
-
-msgid "ERROR : No available imapstream."
-msgstr ""
-
-msgid "ERROR : Bad function call."
-msgstr ""
-
-msgid "Reason:"
-msgstr ""
-
-msgid "ERROR : Connection dropped by imap-server."
-msgstr ""
-
-msgid "Server responded: "
 msgstr ""
 
 #, c-format
@@ -1235,9 +1115,6 @@ msgstr ""
 msgid "Read data:"
 msgstr ""
 
-msgid "Unknown user or password incorrect."
-msgstr ""
-
 msgid "ERROR : Could not append message to"
 msgstr ""
 
@@ -1250,6 +1127,9 @@ msgid ""
 msgstr ""
 
 msgid "(no subject)"
+msgstr ""
+
+msgid "Unknown Sender"
 msgstr ""
 
 msgid "Unknown response from IMAP server: "
@@ -1310,12 +1190,6 @@ msgstr ""
 msgid "Thread View"
 msgstr ""
 
-msgid "Bypass Trash"
-msgstr ""
-
-msgid "Click here to change the sorting of the message list"
-msgstr ""
-
 msgid "Toggle All"
 msgstr ""
 
@@ -1372,9 +1246,6 @@ msgid "download"
 msgstr ""
 
 msgid "sec_remove_eng.png"
-msgstr ""
-
-msgid "This external link will open in a new window"
 msgstr ""
 
 #, c-format
@@ -1502,15 +1373,6 @@ msgstr ""
 msgid "Always Show Full Date"
 msgstr ""
 
-msgid "Length of From/To Field (0 for full)"
-msgstr ""
-
-msgid "Length of Subject Field (0 for full)"
-msgstr ""
-
-msgid "Show recipient name if the message is from your default identity"
-msgstr ""
-
 msgid "Message Display and Composition"
 msgstr ""
 
@@ -1575,21 +1437,6 @@ msgid "Height of Compose Window"
 msgstr ""
 
 msgid "Append Signature before Reply/Forward Text"
-msgstr ""
-
-msgid "Cursor Position when Replying"
-msgstr ""
-
-msgid "To: field"
-msgstr ""
-
-msgid "Focus in body"
-msgstr ""
-
-msgid "Select body"
-msgstr ""
-
-msgid "Strip signature when replying"
 msgstr ""
 
 msgid "Enable Sort by of Receive Date"
@@ -1670,7 +1517,7 @@ msgstr ""
 msgid "Unseen and Total"
 msgstr ""
 
-msgid "Enable Collapsable Folders"
+msgid "Enable Collapsible Folders"
 msgstr ""
 
 msgid "Enable Cumulative Unread Message Notification"
@@ -1704,12 +1551,6 @@ msgid "Selection List Style"
 msgstr ""
 
 msgid "Long: "
-msgstr ""
-
-msgid "Folder"
-msgstr ""
-
-msgid "Subfolder"
 msgstr ""
 
 msgid "Indented: "
@@ -2278,7 +2119,7 @@ msgstr ""
 
 msgid ""
 "FREE, for now - SPAMCOP - An interesting solution that lists servers that "
-"have a very high spam to legit email ratio (85 percent or more)."
+"have a very high spam to legit email ratio (85% or more)."
 msgstr ""
 
 msgid "FREE - dev.null.dk - I don't have any detailed info on this list."
@@ -2510,6 +2351,12 @@ msgstr ""
 msgid "Error "
 msgstr ""
 
+msgid "POP3 noop:"
+msgstr ""
+
+msgid "No connection to server"
+msgstr ""
+
 msgid "POP3 user:"
 msgstr ""
 
@@ -2529,9 +2376,6 @@ msgid "authentication failed "
 msgstr ""
 
 msgid "POP3 apop:"
-msgstr ""
-
-msgid "No connection to server"
 msgstr ""
 
 msgid "No login ID submitted"
@@ -2591,6 +2435,9 @@ msgstr ""
 msgid "Command failed "
 msgstr ""
 
+msgid "Remote POP server Fetching Mail"
+msgstr ""
+
 msgid "Select Server:"
 msgstr ""
 
@@ -2598,15 +2445,6 @@ msgid "Password for"
 msgstr ""
 
 msgid "Fetch Mail"
-msgstr ""
-
-msgid "Remote POP server Fetching Mail"
-msgstr ""
-
-msgid "No POP3 servers configured yet."
-msgstr ""
-
-msgid "Click here to go to the options page."
 msgstr ""
 
 msgid "Fetching from "
@@ -2864,15 +2702,7 @@ msgstr ""
 msgid "SquirrelMail Notice:"
 msgstr ""
 
-msgid "You have"
-msgstr ""
-
-#, c-format
-msgid "%s new message"
-msgstr ""
-
-#, c-format
-msgid "%s new messages"
+msgid "You have new mail!"
 msgstr ""
 
 msgid "NewMail Options"
@@ -2921,84 +2751,6 @@ msgstr ""
 msgid "Base Sent Folder"
 msgstr ""
 
-msgid ""
-"SpamCop is a free service that greatly assists in finding the true source of "
-"the spam and helps in letting the proper people know about the abuse."
-msgstr ""
-
-msgid ""
-"To use it, you must get a SpamCop authorization code. There is a free <a "
-"href=\"http://spamcop.net/anonsignup.shtml\">sign up page</a> so you can use "
-"SpamCop."
-msgstr ""
-
-msgid ""
-"<b>Before you sign up, be warned:</b> Some users have reported that the "
-"email addresses used with SpamCop find their way onto spam lists. To be "
-"safe, you can just create an email forwarding account and have all SpamCop "
-"reports get sent to there. Also, if it gets flooded with spam, you can then "
-"just delete that account with no worries about losing your real email "
-"address. Just go create an email forwarder somewhere (<a href=\"http://www."
-"yahoo.com/\">Yahoo!</a> has a <a href=\"http://dir.yahoo.com/"
-"Business_and_Economy/Business_to_Business/Communications_and_Networking/"
-"Internet_and_World_Wide_Web/Email_Providers/Forwarding_Services/"
-"Free_Forwarding/\">list of places</a>) so that messages from system "
-"administrators and whatnot can be sent to you."
-msgstr ""
-
-msgid ""
-"Once you have signed up with SpamCop and have received your SpamCop "
-"authorization code, you need to enable this plugin -- just click the link "
-"above.  Once enabled, you go about your normal life.  If you encounter a "
-"spam message in your mailbox, just view it.  On the right-hand side, near "
-"the top of where the message is displayed, you will see a link to report "
-"this message as spam.  Clicking on it brings you to a confirmation page. "
-"Confirming that you want the spam report sent will do different things with "
-"different reporting methods."
-msgstr ""
-
-msgid "Email-based Reporting"
-msgstr ""
-
-msgid ""
-"Pressing the button forwards the message to the SpamCop service and will "
-"optionally delete the message.  From there, you just need to go to your "
-"INBOX and quite soon a message should appear from SpamCop.  (It gets sent to "
-"the account you registered with, so make sure that your mail forwarder "
-"works!) Open it up, click on the appropriate link at the top, and a new "
-"browser window will open."
-msgstr ""
-
-msgid ""
-"Currently, the quick reporting just forwards the request to the thorough "
-"reporting.  Also, it appears that this is for members (non-free) only. "
-"Hopefully this will change soon."
-msgstr ""
-
-msgid "Web-based Reporting"
-msgstr ""
-
-msgid ""
-"When you press the button on the confirmation page, this will pop open a new "
-"browser window and the SpamCop service should appear inside. The message "
-"will not be deleted (working on that part), but you won't need to wait for a "
-"response email to start the spam reporting."
-msgstr ""
-
-msgid ""
-"The SpamCop service will display information as it finds it, so scroll down "
-"until you see a form button.  It might pause a little while it is looking up "
-"information, so be a little patient.  Read what it says, and submit the "
-"spam.  Close the browser window.  Press Cancel or click on the appropriate "
-"mail folder to see messages and/or delete the spam."
-msgstr ""
-
-msgid ""
-"<b>For more information</b> about SpamCop, it's services, spam in general, "
-"and many related topics, try reading through SpamCop's <a href=\"http://"
-"spamcop.net/help.shtml\">Help and Feedback</a> section."
-msgstr ""
-
 msgid "Report as Spam"
 msgstr ""
 
@@ -3009,13 +2761,6 @@ msgid ""
 "Help fight the battle against unsolicited email.  SpamCop reads the spam "
 "email and determines the correct addresses to send complaints to.  Quite "
 "fast, really smart, and easy to use."
-msgstr ""
-
-msgid ""
-"Sending this spam report will give you back a reply with URLs that you can "
-"click on to properly report this spam message to the proper authorities. "
-"This is a free service.  By pressing the \"Send Spam Report\" button, you "
-"agree to follow SpamCop's rules/terms of service/etc."
 msgstr ""
 
 msgid "SpellChecker Options"

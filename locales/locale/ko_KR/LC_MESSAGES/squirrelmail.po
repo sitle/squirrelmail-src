@@ -4,8 +4,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: $Id$\n"
-"POT-Creation-Date: 2003-01-25 09:07+0100\n"
+"Project-Id-Version: $Id: squirrelmail.po,v 1.1 2003/07/13 09:56:09 tokul Exp "
+"$\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2003-10-05 12:27+0300\n"
 "PO-Revision-Date: 2001-12-15 09:45+0200\n"
 "Last-Translator: J.I. Kim <aporie@netian.com>\n"
 "Language-Team: Korean <squirrelmail-i18n@lists.sourceforge.org>\n"
@@ -86,11 +88,11 @@ msgstr "중복된 이름은 사용할 수 없습니다."
 msgid "E-mail address"
 msgstr "전자메일 주소"
 
-msgid "First name"
-msgstr "이름"
-
 msgid "Last name"
 msgstr "성"
+
+msgid "First name"
+msgstr "이름"
 
 msgid "Additional info"
 msgstr "추가 정보"
@@ -122,6 +124,15 @@ msgstr "선택한 주소 삭제"
 #, c-format
 msgid "Add to %s"
 msgstr "%s에 추가"
+
+msgid "said"
+msgstr "님이 쓰시길"
+
+msgid "quote"
+msgstr "인용"
+
+msgid "who"
+msgstr "글쓴이"
 
 msgid "Subject"
 msgstr "제목"
@@ -206,15 +217,6 @@ msgstr "임시보관함에 저장"
 
 msgid "You have not filled in the \"To:\" field."
 msgstr "\"받는사람:\"란이 비었습니다."
-
-msgid "said"
-msgstr "님이 쓰시길"
-
-msgid "quote"
-msgstr "인용"
-
-msgid "who"
-msgstr "글쓴이"
 
 msgid "Draft folder"
 msgstr "임시 보관함"
@@ -363,9 +365,6 @@ msgstr "메세지 보기"
 msgid "Download this as a file"
 msgstr "파일로 다운받기"
 
-msgid "Not available"
-msgstr "사용할 수 없습니다."
-
 msgid "INBOX"
 msgstr "받은 편지함"
 
@@ -425,6 +424,12 @@ msgstr "제목"
 
 msgid "Edit"
 msgstr "수정"
+
+msgid "Up"
+msgstr "위로"
+
+msgid "Down"
+msgstr "아래로"
 
 msgid "No highlighting is defined"
 msgstr "메세지 강조가 정의되지 않았습니다."
@@ -600,11 +605,11 @@ msgstr ""
 msgid "Message not printable"
 msgstr "메세지를 인쇄할 수 없습니다."
 
-msgid "Printer Friendly"
-msgstr "출력용"
-
 msgid "CC"
 msgstr "참조:"
+
+msgid "Printer Friendly"
+msgstr "출력용"
 
 msgid "Print"
 msgstr "인쇄"
@@ -640,7 +645,8 @@ msgstr "메일러"
 msgid "Read receipt"
 msgstr ""
 
-msgid "send"
+#, fuzzy
+msgid "sent"
 msgstr "전송"
 
 msgid "requested"
@@ -670,9 +676,6 @@ msgstr "새메일로 메세지 편집"
 
 msgid "View Message"
 msgstr "메세지 보기"
-
-msgid "Up"
-msgstr "위로"
 
 msgid "Forward"
 msgstr "전달"
@@ -886,6 +889,31 @@ msgstr "금"
 msgid "Saturday"
 msgstr "토"
 
+#, fuzzy
+msgid "Sun"
+msgstr "일"
+
+#, fuzzy
+msgid "Mon"
+msgstr "월"
+
+#, fuzzy
+msgid "Tue"
+msgstr "화"
+
+msgid "Wed"
+msgstr ""
+
+msgid "Thu"
+msgstr ""
+
+#, fuzzy
+msgid "Fri"
+msgstr "금"
+
+msgid "Sat"
+msgstr ""
+
 msgid "January"
 msgstr "1"
 
@@ -922,11 +950,58 @@ msgstr "11"
 msgid "December"
 msgstr "12"
 
+#, fuzzy
+msgid "Jan"
+msgstr "1"
+
+msgid "Feb"
+msgstr ""
+
+#, fuzzy
+msgid "Mar"
+msgstr "3"
+
+#, fuzzy
+msgid "Apr"
+msgstr "4"
+
+msgid "Ma&#121;"
+msgstr ""
+
+#, fuzzy
+msgid "Jun"
+msgstr "6"
+
+#, fuzzy
+msgid "Jul"
+msgstr "7"
+
+#, fuzzy
+msgid "Aug"
+msgstr "8"
+
+msgid "Sep"
+msgstr ""
+
+#, fuzzy
+msgid "Oct"
+msgstr "10"
+
+#, fuzzy
+msgid "Nov"
+msgstr "아니오"
+
+msgid "Dec"
+msgstr ""
+
 msgid "D, F j, Y g:i a"
 msgstr "Y-F-j, D, g:i a"
 
 msgid "D, F j, Y G:i"
 msgstr "Y-F-j, D, G:i"
+
+msgid "M j, Y"
+msgstr "Y M j"
 
 msgid "g:i a"
 msgstr "g:i a"
@@ -939,9 +1014,6 @@ msgstr "D, g:i a"
 
 msgid "D, G:i"
 msgstr "D, G:i"
-
-msgid "M j, Y"
-msgstr "Y M j"
 
 #, c-format
 msgid "Preference database error (%s). Exiting abnormally"
@@ -984,6 +1056,14 @@ msgstr ""
 "설정 파일 %s를(을) 쓸 수 없습니다. 이 문제를 해결하기 위해 시스템 관리자에게 "
 "문의하시기 바랍니다."
 
+#, fuzzy, c-format
+msgid ""
+"Preference file, %s, could not be copied from temporary file, %s. Contact "
+"your system administrator to resolve this issue."
+msgstr ""
+"설정 파일 %s를(을) 열 수 없습니다. 이 문제를 해결하기 위해 시스템 관리자에게 "
+"문의하시기 바랍니다."
+
 #, c-format
 msgid "Error opening %s"
 msgstr "%s 열기 오류"
@@ -1017,15 +1097,27 @@ msgstr ""
 "서명 파일 %s를(을) 쓸 수 없습니다. 이 문제를 해결하기 위해 시스템 관리자에게 "
 "문의하시기 바랍니다."
 
+#, fuzzy, c-format
+msgid ""
+"Signature file, %s, could not be copied from temporary file, %s. Contact "
+"your system administrator to resolve this issue."
+msgstr ""
+"서명 파일 %s를(을) 열 수 없습니다. 이 문제를 해결하기 위해 시스템 관리자에게 "
+"문의하시기 바랍니다."
+
+#, fuzzy
 msgid ""
 "You need to have php4 installed with the multibyte string function enabled "
-"(using configure option --with-mbstring)."
+"(using configure option --enable-mbstring)."
 msgstr ""
 "멀티바이트 문자열 함수를 사용할 수 있도록 php4를 설치해야 합니다.(--with-"
 "mbstring  옵션을 추가해야 합니다.)"
 
 msgid "ERROR : No available imapstream."
 msgstr "오류 : imapstream이 없습니다."
+
+msgid "ERROR : Connection dropped by imap-server."
+msgstr ""
 
 msgid "ERROR : Could not complete request."
 msgstr "오류 : 요청이 중단되었습니다."
@@ -1041,6 +1133,13 @@ msgstr "오류 : 잘못된 응답."
 
 msgid "Server responded: "
 msgstr "서버 응답: "
+
+msgid "ERROR : Imap server closed the connection."
+msgstr ""
+
+#, fuzzy
+msgid "ERROR : Unknown imap response."
+msgstr "알 수 없는 응답"
 
 #, c-format
 msgid "Error connecting to IMAP server: %s."
@@ -1068,20 +1167,23 @@ msgid ""
 "folder."
 msgstr "현재 메일함에서 불필요한 메세지를 삭제하며, 휴지통에서 시작합니다."
 
-msgid "Unknown response from IMAP server: "
-msgstr "IMAP 서버로부터 알 수 없는 응답을 받았습니다:"
-
-msgid "Unknown message number in reply from server: "
-msgstr "알 수 없는 메세지 번호를 서버로부터 받았습니다:"
-
 msgid "(no subject)"
 msgstr "(제목 없음)"
 
 msgid "Unknown Sender"
 msgstr "알 수 없는 전송자"
 
-msgid "(unknown sender)"
-msgstr "(알 수 없는 전송자)"
+msgid "Unknown response from IMAP server: "
+msgstr "IMAP 서버로부터 알 수 없는 응답을 받았습니다:"
+
+msgid "The server couldn't find the message you requested."
+msgstr ""
+
+msgid ""
+"Most probably your message list was out of date and the message has been "
+"moved away or deleted (perhaps by another program accessing the same "
+"mailbox)."
+msgstr ""
 
 msgid "Unknown date"
 msgstr "알 수 없는 일자"
@@ -1314,6 +1416,9 @@ msgstr "페이지 기능 사용"
 msgid "Maximum Number of Pages to Show"
 msgstr "페이지 최대 갯수"
 
+msgid "Always Show Full Date"
+msgstr ""
+
 msgid "Message Display and Composition"
 msgstr "메세지 보기 및 작성"
 
@@ -1458,7 +1563,8 @@ msgstr "읽지않은 메세지만"
 msgid "Unseen and Total"
 msgstr "읽지않은 메세지와 전체메세지"
 
-msgid "Enable Collapsable Folders"
+#, fuzzy
+msgid "Enable Collapsible Folders"
 msgstr "편지함을 트리구조로 사용"
 
 msgid "Enable Cumulative Unread Message Notification"
@@ -1941,8 +2047,9 @@ msgstr "0 분."
 msgid "15 min."
 msgstr "15 분."
 
-msgid "35 min."
-msgstr "35 분."
+#, fuzzy
+msgid "30 min."
+msgstr "0 분."
 
 msgid "45 min."
 msgstr "45 분."
@@ -2032,52 +2139,6 @@ msgid "COMMERCIAL - RBL+ Dial-up entries."
 msgstr "상용 - RBL+ 전화 접속 목록"
 
 msgid ""
-"FREE - Osirusoft Relays - Osirusofts list of verified open relays. Seems to "
-"include servers used by abuse@uunet.net auto-replies too."
-msgstr "무료 - Osirusoft 중계 - abuse@uunet.net 자동 회신 사용 서버 포함"
-
-msgid "FREE - Osirusoft Dialups - Osirusofts Dialup Spam Source list."
-msgstr "무료 - Osirusoft 전화접속 - Osirusoft 전화접속 스팸 목록"
-
-msgid ""
-"FREE - Osirusoft Confirmed Spam Source - Sites that continually spam and "
-"have been manually added after multiple nominations. Use with caution. Seems "
-"to catch abuse auto-replies from some ISPs."
-msgstr "무료 - Osirusoft에서 스팸을 확인하였습니다."
-
-msgid ""
-"FREE - Osirusoft Smart Hosts - List of hosts that are secure but relay for "
-"other mail servers that are not secure."
-msgstr ""
-"무료 - Osirusoft 스마트 호스트 - 안전한 호스트이지만 다른 메일 서버로 중계 기"
-"능은 안전하지 않은 호스트 목록"
-
-msgid ""
-"FREE - Osirusoft Spamware Developers - It is believed that these are IP "
-"ranges of companies that are known to produce spam software. Seems to catch "
-"abuse auto-replies from some ISPs."
-msgstr ""
-"무료 - Osirusoft 스팸웨어 개발자 - 스팸 소프트웨어를 만드는 것으로 알려진 회"
-"사의 IP라고 생각됩니다. 어떤 ISP로부터 자동-회신 남용을 막는 것 같습니다."
-
-msgid ""
-"FREE - Osirusoft Unconfirmed OptIn Servers - List of listservers that opt "
-"users in without confirmation."
-msgstr ""
-"무료 - Osirusoft 확인되지 않은 OptIn 서버 - 확인과정없이 사용자가 opt 할 수 "
-"있는 서버 목록"
-
-msgid ""
-"FREE - Osirusoft Insecure formmail.cgi scripts - List of insecure formmail."
-"cgi scripts. (planned)."
-msgstr ""
-"무료 - Osirusoft 안전하지 않은 formmail.cgi 스크립트 -  안전하지 않은 "
-"formail.cgi 스크립트 목록(예정)"
-
-msgid "FREE - Osirusoft Open Proxy Servers - List of Open Proxy Servers."
-msgstr "무료 - Osirusoft 공개 프락시 서버 - 공개 프락시 서버 목록"
-
-msgid ""
 "FREE - ORDB was born when ORBS went off the air. It seems to have fewer "
 "false positives than ORBS did though."
 msgstr "무료 - ORDB는 ORBS이후에 생겨났습니다. ORBS보다 오류가 적어보입니다."
@@ -2115,7 +2176,6 @@ msgstr ""
 msgid "FREE - SPAMhaus - A list of well-known SPAM sources."
 msgstr "무료 - SPAMhaus - 잘 알려진 스팸 목록"
 
-#, c-format
 msgid ""
 "FREE, for now - SPAMCOP - An interesting solution that lists servers that "
 "have a very high spam to legit email ratio (85% or more)."
@@ -2219,9 +2279,6 @@ msgstr "헤더"
 
 msgid "Contains:"
 msgstr "내용물:"
-
-msgid "Down"
-msgstr "아래로"
 
 #, c-format
 msgid "If <b>%s</b> contains <b>%s</b> then move to <b>%s</b>"
@@ -2626,9 +2683,6 @@ msgstr "선택된 서버를 삭제하시겠습니까?"
 msgid "Confirm Delete"
 msgstr "삭제 확인"
 
-msgid "Mofify a Server"
-msgstr "서버 변경"
-
 msgid "Undefined Function"
 msgstr "설정되지 않은 기능"
 
@@ -2655,9 +2709,6 @@ msgstr ""
 "있게 설정합니다."
 
 msgid "Message Details"
-msgstr "상세 메세지"
-
-msgid "Message details"
 msgstr "상세 메세지"
 
 msgid "Close Window"
@@ -2718,11 +2769,10 @@ msgstr ""
 "효과가 없습니다. <b>최근 메세지만</b>기능을 사용하더라도  새로운 메일이 도착"
 "하면 항상 알려주게 됩니다."
 
+#, fuzzy
 msgid ""
 "Select from the list of <b>server files</b> the media file to play when new "
-"mail arrives.  Selecting <b>local media</b> will play the file specified in "
-"the <b>local media file</b> box to play from the local computer.  If no file "
-"is specified, the system will use a default from the server."
+"mail arrives.  If no file is specified, \"(none)\", no sound will be used."
 msgstr ""
 "<b>서버 파일 선택</b>은 새로운 메일이 도착했을 때 사용할 미디어 파일을 설정합"
 "니다. <b>내부 미디어</b>에서 컴퓨터상의 <b>내부 미디어 파일</b>을 명시할 수 "
@@ -2750,14 +2800,12 @@ msgstr "새로운 메일 도착시 팝업창 보여주기"
 msgid "Select server file:"
 msgstr "서버 파일 선택:"
 
-msgid "(local media)"
-msgstr "(내부 미디어)"
+#, fuzzy
+msgid "(none)"
+msgstr "완료"
 
 msgid "Try"
 msgstr "시도"
-
-msgid "Local Media File:"
-msgstr "내부 미디어 파일:"
 
 msgid "Current File:"
 msgstr "현재 파일:"
@@ -2794,6 +2842,10 @@ msgstr "%s 새 메세지"
 
 msgid "Test Sound"
 msgstr "사운드 테스트"
+
+#, fuzzy
+msgid "No sound specified"
+msgstr "서버를 지정하지 않았습니다."
 
 msgid "Loading the sound..."
 msgstr "사운드 불러오기..."
@@ -3197,29 +3249,41 @@ msgstr "번역 설정 저장"
 msgid "Your server options are as follows:"
 msgstr "현재 서버의 환경 설정은 아래와 같습니다:"
 
-msgid ""
-"13 language pairs, maximum of 1000 characters translated, powered by Systran"
+#, fuzzy
+msgid "Maximum of 1000 characters translated, powered by Systran"
 msgstr "13개의 언어쌍 사용. 최대 1000개의 문자허용. Systran 사용"
 
-msgid ""
-"10 language pairs, maximum of 25 kilobytes translated, powered by Systran"
-msgstr "10개의 언어쌍 사용, 최대 25 kb 까지 번역. Systran 사용"
+#, c-format
+msgid "Number of supported language pairs: %s"
+msgstr ""
 
-msgid "12 language pairs, no known limits, powered by Systran"
+#, fuzzy
+msgid "No known limits, powered by Systran"
 msgstr "12개의 언어쌍을 사용. 제한사항 없음. Systran 번역기 사용"
 
-msgid ""
-"767 language pairs, no known limits, powered by Translation Experts's "
-"InterTran"
+#, fuzzy
+msgid "No known limits, powered by Translation Experts's InterTran"
 msgstr ""
 "767개의 언어쌍을 사용합니다. 제한사항은 없습니다. Transaltion Experts의 "
 "InterTran 번역기를 사용합니다."
 
-msgid ""
-"8 language pairs, no known limits, powered by GPLTrans (free, open source)"
+#, c-format
+msgid "Number of supported languages: %s"
+msgstr ""
+
+#, fuzzy
+msgid "No known limits, powered by GPLTrans (free, open source)"
 msgstr ""
 "8개의 언어쌍을 사용합니다. 제한사항은 없습니다. GTPTrans(프리, 오픈소스)의 도"
 "움을 받습니다."
+
+#, fuzzy
+msgid "Hellenic translations, no known limits, powered by Systran"
+msgstr "12개의 언어쌍을 사용. 제한사항 없음. Systran 번역기 사용"
+
+#, fuzzy
+msgid "Russian translations, maximum of 500 characters translated"
+msgstr "13개의 언어쌍 사용. 최대 1000개의 문자허용. Systran 사용"
 
 msgid ""
 "You also decide if you want the translation box displayed, and where it will "
@@ -3268,6 +3332,10 @@ msgstr "%s을(를) %s(으)로 "
 msgid "English"
 msgstr "영어"
 
+#, fuzzy
+msgid "Chinese"
+msgstr "변경"
+
 msgid "French"
 msgstr "프랑스어"
 
@@ -3276,6 +3344,13 @@ msgstr "독일어"
 
 msgid "Italian"
 msgstr "이탈리아어"
+
+msgid "Japanese"
+msgstr "일본어"
+
+#, fuzzy
+msgid "Korean"
+msgstr "노르웨이"
 
 msgid "Portuguese"
 msgstr "포르투갈어"
@@ -3322,9 +3397,6 @@ msgstr "헝가리어"
 msgid "Icelandic"
 msgstr "아이슬란드어"
 
-msgid "Japanese"
-msgstr "일본어"
-
 msgid "Latin American Spanish"
 msgstr "라틴 아메리카 스페인어"
 
@@ -3358,8 +3430,99 @@ msgstr "인도네시아"
 msgid "Latin"
 msgstr "라틴어"
 
+#, fuzzy
+msgid "to English"
+msgstr "영어"
+
+#, fuzzy
+msgid "from English"
+msgstr "영어"
+
+#, fuzzy
+msgid "Interface language"
+msgstr "기본 언어"
+
+#, fuzzy
+msgid "Translation direction"
+msgstr "번역 설정"
+
 msgid "Delivery error report"
 msgstr "전송 오류 보고"
 
 msgid "Undelivered Message Headers"
 msgstr "전송할 수 없는 메세지 헤더"
+
+#~ msgid "Not available"
+#~ msgstr "사용할 수 없습니다."
+
+#~ msgid "Unknown message number in reply from server: "
+#~ msgstr "알 수 없는 메세지 번호를 서버로부터 받았습니다:"
+
+#~ msgid "(unknown sender)"
+#~ msgstr "(알 수 없는 전송자)"
+
+#~ msgid "35 min."
+#~ msgstr "35 분."
+
+#~ msgid ""
+#~ "FREE - Osirusoft Relays - Osirusofts list of verified open relays. Seems "
+#~ "to include servers used by abuse@uunet.net auto-replies too."
+#~ msgstr "무료 - Osirusoft 중계 - abuse@uunet.net 자동 회신 사용 서버 포함"
+
+#~ msgid "FREE - Osirusoft Dialups - Osirusofts Dialup Spam Source list."
+#~ msgstr "무료 - Osirusoft 전화접속 - Osirusoft 전화접속 스팸 목록"
+
+#~ msgid ""
+#~ "FREE - Osirusoft Confirmed Spam Source - Sites that continually spam and "
+#~ "have been manually added after multiple nominations. Use with caution. "
+#~ "Seems to catch abuse auto-replies from some ISPs."
+#~ msgstr "무료 - Osirusoft에서 스팸을 확인하였습니다."
+
+#~ msgid ""
+#~ "FREE - Osirusoft Smart Hosts - List of hosts that are secure but relay "
+#~ "for other mail servers that are not secure."
+#~ msgstr ""
+#~ "무료 - Osirusoft 스마트 호스트 - 안전한 호스트이지만 다른 메일 서버로 중"
+#~ "계 기능은 안전하지 않은 호스트 목록"
+
+#~ msgid ""
+#~ "FREE - Osirusoft Spamware Developers - It is believed that these are IP "
+#~ "ranges of companies that are known to produce spam software. Seems to "
+#~ "catch abuse auto-replies from some ISPs."
+#~ msgstr ""
+#~ "무료 - Osirusoft 스팸웨어 개발자 - 스팸 소프트웨어를 만드는 것으로 알려진 "
+#~ "회사의 IP라고 생각됩니다. 어떤 ISP로부터 자동-회신 남용을 막는 것 같습니"
+#~ "다."
+
+#~ msgid ""
+#~ "FREE - Osirusoft Unconfirmed OptIn Servers - List of listservers that opt "
+#~ "users in without confirmation."
+#~ msgstr ""
+#~ "무료 - Osirusoft 확인되지 않은 OptIn 서버 - 확인과정없이 사용자가 opt 할 "
+#~ "수 있는 서버 목록"
+
+#~ msgid ""
+#~ "FREE - Osirusoft Insecure formmail.cgi scripts - List of insecure "
+#~ "formmail.cgi scripts. (planned)."
+#~ msgstr ""
+#~ "무료 - Osirusoft 안전하지 않은 formmail.cgi 스크립트 -  안전하지 않은 "
+#~ "formail.cgi 스크립트 목록(예정)"
+
+#~ msgid "FREE - Osirusoft Open Proxy Servers - List of Open Proxy Servers."
+#~ msgstr "무료 - Osirusoft 공개 프락시 서버 - 공개 프락시 서버 목록"
+
+#~ msgid "Mofify a Server"
+#~ msgstr "서버 변경"
+
+#~ msgid "Message details"
+#~ msgstr "상세 메세지"
+
+#~ msgid "(local media)"
+#~ msgstr "(내부 미디어)"
+
+#~ msgid "Local Media File:"
+#~ msgstr "내부 미디어 파일:"
+
+#~ msgid ""
+#~ "10 language pairs, maximum of 25 kilobytes translated, powered by Systran"
+#~ msgstr "10개의 언어쌍 사용, 최대 25 kb 까지 번역. Systran 사용"
