@@ -48,6 +48,8 @@ Version 1.4.4 - CVS
   - Fixed IMAP errors when using mail_fetch plugin to auto-fetch on login.
   - Fixed folder list in Create Folders list for Courier (properly skip INBOX).
   - Corrected poor English in a string (#775978).
+  - Corrected bug in SquirrelSpell that'd put the corrected spelling on the wrong
+    line if quoting inline, or below the original email (#906217).
 
 Version 1.4.3a - 2 June 2004
 ----------------------------
