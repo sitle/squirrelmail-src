@@ -6,8 +6,9 @@
  */
 
 define('PATH','/path/to/wtfw/');       // '/' terminated absolute path
-define('FILENAME', '/wtfw/index.php'); // filename used as base document
-                                       // -- ABSOLUTE page reference as seen by webserver
+define('URI_PATH','/wtfw/');
+define('FILENAME', URI_PATH . 'index.php'); // filename used as base document
+                                            // -- ABSOLUTE page reference as seen by webserver
 
 /* database settings */
 define('DATABASE', 'mysql'); // database type (MySQL is the only DB module at the moment)
