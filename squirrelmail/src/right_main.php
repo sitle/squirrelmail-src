@@ -35,7 +35,6 @@ require_once('../functions/display_messages.php');
  *                                                         *
  ***********************************************************/
 
-
 /* lets get the global vars we may need */
 $username = $_SESSION['username'];
 $key  = $_COOKIE['key'];
@@ -63,6 +62,9 @@ if (isset($_GET['checkall'])) {
 }
 if (isset($_GET['set_thread'])) {
     $set_thread = $_GET['set_thread'];
+}
+if (isset($_SESSION['lastTargetMailbox'])) {
+    $lastTargetMailbox =$_SESSION['lastTargetMailbox'];
 }
 
 /* end of get globals */
