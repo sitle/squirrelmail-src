@@ -27,6 +27,8 @@ Each of these steps is covered in detail below.
 - Run config/conf.pl from the command line. Use the D option to load
   predefined options for specific IMAP servers, and edit at least the
   Server Settings and General Options (datadir).
+- Browse to http://www.example.com/yourwebmaillocation/src/configtest.php
+  to test your configuration for common errors.
 - Browse to http://www.example.com/yourwebmaillocation/ to log in.
 
 
@@ -154,6 +156,11 @@ c. Setting up SquirrelMail
 
   You can also copy the config/config_default.php file to config/config.php
   and edit that manually.
+
+  After you've created a configuration, you can use your webbrowser to
+  browse to http://your-squirrelmail-location/src/configtest.php.
+  This will perform some basic checks on your config to make sure
+  everything works like it should.
 
 
 4. RUNNING SQUIRRELMAIL

@@ -565,7 +565,9 @@ if( $colapse['Group8'] == 'off' ) {
   }
 }
 echo "<tr bgcolor=\"$color[5]\"><th colspan=2><input value=\"" .
-     _("Change Settings") . "\" type=submit></th></tr>" ,
+     _("Change Settings") . '" type="submit"><br />'.
+     '<a href="'.SM_PATH.'src/configtest.php" target="_blank">' . _("Test Configuration") .
+     "</a></th></tr>\n" .
      '</table></td></tr></table></form>';
 
 /*

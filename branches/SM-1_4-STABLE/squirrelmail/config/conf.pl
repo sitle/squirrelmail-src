@@ -762,6 +762,13 @@ while ( ( $command ne "q" ) && ( $command ne "Q" ) ) {
     }
 }
 
+# we exit here
+print "\nExiting conf.pl.\n".
+    "You might want to test your configuration by browsing to\n".
+    "http://your-squirrelmail-location/src/configtest.php\n".
+    "Happy SquirrelMailing!\n\n";
+
+
 ####################################################################################
 
 # org_name
