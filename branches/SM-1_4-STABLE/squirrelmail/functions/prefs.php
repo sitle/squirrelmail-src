@@ -8,9 +8,11 @@
  *
  * This contains functions for manipulating user preferences
  *
- * $Id$
+ * @version $Id$
+ * @package squirrelmail
  */
 
+/** Include global.php */
 require_once(SM_PATH . 'functions/global.php');
 
 sqgetGlobalVar('prefs_cache', $prefs_cache, SQ_SESSION );
@@ -39,6 +41,16 @@ if (isset($prefs_backend) && file_exists(SM_PATH . $prefs_backend)) {
 
 /* Hashing functions */
 
+/**
+ * Given a username and datafilename, this will return the path to the
+ * hashed location of that datafile.
+ *
+ * @param string username the username of the current user
+ * @param string dir the squirrelmail datadir
+ * @param string datafile the name of the file to open
+ * @param bool hash_seach default true
+ * @return string the hashed location of datafile
+ */
 function getHashedFile($username, $dir, $datafile, $hash_search = true) {
     global $dir_hash_level;
 
@@ -53,7 +65,7 @@ function getHashedFile($username, $dir, $datafile, $hash_search = true) {
     /* First, get and make sure the full hash directory exists. */
     $real_hash_dir = getHashedDir($username, $dir, $hash_dirs);
 
-    /* Set the value of our real data file. */
+    /* Set the value of our real data file, after we've removed unwanted characters. */
     $datafile = str_replace('/', '_', $datafile);
     $result = "$real_hash_dir/$datafile";
 
@@ -80,6 +92,15 @@ function getHashedFile($username, $dir, $datafile, $hash_search = true) {
     return ($result);
 }
 
+/**
+ * Helper function for getHashedFile, given a username returns the hashed
+ * dir for that username.
+ *
+ * @param string username the username of the current user
+ * @param string dir the squirrelmail datadir
+ * @param string hash_dirs default ''
+ * @return the path to the hash dir for username
+ */
 function getHashedDir($username, $dir, $hash_dirs = '') {
     global $dir_hash_level;
 
@@ -111,6 +132,12 @@ function getHashedDir($username, $dir, $hash_dirs = '') {
     return ($real_hash_dir);
 }
 
+/**
+ * Helper function for getHashDir which does the actual hash calculation.
+ *
+ * @param string username the username to calculate the hash dir for
+ * @return array a list of hash dirs for this username
+ */
 function computeHashDirs($username) {
     /* Compute the hash for this user and extract the hash directories. */
     $hash = base_convert(crc32($username), 10, 16);
