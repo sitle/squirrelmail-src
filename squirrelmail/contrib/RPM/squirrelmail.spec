@@ -17,12 +17,13 @@ Version: 1.2.8
 Release: 0.2
 License: GPL
 URL: http://www.squirrelmail.org/
+Vendor: squirrelmail.org
 Group: Applications/Internet
 Source: %{name}-%{version}.tar.gz
 #Source1: squirrelmail-splash.png
 BuildRoot: %{_tmppath}/%{name}-%{version}-root
 BuildArch: noarch
-Requires: %{webserver}, php >= 4.0.4, perl, tmpwatch >= 2.8
+Requires: %{webserver}, php >= 4.0.4, perl, tmpwatch >= 2.8, aspell
 Requires: /usr/sbin/sendmail
 Prereq: %{webserver}, perl
 BuildPrereq: perl
@@ -164,17 +165,18 @@ install -m 644 contrib/RPM/squirrelmail.conf \
 %{_sysconfdir}/cron.daily/squirrelmail.cron
 
 %changelog
-* Thu Sep 12 2002 Konstantin Riabitsev <icon@duke.edu> 1.2.8-1
+* Sat Sep 14 2002 Konstantin Riabitsev <icon@duke.edu> 1.2.8-1
 - adopted RH's spec file so we don't duplicate effort. 
-  Nice job, Red Hat! ;)
-- Quoted out rh'ized splash screen, since I'll probably be chastized if
-  I leave it in.
+- Quoted out rh'ized splash screen.
 - Adding fallbacks for building rhl7 version as well with the same 
   specfile. Makes the spec file not as clean, but hey.
 - remove workarounds for #68669 (rh bugzilla), since 1.2.8 works with
   register_globals = Off.
 - Hardwiring localhost into the default config file. Makes sense.
 - No more such file MIRRORS.
+- Adding aspell as one of the req's, since squirrelspell is enabled by
+  default
+- Added Vendor: line to distinguish ourselves from RH.
 
 * Tue Aug  6 2002 Preston Brown <pbrown@redhat.com> 1.2.7-4
 - replacement splash screen.
