@@ -12,8 +12,6 @@
     **/
    include ("../src/validate.php");
 
-   session_start();
-
    /*
    *  Incoming values:
    *     $mailbox - selected mailbox from the form

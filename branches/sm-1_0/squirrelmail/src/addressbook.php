@@ -11,8 +11,6 @@
     **/
    include ("../src/validate.php");
 
-   session_start();
-
    include('../functions/strings.php');
    include('../config/config.php');
    include('../functions/array.php');
@@ -20,8 +18,6 @@
    include('../functions/page_header.php');
    include('../functions/display_messages.php');
    include('../functions/addressbook.php');
-
-   is_logged_in();
 
    // Sort array by the key "name"
    function alistcmp($a,$b) {   

@@ -11,8 +11,6 @@
     **/
    include ("../src/validate.php");
 
-   session_start();
-
    include("../functions/strings.php");
    include("../config/config.php");
    include("../functions/page_header.php");
@@ -24,7 +22,6 @@
 
    include("../src/load_prefs.php");
    displayPageHeader($color, "None");
-   is_logged_in(); 
 
 	$helpdir[0] = "basic.hlp";
 	$helpdir[1] = "main_folder.hlp";

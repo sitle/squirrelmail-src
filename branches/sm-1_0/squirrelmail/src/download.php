@@ -12,17 +12,19 @@
     **/
    define ("download_php", true);
 
-   include ("../src/validate.php");
+   include("../src/validate.php");
    include("../functions/strings.php");
    include("../config/config.php");
    include("../functions/imap.php");
    include("../functions/mime.php");
    include("../functions/date.php");
    include("../functions/i18n.php");
+
    include("../src/load_prefs.php");
 
    header("Pragma: ");
    header("Cache-Control: cache");
+
 
    function viewText($color, $body, $id, $entid, $mailbox, $type1, $wrap_at) {
       global $where, $what, $charset;

@@ -17,15 +17,12 @@
       define ('load_prefs_php', true); 
    }
 
-   session_start();
    $theme = array();
    include("../src/validate.php");
    include("../config/config.php");
    include("../functions/prefs.php");
    include("../functions/plugin.php");
    include("../functions/auth.php");
-      
-   is_logged_in();
       
    checkForPrefs($data_dir, $username);
 

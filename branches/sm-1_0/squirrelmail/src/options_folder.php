@@ -11,8 +11,6 @@
     **/
    include ("../src/validate.php");
 
-   session_start();
-
    include('../functions/strings.php');
    include('../config/config.php');
    include('../functions/page_header.php');
