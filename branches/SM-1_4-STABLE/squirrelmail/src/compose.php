@@ -129,12 +129,13 @@ function replyAllString($header) {
    $url_replytoallcc = '';
    foreach( $url_replytoall_ar as $email => $personal) {
       if ($personal) {
-         $url_replytoallcc .= ", \"$personal\" <$email>";
+         $url_replytoallcc .= ", $personal <$email>";
       } else {
          $url_replytoallcc .= ', '. $email;    
       }
    }
    $url_replytoallcc = substr($url_replytoallcc,2);
+   
    return $url_replytoallcc;
 }
 
@@ -1285,7 +1286,9 @@ function ClearAttachments($composeMessage) {
 /* parse values like 8M and 2k into bytes */
 function getByteSize($ini_size) {
 
-    if(!$ini_size) return FALSE;
+    if(!$ini_size) {
+        return FALSE;
+    }
 
     $ini_size = trim($ini_size);
 
@@ -1306,7 +1309,7 @@ function getByteSize($ini_size) {
 
         return ($bytesize * (int)substr($ini_size, 0, -1));
     }
-	
+        
     return $ini_size;
 }
 
