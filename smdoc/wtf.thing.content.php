@@ -24,8 +24,13 @@ wtf.thing.content.php
 Content Create
 */
 
-$HARDTHING[-20631383]['func'] = 'content';
-$HARDTHING[-20631383]['title'] = 'Create Page';
+/*
+ * Modified by SquirrelMail Development Team
+ * $Id$
+ */
+$HARDTHING[CONTENTCLASSID]['func'] = 'content';
+$HARDTHING[CONTENTCLASSID]['title'] = 'Create Page';
+$HARDTHING[CONTENTCLASSID]['lastmodified'] = '$Date$';
 
 function content() {
 	track('content');
