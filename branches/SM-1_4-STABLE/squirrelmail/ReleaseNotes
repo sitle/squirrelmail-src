@@ -47,7 +47,8 @@ This release addresses a remotely exploitable cross site scripting
 vulnerability in the decodeHeader() function, known as CAN-2004-1036.
 
 Also fixed is an issue in prefs.php which allowed for insecure file
-inclusion. The problem was introduced in version 1.4.3.
+inclusion. The problem was introduced in version 1.4.3 and is known
+as CAN-2005-0075.
 
 
 Major updates
