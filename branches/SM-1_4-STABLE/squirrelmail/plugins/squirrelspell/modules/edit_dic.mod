@@ -81,8 +81,9 @@ if (!$words){
 	    || $j==intval(sizeof($words_ary)/3*2)){
 	  $msg .= "</td><td valign=\"top\">\n";
 	}
-	$msg .= "<input type=\"checkbox\" name=\"words_ary[]\" "
-	   . "value=\"$words_ary[$j]\"> $words_ary[$j]<br>";
+	$msg .= '<input type="checkbox" name="words_ary[]" '
+	   . 'value="' . htmlspecialchars($words_ary[$j]) . '"> '
+	   . htmlspecialchars($words_ary[$j])."<br>\n";
       }
       $msg .= '</td></tr></table></td></tr>'
 	 . "<tr bgcolor=\"$color[0]\" align=\"center\"><td>"
@@ -108,6 +109,7 @@ if (!$words){
  * Local variables:
  * mode: php
  * End:
+ * vim: syntax=php
  */
 
 ?>
