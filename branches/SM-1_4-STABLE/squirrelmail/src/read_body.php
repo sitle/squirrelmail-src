@@ -493,7 +493,7 @@ function formatEnvheader($mailbox, $passed_id, $passed_ent_id, $message,
 
 function formatMenubar($mailbox, $passed_id, $passed_ent_id, $message, $mbx_response) {
     global $base_uri, $draft_folder, $where, $what, $color, $sort,
-           $startMessage, $compose_new_win, $PHP_SELF, $save_as_draft,
+           $startMessage, $PHP_SELF, $save_as_draft,
            $enable_forward_as_attachment;
 
     $topbar_delimiter = '&nbsp;|&nbsp;';
@@ -532,13 +532,6 @@ function formatMenubar($mailbox, $passed_id, $passed_ent_id, $message, $mbx_resp
                 '&amp;startMessage=' . $startMessage .
                 (isset($passed_ent_id)?'&amp;passed_ent_id='.urlencode($passed_ent_id):'');
 
-    if ($compose_new_win == '1') {
-        $link_open  = '<a href="javascript:void(0)" onclick="comp_in_new(\'';
-        $link_close = '\')">';
-    } else {
-        $link_open  = '<a href="';
-        $link_close = '">';
-    }
     if (($mailbox == $draft_folder) && ($save_as_draft)) {
         $comp_alt_uri = $comp_uri . '&amp;smaction=draft';
         $comp_alt_string = _("Resume Draft");
