@@ -568,31 +568,6 @@ class smdoc_user extends foowd_user
   }
 
   /**
-   * Returns true if user has permission
-   *
-   * @param str className Name of the class the method belongs to.
-   * @param str methodName Name of the method.
-   * @param string type class/object method
-   * @param object objectReference to current object being checked (may be NULL)
-   * @return bool TRUE if user has access to method
-   */
-  function hasPermission($className, $methodName, $type, &$object)
-  {
-    if ( isset($object) ) {
-      $creatorid =  $object->creatorid;
-      if ( isset($object->permissions[$methodName]) )
-        $methodPermission = $object->permissions[$methodName];
-    } else {
-      $creatorid = NULL;
-    }
-
-    if ( !isset($methodPermission) )
-      $methodPermission = getPermission($className, $methodName, $type);
-
-    return $this->inGroup($methodPermission, $creatorid);
-  }
-
-  /**
    * Log the user in.
    *
    * @class smdoc_user

@@ -165,7 +165,7 @@
                      $methodName == 'raw' )
                     continue;
 
-                if ($user->hasPermission($className,$methodName,'object',$object))
+                if ($foowd->hasPermission($className,$methodName,'object',$object))
                 {
                     if ( $notfirst ) echo ' | ';
                     $notfirst = 1;

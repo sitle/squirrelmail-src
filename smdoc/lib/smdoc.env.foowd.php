@@ -50,7 +50,7 @@ class smdoc extends foowd
      * Initialize Database connection
      */
     require_once(SM_PATH . 'smdoc.env.database.php');
-    $this->database = new smdoc_db_mysql($this);
+    $this->database = new smdoc_db($this);
 
     /*
      * Initialize template
@@ -134,6 +134,31 @@ class smdoc extends foowd
       return $items;
     }
     return $usergroups;
+  }
+
+  /**
+   * Returns true if user has permission
+   *
+   * @param str className Name of the class the method belongs to.
+   * @param str methodName Name of the method.
+   * @param string type class/object method
+   * @param object objectReference to current object being checked (may be NULL)
+   * @return bool TRUE if user has access to method
+   */
+  function hasPermission($className, $methodName, $type, &$object)
+  {
+    if ( isset($object) && is_object($object) ) {
+      $creatorid =  $object->creatorid;
+      if ( isset($object->permissions[$methodName]) )
+        $methodPermission = $object->permissions[$methodName];
+    } else {
+      $creatorid = NULL;
+    }
+
+    if ( !isset($methodPermission) )
+      $methodPermission = getPermission($className, $methodName, $type);
+
+    return $this->user->inGroup($methodPermission, $creatorid);
   }
 
   /**

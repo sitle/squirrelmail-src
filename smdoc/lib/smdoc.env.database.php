@@ -9,249 +9,321 @@
  * $Id$
  */
 
+require_once 'DB.php';
 include_once(SM_PATH.'env.database.php');
-include_once(SM_PATH.'db.mysql.php');
+include_once(SM_PATH.'smdoc.env.cache.php');
 
-class smdoc_db_mysql extends foowd_db_mysql 
+/**
+ * SquirrelMail modification to foowd db.
+ * Uses PEAR to manage backends,
+ * provides some customized function
+ */
+class smdoc_db extends foowd_db 
 {
   /**
-   * Name of function used to create table when 
-   * table does not already exist.
-   *
+   * Current table information
+   * 
    * @var str
    */
-  var $makeTableFunction;
+  var $default_table;
+
 
   /**
    * Constructs a new database object.
    *
    * @param object foowd The foowd environment object.
    */
-  function smdoc_db_mysql(&$foowd) 
+  function smdoc_db(&$foowd) 
   {
-    parent::foowd_db_mysql($foowd);
-    $this->makeTableFunction = NULL;
+    $foowd->track('smdoc_db->constructor');
+    
+    $db = $foowd->config_settings['database'];
+
+    // Ensure required values exist
+    if ( !isset($db['db_persistent']) ) $db['db_persistent'] = TRUE;
+    if ( !isset($db['db_host']) )       $db['db_host'] = 'localhost'; 
+    if ( !isset($db['db_user']) )       $db['db_user'] = 'smdoc';
+    if ( !isset($db['db_password']) )   $db['db_password'] = 'smdoc'; 
+    if ( !isset($db['db_database']) )   $db['db_database'] = 'smdocs';
+    if ( !isset($db['db_table']) )      $db['db_table'] = 'tblObject';
+    if ( !isset($db['db_type']) )       $db['db_type'] = 'mysql';
+ 
+    // create PEAR DB DSN: phptype(syntax)://user:pass@protocol(proto_opts)/database
+    $dsn = $db['db_type'] . '://'
+                . $db['db_user'] . ':' . $db['db_password']
+                . '@' . $db['db_host']
+                . '/' . $db['db_database'];
+
+    // connect to DB
+    $this->conn = DB::connect($dsn, $db['db_persistent']);
+
+    // With DB::isError you can differentiate between an error or a valid connection.
+    if ( DB::isError($this->conn) )
+    {
+      trigger_error('Could not create DB connection: '
+                      . $dsn . "<br />\n"
+                      . htmlspecialchars($this->conn->getMessage()), 
+                    E_USER_ERROR);
+    } 
+    
+    // Make it so that fetch gets back associative arrays
+    $this->conn->setFetchMode(DB_FETCHMODE_ASSOC);
+ 
+    $this->foowd = &$foowd;
+    $this->objects = new smdoc_obj_cache();
+    $this->default_table = $db['db_table'];
   }
 
   /**
-   * Add workspaceid index to index array if one does not exist at the top level.
+   * Destructs the storage object.
+   */
+  function destroy() 
+  {
+    $this->foowd->track('smdoc_db->destructor');
+
+    // clean up object cache
+    $this->objects->destroy();   
+ 
+    // close connection
+    $this->conn->disconnect();
+
+    $this->foowd->track(); 
+  }
+
+  /**
+   * Execute query
+   *
+   * @abstract
+   * @access protected
+   * @param str query The query to execute
+   * @return resource The resulting query resource
+   */
+  function &query($query) 
+  {
+    $this->foowd->debug('sql', $query);
+
+    $result = $this->conn->query($query);
+
+    // Always check that $result is not an error
+    if (DB::isError($result)) {
+      $this->foowd->debug('msg', $result->getMessage());
+      return FALSE;
+    }
+    return $result;
+  }
+
+  /**
+   * Escape a string for use in SQL string
+   *
+   * @param str str String to escape
+   * @return str The escaped string
+   */
+  function escape($str) {
+    return $this->conn->quote($str);
+  }
+
+  /**
+   * Return an array of results given a query resource
+   *
+   * @param resource result Result set to get results from
+   * @return array The results as an associative array
+   */
+  function fetch($result) {
+    // fetchRow() returns the row, NULL on no more data or a  
+    // DB_Error, when an error occurs.
+    $row = $result->fetchRow();
+
+    // Always check that $result is not an error
+    if (DB::isError($row)) {
+      $this->foowd->debug('msg', $row->getMessage());
+      return FALSE;
+    }
+    
+    return $row;
+  }
+
+  /**
+   * Return the number of rows in a result set
+   *
+   * @param resource result Result set to get results from
+   * @return int The number of rows in the result set
+   */
+  function num_rows($result) {
+    return $result->numRows();
+  }
+
+  /**
+   * See if a query was successful
+   *
+   * @param resource result The query result to check
+   * @return bool If the query affected any rows
+   */
+  function query_success($result) {
+    return $this->conn->affectedRows() > 0;
+  }
+
+  /**
+   * release storage used by result set
+   * @param resource result The result set to free
+   * @return bool Returns TRUE on success, FALSE on failure.
+   */
+  function free_result($result) {
+    return $result->free();
+  }
+
+  /**
+   * Add an object reference to the loaded objects array.
    *
    * @access protected
    * @param array indexes Array of indexes and values to find object by
+   * @param object object Reference of the object to add
    */
-  function setWorkspace(&$indexes) 
-  {
-//show($indexes);
-    $found = FALSE;
-    if (is_array($indexes)) 
-    {
-      foreach($indexes as $index) 
-      {
-        if (is_array($index) && isset($index['index']) && $index['index'] == 'workspaceid') 
-        {
-          $found = TRUE;
-        }
-      }
-    }
-    if (!$found) {
-      $workspaceid['index'] = 'workspaceid';
-      $workspaceid['op'] = '=';
-      if (isset($this->foowd->user->workspaceid)) {
-        $workspaceid['value'] = $this->foowd->user->workspaceid;
-      } else {
-        $workspaceid['value'] = 0;
-      }
-      $indexes[] = $workspaceid;
-    }
+  function addToLoadedReference(&$object) {
+    $this->objects->addToLoadedReference($object);
   }
 
   /**
-   * Set database table.
+   * Check if an object is referenced in the object reference array.
    *
-   * Switch the table used for data storage and retrieval in this environment
-   * object.
-   *
-   * @param mixed table Array containing old table name and create function.
-   * @return mixed Array containing old table name and create function.
+   * @access protected
+   * @param array indexes Array of indexes and values to find object by
+   * @param str source The source to fetch the object from
    */
-  function setTable($table) {
-        $oldTable['name'] = $this->table;
-        $oldTable['function'] = $this->makeTableFunction;
-        $this->table = $table['name'];
-        $this->makeTableFunction = $table['function'];
-    return $oldTable;
+  function &checkLoadedReference($indexes, $source) {
+    return $this->objects->checkLoadedReference($indexes, $source);
   }
-
-  /**
-   * Make a Foowd database table.
-   *
-   * When a database query fails due to a non-existant database table, this
-   * method is envoked to create the missing table and execute the SQL
-   * statement again.
-   *
-   * @param object foowd The foowd environment object.
-   * @param str SQLString The original SQL string that failed to execute due to missing database table.
-   * @return mixed The resulting database query resource or FALSE on failure.
-   */
-  function makeTable(&$foowd, $SQLString) {
-        if ( isset($this->makeTableFunction) )
-            return call_user_func($this->makeTableFunction, $foowd, $SQLString);
-       
-        return parent::makeTable($foowd, $SQLString);
-    }
 
   /**
    * Get a list of objects.
    *
-   * @param array indexes Array of indexes and values to find object by
+   * @param array indexes Array of indexes to be returned
    * @param str source The source to fetch the object from
-   * @param array order The index to sort the list on
-   * @param bool reverse Display the list in reverse order
-   * @param int number The length of the list to return
+   * @param array where Array of indexes and values to find object by
+   * @param mixed order The index to sort the list on, or array of indices
+   * @param mixed limit The length of the list to return, or a LIMIT string
    * @param bool returnObjects Return the actual objects not just the object meta data
    * @param bool setWorkspace get specific workspace id (or any workspace ok)
    * @return array An array of object meta data or of objects.
    */   
   function &getObjList($indexes = NULL, $source = NULL, 
-                       $order = NULL, $number = NULL, 
-                       $returnObjects = FALSE, $setWorkspace = TRUE) {
-    $this->foowd->track('foowd_db->getObjList');
+                       $where = NULL, $order = NULL, $limit = NULL, 
+                       $returnObjects = FALSE, $setWorkspace = TRUE) 
+  {
+    $this->foowd->track('smdoc_db->getObjList');
 
-// set source
-    if ( $source == NULL ) {
-      $source = $this->foowd->config_settings['database']['db_table'];
-    }
+    if ( $source == NULL )
+      $source = $this->default_table;
 
-// set workspace
     if ( $setWorkspace )
-      $this->setWorkspace($indexes);
+      $this->setWorkspace($where);
 
-// build where
-    $where = '';
-    if ( $indexes != NULL )
-      $where = ' WHERE'.$this->buildWhere($indexes);
-    
-// build order
-    if (isset($order)) {
-      if (is_array($order)) {
-        $order = ' ORDER BY '.join(', ', $order);
-      } else {
-        $order = ' ORDER BY '.$order;
-      }
-    } else {
+    if ( $where == NULL )
+      $where = '';
+    else
+      $where = ' WHERE' . $this->buildWhere($where);
+   
+    if ( $order == NULL ) 
       $order = '';
-    }
+    elseif ( is_array($order) ) 
+      $order = ' ORDER BY '.join(', ', $order);
+    else 
+      $order = ' ORDER BY '.$order;
 
-// build limit
-    if (isset($number)) {
-      $limit = ' LIMIT ';
-      if (isset($offset)) {
-        $limit .= $offset.', ';
-      }
-      $limit .= $number;
-    } else {
+    // build limit, if a string, leave alone (properly formed LIMIT string)
+    if ( $limit == NULL  ) 
       $limit = '';
+    elseif ( !is_string($limit) ) 
+    {
+      $limit = ' LIMIT ' . $limit;
     }
 
-    $select = 'SELECT '.$source.'.objectid AS objectid, '
-                       .$source.'.classid AS classid, '
-                       .$source.'.version AS version, '
-                       .$source.'.workspaceid AS workspaceid, '
-                       .$source.'.title AS title, '
-                       .$source.'.object AS object FROM '.$source.$where.$order.$limit;
+    $select = 'SELECT ';
+    if ( $indexes == NULL ) 
+    {
+      $select .= $source.'.objectid AS objectid, '
+                .$source.'.classid AS classid, '
+                .$source.'.version AS version, '
+                .$source.'.workspaceid AS workspaceid, '
+                .$source.'.title AS title, '
+                .$source.'.object AS object';
+    } 
+    else 
+    {
+      $first = 1;
+      foreach ( $indexes as $index ) 
+      {
+        if ( !$first )
+          $select .= ', ';
+        else
+          $first = 0;
 
-    if ($query = $this->query($select)) {
-      if ($this->num_rows($query) > 0) {
-        $return = array();
-        while ($record = $this->fetch($query)) {
-          if (!isset($return[$record['objectid']]) || $record['version'] > $return[$record['objectid']]['version']) {
-            if ($returnObjects) {
-              $return[$record['objectid']] = $this->foowd->unserialize($record['object']. $record['classid']);
-              $return[$record['objectid']]->foowd = &$this->foowd; // create Foowd reference
-              $return[$record['objectid']]->source = $source;
-              $this->addToLoadedReference($return[$record['objectid']]);
-            } else {
-              $return[$record['objectid']] = array(
-                'objectid' => $record['objectid'],
-                'classid' => $record['classid'],
-                'version' => $record['version'],
-                'workspaceid' => $record['workspaceid'],
-                'title' => $record['title']
-              );
-            }
-          }
-        }
-        $this->foowd->track(); 
-        return $return;
-      } else {
-        $this->foowd->track(); 
-        return FALSE;
+        $select .= $index;
       }
-    } else {
+    }
+    $select .= ' FROM '.$source.$where.$order.$limit;
+
+    $this->foowd->debug('sql', $select);
+    $records =& $this->conn->getAll($select);
+
+    if (DB::isError($records)) 
+    {
       $this->foowd->track(); 
       return FALSE;
     }
 
+    $return = array();
+        
+    foreach ($records as $record) 
+    {
+      if ( !isset($return[$record['objectid']]) || 
+           $this->checkRecordVersion($record['version'], $return[$record['objectid']]['version']) ) 
+      {
+        if ($returnObjects) 
+        {
+          $return[$record['objectid']] = $this->unserializeObject($source, $record) ;
+          $return[$record['objectid']]->foowd = &$this->foowd; // create Foowd reference
+          $return[$record['objectid']]->source = $source;
+          $this->addToLoadedReference($return[$record['objectid']]);
+        } 
+        else 
+          $return[$record['objectid']] = $record;
+      }
+    }
+    
+    $this->foowd->track(); 
+    return $return;
   }
 
   /**
-   * Build where clause from indexes array.
-   *
-   * @access protected
-   * @param array indexes Array of indexes and values to find object by
-   * @param str conjuction Operand to use to join the elements of the clause
-   * @return str The generated where clause.
+   * Highly specialized function to compare the versions of 
+   * two records. If no version field is found, return TRUE for transparency.
+   * Otherwise return true if the first record is greater than the second.
+   * @access private
+   * @param array record1 Retrieved associative array created from query row.
+   * @param array record2 Retrieved associative array created from query row.
+   * @return TRUE if version is defined in both records, and version1 > version2
    */
-  function buildWhere($indexes, $conjunction = 'AND') {
-    if ( isset($index['raw_where']) )
-        return $index['raw_where'];
-
-    $where = '';
- 
-    if ( $conjunction != 'AND' )
-      $conjunction = ' OR';
-
-    foreach ($indexes as $key => $index) {
-      if ( !isset($index) )  
-        continue;
-
-      $where .= $conjunction;
-       
-      // standard 'classid' => ERROR_CLASS_ID
-      if (!is_array($index)) {
-        $where .= ' '.$key.' = ';
-        $where .= is_numeric($index) ? $index : '\''.$index.'\'';
-        $where .= ' ';        
-      } else {
-        // dealing with an array as the $index
-        if ( !isset($index['index']) ) {
-          $where .= $this->buildWhere($index, $key);
-        } else {
-          if ( !isset($index['value']) ) {
-            trigger_error('No value given for index "'.$index['index'].'".');
-            $index['value'] = '';
-          }
-
-          if ( !isset($index['op']) )
-            $index['op'] = '=';
-          elseif ( $index['op'] == '!=' )
-            $index['op'] = '<>';
-
-          if ( !isset($index['value']) ) {
-            trigger_error('No value given for index "'.$index['index'].'".');
-            $value = '';
-          } else {
-            $value = $index['value'];
-          }
-
-          $where .= ' '.$index['index'].' '.$index['op'].' ';
-          $where .= is_numeric($value) ? $value : '\''.$value.'\'';
-          $where .= ' ';        
-        }
-      }
-    }    
-
-    return ' ('.substr($where, 3).') ';
+  function checkRecordVersion($record1, $record2) 
+  {
+    if ( !isset($record1['version']) || !isset($record2['version']) )
+      return TRUE;
+    
+    return $record1['version'] > $record2['version'];
   }
 
+  /**
+   * Highly specialized function to lookup the classid of
+   * an object to be deserialized based on either the 'classid' field,
+   * or it's source. 
+   * @access private
+   * @param str source The source to fetch the object from
+   * @param array record Retrieved associative array created from query row. 
+   */
+  function unserializeObject($source, $record) 
+  {
+    if ( isset($record['object']) )
+      return $this->foowd->unserialize($record['object']);
+    
+    return new foowd_object();
+  }
 }

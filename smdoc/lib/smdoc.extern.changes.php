@@ -21,9 +21,13 @@ function sqmchanges(&$foowd, &$result) {
     $foowd->track('sqmchanges');
 
     // get 20 most recent changes
-    $objects =& $foowd->getObjList(NULL, NULL, 
+    // No special indices, use default source, no special where clause,
+    // order by updated descending, limit to 20 rows,
+    // return the full objects, and don't restrict to certain workspace
+    $objects =& $foowd->getObjList(NULL, NULL, NULL,
                                    array('updated DESC'), 20, 
                                    TRUE, FALSE);
+
     $list_objects = array();
 
     $i = 0;
