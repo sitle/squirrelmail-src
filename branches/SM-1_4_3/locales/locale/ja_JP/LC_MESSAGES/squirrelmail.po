@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: squirrelmail 1.4.3cvs\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2003-09-20 11:04+0300\n"
-"PO-Revision-Date: 2004-04-23 11:33+0900\n"
+"POT-Creation-Date: 2004-04-21 09:34+0300\n"
+"PO-Revision-Date: 2004-04-27 22:58+0900\n"
 "Last-Translator: Masato HIGASHIYAMA <masato@yamaai-tech.com>\n"
 "Language-Team: Japanese  <squirrelmail-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -69,7 +69,7 @@ msgstr "%s の検索結果は有りませんでした"
 msgid "Your search failed with the following error(s)"
 msgstr "次のエラーで検索に失敗しました"
 
-msgid "No persons matching your search was found"
+msgid "No persons matching your search were found"
 msgstr "該当する人はいませんでした"
 
 msgid "Return"
@@ -85,7 +85,7 @@ msgid "Must be unique"
 msgstr "重複しないようにしてください"
 
 msgid "E-mail address"
-msgstr "E-mailアドレス"
+msgstr ""
 
 msgid "Last name"
 msgstr "姓"
@@ -217,8 +217,9 @@ msgstr "ドラフトに保存"
 msgid "You have not filled in the \"To:\" field."
 msgstr "宛先が入力されていません"
 
-msgid "Draft folder"
-msgstr "Draft フォルダ"
+#, c-format
+msgid "Error: Draft folder %s does not exist."
+msgstr "エラー: 草稿用フォルダ %s は存在しません。"
 
 msgid "Server replied: "
 msgstr "サーバの応答:"
@@ -370,9 +371,6 @@ msgstr "破棄"
 
 msgid "Last Refresh"
 msgstr "前リフレッシュ"
-
-msgid "refresh unseen/total info"
-msgstr "未読/合計の更新"
 
 msgid "Save folder tree"
 msgstr "フォルダツリーの保存"
@@ -863,25 +861,25 @@ msgid "Business Card"
 msgstr "名刺"
 
 msgid "Sunday"
-msgstr "日"
+msgstr "日曜日"
 
 msgid "Monday"
-msgstr "月"
+msgstr "月曜日"
 
 msgid "Tuesday"
-msgstr "火"
+msgstr "火曜日"
 
 msgid "Wednesday"
-msgstr "水"
+msgstr "水曜日"
 
 msgid "Thursday"
-msgstr "木"
+msgstr "木曜日"
 
 msgid "Friday"
-msgstr "金"
+msgstr "金曜日"
 
 msgid "Saturday"
-msgstr "土"
+msgstr "土曜日"
 
 msgid "Sun"
 msgstr "日"
@@ -1040,7 +1038,7 @@ msgstr ""
 msgid ""
 "Preference file, %s, could not be copied from temporary file, %s. Contact "
 "your system administrator to resolve this issue."
-msgstr "設定ファイル %s を一時ファイル %s からコピーできません。このエラーとともに管理者に連絡を取ってください。"
+msgstr "設定ファイル %s を一時ファイル %s からコピーできませんでした。このエラーとともに管理者に連絡を取ってください。"
 
 #, c-format
 msgid "Error opening %s"
@@ -1079,7 +1077,7 @@ msgstr ""
 msgid ""
 "Signature file, %s, could not be copied from temporary file, %s. Contact "
 "your system administrator to resolve this issue."
-msgstr "署名ファイル %s が一時ファイル %s からコピーできません。このエラーとともに管理者に連絡を取ってください。"
+msgstr "署名ファイル %s が一時ファイル %s からコピーできませんでした。このエラーとともに管理者に連絡を取ってください。"
 
 msgid ""
 "You need to have php4 installed with the multibyte string function enabled "
@@ -1090,7 +1088,7 @@ msgid "ERROR : No available imapstream."
 msgstr "エラー: imapstreamが利用できません"
 
 msgid "ERROR : Connection dropped by imap-server."
-msgstr "エラー: 接続がImapサーバによって切断されました。"
+msgstr "imapサーバが接続を切断しました。"
 
 msgid "ERROR : Could not complete request."
 msgstr "エラー: 要求を完了できませんでした。"
@@ -1108,10 +1106,10 @@ msgid "Server responded: "
 msgstr "サーバの応答:"
 
 msgid "ERROR : Imap server closed the connection."
-msgstr "エラー: Imapサーバが接続を閉じました。"
+msgstr "エラー: imapサーバが接続を閉じました。"
 
 msgid "ERROR : Unknown imap response."
-msgstr "エラー: 不明なImapの応答"
+msgstr "エラー: imapの不明な応答"
 
 #, c-format
 msgid "Error connecting to IMAP server: %s."
@@ -1265,6 +1263,9 @@ msgstr "ダウンロード"
 msgid "sec_remove_eng.png"
 msgstr "sec_remove_ja_JP.png"
 
+msgid "This external link will open in a new window"
+msgstr "この外部リンクは新しいウィンドウで開きます。"
+
 #, c-format
 msgid "Option Type '%s' Not Found"
 msgstr "オプションタイプ '%s' が見付かりません。"
@@ -1388,7 +1389,7 @@ msgid "Maximum Number of Pages to Show"
 msgstr "ページ数の表示の最大"
 
 msgid "Always Show Full Date"
-msgstr "常に完全な日付を表示する"
+msgstr "常に完全な日付を表示"
 
 msgid "Message Display and Composition"
 msgstr "メッセージ表示と構成"
@@ -1396,8 +1397,11 @@ msgstr "メッセージ表示と構成"
 msgid "Wrap Incoming Text At"
 msgstr "一行の長さ"
 
-msgid "Size of Editor Window"
-msgstr "編集ウインドウのサイズ"
+msgid "Width of Editor Window"
+msgstr "編集ウインドウの幅"
+
+msgid "Height of Editor Window"
+msgstr "編集ウインドウの高さ"
 
 msgid "Location of Buttons when Composing"
 msgstr "アドレス帳ボタンの位置"
@@ -1455,6 +1459,18 @@ msgstr "メール作成ウインドウの高さ<"
 
 msgid "Append Signature before Reply/Forward Text"
 msgstr "署名を返信／転送する文書の前に入れる"
+
+msgid "Cursor Position when Replying"
+msgstr "返信時のカーソル位置"
+
+msgid "To: field"
+msgstr "宛先フィールド"
+
+msgid "Focus in body"
+msgstr "本文にフォーカス"
+
+msgid "Select body"
+msgstr "本文を選択"
 
 msgid "Enable Sort by of Receive Date"
 msgstr "受信日付でソートを有効"
@@ -1543,6 +1559,24 @@ msgstr "未読メッセージの通知を有効"
 msgid "Show Clock on Folders Panel"
 msgstr "フォルダパネルに時計を表示"
 
+msgid "International date and time"
+msgstr "国際的な日時表記"
+
+msgid "American date and time"
+msgstr "アメリカ式の日時表記"
+
+msgid "European date and time"
+msgstr "ヨーロッパ式の日時表記"
+
+msgid "Show weekday and time"
+msgstr "曜日と時間の表示"
+
+msgid "Show time with seconds"
+msgstr "時間(秒)の表示"
+
+msgid "Show time"
+msgstr "時間の表示"
+
 msgid "No Clock"
 msgstr "表示しない"
 
@@ -1616,6 +1650,9 @@ msgid "AUTHOR Said"
 msgstr ""
 
 msgid "Quote Who XML"
+msgstr ""
+
+msgid "On DATE, AUTHOR Said"
 msgstr ""
 
 msgid "User-Defined"
@@ -1756,9 +1793,6 @@ msgstr ""
 msgid "Invert Time"
 msgstr "サーバのタイムゾーンの符号を反転する"
 
-msgid "Use Confirmation Flags"
-msgstr "確認フラグを使用する"
-
 msgid "Folders Defaults"
 msgstr "フォルダーデフォルト"
 
@@ -1801,7 +1835,7 @@ msgstr "デフォルトの未読タイプ"
 msgid "Auto Create Special Folders"
 msgstr "特別なフォルダの自動作成"
 
-msgid "Default Javascript Adrressbook"
+msgid "Default Javascript Addressbook"
 msgstr "Javascriptアドレス帳をデフォルト"
 
 msgid "Auto delete folders"
@@ -1935,11 +1969,79 @@ msgid ""
 "remotely."
 msgstr "このモジュールはSquirrelMailの管理者用のリモート管理用です。"
 
+msgid "Submit a Bug Report"
+msgstr "バグレポートを報告"
+
+msgid ""
+"Before you send your bug report, please make sure to check this checklist "
+"for any common problems."
+msgstr "あなたがバグ・レポートを送る前に、同じ問題がないかこのチェックリストをチェックするようにしてください。"
+
+msgid ""
+"Make sure that you are running the most recent copy of <a href=\"http://www."
+"squirrelmail.org/\">SquirrelMail</a>."
+msgstr "最新版は<a href=\\\"http://www.squirrelmail.org/\\\">SquirrelMail</a>にあります。"
+
+#, c-format
+msgid "You are currently using version %s."
+msgstr "あなたが使用中のバージョンは %s です。"
+
+msgid ""
+"Check to see if your bug is already listed in the <a href=\"http://"
+"sourceforge.net/bugs/?group_id=311\">Bug List</a> on SourceForge. If it is, "
+"we already know about it and are trying to fix it."
+msgstr "同じバグが既に報告されていないか、SourceForgeのサイトの<a href=\\\"http://sourceforge.net/bugs/?group_id=311\\\">バグリスト</a>で確認してください。既に報告済みか修正されているかもしれません。"
+
+msgid ""
+"Try to make sure that you can repeat it. If the bug happens sporatically, "
+"try to document what you did when it happened. If it always occurs when you "
+"view a specific message, keep that message around so maybe we can see it."
+msgstr "再現できるかどうか確認してください。再現できるならば再現する手順を書いてください。また、特定のメッセージが表示されるのであればそのメッセージをそのまま報告してください。報告は＊英語＊で行ってください。"
+
+msgid ""
+"If there were warnings displayed above, try to resolve them yourself. Read "
+"the guides in the <tt>doc/</tt> directory where SquirrelMail was installed."
+msgstr "もし警告(Warning)が表示されるのなら、SquirrelMailがインストールされたディレクトリ以下の<tt>doc</tt>に 文書があるのでそれで解決できます。"
+
+msgid ""
+"Pressing the button below will start a mail message to the developers of "
+"SquirrelMail that will contain a lot of information about your system, your "
+"browser, how SquirrelMail is set up, and your IMAP server. It will also "
+"prompt you for information. Just fill out the sections at the top. If you "
+"like, you can scroll down in the message to see what else is being sent."
+msgstr "ボタンを下で押すことで、あなたのシステム、あなたのブラウザ、SquirrelMailがセットアップされている方法とあなたのIMAPサーバについてたくさんの情報をSquirrelMailの開発者にメールで送ります。最初のセクションに記入してください。あなたは何が他に送り出されているかについて見るためにスクロールダウンして確認することが出来ます。"
+
+msgid ""
+"Please make sure to fill out as much information as you possibly can to give "
+"everyone a good chance of finding and removing the bug. Submitting your bug "
+"like this will not have it automatically added to the bug list on "
+"SourceForge, but someone who gets your message may add it for you."
+msgstr "バグを見つけ出して修正するのに十分な情報が記入されているか再度確認してください。あなたがバグを報告することでSourceForge上のバグリストには自動的に追加されません。しかし、メッセージを受け取った開発者はバグリストに追加するかもしれません。"
+
+msgid "This bug involves"
+msgstr "このバグの内容は"
+
+msgid "the general program"
+msgstr "プログラム一般"
+
+msgid "a specific plugin"
+msgstr "プラグインに関する事"
+
+msgid "Start Bug Report Form"
+msgstr "バグレポートフォームを開始する"
+
+msgid "Bug"
+msgstr "バグ"
+
 msgid "Bug Reports:"
 msgstr "バグレポート:"
 
 msgid "Show button in toolbar"
 msgstr "ツールバーにボタンを表示"
+
+#, c-format
+msgid "Could not write calendar file %s"
+msgstr "カレンダーファイル %s に書き込めません。"
 
 msgid "TODAY"
 msgstr "今日"
@@ -2151,7 +2253,7 @@ msgstr "無償 - SPAMhaus - 良く知られるスパム源のリストです。"
 
 msgid ""
 "FREE, for now - SPAMCOP - An interesting solution that lists servers that "
-"have a very high spam to legit email ratio (85% or more)."
+"have a very high spam to legit email ratio (85 percent or more)."
 msgstr ""
 
 msgid "FREE - dev.null.dk - I don't have any detailed info on this list."
@@ -2162,14 +2264,14 @@ msgstr ""
 "無償 - visi.com - リレー防止リストです。非常に協力的なオープンリレーのリスト"
 "です。"
 
-msgid "FREE - 2mbit.com Open Relays - Another list of Open Relays."
-msgstr "無償 - 2mbit.com Open Relays - もう一つのオープンリレーのリストです。"
+msgid "FREE - ahbl.org Open Relays - Another list of Open Relays."
+msgstr "無償 - ahbl.com Open Relays - もう一つのオープンリレーのリストです。"
 
-msgid "FREE - 2mbit.com SPAM Source - List of Direct SPAM Sources."
-msgstr "無償 -  2mbit.com SPAM Source - 直接のスパム源のリストです。"
+msgid "FREE - ahbl.org SPAM Source - List of Direct SPAM Sources."
+msgstr "無償 -  ahbl.com SPAM Source - 直接のスパム源のリストです。"
 
-msgid "FREE - 2mbit.com SPAM ISPs - List of SPAM-friendly ISPs."
-msgstr "無償 - 2mbit.com SPAM ISPs - スパムにあまいISPのリストです。"
+msgid "FREE - ahbl.org SPAM ISPs - List of SPAM-friendly ISPs."
+msgstr "無償 - ahbl.com SPAM ISPs - スパムにあまいISPのリストです。"
 
 msgid ""
 "FREE - Leadmon DUL - Another list of Dial-up or otherwise dynamically "
@@ -2751,11 +2853,7 @@ msgstr ""
 msgid ""
 "Select from the list of <b>server files</b> the media file to play when new "
 "mail arrives.  If no file is specified, \"(none)\", no sound will be used."
-msgstr ""
-"新着メールがある時にならすファイルを、「サーバ・ファイル」のリストから選んで"
-"ください。「ローカルファイル」は、ローカルコンピュータのファイルを再生しま"
-"す。「ローカルファイルの選択」ボックスでファイルを指定します。ファイルが指定"
-"されていなければ、サーバのデフォルトを使います。"
+msgstr "新着メールがある時にならすファイルを、「サーバ・ファイル」のリストから選んでください。ファイルを指定しない場合は\\\"(指定しない)\\\"を選択するとサウンドは使用されません。"
 
 msgid "Enable Media Playing"
 msgstr "音の再生を有効"
@@ -2779,7 +2877,7 @@ msgid "Select server file:"
 msgstr "サーバファイルの選択:"
 
 msgid "(none)"
-msgstr "(なし)"
+msgstr "(指定しない)"
 
 msgid "Try"
 msgstr "試す"
@@ -2793,8 +2891,16 @@ msgstr "新着メール"
 msgid "SquirrelMail Notice:"
 msgstr "SquirrelMail 通知:"
 
-msgid "You have new mail!"
-msgstr "新しいメールがあります！"
+msgid "You have"
+msgstr "現在の"
+
+#, c-format
+msgid "%s new message"
+msgstr "新着メッセージ %s 通"
+
+#, c-format
+msgid "%s new messages"
+msgstr "新着メッセージ %s 通"
 
 msgid "NewMail Options"
 msgstr "新着メールオプション"
@@ -2844,6 +2950,129 @@ msgstr "年"
 msgid "Base Sent Folder"
 msgstr "基本Sentフォルダ"
 
+msgid "Enabled"
+msgstr "有効"
+
+msgid "Disable it"
+msgstr "無効にする"
+
+msgid "Enable it"
+msgstr "有効にする"
+
+msgid "Spam reporting"
+msgstr "スパムレポート"
+
+msgid "SpamCop link is:"
+msgstr "SpamCopへのリンク:"
+
+msgid "Delete spam when reported:"
+msgstr "報告したspamレポートを削除"
+
+msgid "Only works with email-based reporting"
+msgstr "emailベースでの報告のみ動作します"
+
+msgid "Spam Reporting Method:"
+msgstr "スパムのレポートの方法:"
+
+msgid "Quick email-based reporting"
+msgstr "簡単なemailベースの報告"
+
+msgid "Thorough email-based reporting"
+msgstr "emailベースの報告"
+
+msgid "Web-based form"
+msgstr "Webベースのフォーム"
+
+msgid "Save Method"
+msgstr "方法を保存"
+
+msgid "Your SpamCop authorization code:"
+msgstr "あなたのSpamCopの認証コード:"
+
+msgid "see below"
+msgstr "以下を参照"
+
+msgid "Save ID"
+msgstr "IDを保存"
+
+msgid ""
+"SpamCop is a free service that greatly assists in finding the true source of "
+"the spam and helps in letting the proper people know about the abuse."
+msgstr ""
+
+msgid ""
+"To use it, you must get a SpamCop authorization code. There is a free <a "
+"href=\"http://spamcop.net/anonsignup.shtml\">sign up page</a> so you can use "
+"SpamCop."
+msgstr ""
+
+msgid ""
+"<b>Before you sign up, be warned:</b> Some users have reported that the "
+"email addresses used with SpamCop find their way onto spam lists. To be "
+"safe, you can just create an email forwarding account and have all SpamCop "
+"reports get sent to there. Also, if it gets flooded with spam, you can then "
+"just delete that account with no worries about losing your real email "
+"address. Just go create an email forwarder somewhere (<a href=\"http://www."
+"yahoo.com/\">Yahoo!</a> has a <a href=\"http://dir.yahoo.com/"
+"Business_and_Economy/Business_to_Business/Communications_and_Networking/"
+"Internet_and_World_Wide_Web/Email_Providers/Forwarding_Services/"
+"Free_Forwarding/\">list of places</a>) so that messages from system "
+"administrators and whatnot can be sent to you."
+msgstr ""
+
+msgid ""
+"Once you have signed up with SpamCop and have received your SpamCop "
+"authorization code, you need to enable this plugin -- just click the link "
+"above. Once enabled, you go about your normal life. If you encounter a spam "
+"message in your mailbox, just view it. On the right-hand side, near the top "
+"of where the message is displayed, you will see a link to report this "
+"message as spam. Clicking on it brings you to a confirmation page. "
+"Confirming that you want the spam report sent will do different things with "
+"different reporting methods."
+msgstr ""
+
+msgid "Email-based Reporting"
+msgstr ""
+
+msgid ""
+"Pressing the button forwards the message to the SpamCop service and will "
+"optionally delete the message. From there, you just need to go to your INBOX "
+"and quite soon a message should appear from SpamCop. (It gets sent to the "
+"account you registered with, so make sure that your mail forwarder works!) "
+"Open it up, click on the appropriate link at the top, and a new browser "
+"window will open."
+msgstr ""
+
+msgid ""
+"Currently, the quick reporting just forwards the request to the thorough "
+"reporting. Also, it appears that this is for members (non-free) only. "
+"Hopefully this will change soon."
+msgstr ""
+
+msgid "Web-based Reporting"
+msgstr ""
+
+msgid ""
+"When you press the button on the confirmation page, this will pop open a new "
+"browser window and the SpamCop service should appear inside. The message "
+"will not be deleted (working on that part), but you won't need to wait for a "
+"response email to start the spam reporting."
+msgstr ""
+
+msgid ""
+"The SpamCop service will display information as it finds it, so scroll down "
+"until you see a form button. It might pause a little while it is looking up "
+"information, so be a little patient. Read what it says, and submit the spam. "
+"Close the browser window. Press Cancel or click on the appropriate mail "
+"folder to see messages and/or delete the spam."
+msgstr ""
+
+msgid ""
+"<b>For more information</b> about SpamCop, it's services, spam in general, "
+"and many related topics, try reading through SpamCop's <a href=\"http://"
+"spamcop.net/help.shtml\">Help and Feedback</a> section."
+msgstr ""
+
 msgid "Report as Spam"
 msgstr "スパムとして報告"
 
@@ -2857,6 +3086,19 @@ msgid ""
 msgstr ""
 "頼んでもいない電子メールと戦うことを手伝ってください。SpamCopは、スパムメール"
 "を読んで、苦情を送るアドレスを決定します。速く、高性能で簡単に使えます。"
+
+msgid ""
+"Sending this spam report will give you back a reply with URLs that you can "
+"click on to properly report this spam message to the proper authorities. "
+"This is a free service.  By pressing the \"Send Spam Report\" button, you "
+"agree to follow SpamCop's rules/terms of service/etc."
+msgstr ""
+
+msgid "Cancel / Done"
+msgstr ""
+
+msgid "Send Spam Report"
+msgstr "スパムのレポートを送る"
 
 msgid "SpellChecker Options"
 msgstr "スペルチェッカーのオプション"
@@ -3251,10 +3493,10 @@ msgid "No known limits, powered by GPLTrans (free, open source)"
 msgstr "制限不明。GPLTrans提供(free, open source)"
 
 msgid "Hellenic translations, no known limits, powered by Systran"
-msgstr "ギリシャ語翻訳 制限不明。Systran提供。"
+msgstr "ギリシャ語の翻訳。制限不明。Systran提供。"
 
 msgid "Russian translations, maximum of 500 characters translated"
-msgstr "ロシア語翻訳、最大500文字までの制限。"
+msgstr "ロシア語の翻訳。最大500文字までの制限。"
 
 msgid ""
 "You also decide if you want the translation box displayed, and where it will "
@@ -3416,4 +3658,3 @@ msgstr "配送エラーレポート"
 
 msgid "Undelivered Message Headers"
 msgstr "配送不能メッセージヘッダ"
-
