@@ -1,65 +1,73 @@
 <?php
 
-define('PATH', '');                      // application path
 require('config.foowd.php');             // include config and Foowd functions
 
-/*
- * Object Details 
- * -------------------------------------------------------------
- * Retrieve information about object from query string.
- * -------------------------------------------------------------
- */
+// init Foowd
+$foowd = new smdoc(NULL, NULL, $DEFAULT_GROUPS);
+
+// get object details
+include_once($foowd->path.'/input.querystring.php');
+
 $objectName = new input_querystring('object', REGEX_TITLE);
-$objectid   = new input_querystring('objectid', '/^[0-9-]*$/');
+$objectid = new input_querystring('objectid', '/^[0-9-]*$/', DEFAULT_OBJECTID);
 $version    = new input_querystring('version', '/^[0-9]*$/');
 $className  = new input_querystring('class', REGEX_TITLE);
-$classid    = new input_querystring('classid', '/^[0-9-]*$/');
-$method     = new input_querystring('method', NULL, NULL);
+$classid = new input_querystring('classid', '/^[0-9-]*$/', NULL);
+$method = new input_querystring('method', NULL, 'view');
 
 // convert object name into id (if name given rather than id)
-if (!isset($objectid->value) && isset($objectName->value)) {
+if (isset($objectName->value)) {
 	$objectid->set(crc32(strtolower($objectName->value)));
 }
+
 // convert class name into id (if name given rather than id)
-if (!isset($classid->value) && isset($className->value)) {
+if (isset($className->value)) {
 	$classid->set(crc32(strtolower($className->value)));
+} elseif (!isset($objectid->value)) {
+	$objectid->set(DEFAULT_OBJECTID);
 }
 
-// init Foowd
-$foowd = new foowd(NULL, NULL, $DEFAULT_GROUPS);
+$objectid = $objectid->value;
+$classid = $classid->value;
+$version = $version->value;
+$method = $method->value;
 
-// set callback environment, you need to set this to the environment object you want
-// to use if you unserialize an instance of a dynamic class.
-$FOOWD_LOADCLASSCALLBACK = &$foowd;
-
-// fetch object / call methods
-if (isset($className->value) && !isset($objectid->value) && !isset($objectName->value)) { // call class method
-	if ($methodError = $foowd->callClassMethod($className->value, $method->value)) {
-		trigger_error($methodError, E_USER_NOTICE);
-	}
-} else { // fetch object
-
-	$cacheName = getCacheName($objectid->value, $classid->value, $method->value); // check cache settings
-	if (!readCache($cacheName)) { // if couldn't read cache go fetch object
-		if ($object = $foowd->fetchObject(
-			array(
-				'objectid' => $objectid->value,
-				'version' => $version->value,
-				'classid' => $classid->value
-			)
-		)) {
-			if ($methodError = $foowd->callMethod($object, $method->value, $cacheName)) { // call object method
-				trigger_error($methodError, E_USER_NOTICE);
-			}
+if (isset($objectid)) { // fetch object and call object method
+	if ($object = $foowd->fetchObject($objectid, $classid, $version, 'view')) {
+		if (is_object($object)) {
+			$className = getClassName($object->classid);
 		} else {
-			trigger_error('Object not found', E_USER_NOTICE);
+			$className = getClassName($classid);
 		}
+		$t = $foowd->method($object, $method);
+        switch($method) {
+          default: 
+            $t['showurl'] = true;
+            break;
+          case 'delete':
+            $t['showurl'] = false;
+            break;
+        }
+		if (is_array($t)) {
+			include($foowd->getTemplateName($className, 'object_'.$method));
+		} else {
+			trigger_error($t, E_USER_NOTICE);
+		}
+	} else {
+		trigger_error('Object not found', E_USER_NOTICE);
 	}
-
+} else { // call class method
+	$className = getClassName($classid);
+	$t = $foowd->method($className, 'create');
+    $t['showurl'] = false;
+	if (is_array($t)) {
+		include($foowd->getTemplateName($className, 'class_'.$method));
+	} else {
+		trigger_error($t, E_USER_NOTICE);
+	}
 }
 
 // destroy Foowd
 $foowd->destroy();
-
 
 ?>

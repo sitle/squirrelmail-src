@@ -4,25 +4,31 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1;" />
 <meta name="Description" content="Documentation, Plugins, Downloads for SquirrelMail"/>
 <meta name="Author" content="SquirrelMail Project Team"/>
-<title>SquirrelMail - <?php echo $template['PAGE_TITLE']; ?></title>
+<title>SquirrelMail - <?php echo $t['title']; ?></title>
 <link rel="stylesheet" type="text/css" href="style.css" />
 </head>
 <?php
-  $foowd =& $template['FOOWD_OBJECT'];
-  $user =& $template['CURRENT_USER'];
-  $object =& $template['CURRENT_OBJECT'];
-
-  $status = new smdoc_input_form('status', NULL, NULL, NULL);
-  if ( !$status->getFormValue('ok', $ok) && isset($template['STATUS_OK']) )
-    $ok = $template['STATUS_OK'];
-  if (  !$status->getFormValue('error', $error) && isset($template['STATUS_ERROR']) )
-    $error = $template['STATUS_ERROR'];
+  $user =& $foowd->user;
+  if ( isset($t['success']) )
+    $ok = $t['success'];
+  elseif ( isset($t['failure']) )
+    $error = $t['failure'];
+  else {
+    $status = new smdoc_input_form('status', NULL, NULL, NULL);
+    $status->getFormValue('ok', $ok);
+    $status->getFormValue('error', $error);
+  }
 
   foowd_translation::initialize($foowd, TRUE);
   $flag_links = foowd_translation::getLink($foowd);
   $loc_url = getURI(array());
+  $obj_url = getURI(array('objectid' => $object->objectid, 'classid' => $object->classid));
+  $user_url = $loc_url . '?class='.USER_CLASS_NAME;
 ?>
 <body>
+<a href="#content"><img src="empty.png" alt="skip to content" border="0" /></a>
+<?php if ($foowd->debug) { ?>| <a href="#debug"><img src="empty.png" alt="skip to debug" border="0" /></a><?php } ?>
+
 <!-- begin page title -->
 <table id="pagetitle" width="100%" cellspacing="0" cellpadding="0">
   <tr>
@@ -40,7 +46,7 @@
             if ( $lang_url != NULL )
               $lang_url .=  ' | ';
           }
-          $user_url = $loc_url . '?class='.USER_CLASS_NAME;
+
           if ( isset($user->objectid) )
           {
             // If an objectid is set, we're logged in.
@@ -61,10 +67,10 @@
   <tr>
     <td class="titleblock" valign="bottom">
       <?php
-          if ( isset($template['PAGE_TITLE_URL']) )
-            echo $template['PAGE_TITLE_URL'];
+          if ( $t['showurl'] )
+            echo '<a href="', $obj_url.'">'. $t['title'].'</a> ';
           else
-            echo $template['PAGE_TITLE'];
+            echo $t['title'];
       ?>
     </td>
   </tr>
@@ -101,24 +107,26 @@
   <div id="status"><span class="error"><?php echo $error; ?></span></div>
 <?php } ?>
 <!-- begin content -->
+<a name="content"><img src="empty.png" alt="------------- begin ----------------------------------------" border="0" /></a>
 <div id="content">
 <?php
-  if ( isset($template['BODY']) )
-    echo $template['BODY'];
+  if ( isset($t['body']) )
+    echo $t['body'];
   else
   {
 ?>
 <p>This object did not provide a BODY to the template.</p>
 <?php
-    if ( isset($template['CURRENT_OBJECT']) )
+    if ( isset($object) )
     {
+      echo '<pre>Method: ' . $method  . '</pre>';
       echo '<div class="debug_output_heading">', _("Contents of Current Object"), '</div>';
-      show($template['CURRENT_OBJECT']);
+      show($object);
     }
   }
 ?>
 </div>
-<!-- end content -->
+<a name="footer"><img src="empty.png" alt="------------- end ------------------------------------------" border="0" /></a>
 <div id="editmenu">
   <?php
     if ( isset($object) &&                               // is object
@@ -178,6 +186,12 @@
   Powered by <a href="http://foowd.peej.co.uk/">
   Framework for Object Oriented Web Development</a>
   (v <?php echo VERSION ?>).
-</div><?php if ( isset($template['DEBUG']) ) { echo $template['DEBUG']; }  ?>
+</div>
+<?php
+if ($foowd->debug) { // display debug data
+?><a name="debug"><img src="empty.png" alt="------------- debug ------------------------------------------" border="0" /></a><?php
+    $foowd->debug->display($foowd);
+}
+?>
 </body>
 </html>

@@ -17,10 +17,8 @@ $EXTERNAL_RESOURCES[SQMCHANGES_CLASS_ID]['title'] = 'Recent Changes';
  * shown based on the group, and includes categorized links for document
  * creation closer to other documents of the same type.
  */
-function sqmchanges(&$foowd) {
+function sqmchanges(&$foowd, &$result) {
     $foowd->track('sqmchanges');
-
-    $changes = new smdoc_display('recent_changes.tpl');
 
     $objects = $foowd->getObjects(NULL,
                                   NULL,
@@ -56,7 +54,8 @@ function sqmchanges(&$foowd) {
       $list_objects[$i]['desc'] = getClassDescription($object->classid);
     }
 
-    $changes->assign_by_ref('CHANGE_LIST', $list_objects);
-    $foowd->tpl->assign('BODY', $changes);
+    $result['changeList'] =& $list_objects;
+    $result['body_template'] = 'smdoc_external.changes.php';
+    $foowd->track();
 }
 ?>

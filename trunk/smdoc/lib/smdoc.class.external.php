@@ -33,6 +33,7 @@ setConst('EXTERNAL_CLASS_ID', META_SMDOC_EXTERNAL_CLASS_ID);
 
 class smdoc_external extends foowd_object {
 
+    var $url;
 /*** Constructor ***/
 
 	function smdoc_external(
@@ -164,19 +165,18 @@ class smdoc_external extends foowd_object {
         $foowd->track('smdoc_external->method_view');
 
         $methodName = $EXTERNAL_RESOURCES[$this->objectid]['func'];
-        $foowd->tpl->assign('PAGE_TITLE', $this->title);
-        $foowd->tpl->assign('PAGE_TITLE_URL', 
-                            '<a href="'.$this->url.'">'.$this->title.'</a>');
-        $foowd->tpl->assign_by_ref('CURRENT_OBJECT', $this);
-
+        
+        $result['title'] = $this->title;
+        
         if (function_exists($methodName)) {
-            $methodName(&$foowd);
+            $methodName(&$foowd, &$result);
         } else {
             triggerError('Request for unknown method, '. $methodName 
                          . ', on external resource, ' . $this->title
                          . ' (object id = ' . $this->objectid . ')' );
         }
         $foowd->track();
+        return $result;
     }
 
     function method_history(&$foowd) {

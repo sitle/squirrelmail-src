@@ -12,6 +12,16 @@
 /* Class descriptor */
 setClassMeta('smdoc_error', 'Error Display');
 
+/** METHOD PERMISSIONS **/
+setPermission('smdoc_error', 'class',  'create', 'Nobody');
+setPermission('smdoc_error', 'object', 'admin', 'Nobody');
+setPermission('smdoc_error', 'object', 'revert', 'Nobody');
+setPermission('smdoc_error', 'object', 'delete', 'Nobody');
+setPermission('smdoc_error', 'object', 'clone', 'Nobody');
+setPermission('smdoc_error', 'object', 'permissions', 'Nobody');
+setPermission('smdoc_error', 'object', 'history', 'Nobody');
+setPermission('smdoc_error', 'object', 'diff', 'Nobody');
+
 /**
  * Error class.
  *
@@ -20,7 +30,6 @@ setClassMeta('smdoc_error', 'Error Display');
  * @package foowd
  * @class smdoc_error
  * @extends foowd_object
- * @author Erin Schnabel
  */
 class smdoc_error extends foowd_object {
 
@@ -86,13 +95,12 @@ class smdoc_error extends foowd_object {
 	function method_view(&$foowd) {
 		$foowd->track('smdoc_error->method_view');
         
-        $foowd->tpl->assign('PAGE_TITLE', $this->title);
-        $foowd->tpl->assign_by_ref('CURRENT_OBJECT', $this);
-        $foowd->tpl->assign_by_ref('STATUS_ERROR', $this->errorString);
+        $return['title'] = $this->title;
+        $return['failure'] = $this->errorString;
+        $return['body'] = '<p>An error has occurred, as indicated by the message above.</p>';
 
-        $error = new smdoc_display('error.tpl');
-        $foowd->tpl->assign('BODY', $error);
 		$foowd->track();
+        return $return;
     }
 }
 
@@ -149,10 +157,14 @@ function smdocErrorCatch($errorNumber, $errorString, $filename, $lineNumber, $co
     elseif (isset($context['this']))
       $foowd = $context['this'];
 
-    if (isset($foowd) && is_object($foowd) && get_class($foowd) == getConstOrDefault('FOOWD_CLASS_NAME','foowd') )
+    $foowdClass = getConstOrDefault('FOOWD_CLASS_NAME','foowd');
+
+    if ( isset($foowd) && is_object($foowd) && get_class($foowd) == $foowdClass )
     {
-      $errorObject = new smdoc_error($foowd, DEFAULT_ERROR_TITLE, $errorString);
-      $errorObject->method_view($foowd);
+      $object = new smdoc_error($foowd, DEFAULT_ERROR_TITLE, $errorString);
+      $t = $object->method_view($foowd);
+      $t['showurl'] = false;
+      include($foowd->getTemplateName('smdoc_error', 'object_view'));
       $foowd->destroy();
     }
     else

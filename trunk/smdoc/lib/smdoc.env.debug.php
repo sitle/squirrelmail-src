@@ -29,14 +29,24 @@ class smdoc_debug extends foowd_debug {
 
   function display(&$foowd)
   {
-    $debug = $foowd->tpl->factory('debug.tpl');
-    $debug->assign('DB_ACCESS_COUNT',
-                    $this->DBAccessNumber);
-    $debug->assign('EXECUTION_TIME', $this->executionTime());
-    $debug->assign('DEBUG_TRACK_STRING',
-                    $this->trackString);
+    echo '<div class="debug_output">'
+       . '<div class="debug_output_heading">Debug Information</div>'. "\n"
+       . '<pre>'
+       . 'Total DB Executions: '  . $this->DBAccessNumber . '&nbsp;' . "\n"
+       . 'Total Execution Time: ' . $this->executionTime(). ' seconds'. "\n"
+       . '</pre>'
+       . '<div class="debug_output_heading">Execution History</div>'. "\n"
+       . '<pre>' . $this->trackString . '</pre>';
 
-    $foowd->tpl->assign('DEBUG', $debug);
+    $show_var = getConstOrDefault('DEBUG_VAR', FALSE);
+    if ( $show_var ) 
+    {
+      echo '<div class="debug_output_heading">Request</div>'. "\n";
+      show($_REQUEST);
+      echo '<div class="debug_output_heading">Session</div>'. "\n";
+      show($_SESSION);
+    }
+    echo '</div><br />';
   }
 
 }
