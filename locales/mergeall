@@ -1,0 +1,9 @@
+#!/bin/sh
+for trans in `ls locale/`; do
+    mv locale/${trans}/LC_MESSAGES/squirrelmail.po \
+	locale/${trans}/LC_MESSAGES/squirrelmail.po.bak
+    msgmerge --no-location locale/${trans}/LC_MESSAGES/squirrelmail.po.bak \
+	../locales/squirrelmail.po > \
+	locale/${trans}/LC_MESSAGES/squirrelmail.po
+done
+	  
