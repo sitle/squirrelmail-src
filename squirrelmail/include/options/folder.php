@@ -8,19 +8,32 @@
  *
  * Displays all options relating to folders
  *
- * $Id$
+ * @version $Id$
+ * @package squirrelmail
  */
 
-/* SquirrelMail required files. */
+/** SquirrelMail required files. */
 require_once(SM_PATH . 'functions/imap.php');
 require_once(SM_PATH . 'functions/imap_general.php');
 
-/* Define the group constants for the folder options page. */   
+/* Define the group constants for the folder options page. */
 define('SMOPT_GRP_SPCFOLDER', 0);
 define('SMOPT_GRP_FOLDERLIST', 1);
 define('SMOPT_GRP_FOLDERSELECT', 2);
 
-/* Define the optpage load function for the folder options page. */
+/**
+ * This function builds an array with all the information about
+ * the options available to the user, and returns it. The options
+ * are grouped by the groups in which they are displayed.
+ * For each option, the following information is stored:
+ * - name: the internal (variable) name
+ * - caption: the description of the option in the UI
+ * - type: one of SMOPT_TYPE_*
+ * - refresh: one of SMOPT_REFRESH_*
+ * - size: one of SMOPT_SIZE_*
+ * - save: the name of a function to call when saving this option
+ * @return array all option information
+ */
 function load_optpage_data_folder() {
     global $username, $key, $imapServerAddress, $imapPort;
     global $folder_prefix, $default_folder_prefix, $show_prefix_option;
@@ -63,18 +76,7 @@ function load_optpage_data_folder() {
         'posvals' => $trash_folder_values,
         'save'    => 'save_option_trash_folder'
     );
-    
-    $sent_folder_values = array(SMPREF_NONE => '[ '._("Do not use Sent").' ]',
-                                'whatever'  => $boxes);
-    $optvals[SMOPT_GRP_SPCFOLDER][] = array(
-        'name'    => 'sent_folder',
-        'caption' => _("Sent Folder"),
-        'type'    => SMOPT_TYPE_FLDRLIST,
-        'refresh' => SMOPT_REFRESH_FOLDERLIST,
-        'posvals' => $sent_folder_values,
-        'save'    => 'save_option_sent_folder'
-    );
-    
+
     $draft_folder_values = array(SMPREF_NONE => '[ '._("Do not use Drafts").' ]',
                                  'whatever'  => $boxes);
     $optvals[SMOPT_GRP_SPCFOLDER][] = array(
@@ -84,6 +86,17 @@ function load_optpage_data_folder() {
         'refresh' => SMOPT_REFRESH_FOLDERLIST,
         'posvals' => $draft_folder_values,
         'save'    => 'save_option_draft_folder'
+    );
+
+    $sent_folder_values = array(SMPREF_NONE => '[ '._("Do not use Sent").' ]',
+                                'whatever'  => $boxes);
+    $optvals[SMOPT_GRP_SPCFOLDER][] = array(
+        'name'    => 'sent_folder',
+        'caption' => _("Sent Folder"),
+        'type'    => SMOPT_TYPE_FLDRLIST,
+        'refresh' => SMOPT_REFRESH_FOLDERLIST,
+        'posvals' => $sent_folder_values,
+        'save'    => 'save_option_sent_folder'
     );
 
     /*** Load the General Options into the array ***/
@@ -146,7 +159,7 @@ function load_optpage_data_folder() {
         'type'    => SMOPT_TYPE_STRLIST,
         'refresh' => SMOPT_REFRESH_FOLDERLIST,
         'posvals' => array(SMPREF_UNSEEN_ONLY  => _("Only Unseen"),
-                           SMPREF_UNSEEN_TOTAL => _("Unseen and Total")) 
+                           SMPREF_UNSEEN_TOTAL => _("Unseen and Total"))
     );
 
     $optvals[SMOPT_GRP_FOLDERLIST][] = array(
@@ -184,7 +197,7 @@ function load_optpage_data_folder() {
         'type'    => SMOPT_TYPE_STRLIST,
         'refresh' => SMOPT_REFRESH_FOLDERLIST,
         'posvals' => array(SMPREF_TIME_12HR => _("12-hour clock"),
-                           SMPREF_TIME_24HR => _("24-hour clock")) 
+                           SMPREF_TIME_24HR => _("24-hour clock"))
     );
 
     $optvals[SMOPT_GRP_FOLDERLIST][] = array(
@@ -215,9 +228,9 @@ function load_optpage_data_folder() {
         'caption' => _("Selection List Style"),
         'type'    => SMOPT_TYPE_STRLIST,
         'refresh' => SMOPT_REFRESH_NONE,
-        'posvals' => array( 0 => _("Long: ") . '"Folder' . $delim . 'Subfolder"',
-                            1 => _("Indented: ") .  '"&nbsp;&nbsp;&nbsp;&nbsp;' . 'Subfolder"',
-                            2 => _("Delimited: ") . '".&nbsp;' . 'Subfolder"')
+        'posvals' => array( 0 => _("Long: ") . '"' . _("Folder") . $delim . _("Subfolder") . '"',
+                            1 => _("Indented: ") .  '"&nbsp;&nbsp;&nbsp;&nbsp;' . _("Subfolder") . '"',
+                            2 => _("Delimited: ") . '".&nbsp;' . _("Subfolder") . '"')
     );
 
     /* Assemble all this together and return it as our result. */
@@ -232,6 +245,10 @@ function load_optpage_data_folder() {
 /******************************************************************/
 /** Define any specialized save functions for this option page. ***/
 /******************************************************************/
+
+/**
+ * Saves the trash folder option.
+ */
 function save_option_trash_folder($option) {
     global $data_dir, $username;
 
@@ -243,6 +260,9 @@ function save_option_trash_folder($option) {
     save_option($option);
 }
 
+/**
+ * Saves the sent folder option.
+ */
 function save_option_sent_folder($option) {
     global $data_dir, $username;
 
@@ -254,6 +274,9 @@ function save_option_sent_folder($option) {
     save_option($option);
 }
 
+/**
+ * Saves the draft folder option.
+ */
 function save_option_draft_folder($option) {
     global $data_dir, $username;
 

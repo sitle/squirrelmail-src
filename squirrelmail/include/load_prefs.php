@@ -9,10 +9,11 @@
  * Loads preferences from the $username.pref file used by almost
  * every other script in the source directory and alswhere.
  *
- * $Id$
+ * @version $Id$
+ * @package squirrelmail
  */
 
-/* SquirrelMail required files. */
+/** SquirrelMail required files. */
 require_once(SM_PATH . 'include/validate.php');
 require_once(SM_PATH . 'functions/prefs.php');
 require_once(SM_PATH . 'functions/plugin.php');
@@ -72,11 +73,10 @@ if (isset($chosen_theme) && $found_theme && (file_exists($chosen_theme))) {
 }
 
 
-if (!defined('download_php')) { 
-    sqsession_register($theme_css, 'theme_css'); 
+if (!defined('download_php')) {
+    sqsession_register($theme_css, 'theme_css');
 }
 
-$use_javascript_addr_book = getPref($data_dir, $username, 'use_javascript_addr_book', $default_use_javascript_addr_book);
 
 /* Load the user's special folder preferences */
 $move_to_sent =
@@ -86,11 +86,11 @@ $move_to_trash =
 $save_as_draft =
     getPref($data_dir, $username, 'save_as_draft', $default_save_as_draft);
 
-if ($default_unseen_type == '') { 
-    $default_unseen_type = 1; 
+if ($default_unseen_type == '') {
+    $default_unseen_type = 1;
 }
-if ($default_unseen_notify == '') { 
-    $default_unseen_notify = 2; 
+if ($default_unseen_notify == '') {
+    $default_unseen_notify = 2;
 }
 $unseen_type =
     getPref($data_dir, $username, 'unseen_type', $default_unseen_type);
@@ -168,7 +168,7 @@ $left_refresh = strtolower($left_refresh);
 
 $sort = getPref($data_dir, $username, 'sort', 6 );
 
-/** Load up the Signature file **/
+/* Load up the Signature file */
 $signature_abs = $signature = getSig($data_dir, $username, 'g');
 
 /* Message Highlighting Rules */
@@ -208,6 +208,7 @@ if (!isset($index_order)) {
 $alt_index_colors =
     getPref($data_dir, $username, 'alt_index_colors', SMPREF_ON );
 
+/* Folder List Display Format */
 $location_of_bar =
     getPref($data_dir, $username, 'location_of_bar', SMPREF_LOC_LEFT);
 $location_of_buttons =
@@ -256,10 +257,9 @@ $internal_date_sort = getPref($data_dir, $username, 'internal_date_sort', SMPREF
 $sort_by_ref = getPref($data_dir, $username, 'sort_by_ref', 1);
 
 /* Load the javascript settings. */
-$javascript_setting =
-    getPref($data_dir, $username, 'javascript_setting', SMPREF_JS_AUTODETECT);
+$javascript_setting = getPref($data_dir, $username, 'javascript_setting', SMPREF_JS_AUTODETECT);
 $javascript_on = getPref($data_dir, $username, 'javascript_on', SMPREF_ON);
-
+$use_javascript_addr_book = getPref($data_dir, $username, 'use_javascript_addr_book', $default_use_javascript_addr_book);
 
 $search_memory = getPref($data_dir, $username, 'search_memory', 0);
 

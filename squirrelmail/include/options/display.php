@@ -8,15 +8,28 @@
  *
  * Displays all optinos about display preferences
  *
- * $Id$
+ * @version $Id$
+ * @package squirrelmail
  */
 
-/* Define the group constants for the display options page. */
+/** Define the group constants for the display options page. */
 define('SMOPT_GRP_GENERAL', 0);
 define('SMOPT_GRP_MAILBOX', 1);
 define('SMOPT_GRP_MESSAGE', 2);
 
-/* Define the optpage load function for the display options page. */
+/**
+ * This function builds an array with all the information about
+ * the options available to the user, and returns it. The options
+ * are grouped by the groups in which they are displayed.
+ * For each option, the following information is stored:
+ * - name: the internal (variable) name
+ * - caption: the description of the option in the UI
+ * - type: one of SMOPT_TYPE_*
+ * - refresh: one of SMOPT_REFRESH_*
+ * - size: one of SMOPT_SIZE_*
+ * - save: the name of a function to call when saving this option
+ * @return array all option information
+ */
 function load_optpage_data_display() {
     global $theme, $language, $languages, $js_autodetect_results,
     $compose_new_win, $default_use_mdn, $squirrelmail_language, $allow_thread_sort,
@@ -49,7 +62,7 @@ function load_optpage_data_display() {
         'posvals' => $theme_values,
         'save'    => 'save_option_theme'
     );
- 
+
     $css_values = array( 'none' => _("Default" ) );
     $css_dir = SM_PATH . 'themes/css';
     if (is_readable($css_dir) && is_dir($css_dir)) {
@@ -61,9 +74,9 @@ function load_optpage_data_display() {
         }
         closedir($handle);
     }
-    
+
     if ( count( $css_values ) > 1 ) {
-    
+
         $optvals[SMOPT_GRP_GENERAL][] = array(
             'name'    => 'custom_css',
             'caption' => _("Custom Stylesheet"),
@@ -71,9 +84,9 @@ function load_optpage_data_display() {
             'refresh' => SMOPT_REFRESH_ALL,
             'posvals' => $css_values
         );
-    
+
     }
-    
+
     $language_values = array();
     foreach ($languages as $lang_key => $lang_attributes) {
         if (isset($lang_attributes['NAME'])) {
@@ -308,7 +321,7 @@ function load_optpage_data_display() {
 
     $optvals[SMOPT_GRP_MESSAGE][] = array(
         'name'    => 'internal_date_sort',
-        'caption' => _("Enable Sort by Receive Date"),
+        'caption' => _("Sort by Received Date"),
         'type'    => SMOPT_TYPE_BOOLEAN,
         'refresh' => SMOPT_REFRESH_ALL
     );
@@ -353,6 +366,9 @@ function save_option_theme($option) {
     save_option($option);
 }
 
+/**
+ * This function saves the javascript detection option.
+ */
 function save_option_javascript_autodetect($option) {
     global $data_dir, $username, $new_javascript_setting;
 
