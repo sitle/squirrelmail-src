@@ -75,23 +75,27 @@ class foowd
    * The database object used in this Foowd environment.
    *
    * @var object
-   * @access private
+   * @see smdoc_db
+   * @access protected
    */
-  var $database = FALSE;
+  var $database;
 
   /**
    * The user object loaded for this execution cycle.
    *
    * @var object
-   * @access private
+   * @see base_user
+   * @access public
    */
-  var $user = FALSE;
+  var $user;
 
   /**
-   * The debug object loaded for this Foowd environment.
+   * Instance of debug object loaded for this Foowd environment.
+   * If left unset (FALSE), debugging is disabled.
    *
    * @var object
-   * @access private
+   * @see smdoc_debug
+   * @access protected
    */
   var $debug = FALSE;
 
@@ -99,23 +103,38 @@ class foowd
    * Template object
    *
    * @var object
-   * @access private
+   * @see foowd_template
+   * @access public
    */
-  var $template = FALSE;
+  var $template;
 
   /**
    * Debug tracking wrapper.
    *
-   * Wrapper function to <code>foowd_debug::track</code>
+   * Calls to this method happen in pairs - on entry to and exit from 
+   * a method. 
+   * 
+   * The entry call should contain at least one parameter specifying
+   * the name of the function being called:
+   *   <code>$foowd->track('foowd_object::classMethod');</code>
+   * 
+   * The entry call can also have additional parameters which 
+   * will be displayed after the method name:
+   *   <code>$foowd->track('foowd_object::classMethod', $methodName);</code>
    *
-   * @param string functionName Name of the function execution is
-   * entering.
+   * On exit, track should be called with no parameters:
+   *   <code>$foowd->track();</code>
+   *
+   * @param string $functionName Name of the function execution is entering.
+   * @param mixed  $v,...        Unlimited number of additional variables to display with debug function.
+   * @see foowd::$debug
+   * @see smdoc_debug::track()
    */
   function track($functionName = NULL) 
   { 
     if ($this->debug) 
     {
-      if (func_num_args() > 1) 
+      if ( func_num_args() > 2 || !empty($v) ) 
       {
         $args = func_get_args();
         array_shift($args);  // shift off $function
@@ -127,11 +146,17 @@ class foowd
   }
 
   /**
-   * Debugging wrapper.
+   * Wrapper for calling debug method.
+   * Use this method to invoke a method on the foowd debug object.
+   * 
+   * Examples:
+   *   <code>$foowd->debug('msg','Print this debug message');</code>
+   *   <code>$foowd->debug('sql',$queryString);</code>
    *
-   * Wrapper function to <code>foowd_debug::debug</code>
-   *
-   * @param string function Name of the debugging function in <code>foowd_debug</code> to call.
+   * @param string $function Name of the debugging function in debug class.
+   * @param mixed  $v,...    Unlimited number of additional variables to display with debug function.
+   * @see foowd::$debug
+   * @see smdoc_debug
    */
   function debug($function) 
   { 
@@ -150,13 +175,20 @@ class foowd
   }
 
   /**
-   * Get name of template for the given class and method. If a template does
-   * not exist for the particular class and method, we look for a template for
-   * the classes parent class until we either find a template or reach the base
-   * class. In which case we use load default template "default.tpl".
+   * Get name of template for the given class and method. 
+   * If a template does not exist for the particular class and method, 
+   * look for a template for the class's parent until we either find 
+   * a template or reach the base class. 
+   * If an existing template is not found. use "default.tpl".
+   * 
+   * Template names are constructed by concatentating the class
+   * and method names, for example:
+   *    <code>foowd_object.object_view.tpl</code>
+   *    <code>foowd_object.class_create.tpl</code>
    *
-   * @param string className Name of the class.
-   * @param string methodName Name of the method.
+   * @param string $className  Name of the class.
+   * @param string $methodName Name of the method.
+   * @return string Template file name.
    */
   function getTemplateName($className, $methodName) 
   {
@@ -164,10 +196,7 @@ class foowd
     while (!file_exists($this->template->template_dir.$templateFilename)) 
     {
       if ($className == FALSE) 
-      {
         trigger_error('Could not load template "'.$this->template->template_dir.$templateFilename.'"', E_USER_ERROR);
-        return;
-      } 
       elseif ($className == 'foowd_object') 
       {
         $className = FALSE;
@@ -185,10 +214,10 @@ class foowd
   /**
    * Get all versions of an object.
    *
-   * @param array indexes Array of indexes and values to match
-   * @param string source Source to get object from
-   * @return array The array of selected objects or NULL on failure.
-   * @see foowd::getObjHistory
+   * @param array $indexes Array of indexes and values to match
+   * @param string $source Source to get object from
+   * @return array|NULL The array of selected objects or NULL on failure.
+   * @see smdoc_db::getObjHistory()
    */
   function &getObjHistory($indexes, $source = NULL) 
   {
@@ -210,13 +239,16 @@ class foowd
   /**
    * Call class/object method.
    *
-   * Wrapper function for <code>foowd_object::method</code> and
-   * <code>foowd_object::classMethod</code>. Checks if parameter is a class
-   * name or an object
+   * Checks if parameter is a class name or an object, and
+   * calls:
+   *   <code>$className::classMethod($methodName)</code>
+   *   <code>$object->method($methodName)</code>
    *
-   * @param mixed classNameOrObject The name of the class or object to call the method upon.
-   * @param string methodName The method to call upon the object.
-   * @return mixed The array results of the method call or an error string.
+   * @param mixed $classNameOrObject The name of the class or object to call the method on.
+   * @param string $methodName       The name of the method to call.
+   * @return mixed|FALSE Results of the method call, or FALSE on failure.
+   * @see foowd_object::classMethod()
+   * @see foowd_object::method()
    */
   function method(&$classNameOrObject, $methodName = NULL) 
   {
@@ -252,11 +284,11 @@ class foowd
   /**
    * Unserialise object.
    *
-   * Unserialise a serialised object loading any classes that are required.
+   * Unserialise a serialised object.
    *
-   * @param string serializedObj Serialised object to unserialise.
-   * @param int classid Classid of the object to be unserialised.
-   * @return object The unserialised object.
+   * @param string $serializedObj Serialised object.
+   * @param int $classid Classid of the object.
+   * @return object
    */
   function unserialize($serializedObj, $classid = NULL) 
   {
@@ -270,7 +302,7 @@ class foowd
    * that type can be loaded without their original class definition.
    *
    * @static
-   * @param str className Name of the class to load.
+   * @param string $className Name of the class to load.
    */
   function loadDefaultClass($className) 
   { 
@@ -291,7 +323,7 @@ ini_set('unserialize_callback_func', 'unserializeCallback');
  * class before unserialisation, but if that fails then we load a
  * default class definition based upon foowd_object.
  *
- * @param string className Name of the class trying to be unserialised
+ * @param string $className Name of the class trying to be unserialised
  */
 function unserializeCallback($className) { foowd::loadDefaultClass($className); }
 
