@@ -24,7 +24,8 @@ if(isset($session_name) && $session_name) {
     ini_set('session.name' , 'SQMSESSID');
 }
 
-/* If magic_quotes_runtime is on, SquirrelMail breaks in new and creative ways.
+/**
+ * If magic_quotes_runtime is on, SquirrelMail breaks in new and creative ways.
  * Force magic_quotes_runtime off.
  * chilts@birdbrained.org - I put it here in the hopes that all SM code includes this.
  * If there's a better place, please let me know.
@@ -71,6 +72,10 @@ $_SERVER['PHP_SELF'] = strip_tags($_SERVER['PHP_SELF']);
  * returns true if current php version is at mimimum a.b.c
  *
  * Called: check_php_version(4,1)
+ * @param int a major version number
+ * @param int b minor version number
+ * @param int c release number
+ * @return bool
  */
 function check_php_version ($a = '0', $b = '0', $c = '0')
 {
@@ -88,6 +93,10 @@ function check_php_version ($a = '0', $b = '0', $c = '0')
  * constructed by us, as an array of 3 ints.
  *
  * Called: check_sm_version(1,3,3)
+ * @param int a major version number
+ * @param int b minor version number
+ * @param int c release number
+ * @return bool
  */
 function check_sm_version($a = 0, $b = 0, $c = 0)
 {
@@ -95,8 +104,8 @@ function check_sm_version($a = 0, $b = 0, $c = 0)
     if ( !isset($SQM_INTERNAL_VERSION) ||
          $SQM_INTERNAL_VERSION[0] < $a ||
          ( $SQM_INTERNAL_VERSION[0] == $a &&
-	   $SQM_INTERNAL_VERSION[1] < $b) ||
-	 ( $SQM_INTERNAL_VERSION[0] == $a &&
+           $SQM_INTERNAL_VERSION[1] < $b) ||
+         ( $SQM_INTERNAL_VERSION[0] == $a &&
            $SQM_INTERNAL_VERSION[1] == $b &&
            $SQM_INTERNAL_VERSION[2] < $c ) ) {
         return FALSE;
@@ -105,7 +114,11 @@ function check_sm_version($a = 0, $b = 0, $c = 0)
 }
 
 
-/* recursively strip slashes from the values of an array */
+/**
+ * Recursively strip slashes from the values of an array.
+ * @param array array the array to strip, passed by reference
+ * @return void
+ */
 function sqstripslashes(&$array) {
     if(count($array) > 0) {
         foreach ($array as $index=>$value) {
@@ -119,6 +132,12 @@ function sqstripslashes(&$array) {
     }
 }
 
+/**
+ * Add a variable to the session.
+ * @param mixed $var the variable to register
+ * @param string $name the name to refer to this variable
+ * @return void
+ */
 function sqsession_register ($var, $name) {
 
     sqsession_is_active();
@@ -126,13 +145,17 @@ function sqsession_register ($var, $name) {
     if ( !check_php_version(4,1) ) {
         global $HTTP_SESSION_VARS;
         $HTTP_SESSION_VARS[$name] = $var;
-    }
-    else {
+    } else {
         $_SESSION["$name"] = $var;
     }
     session_register("$name");
 }
 
+/**
+ * Delete a variable from the session.
+ * @param string $name the name of the var to delete
+ * @return void
+ */
 function sqsession_unregister ($name) {
 
     sqsession_is_active();
@@ -140,13 +163,18 @@ function sqsession_unregister ($name) {
     if ( !check_php_version(4,1) ) {
         global $HTTP_SESSION_VARS;
         unset($HTTP_SESSION_VARS[$name]);
-    }
-    else {
+    } else {
         unset($_SESSION[$name]);
     }
     session_unregister("$name");
 }
 
+/**
+ * Checks to see if a variable has already been registered
+ * in the session.
+ * @param string $name the name of the var to check
+ * @return bool whether the var has been registered
+ */
 function sqsession_is_registered ($name) {
     $test_name = &$name;
     $result = false;
@@ -155,12 +183,12 @@ function sqsession_is_registered ($name) {
         if (isset($HTTP_SESSION_VARS[$test_name])) {
             $result = true;
         }
-    }
-    else {
+    } else {
         if (isset($_SESSION[$test_name])) {
             $result = true;
         }
     }
+
     return $result;
 }
 
@@ -211,10 +239,10 @@ function sqgetGlobalVar($name, &$value, $search = SQ_INORDER) {
        as strings. */
     switch ($search) {
         /* we want the default case to be first here,
-	   so that if a valid value isn't specified,
-	   all three arrays will be searched. */
+           so that if a valid value isn't specified,
+           all three arrays will be searched. */
       default:
-      case SQ_INORDER:   // check session, post, get
+      case SQ_INORDER: // check session, post, get
       case SQ_SESSION:
         if( isset($_SESSION[$name]) ) {
             $value = $_SESSION[$name];
@@ -222,7 +250,7 @@ function sqgetGlobalVar($name, &$value, $search = SQ_INORDER) {
         } elseif ( $search == SQ_SESSION ) {
             break;
         }
-      case SQ_FORM:      //  check post, get
+      case SQ_FORM:   // check post, get
       case SQ_POST:
         if( isset($_POST[$name]) ) {
             $value = $_POST[$name];
@@ -285,7 +313,7 @@ function sqsession_destroy() {
 
 }
 
-/*
+/**
  * Function to verify a session has been started.  If it hasn't
  * start a session up.  php.net doesn't tell you that $_SESSION
  * (even though autoglobal), is not created unless a session is
@@ -300,5 +328,5 @@ function sqsession_is_active() {
     }
 }
 
-
+// vim: et ts=4
 ?>

@@ -58,7 +58,7 @@ function getHashedFile($username, $dir, $datafile, $hash_search = true) {
     if (substr($dir, -1) == '/') {
         $dir = substr($dir, 0, strlen($dir) - 1);
     }
-    
+
     /* Compute the hash for this user and extract the hash directories. */
     $hash_dirs = computeHashDirs($username);
 
@@ -87,7 +87,7 @@ function getHashedFile($username, $dir, $datafile, $hash_search = true) {
             }
         }
     }
-     
+
     /* Return the full hashed datafile path. */
     return ($result);
 }
@@ -108,7 +108,7 @@ function getHashedDir($username, $dir, $hash_dirs = '') {
     if (substr($dir, -1) == '/') {
         $dir = substr($dir, 0, strlen($dir) - 1);
     }
-    
+
     /* If necessary, populate the hash dir variable. */
     if ($hash_dirs == '') {
         $hash_dirs = computeHashDirs($username);
@@ -120,9 +120,9 @@ function getHashedDir($username, $dir, $hash_dirs = '') {
         $real_hash_dir .= '/' . $hash_dirs[$h];
         if (!@is_dir($real_hash_dir)) {
             if (!@mkdir($real_hash_dir, 0770)) {
-                echo sprintf(_("Error creating directory %s."), $real_hash_dir) . '<br>' .
-                     _("Could not create hashed directory structure!") . "<br>\n" .
-                     _("Please contact your system administrator and report this error.") . "<br>\n";
+                echo sprintf(_("Error creating directory %s."), $real_hash_dir) . '<br />' .
+                     _("Could not create hashed directory structure!") . "<br />\n" .
+                     _("Please contact your system administrator and report this error.") . "<br />\n";
                 exit;
             }
         }

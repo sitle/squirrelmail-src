@@ -44,6 +44,10 @@ if (!include_once('DB.php')) {
     exit;
 }
 
+/**
+ * Undocumented class - stores the addressbook in a sql database
+ * @package squirrelmail
+ */
 class abook_database extends addressbook_backend {
     var $btype = 'local';
     var $bname = 'database';

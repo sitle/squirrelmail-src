@@ -78,7 +78,7 @@ $url_parser_poss_ends = array(' ', "\n", "\r", '<', '>', ".\r", ".\n",
 
 
 function parseUrl (&$body) {
-    global $url_parser_poss_ends, $url_parser_url_tokens;;
+    global $url_parser_poss_ends, $url_parser_url_tokens;
     $start      = 0;
     $blength    = strlen($body);
 
