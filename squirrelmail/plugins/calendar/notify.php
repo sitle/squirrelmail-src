@@ -9,7 +9,7 @@
  *  Reminder (*.rem) file format:
  *  notifyTime|eventTime|Length|Priority|Title|Body
  *
- * $Header$ 
+ * $Id$ 
  */
 
 // Include plugin config data
