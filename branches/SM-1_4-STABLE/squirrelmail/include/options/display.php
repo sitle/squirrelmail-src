@@ -373,7 +373,7 @@ function save_option_theme($option) {
 function save_option_javascript_autodetect($option) {
     global $data_dir, $username;
 
-    $new_javascript_setting = $_POST['new_javascript_setting'];
+    sqGetGlobalVar('new_javascript_setting', $new_javascript_setting);
 
     /* Set javascript either on or off. */
     if ($new_javascript_setting == SMPREF_JS_AUTODETECT) {
