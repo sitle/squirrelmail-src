@@ -453,6 +453,8 @@ echo "         </select>\n" .
 
 do_hook('search_after_form');
 
+flush();
+
 /*
     search all folders option still in the works. returns a table for each
     folder it finds a match in.
