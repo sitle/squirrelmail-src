@@ -92,7 +92,7 @@ $use_special_folder_color = true;
  *   other
  */
 global $imap_server_type;
-$imap_server_type = 'cyrus';
+$imap_server_type = 'other';
 
 /**
  * Rather than going to the signout.php page (which only allows you
@@ -533,11 +533,3 @@ $imap_auth_mech = 'login';
 global $session_name;
 $session_name = 'SQMSESSID';
 
-/**
- * Make sure there are no characters after the PHP closing
- * tag below (including newline characters and whitespace).
- * Otherwise, that character will cause the headers to be
- * sent and regular output to begin, which will majorly screw
- * things up when we try to send more headers later.
- */
-?>
