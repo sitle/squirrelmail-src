@@ -7540,8 +7540,19 @@ function charset_decode_x_mac_chinsimp ($string) {
 	"\xF7FD" => '&#40766;',
 	"\xF7FE" => '&#40772;');
 
-    $string = str_replace(array_keys($mac_chinsimp), array_values($mac_chinsimp), $string);
+    $index=0;
+    $ret="";
 
-    return $string;
+    while ( $index < strlen($string)) {
+        if ( ereg("[\241-\364]", $string[$index])) {
+            $ret.= str_replace(array_keys($mac_chinsimp), array_values($mac_chinsimp), $string[$index] . $string[$index+1]);
+            $index=$index+2;
+        } else {
+            $ret.= $string[$index];
+            $index=$index+1;
+        }
+    }
+
+    return $ret;
 }
 ?>
