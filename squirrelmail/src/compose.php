@@ -225,8 +225,9 @@ if (isset($send)) {
             Header("Location: compose.php?mail_sent=yes");
         }
         else {
-            Header("Location: right_main.php?mailbox=$urlMailbox&sort=$sort".
-                   "&startMessage=1");
+            if ($Result != 0) {
+                Header("Location: right_main.php?mailbox=$urlMailbox&sort=$sort".                       "&startMessage=1");
+            }
         }
     } else {
         /*
