@@ -27,7 +27,7 @@ include_once(SM_DIR . 'env.foowd.php');
  * The smdoc Foowd environment class.
  *
  * Sets up the Foowd environment, including database connection, user group
- * management and user initialisation, and provides methods for accessing
+ * management and user initialization, and provides methods for accessing
  * objects within the system.
  *
  * @package smdoc
@@ -110,25 +110,25 @@ class smdoc extends foowd
 
   /**
    * Clean up foowd object, then set Location header for redirect.
-   * @param string new_loc Forwarding URL
+   * @param string $new_loc Forwarding URL
    */
   function loc_forward($new_loc)
   {
     unset($this->debug);
     $this->debug = FALSE;
     $this->__destruct();
+    session_write_close();
     header('Location: ' . $new_loc);
     exit;
   }
 
   /**
-   * Get the current user from the database.
+   * Wrapper function to fetch an instance of the specified user.
    *
-   * Given the array of uesr details, fetch the corrisponding user object from
-   * the database, unserialise and return it.
-   *
-   * @param array userArray The user array passed into <code>{@link foowd::foowd}</code>.
-   * @return mixed The selected user object or FALSE on failure.
+   * @param array $userArray Array containing the username or objectid of the user
+   *                         to be fetched.
+   * @return mixed|FALSE The selected user object or FALSE on failure.
+   * @see base_user::fetchUser()
    */
   function fetchUser($userArray = NULL) {
     return smdoc_user::fetchUser($this, $userArray);
@@ -138,12 +138,12 @@ class smdoc extends foowd
    * getUserGroups returns an array containing a list of user groups
    * as 'internal name/objectid' => 'external name'.
    *
-   * This method caches the list of groups in the session, only
-   * creating the list if it hasn't already been created during this session.
-   *
    * @param optional boolean $includeSpecialGroups - whether or not to include all groups.
    * @param optional boolean $memberOnly - whether or not to restrict to only groups user is a member of
    * @return array An array of user groups.
+   * @see smdoc::$groups
+   * @see smdoc_group::getUserGroups()
+   * @see base_user::inGroup()
    */
   function getUserGroups( $includeSpecialGroups = TRUE, $memberOnly = FALSE)
   {
@@ -171,11 +171,12 @@ class smdoc extends foowd
   /**
    * Returns true if user has permission
    *
-   * @param string className Name of the class the method belongs to.
-   * @param string methodName Name of the method.
-   * @param string type class/object method
-   * @param object objectReference to current object being checked (may be NULL)
+   * @param string $className Name of the class the method belongs to.
+   * @param string $methodName Name of the method.
+   * @param string $type class/object method
+   * @param object $objectReference to current object being checked (may be NULL)
    * @return bool TRUE if user has access to method
+   * @see base_user::inGroup()
    */
   function hasPermission($className, $methodName, $type, &$object)
   {
@@ -195,11 +196,17 @@ class smdoc extends foowd
 
   /**
    * Fetch one version of an object.
+   * $where array should contain at least the objectid of 
+   * the object to be loaded.
+   * If the classid is also included, it will be used to retrieve
+   * the object from the appropriate source, etc.
    *
-   * @param  array where Array of values to find object by
-   * @param  mixed in_source Source to get object from
-   * @param  bool  setWorkspace get specific workspace id (or any workspace ok)
-   * @return mixed The retrieved object or an array containing the retrieved object and the joined objects.
+   * @param  array $where Array of values to find object by
+   * @param  mixed $in_source Source to get object from
+   * @param  bool  $setWorkspace If TRUE, restrict to a certain workspace, if FALSE, workspace does not apply or does not matter.
+   * @return mixed The retrieved object.
+   * @see    base_user::fetchUser()
+   * @see    smdoc_db::getObj()
    */
   function &getObj($where = NULL, $in_source = NULL, $setWorkspace = TRUE)
   {
@@ -235,14 +242,15 @@ class smdoc extends foowd
   /**
    * Get a list of objects.
    *
-   * @param array indexes Array of indexes to be returned
-   * @param string source The source to fetch the object from
-   * @param array where Array of indexes and values to find object by
-   * @param mixed order The index to sort the list on, or array of indices
-   * @param mixed limit The length of the list to return, or a LIMIT string
-   * @param bool returnObjects Return the actual objects not just the object meta data
-   * @param bool setWorkspace get specific workspace id (or any workspace ok)
-   * @return array An array of object meta data or of objects.
+   * @param array  $indexes       Array of indexes to be returned
+   * @param string $source        The source to fetch the object from
+   * @param array  $where         Array of indexes and values to find object by
+   * @param mixed  $order         The index to sort the list on, or array of indices
+   * @param mixed  $limit         The length of the list to return, or a LIMIT string
+   * @param bool   $returnObjects If TRUE, return the actual objects not just the object meta data; otherwise, return just the meta data as an array.
+   * @param bool   $setWorkspace  If TRUE, restrict to a certain workspace, if FALSE, workspace does not apply or does not matter.
+   * @return array An array of objects or object meta data.
+   * @see smdoc_db::getObjList()
    */
   function &getObjList($indexes = NULL, $source = NULL,
                        $where = NULL, $order = NULL, $limit = NULL,
