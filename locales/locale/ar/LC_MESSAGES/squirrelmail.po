@@ -5,9 +5,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: $Id: arabic.po v1.0 01-29-03\n"
-"POT-Creation-Date: 01-29-2003 11:28 EST\n"
-"PO-Revision-Date: 09-04-2003 11:41 EST\n"
-"Last-Translator: Noman Iqbal <noman.iqbal@biznas.com>\n"
+"POT-Creation-Date: 2004-07-03 09:25+0200\n"
+"PO-Revision-Date: 2004-07-17 13:49+0300\n"
+"Last-Translator: Mohamed H. Tawfiq <mhtawfiq@creative-e.net>\n"
 "Language-Team: BizNas / Arabic\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=cp1256\n"
@@ -15,9 +15,6 @@ msgstr ""
 
 msgid "Address Book"
 msgstr "ÏİÊÑ ÇáÚäÇæíä "
-
-msgid "All"
-msgstr "Çáßá "
 
 msgid "Name"
 msgstr "ÇÓã "
@@ -31,20 +28,8 @@ msgstr "ãÚáæãÇÊ "
 msgid "Source"
 msgstr "ÇáãÕÏÑ "
 
-msgid "To"
-msgstr "Åáì"
-
-msgid "Cc"
-msgstr "äÓÎÉ"
-
-msgid "Bcc"
-msgstr "äÓÎÉ ÕãÇÁ"
-
-msgid "Use Addresses"
-msgstr "ÚäÇæíä ÇÓÊÎÏÇã"
-
-msgid "Address Book Search"
-msgstr "ÈÍË ÏİÊÑ ÇáÚäÇæíä"
+msgid "No persons matching your search were found"
+msgstr "áã íÊã ÇáÚËæÑ Úáì ÃÔÎÇÕ íÊØÇÈŞæä ãÚ ÇáÈÍË"
 
 msgid "Search for"
 msgstr "ÈÍË Úä "
@@ -61,6 +46,9 @@ msgstr "ÈÍË"
 msgid "List all"
 msgstr "ÓÑÏ Çáßá"
 
+msgid "Close"
+msgstr "ÅÛáÇŞ"
+
 #, c-format
 msgid "Unable to list addresses from %s"
 msgstr "ÊÚĞÑ ÓÑÏ ÇáÚäÇæíä ãä %s"
@@ -68,14 +56,26 @@ msgstr "ÊÚĞÑ ÓÑÏ ÇáÚäÇæíä ãä %s"
 msgid "Your search failed with the following error(s)"
 msgstr "İÔá ÇáÈÍË æÙåÑÊ ÇáÃÎØÇÁ ÇáÊÇáíÉ"
 
-msgid "No persons matching your search was found"
-msgstr "áã íÊã ÇáÚËæÑ Úáì ÃÔÎÇÕ íÊØÇÈŞæä ãÚ ÇáÈÍË"
+msgid "All"
+msgstr "Çáßá "
+
+msgid "To"
+msgstr "Åáì"
+
+msgid "Cc"
+msgstr "äÓÎÉ"
+
+msgid "Bcc"
+msgstr "äÓÎÉ ÕãÇÁ"
+
+msgid "Use Addresses"
+msgstr "ÚäÇæíä ÇÓÊÎÏÇã"
+
+msgid "Address Book Search"
+msgstr "ÈÍË ÏİÊÑ ÇáÚäÇæíä"
 
 msgid "Return"
 msgstr "ÑÌæÚ"
-
-msgid "Close"
-msgstr "ÅÛáÇŞ"
 
 msgid "Nickname"
 msgstr "ßäíÉ"
@@ -86,14 +86,18 @@ msgstr "íÌÈ Ãä íßæä ãÊİÑÏÇğ"
 msgid "E-mail address"
 msgstr "ÚäæÇä ÇáÈÑíÏ ÇáÅáßÊÑæäí"
 
-msgid "First name"
-msgstr "ÇáÇÓã ÇáÃæá "
-
 msgid "Last name"
 msgstr "ÇáÇÓã ÇáÃÎíÑ "
 
+msgid "First name"
+msgstr "ÇáÇÓã ÇáÃæá "
+
 msgid "Additional info"
 msgstr "ãÚáæãÇÊ ÅÖÇİíÉ"
+
+#, fuzzy
+msgid "Add to:"
+msgstr "ÅÖÇİÉ Åáì %s"
 
 msgid "No personal address book is defined. Contact administrator."
 msgstr "áã íÊã ÊÚÑíİ Ãí  ÏİÊÑ ÚäÇæíä ÔÎÕí. ÇÊÕá ÈÇáãÓÄæá."
@@ -119,18 +123,29 @@ msgstr "ÊÍÑíÑ ÇáãÍÏÏ"
 msgid "Delete selected"
 msgstr "ÍĞİ ÇáãÍÏÏ"
 
-#, c-format
-msgid "Add to %s"
-msgstr "ÅÖÇİÉ Åáì %s"
+msgid "sort by nickname"
+msgstr "ÑÊÈ ÈÇáÇÓã ÇáãÓÊÚÇÑ"
 
-msgid "Draft Email Saved"
-msgstr "Êã ÍİÙ ãÓæÏÉ ÈÑíÏ ÅáßÊÑæäí"
+msgid "sort by name"
+msgstr "ÑÊÈ ÈÇáÇÓã"
 
-msgid "Could not move/copy file. File not attached"
-msgstr "ÊÚĞÑ äŞá/äÓÎ Çáãáİ. Çáãáİ ÛíÑ ãÑİŞ"
+msgid "sort by email"
+msgstr "ÑÊÈ ÈÇáÈÑíÏ ÇáÇáßÊÑæäí"
 
-msgid "Original Message"
-msgstr "ÑÓÇáÉ ÃÕáíÉ "
+msgid "sort by info"
+msgstr "ÑÊÈ ÈÇáÈíÇä"
+
+msgid "Add to address book"
+msgstr "ÅÖÇİÉ Åáì ÏİÊÑ ÇáÚäÇæíä"
+
+msgid "said"
+msgstr "ŞÇá"
+
+msgid "quote"
+msgstr "ÇŞÊÈÇÓ"
+
+msgid "who"
+msgstr "ãóä"
 
 msgid "Subject"
 msgstr "ÇáãæÖæÚ"
@@ -141,10 +156,19 @@ msgstr "ãä"
 msgid "Date"
 msgstr "ÇáÊÇÑíÎ"
 
+msgid "Original Message"
+msgstr "ÑÓÇáÉ ÃÕáíÉ "
+
+msgid "Draft Email Saved"
+msgstr "Êã ÍİÙ ãÓæÏÉ ÈÑíÏ ÅáßÊÑæäí"
+
+msgid "Could not move/copy file. File not attached"
+msgstr "ÊÚĞÑ äŞá/äÓÎ Çáãáİ. Çáãáİ ÛíÑ ãÑİŞ"
+
 msgid "Draft Saved"
 msgstr "Êã ÍİÙ ãÓæÏÉ "
 
-msgid "Your Message has been sent"
+msgid "Your Message has been sent."
 msgstr "Êã ÅÑÓÇá ÇáÑÓÇáÉ"
 
 msgid "From:"
@@ -189,7 +213,7 @@ msgstr "ãäÎİÖ"
 msgid "Receipt"
 msgstr "ÅíÕÇá ÇÓÊáÇã"
 
-msgid "On read"
+msgid "On Read"
 msgstr "ÚäÏ ÇáŞÑÇÁÉ"
 
 msgid "On Delivery"
@@ -207,50 +231,12 @@ msgstr "ÍİÙ ãÓæÏÉ"
 msgid "You have not filled in the \"To:\" field."
 msgstr "áã ÊŞã ÈãáÃ ÍŞá/Åáì:/."
 
-msgid "said"
-msgstr "ŞÇá"
+#, fuzzy, c-format
+msgid "Error: Draft folder %s does not exist."
+msgstr "ÇáãÓÊÎÏã '%s' ÛíÑ ãæÌæÏ"
 
-msgid "quote"
-msgstr "ÇŞÊÈÇÓ"
-
-msgid "who"
-msgstr "ãóä"
-
-msgid "Viewing a text attachment"
-msgstr "ÚÑÖ ãÑİŞ äÕ "
-
-msgid "View message"
-msgstr "ÚÑÖ ÑÓÇáÉ"
-
-msgid "Download this as a file"
-msgstr "ÊÍãíá Ğáß ßãáİ"
-
-msgid "Viewing a message attachment"
-msgstr "ÚÑÖ ãÑİŞ ÑÓÇáÉ "
-
-msgid "Date:"
-msgstr "ÊÇÑíÎ:"
-
-msgid "Cc:"
-msgstr "äÓÎÉ:"
-
-msgid "Bcc:"
-msgstr "äÓÎÉ ÕãÇÁ:"
-
-msgid "more"
-msgstr "ÇáãÒíÏ"
-
-msgid "less"
-msgstr "ÃŞá"
-
-msgid "Illegal folder name.  Please select a different name."
-msgstr "ÇÓã ÛíÑ ÔÑÚí ááãÌáÏ. íÑÌì ÊÍÏíÏ ÇÓãÇğ ãÎÊáİÇğ."
-
-msgid "Click here to go back"
-msgstr "ÇäŞÑ åäÇ ááÚæÏÉ ááæÑÇÁ"
-
-msgid "You have not selected a folder to delete. Please do so."
-msgstr "áã íÊã ÊÍÏíÏ Ãí ãÌáÏ áÍĞİå. íÑÌì ÇáŞíÇã ÈĞáß."
+msgid "Server replied: "
+msgstr "ÇÓÊÌÇÈÉ ÇáãáŞã:"
 
 msgid "Folders"
 msgstr "ãÌáÏÇÊ"
@@ -269,6 +255,9 @@ msgstr "Êã ÅäÔÇÁ ãÌáÏ ÈäÌÇÍ!"
 
 msgid "Renamed successfully!"
 msgstr "Êã ÅÚÇÏÉ ÇáÊÓãíÉ ÈäÌÇÍ!"
+
+msgid "Subscription Unsuccessful - Folder does not exist."
+msgstr "İÔá ÇáÇÔÊÑÇß - ÇáãÌáÏ ÛíÑ ãæÌæÏ"
 
 msgid "refresh folder list"
 msgstr "ÊÍÏíË ŞÇÆãÉ ÇáãÌáÏÇÊ"
@@ -318,6 +307,28 @@ msgstr "áã íÊã ÇáÚËæÑ Úáì ãÌáÏÇÊ áÅáÛÇÁ ÇáÇÔÊÑÇß ãäåÇ"
 msgid "No folders were found to subscribe to!"
 msgstr "áã íÊã ÇáÚËæÑ Úáì ãÌáÏÇÊ ááÇÔÊÑÇß İíåÇ"
 
+msgid "Subscribe to:"
+msgstr "ÇÔÊÑß Çáì:"
+
+msgid "Illegal folder name. Please select a different name."
+msgstr "ÇÓã ÛíÑ ÔÑÚí ááãÌáÏ. íÑÌì ÊÍÏíÏ ÇÓãÇğ ãÎÊáİÇğ."
+
+msgid "Click here to go back"
+msgstr "ÇäŞÑ åäÇ ááÚæÏÉ ááæÑÇÁ"
+
+msgid "You have not selected a folder to delete. Please do so."
+msgstr "áã íÊã ÊÍÏíÏ Ãí ãÌáÏ áÍĞİå. íÑÌì ÇáŞíÇã ÈĞáß."
+
+#, fuzzy, c-format
+msgid "Are you sure you want to delete %s?"
+msgstr "åá ÊÑíÏ ÍŞÇğ ÍĞİ åĞÇ ÇáÍÏË¿"
+
+msgid "Yes"
+msgstr "äÚã"
+
+msgid "No"
+msgstr "áÇ"
+
 msgid "You have not selected a folder to rename. Please do so."
 msgstr "áã ÊŞã ÈÊÍÏí ÃÍÏ ÇáãÌáÏÇÊ áÅÚÇÏÉ ÊÓãíÊå. íÑÌì ÇáŞíÇã ÈĞáß."
 
@@ -337,11 +348,9 @@ msgid "Help"
 msgstr "ÊÚáíãÇÊ"
 
 #, c-format
-msgid ""
-"The help has not been translated to %s.  It will be displayed in English "
-"instead."
-msgstr "áã íÊã ÊÑÌãÉ ÇáÊÚáíãÇÊ Åáì%s . ÓíÊã ÚÑÖåÇ  ÈÇááÛÉ ÇáÅäÌáíÒíÉ."
-"ÈÏáÇğ ãä."
+msgid "The help has not been translated to %s. It will be displayed in English instead."
+msgstr "áã íÊã ÊÑÌãÉ ÇáÊÚáíãÇÊ Åáì%s . ÓíÊã ÚÑÖåÇ  ÈÇááÛÉ ÇáÅäÌáíÒíÉ.ÈÏáÇğ ãä."
+
 msgid "Some or all of the help documents are not present!"
 msgstr "ÈÚÖ Ãæ ÌãíÚ ãÓÊäÏÇÊ ÇáÊÚáíãÇÊ ÛíÑ ãæÌæÏÉ!"
 
@@ -360,6 +369,12 @@ msgstr "Úáæí"
 msgid "Viewing an image attachment"
 msgstr "ÚÑÖ ãÑİŞ Úáì Ôßá ÕæÑÉ"
 
+msgid "View message"
+msgstr "ÚÑÖ ÑÓÇáÉ"
+
+msgid "Download this as a file"
+msgstr "ÊÍãíá Ğáß ßãáİ"
+
 msgid "INBOX"
 msgstr "ÇáÈÑíÏ ÇáæÇÑÏ"
 
@@ -369,6 +384,9 @@ msgstr "ÍĞİ"
 msgid "Last Refresh"
 msgstr "ÂÎÑ ÊÍÏíË"
 
+msgid "Save folder tree"
+msgstr "ÍİÙ ŞÇÆãÉ ÇáãÌáÏÇÊ"
+
 msgid "Login"
 msgstr "ÊÓÌíá ÇáÏÎæá"
 
@@ -377,11 +395,11 @@ msgid "%s Logo"
 msgstr "ÔÚÇÑ %s"
 
 #, c-format
-msgid "biznas_mail version %s"
-msgstr "ÅÕÏÇÑ biznas_mail %s"
+msgid "SquirrelMail version %s"
+msgstr "ÅÕÏÇÑ SquirrelMail %s"
 
-msgid "By the biznas_mail Development Team"
-msgstr "ÈæÇÓØÉ İÑíŞ ÊØæíÑbiznas_mail"
+msgid "By the SquirrelMail Development Team"
+msgstr "ÈæÇÓØÉ İÑíŞ ÊØæíÑSquirrelMail"
 
 #, c-format
 msgid "%s Login"
@@ -393,230 +411,47 @@ msgstr "ÇáÇÓã:"
 msgid "Password:"
 msgstr "ßáãÉ ÇáãÑæÑ:"
 
-msgid "<No subject>"
-msgstr "<áÇ íæÌÏ ãæÖæÚ>"
+msgid "Personal Information"
+msgstr "ãÚáæãÇÊ ÔÎÕíÉ "
 
-msgid "No messages were selected."
-msgstr "áã íÊã ÊÍÏíÏ ÃíÉ ÑÓÇÆá ."
+msgid "Display Preferences"
+msgstr "ÊİÖíáÇÊ ÇáÚÑÖ"
 
-msgid "General Display Options"
-msgstr "ÎíÇÑÇÊ ÇáÚÑÖ ÇáÚÇã "
+msgid "Message Highlighting"
+msgstr "ÊãííÒ ÑÓÇáÉ"
 
-msgid "Theme"
-msgstr "ÇáÓãÉ"
+msgid "Folder Preferences"
+msgstr "ÊİÖíáÇÊ ÇáãÌáÏ"
 
-msgid "Default"
-msgstr "ÇáÇİÊÑÇÖí"
-
-msgid "Custom Stylesheet"
-msgstr "æÑŞÉ Stylesheet ãÎÕÕÉ"
-
-msgid "Language"
-msgstr "ÇááÛÉ"
-
-msgid "Use Javascript"
-msgstr "ÇÓÊÎÏÇã Javascript"
-
-msgid "Autodetect"
-msgstr "ßÔİ ÊáŞÇÆí"
-
-msgid "Always"
-msgstr "ÏæãÇğ"
-
-msgid "Never"
-msgstr "ãØáŞÇğ"
-
-msgid "Mailbox Display Options"
-msgstr "ÎíÇÑÇÊ ÚÑÖ ÚáÈÉ ÇáÈÑíÏ"
-
-msgid "Number of Messages to Index"
-msgstr "ÚÏÏ ãä ÇáÑÓÇÆá ááİåÑÓÉ"
-
-msgid "Enable Alternating Row Colors"
-msgstr "Êãßíä Alternating Row Colors"
-
-msgid "Enable Page Selector"
-msgstr "Êãßíä Page Selector "
-
-msgid "Maximum Number of Pages to Show"
-msgstr "ÃŞÕì ÚÏÏ ãä ÇáÕİÍÇÊ íãßä ÅÙåÇÑå "
-
-msgid "Message Display and Composition"
-msgstr "ÚÑÖ æÅäÔÇÁ ÑÓÇáÉ "
-
-msgid "Wrap Incoming Text At"
-msgstr "ÇáÊİÇİ ÇáäÕ ÇáæÇÑÏ ÚäÏ  "
-
-msgid "Size of Editor Window"
-msgstr "ÍÌã ÅØÇÑ ÇáãÍÑÑ"
-
-msgid "Location of Buttons when Composing"
-msgstr "ãæŞÚ ÇáÃÒÑÇÑ ÚäÏ ÇáÅäÔÇÁ"
-
-msgid "Before headers"
-msgstr "ŞÈá ÑÄæÓ ÇáÕİÍÇÊ"
-
-msgid "Between headers and message body"
-msgstr "Èíä ÑÄæÓ ÇáÕİÍÇÊ æäÕ ÇáÑÓÇáÉ "
-
-msgid "After message body"
-msgstr "ÈÚÏ äÕ ÇáÑÓÇáÉ "
-
-msgid "Addressbook Display Format"
-msgstr "ÊäÓíŞ ÚÑÖ ÏİÊÑ ÇáÚäÇæíä "
-
-msgid "Javascript"
-msgstr "Javascript"
-
-msgid "HTML"
-msgstr "HTML"
-
-msgid "Show HTML Version by Default"
-msgstr "ÇáÅÙåÇÑ ÇáÇİÊÑÇÖí áÅÕÏÇÑ HTML"
-
-msgid "Include Me in CC when I Reply All"
-msgstr "ÊÖãíä äİÓíMe  İì ÇáäÓÎÉ CC ÚäÏ ÅÌÇÈÉ Çáßá"
-
-msgid "Include CCs when forwarding messages"
-msgstr "ÊÖãíä äÓÎ CC ÚäÏ ÊæÌíå ÇáÑÓÇÆá"
-
-msgid "Enable Mailer Display"
-msgstr "Êãßíä Mailer Display"
-
-msgid "Display Attached Images with Message"
-msgstr "ÚÑÖ ÕæÑ ãÑİŞÉ ÈÑÓÇáÉ"
-
-msgid "Enable Subtle Printer Friendly Link"
-msgstr "Êãßíä Subtle Printer Friendly Link"
-
-msgid "Enable Printer Friendly Clean Display"
-msgstr "Êãßíä Printer Friendly Clean Display"
-
-msgid "Enable request/confirm reading"
-msgstr "Êãßíä ØáÈ/ÊÃßíÏ ÇáŞÑÇÁÉ "
-
-msgid "Always compose in a new window"
-msgstr "Şã ÏæãÇğ ÈÅäÔÇÁ ÅØÇÑ ÌÏíÏ"
-
-msgid "Width of compose window"
-msgstr "ÚÑÖ ÅØÇÑ ÇáÅäÔÇÁ"
-
-msgid "Height of compose window"
-msgstr "ÇÑÊİÇÚ ÅØÇÑ ÇáÅäÔÇÁ"
-
-msgid "Append signature before reply/forward text"
-msgstr "ÅáÍÇŞ ÊæŞíÚ ŞÈá ÅÌÇÈÉ/ÊæÌíå äÕ"
-
-msgid "Use receive date for sort"
-msgstr "ÇÓÊÎÏÇã ÊÇÑíÎ ÇáÊáŞí ááİÑÒ"
-
-msgid "Use References header for thread sort"
-msgstr "ÇÓÊÎÏÇã ÑÄæÓ ÇáÕİÍÇÊ ÇáãÑÌÚíÉ ááİÑÒ ÈãÄÔÑ ÊÑÇÈØ "
-
-msgid "Special Folder Options"
-msgstr "ÎíÇÑÇÊ ÇáãÌáÏ ÇáÎÇÕ "
-
-msgid "Folder Path"
-msgstr "ãÓÇÑ ÇáãÌáÏ "
-
-msgid "Do not use Trash"
-msgstr "áÇ ÊÓÊÎÏã ãÌáÏ ÇáãåãáÇÊ ÓáÉ ÇáãåãáÇÊ "
-
-msgid "Trash Folder"
-msgstr "ãÌáÏ ÓáÉ ÇáãåãáÇÊ"
-
-msgid "Do not use Sent"
-msgstr "áÇ ÊÓÊÎÏã ãÌáÏ ÇáÑÓÇÆá ÇáãÑÓáÉ ÇáÕÇÏÑ       "
-
-msgid "Sent Folder"
-msgstr "ãÌáÏ ÇáÕÇÏÑ"
-
-msgid "Do not use Drafts"
-msgstr "áÇ ÊÓÊÎÏã ãÌáÏ ÇáãÓæÏÇÊ ÇáãÓæÏÇÊ "
-
-msgid "Draft Folder"
-msgstr "ãÌáÏ ÇáãÓæÏÇÊ "
-
-msgid "Folder List Options"
-msgstr "ÎíÇÑÇÊ ŞÇÆãÉ ÇáãÌáÏÇÊ "
-
-msgid "Location of Folder List"
-msgstr "ãæŞÚ ŞÇÆãÉ ÇáãÌáÏÇÊ"
-
-msgid "Left"
-msgstr "íÓÇÑ"
-
-msgid "Right"
-msgstr "íãíä"
-
-msgid "pixels"
-msgstr "ÈßÓá"
-
-msgid "Width of Folder List"
-msgstr "ÚÑÖ ŞÇÆãÉ ÇáãÌáÏÇÊ"
-
-msgid "Minutes"
-msgstr "ÏŞÇÆŞ"
-
-msgid "Seconds"
-msgstr "ËæÇäí"
-
-msgid "Minute"
-msgstr "ÏŞíŞÉ"
-
-msgid "Auto Refresh Folder List"
-msgstr "ŞÇÆãÉ ãÌáÏ ÇáÊÍÏíË ÊáŞÇÆí "
-
-msgid "Enable Unread Message Notification"
-msgstr "Êãßíä Unread Message Notification"
-
-msgid "No Notification"
-msgstr "áÇ íæÌÏ ÅÚáÇã"
-
-msgid "Only INBOX"
-msgstr "ÚáÈÉ æÇÑÏ İŞØ "
-
-msgid "All Folders"
-msgstr "ÌãíÚ ÇáãÌáÏÇÊ"
-
-msgid "Unread Message Notification Type"
-msgstr "äæÚ ÇáÅÚáÇã Úä ÇáÑÓÇáÉ ÛíÑ ÇáãŞÑæÁÉ"
-
-msgid "Only Unseen"
-msgstr "ÛíÑ ãÑÆí Unseen İŞØ"
-
-msgid "Unseen and Total"
-msgstr "ÛíÑ ãÑÆí Unseen æÅÌãÇáí Total"
-
-msgid "Enable Collapsable Folders"
-msgstr "Êãßíä Collapsable Folders"
-
-msgid "Show Clock on Folders Panel"
-msgstr "ÅÙåÇÑ ÓÇÚÉ Úáì áæÍÉ ÇáãÌáÏÇÊ"
-
-msgid "No Clock"
-msgstr "áÇ ÊæÌÏ ÓÇÚÉ"
-
-msgid "Hour Format"
-msgstr "ÊäÓíŞ ÇáÓÇÚÉ Hour"
-
-msgid "12-hour clock"
-msgstr "ÓÇÚÉ 12 ÓÇÚÉ"
-
-msgid "24-hour clock"
-msgstr "ÓÇÚÉ 24 ÓÇÚÉ"
-
-msgid "Memory Search"
-msgstr "ÈÍË ÇáĞÇßÑÉ "
-
-msgid "Disabled"
-msgstr "ÊÚØíá"
+msgid "Index Order"
+msgstr "ÊÑÊíÈ ÇáİåÑÓ "
 
 msgid "Options"
 msgstr "ÎíÇÑÇÊ"
 
-msgid "Message Highlighting"
-msgstr "ÊãííÒ ÑÓÇáÉ"
+msgid "Successfully Saved Options"
+msgstr "ÎíÇÑÇÊ ÇáÍİÙ ÈäÌÇÍ"
+
+msgid "Refresh Folder List"
+msgstr "ŞÇÆãÉ ãÌáÏ ÇáÊÍÏíË "
+
+msgid "Refresh Page"
+msgstr "ÕİÍÉ ÇáÊÍÏíË"
+
+msgid "This contains personal information about yourself such as your name, your email address, etc."
+msgstr "íÍÊæí Ğáß Úáì ãÚáæãÇÊ ÔÎÕíÉ Úäß ãËá ÇÓãß,æÚäæÇä ÈÑíÏß ÇáÅáßÊÑæäí ..ÇáÎ."
+
+msgid "You can change the way that SquirrelMail looks and displays information to you, such as the colors, the language, and other settings."
+msgstr "íãßäß ÊÛííÑ Ôßá  æØÑíŞÉ ÚÑÖå  ááãÚáæãÇÊãËá ÇáÃáæÇä, æÇááÛÉ, æÛíÑ Ğáß ãä ÇáÅÚÏÇÏÇÊ."
+
+msgid "Based upon given criteria, incoming messages can have different background colors in the message list. This helps to easily distinguish who the messages are from, especially for mailing lists."
+msgstr "íãßä æİŞÇğ áãÚíÇÑ ãÚíä Ãä Êßæä ááÑÓÇÆá ÇáæÇÑÏÉ ÃáæÇä ÎáİíÉ ãÎÊáİÉ İì ŞÇÆãÉ ÇáÑÓÇÆá, æíÓÇÚÏ Ğáß Úáì ÊÍÏíÏ ÇÓã ãÑÓá ÇáÑÓÇáÉæÎÕæÕÇğ ãä ÇáŞæÇÆã ÇáÈÑíÏíÉ."
+
+msgid "These settings change the way your folders are displayed and manipulated."
+msgstr "ÊŞæã åĞå ÇáÅÚÏÇÏÇÊ ÈÊÛííÑ ØÑíŞÉ ÚÑÖ ÇáãÌáÏÇÊ æÃÓáæÈ ÇáÊÚÇãá ãÚåÇ."
+
+msgid "The order of the message index can be rearranged and changed to contain the headers in any order you want."
+msgstr "íãßä ÊÛííÑ æÅÚÇÏÉ ÊäÙíã ÊÑÊíÈ İåÑÓ ÇáÑÓÇáÉ ÈÍíË Êßæä ÑÄæÓ ÇáÕİÍÇÊ ÈÇáÊÑÊíÈ ÇáĞí ÊÑíÏå."
 
 msgid "New"
 msgstr "ÌÏíÏ"
@@ -624,8 +459,20 @@ msgstr "ÌÏíÏ"
 msgid "Done"
 msgstr "Êã"
 
+msgid "To or Cc"
+msgstr "Åáì To Ãæ äÓÎÉ Cc"
+
+msgid "subject"
+msgstr "ÇáãæÖæÚ"
+
 msgid "Edit"
 msgstr "ÊÍÑíÑ"
+
+msgid "Up"
+msgstr "ÃÚáì"
+
+msgid "Down"
+msgstr "ÃÓİá"
 
 msgid "No highlighting is defined"
 msgstr "áã íÊã ÊÚÑíİ Ãí ÊãííÒ"
@@ -684,21 +531,18 @@ msgstr "ÛíÑ Ğáß:"
 msgid "Ex: 63aa7f"
 msgstr ""
 
-msgid "To or Cc"
-msgstr "Åáì To Ãæ äÓÎÉ Cc"
-
 msgid "Matches"
 msgstr "ÊØÇÈŞ"
+
+#, c-format
+msgid "Alternate Identity %d"
+msgstr "ãÚÑøİ ÈÏíá %d"
 
 msgid "Advanced Identities"
 msgstr "ãÚÑøİÇÊ ãÊŞÏãÉ"
 
 msgid "Default Identity"
 msgstr "ÇáãÚÑøİ ÇáÇİÊÑÇÖí"
-
-#, c-format
-msgid "Alternate Identity %d"
-msgstr "ãÚÑøİ ÈÏíá %d"
 
 msgid "Add a New Identity"
 msgstr "ÅÖÇİÉ ãÚÑøİ ÌÏíÏ"
@@ -721,9 +565,6 @@ msgstr "ÌÚáå ÇáÇİÊÑÇÖí"
 msgid "Move Up"
 msgstr "ÊÍÑíß Åáì ÇáÃÚáì"
 
-msgid "Index Order"
-msgstr "ÊÑÊíÈ ÇáİåÑÓ "
-
 msgid "Checkbox"
 msgstr "ãÑÈÚ ÇÎÊíÇÑ"
 
@@ -733,13 +574,8 @@ msgstr "ÅÔÇÑÇÊ"
 msgid "Size"
 msgstr "ÍÌã"
 
-msgid ""
-"The index order is the order that the columns are arranged in the message "
-"index.  You can add, remove, and move columns around to customize them to "
-"fit your needs."
-msgstr "ÊÑÊíÈ ÇáİåÑÓ åæ ÊÑÊíÈ ÇáÃÚãÏÉ İì İåÑÓ ÇáÑÓÇáÉ."
-"íãßäß ÅÖÇİÉ, æÅÒÇáÉ, æÊÍÑíß ÇáÃÚãÏÉ  áÊÎÕíÕåÇ ÈÍíË"
-"ÊäÇÓÈ ÇÍÊíÇÌÇÊß."
+msgid "The index order is the order that the columns are arranged in the message index. You can add, remove, and move columns around to customize them to fit your needs."
+msgstr "ÊÑÊíÈ ÇáİåÑÓ åæ ÊÑÊíÈ ÇáÃÚãÏÉ İì İåÑÓ ÇáÑÓÇáÉ.íãßäß ÅÖÇİÉ, æÅÒÇáÉ, æÊÍÑíß ÇáÃÚãÏÉ  áÊÎÕíÕåÇ ÈÍíËÊäÇÓÈ ÇÍÊíÇÌÇÊß."
 
 msgid "up"
 msgstr "Åáì ÇáÃÚáì"
@@ -753,148 +589,72 @@ msgstr "ÅÒÇáÉ"
 msgid "Return to options page"
 msgstr "ÇáÑÌæÚ Åáì ÕİÍÉ ÇáÎíÇÑÇÊ "
 
-msgid "Name and Address Options"
-msgstr "ÎíÇÑÇÊ ÇáÇÓã æÇáÚäæÇä"
-
-msgid "Email Address"
-msgstr "ÚäæÇä ÈÑíÏ ÅáßÊÑæäí "
-
-msgid "Edit Advanced Identities"
-msgstr "ÊÍÑíÑ ÇáãÚÑøİÇÊ ÇáãÊŞÏãÉ"
-
-msgid "(discards changes made on this form so far)"
-msgstr "(ÊÌÇåá ÇáÊÛííÑÇÊ ÇáÊí ÊãÊ ÍÊì ÇáÂä Úáì åĞÇ ÇáäãæĞÌ)"
-
-msgid "Multiple Identities"
-msgstr "ãÚÑøİÇÊ ãÊÚÏÏÉ"
-
-msgid "Same as server"
-msgstr "ãËáåÇ ãËá ÇáãáŞã"
-
-msgid "Timezone Options"
-msgstr "ÎíÇÑÇÊ ÇáÊæŞíÊ"
-
-msgid "Your current timezone"
-msgstr "ÇáÊæŞíÊ ÇáÍÇáí"
-
-msgid "Reply Citation Options"
-msgstr "ÎíÇÑÇÊ ÇáÇÓÊÔåÇÏ ÈÇáÅÌÇÈÉ"
-
-msgid "Reply Citation Style"
-msgstr "äãØ ÇáÇÓÊÔåÇÏ ÈÇáÅÌÇÈÉ"
-
-msgid "No Citation"
-msgstr "áÇ íæÌÏ ÇÓÊÔåÇÏ"
-
-msgid "AUTHOR Said"
-msgstr "Şæá ÇáãÄáİ"
-
-msgid "Quote Who XML"
-msgstr "ÇŞÊÈÇÓ ãóä åæ XML"
-
-msgid "User-Defined"
-msgstr "ãÚÑøİÉ ãä ŞÈá ÇáãÓÊÎÏã"
-
-msgid "User-Defined Citation Start"
-msgstr "ÈÏÁ ÇÓÊÔåÇÏ ãÚÑøİ ãä ŞÈá ÇáãÓÊÎÏã"
-
-msgid "User-Defined Citation End"
-msgstr "äåÇíÉ ÇÓÊÔåÇÏ ãÚÑøİ ãä ŞÈá ÇáãÓÊÎÏã"
-
-msgid "Signature Options"
-msgstr "ÎíÇÑÇÊ ÇáÊæŞíÚ"
-
-msgid "Use Signature"
-msgstr "ÊæŞíÚ ÇáÇÓÊÎÏÇã"
-
-msgid "Prefix Signature with '-- ' Line"
-msgstr "ÈÏÁ ÇáÊæŞíÚ ÈÎØ'-- '"
-
-msgid "Personal Information"
-msgstr "ãÚáæãÇÊ ÔÎÕíÉ "
-
-msgid "Display Preferences"
-msgstr "ÊİÖíáÇÊ ÇáÚÑÖ"
-
-msgid "Folder Preferences"
-msgstr "ÊİÖíáÇÊ ÇáãÌáÏ"
-
-msgid "Successfully Saved Options"
-msgstr "ÎíÇÑÇÊ ÇáÍİÙ ÈäÌÇÍ"
-
-msgid "Refresh Folder List"
-msgstr "ŞÇÆãÉ ãÌáÏ ÇáÊÍÏíË "
-
-msgid "Refresh Page"
-msgstr "ÕİÍÉ ÇáÊÍÏíË"
-
-msgid ""
-"This contains personal information about yourself such as your name, your "
-"email address, etc."
-msgstr ""
-"íÍÊæí Ğáß Úáì ãÚáæãÇÊ ÔÎÕíÉ Úäß ãËá ÇÓãß,"
-"æÚäæÇä ÈÑíÏß ÇáÅáßÊÑæäí ..ÇáÎ."
-
-msgid ""
-"You can change the way that biznas_mail looks and displays information to "
-"you, such as the colors, the language, and other settings."
-msgstr ""
-"íãßäß ÊÛííÑ Ôßá biznas_mail æØÑíŞÉ ÚÑÖå  ááãÚáæãÇÊ"
-"ãËá ÇáÃáæÇä, æÇááÛÉ, æÛíÑ Ğáß ãä ÇáÅÚÏÇÏÇÊ."
-
-msgid ""
-"Based upon given criteria, incoming messages can have different background "
-"colors in the message list.  This helps to easily distinguish who the "
-"messages are from, especially for mailing lists."
-msgstr ""
-"íãßä æİŞÇğ áãÚíÇÑ ãÚíä Ãä Êßæä ááÑÓÇÆá ÇáæÇÑÏÉ ÃáæÇä ÎáİíÉ ãÎÊáİÉ "
-"İì ŞÇÆãÉ ÇáÑÓÇÆá, æíÓÇÚÏ Ğáß Úáì ÊÍÏíÏ ÇÓã ãÑÓá ÇáÑÓÇáÉ"
-"æÎÕæÕÇğ ãä ÇáŞæÇÆã ÇáÈÑíÏíÉ."
-
-msgid ""
-"These settings change the way your folders are displayed and manipulated."
-msgstr "ÊŞæã åĞå ÇáÅÚÏÇÏÇÊ ÈÊÛííÑ ØÑíŞÉ ÚÑÖ ÇáãÌáÏÇÊ æÃÓáæÈ ÇáÊÚÇãá ãÚåÇ."
-
-msgid ""
-"The order of the message index can be rearranged and changed to contain the "
-"headers in any order you want."
-msgstr ""
-"íãßä ÊÛííÑ æÅÚÇÏÉ ÊäÙíã ÊÑÊíÈ İåÑÓ ÇáÑÓÇáÉ ÈÍíË Êßæä "
-"ÑÄæÓ ÇáÕİÍÇÊ ÈÇáÊÑÊíÈ ÇáĞí ÊÑíÏå."
-
 msgid "Message not printable"
 msgstr "ÑÓÇáÉ ÛíÑ ŞÇÈáÉ ááØÈÇÚÉ"
-
-msgid "Printer Friendly"
-msgstr "Printer Friendly"
 
 msgid "CC"
 msgstr "äÓÎÉ "
 
+msgid "Printer Friendly"
+msgstr "Printer Friendly"
+
 msgid "Print"
 msgstr "ØÈÇÚÉ"
-
-msgid "Close Window"
-msgstr "ÅÛáÇŞ ÇáÅØÇÑ"
 
 msgid "View Printable Version"
 msgstr "ÚÑÖ ÅÕÏÇÑ íãßä ØÈÇÚÊå"
 
+msgid "Read:"
+msgstr "ŞÑÇÁÉ:"
+
 msgid "Your message"
 msgstr "ÑÓÇáÊß"
 
-msgid "Sent"
+msgid "Sent:"
 msgstr "ÇáÕÇÏÑ:"
 
 #, c-format
 msgid "Was displayed on %s"
 msgstr "ßÇä ŞÏ Êã ÇáÚÑÖ Úáì %s"
 
-msgid "Read:"
-msgstr "ŞÑÇÁÉ:"
+msgid "less"
+msgstr "ÃŞá"
 
-msgid "Viewing Full Header"
-msgstr "ÚÑÖ ÑÃÓ ÕİÍÉ ÈÇáßÇãá"
+msgid "more"
+msgstr "ÇáãÒíÏ"
+
+msgid "Unknown sender"
+msgstr "ãÑÓá ÛíÑ ãÚÑæİ"
+
+msgid "Mailer"
+msgstr "ãÑÓá ÇáÈÑíÏ"
+
+msgid "Read receipt"
+msgstr "ŞÑÇÁÉ ÅíÕÇá ÇÓÊáÇã"
+
+msgid "sent"
+msgstr "ÇáÕÇÏÑ:"
+
+msgid "requested"
+msgstr "ãØáæÈ"
+
+msgid "The message sender has requested a response to indicate that you have read this message. Would you like to send a receipt?"
+msgstr "ØáÈ ãÑÓá ÇáÑÓÇáÉ ÑÏÇğ íÈíä Ãäß ŞÏ ŞÑÃÊåĞå ÇáÑÓÇáÉ, İåá ÊÑíÏ ÅÑÓÇá ÅíÕÇá ÇÓÊáÇã¿"
+
+msgid "Send read receipt now"
+msgstr "ÅÑÓÇá ŞÑÇÁÉ ÅíÕÇá ÇáÇÓÊáÇã ÇáÂä"
+
+msgid "View Message"
+msgstr "ÚÑÖ ÑÓÇáÉ"
+
+msgid "Delete & Prev"
+msgstr "ÍĞİ & ÇáÓÇÈŞ"
+
+msgid "Delete & Next"
+msgstr "ÍĞİ & ÇáÊÇáí"
+
+msgid "Search Results"
+msgstr "äÊÇÆÌ ÇáÈÍË"
 
 msgid "Message List"
 msgstr "ŞÇÆãÉ ÑÓÇÆá "
@@ -905,48 +665,75 @@ msgstr "ÇÓÊÆäÇİ ãÓæÏÉ"
 msgid "Edit Message as New"
 msgstr "ÊÍÑíÑ ÑÓÇáÉ ßãÇ áæ ßÇäÊ ÌÏíÏÉ"
 
-msgid "Forward"
-msgstr "ÊæÌíå"
-
 msgid "Reply"
 msgstr "ÅÌÇÈÉ"
 
 msgid "Reply All"
 msgstr "ÅÌÇÈÉ Çáßá"
 
+msgid "Forward"
+msgstr "ÊæÌíå"
+
+msgid "As Attachment"
+msgstr "ßãÑİŞÇÊ"
+
+msgid "Bypass Trash"
+msgstr "ÍĞ äåÇÆí"
+
+msgid "Move to:"
+msgstr "äŞá Åáì :"
+
+msgid "Move"
+msgstr "äŞá"
+
 msgid "View Full Header"
 msgstr "ÚÑÖ ÑÃÓ ÕİÍÉ ÈÇáßÇãá"
 
-msgid "Mailer"
-msgstr "ãÑÓá ÇáÈÑíÏ"
-
-msgid "Read receipt"
-msgstr "ŞÑÇÁÉ ÅíÕÇá ÇÓÊáÇã"
-
-msgid "send"
-msgstr "ÅÑÓÇá"
-
-msgid "requested"
-msgstr "ãØáæÈ"
-
-msgid "Send read receipt now"
-msgstr "ÅÑÓÇá ŞÑÇÁÉ ÅíÕÇá ÇáÇÓÊáÇã ÇáÂä"
-
-msgid ""
-"The message sender has requested a response to indicate that you have read "
-"this message. Would you like to send a receipt?"
-msgstr ""
-"ØáÈ ãÑÓá ÇáÑÓÇáÉ ÑÏÇğ íÈíä Ãäß ŞÏ ŞÑÃÊ"
-"åĞå ÇáÑÓÇáÉ, İåá ÊÑíÏ ÅÑÓÇá ÅíÕÇá ÇÓÊáÇã¿"
+msgid "Attachments"
+msgstr "ãÑİŞÇÊ"
 
 msgid "You must be logged in to access this page."
 msgstr "íÌÈ Ãä Êßæä ŞÏ ŞãÊ ÈÊÓÌíá ÇáÏÎæá ÍÊì íãßäß ÇáæÕæá áåĞå ÇáÕİÍÉ."
 
-msgid "There was an error contacting the mail server."
-msgstr "ÍÏË ÎØÃ ÚäÏ ÇáÇÊÕÇá ÈãáŞã ÇáÈÑíÏ."
+msgid "THIS FOLDER IS EMPTY"
+msgstr "åĞÇ ÇáãÌáÏ İÇÑÛ"
 
-msgid "Contact your administrator for help."
-msgstr "Şã ÈÇáÇÊÕÇá ÈÇáãÓÄæá áØáÈ ÇáãÓÇÚÏÉ."
+msgid "All Folders"
+msgstr "ÌãíÚ ÇáãÌáÏÇÊ"
+
+msgid "Please enter something to search for"
+msgstr "ÑÌÇÁ ÇÏÎÇá äÕ ááÈÍË"
+
+msgid "There must be at least one criteria to search for"
+msgstr "áÇÈÏ ãä ÇÎÊíÇÑ äæÚíÉ æÇÍÏÉ Úáì ÇáÇŞá ááÈÍË ÚäåÇ"
+
+msgid "Error in criteria argument"
+msgstr "ÎØÃ İí ÊÍÏíÏ ÈíÇäÇÊ ÇáäæÚíÉ"
+
+msgid "M j, Y"
+msgstr ""
+
+msgid "(Illegal date)"
+msgstr "(ÊÇÑíÎ ÛíÑ ãŞÈæá)"
+
+msgid "(Wrong date)"
+msgstr "(ÊÇÑíÎ ÎÇØÆ)"
+
+msgid "In"
+msgstr "İí"
+
+msgid "(Missing argument)"
+msgstr "(äŞÕ İí ÇáÊÍÏíÏ)"
+
+msgid "(Spurious argument)"
+msgstr "(ÊÍÏíÏ ÛíÑ ãŞÈæá)"
+
+#, fuzzy
+msgid "Fold"
+msgstr "ãÌáÏÇÊ"
+
+msgid "Unfold"
+msgstr ""
 
 msgid "edit"
 msgstr "ÊÍÑíÑ"
@@ -957,8 +744,8 @@ msgstr "ÈÍË"
 msgid "delete"
 msgstr "ÍĞİ"
 
-msgid "Recent Searches"
-msgstr "ãæÇÖíÚ ÇáÈÍË ÇáÌÏíÏÉ"
+msgid "Saved Searches"
+msgstr "ãæÇÖíÚ ÇáÈÍË ÇáãÍİæÙÉ"
 
 msgid "save"
 msgstr "ÍİÙ"
@@ -966,8 +753,116 @@ msgstr "ÍİÙ"
 msgid "forget"
 msgstr "äÓíÇä"
 
-msgid "Current Search"
-msgstr "ÇáÈÍË ÇáÍÇáí "
+msgid "Recent Searches"
+msgstr "ãæÇÖíÚ ÇáÈÍË ÇáÌÏíÏÉ"
+
+msgid "Missing"
+msgstr "äÇŞÕ"
+
+msgid "and&nbsp;subfolders:"
+msgstr ""
+
+msgid "Exclude Criteria:"
+msgstr "ÊÍÏíÏ ÇÓÊËäÇÆí"
+
+msgid "Search Criteria"
+msgstr "ÊÍÏíÏ ÇáÈÍË"
+
+msgid "Folder:"
+msgstr "ÇáãÌáÏ:"
+
+msgid "No Messages Found"
+msgstr "áã íÊã ÇáÚËæÑ Úáì ÑÓÇÆá"
+
+msgid "Add New Criteria"
+msgstr "ÅÖÇİÉ ÊÍÏíÏ ÌÏíÏ"
+
+msgid "Remove Excluded Criteria"
+msgstr "ÇÒÇáÉ ÇáÊÍÏíÏ ÇáÇËÊÓäÇÆí"
+
+msgid "Remove All Criteria"
+msgstr "ÇÒÇáÉ ßÇİÉ ÇáÊÍÏíÏÇÊ"
+
+msgid "Not"
+msgstr "ÛíÑ"
+
+msgid "Answered"
+msgstr "ÊãÊ ÇáÇÌÇÈÉ"
+
+msgid "Before"
+msgstr "ŞÈá"
+
+msgid "Message Body"
+msgstr "äÕ ÇáÑÓÇáÉ"
+
+msgid "Deleted"
+msgstr "ÍĞİ"
+
+msgid "Draft"
+msgstr "ãÓæÏÉ"
+
+msgid "Flagged"
+msgstr "ãÄÔÑ"
+
+msgid "Sent By"
+msgstr "ÇÑÓá ãä:"
+
+msgid "Header Field"
+msgstr "ÍŞá ÑÃÓ ÕİÍÉ"
+
+msgid "Keyword"
+msgstr "ßáãÉ ÈÍË"
+
+msgid "Larger Than"
+msgstr "ÇßÈÑ ãä"
+
+msgid "Old"
+msgstr "ŞÏíã"
+
+msgid "On"
+msgstr "İÚÇá"
+
+msgid "Recent"
+msgstr "ÍÏíË"
+
+msgid "Seen"
+msgstr "ãŞÑæÁ"
+
+msgid "Sent Before"
+msgstr "ÇÑÓá ãÓÈŞÇ"
+
+msgid "Sent On"
+msgstr "ÇÑÓá İí"
+
+msgid "Sent Since"
+msgstr "ÇÑÓá ãä"
+
+msgid "Since"
+msgstr "ãäĞ"
+
+msgid "Smaller Than"
+msgstr "ÇÕÛÑ ãä"
+
+msgid "Subject Contains"
+msgstr "ÇáÚäæÇä íÍÊæí"
+
+msgid "Header and Body"
+msgstr "ÑÃÓ ÇáÕİÍÉ æäÕ ÇáÑÓÇáÉ"
+
+msgid "Sent To"
+msgstr "ÇÑÓá Çáì"
+
+msgid "And In"
+msgstr "æİí"
+
+msgid "Or In"
+msgstr "Ãæ İí"
+
+msgid "And"
+msgstr "ÅÖÇİÉ"
+
+msgid "Or"
+msgstr "Ãæ"
 
 msgid "Body"
 msgstr "ÇáäÕ"
@@ -975,11 +870,14 @@ msgstr "ÇáäÕ"
 msgid "Everywhere"
 msgstr "İí ßá ãßÇä"
 
-msgid "Search Results"
-msgstr "äÊÇÆÌ ÇáÈÍË"
+msgid "Standard search"
+msgstr "ÈÍË ÚÇÏí"
 
-msgid "No Messages found"
-msgstr "áã íÊã ÇáÚËæÑ Úáì ÑÓÇÆá"
+msgid "Advanced search"
+msgstr "ÈÍË ãØæÑ"
+
+msgid "Signout"
+msgstr "ÊÓÌíá ÇáÎÑæÌ"
 
 msgid "Sign Out"
 msgstr "ÊÓÌíá ÇáÎÑæÌ"
@@ -992,6 +890,10 @@ msgstr "ÇäŞÑ åäÇ áÅÚÇÏÉ ÊÓÌíá ÇáÏÎæá "
 
 msgid "Viewing a Business Card"
 msgstr "ÚÑÖ ÈØÇŞÉ ÊÚÑíİ ãåäÉ"
+
+#, c-format
+msgid "vCard Version %s is not supported. Some information might not be converted correctly."
+msgstr ""
 
 msgid "Title"
 msgstr "ÇááŞÈ"
@@ -1026,11 +928,36 @@ msgstr "ãáÇÍÙÉ"
 msgid "Add to Addressbook"
 msgstr "ÅÖÇİÉ Åáì ÏİÊÑ ÇáÚäÇæíä"
 
-msgid "Note Field Contains"
-msgstr "ÍŞá ãáÇÍÙÉ íÍÊæí Úáì"
+msgid "Nickname:"
+msgstr "ÇÓã ãÓÊÚÇÑ"
+
+msgid "Note Field Contains:"
+msgstr "ÍŞá ãáÇÍÙÉ íÍÊæí Úáì:"
 
 msgid "Title & Org. / Dept."
 msgstr "ÇááŞÈ & ÇáãÄÓÓÉ/ ÇáŞÓã."
+
+msgid "Add to Address Book"
+msgstr "ÅÖÇİÉ Åáì ÏİÊÑ ÇáÚäÇæíä"
+
+msgid "Viewing Full Header"
+msgstr "ÚÑÖ ÑÃÓ ÕİÍÉ ÈÇáßÇãá"
+
+msgid "Viewing a text attachment"
+msgstr "ÚÑÖ ãÑİŞ äÕ "
+
+msgid "Folder List"
+msgstr "ŞÇÆãÉ ÇáãÌáÏÇÊ"
+
+msgid "Could not include PEAR database functions required for the database backend."
+msgstr ""
+
+#, c-format
+msgid "Is PEAR installed, and is the include path set correctly to find %s?"
+msgstr ""
+
+msgid "Please contact your system administrator and report this error."
+msgstr "íÑÌì ÇáÇÊÕÇá ÈãÓÄæá ÇáäÙÇã æÇáÊÈáíÛ Úä åĞÇ ÇáÎØÃ."
 
 msgid "Personal address book"
 msgstr "ÏİÊÑ ÚäÇæíä ÔÎÕí "
@@ -1102,6 +1029,9 @@ msgstr "ÚäæÇä ÈÑíÏ ÅáßÊÑæäí äÇŞÕ"
 
 msgid "Nickname contains illegal characters"
 msgstr "ÇÓã ßäíÉ íÍÊæì Úáì ÃÍÑİ ÛíÑ ÔÑÚíÉ"
+
+msgid "Click here to change the sorting of the address list"
+msgstr "ÇäŞÑ åäÇ áÊÛííÑ ÊÑÊíÈ ŞÇÆãÉ ÇáÚäÇæíä"
 
 msgid "view"
 msgstr "ÚÑÖ"
@@ -1199,6 +1129,9 @@ msgstr "ãÇÑÓ"
 msgid "Apr"
 msgstr "ÃÈÑíá"
 
+msgid "Ma&#121;"
+msgstr ""
+
 msgid "Jun"
 msgstr "íæäíæ"
 
@@ -1238,18 +1171,9 @@ msgstr ""
 msgid "D, G:i"
 msgstr ""
 
-msgid "M j, Y"
-msgstr ""
-
 #, c-format
 msgid "Preference database error (%s). Exiting abnormally"
 msgstr "ÎØÃ  ŞÇÚÏÉ ÈíÇäÇÊ ÊİÖíá (%s) . ãæÌæÏ ÈÔßá ÛíÑ ØÈíÚí "
-
-msgid "Unknown user or password incorrect."
-msgstr "ãÓÊÎÏã ÛíÑ ãÚÑæİ Ãæ ßáãÉ ãÑæÑ ÛíÑ ÕÍíÍÉ."
-
-msgid "Click here to try again"
-msgstr "ÇäŞÑ åäÇ áÊßÑÇÑ ÇáãÍÇæáÉ"
 
 #, c-format
 msgid "Click here to return to %s"
@@ -1259,28 +1183,20 @@ msgid "Go to the login page"
 msgstr "ÇáĞåÇÈ Åáì ÕİÍÉ ÊÓÌíá ÇáÏÎæá"
 
 #, c-format
-msgid ""
-"Preference file, %s, does not exist. Log out, and log back in to create a "
-"default preference file."
-msgstr ""
-"ãáİ ÊİÖíá,  %s, ÛíÑ ãæÌæÏ. Şã ÈÊÓÌíá ÇáÎÑæÌ Ëã ãÚÇæÏÉ ÊÓÌíá ÇáÏÎæá æĞáß áÅäÔÇÁ"
-"ãáİ ÊİÖíá ÇİÊÑÇÖí. "
+msgid "Preference file, %s, does not exist. Log out, and log back in to create a default preference file."
+msgstr "ãáİ ÊİÖíá,  %s, ÛíÑ ãæÌæÏ. Şã ÈÊÓÌíá ÇáÎÑæÌ Ëã ãÚÇæÏÉ ÊÓÌíá ÇáÏÎæá æĞáß áÅäÔÇÁãáİ ÊİÖíá ÇİÊÑÇÖí. "
 
 #, c-format
-msgid ""
-"Preference file, %s, could not be opened. Contact your system administrator "
-"to resolve this issue."
-msgstr ""
-"íÊÚĞÑ İÊÍ ãáİ ÇáÊİÖíá,  %s. Şã ÈÇáÇÊÕÇá ÈãÓÄæá ÇáäÙÇã "
-"áÍá åĞå ÇáãÓÃáÉ."
+msgid "Preference file, %s, could not be opened. Contact your system administrator to resolve this issue."
+msgstr "íÊÚĞÑ İÊÍ ãáİ ÇáÊİÖíá,  %s. Şã ÈÇáÇÊÕÇá ÈãÓÄæá ÇáäÙÇã áÍá åĞå ÇáãÓÃáÉ."
 
 #, c-format
-msgid ""
-"Preference file, %s, could not be written. Contact your system administrator "
-"to resolve this issue."
-msgstr ""
-"ÊÊÚĞÑ ÇáßÊÇÈÉ Úáì ãáİ ÇáÊİÖíá,  %s. Şã ÈÇáÇÊÕÇá ÈãÓÄæá ÇáäÙÇã "
-"áÍá åĞå ÇáãÓÃáÉ."
+msgid "Preference file, %s, could not be written. Contact your system administrator to resolve this issue."
+msgstr "ÊÊÚĞÑ ÇáßÊÇÈÉ Úáì ãáİ ÇáÊİÖíá,  %s. Şã ÈÇáÇÊÕÇá ÈãÓÄæá ÇáäÙÇã áÍá åĞå ÇáãÓÃáÉ."
+
+#, fuzzy, c-format
+msgid "Preference file, %s, could not be copied from temporary file, %s. Contact your system administrator to resolve this issue."
+msgstr "íÊÚĞÑ İÊÍ ãáİ ÇáÊİÖíá,  %s. Şã ÈÇáÇÊÕÇá ÈãÓÄæá ÇáäÙÇã áÍá åĞå ÇáãÓÃáÉ."
 
 #, c-format
 msgid "Error opening %s"
@@ -1288,9 +1204,6 @@ msgstr "ÎØÃ İÊÍ  %s"
 
 msgid "Default preference file not found or not readable!"
 msgstr "ãáİ ÇáÊİÖíá ÇáÇİÊÑÇÖí ÛíÑ ãæÌæÏ Ãæ Ãäå ÛíÑ ŞÇÈá ááŞÑÇÁÉ!"
-
-msgid "Please contact your system administrator and report this error."
-msgstr "íÑÌì ÇáÇÊÕÇá ÈãÓÄæá ÇáäÙÇã æÇáÊÈáíÛ Úä åĞÇ ÇáÎØÃ."
 
 msgid "Could not create initial preference file!"
 msgstr "íÊÚĞÑ ÅäÔÇÁ ãáİ ÇáÊİÖíá ÇáÇÈÊÏÇÆí!"
@@ -1300,32 +1213,52 @@ msgid "%s should be writable by user %s"
 msgstr "%s íÌÈ Ãä Êßæä ŞÇÈáÉ ááßÊÇÈÉ ÈæÇÓØÉ ÇáãÓÊÎÏã %s"
 
 #, c-format
-msgid ""
-"Signature file, %s, could not be opened. Contact your system administrator "
-"to resolve this issue."
-msgstr ""
-"íÊÚĞÑ İÊÍ ãáİ ÇáÊæŞíÚ,  %s. Şã ÈÇáÇÊÕÇá ÈãÓÄæá ÇáäÙÇã "
-"áÍá åĞå ÇáãÓÃáÉ."
+msgid "Signature file, %s, could not be opened. Contact your system administrator to resolve this issue."
+msgstr "íÊÚĞÑ İÊÍ ãáİ ÇáÊæŞíÚ,  %s. Şã ÈÇáÇÊÕÇá ÈãÓÄæá ÇáäÙÇã áÍá åĞå ÇáãÓÃáÉ."
 
 #, c-format
-msgid ""
-"Signature file, %s, could not be written. Contact your system administrator "
-"to resolve this issue."
-msgstr ""
-"íÊÚĞÑ İÊÍ ãáİ ÇáÊæŞíÚ,  %s. Şã ÈÇáÇÊÕÇá ÈãÓÄæá ÇáäÙÇã "
-"áÍá åĞå ÇáãÓÃáÉ."
+msgid "Signature file, %s, could not be written. Contact your system administrator to resolve this issue."
+msgstr "íÊÚĞÑ İÊÍ ãáİ ÇáÊæŞíÚ,  %s. Şã ÈÇáÇÊÕÇá ÈãÓÄæá ÇáäÙÇã áÍá åĞå ÇáãÓÃáÉ."
+
+#, fuzzy, c-format
+msgid "Signature file, %s, could not be copied from temporary file, %s. Contact your system administrator to resolve this issue."
+msgstr "íÊÚĞÑ İÊÍ ãáİ ÇáÊæŞíÚ,  %s. Şã ÈÇáÇÊÕÇá ÈãÓÄæá ÇáäÙÇã áÍá åĞå ÇáãÓÃáÉ."
 
 msgid "ERROR : Could not complete request."
 msgstr "ÎØÃ : íÊÚĞÑ ÇÓÊßãÇá ÇáØáÈ"
 
-msgid "Query:"
-msgstr "ÇÓÊÚáÇã:"
+msgid "ERROR : Bad or malformed request."
+msgstr "ÎØÃ : ØáÈ ÛíÑ ÕÇáÍ  Ãæ ÓíÆ ÇáÕíÇÛÉ "
+
+msgid "ERROR : Imap server closed the connection."
+msgstr ""
+
+msgid "ERROR : Connection dropped by imap-server."
+msgstr ""
+
+msgid "ERROR : Unknown imap response."
+msgstr ""
 
 msgid "Reason Given: "
 msgstr "ÇáÓÈÈ ÇáãĞßæÑ:"
 
-msgid "ERROR : Bad or malformed request."
-msgstr "ÎØÃ : ØáÈ ÛíÑ ÕÇáÍ  Ãæ ÓíÆ ÇáÕíÇÛÉ "
+msgid "Possible reason : "
+msgstr "ÇáÓÈÈ Çáããßä :"
+
+msgid "Query:"
+msgstr "ÇÓÊÚáÇã:"
+
+msgid "ERROR : No available imapstream."
+msgstr ""
+
+msgid "ERROR : Bad function call."
+msgstr ""
+
+msgid "Reason:"
+msgstr "ÇáÇÓÊÌÇÈÉ:"
+
+msgid "Server responded:"
+msgstr "ÇÓÊÌÇÈÉ ÇáãáŞã:"
 
 msgid "Server responded: "
 msgstr "ÇÓÊÌÇÈÉ ÇáãáŞã:"
@@ -1345,69 +1278,51 @@ msgstr "ÎØÃ ÛíÑ ãÚÑæİ: %s"
 msgid "Read data:"
 msgstr "ŞÑÇÁÉ ÈíÇäÇÊ:"
 
-msgid "Unknown response from IMAP server: "
-msgstr "ÇÓÊÌÇÈÉ ÛíÑ ãÚÑæİÉ ãä ãáŞãIMAP :"
+msgid "Unknown user or password incorrect."
+msgstr "ãÓÊÎÏã ÛíÑ ãÚÑæİ Ãæ ßáãÉ ãÑæÑ ÛíÑ ÕÍíÍÉ."
 
-msgid "Unknown message number in reply from server: "
-msgstr "ÑŞã ÑÓÇáÉ ÛíÑ ãÚÑæİ İì ÅÌÇÈÉ ãä ãáŞã:"
+#, fuzzy
+msgid "ERROR : Could not append message to"
+msgstr "ÎØÃ : íÊÚĞÑ ÇÓÊßãÇá ÇáØáÈ"
+
+#, fuzzy
+msgid "Solution: "
+msgstr "ÇŞÊÑÇÍÇÊ:"
+
+msgid "Remove unneccessary messages from your folder and start with your Trash folder."
+msgstr "ÇÒá ÇáÑÓÇÆá ÇáÛíÑ ãÑÛæÈ İíåÇ ãä ãÌáÏÇÊß ÈÏÁÇ ÈãÌáÏ ÇáäİÇíÇÊ"
+
+msgid "The server couldn't find the message you requested."
+msgstr "ÇáãáŞã áã íÊãßä ãä ÇáÚËæÑ Úáì ÇáÑÓÇáÉ ÇáÊí ØáÈÊåÇ"
+
+msgid "Most probably your message list was out of date and the message has been moved away or deleted (perhaps by another program accessing the same mailbox)."
+msgstr ""
 
 msgid "(no subject)"
 msgstr "( áÇ íæÌÏ ãæÖæÚ)"
 
-msgid "Unknown Sender"
+msgid "Unknown recipient"
 msgstr "ãÑÓá ÛíÑ ãÚÑæİ"
 
-msgid "No To Address"
-msgstr "ÛíÑ ãæÌå Åáì ÚäæÇä"
-
-msgid "(unknown sender)"
-msgstr "(ãÑÓá ÛíÑ ãÚÑæİ)"
-
-msgid "No Messages Found"
-msgstr "áã íÊã ÇáÚËæÑ Úáì ÑÓÇÆá"
-
-msgid "Folder:"
-msgstr "ÇáãÌáÏ:"
-
-msgid "Found"
-msgstr "Êã ÇáÚËæÑ Úáì"
-
-msgid "messages"
-msgstr "ÑÓÇÆá"
-
-msgid "A"
-msgstr "Ã"
-
-msgid ""
-"Server-side sorting is not supported by your IMAP server.<br>Please report "
-"this to the system administrator"
-msgstr ""
-"ãáŞãIMAP áÇ íÏÚã ÇáİÑÒ ÇáÌÇäÈí ááãáŞã .<br>íÑÌì ÊÈáíÛ"
-"ãÓÄæá ÇáäÙÇã Úä Ğáß"
-
-msgid "THIS FOLDER IS EMPTY"
-msgstr "åĞÇ ÇáãÌáÏ İÇÑÛ"
-
-msgid "Move Selected To:"
-msgstr "äŞá ÇáãÍÏÏ Åáì:"
-
-msgid "Transform Selected Messages"
-msgstr "ÊÍæíá ÑÓÇÆá ãÍÏÏÉ"
-
-msgid "Move"
-msgstr "äŞá"
-
-msgid "Expunge"
-msgstr "ÔØÈ"
-
-msgid "mailbox"
-msgstr "ÚáÈÉ ÇáÈÑíÏ"
+msgid "Unknown date"
+msgstr "ÊÇÑíÎ ÛíÑ ãÚÑæİ"
 
 msgid "Read"
 msgstr "ãŞÑæÁ"
 
-msgid "Unread"
-msgstr "ÛíÑ ãŞÑæÁ"
+msgid "A"
+msgstr "Ã"
+
+#, fuzzy
+msgid "Thread sorting is not supported by your IMAP server."
+msgstr "ãáŞãIMAP áÇ íÏÚã ÇáİÑÒ ÇáÌÇäÈí ááãáŞã .<br>íÑÌì ÊÈáíÛãÓÄæá ÇáäÙÇã Úä Ğáß"
+
+msgid "Please report this to the system administrator."
+msgstr "íÑÌì ÇáÇÊÕÇá ÈãÓÄæá ÇáäÙÇã æÇáÊÈáíÛ Úä åĞÇ ÇáÎØÃ."
+
+#, fuzzy
+msgid "Server-side sorting is not supported by your IMAP server."
+msgstr "ãáŞãIMAP áÇ íÏÚã ÇáİÑÒ ÇáÌÇäÈí ááãáŞã .<br>íÑÌì ÊÈáíÛãÓÄæá ÇáäÙÇã Úä Ğáß"
 
 msgid "Unthread View"
 msgstr "ÚÑÖ ãÄÔÑ ÊÑÇÈØ "
@@ -1415,21 +1330,33 @@ msgstr "ÚÑÖ ãÄÔÑ ÊÑÇÈØ "
 msgid "Thread View"
 msgstr "ÚÑÖ ÈÏæä ãÄÔÑ ÊÑÇÈØ "
 
+msgid "Unflag"
+msgstr "ÇÒá ÇáÇÔÇÑÇÊ"
+
+msgid "Flag"
+msgstr "ÅÔÇÑÇÊ"
+
+msgid "Unread"
+msgstr "ÛíÑ ãŞÑæÁ"
+
+msgid "Expunge"
+msgstr "ÔØÈ"
+
+msgid "mailbox"
+msgstr "ÚáÈÉ ÇáÈÑíÏ"
+
+msgid "Click here to change the sorting of the message list"
+msgstr "ÇäŞÑ åäÇ áÊÛííÑ ÊÑÊíÈ ŞÇÆãÉ ÇáÑÓÇÆá"
+
 msgid "Toggle All"
 msgstr "ÊÈÏíá Çáßá"
 
-msgid "Unselect All"
-msgstr "ÅáÛÇÁ ÊÍÏíÏ Çáßá"
-
-msgid "Select All"
-msgstr "ÊÍÏíÏ ßáí"
-
 #, c-format
-msgid "Viewing Messages: <B>%s</B> to <B>%s</B> (%s total)"
+msgid "Viewing Messages: %s to %s (%s total)"
 msgstr "ÚÑÖ ÑÓÇÆá:<B>%s</B>Åáì<B>%s</B>(ÅÌãÇáí %s) "
 
 #, c-format
-msgid "Viewing Message: <B>%s</B> (1 total)"
+msgid "Viewing Message: %s (1 total)"
 msgstr "ÚÑÖ ÑÓÇáÉ:<B>%s</B>( ÅÌãÇáí æÇÍÏ)"
 
 msgid "Paginate"
@@ -1438,15 +1365,17 @@ msgstr "ÊÚííä ÇáÍÏæÏ ÇáİÇÕáÉ ááÕİÍÇÊ"
 msgid "Show All"
 msgstr "ÅÙåÇÑ Çáßá"
 
-msgid "Error decoding mime structure.  Report this as a bug!"
-msgstr "ÎØÃ İì İß ÑãæÒ ÈäíÉ mime. íÊã ÇáÊÈáíÛ Úä Ğáß ßÎáá!"
+msgid "No messages were selected."
+msgstr "áã íÊã ÊÍÏíÏ ÃíÉ ÑÓÇÆá ."
 
-msgid ""
-"Body retrieval error. The reason for this is most probably that the message "
-"is malformed."
+msgid "SquirrelMail could not decode the bodystructure of the message"
 msgstr ""
-"ÎØÃ İì ÇÓÊÑÏÇÏ äÕ. íßæä ÇáÓÈÈ ÛÇáÈÇğ åæ ÚÏã"
-"Êßæíä ÇáÑÓÇáÉ ÌíÏÇğ."
+
+msgid "the provided bodystructure by your imap-server"
+msgstr ""
+
+msgid "Body retrieval error. The reason for this is most probably that the message is malformed."
+msgstr "ÎØÃ İì ÇÓÊÑÏÇÏ äÕ. íßæä ÇáÓÈÈ ÛÇáÈÇğ åæ ÚÏãÊßæíä ÇáÑÓÇáÉ ÌíÏÇğ."
 
 msgid "Command:"
 msgstr "ÇáÃãÑ:"
@@ -1466,24 +1395,18 @@ msgstr "ÅÎİÇÁ ÕæÑ ÛíÑ ÂãäÉ"
 msgid "View Unsafe Images"
 msgstr "ÚÑÖ ÕæÑ ÛíÑ ÂãäÉ"
 
-msgid "Attachments"
-msgstr "ãÑİŞÇÊ"
-
 msgid "download"
 msgstr "ÊÍãíá"
 
 msgid "sec_remove_eng.png"
 msgstr ""
 
+msgid "This external link will open in a new window"
+msgstr "åĞÇ ÇáÑÇÈØ ÇáÎÇÑÌí Óæİ íİÊÍ İí ÔÈÇß ÌÏíÏ"
+
 #, c-format
 msgid "Option Type '%s' Not Found"
 msgstr "áã íÊã ÇáÚËæÑ Úáì äæÚ ÇáÎíÇÑ'%s'"
-
-msgid "Yes"
-msgstr "äÚã"
-
-msgid "No"
-msgstr "áÇ"
 
 msgid "Current Folder"
 msgstr "ÇáãÌáÏ ÇáÍÇáí"
@@ -1498,31 +1421,1100 @@ msgstr "ÎØÃ ÅäÔÇÁ Ïáíá  %s."
 msgid "Could not create hashed directory structure!"
 msgstr "ÊÚĞÑ ÅäÔÇÁ ÈäíÉ Ïáíá ãÌÒÃÉ!"
 
-msgid ""
-"COMMERCIAL - This list contains servers that are verified spam senders. It "
-"is a pretty reliable list to scan spam from."
+msgid "Service not available, closing channel"
 msgstr ""
-"ÅÚáÇä ÊÌÇÑí- ÊÍÊæì åĞå ÇáŞÇÆãÉ Úáì ãáŞãÇÊ ÊŞæã ÈÇáÊÍŞŞ ãä ãÑÓáí ÇáÈÑíÏ ÛíÑ ÇáãÑÛæÈ İíå. "
-"æåì ŞÇÆãÉ íãßä ÇáÇÚÊãÇÏ ÚáíåÇ áãÓÍ ÇáÈÑíÏ ÛíÑ ÇáãÑÛæÈ ."
 
-
-msgid ""
-"COMMERCIAL - Servers that are configured (or misconfigured) to allow spam to "
-"be relayed through their system will be banned with this.  Another good one "
-"to use."
+msgid "A password transition is needed"
 msgstr ""
-"ÅÚáÇä ÊÌÇÑí- ãáŞãÇÊ íÊã ÊßæíäåÇ (Ãæ ÅÓÇÁÉ ÊßæíäåÇ) áÍÙÑ ÇáÈÑíÏ ÛíÑ ÇáãÑÛæÈ"
-"ÇáãÓãæÍ áå ÈÇáãÑæÑ İì äÙÇãåã."
-"ØÑíŞÉ ÃÎÑì ÕÇáÍÉ ááÇÓÊÎÏÇã."
 
-msgid ""
-"COMMERCIAL - Dial-up users are often filtered out since they should use "
-"their ISP's mail servers to send mail.  Spammers typically get a dial-up "
-"account and send spam directly from there."
+msgid "Requested mail action not taken: mailbox unavailable"
 msgstr ""
-"ÅÚáÇä ÊÌÇÑí- íÊã ÛÇáÈÇ ÊÕİíÉ ãÓÊÎÏãí ÇáØáÈ ÇáåÇÊİí áßæäåã ãÖØÑíä áÇÓÊÎÏÇã ãáŞãÇÊ ÇáÈÑíÏ "
-"ÇáÎÇÕÉ ÈÔÑßÇÊ ÊæİíÑ ÇáÅäÊÑäÊ, æíÍÕá ãÑÓáæ ÇáÈÑíÏ ÛíÑ ÇáãÑÛæÈ ÚÇÏÉ Úáì ÇÔÊÑÇß ØáÈ åÇÊİí "
-"áÅÑÓÇá ÑÓÇÆáåã ãä åäÇáß ãÈÇÔÑÉ ."
+
+msgid "Requested action aborted: error in processing"
+msgstr ""
+
+msgid "Requested action not taken: insufficient system storage"
+msgstr ""
+
+#, fuzzy
+msgid "Temporary authentication failure"
+msgstr "İÔá ÇáãÕÇÏŞÉ Úáìapop"
+
+msgid "Syntax error; command not recognized"
+msgstr ""
+
+msgid "Syntax error in parameters or arguments"
+msgstr ""
+
+#, fuzzy
+msgid "Command not implemented"
+msgstr "İÔá ÇáÃãÑ"
+
+msgid "Bad sequence of commands"
+msgstr ""
+
+msgid "Command parameter not implemented"
+msgstr ""
+
+#, fuzzy
+msgid "Authentication required"
+msgstr "İÔá ÇáãÕÇÏŞÉ "
+
+msgid "Authentication mechanism is too weak"
+msgstr ""
+
+#, fuzzy
+msgid "Authentication failed"
+msgstr "İÔá ÇáãÕÇÏŞÉ "
+
+msgid "Encryption required for requested authentication mechanism"
+msgstr ""
+
+msgid "Requested action not taken: mailbox unavailable"
+msgstr ""
+
+msgid "User not local; please try forwarding"
+msgstr ""
+
+msgid "Requested mail action aborted: exceeding storage allocation"
+msgstr ""
+
+msgid "Requested action not taken: mailbox name not allowed"
+msgstr ""
+
+msgid "Transaction failed"
+msgstr "İÔá ÇáãÕÇÏŞÉ "
+
+msgid "Unknown response"
+msgstr "ÇÌÇÈÉ ÛíÑ ãÚÑæİÉ"
+
+msgid "General Display Options"
+msgstr "ÎíÇÑÇÊ ÇáÚÑÖ ÇáÚÇã "
+
+msgid "Theme"
+msgstr "ÇáÓãÉ"
+
+msgid "Default"
+msgstr "ÇáÇİÊÑÇÖí"
+
+msgid "Custom Stylesheet"
+msgstr "æÑŞÉ Stylesheet ãÎÕÕÉ"
+
+msgid "Language"
+msgstr "ÇááÛÉ"
+
+msgid "Use Javascript"
+msgstr "ÇÓÊÎÏÇã Javascript"
+
+msgid "Autodetect"
+msgstr "ßÔİ ÊáŞÇÆí"
+
+msgid "Always"
+msgstr "ÏæãÇğ"
+
+msgid "Never"
+msgstr "ãØáŞÇğ"
+
+msgid "Mailbox Display Options"
+msgstr "ÎíÇÑÇÊ ÚÑÖ ÚáÈÉ ÇáÈÑíÏ"
+
+msgid "Number of Messages to Index"
+msgstr "ÚÏÏ ãä ÇáÑÓÇÆá ááİåÑÓÉ"
+
+msgid "Enable Alternating Row Colors"
+msgstr "Êãßíä Alternating Row Colors"
+
+msgid "Message Flags Icon Theme"
+msgstr "Ôßá ÑãæÒ ÇáÇÔÇÑÇÊ"
+
+msgid "Show Flag / Unflag Buttons"
+msgstr "ÇÙåÑ / ÇÎİí ÇÒÑÇÑ ÇáÇÔÇÑÇÊ"
+
+msgid "Enable Page Selector"
+msgstr "Êãßíä Page Selector "
+
+msgid "Maximum Number of Pages to Show"
+msgstr "ÃŞÕì ÚÏÏ ãä ÇáÕİÍÇÊ íãßä ÅÙåÇÑå "
+
+msgid "Always Show Full Date"
+msgstr "ÏÇÆãÇ ÇÙåÑ ÇáÊÇÑíÎ ÈÇáßÇãá"
+
+msgid "Length of From/To Field (0 for full)"
+msgstr ""
+
+msgid "Length of Subject Field (0 for full)"
+msgstr ""
+
+msgid "Show recipient name if the message is from your default identity"
+msgstr ""
+
+msgid "Message Display and Composition"
+msgstr "ÚÑÖ æÅäÔÇÁ ÑÓÇáÉ "
+
+msgid "Wrap Incoming Text At"
+msgstr "ÇáÊİÇİ ÇáäÕ ÇáæÇÑÏ ÚäÏ  "
+
+msgid "Width of Editor Window"
+msgstr "ÚÑÖ ÅØÇÑ ÇáãÍÑÑ"
+
+msgid "Height of Editor Window"
+msgstr "Øæá ÅØÇÑ ÇáãÍÑÑ"
+
+msgid "Location of Buttons when Composing"
+msgstr "ãæŞÚ ÇáÃÒÑÇÑ ÚäÏ ÇáÅäÔÇÁ"
+
+msgid "Before headers"
+msgstr "ŞÈá ÑÄæÓ ÇáÕİÍÇÊ"
+
+msgid "Between headers and message body"
+msgstr "Èíä ÑÄæÓ ÇáÕİÍÇÊ æäÕ ÇáÑÓÇáÉ "
+
+msgid "After message body"
+msgstr "ÈÚÏ äÕ ÇáÑÓÇáÉ "
+
+msgid "Addressbook Display Format"
+msgstr "ÊäÓíŞ ÚÑÖ ÏİÊÑ ÇáÚäÇæíä "
+
+msgid "Javascript"
+msgstr "Javascript"
+
+msgid "HTML"
+msgstr "HTML"
+
+msgid "Show HTML Version by Default"
+msgstr "ÇáÅÙåÇÑ ÇáÇİÊÑÇÖí áÅÕÏÇÑ HTML"
+
+msgid "Enable Forward as Attachment"
+msgstr ""
+
+msgid "Include CCs when Forwarding Messages"
+msgstr "ÊÖãíä äÓÎ CC ÚäÏ ÊæÌíå ÇáÑÓÇÆá"
+
+msgid "Include Me in CC when I Reply All"
+msgstr "ÊÖãíä äİÓíMe  İì ÇáäÓÎÉ CC ÚäÏ ÅÌÇÈÉ Çáßá"
+
+msgid "Enable Mailer Display"
+msgstr "Êãßíä Mailer Display"
+
+msgid "Display Attached Images with Message"
+msgstr "ÚÑÖ ÕæÑ ãÑİŞÉ ÈÑÓÇáÉ"
+
+msgid "Enable Printer Friendly Clean Display"
+msgstr "Êãßíä Printer Friendly Clean Display"
+
+msgid "Enable Mail Delivery Notification"
+msgstr "Êãßíä ÊÃßíÏ æÕæá ÇáÈÑíÏ ÇáãÑÓá"
+
+msgid "Compose Messages in New Window"
+msgstr "ÇäÔÇÁ ÇáÑÓÇÆá İí ÔÈÇß ÌÏíÏ"
+
+msgid "Width of Compose Window"
+msgstr "ÚÑÖ ÅØÇÑ ÇáÅäÔÇÁ"
+
+msgid "Height of Compose Window"
+msgstr "ÇÑÊİÇÚ ÅØÇÑ ÇáÅäÔÇÁ"
+
+msgid "Append Signature before Reply/Forward Text"
+msgstr "ÅáÍÇŞ ÊæŞíÚ ŞÈá ÅÌÇÈÉ/ÊæÌíå äÕ"
+
+msgid "Prefix for Original Message when Replying"
+msgstr ""
+
+msgid "Cursor Position when Replying"
+msgstr "ãæŞÚ ÇáãÄÔÑ ÚäÏ ÇáÇÌÇÈÉ"
+
+msgid "To: field"
+msgstr "ÎÇäÉ Åáì:"
+
+msgid "Focus in body"
+msgstr "ÇáÊÑßíÒ ÚäÏ äÕ ÇáÑÓÇáÉ"
+
+msgid "Select body"
+msgstr "ÊÍÏíÏ äÕ ÇáÑÓÇáÉ"
+
+msgid "Strip signature when replying"
+msgstr "ÇÒá ÇáÊæŞíÚ ÚäÏ ÇáÇÌÇÈÉ"
+
+msgid "Enable Sort by of Receive Date"
+msgstr "Êãßíä ÇáÊÑÊíÈ ÈÊÇÑíÎ ÇáÇÓÊáÇã"
+
+msgid "Enable Thread Sort by References Header"
+msgstr ""
+
+msgid "Show 'Delete & Prev/Next' Links"
+msgstr "ÇÙåÑ ÑæÇÈØ \"ÇáÍĞİ æÇáÊÇáí/ÇáÓÇÈŞ\""
+
+msgid "Special Folder Options"
+msgstr "ÎíÇÑÇÊ ÇáãÌáÏ ÇáÎÇÕ "
+
+msgid "Folder Path"
+msgstr "ãÓÇÑ ÇáãÌáÏ "
+
+msgid "Do not use Trash"
+msgstr "áÇ ÊÓÊÎÏã ãÌáÏ ÇáãåãáÇÊ ÓáÉ ÇáãåãáÇÊ "
+
+msgid "Trash Folder"
+msgstr "ãÌáÏ ÓáÉ ÇáãåãáÇÊ"
+
+msgid "Do not use Drafts"
+msgstr "áÇ ÊÓÊÎÏã ãÌáÏ ÇáãÓæÏÇÊ ÇáãÓæÏÇÊ "
+
+msgid "Draft Folder"
+msgstr "ãÌáÏ ÇáãÓæÏÇÊ "
+
+msgid "Do not use Sent"
+msgstr "áÇ ÊÓÊÎÏã ãÌáÏ ÇáÑÓÇÆá ÇáãÑÓáÉ ÇáÕÇÏÑ       "
+
+msgid "Sent Folder"
+msgstr "ãÌáÏ ÇáÕÇÏÑ"
+
+msgid "Save Replies with Original Message"
+msgstr "ÇÍİÙ ÇáÇÌÇÈÉ ãÚ ÇáÑÓÇáÉ ÇáÇÕáíÉ"
+
+msgid "Folder List Options"
+msgstr "ÎíÇÑÇÊ ŞÇÆãÉ ÇáãÌáÏÇÊ "
+
+msgid "Location of Folder List"
+msgstr "ãæŞÚ ŞÇÆãÉ ÇáãÌáÏÇÊ"
+
+msgid "Left"
+msgstr "íÓÇÑ"
+
+msgid "Right"
+msgstr "íãíä"
+
+msgid "pixels"
+msgstr "ÈßÓá"
+
+msgid "Width of Folder List"
+msgstr "ÚÑÖ ŞÇÆãÉ ÇáãÌáÏÇÊ"
+
+msgid "Minutes"
+msgstr "ÏŞÇÆŞ"
+
+msgid "Seconds"
+msgstr "ËæÇäí"
+
+msgid "Minute"
+msgstr "ÏŞíŞÉ"
+
+msgid "Auto Refresh Folder List"
+msgstr "ŞÇÆãÉ ãÌáÏ ÇáÊÍÏíË ÊáŞÇÆí "
+
+msgid "Enable Unread Message Notification"
+msgstr "Êãßíä Unread Message Notification"
+
+msgid "No Notification"
+msgstr "áÇ íæÌÏ ÅÚáÇã"
+
+msgid "Only INBOX"
+msgstr "ÚáÈÉ æÇÑÏ İŞØ "
+
+msgid "Unread Message Notification Type"
+msgstr "äæÚ ÇáÅÚáÇã Úä ÇáÑÓÇáÉ ÛíÑ ÇáãŞÑæÁÉ"
+
+msgid "Only Unseen"
+msgstr "ÛíÑ ãÑÆí Unseen İŞØ"
+
+msgid "Unseen and Total"
+msgstr "ÛíÑ ãÑÆí Unseen æÅÌãÇáí Total"
+
+msgid "Enable Collapsable Folders"
+msgstr "Êãßíä Collapsable Folders"
+
+#, fuzzy
+msgid "Enable Cumulative Unread Message Notification"
+msgstr "Êãßíä Unread Message Notification"
+
+msgid "Show Clock on Folders Panel"
+msgstr "ÅÙåÇÑ ÓÇÚÉ Úáì áæÍÉ ÇáãÌáÏÇÊ"
+
+#, fuzzy
+msgid "International date and time"
+msgstr "ÅÖÇİÉ ŞæÇãíÓ ÚÇáãíÉ "
+
+msgid "American date and time"
+msgstr ""
+
+#, fuzzy
+msgid "European date and time"
+msgstr "ÃÓÈÇäíÉ ÃæÑÈíÉ"
+
+msgid "Show weekday and time"
+msgstr "ÇÙåÑ íæã ÇáÇÓÈæÚ æÇáæŞÊ"
+
+msgid "Show time with seconds"
+msgstr "ÇÙåÑ ÇáæŞÊ ÈÇáËæÇäí"
+
+msgid "Show time"
+msgstr "ÇÙåÑ ÇáæŞÊ"
+
+msgid "No Clock"
+msgstr "áÇ ÊæÌÏ ÓÇÚÉ"
+
+msgid "Hour Format"
+msgstr "ÊäÓíŞ ÇáÓÇÚÉ Hour"
+
+msgid "12-hour clock"
+msgstr "ÓÇÚÉ 12 ÓÇÚÉ"
+
+msgid "24-hour clock"
+msgstr "ÓÇÚÉ 24 ÓÇÚÉ"
+
+msgid "Memory Search"
+msgstr "ÈÍË ÇáĞÇßÑÉ "
+
+msgid "Disabled"
+msgstr "ÊÚØíá"
+
+msgid "Folder Selection Options"
+msgstr "ÎíÇÑÇÊ ŞÇÆãÉ ÇáãÌáÏÇÊ "
+
+msgid "Selection List Style"
+msgstr "Ôßá ŞÇÆãÉ ÇáÇÎÊíÇÑÇÊ"
+
+msgid "Long: "
+msgstr "ÇáØæá:"
+
+msgid "Folder"
+msgstr "ãÌáÏ"
+
+msgid "Subfolder"
+msgstr "ãÌáÏ İÑÚí"
+
+msgid "Indented: "
+msgstr ""
+
+msgid "Delimited: "
+msgstr ""
+
+msgid "Name and Address Options"
+msgstr "ÎíÇÑÇÊ ÇáÇÓã æÇáÚäæÇä"
+
+msgid "Email Address"
+msgstr "ÚäæÇä ÈÑíÏ ÅáßÊÑæäí "
+
+msgid "Edit Advanced Identities"
+msgstr "ÊÍÑíÑ ÇáãÚÑøİÇÊ ÇáãÊŞÏãÉ"
+
+msgid "(discards changes made on this form so far)"
+msgstr "(ÊÌÇåá ÇáÊÛííÑÇÊ ÇáÊí ÊãÊ ÍÊì ÇáÂä Úáì åĞÇ ÇáäãæĞÌ)"
+
+msgid "Multiple Identities"
+msgstr "ãÚÑøİÇÊ ãÊÚÏÏÉ"
+
+msgid "Same as server"
+msgstr "ãËáåÇ ãËá ÇáãáŞã"
+
+msgid "Error opening timezone config, contact administrator."
+msgstr ""
+
+msgid "Timezone Options"
+msgstr "ÎíÇÑÇÊ ÇáÊæŞíÊ"
+
+msgid "Your current timezone"
+msgstr "ÇáÊæŞíÊ ÇáÍÇáí"
+
+msgid "Reply Citation Options"
+msgstr "ÎíÇÑÇÊ ÇáÇÓÊÔåÇÏ ÈÇáÅÌÇÈÉ"
+
+msgid "Reply Citation Style"
+msgstr "äãØ ÇáÇÓÊÔåÇÏ ÈÇáÅÌÇÈÉ"
+
+msgid "No Citation"
+msgstr "áÇ íæÌÏ ÇÓÊÔåÇÏ"
+
+msgid "AUTHOR Said"
+msgstr "Şæá ÇáãÄáİ"
+
+msgid "On DATE, AUTHOR Said"
+msgstr "Şæá ÇáãÄáİ"
+
+msgid "Quote Who XML"
+msgstr "ÇŞÊÈÇÓ ãóä åæ XML"
+
+msgid "User-Defined"
+msgstr "ãÚÑøİÉ ãä ŞÈá ÇáãÓÊÎÏã"
+
+msgid "User-Defined Citation Start"
+msgstr "ÈÏÁ ÇÓÊÔåÇÏ ãÚÑøİ ãä ŞÈá ÇáãÓÊÎÏã"
+
+msgid "User-Defined Citation End"
+msgstr "äåÇíÉ ÇÓÊÔåÇÏ ãÚÑøİ ãä ŞÈá ÇáãÓÊÎÏã"
+
+msgid "Signature Options"
+msgstr "ÎíÇÑÇÊ ÇáÊæŞíÚ"
+
+msgid "Use Signature"
+msgstr "ÊæŞíÚ ÇáÇÓÊÎÏÇã"
+
+msgid "Prefix Signature with '-- ' Line"
+msgstr "ÈÏÁ ÇáÊæŞíÚ ÈÎØ'-- '"
+
+msgid "XP"
+msgstr ""
+
+msgid "Take Address"
+msgstr "ÇÎĞ ÇáÚäæÇä"
+
+msgid "Address Book Take:"
+msgstr "ÇáÇÎĞ Çáì ÏİÊÑ ÇáÚäÇæíä:"
+
+msgid "Try to verify addresses"
+msgstr "ÍÇæá ÇáÊÃßÏ ãä ÇáÚäÇæíä"
+
+#, c-format
+msgid "Add to %s"
+msgstr "ÅÖÇİÉ Åáì %s"
+
+msgid "Config File Version"
+msgstr "ÅÕÏÇÑ ãáİ Config"
+
+msgid "SquirrelMail Version"
+msgstr "ÅÕÏÇÑ SquirrelMail"
+
+msgid "PHP Version"
+msgstr "ÅÕÏÇÑPHP"
+
+msgid "Organization Preferences"
+msgstr "ÊİÖíáÇÊ ÇáãÄÓÓÉ"
+
+msgid "Organization Name"
+msgstr "ÇÓã ÇáãÄÓÓÉ"
+
+msgid "Organization Logo"
+msgstr "ÔÚÇÑ ÇáãÄÓÓÉ"
+
+msgid "Organization Logo Width"
+msgstr "ÚÑÖ ÔÚÇÑ ÇáãÄÓÓÉ"
+
+msgid "Organization Logo Height"
+msgstr "ÇÑÊİÇÚ ÔÚÇÑ ÇáãÄÓÓÉ"
+
+msgid "Organization Title"
+msgstr "áŞÈ ÇáãÄÓÓÉ"
+
+msgid "Signout Page"
+msgstr "ÕİÍÉ ÊÓÌíá ÇáÎÑæÌ"
+
+msgid "Provider Link URI"
+msgstr ""
+
+#, fuzzy
+msgid "Provider Name"
+msgstr "ÇÓã ÇáãáŞã:"
+
+msgid "Top Frame"
+msgstr "ÇáÅØÇÑ ÇáÚáæí "
+
+msgid "Server Settings"
+msgstr "ÅÚÏÇÏÇÊ ãáŞã "
+
+msgid "Mail Domain"
+msgstr "ãÌÇá ÈÑíÏ "
+
+msgid "IMAP Server Address"
+msgstr "ÚäæÇä ãáŞã IMAP"
+
+msgid "IMAP Server Port"
+msgstr "ãäİĞ ãáŞã IMAP"
+
+msgid "IMAP Server Type"
+msgstr "äæÚ ãáŞã IMAP"
+
+msgid "Cyrus IMAP server"
+msgstr "ãáŞã Cyrus IMAP"
+
+msgid "University of Washington's IMAP server"
+msgstr "ãáŞã IMAP ÇáÎÇÕ ÈÌÇãÚÉ æÇÔäØä"
+
+msgid "Microsoft Exchange IMAP server"
+msgstr "ãáŞã Microsoft Exchange IMAP"
+
+msgid "Courier IMAP server"
+msgstr "ãáŞã Courier IMAP"
+
+msgid "Not one of the above servers"
+msgstr "áÇ ÃÍÏ ãä ÇáãáŞãÇÊ ÃÚáÇå"
+
+msgid "IMAP Folder Delimiter"
+msgstr "ãÍÏÏ ãÌáÏIMAP"
+
+#, fuzzy
+msgid "Use &quot;detect&quot; to auto-detect."
+msgstr "ÇÓÊÎÏÇã/ßÔİ/ Åáì ÇáßÔİ ÇáÊáŞÇÆí."
+
+msgid "Use TLS for IMAP Connections"
+msgstr ""
+
+msgid "Requires PHP 4.3.x! Experimental."
+msgstr ""
+
+#, fuzzy
+msgid "IMAP Authentication Type"
+msgstr "İÔá ÇáãÕÇÏŞÉ "
+
+#, fuzzy
+msgid "IMAP login"
+msgstr "ÊÓÌíá ÏÎæáPOP3 :"
+
+#, fuzzy
+msgid "Use Sendmail Binary"
+msgstr "ÇÓÊÎÏÇã Sendmail"
+
+msgid "Choose &quot;no&quot; for SMTP"
+msgstr ""
+
+msgid "Sendmail Path"
+msgstr "ãÓÇÑ Sendmail"
+
+msgid "SMTP Server Address"
+msgstr "ÚäæÇä ãáŞãSMTP"
+
+msgid "SMTP Server Port"
+msgstr "ãäİĞ ãáŞãSMTP"
+
+msgid "Use TLS for SMTP Connections"
+msgstr ""
+
+#, fuzzy
+msgid "SMTP Authentication Type"
+msgstr "İÔá ÇáãÕÇÏŞÉ "
+
+msgid "No SMTP auth"
+msgstr ""
+
+msgid "Login (plain text)"
+msgstr ""
+
+msgid "POP3 Before SMTP?"
+msgstr ""
+
+#, fuzzy
+msgid "Hide SquirrelMail Header"
+msgstr "ÚÑÖ ÑÃÓ ÕİÍÉ ÈÇáßÇãá"
+
+msgid "Invert Time"
+msgstr "ÇáæŞÊ ÇáÚßÓí "
+
+msgid "Folders Defaults"
+msgstr "ÇİÊÑÇÖÇÊ ÇáãÌáÏÇÊ"
+
+msgid "Default Folder Prefix"
+msgstr "ÈÇÏÆÉ ãÌáÏ ÇİÊÑÇÖí"
+
+msgid "Show Folder Prefix Option"
+msgstr "ÅÙåÇÑ ÎíÇÑ ÈÇÏÆÉ ãÌáÏ"
+
+msgid "By default, move to trash"
+msgstr "ÇáÇİÊÑÇÖí, åæ ÇáÇäÊŞÇá Åáì ÓáÉ ÇáãåãáÇÊ "
+
+msgid "By default, move to sent"
+msgstr "ÇáÇİÊÑÇÖí, åæ ÇáÇäÊŞÇá Åáì ÇáÕÇÏÑ       "
+
+msgid "By default, save as draft"
+msgstr "ÇáÇİÊÑÇÖí, åæ ÇáÍİÙ ßãÓæÏÉ"
+
+msgid "List Special Folders First"
+msgstr "ÓÑÏ ÇáãÌáÏÇÊ ÇáÎÇÕÉ ÃæáÇğ"
+
+msgid "Show Special Folders Color"
+msgstr "ÅÙåÇÑ áæä ÇáãÌáÏÇÊ ÇáÎÇÕÉ"
+
+msgid "Auto Expunge"
+msgstr "ÔØÈ ÊáŞÇÆí "
+
+msgid "Default Sub. of INBOX"
+msgstr "ÇáãæÖæÚ ÇáÇİÊÑÇÖí áÚáÈÉ ÇáæÇÑÏ"
+
+msgid "Show 'Contain Sub.' Option"
+msgstr "ÅÙåÇÑ ÎíÇÑ 'íÍÊæì ãæÖæÚ '"
+
+msgid "Default Unseen Notify"
+msgstr "ÊÈáíÛ Unseen ÇáÇİÊÑÇÖí"
+
+msgid "Default Unseen Type"
+msgstr "äæÚ Unseen ÇáÇİÊÑÇÖí"
+
+msgid "Auto Create Special Folders"
+msgstr "ÅäÔÇÁ ÊáŞÇÆí áãÌáÏÇÊ ÎÇÕÉ"
+
+#, fuzzy
+msgid "Default Javascript Addressbook"
+msgstr "ÏİÊÑ ÚäÇæíä Javascript ÇáÇİÊÑÇÖí "
+
+msgid "Auto delete folders"
+msgstr "ÍĞİ ÊáŞÇÆí ááãÌáÏÇÊ"
+
+#, fuzzy
+msgid "Enable /NoSelect folder fix"
+msgstr "Êãßíä Page Selector "
+
+msgid "General Options"
+msgstr "ÎíÇÑÇÊ ÚÇãÉ"
+
+msgid "Data Directory"
+msgstr "Ïáíá ÈíÇäÇÊ "
+
+msgid "Temp Directory"
+msgstr "Ïáíá Temp"
+
+msgid "Hash Level"
+msgstr "ãÓÊæì ÇáÊÌÒÆÉ Hash"
+
+msgid "Hash Disabled"
+msgstr "ÇáÊÌÒÆÉ Hash ãÚØáÉ"
+
+msgid "Moderate"
+msgstr "ãÚÊÏá"
+
+msgid "Medium"
+msgstr "ãÊæÓØ"
+
+msgid "Default Left Size"
+msgstr "ÇáÍÌã ÇáÃíÓÑ ÇáÇİÊÑÇÖí "
+
+msgid "Usernames in Lowercase"
+msgstr "ÇÓã ãÓÊÎÏã ÈÃÍÑİ ÕÛíÑÉ"
+
+msgid "Allow use of priority"
+msgstr "ÇáÓãÇÍ ÈÇÓÊÎÏÇã ÇáÃİÖáíÉ"
+
+msgid "Hide SM attributions"
+msgstr "ÅÎİÇÁ ÓãÇÊ SM "
+
+msgid "Enable use of delivery receipts"
+msgstr "Êãßíä ÇÓÊÎÏÇã ÅíÕÇáÇÊ ÇáÇÓÊáÇã"
+
+msgid "Allow editing of identities"
+msgstr "ÇáÓãÇÍ ÈÊÍÑíÑ ÇáãÚÑøİÇÊ "
+
+msgid "Allow editing of full name"
+msgstr "ÇáÓãÇÍ ÈÊÍÑíÑ ÇáÇÓã ÇáßÇãá"
+
+msgid "Use server-side sorting"
+msgstr ""
+
+#, fuzzy
+msgid "Use server-side thread sorting"
+msgstr "ÇÓÊÎÏÇã ÑÄæÓ ÇáÕİÍÇÊ ÇáãÑÌÚíÉ ááİÑÒ ÈãÄÔÑ ÊÑÇÈØ "
+
+msgid "Allow server charset search"
+msgstr ""
+
+#, fuzzy
+msgid "Search functions"
+msgstr "ÈÍË Úä "
+
+msgid "Only basic search"
+msgstr ""
+
+msgid "Only advanced search"
+msgstr ""
+
+msgid "Both search functions"
+msgstr ""
+
+#, fuzzy
+msgid "PHP session name"
+msgstr "ÅÕÏÇÑPHP"
+
+msgid "Message of the Day"
+msgstr "ÑÓÇáÉ Çáíæã"
+
+msgid "Database"
+msgstr "ŞÇÚÏÉ ÈíÇäÇÊ"
+
+msgid "Address book DSN"
+msgstr "DSN ÏİÊÑ ÇáÚäÇæíä"
+
+msgid "Address book table"
+msgstr "ÌÏæá ÏİÊÑ ÇáÚäÇæíä "
+
+msgid "Preferences DSN"
+msgstr "DSN ÇáÊİÖíáÇÊ"
+
+msgid "Preferences table"
+msgstr "ÌÏæá ÇáÊİÖíáÇÊ"
+
+msgid "Preferences username field"
+msgstr "ÍŞá ÇÓã ãÓÊÎÏã ÇáÊİÖíáÇÊ "
+
+msgid "Preferences key field"
+msgstr "ÍŞá ãİÊÇÍ ÇáÊİÖíáÇÊ"
+
+msgid "Preferences value field"
+msgstr "z"
+
+#, fuzzy
+msgid "Global address book DSN"
+msgstr "ÏİÊÑ ÚäÇæíä Úãæãí "
+
+#, fuzzy
+msgid "Global address book table"
+msgstr "ÏİÊÑ ÚäÇæíä Úãæãí "
+
+#, fuzzy
+msgid "Allow writing into global address book"
+msgstr "íÊÚĞÑ ÊÚÏíá ÏİÊÑ ÇáÚäÇæíä ÇáÚãæãí "
+
+#, fuzzy
+msgid "Allow listing of global address book"
+msgstr "íÊÚĞÑ ÊÚÏíá ÏİÊÑ ÇáÚäÇæíä ÇáÚãæãí "
+
+#, fuzzy
+msgid "Language settings"
+msgstr "ÊÛííÑ ÇáÅÚÏÇÏÇÊ"
+
+msgid "Default Language"
+msgstr "ÇááÛÉ ÇáÇİÊÑÇÖíÉ "
+
+msgid "Default Charset"
+msgstr "ãÌãæÚÉ ÇáÃÍÑİ ÇáÇİÊÑÇÖíÉ"
+
+msgid "Show alternative language names"
+msgstr ""
+
+msgid "Available languages"
+msgstr "ÇááÛÇÊ ÇáãÊæİÑÉ"
+
+msgid "Use agresive decoding"
+msgstr ""
+
+msgid "Tweaks"
+msgstr ""
+
+msgid "Use advanced tree folder listing"
+msgstr ""
+
+msgid "Use old folder listing functions"
+msgstr ""
+
+msgid "Use icons"
+msgstr "ÇÓÊÎÏã ÇáÇíŞæäÇÊ"
+
+msgid "Use php recode functions"
+msgstr ""
+
+msgid "Use php iconv functions"
+msgstr ""
+
+msgid "Themes"
+msgstr "ÇáÓãÇÊ"
+
+msgid "Style Sheet URL (css)"
+msgstr "Style Sheet URL (css)"
+
+#, fuzzy
+msgid "Default theme"
+msgstr "ãÌãæÚÉ ÇáÃÍÑİ ÇáÇİÊÑÇÖíÉ"
+
+msgid "Use index number of theme"
+msgstr ""
+
+msgid "Configuration Administrator"
+msgstr "ãÓÄæá ÇáÊßæíä "
+
+msgid "Note: it is recommended that you configure your system using conf.pl, and not this plugin. conf.pl contains additional information regarding the purpose of variables and appropriate values, as well as additional verification steps."
+msgstr ""
+
+msgid "Run or consult conf.pl should you run into difficulty with your configuration."
+msgstr ""
+
+msgid "Theme Name"
+msgstr "ÇÓã ÇáÓãÉ"
+
+msgid "Theme Path"
+msgstr "ãÓÇÑ ÇáÓãÉ "
+
+msgid "Plugins"
+msgstr "ÃÏæÇÊ ÈÑãÌíÉ ÅÖÇİíÉ"
+
+#, c-format
+msgid "Plugin directory could not be found: %s"
+msgstr ""
+
+msgid "Change Settings"
+msgstr "ÊÛííÑ ÇáÅÚÏÇÏÇÊ"
+
+#, fuzzy
+msgid "Test Configuration"
+msgstr "ÇÓÊÎÏÇã ÅÔÇÑÇÊ ÇáÊßæíä"
+
+msgid "Config file can't be opened. Please check config.php."
+msgstr "íÊÚĞÑ İÊÍ ãáİ ÇáÊßæíä. íÑÌì İÍÕ config.php."
+
+msgid "Administration"
+msgstr "ÇáÅÏÇÑÉ"
+
+#, fuzzy
+msgid "This module allows administrators to manage SquirrelMail main configuration remotely."
+msgstr "ÊÓãÍ åĞå ÇáæÍÏÉ ÇáäãØíÉ ááãÓÆæáíä ÈÅÏÇÑÉ ÇáÊßæíä  ÇáÑÆíÓí áÜ biznas_mailãä ÈÚíÏ."
+
+#, fuzzy
+msgid "Submit a Bug Report"
+msgstr "ÊŞÇÑíÑ Úä Îáá:"
+
+msgid "Before you send your bug report, please make sure to check this checklist for any common problems."
+msgstr ""
+
+#, c-format
+msgid "Make sure that you are running the most recent copy of %s. You are currently using version %s."
+msgstr ""
+
+#, c-format
+msgid "Check to see if your bug is already listed in the %sBug List%s on SourceForge. If it is, we already know about it and are trying to fix it."
+msgstr ""
+
+msgid "Try to make sure that you can repeat it. If the bug happens sporatically, try to document what you did when it happened. If it always occurs when you view a specific message, keep that message around so maybe we can see it."
+msgstr ""
+
+#, c-format
+msgid "If there were warnings displayed above, try to resolve them yourself. Read the guides in the %s directory where SquirrelMail was installed."
+msgstr ""
+
+msgid "Pressing the button below will start a mail message to the developers of SquirrelMail that will contain a lot of information about your system, your browser, how SquirrelMail is set up, and your IMAP server. It will also prompt you for information. Just fill out the sections at the top. If you like, you can scroll down in the message to see what else is being sent."
+msgstr ""
+
+msgid "Please make sure to fill out as much information as you possibly can to give everyone a good chance of finding and removing the bug. Submitting your bug like this will not have it automatically added to the bug list on SourceForge, but someone who gets your message may add it for you."
+msgstr ""
+
+msgid "This bug involves"
+msgstr ""
+
+msgid "the general program"
+msgstr ""
+
+msgid "a specific plugin"
+msgstr ""
+
+#, fuzzy
+msgid "Start Bug Report Form"
+msgstr "ÊŞÇÑíÑ Úä Îáá:"
+
+#, fuzzy
+msgid "Search Mailing List Archives"
+msgstr "ÓÌáÇÊ ŞÇÆãÉ"
+
+msgid "Search SourceForge Bugtracker"
+msgstr ""
+
+msgid "Search for words:"
+msgstr "ÈÍË Úä ßáãÇÊ:"
+
+msgid "Written by:"
+msgstr "ßÊÈå:"
+
+msgid "Email addresses only"
+msgstr "ÚäÇæíä ÇáÈÑíÏ ÇáÅáßÊÑæäí İŞØ"
+
+msgid "Mailing list:"
+msgstr "ŞÇÆãÉ ÈÑíÏíÉ:"
+
+msgid "SquirrelMail users list"
+msgstr ""
+
+msgid "SquirrelMail plugins list"
+msgstr ""
+
+msgid "SquirrelMail developers list"
+msgstr ""
+
+#, fuzzy
+msgid "SquirrelMail internationalization list"
+msgstr "ÅÚÏÇÏ ŞæÇãíÓ ÚÇáãíÉ "
+
+msgid "Sort by:"
+msgstr "ÑÊÈ ÈÜ:"
+
+msgid "Relevance"
+msgstr ""
+
+#, fuzzy
+msgid "Search Archives"
+msgstr "ÓÌáÇÊ ŞÇÆãÉ"
+
+#, fuzzy
+msgid "Reset Form"
+msgstr "ÍĞİ ãÌáÏ"
+
+msgid "Summary keyword:"
+msgstr ""
+
+msgid "Sort By:"
+msgstr "ÑÊÈ ÈÜ:"
+
+msgid "ID"
+msgstr ""
+
+msgid "Summary"
+msgstr "ãáÎÕ"
+
+#, fuzzy
+msgid "Open Date"
+msgstr "İÔá ÇáİÊÍ"
+
+#, fuzzy
+msgid "Close Date"
+msgstr "ÅÛáÇŞ"
+
+#, fuzzy
+msgid "Submitter"
+msgstr "ÊÓáíã"
+
+msgid "Assignee"
+msgstr ""
+
+msgid "Order:"
+msgstr "ÇáÊÑÊíÈ:"
+
+msgid "Ascending"
+msgstr "ÊÑÊíÈ ÇÈÌÏí"
+
+msgid "Descending"
+msgstr "ÊÑÊíÈ ÇÈÌÏí"
+
+msgid "Search Bugtracker"
+msgstr ""
+
+#, fuzzy
+msgid "Bug"
+msgstr "ÃÛÓØÓ"
+
+msgid "Bug Reports:"
+msgstr "ÊŞÇÑíÑ Úä Îáá:"
+
+msgid "Show button in toolbar"
+msgstr "ÅÙåÇÑ ÇáÒÑ İì ÔÑíØ ÇáÃÏæÇÊ"
+
+msgid "Show system specs"
+msgstr ""
+
+msgid "TODAY"
+msgstr "Çáíæã"
+
+msgid "Go"
+msgstr "ÇĞåÈ"
+
+#, fuzzy, c-format
+msgid "Could not write calendar file %s"
+msgstr "íÊÚĞÑ ÅäÔÇÁ ãáİ ÇáÊİÖíá ÇáÇÈÊÏÇÆí!"
+
+msgid "l, F j Y"
+msgstr ""
+
+msgid "ADD"
+msgstr "ÅÖÇİÉ"
+
+msgid "EDIT"
+msgstr "ÊÍÑíÑ"
+
+msgid "DEL"
+msgstr "ãİÊÇÍ ÇáÍĞİ"
+
+msgid "Start time:"
+msgstr "æŞÊ ÇáÈÏÁ:"
+
+msgid "Length:"
+msgstr "ÇáØæá:"
+
+msgid "Priority:"
+msgstr "ÇáÃİÖáíÉ:"
+
+msgid "Title:"
+msgstr "ÚäæÇä:"
+
+msgid "Set Event"
+msgstr "ÊÚííä ÍÏË"
+
+msgid "Event Has been added!"
+msgstr "Êã ÅÖÇİÉ ÍÏË!"
+
+msgid "Date:"
+msgstr "ÊÇÑíÎ:"
+
+msgid "Time:"
+msgstr "ÇáæŞÊ:"
+
+msgid "Day View"
+msgstr "ÚÑÖ Çáíæã "
+
+msgid "Do you really want to delete this event?"
+msgstr "åá ÊÑíÏ ÍŞÇğ ÍĞİ åĞÇ ÇáÍÏË¿"
+
+msgid "Event deleted!"
+msgstr "ÍÏË ãÍĞæİ!"
+
+msgid "Nothing to delete!"
+msgstr "áÇ ÔíÁ íãßä ÍĞİå!"
+
+msgid "Update Event"
+msgstr "ÊÍÏíË ÍÏË"
+
+msgid "Do you really want to change this event from:"
+msgstr "åá ÊÑíÏ ÍŞÇğ ÊÛííÑ åĞÇ ÇáÍÏË ãä:"
+
+msgid "to:"
+msgstr "Åáì:"
+
+msgid "Event updated!"
+msgstr "ÍÏË Êã ÊÍÏíËå!"
+
+msgid "Month View"
+msgstr "ÚÑÖ ÇáÔåÑ "
+
+msgid "0 min."
+msgstr "ÕİÑ ÏŞíŞÉ"
+
+msgid "15 min."
+msgstr " 15 ÏŞíŞÉ"
+
+msgid "30 min."
+msgstr "30 ÏŞíŞÉ"
+
+msgid "45 min."
+msgstr " 45 ÏŞíŞÉ"
+
+msgid "1 hr."
+msgstr "ÓÇÚÉ æÇÍÏÉ"
+
+msgid "1.5 hr."
+msgstr "1.5 ÓÇÚÉ"
+
+msgid "2 hr."
+msgstr "ÓÇÚÊíä"
+
+msgid "2.5 hr."
+msgstr "2.5 ÓÇÚÉ"
+
+msgid "3 hr."
+msgstr "3 ÓÇÚÇÊ"
+
+msgid "3.5 hr."
+msgstr "3.5 ÓÇÚÉ"
+
+msgid "4 hr."
+msgstr "4 ÓÇÚÇÊ"
+
+msgid "5 hr."
+msgstr "5 ÓÇÚÇÊ"
+
+msgid "6 hr."
+msgstr "6 ÓÇÚÇÊ"
+
+msgid "Calendar"
+msgstr "ÇáÊŞæíã"
+
+msgid "COMMERCIAL - This list contains servers that are verified spam senders. It is a pretty reliable list to scan spam from."
+msgstr "ÅÚáÇä ÊÌÇÑí- ÊÍÊæì åĞå ÇáŞÇÆãÉ Úáì ãáŞãÇÊ ÊŞæã ÈÇáÊÍŞŞ ãä ãÑÓáí ÇáÈÑíÏ ÛíÑ ÇáãÑÛæÈ İíå. æåì ŞÇÆãÉ íãßä ÇáÇÚÊãÇÏ ÚáíåÇ áãÓÍ ÇáÈÑíÏ ÛíÑ ÇáãÑÛæÈ ."
+
+#, fuzzy
+msgid "COMMERCIAL - Servers that are configured (or misconfigured) to allow spam to be relayed through their system will be banned with this. Another good one to use."
+msgstr "ÅÚáÇä ÊÌÇÑí- ãáŞãÇÊ íÊã ÊßæíäåÇ (Ãæ ÅÓÇÁÉ ÊßæíäåÇ) áÍÙÑ ÇáÈÑíÏ ÛíÑ ÇáãÑÛæÈÇáãÓãæÍ áå ÈÇáãÑæÑ İì äÙÇãåã.ØÑíŞÉ ÃÎÑì ÕÇáÍÉ ááÇÓÊÎÏÇã."
+
+#, fuzzy
+msgid "COMMERCIAL - Dial-up users are often filtered out since they should use their ISP's mail servers to send mail. Spammers typically get a dial-up account and send spam directly from there."
+msgstr "ÅÚáÇä ÊÌÇÑí- íÊã ÛÇáÈÇ ÊÕİíÉ ãÓÊÎÏãí ÇáØáÈ ÇáåÇÊİí áßæäåã ãÖØÑíä áÇÓÊÎÏÇã ãáŞãÇÊ ÇáÈÑíÏ ÇáÎÇÕÉ ÈÔÑßÇÊ ÊæİíÑ ÇáÅäÊÑäÊ, æíÍÕá ãÑÓáæ ÇáÈÑíÏ ÛíÑ ÇáãÑÛæÈ ÚÇÏÉ Úáì ÇÔÊÑÇß ØáÈ åÇÊİí áÅÑÓÇá ÑÓÇÆáåã ãä åäÇáß ãÈÇÔÑÉ ."
 
 msgid "COMMERCIAL - RBL+ Blackhole entries."
 msgstr "ÅÚáÇä ÊÌÇÑí- ãÏÎáÇÊRBL + Blackhole"
@@ -1533,64 +2525,8 @@ msgstr "ÅÚáÇä ÊÌÇÑí- ãÏÎáÇÊRBL + OpenRelay"
 msgid "COMMERCIAL - RBL+ Dial-up entries."
 msgstr "ÅÚáÇä ÊÌÇÑí- ãÏÎáÇÊRBL + ØáÈ åÇÊİí "
 
-msgid ""
-"FREE - Osirusoft Relays - Osirusofts list of verified open relays. Seems to "
-"include servers used by abuse@uunet.net auto-replies too."
-msgstr ""
-"ãÌÇäÇğ-  Osirusoft Relays - ŞÇÆãÉ  Osirusoft ááãÑÍáÇÊ ÇáãİÊæÍÉ ÇáÊí Êã ÇáÊÍŞŞ ãäåÇ."
-"íÈÏæ ÃäåÇ ÊÊÖãä ãáŞãÇÊ ÊÓÊÎÏãåÇ ÃíÖÇ ÇáÑÏæÏ ÇáÊáŞÇÆíÉ áÏì  abuse@uunet.net ."
-
-msgid "FREE - Osirusoft Dialups - Osirusofts Dialup Spam Source list."
-msgstr "ãÌÇäÇğ-  ÇáØáÈÇÊ ÇáåÇÊİíÉ  áÜ Osirusoft - ŞÇÆãÉ ãÕÏÑ ÇáÈÑíÏ ÛíÑ ÇáãÑÛæÈ ÇáÎÇÕ ÈÇáØáÈ ÇáåÇÊİí  áÜ Osirusoft ."
-
-msgid ""
-"FREE - Osirusoft Confirmed Spam Source - Sites that continually spam and "
-"have been manually added after multiple nominations. Use with caution. Seems "
-"to catch abuse auto-replies from some ISPs."
-msgstr ""
-"ãÌÇäÇğ-  ÇáãÕÏÑ ÇáãÄßÏ áÈÑíÏ Osirusoft  ÛíÑ ÇáãÑÛæÈ- ÇáãæÇŞÚ ÇáÊí ÊŞæã ÈÅÑÓÇá ÈÑíÏ ÛíÑ ãÑÛæÈ ÈÇÓÊãÑÇÑ "
-"æÇáÊí Êã ÅÖÇİÊåÇ íÏæíÇ ÈÚÏ ÚÏÉ ÊÑÔíÍÇÊ, æåì ÊÓÊÎÏã ÈÍĞÑ."
-"æíÈÏæ ÃäåÇ ÊÓÆ ÇÓÊÎÏÇã ÎÇÕíÉ ÇáÑÏ ÇáÊáŞÇÆí ÇáÎÇÕÉ ÈÈÚÖ ÔÑßÇÊ ÊæİíÑ ÇáÅäÊÑäÊ. "
-
-msgid ""
-"FREE - Osirusoft Smart Hosts - List of hosts that are secure but relay for "
-"other mail servers that are not secure."
-msgstr ""
-"ãÌÇäÇğ-  æÍÏÇÊ ãÖíİOsirusoft  ÇáĞßí- ŞÇÆãÉ ÈæÍÏÇÊ ãÖíİ ÂãäÉ æÅä ßÇäÊ ÊŞæã ÈÇáÊÑÍíá"
-"Åáì æÍÏÇÊ ãÖíİ ÃÎÑì ááÈÑíÏ áßäåÇ ÛíÑ ÂãäÉ."
-
-msgid ""
-"FREE - Osirusoft Spamware Developers - It is believed that these are IP "
-"ranges of companies that are known to produce spam software. Seems to catch "
-"abuse auto-replies from some ISPs."
-msgstr ""
-"ãÌÇäÇğ- ãØæÑæOsirusoft  áÈÑãÌíÇÊ ÇáÈÑíÏ ÛíÑ ÇáãÑÛæÈ- íÚÊŞÏ Ãäåã ãÌãæÚÉ ãä ÔÑßÇÊ ÊæİíÑ ÇáÅäÊÑäÊ"
-"ãÚÑæİÉ ÈÅäÊÇÌ ÈÑãÌíÇÊ ÇáÈÑíÏ ÛíÑ ÇáãÑÛæÈ."
-"æíÈÏæ ÃäåÇ ÊÓÆ ÇÓÊÎÏÇã ÎÇÕíÉ ÇáÑÏ ÇáÊáŞÇÆí ÇáÎÇÕÉ ÈÈÚÖ ÔÑßÇÊ ÊæİíÑ ÇáÅäÊÑäÊ. "
-
-msgid ""
-"FREE - Osirusoft Unconfirmed OptIn Servers - List of listservers that opt "
-"users in without confirmation."
-msgstr ""
-"ãÌÇäÇğ- ãáŞãÇÊ Osirusoft Unconfirmed OptIn - ŞÇÆãÉlistservers ÇáÊí ÊÎÊÇÑ"
-"ÚÏÏÇğ ãä ÇáãÓÊÎÏãíä Ïæä ÊÃßíÏ."
-
-msgid ""
-"FREE - Osirusoft Insecure formmail.cgi scripts - List of insecure formmail."
-"cgi scripts. (planned)."
-msgstr ""
-"ãÌÇäÇğ- ÈÑÇãÌ Osirusoft Insecure formmail.cgi -  ŞÇÆãÉ áÈÑÇãÌ formmail.cgi"
-"ÛíÑ ÂãäÉ (ãÎØØÉ)."
-
-msgid "FREE - Osirusoft Open Proxy Servers - List of Open Proxy Servers."
-msgstr "ãÌÇäÇğ- ãáŞãÇÊ Osirusoft Open Proxy - ŞÇÆãÉ áãáŞãÇÊ Osirusoft Open Proxy."
-
-msgid ""
-"FREE - ORDB was born when ORBS went off the air. It seems to have fewer "
-"false positives than ORBS did though."
-msgstr ""
-"ãÌÇäÇğ- ÙåÑÊ ORDB ÚäÏ ÊæŞİORBS Úä ÇáÈË."
-"æíÈÏæ Ãä áÏíåÇ ÈÚÖ ÇáÅíÌÇÈíÇÊ ÇáÒÇÆİÉ ÃßËÑ ãäORBS ."
+msgid "FREE - ORDB was born when ORBS went off the air. It seems to have fewer false positives than ORBS did though."
+msgstr "ãÌÇäÇğ- ÙåÑÊ ORDB ÚäÏ ÊæŞİORBS Úä ÇáÈË.æíÈÏæ Ãä áÏíåÇ ÈÚÖ ÇáÅíÌÇÈíÇÊ ÇáÒÇÆİÉ ÃßËÑ ãäORBS ."
 
 msgid "FREE - Five-Ten-sg.com - Direct SPAM sources."
 msgstr "ãÌÇäÇğ-Five-Ten-sg.com - ãÕÇÏÑ ÇáÈÑíÏ ÇáãÈÇÔÑ ÛíÑ ÇáãÑÛæÈ. "
@@ -1613,25 +2549,15 @@ msgstr "ãÌÇäÇğ-Five-Ten-sg.com - ãáŞãÇÊ ÏÚã ÇáÈÑíÏ ÛíÑ ÇáãÑÛæÈ.   "
 msgid "FREE - Five-Ten-sg.com - Web Form IPs."
 msgstr "ãÌÇäÇğ-Five-Ten-sg.com - ÈÑæÊæßæáÇÊ ÇáÅäÊÑäÊ ÈäãæĞÌ æíÈ. "
 
-msgid ""
-"FREE - Dorkslayers appears to include only really bad open relays outside "
-"the US to avoid being sued. Interestingly enough, their website recommends "
-"you NOT use their service."
-msgstr ""
-"ãÌÇäÇğ- ÊÙåÑDorkslayers  ÎÇÑÌ ÇáæáÇíÇÊ ÇáãÊÍÏÉ  áÊÊÖãä ÇáãÑÍáÇÊ ÇáÓíÆÉ ÇáãİÊæÍÉ  "
-"ÍÊì íãßä ÊÌäÈ ÇáãáÇÍŞÉ ÇáŞÇäæäíÉ, æãä ÇáØÑíİ Ãä ãæŞÚåã"
-"íæÕì ÈÚÏã ÇÓÊÎÏÇã åĞå ÇáÎÏãÉ."
+msgid "FREE - Dorkslayers appears to include only really bad open relays outside the US to avoid being sued. Interestingly enough, their website recommends you NOT use their service."
+msgstr "ãÌÇäÇğ- ÊÙåÑDorkslayers  ÎÇÑÌ ÇáæáÇíÇÊ ÇáãÊÍÏÉ  áÊÊÖãä ÇáãÑÍáÇÊ ÇáÓíÆÉ ÇáãİÊæÍÉ  ÍÊì íãßä ÊÌäÈ ÇáãáÇÍŞÉ ÇáŞÇäæäíÉ, æãä ÇáØÑíİ Ãä ãæŞÚåãíæÕì ÈÚÏã ÇÓÊÎÏÇã åĞå ÇáÎÏãÉ."
 
 msgid "FREE - SPAMhaus - A list of well-known SPAM sources."
 msgstr "ãÌÇäÇğ-SPAMhaus  -  ŞÇÆãÉ ãÕÇÏÑ ááÈÑíÏ ÛíÑ ÇáãÑÛæÈ ÇáãÚÑæİÉ ÌíÏÇø ."
 
-msgid ""
-"FREE, for now - SPAMCOP - An interesting solution that lists servers that "
-"have a very high spam to legit email ratio (85% or more)."
-msgstr ""
-"ãÌÇäÇğ ÍÇáíÇğ-SPAMCOP - Íá ÔíŞ íŞæã ÈÓÑÏ ÇáãáŞãÇÊ"
-"ÇáÊí ÈåÇ ÈÑíÏ ÛíÑ ãÑÛæÈ ÈßãíÉ ßÈíÑÉ ÌÏÇğ ÈÇáäÓÈÉ ááÈÑíÏ ÇáãÔÑæÚ (85% Ãæ ÃßËÑ)"
-
+#, fuzzy
+msgid "FREE, for now - SpamCop - An interesting solution that lists servers that have a very high spam to legit email ratio (85 percent or more)."
+msgstr "ãÌÇäÇğ ÍÇáíÇğ-SPAMCOP - Íá ÔíŞ íŞæã ÈÓÑÏ ÇáãáŞãÇÊÇáÊí ÈåÇ ÈÑíÏ ÛíÑ ãÑÛæÈ ÈßãíÉ ßÈíÑÉ ÌÏÇğ ÈÇáäÓÈÉ ááÈÑíÏ ÇáãÔÑæÚ (85% Ãæ ÃßËÑ)"
 
 msgid "FREE - dev.null.dk - I don't have any detailed info on this list."
 msgstr "ãÌÇäÇğ -dev.null.dk - áÇ íÊæİÑ ÚäÏí ãÚáæãÇÊ ÊİÕíáíÉ Úä åĞå ÇáŞÇÆãÉ."
@@ -1639,72 +2565,53 @@ msgstr "ãÌÇäÇğ -dev.null.dk - áÇ íÊæİÑ ÚäÏí ãÚáæãÇÊ ÊİÕíáíÉ Úä åĞå ÇáŞÇÆãÉ."
 msgid "FREE - visi.com - Relay Stop List. Very conservative OpenRelay List."
 msgstr "ãÌÇäÇğ-visi.com - ŞÇÆãÉRelay Stop - ŞÇÆãÉ OpenRelay  ãÍÇİÙÉ ááÛÇíÉ.  "
 
-msgid "FREE - 2mbit.com Open Relays - Another list of Open Relays."
+#, fuzzy
+msgid "FREE - ahbl.org Open Relays - Another list of Open Relays."
 msgstr "ãÌÇäÇğ-2mbit.com Open Relays - ŞÇÆãÉ ÃÎÑì ááãÑÍáÇÊ ÇáãİÊæÍÉ."
 
-msgid "FREE - 2mbit.com SPAM Source - List of Direct SPAM Sources."
+#, fuzzy
+msgid "FREE - ahbl.org SPAM Source - List of Direct SPAM Sources."
 msgstr "ãÌÇäÇğ-2mbit.com SPAM Source -  ŞÇÆãÉ ááÈÑíÏ ÛíÑ ÇáãÑÛæÈ ÇáãÈÇÔÑ.   "
 
-msgid "FREE - 2mbit.com SPAM ISPs - List of SPAM-friendly ISPs."
+#, fuzzy
+msgid "FREE - ahbl.org SPAM ISPs - List of SPAM-friendly ISPs."
 msgstr "ãÌÇäÇ-2mbit.com SPAM ISPs -  ŞÇÆãÉ áÔÑßÇÊ ÊæİíÑ ÇáÅäÊÑäÊ ÇáãÊæÇİŞÉ ãÚ ÇáÈÑíÏ ÛíÑ ÇáãÑÛæÈ."
 
-msgid ""
-"FREE - Leadmon DUL - Another list of Dial-up or otherwise dynamically "
-"assigned IPs."
-msgstr ""
-"ãÌÇäÇ-Leadmon DUL -  ŞÇÆãÉ ÃÎÑì ááØáÈ ÇáåÇÊİí "
-"Ãæ ÈÑæÊæßæáÇÊ ÇáÅäÊÑäÊ ÇáãÚíäÉ ÏíäÇãíßíÇ."
+msgid "FREE - Leadmon DUL - Another list of Dial-up or otherwise dynamically assigned IPs."
+msgstr "ãÌÇäÇ-Leadmon DUL -  ŞÇÆãÉ ÃÎÑì ááØáÈ ÇáåÇÊİí Ãæ ÈÑæÊæßæáÇÊ ÇáÅäÊÑäÊ ÇáãÚíäÉ ÏíäÇãíßíÇ."
 
-msgid ""
-"FREE - Leadmon SPAM Source - List of IPs Leadmon.net has received SPAM "
-"directly from."
-msgstr ""
-"ãÌÇäÇğ-Leadmon SPAM Source -  ŞÇÆãÉ áÈÑæÊæßæáÇÊ ÇáÅäÊÑäÊ ÇáÊí ÊáŞÊLeadmon.net"
-"ÈÑíÏÇğ ÛíÑ ãÑÛæÈ ãäåÇ ãÈÇÔÑÉ."
+msgid "FREE - Leadmon SPAM Source - List of IPs Leadmon.net has received SPAM directly from."
+msgstr "ãÌÇäÇğ-Leadmon SPAM Source -  ŞÇÆãÉ áÈÑæÊæßæáÇÊ ÇáÅäÊÑäÊ ÇáÊí ÊáŞÊLeadmon.netÈÑíÏÇğ ÛíÑ ãÑÛæÈ ãäåÇ ãÈÇÔÑÉ."
 
-msgid ""
-"FREE - Leadmon Bulk Mailers - Bulk mailers that do not require confirmed opt-"
-"in or that have allowed known spammers to become clients and abuse their "
-"services."
-msgstr ""
-"ãÌÇäÇğ-Leadmon Bulk Mailers - ãÑÓáæ ÇáÈÑíÏ ÇáßÈíÑ ÇáĞíä áÇ íØáÈæä ÊÃßíÏ ÇáÇÎÊíÇÑ "
-"Ãæ  íÓãÍæä áãÑÓáí ÇáÈÑíÏ ÛíÑ ÇáãÑÛæÈ ÇáãÚÑæİíä ÈÃä íßæäæÇ ÚãáÇÁ áÏíåã"
-"æíÓíÆæä ÇÓÊÎÏÇã ÎÏãÇÊåã."
+msgid "FREE - Leadmon Bulk Mailers - Bulk mailers that do not require confirmed opt-in or that have allowed known spammers to become clients and abuse their services."
+msgstr "ãÌÇäÇğ-Leadmon Bulk Mailers - ãÑÓáæ ÇáÈÑíÏ ÇáßÈíÑ ÇáĞíä áÇ íØáÈæä ÊÃßíÏ ÇáÇÎÊíÇÑ Ãæ  íÓãÍæä áãÑÓáí ÇáÈÑíÏ ÛíÑ ÇáãÑÛæÈ ÇáãÚÑæİíä ÈÃä íßæäæÇ ÚãáÇÁ áÏíåãæíÓíÆæä ÇÓÊÎÏÇã ÎÏãÇÊåã."
 
-msgid ""
-"FREE - Leadmon Open Relays - Single Stage Open Relays that are not listed on "
-"other active RBLs."
-msgstr ""
-"ãÌÇäÇğ-Leadmon Open Relays  - ãÑÍáÇÊ ãİÊæÍÉ ĞÇÊ ãÑÍáÉ æÇÍÏÉ ÛíÑ ãÏÑÌÉ Úáì"
-"æÍÏÇÊRBL äÔØÉ ÃÎÑì ."
+msgid "FREE - Leadmon Open Relays - Single Stage Open Relays that are not listed on other active RBLs."
+msgstr "ãÌÇäÇğ-Leadmon Open Relays  - ãÑÍáÇÊ ãİÊæÍÉ ĞÇÊ ãÑÍáÉ æÇÍÏÉ ÛíÑ ãÏÑÌÉ ÚáìæÍÏÇÊRBL äÔØÉ ÃÎÑì ."
 
-msgid ""
-"FREE - Leadmon Multi-stage - Multi-Stage Open Relays that are not listed on "
-"other active RBLs and that have sent SPAM to Leadmon.net."
-msgstr ""
-"ãÌÇäÇğ-Leadmon Multi-stage - ãÑÍáÇÊ ãİÊæÍÉ ĞÇÊ ãÑÇÍá ãÊÚÏÏÉ ÛíÑ ãÏÑÌÉ Úáì"
-"æÍÏÇÊRBL äÔØÉ ÃÎÑì æŞÇãÊ ÈÅÑÓÇá ÈÑíÏ ãÈÇÔÑ ÛíÑ ãÑÛæÈ Åáì Leadmon.net."
+msgid "FREE - Leadmon Multi-stage - Multi-Stage Open Relays that are not listed on other active RBLs and that have sent SPAM to Leadmon.net."
+msgstr "ãÌÇäÇğ-Leadmon Multi-stage - ãÑÍáÇÊ ãİÊæÍÉ ĞÇÊ ãÑÇÍá ãÊÚÏÏÉ ÛíÑ ãÏÑÌÉ ÚáìæÍÏÇÊRBL äÔØÉ ÃÎÑì æŞÇãÊ ÈÅÑÓÇá ÈÑíÏ ãÈÇÔÑ ÛíÑ ãÑÛæÈ Åáì Leadmon.net."
 
-msgid ""
-"FREE - Leadmon SpamBlock - Sites on this listing have sent Leadmon.net "
-"direct SPAM from IPs in netblocks where the entire block has no DNS "
-"mappings. It's a list of BLOCKS of IPs being used by people who have SPAMmed "
-"Leadmon.net."
-msgstr ""
-"ãÌÇäÇğ-Leadmon SpamBlock - ŞÇãÊ ãæÇŞÚ Úáì åĞå ÇáŞæÇÆã ÈÅÑÓÇá ÈÑíÏ ÛíÑ ãÑÛæÈ Åáì Leadmon.net"
-"ãä ÈÑæÊæßæáÇÊ ÅäÊÑäÊ ãæÌæÏÉ İì ÊÌãÚÇÊ ÔÈßíÉ áÇ íæÌÏ ÊÎØíØ DNS ááÊÌãÚ Çáßáì áåÇ."
-"ÅäåÇ ŞÇÆãÉ áÊÌãÚÇÊ ÈÑæÊæßæáÇÊ ÅäÊÑäÊ íÓÊÎÏãåÇ ÃİÑÇÏ áÏíåã ÈÑäÇãÌ SPAMmed"
-"Leadmon.net."
+msgid "FREE - Leadmon SpamBlock - Sites on this listing have sent Leadmon.net direct SPAM from IPs in netblocks where the entire block has no DNS mappings. It's a list of BLOCKS of IPs being used by people who have SPAMmed Leadmon.net."
+msgstr "ãÌÇäÇğ-Leadmon SpamBlock - ŞÇãÊ ãæÇŞÚ Úáì åĞå ÇáŞæÇÆã ÈÅÑÓÇá ÈÑíÏ ÛíÑ ãÑÛæÈ Åáì Leadmon.netãä ÈÑæÊæßæáÇÊ ÅäÊÑäÊ ãæÌæÏÉ İì ÊÌãÚÇÊ ÔÈßíÉ áÇ íæÌÏ ÊÎØíØ DNS ááÊÌãÚ Çáßáì áåÇ.ÅäåÇ ŞÇÆãÉ áÊÌãÚÇÊ ÈÑæÊæßæáÇÊ ÅäÊÑäÊ íÓÊÎÏãåÇ ÃİÑÇÏ áÏíåã ÈÑäÇãÌ SPAMmedLeadmon.net."
 
-msgid ""
-"FREE, for now - Not Just Another Blacklist - Both Open Relays and Direct "
-"SPAM Sources."
-msgstr ""
-"ãÌÇäÇğ ÍÇáíÇğ- áíÓÊ ãÌÑÏ ŞÇÆãÉ ÓæÏÇÁ ÃÎÑì- ÊÔãá ßá ãä ÇáãÑÍáÇÊ ÇáãİÊæÍÉ"
-"æÇáãÕÇÏÑ ÇáãÈÇÔÑÉ ááÈÑíÏ ÛíÑ ÇáãÑÛæÈ."
+msgid "FREE, for now - Not Just Another Blacklist - Both Open Relays and Direct SPAM Sources."
+msgstr "ãÌÇäÇğ ÍÇáíÇğ- áíÓÊ ãÌÑÏ ŞÇÆãÉ ÓæÏÇÁ ÃÎÑì- ÊÔãá ßá ãä ÇáãÑÍáÇÊ ÇáãİÊæÍÉæÇáãÕÇÏÑ ÇáãÈÇÔÑÉ ááÈÑíÏ ÛíÑ ÇáãÑÛæÈ."
 
 msgid "FREE, for now - Not Just Another Blacklist - Dial-up IPs."
 msgstr "ãÌÇäÇğ ÍÇáíÇğ- áíÓÊ ãÌÑÏ ŞÇÆãÉ ÓæÏÇÁ ÃÎÑì- ÈÑæÊæßæáÇÊ ÅäÊÑäÊ ááØáÈ ÇáåÇÊİí."
+
+msgid "FREE - Distributed Sender Boycott List - Confirmed Relays"
+msgstr ""
+
+msgid "FREE - Distributed Sender Boycott List - Confirmed Multi-stage Relays"
+msgstr ""
+
+msgid "FREE - Distributed Sender Boycott List - UN-Confirmed Relays"
+msgstr ""
+
+msgid "WARNING! Header filters should be of the format &quot;Header: value&quot;"
+msgstr ""
 
 msgid "Saved Scan type"
 msgstr "äæÚ ÇáãÓÍ ÇáãÍİæÙ"
@@ -1733,90 +2640,59 @@ msgstr "ÑÃÓ ÕİÍÉ"
 msgid "Contains:"
 msgstr "íÍÊæí:"
 
-msgid "Move to:"
-msgstr "äŞá Åáì :"
-
-msgid "Down"
-msgstr "ÃÓİá"
-msgid "Up"
-msgstr "ÃÚáì"
-
-#, c-format
-msgid "If <b>%s</b> contains <b>%s</b> then move to <b>%s</b>"
+#, fuzzy, c-format
+msgid "If %s contains %s then move to %s"
 msgstr "ÅĞÇ ßÇä<b>%s</b>íÍÊæí Úáì<b>%s</b>İŞã ÈÇáÇäÊŞÇá Åáì <b>%s</b>"
 
 msgid "Message Filters"
 msgstr "ãÕÇİí ÇáÑÓÇÆá"
 
-msgid ""
-"Filtering enables messages with different criteria to be automatically "
-"filtered into different folders for easier organization."
-msgstr ""
-"Êãßä ÇáÊÕİíÉ ÇáÑÓÇÆá ĞÇÊ ÇáãÚÇííÑ ÇáãÎÊáİÉ ãä ÊÕİíÊåÇ ÊáŞÇÆíÇğ"
-"İì ãÌáÏÇÊ ãÎÊáİÉ æĞáß áÓåæáÉ ÇáÊäÙíã."
+msgid "Filtering enables messages with different criteria to be automatically filtered into different folders for easier organization."
+msgstr "Êãßä ÇáÊÕİíÉ ÇáÑÓÇÆá ĞÇÊ ÇáãÚÇííÑ ÇáãÎÊáİÉ ãä ÊÕİíÊåÇ ÊáŞÇÆíÇğİì ãÌáÏÇÊ ãÎÊáİÉ æĞáß áÓåæáÉ ÇáÊäÙíã."
 
 msgid "SPAM Filters"
 msgstr "ãÕÇİí ÇáÈÑíÏ ÛíÑ ÇáãÑÛæÈ"
 
-msgid ""
-"SPAM filters allow you to select from various DNS based blacklists to detect "
-"junk email in your INBOX and move it to another folder (like Trash)."
+msgid "SPAM filters allow you to select from various DNS based blacklists to detect junk email in your INBOX and move it to another folder (like Trash)."
+msgstr "Êãßäß ãÕÇİí ÇáÈÑíÏ ÛíÑ ÇáãÑÛæÈ ãä ÇáÇÎÊíÇÑ ãä ÇáŞæÇÆã ÇáÓæÏÇÁ ÇáŞÇÆãÉ ÚáìDNS  ãÎÊáİæĞáß áÇßÊÔÇİ ÇáÈÑíÏ ÛíÑ ÇáåÇã İì ãÌáÏ ÇáÈÑíÏ ÇáæÇÑÏ INBOX æäŞáå Åáì ãÌáÏ ÂÎÑ (ãËá ÇáãåãáÇÊ Trash).  "
+
+#, fuzzy
+msgid "You must select a spam folder."
+msgstr "ÊÍÏíÏ ãÌáÏ"
+
+msgid "You must select a scan type."
 msgstr ""
-"Êãßäß ãÕÇİí ÇáÈÑíÏ ÛíÑ ÇáãÑÛæÈ ãä ÇáÇÎÊíÇÑ ãä ÇáŞæÇÆã ÇáÓæÏÇÁ ÇáŞÇÆãÉ ÚáìDNS  ãÎÊáİ"
-"æĞáß áÇßÊÔÇİ ÇáÈÑíÏ ÛíÑ ÇáåÇã İì ãÌáÏ ÇáÈÑíÏ ÇáæÇÑÏ INBOX æäŞáå Åáì ãÌáÏ ÂÎÑ (ãËá ÇáãåãáÇÊ Trash).  "
 
 msgid "Spam Filtering"
 msgstr "ÊÕİíÉ ÇáÈÑíÏ ÛíÑ ÇáãÑÛæÈ"
 
-msgid "WARNING! Tell your admin to set the SpamFilters_YourHop variable"
+#, fuzzy, c-format
+msgid "WARNING! Tell the administrator to set the %s variable."
 msgstr "ÊÍĞíÑ! Şã ÈÅÎÈÇÑ ÇáãÓÄæá áíŞæã ÈÊÚííä ãÊÛíÑ SpamFilters_YourHop"
 
 msgid "Move spam to:"
 msgstr "äŞá ÇáÈÑíÏ ÛíÑ ÇáãÑÛæÈ Åáì:"
 
+msgid "Moving spam directly to the trash may not be a good idea at first, since messages from friends and mailing lists might accidentally be marked as spam. Whatever folder you set this to, make sure that it gets cleaned out periodically, so that you don't have an excessively large mailbox hanging around."
+msgstr "ŞÏ áÇ íßæä äŞá ÇáÈÑíÏ ÛíÑ ÇáãÑÛæÈ Åáì ÇáãåãáÇÊ ÓáÉ ÇáãåãáÇÊ ãÓÊÍÈÇğ İì ÇáÈÏÇíÉ,İŞÏ íÊã ÇáÊÚáíã Ïæä ŞÕÏ Úáì ÇáÑÓÇÆá ÇáæÇÑÏÉ ãä ÃÕÏŞÇÆß æãä ÇáŞæÇÆã ÇáÈÑíÏíÉ ßÈÑíÏ ÛíÑ ãÑÛæÈ.æÃíÇ ßÇä ÇáãÌáÏ ÇáĞí ÊÎÕÕå áĞáß, İíÌÈ ÇáÊÃßÏ ÈÕİÉ ÏæÑíÉ ãä ÊäÙíİå,ÍÊì áÇ ÊÊÖÎã ÚáÈÉ ÇáÈÑíÏ ÈÏÑÌÉ ÒÇÆÏÉ Úä ÇáÍÏ."
 
-msgid ""
-"Moving spam directly to the trash may not be a good idea at first, since "
-"messages from friends and mailing lists might accidentally be marked as "
-"spam. Whatever folder you set this to, make sure that it gets cleaned out "
-"periodically, so that you don't have an excessively large mailbox hanging "
-"around."
-msgstr ""
-"ŞÏ áÇ íßæä äŞá ÇáÈÑíÏ ÛíÑ ÇáãÑÛæÈ Åáì ÇáãåãáÇÊ ÓáÉ ÇáãåãáÇÊ ãÓÊÍÈÇğ İì ÇáÈÏÇíÉ,"
-"İŞÏ íÊã ÇáÊÚáíã Ïæä ŞÕÏ Úáì ÇáÑÓÇÆá ÇáæÇÑÏÉ ãä ÃÕÏŞÇÆß æãä ÇáŞæÇÆã ÇáÈÑíÏíÉ ßÈÑíÏ ÛíÑ ãÑÛæÈ."
-"æÃíÇ ßÇä ÇáãÌáÏ ÇáĞí ÊÎÕÕå áĞáß, İíÌÈ ÇáÊÃßÏ ÈÕİÉ ÏæÑíÉ ãä ÊäÙíİå,"
-"ÍÊì áÇ ÊÊÖÎã ÚáÈÉ ÇáÈÑíÏ ÈÏÑÌÉ ÒÇÆÏÉ "
-"Úä ÇáÍÏ."
-
-msgid ""
-"The more messages you scan, the longer it takes.  I would suggest that you "
-"scan only new messages.  If you make a change to your filters, I would set "
-"it to scan all messages, then go view my INBOX, then come back and set it to "
-"scan only new messages.  That way, your new spam filters will be applied and "
-"you'll scan even the spam you read with the new filters."
-msgstr ""
-"ÈŞÏÑ ãÇ íßæä ÚÏÏ ÇáÑÓÇÆá ÇáÊí ÊŞæã ÈãÓÍåÇ ßÈíÑÇğ ÈŞÏÑ ãÇ íÓÊÛÑŞ Ğáß æŞÊÇğ,"
-"æáĞáß ÃŞÊÑÍ Ãä ÊŞæã ÈãÓÍ ÇáÑÓÇÆá ÇáÌÏíÏÉ İŞØ, ÃãÇ ÚäÏ Úãá ÊÛííÑ İì ÇáãÕÇİí, "
-"İíãßä ÅÚÏÇÏåÇ áãÓÍ ßÇİÉ ÇáÑÓÇÆá Ëã ÚÑÖ ÇáÈÑíÏ ÇáæÇÑÏ Ëã ÇáÚæÏÉ áÅÚÏÇÏåÇ áãÓÍ ÇáÑÓÇÆá ÇáÌÏíÏÉ İŞØ."
-"æÈåĞå ÇáØÑíİÉ Óæİ íÊã ÇÓÊÎÏÇã ÇáãÕÇİí ÇáÌÏíÏÉ ááÈÑíÏ ÛíÑ ÇáãÑÛæÈ,"
-"æÓæİ ÊŞæã ÈãÓÍ ÍÊì ÇáÈÑíÏ ÛíÑ ÇáãÑÛæÈ ÇáĞí ÊŞÑÃå ÈåĞå  ÇáãÕÇİí ÇáÌÏíÏÉ."
-
-#, c-format
-msgid "Spam is sent to <b>%s</b>"
-msgstr "Êã ÅÑÓÇá ÇáÈÑíÏ ÛíÑ ÇáãÑÛæÈ Åáì<b>%s</b>"
-
-msgid "[<i>not set yet</i>]"
-msgstr "[<i> áã íÊã ÊÚííäå ÈÚÏ</i>]"
-
-#, c-format
-msgid "Spam scan is limited to <b>%s</b>"
-msgstr "íŞÊÕÑ ãÓÍ ÇáÈÑíÏ ÛíÑ ÇáãÑÛæÈ Úáì <b>%s</b>"
-
-msgid "New Messages Only"
+msgid "Unread messages only"
 msgstr "ÇáÑÓÇÆá ÇáÌÏíÏÉ İŞØ"
 
-msgid "All Messages"
-msgstr "ßÇİÉ ÇáÑÓÇÆá"
+#, fuzzy
+msgid "The more messages scanned, the longer it takes. It's recommended to scan unread messages only. If a change to the filters is made, it's recommended to set it to scan all messages, then go view the INBOX, then come back and set it to scan unread messages only. That way, the new spam filters will be applied and even the spam you didn't catch with the old filters will be scanned."
+msgstr "ÈŞÏÑ ãÇ íßæä ÚÏÏ ÇáÑÓÇÆá ÇáÊí ÊŞæã ÈãÓÍåÇ ßÈíÑÇğ ÈŞÏÑ ãÇ íÓÊÛÑŞ Ğáß æŞÊÇğ,æáĞáß ÃŞÊÑÍ Ãä ÊŞæã ÈãÓÍ ÇáÑÓÇÆá ÇáÌÏíÏÉ İŞØ, ÃãÇ ÚäÏ Úãá ÊÛííÑ İì ÇáãÕÇİí, İíãßä ÅÚÏÇÏåÇ áãÓÍ ßÇİÉ ÇáÑÓÇÆá Ëã ÚÑÖ ÇáÈÑíÏ ÇáæÇÑÏ Ëã ÇáÚæÏÉ áÅÚÏÇÏåÇ áãÓÍ ÇáÑÓÇÆá ÇáÌÏíÏÉ İŞØ.æÈåĞå ÇáØÑíİÉ Óæİ íÊã ÇÓÊÎÏÇã ÇáãÕÇİí ÇáÌÏíÏÉ ááÈÑíÏ ÛíÑ ÇáãÑÛæÈ,æÓæİ ÊŞæã ÈãÓÍ ÍÊì ÇáÈÑíÏ ÛíÑ ÇáãÑÛæÈ ÇáĞí ÊŞÑÃå ÈåĞå  ÇáãÕÇİí ÇáÌÏíÏÉ."
+
+#, fuzzy, c-format
+msgid "Spam is sent to %s."
+msgstr "Êã ÅÑÓÇá ÇáÈÑíÏ ÛíÑ ÇáãÑÛæÈ Åáì<b>%s</b>"
+
+msgid "not set yet"
+msgstr "[<i> áã íÊã ÊÚííäå ÈÚÏ</i>]"
+
+#, fuzzy, c-format
+msgid "Spam scan is limited to %s."
+msgstr "íŞÊÕÑ ãÓÍ ÇáÈÑíÏ ÛíÑ ÇáãÑÛæÈ Úáì <b>%s</b>"
 
 msgid "ON"
 msgstr "ÊÔÛíá"
@@ -1824,15 +2700,632 @@ msgstr "ÊÔÛíá"
 msgid "OFF"
 msgstr "ÅíŞÇİ ÊÔÛíá"
 
+#, fuzzy
+msgid " not found."
+msgstr "áã íÊã ÇáÚËæÑ Úáì ÃÎØÇÁ"
+
+msgid "Today's Fortune"
+msgstr ""
+
+#, fuzzy
+msgid "Fortunes:"
+msgstr "ÈÑÊÛÇáíÉ"
+
+msgid "Show fortunes at top of mailbox"
+msgstr ""
+
+msgid "Plugin is disabled."
+msgstr ""
+
+#, fuzzy
+msgid "IMAP server information"
+msgstr "ãäİĞ ãáŞã IMAP"
+
+#, fuzzy
+msgid "Server Capability response:"
+msgstr "ÇÓÊÌÇÈÉ ÇáãáŞã:"
+
+msgid "Select the IMAP commands you would like to run. Most commands require a selected mailbox so the select command is already setup. You can clear all the commands and test your own IMAP command strings. The commands are executed in order. The default values are simple IMAP commands using your default_charset and folder_prefix from SquirrelMail when needed."
+msgstr ""
+
+msgid "NOTE: These commands are live, any changes made will effect your current email account."
+msgstr ""
+
+msgid "Select"
+msgstr "ÇÎÊÇÑ"
+
+#, fuzzy
+msgid "Test Name"
+msgstr "ÇÓã ÇáÓãÉ"
+
+#, fuzzy
+msgid "IMAP command string"
+msgstr "ÓáÓáÉ ÃæÇãÑ İÇÑÛÉ"
+
+msgid "Request:"
+msgstr "ãØáæÈ:"
+
+msgid "Run some test IMAP commands, displaying both the command and the result. These tests use the SquirrelMail IMAP commands and your current SquirrelMail configuration. Custom command strings can be used."
+msgstr ""
+
+msgid "Mailinglist"
+msgstr "ŞÇÆãÉ ÈÑíÏíÉ"
+
+#, c-format
+msgid "This will send a message to %s requesting help for this list. You will receive an emailed response at the address below."
+msgstr "ÓíŞæã Ğáß ÈÅÑÓÇá ÑÓÇáÉ Åáì %s  áØáÈ ãÓÇÚÏÉ áåĞå ÇáŞÇÆãÉ.Óæİ ÊÊáŞì ÑÏÇğ ÈÇáÈÑíÏ ÇáÅáßÊÑæäí Úáì ÇáÚäæÇä ÇáãÈíä ÃÏäÇå."
+
+#, c-format
+msgid "This will send a message to %s requesting that you will be subscribed to this list. You will be subscribed with the address below."
+msgstr "ÓíŞæã Ğáß ÈÅÑÓÇá ÑÓÇáÉ Åáì %s  áØáÈ ÇÔÊÑÇßß İì åĞå ÇáŞÇÆãÉ.Óæİ íÊã ÇÔÊÑÇßß ÈÇáÚäæÇä ÇáãÈíä ÃÏäÇå."
+
+#, c-format
+msgid "This will send a message to %s requesting that you will be unsubscribed from this list. It will try to unsubscribe the adress below."
+msgstr "ÓíŞæã Ğáß ÈÅÑÓÇá ÑÓÇáÉ Åáì %s  áØáÈ ÅáÛÇÁ ÇÔÊÑÇßß İì åĞå ÇáŞÇÆãÉ.Óæİ ÃÍÇæá ÅáÛÇÁ ÇÔÊÑÇß ÇáÚäæÇä ÇáãÈíä ÃÏäÇå."
+
+msgid "Send Mail"
+msgstr "ÅÑÓÇá ÈÑíÏ"
+
+msgid "Post to List"
+msgstr "ÊæÒíÚ  Úáì ŞÇÆãÉ"
+
+msgid "Reply to List"
+msgstr "ÅÌÇÈÉ Úáì ŞÇÆãÉ"
+
+msgid "List Archives"
+msgstr "ÓÌáÇÊ ŞÇÆãÉ"
+
+msgid "Contact Listowner"
+msgstr "ÇÊÕá ÈÜ Listowner"
+
+msgid "Mailing List"
+msgstr "ŞÇÆãÉ ÈÑíÏíÉ"
+
+msgid "POP3 connect:"
+msgstr "ÇÊÕÇáPOP3 :"
+
+msgid "No server specified"
+msgstr "áã íÊã ÊÍÏíÏ ãáŞã"
+
+msgid "Error "
+msgstr "ÎØÃ"
+
+msgid "POP3 user:"
+msgstr "ãÓÊÎÏãPOP3 :"
+
+msgid "no login ID submitted"
+msgstr "áã íÊã ÊÓáíã ãÚÑøİ ÊÓÌíá ÏÎæá"
+
+msgid "connection not established"
+msgstr "áã íÊã ÇáÇÊÕÇá"
+
+msgid "POP3 pass:"
+msgstr "ÊãÑíÑPOP3 :"
+
+msgid "No password submitted"
+msgstr "áã íÊã ÊÓáíã ßáãÉ ãÑæÑ"
+
+msgid "authentication failed "
+msgstr "İÔá ÇáãÕÇÏŞÉ "
+
+msgid "POP3 apop:"
+msgstr "POP3 apop:"
+
+msgid "No connection to server"
+msgstr "áÇ íæÌÏ ÇÊÕÇá ÈãáŞã "
+
+msgid "No login ID submitted"
+msgstr "áã íÊã ÊÓáíã ãÚÑøİ ÊÓÌíá ÏÎæá"
+
+msgid "No server banner"
+msgstr "áÇ íæÌÏ ÔÚÇÑ ááãáŞã "
+
+msgid "abort"
+msgstr "ÅÍÈÇØ"
+
+msgid "apop authentication failed"
+msgstr "İÔá ÇáãÕÇÏŞÉ Úáìapop"
+
+msgid "POP3 login:"
+msgstr "ÊÓÌíá ÏÎæáPOP3 :"
+
+msgid "POP3 top:"
+msgstr "ÃÚáìPOP3 :"
+
+msgid "POP3 pop_list:"
+msgstr "POP3 pop_list:"
+
+msgid "Premature end of list"
+msgstr "äåÇíÉ ŞÈá ÇáÃæÇä ááŞÇÆãÉ"
+
+msgid "POP3 get:"
+msgstr "ßÓÈPOP3 :"
+
+msgid "POP3 last:"
+msgstr "ÂÎÑPOP3 :"
+
+msgid "POP3 reset:"
+msgstr "ÅÚÇÏÉ ÊÚííä POP3:"
+
+msgid "POP3 send_cmd:"
+msgstr "POP3 send_cmd:"
+
+msgid "Empty command string"
+msgstr "ÓáÓáÉ ÃæÇãÑ İÇÑÛÉ"
+
+msgid "POP3 quit:"
+msgstr "ÅäåÇÁ POP3:"
+
+msgid "connection does not exist"
+msgstr "ÇáÇÊÕÇá ÛíÑ ãæÌæÏ"
+
+msgid "POP3 uidl:"
+msgstr "POP3 uidl:"
+
+msgid "POP3 delete:"
+msgstr "ÍĞİPOP3 :"
+
+msgid "No msg number submitted"
+msgstr "áã íÊã ÊÓáíã ÑŞã ÑÓÇáÉ"
+
+msgid "Command failed "
+msgstr "İÔá ÇáÃãÑ"
+
+msgid "Select Server:"
+msgstr "ÊÍÏíÏ ãáŞã:"
+
+msgid "Password for"
+msgstr "ßáãÉ ãÑæÑ ãä ÃÌá"
+
+msgid "Fetch Mail"
+msgstr "ÌáÈ ÈÑíÏ"
+
+msgid "Remote POP server Fetching Mail"
+msgstr "ãáŞã POP ÈÚíÏ áÌáÈ ÇáÈÑíÏ"
+
+msgid "No POP3 servers configured yet."
+msgstr ""
+
+msgid "Click here to go to the options page."
+msgstr "ÇäŞÑ åäÇ ááĞåÇÈ áÕİÍÉ ÇáÇÚÏÇÏÇÊ "
+
+msgid "Fetching from "
+msgstr "ÌáÈ ãä"
+
+msgid "Oops, "
+msgstr "Oops,"
+
+msgid "Opening IMAP server"
+msgstr "İÊÍ ãáŞãIMAP"
+
+msgid "Opening POP server"
+msgstr "İÊÍ ãáŞãPOP"
+
+msgid "Login Failed:"
+msgstr "İÔá ÊÓÌíá ÇáÏÎæá:"
+
+msgid "Login OK: No new messages"
+msgstr "ÊÓÌíá ÇáÏÎæá Óáíã: áÇ ÊæÌÏ ÑÓÇÆá ÌÏíÏÉ"
+
+msgid "Login OK: Inbox EMPTY"
+msgstr "ÊÓÌíá ÇáÏÎæá Óáíã: ÚáÈÉ ÇáæÇÑÏ İÇÑÛÉ"
+
+#, fuzzy, c-format
+msgid "Login OK: Inbox contains %s messages"
+msgstr "ÊÓÌíá ÇáÏÎæá Óáíã: ÊÍÊæì ÇáÈÑíÏ ÇáæÇÑÏ Úáì  "
+
+msgid "Fetching UIDL..."
+msgstr "ÌáÈUIDL ..."
+
+msgid "Server does not support UIDL."
+msgstr "ÇáãáŞã áÇ íÏÚã  UIDL."
+
+msgid "Leaving Mail on Server..."
+msgstr "ÊÑß ÇáÈÑíÏ Úáì ÇáãáŞã..."
+
+msgid "Deleting messages from server..."
+msgstr "ÍĞİ ÑÓÇÆá ãä ÇáãáŞã..."
+
+msgid "Fetching message "
+msgstr "ÌáÈ ÑÓÇáÉ"
+
+msgid "Server error...Disconnect"
+msgstr ""
+
+msgid "Reconnect from dead connection"
+msgstr ""
+
+msgid "Saving UIDL"
+msgstr "ÍİÙ  UIDL"
+
+#, fuzzy
+msgid "Refetching message "
+msgstr "ÌáÈ ÑÓÇáÉ"
+
+msgid "Error Appending Message!"
+msgstr "ÎØÃ  ÅáÍÇŞ ÑÓÇáÉ!"
+
+msgid "Closing POP"
+msgstr "ÛáŞ POP"
+
+msgid "Logging out from IMAP"
+msgstr "ÊÓÌíá ÇáÎÑæÌ ãä IMAP"
+
+msgid "Message appended to mailbox"
+msgstr "ÑÓÇáÉ ãáÍŞÉ ÈÚáÈÉ ÈÑíÏ"
+
+msgid "Message "
+msgstr "ÑÓÇáÉ"
+
+msgid " deleted from Remote Server!"
+msgstr "ãÍĞæİ ãä ãáŞã ÈÚíÏ! "
+
+msgid "Delete failed:"
+msgstr "İÔá ÇáÍĞİ:"
+
+msgid "Remote POP server settings"
+msgstr "ÅÚÏÇÏÇÊ ãáŞãPOP ÈÚíÏ"
+
+#, fuzzy
+msgid "You should be aware that the encryption used to store your password is not perfectly secure. However, if you are using pop, there is inherently no encryption anyway. Additionally, the encryption that we do to save it on the server can be undone by a hacker reading the source to this file."
+msgstr "íÌÈ Ãä Êßæä ãÏÑßÇğ Ãä ÇáÊÔİíÑ ÇáãÓÊÎÏã İì ÊÎÒíä ßáãÉ ÇáãÑæÑ áíÓÂãäÇ ãä ÌãíÚ ÇáæÌæå. æãÚ Ğáß İáÇ íæÌÏ Ãí ÊÔİíÑ ÚäÏ ÇÓÊÎÏÇã ãáŞãPOP .æİÖáÇğ Úä Ğáß İÇáÊÔİíÑ ÇáĞí äŞæã Èå áÍİÙå Úáì ÇáãáŞãíãßä ÅáÛÇÁå ÈæÇÓØÉ ÃÍÏ ÇáãÊÓááíä ÇáĞíä íŞæãæä ÈŞÑÇÁÉ ãÕÏÑ åĞÇ Çáãáİ. "
+
+msgid "If you leave password empty, it will be required when you fetch mail."
+msgstr "ÅĞÇ ŞãÊ ÈÊÑß ßáãÉ ÇáãÑæÑ İÇÑÛÉ, İÓæİ ÊØáÈ ãäß ÚäÏ ÌáÈ ÇáÈÑíÏ."
+
+msgid "Encrypt passwords (informative only)"
+msgstr "ÊÔİíÑ ßáãÇÊ ÇáãÑæÑ (ááÚáã İŞØ)"
+
+msgid "Add Server"
+msgstr "ÅÖÇİÉ ãáŞã"
+
+msgid "Server:"
+msgstr "ãáŞã:"
+
+#, fuzzy
+msgid "Port:"
+msgstr "ÇáÃİÖáíÉ:"
+
+msgid "Alias:"
+msgstr "ÇÓã ãÓÊÚÇÑ:"
+
+msgid "Username:"
+msgstr "ÇÓã ãÓÊÎÏã:"
+
+msgid "Store in Folder:"
+msgstr "ÊÎÒíä İí ãÌáÏ:"
+
+msgid "Leave Mail on Server"
+msgstr "ÊÑß ÇáÈÑíÏ Úáì ÇáãáŞã"
+
+msgid "Check mail during login"
+msgstr "İÍÕ ÇáÈÑíÏ ÎáÇá ÊÓÌíá ÇáÏÎæá"
+
+msgid "Check mail during folder refresh"
+msgstr "İÍÕ ÇáÈÑíÏ ÎáÇá ÊÍÏíË ãÌáÏ "
+
+msgid "Modify Server"
+msgstr "ÊÚÏíá ãáŞã"
+
+msgid "Server Name:"
+msgstr "ÇÓã ÇáãáŞã:"
+
+msgid "Modify"
+msgstr "ÊÚÏíá"
+
+msgid "No-one server in use. Try to add."
+msgstr "áÇ íæÌÏ Ãí ãáŞã ÊÍÊ ÇáÇÓÊÎÏÇã. ÍÇæá ÇáÅÖÇİÉ."
+
+msgid "Fetching Servers"
+msgstr "ãáŞãÇÊ ÌáÈ "
+
+msgid "Confirm Deletion of a Server"
+msgstr "ÊÃßíÏ ÍĞİ ãáŞã"
+
+msgid "Selected Server:"
+msgstr "ÇáãáŞã ÇáãÍÏÏ:"
+
+msgid "Confirm delete of selected server?"
+msgstr "åá ÊÄßÏ Úáì ÍĞİ ÇáãáŞã ÇáãÍÏÏ¿"
+
+msgid "Confirm Delete"
+msgstr "ÊÃßíÏ ÍĞİ"
+
+msgid "Undefined Function"
+msgstr "æÙíİÉ ÛíÑ ãÚÑøİÉ "
+
+msgid "Hey! Wath do You are looking for?"
+msgstr "İíãÇ ÊäÙÑ¿"
+
+msgid "Fetch"
+msgstr "ÌáÈ"
+
+msgid "Warning, "
+msgstr "ÊÍĞíÑ,"
+
+msgid "Mail Fetch Result:"
+msgstr "äÊíÌÉ ÌáÈ ÇáÈÑíÏ:"
+
+msgid "POP3 Fetch Mail"
+msgstr "ÌáÈ ÈÑíÏ POP3 ÈÓíØ"
+
+msgid "This configures settings for downloading email from a POP3 mailbox to your account on this server."
+msgstr "íŞæã Ğáß ÈÊßæíä ÅÚÏÇÏÇÊ ÊÍãíá ÇáÈÑíÏ ÇáÅáßÊÑæäí ãä ÚáÈÉ ÈÑíÏ  pop3 ÅáìÇÔÊÑÇßß Úáì åĞÇ ÇáãáŞã."
+
+msgid "Message Details"
+msgstr "ÊİÇÕíá ÇáÑÓÇáÉ"
+
+msgid "Close Window"
+msgstr "ÅÛáÇŞ ÇáÅØÇÑ"
+
+msgid "Save Message"
+msgstr "ÇÍİÙ ÇáÑÓÇáÉ"
+
+msgid "View Message details"
+msgstr "ÚÑÖ ÊİÇÕíá ÇáÑÓÇáÉ"
+
+msgid "New Mail"
+msgstr "ÈÑíÏ ÌÏíÏ "
+
+msgid "SquirrelMail Notice:"
+msgstr "ÅÚáÇã SquirrelMail:"
+
+msgid "You have"
+msgstr "áÏíß"
+
+#, c-format
+msgid "%s new message"
+msgstr "ÑÓÇáÉ ÌÏíÏÉ %s"
+
+#, c-format
+msgid "%s new messages"
+msgstr "ÑÓÇÆá ÌÏíÏÉ %s"
+
+msgid "New Mail Notification"
+msgstr "ÅÚáÇã Úä ÈÑíÏ ÌÏíÏ "
+
+#, fuzzy, c-format
+msgid "The %s option will check ALL of your folders for unseen mail, not just the inbox for notification."
+msgstr "<b>áíÓÊ ÎÇäÇÊ İÍÕ Çáßá åí ãÌÑÏ ÎíÇÑ áÚáÈÉ ÇáæÇÑÏ</b> íŞæã ÈİÍÕ ÌãíÚ ÇáãÌáÏÇÊááÈÍË Úä ÈÑíÏ ÛíÑ ãÑÆí, æáíÓ ãÌÑÏ ÇáÈÍË İì ÚáÈÉ ÇáæÇÑÏ Úä ÅÚáÇã ."
+
+msgid "Check all boxes, not just INBOX"
+msgstr "áíÓ İÍÕ Çáßá åæ ãÌÑÏ İÍÕ ÚáÈÉ ÇáæÇÑÏ"
+
+#, fuzzy, c-format
+msgid "Selecting the %s option will enable the showing of a popup window when unseen mail is in your folders (requires JavaScript)."
+msgstr "ÊÍÏíÏ <b>ÎíÇÑ ÇáÅÙåÇÑ ÇáãäÈËŞ</b>íÄÏì Åáì ÅÙåÇÑ ÅØÇÑ ãäÈËŞÚäÏ æÌæÏ ÈÑíÏ ÛíÑ ãÑÆí İì ÇáãÌáÏÇÊ (íÊØáÈ JavaScript)."
+
+msgid "Show popup window on new mail"
+msgstr "ÅÙåÇÑ ÅØÇÑ ãäÈËŞ Úáì ÈÑíÏ ÌÏíÏ "
+
+#, fuzzy, c-format
+msgid "Use the %s option to only check for messages that are recent. Recent messages are those that have just recently showed up and have not been \"viewed\" or checked yet. This can prevent being continuously annoyed by sounds or popups for unseen mail."
+msgstr "ÇÓÊÎÏã <b>İÍÕ ÇáÍÏíË</b>ááÈÍË Úä ÇáÑÓÇÆá ÇáÍÏíËÉ İŞØ."
+
+msgid "Count only messages that are RECENT"
+msgstr "Şã ÈÇÍÊÓÇÈ ÇáÑÓÇÆá ÇáÍÏíËÉ İŞØ "
+
+#, c-format
+msgid "Selecting the %s option will change the title in some browsers to let you know when you have new mail (requires JavaScript, and only works in IE but you won't see errors with other browsers). This will always tell you if you have new mail, even if you have %s enabled."
+msgstr ""
+
+#, fuzzy
+msgid "Change title on supported browsers"
+msgstr "ÊÛííÑ ÇáÚäæÇä ÇáæÙíİí Úáì ÈÑÇãÌ ÇáÊÕİÍ ÇáãÏÚæãÉ ."
+
+#, fuzzy, c-format
+msgid "Select %s to turn on playing a media file when unseen mail is in your folders. When enabled, you can specify the media file to play in the provided file box."
+msgstr "ÊÍÏíÏ <b>Êãßíä ŞÑÇÁÉ ÇáæÓÇÆØ </b>áÊÔÛíá ŞÑÇÁÉ ãáİ æÓÇÆØ ÚäÏ æÌæÏ ÈÑíÏ ÛíÑ ãÑÆí İì ÇáãÌáÏÇÊ. æÚäÏ Êãßíäå ÊÓÊØíÚ ÊÍÏíÏ ãáİ ÇáæÓÇÆØæĞáß áŞÑÇÁÊå É İì ãÑÈÚ Çáãáİ."
+
+msgid "Enable Media Playing"
+msgstr "Êãßíä ŞÑÇÁÉ ÇáæÓÇÆØ"
+
+#, c-format
+msgid "Select from the list of %s the media file to play when new mail arrives. If no file is specified, %s, no sound will be used."
+msgstr ""
+
+#, fuzzy
+msgid "Select server file"
+msgstr "ÊÍÏíÏ ãáİ ãáŞã:"
+
+msgid "(none)"
+msgstr ""
+
+msgid "requires JavaScript to work"
+msgstr "íÊØáÈJavaScript ÍÊì íÚãá"
+
+msgid "Try"
+msgstr "ãÍÇæáÉ"
+
+msgid "Current File:"
+msgstr "Çáãáİ ÇáÍÇáí:"
+
+msgid "NewMail Options"
+msgstr "ÎíÇÑÇÊ ÇáÈÑíÏ ÇáÌÏíÏ"
+
+msgid "This configures settings for playing sounds and/or showing popup windows when new mail arrives."
+msgstr "íŞæã Ğáß ÈÊßæíä ÅÚÏÇÏÇÊ ŞÑÇÁÉ ÇáÃÕæÇÊ æ/Ãæ ÅÙåÇÑ ÇáÅØÇÑÇÊ ÇáãäÈËŞÉ ÚäÏ æÕæá ÈÑíÏ ÌÏíÏ."
+
+msgid "New Mail Notification options saved"
+msgstr "Êã ÍİÙ ÎíÇÑÇÊ ÇáÅÚáÇã Úä ÈÑíÏ ÌÏíÏ"
+
+#, c-format
+msgid "%s New Messages"
+msgstr "ÑÓÇÆá ÌÏíÏÉ %s"
+
+#, c-format
+msgid "%s New Message"
+msgstr "ÑÓÇáÉ ÌÏíÏÉ %s"
+
+msgid "Test Sound"
+msgstr "ÇÎÊÈÇÑ ÇáÕæÊ"
+
+#, fuzzy
+msgid "No sound specified"
+msgstr "áã íÊã ÊÍÏíÏ ãáŞã"
+
+msgid "Loading the sound..."
+msgstr "ÊÍãíá ÇáÕæÊ..."
+
+msgid "Sent Subfolders Options"
+msgstr "ÎíÇÑÇÊ ãÌáÏÇÊ ÇáÕÇÏÑ ÇáİÑÚíÉ"
+
+msgid "Use Sent Subfolders"
+msgstr "ÇÓÊÎÏÇã ãÌáÏÇÊ ÇáÕÇÏÑ ÇáİÑÚíÉ"
+
+msgid "Monthly"
+msgstr "ÔåÑíÇğ"
+
+msgid "Quarterly"
+msgstr "İÕáíÇğ"
+
+msgid "Yearly"
+msgstr "ÓäæíÇğ"
+
+msgid "Base Sent Folder"
+msgstr "ãÌáÏ Base ÇáÕÇÏÑ       "
+
+msgid "Enabled"
+msgstr "ããßä"
+
+msgid "Disable it"
+msgstr "ãÚØá"
+
+msgid "Enable it"
+msgstr ""
+
+#, fuzzy
+msgid "Spam reporting"
+msgstr "ÊÕİíÉ ÇáÈÑíÏ ÛíÑ ÇáãÑÛæÈ"
+
+msgid "SpamCop link is:"
+msgstr ""
+
+#, fuzzy
+msgid "Delete spam when reported:"
+msgstr "ÍĞİ ÇáãÍÏÏ"
+
+msgid "Only works with email-based reporting"
+msgstr ""
+
+msgid "Spam Reporting Method:"
+msgstr ""
+
+msgid "Quick email-based reporting"
+msgstr ""
+
+msgid "Thorough email-based reporting"
+msgstr ""
+
+msgid "Web-based form"
+msgstr ""
+
+msgid "Save Method"
+msgstr ""
+
+#, fuzzy
+msgid "Spam Service Type:"
+msgstr "äæÚ ãáŞã IMAP"
+
+msgid "Free reporting"
+msgstr ""
+
+msgid "Member services"
+msgstr ""
+
+#, fuzzy
+msgid "Save Service Type"
+msgstr "äæÚ ÇáãÓÍ ÇáãÍİæÙ"
+
+msgid "Your SpamCop authorization code:"
+msgstr ""
+
+msgid "see below"
+msgstr ""
+
+#, fuzzy
+msgid "Save ID"
+msgstr "ÍİÙ"
+
+msgid "About SpamCop"
+msgstr ""
+
+msgid "SpamCop is a free service that greatly assists in finding the true source of the spam and helps in letting the proper people know about the abuse."
+msgstr ""
+
+#, c-format
+msgid "To use it, you must get a SpamCop authorization code. There is a free %ssign up page%s so you can use SpamCop."
+msgstr ""
+
+msgid "Before you sign up, be warned"
+msgstr ""
+
+#, c-format
+msgid "Some users have reported that the email addresses used with SpamCop find their way onto spam lists. To be safe, you can just create an email forwarding account and have all SpamCop reports get sent to there. Also, if it gets flooded with spam, you can then just delete that account with no worries about losing your real email address. Just go create an email forwarder somewhere (%s has a %slist of places%s) so that messages from system administrators and what not can be sent to you."
+msgstr ""
+
+msgid "Once you have signed up with SpamCop and have received your SpamCop authorization code, you need to enable this plugin by clicking the link above. Once enabled, you go about your normal life. If you encounter a spam message in your mailbox, just view it. On the right-hand side, near the top of where the message is displayed, you will see a link to report this message as spam. Clicking on it brings you to a confirmation page. Confirming that you want the spam report sent will do different things with different reporting methods."
+msgstr ""
+
+msgid "Email-based reporting"
+msgstr ""
+
+msgid "Pressing the button forwards the message to the SpamCop service and will optionally delete the message. From there, you just need to go to your INBOX and quite soon a message should appear from SpamCop. (It gets sent to the account you registered with, so make sure that your mail forwarder works!) Open it up, click on the appropriate link at the top, and a new browser window will open."
+msgstr ""
+
+msgid "Currently, the quick reporting just forwards the request to the thorough reporting. Also, it appears that this is for members (non-free) only. Hopefully this will change soon."
+msgstr ""
+
+msgid "Web-based reporting"
+msgstr ""
+
+msgid "When you press the button on the confirmation page, this will pop open a new browser window and the SpamCop service should appear inside. The message will not be deleted (working on that part), but you won't need to wait for a response email to start the spam reporting."
+msgstr ""
+
+msgid "The SpamCop service will display information as it finds it, so scroll down until you see a form button. It might pause a little while it is looking up information, so be a little patient. Read what it says, and submit the spam. Close the browser window. Press Cancel or click on the appropriate mail folder to see messages and/or delete the spam."
+msgstr ""
+
+msgid "SpamCop service type"
+msgstr ""
+
+msgid "Service type option allows selecting which SpamCop services you are using. Member services use different web reporting forms and does not display nags. You can purchase these services, if you want to support SpamCop."
+msgstr ""
+
+#, fuzzy
+msgid "More information"
+msgstr "ãÚáæãÇÊ ÔÎÕíÉ "
+
+#, c-format
+msgid "For more information about SpamCop, it's services, spam in general, and many related topics, try reading through SpamCop's %sHelp and Feedback%s section."
+msgstr ""
+
+msgid "Report as Spam"
+msgstr ""
+
+msgid "SpamCop - Spam Reporting"
+msgstr ""
+
+msgid "Help fight the battle against unsolicited email. SpamCop reads the spam email and determines the correct addresses to send complaints to. Quite fast, really smart, and easy to use."
+msgstr ""
+
+#, fuzzy
+msgid "SpamCop reporting"
+msgstr "ÊÕİíÉ ÇáÈÑíÏ ÛíÑ ÇáãÑÛæÈ"
+
+msgid "Sending this spam report will give you back a reply with URLs that you can click on to properly report this spam message to the proper authorities. This is a free service. By pressing the \"Send Spam Report\" button, you agree to follow SpamCop's rules/terms of service/etc."
+msgstr ""
+
+msgid "Cancel / Done"
+msgstr ""
+
+msgid "Send Spam Report"
+msgstr ""
+
 msgid "SpellChecker Options"
 msgstr "ÎíÇÑÇÊ ÇáãÏŞŞ ÇáÅãáÇÆí"
 
-msgid ""
-"Here you may set up how your personal dictionary is stored, edit it, or "
-"choose which languages should be available to you when spell-checking."
-msgstr ""
-"íãßäß åäÇ ÅÚÏÇÏ ßíİíÉ ÊÎÒíä ÇáŞÇãæÓ ÇáÔÎÕí Ãæ  ÊÍÑíÑå Ãæ"
-"ÇÎÊíÇÑ ÇááÛÉ ÇáÊí íÌÈ Ãä ÊÊæİÑ áÏíß ÚäÏ ÇáÊÏŞíŞ ÇáÅãáÇÆí."
+msgid "Here you may set up how your personal dictionary is stored, edit it, or choose which languages should be available to you when spell-checking."
+msgstr "íãßäß åäÇ ÅÚÏÇÏ ßíİíÉ ÊÎÒíä ÇáŞÇãæÓ ÇáÔÎÕí Ãæ  ÊÍÑíÑå ÃæÇÎÊíÇÑ ÇááÛÉ ÇáÊí íÌÈ Ãä ÊÊæİÑ áÏíß ÚäÏ ÇáÊÏŞíŞ ÇáÅãáÇÆí."
 
 msgid "Check Spelling"
 msgstr "ÊÏŞíŞ ÅãáÇÆí"
@@ -1843,24 +3336,9 @@ msgstr ""
 msgid "ATTENTION:"
 msgstr "ÊäÈíå:"
 
-msgid ""
-"SpellCheck was unable to decrypt your personal dictionary. This is most "
-"likely due to the fact that you have changed your mailbox password. In order "
-"to proceed, you will have to supply your old password so that SpellCheck "
-"can decrypt your personal dictionary. It will be re-encrypted with your new "
-"password after this.<br>If you haven't encrypted your dictionary, then it "
-"got mangled and is no longer valid. You will have to delete it and start "
-"anew. This is also true if you don't remember your old password -- without "
-"it, the encrypted data is no longer accessible."
-msgstr ""
-"ÊÚĞÑ Úáì ÇáãÏŞŞ ÇáÅãáÇÆí İß ÔİÑÉ ÇáŞÇãæÓ ÇáÔÎÕí."
-"íÑÌÚ Ğáß ÛÇáÈÇğ Åáì ŞíÇãß ÈÊÛííÑ ßáãÉ ãÑæÑ ÚáÈÉ ÇáÈÑíÏ."
-"æíÌÈ ÊŞÏíã ßáãÉ ÇáãÑæÑ ÇáŞÏíãÉ ÍÊì íÓÊØíÚ ÇáãÏŞŞ ÇáÅãáÇÆí"
-"İß ÔİÑÉ ÇáŞÇãæÓ ÇáÔÎÕí. æÓíÊã ÈÚÏ Ğáß ÅÚÇÏÉ ÊÔİíÑå "
-"ÈßáãÉ ãÑæÑ ÌÏíÏÉ<br> æÅĞÇ áã ÊŞã ÈÊÔİíÑ ÇáŞÇãæÓ ÇáÔÎÕí "
-" İÓæİ íÊÖÑÑ æíÕÈÍ ÛíÑ ÕÇáÍ, æÓæİ ÊÖØÑ áÍĞİå æÇáÈÏÁ ãä ÌÏíÏ."
-"æíÍÏË äİÓ ÇáÔíÁ ÃíÖÇğ ÅĞÇ äÓíÊ ßáãÉ ÇáãÑæÑ ÇáŞÏíãÉ,"
-"İÈÏæäåÇ áÇ íãßä ÇáæÕæá ááÈíÇäÇÊ ÇáãÔİÑÉ."
+#, fuzzy
+msgid "SquirrelSpell was unable to decrypt your personal dictionary. This is most likely due to the fact that you have changed your mailbox password. In order to proceed, you will have to supply your old password so that SquirrelSpell can decrypt your personal dictionary. It will be re-encrypted with your new password after this. If you haven't encrypted your dictionary, then it got mangled and is no longer valid. You will have to delete it and start anew. This is also true if you don't remember your old password -- without it, the encrypted data is no longer accessible."
+msgstr "ÊÚĞÑ Úáì ÇáãÏŞŞ ÇáÅãáÇÆí İß ÔİÑÉ ÇáŞÇãæÓ ÇáÔÎÕí.íÑÌÚ Ğáß ÛÇáÈÇğ Åáì ŞíÇãß ÈÊÛííÑ ßáãÉ ãÑæÑ ÚáÈÉ ÇáÈÑíÏ.æíÌÈ ÊŞÏíã ßáãÉ ÇáãÑæÑ ÇáŞÏíãÉ ÍÊì íÓÊØíÚ ÇáãÏŞŞ ÇáÅãáÇÆíİß ÔİÑÉ ÇáŞÇãæÓ ÇáÔÎÕí. æÓíÊã ÈÚÏ Ğáß ÅÚÇÏÉ ÊÔİíÑå ÈßáãÉ ãÑæÑ ÌÏíÏÉ<br> æÅĞÇ áã ÊŞã ÈÊÔİíÑ ÇáŞÇãæÓ ÇáÔÎÕí  İÓæİ íÊÖÑÑ æíÕÈÍ ÛíÑ ÕÇáÍ, æÓæİ ÊÖØÑ áÍĞİå æÇáÈÏÁ ãä ÌÏíÏ.æíÍÏË äİÓ ÇáÔíÁ ÃíÖÇğ ÅĞÇ äÓíÊ ßáãÉ ÇáãÑæÑ ÇáŞÏíãÉ,İÈÏæäåÇ áÇ íãßä ÇáæÕæá ááÈíÇäÇÊ ÇáãÔİÑÉ."
 
 msgid "Delete my dictionary and start a new one"
 msgstr "ÍĞİ ÇáŞÇãæÓ æÈÏÁ ŞÇãæÓ ÌÏíÏ "
@@ -1874,8 +3352,7 @@ msgstr "ÇáãÊÇÈÚÉ"
 msgid "You must make a choice"
 msgstr "íÌÈ Ãä ÊÎÊÇÑ"
 
-msgid ""
-"You can either delete your dictionary or type in the old password. Not both."
+msgid "You can either delete your dictionary or type in the old password. Not both."
 msgstr "íãßäß ÅãÇ ÍĞİ ÇáŞÇãæÓ Ãæ ÅÏÎÇá ßáãÉ ÇáãÑæÑ ÇáŞÏíãÉ, æáíÓ ÇáÇËäíä ãÚÇğ."
 
 msgid "This will delete your personal dictionary file. Proceed?"
@@ -1891,10 +3368,11 @@ msgstr "ÈÇÑÚ."
 msgid "I tried to execute '%s', but it returned:"
 msgstr "ÍÇæáÊ ÊäİíĞ '%s'  áßäå ÃÚØì:"
 
-msgid "SpellCheck is misconfigured."
+#, fuzzy
+msgid "SquirrelSpell is misconfigured."
 msgstr "áã íÊã Êßæíä ÇáãÏŞŞ ÇáÅãáÇÆí ÈÔßá ÕÍíÍ "
 
-msgid "SpellCheck Results"
+msgid "SquirrelSpell Results"
 msgstr "äÊÇÆÌ ÇáÊÏŞíŞ ÇáÅãáÇÆí "
 
 msgid "Spellcheck completed. Commit changes?"
@@ -1973,59 +3451,41 @@ msgstr "áã íÊã ÇáÇäÊåÇÁ ãä ÇáÊÏŞíŞ ÇáÅãáÇÆí. åá ÊÑíÏ ÇáÅÛáÇŞ æÊÌÇåá ÇáÊÛííÑÇÊ ÍŞ
 msgid "No errors found"
 msgstr "áã íÊã ÇáÚËæÑ Úáì ÃÎØÇÁ"
 
+#, fuzzy
+msgid "Your personal dictionary has been encrypted and is now stored in an encrypted format."
+msgstr "Êã ÅÚÇÏÉ ÊÔİíÑ <strong>ÇáŞÇãæÓ ÇáÔÎÕí</strong>æÇáÂäÊã ÊÎÒíäå İì<strong>ÊäÓíŞ ãÔİÑ</strong>."
+
+#, fuzzy
+msgid "Your personal dictionary has been decrypted and is now stored as plain text."
+msgstr "Êã İß ÔİÑÉ <strong>ÇáŞÇãæÓ ÇáÔÎÕí</strong>æÇáÂäÊã ÊÎÒíäå <strong>ßäÕ æÇÖÍ</strong>."
+
+msgid "Personal Dictionary Crypto Settings"
+msgstr "ÅÚÏÇÏÇÊ ÊÔİíÑ ÇáŞÇãæÓ ÇáÔÎÕí"
+
 msgid "Your personal dictionary was erased."
 msgstr "Êã ãÓÍ ÇáŞÇãæÓ ÇáÔÎÕí "
 
 msgid "Dictionary Erased"
 msgstr "Êã ãÓÍ ÇáŞÇãæÓ"
 
-msgid ""
-"Your personal dictionary was erased. Please close this window and click "
-"\"Check Spelling\" button again to start your spellcheck over."
-msgstr ""
-"Êã ãÓÍ ÇáŞÇãæÓ ÇáÔÎÕí. íÑÌì ÅÛáÇŞ åĞÇ ÇáÅØÇÑ æÇáäŞÑ"
-"/ÇáÊÏŞíŞ ÇáÅãáÇÆí/ ÖÛØ ÇáÒÑ ãÑÉ ÃÎÑì áÊÔÛíá ÇáÊÏŞíŞ ÇáÅãáÇÆí ãÑÉ ÃÎÑì. "
+msgid "Your personal dictionary was erased. Please close this window and click \"Check Spelling\" button again to start your spellcheck over."
+msgstr "Êã ãÓÍ ÇáŞÇãæÓ ÇáÔÎÕí. íÑÌì ÅÛáÇŞ åĞÇ ÇáÅØÇÑ æÇáäŞÑ/ÇáÊÏŞíŞ ÇáÅãáÇÆí/ ÖÛØ ÇáÒÑ ãÑÉ ÃÎÑì áÊÔÛíá ÇáÊÏŞíŞ ÇáÅãáÇÆí ãÑÉ ÃÎÑì. "
 
 msgid "Close this Window"
 msgstr "ÅÛáÇŞ åĞÇ ÇáÅØÇÑ "
 
-msgid ""
-"Your personal dictionary was re-encrypted successfully. Now return to the "
-"&quot;SpellChecker options&quot; menu and make your selection again."
+msgid "Your personal dictionary was re-encrypted successfully. Now return to the &quot;SpellChecker options&quot; menu and make your selection again."
 msgstr ""
 
-
-msgid "Successful Re-encryption"
+#, fuzzy
+msgid "Successful re-encryption"
 msgstr "ÅÚÇÏÉ ÊÔİíÑ äÇÌÍÉ. "
 
-msgid ""
-"Your personal dictionary was re-encrypted successfully. Please close this "
-"window and click \"Check Spelling\" button again to start your spellcheck "
-"over."
-msgstr ""
-"Êã ÅÚÇÏÉ ÊÔİíÑ ÇáŞÇãæÓ ÇáÔÎÕí ÈäÌÇÍ. Şã ÇáÂä ÈÅÛáÇŞ "
-"åĞÇ ÇáÅØÇÑ æÇáäŞÑ/ÇáÊÏŞíŞ ÇáÅãáÇÆí/ÖÛØ ÇáÒÑ ãÑÉ ÃÎÑì áÊÔÛíá ÇáÊÏŞíŞ ÇáÅãáÇÆí "
-"ãÑÉ ÃÎÑì."
+msgid "Your personal dictionary was re-encrypted successfully. Please close this window and click \"Check Spelling\" button again to start your spellcheck over."
+msgstr "Êã ÅÚÇÏÉ ÊÔİíÑ ÇáŞÇãæÓ ÇáÔÎÕí ÈäÌÇÍ. Şã ÇáÂä ÈÅÛáÇŞ åĞÇ ÇáÅØÇÑ æÇáäŞÑ/ÇáÊÏŞíŞ ÇáÅãáÇÆí/ÖÛØ ÇáÒÑ ãÑÉ ÃÎÑì áÊÔÛíá ÇáÊÏŞíŞ ÇáÅãáÇÆí ãÑÉ ÃÎÑì."
 
 msgid "Dictionary re-encrypted"
 msgstr "Êã ÅÚÇÏÉ ÊÔİíÑ ÇáŞÇãæÓ "
-
-msgid ""
-"Your personal dictionary has been <strong>encrypted</strong> and is now "
-"stored in an <strong>encrypted format</strong>."
-msgstr ""
-"Êã ÅÚÇÏÉ ÊÔİíÑ <strong>ÇáŞÇãæÓ ÇáÔÎÕí</strong>æÇáÂä"
-"Êã ÊÎÒíäå İì<strong>ÊäÓíŞ ãÔİÑ</strong>."
-
-msgid ""
-"Your personal dictionary has been <strong>decrypted</strong> and is now "
-"stored as <strong>clear text</strong>."
-msgstr ""
-"Êã İß ÔİÑÉ <strong>ÇáŞÇãæÓ ÇáÔÎÕí</strong>æÇáÂä"
-"Êã ÊÎÒíäå <strong>ßäÕ æÇÖÍ</strong>."
-
-msgid "Personal Dictionary Crypto Settings"
-msgstr "ÅÚÏÇÏÇÊ ÊÔİíÑ ÇáŞÇãæÓ ÇáÔÎÕí"
 
 msgid "Personal Dictionary"
 msgstr "ÇáŞÇãæÓ ÇáÔÎÕí"
@@ -2049,70 +3509,44 @@ msgstr "ÊÍÑíÑ ÇáŞÇãæÓ ÇáÔÎÕí"
 msgid "Please make your selection first."
 msgstr "íÑÌì ÇáŞíÇã ÈÇáÊÍÏíÏ ÃæáÇğ."
 
-msgid ""
-"This will encrypt your personal dictionary and store it in an encrypted "
-"format. Proceed?"
-msgstr ""
-"ÓíÄÏì Ğáß Åáì ÊÔİíÑ ÇáŞÇãæÓ ÇáÔÎÕí æÊÎÒíäå ÈÊäÓíŞ ãÔİÑ."
-"åá ÊÑíÏ ÇáãÊÇÈÚÉ¿"
+msgid "This will encrypt your personal dictionary and store it in an encrypted format. Proceed?"
+msgstr "ÓíÄÏì Ğáß Åáì ÊÔİíÑ ÇáŞÇãæÓ ÇáÔÎÕí æÊÎÒíäå ÈÊäÓíŞ ãÔİÑ.åá ÊÑíÏ ÇáãÊÇÈÚÉ¿"
 
-msgid ""
-"This will decrypt your personal dictionary and store it in a clear-text "
-"format. Proceed?"
-msgstr ""
-"ÓíÄÏì Ğáß Åáì İß ÔİÑÉ ÇáŞÇãæÓ ÇáÔÎÕí æÊÎÒíäå ÈÊäÓíŞ äÕ æÇÖÍ."
-"åá ÊÑíÏ ÇáãÊÇÈÚÉ¿"
+#, fuzzy
+msgid "This will decrypt your personal dictionary and store it in a plain text format. Proceed?"
+msgstr "ÓíÄÏì Ğáß Åáì İß ÔİÑÉ ÇáŞÇãæÓ ÇáÔÎÕí æÊÎÒíäå ÈÊäÓíŞ äÕ æÇÖÍ.åá ÊÑíÏ ÇáãÊÇÈÚÉ¿"
 
-msgid ""
-"<p>Your personal dictionary is <strong>currently encrypted</strong>. This "
-"helps protect your privacy in case the web-mail system gets compromized and "
-"your personal dictionary ends up stolen. It is currently encrypted with the "
-"password you use to access your mailbox, making it hard for anyone to see "
-"what is stored in your personal dictionary.</p> <p><strong>ATTENTION:</"
-"strong> If you forget your password, your personal dictionary will become "
-"unaccessible, since it can no longer be decrypted. If you change your "
-"mailbox password, SpellCheck will recognize it and prompt you for your "
-"old password in order to re-encrypt the dictionary with a new key.</p>"
-msgstr ""
-"<p>íÊã ÍÇáíÇğ ÊÔİíÑ<strong>ÇáŞÇãæÓ ÇáÔÎÕí. </strong> "
-"íÓÇÚÏ Ğáß Úáì ÍãÇíÉ ÎÕæÕíÊß ÚäÏ ÊÚÑÖ äÙÇã ÈÑíÏ ÇáæíÈ ááÊåÏíÏ, "
-"æÚäÏ ÓÑŞÉ ÇáŞÇãæÓ ÇáÔÎÕí. æíÊã ÍÇáíÇğ ÊÔİíÑå "
-"ÈßáãÉ ÇáãÑæÑ ÇáÊí ÊÓÊÎÏãåÇ İì ÇáæÕæá Åáì ÚáÈÉ ÇáÈÑíÏ, ããÇ íÌÚá ãä ÇáÚÓíÑ Úáì Ãí ÔÎÕ Ãä íÑì "
-"ãÇ Êã ÊÎÒíäå İì ÇáŞÇãæÓ ÇáÔÎÕí.</p> <p><strong>ÊäÈíå:</strong>"
-"áÇ íãßä ÇáæÕæá ááŞÇãæÓ ÇáÔÎÕí ÚäÏ äÓíÇä ßáãÉ ÇáãÑæÑ,"
-"ÍíË íÕÈÍ ãä ÛíÑ Çáããßä İß ÔİÑÊå. "
-"æÅĞÇ ŞãÊ ÈÊÛííÑ ßáãÉ ãÑæÑ ÚáÈÉ ÇáÈÑíÏ İÓæİ íÊÚÑİ ÇáÊÏŞíŞ ÇáÅãáÇÆí ÚáíåÇ æíØáÈ ãäß  "
-"ßáãÉ ÇáãÑæÑ ÇáŞÏíãÉ ÍÊì íÊã ÅÚÇÏÉ ÊÔİíÑ ÇáŞÇãæÓ ÈãİÊÇÍ ÌÏíÏ. </p>"
+#, fuzzy
+msgid "Your personal dictionary is currently encrypted."
+msgstr "Êã ãÓÍ ÇáŞÇãæÓ ÇáÔÎÕí "
 
-msgid ""
-"Please decrypt my personal dictionary and store it in a clear-text format."
+msgid "This helps protect your privacy in case the web-mail system gets compromized and your personal dictionary ends up stolen. It is currently encrypted with the password you use to access your mailbox, making it hard for anyone to see what is stored in your personal dictionary."
+msgstr ""
+
+msgid "If you forget your password, your personal dictionary will become unaccessible, since it can no longer be decrypted. If you change your mailbox password, SquirrelSpell will recognize it and prompt you for your old password in order to re-encrypt the dictionary with a new key."
+msgstr ""
+
+msgid "Please decrypt my personal dictionary and store it in a clear-text format."
 msgstr "íÑÌì İß ÔİÑÉ ÇáŞÇãæÓ ÇáÔÎÕí æÊÎÒíäå Úáì åíÆÉ ÊäÓíŞ äÕ æÇÖÍ."
 
 msgid "Change crypto settings"
 msgstr "ÊÛííÑ ÅÚÏÇÏÇÊ ÇáÊÔİíÑ"
 
-msgid ""
-"<p>Your personal dictionary is <strong>currently not encrypted</strong>. You "
-"may wish to encrypt your personal dictionary to protect your privacy in case "
-"the webmail system gets compromized and your personal dictionary file gets "
-"stolen. When encrypted, the file's contents look garbled and are hard to "
-"decrypt without knowing the correct key (which is your mailbox password).</"
-"p> <strong>ATTENTION:</strong> If you decide to encrypt your personal "
-"dictionary, you must remember that it gets &quot;hashed&quot; with your "
-"mailbox password. If you forget your mailbox password and the administrator "
-"changes it to a new value, your personal dictionary will become useless and "
-"will have to be created anew. However, if you or your system administrator "
-"change your mailbox password but you still have the old password at hand, "
-"you will be able to enter the old key to re-encrypt the dictionary with the "
-"new value.</p>"
+#, fuzzy
+msgid "Your personal dictionary is currently not encrypted."
+msgstr "Êã ãÓÍ ÇáŞÇãæÓ ÇáÔÎÕí "
+
+msgid "You may wish to encrypt your personal dictionary to protect your privacy in case the webmail system gets compromized and your personal dictionary file gets stolen. When encrypted, the file's contents look garbled and are hard to decrypt without knowing the correct key (which is your mailbox password)."
 msgstr ""
 
-msgid ""
-"Please encrypt my personal dictionary and store it in an encrypted format."
+msgid "If you decide to encrypt your personal dictionary, you must remember that it gets &quot;hashed&quot; with your mailbox password. If you forget your mailbox password and the administrator changes it to a new value, your personal dictionary will become useless and will have to be created anew. However, if you or your system administrator change your mailbox password but you still have the old password at hand, you will be able to enter the old key to re-encrypt the dictionary with the new value."
+msgstr ""
+
+msgid "Please encrypt my personal dictionary and store it in an encrypted format."
 msgstr "íÑÌì ÊÔİíÑ ÇáŞÇãæÓ ÇáÔÎÕí æÊÎÒíäå Úáì åíÆÉ ÊäÓíŞ ãÔİÑ."
 
-#, c-format
-msgid "Deleting the following entries from <strong>%s</strong> dictionary:"
+#, fuzzy, c-format
+msgid "Deleting the following entries from %s dictionary:"
 msgstr "ÍĞİ ÇáãÏÎáÇÊ ÇáÊÇáíÉ ãä <strong>%s</strong> ÇáŞÇãæÓ:"
 
 msgid "All done!"
@@ -2127,40 +3561,25 @@ msgstr "áÇ ÊæÌÏ ÃíÉ ÊÛííÑÇÊ ãØáæÈÉ."
 msgid "Please wait, communicating with the server..."
 msgstr "íÑÌì ÇáÇäÊÙÇÑ, ÌÇÑì ÇáÇÊÕÇá ÈÇáãáŞã..."
 
-msgid ""
-"Please choose which dictionary you would like to use to spellcheck this "
-"message:"
-msgstr ""
-"íÑÌì ÇÎÊíÇÑ ÇáŞÇãæÓ ÇáĞí ÊÑíÏ ÇÓÊÎÏÇãå İì ÇáÊÏŞíŞ ÇáÅãáÇÆí áåĞå"
-"ÇáÑÓÇáÉ:"
+msgid "Please choose which dictionary you would like to use to spellcheck this message:"
+msgstr "íÑÌì ÇÎÊíÇÑ ÇáŞÇãæÓ ÇáĞí ÊÑíÏ ÇÓÊÎÏÇãå İì ÇáÊÏŞíŞ ÇáÅãáÇÆí áåĞåÇáÑÓÇáÉ:"
 
-msgid "Go"
-msgstr "ÇĞåÈ"
-
-msgid "SpellCheck Initiating"
+msgid "SquirrelSpell Initiating"
 msgstr "ÊåíÆÉ ÇáÊÏŞíŞ ÇáÅãáÇÆí"
 
-#, c-format
-msgid ""
-"Settings adjusted to: <strong>%s</strong> with <strong>%s</strong> as "
-"default dictionary."
-msgstr ""
-"ÖÈØ ÇáÅÚÏÇÏÇÊ Úáì:<strong>%s</strong>ãÚ <strong>%s</strong>"
-"ßŞÇãæÓ ÇİÊÑÇÖí ."
+#, fuzzy, c-format
+msgid "Settings adjusted to: %s with %s as default dictionary."
+msgstr "ÖÈØ ÇáÅÚÏÇÏÇÊ Úáì:<strong>%s</strong>ãÚ <strong>%s</strong>ßŞÇãæÓ ÇİÊÑÇÖí ."
 
-#, c-format
-msgid "Using <strong>%s</strong> dictionary (system default) for spellcheck."
+#, fuzzy, c-format
+msgid "Using %s dictionary (system default) for spellcheck."
 msgstr "ÇÓÊÎÏÇã <strong>%s</strong> ÇáŞÇãæÓ (ÇáÇİÊÑÇÖí İì ÇáäÙÇã) ááÊÏŞíŞ ÇáÅãáÇÆí. "
 
 msgid "International Dictionaries Preferences Updated"
 msgstr "Êã ÊÍÏíË ÊİÖíáÇÊ ŞæÇãíÓ ÚÇáãíÉ"
 
-msgid ""
-"Please check any available international dictionaries which you would like "
-"to use when spellchecking:"
-msgstr ""
-"íÑÌì ÇáÊÃßÏ ãä æÌæÏ ÇáŞæÇãíÓ ÇáÚÇáãíÉ ÇáÊí ÊÑíÏ"
-"ÇÓÊÎÏÇãåÇ ÚäÏ ÇáÊÏŞíŞ ÇáÅãáÇÆí áÜ: "
+msgid "Please check any available international dictionaries which you would like to use when spellchecking:"
+msgstr "íÑÌì ÇáÊÃßÏ ãä æÌæÏ ÇáŞæÇãíÓ ÇáÚÇáãíÉ ÇáÊí ÊÑíÏÇÓÊÎÏÇãåÇ ÚäÏ ÇáÊÏŞíŞ ÇáÅãáÇÆí áÜ: "
 
 msgid "Make this dictionary my default selection:"
 msgstr "ÌÚá åĞÇ ÇáŞÇãæÓ åæ ÇáÊÍÏíÏ ÇáÇİÊÑÇÖí:"
@@ -2186,7 +3605,7 @@ msgstr "ÊÔİíÑ Ãæ İß ÔİÑÉ ÇáŞÇãæÓ ÇáÔÎÕí"
 msgid "not available"
 msgstr "ÛíÑ ãÊæİÑ"
 
-msgid "SpellCheck Options Menu"
+msgid "SquirrelSpell Options Menu"
 msgstr "ŞÇÆãÉ ÎíÇÑÇÊ ÇáÊÏŞíŞ ÇáÅãáÇÆí "
 
 msgid "Translator"
@@ -2198,34 +3617,41 @@ msgstr "ÎíÇÑÇÊ ÇáÊÑÌãÉ ÇáãÍİæÙÉ"
 msgid "Your server options are as follows:"
 msgstr "Êßæä ÎíÇÑÇÊ ÇáãáŞã ßãÇ íáí: "
 
-msgid ""
-"13 language pairs, maximum of 1000 characters translated, powered by Systran"
+#, fuzzy
+msgid "Maximum of 1000 characters translated, powered by Systran"
 msgstr "13 ÒæÌÇğ ãä ÇááÛÇÊ, æíÊã ÊÑÌãÉ 1000 ÍÑİ ßÍÏ ÃŞÕì, æíÊã ÇáÊÔÛíá ÈÈÑäÇãÌ Systran"
 
-msgid ""
-"10 language pairs, maximum of 25 kilobytes translated, powered by Systran"
-msgstr "10 ÃÒæÇÌ ãä ÇááÛÇÊ, æíÊã ÊÑÌãÉ 25 ßíáæ ÈÇíÊ ßÍÏ ÃŞÕì, æíÊã ÇáÊÔÛíá ÈÈÑäÇãÌ Systran"
+#, c-format
+msgid "Number of supported language pairs: %s"
+msgstr ""
 
-msgid "12 language pairs, no known limits, powered by Systran"
+#, fuzzy
+msgid "No known limits, powered by Systran"
 msgstr "12 ÒæÌÇğ ãä ÇááÛÇÊ, æÍÏæÏ ÇáÊÑÌãÉ ÛíÑ ãÚÑæİÉ, æíÊã ÇáÊÔÛíá ÈÈÑäÇãÌ Systran"
 
-msgid ""
-"767 language pairs, no known limits, powered by Translation Experts's "
-"InterTran"
-msgstr ""
-"767 ÒæÌÇğ ãä ÇááÛÇÊ, æÍÏæÏ ÇáÊÑÌãÉ ÛíÑ ãÚÑæİÉ, æíÊã ÇáÊÔÛíá ÈÈÑäÇãÌ Translation Experts"
-"InterTran"
-
-msgid ""
-"8 language pairs, no known limits, powered by GPLTrans (free, open source)"
+#, fuzzy
+msgid "No known limits, powered by GPLTrans (free, open source)"
 msgstr "8 ÃÒæÇÌ ãä ÇááÛÇÊ, æÍÏæÏ ÇáÊÑÌãÉ ÛíÑ ãÚÑæİÉ, æíÊã ÇáÊÔÛíá  ÈÈÑäÇãÌ GPLTrans (æåæ ãÌÇäí æĞæ ãÕÏÑ ãİÊæÍ)"
 
-msgid ""
-"You also decide if you want the translation box displayed, and where it will"
-"be located."
+#, fuzzy
+msgid "No known limits, powered by Translation Experts' InterTran"
+msgstr "767 ÒæÌÇğ ãä ÇááÛÇÊ, æÍÏæÏ ÇáÊÑÌãÉ ÛíÑ ãÚÑæİÉ, æíÊã ÇáÊÔÛíá ÈÈÑäÇãÌ Translation ExpertsInterTran"
+
+#, c-format
+msgid "Number of supported languages: %s"
 msgstr ""
-"ßãÇ ÊŞÑÑ ÃíÖÇğ ÅĞÇ ãÇ ßäÊ ÊÑÛÈ İì ÚÑÖ ãÑÈÚ ÇáÊÑÌãÉ,"
-"æãßÇä æÌæÏå."
+
+#, fuzzy
+msgid "Hellenic translations, no known limits, powered by Systran"
+msgstr "12 ÒæÌÇğ ãä ÇááÛÇÊ, æÍÏæÏ ÇáÊÑÌãÉ ÛíÑ ãÚÑæİÉ, æíÊã ÇáÊÔÛíá ÈÈÑäÇãÌ Systran"
+
+#, fuzzy
+msgid "Russian translations, maximum of 500 characters translated"
+msgstr "13 ÒæÌÇğ ãä ÇááÛÇÊ, æíÊã ÊÑÌãÉ 1000 ÍÑİ ßÍÏ ÃŞÕì, æíÊã ÇáÊÔÛíá ÈÈÑäÇãÌ Systran"
+
+#, fuzzy
+msgid "You also decide if you want the translation box displayed, and where it will be located."
+msgstr "ßãÇ ÊŞÑÑ ÃíÖÇğ ÅĞÇ ãÇ ßäÊ ÊÑÛÈ İì ÚÑÖ ãÑÈÚ ÇáÊÑÌãÉ,æãßÇä æÌæÏå."
 
 msgid "Select your translator:"
 msgstr "ÊÍÏíÏ ÇáãÊÑÌã:"
@@ -2245,7 +3671,8 @@ msgstr "İì ÇáãäÊÕİ"
 msgid "to the right"
 msgstr "Úáì ÇáÌÇäÈ ÇáÃíãä"
 
-msgid "Translate inside the biznas_mail frames"
+#, fuzzy
+msgid "Translate inside the SquirrelMail frames"
 msgstr "ÊÑÌãÉ ÏÇÎá ÅØÇÑÇÊbiznas_mail"
 
 msgid "When composing:"
@@ -2257,12 +3684,8 @@ msgstr "áÇ ÊÚãá ÈÚÏ, æáÇ ÊŞã ÍÇáíÇğ ÈİÚá Ãí ÔíÁ"
 msgid "Translation Options"
 msgstr "ÎíÇÑÇÊ ÇáÊÑÌãÉ"
 
-msgid ""
-"Which translator should be used when you get messages in a different "
-"language?"
-msgstr ""
-"ãÇ åæ ÇáãÊÑÌã ÇáæÇÌÈ ÇÓÊÎÏÇãå ÚäÏ ÊáŞì ÑÓÇÆá ãÎÊáİÉ İì"
-"ÇááÛÉ¿"
+msgid "Which translator should be used when you get messages in a different language?"
+msgstr "ãÇ åæ ÇáãÊÑÌã ÇáæÇÌÈ ÇÓÊÎÏÇãå ÚäÏ ÊáŞì ÑÓÇÆá ãÎÊáİÉ İìÇááÛÉ¿"
 
 #, c-format
 msgid "%s to %s"
@@ -2270,6 +3693,10 @@ msgstr "%s  Åáì %s"
 
 msgid "English"
 msgstr "ÅäÌáíÒíÉ"
+
+#, fuzzy
+msgid "Chinese"
+msgstr "ÊÛííÑ"
 
 msgid "French"
 msgstr "İÑäÓíÉ"
@@ -2279,6 +3706,13 @@ msgstr "ÃáãÇäíÉ"
 
 msgid "Italian"
 msgstr "ÅíØÇáíÉ"
+
+msgid "Japanese"
+msgstr "íÇÈÇäíÉ"
+
+#, fuzzy
+msgid "Korean"
+msgstr "äÑæíÌíÉ"
 
 msgid "Portuguese"
 msgstr "ÈÑÊÛÇáíÉ"
@@ -2310,8 +3744,8 @@ msgstr "ÏÇäãÑßíÉ"
 msgid "Dutch"
 msgstr "åæáäÏíÉ"
 
-msgid "European Spanish"
-msgstr "ÃÓÈÇäíÉ ÃæÑÈíÉ"
+msgid "Filipino (Tagalog)"
+msgstr ""
 
 msgid "Finnish"
 msgstr "İäáäÏíÉ"
@@ -2325,8 +3759,8 @@ msgstr "åäÛÇÑíÉ"
 msgid "Icelandic"
 msgstr "ÅíÓáäÏíÉ"
 
-msgid "Japanese"
-msgstr "íÇÈÇäíÉ"
+msgid "Latin"
+msgstr "áÇÊíäíÉ"
 
 msgid "Latin American Spanish"
 msgstr "ÃÓÈÇäíÉ ÃãÑíßíÉ áÇÊíäíÉ"
@@ -2349,853 +3783,44 @@ msgstr "ÕÑÈíÉ"
 msgid "Swedish"
 msgstr "ÓáæİíäíÉ"
 
+msgid "Turkish"
+msgstr ""
+
 msgid "Welsh"
 msgstr "ÓæíÏíÉ"
 
 msgid "Indonesian"
 msgstr "æíáÒíøÉ"
 
-msgid "Latin"
-msgstr "áÇÊíäíÉ"
+#, fuzzy
+msgid "to English"
+msgstr "ÅäÌáíÒíÉ"
 
-msgid "New Mail Notification"
-msgstr "ÅÚáÇã Úä ÈÑíÏ ÌÏíÏ "
+#, fuzzy
+msgid "from English"
+msgstr "ÅäÌáíÒíÉ"
 
-msgid ""
-"Select <b>Enable Media Playing</b> to turn on playing a media file when "
-"unseen mail is in your folders. When enabled, you can specify the media file "
-"to play in the provided file box."
-msgstr ""
-"ÊÍÏíÏ <b>Êãßíä ŞÑÇÁÉ ÇáæÓÇÆØ </b>áÊÔÛíá ŞÑÇÁÉ ãáİ æÓÇÆØ "
-"ÚäÏ æÌæÏ ÈÑíÏ ÛíÑ ãÑÆí İì ÇáãÌáÏÇÊ. æÚäÏ Êãßíäå ÊÓÊØíÚ ÊÍÏíÏ ãáİ ÇáæÓÇÆØ"
-"æĞáß áŞÑÇÁÊå É İì ãÑÈÚ Çáãáİ."
-
-msgid ""
-"The <b>Check all boxes, not just INBOX</b> option will check ALL of your "
-"folders for unseen mail, not just the inbox for notification."
-msgstr ""
-"<b>áíÓÊ ÎÇäÇÊ İÍÕ Çáßá åí ãÌÑÏ ÎíÇÑ áÚáÈÉ ÇáæÇÑÏ</b> íŞæã ÈİÍÕ ÌãíÚ ÇáãÌáÏÇÊ"
-"ááÈÍË Úä ÈÑíÏ ÛíÑ ãÑÆí, æáíÓ ãÌÑÏ ÇáÈÍË İì ÚáÈÉ ÇáæÇÑÏ Úä ÅÚáÇã ."
-
-msgid ""
-"Selecting the <b>Show popup</b> option will enable the showing of a popup "
-"window when unseen mail is in your folders (requires JavaScript)."
-msgstr ""
-"ÊÍÏíÏ <b>ÎíÇÑ ÇáÅÙåÇÑ ÇáãäÈËŞ</b>íÄÏì Åáì ÅÙåÇÑ ÅØÇÑ ãäÈËŞ"
-"ÚäÏ æÌæÏ ÈÑíÏ ÛíÑ ãÑÆí İì ÇáãÌáÏÇÊ (íÊØáÈ JavaScript)."
-
-msgid ""
-"Use the <b>Check RECENT</b> to only check for messages that are recent. "
-"Recent messages are those that have just recently showed up and have not "
-"been \"viewed\" or checked yet.  This can prevent being continuously annoyed "
-"by sounds or popups for unseen mail."
-msgstr ""
-"ÇÓÊÎÏã <b>İÍÕ ÇáÍÏíË</b>ááÈÍË Úä ÇáÑÓÇÆá ÇáÍÏíËÉ İŞØ."
-
-msgid ""
-"Selecting the <b>Change title</b> option will change the title in some "
-"browsers to let you know when you have new mail (requires JavaScript, and "
-"only works in IE but you won't see errors with other browsers).  This will "
-"always tell you if you have new mail, even if you have <b>Check RECENT</b> "
-"enabled."
+msgid "Simplified Chinese"
 msgstr ""
 
-msgid ""
-"Select from the list of <b>server files</b> the media file to play when new "
-"mail arrives.  Selecting <b>local media</b> will play the file specified in "
-"the <b>local media file</b> box to play from the local computer.  If no file "
-"is specified, the system will use a default from the server."
-msgstr ""
-""
-"ÊÍÏíÏ <b>ÇáæÓÇÆØ ÇáãÍáíÉ </b>ÓíÄÏì Åáì ŞÑÇÁÉ Çáãáİ ÇáãÍÏÏ İì ãÑÈÚ "
-"<b>ãáİ ÇáæÓÇÆØ ÇáãÍáíÉ </b>æĞáß ááŞÑÇÁÉ ãä ÇáßãÈíæÊÑ ÇáãÍáì."
-"æÚäÏ ÚÏã ÊÍÏíÏ ãáİ İÓíŞæã ÇáäÙÇã ÈÇÓÊÎÏÇã Çáãáİ ÇáÇİÊÑÇÖí ãä ÇáãáŞã."
-
-
-msgid "Enable Media Playing"
-msgstr "Êãßíä ŞÑÇÁÉ ÇáæÓÇÆØ"
-
-msgid "Check all boxes, not just INBOX"
-msgstr "áíÓ İÍÕ Çáßá åæ ãÌÑÏ İÍÕ ÚáÈÉ ÇáæÇÑÏ"
-
-msgid "Count only messages that are RECENT"
-msgstr "Şã ÈÇÍÊÓÇÈ ÇáÑÓÇÆá ÇáÍÏíËÉ İŞØ "
-
-msgid "Change title on supported browsers."
-msgstr "ÊÛííÑ ÇáÚäæÇä ÇáæÙíİí Úáì ÈÑÇãÌ ÇáÊÕİÍ ÇáãÏÚæãÉ ."
-
-msgid "requires JavaScript to work"
-msgstr "íÊØáÈJavaScript ÍÊì íÚãá"
-
-msgid "Show popup window on new mail"
-msgstr "ÅÙåÇÑ ÅØÇÑ ãäÈËŞ Úáì ÈÑíÏ ÌÏíÏ "
-
-msgid "Select server file:"
-msgstr "ÊÍÏíÏ ãáİ ãáŞã:"
-
-msgid "(local media)"
-msgstr "(æÓÇÆØ ãÍáíÉ)"
-
-msgid "Try"
-msgstr "ãÍÇæáÉ"
-
-msgid "Local Media File:"
-msgstr "ãáİ æÓÇÆØ ãÍáíÉ:"
-
-msgid "Current File:"
-msgstr "Çáãáİ ÇáÍÇáí:"
-
-msgid "New Mail"
-msgstr "ÈÑíÏ ÌÏíÏ "
-
-msgid "biznas_mail Notice:"
-msgstr "ÅÚáÇã biznas_mail:"
-
-msgid "You have new mail!"
-msgstr "áÏíß ÈÑíÏ ÌÏíÏ! "
-
-msgid "NewMail Options"
-msgstr "ÎíÇÑÇÊ ÇáÈÑíÏ ÇáÌÏíÏ"
-
-msgid ""
-"This configures settings for playing sounds and/or showing popup windows "
-"when new mail arrives."
-msgstr ""
-"íŞæã Ğáß ÈÊßæíä ÅÚÏÇÏÇÊ ŞÑÇÁÉ ÇáÃÕæÇÊ æ/Ãæ ÅÙåÇÑ ÇáÅØÇÑÇÊ ÇáãäÈËŞÉ "
-"ÚäÏ æÕæá ÈÑíÏ ÌÏíÏ."
-
-msgid "New Mail Notification options saved"
-msgstr "Êã ÍİÙ ÎíÇÑÇÊ ÇáÅÚáÇã Úä ÈÑíÏ ÌÏíÏ"
-
-#, c-format
-msgid "%s New Messages"
-msgstr "ÑÓÇÆá ÌÏíÏÉ %s"
-
-#, c-format
-msgid "%s New Message"
-msgstr "ÑÓÇáÉ ÌÏíÏÉ %s"
-
-msgid "Test Sound"
-msgstr "ÇÎÊÈÇÑ ÇáÕæÊ"
-
-msgid "Loading the sound..."
-msgstr "ÊÍãíá ÇáÕæÊ..."
-
-msgid "POP3 connect:"
-msgstr "ÇÊÕÇáPOP3 :"
-
-msgid "No server specified"
-msgstr "áã íÊã ÊÍÏíÏ ãáŞã"
-
-msgid "Error "
-msgstr "ÎØÃ"
-
-msgid "POP3 noop:"
-msgstr "POP3 noop:"
-
-msgid "No connection to server"
-msgstr "áÇ íæÌÏ ÇÊÕÇá ÈãáŞã "
-
-msgid "POP3 user:"
-msgstr "ãÓÊÎÏãPOP3 :"
-
-msgid "no login ID submitted"
-msgstr "áã íÊã ÊÓáíã ãÚÑøİ ÊÓÌíá ÏÎæá"
-
-msgid "connection not established"
-msgstr "áã íÊã ÇáÇÊÕÇá"
-
-msgid "POP3 pass:"
-msgstr "ÊãÑíÑPOP3 :"
-
-msgid "No password submitted"
-msgstr "áã íÊã ÊÓáíã ßáãÉ ãÑæÑ"
-
-msgid "authentication failed "
-msgstr "İÔá ÇáãÕÇÏŞÉ "
-
-msgid "POP3 apop:"
-msgstr "POP3 apop:"
-
-msgid "No login ID submitted"
-msgstr "áã íÊã ÊÓáíã ãÚÑøİ ÊÓÌíá ÏÎæá"
-
-msgid "No server banner"
-msgstr "áÇ íæÌÏ ÔÚÇÑ ááãáŞã "
-
-msgid "abort"
-msgstr "ÅÍÈÇØ"
-
-msgid "apop authentication failed"
-msgstr "İÔá ÇáãÕÇÏŞÉ Úáìapop"
-
-msgid "POP3 login:"
-msgstr "ÊÓÌíá ÏÎæáPOP3 :"
-
-msgid "POP3 top:"
-msgstr "ÃÚáìPOP3 :"
-
-msgid "POP3 pop_list:"
-msgstr "POP3 pop_list:"
-
-msgid "Premature end of list"
-msgstr "äåÇíÉ ŞÈá ÇáÃæÇä ááŞÇÆãÉ"
-
-msgid "POP3 get:"
-msgstr "ßÓÈPOP3 :"
-
-msgid "POP3 last:"
-msgstr "ÂÎÑPOP3 :"
-
-msgid "POP3 reset:"
-msgstr "ÅÚÇÏÉ ÊÚííä POP3:"
-
-msgid "POP3 send_cmd:"
-msgstr "POP3 send_cmd:"
-
-msgid "Empty command string"
-msgstr "ÓáÓáÉ ÃæÇãÑ İÇÑÛÉ"
-
-msgid "POP3 quit:"
-msgstr "ÅäåÇÁ POP3:"
-
-msgid "connection does not exist"
-msgstr "ÇáÇÊÕÇá ÛíÑ ãæÌæÏ"
-
-msgid "POP3 uidl:"
-msgstr "POP3 uidl:"
-
-msgid "POP3 delete:"
-msgstr "ÍĞİPOP3 :"
-
-msgid "No msg number submitted"
-msgstr "áã íÊã ÊÓáíã ÑŞã ÑÓÇáÉ"
-
-msgid "Command failed "
-msgstr "İÔá ÇáÃãÑ"
-
-msgid "Remote POP server Fetching Mail"
-msgstr "ãáŞã POP ÈÚíÏ áÌáÈ ÇáÈÑíÏ"
-
-msgid "Select Server:"
-msgstr "ÊÍÏíÏ ãáŞã:"
-
-msgid "Password for"
-msgstr "ßáãÉ ãÑæÑ ãä ÃÌá"
-
-msgid "Fetch Mail"
-msgstr "ÌáÈ ÈÑíÏ"
-
-msgid "Fetching from "
-msgstr "ÌáÈ ãä"
-
-msgid "Oops, "
-msgstr "Oops,"
-
-msgid "Opening IMAP server"
-msgstr "İÊÍ ãáŞãIMAP"
-
-msgid "Opening POP server"
-msgstr "İÊÍ ãáŞãPOP"
-
-msgid "Login Failed:"
-msgstr "İÔá ÊÓÌíá ÇáÏÎæá:"
-
-msgid "Login OK: No new messages"
-msgstr "ÊÓÌíá ÇáÏÎæá Óáíã: áÇ ÊæÌÏ ÑÓÇÆá ÌÏíÏÉ"
-
-msgid "Login OK: Inbox EMPTY"
-msgstr "ÊÓÌíá ÇáÏÎæá Óáíã: ÚáÈÉ ÇáæÇÑÏ İÇÑÛÉ"
-
-msgid "Login OK: Inbox contains ["
-msgstr "ÊÓÌíá ÇáÏÎæá Óáíã: ÊÍÊæì ÇáÈÑíÏ ÇáæÇÑÏ Úáì  "
-
-msgid "] messages"
-msgstr "[ ÑÓÇÆá]"
-
-msgid "Fetching UIDL..."
-msgstr "ÌáÈUIDL ..."
-
-msgid "Server does not support UIDL."
-msgstr "ÇáãáŞã áÇ íÏÚã  UIDL."
-
-msgid "Leaving Mail on Server..."
-msgstr "ÊÑß ÇáÈÑíÏ Úáì ÇáãáŞã..."
-
-msgid "Deleting messages from server..."
-msgstr "ÍĞİ ÑÓÇÆá ãä ÇáãáŞã..."
-
-msgid "Fetching message "
-msgstr "ÌáÈ ÑÓÇáÉ"
-
-msgid "Message appended to mailbox"
-msgstr "ÑÓÇáÉ ãáÍŞÉ ÈÚáÈÉ ÈÑíÏ"
-
-msgid "Message "
-msgstr "ÑÓÇáÉ"
-
-msgid " deleted from Remote Server!"
-msgstr "ãÍĞæİ ãä ãáŞã ÈÚíÏ! "
-
-msgid "Delete failed:"
-msgstr "İÔá ÇáÍĞİ:"
-
-msgid "Error Appending Message!"
-msgstr "ÎØÃ  ÅáÍÇŞ ÑÓÇáÉ!"
-
-msgid "Closing POP"
-msgstr "ÛáŞ POP"
-
-msgid "Logging out from IMAP"
-msgstr "ÊÓÌíá ÇáÎÑæÌ ãä IMAP"
-
-msgid "Saving UIDL"
-msgstr "ÍİÙ  UIDL"
-
-msgid "Remote POP server settings"
-msgstr "ÅÚÏÇÏÇÊ ãáŞãPOP ÈÚíÏ"
-
-msgid ""
-"You should be aware that the encryption used to store your password is not "
-"perfectly secure.  However, if you are using pop, there is inherently no "
-"encryption anyway. Additionally, the encryption that we do to save it on the "
-"server can be undone by a hacker reading the source to this file."
-msgstr ""
-"íÌÈ Ãä Êßæä ãÏÑßÇğ Ãä ÇáÊÔİíÑ ÇáãÓÊÎÏã İì ÊÎÒíä ßáãÉ ÇáãÑæÑ áíÓ"
-"ÂãäÇ ãä ÌãíÚ ÇáæÌæå. æãÚ Ğáß İáÇ íæÌÏ Ãí ÊÔİíÑ ÚäÏ ÇÓÊÎÏÇã ãáŞãPOP ."
-"æİÖáÇğ Úä Ğáß İÇáÊÔİíÑ ÇáĞí äŞæã Èå áÍİÙå Úáì ÇáãáŞã"
-"íãßä ÅáÛÇÁå ÈæÇÓØÉ ÃÍÏ ÇáãÊÓááíä ÇáĞíä íŞæãæä ÈŞÑÇÁÉ ãÕÏÑ åĞÇ Çáãáİ. "
-
-msgid "If you leave password empty, it will be required when you fetch mail."
-msgstr "ÅĞÇ ŞãÊ ÈÊÑß ßáãÉ ÇáãÑæÑ İÇÑÛÉ, İÓæİ ÊØáÈ ãäß ÚäÏ ÌáÈ ÇáÈÑíÏ."
-
-msgid "Encrypt passwords (informative only)"
-msgstr "ÊÔİíÑ ßáãÇÊ ÇáãÑæÑ (ááÚáã İŞØ)"
-
-msgid "Add Server"
-msgstr "ÅÖÇİÉ ãáŞã"
-
-msgid "Server:"
-msgstr "ãáŞã:"
-
-msgid "Alias:"
-msgstr "ÇÓã ãÓÊÚÇÑ:"
-
-msgid "Username:"
-msgstr "ÇÓã ãÓÊÎÏã:"
-
-msgid "Store in Folder:"
-msgstr "ÊÎÒíä İí ãÌáÏ:"
-
-msgid "Leave Mail on Server"
-msgstr "ÊÑß ÇáÈÑíÏ Úáì ÇáãáŞã"
-
-msgid "Check mail during login"
-msgstr "İÍÕ ÇáÈÑíÏ ÎáÇá ÊÓÌíá ÇáÏÎæá"
-
-msgid "Check mail during folder refresh"
-msgstr "İÍÕ ÇáÈÑíÏ ÎáÇá ÊÍÏíË ãÌáÏ "
-
-msgid "Modify Server"
-msgstr "ÊÚÏíá ãáŞã"
-
-msgid "Server Name:"
-msgstr "ÇÓã ÇáãáŞã:"
-
-msgid "Modify"
-msgstr "ÊÚÏíá"
-
-msgid "No-one server in use. Try to add."
-msgstr "áÇ íæÌÏ Ãí ãáŞã ÊÍÊ ÇáÇÓÊÎÏÇã. ÍÇæá ÇáÅÖÇİÉ."
-
-msgid "Fetching Servers"
-msgstr "ãáŞãÇÊ ÌáÈ "
-
-msgid "Confirm Deletion of a Server"
-msgstr "ÊÃßíÏ ÍĞİ ãáŞã"
-
-msgid "Selected Server:"
-msgstr "ÇáãáŞã ÇáãÍÏÏ:"
-
-msgid "Confirm delete of selected server?"
-msgstr "åá ÊÄßÏ Úáì ÍĞİ ÇáãáŞã ÇáãÍÏÏ¿"
-
-msgid "Confirm Delete"
-msgstr "ÊÃßíÏ ÍĞİ"
-
-msgid "Mofify a Server"
-msgstr "ÊÚÏíá ãáŞã"
-
-msgid "Undefined Function"
-msgstr "æÙíİÉ ÛíÑ ãÚÑøİÉ "
-
-msgid "Hey! Wath do You are looking for?"
-msgstr "İíãÇ ÊäÙÑ¿"
-
-msgid "Fetch"
-msgstr "ÌáÈ"
-
-msgid "Warning, "
-msgstr "ÊÍĞíÑ,"
-
-msgid "Mail Fetch Result:"
-msgstr "äÊíÌÉ ÌáÈ ÇáÈÑíÏ:"
-
-msgid "Simple POP3 Fetch Mail"
-msgstr "ÌáÈ ÈÑíÏ POP3 ÈÓíØ"
-
-msgid ""
-"This configures settings for downloading email from a pop3 mailbox to your "
-"account on this server."
-msgstr ""
-"íŞæã Ğáß ÈÊßæíä ÅÚÏÇÏÇÊ ÊÍãíá ÇáÈÑíÏ ÇáÅáßÊÑæäí ãä ÚáÈÉ ÈÑíÏ  pop3 Åáì"
-"ÇÔÊÑÇßß Úáì åĞÇ ÇáãáŞã."
-
-msgid "Bug Reports:"
-msgstr "ÊŞÇÑíÑ Úä Îáá:"
-
-msgid "Show button in toolbar"
-msgstr "ÅÙåÇÑ ÇáÒÑ İì ÔÑíØ ÇáÃÏæÇÊ"
-
-msgid "Sent Subfolders Options"
-msgstr "ÎíÇÑÇÊ ãÌáÏÇÊ ÇáÕÇÏÑ ÇáİÑÚíÉ"
-
-msgid "Use Sent Subfolders"
-msgstr "ÇÓÊÎÏÇã ãÌáÏÇÊ ÇáÕÇÏÑ ÇáİÑÚíÉ"
-
-msgid "Monthly"
-msgstr "ÔåÑíÇğ"
-
-msgid "Quarterly"
-msgstr "İÕáíÇğ"
-
-msgid "Yearly"
-msgstr "ÓäæíÇğ"
-
-msgid "Base Sent Folder"
-msgstr "ãÌáÏ Base ÇáÕÇÏÑ       "
-
-msgid "TODAY"
-msgstr "Çáíæã"
-
-msgid "l, F j Y"
-msgstr ""
-
-msgid "ADD"
-msgstr "ÅÖÇİÉ"
-
-msgid "EDIT"
-msgstr "ÊÍÑíÑ"
-
-msgid "DEL"
-msgstr "ãİÊÇÍ ÇáÍĞİ"
-
-msgid "Start time:"
-msgstr "æŞÊ ÇáÈÏÁ:"
-
-msgid "Length:"
-msgstr "ÇáØæá:"
-
-msgid "Priority:"
-msgstr "ÇáÃİÖáíÉ:"
-
-msgid "Title:"
-msgstr "ÚäæÇä:"
-
-msgid "Set Event"
-msgstr "ÊÚííä ÍÏË"
-
-msgid "Event Has been added!"
-msgstr "Êã ÅÖÇİÉ ÍÏË!"
-
-msgid "Time:"
-msgstr "ÇáæŞÊ:"
-
-msgid "Day View"
-msgstr "ÚÑÖ Çáíæã "
-
-msgid "Do you really want to delete this event?"
-msgstr "åá ÊÑíÏ ÍŞÇğ ÍĞİ åĞÇ ÇáÍÏË¿"
-
-msgid "Event deleted!"
-msgstr "ÍÏË ãÍĞæİ!"
-
-msgid "Nothing to delete!"
-msgstr "áÇ ÔíÁ íãßä ÍĞİå!"
-
-msgid "Update Event"
-msgstr "ÊÍÏíË ÍÏË"
-
-msgid "Do you really want to change this event from:"
-msgstr "åá ÊÑíÏ ÍŞÇğ ÊÛííÑ åĞÇ ÇáÍÏË ãä:"
-
-msgid "to:"
-msgstr "Åáì:"
-
-msgid "l, F d Y"
-msgstr ""
-
-msgid "Event updated!"
-msgstr "ÍÏË Êã ÊÍÏíËå!"
-
-msgid "Month View"
-msgstr "ÚÑÖ ÇáÔåÑ "
-
-msgid "0 min."
-msgstr "ÕİÑ ÏŞíŞÉ"
-
-msgid "15 min."
-msgstr " 15 ÏŞíŞÉ"
-
-msgid "35 min."
-msgstr " 35 ÏŞíŞÉ"
-
-msgid "45 min."
-msgstr " 45 ÏŞíŞÉ"
-
-msgid "1 hr."
-msgstr "ÓÇÚÉ æÇÍÏÉ"
-
-msgid "1.5 hr."
-msgstr "1.5 ÓÇÚÉ"
-
-msgid "2 hr."
-msgstr "ÓÇÚÊíä"
-
-msgid "2.5 hr."
-msgstr "2.5 ÓÇÚÉ"
-
-msgid "3 hr."
-msgstr "3 ÓÇÚÇÊ"
-
-msgid "3.5 hr."
-msgstr "3.5 ÓÇÚÉ"
-
-msgid "4 hr."
-msgstr "4 ÓÇÚÇÊ"
-
-msgid "5 hr."
-msgstr "5 ÓÇÚÇÊ"
-
-msgid "6 hr."
-msgstr "6 ÓÇÚÇÊ"
-
-msgid "Calendar"
-msgstr "ÇáÊŞæíã"
-
-msgid "Mailinglist"
-msgstr "ŞÇÆãÉ ÈÑíÏíÉ"
-
-#, c-format
-msgid ""
-"This will send a message to %s requesting help for this list. You will "
-"receive an emailed response at the address below."
-msgstr ""
-"ÓíŞæã Ğáß ÈÅÑÓÇá ÑÓÇáÉ Åáì %s  áØáÈ ãÓÇÚÏÉ áåĞå ÇáŞÇÆãÉ."
-"Óæİ ÊÊáŞì ÑÏÇğ ÈÇáÈÑíÏ ÇáÅáßÊÑæäí Úáì ÇáÚäæÇä ÇáãÈíä ÃÏäÇå."
-
-#, c-format
-msgid ""
-"This will send a message to %s requesting that you will be subscribed to "
-"this list. You will be subscribed with the address below."
-msgstr ""
-"ÓíŞæã Ğáß ÈÅÑÓÇá ÑÓÇáÉ Åáì %s  áØáÈ ÇÔÊÑÇßß İì åĞå ÇáŞÇÆãÉ."
-"Óæİ íÊã ÇÔÊÑÇßß ÈÇáÚäæÇä ÇáãÈíä ÃÏäÇå."
-
-#, c-format
-msgid ""
-"This will send a message to %s requesting that you will be unsubscribed from "
-"this list. It will try to unsubscribe the adress below."
-msgstr ""
-"ÓíŞæã Ğáß ÈÅÑÓÇá ÑÓÇáÉ Åáì %s  áØáÈ ÅáÛÇÁ ÇÔÊÑÇßß İì åĞå ÇáŞÇÆãÉ."
-"Óæİ ÃÍÇæá ÅáÛÇÁ ÇÔÊÑÇß ÇáÚäæÇä ÇáãÈíä ÃÏäÇå."
-
-msgid "Send Mail"
-msgstr "ÅÑÓÇá ÈÑíÏ"
-
-msgid "Post to List"
-msgstr "ÊæÒíÚ  Úáì ŞÇÆãÉ"
-
-msgid "Reply to List"
-msgstr "ÅÌÇÈÉ Úáì ŞÇÆãÉ"
-
-msgid "List Archives"
-msgstr "ÓÌáÇÊ ŞÇÆãÉ"
-
-msgid "Contact Listowner"
-msgstr "ÇÊÕá ÈÜ Listowner"
-
-msgid "Mailing List:"
-msgstr "ŞÇÆãÉ ÈÑíÏíÉ:"
-
-msgid "Delete & Prev"
-msgstr "ÍĞİ & ÇáÓÇÈŞ"
-
-msgid "Delete & Next"
-msgstr "ÍĞİ & ÇáÊÇáí"
-
-msgid "Delete/Move/Next Buttons:"
-msgstr "ÍĞİ/äŞá/ÇáÃÒÑÇÑ ÇáÊÇáíÉ:"
-
-msgid "Display at top"
-msgstr "ÚÑÖ Úáì ÇáÚáæí"
-
-msgid "with move option"
-msgstr "ãÚ ÎíÇÑ ÇáäŞá "
-
-msgid "Display at bottom"
-msgstr "ÚÑÖ Úáì ÇáÓİáí"
-
-msgid "Config File Version"
-msgstr "ÅÕÏÇÑ ãáİ Config"
-
-msgid "biznas_mail Version"
-msgstr "ÅÕÏÇÑ biznas_mail"
-
-msgid "PHP Version"
-msgstr "ÅÕÏÇÑPHP"
-
-msgid "Organization Preferences"
-msgstr "ÊİÖíáÇÊ ÇáãÄÓÓÉ"
-
-msgid "Organization Name"
-msgstr "ÇÓã ÇáãÄÓÓÉ"
-
-msgid "Organization Logo"
-msgstr "ÔÚÇÑ ÇáãÄÓÓÉ"
-
-msgid "Organization Logo Width"
-msgstr "ÚÑÖ ÔÚÇÑ ÇáãÄÓÓÉ"
-
-msgid "Organization Logo Height"
-msgstr "ÇÑÊİÇÚ ÔÚÇÑ ÇáãÄÓÓÉ"
-
-msgid "Organization Title"
-msgstr "áŞÈ ÇáãÄÓÓÉ"
-
-msgid "Signout Page"
-msgstr "ÕİÍÉ ÊÓÌíá ÇáÎÑæÌ"
-
-msgid "Default Language"
+#, fuzzy
+msgid "Traditional Chinese"
+msgstr "ãÚáæãÇÊ ÅÖÇİíÉ"
+
+#, fuzzy
+msgid "Interface language"
 msgstr "ÇááÛÉ ÇáÇİÊÑÇÖíÉ "
 
-msgid "Top Frame"
-msgstr "ÇáÅØÇÑ ÇáÚáæí "
-
-msgid "Server Settings"
-msgstr "ÅÚÏÇÏÇÊ ãáŞã "
-
-msgid "Mail Domain"
-msgstr "ãÌÇá ÈÑíÏ "
-
-msgid "IMAP Server Address"
-msgstr "ÚäæÇä ãáŞã IMAP"
-
-msgid "IMAP Server Port"
-msgstr "ãäİĞ ãáŞã IMAP"
-
-msgid "IMAP Server Type"
-msgstr "äæÚ ãáŞã IMAP"
-
-msgid "Cyrus IMAP server"
-msgstr "ãáŞã Cyrus IMAP"
-
-msgid "University of Washington's IMAP server"
-msgstr "ãáŞã IMAP ÇáÎÇÕ ÈÌÇãÚÉ æÇÔäØä"
-
-msgid "Microsoft Exchange IMAP server"
-msgstr "ãáŞã Microsoft Exchange IMAP"
-
-msgid "Courier IMAP server"
-msgstr "ãáŞã Courier IMAP"
-
-msgid "Not one of the above servers"
-msgstr "áÇ ÃÍÏ ãä ÇáãáŞãÇÊ ÃÚáÇå"
-
-msgid "IMAP Folder Delimiter"
-msgstr "ãÍÏÏ ãÌáÏIMAP"
-
-msgid "Use \"detect\" to auto-detect."
-msgstr "ÇÓÊÎÏÇã/ßÔİ/ Åáì ÇáßÔİ ÇáÊáŞÇÆí."
-
-msgid "Use Sendmail"
-msgstr "ÇÓÊÎÏÇã Sendmail"
-
-msgid "Sendmail Path"
-msgstr "ãÓÇÑ Sendmail"
-
-msgid "SMTP Server Address"
-msgstr "ÚäæÇä ãáŞãSMTP"
-
-msgid "SMTP Server Port"
-msgstr "ãäİĞ ãáŞãSMTP"
-
-msgid "Authenticated SMTP"
-msgstr "SMTP ãÕÇÏŞ Úáíå"
-
-msgid "Invert Time"
-msgstr "ÇáæŞÊ ÇáÚßÓí "
-
-msgid "Use Confirmation Flags"
-msgstr "ÇÓÊÎÏÇã ÅÔÇÑÇÊ ÇáÊßæíä"
-
-msgid "Folders Defaults"
-msgstr "ÇİÊÑÇÖÇÊ ÇáãÌáÏÇÊ"
-
-msgid "Default Folder Prefix"
-msgstr "ÈÇÏÆÉ ãÌáÏ ÇİÊÑÇÖí"
-
-msgid "Show Folder Prefix Option"
-msgstr "ÅÙåÇÑ ÎíÇÑ ÈÇÏÆÉ ãÌáÏ"
-
-msgid "By default, move to trash"
-msgstr "ÇáÇİÊÑÇÖí, åæ ÇáÇäÊŞÇá Åáì ÓáÉ ÇáãåãáÇÊ "
-
-msgid "By default, move to sent"
-msgstr "ÇáÇİÊÑÇÖí, åæ ÇáÇäÊŞÇá Åáì ÇáÕÇÏÑ       "
-
-msgid "By default, save as draft"
-msgstr "ÇáÇİÊÑÇÖí, åæ ÇáÍİÙ ßãÓæÏÉ"
-
-msgid "List Special Folders First"
-msgstr "ÓÑÏ ÇáãÌáÏÇÊ ÇáÎÇÕÉ ÃæáÇğ"
-
-msgid "Show Special Folders Color"
-msgstr "ÅÙåÇÑ áæä ÇáãÌáÏÇÊ ÇáÎÇÕÉ"
-
-msgid "Auto Expunge"
-msgstr "ÔØÈ ÊáŞÇÆí "
-
-msgid "Default Sub. of INBOX"
-msgstr "ÇáãæÖæÚ ÇáÇİÊÑÇÖí áÚáÈÉ ÇáæÇÑÏ"
-
-msgid "Show 'Contain Sub.' Option"
-msgstr "ÅÙåÇÑ ÎíÇÑ 'íÍÊæì ãæÖæÚ '"
-
-msgid "Default Unseen Notify"
-msgstr "ÊÈáíÛ Unseen ÇáÇİÊÑÇÖí"
-
-msgid "Default Unseen Type"
-msgstr "äæÚ Unseen ÇáÇİÊÑÇÖí"
-
-msgid "Auto Create Special Folders"
-msgstr "ÅäÔÇÁ ÊáŞÇÆí áãÌáÏÇÊ ÎÇÕÉ"
-
-msgid "Default Javascript Adrressbook"
-msgstr "ÏİÊÑ ÚäÇæíä Javascript ÇáÇİÊÑÇÖí "
-
-msgid "Auto delete folders"
-msgstr "ÍĞİ ÊáŞÇÆí ááãÌáÏÇÊ"
-
-msgid "General Options"
-msgstr "ÎíÇÑÇÊ ÚÇãÉ"
-
-msgid "Default Charset"
-msgstr "ãÌãæÚÉ ÇáÃÍÑİ ÇáÇİÊÑÇÖíÉ"
-
-msgid "Data Directory"
-msgstr "Ïáíá ÈíÇäÇÊ "
-
-msgid "Temp Directory"
-msgstr "Ïáíá Temp"
-
-msgid "Hash Level"
-msgstr "ãÓÊæì ÇáÊÌÒÆÉ Hash"
-
-msgid "Hash Disabled"
-msgstr "ÇáÊÌÒÆÉ Hash ãÚØáÉ"
-
-msgid "Moderate"
-msgstr "ãÚÊÏá"
-
-msgid "Medium"
-msgstr "ãÊæÓØ"
-
-msgid "Default Left Size"
-msgstr "ÇáÍÌã ÇáÃíÓÑ ÇáÇİÊÑÇÖí "
-
-msgid "Usernames in Lowercase"
-msgstr "ÇÓã ãÓÊÎÏã ÈÃÍÑİ ÕÛíÑÉ"
-
-msgid "Allow use of priority"
-msgstr "ÇáÓãÇÍ ÈÇÓÊÎÏÇã ÇáÃİÖáíÉ"
-
-msgid "Hide SM attributions"
-msgstr "ÅÎİÇÁ ÓãÇÊ SM "
-
-msgid "Enable use of delivery receipts"
-msgstr "Êãßíä ÇÓÊÎÏÇã ÅíÕÇáÇÊ ÇáÇÓÊáÇã"
-
-msgid "Allow editing of identities"
-msgstr "ÇáÓãÇÍ ÈÊÍÑíÑ ÇáãÚÑøİÇÊ "
-
-msgid "Allow editing of full name"
-msgstr "ÇáÓãÇÍ ÈÊÍÑíÑ ÇáÇÓã ÇáßÇãá"
-
-msgid "Message of the Day"
-msgstr "ÑÓÇáÉ Çáíæã"
-
-msgid "Database"
-msgstr "ŞÇÚÏÉ ÈíÇäÇÊ"
-
-msgid "Address book DSN"
-msgstr "DSN ÏİÊÑ ÇáÚäÇæíä"
-
-msgid "Address book table"
-msgstr "ÌÏæá ÏİÊÑ ÇáÚäÇæíä "
-
-msgid "Preferences DSN"
-msgstr "DSN ÇáÊİÖíáÇÊ"
-
-msgid "Preferences table"
-msgstr "ÌÏæá ÇáÊİÖíáÇÊ"
-
-msgid "Preferences username field"
-msgstr "ÍŞá ÇÓã ãÓÊÎÏã ÇáÊİÖíáÇÊ "
-
-msgid "Preferences key field"
-msgstr "ÍŞá ãİÊÇÍ ÇáÊİÖíáÇÊ"
-
-msgid "Preferences value field"
-msgstr "z"
-
-msgid "Themes"
-msgstr "ÇáÓãÇÊ"
-
-msgid "Style Sheet URL (css)"
-msgstr "Style Sheet URL (css)"
-
-msgid "Configuration Administrator"
-msgstr "ãÓÄæá ÇáÊßæíä "
-
-msgid "Theme Name"
-msgstr "ÇÓã ÇáÓãÉ"
-
-msgid "Theme Path"
-msgstr "ãÓÇÑ ÇáÓãÉ "
-
-msgid "Plugins"
-msgstr "ÃÏæÇÊ ÈÑãÌíÉ ÅÖÇİíÉ"
-
-msgid "Change Settings"
-msgstr "ÊÛííÑ ÇáÅÚÏÇÏÇÊ"
-
-msgid "Config file can't be opened. Please check config.php."
-msgstr "íÊÚĞÑ İÊÍ ãáİ ÇáÊßæíä. íÑÌì İÍÕ config.php."
-
-msgid "Administration"
-msgstr "ÇáÅÏÇÑÉ"
-
-msgid ""
-"This module allows administrators to manage biznas_mail main configuration "
-"remotely."
-msgstr ""
-"ÊÓãÍ åĞå ÇáæÍÏÉ ÇáäãØíÉ ááãÓÆæáíä ÈÅÏÇÑÉ ÇáÊßæíä  ÇáÑÆíÓí áÜ biznas_mail"
-"ãä ÈÚíÏ."
+#, fuzzy
+msgid "Translation direction"
+msgstr "ÎíÇÑÇÊ ÇáÊÑÌãÉ"
 
 msgid "Delivery error report"
 msgstr "ÊŞÑíÑ Úä ÎØÃ İì ÇáÊÓáíã "
 
 msgid "Undelivered Message Headers"
 msgstr "ÑÄæÓ ÑÓÇÆá áã íÊã ÊÓáíãåÇ"
+
+msgid "This image has been removed for security reasons"
+msgstr "åĞå ÇáÕæÑÉ Êã ÇÒÇáÊåÇ áÍãÇíÉ ÌåÇÒß"
 
