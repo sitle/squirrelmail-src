@@ -117,15 +117,16 @@ class input_dropdown extends input_base
   /**
    * Display the dropdown list.
    */
-  function display($class = NULL, $visibleItems = 1) 
+  function display($class = NULL, $visibleItems = 1, $javascript = NULL) 
   {
     $class = ( $class == NULL ) ? ''  : ' class="'.$class.'"';
     $multiple = ( $this->multiple ) ? ' multiple' : '';
+    $javascript = ( $javascript == NULL ) ? '' : ' '.$javascript;
     $size = ' size="'.$visibleItems.'"';
     $name  = ' name="'.$this->name.'[]"';
 
 
-    echo ' <select',$multiple,$name,$size,$class,'>'."\n";
+    echo ' <select',$multiple,$name,$size,$class,$javascript,'>'."\n";
 
     foreach ($this->items as $val => $item) 
     {
