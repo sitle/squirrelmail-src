@@ -103,6 +103,23 @@ function getConstOrDefault($constant, $default)
 }
 
 /**
+ * Return the value of a constant or a default value.
+ *
+ * @param string constant Name of a constant.
+ * @param mixed default Default value.
+ * @return mixed The value of the constant or the default value.
+ */
+function getVarOrDefault($var, $default) 
+{
+  if (isset($var))
+    return $var;
+
+  return $default;
+}
+
+
+
+/**
  * Set a constant to a value if the constant is defined.
  *
  * @param string constName Name of a constant.
@@ -308,8 +325,11 @@ function getURI($parameters = NULL, $relative = TRUE)
 { 
   $uri = $relative ? '' : 
          ( defined('BASE_URL') ? BASE_URL : 'http://'.$_SERVER['HTTP_HOST'].'/' );
-
-  $uri .= defined('FILENAME') ? FILENAME : $_SERVER['PHP_SELF'] ;
+ 
+  if ( defined('FILENAME') )
+    $uri .= FILENAME == '/' ? '' : FILENAME;
+  else
+    $uri .= $_SERVER['PHP_SELF'] ;
 
   if (is_array($parameters) && count($parameters) > 0 ) 
   {

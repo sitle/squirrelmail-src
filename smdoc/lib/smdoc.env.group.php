@@ -61,22 +61,24 @@ class smdoc_group
 
     $allgroups = array();
 
+    $cfg =& $this->foowd->config_settings['group'];
+
     /*
      * Set Available User Groups:
      *  - start with basic four (Everyone, Author, Gods, Nobody)
      */
-    $allgroups['Everyone']   = getConstOrDefault('GROUPNAME_EVERYONE', 'Everyone');
-    $allgroups['Author']     = getConstOrDefault('GROUPNAME_AUTHOR', 'Author');
-    $allgroups['Gods']       = getConstOrDefault('GROUPNAME_ADMIN', 'Admin');
-    $allgroups['Nobody']     = getConstOrDefault('GROUPNAME_NOBODY', 'Nobody');
-    $allgroups['Registered'] = getConstOrDefault('GROUPNAME_REGISTERED', 'Registered');
+    $allgroups['Everyone']   = getVarOrDefault($cfg['Everyone'], 'Everybody');
+    $allgroups['Author']     = getVarOrDefault($cfg['Author'], 'Author');
+    $allgroups['Gods']       = getVarOrDefault($cfg['Gods'],   'Admin');
+    $allgroups['Nobody']     = getVarOrDefault($cfg['Nobody'], 'Nobody');
+    $allgroups['Registered'] = getVarOrDefault($cfg['registered'], 'Registered');
 
 
     /*
      *  - add groups passed to foowd as parameter
      */
-    if ( isset($this->foowd->config_settings['group']['more_groups']) )
-      $groups = &$this->foowd->config_settings['group']['more_groups'];
+    if ( isset($cfg['more_groups']) )
+      $groups = &$cfg['more_groups'];
 
     if (isset($groups) && is_array($groups) ) 
       $allgroups = array_merge($allgroups, $groups);
