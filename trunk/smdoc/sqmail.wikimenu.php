@@ -60,6 +60,9 @@ function sqmNavMenu(&$thing) {
     echo '<a href="', THINGURI, 'search">Search</a> | ';
     echo '<a href="', THINGURI. 'sqmuseradmin">Users</a> | ';
     echo '<a href="', THINGURI. 'sqmindex">Index</a> ';
+    if ( $wtf->user->inGroup(EDITORS) ) {
+        echo '| <a href="', THINGURI, 'fullindex">Admin</a> ';
+    }
     echo '</searchmenu>';
  	
 	track();
@@ -74,7 +77,7 @@ function sqmEditMenu(&$thing) {
 	echo '<editmenu>';
 
     if ( getValue('op', FALSE) == 'delete' && getValue('confirm', FALSE) == 'true' ) {
-        // Here is the much stripped down footer for Hard Things
+        // Here is the much stripped down footer for Deleted things
         echo '<a href="', THINGURI, 'recentchanges">Recent Changes</a>';
         echo '<br/>';           
         echo 'This page has been deleted.';
@@ -85,24 +88,24 @@ function sqmEditMenu(&$thing) {
             // Workspaces are not editable, and do not view in the expected way.
             // The Current Workspace link up by the user's login can be used to return to Main
             if ( $wtf->user->inGroup($thing->viewGroup) ) {
-	            echo '<a href="', THINGIDURI, $wtf->thingid, '&amp;class=', $wtf->class, '&amp;version=', $wtf->thing->version, '&amp;op=view">View</a> | ';
+	            echo '<a href="', THINGIDURI, $wtf->thingid, '&amp;class=', $wtf->class, '&amp;op=view">View</a> | ';
             }
-            if ( $wtf->user->inGroup($thing->editGroup) ) {
-	            echo '<a href="', THINGIDURI, $wtf->thingid, '&amp;class=', $wtf->class, '&amp;version=', $wtf->thing->version, '&amp;op=edit">Edit</a> | ';
+            if ( hasPermission($thing, $wtf->user, 'editGroup') ) {
+	            echo '<a href="', THINGIDURI, $wtf->thingid, '&amp;class=', $wtf->class, '&amp;op=edit">Edit</a> | ';
             }
         }
 
         if ( $thing->classid != HOMECLASSID && $wtf->user->inGroup($thing->deleteGroup) ) {
            // let's not offer deletion of the home directly. 
            // delete the home by deleting the user (for real).
-  	       echo '<a href="', THINGIDURI, $wtf->thingid, '&amp;class=', $wtf->class, '&amp;version=', $wtf->thing->version, '&amp;op=delete">Delete</a> | ';
+  	       echo '<a href="', THINGIDURI, $wtf->thingid, '&amp;class=', $wtf->class, '&amp;op=delete">Delete</a> | ';
         }
 
         if ($wtf->user->inGroup($thing->adminGroup)) {
-            echo '<a href="', THINGIDURI, $wtf->thingid, '&amp;class=', $wtf->class, '&amp;version=', $wtf->thing->version, '&amp;op=admin">Administrate</a> | ';
+            echo '<a href="', THINGIDURI, $wtf->thingid, '&amp;class=', $wtf->class, '&amp;op=admin">Administrate</a> | ';
         }
 
-	    echo '<a href="', THINGIDURI, $wtf->thingid, '&amp;class=', $wtf->class, '&amp;version=', $wtf->thing->version, '&amp;op=history">History</a> | ';
+	    echo '<a href="', THINGIDURI, $wtf->thingid, '&amp;class=', $wtf->class, '&amp;op=history">History</a> | ';
         echo '<a href="', THINGURI, 'recentchanges">Recent Changes</a>';
         echo '<br/>';
 
