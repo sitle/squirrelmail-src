@@ -1124,7 +1124,7 @@ class foowd_object
 
     $cloneForm = new input_form('cloneForm', NULL, SQ_POST);
     $cloneTitle = new input_textbox('cloneTitle', REGEX_TITLE, $this->title, 'Clone Title');
-    $cloneObjectId = new input_checkbox('cloneId', FALSE, 'New Object Translation');
+    $cloneObjectId = new input_checkbox('cloneId', $cloneForm, FALSE, 'New Object Translation');
     $cloneWorkspace = new input_dropdown('workspaceDropdown', NULL, $this->getWorkspaceList());
     $newWorkspace = $cloneWorkspace->value;
 

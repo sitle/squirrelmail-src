@@ -93,6 +93,11 @@ class input_base
   var $form;
 
   /**
+   * Initial value
+   */
+  var $default;
+
+  /**
    * Constructs a new base object.
    *
    * @param string name The name of the form element.
@@ -107,6 +112,7 @@ class input_base
     $this->regex = $regex;
     $this->required = $required;
     $this->form = NULL;
+    $this->default = $value;
     
     if ( sqGetGlobalVar($name, $new_value, $method) )
     {
@@ -116,6 +122,16 @@ class input_base
     
     if ( !$this->wasSet || !$this->wasValid )
       $this->value = $value;
+  }
+
+  /**
+   * Reset to default value
+   */
+  function reset()
+  {
+    $this->value = $this->default;
+    $this->wasSet = FALSE;
+    $this->wasValid = FALSE;    
   }
 
   /**
@@ -130,7 +146,10 @@ class input_base
          $this->regex == NULL || 
          preg_match($this->regex, $value) ) 
     {
-      $this->value = $value;
+        if ( is_numeric($value) )
+            $this->value = intval($value);
+        else
+            $this->value = $value;
       return TRUE;
     }
     return FALSE;
@@ -235,4 +254,37 @@ function sqGetGlobalVar($name, &$value, $search = SQ_INORDER)
       break;
   }
   return FALSE;
+}
+
+/**
+ * Make sure that the specified number lies between min and max
+ *
+ * @param int value Value to ensure is within range - changed if necessary
+ * @param int min   Minimum value of range
+ * @param int max   Maximum value of range
+ */
+function ensureIntInRange(&$value, $min, $max)
+{
+  if ( $value === NULL || !is_int($value) )
+    return;
+
+  if ( $value > $max )
+    $value = $max;
+
+  if ( $value < $min )
+    $value = $min;
+}
+
+function getRegexLength($regex, $default) 
+{
+  if (preg_match('/\*/', $regex))
+    return 0;
+  if (preg_match('/\+/', $regex))
+    return 0;
+  if (preg_match('/\{[0-9,]*([0-9]+)\}/U', $regex, $results = array()))
+    return $results[1];
+  if (preg_match('/\?/', $regex))
+    return 1;
+
+  return $default;
 }

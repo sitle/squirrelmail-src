@@ -142,7 +142,7 @@ class input_passwordbox extends input_textbox
 class input_hiddenbox extends input_textbox 
 {
   /**
-   * Constructs a new passwordbox object.
+   * Constructs a new hidden form object.
    *
    * @param string name The name of the textbox.
    * @param string regex The validation regular expression.

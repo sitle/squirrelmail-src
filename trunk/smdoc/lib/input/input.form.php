@@ -25,6 +25,7 @@ define('FORM_DEFAULT_PREVIEW', _("Preview"));
 define('FORM_DEFAULT_RESET', _("Reset"));
 define('FORM_DEFAULT_CANCEL', _("Cancel"));
 
+
 /**
  * Input form class.
  * Replacement for FOOWD input_form
@@ -64,13 +65,12 @@ class input_form
    * @var string
    */
   var $submit;
-
+  
   /**
-   * Cancel this action.
-   *
-   * @var string
+   * Additional submit buttons
+   * @var array
    */
-  var $cancel;
+  var $other_submit = array();
 
   /**
    * Caption of the reset button.
@@ -80,11 +80,11 @@ class input_form
   var $reset;
 
   /**
-   * Caption of the preview button.
+   * Caption of the cancel button.
    *
    * @var string
    */
-  var $preview;
+  var $cancel;
 
   /**
    * Form objects in this form.
@@ -101,12 +101,12 @@ class input_form
    * @param mixed method The submit method to use ('get', 'post', SQ_GET, SQ_POST)
    * @param string submit Caption of the submit button.
    * @param string reset Caption of the reset button.
-   * @param string preview Caption of the preview button.
+   * @param string cancel Caption of the cancel button.
    */
   function input_form($name, $location = NULL, $method = SQ_POST, 
                       $submit = FORM_DEFAULT_SUBMIT, 
-                      $reset = FORM_DEFAULT_RESET, 
-                      $preview = NULL) 
+                      $reset = FORM_DEFAULT_RESET,
+                      $cancel = FORM_DEFAULT_CANCEL) 
   {
     $this->name = $name;
 
@@ -122,9 +122,43 @@ class input_form
     $this->method = $method;
     $this->submit = $submit;
     $this->reset = $reset;
-    $this->preview = $preview;
+    $this->cancel = $cancel;
   }
-  
+
+  /**
+   * Reset all form elements
+   */
+  function reset($group = NULL)
+  {
+    if ( $group == NULL )
+        $this->_resetArray($this->objects);
+    else
+    {
+        if ( !isset($this->objects[$group]) )
+            return;
+        $this->_resetArray($this->objects[$group]);
+    }    
+  }
+
+  /**
+   * Utility function
+   * Reset contents of given array
+   */
+  function _resetArray(&$objArray)
+  {
+    if ( !is_array($objArray) || empty($objArray) )
+        return;
+
+    $keys = array_keys($objArray);
+    foreach ( $keys as $k )
+    {
+        if ( is_array($objArray[$k]) )
+            $this->resetArray($objArray[$k]);
+        else
+            $objArray[$k]->reset();
+    }
+  }
+
   /**
    * Add a form object to the form.
    *
@@ -162,6 +196,25 @@ class input_form
     return FALSE;
   }
 
+  /** 
+   * Add additional submit button
+   */
+  function addSubmitButton($name, $caption)
+  {
+    $this->other_submit[$name] = $caption;
+  }
+
+  /**
+   * Has the form been submitted with one of the 'other' buttons?
+   */
+  function otherSubmitted($name)
+  {
+    if ( sqGetGlobalVar($this->name.'_'.$name, $new_value, $this->method) )
+      return TRUE;
+
+    return FALSE;
+  }
+
   /**
    * Has the form been submitted?
    *
@@ -176,16 +229,25 @@ class input_form
   }
 
   /**
-   * Has the form been previewed?
-   *
-   * @return bool TRUE if the form has been previewed.
+   * Has the form been cancelled?
+   * Can be called statically. 
+   * @return bool TRUE if the form has been cancelled
    */
-  function previewed() 
+  function cancelled() 
   {
-    if ( sqGetGlobalVar($this->name.'_preview', $new_value, $this->method) )
+    if ( sqGetGlobalVar('input_form_cancel', $new_value, SQ_FORM) )
       return TRUE;
 
     return FALSE;
+  }
+
+  /**
+   * Clear form post values.
+   */
+  function clearPost()
+  {
+    foreach($_POST as $k => $v)
+        unset($_POST[$k]);
   }
   
   /**
@@ -210,43 +272,41 @@ class input_form
   /**
    * Display the form footer. See {@link input_form::display_start} for more.
    */
-  function display_buttons($button_class = NULL, $appendTypeToClass = FALSE) 
+  function display_buttons($button_class = NULL) 
   {
     // Only append type to class if a class is defined
-    if ( $button_class == NULL )
-    {
-      $appendTypeToClass = FALSE;
-      $class = '';
-    }
-    else
-    {
-      $class = 'class="'.$button_class;
-      $class .= $appendTypeToClass ? '' : '" ';
-    }
+    if ( $button_class != NULL )
+      echo '<span class="'.$button_class.'">';
 
     if ( $this->submit )
     {
-      $button_class = $appendTypeToClass ? '_submit" ' : '';
       $name  = 'name="'.$this->name.'_submit" ';
-      echo '<input type="submit" '.$class.$button_class.$name.'value="'.$this->submit.'" />';
+      echo '<input type="submit" '.$name.'value="'.$this->submit.'" />';
     }
-    if ( $this->preview )
+    foreach ( $this->other_submit as $subname => $subcaption )
     {
-      $button_class = $appendTypeToClass ? '_preview" ' : '';
-      $name  = 'name="'.$this->name.'_preview" ';
-      echo '<input type="submit" '.$class.$button_class.$name.'value="'.$this->preview.'" />';
+      $name  = 'name="'.$this->name.'_'.$subname.'" ';
+      echo '<input type="submit" '.$name.'value="'.$subcaption.'" />';
     }
+
     echo '&nbsp;&nbsp;';
     if ( $this->reset )
     {
-      $button_class = $appendTypeToClass ? '_reset" ' : '';
       $name  = 'name="'.$this->name.'_reset" ';
-      echo '<input type="reset" '.$class.$button_class.$name.'value="'.$this->reset.'" />';
+      echo '<input type="reset" '.$name.'value="'.$this->reset.'" />';
+    }
+    
+    // Cancel button has a generic name - pressing cancel on any form
+    // would apply to all forms on the page... 
+    if ( $this->cancel )
+    {
+      $name  = 'name="input_form_cancel" ';
+      echo '<input type="submit" '.$name.'value="'.FORM_DEFAULT_CANCEL.'" />';
     }
 
-    $button_class = $appendTypeToClass ? '_cancel" ' : '';
-    $name  = 'name="form_cancel" ';
-    echo '<input type="submit" '.$class.$button_class.$name.'value="'.FORM_DEFAULT_CANCEL.'" />';
+    // Only append type to class if a class is defined
+    if ( $button_class != NULL )
+        echo '</span>'."\n";
   }
 
   function display_end()

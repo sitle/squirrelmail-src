@@ -616,7 +616,7 @@ class base_user extends foowd_object
 
     $titleBox = new input_textbox('title', REGEX_TITLE, $this->title, 'Username', FALSE);
     $emailBox = new input_textbox('email', REGEX_EMAIL, $this->email, 'Email', FALSE);
-    $showEmail = new input_checkbox('show_email', $this->show_email, 'Share Email');
+    $showEmail = new input_checkbox('show_email', $form, $this->show_email, 'Share Email');
 
     if ( $form->submitted() )
     {

@@ -103,6 +103,14 @@ class input_cookie extends input_base
     $this->secure = $secure;
   }
 
+  /** 
+   * Reset to default value
+   */
+  function reset()
+  {
+    $this->set($this->default);
+  }
+
   /**
    * Sets the value of the cookie object.
    *

@@ -49,25 +49,35 @@ class input_checkbox extends input_base
    * @param bool checked The initial checkbox state.
    * @param string caption The caption to display by the checkbox.
    */
-  function input_checkbox($name, $checked = FALSE, $caption = NULL) 
+  function input_checkbox($name, &$form, $checked = FALSE, $caption = NULL) 
   {
     $this->caption = $caption;
     $this->name = $name;
     $this->regex = NULL;
     $this->required = FALSE;
-    $this->value = NULL;
-    
-    if ( sqGetGlobalVar($name, $new_value, SQ_FORM) )
+    $this->default = $checked;
+    $this->wasSet = FALSE;
+    $this->wasValid = FALSE;
+    $this->default = $checked;
+
+    if ( $form->submitted() )
     {
-      $this->wasSet = TRUE;
-      $this->wasValid = TRUE;
-      $this->checked = TRUE;
-    } 
-    elseif ( $checked && count($_POST) == 0)
-      $this->checked = TRUE;
+        $this->wasSet = TRUE;
+        $this->wasValid = TRUE;
+        
+        $this->checked = sqGetGlobalVar($name, $new_value, SQ_FORM);
+    }
     else
-      $this->checked = FALSE;
+        $this->set($checked);
+
     $this->value = $this->checked;
+  }
+
+  function reset()
+  {
+    $this->set($this->default);
+    $this->wasSet = FALSE;
+    $this->wasValid = FALSE;
   }
 
   /**
@@ -78,14 +88,28 @@ class input_checkbox extends input_base
    */  
   function set($value) 
   {
+    $ok = FALSE;
+
     if (is_bool($value)) 
     {
       $this->checked = $value;
-      $this->value = $value;
-      return TRUE;
+      $ok = TRUE;
+    } 
+    elseif ( is_int($value) )
+    {
+      $this->checked = ( $value == 0 ? FALSE : TRUE );
+      $ok = TRUE;
     }
+    elseif ( is_string($value) && is_numeric($value) )
+    {
+      $this->checked = ( $value == '0' ? FALSE : TRUE );
+      $ok = TRUE;
+    }
+
+    if ( $ok )
+        $this->value = $this->checked;
     
-    return FALSE;
+    return $ok;
   }
 
   /**
@@ -98,7 +122,7 @@ class input_checkbox extends input_base
     $id    = 'id="'.(( $id == NULL ) ? $this->name : $id ).'" ';
     $title = ( $this->caption == NULL ) ? '' : 'title="'.$this->caption.'" ';
     $class = ( $class == NULL ) ? ''  : 'class="'.$class.'" ';
-    $checked = ( $this->checked ) ? 'checked ' : '';
+    $checked = ( $this->checked ) ? 'checked="checked" ' : '';
     
     echo '<input '.$type.$name.$id.$title.$class.$checked.'/>';
   }
