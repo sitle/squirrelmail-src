@@ -41,6 +41,9 @@ if (GZIPOUTPUT && !extension_loaded('zlib')) {
 	terminal_error('Zlib is not available, load the Zlib module or turn off WTF gzip compression.');
 }
 
+/* temp dir for diff files */
+if (!defined('WTFW_DIFF_TEMP')) define('WTFW_DIFF_TEMP', $ENV['TEMP']);
+
 /* mirror access */
 if (!defined('MIRROR_HOME')) define('MIRROR_HOME', '');
 
