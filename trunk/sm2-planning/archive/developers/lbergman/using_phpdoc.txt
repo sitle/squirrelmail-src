@@ -1,0 +1,95 @@
+$Header$
+$Author$
+$Date$
+
+Using PHPDoc to provide detailed developer documentation
+========================================================
+
+ This is designed to be a basic explanation for use of PHPDoc
+ in source code files for SquirrelMail2.x files. The
+ different "@" vars are parsed by phpdoc to form a web
+ page that list all classes, methods, and functions. It
+ also will document parameters for the above as well
+ as any vars that are documented. As strange as it may
+ seem, documentation on this package is poor so I will
+ do my best to illustrate its use here. CVS vars may be
+ used to automate some of this and are demonstarted
+ where appropriate. Below is what these special variables
+ are and some example of how they might be used.
+
+ The tags and example are for the purpose of illustration
+ and a standard method needs to be dicided upon.
+
+ Author
+ ==============
+ Seems to me we should try to automate as much of this as
+ possible. Here are some ways to do it.
+ 
+ @author Goerge Jefferson <gjefferson@spacelysprokets.com
+ @author $Author$
+ @author $Author$ <gjefferson@spacelysprokets.com>
+ 
+ Version
+ ==============
+ As of this writing I am unsure of the exact cvs replacement vars
+ available so some of this might be incorrect.
+ 
+ @version $ID$
+ @version $header$
+ 
+ Included Since
+ ==============
+ This should be a very handy tag to track down problems introduced
+ By new classes or functions, as well as to determine if some user
+ needs to upgrade and to what version. This would reflect a tarred
+ release or whatever scheme was decided
+
+ @since SquirrelMail_2.9.1
+ 
+ Paramaters
+ ==============
+ This would be for functions or classes. It consists of the paramater
+ type followed by a short description of how it applies here. Could
+ describe from what function or class it retrieves the parameter or
+ how it uses or alters it or whatever.
+
+ @param string $stream This is written to or retreived from the socket
+ @param int    $mesgid Message id to be handled
+ @param array  $list   Index of mailbox requested
+ 
+ Variable
+ ==============
+ The variables are slightley different. They should be preceded by a
+ line that describes it and purely list the variable typeas follows:
+ 
+ @var string
+ @var array
+ @var int
+ @var boolean
+ 
+ An example follows:
+ /*
+ * Received from imap_general() and is to be
+ * parsed, possibly transformed, added to or
+ * stripped, then returned.
+ * @var string
+ */
+ var $stream;
+ 
+ Return
+ ===============
+ Describes what the function or class returns, possibly why,
+ or on what conditions. 
+
+ @return true on success, false otherwise
+ @return value of $string
+ @return value of $string after parsing, false on error
+
+ Example
+ ===============
+ template_phpdoc.txt is an example of what could be a template to
+ start as the skeleton of every SM2 file which contains php code.
+ Because of the nature of phpdoc it is not really a template but 
+ an example. This is for discussion and should not be considered
+ final in any
+ way.
