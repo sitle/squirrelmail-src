@@ -18,6 +18,7 @@ Version 1.4.1 -- CVS
   - Fix max attachment filesize off by factor 10 when ini_var set in bytes (#730742).
   - Fixed language bug in posting on modifying/deleting servers on mail_fetch plugin
     (#742705).
+  - Fixed infinite loop in parseAddress on invalid mailadress (#742584).
 
 Version 1.4.0 -- 3 April 2003
 -----------------------------
