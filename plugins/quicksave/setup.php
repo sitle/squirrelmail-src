@@ -22,7 +22,7 @@ function quicksave_left_main_after()
 	echo "\t<input type=hidden value=\"\" name=send_to_bcc>\n";
 	echo "\t<input type=hidden value=\"\" name=subject>\n";
 	echo "\t<input type=hidden value=\"\" name=body>\n";
-	echo "\t<input type=hidden value=\"0\" name=is_active>\n";
+	echo "\t<input type=hidden value=0 name=is_active>\n";
 	echo "</form>\n";
 	// end -- QuickSave plugin
 
@@ -37,20 +37,27 @@ function quicksave_compose_bottom()
 	echo "<!--\n";
 	echo "function QuickSave_swap(from_form, to_form)\n";
 	echo "{\n";
-	echo "	//alert('QuickSaving...');\n";
-	echo "	to_form.send_to.value = from_form.send_to.value;\n";
-	echo "	to_form.send_to_cc.value = from_form.send_to_cc.value;\n";
-	echo "	to_form.send_to_bcc.value = from_form.send_to_bcc.value;\n";
-	echo "	to_form.subject.value = from_form.subject.value;\n";
-	echo "	to_form.body.value = from_form.body.value;\n";
+	echo "	if ( from_form.send_to.value.length >= 1 )\n";
+	echo "		to_form.send_to.value = from_form.send_to.value;\n";
+	echo "	if ( from_form.send_to_cc.value.length >= 1 )\n";
+	echo "		to_form.send_to_cc.value = from_form.send_to_cc.value;\n";
+	echo "	if ( from_form.send_to_bcc.value.length >= 1 )\n";
+	echo "		to_form.send_to_bcc.value = from_form.send_to_bcc.value;\n";
+	echo "	if ( from_form.subject.value.length >= 1 )\n";
+	echo "		to_form.subject.value = from_form.subject.value;\n";
+	echo "	if ( from_form.body.value.length >= 1 )\n";
+	echo "		to_form.body.value = from_form.body.value;\n";
 	echo "	self.setTimeout('QuickSave_swap(document.compose, parent.left.document.quicksave)', 10000);\n";
-	echo "	QuickSave_activate(1);\n";
+	echo "	QuickSave_activate(true);\n";
 	echo "	return true;\n";
 	echo "}\n";
 	echo "\n";
 	echo "function QuickSave_activate(do_we_save)\n";
 	echo "{\n";
-	echo "	parent.left.document.quicksave.is_active.value = do_we_save;\n";
+	echo "	if ( do_we_save )\n";
+	echo "		parent.left.document.quicksave.is_active.value = 1;\n";
+	echo "	else\n";
+	echo "		parent.left.document.quicksave.is_active.value = 0;\n";
 	echo "	return true;\n";
 	echo "}\n";
 	echo "\n";
@@ -82,7 +89,7 @@ function quicksave_compose_bottom()
 function quicksave_compose_form()
 {
 
-	echo " onSubmit=\"QuickSave_activate(0);\"";
+	echo " onSubmit=\"QuickSave_activate(false);\"";
 
 }
 
