@@ -5,8 +5,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: squirrelmail\n"
-"POT-Creation-Date: 2004-03-14 11:19+0200\n"
-"PO-Revision-Date: 2004-03-22 00:55+0200\n"
+"POT-Creation-Date: 2004-03-22 11:54+0200\n"
+"PO-Revision-Date: 2004-03-23 23:05+0200\n"
 "Last-Translator: M.J. Prinsen <translation@prinsenonline.com>\n"
 "Language-Team: Dutch <squirrelmail-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -1816,9 +1816,6 @@ msgstr "POP3 voor SMTP?"
 msgid "Invert Time"
 msgstr "Inverteer tijd"
 
-msgid "Use Confirmation Flags"
-msgstr "Gebruik bevestigings-flags"
-
 msgid "Folders Defaults"
 msgstr "Map voorkeuren"
 
@@ -2085,6 +2082,10 @@ msgstr "Fout rapportages:"
 
 msgid "Show button in toolbar"
 msgstr "Toon knop in menu"
+
+#, c-format
+msgid "Could not write calendar file %s"
+msgstr "Kan kalenderbestand %s niet wegschrijven"
 
 msgid "TODAY"
 msgstr "VANDAAG"
@@ -3941,7 +3942,9 @@ msgid "The imap server failed to handle threading."
 msgstr "De IMAP-server kon de threading niet aan."
 
 msgid "Click here to unset thread view for this mailbox and start again."
-msgstr "Klik hier om de weergave in threads voor deze mailbox te deactiveren en start opnieuw."
+msgstr ""
+"Klik hier om de weergave in threads voor deze mailbox te deactiveren en "
+"start opnieuw."
 
 msgid "ERROR : Bad function call."
 msgstr "FOUT : Bad function call."
@@ -3956,7 +3959,8 @@ msgid "Unflag"
 msgstr "Ontvlag"
 
 msgid "Click here to change the sorting of the message list"
-msgstr "Klik hier om de volgorde van sortering van de berichtenlijst te veranderen"
+msgstr ""
+"Klik hier om de volgorde van sortering van de berichtenlijst te veranderen"
 
 msgid "Message Flags Icon Theme"
 msgstr "Message Flags Icon Theme"
@@ -3971,7 +3975,8 @@ msgid "Length of Subject Field (0 for full)"
 msgstr "Lengte van het onderwerp veld (0 voor onbeperkt)"
 
 msgid "Show recipient name if the message is from your default identity"
-msgstr "Toon naam ontvanger als het bericht van uw standaard identiteit afkomstig is"
+msgstr ""
+"Toon naam ontvanger als het bericht van uw standaard identiteit afkomstig is"
 
 msgid "Strip signature when replying"
 msgstr "Verwijder handtekening bij beantwoorden"
@@ -4046,8 +4051,7 @@ msgstr ""
 msgid ""
 "Run or consult conf.pl should you run into difficulty with your "
 "configuration."
-msgstr ""
-"Gebruik conf.pl als u in moeilijkheden raakt met uw configuratie."
+msgstr "Gebruik conf.pl als u in moeilijkheden raakt met uw configuratie."
 
 msgid "Test Configuration"
 msgstr "Test configuratie"
@@ -4098,9 +4102,10 @@ msgid ""
 "Member services use different web reporting forms  and does not display "
 "nags. You can purchase these services, if you want to support SpamCop."
 msgstr ""
-"Met de service type optie kunt u selecteren welke spamcop services uw gebruikt. "
-"Gebruikers services gebruiken andere webformulieren en tonen geen irritante informatie. "
-"U kunt deze services aanschaffen als u SpamCop wilt steunen."
+"Met de service type optie kunt u selecteren welke spamcop services uw "
+"gebruikt. Gebruikers services gebruiken andere webformulieren en tonen geen "
+"irritante informatie. U kunt deze services aanschaffen als u SpamCop wilt "
+"steunen."
 
 msgid "Filipino (Tagalog)"
 msgstr "Filipino (Tagalog)"
@@ -4118,6 +4123,9 @@ msgstr "Bezorgingsfout rapportage"
 
 msgid "Undelivered Message Headers"
 msgstr "Berichtkoppen onbestelbaar bericht"
+
+#~ msgid "Use Confirmation Flags"
+#~ msgstr "Gebruik bevestigings-flags"
 
 #~ msgid "refresh unseen/total info"
 #~ msgstr "vernieuw info ongelezen/totaal"
