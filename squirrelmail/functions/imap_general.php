@@ -509,7 +509,7 @@ function sqimap_login ($username, $password, $imap_server_address, $imap_port, $
             $message = _("The IMAP server is reporting that plain text logins are disabled.").' '.
                 _("Using CRAM-MD5 or DIGEST-MD5 authentication instead may work.").' ';
             if (!$use_imap_tls) {
-                $message .= _("The use of TLS may allow SquirrelMail to login.").' ';
+                $message .= _("Also, the use of TLS may allow SquirrelMail to login.").' ';
             }
             $message .= _("Please contact your system administrator and report this error.");
         } else {
