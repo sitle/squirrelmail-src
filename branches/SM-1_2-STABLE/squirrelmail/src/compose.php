@@ -932,10 +932,8 @@ function saveAttachedFiles($session) {
         $full_localfilename = "$hashed_attachment_dir/$localfilename";
     }
 
-    if (!@rename($_FILES['attachfile']['tmp_name'], $full_localfilename)) {
-        if (!@copy($_FILES['attachfile']['tmp_name'], $full_localfilename)) {
-            return true;
-        }
+    if (!@move_uploaded_file($_FILES['attachfile']['tmp_name'], $full_localfilename)) {
+        return true;
     }
 
     $newAttachment['localfilename'] = $localfilename;
