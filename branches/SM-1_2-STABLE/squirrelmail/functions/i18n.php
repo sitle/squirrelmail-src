@@ -1367,6 +1367,10 @@ $languages['bg_BG']['NAME']    = 'Bulgarian';
 $languages['bg_BG']['CHARSET'] = 'windows-1251';
 $languages['bg']['ALIAS'] = 'bg_BG';
 
+$languages['uk_UA']['NAME']    = 'Ukrainian';
+$languages['uk_UA']['CHARSET'] = 'koi8-u';
+$languages['uk']['ALIAS'] = 'uk_UA';
+
 /* Detect whether gettext is installed. */
 $gettext_flags = 0;
 if (function_exists('_')) {
