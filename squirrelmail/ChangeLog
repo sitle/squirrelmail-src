@@ -34,6 +34,8 @@ Version 1.4.4 - CVS
   - Fixed issue with user setting display of messages to 0 per page.  Fixes
     bug #960447.
   - Detect, handle, and warn on LOGINDISABLED from IMAP server.
+  - Correctly sort folders including - in the name.  Affects folders beginning
+    with the same names, but second folder has - with additional characters.
 
 Version 1.4.3a - 2 June 2004
 ----------------------------

@@ -489,6 +489,21 @@ function sqimap_mailbox_option_list($imap_stream, $show_selected = 0, $folder_sk
 }
 
 /*
+ * Mailboxes with some chars (like -) can mess up the order, this fixes it
+ */
+function mailtree_sort(&$lsub) {
+    if(!is_array($lsub)) return;
+
+    foreach($lsub as $index => $mailbox)
+        $lsub[$index] = str_replace('.',' -#- ',$lsub[$index]);
+
+    usort($lsub, 'user_strcasecmp');
+
+    foreach($lsub as $index => $mailbox)
+        $lsub[$index] = str_replace(' -#- ','.',$lsub[$index]);
+}
+
+/*
  * Returns sorted mailbox lists in several different ways. 
  * See comment on sqimap_mailbox_parse() for info about the returned array.
  */
@@ -539,7 +554,7 @@ function sqimap_mailbox_list($imap_stream, $force=false) {
 
 	/* natural sort mailboxes */
         if (isset($sorted_lsub_ary)) {
-            usort($sorted_lsub_ary, 'user_strcasecmp');
+            mailtree_sort($sorted_lsub_ary);
         }
 	/*
 	 * The LSUB response doesn't provide us information about \Noselect
