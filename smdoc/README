@@ -1,0 +1,67 @@
+NAME
+	Framework for Object Orientated Development - FOOWD
+
+VERSION
+	0.8
+
+DESCRIPTION
+	FOOWD is a framework for building object orientated (OO) web applications
+	in PHP. It is a collection of base classes ripe for extending that handle
+	object persistency, user authorisation, security, data administration,
+	input handling, all the things required to build OO web applications.
+
+DOCUMENTATION
+	The beginnings of a FOOWD manual can be found at http://foowd.peej.co.uk.
+
+REQUIREMENTS
+	* PHP 4.2.0+ (tested with 4.3.1)
+	* MySQL 3+ (tested with 3.23.28)
+	* A web server with access to the above tools.
+	
+INSTALLATION
+	* Extract the archive somewhere into the web root of your web server keeping
+	the directory structure in tact, the archive will create a directory called
+	"foowd".
+	* Connect to your MySQL server using your favourite client with a user with
+	the appropriate privileges and either create yourself a new database or use
+	an existing one you already have lying around ready. Use the database creation
+	script mysql.sql to create the FOOWD table tlbObject and populate it with the
+	initial data. Note: To get full functionality your database user will require
+	the following privileges: Select, Insert, Update, Delete, Index, Alter.
+	* Make a copy of config.default.php and open it in your favourite PHP editor.
+	Set the database server hostname, etc. and save the file.
+	* Open the lead-in document, index.php. Change the second line to point to
+	your new config.
+	* Fire up a web browser and navigate to your new site. Use the menu at the
+	foot of the page to log in with the username 'root' giving the password 'root'.
+	Click on 'Root' on the menu at the foot of the page, then on the 'Update'
+	method. This will display the user update form and allow you to change the
+	password. Once changed you will be required to log in again with the new password.
+	* Enjoy.
+	
+	More in depth installation instructions can be found at:
+		http://foowd.peej.co.uk?object=installation
+	
+COPYRIGHT AND LICENSE
+	The information below applies to everything in this distribution, except
+	where noted.
+
+	Copyright 2003 by Paul James.
+
+		paul@peej.co.uk
+		http://www.peej.co.uk/
+
+	FOOWD is free software; you can redistribute it and/or modify it under
+	the terms of the GNU General Public License as published by the Free
+	Software Foundation; either version 2 of the License, or (at your
+	option) any later version.
+
+	FOOWD is distributed in the hope that it will be useful, but WITHOUT ANY
+	WARRANTY; without even the implied warranty of MERCHANTABILITY or
+	FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for
+	more details.
+
+	You should have received a copy of the GNU General Public License along
+	with FOOWD (COPYING); if not, go to http://www.fsf.org/ or write to the
+	Free Software Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA
+	02111-1307, USA.
