@@ -88,18 +88,17 @@ document_title and sourceforge_id appropriately:
 <pre>
 &lt;?php
 /**
- * index.php - Index for planning documents
+ * filename.php - description of what file is for
  *
  * Copyright (c) 1999-2002 The SquirrelMail development team
  * Licensed under the GNU GPL. For full terms see the file COPYING.
- *
  *
  * $Id$
  */
 include_once('common_header.inc');
 set_title('document_title');
 set_original_author('sourceforge_id');
-set_attributes('$Author$','$Revision$','$Date$');
+set_attributes('&#36;Author&#36;','&#36;Revision&#36;','&#36;Date&#36;');
 print_header();
 ?&gt;
 
