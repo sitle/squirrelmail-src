@@ -34,6 +34,8 @@ Version 1.4.2 -- CVS
     with upcoming PHP 4.3.3.
   - Encoding of Russian translation changed to utf-8. Lithuanian translation changed
     to iso-8859-4. Fix allows to use national letters in folder names correctly.
+  - Reintroduced mailbox-tree caching in order to limit the number of imap-calls
+
 
 Version 1.4.1 -- 7 July 2003
 ----------------------------
