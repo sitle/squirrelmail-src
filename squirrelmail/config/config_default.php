@@ -516,9 +516,14 @@ $no_list_for_subscribe = false;
  * CRAM-MD5, DIGEST-MD5, Plain, and TLS
  * Set reasonable defaults - you'd never know this was there unless you ask for it
  */
+global $use_imap_tls;
+global $use_smtp_tls;
 $use_imap_tls = false;
 $use_smtp_tls = false;
-/* *_auth_mech can be either 'plain', 'cram-md5', or 'digest-md5' */
+
+/* auth_mech can be either 'plain', 'cram-md5', or 'digest-md5' */
+global $smtp_auth_mech;
+global $imap_auth_mech;
 $smtp_auth_mech = 'plain';
 $imap_auth_mech = 'plain';
 
