@@ -14,10 +14,14 @@
  *    - Send mail
  *    - Save As Draft
  *
- * $Id$
+ * @version $Id$
+ * @package squirrelmail
  */
 
-/* Path for SquirrelMail required files. */
+/**
+ * Path for SquirrelMail required files.
+ * @ignore
+ */
 define('SM_PATH','../');
 
 /* SquirrelMail required files. */
@@ -824,7 +828,7 @@ function getAttachments($message, &$composeMessage, $passed_id, $entities, $imap
            }
            $message->att_local_name = $full_localfilename;
 
-	   $composeMessage->initAttachment($message->type0.'/'.$message->type1,$filename,
+       $composeMessage->initAttachment($message->type0.'/'.$message->type1,$filename,
              $full_localfilename);
 
            /* Write Attachment to file */
@@ -902,14 +906,14 @@ function showInputForm ($session, $values=false) {
     }
 
     if ($use_javascript_addr_book) {
-        echo "\n". '<SCRIPT LANGUAGE=JavaScript>'."\n<!--\n" .
+        echo "\n". '<script language="JavaScript">'."\n<!--\n" .
              'function open_abook() { ' . "\n" .
              '  var nwin = window.open("addrbook_popup.php","abookpopup",' .
              '"width=670,height=300,resizable=yes,scrollbars=yes");' . "\n" .
              '  if((!nwin.opener) && (document.windows != null))' . "\n" .
              '    nwin.opener = document.windows;' . "\n" .
              "}\n" .
-             "// -->\n</SCRIPT>\n\n";
+             "// -->\n</script>\n\n";
     }
 
     echo "\n" . '<form name="compose" action="compose.php" method="post" ' .
@@ -935,15 +939,15 @@ function showInputForm ($session, $values=false) {
     }
 
     if ($saved_draft == 'yes') {
-        echo '<BR><CENTER><B>'. _("Draft Saved").'</CENTER></B>';
+        echo '<br /><center><b>'. _("Draft Saved").'</center></b>';
     }
     if ($mail_sent == 'yes') {
-        echo '<BR><CENTER><B>'. _("Your Message has been sent.").'</CENTER></B>';
+        echo '<br /><center><b>'. _("Your Message has been sent.").'</center></b>';
     }
     echo '<table align="center" cellspacing="0" border="0">' . "\n";
     if ($compose_new_win == '1') {
-        echo '<TABLE ALIGN=CENTER BGCOLOR="'.$color[0].'" WIDTH="100%" BORDER=0>'."\n" .
-             '   <TR><TD></TD>'. html_tag( 'td', '', 'right' ) . '<INPUT TYPE="BUTTON" NAME="Close" onClick="return self.close()" VALUE='._("Close").'></TD></TR>'."\n";
+        echo '<table align="center" bgcolor="'.$color[0].'" width="100%" border="0">'."\n" .
+             '   <tr><td></td>'. html_tag( 'td', '', 'right' ) . '<input type="button" name="Close" onClick="return self.close()" value="'._("Close").'" /></td></tr>'."\n";
     }
     if ($location_of_buttons == 'top') {
         showComposeButtonRow();
@@ -975,7 +979,7 @@ function showInputForm ($session, $values=false) {
 
             echo '<option value="' . $i . '"';
             if (isset($identity) && $identity == $i) {
-                echo ' selected';
+                echo ' selected="selected"';
             }
             echo '>' . htmlspecialchars($fn);
             if ($em != '') {
@@ -992,30 +996,31 @@ function showInputForm ($session, $values=false) {
              '      </td>' . "\n" .
              '   </tr>' . "\n";
     }
+
     echo '   <tr>' . "\n" .
                 html_tag( 'td', '', 'right', $color[4], 'width="10%"' ) .
-                _("To:") . '</TD>' . "\n" .
+                _("To") . ':</td>' . "\n" .
                 html_tag( 'td', '', 'left', $color[4], 'width="90%"' ) .
-		addInput('send_to', $send_to, 60). '<br />' . "\n" .
+                addInput('send_to', $send_to, 60). '<br />' . "\n" .
          '      </td>' . "\n" .
          '   </tr>' . "\n" .
          '   <tr>' . "\n" .
                 html_tag( 'td', '', 'right', $color[4] ) .
-                _("CC:") . '</td>' . "\n" .
+                _("Cc") . ':</td>' . "\n" .
                 html_tag( 'td', '', 'left', $color[4] ) .
                 addInput('send_to_cc', $send_to_cc, 60). '<br />' . "\n" .
          '      </td>' . "\n" .
          '   </tr>' . "\n" .
          '   <tr>' . "\n" .
                 html_tag( 'td', '', 'right', $color[4] ) .
-                _("BCC:") . '</td>' . "\n" .
+                _("Bcc") . ':</td>' . "\n" .
                 html_tag( 'td', '', 'left', $color[4] ) .
-	        addInput('send_to_bcc', $send_to_bcc, 60).'<br />' . "\n" .
+                addInput('send_to_bcc', $send_to_bcc, 60).'<br />' . "\n" .
          '      </td>' . "\n" .
          '   </tr>' . "\n" .
          '   <tr>' . "\n" .
                 html_tag( 'td', '', 'right', $color[4] ) .
-                _("Subject:") . '</td>' . "\n" .
+                _("Subject") . ':</td>' . "\n" .
                 html_tag( 'td', '', 'left', $color[4] ) . "\n";
     echo '         '.addInput('subject', $subject, 60).
          '      </td>' . "\n" .
@@ -1027,16 +1032,16 @@ function showInputForm ($session, $values=false) {
 
     /* why this distinction? */
     if ($compose_new_win == '1') {
-        echo '   <TR>' . "\n" .
-             '      <TD BGCOLOR="' . $color[0] . '" COLSPAN=2 ALIGN=CENTER>' . "\n" .
-             '         <TEXTAREA NAME="body" ID="body" ROWS="' . (int)$editor_height . 
-             '" COLS="' . (int)$editor_size . '" WRAP="VIRTUAL">';
+        echo '   <tr>' . "\n" .
+             '      <td bgcolor="' . $color[0] . '" colspan="2" align="center">' . "\n" .
+             '         <textarea name="body" id="body" rows="' . (int)$editor_height .
+             '" cols="' . (int)$editor_size . '" wrap="virtual">';
     }
     else {
-        echo '   <TR>' . "\n" .
-            '      <TD BGCOLOR="' . $color[4] . '" COLSPAN=2>' . "\n" .
-            '         &nbsp;&nbsp;<TEXTAREA NAME="body" ID="body" ROWS="' . (int)$editor_height .
-            '" COLS="' . (int)$editor_size . '" WRAP="VIRTUAL">';
+        echo '   <tr>' . "\n" .
+            '      <td bgcolor="' . $color[4] . '" colspan="2">' . "\n" .
+            '         &nbsp;&nbsp;<textarea name="body" id="body" rows="' . (int)$editor_height .
+            '" cols="' . (int)$editor_size . '" wrap="virtual">';
     }
 
     if ($use_signature == true && $newmail == true && !isset($from_htmladdr_search)) {
@@ -1121,7 +1126,7 @@ function showInputForm ($session, $values=false) {
                                  html_tag( 'td', '', 'left', '', 'valign="middle"' ) .
          '                          <input name="attachfile" size="48" type="file" />' . "\n" .
          '                          &nbsp;&nbsp;<input type="submit" name="attach"' .
-                                    ' value="' . _("Add") .'">' . "\n" .
+                                    ' value="' . _("Add") .'" />' . "\n" .
                                     $maxsize .
          '                       </td>' . "\n" .
          '                    </tr>' . "\n";
@@ -1137,9 +1142,9 @@ function showInputForm ($session, $values=false) {
                         $attachment->mime_header->type1;
 
                 $s_a[] = '<table bgcolor="'.$color[0].
-                '" border="0"><tr><td>'.
-		addCheckBox('delete[]', FALSE, $key).
-		    "</td><td>\n" . $attached_filename .
+                    '" border="0"><tr><td>'.
+                    addCheckBox('delete[]', FALSE, $key).
+                    "</td><td>\n" . $attached_filename .
                     '</td><td>-</td><td> ' . $type . '</td><td>('.
                     show_readable_size( filesize( $attached_file ) ) . ')</td></tr></table>'."\n";
            }
@@ -1150,25 +1155,25 @@ function showInputForm ($session, $values=false) {
           echo '<tr>' . html_tag( 'td', '', 'left', $color[0], 'colspan="2"' ) . $s .'</td></tr>';
        }
        echo '<tr><td colspan="2"><input type="submit" name="do_delete" value="' .
-            _("Delete selected attachments") . "\">\n" .
+            _("Delete selected attachments") . "\" />\n" .
             '</td></tr>';
     }
     echo '                  </table>' . "\n" .
          '               </td>' . "\n" .
          '            </tr>' . "\n" .
-         '         </TABLE>' . "\n" .
-         '      </TD>' . "\n" .
-         '   </TR>' . "\n";
+         '         </table>' . "\n" .
+         '      </td>' . "\n" .
+         '   </tr>' . "\n";
         } // End of file_uploads if-block
     /* End of attachment code */
     if ($compose_new_win == '1') {
-        echo '</TABLE>'."\n";
+        echo '</table>'."\n";
     }
 
-    echo '</TABLE>' . "\n" .
-         addHidden('username', $username).
-	 addHidden('smaction', $action).
-	 addHidden('mailbox', $mailbox);
+    echo '</table>' . "\n" .
+        addHidden('username', $username).
+        addHidden('smaction', $action).
+        addHidden('mailbox', $mailbox);
     /*
        store the complete ComposeMessages array in a hidden input value
        so we can restore them in case of a session timeout.
@@ -1176,8 +1181,8 @@ function showInputForm ($session, $values=false) {
     sqgetGlobalVar('QUERY_STRING', $queryString, SQ_SERVER);
     echo addHidden('restoremessages', serialize($compose_messages)).
          addHidden('composesession', $composesession).
-	 addHidden('querystring', $queryString).
-	 "</form>\n";
+         addHidden('querystring', $queryString).
+         "</form>\n";
     if (!(bool) ini_get('file_uploads')) {
       /* File uploads are off, so we didn't show that part of the form.
          To avoid bogus bug reports, tell the user why. */
@@ -1186,7 +1191,7 @@ function showInputForm ($session, $values=false) {
     }
 
     do_hook('compose_bottom');
-    echo '</BODY></HTML>' . "\n";
+    echo '</body></html>' . "\n";
 }
 
 
@@ -1196,56 +1201,56 @@ function showComposeButtonRow() {
            $request_mdn, $request_dr,
            $data_dir, $username;
 
-    echo '   <TR>' . "\n" .
-         '      <TD></TD>' . "\n" .
-         '      <TD>' . "\n";
+    echo '   <tr>' . "\n" .
+         '      <td></td>' . "\n" .
+         '      <td>' . "\n";
     if ($default_use_priority) {
         if(!isset($mailprio)) {
             $mailprio = '3';
         }
         echo '          ' . _("Priority") .
-             addSelect('mailprio', array(
-	         '1' => _("High"),
-	         '3' => _("Normal"),
-	         '5' => _("Low") ), $mailprio, TRUE);
+            addSelect('mailprio', array(
+                '1' => _("High"),
+                '3' => _("Normal"),
+                '5' => _("Low") ), $mailprio, TRUE);
     }
     $mdn_user_support=getPref($data_dir, $username, 'mdn_user_support',$default_use_mdn);
     if ($default_use_mdn) {
         if ($mdn_user_support) {
             echo '          ' . _("Receipt") .': '.
-	    addCheckBox('request_mdn', $request_mdn == '1', '1'). _("On Read").
-	    addCheckBox('request_dr',  $request_dr  == '1', '1'). _("On Delivery");
+                addCheckBox('request_mdn', $request_mdn == '1', '1'). _("On Read").
+                addCheckBox('request_dr',  $request_dr  == '1', '1'). _("On Delivery");
         }
     }
 
-    echo '      </TD>' . "\n" .
-         '   </TR>' . "\n" .
-         '   <TR>'  . "\n" .
-         '      <TD></TD>' . "\n" .
-         '      <TD>' . "\n" .
-         '         <INPUT TYPE=SUBMIT NAME="sigappend" VALUE="' . _("Signature") . '">' . "\n";
+    echo '      </td>' . "\n" .
+         '   </tr>' . "\n" .
+         '   <tr>'  . "\n" .
+         '      <td></td>' . "\n" .
+         '      <td>' . "\n" .
+         '         <input type="submit" name="sigappend" value="' . _("Signature") . '" />' . "\n";
     if ($use_javascript_addr_book) {
-        echo "         <SCRIPT LANGUAGE=JavaScript><!--\n document.write(\"".
+        echo "         <script language=\"JavaScript\"><!--\n document.write(\"".
              "            <input type=button value=\\\""._("Addresses").
-                                 "\\\" onclick='javascript:open_abook();'>\");".
-             "            // --></SCRIPT><NOSCRIPT>\n".
-             "            <input type=submit name=\"html_addr_search\" value=\"".
-                              _("Addresses")."\">".
-             "         </NOSCRIPT>\n";
+                                 "\\\" onclick=\\\"javascript:open_abook();\\\" />\");".
+             "            // --></script><noscript>\n".
+             '            <input type="submit" name="html_addr_search" value="'.
+                              _("Addresses").'" />'.
+             "         </noscript>\n";
     } else {
-        echo '         <input type=submit name="html_addr_search" value="'.
-                                 _("Addresses").'">' . "\n";
+        echo '         <input type="submit" name="html_addr_search" value="'.
+                                 _("Addresses").'" />' . "\n";
     }
 
     if ($save_as_draft) {
-        echo '         <input type="submit" name ="draft" value="' . _("Save Draft") . "\">\n";
+        echo '         <input type="submit" name ="draft" value="' . _("Save Draft") . "\" />\n";
     }
 
-    echo '         <INPUT TYPE=submit NAME=send VALUE="'. _("Send") . '">' . "\n";
+    echo '         <input type="submit" name="send" value="'. _("Send") . '" />' . "\n";
     do_hook('compose_button_row');
 
-    echo '      </TD>' . "\n" .
-         '   </TR>' . "\n\n";
+    echo '      </td>' . "\n" .
+         '   </tr>' . "\n\n";
 }
 
 function checkInput ($show) {
@@ -1364,6 +1369,7 @@ function deliverMessage($composeMessage, $draft=false) {
     $rfc822_header->bcc = $rfc822_header->parseAddress($send_to_bcc,true, array(), '',$domain, array(&$abook,'lookup'));
     $rfc822_header->priority = $mailprio;
     $rfc822_header->subject = $subject;
+
     $special_encoding='';
     if (strtolower($default_charset) == 'iso-2022-jp') {
         if (mb_detect_encoding($body) == 'ASCII') {
@@ -1446,7 +1452,7 @@ function deliverMessage($composeMessage, $draft=false) {
         }
         if ($default_charset) {
             $content_type->properties['charset']=$default_charset;
-	}
+        }
     }
 
     $rfc822_header->content_type = $content_type;

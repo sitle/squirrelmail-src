@@ -11,10 +11,14 @@
  *
  * - this is the page that does all the work, really.
  *
- * $Id$
+ * @version $Id$
+ * @package squirrelmail
  */
 
-/* Path for SquirrelMail required files. */
+/**
+ * Path for SquirrelMail required files.
+ * @ignore
+ */
 define('SM_PATH','../');
 
 /* SquirrelMail required files. */
@@ -132,15 +136,15 @@ echo '<body text="#000000" bgcolor="#FFFFFF" link="#000000" vlink="#000000" alin
          html_tag( 'td', _("To").'&nbsp;', 'left','','valign="top"' ) .
          html_tag( 'td', $to, 'left' )
     ) . "\n";
-    if ( strlen($cc) > 0 ) { /* only show CC: if it's there... */
+    if ( strlen($cc) > 0 ) { /* only show Cc: if it's there... */
          echo html_tag( 'tr',
-             html_tag( 'td', _("CC").'&nbsp;', 'left','','valign="top"' ) .
+             html_tag( 'td', _("Cc").'&nbsp;', 'left','','valign="top"' ) .
              html_tag( 'td', $cc, 'left' )
          );
      }
      /* body */
      echo html_tag( 'tr',
-         html_tag( 'td', '<hr noshade size="1" /><br>' . "\n" . $body, 'left', '', 'colspan="2"' )
+         html_tag( 'td', '<hr noshade size="1" /><br />' . "\n" . $body, 'left', '', 'colspan="2"' )
      ) . "\n" .
 
      '</table>' . "\n" .
@@ -174,11 +178,11 @@ function pf_clean_string ( $unclean_string, $num_leading_spaces ) {
         }
         else
         {
-	    $i = strrpos( $this_line, ' ');
-    	    $clean_string .= substr( $this_line, 0, $i);
-    	    $clean_string .= "\n" . $leading_spaces;
-    	    $unclean_string = substr($unclean_string, 1+$i);
-	}
+            $i = strrpos( $this_line, ' ');
+            $clean_string .= substr( $this_line, 0, $i);
+            $clean_string .= "\n" . $leading_spaces;
+            $unclean_string = substr($unclean_string, 1+$i);
+        }
     }
     $clean_string .= $unclean_string;
 

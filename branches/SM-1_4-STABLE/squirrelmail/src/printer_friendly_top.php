@@ -9,10 +9,14 @@
  * top frame of printer_friendly_main.php
  * displays some javascript buttons for printing & closing
  *
- * $Id$
+ * @version $Id$
+ * @package squirrelmail
  */
 
-/* Path for SquirrelMail required files. */
+/**
+ * Path for SquirrelMail required files.
+ * @ignore
+ */
 define('SM_PATH','../');
 
 /* SquirrelMail required files. */
@@ -34,7 +38,7 @@ displayHtmlHeader( _("Printer Friendly"),
              "</script>\n", FALSE );
 
 
-echo "<body text='$color[8]' bgcolor='$color[3]' link='$color[7]' vlink='$color[7]' alink='$color[7]'>\n" .
+echo '<body text="'.$color[8].'" bgcolor="'.$color[3].'" link="'.$color[7].'" vlink="'.$color[7].'" alink="'.$color[7]."\">\n" .
      html_tag( 'div',
          '<b>'.
          '<form>'.
@@ -43,6 +47,5 @@ echo "<body text='$color[8]' bgcolor='$color[3]' link='$color[7]' vlink='$color[
          '</form>'.
          '</b>',
      'right' );
-     '</body></html>'. "\n";
-
 ?>
+</body></html>
