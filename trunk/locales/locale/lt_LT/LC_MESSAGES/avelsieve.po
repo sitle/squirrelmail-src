@@ -8,8 +8,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: (avelsieve 0.9.7)\n"
-"POT-Creation-Date: 2003-10-09 14:49+0300\n"
-"PO-Revision-Date: 2003-10-09 18:54+0200\n"
+"POT-Creation-Date: 2003-10-09 17:00+0300\n"
+"PO-Revision-Date: 2003-10-09 19:56+0200\n"
 "Last-Translator: Tomas Kuliavas <tokul@users.sourceforge.net>\n"
 "Language-Team: SquirrelMail I18N Team <squirrelmail-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -199,8 +199,8 @@ msgstr "Praneškite man nurodytu metodu:"
 msgid "Notification ID"
 msgstr "Pranešimo ID"
 
-msgid "Parameters"
-msgstr "Nustatymai"
+msgid "Destination"
+msgstr "Adresatas"
 
 msgid "Message"
 msgstr "žinutė"
@@ -220,8 +220,12 @@ msgstr "Nustatyti priešspaminę apsaugą"
 msgid "All incoming mail is checked for unsolicited commercial content (SPAM) and marked accordingly. This special rule allows you to configure what to do with such messages once they arrive to your Inbox."
 msgstr "Visos gaunamos žinutės yra tikrinamos dėl galimų nesankcionuotų komercinių pranešimų (SPAM) požymių ir atitinkamai sužymimos. Ši speciali taisyklė leidžia nustatyti tai, ką sistema turėtų daryti su tokiomis žinutėmis pasiekiančiomis Jūsų pašto dėžę."
 
-msgid "Select Add SPAM Rule to add the predefined rule, or select the advanced SPAM filter to customize the rule."
-msgstr "Pasirinkite \"Pridėti naują SPAM'o taisyklę\" tam, kad pridėti standartinę taisyklę arba \"Specialus spamo filtras...\", jei norite nustatyti specialias spamo apdorojimo taisykles."
+#, php-format
+msgid "Select %s to add the predefined rule, or select the advanced SPAM filter to customize the rule."
+msgstr "Pasirinkite %s tam, kad pridėti standartinę taisyklę arba specialų spamo filtrą, jei norite nustatyti specialias spamo apdorojimo taisykles."
+
+msgid "Add Spam Rule"
+msgstr "Pridėti SPAM'o taisyklę"
 
 msgid "Advanced Spam Filter..."
 msgstr "Specialus spamo filtras..."
@@ -255,11 +259,14 @@ msgstr "ir įvertinimu didesniu nei %s"
 msgid "will be"
 msgstr "bus"
 
-msgid "stored in the Junk Folder"
-msgstr "patalpintos Šlamšto aplanke"
+msgid "stored in the Junk Folder."
+msgstr "patalpinta Šlamšto aplanke."
 
-msgid "discarded"
-msgstr "išmestos"
+msgid "stored in the Trash Folder."
+msgstr "patalpinta Šlamšto aplanke."
+
+msgid "discarded."
+msgstr "išmesta."
 
 msgid "If"
 msgstr "Jei"
@@ -354,9 +361,6 @@ msgstr "atsakyti su atostogų žinute: "
 msgid " Also keep a copy in INBOX, marked as deleted."
 msgstr "Išsaugoti kopiją tarp INBOX, pažymėti kaip ištrintą."
 
-msgid " Then <strong>STOP</strong> processing rules."
-msgstr "Tada <strong>LIAUTIS</strong> apdoroti kitas taisykles."
-
 msgid " Also notify using the method"
 msgstr "Taip pat informuoti naudojant metodą"
 
@@ -365,6 +369,9 @@ msgstr "su"
 
 msgid "priority and the message"
 msgstr "prioritetu ir žinute"
+
+msgid " Then <strong>STOP</strong> processing rules."
+msgstr "Tada <strong>LIAUTIS</strong> apdoroti kitas taisykles."
 
 msgid "Address Match"
 msgstr "Adreso sutapimas"
