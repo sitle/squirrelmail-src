@@ -56,7 +56,7 @@ class ZkMod_auth_imap {
                 // Identifies the user
                 $ret = $this->query( $sp, 'LOGIN "' . quoteIMAP($username) .
                                      '" "' . quoteIMAP($password) . '"' );
-		$this->query( $sp, 'LOGOUT' );
+                $this->query( $sp, 'LOGOUT' );
             } else {
                 $ret = FALSE;
             }

@@ -32,7 +32,7 @@ class ZkMod_auth_test {
     function ZkMod_auth_test($options, &$srv) {
         /* Instantiate the Authentication Module Here! */
         $this->info = 'Foo check.';
-	$this->srv = &$srv;
+        $this->srv = &$srv;
     }
 
     /**
@@ -44,8 +44,8 @@ class ZkMod_auth_test {
      */
     function checkPassword($username, $password) {
         /* Code to check for success... */
-        return( ($username == 'captbunzo') && 
-	        ($password == 'bunz-r-us') );
+        return( ($username == 'captbunzo') &&
+                ($password == 'bunz-r-us') );
     }
 }
 

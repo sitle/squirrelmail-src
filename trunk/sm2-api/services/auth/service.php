@@ -53,20 +53,20 @@ class ZkSvc_auth {
 
         $this->bag_name = $this->name . '_' . $this->serial;
 
-    	if( $options['maxlogin'] == '' )
-    	    $this->maxlogin = 300;
-    	else
-    	    $this->maxlogin = $options['maxlogin'];
+        if( $options['maxlogin'] == '' )
+            $this->maxlogin = 300;
+        else
+            $this->maxlogin = $options['maxlogin'];
 
-    	if( $options['maxidle'] == '' )
-    	    $this->maxidle = 15;
-    	else
-    	    $this->maxidle = $options['maxidle'];
+        if( $options['maxidle'] == '' )
+            $this->maxidle = 15;
+        else
+            $this->maxidle = $options['maxidle'];
 
-	    if( $options['connector'] == '' )
-	        $this->connector = array( );
-	    else
-	        $this->connector = $options['connector'];
+        if( $options['connector'] == '' )
+            $this->connector = array( );
+        else
+            $this->connector = $options['connector'];
 
         // Check of registered variables
         if( is_array( $zkld->bag_reg[$this->bag_name] ) ) {
@@ -78,19 +78,19 @@ class ZkSvc_auth {
             $this->expired = $zkld->bag_reg[$this->bag_name]['expired'];
             $this->expires = $zkld->bag_reg[$this->bag_name]['expires'];
             $this->logged = $zkld->bag_reg[$this->bag_name]['logged'];
-	    $this->banner = $zkld->bag_reg[$this->bag_name]['banner'];
-	    $this->info = $zkld->bag_reg[$this->bag_name]['info'];
+            $this->banner = $zkld->bag_reg[$this->bag_name]['banner'];
+            $this->info = $zkld->bag_reg[$this->bag_name]['info'];
         } else {
             $zkld->bag_reg[$this->bag_name] = array();
             $this->expired = false;
             $this->idled = false;
-    	    $this->activity();
-    	    $this->username = '';
-    	    $this->password = '';
+            $this->activity();
+            $this->username = '';
+            $this->password = '';
             $this->logged = FALSE;
-            
+
             $this->Register();
-	}
+        }
     }
 
     /**
@@ -121,8 +121,8 @@ class ZkSvc_auth {
         $this->zkld->bag_reg[$this->bag_name]['expires'] = $this->expires ;
         $this->zkld->bag_reg[$this->bag_name]['logged'] = $this->logged ;
         $this->zkld->bag_reg[$this->bag_name]['banner'] = $this->banner;
-	$this->zkld->bag_reg[$this->bag_name]['info'] = $this->info;
-        
+        $this->zkld->bag_reg[$this->bag_name]['info'] = $this->info;
+
         $this->zkld->Register();
     }
 
@@ -134,22 +134,27 @@ class ZkSvc_auth {
      */
     function login($username, $password) {
 
+        if ( $username <> $this->username &&
+             $password <> $this->password ) {
+            $this->logout();
+        }
+
         $ret = ( $this->mod->checkPassword($username, $password) );
-	$this->banner = $this->mod->banner;
-	$this->info = $this->mod->info;
+        $this->banner = $this->mod->banner;
+        $this->info = $this->mod->info;
         if ( $ret ) {
             /* Save the current login information. */
-    	    $this->username = $username;
-    	    $this->password = $password;
-    	    $this->idled = FALSE;
-    	    $this->expired = FALSE;
-    	    $this->activity();
-    	    $this->logged = TRUE;
-    	    $this->Register();
+            $this->username = $username;
+            $this->password = $password;
+            $this->idled = FALSE;
+            $this->expired = FALSE;
+            $this->activity();
+            $this->logged = TRUE;
+            $this->Register();
         } else {
-    	    $this->logout();
+            $this->logout();
         }
-        
+
         return( $ret );
     }
 
@@ -157,12 +162,12 @@ class ZkSvc_auth {
      * Logout a user from his current login session.
      */
     function logout() {
-    	$this->username = '';
-    	$this->password = '';
-    	$this->expired = TRUE;
-    	$this->idled = TRUE;
-    	$this->logged = FALSE;
-    	$this->Register();
+        $this->username = '';
+        $this->password = '';
+        $this->expired = TRUE;
+        $this->idled = TRUE;
+        $this->logged = FALSE;
+        $this->Register();
     }
 
     /**
@@ -170,10 +175,13 @@ class ZkSvc_auth {
      *
      * @return bool indicates if user has a valid login session
      */
-    function checkLogin() {
+    function checkLogin( $usr = '', $pass = '') {
 
+        if ( ( $usr <> '' && $user <> $this->username ) ||
+             ( $pass <> '' && $pass <> $this->password ) ) {
+            $this->logout();
+        }
         return( $this->logged );
-
     }
 
     /**
@@ -200,11 +208,11 @@ class ZkSvc_auth {
      * @return bool indicates if this login session has expired
      */
     function loginExpired() {
-    	if( !$this->expired ) {
-    	    $this->expired = ( $this->expires < time() );
-    	    if( $this->expired )
-    	        $this->Register();
-    	}
+        if( !$this->expired ) {
+            $this->expired = ( $this->expires < time() );
+            if( $this->expired )
+                $this->Register();
+        }
         return( $this->expired );
     }
 
@@ -215,20 +223,20 @@ class ZkSvc_auth {
      */
     function loginIdled() {
 
-    	if( !$this->idled ) {
-    	    $this->idled = ( $this->idles < time() );
-    	    if( $this->idled )
-    	        $this->Register();
-    	}
+        if( !$this->idled ) {
+            $this->idled = ( $this->idles < time() );
+            if( $this->idled )
+                $this->Register();
+        }
 
         return( $this->idled );
     }
 
     function activity() {
 
-    	if( !$this->expired ) {
-    	    $this->expires = time() + $this->maxlogin;
-        	if( !$this->idled )
+        if( !$this->expired ) {
+            $this->expires = time() + $this->maxlogin;
+            if( !$this->idled )
                     $this->idles = time() + $this->maxidle;
             $this->Register();
         }
