@@ -19,12 +19,7 @@
 /** Class Descriptor/Meta information */
 setClassMeta('smdoc_spec', 'HTML + Textile + Spec tracking');
 setPermission('smdoc_spec', 'class',  'create', 'dev');
-
-setPermission('smdoc_spec', 'object', 'view',   'dev');
-setPermission('smdoc_spec', 'object', 'history','dev');
-setPermission('smdoc_spec', 'object', 'admin',  'dev');
 setPermission('smdoc_spec', 'object', 'revert', 'dev');
-setPermission('smdoc_spec', 'object', 'delete', 'dev');
 
 
 /**
@@ -41,4 +36,5 @@ setPermission('smdoc_spec', 'object', 'delete', 'dev');
  */
 class smdoc_spec extends smdoc_text_textile
 {
+
 }
