@@ -24,6 +24,11 @@ wtf.class.workspace.php
 Workspace Class
 */
 
+/*
+ * Modified by SquirrelMail Development Team
+ * $Id$
+ */
+
 $HARDCLASS[-1919680487] = 'workspace';
 
 if (!defined('WORKSPACECREATE')) define('WORKSPACECREATE', GODS);
@@ -99,21 +104,28 @@ class workspace extends thing {
 		if (getValue('version', FALSE)) {
 			echo '<thing_info version="'.$this->version.'" class="'.get_class($this).'"/>';
 		}
-		if ($wtf->user->workspaceid == $this->objectid) {
-			$wtf->user->delete(); // remove obj in old workspace from DB, will create a new DB entry upon save.
-			$wtf->user->workspaceid = 0;
-			$wtf->user->save();
-			echo 'You are now back in the main workspace.';
-		} elseif (hasPermission($this, $wtf->user, 'viewGroup')) { // check permission
-			$wtf->user->delete(); // remove obj in old workspace from DB, will create a new DB entry upon save.
-			$wtf->user->workspaceid = intval($this->objectid);
-			$wtf->user->save();
-			echo 'You are now in workspace "'.$this->title.'".';
-		} else {
-			echo 'You do not have permission to enter workspace "'.$this->title.'".';
-		}
-		track();
-	}
+        $msg = getValue('show_msg', FALSE);
+        if ( $msg == 'toMain' ) {
+            echo 'You are now back in the main workspace.';
+        } elseif ( $msg == 'toOther' ) {
+            echo 'You are now in workspace "'.$this->title.'".';
+        } elseif ($wtf->user->objectid != ANONYMOUSUSERID &&
+                  hasPermission($this, $wtf->user, 'viewGroup')) { // check permission
+            $wtf->user->delete(false); // remove obj in old workspace from DB, will create a new DB entry upon save.
+            if ( $wtf->user->workspaceid == $this->objectid ) {
+                $wtf->user->workspaceid = 0;
+                $msg = 'toMain';
+            } else {
+                $wtf->user->workspaceid = intval($this->objectid);
+                $msg = 'toOther';
+            }
+            $wtf->user->save();
+            header("Location: " .THINGIDURI.$this->objectid.'&class=workspace&show_msg='.$msg);
+        } else {
+            echo 'You do not have permission to enter workspace "'.$this->title.'".';
+        }
+        track();
+    }
 
 // create
 	function method_create($thingName = NULL, $objectName = 'workspace') { // this is both a method and a static member

@@ -15,8 +15,6 @@ function sqmNavMenu(&$thing) {
     echo '<pagetitle>';
     echo '<usermenu>';
 // user Login/Logout/Register
-    if ($wtf->op == 'login') {
-    }
 	if ($wtf->user->objectid == ANONYMOUSUSERID) {
         echo 'Anonymous User ';
 		echo '( <a href="', THINGIDURI, $wtf->user->objectid, '&amp;class=user&amp;op=login">Login</a> ';
@@ -24,9 +22,23 @@ function sqmNavMenu(&$thing) {
 	} else {
         echo '<a href="', THINGIDURI, $wtf->user->objectid, '&amp;class=user&amp;op=edit">', $wtf->user->title, '</a> ';
 		echo '( <a href="', THINGIDURI, $wtf->user->objectid, '&amp;class=user&amp;op=logout">Logout</a> )';
-	}
+	}    
+    if ($wtf->user->workspaceid != 0 ) {
+       $workspace = &wtf::loadObject($wtf->user->workspaceid, 0, 'workspace');
+       echo '<br/>Current Workspace: ';
+       echo '<a href="', THINGIDURI, $workspace->objectid, '&amp;class=workspace">' . $workspace->title . '</a>';
+    }
     echo '</usermenu>';        	
+// Workspace/PageTitle
     echo '<a href="'.THINGURI.$thing->title.'&amp;class='.$wtf->class.'">'.$thing->title.'</a>';
+    if ( $thing->workspaceid != 0 ) {
+      if ( $thing->workspaceid != $wtf->user->workspaceid ) {
+        $workspace = &wtf::loadObject($wtf->user->workspaceid, 0, 'workspace');
+      }
+      echo '<workspaceid>';
+      echo ' ( ' . $workspace->title . ' ) ';
+      echo '</workspaceid>';    
+    }
     echo '</pagetitle>';
 
 	echo '<navmenu>';
