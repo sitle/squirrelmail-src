@@ -842,6 +842,13 @@ class smdoc_db
           $values .= '\''.date($this->dateTimeFormat, $value).'\'';
           $set = TRUE;
         }
+        elseif ( stristr($object->foowd_indexes[$field]['type'], 'BLOB') )
+        {
+            $tmp = serialize($value);
+            $update .= $field.' = \''.$tmp.'\'';
+            $values .= '\''.$tmp.'\'';
+            $set = TRUE;
+        }
       }
 
       if ( !$set )
@@ -986,8 +993,8 @@ class smdoc_db
 	`workspaceid` int(11) NOT NULL default \'0\',
 	`title`       varchar(32) NOT NULL default \'\',
 	`updated`     datetime NOT NULL default \'0000-00-00 00:00:00\',
-	`permissions` varchar(128) default \'\',
 	`object`      longblob,
+	`permissions` mediumblob,
 	PRIMARY KEY (`objectid`,`version`,`classid`,`workspaceid`),
 	KEY `idxtblObjectTitle`       (`title`),
 	KEY `idxtblObjectupdated`     (`updated`),
