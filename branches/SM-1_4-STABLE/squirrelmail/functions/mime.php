@@ -622,7 +622,14 @@ function decodeHeader ($string, $utfencode=true,$htmlsave=true) {
             {
             case 'B':
                 $replace = base64_decode($res[4]);
-                $ret .= charset_decode($res[2],$replace);
+		if ($utfencode) {
+                    $ret .= charset_decode($res[2],$replace);
+		} else {
+		    if ($htmlsave) {
+		        $replace = htmlspecialchars($replace);
+		    }
+		    $ret.= $replace;
+		}
                 break;
             case 'Q':
                 $replace = str_replace('_', ' ', $res[4]);
