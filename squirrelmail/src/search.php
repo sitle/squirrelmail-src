@@ -187,6 +187,9 @@ if (isset($_GET['what'])) {
 if (isset($_GET['where'])) {
     $where = $_GET['where'];
 }
+if (isset($_GET['checkall'])) {
+    $checkall = $_GET['checkall'];
+}
 
 /* end of get globals */
 
