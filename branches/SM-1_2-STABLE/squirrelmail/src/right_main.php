@@ -51,6 +51,9 @@ if (isset($_GET['mailbox'])) {
 if (isset($_GET['PG_SHOWNUM'])) {
     $PG_SHOWNUM = $_GET['PG_SHOWNUM'];
 }
+elseif (isset($_SESSION['PG_SHOWNUM'])) {
+    $PG_SHOWNUM = $_SESSION['PG_SHOWNUM'];
+}
 if (isset($_GET['PG_SHOWALL'])) {
     $PG_SHOWALL = $_GET['PG_SHOWALL'];
 }
