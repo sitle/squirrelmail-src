@@ -17,7 +17,7 @@
  * it is not persisted throughout the user's session
  * at this time (concurrency/edit issues.. ).
  */
-class smdoc_obj_cache 
+class smdoc_object_cache 
 {
   /**
    * Array of loaded objects, grouped by source table
@@ -27,10 +27,27 @@ class smdoc_obj_cache
   var $objects;
 
   /**
+   * Reference to the Foowd object.
+   *
+   * @var object
+   */
+  var $foowd;
+
+  /** 
+   * Reference to database object
+   *
+   * @var smdoc_db
+   */
+  var $db;
+
+  /**
    * Constructs new cache object
    */
-  function smdoc_object_cache()
+  function smdoc_object_cache(&$foowd, &$db)
   {
+    $objects = array();
+    $this->foowd =& $foowd;
+    $this->db =& $db;
   }
 
   /**
@@ -41,19 +58,55 @@ class smdoc_obj_cache
    */
   function destroy()
   {
+    $this->foowd->track('foowd_db->destructor');
+    foreach ($this->objects as $source)
+    {
+      foreach ( $source as $object )
+      {
+        if ( isset($object->foowd_changed) && $object->foowd_changed )
+        {
+          if ( $object->objectid == 0 )
+          {
+            show($object);
+          }
+          else
+          {
+            $this->foowd->debug('msg', 'Saving object '.$object->objectid);
+            $result = $object->save();
+            if ( !$result )
+              trigger_error('Could not save object '.$object->objectid);
+          }
+        }
+        else
+          $this->foowd->debug('msg', 'Object '.$object->title.'['.$object->objectid.'] not changed');
+      }    
+    }
+    $this->foowd->track();
   }
 
   /**
    * Add an object reference to the loaded objects array.
    *
    * @access protected
-   * @param array indexes Array of indexes and values to find object by
+   * 
    * @param object object Reference of the object to add
    */
   function addToLoadedReference(&$object) 
   {
-  }
+    $this->db->getSource($object->foowd_source, $source, $tmp);
 
+    $hash = '';
+    asort($object->foowd_primary_key);
+    foreach ( $object->foowd_primary_key as $key )
+    {
+      if ( $hash != '' )
+        $hash .= '_';
+      $hash .= $object->foowd_original_access_vars[$key];
+    }
+
+    $this->foowd->debug('msg', 'ADD Hash: ' . $hash);
+    $this->objects[$source][$hash] =& $object;
+  }
 
   /**
    * Check if an object is referenced in the object reference array.
@@ -64,6 +117,25 @@ class smdoc_obj_cache
    */
   function &checkLoadedReference($indexes, $source) 
   {
+    $this->db->getSource($source, $source, $tmp);
+    
+    $hash = '';
+    ksort($indexes);    
+    foreach ( $indexes as $key => $value )
+    {
+      if ( $hash != '' )
+        $hash .= '_';
+      $hash .= $value;
+    }
+
+    $this->foowd->debug('msg', 'CHECK Hash: ' . $hash);
+
+    if ( isset($this->objects[$source][$hash]) )
+    {
+      $this->foowd->debug('msg', 'CHECK Using exising loaded reference');
+      return $this->objects[$source][$hash];
+    }
+    
     return FALSE;
   }
 

@@ -156,10 +156,10 @@ function smdocErrorCatch($errorNumber, $errorString, $filename, $lineNumber, $co
        isset($foowd) && is_object($foowd) && 
        get_class($foowd) == FOOWD_CLASS_NAME  &&  $foowd->template ) 
   { 
-      $object = new smdoc_error($foowd, ERROR_TITLE, $errorString);
-      $t = $object->method_view($foowd);
-      $foowd->template->display($foowd->getTemplateName('smdoc_error', 'object_view'));
-      $printed = TRUE;
+    $object = new smdoc_error($foowd, ERROR_TITLE, $errorString);
+    $t = $object->method_view($foowd);
+    $foowd->template->display($foowd->getTemplateName('smdoc_error', 'object_view'));
+    $foowd->destroy();
   }
   else
     smdocErrorPrint($foowd, $errorString);
@@ -174,9 +174,5 @@ function smdocErrorPrint(&$foowd, &$errorString)
   echo '<h1>', ERROR_TITLE,'</h1>';
   echo '<p>', $errorString, '</p>';
   if ( isset($foowd) && is_object($foowd) && get_class($foowd) == FOOWD_CLASS_NAME )
-  {
-    if ( $foowd->debug )
-      $foowd->debug->display();
     $foowd->destroy();
-  }
 }

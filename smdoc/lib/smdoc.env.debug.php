@@ -9,8 +9,6 @@
  * $Id$
  */
 
-include_once(FOOWD_DIR . 'env.debug.php');
-
 /**
  * The Foowd debugging class.
  *
@@ -18,8 +16,36 @@ include_once(FOOWD_DIR . 'env.debug.php');
  *
  * @package smdoc
  */
-class smdoc_debug extends foowd_debug 
+class smdoc_debug
 {
+  /**
+   * Function execution tracking data string.
+   *
+   * @var str
+   */
+  var $trackString = '';
+
+  /**
+   * Depth of the function execution tracking.
+   *
+   * @var int
+   */
+  var $trackDepth = 0;
+
+  /**
+   * Number of database accesses.
+   *
+   * @var int
+   */
+  var $DBAccessNumber = 0;
+
+  /**
+   * Time execution started.
+   *
+   * @var int
+   */
+  var $startTime;
+
   /**
    * Reference to foowd environment
    * @var object
@@ -32,7 +58,7 @@ class smdoc_debug extends foowd_debug
    */
   function smdoc_debug(&$foowd) 
   {
-    parent::foowd_debug();
+    $this->startTime = $this->getTime();
     $this->foowd = &$foowd;
   }
 
@@ -67,11 +93,11 @@ class smdoc_debug extends foowd_debug
       global $EXTERNAL_RESOURCES;
       show($EXTERNAL_RESOURCES);       
       echo '<div class="debug_output_heading">Internal Resources</div>'. "\n";
-      global $INTERNAL_LOOKUP;
-      show($INTERNAL_LOOKUP);
+      $obj =& smdoc_name_lookup::getInstance($this->foowd);
+      show($obj->shortNames);
     }    
 
-    echo '</div>';
+    echo '</div></body></html>';
   }
 
   /**
@@ -120,6 +146,71 @@ class smdoc_debug extends foowd_debug
     $this->trackString .= $this->executionTime() . ' '
                        . str_repeat('|', $this->trackDepth).' '
                        . htmlspecialchars($string).'<br />';
+  }
+
+  /**
+   * Add SQL string to debugging output and increment database access count.
+   *
+   * @param str SQLString The SQL string to add.
+   */
+  function sql($SQLString) 
+  { 
+    $this->msg($SQLString);
+    $this->DBAccessNumber++;
+  }
+
+  /**
+   * Convert constants, objects and arrays into strings ready for displaying.
+   *
+   * @access private
+   * @param mixed arg The variable to output.
+   * @return str Converted variable.
+   */
+  function makeVarViewable($arg) 
+  {
+    if ($arg == NULL) 
+      return 'NULL';
+    elseif ($arg === TRUE)
+      return 'TRUE';
+    elseif ($arg === FALSE)
+      return 'FALSE';
+    elseif (is_object($arg))
+      return 'object('.get_class($arg).')';
+    elseif (is_array($arg))
+      return 'array('.$this->flattenArray($arg).')';
+    else
+      return $arg;
+  }
+
+  /**
+   * Convert an array into a comma separated string.
+   *
+   * @access private
+   * @param array array The array to convert.
+   * @return str Converted array.
+   */
+  function flattenArray($array) 
+  {
+    $result = '';
+    foreach ($array as $index => $var) 
+    {
+      if ( $result != '' )
+        $result .= ', ';
+      $result .= $index.'='.$this->makeVarViewable($var);
+    }
+    return $result;
+  }
+  
+  /**
+   * Get the current time.
+   *
+   * @access private
+   * @return int The time in microseconds.
+   */
+  function getTime() 
+  {
+    $microtime = explode(' ', microtime());
+    return $microtime[0] + $microtime[1];
   }
 
   /**

@@ -597,7 +597,8 @@ class foowd_object
     $this->foowd->track('foowd_object->delete');
 
     $result = $this->foowd->database->delete($this);
-    smdoc_external::deleteShortName($this->foowd, $this);
+    $lookup =& smdoc_name_lookup::getInstance($this->foowd);
+    $lookup->deleteShortName($this);
  
     $this->foowd->track(); 
     return $result ? TRUE : FALSE;
@@ -625,7 +626,7 @@ class foowd_object
    * @param  object adminForm The form to add the form items to.
    * @return mixed array of error codes or 0 for success
    */
-  function addFormItemsToAdminForm(&$adminForm ) 
+  function addFormItemsToAdminForm(&$adminForm, &$error) 
   {
     // Add regular elements to form
     include_once(INPUT_DIR.'input.textbox.php');
@@ -960,19 +961,26 @@ class foowd_object
 
     include_once(INPUT_DIR.'input.form.php');
 
+    $error = NULL;
+
     $shortForm = new input_form('shortform');
-    smdoc_external::addShortName($this->foowd, $this, $shortForm);
-    $this->foowd->template->assign_by_ref('shortform', $shortForm);
+    $lookup = smdoc_name_lookup::getInstance($this->foowd);
+    $lookup->addShortNameToForm($this, $shortForm, $error);
  
     $adminForm = new input_form('adminForm');
-    $this->addFormItemsToAdminForm($adminForm);
-    if ( $adminForm->submitted() && $this->foowd_changed )
+    $this->addFormItemsToAdminForm($adminForm, $error);
+
+    if ( $error != NULL )
+      $this->foowd->template->assign('failure', $error);
+    elseif ( $adminForm->submitted() && $this->foowd_changed )
     {
       if ( $this->save() )
         $this->foowd->template->assign('success', OBJECT_UPDATE_OK);
       else
         $this->foowd->template->assign('failure', OBJECT_UPDATE_FAILED);
     }
+
+    $this->foowd->template->assign_by_ref('shortform', $shortForm);
     $this->foowd->template->assign_by_ref('form', $adminForm);
     
     $this->foowd->track();

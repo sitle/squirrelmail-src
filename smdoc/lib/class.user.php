@@ -100,8 +100,9 @@ class base_user extends foowd_object
       $where['title'] = $userArray['username'];
     else
       return FALSE;
+    $indices = 
 
-    $user =& $foowd->getObj($where, $USER_SOURCE, FALSE);
+    $user =& $foowd->getObj($where, $USER_SOURCE, NULL, FALSE);
     $foowd->track();
     return $user;
   }
@@ -154,7 +155,7 @@ class base_user extends foowd_object
               `objectid` int(11) NOT NULL default \'0\',
               `title` varchar(32) NOT NULL default \'\',
               `object` longblob,
-              `updated` datetime NOT NULL default \'1969-12-31 19:00:00\',
+              `updated` datetime NOT NULL default \'0000-00-00 00:00:00\',
               PRIMARY KEY  (`objectid`),
               KEY `idxuser_updated` (`updated`),
               KEY `idxuser_title` (`title`)
@@ -937,7 +938,9 @@ class base_user extends foowd_object
     $error = NULL;
     $this->addGroupsToForm($groupsForm, $error);
 
-    if ( $groupsForm->submitted() && $this->foowd_changed)
+    if ( $error != NULL )
+      $this->foowd->template->assign('failure', $error); 
+    elseif ( $groupsForm->submitted() && $this->foowd_changed)
     {
       if ( $this->save() )
       {

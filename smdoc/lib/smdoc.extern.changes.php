@@ -45,7 +45,9 @@ function sqmchanges(&$foowd)
    * order by updated descending, limit to 20 rows,
    * return the full objects, and don't restrict to certain workspace
    */
-  $objects =& $foowd->getObjList(NULL, NULL, NULL,
+  $where['notshort'] = array('index' => 'classid', 'op' => '!=', 'value' => META_SMDOC_NAME_LOOKUP_CLASS_ID);
+ 
+  $objects =& $foowd->getObjList(NULL, NULL, $where,
                                  array('updated DESC'), 20, 
                                  TRUE, FALSE );
   $list_objects = array();
