@@ -30,7 +30,7 @@ class foowd_anonuser extends foowd_object
   /**
    * Constructs a new anonymous user.
    *
-   * @param smdoc foowd Reference to the foowd environment object.
+   * @param smdoc $foowd Reference to the foowd environment object.
    */
   function foowd_anonuser(&$foowd) {
     $foowd->track('foowd_anonuser->constructor');

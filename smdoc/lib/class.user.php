@@ -65,7 +65,7 @@ class base_user extends foowd_object
   /**
    * Fetch User
    *
-   * @param smdoc foowd Reference to the foowd environment object.
+   * @param smdoc $foowd Reference to the foowd environment object.
    * @return retrieved foowd user or anonymous user instance
    */
   function &factory(&$foowd)
@@ -91,7 +91,7 @@ class base_user extends foowd_object
   /**
    * Create Anonymous Foowd User
    *
-   * @param smdoc foowd Reference to the foowd environment object.
+   * @param smdoc $foowd Reference to the foowd environment object.
    * @return new instance of anonymous user class.
    */
   function &fetchAnonymousUser(&$foowd)
@@ -107,7 +107,7 @@ class base_user extends foowd_object
    * Fetch Foowd User
    *
    * @global array Specifies table information for user persistance.
-   * @param smdoc foowd Reference to the foowd environment object.
+   * @param smdoc $foowd Reference to the foowd environment object.
    * @param mixed userArray Array containing user information (userid, password).
    * @return retrieved foowd user or FALSE on failure.
    */
@@ -136,7 +136,7 @@ class base_user extends foowd_object
    * fetch the username and password of the current user from one of the input
    * mechanisms
    *
-   * @param smdoc foowd Reference to the foowd environment object.
+   * @param smdoc $foowd Reference to the foowd environment object.
    * @return array The resulting user array.
    */
   function getUserDetails(&$foowd) 
@@ -165,7 +165,7 @@ class base_user extends foowd_object
    * statement again.
    *
    * @global array Specifies table information for user persistance.
-   * @param smdoc foowd Reference to the foowd environment object.
+   * @param smdoc $foowd Reference to the foowd environment object.
    * @param string SQLString The original SQL string that failed to execute due to missing database table.
    * @return mixed The resulting database query resource or FALSE on failure.
    */
@@ -215,7 +215,7 @@ class base_user extends foowd_object
    * Constructs a new user.
    *
    * @global array Specifies table information for user persistance.
-   * @param smdoc foowd Reference to the foowd environment object.
+   * @param smdoc $foowd Reference to the foowd environment object.
    * @param string username The users name.
    * @param string password An MD5 hash of the users password.
    * @param string email The users e-mail address.
@@ -377,7 +377,7 @@ class base_user extends foowd_object
    * Log the user in.
    *
    * @static
-   * @param smdoc foowd Reference to the foowd environment object.
+   * @param smdoc $foowd Reference to the foowd environment object.
    * @param string username The username of the user to log in as.
    * @param string password The plain text password of the user to log in with.
    * @return int 0 = logged in successfully<br />
@@ -424,7 +424,7 @@ class base_user extends foowd_object
    * Log out the user.
    *
    * @static
-   * @param smdoc foowd Reference to the foowd environment object.
+   * @param smdoc $foowd Reference to the foowd environment object.
    * @param string authType The type of user authentication to use.
    * @return int 0 = cookie logged out successfully<br />
    *             1 = http logged out successfully<br />
@@ -450,7 +450,7 @@ class base_user extends foowd_object
    *
    * @static
    * @global array Specifies table information for user persistance.
-   * @param smdoc foowd Reference to the foowd environment object.
+   * @param smdoc $foowd Reference to the foowd environment object.
    * @param string username The name of the user to create.
    * @param string password The password of the user.
    * @param string email The e-mail address of the user.
@@ -481,7 +481,7 @@ class base_user extends foowd_object
    *
    * @access private
    * @static
-   * @param smdoc foowd Reference to the foowd environment object.
+   * @param smdoc $foowd Reference to the foowd environment object.
    * @param string username The name of the user to fetch the password for.
    * @param string queryUsername Username given for stage 2 of the retrieval process.
    * @param string id The ID given for stage 2 of the process.
@@ -749,7 +749,7 @@ class base_user extends foowd_object
    * Output an object creation form and process its input.
    *
    * @static
-   * @param smdoc foowd Reference to the foowd environment object.
+   * @param smdoc $foowd Reference to the foowd environment object.
    * @param string className The name of the class.
    */
   function class_create(&$foowd, $className) 
@@ -775,7 +775,8 @@ class base_user extends foowd_object
            $verifyPassword->wasSet && $verifyPassword->wasValid &&
            $createPassword->value != '' && $createPassword->value == $verifyPassword->value ) 
       {
-        $result = call_user_func(array($className, 'create'), $foowd,  
+        $result = call_user_func(array($className, 'create'), 
+                                 $foowd,  
                                  $createUsername->value,
                                  $createPassword->value,
                                  $createEmail->value);
@@ -824,7 +825,7 @@ class base_user extends foowd_object
    * Output a login form and process its input.
    *
    * @static
-   * @param smdoc foowd Reference to the foowd environment object.
+   * @param smdoc $foowd Reference to the foowd environment object.
    * @param string className The name of the class.
    */
   function class_login(&$foowd, $className) 
@@ -879,7 +880,7 @@ class base_user extends foowd_object
    * Log the user out and display a log out screen.
    *
    * @static
-   * @param smdoc foowd Reference to the foowd environment object.
+   * @param smdoc $foowd Reference to the foowd environment object.
    * @param string className The name of the class.
    */
   function class_logout(&$foowd, $className) 
@@ -902,7 +903,7 @@ class base_user extends foowd_object
    * Output a fetch password form and process its input.
    *
    * @static
-   * @param smdoc foowd Reference to the foowd environment object.
+   * @param smdoc $foowd Reference to the foowd environment object.
    * @param string className The name of the class.
    */
   function class_lostPassword(&$foowd, $className)
@@ -989,7 +990,7 @@ class base_user extends foowd_object
    *
    * @static
    * @global array Specifies table information for user persistance.
-   * @param smdoc foowd Reference to the foowd environment object.
+   * @param smdoc $foowd Reference to the foowd environment object.
    * @param string className The name of the class.
    */
   function class_list(&$foowd, $className)
@@ -1021,7 +1022,7 @@ class base_user extends foowd_object
   /**
    * Output the object.
    *
-   * @param smdoc foowd Reference to the foowd environment object.
+   * @param smdoc $foowd Reference to the foowd environment object.
    */
   function method_view() 
   {
@@ -1077,7 +1078,7 @@ class base_user extends foowd_object
   /**
    * Output a user update form and process its input.
    *
-   * @param smdoc foowd Reference to the foowd environment object.
+   * @param smdoc $foowd Reference to the foowd environment object.
    */
   function method_update() 
   {
@@ -1125,7 +1126,7 @@ class base_user extends foowd_object
   /**
    * Clean up the archive versions of the object.
    *
-   * @param smdoc foowd Reference to the foowd environment object.
+   * @param smdoc $foowd Reference to the foowd environment object.
    * @return bool Returns TRUE on success.
    */
   function tidyArchive() 
@@ -1136,7 +1137,7 @@ class base_user extends foowd_object
   /**
    * Clone the object.
    *
-   * @param smdoc foowd Reference to the foowd environment object.
+   * @param smdoc $foowd Reference to the foowd environment object.
    * @param string title The title of the new object clone.
    * @param string workspace The workspace to place the object clone in.
    * @return bool Returns TRUE on success.

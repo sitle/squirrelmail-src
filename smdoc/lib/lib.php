@@ -353,7 +353,7 @@ function timeSince($time)
  * Send an e-mail. This function is a wrapper to the PHP mail function that
  * includes writing debugging data to the debug stream.
  *
- * @param smdoc foowd Reference to the foowd environment object.
+ * @param smdoc $foowd Reference to the foowd environment object.
  * @param string to The e-mail address to send the e-mail to.
  * @param string subject The subject of the e-mail.
  * @param string message The message to send.
@@ -383,7 +383,7 @@ function email(&$foowd, $to, $subject, $message, $headers = NULL, $para = NULL)
  * This function sends a test cookie to the client which can be used by
  * {@link cookieTest} to check that the client has cookie support availble.
  *
- * @param smdoc foowd Reference to the foowd environment object.
+ * @param smdoc $foowd Reference to the foowd environment object.
  */
 function sendTestCookie(&$foowd) 
 {
@@ -402,7 +402,7 @@ function sendTestCookie(&$foowd)
  * This function looks for the test cookie sent by {@link sendTestCookie} to
  * check that the client has cookie support availble.
  *
- * @param smdoc foowd Reference to the foowd environment object.
+ * @param smdoc $foowd Reference to the foowd environment object.
  * @return bool TRUE if cookie support was detected.
  */
 function cookieTest(&$foowd) 

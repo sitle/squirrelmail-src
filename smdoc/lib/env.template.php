@@ -61,17 +61,20 @@ class foowd_template
    * @param array|string $tpl_var the template variable name(s)
    * @param mixed $value the value to assign
    */
-  function assign($tpl_var, $value = NULL) {
-    if (is_array($tpl_var)){
-      foreach ($tpl_var as $key => $val) {
-        if ($key != '') {
+  function assign($tpl_var, $value = NULL) 
+  {
+    if (is_array($tpl_var))
+    {
+      foreach ($tpl_var as $key => $val) 
+      {
+        if ($key != '') 
           $this->values[$key] = $val;
-        }
       }
-    } else {
-      if ($tpl_var != '') {
+    } 
+    else 
+    {
+      if ($tpl_var != '')
         $this->values[$tpl_var] = $value;
-      }
     }
   }
 
@@ -81,10 +84,10 @@ class foowd_template
    * @param string $tpl_var the template variable name
    * @param mixed $value the referenced value to assign
    */
-  function assign_by_ref($tpl_var, &$value) {
-    if ($tpl_var != '') {
+  function assign_by_ref($tpl_var, &$value) 
+  {
+    if ($tpl_var != '') 
       $this->values[$tpl_var] = &$value;
-    }
   }
 
   /**
@@ -93,34 +96,41 @@ class foowd_template
    * @param array|string $tpl_var the template variable name(s)
    * @param mixed $value the value to append
    */
-  function append($tpl_var, $value = NULL, $merge = FALSE) {
-    if (is_array($tpl_var)) {
-      foreach ($tpl_var as $_key => $_val) {
-        if ($_key != '') {
-          if(isset($this->values[$_key]) && !@is_array($this->values[$_key])) {
+  function append($tpl_var, $value = NULL, $merge = FALSE) 
+  {
+    if (is_array($tpl_var)) 
+    {
+      foreach ($tpl_var as $_key => $_val) 
+      {
+        if ($_key != '') 
+        {
+          if(isset($this->values[$_key]) && !@is_array($this->values[$_key]))
             settype($this->values[$_key],'array');
-          }
-          if($merge && is_array($_val)) {
-            foreach($_val as $_mkey => $_mval) {
+
+          if($merge && is_array($_val)) 
+          {
+            foreach($_val as $_mkey => $_mval) 
               $this->values[$_key][$_mkey] = $_mval;
-            }
-          } else {
+          } 
+          else
             $this->values[$_key][] = $_val;
-          }
         }
       }
-    } else {
-      if ($tpl_var != '' && isset($value)) {
-        if(isset($this->values[$tpl_var]) && !@is_array($this->values[$tpl_var])) {
+    } 
+    else 
+    {
+      if ($tpl_var != '' && isset($value)) 
+      {
+        if(isset($this->values[$tpl_var]) && !@is_array($this->values[$tpl_var])) 
           settype($this->values[$tpl_var],'array');
-        }
-        if($merge && is_array($value)) {
-          foreach($value as $_mkey => $_mval) {
+
+        if($merge && is_array($value)) 
+        {
+          foreach($value as $_mkey => $_mval)
             $this->values[$tpl_var][$_mkey] = $_mval;
-          }
-        } else {
+        } 
+        else 
           $this->values[$tpl_var][] = $value;
-        }
       }
     }
   }
@@ -131,18 +141,20 @@ class foowd_template
    * @param string $tpl_var the template variable name
    * @param mixed $value the referenced value to append
    */
-  function append_by_ref($tpl_var, &$value, $merge = FALSE) {
-    if ($tpl_var != '' && isset($value)) {
-      if(!@is_array($this->values[$tpl_var])) {
+  function append_by_ref($tpl_var, &$value, $merge = FALSE) 
+  {
+    if ($tpl_var != '' && isset($value)) 
+    {
+      if(!@is_array($this->values[$tpl_var]))
         settype($this->values[$tpl_var],'array');
-      }
-      if ($merge && is_array($value)) {
-        foreach($value as $_key => $_val) {
+
+      if ($merge && is_array($value)) 
+      {
+        foreach($value as $_key => $_val) 
           $this->values[$tpl_var][$_key] = &$value[$_key];
-        }
-      } else {
+      } 
+      else
         $this->values[$tpl_var][] = &$value;
-      }
     }
   }
 
@@ -151,7 +163,8 @@ class foowd_template
    *
    * @param string $file The template file to use
    */
-  function display($file='default.tpl') {
+  function display($file='default.tpl') 
+  {
     $t = &$this->values; // place values array directly in scope
     include($this->template_dir.$file);
   }
@@ -162,7 +175,8 @@ class foowd_template
    * @param string $file The template file to use
    * @return string A string of the results
    */
-  function fetch($file='default.tpl') {
+  function fetch($file='default.tpl') 
+  {
     ob_start();
     $t = &$this->values; // place values array directly in scope
     include($this->template_dir.$file);

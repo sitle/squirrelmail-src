@@ -71,7 +71,7 @@ class smdoc_translation extends foowd_workspace
    * Initializes array containing objectid, icon, and language code
    * for each defined translation
    * @static
-   * @param smdoc foowd Reference to the foowd environment object.
+   * @param smdoc $foowd Reference to the foowd environment object.
    * @param bool forceRefresh Force refresh of session cache.
    */
   function initialize(&$foowd, $forceRefresh = FALSE)
@@ -141,7 +141,7 @@ class smdoc_translation extends foowd_workspace
    * if objectid is NULL, return array containing all URLs
    *
    * @static
-   * @param smdoc foowd Reference to the foowd environment object.
+   * @param smdoc $foowd Reference to the foowd environment object.
    * @param int objectid Specific translation to retrieve.
    * @return URL for specified translation, or array of all translations.
    */
@@ -167,7 +167,7 @@ class smdoc_translation extends foowd_workspace
    * if objectid is NULL, return array containing all languages
    *
    * @static 
-   * @param smdoc foowd Reference to the foowd environment object.
+   * @param smdoc $foowd Reference to the foowd environment object.
    * @param int objectid Specific translation to retrieve.
    * @return specified language string, or array of all languages.
    */
@@ -195,7 +195,7 @@ class smdoc_translation extends foowd_workspace
      * enter - class method
      * change to selected translation
      * @static
-     * @param smdoc foowd Reference to the foowd environment object. 
+     * @param smdoc $foowd Reference to the foowd environment object. 
      */
     function class_enter(&$foowd) 
     {

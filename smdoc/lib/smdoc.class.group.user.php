@@ -119,7 +119,7 @@ class smdoc_group_user extends smdoc_storage
    *
    * @static
    * @global array Specifies table information for smdoc_group_user objects.
-   * @param smdoc foowd Reference to the foowd environment object.
+   * @param smdoc $foowd Reference to the foowd environment object.
    * @return mixed The resulting database query resource or FALSE on failure.
    */
   function makeTable(&$foowd) 
@@ -259,7 +259,7 @@ class smdoc_group_user extends smdoc_storage
    *
    * @static
    * @global array Specifies table information for user persistance.
-   * @param smdoc foowd Reference to the foowd environment object.
+   * @param smdoc $foowd Reference to the foowd environment object.
    * @param string className The name of the class.
    */
   function class_list(&$foowd, $className)
@@ -357,7 +357,7 @@ class smdoc_group_user extends smdoc_storage
    *
    * @static
    * @global array Specifies table information for user persistance.
-   * @param smdoc foowd Reference to the foowd environment object.
+   * @param smdoc $foowd Reference to the foowd environment object.
    * @param string className The name of the class.
    */
   function class_edit(&$foowd, $className)

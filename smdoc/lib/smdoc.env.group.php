@@ -38,7 +38,7 @@ class smdoc_group
 
   /**
    * smdoc_group Constructor
-   * @param smdoc foowd Reference to the foowd environment object.
+   * @param smdoc $foowd Reference to the foowd environment object.
    */
   function smdoc_group(&$foowd)
   {
@@ -247,7 +247,7 @@ class smdoc_group
    * Check to see if given id specifies a system group.
    * 
    * @static
-   * @param smdoc foowd Reference to the foowd environment object.
+   * @param smdoc $foowd Reference to the foowd environment object.
    * @param string group String containing group id
    * @param bool   sysOthers   TRUE if should treat groups specified in
    *                           initial config files as system groups

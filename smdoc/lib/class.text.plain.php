@@ -63,7 +63,7 @@ class foowd_text_plain extends foowd_object
   /**
    * Constructs a new plain text object.
    *
-   * @param smdoc foowd Reference to the foowd environment object.
+   * @param smdoc $foowd Reference to the foowd environment object.
    * @param string title The objects title.
    * @param string body The text content body.
    * @param string viewGroup The user group for viewing the object.
@@ -102,30 +102,6 @@ class foowd_text_plain extends foowd_object
   {
     parent::__wakeup();
     $this->foowd_vars_meta['body'] = '';
-  }
-
-  /**
-   * Add permission selection dropdown lists for each object method to a form.
-   *
-   * @param object form The form to add the dropdown lists to.
-   * @param mixed optional Array containing compatible classes (for use by subclasses..)
-   */
-  function addClassDropdowns(&$form, $compatible_class = NULL) 
-  {
-    $classid = META_FOOWD_TEXT_PLAIN_CLASS_ID;
-    $compatible_class[$classid] = getClassName($classid) . ' - ' 
-                                . getClassDescription($classid);
-
-    $classid = META_FOOWD_TEXT_HTML_CLASS_ID;
-    $compatible_class[$classid] = getClassName($classid) . ' - ' 
-                                . getClassDescription($classid);
-
-    $classid = META_SMDOC_TEXTILE_CLASS_ID;
-    $compatible_class[$classid] = getClassName($classid) . ' - ' 
-                                . getClassDescription($classid)
-                                . ' - PREFERRED';
-
-    parent::addClassDropdowns($form, $compatible_class);
   }
 
   /**
@@ -264,44 +240,67 @@ class foowd_text_plain extends foowd_object
    * Output an object creation form and process its input.
    *
    * @static
-   * @param smdoc foowd Reference to the foowd environment object.
+   * @param smdoc $foowd Reference to the foowd environment object.
    * @param string className The name of the class.
    */
   function class_create(&$foowd, $className) 
   {
     $foowd->track('foowd_text_plain->class_create');
-    
+   
     include_once(INPUT_DIR.'input.querystring.php');
     include_once(INPUT_DIR.'input.form.php');
     include_once(INPUT_DIR.'input.textbox.php');
     include_once(INPUT_DIR.'input.textarea.php');
-  
+
     $queryTitle = new input_querystring('title', REGEX_TITLE, NULL);
-    $createForm = new input_form('createForm', NULL, 'POST', _("Create"), NULL);
-    $createTitle = new input_textbox('createTitle', REGEX_TITLE, $queryTitle->value, _("Object Title").':');
-    $createBody = new input_textarea('createBody', '', NULL, NULL, 80, 20);
-    if ($createForm->submitted() && $createTitle->value != '') 
+    $createForm = new input_form('createForm', NULL, SQ_POST, _("Create"), NULL);
+    $createTitle = new input_textbox('createTitle', REGEX_TITLE, $queryTitle->value, 'Object Title');
+    $createBody = new input_textarea('createBody');
+
+    if ($createForm->submitted() && 
+        $createTitle->wasSet && $createTitle->wasValid && $createTitle->value != '') 
     {
-      $object = &new $className(
-        $foowd,
-        $createTitle->value,
-        $createBody->value
-      );
-      if ($object->objectid != 0) 
+      // Ensure unique title
+      $oid = NULL;
+      if ( !$foowd->database->isTitleUnique($createTitle->value, $foowd->user->workspaceid, $oid, NULL, FALSE) )
+        $result = 1;
+      else
       {
-        $foowd->template->assign('success', TRUE);
-        $foowd->template->assign('objectid', $object->objectid);
-        $foowd->template->assign('classid', $object->classid);
-      } 
-      else 
-        $foowd->template->assign('success', FALSE);
+        $object = &new $className($foowd, 
+                                  $createTitle->value,
+                                  $createBody->value);
+
+        if ( $object->objectid != 0 && $object->save($foowd) ) 
+          $result = 0; // created ok
+        else
+          $result = 2; // error
+      }
     } 
-    else 
+    else
+      $result = -1;
+
+    switch ( $result )
     {
-      $createForm->addObject($createTitle);
-      $createForm->addObject($createBody);
-      $foowd->template->assign_by_ref('form', $createForm);
+      case 0:
+        $_SESSION['ok'] = OBJECT_CREATE_OK;
+        $uri_arr['classid'] = $object->classid;
+        $uri_arr['objectid'] = $object->objectid;
+        $foowd->loc_forward(getURI($uri_arr, FALSE));
+        exit;
+      case 1:
+        $foowd->template->assign('failure', OBJECT_DUPLICATE_TITLE);
+        $createTitle->wasValid = FALSE;
+        break;
+      case 2:
+        $foowd->template->assign('failure', OBJECT_CREATE_FAILED);
+        break;
+      default:
+        $foowd->template->assign('failure', FORM_FILL_FIELDS);
     }
+      
+    $createForm->addObject($createTitle);
+    $createForm->addObject($createBody);
+    $foowd->template->assign_by_ref('form', $createForm);
 
     $foowd->track();
   }

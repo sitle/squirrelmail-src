@@ -66,13 +66,24 @@ class input_textarea extends input_base
   {
     $maxlength = getRegexLength($this->regex, INPUT_TEXTAREA_WIDTH_MAX);
 
+    $name  = 'name="'.$this->name.'" ';
+    $value = 'value="'.htmlentities($this->value).'" ';
+    $class  = ( $class == NULL ) ? ''  : 'class="'.$class.'" ';
+    $maxlength = ( $maxlength == 0 )  ? ''   : 'maxlength="'.$maxlength.'" ';
+ 
     if ( $width == NULL )
-      $width = ($maxlength == 0) ? INPUT_TEXTAREA_WIDTH_MAX : (int) ($maxlength / 2);
-
-    if ( $width > INPUT_TEXTAREA_WIDTH_MAX ) 
-      $width = INPUT_TEXTAREA_WIDTH_MAX;
-    elseif ( $width < INPUT_TEXTAREA_WIDTH_MIN )
-      $width = INPUT_TEXTAREA_WIDTH_MIN;
+    {
+      if ( $class == '')
+        $width = ($maxlength == 0) ? INPUT_TEXTAREA_WIDTH_MAX : (int) ($maxlength / 2);
+    }
+    else
+    {
+      if ( $width > INPUT_TEXTAREA_WIDTH_MAX ) 
+        $width = INPUT_TEXTAREA_WIDTH_MAX;
+      elseif ( $width < INPUT_TEXTAREA_WIDTH_MIN )
+        $width = INPUT_TEXTAREA_WIDTH_MIN;
+    }
+    $width = ( $width == NULL ) ? '' : 'cols="'.$width.'" ';
 
     if ( $height == NULL )
       $height = ($maxlength == 0) ? INPUT_TEXTAREA_HEIGHT_MAX : (int) ($maxlength / 10);
@@ -82,12 +93,7 @@ class input_textarea extends input_base
     elseif ( $height < INPUT_TEXTAREA_HEIGHT_MIN )
       $height = INPUT_TEXTAREA_HEIGHT_MIN;
 
-    $name  = 'name="'.$this->name.'" ';
-    $value = 'value="'.htmlentities($this->value).'" ';
-    $width = 'cols="'.$width.'" ';
     $height = 'rows="'.$height.'" ';
-    $class  = ( $class == NULL ) ? ''  : 'class="'.$class.'" ';
-    $maxlength = ( $maxlength == 0 )  ? ''   : 'maxlength="'.$maxlength.'" ';
 
     echo '<textarea '.$name.$width.$height.$class.'wrap="virtual" >'."\n"
          .htmlentities($this->value)."\n"

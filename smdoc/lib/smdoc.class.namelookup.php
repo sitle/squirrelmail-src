@@ -44,7 +44,7 @@ class smdoc_name_lookup extends smdoc_storage
   /**
    * Constructor
    * Initialize new instance of smdoc_internal_mapping.
-   * @param smdoc foowd Reference to Foowd environment 
+   * @param smdoc $foowd Reference to Foowd environment 
    */
   function smdoc_name_lookup(&$foowd) 
   {
@@ -154,6 +154,7 @@ class smdoc_name_lookup extends smdoc_storage
         $error[] = _("Could not save ShortName.");
     } 
 
+    $form->addObject($shortBox);
     return FALSE;
   }
 
@@ -161,7 +162,7 @@ class smdoc_name_lookup extends smdoc_storage
    * Retrieve singleton instance of naming lookup object
    *
    * @static
-   * @param smdoc foowd Reference to the foowd environment object.
+   * @param smdoc $foowd Reference to the foowd environment object.
    * @return Reference to singleton lookup object
    */
   function &getInstance(&$foowd)

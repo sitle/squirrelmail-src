@@ -40,7 +40,7 @@ class smdoc_storage extends foowd_object
   /**
    * Retrieve singleton instance of storage object
    * @static
-   * @param smdoc foowd Reference to the foowd environment object.
+   * @param smdoc $foowd Reference to the foowd environment object.
    * @return Reference to singleton object
    */
   function &getInstance(&$foowd, $className, $classid, $objectid)

@@ -40,7 +40,7 @@ class smdoc_group_appext extends smdoc_storage
 
   /** 
    * Constructor
-   * @param smdoc foowd Reference to the foowd environment object.
+   * @param smdoc $foowd Reference to the foowd environment object.
    */
   function smdoc_group_appext(&$foowd)
   {
@@ -51,7 +51,7 @@ class smdoc_group_appext extends smdoc_storage
   /**
    * Retrieve singleton instance of application group object
    * @static
-   * @param smdoc foowd Reference to the foowd environment object.
+   * @param smdoc $foowd Reference to the foowd environment object.
    * @return Reference to singleton application group object
    */
   function &getInstance(&$foowd)
