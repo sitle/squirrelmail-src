@@ -1,0 +1,70 @@
+$Id$
+$Author$
+$Date$
+--
+
+SquirrelMail 2 User Interface Builder API
+Author: Paul Joseph Thompson <thomppj@squirrelmail.org>
+=======================================================
+
+Purpose: This document gives further details about the SquirrelMail 2 
+User Interface Builder API. It is part of my description of the 
+SquirrelMail 2 Core Architecture (::sm2-corearch.txt::).
+
+
+Introduction to User Interface Builders
+=======================================
+The actual user interface will be built with SquirrelMail 2 UI Builder 
+Architecture. This architecture will recieve data from the Request 
+Handler and will turn it into an appropriate user interface (ie HTML, 
+etc). This will be accomplished through the usage of one or more 
+templating systems implementing the UI Builder API. More details can be 
+found in the document ::sm2-uibuilder.txt::.
+
+
+API Implementation Details
+==========================
+As needed, please refer to my document on the SquirrelMail 2 APIs 
+(::../sm2-api.txt::).
+
+blah blah blah...
+
+
+Explanation of Steps
+====================
+(Note: This is being kept temporarily. It will disappear later after some 
+of the content is incorporated into other sections.)
+
+These steps may seem odd, so let me explain. The SM Engine is responsible 
+for all interaction between the individual APIs and modules. Step 1 
+through 3 are pretty simple, so I won't take any effort to explain them.
+
+Step 4 is a different story, however. It is where all of the core 
+processing goes down. The request handler is a class which is responsible 
+for handling requests made to squirrelmail. It, by some means, accesses 
+the arguments passed in from the browser and decides what to do with 
+them. It has a function "run" that, when called, does some more data 
+processing. When it decides that it needs some more information (ie a 
+mail message, list of folders, etc), it stores that in a data request 
+which it returns to the squirrelmail engine.
+
+If the engine recieves a data request from the Request Handler, it 
+consults the appropriate modules (addressbook, message, etc), hands that 
+data to the request handler through some sort of class/global variable or 
+function call, and then runs the handler again.
+
+If no data request is recieved by the engine, the request handler is 
+done. The SquirrelMail engine then continues.
+
+* Before I continue, let me make a note. The Request Handler is able to 
+make more then one request at a time, allowing for a minimum of cycles 
+through the loop.
+
+Anyways. In step 6, the SquirrelMail Engine passes the "raw ui data" 
+(retrieved from the request handler, some sort of variable or function, 
+again) through the UI Builder. The UI Builder does anything it wants to 
+build the user interface. The UI Builder can take an optional argument 
+which is a string representing the current template name, theme, or 
+whatever.
+
+Then, the result of the UI Builder is shipped back to the user.

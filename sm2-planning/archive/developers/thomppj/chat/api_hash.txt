@@ -1,0 +1,6 @@
+array called contactsources:
+
+$contactsource[0] = new LDAPContactSource(host1);
+$contactsource[0] = new LDAPContactSource(host2);
+$contactsource[2] = new MySQLContactSource("localhost","server");
+$contactsource[3] = new PersonalContactSource("localhost","bob");

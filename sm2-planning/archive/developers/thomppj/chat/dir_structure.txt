@@ -1,0 +1,66 @@
+squirrelapps/
+  |
+  +-- index.php
+  +-- lib/
+  |    +-- api_message.inc
+  |    +-- api_preference.inc
+  |    +-- api_logging.inc
+  |    +-- strings.inc
+  |    +-- date.inc 
+  |    +-- i18n.inc
+  |     
+  +-- modules/
+  |    +-- message/
+  |    |    +-- imap_general.inc
+  |    |    +-- cyrus_imap.inc
+  |    |    +-- nntp.inc
+  |    |
+  |    +-- preference/
+  |    |    +-- mysql.inc
+  |    |    +-- filesystem.inc
+  |    |    +-- oracle.inc
+  |    |    +-- imap.inc 
+  |    |
+  |    +-- logging/
+  |         +-- syslog.inc
+  |         +-- email.inc
+  |     
+  +-- templates/
+  |    +-- classic/
+  |    |    +-- sqmail/
+  |    |    |    +-- frames/
+  |    |    |    +-- no_frames/
+  |    |    |
+  |    |    +-- sqcontacts/
+  |    |    |    +-- frames/
+  |    |    |    +-- no_frames/
+  |    |    |
+  |    |    +-- sqcalendar/
+  |    |         +-- frames/
+  |    |         +-- no_frames/
+  |    |
+  |    +-- brushed_metal/ 
+  |         +-- sqmail/
+  |         |    +-- frames/
+  |         |    +-- no_frames/
+  |         |
+  |         +-- sqcontacts/
+  |         |    +-- frames/
+  |         |    +-- no_frames/
+  |         |
+  |         +-- sqcalendar/
+  |              +-- frames/
+  |              +-- no_frames/
+  |
+  +-- apps/
+       +-- sqmail/
+	   |    +-- classic
+	   |    +-- frames 
+	   |
+       +-- sqcontacts/
+	   |    +-- classic 
+	   |    +-- frames
+	   |
+       +-- sqcalendar/
+	        +-- classic 
+	        +-- frames

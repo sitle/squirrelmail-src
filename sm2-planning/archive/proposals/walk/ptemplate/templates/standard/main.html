@@ -1,0 +1,30 @@
+<html><head><title><?= trans("Main Menu") ?></title></head>
+<body>
+<?php $server = new Server() ?>
+<?= trans("Welcome to '$1'", $server->Name) ?><br>
+<hr>
+<?php call_hook("menu_bar"); ?>
+<hr>
+<?php for ($f = 0; $server->Folders[$f]; $f ++) {
+  $Folder = $server->Folders[$f] ?>
+  <?= trans("Listing contents of folder '$1'", $Folder->Name) ?><br>
+  <table border=1>
+  <?php if (! $Folder->Messages[0]) { ?>
+    <tr><td><?= trans("No messages to view") ?></td></tr>
+  <?php } else { ?>
+    <tr><th><?= trans("TO") ?></th><th><?= trans("FROM") ?></th>
+    <th><?= trans("Subject") ?></th><th><?= trans("ID") ?></th></tr>
+    <?php for ($m = 0; $Folder->Messages[$m]; $m ++) {
+    $Message = $Folder->Messages[$m];
+    if ($Color == 'FFFFFF') $Color = 'DDDDDD';
+    else $Color = 'FFFFFF';
+    ?>
+      <tr bgcolor="#<?= $Color ?>"><td><?= $Message->To ?></td>
+      <td><?= $Message->From ?></td><td><?= $Message->Subject ?></td>
+      <td><?= $Message->ID ?></td></tr>
+    <?php } ?>
+  <?php } ?>
+  </table>
+<?php } ?>
+</body>
+</html>

@@ -1,0 +1,49 @@
+$Id$
+$Author$
+$Date$
+--
+
+SquirrelMail 2 API Implementation
+Author: Paul Joseph Thompson <thomppj@squirrelmail.org>
+=======================================================
+
+Purpose: This document describes the implementation details behind the 
+SquirrelMail 2 APIs. It is a part of my description of the SquirrelMail 2 
+Core Architecture (::sm2-core.txt::). For details on the individual API, 
+please see my ::api/:: directory.
+
+
+Framework for the SquirrelMail 2 API
+====================================
+Before continuing, let me note that a brief example will follow the 
+abstract description of the API framework. If the following explanation 
+is unclear, keep reading to and through that example. Hopefully, at least 
+then will everything all fall into place.
+
+The SquirrelMail 2 API will all be based upon a similar framework. This 
+framework consists of two distinct sections.
+
+  1. code implemented in the SquirrelMail core
+  2. code which must be implemented by SquirrelMail Modules
+
+The code resting as a part of the SquirrelMail core will include all 
+classes and functions that are common to various implementations of the 
+API. Another term for this that might be helpful is "SquirrelMail Core 
+Libraries".
+
+However, each API will extend beyond this core code. They will also 
+include various components which must be implemented to provide the 
+required functionality for SquirrelMail 2 to operate as a whole. For
+each API SquirrelMail Modules will be written providing that neccessary 
+functionality. What the second part of the API will provide is a set 
+method for linking each Modules implementation to the SquirrelMail core.
+
+This "set method" will be documented in the form of classes (and maybe 
+functions) that must be implemented or extended to make a complete Module 
+for a particular API.
+
+
+Some Object-Oriented Programming Techiniques
+============================================
+Blah Blah Blah... (Objects, Classes, Interfaces)
+(don't know exactly what I am going to put here, yet...)
