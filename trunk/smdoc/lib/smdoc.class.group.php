@@ -46,7 +46,7 @@ class smdoc_user_group extends smdoc_storage
    * Constructor
    * @param smdoc foowd Reference to the foowd environment object.
    */
-  function smdoc_user_groups(&$foowd, $group, $userid)
+  function smdoc_user_group(&$foowd, $group, $userid)
   {
     parent::smdoc_storage($foowd, $group, $userid);
   }

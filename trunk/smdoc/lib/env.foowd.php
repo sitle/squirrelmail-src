@@ -165,7 +165,7 @@ class foowd
     {
       if ($className == FALSE) 
       {
-        trigger_error('Could not load template "'.$this->template_dir.$templateFilename.'"', E_USER_ERROR);
+        trigger_error('Could not load template "'.$this->template->template_dir.$templateFilename.'"', E_USER_ERROR);
         return;
       } 
       elseif ($className == 'foowd_object') 

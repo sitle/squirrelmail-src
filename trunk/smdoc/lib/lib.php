@@ -269,7 +269,7 @@ function getTempDir()
 function getURI($parameters = NULL, $relative = TRUE) 
 { 
   $uri = $relative ? '' : 
-         (defined('BASE_URL') ? BASE_URL : 'http://'.$_SERVER['HTTP_HOST']);
+         (defined('BASE_URL') ? BASE_URL : 'http://'.$_SERVER['HTTP_HOST']) . '/';
 
   $uri .= defined('FILENAME') ? FILENAME : $_SERVER['PHP_SELF'] ;
 

@@ -16,13 +16,16 @@
  * Provides stats based on user choices for selected elements.
  * Shows IRC ids.
  * 
- * Fills in $t['userlist'] (see below),
- *          $t['user_count'] with the total number of users,
- *          $t['user_smver'] with an array containing the 
- * total number choosing each available SM version,
- *          $t['user_imap'] and $t['user_smtp'] are similar to
- * $t['user_smver'] regarding choices for imap and smtp servers.
- * 
+ * Values set in template:
+ *  + userlist      - below
+ *  + usercount     - number of registered users
+ *  + user_smver    - array containing stats for each SM Version
+ *  + user_smtp     - array containing stats for each SMTP Server
+ *  + user_imap     - array containing stats for each IMAP Server
+ *  + body_template - specific filename (will be relative to TEMPLATE PATH)
+ *  + method        - empty string
+ *  + title         - 'User List'
+ *
  * Sample contents of $t['userlist']:
  * <pre>
  * array (
@@ -52,7 +55,7 @@ $foowd = new smdoc($foowd_parameters);
 
 /**
  * Reference global var containing user database
- * @global $USER_SOURCE
+ * @global array $USER_SOURCE
  */
 global $USER_SOURCE;
  
@@ -112,5 +115,5 @@ $foowd->template->display();
  * destroy Foowd - triggers cleanup of database object and 
  * display of debug information.
  */
-$foowd->destroy();
+$foowd->__destruct();
 

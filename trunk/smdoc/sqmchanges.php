@@ -15,8 +15,11 @@
  * Lists 20 objects (not users) most recently edited.
  * Could be workspace, HTML, plain, whatever.
  *
- * Set array selected object elements into 'changelist' element of template.
- * Also set specify template name in 'body_template' element of template.
+ * Values set in template:
+ *  + changelist    - below
+ *  + body_template - specific filename (will be relative to TEMPLATE PATH)
+ *  + method        - empty string
+ *  + title         - 'Recent Changes'
  * 
  * Sample contents of $t['changelist']:
  * <pre>
@@ -108,5 +111,5 @@ $foowd->template->display();
  * destroy Foowd - triggers cleanup of database object and 
  * display of debug information.
  */
-$foowd->destroy();
+$foowd->__destruct();
 

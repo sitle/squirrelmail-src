@@ -19,7 +19,8 @@
 ?>
 <table class="smdoc_table" width="100%">
 <tr>
-<td class="userstats">
+<!-- Left column containing user statistics -->
+<td class="col_left">
  <table class="smdoc_table">
   <tr>
    <td class="heading"><?php echo _("Registered Users"); ?>:</td>
@@ -71,7 +72,8 @@
 <?php  } ?>
  </table>
 </td>
-<td class="userlist">
+<!-- Right column with list of users -->
+<td class="col_right">
   <table class="smdoc_table">
   <tr>
     <th><?php echo _("Username") ?></th>
@@ -110,4 +112,3 @@
 </td>
 </tr>
 </table>
-</div>

@@ -17,14 +17,16 @@
  */
 
 /** 
- * Include initial configuration and basic set of 
- * functions
+ * Initial configuration, start session
  * @see config.default.php
  */
 require('config.php');
 
+/** Class to verify $_GET/querystring parameter data */
+require_once(INPUT_DIR . 'input.querystring.php');
+
 /* 
- * Initialize SMDoc/FOOWD environment
+ * Initialize smdoc/FOOWD environment
  */
 $foowd_parameters['debug']['debug_enabled'] = TRUE;
 $foowd = new smdoc($foowd_parameters);
@@ -159,6 +161,6 @@ else
  * destroy Foowd - triggers cleanup of database object and 
  * display of debug information.
  */
-$foowd->destroy();
+$foowd->__destruct();
 
 ?>
