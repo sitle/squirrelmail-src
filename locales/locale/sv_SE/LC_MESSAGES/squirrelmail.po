@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: SquirrelMail HEAD\n"
-"POT-Creation-Date: 2004-07-01 17:08+0200\n"
+"POT-Creation-Date: 2004-07-02 16:02+0200\n"
 "PO-Revision-Date: 2004-07-01 17:38+0200\n"
 "Last-Translator: Fredrik Jervfors <sqm_admin@fimbul.net>\n"
 "Language-Team: Swedish <squirrelmail-i18n@lists.sourceforge.net>\n"
@@ -2404,6 +2404,12 @@ msgstr ""
 msgid "FREE - Distributed Sender Boycott List - UN-Confirmed Relays"
 msgstr "FRI - Distributed Sender Boycott List - Obekräftade vidarebefordrare."
 
+msgid ""
+"WARNING! Header filters should be of the format &quot;Header: value&quot;"
+msgstr ""
+"VARNING! Filter baserade på rubriker i brevhuvudet ska ha formatet &quot;"
+"Rubrik: värde&qout;"
+
 msgid "Saved Scan type"
 msgstr "Sparad skanningstyp"
 
@@ -2455,6 +2461,12 @@ msgstr ""
 "Skräppostfilter tillåter dig att välja från olika DNS-baserade svartlistor "
 "så att du kan flytta skräppost till en annan mapp (t.ex. papperskorgen)."
 
+msgid "You must select a spam folder."
+msgstr "Välj en mapp för skräppost."
+
+msgid "You must select a scan type."
+msgstr "Välj typ av skanning."
+
 msgid "Spam Filtering"
 msgstr "Skräppostfiltrering"
 
@@ -2476,6 +2488,9 @@ msgstr ""
 "inte, då vanliga brev ibland kan tolkas som skräppost av misstag. Gå igenom "
 "skräppostmappen med jämna mellanrum och kasta oönskade brev, så att de inte "
 "tar plats i onödan."
+
+msgid "Unread messages only"
+msgstr "Bara olästa brev"
 
 msgid ""
 "The more messages scanned, the longer it takes. It's recommended to scan "
@@ -2501,9 +2516,6 @@ msgstr "odefinierad"
 #, c-format
 msgid "Spam scan is limited to %s."
 msgstr "Skräppostsökning begränsad till %s."
-
-msgid "Unread messages only"
-msgstr "Bara olästa brev"
 
 msgid "ON"
 msgstr "PÅ"
@@ -4188,18 +4200,6 @@ msgstr "Sök i Bugtracker"
 
 msgid "Show system specs"
 msgstr "Visa systemspecifikationerna"
-
-msgid ""
-"WARNING! Header filters should be of the format &quot;Header: value&quot;"
-msgstr ""
-"VARNING! Filter baserade på rubriker i brevhuvudet ska ha formatet &quot;"
-"Rubrik: värde&qout;"
-
-msgid "You must select a spam folder."
-msgstr "Välj en mapp för skräppost."
-
-msgid "You must select a scan type."
-msgstr "Välj typ av skanning."
 
 msgid "Plugin is disabled."
 msgstr "Insticksmodulen är inaktiverad."
