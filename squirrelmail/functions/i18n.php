@@ -37,174 +37,40 @@ function charset_decode ($charset, $string) {
     /* controls cpu and memory intensive decoding cycles */
     $agresive_decoding = false;
 
-    if (ereg('iso-8859-([[:digit:]]+)', $charset, $res)) {
-        if ($res[1] == '1') {
-	    include_once(SM_PATH . 'functions/decode/iso8859-1.php');
-            $ret = charset_decode_iso8859_1 ($string);
-        } else if ($res[1] == '2') {
-	    include_once(SM_PATH . 'functions/decode/iso8859-2.php');
-            $ret = charset_decode_iso8859_2 ($string);
-        } else if ($res[1] == '3') {
-	    include_once(SM_PATH . 'functions/decode/iso8859-3.php');
-            $ret = charset_decode_iso8859_3 ($string);
-        } else if ($res[1] == '4') {
-	    include_once(SM_PATH . 'functions/decode/iso8859-4.php');
-            $ret = charset_decode_iso8859_4 ($string);
-        } else if ($res[1] == '5') {
-	    include_once(SM_PATH . 'functions/decode/iso8859-5.php');
-            $ret = charset_decode_iso8859_5 ($string);
-        } else if ($res[1] == '6') {
-	    include_once(SM_PATH . 'functions/decode/iso8859-6.php');
-            $ret = charset_decode_iso8859_6 ($string);
-        } else if ($res[1] == '7') {
-	    include_once(SM_PATH . 'functions/decode/iso8859-7.php');
-            $ret = charset_decode_iso8859_7 ($string);
-        } else if ($res[1] == '8') {
-	    include_once(SM_PATH . 'functions/decode/iso8859-8.php');
-            $ret = charset_decode_iso8859_8 ($string);
-        } else if ($res[1] == '9') {
-	    include_once(SM_PATH . 'functions/decode/iso8859-9.php');
-            $ret = charset_decode_iso8859_9 ($string);
-        } else if ($res[1] == '10') {
-	    include_once(SM_PATH . 'functions/decode/iso8859-10.php');
-            $ret = charset_decode_iso8859_10 ($string);
-        } else if ($res[1] == '11') {
-	    include_once(SM_PATH . 'functions/decode/iso8859-11.php');
-            $ret = charset_decode_iso8859_11 ($string);
-        } else if ($res[1] == '13') {
-	    include_once(SM_PATH . 'functions/decode/iso8859-13.php');
-            $ret = charset_decode_iso8859_13 ($string);
-        } else if ($res[1] == '14') {
-	    include_once(SM_PATH . 'functions/decode/iso8859-14.php');
-            $ret = charset_decode_iso8859_14 ($string);
-        } else if ($res[1] == '15') {
-	    include_once(SM_PATH . 'functions/decode/iso8859-15.php');
-            $ret = charset_decode_iso8859_15 ($string);
-        } else if ($res[1] == '16') {
-	    include_once(SM_PATH . 'functions/decode/iso8859-16.php');
-            $ret = charset_decode_iso8859_16 ($string);
-        } else {
-            $ret = charset_decode_iso_8859_default ($string);
-        }
-    } else if ($charset == 'ns_4551-1') {
-        $ret = charset_decode_ns_4551_1 ($string);
-    } else if ($charset == 'koi8-r') {
-        include_once(SM_PATH . 'functions/decode/koi8-r.php');
-        $ret = charset_decode_koi8r ($string);
-    } else if ($charset == 'koi8-u') {
-        include_once(SM_PATH . 'functions/decode/koi8-u.php');
-        $ret = charset_decode_koi8u ($string);
-    } else if ($charset == 'windows-1250') {
-        include_once(SM_PATH . 'functions/decode/cp1250.php');
-        $ret = charset_decode_cp1250 ($string);
-    } else if ($charset == 'windows-1251') {
-        include_once(SM_PATH . 'functions/decode/cp1251.php');
-        $ret = charset_decode_cp1251 ($string);
-    } else if ($charset == 'windows-1252') {
-        include_once(SM_PATH . 'functions/decode/cp1252.php');
-        $ret = charset_decode_cp1252 ($string);
-    } else if ($charset == 'windows-1253') {
-        include_once(SM_PATH . 'functions/decode/cp1253.php');
-	$ret = charset_decode_cp1253 ($string);
-    } else if ($charset == 'windows-1254') {
-        include_once(SM_PATH . 'functions/decode/cp1254.php');
-	$ret = charset_decode_cp1254 ($string);
-    } else if ($charset == 'windows-1255') {
-        include_once(SM_PATH . 'functions/decode/cp1255.php');
-	$ret = charset_decode_cp1255 ($string);
-    } else if ($charset == 'windows-1256') {
-        include_once(SM_PATH . 'functions/decode/cp1256.php');
-	$ret = charset_decode_cp1256 ($string);
-    } else if ($charset == 'windows-1257') {
-        include_once(SM_PATH . 'functions/decode/cp1257.php');
-        $ret = charset_decode_cp1257 ($string);
-    } else if ($charset == 'windows-1258') {
-        include_once(SM_PATH . 'functions/decode/cp1258.php');
-        $ret = charset_decode_cp1258 ($string);
-    } else if ($charset == 'x-mac-roman') {
-        include_once(SM_PATH . 'functions/decode/cp10000.php');
-        $ret = charset_decode_cp10000 ($string);
-    } else if ($charset == 'x-mac-greek') {
-        include_once(SM_PATH . 'functions/decode/cp10006.php');
-        $ret = charset_decode_cp10006 ($string);
-    } else if ($charset == 'x-mac-cyrillic') {
-        include_once(SM_PATH . 'functions/decode/cp10007.php');
-        $ret = charset_decode_cp10007 ($string);
-    } else if ($charset == 'x-mac-ukrainian') {
-        include_once(SM_PATH . 'functions/decode/cp10017.php');
-        $ret = charset_decode_cp10017 ($string);
-    } else if ($charset == 'x-mac-centraleurroman') {
-        include_once(SM_PATH . 'functions/decode/cp10029.php');
-        $ret = charset_decode_cp10029 ($string);
-    } else if ($charset == 'x-mac-icelandic') {
-        include_once(SM_PATH . 'functions/decode/cp10079.php');
-        $ret = charset_decode_cp10079 ($string);
-    } else if ($charset == 'x-mac-turkish') {
-        include_once(SM_PATH . 'functions/decode/cp10081.php');
-        $ret = charset_decode_cp10081 ($string);
-    } else if ($charset == 'ibm855') {
-        include_once(SM_PATH . 'functions/decode/cp855.php');
-        $ret = charset_decode_cp855 ($string);
-    } else if ($charset == 'ibm866') {
-        include_once(SM_PATH . 'functions/decode/cp866.php');
-        $ret = charset_decode_cp866 ($string);
-    } else if ($charset == 'iso-ir-111') {
-        include_once(SM_PATH . 'functions/decode/iso-ir-111.php');
-	$ret = charset_decode_iso_ir_111 ($string);
-    } else if ($charset == 'tis-620') {
-        include_once(SM_PATH . 'functions/decode/tis620.php');
-        $ret = charset_decode_tis620 ($string);
-    } else if ($charset == 'big5' and $agresive_decoding ) {
-        include_once(SM_PATH . 'functions/decode/big5.php');
-        $ret = charset_decode_big5 ($string);
-    } else if ($charset == 'gb2312' and $agresive_decoding ) {
-        include_once(SM_PATH . 'functions/decode/gb2312.php');
-        $ret = charset_decode_gb2312 ($string);
-    } else if ($charset == 'utf-8' && $squirrelmail_language != 'ja_JP') {
-        include_once(SM_PATH . 'functions/decode/utf-8.php');
-	$ret = charset_decode_utf8 ($string);
+    $decode=fixcharset($charset);
+    $decodefile=SM_PATH . 'functions/decode/' . $decode . '.php';
+    if (file_exists($decodefile)) {
+      include_once($decodefile);
+      $ret = call_user_func('charset_decode_'.$decode, $string);
     } else {
-         $ret = $string;
+      $ret = $string;
     }
+
     return( $ret );
 }
 
-/* Remove all 8 bit characters from all other ISO-8859 character sets */
-function charset_decode_iso_8859_default ($string) {
-    return (strtr($string, "\240\241\242\243\244\245\246\247".
-                    "\250\251\252\253\254\255\256\257".
-                    "\260\261\262\263\264\265\266\267".
-                    "\270\271\272\273\274\275\276\277".
-                    "\300\301\302\303\304\305\306\307".
-                    "\310\311\312\313\314\315\316\317".
-                    "\320\321\322\323\324\325\326\327".
-                    "\330\331\332\333\334\335\336\337".
-                    "\340\341\342\343\344\345\346\347".
-                    "\350\351\352\353\354\355\356\357".
-                    "\360\361\362\363\364\365\366\367".
-                    "\370\371\372\373\374\375\376\377",
-                    "????????????????????????????????????????".
-                    "????????????????????????????????????????".
-                    "????????????????????????????????????????".
-                    "????????"));
-
-}
-
-/*
- * This is the same as ISO-646-NO and is used by some
- * Microsoft programs when sending Norwegian characters
+/**
+ * Makes charset name suitable for decoding cycles
+ *
+ * @param string $charset Name of charset
+ * @return string $charset Adjusted name of charset
  */
-function charset_decode_ns_4551_1 ($string) {
-    /*
-     * These characters are:
-     * Latin capital letter AE
-     * Latin capital letter O with stroke
-     * Latin capital letter A with ring above
-     * and the same as small letters
-     */
-    return strtr ($string, "[\\]{|}", "ÆØÅæøå");
-}
+function fixcharset($charset) {
+  // minus removed from function names
+  $charset=str_replace('-','_',$charset);
 
+  // windows-125x and cp125x charsets
+  $charset=str_replace('windows_','cp',$charset);
+
+  // ibm > cp
+  $charset=str_replace('ibm','cp',$charset);
+
+  // iso-8859-8-i -> iso-8859-8
+  // use same cycle until I'll find differences
+  $charset=str_replace('iso_8859_8_i','iso_8859_8',$charset);
+
+  return $charset;
+}
 
 /*
  * Set up the language to be output
