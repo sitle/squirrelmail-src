@@ -51,11 +51,14 @@ function sqimap_run_command_list ($imap_stream, $query, $handle_errors, &$respon
     
 }
 
-function sqimap_run_command ($imap_stream, $query, $handle_errors, &$response, &$message, $unique_id = false) {
+function sqimap_run_command ($imap_stream, $query, $handle_errors, &$response, 
+                            &$message, $unique_id = false,$filter=false,
+                             $outputstream=false,$no_return=false) {
     if ($imap_stream) {
         $sid = sqimap_session_id($unique_id);
         fputs ($imap_stream, $sid . ' ' . $query . "\r\n");
-        $read = sqimap_read_data ($imap_stream, $sid, $handle_errors, $response, $message, $query);
+        $read = sqimap_read_data ($imap_stream, $sid, $handle_errors, $response,
+                                  $message, $query,$filter,$outputstream,$no_return);
         return $read;
     } else {
         global $squirrelmail_language, $color;
@@ -96,13 +99,69 @@ function sqimap_fgets($imap_stream) {
     return $results;
 }
 
+function sqimap_fread($imap_stream,$iSize,$filter=false,
+                      $outputstream=false, $no_return=false) {
+    if (!$filter || !$outputstream) {
+        $iBufferSize = $iSize;
+    } else {
+        $iBufferSize = 32768;
+    }
+    $iRet = $iSize - $iBufferSize;
+    $i = 0;
+    $results = '';
+    while (($i * $iBufferSize) < $iRet) {
+        $sRead = fread($imap_stream,$iBufferSize);
+        if (!$sRead) {
+            $results = false;
+            break;
+        }
+        ++$i;
+        if ($filter) {
+           $filter($sRead);
+        }
+        if ($outputstream) {
+           if (is_resource($outputstream)) {
+               fwrite($outputstream,$sRead);
+           } else if ($outputstream == 'php://stdout') {
+               echo $sRead;
+           }
+        }
+        if ($no_return) {
+            $sRead = '';
+        }    
+        $results .= $sRead;
+    }
+    if ($results !== false) {
+        $sRead = fread($imap_stream,($iSize - ($i * $iBufferSize)));  
+        if ($filter) {
+           $filter($sRead);
+        }
+        if ($outputstream) {
+           if (is_resource($outputstream)) {      
+               fwrite($outputstream,$sRead);
+           } else if ($outputstream == 'php://stdout') { // FIXME
+               echo $sRead;
+           }
+        }
+        if ($no_return) {
+            $sRead = '';
+        }    
+        $results .= $sRead;
+    }
+    return $results;       
+}        
+
+
+
 /*
  * Reads the output from the IMAP stream.  If handle_errors is set to true,
  * this will also handle all errors that are received.  If it is not set,
  * the errors will be sent back through $response and $message
  */
 
-function sqimap_read_data_list ($imap_stream, $tag_uid, $handle_errors, &$response, &$message, $query = '') {
+function sqimap_read_data_list ($imap_stream, $tag_uid, $handle_errors, 
+          &$response, &$message, $query = '',
+           $filter = false, $outputstream = false, $no_return = false) {
     global $color, $squirrelmail_language;
     $read = '';
     $tag_uid_a = explode(' ',trim($tag_uid));
@@ -171,7 +230,7 @@ function sqimap_read_data_list ($imap_stream, $tag_uid, $handle_errors, &$respon
                             $j = strrpos($read,'{');
                             $iLit = substr($read,$j+1,-3);
                             $fetch_data[] = $read;
-                            $sLiteral = fread($imap_stream,$iLit);
+                            $sLiteral = sqimap_fread($imap_stream,$iLit,$filter,$outputstream,$no_return);
                             if ($sLiteral === false) { /* error */
                                 break 4; /* while while switch while */
                             }
@@ -335,9 +394,11 @@ function sqimap_read_data_list ($imap_stream, $tag_uid, $handle_errors, &$respon
     }
 }
 
-function sqimap_read_data ($imap_stream, $tag_uid, $handle_errors, &$response, &$message, $query = '') {
-    $res = sqimap_read_data_list($imap_stream, $tag_uid, $handle_errors, $response, $message, $query);
- 
+function sqimap_read_data ($imap_stream, $tag_uid, $handle_errors, 
+                           &$response, &$message, $query = '',
+                           $filter=false,$outputstream=false,$no_return=false) {
+    $res = sqimap_read_data_list($imap_stream, $tag_uid, $handle_errors, 
+              $response, $message, $query,$filter,$outputstream,$no_return); 
     /* sqimap_read_data should be called for one response
        but since it just calls sqimap_read_data_list which 
        handles multiple responses we need to check for that
@@ -458,12 +519,12 @@ function sqimap_login ($username, $password, $imap_server_address, $imap_port, $
                 set_up_language($squirrelmail_language, true);
                 require_once(SM_PATH . 'functions/display_messages.php');
                 if ($response == 'BAD') {
-                   $string = sprintf (_("Bad request: %s")."<br>\r\n", $message);
+                    $string = sprintf (_("Bad request: %s")."<br>\r\n", $message);
                 } else {
-                   $string = sprintf (_("Unknown error: %s") . "<br>\n", $message);
+                    $string = sprintf (_("Unknown error: %s") . "<br>\n", $message);
                 }
                 if (isset($read) && is_array($read)) {
-                        $string .= '<br>' . _("Read data:") . "<br>\n";
+                    $string .= '<br>' . _("Read data:") . "<br>\n";
                     foreach ($read as $line) {
                         $string .= htmlspecialchars($line) . "<br>\n";
                     }
@@ -586,138 +647,151 @@ function sqimap_get_num_messages ($imap_stream, $mailbox) {
 }
 
 
-function parseAddress($address, $max=0, $addr_ar = array(), $group = '', $host='', $limit=0) {
-    $pos = 0;
-    $j = strlen($address);
-    $personal = '';
-    $addr = '';
-    $comment = '';
-    if ($max && $max == count($addr_ar)) {
-        return $addr_ar;
-    }
-    while ($pos < $j) {
-        if ($max && $max == count($addr_ar)) {
-            return $addr_ar;
+function parseAddress($address, $max=0) {
+    $aTokens = array();
+    $aAddress = array();
+    $iCnt = strlen($address);
+    $aSpecials = array('(' ,'<' ,',' ,';' ,':');
+    $aReplace =  array(' (',' <',' ,',' ;',' :');
+    $address = str_replace($aSpecials,$aReplace,$address);
+    $i = 0;
+    while ($i < $iCnt) {
+        $cChar = $address{$i};
+        switch($cChar)
+        {
+        case '<':
+            $iEnd = strpos($address,'>',$i+1);
+            if (!$iEnd) {
+               $sToken = substr($address,$i);
+               $i = $iCnt;
+            } else {
+               $sToken = substr($address,$i,$iEnd - $i +1);
+               $i = $iEnd;
+            }
+            $sToken = str_replace($aReplace, $aSpecials,$sToken);
+            $aTokens[] = $sToken;
+            break;
+        case '"':
+            $iEnd = strpos($address,$cChar,$i+1);
+            if (!$iEnd) {
+                $sToken = substr($address,$i);
+                $i = $iCnt;
+            } else {
+                // also remove the surrounding quotes
+                $sToken = substr($address,$i+1,$iEnd - $i -1);
+                $i = $iEnd;
+            }
+            $sToken = str_replace($aReplace, $aSpecials,$sToken);
+            if ($sToken) $aTokens[] = $sToken;
+            break;
+        case '(':
+            $iEnd = strpos($address,')',$i);
+            if (!$iEnd) {
+                $sToken = substr($address,$i);
+                $i = $iCnt;
+            } else {
+                $sToken = substr($address,$i,$iEnd - $i + 1);
+                $i = $iEnd;
+            }
+            $sToken = str_replace($aReplace, $aSpecials,$sToken);
+            $aTokens[] = $sToken;
+            break;
+        case ',':
+        case ';':
+        case ';':
+        case ' ':
+            $aTokens[] = $cChar;
+            break;
+        default:
+            $iEnd = strpos($address,' ',$i+1);
+            if ($iEnd) {
+                $sToken = trim(substr($address,$i,$iEnd - $i));
+                $i = $iEnd-1;
+            } else {
+                $sToken = trim(substr($address,$i));
+                $i = $iCnt;
+            }
+            if ($sToken) $aTokens[] = $sToken;
         }
-        $char = $address{$pos};
-        switch ($char) {
-            case '=':
-	        /* check if it is an encoded string */
-                if (preg_match('/^(=\?([^?]*)\?(Q|B)\?([^?]*)\?=)(.*)/Ui',substr($address,$pos),$reg)) {
-		    /* add stringpart before the encoded string to the personal var */
-		    if (!$personal) {
-			$personal = substr($address,0,$pos);
-		    }
-                    $personal .= $reg[1];
-		    $pos += strlen($reg[1]);
-                } else {
-            	    ++$pos;
-		}
+        ++$i;
+    }
+    $sPersonal = $sEmail = $sComment = $sGroup = '';
+    $aStack = $aComment = array();
+    foreach ($aTokens as $sToken) {
+        if ($max && $max == count($aAddress)) {
+            return $aAddress;
+        }
+        $cChar = $sToken{0};
+        switch ($cChar)
+        {
+          case '=':
+          case '"':
+          case ' ':
+            $aStack[] = $sToken; 
+            break;
+          case '(':
+            $aComment[] = substr($sToken,1,-1);
+            break;
+          case ';':
+            if ($sGroup) {
+                $sEmail = trim(implode(' ',$aStack));
+                $aAddress[] = array($sGroup,$sEmail);
+                $aStack = $aComment = array();
+                $sGroup = '';
                 break;
-            case '"': /* get the personal name */
-                ++$pos;
-                if ($address{$pos} == '"') {
-                    ++$pos;
-                } else {                
-                    $personal_start = $personal_end = $pos;
-                    while ($pos < $j) {
-                        $personal_end = strpos($address,'"',$pos);
-                        if (($personal_end-2)>0 && (substr($address,$personal_end-2,2) === '\\"' ||
-                            substr($address,$personal_end-2,2) === '\\\\')) {
-                            $pos = $personal_end+1;
-                        } else {
-                            $personal = substr($address,$personal_start,$personal_end-$personal_start);
-                            break;
-                        }
-                    }
-                    if ($personal_end) { /* prohibit endless loops due to very wrong addresses */
-                         $pos = $personal_end+1;
-                    } else {
-                         $pos = $j;
-                    }
+            }
+          case ',':
+            if (!$sEmail) {
+                while (count($aStack) && !$sEmail) {
+                    $sEmail = trim(array_pop($aStack));
                 }
-                break;
-            case '<':  /* get email address */
-                $addr_start = $pos;
-                $addr_end = strpos($address,'>',$addr_start);
-                if($addr_end === FALSE) {
-                    // in case the address doesn't end, prevent loop
-                    $pos++;
-                } else {
-                    $addr = substr($address,$addr_start+1,$addr_end-$addr_start-1);
-                    $pos = $addr_end+1;
-                }
-                break;
-            case '(':  /* rip off comments */
-                $addr_start = $pos;
-                $pos = strpos($address,')');
-                if ($pos !== false) {
-                    $comment = substr($address, $addr_start+1,($pos-$addr_start-1));
-                    $address_start = substr($address, 0, $addr_start);
-                    $address_end   = substr($address, $pos + 1);
-                    $address       = $address_start . $address_end;
-                }
-                $j = strlen($address);
-                $pos = $addr_start + 1;
-                break;
-            case ';': /* we reached a non rfc2822 compliant delimiter */
-                if ($group) {
-                    $address = substr($address, 0, $pos - 1);
-		    ++$pos;
-		    break;
-                }
-            case ',':  /* we reached a delimiter */
-                if ($addr == '') {
-                    $addr = substr($address, 0, $pos);
-                } else if ($personal == '') {
-                    $personal = trim(substr($address, 0, $addr_start));
-                }
-                if (!$personal && $comment) $personal = $comment;
-                if ($personal) $personal = decodeHeader($personal);
-                $addr_ar[] = array($addr,$personal);
-                $address = trim(substr($address, $pos+1));
-                $j = strlen($address);
-                $pos = 0;
-                $personal = '';
-                $addr = '';
-                break;
-            case ':':  /* process the group addresses */
-                /* group marker */
-                $group = substr($address, 0, $pos);
-                $address = substr($address, $pos+1);
-                $result = parseAddress($address, $max, $addr_ar, $group);
-                $addr_ar = $result[0];
-                $pos = $result[1];
-                $address = substr($address, $pos++);
-                $j = strlen($address);
-                $group = '';
-                break;
-            default:
-                ++$pos;
-                break;
+            }
+            if (count($aStack)) {
+                $sPersonal = trim(implode('',$aStack));
+            } else { 
+                $sPersonal = '';
+            }
+            if (!$sPersonal && count($aComment)) {
+                $sComment = implode(' ',$aComment);
+                $sPersonal .= $sComment;
+            }
+            $aAddress[] = array($sEmail,$sPersonal);
+            $sPersonal = $sComment = $sEmail = '';
+            $aStack = $aComment = array();
+            break;
+          case ':': 
+            $sGroup = implode(' ',$aStack); break;
+            $aStack = array();
+            break;
+          case '<':
+            $sEmail = trim(substr($sToken,1,-1));
+            break;
+          case '>':
+            /* skip */
+            break; 
+          default: $aStack[] = $sToken; break;
         }
     }
-    if ($addr == '') {
-        $addr = substr($address, 0, $pos);
-    } else if ($personal == '') {
-        $personal = trim(substr($address, 0, $addr_start));
+    /* now do the action again for the last address */
+    if (!$sEmail) {
+        while (count($aStack) && !$sEmail) {
+            $sEmail = trim(array_pop($aStack));
+        }
     }
-    if (!$personal && $comment) $personal = $comment;
-    $email = $addr;
-    if ($group && $addr == '') { /* no addresses found in group */
-        $personal = $group;
-        $addr_ar[] = array('',$personal);
-        return (array($addr_ar,$pos+1 ));
-    } elseif ($group) {
-        $addr_ar[] = array($addr,$personal);
-        return (array($addr_ar,$pos+1 ));
+    if (count($aStack)) {
+        $sPersonal = trim(implode('',$aStack));
     } else {
-        if ($personal || $addr) {
-            $addr_ar[] = array($addr, $personal);
-        }
+        $sPersonal = '';
     }
-    return ($addr_ar);
-}
+    if (!$sPersonal && count($aComment)) {
+        $sComment = implode(' ',$aComment);
+        $sPersonal .= $sComment;
+    }
+    $aAddress[] = array($sEmail,$sPersonal);
+    return $aAddress;
+} 
+
+
 
 /*
  * Returns the number of unseen messages in this folder
