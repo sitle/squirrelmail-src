@@ -6,7 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2002-09-26 15:37-0600\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2003-11-04 11:02+0200\n"
 "PO-Revision-Date: 2002-10-24+0200\n"
 "Last-Translator: Kerem Erkan <akerem@hacettepe.edu.tr>\n"
 "Language-Team: Turkish <LL@li.org>\n"
@@ -14,122 +15,253 @@ msgstr ""
 "Content-Type: text/plain; charset=ISO-8859-9\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#############################################################
-# ATTENTION: When localising the following 4 msgstr's use   #
-# "_" instead of spaces. Also avoid ".,%&'" etc. Just use   #
-# alphabetical characters or numbers. If you don't do this, #
-# your plugin will be broken.                               #
-#############################################################
-
-msgid "Your_Disk_Usage"
+#, fuzzy
+msgid "Your Disk Usage"
 msgstr "Espacio_de_Disco_en_Uso"
+
+msgid "Click on graph for details"
+msgstr ""
+
+msgid "Click on one of the graphs for details"
+msgstr ""
+
+msgid "Your Disk Usage on The Server"
+msgstr ""
+
+msgid "Percent"
+msgstr ""
 
 msgid "Details"
 msgstr "Detalles"
 
-msgid "You_have_no_quota_limit"
-msgstr "Cuota_ilimitada"
-
-msgid "Please_ignore_the_following_information"
-msgstr "No_en_cuenta_la_siguiente_informacion"
-
-#############################################################
-# You can localise the following without restrictions.      #
-#############################################################
-
-msgid "Check Quota"
-msgstr "Revisar Cuota"
-
-msgid "Connects to the Server and checks your diskquota usage."
-msgstr "Conexión con el servidor para revisar el consumo de su cuota"
-
-msgid "This is your diskquota usage."
-msgstr "Este es el consumo de su cuota"
-
 msgid "Filesystem"
 msgstr "Sitema de archivos"
 
-msgid "This is the physical device your data resides on"
-msgstr "Este es el dispositivo físico donde está guardada su información
+msgid "Data Amount You Use on The Server"
+msgstr ""
 
-msgid "Used"
-msgstr "Usado"
-
-msgid "Quota"
+#, fuzzy
+msgid "Your Quota"
 msgstr "Cuota"
 
-msgid "Limit"
+#, fuzzy
+msgid "Your Limit"
 msgstr "Límite"
 
-msgid "Grace-Time"
+#, fuzzy
+msgid "Grace Time"
 msgstr "Tiempo de Gracia"
 
-msgid "Status"
-msgstr "Estado"
+msgid "* Hover your mouse on the texts and graph to get more information..."
+msgstr ""
 
-msgid "Ok, but what does it mean?"
-msgstr "¿Qué significa?"
+msgid "Days"
+msgstr ""
 
-msgid "This is your actual amount of data on the physical device"
-msgstr "Cantidad actual ocupada en el dispositivo físico"
+msgid "Day"
+msgstr ""
 
-msgid "This is the amount of disk-space that you can use"
+msgid "Hours"
+msgstr ""
+
+msgid "Hour"
+msgstr ""
+
+msgid "Minutes"
+msgstr ""
+
+msgid "Minute"
+msgstr ""
+
+msgid "Time Expired!"
+msgstr ""
+
+msgid ""
+"This is the bar graph of your status. The green bar shows the amount of disk "
+"space you use."
+msgstr ""
+
+msgid ""
+" The red line shows your quota and the area after the red line shows your "
+"limit, which you cannot exceed."
+msgstr ""
+
+msgid " At this time, you are not over quota."
+msgstr ""
+
+msgid " YOU ARE OVER QUOTA NOW!"
+msgstr ""
+
+msgid "This shows your percent usage compared to your limit."
+msgstr ""
+
+msgid "This is the name of the filesystem on which your data is kept."
+msgstr ""
+
+msgid ""
+" Your server did not show the filesystem name. So you see a hyphen for the "
+"name."
+msgstr ""
+
+#, fuzzy
+msgid "This is the total amount of data you are using on your server."
 msgstr "Este es el espacio disponible para su uso"
 
-msgid "This is the absolute disk-space you cannot exceed"
-msgstr "Este tope de uso no puede excederse"
+#, fuzzy
+msgid "This is the maximum amount of data you can keep on your server."
+msgstr "Este es el espacio disponible para su uso"
 
-msgid "This shows the time left in which you can delete messages once 
-you have exceeded your quota limit"
+msgid ""
+"This is the maximum amount of data you can keep on the server when you are "
+"over quota in your grace time."
+msgstr ""
+
+#, fuzzy
+msgid ""
+"This shows the time left in which you must delete some of your data in order "
+"to get under your quota."
 msgstr "Tiempo disponible para restaurar espacio una vez ha excedido la cuota"
 
-msgid "This is your current status"
-msgstr "Estado actual"
+msgid " You are not over quota so you see a hyphen for the grace time."
+msgstr ""
 
-msgid "What's the difference between Quota and Limit?"
-msgstr "¿Cuál es la diferencia entre cuota y límite?"
+msgid ""
+" After this time,if you are still over quota, you will not be able to get "
+"any e-mails."
+msgstr ""
 
-msgid "Well, you have a limited amount of disk-space available for your data. "
-msgstr "El espacio en disco disponible para sus datos está linitado. "
+msgid "Detailed Information"
+msgstr ""
 
-msgid "You have two kind of limits. Between the first one (called 
-Quota) and the second one "
-msgstr "Existen dos límites. Entre el prinero, o cuota, y el segundo, 
-o límite, "
+msgid "There is no problem as you are now using "
+msgstr ""
 
-msgid "(called Limit) the system will still let you work for some more time "
-msgstr "podrá guardar información por tiempo limitado "
+msgid ""
+"KB on the server which is under your quota. Be sure to always keep the data "
+"you use under your "
+msgstr ""
 
-msgid "(the so colled Grace-Time) but if you exceed \"Limit\", the 
-system will "
-msgstr "(Tiempo de Gracia) pero si excede el \"Límite\" el sistema "
+msgid "KB quota to ensure that you can always receive e-mails."
+msgstr ""
 
-msgid "prevent you from creating new files. Please notice that once 
-your Grace-Time "
-msgstr "le impedirá guardar más archivos. Tenga en cuenta que 
-expirado el tiempo de "
+msgid "WARNING:"
+msgstr ""
 
-msgid "is expired, you won't be able do anything than delete files!"
-msgstr "gracia, lo único que puede hacer es borrar archivos"
+msgid "You are using "
+msgstr ""
 
-msgid "I see an"
-msgstr "Veo un "
+msgid "KB on the server which is over your quota. "
+msgstr ""
 
-msgid "in the status-field. What's that?"
-msgstr "en el campo de estado ¿Qué significa?"
+msgid "If you don't delete some e-mails from the server in "
+msgstr ""
 
-msgid "It's bad news. It means that you will not be able to work 
-anymore on the system "
-msgstr "Que su cuenta en el sistema está bloqueada, "
+msgid "and get your data under your "
+msgstr ""
 
-msgid "unless you immediately trash & purge some of your data. Please 
-consider the "
-msgstr "a menos que elimine y purgue algunos mensajes. Considere la "
+msgid "KB quota, you WILL NOT be able to get any more e-mails."
+msgstr ""
 
-msgid "possibility of moving some data on your local computer rather 
-than leave it all "
-msgstr "posibilidad de copiar algunos archivos a su máquina local 
-versus dejarlos "
+msgid ""
+"You CANNOT get any e-mails now and all e-mails sent to you are bouncing back "
+"to their senders. "
+msgstr ""
 
-msgid "on the server."
-msgstr "indefinidamente en el servidor."
+msgid ""
+"You must delete some e-mails from the server and get your usage under your "
+msgstr ""
+
+msgid "KB quota in order to be able to get new e-mails."
+msgstr ""
+
+#~ msgid "You_have_no_quota_limit"
+#~ msgstr "Cuota_ilimitada"
+
+#~ msgid "Please_ignore_the_following_information"
+#~ msgstr "No_en_cuenta_la_siguiente_informacion"
+
+#~ msgid "Check Quota"
+#~ msgstr "Revisar Cuota"
+
+#~ msgid "Connects to the Server and checks your diskquota usage."
+#~ msgstr "Conexión con el servidor para revisar el consumo de su cuota"
+
+#~ msgid "This is your diskquota usage."
+#~ msgstr "Este es el consumo de su cuota"
+
+#~ msgid "This is the physical device your data resides on"
+#~ msgstr "Este es el dispositivo físico donde está guardada su información"
+
+#~ msgid "Used"
+#~ msgstr "Usado"
+
+#~ msgid "Status"
+#~ msgstr "Estado"
+
+#~ msgid "Ok, but what does it mean?"
+#~ msgstr "¿Qué significa?"
+
+#~ msgid "This is your actual amount of data on the physical device"
+#~ msgstr "Cantidad actual ocupada en el dispositivo físico"
+
+#~ msgid "This is the absolute disk-space you cannot exceed"
+#~ msgstr "Este tope de uso no puede excederse"
+
+#~ msgid "This is your current status"
+#~ msgstr "Estado actual"
+
+#~ msgid "What's the difference between Quota and Limit?"
+#~ msgstr "¿Cuál es la diferencia entre cuota y límite?"
+
+#~ msgid ""
+#~ "Well, you have a limited amount of disk-space available for your data. "
+#~ msgstr "El espacio en disco disponible para sus datos está linitado. "
+
+#~ msgid ""
+#~ "You have two kind of limits. Between the first one (called Quota) and the "
+#~ "second one "
+#~ msgstr ""
+#~ "Existen dos límites. Entre el prinero, o cuota, y el segundo, o límite, "
+
+#~ msgid ""
+#~ "(called Limit) the system will still let you work for some more time "
+#~ msgstr "podrá guardar información por tiempo limitado "
+
+#~ msgid ""
+#~ "(the so colled Grace-Time) but if you exceed \"Limit\", the system will "
+#~ msgstr "(Tiempo de Gracia) pero si excede el \"Límite\" el sistema "
+
+#~ msgid ""
+#~ "prevent you from creating new files. Please notice that once your Grace-"
+#~ "Time "
+#~ msgstr ""
+#~ "le impedirá guardar más archivos. Tenga en cuenta que expirado el tiempo "
+#~ "de "
+
+#~ msgid "is expired, you won't be able do anything than delete files!"
+#~ msgstr "gracia, lo único que puede hacer es borrar archivos"
+
+#~ msgid "I see an"
+#~ msgstr "Veo un "
+
+#~ msgid "in the status-field. What's that?"
+#~ msgstr "en el campo de estado ¿Qué significa?"
+
+#~ msgid ""
+#~ "It's bad news. It means that you will not be able to work anymore on the "
+#~ "system "
+#~ msgstr "Que su cuenta en el sistema está bloqueada, "
+
+#~ msgid ""
+#~ "unless you immediately trash & purge some of your data. Please consider "
+#~ "the "
+#~ msgstr "a menos que elimine y purgue algunos mensajes. Considere la "
+
+#~ msgid ""
+#~ "possibility of moving some data on your local computer rather than leave "
+#~ "it all "
+#~ msgstr ""
+#~ "posibilidad de copiar algunos archivos a su máquina local versus dejarlos "
+
+#~ msgid "on the server."
+#~ msgstr "indefinidamente en el servidor."
