@@ -44,18 +44,18 @@ strings that are already translated are no longer used and new strings
 are added. Therefore it is necessary to maintain the translations.
 
 a) There should always be an updated template containing all strings
-   in SquirrelMail in squirrelmail/po/squirrelmail.pot. To merge all new
+   in SquirrelMail in po/squirrelmail.pot. To merge all new
    strings in this file into an existing translation run the command
 
-msgmerge squirrelmail/locale/language/LC_MESSAGES/squirrelmail.po \
-squirrelmail/po/squirrelmail.pot > \
-squirrelmail/locale/language/LC_MESSAGES/squirrelmail.po.new
+msgmerge locale/language/LC_MESSAGES/squirrelmail.po \
+ po/squirrelmail.pot > \
+ locale/language/LC_MESSAGES/squirrelmail.po.new
 
    This should keep all strings that are unchanged and comment out all
    strings that are no longer in use. You might want to make a copy
    before doing this.
 
-SquirrelMail contains po/mergepo script that can merge strings without need
+SquirrelMail contains mergepo script that can merge strings without need
 to write that complex msgmerge command. Just put your translation name as 
 option.
 
@@ -65,7 +65,7 @@ b) Run msgfmt again to create a new binary file.
 3. Updating the template
 ------------------------
 
-SquirrelMail provides po/xgetpo script that extracts all the required 
+SquirrelMail provides xgetpo script that extracts all the required 
 strings and updates po/squirrelmail.pot file.
 
 
