@@ -11,17 +11,22 @@
 
 setClassMeta('base_user', 'User');
 setConst('USER_CLASS_ID', META_BASE_USER_CLASS_ID);
+setConst('USER_CLASS_NAME', 'base_user');
 
 global $USER_SOURCE;
 $USER_SOURCE = array('table' => 'smdoc_user',
                      'table_create' => array(getClassname(USER_CLASS_ID),'makeTable'));
+
+setPermission('base_user', 'class','login', 'Everyone');
+setPermission('base_user', 'class','logout','Registered');
+setPermission('base_user', 'class','create','Everyone');
+setPermission('base_user', 'object', 'groups', 'Gods');
 
 setPermission('base_user', 'object', 'clone', 'Nobody');
 setPermission('base_user', 'object', 'admin', 'Nobody');
 setPermission('base_user', 'object', 'xml', 'Nobody');
 setPermission('base_user', 'object', 'permissions', 'Nobody');
 setPermission('base_user', 'object', 'history', 'Nobody');
-setPermission('base_user', 'object', 'groups', 'Gods');
 
 include_once(SM_DIR . 'class.anonuser.php');
 
@@ -87,16 +92,14 @@ class base_user extends foowd_object
   {
     global $USER_SOURCE;
 
-    // If we don't have required elements, return early.
-    if ( !isset($userArray['username']) )
-      return FALSE;
-
     $foowd->track('base_user::fetchUser', $userArray);
 
     if ( isset($userArray['objectid']) )
       $where['objectid'] = $userArray['objectid'];
-    else
+    elseif ( isset($userArray['username']) )
       $where['title'] = $userArray['username'];
+    else
+      return FALSE;
 
     $user =& $foowd->getObj($where, $USER_SOURCE, FALSE);
     $foowd->track();
@@ -436,7 +439,8 @@ class base_user extends foowd_object
     if ( !$foowd->database->isTitleUnique($username, FALSE, $objectid, $USER_SOURCE, TRUE) )
       return 4;
 
-    $object = new base_user($foowd, $username, $password, $email, $objectid);
+    $class = USER_CLASS_NAME;
+    $object = new $class($foowd, $username, $password, $email, $objectid);
     if ( $object->objectid != 0 && $object->save($foowd) ) 
       return 0; // created ok
     else

@@ -100,7 +100,8 @@ form {
 }
 .separator {
     border-bottom: 1px solid #7a9294;
-    margin: 10px 0px;
+    margin: 15px 0px 10px 0px;
+    font-weight: bold;
 }
 .debug_output {
     font-size: small;
@@ -275,4 +276,10 @@ IMG {
 }
 .nothere {
     height: 1px;
+}
+.userstats {
+    width: 200px;
+}
+.userlist {
+    vertical-align: top;
 }

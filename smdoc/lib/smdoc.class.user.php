@@ -11,6 +11,7 @@
 
 setClassMeta('smdoc_user', 'User');
 setConst('USER_CLASS_ID', META_SMDOC_USER_CLASS_ID);
+setConst('USER_CLASS_NAME', 'smdoc_user');
 
 include_once(SM_DIR . 'class.user.php');
 
@@ -308,11 +309,11 @@ class smdoc_user extends base_user
     if ( $form->submitted() )
     {
       if ( $smtpServer->value != $this->SMTP_server )
-        $this->set('SMTP_server', inval($smtpServer->value));
-      if ( $smtpServer->value != $this->SMTP_server )
-        $this->set('IMAP_server', inval($smtpServer->value));
-      if ( $smtpServer->value != $this->SMTP_server )
-        $this->set('SM_version', inval($smtpServer->value));
+        $this->set('SMTP_server', intval($smtpServer->value));
+      if ( $imapServer->value != $this->IMAP_server )
+        $this->set('IMAP_server', intval($imapServer->value));
+      if ( $smVersion->value != $this->SM_version )
+        $this->set('SM_version', intval($smVersion->value));
     }
     
     $form->addToGroup('stat',$smtpServer);
@@ -331,8 +332,6 @@ class smdoc_user extends base_user
   {
     $this->foowd->track('smdoc_user->method_view');
 
-    parent::method_view();
-    
     if ( $this->foowd->user->inGroup('Author', $this->creatorid) ) 
     {
       $this->foowd->template->assign('SM_version', $this->smver_to_string());
@@ -347,6 +346,8 @@ class smdoc_user extends base_user
       $nicks['IRC'] = $this->IRC;
     if ( !empty($nicks) )
       $this->foowd->template->assign('nicks', $nicks);
+
+    parent::method_view();
 
     $this->foowd->track(); 
   }

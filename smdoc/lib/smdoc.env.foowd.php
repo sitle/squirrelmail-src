@@ -201,16 +201,14 @@ class smdoc extends foowd
       switch($where['classid'])
       {
         case USER_CLASS_ID: 
-          global $USER_SOURCE;
-          $in_source = $USER_SOURCE;
-          unset($where['classid']);
+          $new_obj =& smdoc_user::fetchUser($this, $where);
           break;
         case EXTERNAL_CLASS_ID:
           if ( isset($where['objectid']) )
             $oid = $where['objectid'];
           else
             $oid = $this->config_settings['site']['default_objectid'];
-          $new_obj =& smdoc_external::factory($this, $oid);
+            $new_obj =& smdoc_external::factory($this, $oid);
           break;
       }
     }
