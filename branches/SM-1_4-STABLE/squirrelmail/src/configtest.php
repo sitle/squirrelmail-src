@@ -277,7 +277,7 @@ if (function_exists('mb_detect_encoding')) {
 echo "$IND recode - ";
 if (function_exists('recode')) {
     echo "Recode functions are available.<br />\n";
-} elseif ($use_php_recode) {
+} elseif (isset($use_php_recode) && $use_php_recode) {
     echo "Recode functions are unavailable.<br />\n";
     do_err('Your configuration requires recode support, but recode support is missing.');
 } else {
@@ -305,7 +305,7 @@ if ( (!ini_get('safe_mode')) ||
 
 // Pear DB tests
 echo "Checking database functions...<br />\n";
-if($addrbook_dsn || $prefs_dsn || $addrbook_global_dsn) {
+if(!empty($addrbook_dsn) || !empty($prefs_dsn) || !empty($addrbook_global_dsn)) {
     @include_once('DB.php');
     if (class_exists('DB')) {
         echo "$IND PHP Pear DB support is present.<br />\n";
