@@ -84,7 +84,11 @@ function sqimap_read_data_list ($imap_stream, $pre, $handle_errors, &$response, 
                 while (!preg_match('/^\* [0-9]+ FETCH.*/', $read) &&
                        !preg_match("/^$pre (OK|BAD|NO)(.*)$/", $read)) {
                     $fetch_data[] = $read;
+                    $last = $read;
                     $read = sqimap_fgets($imap_stream);
+                }
+                if (isset($last) && preg_match('/^\)/', $last)) {
+                    array_pop($fetch_data);
                 }
                 $resultlist[] = $fetch_data;
                 break 1;
@@ -133,9 +137,29 @@ function sqimap_read_data_list ($imap_stream, $pre, $handle_errors, &$response, 
     }
 }
 
+
 function sqimap_read_data ($imap_stream, $pre, $handle_errors, &$response, &$message, $query = '') {
     $res = sqimap_read_data_list($imap_stream, $pre, $handle_errors, $response, $message, $query);
-    return $res[0];
+  
+    /* sqimap_read_data should be called for one response
+       but since it just calls sqimap_read_data_list which 
+       handles multiple responses we need to check for that
+       and merge the $res array IF they are seperated and 
+       IF it was a FETCH response. */
+  
+    if (isset($res[1]) && is_array($res[1]) && isset($res[1][0]) 
+        && preg_match('/^\* \d+ FETCH/', $res[1][0])) {
+        $result = array();
+        foreach($res as $index=>$value) {
+            $result = array_merge($result, $res["$index"]);
+        }
+    }
+    if (isset($result)) {
+        return $result;
+    }
+    else {
+        return $res[0];
+    }
 }
 
 /*
