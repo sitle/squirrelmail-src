@@ -753,7 +753,7 @@ function formatBody($imap_stream, $message, $color, $wrap_at) {
     // primary message. To add more of them, just put them in the
     // order that is their priority.
     global $startMessage, $username, $key, $imapServerAddress, $imapPort, $body,
-           $show_html_default, $has_unsafe_images, $sort;
+           $show_html_default, $view_unsafe_images, $has_unsafe_images, $sort;
 
     if ( !check_php_version(4,1) ) {
         global $_GET;
@@ -1001,18 +1001,14 @@ function formatAttachments($message, $ent_id, $mailbox, $id) {
     return( $body );
 }
 
-
 /** this function decodes the body depending on the encoding type. **/
 function decodeBody($body, $encoding) {
   $body = str_replace("\r\n", "\n", $body);
   $encoding = strtolower($encoding);
 
-  global $show_html_default;
-
   if ($encoding == 'quoted-printable' ||
       $encoding == 'quoted_printable') {
      $body = quoted_printable_decode($body);
-
 
      while (ereg("=\n", $body))
         $body = ereg_replace ("=\n", "", $body);
@@ -1020,7 +1016,6 @@ function decodeBody($body, $encoding) {
   } else if ($encoding == 'base64') {
      $body = base64_decode($body);
   }
-
   // All other encodings are returned raw.
   return $body;
 }
