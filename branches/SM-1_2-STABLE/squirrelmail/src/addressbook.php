@@ -340,7 +340,7 @@ if ($showaddrlist) {
                  '&nbsp;</TD>' .
                  '<TD VALIGN=top NOWRAP WIDTH="1%">&nbsp;' . $row['name'] .
                  '&nbsp;</TD>',
-                 '<TD VALIGN=top NOWRAP WIDTH="1%">&nbsp;'; 
+                 '<TD VALIGN=top WIDTH="1%">'; 
                 if ($compose_new_win == '1') {
                     echo '<a href="javascript:void(0)" onclick=comp_in_new(false,"compose.php?send_to='.rawurlencode($row['email']).'")>';
                 }
