@@ -151,4 +151,4 @@ xgettext --keyword=_ -keyword=N_  --default-domain=squirrelmail -j \
     --no-location -C ${SM_LOCALES_PATH}/independent_strings.txt --output=${SM_LOCALES_PATH}/po/squirrelmail.pot
 
 # print stats
-msgfmt --statistics ${SM_LOCALES_PATH}/po/squirrelmail.pot
+msgfmt --statistics ${SM_LOCALES_PATH}/po/squirrelmail.pot -o /dev/null
