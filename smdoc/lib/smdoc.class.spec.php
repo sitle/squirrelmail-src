@@ -1,6 +1,6 @@
 <?php
 /*
- * Copyright (c) 1999-2003 The SquirrelMail Project Team
+ * Copyright (c) 2003-2004 The SquirrelMail Project Team
  * Licensed under the GNU GPL. For full terms see the file COPYING.
  *
  * This file is an addition/modification to the 
@@ -32,7 +32,6 @@ setPermission('smdoc_spec', 'object', 'revert', 'dev');
  * @package smdoc
  * @subpackage text
  * @author Erin Schnabel
- * @author Brad Choate
  */
 class smdoc_spec extends smdoc_text_textile
 {

@@ -52,7 +52,7 @@ PATH_PROJECT=$PWD
 #  *
 #  * @var               string PATH_PHPDOC
 #  */
-PATH_PHPDOC=/home/elh/sqmail/phpDocumentor-1.2.3/phpdoc
+PATH_PHPDOC=<path to phpdocumentor install>/phpdoc
 
 #/**
 #  * where documentation will be put
