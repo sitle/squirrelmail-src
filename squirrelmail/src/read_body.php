@@ -821,10 +821,30 @@ echo                '</SMALL>' .
                 '</TD><TD WIDTH="33%" ALIGN="RIGHT">' .
                    '<SMALL>' ;
 
+
+/*
+ * Auto-Select identity for replies (Jonathan Angliss - 2002/09/25)
+ */
+ 
+$to_arr = formatRecipientString($message->header->to, 'to');
+$to_str = str_replace( array( '&gt;' , '&lt;' , '<' , '>' ) , '' , $to_arr['str']);
+$identity = '';
+$idents = getPref($data_dir, $username, 'identities');
+if (!empty($idents) && $idents > 1) {
+    for ($i = 1; $i < $idents; $i++) {
+		$ident_addr = getPref($data_dir , $username , 'email_address' . $i);
+		if ($to_str == $ident_addr) {
+            $identity = $i;
+            break;
+        }
+    }
+}
+
 $comp_uri = $base_uri . "src/compose.php?forward_id=$passed_id&amp;".
             "forward_subj=$url_subj&amp;".
 	    ($default_use_priority?"mailprio=$priority_level&amp;":'').
-            "mailbox=$urlMailbox&amp;ent_num=$ent_num";
+            "mailbox=$urlMailbox&amp;ent_num=$ent_num&amp;".
+			"identity=$identity";
 	     		   
 if ($compose_new_win == '1') {
     echo "<a href=\"javascript:void(0)\" onclick=\"comp_in_new(false,'$comp_uri')\"";
@@ -835,11 +855,14 @@ if ($compose_new_win == '1') {
     echo '>'.
     _("Forward") .
     '</A>&nbsp;|&nbsp;';
-
+	
+	
+	
 $comp_uri = $base_uri . "src/compose.php?send_to=$url_replyto&amp;".
             "reply_subj=$url_subj&amp;".
             ($default_use_priority?"mailprio=$priority_level&amp;":'').
-            "reply_id=$passed_id&amp;mailbox=$urlMailbox&amp;ent_num=$ent_num";
+            "reply_id=$passed_id&amp;mailbox=$urlMailbox&amp;ent_num=$ent_num".
+			"&amp;identity=$identity";
 	        
 if ($compose_new_win == '1') {
     echo "<a href=\"javascript:void(0)\" onclick=\"comp_in_new(false,'$comp_uri')\"";
@@ -854,7 +877,8 @@ if ($compose_new_win == '1') {
 $comp_uri = $base_uri . "src/compose.php?send_to=$url_replytoall&amp;".
             "send_to_cc=$url_replytoallcc&amp;reply_subj=$url_subj&amp;".
             ($default_use_priority?"mailprio=$priority_level&amp;":'').
-            "reply_id=$passed_id&amp;mailbox=$urlMailbox&amp;ent_num=$ent_num";
+            "reply_id=$passed_id&amp;mailbox=$urlMailbox&amp;ent_num=$ent_num".
+			"&amp;identity=$identity";
 
 if ($compose_new_win == '1') {
     echo "<a href=\"javascript:void(0)\" onclick=\"comp_in_new(false,'$comp_uri')\"";
