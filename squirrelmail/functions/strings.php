@@ -23,7 +23,7 @@ $version = '1.4.3 [CVS]';
  * $sm_internal_version = array (release, major, minor)
  */
 global $SQM_INTERNAL_VERSION;
-$SQM_INTERNAL_VERSION = array(1,4,2);
+$SQM_INTERNAL_VERSION = array(1,4,3);
 
 /**
  * There can be a circular issue with includes, where the $version string is
