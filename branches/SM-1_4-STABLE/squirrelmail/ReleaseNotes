@@ -19,7 +19,7 @@ All about this Release!
 This is the fifth release of the stable 1.4.x series. It fixes many
 bugs discovered since the last release, separates out the translations
 to a separate package, greatly improves charset decoding and fixes
-a security issue.
+two security issues.
 
 See the Major Updates section of this file for more about the 
 1.4.x stable series.  For changes in this release, please refer to
@@ -45,6 +45,9 @@ Security Issues
 
 This release addresses a remotely exploitable cross site scripting
 vulnerability in the decodeHeader() function, known as CAN-2004-1036.
+
+Also fixed is an issue in prefs.php which allowed for insecure file
+inclusion. The problem was introduced in version 1.4.3.
 
 
 Major updates
