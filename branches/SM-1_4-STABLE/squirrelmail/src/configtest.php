@@ -344,3 +344,4 @@ if($addrbook_dsn || $prefs_dsn || $addrbook_global_dsn) {
 </html>
 <?php
 // vim: et ts=4
+?>
