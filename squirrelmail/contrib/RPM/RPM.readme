@@ -1,42 +1,29 @@
 SquirrelMail RPM version
 -------------------------
 
-This RPM installs the files in the following directories:
-- Base installation goes into /var/www/squirrelmail. This is contrary
-  to the discussion which took place on the list. People insist that
-  we should be installing in /usr/share/squirrelmail, but I am
-  installing into /var/www/squirrelmail for two reasons: sanity, and
-  backup. People may add their own plugins/themes/etc to squirrelmail and
-  they tend to backup /var/www, but not /usr/share. If you disagree with
-  me, edit the squirrelmail.spec file and redefine the %{basedir} to be
-  /usr/share/squirrelmail. A symlink is created from /var/www/html/webmail 
-  to the base install dir so squirrelmail works right after install.
-- User preferencese directory is /var/lib/squirrelmail/prefs
-- Attachment dir is in /var/spool/squirrelmail/attach
-- Your config file is in /etc/squirrelmail. It is symlinked into the
-  main three simply because squirrelmail expects it to be there.
+The RPM installation closely follows the one provided (and maintained)
+by Red Hat. I hear they have a QA department... :)
 
-Additionally, there is a daily cron script, which will sanitize your
-attachments directory for any abandoned cruft. It will
-delete files which are 10 days old and more.
-
-For any support please write to squirrelmail-users@lists.sourceforge.net, 
-and add [RPM] in the subject line.
-
-UPGRADING FROM OLDER VERSIONS OF THIS RPM (1.2.2 and below)
+UPGRADING FROM OLDER VERSIONS OF THIS RPM (1.2.7 and below)
 -----------------------------------------------------------
 
-File locations changed from the old version. You should update your
-installation because it will cause problems some time in the future.
-a) mv /var/squirrelmail/prefs/* /var/lib/squirrelmail/prefs/
-b) edit your /etc/squirrelmail/config.php and change:
-	$data_dir	= "/var/squirrelmail/prefs"
-	to
-	$data_dir	= "/var/lib/squirrelmail/prefs"
-and
-	$attachment_dir = "/var/squirrelmail/attach"
-	to
-	$attachment_dir = "/var/spool/squirrelmail/attach"
+Due to primary RPM maintainer switch, files have moved around
+again. Before you upgrade, do the following:
 
+rpm -e squirrelmail-poutils 
+
+Then:
+
+rpm -Uvh squirrelmail-1.2.8-1.7.x.noarch.rpm
+
+Check if you still have the directory "/var/www/squirrelmail". If you
+do, run the following to copy your plugins into the new place:
+
+cp -a /var/www/squirrelmail/plugins/* /usr/share/squirrelmail/plugins
+
+Hate mail will be redirected to /dev/null. :)
+
+-- 
 Cheers,
 Konstantin Riabitsev <icon@duke.edu>
+$Id$

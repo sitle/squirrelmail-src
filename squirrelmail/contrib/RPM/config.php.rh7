@@ -2,7 +2,8 @@
 
 /**
  * SquirrelMail Configuration File
- * Created using the configure script, conf.pl
+ * Default configuration for Red Hat Linux.
+ * $Id$
  */
 
 $config_version = '1.2.0';
@@ -10,8 +11,8 @@ $config_use_color = 2;
 
 $org_name      = "SquirrelMail";
 $org_logo      = '../images/sm_logo.png';
-$org_logo_width  = '308';
-$org_logo_height = '111';
+$org_logo_width  = 308;
+$org_logo_height = 111;
 $org_title     = "SquirrelMail $version";
 $signout_page  = '';
 $frame_top     = '_top';
@@ -134,6 +135,15 @@ $theme[30]['PATH'] = '../themes/random.php';
 $theme[30]['NAME'] = 'Random (Changes every login)';
 $theme[31]['PATH'] = '../themes/midnight.php';
 $theme[31]['NAME'] = 'Midnight';
+$theme[32]['PATH'] = '../themes/alien_glow.php';
+$theme[32]['NAME'] = 'Alien Glow';
+$theme[33]['PATH'] = '../themes/dark_green.php';
+$theme[33]['NAME'] = 'Dark Green';
+$theme[34]['PATH'] = '../themes/penguin.php';
+$theme[34]['NAME'] = 'Penguin';
+$theme[35]['PATH'] = '../themes/saloon.php';
+$theme[35]['NAME'] = 'Saloon';
+
 
 $default_use_javascript_addr_book = false;
 $addrbook_dsn = '';
