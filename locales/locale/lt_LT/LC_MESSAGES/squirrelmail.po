@@ -1,18 +1,18 @@
 # Squirrelmail Lithuanian Translation.
-# Copyright (c) 1999-2004 The Squirrelmail Development Team
+# Copyright (c) 1999-2002 The Squirrelmail Development Team
 # Tomas Kuliavas <tokul@users.sourceforge.net>, 2001.
-# $Id$
+#
 msgid ""
 msgstr ""
-"Project-Id-Version: squirrelmail\n"
+"Project-Id-Version: $Id$\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-02-24 20:39+0200\n"
-"PO-Revision-Date: 2004-02-29 16:58+0200\n"
+"POT-Creation-Date: 2003-10-05 12:27+0300\n"
+"PO-Revision-Date: 2003-09-21 14:04+0300\n"
 "Last-Translator: Tomas Kuliavas <tokul@users.sourceforge.net>\n"
 "Language-Team: Lithuanian <squirrelmail-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit"
+"Content-Transfer-Encoding: 8bit\n"
 
 msgid "Address Book"
 msgstr "Adresų knyga"
@@ -720,7 +720,7 @@ msgid "forget"
 msgstr "pamiršti"
 
 msgid "Current Search"
-msgstr "Dabartinė paieška"
+msgstr "Esama paieška"
 
 msgid "All Folders"
 msgstr "Visuose aplankuose"
@@ -1011,7 +1011,7 @@ msgid "Unknown user or password incorrect."
 msgstr "Nežinomas vartotojas arba klaidingas slaptažodis."
 
 msgid "Click here to try again"
-msgstr "Spragtelėkite ant nuorodos norėdami bandyti vėl"
+msgstr "Spragtelėkite ant nuorodos norėdami pabandyti dar kartą"
 
 #, c-format
 msgid "Click here to return to %s"
@@ -1159,7 +1159,7 @@ msgid "(no subject)"
 msgstr "(tema nenurodyta)"
 
 msgid "Unknown Sender"
-msgstr "Nežinomas Siuntėjas"
+msgstr "Nežinomas siuntėjas"
 
 msgid "Unknown response from IMAP server: "
 msgstr "Nesuprantamas atsakymas iš IMAP serverio"
@@ -1284,9 +1284,6 @@ msgstr "parsisiųsti"
 
 msgid "sec_remove_eng.png"
 msgstr "sec_remove_lt_LT.png"
-
-msgid "This external link will open in a new window"
-msgstr "Ši išorinė nuoroda bus atverta naujame lange"
 
 #, c-format
 msgid "Option Type '%s' Not Found"
@@ -1419,11 +1416,8 @@ msgstr "Žinučių rodymas ir rašymas"
 msgid "Wrap Incoming Text At"
 msgstr "Simbolių skaičius, iki kurio apriboti atėjusias žinutes"
 
-msgid "Width of Editor Window"
-msgstr "Redaktoriaus Lango Plotis"
-
-msgid "Height of Editor Window"
-msgstr "Redaktoriaus Lango Aukštis"
+msgid "Size of Editor Window"
+msgstr "Redaktoriaus lango dydis"
 
 msgid "Location of Buttons when Composing"
 msgstr "Mygtukų vieta rašant laiškus"
@@ -1481,18 +1475,6 @@ msgstr "Žinutės kūrimo lango aukštis"
 
 msgid "Append Signature before Reply/Forward Text"
 msgstr "Dėti parašą prieš atsakymo/persiuntimo tekstą"
-
-msgid "Cursor Position when Replying"
-msgstr "Žymeklio padėtis atsakant"
-
-msgid "To: field"
-msgstr "Kam: laikas"
-
-msgid "Focus in body"
-msgstr "Fokusuoti tekste"
-
-msgid "Select body"
-msgstr "Pasirinkti žinutės tekstą"
 
 msgid "Enable Sort by of Receive Date"
 msgstr "Įjungti rūšiavimą pagal gavimo datą"
@@ -1573,22 +1555,13 @@ msgid "Unseen and Total"
 msgstr "Naujos žinutės ir bendras skaičius"
 
 msgid "Enable Collapsible Folders"
-msgstr "Aktyvuoti Išsiskleidžiančius Aplankus"
+msgstr "Aktyvuoti išsiskleidžiančius aplankus"
 
 msgid "Enable Cumulative Unread Message Notification"
 msgstr "Įjungti bendrus perspėjimus apie naujas žinutes"
 
 msgid "Show Clock on Folders Panel"
 msgstr "Rodyti laikrodį aplankų skyriuje"
-
-msgid "Show weekday and time"
-msgstr "Rodyti savaitės dieną ir laiką"
-
-msgid "Show time with seconds"
-msgstr "Rodyti laiką su sekundėmis"
-
-msgid "Show time"
-msgstr "Rodyti laiką"
 
 msgid "No Clock"
 msgstr "Jokio laikrodžio"
@@ -1665,9 +1638,6 @@ msgstr "AUTORIUS pasakė"
 
 msgid "Quote Who XML"
 msgstr "Quote Who XML"
-
-msgid "On DATE, AUTHOR Said"
-msgstr "Tą ir tą dieną AUTORIUS pasakė"
 
 msgid "User-Defined"
 msgstr "Nustato vartotojas"
@@ -1986,87 +1956,6 @@ msgid ""
 "remotely."
 msgstr "Šis priedas leidžia keisti SquirrelMail konfiguraciją."
 
-msgid "Submit a Bug Report"
-msgstr "Nusiųsti pranešimą apie klaidą"
-
-msgid ""
-"Before you send your bug report, please make sure to check this checklist "
-"for any common problems."
-msgstr ""
-"Prieš siusdami pranešimą apie klaidą, patikrinkite žemiau išvardintus "
-"punktus."
-
-msgid ""
-"Make sure that you are running the most recent copy of <a href=\"http://www."
-"squirrelmail.org/\">SquirrelMail</a>."
-msgstr ""
-"Įsitikinkite, kad Jūs naudojate paskutinę <a href=\"http://www.squirrelmail."
-"org/\">SquirrelMail</a> versiją."
-
-#, c-format
-msgid "You are currently using version %s."
-msgstr "Jūsų šiuo metu naudojama versija yra %s."
-
-msgid ""
-"Check to see if you bug is already listed in the <a href=\"http://"
-"sourceforge.net/bugs/?group_id=311\">Bug List</a> on SourceForge. If it is, "
-"we already know about it and are trying to fix it."
-msgstr ""
-"Patikrinkite, ar panaši klaida nėra užregistruota tarp projekto SourceForge "
-"<a href=\"http://sourceforge.net/bugs/?group_id=311\">Klaidų sąraše</a>. Jei "
-"klaida ten užregistruota, programuotojai jau žino apie ją."
-
-msgid ""
-"Try to make sure that you can repeat it. If the bug happens sporatically, "
-"try to document what you did when it happened. If it always occurs when you "
-"view a specific message, keep that message around so maybe we can see it."
-msgstr ""
-"Įsitikinkite, kad Jūs galite atgaminti klaidą. Jei klaida pasirodo "
-"atsitiktinai, pasistenkite užregistruoti, ką Jūs atlikote, kai tai įvyko. "
-"Jei klaida susijusi su tam tikra žinute, išsaugokite pilną tos žinutės "
-"kopiją. Programuotojams žinutės tekstas gali padėti."
-
-msgid ""
-"If there were warnings displayed above, try to resolve them yourself. Read "
-"the guides in the <tt>doc/</tt> directory where SquirrelMail was installed."
-msgstr ""
-"Jei pranešimas rodo kokius nors perspėjimus, pasistenkite juos išspręsti. "
-"Papildomos informacijos galite rasti dokumentuose tarp SquirrelMail "
-"instaliacijos <tt>doc/</tt> katalogo arba SquirrelMail svetainėje."
-
-msgid ""
-"Pressing the button below will start a mail message to the developers of "
-"SquirrelMail that will contain a lot of information about your system, your "
-"browser, how SquirrelMail is set up, and your IMAP server. It will also "
-"prompt you for information. Just fill out the sections at the top. If you "
-"like, you can scroll down in the message to see what else is being sent."
-msgstr ""
-"Paspausdus šį mygtuką sistema pradės kurti žinutę, skirtą SquirrelMail "
-"programuotojams. Žinutėje bus pateikta informacija apie Jūsų sistemą, "
-"naršyklę, dalį SquirrelMail nustatymų bei IMAP serverio informacija. Be to "
-"žinutė viršuje pateiks papildomus laukus, kuriuos reiktų užpildyti. Nueidami "
-"žemiau Jūs galite perskaityti visą informaciją, kuri bus išsiųsta."
-
-msgid ""
-"Please make sure to fill out as much information as you possibly can to give "
-"everyone a good chance of finding and removing the bug. Submitting your bug "
-"like this will not have it automatically added to the bug list on "
-"SourceForge, but someone who gets your message may add it for you."
-msgstr ""
-"Pasistenkite pateikti kiek galima daugiau informacijos, kad būtų lengviau "
-"aptikti ir pašalinti klaidą. Pranešimas apie klaidą nebus automatiškai "
-"įtrauktas į SourceForge klaidų sąrašą, tačiau kas nors perskaitęs žinutę, "
-"gali tai padaryti už jus."
-
-msgid "This bug involves"
-msgstr "Klaida susijusi su"
-
-msgid "the general program"
-msgstr "pačia programa"
-
-msgid "a specific plugin"
-msgstr "tam tikru priedu"
-
 msgid "Bug Reports:"
 msgstr "Klaidų pranešimai:"
 
@@ -2282,11 +2171,11 @@ msgstr "NEMOKAMAS - SPAMhaus - Gerai žinomų spamerių sąrašas"
 
 msgid ""
 "FREE, for now - SPAMCOP - An interesting solution that lists servers that "
-"have a very high spam to legit email ratio (85 percent or more)."
+"have a very high spam to legit email ratio (85% or more)."
 msgstr ""
 "NEMOKAMAS, šiuo metu - SPAMCOP - Įdomus sprendimas, kuris saugo serverius, "
-"kuriuose spamas sudaro didesnę dalį nuo bendro žinučių srauto (85 procentai "
-"ir daugiau)."
+"kuriuose spamas sudaro didesnę dalį nuo bendro žinučių srauto (85% ir "
+"daugiau)."
 
 msgid "FREE - dev.null.dk - I don't have any detailed info on this list."
 msgstr "NEMOKAMAS - dev.null.dk - Nėra informacijos apie šį sąrašą"
@@ -2294,16 +2183,16 @@ msgstr "NEMOKAMAS - dev.null.dk - Nėra informacijos apie šį sąrašą"
 msgid "FREE - visi.com - Relay Stop List. Very conservative OpenRelay List."
 msgstr "NEMOKAMAS - visi.com - Atvirų serverių sąrašas. Gana konservatyvus"
 
-msgid "FREE - ahbl.org Open Relays - Another list of Open Relays."
+msgid "FREE - 2mbit.com Open Relays - Another list of Open Relays."
 msgstr ""
-"NEMOKAMAS - ahbl.org atviri serveriai - Dar vienas atvirų serverių (Open "
-"Relay) sąrašas."
+"NEMOKAMAS - 2mbit.com atviri serveriai - Dar vienas atvirų serverių (Open "
+"Relay) sąrašas"
 
-msgid "FREE - ahbl.org SPAM Source - List of Direct SPAM Sources."
-msgstr "NEMOKAMAS - ahbl.org SPAM'o šaltiniai - Tiesioginių spamerių sąrašai."
+msgid "FREE - 2mbit.com SPAM Source - List of Direct SPAM Sources."
+msgstr "NEMOKAMAS - 2mbit.com SPAM'o šaltiniai - Tiesioginių spamerių sąrašai."
 
-msgid "FREE - ahbl.org SPAM ISPs - List of SPAM-friendly ISPs."
-msgstr "NEMOKAMAS - ahbl.org SPAM IPT - IPT, kurie palaiko spamą, sąrašas."
+msgid "FREE - 2mbit.com SPAM ISPs - List of SPAM-friendly ISPs."
+msgstr "NEMOKAMAS - 2mbit.com SPAM IPT - IPT, kurie palaiko spamą, sąrašas"
 
 msgid ""
 "FREE - Leadmon DUL - Another list of Dial-up or otherwise dynamically "
@@ -2941,16 +2830,8 @@ msgstr "Naujas paštas"
 msgid "SquirrelMail Notice:"
 msgstr "SquirrelMail informacija:"
 
-msgid "You have"
-msgstr "Jūs turite"
-
-#, c-format
-msgid "%s new message"
-msgstr "%s naują žinutę"
-
-#, c-format
-msgid "%s new messages"
-msgstr "%s naujų(as) žinučių(tes)"
+msgid "You have new mail!"
+msgstr "Jūs gavote naujų pašto žinučių!"
 
 msgid "NewMail Options"
 msgstr "Naujų žinučių nustatymai"
@@ -3000,170 +2881,6 @@ msgstr "Metiniai"
 msgid "Base Sent Folder"
 msgstr "Pagrindinis išsiųstų laiškų aplankas"
 
-msgid "Enabled"
-msgstr "Įjungta"
-
-msgid "Disable it"
-msgstr "Atjungti"
-
-msgid "Enable it"
-msgstr "Įjungti"
-
-msgid "Spam reporting"
-msgstr "Spamo pranešimai"
-
-msgid "SpamCop link is:"
-msgstr "SpamCop nuoroda yra:"
-
-msgid "Delete spam when reported:"
-msgstr "Ištrinti spamą pranešus:"
-
-msgid "Only works with email-based reporting"
-msgstr "Veikia tik su el.pašto pagrindu veikiančiais pranešimais"
-
-msgid "Spam Reporting Method:"
-msgstr "Pranešimų apie spamą metodas:"
-
-msgid "Quick email-based reporting"
-msgstr "Greiti el.pašto pranešimai"
-
-msgid "Thorough email-based reporting"
-msgstr "Sudėtiniai el.pašto pranešimai"
-
-msgid "Web-based form"
-msgstr "Tinklinė pranešimų forma"
-
-msgid "Your SpamCop authorization code:"
-msgstr "Jūsų SpamCop autorizavimo kodas:"
-
-msgid "see below"
-msgstr "žr. žemiau"
-
-msgid ""
-"SpamCop is a free service that greatly assists in finding the true source of "
-"the spam and helps in letting the proper people know about the abuse."
-msgstr ""
-"SpamCop yra nemokama tarnyba, kuri palengvina tikrųjų spamo siuntėjų "
-"aptikimą bei atsakingų asmenų informavimą apie Jūsų sistemų išnaudojimą."
-
-msgid ""
-"To use it, you must get a SpamCop authorization code. There is a free <a "
-"href=\"http://spamcop.net/anonsignup.shtml\">sign up page</a> so you can use "
-"SpamCop."
-msgstr ""
-"Norėdami pasinaudoti priedu, Jūs turite turėti SpamCop autorizavimo kodą. "
-"Yra nemokamas <a href=\"http://spamcop.net/anonsignup.shtml\">registracinis "
-"puslapis</a>, kuriame Jūs galite tą kodą gauti."
-
-msgid ""
-"<b>Before you sign up, be warned:</b> Some users have reported that the "
-"email addresses used with SpamCop find their way onto spam lists. To be "
-"safe, you can just create an email forwarding account and have all SpamCop "
-"reports get sent to there. Also, if it gets flooded with spam, you can then "
-"just delete that account with no worries about losing your real email "
-"address. Just go create an email forwarder somewhere (<a href=\"http://www."
-"yahoo.com/\">Yahoo!</a> has a <a href=\"http://dir.yahoo.com/"
-"Business_and_Economy/Business_to_Business/Communications_and_Networking/"
-"Internet_and_World_Wide_Web/Email_Providers/Forwarding_Services/"
-"Free_Forwarding/\">list of places</a>) so that messages from system "
-"administrators and whatnot can be sent to you."
-msgstr ""
-"<b>Prieš užsiregistruodami įsidėmėkite:</b> Dalis vartotojų pranešė, kad "
-"elektroninio pašto adresai, naudojami su SpamCop, pakliūna į spamo sąrašus. "
-"Norėdami būti saugūs, susikurkite elektroninio pašto persiuntimo sąskaitą ir "
-"nukreipkite visas SpamCop ataskaitas ten. Jei pašto dėžutė bus perpildyta "
-"spamo, Jūs paprasčiausiai jos atsikratysite ir taip nepakenksite tikrąjai "
-"savo pašto dėžei. Susikurkite el.pašto persiuntimą kokioje nors nemokamoje "
-"pašto sistemoje pvz. (<a href=\"http://www.yahoo.com/\">Yahoo!</a> yra "
-"pateiktas <a href=\"http://dir.yahoo.com/Business_and_Economy/"
-"Business_to_Business/Communications_and_Networking/"
-"Internet_and_World_Wide_Web/Email_Providers/Forwarding_Services/"
-"Free_Forwarding/\">tokias paslaugas teikiančių vietų sąrašas</a>), kad "
-"laiškai nuo sistemos administratorių ar kitų asmenų galėtų Jus pasiekti."
-
-msgid ""
-"Once you have signed up with SpamCop and have received your SpamCop "
-"authorization code, you need to enable this plugin -- just click the link "
-"above.  Once enabled, you go about your normal life.  If you encounter a "
-"spam message in your mailbox, just view it.  On the right-hand side, near "
-"the top of where the message is displayed, you will see a link to report "
-"this message as spam.  Clicking on it brings you to a confirmation page. "
-"Confirming that you want the spam report sent will do different things with "
-"different reporting methods."
-msgstr ""
-"Užsiregistravę SpamCop Jūs gausite autorizavimo kodą, kurį reikės įvesti "
-"atitinkamame priedo lauke. Turėdami kodą Jūs galėsite įjungti priedą - "
-"paprasčiausiai paspauskite aukščiau esančią nuorodą. Įjungę priedą grįžkite "
-"prie savo normalaus gyvenimo. Jei Jus pasieks spam žinutė, paprasčiausia "
-"peržiūrėkite ją. Šalia kitų žinutės antraščių ir valdymo mygtukų bus ir "
-"nuoroda, kuri leidžia nusiųsti pranešimą apie gautą spamą. Paspaudę nuorodą "
-"Jūs atversite patvirtinimo puslapį. Patvirtinę apie norą išsiųsti pranešimą "
-"apie spamą, Jūs pasirinktu metodu nusiųsite pranešimą į SpamCop sistemą."
-
-msgid "Email-based Reporting"
-msgstr "El.pašto pranešimai"
-
-msgid ""
-"Pressing the button forwards the message to the SpamCop service and will "
-"optionally delete the message.  From there, you just need to go to your "
-"INBOX and quite soon a message should appear from SpamCop.  (It gets sent to "
-"the account you registered with, so make sure that your mail forwarder "
-"works!) Open it up, click on the appropriate link at the top, and a new "
-"browser window will open."
-msgstr ""
-"Paspaudę šį mygtuką, Jūs nusiųsite informaciją apie gautą spamą į SpamCop "
-"tarnybos serverius ir gal būt pašalinsite spamo žinutę iš savo pašto dėžės. "
-"Tada Jums reikia sulaukti žinutės iš SpamCop. (žinutė atsiduria tame pašte, "
-"kurį panaudojote registruodamiesi. Įsitikinkite kad Jūsų pašto persiuntimas "
-"veikia!)? Atverkite gautą žinutę ir paspauskite atitinkamą nuorodą, kad "
-"patvirtinti spamą."
-
-msgid ""
-"Currently, the quick reporting just forwards the request to the thorough "
-"reporting.  Also, it appears that this is for members (non-free) only. "
-"Hopefully this will change soon."
-msgstr ""
-"Šiuo metu greitas persiuntimas tik persiunčia užklausą į standartinį el."
-"pašto pranešimų metodą. Be to panašu kad tai veikia tik su mokamais SpamCop "
-"dalyviais. Gal tai kada nors pasikeis."
-
-msgid "Web-based Reporting"
-msgstr "Tinklinė pranešimų forma"
-
-msgid ""
-"When you press the button on the confirmation page, this will pop open a new "
-"browser window and the SpamCop service should appear inside. The message "
-"will not be deleted (working on that part), but you won't need to wait for a "
-"response email to start the spam reporting."
-msgstr ""
-"Paspaudę šį mygtuką Jūs atversite naują naršyklės langą su SpamCop tarnybos "
-"pranešimų apdorojimo forma. Žinutė nebus ištrinta (bandoma tai ištaisyti), "
-"bet Jums nereiks laukti SpamCop patvirtinimo žinutės, kad pratęsti pranešimo "
-"apie spamą pateikimą."
-
-msgid ""
-"The SpamCop service will display information as it finds it, so scroll down "
-"until you see a form button.  It might pause a little while it is looking up "
-"information, so be a little patient.  Read what it says, and submit the "
-"spam.  Close the browser window.  Press Cancel or click on the appropriate "
-"mail folder to see messages and/or delete the spam."
-msgstr ""
-"SpamCop tarnyba išanalizuos Jūsų nusiųsta žinutės tekstą ir puslapio "
-"apačioje pateiks mygtuką, kuris nusiųs informaciją apie spamą atitinkamoms "
-"tarnyboms. Informacijos analizė gali šiek tiek užtrukti, būkite kantrūs. "
-"Perskaitykite ten pateiktą analizės informaciją ir nusiųskite pranešimą. "
-"Uždarykite naršyklės langą. Paspauskite „Atšaukti“ arba pereikite į "
-"atitinamą žinučių aplanką ir ištrinkite gautą spamą."
-
-msgid ""
-"<b>For more information</b> about SpamCop, it's services, spam in general, "
-"and many related topics, try reading through SpamCop's <a href=\"http://"
-"spamcop.net/help.shtml\">Help and Feedback</a> section."
-msgstr ""
-"<b>Norėdami gauti daugiau informacijos</b> apie SpamCop tarnybą bei apie "
-"spamą bendrai, pasiskaitykite SpamCop pateikiamą informaciją <a href="
-"\"http://spamcop.net/help.shtml\">Pagalbos ir atgalinio ryšio</a> skyriuose."
-
 msgid "Report as Spam"
 msgstr "Pranešti apie spamą"
 
@@ -3178,17 +2895,6 @@ msgstr ""
 "Padėkite kovoti prieš nepriimtinus masinius laiškus. SpamCop priedas "
 "įvertina nepriimtino laiško antraštes ir nustato adresus, kuriems reiktų "
 "skųstis. Tai yra gana greitas, protingas ir lengvai naudojamas įrankis."
-
-msgid ""
-"Sending this spam report will give you back a reply with URLs that you can "
-"click on to properly report this spam message to the proper authorities. "
-"This is a free service.  By pressing the \"Send Spam Report\" button, you "
-"agree to follow SpamCop's rules/terms of service/etc."
-msgstr ""
-"Nusiuntę pranešimą apie spamą, Jūs sulauksite atsakymo su adresu, kuriuo Jūs "
-"galite tvarkingai informuoti apie gautą spamą atsakingus asmenis. Tai yra "
-"nemokama tarnyba. Siųsdami pranešimus apie spamą, Jūs turite laikytis "
-"SpamCop nustatytų naudojimosi taisyklių."
 
 msgid "SpellChecker Options"
 msgstr "Rašybos tikrinimo nustatymai"
@@ -3644,43 +3350,33 @@ msgstr "Kurį vertėją naudoti gavus laiškus kita kalba?"
 msgid "%s to %s"
 msgstr "iš %s į %s"
 
-#, c-format
 msgid "English"
 msgstr "anglų"
 
-#, c-format
 msgid "Chinese"
 msgstr "kinų"
 
-#, c-format
 msgid "French"
 msgstr "prancūzų"
 
-#, c-format
 msgid "German"
 msgstr "vokiečių"
 
-#, c-format
 msgid "Italian"
 msgstr "italų"
 
-#, c-format
 msgid "Japanese"
 msgstr "japonų"
 
-#, c-format
 msgid "Korean"
 msgstr "korėjiečių"
 
-#, c-format
 msgid "Portuguese"
 msgstr "portugalų"
 
-#, c-format
 msgid "Spanish"
 msgstr "ispanų"
 
-#, c-format
 msgid "Russian"
 msgstr "rusų"
 
@@ -3702,7 +3398,6 @@ msgstr "čekų"
 msgid "Danish"
 msgstr "danų"
 
-#, c-format
 msgid "Dutch"
 msgstr "olandų"
 
@@ -3712,7 +3407,6 @@ msgstr "ispanų (euro)"
 msgid "Finnish"
 msgstr "suomių"
 
-#, c-format
 msgid "Greek"
 msgstr "graikų"
 
@@ -3767,310 +3461,315 @@ msgstr "Interfeiso kalba"
 msgid "Translation direction"
 msgstr "Vertimo kryptis"
 
-msgid "Add to:"
-msgstr "Įtraukti į:"
-
-msgid "Add to address book"
-msgstr "Įtraukti į adresų knygą"
-
-msgid "Your Message has been sent."
-msgstr "Jūsų žinutė išsiųsta."
-
-msgid "Bypass Trash"
-msgstr "Nesaugoti šiukšliadėžėje"
-
-msgid "Please enter something to search for"
-msgstr "Įveskite ko norite ieškoti"
-
-msgid "There must be at least one criteria to search for"
-msgstr "Turi būti nurodyta bent viena paieškos sąlyga"
-
-msgid "Error in criteria argument"
-msgstr "Klaida tarp paieškos salygos parametrų"
-
-msgid "(Illegal date)"
-msgstr "(Neteisinga data)"
-
-msgid "(Wrong date)"
-msgstr "(Klaidinga data)"
-
-msgid "In"
-msgstr "tarp"
-
-msgid "(Missing argument)"
-msgstr "(Trūksta parametro)"
-
-msgid "(Spurious argument)"
-msgstr "(Klaidingas parametras)"
-
-msgid "Saved Searches"
-msgstr "Išsaugotos paieškos"
-
-msgid "Missing"
-msgstr "Trūksta"
-
-msgid "and&nbsp;subfolders:"
-msgstr "ir&nbsp;susijusiuose&nbsp;aplankuose:"
-
-msgid "Exclude Criteria:"
-msgstr "Atmetimo sąlyga:"
-
-msgid "Search Criteria"
-msgstr "Paieškos sąlyga"
-
-msgid "Add New Criteria"
-msgstr "Pridėti naują sąlygą"
-
-msgid "Remove Excluded Criteria"
-msgstr "Pašalinti atmetimo sąlygą"
-
-msgid "Remove All Criteria"
-msgstr "Pašalinti visas sąlygas"
-
-msgid "Answered"
-msgstr "Atsakyta"
-
-msgid "Before"
-msgstr "Prieš"
-
-msgid "Message Body"
-msgstr "Žinutės tekstas"
-
-msgid "Deleted"
-msgstr "Ištrinta"
-
-msgid "Draft"
-msgstr "Juodraštis"
-
-msgid "Flagged"
-msgstr "Pažymėta"
-
-msgid "Sent By"
-msgstr "Siųsta nuo"
-
-msgid "Header Field"
-msgstr "Antraštės laukas"
-
-msgid "Keyword"
-msgstr "Raktas"
-
-msgid "Larger Than"
-msgstr "Didesnė nei"
-
-msgid "Old"
-msgstr "Sena"
-
-msgid "On"
-msgstr "tarp"
-
-msgid "Recent"
-msgstr "Nauja"
-
-msgid "Seen"
-msgstr "Peržiūrėta"
-
-msgid "Sent Before"
-msgstr "Išsiųsta prieš"
-
-msgid "Sent On"
-msgstr "Išsiųsta"
-
-msgid "Sent Since"
-msgstr "Išsiųsta nuo"
-
-msgid "Since"
-msgstr "Nuo"
-
-msgid "Smaller Than"
-msgstr "Mažesnė nei"
-
-msgid "Subject Contains"
-msgstr "Tema turi"
-
-msgid "Header and Body"
-msgstr "Antraštės ir tekstas"
-
-msgid "Sent To"
-msgstr "Išsiųsta adresu"
-
-msgid "Not"
-msgstr "ne"
-
-msgid "And In"
-msgstr "ir tarp"
-
-msgid "Or In"
-msgstr "arba tarp"
-
-msgid "And"
-msgstr "ir"
-
-msgid "Or"
-msgstr "arba"
-
-msgid "Folder List"
-msgstr "Aplankų sąrašas"
-
-msgid "Possible reason : "
-msgstr "Galima priežastis : "
-
-msgid "The imap server failed to handle threading."
-msgstr "Imap serveris negali apdoroti sekų."
-
-msgid "Click here to unset thread view for this mailbox and start again."
-msgstr "Paspauskite čia norėdami atšaukti aplanko sekų peržiūros režimą ir tęsti darbą."
-
-msgid "ERROR : Bad function call."
-msgstr "KLAIDA : Neteisingai iškviesta funkcija"
-
-msgid "Reason:"
-msgstr "Priežastis:"
-
-msgid "Click here to change the sorting of the message list"
-msgstr "Paspauskite čia norėdami pakeisti žinučių sąrašo rūšiavimo tvarką"
-
-msgid "Message Flags Icon Theme"
-msgstr "Žinučių Požymių Ženklų Tema"
-
-msgid "Length of From/To Field (0 for full)"
-msgstr "Didžiausias Nuo/Kam lauko ilgis (0 atitinka neribotą ilgį)"
-
-msgid "Length of Subject Field (0 for full)"
-msgstr "Didžiausias temos lauko ilgis (0 atitinka neribotą ilgį)"
-
-msgid "Show recipient name if the message is from your default identity"
-msgstr "Rodyti gavėjo vardą, jei žinutė yra nuo Jūsų standartinio ID"
-
-msgid "Strip signature when replying"
-msgstr "Pašalinti parašą atsakant į laišką"
-
-msgid "Show 'Delete & Prev/Next' Links"
-msgstr "Rodyti 'Trynti ir eiti toliau' nuorodas"
-
-msgid "Save Replies with Original Message"
-msgstr "Išsaugoti atsakymus kartu su pradine žinute"
-
-msgid "Enable Collapsable Folders"
-msgstr "Aktyvuoti išsiskleidžiančius aplankus"
-
-msgid "Folder"
-msgstr "Aplankas"
-
-msgid "Subfolder"
-msgstr "Žemesnio lygio aplankas"
-
-msgid "Global address book DSN"
-msgstr "Bendros adresų knygos DSN"
-
-msgid "Global address book table"
-msgstr "Bendros adresų knygos lentelė"
-
-msgid "Allow writing into global address book"
-msgstr "Leisti rašyti į bendrą adresų knygą"
-
-msgid "Allow listing of global address book"
-msgstr "Rodyti bendros adresų knygos turinį"
-
-msgid "Language settings"
-msgstr "Kalbos nustatymai"
-
-msgid "Show alternative language names"
-msgstr "Rodyti alternatyvius kalbų pavadinimus"
-
-msgid "Available languages"
-msgstr "Naudojamos kalbos"
-
-msgid "Use agresive decoding"
-msgstr "Naudoti agresyvų dekodavimą"
-
-msgid "Tweaks"
-msgstr "Specialūs perjungimai"
-
-msgid "Use advanced tree folder listing"
-msgstr "Naudoti dhtml aplankų medį"
-
-msgid "Use old folder listing functions"
-msgstr "Naudoti senąsias aplankų sąrašo funkcijas"
-
-msgid "Use php recode functions"
-msgstr "Naudoti php recode funkcijas"
-
-msgid "Use php iconv functions"
-msgstr "Naudoti php iconv funkcijas"
-
-msgid ""
-"Note: it is recommended that you configure your system using conf.pl, and "
-"not this plugin. conf.pl contains additional information regarding the "
-"purpose of variables and appropriate values, as well as additional "
-"verification steps."
-msgstr ""
-"Pastaba: rekomenduojama SquirrelMail konfiguruoti naudojant conf.pl "
-"scenarijų, o ne šį priedą. conf.pl pateikia daugiau informacijos apie "
-"kintamųjų paskirtį ir galimas reikšmes, bei papildomus optimizavimo įrankius."
-
-msgid ""
-"Run or consult conf.pl should you run into difficulty with your "
-"configuration."
-msgstr ""
-"Paleiskite arba patikrinkite conf.pl, jei Jums kils kokios nors problemos su "
-"Jūsų nustatymais."
-
-msgid "No POP3 servers configured yet."
-msgstr "Nesukonfiguruotas nei vienas POP serveris"
-
-msgid "Click here to go to the options page."
-msgstr "Spragtelėkite ant nuorodos norėdami nueiti į nustatymų puslapį."
-
-msgid "Spam Service Type:"
-msgstr "Spamcop Tarnybos Tipas:"
-
-msgid "Free reporting"
-msgstr "Nemokama tarnyba"
-
-msgid "Member services"
-msgstr "Narių tarnyba"
-
-msgid ""
-"The SpamCop service will display information as it finds it, so scroll down "
-"until you see a form button. It might pause a little while it is looking up "
-"information, so be a little patient. Read what it says, and submit the spam. "
-"Close the browser window.  Press Cancel or click on the appropriate mail "
-"folder to see messages and/or delete the spam."
-msgstr ""
-"SpamCop tarnyba išanalizuos Jūsų nusiųsta žinutės tekstą ir puslapio "
-"apačioje pateiks mygtuką, kuris nusiųs informaciją apie spamą atitinkamoms "
-"tarnyboms. Informacijos analizė gali šiek tiek užtrukti, būkite kantrūs. "
-"Perskaitykite ten pateiktą analizės informaciją ir nusiųskite pranešimą. "
-"Uždarykite naršyklės langą. Paspauskite „Atšaukti“ arba pereikite į "
-"atitinkamą žinučių aplanką ir ištrinkite gautą spamą."
-
-msgid "Spamcop Service Type"
-msgstr "Spamcop Tarnybos Tipas"
-
-msgid ""
-"Service type option allows selecting which spamcop services you are using. "
-"Member services use different web reporting forms  and does not display "
-"nags. You can purchase these services, if you want to support SpamCop."
-msgstr ""
-"Tarnybos tipo nustatymas leidžia pasirinkti Jūsų naudojamą Spamcop tarnybos "
-"tipą. Narių tarnyba naudoja kitas tinklinių pranešimų formas ir nebesiūlo sumokėti už "
-"spamcop narystę. Jūs galite įsigyti šias Spamcop paslaugas, jei norite palaikyti "
-"SpamCop jų kovoje su spameriais."
-
-msgid "Filipino (Tagalog)"
-msgstr "Filipiniečių (Tagalogų)"
-
-#, c-format
-msgid "Simplified Chinese"
-msgstr "Supaprastina Kinų (KLR)"
-
-#, c-format
-msgid "Traditional Chinese"
-msgstr "Tradicinė Kinų (Taivanas)"
-
 msgid "Delivery error report"
 msgstr "Ataskaita apie pristatymo klaidą"
 
 msgid "Undelivered Message Headers"
 msgstr "Nepristatytos žinutės antraštės"
 
+#~ msgid "refresh unseen/total info"
+#~ msgstr "atnaujinti nauja/viso skaičius"
+
+#~ msgid ""
+#~ "FREE - Osirusoft Relays - Osirusofts list of verified open relays. Seems "
+#~ "to include servers used by abuse@uunet.net auto-replies too."
+#~ msgstr ""
+#~ "NEMOKAMAS - Osirusoft Relays - Osirusoft saugo patikrintus atvirų pašto "
+#~ "serverių sarašus. Panašu, kad įtraukia ir abuse@uunet.net pateikiamus "
+#~ "adresus."
+
+#~ msgid "FREE - Osirusoft Dialups - Osirusofts Dialup Spam Source list."
+#~ msgstr ""
+#~ "NEMOKAMAS - Osirusoft Dialups - Osirusoft dinaminių adresų, iš kurių "
+#~ "siunčiami spam tipo laiškai, sąrašas"
+
+#~ msgid ""
+#~ "FREE - Osirusoft Confirmed Spam Source - Sites that continually spam and "
+#~ "have been manually added after multiple nominations. Use with caution. "
+#~ "Seems to catch abuse auto-replies from some ISPs."
+#~ msgstr ""
+#~ "NEMOKAMAS - Osirusoft Confirmed Spam Source - Adresai, kurie nuolat "
+#~ "siuntinėja spamą ir kurie buvo įtraukti dėl pasikartojančių skundų. "
+#~ "Reiktų naudoti atsargiai. Atrodo, kad pagauna ir dalies IPT antispaminius "
+#~ "atsakymus."
+
+#~ msgid ""
+#~ "FREE - Osirusoft Smart Hosts - List of hosts that are secure but relay "
+#~ "for other mail servers that are not secure."
+#~ msgstr ""
+#~ "NEMOKAMAS - Osirusoft Smart Hosts - Serveriai, kurie nėra atviri, tačiau "
+#~ "priimantys paštą iš kitų neapsaugotų serverių."
+
+#~ msgid ""
+#~ "FREE - Osirusoft Spamware Developers - It is believed that these are IP "
+#~ "ranges of companies that are known to produce spam software. Seems to "
+#~ "catch abuse auto-replies from some ISPs."
+#~ msgstr ""
+#~ "NEMOKAMAS - Osirusoft Spamware Developers - Manoma, kad šie IP priklauso "
+#~ "kompanijoms, kurios gamina programas, naudojamas spamui. Atrodo, kad "
+#~ "pagauna ir dalies IPT automatinius antispamo atsakymus."
+
+#~ msgid ""
+#~ "FREE - Osirusoft Unconfirmed OptIn Servers - List of listservers that opt "
+#~ "users in without confirmation."
+#~ msgstr ""
+#~ "NEMOKAMAS - Osirusoft Unconfirmed OptIn Servers - Grupinių žinučių "
+#~ "(mailing lists) serverių, kurie įtraukia adresus negavę iš adresato "
+#~ "patvirtinimo, sąrašai. "
+
+#~ msgid ""
+#~ "FREE - Osirusoft Insecure formmail.cgi scripts - List of insecure "
+#~ "formmail.cgi scripts. (planned)."
+#~ msgstr ""
+#~ "NEMOKAMAS - Osirusoft pažeidžiami formmail.cgi skriptai - Nesaugių "
+#~ "frommail.cgi skriptų sąrašai. (Planuojamas)"
+
+#~ msgid "FREE - Osirusoft Open Proxy Servers - List of Open Proxy Servers."
+#~ msgstr ""
+#~ "NEMOKAMAS - Osirusoft atviri proxy serveriai - Atvirų proxy serverių "
+#~ "sąrašai."
+
+#~ msgid "Please enter something to search for"
+#~ msgstr "Įveskite ko norite ieškoti"
+
+#~ msgid "There must be at least one criteria to search for"
+#~ msgstr "Turi būti nurodyta bent viena paieškos sąlyga"
+
+#~ msgid "Error in criteria argument"
+#~ msgstr "Klaida tarp paieškos salygos parametrų"
+
+#~ msgid "(Illegal date)"
+#~ msgstr "(Neteisinga data)"
+
+#~ msgid "(Wrong date)"
+#~ msgstr "(Klaidinga data)"
+
+#~ msgid "In"
+#~ msgstr "tarp"
+
+#~ msgid "(Missing argument)"
+#~ msgstr "(Trūksta parametro)"
+
+#~ msgid "(Spurious argument)"
+#~ msgstr "(Klaidingas parametras)"
+
+#~ msgid "Saved Searches"
+#~ msgstr "Išsaugotos paieškos"
+
+#~ msgid "Missing"
+#~ msgstr "Trūksta"
+
+#~ msgid "Exclude Criteria:"
+#~ msgstr "Atmetimo sąlyga:"
+
+#~ msgid "Search Criteria"
+#~ msgstr "Paieškos sąlyga"
+
+#~ msgid "Add New Criteria"
+#~ msgstr "Pridėti naują sąlygą"
+
+#~ msgid "Remove Excluded Criteria"
+#~ msgstr "Pašalinti atmetimo sąlygą"
+
+#~ msgid "Remove All Criteria"
+#~ msgstr "Pašalinti visas sąlygas"
+
+#~ msgid "Answered"
+#~ msgstr "Atsakyta"
+
+#~ msgid "Before"
+#~ msgstr "Prieš"
+
+#~ msgid "Message Body"
+#~ msgstr "Žinutės tekstas"
+
+#~ msgid "Deleted"
+#~ msgstr "Ištrinta"
+
+#~ msgid "Draft"
+#~ msgstr "Juodraštis"
+
+#~ msgid "Flagged"
+#~ msgstr "Pažymėta"
+
+#~ msgid "Sent By"
+#~ msgstr "Siųsta nuo"
+
+#~ msgid "Header Field"
+#~ msgstr "Antraštės laukas"
+
+#~ msgid "Keyword"
+#~ msgstr "Raktas"
+
+#~ msgid "Larger Than"
+#~ msgstr "Didesnė nei"
+
+#~ msgid "Old"
+#~ msgstr "Sena"
+
+#~ msgid "On"
+#~ msgstr "tarp"
+
+#~ msgid "Recent"
+#~ msgstr "Nauja"
+
+#~ msgid "Seen"
+#~ msgstr "Peržiūrėta"
+
+#~ msgid "Sent Before"
+#~ msgstr "Išsiųsta prieš"
+
+#~ msgid "Sent On"
+#~ msgstr "Išsiųsta"
+
+#~ msgid "Sent Since"
+#~ msgstr "Išsiųsta nuo"
+
+#~ msgid "Since"
+#~ msgstr "Nuo"
+
+#~ msgid "Smaller Than"
+#~ msgstr "Mažesnė nei"
+
+#~ msgid "Subject Contains"
+#~ msgstr "Tema turi"
+
+#~ msgid "Header and Body"
+#~ msgstr "Antraštės ir tekstas"
+
+#~ msgid "Sent To"
+#~ msgstr "Išsiųsta adresu"
+
+#~ msgid "Not"
+#~ msgstr "ne"
+
+#~ msgid "And In"
+#~ msgstr "ir tarp"
+
+#~ msgid "Or In"
+#~ msgstr "arba tarp"
+
+#~ msgid "And"
+#~ msgstr "ir"
+
+#~ msgid "Or"
+#~ msgstr "arba"
+
+#~ msgid "Folder List"
+#~ msgstr "Aplankų sąrašas"
+
+#~ msgid "ERROR : Bad function call."
+#~ msgstr "KLAIDA : Neteisingai iškviesta funkcija"
+
+#~ msgid "Reason:"
+#~ msgstr "Priežastis:"
+
+#~ msgid "Bypass Trash"
+#~ msgstr "Nesaugoti šiukšliadėžėje"
+
+#~ msgid "Click here to change the sorting of the message list"
+#~ msgstr "Paspauskite čia norėdami pakeisti žinučių sąrašo rūšiavimo tvarką"
+
+#~ msgid "Length of From/To Field (0 for full)"
+#~ msgstr "Didžiausias Nuo/Kam lauko ilgis (0 atitinka neribotą ilgį)"
+
+#~ msgid "Length of Subject Field (0 for full)"
+#~ msgstr "Didžiausias temos lauko ilgis (0 atitinka neribotą ilgį)"
+
+#~ msgid "Strip signature when replying"
+#~ msgstr "Pašalinti parašą atsakant į laišką"
+
+#~ msgid "Folder"
+#~ msgstr "Aplankas"
+
+#~ msgid "Subfolder"
+#~ msgstr "Žemesnio lygio aplankas"
+
+#~ msgid "No POP3 servers configured yet."
+#~ msgstr "Nesukonfiguruotas nei vienas POP serveris"
+
+#~ msgid "Click here to go to the options page."
+#~ msgstr "Spragtelėkite ant nuorodos norėdami nueiti į nustatymų puslapį."
+
+#~ msgid ""
+#~ "Here you can install an automatic reply message. Specify the subject, "
+#~ "reply message, and if you want, a forwarding address.  This will copy all "
+#~ "incoming mail to another address as well as keep it in your mailbox."
+#~ msgstr ""
+#~ "Čia jūs galite nustatyti automatinius atsakymus. Galima nustatyti žinutės "
+#~ "pavadinimą, tekstą ir adresą, kuriuo reikia persiųsti gautus laiškus. Tai "
+#~ "leistų persiųsti žinutes kitam adresatui ir kartu išsaugoti jas savo "
+#~ "pašto dėžėje."
+
+#~ msgid "Change Vacation Message"
+#~ msgstr "Pakeisti atostogų pranešimą"
+
+#~ msgid ""
+#~ "You are not currently sending a reply message.<br>You can enter one by "
+#~ "typing the subject and reply message and checking the box."
+#~ msgstr ""
+#~ "Šiuo metu jūs nesiunčiate jokio pranešimo.<br>Jūs galite jį nustatyti "
+#~ "užpildydami temos ir žinutės teksto laukus bei pažymėdami šį lauką."
+
+#~ msgid "You are currently responding with the following:"
+#~ msgstr "Šiuo metu jūs siunčiate žemiau nurodytą pranešimą:"
+
+#~ msgid ""
+#~ "You are not currently forwarding incoming messages.<br>This will copy all "
+#~ "incoming mail to another address as well as keep it in your mailbox."
+#~ msgstr ""
+#~ "Šiuo metu jūs nepersiunčiate laiškų.<br>Persiuntimas leidžia nusiųsti "
+#~ "gaunamus laiškus kitam adresatui ir kartu išsaugoti juos savo pašto "
+#~ "dėžėje."
+
+#~ msgid "You are currently sending a copy of incoming message to:"
+#~ msgstr "Šiuo metu jūs persiunčiate laišku kopijas į"
+
+#~ msgid ""
+#~ "To delete recipient and keep your vacation message, uncheck the checkbox "
+#~ "and click "
+#~ msgstr ""
+#~ "Norėdami pašalinti gavėją ir išsaugoti atostogų pranešimą, nuimkite "
+#~ "varnikę ir paspauskite "
+
+#~ msgid "Vacation Message"
+#~ msgstr "Atostogų pranešimas"
+
+#~ msgid "Vacation settings set by system administrator."
+#~ msgstr "Atostogų nustatymus gali keisti tik pašto administratorius."
+
+#~ msgid "Send auto-reply to sender?"
+#~ msgstr "Ar siųsti automatinį atsakymą siuntėjui?"
+
+#~ msgid "Forward incoming message to another email address?"
+#~ msgstr "Ar persiųsti gautus laiškus kitam adresatui?"
+
+#~ msgid "No local delivery -- Forward and/or Auto-reply only."
+#~ msgstr "Nesaugoti laiškų -- Naudoti tik persiuntimą ir/arba autoatsakiklį."
+
+#~ msgid "Vacation Subject"
+#~ msgstr "Atostogų pranešimo tema"
+
+#~ msgid "Forwarding E-Mail Addresses (One Address Per Line)"
+#~ msgstr "Persiuntimo adresai (po vieną adresą eilutėje)"
+
+#~ msgid "Could not connect to FTP server."
+#~ msgstr "Nepavyko prisijungti prie FTP serverio."
+
+#~ msgid "Failed to login to FTP server."
+#~ msgstr "FTP serverio autorizacija nepavyko."
+
+#~ msgid "Unable to switch to passive FTP mode."
+#~ msgstr "Nepavyko persijungti į pasyvų FTP režimą."
+
+#~ msgid "An error occured uploading the file..."
+#~ msgstr "Įvyko klaida bandant nusiųsti failą..."
+
+#~ msgid "An error occured downloading the file."
+#~ msgstr "Įvyko klaida atsisiunčiant failą."
+
+#~ msgid "An error occured deleting the file..."
+#~ msgstr "Įvyko klaida trinant failą..."
+
+#~ msgid "Unknown action %s in do_ftp."
+#~ msgstr "Nežinomas veiksmas %s tarp do_ftp funkcijos."

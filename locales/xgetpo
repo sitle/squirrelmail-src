@@ -90,7 +90,7 @@ xgettext --keyword=_ -keyword=N_  --default-domain=squirrelmail -j \
 
 # ** Devel core strings
 
-xgettext --keyword=_ -keyword=N_  --default-domain=squirrelmail -j \
+xgettext --keyword=_ -keyword=N_  --default-domain=squirrelmail \
     --no-location -C ${SM_DEVEL_PATH}/src/*.php --output=${SM_LOCALES_PATH}/po/squirrelmail.pot
 xgettext --keyword=_ -keyword=N_  --default-domain=squirrelmail -j \
     --no-location -C ${SM_DEVEL_PATH}/functions/*.php --output=${SM_LOCALES_PATH}/po/squirrelmail.pot
@@ -117,6 +117,8 @@ xgettext --keyword=_ -keyword=N_  --default-domain=squirrelmail -j \
     --no-location -C ${SM_DEVEL_PATH}/plugins/bug_report/*.php --output=${SM_LOCALES_PATH}/po/squirrelmail.pot
 xgettext --keyword=_ -keyword=N_  --default-domain=squirrelmail -j \
     --no-location -C ${SM_DEVEL_PATH}/plugins/calendar/*.php --output=${SM_LOCALES_PATH}/po/squirrelmail.pot
+xgettext --keyword=_ -keyword=N_  --default-domain=squirrelmail -j \
+    --no-location -C ${SM_DEVEL_PATH}/plugins/delete_move_next/*.php --output=${SM_LOCALES_PATH}/po/squirrelmail.pot
 xgettext --keyword=_ -keyword=N_  --default-domain=squirrelmail -j \
     --no-location -C ${SM_DEVEL_PATH}/plugins/filters/*.php --output=${SM_LOCALES_PATH}/po/squirrelmail.pot
 xgettext --keyword=_ -keyword=N_  --default-domain=squirrelmail -j \
@@ -149,4 +151,4 @@ xgettext --keyword=_ -keyword=N_  --default-domain=squirrelmail -j \
     --no-location -C ${SM_LOCALES_PATH}/independent_strings.txt --output=${SM_LOCALES_PATH}/po/squirrelmail.pot
 
 # print stats
-msgfmt --statistics ${SM_LOCALES_PATH}/po/squirrelmail.pot -o /dev/null
+msgfmt --statistics ${SM_LOCALES_PATH}/po/squirrelmail.pot
