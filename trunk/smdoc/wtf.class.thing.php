@@ -384,7 +384,7 @@ class thing { // static base class
                 if ( $sectionid != 0 ) {
                     $section = &wtf::loadObject($sectionid, 0, 'section');
                     if (is_object($section) && $wtf->user->inGroup($section->editGroup)) {
-                        $section->addToSection($this);
+                        $section->placeInSection($this);
                     }
                 } else {
                     $this->sectionid = 0;

@@ -33,6 +33,7 @@ function sqmindex() {
         $wherespace = '(workspaceid = 0 OR workspaceid = '.$wtf->user->workspaceid.')';
     }
 
+// WORKSPACES
     /** 
      * Only list workspaces if not Anonymous user. 
      * Anonymous users can not visit/use Workspaces, so don't list them.
@@ -67,11 +68,12 @@ function sqmindex() {
         if ( $wtf->user->inGroup(WORKSPACECREATE) ) {
             echo '<br />';
             printLineBegin();
-            echo '<a href="', THINGURI, 'workspace">Create New Workspace</a>';
+            echo '<a href="', THINGURI, 'workspace">',$HARDTHING[WORKSPACECLASSID]['title'],'</a>';
             printLineEnd();
         } 
     }
 
+// SITE CONTENT
     /**
      * Print site content, leave out hardthings,  users, homes,  and workspaces
      */
@@ -115,18 +117,19 @@ function sqmindex() {
     if ( $wtf->user->inGroup(CREATORS) ) {
         echo '<br />';
         printLineBegin();
-        echo '<a href="', THINGURI, 'wikipage">Create A New WikiPage</a>';
+        echo '<a href="', THINGURI, 'wikipage">', $HARDTHING[WIKIPAGECLASSID]['title'],'</a>';
         printLineEnd();
         printLineBegin();
-        echo '<a href="', THINGURI, 'content">Create Page</a>';
+        echo '<a href="', THINGURI, 'content">', $HARDTHING[CONTENTCLASSID]['title'],'</a>';
         printLineEnd();
-
         if ( $wtf->user->inGroup(FILECREATE) ) {
             printLineBegin();
-            echo '<a href="', THINGURI, 'createfile">Create A New File</a>';
+            echo '<a href="', THINGURI, 'file">', $HARDTHING[FILECLASSID]['title'],'</a>';
             printLineEnd();
         }
     }
+
+// SECTIONS
     
     /**
      * Print index of available content sections 
@@ -161,11 +164,12 @@ function sqmindex() {
     if ( $wtf->user->inGroup(SECTIONCREATE) ) {
         echo '<br />';
         printLineBegin();
-        echo '<a href="', THINGURI, 'createsqmsection">Create New Section</a>';
+        echo '<a href="', THINGURI, 'section">',$HARDTHING[SECTIONCLASSID]['title'],'</a>';
         printLineEnd();
     }
 
-
+// SOFT CLASS DEFINITIONS
+    
     if ( $wtf->user->inGroup(DEFINITIONCREATE) ) {
         printHeading('Soft Class Definitions');
 
