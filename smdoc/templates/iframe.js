@@ -7,7 +7,6 @@ function resizeMe(obj,url) {
   var winWidth;
 
   // Which is used when from here: http://www.howtocreate.co.uk/tutorials/index.php?tut=0&part=16
-alert(url);  
 
   // First, non-IE
   if ( window.innerHeight ) {
