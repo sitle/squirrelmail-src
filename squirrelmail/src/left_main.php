@@ -585,7 +585,7 @@ $xtra .= <<<ECHO
                }
             }
         } else if (document.getElementById) {
-            ele = document.getElementById(id);i
+            ele = document.getElementById(id);
                 if (ele) {
                     if(ele.style.display == "none") {
                         ele.style.display = "block";
