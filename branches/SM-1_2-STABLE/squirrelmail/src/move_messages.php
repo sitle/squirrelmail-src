@@ -193,6 +193,7 @@ if (!isset($lastTargetMailbox)) {
     $lastTargetMailbox = 'INBOX';
 }
 if ($targetMailbox != $lastTargetMailbox) {
+    sqsession_unregister('lastTargetMailbox');
     $lastTargetMailbox = $targetMailbox;
     sqsession_register($lastTargetMailbox, 'lastTargetMailbox');
 }

@@ -449,7 +449,9 @@ if (isset($_SESSION['msort'])) {
 if (isset($_POST['move_id'])) {
     $move_id = $_POST['move_id'];
 }
-
+if (isset($_SESSION['lastTargetMailbox'])) {
+    $lastTargetMailbox = $_SESSION['lastTargetMailbox'];
+}
 $thread_sort_messages = getPref($data_dir, $username, "thread_$mailbox", 0);
 
 /* end of get globals */
