@@ -19,9 +19,9 @@ print_header();
     who: ebullient
 <LI>IMAP Message/Mailbox restructure<br />
     who: stekkel
-<LI>Plugin architecture revision (<a href="http://localhost/sm2/plugin_revisions.php">here</a>)<br />
+<LI>Plugin architecture revision (<a href="plugin_revisions.php">here</a>)<br />
     who: 
-<LI>Config system revision ( <a href="http://localhost/sm2/config_revisions.php">here</a> )<br />
+<LI>Config system revision ( <a href="config_revisions.php">here</a> )<br />
     who:
 <LI>Remove other languages/locales from main SM download (plugins/add-ons, possibly common with stable?)<br />
     who:
