@@ -6,7 +6,7 @@
 
 In this edition of SquirrelMail Release Notes:
    * All about this Release!
-   * Locales / Translations
+   * Locales / Translations / Charsets
    * Security issues
    * Major updates
    * A note on plugins
@@ -24,21 +24,26 @@ away.
 
 This is the fifth release of the stable 1.4.x series. It fixes many
 bugs discovered since the last release, separates out the translations
-to a separate package and fixes a security issue.
+to a separate package, greatly improves charset decoding and fixes
+a security issue.
 
 See the Major Updates section of this file for more about the 
 1.4.x stable series.  For changes in this release, please refer to
 the ChangeLog.
 
 
-Locales / Translations are packaged separately
-==============================================
+Locales / Translations / Charsets
+=================================
 
 From this release on, the translations for SquirrelMail are no longer
 part of the main package but have to be downloaded separately; either
 in one large file or an individual language. You can find these
 packages through our homepage. They also contain instructions on how
 to install.
+
+This release also introduces a backport of the new Character set
+decoding functions from the development branch, vastly increasing the
+number of supported character sets and decoding performance.
 
 
 Security Issues
