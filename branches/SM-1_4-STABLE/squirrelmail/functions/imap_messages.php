@@ -522,7 +522,7 @@ function sqimap_get_small_header_list ($imap_stream, $msg_list, $show_num=false)
         $from = _("Unknown Sender");
         $priority = 0;
         $messageid = '<>';
-        $type = array();
+        $type = array('','');
         $cc = $to = $inrepto = '';
         // use unset because we do isset below
         unset($date);
@@ -646,9 +646,6 @@ function sqimap_get_small_header_list ($imap_stream, $msg_list, $show_num=false)
                                 $type = explode("/", $type);
                                 if(!is_array($type)) {
                                     $type[0] = 'text';
-                                }
-                                if (!isset($type[1])) {
-                                    $type[1] = '';
                                 }
                                 break;
                             default: break;
