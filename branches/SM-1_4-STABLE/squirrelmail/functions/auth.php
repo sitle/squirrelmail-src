@@ -34,7 +34,7 @@ function is_logged_in() {
     if ( sqsession_is_registered('user_is_logged_in') ) {
         return;
     } else {
-        global $PHP_SELF, $session_expired_post, 
+        global $PHP_SELF, $HTTP_POST_VARS, $_POST, $session_expired_post, 
 	       $session_expired_location;
 
         /*  First we store some information in the new session to prevent
