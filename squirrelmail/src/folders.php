@@ -99,8 +99,8 @@ for ($i = 0; $i < count($boxes); $i++) {
             echo "<OPTION SELECTED VALUE=\"$box\">$box2</option>\n";
         } else {
             $box = $boxes[$i]['unformatted'];
-            $box2 = imap_utf7_decode_local(
-		      str_replace(' ', '&nbsp;', $boxes[$i]['unformatted-disp']));
+            $box2 = str_replace(' ','&nbsp;',imap_utf7_decode_local(
+                $boxes[$i]['unformatted-disp']));
             if (strtolower($imap_server_type) != 'courier' ||
                   strtolower($box) != "inbox.trash")
                 echo "<OPTION VALUE=\"$box\">$box2</option>\n";
