@@ -23,9 +23,9 @@ require_once('../functions/page_header.php');
 require_once('../src/global.php');
 
 // Remove slashes if PHP added them
-if (get_magic_quotes_gpc()) {
-    global $REQUEST_METHOD;
 
+$REQUEST_METHOD = $_SERVER['REQUEST_METHOD'];
+if (get_magic_quotes_gpc()) {
     if ($REQUEST_METHOD == 'POST') {
         RemoveSlashes($_POST);
     } else if ($REQUEST_METHOD == 'GET') {
