@@ -23,11 +23,13 @@ function cachePrefValues($data_dir, $username) {
     
     sqsession_unregister('prefs_cache');
     sqsession_unregister('prefs_are_cached');
-    
+ 
+    /* Just in case we've got a slash into the user name */
+    $username = str_replace( '/', '.', $username );
+ 
     /* Calculate the filename for the user's preference file */
     $filename = getHashedFile($username, $data_dir, "$username.pref");
 
-    /* A call to checkForPrefs here should take eliminate the need for */
     /* this to be called throughout the rest of the SquirrelMail code. */
     checkForPrefs($data_dir, $username, $filename);
 
@@ -102,7 +104,10 @@ function getPref($data_dir, $username, $string, $default = '') {
  */
 function savePrefValues($data_dir, $username) {
     global $prefs_cache;
-   
+
+    /* Just in case we've got a slash into the user name */
+    $username = str_replace( '/', '.', $username );
+
     $filename = getHashedFile($username, $data_dir, "$username.pref");
 
     /* Open the file for writing, or else display an error to the user. */
@@ -166,6 +171,10 @@ function setPref($data_dir, $username, $string, $value) {
  * Check for a preferences file. If one can not be found, create it.
  */
 function checkForPrefs($data_dir, $username, $filename = '') {
+
+    /* Just in case we've got a slash into the user name */
+    $username = str_replace( '/', '.', $username );
+	
     /* First, make sure we have the filename. */
     if ($filename == '') {
         $filename = getHashedFile($username, $data_dir, "$username.pref");
@@ -211,6 +220,10 @@ function checkForPrefs($data_dir, $username, $filename = '') {
  * Write the User Signature.
  */
 function setSig($data_dir, $username, $number, $value) {
+
+    /* Just in case we've got a slash into the user name */
+    $username = str_replace( '/', '.', $username );
+
     $filename = getHashedFile($username, $data_dir, "$username.si$number");
     /* Open the file for writing, or else display an error to the user. */
     if(!$file = @fopen("$filename.tmp", 'w')) {
@@ -233,6 +246,10 @@ function setSig($data_dir, $username, $number, $value) {
  * Get the signature.
  */
 function getSig($data_dir, $username, $number) {
+
+    /* Just in case we've got a slash into the user name */
+    $username = str_replace( '/', '.', $username );
+    
     $filename = getHashedFile($username, $data_dir, "$username.si$number");
     $sig = '';
     if (file_exists($filename)) {
