@@ -9,9 +9,9 @@
 
 /* print crc32('sqmindex'); */
 
-define('SQMINDEXCLASSID',-2548195);
-$HARDTHING[SQMINDEXCLASSID]['func'] = 'sqmindex';
-$HARDTHING[SQMINDEXCLASSID]['title'] = 'Site Index';
+define('SQMINDEXTHINGID',-2548195);
+$HARDTHING[SQMINDEXTHINGID]['func'] = 'sqmindex';
+$HARDTHING[SQMINDEXTHINGID]['title'] = 'Site Index';
 
 $FORMAT = array_merge($FORMAT, array(
 	'indexhead' => '<h3>',
