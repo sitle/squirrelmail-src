@@ -11,6 +11,9 @@
 
 /* Class descriptor */
 setClassMeta('smdoc_error', 'Error Display');
+setConst('ERROR_CLASS_ID', META_SMDOC_ERROR_CLASS_ID);
+setConst('ERROR_TITLE', _("Page Error"));
+
 
 /** METHOD PERMISSIONS **/
 setPermission('smdoc_error', 'class',  'create', 'Nobody');
@@ -42,7 +45,7 @@ class smdoc_error extends foowd_object {
 	 * @param object foowd The foowd environment object.
 	 */
     function smdoc_error(&$foowd, 
-                         $title = DEFAULT_ERROR_TITLE, 
+                         $title = ERROR_TITLE, 
                          $errorString = '') {
         $foowd->track('smdoc_error->constructor');
         $this->title = $title;
@@ -94,19 +97,15 @@ class smdoc_error extends foowd_object {
 	 */
 	function method_view(&$foowd) {
 		$foowd->track('smdoc_error->method_view');
-        
-        $return['title'] = $this->title;
-        $return['failure'] = $this->errorString;
-        $return['body'] = '<p>'. _("An error has occurred"). ':</p><p>'. $this->errorString. '</p>';
+        $foowd->template->assign('title', $this->title);
+        $foowd->template->assign('failure', 'Page rendering error:');
+        $foowd->template->assign('body', '<p align="center">'. $this->errorString. '</p>');
 
 		$foowd->track();
-        return $return;
     }
 }
 
 set_error_handler('smdocErrorCatch');
-
-setConst('DEFAULT_ERROR_TITLE', _("Page Error"));
 
 /**
  * Modified version of foowd error handling function.
@@ -124,54 +123,57 @@ setConst('DEFAULT_ERROR_TITLE', _("Page Error"));
  */
 function smdocErrorCatch($errorNumber, $errorString, $filename, $lineNumber, $context)
 {
-  if (getConstOrDefault('DEBUG', FALSE))
+  switch ($errorNumber)
   {
-    switch ($errorNumber)
-    {
-      case E_USER_ERROR:
-          $errorName = 'Error';
-          break;
-      case E_WARNING:
-      case E_USER_WARNING:
-          $errorName = 'Warning';
-          break;
-      case E_NOTICE:
-      case E_USER_NOTICE:
-          $errorName = 'Notice';
-          break;
-      default:
-          $errorName = '#'.$errorNumber;
-          break;
-    }
-    $errorString = '<strong>'. $errorName. ':</strong> ' . $errorString;
-    $errorString .= ' in <strong>'. $filename. '</strong> on line <strong>';
-    $errorString .= $lineNumber. '</strong>';
+    case E_USER_ERROR:
+      $errorName = 'Error';
+      break;
+    case E_WARNING:
+    case E_USER_WARNING:
+      $errorName = 'Warning';
+      break;
+    case E_NOTICE:
+    case E_USER_NOTICE:
+      $errorName = 'Notice';
+      break;
+    default:
+      $errorName = '#'.$errorNumber;
+      break;
   }
 
+  $errorString = '<strong>'. $errorName. ':</strong> ' . $errorString;
+  $errorString .= ' in <strong>'. $filename. '</strong> on line <strong>';
+  $errorString .= $lineNumber. '</strong>';
+
+  if (isset($context['foowd']))
+    $foowd = $context['foowd'];
+  elseif (isset($context['this']))
+    $foowd = $context['this'];
+
   if (headers_sent())
+  {
     echo '<p>', $errorString, '</p>';
+    if ( isset($foowd) && is_object($foowd) && get_class($foowd) == FOOWD_CLASS_NAME )
+    {
+      if ( $foowd->debug )
+        $foowd->debug->display();
+      $foowd->destroy();
+    }
+  }
   else
   {
-    if (isset($context['foowd']))
-      $foowd = $context['foowd'];
-    elseif (isset($context['this']))
-      $foowd = $context['this'];
-
-    $foowdClass = getConstOrDefault('FOOWD_CLASS_NAME','foowd');
-
-//    if ( isset($foowd) && is_object($foowd) && get_class($foowd) == $foowdClass )
-//    {
-//      $object = new smdoc_error($foowd, DEFAULT_ERROR_TITLE, $errorString);
-//      $t = $object->method_view($foowd);
-//      $t['showurl'] = false;
-//      include($foowd->getTemplateName('smdoc_error', 'object_view'));
-//      $foowd->destroy();
-//    }
-//    else
-//    {
-      echo '<h1>',DEFAULT_ERROR_TITLE,'</h1>';
+    if ( isset($foowd) && is_object($foowd) && get_class($foowd) == FOOWD_CLASS_NAME )
+    {
+      $object = new smdoc_error($foowd, ERROR_TITLE, $errorString);
+      $t = $object->method_view($foowd);
+      $foowd->template->display($foowd->getTemplateName('smdoc_error', 'object_view'));
+      $foowd->destroy();
+    }
+    else
+    {
+      echo '<h1>', ERROR_TITLE,'</h1>';
       echo '<p>', $errorString, '</p>';
-//    }
+    }
   }
 
   if ( $errorNumber == E_USER_ERROR ) { // fatal error, halt

@@ -25,6 +25,8 @@ setPermission('smdoc_external', 'object', 'revert', 'Nobody');
 setPermission('smdoc_external', 'object', 'delete', 'Nobody');
 setPermission('smdoc_external', 'object', 'clone', 'Nobody');
 setPermission('smdoc_external', 'object', 'permissions', 'Nobody');
+setPermission('smdoc_external', 'object', 'history', 'Nobody');
+setPermission('smdoc_external', 'object', 'diff', 'Nobody');
 
 /** CLASS DESCRIPTOR **/
 setClassMeta('smdoc_external', 'Externally Defined Objects');
