@@ -95,11 +95,17 @@ if ( $objectOK && sqGetGlobalVar('form_cancel', $value, SQ_FORM) )
   unset($_SESSION['error']);
   $_SESSION['ok'] = OBJECT_UPDATE_CANCEL;
 
-  $uri_arr['objectid'] = $objectid;
-  if ( !empty($classid) )
-    $uri_arr['classid']  = $classid;
-  if ( $version_q->wasSet )
-    $uri_arr['version']  = $version_q->value;
+  if ( empty($objectid) )
+    $uri_arr['object']='home';
+  else
+  {
+    $uri_arr['objectid'] = $objectid;
+    if ( !empty($classid) )
+      $uri_arr['classid']  = $classid;
+    if ( $version_q->wasSet )
+      $uri_arr['version']  = $version_q->value;
+  }
+
   $foowd->loc_forward( getURI($uri_arr, FALSE));
   exit;
 }

@@ -150,7 +150,7 @@ class smdoc_name_lookup extends smdoc_storage
         $error[] = _("Object ShortName is already in use.");
         $shortBox->wasValid = FALSE;
       }
-      elseif ( !$this->addShortName() )
+      elseif ( !$this->addShortName($obj, $shortBox->value) )
         $error[] = _("Could not save ShortName.");
     } 
 

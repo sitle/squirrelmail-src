@@ -84,7 +84,6 @@ function getConstOrDefault($constant, $default)
  */
 function setConst($constName, $value) 
 {
-  $constName = strtoupper($constName);
   if (!defined($constName))
     define($constName, $value);
 }
@@ -121,6 +120,7 @@ function getRegexLength($regex, $default)
 function getPermission($className, $methodName, $type = '') 
 {
   $type = strtoupper($type);
+
   if ( $type != 'CLASS' )
     $type = 'OBJECT';
 
@@ -128,8 +128,10 @@ function getPermission($className, $methodName, $type = '')
     $className = 'foowd_object';
 
   $constName = 'PERMISSION_'.strtoupper($className).'_'.$type.'_'.strtoupper($methodName);
+
   if (defined($constName))
     return constant($constName);
+
   if ($className == 'foowd_object') // none found
     return 'Everyone';
 
@@ -140,10 +142,10 @@ function getPermission($className, $methodName, $type = '')
 /**
  * Set the user group permission of a object or class method.
  *
- * @param string className Name of the class the method belongs to.
- * @param string type Type of method, 'class' or 'object'.
- * @param string methodName Name of the method.
- * @param string value User group string to set the permission to.
+ * @param string $className Name of the class the method belongs to.
+ * @param string $type Type of method, 'class' or 'object'.
+ * @param string $methodName Name of the method.
+ * @param string $value User group string to set the permission to.
  */
 function setPermission($className, $type, $methodName, $value = 'Everyone') 
 {
@@ -151,7 +153,8 @@ function setPermission($className, $type, $methodName, $value = 'Everyone')
   if ( $type != 'CLASS' )
     $type = 'OBJECT';
 
-  setConst('PERMISSION_'.strtoupper($className).'_'.$type.'_'.strtoupper($methodName), $value);
+  $constName = 'PERMISSION_'.strtoupper($className).'_'.$type.'_'.strtoupper($methodName);
+  setConst($constName, $value);
 }
 
 /**
