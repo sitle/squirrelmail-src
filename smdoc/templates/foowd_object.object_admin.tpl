@@ -85,5 +85,3 @@ function object_admin_body(&$foowd, $className, $method, &$user, &$object, &$t)
   $t['shortform']->display_end();
 }
 
-
-// vim: syntax=php

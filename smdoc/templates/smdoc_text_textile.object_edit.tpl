@@ -74,4 +74,4 @@ function text_textile_edit_body(&$foowd, $className, $method, &$user, &$object, 
 <?php
 }
 
-// vim: syntax=php
+

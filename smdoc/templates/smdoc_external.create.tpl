@@ -40,4 +40,4 @@
   </table>
 
 <?php
-// vim: syntax=php
+

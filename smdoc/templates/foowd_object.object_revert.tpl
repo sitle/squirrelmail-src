@@ -31,7 +31,8 @@ include_once(TEMPLATE_PATH.'index.tpl');
  * @param smdoc_user $user Reference to active user.
  * @param object $object Reference to object being invoked.
  * @param mixed $t Reference to array filled with template parameters.
- */function object_revert_body(&$foowd, $className, $method, &$user, &$object, &$t)
+ */
+function object_revert_body(&$foowd, $className, $method, &$user, &$object, &$t)
 {
   $t['form']->display_start('smdoc_form');
 
@@ -48,4 +49,4 @@ include_once(TEMPLATE_PATH.'index.tpl');
 }
 
 
-// vim: syntax=php
+

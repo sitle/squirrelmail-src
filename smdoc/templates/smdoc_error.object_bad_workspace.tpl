@@ -71,4 +71,4 @@ function error_bad_workspace_body(&$foowd, $className, $method, &$user, &$object
 <?php
 }
 
-// vim: syntax=php
+

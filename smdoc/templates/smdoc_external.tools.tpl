@@ -49,4 +49,4 @@ if ( !empty($t['create_list']) )
 }
 
 
-// vim: syntax=php
+

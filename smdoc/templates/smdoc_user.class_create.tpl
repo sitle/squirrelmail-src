@@ -78,4 +78,4 @@ function user_create_body(&$foowd, $className, $method, &$user, &$object, &$t)
 <?php
 }
 
-// vim: syntax=php
+

@@ -101,4 +101,4 @@ foreach ( $temp_index as $char )
 ?>
 </table>
 
-// vim: syntax=php
+

@@ -75,4 +75,4 @@ function show_news_body(&$foowd, $className, $method, &$user, &$object, &$t)
 } // end user_list_body
 
 
-// vim: syntax=php
+
