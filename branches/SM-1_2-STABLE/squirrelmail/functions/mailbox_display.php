@@ -32,7 +32,7 @@ function printMessageInfo($imapConnection, $t, $i, $key, $mailbox, $sort,
     $server_sort_order, /* sort value when using server-sorting */
     $row_count,
 	$allow_server_sort; /* enable/disable server-side sorting */
-  $color_string = $color[4];
+    $color_string = $color[4];
   
   if ($GLOBALS['alt_index_colors']) {
     if (!isset($row_count)) {
@@ -273,9 +273,9 @@ function showMessagesForMailbox($imapConnection, $mailbox, $num_msgs,
     $server_sort_order = $sort;
     $id = sqimap_get_sort_order($imapConnection, $server_sort_order);
   if ($id == 'no') {
-    echo '<b><small><center><font color=red>Server-side sorting'.
-       ' is not supported by your IMAP server.<br>Please report this'.
-       ' to the system administrator.</center></small></b>';
+    echo '<b><small><center><font color=red>'.
+         _("Server-side sorting is not supported by your IMAP server.<br>Please report this to the system administrator" ).
+         .'</center></small></b>';
     $sort = $server_sort_order;
 	  $allow_server_sort = FALSE;
 	  $id = array();
