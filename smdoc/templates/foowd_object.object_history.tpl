@@ -1,7 +1,7 @@
 <?php
 
 $t['body_function'] = 'object_history_body';
-include($foowd->template.'/index.php');
+include(TEMPLATE_PATH.'/index.tpl');
 
 function object_history_body(&$foowd, $className, $method, $user, $object, &$t)
 {?>
@@ -27,14 +27,21 @@ function object_history_body(&$foowd, $className, $method, $user, $object, &$t)
     <th class="separator">Author</th>
     <th class="separator" align="center">Version</th>
     <th>&nbsp;</th>
-<?php foreach ($t['versions'] as $version) { ?>
+<?php foreach ($t['versions'] as $version) { 
+    $link = getURI() . '?objectid=' . $version['objectid'] 
+                     . '&classid='  . $version['classid']
+                     . '&version='  . $version['version'];
+?>
 </tr>
 <tr>
     <td class="smalldate"><?php echo $version['updated']; ?></td>
     <td class="small" align="center"><?php echo $version['author']; ?></td>
-    <td class="small" align="center"><a href="<?php echo $version['link']; ?>"><?php echo $version['version']; ?></a></td>
-<?php   if (isset($version['revert'])) { ?>
-    <td class="small"><a href="<?php echo $version['revert']; ?>">Revert</a></td>
+    <td class="small" align="center"><a href="<?php echo $link; ?>"><?php echo $version['version']; ?></a></td>
+<?php   if (isset($version['revert']) && $foowd->user->hasPermission($className,'revert','object',$object) ) { ?>
+    <td class="small"><a href="<?php echo $link.'&method=revert'; ?>">Revert</a></td>
+<?php   }
+        if ( isset($version['diff']) && $foowd->user->hasPermission($className,'diff','object',$object)) { ?>
+    <td class="small"><a href="<?php echo $link.'&method=diff'; ?>">Diff</a></td>
 <?php   }
       } ?>
     </tr>
