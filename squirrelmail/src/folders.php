@@ -285,8 +285,7 @@ echo html_tag( 'td', '', 'center', $color[0], 'width="50%"' );
 if(!$no_list_for_subscribe) {
   $boxes_all = sqimap_mailbox_list_all ($imapConnection);
 
-  $box = '';
-  $box2 = '';
+  $box = $box2 = array();
   for ($i = 0, $q = 0; $i < count($boxes_all); $i++) {
     $use_folder = true;
     for ($p = 0; $p < count ($boxes); $p++) {
@@ -303,7 +302,8 @@ if(!$no_list_for_subscribe) {
         $q++;
     }
   }
-  if ($box && $box2) {
+  
+  if (count($box) > 0) {
     echo addForm('folders_subscribe.php?method=sub')
        . '<tt><select name="mailbox[]" multiple="multiple" size="8">';
 
