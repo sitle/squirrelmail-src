@@ -43,6 +43,7 @@ function show_news_body(&$foowd, $className, $method, &$user, &$object, &$t)
     $uri_arr['class']='smdoc_news';
     $url = getURI($uri_arr);
     echo '<p>'._("News Editor").': <a href="'.$url.'">'._("Add News Item").'</a></p>';
+    unset($uri_arr);
   }
 
   // If there are no news items, return without displaying the table, etc.
@@ -58,10 +59,16 @@ function show_news_body(&$foowd, $className, $method, &$user, &$object, &$t)
         $uri_arr['objectid'] = $news['objectid'];
         $uri_arr['classid']  = NEWS_CLASS_ID;
         $url = getURI($uri_arr);
+
+        $update_arr['objectid'] = $news['creatorid'];
+        $update_arr['classid'] = USER_CLASS_ID;
 ?>
       <tr class="row_odd">
         <td class="heading"><a href="<?php echo $url; ?>"><?php echo $news['title']; ?></a></td>
-        <td class="smalldate newsdate"><?php echo date('Y/m/d H:i T',strtotime($news['updated'])); ?></td>
+        <td class="smalldate newsdate">
+           ( <a href="<?php echo getURI($update_arr); ?>"><?php echo $news['creatorName']; ?></a> )
+           <?php echo date('Y/m/d H:i T',strtotime($news['updated'])); ?>
+        </td>
       </tr>
       <tr class="row_even">
         <td class="newssummary" colspan="2"><?php echo $news['summary']; ?></td>

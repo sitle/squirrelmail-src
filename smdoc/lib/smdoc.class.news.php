@@ -42,7 +42,6 @@ $NEWS_SOURCE = array('table' => 'smdoc_news',
                      'table_create' => array(getClassname(NEWS_CLASS_ID),'makeTable'));
 
 
-
 /** 
  * Global containing default news categories 
  * @global array $NEWS_CATEGORIES
@@ -83,6 +82,9 @@ class smdoc_news extends smdoc_text_textile
               `updated` datetime NOT NULL default \'0000-00-00 00:00:00\',
               `title` varchar(32) NOT NULL default \'\',
               `summary` varchar(255) NOT NULL default \'\',
+              `creatorid` int(11) NOT NULL default \'0\',
+              `creatorName` varchar(32) NOT NULL default \'\',
+              `objectid` int(11) NOT NULL default \'0\',
               `object` longblob,
               PRIMARY KEY  (`objectid`),
               KEY `idxnews_updated` (`updated`)
@@ -209,7 +211,8 @@ class smdoc_news extends smdoc_text_textile
     unset($this->foowd_indexes['classid']);
     unset($this->foowd_indexes['workspaceid']);
     $this->foowd_indexes['summary'] = array('name' => 'summary', 'type' => 'VARCHAR', 'length' => 255, 'notnull' => TRUE, 'default' => '');
- 
+    $this->foowd_indexes['creatorid'] = array('name' => 'creatorid', 'type' => 'INT', 'notnull' => TRUE, 'default' => '');
+    $this->foowd_indexes['creatorName'] = array('name' => 'creatorName', 'type' => 'VARCHAR', 'length' => 32, 'notnull' => TRUE, 'default' => ''); 
 
     // Original access vars
     unset($this->foowd_original_access_vars['version']);
@@ -243,7 +246,7 @@ class smdoc_news extends smdoc_text_textile
       $new_cats = array();
 
       // As long as None was not selected, peruse array
-      if ( !in_arrray('None', $sel_cats) )
+      if ( !in_array('None', $sel_cats) )
       {
         foreach ( $NEWS_CATEGORIES as $news )
         {
@@ -345,7 +348,7 @@ class smdoc_news extends smdoc_text_textile
      * specific orderby clause, however many, don't want objects, 
      * and ignore workspace.
      */
-    $indices = array('objectid','title','summary','updated');
+    $indices = array('objectid','title','summary','updated','creatorid','creatorName');
     $orderby = array('updated DESC');
     $objects =& $foowd->getObjList($indices, $NEWS_SOURCE, NULL,
                                    $orderby, NULL, 
