@@ -9,8 +9,8 @@
     **
     **  $Id$
     **/
+   include ("../src/validate.php");
 
-   include('../src/validate.php');
    include('../functions/strings.php');
    include('../config/config.php');
    include('../functions/page_header.php');
@@ -18,9 +18,9 @@
    include('../functions/imap.php');
    include('../functions/array.php');
    include('../functions/i18n.php');
-   include('../functins/plugin.php');
+   include('../functions/plugin.php');
+
    include('../src/load_prefs.php');
-   
    displayPageHeader($color, 'None');
    $chosen_language = getPref($data_dir, $username, 'language');  
 ?>
@@ -282,19 +282,6 @@
  
       echo '               </SELECT>'; 
 ?>
-            </td>
-         </tr>
-         <tr>
-            <td valign=top align=right>
-               <?php echo _("Show HTML version by default"); ?>:
-            </td>
-            <td>
-               <input type=checkbox name=showhtmldefault <?php 
-	       if (isset($show_html_default) && $show_html_default) 
-	       echo " checked"; ?>>
-	         <?php 
-echo _("Yes, show me the HTML version of a mail message, if it is available."); 
-                 ?>
             </td>
          </tr>
          <?php do_hook('options_display_inside'); ?>

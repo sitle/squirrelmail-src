@@ -5,7 +5,6 @@
 
     **/
 
-    global $color;
     $color[0]   = "#818181"; // (light gray)     TitleBar
     $color[1]   = "#FF0000"; // (red)
     $color[2]   = "#CC0000"; // (light red)      Warning/Error Messages

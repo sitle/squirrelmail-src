@@ -2,9 +2,11 @@
 
    /* $Id$ */
 
-   if (defined('tree_php'))
-       return;
-   define('tree_php', true);
+   if (defined ('tree_php')) { 
+      return; 
+   } else { 
+      define ('tree_php', true); 
+   } 
 
    include('../functions/imap.php');
    include('../config/config.php');

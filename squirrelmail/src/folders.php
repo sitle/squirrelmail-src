@@ -11,14 +11,15 @@
     **
     **  $Id$
     **/
+   include ("../src/validate.php");
 
-   include('../src/validate.php');
    include("../functions/strings.php");
    include("../config/config.php");
    include("../functions/page_header.php");
    include("../functions/imap.php");
    include("../functions/array.php");
    include("../functions/plugin.php");
+
    include("../src/load_prefs.php");
 
    displayPageHeader($color, _("None"));

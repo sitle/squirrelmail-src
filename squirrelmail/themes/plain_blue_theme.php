@@ -4,7 +4,6 @@
        Theme Name:   "Plain Blue"
     **/
 
-    global $color;
     $color[0]   = "#A2BED4"; // TitleBar
     $color[1]   = "#800000"; // 
     $color[2]   = "#CC0000"; // Warning/Error Messages
@@ -17,5 +16,4 @@
     $color[9]   = "#83A0BA"; // Darker version of #0
     $color[10]  = "#376589"; // Darker version of #9
     $color[11]  = "#770000"; // Special Folders color
-    $color[12]  = "#EDEDED"; // Alternating rows color
 ?>

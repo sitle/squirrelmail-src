@@ -1,19 +1,20 @@
 <?php 
-   /******************************************************************
-    ** IMAP SEARCH ROUTIES
-    ** $Id$
-    *****************************************************************/
-    
-   if (defined ('imap_search_php'))
-      return;
-   define ('imap_search_php', true);
-   
+/******************************************************************
+ ** IMAP SEARCH ROUTIES
+ ** $Id$
+ *****************************************************************/
+
+   if (defined ('imap_search_php')) { 
+      return; 
+   } else { 
+      define ('imap_search_php', true); 
+   } 
+
    include("../functions/imap.php");
    include("../functions/date.php");
    include("../functions/array.php");
    include("../functions/mailbox_display.php");
    include("../functions/mime.php");
-
 
 function sqimap_search($imapConnection,$search_where,$search_what,$mailbox,$color) {
    global $msgs, $message_highlight_list, $squirrelmail_language, $languages, $index_order;

@@ -9,13 +9,14 @@
     **
     **  $Id$
     **/
+   include ("../src/validate.php");
 
-   include('../src/validate.php');
    include("../functions/strings.php");
    include("../config/config.php");
    include("../functions/page_header.php");
    include("../functions/display_messages.php");
    include("../functions/imap.php");
+
    include("../src/load_prefs.php");
 
    function putSelectedMessagesIntoString($msg) {

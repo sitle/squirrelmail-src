@@ -10,24 +10,14 @@
     **
     **  $Id$
     **/
+   include ("../src/validate.php");
 
-   include('../src/validate.php');
    include('../functions/strings.php');
    include ('../src/load_prefs.php');
    include('../config/config.php');
    include('../functions/i18n.php');
    include ('../functions/prefs.php');
    include ('../functions/plugin.php');
-
-
-   // Erase any lingering attachments
-   foreach ($attachments as $info)
-   {
-       if (file_exists($attachment_dir . $info['localfilename']))
-       {
-           unlink($attachment_dir . $info['localfilename']);
-       }
-   }
 
    set_up_language(getPref($data_dir, $username, 'language'));
 

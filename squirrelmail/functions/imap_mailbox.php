@@ -7,9 +7,11 @@
     **  $Id$
     **/
 
-   if (defined ('imap_mailbox_php'))
-      return;
-   define ('imap_mailbox_php', true);
+    if (defined ('imap_mailbox_php')) { 
+       return; 
+    } else { 
+       define ('imap_mailbox_php', true); 
+    } 
 
    /******************************************************************************
     **  Expunges a mailbox 
@@ -197,12 +199,13 @@
    function sqimap_mailbox_list ($imap_stream) {
       global $data_dir, $username, $list_special_folders_first;
       global $trash_folder, $sent_folder;
-      global $move_to_trash, $move_to_sent, $folder_prefix;
+      global $move_to_trash, $move_to_sent;
 
       $inbox_in_list = false;
       $inbox_subscribed = false;
 
       include "../src/load_prefs.php";
+      global $folder_prefix;
       include "../functions/array.php";
 
       $dm = sqimap_get_delimiter ($imap_stream);

@@ -4,7 +4,6 @@
        Theme Name:   "Sea Spray Theme"
     **/
 
-    global $color;
     $color[0]   = "#7CA4A4"; 
     $color[1]   = "#800000";
     $color[2]   = "#CC0000";

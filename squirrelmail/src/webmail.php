@@ -51,6 +51,8 @@
       else  
          $left_size = 200;
    }      
+
+   $bar_size = $left_size;
    
    if ($location_of_bar == 'right')
    {

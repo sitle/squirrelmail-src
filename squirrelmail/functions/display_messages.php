@@ -8,9 +8,11 @@
     ** $Id$
     **/
 
-    if (defined ('display_messages_php'))
+    if (defined ('display_messages_php')) { 
        return; 
-    define ('display_messages_php', true); 
+    } else { 
+       define ('display_messages_php', true); 
+    }
 
     function error_username_password_incorrect($color) {
       echo '<BR>';

@@ -10,8 +10,8 @@
    **
    **  $Id$
    **/
+   include ("../src/validate.php");
 
-   include("../src/validate.php");
    include('../functions/strings.php');
    include('../config/config.php');
    include('../functions/page_header.php');
@@ -19,8 +19,8 @@
    include('../functions/mime.php');
    include('../functions/date.php');
    include('../functions/url_parser.php');
+
    include('../src/load_prefs.php');
-   
    $imapConnection = sqimap_login($username, $key, $imapServerAddress, $imapPort, 0);
    sqimap_mailbox_select($imapConnection, $mailbox);
    do_hook('html_top');
@@ -191,8 +191,6 @@
    $url_replytoallcc = urlencode($url_replytoallcc);
 
    $dateString = getLongDateString($message->header->date);
-   
-   // What do we reply to -- text only, if possible
    $ent_num = findDisplayEntity($message);
 
    /** TEXT STRINGS DEFINITIONS **/

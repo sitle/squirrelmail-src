@@ -9,8 +9,8 @@
     **
     **  $Id$
     **/
+   include ("../src/validate.php");
 
-   include('../src/validate.php');
    include('../functions/strings.php');
    include('../config/config.php');
    include('../functions/page_header.php');
@@ -19,8 +19,8 @@
    include('../functions/array.php');
    include('../functions/i18n.php');
    include('../functions/plugin.php');
+
    include('../src/load_prefs.php');
-   
    displayPageHeader($color, 'None');
 
    $fullname = getPref($data_dir, $username, 'full_name');
@@ -61,12 +61,10 @@
       echo '<input type=checkbox value="1" name=usesignature checked>&nbsp;&nbsp;' . _("Use a signature?") . '&nbsp;&nbsp;';
    else
       echo '<input type=checkbox value="1" name=usesignature>&nbsp;&nbsp;' . _("Use a signature?") . '&nbsp;&nbsp;';
-  if ( ! isset($prefix_sig) || $prefix_sig == true )
-    echo '<input type="checkbox" value="1" name="prefixsig" checked>&nbsp;&nbsp;' 
-        . _( "Prefix signature with '--' ?" ) . '<BR>';
+  if ( $prefix_sig == true || !isset ($prefix_sig))
+    echo '<input type="checkbox" value="1" name="prefixsig" checked>&nbsp;&nbsp;' . _( "Prefix signature with '--' ?" ) . '<BR>';
   else
-    echo '<input type="checkbox" value="1" name="prefixsig">&nbsp;&nbsp;' . 
-        _( "Prefix signature with '--' ?" ) . '<BR>';
+    echo '<input type="checkbox" value="1" name="prefixsig">&nbsp;&nbsp;' . _( "Prefix signature with '--' ?" ) . '<BR>';
    echo "\n<textarea name=\"signature_edit\" rows=\"5\" cols=\"50\">$signature_abs</textarea><br>";
 ?>
             </td>

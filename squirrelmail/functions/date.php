@@ -10,10 +10,11 @@
     **  $Id$
     **/
 
-   if (defined ('date_php'))
+   if (defined ('date_php')) { 
       return; 
-   define ('date_php', true);
-   
+   } else { 
+      define ('date_php', true); 
+   }
    // corrects a time stamp to be the local time
    function getGMTSeconds($stamp, $gmt) {
       global $invert_time;

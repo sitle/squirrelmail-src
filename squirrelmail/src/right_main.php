@@ -10,9 +10,9 @@
     **
     **  $Id$
     **/
-
-   include('../src/validate.php');
+   include ("../src/validate.php");
    include('../functions/i18n.php');
+
    include('../functions/strings.php');
    include('../config/config.php');
    include('../functions/imap.php');
@@ -22,7 +22,6 @@
    include('../functions/mime.php');
    include('../functions/mailbox_display.php');
    include('../functions/display_messages.php');
-
 ?>
 <?php
    /////////////////////////////////////////////////////////////////////////////////

@@ -11,22 +11,18 @@
     **  $Id$
     **/
 
-   if (defined('load_prefs_php'))
-       return;
-   define('load_prefs_php', true);
+   if (defined ('load_prefs_php')) { 
+      return; 
+   } else { 
+      define ('load_prefs_php', true); 
+   }
 
-   global $theme, $chosen_theme, $color;
-   if (! isset($theme))
-      $theme = array();
-   if (! isset($color))
-      $color = array();
-   include('../src/validate.php');
+   $theme = array();
+   include("../src/validate.php");
    include("../config/config.php");
    include("../functions/prefs.php");
    include("../functions/plugin.php");
       
-   if (!isset($username))
-       $username = '';
    checkForPrefs($data_dir, $username);
 
    $chosen_theme = getPref($data_dir, $username, "chosen_theme");
@@ -37,18 +33,18 @@
 		 break;
 	  }
    }
-   
-   if (! $in_ary)
-       $chosen_theme = "";
+   if (!$in_ary) {
+   		$chosen_theme = "";
+   }
 
-   if (isset($chosen_theme) && $in_ary && (file_exists($chosen_theme))) {
-      @include($chosen_theme);
+   if ((isset($chosen_theme)) && (file_exists($chosen_theme))) {
+      require("$chosen_theme");
    } else {
-      if (file_exists(isset($theme) && isset($theme[0]) && $theme[0]["PATH"])) {
-         @include($theme[0]["PATH"]);
+      if (file_exists($theme[0]["PATH"])) {
+         require($theme[0]["PATH"]);
       } else {
           #
-          #  I hard coded the theme as a failsafe if no themes were
+          #  I hard coded the theme as a last resort if no themes were
           #  found.  It makes no sense to cause the whole thing to exit
           #  just because themes were not found.  This is the absolute
           #  last resort.
@@ -68,17 +64,14 @@
       }
    }
 
-    if (!defined('download_php')) 
-       session_register("theme_css");
+    if (!defined ("download_php")) session_register("theme_css");
 
-   global $use_javascript_addr_book;
    $use_javascript_addr_book = getPref($data_dir, $username, "use_javascript_addr_book");
    if ($use_javascript_addr_book == "")
       $use_javascript_addr_book = $default_use_javascript_addr_book;
 
    
    /** Load the user's sent folder preferences **/
-   global $move_to_sent, $move_to_trash;
    $move_to_sent = getPref($data_dir, $username, "move_to_sent");
    if ($move_to_sent == "")
       $move_to_sent = $default_move_to_sent;
@@ -89,7 +82,6 @@
       $move_to_trash = $default_move_to_trash;
 
 
-   global $unseen_type, $unseen_notify;
    $unseen_type = getPref($data_dir, $username, "unseen_type");
    if ($default_unseen_type == "")
       $default_unseen_type = 1;
@@ -103,14 +95,11 @@
       $unseen_notify = $default_unseen_notify;
 
 
-   global $folder_prefix;
    $folder_prefix = getPref($data_dir, $username, "folder_prefix");
    if ($folder_prefix == "")
       $folder_prefix = $default_folder_prefix;
 
-
 	/** Load special folders **/
-	global $trash_folder, $sent_folder;
 	$new_trash_folder = getPref($data_dir, $username, "trash_folder");
 	if (($new_trash_folder == "") && ($move_to_trash == true))
 		$trash_folder = $folder_prefix . $trash_folder;
@@ -124,8 +113,6 @@
 	else
 		$sent_folder = $new_sent_folder;
 
-
-   global $show_num, $wrap_at, $left_size;
    $show_num = getPref($data_dir, $username, "show_num");
    if ($show_num == "")
       $show_num = 25;
@@ -144,8 +131,6 @@
          $left_size = 200;
    }      
 
-
-   global $editor_size, $use_signature, $prefix_sig;
    $editor_size = getPref($data_dir, $username, "editor_size");
    if ($editor_size == "")
       $editor_size = 76;
@@ -158,8 +143,6 @@
    if ($prefix_sig == "")
       $prefix_sig = true;
 
-
-   global $left_refresh, $sort;
    $left_refresh = getPref($data_dir, $username, "left_refresh");
    if ($left_refresh == "")
       $left_refresh = false;
@@ -168,18 +151,14 @@
    if ($sort == "")
       $sort = 6;
    
-   
    /** Load up the Signature file **/
-   global $signature_abs;
    if ($use_signature == true) {
       $signature_abs = $signature = getSig($data_dir, $username);
    } else {
       $signature_abs = getSig($data_dir, $username);
    }
 
-
    //  highlightX comes in with the form: name,color,header,value
-   global $message_highlight_list;
    for ($i=0; $hlt = getPref($data_dir, $username, "highlight$i"); $i++) {
       $ary = explode(",", $hlt);
       $message_highlight_list[$i]["name"] = $ary[0]; 
@@ -188,9 +167,7 @@
       $message_highlight_list[$i]["match_type"] = $ary[3];
    }
 
-
    #index order lets you change the order of the message index
-   global $index_order;
    $order = getPref($data_dir, $username, "order1");
    for ($i=1; $order; $i++) {
       $index_order[$i] = $order;
@@ -204,8 +181,6 @@
       $index_order[5] = 4;
    }
    
-   
-   global $location_of_bar, $location_of_buttons;
    $location_of_bar = getPref($data_dir, $username, 'location_of_bar');
    if ($location_of_bar == '')
        $location_of_bar = 'left';
@@ -213,12 +188,6 @@
    $location_of_buttons = getPref($data_dir, $username, 'location_of_buttons');
    if ($location_of_buttons == '')
        $location_of_buttons = 'between';
-       
-       
-   global $collapse_folders, $show_html_default;
-   $collapse_folders = getPref($data_dir, $username, 'collapse_folders');
-   
-   $show_html_default = getPref($data_dir, $username, 'show_html_default');
 
    do_hook("loading_prefs");
 

@@ -9,8 +9,8 @@
     **
     **  $Id$
     **/
+   include ("../src/validate.php");
 
-   include('../src/validate.php');
    include('../functions/strings.php');
    include('../config/config.php');
    include('../functions/page_header.php');
@@ -83,11 +83,8 @@
       echo "<br>\n";
    }
    if ($action == 'edit' || $action == 'add') {
-      if (!isset($theid))
-      {
-        $theid = count($message_highlight_list);
-        $message_highlight_list[$theid] = array();
-      }
+      if (!isset($theid)) $theid = count($message_highlight_list);
+          $message_highlight_list[$theid] = array();
  
       $color_list[0] = '4444aa';
       $color_list[1] = '44aa44';
@@ -105,7 +102,6 @@
       $color_list[13] = 'ffffff';               
       
       $selected_input = '';
-      $selected_choose = '';
       
       for ($i=0; $i < 14; $i++) {
          ${"selected".$i} = '';
@@ -117,11 +113,11 @@
                ${"selected".$i} = ' selected';
                continue;
             }
-	 }
+	     }
       }
       if (!isset($message_highlight_list[$theid]['color']))
          $selected_choose = ' checked';
-      else if ($selected_choose == '')
+      else if (!isset($selected_choose))
          $selected_input = ' checked';
  
       echo '<form name="f" action="options_highlight.php">' . "\n";

@@ -1,8 +1,8 @@
 <?php
 
    /* $Id$ */
+   include ("../src/validate.php");
 
-   include('../src/validate.php');
    include('../functions/strings.php');
    include('../functions/i18n.php');
    include('../config/config.php');
@@ -10,6 +10,7 @@
    include('../functions/imap.php');
    include('../functions/imap_search.php');
    include('../functions/array.php');
+
    include('../src/load_prefs.php');
 
    displayPageHeader($color, $mailbox);

@@ -9,11 +9,12 @@
     **
     **  $Id$
     **/
+   include ("../src/validate.php");
 
-   include('../src/validate.php');
    include('../functions/strings.php');
    include('../config/config.php');
    include('../functions/array.php');
+   include('../functions/auth.php');
    include('../functions/page_header.php');
    include('../functions/display_messages.php');
    include('../functions/addressbook.php');
@@ -137,7 +138,7 @@
 	 $delfailed = false;
 
 	 for($i = 0 ; (($i < sizeof($sel)) && !$delfailed) ; $i++) {
-	    list($sbackend, $snick) = explode(':', $sel[$i]);
+	    list($sbackend, $snick) = split(':', $sel[$i]);
 
 	    // When we get to a new backend, process addresses in
 	    // previous one.
@@ -186,7 +187,7 @@
 	       $defselected = $sel;
 	    } else {
 	       $abortform = true;
-	       list($ebackend, $enick) = explode(':', $sel[0]);
+	       list($ebackend, $enick) = split(":", $sel[0]);
 	       $olddata = $abook->lookup($enick, $ebackend);
 
 	       // Display the "new address" form

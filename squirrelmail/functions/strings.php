@@ -2,9 +2,11 @@
    
    /* $Id$ */
 
-   if (defined('strings_php'))
-       return;
-   define('strings_php', true);
+   if (defined ('strings_php')) { 
+      return; 
+   } else { 
+      define ('strings_php', true); 
+   } 
 
 
    //*************************************************************************
@@ -215,8 +217,7 @@
    }
 
    /* SquirrelMail version number -- DO NOT CHANGE */
-   global $version;
-   $version = '1.1.0 [cvs]';
+   $version = '1.0.6 [cvs]';
 
 
    function find_mailbox_name ($mailbox) {
@@ -225,6 +226,11 @@
       ereg(" *([^ \r\n\"]*)[ \r\n]*$",$mailbox,$regs);
       return $regs[1];
 
+   }
+
+   // Depreciated.  :-)  I always wanted to say that.
+   function replace_spaces ($string) {
+      return str_replace(' ', '&nbsp;', $string);
    }
 
    function get_location () {
@@ -491,6 +497,7 @@
       
       return $String;
    }
+   
    
    function quoteIMAP($str)
    {

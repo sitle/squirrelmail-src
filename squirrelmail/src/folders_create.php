@@ -10,13 +10,14 @@
     **
     **  $Id$
     **/
+   include ("../src/validate.php");
 
-   include('../src/validate.php');
    include("../functions/strings.php");
    include("../config/config.php");
    include("../functions/page_header.php");
    include("../functions/imap.php");
    include("../functions/display_messages.php");
+
    include("../src/load_prefs.php");
 
    $imapConnection = sqimap_login($username, $key, $imapServerAddress, $imapPort, 0);
@@ -43,11 +44,12 @@
       $subfolder_orig = $subfolder;
    }
 
-   if (trim($subfolder_orig) == '') {
+   if (trim($subfolder_orig) == "") {
       sqimap_mailbox_create ($imapConnection, $folder_prefix.$folder_name, "");
    } else {
       sqimap_mailbox_create ($imapConnection, $subfolder.$dm.$folder_name, "");
    }
+   fputs($imapConnection, "1 logout\n");
 
    $location = get_location();
    header ("Location: $location/folders.php?success=create");

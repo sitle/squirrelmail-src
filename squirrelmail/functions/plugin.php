@@ -16,11 +16,12 @@
  **/
 
 
-   if (defined('plugin_php'))
-      return;
-   define('plugin_php', true);
+   if (defined ('plugin_php')) { 
+      return; 
+   } else { 
+      define ('plugin_php', true); 
+   } 
 
-   global $plugin_general_debug, $squirrelmail_plugin_hooks;
    $plugin_general_debug = false;
    
    $squirrelmail_plugin_hooks = array();

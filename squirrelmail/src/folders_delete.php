@@ -10,20 +10,22 @@
     **
     **  $Id$
     **/
+   include ("../src/validate.php");
 
-   include('../src/validate.php');
+   /*
+   *  Incoming values:
+   *     $mailbox - selected mailbox from the form
+   */
+   
    include("../functions/strings.php");
    include("../config/config.php");
    include("../functions/page_header.php");
    include("../functions/imap.php");
    include("../functions/array.php");
    include("../functions/tree.php");
+
    include("../src/load_prefs.php");
 
-   /*
-   *  Incoming values:
-   *     $mailbox - selected mailbox from the form
-   */
    
    $imap_stream = sqimap_login($username, $key, $imapServerAddress, $imapPort, 0);
    $boxes = sqimap_mailbox_list ($imap_stream);

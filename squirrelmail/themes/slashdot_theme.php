@@ -7,7 +7,6 @@
        for Nerds" web site, www.slashdot.org.
     **/
 
-    global $color;
     $color[0]   = "#DCDCDC"; // (light gray)     TitleBar
     $color[1]   = "#800000"; // (red)
     $color[2]   = "#CC0000"; // (light red)      Warning/Error Messages
@@ -20,5 +19,4 @@
     $color[9]   = "#ABABAB"; // (mid-gray)       Darker version of #0
     $color[10]  = "#666666"; // (dark gray)      Darker version of #9
     $color[11]  = "#770000"; // (dark red)       Special Folders color
-    $color[12]  = "#EAEAEA";
 ?>
