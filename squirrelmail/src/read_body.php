@@ -30,6 +30,7 @@ function findNextMessage() {
     global $msort, $currentArrayIndex, $msgs, $sort, 
            $thread_sort_messages, $allow_server_sort,
            $server_sort_array;
+
     if (!is_array($server_sort_array)) {
         $thread_sort_messages = 0;
         $allow_server_sort = FALSE;
@@ -390,7 +391,6 @@ $onetimepad = $_SESSION['onetimepad'];
 $passed_id = $_GET['passed_id'];
 $msgs = $_SESSION['msgs'];
 $base_uri = $_SESSION['base_uri'];
-
 if (isset($_GET['sort'])) {
     $sort = $_GET['sort'];
 }
@@ -412,6 +412,18 @@ if (isset($_GET['what'])) {
 if (isset($_GET['view_hdr'])) {
     $view_hdr = $_GET['view_hdr'];
 }
+if (isset($_SESSION['server_sort_array'])) {
+    $server_sort_array = $_SESSION['server_sort_array'];
+}
+if (isset($_SESSION['msgs'])) {
+    $msgs = $_SESSION['msgs'];
+}
+if (isset($_SESSION['msort'])) {
+    $msort = $_SESSION['msort'];
+}
+
+$thread_sort_messages = getPref($data_dir, $username, "thread_$mailbox", 0);
+
 /* end of get globals */
 
 if (isset($mailbox)){

@@ -260,7 +260,7 @@ function get_thread_sort ($imap_stream) {
         sqsession_unregister('thread_new');
     }
     if (session_is_registered('server_sort_array')) {
-        sqsession_unregister('server_srot_array');
+        sqsession_unregister('server_sort_array');
     }
     $sid = sqimap_session_id();
     $thread_temp = array ();
