@@ -37,6 +37,9 @@ $string = 'Packages: ' .
 
 $foowd->template->assign('method', $string);
 $foowd->template->assign('body_template','smdoc_external.docs.tpl');
+$foowd->template->assign('doc_elements', 'sqmdocs/li_smdoc.html');
+$foowd->template->assign('doc_content','sqmdocs/blank.html');
+$foowd->template->assign('doc_index','sqmdocs/index.html');
 
 $foowd->template->display();
 
