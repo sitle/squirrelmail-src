@@ -381,7 +381,7 @@ class Deliver {
         $date = date('D, j M Y H:i:s ', mktime()) . $this->timezone();
         /* Create a message-id */
         $message_id = '<' . $REMOTE_PORT . '.' . $REMOTE_ADDR . '.';
-        $message_id .= time() . '.squirrel@' . $REMOTE_ADDR .'>';
+        $message_id .= time() . '.squirrel@' . (isset($REMOTE_HOST) ? $REMOTE_HOST : "[$REMOTE_ADDR]") .'>';
         /* Make an RFC822 Received: line */
         if (isset($REMOTE_HOST)) {
             $received_from = "$REMOTE_HOST ([$REMOTE_ADDR])";
@@ -691,4 +691,6 @@ class Deliver {
         return $refer;
     }
 }
+
+// vim: et ts=4
 ?>
