@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2004-04-10 09:15+0300\n"
+"POT-Creation-Date: 2004-07-31 11:09+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -14,106 +14,136 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: includes/archive_mail_bottom.php:21
+#: ../includes/archive_mail_bottom.php:28
 msgid "Archive disabled (zlib not supported)"
 msgstr ""
 
-#: includes/archive_mail.php:20 includes/archive_mail_bottom.php:25
+#: ../includes/archive_mail.php:27 ../includes/archive_mail_bottom.php:32
 msgid "Archive"
 msgstr ""
 
-#: includes/display_inside.php:35
+#: ../includes/display_inside.php:39
 msgid "Format Emails as"
 msgstr ""
 
-#: includes/display_inside.php:41
+#: ../includes/display_inside.php:45
 msgid "EML Messages"
 msgstr ""
 
-#: includes/display_inside.php:46
+#: ../includes/display_inside.php:50
 msgid "Mbox"
 msgstr ""
 
-#: includes/display_inside.php:51
+#: ../includes/display_inside.php:55
 msgid "Maildir"
 msgstr ""
 
-#: includes/display_inside.php:61
-msgid "Seperate Entities"
+#: ../includes/display_inside.php:65
+msgid "Separate Entities"
 msgstr ""
 
-#: includes/display_inside.php:66
+#: ../includes/display_inside.php:70
 msgid "Save Attachments"
 msgstr ""
 
-#: includes/display_inside.php:70
+#: ../includes/display_inside.php:74
 msgid "Yes"
 msgstr ""
 
-#: includes/display_inside.php:73
+#: ../includes/display_inside.php:77
 msgid "No"
 msgstr ""
 
-#: includes/display_inside.php:98
+#: ../includes/display_inside.php:80 ../includes/display_inside.php:188
+msgid "Save"
+msgstr ""
+
+#: ../includes/display_inside.php:87
+msgid "Separate Entities Options"
+msgstr ""
+
+#: ../includes/display_inside.php:90
+msgid "EML Messages Options"
+msgstr ""
+
+#: ../includes/display_inside.php:93
+msgid "Mbox Options"
+msgstr ""
+
+#: ../includes/display_inside.php:96
+msgid "Maildir Options"
+msgstr ""
+
+#: ../includes/display_inside.php:102
 msgid "Compress Type"
 msgstr ""
 
-#: includes/display_inside.php:104
+#: ../includes/display_inside.php:108
 msgid "Tar"
 msgstr ""
 
-#: includes/display_inside.php:109
+#: ../includes/display_inside.php:113
 msgid "Tar.GZ"
 msgstr ""
 
-#: includes/display_inside.php:115
+#: ../includes/display_inside.php:119
 msgid "Text"
 msgstr ""
 
-#: includes/display_inside.php:121
+#: ../includes/display_inside.php:125
 msgid "Zip"
 msgstr ""
 
-#: includes/display_inside.php:127
+#: ../includes/display_inside.php:131
 msgid "Email Filename"
 msgstr ""
 
-#: includes/display_inside.php:133
+#: ../includes/display_inside.php:137
 msgid "Numbered"
 msgstr ""
 
-#: includes/display_inside.php:138 includes/display_inside.php:143
-#: includes/display_inside.php:148 includes/display_inside.php:158
-#: includes/display_inside.php:178 includes/formats/seperate.php:87
-#: includes/formats/seperate.php:95
+#: ../includes/display_inside.php:142 ../includes/display_inside.php:147
+#: ../includes/display_inside.php:152 ../includes/display_inside.php:162
+#: ../includes/display_inside.php:182 ../includes/formats/separate.php:105
+#: ../includes/formats/separate.php:110 ../includes/formats/separate.php:118
 msgid "Date"
 msgstr ""
 
-#: includes/display_inside.php:143 includes/display_inside.php:153
-#: includes/display_inside.php:158 includes/display_inside.php:163
-#: includes/display_inside.php:173
+#: ../includes/display_inside.php:147 ../includes/display_inside.php:157
+#: ../includes/display_inside.php:162 ../includes/display_inside.php:167
+#: ../includes/display_inside.php:177
 msgid "Email"
 msgstr ""
 
-#: includes/display_inside.php:148 includes/display_inside.php:163
-#: includes/display_inside.php:168 includes/display_inside.php:173
-#: includes/display_inside.php:178 includes/formats/seperate.php:84
-#: includes/formats/seperate.php:89
+#: ../includes/display_inside.php:152 ../includes/display_inside.php:167
+#: ../includes/display_inside.php:172 ../includes/display_inside.php:177
+#: ../includes/display_inside.php:182 ../includes/formats/separate.php:102
+#: ../includes/formats/separate.php:107 ../includes/formats/separate.php:112
 msgid "Subject"
 msgstr ""
 
-#: includes/display_options.php:16
+#: ../includes/display_options.php:23
 msgid "Archive Settings"
 msgstr ""
 
-#: includes/display_options.php:18
+#: ../includes/display_options.php:25
 msgid "These settings allow you to modify the way you archive messages."
 msgstr ""
 
-#: includes/formats/seperate.php:85 includes/formats/seperate.php:91
+#: ../includes/formats/separate.php:25
+msgid "m/d/Y g:i a"
+msgstr ""
+
+#: ../includes/formats/separate.php:42
+msgid "No Subject"
+msgstr ""
+
+#: ../includes/formats/separate.php:103 ../includes/formats/separate.php:108
+#: ../includes/formats/separate.php:114
 msgid "From"
 msgstr ""
 
-#: includes/formats/seperate.php:86 includes/formats/seperate.php:93
+#: ../includes/formats/separate.php:104 ../includes/formats/separate.php:109
+#: ../includes/formats/separate.php:116
 msgid "To"
 msgstr ""
