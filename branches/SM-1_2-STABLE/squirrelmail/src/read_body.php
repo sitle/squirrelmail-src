@@ -797,7 +797,7 @@ echo '&nbsp;&nbsp;' .
 
 if ( !($where && $what) ) {
     if ($currentArrayIndex == -1) {
-        echo 'Previous&nbsp;|&nbsp;Next';
+        echo _("Previous") . '&nbsp;|&nbsp;' . _("Next");
     } else {
         $prev = findPreviousMessage();
         $next = findNextMessage();
