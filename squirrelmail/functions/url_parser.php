@@ -47,12 +47,7 @@ function parseEmail (&$body) {
     }
     /* Replace each email address with a compose URL */
     foreach ($addresses as $email) {
-        $comp_uri = '../src/compose.php?send_to='.urlencode($email);
-        if ($compose_new_win == '1') {
-            $comp_uri  = 'javascript:void(0)" onClick="comp_in_new('
-                       . "'$comp_uri'" . ')';
-        }
-        $comp_uri = '<a href="'.$comp_uri.'">'.$email.'</a>';
+        $comp_uri = makeComposeLink('src/compose.php?send_to='.urlencode($email), $email);
         $body = str_replace($email, $comp_uri, $body);
     }
     /* Return number of unique addresses found */
