@@ -4,8 +4,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: $Id$ \n"
-"POT-Creation-Date: 2003-01-01 18:33+0100\n"
+"Project-Id-Version: $Id: squirrelmail.po,v 1.1 2003/07/13 09:31:51 tokul Exp "
+"$ \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2003-10-05 12:27+0300\n"
 "PO-Revision-Date: 2002-01-20 15:00+0200\n"
 "Last-Translator: Peeter Russak <pezz@tkwcy.ee>\n"
 "Language-Team: Estonian <squirrelmail-i18n@lists.sourceforget.net>\n"
@@ -14,14 +16,803 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 0.9.5\n"
 
-msgid "Delivery error report"
+msgid "Address Book"
+msgstr "Aadressiraamat"
+
+msgid "All"
+msgstr "Kõik"
+
+msgid "Name"
+msgstr "Nimi"
+
+msgid "E-mail"
+msgstr "E-post"
+
+msgid "Info"
+msgstr "Info"
+
+msgid "Source"
+msgstr "Allikas"
+
+msgid "To"
+msgstr "Saaja"
+
+msgid "Cc"
+msgstr "Koopia"
+
+msgid "Bcc"
 msgstr ""
 
-msgid "Undelivered Message Headers"
+msgid "Use Addresses"
+msgstr "Kasuta aadresse"
+
+msgid "Address Book Search"
+msgstr "Otsing aadressiraamatust"
+
+msgid "Search for"
+msgstr "Otsi"
+
+msgid "in"
+msgstr "sees on"
+
+msgid "All address books"
+msgstr "Kõik aadressiraamatud"
+
+msgid "Search"
+msgstr "Otsi"
+
+msgid "List all"
+msgstr "Näita kõiki"
+
+#, c-format
+msgid "Unable to list addresses from %s"
+msgstr "Aadresside näitamine asukohast %s ei õnnestunud"
+
+msgid "Your search failed with the following error(s)"
+msgstr "Sinu otsing ei õnnestunud järgnevatel põhjustel"
+
+msgid "No persons matching your search was found"
+msgstr "Päringule vastavaid isikuid ei leitud"
+
+msgid "Return"
+msgstr "Tagasi"
+
+msgid "Close"
+msgstr "Sulge"
+
+msgid "Nickname"
+msgstr "Hüüdnimi"
+
+msgid "Must be unique"
+msgstr "Peab olema unikaalne"
+
+msgid "E-mail address"
+msgstr "E-posti aadress"
+
+msgid "Last name"
+msgstr "Perekonnanimi"
+
+msgid "First name"
+msgstr "Eesnimi"
+
+msgid "Additional info"
+msgstr "Lisainfo"
+
+msgid "No personal address book is defined. Contact administrator."
+msgstr ""
+"Isiklik aadressiraamat on kirjeldamata. Võta ühendust administraatoriga."
+
+msgid "You can only edit one address at the time"
+msgstr "Korraga saab muuta vaid ühte aadressi"
+
+msgid "Update address"
+msgstr "Salvesta muudatused"
+
+msgid "ERROR"
+msgstr "VIGA"
+
+msgid "Unknown error"
+msgstr "Tundmatu viga"
+
+msgid "Add address"
+msgstr "Lisa aadress"
+
+msgid "Edit selected"
+msgstr "Muuda valitud aadressi"
+
+msgid "Delete selected"
+msgstr "Kustuta valitud aadressid"
+
+#, c-format
+msgid "Add to %s"
+msgstr "Aadressi lisamine: %s"
+
+msgid "said"
+msgstr "kirjutas"
+
+msgid "quote"
+msgstr "tsitaat"
+
+msgid "who"
+msgstr "kes"
+
+msgid "Subject"
+msgstr "Teema"
+
+msgid "From"
+msgstr "Saatja"
+
+msgid "Date"
+msgstr "Kuupäev"
+
+msgid "Original Message"
+msgstr "Algne kiri"
+
+msgid "Draft Email Saved"
+msgstr "Kirja mustand salvestatud"
+
+msgid "Could not move/copy file. File not attached"
+msgstr "Faili liigutamine/kopeerimine ei õnnestunud. Faili ei lisatud."
+
+#, fuzzy
+msgid "Draft Saved"
+msgstr "Kirja mustand salvestatud"
+
+#, fuzzy
+msgid "Your Message has been sent"
+msgstr "Ühtegi kirja polnud valitud."
+
+msgid "From:"
+msgstr "Saatja:"
+
+msgid "To:"
+msgstr "Saaja:"
+
+msgid "CC:"
+msgstr "Koopia:"
+
+msgid "BCC:"
+msgstr "Pimekoopia:"
+
+msgid "Subject:"
+msgstr "Teema:"
+
+msgid "Send"
+msgstr "Saada"
+
+msgid "Attach:"
+msgstr "Lisa fail:"
+
+msgid "Add"
+msgstr "Lisa"
+
+msgid "Delete selected attachments"
+msgstr "Kustuta valitud failid"
+
+msgid "Priority"
+msgstr "Tähtsus"
+
+msgid "High"
+msgstr "Kõrge"
+
+msgid "Normal"
+msgstr "Tavaline"
+
+msgid "Low"
+msgstr "Madal"
+
+msgid "Receipt"
 msgstr ""
 
-msgid "(no subject)"
-msgstr "(teema puudub)"
+#, fuzzy
+msgid "On Read"
+msgstr "Loetuks"
+
+msgid "On Delivery"
+msgstr ""
+
+msgid "Signature"
+msgstr "Signatuur"
+
+msgid "Addresses"
+msgstr "Aadressid"
+
+msgid "Save Draft"
+msgstr "Salvesta mustand"
+
+msgid "You have not filled in the \"To:\" field."
+msgstr "\"Saaja:\" väli on täitmata."
+
+#, fuzzy
+msgid "Draft folder"
+msgstr "Mustandid"
+
+#, fuzzy
+msgid "Server replied: "
+msgstr "Serveri vastus:"
+
+msgid "Illegal folder name.  Please select a different name."
+msgstr "Vigane kausta nimi. Palun sisesta mõni teine nimi."
+
+msgid "Click here to go back"
+msgstr "Vajuta siia, et tagasi minna"
+
+msgid "You have not selected a folder to delete. Please do so."
+msgstr ""
+
+msgid "Delete Folder"
+msgstr "Kausta eemaldamine"
+
+#, c-format
+msgid "Are you sure you want to delete %s?"
+msgstr ""
+
+msgid "Yes"
+msgstr "Jah"
+
+msgid "No"
+msgstr "Ei"
+
+msgid "Folders"
+msgstr "Kaustad"
+
+msgid "Subscribed successfully!"
+msgstr "Kausta aktiveerimine õnnestus!"
+
+msgid "Unsubscribed successfully!"
+msgstr "Kausta deaktiveerimine õnnestus!"
+
+msgid "Deleted folder successfully!"
+msgstr "Kausta kustutamine õnnestus!"
+
+msgid "Created folder successfully!"
+msgstr "Uue kausta tekitamine õnnestus!"
+
+msgid "Renamed successfully!"
+msgstr "Kausta ümber nimetamine õnnestus"
+
+msgid "Subscription Unsuccessful - Folder does not exist."
+msgstr ""
+
+msgid "refresh folder list"
+msgstr "värskenda nimekirja"
+
+msgid "Create Folder"
+msgstr "Uue kausta tekitamine"
+
+msgid "as a subfolder of"
+msgstr "mis asub kaustas"
+
+msgid "None"
+msgstr "Puudub"
+
+msgid "Let this folder contain subfolders"
+msgstr "See kaust tohib sisaldada alamkaustasid"
+
+msgid "Create"
+msgstr "Tekita"
+
+msgid "Rename a Folder"
+msgstr "Kausta ümber nimetamine"
+
+#, fuzzy
+msgid "Select a folder"
+msgstr "Kausta ümber nimetamine"
+
+msgid "Rename"
+msgstr "Nimeta ümber"
+
+msgid "No folders found"
+msgstr "Kaustasid pole"
+
+msgid "Delete"
+msgstr "Kustuta"
+
+msgid "Unsubscribe"
+msgstr "Deaktiveeri"
+
+msgid "Subscribe"
+msgstr "Aktiveeri"
+
+msgid "No folders were found to unsubscribe from!"
+msgstr "Aktiveeritud kaustasid pole!"
+
+msgid "No folders were found to subscribe to!"
+msgstr "Aktiveerimata kaustasid pole!"
+
+#, fuzzy
+msgid "Subscribe to:"
+msgstr "Aktiveeri"
+
+msgid "You have not selected a folder to rename. Please do so."
+msgstr ""
+
+msgid "Rename a folder"
+msgstr "Kausta ümber nimetamine"
+
+msgid "New name:"
+msgstr "Uus nimi:"
+
+msgid "Submit"
+msgstr "Salvesta"
+
+msgid "ERROR: Help files are not in the right format!"
+msgstr ""
+
+msgid "Help"
+msgstr "Abi"
+
+#, c-format
+msgid ""
+"The help has not been translated to %s.  It will be displayed in English "
+"instead."
+msgstr ""
+"Abitekst pole veel tõlgitud keelde %s ja seepärast näidatakse ingliskeelset "
+"versiooni."
+
+msgid "Some or all of the help documents are not present!"
+msgstr "Mõned või kõik abitekstid pole saadaval!"
+
+msgid "Table of Contents"
+msgstr "Sisukord"
+
+msgid "Previous"
+msgstr "Eelmine"
+
+msgid "Next"
+msgstr "Järgmine"
+
+msgid "Top"
+msgstr "Üles"
+
+msgid "Viewing an image attachment"
+msgstr "Pildifaili vaatamine"
+
+msgid "View message"
+msgstr "Näita kirja"
+
+msgid "Download this as a file"
+msgstr "Salvesta failina"
+
+#, fuzzy
+msgid "INBOX"
+msgstr "Ainult INBOX"
+
+msgid "purge"
+msgstr "Tühjenda"
+
+msgid "Last Refresh"
+msgstr "Viimane värskendus"
+
+msgid "Save folder tree"
+msgstr ""
+
+msgid "Login"
+msgstr "Logi sisse"
+
+#, fuzzy, c-format
+msgid "%s Logo"
+msgstr "%s"
+
+#, c-format
+msgid "SquirrelMail version %s"
+msgstr "SquirrelMail, versioon %s"
+
+msgid "By the SquirrelMail Development Team"
+msgstr "Loodud SquirrelMaili arendusmeeskonna poolt"
+
+#, c-format
+msgid "%s Login"
+msgstr "%s"
+
+msgid "Name:"
+msgstr "Nimi:"
+
+msgid "Password:"
+msgstr "Parool:"
+
+msgid "No messages were selected."
+msgstr "Ühtegi kirja polnud valitud."
+
+msgid "Options"
+msgstr "Seadistused"
+
+msgid "Message Highlighting"
+msgstr "Kirjade esile tõstmine"
+
+msgid "New"
+msgstr "Lisa"
+
+msgid "Done"
+msgstr "Tehtud"
+
+msgid "To or Cc"
+msgstr "Saaja või koopia"
+
+#, fuzzy
+msgid "subject"
+msgstr "Teema"
+
+msgid "Edit"
+msgstr "Muuda"
+
+msgid "Up"
+msgstr "Üles"
+
+msgid "Down"
+msgstr "Alla"
+
+msgid "No highlighting is defined"
+msgstr "Esile tõstmist pole kirjeldatud"
+
+msgid "Identifying name"
+msgstr "Kirjeldav nimi"
+
+msgid "Color"
+msgstr "Värv"
+
+msgid "Dark Blue"
+msgstr "Tumesinine"
+
+msgid "Dark Green"
+msgstr "Tumeroheline"
+
+msgid "Dark Yellow"
+msgstr "Tumekollane"
+
+msgid "Dark Cyan"
+msgstr "Tume tsüaan"
+
+msgid "Dark Magenta"
+msgstr "Tume magenta"
+
+msgid "Light Blue"
+msgstr "Helesinine"
+
+msgid "Light Green"
+msgstr "Heleroheline"
+
+msgid "Light Yellow"
+msgstr "Helekollane"
+
+msgid "Light Cyan"
+msgstr "Hele tsüaan"
+
+msgid "Light Magenta"
+msgstr "Hele magenta"
+
+msgid "Dark Gray"
+msgstr "Tumehall"
+
+msgid "Medium Gray"
+msgstr "Keskmiselt hall"
+
+msgid "Light Gray"
+msgstr "Helehall"
+
+msgid "White"
+msgstr "Valge"
+
+msgid "Other:"
+msgstr "Muu:"
+
+msgid "Ex: 63aa7f"
+msgstr "näide: 63AA7F"
+
+msgid "Matches"
+msgstr "Sobivus"
+
+#, c-format
+msgid "Alternate Identity %d"
+msgstr "Alternatiivne identiteet %d"
+
+msgid "Advanced Identities"
+msgstr "Minu identiteedid"
+
+msgid "Default Identity"
+msgstr "Vaikimisi identiteet"
+
+msgid "Add a New Identity"
+msgstr "Lisa uus identiteet"
+
+msgid "Full Name"
+msgstr "Täielik nimi"
+
+msgid "E-Mail Address"
+msgstr "E-posti aadress"
+
+msgid "Reply To"
+msgstr "Vastamise aadress"
+
+msgid "Save / Update"
+msgstr "Salvesta / Uuenda"
+
+msgid "Make Default"
+msgstr "Sea vaikimisi identiteediks"
+
+msgid "Move Up"
+msgstr "Liiguta ülespoole"
+
+msgid "Index Order"
+msgstr "Nimekirja seadistused"
+
+msgid "Checkbox"
+msgstr "Kontrollkast"
+
+msgid "Flags"
+msgstr "Lipud"
+
+msgid "Size"
+msgstr "Suurus"
+
+msgid ""
+"The index order is the order that the columns are arranged in the message "
+"index.  You can add, remove, and move columns around to customize them to "
+"fit your needs."
+msgstr ""
+"Siin saad sa seadistada nimekirja veergude järjekorda ja arvu täpselt sulle "
+"sobivaks."
+
+msgid "up"
+msgstr "üles"
+
+msgid "down"
+msgstr "alla"
+
+msgid "remove"
+msgstr "eemalda"
+
+msgid "Return to options page"
+msgstr "Tagasi seadistuste leheküljele"
+
+msgid "Personal Information"
+msgstr "Isikuandmed"
+
+msgid "Display Preferences"
+msgstr "Välimuse seadistused"
+
+msgid "Folder Preferences"
+msgstr "Kaustade seadistused"
+
+msgid "Successfully Saved Options"
+msgstr "Seadistuste salvestamine õnnestus"
+
+msgid "Refresh Folder List"
+msgstr "Värskenda kaustade nimekirja"
+
+msgid "Refresh Page"
+msgstr "Värskenda lehekülge"
+
+msgid ""
+"This contains personal information about yourself such as your name, your "
+"email address, etc."
+msgstr "Isikuandmete (nimi, e-posti aadress jne) ja identiteetide seadistused."
+
+msgid ""
+"You can change the way that SquirrelMail looks and displays information to "
+"you, such as the colors, the language, and other settings."
+msgstr "SquirrelMaili välimuse parameetrite (värvid, keel jne) seadistused."
+
+msgid ""
+"Based upon given criteria, incoming messages can have different background "
+"colors in the message list.  This helps to easily distinguish who the "
+"messages are from, especially for mailing lists."
+msgstr ""
+"Nimekirjas olevatele kirjadele on võimalik seada taustavärvi vastavalt "
+"tingimustele. Eriti kasulik on see võimalus postiloendite puhul, kuna aitab "
+"sul kergesti kindlaks teha kirjade päritolu."
+
+msgid ""
+"These settings change the way your folders are displayed and manipulated."
+msgstr "Kaustade kuvamise ja kasutamise seadistused."
+
+msgid ""
+"The order of the message index can be rearranged and changed to contain the "
+"headers in any order you want."
+msgstr "Kirjade nimekirja veergude ja järjestuse seadistused."
+
+msgid "Message not printable"
+msgstr "Trükikõlbmatu kiri"
+
+msgid "CC"
+msgstr "Koopia:"
+
+msgid "Printer Friendly"
+msgstr "Trükivaade"
+
+msgid "Print"
+msgstr "Trüki"
+
+msgid "View Printable Version"
+msgstr "Trükivaade"
+
+#, fuzzy
+msgid "Read:"
+msgstr "Loetuks"
+
+#, fuzzy
+msgid "Your message"
+msgstr "] kirja"
+
+#, fuzzy
+msgid "Sent:"
+msgstr "Saada"
+
+#, c-format
+msgid "Was displayed on %s"
+msgstr ""
+
+msgid "less"
+msgstr "vähem"
+
+msgid "more"
+msgstr "rohkem"
+
+#, fuzzy
+msgid "Unknown sender"
+msgstr "Tundmatu saatja"
+
+msgid "Mailer"
+msgstr ""
+
+msgid "Read receipt"
+msgstr ""
+
+#, fuzzy
+msgid "sent"
+msgstr "Saada"
+
+#, fuzzy
+msgid "requested"
+msgstr "Midagi ei soovitud muuta."
+
+msgid ""
+"The message sender has requested a response to indicate that you have read "
+"this message. Would you like to send a receipt?"
+msgstr ""
+
+msgid "Send read receipt now"
+msgstr ""
+
+#, fuzzy
+msgid "Search results"
+msgstr "Otsi"
+
+msgid "Message List"
+msgstr "Kirjade nimekiri"
+
+msgid "Resume Draft"
+msgstr "Jätka mustandit"
+
+msgid "Edit Message as New"
+msgstr ""
+
+#, fuzzy
+msgid "View Message"
+msgstr "Näita kirja"
+
+msgid "Forward"
+msgstr "Edasta"
+
+#, fuzzy
+msgid "Forward as Attachment"
+msgstr "Lisatud failid"
+
+msgid "Reply"
+msgstr "Vasta"
+
+msgid "Reply All"
+msgstr "Vasta kõikidele"
+
+msgid "View Full Header"
+msgstr "Näita täielikku päist"
+
+msgid "Attachments"
+msgstr "Lisatud failid"
+
+msgid "You must be logged in to access this page."
+msgstr "Sellele leheküljele juurdepääsuks on vaja sisse logida."
+
+#, fuzzy
+msgid "Folder:"
+msgstr "Kaustad"
+
+#, fuzzy
+msgid "edit"
+msgstr "Muuda"
+
+#, fuzzy
+msgid "search"
+msgstr "Otsi"
+
+#, fuzzy
+msgid "delete"
+msgstr "Kustuta"
+
+msgid "Recent Searches"
+msgstr ""
+
+#, fuzzy
+msgid "save"
+msgstr "Salvesta"
+
+#, fuzzy
+msgid "forget"
+msgstr "rohkem"
+
+#, fuzzy
+msgid "Current Search"
+msgstr "Aktiivne kaust"
+
+msgid "All Folders"
+msgstr "Kõik kaustad"
+
+msgid "Body"
+msgstr "Sisu"
+
+msgid "Everywhere"
+msgstr "Kogu kiri"
+
+#, fuzzy
+msgid "Search Results"
+msgstr "Otsi"
+
+msgid "No Messages Found"
+msgstr "Uusi kirju ei leitud"
+
+msgid "Sign Out"
+msgstr "Logi välja"
+
+msgid "You have been successfully signed out."
+msgstr "Oledki välja logitud."
+
+msgid "Click here to log back in."
+msgstr "Vajuta siia uuesti sisse logimiseks."
+
+msgid "Viewing a Business Card"
+msgstr "Visiitkaardi näitamine"
+
+msgid "Title"
+msgstr "Tiitel"
+
+msgid "Email"
+msgstr "E-post"
+
+msgid "Web Page"
+msgstr "Veebilehekülg"
+
+msgid "Organization / Department"
+msgstr "Organisatsioon / Osakond"
+
+msgid "Address"
+msgstr "Aadress"
+
+msgid "Work Phone"
+msgstr "Töötelefon"
+
+msgid "Home Phone"
+msgstr "Kodune telefon"
+
+msgid "Cellular Phone"
+msgstr "Mobiiltelefon"
+
+msgid "Fax"
+msgstr "Faks"
+
+msgid "Note"
+msgstr "Märkus"
+
+msgid "Add to Addressbook"
+msgstr "Lisa aadressraamatusse"
+
+msgid "Title & Org. / Dept."
+msgstr "Tiitel ja Org. / Osak."
+
+msgid "Viewing Full Header"
+msgstr "Täieliku päise näitamine"
+
+msgid "Viewing a text attachment"
+msgstr "Tekstifaili vaatamine"
 
 msgid "Personal address book"
 msgstr "Isiklik aadressiraamat"
@@ -102,9 +893,6 @@ msgstr "vaade"
 msgid "Business Card"
 msgstr "Visiitkaart"
 
-msgid "You must be logged in to access this page."
-msgstr "Sellele leheküljele juurdepääsuks on vaja sisse logida."
-
 msgid "Sunday"
 msgstr "pühapäev"
 
@@ -125,6 +913,31 @@ msgstr "reede"
 
 msgid "Saturday"
 msgstr "laupäev"
+
+#, fuzzy
+msgid "Sun"
+msgstr "pühapäev"
+
+#, fuzzy
+msgid "Mon"
+msgstr "esmaspäev"
+
+#, fuzzy
+msgid "Tue"
+msgstr "teisipäev"
+
+msgid "Wed"
+msgstr ""
+
+msgid "Thu"
+msgstr ""
+
+#, fuzzy
+msgid "Fri"
+msgstr "reede"
+
+msgid "Sat"
+msgstr ""
 
 msgid "January"
 msgstr "jaanuar"
@@ -162,11 +975,58 @@ msgstr "november"
 msgid "December"
 msgstr "detsember"
 
+#, fuzzy
+msgid "Jan"
+msgstr "jaanuar"
+
+msgid "Feb"
+msgstr ""
+
+#, fuzzy
+msgid "Mar"
+msgstr "märts"
+
+#, fuzzy
+msgid "Apr"
+msgstr "aprill"
+
+msgid "Ma&#121;"
+msgstr ""
+
+#, fuzzy
+msgid "Jun"
+msgstr "juuni"
+
+#, fuzzy
+msgid "Jul"
+msgstr "juuli"
+
+#, fuzzy
+msgid "Aug"
+msgstr "august"
+
+msgid "Sep"
+msgstr ""
+
+#, fuzzy
+msgid "Oct"
+msgstr "oktoober"
+
+#, fuzzy
+msgid "Nov"
+msgstr "Ei"
+
+msgid "Dec"
+msgstr ""
+
 msgid "D, F j, Y g:i a"
 msgstr "D, j. F, G:i"
 
 msgid "D, F j, Y G:i"
 msgstr "D, j. F, G:i"
+
+msgid "M j, Y"
+msgstr "j. M, Y"
 
 msgid "g:i a"
 msgstr "G:i"
@@ -179,9 +1039,6 @@ msgstr "D, G:i"
 
 msgid "D, G:i"
 msgstr "D, G:i"
-
-msgid "M j, Y"
-msgstr "j. M, Y"
 
 #, c-format
 msgid "Preference database error (%s). Exiting abnormally"
@@ -196,20 +1053,6 @@ msgstr "Proovi uuesti"
 #, c-format
 msgid "Click here to return to %s"
 msgstr "Tagasi kausta %s"
-
-#, fuzzy, c-format
-msgid "%s Logo"
-msgstr "%s"
-
-#, c-format
-msgid "SquirrelMail version %s"
-msgstr "SquirrelMail, versioon %s"
-
-msgid "By the SquirrelMail Development Team"
-msgstr "Loodud SquirrelMaili arendusmeeskonna poolt"
-
-msgid "ERROR"
-msgstr "VIGA"
 
 msgid "Go to the login page"
 msgstr "Mine sisse logimise lehele"
@@ -232,6 +1075,12 @@ msgstr "Palun võta ühendust oma administraatoriga ja teata sellest veast."
 msgid ""
 "Preference file, %s, could not be written. Contact your system administrator "
 "to resolve this issue."
+msgstr "Palun võta ühendust oma administraatoriga ja teata sellest veast."
+
+#, fuzzy, c-format
+msgid ""
+"Preference file, %s, could not be copied from temporary file, %s. Contact "
+"your system administrator to resolve this issue."
 msgstr "Palun võta ühendust oma administraatoriga ja teata sellest veast."
 
 #, fuzzy, c-format
@@ -264,12 +1113,21 @@ msgid ""
 "to resolve this issue."
 msgstr "Palun võta ühendust oma administraatoriga ja teata sellest veast."
 
+#, fuzzy, c-format
+msgid ""
+"Signature file, %s, could not be copied from temporary file, %s. Contact "
+"your system administrator to resolve this issue."
+msgstr "Palun võta ühendust oma administraatoriga ja teata sellest veast."
+
 msgid ""
 "You need to have php4 installed with the multibyte string function enabled "
-"(using configure option --with-mbstring)."
+"(using configure option --enable-mbstring)."
 msgstr ""
 
 msgid "ERROR : No available imapstream."
+msgstr ""
+
+msgid "ERROR : Connection dropped by imap-server."
 msgstr ""
 
 msgid "ERROR : Could not complete request."
@@ -287,6 +1145,12 @@ msgstr "VIGA: Vigane päring."
 
 msgid "Server responded: "
 msgstr "Serveri vastus:"
+
+msgid "ERROR : Imap server closed the connection."
+msgstr ""
+
+msgid "ERROR : Unknown imap response."
+msgstr ""
 
 #, c-format
 msgid "Error connecting to IMAP server: %s."
@@ -316,21 +1180,23 @@ msgid ""
 "folder."
 msgstr ""
 
-#, fuzzy
-msgid "INBOX"
-msgstr "Ainult INBOX"
-
-msgid "Unknown response from IMAP server: "
-msgstr "Tundmatu vastu IMAP-i serverist: "
-
-msgid "Unknown message number in reply from server: "
-msgstr "Tundmatu kirja number serveri vastuses: "
+msgid "(no subject)"
+msgstr "(teema puudub)"
 
 msgid "Unknown Sender"
 msgstr "Tundmatu saatja"
 
-msgid "(unknown sender)"
-msgstr "(tundmatu saatja)"
+msgid "Unknown response from IMAP server: "
+msgstr "Tundmatu vastu IMAP-i serverist: "
+
+msgid "The server couldn't find the message you requested."
+msgstr ""
+
+msgid ""
+"Most probably your message list was out of date and the message has been "
+"moved away or deleted (perhaps by another program accessing the same "
+"mailbox)."
+msgstr ""
 
 #, fuzzy
 msgid "Unknown date"
@@ -362,9 +1228,6 @@ msgstr "Märgitud kirjade oleku muutmine"
 msgid "Move"
 msgstr "Liiguta"
 
-msgid "Forward"
-msgstr "Edasta"
-
 msgid "Expunge"
 msgstr "Tühjenda"
 
@@ -377,30 +1240,12 @@ msgstr "Loetuks"
 msgid "Unread"
 msgstr "Mitteloetuks"
 
-msgid "Delete"
-msgstr "Kustuta"
-
 #, fuzzy
 msgid "Unthread View"
 msgstr "Mitteloetuks"
 
 msgid "Thread View"
 msgstr ""
-
-msgid "To"
-msgstr "Saaja"
-
-msgid "From"
-msgstr "Saatja"
-
-msgid "Date"
-msgstr "Kuupäev"
-
-msgid "Subject"
-msgstr "Teema"
-
-msgid "Size"
-msgstr "Suurus"
 
 msgid "Toggle All"
 msgstr "Muuda kõigi kirjade märgistust"
@@ -418,12 +1263,6 @@ msgstr "Kirjade näitamine: <B>%s</B> kuni <B>%s</B> (kokku %s)"
 #, c-format
 msgid "Viewing Message: <B>%s</B> (1 total)"
 msgstr "Kirjade näitamine: <B>%s</B> (kokku 1)"
-
-msgid "Previous"
-msgstr "Eelmine"
-
-msgid "Next"
-msgstr "Järgmine"
 
 msgid "Paginate"
 msgstr "Leheküljenda"
@@ -458,15 +1297,6 @@ msgstr "Teade:"
 msgid "FETCH line:"
 msgstr "FETCH rida:"
 
-msgid "High"
-msgstr "Kõrge"
-
-msgid "Low"
-msgstr "Madal"
-
-msgid "Normal"
-msgstr "Tavaline"
-
 msgid "Hide Unsafe Images"
 msgstr ""
 
@@ -477,10 +1307,6 @@ msgstr "Näita kirja"
 msgid "download"
 msgstr "salvesta"
 
-#, fuzzy
-msgid "Unknown sender"
-msgstr "Tundmatu saatja"
-
 msgid "sec_remove_eng.png"
 msgstr "sec_remove_eng.png"
 
@@ -488,38 +1314,11 @@ msgstr "sec_remove_eng.png"
 msgid "Option Type '%s' Not Found"
 msgstr "Valikutüüpi '%s' ei leitud"
 
-msgid "Yes"
-msgstr "Jah"
-
-msgid "No"
-msgstr "Ei"
-
-msgid "Submit"
-msgstr "Salvesta"
-
 msgid "Current Folder"
 msgstr "Aktiivne kaust"
 
-msgid "Sign Out"
-msgstr "Logi välja"
-
 msgid "Compose"
 msgstr "Uus kiri"
-
-msgid "Addresses"
-msgstr "Aadressid"
-
-msgid "Folders"
-msgstr "Kaustad"
-
-msgid "Options"
-msgstr "Seadistused"
-
-msgid "Search"
-msgstr "Otsi"
-
-msgid "Help"
-msgstr "Abi"
 
 #, c-format
 msgid "Error creating directory %s."
@@ -527,6 +1326,75 @@ msgstr "Kataloogi %s tekitamisel tekkis viga."
 
 msgid "Could not create hashed directory structure!"
 msgstr "Kataloogi räsistruktuuri tekitamine ei õnnestunud!"
+
+msgid "Service not available, closing channel"
+msgstr ""
+
+msgid "A password transition is needed"
+msgstr ""
+
+msgid "Requested mail action not taken: mailbox unavailable"
+msgstr ""
+
+msgid "Requested action aborted: error in processing"
+msgstr ""
+
+msgid "Requested action not taken: insufficient system storage"
+msgstr ""
+
+#, fuzzy
+msgid "Temporary authentication failure"
+msgstr "apop authentication failed"
+
+msgid "Syntax error; command not recognized"
+msgstr ""
+
+msgid "Syntax error in parameters or arguments"
+msgstr ""
+
+#, fuzzy
+msgid "Command not implemented"
+msgstr "Käsk ebaõnnestus "
+
+msgid "Bad sequence of commands"
+msgstr ""
+
+msgid "Command parameter not implemented"
+msgstr ""
+
+#, fuzzy
+msgid "Authentication required"
+msgstr "autentimine ebaõnnestus "
+
+msgid "Authentication mechanism is too weak"
+msgstr ""
+
+#, fuzzy
+msgid "Authentication failed"
+msgstr "autentimine ebaõnnestus "
+
+msgid "Encryption required for requested authentication mechanism"
+msgstr ""
+
+msgid "Requested action not taken: mailbox unavailable"
+msgstr ""
+
+msgid "User not local; please try forwarding"
+msgstr ""
+
+msgid "Requested mail action aborted: exceeding storage allocation"
+msgstr ""
+
+msgid "Requested action not taken: mailbox name not allowed"
+msgstr ""
+
+#, fuzzy
+msgid "Transaction failed"
+msgstr "autentimine ebaõnnestus "
+
+#, fuzzy
+msgid "Unknown response"
+msgstr "Tundmatu saatja"
 
 msgid "General Display Options"
 msgstr "Kuvamise üldseadistused"
@@ -569,6 +1437,9 @@ msgstr "Lehekülje valiku lubamine"
 
 msgid "Maximum Number of Pages to Show"
 msgstr "Maksimaalne kuvatavate lehekülgede arv"
+
+msgid "Always Show Full Date"
+msgstr ""
 
 msgid "Message Display and Composition"
 msgstr "Kirja kirjutamine"
@@ -617,9 +1488,6 @@ msgstr ""
 
 msgid "Display Attached Images with Message"
 msgstr "Kirjaga kaasa pandud piltide kuvamine"
-
-msgid "Enable Subtle Printer Friendly Link"
-msgstr "Trükiversiooni viida näitamine"
 
 msgid "Enable Printer Friendly Clean Display"
 msgstr "Täieliku trükiversiooni näitamine"
@@ -711,9 +1579,6 @@ msgstr "Ei teatata"
 msgid "Only INBOX"
 msgstr "Ainult INBOX"
 
-msgid "All Folders"
-msgstr "Kõik kaustad"
-
 msgid "Unread Message Notification Type"
 msgstr "Lugemata kirjade arvu kuvamise tüüp"
 
@@ -723,7 +1588,8 @@ msgstr "Ainult uued"
 msgid "Unseen and Total"
 msgstr "Uued ja kokku"
 
-msgid "Enable Collapsable Folders"
+#, fuzzy
+msgid "Enable Collapsible Folders"
 msgstr "Avanevate kaustade lubamine"
 
 #, fuzzy
@@ -771,17 +1637,8 @@ msgstr ""
 msgid "Name and Address Options"
 msgstr "Nime ja aadressi valikud"
 
-msgid "Full Name"
-msgstr "Täielik nimi"
-
 msgid "Email Address"
 msgstr "E-posti aadress"
-
-msgid "Reply To"
-msgstr "Vastamise aadress"
-
-msgid "Signature"
-msgstr "Signatuur"
 
 msgid "Edit Advanced Identities"
 msgstr "Identiteetide muutmine"
@@ -793,6 +1650,9 @@ msgid "Multiple Identities"
 msgstr "Minu identiteedid"
 
 msgid "Same as server"
+msgstr ""
+
+msgid "Error opening timezone config, contact administrator."
 msgstr ""
 
 #, fuzzy
@@ -836,6 +1696,17 @@ msgid "Prefix Signature with '-- ' Line"
 msgstr "Signatuurile eelneb '-- ' rida"
 
 #, fuzzy
+msgid "Take Address"
+msgstr "Aadress"
+
+#, fuzzy
+msgid "Address Book Take:"
+msgstr "Aadressiraamat"
+
+msgid "Try to verify addresses"
+msgstr ""
+
+#, fuzzy
 msgid "Config File Version"
 msgstr "Trükivaade"
 
@@ -873,6 +1744,13 @@ msgstr "Organisatsioon / Osakond"
 #, fuzzy
 msgid "Signout Page"
 msgstr "Logi välja"
+
+msgid "Provider Link URI"
+msgstr ""
+
+#, fuzzy
+msgid "Provider Name"
+msgstr "Serveri nimi:"
 
 #, fuzzy
 msgid "Default Language"
@@ -924,7 +1802,17 @@ msgstr ""
 msgid "Use \"detect\" to auto-detect."
 msgstr ""
 
-msgid "Use Sendmail"
+msgid "Use TLS for IMAP Connections"
+msgstr ""
+
+msgid "Requires PHP 4.3.x! Experimental."
+msgstr ""
+
+#, fuzzy
+msgid "IMAP Authentication Type"
+msgstr "autentimine ebaõnnestus "
+
+msgid "Use Sendmail Binary"
 msgstr ""
 
 msgid "Sendmail Path"
@@ -936,9 +1824,15 @@ msgstr ""
 msgid "SMTP Server Port"
 msgstr ""
 
+msgid "Use TLS for SMTP Connections"
+msgstr ""
+
 #, fuzzy
-msgid "Authenticated SMTP"
+msgid "SMTP Authentication Type"
 msgstr "autentimine ebaõnnestus "
+
+msgid "POP3 Before SMTP?"
+msgstr ""
 
 msgid "Invert Time"
 msgstr ""
@@ -1006,6 +1900,10 @@ msgid "Auto delete folders"
 msgstr "värskenda nimekirja"
 
 #, fuzzy
+msgid "Enable /NoSelect folder fix"
+msgstr "Lehekülje valiku lubamine"
+
+#, fuzzy
 msgid "General Options"
 msgstr "Kuvamise üldseadistused"
 
@@ -1056,6 +1954,21 @@ msgstr ""
 msgid "Allow editing of full name"
 msgstr ""
 
+msgid "Use server-side sorting"
+msgstr ""
+
+msgid "Use server-side thread sorting"
+msgstr ""
+
+msgid "Allow server charset search"
+msgstr ""
+
+msgid "UID support"
+msgstr ""
+
+msgid "PHP session name"
+msgstr ""
+
 #, fuzzy
 msgid "Message of the Day"
 msgstr "Trükikõlbmatu kiri"
@@ -1094,6 +2007,13 @@ msgid "Themes"
 msgstr "Värviteema"
 
 msgid "Style Sheet URL (css)"
+msgstr ""
+
+#, fuzzy
+msgid "Default theme"
+msgstr "Vaikimisi identiteet"
+
+msgid "Use index number of theme"
 msgstr ""
 
 #, fuzzy
@@ -1214,7 +2134,7 @@ msgstr ""
 msgid "15 min."
 msgstr ""
 
-msgid "35 min."
+msgid "30 min."
 msgstr ""
 
 msgid "45 min."
@@ -1306,56 +2226,6 @@ msgid "COMMERCIAL - RBL+ Dial-up entries."
 msgstr "COMMERCIAL - RBL+ Dial-up kirjed."
 
 msgid ""
-"FREE - Osirusoft Relays - Osirusofts list of verified open relays. Seems to "
-"include servers used by abuse@uunet.net auto-replies too."
-msgstr ""
-"FREE - Osirusoft Relays - Osirusofts list of verified open relays. Seems to "
-"include servers used by abuse@uunet.net auto-replies too."
-
-msgid "FREE - Osirusoft Dialups - Osirusofts Dialup Spam Source list."
-msgstr "FREE - Osirusoft Dialups - Osirusofts Dialup Spam Source list."
-
-msgid ""
-"FREE - Osirusoft Confirmed Spam Source - Sites that continually spam and "
-"have been manually added after multiple nominations. Use with caution. Seems "
-"to catch abuse auto-replies from some ISPs."
-msgstr ""
-"FREE - Osirusoft Confirmed Spam Source - Sites that continually spam and "
-"have been manually added after multiple nominations. Use with caution. Seems "
-"to catch abuse auto-replies from some ISPs."
-
-msgid ""
-"FREE - Osirusoft Smart Hosts - List of hosts that are secure but relay for "
-"other mail servers that are not secure."
-msgstr ""
-"FREE - Osirusoft Smart Hosts - List of hosts that are secure but relay for "
-"other mail servers that are not secure."
-
-msgid ""
-"FREE - Osirusoft Spamware Developers - It is believed that these are IP "
-"ranges of companies that are known to produce spam software. Seems to catch "
-"abuse auto-replies from some ISPs."
-msgstr ""
-"FREE - Osirusoft Spamware Developers - It is believed that these are IP "
-"ranges of companies that are known to produce spam software. Seems to catch "
-"abuse auto-replies from some ISPs."
-
-msgid ""
-"FREE - Osirusoft Unconfirmed OptIn Servers - List of listservers that opt "
-"users in without confirmation."
-msgstr ""
-"FREE - Osirusoft Unconfirmed OptIn Servers - List of listservers that opt "
-"users in without confirmation."
-
-msgid ""
-"FREE - Osirusoft Insecure formmail.cgi scripts - List of insecure formmail."
-"cgi scripts. (planned)."
-msgstr ""
-
-msgid "FREE - Osirusoft Open Proxy Servers - List of Open Proxy Servers."
-msgstr ""
-
-msgid ""
 "FREE - ORDB was born when ORBS went off the air. It seems to have fewer "
 "false positives than ORBS did though."
 msgstr ""
@@ -1396,7 +2266,6 @@ msgstr ""
 msgid "FREE - SPAMhaus - A list of well-known SPAM sources."
 msgstr ""
 
-#, c-format
 msgid ""
 "FREE, for now - SPAMCOP - An interesting solution that lists servers that "
 "have a very high spam to legit email ratio (85% or more)."
@@ -1488,20 +2357,8 @@ msgstr "Ainult lugemata kirjad"
 msgid "Save"
 msgstr "Salvesta"
 
-msgid "New"
-msgstr "Lisa"
-
-msgid "Done"
-msgstr "Tehtud"
-
 msgid "Match:"
 msgstr "Sobivus:"
-
-msgid "Cc"
-msgstr "Koopia"
-
-msgid "To or Cc"
-msgstr "Saaja või koopia"
 
 #, fuzzy
 msgid "Header"
@@ -1509,15 +2366,6 @@ msgstr "Loetuks"
 
 msgid "Contains:"
 msgstr "Sisaldab:"
-
-msgid "Edit"
-msgstr "Muuda"
-
-msgid "Down"
-msgstr "Alla"
-
-msgid "Up"
-msgstr "Üles"
 
 #, c-format
 msgid "If <b>%s</b> contains <b>%s</b> then move to <b>%s</b>"
@@ -1594,6 +2442,30 @@ msgstr "SEES"
 msgid "OFF"
 msgstr "VÄLJAS"
 
+#, fuzzy
+msgid " not found."
+msgstr "Vigasid ei leitud"
+
+msgid "Today's Fortune"
+msgstr ""
+
+#, fuzzy
+msgid "Fortunes:"
+msgstr "portugali"
+
+msgid "Show fortunes at top of mailbox"
+msgstr ""
+
+#, fuzzy
+msgid "IMAP server information"
+msgstr "Lisa server"
+
+msgid ""
+"Run some test IMAP commands, displaying both the command and the result. "
+"These tests use the Squirrelmail IMAP commands and your current Squirrelmail "
+"configuration. Custom command strings can be used."
+msgstr ""
+
 msgid "Mailinglist"
 msgstr ""
 
@@ -1615,9 +2487,6 @@ msgid ""
 "this list. It will try to unsubscribe the adress below."
 msgstr ""
 
-msgid "From:"
-msgstr "Saatja:"
-
 #, fuzzy
 msgid "Send Mail"
 msgstr "Uus kiri"
@@ -1629,12 +2498,6 @@ msgstr "%s keelest %s keelde"
 #, fuzzy
 msgid "Reply to List"
 msgstr "Vastamise aadress"
-
-msgid "Subscribe"
-msgstr "Aktiveeri"
-
-msgid "Unsubscribe"
-msgstr "Deaktiveeri"
 
 msgid "List Archives"
 msgstr ""
@@ -1744,9 +2607,6 @@ msgstr "Remote POP server Fetching Mail"
 
 msgid "Select Server:"
 msgstr "Vali server:"
-
-msgid "All"
-msgstr "Kõik"
 
 msgid "Password for"
 msgstr "Parool: "
@@ -1862,9 +2722,6 @@ msgstr "Alias:"
 msgid "Username:"
 msgstr "Kasutajanimi:"
 
-msgid "Password:"
-msgstr "Parool:"
-
 msgid "Store in Folder:"
 msgstr "Salvestatakse kausta:"
 
@@ -1904,9 +2761,6 @@ msgstr "Kas kustutada valitud server?"
 msgid "Confirm Delete"
 msgstr "Kustutamise kinnitus"
 
-msgid "Mofify a Server"
-msgstr "Muuda serverit"
-
 msgid "Undefined Function"
 msgstr "Defineerimata funktsioon"
 
@@ -1929,6 +2783,21 @@ msgid ""
 "This configures settings for downloading email from a pop3 mailbox to your "
 "account on this server."
 msgstr ""
+
+#, fuzzy
+msgid "Message Details"
+msgstr "Kirjade nimekiri"
+
+msgid "Close Window"
+msgstr "Sulge aken"
+
+#, fuzzy
+msgid "Save Message"
+msgstr "Näita kirja"
+
+#, fuzzy
+msgid "View Message details"
+msgstr "Näita kirja"
 
 msgid "New Mail Notification"
 msgstr "Uute kirjade arv"
@@ -1966,9 +2835,7 @@ msgstr ""
 
 msgid ""
 "Select from the list of <b>server files</b> the media file to play when new "
-"mail arrives.  Selecting <b>local media</b> will play the file specified in "
-"the <b>local media file</b> box to play from the local computer.  If no file "
-"is specified, the system will use a default from the server."
+"mail arrives.  If no file is specified, \"(none)\", no sound will be used."
 msgstr ""
 
 msgid "Enable Media Playing"
@@ -1992,14 +2859,12 @@ msgstr "Uue kirja saabumisel avatakse hüpikaken"
 msgid "Select server file:"
 msgstr "Vali serverifail:"
 
-msgid "(local media)"
-msgstr "(kohalik meedia)"
+#, fuzzy
+msgid "(none)"
+msgstr "Puudub"
 
 msgid "Try"
 msgstr "Proovi"
-
-msgid "Local Media File:"
-msgstr "Kohalik meediafail:"
 
 msgid "Current File:"
 msgstr "Aktiivne fail:"
@@ -2012,9 +2877,6 @@ msgstr "SquirrelMaili teade:"
 
 msgid "You have new mail!"
 msgstr "Sulle on uusi kirju!"
-
-msgid "Close Window"
-msgstr "Sulge aken"
 
 msgid "NewMail Options"
 msgstr "Uute kirjade seadistused"
@@ -2038,11 +2900,12 @@ msgstr "%s uus kiri"
 msgid "Test Sound"
 msgstr "Testi helifaili"
 
+#, fuzzy
+msgid "No sound specified"
+msgstr "Server täpsustamata"
+
 msgid "Loading the sound..."
 msgstr "Heli laadimine..."
-
-msgid "Close"
-msgstr "Sulge"
 
 msgid "Sent Subfolders Options"
 msgstr "Sent alamkaustade seadistused"
@@ -2129,6 +2992,293 @@ msgstr "Sõnaraamatu dekrüptimisel tekkis viga"
 msgid "Cute."
 msgstr "tsitaat"
 
+#, c-format
+msgid "I tried to execute '%s', but it returned:"
+msgstr ""
+
+#, fuzzy
+msgid "SquirrelSpell is misconfigured."
+msgstr "SquirrelSpelli seadistuste menüü"
+
+msgid "SquirrelSpell Results"
+msgstr "SquirrelSpelli tulemus"
+
+msgid "Spellcheck completed. Commit changes?"
+msgstr ""
+
+#, fuzzy
+msgid "No changes were made."
+msgstr "Ühtegi kirja polnud valitud."
+
+#, fuzzy
+msgid "Now saving your personal dictionary... Please wait."
+msgstr "Isiklikus sõnaraamatus pole sõnu."
+
+#, c-format
+msgid "Found %s errors"
+msgstr "Leiti %s viga"
+
+msgid "Line with an error:"
+msgstr "Vigane rida:"
+
+msgid "Error:"
+msgstr "Viga:"
+
+#, fuzzy
+msgid "Suggestions:"
+msgstr "Soovitused"
+
+msgid "Suggestions"
+msgstr "Soovitused"
+
+msgid "Change to:"
+msgstr "Muuda:"
+
+msgid "Occurs times:"
+msgstr "Esinemiste arv:"
+
+msgid "Change this word"
+msgstr "Muuda seda sõna"
+
+msgid "Change"
+msgstr "Muuda"
+
+msgid "Change ALL occurances of this word"
+msgstr "Muuda KÕIK selle sõna esinemised"
+
+msgid "Change All"
+msgstr "Muuda kõik"
+
+msgid "Ignore this word"
+msgstr "Ignoreeri seda sõna"
+
+msgid "Ignore"
+msgstr "Ignoreeri"
+
+msgid "Ignore ALL occurances this word"
+msgstr "Ignoreeri KÕIKI selle sõna esinemisi"
+
+msgid "Ignore All"
+msgstr "Ignoreeri kõiki"
+
+#, fuzzy
+msgid "Add this word to your personal dictionary"
+msgstr "Isiklikus sõnaraamatus pole sõnu."
+
+msgid "Add to Dic"
+msgstr "Lisa sõnaraamatusse"
+
+msgid "Close and Commit"
+msgstr "Sulge ja salvesta"
+
+msgid "The spellcheck is not finished. Really close and commit changes?"
+msgstr ""
+"Õigekirja kontroll pole veel lõppenud. Kas tõesti sulgeda ja salvestada "
+"muudatused?"
+
+msgid "Close and Cancel"
+msgstr "Loobu ja sulge"
+
+msgid "The spellcheck is not finished. Really close and discard changes?"
+msgstr ""
+"Õigekirja kontroll pole veel lõppenud. Kas tõesti sulgeda ja loobuda "
+"muudatustest?"
+
+msgid "No errors found"
+msgstr "Vigasid ei leitud"
+
+msgid "Your personal dictionary was erased."
+msgstr "Isiklik sõnaraamatu kustutati ära."
+
+msgid "Dictionary Erased"
+msgstr "Sõnaraamat kustutatud"
+
+msgid ""
+"Your personal dictionary was erased. Please close this window and click "
+"\"Check Spelling\" button again to start your spellcheck over."
+msgstr ""
+
+msgid "Close this Window"
+msgstr "Sulge aken"
+
+msgid ""
+"Your personal dictionary was re-encrypted successfully. Now return to the "
+"&quot;SpellChecker options&quot; menu and make your selection again."
+msgstr ""
+
+msgid "Successful Re-encryption"
+msgstr "Uuesti krüptimine õnnestus"
+
+msgid ""
+"Your personal dictionary was re-encrypted successfully. Please close this "
+"window and click \"Check Spelling\" button again to start your spellcheck "
+"over."
+msgstr ""
+
+msgid "Dictionary re-encrypted"
+msgstr "Sõnaraamat on uuesti krüptitud"
+
+msgid ""
+"Your personal dictionary has been <strong>encrypted</strong> and is now "
+"stored in an <strong>encrypted format</strong>."
+msgstr ""
+
+msgid ""
+"Your personal dictionary has been <strong>decrypted</strong> and is now "
+"stored as <strong>clear text</strong>."
+msgstr ""
+
+msgid "Personal Dictionary Crypto Settings"
+msgstr "Isikliku sõnaraamatu krüptimise seadistused"
+
+msgid "Personal Dictionary"
+msgstr "Isiklik sõnaraamat"
+
+msgid "No words in your personal dictionary."
+msgstr "Isiklikus sõnaraamatus pole sõnu."
+
+msgid "Please check any words you wish to delete from your dictionary."
+msgstr "Palun märgi need sõnad, mida sa soovid sõnaraamatust kustutada."
+
+#, c-format
+msgid "%s dictionary"
+msgstr "%s sõnaraamat"
+
+msgid "Delete checked words"
+msgstr "Kustuta märgitud sõnad"
+
+msgid "Edit your Personal Dictionary"
+msgstr "Isikliku sõnaraamatu muutmine"
+
+msgid "Please make your selection first."
+msgstr ""
+
+#, fuzzy
+msgid ""
+"This will encrypt your personal dictionary and store it in an encrypted "
+"format. Proceed?"
+msgstr "Palun krüpti minu sõnaraamat ja salvesta see krüpteeritud formaadis."
+
+#, fuzzy
+msgid ""
+"This will decrypt your personal dictionary and store it in a clear-text "
+"format. Proceed?"
+msgstr "Palun dekrüpti minu sõnaraamat ja salvesta lihtteksti formaadis."
+
+msgid ""
+"<p>Your personal dictionary is <strong>currently encrypted</strong>. This "
+"helps protect your privacy in case the web-mail system gets compromized and "
+"your personal dictionary ends up stolen. It is currently encrypted with the "
+"password you use to access your mailbox, making it hard for anyone to see "
+"what is stored in your personal dictionary.</p> <p><strong>ATTENTION:</"
+"strong> If you forget your password, your personal dictionary will become "
+"unaccessible, since it can no longer be decrypted. If you change your "
+"mailbox password, SquirrelSpell will recognize it and prompt you for your "
+"old password in order to re-encrypt the dictionary with a new key.</p>"
+msgstr ""
+
+msgid ""
+"Please decrypt my personal dictionary and store it in a clear-text format."
+msgstr "Palun dekrüpti minu sõnaraamat ja salvesta lihtteksti formaadis."
+
+#, fuzzy
+msgid "Change crypto settings"
+msgstr "Muuda krüpto seadistusi"
+
+msgid ""
+"<p>Your personal dictionary is <strong>currently not encrypted</strong>. You "
+"may wish to encrypt your personal dictionary to protect your privacy in case "
+"the webmail system gets compromized and your personal dictionary file gets "
+"stolen. When encrypted, the file's contents look garbled and are hard to "
+"decrypt without knowing the correct key (which is your mailbox password).</"
+"p> <strong>ATTENTION:</strong> If you decide to encrypt your personal "
+"dictionary, you must remember that it gets &quot;hashed&quot; with your "
+"mailbox password. If you forget your mailbox password and the administrator "
+"changes it to a new value, your personal dictionary will become useless and "
+"will have to be created anew. However, if you or your system administrator "
+"change your mailbox password but you still have the old password at hand, "
+"you will be able to enter the old key to re-encrypt the dictionary with the "
+"new value.</p>"
+msgstr ""
+
+msgid ""
+"Please encrypt my personal dictionary and store it in an encrypted format."
+msgstr "Palun krüpti minu sõnaraamat ja salvesta see krüpteeritud formaadis."
+
+#, c-format
+msgid "Deleting the following entries from <strong>%s</strong> dictionary:"
+msgstr "Sõnaraamatust <strong>%s</strong> kustutatakse järgmised kirjed:"
+
+msgid "All done!"
+msgstr "Valmis!"
+
+msgid "Personal Dictionary Updated"
+msgstr "Isikliku sõnaraamatu uuendamine õnnestus"
+
+#, fuzzy
+msgid "No changes requested."
+msgstr "Ühtegi kirja polnud valitud."
+
+msgid "Please wait, communicating with the server..."
+msgstr "Serveriga suhtlemine, palun oota..."
+
+msgid ""
+"Please choose which dictionary you would like to use to spellcheck this "
+"message:"
+msgstr "Palun vali selle kirja õigekirja kontrolliks kasutatav sõnaraamat:"
+
+msgid "SquirrelSpell Initiating"
+msgstr "SquirrelSpelli käivitamine"
+
+#, fuzzy, c-format
+msgid ""
+"Settings adjusted to: <strong>%s</strong> with <strong>%s</strong> as "
+"default dictionary."
+msgstr "Sõnaraamatust <strong>%s</strong> kustutatakse järgmised kirjed:"
+
+#, c-format
+msgid "Using <strong>%s</strong> dictionary (system default) for spellcheck."
+msgstr ""
+
+msgid "International Dictionaries Preferences Updated"
+msgstr "Rahvusvaheliste sõnaraamatute seadistuste muutmine õnnestus"
+
+#, fuzzy
+msgid ""
+"Please check any available international dictionaries which you would like "
+"to use when spellchecking:"
+msgstr "Palun vali selle kirja õigekirja kontrolliks kasutatav sõnaraamat:"
+
+msgid "Make this dictionary my default selection:"
+msgstr "Salvesta see sõnaraamat vaikimisi sõnaraamatuks:"
+
+msgid "Make these changes"
+msgstr "Salvesta muudatused"
+
+msgid "Add International Dictionaries"
+msgstr "Lisa rahvusvahelisi sõnaraamatuid"
+
+msgid "Please choose which options you wish to set up:"
+msgstr "Vali seadistused:"
+
+#, fuzzy
+msgid "Edit your personal dictionary"
+msgstr "Isikliku sõnaraamatu muutmine"
+
+#, fuzzy
+msgid "Set up international dictionaries"
+msgstr "Lisa rahvusvahelisi sõnaraamatuid"
+
+msgid "Encrypt or decrypt your personal dictionary"
+msgstr "Isikliku sõnaraamatu krüptimine või dekrüptimine"
+
+#, fuzzy
+msgid "not available"
+msgstr "pole saadaval"
+
+msgid "SquirrelSpell Options Menu"
+msgstr "SquirrelSpelli seadistuste menüü"
+
 msgid "Translator"
 msgstr "Tõlkimismootor"
 
@@ -2139,28 +3289,40 @@ msgstr "Tõlkimise seadistused"
 msgid "Your server options are as follows:"
 msgstr "Sinu serveri seadistused:"
 
-msgid ""
-"13 language pairs, maximum of 1000 characters translated, powered by Systran"
+#, fuzzy
+msgid "Maximum of 1000 characters translated, powered by Systran"
 msgstr "13 keelepaari, tõlgib maksimaalselt 1000 tähemärki, põhineb Systran-il"
 
-msgid ""
-"10 language pairs, maximum of 25 kilobytes translated, powered by Systran"
-msgstr "10 keelepaari, tõlgib maksimaalselt 25KB, põhineb Systran-il"
+#, c-format
+msgid "Number of supported language pairs: %s"
+msgstr ""
 
-msgid "12 language pairs, no known limits, powered by Systran"
+#, fuzzy
+msgid "No known limits, powered by Systran"
 msgstr "12 keelepaari, piiranguid pole, põhineb Systran-il"
 
-msgid ""
-"767 language pairs, no known limits, powered by Translation Experts's "
-"InterTran"
+#, fuzzy
+msgid "No known limits, powered by Translation Experts's InterTran"
 msgstr ""
 "767 keelepaari, piiranguid pole, põhineb Translations Expert's InterTran-il"
 
-msgid ""
-"8 language pairs, no known limits, powered by GPLTrans (free, open source)"
+#, c-format
+msgid "Number of supported languages: %s"
+msgstr ""
+
+#, fuzzy
+msgid "No known limits, powered by GPLTrans (free, open source)"
 msgstr ""
 "8 keelepaari, piiranguid pole, põhineb GPLTrans-il (vaba, avatud "
 "lähtekoodiga)"
+
+#, fuzzy
+msgid "Hellenic translations, no known limits, powered by Systran"
+msgstr "12 keelepaari, piiranguid pole, põhineb Systran-il"
+
+#, fuzzy
+msgid "Russian translations, maximum of 500 characters translated"
+msgstr "13 keelepaari, tõlgib maksimaalselt 1000 tähemärki, põhineb Systran-il"
 
 msgid ""
 "You also decide if you want the translation box displayed, and where it will "
@@ -2194,9 +3356,6 @@ msgstr "Kirjutades:"
 msgid "Not yet functional, currently does nothing"
 msgstr "Hetkel veel ei tööta"
 
-msgid "Download this as a file"
-msgstr "Salvesta failina"
-
 msgid "Translation Options"
 msgstr "Tõlkimise seadistused"
 
@@ -2212,6 +3371,10 @@ msgstr "%s keelest %s keelde"
 msgid "English"
 msgstr "inglise"
 
+#, fuzzy
+msgid "Chinese"
+msgstr "Muuda"
+
 msgid "French"
 msgstr "prantsuse"
 
@@ -2220,6 +3383,13 @@ msgstr "saksa"
 
 msgid "Italian"
 msgstr "itaalia"
+
+msgid "Japanese"
+msgstr "jaapani"
+
+#, fuzzy
+msgid "Korean"
+msgstr "norra"
 
 msgid "Portuguese"
 msgstr "portugali"
@@ -2266,9 +3436,6 @@ msgstr "ungari"
 msgid "Icelandic"
 msgstr "islandi"
 
-msgid "Japanese"
-msgstr "jaapani"
-
 msgid "Latin American Spanish"
 msgstr "Ladina-Ameerika hispaania"
 
@@ -2290,6 +3457,9 @@ msgstr "sloveenia"
 msgid "Swedish"
 msgstr "rootsi"
 
+msgid "Turkish"
+msgstr ""
+
 msgid "Welsh"
 msgstr "uelsi"
 
@@ -2299,661 +3469,95 @@ msgstr "indoneesia"
 msgid "Latin"
 msgstr "ladina"
 
-msgid "Address Book"
-msgstr "Aadressiraamat"
+#, fuzzy
+msgid "to English"
+msgstr "inglise"
 
-msgid "Name"
-msgstr "Nimi"
+#, fuzzy
+msgid "from English"
+msgstr "inglise"
 
-msgid "E-mail"
-msgstr "E-post"
+#, fuzzy
+msgid "Interface language"
+msgstr "Keel"
 
-msgid "Info"
-msgstr "Info"
+#, fuzzy
+msgid "Translation direction"
+msgstr "Tõlkimise seadistused"
 
-msgid "Source"
-msgstr "Allikas"
-
-msgid "Bcc"
+msgid "Delivery error report"
 msgstr ""
 
-msgid "Use Addresses"
-msgstr "Kasuta aadresse"
-
-msgid "Address Book Search"
-msgstr "Otsing aadressiraamatust"
-
-msgid "Search for"
-msgstr "Otsi"
-
-msgid "in"
-msgstr "sees on"
-
-msgid "All address books"
-msgstr "Kõik aadressiraamatud"
-
-msgid "List all"
-msgstr "Näita kõiki"
-
-#, c-format
-msgid "Unable to list addresses from %s"
-msgstr "Aadresside näitamine asukohast %s ei õnnestunud"
-
-msgid "Your search failed with the following error(s)"
-msgstr "Sinu otsing ei õnnestunud järgnevatel põhjustel"
-
-msgid "No persons matching your search was found"
-msgstr "Päringule vastavaid isikuid ei leitud"
-
-msgid "Return"
-msgstr "Tagasi"
-
-msgid "Nickname"
-msgstr "Hüüdnimi"
-
-msgid "Must be unique"
-msgstr "Peab olema unikaalne"
-
-msgid "E-mail address"
-msgstr "E-posti aadress"
-
-msgid "First name"
-msgstr "Eesnimi"
-
-msgid "Last name"
-msgstr "Perekonnanimi"
-
-msgid "Additional info"
-msgstr "Lisainfo"
-
-msgid "No personal address book is defined. Contact administrator."
-msgstr ""
-"Isiklik aadressiraamat on kirjeldamata. Võta ühendust administraatoriga."
-
-msgid "You can only edit one address at the time"
-msgstr "Korraga saab muuta vaid ühte aadressi"
-
-msgid "Update address"
-msgstr "Salvesta muudatused"
-
-msgid "Unknown error"
-msgstr "Tundmatu viga"
-
-msgid "Add address"
-msgstr "Lisa aadress"
-
-msgid "Edit selected"
-msgstr "Muuda valitud aadressi"
-
-msgid "Delete selected"
-msgstr "Kustuta valitud aadressid"
-
-#, c-format
-msgid "Add to %s"
-msgstr "Aadressi lisamine: %s"
-
-msgid "Original Message"
-msgstr "Algne kiri"
-
-msgid "Draft Email Saved"
-msgstr "Kirja mustand salvestatud"
-
-msgid "Could not move/copy file. File not attached"
-msgstr "Faili liigutamine/kopeerimine ei õnnestunud. Faili ei lisatud."
-
-#, fuzzy
-msgid "Draft Saved"
-msgstr "Kirja mustand salvestatud"
-
-#, fuzzy
-msgid "Your Message has been sent"
-msgstr "Ühtegi kirja polnud valitud."
-
-msgid "To:"
-msgstr "Saaja:"
-
-msgid "CC:"
-msgstr "Koopia:"
-
-msgid "BCC:"
-msgstr "Pimekoopia:"
-
-msgid "Subject:"
-msgstr "Teema:"
-
-msgid "Send"
-msgstr "Saada"
-
-msgid "Attach:"
-msgstr "Lisa fail:"
-
-msgid "Add"
-msgstr "Lisa"
-
-msgid "Delete selected attachments"
-msgstr "Kustuta valitud failid"
-
-msgid "Priority"
-msgstr "Tähtsus"
-
-msgid "Receipt"
+msgid "Undelivered Message Headers"
 msgstr ""
 
-#, fuzzy
-msgid "On Read"
-msgstr "Loetuks"
+#~ msgid "Unknown message number in reply from server: "
+#~ msgstr "Tundmatu kirja number serveri vastuses: "
 
-msgid "On Delivery"
-msgstr ""
+#~ msgid "(unknown sender)"
+#~ msgstr "(tundmatu saatja)"
 
-msgid "Save Draft"
-msgstr "Salvesta mustand"
-
-msgid "You have not filled in the \"To:\" field."
-msgstr "\"Saaja:\" väli on täitmata."
-
-msgid "said"
-msgstr "kirjutas"
-
-msgid "quote"
-msgstr "tsitaat"
-
-msgid "who"
-msgstr "kes"
+#~ msgid "Enable Subtle Printer Friendly Link"
+#~ msgstr "Trükiversiooni viida näitamine"
 
 #, fuzzy
-msgid "Draft folder"
-msgstr "Mustandid"
-
-msgid "Illegal folder name.  Please select a different name."
-msgstr "Vigane kausta nimi. Palun sisesta mõni teine nimi."
-
-msgid "Click here to go back"
-msgstr "Vajuta siia, et tagasi minna"
-
-msgid "You have not selected a folder to delete. Please do so."
-msgstr ""
-
-msgid "Delete Folder"
-msgstr "Kausta eemaldamine"
-
-#, c-format
-msgid "Are you sure you want to delete %s?"
-msgstr ""
-
-msgid "Subscribed successfully!"
-msgstr "Kausta aktiveerimine õnnestus!"
-
-msgid "Unsubscribed successfully!"
-msgstr "Kausta deaktiveerimine õnnestus!"
-
-msgid "Deleted folder successfully!"
-msgstr "Kausta kustutamine õnnestus!"
-
-msgid "Created folder successfully!"
-msgstr "Uue kausta tekitamine õnnestus!"
-
-msgid "Renamed successfully!"
-msgstr "Kausta ümber nimetamine õnnestus"
-
-msgid "Subscription Unsuccessful - Folder does not exist."
-msgstr ""
-
-msgid "refresh folder list"
-msgstr "värskenda nimekirja"
-
-msgid "Create Folder"
-msgstr "Uue kausta tekitamine"
-
-msgid "as a subfolder of"
-msgstr "mis asub kaustas"
-
-msgid "None"
-msgstr "Puudub"
-
-msgid "Let this folder contain subfolders"
-msgstr "See kaust tohib sisaldada alamkaustasid"
-
-msgid "Create"
-msgstr "Tekita"
-
-msgid "Rename a Folder"
-msgstr "Kausta ümber nimetamine"
-
-#, fuzzy
-msgid "Select a folder"
-msgstr "Kausta ümber nimetamine"
-
-msgid "Rename"
-msgstr "Nimeta ümber"
-
-msgid "No folders found"
-msgstr "Kaustasid pole"
-
-msgid "No folders were found to unsubscribe from!"
-msgstr "Aktiveeritud kaustasid pole!"
-
-msgid "No folders were found to subscribe to!"
-msgstr "Aktiveerimata kaustasid pole!"
-
-#, fuzzy
-msgid "Subscribe to:"
-msgstr "Aktiveeri"
-
-msgid "You have not selected a folder to rename. Please do so."
-msgstr ""
-
-msgid "Rename a folder"
-msgstr "Kausta ümber nimetamine"
-
-msgid "New name:"
-msgstr "Uus nimi:"
-
-msgid "ERROR: Help files are not in the right format!"
-msgstr ""
-
-#, c-format
-msgid ""
-"The help has not been translated to %s.  It will be displayed in English "
-"instead."
-msgstr ""
-"Abitekst pole veel tõlgitud keelde %s ja seepärast näidatakse ingliskeelset "
-"versiooni."
-
-msgid "Some or all of the help documents are not present!"
-msgstr "Mõned või kõik abitekstid pole saadaval!"
-
-msgid "Table of Contents"
-msgstr "Sisukord"
-
-msgid "Top"
-msgstr "Üles"
-
-msgid "Viewing an image attachment"
-msgstr "Pildifaili vaatamine"
-
-msgid "View message"
-msgstr "Näita kirja"
-
-#, fuzzy
-msgid "Not available"
-msgstr "pole saadaval"
-
-msgid "purge"
-msgstr "Tühjenda"
-
-msgid "Last Refresh"
-msgstr "Viimane värskendus"
-
-msgid "Save folder tree"
-msgstr ""
-
-msgid "Login"
-msgstr "Logi sisse"
-
-#, c-format
-msgid "%s Login"
-msgstr "%s"
-
-msgid "Name:"
-msgstr "Nimi:"
-
-msgid "No messages were selected."
-msgstr "Ühtegi kirja polnud valitud."
-
-msgid "Message Highlighting"
-msgstr "Kirjade esile tõstmine"
-
-#, fuzzy
-msgid "subject"
-msgstr "Teema"
-
-msgid "No highlighting is defined"
-msgstr "Esile tõstmist pole kirjeldatud"
-
-msgid "Identifying name"
-msgstr "Kirjeldav nimi"
-
-msgid "Color"
-msgstr "Värv"
-
-msgid "Dark Blue"
-msgstr "Tumesinine"
-
-msgid "Dark Green"
-msgstr "Tumeroheline"
-
-msgid "Dark Yellow"
-msgstr "Tumekollane"
-
-msgid "Dark Cyan"
-msgstr "Tume tsüaan"
-
-msgid "Dark Magenta"
-msgstr "Tume magenta"
-
-msgid "Light Blue"
-msgstr "Helesinine"
-
-msgid "Light Green"
-msgstr "Heleroheline"
-
-msgid "Light Yellow"
-msgstr "Helekollane"
-
-msgid "Light Cyan"
-msgstr "Hele tsüaan"
-
-msgid "Light Magenta"
-msgstr "Hele magenta"
-
-msgid "Dark Gray"
-msgstr "Tumehall"
-
-msgid "Medium Gray"
-msgstr "Keskmiselt hall"
-
-msgid "Light Gray"
-msgstr "Helehall"
-
-msgid "White"
-msgstr "Valge"
-
-msgid "Other:"
-msgstr "Muu:"
-
-msgid "Ex: 63aa7f"
-msgstr "näide: 63AA7F"
-
-msgid "Matches"
-msgstr "Sobivus"
-
-#, c-format
-msgid "Alternate Identity %d"
-msgstr "Alternatiivne identiteet %d"
-
-msgid "Advanced Identities"
-msgstr "Minu identiteedid"
-
-msgid "Default Identity"
-msgstr "Vaikimisi identiteet"
-
-msgid "Add a New Identity"
-msgstr "Lisa uus identiteet"
-
-msgid "E-Mail Address"
-msgstr "E-posti aadress"
-
-msgid "Save / Update"
-msgstr "Salvesta / Uuenda"
-
-msgid "Make Default"
-msgstr "Sea vaikimisi identiteediks"
-
-msgid "Move Up"
-msgstr "Liiguta ülespoole"
-
-msgid "Index Order"
-msgstr "Nimekirja seadistused"
-
-msgid "Checkbox"
-msgstr "Kontrollkast"
-
-msgid "Flags"
-msgstr "Lipud"
-
-msgid ""
-"The index order is the order that the columns are arranged in the message "
-"index.  You can add, remove, and move columns around to customize them to "
-"fit your needs."
-msgstr ""
-"Siin saad sa seadistada nimekirja veergude järjekorda ja arvu täpselt sulle "
-"sobivaks."
-
-msgid "up"
-msgstr "üles"
-
-msgid "down"
-msgstr "alla"
-
-msgid "remove"
-msgstr "eemalda"
-
-msgid "Return to options page"
-msgstr "Tagasi seadistuste leheküljele"
-
-msgid "Personal Information"
-msgstr "Isikuandmed"
-
-msgid "Display Preferences"
-msgstr "Välimuse seadistused"
-
-msgid "Folder Preferences"
-msgstr "Kaustade seadistused"
-
-msgid "Successfully Saved Options"
-msgstr "Seadistuste salvestamine õnnestus"
-
-msgid "Refresh Folder List"
-msgstr "Värskenda kaustade nimekirja"
-
-msgid "Refresh Page"
-msgstr "Värskenda lehekülge"
-
-msgid ""
-"This contains personal information about yourself such as your name, your "
-"email address, etc."
-msgstr "Isikuandmete (nimi, e-posti aadress jne) ja identiteetide seadistused."
-
-msgid ""
-"You can change the way that SquirrelMail looks and displays information to "
-"you, such as the colors, the language, and other settings."
-msgstr "SquirrelMaili välimuse parameetrite (värvid, keel jne) seadistused."
-
-msgid ""
-"Based upon given criteria, incoming messages can have different background "
-"colors in the message list.  This helps to easily distinguish who the "
-"messages are from, especially for mailing lists."
-msgstr ""
-"Nimekirjas olevatele kirjadele on võimalik seada taustavärvi vastavalt "
-"tingimustele. Eriti kasulik on see võimalus postiloendite puhul, kuna aitab "
-"sul kergesti kindlaks teha kirjade päritolu."
-
-msgid ""
-"These settings change the way your folders are displayed and manipulated."
-msgstr "Kaustade kuvamise ja kasutamise seadistused."
-
-msgid ""
-"The order of the message index can be rearranged and changed to contain the "
-"headers in any order you want."
-msgstr "Kirjade nimekirja veergude ja järjestuse seadistused."
-
-msgid "Message not printable"
-msgstr "Trükikõlbmatu kiri"
-
-msgid "Printer Friendly"
-msgstr "Trükivaade"
-
-msgid "CC"
-msgstr "Koopia:"
-
-msgid "Print"
-msgstr "Trüki"
-
-msgid "View Printable Version"
-msgstr "Trükivaade"
-
-#, fuzzy
-msgid "Read:"
-msgstr "Loetuks"
-
-#, fuzzy
-msgid "Your message"
-msgstr "] kirja"
-
-#, fuzzy
-msgid "Sent:"
-msgstr "Saada"
-
-#, c-format
-msgid "Was displayed on %s"
-msgstr ""
-
-msgid "less"
-msgstr "vähem"
-
-msgid "more"
-msgstr "rohkem"
-
-msgid "Mailer"
-msgstr ""
-
-msgid "Read receipt"
-msgstr ""
-
-#, fuzzy
-msgid "send"
-msgstr "Saada"
-
-#, fuzzy
-msgid "requested"
-msgstr "Midagi ei soovitud muuta."
-
-msgid ""
-"The message sender has requested a response to indicate that you have read "
-"this message. Would you like to send a receipt?"
-msgstr ""
-
-msgid "Send read receipt now"
-msgstr ""
-
-#, fuzzy
-msgid "Search results"
-msgstr "Otsi"
-
-msgid "Message List"
-msgstr "Kirjade nimekiri"
-
-msgid "Resume Draft"
-msgstr "Jätka mustandit"
-
-msgid "Edit Message as New"
-msgstr ""
-
-#, fuzzy
-msgid "View Message"
-msgstr "Näita kirja"
-
-#, fuzzy
-msgid "Forward as Attachment"
-msgstr "Lisatud failid"
-
-msgid "Reply"
-msgstr "Vasta"
-
-msgid "Reply All"
-msgstr "Vasta kõikidele"
-
-msgid "View Full Header"
-msgstr "Näita täielikku päist"
-
-msgid "Attachments"
-msgstr "Lisatud failid"
-
-#, fuzzy
-msgid "Folder:"
-msgstr "Kaustad"
-
-#, fuzzy
-msgid "edit"
-msgstr "Muuda"
-
-#, fuzzy
-msgid "search"
-msgstr "Otsi"
-
-#, fuzzy
-msgid "delete"
-msgstr "Kustuta"
-
-msgid "Recent Searches"
-msgstr ""
-
-#, fuzzy
-msgid "save"
-msgstr "Salvesta"
-
-#, fuzzy
-msgid "forget"
-msgstr "rohkem"
-
-#, fuzzy
-msgid "Current Search"
-msgstr "Aktiivne kaust"
-
-msgid "Body"
-msgstr "Sisu"
-
-msgid "Everywhere"
-msgstr "Kogu kiri"
-
-#, fuzzy
-msgid "Search Results"
-msgstr "Otsi"
-
-msgid "No Messages Found"
-msgstr "Uusi kirju ei leitud"
-
-msgid "You have been successfully signed out."
-msgstr "Oledki välja logitud."
-
-msgid "Click here to log back in."
-msgstr "Vajuta siia uuesti sisse logimiseks."
-
-msgid "Viewing a Business Card"
-msgstr "Visiitkaardi näitamine"
-
-msgid "Title"
-msgstr "Tiitel"
-
-msgid "Email"
-msgstr "E-post"
-
-msgid "Web Page"
-msgstr "Veebilehekülg"
-
-msgid "Organization / Department"
-msgstr "Organisatsioon / Osakond"
-
-msgid "Address"
-msgstr "Aadress"
-
-msgid "Work Phone"
-msgstr "Töötelefon"
-
-msgid "Home Phone"
-msgstr "Kodune telefon"
-
-msgid "Cellular Phone"
-msgstr "Mobiiltelefon"
-
-msgid "Fax"
-msgstr "Faks"
-
-msgid "Note"
-msgstr "Märkus"
-
-msgid "Add to Addressbook"
-msgstr "Lisa aadressraamatusse"
-
-msgid "Title & Org. / Dept."
-msgstr "Tiitel ja Org. / Osak."
-
-msgid "Viewing Full Header"
-msgstr "Täieliku päise näitamine"
-
-msgid "Viewing a text attachment"
-msgstr "Tekstifaili vaatamine"
+#~ msgid "Authenticated SMTP"
+#~ msgstr "autentimine ebaõnnestus "
+
+#~ msgid ""
+#~ "FREE - Osirusoft Relays - Osirusofts list of verified open relays. Seems "
+#~ "to include servers used by abuse@uunet.net auto-replies too."
+#~ msgstr ""
+#~ "FREE - Osirusoft Relays - Osirusofts list of verified open relays. Seems "
+#~ "to include servers used by abuse@uunet.net auto-replies too."
+
+#~ msgid "FREE - Osirusoft Dialups - Osirusofts Dialup Spam Source list."
+#~ msgstr "FREE - Osirusoft Dialups - Osirusofts Dialup Spam Source list."
+
+#~ msgid ""
+#~ "FREE - Osirusoft Confirmed Spam Source - Sites that continually spam and "
+#~ "have been manually added after multiple nominations. Use with caution. "
+#~ "Seems to catch abuse auto-replies from some ISPs."
+#~ msgstr ""
+#~ "FREE - Osirusoft Confirmed Spam Source - Sites that continually spam and "
+#~ "have been manually added after multiple nominations. Use with caution. "
+#~ "Seems to catch abuse auto-replies from some ISPs."
+
+#~ msgid ""
+#~ "FREE - Osirusoft Smart Hosts - List of hosts that are secure but relay "
+#~ "for other mail servers that are not secure."
+#~ msgstr ""
+#~ "FREE - Osirusoft Smart Hosts - List of hosts that are secure but relay "
+#~ "for other mail servers that are not secure."
+
+#~ msgid ""
+#~ "FREE - Osirusoft Spamware Developers - It is believed that these are IP "
+#~ "ranges of companies that are known to produce spam software. Seems to "
+#~ "catch abuse auto-replies from some ISPs."
+#~ msgstr ""
+#~ "FREE - Osirusoft Spamware Developers - It is believed that these are IP "
+#~ "ranges of companies that are known to produce spam software. Seems to "
+#~ "catch abuse auto-replies from some ISPs."
+
+#~ msgid ""
+#~ "FREE - Osirusoft Unconfirmed OptIn Servers - List of listservers that opt "
+#~ "users in without confirmation."
+#~ msgstr ""
+#~ "FREE - Osirusoft Unconfirmed OptIn Servers - List of listservers that opt "
+#~ "users in without confirmation."
+
+#~ msgid "Mofify a Server"
+#~ msgstr "Muuda serverit"
+
+#~ msgid "(local media)"
+#~ msgstr "(kohalik meedia)"
+
+#~ msgid "Local Media File:"
+#~ msgstr "Kohalik meediafail:"
+
+#~ msgid ""
+#~ "10 language pairs, maximum of 25 kilobytes translated, powered by Systran"
+#~ msgstr "10 keelepaari, tõlgib maksimaalselt 25KB, põhineb Systran-il"
 
 #~ msgid "Close window"
 #~ msgstr "Sulge aken"
@@ -3017,159 +3621,6 @@ msgstr "Tekstifaili vaatamine"
 
 #~ msgid "SECURITY BREACH ON DECK 5! CMDR TUVOK AND SECURITY TEAM REQUESTED."
 #~ msgstr "SECURITY BREACH ON DECK 5! CMDR TUVOK AND SECURITY TEAM REQUESTED."
-
-#~ msgid "Your personal dictionary was erased."
-#~ msgstr "Isiklik sõnaraamatu kustutati ära."
-
-#~ msgid "Dictionary Erased"
-#~ msgstr "Sõnaraamat kustutatud"
-
-#~ msgid "Close this Window"
-#~ msgstr "Sulge aken"
-
-#~ msgid "Successful Re-encryption"
-#~ msgstr "Uuesti krüptimine õnnestus"
-
-#~ msgid "Dictionary re-encrypted"
-#~ msgstr "Sõnaraamat on uuesti krüptitud"
-
-#~ msgid "Personal Dictionary Crypto Settings"
-#~ msgstr "Isikliku sõnaraamatu krüptimise seadistused"
-
-#~ msgid "SquirrelSpell Results"
-#~ msgstr "SquirrelSpelli tulemus"
-
-#~ msgid "Found %s errors"
-#~ msgstr "Leiti %s viga"
-
-#~ msgid "Line with an error:"
-#~ msgstr "Vigane rida:"
-
-#~ msgid "Error:"
-#~ msgstr "Viga:"
-
-#~ msgid "Suggestions"
-#~ msgstr "Soovitused"
-
-#~ msgid "Change to:"
-#~ msgstr "Muuda:"
-
-#~ msgid "Occurs times:"
-#~ msgstr "Esinemiste arv:"
-
-#~ msgid "Change this word"
-#~ msgstr "Muuda seda sõna"
-
-#~ msgid "Change"
-#~ msgstr "Muuda"
-
-#~ msgid "Change ALL occurances of this word"
-#~ msgstr "Muuda KÕIK selle sõna esinemised"
-
-#~ msgid "Change All"
-#~ msgstr "Muuda kõik"
-
-#~ msgid "Ignore this word"
-#~ msgstr "Ignoreeri seda sõna"
-
-#~ msgid "Ignore"
-#~ msgstr "Ignoreeri"
-
-#~ msgid "Ignore ALL occurances this word"
-#~ msgstr "Ignoreeri KÕIKI selle sõna esinemisi"
-
-#~ msgid "Ignore All"
-#~ msgstr "Ignoreeri kõiki"
-
-#~ msgid "Add to Dic"
-#~ msgstr "Lisa sõnaraamatusse"
-
-#~ msgid "Close and Commit"
-#~ msgstr "Sulge ja salvesta"
-
-#~ msgid "The spellcheck is not finished. Really close and commit changes?"
-#~ msgstr ""
-#~ "Õigekirja kontroll pole veel lõppenud. Kas tõesti sulgeda ja salvestada "
-#~ "muudatused?"
-
-#~ msgid "Close and Cancel"
-#~ msgstr "Loobu ja sulge"
-
-#~ msgid "The spellcheck is not finished. Really close and discard changes?"
-#~ msgstr ""
-#~ "Õigekirja kontroll pole veel lõppenud. Kas tõesti sulgeda ja loobuda "
-#~ "muudatustest?"
-
-#~ msgid "No errors found"
-#~ msgstr "Vigasid ei leitud"
-
-#~ msgid "Personal Dictionary"
-#~ msgstr "Isiklik sõnaraamat"
-
-#~ msgid "No words in your personal dictionary."
-#~ msgstr "Isiklikus sõnaraamatus pole sõnu."
-
-#~ msgid "Please check any words you wish to delete from your dictionary."
-#~ msgstr "Palun märgi need sõnad, mida sa soovid sõnaraamatust kustutada."
-
-#~ msgid "%s dictionary"
-#~ msgstr "%s sõnaraamat"
-
-#~ msgid "Delete checked words"
-#~ msgstr "Kustuta märgitud sõnad"
-
-#~ msgid "Edit your Personal Dictionary"
-#~ msgstr "Isikliku sõnaraamatu muutmine"
-
-#~ msgid ""
-#~ "Please decrypt my personal dictionary and store it in a clear-text format."
-#~ msgstr "Palun dekrüpti minu sõnaraamat ja salvesta lihtteksti formaadis."
-
-#~ msgid ""
-#~ "Please encrypt my personal dictionary and store it in an encrypted format."
-#~ msgstr ""
-#~ "Palun krüpti minu sõnaraamat ja salvesta see krüpteeritud formaadis."
-
-#~ msgid "Deleting the following entries from <strong>%s</strong> dictionary:"
-#~ msgstr "Sõnaraamatust <strong>%s</strong> kustutatakse järgmised kirjed:"
-
-#~ msgid "All done!"
-#~ msgstr "Valmis!"
-
-#~ msgid "Personal Dictionary Updated"
-#~ msgstr "Isikliku sõnaraamatu uuendamine õnnestus"
-
-#~ msgid "Please wait, communicating with the server..."
-#~ msgstr "Serveriga suhtlemine, palun oota..."
-
-#~ msgid ""
-#~ "Please choose which dictionary you would like to use to spellcheck this "
-#~ "message:"
-#~ msgstr "Palun vali selle kirja õigekirja kontrolliks kasutatav sõnaraamat:"
-
-#~ msgid "SquirrelSpell Initiating"
-#~ msgstr "SquirrelSpelli käivitamine"
-
-#~ msgid "International Dictionaries Preferences Updated"
-#~ msgstr "Rahvusvaheliste sõnaraamatute seadistuste muutmine õnnestus"
-
-#~ msgid "Make this dictionary my default selection:"
-#~ msgstr "Salvesta see sõnaraamat vaikimisi sõnaraamatuks:"
-
-#~ msgid "Make these changes"
-#~ msgstr "Salvesta muudatused"
-
-#~ msgid "Add International Dictionaries"
-#~ msgstr "Lisa rahvusvahelisi sõnaraamatuid"
-
-#~ msgid "Please choose which options you wish to set up:"
-#~ msgstr "Vali seadistused:"
-
-#~ msgid "Encrypt or decrypt your personal dictionary"
-#~ msgstr "Isikliku sõnaraamatu krüptimine või dekrüptimine"
-
-#~ msgid "SquirrelSpell Options Menu"
-#~ msgstr "SquirrelSpelli seadistuste menüü"
 
 #~ msgid "POP3: premature NOOP OK, NOT an RFC 1939 Compliant server"
 #~ msgstr "POP3: premature NOOP OK, NOT an RFC 1939 Compliant server"
