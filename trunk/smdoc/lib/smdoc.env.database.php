@@ -862,7 +862,7 @@ class smdoc_db
     elseif ( $this->query_success($this->query($insert)) )
       $saveResult = 2;
     // if fail, modify table to include indexes from class definition
-    elseif ( $this->alterTable($object->foowd_source, $fieldArray) )
+    elseif ( $this->alterTable($object->foowd_source, $fieldArray, $object->foowd_indexes) )
     {
       // indexes were altered, retry update
       if ( $this->query_success($this->query($update)) ) 
@@ -986,6 +986,7 @@ class smdoc_db
 	`workspaceid` int(11) NOT NULL default \'0\',
 	`title`       varchar(32) NOT NULL default \'\',
 	`updated`     datetime NOT NULL default \'0000-00-00 00:00:00\',
+	`permissions` varchar(128) default \'\',
 	`object`      longblob,
 	PRIMARY KEY (`objectid`,`version`,`classid`,`workspaceid`),
 	KEY `idxtblObjectTitle`       (`title`),
@@ -1009,9 +1010,10 @@ class smdoc_db
    * @access protected
    * @param mixed $in_source Source specified by the caller
    * @param array $fieldArray An array of column clause elements.
+   * @param mixed $indices Array of object indices
    * @return bool TRUE on success.
    */
-  function alterTable($in_source, $fieldArray) 
+  function alterTable($in_source, $fieldArray, $indices) 
   {
     $fields = $this->getFields($in_source);
     if ( $fields === FALSE )
@@ -1021,7 +1023,7 @@ class smdoc_db
     foreach ($fieldArray as $field => $value)
     {
       if ( !in_array($field, $fields) && $field != 'object')
-        $missingFields[] = $object->foowd_indexes[$field];
+        $missingFields[] = $indices[$field];
     }
 
     // Return TRUE - nothing missing.
@@ -1039,14 +1041,14 @@ class smdoc_db
       if ( $column['name'] == '' || $column['type'] == '' )
         continue;
 
-      $SQLString .= $column['name'].' '.$this->dataTypes[$column['type']];
+      $SQLString .= $column['name'].' '.$column['type'];
 
       if ( isset($column['length']) && is_numeric($column['length']) )
         $SQLString .= ' ('.$column['length'].')';
 
       if ( (isset($column['primary']) && $column['primary']) ||
            (isset($column['notnull']) && $column['notnull']) )
-        $SQLString .= ' '.$this->keywords['notnull'];
+        $SQLString .= ' NOT NULL';
 
       if ( isset($column['default']) && is_numeric($column['default']) ) 
         $SQLString .= ' '.$this->keywords['default'].' '.$column['default'];

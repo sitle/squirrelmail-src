@@ -278,11 +278,34 @@ class base_user extends foowd_object
     $foowd->track();
   }
 
+ /**
+   * Serliaisation sleep method. 
+   * This is a VERY simple class. 
+   * Only include the objectid and title fields.
+   *
+   * @access private
+   * @return array Array of the names of the member variables to keep when serialising.
+   */
+  function __sleep() 
+  {
+    $returnArray = parent::__sleep();
+
+    foreach ( $returnArray as $key => $value )
+    {
+      if ( $value == 'permissions' ||
+           $value == 'version' ||
+           $value == 'classid' )
+        unset($returnArray[$key]);
+    }
+
+    return array_values($returnArray);
+  }
+
   /**
    * Serialisation wakeup method.
    * @global array Specifies table information for user persistance.
    */
-  function __wakeup() 
+  function __wakeup()
   {
     parent::__wakeup();
 
@@ -300,6 +323,7 @@ class base_user extends foowd_object
     unset($this->foowd_indexes['version']);
     unset($this->foowd_indexes['classid']);
     unset($this->foowd_indexes['workspaceid']);
+    unset($this->foowd_indexes['permissions']);
 
     // Original access vars
     unset($this->foowd_original_access_vars['version']);
@@ -308,6 +332,9 @@ class base_user extends foowd_object
 
     // Default primary key
     $this->foowd_primary_key = array('objectid');    
+    $this->permissions = array();    
+    $this->version = 1;   
+    $this->classid = USER_CLASS_ID; 
   }
 
   /**

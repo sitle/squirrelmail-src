@@ -326,6 +326,7 @@ class foowd_object
     $this->foowd_indexes['workspaceid'] = array('name' => 'workspaceid', 'type' => 'INT', 'notnull' => TRUE, 'default' => 0);
     $this->foowd_indexes['title'] = array('name' => 'title', 'type' => 'VARCHAR', 'length' => getRegexLength($this->foowd_vars_meta['title'], 32), 'notnull' => TRUE);
     $this->foowd_indexes['updated'] = array('name' => 'updated', 'type' => 'DATETIME', 'notnull' => TRUE);
+    $this->foowd_indexes['permissions'] = array('name' => 'permissions', 'type' => 'VARCHAR', 'length' => 128 );
 
     // Original access vars
     $this->foowd_original_access_vars['objectid'] = $this->objectid;
