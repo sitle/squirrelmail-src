@@ -41,6 +41,9 @@ if (GZIPOUTPUT && !extension_loaded('zlib')) {
 	terminal_error('Zlib is not available, load the Zlib module or turn off WTF gzip compression.');
 }
 
+/* mirror access */
+if (!defined('MIRROR')) define('MIRROR', 0);
+
 /* database settings */
 if (!defined('DATABASE')) define('DATABASE', 'mysql');
 if (!defined('DBHOST')) define('DBHOST', 'localhost');
