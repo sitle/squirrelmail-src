@@ -87,6 +87,9 @@ if ( sqgetGlobalVar('return', $temp, SQ_POST) ) {
 /** GET VARS */
 sqgetGlobalVar('attachedmessages', $attachedmessages, SQ_GET);
 
+/* Location (For HTTP 1.1 Header("Location: ...") redirects) */
+$location = get_location();
+
 /* --------------------- Specific Functions ------------------------------ */
 
 function replyAllString($header) {
@@ -300,17 +303,17 @@ if ($draft) {
         $draft_message = _("Draft Email Saved");
         /* If this is a resumed draft, then delete the original */
         if(isset($delete_draft)) {
-            Header("Location: delete_message.php?mailbox=" . urlencode($draft_folder) .
+            Header("Location: $location/delete_message.php?mailbox=" . urlencode($draft_folder) .
                    "&message=$delete_draft&sort=$sort&startMessage=1&saved_draft=yes");
             exit();
         }
         else {
             if ($compose_new_win == '1') {
-                Header("Location: compose.php?saved_draft=yes&session=$composesession");
+                Header("Location: $location/compose.php?saved_draft=yes&session=$composesession");
                 exit();
             }
             else {
-                Header("Location: right_main.php?mailbox=$draft_folder&sort=$sort".
+                Header("Location: $location/right_main.php?mailbox=$draft_folder&sort=$sort".
                        "&startMessage=1&note=".urlencode($draft_message));
                 exit();
             }
@@ -366,7 +369,7 @@ if ($send) {
 	    
         }
         $body = $newBody;
-        do_hook('compose_send');
+        
         $composeMessage=$compose_messages[$session];
 
         $Result = deliverMessage($composeMessage);
@@ -376,16 +379,16 @@ if ($send) {
         }
        unset($compose_messages[$session]);
         if ( isset($delete_draft)) {
-            Header("Location: delete_message.php?mailbox=" . urlencode( $draft_folder ).
+            Header("Location: $location/delete_message.php?mailbox=" . urlencode( $draft_folder ).
                    "&message=$delete_draft&sort=$sort&startMessage=1&mail_sent=yes");
             exit();
         }
         if ($compose_new_win == '1') {
 
-            Header("Location: compose.php?mail_sent=yes");
+            Header("Location: $location/compose.php?mail_sent=yes");
         }
         else {
-            Header("Location: right_main.php?mailbox=$urlMailbox&sort=$sort".
+            Header("Location: $location/right_main.php?mailbox=$urlMailbox&sort=$sort".
                    "&startMessage=1");
         }
     } else {
@@ -556,7 +559,7 @@ function newMail ($mailbox='', $passed_id='', $passed_ent_id='', $action='', $se
            $use_signature, $composesession, $data_dir, $username,
            $username, $key, $imapServerAddress, $imapPort, $compose_messages,
            $composeMessage;
- 	global $languages, $squirrelmail_language;
+    global $languages, $squirrelmail_language;
 
     $send_to = $send_to_cc = $send_to_bcc = $subject = $identity = '';
     $mailprio = 3;
@@ -691,7 +694,7 @@ function newMail ($mailbox='', $passed_id='', $passed_ent_id='', $action='', $se
         case ('forward'):
             $send_to = '';
             $subject = decodeHeader($orig_header->subject,false,true);
-	    if ((substr(strtolower($subject), 0, 4) != 'fwd:') &&
+            if ((substr(strtolower($subject), 0, 4) != 'fwd:') &&
                 (substr(strtolower($subject), 0, 5) != '[fwd:') &&
                 (substr(strtolower($subject), 0, 6) != '[ fwd:')) {
                 $subject = '[Fwd: ' . $subject . ']';
@@ -771,16 +774,19 @@ function getAttachments($message, &$composeMessage, $passed_id, $entities, $imap
         if ( !in_array($message->entity_id, $entities) && $message->entity_id) {
            switch ($message->type0) {
            case 'message':
-                 if ($message->type1 == 'rfc822') {
-                $filename = $message->rfc822_header->subject.'.eml';
-                if ($filename == "") {
-                    $filename = "untitled-".$message->entity_id.'.eml';
-                }
-             } else {
-               $filename = $message->getFilename();
-             }
+                if ($message->type1 == 'rfc822') {
+                    $filename = $message->rfc822_header->subject.'.eml';
+                    if ($filename == "") {
+                        $filename = "untitled-".$message->entity_id.'.eml';
+                    }
+                 } else {
+                   $filename = $message->getFilename();
+                 }
              break;
            default:
+             if (!$message->mime_header) { /* temporary hack */
+                 $message->mime_header = $message->header;
+             }
              $filename = $message->getFilename();
              break;
            }
@@ -796,12 +802,10 @@ function getAttachments($message, &$composeMessage, $passed_id, $entities, $imap
                $full_localfilename = "$hashed_attachment_dir/$localfilename";
            }
            $message->att_local_name = $full_localfilename;
-           if (!$message->mime_header) { /* temporary hack */
-              $message->mime_header = $message->header;
-           }
+
+	   $composeMessage->initAttachment($message->type0.'/'.$message->type1,$filename, 
+             $full_localfilename);
            
-           $composeMessage->addEntity($message);
-            
            /* Write Attachment to file */
            $fp = fopen ("$hashed_attachment_dir/$localfilename", 'wb');
            fputs($fp, decodeBody(mime_fetch_body($imapConnection,
@@ -877,14 +881,14 @@ function showInputForm ($session, $values=false) {
     }
     
     if ($use_javascript_addr_book) {
-        echo "\n". '<SCRIPT LANGUAGE=JavaScript><!--' . "\n" .
+        echo "\n". '<SCRIPT LANGUAGE=JavaScript>'."\n<!--\n" .
              'function open_abook() { ' . "\n" .
              '  var nwin = window.open("addrbook_popup.php","abookpopup",' .
              '"width=670,height=300,resizable=yes,scrollbars=yes");' . "\n" .
              '  if((!nwin.opener) && (document.windows != null))' . "\n" .
              '    nwin.opener = document.windows;' . "\n" .
              "}\n" .
-             '// --></SCRIPT>' . "\n\n";
+             "// -->\n</SCRIPT>\n\n";
     }
 
     echo "\n" . '<FORM name=compose action="compose.php" METHOD=POST ' .
@@ -1082,7 +1086,7 @@ function showInputForm ($session, $values=false) {
     } else {
         $maxsize = '';
     }
-
+//    echo '<INPUT TYPE="hidden" name="MAX_FILE_SIZE" value="'.min( $sizes ).'">';
     echo '   <tr>' . "\n" .
          '      <td colspan="2">' . "\n" .
          '         <table width="100%" cellpadding="1" cellspacing="0" align="center"'.
@@ -1331,7 +1335,7 @@ function deliverMessage($composeMessage, $draft=false) {
     global $send_to, $send_to_cc, $send_to_bcc, $mailprio, $subject, $body,
            $username, $popuser, $usernamedata, $identity, $data_dir,
            $request_mdn, $request_dr, $default_charset, $color, $useSendmail,
-           $domain, $action, $default_move_to_sent, $move_to_sent, $sent_folder;
+           $domain, $action, $default_move_to_sent, $move_to_sent;
     global $imapServerAddress, $imapPort, $sent_folder, $key;
 
     /* some browsers replace <space> by nonbreaking spaces &nbsp;
@@ -1381,7 +1385,6 @@ function deliverMessage($composeMessage, $draft=false) {
     }
     if (!$from_mail) {
        $from_mail = "$popuser@$domain";
-       $full_name = '';
     }
     $rfc822_header->from = $rfc822_header->parseAddress($from_mail,true);
     if ($full_name) {
@@ -1433,11 +1436,16 @@ function deliverMessage($composeMessage, $draft=false) {
             $rfc822_header->encoding = '8bit';
         }            
         if ($default_charset) {
-           $content_type->properties['charset']=$default_charset;
-        }
-    }    
+            $content_type->properties['charset']=$default_charset;
+	}
+    }
+        
     $rfc822_header->content_type = $content_type;
     $composeMessage->rfc822_header = $rfc822_header;
+
+    /* Here you can modify the message structure just before we hand 
+       it over to deliver */
+    do_hook('compose_send');
 
     if (!$useSendmail && !$draft) {
         require_once(SM_PATH . 'class/deliver/Deliver_SMTP.class.php');
@@ -1497,7 +1505,6 @@ function deliverMessage($composeMessage, $draft=false) {
         $move_to_sent = getPref($data_dir,$username,'move_to_sent');
         $imap_stream = sqimap_login($username, $key, $imapServerAddress, $imapPort, 0);
 
-
         /* Move to sent code */
         if (isset($default_move_to_sent) && ($default_move_to_sent != 0)) {
             $svr_allow_sent = true;
@@ -1532,7 +1539,7 @@ function deliverMessage($composeMessage, $draft=false) {
             sqimap_mailbox_select ($imap_stream, $mailbox);
             sqimap_messages_flag ($imap_stream, $passed_id, $passed_id, 'Answered', true);
         }
-        sqimap_logout($imap_stream);        
+            sqimap_logout($imap_stream);        
     }
     return $succes;
 }
