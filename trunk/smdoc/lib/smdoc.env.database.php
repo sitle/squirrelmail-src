@@ -10,8 +10,8 @@
  */
 
 require_once 'DB.php';
-include_once(SM_PATH.'env.database.php');
-include_once(SM_PATH.'smdoc.env.cache.php');
+include_once(SM_DIR.'env.database.php');
+include_once(SM_DIR.'smdoc.env.cache.php');
 
 /**
  * SquirrelMail modification to foowd db.
@@ -20,13 +20,43 @@ include_once(SM_PATH.'smdoc.env.cache.php');
  */
 class smdoc_db extends foowd_db 
 {
-  /**
-   * Current table information
-   * 
-   * @var str
+  /** 
+   * Time in seconds since last update of object before checking for old
+   * archived versions to delete. Default 1 day (86400 seconds).
+   * @access public
    */
-  var $default_table;
+   var $tidy_delay = 86400;
 
+  /**
+   * Database factory method.
+   *
+   * Used for creating a database object of the correct sub-class. Given the
+   * name of the DB layer to use, the method will load the corrisponding DB
+   * layer class if it has not already been loaded.
+   *
+   * @static
+   * @param object foowd The foowd environment object.
+   * @param str type The type of database object to load.
+   * @return mixed The new database object or FALSE on failure.
+   */
+  function factory(&$foowd)
+  {
+    $foowd->track('smdoc_db->factory');
+
+    $dbClass = isset($db['db_class']) ? $db['db_class'] : 'smdoc_db';
+    $dbFile  = isset($db['db_path'])  ? $db['db_path']  : SM_DIR . 'smdoc.env.database.php';
+
+    if ( file_exists($dbFile) )
+      require_once($dbFile);
+    else
+      trigger_error('Could not find database file: ' . $dbFile, E_USER_ERROR); 
+
+    if (!class_exists($dbClass)) 
+      trigger_error('Could not find database class: ' . $dbClass, E_USER_ERROR); 
+
+    $foowd->track();
+    return new $dbClass($foowd);
+  }
 
   /**
    * Constructs a new database object.
@@ -71,7 +101,14 @@ class smdoc_db extends foowd_db
  
     $this->foowd = &$foowd;
     $this->objects = new smdoc_obj_cache();
-    $this->default_table = $db['db_table'];
+    $this->default_source = $db['db_table'];
+
+    if ( isset($foowd->config_settings['archive']) )
+    {
+      $archive = $foowd->config_settings['archive'];
+      if ( isset($archive['tidy_delay']) )  
+        $this->tidy_delay = $archive['tidy_delay'];
+    }
   }
 
   /**
@@ -105,7 +142,8 @@ class smdoc_db extends foowd_db
     $result = $this->conn->query($query);
 
     // Always check that $result is not an error
-    if (DB::isError($result)) {
+    if (DB::isError($result)) 
+    {
       $this->foowd->debug('msg', $result->getMessage());
       return FALSE;
     }
@@ -134,7 +172,8 @@ class smdoc_db extends foowd_db
     $row = $result->fetchRow();
 
     // Always check that $result is not an error
-    if (DB::isError($row)) {
+    if (DB::isError($row)) 
+    {
       $this->foowd->debug('msg', $row->getMessage());
       return FALSE;
     }
@@ -212,7 +251,7 @@ class smdoc_db extends foowd_db
     $this->foowd->track('smdoc_db->getObjList');
 
     if ( $source == NULL )
-      $source = $this->default_table;
+      $source = $this->default_source;
 
     if ( $setWorkspace )
       $this->setWorkspace($where);
@@ -233,9 +272,7 @@ class smdoc_db extends foowd_db
     if ( $limit == NULL  ) 
       $limit = '';
     elseif ( !is_string($limit) ) 
-    {
       $limit = ' LIMIT ' . $limit;
-    }
 
     $select = 'SELECT ';
     if ( $indexes == NULL ) 
@@ -302,6 +339,7 @@ class smdoc_db extends foowd_db
    * @param array record1 Retrieved associative array created from query row.
    * @param array record2 Retrieved associative array created from query row.
    * @return TRUE if version is defined in both records, and version1 > version2
+   * @see #getObjList
    */
   function checkRecordVersion($record1, $record2) 
   {
@@ -318,6 +356,8 @@ class smdoc_db extends foowd_db
    * @access private
    * @param str source The source to fetch the object from
    * @param array record Retrieved associative array created from query row. 
+   * @see #getObjList
+   * @see #getObj
    */
   function unserializeObject($source, $record) 
   {
@@ -326,4 +366,118 @@ class smdoc_db extends foowd_db
     
     return new foowd_object();
   }
+
+
+  /**
+   * Save an object.
+   *
+   * @param object object The object to save
+   * @return bool Success or failure.
+   */
+  function save(&$object) 
+  {
+    $this->foowd->track('smdoc_db->save');
+
+    if (!isset($object->foowd_update) || $object->foowd_update) 
+      $object->update(); // update object meta data
+
+    $serializedObj = serialize($object);
+
+    if (is_array($object->foowd_source)) 
+    {
+      $source = $object->foowd_source['table'];
+      $makeTable = $object->foowd_source['table_create'];
+    }
+    elseif ( isset($object->foowd_source) )
+      $source = $object->foowd_source;
+    else
+      $source = $this->default_source;
+
+    // Build array of DB indices from object meta data
+    $fieldArray['object'] = $serializedObj;
+    foreach ( $object->foowd_indexes as $index => $definition )
+    {
+      if ( isset($object->$index) )
+      {
+        if ( $object->$index == FALSE )
+          $fieldArray[$index] = 0;
+        else
+          $fieldArray[$index] = $object->$index;
+      }
+    }
+
+    // buildWhere
+    foreach( $object->foowd_primary_key as $k => $index )
+      $where[$index] = $object->foowd_original_access_vars[$index];
+    $where = 'WHERE ' . $this->buildWhere($where);
+
+    $update = 'UPDATE '.$source.' SET ';
+    $insert = 'INSERT INTO '.$source.' (';
+    $values = '';
+
+    $foo = FALSE;
+    foreach ( $fieldArray as $field => $value )
+    {
+      if ( $foo )
+      {
+        $update .= ', ';
+        $insert .= ', ';
+        $values .= ', ';
+      }
+      $foo = TRUE;
+      $set = FALSE;
+
+      $insert .= $field;
+      if ( isset($object->foowd_indexes[$field]['type']) )
+      {
+        if ( $object->foowd_indexes[$field]['type'] == 'INT' )
+        {
+          $update .= $field.' = '.$value;
+          $values .= $value;
+          $set = TRUE;
+        }
+        elseif ( $object->foowd_indexes[$field]['type'] == 'DATETIME' )
+        {
+          $update .= $field.' = \''.date($this->dateTimeFormat, $value).'\'';
+          $values .= '\''.date($this->dateTimeFormat, $value).'\'';
+          $set = TRUE;
+        }
+      }
+
+      if ( !$set )
+      {
+        $update .= $field.' = '.$this->escape($value);
+        $values .= $this->escape($value);
+      }
+    }
+    $insert .= ') VALUES ('.$values.')';
+
+    $saveResult = 0;
+
+    // try to update existing record
+    if ( $this->query_success($this->query($update)) ) 
+      $saveResult = 1;
+    // if fail, write new record
+    elseif ( $this->query_success($this->query($insert)) )
+      $saveResult = 2;
+    // if fail, modify table to include indexes from class definition
+    elseif ( $this->alterTable($source, $fieldArray) )
+    {
+      // indexes were altered, retry update
+      if ( $this->query_success($this->query($update)) ) 
+        $saveResult = 3;
+      // if that fails, retry insert
+      elseif ( $this->query_success($this->query($insert)) )
+        $saveResult = 4;
+    }
+
+    // tidy old archived versions
+    $tidyDate = time() - $this->tidy_delay;
+    if ( $saveResult && $object->updated < $tidyDate )
+      $this->tidy($object);
+
+    $this->foowd->track();
+    return $saveResult;
+  }
+
 }

@@ -35,8 +35,6 @@ function sqmindex(&$foowd, &$result) {
     $objects =& $foowd->getObjList($indices, NULL, NULL,
                                    $orderby, NULL, 
                                    FALSE, TRUE);
-show($objects);
-
     $list_objects = array();
 
     $i = 0;

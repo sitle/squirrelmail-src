@@ -33,6 +33,15 @@ $version = $version->value;
 $method = $method->value;
 $result = FALSE;
 
+// If form has been cancelled, redirect to view of that object
+if ( sqGetGlobalVar('form_cancel', $value, SQ_FORM) )
+{
+  header('Location: ' . getURI(FALSE, array('objectid' => $objectid,
+                                            'classid'  => $classid,
+                                            'version'  => $version,
+                                            'ok' => OBJECT_UPDATE_CANCEL)) );
+}
+
 if (isset($objectid))  // fetch object and call object method
 {
   $foowd->debug('msg', 'fetch and call object method');
