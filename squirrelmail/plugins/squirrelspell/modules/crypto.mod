@@ -21,7 +21,9 @@
  */
 global $SQSPELL_CRYPTO;
 
-switch ($_POST['action']){
+$action = $_POST['action'];
+
+switch ($action){
   case 'encrypt':
     /**
      * Let's encrypt the file and save it in an encrypted format.

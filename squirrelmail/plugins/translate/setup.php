@@ -60,7 +60,7 @@ function translate_read_form() {
     if (is_int($pos)) {
         $new_body = substr($new_body, 0, $pos);
     }
-
+                     
     $trans = get_html_translation_table(HTML_ENTITIES);
     $trans[' '] = '&nbsp;';
     $trans = array_flip($trans);

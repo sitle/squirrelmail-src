@@ -1,5 +1,4 @@
 <?php
-
 /**
  * BEFORE EDITING THIS FILE!
  *
@@ -268,11 +267,12 @@ $force_username_lowercase = false;
  * To add a new theme to the options that users can choose from, just
  * add a new number to the array at the bottom, and follow the pattern.
  */
-
-$theme_default = 0;
-
 global $theme;
 
+/**
+ * The first one HAS to be here, and is your system's default
+ * theme. It can be any theme you want.
+ */
 $theme[0]['PATH'] = '../themes/default_theme.php';
 $theme[0]['NAME'] = 'Default';
 
@@ -375,9 +375,11 @@ $theme[32]['NAME'] = 'Alien Glow';
 $theme[33]['PATH'] = '../themes/dark_green.php';
 $theme[33]['NAME'] = 'Dark Green';
 
-$theme[33]['PATH'] = '../themes/penguin.php';
-$theme[33]['NAME'] = 'Penguin';
+$theme[34]['PATH'] = '../themes/penguin.php';
+$theme[34]['NAME'] = 'Penguin';
 
+$theme[35]['PATH'] = '../themes/saloon.php';
+$theme[35]['NAME'] = 'Saloon';
 /**
  * LDAP server(s)
  *   Array of arrays with LDAP server parameters. See
@@ -502,32 +504,6 @@ $allow_server_sort = false;
 
 global $noselect_fix_enable;
 $noselect_fix_enable = false;
-
-/**
- * this disables listing all of the folders on the IMAP Server to
- * generate the folder subscribe listbox (this can take a long time
- * when you have a lot of folders).  Instead, a textbox will be
- * displayed allowing users to enter a specific folder name to subscribe to */
-global $no_list_for_subscribe;
-$no_list_for_subscribe = false;
-
-/**
- * Advanced authentication options
- * CRAM-MD5, DIGEST-MD5, Plain, and TLS
- * Set reasonable defaults - you'd never know this was there unless you ask for it
- */
-global $use_imap_tls;
-global $use_smtp_tls;
-$use_imap_tls = false;
-$use_smtp_tls = false;
-
-/* auth_mech can be either 'plain', 'cram-md5', or 'digest-md5'
-   SMTP can also be 'none'
-*/
-global $smtp_auth_mech;
-global $imap_auth_mech;
-$smtp_auth_mech = 'none';
-$imap_auth_mech = 'plain';
 
 /**
  * Make sure there are no characters after the PHP closing

@@ -14,9 +14,9 @@ $conf_pl_version = "1.2.0";
 # Perl since at least 5.003_7, and nobody sane runs anything
 # before that, but just in case.
 ############################################################
-my $dir;
+
 if ( eval q{require "File/Basename.pm"} ) {
-    $dir = File::Basename::dirname($0);
+    my $dir = File::Basename::dirname($0);
     chdir($dir);
 }
 
@@ -30,14 +30,6 @@ if ( defined( $ENV{'PATH_INFO'} )
     print "You must run this script from the command line.";
     exit;
     }
-
-############################################################
-# If we got here, use Cwd to get the full directory path
-# (the Basename stuff above will sometimes return '.' as
-# the base directory, which is not helpful here). 
-############################################################
-use Cwd;
-$dir = cwd();
 
 ############################################################              
 # First, lets read in the data already in there...
@@ -157,7 +149,7 @@ if ( -e "config.php" ) {
 # Read and parse the current configuration file
 # (either config.php or config_default.php).
 while ( $line = <FILE> ) {
-    $line =~ s/^\s+//; 
+    $line =~ s/^\s+//;
     $line =~ s/^\$//;
     $var = $line;
 
@@ -176,7 +168,7 @@ while ( $line = <FILE> ) {
             if ( -e "../themes" ) {
                 $options[1] =~ s/^\.\.\/config/\.\.\/themes/;
             }
-            $theme_path[$sub] = &change_to_rel_path($options[1]);
+            $theme_path[$sub] = $options[1];
         } elsif ( $options[0] =~ /^theme\[[0-9]+\]\[['|"]NAME['|"]\]/ ) {
             $sub = $options[0];
             $sub =~ s/\]\[['|"]NAME['|"]\]//;
@@ -235,8 +227,6 @@ while ( $line = <FILE> ) {
             $ldap_port[$sub]    = $port;
             $ldap_maxrows[$sub] = $maxrows;
             $ldap_charset[$sub] = $charset;
-        } elsif ( $options[0] =~ /^(data_dir|attachment_dir|theme_css|org_logo|signout_page)$/ ) {
-            ${ $options[0] } = &change_to_rel_path($options[1]);
         } else {
             ${ $options[0] } = $options[1];
         }
@@ -270,6 +260,9 @@ if ( !$force_username_lowercase ) {
 if ( !$optional_delimiter ) {
     $optional_delimiter = "detect";
 }
+if ( !$use_authenticated_smtp ) {
+    $use_authenticated_smtp = "false";
+}
 if ( !$auto_create_special ) {
     $auto_create_special = "false";
 }
@@ -291,15 +284,6 @@ if ( !$noselect_fix_enable ) {
 if ( !$frame_top ) {
     $frame_top = "_top";
 }
-
-if ( !$provider_uri ) {
-    $provider_uri = "http://www.squirrelmail.org/";
-}
-
-if ( !$provider_name ) {
-    $provider_name = "SquirrelMail";
-}
-
 if ( !$edit_identity ) {
     $edit_identity = "true";
 }
@@ -312,12 +296,6 @@ if ( !$allow_thread_sort ) {
 if ( !$allow_server_sort ) {
     $allow_server_sort = 'false';
 }
-if ( !$uid_support ) {
-    $uid_support = 'true';
-}
-if ( !$no_list_for_subscribe ) {
-    $no_list_for_subscribe = 'false';
-}
 if ( !$allow_charset_search ) {
     $allow_charset_search = 'true';
 }
@@ -329,22 +307,6 @@ if ( !$prefs_key_field ) {
 }
 if ( !$prefs_val_field ) {
     $prefs_val_field = 'prefval';
-}
-
-if ( !$use_smtp_tls) {
-	$use_smtp_tls= 'false';
-}
-
-if ( !$smtp_auth_mech ) {
-	$smtp_auth_mech = 'none';
-}
-
-if ( !$use_imap_tls ) {
-    $use_imap_tls = 'false';
-}
-
-if ( !$imap_auth_mech ) {
-    $imap_auth_mech = 'plain';
 }
 
 if ( $ARGV[0] eq '--install-plugin' ) {
@@ -405,73 +367,31 @@ while ( ( $command ne "q" ) && ( $command ne "Q" ) ) {
         print "5.  Signout Page           : $WHT$signout_page$NRM\n";
         print "6.  Default Language       : $WHT$squirrelmail_default_language$NRM\n";
         print "7.  Top Frame              : $WHT$frame_top$NRM\n";
-        print "8.  Provider link          : $WHT$provider_uri$NRM\n";
-        print "9.  Provider name          : $WHT$provider_name$NRM\n";
-
         print "\n";
         print "R   Return to Main Menu\n";
     } elsif ( $menu == 2 ) {
-        print $WHT. "Server Settings\n\n" . $NRM;
-        print $WHT . "General" . $NRM . "\n";
-        print "-------\n";
-        print "1.  Domain                 : $WHT$domain$NRM\n";
-        print "2.  Invert Time            : $WHT$invert_time$NRM\n";
-        print "3.  Sendmail or SMTP       : $WHT";
+        print $WHT. "Server Settings\n" . $NRM;
+        print "1.  Domain               : $WHT$domain$NRM\n";
+        print "2.  IMAP Server          : $WHT$imapServerAddress$NRM\n";
+        print "3.  IMAP Port            : $WHT$imapPort$NRM\n";
+        print "4.  Use Sendmail/SMTP    : $WHT";
         if ( lc($useSendmail) eq "true" ) {
             print "Sendmail";
         } else {
             print "SMTP";
         }
         print "$NRM\n";
-        print "\n";
-        
-        if ( $show_imap_settings ) {
-          print $WHT . "IMAP Settings". $NRM . "\n--------------\n";
-          print "4.  IMAP Server            : $WHT$imapServerAddress$NRM\n";
-          print "5.  IMAP Port              : $WHT$imapPort$NRM\n";
-          print "6.  Authentication type    : $WHT$imap_auth_mech$NRM\n";
-          print "7.  Secure IMAP (TLS)      : $WHT$use_imap_tls$NRM\n";
-          print "8.  Server software        : $WHT$imap_server_type$NRM\n";
-          print "9.  Delimiter              : $WHT$optional_delimiter$NRM\n";
-          print "\n";
-        } elsif ( $show_smtp_settings ) {
-          if ( lc($useSendmail) eq "true" ) {
-            print $WHT . "Sendmail" . $NRM . "\n--------\n";
-            print "4.   Sendmail Path         : $WHT$sendmail_path$NRM\n";
-            print "\n";
-          } else {
-            print $WHT . "SMTP Settings" . $NRM . "\n-------------\n";
-            print "4.   SMTP Server           : $WHT$smtpServerAddress$NRM\n";
-            print "5.   SMTP Port             : $WHT$smtpPort$NRM\n";
-            print "6.   POP before SMTP       : $WHT$pop_before_smtp$NRM\n";
-            print "7.   SMTP Authentication   : $WHT$smtp_auth_mech$NRM\n";
-            print "8.   Secure SMTP (TLS)     : $WHT$use_smtp_tls$NRM\n";
-            print "\n";
-          }
+        if ( lc($useSendmail) eq "true" ) {
+            print "5.    Sendmail Path      : $WHT$sendmail_path$NRM\n";
+        } else {
+            print "6.    SMTP Server        : $WHT$smtpServerAddress$NRM\n";
+            print "7.    SMTP Port          : $WHT$smtpPort$NRM\n";
+            print "8.    Authenticated SMTP : $WHT$use_authenticated_smtp$NRM\n";
+            print "9.    POP Before SMTP    : $WHT$pop_before_smtp$NRM\n";
         }
-
-        if ($show_imap_settings == 0) {
-          print "A.  Update IMAP Settings   : ";
-          print "$WHT$imapServerAddress$NRM:";
-          print "$WHT$imapPort$NRM ";
-          print "($WHT$imap_server_type$NRM)\n";
-        } 
-        if ($show_smtp_settings == 0) {
-          if ( lc($useSendmail) eq "true" ) {
-            print "B.  Change Sendmail Config : $WHT$sendmail_path$NRM\n";
-          } else {
-            print "B.  Update SMTP Settings   : ";
-            print "$WHT$smtpServerAddress$NRM:";
-            print "$WHT$smtpPort$NRM\n";
-          }
-        }
-        if ( $show_smtp_settings || $show_imap_settings )
-        {
-          print "H.  Hide " . 
-                ($show_imap_settings ? "IMAP Server" : 
-                  (lc($useSendmail) eq "true") ? "Sendmail" : "SMTP") . " Settings\n";
-        }
-        
+        print "10. Server               : $WHT$imap_server_type$NRM\n";
+        print "11. Invert Time          : $WHT$invert_time$NRM\n";
+        print "12. Delimiter            : $WHT$optional_delimiter$NRM\n";
         print "\n";
         print "R   Return to Main Menu\n";
     } elsif ( $menu == 3 ) {
@@ -514,7 +434,6 @@ while ( ( $command ne "q" ) && ( $command ne "Q" ) ) {
             print "13. Allow editing of name     : $WHT$edit_name$NRM\n";
         }
         print "14. Allow server charset search : $WHT$allow_charset_search$NRM\n";
-        print "15. Enable UID support : $WHT$uid_support$NRM\n";
         print "\n";
         print "R   Return to Main Menu\n";
     } elsif ( $menu == 5 ) {
@@ -577,6 +496,8 @@ while ( ( $command ne "q" ) && ( $command ne "Q" ) ) {
         }
         closedir DIR;
 
+        print "\n";
+        print "A   Sanitize all plugins for use with Squirrelmail 1.2\n";
         print "\n";
         print "R   Return to Main Menu\n";
     } elsif ( $menu == 9 ) {
@@ -648,34 +569,19 @@ while ( ( $command ne "q" ) && ( $command ne "Q" ) ) {
             elsif ( $command == 5 ) { $signout_page                  = command4(); }
             elsif ( $command == 6 ) { $squirrelmail_default_language = command5(); }
             elsif ( $command == 7 ) { $frame_top                     = command6(); }
-            elsif ( $command == 8 ) { $provider_uri                  = command7(); }
-            elsif ( $command == 9 ) { $provider_name                 = command8(); }
-
         } elsif ( $menu == 2 ) {
-            if ( $command eq "a" )    { $show_imap_settings = 1; $show_smtp_settings = 0; }
-            elsif ( $command eq "b" ) { $show_imap_settings = 0; $show_smtp_settings = 1; }
-            elsif ( $command eq "h" ) { $show_imap_settings = 0; $show_smtp_settings = 0; }
-            elsif ( $command <= 3 ) {
-              if    ( $command == 1 )  { $domain                 = command11(); }
-              elsif ( $command == 2 )  { $invert_time            = command110(); }
-              elsif ( $command == 3 )  { $useSendmail            = command14(); }
-              $show_imap_settings = 0; $show_smtp_settings = 0;
-            } elsif ( $show_imap_settings ) {
-              if    ( $command == 4 )  { $imapServerAddress      = command12(); }
-              elsif ( $command == 5 )  { $imapPort               = command13(); }
-              elsif ( $command == 6 )  { $imap_auth_mech     = command112a(); }
-              elsif ( $command == 7 )  { $use_imap_tls       = command113("IMAP",$use_imap_tls); }
-              elsif ( $command == 8 )  { $imap_server_type       = command19(); }
-              elsif ( $command == 9 )  { $optional_delimiter     = command111(); }
-            } elsif ( $show_smtp_settings && lc($useSendmail) eq "true" ) {
-              if ( $command == 4 )  { $sendmail_path          = command15(); }
-            } elsif ( $show_smtp_settings ) {
-              if    ( $command == 4 )  { $smtpServerAddress      = command16(); }
-              elsif ( $command == 5 )  { $smtpPort               = command17(); }
-              elsif ( $command == 6 )  { $pop_before_smtp        = command18a(); }
-              elsif ( $command == 7 )  { $smtp_auth_mech    = command112b(); }
-              elsif ( $command == 8 )  { $use_smtp_tls      = command113("SMTP",$use_smtp_tls); }
-            }
+            if    ( $command == 1 )  { $domain                 = command11(); }
+            elsif ( $command == 2 )  { $imapServerAddress      = command12(); }
+            elsif ( $command == 3 )  { $imapPort               = command13(); }
+            elsif ( $command == 4 )  { $useSendmail            = command14(); }
+            elsif ( $command == 5 )  { $sendmail_path          = command15(); }
+            elsif ( $command == 6 )  { $smtpServerAddress      = command16(); }
+            elsif ( $command == 7 )  { $smtpPort               = command17(); }
+            elsif ( $command == 8 )  { $use_authenticated_smtp = command18(); }
+            elsif ( $command == 9 )  { $pop_before_smtp        = command18a(); }
+            elsif ( $command == 10 ) { $imap_server_type       = command19(); }
+            elsif ( $command == 11 ) { $invert_time            = command110(); }
+            elsif ( $command == 12 ) { $optional_delimiter     = command111(); }
         } elsif ( $menu == 3 ) {
             if    ( $command == 1 )  { $default_folder_prefix          = command21(); }
             elsif ( $command == 2 )  { $show_prefix_option             = command22(); }
@@ -710,7 +616,6 @@ while ( ( $command ne "q" ) && ( $command ne "Q" ) ) {
             elsif ( $command == 12 ) { $allow_server_sort        = command313(); }
             elsif ( $command == 13 ) { $edit_name                = command311(); }
             elsif ( $command == 14 ) { $allow_charset_search     = command314(); }
-            elsif ( $command == 15 ) { $uid_support              = command315(); }
         } elsif ( $menu == 5 ) {
             if ( $command == 1 ) { command41(); }
             elsif ( $command == 2 ) { $theme_css = command42(); }
@@ -721,6 +626,7 @@ while ( ( $command ne "q" ) && ( $command ne "Q" ) ) {
             if ( $command == 1 ) { $motd = command71(); }
         } elsif ( $menu == 8 ) {
             if ( $command =~ /^[0-9]+/ ) { @plugins = command81(); }
+            elsif ( $command eq "a" ) { command8s(); }
         } elsif ( $menu == 9 ) {
             if    ( $command == 1 ) { $addrbook_dsn     = command91(); }
             elsif ( $command == 2 ) { $addrbook_table   = command92(); }
@@ -758,8 +664,6 @@ sub command2 {
     print "different times throughout SquirrelMail.  This is asking for the\n";
     print "literal (/usr/local/squirrelmail/images/logo.png) or relative\n";
     print "(../images/logo.png) path to your logo.\n";
-    print "Relative paths to files outside the SquirrelMail distribution\n";
-    print "will be converted to their absolute path equivalents in config.php.\n";
     print "\n";
     print "[$WHT$org_logo$NRM]: $WHT";
     $new_org_logo = <STDIN>;
@@ -865,37 +769,6 @@ sub command6 {
     return $new_frame_top;
 }
 
-# Default link to provider
-sub command7 {
-    print "Here you can set the link on the right of the page.\n";
-    print "The default is 'http://www.squirrelmail.org/'\n";
-    print "\n";
-    print "[$WHT$provider_uri$NRM]: $WHT";
-    $new_provider_uri = <STDIN>;
-    if ( $new_provider_uri eq "\n" ) {
-        $new_provider_uri = 'http://www.squirrelmail.org/';
-    } else {
-        $new_provider_uri =~ s/[\r|\n]//g;
-        $new_provider_uri =~ s/^\s+$//g;
-    }
-    return $new_provider_uri;
-}
-
-sub command8 {
-    print "Here you can set the name of the link on the right of the page.\n";
-    print "The default is 'SquirrelMail/'\n";
-    print "\n";
-    print "[$WHT$provider_name$NRM]: $WHT";
-    $new_provider_name = <STDIN>;
-    if ( $new_provider_name eq "\n" ) {
-        $new_provider_name = 'SquirrelMail';
-    } else {
-        $new_provider_name =~ s/[\r|\n]//g;
-        $new_provider_name =~ s/^\s+$//g;
-    }
-    return $new_provider_name;
-}
-
 ####################################################################################
 
 # domain
@@ -916,7 +789,7 @@ sub command11 {
 
 # imapServerAddress
 sub command12 {
-    print "This is the hostname where your IMAP server can be contacted.\n";
+    print "This is the address where your IMAP server resides.\n";
     print "[$WHT$imapServerAddress$NRM]: $WHT";
     $new_imapServerAddress = <STDIN>;
     if ( $new_imapServerAddress eq "\n" ) {
@@ -982,7 +855,7 @@ sub command15 {
 
 # smtpServerAddress
 sub command16 {
-    print "This is the hostname of your SMTP server.\n";
+    print "This is the location of your SMTP server.\n";
     print "[$WHT$smtpServerAddress$NRM]: $WHT";
     $new_smtpServerAddress = <STDIN>;
     if ( $new_smtpServerAddress eq "\n" ) {
@@ -1008,8 +881,6 @@ sub command17 {
 
 # authenticated server 
 sub command18 {
-    return;
-	# This sub disabled by tassium - it has been replaced with smtp_auth_mech
     print "Do you wish to use an authenticated SMTP server?  Your server must\n";
     print "support this in order for SquirrelMail to work with it.  We implemented\n";
     print "it according to RFC 2554.\n";
@@ -1109,191 +980,6 @@ sub command111 {
     }
     return $new_optional_delimiter;
 }
-# IMAP authentication type
-# Possible values: plain, cram-md5, digest-md5
-# Now offers to detect supported mechs, assuming server & port are set correctly
-
-sub command112a {
-	print "If you have already set the hostname and port number, I can try to\n";
-	print "detect the methods your IMAP server supports.\n";
-	print "I will try to detect CRAM-MD5 and DIGEST-MD5 support.  I can't test\n";
-	print "for \"plain\" without knowing a username and password.\n";
-	print "\nTry to detect auth methods? [y/N]: ";
-	$inval=<STDIN>;
-	chomp($inval);
-	if ($inval =~ /^y\b/i) {
-	  # Yes, let's try to detect.
-	  print "Trying to detect IMAP capabilities...\n";
-	  my $host = $imapServerAddress . ':'. $imapPort;
-	  print "CRAM-MD5:\t";
-	  my $tmp = detect_auth_support('IMAP',$host,'CRAM-MD5');
-	  if (defined($tmp)) {
-		  if ($tmp eq 'YES') {
-		  	print "$WHT SUPPORTED$NRM\n";
-		  } else {
-		    print "$WHT NOT SUPPORTED$NRM\n";
-		  }
-      } else {
-	    print $WHT . " ERROR DETECTING$NRM\n";
-	  }
-
-	  print "DIGEST-MD5:\t";
-	  $tmp = detect_auth_support('IMAP',$host,'DIGEST-MD5');
-	  if (defined($tmp)) {
-	  	if ($tmp eq 'YES') {
-			print "$WHT SUPPORTED$NRM\n";
-		} else {
-			print "$WHT NOT SUPPORTED$NRM\n";
-		}
-	  } else {
-	    print $WHT . " ERROR DETECTING$NRM\n";
-	  }
-	  
-	} 
-	  print "\nWhat authentication mechanism do you want to use for IMAP connections?\n\n";
-	  print $WHT . "plain" . $NRM . " - Plaintext. If you can do better, you probably should.\n";
-	  print $WHT . "cram-md5" . $NRM . " - Slightly better than plaintext. (Requires PHP mhash extension)\n";
-	  print $WHT . "digest-md5" . $NRM . " - Privacy protection - better than cram-md5.  (Requires PHP mhash extension)\n";
-	  print "\n*** YOUR IMAP SERVER MUST SUPPORT THE MECHANISM YOU CHOOSE HERE ***\n";
-	  print "If you don't understand or are unsure, you probably want \"plain\"\n\n";
-	  print "plain, cram-md5, or digest-md5 [$WHT$imap_auth_mech$NRM]: $WHT";
-      $inval=<STDIN>;
-      chomp($inval);
-      if ( ($inval =~ /^cram-md5\b/i) || ($inval =~ /^digest-md5\b/i) || ($inval =~ /^plain\b/i)) {
-        return lc($inval);
-      } else {
-        # user entered garbage or default value so nothing needs to be set
-        return $imap_auth_mech;
-      }
-}
-
-	
-# SMTP authentication type
-# Possible choices: none, plain, cram-md5, digest-md5
-sub command112b {
-    print "If you have already set the hostname and port number, I can try to\n";
-    print "detect the methods your SMTP server supports.\n";
-    print "\nTry to detect auth methods? [y/N]: ";
-    $inval=<STDIN>;
-    chomp($inval);
-    if ($inval =~ /^y\b/i) {
-		# Yes, let's try to detect.
-		print "Detecting supported methods...\n";
-		
-		# Special case!
-		# Check none by trying to relay to junk@birdbrained.org
-		$host = $smtpServerAddress . ':' . $smtpPort;
-		use IO::Socket;
-		my $sock = IO::Socket::INET->new($host);
-		print "Testing none:\t\t$WHT";
-		if (!defined($sock)) {
-			print " ERROR TESTING\n";
-			close $sock;
-		} else {
-			print $sock "mail from: tester\@squirrelmail.org\n";
-			$got = <$sock>;  # Discard
-			print $sock "rcpt to: junk\@birdbrained.org\n";
-			$got = <$sock>;  # This is the important line
-			if ($got =~ /^250\b/) {  # SMTP will relay without auth
-				print "SUPPORTED$NRM\n";
-	        } else {
-			  print "NOT SUPPORTED$NRM\n";
-        	}
-			print $sock "rset\n";
-			print $sock "quit\n";
-			close $sock;
-		}
-		# Try plain (SquirrelMail default)
-		print "Testing plain:\t\t";
-		$tmp=detect_auth_support('SMTP',$host,'LOGIN');
-		if (defined($tmp)) {
-        	if ($tmp eq 'YES') {
-            	print $WHT . "SUPPORTED$NRM\n";
-	        } else {
-    	        print $WHT . "NOT SUPPORTED$NRM\n";
-        	}
-	      } else {
-    		  print $WHT . "ERROR DETECTING$NRM\n";
-      	}
-
-		# Try CRAM-MD5
-        print "Testing CRAM-MD5:\t";
-        $tmp=detect_auth_support('SMTP',$host,'CRAM-MD5');
-        if (defined($tmp)) {
-            if ($tmp eq 'YES') {
-                print $WHT . "SUPPORTED$NRM\n";
-            } else {
-                print $WHT . "NOT SUPPORTED$NRM\n";
-            }
-          } else {
-              print $WHT . "ERROR DETECTING$NRM\n";
-        }
-
-
-        print "Testing DIGEST-MD5:\t";
-        $tmp=detect_auth_support('SMTP',$host,'DIGEST-MD5');
-        if (defined($tmp)) {
-            if ($tmp eq 'YES') {
-                print $WHT . "SUPPORTED$NRM\n";
-            } else {
-                print $WHT . "NOT SUPPORTED$NRM\n";
-            }
-          } else {
-              print $WHT . "ERROR DETECTING$NRM\n";
-        }
-    } 
-    print "\tWhat authentication mechanism do you want to use for SMTP connections?\n";
-    print $WHT . "none" . $NRM . " - Your SMTP server does not require authorization.\n";
-    print $WHT . "plain" . $NRM . " - Plaintext. If you can do better, you probably should.\n";
-    print $WHT . "cram-md5" . $NRM . " - Slightly better than plaintext. (Requires PHP mhash extension)\n";
-    print $WHT . "digest-md5" . $NRM . " - Privacy protection - better than cram-md5. (Requires PHP mhash extension)\n";
-    print "\n*** YOUR SMTP SERVER MUST SUPPORT THE MECHANISM YOU CHOOSE HERE ***\n";
-    print "If you don't understand or are unsure, you probably want \"none\"\n\n";
-    print "none, plain, cram-md5, or digest-md5 [$WHT$smtp_auth_mech$NRM]: $WHT";
-    $inval=<STDIN>;
-    chomp($inval);
-    if ($inval =~ /^none\b/i) {
-      # SMTP doesn't necessarily require logins
-      return "none";
-    }
-    if ( ($inval =~ /^cram-md5\b/i) || ($inval =~ /^digest-md5\b/i) || 
-    ($inval =~ /^plain\b/i)) {
-      return lc($inval);
-    } else {
-      # user entered garbage, or default value so nothing needs to be set
-	  return;
-    }
-}
-
-# TLS
-# This sub is reused for IMAP and SMTP
-# Args: service name, default value
-sub command113 {
-	my($default_val,$service,$inval);
-	$service=$_[0];
-	$default_val=$_[1];
-	print "TLS (Transport Layer Security) encrypts the traffic between server and client.\n";
-	print "If you're familiar with SSL, you get the idea.\n";
-	print "To use this feature, your " . $service . " server must offer TLS\n";
-	print "capability, plus PHP 4.3.x with OpenSSL support.\n";
-	print "\nIf your " . $service . " server is localhost, you can safely disable this.\n";
-	print "If it is remote, you may wish to seriously consider enabling this.\n";
-    print "Enable TLS (y/n) [$WHT";
-    if ($default_val eq "true") {
-      print "y";
-    } else {
-      print "n";
-    }
-    print "$NRM]: $WHT"; 
-    $inval=<STDIN>;
-    $inval =~ tr/yn//cd;
-    return "true"  if ( $inval eq "y" );
-    return "false" if ( $inval eq "n" );
-    return $default_val;
-
-
-}
-
 
 # MOTD
 sub command71 {
@@ -1342,6 +1028,17 @@ sub command81 {
             while ( $ct <= $#unused_plugins ) {
                 if ( $ct == $num ) {
                     @newplugins = ( @newplugins, $unused_plugins[$ct] );
+
+                    # sanitize the plugin
+                    $dir = $unused_plugins[$ct];
+                    if (-d "../plugins/$dir") {
+                        `./ri_once.pl ../plugins/$dir`;
+                    } else {
+                        print "Could not locate ../plugins/$dir\n" ;
+                        print "The plugin $dir could *not* be sanitized!\n" ;
+                        print "If you want to try to do this manually, please run\n" ;
+                         print "config/ri_once.pl with the full path to the $dir plugin.\n" ;
+                    }
                 }
                 $ct++;
             }
@@ -1349,6 +1046,18 @@ sub command81 {
         }
     }
     return @plugins;
+}
+
+sub command8s {
+    print "This command will sanitize all plugins for use with\n";
+    print "Squirrelmail 1.2. That is, it will rewrite some php-\n";
+    print "constructs that are *incompatible* with the 1.2 design\n";
+    print "into ones that are *compatible*\n";
+    print "Do you wish to issue this command [y/N]? ";
+    $ctu = <STDIN>;
+    if ( $ctu =~ /^y\n/i ) {
+        `./ri_once.pl ../plugins`;
+    }
 }
 
 ################# FOLDERS ###################
@@ -1811,8 +1520,6 @@ sub command33a {
     print "are two examples:\n";
     print "  Absolute:    /usr/local/squirrelmail/data/\n";
     print "  Relative:    ../data/\n";
-    print "Relative paths to directories outside of the SquirrelMail distribution\n";
-    print "will be converted to their absolute path equivalents in config.php.\n";
     print "\n";
 
     print "[$WHT$data_dir$NRM]: $WHT";
@@ -1845,8 +1552,6 @@ sub command33b {
     print "      lying around there for too long.\n";
     print "  3.  It should probably be another directory than the data\n";
     print "      directory specified in option 3.\n";
-    print "Relative paths to directories outside of the SquirrelMail distribution\n";
-    print "will be converted to their absolute path equivalents in config.php.\n";
     print "\n";
 
     print "[$WHT$attachment_dir$NRM]: $WHT";
@@ -2092,25 +1797,6 @@ sub command314 {
     return $allow_charset_search;
 }
 
-sub command315 {
-    print "This option allows you to enable unique identifier (UID) support.\n";
-    print "\n";
-
-    if ( lc($uid_support) eq "true" ) {
-        $default_value = "y";
-    } else {
-        $default_value = "n";
-    }
-    print "Enable Unique identifier (UID) support? (y/n) [$WHT$default_value$NRM]: $WHT";
-    $uid_support = <STDIN>;
-    if ( ( $uid_support =~ /^y\n/i ) || ( ( $uid_support =~ /^\n/ ) && ( $default_value eq "y" ) ) ) {
-        $uid_support = "true";
-    } else {
-        $uid_support = "false";
-    }
-    return $uid_support;
-}
-
 
 sub command41 {
     print "\nNow we will define the themes that you wish to use.  If you have added\n";
@@ -2261,9 +1947,6 @@ sub command42 {
     print "files, leave this blank.\n";
     print "\n";
     print "To clear out an existing value, just type a space for the input.\n";
-    print "\n";
-    print "Relative links to files outside the SquirrelMail distribution\n";
-    print "will be converted to their absolute path equivalents in config.php.\n";
     print "\n";
     print "[$WHT$theme_css$NRM]: $WHT";
     $new_theme_css = <STDIN>;
@@ -2581,7 +2264,7 @@ sub save_data {
 	# string
         print CF "\$org_name      = \"$org_name\";\n";
         # string
-	print CF "\$org_logo      = " . &change_to_SM_path($org_logo) . ";\n";
+	print CF "\$org_logo      = '$org_logo';\n";
         $org_logo_width |= 0;
         $org_logo_height |= 0;
 	# string
@@ -2591,15 +2274,9 @@ sub save_data {
 	# string that can contain variables.
         print CF "\$org_title     = \"$org_title\";\n";
 	# string
-        print CF "\$signout_page  = " . &change_to_SM_path($signout_page) . ";\n";
+        print CF "\$signout_page  = '$signout_page';\n";
 	# string
         print CF "\$frame_top     = '$frame_top';\n";
-        print CF "\n";
-
-        print CF "\$provider_uri     = '$provider_uri';\n";
-        print CF "\n";
-
-        print CF "\$provider_name     = '$provider_name';\n";
         print CF "\n";
 
 	# string that can contain variables
@@ -2625,7 +2302,7 @@ sub save_data {
 	# string
         print CF "\$sendmail_path          = '$sendmail_path';\n";
 	# boolean
-#        print CF "\$use_authenticated_smtp = $use_authenticated_smtp;\n";
+        print CF "\$use_authenticated_smtp = $use_authenticated_smtp;\n";
 	# boolean
         print CF "\$pop_before_smtp        = $pop_before_smtp;\n";
 	# string
@@ -2678,9 +2355,9 @@ sub save_data {
 	# string
         print CF "\$default_charset          = '$default_charset';\n";
 	# string
-        print CF "\$data_dir                 = " . &change_to_SM_path($data_dir) . ";\n";
+        print CF "\$data_dir                 = '$data_dir';\n";
 	# string that can contain a variable
-        print CF "\$attachment_dir           = " . &change_to_SM_path($attachment_dir) . ";\n";
+        print CF "\$attachment_dir           = \"$attachment_dir\";\n";
 	# integer
         print CF "\$dir_hash_level           = $dir_hash_level;\n";
 	# string
@@ -2702,9 +2379,7 @@ sub save_data {
 	# boolean
         print CF "\$allow_server_sort        = $allow_server_sort;\n";
         # boolean
-        print CF "\$allow_charset_search     = $allow_charset_search;\n";
-        # boolean
-        print CF "\$uid_support              = $uid_support;\n";
+        print CF "\$allow_charset_search        = $allow_charset_search;\n";
         print CF "\n";
 	
 	# all plugins are strings
@@ -2714,12 +2389,9 @@ sub save_data {
         print CF "\n";
 
 	# strings
-        print CF "\$theme_css = " . &change_to_SM_path($theme_css) . ";\n";
-	if ( $theme_default eq '' ) { $theme_default = '0'; }
-        print CF "\$theme_default = $theme_default;\n";
-
+        print CF "\$theme_css = '$theme_css';\n";
         for ( $count = 0 ; $count <= $#theme_name ; $count++ ) {
-            print CF "\$theme[$count]['PATH'] = " . &change_to_SM_path($theme_path[$count]) . ";\n";
+            print CF "\$theme[$count]['PATH'] = '$theme_path[$count]';\n";
             print CF "\$theme[$count]['NAME'] = '$theme_name[$count]';\n";
         }
         print CF "\n";
@@ -2775,31 +2447,20 @@ sub save_data {
         print CF "\$prefs_key_field = '$prefs_key_field';\n";
 	# string
         print CF "\$prefs_val_field = '$prefs_val_field';\n";
-	# boolean
-		print CF "\$no_list_for_subscribe = $no_list_for_subscribe;\n";
+        print CF "\n";
 
-	# string
-		print CF "\$smtp_auth_mech = '$smtp_auth_mech';\n";
-		print CF "\$imap_auth_mech = '$imap_auth_mech';\n";
-	# boolean
-	    print CF "\$use_imap_tls = $use_imap_tls;\n";
-		print CF "\$use_smtp_tls = $use_smtp_tls;\n";
+        print CF "/**\n";
+        print CF " * Make sure there are no characters after the PHP closing\n";
+        print CF " * tag below (including newline characters and whitespace).\n";
+        print CF " * Otherwise, that character will cause the headers to be\n";
+        print CF " * sent and regular output to begin, which will majorly screw\n";
+        print CF " * things up when we try to send more headers later.\n";
+        print CF " */\n";
+        print CF "?>";
 
-	    print CF "\n";
-		print CF "\@include SM_PATH . 'config/config_local.php';\n";
-    
-		print CF "\n/**\n";
-	    print CF " * Make sure there are no characters after the PHP closing\n";
-	    print CF " * tag below (including newline characters and whitespace).\n";
-	    print CF " * Otherwise, that character will cause the headers to be\n";
-	    print CF " * sent and regular output to begin, which will majorly screw\n";
-	    print CF " * things up when we try to send more headers later.\n";
-	    print CF " */\n";
-	    print CF "?>";
-        
-		close CF;
+        close CF;
 
-	    print "Data saved in config.php\n";
+        print "Data saved in config.php\n";
     } else {
         print "Error saving config.php: $!\n";
     }
@@ -2923,139 +2584,4 @@ sub set_defaults {
     }
     print "\nPress any key to continue...";
     $tmp = <STDIN>;
-}
-
-############################################################
-# This subroutine corrects relative paths to ensure they
-# will work within the SM space. If the path falls within
-# the SM directory tree, the SM_PATH variable will be 
-# prepended to the path, if not, then the path will be
-# converted to an absolute path.
-############################################################
-sub change_to_SM_path() {
-    my ($old_path) = @_;
-    my $new_path = '';
-    my @rel_path;
-    my @abs_path;
-    my $subdir;
-
-    # If the path is absolute, don't bother.
-    return "\'" . $old_path . "\'"  if ( $old_path eq '');
-    return "\'" . $old_path . "\'"  if ( $old_path =~ /^\// );
-    return $old_path                if ( $old_path =~ /^\$/);
-    return $old_path                if ( $old_path =~ /^SM_PATH/ );
-
-    # For relative paths, split on '../'
-    @rel_path = split(/\.\.\//, $old_path);
-
-    if ( $#rel_path > 1 ) {
-        # more than two levels away. Make it absolute.
-        @abs_path = split(/\//, $dir);
-        foreach $subdir (@rel_path) {
-            if ($subdir eq '') {
-                pop @abs_path;
-            } else {
-                push @abs_path, $subdir;
-            }
-        }
-        foreach $subdir (@abs_path) {
-            $new_path .= $subdir . '/';
-        }
-    } elsif ( $#rel_path > 0 ) {
-        # it's within the SM tree, prepend SM_PATH
-        $new_path = $old_path;
-        $new_path =~ s/^\.\.\//SM_PATH . \'/;
-        $new_path .= '\'';
-    } else {
-        # Last, it's a relative path without any leading '.'
-        # Prepend SM_PATH  (no substitution required)
-        $new_path = "SM_PATH . \'" . $old_path . "\'";
-    }
-
-  return $new_path;
-}
-
-sub change_to_rel_path() {
-    my ($old_path) = @_;
-    my $new_path = '';
-
-    return $old_path if ( $old_path eq '');
-    return $old_path if ( $old_path =~ /^\$/ );
-    return $old_path if ( $old_path =~ /^\// );
-    return $old_path if ( $old_path =~ /^\.\./ );
-
-    if ( $old_path =~ /^SM_PATH/ ) {
-        $new_path = $old_path;
-        $new_path =~ s/^SM_PATH . \'/\.\.\//;
-    }
-
-    return $new_path;
-}
-
-sub detect_auth_support {
-# Attempts to auto-detect if a specific auth mechanism is supported.
-# Called by 'command112a' and 'command112b'
-# ARGS: service-name (IMAP or SMTP), host:port, mech-name (ie. CRAM-MD5)
-
-	# Misc setup
-	use IO::Socket;
-	my $service = shift;
-	my $host = shift;
-	my $mech = shift;
-	# Sanity checks
-	if ((!defined($service)) or (!defined($host)) or (!defined($mech))) {
-	  # Error - wrong # of args
-	  print "BAD ARGS!\n";
-	  return undef;
-	}
-	
-	if ($service eq 'SMTP') {
-		$cmd = "AUTH $mech\n";
-		$logout = "QUIT\n";
-	} elsif ($service eq 'IMAP') {
-		$cmd = "A01 AUTHENTICATE $mech\n";
-		$logout = "C01 LOGOUT\n";
-	} else {
-		# unknown service - whoops.
-		return undef;
-	}
-
-	# Get this show on the road
-    my $sock=IO::Socket::INET->new($host);
-    if (!defined($sock)) {
-        # Connect failed
-        return undef;
-    }
-	my $discard = <$sock>; # Server greeting/banner - who cares..
-	print $sock $cmd;
-
-	my $response = <$sock>;
-	if (!defined($response)) {
-		return undef;
-	}
-
-	# So at this point, we have a response, and it is (hopefully) valid.
-	if ($service eq 'SMTP') {
-		if (($response =~ /^535/) or ($response =~/^502/)) {
-			# Not supported
-			close $sock;
-			return 'NO';
-		}
-	} elsif ($service eq 'IMAP') {
-		if ($response =~ /^A01/) {
-			# Not supported
-			close $sock;
-			return 'NO';
-		}
-	} else {
-		# Unknown service - this shouldn't be able to happen.
-		close $sock;
-		return undef;
-	}
-
-	# If it gets here, the mech is supported
-	print $sock "*\n";  # Attempt to cancel authentication
-	print $sock $logout; # Try to log out, but we don't really care if this fails
-	close $sock;
-	return 'YES';
 }

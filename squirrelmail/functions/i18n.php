@@ -17,12 +17,6 @@
 
 /* Decodes a string to the internal encoding from the given charset */
 function charset_decode ($charset, $string) {
-    global $languages, $squirrelmail_language;
-
-    if (isset($languages[$squirrelmail_language]['XTRA_CODE']) &&
-        function_exists($languages[$squirrelmail_language]['XTRA_CODE'])) {
-        $string = $languages[$squirrelmail_language]['XTRA_CODE']('decode', $string);
-    }
 
     /* All HTML special characters are 7 bit and can be replaced first */
     $string = htmlspecialchars ($string);
@@ -38,6 +32,8 @@ function charset_decode ($charset, $string) {
             $ret = charset_decode_iso_8859_4 ($string);
         } else if ($res[1] == '7') {
             $ret = charset_decode_iso_8859_7 ($string);
+        } else if ($res[1] == '9') {
+	    $ret = charset_decode_iso_8859_9 ($string);
         } else if ($res[1] == '13') {
             $ret = charset_decode_iso_8859_13 ($string);
         } else if ($res[1] == '15') {
@@ -53,6 +49,8 @@ function charset_decode ($charset, $string) {
         $ret = charset_decode_windows_1251 ($string);
     } else if ($charset == 'windows-1257') {
         $ret = charset_decode_windows_1257 ($string);
+    } else if ($charset == 'windows-1254') {
+        $ret = charset_decode_iso_8859_9 ($string);
     } else {
         $ret = $string;
     }
@@ -412,18 +410,18 @@ function charset_decode_iso_8859_2 ($string) {
 /* 
  ISO/IEC 8859-4:1998 Latin Alphabet No. 4
 */
-
+  
 function charset_decode_iso_8859_4 ($string) {
     global $default_charset, $languages, $sm_notAlias;
 
     if (strtolower($default_charset) == 'iso-8859-4')
-        return $string;
+	  return $string;
     if (strtolower($languages[$sm_notAlias]['CHARSET']) == 'iso-8859-4')
-        return $string;
+	  return $string;
 
     /* Only do the slow convert if there are 8-bit characters */
     if (! ereg("[\200-\377]", $string))
-        return $string;
+	return $string;
 
     // latin capital letter a with ogonek 161 -> 260
     $string = str_replace ("\241", '&#260;', $string);
@@ -586,7 +584,7 @@ function charset_decode_iso_8859_7 ($string) {
     $string = str_replace("\273", '&#187;', $string);
 
     /* And now the rest of the charset */
-    $string = preg_replace("/([\274-\376])/e","'&#'.(ord('\\1')+720);",$string);
+    $string = preg_replace("/([\274-\376])/e","'&#' . (ord('\\1')+720);",$string);
 
     return $string;
 }
@@ -598,13 +596,13 @@ function charset_decode_iso_8859_13 ($string) {
     global $default_charset, $languages, $sm_notAlias;
 
     if (strtolower($default_charset) == 'iso-8859-13')
-        return $string;
+	return $string;
     if (strtolower($languages[$sm_notAlias]['CHARSET']) == 'iso-8859-13')
-        return $string;
+	return $string;
 
     /* Only do the slow convert if there are 8-bit characters */
     if (! ereg("[\200-\377]", $string))
-        return $string;
+    return $string;
 
     // right double quotation mark 161 -> 8221
     $string = str_replace ("\241", '&#8221;', $string);
@@ -752,6 +750,13 @@ function charset_decode_iso_8859_15 ($string) {
 function charset_decode_iso_8859_5 ($string) {
     // Convert to KOI8-R, then return this decoded.
     $string = convert_cyr_string($string, 'i', 'k');
+    return charset_decode_koi8r($string);
+}
+
+/* windows-1251 is Microsoft Cyrillic encoding */
+function charset_decode_windows_1251 ($string) {
+    // Convert to KOI8-R, then return this decoded.
+    $string = convert_cyr_string($string, 'w', 'k');
     return charset_decode_koi8r($string);
 }
 
@@ -1108,13 +1113,39 @@ function charset_decode_windows_1257 ($string) {
     return (charset_decode_iso_8859_1($string));
 }
 
-/* windows-1251 is Microsoft Cyrillic encoding */
-function charset_decode_windows_1251 ($string) {
-    // Convert to KOI8-R, then return this decoded.
-    $string = convert_cyr_string($string, 'w', 'k');
-    return charset_decode_koi8r($string);
-}
+/* iso-8859-9 is Turkish. */
+function charset_decode_iso_8859_9 ($string) {
+    global $default_charset, $languages, $sm_notAlias;;
 
+    if (strtolower($default_charset) == 'iso-8859-9') {
+        return $string;
+    }
+
+    /* Only do the slow convert if there are 8-bit characters */
+    if (!ereg("[\200-\377]", $string)) {
+        return $string;
+    }
+
+    /* maybe you don't need a conversion if locale's charset is iso-8859-9 */
+    if (strtolower($languages[$sm_notAlias]['CHARSET']) == 'iso-8859-9') {
+        return $string;
+    }
+
+    $string = str_replace("\307", '&#199;', $string);
+    $string = str_replace("\320", '&#272;', $string);
+    $string = str_replace("\326", '&#214;', $string);
+    $string = str_replace("\334", '&#220;', $string);
+    $string = str_replace("\335", '&#221;', $string);
+    $string = str_replace("\336", '&#222;', $string);
+    $string = str_replace("\347", '&#231;', $string);
+    $string = str_replace("\360", '&#240;', $string);
+    $string = str_replace("\366", '&#246;', $string);
+    $string = str_replace("\374", '&#252;', $string);
+    $string = str_replace("\375", '&#253;', $string);
+    $string = str_replace("\376", '&#254;', $string);
+
+    return $string;
+}
 
 
 /*
@@ -1161,17 +1192,8 @@ function set_up_language($sm_language, $do_search = false) {
         }
         setlocale(LC_ALL, $sm_notAlias);
         $squirrelmail_language = $sm_notAlias;
-        if ($squirrelmail_language == 'ja_JP' && function_exists('mb_detect_encoding') ) {
-            header ('Content-Type: text/html; charset=EUC-JP');
-            if (!function_exists('mb_internal_encoding')) {
-                echo _("You need to have php4 installed with the multibyte string function enabled (using configure option --with-mbstring).");
-            }
-            mb_internal_encoding('EUC-JP');
-            mb_http_output('pass');
-        } else {
         header( 'Content-Type: text/html; charset=' . $languages[$sm_notAlias]['CHARSET'] );
     }
-}
 }
 
 function set_my_charset(){
@@ -1273,14 +1295,8 @@ $languages['it_IT']['NAME']    = 'Italian';
 $languages['it_IT']['CHARSET'] = 'iso-8859-1';
 $languages['it']['ALIAS'] = 'it_IT';
 
-$languages['ja_JP']['NAME']    = 'Japanese';
-$languages['ja_JP']['CHARSET'] = 'iso-2022-jp';
-$languages['ja_JP']['XTRA_CODE'] = 'japanese_charset_xtra';
-$languages['ja']['ALIAS'] = 'ja_JP';
-
 $languages['ko_KR']['NAME']    = 'Korean';
 $languages['ko_KR']['CHARSET'] = 'euc-KR';
-$languages['ko_KR']['XTRA_CODE'] = 'korean_charset_xtra';
 $languages['ko']['ALIAS'] = 'ko_KR';
 
 $languages['nl_NL']['NAME']    = 'Dutch';
@@ -1351,14 +1367,6 @@ $languages['bg_BG']['NAME']    = 'Bulgarian';
 $languages['bg_BG']['CHARSET'] = 'windows-1251';
 $languages['bg']['ALIAS'] = 'bg_BG';
 
-// Right to left languages
-
-$languages['he_HE']['NAME']    = 'Hebrew';
-$languages['he_HE']['CHARSET'] = 'windows-1255';
-$languages['he_HE']['DIR']     = 'rtl';
-$languages['he']['ALIAS']      = 'he_HE';
-
-
 /* Detect whether gettext is installed. */
 $gettext_flags = 0;
 if (function_exists('_')) {
@@ -1378,7 +1386,7 @@ if ($gettext_flags == 7) {
 /* If we can fake gettext, try that */
 elseif ($gettext_flags == 0) {
     $use_gettext = true;
-    include_once(SM_PATH . 'functions/gettext.php');
+    include_once('../functions/gettext.php');
 } else {
     /* Uh-ho.  A weird install */
     if (! $gettext_flags & 1) {
@@ -1396,114 +1404,6 @@ elseif ($gettext_flags == 0) {
             return;
         }
     }
-}
-
-
-/*
- * Japanese charset extra function
- *
- */
-function japanese_charset_xtra() {
-    $ret = func_get_arg(1);  /* default return value */
-    if (function_exists('mb_detect_encoding')) {
-        switch (func_get_arg(0)) { /* action */
-        case 'decode':
-            $detect_encoding = mb_detect_encoding($ret);
-            if ($detect_encoding == 'JIS' ||
-                $detect_encoding == 'EUC-JP' ||
-                $detect_encoding == 'SJIS') {
-                
-                $ret = mb_convert_encoding($ret, 'EUC-JP', 'AUTO');
-            }
-            break;
-        case 'encode':
-            $detect_encoding = mb_detect_encoding($ret);
-            if ($detect_encoding == 'JIS' ||
-                $detect_encoding == 'EUC-JP' ||
-                $detect_encoding == 'SJIS') {
-                
-                $ret = mb_convert_encoding($ret, 'JIS', 'AUTO');
-            }
-            break;
-        case 'strimwidth':
-            $width = func_get_arg(2);
-            $ret = mb_strimwidth($ret, 0, $width, '...'); 
-            break;
-        case 'encodeheader':
-            $result = '';
-            if (strlen($ret) > 0) {
-                $tmpstr = mb_substr($ret, 0, 1);
-                $prevcsize = strlen($tmpstr);
-                for ($i = 1; $i < mb_strlen($ret); $i++) {
-                    $tmp = mb_substr($ret, $i, 1);
-                    if (strlen($tmp) == $prevcsize) {
-                        $tmpstr .= $tmp;
-                    } else {
-                        if ($prevcsize == 1) {
-                            $result .= $tmpstr;
-                        } else {
-                            $result .= mb_encode_mimeheader($tmpstr);
-                        }
-                        $tmpstr = $tmp;
-                        $prevcsize = strlen($tmp);
-                    }
-                }
-                if (strlen($tmpstr)) {
-                    if (strlen(mb_substr($tmpstr, 0, 1)) == 1)
-                        $result .= $tmpstr;
-                    else
-                        $result .= mb_encode_mimeheader($tmpstr);
-                }
-            }
-            $ret = $result;
-            //$ret = mb_encode_mimeheader($ret);
-            break;
-        case 'decodeheader':
-            $ret = str_replace("\t", "", $ret);
-            if (eregi('=\\?([^?]+)\\?(q|b)\\?([^?]+)\\?=', $ret))
-                $ret = mb_decode_mimeheader($ret);
-            $ret = mb_convert_encoding($ret, 'EUC-JP', 'AUTO');
-            break;
-        case 'downloadfilename':
-            $useragent = func_get_arg(2);
-            if (strstr($useragent, 'Windows') !== false ||
-                strstr($useragent, 'Mac_') !== false) {
-                $ret = mb_convert_encoding($ret, 'SJIS', 'AUTO');
-            } else {
-                $ret = mb_convert_encoding($ret, 'EUC-JP', 'AUTO');
-}
-            break;
-        }
-    }
-    return $ret;
-}
-
-
-/*
- * Korean charset extra function
- * Hangul(Korean Character) Attached File Name Fix.
- */
-function korean_charset_xtra() {
-    
-    $ret = func_get_arg(1);  /* default return value */
-    if (func_get_arg(0) == 'downloadfilename') { /* action */
-        $ret = str_replace("\x0D\x0A", '', $ret);  /* Hanmail's CR/LF Clear */
-        for ($i=0;$i<strlen($ret);$i++) {
-            if ($ret[$i] >= "\xA1" && $ret[$i] <= "\xFE") {   /* 0xA1 - 0XFE are Valid */
-                $i++;
-                continue;
-            } else if (($ret[$i] >= 'a' && $ret[$i] <= 'z') || /* From Original ereg_replace in download.php */
-                       ($ret[$i] >= 'A' && $ret[$i] <= 'Z') ||
-                       ($ret[$i] == '.') || ($ret[$i] == '-')) {
-                continue;
-            } else {
-                $ret[$i] = '_';
-            }
-        }
-
-    }
-
-    return $ret;
 }
 
 ?>

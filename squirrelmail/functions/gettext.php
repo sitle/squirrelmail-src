@@ -14,9 +14,7 @@
  *
  * $Id$
  */
-
-require_once(SM_PATH . 'functions/global.php');
-
+require_once('../src/global.php');
 global $gettext_php_domain, $gettext_php_dir, $gettext_php_loaded,
  $gettext_php_translateStrings, $gettext_php_loaded_language,
  $gettext_php_short_circuit;

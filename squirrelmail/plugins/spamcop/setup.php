@@ -1,14 +1,4 @@
 <?php
-   /** 
-    **  setup.php -- SpamCop plugin           
-    **
-    **  Copyright (c) 1999-2002 The SquirrelMail development team
-    **  Licensed under the GNU GPL. For full terms see the file COPYING.
-    **  
-    **  $Id$                                                         
-    **/
-
-require_once(SM_PATH . 'functions/global.php');
 
 
 /* Initialize the plugin */
@@ -22,7 +12,7 @@ function squirrelmail_plugin_init_spamcop() {
       'spamcop_load';
    $squirrelmail_plugin_hooks['read_body_header_right']['spamcop'] =
       'spamcop_show_link';
-
+      
    sqextractGlobalVar('spamcop_is_composing');
       
    if (isset($spamcop_is_composing)) {

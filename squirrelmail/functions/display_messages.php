@@ -47,7 +47,7 @@ function sqm_topdir(){
      * things are REALLY broken. Shouldn't really ever happen.
      */
     $levels = 0;
-    while (!(is_dir("$topdir/functions") && is_dir("$topdir/src"))
+    while (!(is_dir($topdir . 'functions') && is_dir($topdir. 'src'))
            && $levels < 10){
         $topdir .= '../';
         $levels++;
@@ -63,36 +63,56 @@ function error_username_password_incorrect() {
     if (!isset($frame_top)) {
         $frame_top = '_top';
     }
-    $string = '<TR><TD ALIGN="center">'.
-                 _("Unknown user or password incorrect.") .
-              '</TD></TR><TR><TD ALIGN="center">'.
-	         '<A HREF="' . sqm_baseuri() . '"login.php" TARGET='.
+
+    echo '<BR>'.
+                '<TABLE COLS=1 WIDTH="75%" BORDER="0" BGCOLOR="' . $color[4] . '" ALIGN=CENTER>'.
+                '<TR BGCOLOR="' . $color[0] . '">'.
+                    '<TH>' . _("ERROR") . '</TH>'.
+                '</TR>' .
+                '<TR><TD ALIGN="center">'.
+                    '<BR>' . _("Unknown user or password incorrect.") .
+                    '<BR><A HREF="' . sqm_baseuri() . '"login.php" TARGET='.
                     $frame_top.'>' . _("Click here to try again") .
                     '</A>.'.
-              '</TD></TR>';
-   error_box($string,$color);
-echo  '</BODY></HTML>';
+                '</TD></TR>'.
+                '</TABLE>'.
+            '</BODY></HTML>';
 }
 
 function error_message($message, $mailbox, $sort, $startMessage, $color) {
     $urlMailbox = urlencode($mailbox);
 
-    $string = '<tr><td ALIGN="center">' . $message . '</td></tr>'."\n".
-               '<tr><td ALIGN="center">'.
-                  '<A HREF="' . sqm_baseuri() 
+    echo '<BR>'.
+         "<TABLE WIDTH=\"70%\" BORDER=\"0\" BGCOLOR=\"$color[4]\" ALIGN=CENTER>".
+            '<TR>'.
+               "<TD BGCOLOR=\"$color[0]\" ALIGN=\"center\">".
+                  "<FONT COLOR=\"$color[2]\"><B>" . _("ERROR") . '</B></FONT>'.
+            '</TD></TR><TR><TD ALIGN="center">'.
+               "<BR>$message<BR>\n".
+               '<BR>'.
+                  "<A HREF=\"" . sqm_baseuri() 
                   . "src/right_main.php?sort=$sort&amp;startMessage=$startMessage"
-                  . "&amp;mailbox=$urlMailbox\">" .
-	    sprintf (_("Click here to return to %s"), $mailbox) .
-	    '</A></td></tr>';
-    error_box($string, $color);
+                  . "&amp;mailbox=$urlMailbox\">";
+    printf (_("Click here to return to %s"), $mailbox);
+    echo '</A>.'.
+            '</TD></TR>'.
+         '</TABLE>';
 }
 
 function plain_error_message($message, $color) {
-    error_box($message, $color);
+    echo "<br><TABLE WIDTH=\"70%\" BORDER=\"0\" BGCOLOR=\"$color[4]\" ALIGN=CENTER>".
+            '<TR>'.
+               "<TD BGCOLOR=\"$color[0]\" ALIGN=\"center\">".
+                  "<FONT COLOR=\"$color[2]\"><B>" . _("ERROR") . '</B></FONT>'.
+            '</TD></TR><TR><TD ALIGN="center">'.
+               "<BR>$message".
+            '</TD></TR>'.
+         '</TABLE>';
 }
 
 function logout_error( $errString, $errTitle = '' ) {
-    global $frame_top, $org_logo, $org_name, $org_logo_width, $org_logo_height,
+
+    GLOBAL $frame_top, $org_logo, $org_name, $org_logo_width, $org_logo_height,
            $hide_sm_attributions, $version, $squirrelmail_language;
 
     $base_uri = sqm_baseuri();
@@ -137,9 +157,8 @@ function logout_error( $errString, $errTitle = '' ) {
         $errTitle = $errString;
     }
     set_up_language($squirrelmail_language, true);
-
-    displayHtmlHeader( $errTitle, '', false );
-
+    displayHtmlHeader( $errTitle , '', FALSE);
+    
     echo "<BODY TEXT=\"$color[8]\" BGCOLOR=\"$color[4]\" LINK=\"$color[7]\" VLINK=\"$color[7]\" ALINK=\"$color[7]\">\n\n" .
          '<CENTER>'.
          "<IMG SRC=\"$org_logo\" ALT=\"" . sprintf(_("%s Logo"), $org_name) .
@@ -159,23 +178,7 @@ function logout_error( $errString, $errTitle = '' ) {
                   $frame_top . '">' .
                   _("Go to the login page") . "</a></B></FONT>".
             '</TD></TR>'.
-            '</TABLE></td></tr></table></center></body></html>';
+         '</TABLE></td></tr></table></center></body></html>';
 }
 
-function error_box($string, $color) {
-   echo '    <table width="100%" cellpadding="1" cellspacing="0" align="center"'.' border="0" bgcolor="'.$color[9].'">';
-   echo '     <tr><td>';
-   echo '       <table width="100%" cellpadding="0" cellspacing="0" align="center" border="0" bgcolor="'.$color[4].'">';
-   echo '        <tr><td ALIGN="center" bgcolor="'.$color[0].'">';
-   echo '           <font color="' . $color[2].'"><b>' . _("ERROR") . ':</b></font>';
-   echo '        </td></tr>';
-   echo '        <tr><td>';
-   echo '            <table cellpadding="1" cellspacing="5" align="center" border="0">';
-   echo '              <tr>' . html_tag( 'td', $string."\n", 'left')
-                    . '</tr>';
-   echo '            </table>';
-   echo '       </table></td></tr>';
-   echo '    </table>';
-   echo '  </td></tr>';
-}
 ?>

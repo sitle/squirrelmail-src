@@ -1,14 +1,13 @@
 <?php
-
-/**
- * functions.php
+/*
+ *  functions.php
  *
  * Copyright (c) 2002 The SquirrelMail Project Team
  * Licensed under the GNU GPL. For full terms see the file COPYING.
  *
  * Originally contrubuted by Michal Szczotka <michal@tuxy.org>
  *
- * miscelenous functions.
+ *  miscelenous functions.
  *
  * $Id$
  */
@@ -18,9 +17,8 @@ function calendar_header() {
     //Add Second layer ofCalendar links to upper menu
     global $color,$year,$day,$month;
 
-    echo html_tag( 'table', '', '', $color[0], 'border="0" width="100%" cellspacing="0" cellpadding="2"' ) .
-         html_tag( 'tr' ) .
-         html_tag( 'td', '', 'left', '', 'width="100%"' );
+    echo "<TABLE BGCOLOR=\"$color[0]\" BORDER=0 WIDTH=\"100%\" CELLSPACING=0 CELLPADDING=2>".
+         "<TR><TD ALIGN=left WIDTH=\"100%\">";
 
     displayInternalLink("plugins/calendar/calendar.php?year=$year&month=$month",_("Month View"),"right");
     echo "&nbsp;&nbsp\n";
@@ -28,7 +26,7 @@ function calendar_header() {
     echo "&nbsp;&nbsp\n";
     // displayInternalLink("plugins/calendar/event_create.php?year=$year&month=$month&day=$day",_("Add Event"),"right");
     // echo "&nbsp;&nbsp\n";
-    echo '</td></tr>';
+    echo '</TD></TR>';
 
 }
 

@@ -132,17 +132,22 @@ function parseConfig( $cfg_file ) {
 
 /* ---------------------- main -------------------------- */
 
-define('SM_PATH','../../');
+chdir('..');
+require_once('../src/validate.php');
+require_once('../functions/page_header.php');
+require_once('../functions/imap.php');
+require_once('../src/load_prefs.php');
+require_once('../plugins/administrator/defines.php');
+require_once('../plugins/administrator/auth.php');
 
-/* SquirrelMail required files. */
-require_once(SM_PATH . 'include/validate.php');
-require_once(SM_PATH . 'functions/page_header.php');
-require_once(SM_PATH . 'functions/imap.php');
-require_once(SM_PATH . 'include/load_prefs.php');
-require_once(SM_PATH . 'plugins/administrator/defines.php');
-require_once(SM_PATH . 'plugins/administrator/auth.php');
+/* too many globals to define one by one
+   so we extract all of $_POST and $_GET
+*/
 
-GLOBAL $data_dir, $username;
+global $data_dir;
+$username = $_SESSION['username'];
+extract($_POST);
+extract($_GET);
 
 if ( !adm_check_user() ) {
     header("Location: ../../src/options.php") ;
@@ -183,7 +188,7 @@ if ( isset( $switch ) ) {
 }
 
 echo "<form action=options.php method=post name=options>" .
-    "<center><table width=95% bgcolor=\"$color[5]\"><tr><td>".
+    "<br><center><table width=95% bgcolor=\"$color[5]\"><tr><td>".
     "<table width=100% cellspacing=0 bgcolor=\"$color[4]\">" ,
     "<tr bgcolor=\"$color[5]\"><th colspan=2>" . _("Configuration Administrator") . "</th></tr>";
 
@@ -385,8 +390,7 @@ if ( $colapse['Group7'] == 'off' ) {
         $k1 = "\$theme[$i]['NAME']";
         $e1 = "theme_name_$i";
         if ( isset( $HTTP_POST_VARS[$e1] ) ) {
-            $v1 = '"' . str_replace( '\"', '"', $HTTP_POST_VARS[$e1] ) . '"';
-            $v1 = '"' . str_replace( '"', '\"', $v1 ) . '"';
+            $v1 = '"' . $HTTP_POST_VARS[$e1] . '"';
             $newcfg[$k1] = $v1;
         } else {
             $v1 = $newcfg[$k1];
@@ -394,8 +398,7 @@ if ( $colapse['Group7'] == 'off' ) {
         $k2 = "\$theme[$i]['PATH']";
         $e2 = "theme_path_$i";
         if ( isset( $HTTP_POST_VARS[$e2] ) ) {
-            $v2 = '"' . str_replace( '\"', '"', $HTTP_POST_VARS[$e2] ) . '"';
-            $v2 = '"' . str_replace( '"', '\"', $v2 ) . '"';
+            $v2 = '"' . $HTTP_POST_VARS[$e2] . '"';
             $newcfg[$k2] = $v2;
         } else {
             $v2 = $newcfg[$k2];
@@ -490,20 +493,43 @@ echo "<tr bgcolor=\"$color[5]\"><th colspan=2><input value=\"" .
 
 if( $fp = @fopen( $cfgfile, 'w' ) ) {
     fwrite( $fp, "<?PHP\n".
-    "/**\n".
-    " * SquirrelMail Configuration File\n".
-    " * Created using the Administrator Plugin\n".
-    " */\n" );
+            "/**\n".
+            " * SquirrelMail Configuration File\n".
+            " * Created using the Administrator Plugin\n".
+            " */\n" );
 
+    /*
+    fwrite( $fp, 'GLOBAL ' );
+    $not_first = FALSE;
     foreach ( $newcfg as $k => $v ) {
-        if ( $k{0} == '$' && $v <> '' ) {
+    if ( $k{0} == '$' ) {
+            if( $i = strpos( $k, '[' ) ) {
+            if( strpos( $k, '[0]' ) ) {
+                    if( $not_first ) {
+                    fwrite( $fp, ', ' );
+                    }
+                    fwrite( $fp, substr( $k, 0, $i) );
+            }
+            } else {
+            if( $not_first ) {
+                    fwrite( $fp, ', ' );
+            }
+            fwrite( $fp, $k );
+            }
+            $not_first = TRUE;
+    }
+    }
+    fwrite( $fp, ";\n" );
+    */
+    foreach ( $newcfg as $k => $v ) {
+    if ( $k{0} == '$' && $v <> '' ) {
             if ( substr( $k, 1, 11 ) == 'ldap_server' ) {
-                $v = substr( $v, 0, strlen( $v ) - 1 ) . "\n)";
-                $v = str_replace( 'array(', "array(\n\t", $v );
-                $v = str_replace( "',", "',\n\t", $v );
+            $v = substr( $v, 0, strlen( $v ) - 1 ) . "\n)";
+            $v = str_replace( 'array(', "array(\n\t", $v );
+            $v = str_replace( "',", "',\n\t", $v );
             }
             fwrite( $fp, "$k = $v;\n" );
-        }
+    }
     }
     fwrite( $fp, '?>' );
     fclose( $fp );

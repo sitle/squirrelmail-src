@@ -11,7 +11,7 @@
  * $Id$
  */
 
-require_once(SM_PATH . 'functions/global.php');
+require_once('../src/global.php');
 
 if (isset($_SESSION['prefs_cache'])) {
     $prefs_cache = $_SESSION['prefs_cache'];
@@ -21,7 +21,6 @@ if (isset($_SESSION['prefs_are_cached'])) {
 }
 
 $rg = ini_get('register_globals');
-
 if ( !sqsession_is_registered('prefs_are_cached') ||
      !isset( $prefs_cache) ||
      !is_array( $prefs_cache) ||
@@ -31,11 +30,10 @@ if ( !sqsession_is_registered('prefs_are_cached') ||
     $prefs_are_cached = false;
     $prefs_cache = array();
 }
-
 if (isset($prefs_dsn) && !empty($prefs_dsn)) {
-    require_once(SM_PATH . 'functions/db_prefs.php');
+    require_once('../functions/db_prefs.php');
 } else {
-    require_once(SM_PATH . 'functions/file_prefs.php');
+    require_once('../functions/file_prefs.php');
 }
 
 /* Hashing functions */

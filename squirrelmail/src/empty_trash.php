@@ -12,14 +12,11 @@
  * $Id$
  */
 
-/* Path for SquirrelMail required files. */
-define('SM_PATH','../');
-
-/* SquirrelMail required files. */
-require_once(SM_PATH . 'include/validate.php');
-require_once(SM_PATH . 'functions/display_messages.php');
-require_once(SM_PATH . 'functions/imap.php');
-require_once(SM_PATH . 'functions/tree.php');
+require_once('../src/validate.php');
+require_once('../functions/display_messages.php');
+require_once('../functions/imap.php');
+require_once('../functions/array.php');
+require_once('../functions/tree.php');
 
 /* get those globals */
 
@@ -44,11 +41,10 @@ $boxes = sqimap_mailbox_list($imap_stream);
  */
 
 /** First create the top node in the tree **/
-$numboxes = count($boxes);
-for ($i = 0; $i < $numboxes; $i++) {
-    if (($boxes[$i]['unformatted'] == $mailbox) && (strlen($boxes[$i]['unformatted']) == strlen($mailbox))) {
-        $foldersTree[0]['value'] = $mailbox;
-        $foldersTree[0]['doIHaveChildren'] = false;
+for ($i = 0;$i < count($boxes);$i++) {
+    if (($boxes[$i]["unformatted"] == $mailbox) && (strlen($boxes[$i]["unformatted"]) == strlen($mailbox))) {
+        $foldersTree[0]["value"] = $mailbox;
+        $foldersTree[0]["doIHaveChildren"] = false;
         continue;
     }
 }
@@ -58,9 +54,9 @@ for ($i = 0; $i < $numboxes; $i++) {
  *    on the end of the $mailbox string, and compare to that.
  */
 $j = 0;
-for ($i = 0; $i < $numboxes; $i++) {
-    if (substr($boxes[$i]['unformatted'], 0, strlen($mailbox . $delimiter)) == ($mailbox . $delimiter)) {
-        addChildNodeToTree($boxes[$i]['unformatted'], $boxes[$i]['unformatted-dm'], $foldersTree);
+for ($i = 0;$i < count($boxes);$i++) {
+    if (substr($boxes[$i]["unformatted"], 0, strlen($mailbox . $delimiter)) == ($mailbox . $delimiter)) {
+        addChildNodeToTree($boxes[$i]["unformatted"], $boxes[$i]["unformatted-dm"], $foldersTree);
     }
 }
 

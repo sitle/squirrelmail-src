@@ -54,6 +54,7 @@ function sent_subfolders_check_handleAsSent() {
     }
     $sent_subfolders_base = 'INBOX.Sent';
     $args = func_get_arg(0);
+
     $delimiter = $_SESSION['delimiter'];
 
     /* Only check the folder string if we have been passed a mailbox. */
@@ -87,7 +88,6 @@ function sent_subfolders_load_prefs() {
 
 function sent_subfolders_optpage_loadhook_folders() {
     global $optpage_data, $imapServerAddress, $imapPort;
-
     if ( !check_php_version(4,1) ) {
         global $_SESSION, $_COOKIE;
     }
@@ -156,9 +156,8 @@ function save_option_sent_subfolders_setting($option) {
 function sent_subfolders_update_sentfolder() {
     global $sent_folder, $auto_create_special, $auto_create_done;
     global $sent_subfolders_base, $sent_subfolders_setting;
-    global $data_dir, $imapServerAddress, $imapPort;
+    global $data_dir, $imapServerAddress, $imapPort ;
     global $use_sent_subfolders, $move_to_sent, $imap_server_type;
-
     if ( !check_php_version(4,1) ) {
         global $_SESSION, $_COOKIE;
     }

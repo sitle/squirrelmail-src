@@ -41,7 +41,6 @@ function bug_report_button() {
 
 function bug_report_save() {
     global $username,$data_dir;
-
     if ( !check_php_version(4,1) ) {
         global $_POST;
     }
