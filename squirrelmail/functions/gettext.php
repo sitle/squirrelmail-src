@@ -1,7 +1,6 @@
 <?php
-
 /**
- * gettext.php
+ * SquirrelMail internal gettext functions
  *
  * Copyright (c) 1999-2004 The SquirrelMail Project Team
  * Licensed under the GNU GPL. For full terms see the file COPYING.
@@ -12,9 +11,13 @@
  * Possible use in other PHP scripts?  The only SM-specific thing is
  *   $sm_language, I think
  *
- * $Id$
+ * @link http://www.php.net/gettext Original php gettext manual
+ * @version $Id$
+ * @package squirrelmail
+ * @subpackage i18n
  */
 
+/** Almost everything requires global.php... */
 require_once(SM_PATH . 'functions/global.php');
 
 global $gettext_php_domain, $gettext_php_dir, $gettext_php_loaded,
@@ -46,6 +49,13 @@ if (! isset($gettext_php_short_circuit)) {
     sqsession_register($gettext_php_short_circuit, 'gettext_php_short_circuit');
 }
 
+/**
+ * Converts .po file into array and stores it in session.
+ *
+ * Used internally by _($str) function
+ *
+ * @internal function is used internally by functions/gettext.php code
+ */
 function gettext_php_load_strings() {
     global $squirrelmail_language, $gettext_php_translateStrings,
         $gettext_php_domain, $gettext_php_dir, $gettext_php_loaded,
@@ -140,6 +150,14 @@ function gettext_php_load_strings() {
     $gettext_php_loaded_language = $squirrelmail_language;
 }
 
+/**
+ * Alternative php gettext function (short form)
+ *
+ * @link http://www.php.net/function.gettext
+ *
+ * @param string $str English string
+ * @return string translated string
+ */
 function _($str) {
     global $gettext_php_loaded, $gettext_php_translateStrings, 
         $squirrelmail_language, $gettext_php_loaded_language,
@@ -186,6 +204,16 @@ function _($str) {
     return $str;
 }
 
+/**
+ * Alternative php bindtextdomain function
+ *
+ * Sets path to directory containing domain translations
+ *
+ * @link http://www.php.net/function.bindtextdomain
+ * @param string $name gettext domain name
+ * @param string $dir directory that contains all translations
+ * @return string path to translation directory
+ */
 function bindtextdomain($name, $dir) {
     global $gettext_php_domain, $gettext_php_dir, $gettext_php_loaded;
     
@@ -201,6 +229,15 @@ function bindtextdomain($name, $dir) {
     return $dir;
 }
 
+/**
+ * Alternative php textdomain function
+ *
+ * Sets default domain name
+ *
+ * @link http://www.php.net/function.textdomain
+ * @param string $name gettext domain name
+ * @return string gettext domain name
+ */
 function textdomain($name = false) {
     global $gettext_php_domain, $gettext_php_loaded;
     
@@ -208,7 +245,7 @@ function textdomain($name = false) {
         $gettext_php_domain = $name;
         $gettext_php_loaded = false;
     }
+
     return $gettext_php_domain;
 }
-
 ?>
