@@ -470,6 +470,12 @@
          $send_to_cc .= $send_to_cc_search[$i];   
       }
       
+      for ($i=0; $i < count($send_to_bcc_search); $i++) {
+         if ($send_to_bcc)
+            $send_to_bcc .= ", ";
+         $send_to_bcc .= $send_to_bcc_search[$i];   
+      }
+      
       showInputForm();
    } else if (isset($html_addr_search)) {
       // I am using an include so as to elminiate an extra unnecessary click.  If you
