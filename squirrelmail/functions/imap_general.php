@@ -288,6 +288,7 @@ function sqimap_capability($imap_stream, $capability='') {
 
 /* Returns the delimeter between mailboxes: INBOX/Test, or INBOX.Test */
 function sqimap_get_delimiter ($imap_stream = false) {
+    require_once(SM_PATH . 'config/config.php');
     global $sqimap_delimiter, $optional_delimiter;
 
     /* Use configured delimiter if set */
