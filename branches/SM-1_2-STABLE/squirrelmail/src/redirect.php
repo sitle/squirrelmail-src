@@ -127,13 +127,14 @@ sqsession_register($attachment_common_types, 'attachment_common_types');
 sqsession_register($attachment_common_types_parsed, 'attachment_common_types_parsed');
 
 $debug = false;
-if (isset($HTTP_SERVER_VARS['HTTP_ACCEPT']) &&
-    !isset($attachment_common_types_parsed[$HTTP_SERVER_VARS['HTTP_ACCEPT']])) {
-    attachment_common_parse($HTTP_SERVER_VARS['HTTP_ACCEPT'], $debug);
+
+if (isset($_SERVER['HTTP_ACCEPT']) &&
+    !isset($attachment_common_types_parsed[$_SERVER['HTTP_ACCEPT']])) {
+    attachment_common_parse($_SERVER['HTTP_ACCEPT'], $debug);
 }
-if (isset($HTTP_ACCEPT) &&
-    !isset($attachment_common_types_parsed[$HTTP_ACCEPT])) {
-    attachment_common_parse($HTTP_ACCEPT, $debug);
+if (isset($_SERVER['HTTP_ACCEPT']) &&
+    !isset($attachment_common_types_parsed[$_SERVER['HTTP_ACCEPT']])) {
+    attachment_common_parse($_SERVER['HTTP_ACCEPT'], $debug);
 }
 
 /* Complete autodetection of Javascript. */

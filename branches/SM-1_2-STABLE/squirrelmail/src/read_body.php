@@ -388,20 +388,39 @@ function formatRecipientString($recipients, $item ) {
 $username = $_SESSION['username'];
 $key = $_COOKIE['key'];
 $onetimepad = $_SESSION['onetimepad'];
-$passed_id = $_GET['passed_id'];
 $msgs = $_SESSION['msgs'];
 $base_uri = $_SESSION['base_uri'];
+$delimiter = $_SESSION['delimiter'];
+
+if (isset($_GET['passed_id'])) {
+    $passed_id = $_GET['passed_id'];
+}
+elseif (isset($_POST['passed_id'])) {
+    $passed_id = $_POST['passed_id'];
+}
 if (isset($_GET['sort'])) {
     $sort = $_GET['sort'];
+}
+elseif (isset($_POST['sort'])) {
+    $sort = $_POST['sort'];
 }
 if (isset($_GET['startMessage'])) {
     $startMessage = $_GET['startMessage'];
 }
+elseif (isset($_POST['startMessage'])) {
+    $startMessage = $_POST['startMessage'];
+}
 if (isset($_GET['show_more'])) {
     $show_more = $_GET['show_more'];
 }
+elseif (isset($_POST['show_more'])) {
+    $show_more = $_POST['show_more'];
+}
 if (isset($_GET['mailbox'])) {
     $mailbox = $_GET['mailbox'];
+}
+elseif (isset($_POST['mailbox'])) {
+    $mailbox = $_POST['mailbox'];
 }
 if (isset($_GET['where'])) {
     $where = $_GET['where'];
@@ -420,6 +439,9 @@ if (isset($_SESSION['msgs'])) {
 }
 if (isset($_SESSION['msort'])) {
     $msort = $_SESSION['msort'];
+}
+if (isset($_POST['move_id'])) {
+    $move_id = $_POST['move_id'];
 }
 
 $thread_sort_messages = getPref($data_dir, $username, "thread_$mailbox", 0);
