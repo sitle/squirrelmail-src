@@ -178,6 +178,7 @@ $imapPort = 143;
  *   exchange
  *   uw
  *   macosx
+ *   hmailserver
  *   other
  *
  * Please note that this changes only some of server settings.

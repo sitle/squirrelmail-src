@@ -1049,12 +1049,13 @@ sub command19 {
     print "these servers.  If you would like to use them, please select your\n";
     print "IMAP server.  If you do not wish to use these work-arounds, you can\n";
     print "set this to \"other\", and none will be used.\n";
-    print "    cyrus      = Cyrus IMAP server\n";
-    print "    uw         = University of Washington's IMAP server\n";
-    print "    exchange   = Microsoft Exchange IMAP server\n";
-    print "    courier    = Courier IMAP server\n";
-    print "    macosx     = Mac OS X Mailserver\n";
-    print "    other      = Not one of the above servers\n";
+    print "    cyrus       = Cyrus IMAP server\n";
+    print "    uw          = University of Washington's IMAP server\n";
+    print "    exchange    = Microsoft Exchange IMAP server\n";
+    print "    courier     = Courier IMAP server\n";
+    print "    macosx      = Mac OS X Mailserver\n";
+    print "    hmailserver = hMailServer\n";
+    print "    other       = Not one of the above servers\n";
     print "[$WHT$imap_server_type$NRM]: $WHT";
     $new_imap_server_type = <STDIN>;
 
@@ -3144,12 +3145,13 @@ sub set_defaults {
     $continue = 0;
     while ( $continue != 1 ) {
         print "Please select your IMAP server:\n";
-        print "    cyrus      = Cyrus IMAP server\n";
-        print "    uw         = University of Washington's IMAP server\n";
-        print "    exchange   = Microsoft Exchange IMAP server\n";
-        print "    courier    = Courier IMAP server\n";
-        print "    macosx     = Mac OS X Mailserver\n";
-        print "    quit       = Do not change anything\n";
+        print "    cyrus       = Cyrus IMAP server\n";
+        print "    uw          = University of Washington's IMAP server\n";
+        print "    exchange    = Microsoft Exchange IMAP server\n";
+        print "    courier     = Courier IMAP server\n";
+        print "    macosx      = Mac OS X Mailserver\n";
+        print "    hmailserver = hMailServer\n";
+        print "    quit        = Do not change anything\n";
         print "Command >> ";
         $server = <STDIN>;
         $server =~ s/[\r|\n]//g;
@@ -3221,6 +3223,10 @@ sub set_defaults {
             $optional_delimiter             = "detect";
             $allow_charset_search           = false;
             $disp_default_folder_prefix     = $default_folder_prefix;
+
+            $continue = 1;
+        } elsif ( $server eq "hmailserver" ) {
+            $imap_server_type               = "hmailserver";
 
             $continue = 1;
         } elsif ( $server eq "quit" ) {

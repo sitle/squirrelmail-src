@@ -93,7 +93,8 @@ Version 1.4.4 - CVS
     translate. Disabled gpltrans engine, because it is no longer available.
   - RFC822 header compliance with regards to SM based header containing an
     extra ; in the Received header. Fixes #1088548.
-
+  - Add IMAP server type "hmailserver" to make search work with hMailServer.
+    Fixes #1085377.
 
 Version 1.4.3a - 2 June 2004
 ----------------------------
