@@ -1,0 +1,125 @@
+# Translation of useracl plugin to Greek
+# Copyright (C) 2004 Alexandros Vellis
+# This file is distributed under the same license as the PACKAGE package.
+# Alexandros Vellis <avel@noc.uoa.gr>, 2004
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: useracl 1.1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2004-02-16 13:34+0200\n"
+"PO-Revision-Date: 2004-02-16 13:34+0200\n"
+"Last-Translator: Alexandros Vellis <avel@noc.uoa.gr>\n"
+"Language-Team: Greek <el@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=iso-8859-7\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "Add New User Permission"
+msgstr "Προσθήκη Νέου Δικαιώματος σε Χρήστη"
+
+msgid "Add New Share to User"
+msgstr "Προσθήκη νέου Κοινού Φακέλου σε Χρήστη"
+
+msgid "Close"
+msgstr "Κλείσιμο"
+
+msgid "Folder"
+msgstr "Φάκελος"
+
+msgid "User"
+msgstr "Χρήστης"
+
+msgid "None"
+msgstr "Κανένα"
+
+msgid "Read"
+msgstr "Ανάγνωση"
+
+msgid "Append"
+msgstr "Προσθήκη"
+
+msgid "Delete"
+msgstr "Διαγραφή"
+
+msgid "Add User"
+msgstr "Πρόσθεση Χρήστη"
+
+msgid "Update"
+msgstr "Ενημέρωση"
+
+msgid "Notify user(s) by email"
+msgstr "Ειδοποίηση χρηστών μέσω ηλ. ταχυδρομείου"
+
+msgid "Update All"
+msgstr "Ενημέρωση Όλων"
+
+msgid "Search..."
+msgstr "Αναζήτηση..."
+
+msgid "Draft folder"
+msgstr "Φάκελος Προχείρων"
+
+msgid "Server replied: "
+msgstr "Ο εξυπηρετητής απάντησε:"
+
+msgid "Shares"
+msgstr "Κοινοί Φάκελοι"
+
+#, php-format
+msgid "Successfully changed permissions for folder %s"
+msgstr "Τα δικαιώματα για τον φάκελο %s άλλαξαν επιτυχώς"
+
+#, php-format
+msgid "Failed to change permissions for folder %s"
+msgstr "Αποτυχία στην αλλαγή δικαιωμάτων στον φάκελο %s"
+
+#, php-format
+msgid "No changes in permissions for folder %s"
+msgstr "Δεν υπάρχουν αλλαγές στα δικαιώματα στον φάκελο %s"
+
+msgid ""
+"Cannot modify permissions on your own folder; you will always have full "
+"rights on your folders."
+msgstr ""
+"Αδύνατον να αλλάξουν τα δικαιώματα στον δικό σας φάκελο. Θα έχετε πάντοτε "
+"πλήρη δικαιώματα στους φακέλους σας."
+
+#, php-format
+msgid "User %s already has %s permission for folder %s."
+msgstr "Ο χρήστης %s έχει ήδη δικαίωμα για %s στον φάκελο %s."
+
+#, php-format
+msgid "User %s has been given %s permisssion for folder %s."
+msgstr "Στον χρήστη %s δόθηκε δικαίωμα για %s στον φάκελο %s."
+
+#, php-format
+msgid "Failed to give user %s %s permission for folder %s."
+msgstr ""
+"Λάθος κατά την εισαγωγή στον χρήστη %s δικαιώματος για %s στον φάκελο %s."
+
+msgid "Specified user does not exist."
+msgstr "Ο χρήστης που ζητήθηκε δεν υπάρχει."
+
+#, php-format
+msgid "Failed to send notification message to user %s"
+msgstr "Αποτυχία στην αποστολή μηνύματος ειδοποίησης προς τον χρήστη %s"
+
+#, php-format
+msgid "Failed to send notification message to users: %s"
+msgstr "Αποτυχία στην αποστολή μηνυμάτων ειδοποίησης προς τους χρήστες: %s"
+
+#, php-format
+msgid "Successfully sent notification message to user %s"
+msgstr "Μήνυμα ειδοποίησης στάλθηκε επιτυχώς προς τον χρήστη %s"
+
+#, php-format
+msgid "Successfully sent notification message to users: %s"
+msgstr "Μηνύματα ειδοποίησης στάλθηκαν επιτυχώς προς τους χρήστες: %s"
+
+msgid "User Permissions"
+msgstr "Δικαιώματα Χρηστών"
+
+#, php-format
+msgid "Current Permissions for Folder: %s"
+msgstr "Τρέχοντα Δικαιώματα για τον Φάκελο: %s"
