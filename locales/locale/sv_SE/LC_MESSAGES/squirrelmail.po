@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: SquirrelMail HEAD\n"
-"POT-Creation-Date: 2004-08-10 14:49+0200\n"
-"PO-Revision-Date: 2004-08-11 04:08+0200\n"
+"POT-Creation-Date: 2004-08-13 23:34+0200\n"
+"PO-Revision-Date: 2004-08-14 01:38+0200\n"
 "Last-Translator: Fredrik Jervfors <sqm_admin@fimbul.net>\n"
 "Language-Team: Swedish <squirrelmail-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -3868,6 +3868,12 @@ msgstr "Lägg till i adressboken"
 msgid "Purge"
 msgstr "Töm"
 
+msgid "The IMAP server is reporting that logins are disabled."
+msgstr "Inloggningar är inaktiverade i IMAP-servern."
+
+msgid "The use of TLS may allow SquirrelMail to login."
+msgstr "SquirrelMail kan eventuellt logga in genom att använda TLS."
+
 msgid "Error(s) happened while saving your options"
 msgstr "Fel uppstod när inställningarna sparades"
 
@@ -4230,6 +4236,76 @@ msgstr "Sök i Bugtracker"
 
 msgid "Show system specs"
 msgstr "Visa systemspecifikationerna"
+
+msgid "You must type in your current password."
+msgstr "Du måste ange ditt nuvarande lösenord."
+
+msgid "Your current password is not correct."
+msgstr "Ditt nuvarade lösenord är inte korrekt angivet."
+
+msgid "You must type in a new password."
+msgstr "Du måste ange ditt nya lösenord."
+
+msgid "You must also type in your new password in the verify box."
+msgstr "Du måste även ange ditt nya lösenord i verifikationsrutan."
+
+msgid "Your new password does not match the verify password."
+msgstr "Det nya lösenordet och verifikationen därav överensstämmer inte."
+
+#, c-format
+msgid "Your new password should be %s to %s characters long."
+msgstr "Ditt nya lösenord ska bestå av %s till %s tecken."
+
+msgid "Your new password contains invalid characters."
+msgstr "Ditt nya lösenord innehåller otillåtna tecken"
+
+msgid "Change Password"
+msgstr "Byt lösenord"
+
+msgid "Current Password:"
+msgstr "Ditt nuvarande lösenord:"
+
+msgid "New Password:"
+msgstr "Ditt nya lösenord:"
+
+msgid "Verify New Password:"
+msgstr "Verifiera det nya lösenordet:"
+
+msgid "Use this to change your email password."
+msgstr "Byt lösenordet till ditt e-postkonto."
+
+msgid "Curl module NOT available! Unable to change password!"
+msgstr "Curl-modulen är inte tillgänglig. Det gick inte att byta lösenordet!"
+
+msgid "Cannot change password! (Is user 'Self Configurable User' ?) (401)"
+msgstr "Det gick inte att byta lösenordet! (Har användaren administrationsrättigheter? Fel: 401)"
+
+msgid "Cannot change password!"
+msgstr "Det gick inte att byta lösenordet!"
+
+msgid "Cannot connect to Database Server, please try later!"
+msgstr "Kan inte ansluta till databasservern. Försök igen senare."
+
+msgid "Database not found on server"
+msgstr "Kan inte hitta databasen på servern"
+
+msgid "SQL call failed, try again later."
+msgstr "SQL-anropet misslyckades. Försök igen senare."
+
+msgid "Duplicate login entries detected, cannot change password!"
+msgstr "Flera samtidiga inloggningar detekterades. Det gick inte att byta lösenordet!"
+
+msgid "Password change was not successful!"
+msgstr "Det gick inte att byta lösenordet!"
+
+msgid "Closing Connection"
+msgstr "Stänger anslutningen"
+
+msgid "Connecting to Password Server"
+msgstr "Ansluter till lösenordsservern"
+
+msgid "ERROR:"
+msgstr "FEL:"
 
 msgid "Plugin is disabled."
 msgstr "Insticksmodulen är inaktiverad."
