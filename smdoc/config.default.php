@@ -9,14 +9,30 @@
  * $Id$
  */
 
-define('SM_PATH', 'lib/');
-define('FOOWD_DIR', '../foowd/lib/');
+/**
+ * Configuration parameters for Foowd/smdoc.
+ * 
+ * @package smdoc
+ */
+
+/** Path for smdoc includes */
+define('SM_DIR',    'lib/');
+/** Path for input classes */
 define('INPUT_DIR', 'lib/input/');
+/** Path for template files */
 define('TEMPLATE_PATH','templates/');
-
-define('DATETIME_FORMAT', 'Y/m/d h:ia'); // formatting string to format dates
+/** Preferred Date display format */
+define('DATETIME_FORMAT', 'Y/m/d h:ia');
+/** Location of tmp directory for diff */
 define('DIFF_TMPDIR', '/tmp/');
+/** Base filename/primary entrypoint */
+define('FILENAME', 'index.php');
 
+
+/**
+ * Configuration array containing initial parameters for foowd
+ * @var array
+ */
 $foowd_parameters = array(
 
 /*
@@ -28,7 +44,6 @@ $foowd_parameters = array(
         'debug_path' => SM_DIR . 'smdoc.env.debug.php',
      'debug_enabled' => FALSE,
          'debug_var' => FALSE,
-         'debug_ext' => FALSE
                     ),
 
 /*
@@ -92,7 +107,7 @@ $foowd_parameters = array(
  */
     'group' => array(
            'group_class' => 'smdoc_group',
-            'group_path' => SM_PATH . 'smdoc.class.group.php',
+            'group_path' => SM_DIR . 'smdoc.env.group.php',
                     ),
 
 /*
@@ -117,16 +132,32 @@ $foowd_parameters = array(
 
 );                                   /* end $foowd_parameters */
 
-
 /*
  * Common includes
  * -------------------------------------------------------------
  */
-require_once(SM_PATH . 'smdoc.env.foowd.php');
-require_once(FOOWD_DIR.'class.object.php');
-require_once(SM_PATH . 'input.querystring.php');
-require_once(SM_PATH . 'input.session.php');
+/** Base input library: input_base, and sqGetGlobalVar, etc. */
+require_once(INPUT_DIR . 'input.lib.php');
+/** Input class that manages data in the session. */
+include_once(INPUT_DIR . 'input.session.php');
 
+/** Library containing common utility functions. */
+require_once(SM_DIR . 'lib.php');
+/** Customized Foowd env. */
+require_once(SM_DIR . 'smdoc.env.foowd.php');
+/** Success/Failure codes for status across form submission. */
+require_once(SM_DIR . 'smdoc.error.constants.php');
+
+/** Base Foowd object. */
+require_once(SM_DIR . 'class.object.php');
+/** Error Handling - smdoc_error class and error handler */
+include_once(SM_DIR . 'smdoc.class.error.php');
+/** ShortName mapping/lookup. */
+include_once(SM_DIR . 'smdoc.class.namelookup.php');
+/** Management and inclusion of translations. */
+include_once(SM_DIR . 'smdoc.class.translation.php');
+/** Customized user implementation. */
+include_once(SM_DIR . 'smdoc.class.user.php');
 
 /*
  * Session initialization

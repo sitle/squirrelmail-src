@@ -48,7 +48,6 @@
   unset($_SESSION['error']);
 
   if ( isset($t['classid']) && $object != NULL &&
-       $t['classid'] != EXTERNAL_CLASS_ID &&
        $t['classid'] != USER_CLASS_ID )
   {
     $version = isset($t['version']) ? 'v. ' . $t['version'] . ', ' : '';
@@ -118,7 +117,7 @@
             if ( $user->inGroup('Gods') )
             {
               echo '<span class="subtext">'._("Admin") .': '
-                 . '<a href="'.$loc_url.'?object=sqmgroup">'
+                 . '<a href="sqmgroup.php">'
                  . _("Groups") . '</a></span>&nbsp;';
             }
           } else {
@@ -166,8 +165,8 @@
           <td align="right" class="menu_subtext">
             <?php
           echo '<a href="', $loc_url, '?object=search">', _("Search"),'</a> | ';
-          echo '<a href="', $loc_url, '?object=sqmuser">', _("Users"),'</a> | ';
-          echo '<a href="', $loc_url, '?object=sqmindex">',_("Index"),'</a> ';
+          echo '<a href="sqmuser.php">', _("Users"),'</a> | ';
+          echo '<a href="sqmindex.php">',_("Index"),'</a> ';
             ?>
           </td>
         </tr>
@@ -203,7 +202,6 @@
 <div id="editmenu">
   <?php
     if ( isset($t['classid']) &&                 // classid is defined
-         $t['classid'] != EXTERNAL_CLASS_ID &&   // is not external object
          $t['classid'] != ERROR_CLASS_ID )         // is not error page
     {
         $methods = get_class_methods($className);
@@ -236,10 +234,10 @@
         }
         if ( $notfirst )
             echo ' | ';
-        echo '<a href="', $loc_url, '?object=sqmchanges">',_("Recent Changes"),"</a><br />\n";
-    } else { // object not set OR external object
-        echo '<a href="', $loc_url, '?object=sqmchanges">',_("Recent Changes"),"</a><br />\n";
-    }
+    } 
+    
+    // Last command (always displayed) - link to recent changes    
+    echo '<a href="sqmchanges.php">',_("Recent Changes"),"</a><br />\n";
   ?>
 </div><!-- end editmenu -->
 <div id="copyright">

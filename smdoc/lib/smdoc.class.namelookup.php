@@ -23,7 +23,7 @@ setConst('SHORTNAMES_ID', 1063068242);
 /** Regex to validate shortname */
 setConst('REGEX_SHORTNAME', '/^[a-z_-]{0,11}$/');
 
-/** Include base storage class */
+/** Base storage class */
 include_once(SM_DIR . 'smdoc.class.storage.php');
 
 /**
@@ -63,19 +63,12 @@ class smdoc_name_lookup extends smdoc_storage
   function findObject($objectName, &$objectid, &$classid)
   {
     $this->foowd->track('smdoc_name_lookup->findObject', $objectName);
-    global $EXTERNAL_RESOURCES;
 
     $result = FALSE;
-    if ( isset($EXTERNAL_RESOURCES[$objectName]) )
+    if ( isset($this->shortNames[$objectName]) )
     {
-      $objectid = $EXTERNAL_RESOURCES[$objectName];
-      $classid = EXTERNAL_CLASS_ID;
-      $result = TRUE;
-    }
-    elseif ( isset($this->shortNames[$objectName]) )
-    {
-      $objectid = $INTERNAL_LOOKUP[$objectName]['objectid'];
-      $classid  = $INTERNAL_LOOKUP[$objectName]['classid'];
+      $objectid = $this->shortNames[$objectName]['objectid'];
+      $classid  = $this->shortNames[$objectName]['classid'];
       $result = TRUE;
     }
 
@@ -140,8 +133,6 @@ class smdoc_name_lookup extends smdoc_storage
    */
   function addShortNameToForm(&$obj, &$form, &$error)
   {
-    global $EXTERNAL_RESOURCES;
-
     include_once(INPUT_DIR.'input.textbox.php');
     $oid = intval($obj->objectid);
 
@@ -154,8 +145,7 @@ class smdoc_name_lookup extends smdoc_storage
     $shortBox = new input_textbox('shortname', REGEX_SHORTNAME, $name, 'Short Name', FALSE);
     if ( $form->submitted() && $shortBox->wasValid && $shortBox->value != $name )
     {
-      if ( isset($EXTERNAL_RESOURCES[$shortBox->value]) ||
-           isset($this->shortNames[$shortBox->value])   )
+      if ( isset($this->shortNames[$shortBox->value])   )
       {
         $error[] = _("Object ShortName is already in use.");
         $shortBox->wasValid = FALSE;

@@ -93,12 +93,6 @@ class smdoc_debug
       show($_COOKIE);
     }
 
-    if ( $this->foowd->config_settings['debug']['debug_ext'] ) 
-    {
-      echo '<div class="debug_output_heading">External Resources</div>'. "\n";
-      global $EXTERNAL_RESOURCES;
-      show($EXTERNAL_RESOURCES);       
-    }    
     echo '<br /></div></body></html>';
   }
 
