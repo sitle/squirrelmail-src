@@ -7,7 +7,8 @@
  * Licensed under the GNU GPL. For full terms see the file COPYING.
  *
  * This includes code to update < 4.1.0 globals to the newer format 
- * It also has some (only one so far) handy-dandy global variable functions
+ * It also has two session register functions that work across various
+ * php versions. 
  *
  * $Id$
  */

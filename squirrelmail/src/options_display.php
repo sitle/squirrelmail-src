@@ -322,7 +322,7 @@ function save_option_theme($option) {
 }
 
 function save_option_javascript_autodetect($option) {
-    global $data_dir, $new_javascript_setting;
+    global $data_dir, $new_javascript_setting, $_SESSION;
         $username = $_SESSION['username'];
 
     /* Set javascript either on or off. */

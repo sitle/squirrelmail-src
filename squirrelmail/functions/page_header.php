@@ -46,8 +46,8 @@ function displayHtmlHeader( $title = 'SquirrelMail', $xtra = '', $do_hook = TRUE
 }
 
 function displayInternalLink($path, $text, $target='') {
+    global $_SESSION;
     $base_uri = $_SESSION['base_uri'];    
-
     if ($target != '') {
         $target = " target=\"$target\"";
     }
@@ -59,7 +59,7 @@ function displayPageHeader($color, $mailbox, $xtra='', $session=false) {
 
     global $hide_sm_attributions, $PHP_SELF, $frame_top,
            $compose_new_win, $username, $datadir, $compose_width, $compose_height,
-           $attachemessages, $session;
+           $attachemessages, $session, $_SESSION;
     $base_uri = $_SESSION['base_uri'];
     $delimiter = $_SESSION['delimiter'];
     $module = substr( $PHP_SELF, ( strlen( $PHP_SELF ) - strlen( $base_uri ) ) * -1 );

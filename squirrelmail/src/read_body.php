@@ -398,7 +398,7 @@ if (isset($_GET['startMessage'])) {
     $startMessage = $_GET['startMessage'];
 }
 if (isset($_GET['show_more'])) {
-    $showmore = $_GET['show_more'];
+    $show_more = $_GET['show_more'];
 }
 if (isset($_GET['mailbox'])) {
     $mailbox = $_GET['mailbox'];
@@ -409,7 +409,9 @@ if (isset($_GET['where'])) {
 if (isset($_GET['what'])) {
     $what = $_GET['what'];
 }
-
+if (isset($_GET['view_hdr'])) {
+    $view_hdr = $_GET['view_hdr'];
+}
 /* end of get globals */
 
 if (isset($mailbox)){

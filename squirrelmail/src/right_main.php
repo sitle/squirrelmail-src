@@ -37,7 +37,7 @@ require_once('../functions/display_messages.php');
 
 
 /* lets get the global vars we may need */
-
+print "here";
 $username = $_SESSION['username'];
 $key  = $_COOKIE['key'];
 $onetimepad = $_SESSION['onetimepad'];
@@ -75,10 +75,10 @@ if (isset($PG_SHOWALL)) {
     if ($PG_SHOWALL) {
        $PG_SHOWNUM=999999;
        $show_num=$PG_SHOWNUM;
-       session_register('PG_SHOWNUM');
+       sqsession_register($PG_SHOWNUM, 'PG_SHOWNUM');
     }
     else {
-       session_unregister('PG_SHOWNUM');
+       sqsession_unregister('PG_SHOWNUM');
        unset($PG_SHOWNUM);
     }
 }
@@ -169,7 +169,7 @@ if (isset($_SESSION['just_logged_in'])) {
 
 if (isset($newsort)) {
     $sort = $newsort;
-    session_register('sort');
+    sqsession_register($sort, 'sort');
 }
 
 /*********************************************************************
@@ -204,16 +204,16 @@ if ($use_mailbox_cache && session_is_registered('msgs')) {
                            $use_mailbox_cache);
 
     if (session_is_registered('msgs') && isset($msgs)) {
-        session_register('msgs');
+        sqsession_register($msgs, 'msgs');
         $_SESSION['msgs'] = $msgs;
     }
 
     if (session_is_registered('msort') && isset($msort)) {
-        session_register('msort');
+        sqsession_register($msort, 'msort');
         $_SESSION['msort'] = $msort;
     }
 
-    session_register('numMessages');
+    sqsession_register($numMessages, 'numMessages');
     $_SESSION['numMessages'] = $numMessages;
 }
 do_hook('right_main_bottom');

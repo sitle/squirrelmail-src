@@ -67,7 +67,7 @@ if (isset($chosen_theme) && $found_theme && (file_exists($chosen_theme))) {
 }
 
 if (!defined('download_php')) { 
-    session_register('theme_css'); 
+    sqsession_register($theme_css, 'theme_css'); 
 }
 
 $use_javascript_addr_book = getPref($data_dir, $username, 'use_javascript_addr_book', $default_use_javascript_addr_book);

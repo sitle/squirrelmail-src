@@ -22,7 +22,7 @@ define('SMOPT_GRP_TZ', 3);
 
 /* Define the optpage load function for the personal options page. */
 function load_optpage_data_personal() {
-    global $data_dir, $edit_identity, $edit_name,
+    global $data_dir, $edit_identity, $edit_name, $_SESSION,
            $full_name, $reply_to, $email_address, $signature;
             
     $username = $_SESSION['username'];
@@ -204,6 +204,7 @@ function load_optpage_data_personal() {
 /******************************************************************/
 
 function save_option_signature($option) {
+    global $_SESSION;
     $username = $_SESSION['username'];
     global $data_dir, $username;
     setSig($data_dir, $username, 'g', $option->new_value);

@@ -77,12 +77,12 @@ function sqUnWordWrap(&$body) {
 
 if (!isset($attachments)) {
     $attachments = array();
-    session_register('attachments');
+    sqsession_register($attachments, 'attachments');
 }
 
 if (!isset($composesession)) {
     $composesession = 0;
-    session_register('composesession');
+    sqsession_register($composesession, 'composesession');
 }
 
 if (!isset($session) || (isset($newmessage) && $newmessage)) {

@@ -180,8 +180,7 @@ function create_collapse_link($boxnum) {
  * This simple function checks if a box is another box's parent.
  */
 function is_parent_box($curbox_name, $parbox_name) {
-    $delimiter = $_SESSION['delimiter'];    
-
+    global $delimiter;
     /* Extract the name of the parent of the current box. */
     $curparts = explode($delimiter, $curbox_name);
     $curname = array_pop($curparts);
@@ -235,7 +234,7 @@ if ($auto_create_special && !isset($auto_create_done)) {
 
     /* Let the world know that autocreation is complete! Hurrah! */
     $auto_create_done = TRUE;
-    session_register('auto_create_done');
+    sqsession_register($auto_create_done, 'auto_create_done');
 }
 
 echo "\n<BODY BGCOLOR=\"$color[3]\" TEXT=\"$color[6]\" LINK=\"$color[6]\" VLINK=\"$color[6]\" ALINK=\"$color[6]\">\n";
@@ -298,7 +297,6 @@ $boxes = sqimap_mailbox_list($imapConnection);
 /* Prepare do do out collapsedness and visibility computation. */
 $curbox = 0;
 $boxcount = count($boxes);
-$delimiter = $_SESSION['delimiter'];
 
 /* Compute the collapsedness and visibility of each box. */
 
