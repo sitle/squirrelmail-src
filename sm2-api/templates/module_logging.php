@@ -22,7 +22,20 @@ class ZkImp_logging_module {
      *                       to the module
      */
     function ZkImp_logging_module($options) {
-        /* Instantiate the Module Here! */
+        /* Instantiate this module here! */
+    }
+    
+    /**
+     * Log a message to this logging module.
+     *
+     * @param string  $message message to log to the logs
+     * @param integer $errno   error number (if applicable)
+     * @param string  $cat     category for this log message
+     * @param string  $subcat  subcategory for this mog message
+     * @param integer $level   log level for this log message
+     */
+    function logMessage($message, $errno, $cat, $subcat, $level) {
+        /* LOG THE MESSAGE HERE!!! */
     }
 }
 
