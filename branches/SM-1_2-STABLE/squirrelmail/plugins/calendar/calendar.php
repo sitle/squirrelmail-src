@@ -3,7 +3,6 @@
  *
  *  calendar.php
  *
- *
  * Copyright (c) 2002 The SquirrelMail Project Team
  * Licensed under the GNU GPL. For full terms see the file COPYING.
  *
@@ -103,7 +102,7 @@ function drawmonthview() {
                 $i=0;
                 while ($calfoo = each($calendardata[$cdate])) {
                     $calbar = $calendardata[$cdate][$calfoo['key']];
-                    echo (isOdd($calbar['priority'])) ? "<FONT COLOR=\"$color[1]\">$calbar[title]</FONT><br>\n" : "$calbar[title]<br>\n";
+                    echo ($calbar['priority']==1) ? "<FONT COLOR=\"$color[1]\">$calbar[title]</FONT><br>\n" : "$calbar[title]<br>\n";
                     $i=$i+1;
                     if($i==2){
                         break;
