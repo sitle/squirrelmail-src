@@ -478,7 +478,7 @@ while ( ( $command ne "q" ) && ( $command ne "Q" ) ) {
         print "6.  Allow use of priority       : $WHT$default_use_priority$NRM\n";
         print "7.  Hide SM attributions        : $WHT$hide_sm_attributions$NRM\n";
         print "8.  Allow use of receipts       : $WHT$default_use_mdn$NRM\n";
-        print "9. Allow editing of identity   : $WHT$edit_identity$NRM/$WHT$edit_name$NRM\n";
+        print "9.  Allow editing of identity   : $WHT$edit_identity$NRM/$WHT$edit_name$NRM\n";
         print "10. Allow server thread sort    : $WHT$allow_thread_sort$NRM\n";
         print "11. Allow server-side sorting   : $WHT$allow_server_sort$NRM\n";
         print "12. Allow server charset search : $WHT$allow_charset_search$NRM\n";
