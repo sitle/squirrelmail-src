@@ -135,6 +135,8 @@ class Deliver {
         case 'message':
             if ($message->body_part) {
                 $body_part = $message->body_part;
+                // remove NUL characters
+                $body_part = str_replace("\0",'',$body_part);
                 $length += $this->clean_crlf($body_part);
                 if ($stream) {
                     $this->preWriteToStream($body_part);
@@ -411,12 +413,12 @@ class Deliver {
         $header[] = "Date: $date" . $rn;
         $header[] = 'Subject: '.encodeHeader($rfc822_header->subject) . $rn;
 
-        // folding address list [From|To|Cc|Bcc] happens by using ",$rn<space>" 
+        // folding address list [From|To|Cc|Bcc] happens by using ",$rn<space>"
         // as delimiter
         // Do not use foldLine for that.
- 
+
         $header[] = 'From: '. $rfc822_header->getAddr_s('from',",$rn ",true) . $rn;
- 
+
         /* RFC2822 if from contains more then 1 address */
         if (count($rfc822_header->from) > 1) {
             $header[] = 'Sender: '. $rfc822_header->getAddr_s('sender',',',true) . $rn;
@@ -468,14 +470,14 @@ class Deliver {
             switch($rfc822_header->priority)
             {
             case 1:
-	    	$header[] = 'X-Priority: 1 (Highest)'.$rn;
-	    	$header[] = 'Importance: High'. $rn; break;
+            $header[] = 'X-Priority: 1 (Highest)'.$rn;
+            $header[] = 'Importance: High'. $rn; break;
             case 3:
-	    	$header[] = 'X-Priority: 3 (Normal)'.$rn;
-	    	$header[] = 'Importance: Normal'. $rn; break;
+            $header[] = 'X-Priority: 3 (Normal)'.$rn;
+            $header[] = 'Importance: Normal'. $rn; break;
             case 5:
-	    	$header[] = 'X-Priority: 5 (Lowest)'.$rn;
-	    	$header[] = 'Importance: Low'. $rn; break;
+            $header[] = 'X-Priority: 5 (Lowest)'.$rn;
+            $header[] = 'Importance: Low'. $rn; break;
             default: break;
             }
         }
