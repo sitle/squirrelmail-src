@@ -363,7 +363,7 @@ function listBoxes ($boxes, $j=0 ) {
 	}
 	
 	if (!$boxes->is_root) { 
-	    echo "" . $pre .$font. $boxes->mailboxname_sub .$fontend . $end. '<br />';
+	    echo "" . $pre .$font. str_replace(array(' ','<','>'),array('&nbsp;','&lt;','&gt;'),$boxes->mailboxname_sub) .$fontend . $end. '<br />';
 	    $j++;
 	}
 	if (!$collapse || $boxes->is_root) {
@@ -450,7 +450,7 @@ function ListAdvancedBoxes ($boxes, $mbx, $j='ID.0000' ) {
 	    } else $folder_img = '';
 	    if (!isset($boxes->mbxs[0])) {
 	        echo '   ' . html_tag( 'div',
-	                        $pre . $folder_img . $boxes->mailboxname_sub . $end ,
+	                        $pre . $folder_img . str_replace(array(' ','<','>'),array('&nbsp;','&lt;','&gt;'),$boxes->mailboxname_sub) . $end ,
 	                'left', '', 'class="mbx_sub" id="' .$j. '"' )
 		        . "\n";
 	    } else {
