@@ -19,29 +19,12 @@
 ?>
 
 <script language="JavaScript" type="text/javascript" src="templates/iframe.js"></script>
-<table class="smdoc_table" style="width: 100%; margin-bottom:0px; padding-bottom: 0px;">
-  <tr>
-    <td class="col_left" style="width: 300px">
-      <iframe src="<?php echo $t['doc_elements']; ?>" class="doc_elements" 
-              name="left_bottom" id="left_bottom" onLoad="resizeMe(this)">
-        <a href="<?php echo $t['doc_index']; ?>">View using regular frames</a>
-      </iframe>
-    </td>
-    <td class="col_right">
-      <iframe src="<?php echo $t['doc_content']; ?>" class="doc_content"
-              name="right" id="right" onLoad="resizeMe(this)">
-        <a href="<?php echo $t['doc_index']; ?>">View using regular frames</a>
-      </iframe>
-    </td>
-  </tr>
-  <tr>
-    <td class="subtext_center"><?php echo $t['method']; ?></td>
-    <td class="subtext_center">
-      <?php printf(_("If this looks like garbage, or you prefer an undecorated frameset, try <a href=\"%s\">here</a>."), 
-                   $t['doc_index']); ?>
-    </td>
-  </tr>
-</table>
+<iframe width="250" src="<?php echo $t['doc_elements']; ?>" id="left" onLoad="resizeMe(this,'<?php echo $t['doc_index'];?>')">
+  <a href="<?php echo $t['doc_index']; ?>">View using regular frames</a>
+</iframe>
+<iframe src="<?php echo $t['doc_content']; ?>" id="right" onLoad="resizeMe(this,'<?php echo $t['doc_index'];?>')">
+  <a href="<?php echo $t['doc_index']; ?>">View using regular frames</a>
+</iframe>
 
+<div><?php printf(_("If this looks like garbage, or you prefer an undecorated frameset, try <a href=\"%s\">here</a>."), $t['doc_index']); ?></div>
 <?php
-
