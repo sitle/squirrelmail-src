@@ -375,11 +375,11 @@ $theme[32]['NAME'] = 'Alien Glow';
 $theme[33]['PATH'] = '../themes/dark_green.php';
 $theme[33]['NAME'] = 'Dark Green';
 
-$theme[33]['PATH'] = '../themes/penguin.php';
-$theme[33]['NAME'] = 'Penguin';
+$theme[34]['PATH'] = '../themes/penguin.php';
+$theme[34]['NAME'] = 'Penguin';
 
-$theme[33]['PATH'] = '../themes/saloon.php';
-$theme[33]['NAME'] = 'Saloon';
+$theme[35]['PATH'] = '../themes/saloon.php';
+$theme[35]['NAME'] = 'Saloon';
 /**
  * LDAP server(s)
  *   Array of arrays with LDAP server parameters. See
