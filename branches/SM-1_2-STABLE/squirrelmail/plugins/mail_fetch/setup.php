@@ -210,9 +210,12 @@
 
         global $data_dir;
         require_once('../functions/prefs.php');
-
-        $username = $_SESSION['username'];
-
+        if (isset($_SESSION['username'])) {
+            $username = $_SESSION['username'];
+        }
+        else {
+            $username = '';
+        }
         if( $username <> '' ) {
             // Creates the pref file if it does not exist.
             setPref( $data_dir, $username, 'mailfetch_newlog', 'on' );
