@@ -80,6 +80,15 @@ function addressbook_init($showerr = true, $onlylocal = false) {
         }
     }
 
+    /*
+     * hook allows to include different address book backends.
+     * plugins should extract $abook and $r from arguments
+     * and use same add_backend commands as above functions.
+     */
+    $hookReturn=do_hook('abook_init', $abook, $r);
+    $abook = $hookReturn[1];
+    $r = $hookReturn[2];
+    
     if ($onlylocal) {
         return $abook;
     }
@@ -548,5 +557,12 @@ if(isset($addrbook_dsn) && !empty($addrbook_dsn)) {
   include_once(SM_PATH . 'functions/abook_database.php');
 }
 
+/*
+ * hook allows adding different address book classes.
+ * class must follow address book class coding standards.
+ *
+ * see addressbook_backend class and functions/abook_*.php files.
+ */
+do_hook('abook_add_class');
 
 ?>
