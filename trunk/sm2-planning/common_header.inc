@@ -53,16 +53,19 @@ $sm_doc_date = '';
 <table border="0" cellpadding="0" cellspacing="0">
 <tr>
 <td class="right-pad" rowspan="5"><img src="images/sm_logo.jpg" border="0" ></td>
-<td colspan="2"><b><?php echo $sm_doc_title; ?></b></td>
+<td><b><?php echo $sm_doc_title; ?></b></td>
 </tr>
 <tr><td>
-<?php echo ($sm_doc_orig_author != '') ? '<b>Original Author:</b></td><td>' . $sm_doc_orig_author : '&nbsp;</td><td>&nbsp;'; ?>
+<?php echo ($sm_doc_orig_author != '') ? '$Original: ' . $sm_doc_orig_author . ' $' : '&nbsp;'; ?>
 </td></tr>
 <tr><td>
-<?php echo ($sm_doc_editor != '') ? '<b>Last Editor:</b></td><td>' . $sm_doc_editor : '&nbsp;</td><td>&nbsp;'; ?>
+<?php echo ($sm_doc_editor != '') ? $sm_doc_editor : '&nbsp;'; ?>
 </td></tr>
 <tr><td>
-<?php echo ($sm_doc_revision != '') ? '<b>Last Revision:</b></td><td>' . $sm_doc_revision . ' ' . $sm_doc_date : '&nbsp;</td><td>&nbsp;'; ?>
+<?php echo ($sm_doc_revision != '') ? $sm_doc_revision : '&nbsp;'; ?>
+</td></tr>
+<tr><td>
+<?php echo ($sm_doc_date != '') ? $sm_doc_date : '&nbsp;'; ?>
 </td></tr>
 </table>
 
