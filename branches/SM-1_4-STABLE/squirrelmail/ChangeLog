@@ -4,18 +4,19 @@
 
 Version 1.4.1 -- 7 July 2003
 ----------------------------
-  - Fixes to conf.pl for handling relative dirs outside the SM tree (bug715119) and 
-    the default delete_folder values for Courier-IMAP and UW-IMAP (bug715550)
+  - Fixes to conf.pl for handling relative dirs outside the SM tree (bug #715119) and 
+    the default delete_folder values for Courier-IMAP and UW-IMAP (bug #715550).
   - Fixed problem with \ in passwords/usernames on login, fixes bug #718116.
   - Added lowsrc to the list of untrusted attributes in HTML email.
   - Fixed message highlighting for To, CC and From and
-    for RFC1522 headers (bug #719564)
+    for RFC1522 headers (bug #719564).
   - Fix for Folders being listed in create/remove/rename operations
-    (#725443, #722823, #729225)
-  - Fixed incorrect folding inside message-id's
-  - Fix for bad attachment view link (#697381, #729295)
-  - Fix comp_in_new in search and addressbook not having right parameters (#731768).
-  - Fix max attachment filesize off by factor 10 when ini_var set in bytes (#730742).
+    (bugs #725443, #722823, #729225).
+  - Fixed incorrect folding inside message-id's.
+  - Fix for bad attachment view link (bugs #697381, #729295).
+  - Fix comp_in_new in search and addressbook not having right parameters (bug #731768).
+  - Fix max attachment filesize off by factor 10 when ini_var set in bytes
+    (bug #730742).
   - Fixed language bug in posting on modifying/deleting servers on mail_fetch plugin
     (#742705).
   - Fixed infinite loop in parseAddress on invalid mailadress (#742584).
@@ -23,15 +24,15 @@ Version 1.4.1 -- 7 July 2003
   - Fixed error with appending sent mail to sent folder when one wasn't set, or user
     preferred not to append the sent mail.
   - Updated plugin documentation.
-  - Added Faroese translation
-  - Fix for #719619 (xhtml-style css definitions weren't working)
+  - Added Faroese translation.
+  - Fix for bug #719619 (xhtml-style css definitions weren't working).
   - Fix bug #722933 where resuming a draft message would lose the reference headers.
   - Fix that sending of read receipts failed when JavaScript on and comp in new off
-    (#738130).
+    (bug #738130).
   - New function: sm_print_r() intended for debugging.  See
-    functions/strings.php
-  - Update config_default to use SM_PATH. (#766577)
-  - Minor misc. performance enhancements
+    functions/strings.php.
+  - Update config_default to use SM_PATH. (bug #766577)
+  - Minor misc. performance enhancements.
 
 Version 1.4.0 -- 3 April 2003
 -----------------------------
