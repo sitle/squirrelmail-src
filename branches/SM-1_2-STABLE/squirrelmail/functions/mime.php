@@ -777,7 +777,7 @@ function formatBody($imap_stream, $message, $color, $wrap_at) {
         if ($body_message->header->type1 == 'html') {
             if ( $show_html_default <> 1 ) {
                 $entity_conv = array('&nbsp;' => ' ',
-                                     '<p>'    => "\n",
+                                     '<p>'    => "\n\n",
                                      '<br>'   => "\n",
                                      '<P>'    => "\n",
                                      '<BR>'   => "\n",
@@ -940,7 +940,7 @@ function formatAttachments($message, $ent_id, $mailbox, $id) {
             $DefaultLink =
                 "../src/download.php?startMessage=$startMessage&amp;passed_id=$id&amp;mailbox=$urlMailbox&amp;passed_ent_id=$ent";
             if ($where && $what) {
-	       $DefaultLink = '&amp;where='. urlencode($where).'&amp;what='.urlencode($what);
+	       $DefaultLink .= '&amp;where='. urlencode($where).'&amp;what='.urlencode($what);
             }
             $Links['download link']['text'] = _("download");
             $Links['download link']['href'] =
