@@ -46,6 +46,24 @@ class input_textarea extends input_base
   var $caption;
 
   /**
+   * The maximum number of characters allowed in the textarea.
+   * 
+   * <p>This is not part of the HTML 4.0.1 spec, and is not directly
+   * supported or displayed as part of the textarea. If a maximum
+   * is specified, it is used as a hint to the template (in case it
+   * wants to provide javascript hints or other information to the user),
+   * and it can be used to calculate the width and height of the area 
+   * at display time if the values are not otherwise provided by
+   * the caller.
+   *
+   * <p>If maxlength is unspecified, it's value is FALSE.
+   *
+   * @var int
+   */
+  var $maxlength;
+
+
+  /**
    * Constructs a new textarea object.
    *
    * @param string name The name of the textarea.
@@ -53,48 +71,92 @@ class input_textarea extends input_base
    * @param string value The initial contents value.
    * @param string caption The caption to display by the textarea.
    */
-  function input_textarea($name, $regex = NULL, $value = NULL, $caption = NULL) 
+  function input_textarea($name, $regex = NULL, $value = NULL, $caption = NULL, $maxlength = FALSE) 
   {
+    $this->name = $name;
+    $this->regex = $regex;
+    $this->required = FALSE;
+    $this->form = NULL;
     $this->caption = $caption;
-    parent::input_base($name, $regex, $value, FALSE);
+    $this->maxlength = $maxlength;
+    
+    if ( sqGetGlobalVar($name, $new_value, SQ_FORM) )
+    {
+      $this->wasSet = TRUE;
+      $this->wasValid = $this->set($new_value);
+    }
+
+    // If either it wasn't set, or 
+    // Value was not null and it wasn't a string..
+    // Then set to the default.
+    if ( !$this->wasSet || 
+         ( $value != NULL && !is_string($value) ) )
+      $this->value = $value;  
+  }
+
+  /**
+   * Sets the value of the textarea.
+   * If a maxlength was specified, ensures that the 
+   * textarea contents do not exceed that length.
+   *
+   * @param string value The value to set.
+   * @return bool TRUE on success.
+   */
+  function set($value)
+  {
+    if ( $value == NULL || is_string($value) )
+    {
+      $this->value = $value;
+
+      if ( $this->maxlength === FALSE ||
+           strlen($value) <= $this->maxlength )
+        return TRUE;
+    }
+
+    return FALSE;
   }
   
   /**
    * Display the textarea.
+   *
+   * <p> Called by templates to render text area form elements.
+   *
+   * @param string class CSS class assigned to text area
+   * @param int width Number of columns for text area - CSS can substitute
+   * @param int height Number of rows for text area
    */
   function display($class = NULL, $width = NULL, $height = NULL) 
   {
-    $maxlength = getRegexLength($this->regex, INPUT_TEXTAREA_WIDTH_MAX);
+    // If maxlength was given, use it. Otherwise, check if the regex specified
+    // a maximum length,  and if that didn't use the max width * max height.
+    $maxlength = ($this->maxlength !== FALSE) ? $this->maxlength : 
+                 getRegexLength($this->regex, INPUT_TEXTAREA_WIDTH_MAX*INPUT_TEXTAREA_HEIGHT_MAX);
+
+    if ( $this->wasSet && !$this->wasValid )
+      $class .= ' error';
 
     $name  = 'name="'.$this->name.'" ';
     $value = 'value="'.htmlentities($this->value).'" ';
     $class  = ( $class == NULL ) ? ''  : 'class="'.$class.'" ';
-    $maxlength = ( $maxlength == 0 )  ? ''   : 'maxlength="'.$maxlength.'" ';
- 
-    if ( $width == NULL )
-    {
-      if ( $class == '')
-        $width = ($maxlength == 0) ? INPUT_TEXTAREA_WIDTH_MAX : (int) ($maxlength / 2);
-    }
-    else
-    {
-      if ( $width > INPUT_TEXTAREA_WIDTH_MAX ) 
-        $width = INPUT_TEXTAREA_WIDTH_MAX;
-      elseif ( $width < INPUT_TEXTAREA_WIDTH_MIN )
-        $width = INPUT_TEXTAREA_WIDTH_MIN;
-    }
+
+    // If we have no width, nor no CSS class to specify it for us 
+    if ( $width == NULL  && $class == '' )
+      $width = ($maxlength == 0) ? INPUT_TEXTAREA_WIDTH_MAX : (int) ($maxlength / 2);
+
+    // make sure the width in range, and wrap it with pretty cols=""
+    ensureIntInRange($width, INPUT_TEXTAREA_WIDTH_MIN, INPUT_TEXTAREA_WIDTH_MAX);
     $width = ( $width == NULL ) ? '' : 'cols="'.$width.'" ';
 
+    // A height HAS to be specified - no CSS out, here.
     if ( $height == NULL )
       $height = ($maxlength == 0) ? INPUT_TEXTAREA_HEIGHT_MAX : (int) ($maxlength / 10);
 
-    if ( $height > INPUT_TEXTAREA_HEIGHT_MAX ) 
-      $height = INPUT_TEXTAREA_HEIGHT_MAX;
-    elseif ( $height < INPUT_TEXTAREA_HEIGHT_MIN )
-      $height = INPUT_TEXTAREA_HEIGHT_MIN;
+    // ensure that the height is in range, and wrap it with requisite rows=""
+    ensureIntInRange($height, INPUT_TEXTAREA_HEIGHT_MIN, INPUT_TEXTAREA_HEIGHT_MAX);
 
     $height = 'rows="'.$height.'" ';
 
+    // and finally, display it! 
     echo '<textarea '.$name.$width.$height.$class.'wrap="virtual" >'."\n"
          .htmlentities($this->value)."\n"
          .'</textarea>'."\n";

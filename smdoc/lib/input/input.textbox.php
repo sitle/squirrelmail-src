@@ -73,10 +73,7 @@ class input_textbox extends input_base
     if ( $size == NULL )
       $size = ($maxlength == 0) ? INPUT_TEXTBOX_SIZE_MAX : $maxlength;
 
-    if ( $size > INPUT_TEXTBOX_SIZE_MAX ) 
-      $size = INPUT_TEXTBOX_SIZE_MAX;
-    elseif ( $size < INPUT_TEXTBOX_SIZE_MIN )
-      $size = INPUT_TEXTBOX_SIZE_MIN;
+    ensureIntInRange($size, INPUT_TEXTBOX_SIZE_MIN, INPUT_TEXTBOX_SIZE_MAX);
 
     if ( $this->form->submitted() && 
          ( ( $this->required && !$this->wasSet ) || 
