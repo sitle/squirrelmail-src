@@ -1,18 +1,18 @@
 # Finnish SquirrelMail Translation
 # Copyright (c) 1999-2002 The Squirrelmail Development Team
 # Teemu Junnila <teejun@vallcom.com>, 2002.
-#
+# Jaakko Heusala <Jaakko.Heusala@kapsi.fi>
+# $Id$
 msgid ""
 msgstr ""
-"Project-Id-Version: $Id: squirrelmail.po,v 1.7 2003/01/01 18:07:25 "
-"philippe_mingo Exp $ \n"
+"Project-Id-Version: squirrelmail 1.4.2\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2003-09-20 11:04+0300\n"
-"PO-Revision-Date: 2002-01-30 19:30+2\n"
-"Last-Translator: Teemu Junnila <teejun@vallcom.com>\n"
+"PO-Revision-Date: 2004-01-16 19:30+2\n"
+"Last-Translator: Jaakko Heusala <Jaakko.Heusala@kapsi.fi>\n"
 "Language-Team: Finnish <squirrelmail-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=iso-8859-1\n"
+"Content-Type: text/plain; charset=iso-8859-15\n"
 "Content-Transfer-Encoding: 8-bit\n"
 
 msgid "Address Book"
@@ -907,30 +907,26 @@ msgstr "Perjantai"
 msgid "Saturday"
 msgstr "Lauantai"
 
-#, fuzzy
 msgid "Sun"
-msgstr "Sunnuntai"
+msgstr "Su"
 
-#, fuzzy
 msgid "Mon"
-msgstr "Maanantai"
+msgstr "Ma"
 
-#, fuzzy
 msgid "Tue"
-msgstr "Tiistai"
+msgstr "Ti"
 
 msgid "Wed"
-msgstr ""
+msgstr "Ke"
 
 msgid "Thu"
-msgstr ""
+msgstr "To"
 
-#, fuzzy
 msgid "Fri"
-msgstr "Perjantai"
+msgstr "Pe"
 
 msgid "Sat"
-msgstr ""
+msgstr "La"
 
 msgid "January"
 msgstr "Tammikuu"
@@ -968,70 +964,62 @@ msgstr "Marraskuu"
 msgid "December"
 msgstr "Joulukuu"
 
-#, fuzzy
 msgid "Jan"
-msgstr "Tammikuu"
+msgstr "Tammi"
 
 msgid "Feb"
-msgstr ""
+msgstr "Helmi"
 
-#, fuzzy
 msgid "Mar"
-msgstr "Maaliskuu"
+msgstr "Maalis"
 
-#, fuzzy
 msgid "Apr"
-msgstr "Huhtikuu"
+msgstr "Huhti"
 
 msgid "Ma&#121;"
 msgstr ""
 
-#, fuzzy
 msgid "Jun"
-msgstr "Kesäkuu"
+msgstr "Kesä"
 
-#, fuzzy
 msgid "Jul"
-msgstr "Heinäkuu"
+msgstr "Heinä"
 
-#, fuzzy
 msgid "Aug"
-msgstr "Elokuu"
+msgstr "Elo"
 
 msgid "Sep"
-msgstr ""
+msgstr "Syys"
 
-#, fuzzy
 msgid "Oct"
-msgstr "Lokakuu"
+msgstr "Loka"
 
-#, fuzzy
 msgid "Nov"
-msgstr "Ei"
+msgstr "Marras"
 
 msgid "Dec"
-msgstr ""
+msgstr "Talvi"
 
 msgid "D, F j, Y g:i a"
-msgstr ""
-
-msgid "D, F j, Y G:i"
-msgstr ""
+msgstr "D j.n.Y G:i"
 
 msgid "M j, Y"
-msgstr ""
+msgstr "j.n.Y"
+
+msgid "D, F j, Y G:i"
+msgstr "D j.n.Y G:i"
 
 msgid "g:i a"
-msgstr ""
+msgstr "G:i"
 
 msgid "G:i"
-msgstr ""
+msgstr "G:i"
 
 msgid "D, g:i a"
-msgstr ""
+msgstr "D G:i"
 
 msgid "D, G:i"
-msgstr ""
+msgstr "D G:i"
 
 #, c-format
 msgid "Preference database error (%s). Exiting abnormally"
@@ -2220,7 +2208,6 @@ msgstr ""
 msgid "FREE - SPAMhaus - A list of well-known SPAM sources."
 msgstr "VAPAA - SPAMhaus - Lista tunnetuista roskapostilähteistä."
 
-#, c-format
 msgid ""
 "FREE, for now - SPAMCOP - An interesting solution that lists servers that "
 "have a very high spam to legit email ratio (85% or more)."
