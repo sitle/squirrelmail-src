@@ -162,7 +162,7 @@
 
              echo "<OPTION VALUE=\"$i\">" .
 
-                  (($mailfetch_alias_[$i]=='')?$mailfetch_server_[$i]:$mailfetch_alias_[$i]);
+                  htmlspecialchars((($mailfetch_alias_[$i]=='')?$mailfetch_server_[$i]:$mailfetch_alias_[$i]));
 
         } 
 
@@ -182,8 +182,9 @@
 
                   echo '<tr>' .
 
-                       '<TD ALIGN=RIGHT>' . _("Password for") . ' <B>' . (($mailfetch_alias_[$i]=='')?$mailfetch_server_[$i]:$mailfetch_alias_[$i]) . '</B>: &nbsp; &nbsp; </TD>' .
-
+                       '<TD ALIGN=RIGHT>' . _("Password for") . ' <B>' . 
+                       htmlspecialchars((($mailfetch_alias_[$i]=='')?$mailfetch_server_[$i]:$mailfetch_alias_[$i])) . 
+                       '</B>: &nbsp; &nbsp; </TD>' .
                        "<TD><INPUT TYPE=PASSWORD NAME=pass_$i></TD>" .
 
                        '</TR>';
@@ -264,7 +265,7 @@
 
             _("Fetching from ") . 
 
-            (($mailfetch_alias_[$i_loop] == '')?$mailfetch_server:$mailfetch_alias_[$i_loop]) . 
+            htmlspecialchars((($mailfetch_alias_[$i_loop] == '')?$mailfetch_server:$mailfetch_alias_[$i_loop])) . 
 
             "</b></td></tr></table>";
 
