@@ -446,17 +446,15 @@ function sqimap_login ($username, $password, $imap_server_address, $imap_port, $
           $imap_server_address = 'tls://' . $imap_server_address;
         }
 
-    $imap_stream = @fsockopen ( $imap_server_address, $imap_port, $error_number, $error_string, 15);
+    $imap_stream = @fsockopen($imap_server_address, $imap_port, $error_number, $error_string, 15);
 
     /* Do some error correction */
     if (!$imap_stream) {
         if (!$hide) {
             set_up_language($squirrelmail_language, true);
             require_once(SM_PATH . 'functions/display_messages.php');
-            $string = sprintf (_("Error connecting to IMAP server: %s.") .
-                              "<br />\r\n", $imap_server_address) .
-                      "$error_number : $error_string<br />\r\n";
-            logout_error($string,$color);
+            logout_error( sprintf(_("Error connecting to IMAP server: %s."), $imap_server_address).
+                "<br />\r\n$error_number : $error_string<br />\r\n" );
         }
         exit;
     }
