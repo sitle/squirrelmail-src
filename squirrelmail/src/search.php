@@ -390,8 +390,7 @@ echo "         </SELECT>\n" .
      "       </TD>\n".
      "     </TR>\n".
      "</FORM>\n".
-     "   </TABLE>\n".
-     "</TD></TR></TABLE>\n";
+     "   </TABLE>\n";
 
 
 do_hook('search_after_form');
@@ -412,7 +411,7 @@ if ($search_all == 'all') {
     $boxcount = count($boxes);
     echo '<BR><CENTER><B>' .
          _("Search Results") .
-         "</B><CENTER><BR>\n";
+         "</B></CENTER><BR>\n";
     for ($x=0;$x<$boxcount;$x++) {
         if (!in_array('noselect', $boxes[$x]['flags'])) {
             $mailbox = $boxes[$x]['unformatted'];

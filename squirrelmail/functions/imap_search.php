@@ -204,7 +204,9 @@ function sqimap_search($imapConnection, $search_where, $search_what, $mailbox,
                 "move_messages.php?msg=$msg&mailbox=$urlMailbox&pos=$pos&where=" . urlencode($search_where) . "&what=".urlencode($search_what),
                 $mailbox,
                 -1,
-                '<b>' . _("Found") . ' ' . count($messagelist) . ' ' . _("messages") . '</b></tr><tr>'.
+                '<div align="left"><b><big>'. _("Folder:") .' '.(($mailbox == 'INBOX') ? _("INBOX") : $mailbox).
+                '</big></b></div></td><td align="right">'.
+                '<b>' . _("Found") . ' ' . count($messagelist) . ' ' . _("messages") . '</b>'.
                 get_selectall_link($start_msg, $sort));
         }
         else {
@@ -212,18 +214,13 @@ function sqimap_search($imapConnection, $search_where, $search_what, $mailbox,
                 "move_messages.php?msg=$msg&mailbox=$urlMailbox&pos=$pos&where=" . urlencode($search_where) . "&what=".urlencode($search_what),
                 $mailbox,
                 -1,
-                '<b>' . _("Found") . ' ' . count($messagelist) . ' ' . _("messages") . '</b></tr><tr>');
+                '<div align="left"><b><big>'. _("Folder:") .' '.(($mailbox == 'INBOX') ? _("INBOX") : $mailbox).
+                '</big></b></div></td><td align="right">'.
+                '<b>' . _("Found") . ' ' . count($messagelist) . ' ' . _("messages") . '</b>');
         }
-        if ( $mailbox == 'INBOX' ) {
-            $showbox = _("INBOX");
-        } else {
-            $showbox = $mailbox;
-        }
-        echo '<b><big>' . _("Folder:") . " $showbox</big></b>";
         while ($j < count($msgs)) {
             printMessageInfo($imapConnection, $msgs[$j]["ID"], 0, $j, $mailbox, '', 0, $search_where, $search_what);
             $j++;
-            echo '</td></tr>';
         }
         echo '</table></td></tr></table></form>';
         $count_all = count($msgs);
