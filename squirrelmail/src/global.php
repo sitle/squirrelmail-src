@@ -97,7 +97,7 @@ function sqsession_destroy() {
 	 * now reset cookies to 5 seconds ago to delete from browser
 	 */
 	
-	session_destroy();
+	@session_destroy();
 	$cookie_params = session_get_cookie_params();	
 	setcookie(session_name(), '', time() - 5, $cookie_params['path'], 
 			  $cookie_params['domain']);
