@@ -248,7 +248,7 @@ echo "<form action=options.php method=post name=options>" .
     "<center><table width=95% bgcolor=\"$color[5]\"><tr><td>".
     "<table width=100% cellspacing=0 bgcolor=\"$color[4]\">" ,
     "<tr bgcolor=\"$color[5]\"><th colspan=2>" . _("Configuration Administrator") . "</th></tr>",
-    "<tr bgcolor=\"$color[5]\"><td colspan=2i align=\"center\">";
+    "<tr bgcolor=\"$color[5]\"><td colspan=2 align=\"center\">";
 ?>
 <small>Note: it is recommended that you configure your system using conf.pl, and not this plugin.
 conf.pl contains additional information regarding the purpose of variables and
@@ -577,7 +577,9 @@ if( $fp = @fopen( $cfgfile, 'w' ) ) {
     "/**\n".
     " * SquirrelMail Configuration File\n".
     " * Created using the Administrator Plugin\n".
-    " */\n" );
+    " */\n".
+    "\n".
+    "global \$version;\n" );
 
     foreach ( $newcfg as $k => $v ) {
         if ( $k{0} == '$' && $v <> '' ) {
