@@ -22,10 +22,11 @@ along with Foowd; if not, write to the Free Software
 Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 */
 
-/*
-env.template.php
-Foowd template class
-*/
+/**
+ * The Foowd template implementation.
+ *
+ * @package Foowd 
+ */
 
 /**
  * The Foowd template class.
@@ -38,8 +39,8 @@ Foowd template class
  * @author Andrei Zmievski <andrei@php.net>
  * @package Foowd
  */
-class foowd_template {
-
+class foowd_template 
+{
   /**
    * The templates values array
    *
@@ -50,7 +51,7 @@ class foowd_template {
   /**
    * The template directory to use
    *
-   * @var str
+   * @var string
    */
   var $template_dir = 'templates\default';
 

@@ -19,24 +19,24 @@ along with Foowd; if not, write to the Free Software
 Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 */
 
-/*
+/**
+ * Foowd/smdoc environment
+ *
  * Modified by SquirrelMail Development
  * $Id$
+ *
+ * @package Foowd
  */
 
-/*
-env.foowd.php
-Foowd environment class
-*/
+/**
+ * check PHP version
+ */
+if (version_compare(phpversion(), '4.2.0', '<')) 
+  trigger_error('You need PHP version 4.2.0 or greater to run FOOWD, please upgrade', E_USER_ERROR);
 
-// check PHP version
-if (version_compare(phpversion(), '4.2.0', '<')) trigger_error('You need PHP version 4.2.0 or greater to run FOOWD, please upgrade', E_USER_ERROR);
-
-// include foowd lib
-require_once(SM_DIR.'lib.php'); // FOOWD lib
-
-// define regex constants
-
+/**
+ * define regex constants
+ */
 setConst('REGEX_ID', '/^[0-9-]{1,11}$/');
 setConst('REGEX_TITLE', '/^[a-zA-Z0-9-_ ]{1,32}$/');
 setConst('REGEX_VERSION', '/^[0-9]*$/');
@@ -56,14 +56,15 @@ setConst('REGEX_GROUP', '/^[a-zA-Z0-9-]{0,32}$/');
  * @package Foowd
  * @version 0.8.4
  */
-class foowd {
+class foowd 
+{
 
 /* additional settings vars */
 
   /**
    * The version of this Foowd environment class
    *
-   * @var str
+   * @var string
    * @access public
    */
   var $version = '0.8.4';
