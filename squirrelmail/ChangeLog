@@ -30,6 +30,10 @@ Version 1.4.5 - CVS
   - Fix administrator plugin that was too picky about newlines in the
     "admins" file.
   - Added blank.png for missing image support.
+  - Fixed cid handling from Outlook Express client when it doesn't create a
+    valid content-id to go with CID tag.  This resolves #855320, and should
+	be considered a workaround.  The real issues needs resolving by MS.
+
 
 Version 1.4.4 - 21 January 2005
 -------------------------------
