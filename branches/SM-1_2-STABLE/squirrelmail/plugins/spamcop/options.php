@@ -2,7 +2,21 @@
    chdir ("..");
    require_once('../src/validate.php');
 
-   displayPageHeader($color, "None");   
+   displayPageHeader($color, 'None');   
+
+   /* globals *
+   if($_SERVER['REQUEST_METHOD'] == 'GET') {
+	$action = $_GET['action'];
+   } else {
+        $action = $_POST['action'];
+        if(isset($_POST['meth'])) {
+            $meth = $_POST['meth'];
+        }
+        if(isset($_POST['ID'])) {
+            $meth = $_POST['ID'];
+        }
+   }
+   /* end globals */
 
    if (! isset($action))
       $action = '';

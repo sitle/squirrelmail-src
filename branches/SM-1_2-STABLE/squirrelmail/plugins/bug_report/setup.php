@@ -41,9 +41,8 @@ function bug_report_button() {
 
 function bug_report_save() {
     global $username,$data_dir;
-    global $bug_report_bug_report_visible;
 
-    if (isset($bug_report_bug_report_visible)) {
+    if(isset($_POST['bug_report_bug_report_visible'])) {
         setPref($data_dir, $username, 'bug_report_visible', '1');
     } else {
         setPref($data_dir, $username, 'bug_report_visible', '');
