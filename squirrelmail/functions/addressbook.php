@@ -62,8 +62,13 @@ function addressbook_init($showerr = true, $onlylocal = false) {
         && trim($abook_global_file)!=''){
         // Detect place of address book
         if (! preg_match("/[\/\\\]/",$abook_global_file)) {
-            // no path chars
-            $abook_global_filename=$data_dir . $abook_global_file;
+            /* no path chars, address book stored in data directory
+             * make sure that there is a slash between data directory
+             * and address book file name
+             */
+            $abook_global_filename=$data_dir
+                . ((substr($data_dir, -1) != '/') ? '/' : '')
+                . $abook_global_file;
         } elseif (preg_match("/^\/|\w:/",$abook_global_file)) {
             // full path is set in options (starts with slash or x:)
             $abook_global_filename=$abook_global_file;
