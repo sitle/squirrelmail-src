@@ -64,11 +64,16 @@ class foowd_translation extends foowd_workspace {
       $default_title = getConstOrDefault('TRANSLATION_DEFAULT_LANGUAGE', 'en_US');
       $default_icon = getConstOrDefault('TRANSLATION_DEFAULT_LANGUAGE_ICON', '');
 
-      $session_langs = new input_session('translations', NULL);
-      if ( isset($session_langs->value) && !$forceRefresh )
+      $session_links = new input_session('lang_links', NULL);
+      $session_langs = new input_session('languages', NULL);
+
+      if ( isset($session_links->value) && 
+           isset($session_langs->value) && !$forceRefresh )
         return;
 
-      $translations = array();
+      $links = array();
+      $languages = array();
+
       $url = getURI(array()). '?class=foowd_translation&method=enter&langid=';
 
       $the_url = '<a href="' . $url . '0">';
@@ -80,7 +85,9 @@ class foowd_translation extends foowd_workspace {
       else
         $the_url .= $default_title;
       $the_url .=  '</a>';
-      $translations[$trans_obj->objectid] = $the_url;
+
+      $links[0] = $the_url;
+      $languages[0] = $default_title;
 
       $t_objects = $foowd->retrieveObjects(
                             array('classid = '.TRANSLATION_CLASS_ID),
@@ -99,25 +106,49 @@ class foowd_translation extends foowd_workspace {
           $the_url .= $trans_obj->title;
         $the_url .=  '</a>';
 
-        $translations[$trans_obj->objectid] = $the_url;
+        $links[$trans_obj->objectid] = $the_url;
+        $languages[$trans_obj->objectid] = $trans_obj->title;
         unset($trans_obj);
       }
-      $session_langs->set($translations);
+      $session_links->set($links);
+      $session_langs->set($languages);
     }
 
     /** STATIC
      * Retrieve url for given object id.
      * if objectid is NULL, return array containing all URLs
      */
-    function getLink(&$foowd, $objectid = NULL)
+    function getLink(&$foowd, $objectid = FALSE)
     {
-      $session_langs = new input_session('translations', NULL);
+      $session_links = new input_session('lang_links', NULL);
+      if ( !isset($session_links->value) ) {
+        foowd_translation::initialize($foowd);
+        $session_links->refresh();
+      }
+
+      if ($objectid === FALSE)
+        return $session_links->value;
+
+      if ( isset($session_links->value[$objectid]) )
+        return $session_links->value[$objectid];
+      else
+        return NULL;
+    }
+
+
+    /** STATIC
+     * Retrieve url for given object id.
+     * if objectid is NULL, return array containing all URLs
+     */
+    function getLanguage(&$foowd, $objectid = FALSE)
+    {
+      $session_langs = new input_session('languages', NULL);
       if ( !isset($session_langs->value) ) {
         foowd_translation::initialize($foowd);
         $session_langs->refresh();
       }
 
-      if ($objectid == NULL)
+      if ($objectid === FALSE)
         return $session_langs->value;
 
       if ( isset($session_langs->value[$objectid]) )
@@ -125,6 +156,7 @@ class foowd_translation extends foowd_workspace {
       else
         return NULL;
     }
+
 
 /*** CLASS METHODS ***/
 

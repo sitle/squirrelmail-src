@@ -113,6 +113,7 @@ class foowd {
             $this->fetchUser(getConstOrDefault('ANONYMOUS_USER_ID', FALSE));
         }
 
+        $this->tpl->assign_by_ref('CURRENT_USER', $this->user);
         $this->track();
     }
 
@@ -177,7 +178,6 @@ class foowd {
                 trigger_error('Could not find anonymous user class.', E_USER_ERROR);
             }
         }
-        $this->tpl->assign_by_ref('CURRENT_USER', $this->user);
         $this->track(); return FALSE;
     }
 
