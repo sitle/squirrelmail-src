@@ -63,6 +63,7 @@ function writecalendardata() {
 
         }
         fclose ($fp);
+        @unlink($filename);
         rename($filetmp,$filename);
     }
 }
