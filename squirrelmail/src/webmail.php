@@ -20,13 +20,18 @@ require_once('../functions/imap.php');
 require_once('../functions/plugin.php');
 require_once('../functions/i18n.php');
 require_once('../functions/auth.php');
+require_once('../src/global.php');
 
 if (!function_exists('sqm_baseuri')){
     require_once('../functions/display_messages.php');
 }
 $base_uri = sqm_baseuri();
-
 session_start();
+
+if (isset($_SESSION['username'])) {
+    $username = $_SESSION['username'];
+}
+
 is_logged_in();
 
 /**

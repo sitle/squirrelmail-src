@@ -64,6 +64,9 @@ require_once('../functions/page_header.php');
  * $squirrelmail_language is set by a cookie when the user selects
  * language and logs out
  */
+if (isset($_COOKIE['squirrelmail_language'])) {
+        $squirrelmail_language = $_COOKIE['squirrelmail_language'];
+}
 set_up_language($squirrelmail_language, TRUE);
 
 /**

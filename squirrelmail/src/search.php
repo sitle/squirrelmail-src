@@ -168,6 +168,28 @@ $search_all = 'none';
 $perbox_count = array ();
 $recent_count = getPref($data_dir, $username, 'search_memory', 0);
 
+/* get globals we may need */
+
+$key = $_COOKIE['key'];
+$username = $_SESSION['username'];
+$onetimepad = $_SESSION['onetimepad'];
+$delimiter = $_SESSION['delimiter'];
+
+if (isset($_GET['mailbox'])) {
+    $mailbox = $_GET['mailbox'];
+}
+if (isset($_GET['submit'])) {
+    $submit = $_GET['submit'];
+}
+if (isset($_GET['what'])) {
+    $what = $_GET['what'];
+}
+if (isset($_GET['where'])) {
+    $where = $_GET['where'];
+}
+
+/* end of get globals */
+
 /*  get mailbox names  */
 $imapConnection = sqimap_login($username, $key, $imapServerAddress, $imapPort, 0);
 $boxes = sqimap_mailbox_list($imapConnection);

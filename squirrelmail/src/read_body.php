@@ -382,11 +382,35 @@ function formatRecipientString($recipients, $item ) {
  *   Main of read_boby.php  --------------------------------------------------
  */
 
-/*
-    Urled vars
-    ----------
-    $passed_id
-*/
+/* get the globals we may need */
+
+$username = $_SESSION['username'];
+$key = $_COOKIE['key'];
+$onetimepad = $_SESSION['onetimepad'];
+$passed_id = $_GET['passed_id'];
+$msgs = $_SESSION['msgs'];
+$base_uri = $_SESSION['base_uri'];
+
+if (isset($_GET['sort'])) {
+    $sort = $_GET['sort'];
+}
+if (isset($_GET['startMessage'])) {
+    $startMessage = $_GET['startMessage'];
+}
+if (isset($_GET['show_more'])) {
+    $showmore = $_GET['show_more'];
+}
+if (isset($_GET['mailbox'])) {
+    $mailbox = $_GET['mailbox'];
+}
+if (isset($_GET['where'])) {
+    $where = $_GET['where'];
+}
+if (isset($_GET['what'])) {
+    $what = $_GET['what'];
+}
+
+/* end of get globals */
 
 if (isset($mailbox)){
     $mailbox = urldecode( $mailbox );
@@ -672,7 +696,7 @@ echo '<BR>' .
      '<A HREF="' . $base_uri . 'src/';
 
 if ($where && $what) {
-    if ($pos == '') {
+    if (!isset($pos) || $pos == '') {
         $pos=0;
     }
     echo "search.php?where=".urlencode($where)."&amp;pos=$pos&amp;what=".urlencode($what)."&amp;mailbox=$urlMailbox\">";

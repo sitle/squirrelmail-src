@@ -108,6 +108,20 @@ function print_optionpages_row($leftopt, $rightopt = false) {
 
 /* ---------------------------- main ---------------------------- */
 
+/* get the globals that we may need */
+
+if (isset($_GET['optpage'])) {
+    $optpage = $_GET['optpage'];
+}
+if (isset($_POST['optmode'])) {
+    $optmode = $_POST['optmode'];
+}
+if (isset($_POST['optpage_data'])) {
+    $optpage_data = $_POST['optpage_data'];
+}
+
+/* end of getting globals */
+
 /* Make sure we have an Option Page set. Default to main. */
 if (!isset($optpage)) {
     $optpage = 'main';

@@ -180,7 +180,7 @@ function create_collapse_link($boxnum) {
  * This simple function checks if a box is another box's parent.
  */
 function is_parent_box($curbox_name, $parbox_name) {
-    global $delimiter;
+    $delimiter = $_SESSION['delimiter'];    
 
     /* Extract the name of the parent of the current box. */
     $curparts = explode($delimiter, $curbox_name);
@@ -194,11 +194,18 @@ function is_parent_box($curbox_name, $parbox_name) {
 
 /* -------------------- MAIN ------------------------ */
 
-global $delimiter, $default_folder_prefix, $left_size;
-
 // open a connection on the imap port (143)
-$imapConnection = sqimap_login($username, $key, $imapServerAddress, $imapPort, 10); // the 10 is to hide the output
 
+/* lets get the globals we may need */
+
+$key = $_COOKIE['key'];
+$onetimepad = $_SESSION['onetimepad'];
+$username = $_SESSION['username'];
+$delimiter = $_SESSION['delimiter'];
+
+/* end of getting globals */
+
+$imapConnection = sqimap_login($username, $key, $imapServerAddress, $imapPort, 10, $onetimepad); // the 10 is to hide the output
 /**
  * Using stristr since older preferences may contain "None" and "none".
  */
@@ -291,6 +298,7 @@ $boxes = sqimap_mailbox_list($imapConnection);
 /* Prepare do do out collapsedness and visibility computation. */
 $curbox = 0;
 $boxcount = count($boxes);
+$delimiter = $_SESSION['delimiter'];
 
 /* Compute the collapsedness and visibility of each box. */
 
