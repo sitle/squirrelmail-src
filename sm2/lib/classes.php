@@ -7,6 +7,7 @@
  *
  * Classes utility functions.
  *
+ *
  * $Id$
  */
  
@@ -14,69 +15,63 @@
 //include(SM_LIB.'dependencies.inc');
 
 /* stuff for dependencies.inc */
-
 define('SM_LIB','./');
 define('SM_SRV','../service/');
 define('SM_FNC','../functions/');
 
+
+
+// static list where we store dependencies of each class
+// key: classname value: required files that need to be included first
 $dependencies = array(
-        'Messages'   => array('Service'),
+        'Messages'   => array('Service','mailboxtree'),
         'Service'    => array('tree'),
         'Services'   => array('Tree'),
         'tree'       => array('Object'),
+        'mailboxtree'=> array('tree'),
         'imap_backend' => array('auth','parser')
         );
-
+// static list locations so we can move around the files during devel stage very easy
 $locations = array(
         'Object' => SM_LIB.'object.class.php',
         'Messages' => SM_SRV.'message.inc.php',
         'Service' => SM_LIB.'service.class.php',
         'Services' => SM_LIB.'Servives.class.php',
         'tree' => SM_LIB. 'tree.class.php',
+        'mailboxtree' => SM_LIB .'mailbox/MailboxTree.class.php',
         'imap_backend' => SM_SRV. 'imap/imap_backend.class.php',
         'parser' => SM_LIB.'parser.class.php',
         'auth' => SM_FNC. 'auth.php'
-       );
-                
+        );
+
+// end dependecy.inc stuff        
+                        
+// array to keep track of already included files. Should be stored in the session        
 $include_once = array();
 
-
-/* experimental, I'm not satisfied with this */
-function sm_new($classname) {
-    global $include_once;
-    if (!isset($include_once[$classname])) {
-        sm_include($classname);
-    }
-    /* damn this is ugly */
-    $args = func_get_args();
-    switch (func_num_args())
-    {
-    case '1': $new =& new $classname(); break;
-    case '2': $new =& new $classname($args[1]); break;
-    case '3': $new =& new $classname($args[1],$args[2]); break;
-    case '4': $new =& new $classname($args[1],$args[2],$args[3]); break;
-    case '5': $new =& new $classname($args[1],$args[2],$args[3],$args[4]); break;
-    case '6': $new =& new $classname($args[1],$args[2],$args[3],$args[4],$args[5]); break;
-    case '7': $new =& new $classname($args[1],$args[2],$args[3],$args[4],$args[5],$args[6]); break;
-    case '8': $new =& new $classname($args[1],$args[2],$args[3],$args[4],$args[5],$args[6],$args[7]); break;
-    }    
-    return $new;            
-}
-
+/**
+ * @func      sm_include
+ * @decr      include file and check dependencies
+ * @param     str        $classname    The class name
+ * @return    bool                     success
+ * @access    public
+ * @author(s) Marc Groot Koerkamp
+ */
 function sm_include($classname) {
     global $include_once, $dependencies, $locations;
-    if (!isset($include_once[$classname])) {
-        if (isset($dependencies[$classname])) {
+    if (!isset($include_once[$classname])) {    // check if already included
+        if (isset($dependencies[$classname])) { // check for dependencies
             foreach ($dependencies[$classname] as $name) {
-                if (!isset($include_once[$name])) {
-                        sm_include($name);
+                if (!isset($include_once[$name])) { // check if already included
+                        sm_include($name); // call function recursive to make sure we start
+                                           // at the bottom with our dependency include
                 }
             }
         }
     }
-    echo "include: ". $classname . " location: ". $locations[$classname]."<BR>";
-    include($locations[$classname]);
-    $include_once[$classname] = true;
+    include($locations[$classname]);  // dependencies are included now include the file
+    $include_once[$classname] = true; // keep track of included files
+    return true;
 }
 
 ?>
