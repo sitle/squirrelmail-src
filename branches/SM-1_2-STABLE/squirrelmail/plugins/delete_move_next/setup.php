@@ -339,11 +339,18 @@ function delete_move_next_display_inside() {
 function delete_move_next_display_save() {
 
     global $username, $data_dir;
-    $delete_move_next_ti = $_POST['delete_move_next_ti'];
-    $delete_move_next_bi = $_POST['delete_move_next_bi'];
-    $delete_move_next_formATtopi = $_POST['delete_move_next_formATtopi'];
-    $delete_move_next_formATbottomi = $_POST['delete_move_next_formATbottomi'];
- 
+    if (isset($_POST['delete_move_next_ti'])) {
+        $delete_move_next_ti = $_POST['delete_move_next_ti'];
+    }
+    if (isset($_POST['delete_move_next_bi'])) {
+        $delete_move_next_bi = $_POST['delete_move_next_bi'];
+    }
+    if (isset($_POST['delete_move_next_formATtopi'])) {
+        $delete_move_next_formATtopi = $_POST['delete_move_next_formATtopi'];
+    }
+    if (isset($_POST['delete_move_next_formATbottomi'])) {
+        $delete_move_next_formATbottomi = $_POST['delete_move_next_formATbottomi'];
+    } 
     if (isset($delete_move_next_ti)) {
         setPref($data_dir, $username, 'delete_move_next_t', 'on');
     } else {
