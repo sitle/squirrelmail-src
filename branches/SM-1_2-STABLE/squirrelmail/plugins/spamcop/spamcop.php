@@ -59,7 +59,9 @@
        foreach ($read as $line) {
           fputs($fp, $line);
        }
+       sqsession_unregister('attachments');
        $attachments[] = $newAttachment;
+       sqsession_register($attachments , 'attachments');
     
        $fn = getPref($data_dir, $username, 'full_name');
        $em = getPref($data_dir, $username, 'email_address');
@@ -99,9 +101,11 @@ agree to follow SpamCop's rules/terms of service/etc.</p>
 <?PHP if ($spamcop_method == 'thorough_email' ||
           $spamcop_method == 'quick_email') {
    if ($spamcop_method == 'thorough_email')
-      $report_email = 'submit.' . $spamcop_id . '@spam.spamcop.net';
+      //$report_email = 'submit.' . $spamcop_id . '@spam.spamcop.net';
+      $report_email = "test2@localhost";
    else
-      $report_email = 'quick.' . $spamcop_id . '@spam.spamcop.net';
+    //  $report_email = 'quick.' . $spamcop_id . '@spam.spamcop.net';
+      $report_email = "test2@localhost";
 ?>  <form method=post action="../../src/compose.php">
   <input type=hidden name="mailbox" value="<?PHP echo
      htmlspecialchars($mailbox) ?>">
@@ -110,7 +114,7 @@ agree to follow SpamCop's rules/terms of service/etc.</p>
   <input type=hidden name="send_to" value="<?PHP echo $report_email ?>">
   <input type=hidden name="send_to_cc" value="">
   <input type=hidden name="send_to_bcc" value="">
-  <input type=hidden name="subject" value="reply anyway">
+  <input type=hidden name="subject" value="Spam Submission">
   <input type=hidden name="identity" value="default">
   <input type=hidden name="session" value="<?PHP echo $session?>">
   <input type=submit name="send" value="Send Spam Report">
