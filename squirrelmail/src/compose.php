@@ -1465,7 +1465,9 @@ function deliverMessage($composeMessage, $draft=false) {
         $deliver = new Deliver_SMTP();
         global $smtpServerAddress, $smtpPort, $pop_before_smtp, $smtp_auth_mech;
 
-        if ($smtp_auth_mech == 'none') {
+        $authPop = (isset($pop_before_smtp) && $pop_before_smtp) ? true : false;
+
+        if ($smtp_auth_mech == 'none' && !$authPop) {
                 $user = '';
                 $pass = '';
         } else {
@@ -1474,7 +1476,6 @@ function deliverMessage($composeMessage, $draft=false) {
                 $pass = OneTimePadDecrypt($key, $onetimepad);
         }
 
-        $authPop = (isset($pop_before_smtp) && $pop_before_smtp) ? true : false;
         $stream = $deliver->initStream($composeMessage,$domain,0,
                           $smtpServerAddress, $smtpPort, $user, $pass, $authPop);
     } elseif (!$draft) {
