@@ -1,0 +1,60 @@
+<?php
+/*
+ * @version $Id$
+ * @author $Author$ 
+ * $Date$
+ * @since SquirrelMail_2.9.0
+ *
+ * filename.php - a class to demonstrate the use of phpdoc
+ *
+ * Copyright (c) 2001 The squirrelMail development team
+ * Licensed under the GNU GPL. For full terms see the file
+ * COPYING.
+ *
+ * This file is only here to demonstrate the use of phpdoc.
+ * This space would normally be filled with useful info about
+ * the file or class contained herein. 
+ *
+ */
+ 
+   class filename { /// start class filename
+      
+      /*
+       * Passed from directory in order to determine
+       * base directory.
+       * @var string
+       */
+      var $sm_filename;
+      /*
+       * passed from function getSize() to tell
+       * how many bytes $sm_filename is
+       * @var int
+       */
+      var $sm_filename_size;
+      
+      /*
+       * Take in some vars and produce nicely formatted
+       * tables presenting the information in human
+       * readable format.
+       * 
+       * @param int $src_dir Parent directory of file
+       *
+       * @param string $sm_filename Name of the file
+       *
+       * @return string containing HTML table or false if error
+       */
+      function fileTable($src_dir, $sm_filename)
+      { /// start function filetable
+         $string = "";
+         if (isset($src_dir) && isset($sm_filename){
+            $string = "<table bgcolor=\"FFFFFF">\n   <tr>\n" .
+               "      <td>$src_dir</td><td>$sm_filename</td>\n" .
+               "</tr></table>\n";
+            return $string;
+         } else {
+            return false;
+         }
+      } /// end function filetable
+      
+   } /// end class filename
+<?php
