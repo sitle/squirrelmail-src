@@ -1,0 +1,29 @@
+SquirrelMail RPM version
+-------------------------
+
+The RPM installation closely follows the one provided (and maintained)
+by Red Hat. I hear they have a QA department... :)
+
+UPGRADING FROM OLDER VERSIONS OF THIS RPM (1.2.7 and below)
+-----------------------------------------------------------
+
+Due to primary RPM maintainer switch, files have moved around
+again. Before you upgrade, do the following:
+
+rpm -e squirrelmail-poutils 
+
+Then:
+
+rpm -Uvh squirrelmail-1.2.8-1.7.x.noarch.rpm
+
+Check if you still have the directory "/var/www/squirrelmail". If you
+do, run the following to copy your plugins into the new place:
+
+cp -a /var/www/squirrelmail/plugins/* /usr/share/squirrelmail/plugins
+
+Hate mail will be redirected to /dev/null. :)
+
+-- 
+Cheers,
+Konstantin Riabitsev <icon@duke.edu>
+$Id$
