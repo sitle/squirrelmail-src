@@ -226,7 +226,7 @@ class smdoc_db
   /**
    * Escape a string for use in SQL string
    *
-   * @param string str String to escape
+   * @param string $str String to escape
    * @return string The escaped string
    */
   function escape($str) 
@@ -416,7 +416,7 @@ class smdoc_db
       $where .= $conjunction;
 
       // array('classid' => ERROR_CLASS_ID, 'objectid' => 83921);
-      if (!is_array($index)) 
+      if (!is_array($index) ) 
       {
         $where .= ' '.$key.' = ';
         $where .= is_numeric($index) ? $index : $this->escape($index);
@@ -425,22 +425,28 @@ class smdoc_db
       else 
       {
         // dealing with an array:
-        // Array (
-        //   [0] => OR
-        //   [1] => Array (
-        //            [index] => classid
-        //            [op] => =
-        //            [value] => 84324322
-        //        )
-        //   [2] => Array (
-        //            [index] => classid
-        //            [op] => =
-        //            [field] => othertable.id
+        // Array
+        // (
+        //    [OR] => Array
+        //        (
+        //            [0] => Array
+        //                (
+        //                    [index] => classid
+        //                    [op] => =
+        //                    [value] => -679419151
+        //                )
+        //            [1] => Array
+        //                (
+        //                    [index] => classid
+        //                    [op] => =
+        //                    [value] => -17221723
+        //                )
         //        )
         // )
         // SO, the key is a conjunction, 
         // and $index is an array containing clauses that should 
         // be grouped together with that conjunction
+
         if ( !isset($index['index']) ) 
           $where .= $this->buildWhere($index, $key);
         else 
@@ -466,7 +472,6 @@ class smdoc_db
               trigger_error('No value given for index "'.$index['index'].'".');
               $value = '';
             }
-
             $where .= is_numeric($value) ? $value : $this->escape($value);
           }
 
@@ -474,7 +479,10 @@ class smdoc_db
         }
       }
     }
-    return ' ('.substr($where, 3).') ';
+    // Believe it or not, spacing here is important.
+    // as part of building string, you'll get some garbage up front..
+    // make sure there are 2 spaces before ( and one after )
+    return '  ('.substr($where, 3).') ';
   }
 
   /**
@@ -497,12 +505,22 @@ class smdoc_db
       }
     }
 
-    $workspaceid['index'] = 'workspaceid';
-    $workspaceid['op'] = '=';
-    if ( isset($this->foowd->user->workspaceid) ) 
-      $workspaceid['value'] = $this->foowd->user->workspaceid;
+    if ( isset($this->foowd->user->workspaceid) &&
+         $this->foowd->user->workspaceid != 0 )
+    { 
+      $workspaceid['OR'][] = array('index' => 'workspaceid', 
+                                   'op' => '=', 
+                                   'value' => $this->foowd->user->workspaceid);
+      $workspaceid['OR'][] = array('index' => 'workspaceid', 
+                                   'op' => '=', 
+                                   'value' => 0 );
+    }
     else
+    {
+      $workspaceid['index'] = 'workspaceid';
+      $workspaceid['op'] = '=';
       $workspaceid['value'] = 0;
+    }
 
     $indexes[] = $workspaceid;
   }
@@ -563,8 +581,8 @@ class smdoc_db
   /**
    * Get all versions of an object.
    *
-   * @param array indexes Array of indexes and values to find object by
-   * @param string source The source to fetch the object from
+   * @param array $indexes Array of indexes and values to find object by
+   * @param string $source The source to fetch the object from
    * @return array An array of the retrieved object versions indexed by version number.
    */
   function &getObjHistory($indexes, $in_source = NULL)
@@ -608,13 +626,13 @@ class smdoc_db
   /**
    * Get a list of objects.
    *
-   * @param array indexes Array of indexes to be returned
-   * @param string source The source to fetch the object from
-   * @param array where Array of indexes and values to find object by
-   * @param mixed order The index to sort the list on, or array of indices
-   * @param mixed limit The length of the list to return, or a LIMIT string
-   * @param bool returnObjects Return the actual objects not just the object meta data
-   * @param bool setWorkspace get specific workspace id (or any workspace ok)
+   * @param array $indexes Array of indexes to be returned
+   * @param string $source The source to fetch the object from
+   * @param array $where Array of indexes and values to find object by
+   * @param mixed $order The index to sort the list on, or array of indices
+   * @param mixed $limit The length of the list to return, or a LIMIT string
+   * @param bool $returnObjects Return the actual objects not just the object meta data
+   * @param bool $setWorkspace get specific workspace id (or any workspace ok)
    * @return array An array of object meta data or of objects.
    */   
   function &getObjList($indexes = NULL, $in_source = NULL, 
@@ -683,6 +701,10 @@ class smdoc_db
         $id .= '.' . $record['version'];
       if ( isset($record['title']) )
         $id .= '.' . $record['title'];
+      // This seems backwards, but if the workspace was explicitly set 
+      // (!$setWorkspace) then we need to use it as a discriminator
+      if ( isset($record['workspaceid']) && !$setWorkspace )
+        $id .= '.' . $record['workspaceid'];
 
       if ( !isset($return[$id]) ) 
       {
@@ -707,8 +729,8 @@ class smdoc_db
    * two records. If no version field is found, return TRUE for transparency.
    * Otherwise return true if the first record is greater than the second.
    * @access private
-   * @param array record1 Retrieved associative array created from query row.
-   * @param array record2 Retrieved associative array created from query row.
+   * @param array $record1 Retrieved associative array created from query row.
+   * @param array $record2 Retrieved associative array created from query row.
    * @return TRUE if version is defined in both records, and version1 > version2
    * @see #getObjList
    */
@@ -724,9 +746,9 @@ class smdoc_db
    * Our own internal method for getting the source that
    * should be used.
    * @access private
-   * @param mixed in_source Source specified by the caller
-   * @param string source Name of table to query
-   * @param string makeTable name of function for table creation
+   * @param mixed $in_source Source specified by the caller
+   * @param string $source Name of table to query
+   * @param string $makeTable name of function for table creation
    */
   function getSource($in_source, &$source, &$makeTable)
   {
@@ -747,7 +769,7 @@ class smdoc_db
   /**
    * Save an object.
    *
-   * @param object object The object to save
+   * @param object $object The object to save
    * @return bool Success or failure.
    */
   function save(&$object) 
@@ -852,7 +874,7 @@ class smdoc_db
   /**
    * Delete an object (and all archive versions).
    *
-   * @param object object The object to delete
+   * @param object $object The object to delete
    * @return bool Success or failure.
    */
   function delete(&$object) 
@@ -878,7 +900,7 @@ class smdoc_db
   /**
    * Tidy an objects archived versions.
    *
-   * @param object object The object to delete
+   * @param object $object The object to delete
    * @return bool Success or failure.
    */
   function tidy(&$object) 
@@ -922,7 +944,7 @@ class smdoc_db
    * is because the table does not exist, so tries to create it.
    *
    * @access protected
-   * @param mixed in_source Source specified by the caller
+   * @param mixed $in_source Source specified by the caller
    * @return array Array of field names
    */
   function getFields($in_source)
@@ -979,8 +1001,8 @@ class smdoc_db
    * Do a SQL ALTER TABLE statement.
    *
    * @access protected
-   * @param mixed in_source Source specified by the caller
-   * @param array fieldArray An array of column clause elements.
+   * @param mixed $in_source Source specified by the caller
+   * @param array $fieldArray An array of column clause elements.
    * @return bool TRUE on success.
    */
   function alterTable($in_source, $fieldArray) 
@@ -1060,8 +1082,8 @@ class smdoc_db
    * Do a SQL CREATE INDEX statement.
    *
    * @access protected
-   * @param mixed in_source Source specified by the caller
-   * @param string column The column to add the index on.
+   * @param mixed $in_source Source specified by the caller
+   * @param string $column The column to add the index on.
    * @return bool TRUE on success.
    */
   function createIndex($table, $column) 

@@ -39,7 +39,7 @@ function workspace_view_body(&$foowd, $className, $method, &$user, &$object, &$t
 <tr><td class="heading"><b><?php echo _("Created"); ?>:</b></td>
     <td class="value"><?php echo $t['created']; ?></td></tr>
 <tr><td class="heading"><b><?php echo _("Author"); ?>:</b></td>
-    <td class="value"><?php echo htmlspecialchars($t['author']); ?></td></tr>
+    <td class="value"><?php echo htmlentities($t['author']); ?></td></tr>
 <tr><td class="heading"><b><?php echo _("Access"); ?>:</b></td>
     <td class="value"><?php echo smdoc_group::getDisplayName($t['access']); ?></td></tr>
 </table>
@@ -62,7 +62,7 @@ function workspace_view_body(&$foowd, $className, $method, &$user, &$object, &$t
           ?>
 <tr class="<?php echo ($row ? 'row_odd' : 'row_even'); ?>">
     <td><a href="<?php echo getURI($uri_arr); ?>">
-        <?php echo htmlspecialchars($obj['title']); ?></a></td>
+        <?php echo htmlentities($obj['title']); ?></a></td>
     <td class="smalldate" align="center"><?php echo $obj['updated']; ?></td>
     <td class="small"><?php echo getClassDescription($obj['classid']); ?></td>
 </tr>

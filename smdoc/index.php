@@ -37,7 +37,7 @@ $objectOK = TRUE;
 
 /*
  * Check for shorthand objectid using well-known object name:
- * e.g. object=sqmindex, object=faq, object=privacy, etc.
+ * e.g. object=sqmindex, object=privacy, etc.
  */
 $objectName_q = new input_querystring('object', REGEX_TITLE);
 if ( $objectName_q->wasSet && $objectName_q->wasValid )
@@ -85,7 +85,6 @@ elseif ( $objectid == NULL )
     $_SESSION['error'] = OBJECT_NOT_FOUND;
   }
 }
-
 
 /*
  * If form has been cancelled, redirect to view of that object

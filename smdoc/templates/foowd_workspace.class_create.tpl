@@ -3,21 +3,22 @@
  * Copyright (c) 1999-2003 The SquirrelMail Project Team
  * Licensed under the GNU GPL. For full terms see the file COPYING.
  *
- * This file is an addition/modification to the 
+ * This file is an addition/modification to the
  * Framework for Object Orientated Web Development (Foowd).
  */
 
-/** 
- * Template for object clone
+/**
+ * Template for user creation
  *
  * Modified by SquirrelMail Development
  * $Id$
- * 
+ *
  * @package smdoc
  * @subpackage template
  */
-
-$t['body_function'] = 'object_clone_body';
+$t['title'] = _("Create") . ': ' . $t['className'];
+$t['method'] = 'create';
+$t['body_function'] = 'object_create_body';
 
 /** Include base template */
 include_once(TEMPLATE_PATH.'index.tpl');
@@ -32,26 +33,22 @@ include_once(TEMPLATE_PATH.'index.tpl');
  * @param object $object Reference to object being invoked.
  * @param mixed $t Reference to array filled with template parameters.
  */
-function object_clone_body(&$foowd, $className, $method, &$user, &$object, &$t)
+function object_create_body(&$foowd, $className, $method, &$user, &$object, &$t)
 {
-  echo '<h1>' . _("Clone object: ") . htmlentities($t['title']);
-  echo ' <span class="subtext" style="font-weight: normal">['. $t['objectid'] . ']</span></h1>';
-
   $t['form']->display_start('smdoc_form');
+  $obj = $t['form']->objects;
+?>
 
-  echo '<p>'. _("New Title for Clone") . ': ';
-  $t['form']->objects['cloneTitle']->display();
-
-  echo "</p>\n<p>". _("Target Translation/Workspace") . ': ';
-  $t['form']->objects['workspaceDropdown']->display();
-
-  echo "</p>\n<p>". _("Preserve association via Object ID?");
-  $t['form']->objects['cloneId']->display();
-  echo '</p>';
-
+<table cellspacing="0" cellpadding="0" class="smdoc_table">
+<tr><td class="label"><b><?php echo _("Object Title"); ?>:</b></td>
+    <td class="value"><?php echo $obj['createTitle']->display(); ?></td></tr>
+<tr><td class="label"><b><?php echo _("Object Description"); ?>:</b></td>
+    <td class="value"><?php echo $obj['createDescription']->display(); ?></td></tr>
+</table>
+<?php
   echo "\n" . '<div class="form_submit">';
   $t['form']->display_buttons();
   echo '</div>'."\n";
+
   $t['form']->display_end();
 }
-?>

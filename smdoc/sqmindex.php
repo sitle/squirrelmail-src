@@ -48,31 +48,54 @@
  */
 require('config.php');
 
+/** Class to verify $_GET/querystring parameter data */
+require_once(INPUT_DIR . 'input.querystring.php');
+
 /* 
  * Initialize smdoc/FOOWD environment
  */
 $foowd = new smdoc($foowd_parameters);
 
 /*
+ * Check for shorthand objectid using well-known object name:
+ * e.g. object=sqmindex, object=privacy, etc.
+ */
+$fullIndex_q = new input_querystring('p','/^[01]*$/');
+if ( $fullIndex_q->wasSet && $fullIndex_q->wasValid && $foowd->user->inGroup('Gods') )
+  $fullIndex = $fullIndex_q->value ? TRUE : FALSE;
+else
+  $fullIndex = FALSE;
+
+/*
  * Print site content, leave out groups, workspaces, name_lookup
  */
-$where['notshort'] = array('index' => 'classid', 'op' => '!=', 'value' => META_SMDOC_NAME_LOOKUP_CLASS_ID);
-$where['notgroup'] = array('index' => 'classid', 'op' => '!=', 'value' => META_SMDOC_GROUP_APPEXT_CLASS_ID);
-$where['notwkspce'] = array('index' => 'classid', 'op' => '!=', 'value' => WORKSPACE_CLASS_ID);
-$where['notlang'] = array('index' => 'classid', 'op' => '!=', 'value' => TRANSLATION_CLASS_ID);
-
-
-$orderby = array('title', 'classid', 'version');
-$indices = array('DISTINCT objectid','classid','title','workspaceid','updated');
+if ( $fullIndex )
+{
+  $where = array();
+  $currentWorkspace = FALSE;
+  $objid='objectid';
+  $orderby = array('title', 'classid', 'version');
+}
+else
+{
+  $where['notshort'] = array('index' => 'classid', 'op' => '!=', 'value' => META_SMDOC_NAME_LOOKUP_CLASS_ID);
+  $where['notgroup'] = array('index' => 'classid', 'op' => '!=', 'value' => META_SMDOC_GROUP_APPEXT_CLASS_ID);
+  $where['notwkspce'] = array('index' => 'classid', 'op' => '!=', 'value' => WORKSPACE_CLASS_ID);
+  $where['notlang'] = array('index' => 'classid', 'op' => '!=', 'value' => TRANSLATION_CLASS_ID);
+  $currentWorkspace = TRUE;
+  $objid = 'DISTINCT objectid';
+  $orderby = array('title', 'classid', 'workspaceid DESC', 'version');
+}
+$indices = array( $objid,'classid','title','workspaceid','updated');
  
 /*
  * standard doc information: additional indices, no special source table
  * where and orderby clauses from above, no limit (all), want only array, not 
- * actual objects, and yes, set the workspaceid appropriately.
+ * actual objects, and set the workspaceid based on full index or not (above).
  */
 $objects =& $foowd->getObjList($indices, NULL, $where,
                                $orderby, NULL, 
-                               FALSE, TRUE);
+                               FALSE, $currentWorkspace);
 $list_objects = array();
 
 $i = 0;
@@ -90,7 +113,10 @@ if ( count($objects) > 0 )
     $list_objects[$i]['url'] = getURI($uri_arr);
 
     if ( $object['workspaceid'] != 0 )
-      $list_objects[$i]['langid'] = foowd_translation::getLink($foowd, $object['workspaceid']);
+    {
+      $list_objects[$i]['langid'] = 
+          smdoc_translation::getLink($foowd, $object['workspaceid']);
+    }
     else 
       $list_objects[$i]['langid'] = '&nbsp;';
 
