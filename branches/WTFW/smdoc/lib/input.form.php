@@ -20,7 +20,7 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 */
 
 /*
-input.frm.php
+input.form.php
 Form input object
 */
 
@@ -33,8 +33,9 @@ class input_form {
 	var $reset; // value of reset button
 	var $preview; // value of preview button
 	var $objects = array(); // array of form objects
+	var $class; // css class
 	
-	function input_form($name, $location = NULL, $method = 'POST', $submit = 'Submit', $reset = 'Reset', $preview = NULL) {
+	function input_form($name, $location = NULL, $method = 'POST', $submit = 'Submit', $reset = 'Reset', $preview = NULL, $class = NULL) {
 		$this->name = $name;
 		if ($location == NULL) {
 			$location = getURI($_GET);
@@ -44,6 +45,7 @@ class input_form {
 		$this->submit = $submit;
 		$this->reset = $reset;
 		$this->preview = $preview;
+		$this->class = $class;
 	}
 	
 	function addObject(&$object){
@@ -72,19 +74,35 @@ class input_form {
 	}
 	
 	function display() {
-		echo '<form name="', $this->name, '" action="', $this->location, '" method="', $this->method, '" enctype="multipart/form-data">';
+		echo '<form name="', $this->name, '" action="', $this->location, '" method="', $this->method, '" enctype="multipart/form-data" class="', $this->class, '">';
 		foreach ($this->objects as $object) {
 			if (is_object($object)) {
 				$object->display();
+				echo '<br />';
 			} elseif (is_string($object)) {
-				echo '<h3>', $object, '</h3>';
+				echo $object, '<br />';
 			}
 		}
 		if ($this->submit || $this->reset || $this->preview) {
 			echo '<p>';
-			if ($this->submit) echo '<input type="submit" name="', $this->name, '_submit" value="', $this->submit, '" /> ';
-			if ($this->reset) echo '<input type="reset" name="reset" value="', $this->reset, '" /> ';
-			if ($this->preview) echo '<input type="submit" name="', $this->name, '_preview" value="', $this->preview, '" /> ';
+			if ($this->submit) echo '<input type="submit" name="', $this->name, '_submit" value="', $this->submit, '" class="', $this->class, '_submit" /> ';
+			if ($this->reset) echo '<input type="reset" name="reset" value="', $this->reset, '" class="', $this->class, '_reset" /> ';
+			if ($this->preview) echo '<input type="submit" name="', $this->name, '_preview" value="', $this->preview, '" class="', $this->class, '_preview" /> ';
+			echo '</p>';
+		}
+		echo '</form>';
+	}
+
+	function display_start() {
+		echo '<form name="', $this->name, '" action="', $this->location, '" method="', $this->method, '" enctype="multipart/form-data" class="', $this->class, '">';
+	}
+
+	function display_end() {
+		if ($this->submit || $this->reset || $this->preview) {
+			echo '<p>';
+			if ($this->submit) echo '<input type="submit" name="', $this->name, '_submit" value="', $this->submit, '" class="', $this->class, '_submit" /> ';
+			if ($this->reset) echo '<input type="reset" name="reset" value="', $this->reset, '" class="', $this->class, '_reset" /> ';
+			if ($this->preview) echo '<input type="submit" name="', $this->name, '_preview" value="', $this->preview, '" class="', $this->class, '_preview" /> ';
 			echo '</p>';
 		}
 		echo '</form>';
