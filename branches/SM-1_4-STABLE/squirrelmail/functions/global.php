@@ -27,7 +27,7 @@ if(isset($session_name) && $session_name) {
 /**
  * If magic_quotes_runtime is on, SquirrelMail breaks in new and creative ways.
  * Force magic_quotes_runtime off.
- * chilts@birdbrained.org - I put it here in the hopes that all SM code includes this.
+ * tassium@squirrelmail.org - I put it here in the hopes that all SM code includes this.
  * If there's a better place, please let me know.
  */
 ini_set('magic_quotes_runtime','0');
@@ -217,8 +217,10 @@ define('SQ_FORM',6);
  *    sqgetGlobalVar('username',$username,SQ_SESSION);
  *  -- no quotes around last param!
  *
- * Returns FALSE if variable is not found.
- * Returns TRUE if it is.
+ * @param string name the name of the var to search
+ * @param mixed value the variable to return
+ * @param int search constant defining where to look
+ * @return bool whether variable is found.
  */
 function sqgetGlobalVar($name, &$value, $search = SQ_INORDER) {
 
@@ -281,6 +283,10 @@ function sqgetGlobalVar($name, &$value, $search = SQ_INORDER) {
     return FALSE;
 }
 
+/**
+ * Deletes an existing session, more advanced than the standard PHP
+ * session_destroy(), it explicitly deletes the cookies and global vars.
+ */
 function sqsession_destroy() {
 
     /*
