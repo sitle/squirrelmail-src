@@ -124,7 +124,7 @@ setConst('DEFAULT_ERROR_TITLE', _("Page Error"));
  */
 function smdocErrorCatch($errorNumber, $errorString, $filename, $lineNumber, $context)
 {
-  if (DEBUG)
+  if (getConstOrDefault('DEBUG', FALSE))
   {
     switch ($errorNumber)
     {
@@ -159,19 +159,19 @@ function smdocErrorCatch($errorNumber, $errorString, $filename, $lineNumber, $co
 
     $foowdClass = getConstOrDefault('FOOWD_CLASS_NAME','foowd');
 
-    if ( isset($foowd) && is_object($foowd) && get_class($foowd) == $foowdClass )
-    {
-      $object = new smdoc_error($foowd, DEFAULT_ERROR_TITLE, $errorString);
-      $t = $object->method_view($foowd);
-      $t['showurl'] = false;
-      include($foowd->getTemplateName('smdoc_error', 'object_view'));
-      $foowd->destroy();
-    }
-    else
-    {
+//    if ( isset($foowd) && is_object($foowd) && get_class($foowd) == $foowdClass )
+//    {
+//      $object = new smdoc_error($foowd, DEFAULT_ERROR_TITLE, $errorString);
+//      $t = $object->method_view($foowd);
+//      $t['showurl'] = false;
+//      include($foowd->getTemplateName('smdoc_error', 'object_view'));
+//      $foowd->destroy();
+//    }
+//    else
+//    {
       echo '<h1>',DEFAULT_ERROR_TITLE,'</h1>';
       echo '<p>', $errorString, '</p>';
-    }
+//    }
   }
 
   if ( $errorNumber == E_USER_ERROR ) { // fatal error, halt
