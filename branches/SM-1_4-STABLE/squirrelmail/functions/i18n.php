@@ -1735,6 +1735,15 @@ $languages['ko_KR']['CHARSET'] = 'euc-KR';
 $languages['ko_KR']['XTRA_CODE'] = 'korean_charset_xtra';
 $languages['ko']['ALIAS'] = 'ko_KR';
 
+$languages['lt_LT']['NAME']    = 'Lithuanian';
+$languages['lt_LT']['CHARSET'] = 'iso-8859-4';
+$languages['lt_LT']['LOCALE'] = 'lt_LT.ISO-8859-4';
+$languages['lt']['ALIAS'] = 'lt_LT';
+
+$languages['ms_MY']['NAME']    = 'Bahasa Melayu';
+$languages['ms_MY']['CHARSET'] = 'iso-8859-1';
+$languages['my']['ALIAS'] = 'ms_MY';
+
 $languages['nl_NL']['NAME']    = 'Dutch';
 $languages['nl_NL']['CHARSET'] = 'iso-8859-1';
 $languages['nl']['ALIAS'] = 'nl_NL';
@@ -1755,11 +1764,22 @@ $languages['pt_BR']['NAME']    = 'Portuguese (Brazil)';
 $languages['pt_BR']['CHARSET'] = 'iso-8859-1';
 $languages['pt']['ALIAS'] = 'pt_PT';
 
+$languages['ro_RO']['NAME']    = 'Romanian';
+$languages['ro_RO']['CHARSET'] = 'iso-8859-2';
+$languages['ro']['ALIAS'] = 'ro_RO';
+
 $languages['ru_RU']['NAME']    = 'Russian';
 $languages['ru_RU']['CHARSET'] = 'utf-8';
 $languages['ru_RU']['LOCALE'] = 'ru_RU.UTF-8';
 $languages['ru']['ALIAS'] = 'ru_RU';
 
+$languages['sk_SK']['NAME']     = 'Slovak';
+$languages['sk_SK']['CHARSET']  = 'iso-8859-2';
+$languages['sk']['ALIAS']       = 'sk_SK';
+
+$languages['sl_SI']['NAME']    = 'Slovenian';
+$languages['sl_SI']['CHARSET'] = 'iso-8859-2';
+$languages['sl']['ALIAS'] = 'sl_SI';
 
 $languages['sr_YU']['NAME']    = 'Serbian';
 $languages['sr_YU']['CHARSET'] = 'iso-8859-2';
@@ -1781,26 +1801,9 @@ $languages['zh_CN']['NAME']    = 'Chinese Simp';
 $languages['zh_CN']['CHARSET'] = 'gb2312';
 $languages['cn']['ALIAS'] = 'zh_CN';
 
-$languages['sk_SK']['NAME']     = 'Slovak';
-$languages['sk_SK']['CHARSET']  = 'iso-8859-2';
-$languages['sk']['ALIAS']       = 'sk_SK';
-
-$languages['ro_RO']['NAME']    = 'Romanian';
-$languages['ro_RO']['CHARSET'] = 'iso-8859-2';
-$languages['ro']['ALIAS'] = 'ro_RO';
-
 $languages['th_TH']['NAME']    = 'Thai';
 $languages['th_TH']['CHARSET'] = 'tis-620';
 $languages['th']['ALIAS'] = 'th_TH';
-
-$languages['lt_LT']['NAME']    = 'Lithuanian';
-$languages['lt_LT']['CHARSET'] = 'iso-8859-4';
-$languages['lt_LT']['LOCALE'] = 'lt_LT.ISO-8859-4';
-$languages['lt']['ALIAS'] = 'lt_LT';
-
-$languages['sl_SI']['NAME']    = 'Slovenian';
-$languages['sl_SI']['CHARSET'] = 'iso-8859-2';
-$languages['sl']['ALIAS'] = 'sl_SI';
 
 $languages['bg_BG']['NAME']    = 'Bulgarian';
 $languages['bg_BG']['CHARSET'] = 'windows-1251';
