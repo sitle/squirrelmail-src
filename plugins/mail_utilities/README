@@ -1,4 +1,4 @@
-Mail Utilities - Version 0.4
+Mail Utilities - $Revision $
 =============================
 
 This plugin is intended to create a sub-menu for those
@@ -12,7 +12,7 @@ plugins as outlined below).
 Suggestions (recommendations, corrections) welcome.
 
 Erin Schnabel
-ebullient@squirrelmail.org
+sizzle@haaser.com
 
 
 Installation notes:
@@ -42,7 +42,7 @@ If the utilities plugin doesn't exist, put it on the menuline
         ...
        global $plugins;
        if ( in_array('mail_utilities', $plugins ) ) {
-          include_once(SM_PATH . 'plugins/mail_utilities/functions.php');
+          include_once('../plugins/mail_utilities/functions.php');
 
           // This one is required - adds a link to the Utilities menu
           mail_utilities_add_menu_hook('plugin_name','plugin_name_link_function');
@@ -94,7 +94,7 @@ after the call to displayPageHeader:
 
     global $plugins;
     if ( in_array('mail_utilities', $plugins) ) {
-        include_once(SM_PATH . 'plugins/mail_utilities/functions.php');
+        include_once('../plugins/mail_utilities/functions.php');
         mail_utilities_display_menubar($color);
     }
 
@@ -103,24 +103,16 @@ mail_utilities_display_menubar(..).
 
 That's it.
 
+Plugins that can exploit utilities:
+  Mailbox Import      (mbox_import)
+  Add Virtual Users   (add_mysqluser)
+
 
 Change Log:
 =================
-Version 0.4 2003/02/08
-Correction to docs for SM_PATH updates.
-
-Version 0.3 2003/01/27 
-Use SM_PATH For 1.3.x/1.4 compatibility.
-
-Version 0.2 2002/09/08 
-Housekeeping updates
-register_globals=off updates.
-Due to recent changes in the dev stream, 
-this version of the plugin won't work with 1.3.2 CVS..
-(I'll get to it.. <sighs>)
-
-Version 0.1 2002/08/20   
-Initial plugin Release
+$Log$
+Revision 1.1  2002/09/09 02:39:28  sizzlingmercury
+Initial revision
 
 
 

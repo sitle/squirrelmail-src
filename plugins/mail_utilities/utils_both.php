@@ -9,11 +9,11 @@
    **  $Id$
    **/
 
-define('SM_PATH','../../');
+chdir('..');
 
-require_once(SM_PATH . 'include/validate.php');
-require_once(SM_PATH . 'functions/page_header.php');
-require_once(SM_PATH . 'plugins/mail_utilities/functions.php');
+require_once('../src/validate.php');
+require_once('../functions/page_header.php');
+require_once('../plugins/mail_utilities/functions.php');
     
 displayPageHeader($color, 'None');
 
@@ -57,7 +57,6 @@ if ( in_array('mail_utilities', $plugins) ) {
 <TR>
   <TD ALIGN=CENTER>
   <?php
-  extract($_POST);
   mail_utilities_both_shortcut($color);
   if ( isset($chosen_one) ) {
     echo "<P>You selected: $chosen_one</p>";

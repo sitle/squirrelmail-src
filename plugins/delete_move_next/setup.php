@@ -1,28 +1,28 @@
 <?php
 
 
-/* delete_move_next 2.1
+/* deleteMoveNP 2.0 
      deletes or moves currently displayed message and displays
      next or previous message.
    
-   By Ben Brillat <brillat-sqplugin@mainsheet.org>
+   By Ben Brillat <brillat-sqplugin@mail.brillat.net>
    Based on Delete Move Next 1.0 by Bryan Stalcup <bryan@stalcup.net>
 
    Copyright (C) 2001 Benjamin Brillat, see "README" file for details.
 */
 
-function squirrelmail_plugin_init_delete_move_next() {
+function squirrelmail_plugin_init_deleteMoveNP() {
   global $squirrelmail_plugin_hooks;
-  $squirrelmail_plugin_hooks['html_top']['delete_move_next'] = 'delete_move_next_html_t';
-  $squirrelmail_plugin_hooks['read_body_bottom']['delete_move_next'] = 'delete_move_next_read_b';
-  $squirrelmail_plugin_hooks['read_body_top']['delete_move_next'] = 'delete_move_next_read_t';
-  $squirrelmail_plugin_hooks["options_display_inside"]["delete_move_next"] = "delete_move_next_display_inside";
-  $squirrelmail_plugin_hooks["options_display_save"]["delete_move_next"] = "delete_move_next_display_save";
-  $squirrelmail_plugin_hooks["loading_prefs"]["delete_move_next"] = "delete_move_next_loading_prefs";
+  $squirrelmail_plugin_hooks['html_top']['deleteMoveNP'] = 'deleteMoveNP_html_t';
+  $squirrelmail_plugin_hooks['read_body_bottom']['deleteMoveNP'] = 'deleteMoveNP_read_b';
+  $squirrelmail_plugin_hooks['read_body_top']['deleteMoveNP'] = 'deleteMoveNP_read_t';
+  $squirrelmail_plugin_hooks["options_display_inside"]["deleteMoveNP"] = "deleteMoveNP_display_inside";
+  $squirrelmail_plugin_hooks["options_display_save"]["deleteMoveNP"] = "deleteMoveNP_display_save";
+  $squirrelmail_plugin_hooks["loading_prefs"]["deleteMoveNP"] = "deleteMoveNP_loading_prefs";
 }
 
 
-function delete_move_next_html_t() {
+function deleteMoveNP_html_t() {
 
   global $PHP_SELF;
 
@@ -31,43 +31,43 @@ function delete_move_next_html_t() {
     global $delete_id, $move_id;
 
     if ($delete_id) {
-      delete_move_next_delete();
+      deleteMoveNP_delete();
     } elseif ($move_id) {
-      delete_move_next_move();
+      deleteMoveNP_move();
     }
   }
 
 
 }
 
-function delete_move_next_read_t() {
+function deleteMoveNP_read_t() {
 
   global $color, $where, $what, $currentArrayIndex, $passed_id;
   global $urlMailbox, $sort, $startMessage, $delete_id, $move_id;
   global $imapConnection;
 
-  global $delete_move_next_t;
-  if($delete_move_next_t == "on") {
-    delete_move_next_read("top");
+  global $deleteMoveNP_t;
+  if($deleteMoveNP_t == "on") {
+    deleteMoveNP_read("top");
   }
 }
 
-function delete_move_next_read_b() {
+function deleteMoveNP_read_b() {
 
   global $color, $where, $what, $currentArrayIndex, $passed_id;
   global $urlMailbox, $sort, $startMessage, $delete_id, $move_id;
   global $imapConnection, $delete_id, $mailbox, $auto_expunge;
 
 
-  global $delete_move_next_b;
-  if($delete_move_next_b != "off") {
-    delete_move_next_read("bottom");
+  global $deleteMoveNP_b;
+  if($deleteMoveNP_b != "off") {
+    deleteMoveNP_read("bottom");
   }
 }
 
 
-function delete_move_next_read($currloc) {
-  global $delete_move_next_formATtop, $delete_move_next_formATbottom;
+function deleteMoveNP_read($currloc) {
+  global $deleteMoveNP_formATtop, $deleteMoveNP_formATbottom;
   global $color, $where, $what, $currentArrayIndex, $passed_id;
   global $urlMailbox, $sort, $startMessage, $delete_id, $move_id;
   global $imapConnection;
@@ -103,18 +103,18 @@ function delete_move_next_read($currloc) {
     </tr>
 
  <?php
-  if(($delete_move_next_formATtop == "on") && ($currloc == "top")){
-    delete_move_next_moveForm($next);
+  if(($deleteMoveNP_formATtop == "on") && ($currloc == "top")){
+    deleteMoveNP_moveForm($next);
   }
-  if(($delete_move_next_formATbottom != "off") && ($currloc == "bottom")){
-    delete_move_next_moveForm($next);
+  if(($deleteMoveNP_formATbottom != "off") && ($currloc == "bottom")){
+    deleteMoveNP_moveForm($next);
   }
  ?> 
  
  </table><?php
 }
 
-function delete_move_next_moveForm($next) {
+function deleteMoveNP_moveForm($next) {
 
   global $color, $where, $what, $currentArrayIndex, $passed_id;
   global $urlMailbox, $sort, $startMessage, $delete_id, $move_id;
@@ -134,10 +134,10 @@ function delete_move_next_moveForm($next) {
         <select name="targetMailbox"><?php
       $boxes = sqimap_mailbox_list($imapConnection);
       for ($i = 0; $i < count($boxes); $i++) {
-	if (!in_array("noselect", $boxes[$i]['flags'])) {
+        if ($boxes[$i]["flags"][0] != "noselect" && $boxes[$i]["flags"][1] != "noselect" && $boxes[$i]["flags"][2] != "noselect") {
           $box = $boxes[$i]["unformatted"];
-          $box2 = str_replace(' ', '&nbsp;', $boxes[$i]['unformatted-disp']);
-	  echo "          <option value=\"$box\">$box2\n";
+          $box2 = str_replace(' ', '&nbsp;', $boxes[$i]["formatted"]);
+          echo "          <option value=\"$box\">$box2\n";
         }
       }?></select>
        <input type=submit value="Move">
@@ -150,7 +150,7 @@ function delete_move_next_moveForm($next) {
 
 }
 
-function delete_move_next_delete() {
+function deleteMoveNP_delete() {
   global $imapConnection, $delete_id, $mailbox, $auto_expunge;
   sqimap_messages_delete($imapConnection, $delete_id, $delete_id, $mailbox);
   if ($auto_expunge){
@@ -158,7 +158,7 @@ function delete_move_next_delete() {
   }
 }
 
-function delete_move_next_move() {
+function deleteMoveNP_move() {
   global $imapConnection, $move_id, $targetMailbox, $auto_expunge, $mailbox;
   // Move message
   sqimap_messages_copy($imapConnection, $move_id, $move_id, $targetMailbox);
@@ -167,36 +167,36 @@ function delete_move_next_move() {
     sqimap_mailbox_expunge($imapConnection, $mailbox, true);
 }
 
-function delete_move_next_display_inside()
+function deleteMoveNP_display_inside()
 {
  global $username,$data_dir;
- global $delete_move_next_t, $delete_move_next_formATtop;
- global $delete_move_next_b, $delete_move_next_formATbottom;
+ global $deleteMoveNP_t, $deleteMoveNP_formATtop;
+ global $deleteMoveNP_b, $deleteMoveNP_formATbottom;
 
  echo "<tr><td align=right valign=top>\n";
- echo "delete_move_next:</td>\n";
- echo "<td><input type=checkbox name=delete_move_next_ti";
- if($delete_move_next_t == "on") {
+ echo "deleteMoveNP:</td>\n";
+ echo "<td><input type=checkbox name=deleteMoveNP_ti";
+ if($deleteMoveNP_t == "on") {
    echo " checked";
  }
  echo "> <- display at top ";
 
- echo "<input type=checkbox name=delete_move_next_formATtopi";
- if($delete_move_next_formATtop == "on") {
+ echo "<input type=checkbox name=deleteMoveNP_formATtopi";
+ if($deleteMoveNP_formATtop == "on") {
    echo " checked";
  }
  echo "> <- with move option";
 
  echo "<br>";
 
- echo "<input type=checkbox name=delete_move_next_bi";
- if($delete_move_next_b != "off") {
+ echo "<input type=checkbox name=deleteMoveNP_bi";
+ if($deleteMoveNP_b != "off") {
    echo " checked";
  }
  echo "> <- display at bottom";
 
- echo "<input type=checkbox name=delete_move_next_formATbottomi";
- if($delete_move_next_formATbottom != "off") {
+ echo "<input type=checkbox name=deleteMoveNP_formATbottomi";
+ if($deleteMoveNP_formATbottom != "off") {
    echo " checked";
  }
  echo "> <- with move option";
@@ -208,52 +208,51 @@ function delete_move_next_display_inside()
  echo "</td></tr>\n";
 }
 
-function delete_move_next_display_save()
+function deleteMoveNP_display_save()
 {
 
   global $username,$data_dir;
-  global $delete_move_next_ti, $delete_move_next_formATtopi;
-  global $delete_move_next_bi, $delete_move_next_formATbottomi;
+  global $deleteMoveNP_ti, $deleteMoveNP_formATtopi;
+  global $deleteMoveNP_bi, $deleteMoveNP_formATbottomi;
 
-   if(isset($delete_move_next_ti)) {
-     setPref($data_dir, $username, "delete_move_next_t", 'on');
+   if(isset($deleteMoveNP_ti)) {
+     setPref($data_dir, $username, "deleteMoveNP_t", 'on');
    } else {
-     setPref($data_dir, $username, "delete_move_next_t", "off");
+     setPref($data_dir, $username, "deleteMoveNP_t", "off");
    }
 
-   if(isset($delete_move_next_formATtopi)) {
-     setPref($data_dir, $username, "delete_move_next_formATtop", 'on');
+   if(isset($deleteMoveNP_formATtopi)) {
+     setPref($data_dir, $username, "deleteMoveNP_formATtop", 'on');
    } else {
-     setPref($data_dir, $username, "delete_move_next_formATtop", "off");
+     setPref($data_dir, $username, "deleteMoveNP_formATtop", "off");
    }
 
 
-   if(isset($delete_move_next_bi)) {
-     setPref($data_dir, $username, "delete_move_next_b", 'on');
+   if(isset($deleteMoveNP_bi)) {
+     setPref($data_dir, $username, "deleteMoveNP_b", 'on');
    } else {
-     setPref($data_dir, $username, "delete_move_next_b", "off");
+     setPref($data_dir, $username, "deleteMoveNP_b", "off");
    }
 
-   if(isset($delete_move_next_formATbottomi)) {
-     setPref($data_dir, $username, "delete_move_next_formATbottom", 'on');
+   if(isset($deleteMoveNP_formATbottomi)) {
+     setPref($data_dir, $username, "deleteMoveNP_formATbottom", 'on');
    } else {
-     setPref($data_dir, $username, "delete_move_next_formATbottom", "off");
+     setPref($data_dir, $username, "deleteMoveNP_formATbottom", "off");
    }
 
 
 }
 
 
-function delete_move_next_loading_prefs()
+function deleteMoveNP_loading_prefs()
 {
    global $username,$data_dir;
-   global $delete_move_next_t, $delete_move_next_formATtop;
-   global $delete_move_next_b, $delete_move_next_formATbottom;
-   $delete_move_next_t = getPref($data_dir, $username, "delete_move_next_t");
-   $delete_move_next_b = getPref($data_dir, $username, "delete_move_next_b");
-   $delete_move_next_formATtop = getPref($data_dir, $username, "delete_move_next_formATtop");
-   $delete_move_next_formATbottom = getPref($data_dir, $username, "delete_move_next_formATbottom");
+   global $deleteMoveNP_t, $deleteMoveNP_formATtop;
+   global $deleteMoveNP_b, $deleteMoveNP_formATbottom;
+   $deleteMoveNP_t = getPref($data_dir, $username, "deleteMoveNP_t");
+   $deleteMoveNP_b = getPref($data_dir, $username, "deleteMoveNP_b");
+   $deleteMoveNP_formATtop = getPref($data_dir, $username, "deleteMoveNP_formATtop");
+   $deleteMoveNP_formATbottom = getPref($data_dir, $username, "deleteMoveNP_formATbottom");
 
 }
 
-?>

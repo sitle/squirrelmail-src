@@ -2,10 +2,11 @@ Installing Plugins
 ==================
 Simply untar the file in the plugins directory, and make sure it is
 in its own directory, and that the name of the directory is the name
-of the plugin.
+of the plugin.  Example below uses "plug_demo" as the name of the 
+plugin:
 
   $ cd plugins
-  $ tar xvpzf /usr/archives/deleteMoveNP.tar.gz
+  $ tar -zxvf /usr/archives/plug_demo.tar.gz
 
 Then go to your config directory and run conf.pl.  Choose option
 8 and add the plugin (+).  Save and exit, then that should be all
@@ -13,5 +14,3 @@ if the plugin was made correctly.  :)
 
   $ cd ../config
   $ ./conf.pl
-
-
