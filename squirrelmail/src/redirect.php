@@ -65,7 +65,9 @@ else {
 if (isset($_POST['secretkey'])) {
     $secretkey = $_POST['secretkey'];
 }
-
+if (isset($_POST['js_autodetect_results'])) {
+    $js_autodetect_results = $_POST['js_autodetect_results'];
+}
 /* end of get globals */
 
 set_up_language($squirrelmail_language, true);
