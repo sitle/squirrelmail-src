@@ -84,7 +84,6 @@ class smdoc_news extends smdoc_text_textile
               `summary` varchar(255) NOT NULL default \'\',
               `creatorid` int(11) NOT NULL default \'0\',
               `creatorName` varchar(32) NOT NULL default \'\',
-              `objectid` int(11) NOT NULL default \'0\',
               `object` longblob,
               PRIMARY KEY  (`objectid`),
               KEY `idxnews_updated` (`updated`)
@@ -378,7 +377,10 @@ class smdoc_news extends smdoc_text_textile
     $editCollision = new input_hiddenbox('editCollision', REGEX_DATETIME, time());
     $editForm->addObject($editCollision);
 
-    $editArea = new input_textarea('editArea', NULL, $this->body, NULL);
+    $editSummary = new input_textarea('editSummary', NULL, $this->summary, 'Summary', 255);
+    $editForm->addObject($editSummary);
+
+    $editArea = new input_textarea('editArea', NULL, $this->body, 'Extended', 2048);
     $editForm->addObject($editArea);
 
     $this->addCategories($editForm);
@@ -388,11 +390,13 @@ class smdoc_news extends smdoc_text_textile
     if ($editForm->submitted()) 
     {
       // No versioning for news items.
+      $this->set('summary', $editSummary->value);
       $result = $this->edit($editArea->value, FALSE, $editCollision->value);
 
       switch ($result) 
       {
         case 1:
+          
           $_SESSION['ok'] = OBJECT_UPDATE_OK;
           $url['classid'] = $this->classid;
           $url['objectid'] = $this->objectid;
