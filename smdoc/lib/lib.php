@@ -284,14 +284,6 @@ function timeSince($time) {
 
 /*** Execution time ***/
 
-function getTime() {
-    $microtime = explode(' ', microtime());
-    return $microtime[0] + $microtime[1];
-}
-
-function executionTime($startTime) {
-    return getTime() - $startTime;
-}
 
 /*** Locale functions ***/
 
