@@ -2,8 +2,14 @@
 /**
  * iso-2022-xx support functions
  *
- * Original data:
- * RFC1554 (http://www.faqs.org/rfcs/rfc1554.html)
+ * Documents:
+ * RFC1468 iso-2022-jp   (http://www.faqs.org/rfcs/rfc1468.html)
+ * RFC1554 iso-2022-jp-2 (http://www.faqs.org/rfcs/rfc1554.html)
+ * RFC1557 iso-2022-kr   (http://www.faqs.org/rfcs/rfc1557.html)
+ * RFC1922 iso-2022-cn   (http://www.faqs.org/rfcs/rfc1922.html)
+ *         iso-2022-cn-ext
+ *
+ * Mappings:
  * ftp://ftp.unicode.org/Public/MAPPINGS/OBSOLETE/EASTASIA/JIS/JIS0201.TXT
  * ftp://ftp.unicode.org/Public/MAPPINGS/OBSOLETE/EASTASIA/JIS/JIS0208.TXT
  * ftp://ftp.unicode.org/Public/MAPPINGS/OBSOLETE/EASTASIA/JIS/JIS0212.TXT
