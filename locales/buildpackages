@@ -4,7 +4,7 @@ source version
 install -d ../packages
 # Make source
 tar -cf ../packages/locales-${STABLE_VERSION}-${date}-src.tar *
-zip -q ../packages/locales-${STABLE_VERSION}-${date}-src.zip *
+zip -q -r ../packages/locales-${STABLE_VERSION}-${date}-src.zip *
 # Compile locales
 for trans in `ls locale/`; do
     for string in `ls po/*.pot | sed 's/^po\///' | sed 's/.pot$//'` ; do
