@@ -92,7 +92,10 @@ function foowdErrorCatch($errorNumber, $errorString, $filename, $lineNumber, $co
       $errorObject = new foowd_object($foowd, DEFAULT_ERROR_TITLE);
       $foowd->tpl->assign('PAGE_TITLE', DEFAULT_ERROR_TITLE);
       $foowd->tpl->assign_by_ref('CURRENT_OBJECT', $errorObject);
-      $foowd->tpl->assign('BODY', '<p>' . $errorString . '</p>');
+      $foowd->tpl->assign_by_ref('STATUS_ERROR', $errorString);
+      
+      $error = new smdoc_display('error.tpl');
+      $foowd->tpl->assign('BODY', $error);
     }
     else
     {

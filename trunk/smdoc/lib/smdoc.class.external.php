@@ -51,6 +51,8 @@ class foowd_external extends foowd_object {
         $this->creatorName = 'System';
         $this->updatorid = 0;
         $this->updatorName = 'System';
+        $this->url = getURI(array('classid' => EXTERNAL_CLASS_ID,
+                                  'objectid' => $objectid));
 		
 		$this->title = htmlspecialchars($EXTERNAL_RESOURCES[$objectid]['title']);
 
@@ -87,50 +89,40 @@ class foowd_external extends foowd_object {
         global $EXTERNAL_RESOURCES;
         $foowd->track('foowd_external::method_view');
 
-        if (function_exists('foowd_prepend')) foowd_prepend($foowd, $this);
-
         $methodName = $EXTERNAL_RESOURCES[$this->objectid]['func'];
+        $foowd->tpl->assign('PAGE_TITLE', $this->title);
+        $foowd->tpl->assign('PAGE_TITLE_URL', 
+                            '<a href="'.$this->url.'">'.$this->title.'</a>');
+        $foowd->tpl->assign_by_ref('CURRENT_OBJECT', $this);
 
         if (function_exists($methodName)) {
             $methodName(&$foowd);
         } else {
-            echo 'Request for unknown method, ', $methodName ,
-                 '" on external resource "' , $this->title, '"',
-                 ' (object id = ', $this->objectid, ')';
+            triggerError('Request for unknown method, '. $methodName 
+                         . ', on external resource, ' . $this->title
+                         . ' (object id = ' . $this->objectid . ')' );
         }
-
-        if (function_exists('foowd_append')) foowd_append($foowd, $this);
         $foowd->track();
     }
 
     function method_history(&$foowd) {
-      $url = getURI(array('objectid' => $this->objectid,
-                          'classid' => $this->classid));
-      header('Location: '. $url);
+      header('Location: '. $this->url);
     }
 
     function method_admin(&$foowd) {
-      $url = getURI(array('objectid' => $this->objectid,
-                          'classid' => $this->classid));
-      header('Location: '. $url);
+      header('Location: '. $this->url);
     }
     
     function method_revert(&$foowd) {
-      $url = getURI(array('objectid' => $this->objectid,
-                          'classid' => $this->classid));
-      header('Location: '. $url);
+      header('Location: '. $this->url);
     }
 
     function method_delete(&$foowd) {
-      $url = getURI(array('objectid' => $this->objectid,
-                          'classid' => $this->classid));
-      header('Location: '. $url);
+      header('Location: '. $this->url);
     }
     
     function method_clone(&$foowd) {
-      $url = getURI(array('objectid' => $this->objectid,
-                          'classid' => $this->classid));
-      header('Location: '. $url);
+      header('Location: '. $this->url);
     }
 
 } // end static class

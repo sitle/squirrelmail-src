@@ -8,31 +8,48 @@ body {
     padding: 0px;
     font-family: verdana, "trebuchet ms", arial; 
 }
-.pagetitle {
-    background: #afad97 url(sm_logo.png) no-repeat top left;
-    height: 90px;
+#pagetitle {
+    background: #afad97;
+    height: 92px;
+    margin: 0px;
     border-bottom: 1px solid gray;
     color: #666666;
     padding-right: 5px;
 }
-.usermenu {
+#pagetitle .logo {
+    background: #fff url(sm_logo.png) no-repeat top left;
+}
+#pagetitle .usermenu {
     font-size: small;
     text-align: right;
+    padding-top: 2px;
 }
-.titleblock {
+#pagetitle .titleblock {
     font-size: x-large;
-    text-align: right;
-}
-#workspaceid {
-    font-size: small;
+    text-align: left;
+    padding-left: 5px;
+    padding-bottom: 2px;
 }
 #locationmenu {
     background: #d3d1c2;
-    border-top: 1px solid gray;
     border-bottom: 1px solid gray;
-    padding: 0px 5px;
+    padding: 1px 5px;
     font-size: small; 
     color: #666666;    
+    margin: 0px;
+}
+#status {
+    font-size: small;
+    text-align: center;
+    border-bottom: 1px dashed gray;
+    padding: 2px 5px;
+    margin: 0px;
+}
+#status .error {
+    color: #BB0000;    
+}
+#status .ok {
+    color: #00BB00;
 }
 #content {
     background: white;
@@ -42,7 +59,6 @@ body {
 #editmenu {
     background: #d3d1c2;
     border-top: 1px solid gray;
-    border-bottom: 1px solid gray;
     padding: 2px;
     margin: 0px;
     font-size: small; 
@@ -227,4 +243,3 @@ OL.upper_roman {
 OL.decimal {
     list-style-type: decimal
 }
-
