@@ -78,7 +78,7 @@ if (!defined('download_php')) {
 }
 
 
-/* Load the user's special folder preferences */
+// Load the user's special folder preferences 
 $move_to_sent =
     getPref($data_dir, $username, 'move_to_sent', $default_move_to_sent);
 $move_to_trash =
@@ -103,7 +103,7 @@ $unseen_cum =
 $folder_prefix =
     getPref($data_dir, $username, 'folder_prefix', $default_folder_prefix);
 
-/* Load special folder - trash */
+// Load special folder - trash 
 $load_trash_folder = getPref($data_dir, $username, 'trash_folder');
 if (($load_trash_folder == '') && ($move_to_trash)) {
     $trash_folder = $folder_prefix . $trash_folder;
@@ -111,7 +111,7 @@ if (($load_trash_folder == '') && ($move_to_trash)) {
     $trash_folder = $load_trash_folder;
 }
 
-/* Load special folder - sent */
+// Load special folder - sent 
 $load_sent_folder = getPref($data_dir, $username, 'sent_folder');
 if (($load_sent_folder == '') && ($move_to_sent)) {
     $sent_folder = $folder_prefix . $sent_folder;
@@ -119,7 +119,7 @@ if (($load_sent_folder == '') && ($move_to_sent)) {
     $sent_folder = $load_sent_folder;
 }
 
-/* Load special folder - draft */
+// Load special folder - draft 
 $load_draft_folder = getPref($data_dir, $username, 'draft_folder');
 if (($load_draft_folder == '') && ($save_as_draft)) {
     $draft_folder = $folder_prefix . $draft_folder;
@@ -146,39 +146,40 @@ $editor_height = getPref($data_dir, $username, 'editor_height', 20 );
 $use_signature = getPref($data_dir, $username, 'use_signature', SMPREF_OFF );
 $prefix_sig = getPref($data_dir, $username, 'prefix_sig');
 
-/* Load timezone preferences */
+// Load timezone preferences 
 $timezone = getPref($data_dir, $username, 'timezone', SMPREF_NONE );
 
-/* Load preferences for reply citation style. */
+// Load preferences for reply citation style. 
 
 $reply_citation_style =
     getPref($data_dir, $username, 'reply_citation_style', SMPREF_NONE );
 $reply_citation_start = getPref($data_dir, $username, 'reply_citation_start');
 $reply_citation_end = getPref($data_dir, $username, 'reply_citation_end');
 
-// who is using those darn block comments?  poo!
+$body_quote = getPref($data_dir, $username, 'body_quote', '>');
+if ($body_quote == 'NONE') $body_quote = '';
 
 // Load preference for cursor behavior for replies
 //
 $reply_focus = getPref($data_dir, $username, 'reply_focus', '');
 
-/* left refresh rate, strtolower makes 1.0.6 prefs compatible */
+// left refresh rate, strtolower makes 1.0.6 prefs compatible 
 $left_refresh = getPref($data_dir, $username, 'left_refresh', SMPREF_NONE );
 $left_refresh = strtolower($left_refresh);
 
 $sort = getPref($data_dir, $username, 'sort', 6 );
 
-/* Load up the Signature file */
+// Load up the Signature file 
 $signature_abs = $signature = getSig($data_dir, $username, 'g');
 
-/* Message Highlighting Rules */
+// Message Highlighting Rules 
 $message_highlight_list = array();
 
-/* use new way of storing highlighting rules */
+// use new way of storing highlighting rules 
 if( $ser = getPref($data_dir, $username, 'hililist') ) {
     $message_highlight_list = unserialize($ser);
 } else {
-    /* use old way */
+    // use old way 
     for ($i = 0; $hlt = getPref($data_dir, $username, "highlight$i"); ++$i) {
         $highlight_array = explode(',', $hlt);
         $message_highlight_list[$i]['name'] = $highlight_array[0];
@@ -187,11 +188,11 @@ if( $ser = getPref($data_dir, $username, 'hililist') ) {
         $message_highlight_list[$i]['match_type'] = $highlight_array[3];
         removePref($data_dir, $username, "highlight$i");
     }
-    /* store in new format for the next time */
+    // store in new format for the next time 
     setPref($data_dir, $username, 'hililist', serialize($message_highlight_list));
 }
 
-/* Index order lets you change the order of the message index */
+// Index order lets you change the order of the message index 
 $order = getPref($data_dir, $username, 'order1');
 for ($i = 1; $order; ++$i) {
     $index_order[$i] = $order;
@@ -208,7 +209,7 @@ if (!isset($index_order)) {
 $alt_index_colors =
     getPref($data_dir, $username, 'alt_index_colors', SMPREF_ON );
 
-/* Folder List Display Format */
+// Folder List Display Format 
 $location_of_bar =
     getPref($data_dir, $username, 'location_of_bar', SMPREF_LOC_LEFT);
 $location_of_buttons =
@@ -228,7 +229,7 @@ $show_xmailer_default =
 $attachment_common_show_images = getPref($data_dir, $username, 'attachment_common_show_images', SMPREF_OFF );
 $pf_cleandisplay = getPref($data_dir, $username, 'pf_cleandisplay', SMPREF_OFF);
 
-/* message disposition notification support setting */
+// message disposition notification support setting 
 $mdn_user_support = getPref($data_dir, $username, 'mdn_user_support', SMPREF_ON);
 
 $include_self_reply_all =
@@ -237,26 +238,26 @@ $include_self_reply_all =
 $page_selector = getPref($data_dir, $username, 'page_selector', SMPREF_ON);
 $page_selector_max = getPref($data_dir, $username, 'page_selector_max', 10);
 
-/* SqClock now in the core */
+// SqClock now in the core 
 $date_format = getPref($data_dir, $username, 'date_format', 3);
 $hour_format = getPref($data_dir, $username, 'hour_format', 2);
 
-/*  compose in new window setting */
+//  compose in new window setting 
 $compose_new_win = getPref($data_dir, $username, 'compose_new_win', 0);
 $compose_height = getPref($data_dir, $username, 'compose_height', 550);
 $compose_width = getPref($data_dir, $username, 'compose_width', 640);
 
 
-/* signature placement settings */
+// signature placement settings 
 $sig_first = getPref($data_dir, $username, 'sig_first', 0);
 
-/* use the internal date of the message for sorting instead of the supplied header date */
+// use the internal date of the message for sorting instead of the supplied header date 
 $internal_date_sort = getPref($data_dir, $username, 'internal_date_sort', SMPREF_ON);
 
-/* if server sorting is enabled/disabled */
+// if server sorting is enabled/disabled 
 $sort_by_ref = getPref($data_dir, $username, 'sort_by_ref', 1);
 
-/* Load the javascript settings. */
+// Load the javascript settings. 
 $javascript_setting = getPref($data_dir, $username, 'javascript_setting', SMPREF_JS_AUTODETECT);
 $javascript_on = getPref($data_dir, $username, 'javascript_on', SMPREF_ON);
 $use_javascript_addr_book = getPref($data_dir, $username, 'use_javascript_addr_book', $default_use_javascript_addr_book);
@@ -267,8 +268,8 @@ $forward_cc = getPref($data_dir, $username, 'forward_cc', 0);
 
 $mailbox_select_style = getPref($data_dir, $username, 'mailbox_select_style', 0);
 
-/* Allow user to customize, and display the full date, instead of day, or time based
-   on time distance from date of message */
+// Allow user to customize, and display the full date, instead of day, 
+// or time based on time distance from date of message 
 $show_full_date = getPref($data_dir, $username, 'show_full_date', 0);
 
 do_hook('loading_prefs');

@@ -310,6 +310,15 @@ function load_optpage_data_display() {
     );
 
     $optvals[SMOPT_GRP_MESSAGE][] = array(
+        'name'    => 'body_quote',
+        'caption' => _("Prefix for Original Message when Replying"),
+        'type'    => SMOPT_TYPE_STRING,
+        'refresh' => SMOPT_REFRESH_NONE,
+        'size'    => SMOPT_SIZE_TINY,
+        'save'    => 'save_option_reply_prefix'
+    );
+
+    $optvals[SMOPT_GRP_MESSAGE][] = array(
         'name'    => 'reply_focus',
         'caption' => _("Cursor Position when Replying"),
         'type'    => SMOPT_TYPE_STRLIST,
@@ -350,7 +359,7 @@ function load_optpage_data_display() {
 function save_option_theme($option) {
     global $theme;
 
-    /* Do checking to make sure $new_theme is in the array. */
+    // Do checking to make sure $new_theme is in the array. 
     $theme_in_array = false;
     for ($i = 0; $i < count($theme); ++$i) {
         if ($theme[$i]['PATH'] == $option->new_value) {
@@ -363,7 +372,7 @@ function save_option_theme($option) {
         $option->new_value = '';
     }
 
-    /* Save the option like normal. */
+    // Save the option like normal. 
     save_option($option);
 }
 
@@ -375,7 +384,7 @@ function save_option_javascript_autodetect($option) {
 
     sqGetGlobalVar('new_javascript_setting', $new_javascript_setting);
 
-    /* Set javascript either on or off. */
+    // Set javascript either on or off. 
     if ($new_javascript_setting == SMPREF_JS_AUTODETECT) {
         if ($option->new_value == SMPREF_JS_ON) {
             setPref($data_dir, $username, 'javascript_on', SMPREF_JS_ON);
@@ -385,6 +394,20 @@ function save_option_javascript_autodetect($option) {
     } else {
         setPref($data_dir, $username, 'javascript_on', $new_javascript_setting);
     }
+}
+
+function save_option_reply_prefix($option) {
+    global $data_dir, $username, $new_javascript_setting;
+
+    // save as "NONE" if it was blanked out
+    //
+    if (empty($option->new_value)) $option->new_value = 'NONE';
+
+
+    // Save the option like normal.
+    //
+    save_option($option);
+
 }
 
 ?>
