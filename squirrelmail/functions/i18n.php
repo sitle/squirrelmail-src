@@ -129,8 +129,18 @@ function set_up_language($sm_language, $do_search = false, $default = false) {
             putenv( "LC_ALL=$longlocale" );
             putenv( "LANG=$longlocale" );
             putenv( "LANGUAGE=$longlocale" );
+            putenv( "LC_NUMERIC=C" );
+            if ($sm_notAlias=='tr_TR') putenv( "LC_CTYPE=C" );
         }
         setlocale(LC_ALL, $longlocale);
+        // Workaround for plugins that use numbers with floating point
+        // It might be removed if plugins use correct decimal delimiters
+        // according to locale settings.
+        setlocale(LC_NUMERIC, 'C');
+        // Workaround for specific Turkish strtolower/strtoupper rules.
+        // Many functions expect English conversion rules.
+        if ($sm_notAlias=='tr_TR') setlocale(LC_CTYPE,'C');
+
         $squirrelmail_language = $sm_notAlias;
         if ($squirrelmail_language == 'ja_JP') {
             header ('Content-Type: text/html; charset=EUC-JP');
