@@ -44,9 +44,6 @@ if (GZIPOUTPUT && !extension_loaded('zlib')) {
 /* temp dir for diff files */
 if (!defined('WTFW_DIFF_TEMP')) define('WTFW_DIFF_TEMP', $ENV['TEMP']);
 
-/* mirror access */
-if (!defined('MIRROR_HOME')) define('MIRROR_HOME', '');
-
 /* database settings */
 if (!defined('DATABASE')) define('DATABASE', 'mysql');
 if (!defined('DBHOST')) define('DBHOST', 'localhost');
