@@ -1,13 +1,12 @@
 # French Squirrelmail Translation
-# Copyright (c) 1999-2004 The Squirrelmail Development Team
-# Antoine Hulin <antoine@origan.fdn.org>, 2002-2003
-# Alex Lemaresquier <alex@brainstorm.fr>, 2003-2004
-# $Id$
+# Copyright (c) 1999-2002 The Squirrelmail Development Team
+# Antoine Hulin <antoine@origan.fdn.org>
+# 
 msgid ""
 msgstr ""
-"Project-Id-Version: squirrelmail \n"
-"POT-Creation-Date: 2004-02-07 15:34+0200\n"
-"PO-Revision-Date: 2004-02-17 15:30GMT+1\n"
+"Project-Id-Version: $Id$\n"
+"POT-Creation-Date: 2003-09-04 03:11+0200\n"
+"PO-Revision-Date: 2001-12-27 15:58GMT+1\n"
 "Last-Translator: Alex Lemaresquier <alex@brainstorm.fr>\n"
 "Language-Team: French <squirrelmail-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -126,7 +125,7 @@ msgstr "Ajouter &#224;&#160;: %s"
 
 # Attention, pas HTML
 msgid "said"
-msgstr "a écrit "
+msgstr "a dit "
 
 # Attention, pas HTML
 msgid "quote"
@@ -158,8 +157,8 @@ msgstr ""
 msgid "Draft Saved"
 msgstr "Brouillon enregistr&#233;"
 
-msgid "Your Message has been sent"
-msgstr "Votre message a &#233;t&#233; envoy&#233;."
+msgid "Your Message has been sent."
+msgstr "Votre message est parti."
 
 msgid "From:"
 msgstr "De&#160;:"
@@ -384,9 +383,6 @@ msgstr "Vider"
 
 msgid "Last Refresh"
 msgstr "Mise &#224; jour&#160;"
-
-msgid "Save folder tree"
-msgstr "Enregistrer l'arborescence"
 
 msgid "Login"
 msgstr "Acc&#232;s Messagerie"
@@ -678,8 +674,8 @@ msgid ""
 "The message sender has requested a response to indicate that you have read "
 "this message. Would you like to send a receipt?"
 msgstr ""
-"L'expéditeur du message a demandé un accusé indiquant que vous avez lu ce "
-"message. Voulez-vous l'envoyer ?"
+"L'expéditeur du message a demandé un accusé indiquant que "
+"vous avez lu ce message. Voulez-vous l'envoyer ?"
 
 msgid "Send read receipt now"
 msgstr "Envoyer un avis de lecture maintenant."
@@ -720,8 +716,35 @@ msgstr "Pi&#232;ces jointes&#160;"
 msgid "You must be logged in to access this page."
 msgstr "Il faut &#234;tre connect&#233; pour acc&#233;der &#224; cette page"
 
-msgid "Folder:"
-msgstr "Dossier&#160;:"
+msgid "All Folders"
+msgstr "Tous les dossiers"
+
+msgid "Please enter something to search for"
+msgstr "Il faut choisir un crit&#232;re de recherche"
+
+msgid "There must be at least one criteria to search for"
+msgstr "Il faut au moins un crit&#232;re de recherche"
+
+msgid "Error in criteria argument"
+msgstr "Erreur dans l'argument d'un crit&#232;re"
+
+msgid "M j, Y"
+msgstr "j M Y"
+
+msgid "(Illegal date)"
+msgstr "(Date ill&#233;gale)"
+
+msgid "(Wrong date)"
+msgstr "(Date invalide)"
+
+msgid "In"
+msgstr "Dans"
+
+msgid "(Missing argument)"
+msgstr "(Argument manquant)"
+
+msgid "(Spurious argument)"
+msgstr "(Argument superflu)"
 
 msgid "edit"
 msgstr "&#201;diter"
@@ -732,8 +755,8 @@ msgstr "Rechercher"
 msgid "delete"
 msgstr "Supprimer"
 
-msgid "Recent Searches"
-msgstr "Derni&#232;res recherches"
+msgid "Saved Searches"
+msgstr "Recherches enregistr&#233;es"
 
 msgid "save"
 msgstr "Enregistrer"
@@ -741,17 +764,118 @@ msgstr "Enregistrer"
 msgid "forget"
 msgstr "Oublier"
 
-msgid "Current Search"
-msgstr "Recherche"
+msgid "Recent Searches"
+msgstr "Derni&#232;res recherches"
 
-msgid "All Folders"
-msgstr "Tous les dossiers"
+msgid "Missing"
+msgstr "Disparu"
 
-msgid "Body"
-msgstr "Corps"
+msgid "Exclude Criteria:"
+msgstr "Exclure ce Crit&#232;re&#160;:"
 
-msgid "Everywhere"
-msgstr "Partout"
+msgid "Search Criteria"
+msgstr "Crit&#232;res de Recherche"
+
+msgid "Folder:"
+msgstr "Dossier&#160;:"
+
+msgid "Add New Criteria"
+msgstr "Ajouter un Crit&#232;re"
+
+msgid "Remove Excluded Criteria"
+msgstr "Supprimer les Crit&#232;res Exclus"
+
+msgid "Remove All Criteria"
+msgstr "Supprimer tous les Crit&#232;res"
+
+msgid "Answered"
+msgstr "R&#233;pondu"
+
+msgid "Before"
+msgstr "Datant d'avant le"
+
+# BODY
+msgid "Message Body"
+msgstr "Corps du message"
+
+msgid "Deleted"
+msgstr "Supprim&#233;"
+
+msgid "Draft"
+msgstr "Brouillon"
+
+msgid "Flagged"
+msgstr "Marqu&#233;"
+
+# FROM
+msgid "Sent By"
+msgstr "Envoy&#233; par"
+
+# HEADER
+msgid "Header Field"
+msgstr "Champ d'en-t&#234;te"
+
+msgid "Keyword"
+msgstr "Mot-cl&#233;"
+
+# LARGER
+msgid "Larger Than"
+msgstr "Plus gros que"
+
+msgid "Old"
+msgstr "Ancien"
+
+msgid "On"
+msgstr "Datant du"
+
+msgid "Recent"
+msgstr "R&#233;cent"
+
+msgid "Seen"
+msgstr "Lu"
+
+msgid "Sent Before"
+msgstr "Envoy&#233; avant le"
+
+msgid "Sent On"
+msgstr "Envoy&#233; le"
+
+msgid "Sent Since"
+msgstr "Envoy&#233; apr&#232;s le"
+
+msgid "Since"
+msgstr "Datant d'apr&#232;s le"
+
+# SMALLER
+msgid "Smaller Than"
+msgstr "Plus petit que"
+
+# SUBJECT
+msgid "Subject Contains"
+msgstr "Objet contenant"
+
+# TEXT
+msgid "Header and Body"
+msgstr "En-t&#234;te et Corps"
+
+# TO
+msgid "Sent To"
+msgstr "Envoy&#233; &#224;"
+
+msgid "Not"
+msgstr "Pas"
+
+msgid "And In"
+msgstr "Et dans"
+
+msgid "Or In"
+msgstr "Ou dans"
+
+msgid "And"
+msgstr "Et"
+
+msgid "Or"
+msgstr "Ou"
 
 msgid "Search Results"
 msgstr "R&#233;sultat de la recherche"
@@ -813,6 +937,9 @@ msgstr "En-t&#234;te complet"
 msgid "Viewing a text attachment"
 msgstr "Voir un fichier texte joint"
 
+msgid "Folder List"
+msgstr "Liste des dossiers"
+
 msgid "Personal address book"
 msgstr "Carnet d'adresses personnel"
 
@@ -832,7 +959,7 @@ msgid "User '%s' does not exist"
 msgstr "L'utilisateur &#171;&#160;%s&#160;&#187; n'existe pas."
 
 msgid "Global address book"
-msgstr "Carnet d'adresses g&#233;n&#233;ral"
+msgstr "Carnets d'adresses g&#233;n&#233;ral"
 
 msgid "No such file or directory"
 msgstr "Aucun fichier ou r&#233;pertoire correspondant"
@@ -1013,9 +1140,6 @@ msgstr "D j F Y G:i"
 msgid "D, F j, Y G:i"
 msgstr "D j F Y G:i"
 
-msgid "M j, Y"
-msgstr "j M Y"
-
 msgid "g:i a"
 msgstr "G:i"
 
@@ -1032,18 +1156,12 @@ msgstr "D, G:i"
 msgid "Preference database error (%s). Exiting abnormally"
 msgstr "Erreur du fichier de pr&#233;f&#233;rences (%s). Sortie inattendue."
 
-msgid "Unknown user or password incorrect."
-msgstr "Utilisateur inconnu ou mot de passe incorrect."
-
-msgid "Click here to try again"
-msgstr "Cliquez ici pour réessayer"
-
 #, c-format
 msgid "Click here to return to %s"
 msgstr "Cliquez ici pour retourner &#224; %s."
 
 msgid "Go to the login page"
-msgstr "Retourner &#224; la page d'acc&#232;s."
+msgstr "Retourner &#224; la page de connexion."
 
 #, c-format
 msgid ""
@@ -1130,32 +1248,38 @@ msgstr ""
 "Vous devez avoir install&#233; php4 avec la gestion des caract&#232;res "
 "multi-octets (option de configuration --with-mbstring)."
 
-msgid "ERROR : No available imapstream."
-msgstr "ERREUR&#160;: Pas de flux IMAP."
-
-msgid "ERROR : Connection dropped by imap-server."
-msgstr "ERREUR&#160;: Connexion interrompue par le serveur IMAP."
-
 msgid "ERROR : Could not complete request."
 msgstr "ERREUR&#160;: Impossible d'achever la requ&#234;te."
 
-msgid "Query:"
-msgstr "Requ&#234;te&#160;:"
-
-msgid "Reason Given: "
-msgstr "Raison invoqu&#233;e&#160;: "
-
 msgid "ERROR : Bad or malformed request."
 msgstr "Erreur&#160;: requ&#234;te invalide ou mal formul&#233;e."
-
-msgid "Server responded: "
-msgstr "Le serveur a r&#233;pondu&#160;: "
 
 msgid "ERROR : Imap server closed the connection."
 msgstr "ERREUR&#160;: Le serveur IMAP a rompu la connexion."
 
 msgid "ERROR : Unknown imap response."
 msgstr "ERREUR&#160;: R&#233;ponse IMAP inconnue."
+
+msgid "Reason Given: "
+msgstr "Raison invoqu&#233;e&#160;: "
+
+msgid "Query:"
+msgstr "Requ&#234;te&#160;:"
+
+msgid "ERROR : No available imapstream."
+msgstr "ERREUR&#160;: Pas de flux IMAP."
+
+msgid "ERROR : Bad function call."
+msgstr "ERREUR&#160;: Appel de fonction erron&#233;."
+
+msgid "Reason:"
+msgstr "Cause&#160;:"
+
+msgid "ERROR : Connection dropped by imap-server."
+msgstr "ERREUR&#160;: Connexion interrompue par le serveur IMAP."
+
+msgid "Server responded: "
+msgstr "Le serveur a r&#233;pondu&#160;: "
 
 #, c-format
 msgid "Error connecting to IMAP server: %s."
@@ -1172,6 +1296,9 @@ msgstr "Erreur inconnue&#160;: %s"
 msgid "Read data:"
 msgstr "Lecture des donn&#233;es&#160;:"
 
+msgid "Unknown user or password incorrect."
+msgstr "Utilisateur inconnu ou mot de passe incorrect."
+
 msgid "ERROR : Could not append message to"
 msgstr "ERREUR&#160;: Impossible d'ajouter le message dans"
 
@@ -1187,9 +1314,6 @@ msgstr ""
 
 msgid "(no subject)"
 msgstr "(pas d'objet)"
-
-msgid "Unknown Sender"
-msgstr "Exp&#233;diteur inconnu"
 
 msgid "Unknown response from IMAP server: "
 msgstr "R&#233;ponse du serveur IMAP inconnue&#160;: "
@@ -1218,7 +1342,7 @@ msgid ""
 "Thread sorting is not supported by your IMAP server.<br>Please report this "
 "to the system administrator."
 msgstr ""
-"Votre serveur IMAP ne g&#232;re pas le tri par fil de discussion.<br>Merci "
+"Votre serveur IMAP ne g&#232;re pas le tri par sujet de discussion.<br>Merci "
 "de l'indiquer &#224; votre administrateur."
 
 msgid ""
@@ -1253,19 +1377,25 @@ msgid "Unread"
 msgstr "Non Lu"
 
 msgid "Unthread View"
-msgstr "Ne pas voir par fil de discussion"
+msgstr "Ne pas voir les fils de discussion"
 
 msgid "Thread View"
-msgstr "Voir par fil de discussion"
+msgstr "Voir les fils de discussion"
+
+msgid "Bypass Trash"
+msgstr "Sans mettre à la Corbeille"
+
+msgid "Click here to change the sorting of the message list"
+msgstr "Cliquer ici pour changer le classement des messages"
 
 msgid "Toggle All"
 msgstr "Inverser la s&#233;lection"
 
 msgid "Unselect All"
-msgstr "Enlever la s&#233;lection"
+msgstr "Aucune s&#233;lection"
 
 msgid "Select All"
-msgstr "S&#233;lectionner tout"
+msgstr "Tout s&#233;lectionner"
 
 #, c-format
 msgid "Viewing Messages: <B>%s</B> to <B>%s</B> (%s total)"
@@ -1276,10 +1406,10 @@ msgid "Viewing Message: <B>%s</B> (1 total)"
 msgstr "Message <b>%s</b> (1 au total)"
 
 msgid "Paginate"
-msgstr "Page par page"
+msgstr "Par pages"
 
 msgid "Show All"
-msgstr "Tout afficher"
+msgstr "Tous les messages"
 
 msgid "SquirrelMail could not decode the bodystructure of the message"
 msgstr "Squirrelmail ne comprend pas la structure du message"
@@ -1307,19 +1437,16 @@ msgid "FETCH line:"
 msgstr "Ligne <i>FETCH</i>&#160;:"
 
 msgid "Hide Unsafe Images"
-msgstr "Masquer les images douteuses"
+msgstr "Masquer les images peu s&#251;res"
 
 msgid "View Unsafe Images"
-msgstr "Afficher les images douteuses"
+msgstr "Afficher les images peu s&#251;res"
 
 msgid "download"
 msgstr "t&#233;l&#233;charger"
 
 msgid "sec_remove_eng.png"
 msgstr "sec_remove_fr_FR.png"
-
-msgid "This external link will open in a new window"
-msgstr "Ce lien vers un site externe s'ouvrira dans une nouvelle fen&#234;tre "
 
 #, c-format
 msgid "Option Type '%s' Not Found"
@@ -1448,6 +1575,16 @@ msgstr "Nombre maximum de pages &#224; afficher&#160;"
 msgid "Always Show Full Date"
 msgstr "Afficher la date compl&#232;te du message&#160;"
 
+msgid "Length of From/To Field (0 for full)"
+msgstr ""
+"Abbr&#233;ger le champ &#171;&#160;De&#160;&#187; / &#171;&#160;&#192;&#160;"
+"&#187; &#224; (0 pour ne pas abbr&#233;ger)&#160;"
+
+msgid "Length of Subject Field (0 for full)"
+msgstr ""
+"Abbr&#233;ger le champ &#171;&#160;Objet&#160;&#187; &#224; (0 pour ne pas "
+"abbr&#233;ger)&#160;"
+
 msgid "Message Display and Composition"
 msgstr "Affichage et composition des messages"
 
@@ -1515,17 +1652,8 @@ msgid "Append Signature before Reply/Forward Text"
 msgstr ""
 "Signature avant le texte cit&#233; dans les transferts et r&#233;ponses&#160;"
 
-msgid "Cursor Position when Replying"
-msgstr "Pour les r&#233;ponses, positionner&#160;"
-
-msgid "To: field"
-msgstr "le curseur dans le champ &#192;&#160;:"
-
-msgid "Focus in body"
-msgstr "le curseur au d&#233;but du texte de r&#233;ponse"
-
-msgid "Select body"
-msgstr "la s&#233;lection sur le texte de la r&#233;ponse"
+msgid "Strip signature when replying"
+msgstr "Supprimer la signature du message cit&#233; en r&#233;ponse&#160;"
 
 msgid "Enable Sort by of Receive Date"
 msgstr "Classement des messages par date de r&#233;ception&#160;"
@@ -1561,6 +1689,9 @@ msgstr "Dossier Brouillons&#160;"
 
 msgid "Folder List Options"
 msgstr "Options de la liste des dossiers"
+
+msgid "Folder List Display Format"
+msgstr "Affichage de la liste des dossiers&#160;"
 
 msgid "Location of Folder List"
 msgstr "Emplacement de la liste des dossiers&#160;"
@@ -1607,7 +1738,7 @@ msgstr "Non lus"
 msgid "Unseen and Total"
 msgstr "Non lus / Total"
 
-msgid "Enable Collapsible Folders"
+msgid "Enable Collapsable Folders"
 msgstr "Dossiers repliables&#160;"
 
 msgid "Enable Cumulative Unread Message Notification"
@@ -1616,17 +1747,8 @@ msgstr "Notification cumul&#233;e des messages non lus&#160;"
 msgid "Show Clock on Folders Panel"
 msgstr "Format de la date de mise &#224; jour de la liste des dossiers&#160;"
 
-msgid "Show weekday and time"
-msgstr "Afficher le jour et l'heure"
-
-msgid "Show time with seconds"
-msgstr "Afficher l'heure avec les secondes"
-
-msgid "Show time"
-msgstr "Afficher l'heure"
-
 msgid "No Clock"
-msgstr "Pas d'horloge"
+msgstr "Ne pas afficher la date"
 
 msgid "Hour Format"
 msgstr "Format de l'heure&#160;"
@@ -1651,6 +1773,12 @@ msgstr "Style de la liste de s&#233;lection&#160;"
 
 msgid "Long: "
 msgstr "Long&#160;: "
+
+msgid "Folder"
+msgstr "Dossier"
+
+msgid "Subfolder"
+msgstr "Sous-dossier"
 
 msgid "Indented: "
 msgstr "Indent&#233;&#160;: "
@@ -1697,13 +1825,10 @@ msgid "No Citation"
 msgstr "Pas de citation"
 
 msgid "AUTHOR Said"
-msgstr "L'AUTEUR a écrit"
+msgstr "L'AUTEUR a dit"
 
 msgid "Quote Who XML"
 msgstr "Citation XML"
-
-msgid "On DATE, AUTHOR Said"
-msgstr "Le DATE, l'AUTEUR a écrit"
 
 msgid "User-Defined"
 msgstr "Personnalis&#233;e"
@@ -1956,7 +2081,7 @@ msgid "Allow server charset search"
 msgstr "Utiliser l'encodage local pour la recherche"
 
 msgid "UID support"
-msgstr "Utiliser les UIDs"
+msgstr "Support UID"
 
 msgid "PHP session name"
 msgstr "Nom de session PHP"
@@ -2030,95 +2155,11 @@ msgstr ""
 "Ce module permet la modification &#224; distance du fichier de configuration "
 "de SquirrelMail."
 
-msgid "Submit a Bug Report"
-msgstr "Envoyer un rapport d'erreur"
-
-msgid ""
-"Before you send your bug report, please make sure to check this checklist "
-"for any common problems."
-msgstr ""
-"Avant d'envoyer un rapport d'erreur, v&#233;rifiez cette liste de probl&#232;"
-"mes courants."
-
-msgid ""
-"Make sure that you are running the most recent copy of <a href=\"http://www."
-"squirrelmail.org/\">SquirrelMail</a>."
-msgstr ""
-"Assurez-vous d'utiliser la version la plus r&#233;cente de <a href=\"http://"
-"www.squirrelmail.org/\">SquirrelMail</a>."
-
-#, c-format
-msgid "You are currently using version %s."
-msgstr "Vous utilisez actuellement la version %s."
-
-msgid ""
-"Check to see if you bug is already listed in the <a href=\"http://"
-"sourceforge.net/bugs/?group_id=311\">Bug List</a> on SourceForge. If it is, "
-"we already know about it and are trying to fix it."
-msgstr ""
-"V&#233;rifiez si votre bug est d&#233;j&#224; r&#233;pertori&#233; dans la "
-"<a href=\"http://sourceforge.net/bugs/?group_id=311\">liste de bugs</a> sur "
-"SourceForge. Si c'est le cas, nous le connaissons d&#233;j&#224; et nous "
-"occupons de le corriger."
-
-msgid ""
-"Try to make sure that you can repeat it. If the bug happens sporatically, "
-"try to document what you did when it happened. If it always occurs when you "
-"view a specific message, keep that message around so maybe we can see it."
-msgstr ""
-"Assurez-vous de pouvoir le reproduire. Si le bug se produit sporadiquement, "
-"essayez de documenter ce que vous faisiez lorsqu'il s'est produit.S'il se "
-"produit systématiquement en visualisant un message particulier, gardez ce "
-"message afin que nous puissions le consulter."
-
-msgid ""
-"If there were warnings displayed above, try to resolve them yourself. Read "
-"the guides in the <tt>doc/</tt> directory where SquirrelMail was installed."
-msgstr ""
-"Si des avertissements se sont affichés précédemment, essayez de les résoudre "
-"vous-même. Lisez les manuels du dossier <tt>doc</tt> où SquirrelMail a été "
-"installé."
-
-msgid ""
-"Pressing the button below will start a mail message to the developers of "
-"SquirrelMail that will contain a lot of information about your system, your "
-"browser, how SquirrelMail is set up, and your IMAP server. It will also "
-"prompt you for information. Just fill out the sections at the top. If you "
-"like, you can scroll down in the message to see what else is being sent."
-msgstr ""
-"En appuyant sur le bouton ci-dessous vous enverrez un email aux développeurs "
-"de SquirrelMail contenant des informations à propos de votre système, votre "
-"navigateur, l'installation de SquirrelMail ainsi que de votre serveur IMAP. "
-"Vous devrez aussi fournir quelques informations manuellement au début du "
-"message. Si vous le souhaitez, vous pouvez consulter le bas du message pour "
-"voir les informations transmises."
-
-msgid ""
-"Please make sure to fill out as much information as you possibly can to give "
-"everyone a good chance of finding and removing the bug. Submitting your bug "
-"like this will not have it automatically added to the bug list on "
-"SourceForge, but someone who gets your message may add it for you."
-msgstr ""
-"Assurez-vous de fournir autant d'informations que possible afin de donner le "
-"maximum de possiblités à chacun de trouver et corriger le bug. Soumettre un "
-"bug de cette manière ne l'ajoutera pas automatiquement à la liste de bugs "
-"sur SourceForge, mais quelqu'un d'autre pourra le lire et l'ajouter pour "
-"vous."
-
-msgid "This bug involves"
-msgstr "Ce bug concerne"
-
-msgid "the general program"
-msgstr "le programme g&#233;n&#233;ral"
-
-msgid "a specific plugin"
-msgstr "un plugin particulier"
-
 msgid "Bug Reports:"
-msgstr "Rapports d'erreur&#160;:"
+msgstr "Rapports d'erreurs&#160;:"
 
 msgid "Show button in toolbar"
-msgstr "Afficher le bouton dans la barre d'outils"
+msgstr "Montrer le bouton dans la barre d'outils"
 
 msgid "TODAY"
 msgstr "Aujourd'hui"
@@ -2293,6 +2334,65 @@ msgstr ""
 "phoniques."
 
 msgid ""
+"FREE - Osirusoft Relays - Osirusofts list of verified open relays. Seems to "
+"include servers used by abuse@uunet.net auto-replies too."
+msgstr ""
+"GRATUIT - <i>Osirusoft Relays</i> - Liste de relais ouverts confirm&#233;s. "
+"Semble inclure les serveurs utilis&#233;s par abuse@uunet.net pour les "
+"r&#233;ponses automatiques."
+
+msgid "FREE - Osirusoft Dialups - Osirusofts Dialup Spam Source list."
+msgstr ""
+"GRATUIT - <i>Osirusoft Dialups</i> - Liste des <i>spammers</i> utilisant un "
+"acc&#232;s t&#233;l&#233;phonique."
+
+msgid ""
+"FREE - Osirusoft Confirmed Spam Source - Sites that continually spam and "
+"have been manually added after multiple nominations. Use with caution. Seems "
+"to catch abuse auto-replies from some ISPs."
+msgstr ""
+"GRATUIT - <i>Osirusoft Confirmed Spam Source</i> - Sites envoyant "
+"continuellement des publicit&#233;s, ajout&#233;s manuellement apr&#232;s "
+"plusieurs nominations. &#192; utiliser avec pr&#233;cautions, cette liste "
+"semble contenir les automates de r&#233;ponses aux abus de certains FAI."
+
+msgid ""
+"FREE - Osirusoft Smart Hosts - List of hosts that are secure but relay for "
+"other mail servers that are not secure."
+msgstr ""
+"GRATUIT - <i>Osirusoft Smart Hosts</i> - Liste de serveurs s&#233;curis&#233;"
+"s mais qui relaient le courrier pour des serveurs non s&#233;curis&#233;s."
+
+msgid ""
+"FREE - Osirusoft Spamware Developers - It is believed that these are IP "
+"ranges of companies that are known to produce spam software. Seems to catch "
+"abuse auto-replies from some ISPs."
+msgstr ""
+"GRATUIT - <i>Osirusoft Spamware Developers</i> - Certains pensent qu'il "
+"s'agit de plages d'adresses IP allou&#233;es &#224; des entreprises connues "
+"pour d&#233;velopper des logiciels de diffusion publicitaire. Cette liste "
+"semble contenir les automates de r&#233;ponses aux abus de certains FAI."
+
+msgid ""
+"FREE - Osirusoft Unconfirmed OptIn Servers - List of listservers that opt "
+"users in without confirmation."
+msgstr ""
+"GRATUIT - <i>Osirusoft Unconfirmed OptIn Servers</i> - Liste de serveurs qui "
+"abonnent les utilisateurs sans demander de confirmation."
+
+msgid ""
+"FREE - Osirusoft Insecure formmail.cgi scripts - List of insecure formmail."
+"cgi scripts. (planned)."
+msgstr ""
+"GRATUIT - <i>Osirusoft Insecure formmail.cgi scripts</i> - Liste de scripts "
+"formmail.cgi non s&#251;rs (planifi&#233;)."
+
+msgid "FREE - Osirusoft Open Proxy Servers - List of Open Proxy Servers."
+msgstr ""
+"GRATUIT - <i>Osirusoft Open Proxy Servers</i> - Liste de serveurs "
+"mandataires ouverts."
+
+msgid ""
 "FREE - ORDB was born when ORBS went off the air. It seems to have fewer "
 "false positives than ORBS did though."
 msgstr ""
@@ -2340,11 +2440,11 @@ msgstr "GRATUIT - <i>SPAMhaus</i> - Liste de <i>spammers</i> bien connus."
 
 msgid ""
 "FREE, for now - SPAMCOP - An interesting solution that lists servers that "
-"have a very high spam to legit email ratio (85 percent or more)."
+"have a very high spam to legit email ratio (85% or more)."
 msgstr ""
 "GRATUIT, pour le moment - <i>SPAMCOP</i> - Une solution int&#233;ressante "
-"qui retient les serveurs qui envoient une tr&#232;s forte proportion de Spam "
-"(85% ou plus)."
+"qui retient les serveurs qui envoient une tr&#232;s forte proportion de "
+"publicit&#233;s  (85% ou plus)."
 
 msgid "FREE - dev.null.dk - I don't have any detailed info on this list."
 msgstr ""
@@ -2356,17 +2456,17 @@ msgstr ""
 "GRATUIT - <i>visi.com Relay Stop List</i> - Liste de relais ouverts tr&#232;"
 "s conservatrice."
 
-msgid "FREE - ahbl.org Open Relays - Another list of Open Relays."
+msgid "FREE - 2mbit.com Open Relays - Another list of Open Relays."
 msgstr ""
-"GRATUIT - <i>ahbl.org Open Relays</i> - Une autre liste de relais ouverts."
+"GRATUIT - <i>2mbit.com Open Relays</i> - Une autre liste de relais ouverts."
 
-msgid "FREE - ahbl.org SPAM Source - List of Direct SPAM Sources."
+msgid "FREE - 2mbit.com SPAM Source - List of Direct SPAM Sources."
 msgstr ""
-"GRATUIT - <i>ahbl.org SPAM Source</i> - Liste de sources directes de <i>spam</i>."
+"GRATUIT - <i>2mbit.com SPAM Source</i> - Liste de sources de <i>spam</i>."
 
-msgid "FREE - ahbl.org SPAM ISPs - List of SPAM-friendly ISPs."
+msgid "FREE - 2mbit.com SPAM ISPs - List of SPAM-friendly ISPs."
 msgstr ""
-"GRATUIT - <i>ahbl.org SPAM ISPs</i> - Liste de FAI appr&#233;ci&#233;s des "
+"GRATUIT - <i>2mbit.com SPAM ISPs</i> - Liste de FAI appr&#233;ci&#233;s des "
 "<i>spammers</i>."
 
 msgid ""
@@ -2639,12 +2739,6 @@ msgstr "Pas de serveur sp&#233;cifi&#233;"
 msgid "Error "
 msgstr "Erreur "
 
-msgid "POP3 noop:"
-msgstr "POP3 noop&#160;: "
-
-msgid "No connection to server"
-msgstr "pas de connexion au serveur."
-
 msgid "POP3 user:"
 msgstr "Utilisateur POP3&#160;: "
 
@@ -2665,6 +2759,9 @@ msgstr "l'authentification a &#233;chou&#233;e"
 
 msgid "POP3 apop:"
 msgstr "POP3 apop&#160;: "
+
+msgid "No connection to server"
+msgstr "pas de connexion au serveur."
 
 msgid "No login ID submitted"
 msgstr "Identifiant non renseign&#233;"
@@ -2723,10 +2820,6 @@ msgstr "n&#176;&#160;de message manquant"
 msgid "Command failed "
 msgstr "la commande a &#233;chou&#233;e "
 
-# A verifier
-msgid "Remote POP server Fetching Mail"
-msgstr "R&#233;cup&#233;ration de courrier sur serveur POP"
-
 msgid "Select Server:"
 msgstr "S&#233;lectionnez le serveur&#160;:"
 
@@ -2735,6 +2828,16 @@ msgstr "Mot de passe pour"
 
 msgid "Fetch Mail"
 msgstr "R&#233;cup&#233;rer"
+
+# A verifier
+msgid "Remote POP server Fetching Mail"
+msgstr "R&#233;cup&#233;ration de courrier sur serveur POP"
+
+msgid "No POP3 servers configured yet."
+msgstr "Aucun serveur POP3 configur&#233;."
+
+msgid "Click here to go to the options page."
+msgstr "Cliquez ici pour atteindre la page d'options."
 
 msgid "Fetching from "
 msgstr "R&#233;cup&#233;rer depuis "
@@ -3023,16 +3126,8 @@ msgstr "Nouveau message"
 msgid "SquirrelMail Notice:"
 msgstr "Annonce SquirrelMail&#160;:"
 
-msgid "You have"
-msgstr "Vous avez"
-
-#, c-format
-msgid "%s new message"
-msgstr "%s nouveau message"
-
-#, c-format
-msgid "%s new messages"
-msgstr "%s nouveaux messages"
+msgid "You have new mail!"
+msgstr "Vous avez un nouveau message&#160;!"
 
 msgid "NewMail Options"
 msgstr "Options de notification des nouveaux messages"
@@ -3082,176 +3177,11 @@ msgstr "Annuellement"
 msgid "Base Sent Folder"
 msgstr "Base du dossier Courrier envoy&#233;"
 
-msgid "Enabled"
-msgstr "Activ&#233;"
-
-msgid "Disable it"
-msgstr "Le d&#233;sactiver"
-
-msgid "Enable it"
-msgstr "L'activer"
-
-msgid "Spam reporting"
-msgstr "Signalement du Spam (courrier non sollicit&#233;)"
-
-msgid "SpamCop link is:"
-msgstr "Le lien vers SpamCop est :"
-
-msgid "Delete spam when reported:"
-msgstr "Supprimer le spam apr&#232;s signalement :"
-
-msgid "Only works with email-based reporting"
-msgstr "Ne fonctionne qu'avec du signalement par email"
-
-msgid "Spam Reporting Method:"
-msgstr "Méthode de signalement du Spam :"
-
-msgid "Quick email-based reporting"
-msgstr "Signalement par email rapide"
-
-msgid "Thorough email-based reporting"
-msgstr "Signalement par email compliqu&#233;"
-
-msgid "Web-based form"
-msgstr "Formulaire Web"
-
-msgid "Your SpamCop authorization code:"
-msgstr "Votre code d'autorisation SpamCop :"
-
-msgid "see below"
-msgstr "voir ci-dessous"
-
-msgid ""
-"SpamCop is a free service that greatly assists in finding the true source of "
-"the spam and helps in letting the proper people know about the abuse."
-msgstr ""
-"SpamCop est un service gratuit qui aide &#224; trouver la véritable source "
-"du Spam et signaler l'abus aux personnes concern&#233;es."
-
-msgid ""
-"To use it, you must get a SpamCop authorization code. There is a free <a "
-"href=\"http://spamcop.net/anonsignup.shtml\">sign up page</a> so you can use "
-"SpamCop."
-msgstr ""
-"Pour l'utiliser, vous devez avoir un code d'autorisation de SpamCop. Il "
-"existe une <a href=\"http://spamcop.net/anonsignup.shtml\">page "
-"d'enregistrement</a> gratuite pour vous permettre d'utiliser SpamCop."
-
-msgid ""
-"<b>Before you sign up, be warned:</b> Some users have reported that the "
-"email addresses used with SpamCop find their way onto spam lists. To be "
-"safe, you can just create an email forwarding account and have all SpamCop "
-"reports get sent to there. Also, if it gets flooded with spam, you can then "
-"just delete that account with no worries about losing your real email "
-"address. Just go create an email forwarder somewhere (<a href=\"http://www."
-"yahoo.com/\">Yahoo!</a> has a <a href=\"http://dir.yahoo.com/"
-"Business_and_Economy/Business_to_Business/Communications_and_Networking/"
-"Internet_and_World_Wide_Web/Email_Providers/Forwarding_Services/"
-"Free_Forwarding/\">list of places</a>) so that messages from system "
-"administrators and whatnot can be sent to you."
-msgstr ""
-"<b>Avant de vous inscrire, faites attention : </b> certains utilisateurs ont "
-"signalé que des adresses email utilisées avec SpamCop se retrouvent sur des "
-"listes de Spam. Par sécurité, vous pouvez juste créer une adresse email "
-"d'envoi pour tous les rapports destinés à SpamCop. Ainsi, si elle se "
-"retrouve submergée de Spams, vous pouvez juste la supprimer sans perdre "
-"votre adresse email réelle. Allez simplement créer un email d'envoi quelque "
-"part ((<a href=\"http://www.yahoo.com/\">Yahoo!</a> possède une <a href="
-"\"http://dir.yahoo.com/Business_and_Economy/Business_to_Business/"
-"Communications_and_Networking/Internet_and_World_Wide_Web/Email_Providers/"
-"Forwarding_Services/Free_Forwarding/\"> liste de services</a>) afin que les "
-"messages des administrateurs système et autres vous soient envoyés."
-
-msgid ""
-"Once you have signed up with SpamCop and have received your SpamCop "
-"authorization code, you need to enable this plugin -- just click the link "
-"above.  Once enabled, you go about your normal life.  If you encounter a "
-"spam message in your mailbox, just view it.  On the right-hand side, near "
-"the top of where the message is displayed, you will see a link to report "
-"this message as spam.  Clicking on it brings you to a confirmation page. "
-"Confirming that you want the spam report sent will do different things with "
-"different reporting methods."
-msgstr ""
-"Une fois que vous vous serez inscrit sur SpamCop et que vous aurez reçu "
-"votre code d'autorisation, vous devrez mettre en route ce plugin -- cliquez "
-"simplement sur le lien ci-dessus. Après cela, continuez simplement comme "
-"auparavant. Si vous recevez un message de Spam, visualisez-le. A droite, "
-"vers le haut du message, vous verrez un lien pour signaler ce message  comme "
-"spam. Cliquer dessus vous amènera à une page de confirmation. Une fois "
-"confirmé, votre signalement déclenchera différentes procédures suivant "
-"différentes méthodes."
-
-msgid "Email-based Reporting"
-msgstr "Signalement par email"
-
-msgid ""
-"Pressing the button forwards the message to the SpamCop service and will "
-"optionally delete the message.  From there, you just need to go to your "
-"INBOX and quite soon a message should appear from SpamCop.  (It gets sent to "
-"the account you registered with, so make sure that your mail forwarder "
-"works!) Open it up, click on the appropriate link at the top, and a new "
-"browser window will open."
-msgstr ""
-"L'appui sur le bouton provoquera l'envoi du message au service SpamCop et "
-"optionnellement supprimera le message. Ensuite, vous n'aurez plus qu'à "
-"attendre un message de SpamCop dans votre Boîte de réception. (Il est envoyé "
-"à l'adresse email que vous avez utilisé pour votre inscription, donc "
-"vérifiez que votre réémetteur dde mail fonctionne !) Ouvrez-le, cliquez sur "
-"le lien approprié vers le haut, et une nouvelle fenêtre du navigateur "
-"s'ouvrira."
-
-msgid ""
-"Currently, the quick reporting just forwards the request to the thorough "
-"reporting.  Also, it appears that this is for members (non-free) only. "
-"Hopefully this will change soon."
-msgstr ""
-"Pour l'instant, le signalement rapide renvoie la requête au signalement "
-"compliqué. Il apparait aussi que ce service est restreint aux membres "
-"(payants) uniquement. Espérons que cela changera bientôt."
-
-msgid "Web-based Reporting"
-msgstr "Signalement par le Web"
-
-msgid ""
-"When you press the button on the confirmation page, this will pop open a new "
-"browser window and the SpamCop service should appear inside. The message "
-"will not be deleted (working on that part), but you won't need to wait for a "
-"response email to start the spam reporting."
-msgstr ""
-"Cliquer sur le bouton de la page de confirmation ouvrira une nouvelle "
-"fenêtre du navigateur contenant le service SpamCop. Le message ne sera pas "
-"supprimé (en cours...), mais vous n'aurez pas à attendre un message en "
-"réponse pour démarrer le signalement du spam."
-
-msgid ""
-"The SpamCop service will display information as it finds it, so scroll down "
-"until you see a form button.  It might pause a little while it is looking up "
-"information, so be a little patient.  Read what it says, and submit the "
-"spam.  Close the browser window.  Press Cancel or click on the appropriate "
-"mail folder to see messages and/or delete the spam."
-msgstr ""
-"Le service SpamCop affichera l'information comme il la trouve, donc "
-"descendez jusqu'au bouton du formulaire. Il peut se produire une petite "
-"attente pendant la récupération des informations, donc soyez patient. Lisez "
-"ce qu'il contient, et soumettez le spam. Fermez la fenêtre du navigateur. "
-"Cliquez sur Annuler ou sur le dossier approprié pour voir les messages et/ou "
-"supprimer le Spam."
-
-msgid ""
-"<b>For more information</b> about SpamCop, it's services, spam in general, "
-"and many related topics, try reading through SpamCop's <a href=\"http://"
-"spamcop.net/help.shtml\">Help and Feedback</a> section."
-msgstr ""
-"<b>Pour plus d'information</b> &#224; propos de SpamCop, ses services, du "
-"Spam en g&#233;n&#233;ral, et de nombreux sujets relatifs, r&#233;f&#233;rez-"
-"vous à la section <a href=\"http://spamcop.net/help.shtml\">Aide et "
-"Feedback</a>."
-
 msgid "Report as Spam"
-msgstr "Signaler comme <i>Spam</i>"
+msgstr "Plainte pour <i>spam</i>"
 
 msgid "SpamCop - Spam Reporting"
-msgstr "SpamCop - Signalement du <i>Spam</i>"
+msgstr "SpamCop - Plainte pour <i>spam</i>"
 
 msgid ""
 "Help fight the battle against unsolicited email.  SpamCop reads the spam "
@@ -3261,18 +3191,6 @@ msgstr ""
 "Aide dans la lutte contre les messages non d&#233;sir&#233;s. SpamCop "
 "analyse le message et en d&#233;duit les adresses correctes pour se "
 "plaindre. Plut&#244;t rapide, vraiment efficace et facile &#224; utiliser."
-
-msgid ""
-"Sending this spam report will give you back a reply with URLs that you can "
-"click on to properly report this spam message to the proper authorities. "
-"This is a free service.  By pressing the \"Send Spam Report\" button, you "
-"agree to follow SpamCop's rules/terms of service/etc."
-msgstr ""
-"L'envoi du signalement du Spam vous renverra une réponse contenant des URLs "
-"sur lesquelles vous pourrez cliquer pour signaler le message de Spam aux "
-"autorités compétentes. Ceci est un service gratuit. En cliquant sur le "
-"bouton \"Envoyer un signalement de Spam\", vous acceptez les termes de la "
-"license de SpamCop etc..."
 
 msgid "SpellChecker Options"
 msgstr "Options du correcteur orthographique"
@@ -3874,326 +3792,11 @@ msgstr "Langue de l'interface"
 msgid "Translation direction"
 msgstr "Sens de la traduction"
 
-msgid "Add to:"
-msgstr "Ajouter &#224;&#160;: "
-
-msgid "Add to address book"
-msgstr "Ajouter au carnet d'adresses"
-
-msgid "Your Message has been sent."
-msgstr "Votre message a &#233;t&#233; envoy&#233;."
-
-msgid "Bypass Trash"
-msgstr "Sans mettre à la Corbeille"
-
-msgid "Please enter something to search for"
-msgstr "Il faut choisir un crit&#232;re de recherche"
-
-msgid "There must be at least one criteria to search for"
-msgstr "Il faut au moins un crit&#232;re de recherche"
-
-msgid "Error in criteria argument"
-msgstr "Erreur dans l'argument d'un crit&#232;re"
-
-msgid "(Illegal date)"
-msgstr "(Date ill&#233;gale)"
-
-msgid "(Wrong date)"
-msgstr "(Date invalide)"
-
-msgid "In"
-msgstr "Dans"
-
-msgid "(Missing argument)"
-msgstr "(Argument manquant)"
-
-msgid "(Spurious argument)"
-msgstr "(Argument superflu)"
-
-msgid "Saved Searches"
-msgstr "Recherches enregistr&#233;es"
-
-msgid "Missing"
-msgstr "Disparu"
-
-msgid "and&nbsp;subfolders:"
-msgstr "et&nbsp;sous-dossiers&nbsp;:"
-
-msgid "Exclude Criteria:"
-msgstr "Exclure ce Crit&#232;re&#160;:"
-
-msgid "Search Criteria"
-msgstr "Crit&#232;res de Recherche"
-
-msgid "Add New Criteria"
-msgstr "Ajouter un Crit&#232;re"
-
-msgid "Remove Excluded Criteria"
-msgstr "Supprimer les Crit&#232;res Exclus"
-
-msgid "Remove All Criteria"
-msgstr "Supprimer tous les Crit&#232;res"
-
-msgid "Answered"
-msgstr "R&#233;pondu"
-
-msgid "Before"
-msgstr "Datant d'avant le"
-
-# BODY
-msgid "Message Body"
-msgstr "Corps du message"
-
-msgid "Deleted"
-msgstr "Supprim&#233;"
-
-msgid "Draft"
-msgstr "Brouillon"
-
-msgid "Flagged"
-msgstr "Marqu&#233;"
-
-# FROM
-msgid "Sent By"
-msgstr "Envoy&#233; par"
-
-# HEADER
-msgid "Header Field"
-msgstr "Champ d'en-t&#234;te"
-
-msgid "Keyword"
-msgstr "Mot-cl&#233;"
-
-# LARGER
-msgid "Larger Than"
-msgstr "Plus gros que"
-
-msgid "Old"
-msgstr "Ancien"
-
-msgid "On"
-msgstr "Datant du"
-
-msgid "Recent"
-msgstr "R&#233;cent"
-
-msgid "Seen"
-msgstr "Lu"
-
-msgid "Sent Before"
-msgstr "Envoy&#233; avant le"
-
-msgid "Sent On"
-msgstr "Envoy&#233; le"
-
-msgid "Sent Since"
-msgstr "Envoy&#233; apr&#232;s le"
-
-msgid "Since"
-msgstr "Datant d'apr&#232;s le"
-
-# SMALLER
-msgid "Smaller Than"
-msgstr "Plus petit que"
-
-# SUBJECT
-msgid "Subject Contains"
-msgstr "Objet contenant"
-
-# TEXT
-msgid "Header and Body"
-msgstr "En-t&#234;te et Corps"
-
-# TO
-msgid "Sent To"
-msgstr "Envoy&#233; &#224;"
-
-msgid "Not"
-msgstr "Pas"
-
-msgid "And In"
-msgstr "Et dans"
-
-msgid "Or In"
-msgstr "Ou dans"
-
-msgid "And"
-msgstr "Et"
-
-msgid "Or"
-msgstr "Ou"
-
-msgid "Folder List"
-msgstr "Liste des dossiers"
-
-msgid "Possible reason : "
-msgstr "Raison possible : "
-
-msgid "The imap server failed to handle threading."
-msgstr "Le serveur imap n'a pas pu g&#233;rer les fils de discussion."
-
-msgid "Click here to unset thread view for this mailbox and start again."
-msgstr ""
-"Cliquez ici pour recommencer sans la visualisation par fil de discussion."
-
-msgid "ERROR : Bad function call."
-msgstr "ERREUR&#160;: Appel de fonction erron&#233;."
-
-msgid "Reason:"
-msgstr "Cause&#160;:"
-
-msgid "Click here to change the sorting of the message list"
-msgstr "Cliquer ici pour changer le classement des messages"
-
-msgid "Length of From/To Field (0 for full)"
-msgstr ""
-"Abbr&#233;ger le champ &#171;&#160;De&#160;&#187; / &#171;&#160;&#192;&#160;"
-"&#187; &#224; (0 pour ne pas abbr&#233;ger)&#160;"
-
-msgid "Length of Subject Field (0 for full)"
-msgstr ""
-"Abbr&#233;ger le champ &#171;&#160;Objet&#160;&#187; &#224; (0 pour ne pas "
-"abbr&#233;ger)&#160;"
-
-msgid "Show recipient name if the message is from your default identity"
-msgstr ""
-"Afficher le nom du destinataire si le message provient de votre identité par "
-"défaut"
-
-msgid "Strip signature when replying"
-msgstr "Supprimer la signature du message cit&#233; en r&#233;ponse&#160;"
-
-msgid "Show 'Delete & Prev/Next' Links"
-msgstr "Afficher les liens 'Supprimer et précédent / suivant'"
-
-msgid "Save Replies with Original Message"
-msgstr "Enregistrer les réponses dans le dossier du message original&nbsp;"
-
-msgid "Enable Collapsable Folders"
-msgstr "Dossiers repliables&#160;"
-
-msgid "Folder"
-msgstr "Dossier"
-
-msgid "Subfolder"
-msgstr "Sous-dossier"
-
-msgid "Global address book DSN"
-msgstr "DSN du carnet d'adresses g&#233;n&#233;ral"
-
-msgid "Global address book table"
-msgstr "Table du carnet d'adresses g&#233;n&#233;ral"
-
-msgid "Allow writing into global address book"
-msgstr "Permettre l'&#233;criture dans le carnet d'adresses g&#233;n&#233;ral"
-
-msgid "Allow listing of global address book"
-msgstr "Permettre la consultation du carnet d'adresses g&#233;n&#233;ral"
-
-msgid "Language settings"
-msgstr "Pr&#233;f&#233;rences de langues"
-
-msgid "Show alternative language names"
-msgstr "Montrer les noms de langues alternatifs"
-
-msgid "Available languages"
-msgstr "Langues disponibles"
-
-msgid "Use agresive decoding"
-msgstr "Utiliser un d&#233;codage 'lourd'"
-
-msgid "Tweaks"
-msgstr "Options exp&#233;rimentales"
-
-msgid "Use advanced tree folder listing"
-msgstr "Liste des dossiers avanc&#233;e"
-
-msgid "Use old folder listing functions"
-msgstr "Ancien mode d'affichage de la liste des dossiers"
-
-msgid "Use php recode functions"
-msgstr "Utiliser les fonctions recode de php"
-
-msgid "Use php iconv functions"
-msgstr "Utiliser les fonctions iconv de php"
-
-msgid ""
-"Note: it is recommended that you configure your system using conf.pl, and "
-"not this plugin. conf.pl contains additional information regarding the "
-"purpose of variables and appropriate values, as well as additional "
-"verification steps."
-msgstr ""
-"Nota : il est recommend&#233; de configurer votre syst&#232;me avec conf.pl, "
-"et non pas avec ce plugin, car conf.pl contient des informations suppl&#233;"
-"mentaires concernant l'utilisation des variables et des valeurs appropriées, "
-"ainsi que des vérifications supplémentaires."
-
-msgid ""
-"Run or consult conf.pl should you run into difficulty with your "
-"configuration."
-msgstr ""
-"Lancez ou consultez conf.pl si vous rencontrez des difficult&#233;s pour "
-"&#233;tablir votre configuration"
-
-msgid "No POP3 servers configured yet."
-msgstr "Aucun serveur POP3 configur&#233;."
-
-msgid "Click here to go to the options page."
-msgstr "Cliquez ici pour atteindre la page d'options."
-
-msgid "Spam Service Type:"
-msgstr "Type de service anti-Spam :"
-
-msgid "Free reporting"
-msgstr "Signalement libre"
-
-msgid "Member services"
-msgstr "Services pour membres"
-
-msgid ""
-"The SpamCop service will display information as it finds it, so scroll down "
-"until you see a form button. It might pause a little while it is looking up "
-"information, so be a little patient. Read what it says, and submit the spam. "
-"Close the browser window.  Press Cancel or click on the appropriate mail "
-"folder to see messages and/or delete the spam."
-msgstr ""
-"Le service SpamCop affichera l'information comme il la trouve, donc "
-"descendez jusqu'au bouton du formulaire. Il peut se produire une petite "
-"attente pendant la récupération des informations, donc soyez patient. Lisez "
-"ce qu'il contient, et soumettez le spam. Fermez la fenêtre du navigateur. "
-"Cliquez sur Annuler ou sur le dossier approprié pour voir les messages et/ou "
-"supprimer le Spam."
-
-msgid "Spamcop Service Type"
-msgstr "Type du service SpamCop"
-
-msgid ""
-"Service type option allows selecting which spamcop services you are using. "
-"Member services use different web reporting forms  and does not display "
-"nags. You can purchase these services, if you want to support SpamCop."
-msgstr ""
-"L'option Type de service permet de choisir quels services de SpamCop vous "
-"utilisez. Les services Membres utilisent des formulaires différents et "
-"n'affichent pas d'écrans de publicité. Vous pouvez acheter ces services, si "
-"vous souhaitez supporter SpamCop."
-
-msgid "Filipino (Tagalog)"
-msgstr "Tagalog"
-
-msgid "Simplified Chinese"
-msgstr "Chinois simplifié"
-
-msgid "Traditional Chinese"
-msgstr "Chinois traditionnel"
-
 msgid "Delivery error report"
 msgstr "Rapport d'erreur de transmission"
 
 msgid "Undelivered Message Headers"
 msgstr "En-t&#234;tes du message non d&#233;livr&#233;"
-
-msgid "Folder List Display Format"
-msgstr "Affichage de la liste des dossiers&#160;"
 
 # Will be in Advanced Search
 msgid "Bcc To"
@@ -4206,7 +3809,13 @@ msgstr "En Copie &#224;"
 msgid "SMTWTFS"
 msgstr "DLMMJVS"
 
+msgid "Today"
+msgstr "Aujourd'hui"
+
 # Spam plugins
+msgid "Spam"
+msgstr "Courrier non sollicit&#233;"
+
 msgid "Whitelist From"
 msgstr "Exp&#233;diteur sur liste blanche"
 
@@ -4221,3 +3830,9 @@ msgstr "Exp&#233;diteur hors liste noire"
 
 msgid "Whitelist To"
 msgstr "Destinataire sur liste blanche"
+
+msgid "Save folder tree"
+msgstr "Enregistrer l'arborescence"
+
+msgid "Unknown Sender"
+msgstr "Exp&#233;diteur inconnu"
