@@ -105,12 +105,19 @@ class foowd_text_plain extends foowd_object {
 /* view object */
 	function method_view(&$foowd) {
 		$foowd->track('foowd_text_plain->method_view');
-		if (function_exists('foowd_prepend')) foowd_prepend($foowd, $this);
 		$body = $this->body;
 		$body = htmlspecialchars($body);
 		$body = str_replace("\n", "<br />\n", $body);
-		echo $body;
-		if (function_exists('foowd_append')) foowd_append($foowd, $this);
+
+        $url = getURI(array('classid' => $this->classid,
+                            'objectid' => $this->objectid));
+
+        $foowd->tpl->assign('PAGE_TITLE', $this->title);
+        $foowd->tpl->assign('PAGE_TITLE_URL', 
+                            '<a href="'.$url.'">'.$this->title.'</a>');
+        $foowd->tpl->assign_by_ref('CURRENT_OBJECT', $this);
+
+        $foowd->tpl->assign_by_ref('BODY',  $body);
 		$foowd->track();
 	}
 

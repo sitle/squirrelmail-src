@@ -30,142 +30,152 @@ setClassMeta('foowd_text_html', 'HTML Text Document');
 /** CLASS DECLARATION **/
 class foowd_text_html extends foowd_text_plain {
 
-	var $evalCode = 0;
-	var $processInclude = 0;
+    var $evalCode = 0;
+    var $processInclude = 0;
 
 /*** MEMBER FUNCTIONS ***/
 
-	function processPIs(&$foowd, $str) {
-		$foowd->track('foowd_text_html->processPIs');
-		static $includeTrack = array();
-		$parts = preg_split('/(<\?|\?>)/Us', $str);
-		$newStr = '';
-		foreach ($parts as $part) {
-			if ($this->evalCode && substr($part, 0, 3) == 'php') { // eval PHP code block
-				ob_start();
-				$newStr .= eval(substr($part, 3));
-				$newStr .= ob_get_contents();
-				ob_end_clean();
-			} elseif ($this->processInclude && substr($part, 0, 7) == 'include') { // include another object
-				$include = explode(' ', trim(substr($part, 7)));
-				$includeObject = $include[0];
-				$foo = 1;
-				if (substr($includeObject, 0, 1) == '"') {	
-					$includeObject = substr($includeObject, 1);
-					while (!isset($index[$foo])) {
-						$includeObject .= ' '.$include[$foo];
-						if (substr($includeObject, -1, 1) == '"') {
-							$includeObject = substr($includeObject, 0, -1);
-							break;
-						}
-						$foo++;
-					}
-					$foo++;
-				}
-				$includeMethod = getVarConstOrDefault($include[$foo], 'DEFAULT_METHOD', 'raw');
-				if (in_array($includeObject, $includeTrack) || $includeObject == $this->title) {
-					$newStr .= '<p>Can not nest includes of the same object!</p>';
-				} else {
-					$includeTrack[] = $includeObject;
-					$object = $foowd->fetchObject(array(
-						'objectid' => crc32(strtolower($includeObject))
-					));
-					if ($object) {
-						ob_start();
-						$foowd->callMethod($object, $includeMethod); // call object method
-						$newStr .= ob_get_contents();
-						ob_end_clean();
-					}
-					array_pop($includeTrack);
-				}
-			} else { // not a PI so just leave alone
-				$newStr .= $part;
-			}
-		}
-		$foowd->track(); return $newStr;
-	}
+    function processPIs(&$foowd, $str) 
+    {
+        $foowd->track('foowd_text_html->processPIs');
+        static $includeTrack = array();
+        $parts = preg_split('/(<\?|\?>)/Us', $str);
+        $newStr = '';
+        foreach ($parts as $part) 
+        {
+            if ($this->evalCode && substr($part, 0, 3) == 'php') { // eval PHP code block
+                ob_start();
+                $newStr .= eval(substr($part, 3));
+                $newStr .= ob_get_contents();
+                ob_end_clean();
+            } elseif ($this->processInclude && substr($part, 0, 7) == 'include') { // include another object
+                $include = explode(' ', trim(substr($part, 7)));
+                $includeObject = $include[0];
+                $foo = 1;
+                if (substr($includeObject, 0, 1) == '"') {    
+                    $includeObject = substr($includeObject, 1);
+                    while (!isset($index[$foo])) {
+                        $includeObject .= ' '.$include[$foo];
+                        if (substr($includeObject, -1, 1) == '"') {
+                            $includeObject = substr($includeObject, 0, -1);
+                            break;
+                        }
+                        $foo++;
+                    }
+                    $foo++;
+                }
+                $includeMethod = getVarConstOrDefault($include[$foo], 'DEFAULT_METHOD', 'raw');
+                if (in_array($includeObject, $includeTrack) || $includeObject == $this->title) {
+                    $newStr .= '<p>Can not nest includes of the same object!</p>';
+                } else {
+                    $includeTrack[] = $includeObject;
+                    $object = $foowd->fetchObject(array(
+                        'objectid' => crc32(strtolower($includeObject))
+                    ));
+                    if ($object) {
+                        ob_start();
+                        $foowd->callMethod($object, $includeMethod); // call object method
+                        $newStr .= ob_get_contents();
+                        ob_end_clean();
+                    }
+                    array_pop($includeTrack);
+                }
+            } else { // not a PI so just leave alone
+                $newStr .= $part;
+            }
+        }
+        $foowd->track(); return $newStr;
+    }
 
 /*** SERIALIZE FUNCTIONS ***/
 
-	function __wakeup() {
-		parent::__wakeup();
-		$this->foowd_vars_meta['evalCode'] = '/[01]{1}/';
-		$this->foowd_vars_meta['processInclude'] = '/[01]{1}/';
-	}
+    function __wakeup() {
+        parent::__wakeup();
+        $this->foowd_vars_meta['evalCode'] = '/[01]{1}/';
+        $this->foowd_vars_meta['processInclude'] = '/[01]{1}/';
+    }
 
 /*** METHODS ***/
 
 /* view object */
-	function method_view(&$foowd) {
-		$foowd->track('foowd_text_html->method_view');
-		if (function_exists('foowd_prepend')) foowd_prepend($foowd, $this);
-		if ($this->evalCode || $this->processInclude) {
-			echo $this->processPIs($foowd, $this->body);
-		} else {
-			echo $this->body;
-		}
-		if (function_exists('foowd_append')) foowd_append($foowd, $this);
-		$foowd->track();
-	}
+    function method_view(&$foowd) {
+        $foowd->track('foowd_text_html->method_view');
+
+        $url = getURI(array('classid' => $this->classid,
+                            'objectid' => $this->objectid));
+
+        $foowd->tpl->assign('PAGE_TITLE', $this->title);
+        $foowd->tpl->assign('PAGE_TITLE_URL', 
+                            '<a href="'.$url.'">'.$this->title.'</a>');
+        $foowd->tpl->assign_by_ref('CURRENT_OBJECT', $this);
+
+        if ($this->evalCode || $this->processInclude) {
+            $foowd->tpl->assign('BODY', $this->processPIs($foowd, $this->body));
+        } else {
+            $foowd->tpl->assign_by_ref('BODY', $this->body);
+        }
+
+        $foowd->track();
+    }
 
 /* edit object */
-	function method_edit(&$foowd) {
-		$foowd->track('foowd_text_html->method_edit');
-		if (function_exists('foowd_prepend')) foowd_prepend($foowd, $this);
+    function method_edit(&$foowd) {
+        $foowd->track('foowd_text_html->method_edit');
+        if (function_exists('foowd_prepend')) foowd_prepend($foowd, $this);
 
-		$editForm = new input_form('editForm', NULL, 'POST', _("Save"), NULL, _("Preview"));
-		$editCollision = new input_hiddenbox('editCollision', REGEX_DATETIME, time());
-		if ($editCollision->value >= $this->updated && $editForm->submitted()) { // if we're going to update, reset collision detect
-			$editCollision->set(time());		
-		}
-		$editForm->addObject($editCollision);
-		$editArea = new input_textarea('editArea', NULL, $this->body, NULL, 80, 20);
-		$editForm->addObject($editArea);
-		if (isset($foowd->user->objectid) && $this->updatorid == $foowd->user->objectid) { // author is same as last author and not anonymous, so can just update
-			$newVersion = new input_checkbox('newVersion', TRUE, _('Do not archive previous version?'));
-			$editForm->addObject($newVersion);
-		}
-		$editForm->display();
+        $editForm = new input_form('editForm', NULL, 'POST', _("Save"), NULL, _("Preview"));
+        $editCollision = new input_hiddenbox('editCollision', REGEX_DATETIME, time());
+        if ($editCollision->value >= $this->updated && $editForm->submitted()) { // if we're going to update, reset collision detect
+            $editCollision->set(time());        
+        }
+        $editForm->addObject($editCollision);
+        $editArea = new input_textarea('editArea', NULL, $this->body, NULL, 80, 20);
+        $editForm->addObject($editArea);
+        if (isset($foowd->user->objectid) && $this->updatorid == $foowd->user->objectid) { // author is same as last author and not anonymous, so can just update
+            $newVersion = new input_checkbox('newVersion', TRUE, _('Do not archive previous version?'));
+            $editForm->addObject($newVersion);
+        }
+        $editForm->display();
 
-		if ($editForm->submitted()) {
-			if ($editCollision->value >= $this->updated) { // has not been changed since form was loaded
-				$this->body = $editArea->value;
-				if (isset($newVersion)) {
-					$createNewVersion = !$newVersion->checked;
-				} else {
-					$createNewVersion = TRUE;
-				}
-				if ($this->save($foowd, $createNewVersion)) {
-					echo '<p>', _("HTML text object updated and saved."), '</p>';
-				} else {
-					trigger_error('Could not save HTML text object.');
-				}
-			} else { // edit collision!
-				echo '<h3>', _('Warning: This object has been updated by another user since you started editing, please reload the edit page and verify their changes before continuing to edit.'), '</h3>';
-			}
-		} elseif ($editForm->previewed()) {
-			echo '<h3>', _("Preview"), '</h3>';
-			$body = $editArea->value;
-			if ($this->evalCode || $this->processInclude) {
-				$body = $this->processPIs($foowd, $body);
-			}
-			echo '<p class="preview">', $body, '</p>';
-		}
-		if (function_exists('foowd_append')) foowd_append($foowd, $this);
-		$foowd->track();
-	}
+        if ($editForm->submitted()) {
+            if ($editCollision->value >= $this->updated) { // has not been changed since form was loaded
+                $this->body = $editArea->value;
+                if (isset($newVersion)) {
+                    $createNewVersion = !$newVersion->checked;
+                } else {
+                    $createNewVersion = TRUE;
+                }
+                if ($this->save($foowd, $createNewVersion)) {
+                    echo '<p>', _("HTML text object updated and saved."), '</p>';
+                } else {
+                    trigger_error('Could not save HTML text object.');
+                }
+            } else { // edit collision!
+                echo '<h3>', _('Warning: This object has been updated by another user since you started editing, please reload the edit page and verify their changes before continuing to edit.'), '</h3>';
+            }
+        } elseif ($editForm->previewed()) {
+            echo '<h3>', _("Preview"), '</h3>';
+            $body = $editArea->value;
+            if ($this->evalCode || $this->processInclude) {
+                $body = $this->processPIs($foowd, $body);
+            }
+            echo '<p class="preview">', $body, '</p>';
+        }
+        if (function_exists('foowd_append')) foowd_append($foowd, $this);
+        $foowd->track();
+    }
 
 /* raw object */
-	function method_raw(&$foowd) {
-		$foowd->track('foowd_text_html->method_raw');
-		if ($this->evalCode || $this->processInclude) {
-			echo $this->processPIs($foowd, $this->body);
-		} else {
-			echo $this->body;
-		}
-		$foowd->track();
-	}
-	
+    function method_raw(&$foowd) {
+        $foowd->track('foowd_text_html->method_raw');
+        if ($this->evalCode || $this->processInclude) {
+            echo $this->processPIs($foowd, $this->body);
+        } else {
+            echo $this->body;
+        }
+        $foowd->track();
+    }
+    
 }
 
 ?>
