@@ -346,5 +346,5 @@ do_hook('folders_bottom');
 
 <?php
    sqimap_logout($imapConnection);
-   noframes_bottom();
+   displayPageFooter();
 ?>

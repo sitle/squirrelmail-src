@@ -77,7 +77,7 @@ function noframes_top() {
  * @return void
  */
 
-function noframes_bottom() {
+function displayPageFooter() {
     global $onetimepad, $password, $username, $domain, $trash_folder, $imapConnection,
         $sent_folder, $draft_folder, $imapServerAddress, $imapPort, $left_size, 
         $key, $delimiter, $color, $use_frames, $location_of_bar,

@@ -470,4 +470,4 @@ if ($action == 'edit' || $action == 'add') {
 do_hook('options_highlight_bottom');
 ?>
 </table>
-<?php noframes_bottom(); ?>
+<?php displayPageFooter(); ?>

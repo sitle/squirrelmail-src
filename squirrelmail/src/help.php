@@ -209,5 +209,5 @@ echo html_tag( 'tr',
             html_tag( 'td', '&nbsp;', 'left', $color[0] )
         ).
        '</table>';
-       noframes_bottom();
+       displayPageFooter();
 ?>

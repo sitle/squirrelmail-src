@@ -186,6 +186,6 @@ require_once(SM_PATH . 'include/load_prefs.php');
         '</td></tr>'.
    '</table>'.
    '</form>';
-   noframes_bottom();
+   displayPageFooter();
 
 ?>

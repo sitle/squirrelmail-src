@@ -59,4 +59,4 @@ if (isset($Messages) && count($Messages) > 0) {
     </form>
 </td></tr>
 </tr></table>
-</body></html>
+<?php displayPageHeader(); ?>

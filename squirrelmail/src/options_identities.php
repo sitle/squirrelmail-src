@@ -89,7 +89,7 @@ if (!empty($_POST)) {
            'center', $color[0] )
        ) ,
    'center', '', 'width="95%" border="0" cellpadding="2" cellspacing="0"' );
-   noframes_bottom();
+   displayPageFooter();
 
     function SaveUpdateFunction() {
         global $username, $data_dir, $full_name, $email_address, $reply_to, $signature;

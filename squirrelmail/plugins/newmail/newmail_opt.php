@@ -159,6 +159,6 @@ if ($allowsound == "true") {
       '</table>'. "\n" .
    '</form>'. "\n" .
    '</td></tr></table>'. "\n";
-   noframes_bottom();
+   displayPageFooter();
 
 ?>

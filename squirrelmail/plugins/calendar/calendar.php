@@ -176,5 +176,6 @@ startcalendar();
 drawmonthview();
 endcalendar();
 
-noframes_bottom();
+displayPageFooter();
+
 ?>
