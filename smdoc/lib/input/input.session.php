@@ -45,12 +45,15 @@ class input_session extends input_base
                          $base64 = false) 
   {
     $this->base64 = $base64;
-    parent::input_base($name, $regex, $value, FALSE, SQ_SESSION);
-
+    $this->name = $name;
+    $this->regex = $regex;
+    $this->required = FALSE;
+    $this->form = NULL;
+    
     $this->refresh();
 
-    if ( $this->value == NULL && $value != NULL) 
-      $this->set($value);
+    if ( !$this->wasSet || !$this->wasValid )
+      $this->value = $value;
   }
 
   /**
@@ -58,17 +61,20 @@ class input_session extends input_base
    */
   function refresh()
   {
-    if ( !isset($_SESSION[$this->name]) )
-        return;
+    $this->wasSet = sqGetGlobalVar($this->name, $new_value, SQ_SESSION);
+    if ( !$this->wasSet )
+      return;
 
-    if ( $_SESSION[$this->name] == NULL || $_SESSION[$this->name] == ''  )
-      $this->set(NULL, FALSE);
-    elseif ( $this->base64 )
-      $new_value = unserialize(base64_decode($_SESSION[$this->name]));
-    else
-      $new_value = $_SESSION[$this->name];
+    if ( $new_value == NULL || $new_value == ''  )
+    {
+      $this->wasValid = $this->set(NULL, FALSE);
+      return;
+    }
 
-    $this->set($new_value, FALSE);
+    if ( $this->base64 )
+      $new_value = unserialize(base64_decode($new_value));
+
+    $this->wasValid = $this->set($new_value, FALSE);
   }
     
   /**
@@ -84,7 +90,8 @@ class input_session extends input_base
     if (!$this->verifyData($value) )
         return FALSE;
 
-    if ( $set_in_session ) {
+    if ( $set_in_session ) 
+    {
       if ( $this->base64 ) 
         $_SESSION[$this->name] = base64_encode(serialize($value));
       else

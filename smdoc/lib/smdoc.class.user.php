@@ -11,10 +11,16 @@
 
 setClassMeta('smdoc_user', 'User');
 setConst('USER_CLASS_ID', META_SMDOC_USER_CLASS_ID);
-setConst('USER_CLASS_NAME', constant('META_'. USER_CLASS_ID .'_CLASSNAME'));
-setConst('USER_CLASS', 'smdoc_user');
+
+global $USER_SOURCE;
+$USER_SOURCE = array('table' => 'smdoc_user',
+                     'table_create' => array('smdoc_user','makeTable'));
 
 setPermission('smdoc_user', 'object', 'clone', 'Nobody');
+setPermission('smdoc_user', 'object', 'admin', 'Nobody');
+setPermission('smdoc_user', 'object', 'xml', 'Nobody');
+setPermission('smdoc_user', 'object', 'permissions', 'Nobody');
+setPermission('smdoc_user', 'object', 'history', 'Nobody');
 
 include_once(SM_DIR . 'class.anonuser.php');
 include_once(SM_DIR . 'class.user.php');
@@ -26,7 +32,7 @@ include_once(SM_DIR . 'class.user.php');
  * manipulating and getting information on a user.
  *
  */
-class smdoc_user extends foowd_user
+class smdoc_user extends foowd_object
 {
   /**
    * Fetch User
@@ -42,12 +48,8 @@ class smdoc_user extends foowd_user
     $new_user = NULL;
 
     $user_info = smdoc_user::getUserDetails($foowd);
-    if ( isset($user_info['username']) && isset($user_info['password']) )
-    {
-      if ( !isset($user_info['userid']) )
-        $user_info['userid'] = crc32(strtolower($user_info['username']));
+    if ( isset($user_info['username']) )
       $new_user =& smdoc_user::fetchUser($foowd, $user_info);
-    }
 
     // If loading the user is unsuccessful (or unattempted),
     // fetch an anonymous user
@@ -64,7 +66,7 @@ class smdoc_user extends foowd_user
    * @param object foowd The foowd environment object.
    * @return new instance of anonymous user class.
    */
-   function &fetchAnonymousUser(&$foowd)
+  function &fetchAnonymousUser(&$foowd)
   {
     $anonUserClass = getConstOrDefault('ANONYMOUS_USER_CLASS', 'foowd_anonuser');
     if (class_exists($anonUserClass)) {
@@ -83,37 +85,20 @@ class smdoc_user extends foowd_user
    */
   function &fetchUser(&$foowd, $userArray = NULL)
   {
+    global $USER_SOURCE;
+
     // If we don't have required elements, return early.
-    if ( !isset($userArray['userid']) )
+    if ( !isset($userArray['username']) )
       return FALSE;
 
     $foowd->track('smdoc_user::fetchUser', $userArray);
 
-    // Set up clause for DB Query
-    $whereClause[] = 'objectid = '.$userArray['userid'];
+    if ( isset($userArray['objectid']) )
+      $where['objectid'] = $userArray['objectid'];
+    else
+      $where['title'] = $userArray['username'];
 
-    $oldTable = smdoc_user::setTable($foowd);
-    $query = $foowd->database->select($foowd, NULL, array('object'),
-                                      $whereClause, NULL, NULL, 1);
-    if ( !$query || $query->returnedRows($query) <= 0 ) {
-      smdoc_user::setTable($foowd, $oldTable);
-      $foowd->debug('msg', 'Could not find user in database');
-      $foowd->track();
-      return FALSE;
-    }  
-      
-    $record = $query->getRecord($query);
-    smdoc_user::setTable($foowd, $oldTable);
-
-    if ( !isset($record['object']) ) {
-      $foowd->debug('msg', 'Could not retrieve user from database');
-      $foowd->track();
-      return FALSE;
-    }
-
-    $serializedObj = $record['object'];
-    $user = unserialize($serializedObj);
-        
+    $user =& $foowd->getObj($where, $USER_SOURCE, FALSE);
     $foowd->track();
     return $user;
   }
@@ -130,41 +115,21 @@ class smdoc_user extends foowd_user
    */
   function getUserDetails(&$foowd) 
   {
-    // If these are already set, they were passed explicitly.
-    if ( isset($foowd->user_username) &&  isset($foowd->user_password) )
-    {
-      $user['username'] = $foowd->user_username;
-      $salt = getConstOrDefault('PASSWORD_SALT', '');
-      $user['password'] = md5($salt.$foowd->user_password);
-      return $user;
-    }
-
-    // Otherwise, retrieve information from the session
-    $session_userinfo = new input_session('userinfo', NULL, NULL, true);
-    if ( $session_userinfo->value == NULL )
+    $session_userinfo = new input_session('userinfo', NULL, NULL, TRUE);
+    if ( !$session_userinfo->wasSet || 
+         $session_userinfo->value == NULL )
       return FALSE;
 
     $user_info = $session_userinfo->value;
-    $update_session = FALSE;
     $user = array();
-
-    if ( !isset($user_info['classid']) ) 
-    {
-      $user_info['classid'] = USER_CLASS_ID;
-      $update_session = TRUE;
-    } 
 
     $user['username'] = $user_info['username'];
     $user['password'] = $user_info['password'];
-    $user['userid']   = $user_info['userid'];
-    $user['classid']  = $user_info['classid'];
-
-    if ( $update_session )
-      $session_userinfo->set($user_info);
+    if ( isset($user_info['objectid']) )
+      $user['objectid'] = $user_info['objectid'];
 
     return $user;
   }
-
 
   /**
    * Make a Foowd database table.
@@ -177,55 +142,26 @@ class smdoc_user extends foowd_user
    * @param str SQLString The original SQL string that failed to execute due to missing database table.
    * @return mixed The resulting database query resource or FALSE on failure.
    */
-  function makeTable(&$foowd, $SQLString) 
+  function makeTable(&$foowd) 
   {
+    global $USER_SOURCE;
+
     $foowd->track('smdoc_user->makeTable');
-
-    $createColumns = array(
-            array('name' => 'objectid', 'type' => 'INT', 'notnull' => TRUE, 'default' => 0, 'primary' => TRUE, 'index' => TRUE),
-            array('name' => 'title', 'type' => 'VARCHAR', 'length' => getRegexLength(REGEX_TITLE, 255), 'notnull' => TRUE, 'default' => '', 'index' => TRUE),
-            array('name' => 'object', 'type' => 'BLOB'),
-            array('name' => 'updated', 'type' => 'DATETIME', 'notnull' => TRUE, 'default' => date($foowd->database->dateTimeFormat, 0), 'index' => TRUE),
-            array('name' => 'imap',  'type' => 'INT',  'default' => '0','notnull' => FALSE, 'unsigned' => TRUE),
-            array('name' => 'smtp',  'type' => 'INT',  'default' => '0','notnull' => FALSE, 'unsigned' => TRUE),
-            array('name' => 'sm_ver','type' => 'INT',  'default' => '0','notnull' => FALSE, 'unsigned' => TRUE),
-            array('name' => 'irc', 'type' => 'VARCHAR','default' => '', 'notnull' => FALSE, 'length' => 12, 'index' => TRUE)
-    );
-
-    $result = FALSE;
-    if ($foowd->database->createTable($foowd, $createColumns)) 
-    {        
-      $foowd->debug('sql', $SQLString);
-      $result = $foowd->database->query($SQLString);
-    }
-    
-    $foowd->track();
-    return $result;
+    $sql = 'CREATE TABLE `'.$USER_SOURCE['table'].'` (
+              `objectid` int(11) NOT NULL default \'0\',
+              `title` varchar(32) NOT NULL default \'\',
+              `object` longblob,
+              `updated` datetime NOT NULL default \'1969-12-31 19:00:00\',
+              `IMAP_server` int(10) unsigned default \'0\',
+              `SMTP_server` int(10) unsigned default \'0\',
+              `SM_version` int(10) unsigned default \'0\',
+              `IRC_nick` varchar(12) default \'\',
+              PRIMARY KEY  (`objectid`),
+              KEY `idxuser_updated` (`updated`),
+              KEY `idxuser_title` (`title`)
+            );';
+    return $foowd->database->query($sql);
   }
-
-  /**
-   * Switch Foowd database table.
-   * 
-   * If no parameter is given, switches to the user database, otherwise
-   * switches to the database specified by oldTable.
-   *
-   * @param object foowd    The foowd environment object.
-   * @param optional mixed  oldTable Array containing table name/function.
-   * @return mixed Array containing previous name/function.
-   */
-  function setTable(&$foowd, $oldTable = NULL) 
-  {
-    if ( $oldTable )
-      $oldTable = $foowd->setTable($oldTable['name'], $oldTable['function']);
-    else 
-    {
-      $userTable = array( 'name' => 'smdoc_user',
-                          'function' => array('smdoc_user', 'makeTable'));
-      $oldTable = $foowd->setTable($userTable);
-    }
-    return $oldTable;
-  }
-
 
   /**
    * Translate constants for SquirrelMail version to string,
@@ -247,7 +183,7 @@ class smdoc_user extends foowd_user
                              _("Other"));
 
     if ( $getAll )
-        return ($smver_strings);
+      return ($smver_strings);
     return $smver_strings[$this->SM_version];
   }
 
@@ -272,8 +208,7 @@ class smdoc_user extends foowd_user
                             'UW-IMAP');
 
     if ( $getAll )
-        return ($imap_strings);
-    
+      return ($imap_strings);
     return $imap_strings[$this->IMAP_server];
   }
 
@@ -307,22 +242,63 @@ class smdoc_user extends foowd_user
 
 //-------------------------------------------------------------------------------------
 
-  /** #squirrelmail IRC channel nick */
+  /**
+   * The users password.
+   * 
+   * Stored as an MD5 hash to prevent snooping.
+   *
+   * @var str
+   */
+  var $password;
+
+  /**
+   * The users e-mail address.
+   * 
+   * @var str
+   */
+  var $email;
+
+  /**
+   * The user groups the user is a member of.
+   * 
+   * @var array
+   */
+  var $groups;
+
+  /** 
+   * #squirrelmail IRC channel nick
+   * @var string
+   */
   var $IRC_nick;       
   
-  /** Array containing other IM nicks */
+  /** 
+   * Array containing other IM nicks 
+   * @var array
+   */
   var $IM_nicks;         
 
-  /** Main supported IM version. @see smver_to_string */
+  /** 
+   * Main supported IM version. @see smver_to_string 
+   * @var constant
+   */
   var $SM_version;       
 
-  /** Preferred IMAP server. @see imap_to_string */
+  /** 
+   * Preferred IMAP server. @see imap_to_string 
+   * @var constant
+   */
   var $IMAP_server;     
 
-  /** Preferred SMTP server. @see smtp_to_string */
+  /** 
+   * Preferred SMTP server. @see smtp_to_string 
+   * @var constant
+   */
   var $SMTP_server;
 
-  /** Show email in profile. */
+  /** 
+   * Show email in profile. 
+   * @var boolean
+   */
   var $show_email;
 
   /**
@@ -340,55 +316,30 @@ class smdoc_user extends foowd_user
                    $username = NULL,
                    $password = NULL,
                    $email = NULL,
-                   $groups = NULL,
-                   $hostmask = NULL)
+                   $objectid = NULL)
   {
+    global $USER_SOURCE;
     $foowd->track('smdoc_user->constructor');
-        
-    // init meta arrays
-    $this->__wakeup(); 
 
-    // Verify input parameters
-    if ( !preg_match(REGEX_PASSWORD, $password) ) 
+    $this->foowd =& $foowd;
+
+    // Don't use workspace id when looking for unique title 
+    if ( $objectid == NULL && 
+         !$this->isTitleUnique($username, FALSE, $objectid, $USER_SOURCE) )
     {
-      trigger_error('Could not create object, password contains invalid characters.');
-      $this->objectid = 0;
-      $foowd->track();
-      return FALSE;
-    } 
-
-    $maxTitleLength = getRegexLength($this->foowd_vars_meta['title'], 32);
-    if ( strlen($username) <= 0 ||  
-         strlen($username) > $maxTitleLength || 
-         !preg_match($this->foowd_vars_meta['title'], $username) ) 
-    {
-      trigger_error('Could not create user, invalid username (bad length or characters).');
-      $this->objectid = 0;
-      $foowd->track();
-      return FALSE;
-    }
-
-    // check for duplicate title/objectid
-    $this->objectid = crc32($username);
-    $oldTable = smdoc_user::setTable($foowd);
-    $query = $foowd->database->select($foowd, NULL, 
-                                      array('objectid'), 
-                                      array('objectid = '.$this->objectid), 
-                                      NULL, NULL, 1);
-    smdoc_user::setTable($foowd, $oldTable);
-
-    if ( $query )
-    {
-      trigger_error('Could not create object, duplicate name "'.htmlspecialchars($username).'".');
       $this->objectid = 0;
       $foowd->track(); 
       return FALSE;
     }
+
+    // init meta arrays
+    $this->__wakeup();
  
     // Initialize variables
     $this->title = $username;
+    $this->objectid = $objectid;
     $this->workspaceid = 0;
-    $this->classid = crc32(strtolower(get_class($this)));
+    $this->classid = USER_CLASS_ID;
 
     $this->creatorid = $this->objectid; // created by self
     $this->creatorName = $this->title;  // created by self
@@ -397,7 +348,7 @@ class smdoc_user extends foowd_user
     $this->updatorName = $this->title;  // updated by self
     $this->updated = time();
 
-    $this->hostmask = $hostmask;
+    $this->groups = array();
     $this->show_email = false;
     $this->SM_version = 0;
     $this->IMAP_server = 0;
@@ -405,27 +356,20 @@ class smdoc_user extends foowd_user
     $this->IM_nicks = array();
     $this->IRC_nick = '';
 
-    $salt = getConstOrDefault('PASSWORD_SALT', '');
-    $this->password = md5($salt.strtolower($password));
-
-    if (preg_match($this->foowd_vars_meta['email'], $email)) 
-      $this->email = $email;
-    
-    // user groups
-    if (is_array($groups)) 
-    {
-      foreach ($groups as $group) 
-      {
-        if ( preg_match($this->foowd_vars_meta['groups'], $group) ) 
-          $this->groups[] = $group;
-      }
-    }
+    $salt = $foowd->config_settings['user']['password_salt'];
+    $this->password = md5($salt.$password);
+    $this->email = $email;
     
     // set original access vars
+    $this->foowd_original_access_vars['title'] = $this->title;
     $this->foowd_original_access_vars['objectid'] = $this->objectid;
-    $this->foowd_original_access_vars['version'] = $this->version;
-    $this->foowd_original_access_vars['classid'] = $this->classid;
     $this->foowd_original_access_vars['workspaceid'] = $this->workspaceid;
+
+    // add to loaded object reference list
+    $foowd->database->addToLoadedReference($this, $USER_SOURCE);
+
+    // object created successfuly, queue for saving
+    $this->foowd_changed = TRUE;      
 
     $foowd->track();
   }
@@ -437,6 +381,22 @@ class smdoc_user extends foowd_user
   {
     parent::__wakeup();
 
+    global $USER_SOURCE;
+    $this->foowd_source = $USER_SOURCE;
+
+    // add some regex verification
+    unset($this->foowd_vars_meta['version']);
+    $this->foowd_vars_meta['password'] = '/^[a-z0-9]{32}$/'; // this is not set to the password regex as it's stored as an md5
+    $this->foowd_vars_meta['email'] = REGEX_EMAIL;
+    $this->foowd_vars_meta['groups'] = REGEX_GROUP;
+    $this->foowd_vars_meta['title'] = REGEX_TITLE;
+    $this->foowd_vars_meta['irc'] = '/^[a-zA-Z0-9_]{1,12}$/';
+    $this->foowd_vars_meta['msn'] = REGEX_EMAIL;
+    $this->foowd_vars_meta['icq'] = '/^[0-9]{3,16}$/';
+    $this->foowd_vars_meta['aim'] = '/^[a-zA-Z0-9_]{3,16}$/';
+    $this->foowd_vars_meta['yahoo'] = '/^[a-zA-Z0-9_]{1,32}$/';
+    $this->foowd_vars_meta['www'] = '/^https?:\/\/[a-zA-Z0-9_\-\.]+\.[a-zA-Z]+[a-zA-Z0-9_\-\.\/~]*$/';
+
     // re-arrange our indices
     unset($this->foowd_indexes['version']);
     unset($this->foowd_indexes['classid']);
@@ -445,132 +405,82 @@ class smdoc_user extends foowd_user
     $this->foowd_indexes['SMTP_server'] = array('name' => 'smtp', 'type' => 'INT', 'unsigned' => TRUE, 'notnull' => FALSE, 'default' => 0);   
     $this->foowd_indexes['SM_version'] = array('name' => 'sm_ver', 'type' => 'INT', 'unsigned' => TRUE, 'notnull' => FALSE, 'default' => 0);
     $this->foowd_indexes['IRC_nick'] = array('name' => 'irc', 'type' => 'VARCHAR', 'length' => 12, 'notnull' => FALSE, 'default' => '');
-    $this->foowd_indexes['updated'] = array('name' => 'updated', 'type' => 'DATETIME', 'notnull' => TRUE);
 
-    // add some regex verification
-    $this->foowd_vars_meta['irc'] = '/^[a-zA-Z0-9_]{1,12}$/';
-    $this->foowd_vars_meta['msn'] = REGEX_EMAIL;
-    $this->foowd_vars_meta['icq'] = '/^[0-9]{3,16}$/';
-    $this->foowd_vars_meta['aim'] = '/^[a-zA-Z0-9_]{3,16}$/';
-    $this->foowd_vars_meta['yahoo'] = '/^[a-zA-Z0-9_]{1,32}$/';
-    $this->foowd_vars_meta['www'] = '/^https?:\/\/[a-zA-Z0-9_\-\.]+\.[a-zA-Z]+[a-zA-Z0-9_\-\.\/~]*$/';
+    // Original access vars
+    unset($this->foowd_original_access_vars['version']);
+    $this->foowd_original_access_vars['classid'] = USER_CLASS_ID;
+    $this->foowd_original_access_vars['title'] = $this->title;
+
+    // Default primary key
+    $this->foowd_primary_key = array('objectid');    
   }
 
   /**
-   * Save the object.
+   * Whether a user is in a user group.
    *
-   * @param object foowd The foowd environment object.
-   * @param bool incrementVersion Increment the object version.
-   * @param bool doUpdate Update the objects details.
-   * @return mixed Returns an exit value on success or FALSE on failure.
+   * @param str groupName Name of the group to check.
+   * @param int creatorid The userid of the creator .
+   * @return bool TRUE or FALSE.
    */
-  function save(&$foowd, $incrementVersion = TRUE, $doUpdate = TRUE)
+  function inGroup($groupName, $creatorid = NULL) 
   {
-    $foowd->track('smdoc_user->save');
+    if ($groupName == 'Everyone')               // group is everyone
+      return TRUE;
+    if ($groupName == 'Nobody')                 // group is nobody
+      return FALSE;
+    if ($groupName == 'Registered' )            // group is any registered user (not anonymous)
+      return TRUE;
+    if ( $groupName == 'Author' && 
+         $creatorid != NULL && $this->objectid != NULL && 
+         $this->objectid == $creatorid)           // group is author and so is user
+      return TRUE;
 
-    if ($doUpdate) { // update values
-      $this->updatorid = $foowd->user->objectid;
-      $this->updatorName = $foowd->user->title;
-      $this->updated = time();
-    }
-
-    // serialize object
-    $serializedObj = serialize($this);
-    $fieldArray['object'] = $serializedObj;
-  
-    // create field array from object
-    foreach ($this->foowd_indexes as $index => $definition) 
+    if ( is_array($this->groups) )
     {
-      if (isset($this->$index)) 
-      {
-        $colname = $definition['name'];
-        if ($this->$index == FALSE) 
-        {
-          if ($definition['type'] == 'VARCHAR')
-            $fieldArray[$colname] = '';
-          else
-            $fieldArray[$colname] = 0;
-        }
-        else 
-        {
-          if ($definition['type'] == 'DATETIME')  // translate unixtime to db date format
-            $fieldArray[$colname] = date($foowd->database->dateTimeFormat, $this->$index);
-          else
-            $fieldArray[$colname] = $this->$index;
-        }
-      }
+      if ( in_array($groupName, $this->groups) )  // user is in group
+        return TRUE;
+      if ( in_array('Gods', $this->groups) )
+        return TRUE;
     }
 
-    // set conditions
-    $conditionArray = array('objectid = '.$this->foowd_original_access_vars['objectid']);
-    $exitValue = FALSE;
+    return FALSE;
+  }
+ 
 
-    $oldTable = smdoc_user::setTable($foowd);
-
-    // try to update existing record
-    if ( $foowd->database->update($foowd, $fieldArray, $conditionArray) ) 
-      $exitValue = 1;
-
-    // if update fails, write new record
-    elseif ( $foowd->database->insert($foowd, $fieldArray) ) 
-      $exitValue = 2;
-
-    // if writing new record fails, modify table to include indexes from class definition
-    else
+  /**
+   * Check the string is the users password.
+   *
+   * @param str password The password to check.
+   * @param bool plainText The password is in plain text rather than an md5 hash.
+   * @return bool Returns TRUE if the passwords match.
+   */
+  function passwordCheck($password, $plainText = FALSE) 
+  {
+    if ($plainText) 
     {
-      $query = $foowd->database->select($foowd, NULL, array('*'),    NULL, NULL,    NULL, 1);
-      if ( $query )
-      {
-        $record = $query->getRecord();
-        $missingFields = array();
-
-        // find missing fields
-        foreach ($fieldArray as $field => $value) 
-        {
-          if (!isset($record[$field]) && $field != 'object') 
-            $missingFields[] = $this->foowd_indexes[$field];
-        }
-
-        if ($missingFields != NULL && $foowd->database->alterTable($foowd, $missingFields)) 
-        {
-          if ($foowd->database->update($foowd, $fieldArray, $conditionArray))
-            $exitValue = 3;
-          elseif ($foowd->database->insert($foowd, $fieldArray))
-            $exitValue = 4;
-        }  
-      }
+      $salt = $this->foowd->config_settings['user']['password_salt'];
+      $password = md5($salt.$password);
     }
-    smdoc_user::setTable($foowd, $oldTable);
 
-    $foowd->track();
-    return $exitValue;
+    if ( $this->password === $password )
+      return TRUE;
+    
+    return FALSE;
   }
 
   /**
-   * Delete the object.
+   * Check if the user is the anonymous user.
    *
-   * @param object foowd The foowd environment object.
-   * @return bool Returns TRUE on success.
+   * @return bool Returns TRUE if the user is of the anonymous user class.
    */
-  function delete(&$foowd) 
+  function isAnonymous() 
   {
-    $foowd->track('foowd_object->delete');
-
-    $conditionArray = array('objectid = '.$this->objectid);
-
-    $oldTable = smdoc_user::setTable($foowd);
-    $result = $foowd->database->delete($foowd, $conditionArray);
-    smdoc_user::setTable($foowd, $oldTable);
-
-    $foowd->track(); 
-    return ($result ? TRUE : FALSE);
+    return FALSE;
   }
 
   /**
    * Log the user in.
    *
-   * @class smdoc_user
-   * @method login
    * @param object foowd The foowd environment object.
    * @param optional str username The username of the user to log in as.
    * @param optional str password The plain text password of the user to log in with.
@@ -591,33 +501,32 @@ class smdoc_user extends foowd_user
     if ( !$username ) 
       return 1;                             // no user given
 
-    $salt = getConstOrDefault('PASSWORD_SALT', '');
-
     $user_info['username'] = $username;
-    $user_info['password'] = md5($salt.$password);
-    $user_info['userid']   = crc32(strtolower($username));
 
     $newuser =& smdoc_user::fetchUser($foowd, $user_info);
-    if ( !is_object($newuser) || strtolower($newuser->title) != strtolower($username)) 
+    if ( !is_object($newuser) || 
+         strtolower($newuser->title) != strtolower($username)) 
       return 2;                             // unknown user
-    if ( !$newuser->hostmaskCheck() )
-      return 8;                             // bad hostmask
-    if ( $newuser->password != md5($salt.strtolower($password)) )
+
+    $salt = $foowd->config_settings['user']['password_salt'];
+    if ( $newuser->password != md5($salt.$password) )
       return 3;                             // bad password
 
-    // save user information
-    $foowd->user = $user;
-    $session_userinfo = new input_session('userinfo', NULL, NULL, true); 
-    $session_userinfo->set($user_info);
+    $user_info['password'] = md5($salt.$password);
+    $user_info['objectid'] = $newuser->objectid;
 
+    // save user information
+    $foowd->user = $newuser;
+    $foowd->user->update();
+
+    $session_userinfo = new input_session('userinfo', NULL, NULL, TRUE); 
+    $session_userinfo->set($user_info);
     return 0;                               // logged in successfully
   }
 
   /**
    * Log out the user.
    *
-   * @class smdoc_user
-   * @method logout
    * @param object foowd The foowd environment object.
    * @param optional str authType The type of user authentication to use.
    * @return int 0 = cookie logged out successfully<br />
@@ -626,7 +535,7 @@ class smdoc_user extends foowd_user
    *             3 = user already logged out<br />
    *             4 = http log out failed due to browser<br />
    */
-  function logout(&$foowd, $authType = 'session') 
+  function logout(&$foowd) 
   {
     if ( $foowd->user->isAnonymous() ) 
       return 3; // user already logged out
@@ -642,8 +551,6 @@ class smdoc_user extends foowd_user
   /**
    * Create a new user.
    *
-   * @class smdoc_user
-   * @method create
    * @param object foowd The foowd environment object.
    * @param str username The name of the user to create.
    * @param str password The password of the user.
@@ -654,82 +561,27 @@ class smdoc_user extends foowd_user
    *             3 = eek, error creating user<br />
    *             4 = duplicate user name<br />
    */
-  function create(&$foowd, $className, $username, $password, $email) 
+  function create(&$foowd, $username, $password, $email) 
   {
-    // check for duplicate title/objectid
-    $objectid = crc32($username);
-    $oldTable = smdoc_user::setTable($foowd);
-    $query = $foowd->database->select($foowd, NULL, 
-                                      array('objectid'), 
-                                      array('objectid = '.$objectid), 
-                                      NULL, NULL, 1);
-    smdoc_user::setTable($foowd, $oldTable);
+    global $USER_SOURCE;
 
-    if ( $query ) 
-      return 4;        
+    // no workspaceid, calculate new objectid.
+    if ( !$foowd->database->isTitleUnique($username, FALSE, $objectid, $USER_SOURCE, TRUE) )
+      return 4;
 
-    $object = new $className($foowd, $username, $password, $email);
-    if ( $object->objectid != 0 && $object->save($foowd, FALSE) ) 
+    $object = new smdoc_user($foowd, $username, $password, $email, $objectid);
+    if ( $object->objectid != 0 && $object->save($foowd) ) 
       return 0; // created ok
     else
       return 3; // eek, error creating user.
   }
 
   /**
-   * Update the users properties.
-   *
-   * @param object foowd The foowd environment object.
-   * @param str email The users new e-mail address.
-   * @return bool TRUE on success.
-   */
-  function updateUser(&$foowd, $form) 
-  {
-    $changed = FALSE;
-
-    // Handle array of IM nick names first
-    foreach ($form['nick'] as $prot => $value)
-    {
-      if ( (isset($this->IM_nicks[$prot]) && $this->IM_nicks[$prot] == $value) || 
-           (!isset($this->IM_nicks[$prot]) && $value == NULL) )
-        continue;
-      $changed = TRUE;
-      if ( $value == NULL )
-        unset($this->IM_nicks[$prot]);
-      else
-        $this->IM_nicks[$prot] = $value;
-    }
-    unset($form['nick']);
-
-    // Handle other form values
-    foreach ($form as $key => $value)
-    {
-      if ( (isset($this->$key) && $this->$key == $value) || 
-           (!isset($this->$key) && $value == NULL) ||
-           ($key == 'password' && $value == NULL) )
-        continue;
-      $this->$key = $value;
-      $changed = TRUE;
-    }
-
-    // check value of show_email
-    if ( $this->show_email && $this->email )
-      $this->IM_nicks['Email'] = $this->email;
-    else
-      unset($this->IM_nicks['Email']);
-
-    if ($changed && $this->save($foowd, FALSE) ) 
-        return TRUE;
-
-    return FALSE;
-  }
-
-  /**
    * Get user a new password if it has been lost.
    *
-   * @class smdoc_user
-   * @method fetchPassword
+   * @access private
+   * @static
    * @param object foowd The foowd environment object.
-   * @param str className The name of the user class.
    * @param str username The name of the user to fetch the password for.
    * @param optional str queryUsername Username given for stage 2 of the retrieval process.
    * @param optional str id The ID given for stage 2 of the process.
@@ -743,32 +595,38 @@ class smdoc_user extends foowd_user
    *             7 = id does not match<br />
    *             8 = user does not exist<br />
    */
-  function fetchPassword(&$foowd, $className, $username, $queryUsername = '', $id = '') 
+  function fetchPassword(&$foowd, $username, $queryUsername = NULL, $id = NULL) 
   {
     if ( $username == '' ) 
       return 0;                             // nothing, display form
 
     $user_info['username'] = $username;
-    $user_info['userid']   = crc32(strtolower($username));
     $lostuser =& smdoc_user::fetchUser($foowd, $user_info);
 
-    if ( !$lostuser || !isset($lostuser->title) || strtolower($lostuser->title) != strtolower($username) )
+    if ( !$lostuser || !isset($lostuser->title) || 
+         strtolower($lostuser->title) != strtolower($username) )
       return 4;                             // user does not exist
+
     if ( !isset($lostuser->email) )
       return 3;                             // user has no e-mail address
 
+    $site = $foowd->config_settings['site']['site_name'];
+ 
     // We have username only, send stage one email
-    if ( $id == '' && $queryUsername == '' ) 
+    if ( $id == NULL && $queryUsername == NULL ) 
     {
-      $message = call_user_func(
-                        array($className, 'fetchPasswordRequestEmail'),
-                        $className,
-                        $lostuser->getTitle(),
-                        md5($lostuser->updated.$lostuser->title) ); 
+      $foowd->template->assign('sitename', $site);
+      $foowd->template->assign('username', $lostuser->title);
+      $foowd->template->assign('hostname', $_SERVER['SERVER_NAME']);
+      $foowd->template->assign('class', 'smdoc_user');
+      $foowd->template->assign('id', md5($user->updated.$user->title));
+      $message = $foowd->template->fetch('fetchpwd_request.tpl');
+
       $result = email($foowd, $lostuser->email, 
-                      sprintf(_("%s - Password Change Request"), getSiteName()), 
+                      sprintf(_("%s - Password Change Request"), $site), 
                       $message,
-                      'From: '.getWebmasterEmail().'\r\nReply-To: '.getNoreplyEmail());
+                      'From: '.$foowd->config_settings['site']['email_webmaster']
+                       .'\r\nReply-To: '.$foowd->config_settings['site']['email_noreply']);
       if ( $result )
         return 1;                           // password change request e-mail sent
       else
@@ -788,40 +646,120 @@ class smdoc_user extends foowd_user
       for($foo = 0; $foo < $foo_len; $foo++) 
         $newPassword .= chr(rand(97, 122)); 
 
-      $salt = getConstOrDefault('PASSWORD_SALT', '');
-      $lostuser->password = md5($salt.$newPassword);
+      $lostuser->set('password', md5($salt.$newPassword));
+      
+      $salt = $this->foowd->config_settings['user']['password_salt'];
+      $foowd->template->assign('sitename', $site);
+      $foowd->template->assign('username', $user->title);
+      $foowd->template->assign('password', $newPassword);
+      $foowd->template->assign('hostname', $_SERVER['SERVER_NAME']);
+      $foowd->template->assign('class', 'smdoc_user');
+      $message = $foowd->template->fetch('fetchpwd_response.tpl');
 
-      if ( $lostuser->save($foowd, FALSE) ) 
-      {
-        $message = call_user_func(
-                          array($className, 'fetchPasswordChangedEmail'),
-                          $className,
-                          $lostuser->getTitle(),
-                          $newPassword);
-        $result = email($foowd, $lostuser->email, 
-                          sprintf(_("%s - Password Change Request"), 
-                          getSiteName()), $message,
-                          'From: '.getWebmasterEmail().'\r\nReply-To: '.getNoreplyEmail());
-        if ( $result )
-          return 5;                         // password changed and e-mail sent
-      }
-      return 6;                             // could not send e-mail due to technical problem (or could not save new password)
+      $result = email($foowd, $lostuser->email, 
+                      sprintf(_("%s - Password Change Request"), $site), 
+                      $message,
+                      'From: '.$foowd->config_settings['site']['email_webmaster']
+                       .'\r\nReply-To: '.$foowd->config_settings['site']['email_noreply']);
+
+      if ( $result )
+        return 5;                           // password changed and e-mail sent
+      else
+        return 6;                           // could not send e-mail due to technical problem (or could not save new password)
     }
+    return 0;                               // nothing, display form
   }
-
 
   /**
-   * Check if the user is the anonymous user.
+   * Update the users properties.
    *
-   * @class smdoc_user
-   * @method isAnonymous
-   * @return bool Returns TRUE if the user is of the anonymous user class.
+   * @param str email The users new e-mail address.
+   * @return int 0 = nothing, show form<br />
+   *             1 = user updated successfully<br />
+   *             2 = passwords were set, but didn't match<br />
+   *             3 = username already in use<br />
    */
-  function isAnonymous() 
+  function updateUser($form) 
   {
-    return FALSE;
-  }
+    global $USER_SOURCE;
+    $obj =& $form->objects;
 
+    // Check title first
+    if ( !empty($obj['title']->value) && $obj['title']->value != $this->title )
+    {
+      $username = $obj['title']->value;
+      // no workspaceid, don't calculate new objectid.
+      $unique = !$this->foowd->isTitleUnique($username, FALSE, $objectid, $USER_SOURCE, FALSE) ;
+      if ( $unique )
+        $this->set('title', $username);
+      else
+      {
+        $obj['title']->wasValid = FALSE;
+        return 3;
+      }
+    }
+
+    // Check for password change
+    if ( !empty($obj['password']->value) )
+    {
+      if ( $obj['password']->value == $obj['verify']->value )
+      {
+        $salt = $foowd->config_settings['user']['password_salt'];
+        $this->set('password', md5($salt.$obj['password']->value));
+      }
+      else
+      {
+        $obj['password']->wasValid = FALSE;
+        $obj['verify']->wasValid = FALSE;
+        return 2;
+      }
+    }
+
+    // Check IM nick names
+    foreach ( $obj['nick'] as $box )
+    {
+      $nk = $box->name;
+      if ( (isset($this->IM_nicks[$nk])  && $box->value == $this->IM_nicks[$nk]) ||
+           (!isset($this->IM_nicks[$nk]) && $box->value == NULL) )
+        continue;
+
+      if ( $box->value == NULL || $box->value == '' )
+        unset($this->IM_nicks[$nk]);
+      else
+        $this->IM_nicks[$nk] = $box->value;
+
+      $this->foowd_changed = TRUE;  
+    }
+
+    if ( !empty($obj['email']->value) && $obj['email']->value != $this->email )
+      $this->set('email', $obj['email']->value);
+    if ( $obj['show_email']->value != $this->show_email )
+      $this->set('show_email', $obj['show_email']->value);
+    if ( !empty($obj['IRC_nick']->value) && $obj['IRC_nick']->value != $this->IRC_nick )
+      $this->set('IRC_nick', $obj['IRC_nick']->value);
+
+    foreach ( $obj['stat'] as $box )
+    {
+      if ( empty($box->value) )
+        $box->value = 0;
+      $member = $box->name;
+      if ( $box->value != $this->$member )
+      {
+        $this->$member = $box->value;
+        $this->foowd_changed = TRUE;
+      }
+    }
+
+    if ( $this->show_email && $this->email )
+      $this->IM_nicks['Email'] = $this->email;
+    else
+      unset($this->IM_nicks['Email']);
+
+    if ( $this->save() )
+      return 1;
+ 
+    return 4;
+  }
 
 // ----------------------------- class methods --------------
 
@@ -837,64 +775,68 @@ class smdoc_user extends foowd_user
   {
     $foowd->track('smdoc_user->class_create');
 
-    include_once($foowd->path.'/input.textbox.php');
-    include_once(SM_DIR.'smdoc.input.password.php');
-    include_once($foowd->path.'/input.form.php');
+    include_once(INPUT_DIR . 'input.textbox.php');
+    include_once(INPUT_DIR . 'input.form.php');
     
     $queryTitle = new input_querystring('title', REGEX_TITLE, NULL);
-    $createUsername = new input_textbox('createUsername', REGEX_TITLE, $queryTitle->value, _("Username").':');
+    $createUsername = new input_textbox('createUsername', REGEX_TITLE, $queryTitle->value, 'Username');
 
-    $verifyPassword = new input_passwordbox('verifyPassword', REGEX_PASSWORD, NULL, _("Verify").':');
-    $createPassword = new input_passwordbox('createPassword', REGEX_PASSWORD, NULL, _("Password").':', $verifyPassword);
+    $verifyPassword = new input_passwordbox('verifyPassword', REGEX_PASSWORD, NULL, 'Verify');
+    $createPassword = new input_passwordbox('createPassword', REGEX_PASSWORD, NULL, 'Password');
 
-    $createEmail = new input_textbox('createEmail', REGEX_EMAIL, NULL, _("Email Address").':', FALSE);
-    $createForm = new input_form('createForm', NULL, 'POST', _("Create"), _("Reset"));
+    $createEmail = new input_textbox('createEmail', REGEX_EMAIL, NULL, 'Email Address', FALSE);
+    $createForm = new input_form('createForm', NULL, SQ_POST);
 
-    if ( $createForm->submitted() &&  $createUsername->value != '' )
+    if ( $createForm->submitted() && 
+         $createUsername->wasSet && $createUsername->wasValid && $createUsername != '' )
     {
-      if ( $createPassword->wasSet && $createPassword->value != '' ) 
+      if ( $createPassword->wasSet && $createPassword->wasValid &&
+           $verifyPassword->wasSet && $verifyPassword->wasValid &&
+           $createPassword->value != '' && $createPassword->value == $verifyPassword->value ) 
       {
-          $result = call_user_func(array($className, 'create'), $foowd, $className, 
-                                   $createUsername->value,
-                                   $createPassword->value,
-                                   $createEmail->value);
+        $result = call_user_func(array($className, 'create'), $foowd,  
+                                 $createUsername->value,
+                                 $createPassword->value,
+                                 $createEmail->value);
       }
       else 
         $result = -1;
+    }
+    else
+      $result = -2;
 
-      switch ($result) 
-      {
-        case 0:
-          $url = getURI(array('class' => $className,
-                              'method' => 'login',
-                              'ok' => USER_CREATE_OK,
-                              'username' => htmlspecialchars($createUsername->value)),
-                        FALSE);
-          header('Location: ' . $url);
-          return NULL;
-        case -1: 
-          $return['failure'] = _("Passwords must be at least 6 characters, and must match.");
-          $verifyPassword->value = '';
-          break;
-        case 3: 
-          $return['failure'] = _("Could not create user.");
-          break;
-        case 4:
-          $return['failure'] = _("User already exists, please choose a new name.");
-          break;
-      }
-    } 
+    switch ($result) 
+    {
+      case 0:
+        $_SESSION['ok'] = USER_CREATE_OK;
+        $uri_arr['class'] = $className;
+        $uri_arr['method'] = 'login';
+        $uri_arr['username'] = htmlspecialchars($createUsername->value);
+        $foowd->loc_forward(getURI($uri_arr, FALSE));
+        exit;
+      case -1: 
+        $foowd->template->assign('failure', _("Passwords must be at least 6 characters, and must match."));
+        $verifyPassword->set(NULL);
+        $createPassword->set(NULL);
+        break;
+      case -2:
+        $foowd->template->assign('failure', FORM_FILL_FIELDS);
+        break;
+      case 3: 
+        $foowd->template->assign('failure', _("Could not create user."));
+        break;
+      case 4:
+        $foowd->template->assign('failure',  _("User already exists, please choose a new name."));
+        break;
+    }
         
-    if (!isset($return['failure']) )
-      $return['failure'] =  FORM_FILL_FIELDS;
-     
     $createForm->addObject($createUsername);
     $createForm->addObject($createPassword);
     $createForm->addObject($verifyPassword);
     $createForm->addObject($createEmail);
-    $return['form'] = &$createForm;
+    $foowd->template->assign_by_ref('form', $createForm);
 
-    return $return;
+    return;
   }
 
   /**
@@ -909,14 +851,15 @@ class smdoc_user extends foowd_user
   {
     $foowd->track('smdoc_user->class_login');
 
-    include_once($foowd->path.'/input.textbox.php');
-    include_once($foowd->path.'/input.form.php');
+    include_once(INPUT_DIR . 'input.textbox.php');
+    include_once(INPUT_DIR . 'input.form.php');
 
     $usernameQuery = new input_querystring('username', REGEX_TITLE, '');
-    $loginUsername = new input_textbox('loginUsername', REGEX_TITLE, $usernameQuery->value, _("Username").':');
-    $loginPassword = new input_passwordbox('loginPassword', REGEX_PASSWORD, NULL, _("Password").':');
+    $loginUsername = new input_textbox('loginUsername', REGEX_TITLE, $usernameQuery->value, 'Username');
+    $loginPassword = new input_passwordbox('loginPassword', REGEX_PASSWORD, NULL, 'Password');
 
-    $loginForm = new input_form('loginForm', NULL, 'POST', _("Log In"), NULL);
+
+    $loginForm = new input_form('loginForm', NULL, SQ_POST, _("Log In"), NULL);
     $loginForm->addObject($loginUsername);
     $loginForm->addObject($loginPassword);
 
@@ -928,35 +871,29 @@ class smdoc_user extends foowd_user
                         $loginPassword->value );
     } 
     else 
-      $result = 1;
+      $result = -1;
 
     switch ($result) 
     {
       case 0:
       case 5:
-        $ok = ( $result == 0 ) ? USER_LOGIN_OK : USER_LOGIN_PREV;
-        $url = getURI(array('objectid' => $foowd->user->objectid, 
-                            'classid' => USER_CLASS_ID,
-                            'ok' => $ok), FALSE);
-        $foowd->track();
-        header('Location: ' . $url);
-      case 1:
-        $return['failure'] =  FORM_FILL_FIELDS;
-        $return['form'] = &$loginForm;
+        $_SESSION['ok'] = ( $result == 0 ) ? USER_LOGIN_OK : USER_LOGIN_PREV;
+        $uri_arr['objectid'] = $foowd->user->objectid;
+        $uri_arr['classid'] = USER_CLASS_ID;
+        $url = getURI($uri_arr, FALSE);
+        $foowd->loc_forward($url);
+        exit;
+      case -1:
+        $foowd->template->assign('failure', FORM_FILL_FIELDS);
         break;
       case 2:
       case 3:
-        $return['failure'] =  _("User or password is incorrect.");
-        $return['form'] = &$loginForm;
+        $foowd->template->assign('failure', _("User or password is incorrect."));
         break;
-      case 8:
-        $url =  getURI(array('error' => USER_LOGIN_BAD_HOST), FALSE);
-        $foowd->track();
-        header('Location: ' . $url);
     }
-      
+
+    $foowd->template->assign_by_ref('form', $loginForm);       
     $foowd->track(); 
-    return $return;
   }
 
   /**
@@ -973,12 +910,11 @@ class smdoc_user extends foowd_user
     switch ($result) 
     {
       case 0:
-      case 1:
       case 3:
-        $url =  getURI(array('class'  => 'smdoc_user',
-                             'method' => 'login',
-                             'ok'     => USER_LOGOUT_OK), FALSE);
-        header('Location: ' . $url);
+        $_SESSION['ok'] = USER_LOGOUT_OK;
+        $uri_arr['class'] = 'smdoc_user';
+        $uri_arr['method'] = 'login';
+        $foowd->loc_forward(getURI($uri_arr, FALSE));
         return NULL;
     }
     trigger_error('Unexpected response when logging out user: ' . $result, E_USER_ERROR);
@@ -991,36 +927,32 @@ class smdoc_user extends foowd_user
    *
    * @param object foowd The foowd environment object.
    */
-  function method_view(&$foowd) 
+  function method_view() 
   {
-    $foowd->track('smdoc_user->method_view');
+    $this->foowd->track('smdoc_user->method_view');
     
-    $return['username'] = $this->getTitle();
+    $this->foowd->template->assign('username', $this->getTitle());
 
-    $return['created'] = $this->created;
-    $return['lastvisit'] =  $this->updated;
-    if ($foowd->user->objectid == $this->objectid) 
+    $this->foowd->template->assign('created', date(DATETIME_FORMAT, $this->created));
+    $this->foowd->template->assign('lastvisit', date(DATETIME_FORMAT, $this->updated));
+
+    if ($this->foowd->user->objectid == $this->objectid) 
     {
-      $return['update'] = getURI(array('objectid' => $this->objectid, 
-                                       'classid' => $this->classid, 
-                                       'method' => 'update'));
-      $return['SM_version'] = $this->smver_to_string();
-      $return['IMAP_server'] = $this->imap_to_string();
-      $return['SMTP_server'] = $this->smtp_to_string();
-
-      if ( $this->email ) 
-        $return['email'] = (!$this->show_email) ?  mungEmail($this->email) : _("Email listed with contact information");
-      else
-        $return['email'] = '';
+      $this->foowd->template->assign('update', TRUE);
+      $this->foowd->template->assign('SM_version', $this->smver_to_string());
+      $this->foowd->template->assign('IMAP_server', $this->imap_to_string());
+      $this->foowd->template->assign('SMTP_server', $this->smtp_to_string());
     }
 
-    if ( $this->IRC_nick != '' )
-      $return['IRC_nick'] = $this->IRC_nick;
-    if ( !empty($this->IM_nicks) )
-      $return['IM_nicks'] = $this->IM_nicks;
+    if ( $this->email )
+      $this->foowd->template->assign('email', mungEmail($this->email));
 
-    $foowd->track(); 
-    return $return;
+    if ( $this->IRC_nick != '' )
+      $this->foowd->template->assign('IRC_nick', $this->IRC_nick);
+    if ( !empty($this->IM_nicks) )
+      $this->foowd->template->assign('IM_nicks', $this->IM_nicks);
+
+    $this->foowd->track(); 
   }
 
   /**
@@ -1028,23 +960,23 @@ class smdoc_user extends foowd_user
    *
    * @param object foowd The foowd environment object.
    */
-  function method_update(&$foowd) 
+  function method_update() 
   {
-    $foowd->track('smdoc_user->method_update');
+    $this->foowd->track('smdoc_user->method_update');
     
-    include_once($foowd->path.'/input.form.php');
-    include_once($foowd->path.'/input.dropdown.php');
-    include_once($foowd->path.'/input.textbox.php');
-    include_once(SM_DIR.'smdoc.input.checkbox.php');
-    include_once(SM_DIR.'smdoc.input.password.php');
+    include_once(INPUT_DIR . 'input.form.php');
+    include_once(INPUT_DIR . 'input.dropdown.php');
+    include_once(INPUT_DIR . 'input.textbox.php');
+    include_once(INPUT_DIR . 'input.checkbox.php');
     
-    $updateForm = new input_form('updateForm', NULL, 'POST', _("Update"));
+    $updateForm = new input_form('updateForm', NULL, SQ_POST, _("Update"));
 
-    $email = new input_textbox('email', REGEX_EMAIL, $this->email, _("Email").': ', FALSE);
-    $showEmail = new input_smdoc_checkbox('show_email', $this->show_email, _("Share Email").': ');
+    $title = new input_textbox('title', REGEX_TITLE, $this->title, 'Username', FALSE);
+    $email = new input_textbox('email', REGEX_EMAIL, $this->email, 'Email', FALSE);
+    $showEmail = new input_checkbox('show_email', $this->show_email, 'Share Email');
 
-    $verify   = new input_passwordbox('verify', REGEX_PASSWORD, '', _("Verify").': ', NULL, FALSE);
-    $password = new input_passwordbox('password', REGEX_PASSWORD, '', _("Change Password").': ', $verify, FALSE);
+    $verify = new input_passwordbox('verify', REGEX_PASSWORD, NULL, 'Verify', FALSE);
+    $password = new input_passwordbox('password', REGEX_PASSWORD, NULL, 'Password', FALSE);
 
     $nicks = $this->IM_nicks;
     if ( !array_key_exists('MSN', $nicks) ) $nicks['MSN'] = '';
@@ -1053,99 +985,75 @@ class smdoc_user extends foowd_user
     if ( !array_key_exists('Y!', $nicks) )  $nicks['Y!'] = '';
     if ( !array_key_exists('WWW', $nicks) ) $nicks['WWW'] = '';
 
-    $ircNick = new input_textbox('irc', $this->foowd_vars_meta['irc'], $this->IRC_nick, 'IRC: ', FALSE);
-    $msnNick = new input_textbox('msn', $this->foowd_vars_meta['msn'], $nicks['MSN'], 'MSN: ', FALSE);
-    $aimNick = new input_textbox('aim', $this->foowd_vars_meta['aim'], $nicks['AIM'], 'AIM: ', FALSE);
-    $icqNick = new input_textbox('icq', $this->foowd_vars_meta['icq'], $nicks['ICQ'], 'ICQ: ', FALSE);
-    $yahooNick = new input_textbox('ym', $this->foowd_vars_meta['yahoo'], $nicks['Y!'], 'Y!: ', FALSE);
-    $www     = new input_textbox('www', $this->foowd_vars_meta['www'], $nicks['WWW'], 'WWW:', FALSE);
-    $smtpServer = new input_dropdown('smtp', $this->SMTP_server, $this->smtp_to_string(true), _("SMTP Server:"));
-    $imapServer = new input_dropdown('imap', $this->IMAP_server, $this->imap_to_string(true), _("IMAP Server:"));
-    $smVersion  = new input_dropdown('smver', $this->SM_version, $this->smver_to_string(true), _("SquirrelMail Version:"));
+    $ircNick = new input_textbox('IRC_nick', $this->foowd_vars_meta['irc'],  $this->IRC_nick,'IRC',FALSE);
+    $msnNick = new input_textbox('MSN', $this->foowd_vars_meta['msn'],  $nicks['MSN'], 'MSN', FALSE);
+    $aimNick = new input_textbox('AIM', $this->foowd_vars_meta['aim'],  $nicks['AIM'], 'AIM', FALSE);
+    $icqNick = new input_textbox('ICQ', $this->foowd_vars_meta['icq'],  $nicks['ICQ'], 'ICQ', FALSE);
+    $yahooNick = new input_textbox('Y!',$this->foowd_vars_meta['yahoo'],$nicks['Y!'],  'Y!',  FALSE);
+    $www     = new input_textbox('WWW', $this->foowd_vars_meta['www'],  $nicks['WWW'], 'WWW', FALSE);
+
+    $smtpServer = new input_dropdown('SMTP_server', $this->SMTP_server, $this->smtp_to_string(true), 'SMTP Server');
+    $imapServer = new input_dropdown('IMAP_server', $this->IMAP_server, $this->imap_to_string(true), 'IMAP Server');
+    $smVersion  = new input_dropdown('SM_version', $this->SM_version, $this->smver_to_string(true), 'SquirrelMail Version');
 
     // public fields
     $updateForm->addObject($ircNick);
-    $updateForm->addObject($aimNick);
-    $updateForm->addObject($icqNick);
-    $updateForm->addObject($msnNick);
-    $updateForm->addObject($yahooNick);
-    $updateForm->addObject($www);
+    $updateForm->addToGroup('nick', $aimNick);
+    $updateForm->addToGroup('nick', $icqNick);
+    $updateForm->addToGroup('nick', $msnNick);
+    $updateForm->addToGroup('nick', $yahooNick);
+    $updateForm->addToGroup('nick', $www);
 
     // private fields
+    $updateForm->addObject($title);
     $updateForm->addObject($email);
     $updateForm->addObject($showEmail);
     $updateForm->addObject($password);
     $updateForm->addObject($verify);
-    $updateForm->addObject($smtpServer);
-    $updateForm->addObject($imapServer);
-    $updateForm->addObject($smVersion);
+    $updateForm->addToGroup('stat',$smtpServer);
+    $updateForm->addToGroup('stat',$imapServer);
+    $updateForm->addToGroup('stat',$smVersion);
 
-    $return['form'] = &$updateForm;
+    $this->foowd->template->assign_by_ref('form', $updateForm);
     $result = 0;
  
     if ( $updateForm->submitted() )
-    {
-      if ( $verify->wasSet && !$password->wasSet )
-          $result = 2;                      // both password and verify were not set or did not match
-      else
-      {
-        $form['IRC_nick'] = $ircNick->value;
-        $form['nick']['MSN'] = $msnNick->value;
-        $form['nick']['AIM'] = $aimNick->value; 
-        $form['nick']['ICQ'] = $icqNick->value;
-        $form['nick']['Y!']  = $yahooNick->value;
-        $form['nick']['WWW']  = $www->value;
-        $form['password'] = $password->value;
-        $form['email'] = $email->value;
-        $form['show_email'] = $showEmail->checked;
-        $form['SMTP_server'] = $smtpServer->value;
-        $form['IMAP_server'] = $imapServer->value;
-        $form['SM_version'] = $smVersion->value;
-
-        $result =  ($this->updateUser($foowd, $form)) ? 1 : 3;
-      }
-    }
+      $result = $this->updateUser($updateForm);
 
     switch($result)
     {
       case 1:
-        $url = getURI(array('objectid' => $foowd->user->objectid, 
-                            'classid' => USER_CLASS_ID,
-                            'ok' => USER_UPDATE_OK), FALSE);
-        header('Location: ' . $url);
+        $_SESSION['ok'] = USER_UPDATE_OK;
+        $uri_arr['objectid'] = $this->foowd->user->objectid;
+        $uri_arr['classid'] = USER_CLASS_ID;        
+        $url = getURI($uri_arr, FALSE);
+        $this->foowd->loc_forward( $url);
         break;
       case 2: 
-        $return['failure'] = _("Passwords must match, please check your entries.");
+        $this->foowd->template->assign('failure', _("Passwords must match, please check your entries."));
         break;
       case 3:
-        $return['failure'] = _("Could not update user.");
+        $this->foowd->template->assign('failure', _("User already exists, please choose a new name."));
+        break;
+      case 4:
+        $this->foowd->template->assign('failure', _("Could not update user."));
         break;
     }
 
-    $foowd->track(); 
-    return $return;
+    $this->foowd->track(); 
   }
 
 // ----------------------------- disabled methods --------------
 
   /**
-   * Output the object clone form and handle its input.
-   *
-   * @param object foowd The foowd environment object.
+   * Create a new version of this object. Set the objects version number to the
+   * next available version number and queue the object for saving. This will
+   * have the effect of creating a new object entry since the objects version
+   * number has changed.
    */
-  function method_clone(&$foowd) 
+  function newVersion() 
   {
-    trigger_error('smdoc_user can not be cloned' , E_USER_ERROR);
-  }
-
-  /**
-   * Output the object as XML.
-   *
-   * @param object foowd The foowd environment object.
-   */
-  function method_xml(&$foowd) 
-  {
-    trigger_error('method_xml does not apply to smdoc_user' , E_USER_ERROR);
+    trigger_error('newVersion not supported for smdoc_user', E_USER_ERROR);    
   }
 
   /**
@@ -1154,7 +1062,7 @@ class smdoc_user extends foowd_user
    * @param object foowd The foowd environment object.
    * @return bool Returns TRUE on success.
    */
-  function tidyArchive(&$foowd) 
+  function tidyArchive() 
   {
     trigger_error('tidyArchive does not apply to smdoc_user' , E_USER_ERROR);
   }
@@ -1167,7 +1075,7 @@ class smdoc_user extends foowd_user
    * @param str workspace The workspace to place the object clone in.
    * @return bool Returns TRUE on success.
    */
-  function clone(&$foowd, $title, $workspace) 
+  function clone($title, $workspace) 
   {
     trigger_error('Can not clone users.' , E_USER_ERROR);
   }

@@ -59,6 +59,7 @@ class input_checkbox extends input_base
       $this->checked = TRUE;
     else
       $this->checked = FALSE;
+    $this->value = $this->checked;
   }
 
   /**
@@ -72,6 +73,7 @@ class input_checkbox extends input_base
     if (is_bool($value)) 
     {
       $this->checked = $value;
+      $this->value = $value;
       return TRUE;
     }
     

@@ -47,14 +47,15 @@ class foowd_anonuser extends foowd_object {
    * @param str groupName Name of the group to check.
    * @return bool TRUE or FALSE.
    */
-  function inGroup($groupName, $creatorid = NULL) {
-    if ($groupName == 'Everyone') {
+  function inGroup($groupName, $creatorid = NULL) { // *SQM
+    if ($groupName == 'Everyone')
       return TRUE;
-    } elseif ($this->foowd->config_settings['user']['anon_user_god']) {
-      return TRUE;
-    } else {
+    if ( $groupName == 'Nobody')
       return FALSE;
-    }
+    if ($this->foowd->config_settings['user']['anon_user_god'])
+      return TRUE;
+
+    return FALSE;
   }
   
   /**

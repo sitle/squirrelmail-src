@@ -175,24 +175,46 @@ class smdoc extends foowd
   /**
    * Fetch one version of an object.
    *
-   * @param array indexes Array of indexes and values to match
-   * @param str source Source to get object from
-   * @return object The selected object or NULL on failure.
-   * @see foowd_db::getObj
+   * @param  array where Array of values to find object by
+   * @param  mixed in_source Source to get object from
+   * @param  array indexes Array of indexes to fetch
+   * @param  bool  setWorkspace get specific workspace id (or any workspace ok)
+   * @return mixed The retrieved object or an array containing the retrieved object and the joined objects.
    */
-  function getObj($indexes, $joins = NULL, $source = NULL)
+  function &getObj($where = NULL, $in_source = NULL, $indexes = NULL, 
+                   $setWorkspace = TRUE)
   {
-    $this->track('smdoc->getObj', $indexes, $source);
+    $this->track('smdoc->getObj', $where, $in_source);
 
-    if ( isset($indexes['objectid']) )
-      $oid = $indexes['objectid'];
+    if ( isset($where['objectid']) )
+      $oid = $where['objectid'];
     else
       $oid = $this->config_settings['site']['default_objectid'];
 
     // @ELH - search for external items first
-    $new_obj = smdoc_external::factory($this, $oid);
+    $new_obj =& smdoc_external::factory($this, $oid);
     if ( $new_obj == NULL )
-      $new_obj = parent::getObj($indexes, $joins, $source);
+    {
+      if ( $in_source == NULL && isset($where['classid']) )
+      {
+        switch($where['classid'])
+        {
+          case USER_CLASS_ID: 
+            global $USER_SOURCE;
+            $in_source = $USER_SOURCE;
+            unset($where['classid']);
+            break;
+        }
+      }
+
+      $new_obj = &$this->database->getObj($where, $in_source, $indexes, $setWorkspace);
+      if ( $new_obj == NULL && $setWorkspace &&
+           isset($where['workspaceid']) && $where['workspaceid'] != 0 )
+      {
+        $where['workspaceid'] = 0;
+        $new_obj = &$this->database->getObj($where, $in_source, $indexes, $setWorkspace);
+      }
+    }
 
     $this->track();
     return $new_obj;

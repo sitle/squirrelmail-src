@@ -34,9 +34,11 @@ function sqmchanges(&$foowd, &$result) {
       if ( isset($object->permissions['view']) &&
            !$foowd->user->inGroup($object->permissions['view'], $object->creatorid) )
          continue;
-    
-      $list_objects[$i]['url'] = getURI(array('objectid' => $object->objectid,
-                                              'version' => $object->version));
+
+      $uri_arr['objectid'] = $object->objectid;
+      $uri_arr['classid']  = $object->classid;
+      $uri_arr['version']  = $object->version;    
+      $list_objects[$i]['url'] = getURI($uri_arr);
       $list_objects[$i]['title']  = $object->title;
       
       if ( $object->workspaceid != 0 )
