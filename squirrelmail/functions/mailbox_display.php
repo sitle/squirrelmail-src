@@ -752,7 +752,7 @@ function mail_message_listing_end($num_msgs, $paginator_str, $msg_cnt_str, $colo
 }
 
 function printHeader($mailbox, $sort, $color, $showsort=true) {
-    global $index_order, $allow_thread_sort, $thread_sort_messages, $PHP_SELF;
+    global $index_order, $PHP_SELF;
     
     if (preg_match('/^(.+)\?.+$/',$PHP_SELF,$regs)) {
         $source_url = $regs[1];
