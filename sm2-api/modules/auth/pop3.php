@@ -57,6 +57,7 @@ class ZkMod_auth_pop3 {
                 if ( $ret = $this->query( $sp, 'USER ' . $username ) ) {
                     $ret = $this->query( $sp, 'PASS ' . $password );
 		}
+		$this->query( $sp, 'QUIT' );
             } else {
                 $ret = FALSE;
             }

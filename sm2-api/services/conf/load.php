@@ -1,22 +1,18 @@
 <?php
 
-/**
- *  Zookeeper
- *  Copyright (c) 2001 Paul Joseph Thompson
- *  Licensed under the GNU GPL. For full terms see the file COPYING.
- *
- *  $Id$
- **/
- 
-function zkload_conf($zookeeper_home) {
-    /* Require a session to have already been started. */
-    if (session_id() == '') {
-        return (false);
+    /**
+     *  Zookeeper
+     *  Copyright (c) 2001 Partridge
+     *  Licensed under the GNU GPL. For full terms see the file COPYING.
+     *
+     *  $Id$
+     **/
+    
+    function zkload_conf( &$zkld, $svcname ) {
+    
+        require_once( $zkld->libhome . '/' . $svcname . '/service.php' );
+        return( TRUE );
+	
     }
-
-    /* Load the zookeeper configuration classes. */
-    require_once("$zookeeper_home/services/conf/service.php");
-    return (true);
-}
 
 ?>
