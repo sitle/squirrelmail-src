@@ -330,10 +330,10 @@ function sqimap_mailbox_rename( $imap_stream, $old_name, $new_name ) {
     }
 }
 
-/*
- * Formats a mailbox into 4 parts for the $boxesall array
+/**
+ * Formats a mailbox into parts for the $boxesall array
  *
- * The four parts are:
+ * The parts are:
  *
  *     raw            - Raw LIST/LSUB response from the IMAP server
  *     formatted      - nicely formatted folder name
@@ -354,7 +354,7 @@ function sqimap_mailbox_parse ($line, $line_lsub) {
         }
 
         /* Count number of delimiters ($delimiter) in folder name */
-        $mailbox  = trim($line_lsub[$g]);
+        $mailbox  = $line_lsub[$g];
         $dm_count = substr_count($mailbox, $delimiter);
         if (substr($mailbox, -1) == $delimiter) {
             /* If name ends in delimiter, decrement count by one */
@@ -472,16 +472,16 @@ function sqimap_mailbox_option_list($imap_stream, $show_selected = 0, $folder_sk
                     $box2 = $boxes_part['formatted'];
 		    break;
                   default:  /* default, long names, style = 0 */
-                    $box2 = str_replace(' ', '&nbsp;', imap_utf7_decode_local($boxes_part['unformatted-disp']));
+                    $box2 = str_replace(' ', '&nbsp;', htmlspecialchars(imap_utf7_decode_local($boxes_part['unformatted-disp'])));
 		    break;
 		}
             }
             $box2 = str_replace(array('<','>'), array('&lt;','&gt;') , $box2);
 
             if ($show_selected != 0 && in_array($lowerbox, $show_selected) ) {
-                $mbox_options .= '<OPTION VALUE="'.$box.'" SELECTED>'.$box2.'</OPTION>' . "\n";
+                $mbox_options .= '<OPTION VALUE="'.htmlspecialchars($box).'" SELECTED>'.$box2.'</OPTION>' . "\n";
             } else {
-                $mbox_options .= '<OPTION VALUE="'.$box.'">'.$box2.'</OPTION>' . "\n";
+                $mbox_options .= '<OPTION VALUE="'.htmlspecialchars($box).'">'.$box2.'</OPTION>' . "\n";
             }
         }
     }
