@@ -25,7 +25,7 @@ include(TEMPLATE_PATH.'index.tpl');
 /** 
  * Base template will call back to this function
  * 
- * @param smdoc foowd Reference to the foowd environment object.
+ * @param smdoc $foowd Reference to the foowd environment object.
  * @param string className String containing invoked className.
  * @param string method String containing called method name.
  * @param smdoc_user user Reference to active user.

@@ -8,7 +8,8 @@
  */
 
 /**
- * Textile usage instructions
+ * Textile usage instructions, shared by create/edit templates
+ * for textile objects
  *
  * Modified by SquirrelMail Development
  * $Id$

@@ -26,14 +26,14 @@ include(TEMPLATE_PATH.'index.tpl');
 /**
  * Base template will call back to this function
  *
- * @param smdoc foowd Reference to the foowd environment object.
- * @param string className String containing invoked className.
- * @param string method String containing called method name.
- * @param smdoc_user user Reference to active user.
- * @param object object Reference to object being invoked.
- * @param mixed t Reference to array filled with template parameters.
+ * @param smdoc $foowd Reference to the foowd environment object.
+ * @param string $className String containing invoked className.
+ * @param string $method String containing called method name.
+ * @param smdoc_user $user Reference to active user.
+ * @param object $object Reference to object being invoked.
+ * @param mixed $t Reference to array filled with template parameters.
  */
-function group_list_body(&$foowd, $className, $method, $user, &$object, &$t)
+function group_list_body(&$foowd, $className, $method, &$user, &$object, &$t)
 {
   $t['addForm']->display_start('smdoc_form');
 ?>
