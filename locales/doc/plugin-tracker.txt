@@ -31,6 +31,7 @@ bookmarks               2.0.3     -   untranslated (cr and rtl issues)
 bounce                  0.5       1   added
 browser_info            3.0       -   utility, no translatable strings
 calendar                0.2       0   part of core
+calendar_file_backend   1.0       -   untranslated
 can_weather             2.2.2     -   untranslated (font and rtl issues)
 change_ldappass         1.8       1   added
 change_merakpass        0.9       1   added
@@ -82,7 +83,7 @@ htmlarea                5.5       -   untranslated
 html_mail               2.0       -   mixed gettext and variable based translation.
                                       Patches that move variable translations to gettext are available.
 http_auth               1.1       -   utility, no translated strings
-image_buttons           1.31      0   added (sm domain, rtl issues)
+image_buttons           1.32      0   added (sm domain, rtl issues)
 ip_users                1.1
 japanese_input          1.0       1   added
 jsclock                 0.7       -   untranslated (rtl issues)
@@ -111,6 +112,7 @@ mail_fetch              1.3       0   part of sm
 mail_fetchmail          0.4       -   untranslated
 mail_fwd                0.4.1     0   part translated (sm domain)
 mail_utilities          0.4       0   part translated (sm domain)
+mailbox_usage           1.0       -   no translatable strings
 mark_read               1.3       1   added (rtl issues?)
 message_source          1.3       0   part of sm 1.4
 metea                   1.7       -   uses French strings
@@ -149,8 +151,7 @@ select_range            2.8.2     1   added
 send_to_semicolon       1.4       -   util, no translateable strings
 sent_confirmation       1.6       1   added
 serversidefilter        1.42      2   added
-shared_calendars        1.1       0   (sm-domain, multiline print strings, problems with multibyte charsets)
-                                      It is not added because it will replace official calendar plugin
+shared_calendars        2.0       2   added (calendar domain)
 sharedtodolists         1.4       -   untranslated
 show_headers            1.2       0   added (sm domain, rtl issues)
 show_ssl_link           2.1       -   string is only in config
