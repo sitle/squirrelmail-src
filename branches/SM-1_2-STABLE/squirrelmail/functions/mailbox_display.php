@@ -59,7 +59,7 @@ function printMessageInfo($imapConnection, $t, $i, $key, $mailbox, $sort,
             if ($senderName != '') {
                 $senderName .= ', ';
             }
-            $senderName .= sqimap_find_displayable_name($senderNames_part);
+            $senderName .= htmlentities(sqimap_find_displayable_name($senderNames_part));
         }
     }
 
