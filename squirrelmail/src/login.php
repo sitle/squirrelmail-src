@@ -24,6 +24,7 @@ require_once(SM_PATH . 'functions/constants.php');
 require_once(SM_PATH . 'functions/page_header.php');
 require_once(SM_PATH . 'functions/html.php');
 require_once(SM_PATH . 'functions/global.php');
+require_once(SM_PATH . 'functions/forms.php');
 
 /*
  * $squirrelmail_language is set by a cookie when the user selects
@@ -73,7 +74,7 @@ $custom_css = 'none';
 displayHtmlHeader( "$org_name - " . _("Login"), $header, FALSE );
 
 echo '<body text="#000000" bgcolor="#FFFFFF" link="#0000CC" vlink="#0000CC" alink="#0000CC" onload="squirrelmail_loginpage_onload();">' .
-     "\n" . '<form action="redirect.php" method="post">' . "\n";
+     "\n" . addForm('redirect.php', 'POST');
 
 $username_form_name = 'login_username';
 $password_form_name = 'secretkey';
@@ -121,7 +122,7 @@ echo html_tag( 'table',
                                     _("Name:") ,
                                 'right', '', 'width="30%"' ) .
                                 html_tag( 'td',
-                                    '<input type="text" name="' . $username_form_name .'" value="' . $loginname_value .'" />' ,
+				    addInput($username_form_name, $loginname_value),
                                 'left', '', 'width="*"' )
                                 ) . "\n" .
                             html_tag( 'tr',
@@ -129,9 +130,9 @@ echo html_tag( 'table',
                                     _("Password:") ,
                                 'right', '', 'width="30%"' ) .
                                 html_tag( 'td',
-                                    '<input type="password" name="' . $password_form_name . '" />' . "\n" .
-                                    '<input type="hidden" name="js_autodetect_results" value="SMPREF_JS_OFF" />' . "\n" .
-                                    '<input type="hidden" name="just_logged_in" value="1" />' . "\n",
+				    addPwField($password_form_name).
+				    addHidden('js_autodetect_results', SMPREF_JS_OFF).
+				    addHidden('just_logged_in', '1'),
                                 'left', '', 'width="*"' )
                             ) ,
                         'center', '#ffffff', 'border="0" width="100%"' ) ,
@@ -139,7 +140,7 @@ echo html_tag( 'table',
                 ) . 
                 html_tag( 'tr',
                     html_tag( 'td',
-                        '<center><input type="submit" value="' . _("Login") . '" /></center>',
+                        '<center>'. addSubmit(_("Login")) .'</center>',
                     'left' )
                 ),
             '', '#ffffff', 'border="0" width="350"' ) . '</center>',
