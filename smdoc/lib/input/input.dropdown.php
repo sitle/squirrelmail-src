@@ -57,7 +57,7 @@ class input_dropdown extends input_base
     $this->items = $items;
     $this->caption = $caption;
     $this->multiple = $multiple;
-    
+
     parent::input_base($name, NULL, $value);
   }    
 
@@ -73,9 +73,9 @@ class input_dropdown extends input_base
     {
       if ( $this->multiple )
       {
-        foreach($value as $val)
+        foreach($value as $ord => $key)
         {
-          if ( !array_key_exists($val, $this->items) )
+          if ( !isset($this->items[$key]) )
             return FALSE;
         }
 
@@ -112,12 +112,12 @@ class input_dropdown extends input_base
   function display($class = NULL, $visibleItems = 1) 
   {
     $class = ( $class == NULL ) ? ''  : ' class="'.$class.'"';
-    $multiple = ( $this->multiple ) ? ' multiple="multiple"' : '';
+    $multiple = ( $this->multiple ) ? ' multiple' : '';
     $size = ' size="'.$visibleItems.'"';
     $name  = ' name="'.$this->name.'[]"';
 
 
-    echo ' <select',$name,$multiple,$size,$class,'>'."\n";
+    echo ' <select',$multiple,$name,$size,$class,'>'."\n";
 
     foreach ($this->items as $val => $item) 
     {

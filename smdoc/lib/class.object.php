@@ -472,17 +472,15 @@ class foowd_object
   function set($member, $value = NULL) 
   {
     $this->foowd->track('foowd_object->set', $member, $value);
-
     $object_vars = get_object_vars($this);
     if ( !isset($object_vars[$member]) )   // if member variable doesn't exist, return early
     {
       $this->foowd->track();
       return FALSE;
     }
-
     $okay = FALSE;
     $regex = isset($this->foowd_vars_meta[$member]) ?
-                isset($this->foowd_vars_meta[$member]) : NULL;
+                   $this->foowd_vars_meta[$member] : NULL;
 
     if ( $regex == NULL || $regex == '' || $regex == 'binary' )
       $okay = TRUE;

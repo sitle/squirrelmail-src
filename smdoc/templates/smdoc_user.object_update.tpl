@@ -44,7 +44,7 @@ function user_update_body(&$foowd, $className, $method, $user, $object, &$t)
 <?php   echo $box->display(); 
         if ( $box->name == 'IRC' )
         { ?>
-         <span class="subtext">#squirrelmail (<a href="http://freenode.net">irc.freenode.net</a>)</span>
+         <span class="subtext"> - #squirrelmail (<a href="http://freenode.net">irc.freenode.net</a>)</span>
 <?php   } ?>
     </td></tr>
 <?php } ?>

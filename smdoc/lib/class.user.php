@@ -1,47 +1,165 @@
 <?php
 /*
-Copyright 2003, Paul James
+ * Copyright (c) 1999-2003 The SquirrelMail Project Team
+ * Licensed under the GNU GPL. For full terms see the file COPYING.
+ *
+ * This file is an addition/modification to the
+ * Framework for Object Orientated Web Development (Foowd).
+ *
+ * $Id$
+ */
 
-This file is part of the Framework for Object Orientated Web Development (Foowd).
+setClassMeta('base_user', 'User');
+setConst('USER_CLASS_ID', META_BASE_USER_CLASS_ID);
 
-Foowd is free software; you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation; either version 2 of the License, or
-(at your option) any later version.
+global $USER_SOURCE;
+$USER_SOURCE = array('table' => 'smdoc_user',
+                     'table_create' => array(getClassname(USER_CLASS_ID),'makeTable'));
 
-Foowd is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
+setPermission('base_user', 'object', 'clone', 'Nobody');
+setPermission('base_user', 'object', 'admin', 'Nobody');
+setPermission('base_user', 'object', 'xml', 'Nobody');
+setPermission('base_user', 'object', 'permissions', 'Nobody');
+setPermission('base_user', 'object', 'history', 'Nobody');
+setPermission('base_user', 'object', 'groups', 'Gods');
 
-You should have received a copy of the GNU General Public License
-along with Foowd; if not, write to the Free Software
-Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
-*/
-
-/*
-class.user.php
-Foowd user object class
-*/
-
-/* Method permissions */
-setPermission('foowd_user', 'class', 'create', 'Everyone'); // we want anyone to be able to create a user so we override this permission for this object with the empty string
-setPermission('foowd_user', 'object', 'groups', 'Gods');
-setPermission('foowd_user', 'object', 'update', 'Author');
-
-/* Class descriptor */
-setClassMeta('foowd_user', 'User');
+include_once(SM_DIR . 'class.anonuser.php');
 
 /**
- * The Foowd user class.
+ * The smdoc extended user class.
  *
  * Class for holding information about a user and providing methods for
  * manipulating and getting information on a user.
  *
- * @author Paul James
- * @package Foowd
  */
-class foowd_user extends foowd_object {
+class base_user extends foowd_object
+{
+  /**
+   * Fetch User
+   *
+   * @param object foowd The foowd environment object.
+   * @return retrieved foowd user or anonymous user instance
+   */
+  function &factory(&$foowd)
+  {
+    $foowd->track('base_user::factory');
+
+    $user_info = array();
+    $new_user = NULL;
+
+    $user_info = base_user::getUserDetails($foowd);
+    if ( isset($user_info['username']) )
+      $new_user =& base_user::fetchUser($foowd, $user_info);
+
+    // If loading the user is unsuccessful (or unattempted),
+    // fetch an anonymous user
+    if ( $new_user == NULL )
+      $new_user =& base_user::fetchAnonymousUser($foowd);
+
+    $foowd->track();
+    return $new_user;
+  }
+
+  /**
+   * Create Anonymous Foowd User
+   *
+   * @param object foowd The foowd environment object.
+   * @return new instance of anonymous user class.
+   */
+  function &fetchAnonymousUser(&$foowd)
+  {
+    $anonUserClass = getConstOrDefault('ANONYMOUS_USER_CLASS', 'foowd_anonuser');
+    if (class_exists($anonUserClass)) {
+      return new $anonUserClass($foowd);
+    } else {
+      trigger_error('Could not find anonymous user class.', E_USER_ERROR);
+    }
+  }
+
+  /**
+   * Fetch Foowd User
+   *
+   * @param object foowd The foowd environment object.
+   * @param mixed userArray Array containing user information (userid, password).
+   * @return retrieved foowd user or FALSE on failure.
+   */
+  function &fetchUser(&$foowd, $userArray = NULL)
+  {
+    global $USER_SOURCE;
+
+    // If we don't have required elements, return early.
+    if ( !isset($userArray['username']) )
+      return FALSE;
+
+    $foowd->track('base_user::fetchUser', $userArray);
+
+    if ( isset($userArray['objectid']) )
+      $where['objectid'] = $userArray['objectid'];
+    else
+      $where['title'] = $userArray['username'];
+
+    $user =& $foowd->getObj($where, $USER_SOURCE, FALSE);
+    $foowd->track();
+    return $user;
+  }
+
+  /**
+   * Get user details from an external mechanism.
+   *
+   * If not already set, populate the user array with the user classid and
+   * fetch the username and password of the current user from one of the input
+   * mechanisms
+   *
+   * @param object foowd The foowd environment object.
+   * @return array The resulting user array.
+   */
+  function getUserDetails(&$foowd) 
+  {
+    $session_userinfo = new input_session('userinfo', NULL, NULL, TRUE);
+    if ( !$session_userinfo->wasSet || 
+         $session_userinfo->value == NULL )
+      return FALSE;
+
+    $user_info = $session_userinfo->value;
+    $user = array();
+
+    $user['username'] = $user_info['username'];
+    $user['password'] = $user_info['password'];
+    if ( isset($user_info['objectid']) )
+      $user['objectid'] = $user_info['objectid'];
+
+    return $user;
+  }
+
+  /**
+   * Make a Foowd database table.
+   *
+   * When a database query fails due to a non-existant database table, this
+   * method is envoked to create the missing table and execute the SQL
+   * statement again.
+   *
+   * @param object foowd The foowd environment object.
+   * @param str SQLString The original SQL string that failed to execute due to missing database table.
+   * @return mixed The resulting database query resource or FALSE on failure.
+   */
+  function makeTable(&$foowd) 
+  {
+    global $USER_SOURCE;
+
+    $foowd->track('base_user->makeTable');
+    $sql = 'CREATE TABLE `'.$USER_SOURCE['table'].'` (
+              `objectid` int(11) NOT NULL default \'0\',
+              `title` varchar(32) NOT NULL default \'\',
+              `object` longblob,
+              `updated` datetime NOT NULL default \'1969-12-31 19:00:00\',
+              PRIMARY KEY  (`objectid`),
+              KEY `idxuser_updated` (`updated`),
+              KEY `idxuser_title` (`title`)
+            );';
+    $result = $foowd->database->query($sql);
+    $foowd->track();
+    return $result;
+  }
 
   /**
    * The users password.
@@ -64,88 +182,105 @@ class foowd_user extends foowd_object {
    * 
    * @var array
    */
-  var $groups = array();
+  var $groups;
 
-  /**
-   * The users hostmask.
-   *
-   * Can optionally be set to limit use of the user to a single IP address or hostmask.
-   * 
-   * @var str
-   */
-  var $hostmask = NULL;
-  
   /**
    * Constructs a new user.
    *
+   * @constructor base_user
    * @param object foowd The foowd environment object.
-   * @param str username The users name.
-   * @param str password An MD5 hash of the users password.
-   * @param str email The users e-mail address.
-   * @param array groups The user groups the user belongs to.
-   * @param str hostmask The users hostmask.
+   * @param optional str username The users name.
+   * @param optional str password An MD5 hash of the users password.
+   * @param optional str email The users e-mail address.
+   * @param optional array groups The user groups the user belongs to.
+   * @param optional str hostmask The users hostmask.
    */
-  function foowd_user(
-    &$foowd,
-    $username = NULL,
-    $password = NULL,
-    $email = NULL,
-    $groups = NULL,
-    $hostmask = NULL
-  ) {
-    $foowd->track('foowd_user->constructor');
+  function base_user( &$foowd,
+                   $username = NULL,
+                   $password = NULL,
+                   $email = NULL,
+                   $objectid = NULL)
+  {
+    global $USER_SOURCE;
+    $foowd->track('base_user->constructor');
 
-// password
-    if (preg_match(REGEX_PASSWORD, $password)) {
-      $salt = getConstOrDefault($foowd->password_salt, '');
-      $this->password = md5($salt.strtolower($password));
-    } else {
-      trigger_error('Could not create object, password contains invalid characters.');
+    $this->foowd =& $foowd;
+
+    // Don't use workspace id when looking for unique title 
+    if ( $objectid == NULL && 
+         !$this->isTitleUnique($username, FALSE, $objectid, $USER_SOURCE) )
+    {
       $this->objectid = 0;
-      $foowd->track(); return FALSE;
+      $foowd->track(); 
+      return FALSE;
     }
 
-// base object constructor
-    parent::foowd_object($foowd, $username, NULL, NULL, NULL, FALSE);
+    // init meta arrays
+    $this->__wakeup();
+ 
+    // Initialize variables
+    $this->title = $username;
+    $this->objectid = $objectid;
+    $this->workspaceid = 0;
+    $this->classid = USER_CLASS_ID;
 
-// email
-    if (preg_match($this->foowd_vars_meta['email'], $email)) {
-      $this->email = $email;
-    }
-    
-// make user created and owned by self
     $this->creatorid = $this->objectid; // created by self
-    $this->creatorName = $this->title;
+    $this->creatorName = $this->title;  // created by self
+    $this->created = time();
+    $this->updatorid = $this->objectid; // updated by self
+    $this->updatorName = $this->title;  // updated by self
+    $this->updated = time();
 
-// user groups
-    if (is_array($groups)) {
-      foreach ($groups as $group) {
-        if (preg_match($this->foowd_vars_meta['groups'], $group)) {
-          $this->groups[] = $group;
-        }
-      }
-    }
+    $this->groups = array();
+
+    $salt = $foowd->config_settings['user']['password_salt'];
+    $this->password = md5($salt.$password);
+    $this->email = $email;
     
-// hostmask
-    $this->hostmask = $hostmask;
-    
+    // set original access vars
+    $this->foowd_original_access_vars['title'] = $this->title;
+    $this->foowd_original_access_vars['objectid'] = $this->objectid;
+    $this->foowd_original_access_vars['workspaceid'] = $this->workspaceid;
+
+    // add to loaded object reference list
+    $foowd->database->addToLoadedReference($this, $USER_SOURCE);
+
+    // object created successfuly, queue for saving
+    $this->foowd_changed = TRUE;      
+
     $foowd->track();
   }
 
   /**
-   * Serliaisation wakeup method.
-   *
-   * Re-create Foowd meta arrays not stored when object was serialized.
+   * Serialisation wakeup method.
    */
-  function __wakeup() {
+  function __wakeup() 
+  {
     parent::__wakeup();
+
+    global $USER_SOURCE;
+    $this->foowd_source = $USER_SOURCE;
+
+    // add some regex verification
+    unset($this->foowd_vars_meta['version']);
     $this->foowd_vars_meta['password'] = '/^[a-z0-9]{32}$/'; // this is not set to the password regex as it's stored as an md5
     $this->foowd_vars_meta['email'] = REGEX_EMAIL;
     $this->foowd_vars_meta['groups'] = REGEX_GROUP;
-    $this->foowd_vars_meta['hostmask'] = '/^[._?*a-zA-Z0-9-]*$/';
-  }
+    $this->foowd_vars_meta['title'] = REGEX_TITLE;
 
-/* Member functions */
+    // re-arrange our indices
+    unset($this->foowd_indexes['version']);
+    unset($this->foowd_indexes['classid']);
+    unset($this->foowd_indexes['workspaceid']);
+
+    // Original access vars
+    unset($this->foowd_original_access_vars['version']);
+    $this->foowd_original_access_vars['classid'] = USER_CLASS_ID;
+    $this->foowd_original_access_vars['title'] = $this->title;
+
+    // Default primary key
+    $this->foowd_primary_key = array('objectid');    
+  }
 
   /**
    * Whether a user is in a user group.
@@ -154,26 +289,31 @@ class foowd_user extends foowd_object {
    * @param int creatorid The userid of the creator .
    * @return bool TRUE or FALSE.
    */
-  function inGroup($groupName, $creatorid = NULL) {
-    if ($groupName == 'Everyone') { // group is everyone
+  function inGroup($groupName, $creatorid = NULL) 
+  {
+    if ($groupName == 'Everyone')               // group is everyone
       return TRUE;
-    } elseif ($groupName == 'Nobody') { // group is nobody
+    if ($groupName == 'Nobody')                 // group is nobody
       return FALSE;
-    } elseif (is_array($this->groups) && in_array($groupName, $this->groups)) { // user is in group
+    if ($groupName == 'Registered' )            // group is any registered user (not anonymous)
       return TRUE;
-    } elseif (is_array($this->groups) && in_array('Gods', $this->groups)) { // user is a god
+    if ( $groupName == 'Author' && 
+         $creatorid != NULL && $this->objectid != NULL && 
+         $this->objectid == $creatorid)           // group is author and so is user
       return TRUE;
-    } elseif ($groupName == 'Author' && $creatorid != NULL && $this->objectid != NULL && $this->objectid == $creatorid) { // group is author and so is user
-      return TRUE;
-    } elseif ($groupName == 'Registered' && !$this->isAnonymous()) { // group is registered and so is user
-      return TRUE;
-    } elseif ($this->foowd->anonuser_god && $this->isAnonymous()) { // user is anon user with god powers
-      return TRUE;
-    } else {
-      return FALSE;
+
+    if ( is_array($this->groups) )
+    {
+      if ( in_array($groupName, $this->groups) )  // user is in group
+        return TRUE;
+      if ( in_array('Gods', $this->groups) )
+        return TRUE;
     }
+
+    return FALSE;
   }
-    
+ 
+
   /**
    * Check the string is the users password.
    *
@@ -181,108 +321,36 @@ class foowd_user extends foowd_object {
    * @param bool plainText The password is in plain text rather than an md5 hash.
    * @return bool Returns TRUE if the passwords match.
    */
-  function passwordCheck($password, $plainText = FALSE) {
-    if ($plainText) {
-      $password = md5(getConstOrDefault($this->foowd->password_salt, '').strtolower($password));
+  function passwordCheck($password, $plainText = FALSE) 
+  {
+    if ($plainText) 
+    {
+      $salt = $this->foowd->config_settings['user']['password_salt'];
+      $password = md5($salt.$password);
     }
-    if ($this->password === $password || defined('AUTH_IP_'.$_SERVER['REMOTE_ADDR'])) {
+
+    if ( $this->password === $password )
       return TRUE;
-    } else {
-      return FALSE;
-    }
+    
+    return FALSE;
   }
-  
-  /**
-   * Check the users hostmask matches that of the incoming request.
-   *
-   * @return bool Returns TRUE if the hostmasks match.
-   */
-  function hostmaskCheck() {
-    if ($this->hostmask && function_exists('fnmatch')) { // only works on systems with access to "fnmatch", other systems always return TRUE
-      if (isset($_SERVER['REMOTE_HOST']) && fnmatch($this->hostmask, $_SERVER['REMOTE_HOST'])) {
-        return TRUE;
-      } elseif (isset($_SERVER['REMOTE_ADDR']) && fnmatch($this->hostmask, $_SERVER['REMOTE_ADDR'])) {
-        return TRUE;
-      } else {
-        return FALSE;
-      }
-    }
-    return TRUE;
-  }
-  
+
   /**
    * Check if the user is the anonymous user.
    *
    * @return bool Returns TRUE if the user is of the anonymous user class.
    */
-  function isAnonymous() {
-    if ($this->objectid == getConstOrDefault($this->foowd->anonuser_id, FALSE)) {
-      return TRUE;
-    } else {
-      return FALSE;
-    }
+  function isAnonymous() 
+  {
+    return FALSE;
   }
 
-  /**
-   * Get user details from an external mechanism.
-   *
-   * If not already set, populate the user array with the user classid and
-   * fetch the username and password of the current user from one of the input
-   * mechanisms
-   *
-   * @static
-   * @param object foowd The Foowd environment object
-   * @param str authType The authentication type to use.
-   * @param str username The default username
-   * @param str password The default password
-   * @param str salt The password salt to use
-   * @return array The resulting user array.
-   */
-  function getUserDetails(&$foowd, $authType, $username, $password, $salt) {
-    $foowd->track('foowd->getUserDetails');
-
-    $user = FALSE;
-
-// get our username and password
-    if (isset($username) && isset($password)) { // nothing to do, we were already passed the user details explicitly
-      $user['username'] = $username;
-      $user['password'] = md5($salt.strtolower($password));
-    } else { // use the selected input mechanism to fetch the user details
-      if (isset($_SERVER['REMOTE_ADDR']) && defined('AUTH_IP_'.$_SERVER['REMOTE_ADDR'])) { // use IP to retrieve user details, whether IP Auth mode or not.
-        $user['username'] = constant('AUTH_IP_'.$_SERVER['REMOTE_ADDR']);
-        $user['password'] = TRUE;
-        $foowd->track(); return $user;
-      }
-      switch ($authType) {
-      case 'cookie': // use cookie to retrieve user details
-        sendTestCookie($foowd);
-        include_once(INPUT_DIR.'input.cookie.php');
-        $username = new input_cookie('username', REGEX_TITLE);
-        $user['username'] = $username->value;
-        $password = new input_cookie('password', '/^[a-z0-9]{32}$/');
-        $user['password'] = $password->value;
-        break;
-      case 'http': // use http auth to retrieve user details
-        if (isset($_SERVER['PHP_AUTH_USER']) && isset($_SERVER['PHP_AUTH_PW'])) {
-          $user['username'] = $_SERVER['PHP_AUTH_USER'];
-          $user['password'] = md5(getConstOrDefault($foowd->password_salt, '').strtolower($_SERVER['PHP_AUTH_PW']));
-        }
-        break;
-      }
-    }
-    $foowd->track(); return $user;
-  }
-  
   /**
    * Log the user in.
    *
-   * @access private
-   * @static
    * @param object foowd The foowd environment object.
-   * @param str authType The type of user authentication to use.
-   * @param str username The username of the user to log in as.
-   * @param str password The plain text password of the user to log in with.
-   * @param bool longTermCookie Whether to use a persistant cookie rather than a session cookie.
+   * @param optional str username The username of the user to log in as.
+   * @param optional str password The plain text password of the user to log in with.
    * @return int 0 = logged in successfully<br />
    *             1 = no user given<br />
    *             2 = unknown user<br />
@@ -293,109 +361,64 @@ class foowd_user extends foowd_object {
    *             7 = must have cookies enabled<br />
    *             8 = bad hostmask<br />
    */
-  function login(&$foowd, $authType, $username = FALSE, $password = NULL, $longTermCookie = TRUE) {
-    if ($foowd->user->isAnonymous()) { // is anon user
-      switch ($authType) {
-      case 'http':
-        header('WWW-Authenticate: Basic realm="'.getConstOrDefault('AUTH_REALM', 'Framework for Object Orientated Web Development').'"');
-        header('HTTP/1.0 401 Unauthorized');
-        return 6; // did not http auth correctly
-      case 'cookie':
-        if (!cookieTest($foowd)) {
-          return 7; // must have cookies enabled
-        }
-        if ($username) {
-          $user = &$foowd->getObj(array('objectid' => crc32(strtolower($username)), 
-                                        'classid' => crc32(strtolower($foowd->user_class))));
-          if (is_object($user) && strtolower($user->title) == strtolower($username)) {
-            if ($user->hostmaskCheck()) {
-              $salt = getConstOrDefault($foowd->password_salt, '');
-              if ($user->password == md5($salt.strtolower($password))) {
-                $foowd->user = $user;
-                if ($longTermCookie) {
-                  $expireTime = NULL;
-                } else {
-                  $expireTime = 0;
-                }
-                include_once(INPUT_DIR.'input.cookie.php');
-                $cookieUsername = new input_cookie('username', REGEX_TITLE, NULL, $expireTime);
-                $cookiePassword = new input_cookie('password', '/^[a-z0-9]{32}$/', NULL, $expireTime);
-                $cookieUsername->set($user->title);
-                $cookiePassword->set($user->password);
-                return 0; // logged in successfully
-              } else {
-                return 3; // bad password
-              }
-            } else {
-              return 8; // bad hostmask
-            }
-          } else {
-            return 2; // unknown user
-          }
-        } else {
-          return 1; // no user given
-        }
-      }
-      return 4; // unknown authentication method
-    } else {
-      if ($authType == 'http') {
-        return 0; // logged in successfully
-      } else {
-        return 5; // user already logged in
-      }
-    }
+  function login(&$foowd, $username = FALSE, $password = NULL) 
+  {
+    if ( !$foowd->user->isAnonymous() ) 
+      return 5;                             // user already logged in
+    if ( !$username ) 
+      return 1;                             // no user given
+
+    $user_info['username'] = $username;
+
+    $newuser =& base_user::fetchUser($foowd, $user_info);
+    if ( !is_object($newuser) || 
+         strtolower($newuser->title) != strtolower($username)) 
+      return 2;                             // unknown user
+
+    $salt = $foowd->config_settings['user']['password_salt'];
+    if ( $newuser->password != md5($salt.$password) )
+      return 3;                             // bad password
+
+    $user_info['password'] = md5($salt.$password);
+    $user_info['objectid'] = $newuser->objectid;
+
+    // save user information
+    $foowd->user = $newuser;
+    $foowd->user->update();
+
+    $session_userinfo = new input_session('userinfo', NULL, NULL, TRUE); 
+    $session_userinfo->set($user_info);
+    return 0;                               // logged in successfully
   }
-  
+
   /**
    * Log out the user.
    *
-   * @access private
-   * @static
    * @param object foowd The foowd environment object.
-   * @param str authType The type of user authentication to use.
+   * @param optional str authType The type of user authentication to use.
    * @return int 0 = cookie logged out successfully<br />
    *             1 = http logged out successfully<br />
    *             2 = ip auth, can not log out<br />
    *             3 = user already logged out<br />
    *             4 = http log out failed due to browser<br />
    */
-  function logout(&$foowd, $authType) {
-    if ($foowd->user->objectid == getConstOrDefault($foowd->anonuser_id, FALSE) || $foowd->user->objectid == NULL) {
+  function logout(&$foowd) 
+  {
+    if ( $foowd->user->isAnonymous() ) 
       return 3; // user already logged out
-    } else {
-      if ($authType == 'ip' || defined('AUTH_IP_'.$_SERVER['REMOTE_ADDR'])) {
-        return 2; // ip auth, can not log out
-      } elseif ($authType == 'cookie') {
-        $anonUserClass = getConstOrDefault($foowd->anonuser_class, 'foowd_anonuser');
-        if (class_exists($anonUserClass)) {
-          $foowd->user = &new $anonUserClass($foowd);
-        }
-        include_once(INPUT_DIR.'input.cookie.php');
-        $cookieUsername = new input_cookie('username', REGEX_TITLE);
-        $cookiePassword = new input_cookie('password', '/^[a-z0-9]{32}$/');
-        $cookieUsername->delete();
-        $cookiePassword->delete();
-        return 0; // cookie logged out successfully
-      } else {
-        header('WWW-Authenticate: Basic realm="'.$foowd->auth_realm);
-        header('HTTP/1.0 401 Unauthorized');
-        if (isset($_SERVER['PHP_AUTH_USER']) || ($foowd->user->objectid != getConstOrDefault($foowd->anonuser_id, NULL) && $foowd->user->objectid != NULL)) {
-          return 4; // http log out failed due to browser
-        } else {
-          return 1; // http logged out successfully
-        }
-      }
-    }
+
+    $foowd->user = base_user::fetchAnonymousUser($foowd);
+
+    $session_userinfo = new input_session('userinfo', NULL, NULL, true); 
+    $session_userinfo->set(NULL);
+        
+    return 0; // logged out successfully
   }
-  
+
   /**
    * Create a new user.
    *
-   * @access private
-   * @static
    * @param object foowd The foowd environment object.
-   * @param str className The name of the user class to create an instance of.
-   * @param str authType The type of user authentication to use.
    * @param str username The name of the user to create.
    * @param str password The password of the user.
    * @param str email The e-mail address of the user.
@@ -403,34 +426,32 @@ class foowd_user extends foowd_object {
    *             1 = created ok, ip auth so you can't log in<br />
    *             2 = need cookie, support not found<br />
    *             3 = eek, error creating user<br />
+   *             4 = duplicate user name<br />
    */
-  function create(&$foowd, $className, $authType, $username, $password, $email) {
-    if (cookieTest($foowd)) {
-      $object = &new $className($foowd, $username, $password, $email);
-      if ($object->objectid != 0) {
-        if ($authType != 'ip') {
-          return 0; // created ok
-        } else {
-          return 1; // created ok, ip auth so you can't log in
-        }
-      } else {
-        return 3; // eek, error creating user.
-      }
-    } else {
-      return 2; // need cookie, support not found
-    }
+  function create(&$foowd, $username, $password, $email) 
+  {
+    global $USER_SOURCE;
+
+    // no workspaceid, calculate new objectid.
+    if ( !$foowd->database->isTitleUnique($username, FALSE, $objectid, $USER_SOURCE, TRUE) )
+      return 4;
+
+    $object = new base_user($foowd, $username, $password, $email, $objectid);
+    if ( $object->objectid != 0 && $object->save($foowd) ) 
+      return 0; // created ok
+    else
+      return 3; // eek, error creating user.
   }
-  
+
   /**
    * Get user a new password if it has been lost.
    *
    * @access private
    * @static
    * @param object foowd The foowd environment object.
-   * @param str className The name of the user class.
    * @param str username The name of the user to fetch the password for.
-   * @param str queryUsername Username given for stage 2 of the retrieval process.
-   * @param str id The ID given for stage 2 of the process.
+   * @param optional str queryUsername Username given for stage 2 of the retrieval process.
+   * @param optional str id The ID given for stage 2 of the process.
    * @return int 0 = nothing, display form<br />
    *             1 = password change request e-mail sent<br />
    *             2 = could not send e-mail due to technical problem<br />
@@ -441,116 +462,170 @@ class foowd_user extends foowd_object {
    *             7 = id does not match<br />
    *             8 = user does not exist<br />
    */
-  function fetchPassword(&$foowd, $className, $username, $queryUsername = NULL, $id = NULL) {
+  function fetchPassword(&$foowd, $username, $queryUsername = NULL, $id = NULL) 
+  {
+    if ( $username == '' ) 
+      return 0;                             // nothing, display form
 
-    if ($id == NULL && $username != '') { // user given username, fetch user and send stage 1 e-mail requrest 
+    $user_info['username'] = $username;
+    $lostuser =& base_user::fetchUser($foowd, $user_info);
 
-      $user = &$foowd->getObj(array('objectid' => crc32(strtolower($username)), 
-                                    'classid' => crc32(strtolower($foowd->user_class))));
-      if (isset($user->title) && strtolower($user->title) == strtolower($username)) {
-        if (isset($user->email)) {
-          $foowd->template->assign('sitename', $foowd->sitename);
-          $foowd->template->assign('username', $user->title);
-          $foowd->template->assign('hostname', $_SERVER['SERVER_NAME']);
-          $foowd->template->assign('class', $className);
-          $foowd->template->assign('id', md5($user->updated.$user->title));
-          $message = $foowd->template->fetch('fetchpwd_request.tpl');
-          if (email(
-            $foowd,
-            $user->email,
-            sprintf(_("%s - Password Change Request"), $foowd->sitename),
-            $message,
-            'From: '.$foowd->webmaster_email.'\r\nReply-To: '.$foowd->noreply_email
-          )) {
-            return 1; // password change request e-mail sent
-          } else {
-            return 2; // could not send e-mail due to technical problem
-          }
-        } else {
-          return 3; // user has no e-mail address
-        }
-      } else {
-        return 4; // user does not exist
-      }
+    if ( !$lostuser || !isset($lostuser->title) || 
+         strtolower($lostuser->title) != strtolower($username) )
+      return 4;                             // user does not exist
 
-    } elseif ($id != '' && $queryUsername != '') { // user returned after stage 1 e-mail, change password and send stage 2 e-mail
+    if ( !isset($lostuser->email) )
+      return 3;                             // user has no e-mail address
 
-      $user = &$foowd->getObj(array('objectid' => crc32(strtolower($username)), 
-                                    'classid' => crc32(strtolower($foowd->user_class))));
-      if (
-        isset($user->title) &&
-        strtolower($user->title) == strtolower($queryUsername)
-      ) {
-        if ($id == md5($user->updated.$user->title)) {
-          $newPassword = '';
-          srand(time());
-          for($foo = 0; $foo < rand(6,12); $foo++) { $newPassword .= chr(rand(97, 122)); }
-          $salt = getConstOrDefault($foowd->password_salt, '');
-          $foowd->template->assign('sitename', $foowd->sitename);
-          $foowd->template->assign('username', $user->title);
-          $foowd->template->assign('password', $newPassword);
-          $foowd->template->assign('hostname', $_SERVER['SERVER_NAME']);
-          $foowd->template->assign('class', $className);
-          $message = $foowd->template->fetch('fetchpwd_response.tpl');
-          if (email(
-            $foowd,
-            $user->email,
-            sprintf(_("%s - Password Change Request"), $foowd->sitename),
-            $message,
-            'From: '.$foowd->webmaster_email.'\r\nReply-To: '.$foowd->noreply_email
-          )) {
-            $user->set('password', md5($salt.$newPassword));
-            return 5; // password changed and e-mail sent
-          } else {
-            return 6; // could not send e-mail due to technical problem
-          }
-        } else {
-          return 7; // id does not match
-        }
-      } else {
-        return 8; // user does not exist
-      }
+    $site = $foowd->config_settings['site']['site_name'];
+ 
+    // We have username only, send stage one email
+    if ( $id == NULL && $queryUsername == NULL ) 
+    {
+      $foowd->template->assign('sitename', $site);
+      $foowd->template->assign('username', $lostuser->title);
+      $foowd->template->assign('hostname', $_SERVER['SERVER_NAME']);
+      $foowd->template->assign('class', 'base_user');
+      $foowd->template->assign('id', md5($user->updated.$user->title));
+      $message = $foowd->template->fetch('fetchpwd_request.tpl');
 
-    } else {
-      return 0; // nothing, display form
+      $result = email($foowd, $lostuser->email, 
+                      sprintf(_("%s - Password Change Request"), $site), 
+                      $message,
+                      'From: '.$foowd->config_settings['site']['email_webmaster']
+                       .'\r\nReply-To: '.$foowd->config_settings['site']['email_noreply']);
+      if ( $result )
+        return 1;                           // password change request e-mail sent
+      else
+        return 2;                           // could not send e-mail due to technical problem
+    } 
+    // We have id and query, change password and send confirmation
+    else 
+    {
+      if ( strtolower($lostuser->title) != strtolower($queryUsername) )
+        return 8;                           // user does not exist
+      if ($id != md5($lostuser->updated.$lostuser->title)) 
+        return 7;                           // id does not match
+        
+      $newPassword = '';
+      $foo_len = rand(6,12);
+      srand(time());
+      for($foo = 0; $foo < $foo_len; $foo++) 
+        $newPassword .= chr(rand(97, 122)); 
+
+      $lostuser->set('password', md5($salt.$newPassword));
+      
+      $salt = $this->foowd->config_settings['user']['password_salt'];
+      $foowd->template->assign('sitename', $site);
+      $foowd->template->assign('username', $user->title);
+      $foowd->template->assign('password', $newPassword);
+      $foowd->template->assign('hostname', $_SERVER['SERVER_NAME']);
+      $foowd->template->assign('class', 'base_user');
+      $message = $foowd->template->fetch('fetchpwd_response.tpl');
+
+      $result = email($foowd, $lostuser->email, 
+                      sprintf(_("%s - Password Change Request"), $site), 
+                      $message,
+                      'From: '.$foowd->config_settings['site']['email_webmaster']
+                       .'\r\nReply-To: '.$foowd->config_settings['site']['email_noreply']);
+
+      if ( $result )
+        return 5;                           // password changed and e-mail sent
+      else
+        return 6;                           // could not send e-mail due to technical problem (or could not save new password)
     }
+    return 0;                               // nothing, display form
   }
 
   /**
-   * Update the users properties.
+   * Create form elements for the update form from the objects member variables.
    *
-   * @param str email The users new e-mail address.
-   * @return bool TRUE on success.
+   * @param  object form The form to add the form items to.
+   * @param  array  error If error is encountered, add message to this array
    */
-  function updateUser($email) {
-    if ($email != $this->email) {
-      $this->set('email', $email);
+  function addUserItemsToForm(&$form, &$error) 
+  {
+    global $USER_SOURCE;
+
+    // Add regular elements to form
+    include_once(INPUT_DIR.'input.textbox.php');
+    include_once(INPUT_DIR.'input.dropdown.php');
+    include_once(INPUT_DIR.'input.checkbox.php');
+
+    $titleBox = new input_textbox('title', REGEX_TITLE, $this->title, 'Username', FALSE);
+    $emailBox = new input_textbox('email', REGEX_EMAIL, $this->email, 'Email', FALSE);
+    $showEmail = new input_checkbox('show_email', $this->show_email, 'Share Email');
+
+    if ( $form->submitted() )
+    {
+      if ( !empty($titleBox->value) && $titleBox->value != $this->title )
+      {
+        $unique = !$this->isTitleUnique($titleBox->value, FALSE, $objectid, $USER_SOURCE, FALSE) ;
+        if ( $unique )
+          $this->set('title', $titleBox->value);
+        else
+        {
+          $titleBox->wasValid = FALSE;
+          $error[] = _("User already exists, please choose a new name.");
+        }
+      }
+
+      if ( !empty($emailBox->value) && $emailBox->value != $this->email )
+        $this->set('email', $emailBox->value);
+      if ( $showEmail->checked != $this->show_email )
+        $this->set('show_email', $showEmail->checked);
     }
-    return TRUE;
+    
+    $form->addObject($titleBox);
+    $form->addObject($emailBox);
+    $form->addObject($showEmail);
+    
+    $this->addPasswordItemsToForm($form, $error);
+
+    // If something changed, update the 
+    // status of email as a public contact item based on 
+    // new values
+    if ( $error == NULL && $form->submitted() && $this->foowd_changed )
+    {
+      if ( $this->show_email && $this->email )
+        $this->IM_nicks['Email'] = $this->email;
+      else
+        unset($this->IM_nicks['Email']);
+    } 
   }
 
   /**
-   * Update the users password.
+   * Create form elements for the update form from the objects member variables.
    *
-   * @param str pwd1 The users new password.
-   * @param str pwd2 Verification of the new password.
-   * @return int 0 = updated<br />
-   *             1 = passwords do not match<br />
-   *             2 = not updated<br />
+   * @param  object form  The form to add the form items to. 
+   * @param  array  error If error is encountered, add message to this array
    */
-  function updatePassword($pwd1, $pwd2) {
-    if ($pwd1 != $pwd2) {
-      return 1; // passwords do not match
-    } elseif ($pwd1 != '') {
-      $this->set('password', md5($this->foowd->password_salt.strtolower($pwd1)));
-      if ($this->foowd->user_authType == 'cookie') {
-        include_once(INPUT_DIR.'input.cookie.php');
-        $cookiePassword = new input_cookie('password', '/^[a-z0-9]{32}$/', NULL);
-        $cookiePassword->set($this->password);
+  function addPasswordItemsToForm(&$form, &$error) 
+  {
+    include_once(INPUT_DIR.'input.textbox.php');
+
+    $verify = new input_passwordbox('verify', REGEX_PASSWORD, NULL, 'Verify', FALSE);
+    $password = new input_passwordbox('password', REGEX_PASSWORD, NULL, 'Password', FALSE);
+
+    if ( $form->submitted() &&
+         (!empty($password->value) || !empty($verify->value)) )
+    {
+      if ( $password->wasValid && !empty($password->value) && 
+           $verify->wasValid && $password->value == $verify->value )
+      {
+        $salt = $this->foowd->config_settings['user']['password_salt'];
+        $this->set('password', md5($salt.$password->value));
       }
-      return 0; // updated
+      else 
+      {
+        $password->wasValid = FALSE;
+        $verify->wasValid = FALSE;
+        $error[] = _("Passwords must be at least 4 characters, and must match.");
+      }
     }
-    return 2; // not updated
+
+    $form->addObject($verify);
+    $form->addObject($password);
   }
 
   /**
@@ -558,189 +633,196 @@ class foowd_user extends foowd_object {
    *
    * @param array selectedGroups The groups selected for the user to be in.
    * @param array allGroups All the user groups in the system.
-   * @return bool TRUE if successful.
    */
-  function groups(&$selectedGroups, &$allGroups) {
-    $changed = FALSE;
-    if ($selectedGroups == $this->groups) { // box has been emptied so empty array
-      $selectedGroups = array();
-    }
-    $groups = $this->groups;
-    foreach ($allGroups as $group => $name) { // remove groups in list that have been unselected
-      if (!in_array($group, $selectedGroups)) {
-        $key = array_search($group, $this->groups);
-        if ($key !== FALSE) {
-          unset($groups[$key]);
-          $changed = TRUE;
-        }
+  function addGroupsToForm(&$form, &$error) 
+  {
+    include_once(INPUT_DIR.'input.dropdown.php');
+
+    // Create array of groups
+    $allGroups['None'] = 'None';
+    $allGroups += $this->foowd->getUserGroups(FALSE);
+    $groups = empty($this->groups) ? 'None' : $this->groups;
+    $groupBox = new input_dropdown('groups', $groups, $allGroups, 'User Groups', TRUE);
+
+    if ( $form->submitted() )
+    {
+      $new_groups = array();
+      $grps = $groupBox->value;
+
+      // If we haven't selected None to clear all,
+      // Create new array with selected groups
+      if ( !in_array('None', $grps) )
+      {
+        $new_groups = array();
+        foreach( $grps as $name )
+          $new_groups[] = $name;
       }
+
+      $this->set('groups', $new_groups);
     }
-    foreach ($selectedGroups as $group) { // add groups that have been selected
-      if (!in_array($group, $this->groups)) {
-        $groups[] = $group;
-        $changed = TRUE;
-      }
-    }
-    if ($changed) {
-      if ($this->set('groups', $groups)) {
-        return TRUE;
-      } else {
-        trigger_error('Could not update user groups.');
-      }
-    }
-    return FALSE;
+
+    $form->addObject($groupBox);
   }
-  
-/* Class methods */
+
+// ----------------------------- class methods --------------
 
   /**
    * Output an object creation form and process its input.
    *
-   * @static
+   * @class base_user
+   * @method class_create
    * @param object foowd The foowd environment object.
    * @param str className The name of the class.
    */
-  function class_create(&$foowd, $className) {
-    $foowd->track('foowd_user->class_create');
+  function class_create(&$foowd, $className) 
+  {
+    $foowd->track('base_user->class_create');
 
-    include_once(INPUT_DIR.'input.querystring.php');
-    include_once(INPUT_DIR.'input.textbox.php');
-    include_once(INPUT_DIR.'input.form.php');
+    include_once(INPUT_DIR . 'input.textbox.php');
+    include_once(INPUT_DIR . 'input.form.php');
     
     $queryTitle = new input_querystring('title', REGEX_TITLE, NULL);
-    $createUsername = new input_textbox('createUsername', REGEX_TITLE, $queryTitle->value, _("Username").':');
-    $createPassword = new input_passwordbox('createPassword', REGEX_PASSWORD, NULL, _("Password").':');
-    $createEmail = new input_textbox('createEmail', REGEX_EMAIL, NULL, _("E-mail Address").':', FALSE);
-    $createForm = new input_form('createForm', NULL, 'POST', _("Create"), NULL);
-    if ($createForm->submitted()) {
-    
-      if (!$createUsername->wasSet) {
-        $foowd->template->assign('success',  FALSE);
-        $foowd->template->assign('error',  1);
-      } elseif (!$createPassword->wasSet) {
-        $foowd->template->assign('success',  FALSE);
-        $foowd->template->assign('error',  2);
-      } elseif ($createUsername->value != '' && $createPassword->value != '') {
-        switch (call_user_func(array($className, 'create'), &$foowd, $className, $foowd->user_authType, $createUsername->value, $createPassword->value, $createEmail->value)) {
-        case 0:
-          $foowd->template->assign('success',  TRUE);
-          $foowd->template->assign('class', $className);
-          $foowd->template->assign('username', htmlspecialchars($createUsername->value));
-          break;
-        case 1:
-          $foowd->template->assign('success',  TRUE);
-          $foowd->template->assign('webmaster', $foowd->webmaster_email);
-          break;
-        case 2:
-          $foowd->template->assign('success',  FALSE);
-          $foowd->template->assign('error',  3);
-          break;
-        case 3:
-          $foowd->template->assign('success',  FALSE);
-          $foowd->template->assign('error',  4);
-          break;
-        }
-      }
-      
-    }
+    $createUsername = new input_textbox('createUsername', REGEX_TITLE, $queryTitle->value, 'Username');
 
-    if (!cookieTest($foowd)) {
-      $foowd->template->assign('cookie', TRUE);
+    $verifyPassword = new input_passwordbox('verifyPassword', REGEX_PASSWORD, NULL, 'Verify');
+    $createPassword = new input_passwordbox('createPassword', REGEX_PASSWORD, NULL, 'Password');
+
+    $createEmail = new input_textbox('createEmail', REGEX_EMAIL, NULL, 'Email Address', FALSE);
+    $createForm = new input_form('createForm', NULL, SQ_POST);
+
+    if ( $createForm->submitted() && 
+         $createUsername->wasSet && $createUsername->wasValid && $createUsername != '' )
+    {
+      if ( $createPassword->wasSet && $createPassword->wasValid &&
+           $verifyPassword->wasSet && $verifyPassword->wasValid &&
+           $createPassword->value != '' && $createPassword->value == $verifyPassword->value ) 
+      {
+        $result = call_user_func(array($className, 'create'), $foowd,  
+                                 $createUsername->value,
+                                 $createPassword->value,
+                                 $createEmail->value);
+      }
+      else 
+        $result = -1;
     }
+    else
+      $result = -2;
+
+    switch ($result) 
+    {
+      case 0:
+        $_SESSION['ok'] = USER_CREATE_OK;
+        $uri_arr['class'] = $className;
+        $uri_arr['method'] = 'login';
+        $uri_arr['username'] = htmlspecialchars($createUsername->value);
+        $foowd->loc_forward(getURI($uri_arr, FALSE));
+        exit;
+      case -1: 
+        $foowd->template->assign('failure', _("Passwords must be at least 4 characters, and must match."));
+        $verifyPassword->set(NULL);
+        $createPassword->set(NULL);
+        break;
+      case -2:
+        $foowd->template->assign('failure', FORM_FILL_FIELDS);
+        break;
+      case 3: 
+        $foowd->template->assign('failure', _("Could not create user."));
+        break;
+      case 4:
+        $foowd->template->assign('failure',  _("User already exists, please choose a new name."));
+        break;
+    }
+        
     $createForm->addObject($createUsername);
     $createForm->addObject($createPassword);
+    $createForm->addObject($verifyPassword);
     $createForm->addObject($createEmail);
     $foowd->template->assign_by_ref('form', $createForm);
 
-    $foowd->track();
+    return;
   }
 
   /**
    * Output a login form and process its input.
    *
-   * @static
+   * @class base_user
+   * @method class_login
    * @param object foowd The foowd environment object.
    * @param str className The name of the class.
    */
-  function class_login(&$foowd, $className) {
-    $foowd->track('foowd_user->class_login');
-  
-    if ($foowd->user_authType == 'cookie') {
-    
-      include_once(INPUT_DIR.'input.querystring.php');
-      include_once(INPUT_DIR.'input.textbox.php');
-      include_once(INPUT_DIR.'input.checkbox.php');
-      include_once(INPUT_DIR.'input.form.php');
-    
-      $usernameQuery = new input_querystring('username', REGEX_TITLE, '');
-      $loginUsername = new input_textbox('loginUsername', REGEX_TITLE, $usernameQuery->value, _("Username").':');
-      $loginPassword = new input_passwordbox('loginPassword', REGEX_PASSWORD, NULL, _("Password").':');
-      $loginCookie = new input_checkbox('loginCookie', TRUE, 'Keep me logged in on this computer');
-      $loginForm = new input_form('loginForm', NULL, 'POST', _("Log In"), NULL);
-      $loginForm->addObject($loginUsername);
-      $loginForm->addObject($loginPassword);
-      $loginForm->addObject($loginCookie);
-      if ($loginForm->submitted()) {
-        $result = call_user_func(
-          array($className, 'login'),
-          $foowd,
-          $foowd->user_authType,
-          $loginUsername->value,
-          $loginPassword->value,
-          $loginCookie->checked
-        );
-      } else {
-        $result = 1;
-      }
-    } else {
-      $result = call_user_func(
-        array($className, 'login'),
-        $foowd,
-        $foowd->user_authType
-      );
+  function class_login(&$foowd, $className) 
+  {
+    $foowd->track('base_user->class_login');
+
+    include_once(INPUT_DIR . 'input.textbox.php');
+    include_once(INPUT_DIR . 'input.form.php');
+
+    $usernameQuery = new input_querystring('username', REGEX_TITLE, '');
+    $loginUsername = new input_textbox('loginUsername', REGEX_TITLE, $usernameQuery->value, 'Username');
+    $loginPassword = new input_passwordbox('loginPassword', REGEX_PASSWORD, NULL, 'Password');
+
+
+    $loginForm = new input_form('loginForm', NULL, SQ_POST, _("Log In"), NULL);
+    $loginForm->addObject($loginUsername);
+    $loginForm->addObject($loginPassword);
+
+    if ( $loginForm->submitted() ) 
+    {
+      $result = call_user_func( array($className, 'login'),
+                        $foowd, 
+                        $loginUsername->value,
+                        $loginPassword->value );
+    } 
+    else 
+      $result = -1;
+
+    switch ($result) 
+    {
+      case 0:
+      case 5:
+        $_SESSION['ok'] = ( $result == 0 ) ? USER_LOGIN_OK : USER_LOGIN_PREV;
+        $uri_arr['objectid'] = $foowd->user->objectid;
+        $uri_arr['classid'] = USER_CLASS_ID;
+        $url = getURI($uri_arr, FALSE);
+        $foowd->loc_forward($url);
+        exit;
+      case -1:
+        $foowd->template->assign('failure', FORM_FILL_FIELDS);
+        break;
+      case 2:
+      case 3:
+        $foowd->template->assign('failure', _("User or password is incorrect."));
+        break;
     }
 
-    if ($result == 0) {
-      $foowd->template->assign('success', TRUE);
-    } elseif ($result == 1) {
-      if (!cookieTest($foowd)) {
-        $foowd->template->assign('cookie', TRUE);
-      }
-      $foowd->template->assign_by_ref('form', $loginForm);
-    } else {
-      $foowd->template->assign('success', FALSE);
-      $foowd->template->assign('error', $result);
-      $foowd->template->assign('username', htmlspecialchars($loginUsername->value));
-      $foowd->template->assign_by_ref('form', $loginForm);
-    }
-
-    $foowd->template->assign('class', $className);
-
-    $foowd->track();
+    $foowd->template->assign_by_ref('form', $loginForm);       
+    $foowd->track(); 
   }
 
   /**
    * Log the user out and display a log out screen.
    *
-   * @static
+   * @class base_user
+   * @method class_logout
    * @param object foowd The foowd environment object.
    * @param str className The name of the class.
    */
-  function class_logout(&$foowd, $className) {
-    $foowd->track('foowd_user->class_logout');
-    
-    $result = call_user_func(array($className, 'logout'), $foowd, $foowd->user_authType);
-
-    if ($result == 0 || $result == 1) {
-      $foowd->template->assign('success', TRUE);
-    } else {
-      $foowd->template->assign('success', FALSE);
-      $foowd->template->assign('error', $result);
+  function class_logout(&$foowd, $className) 
+  {
+    $result = call_user_func(array($className, 'logout'), $foowd);
+    switch ($result) 
+    {
+      case 0:
+      case 3:
+        $_SESSION['ok'] = USER_LOGOUT_OK;
+        $uri_arr['class'] = getClassname(USER_CLASS_ID);
+        $uri_arr['method'] = 'login';
+        $foowd->loc_forward(getURI($uri_arr, FALSE));
+        return NULL;
     }
-    
-    $foowd->track();
+    trigger_error('Unexpected response when logging out user: ' . $result, E_USER_ERROR);
   }
-  
+
   /**
    * Output a fetch password form and process its input.
    *
@@ -748,8 +830,9 @@ class foowd_user extends foowd_object {
    * @param object foowd The foowd environment object.
    * @param str className The name of the class.
    */
-  function class_lostPassword(&$foowd, $className) {
-    $foowd->track('foowd_user->class_lostPassword');
+  function class_lostPassword(&$foowd, $className)
+  {
+    $foowd->track('base_user->class_lostPassword');
 
     include_once(INPUT_DIR.'input.querystring.php');
     include_once(INPUT_DIR.'input.textbox.php');
@@ -760,145 +843,194 @@ class foowd_user extends foowd_object {
     $lostUsername = new input_textbox('lostUsername', REGEX_TITLE, $usernameQuery->value, _("Username").':');
     $lostForm = new input_form('lostForm', NULL, 'POST', _("Retrieve Password"), NULL);
 
-    switch (call_user_func(array($className, 'fetchPassword'), &$foowd, $className, $lostUsername->value, $usernameQuery->value, $idQuery->value)) {
-    case 0: // done nothing, display form
-      $lostForm->addObject($lostUsername);
-      $foowd->template->assign_by_ref('form', $lostForm);
-      break;
-    case 1: // stage 1 complete
-      $foowd->template->assign('stage1', TRUE);
-      break;
-    case 2: // could not send e-mail, technical problem
-      $foowd->template->assign('failure', 2);
-      $foowd->template->assign('webmaster', $foowd->webmaster_email);
-      break;
-    case 3: // could not send e-mail, user does not have an e-mail address listed
-      $foowd->template->assign('failure', 3);
-      $foowd->template->assign('username', htmlspecialchars($lostUsername->value));
-      $foowd->template->assign('webmaster', $foowd->webmaster_email);
-      break;
-    case 4: // could not send e-mail, user does not exist
-      $foowd->template->assign('failure', 4);
-      $foowd->template->assign('username', htmlspecialchars($lostUsername->value));
-      break;
-    case 5: // stage 2 complete
-      $foowd->template->assign('stage2', TRUE);
-      $foowd->template->assign('class', $className);
-      $foowd->template->assign('username', $lostUsername->value);
-      break;
-    case 6: // could not change password, technical problem
-      $foowd->template->assign('failure', 6);
-      $foowd->template->assign('webmaster', $foowd->webmaster_email);
-      break;
-    case 7: // could not change password, id does not match
-      $foowd->template->assign('failure', 7);
-      $foowd->template->assign('webmaster', $foowd->webmaster_email);
-      $foowd->template->assign('class', $className);
-      $foowd->template->assign('username', $usernameQuery->value);
-      break;
-    case 8: // could not change password, could not find user
-      $foowd->template->assign('failure', 8);
-      $foowd->template->assign('webmaster', $foowd->webmaster_email);
-      break;
+    $result = call_user_func(array($className, 'fetchPassword'), 
+                             &$foowd, $className, 
+                             $lostUsername->value, 
+                             $usernameQuery->value, 
+                             $idQuery->value);
+    switch ($result)
+    {
+      case 0: // done nothing, display form
+        $lostForm->addObject($lostUsername);
+        $foowd->template->assign_by_ref('form', $lostForm);
+        break;
+      case 1: // stage 1 complete
+        $foowd->template->assign('stage1', TRUE);
+        break;
+      case 2: // could not send e-mail, technical problem
+        $foowd->template->assign('failure', 2);
+        $foowd->template->assign('webmaster', $foowd->webmaster_email);
+        break;
+      case 3: // could not send e-mail, user does not have an e-mail address listed
+        $foowd->template->assign('failure', 3);
+        $foowd->template->assign('username', htmlspecialchars($lostUsername->value));
+        $foowd->template->assign('webmaster', $foowd->webmaster_email);
+        break;
+      case 4: // could not send e-mail, user does not exist
+        $foowd->template->assign('failure', 4);
+        $foowd->template->assign('username', htmlspecialchars($lostUsername->value));
+        break;
+      case 5: // stage 2 complete
+        $foowd->template->assign('stage2', TRUE);
+        $foowd->template->assign('class', $className);
+        $foowd->template->assign('username', $lostUsername->value);
+        break;
+      case 6: // could not change password, technical problem
+        $foowd->template->assign('failure', 6);
+        $foowd->template->assign('webmaster', $foowd->webmaster_email);
+        break;
+      case 7: // could not change password, id does not match
+        $foowd->template->assign('failure', 7);
+        $foowd->template->assign('webmaster', $foowd->webmaster_email);
+        $foowd->template->assign('class', $className);
+        $foowd->template->assign('username', $usernameQuery->value);
+        break;
+      case 8: // could not change password, could not find user
+        $foowd->template->assign('failure', 8);
+        $foowd->template->assign('webmaster', $foowd->webmaster_email);
+        break;
     }
+ 
     $foowd->track();
   }
 
-/* Object methods */
+// -----------------------------object methods --------------
 
   /**
    * Output the object.
+   *
+   * @param object foowd The foowd environment object.
    */
-  function method_view() {
-    $this->foowd->track('foowd_user->method_view');
+  function method_view() 
+  {
+    $this->foowd->track('base_user->method_view');
     
-    $this->foowd->template->assign('username', $this->getTitle());
-    if ($this->email) {
-      $this->foowd->template->assign('email', htmlspecialchars(mungEmail($this->email)));
-    }
     $this->foowd->template->assign('created', date(DATETIME_FORMAT, $this->created));
-    $this->foowd->template->assign('created_since', timeSince($this->created));
-    $this->foowd->template->assign('lastvisit',  date(DATETIME_FORMAT, $this->updated));
-    $this->foowd->template->assign('lastvisit_since', timeSince($this->updated));
-    if ($this->foowd->user->objectid == $this->objectid) {
+    $this->foowd->template->assign('lastvisit', date(DATETIME_FORMAT, $this->updated));
+
+    if ( $this->foowd->user->inGroup('Author', $this->creatorid) )
       $this->foowd->template->assign('update', TRUE);
-      $this->foowd->template->assign('objectid', $this->objectid);
-      $this->foowd->template->assign('classid', $this->classid);
+
+    if ( $this->email )
+      $this->foowd->template->assign('email', mungEmail($this->email));
+
+    $this->foowd->track(); 
+  }
+
+  /**
+   * Output the object administration form and handle its input.
+   *
+   * @access protected
+   */
+  function method_groups() 
+  {
+    $this->foowd->track('base_user->method_groups');
+
+    include_once(INPUT_DIR.'input.form.php');
+
+    $groupsForm = new input_form('groupsForm', NULL, SQ_POST);
+
+    $error = NULL;
+    $this->addGroupsToForm($groupsForm, $error);
+
+    if ( $groupsForm->submitted() && $this->foowd_changed)
+    {
+      if ( $this->save() )
+      {
+        $_SESSION['ok'] = USER_UPDATE_OK;
+        $uri_arr['objectid'] = $this->objectid;
+        $uri_arr['classid'] = USER_CLASS_ID;        
+        $this->foowd->loc_forward( getURI($uri_arr, FALSE));
+      }
+      else
+        $this->foowd->template->assign('failure', OBJECT_UPDATE_FAILED);
     }
 
+    $this->foowd->template->assign_by_ref('form', $groupsForm);
     $this->foowd->track();
   }
 
   /**
    * Output a user update form and process its input.
+   *
+   * @param object foowd The foowd environment object.
    */
-  function method_update() {
-    $this->foowd->track('foowd_user->method_update');
+  function method_update() 
+  {
+    $this->foowd->track('base_user->method_update');
     
-    include_once(INPUT_DIR.'input.form.php');
-    include_once(INPUT_DIR.'input.textbox.php');
+    include_once(INPUT_DIR . 'input.form.php');
+
+    $updateForm = new input_form('updateForm', NULL, SQ_POST, _("Update Profile"));
+
+    $error = NULL;   
+    $this->addUserItemsToForm($updateForm, $error);
     
-    $updateForm = new input_form('updateForm', NULL, 'POST', _("Update"));
-    $email = new input_textbox('email', REGEX_EMAIL, $this->email, _("E-mail").': ');
-    $updateForm->addObject($email);
+    if ( $error != NULL )
+      $this->foowd->template->assign('failure', $error);
+    elseif ( $updateForm->submitted() && $this->foowd_changed )
+    {
+      if ( $this->save() )
+      {
+        $_SESSION['ok'] = USER_UPDATE_OK;
+        $uri_arr['objectid'] = $this->objectid;
+        $uri_arr['classid'] = USER_CLASS_ID;        
+        $this->foowd->loc_forward( getURI($uri_arr, FALSE));
+      }
+      else
+        $this->foowd->template->assign('failure', OBJECT_UPDATE_FAILED);
+    }
+
     $this->foowd->template->assign_by_ref('form', $updateForm);
-    if ($updateForm->submitted()) {
-      if ($this->updateUser($email->value)) {
-        $this->foowd->template->assign('success', TRUE);
-      } else {
-        $this->foowd->template->assign('success', FALSE);
-      }
-    }
+    $this->foowd->track(); 
+  }
 
-    $passwordForm = new input_form('passwordForm', NULL, 'POST', _("Change Password"), NULL);
-    $password = new input_passwordbox('password', REGEX_PASSWORD, '', _("Password").': ');
-    $password2 = new input_passwordbox('password2', REGEX_PASSWORD, '', _("Verify").': ');
-    $passwordForm->addObject($password);
-    $passwordForm->addObject($password2);
-    $this->foowd->template->assign_by_ref('password_form', $passwordForm);
-    if ($passwordForm->submitted()) {
-      $result = $this->updatePassword($password->value, $password2->value);
-      if ($result == 0) {
-        $this->foowd->template->assign('success', TRUE);
-        $this->foowd->template->assign('class', get_class($this));
-        $this->foowd->template->assign('username', $this->getTitle());
-      } else {
-        $this->foowd->template->assign('success', FALSE);
-        $this->foowd->template->assign('error', $result);
-      }
-    }
+// ----------------------------- disabled methods --------------
 
-    $this->foowd->track();
+  /**
+   * Create a new version of this object. Set the objects version number to the
+   * next available version number and queue the object for saving. This will
+   * have the effect of creating a new object entry since the objects version
+   * number has changed.
+   */
+  function newVersion() 
+  {
+    trigger_error('newVersion not supported for base_user', E_USER_ERROR);    
   }
 
   /**
-   * Output a user group update form and process its input.
+   * Clean up the archive versions of the object.
+   *
+   * @param object foowd The foowd environment object.
+   * @return bool Returns TRUE on success.
    */
-  function method_groups() {
-    $this->foowd->track('foowd_object->method_groups');
-
-    include_once(INPUT_DIR.'input.form.php');
-    include_once(INPUT_DIR.'input.dropdown.php');
-
-    $permissionForm = new input_form('permissionForm', NULL, 'POST');
-
-    $groups = $this->foowd->getUserGroups(FALSE);
-
-    $permissionBox = new input_dropdown('permissionGroups', $this->groups, $groups, _("User Groups").':', count($groups), TRUE);
-    $permissionForm->addObject($permissionBox);
-    $this->foowd->template->assign_by_ref('form', $permissionForm);
-
-    if ($permissionForm->submitted()) {
-      if ($this->groups($permissionBox->value, $groups)) {
-        $this->foowd->template->assign('success', TRUE);
-      } else {
-        $this->foowd->template->assign('success', FALSE);
-      }
-    }
-
-    $this->foowd->track();
+  function tidyArchive() 
+  {
+    trigger_error('tidyArchive does not apply to base_user' , E_USER_ERROR);
   }
 
+  /**
+   * Clone the object.
+   *
+   * @param object foowd The foowd environment object.
+   * @param str title The title of the new object clone.
+   * @param str workspace The workspace to place the object clone in.
+   * @return bool Returns TRUE on success.
+   */
+  function clone($title, $workspace) 
+  {
+    trigger_error('Can not clone users.' , E_USER_ERROR);
+  }
+
+  /**
+   * Convert variable list to XML.
+   *
+   * @param array vars The variables to convert.
+   * @param array goodVars List of variables to convert.
+   */
+  function vars2XML($vars, $goodVars) 
+  {
+    trigger_error('vars2XML does not apply to base_user' , E_USER_ERROR);
+  }
 }
 
-?>
