@@ -1951,7 +1951,8 @@ function magicHTML($body, $id){
                       "meta",
                       "html",
                       "head",
-                      "base"
+                      "base",
+                      "link"
                       );
 
     $rm_tags_with_content = Array(
