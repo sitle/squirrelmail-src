@@ -323,8 +323,8 @@ if ($draft) {
                 exit();
             }
             else {
-                Header("Location: $location/right_main.php?mailbox=$draft_folder&sort=$sort".
-                       "&startMessage=1&note=".urlencode($draft_message));
+                Header("Location: $location/right_main.php?mailbox=" . urlencode($draft_folder) . 
+                       "&sort=$sort&startMessage=1&note=".urlencode($draft_message));
                 exit();
             }
         }
@@ -1558,4 +1558,5 @@ function deliverMessage($composeMessage, $draft=false) {
     return $succes;
 }
 
+// vim: et ts=4
 ?>
