@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: SquirrelMail HEAD\n"
-"POT-Creation-Date: 2004-07-02 16:02+0200\n"
-"PO-Revision-Date: 2004-07-03 06:41+0200\n"
+"POT-Creation-Date: 2004-07-03 09:34+0200\n"
+"PO-Revision-Date: 2004-07-03 09:51+0200\n"
 "Last-Translator: Fredrik Jervfors <sqm_admin@fimbul.net>\n"
 "Language-Team: Swedish <squirrelmail-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -1792,7 +1792,7 @@ msgstr "Ingen av ovanstående servrar"
 msgid "IMAP Folder Delimiter"
 msgstr "Avgränsare för IMAP-mapp"
 
-msgid "Use \"detect\" to auto-detect."
+msgid "Use &quot;detect&quot; to auto-detect."
 msgstr "Använd &quot;detect&quot; för autodetektering."
 
 msgid "Use TLS for IMAP Connections"
@@ -1804,8 +1804,14 @@ msgstr "Kräver PHP 4.3.x! Experimentell."
 msgid "IMAP Authentication Type"
 msgstr "Valideringstyp för IMAP-servern"
 
+msgid "IMAP login"
+msgstr "IMAP-inloggning"
+
 msgid "Use Sendmail Binary"
 msgstr "Använd Sendmail-programmet"
+
+msgid "Choose &quot;no&quot; for SMTP"
+msgstr "Välj &quot;Nej&quot; för SMTP"
 
 msgid "Sendmail Path"
 msgstr "Sökväg till Sendmail"
@@ -1821,6 +1827,12 @@ msgstr "Använd TLS för SMTP-anslutningar"
 
 msgid "SMTP Authentication Type"
 msgstr "Valideringstyp för SMPT-servern"
+
+msgid "No SMTP auth"
+msgstr "Ingen SMTP-validering"
+
+msgid "Login (plain text)"
+msgstr "Inloggning (klartext)"
 
 msgid "POP3 Before SMTP?"
 msgstr "POP3 innan SMTP?"
@@ -1981,6 +1993,24 @@ msgstr "Använd temats indexnummer"
 msgid "Configuration Administrator"
 msgstr "Konfigurera SquirrelMail"
 
+msgid ""
+"Note: it is recommended that you configure your system using conf.pl, and "
+"not this plugin. conf.pl contains additional information regarding the "
+"purpose of variables and appropriate values, as well as additional "
+"verification steps."
+msgstr ""
+"OBS: Det är rekommenderat att du konfigurerar systemet med &quot;conf."
+"pl&quot;, och inte med denna insticksmodul. &quot;conf.pl&quot; innehåller "
+"extra information om syftet med variabler och deras tillämpbara värden, "
+"såväl som extra verifikationsåtgärder."
+
+msgid ""
+"Run or consult conf.pl should you run into difficulty with your "
+"configuration."
+msgstr ""
+"Om du stöter på problem med konfigurationen, kör eller konsultera &quot;conf."
+"pl&quot;."
+
 msgid "Theme Name"
 msgstr "Temats namn"
 
@@ -1990,8 +2020,15 @@ msgstr "Sökväg till teman"
 msgid "Plugins"
 msgstr "Insticksmoduler"
 
+#, c-format
+msgid "Plugin directory could not be found: %s"
+msgstr "Kunde inte hitta katalogen för insticksmoduler: %s"
+
 msgid "Change Settings"
 msgstr "Ändra inställningar"
+
+msgid "Test Configuration"
+msgstr "Testa konfigurering"
 
 msgid "Config file can't be opened. Please check config.php."
 msgstr ""
@@ -4094,31 +4131,6 @@ msgstr "Använd PHP-omkodningsfunktioner"
 
 msgid "Use php iconv functions"
 msgstr "Använd PHP:s iconv-funktioner"
-
-msgid ""
-"Note: it is recommended that you configure your system using conf.pl, and "
-"not this plugin. conf.pl contains additional information regarding the "
-"purpose of variables and appropriate values, as well as additional "
-"verification steps."
-msgstr ""
-"OBS: Det är rekommenderat att du konfigurerar systemet med &quot;conf."
-"pl&quot;, och inte med denna insticksmodul. &quot;conf.pl&quot; innehåller "
-"extra information om syftet med variabler och deras tillämpbara värden, "
-"såväl som extra verifikationsåtgärder."
-
-msgid ""
-"Run or consult conf.pl should you run into difficulty with your "
-"configuration."
-msgstr ""
-"Om du stöter på problem med konfigurationen, kör eller konsultera &quot;conf."
-"pl&quot;."
-
-#, c-format
-msgid "Plugin directory could not be found: %s"
-msgstr "Kunde inte hitta katalogen för insticksmoduler: %s"
-
-msgid "Test Configuration"
-msgstr "Testa konfigurering"
 
 msgid "Search Mailing List Archives"
 msgstr "Sök i e-postlistornas arkiv (på engelska)"
