@@ -14,45 +14,67 @@
 class input_session 
 {
   var $name;                                // session variable name
-  var $value = NULL;                        // value of session variable
-  var $regex = NULL;                        // regex value must match
+  var $value;                               // value of session variable
+  var $regex;                               // regex value must match
+  var $base64;                              // should/is value be base64 encoded
     
   function input_session($name, 
                         $regex = NULL, 
-                        $value = NULL) 
+                        $value = NULL,
+                        $base64 = false) 
   {
     $this->name = $name;
     $this->regex = $regex;
+    $this->base64 = $base64;
+    $this->value = NULL;
     
-    if ( isset($_SESSION[$name]) )
-      $this->set($_SESSION[$name], FALSE);
+    $this->refresh();
 
-    if ( !isset($this->value) && $value != NULL ) 
+    if ( $this->value == NULL && $value != NULL) 
       $this->set($value);
   }
 
   function refresh()
   {
-    if ( isset($_SESSION[$this->name]) )
-      $this->set($_SESSION[$this->name], FALSE);
+    if ( !isset($_SESSION[$this->name]) )
+        return;
+
+    if ( $_SESSION[$this->name] == NULL || $_SESSION[$this->name] == ''  )
+      $this->set(NULL, FALSE);
+
+    elseif ( $this->base64 )
+      $new_value = unserialize(base64_decode($_SESSION[$this->name]));
+    else
+      $new_value = $_SESSION[$this->name];
+
+    $this->set($new_value, FALSE);
   }
     
   function set($value, $set_in_session = TRUE)
-  {
-    if ( $set_in_session ) {
-      if ( $this->regex != NULL && $this->verifyData($value) == FALSE ) 
+  { 
+    if (!$this->verifyData($value) )
         return FALSE;
-        
-      $_SESSION[$this->name] = $value;
+
+    if ( $set_in_session ) {
+      if ( $this->base64 ) 
+        $_SESSION[$this->name] = base64_encode(serialize($value));
+      else
+        $_SESSION[$this->name] = $value;
     }
         
     $this->value = $value;
     return TRUE;
   }
+
+  function remove()
+  {
+    unset($_SESSION[$this->name]);
+    $this->value = NULL;
+  }
   
   function verifyData($value)
   {
-    if ( $value == NULL )
+    if ( $value == NULL || $this->regex == NULL )
       return TRUE;
       
     if ( !is_array($value) )

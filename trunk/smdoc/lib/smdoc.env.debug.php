@@ -27,6 +27,60 @@ class smdoc_debug extends foowd_debug {
     }
   }
 
+	/**
+	 * Function execution tracking.
+	 *
+	 * @class foowd_debug
+	 * @method track
+	 * @param str function The name of the function execution is entering.
+	 * @param array args List of arguments passed to the function.
+	 */
+	function track($function, &$args) { // execution tracking
+        if ($function) {
+            $this->trackDepth++;
+            $this->trackString .= $this->executionTime() . ' '
+                               . str_repeat('|', $this->trackDepth - 1)
+                               . '/- '.$function.'(';
+            if ($args) { // get parameters if given
+                $parameters = '';
+                foreach ($args as $key => $arg) {
+                    $parameters .= $this->makeVarViewable($arg).', ';
+                }
+                $this->trackString .= substr($parameters, 0, -2);
+            }
+            $this->trackString .= ')<br />';
+        } else {
+            $this->trackString .= $this->executionTime() . ' '
+                               . str_repeat('|', $this->trackDepth - 1)
+                               . '\- <br />';
+            $this->trackDepth--;
+        }
+	}
+
+	/**
+	 * Add message to debugging output.
+	 *
+	 * @class foowd_debug
+	 * @method msg
+	 * @param str string The message to add.
+	 */
+	function msg($string) { // write debug message
+		$this->trackString .= $this->executionTime() . ' '
+                           . str_repeat('|', $this->trackDepth).' '
+                           . htmlspecialchars($string).'<br />';
+	}
+
+	/**
+	 * Calculate the current execution time.
+	 *
+	 * @class foowd_debug
+	 * @method executionTime
+	 * @return int The time in microseconds.
+	 */
+	function executionTime() { // calculate execution time
+		return sprintf("%.3f", round($this->getTime() - $this->startTime, 3));
+	}
+
   function display(&$foowd)
   {
     echo '<div class="debug_output">'
@@ -45,6 +99,8 @@ class smdoc_debug extends foowd_debug {
       show($_REQUEST);
       echo '<div class="debug_output_heading">Session</div>'. "\n";
       show($_SESSION);
+      echo '<div class="debug_output_heading">Cookie</div>'. "\n";
+      show($_COOKIE);
     }
     echo '</div><br />';
   }

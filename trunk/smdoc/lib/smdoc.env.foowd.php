@@ -84,19 +84,6 @@ class smdoc extends foowd {
      * Get current User
      */
     $this->user = call_user_func(array($userClass,'factory'), &$this, $user);
-    $sessionTimeout = time() - getConstOrDefault('SESSION_LENGTH', 900);
-    if ( $this->user->updated < $sessionTimeout )
-    {
-      if ( function_exists('foowd_session_start') )        // call session start
-          foowd_session_start($this);
-      if ( method_exists($this->user, 'session_start') )   // call user session start
-          $this->user->session_start();
-      $this->user->updated = time();
-      $this->user->updatorid = $user->objectid;
-      $this->user->updatorName = $user->title;
-      $this->user->save($this, FALSE);
-    }
-
     $this->track();
   }
 

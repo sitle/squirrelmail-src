@@ -9,11 +9,11 @@ $foowd = new smdoc(NULL, NULL, $DEFAULT_GROUPS);
 include_once($foowd->path.'/input.querystring.php');
 
 $objectName = new input_querystring('object', REGEX_TITLE);
-$objectid = new input_querystring('objectid', '/^[0-9-]*$/', DEFAULT_OBJECTID);
+$objectid = new input_querystring('objectid', '/^[0-9-]*$/');
 $version    = new input_querystring('version', '/^[0-9]*$/');
 $className  = new input_querystring('class', REGEX_TITLE);
 $classid = new input_querystring('classid', '/^[0-9-]*$/', NULL);
-$method = new input_querystring('method', NULL, 'view');
+$method = new input_querystring('method', NULL);
 
 // convert object name into id (if name given rather than id)
 if (isset($objectName->value)) {
@@ -22,7 +22,8 @@ if (isset($objectName->value)) {
 
 // convert class name into id (if name given rather than id)
 if (isset($className->value)) {
-	$classid->set(crc32(strtolower($className->value)));
+    $className = $className->value;
+	$classid->set(crc32(strtolower($className)));
 } elseif (!isset($objectid->value)) {
 	$objectid->set(DEFAULT_OBJECTID);
 }
@@ -33,7 +34,10 @@ $version = $version->value;
 $method = $method->value;
 
 if (isset($objectid)) { // fetch object and call object method
-	if ($object = $foowd->fetchObject($objectid, $classid, $version, 'view')) {
+    if ( !isset($method) )
+        $method = getConstOrDefault('DEFAULT_METHOD','view');
+
+	if ($object = $foowd->fetchObject($objectid, $classid, $version, $method)) {
 		if (is_object($object)) {
 			$className = getClassName($object->classid);
 		} else {
@@ -57,8 +61,12 @@ if (isset($objectid)) { // fetch object and call object method
 		trigger_error('Object not found', E_USER_NOTICE);
 	}
 } else { // call class method
-	$className = getClassName($classid);
-	$t = $foowd->method($className, 'create');
+	if ( !isset($className) )
+        $className = getClassName($classid);
+    if ( !isset($method) )
+        $method = getConstOrDefault('DEFAULT_CLASS_METHOD', 'create');
+
+	$t = $foowd->method($className, $method);
     $t['showurl'] = false;
 	if (is_array($t)) {
 		include($foowd->getTemplateName($className, 'class_'.$method));

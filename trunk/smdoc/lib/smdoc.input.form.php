@@ -18,17 +18,21 @@ include_once(PATH.'input.form.php');
  *
  * @package foowd/input
  * @class input_form
- * @author Erin Schnabel
  */
 class smdoc_input_form extends input_form {
     
     var $formValues = array();
 
     function getFormValue($name, &$value, $regex = NULL, $default = NULL) {
+        if ( array_key_exists($name, $this->formValues) ) {
+            $value = $this->formValues[$name];
+            return TRUE;
+        }
+        
 		if (isset($_POST[$name])) {
-		    $value = ($_POST[$name]);
+		    $value = $_POST[$name];
 		} elseif (isset($_GET[$name])) {
-			$value = ($_GET[$name]);
+			$value = $_GET[$name];
 		} else {
             $value = $default;
         }
@@ -41,11 +45,5 @@ class smdoc_input_form extends input_form {
 		} else {
 			return FALSE;
 		}
-    }
-
-    function getValue($name) {
-        if ( array_key_exists($name, $this->formValues) )
-            return $this->formValues[$name];
-        return FALSE;
     }
 }
