@@ -247,7 +247,7 @@ function filters_sqimap_read_data ($imap_stream, $pre, $handle_errors, &$respons
 function start_filters() {
     global $mailbox, $imapServerAddress, $imapPort, $imap,
         $imap_general, $filters, $imap_stream, $imapConnection,
-    $UseSeparateImapConnection, $AllowSpamFilters;
+    $UseSeparateImapConnection, $AllowSpamFilters, $_SESSION, $_COOKIE;
 
     $username = $_SESSION['username'];
     $key = $_COOKIE['key'];
