@@ -22,9 +22,13 @@ define('SMOPT_GRP_TZ', 3);
 
 /* Define the optpage load function for the personal options page. */
 function load_optpage_data_personal() {
-    global $data_dir, $edit_identity, $edit_name, $_SESSION,
+    global $data_dir, $edit_identity, $edit_name,
            $full_name, $reply_to, $email_address, $signature;
-            
+    if ( (float)substr(PHP_VERSION,0,3) < 4.1 ) {
+        if (ini_get('register_globals') == 0) {
+            global $_SESSION;
+        }
+    }        
     $username = $_SESSION['username'];
     /* Set the values of some global variables. */
     $full_name = getPref($data_dir, $username, 'full_name');
@@ -204,9 +208,13 @@ function load_optpage_data_personal() {
 /******************************************************************/
 
 function save_option_signature($option) {
-    global $_SESSION;
-    $username = $_SESSION['username'];
     global $data_dir, $username;
+    if ( (float)substr(PHP_VERSION,0,3) < 4.1 ) {
+        if (ini_get('register_globals') == 0) {
+            global $_SESSION;
+        }
+    } 
+    $username = $_SESSION['username'];
     setSig($data_dir, $username, 'g', $option->new_value);
 }
 

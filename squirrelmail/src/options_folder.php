@@ -19,7 +19,12 @@ define('SMOPT_GRP_FOLDERLIST', 1);
 
 /* Define the optpage load function for the folder options page. */
 function load_optpage_data_folder() {
-    global $imapServerAddress, $imapPort, $_SESSION, $_COOKIE;
+    global $imapServerAddress, $imapPort;
+    if ( (float)substr(PHP_VERSION,0,3) < 4.1 ) {
+        if (ini_get('register_globals') == 0) {
+            global $_SESSION, $_COOKIE;
+        }
+    }
     global $folder_prefix, $default_folder_prefix, $show_prefix_option;
     
     $username = $_SESSION['username'];
@@ -219,7 +224,12 @@ function load_optpage_data_folder() {
 /** Define any specialized save functions for this option page. ***/
 /******************************************************************/
 function save_option_trash_folder($option) {
-    global $data_dir, $_SESSION;
+    global $data_dir;
+    if ( (float)substr(PHP_VERSION,0,3) < 4.1 ) {
+        if (ini_get('register_globals') == 0) {
+            global $_SESSION;
+        }
+    }
     $username = $_SESSION['username'];
 
     /* Set move to trash on or off. */
@@ -231,7 +241,12 @@ function save_option_trash_folder($option) {
 }
 
 function save_option_sent_folder($option) {
-    global $data_dir, $_SESSION;
+    global $data_dir;
+    if ( (float)substr(PHP_VERSION,0,3) < 4.1 ) {
+        if (ini_get('register_globals') == 0) {
+            global $_SESSION;
+        }
+    }
     $username = $_SESSION['username'];
 
     /* Set move to sent on or off. */
@@ -243,7 +258,12 @@ function save_option_sent_folder($option) {
 }
 
 function save_option_draft_folder($option) {
-    global $data_dir, $_SESSION;
+    global $data_dir;
+    if ( (float)substr(PHP_VERSION,0,3) < 4.1 ) {
+        if (ini_get('register_globals') == 0) {
+            global $_SESSION;
+        }
+    }
     $username = $_SESSION['username'];
 
     /* Set move to draft on or off. */

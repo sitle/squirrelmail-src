@@ -38,8 +38,12 @@
         global $mailfetch_cypher;
         global $mailfetch_server_,$mailfetch_alias_,$mailfetch_user_,$mailfetch_pass_;
         global $mailfetch_lmos_, $mailfetch_uidl_, $mailfetch_login_, $mailfetch_fref_;
-        global $PHP_SELF, $_SESSION;
-
+        global $PHP_SELF;
+        if ( (float)substr(PHP_VERSION,0,3) < 4.1 ) {
+            if (ini_get('register_globals') == 0) {
+                global $_SESSION;
+            }
+        }
         $username = $_SESSION['username'];
 
         if( stristr( $PHP_SELF, 'mail_fetch' ) ) {
@@ -68,8 +72,12 @@
         require_once ('../plugins/mail_fetch/functions.php');
         require_once('../functions/i18n.php');
 
-        global $data_dir, $imapServerAddress,$imapPort, $_SESSION, $_COOKIE;
-
+        global $data_dir, $imapServerAddress,$imapPort, $_COOKIE;
+        if ( (float)substr(PHP_VERSION,0,3) < 4.1 ) {
+            if (ini_get('register_globals') == 0) {
+                global $_SESSION;
+            }
+        }
         $username = $_SESSION['username'];
         $key = $_COOKIE['key'];
 
