@@ -9,10 +9,14 @@
  * This a simple login screen. Some housekeeping is done to clean
  * cookies and find language.
  *
- * $Id$
+ * @version $Id$
+ * @package squirrelmail
  */
 
-/* Path for SquirrelMail required files. */
+/**
+ * Path for SquirrelMail required files.
+ * @ignore
+ */
 define('SM_PATH','../');
 
 /* SquirrelMail required files. */
@@ -26,7 +30,7 @@ require_once(SM_PATH . 'functions/html.php');
 require_once(SM_PATH . 'functions/global.php');
 require_once(SM_PATH . 'functions/forms.php');
 
-/*
+/**
  * $squirrelmail_language is set by a cookie when the user selects
  * language and logs out
  */
@@ -70,11 +74,11 @@ $header = "<script language=\"JavaScript\" type=\"text/javascript\">\n" .
           "  }\n".
           "// -->\n".
           "</script>\n";
-$custom_css = 'none';          
+$custom_css = 'none';
 displayHtmlHeader( "$org_name - " . _("Login"), $header, FALSE );
 
 echo '<body text="#000000" bgcolor="#FFFFFF" link="#0000CC" vlink="#0000CC" alink="#0000CC" onload="squirrelmail_loginpage_onload();">' .
-     "\n" . addForm('redirect.php', 'POST');
+     "\n" . addForm('redirect.php', 'post');
 
 $username_form_name = 'login_username';
 $password_form_name = 'secretkey';
@@ -151,6 +155,5 @@ do_hook('login_form');
 echo '</form>' . "\n";
 
 do_hook('login_bottom');
-echo "</body>\n".
-     "</html>\n";
 ?>
+</body></html>
