@@ -8,6 +8,8 @@ Version 1.4.1 -- CVS
     the default delete_folder values for Courier-IMAP and UW-IMAP (bug715550)
   - Fixed problem with \ in passwords/usernames on login, fixes bug #718116.
   - Added lowsrc to the list of untrusted attributes in HTML email.
+  - Fixed message highlighting for To, CC and From and
+    for RFC1522 headers (bug #719564)
 
 Version 1.4.0 -- 3 April 2003
 -----------------------------
