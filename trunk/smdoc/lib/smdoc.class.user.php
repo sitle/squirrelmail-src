@@ -34,13 +34,13 @@ class smdoc_user extends foowd_user
   /** Array containing other IM nicks */
   var $IM_nicks;         
 
-  /** Main supported IM version. values: backlevel-stable, stable, stable-cvs, devel, devel-cvs, custom */
+  /** Main supported IM version. @see smver_to_string */
   var $SM_version;       
 
-  /** Preferred IMAP server. values: binc, courier-imap, cyrus, uw, dovecot, exchange, other */
+  /** Preferred IMAP server. @see imap_to_string */
   var $IMAP_server;     
 
-  /** Preferred SMTP server. values: postfix, exchange, exim, sendmail, cyrus, courier-MTA, qmail, other */
+  /** Preferred SMTP server. @see smtp_to_string */
   var $SMTP_server;
 
   /**
@@ -434,7 +434,7 @@ class smdoc_user extends foowd_user
   }
 
   /**
-   * Serliaisation wakeup method.
+   * Serialisation wakeup method.
    */
   function __wakeup() 
   {
@@ -449,6 +449,14 @@ class smdoc_user extends foowd_user
     $this->foowd_indexes['SM_version'] = array('name' => 'sm_ver', 'type' => 'INT', 'unsigned' => TRUE, 'notnull' => FALSE, 'default' => 0);
     $this->foowd_indexes['IRC_nick'] = array('name' => 'irc', 'type' => 'VARCHAR', 'length' => 12, 'notnull' => FALSE, 'default' => '');
     $this->foowd_indexes['updated'] = array('name' => 'updated', 'type' => 'DATETIME', 'notnull' => TRUE);
+
+    // add some regex verification
+    $this->foowd_vars_meta['irc'] = '/^[a-zA-Z0-9_]{12}$/';
+    $this->foowd_vars_meta['msn'] = REGEX_EMAIL;
+    $this->foowd_vars_meta['icq'] = '/^[0-9]{16}$/';
+    $this->foowd_vars_meta['aim'] = '/^[a-zA-Z0-9_]{16}$/';
+    $this->foowd_vars_meta['yahoo'] = '/^[a-zA-Z0-9_]{128}$/';  // completely random guess.
+    $this->foowd_vars_meta['www'] = '/^https?://[A-Za-z0-9._-]+\.[A-Za-z]/?[A-Za-z0-9._-/]+$/';
   }
 
   /**
@@ -559,34 +567,6 @@ class smdoc_user extends foowd_user
 
     $foowd->track(); 
     return ($result ? TRUE : FALSE);
-  }
-
-  /*
-   * Update the users properties.
-   *
-   * @param object foowd The foowd environment object.
-   * @param str email The users new e-mail address.
-   * @return bool TRUE on success.
-   */
-  function updateUser(&$foowd, $form) 
-  {
-    $changed = FALSE;
-
-    if ($form['email'] != $this->email) 
-    {
-      $this->email = $form['email'];
-      $changed = TRUE;
-    }
-
-    if ($changed) 
-    {
-      if ($this->save($foowd, FALSE)) 
-        return TRUE;
-      else 
-        trigger_error('Could not update user.');
-    }
-
-    return FALSE;
   }
 
   /**
@@ -704,6 +684,34 @@ class smdoc_user extends foowd_user
       return 0; // created ok
     else
       return 3; // eek, error creating user.
+  }
+
+  /**
+   * Update the users properties.
+   *
+   * @param object foowd The foowd environment object.
+   * @param str email The users new e-mail address.
+   * @return bool TRUE on success.
+   */
+  function updateUser(&$foowd, $form) 
+  {
+    $changed = FALSE;
+
+    if ($form['email'] != $this->email) 
+    {
+      $this->email = $form['email'];
+      $changed = TRUE;
+    }
+
+    if ($changed) 
+    {
+      if ($this->save($foowd, FALSE)) 
+        return TRUE;
+      else 
+        trigger_error('Could not update user.');
+    }
+
+    return FALSE;
   }
 
   /**
@@ -972,8 +980,10 @@ class smdoc_user extends foowd_user
       $return['SMTP_server'] = $this->smtp_to_string();
     }
 
-    $return['irc_nick'] = $this->IRC_nick;
-    $return['IM_nicks'] = $this->IM_nicks;
+    if ( $this->IRC_nick != '' )
+      $return['irc_nick'] = $this->IRC_nick;
+    if ( !empty($this->IM_nicks) )
+      $return['IM_nicks'] = $this->IM_nicks;
 
     $foowd->track(); 
     return $return;
@@ -988,41 +998,97 @@ class smdoc_user extends foowd_user
     $foowd->track('smdoc_user->method_update');
     
     include_once($foowd->path.'/input.form.php');
+    include_once($foowd->path.'/input.dropdown.php');
     include_once($foowd->path.'/input.textbox.php');
+    include_once(SM_PATH.'smdoc.input.password.php');
     
     $updateForm = new input_form('updateForm', NULL, 'POST', _("Update"));
-    $email = new input_textbox('email', REGEX_EMAIL, $this->email, _("E-mail").': ');
+
+    $email = new input_textbox('email', REGEX_EMAIL, $this->email, _("E-mail").': ', NULL, NULL, NULL, FALSE);
+
+    $verify = new input_passwordbox('verify', REGEX_PASSWORD, '', _("Verify").': ', NULL, NULL, NULL, FALSE);
+    $password = new input_verify_passwordbox('password', $verify, REGEX_PASSWORD, '', _("Change Password").': ', NULL, NULL, NULL, FALSE);
+
+    $nicks = $this->IM_nicks;
+    if ( !array_key_exists('MSN', $nicks) ) $nicks['MSN'] = '';
+    if ( !array_key_exists('ICQ', $nicks) ) $nicks['ICQ'] = '';
+    if ( !array_key_exists('AIM', $nicks) ) $nicks['AIM'] = '';
+    if ( !array_key_exists('Y!', $nicks) )  $nicks['Y!'] = '';
+    if ( !array_key_exists('WWW', $nicks) ) $nicks['WWW'] = '';
+
+    $ircNick = new input_textbox('irc', $this->foowd_vars_meta['irc'], $this->IRC_nick, 'IRC: ', NULL, NULL, NULL, FALSE);
+    $msnNick = new input_textbox('msn', $this->foowd_vars_meta['msn'], $nicks['MSN'], 'MSN: ', NULL, NULL, NULL, FALSE);
+    $aimNick = new input_textbox('aim', $this->foowd_vars_meta['aim'], $nicks['AIM'], 'AIM: ', NULL, NULL, NULL, FALSE);
+    $icqNick = new input_textbox('icq', $this->foowd_vars_meta['icq'], $nicks['ICQ'], 'ICQ: ', NULL, NULL, NULL, FALSE);
+    $yahooNick = new input_textbox('ym', $this->foowd_vars_meta['yahoo'], $nicks['Y!'], 'Y!: ', NULL, NULL, NULL, FALSE);
+    $www     = new input_textbox('www', $this->foowd_vars_meta['www'], $nicks['WWW'], 'WWW:', NULL, NULL, NULL, FALSE);
+
+    $smtpServer = new input_dropdown('smtp', 0, $this->smtp_to_string(true), _("SMTP Server:"));
+    $imapServer = new input_dropdown('imap', 0, $this->imap_to_string(true), _("IMAP Server:"));
+    $smVersion  = new input_dropdown('smver', 0, $this->smver_to_string(true), _("SquirrelMail Version:"));
+
+    // public fields
+    $updateForm->addObject($ircNick);
+    $updateForm->addObject($aimNick);
+    $updateForm->addObject($icqNick);
+    $updateForm->addObject($msnNick);
+    $updateForm->addObject($yahooNick);
+    $updateForm->addObject($www);
+
+    // private fields
     $updateForm->addObject($email);
+    $updateForm->addObject($password);
+    $updateForm->addObject($verify);
+    $updateForm->addObject($smtpServer);
+    $updateForm->addObject($imapServer);
+    $updateForm->addObject($smVersion);
+ 
     $return['form'] = &$updateForm;
-    if ($updateForm->submitted()) {
-      if ($this->updateUser($foowd, $email->value)) {
-        $return['success'] = _("User updated.");
-      } else {
-        $return['failure'] = _("Could not update user.");
+    $result = 0;
+  
+    if ( $updateForm->submitted() )
+    {
+      if ( $verify->wasSet && !$password->wasSet )
+          $result = 2;                      // both password and verify were not set or did not match
+      else
+      {
+        if ( $password->wasSet )   $form['password'] = $password->value;
+        if ( $email->wasSet )      $form['email'] = $email->value;
+        if ( $ircNick->wasSet )    $form['irc'] = $ircNick->value;
+        if ( $msnNick->wasSet )    $form['nick']['MSN'] = $msnNick->value;
+        if ( $aimNick->wasSet )    $form['nick']['AIM'] = $aimNick->value; 
+        if ( $icqNick->wasSet )    $form['nick']['ICQ'] = $icqNick->value;
+        if ( $yahooNick->wasSet )  $form['nick']['Y!']  = $yahooNick->value;
+        if ( $smtpServer->wasSet ) $form['smtp'] = $smtpServer->value;
+        if ( $imapServer->wasSet ) $form['imap'] = $imapServer->value;
+        if ( $smVersion->wasSet )  $form['smver'] = $smVersion->value;
+
+        if ($this->updateUser($foowd, $form)) {
+            $result = 1;
+        } else {
+            $result = 3;
+        }
       }
     }
 
-    $passwordForm = new input_form('passwordForm', NULL, 'POST', _("Change Password"), NULL);
-    $password = new input_passwordbox('password', REGEX_PASSWORD, '', _("Password").': ');
-    $password2 = new input_passwordbox('password2', REGEX_PASSWORD, '', _("Verify").': ');
-    $passwordForm->addObject($password);
-    $passwordForm->addObject($password2);
-    $return['password_form'] = &$passwordForm;
-    if ($passwordForm->submitted()) {
-      switch ($this->updatePassword($foowd, $password->value, $password2->value)) {
-      case 0:
-        $return['password_success'] = sprintf(_("User password changed, you will now need to <a href=\"%s\">log in using your new password</a>."), getURI(array('class' => get_class($this), 'method' => 'login', 'username' => $this->getTitle())));
-        break;
+    switch($result)
+    {
       case 1:
-        $return['password_failure'] = _("Passwords must match, please check your entries.");
+        $url = getURI(array('objectid' => $foowd->user->objectid, 
+                            'classid' => USER_CLASS_ID,
+                            'ok' => USER_UPDATE_OK));
+        header('Location: ' . $url);
         break;
-      case 2:
-        $return['password_failure'] = _("An unspecified error occurred, user not updated.");
+      case 2: 
+        $return['failure'] = _("Passwords must match, please check your entries.");
         break;
-      }
+      case 3:
+        $return['failure'] = _("Could not update user.");
+        break;
     }
 
-    $foowd->track(); return $return;
+    $foowd->track(); 
+    return $return;
   }
 
 

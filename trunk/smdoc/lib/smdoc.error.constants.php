@@ -30,3 +30,5 @@ define('6_MSG', _("Required fields are marked with an *"));
 define('USER_CREATE_OK', 7);
 define('7_MSG', _("User created and saved."));
 
+define('USER_UPDATE_OK', 8);
+define('8_MSG', _("User updated."));

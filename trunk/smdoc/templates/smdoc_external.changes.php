@@ -10,7 +10,7 @@
        foreach ( $t['changeList'] as $arr ) 
        { 
 ?>
-  <tr class="<?php echo ($row ? 'row_odd' : 'row_odd'); ?>">
+  <tr class="<?php echo ($row ? 'row_odd' : 'row_even'); ?>">
     <td><a href="<?php echo $arr['url']; ?>"><?php echo $arr['title']; ?></a></td>
     <td class="small" align="center">        <?php echo $arr['langid']; ?></td>
     <td class="smalldate" align="center">    <?php echo $arr['updated']; ?></td>
