@@ -27,5 +27,17 @@ print_header();
     who:
 </UL>
 
+<p>Doc System:
+<UL>
+<LI>Plugin submit/review/approve/promote function
+<LI>Additional Admin functions
+<LI>Bulk categorization
+<LI>Group management via DB rather than constants.
+</UL>
+
+<p> Wishlist:
+<UL>
+<LI>Multiple Identity - optionally verify additional identies added by user against a db
+</UL>
 </body>
 </html>
