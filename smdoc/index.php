@@ -34,6 +34,8 @@ $version = $version->value;
 $method = $method->value;
 
 if (isset($objectid)) { // fetch object and call object method
+    $foowd->debug('msg', 'fetch and call object method');
+
     if ( !isset($method) )
         $method = getConstOrDefault('DEFAULT_METHOD','view');
 
@@ -44,36 +46,34 @@ if (isset($objectid)) { // fetch object and call object method
 			$className = getClassName($classid);
 		}
 		$t = $foowd->method($object, $method);
-        switch($method) {
-          default: 
-            $t['showurl'] = true;
-            break;
-          case 'delete':
-            $t['showurl'] = false;
-            break;
-        }
-		if (is_array($t)) {
-			include($foowd->getTemplateName($className, 'object_'.$method));
-		} else {
-			trigger_error($t, E_USER_NOTICE);
-		}
+        $methodName = 'object_'.$method;
 	} else {
-		trigger_error('Object not found', E_USER_NOTICE);
+		trigger_error('Object not found: ' . 
+                 (isset($objectName->value) ? $objectName->value : $objectid) . 
+                 ' (' . $className . ')', E_USER_NOTICE);
 	}
 } else { // call class method
+    $foowd->debug('msg', 'fetch and call class method');
 	if ( !isset($className) )
         $className = getClassName($classid);
     if ( !isset($method) )
         $method = getConstOrDefault('DEFAULT_CLASS_METHOD', 'create');
 
 	$t = $foowd->method($className, $method);
-    $t['showurl'] = false;
-	if (is_array($t)) {
-		include($foowd->getTemplateName($className, 'class_'.$method));
-	} else {
-		trigger_error($t, E_USER_NOTICE);
-	}
+    $methodName = 'class_'.$method;
 }
+
+$foowd->debug('msg', 'display result using template');
+if (is_array($t)) {
+    if ( isset($objectid) && $method != 'delete' )
+        $t['showurl'] = true;
+    else
+        $t['showurl'] = false;
+	include($foowd->getTemplateName($className, $methodName));
+} else {
+	trigger_error($t, E_USER_NOTICE);
+}
+
 
 // destroy Foowd
 $foowd->destroy();
