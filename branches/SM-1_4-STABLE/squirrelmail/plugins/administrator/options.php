@@ -349,8 +349,8 @@ foreach ( $newcfg as $k => $v ) {
             break;
         case SMOPT_TYPE_INTEGER:
             /* look for variable $e in POST, fill into $v */
-            if ( sqgetGlobalVar($e, $v, SQ_POST) ) {
-                $v = intval( $v );
+            if ( sqgetGlobalVar($e, $new_v, SQ_POST) ) {
+                $v = intval( $new_v );
                 $newcfg[$k] = $v;
             }
             echo "<tr><td>$name</td><td>".
@@ -361,7 +361,8 @@ foreach ( $newcfg as $k => $v ) {
             echo "</td></tr>\n";
             break;
         case SMOPT_TYPE_NUMLIST:
-            if (  sqgetGlobalVar($e, $v, SQ_POST) ) {
+            if (  sqgetGlobalVar($e, $new_v, SQ_POST) ) {
+                $v = $new_v;
                 $newcfg[$k] = $v;
             }
             echo "<tr><td>$name</td><td>";
@@ -380,8 +381,8 @@ foreach ( $newcfg as $k => $v ) {
             echo "</td></tr>\n";
             break;
         case SMOPT_TYPE_STRLIST:
-            if (  sqgetGlobalVar($e, $v, SQ_POST) ) {
-                $v = '"' . $v . '"';
+            if (  sqgetGlobalVar($e, $new_v, SQ_POST) ) {
+                $v = '"' . $new_v . '"';
                 $newcfg[$k] = $v;
             }
             echo "<tr><td>$name</td><td>".
@@ -401,8 +402,8 @@ foreach ( $newcfg as $k => $v ) {
             break;
 
         case SMOPT_TYPE_TEXTAREA:
-            if (  sqgetGlobalVar($e, $v, SQ_POST) ) {
-                $v = '"' . $v . '"';
+            if (  sqgetGlobalVar($e, $new_v, SQ_POST) ) {
+                $v = '"' . $new_v . '"';
                 $newcfg[$k] = str_replace( "\n", '', $v );
             }
             echo "<tr><td valign=\"top\">$name</td><td>".
@@ -413,8 +414,8 @@ foreach ( $newcfg as $k => $v ) {
             echo "</td></tr>\n";
             break;
         case SMOPT_TYPE_STRING:
-            if (  sqgetGlobalVar($e, $v, SQ_POST) ) {
-                $v = '"' . $v . '"';
+            if (  sqgetGlobalVar($e, $new_v, SQ_POST) ) {
+                $v = '"' . $new_v . '"';
                 $newcfg[$k] = $v;
             }
             if ( $v == '""' && isset( $defcfg[$k]['default'] ) ) {
@@ -429,7 +430,8 @@ foreach ( $newcfg as $k => $v ) {
             echo "</td></tr>\n";
             break;
         case SMOPT_TYPE_BOOLEAN:
-            if (  sqgetGlobalVar($e, $v, SQ_POST) ) {
+            if (  sqgetGlobalVar($e, $new_v, SQ_POST) ) {
+                $v = $new_v;
                 $newcfg[$k] = $v;
             } else {
                 $v = strtoupper( $v );
@@ -450,8 +452,8 @@ foreach ( $newcfg as $k => $v ) {
             echo "</td></tr>\n";
             break;
         case SMOPT_TYPE_PATH:
-            if (  sqgetGlobalVar($e, $v, SQ_POST) ) {
-               $v = change_to_sm_path($v);
+            if (  sqgetGlobalVar($e, $new_v, SQ_POST) ) {
+               $v = change_to_sm_path($new_v);
                $newcfg[$k] = $v;
             }
             if ( $v == "''" && isset( $defcfg[$k]['default'] ) ) {
@@ -541,7 +543,7 @@ if ( $colapse['Group8'] == 'off' ) {
         $plugins = array();
         if (  sqgetGlobalVar('plg', $v, SQ_POST) ) {
             foreach ( $op_plugin as $plg ) {
-                if (  sqgetGlobalVar("plgs_$plg", $v, SQ_POST) && $v == 'on' ) {
+                if (  sqgetGlobalVar("plgs_$plg", $v2, SQ_POST) && $v2 == 'on' ) {
                     $plugins[] = $plg;
                 }
             }
@@ -618,6 +620,9 @@ if ( $fp = @fopen( $cfgfile, 'w' ) ) {
             fwrite( $fp, "$k = $v;\n" );
         }
     }
+    // add local config support
+    fwrite( $fp, "@include SM_PATH . 'config/config_local.php';\n" );
+    // close php
     fwrite( $fp, '?>' );
     fclose( $fp );
 } else {
