@@ -1,24 +1,31 @@
 # French Squirrelmail Translation
-# Copyright (c) 1999-2004 The Squirrelmail Development Team
+# Copyright (c) 1999-2005 The Squirrelmail Development Team
 # Antoine Hulin <antoine@origan.fdn.org>, 2002-2003
-# Alex Lemaresquier <alex@brainstorm.fr>, 2003-2004
+# Alex Lemaresquier <alex@brainstorm.fr>, 2003-2005
 # $Id$
 msgid ""
 msgstr ""
 "Project-Id-Version: squirrelmail \n"
-"POT-Creation-Date: 2004-05-23 18:15+0300\n"
-"PO-Revision-Date: 2004-04-27 10:00GMT+1\n"
+"POT-Creation-Date: 2005-01-07 19:50+0200\n"
+"PO-Revision-Date: 2005-01-30 15:00GMT+1\n"
 "Last-Translator: Alex Lemaresquier <alex@brainstorm.fr>\n"
 "Language-Team: French <squirrelmail-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=ISO-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n>1;"
 
 msgid "Address Book"
 msgstr "Carnet d'adresses"
 
 msgid "All"
 msgstr "Tout"
+
+msgid "To"
+msgstr "À"
+
+msgid "Cc"
+msgstr "Copie à"
 
 msgid "Name"
 msgstr "Nom"
@@ -31,12 +38,6 @@ msgstr "Info"
 
 msgid "Source"
 msgstr "Source"
-
-msgid "To"
-msgstr "À"
-
-msgid "Cc"
-msgstr "Copie à"
 
 msgid "Bcc"
 msgstr "Copie cachée à"
@@ -95,6 +96,9 @@ msgstr "Prénom&nbsp;"
 
 msgid "Additional info"
 msgstr "Informations complémentaires&nbsp;"
+
+msgid "Add to:"
+msgstr "Ajouter à&nbsp;: "
 
 msgid "No personal address book is defined. Contact administrator."
 msgstr "Aucun carnet d'adresses n'est défini. Contactez l'administrateur."
@@ -157,23 +161,11 @@ msgstr "Impossible de déplacer ou copier le fichier. Fichier non attaché."
 msgid "Draft Saved"
 msgstr "Brouillon enregistré"
 
-msgid "Your Message has been sent"
+msgid "Your Message has been sent."
 msgstr "Votre message a été envoyé."
 
 msgid "From:"
 msgstr "De&nbsp;:"
-
-msgid "To:"
-msgstr "À :"
-
-msgid "CC:"
-msgstr "Copie à&nbsp;:"
-
-msgid "BCC:"
-msgstr "Copie cachée à&nbsp;:"
-
-msgid "Subject:"
-msgstr "Objet :"
 
 msgid "Send"
 msgstr "Envoyer"
@@ -229,7 +221,7 @@ msgstr "Erreur : Le dossier de brouillons %s n'existe pas."
 msgid "Server replied: "
 msgstr "Le serveur a répondu&nbsp;: "
 
-msgid "Illegal folder name.  Please select a different name."
+msgid "Illegal folder name. Please select a different name."
 msgstr "Nom de dossier non autorisé. Choisissez un autre nom."
 
 msgid "Click here to go back"
@@ -344,7 +336,7 @@ msgstr "Aide"
 
 #, c-format
 msgid ""
-"The help has not been translated to %s.  It will be displayed in English "
+"The help has not been translated to %s. It will be displayed in English "
 "instead."
 msgstr "Cette aide n'a pas été traduite en %s. Elle sera affichée en anglais. "
 
@@ -375,11 +367,14 @@ msgstr "Télécharger en tant que fichier"
 msgid "INBOX"
 msgstr "Boîte de réception"
 
-msgid "purge"
+msgid "Purge"
 msgstr "Vider"
 
 msgid "Last Refresh"
 msgstr "Mise à jour&nbsp;"
+
+msgid "Check mail"
+msgstr "Récupérer le courrier"
 
 msgid "Save folder tree"
 msgstr "Enregistrer l'arborescence"
@@ -543,8 +538,8 @@ msgstr "Taille"
 
 msgid ""
 "The index order is the order that the columns are arranged in the message "
-"index.  You can add, remove, and move columns around to customize them to "
-"fit your needs."
+"index. You can add, remove, and move columns around to customize them to fit "
+"your needs."
 msgstr ""
 "L'ordre de l'index est l'ordre dans lequel les colonnes apparaissent dans "
 "l'index des messages. Vous pouvez ajouter, enlever et déplacer les colonnes "
@@ -598,7 +593,7 @@ msgstr ""
 
 msgid ""
 "Based upon given criteria, incoming messages can have different background "
-"colors in the message list.  This helps to easily distinguish who the "
+"colors in the message list. This helps to easily distinguish who the "
 "messages are from, especially for mailing lists."
 msgstr ""
 "En fonction de critères configurables, les messages entrants peuvent avoir "
@@ -622,8 +617,8 @@ msgstr ""
 msgid "Message not printable"
 msgstr "Message non imprimable"
 
-msgid "CC"
-msgstr "Copie à"
+msgid "Invalid URL"
+msgstr "URL invalide"
 
 msgid "Printer Friendly"
 msgstr "Version imprimante"
@@ -641,8 +636,8 @@ msgstr "Lu :"
 msgid "Your message"
 msgstr "Votre message"
 
-msgid "Sent:"
-msgstr "Envoyé le :"
+msgid "Sent"
+msgstr "Envoyé le"
 
 #, c-format
 msgid "Was displayed on %s"
@@ -680,7 +675,7 @@ msgstr ""
 msgid "Send read receipt now"
 msgstr "Envoyer un avis de lecture maintenant."
 
-msgid "Search results"
+msgid "Search Results"
 msgstr "Résultat de la recherche"
 
 msgid "Message List"
@@ -749,11 +744,11 @@ msgstr "Corps"
 msgid "Everywhere"
 msgstr "Partout"
 
-msgid "Search Results"
-msgstr "Résultat de la recherche"
-
 msgid "No Messages Found"
 msgstr "Aucun message trouvé"
+
+msgid "Signout"
+msgstr "Fermer la session"
 
 msgid "Sign Out"
 msgstr "Fermer la session"
@@ -766,6 +761,14 @@ msgstr "Cliquez ici pour vous reconnecter."
 
 msgid "Viewing a Business Card"
 msgstr "Voir une carte de visite"
+
+#, c-format
+msgid ""
+"vCard Version %s is not supported. Some information might not be converted "
+"correctly."
+msgstr ""
+"La version %s de vCard n'est pas gérée. Certaines informations pourraient ne "
+"pas être converties correctement."
 
 msgid "Title"
 msgstr "Titre"
@@ -812,6 +815,17 @@ msgstr "En-tête complet"
 msgid "Viewing a text attachment"
 msgstr "Voir un fichier texte joint"
 
+msgid ""
+"Could not include PEAR database functions required for the database backend."
+msgstr "Impossible d'inclure les fonctions de base de données PEAR nécessaires au 'backend' en base de données"
+
+#, c-format
+msgid "Is PEAR installed, and is the include path set correctly to find %s?"
+msgstr "PEAR est-il installé, et le chemin d'include permet-il de trouver %s ?"
+
+msgid "Please contact your system administrator and report this error."
+msgstr "Contactez votre administrateur pour obtenir de l'aide."
+
 msgid "Personal address book"
 msgstr "Carnet d'adresses personnel"
 
@@ -830,20 +844,14 @@ msgstr "L'utilisateur «&nbsp;%s&nbsp;» existe déjà."
 msgid "User '%s' does not exist"
 msgstr "L'utilisateur «&nbsp;%s&nbsp;» n'existe pas."
 
-msgid "Global address book"
-msgstr "Carnet d'adresses général"
+msgid "Not a file name"
+msgstr "Pas un nom de fichier"
 
 msgid "No such file or directory"
 msgstr "Aucun fichier ou répertoire correspondant"
 
 msgid "Open failed"
 msgstr "Échec de l'ouverture"
-
-msgid "Can not modify global address book"
-msgstr "Vous ne pouvez pas modifier le carnet d'adresses général."
-
-msgid "Not a file name"
-msgstr "Pas un nom de fichier"
 
 msgid "Write failed"
 msgstr "Échec de l'écriture"
@@ -865,8 +873,11 @@ msgstr ""
 msgid "Error opening file %s"
 msgstr "Impossible d'ouvrir le fichier %s"
 
+msgid "Global address book"
+msgstr "Carnet d'adresses global"
+
 msgid "Error initializing global addressbook."
-msgstr "Erreur lors de l'initialisation du carnet d'adresses général."
+msgstr "Erreur lors de l'initialisation du carnet d'adresses global."
 
 #, c-format
 msgid "Error initializing LDAP server %s:"
@@ -884,11 +895,11 @@ msgstr "Il manque l'adresse électronique"
 msgid "Nickname contains illegal characters"
 msgstr "Le surnom contient des caractères interdits."
 
-msgid "view"
-msgstr "voir"
+msgid "View"
+msgstr "Voir"
 
-msgid "Business Card"
-msgstr "Carte de visite"
+msgid "View Business Card"
+msgstr "Voir la carte de visite"
 
 msgid "Sunday"
 msgstr "Dimanche"
@@ -1029,12 +1040,6 @@ msgstr "D, G:i"
 msgid "Preference database error (%s). Exiting abnormally"
 msgstr "Erreur du fichier de préférences (%s). Sortie inattendue."
 
-msgid "Unknown user or password incorrect."
-msgstr "Utilisateur inconnu ou mot de passe incorrect."
-
-msgid "Click here to try again"
-msgstr "Cliquez ici pour réessayer"
-
 #, c-format
 msgid "Click here to return to %s"
 msgstr "Cliquez ici pour retourner à %s."
@@ -1082,15 +1087,15 @@ msgid "Default preference file not found or not readable!"
 msgstr ""
 "Fichier de préférences par défaut absent ou inaccessible en lecture&nbsp;!"
 
-msgid "Please contact your system administrator and report this error."
-msgstr "Contactez votre administrateur pour obtenir de l'aide."
-
 msgid "Could not create initial preference file!"
 msgstr "Impossible de créer le fichier de préférences&nbsp;!"
 
 #, c-format
 msgid "%s should be writable by user %s"
 msgstr "%s devrait être accessible en écriture par l'utilisateur %s"
+
+msgid "Signature is too big."
+msgstr "Signature trop grosse."
 
 #, c-format
 msgid ""
@@ -1155,6 +1160,15 @@ msgstr "ERREUR&nbsp;: Réponse IMAP inconnue."
 msgid "Error connecting to IMAP server: %s."
 msgstr "Erreur lors de la connexion au serveur IMAP %s."
 
+msgid "The IMAP server is reporting that plain text logins are disabled."
+msgstr "Le serveur IMAP signale que les connexions non cryptées sont interdites."
+
+msgid "Using CRAM-MD5 or DIGEST-MD5 authentication instead may work."
+msgstr "Choisir l'authentification CRAM-MD5 ou DIGEST-MD5 pourrait fonctionner."
+
+msgid "Also, the use of TLS may allow SquirrelMail to login."
+msgstr "Par ailleurs, TLS peut permettre à SquirrelMail de se connecter."
+
 #, c-format
 msgid "Bad request: %s"
 msgstr "Requête invalide&nbsp;: %s"
@@ -1165,6 +1179,9 @@ msgstr "Erreur inconnue&nbsp;: %s"
 
 msgid "Read data:"
 msgstr "Lecture des données&nbsp;:"
+
+msgid "Unknown user or password incorrect."
+msgstr "Utilisateur inconnu ou mot de passe incorrect."
 
 msgid "ERROR : Could not append message to"
 msgstr "ERREUR&nbsp;: Impossible d'ajouter le message dans"
@@ -1207,19 +1224,11 @@ msgstr "Date inconnue"
 msgid "A"
 msgstr "R"
 
-msgid ""
-"Thread sorting is not supported by your IMAP server.<br>Please report this "
-"to the system administrator."
-msgstr ""
-"Votre serveur IMAP ne gère pas le tri par fil de discussion.<br>Merci de "
-"l'indiquer à votre administrateur."
+msgid "Thread sorting is not supported by your IMAP server."
+msgstr "Votre serveur IMAP ne gère pas le tri par fil de discussion (THREAD)."
 
-msgid ""
-"Server-side sorting is not supported by your IMAP server.<br>Please report "
-"this to the system administrator."
-msgstr ""
-"Votre serveur IMAP ne gère pas les tris.<br>Merci de l'indiquer à votre "
-"administrateur."
+msgid "Server-side sorting is not supported by your IMAP server."
+msgstr "Votre serveur IMAP ne gère pas les tris (SORT)."
 
 msgid "THIS FOLDER IS EMPTY"
 msgstr "CE DOSSIER EST VIDE"
@@ -1261,12 +1270,12 @@ msgid "Select All"
 msgstr "Sélectionner tout"
 
 #, c-format
-msgid "Viewing Messages: <B>%s</B> to <B>%s</B> (%s total)"
-msgstr "Messages <b>%s</b> à <b>%s</b> (%s au total)"
+msgid "Viewing Messages: %s to %s (%s total)"
+msgstr "Messages %s à %s (%s au total)"
 
 #, c-format
-msgid "Viewing Message: <B>%s</B> (1 total)"
-msgstr "Message <b>%s</b> (1 au total)"
+msgid "Viewing Message: %s (%s total)"
+msgstr "Message %s (%s au total)"
 
 msgid "Paginate"
 msgstr "Page par page"
@@ -1305,8 +1314,8 @@ msgstr "Masquer les images douteuses"
 msgid "View Unsafe Images"
 msgstr "Afficher les images douteuses"
 
-msgid "download"
-msgstr "télécharger"
+msgid "Download"
+msgstr "Télécharger"
 
 msgid "sec_remove_eng.png"
 msgstr "sec_remove_fr_FR.png"
@@ -1506,10 +1515,8 @@ msgid "Height of Compose Window"
 msgstr "Hauteur de la fenêtre de Composition (pixels)&nbsp;"
 
 msgid "Append Signature before Reply/Forward Text"
-msgstr "Signature avant le texte cité dans les transferts et les réponses&nbsp;"
-
-msgid "Prefix for Original Message when Replying"
-msgstr "Préfixe utilisé pour citer le message original dans votre réponse&nbsp;"
+msgstr ""
+"Signature avant le texte cité dans les transferts et les réponses&nbsp;"
 
 msgid "Cursor Position when Replying"
 msgstr "Pour les réponses, positionner&nbsp;"
@@ -1523,7 +1530,10 @@ msgstr "le curseur au début du texte de réponse"
 msgid "Select body"
 msgstr "la sélection sur le texte de la réponse"
 
-msgid "Enable Sort by of Receive Date"
+msgid "No focus"
+msgstr "Pas de curseur"
+
+msgid "Sort by Received Date"
 msgstr "Classement des messages par date de réception&nbsp;"
 
 msgid "Enable Thread Sort by References Header"
@@ -1543,17 +1553,17 @@ msgstr "Ne pas utiliser de dossier Corbeille"
 msgid "Trash Folder"
 msgstr "Dossier Corbeille&nbsp;"
 
-msgid "Do not use Sent"
-msgstr "Ne pas utiliser de dossier Courrier envoyé"
-
-msgid "Sent Folder"
-msgstr "Dossier Courrier envoyé&nbsp;"
-
 msgid "Do not use Drafts"
 msgstr "Ne pas utiliser de dossier Brouillons"
 
 msgid "Draft Folder"
 msgstr "Dossier Brouillons&nbsp;"
+
+msgid "Do not use Sent"
+msgstr "Ne pas utiliser de dossier Courrier envoyé"
+
+msgid "Sent Folder"
+msgstr "Dossier Courrier envoyé&nbsp;"
 
 msgid "Folder List Options"
 msgstr "Options de la liste des dossiers"
@@ -1603,7 +1613,7 @@ msgstr "Non lus"
 msgid "Unseen and Total"
 msgstr "Non lus / Total"
 
-msgid "Enable Collapsible Folders"
+msgid "Enable Collapsable Folders"
 msgstr "Dossiers repliables&nbsp;"
 
 msgid "Enable Cumulative Unread Message Notification"
@@ -1657,6 +1667,12 @@ msgstr "Style de la liste de sélection&nbsp;"
 msgid "Long: "
 msgstr "Long&nbsp;: "
 
+msgid "Folder"
+msgstr "Dossier"
+
+msgid "Subfolder"
+msgstr "Sous-dossier"
+
 msgid "Indented: "
 msgstr "Indenté&nbsp;: "
 
@@ -1704,11 +1720,11 @@ msgstr "Pas de citation"
 msgid "AUTHOR Said"
 msgstr "L'AUTEUR a écrit"
 
-msgid "Quote Who XML"
-msgstr "Citation XML"
-
 msgid "On DATE, AUTHOR Said"
 msgstr "Le DATE, l'AUTEUR a écrit"
+
+msgid "Quote Who XML"
+msgstr "Citation XML"
 
 msgid "User-Defined"
 msgstr "Personnalisée"
@@ -1740,7 +1756,7 @@ msgstr "Essayer de vérifier les adresses"
 msgid "Config File Version"
 msgstr "Version du fichier de configuration"
 
-msgid "Squirrelmail Version"
+msgid "SquirrelMail Version"
 msgstr "Version de SquirrelMail"
 
 msgid "PHP Version"
@@ -1773,9 +1789,6 @@ msgstr "Lien vers le fournisseur"
 msgid "Provider Name"
 msgstr "Nom du fournisseur de service"
 
-msgid "Default Language"
-msgstr "Langue par défaut"
-
 msgid "Top Frame"
 msgstr "Cadre du haut"
 
@@ -1795,16 +1808,22 @@ msgid "IMAP Server Type"
 msgstr "Type du serveur IMAP"
 
 msgid "Cyrus IMAP server"
-msgstr "Cyrus"
+msgstr "Serveur IMAP Cyrus"
 
 msgid "University of Washington's IMAP server"
-msgstr "Université de Washington"
+msgstr "Serveur IMAP de l'université de Washington (uw-imap)"
 
 msgid "Microsoft Exchange IMAP server"
-msgstr "Microsoft Exchange"
+msgstr "Serveur IMAP Microsoft Exchange"
 
 msgid "Courier IMAP server"
-msgstr "Courier"
+msgstr "Serveur IMAP Courier"
+
+msgid "Mac OS X Mailserver"
+msgstr "Serveur de mail Mac OS X"
+
+msgid "hMailServer IMAP server"
+msgstr "Serveur IMAP hMailServer"
 
 msgid "Not one of the above servers"
 msgstr "Aucun des serveurs précédents"
@@ -1812,7 +1831,7 @@ msgstr "Aucun des serveurs précédents"
 msgid "IMAP Folder Delimiter"
 msgstr "Séparateur d'arborescence IMAP"
 
-msgid "Use \"detect\" to auto-detect."
+msgid "Use &quot;detect&quot; to auto-detect."
 msgstr "Choisir «&nbsp;detect&nbsp;» pour une détection automatique."
 
 msgid "Use TLS for IMAP Connections"
@@ -1824,8 +1843,14 @@ msgstr "Uniquement avec PHP 4.3.x&nbsp;! Expérimental."
 msgid "IMAP Authentication Type"
 msgstr "Type d'authentification IMAP"
 
+msgid "IMAP login"
+msgstr "Connexion IMAP"
+
 msgid "Use Sendmail Binary"
 msgstr "Utiliser Sendmail"
+
+msgid "Choose &quot;no&quot; for SMTP"
+msgstr "Choisir &quot;non&quot; pour SMTP"
 
 msgid "Sendmail Path"
 msgstr "Emplacement de Sendmail"
@@ -1841,6 +1866,12 @@ msgstr "Utiliser TLS pour les connexions SMTP"
 
 msgid "SMTP Authentication Type"
 msgstr "Type d'authentification SMTP"
+
+msgid "No SMTP auth"
+msgstr "Pas d'authentification SMTP"
+
+msgid "Login (plain text)"
+msgstr "Login (en clair)"
 
 msgid "POP3 Before SMTP?"
 msgstr "POP3 avant SMTP&nbsp;?"
@@ -1891,9 +1922,6 @@ msgstr "Messages non lus"
 msgid "Auto Create Special Folders"
 msgstr "Créer automatiquement les dossiers spéciaux"
 
-msgid "Default Javascript Addressbook"
-msgstr "Carnet d'adresses Javascript par défaut"
-
 msgid "Auto delete folders"
 msgstr "Suppression automatique des dossiers"
 
@@ -1902,9 +1930,6 @@ msgstr "Activer le contournement des dossiers /NoSelect"
 
 msgid "General Options"
 msgstr "Options générales"
-
-msgid "Default Charset"
-msgstr "Encodage par défaut"
 
 msgid "Data Directory"
 msgstr "Répertoire des données"
@@ -1987,6 +2012,42 @@ msgstr "Champ contenant le nom de l'option"
 msgid "Preferences value field"
 msgstr "Champ contenant la valeur de l'option"
 
+msgid "Global address book DSN"
+msgstr "DSN du carnet d'adresses global"
+
+msgid "Global address book table"
+msgstr "Table du carnet d'adresses global"
+
+msgid "Allow writing into global address book"
+msgstr "Permettre l'écriture dans le carnet d'adresses global"
+
+msgid "Allow listing of global address book"
+msgstr "Permettre la consultation du carnet d'adresses global"
+
+msgid "Language settings"
+msgstr "Préférences de langues"
+
+msgid "Default Language"
+msgstr "Langue par défaut"
+
+msgid "Default Charset"
+msgstr "Encodage par défaut"
+
+msgid "Enable lossy encoding"
+msgstr "Autoriser l'encodage avec perte"
+
+msgid "Address Books"
+msgstr "Carnets d'adresses"
+
+msgid "Default Javascript Addressbook"
+msgstr "Carnet d'adresses en Javascript par défaut"
+
+msgid "Global address book file"
+msgstr "Fichier du carnet d'adresses global"
+
+msgid "Allow writing into global address book file"
+msgstr "Permettre l'écriture dans le carnet d'adresses global"
+
 msgid "Themes"
 msgstr "Thèmes"
 
@@ -2002,6 +2063,24 @@ msgstr "Utiliser le numéro d'index du thème"
 msgid "Configuration Administrator"
 msgstr "Administration de la configuration"
 
+msgid ""
+"Note: it is recommended that you configure your system using conf.pl, and "
+"not this plugin. conf.pl contains additional information regarding the "
+"purpose of variables and appropriate values, as well as additional "
+"verification steps."
+msgstr ""
+"Nota : il est recommandé de configurer votre système avec conf.pl, et non "
+"pas avec ce plugin, car conf.pl contient des informations supplémentaires "
+"concernant l'utilisation des variables et des valeurs appropriées, ainsi que "
+"des vérifications supplémentaires."
+
+msgid ""
+"Run or consult conf.pl should you run into difficulty with your "
+"configuration."
+msgstr ""
+"Lancez ou consultez conf.pl si vous rencontrez des difficultés pour établir "
+"votre configuration"
+
 msgid "Theme Name"
 msgstr "Nom du thème"
 
@@ -2011,8 +2090,15 @@ msgstr "Emplacement du thème"
 msgid "Plugins"
 msgstr "Extensions (<i>plugins</i>)"
 
+#, c-format
+msgid "Plugin directory could not be found: %s"
+msgstr "Le dossier Plugin est introuvable : %s"
+
 msgid "Change Settings"
 msgstr "Valider les changements"
+
+msgid "Test Configuration"
+msgstr "Tester la configuration"
 
 msgid "Config file can't be opened. Please check config.php."
 msgstr ""
@@ -2039,25 +2125,22 @@ msgstr ""
 "Avant d'envoyer un rapport d'erreur, vérifiez cette liste de problèmes "
 "courants."
 
+#, c-format
 msgid ""
-"Make sure that you are running the most recent copy of <a href=\"http://www."
-"squirrelmail.org/\">SquirrelMail</a>."
+"Make sure that you are running the most recent copy of %s. You are currently "
+"using version %s."
 msgstr ""
-"Assurez-vous d'utiliser la version la plus récente de <a href=\"http://www."
-"squirrelmail.org/\">SquirrelMail</a>."
+"Assurez-vous d'utiliser la version la plus récente de %s. Vous utilisez "
+"actuellement la version %s."
 
 #, c-format
-msgid "You are currently using version %s."
-msgstr "Vous utilisez actuellement la version %s."
-
 msgid ""
-"Check to see if your bug is already listed in the <a href=\"http://"
-"sourceforge.net/bugs/?group_id=311\">Bug List</a> on SourceForge. If it is, "
-"we already know about it and are trying to fix it."
+"Check to see if your bug is already listed in the %sBug List%s on "
+"SourceForge. If it is, we already know about it and are trying to fix it."
 msgstr ""
-"Vérifiez si votre bug est déjà répertorié dans la <a href=\"http://"
-"sourceforge.net/bugs/?group_id=311\">liste de bugs</a> sur SourceForge. Si "
-"c'est le cas, nous le connaissons déjà et nous occupons de le corriger."
+"Vérifiez si votre bug est déjà répertorié dans la %sliste de bugs%s sur "
+"SourceForge. Si tel est le cas, nous le connaissons déjà et nous occupons de "
+"le corriger."
 
 msgid ""
 "Try to make sure that you can repeat it. If the bug happens sporatically, "
@@ -2069,12 +2152,13 @@ msgstr ""
 "produit systématiquement en visualisant un message particulier, gardez ce "
 "message afin que nous puissions le consulter."
 
+#, c-format
 msgid ""
 "If there were warnings displayed above, try to resolve them yourself. Read "
-"the guides in the <tt>doc/</tt> directory where SquirrelMail was installed."
+"the guides in the %s directory where SquirrelMail was installed."
 msgstr ""
 "Si des avertissements se sont affichés précédemment, essayez de les résoudre "
-"vous-même. Lisez les manuels du dossier <tt>doc</tt> où SquirrelMail a été "
+"vous-même. Lisez les manuels du dossier %s à l'endroit où SquirrelMail a été "
 "installé."
 
 msgid ""
@@ -2272,7 +2356,7 @@ msgstr ""
 
 msgid ""
 "COMMERCIAL - Servers that are configured (or misconfigured) to allow spam to "
-"be relayed through their system will be banned with this.  Another good one "
+"be relayed through their system will be banned with this. Another good one "
 "to use."
 msgstr ""
 "COMMERCIAL - Liste de serveurs à bannir car (mal) configurés de sorte qu'ils "
@@ -2280,7 +2364,7 @@ msgstr ""
 
 msgid ""
 "COMMERCIAL - Dial-up users are often filtered out since they should use "
-"their ISP's mail servers to send mail.  Spammers typically get a dial-up "
+"their ISP's mail servers to send mail. Spammers typically get a dial-up "
 "account and send spam directly from there."
 msgstr ""
 "COMMERCIAL - Les utilisateurs de modems voient souvent leurs messages "
@@ -2343,10 +2427,10 @@ msgid "FREE - SPAMhaus - A list of well-known SPAM sources."
 msgstr "GRATUIT - <i>SPAMhaus</i> - Liste de <i>spammers</i> bien connus."
 
 msgid ""
-"FREE, for now - SPAMCOP - An interesting solution that lists servers that "
+"FREE, for now - SpamCop - An interesting solution that lists servers that "
 "have a very high spam to legit email ratio (85 percent or more)."
 msgstr ""
-"GRATUIT, pour le moment - <i>SPAMCOP</i> - Une solution intéressante qui "
+"GRATUIT, pour le moment - SpamCop - Une solution intéressante qui "
 "retient les serveurs qui envoient une très forte proportion de Spam (85% ou "
 "plus)."
 
@@ -2447,6 +2531,12 @@ msgid "FREE - Distributed Sender Boycott List - UN-Confirmed Relays"
 msgstr ""
 "GRATUIT - <i>Distributed Sender Boycott List</i> - Relais non-confirmés."
 
+msgid ""
+"WARNING! Header filters should be of the format &quot;Header: value&quot;"
+msgstr ""
+"ATTENTION! Les filtres d'en-tête doivent être au format &quot;En-tête: "
+"valeur&quot;"
+
 msgid "Saved Scan type"
 msgstr "Type de filtrage enregistré"
 
@@ -2475,8 +2565,8 @@ msgid "Contains:"
 msgstr "Contient&nbsp;:"
 
 #, c-format
-msgid "If <b>%s</b> contains <b>%s</b> then move to <b>%s</b>"
-msgstr "Si <b>%s</b> contient <b>%s</b> alors le déplacer vers <b>%s</b>"
+msgid "If %s contains %s then move to %s"
+msgstr "Si %s contient %s alors le déplacer vers %s"
 
 msgid "Message Filters"
 msgstr "Filtres de messages"
@@ -2499,13 +2589,20 @@ msgstr ""
 "basées sur DNS pour détecter le courrier publicitaire et le déplacer vers "
 "d'autres dossiers."
 
+msgid "You must select a spam folder."
+msgstr "Vous devez choisir un dossier de spam."
+
+msgid "You must select a scan type."
+msgstr "Vous devez choisir un type de recherche."
+
 msgid "Spam Filtering"
 msgstr "Filtrage des publicités"
 
-msgid "WARNING! Tell your admin to set the SpamFilters_YourHop variable"
+#, c-format
+msgid "WARNING! Tell the administrator to set the %s variable."
 msgstr ""
 "ATTENTION&nbsp;! Veuillez avertir l'administrateur de Squirrelmail de bien "
-"vouloir configurer la variable SpamFilters_YourHop."
+"vouloir configurer la variable %s."
 
 msgid "Move spam to:"
 msgstr "Déplacer les publicités vers&nbsp;:"
@@ -2523,36 +2620,34 @@ msgstr ""
 "dossier que vous choisissez, veillez à ce qu'il soit vidé régulièrement, "
 "ceci afin de ne pas encombrer votre boîte aux lettres."
 
+msgid "Unread messages only"
+msgstr "Messages non lus uniquement"
+
 msgid ""
-"The more messages you scan, the longer it takes.  I would suggest that you "
-"scan only new messages.  If you make a change to your filters, I would set "
-"it to scan all messages, then go view my INBOX, then come back and set it to "
-"scan only new messages.  That way, your new spam filters will be applied and "
-"you'll scan even the spam you read with the new filters."
+"The more messages scanned, the longer it takes. It's recommended to scan "
+"unread messages only. If a change to the filters is made, it's recommended "
+"to set it to scan all messages, then go view the INBOX, then come back and "
+"set it to scan unread messages only. That way, the new spam filters will be "
+"applied and even the spam you didn't catch with the old filters will be "
+"scanned."
 msgstr ""
 "Plus vous analysez de messages, plus longue est la recherche. Nous vous "
 "suggérons de n'analyser que les nouveaux messages. Si vous changez vos "
-"filtres, choisissez <i>Tous les messages</i>, allez dans la boîte de "
-"réception puis revenez pour sélectionner analyser les nouveaux messages. "
-"Avec cette méthode, vos nouveaux filtres de spam seront appliqués et vous "
-"rechercherez toujours le spam avec vos nouveaux filtres."
+"filtres, choisissez <i>Tous les messages</i>, allez dans votre Boîte de "
+"réception puis revenez pour sélectionner <i>Messages non lus uniquement</i>. "
+"De cette manière, vos nouveaux filtres de spam seront appliqués et le spam "
+"qui n'avait pas été reconnu par vos anciens filtres sera recherché à nouveau."
 
 #, c-format
-msgid "Spam is sent to <b>%s</b>"
-msgstr "La publicité est dirigée vers <b>%s</b>"
+msgid "Spam is sent to %s."
+msgstr "Le Spam est envoyé à %s."
 
-msgid "[<i>not set yet</i>]"
+msgid "not set yet"
 msgstr "[<i>non établi</i>]"
 
 #, c-format
-msgid "Spam scan is limited to <b>%s</b>"
-msgstr "Appliquer la recherche de publicités <b>%s</b>"
-
-msgid "New Messages Only"
-msgstr "uniquement aux nouveaux messages"
-
-msgid "All Messages"
-msgstr "à tous les messages"
+msgid "Spam scan is limited to %s."
+msgstr "Limiter la recherche de Spam à %s."
 
 msgid "ON"
 msgstr "ACTIVÉ"
@@ -2560,8 +2655,9 @@ msgstr "ACTIVÉ"
 msgid "OFF"
 msgstr "DÉSACTIVÉ"
 
-msgid " not found."
-msgstr " n'existe pas."
+#, c-format
+msgid "%s is not found."
+msgstr "%s n'existe pas."
 
 msgid "Today's Fortune"
 msgstr "Citation du jour"
@@ -2572,17 +2668,21 @@ msgstr "Citations&nbsp;:"
 msgid "Show fortunes at top of mailbox"
 msgstr "Afficher les citations en haut de page"
 
+msgid "Plugin is disabled."
+msgstr "Le plugin est désactivé."
+
 msgid "IMAP server information"
 msgstr "Description du serveur IMAP"
 
 msgid ""
 "Run some test IMAP commands, displaying both the command and the result. "
-"These tests use the Squirrelmail IMAP commands and your current Squirrelmail "
+"These tests use the SquirrelMail IMAP commands and your current SquirrelMail "
 "configuration. Custom command strings can be used."
 msgstr ""
-"Exécute quelques tests en affichant la commande et son résultat. Ces tests "
-"utilisent les commandes IMAP et la configuration courante de Squirrelmail. "
-"Vous pouvez aussi saisir vos propres commandes."
+"Exécute quelques commandes IMAP de test en affichant à la fois la commande "
+"et son résultat. Ces tests utilisent les commandes IMAP ainsi que votre "
+"configuration actuelle de Squirrelmail. Vous pouvez aussi saisir vos propres "
+"commandes."
 
 msgid "Mailinglist"
 msgstr "Listes de discussion"
@@ -2638,12 +2738,6 @@ msgstr "Pas de serveur spécifié"
 msgid "Error "
 msgstr "Erreur "
 
-msgid "POP3 noop:"
-msgstr "POP3 noop&nbsp;: "
-
-msgid "No connection to server"
-msgstr "pas de connexion au serveur."
-
 msgid "POP3 user:"
 msgstr "Utilisateur POP3&nbsp;: "
 
@@ -2664,6 +2758,9 @@ msgstr "l'authentification a échouée"
 
 msgid "POP3 apop:"
 msgstr "POP3 apop&nbsp;: "
+
+msgid "No connection to server"
+msgstr "pas de connexion au serveur."
 
 msgid "No login ID submitted"
 msgstr "Identifiant non renseigné"
@@ -2756,11 +2853,9 @@ msgstr "Connexion réussie&nbsp;: Pas de nouveaux messages"
 msgid "Login OK: Inbox EMPTY"
 msgstr "Connexion réussie&nbsp;: la boite de réception est vide. "
 
-msgid "Login OK: Inbox contains ["
-msgstr "Connexion réussie&nbsp;: la boite de réception contient ["
-
-msgid "] messages"
-msgstr "] messages"
+#, c-format
+msgid "Login OK: Inbox contains %s messages"
+msgstr "Connexion réussie&nbsp;: votre Boîte de réception contient %s messages"
 
 msgid "Fetching UIDL..."
 msgstr "Récupération UIDL... "
@@ -2815,15 +2910,15 @@ msgstr "Options POP3"
 
 msgid ""
 "You should be aware that the encryption used to store your password is not "
-"perfectly secure.  However, if you are using pop, there is inherently no "
+"perfectly secure. However, if you are using pop, there is inherently no "
 "encryption anyway. Additionally, the encryption that we do to save it on the "
 "server can be undone by a hacker reading the source to this file."
 msgstr ""
-"Vous devez savoir que le chiffrement employé pour garder votre mot de passe "
-"n'est pas parfaitement sûr - votre mot de passe peut être déchiffré par un "
-"pirate qui regarderait les sources de Squirrelmail. Cette solution est "
-"cependant plus sûre que le protocole POP lui même car ce dernier transmet "
-"votre mot de passe sans chiffrement."
+"Vous devez savoir que le chiffrement employé pour conserver votre mot de "
+"passe n'est pas parfaitement sûr - votre mot de passe pourrait être "
+"déchiffré par un pirate qui regarderait les sources de Squirrelmail. Cette "
+"solution est cependant plus sûre que le protocole POP lui-même car ce "
+"dernier transmet votre mot de passe sans chiffrement."
 
 msgid "If you leave password empty, it will be required when you fetch mail."
 msgstr ""
@@ -2902,11 +2997,11 @@ msgstr "Attention, "
 msgid "Mail Fetch Result:"
 msgstr "Résultat de la requête&nbsp;:"
 
-msgid "Simple POP3 Fetch Mail"
-msgstr "Récupération de courrier avec POP3"
+msgid "POP3 Fetch Mail"
+msgstr "Récupération de courrier par POP3"
 
 msgid ""
-"This configures settings for downloading email from a pop3 mailbox to your "
+"This configures settings for downloading email from a POP3 mailbox to your "
 "account on this server."
 msgstr ""
 "Pour configurer la récupération du courrier depuis un compte POP3 vers ce "
@@ -2914,6 +3009,21 @@ msgstr ""
 
 msgid "Message Details"
 msgstr "Message complet"
+
+msgid "Bodystructure"
+msgstr "Structure du corps du message"
+
+msgid "Entity"
+msgstr "Entité"
+
+msgid "Content-Type"
+msgstr "Type du contenu"
+
+msgid "Encoding"
+msgstr "Encodage"
+
+msgid "RFC822 Message body"
+msgstr "Corps du message RFC822"
 
 msgid "Close Window"
 msgstr "Fermer la fenêtre"
@@ -2927,86 +3037,89 @@ msgstr "Voir le message complet"
 msgid "New Mail Notification"
 msgstr "Notification de nouveaux messages"
 
+#, c-format
 msgid ""
-"Select <b>Enable Media Playing</b> to turn on playing a media file when "
-"unseen mail is in your folders. When enabled, you can specify the media file "
-"to play in the provided file box."
+"The %s option will check ALL of your folders for unseen mail, not just the "
+"inbox for notification."
 msgstr ""
-"Sélectionnez <b>Activer la séquence sonore</b> pour avoir un son quand vous "
-"avez des messages non lus dans vos dossiers. Une fois activée, vous pouvez "
-"spécifier le fichier son à lire."
-
-msgid ""
-"The <b>Check all boxes, not just INBOX</b> option will check ALL of your "
-"folders for unseen mail, not just the inbox for notification."
-msgstr ""
-"L'option <b>Vérifier tous les dossiers</b> permet d'effectuer une "
-"vérification de messages non lus dans tous les dossiers. "
-
-msgid ""
-"Selecting the <b>Show popup</b> option will enable the showing of a popup "
-"window when unseen mail is in your folders (requires JavaScript)."
-msgstr ""
-"Sélectionner l'option <b>Fenêtre d'alerte</b> pour activer l'affichage d'une "
-"fenêtre vous avertissant de l'arrivée de nouveaux messages (nécessite "
-"Javascript)."
-
-msgid ""
-"Use the <b>Check RECENT</b> to only check for messages that are recent. "
-"Recent messages are those that have just recently showed up and have not "
-"been \"viewed\" or checked yet.  This can prevent being continuously annoyed "
-"by sounds or popups for unseen mail."
-msgstr ""
-"Utilisez l'option <b>Vérifier uniquement les messages récents</b> pour ne "
-"vérifier que les messages récents, c'est-à-dire ceux qui n'ont pas encore "
-"été vus ni identifiés. Cette option évite d'être importuné par les alertes "
-"sonores ou les fenêtres d'alerte pour des courriers non lus."
-
-msgid ""
-"Selecting the <b>Change title</b> option will change the title in some "
-"browsers to let you know when you have new mail (requires JavaScript, and "
-"only works in IE but you won't see errors with other browsers).  This will "
-"always tell you if you have new mail, even if you have <b>Check RECENT</b> "
-"enabled."
-msgstr ""
-"L'option <b>Changer le titre</b> permet de changer le titre dans certains "
-"navigateurs pour annoncer les nouveaux messages (nécessite Javascript et ne "
-"fonctionne qu'avec IE, les autres navigateurs n'affichent pas de message "
-"d'erreur). Cette option vous signalera toujours la présence de nouveaux "
-"messages, même si vous avez activé l'option <b>Vérifier uniquement les "
-"messages récents</b>."
-
-msgid ""
-"Select from the list of <b>server files</b> the media file to play when new "
-"mail arrives.  If no file is specified, \"(none)\", no sound will be used."
-msgstr ""
-"Sélectionnez, dans la liste des <b>fichiers du serveur</b>, la séquence "
-"sonore à jouer quand un nouveau courrier arrive. Si aucun fichier n'est "
-"sélectionné, aucun son ne sera utilisé."
-
-msgid "Enable Media Playing"
-msgstr "Activer la séquence sonore"
+"L'option %s permet de rechercher les messages non lus dans TOUS les "
+"dossiers, pas seulement dans votre Boîte de réception."
 
 msgid "Check all boxes, not just INBOX"
 msgstr "Vérifier tous les dossiers"
 
-msgid "Count only messages that are RECENT"
-msgstr "Vérifier uniquement les messages récents"
-
-msgid "Change title on supported browsers."
-msgstr "Changer le titre quand le navigateur le permet."
-
-msgid "requires JavaScript to work"
-msgstr "nécessite Javascript"
+#, c-format
+msgid ""
+"Selecting the %s option will enable the showing of a popup window when "
+"unseen mail is in your folders (requires JavaScript)."
+msgstr ""
+"Sélectionner l'option %s pour activer l'affichage d'une fenêtre vous "
+"avertissant de l'arrivée de nouveaux messages (nécessite Javascript)."
 
 msgid "Show popup window on new mail"
 msgstr "Fenêtre d'alerte à l'arrivée de nouveaux courriers"
 
-msgid "Select server file:"
-msgstr "Sélectionner une séquence sonore du serveur&nbsp;:"
+#, c-format
+msgid ""
+"Use the %s option to only check for messages that are recent. Recent "
+"messages are those that have just recently showed up and have not been "
+"\"viewed\" or checked yet. This can prevent being continuously annoyed by "
+"sounds or popups for unseen mail."
+msgstr ""
+"Utilisez l'option %s pour ne vérifier que les messages récents, c'est-à-dire "
+"ceux qui n'ont pas encore été vus ni identifiés. Cette option évite d'être "
+"importuné par les alertes sonores ou les fenêtres d'alerte pour des "
+"courriers non lus."
+
+msgid "Count only messages that are RECENT"
+msgstr "Vérifier uniquement les messages récents"
+
+#, c-format
+msgid ""
+"Selecting the %s option will change the title in some browsers to let you "
+"know when you have new mail (requires JavaScript, and only works in IE but "
+"you won't see errors with other browsers). This will always tell you if you "
+"have new mail, even if you have %s enabled."
+msgstr ""
+"L'option %s permet de changer le titre dans certains navigateurs pour "
+"annoncer les nouveaux messages (nécessite Javascript et ne fonctionne "
+"qu'avec IE, les autres navigateurs n'affichent pas de message d'erreur). "
+"Cette option vous signalera toujours la présence de nouveaux messages, même "
+"si vous avez activé l'option %s."
+
+msgid "Change title on supported browsers"
+msgstr "Changer le titre si le navigateur le permet"
+
+#, c-format
+msgid ""
+"Select %s to turn on playing a media file when unseen mail is in your "
+"folders. When enabled, you can specify the media file to play in the "
+"provided file box."
+msgstr ""
+"Sélectionnez %s pour activer la lecture d'un fichier de son lorsque des "
+"messages non lus se trouvent dans vos dossiers. Une fois activée, vous "
+"pouvez spécifier le fichier son à lire."
+
+msgid "Enable Media Playing"
+msgstr "Activer la séquence sonore"
+
+#, c-format
+msgid ""
+"Select from the list of %s the media file to play when new mail arrives. If "
+"no file is specified, %s, no sound will be used."
+msgstr ""
+"Sélectionnez, dans la liste des %s, la séquence sonore à jouer quand un "
+"nouveau courrier arrive. Si aucun fichier n'est sélectionné, %s, aucun son "
+"ne sera utilisé."
+
+msgid "Select server file"
+msgstr "Sélectionner un fichier du serveur&nbsp;:"
 
 msgid "(none)"
 msgstr "(aucune)"
+
+msgid "requires JavaScript to work"
+msgstr "nécessite Javascript"
 
 msgid "Try"
 msgstr "Essayer"
@@ -3020,16 +3133,15 @@ msgstr "Nouveau message"
 msgid "SquirrelMail Notice:"
 msgstr "Annonce SquirrelMail&nbsp;:"
 
-msgid "You have"
-msgstr "Vous avez"
+#, c-format
+msgid "You have %s new message"
+msgid_plural "You have %s new messages"
+msgstr[0] "%s nouveau message"
+msgstr[1] "%s nouveaux messages"
 
 #, c-format
-msgid "%s new message"
-msgstr "%s nouveau message"
-
-#, c-format
-msgid "%s new messages"
-msgstr "%s nouveaux messages"
+msgid "You have %s new messages"
+msgstr "Vous avez %s nouveaux messages"
 
 msgid "NewMail Options"
 msgstr "Options de notification des nouveaux messages"
@@ -3041,16 +3153,15 @@ msgstr ""
 "Configuration de la séquence sonore et de la fenêtre d'alerte qui annoncent "
 "l'arrivée d'un nouveau message."
 
-msgid "New Mail Notification options saved"
-msgstr "Options de notification des nouveaux messages prises en compte."
-
 #, c-format
 msgid "%s New Messages"
 msgstr "%s nouveaux messages"
 
 #, c-format
 msgid "%s New Message"
-msgstr "%s nouveau message"
+msgid_plural "%s New Messages"
+msgstr[0] "%s nouveau message"
+msgstr[1] "%s nouveaux messages"
 
 msgid "Test Sound"
 msgstr "Tester le son"
@@ -3124,6 +3235,9 @@ msgstr "voir ci-dessous"
 msgid "Save ID"
 msgstr "Identifiant d'enregistrement"
 
+msgid "About SpamCop"
+msgstr "A propos de SpamCop"
+
 msgid ""
 "SpamCop is a free service that greatly assists in finding the true source of "
 "the spam and helps in letting the proper people know about the abuse."
@@ -3131,43 +3245,39 @@ msgstr ""
 "SpamCop est un service gratuit qui aide à trouver la véritable source du "
 "Spam et signaler l'abus aux personnes concernées."
 
+#, c-format
 msgid ""
-"To use it, you must get a SpamCop authorization code. There is a free <a "
-"href=\"http://spamcop.net/anonsignup.shtml\">sign up page</a> so you can use "
-"SpamCop."
+"To use it, you must get a SpamCop authorization code. There is a free %ssign "
+"up page%s so you can use SpamCop."
 msgstr ""
 "Pour l'utiliser, vous devez avoir un code d'autorisation de SpamCop. Il "
-"existe une <a href=\"http://spamcop.net/anonsignup.shtml\">page "
-"d'enregistrement</a> gratuite pour vous permettre d'utiliser SpamCop."
+"existe une %spage d'enregistrement%s gratuite pour vous permettre d'utiliser "
+"SpamCop."
 
+msgid "Before you sign up, be warned"
+msgstr "Avant de souscrire, vous devez être averti"
+
+#, c-format
 msgid ""
-"<b>Before you sign up, be warned:</b> Some users have reported that the "
-"email addresses used with SpamCop find their way onto spam lists. To be "
-"safe, you can just create an email forwarding account and have all SpamCop "
-"reports get sent to there. Also, if it gets flooded with spam, you can then "
-"just delete that account with no worries about losing your real email "
-"address. Just go create an email forwarder somewhere (<a href=\"http://www."
-"yahoo.com/\">Yahoo!</a> has a <a href=\"http://dir.yahoo.com/"
-"Business_and_Economy/Business_to_Business/Communications_and_Networking/"
-"Internet_and_World_Wide_Web/Email_Providers/Forwarding_Services/"
-"Free_Forwarding/\">list of places</a>) so that messages from system "
-"administrators and whatnot can be sent to you."
+"Some users have reported that the email addresses used with SpamCop find "
+"their way onto spam lists. To be safe, you can just create an email "
+"forwarding account and have all SpamCop reports get sent to there. Also, if "
+"it gets flooded with spam, you can then just delete that account with no "
+"worries about losing your real email address. Just go create an email "
+"forwarder somewhere (%s has a %slist of places%s) so that messages from "
+"system administrators and what not can be sent to you."
 msgstr ""
-"<b>Avant de vous inscrire, faites attention : </b> certains utilisateurs ont "
-"signalé que des adresses email utilisées avec SpamCop se retrouvent sur des "
-"listes de Spam. Par sécurité, vous pouvez juste créer une adresse email "
-"d'envoi pour tous les rapports destinés à SpamCop. Ainsi, si elle se "
-"retrouve submergée de Spams, vous pouvez juste la supprimer sans perdre "
-"votre adresse email réelle. Allez simplement créer un email d'envoi quelque "
-"part ((<a href=\"http://www.yahoo.com/\">Yahoo!</a> possède une <a href="
-"\"http://dir.yahoo.com/Business_and_Economy/Business_to_Business/"
-"Communications_and_Networking/Internet_and_World_Wide_Web/Email_Providers/"
-"Forwarding_Services/Free_Forwarding/\"> liste de services</a>) afin que les "
-"messages des administrateurs système et autres vous soient envoyés."
+"Certains utilisateurs ont signalé que des adresses email utilisées avec "
+"SpamCop se retrouvent sur des listes de Spam. Par sécurité, vous pouvez "
+"juste créer une adresse email d'envoi pour tous les rapports destinés à "
+"SpamCop. Ainsi, si elle se retrouve submergée de Spams, vous pouvez juste la "
+"supprimer sans perdre votre adresse email réelle. Allez simplement créer un "
+"email d'envoi quelque part (%s possède une %sliste de services%s) afin que "
+"les messages des administrateurs système et autres vous soient envoyés."
 
 msgid ""
 "Once you have signed up with SpamCop and have received your SpamCop "
-"authorization code, you need to enable this plugin -- just click the link "
+"authorization code, you need to enable this plugin by clicking the link "
 "above. Once enabled, you go about your normal life. If you encounter a spam "
 "message in your mailbox, just view it. On the right-hand side, near the top "
 "of where the message is displayed, you will see a link to report this "
@@ -3184,7 +3294,7 @@ msgstr ""
 "confirmé, votre signalement déclenchera différentes procédures suivant "
 "différentes méthodes."
 
-msgid "Email-based Reporting"
+msgid "Email-based reporting"
 msgstr "Signalement par email"
 
 msgid ""
@@ -3212,7 +3322,7 @@ msgstr ""
 "compliqué. Il semble aussi que ce service soit restreint aux membres "
 "(payants) uniquement. Espérons que cela changera bientôt."
 
-msgid "Web-based Reporting"
+msgid "Web-based reporting"
 msgstr "Signalement par le Web"
 
 msgid ""
@@ -3240,14 +3350,30 @@ msgstr ""
 "Cliquez sur Annuler ou sur le dossier approprié pour voir les messages et/ou "
 "supprimer le Spam."
 
+msgid "SpamCop service type"
+msgstr "Type du service SpamCop"
+
 msgid ""
-"<b>For more information</b> about SpamCop, it's services, spam in general, "
-"and many related topics, try reading through SpamCop's <a href=\"http://"
-"spamcop.net/help.shtml\">Help and Feedback</a> section."
+"Service type option allows selecting which SpamCop services you are using. "
+"Member services use different web reporting forms and does not display nags. "
+"You can purchase these services, if you want to support SpamCop."
 msgstr ""
-"<b>Pour plus d'information</b> à propos de SpamCop, ses services, du Spam en "
-"général, et de nombreux sujets relatifs, référez-vous à la section <a href="
-"\"http://spamcop.net/help.shtml\">Aide et Feedback</a>."
+"L'option Type de service permet de choisir quels services de SpamCop vous "
+"utilisez. Les services Membres utilisent des formulaires différents et "
+"n'affichent pas d'écrans de publicité. Vous pouvez acheter ces services, si "
+"vous souhaitez supporter SpamCop."
+
+msgid "More information"
+msgstr "Plus d'information"
+
+#, c-format
+msgid ""
+"For more information about SpamCop, it's services, spam in general, and many "
+"related topics, try reading through SpamCop's %sHelp and Feedback%s section."
+msgstr ""
+"Pour plus d'information à propos de SpamCop, ses services, du Spam en "
+"général, et de nombreux sujets relatifs, référez-vous à la section %sHelp "
+"and Feedback%s de SpamCop."
 
 msgid "Report as Spam"
 msgstr "Signaler comme <i>Spam</i>"
@@ -3256,8 +3382,8 @@ msgid "SpamCop - Spam Reporting"
 msgstr "SpamCop - Signalement du <i>Spam</i>"
 
 msgid ""
-"Help fight the battle against unsolicited email.  SpamCop reads the spam "
-"email and determines the correct addresses to send complaints to.  Quite "
+"Help fight the battle against unsolicited email. SpamCop reads the spam "
+"email and determines the correct addresses to send complaints to. Quite "
 "fast, really smart, and easy to use."
 msgstr ""
 "Aide dans la lutte contre les messages non désirés. SpamCop analyse le "
@@ -3267,7 +3393,7 @@ msgstr ""
 msgid ""
 "Sending this spam report will give you back a reply with URLs that you can "
 "click on to properly report this spam message to the proper authorities. "
-"This is a free service.  By pressing the \"Send Spam Report\" button, you "
+"This is a free service. By pressing the \"Send Spam Report\" button, you "
 "agree to follow SpamCop's rules/terms of service/etc."
 msgstr ""
 "L'envoi du signalement du Spam vous renverra une réponse contenant des URLs "
@@ -3307,20 +3433,20 @@ msgid ""
 "likely due to the fact that you have changed your mailbox password. In order "
 "to proceed, you will have to supply your old password so that SquirrelSpell "
 "can decrypt your personal dictionary. It will be re-encrypted with your new "
-"password after this.<br>If you haven't encrypted your dictionary, then it "
-"got mangled and is no longer valid. You will have to delete it and start "
-"anew. This is also true if you don't remember your old password -- without "
-"it, the encrypted data is no longer accessible."
+"password after this. If you haven't encrypted your dictionary, then it got "
+"mangled and is no longer valid. You will have to delete it and start anew. "
+"This is also true if you don't remember your old password -- without it, the "
+"encrypted data is no longer accessible."
 msgstr ""
 "SquirrelSpell est incapable de déchiffrer votre dictionnaire personnel. Ceci "
-"est certainement dû au fait que vous avez changé votre mot de passe. Afin "
-"d'y remédier, vous devez fournir votre ancien mot de passe, ainsi "
-"SquirrelSpell pourra déchiffrer votre dictionnaire. Il sera rechiffré avec "
-"le nouveau mot de passe après cette procédure. <br>Si vous n'avez pas "
-"chiffré votre dictionnaire alors celui-ci a été mutilé et n'est plus valide. "
-"Vous devez l'effacer et en créer un nouveau. Ceci est également valable si "
-"vous ne vous rappelez plus de votre mot de passe; sans lui, les données "
-"chiffrées ne sont plus accessibles."
+"est certainement dû au fait que vous avez changé votre mot de passe. Pour "
+"y remédier, vous devrez fournir votre ancien mot de passe afin que "
+"SquirrelSpell puisse déchiffrer votre dictionnaire personnel. Il sera "
+"ensuite rechiffré avec votre nouveau mot de passe. Si vous n'avez pas "
+"chiffré votre dictionnaire alors celui-ci a été altéré et n'est plus valide. "
+"Vous devrez l'effacer et en créer un nouveau. Ceci est également valable si "
+"vous ne vous rappelez plus de votre ancien mot de passe; sans lui, les "
+"données chiffrées ne sont plus accessibles."
 
 msgid "Delete my dictionary and start a new one"
 msgstr "Supprimer mon dictionnaire et en refaire un nouveau"
@@ -3356,9 +3482,6 @@ msgstr "J'ai exécuté «&nbsp;%s&nbsp;» mais la commande m'a retourné&nbsp;:"
 msgid "SquirrelSpell is misconfigured."
 msgstr "SquirrelSpell est mal configuré."
 
-msgid "SquirrelSpell Results"
-msgstr "Résultats de la correction orthographique"
-
 msgid "Spellcheck completed. Commit changes?"
 msgstr "Vérification orthographique terminée. Valider les changements&nbsp;?"
 
@@ -3367,6 +3490,9 @@ msgstr "Aucun changement n'a été fait."
 
 msgid "Now saving your personal dictionary... Please wait."
 msgstr "Enregistrement de votre dictionnaire personnel... Merci de patienter."
+
+msgid "SquirrelSpell Results"
+msgstr "Résultats de la correction orthographique"
 
 #, c-format
 msgid "Found %s errors"
@@ -3463,8 +3589,8 @@ msgstr ""
 "Votre dictionnaire personnel a été rechiffré avec succès. Retournez au menu "
 "du correcteur orthographique et refaites votre sélection."
 
-msgid "Successful Re-encryption"
-msgstr "Chiffrage réussi"
+msgid "Successful re-encryption"
+msgstr "Re-chiffrage réussi"
 
 msgid ""
 "Your personal dictionary was re-encrypted successfully. Please close this "
@@ -3479,18 +3605,15 @@ msgid "Dictionary re-encrypted"
 msgstr "Dictionnaire rechiffré"
 
 msgid ""
-"Your personal dictionary has been <strong>encrypted</strong> and is now "
-"stored in an <strong>encrypted format</strong>."
+"Your personal dictionary has been encrypted and is now stored in an "
+"encrypted format."
 msgstr ""
-"Votre dictionnaire principal a été <strong>chiffré</strong> et est "
-"maintenant sauvegardé dans un <strong>format chiffré</strong>."
+"Votre dictionnaire personnel a été et restera stocké chiffré."
 
 msgid ""
-"Your personal dictionary has been <strong>decrypted</strong> and is now "
-"stored as <strong>clear text</strong>."
+"Your personal dictionary has been decrypted and is now stored as plain text."
 msgstr ""
-"Votre dictionnaire personnel a été <strong>déchiffré</strong> et est "
-"maintenant sauvegardé <strong>en clair</strong>."
+"Votre dictionnaire personnel a été et restera stocké déchiffré."
 
 msgid "Personal Dictionary Crypto Settings"
 msgstr "Données de chiffrage du dictionnaire personnel"
@@ -3525,32 +3648,37 @@ msgstr ""
 "protégé. Confirmez-vous&nbsp;?"
 
 msgid ""
-"This will decrypt your personal dictionary and store it in a clear-text "
+"This will decrypt your personal dictionary and store it in a plain text "
 "format. Proceed?"
 msgstr ""
-"Ceci déchiffrera votre dictionnaire personnel et l'enregistrera dans un "
-"format lisible. Confirmez-vous&nbsp;?"
+"Vous allez déchiffrer votre dictionnaire personnel, et le stocker déchiffré "
+"dorénavant. Voulez-vous continuer&nbsp;?"
+
+msgid "Your personal dictionary is currently encrypted."
+msgstr "Votre dictionnaire personnel est stocké chiffré."
 
 msgid ""
-"<p>Your personal dictionary is <strong>currently encrypted</strong>. This "
-"helps protect your privacy in case the web-mail system gets compromized and "
-"your personal dictionary ends up stolen. It is currently encrypted with the "
-"password you use to access your mailbox, making it hard for anyone to see "
-"what is stored in your personal dictionary.</p> <p><strong>ATTENTION:</"
-"strong> If you forget your password, your personal dictionary will become "
+"This helps protect your privacy in case the web-mail system gets compromized "
+"and your personal dictionary ends up stolen. It is currently encrypted with "
+"the password you use to access your mailbox, making it hard for anyone to "
+"see what is stored in your personal dictionary."
+msgstr ""
+"Ceci renforce la protection de vos données privées au cas où votre serveur "
+"de messagerie et votre dictionnaire personnel serait piraté. Ce dernier est "
+"pour le moment crypté avec votre mot de passe de messagerie, rendant presque "
+"impossible le piratage de votre dictionnaire personnel."
+
+msgid ""
+"If you forget your password, your personal dictionary will become "
 "unaccessible, since it can no longer be decrypted. If you change your "
 "mailbox password, SquirrelSpell will recognize it and prompt you for your "
-"old password in order to re-encrypt the dictionary with a new key.</p>"
+"old password in order to re-encrypt the dictionary with a new key."
 msgstr ""
-"<p>Votre dictionnaire personnel <strong>est chiffré</strong>. Ceci vous "
-"protège si le webmail est compromis et votre dictionnaire volé. Il est "
-"chiffré avec votre mot de passe d'accès à la boîte à lettres rendant ainsi "
-"difficile la lecture des données qui y sont stockées.</"
-"p><p><strong>Attention</strong>, si vous oubliez votre mot de passe, votre "
-"dictionnaire personnel deviendra inaccessible car il ne pourra plus être "
-"déchiffré. Si vous changez le mot de passe de votre boîte à lettres, "
-"SquirrelSpell le détectera et vous demandera votre ancien mot de passe afin "
-"de déchiffrer votre dictionnaire puis de le rechiffrer avec le nouveau.</p>"
+"Si vous oubliez votre mot de passe, votre dictionnaire personnel deviendra "
+"inaccessible, car il ne sera plus déchiffrable. Si vous changez votre mot "
+"de passe de messagerie, SquirrelSpell s'en apercevra et vous demandera votre "
+"ancien mot de passe afin de pouvoir rechiffrer le dictionnaire avec une "
+"nouvelle clé."
 
 msgid ""
 "Please decrypt my personal dictionary and store it in a clear-text format."
@@ -3560,34 +3688,38 @@ msgstr ""
 msgid "Change crypto settings"
 msgstr "Changer les paramètres de chiffrage"
 
+msgid "Your personal dictionary is currently not encrypted."
+msgstr "Votre dictionnaire personnel n'est pas chiffré."
+
 msgid ""
-"<p>Your personal dictionary is <strong>currently not encrypted</strong>. You "
-"may wish to encrypt your personal dictionary to protect your privacy in case "
-"the webmail system gets compromized and your personal dictionary file gets "
-"stolen. When encrypted, the file's contents look garbled and are hard to "
-"decrypt without knowing the correct key (which is your mailbox password).</"
-"p> <strong>ATTENTION:</strong> If you decide to encrypt your personal "
-"dictionary, you must remember that it gets &quot;hashed&quot; with your "
-"mailbox password. If you forget your mailbox password and the administrator "
-"changes it to a new value, your personal dictionary will become useless and "
-"will have to be created anew. However, if you or your system administrator "
-"change your mailbox password but you still have the old password at hand, "
-"you will be able to enter the old key to re-encrypt the dictionary with the "
-"new value.</p>"
+"You may wish to encrypt your personal dictionary to protect your privacy in "
+"case the webmail system gets compromized and your personal dictionary file "
+"gets stolen. When encrypted, the file's contents look garbled and are hard "
+"to decrypt without knowing the correct key (which is your mailbox password)."
 msgstr ""
-"<p>Votre dictionnaire personnel <strong>n'est pas chiffré</strong>. Vous "
-"pouvez choisir de le chiffrer pour protéger vos données au cas où le webmail "
-"serait compromis et votre dictionnaire volé. Une fois chiffré, le contenu du "
-"fichier est illisible et difficile à déchiffrer sans la clé (qui est votre "
-"mot de passe d'accès à la boîte à lettres).</p><p><strong>Attention</"
-"strong>, si vous décidez de chiffrer votre dictionnaire personnel, il sera "
-"lié à votre mot de passe. Ceci signifie que si vous oubliez le mot de passe "
-"de votre boîte à lettres et que l'administrateur le change pour vous, votre "
+"Vous pouvez vouloir chiffrer votre dictionnaire personnel afin de protéger "
+"votre vie privée au cas où votre serveur de messagerie et votre fichier de "
+"dictionnaire personnel serait piraté. Une fois chiffré, le contenu du fichier "
+"est quasiment inviolable sans connaître la clé de déchiffrement (qui est "
+"votre mot de passe de messagerie)."
+
+msgid ""
+"If you decide to encrypt your personal dictionary, you must remember that it "
+"gets &quot;hashed&quot; with your mailbox password. If you forget your "
+"mailbox password and the administrator changes it to a new value, your "
+"personal dictionary will become useless and will have to be created anew. "
+"However, if you or your system administrator change your mailbox password "
+"but you still have the old password at hand, you will be able to enter the "
+"old key to re-encrypt the dictionary with the new value."
+msgstr ""
+"Si vous décidez de chiffrer votre dictionnaire personnel, il sera "
+"lié à votre mot de passe. Ceci signifie que si vous oubliez votre mot de passe "
+"de messagerie et que l'administrateur le change pour vous, votre "
 "dictionnaire personnel deviendra inutilisable et vous devrez en créer un "
-"nouveau&nbsp;! Par contre, si vous ou votre administrateur changez le mot de "
+"nouveau. En revanche, si vous ou votre administrateur changez le mot de "
 "passe et si vous avez encore l'ancien, vous aurez la possibilité de saisir "
-"cet ancien mot de passe pour associer votre dictionnaire au nouveau mot de "
-"passe.</p>"
+"cet ancien mot de passe pour rechiffrer votre dictionnaire avec votre nouveau "
+"mot de passe."
 
 msgid ""
 "Please encrypt my personal dictionary and store it in an encrypted format."
@@ -3595,9 +3727,8 @@ msgstr ""
 "Chiffrez mon dictionnaire personnel et conservez-le dans un format protégé."
 
 #, c-format
-msgid "Deleting the following entries from <strong>%s</strong> dictionary:"
-msgstr ""
-"Effacement des entrées suivantes du dictionnaire <strong>%s</strong>&nbsp;: "
+msgid "Deleting the following entries from %s dictionary:"
+msgstr "Effacement des entrées suivantes du dictionnaire %s&nbsp;: "
 
 msgid "All done!"
 msgstr "Modifications terminées&nbsp;!"
@@ -3622,18 +3753,12 @@ msgid "SquirrelSpell Initiating"
 msgstr "Initialisation du correcteur"
 
 #, c-format
-msgid ""
-"Settings adjusted to: <strong>%s</strong> with <strong>%s</strong> as "
-"default dictionary."
-msgstr ""
-"Paramètres choisis&nbsp;: <strong>%s</strong> avec <strong>%s</strong> comme "
-"dictionnaire par défaut."
+msgid "Settings adjusted to: %s with %s as default dictionary."
+msgstr "Paramètres choisis&nbsp;: %s avec %s comme dictionnaire par défaut."
 
 #, c-format
-msgid "Using <strong>%s</strong> dictionary (system default) for spellcheck."
-msgstr ""
-"Utilisation du dictionnaire <strong>%s</strong> (valeur système) pour "
-"corriger."
+msgid "Using %s dictionary (system default) for spellcheck."
+msgstr "Utilisation du dictionnaire %s (valeur système) pour corriger."
 
 msgid "International Dictionaries Preferences Updated"
 msgstr "Préférences des dictionnaires"
@@ -3679,8 +3804,8 @@ msgstr "Options de traductions mémorisées"
 msgid "Your server options are as follows:"
 msgstr "Voici les options de votre serveur&nbsp;:"
 
-msgid "Maximum of 1000 characters translated, powered by Systran"
-msgstr "Un maximum de 1000 caractères traduits, service fourni par Systran"
+msgid "Maximum of 150 words translated, powered by Systran"
+msgstr "Un maximum de 150 mots traduits, service fourni par Systran"
 
 #, c-format
 msgid "Number of supported language pairs: %s"
@@ -3689,17 +3814,13 @@ msgstr "Nombre de paires de langues&nbsp;: %s"
 msgid "No known limits, powered by Systran"
 msgstr "Pas de limitation connue, service fourni par Systran"
 
-msgid "No known limits, powered by Translation Experts's InterTran"
+msgid "No known limits, powered by Translation Experts' InterTran"
 msgstr ""
 "Pas de limitation connue, service fourni par Translation Experts's InterTran"
 
 #, c-format
 msgid "Number of supported languages: %s"
 msgstr "Nombre de langues supportées&nbsp;: %s"
-
-msgid "No known limits, powered by GPLTrans (free, open source)"
-msgstr ""
-"Pas de limitation connue, service fourni par GPLTrans (libre, open source)"
 
 msgid "Hellenic translations, no known limits, powered by Systran"
 msgstr ""
@@ -3736,12 +3857,6 @@ msgstr "à droite"
 msgid "Translate inside the SquirrelMail frames"
 msgstr "Traduire dans la fenêtre de SquirrelMail"
 
-msgid "When composing:"
-msgstr "Lors de la composition&nbsp;:"
-
-msgid "Not yet functional, currently does nothing"
-msgstr "Pas encore fonctionnel, ne fait rien pour le moment"
-
 msgid "Translation Options"
 msgstr "Options de traduction"
 
@@ -3756,17 +3871,26 @@ msgstr ""
 msgid "%s to %s"
 msgstr "%s vers %s"
 
+msgid "Chinese, Simplified"
+msgstr "Chinois, simplifié"
+
 msgid "English"
 msgstr "anglais"
 
-msgid "Chinese"
-msgstr "chinois"
+msgid "Chinese, Traditional"
+msgstr "Chinois, traditionnel"
+
+msgid "Dutch"
+msgstr "hollandais"
 
 msgid "French"
 msgstr "français"
 
 msgid "German"
 msgstr "allemand"
+
+msgid "Greek"
+msgstr "grec"
 
 msgid "Italian"
 msgstr "italien"
@@ -3780,11 +3904,11 @@ msgstr "coréen"
 msgid "Portuguese"
 msgstr "portugais"
 
-msgid "Spanish"
-msgstr "espagnol"
-
 msgid "Russian"
 msgstr "russe"
+
+msgid "Spanish"
+msgstr "espagnol"
 
 msgid "Translate"
 msgstr "Traduire"
@@ -3804,23 +3928,20 @@ msgstr "tchèque"
 msgid "Danish"
 msgstr "danois"
 
-msgid "Dutch"
-msgstr "hollandais"
-
-msgid "European Spanish"
-msgstr "espagnol européen"
+msgid "Filipino (Tagalog)"
+msgstr "Tagalog"
 
 msgid "Finnish"
 msgstr "finnois"
-
-msgid "Greek"
-msgstr "grec"
 
 msgid "Hungarian"
 msgstr "hongrois"
 
 msgid "Icelandic"
 msgstr "islandais"
+
+msgid "Latin"
+msgstr "latin"
 
 msgid "Latin American Spanish"
 msgstr "espagnol latino-américain"
@@ -3852,9 +3973,6 @@ msgstr "gallois"
 msgid "Indonesian"
 msgstr "indonésien"
 
-msgid "Latin"
-msgstr "latin"
-
 msgid "to English"
 msgstr "vers l'anglais"
 
@@ -3866,9 +3984,6 @@ msgstr "Langue de l'interface"
 
 msgid "Translation direction"
 msgstr "Sens de la traduction"
-
-msgid "Add to:"
-msgstr "Ajouter à&nbsp;: "
 
 msgid "sort by nickname"
 msgstr "trier par surnom"
@@ -3885,36 +4000,11 @@ msgstr "trier par info"
 msgid "Add to address book"
 msgstr "Ajouter au carnet d'adresses"
 
-msgid "Your Message has been sent."
-msgstr "Votre message a été envoyé."
+msgid "Error(s) happened while saving your options"
+msgstr "Des erreurs se sont produites pendant l'enregistrement de vos options"
 
-msgid "Illegal folder name. Please select a different name."
-msgstr "Nom de dossier non autorisé. Choisissez un autre nom."
-
-#, c-format
-msgid ""
-"The help has not been translated to %s. It will be displayed in English "
-"instead."
-msgstr "Cette aide n'a pas été traduite en %s. Elle sera affichée en anglais. "
-
-msgid ""
-"The index order is the order that the columns are arranged in the message "
-"index. You can add, remove, and move columns around to customize them to fit "
-"your needs."
-msgstr ""
-"L'ordre de l'index est l'ordre dans lequel les colonnes apparaissent dans "
-"l'index des messages. Vous pouvez ajouter, enlever et déplacer les colonnes "
-"pour répondre à vos besoins."
-
-msgid ""
-"Based upon given criteria, incoming messages can have different background "
-"colors in the message list. This helps to easily distinguish who the "
-"messages are from, especially for mailing lists."
-msgstr ""
-"En fonction de critères configurables, les messages entrants peuvent avoir "
-"des couleurs différentes dans la liste des messages. Ceci aide à distinguer "
-"plus facilement les expéditeurs des messages, en particulier pour les listes "
-"de diffusion."
+msgid "Some of your preference changes are not applied."
+msgstr "Certains changements de vos préférences ne seront pas effectués."
 
 msgid "As Attachment"
 msgstr "en pièce jointe"
@@ -4071,17 +4161,6 @@ msgstr "Recherche standard"
 msgid "Advanced search"
 msgstr "Recherche avancée"
 
-msgid "Signout"
-msgstr "Fermer la session"
-
-#, c-format
-msgid ""
-"vCard Version %s is not supported. Some information might not be converted "
-"correctly."
-msgstr ""
-"La version %s de vCard n'est pas gérée. Certaines informations pourraient "
-"ne pas être converties correctement."
-
 msgid "Folder List"
 msgstr "Liste des dossiers"
 
@@ -4090,13 +4169,6 @@ msgstr "Cliquer ici pour changer le classement de la liste d'adresses"
 
 msgid "Possible reason : "
 msgstr "Raison possible : "
-
-msgid "The imap server failed to handle threading."
-msgstr "Le serveur imap n'a pas pu gérer les fils de discussion."
-
-msgid "Click here to unset thread view for this mailbox and start again."
-msgstr ""
-"Cliquez ici pour recommencer sans la visualisation par fil de discussion."
 
 msgid "ERROR : Bad function call."
 msgstr "ERREUR&nbsp;: Appel de fonction erroné."
@@ -4107,17 +4179,15 @@ msgstr "Cause&nbsp;:"
 msgid "Server responded:"
 msgstr "Le serveur a répondu&nbsp;: "
 
+msgid ""
+"TLS is enabled, but this version of PHP does not support TLS sockets, or is "
+"missing the openssl extension."
+msgstr ""
+"TLS est autorisé, mais cette version de PHP ne permet pas l'utilisation des "
+"sockets TLS, ou ne contient pas l'extension OpenSSL."
+
 msgid "Unknown recipient"
 msgstr "Destinataire inconnu"
-
-msgid "Thread sorting is not supported by your IMAP server."
-msgstr "Votre serveur IMAP ne gère pas le tri par fil de discussion (THREAD)."
-
-msgid "Please report this to the system administrator."
-msgstr "Merci de l'indiquer à votre administrateur."
-
-msgid "Server-side sorting is not supported by your IMAP server."
-msgstr "Votre serveur IMAP ne gère pas les tris (SORT)."
 
 msgid "Unflag"
 msgstr "Démarquer"
@@ -4128,19 +4198,14 @@ msgstr "Marquer"
 msgid "Click here to change the sorting of the message list"
 msgstr "Cliquer ici pour changer le classement des messages"
 
-#, c-format
-msgid "Viewing Messages: %s to %s (%s total)"
-msgstr "Messages %s à %s (%s au total)"
-
-#, c-format
-msgid "Viewing Message: %s (1 total)"
-msgstr "Message %s (1 au total)"
-
 msgid "Message Flags Icon Theme"
 msgstr "Thème des icônes d'état des messages"
 
 msgid "Show Flag / Unflag Buttons"
 msgstr "Afficher les boutons 'Marquer' / 'Démarquer'&nbsp;"
+
+msgid "Use Compact Page Selector"
+msgstr "Utiliser le sélecteur de pages compact&nbsp;"
 
 msgid "Length of From/To Field (0 for full)"
 msgstr ""
@@ -4155,6 +4220,10 @@ msgstr ""
 "Afficher le nom du destinataire si le message provient de votre identité par "
 "défaut&nbsp;"
 
+msgid "Prefix for Original Message when Replying"
+msgstr ""
+"Préfixe utilisé pour citer le message original dans votre réponse&nbsp;"
+
 msgid "Strip signature when replying"
 msgstr "Supprimer la signature du message cité en réponse&nbsp;"
 
@@ -4164,20 +4233,8 @@ msgstr "Afficher les liens 'Supprimer et précédent / suivant'&nbsp;"
 msgid "Save Replies with Original Message"
 msgstr "Enregistrer les réponses dans le dossier du message original&nbsp;"
 
-msgid "Enable Collapsable Folders"
-msgstr "Dossiers repliables&nbsp;"
-
-msgid "Folder"
-msgstr "Dossier"
-
-msgid "Subfolder"
-msgstr "Sous-dossier"
-
 msgid "XP"
 msgstr "XP"
-
-msgid "SquirrelMail Version"
-msgstr "Version de SquirrelMail"
 
 msgid "Hide SquirrelMail Header"
 msgstr "Cacher l'en-tête SquirrelMail"
@@ -4194,28 +4251,13 @@ msgstr "Recherche avancée seulement"
 msgid "Both search functions"
 msgstr "Les deux fonctions de recherche"
 
-msgid "Global address book DSN"
-msgstr "DSN du carnet d'adresses général"
-
-msgid "Global address book table"
-msgstr "Table du carnet d'adresses général"
-
-msgid "Allow writing into global address book"
-msgstr "Permettre l'écriture dans le carnet d'adresses général"
-
-msgid "Allow listing of global address book"
-msgstr "Permettre la consultation du carnet d'adresses général"
-
-msgid "Language settings"
-msgstr "Préférences de langues"
-
 msgid "Show alternative language names"
 msgstr "Montrer les noms de langues alternatifs"
 
 msgid "Available languages"
 msgstr "Langues disponibles"
 
-msgid "Use agresive decoding"
+msgid "Enable aggressive decoding"
 msgstr "Utiliser un décodage 'lourd'"
 
 msgid "Tweaks"
@@ -4235,57 +4277,6 @@ msgstr "Utiliser les fonctions recode de php"
 
 msgid "Use php iconv functions"
 msgstr "Utiliser les fonctions iconv de php"
-
-msgid ""
-"Note: it is recommended that you configure your system using conf.pl, and "
-"not this plugin. conf.pl contains additional information regarding the "
-"purpose of variables and appropriate values, as well as additional "
-"verification steps."
-msgstr ""
-"Nota : il est recommandé de configurer votre système avec conf.pl, et non "
-"pas avec ce plugin, car conf.pl contient des informations supplémentaires "
-"concernant l'utilisation des variables et des valeurs appropriées, ainsi que "
-"des vérifications supplémentaires."
-
-msgid ""
-"Run or consult conf.pl should you run into difficulty with your "
-"configuration."
-msgstr ""
-"Lancez ou consultez conf.pl si vous rencontrez des difficultés pour établir "
-"votre configuration"
-
-#, c-format
-msgid "Plugin directory could not be found: %s"
-msgstr "Le dossier Plugin est introuvable : %s"
-
-msgid "Test Configuration"
-msgstr "Tester la configuration"
-
-#, c-format
-msgid ""
-"Make sure that you are running the most recent copy of %s. You are currently "
-"using version %s."
-msgstr ""
-"Assurez-vous d'utiliser la version la plus récente de %s. Vous utilisez "
-"actuellement la version %s."
-
-#, c-format
-msgid ""
-"Check to see if your bug is already listed in the %sBug List%s on "
-"SourceForge. If it is, we already know about it and are trying to fix it."
-msgstr ""
-"Vérifiez si votre bug est déjà répertorié dans la %sliste de bugs%s sur "
-"SourceForge. Si tel est le cas, nous le connaissons déjà et nous occupons "
-"de le corriger."
-
-#, c-format
-msgid ""
-"If there were warnings displayed above, try to resolve them yourself. Read "
-"the guides in the %s directory where SquirrelMail was installed."
-msgstr ""
-"Si des avertissements se sont affichés précédemment, essayez de les résoudre "
-"vous-même. Lisez les manuels du dossier %s à l'endroit où SquirrelMail a été "
-"installé."
 
 msgid "Search Mailing List Archives"
 msgstr "Rechercher dans les archives de la liste"
@@ -4368,76 +4359,72 @@ msgstr "Rechercher le répertoire de bugs"
 msgid "Show system specs"
 msgstr "Afficher les informations du système"
 
-msgid ""
-"COMMERCIAL - Servers that are configured (or misconfigured) to allow spam to "
-"be relayed through their system will be banned with this. Another good one "
-"to use."
-msgstr ""
-"COMMERCIAL - Liste de serveurs à bannir car (mal) configurés de sorte qu'ils "
-"relaient les <i>spam</i>. Une autre liste recommandée."
+msgid "You must type in a new password."
+msgstr "Vous devez saisir un nouveau mot de passe."
 
-msgid ""
-"COMMERCIAL - Dial-up users are often filtered out since they should use "
-"their ISP's mail servers to send mail. Spammers typically get a dial-up "
-"account and send spam directly from there."
-msgstr ""
-"COMMERCIAL - Les utilisateurs de modems voient souvent leurs messages "
-"rejetés car ils devraient utiliser les serveurs de leur FAI pour envoyer des "
-"messages. En effet, les <i>spammers</i> utilisent souvent une connexion "
-"téléphonique classique pour envoyer leurs publicités."
+msgid "You must also type in your new password in the verify box."
+msgstr "Vous devez aussi saisir votre nouveau mot de passe dans le boîte de vérification."
 
-msgid ""
-"WARNING! Header filters should be of the format &quot;Header: value&quot;"
-msgstr ""
-"ATTENTION! Les filtres d'en-tête doivent être au format &quot;En-tête: valeur&quot;"
+msgid "Your new password does not match the verify password."
+msgstr "Votre nouveau mot de passe et sa vérification ne correspondent pas."
+
+msgid "You must type in your current password."
+msgstr "Vous devez saisir votre mot de passe actuel."
+
+msgid "Your current password is not correct."
+msgstr "Votre mot de passe actuel est incorrect."
 
 #, c-format
-msgid "If %s contains %s then move to %s"
-msgstr "Si %s contient %s alors le déplacer vers %s"
+msgid "Your new password should be %s to %s characters long."
+msgstr "Votre mot de passe doit être compris entre %s et %s caractères."
 
-msgid "You must select a spam folder."
-msgstr "Vous devez choisir un dossier de spam."
+msgid "Your new password contains invalid characters."
+msgstr "Votre nouveau mot de passe contient des caractères interdits."
 
-msgid "You must select a scan type."
-msgstr "Vous devez choisir un type de recherche."
+msgid "Change Password"
+msgstr "Changer le mot de passe"
 
-#, c-format
-msgid "WARNING! Tell the adminstrator to set the %s variable."
-msgstr ""
-"ATTENTION&nbsp;! Veuillez avertir l'administrateur de Squirrelmail de bien "
-"vouloir configurer la variable %s."
+msgid "Current Password:"
+msgstr "Mot de passe actuel&nbsp;:"
 
-msgid "Unread messages only"
-msgstr "Messages non lus uniquement"
+msgid "New Password:"
+msgstr "Nouveau mot de passe&nbsp;:"
 
-msgid ""
-"The more messages scanned, the longer it takes. It's recommended to scan "
-"unread messages only. If a change to the filters is made, it's recommended "
-"to set it to scan all messages, then go view the INBOX, then come back and "
-"set it to scan unread messages only. That way, the new spam filters will be "
-"applied and even the spam you didn't catch with the old filters will be "
-"scanned."
-msgstr ""
-"Plus vous analysez de messages, plus longue est la recherche. Nous vous "
-"suggérons de n'analyser que les nouveaux messages. Si vous changez vos "
-"filtres, choisissez <i>Tous les messages</i>, allez dans votre Boîte de "
-"réception puis revenez pour sélectionner <i>Messages non lus uniquement</i>. "
-"De cette manière, vos nouveaux filtres de spam seront appliqués et le spam "
-"qui n'avait pas été reconnu par vos anciens filtres sera recherché à nouveau."
+msgid "Verify New Password:"
+msgstr "Vérification de votre nouveau mot de passe&nbsp;:"
 
-#, c-format
-msgid "Spam is sent to %s."
-msgstr "Le Spam est envoyé à %s."
+msgid "Use this to change your email password."
+msgstr "Utilisez ceci pour changer votre mot de passe de messagerie."
 
-msgid "not set yet"
-msgstr "[<i>non établi</i>]"
+msgid "Curl module NOT available! Unable to change password!"
+msgstr "Le module 'Curl' n'est pas disponible&nbsp;! Impossible de changer le mot de passe&nbsp;!"
 
-#, c-format
-msgid "Spam scan is limited to %s."
-msgstr "Limiter la recherche de Spam à %s."
+msgid "Cannot change password! (Is user 'Self Configurable User' ?) (401)"
+msgstr "Impossible de changer le mot de passe&nbsp;! (L'utilisateur est-il 'auto-configurable'&nbsp;?) (401)"
 
-msgid "Plugin is disabled."
-msgstr "Le plugin est désactivé."
+msgid "Cannot change password!"
+msgstr "Impossible de changer le mot de passe&nbsp;!"
+
+msgid "Cannot connect to Database Server, please try later!"
+msgstr "La connexion au serveur de base de données est impossible, réessayez plus tard&nbsp;!"
+
+msgid "Database not found on server"
+msgstr "Base de données non trouvée sur le serveur"
+
+msgid "SQL call failed, try again later."
+msgstr "La requête SQL a échoué, réessayez plus tard."
+
+msgid "Duplicate login entries detected, cannot change password!"
+msgstr "Doublons de login détectés, impossible de changer le mot de passe&nbsp;!"
+
+msgid "Password change was not successful!"
+msgstr "Le mot de passe n'a pu être changé&nbsp;!"
+
+msgid "Closing Connection"
+msgstr "Fermeture de la connexion"
+
+msgid "Connecting to Password Server"
+msgstr "Connexion au serveur de mot de passe"
 
 msgid "Server Capability response:"
 msgstr "Réponse de capacités du serveur&nbsp;:"
@@ -4450,19 +4437,19 @@ msgid ""
 "default_charset and folder_prefix from SquirrelMail when needed."
 msgstr ""
 "Sélectionnez les commandes IMAP à exécuter. La plupart des commandes "
-"demandent qu'un dossier soit sélectionné, donc la commande SELECT vous "
-"est fournie d'emblée. Vous pouvez effacer toutes les commandes et tester "
-"vos propres chaînes de commande IMAP. Les commandes sont exécutées dans "
-"l'ordre. Les valeurs par défaut correspondent à des commandes IMAP simples "
-"utilisant si nécessaire vos <i>default_charset</i> et <i>folder_prefix</i> "
-"configurés dans SquirrelMail."
+"demandent qu'un dossier soit sélectionné, donc la commande SELECT vous est "
+"fournie d'emblée. Vous pouvez effacer toutes les commandes et tester vos "
+"propres chaînes de commande IMAP. Les commandes sont exécutées dans l'ordre. "
+"Les valeurs par défaut correspondent à des commandes IMAP simples utilisant "
+"si nécessaire vos <i>default_charset</i> et <i>folder_prefix</i> configurés "
+"dans SquirrelMail."
 
 msgid ""
 "NOTE: These commands are live, any changes made will effect your current "
 "email account."
 msgstr ""
-"NOTA&nbsp;: Ces commandes sont faites en direct sur votre serveur IMAP, "
-"tout changement effectué affectera directement votre compte IMAP."
+"NOTA&nbsp;: Ces commandes sont faites en direct sur votre serveur IMAP, tout "
+"changement effectué affectera directement votre compte IMAP."
 
 msgid "Select"
 msgstr "Sélectionner"
@@ -4476,15 +4463,6 @@ msgstr "Chaîne de commande IMAP"
 msgid "Request:"
 msgstr "Requête&nbsp;:"
 
-msgid ""
-"Run some test IMAP commands, displaying both the command and the result. "
-"These tests use the SquirrelMail IMAP commands and your current SquirrelMail "
-"configuration. Custom command strings can be used."
-msgstr ""
-"Exécute quelques commandes IMAP de test en affichant à la fois la commande "
-"et son résultat. Ces tests utilisent les commandes IMAP ainsi que votre "
-"configuration actuelle de Squirrelmail. Vous pouvez aussi saisir vos propres commandes."
-
 msgid "No POP3 servers configured yet."
 msgstr "Aucun serveur POP3 configuré."
 
@@ -4492,96 +4470,12 @@ msgid "Click here to go to the options page."
 msgstr "Cliquez ici pour aller à la page d'options."
 
 #, c-format
-msgid "Login OK: Inbox contains %s messages"
-msgstr "Connexion réussie&nbsp;: votre Boîte de réception contient %s messages"
-
-msgid ""
-"You should be aware that the encryption used to store your password is not "
-"perfectly secure. However, if you are using pop, there is inherently no "
-"encryption anyway. Additionally, the encryption that we do to save it on the "
-"server can be undone by a hacker reading the source to this file."
-msgstr ""
-"Vous devez savoir que le chiffrement employé pour conserver votre mot de passe "
-"n'est pas parfaitement sûr - votre mot de passe pourrait être déchiffré par un "
-"pirate qui regarderait les sources de Squirrelmail. Cette solution est "
-"cependant plus sûre que le protocole POP lui-même car ce dernier transmet "
-"votre mot de passe sans chiffrement."
-
-msgid "POP3 Fetch Mail"
-msgstr "Récupération de courrier par POP3"
-
-msgid ""
-"This configures settings for downloading email from a POP3 mailbox to your "
-"account on this server."
-msgstr ""
-"Pour configurer la récupération du courrier depuis un compte POP3 vers ce "
-"serveur."
-
-#, c-format
-msgid ""
-"The %s option will check ALL of your folders for unseen mail, not just the "
-"inbox for notification."
-msgstr ""
-"L'option %s permet de rechercher les messages non lus dans TOUS les dossiers, "
-"pas seulement dans votre Boîte de réception."
-
-#, c-format
-msgid ""
-"Selecting the %s option will enable the showing of a popup window when "
-"unseen mail is in your folders (requires JavaScript)."
-msgstr ""
-"Sélectionner l'option %s pour activer l'affichage d'une fenêtre vous "
-"avertissant de l'arrivée de nouveaux messages (nécessite Javascript)."
-
-#, c-format
-msgid ""
-"Use the %s option to only check for messages that are recent. Recent "
-"messages are those that have just recently showed up and have not been "
-"\"viewed\" or checked yet. This can prevent being continuously annoyed by "
-"sounds or popups for unseen mail."
-msgstr ""
-"Utilisez l'option %s pour ne vérifier que les messages récents, "
-"c'est-à-dire ceux qui n'ont pas encore été vus ni identifiés. Cette option "
-"évite d'être importuné par les alertes sonores ou les fenêtres d'alerte "
-"pour des courriers non lus."
-
-#, c-format
-msgid ""
-"Selecting the %s option will change the title in some browsers to let you "
-"know when you have new mail (requires JavaScript, and only works in IE but "
-"you won't see errors with other browsers). This will always tell you if you "
-"have new mail, even if you have %s enabled."
-msgstr ""
-"L'option %s permet de changer le titre dans certains navigateurs pour "
-"annoncer les nouveaux messages (nécessite Javascript et ne "
-"fonctionne qu'avec IE, les autres navigateurs n'affichent pas de message "
-"d'erreur). Cette option vous signalera toujours la présence de nouveaux "
-"messages, même si vous avez activé l'option %s."
-
-msgid "Change title on supported browsers"
-msgstr "Changer le titre si le navigateur le permet"
-
-#, c-format
-msgid ""
-"Select %s to turn on playing a media file when unseen mail is in your "
-"folders. When enabled, you can specify the media file to play in the "
-"provided file box."
-msgstr ""
-"Sélectionnez %s pour activer la lecture d'un fichier de son lorsque "
-"des messages non lus se trouvent dans vos dossiers. Une fois activée, "
-"vous pouvez spécifier le fichier son à lire."
-
-#, c-format
-msgid ""
-"Select from the list of %s the media file to play when new mail arrives. If "
-"no file is specified, %s, no sound will be used."
-msgstr ""
-"Sélectionnez, dans la liste des %s, la séquence sonore à jouer quand un "
-"nouveau courrier arrive. Si aucun fichier n'est sélectionné, %s, aucun son ne "
-"sera utilisé."
-
-msgid "Select server file"
-msgstr "Sélectionner un fichier du serveur&nbsp;:"
+msgid "Login OK: Inbox contains %s message"
+msgid_plural "Login OK: Inbox contains %s messages"
+msgstr[0] ""
+"Connexion réussie&nbsp;: votre Boîte de réception contient %s message"
+msgstr[1] ""
+"Connexion réussie&nbsp;: votre Boîte de réception contient %s messages"
 
 msgid "Spam Service Type:"
 msgstr "Type de service anti-Spam :"
@@ -4595,139 +4489,37 @@ msgstr "Services pour membres"
 msgid "Save Service Type"
 msgstr "Enregistrer le type de service"
 
-msgid "About SpamCop"
-msgstr "A propos de SpamCop"
-
-#, c-format
-msgid ""
-"To use it, you must get a SpamCop authorization code. There is a free %ssign "
-"up page%s so you can use SpamCop."
-msgstr ""
-"Pour l'utiliser, vous devez avoir un code d'autorisation de SpamCop. Il "
-"existe une %spage d'enregistrement%s gratuite pour vous permettre d'utiliser SpamCop."
-
-msgid "Before you sign up, be warned"
-msgstr "Avant de souscrire, vous devez être averti"
-
-#, c-format
-msgid ""
-"Some users have reported that the email addresses used with SpamCop find "
-"their way onto spam lists. To be safe, you can just create an email "
-"forwarding account and have all SpamCop reports get sent to there. Also, if "
-"it gets flooded with spam, you can then just delete that account with no "
-"worries about losing your real email address. Just go create an email "
-"forwarder somewhere (%s has a %slist of places%s) so that messages from "
-"system administrators and what not can be sent to you."
-msgstr ""
-"Certains utilisateurs ont "
-"signalé que des adresses email utilisées avec SpamCop se retrouvent sur des "
-"listes de Spam. Par sécurité, vous pouvez juste créer une adresse email "
-"d'envoi pour tous les rapports destinés à SpamCop. Ainsi, si elle se "
-"retrouve submergée de Spams, vous pouvez juste la supprimer sans perdre "
-"votre adresse email réelle. Allez simplement créer un email d'envoi quelque "
-"part (%s possède une %sliste de services%s) afin que les "
-"messages des administrateurs système et autres vous soient envoyés."
-
-msgid ""
-"Once you have signed up with SpamCop and have received your SpamCop "
-"authorization code, you need to enable this plugin by clicking the link "
-"above. Once enabled, you go about your normal life. If you encounter a spam "
-"message in your mailbox, just view it. On the right-hand side, near the top "
-"of where the message is displayed, you will see a link to report this "
-"message as spam. Clicking on it brings you to a confirmation page. "
-"Confirming that you want the spam report sent will do different things with "
-"different reporting methods."
-msgstr ""
-"Une fois que vous vous serez inscrit sur SpamCop et que vous aurez reçu "
-"votre code d'autorisation, vous devrez mettre en route ce plugin -- cliquez "
-"simplement sur le lien ci-dessus. Après cela, continuez simplement comme "
-"auparavant. Si vous recevez un message de Spam, visualisez-le. A droite, "
-"vers le haut du message, vous verrez un lien pour signaler ce message  comme "
-"spam. Cliquer dessus vous amènera à une page de confirmation. Une fois "
-"confirmé, votre signalement déclenchera différentes procédures suivant "
-"différentes méthodes."
-
-msgid "Email-based reporting"
-msgstr "Signalement par email"
-
-msgid "Web-based reporting"
-msgstr "Signalement par le Web"
-
-msgid "SpamCop service type"
-msgstr "Type du service SpamCop"
-
-msgid ""
-"Service type option allows selecting which SpamCop services you are using. "
-"Member services use different web reporting forms and does not display nags. "
-"You can purchase these services, if you want to support SpamCop."
-msgstr ""
-"L'option Type de service permet de choisir quels services de SpamCop vous "
-"utilisez. Les services Membres utilisent des formulaires différents et "
-"n'affichent pas d'écrans de publicité. Vous pouvez acheter ces services, si "
-"vous souhaitez supporter SpamCop."
-
-msgid "More information"
-msgstr "Plus d'information"
-
-#, c-format
-msgid ""
-"For more information about SpamCop, it's services, spam in general, and many "
-"related topics, try reading through SpamCop's %sHelp and Feedback%s section."
-msgstr ""
-"Pour plus d'information à propos de SpamCop, ses services, du Spam en "
-"général, et de nombreux sujets relatifs, référez-vous à la section %sHelp and "
-"Feedback%s de SpamCop."
-
-msgid ""
-"Help fight the battle against unsolicited email. SpamCop reads the spam "
-"email and determines the correct addresses to send complaints to. Quite "
-"fast, really smart, and easy to use."
-msgstr ""
-"Aide dans la lutte contre les messages non désirés. SpamCop analyse le "
-"message et en déduit les adresses correctes pour se plaindre. Plutôt rapide, "
-"vraiment efficace et facile à utiliser."
-
 msgid "SpamCop reporting"
 msgstr "Signalement à SpamCop"
 
+msgid "Translation Theme:"
+msgstr "Thème de traduction&nbsp;:"
+
 msgid ""
-"Sending this spam report will give you back a reply with URLs that you can "
-"click on to properly report this spam message to the proper authorities. "
-"This is a free service. By pressing the \"Send Spam Report\" button, you "
-"agree to follow SpamCop's rules/terms of service/etc."
+"Selected translation engine is disabled. Please update your translation "
+"preferences."
 msgstr ""
-"L'envoi du signalement du Spam vous renverra une réponse contenant des URLs "
-"sur lesquelles vous pourrez cliquer pour signaler le message de Spam aux "
-"autorités compétentes. Ceci est un service gratuit. En cliquant sur le "
-"bouton \"Envoyer un signalement de Spam\", vous acceptez les termes de la "
-"license de SpamCop etc..."
+"Le moteur de traduction sélectionné est indisponible. Merci de mettre à "
+"jour vos préférences de traduction."
 
-msgid "Successful re-encryption"
-msgstr "Re-chiffrage réussi"
+msgid "Translation Preferences"
+msgstr "Préférences de traduction"
 
-#, c-format
-msgid "Deleting the following entries from %s dictionary:"
+msgid "Maximum of 25 kilobytes translated, powered by Systran"
+msgstr "Un maximum de 25 ko traduits, service fourni par Systran"
+
+msgid "No known limits, powered by GPLTrans (free, open source)"
 msgstr ""
-"Effacement des entrées suivantes du dictionnaire %s&nbsp;: "
+"Pas de limitation connue, service fourni par GPLTrans (libre, open source)"
 
-#, c-format
-msgid "Settings adjusted to: %s with %s as default dictionary."
-msgstr ""
-"Paramètres choisis&nbsp;: %s avec %s comme dictionnaire par défaut."
+msgid "Transliterate unknown words:"
+msgstr "Translittérez les mots inconnus&nbsp;:"
 
-#, c-format
-msgid "Using %s dictionary (system default) for spellcheck."
-msgstr ""
-"Utilisation du dictionnaire %s (valeur système) pour corriger."
+msgid "When composing:"
+msgstr "Lors de la composition&nbsp;:"
 
-msgid "Filipino (Tagalog)"
-msgstr "Tagalog"
-
-msgid "Simplified Chinese"
-msgstr "Chinois simplifié"
-
-msgid "Traditional Chinese"
-msgstr "Chinois traditionnel"
+msgid "Not yet functional, currently does nothing"
+msgstr "Pas encore fonctionnel, ne fait rien pour le moment"
 
 msgid "Delivery error report"
 msgstr "Rapport d'erreur de transmission"
@@ -4737,6 +4529,16 @@ msgstr "En-têtes du message non délivré"
 
 msgid "This image has been removed for security reasons"
 msgstr "Cette image n'est pas affichée par mesure de sécurité"
+
+msgid "The imap server failed to handle threading."
+msgstr "Le serveur imap n'a pas pu gérer les fils de discussion."
+
+msgid "Click here to unset thread view for this mailbox and start again."
+msgstr ""
+"Cliquez ici pour recommencer sans la visualisation par fil de discussion."
+
+msgid "Please report this to the system administrator."
+msgstr "Merci de l'indiquer à votre administrateur."
 
 msgid "Folder List Display Format"
 msgstr "Affichage de la liste des dossiers&nbsp;"
