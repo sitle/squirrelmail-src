@@ -68,7 +68,7 @@ if (! sqgetGlobalVar('startMessage', $startMessage, SQ_GET) ) {
     $startMessage = 1;
 }
 if (! sqgetGlobalVar('passed_ent_id', $passed_ent_id, SQ_GET) ) {
-    $passed_ent_id = '';
+    $passed_ent_id = 0;
 }
 
 sqgetGlobalVar('compose_messages', $compose_messages, SQ_SESSION);
@@ -109,7 +109,7 @@ if(! sqgetGlobalVar('composesession', $composesession, SQ_SESSION) ) {
 
         $message = sqimap_get_message($imap_stream, $passed_id, $mailbox);
         $composeMessage = getMessage_RFC822_Attachment($message, $composeMessage, $passed_id, 
-                                      $passed_ent_id='', $imap_stream);
+                                      $passed_ent_id, $imap_stream);
 
     	$compose_messages[$session] = $composeMessage;
 	sqsession_register($compose_messages, 'compose_messages');
@@ -162,7 +162,7 @@ echo "</p>";
 <?PHP  
   echo '<input type="submit" name="send" value="' . _("Send Spam Report") . "\" />\n";
  } else {
-   $spam_message = mime_fetch_body ($imap_stream, $passed_id, 0, 50000);
+   $spam_message = mime_fetch_body ($imap_stream, $passed_id, $passed_ent_id, 50000);
 
    if (strlen($spam_message) == 50000) {
       $Warning = "\n[truncated by SpamCop]\n";
