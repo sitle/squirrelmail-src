@@ -42,7 +42,7 @@ if (GZIPOUTPUT && !extension_loaded('zlib')) {
 }
 
 /* mirror access */
-if (!defined('MIRROR')) define('MIRROR', 0);
+if (!defined('MIRROR_HOME')) define('MIRROR_HOME', '');
 
 /* database settings */
 if (!defined('DATABASE')) define('DATABASE', 'mysql');

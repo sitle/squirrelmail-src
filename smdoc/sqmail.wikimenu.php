@@ -10,7 +10,7 @@
 /* display the wiki menu */
 function sqmNavMenu(&$thing) {
 	global $wtf;
-	track('wikiNavMenu');
+	track('sqmNavMenu');
 	
     echo '<pagetitle>';
     echo '<usermenu>';
@@ -65,7 +65,7 @@ function sqmNavMenu(&$thing) {
 function sqmEditMenu(&$thing) {
     global $HARDTHING;
 	global $wtf;
-	track('wikiMenu');
+	track('sqmEditMenu');
 	
 	echo '<editmenu>';
     
@@ -117,6 +117,53 @@ function sqmEditMenu(&$thing) {
 // close edit menu
 	echo '</editmenu>';
 	track();
+}
+
+function sqmMirrorNavMenu(&$thing) {
+    global $wtf;
+    track('sqmMirrorNavMenu');
+
+    echo '<pagetitle>';
+    echo '<usermenu>';
+    echo '<br/>';
+    echo '</usermenu>';
+
+// PageTitle/Workspace of page (not shown if Main)
+    if ( $thing->classid != HARDTHINGCLASSID ) {
+        echo '<a href="'.THINGURI.$thing->title.'&amp;class='.$wtf->class.'">'.$thing->title.'</a>';
+    } else {
+        // Hardthings require slightly different links
+        echo '<a href="'.THINGURI.$wtf->thingtitle.'">'.$thing->title.'</a>';
+    }
+    echo '</pagetitle>';
+
+// Main page sections - Search/Index
+    echo '<navmenu>';
+    echo '<a href="', FILENAME, '">Home</a> ';
+    echo '</navmenu>';
+    echo '<searchmenu>';
+    echo '<a href="', THINGURI, 'search">Search</a> | ';
+    echo '<a href="', THINGURI. 'sqmuseradmin">Users</a> | ';
+    echo '<a href="', THINGURI. 'sqmindex">Index</a> ';
+    echo '</searchmenu>';
+
+    track();
+}
+
+function sqmMirrorEditMenu(&$thing) {
+    global $wtf;
+    track('sqmMirrorEditMenu');
+
+    echo '<editmenu>';
+    echo 'You are currently viewing a mirror of the SquirrelMail site.<br/>';
+    if ( MIRROR_HOME ) {
+        echo 'To login/register, make updates, etc. Please visit ';
+        echo '<a href="', MIRROR_HOME,'">here.</a>';
+    }
+    echo '<br/>';
+    echo '</editmenu>';
+ 
+    track();
 }
 
 ?>

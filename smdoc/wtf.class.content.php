@@ -24,8 +24,12 @@ wtf.class.content.php
 Content Class
 */
 
+/*
+ * Modified by SquirrelMail Development Team
+ * $Id$
+ */
 define('CONTENTCLASSID',-20631383);
-$HARDCLASS[-20631383] = 'content';
+$HARDCLASS[CONTENTCLASSID] = 'content';
 
 class content extends thing { // a thing
 
@@ -201,6 +205,31 @@ class content extends thing { // a thing
 		echo '</content_type>';			
 		echo '</content_form>';
 	}
+
+    function admin_fields($className, $workspaces) {
+        parent::admin_fields($className, $workspaces);
+        
+        $sections = section::getSections();  // get array of sections
+        echo '<admin_section name="sectionid">';
+        foreach ($sections as $sectionid => $sectionname) {
+            if ($this->sectionid == $sectionid) {
+                echo '<admin_sectionitem selected="true" sectionid="'.$sectionid.'" sectionname="'.$sectionname.'"/>';
+            } else {
+                echo '<admin_sectionitem sectionid="'.$sectionid.'" sectionname="'.$sectionname.'"/>';
+            }
+        }
+        echo '</admin_section>';
+
+        if (isset($this->groups)) {
+            echo '<admin_group name="newgroup">';
+            if (is_array($this->groups) && $this->groups != NULL) {
+                foreach ($this->groups as $key => $group) {
+                    echo '<admin_groupitem name="group,'.$key.'" cbname="deletegroup,'.$key.'" group="'.$group.'"/>';
+                }
+            }
+            echo '</admin_group>';
+        }
+    }
 	
 /*** Methods ***/
 	
@@ -594,6 +623,12 @@ $FORMAT = array_merge($FORMAT, array(
 	'/content_create_preview' => '</td></tr></table>',
 	'content_create_permission' => '<p class="error">You do not have permission to create a new thing.</p>',
 	'/content_create_permission' => '',
+// create/admin
+    'admin_section' => 'Section: <select name="{name}">',
+    '/admin_section' => '</select><br />',
+    'admin_sectionitem' => '<option value="{sectionid}">{sectionname}</option>',
+    'admin_sectionitem.selected' => '<option value="{sectionid}" selected="selected">{sectionname}</option>',
+    '/admin_sectionitem' => '',
 	
 // syntax highlighting
 	'syntax' => '<table width="100%"><tr><td class="syntax">',
