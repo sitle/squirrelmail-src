@@ -2,11 +2,11 @@
 # Copyright (C) 2003 abook_group v0.32
 # This file is distributed under the same license as the abook_group package.
 # Benistan Cedric <cedric@benistan.com>, 2003
-#
+# 
 msgid ""
 msgstr ""
-"Project-Id-Version: abook_group-0.32\n"
-"POT-Creation-Date: 2003-10-27 08:23-0500\n"
+"Project-Id-Version: abook_group\n"
+"POT-Creation-Date: 2003-11-24 08:55-0500\n"
 "PO-Revision-Date: 2003-10-27 08:23-0500\n"
 "Last-Translator: Benistan Cedric <cedric@benistan.com>\n"
 "Language-Team: \n"
@@ -14,11 +14,7 @@ msgstr ""
 "Content-Type: text/plain; charset=ISO-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: abook_group_database.php:390 abook_group_database.php:440
-msgid "$groupName does not exist"
-msgstr "$groupName n'existe pas"
-
-#: addrbook_search.php:316 addrbook_search.php:343
+#: addrbook_search.php:315 addrbook_search.php:332
 msgid "Add"
 msgstr "Ajouter"
 
@@ -34,7 +30,7 @@ msgstr "Ajout Réussi"
 msgid "Add to Existing Group: "
 msgstr "Ajouter à un groupe existant:"
 
-#: addrbook_search.php:334
+#: addrbook_search.php:328
 msgid "Add to New Group (supply group name):"
 msgstr "Ajouter à un Nouveau Groupe (tapez le nom du groupe):"
 
@@ -42,8 +38,8 @@ msgstr "Ajouter à un Nouveau Groupe (tapez le nom du groupe):"
 msgid "Address Groups"
 msgstr "Groupes d'adresses"
 
-#: abook_group_database.php:215 abook_group_database.php:308
-#: abook_group_database.php:371 abook_group_database.php:421
+#: abook_group_database.php:217 abook_group_database.php:317
+#: abook_group_database.php:385 abook_group_database.php:453
 msgid "Addressbook is read-only"
 msgstr "Le carnet d'adresse est en lecture-seule"
 
@@ -51,39 +47,64 @@ msgstr "Le carnet d'adresse est en lecture-seule"
 msgid "All address books"
 msgstr "Tous les carnets d'adresses"
 
-#: abook_group_database.php:455
-msgid "Another $newGroupName already exists"
-msgstr "Un autre $newGroupName existe déjà"
+#: abook_group_database.php:487
+#, c-format
+msgid "Another group %s already exists"
+msgstr "Un autre %s existe déjà"
+
+#: modifyGroup.php:70
+msgid "Are you sure you want to delete "
+msgstr "Etes vous sure de vouloir effacer "
 
 #: addrbook_search.php:163
 msgid "Close window"
 msgstr "Fermer la fenètre"
 
 #: abook_group_database.php:109 abook_group_database.php:141
-#: abook_group_database.php:189 abook_group_database.php:291
-#: abook_group_database.php:359 abook_group_database.php:409
-#: abook_group_database.php:474
+#: abook_group_database.php:190 abook_group_database.php:301
+#: abook_group_database.php:373 abook_group_database.php:423
+#: abook_group_database.php:506
 #, c-format
 msgid "Database error: %s"
 msgstr "Erreur base de données: %s"
 
-#: list_abook_group.php:74
+#: list_abook_group.php:75
 msgid "Delete"
 msgstr "Effacer"
+
+#: modifyGroup.php:66
+msgid "Delete Group"
+msgstr "Effacer Groupe"
 
 #: abook_group_interface.php:66 addrbook_search.php:31
 msgid "E-mail"
 msgstr "E-mail"
 
-#: abook_group_database.php:59
+#: abook_group_database.php:59 abook_group_database.php:175
+#: abook_group_database.php:248 abook_group_database.php:259
+#: abook_group_database.php:329 abook_group_database.php:338
 msgid "Global address book"
 msgstr "Carnet d'adresses Global"
 
-#: abook_group_database.php:236
-msgid "Group $groupName already exists"
-msgstr "Le groupe $groupName existe déjà"
+#: abook_group_database.php:238
+#, c-format
+msgid "Group %s already exists"
+msgstr "Le groupe %s existe déjà"
 
-#: abook_group_interface.php:140 list_abook_group.php:51 setup.php:65
+#: abook_group_database.php:404 abook_group_database.php:472
+#, c-format
+msgid "Group %s does not exist"
+msgstr "%s n'existe pas"
+
+#: abook_group_database.php:436
+msgid "Group name is unchanged."
+msgstr "Le nom du groupe est inchangé"
+
+#: abook_group_database.php:444
+msgid "Group name was empty."
+msgstr "Le nom du groupe est vide"
+
+#: abook_group_interface.php:140 list_abook_group.php:52 setup.php:65
 msgid "Groups"
 msgstr "Groupes"
 
@@ -91,7 +112,7 @@ msgstr "Groupes"
 msgid "Info"
 msgstr "Info"
 
-#: list_abook_group.php:75
+#: list_abook_group.php:76
 msgid "List"
 msgstr "Lister"
 
@@ -107,11 +128,11 @@ msgstr "Lister tout"
 msgid "Members"
 msgstr "Membres"
 
-#: list_abook_group.php:73 modifyGroup.php:122
+#: list_abook_group.php:74 modifyGroup.php:156
 msgid "Modify"
 msgstr "Modifier"
 
-#: modifyGroup.php:79
+#: modifyGroup.php:113
 msgid "Modify Group Name"
 msgstr "Modifier nom du Groupe"
 
@@ -119,7 +140,7 @@ msgstr "Modifier nom du Groupe"
 msgid "Name"
 msgstr "Nom"
 
-#: modifyGroup.php:107
+#: modifyGroup.php:141
 msgid "New Group Name"
 msgstr "Nouveau nom du Groupe"
 
@@ -127,15 +148,19 @@ msgstr "Nouveau nom du Groupe"
 msgid "New Group Name is Empty"
 msgstr "Le Nom du Nouveau Groupe est vide"
 
+#: modifyGroup.php:75
+msgid "No"
+msgstr "Non"
+
 #: addrbook_search.php:253 addrbook_search.php:282
 msgid "No persons matching your search was found"
 msgstr "Personne ne correspondant à la recherche n'a été trouvé"
 
-#: addrbook_search.php:325
+#: addrbook_search.php:319
 msgid "OR"
 msgstr "OU"
 
-#: modifyGroup.php:95
+#: modifyGroup.php:129
 msgid "Old Group Name"
 msgstr "Ancien nom du Groupe"
 
@@ -143,7 +168,7 @@ msgstr "Ancien nom du Groupe"
 msgid "Remove"
 msgstr "Supprimer"
 
-#: listMembers.php:69
+#: listMembers.php:68
 msgid "Remove Successful"
 msgstr "Suppression Réussie"
 
@@ -176,15 +201,19 @@ msgstr "Impossible d'afficher les adresses de %s"
 msgid "Use Addresses"
 msgstr "Utiliser les adresses"
 
-#: abook_group_database.php:270
+#: abook_group_database.php:280
 msgid "User Already Exists in The Group"
 msgstr "L'utilisateur existe déjà dans le groupe"
 
-#: abook_group_database.php:338
+#: abook_group_database.php:352
 msgid "User Does Not Exist in The Group"
 msgstr "L'utilisateur n'existe pas dans le groupe"
 
-#: list_abook_group.php:90
+#: modifyGroup.php:74
+msgid "Yes"
+msgstr "Oui"
+
+#: list_abook_group.php:91
 msgid "You Currently Do Not Have Any Groups"
 msgstr "Vous n'avez aucun groupe pour l'instant"
 
@@ -195,7 +224,9 @@ msgstr "Vous n'avez aucun membres dans ce groupe"
 #: setup.php:43
 msgid ""
 "You can create address groups and add email addresses from your address book"
-msgstr "Vous pouvez créer des groupes et ajouter des adresses email de votre carnet d'adresses"
+msgstr ""
+"Vous pouvez créer des groupes et ajouter des adresses email de votre carnet "
+"d'adresses"
 
 #: addrbook_search.php:271
 msgid "Your search failed with the following error(s)"
