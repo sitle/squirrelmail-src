@@ -68,7 +68,7 @@ function viewText($color, $body, $id, $entid, $mailbox, $type1, $wrap_at) {
 
     echo "<BR>\n".
          "<TABLE WIDTH=\"100%\" BORDER=0 CELLSPACING=0 CELLPADDING=2 ALIGN=CENTER>\n".
-         "<TR><TD BGCOLOR=\"$color[0]\">\n".
+         "<TR><TD BGCOLOR=\"$color[9]\">\n".
          "<B><CENTER>".
          _("Viewing a text attachment") . " - ";
     if (isset($where) && isset($what)) {
@@ -83,15 +83,12 @@ function viewText($color, $body, $id, $entid, $mailbox, $type1, $wrap_at) {
              "&passed_id=$id&startMessage=$startMessage&show_more=0\">". 
              _("View message") . "</a>\n";
     }
-    echo "</B></TD></TR>\n<TR><TD><CENTER>\n".
-         "<A HREF=\"../src/download.php?absolute_dl=true&passed_id=$id".
-         "&passed_ent_id=$entid&mailbox=$urlmailbox\">".
-         _("Download this as a file").
-         "</A></CENTER><BR>\n".
-         "</CENTER></B>\n".
-         "</TD></TR></TABLE>\n".
-         "<TABLE WIDTH=\"98%\" BORDER=0 CELLSPACING=0 CELLPADDING=2 ALIGN=CENTER>\n".
-         "<TR><TD BGCOLOR=\"$color[0]\"></TD></TR>\n".
+    echo "</B></TD></TR>\n".
+         "</TABLE><BR><CENTER>\n".
+         "<TABLE WIDTH=\"98%\"><TR><TD BGCOLOR=\"$color[0]\">\n".
+         "<TABLE WIDTH=\"100%\" BORDER=0 CELLSPACING=0 ".
+         "CELLPADDING=2 ALIGN=CENTER>\n".
+         "<TR><TD BGCOLOR=\"$color[4]\"></TD></TR>\n".
          "<TR><TD BGCOLOR=\"$color[4]\"><TT>\n";
 
     if ($type1 == 'html') {
@@ -100,10 +97,14 @@ function viewText($color, $body, $id, $entid, $mailbox, $type1, $wrap_at) {
     else {
         translateText($body, $wrap_at, $charset);
     }
-
     flush();
     echo $body .
-         "</TT></TD></TR></TABLE>\n";
+         "</TT></TD></TR><TR><TD><CENTER>\n".
+         "<SMALL><A HREF=\"../src/download.php?absolute_dl=true&passed_id=$id".
+         "&passed_ent_id=$entid&mailbox=$urlmailbox\">".
+         _("Download this as a file").
+         "</A></SMALL></CENTER>\n".
+         "</TD></TR></TABLE></TD></TR></TABLE></CENTER>";
 }
 
 function viewMessage($imapConnection, $id, $mailbox, $ent_id, $msg, $color, $wrap_at) {
@@ -119,19 +120,14 @@ function viewMessage($imapConnection, $id, $mailbox, $ent_id, $msg, $color, $wra
     $urlmailbox = urlencode($mailbox);
     echo "<BR>\n".
          "<TABLE WIDTH=\"100%\" BORDER=0 CELLSPACING=0 CELLPADDING=2 ALIGN=CENTER>\n".
-         "<TR><TD BGCOLOR=\"$color[0]\">\n".
+         "<TR><TD BGCOLOR=\"$color[9]\">\n".
     	 "<B><CENTER>\n".
          _("Viewing a message attachment") . " - ".
          "<a href=\"read_body.php?mailbox=".$urlmailbox.
          "&passed_id=$id&startMessage=$startMessage&show_more=0\">".
          _("View message") . "</a>\n".
-         "</B></TD></TR>\n<TR><TD>\n".
-         "<CENTER><A HREF=\"../src/download.php?absolute_dl=true&passed_id=$id".
-         "&passed_ent_id=$ent_id&mailbox=$urlmailbox\">".
-    	 _("Download this as a file").
-    	 "</A></CENTER><BR>\n".
-    	 "</CENTER></B>\n".
-    	 "</TD></TR></TABLE>\n".
+         "</B></CENTER></TD></TR>\n".
+    	 "</TABLE>\n".
          "<TABLE WIDTH=\"100%\" BORDER=0 CELLSPACING=0 CELLPADDING=2 ".
          " BGCOLOR=\"$color[0]\" ALIGN=CENTER>\n".
          "<TR><TD BGCOLOR=\"$color[0]\">\n".
