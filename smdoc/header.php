@@ -19,27 +19,61 @@
 <link rel="stylesheet" type="text/css" href="style.css" />
 </head>
 <body>
-<div id="pagetitle">
-<div id="usermenu">
+<table class="pagetitle" width="100%">
+<tr>
+  <td rowspan="2" width="275">&nbsp;</td>
+  <td class="usermenu" valign="top">
 <?php
+    $translations = i18nManager::getDisplayInfo($foowd);
+    foreach ( $translations as $id => $lang )
+    {
+      echo ' <a href="', getURI(array('objectid' => $id, 
+                                     'classid' => WORKSPACE_CLASS_ID,
+                                     'method' => 'enter')), '">';
+      if ( isset($lang['icon']) )
+        echo '<img src="', $lang['icon'], '" alt="', $lang['title'], '" border="0" />';
+      else 
+        echo $lang['title'];
+      echo '</a>';
+    }
+    echo '<br />';
+    $lang_url = '';
+    if ( $foowd->user->workspaceid != 0 ) {
+        $lang = i18nManager::getDisplayInfo($foowd, $foowd->user->workspaceid);
+        if ( $lang != NULL )
+        {
+          $lang_url .= '<a href="';
+          $lang_url .= getURI(array('objectid' => $foowd->user->workspaceid, 
+                                    'classid' => WORKSPACE_CLASS_ID,
+                                    'method' => 'enter'));
+          $lang_url .= '">';
+          if ( isset($lang['icon']) && $lang['icon'] != '')
+            $lang_url .=  '<img src="' . $lang['icon'] . '" alt="' . $lang['title'] . '" />';
+          else 
+            $lang_url .=  $lang['title'];
+          $lang_url .=  '</a> | ';
+        }
+    }
     if ( isset($foowd->user->objectid) ) { 
         // If an objectid is set, we're logged in. 
-        $url = getURI(array('objectid' => $foowd->user->objectid,'classid' => USER_CLASS_ID));
+        $url = getURI(array('objectid' => $foowd->user->objectid, 'classid' => USER_CLASS_ID));
         echo '<a href="', $url, '">', $foowd->user->title, '</a> ';
-        echo '( <a href="', getURI(array()), '?class=foowd_user&amp;method=logout">'. _('Logout') .'</a> )';
+        echo '( ', $lang_url, '<a href="', getURI(array()), '?class=foowd_user&amp;method=logout">'. _("Logout") .'</a> )';
     } else { 
         // Otherwise, we're anonymous
         $url = getURI(array());
         echo 'Anonymous User [' . $foowd->user->title . '] ';
-        echo '( <a href="', $url, '?class=foowd_user&amp;method=login">'. _('Login') .'</a> ';
-        echo '| <a href="', $url, '?class=foowd_user&amp;method=create">'. _('Register') .'</a> )';
+        echo '( ', $lang_url, '<a href="', $url, '?class=foowd_user&amp;method=login">'. _("Login") .'</a> ';
+        echo '| <a href="', $url, '?class=foowd_user&amp;method=create">'. _("Register") .'</a> )';
         unset($url);
     }
-    echo '<br />'; // echo user workspace info here
 ?>
-</div><!-- end usermenu -->
+  </td>
+</tr>
+<tr>
+  <td class="titleblock" valign="bottom">
 <?php
-if ( $object != NULL ) {
+if ( $object != NULL && $page_title == NULL ) {
     $url = getURI(array('objectid' => $object->objectid,
                         'classid' => $object->classid));
 
@@ -47,20 +81,27 @@ if ( $object != NULL ) {
 } else {
     echo $page_title;
 }
-// page workspace information
 ?>
-</div><!-- end pagetitle -->
+  </td>
+</tr>
+</table><!-- end pagetitle -->
+
 <div id="locationmenu">
 <table border="0" cellspan="0" cellspacing="0" width="100%">
 <tr><td align="left" class="subtext"><nobr>
 <?php
-    echo '<a href="', getURI(array()), '">Home</a> ';
+    echo '<a href="', getURI(array()), '">', _("Home"), '</a> | ';
+    echo '<a href="', getURI(array()), '">', _("Docs"), '</a> | ';
+    echo '<a href="', getURI(array()), '">', _("Plugins"), '</a> | ';
+    echo '<a href="', getURI(array()), '">', _("Support"), '</a> | ';
+    echo '<a href="', getURI(array()), '">', _("Download"), '</a> | ';
+    echo '<a href="', getURI(array('object' => 'faq')), '">',_("FAQ"),'</a>';
 ?>
-</nobr></td><td align="right" class="subtext"><nobr>
+</nobr></td><td class="subtext">&nbsp;</td><td align="right" class="subtext"><nobr>
 <?php
-   echo '<a href="', getURI(array('object' => 'search')), '">Search</a> | ';
-   echo '<a href="', getURI(array('object' => 'sqmuseradmin')), '">Users</a> | ';
-   echo '<a href="', getURI(array('object' => 'sqmindex')), '">Index</a> ';
+   echo '<a href="', getURI(array('object' => 'search')), '">',_("Search"),'</a> | ';
+   echo '<a href="', getURI(array('object' => 'sqmtools')), '">',_("Tools"),'</a> | ';
+   echo '<a href="', getURI(array('object' => 'sqmindex')), '">',_("Index"),'</a> ';
 ?>
 </nobr></td></tr>
 </table>

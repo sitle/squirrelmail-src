@@ -20,40 +20,39 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 */
 
 /*
+class.object.php
+Foowd base object class
+*/
+
+/*
  * Modified by SquirrelMail Development Team
  *
  * $Id$
  */
  
 /**
- * The FOOWD base system class, this class is the base class for all other system classes. 
- * It has member functions for saving objects to the storage medium, 
- * administrating objects, etc., all the base FOOWD object functionality.
- */
+The FOOWD base system class, this class is the base class for all other system
+classes. It has member functions for saving objects to the storage medium,
+administrating objects, etc. all the base FOOWD object functionality.
+**/
 
-define('OBJECT_CLASS_ID', -1465013268);
+/** METHOD PERMISSIONS **/
+setPermission('foowd_object', 'class',  'create', 'Gods');
+setPermission('foowd_object', 'object', 'admin', 'Gods');
+setPermission('foowd_object', 'object', 'revert', 'Gods');
+setPermission('foowd_object', 'object', 'delete', 'Gods');
+setPermission('foowd_object', 'object', 'clone', 'Gods');
+setPermission('foowd_object', 'object', 'permissions', 'Gods');
 
 /** CLASS DESCRIPTOR **/
-$foowd_class_meta[OBJECT_CLASS_ID]['className'] = 'foowd_object';
-$foowd_class_meta[OBJECT_CLASS_ID]['description'] = 'Base Object';
-
-/** CLASS METHOD PERMISSIONS **/
-define('FOOWD_OBJECT_CREATE_PERMISSION', 'Gods');
-
-/** CLASS METHOD PASSTHRU FUNCTION **/
-function foowd_object_classmethod(&$foowd, $methodName) { 
-    foowd_object::$methodName($foowd, 'foowd_object'); 
-}
+setClassMeta('foowd_object', 'Base Object');
 
 /** CLASS DECLARATION **/
 class foowd_object {
 
 	var $foowd_vars_meta = array(); // object member variable meta array
 	var $foowd_indexes = array(); // object index meta array
-
-    // this object's original access variables,
-    // just incase they change before saving.
-	var $foowd_original_access_vars = array(); 
+	var $foowd_original_access_vars = array(); // this objects original access variables, just incase they change before saving.
 	
 	var $title;
 	var $objectid;
@@ -62,7 +61,7 @@ class foowd_object {
 	var $workspaceid = 0;
 	var $created, $creatorid, $creatorName;
 	var $updated, $updatorid, $updatorName;
-	var $permissions;
+	var $permissions = array();
 
 /*** CONSTRUCTOR ***/
 
@@ -74,18 +73,16 @@ class foowd_object {
 		$deleteGroup = NULL,
 		$allowDuplicateTitle = NULL
 	) {
-        track('foowd_object::foowd_object',$title);
+		$foowd->track('foowd_object->constructor', $title);
 	
 		$this->__wakeup(); // init meta arrays
 	
-		$allowDuplicateTitle = setVarConstOrDefault($allowDuplicateTitle, 'ALLOW_DUPLICATE_TITLE', TRUE);
+		$allowDuplicateTitle = getVarConstOrDefault($allowDuplicateTitle, 'ALLOW_DUPLICATE_TITLE', TRUE);
 	
 /* set object vars */
 
 		$maxTitleLength = getRegexLength($this->foowd_vars_meta['title'], 32);
-		if ( strlen($title) > 0 &&
-             strlen($title) < $maxTitleLength && 
-             preg_match($this->foowd_vars_meta['title'], $title)) {
+		if (strlen($title) > 0 &&	strlen($title) < $maxTitleLength && preg_match($this->foowd_vars_meta['title'], $title)) {
 			$this->title = $title;
 		} else {
 			return FALSE;
@@ -108,7 +105,7 @@ class foowd_object {
             while ( array_key_exists($this->objectid, $EXTERNAL_RESOURCES) ) {
                 if (!$allowDuplicateTitle) {
                     $this->objectid = 0;
-                    track();
+                    $foowd->track();
                     return FALSE;
                 }
                 $this->objectid++;
@@ -116,16 +113,11 @@ class foowd_object {
         }
 
 // check objectid, now in DB objects.
-		while (DBSelect($foowd->conn, $foowd->dbtable, NULL, 
-                        array('objectid'), 
-                        array('objectid = '.$this->objectid, 'AND', 
-                              'classid = '.$this->classid, 'AND', 
-                              'workspaceid = '.$this->workspaceid), 
-                        NULL, NULL, 1)) {
+		while (DBSelect($foowd, NULL, array('objectid'), array('AND', 'objectid = '.$this->objectid, 'classid = '.$this->classid, 'workspaceid = '.$this->workspaceid), NULL, NULL, 1)) {
 			if (!$allowDuplicateTitle) {
+				trigger_error('Could not create object, duplicate title "'.htmlspecialchars($title).'".');
 				$this->objectid = 0;
-                track();
-				return FALSE;
+				$foowd->track(); return FALSE;
 			}
 			$this->objectid++;
 		}
@@ -139,19 +131,14 @@ class foowd_object {
 		$this->updated = time();
 
 /* set method permissions */
-		$this->permissions['view'] = setVarConstOrDefault($viewGroup, 
-                                                          'DEFAULT_VIEW_GROUP',
-                                                          'Everyone');
-		$this->permissions['admin'] = setVarConstOrDefault($adminGroup, 
-                                                           'DEFAULT_ADMIN_GROUP', 
-                                                           'Gods');
-		$this->permissions['delete'] = setVarConstOrDefault($deleteGroup, 
-                                                            'DEFAULT_DELETE_GROUP', 
-                                                            'Gods');
-		$this->permissions['clone'] = setVarConstOrDefault($adminGroup, 
-                                                           'DEFAULT_ADMIN_GROUP', 
-                                                           'Gods');
-        track();
+		if ($viewGroup != NULL) $this->permissions['view'] = $viewGroup;
+		if ($adminGroup != NULL) {
+			$this->permissions['admin'] = $adminGroup;
+			$this->permissions['clone'] = $adminGroup;
+		}
+		if ($deleteGroup != NULL) $this->permissions['admin'] = $deleteGroup;
+
+		$foowd->track();
 	}
 	
 /*** SERIALIZE FUNCTIONS ***/
@@ -177,16 +164,14 @@ class foowd_object {
 		$this->foowd_vars_meta['updated'] = REGEX_DATETIME;
 		$this->foowd_vars_meta['updatorid'] = REGEX_ID;
 		$this->foowd_vars_meta['updatorName'] = REGEX_TITLE;
-		$this->foowd_vars_meta['permissions'] = REGEX_TITLE;
+		$this->foowd_vars_meta['permissions'] = REGEX_GROUP;
 /** INDEX METADATA **/
 		$this->foowd_indexes['objectid'] = 'INT NOT NULL';
 		$this->foowd_indexes['version'] = 'INT UNSIGNED NOT NULL DEFAULT 1';
 		$this->foowd_indexes['classid'] = 'INT NOT NULL DEFAULT 0';
 		$this->foowd_indexes['workspaceid'] = 'INT NOT NULL DEFAULT 0';
-		$this->foowd_indexes['title'] = 
-                    'VARCHAR('.getRegexLength($this->foowd_vars_meta['title'], 32).') NOT NULL';
-		$this->foowd_indexes['updated'] = 'DATETIME NOT NULL';
-        $this->foowd_indexes['sectionid'] = 'INT NOT NULL DEFAULT 0';
+		$this->foowd_indexes['title'] = 'VARCHAR('.getRegexLength($this->foowd_vars_meta['title'], 32).') NOT NULL';
+		$this->foowd_indexes['updated'] = DATABASE_DATETIME_DATATYPE.' NOT NULL';
 /** ORIGINAL ACCESS VARS **/
 		$this->foowd_original_access_vars['objectid'] = $this->objectid;
 		$this->foowd_original_access_vars['version'] = $this->version;
@@ -203,51 +188,74 @@ class foowd_object {
 /* set member variable */
 
 	function set(&$foowd, $member, $value = NULL) {
-        track('foowd_object::set',$member, $value);
+        $foowd->track('foowd_object->set',$member, $value);
 		if (isset($this->$member) || $this->$member == NULL) {
 			if (isset($this->foowd_vars_meta[$member])) {
-				if (is_array($value)) {
+				if (is_array($this->foowd_vars_meta[$member])) { // multi-depth array
+					$okay = TRUE;
 					foreach ($value as $val) {
-						if ($this->foowd_vars_meta[$member] != '' && 
-                            $this->foowd_vars_meta[$member] != NULL && 
-                            !preg_match($this->foowd_vars_meta[$member], $val)) {
-                            track();
-							return FALSE;
+						if (is_array($val)) {
+							if (!$this->setArray($val, $this->foowd_vars_meta[$member])) {
+								$okay = FALSE;
+							}
 						}
-						$this->$member = $value;
-                        track();
-						return TRUE;
 					}
-				} else {
-					if ($this->foowd_vars_meta[$member] == '' || 
-                        $this->foowd_vars_meta[$member] == NULL || 
-                        preg_match($this->foowd_vars_meta[$member], $value)) {
+					if ($okay) $this->$member = $value;
+					$foowd->track(); return $okay;
+				} elseif (is_array($value)) { // single depth array
+					$okay = TRUE;
+					foreach ($value as $val) {
+						if ($this->foowd_vars_meta[$member] == NULL || !preg_match($this->foowd_vars_meta[$member], $val)) {
+							$okay = FALSE;
+						}
+					}
+					if ($okay) $this->$member = $value;
+					$foowd->track(); return $okay;
+				} elseif ($this->foowd_vars_meta[$member] == 'binary') { // binary data
+					$this->$member = $value;
+					$foowd->track(); return TRUE;
+				} else { // non-complex type
+					if ($this->foowd_vars_meta[$member] == '' || $this->foowd_vars_meta[$member] == NULL || preg_match($this->foowd_vars_meta[$member], $value)) {
 						$this->$member = $value;
-                        track();
-						return TRUE;
+						$foowd->track(); return TRUE;
 					}
 				}
 			}
 		}
-        track();
-		return FALSE;
+		$foowd->track(); return FALSE;
+	}
+
+	function setArray($array, $regex) {
+		$okay = TRUE;
+		foreach ($array as $index => $val) {
+			if (is_array($val)) {
+				$okay = $this->setArray($index, $val, $regex[$index]);
+			} elseif (
+				$regex == NULL ||
+				!preg_match($regex[$index], $val)
+			) {
+				$okay = FALSE;
+			}
+		}
+		return $okay;
 	}
 
 /* save object */
 
-	function save(&$foowd, $incrementVersion = TRUE) { // write object to database
-        track('foowd_object::save',$incrementVersion);
+	function save(&$foowd, $incrementVersion = TRUE, $doUpdate = TRUE) { // write object to database
+		$foowd->track('foowd_object->save');
         
-// update values
-		$this->updatorid = $foowd->user->objectid;
-		$this->updatorName = $foowd->user->title;
-		$this->updated = time();
+		if ($doUpdate) { // update values
+			$this->updatorid = $foowd->user->objectid;
+			$this->updatorName = $foowd->user->title;
+			$this->updated = time();
+		}
+
 		if ($incrementVersion) { // create new version if told to
-			$object = $foowd->fetchObject(
-                array('objectid' => $this->foowd_original_access_vars['objectid'],
-                      'classid' => $this->foowd_original_access_vars['classid'],
-                      'workspaceid' => $this->foowd_original_access_vars['workspaceid']));
-			$this->version = ++$object->version;
+			$object = $foowd->fetchObject(array('objectid' => $this->foowd_original_access_vars['objectid'], 'classid' => $this->foowd_original_access_vars['classid'], 'workspaceid' => $this->foowd_original_access_vars['workspaceid']));
+			if ($object) {
+				$this->version = ++$object->version;
+			}
 			$this->foowd_original_access_vars['version'] = $this->version;
 		}
 
@@ -260,8 +268,7 @@ class foowd_object {
 				if ($this->$index == FALSE) {
 					$fieldArray[$index] = 0;
 				} else {
-					if (substr_count($definition, DATABASE_DATETIME_DATATYPE)) { 
-                        // translate unixtime to db date format
+					if (substr_count($definition, DATABASE_DATETIME_DATATYPE)) { // translate unixtime to db date format
 						$fieldArray[$index] = date(DATABASE_DATE, $this->$index);
 					} else {
 						$fieldArray[$index] = $this->$index;
@@ -271,26 +278,24 @@ class foowd_object {
 		}
 // set conditions
 		$conditionArray = array(
+			'AND',
 			'objectid = '.$this->foowd_original_access_vars['objectid'],
-			'AND',
 			'version = '.$this->foowd_original_access_vars['version'],
-			'AND',
 			'classid = '.$this->foowd_original_access_vars['classid'],
-			'AND',
 			'workspaceid = '.$this->foowd_original_access_vars['workspaceid']
 		);
 
 		$exitValue = FALSE;
 // try to update existing record
-		if (DBUpdate($foowd->conn, $foowd->dbtable, $fieldArray, $conditionArray)) {
+		if (DBUpdate($foowd, $fieldArray, $conditionArray)) {
 			$exitValue = 1;
 		} else {
 // if fail, write new record
-			if (DBInsert($foowd->conn, $foowd->dbtable, $fieldArray)) {
+			if (DBInsert($foowd, $fieldArray)) {
 				$exitValue = 2;
 			} else {
 // if fail, modify table to include indexes from class definition
-				if ($query = DBSelect($foowd->conn, $foowd->dbtable, NULL,
+				if ($query = DBSelect($foowd, NULL,
 					array('*'),
 					NULL,
 					NULL,
@@ -308,10 +313,10 @@ class foowd_object {
 							);
 						}
 					}
-					if ($missingFields != NULL && DBAlterTable($foowd->conn, $foowd->dbtable, $missingFields)) {
-						if (DBUpdate($foowd->conn, $foowd->dbtable, $fieldArray, $conditionArray)) {
+					if ($missingFields != NULL && DBAlterTable($foowd, $missingFields)) {
+						if (DBUpdate($foowd, $fieldArray, $conditionArray)) {
 							$exitValue = 3;
-						} elseif (DBInsert($foowd->conn, $foowd->dbtable, $fieldArray)) {
+						} elseif (DBInsert($foowd, $fieldArray)) {
 							$exitValue = 4;
 						}
 					}
@@ -319,56 +324,50 @@ class foowd_object {
 			}
 		}
 // tidy old archived versions
-		if ($exitValue && $this->updated < time() - setConstOrDefault('TIDY_DELAY', 86400)) {
+		if ($exitValue && $this->updated < time() - getConstOrDefault('TIDY_DELAY', 86400)) {
 			$this->tidyArchive(&$foowd);
 		}
-        track();
+        $foowd->track();
 		return $exitValue;
 	}
 
 /* delete object */
+
 	function delete(&$foowd) { // remove all versions of an object from the database
-        track('foowd_object::delete');
+		$foowd->track('foowd_object->delete');
 		$conditionArray = array(
+			'AND',
 			'objectid = '.$this->objectid,
-			'AND',
 			'classid = '.$this->classid,
-			'AND',
 		);
-		if ($this->workspaceid == 0) {
-			$conditionArray[] = 'workspaceid = 0';
+		$conditionArray[] = 'workspaceid = '.$this->workspaceid;
+		if (DBDelete($foowd, $conditionArray)) {
+			$foowd->track(); 
+            return TRUE;
 		} else {
-			$conditionArray[] = '(workspaceid = '.$this->workspaceid;
-			$conditionArray[] = 'OR';
-			$conditionArray[] = 'workspaceid = 0)';
-		}
-		if (DBDelete($foowd->conn, $foowd->dbtable, $conditionArray)) {
-			return TRUE;
-		} else {
-			return FALSE;
+			$foowd->track(); 
+            return FALSE;
 		}
 	}
 	
 /* tidy archive */
  
 	function tidyArchive(&$foowd) { // clean up old archived versions	
+		$foowd->track('foowd_object->tidyArchive');
 		$conditionArray = array(
+			'AND',
 			'objectid = '.$this->objectid,
-			'AND',
-			'version < '.($this->version - setConstOrDefault('MINIMUM_NUMBER_OF_ARCHIVED_VERSIONS', 3)),
-			'AND',
+			'version < '.($this->version - getConstOrDefault('MINIMUM_NUMBER_OF_ARCHIVED_VERSIONS', 3)),
 			'classid = '.$this->classid,
-			'AND',
 			'workspaceid = '.$this->workspaceid,
-			'AND',
-			'updated < "'.date(DATABASE_DATE, strtotime(setConstOrDefault('DESTROY_OLDER_THAN', '-1 Month'))).'"'
+			'updated < "'.date(DATABASE_DATE, strtotime(getConstOrDefault('DESTROY_OLDER_THAN', '-1 Month'))).'"'
 		);
-		if (DBDelete($foowd->conn, $foowd->dbtable, $conditionArray)) {
-            track();
-			return TRUE;
+		if (DBDelete($foowd, $conditionArray)) {
+			$foowd->track(); 
+            return TRUE;
 		} else {
-            track();
-			return FALSE;
+			$foowd->track(); 
+            return FALSE;
 		}
 	}
 
@@ -377,14 +376,14 @@ class foowd_object {
 /* create object */
 
 	function class_create(&$foowd, $className) {
-        track('foowd_object::class_create', $className);
+ 		$foowd->track('foowd_object->class_create', $className);
         $title = _("Create New Object");
-    	if (function_exists('foowd_prepend')) foowd_prepend($foowd, $this, $title);
-        
+    	if (function_exists('foowd_prepend')) foowd_prepend($foowd, $this, $title);       
         echo "<h1>$title</h1>";
 
-		$createForm = new input_form('createForm', NULL, 'POST', 'Create', NULL);
-		$createTitle = new input_textbox('createTitle', REGEX_TITLE, NULL, 'Object Title:');
+		$queryTitle = new input_querystring('title', REGEX_TITLE, NULL);
+		$createForm = new input_form('createForm', NULL, 'POST', _("Create"), NULL);
+		$createTitle = new input_textbox('createTitle', REGEX_TITLE, $queryTitle->value, _("Object Title").':');
 		if (!$createForm->submitted() || $createTitle->value == '') {
 			$createForm->addObject($createTitle);
 			$createForm->display();
@@ -393,14 +392,15 @@ class foowd_object {
 				$foowd,
 				$createTitle->value
 			);
-			if ($object->save($foowd, FALSE)) {
-				echo '<p>'._('Object created and saved.').'</p>';
+			if ($object->objectid != 0 && $object->save($foowd, FALSE)) {
+				echo '<p>', _("Object created and saved."), '</p>';
+				echo '<p>', sprintf(_('<a href="%s">Click here to view it now</a>.'), getURI(array('objectid' => $object->objectid, 'classid' => crc32(strtolower($className))))), '</p>';
 			} else {
-				echo '<p>'._('Could not create object.').'</p>';
+				trigger_error('Could not create object.');
 			}
 		}
 		if (function_exists('foowd_append')) foowd_append($foowd, $this);
-        track();
+		$foowd->track();
 	}
 
 /*** METHODS ***/
@@ -408,121 +408,83 @@ class foowd_object {
 /* view object */
 
 	function method_view(&$foowd) {
-        track('foowd_object::method_view');
-
+		$foowd->track('foowd_object->method_view');
 		if (function_exists('foowd_prepend')) foowd_prepend($foowd, $this);
-
-        echo '<h1>', _("Viewing Object"), ' "', $this->getTitle(), '"</h1>';
-
-		echo '<p>This object is of the base class "foowd_object" which',
-             ' is only intended to be extended and not instanciated.</p>';
+		echo '<h1>Viewing Object "', $this->getTitle(), '"</h1>';
+		echo '<p>This object is of the base class "foowd_object" which is only intended to be extended and not instanciated.</p>';
 		show($this);
 		if (function_exists('foowd_append')) foowd_append($foowd, $this);
-
-        track();
+		$foowd->track();
 	}
 
 /* object history */
 
 	function method_history(&$foowd) {
-		global $foowd_class_meta;
-        track('foowd_object::method_history');
-
+		$foowd->track('foowd_object->method_history');
 		if (function_exists('foowd_prepend')) foowd_prepend($foowd, $this);
-
-        echo '<h1>',_("History of Object"), ' ', $this->getTitle(), '</h1>';
 
 		$objArray = $foowd->getObject(array(
 			'objectid' => $this->objectid,
 			'classid' => $this->classid
 		));
 		
-		echo '<h3>'._('Object Details').'</h3>';
+		echo '<h3>', _("Object Details"), '</h3>';
 		echo '<p>';
-		echo '<em>Title:</em> ', $this->getTitle(), '<br />';
-		echo '<em>Created:</em> ', date(DATETIME_FORMAT, $this->created), '<br />';
-		echo '<em>Author:</em> ', $this->creatorName, '<br />';
-		echo '<em>Object Type:</em> ', 
-             $foowd_class_meta[(int)$this->classid]['description'], '<br />';
+		echo '<em>', _("Title"), ':</em> ', $this->getTitle(), '<br />';
+		echo '<em>', _("Created"), ':</em> ', date(DATETIME_FORMAT, $this->created), '<br />';
+		echo '<em>', _("Author"), ':</em> ', $this->creatorName, '<br />';
+		echo '<em>', _("Object Type"), ':</em> ', getClassDescription($this->classid), '<br />';
 		if ($this->workspaceid != 0) {
-			echo '<em>Workspace:</em> ', $this->workspaceid, '<br />';
+			echo '<em>', _("Workspace"), ':</em> ', $this->workspaceid, '<br />';
 		}
 		echo '</p>';
 		
-		echo '<h3>Archived Versions</h3>';
+		echo '<h3>', _("Archived Versions"), '</h3>';
 		echo '<table border="1">';
 		echo '<tr>';
-		echo '<th>Date</th>';
-		echo '<th>Author</th>';
-		echo '<th>Page Version</th>';
+		echo '<th>', _("Date"), '</th>';
+		echo '<th>', _("Author"), '</th>';
+		echo '<th>', _("Version"), '</th>';
 		echo '</tr>';
 		$foo = FALSE;
 		foreach ($objArray as $object) {
 			echo '<tr>';
 			echo '<td>', date(DATETIME_FORMAT, $object->updated), '</td>';
 			echo '<td>', $object->updatorName, '</td>';
-			echo '<td><a href="', getURI(array('method' => 'view', 
-                                               'objectid' => $object->objectid, 
-                                               'version' => $object->version, 
-                                               'classid' => $object->classid)), 
-                 '">', $object->version, '</a></td>';
+			echo '<td><a href="', getURI(array('method' => 'view', 'objectid' => $object->objectid, 'version' => $object->version, 'classid' => $object->classid)), '">', $object->version, '</a></td>';
 			if ($foo) {
-				echo '<td><a href="', getURI(array('method' => 'diff', 
-                                                   'objectid' => $object->objectid, 
-                                                   'version' => $object->version, 
-                                                   'classid' => $object->classid)), 
-                     '">Diff</a></td>';
-				echo '<td><a href="', getURI(array('method' => 'revert', 
-                                                   'objectid' => $object->objectid, 
-                                                   'version' => $object->version, 
-                                                   'classid' => $object->classid)), 
-                     '">Revert</a></td>';
+				echo '<td><a href="', getURI(array('method' => 'revert', 'objectid' => $object->objectid, 'version' => $object->version, 'classid' => $object->classid)), '">', _("Revert"), '</a></td>';
 			}
 			echo '</tr>';
 			$foo = TRUE;
 		}
 		echo '</table>';
 		if (function_exists('foowd_append')) foowd_append($foowd, $this);
-        track();
+		$foowd->track();
 	}
 
 /* administrate object */
 
 	function method_admin(&$foowd) {
-        track('foowd_object::method_admin');
-
+		$foowd->track('foowd_object->method_admin');
 		if (function_exists('foowd_prepend')) foowd_prepend($foowd, $this);
-		echo '<h1>Administrate "', $this->getTitle(), '"</h1>';
-		echo '<p>Use this form to update the values of this object.</p>';
+
+		echo '<p>', _("Use this form to administrate the values of this object."), '</p>';
 		$adminForm = new input_form('adminForm', NULL, 'POST');
-		$this->displayMemberVars($adminForm, get_object_vars($this));
-		$adminForm->display();
-		if ($adminForm->submitted()) { // object changed, save
-			if ($this->save($foowd, FALSE)) {
-				echo '<p>Object updated and saved.</p>';
-			} else {
-				echo '<p>Could not save object.</p>';
-			}
-		}
-		if (function_exists('foowd_append')) foowd_append($foowd, $this);
-        track();
-	}
 
-	function displayMemberVars(&$form, $obj) {
-        track('foowd_object::displayMemberVars');
-
+		$obj = get_object_vars($this);
 		unset($obj['foowd_vars_meta']);
 		unset($obj['foowd_indexes']);
 		unset($obj['foowd_original_access_vars']);
 		foreach ($obj as $memberName => $memberVar) {
 			if (is_array($memberVar)) {
-				$form->addObject($textarray = new input_textarray($memberName, 
-                                                                  $this->foowd_vars_meta[$memberName], 
-                                                                  $memberVar, 
-                                                                  ucwords($memberName)));
-				if ($form->submitted()) { // form submitted, update object with new values
-					$this->set($foowd, $memberName, $textarray->items);
+				$textarray = new input_textarray($memberName, $this->foowd_vars_meta[$memberName], $memberVar, ucwords($memberName).':');
+				if ($adminForm->submitted()) { // form submitted, update object with new values
+					if (!$this->set($foowd, $memberName, $textarray->items)) {
+						$textarray->items = $this->$memberName;
+					}
 				}
+				$adminForm->addObject($textarray);
 			} else {
 				if (isset($this->foowd_vars_meta[$memberName])) {
 					$reg = $this->foowd_vars_meta[$memberName];
@@ -530,132 +492,281 @@ class foowd_object {
 					$reg = '';
 				}
 				if ($reg == '') { // display textarea
-					$form->addObject($textbox = new input_textarea($memberName, 
-                                                                   NULL, 
-                                                                   $memberVar, 
-                                                                   ucwords(str_replace('$', ' ', $memberName))));
+					$adminForm->addObject($textbox = new input_textarea($memberName, NULL, $memberVar, ucwords($memberName).':'));
+				} elseif ($reg == 'binary') { // display nothing
+					$bin = ucwords($memberName).': Binary data';
+					$adminForm->addObject($bin);
 				} else { // display textbox
-					$form->addObject($textbox = new input_textbox($memberName, 
-                                                                  $reg, 
-                                                                  $memberVar, 
-                                                                  ucwords(str_replace('$', ' ', $memberName))));
+					$adminForm->addObject($textbox = new input_textbox($memberName, $reg, $memberVar, ucwords($memberName).':'));
 				}
-				if ($form->submitted()) { // form submitted, update object with new values
+				if ($adminForm->submitted()) { // form submitted, update object with new values
 					$this->set($foowd, $memberName, $textbox->value);
 				}
 			}
 		}
-        track();
+
+		$adminForm->display();
+		if ($adminForm->submitted()) { // object changed, save
+			if ($this->save($foowd, FALSE)) {
+				echo '<p>', _("Object updated and saved."), '</p>';
+			} else {
+				trigger_error('Could not save object.');
+			}
+		}
+		if (function_exists('foowd_append')) foowd_append($foowd, $this);
+		$foowd->track();
 	}
 
 /* revert object */
 
 	function method_revert(&$foowd) {
-        track('foowd_object::method_revert');
-
+		$foowd->track('foowd_object->method_revert');
 		if (function_exists('foowd_prepend')) foowd_prepend($foowd, $this);
-		echo '<h1>Revert "', $this->getTitle(), 
-             '" Back To Version #', $this->version, '</h1>';
-
+		echo '<h1>', sprintf(_('Revert "%s" back to version #%d'), $this->getTitle(), $this->version), '</h1>';
 		$confirm = new input_querystring('confirm', '/^[y]$/', FALSE);
-
 		if ($confirm->value) {
-			$this->save($foowd, TRUE);
-			echo '<p>Object reverted.</p>';
+			if ($this->save($foowd, TRUE)) {
+				echo '<p>', _("Object reverted."), '</p>';
+			} else {
+				trigger_error('Unable to revert object to previous version.');
+			}
 		} else {
-			echo '<p>Are you sure?</p>';
+			echo '<p>', _('Are you sure?'), '</p>';
 			echo '<p>';
-			echo '<a href="', getURI(array('method' => 'revert', 
-                                           'objectid' => $this->objectid, 
-                                           'version' => $this->version, 
-                                           'classid' => $this->classid, 
-                                           'confirm' => 'y')), 
-                 '">YES, revert "', $this->getTitle(), 
-                 '" back to version ', $this->version, '</a><br />';
-			echo '<a href="', getURI(array('method' => 'history', 
-                                           'objectid' => $this->objectid, 
-                                           'version' => $this->version, 
-                                           'classid' => $this->classid)), 
-                 '">NO, I made a mistake, leave it as it is.</a>';
+			printf(_('<a href="%s">YES, revert "%s" back to version %d</a><br />'), getURI(array('method' => 'revert', 'objectid' => $this->objectid, 'version' => $this->version, 'classid' => $this->classid, 'confirm' => 'y')), $this->getTitle(), $this->version);
+			printf(_('<a href="%s">NO, I made a mistake, leave it as it is.</a>'), getURI(array('method' => 'history', 'objectid' => $this->objectid, 'version' => $this->version, 'classid' => $this->classid)));
 			echo '</p>';
 		}
 		if (function_exists('foowd_append')) foowd_append($foowd, $this);
-
-        track();
+		$foowd->track();
 	}
 
 /* delete object */
 
 	function method_delete(&$foowd) {
-        track('foowd_object::method_delete');        
+		$foowd->track('foowd_object->method_delete');
+		if (function_exists('foowd_prepend')) foowd_prepend($foowd, $this, $this->getTitle());
 
-        // Specify title to avoid link
-		if (function_exists('foowd_prepend')) 
-            foowd_prepend($foowd, $this, $this->getTitle());
-		echo '<h1>Delete "', $this->getTitle(), '"</h1>';
 		$confirm = new input_querystring('confirm', '/^[y]$/', FALSE);
 		if ($confirm->value) {
-			$this->delete($foowd);
-			echo '<p>Object deleted.</p>';
+			if ($this->delete($foowd)) {
+				echo '<p>', _("Object deleted."), '</p>';
+			} else {
+				trigger_error('Unable to delete object.');
+			}
 		} else {
-			echo '<p>Are you sure?</p>';
+			echo '<p>', _('Are you sure?'), '</p>';
 			echo '<p>';
-			echo '<a href="', getURI(array('method' => 'delete', 
-                                           'objectid' => $this->objectid, 
-                                           'classid' => $this->classid, 
-                                           'confirm' => 'y')), 
-                 '">YES, delete "', $this->getTitle(), 
-                 '" and all of it\'s archived previous versions.</a><br />';
-
-			echo '<a href="', getURI(array('method' => 'view', 
-                                           'objectid' => $this->objectid, 
-                                           'classid' => $this->classid)), 
-                 '">NO, I made a mistake, leave it as it is.</a>';
+			printf(_('<a href="%s">YES, delete "%s" and all of it\'s archived previous versions.</a><br />'), getURI(array('method' => 'delete', 'objectid' => $this->objectid, 'classid' => $this->classid, 'confirm' => 'y')), $this->getTitle());
+			printf(_('<a href="%s">NO, I made a mistake, leave it as it is.</a>'), getURI(array('method' => 'view', 'objectid' => $this->objectid, 'classid' => $this->classid)));
 			echo '</p>';
 		}
 		if (function_exists('foowd_append')) foowd_append($foowd, $this);
-        track();
+		$foowd->track();
 	}
 
 /* clone object */
 
 	function method_clone(&$foowd) {
-        track('foowd_object::method_clone');
+		$foowd->track('foowd_object->method_clone');
+		$title = sprintf(_('Clone Version #%s Of "%s"'), $this->version, $this->getTitle());
+		if (function_exists('foowd_prepend')) foowd_prepend($foowd, $this, $title);
 
-		if (function_exists('foowd_prepend')) foowd_prepend($foowd, $this);
-		echo '<h1>Clone Version #', $this->version, ' Of "', $this->getTitle(), '"</h1>';
 		$cloneForm = new input_form('cloneForm', NULL, 'POST', 'Clone Object', NULL);
-		$cloneTitle = new input_textbox('cloneTitle', REGEX_TITLE, 
-                                         $this->getTitle(), 'Clone Title');
-		$workspaces = $foowd->getObjects(array('classid = -679419151'), array('title'));
-		$workspaceArray = array(0 => 'Outside');
-		foreach ($workspaces as $workspace) {
-			if ($foowd->user->inGroup($workspace->permissions['enter'])) {
-				$workspaceArray[$workspace->objectid] = htmlspecialchars($workspace->title);
+		$cloneTitle = new input_textbox('cloneTitle', REGEX_TITLE, $this->getTitle(), 'Clone Title');
+		if (defined('WORKSPACE_CLASS_ID')) {
+			$workspaces = $foowd->retrieveObjects(array('classid = '.WORKSPACE_CLASS_ID), array('title'));
+			$workspaceArray = array(0 => getConstOrDefault('OUTSIDE_WORKSPACE_NAME', 'Outside'));
+			if ($workspaces) {
+				while ($workspace = $foowd->retrieveObject($workspaces)) {
+					if ($foowd->user->inGroup($workspace->permissions['fill']) && ($this->classid != WORKSPACE_CLASS_ID || $this->objectid != $workspace->objectid)) {
+						$workspaceArray[$workspace->objectid] = htmlspecialchars($workspace->title);
+					}
+				}
 			}
+			$cloneWorkspace = new input_dropdown('workspaceDropdown', NULL, $workspaceArray, 'Workspace: ');
+			$newWorkspace = $cloneWorkspace->value;
+		} else {
+			$newWorkspace = 0;
 		}
-		$cloneWorkspace = new input_dropdown('workspaceDropdown', NULL, 
-                                             $workspaceArray, 'Workspace: ');
 		if ($cloneForm->submitted()) {
-			$this->title = $cloneTitle->value;
-			$this->objectid = crc32(strtolower($this->title));
-			$this->workspaceid = $cloneWorkspace->value;
-
-            // adjust original workspace so as to create new object rather 
-            // than overwrite old one.
-			$this->foowd_original_access_vars['workspaceid'] = $cloneWorkspace->value;
-
-			$this->save($foowd, FALSE);
-			echo '<p>Object cloned.</p>';
+			if ($this->workspaceid == $newWorkspace && $this->title == $cloneTitle->value) {
+				trigger_error('Can not clone object to the same title within the same workspace.');
+			} else {
+				$this->title = $cloneTitle->value;
+				$this->objectid = crc32(strtolower($this->title));
+				$this->workspaceid = $newWorkspace;
+				 // adjust original workspace so as to create new object rather than overwrite old one.
+				$this->foowd_original_access_vars['objectid'] = $this->objectid;
+				$this->foowd_original_access_vars['workspaceid'] = $this->workspaceid;
+				if ($this->save($foowd, FALSE)) {
+					echo '<p>', _("Object cloned."), '</p>';
+				} else {
+					trigger_error('Could not clone object.');
+				}
+			}
 		} else {
 			$cloneForm->addObject($cloneTitle);
 			$cloneForm->addObject($cloneWorkspace);
 			$cloneForm->display();
 		}
 		if (function_exists('foowd_append')) foowd_append($foowd, $this);
-        track();
+		$foowd->track();
+	}
+
+/* object 2 XML */
+
+	function method_xml(&$foowd) {
+		$foowd->debug = FALSE;
+		header("Content-type: text/xml");
+		echo '<?xml version="1.0"?>';
+		echo '<foowd version="', VERSION, '" generated="', time(), '">';
+		echo '<', get_class($this), '>';
+		$this->vars2XML(get_object_vars($this), $this->__sleep());
+		echo '</', get_class($this), '>';
+		echo '</foowd>';
+	}
+
+	function vars2XML($vars, $goodVars) {
+		foreach ($vars as $memberName => $memberVar) {
+			if ($memberName !== '' && (!$goodVars || in_array($memberName, $goodVars))) {
+				if (is_numeric(substr($memberName, 0, 1))) {
+					$memberName = 'i'.$memberName;
+				}
+				echo '<', $memberName, '>';
+				if (is_array($memberVar)) { // an array
+					$this->vars2XML($memberVar, FALSE);
+				} elseif (isset($this->foowd_vars_meta[$memberName]) && $this->foowd_vars_meta[$memberName] == 'binary') { // binary data
+					echo '<![CDATA['.utf8_encode($memberVar).']]>';
+				} else { // yay, a var
+					if (strstr($memberVar, '<') || strstr($memberVar, '>') || strstr($memberVar, '&')) {
+//						$xml_parser = xml_parser_create();
+//						if (xml_parse($xml_parser, '<xml>'.$memberVar.'</xml>', TRUE)) {
+//							echo $memberVar;
+//						} else {
+							echo '<![CDATA['.$memberVar.']]>';
+//						}
+//						xml_parser_free($xml_parser);
+					} else {
+						echo $memberVar;
+					}
+				}
+				echo '</', $memberName, '>';
+			}
+		}
+	}
+
+/* user group support for permissions */
+
+	function method_permissions(&$foowd) {
+		$foowd->track('foowd_object->method_permissions');
+		if (function_exists('foowd_prepend')) foowd_prepend($foowd, $this);
+
+		$permissionForm = new input_form('permissionForm', NULL, 'POST');
+
+		$items = $foowd->getUserGroups(TRUE);
+
+		$permissionForm->display_start();
+		$changed = FALSE;
+		foreach (get_class_methods($this) as $methodName) {
+			if (substr($methodName, 0, 7) == 'method_') {
+				$methodName = substr($methodName, 7);
+				if (isset($this->permissions[$methodName])) {
+					$value = $this->permissions[$methodName];
+				} else {
+					$value = '';
+				}
+				$defaultPermission = getPermission(get_class($this), $methodName, 'object');
+				if (isset($items[$defaultPermission])) {
+					$items[''] = _("Default").' ('.$defaultPermission.')';
+				} else {
+					unset($items['']);
+				}
+				if (isset($items[$value])) {
+					$permissionBox = new input_dropdown($methodName, $value, $items, ucwords($methodName).':');
+					$permissionBox->display();
+					echo '<br />';
+					if ($permissionForm->submitted()) {
+						$changed = TRUE;
+						if ($permissionBox->value == '') {
+							unset($this->permissions[$methodName]);
+						} else {
+							$this->permissions[$methodName] = $permissionBox->value;
+						}
+					}
+				} else {
+					echo ucwords($methodName).': ';
+					if (isset($this->permissions[$methodName])) {
+						echo $this->permissions[$methodName];
+					} else {
+						echo _("Default").' (', getPermission(get_class($this), $methodName, 'object'), ')';
+					}
+					echo '<br />';
+				}
+			}
+		}
+		$permissionForm->display_end();
+
+		if ($permissionForm->submitted() && $changed) {
+			if ($this->save($foowd, FALSE)) {
+				echo '<p>', _("Object permissions updated."), '</p>';
+			} else {
+				trigger_error('Could not save object.');
+			}
+		}
+
+		if (function_exists('foowd_append')) foowd_append($foowd, $this);
+		$foowd->track();
+	}
+
+}
+
+/*** ANONYMOUS USER ***/
+
+/* Anonymous user class, used to instanciate bogus user for anoymous access where
+   only basic user data is required and it would be a waste to pull a user from the
+   database. */
+
+class foowd_anonuser extends foowd_object {
+    function foowd_anonuser(&$foowd) {
+        $foowd->track('foowd_anonuser->constructor');
+        if (defined('ANONYMOUS_USER_NAME')) {
+            $this->title = ANONYMOUS_USER_NAME;
+        } elseif (isset($_SERVER['REMOTE_ADDR'])) {
+            $this->title = $_SERVER['REMOTE_ADDR'];
+        } else {
+            $this->title = 'Anonymous';
+        }
+        $this->objectid = NULL;
+        $this->version = 1;
+        $this->classid = -1063205124;
+        $this->workspaceid = 0;
+        $this->created = time();
+        $this->creatorid = 0;
+        $this->creatorName = 'System';
+        $this->updated = time();
+        $this->updatorid = 0;
+        $this->updatorName = 'System';
+        $this->email = NULL;
+        $this->permissions = NULL;
+		$foowd->track();
+    }
+
+    function inGroup($groupName, $creatorid = NULL) {
+        if ($groupName == 'Everyone' || getConstOrDefault('ANON_GOD', FALSE)) {
+            return TRUE;
+        } else {
+            return FALSE;
+        }
+    }
+	
+	function passwordCheck($password, $plainText = FALSE) {
+		return TRUE;
 	}
 	
+	function save(&$foowd) { // override save function since it's not a real Foowd object and is just instanciated as needed.
+		return FALSE;
+	}
 }
 
 ?>

@@ -25,8 +25,7 @@ Foowd HTML text class
 */
 
 /** CLASS DESCRIPTOR **/
-if (!defined('META_1158898744_CLASSNAME')) define('META_1158898744_CLASSNAME', 'foowd_text_html');
-if (!defined('META_1158898744_DESCRIPTION')) define('META_1158898744_DESCRIPTION', 'HTML Text Document');
+setClassMeta('foowd_text_html', 'HTML Text Document');
 
 /** CLASS DECLARATION **/
 class foowd_text_html extends foowd_text_plain {
@@ -113,8 +112,8 @@ class foowd_text_html extends foowd_text_plain {
 	function method_edit(&$foowd) {
 		$foowd->track('foowd_text_html->method_edit');
 		if (function_exists('foowd_prepend')) foowd_prepend($foowd, $this);
-		echo '<h1>Editing version ', $this->version, ' of "', $this->getTitle(), '"</h1>';
-		$editForm = new input_form('editForm', NULL, 'POST', 'Save', NULL, 'Preview');
+
+		$editForm = new input_form('editForm', NULL, 'POST', _("Save"), NULL, _("Preview"));
 		$editCollision = new input_hiddenbox('editCollision', REGEX_DATETIME, time());
 		if ($editCollision->value >= $this->updated && $editForm->submitted()) { // if we're going to update, reset collision detect
 			$editCollision->set(time());		
@@ -123,7 +122,7 @@ class foowd_text_html extends foowd_text_plain {
 		$editArea = new input_textarea('editArea', NULL, $this->body, NULL, 80, 20);
 		$editForm->addObject($editArea);
 		if (isset($foowd->user->objectid) && $this->updatorid == $foowd->user->objectid) { // author is same as last author and not anonymous, so can just update
-			$newVersion = new input_checkbox('newVersion', TRUE, 'Do not archive previous version?');
+			$newVersion = new input_checkbox('newVersion', TRUE, _('Do not archive previous version?'));
 			$editForm->addObject($newVersion);
 		}
 		$editForm->display();
@@ -137,15 +136,15 @@ class foowd_text_html extends foowd_text_plain {
 					$createNewVersion = TRUE;
 				}
 				if ($this->save($foowd, $createNewVersion)) {
-					echo '<p>HTML text object updated and saved.</p>';
+					echo '<p>', _("HTML text object updated and saved."), '</p>';
 				} else {
 					trigger_error('Could not save HTML text object.');
 				}
 			} else { // edit collision!
-				echo '<h3>Warning: This object has been updated by another user since you started editing, please reload the edit page and verify their changes before continuing to edit.</h3>';
+				echo '<h3>', _('Warning: This object has been updated by another user since you started editing, please reload the edit page and verify their changes before continuing to edit.'), '</h3>';
 			}
 		} elseif ($editForm->previewed()) {
-			echo '<h3>Preview</h3>';
+			echo '<h3>', _("Preview"), '</h3>';
 			$body = $editArea->value;
 			if ($this->evalCode || $this->processInclude) {
 				$body = $this->processPIs($foowd, $body);

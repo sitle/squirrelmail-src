@@ -25,26 +25,27 @@ Foowd plain text class
 */
 
 /** METHOD PERMISSIONS **/
-setPermission('foowd_workspace', 'class', 'create', 'Nobody');
-setPermission('foowd_workspace', 'object', 'enter', 'Everyone');
-setPermission('foowd_workspace', 'object', 'fill', 'Translator');
-setPermission('foowd_workspace', 'object', 'empty', 'Translator');
-setPermission('foowd_workspace', 'object', 'export', 'Gods');
-setPermission('foowd_workspace', 'object', 'import', 'Gods');
+setPermission('foowd_translation', 'class', 'create', 'Translator');
+setPermission('foowd_translation', 'object', 'enter', 'Everyone');
+setPermission('foowd_translation', 'object', 'fill', 'Translator');
+setPermission('foowd_translation', 'object', 'empty', 'Translator');
+setPermission('foowd_translation', 'object', 'export', 'Gods');
+setPermission('foowd_translation', 'object', 'import', 'Gods');
 
 /** CLASS DESCRIPTOR **/
-setClassMeta('foowd_workspace', 'Workspace');
+setClassMeta('foowd_translation', 'Site Translation');
 
-//setConst('WORKSPACE_CLASS_ID', META_FOOWD_WORKSPACE_CLASS_ID);
+setConst('WORKSPACE_CLASS_ID', META_FOOWD_TRANSLATION_CLASS_ID);
+setConst('TRANSLATION_CLASS_ID', META_FOOWD_TRANSLATION_CLASS_ID);
 
 /** CLASS DECLARATION **/
-class foowd_workspace extends foowd_object {
+class foowd_translation extends foowd_workspace {
 
-	var $description;
+	var $language_icon;
 	
 /*** CONSTRUCTOR ***/
 
-	function foowd_workspace(
+	function foowd_translation(
 		&$foowd,
 		$title = NULL,
 		$description = NULL,
@@ -55,31 +56,20 @@ class foowd_workspace extends foowd_object {
 		$fillGroup = NULL,
 		$emptyGroup = NULL,
 		$exportGroup = NULL,
-		$importGroup = NULL
+		$importGroup = NULL,
+		$icon = NULL
 	) {
-		$foowd->track('foowd_workspace->constructor');
+		$foowd->track('foowd_translation->constructor');
 
 // base object constructor
-		parent::foowd_object($foowd, $title, $viewGroup, $adminGroup, $deleteGroup);
+		parent::foowd_workspace($foowd, $title, $description, 
+		            $viewGroup, $adminGroup, $deleteGroup,
+		            $fillGroup, $emptyGroup, $exportGroup, $importGroup);
 
 /* set object vars */
-		$this->description = $description;
-
-/* set method permissions */
-		if ($enterGroup != NULL) $this->permissions['enter'] = $enterGroup;
-		if ($fillGroup != NULL) $this->permissions['fill'] = $fillGroup;
-		if ($emptyGroup != NULL) $this->permissions['empty'] = $emptyGroup;
-		if ($exportGroup != NULL) $this->permissions['export'] = $exportGroup;
-		if ($importGroup != NULL) $this->permissions['import'] = $importGroup;
+		$this->language_icon = $icon;
 
 		$foowd->track();
-	}
-
-/*** SERIALIZE FUNCTIONS ***/
-
-	function __wakeup() {
-		parent::__wakeup();
-		$this->foowd_vars_meta['description'] = '/^.{1,1024}$/';
 	}
 
 /*** CLASS METHODS ***/
@@ -88,15 +78,30 @@ class foowd_workspace extends foowd_object {
 
 	function class_create(&$foowd, $className) {
 		$foowd->track('foowd_workspace->class_create');
-		if (function_exists('foowd_prepend')) foowd_prepend($foowd, $this);
-		echo '<h1>', _("Create new workspace"), '</h1>';
+        if ( $foowd->user->workspaceid != 0 ) {
+            trigger_error('Can not create nested translations. Return to the main workspace to create another translation');
+		}
+
+
+		if (function_exists('foowd_prepend')) foowd_prepend($foowd, $this, _("Create New Translation"));
+?>
+<p>This site is translated using 
+<a href="http://www.gnu.org/manual/gettext/html_mono/gettext.html">gettext</a>.</p>
+
+<p>To create a new translation, first create a workspace identified by standard
+   <a href="http://www.gnu.org/manual/gettext/html_mono/gettext.html#SEC221">Language</a> 
+   and <a href="http://www.gnu.org/manual/gettext/html_mono/gettext.html#SEC222">Country Codes</a>
+</p>
+<?php
 		$queryTitle = new input_querystring('title', REGEX_TITLE, NULL);
 		$createForm = new input_form('createForm', NULL, 'POST', _("Create"), NULL);
-		$createTitle = new input_textbox('createTitle', REGEX_TITLE, $queryTitle->value, _("Title").':');
-		$createDescription = new input_textbox('createDescription', '/^.{1,1024}$/', NULL, _("Description").':', NULL, NULL, NULL, FALSE);
+		$createTitle = new input_textbox('createTitle', REGEX_TITLE, $queryTitle->value);
+		$createDescription = new input_textbox('createDescription', '/^.{1,1024}$/', NULL, NULL, NULL, NULL, NULL, FALSE);
 		if (!$createForm->submitted() || $createTitle->value == '') {
-			$createForm->addObject($createTitle);
-			$createForm->addObject($createDescription);
+		    $table = new input_table();
+			$table->addObject(_("Language/Country Code ") . '(de_DE, es_ES)', $createTitle);
+			$table->addObject(_("Language/Country in English (German/Germany, Spanish/Spain)"), $createDescription);
+			$createForm->addObject($table);
 			$createForm->display();
 		} else {
 			$object = new $className(
@@ -111,6 +116,7 @@ class foowd_workspace extends foowd_object {
 				trigger_error('Could not create workspace.');
 			}
 		}
+				
 		if (function_exists('foowd_append')) foowd_append($foowd, $this);
 		$foowd->track();
 	}
@@ -172,8 +178,8 @@ class foowd_workspace extends foowd_object {
 		if (!$objects) {
 			parent::method_delete($foowd);
 		} else {
-			if (function_exists('foowd_prepend')) foowd_prepend($foowd, $this);
-			echo '<h1>', sprintf(_("Delete Workspace %s"), $this->getTitle()), '</h1>';
+			if (function_exists('foowd_prepend')) foowd_prepend($foowd, $this, $this->title);
+
 			$uri = getURI(array(
 				'objectid' => $this->objectid,
 				'classid' => $this->classid,
