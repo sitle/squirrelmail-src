@@ -86,7 +86,9 @@ class input_file {
 	}
 
 	function display() {
-		echo $this->caption, ' <input type="hidden" name="MAX_FILE_SIZE" value="', $this->maxsize, '" /><input name="', $this->name, '" type="file" size="', $this->size, '" />';
+		echo $this->caption, ' ';
+		echo '<input type="hidden" name="MAX_FILE_SIZE" value="', $this->maxsize, '" />';
+		echo '<input name="', $this->name, '" type="file" size="', $this->size, '" />';
 	}
 
 }
