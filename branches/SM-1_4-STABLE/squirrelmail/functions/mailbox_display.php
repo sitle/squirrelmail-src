@@ -734,7 +734,7 @@ function mail_message_listing_beginning ($imapConnection,
         $location = $php_self;
     }
 
-    $location = urlencode($location);
+//    $location = urlencode($location);
 
     echo '<INPUT TYPE="HIDDEN" NAME="location" VALUE="'.$location.'">';
     echo "</TD>\n"
