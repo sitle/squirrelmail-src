@@ -23,18 +23,19 @@ Version 1.4.2 -- CVS
   - Updated 'action' to be 'smaction' so that plugins can modify the submit/action of
     forms.  This was suggested for the gpg plugin, but might be useful elsewhere.
   - Fix bug that after sending reply user was returned to the first page of the
-    message list, which should be te last-active page (use startMessage).
+    message list, which should be the last-active page (use startMessage).
   - Fix forwarded emails as attachment from appended ) to the email.
   - Prevent username and password from being sent in error message if IMAP
     drops connection during login.
   - Workaround for Mozilla bug #200412 in order to show multipart/related html mail.
-  - Fix for disapearing '0' from decoded strings (bug #784193).
+  - Fix for disappearing '0' from decoded strings (bug #784193).
   - Add Minimal BW theme: a colorless environment for browsers that don't support colors.
   - Replace all session_start() calls with sqsession_is_active() to be compatible
     with upcoming PHP 4.3.3.
   - Encoding of Russian translation changed to utf-8. Lithuanian translation changed
     to iso-8859-4. Fix allows to use national letters in folder names correctly.
-  - Reintroduced mailbox-tree caching in order to limit the number of imap-calls
+  - Reintroduced mailbox-tree caching in order to limit the number of IMAP calls.
+  - Fix for delete_move_next plugin when using server threading.
 
 
 Version 1.4.1 -- 7 July 2003
