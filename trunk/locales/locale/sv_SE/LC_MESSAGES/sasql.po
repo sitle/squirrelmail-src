@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: sasql\n"
-"POT-Creation-Date: 2004-12-28 17:51+0200\n"
-"PO-Revision-Date: 2005-03-12 15:51+0100\n"
+"POT-Creation-Date: 2005-02-15 12:39+0200\n"
+"PO-Revision-Date: 2005-03-12 17:37+0100\n"
 "Last-Translator: Fredrik Jervfors <sqm_admin@fimbul.net>\n"
 "Language-Team: Swedish <squirrelmail-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -102,9 +102,9 @@ msgid ""
 "folder. This folder is periodically checked for messages which are then "
 "learned as false positives and deleted."
 msgstr ""
-"Du kan också flytta ett felaktigt markerat brev till mappen <i>%s</i>. Denna "
-"mapp genomsöks periodiskt efter brev som ska läras in som legitima och "
-"därefter kastas."
+"Du kan också flytta ett felaktigt markerat brev till mappen <i>%s</i> från "
+"mappen %s. Denna mapp genomsöks periodiskt efter brev som ska läras in som "
+"legitima och därefter kastas."
 
 msgid "Disclaimer"
 msgstr "Förbehåll"
@@ -409,7 +409,7 @@ msgid "sasql_DBConnect Database error: %s"
 msgstr "sasql_DBConnect databasfel: %s"
 
 #, c-format
-msgid "sasql_ReadWBList Database error: $s"
+msgid "sasql_ReadWBList Database error: %s"
 msgstr "sasql_ReadWBList databasfel: %s"
 
 #, c-format
@@ -437,7 +437,7 @@ msgid "sasql_DelPref Database error: %s"
 msgstr "sasql_DelPref databasfel: %s"
 
 #, c-format
-msgid "sasql_GetPref Database error: $s"
+msgid "sasql_GetPref Database error: %s"
 msgstr "sasql_GetPref databasfel: %s"
 
 msgid "Spam Filter Configuration"
