@@ -18,11 +18,9 @@
  * @return bool indicates whether or not the name is valid
  */
 function zkCheckName($name) {
-    if (preg_match('/^[A-Za-z]([_-]?[A-Za-z0-9])*$/',$name)) {
-        return (true);
-    }
-    
-    return (false);
+
+    return (preg_match('/^[A-Za-z]([_-]?[A-Za-z0-9])*$/',$name));
+
 }
 
 /**
