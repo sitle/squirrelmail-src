@@ -2,8 +2,13 @@
 *** SquirrelMail Stable Series 1.4 ***
 **************************************
 
+
 Version 1.4.4 - CVS
 -------------------
+  - Fix listcommands plugin to include src/ in compose links.
+  
+Version 1.4.4 RC1 - 31 December 2004
+------------------------------------
   - Get alternating row colors of addressbook in sync with mailbox list.
   - Fix bug in detecting the delimiter in a folder moved to trash.
   - Trailing spaces are no longer trimmed from folder names (#818974).
@@ -64,8 +69,8 @@ Version 1.4.4 - CVS
   - Fixed bug in IMAP read routines that treated "0" as false instead of
     a string (patch courtesy Maurice Makaay).
   - Fixed PHP notice when header property value is blank.
-  - Fixed decoding function problems when mbstring.func_override has MB_OVERLOAD_REGEX
-    enabled.
+  - Fixed decoding function problems when mbstring.func_override has
+    MB_OVERLOAD_REGEX enabled.
   - Removed command line option unsupported by qmail-inject in
     class/deliver/Deliver_SendMail.class.php. Thanks to Ken Brush.
   - Ported charset encoding patches from devel. Closes bug #806698 and
@@ -75,31 +80,30 @@ Version 1.4.4 - CVS
   - Disabled use of info plugin, when it is not enabled in config.
   - Fixed path used by random theme.
   - Added global address book configuration support and options to select
-    writeable address book backend. Removed 'global_file' address book
+    writable address book backend. Removed 'global_file' address book
     backend. 'global_file' backend functions are provided by 'local_file'
     backend.
   - Sanitized nickname and name entries in address listing.
-  - LDAP backend will use internal squirrelmail charset conversion functions
-    instead of php xml extension. Closes bug #655137.
+  - LDAP backend will use internal SquirrelMail charset conversion functions
+    instead of the php xml extension. Closes bug #655137.
   - Fix two time zone calculation bugs, thanks to David White. Fixes #1063879.
   - Handle a reload of the signout page gracefully: do not present an error
     about having to be logged in to be able to sign out. Fixes #1070069.
   - Prevent "&" being eaten in set_url_var, thanks Marcin Orlowski. Fixes
     #1053725.
   - Added size attributes to newmail plugin sounds. Fixes #818958.
-  - Updated translation engine options in translate plugin. Added google
-    translate. Disabled gpltrans engine, because it is no longer available.
+  - Updated translation engine options in translate plugin. Added Google
+    translate. Disabled GPLtrans engine, because it is no longer available.
   - RFC822 header compliance with regards to SM based header containing an
     extra ; in the Received header. Fixes #1088548.
   - Add IMAP server type "hmailserver" to make search work with hMailServer.
     Fixes #1085377.
-  - Reuploaded newmail plugin sounds. Fixes files uploaded to cvs without binary
+  - Reuploaded newmail plugin sounds. Fixes files uploaded to CVS without binary
     option.
   - Changing your JavaScript preference required a re-login to work.
     Fixes #983614.
   - Miscellaneous documentation updates / improvements.
-  - Compose-in-new didn't always work with JavaScript disabled. (#801999).
-  - Fix listcommands plugin to include src/ in compose links.
+  - Compose-in-new didn't always work with JavaScript disabled (#801999).
 
 Version 1.4.3a - 2 June 2004
 ----------------------------
