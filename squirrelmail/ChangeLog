@@ -91,6 +91,8 @@ Version 1.4.4 - CVS
   - Added size attributes to newmail plugin sounds. Fixes #818958.
   - Updated translation engine options in translate plugin. Added google
     translate. Disabled gpltrans engine, because it is no longer available.
+  - RFC822 header compliance with regards to SM based header containing an
+    extra ; in the Received header. Fixes #1088548.
 
 
 Version 1.4.3a - 2 June 2004
