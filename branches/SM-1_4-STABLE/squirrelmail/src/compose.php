@@ -154,8 +154,8 @@ function replyAllString($header) {
 
 function getReplyCitation($orig_from, $orig_date) {
     global $reply_citation_style, $reply_citation_start, $reply_citation_end;
-    $orig_from = decodeHeader($orig_from->getAddress(false),false,false);
-//    $from = decodeHeader($orig_header->getAddr_s('from',"\n$indent"),false,false);
+    $orig_from = decodeHeader($orig_from->getAddress(false),false,false,true);
+
     /* First, return an empty string when no citation style selected. */
     if (($reply_citation_style == '') || ($reply_citation_style == 'none')) {
         return '';
@@ -206,11 +206,11 @@ function getforwardHeader($orig_header) {
     foreach($display as $key => $val) {
         $display[$key] = $key .': '. str_pad('', $maxsize - $val);
     }
-    $from = decodeHeader($orig_header->getAddr_s('from',"\n$indent"),false,false);
+    $from = decodeHeader($orig_header->getAddr_s('from',"\n$indent"),false,false,true);
     $from = str_replace('&nbsp;',' ',$from);
-    $to = decodeHeader($orig_header->getAddr_s('to',"\n$indent"),false,false);
+    $to = decodeHeader($orig_header->getAddr_s('to',"\n$indent"),false,false,true);
     $to = str_replace('&nbsp;',' ',$to);
-    $subject = decodeHeader($orig_header->subject,false,false);
+    $subject = decodeHeader($orig_header->subject,false,false,true);
     $subject = str_replace('&nbsp;',' ',$subject);
     $bodyTop =  str_pad(' '._("Original Message").' ',$editor_size -2,'-',STR_PAD_BOTH) .
         "\n". $display[_("Subject")] . $subject . "\n" .
@@ -218,7 +218,7 @@ function getforwardHeader($orig_header) {
         $display[_("Date")] . getLongDateString( $orig_header->date ). "\n" .
         $display[_("To")] . $to . "\n";
     if ($orig_header->cc != array() && $orig_header->cc !='') {
-        $cc = decodeHeader($orig_header->getAddr_s('cc',"\n$indent"),false,false);
+        $cc = decodeHeader($orig_header->getAddr_s('cc',"\n$indent"),false,false,true);
         $cc = str_replace('&nbsp;',' ',$cc);
         $bodyTop .= $display[_("Cc")] .$cc . "\n";
     }
@@ -571,7 +571,14 @@ function newMail ($mailbox='', $passed_id='', $passed_ent_id='', $action='', $se
         $use_signature, $composesession, $data_dir, $username,
         $username, $key, $imapServerAddress, $imapPort, $compose_messages,
         $composeMessage;
-    global $languages, $squirrelmail_language;
+    global $languages, $squirrelmail_language, $default_charset;
+
+    /*
+     * Set $default_charset to correspond with the user's selection
+     * of language interface. $default_charset global is not correct,
+     * if message is composed in new window.
+     */
+    set_my_charset();
 
     $send_to = $send_to_cc = $send_to_bcc = $subject = $identity = '';
     $mailprio = 3;
@@ -630,6 +637,18 @@ function newMail ($mailbox='', $passed_id='', $passed_ent_id='', $action='', $se
                     $bodypart = $languages[$squirrelmail_language]['XTRA_CODE']('decode', $bodypart);
                 }
             }
+
+            // charset encoding in compose form stuff
+            if (isset($body_part_entity->header->parameters['charset'])) {
+                $actual = $body_part_entity->header->parameters['charset'];
+            } else {
+                $actual = 'us-ascii';
+            }
+            if ( $actual && is_conversion_safe($actual) && $actual != $default_charset){
+                $bodypart = charset_convert($actual,$bodypart,$default_charset,false);
+            }
+            // end of charset encoding in compose
+
             $body .= $bodypart;
         }
         if ($default_use_priority) {
@@ -682,10 +701,10 @@ function newMail ($mailbox='', $passed_id='', $passed_ent_id='', $action='', $se
             case ('draft'):
                 $use_signature = FALSE;
                 $composeMessage->rfc822_header = $orig_header;
-                $send_to = decodeHeader($orig_header->getAddr_s('to'),false,false);
-                $send_to_cc = decodeHeader($orig_header->getAddr_s('cc'),false,false);
-                $send_to_bcc = decodeHeader($orig_header->getAddr_s('bcc'),false,false);
-                $subject = decodeHeader($orig_header->subject,false,false);
+                $send_to = decodeHeader($orig_header->getAddr_s('to'),false,false,true);
+                $send_to_cc = decodeHeader($orig_header->getAddr_s('cc'),false,false,true);
+                $send_to_bcc = decodeHeader($orig_header->getAddr_s('bcc'),false,false,true);
+                $subject = decodeHeader($orig_header->subject,false,false,true);
                 /* remember the references and in-reply-to headers in case of an reply */
                 $composeMessage->rfc822_header->more_headers['References'] = $orig_header->references;
                 $composeMessage->rfc822_header->more_headers['In-Reply-To'] = $orig_header->in_reply_to;
@@ -703,10 +722,10 @@ function newMail ($mailbox='', $passed_id='', $passed_ent_id='', $action='', $se
                 $composeMessage = getAttachments($message, $composeMessage, $passed_id, $entities, $imapConnection);
                 break;
             case ('edit_as_new'):
-                $send_to = decodeHeader($orig_header->getAddr_s('to'),false,false);
-                $send_to_cc = decodeHeader($orig_header->getAddr_s('cc'),false,false);
-                $send_to_bcc = decodeHeader($orig_header->getAddr_s('bcc'),false,false);
-                $subject = decodeHeader($orig_header->subject,false,false);
+                $send_to = decodeHeader($orig_header->getAddr_s('to'),false,false,true);
+                $send_to_cc = decodeHeader($orig_header->getAddr_s('cc'),false,false,true);
+                $send_to_bcc = decodeHeader($orig_header->getAddr_s('bcc'),false,false,true);
+                $subject = decodeHeader($orig_header->subject,false,false,true);
                 $mailprio = $orig_header->priority;
                 $orig_from = '';
                 $composeMessage = getAttachments($message, $composeMessage, $passed_id, $entities, $imapConnection);
@@ -714,7 +733,7 @@ function newMail ($mailbox='', $passed_id='', $passed_ent_id='', $action='', $se
                 break;
             case ('forward'):
                 $send_to = '';
-                $subject = decodeHeader($orig_header->subject,false,false);
+                $subject = decodeHeader($orig_header->subject,false,false,true);
                 if ((substr(strtolower($subject), 0, 4) != 'fwd:') &&
                     (substr(strtolower($subject), 0, 5) != '[fwd:') &&
                     (substr(strtolower($subject), 0, 6) != '[ fwd:')) {
@@ -731,7 +750,7 @@ function newMail ($mailbox='', $passed_id='', $passed_ent_id='', $action='', $se
                 break;
             case ('reply_all'):
                 $send_to_cc = replyAllString($orig_header);
-                $send_to_cc = decodeHeader($send_to_cc,false,false);
+                $send_to_cc = decodeHeader($send_to_cc,false,false,true);
             case ('reply'):
                 $send_to = $orig_header->reply_to;
                 if (is_array($send_to) && count($send_to)) {
@@ -741,8 +760,8 @@ function newMail ($mailbox='', $passed_id='', $passed_ent_id='', $action='', $se
                 } else {
                     $send_to = $orig_header->getAddr_s('from');
                 }
-                $send_to = decodeHeader($send_to,false,false);
-                $subject = decodeHeader($orig_header->subject,false,false);
+                $send_to = decodeHeader($send_to,false,false,true);
+                $subject = decodeHeader($orig_header->subject,false,false,true);
 //                $subject = str_replace('"', '&quot;', $subject);
                 $subject = trim($subject);
                 if (substr(strtolower($subject), 0, 3) != 're:') {
@@ -1055,20 +1074,20 @@ function showInputForm ($session, $values=false) {
             if ($default_charset == 'iso-2022-jp') {
                 echo "\n\n".($prefix_sig==true? "-- \n":'').mb_convert_encoding($signature, 'EUC-JP');
             } else {
-                echo "\n\n".($prefix_sig==true? "-- \n":'').decodeHeader($signature,false,false);
+                echo "\n\n".($prefix_sig==true? "-- \n":'').decodeHeader($signature,false,false,true);
             }
-            echo "\n\n".htmlspecialchars(decodeHeader($body,false,false));
+            echo "\n\n".htmlspecialchars(decodeHeader($body,false,false,true));
         }
         else {
-            echo "\n\n".htmlspecialchars(decodeHeader($body,false,false));
+            echo "\n\n".htmlspecialchars(decodeHeader($body,false,false,true));
             if ($default_charset == 'iso-2022-jp') {
                 echo "\n\n".($prefix_sig==true? "-- \n":'').mb_convert_encoding($signature, 'EUC-JP');
             }else{
-                echo "\n\n".($prefix_sig==true? "-- \n":'').decodeHeader($signature,false,false);
+                echo "\n\n".($prefix_sig==true? "-- \n":'').decodeHeader($signature,false,false,true);
             }
         }
     } else {
-        echo htmlspecialchars(decodeHeader($body,false,false));
+        echo htmlspecialchars(decodeHeader($body,false,false,true));
     }
     echo '</textarea><br />' . "\n" .
         '      </td>' . "\n" .

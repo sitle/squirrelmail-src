@@ -39,6 +39,9 @@ if ( sqgetGlobalVar('passed_id', $temp, SQ_GET) ) {
     $passed_id = (int) $temp;
 }
 
+global $default_charset;
+set_my_charset();
+
 /* end globals */
 
 global $uid_support;
@@ -96,29 +99,27 @@ if (is_object($message->header->disposition)) {
     $filename = $header->getParameter('name');
 }
 
-$filename = decodeHeader($filename);
-if (strlen($filename) < 1) {
-    if ($type1 == 'plain' && $type0 == 'text') {
-        $suffix = 'txt';
-        $filename = $subject . '.txt';
-    } else if ($type1 == 'richtext' && $type0 == 'text') {
-        $suffix = 'rtf';
-        $filename = $subject . '.rtf';
-    } else if ($type1 == 'postscript' && $type0 == 'application') {
-        $suffix = 'ps';
-        $filename = $subject . '.ps';
-    } else if ($type1 == 'rfc822' && $type0 == 'message') {
-        $suffix = 'eml';
-        $filename = $subject . '.msg';
-    } else {
-        $suffix = $type1;
-    }
+$filename = decodeHeader($filename,true,false);
+$filename = charset_encode($filename,$default_charset,false);
 
-    if (strlen($filename) < 1) {
-       $filename = 'untitled'.strip_tags($ent_id).'.'.$suffix;
-    } else {
-       $filename = "$filename.$suffix";
-    }
+// If name is not set, use subject of email
+if (strlen($filename) < 1) {
+    $filename = decodeHeader($subject, true, true);
+    $filename = charset_encode($filename,$default_charset,false);
+    if ($type1 == 'plain' && $type0 == 'text')
+        $suffix = 'txt';
+    else if ($type1 == 'richtext' && $type0 == 'text')
+        $suffix = 'rtf';
+    else if ($type1 == 'postscript' && $type0 == 'application')
+        $suffix = 'ps';
+    else if ($type1 == 'rfc822' && $type0 == 'message')
+        $suffix = 'msg';
+    else
+        $suffix = $type1;
+
+    if ($filename == '')
+        $filename = 'untitled' . strip_tags($ent_id);
+    $filename = $filename . '.' . $suffix;
 }
 
 /*
