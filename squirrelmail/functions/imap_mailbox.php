@@ -471,15 +471,14 @@ function sqimap_mailbox_option_list($imap_stream, $show_selected = 0, $folder_sk
  * Returns sorted mailbox lists in several different ways. 
  * See comment on sqimap_mailbox_parse() for info about the returned array.
  */
-function sqimap_mailbox_list($imap_stream) {
+function sqimap_mailbox_list($imap_stream, $force=false) {
     global $default_folder_prefix;
 
-    if (!isset($boxesnew)) {
+    if (!sqgetGlobalVar('boxesnew',$boxesnew,SQ_SESSION) || $force) {
         global $data_dir, $username, $list_special_folders_first,
                $folder_prefix, $trash_folder, $sent_folder, $draft_folder,
                $move_to_trash, $move_to_sent, $save_as_draft,
                $delimiter, $noselect_fix_enable;
-
         $inbox_in_list = false;
         $inbox_subscribed = false;
 
@@ -606,6 +605,7 @@ function sqimap_mailbox_list($imap_stream) {
                 $boxesnew[] = $boxesall[$k];
             }
         }
+        sqsession_register($boxesnew,'boxesnew');
     }
     return $boxesnew;
 }
