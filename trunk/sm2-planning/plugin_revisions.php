@@ -8,7 +8,7 @@
  * $Id$
  */
 include_once('common_header.inc');
-set_title('Document Index');
+set_title('Plugin Revisions');
 set_original_author('ebullient');
 set_attributes('$Author$','$Revision$','$Date$');
 print_header();
@@ -69,9 +69,10 @@ setup.php:
 
 function squirrelmail_plugin_init_<plugin>() {
   global $squirrelmail_plugin_hooks;
-  $squirrelmail_plugin_hooks['menuline']['&lt;plugin>'] = '&lt;plugin_menu_funtion>';
-
-  $squirrelmail_plugin_hooks['loading_prefs']['&lt;plugin>'] = '&lt;plugin_loadpref_funtion>';
+  $squirrelmail_plugin_hooks['menuline']['&lt;plugin>'] = 
+                  '&lt;plugin_menu_funtion>';
+  $squirrelmail_plugin_hooks['loading_prefs']['&lt;plugin>'] = 
+                  '&lt;plugin_loadpref_funtion>';
 }
 
 /* This function invokes displayInternalLink, 
@@ -112,6 +113,24 @@ code mod to get a significant performance gain.
 <p>end ebullient 11/20/2002 1:49AM</p>
 </div>
 
+
+<div class="ebullient">
+<p>ebullient 12/4/2002</p>
+
+<p><b>Version Checking</b></p>
+
+<p>Version checking for plugins should look something like this 
+(per discussion in devel/plugins lists ~12/2-12/4):
+
+<p>Plugins will check for presence of global variable $sm_internal_version.
+If variable is set, they can then use a function (not yet named) to 
+verify that a version is > than a required major/minor/release.
+If the variable is not set, then it will be assumed to be pre-significant
+changes (i.e. 1.2.x), and can therefore use the old chdir etc. to set up
+includes.
+
+<p>end ebullient 12/4/2002</p>
+</div>
 
 </body>
 </html>

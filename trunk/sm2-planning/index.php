@@ -28,6 +28,8 @@ function print_links() {
 <a name="doclist"></a>
 <H2>Planning Documents</H2>
 
+<a href="config_revisions.php">Config revisions (devel)</a><br />
+<br />
 <a href="plugin_revisions.php">Plugin revisions (stable/devel)</a><br />
 
 <?php print_links(); ?>
@@ -93,7 +95,7 @@ document_title and sourceforge_id appropriately:
  * Copyright (c) 1999-2002 The SquirrelMail development team
  * Licensed under the GNU GPL. For full terms see the file COPYING.
  *
- * $Id$
+ * &#36;Id&#36;
  */
 include_once('common_header.inc');
 set_title('document_title');

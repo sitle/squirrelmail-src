@@ -52,7 +52,8 @@ $sm_doc_date = '';
 <body>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr>
-<td class="right-pad" rowspan="5"><img src="images/sm_logo.jpg" border="0" ></td>
+<td class="right-pad" rowspan="5"><img src="images/sm_logo.jpg" border="0" ><br />
+<a href="index.php">Back to Planning Index</a></td>
 <td><b><?php echo $sm_doc_title; ?></b></td>
 </tr>
 <tr><td>
