@@ -72,6 +72,7 @@ class SquirrelOption {
 
     function SquirrelOption
     ($name, $caption, $type, $refresh_level, $possible_values = '') {
+    global $_POST, $_GLOBALS; 
         /* Set the basic stuff. */
         $this->name = $name;
         $this->caption = $caption;
@@ -294,7 +295,7 @@ class SquirrelOption {
 }
 
 function save_option($option) {
-    global $data_dir;
+    global $data_dir, $_SESSION;
     $username = $_SESSION['username'];
     setPref($data_dir, $username, $option->name, $option->new_value);
 

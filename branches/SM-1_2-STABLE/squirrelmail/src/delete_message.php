@@ -22,7 +22,9 @@ $onetimepad = $_SESSION['onetimepad'];
 $message = $_GET['message'];
 $mailbox = $_GET['mailbox'];
 
-$saved_draft = $_GET['saved_draft'];
+if (isset($_GET['saved_draft'])) {
+    $saved_draft = $_GET['saved_draft'];
+}
 $mail_sent = $_GET['mail_sent'];
 $sort = $_GET['sort'];
 $startMessage = $_GET['startMessage'];
@@ -49,12 +51,14 @@ if (isset($where) && isset($what)) {
     header("Location: $location/search.php?where=" . urlencode($where) .
            '&what=' . urlencode($what) . '&mailbox=' . urlencode($mailbox));
 } else {
-    if (!empty($saved_draft) || !empty($mail_sent)) {
-          header("Location: $location/compose.php?mail_sent=$mail_sent&saved_draft=$saved_draft");
-    }
-    else {
-        header("Location: $location/right_main.php?sort=$sort&startMessage=$startMessage&mailbox=" .
-               urlencode($mailbox));
+    if (isset($saved_draft)) {
+        if (!empty($saved_draft) || !empty($mail_sent)) {
+            header("Location: $location/compose.php?mail_sent=$mail_sent&saved_draft=$saved_draft");
+        }
+        else {
+            header("Location: $location/right_main.php?sort=$sort&startMessage=$startMessage&mailbox=" .
+                urlencode($mailbox));
+        }
     }
 }
 

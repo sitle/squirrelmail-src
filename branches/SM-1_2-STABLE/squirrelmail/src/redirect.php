@@ -46,8 +46,8 @@ $location = get_location();
 session_set_cookie_params (0, $base_uri);
 session_start();
 
-session_unregister ('user_is_logged_in');
-session_register ('base_uri');
+sqsession_unregister ('user_is_logged_in');
+sqsession_register ($base_uri, 'base_uri');
 
 
 /* get globals we me need */
@@ -84,7 +84,7 @@ if (!session_is_registered('user_is_logged_in')) {
 
     $onetimepad = OneTimePadCreate(strlen($secretkey));
     $key = OneTimePadEncrypt($secretkey, $onetimepad);
-    session_register('onetimepad');
+    sqsession_register($onetimepad, 'onetimepad');
 
     /* Verify that username and password are correct. */
     if ($force_username_lowercase) {
@@ -103,10 +103,10 @@ if (!session_is_registered('user_is_logged_in')) {
         $delimiter = sqimap_get_delimiter ($imapConnection);
     }
     sqimap_logout($imapConnection);
-    session_register('delimiter');
+    sqsession_register($delimiter, 'delimiter');
 
     $username = $login_username;
-    session_register ('username');
+    sqsession_register ($username, 'username');
     setcookie('key', $key, 0, $base_uri);
     do_hook ('login_verified');
 
@@ -117,14 +117,14 @@ $user_is_logged_in = true;
 $just_logged_in = true;
 
 /* And register with them with the session. */
-session_register ('user_is_logged_in');
-session_register ('just_logged_in');
+sqsession_register ($user_is_logged_in, 'user_is_logged_in');
+sqsession_register ($just_logged_in, 'just_logged_in');
 
 /* parse the accepted content-types of the client */
 $attachment_common_types = array();
 $attachment_common_types_parsed = array();
-session_register('attachment_common_types');
-session_register('attachment_common_types_parsed');
+sqsession_register($attachment_common_types, 'attachment_common_types');
+sqsession_register($attachment_common_types_parsed, 'attachment_common_types_parsed');
 
 $debug = false;
 if (isset($HTTP_SERVER_VARS['HTTP_ACCEPT']) &&

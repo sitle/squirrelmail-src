@@ -13,7 +13,6 @@
 
 require_once('../src/global.php');
 
-
 if (isset($_SESSION['prefs_cache'])) {
     $prefs_cache = $_SESSION['prefs_cache'];
 }
@@ -21,11 +20,13 @@ if (isset($_SESSION['prefs_are_cached'])) {
     $prefs_are_cached = $_SESSION['prefs_are_cached'];
 }
 
+$rg = ini_get('register_globals');
 if ( !session_is_registered('prefs_are_cached') ||
      !isset( $prefs_cache) ||
      !is_array( $prefs_cache) ||
      substr( phpversion(), 0, 3 ) == '4.1' ||
-     substr( phpversion(), 0, 3 ) == '4.2' ) {
+     substr( phpversion(), 0, 3 ) == '4.2' ||
+     (substr( phpversion(), 0, 3 ) == '4.0' && empty($rg))) {
     $prefs_are_cached = false;
     $prefs_cache = array();
 }

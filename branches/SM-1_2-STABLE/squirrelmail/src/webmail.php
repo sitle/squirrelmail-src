@@ -31,6 +31,9 @@ session_start();
 if (isset($_SESSION['username'])) {
     $username = $_SESSION['username'];
 }
+if (isset($_GET['right_frame'])) {
+    $right_frame = $_GET['right_frame'];
+}
 
 is_logged_in();
 

@@ -48,12 +48,12 @@ function attachSelectedMessages($msg, $imapConnection) {
 
     if (!isset($attachments)) {
 	    $attachments = array();
-	    session_register('attachments');
+	    sqsession_register($attachments, 'attachments');
     }
 
     if (!isset($composesession)) {
 	    $composesession = 1;
-	    session_register('composesession');
+	    sqsession_register($composesession, 'composesession');
     } else {
 	    $composesession++;
     }
@@ -122,6 +122,29 @@ function attachSelectedMessages($msg, $imapConnection) {
     return $composesession;
 }
 
+
+/* MAIN */
+
+
+$username = $_SESSION['username'];
+$key  = $_COOKIE['key'];
+$onetimepad = $_SESSION['onetimepad'];
+$base_uri = $_SESSION['base_uri'];
+$delimiter = $_SESSION['delimiter'];
+
+if (isset(!_$POST['expungeButton'])) {
+    $expungeButton = $_POST['expungeButton'];
+}
+if (isset(!_$POST['targetMailbox'])) {
+    $targetMailbox = $_POST['targetMailbox'];
+}
+if (isset(!_$POST['lastTargetMailbox'])) {
+    $lastTargetMailbox = $_POST['lastTargetMailbox'];
+}
+if (isset(!_$POST['expungeButton'])) {
+    $expungeButton = $_POST['expungeButton'];
+}
+
 $imapConnection = sqimap_login($username, $key, $imapServerAddress, $imapPort, 0);
 sqimap_mailbox_select($imapConnection, $mailbox);
 
@@ -131,7 +154,7 @@ if (!isset($lastTargetMailbox)) {
 }
 if ($targetMailbox != $lastTargetMailbox) {
     $lastTargetMailbox = $targetMailbox;
-    session_register('lastTargetMailbox');
+    sqsession_register($lastTargetMailbox, 'lastTargetMailbox');
 }
 
 // expunge-on-demand if user isn't using move_to_trash or auto_expunge
