@@ -9,7 +9,9 @@
     **/
 
    function data_validate (&$item, $key) {
-      if (strstr ($key, "_php")) {
+      // This prevents overriding vars like $config_php
+
+      if (strstr ($key, "_php") /* ADD MORE CHECKS HERE */) {
          echo "<br><br><center><b>Possible security breach!!</b><br>";
          echo "If you received this message on accident, please notify your administrator.";
          echo "</center>";
