@@ -38,7 +38,6 @@ class Parser {
 			if ($iPos=strpos($s, $char, $iOffset)) {
 				$ret = substr($s,$iOffset,$iPos-$iOffset);
 				$iOffset = $iPos;
-                                echo $ret;
 				return $ret;
 			}
 		}
@@ -145,43 +144,29 @@ class Parser {
 		return $ret;
 	}	
 	
-	function parseNil(&$sRead, &$i, &$iCnt) {
+	function parseNil(&$sRead, &$i) {
 		$orig = $sRead;
 		$orig_i = $i;
-		$nil_rem = $this->streamShift($sRead, $i, $iCnt) .
-		$this->streamShift($sRead, $i, $iCnt);
-		if ('N'.strtoupper($nil_rem) == 'NIL') {
-			$this->streamShift($sRead, $i, $iCnt);
+		$sNil = substr($sRead,$i,3);
+		if (strtoupper($sNil) == 'NIL') {
+                        $i+=3;
 			return true;
 		} else {
-			$sRead = $nil_rem . $sRead;
-			$i -= 2;
+			$i++;
 			return false;
 		}
 	}
 
-	function parseLiteral(&$sRead, &$i, &$iCnt) {
-		$lit_cnt = '';
-		$sLiteral = trim($this->findChar($sRead,$i,$iCnt,"\n"));
-		$lit_cnt = substr($sLiteral,1,strpos($sLiteral,'}')-1);
-		$sRead = '';
-		$s = ($lit_cnt ? $this->sqimap_fgets($lit_cnt, $iCnt) : '');
-//		echo "$lit_cnt, $s<BR>";
-		$i = $lit_cnt-1;
-		$this->streamShift($sRead,$i, $iCnt); /* \n */
-		return $s;
-	}
-
-	function parseQuote(&$sRead, &$i, &$iCnt) {
+	function parseQuote(&$sRead, &$i) {
 		$s = '';
-		$this->streamShift($sRead,$i,$iCnt);
+                ++$i;
 		$iPos = $i;
 		while (true) {
 			$iPos = strpos($sRead,'"',$iPos);
 			if ($iPos === false) {
-				$s .= substr($sRead,$i);
-				$sRead = $this->sqimap_fgets_next($i, $iCnt);
-				if (!$sRead) break;
+                                /* error */
+                                $i = strlen($read);
+                                return false;
 			} else {
 				switch ($iPos)
 				{
@@ -201,7 +186,7 @@ class Parser {
 				}
 			}
 		}
-		$this->streamShift($sRead,$i,$iCnt);
+                ++$i;
 		return $s;
 	}
 
