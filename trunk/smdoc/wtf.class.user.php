@@ -494,7 +494,8 @@ class home extends content { // a users home thing
 				echo $newLine;
 				if ($user->objectid == $wtf->user->objectid) {
 					echo $newLine;
-					echo '<a href="', THINGIDURI, $user->objectid, '&amp;class=user&amp;op=edit">Update your profile</a>.', $newLine;
+					echo '<a href="', THINGIDURI, $user->objectid, '&amp;class=user&amp;op=edit">Update your user information</a>.', $newLine;
+                    echo '<a href="', THINGIDURI, $user->objectid, '&amp;class=home&amp;op=edit">Update your profile</a>.', $newLine;
 				}
 			}
 			unset($user);
