@@ -4,11 +4,14 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: $Id$\n"
-"POT-Creation-Date: 2003-07-06 14:37+0300\n"
+"Project-Id-Version: $Id: squirrelmail.po,v 1.2.2.2 2003/09/06 06:57:16 tokul "
+"Exp $\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2003-09-20 11:04+0300\n"
 "PO-Revision-Date: 2001-09-06 21:00+0000\n"
 "Last-Translator: Ruben Leote Mendes <ruben@nocturno.org>\n"
-"Language-Team: Portuguese Portugal <squirrelmail-i18n@lists.sourceforge.net>\n"
+"Language-Team: Portuguese Portugal <squirrelmail-i18n@lists.sourceforge."
+"net>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=iso-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -370,6 +373,9 @@ msgstr "limpar"
 msgid "Last Refresh"
 msgstr "Última Actualização"
 
+msgid "refresh unseen/total info"
+msgstr ""
+
 msgid "Save folder tree"
 msgstr ""
 
@@ -606,11 +612,11 @@ msgstr ""
 msgid "Message not printable"
 msgstr "A mensagem não pode ser impressa"
 
-msgid "Printer Friendly"
-msgstr "Versão para Imprimir"
-
 msgid "CC"
 msgstr "CC"
+
+msgid "Printer Friendly"
+msgstr "Versão para Imprimir"
 
 msgid "Print"
 msgstr "Imprimir"
@@ -646,7 +652,8 @@ msgstr ""
 msgid "Read receipt"
 msgstr "Aviso de leitura"
 
-msgid "send"
+#, fuzzy
+msgid "sent"
 msgstr "enviado"
 
 msgid "requested"
@@ -656,8 +663,8 @@ msgid ""
 "The message sender has requested a response to indicate that you have read "
 "this message. Would you like to send a receipt?"
 msgstr ""
-"O remetente da mensagem pretende saber que leu esta mensagem. "
-" Devo notificá-lo?"
+"O remetente da mensagem pretende saber que leu esta mensagem.  Devo notificá-"
+"lo?"
 
 msgid "Send read receipt now"
 msgstr "Enviar aviso de leitura"
@@ -990,6 +997,9 @@ msgstr "D, j F Y G:i"
 msgid "D, F j, Y G:i"
 msgstr "D, j F Y G:i"
 
+msgid "M j, Y"
+msgstr "Y/M/j"
+
 msgid "g:i a"
 msgstr "G:i"
 
@@ -1001,9 +1011,6 @@ msgstr "D, G:i"
 
 msgid "D, G:i"
 msgstr "D, G:i"
-
-msgid "M j, Y"
-msgstr "Y/M/j"
 
 #, c-format
 msgid "Preference database error (%s). Exiting abnormally"
@@ -1034,21 +1041,25 @@ msgstr ""
 msgid ""
 "Preference file, %s, could not be opened. Contact your system administrator "
 "to resolve this issue."
-msgstr "Não foi possível abrir o ficheiro das preferências (%s). Contacte o "
+msgstr ""
+"Não foi possível abrir o ficheiro das preferências (%s). Contacte o "
 "administrador."
+
 #, c-format
 msgid ""
 "Preference file, %s, could not be written. Contact your system administrator "
 "to resolve this issue."
-msgstr "Não foi possível gravar no ficheiro das preferências (%s). Contacte "
-"o administrador."
+msgstr ""
+"Não foi possível gravar no ficheiro das preferências (%s). Contacte o "
+"administrador."
 
 #, c-format
 msgid ""
 "Preference file, %s, could not be copied from temporary file, %s. Contact "
 "your system administrator to resolve this issue."
-msgstr "Não foi possível aceder ao ficheiro de preferências temporário (%s),"
-"Contacte o administrador."
+msgstr ""
+"Não foi possível aceder ao ficheiro de preferências temporário (%s),Contacte "
+"o administrador."
 
 #, c-format
 msgid "Error opening %s"
@@ -1071,28 +1082,32 @@ msgstr "%s deveria ter permissões de escrita pelo utilizador %s"
 msgid ""
 "Signature file, %s, could not be opened. Contact your system administrator "
 "to resolve this issue."
-msgstr "Não foi possível abrir o ficheiro das assinaturas (%s). Contacte o "
-" administrador."
+msgstr ""
+"Não foi possível abrir o ficheiro das assinaturas (%s). Contacte o  "
+"administrador."
 
 #, c-format
 msgid ""
 "Signature file, %s, could not be written. Contact your system administrator "
 "to resolve this issue."
-msgstr "Não foi possível escrever no ficheiro das assinaturas (%s). Contacte "
-"o administrador."
+msgstr ""
+"Não foi possível escrever no ficheiro das assinaturas (%s). Contacte o "
+"administrador."
 
 #, c-format
 msgid ""
 "Signature file, %s, could not be copied from temporary file, %s. Contact "
 "your system administrator to resolve this issue."
-msgstr "Não foi possível aceder ao ficheiro de assinaturas temporário (%s),"
-"Contacte o administrador."
+msgstr ""
+"Não foi possível aceder ao ficheiro de assinaturas temporário (%s),Contacte "
+"o administrador."
 
 msgid ""
 "You need to have php4 installed with the multibyte string function enabled "
 "(using configure option --enable-mbstring)."
-msgstr "É essencial que o php4 esteja instalado com <i>multibyte string "
-"function</i> (utilizando a opção de configuração --enable-mbstring)."
+msgstr ""
+"É essencial que o php4 esteja instalado com <i>multibyte string function</i> "
+"(utilizando a opção de configuração --enable-mbstring)."
 
 msgid "ERROR : No available imapstream."
 msgstr ""
@@ -1100,11 +1115,11 @@ msgstr ""
 msgid "ERROR : Connection dropped by imap-server."
 msgstr ""
 
-msgid "Query:"
-msgstr ""
-
 msgid "ERROR : Could not complete request."
 msgstr "ERRO: Não foi possível efectuar o pedido."
+
+msgid "Query:"
+msgstr ""
 
 msgid "Reason Given: "
 msgstr "Razão Indicada:"
@@ -1164,8 +1179,9 @@ msgid ""
 "Most probably your message list was out of date and the message has been "
 "moved away or deleted (perhaps by another program accessing the same "
 "mailbox)."
-msgstr "Provavelmente a sua lista de mensagens estava desactualizada e a"
-" mensagem foi entretanto apagada por outro programa."
+msgstr ""
+"Provavelmente a sua lista de mensagens estava desactualizada e a mensagem "
+"foi entretanto apagada por outro programa."
 
 msgid "Unknown date"
 msgstr "Data desconhecida"
@@ -1396,6 +1412,9 @@ msgstr "Selecção de Páginas"
 
 msgid "Maximum Number of Pages to Show"
 msgstr "Número Máximo de Páginas"
+
+msgid "Always Show Full Date"
+msgstr ""
 
 msgid "Message Display and Composition"
 msgstr "Visualização e Envio de Mensagens"
@@ -2151,44 +2170,6 @@ msgid "COMMERCIAL - RBL+ Dial-up entries."
 msgstr ""
 
 msgid ""
-"FREE - Osirusoft Relays - Osirusofts list of verified open relays. Seems to "
-"include servers used by abuse@uunet.net auto-replies too."
-msgstr ""
-
-msgid "FREE - Osirusoft Dialups - Osirusofts Dialup Spam Source list."
-msgstr ""
-
-msgid ""
-"FREE - Osirusoft Confirmed Spam Source - Sites that continually spam and "
-"have been manually added after multiple nominations. Use with caution. Seems "
-"to catch abuse auto-replies from some ISPs."
-msgstr ""
-
-msgid ""
-"FREE - Osirusoft Smart Hosts - List of hosts that are secure but relay for "
-"other mail servers that are not secure."
-msgstr ""
-
-msgid ""
-"FREE - Osirusoft Spamware Developers - It is believed that these are IP "
-"ranges of companies that are known to produce spam software. Seems to catch "
-"abuse auto-replies from some ISPs."
-msgstr ""
-
-msgid ""
-"FREE - Osirusoft Unconfirmed OptIn Servers - List of listservers that opt "
-"users in without confirmation."
-msgstr ""
-
-msgid ""
-"FREE - Osirusoft Insecure formmail.cgi scripts - List of insecure formmail."
-"cgi scripts. (planned)."
-msgstr ""
-
-msgid "FREE - Osirusoft Open Proxy Servers - List of Open Proxy Servers."
-msgstr ""
-
-msgid ""
 "FREE - ORDB was born when ORBS went off the air. It seems to have fewer "
 "false positives than ORBS did though."
 msgstr ""
@@ -2223,6 +2204,7 @@ msgstr ""
 msgid "FREE - SPAMhaus - A list of well-known SPAM sources."
 msgstr ""
 
+#, c-format
 msgid ""
 "FREE, for now - SPAMCOP - An interesting solution that lists servers that "
 "have a very high spam to legit email ratio (85% or more)."
@@ -3275,23 +3257,30 @@ msgstr "Tipo de Citação"
 msgid "Your server options are as follows:"
 msgstr ""
 
-msgid ""
-"19 language pairs, maximum of 1000 characters translated, powered by Systran"
+msgid "Maximum of 1000 characters translated, powered by Systran"
 msgstr ""
 
-msgid "12 language pairs, no known limits, powered by Systran"
+#, c-format
+msgid "Number of supported language pairs: %s"
 msgstr ""
 
-msgid ""
-"784 language pairs, no known limits, powered by Translation Experts's "
-"InterTran"
+msgid "No known limits, powered by Systran"
 msgstr ""
 
-msgid ""
-"8 language pairs, no known limits, powered by GPLTrans (free, open source)"
+msgid "No known limits, powered by Translation Experts's InterTran"
 msgstr ""
 
-msgid "4 language pairs for Hellenic, no known limits, powered by Systran"
+#, c-format
+msgid "Number of supported languages: %s"
+msgstr ""
+
+msgid "No known limits, powered by GPLTrans (free, open source)"
+msgstr ""
+
+msgid "Hellenic translations, no known limits, powered by Systran"
+msgstr ""
+
+msgid "Russian translations, maximum of 500 characters translated"
 msgstr ""
 
 msgid ""
@@ -3444,6 +3433,14 @@ msgstr ""
 
 msgid "from English"
 msgstr ""
+
+#, fuzzy
+msgid "Interface language"
+msgstr "Língua"
+
+#, fuzzy
+msgid "Translation direction"
+msgstr "Tipo de Citação"
 
 msgid "Delivery error report"
 msgstr ""

@@ -5,8 +5,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: $Id$\n"
-"POT-Creation-Date: 2003-06-25 16:16+0300\n"
+"Project-Id-Version: $Id: squirrelmail.po,v 1.13.2.2 2003/07/27 10:53:07 "
+"tokul Exp $\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2003-09-20 11:04+0300\n"
 "PO-Revision-Date: 2003-06-29 22:45+0400\n"
 "Last-Translator: Gregory Mokhin <mok@kde.ru>\n"
 "Language-Team: Russian <kde-russian@lists.kde.ru>\n"
@@ -337,7 +339,8 @@ msgstr "Справка"
 msgid ""
 "The help has not been translated to %s.  It will be displayed in English "
 "instead."
-msgstr "Справка не была переведена на %s. Она будет доступна лишь по-английски."
+msgstr ""
+"Справка не была переведена на %s. Она будет доступна лишь по-английски."
 
 msgid "Some or all of the help documents are not present!"
 msgstr "Некоторые или все из требуемых файлов справки не найдены!"
@@ -371,6 +374,9 @@ msgstr "Очистить"
 
 msgid "Last Refresh"
 msgstr "Обновлено"
+
+msgid "refresh unseen/total info"
+msgstr ""
 
 msgid "Save folder tree"
 msgstr "Сохранить дерево папок"
@@ -594,7 +600,8 @@ msgstr ""
 "с легкостью отличать важные сообщения от прочих, особенно при использовании "
 "списков рассылки."
 
-msgid "These settings change the way your folders are displayed and manipulated."
+msgid ""
+"These settings change the way your folders are displayed and manipulated."
 msgstr "Здесь вы можете настроить параметры разных папок в вашем ящике."
 
 msgid ""
@@ -605,11 +612,11 @@ msgstr "Вы можете поменять расположение заголо
 msgid "Message not printable"
 msgstr "Непечатаемое сообщение"
 
-msgid "Printer Friendly"
-msgstr "Версия для печати"
-
 msgid "CC"
 msgstr "Копия"
+
+msgid "Printer Friendly"
+msgstr "Версия для печати"
 
 msgid "Print"
 msgstr "Печатать"
@@ -645,7 +652,8 @@ msgstr "Почтовая программа"
 msgid "Read receipt"
 msgstr "Уведомление о прочтении"
 
-msgid "send"
+#, fuzzy
+msgid "sent"
 msgstr "отправить"
 
 msgid "requested"
@@ -987,6 +995,9 @@ msgstr "D, j F Y G:i"
 msgid "D, F j, Y G:i"
 msgstr "D, j F Y G:i"
 
+msgid "M j, Y"
+msgstr "j M Y"
+
 msgid "g:i a"
 msgstr "G:i"
 
@@ -998,9 +1009,6 @@ msgstr "D, G:i"
 
 msgid "D, G:i"
 msgstr "D, G:i"
-
-msgid "M j, Y"
-msgstr "j M Y"
 
 #, c-format
 msgid "Preference database error (%s). Exiting abnormally"
@@ -1031,21 +1039,23 @@ msgstr ""
 msgid ""
 "Preference file, %s, could not be opened. Contact your system administrator "
 "to resolve this issue."
-msgstr "Не удаётся открыть файл настроек %s. Свяжитесь с системным администратором."
+msgstr ""
+"Не удаётся открыть файл настроек %s. Свяжитесь с системным администратором."
 
 #, c-format
 msgid ""
 "Preference file, %s, could not be written. Contact your system administrator "
 "to resolve this issue."
-msgstr "Не удаётся записать файл настроек %s. Свяжитесь с системным администратором."
+msgstr ""
+"Не удаётся записать файл настроек %s. Свяжитесь с системным администратором."
 
 #, c-format
 msgid ""
 "Preference file, %s, could not be copied from temporary file, %s. Contact "
 "your system administrator to resolve this issue."
 msgstr ""
-"Не удаётся скопировать файл настроек %s из временного файла "
-"%s. Свяжитесь с системным администратором."
+"Не удаётся скопировать файл настроек %s из временного файла %s. Свяжитесь с "
+"системным администратором."
 
 #, c-format
 msgid "Error opening %s"
@@ -1068,21 +1078,23 @@ msgstr "%s требует права доступа для %s"
 msgid ""
 "Signature file, %s, could not be opened. Contact your system administrator "
 "to resolve this issue."
-msgstr "Не удаётся открыть файл подписи %s. Свяжитесь с системным администратором."
+msgstr ""
+"Не удаётся открыть файл подписи %s. Свяжитесь с системным администратором."
 
 #, c-format
 msgid ""
 "Signature file, %s, could not be written. Contact your system administrator "
 "to resolve this issue."
-msgstr "Не удаётся записать в файл подписи %s. Свяжитесь с системным администратором."
+msgstr ""
+"Не удаётся записать в файл подписи %s. Свяжитесь с системным администратором."
 
 #, c-format
 msgid ""
 "Signature file, %s, could not be copied from temporary file, %s. Contact "
 "your system administrator to resolve this issue."
 msgstr ""
-"Не удаётся скопировать файл подписи %s из временного файла "
-"%s. Свяжитесь с системным администратором."
+"Не удаётся скопировать файл подписи %s из временного файла %s. Свяжитесь с "
+"системным администратором."
 
 msgid ""
 "You need to have php4 installed with the multibyte string function enabled "
@@ -1093,6 +1105,9 @@ msgstr ""
 
 msgid "ERROR : No available imapstream."
 msgstr "ОШИБКА: imapstream недоступен."
+
+msgid "ERROR : Connection dropped by imap-server."
+msgstr ""
 
 msgid "ERROR : Could not complete request."
 msgstr "ОШИБКА: запрос не может быть завершен."
@@ -1108,6 +1123,13 @@ msgstr "ОШИБКА: Недопустимый запрос."
 
 msgid "Server responded: "
 msgstr "Ответ сервера: "
+
+msgid "ERROR : Imap server closed the connection."
+msgstr ""
+
+#, fuzzy
+msgid "ERROR : Unknown imap response."
+msgstr "Неизвестный ответ"
 
 #, c-format
 msgid "Error connecting to IMAP server: %s."
@@ -1143,6 +1165,15 @@ msgstr "Неизвестный отправитель"
 
 msgid "Unknown response from IMAP server: "
 msgstr "Неизвестный ответ IMAP-сервера: "
+
+msgid "The server couldn't find the message you requested."
+msgstr ""
+
+msgid ""
+"Most probably your message list was out of date and the message has been "
+"moved away or deleted (perhaps by another program accessing the same "
+"mailbox)."
+msgstr ""
 
 msgid "Unknown date"
 msgstr "Неизвестная дата"
@@ -1376,6 +1407,9 @@ msgstr "Показывать выбор страницы"
 msgid "Maximum Number of Pages to Show"
 msgstr "Максимальное количество страниц"
 
+msgid "Always Show Full Date"
+msgstr ""
+
 msgid "Message Display and Composition"
 msgstr "Оформление сообщения"
 
@@ -1581,7 +1615,8 @@ msgid "Same as server"
 msgstr "Как на сервере"
 
 msgid "Error opening timezone config, contact administrator."
-msgstr "Ошибка при определении временной зоны. Свяжитесь с системным администратором."
+msgstr ""
+"Ошибка при определении временной зоны. Свяжитесь с системным администратором."
 
 msgid "Timezone Options"
 msgstr "Временные пояса"
@@ -2095,59 +2130,6 @@ msgid "COMMERCIAL - RBL+ Dial-up entries."
 msgstr "ПЛАТНО - RBL+ список модемных спаммеров."
 
 msgid ""
-"FREE - Osirusoft Relays - Osirusofts list of verified open relays. Seems to "
-"include servers used by abuse@uunet.net auto-replies too."
-msgstr ""
-"БЕСПЛАТНО - Osirusoft Relays - список серверов пересылки от компании "
-"Osirusoft."
-
-msgid "FREE - Osirusoft Dialups - Osirusofts Dialup Spam Source list."
-msgstr "БЕСПЛАТНО - Osirusoft Dialups - Список модемных спаммеров от Osirusoft."
-
-msgid ""
-"FREE - Osirusoft Confirmed Spam Source - Sites that continually spam and "
-"have been manually added after multiple nominations. Use with caution. Seems "
-"to catch abuse auto-replies from some ISPs."
-msgstr ""
-"БЕСПЛАТНО - Osirusoft Confirmed Spam Source - Домены и провайдеры, которые "
-"занимаются рассылкой спама и были занесены в список вручную. Иногда неверно."
-
-msgid ""
-"FREE - Osirusoft Smart Hosts - List of hosts that are secure but relay for "
-"other mail servers that are not secure."
-msgstr ""
-"БЕСПЛАТНО - Osirusoft Smart Hosts - Список серверов, которые сами по себе не "
-"пересылают спам-сообщения, но являются пересылочным пунктом для других "
-"серверов, которые отсылают спам."
-
-msgid ""
-"FREE - Osirusoft Spamware Developers - It is believed that these are IP "
-"ranges of companies that are known to produce spam software. Seems to catch "
-"abuse auto-replies from some ISPs."
-msgstr ""
-"БЕСПЛАТНО - Osirusoft Spamware Developers - Содержит список IP-адресов, "
-"которые подозреваются в рассылке спама или принадлежат компаниям, которые "
-"производят обеспечение для отсылки спама. Иногда фильтрует легитимные "
-"сообщения."
-
-msgid ""
-"FREE - Osirusoft Unconfirmed OptIn Servers - List of listservers that opt "
-"users in without confirmation."
-msgstr ""
-"БЕСПЛАТНО - Osirusoft Unconfirmed OptIn Servers - Список серверов рассылки, "
-"которые добавляют адреса подписчиков без согласования с ними."
-
-msgid ""
-"FREE - Osirusoft Insecure formmail.cgi scripts - List of insecure formmail."
-"cgi scripts. (planned)."
-msgstr ""
-"БЕСПЛАТНО - Сервера с плохо настроенной системой cgi-скриптов, которые "
-"позволяют отправлять почтовые сообщения через веб-интерфейс. От Osirusoft"
-
-msgid "FREE - Osirusoft Open Proxy Servers - List of Open Proxy Servers."
-msgstr "БЕСПЛАТНО - Список незащищенных прокси-серверов от Osirusoft."
-
-msgid ""
 "FREE - ORDB was born when ORBS went off the air. It seems to have fewer "
 "false positives than ORBS did though."
 msgstr ""
@@ -2168,7 +2150,8 @@ msgstr ""
 "спрашивая разрешения."
 
 msgid "FREE - Five-Ten-sg.com - Other misc. servers."
-msgstr "БЕСПЛАТНО - Five-Ten-sg.com - прочие сервера, имеющие отношение к спаму."
+msgstr ""
+"БЕСПЛАТНО - Five-Ten-sg.com - прочие сервера, имеющие отношение к спаму."
 
 msgid "FREE - Five-Ten-sg.com - Single Stage servers."
 msgstr "БЕСПЛАТНО - Five-Ten-sg.com - серверы, отсылающие спам напрямую."
@@ -2193,6 +2176,7 @@ msgstr ""
 msgid "FREE - SPAMhaus - A list of well-known SPAM sources."
 msgstr "FREE - SPAMhaus - список общеизвестных источников спама."
 
+#, fuzzy, c-format
 msgid ""
 "FREE, for now - SPAMCOP - An interesting solution that lists servers that "
 "have a very high spam to legit email ratio (85% or more)."
@@ -2213,7 +2197,8 @@ msgid "FREE - 2mbit.com SPAM Source - List of Direct SPAM Sources."
 msgstr "FREE - 2mbit.com SPAM Source - список рассыльщиков спама."
 
 msgid "FREE - 2mbit.com SPAM ISPs - List of SPAM-friendly ISPs."
-msgstr "БЕСПЛАТНО - 2mbit.com SPAM ISPs - список провайдеров, поддерживающих спам."
+msgstr ""
+"БЕСПЛАТНО - 2mbit.com SPAM ISPs - список провайдеров, поддерживающих спам."
 
 msgid ""
 "FREE - Leadmon DUL - Another list of Dial-up or otherwise dynamically "
@@ -2268,7 +2253,8 @@ msgstr ""
 "и пересыльщиков спама."
 
 msgid "FREE, for now - Not Just Another Blacklist - Dial-up IPs."
-msgstr "БЕСПЛАТНО - Not Just Another Blacklist - Диалап-адреса, рассылающие спам."
+msgstr ""
+"БЕСПЛАТНО - Not Just Another Blacklist - Диалап-адреса, рассылающие спам."
 
 msgid "FREE - Distributed Sender Boycott List - Confirmed Relays"
 msgstr "FREE - Distributed Sender Boycott List - пересыльщики"
@@ -2308,7 +2294,8 @@ msgstr "Содержит:"
 
 #, c-format
 msgid "If <b>%s</b> contains <b>%s</b> then move to <b>%s</b>"
-msgstr "Если <b>%s</b> содержит <b>%s</b>, то переместить сообщение в <b>%s</b>"
+msgstr ""
+"Если <b>%s</b> содержит <b>%s</b>, то переместить сообщение в <b>%s</b>"
 
 msgid "Message Filters"
 msgstr "Фильтрование сообщений"
@@ -2720,9 +2707,6 @@ msgstr "Хотите удалить выбранный сервер?"
 msgid "Confirm Delete"
 msgstr "Удалить"
 
-msgid "Mofify a Server"
-msgstr "Редактировать сервер"
-
 msgid "Undefined Function"
 msgstr "Неопределенная функция"
 
@@ -2773,8 +2757,8 @@ msgid ""
 "The <b>Check all boxes, not just INBOX</b> option will check ALL of your "
 "folders for unseen mail, not just the inbox for notification."
 msgstr ""
-"В режиме <b>Проверять все папки</b> вы будете узнавать о приходе новых сообщениях в "
-"любую папку, а не только во входящие."
+"В режиме <b>Проверять все папки</b> вы будете узнавать о приходе новых "
+"сообщениях в любую папку, а не только во входящие."
 
 msgid ""
 "Selecting the <b>Show popup</b> option will enable the showing of a popup "
@@ -2965,7 +2949,8 @@ msgstr "Дальше"
 msgid "You must make a choice"
 msgstr "Пожалуйста, сделайте выбор"
 
-msgid "You can either delete your dictionary or type in the old password. Not both."
+msgid ""
+"You can either delete your dictionary or type in the old password. Not both."
 msgstr ""
 "Вы можете удалить ваш старый словарь или ввести пароль для раскодировки, но "
 "не и то и другое сразу."
@@ -3054,13 +3039,15 @@ msgid "Close and Commit"
 msgstr "Закрыть и сохранить"
 
 msgid "The spellcheck is not finished. Really close and commit changes?"
-msgstr "Проверка правописания не закончена. Хотите закрыть и сохранить изменения?"
+msgstr ""
+"Проверка правописания не закончена. Хотите закрыть и сохранить изменения?"
 
 msgid "Close and Cancel"
 msgstr "Закрыть и отклонить"
 
 msgid "The spellcheck is not finished. Really close and discard changes?"
-msgstr "Проверка правописания не закончена. Хотите закрыть и отклонить все изменения?"
+msgstr ""
+"Проверка правописания не закончена. Хотите закрыть и отклонить все изменения?"
 
 msgid "No errors found"
 msgstr "Ошибок не найдено"
@@ -3175,7 +3162,8 @@ msgstr ""
 "расшифровать ваш словарь. В этом случае система запросит ваш старый пароль и "
 "перекодирует словарь с вашим новым паролем.</p>"
 
-msgid "Please decrypt my personal dictionary and store it in a clear-text format."
+msgid ""
+"Please decrypt my personal dictionary and store it in a clear-text format."
 msgstr "Расшифровать мой личный словарь и хранить его в нешифрованном виде."
 
 msgid "Change crypto settings"
@@ -3209,7 +3197,8 @@ msgstr ""
 "будете помнить старый, то система позволит вам перекодировать словарь с "
 "новым паролем.</p>"
 
-msgid "Please encrypt my personal dictionary and store it in an encrypted format."
+msgid ""
+"Please encrypt my personal dictionary and store it in an encrypted format."
 msgstr "Закодировать мой словарь и хранить его в зашифрованном виде."
 
 #, c-format
@@ -3294,27 +3283,44 @@ msgstr "Сохраненные параметры переводчика"
 msgid "Your server options are as follows:"
 msgstr "Настройки серверов:"
 
-msgid "19 language pairs, maximum of 1000 characters translated, powered by Systran"
+#, fuzzy
+msgid "Maximum of 1000 characters translated, powered by Systran"
 msgstr "19 языковых пар, максимум 1000 символов, система Systran"
 
-msgid "12 language pairs, no known limits, powered by Systran"
+#, c-format
+msgid "Number of supported language pairs: %s"
+msgstr ""
+
+#, fuzzy
+msgid "No known limits, powered by Systran"
 msgstr "12 языковых пар, без ограничений, система Systran"
 
-msgid ""
-"784 language pairs, no known limits, powered by Translation Experts's "
-"InterTran"
-msgstr "784 языковых пары, без ограничений, система Translation Experts's InterTran"
+#, fuzzy
+msgid "No known limits, powered by Translation Experts's InterTran"
+msgstr ""
+"784 языковых пары, без ограничений, система Translation Experts's InterTran"
 
-msgid "8 language pairs, no known limits, powered by GPLTrans (free, open source)"
+#, c-format
+msgid "Number of supported languages: %s"
+msgstr ""
+
+#, fuzzy
+msgid "No known limits, powered by GPLTrans (free, open source)"
 msgstr "8 языковых пар, без ограничений, система GPLTrans (открытый код)"
 
-msgid "4 language pairs for Hellenic, no known limits, powered by Systran"
-msgstr "4 языковых пар для греческого, без ограничений, система Systran"
+#, fuzzy
+msgid "Hellenic translations, no known limits, powered by Systran"
+msgstr "12 языковых пар, без ограничений, система Systran"
+
+#, fuzzy
+msgid "Russian translations, maximum of 500 characters translated"
+msgstr "19 языковых пар, максимум 1000 символов, система Systran"
 
 msgid ""
 "You also decide if you want the translation box displayed, and where it will "
 "be located."
-msgstr "Показывать или не показывать опцию перевода и где ее размещать на странице."
+msgstr ""
+"Показывать или не показывать опцию перевода и где ее размещать на странице."
 
 msgid "Select your translator:"
 msgstr "Выберите переводчика:"
@@ -3349,7 +3355,8 @@ msgstr "Настройки переводчика"
 msgid ""
 "Which translator should be used when you get messages in a different "
 "language?"
-msgstr "Какой переводчик использовать, когда приходит сообщение на другом языке?"
+msgstr ""
+"Какой переводчик использовать, когда приходит сообщение на другом языке?"
 
 #, c-format
 msgid "%s to %s"
@@ -3460,11 +3467,80 @@ msgstr "на английский"
 msgid "from English"
 msgstr "с английского"
 
+#, fuzzy
+msgid "Interface language"
+msgstr "Язык по умолчанию"
+
+#, fuzzy
+msgid "Translation direction"
+msgstr "Настройки переводчика"
+
 msgid "Delivery error report"
 msgstr "Сообщение об ошибке при доставке"
 
 msgid "Undelivered Message Headers"
 msgstr "Заголовки недоставленного сообщения"
+
+#~ msgid ""
+#~ "FREE - Osirusoft Relays - Osirusofts list of verified open relays. Seems "
+#~ "to include servers used by abuse@uunet.net auto-replies too."
+#~ msgstr ""
+#~ "БЕСПЛАТНО - Osirusoft Relays - список серверов пересылки от компании "
+#~ "Osirusoft."
+
+#~ msgid "FREE - Osirusoft Dialups - Osirusofts Dialup Spam Source list."
+#~ msgstr ""
+#~ "БЕСПЛАТНО - Osirusoft Dialups - Список модемных спаммеров от Osirusoft."
+
+#~ msgid ""
+#~ "FREE - Osirusoft Confirmed Spam Source - Sites that continually spam and "
+#~ "have been manually added after multiple nominations. Use with caution. "
+#~ "Seems to catch abuse auto-replies from some ISPs."
+#~ msgstr ""
+#~ "БЕСПЛАТНО - Osirusoft Confirmed Spam Source - Домены и провайдеры, "
+#~ "которые занимаются рассылкой спама и были занесены в список вручную. "
+#~ "Иногда неверно."
+
+#~ msgid ""
+#~ "FREE - Osirusoft Smart Hosts - List of hosts that are secure but relay "
+#~ "for other mail servers that are not secure."
+#~ msgstr ""
+#~ "БЕСПЛАТНО - Osirusoft Smart Hosts - Список серверов, которые сами по себе "
+#~ "не пересылают спам-сообщения, но являются пересылочным пунктом для других "
+#~ "серверов, которые отсылают спам."
+
+#~ msgid ""
+#~ "FREE - Osirusoft Spamware Developers - It is believed that these are IP "
+#~ "ranges of companies that are known to produce spam software. Seems to "
+#~ "catch abuse auto-replies from some ISPs."
+#~ msgstr ""
+#~ "БЕСПЛАТНО - Osirusoft Spamware Developers - Содержит список IP-адресов, "
+#~ "которые подозреваются в рассылке спама или принадлежат компаниям, которые "
+#~ "производят обеспечение для отсылки спама. Иногда фильтрует легитимные "
+#~ "сообщения."
+
+#~ msgid ""
+#~ "FREE - Osirusoft Unconfirmed OptIn Servers - List of listservers that opt "
+#~ "users in without confirmation."
+#~ msgstr ""
+#~ "БЕСПЛАТНО - Osirusoft Unconfirmed OptIn Servers - Список серверов "
+#~ "рассылки, которые добавляют адреса подписчиков без согласования с ними."
+
+#~ msgid ""
+#~ "FREE - Osirusoft Insecure formmail.cgi scripts - List of insecure "
+#~ "formmail.cgi scripts. (planned)."
+#~ msgstr ""
+#~ "БЕСПЛАТНО - Сервера с плохо настроенной системой cgi-скриптов, которые "
+#~ "позволяют отправлять почтовые сообщения через веб-интерфейс. От Osirusoft"
+
+#~ msgid "FREE - Osirusoft Open Proxy Servers - List of Open Proxy Servers."
+#~ msgstr "БЕСПЛАТНО - Список незащищенных прокси-серверов от Osirusoft."
+
+#~ msgid "Mofify a Server"
+#~ msgstr "Редактировать сервер"
+
+#~ msgid "4 language pairs for Hellenic, no known limits, powered by Systran"
+#~ msgstr "4 языковых пар для греческого, без ограничений, система Systran"
 
 #~ msgid "Not available"
 #~ msgstr "отсутствует"
@@ -3552,4 +3628,3 @@ msgstr "Заголовки недоставленного сообщения"
 
 #~ msgid "NOOP failed. Server not RFC 1939 compliant"
 #~ msgstr "NOOP failed. Server not RFC 1939 compliant"
-
