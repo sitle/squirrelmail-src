@@ -458,9 +458,6 @@ $thread_sort_messages = getPref($data_dir, $username, "thread_$mailbox", 0);
 
 /* end of get globals */
 
-if (isset($mailbox)){
-    $mailbox = urldecode( $mailbox );
-}
 $imapConnection = sqimap_login($username, $key, $imapServerAddress, 
                                $imapPort, 0);
 $read = sqimap_mailbox_select($imapConnection, $mailbox, false, false, true);
