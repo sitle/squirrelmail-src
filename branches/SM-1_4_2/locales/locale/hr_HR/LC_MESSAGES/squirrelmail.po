@@ -1,15 +1,14 @@
 # Croatian Squirrelmail Translation 
 # Copyright (c) 1999-2002 The Squirrelmail Development Team
-# Albert Novak <Albert.Novak@CARNet.hr>, 2001.
-#
+# Albert Novak <Albert.Novak@CARNet.hr>, 2001-2003.
+# $Id$
 msgid ""
 msgstr ""
-"Project-Id-Version: $Id: squirrelmail.po,v 1.1 2003/07/13 09:43:10 tokul Exp "
-"$\n"
+"Project-Id-Version: squirrelmail 1.4.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2003-10-05 12:27+0300\n"
-"PO-Revision-Date: 2000-09-05 12:00+0100\n"
-"Last-Translator: Albert Novak <Albert.Novak@CARNet.hr>\n"
+"POT-Creation-Date: 2003-10-11 20:31+0200\n"
+"PO-Revision-Date: 2003-10-11 21:31+0100\n"
+"Last-Translator: Zoran D¾elajlija <jelly+i18n@srk.fer.hr>\n"
 "Language-Team: Croatian <squirrelmail-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=iso-8859-2\n"
@@ -17,9 +16,6 @@ msgstr ""
 
 msgid "Address Book"
 msgstr "Adresar"
-
-msgid "All"
-msgstr ""
 
 msgid "Name"
 msgstr "Ime"
@@ -33,11 +29,42 @@ msgstr "Info"
 msgid "Source"
 msgstr "Izvor"
 
+msgid "No persons matching your search was found"
+msgstr "Tra¾ena osoba nije pronaðena"
+
+msgid "Search for"
+msgstr "Potra¾i"
+
+msgid "in"
+msgstr "u"
+
+msgid "All address books"
+msgstr "Svi adresari"
+
+msgid "Search"
+msgstr "Pretra¾ivanje"
+
+msgid "List all"
+msgstr "Prika¾i sve"
+
+msgid "Close"
+msgstr "Zatvori"
+
+#, c-format
+msgid "Unable to list addresses from %s"
+msgstr "Ne mogu prikazati adrese od %s"
+
+msgid "Your search failed with the following error(s)"
+msgstr "Pretra¾ivanje nije uspjelo zbog ovih pogre¹aka"
+
+msgid "All"
+msgstr "Sve"
+
 msgid "To"
 msgstr "Prima"
 
 msgid "Cc"
-msgstr "Kopija"
+msgstr "Cc"
 
 msgid "Bcc"
 msgstr ""
@@ -48,37 +75,8 @@ msgstr "Upotrijebi adrese"
 msgid "Address Book Search"
 msgstr "Pretra¾ivanje adresara"
 
-msgid "Search for"
-msgstr "Potra¾i"
-
-msgid "in"
-msgstr "u"
-
-msgid "All address books"
-msgstr "All address books"
-
-msgid "Search"
-msgstr "Pretra¾ivanje"
-
-msgid "List all"
-msgstr "Prika¾i sve"
-
-#, c-format
-msgid "Unable to list addresses from %s"
-msgstr "Ne mogu prikazati adrese od %s"
-
-msgid "Your search failed with the following error(s)"
-msgstr "Va¹e pretra¾ivanje je uzrokovalo sljedecu pogre¹ku(e)"
-
-msgid "No persons matching your search was found"
-msgstr "Tra¾ena osoba nije pronaðena"
-
 msgid "Return"
 msgstr "Povratak"
-
-#, fuzzy
-msgid "Close"
-msgstr "Nova poruka"
 
 msgid "Nickname"
 msgstr "Nadimak"
@@ -102,7 +100,7 @@ msgid "No personal address book is defined. Contact administrator."
 msgstr "Osobni adresar nije definiran. Kontaktirajte administratora."
 
 msgid "You can only edit one address at the time"
-msgstr "Istovremeno mo¾ete prepravljati samo jednu adresu"
+msgstr "Mo¾ete prepravljati samo jednu adresu istovremeno"
 
 msgid "Update address"
 msgstr "A¾uriraj adresu"
@@ -117,23 +115,23 @@ msgid "Add address"
 msgstr "Dodaj adresu"
 
 msgid "Edit selected"
-msgstr "Promjena selektiranog"
+msgstr "Promjena oznaèenog"
 
 msgid "Delete selected"
-msgstr "Brisanje selektiranog"
+msgstr "Brisanje oznaèenog"
 
 #, c-format
 msgid "Add to %s"
-msgstr "Dodaj u osobni adresar"
+msgstr "Dodaj u %s"
 
 msgid "said"
-msgstr ""
+msgstr "reèe"
 
 msgid "quote"
-msgstr ""
+msgstr "citat"
 
 msgid "who"
-msgstr ""
+msgstr "tko"
 
 msgid "Subject"
 msgstr "Naslov"
@@ -148,18 +146,16 @@ msgid "Original Message"
 msgstr "Originalna poruka"
 
 msgid "Draft Email Saved"
-msgstr ""
+msgstr "Predlo¾ak poruke spremljen"
 
 msgid "Could not move/copy file. File not attached"
 msgstr "Ne mogu premjestiti/kopirati datoteku. Datoteka nije dodana"
 
-#, fuzzy
 msgid "Draft Saved"
-msgstr "Kreiraj pretinac"
+msgstr "Predlo¾ak spremljen"
 
-#, fuzzy
 msgid "Your Message has been sent"
-msgstr "Niti jedna poruka nije selektirana."
+msgstr "Va¹a poruka je poslana."
 
 msgid "From:"
 msgstr "©alje:"
@@ -186,30 +182,28 @@ msgid "Add"
 msgstr "Dodaj"
 
 msgid "Delete selected attachments"
-msgstr "Obri¹i selektirani dodatak"
+msgstr "Obri¹i oznaèene priloge"
 
 msgid "Priority"
-msgstr ""
+msgstr "Prioritet"
 
-#, fuzzy
 msgid "High"
-msgstr "Desno"
+msgstr "visoki"
 
 msgid "Normal"
-msgstr ""
+msgstr "obièan"
 
 msgid "Low"
-msgstr ""
+msgstr "niski"
 
 msgid "Receipt"
-msgstr ""
+msgstr "Potvrda"
 
-#, fuzzy
 msgid "On Read"
-msgstr "Promijeni ime"
+msgstr "o èitanju"
 
 msgid "On Delivery"
-msgstr ""
+msgstr "o primitku"
 
 msgid "Signature"
 msgstr "Potpis"
@@ -218,71 +212,46 @@ msgid "Addresses"
 msgstr "Adresar"
 
 msgid "Save Draft"
-msgstr ""
+msgstr "Spremi predlo¾ak"
 
 msgid "You have not filled in the \"To:\" field."
 msgstr "Niste popunili polje \"Prima:\""
 
-#, fuzzy
 msgid "Draft folder"
-msgstr "Kreiraj pretinac"
+msgstr "Pretinac za predlo¹ke"
 
-#, fuzzy
 msgid "Server replied: "
-msgstr "Odgovor poslu¾itelja:"
-
-msgid "Illegal folder name.  Please select a different name."
-msgstr "Nedozvoljen naziv pretinca. Molimo Vas da selektirate drugo ime."
-
-msgid "Click here to go back"
-msgstr "Pritisnite za povratak"
-
-msgid "You have not selected a folder to delete. Please do so."
-msgstr ""
-
-msgid "Delete Folder"
-msgstr "Obri¹i pretinac"
-
-#, c-format
-msgid "Are you sure you want to delete %s?"
-msgstr ""
-
-msgid "Yes"
-msgstr ""
-
-#, fuzzy
-msgid "No"
-msgstr "nema"
+msgstr "Odgovor poslu¾itelja: "
 
 msgid "Folders"
-msgstr "Pretinac"
+msgstr "Pretinci"
 
 msgid "Subscribed successfully!"
-msgstr "Uspje¹no prijavljen!"
+msgstr "Prijava je uspjela!"
 
 msgid "Unsubscribed successfully!"
-msgstr "Uspje¹no odjavljen!"
+msgstr "Odjava je uspjela!"
 
 msgid "Deleted folder successfully!"
-msgstr "Uspje¹no brisanje pretinca"
+msgstr "Pretinac uspje¹no obrisan!"
 
 msgid "Created folder successfully!"
-msgstr "Uspje¹no kreiranje pretinca"
+msgstr "Pretinac uspje¹no stvoren!"
 
 msgid "Renamed successfully!"
 msgstr "Uspje¹na promjena naziva!"
 
 msgid "Subscription Unsuccessful - Folder does not exist."
-msgstr ""
+msgstr "Prijava nije uspjela - taj pretinac ne postoji."
 
 msgid "refresh folder list"
-msgstr "osvje¾i listu pretinaca"
+msgstr "osvje¾i popis pretinaca"
 
 msgid "Create Folder"
-msgstr "Kreiraj pretinac"
+msgstr "Stvori pretinac"
 
 msgid "as a subfolder of"
-msgstr "kao podpretinca od"
+msgstr "kao podpretinac od"
 
 msgid "None"
 msgstr "nema"
@@ -291,20 +260,22 @@ msgid "Let this folder contain subfolders"
 msgstr "Dozvoli podpretince"
 
 msgid "Create"
-msgstr "Kreiraj"
+msgstr "Stvori"
 
 msgid "Rename a Folder"
 msgstr "Promijeni naziv pretinca"
 
-#, fuzzy
 msgid "Select a folder"
-msgstr "Promjena imena pretinca"
+msgstr "Odaberi pretinac"
 
 msgid "Rename"
 msgstr "Promijeni ime"
 
 msgid "No folders found"
-msgstr "Pretinac nije pronaden"
+msgstr "Pretinac nije pronaðen"
+
+msgid "Delete Folder"
+msgstr "Obri¹i pretinac"
 
 msgid "Delete"
 msgstr "Obri¹i"
@@ -316,17 +287,35 @@ msgid "Subscribe"
 msgstr "Prijavi"
 
 msgid "No folders were found to unsubscribe from!"
-msgstr "Tra¾eni pretinci nisu pronadeni!"
+msgstr "Tra¾eni pretinci nisu pronaðeni!"
 
 msgid "No folders were found to subscribe to!"
 msgstr "Tra¾eni pretinci nisu pronadeni!"
 
-#, fuzzy
 msgid "Subscribe to:"
-msgstr "Prijavi"
+msgstr "Prijavi se na:"
+
+msgid "Illegal folder name.  Please select a different name."
+msgstr "Nedozvoljen naziv pretinca. Molimo, izaberite neko drugo ime."
+
+msgid "Click here to go back"
+msgstr "Pritisnite za povratak"
+
+msgid "You have not selected a folder to delete. Please do so."
+msgstr "Niste oznaèili pretinac koji ¾elite obrisati."
+
+#, c-format
+msgid "Are you sure you want to delete %s?"
+msgstr "®elite li zaista obrisati %s?"
+
+msgid "Yes"
+msgstr "da"
+
+msgid "No"
+msgstr "ne"
 
 msgid "You have not selected a folder to rename. Please do so."
-msgstr ""
+msgstr "Niste oznaèili kojem pretincu ¾elite promijeniti ime."
 
 msgid "Rename a folder"
 msgstr "Promjena imena pretinca"
@@ -335,10 +324,10 @@ msgid "New name:"
 msgstr "Novo ime:"
 
 msgid "Submit"
-msgstr "Proslijedi"
+msgstr "Izvr¹i promjene"
 
 msgid "ERROR: Help files are not in the right format!"
-msgstr ""
+msgstr "POGRE©KA: Lo¹ oblik datoteka za pomoæ!"
 
 msgid "Help"
 msgstr "Pomoæ"
@@ -350,7 +339,7 @@ msgid ""
 msgstr "Pomoæ nije prevedena na hrvatski, te æe biti prikazana na engleskom!"
 
 msgid "Some or all of the help documents are not present!"
-msgstr "Neki ili svi dokomenti o pomoæi ne postoje!"
+msgstr "Neki ili svi dokumenti o pomoæi ne postoje!"
 
 msgid "Table of Contents"
 msgstr "Sadr¾aj"
@@ -364,35 +353,33 @@ msgstr "Sljedeæa"
 msgid "Top"
 msgstr "Gore"
 
-#, fuzzy
 msgid "Viewing an image attachment"
-msgstr "Pregledavanje tekstualnog dodatka"
+msgstr "Pregled slikovnog priloga"
 
 msgid "View message"
 msgstr "Pogledaj poruku"
 
 msgid "Download this as a file"
-msgstr "Spusti to kao datoteku"
+msgstr "Spusti kao datoteku"
 
-#, fuzzy
 msgid "INBOX"
-msgstr "Samo INBOX"
+msgstr "INBOX"
 
 msgid "purge"
 msgstr "isprazni"
 
 msgid "Last Refresh"
-msgstr ""
+msgstr "Osvje¾eno"
 
 msgid "Save folder tree"
-msgstr ""
+msgstr "Spremi oblik stabla"
 
 msgid "Login"
 msgstr "Prijava"
 
-#, fuzzy, c-format
+#, c-format
 msgid "%s Logo"
-msgstr "%s WEBmail prijava"
+msgstr "%s Logo"
 
 #, c-format
 msgid "SquirrelMail version %s"
@@ -412,13 +399,61 @@ msgid "Password:"
 msgstr "Lozinka:"
 
 msgid "No messages were selected."
-msgstr "Niti jedna poruka nije selektirana."
+msgstr "Niti jedna poruka nije oznaèena."
 
-msgid "Options"
-msgstr "Opcije"
+msgid "Personal Information"
+msgstr "Osobne informacije"
+
+msgid "Display Preferences"
+msgstr "Osobine naèina prikaza"
 
 msgid "Message Highlighting"
 msgstr "Nagla¹avanje poruke"
+
+msgid "Folder Preferences"
+msgstr "Osobine pretinaca"
+
+msgid "Index Order"
+msgstr "Redoslijed polja"
+
+msgid "Options"
+msgstr "Postavke"
+
+msgid "Successfully Saved Options"
+msgstr "Postavke uspje¹no spremljene"
+
+msgid "Refresh Folder List"
+msgstr "Osvje¾i popis pretinaca"
+
+msgid "Refresh Page"
+msgstr "Osvje¾i stranicu"
+
+msgid ""
+"This contains personal information about yourself such as your name, your "
+"email address, etc."
+msgstr "Sadr¾i osobne informacije poput Va¹eg imena, E-mail adrese, i sliènog."
+
+msgid ""
+"You can change the way that SquirrelMail looks and displays information to "
+"you, such as the colors, the language, and other settings."
+msgstr "Ovdje mo¾ete izmijeniti izgled i naèin prikaza informacija. Mo¾ete odabrati druge boje, jezik suèelja, i ostale postavke."
+
+msgid ""
+"Based upon given criteria, incoming messages can have different background "
+"colors in the message list.  This helps to easily distinguish who the "
+"messages are from, especially for mailing lists."
+msgstr "Na osnovu razlièitih kriterija dolazne poruke mogu imati razlièite boje pozadina u popisu poruka. To mo¾e poslu¾iti za lak¹e razlikovanje poruka, pogotovo onih sa mailing lista."
+
+msgid ""
+"These settings change the way your folders are displayed and manipulated."
+msgstr "Ove postavke ureðuju naèin prikaza i baratanja pretincima."
+
+msgid ""
+"The order of the message index can be rearranged and changed to contain the "
+"headers in any order you want."
+msgstr ""
+"Polja u popisu poruka i njihov redoslijed mogu se mijenjati tako da pokazuju "
+"zaglavlja koja Vama odgovaraju."
 
 msgid "New"
 msgstr "Novo"
@@ -427,21 +462,19 @@ msgid "Done"
 msgstr "Zavr¹i"
 
 msgid "To or Cc"
-msgstr ""
+msgstr "To ili Cc"
 
-#, fuzzy
 msgid "subject"
-msgstr "Naslov"
+msgstr "naslov"
 
 msgid "Edit"
-msgstr "Promijeni"
+msgstr "Izmijeni"
 
 msgid "Up"
-msgstr ""
+msgstr "Gore"
 
-#, fuzzy
 msgid "Down"
-msgstr "Zavr¹i"
+msgstr "Dolje"
 
 msgid "No highlighting is defined"
 msgstr "Nagla¹avanje nije definirano"
@@ -465,7 +498,7 @@ msgid "Dark Cyan"
 msgstr "Cijan - tamna"
 
 msgid "Dark Magenta"
-msgstr "Magenta - tamna"
+msgstr "Ru¾ièasta - tamna"
 
 msgid "Light Blue"
 msgstr "Plava - svijetla"
@@ -480,7 +513,7 @@ msgid "Light Cyan"
 msgstr "Cijan - svijetla"
 
 msgid "Light Magenta"
-msgstr "Magenta - svijetla"
+msgstr "Ru¾ièasta - svijetla"
 
 msgid "Dark Gray"
 msgstr "Siva - tamna"
@@ -500,22 +533,21 @@ msgstr "Druga:"
 msgid "Ex: 63aa7f"
 msgstr "npr.: 63aa7f"
 
-#, fuzzy
 msgid "Matches"
-msgstr "Filter"
+msgstr "Poklapanja"
 
 #, c-format
 msgid "Alternate Identity %d"
-msgstr ""
+msgstr "Zamjenski identitet %d"
 
 msgid "Advanced Identities"
-msgstr ""
+msgstr "Dodatne postavke identiteta"
 
 msgid "Default Identity"
-msgstr ""
+msgstr "Pretpostavljeni identitet"
 
 msgid "Add a New Identity"
-msgstr ""
+msgstr "Dodaj novi identitet"
 
 msgid "Full Name"
 msgstr "Puno ime"
@@ -527,20 +559,16 @@ msgid "Reply To"
 msgstr "Povratna adresa"
 
 msgid "Save / Update"
-msgstr ""
+msgstr "Spremi / Izmijeni"
 
 msgid "Make Default"
-msgstr ""
+msgstr "Uèini prvim izborom"
 
-#, fuzzy
 msgid "Move Up"
-msgstr "Pomakni"
-
-msgid "Index Order"
-msgstr "Redoslijed polja"
+msgstr "Pomakni gore"
 
 msgid "Checkbox"
-msgstr ""
+msgstr "Kuæica"
 
 msgid "Flags"
 msgstr "Flag"
@@ -552,116 +580,54 @@ msgid ""
 "The index order is the order that the columns are arranged in the message "
 "index.  You can add, remove, and move columns around to customize them to "
 "fit your needs."
-msgstr ""
-"Redoslijed polja omoguæuje nam da aran¾iramo kolone prilikom prikaza liste "
-"poruka. Mo¾ete dodavati, skidati i premije¹tati kolone prema svojim ¾eljama."
+msgstr "Redoslijed polja omoguæuje vam da poredate stupce kod prikaza popisa poruka.  Stupce mo¾ete po volji dodavati, micati i premje¹tati."
 
 msgid "up"
-msgstr "gore"
+msgstr "prije"
 
 msgid "down"
-msgstr "dolje"
+msgstr "nakon"
 
 msgid "remove"
 msgstr "makni"
 
 msgid "Return to options page"
-msgstr "Povratak na stranicu s opcijama"
+msgstr "Povratak na stranicu s postavkama"
 
-msgid "Personal Information"
-msgstr "Osobne informacije"
-
-msgid "Display Preferences"
-msgstr "Osobine naèina prikaza"
-
-msgid "Folder Preferences"
-msgstr "Osobine pretinaca"
-
-#, fuzzy
-msgid "Successfully Saved Options"
-msgstr "Osobne informacije su uspje¹no snimljene!"
-
-msgid "Refresh Folder List"
-msgstr "Osvje¾i listu pretinaca"
-
-msgid "Refresh Page"
-msgstr "Osvje¾i stranicu"
-
-msgid ""
-"This contains personal information about yourself such as your name, your "
-"email address, etc."
-msgstr ""
-"Sadr¾i osobne informacije o Vama kao ¹to su Va¹e ime, E-mail adresa, itd."
-
-msgid ""
-"You can change the way that SquirrelMail looks and displays information to "
-"you, such as the colors, the language, and other settings."
-msgstr ""
-"Izgled i naèin prikazivanja informacija mo¾e se promijeniti tako da mo¾ete "
-"odabrati druge boje, jezik i ostale parametre."
-
-msgid ""
-"Based upon given criteria, incoming messages can have different background "
-"colors in the message list.  This helps to easily distinguish who the "
-"messages are from, especially for mailing lists."
-msgstr ""
-"Na osnovu razlièitih kriterija dolazne poruke mogu imati razlièite boje "
-"pozadina u listi poruka. Na ovaj naèin lako mo¾ete razlikovati poruke."
-
-msgid ""
-"These settings change the way your folders are displayed and manipulated."
-msgstr ""
-"Ovim postavkama mo¾e se promijeniti naèin na koji æe pretinci biti prikazani "
-"i manipulirani."
-
-#, fuzzy
-msgid ""
-"The order of the message index can be rearranged and changed to contain the "
-"headers in any order you want."
-msgstr ""
-"Redoslijed polja pokazanih prilikom prikaza lista poruka mo¾e se proizvoljno "
-"mijenjati tako da dobijete zaglavlje koje vama odgovara."
-
-#, fuzzy
 msgid "Message not printable"
-msgstr "Nagla¹avanje poruke"
+msgstr "Poruka nije spremna za tisak"
 
-#, fuzzy
 msgid "CC"
 msgstr "Kopija:"
 
 msgid "Printer Friendly"
-msgstr ""
+msgstr "Verzija za tisak"
 
 msgid "Print"
-msgstr ""
+msgstr "Tisak"
 
 msgid "View Printable Version"
-msgstr ""
+msgstr "Prika¾i verziju za tisak"
 
-#, fuzzy
 msgid "Read:"
-msgstr "Promijeni ime"
+msgstr "Proèitano:"
 
-#, fuzzy
 msgid "Your message"
-msgstr "poruka"
+msgstr "Va¹a poruka"
 
-#, fuzzy
 msgid "Sent:"
-msgstr "Po¹alji"
+msgstr "Poslano:"
 
 #, c-format
 msgid "Was displayed on %s"
-msgstr ""
+msgstr "Prikazano na %s"
 
 msgid "less"
 msgstr "manje"
 
 msgid "more"
-msgstr "dalje"
+msgstr "vi¹e"
 
-#, fuzzy
 msgid "Unknown sender"
 msgstr "Nepoznat po¹iljatelj"
 
@@ -669,47 +635,42 @@ msgid "Mailer"
 msgstr ""
 
 msgid "Read receipt"
-msgstr ""
+msgstr "Potvrda o èitanju"
 
-#, fuzzy
 msgid "sent"
-msgstr "Po¹alji"
+msgstr "poslana"
 
-#, fuzzy
 msgid "requested"
-msgstr "Niti jedna poruka nije selektirana."
+msgstr "zatra¾ena"
 
 msgid ""
 "The message sender has requested a response to indicate that you have read "
 "this message. Would you like to send a receipt?"
-msgstr ""
+msgstr "Po¹iljatelj je zatra¾io potvrdu o èitanju ove poruke.  ®elite li jeposlati?"
 
 msgid "Send read receipt now"
-msgstr ""
+msgstr "Po¹alji potvrdu o èitanju"
 
-#, fuzzy
 msgid "Search results"
-msgstr "Potra¾i"
+msgstr "Rezultati pretrage"
 
 msgid "Message List"
-msgstr "Lista poruka"
+msgstr "Popis poruka"
 
 msgid "Resume Draft"
-msgstr ""
+msgstr "Nastavi s pisanjem predlo¹ka"
 
 msgid "Edit Message as New"
-msgstr ""
+msgstr "Koristi kao novu poruku"
 
-#, fuzzy
 msgid "View Message"
-msgstr "Pogledaj poruku"
+msgstr "Prika¾i poruku"
 
 msgid "Forward"
 msgstr "Proslijedi"
 
-#, fuzzy
 msgid "Forward as Attachment"
-msgstr "Dodatak:"
+msgstr "Proslijedi kao prilog"
 
 msgid "Reply"
 msgstr "Odgovori"
@@ -717,48 +678,38 @@ msgstr "Odgovori"
 msgid "Reply All"
 msgstr "Odgovori svima"
 
-#, fuzzy
 msgid "View Full Header"
 msgstr "Pregled cijelog zaglavlja"
 
 msgid "Attachments"
-msgstr "Dodatak:"
+msgstr "Prilozi"
 
-#, fuzzy
 msgid "You must be logged in to access this page."
-msgstr ""
-"Da bi ste pristupili ovim stranicama morate imati ispravan korisnièki raèun "
-"i lozinku!"
+msgstr "Za pristup ovoj stranici nu¾no je ulogirati se."
 
-#, fuzzy
 msgid "Folder:"
-msgstr "Pretinac"
+msgstr "Pretinac:"
 
-#, fuzzy
 msgid "edit"
-msgstr "Promijeni"
+msgstr "izmijeni"
 
-#, fuzzy
 msgid "search"
-msgstr "Pretra¾ivanje"
+msgstr "pretra¾i"
 
-#, fuzzy
 msgid "delete"
-msgstr "Obri¹i"
+msgstr "obri¹i"
 
 msgid "Recent Searches"
-msgstr ""
+msgstr "nedavne pretrage"
 
 msgid "save"
-msgstr ""
+msgstr "spremi"
 
-#, fuzzy
 msgid "forget"
-msgstr "dalje"
+msgstr "zaboravi"
 
-#, fuzzy
 msgid "Current Search"
-msgstr "Trenutni pretinac"
+msgstr "Trenutna pretraga"
 
 msgid "All Folders"
 msgstr "Svi pretinci"
@@ -769,13 +720,11 @@ msgstr "Sadr¾aj poruke"
 msgid "Everywhere"
 msgstr "Sve"
 
-#, fuzzy
 msgid "Search Results"
-msgstr "Pretra¾ivanje"
+msgstr "Rezultati pretra¾ivanja"
 
-#, fuzzy
 msgid "No Messages Found"
-msgstr "Broj poruka po stranici"
+msgstr "Nije naðena ni jedna poruka"
 
 msgid "Sign Out"
 msgstr "Izlazak"
@@ -786,58 +735,50 @@ msgstr "Uspje¹no ste napustili servis."
 msgid "Click here to log back in."
 msgstr "Za povratak pritisnite ovdje."
 
-#, fuzzy
 msgid "Viewing a Business Card"
-msgstr "Pregledavanje poruke"
+msgstr "Pregled vizit karte"
 
-#, fuzzy
 msgid "Title"
-msgstr "Bijela"
+msgstr "Naslov"
 
-#, fuzzy
 msgid "Email"
 msgstr "E-mail"
 
-#, fuzzy
 msgid "Web Page"
-msgstr "Osvje¾i stranicu"
+msgstr "Web stranica"
 
 msgid "Organization / Department"
-msgstr ""
+msgstr "Organizacija / odjel"
 
-#, fuzzy
 msgid "Address"
-msgstr "Adresar"
+msgstr "Adresa"
 
 msgid "Work Phone"
-msgstr ""
+msgstr "Telefon na poslu"
 
 msgid "Home Phone"
-msgstr ""
+msgstr "Telefon kod kuæe"
 
 msgid "Cellular Phone"
-msgstr ""
+msgstr "Mobilni telefon"
 
 msgid "Fax"
-msgstr ""
+msgstr "Telefaks"
 
-#, fuzzy
 msgid "Note"
-msgstr "nema"
+msgstr "Napomena"
 
-#, fuzzy
 msgid "Add to Addressbook"
-msgstr "Dodaj adresu"
+msgstr "Dodaj u adresar"
 
 msgid "Title & Org. / Dept."
-msgstr ""
+msgstr "Naziv & Org. / odjel"
 
-#, fuzzy
 msgid "Viewing Full Header"
-msgstr "Prikazivanje cijelog zaglavlja"
+msgstr "Prikaz cijelog zaglavlja"
 
 msgid "Viewing a text attachment"
-msgstr "Pregledavanje tekstualnog dodatka"
+msgstr "Pregled tekstovnog priloga"
 
 msgid "Personal address book"
 msgstr "Osobni adresar"
@@ -857,50 +798,46 @@ msgstr "Korisnik '%s' veæ postoji"
 msgid "User '%s' does not exist"
 msgstr "Korisnik '%s' ne postoji"
 
-#, fuzzy
 msgid "Global address book"
-msgstr "All address books"
+msgstr "Globalni adresar"
 
 msgid "No such file or directory"
-msgstr "Nepostojeca datoteka ili direktorij"
+msgstr "Nepostojeæa datoteka ili mapa"
 
 msgid "Open failed"
 msgstr "Neuspje¹no otvaranje"
 
 msgid "Can not modify global address book"
-msgstr ""
+msgstr "Nije moguæe izmijeniti globalni adresar"
 
 msgid "Not a file name"
 msgstr "Nije ime datoteke"
 
-#, fuzzy
 msgid "Write failed"
-msgstr "Neuspje¹no otvaranje"
+msgstr "Zapis nije uspio"
 
 msgid "Unable to update"
-msgstr ""
+msgstr "Izmjena nije uspjela"
 
 msgid "Could not lock datafile"
-msgstr "Ne mogu zakljucati datoteku s podacima"
+msgstr "Ne mogu zakljuèati datoteku"
 
 msgid "Write to addressbook failed"
 msgstr "Upisivanje u adresar je bilo neuspje¹no"
 
-#, fuzzy
 msgid "Error initializing addressbook database."
-msgstr "Pogre¹ka prilikom inicijalizacije LDAP poslu¾itelja %s:"
+msgstr "Pogre¹ka kod inicijalizacije baze adresara"
 
 #, c-format
 msgid "Error opening file %s"
-msgstr "Pogre¹ka prilikom otvaranja datoteke %s"
+msgstr "Pogre¹ka kod otvaranja datoteke %s"
 
-#, fuzzy
 msgid "Error initializing global addressbook."
-msgstr "Pogre¹ka prilikom inicijalizacije LDAP poslu¾itelja %s:"
+msgstr "Pogre¹ka kod inicijalizacije globalnog adresara"
 
 #, c-format
 msgid "Error initializing LDAP server %s:"
-msgstr "Pogre¹ka prilikom inicijalizacije LDAP poslu¾itelja %s:"
+msgstr "Pogre¹ka kod inicijalizacije LDAP poslu¾itelja %s:"
 
 msgid "Invalid input data"
 msgstr "Nevaljani ulazni podaci"
@@ -911,296 +848,283 @@ msgstr "Izostavljeno je ime"
 msgid "E-mail address is missing"
 msgstr "Izostavljena je E-mail adresa"
 
-#, fuzzy
 msgid "Nickname contains illegal characters"
 msgstr "Nadimak ima nedozvoljene znakove"
 
 msgid "view"
-msgstr ""
+msgstr "pregled"
 
 msgid "Business Card"
-msgstr ""
+msgstr "Vizitka"
 
-#, fuzzy
 msgid "Sunday"
-msgstr "Po¹alji"
+msgstr "Nedjelja"
 
-#, fuzzy
 msgid "Monday"
-msgstr "Sadr¾aj poruke"
+msgstr "Ponedjeljak"
 
 msgid "Tuesday"
-msgstr ""
+msgstr "Utorak"
 
 msgid "Wednesday"
-msgstr ""
+msgstr "Srijeda"
 
 msgid "Thursday"
-msgstr ""
+msgstr "Èetvrtak"
 
 msgid "Friday"
-msgstr ""
+msgstr "Petak"
 
 msgid "Saturday"
-msgstr ""
+msgstr "Subota"
 
-#, fuzzy
 msgid "Sun"
-msgstr "Po¹alji"
+msgstr "Ned"
 
-#, fuzzy
 msgid "Mon"
-msgstr "Sadr¾aj poruke"
+msgstr "Pon"
 
 msgid "Tue"
-msgstr ""
+msgstr "Uto"
 
 msgid "Wed"
-msgstr ""
+msgstr "Sri"
 
 msgid "Thu"
-msgstr ""
+msgstr "Èet"
 
 msgid "Fri"
-msgstr ""
+msgstr "Pet"
 
 msgid "Sat"
-msgstr ""
+msgstr "Sub"
 
 msgid "January"
-msgstr ""
+msgstr "sijeèanj"
 
 msgid "February"
-msgstr ""
+msgstr "veljaèa"
 
-#, fuzzy
 msgid "March"
-msgstr "Filter"
+msgstr "o¾ujak"
 
 msgid "April"
-msgstr ""
+msgstr "travanj"
 
 msgid "May"
-msgstr ""
+msgstr "svibanj"
 
 msgid "June"
-msgstr ""
+msgstr "lipanj"
 
 msgid "July"
-msgstr ""
+msgstr "srpanj"
 
 msgid "August"
-msgstr ""
+msgstr "kolovoz"
 
 msgid "September"
-msgstr ""
+msgstr "rujan"
 
-#, fuzzy
 msgid "October"
-msgstr "Druga:"
+msgstr "listopad"
 
 msgid "November"
-msgstr ""
+msgstr "studeni"
 
 msgid "December"
-msgstr ""
+msgstr "prosinac"
 
 msgid "Jan"
-msgstr ""
+msgstr "sij"
 
 msgid "Feb"
-msgstr ""
+msgstr "vel"
 
-#, fuzzy
 msgid "Mar"
-msgstr "Filter"
+msgstr "o¾u"
 
 msgid "Apr"
-msgstr ""
+msgstr "tra"
 
 msgid "Ma&#121;"
-msgstr ""
+msgstr "svi"
 
 msgid "Jun"
-msgstr ""
+msgstr "lip"
 
 msgid "Jul"
-msgstr ""
+msgstr "srp"
 
 msgid "Aug"
-msgstr ""
+msgstr "kol"
 
 msgid "Sep"
-msgstr ""
+msgstr "ruj"
 
-#, fuzzy
 msgid "Oct"
-msgstr "Druga:"
+msgstr "lis"
 
-#, fuzzy
 msgid "Nov"
-msgstr "nema"
+msgstr "stu"
 
 msgid "Dec"
-msgstr ""
+msgstr "pro"
 
 msgid "D, F j, Y g:i a"
-msgstr ""
+msgstr "D, F j, Y g:i a"
 
 msgid "D, F j, Y G:i"
-msgstr ""
+msgstr "D, F j, Y G:i"
 
 msgid "M j, Y"
-msgstr ""
+msgstr "j. m. Y."
 
 msgid "g:i a"
-msgstr ""
+msgstr "g:i a"
 
 msgid "G:i"
-msgstr ""
+msgstr "G:i"
 
 msgid "D, g:i a"
-msgstr ""
+msgstr "D, g:i a"
 
 msgid "D, G:i"
-msgstr ""
+msgstr "D, G:i"
 
-#, fuzzy, c-format
+#, c-format
 msgid "Preference database error (%s). Exiting abnormally"
-msgstr "Datoteka s postavkama %s nije pronadena. Neuobicajen izlazak"
+msgstr "Pogre¹ka baze s postavkama (%s). Izlazak zbog gre¹ke"
 
 msgid "Unknown user or password incorrect."
-msgstr "Nepostojeci korisnik ili neva¾eca lozinka"
+msgstr "Nepostojeæi korisnik ili neva¾eæa zaporka"
 
 msgid "Click here to try again"
-msgstr "Za ponovni poku¹aj pritisni ovdje"
+msgstr "Za ponovni poku¹aj pritisnite ovdje"
 
 #, c-format
 msgid "Click here to return to %s"
-msgstr "Pritisni ovdje za povratak na %s"
+msgstr "Pritisnite ovdje za povratak na %s"
 
 msgid "Go to the login page"
-msgstr ""
+msgstr "Povratak na stranicu za prijavu"
 
 #, c-format
 msgid ""
 "Preference file, %s, does not exist. Log out, and log back in to create a "
 "default preference file."
-msgstr ""
-"Datoteka s postavkama, %s, ne postoji. Odjavite se (izadite van) i ponovno "
-"se prijavite da Vam se kreira datoteka s pocetnim postavkama."
+msgstr "Datoteka s postavkama %s, ne postoji. Odjavite se (izaðite van) i ponovno se prijavite da se stvori datoteka s poèetnim postavkama."
 
 #, c-format
 msgid ""
 "Preference file, %s, could not be opened. Contact your system administrator "
 "to resolve this issue."
-msgstr ""
+msgstr "Nije uspjelo otvaranje datoteke s postavkama %s.  Javite se va¹em administratoru za rje¹enje ovog problema."
 
 #, c-format
 msgid ""
 "Preference file, %s, could not be written. Contact your system administrator "
 "to resolve this issue."
-msgstr ""
+msgstr "Nije uspjelo zapisivanje u datoteku s postavkama, %s. Javite se va¹em administratoru za rje¹enje ovog problema."
 
 #, c-format
 msgid ""
 "Preference file, %s, could not be copied from temporary file, %s. Contact "
 "your system administrator to resolve this issue."
-msgstr ""
+msgstr "Nije uspjelo prepisivanje datoteke s postavkama %s iz privremene datoteke %s. Javite se va¹em administratoru za rje¹enje ovog problema."
 
-#, fuzzy, c-format
+#, c-format
 msgid "Error opening %s"
-msgstr "Pogre¹ka prilikom otvaranja"
+msgstr "Pogre¹ka kod otvaranja %s"
 
 msgid "Default preference file not found or not readable!"
-msgstr ""
+msgstr "Pretpostavljena datoteka s postavkama nije naðena, ili nije èitljiva!"
 
 msgid "Please contact your system administrator and report this error."
-msgstr ""
+msgstr "Prijavite ovu gre¹ku va¹em administratoru."
 
 msgid "Could not create initial preference file!"
-msgstr ""
+msgstr "Stvaranje poèetne datoteke s postavkama nije uspjelo!"
 
 #, c-format
 msgid "%s should be writable by user %s"
-msgstr ""
+msgstr "%s treba biti dostupna korisniku %s za pisanje"
 
 #, c-format
 msgid ""
 "Signature file, %s, could not be opened. Contact your system administrator "
 "to resolve this issue."
-msgstr ""
+msgstr "Nije uspjelo otvaranje datoteke s potpisom, %s. Javite se va¹em administratoru za rje¹enje ovog problema."
 
 #, c-format
 msgid ""
 "Signature file, %s, could not be written. Contact your system administrator "
 "to resolve this issue."
-msgstr ""
+msgstr "Nije uspjelo zapisivanje u datoteku s potpisom, %s. Javite se va¹em administratoru za rje¹enje ovog problema."
 
 #, c-format
 msgid ""
 "Signature file, %s, could not be copied from temporary file, %s. Contact "
 "your system administrator to resolve this issue."
-msgstr ""
+msgstr "Prepisivanje datoteke s potpisom, %s, iz privremene datoteke, %s, nije uspjelo. Javite se va¹em administratoru za rje¹enje ovog problema."
 
 msgid ""
 "You need to have php4 installed with the multibyte string function enabled "
 "(using configure option --enable-mbstring)."
-msgstr ""
+msgstr "Instalacija PHP4 mora imati ukljuèene funkcije za rad sa multibytestringovima (configure postavka --enable-mbstring)."
 
 msgid "ERROR : No available imapstream."
-msgstr ""
+msgstr "POGRE©KA: Nema slobodnog imapstreama."
 
 msgid "ERROR : Connection dropped by imap-server."
-msgstr ""
+msgstr "POGRE©KA: IMAP poslu¾itelj je prekinuo vezu."
 
 msgid "ERROR : Could not complete request."
-msgstr "POGRE©KA: Ne mogu ispuniti zahtijev."
+msgstr "POGRE©KA: Ne mogu ispuniti zahtjev."
 
 msgid "Query:"
-msgstr ""
+msgstr "Upit:"
 
 msgid "Reason Given: "
 msgstr "Razlog:"
 
 msgid "ERROR : Bad or malformed request."
-msgstr "POGRE©KA: Lo¹e postavljen zahtijev."
+msgstr "POGRE©KA: Lo¹e postavljen zahtjev."
 
 msgid "Server responded: "
-msgstr "Odgovor poslu¾itelja:"
+msgstr "Odgovor poslu¾itelja: "
 
 msgid "ERROR : Imap server closed the connection."
-msgstr ""
+msgstr "POGRE©KA: IMAP poslu¾itelj je zatvorio vezu."
 
 msgid "ERROR : Unknown imap response."
-msgstr ""
+msgstr "POGRE©KA: nepoznat IMAP odgovor."
 
 #, c-format
 msgid "Error connecting to IMAP server: %s."
-msgstr "Pogre¹ka prilikom spajanja na IMAP poslu¾itelj: %s."
+msgstr "Pogre¹ka kod spajanja na IMAP poslu¾itelj: %s."
 
 #, c-format
 msgid "Bad request: %s"
-msgstr "Neispravan zahtijev: %s"
+msgstr "Neispravan zahtjev: %s"
 
 #, c-format
 msgid "Unknown error: %s"
-msgstr "Nepoznata pogre¹ka: %s"
+msgstr "Nepoznata gre¹ka: %s"
 
 msgid "Read data:"
-msgstr "Proèiraj podatke:"
+msgstr "Proèitao podatke:"
 
-#, fuzzy
 msgid "ERROR : Could not append message to"
-msgstr "POGRE©KA: Ne mogu ispuniti zahtijev."
+msgstr "POGRE©KA: Ne mogu dodati poruku u"
 
 msgid "Solution: "
-msgstr ""
+msgstr "Rje¹enje: "
 
 msgid ""
 "Remove unneccessary messages from your folder and start with your Trash "
 "folder."
-msgstr ""
+msgstr "Molim vas, obri¹ite nepotrebne poruke iz va¹ih pretinaca, poèev od pretinca za smeæe."
 
 msgid "(no subject)"
 msgstr "(bez naslova)"
@@ -1209,20 +1133,19 @@ msgid "Unknown Sender"
 msgstr "Nepoznat po¹iljatelj"
 
 msgid "Unknown response from IMAP server: "
-msgstr ""
+msgstr "Nepoznat odgovor IMAP servera: "
 
 msgid "The server couldn't find the message you requested."
-msgstr ""
+msgstr "Poslu¾itelj nije uspio naæi tra¾enu poruku."
 
 msgid ""
 "Most probably your message list was out of date and the message has been "
 "moved away or deleted (perhaps by another program accessing the same "
 "mailbox)."
-msgstr ""
+msgstr "Vjerojatno je poruka premje¹tena ili obrisana, mo¾da nekim drugim programom, a popis poruka nije bio a¾uran."
 
-#, fuzzy
 msgid "Unknown date"
-msgstr "Nepoznat po¹iljatelj"
+msgstr "Nepoznat datum"
 
 msgid "A"
 msgstr ""
@@ -1230,111 +1153,104 @@ msgstr ""
 msgid ""
 "Thread sorting is not supported by your IMAP server.<br>Please report this "
 "to the system administrator."
-msgstr ""
+msgstr "Va¹ IMAP poslu¾itelj ne podr¾ava poredak po nitima.<br>Prijavite ovaj problem va¹em administratoru."
 
 msgid ""
 "Server-side sorting is not supported by your IMAP server.<br>Please report "
 "this to the system administrator."
-msgstr ""
+msgstr "Va¹ IMAP poslu¾itelj ne podr¾ava poredak poruka na strani poslu¾itelja.<br>Prijavite ovaj problem va¹em administratoru."
 
 msgid "THIS FOLDER IS EMPTY"
-msgstr "OVAJ PRETINAC JE PRAZAN"
+msgstr "PRETINAC JE PRAZAN"
 
-#, fuzzy
 msgid "Move Selected To"
-msgstr "Pomakni selektiranu u:"
+msgstr "Premjesti oznaèeno u"
 
 msgid "Transform Selected Messages"
-msgstr ""
+msgstr "Izmijeni oznaèene poruke"
 
 msgid "Move"
 msgstr "Pomakni"
 
 msgid "Expunge"
-msgstr "isprazni"
+msgstr "Isprazni"
 
 msgid "mailbox"
-msgstr "E-mail"
+msgstr "pretinac"
 
-#, fuzzy
 msgid "Read"
-msgstr "Promijeni ime"
+msgstr "Proèitano"
 
 msgid "Unread"
-msgstr ""
+msgstr "Neproèitano"
 
 msgid "Unthread View"
-msgstr ""
+msgstr "Pregled bez niti"
 
 msgid "Thread View"
-msgstr ""
+msgstr "Pregled po nitima"
 
-#, fuzzy
 msgid "Toggle All"
-msgstr "Selektiraj sve"
+msgstr "Promijeni sve oznake"
 
 msgid "Unselect All"
-msgstr "Deselektiraj sve"
+msgstr "Makni oznake"
 
 msgid "Select All"
-msgstr "Selektiraj sve"
+msgstr "Oznaèi sve"
 
 #, c-format
 msgid "Viewing Messages: <B>%s</B> to <B>%s</B> (%s total)"
-msgstr ""
+msgstr "Prikaz poruka: <B>%s</B> do <B>%s</B> (ukupno %s)"
 
 #, c-format
 msgid "Viewing Message: <B>%s</B> (1 total)"
-msgstr ""
+msgstr "Prikaz poruke: <B>%s</B> (ukupno 1)"
 
 msgid "Paginate"
-msgstr ""
+msgstr "Po stranicama"
 
 msgid "Show All"
-msgstr ""
+msgstr "Prika¾i sve"
 
 msgid "SquirrelMail could not decode the bodystructure of the message"
-msgstr ""
+msgstr "SquirrelMail nije uspio razluèiti strukturu tijela poruke."
 
 msgid "the provided bodystructure by your imap-server"
-msgstr ""
+msgstr "IMAP poslu¾itelj vraæa ovakvu strukturu tijela poruke"
 
 msgid ""
 "Body retrieval error. The reason for this is most probably that the message "
 "is malformed."
-msgstr ""
+msgstr "Gre¹ka kod dohvata poruke. Vjerojatni razlog je lo¹e oblikovana poruka."
 
-#, fuzzy
 msgid "Command:"
-msgstr "Neuspje¹no otvaranje"
+msgstr "Naredba:"
 
-#, fuzzy
 msgid "Response:"
 msgstr "Razlog:"
 
-#, fuzzy
 msgid "Message:"
-msgstr "Lista poruka"
+msgstr "Poruka:"
 
 msgid "FETCH line:"
-msgstr ""
+msgstr "FETCH redak:"
 
 msgid "Hide Unsafe Images"
-msgstr ""
+msgstr "Sakrij nesigurne slike"
 
-#, fuzzy
 msgid "View Unsafe Images"
-msgstr "Prikazane poruke"
+msgstr "Prika¾i nesigurne slike"
 
 msgid "download"
 msgstr "download"
 
 msgid "sec_remove_eng.png"
-msgstr ""
+msgstr "sec_remove_hr_HR.png"
 
 #, c-format
 msgid "Option Type '%s' Not Found"
-msgstr ""
+msgstr "Vrsta postavke '%s' nije naðena"
 
 msgid "Current Folder"
 msgstr "Trenutni pretinac"
@@ -1342,473 +1258,84 @@ msgstr "Trenutni pretinac"
 msgid "Compose"
 msgstr "Nova poruka"
 
-#, fuzzy, c-format
+#, c-format
 msgid "Error creating directory %s."
-msgstr "Pogre¹ka prilikom otvaranja datoteke %s"
+msgstr "Pogre¹ka kod svaranja mape %s"
 
 msgid "Could not create hashed directory structure!"
-msgstr ""
+msgstr "Nije stvorena hash struktura mapa!"
 
-msgid "Service not available, closing channel"
-msgstr ""
-
-msgid "A password transition is needed"
-msgstr ""
-
-msgid "Requested mail action not taken: mailbox unavailable"
-msgstr ""
-
-msgid "Requested action aborted: error in processing"
-msgstr ""
-
-msgid "Requested action not taken: insufficient system storage"
-msgstr ""
-
-msgid "Temporary authentication failure"
-msgstr ""
-
-msgid "Syntax error; command not recognized"
-msgstr ""
-
-msgid "Syntax error in parameters or arguments"
-msgstr ""
-
-#, fuzzy
-msgid "Command not implemented"
-msgstr "Neuspje¹no otvaranje"
-
-msgid "Bad sequence of commands"
-msgstr ""
-
-msgid "Command parameter not implemented"
-msgstr ""
-
-msgid "Authentication required"
-msgstr ""
-
-msgid "Authentication mechanism is too weak"
-msgstr ""
-
-msgid "Authentication failed"
-msgstr ""
-
-msgid "Encryption required for requested authentication mechanism"
-msgstr ""
-
-msgid "Requested action not taken: mailbox unavailable"
-msgstr ""
-
-msgid "User not local; please try forwarding"
-msgstr ""
-
-msgid "Requested mail action aborted: exceeding storage allocation"
-msgstr ""
-
-msgid "Requested action not taken: mailbox name not allowed"
-msgstr ""
-
-#, fuzzy
-msgid "Transaction failed"
-msgstr "Neuspje¹no otvaranje"
-
-#, fuzzy
-msgid "Unknown response"
-msgstr "Nepoznat po¹iljatelj"
-
-msgid "General Display Options"
-msgstr ""
-
-msgid "Theme"
-msgstr "Tema"
-
-#, fuzzy
-msgid "Default"
-msgstr "Obri¹i"
-
-msgid "Custom Stylesheet"
-msgstr ""
-
-msgid "Language"
-msgstr "Jezik"
-
-#, fuzzy
-msgid "Use Javascript"
-msgstr "JavaScript"
-
-msgid "Autodetect"
-msgstr ""
-
-msgid "Always"
-msgstr ""
-
-msgid "Never"
-msgstr ""
-
-msgid "Mailbox Display Options"
-msgstr ""
-
-msgid "Number of Messages to Index"
-msgstr "Broj poruka po stranici"
-
-msgid "Enable Alternating Row Colors"
-msgstr ""
-
-msgid "Enable Page Selector"
-msgstr ""
-
-#, fuzzy
-msgid "Maximum Number of Pages to Show"
-msgstr "Broj poruka po stranici"
-
-msgid "Always Show Full Date"
-msgstr ""
-
-msgid "Message Display and Composition"
-msgstr ""
-
-#, fuzzy
-msgid "Wrap Incoming Text At"
-msgstr "Prelomi tekst u stupcu"
-
-#, fuzzy
-msgid "Size of Editor Window"
-msgstr "Velièina prozora editora"
-
-#, fuzzy
-msgid "Location of Buttons when Composing"
-msgstr "Polo¾aj botuna prilikom kreiranja poruke"
-
-msgid "Before headers"
-msgstr "Prije zaglavlja"
-
-msgid "Between headers and message body"
-msgstr "Izmeðu zaglavlja i teksta poruke"
-
-msgid "After message body"
-msgstr "Iza teksta poruke"
-
-#, fuzzy
-msgid "Addressbook Display Format"
-msgstr "Dozvoljeno je samo èitanje adresara"
-
-#, fuzzy
-msgid "Javascript"
-msgstr "JavaScript"
-
-msgid "HTML"
-msgstr "HTML"
-
-msgid "Show HTML Version by Default"
-msgstr ""
-
-msgid "Enable Forward as Attachment"
-msgstr ""
-
-msgid "Include CCs when Forwarding Messages"
-msgstr ""
-
-msgid "Include Me in CC when I Reply All"
-msgstr ""
-
-msgid "Enable Mailer Display"
-msgstr ""
-
-msgid "Display Attached Images with Message"
-msgstr ""
-
-msgid "Enable Printer Friendly Clean Display"
-msgstr ""
-
-#, fuzzy
-msgid "Enable Mail Delivery Notification"
-msgstr "Obavijest o nepregledanim porukama"
-
-msgid "Compose Messages in New Window"
-msgstr ""
-
-#, fuzzy
-msgid "Width of Compose Window"
-msgstr "Zatvori prozor"
-
-#, fuzzy
-msgid "Height of Compose Window"
-msgstr "Zatvori prozor"
-
-msgid "Append Signature before Reply/Forward Text"
-msgstr ""
-
-msgid "Enable Sort by of Receive Date"
-msgstr ""
-
-msgid "Enable Thread Sort by References Header"
-msgstr ""
-
-msgid "Special Folder Options"
-msgstr "Specijalne opcije pretinca"
-
-msgid "Folder Path"
-msgstr "Put do pretinca"
-
-msgid "Do not use Trash"
-msgstr "Ne koristi smeæe"
-
-#, fuzzy
-msgid "Trash Folder"
-msgstr "Pretinac za smeæe:"
-
-msgid "Do not use Sent"
-msgstr "Ne koristi pretinac za poslanu po¹tu"
-
-#, fuzzy
-msgid "Sent Folder"
-msgstr "Pretinac s poslanom po¹tom:"
-
-#, fuzzy
-msgid "Do not use Drafts"
-msgstr "Ne koristi smeæe"
-
-#, fuzzy
-msgid "Draft Folder"
-msgstr "Kreiraj pretinac"
-
-#, fuzzy
-msgid "Folder List Options"
-msgstr "Specijalne opcije pretinca"
-
-#, fuzzy
-msgid "Location of Folder List"
-msgstr "Pozicija liste pretinaca"
-
-msgid "Left"
-msgstr "Lijevo"
-
-msgid "Right"
-msgstr "Desno"
-
-msgid "pixels"
-msgstr ""
-
-#, fuzzy
-msgid "Width of Folder List"
-msgstr "©irina liste pretinaca s lijeve strane"
-
-msgid "Minutes"
-msgstr "min."
-
-msgid "Seconds"
-msgstr "sek."
-
-msgid "Minute"
-msgstr "min."
-
-#, fuzzy
-msgid "Auto Refresh Folder List"
-msgstr "Osvje¾i listu pretinaca"
-
-#, fuzzy
-msgid "Enable Unread Message Notification"
-msgstr "Obavijest o nepregledanim porukama"
-
-#, fuzzy
-msgid "No Notification"
-msgstr "Nema obavijesti"
-
-msgid "Only INBOX"
-msgstr "Samo INBOX"
-
-#, fuzzy
-msgid "Unread Message Notification Type"
-msgstr "Naèin obavijesti o nepregledanim porukama"
-
-#, fuzzy
-msgid "Only Unseen"
-msgstr "Samo neviðene"
-
-msgid "Unseen and Total"
-msgstr "Neviðene i ukupno"
-
-msgid "Enable Collapsible Folders"
-msgstr ""
-
-#, fuzzy
-msgid "Enable Cumulative Unread Message Notification"
-msgstr "Obavijest o nepregledanim porukama"
-
-msgid "Show Clock on Folders Panel"
-msgstr ""
-
-msgid "No Clock"
-msgstr ""
-
-msgid "Hour Format"
-msgstr ""
-
-msgid "12-hour clock"
-msgstr ""
-
-msgid "24-hour clock"
-msgstr ""
-
-#, fuzzy
-msgid "Memory Search"
-msgstr "Pretra¾ivanje"
-
-msgid "Disabled"
-msgstr ""
-
-#, fuzzy
-msgid "Folder Selection Options"
-msgstr "Specijalne opcije pretinca"
-
-msgid "Selection List Style"
-msgstr ""
-
-msgid "Long: "
-msgstr ""
-
-msgid "Indented: "
-msgstr ""
-
-msgid "Delimited: "
-msgstr ""
-
-msgid "Name and Address Options"
-msgstr ""
-
-#, fuzzy
-msgid "Email Address"
-msgstr "E-mail adresa"
-
-msgid "Edit Advanced Identities"
-msgstr ""
-
-msgid "(discards changes made on this form so far)"
-msgstr ""
-
-msgid "Multiple Identities"
-msgstr ""
-
-msgid "Same as server"
-msgstr ""
-
-msgid "Error opening timezone config, contact administrator."
-msgstr ""
-
-#, fuzzy
-msgid "Timezone Options"
-msgstr "Potpis"
-
-msgid "Your current timezone"
-msgstr ""
-
-msgid "Reply Citation Options"
-msgstr ""
-
-msgid "Reply Citation Style"
-msgstr ""
-
-#, fuzzy
-msgid "No Citation"
-msgstr "Nema obavijesti"
-
-msgid "AUTHOR Said"
-msgstr ""
-
-msgid "Quote Who XML"
-msgstr ""
-
-msgid "User-Defined"
-msgstr ""
-
-msgid "User-Defined Citation Start"
-msgstr ""
-
-msgid "User-Defined Citation End"
-msgstr ""
-
-#, fuzzy
-msgid "Signature Options"
-msgstr "Potpis"
-
-#, fuzzy
-msgid "Use Signature"
-msgstr "Upotrijebi potpis"
-
-msgid "Prefix Signature with '-- ' Line"
-msgstr ""
-
-#, fuzzy
 msgid "Take Address"
-msgstr "Adresar"
+msgstr "Uzmi adresu"
 
-#, fuzzy
 msgid "Address Book Take:"
-msgstr "Adresar"
+msgstr "Spremanje u adresar:"
 
 msgid "Try to verify addresses"
-msgstr ""
+msgstr "Poku¹aj provjeriti adresu"
+
+msgid "Default"
+msgstr "Pretpostavljeno"
+
+msgid "pixels"
+msgstr "pixela"
 
 msgid "Config File Version"
-msgstr ""
+msgstr "Verzija datoteke s postavkama"
 
-#, fuzzy
 msgid "Squirrelmail Version"
-msgstr "SquirrelMail verzija %s"
+msgstr "Verzija Squirrelmaila"
 
 msgid "PHP Version"
-msgstr ""
+msgstr "Verzija PHP-a"
 
-#, fuzzy
 msgid "Organization Preferences"
-msgstr "Osobine naèina prikaza"
+msgstr "Postavke ogranizacije"
 
 msgid "Organization Name"
-msgstr ""
+msgstr "Ime ogranizacije"
 
 msgid "Organization Logo"
-msgstr ""
+msgstr "Logotip organizacije"
 
 msgid "Organization Logo Width"
-msgstr ""
+msgstr "©irina organizacijskog logotipa"
 
 msgid "Organization Logo Height"
-msgstr ""
+msgstr "Visina organizacijskog logotipa"
 
 msgid "Organization Title"
-msgstr ""
+msgstr "Naziv organizacije"
 
-#, fuzzy
 msgid "Signout Page"
-msgstr "Izlazak"
+msgstr "Stranica odjave"
 
 msgid "Provider Link URI"
-msgstr ""
+msgstr "URI davatelja usluge"
 
-#, fuzzy
 msgid "Provider Name"
-msgstr "Odgovor poslu¾itelja:"
+msgstr "Naziv davatelja usluge:"
 
-#, fuzzy
 msgid "Default Language"
-msgstr "Jezik"
+msgstr "Pretpostavljeni jezik"
 
 msgid "Top Frame"
-msgstr ""
+msgstr "Vr¹ni okvir"
 
 msgid "Server Settings"
-msgstr ""
+msgstr "Postavke poslu¾itelja"
 
 msgid "Mail Domain"
-msgstr ""
+msgstr "Mail domena"
 
 msgid "IMAP Server Address"
-msgstr ""
+msgstr "Adresa IMAP poslu¾itelja"
 
 msgid "IMAP Server Port"
-msgstr ""
+msgstr "Port IMAP servisa"
 
 msgid "IMAP Server Type"
-msgstr ""
+msgstr "Vrsta IMAP poslu¾itelja"
 
 msgid "Cyrus IMAP server"
 msgstr ""
@@ -1822,413 +1349,403 @@ msgstr ""
 msgid "Courier IMAP server"
 msgstr ""
 
-#, fuzzy
 msgid "Not one of the above servers"
-msgstr "Pogre¹ka prilikom spajanja na IMAP poslu¾itelj: %s."
+msgstr "Ni jedan od gore navedenih"
 
 msgid "IMAP Folder Delimiter"
-msgstr ""
+msgstr "Graniènik imena IMAP pretinaca"
 
 msgid "Use \"detect\" to auto-detect."
-msgstr ""
+msgstr "Koristite \"detect\" za automatsko prepoznavanje."
 
 msgid "Use TLS for IMAP Connections"
-msgstr ""
+msgstr "Koristi TLS kod IMAP veze"
 
 msgid "Requires PHP 4.3.x! Experimental."
-msgstr ""
+msgstr "Eksperimentalno, zahtijeva PHP 4.3.x!"
 
 msgid "IMAP Authentication Type"
-msgstr ""
+msgstr "Naèin IMAP autentikacije"
 
 msgid "Use Sendmail Binary"
-msgstr ""
+msgstr "Koristi Sendmail program"
 
 msgid "Sendmail Path"
-msgstr ""
+msgstr "Staza do Sendmail programa"
 
 msgid "SMTP Server Address"
-msgstr ""
+msgstr "Adresa SMTP poslu¾itelja"
 
 msgid "SMTP Server Port"
-msgstr ""
+msgstr "Port SMTP servisa"
 
 msgid "Use TLS for SMTP Connections"
-msgstr ""
+msgstr "Koristi TLS kod SMTP veze"
 
 msgid "SMTP Authentication Type"
-msgstr ""
+msgstr "Naèin SMTP autentikacije"
 
 msgid "POP3 Before SMTP?"
-msgstr ""
+msgstr "POP3 prije SMTP-a?"
 
 msgid "Invert Time"
-msgstr ""
+msgstr "Obrni vrijeme"
 
 msgid "Use Confirmation Flags"
-msgstr ""
+msgstr "Kori¹tenje potvrda o primitku i èitanju poruke"
 
-#, fuzzy
 msgid "Folders Defaults"
-msgstr "Put do pretinca"
+msgstr "Pretpostavljene postavke pretinaca"
 
-#, fuzzy
 msgid "Default Folder Prefix"
-msgstr "Obri¹i pretinac"
+msgstr "Pretpostavljeni prefiks pretinca"
 
-#, fuzzy
 msgid "Show Folder Prefix Option"
-msgstr "Specijalne opcije pretinca"
+msgstr "Prikaz prefiksa pretinca"
+
+msgid "Trash Folder"
+msgstr "Pretinac za smeæe"
+
+msgid "Sent Folder"
+msgstr "Pretinac s poslanom po¹tom"
+
+msgid "Draft Folder"
+msgstr "Pretinac sa predlo¹cima"
 
 msgid "By default, move to trash"
-msgstr ""
+msgstr "Pretpostavi premje¹tanje u smeæe"
 
 msgid "By default, move to sent"
-msgstr ""
+msgstr "Pretpostavi premje¹tanje u poslanu po¹tu"
 
 msgid "By default, save as draft"
-msgstr ""
+msgstr "Pretpostavi spremanje predlo¹ka"
 
-#, fuzzy
 msgid "List Special Folders First"
-msgstr "Specijalne opcije pretinca"
+msgstr "Prvo prika¾i posebne pretince"
 
-#, fuzzy
 msgid "Show Special Folders Color"
-msgstr "Specijalne opcije pretinca"
+msgstr "Posebne pretince prika¾i drugom bojom"
 
-#, fuzzy
 msgid "Auto Expunge"
-msgstr "isprazni"
+msgstr "Automatski isprazni"
 
 msgid "Default Sub. of INBOX"
-msgstr ""
+msgstr "Pretopstavljeni podpretinci za INBOX"
 
 msgid "Show 'Contain Sub.' Option"
-msgstr ""
+msgstr "Prikaz postavke '(Podpretinci)'"
 
 msgid "Default Unseen Notify"
-msgstr ""
+msgstr "Obavijest o novoj po¹ti"
+
+msgid "No Notification"
+msgstr "Bez obavijesti"
+
+msgid "Only INBOX"
+msgstr "Samo za INBOX"
 
 msgid "Default Unseen Type"
-msgstr ""
+msgstr "Vrsta obavijesti o novoj po¹ti"
 
-#, fuzzy
+msgid "Only Unseen"
+msgstr "Samo neviðene"
+
+msgid "Unseen and Total"
+msgstr "Neviðene i ukupno"
+
 msgid "Auto Create Special Folders"
-msgstr "Kreiraj pretinac"
+msgstr "Automatski stvori posebne pretince"
 
-#, fuzzy
 msgid "Default Javascript Adrressbook"
-msgstr "Da li da koristim Javascript ili HTML adresar?"
+msgstr "Pretpostavljeni Javascript adresar"
 
-#, fuzzy
 msgid "Auto delete folders"
-msgstr "Automatsko osvje¾avanje liste pretinaca"
+msgstr "Automatsko brisanje pretinaca"
 
-#, fuzzy
 msgid "Enable /NoSelect folder fix"
-msgstr "Promjena imena pretinca"
+msgstr "Ispravak za mape sa /NoSelect"
 
-#, fuzzy
 msgid "General Options"
-msgstr "Opcije"
+msgstr "Opæenite opcije"
 
 msgid "Default Charset"
-msgstr ""
+msgstr "Pretpostavljeni skup znakova"
 
 msgid "Data Directory"
-msgstr ""
+msgstr "Mapa s podacima"
 
 msgid "Temp Directory"
-msgstr ""
+msgstr "Privremena mapa"
 
 msgid "Hash Level"
-msgstr ""
+msgstr "Stupanj hash-a"
 
 msgid "Hash Disabled"
-msgstr ""
+msgstr "Hash iskljuèen"
 
-#, fuzzy
 msgid "Moderate"
-msgstr "Put do pretinca"
+msgstr "Umjeren"
 
-#, fuzzy
 msgid "Medium"
-msgstr "Siva"
+msgstr "Srednji"
 
 msgid "Default Left Size"
-msgstr ""
+msgstr "Poèetna velièina lijeve strane"
 
 msgid "Usernames in Lowercase"
-msgstr ""
+msgstr "Korisnièka imena malim slovima"
 
 msgid "Allow use of priority"
-msgstr ""
+msgstr "Dopusti kori¹tenje prioriteta"
 
 msgid "Hide SM attributions"
-msgstr ""
+msgstr "Sakrij SquirrelMailovo predstavljanje"
 
 msgid "Enable use of delivery receipts"
-msgstr ""
+msgstr "Dopusti kori¹tenje potvrda o primitku"
 
 msgid "Allow editing of identities"
-msgstr ""
+msgstr "Dopusti izmjenu identiteta"
 
 msgid "Allow editing of full name"
-msgstr ""
+msgstr "Dopusti izmjenu imena"
 
 msgid "Use server-side sorting"
-msgstr ""
+msgstr "Koristi sortiranje na strani poslu¾itelja"
 
 msgid "Use server-side thread sorting"
-msgstr ""
+msgstr "Koristi sortiranje po nitima na strani poslu¾itelja"
 
 msgid "Allow server charset search"
-msgstr ""
+msgstr "Dozvoli tra¾eje skupa znakova na poslu¾itelju"
 
 msgid "UID support"
-msgstr ""
+msgstr "Podr¹ka za UID"
 
 msgid "PHP session name"
-msgstr ""
+msgstr "Naziv PHP sesije"
 
-#, fuzzy
 msgid "Message of the Day"
-msgstr "Lista poruka"
+msgstr "Obavijest"
 
-#, fuzzy
 msgid "Database"
-msgstr "Datum"
+msgstr "Baza"
 
-#, fuzzy
 msgid "Address book DSN"
-msgstr "Adresar"
+msgstr "DSN adresara"
 
-#, fuzzy
 msgid "Address book table"
-msgstr "Adresar"
+msgstr "Tablica adresara"
 
-#, fuzzy
 msgid "Preferences DSN"
-msgstr "Osobine pretinaca"
+msgstr "DSN postavki"
 
-#, fuzzy
 msgid "Preferences table"
-msgstr "Osobine pretinaca"
+msgstr "Tablica za postavke"
 
 msgid "Preferences username field"
-msgstr ""
+msgstr "Ime polja s korisnièkim imenom za postavke"
 
 msgid "Preferences key field"
-msgstr ""
+msgstr "Ime polja s kljuèem postavke"
 
 msgid "Preferences value field"
-msgstr ""
+msgstr "Ime polja za vrijednost postavke"
 
-#, fuzzy
 msgid "Themes"
-msgstr "Tema"
+msgstr "Teme"
 
 msgid "Style Sheet URL (css)"
-msgstr ""
+msgstr "URL stilskog lista (CSS)"
 
-#, fuzzy
 msgid "Default theme"
-msgstr "Obri¹i"
+msgstr "Pretpostavljena tema"
 
 msgid "Use index number of theme"
-msgstr ""
+msgstr "Koristi redni broj teme"
 
 msgid "Configuration Administrator"
-msgstr ""
+msgstr "Administrativne postavke"
 
-#, fuzzy
 msgid "Theme Name"
-msgstr "Tema"
+msgstr "Ime teme"
 
-#, fuzzy
 msgid "Theme Path"
-msgstr "Tema"
+msgstr "Staza do teme"
 
 msgid "Plugins"
-msgstr ""
+msgstr "Plugini"
 
 msgid "Change Settings"
-msgstr ""
+msgstr "Izmjena postavki"
 
 msgid "Config file can't be opened. Please check config.php."
 msgstr ""
+"Otvaranje datoteke s konfiguracijom nije uspjelo. Provjerite config.php."
 
 msgid "Administration"
-msgstr ""
+msgstr "Administracija"
 
 msgid ""
 "This module allows administrators to manage SquirrelMail main configuration "
 "remotely."
-msgstr ""
+msgstr "Ovaj modul omoguæava udaljenu administraciju glavnih postavki SquirrelMail sustava."
 
 msgid "Bug Reports:"
-msgstr ""
+msgstr "Prijave bugova"
 
 msgid "Show button in toolbar"
-msgstr ""
+msgstr "Prika¾i tipku na traci s alatima"
 
 msgid "TODAY"
-msgstr ""
+msgstr "DANAS"
 
 msgid "Go"
-msgstr ""
+msgstr "Idi"
 
 msgid "l, F j Y"
 msgstr ""
 
 msgid "ADD"
-msgstr ""
+msgstr "DODAJ"
 
 msgid "EDIT"
-msgstr ""
+msgstr "IZMIJENI"
 
 msgid "DEL"
-msgstr ""
+msgstr "BRI©I"
 
 msgid "Start time:"
-msgstr ""
+msgstr "Vrijeme poèetka:"
 
 msgid "Length:"
-msgstr ""
+msgstr "Duljina:"
 
 msgid "Priority:"
-msgstr ""
+msgstr "Prioritet:"
 
 msgid "Title:"
-msgstr ""
+msgstr "Naslov:"
 
-#, fuzzy
 msgid "Set Event"
-msgstr "Kreiran Sent"
+msgstr "Postavi dogaðaj"
 
 msgid "Event Has been added!"
-msgstr ""
+msgstr "Dogaðaj dodan!"
 
 msgid "Date:"
 msgstr "Datum:"
 
-#, fuzzy
 msgid "Time:"
-msgstr "Bijela"
+msgstr "Vrijeme:"
 
 msgid "Day View"
-msgstr ""
+msgstr "Po danu"
 
 msgid "Do you really want to delete this event?"
-msgstr ""
+msgstr "®elite li zaista obrisati ovaj dogaðaj?"
 
-#, fuzzy
 msgid "Event deleted!"
-msgstr "Promjena selektiranog"
+msgstr "Dogaðaj obrisan!"
 
 msgid "Nothing to delete!"
-msgstr ""
+msgstr "Nemam ¹to obrisati!"
 
-#, fuzzy
 msgid "Update Event"
-msgstr "A¾uriraj adresu"
+msgstr "A¾uriraj dogaðaj"
 
 msgid "Do you really want to change this event from:"
-msgstr ""
+msgstr "®elite li zaista premjestiti ovaj dogaðaj sa:"
 
-#, fuzzy
 msgid "to:"
-msgstr "do"
+msgstr "na:"
 
 msgid "Event updated!"
-msgstr ""
+msgstr "Dogaðaj a¾uriran!"
 
 msgid "Month View"
-msgstr ""
+msgstr "Prikaz mjeseca"
 
 msgid "0 min."
-msgstr ""
+msgstr "0 min"
 
 msgid "15 min."
-msgstr ""
+msgstr "15 min"
 
 msgid "30 min."
-msgstr ""
+msgstr "30 min"
 
 msgid "45 min."
-msgstr ""
+msgstr "45 min"
 
 msgid "1 hr."
-msgstr ""
+msgstr "1 h"
 
 msgid "1.5 hr."
-msgstr ""
+msgstr "1,5 h"
 
 msgid "2 hr."
-msgstr ""
+msgstr "2 h"
 
 msgid "2.5 hr."
-msgstr ""
+msgstr "2,5 h"
 
 msgid "3 hr."
-msgstr ""
+msgstr "3 h"
 
 msgid "3.5 hr."
-msgstr ""
+msgstr "3,5 h"
 
 msgid "4 hr."
-msgstr ""
+msgstr "4 h"
 
 msgid "5 hr."
-msgstr ""
+msgstr "5 h"
 
 msgid "6 hr."
-msgstr ""
+msgstr "6 h"
 
 msgid "Calendar"
-msgstr ""
+msgstr "Kalendar"
 
-#, fuzzy
 msgid "Delete & Prev"
-msgstr "Obri¹i"
+msgstr "Obri¹i i prika¾i prethodnu"
 
-#, fuzzy
 msgid "Delete & Next"
-msgstr "Brisanje selektiranog"
+msgstr "Obri¹i i prika¾i sljedeæu"
 
-#, fuzzy
 msgid "Move to:"
-msgstr "Pomakni"
+msgstr "Premjesti:"
 
 msgid "Delete/Move/Next Buttons:"
-msgstr ""
+msgstr "Tipke Obri¹i/Premjesti/Sljedeæa:"
 
 msgid "Display at top"
-msgstr ""
+msgstr "Prika¾i na vrhu"
 
 msgid "with move option"
-msgstr ""
+msgstr "sa moguæno¹æu premje¹tanja"
 
 msgid "Display at bottom"
-msgstr ""
+msgstr "Prika¾i na dnu"
 
 msgid ""
 "COMMERCIAL - This list contains servers that are verified spam senders. It "
 "is a pretty reliable list to scan spam from."
-msgstr ""
+msgstr "KOMERCIJALNO - Ovo je popis poslu¾itelja koji provjereno ¹alju spam. Prilièno je pouzdan za provjeru spama."
 
 msgid ""
 "COMMERCIAL - Servers that are configured (or misconfigured) to allow spam to "
 "be relayed through their system will be banned with this.  Another good one "
 "to use."
-msgstr ""
+msgstr "KOMERCIJALNO - Ovaj popis sadr¾i poslu¾itelje preko kojih se neometano mo¾e slati mail (tzv. open relays), i takoðer je dobar izbor za kori¹tenje kod filtriranja."
 
 msgid ""
 "COMMERCIAL - Dial-up users are often filtered out since they should use "
 "their ISP's mail servers to send mail.  Spammers typically get a dial-up "
 "account and send spam directly from there."
-msgstr ""
+msgstr "KOMERCIJALNO - modemski ulazi i slièno se mogu filtrirati jer bi u naèelu trebati koristiti poslu¾itelj vlastitog davatelja usluga za slanje maila.  Èesto se de¹ava se da spammer zakupi modemski pristup i direktno s njega ¹alje spam."
 
 msgid "COMMERCIAL - RBL+ Blackhole entries."
 msgstr ""
@@ -2274,6 +1791,7 @@ msgstr ""
 msgid "FREE - SPAMhaus - A list of well-known SPAM sources."
 msgstr ""
 
+#, c-format
 msgid ""
 "FREE, for now - SPAMCOP - An interesting solution that lists servers that "
 "have a very high spam to legit email ratio (85% or more)."
@@ -2345,68 +1863,60 @@ msgid "FREE - Distributed Sender Boycott List - UN-Confirmed Relays"
 msgstr ""
 
 msgid "Saved Scan type"
-msgstr ""
+msgstr "Vrsta spremljenog skena"
 
-#, fuzzy
 msgid "Message Filtering"
-msgstr "Nagla¹avanje poruke"
+msgstr "Filtriranje poruke"
 
 msgid "What to Scan:"
-msgstr ""
+msgstr "©to skenirati:"
 
-#, fuzzy
 msgid "All messages"
-msgstr "poruka"
+msgstr "Sve poruke"
 
-#, fuzzy
 msgid "Only unread messages"
-msgstr "odabrane poruke"
+msgstr "Samo neproèitane poruke"
 
 msgid "Save"
-msgstr ""
+msgstr "Spremi"
 
-#, fuzzy
 msgid "Match:"
-msgstr "Filter"
+msgstr "Polje:"
 
-#, fuzzy
 msgid "Header"
-msgstr "Promijeni ime"
+msgstr "Zaglavlje"
 
 msgid "Contains:"
-msgstr ""
+msgstr "sadr¾i:"
 
 #, c-format
 msgid "If <b>%s</b> contains <b>%s</b> then move to <b>%s</b>"
-msgstr ""
+msgstr "Ako <b>%s</b> sadr¾i <b>%s</b> premjesti u <b>%s</b>"
 
-#, fuzzy
 msgid "Message Filters"
-msgstr "Lista poruka"
+msgstr "Filtriranje poruka"
 
 msgid ""
 "Filtering enables messages with different criteria to be automatically "
 "filtered into different folders for easier organization."
-msgstr ""
+msgstr "Filtriranje daje moguænost automatskog razvrstavanja poruka u mape po raznim kriterijima."
 
-#, fuzzy
 msgid "SPAM Filters"
-msgstr "Svi pretinci"
+msgstr "SPAM filtri"
 
 msgid ""
 "SPAM filters allow you to select from various DNS based blacklists to detect "
 "junk email in your INBOX and move it to another folder (like Trash)."
-msgstr ""
+msgstr "SPAM filtri koriste razlièite crne liste bazirane na DNS-u za prepoznavanje ne¾eljenog smeæa i automatsko spremanje drugdje (npr. u pretinac za smeæe)."
 
 msgid "Spam Filtering"
-msgstr ""
+msgstr "Filtriranje spama"
 
 msgid "WARNING! Tell your admin to set the SpamFilters_YourHop variable"
-msgstr ""
+msgstr "UPOZORENJE! Recite Va¹em administratoru da postavi SpamFilters_YourHop varijablu"
 
-#, fuzzy
 msgid "Move spam to:"
-msgstr "Pomakni selektiranu u:"
+msgstr "Premjesti spam u:"
 
 msgid ""
 "Moving spam directly to the trash may not be a good idea at first, since "
@@ -2414,7 +1924,7 @@ msgid ""
 "spam. Whatever folder you set this to, make sure that it gets cleaned out "
 "periodically, so that you don't have an excessively large mailbox hanging "
 "around."
-msgstr ""
+msgstr "Premje¹tanje spama u pretinac za smeæe za poèetak mo¾da nije jako dobra ideja, jer se mo¾e desiti da neka ispravna poruka bude sluèajno oznaèena kao spam.  U svakom sluèaju, povremeno poèistite pretinac u koji se sprema spam tako da vam ne prepuni limit."
 
 msgid ""
 "The more messages you scan, the longer it takes.  I would suggest that you "
@@ -2422,36 +1932,33 @@ msgid ""
 "it to scan all messages, then go view my INBOX, then come back and set it to "
 "scan only new messages.  That way, your new spam filters will be applied and "
 "you'll scan even the spam you read with the new filters."
-msgstr ""
+msgstr "Skeniranje poruka traje proporcionalno njihovoj kolièini. Preporuèamo da skenirate samo nove poruke, osim nakon ¹to izmijenite postavke filtera.  U tom se sluèaju preporuèa podesiti skeniranje svih poruka, pregledati INBOX, i vratiti na pregled samo novih poruka.  Na taj æe naèin va¹e nove postavke filtera biti primijenjene i na veæ proèitani spam."
 
 #, c-format
 msgid "Spam is sent to <b>%s</b>"
-msgstr ""
+msgstr "Spam poslan na <b>%s</b>"
 
 msgid "[<i>not set yet</i>]"
-msgstr ""
+msgstr "[<i>jo¹ nije postavljen</i>]"
 
 #, c-format
 msgid "Spam scan is limited to <b>%s</b>"
-msgstr ""
+msgstr "Provjera spama ogranièena na <b>%s</b>"
 
-#, fuzzy
 msgid "New Messages Only"
-msgstr "Pogledaj poruku"
+msgstr "Samo nove poruke"
 
-#, fuzzy
 msgid "All Messages"
-msgstr "poruka"
+msgstr "Sve poruke"
 
 msgid "ON"
-msgstr ""
+msgstr "Uklj."
 
 msgid "OFF"
-msgstr ""
+msgstr "Isklj."
 
-#, fuzzy
 msgid " not found."
-msgstr "Pretinac nije pronaden"
+msgstr " staza nije pronaðena."
 
 msgid "Today's Fortune"
 msgstr ""
@@ -2462,108 +1969,115 @@ msgstr ""
 msgid "Show fortunes at top of mailbox"
 msgstr ""
 
-#, fuzzy
+msgid "Back to &quot;GPG Plugin Options&quot; page"
+msgstr "Povratak na &quot;postavke GPG umetka&quot;."
+
+msgid "Cute."
+msgstr "Simpa."
+
+msgid "G/PGP Encryption Options"
+msgstr "G/PGP postavke enkripcije"
+
+msgid ""
+"Here you may set up how your keys are stored, edit them, and how you will "
+"use the encryption plug-in."
+msgstr "Pode¹avanje naèina spremanja kljuèeva, izmjena istih, te postavke umetka za enkripciju."
+
 msgid "IMAP server information"
-msgstr "Osobne informacije"
+msgstr "Podaci o IMAP poslu¾itelju"
 
 msgid ""
 "Run some test IMAP commands, displaying both the command and the result. "
 "These tests use the Squirrelmail IMAP commands and your current Squirrelmail "
 "configuration. Custom command strings can be used."
-msgstr ""
+msgstr "Testiranje nekih IMAP naredbi uz prikaz naredbi i odgovora poslu¾itelja.  Testovi se izvode naredbama koje SquirrelMail inaèe koristi, uz trenutne postavke."
 
 msgid "Mailinglist"
-msgstr ""
+msgstr "Mailing lista"
 
 #, c-format
 msgid ""
 "This will send a message to %s requesting help for this list. You will "
 "receive an emailed response at the address below."
-msgstr ""
+msgstr "Slanje upita za pomoæ na %s.  Kao odgovor bi trebali dobiti email na donju adresu."
 
 #, c-format
 msgid ""
 "This will send a message to %s requesting that you will be subscribed to "
 "this list. You will be subscribed with the address below."
-msgstr ""
+msgstr "Slanje prijave na %s.  Ovime æete se poku¹ati prijaviti na ovu listu, s adresom navedenom ni¾e."
 
 #, c-format
 msgid ""
 "This will send a message to %s requesting that you will be unsubscribed from "
 "this list. It will try to unsubscribe the adress below."
-msgstr ""
+msgstr "Slanje odjave na %s.  Ovime æete poku¹ati odjaviti dolje navedenu adresu s ove mailing liste."
 
-#, fuzzy
 msgid "Send Mail"
 msgstr "Po¹alji"
 
-#, fuzzy
 msgid "Post to List"
-msgstr "Dodaj u osobni adresar"
+msgstr "Poruka na listu"
 
-#, fuzzy
 msgid "Reply to List"
-msgstr "Povratna adresa"
+msgstr "Odgovor na listu"
 
 msgid "List Archives"
-msgstr ""
+msgstr "Arhive liste"
 
 msgid "Contact Listowner"
-msgstr ""
+msgstr "Poruka vlasniku liste"
 
-#, fuzzy
 msgid "Mailing List"
-msgstr "Lista poruka"
+msgstr "Mailing lista"
 
 msgid "POP3 connect:"
-msgstr ""
+msgstr "POP3 spajanje:"
 
 msgid "No server specified"
-msgstr ""
+msgstr "Nije odabran poslu¾itelj"
 
-#, fuzzy
 msgid "Error "
-msgstr "Pogre¹ka prilikom otvaranja"
+msgstr "Pogre¹ka "
 
 msgid "POP3 noop:"
 msgstr ""
 
-#, fuzzy
 msgid "No connection to server"
-msgstr "Pogre¹ka prilikom spajanja na IMAP poslu¾itelj: %s."
+msgstr "Veza sa poslu¾iteljem nije uspostavljena"
 
 msgid "POP3 user:"
-msgstr ""
+msgstr "POP3 korisnièko ime:"
 
 msgid "no login ID submitted"
-msgstr ""
+msgstr "nije upisano korisnièko ime"
 
 msgid "connection not established"
-msgstr ""
+msgstr "veza nije uspostavljena"
 
 msgid "POP3 pass:"
-msgstr ""
+msgstr "POP3 zaporka:"
 
 msgid "No password submitted"
-msgstr ""
+msgstr "niste upisali zaporku"
 
 msgid "authentication failed "
-msgstr ""
+msgstr "autentikacija nije uspjela "
 
 msgid "POP3 apop:"
 msgstr ""
 
 msgid "No login ID submitted"
-msgstr ""
+msgstr "Nije predan login ID"
 
 msgid "No server banner"
-msgstr ""
+msgstr "Nema pozdravne poruke poslu¾itelja"
 
 msgid "abort"
-msgstr ""
+msgstr "prekid"
 
 msgid "apop authentication failed"
-msgstr ""
+msgstr "apop autentikacija nije uspjela"
 
 msgid "POP3 login:"
 msgstr ""
@@ -2575,7 +2089,7 @@ msgid "POP3 pop_list:"
 msgstr ""
 
 msgid "Premature end of list"
-msgstr ""
+msgstr "Prijevremen prekid pop_list"
 
 msgid "POP3 get:"
 msgstr ""
@@ -2590,14 +2104,13 @@ msgid "POP3 send_cmd:"
 msgstr ""
 
 msgid "Empty command string"
-msgstr ""
+msgstr "Prazan naredbeni string"
 
 msgid "POP3 quit:"
 msgstr ""
 
-#, fuzzy
 msgid "connection does not exist"
-msgstr "Korisnik '%s' ne postoji"
+msgstr "veza ne postoji"
 
 msgid "POP3 uidl:"
 msgstr ""
@@ -2606,127 +2119,119 @@ msgid "POP3 delete:"
 msgstr ""
 
 msgid "No msg number submitted"
-msgstr ""
+msgstr "Nije odabran broj poruke"
 
-#, fuzzy
 msgid "Command failed "
-msgstr "Neuspje¹no otvaranje"
+msgstr "Naredba nije uspjela "
 
 msgid "Remote POP server Fetching Mail"
-msgstr ""
+msgstr "Dohvat po¹te s udaljenog POP3 poslu¾itelja"
 
 msgid "Select Server:"
-msgstr ""
+msgstr "Poslu¾itelj:"
 
-#, fuzzy
 msgid "Password for"
-msgstr "Lozinka:"
+msgstr "Lozinka za"
 
 msgid "Fetch Mail"
-msgstr ""
+msgstr "Dohvati po¹tu"
 
 msgid "Fetching from "
-msgstr ""
+msgstr "Dohvat sa "
 
 msgid "Oops, "
 msgstr ""
 
 msgid "Opening IMAP server"
-msgstr ""
+msgstr "Spajam se na IMAP server"
 
 msgid "Opening POP server"
-msgstr ""
+msgstr "Spajam se na POP server"
 
 msgid "Login Failed:"
-msgstr ""
+msgstr "Login nije uspio:"
 
 msgid "Login OK: No new messages"
-msgstr ""
+msgstr "Login OK: nema novih poruka"
 
 msgid "Login OK: Inbox EMPTY"
-msgstr ""
+msgstr "Login OK: Inbox prazan"
 
 msgid "Login OK: Inbox contains ["
-msgstr ""
+msgstr "Login OK: Inbox sadr¾i ["
 
-#, fuzzy
 msgid "] messages"
-msgstr "poruka"
+msgstr "] poruka"
 
 msgid "Fetching UIDL..."
-msgstr ""
+msgstr "Dohvaæam UIDL..."
 
 msgid "Server does not support UIDL."
-msgstr ""
+msgstr "Poslu¾itelj ne podr¾ava UIDL."
 
 msgid "Leaving Mail on Server..."
-msgstr ""
+msgstr "Ostavljam poruke na poslu¾itelju..."
 
 msgid "Deleting messages from server..."
-msgstr ""
+msgstr "Bri¹em poruke s poslu¾itelja..."
 
-#, fuzzy
 msgid "Fetching message "
-msgstr "Pregledavanje poruke"
+msgstr "Dohvaæam poruku "
 
 msgid "Server error...Disconnect"
-msgstr ""
+msgstr "Gre¹ka kod poslu¾itelja... odspajam se"
 
 msgid "Reconnect from dead connection"
-msgstr ""
+msgstr "Ponovno se spoji, zaglavljena veza"
 
 msgid "Saving UIDL"
-msgstr ""
+msgstr "Spremam UIDL"
 
-#, fuzzy
 msgid "Refetching message "
-msgstr "Pregledavanje poruke"
+msgstr "Ponovno dohvaæam poruku"
 
-#, fuzzy
 msgid "Error Appending Message!"
-msgstr "Pogre¹ka prilikom otvaranja"
+msgstr "Pogre¹ka prilikom dodavanja poruke!"
 
 msgid "Closing POP"
-msgstr ""
+msgstr "Zatvaram POP vezu"
 
 msgid "Logging out from IMAP"
-msgstr ""
+msgstr "Odspajam se sa IMAP poslu¾itelja"
 
 msgid "Message appended to mailbox"
-msgstr ""
+msgstr "Poruka dodana u pretinac"
 
-#, fuzzy
 msgid "Message "
-msgstr "Lista poruka"
+msgstr "Poruka "
 
 msgid " deleted from Remote Server!"
-msgstr ""
+msgstr " obrisana s udaljenog poslu¾itelja!"
 
-#, fuzzy
 msgid "Delete failed:"
-msgstr "Brisanje selektiranog"
+msgstr "Brisanje nije uspjelo:"
 
 msgid "Remote POP server settings"
-msgstr ""
+msgstr "Postavke udaljenog POP poslu¾itelja"
 
 msgid ""
 "You should be aware that the encryption used to store your password is not "
 "perfectly secure.  However, if you are using pop, there is inherently no "
 "encryption anyway. Additionally, the encryption that we do to save it on the "
 "server can be undone by a hacker reading the source to this file."
-msgstr ""
+msgstr "Zakrivanje pomoæu kojeg je Va¹a zaporka spremljena nije naroèito sigurno, i svaki hacker koji mo¾e proèitati izvorni kod SquirrelMaila mo¾e ga razbiti."
 
 msgid "If you leave password empty, it will be required when you fetch mail."
-msgstr ""
+msgstr "Ako ¹ifru ostavite praznom, biti æe zatra¾ena prilikom iduæeg skidanja po¹te s POP poslu¾itelja."
 
 msgid "Encrypt passwords (informative only)"
-msgstr ""
+msgstr "Kriptiraj zaporke (samo formalno)"
 
 msgid "Add Server"
-msgstr ""
+msgstr "Dodaj poslu¾itelj"
 
 msgid "Server:"
-msgstr ""
+msgstr "Poslu¾itelj:"
 
 msgid "Port:"
 msgstr ""
@@ -2734,96 +2239,94 @@ msgstr ""
 msgid "Alias:"
 msgstr ""
 
-#, fuzzy
 msgid "Username:"
-msgstr "Novo ime:"
+msgstr "Korisnièko ime:"
 
-#, fuzzy
 msgid "Store in Folder:"
-msgstr "Pretinac s poslanom po¹tom:"
+msgstr "Spremi u pretinac:"
 
 msgid "Leave Mail on Server"
-msgstr ""
+msgstr "Ostavi na poslu¾itelju"
 
 msgid "Check mail during login"
-msgstr ""
+msgstr "Provjeri po¹tu kod logina"
 
 msgid "Check mail during folder refresh"
-msgstr ""
+msgstr "Provjeravaj po¹tu kod osvje¾avanja pretinaca"
 
 msgid "Modify Server"
-msgstr ""
+msgstr "Izmijeni postavke poslu¾itelja"
 
-#, fuzzy
 msgid "Server Name:"
-msgstr "Odgovor poslu¾itelja:"
+msgstr "Ime poslu¾itelja:"
 
-#, fuzzy
 msgid "Modify"
-msgstr "Sadr¾aj poruke"
+msgstr "Izmijeni"
 
 msgid "No-one server in use. Try to add."
-msgstr ""
+msgstr "Dodajte bar jedan poslu¾itelj."
 
 msgid "Fetching Servers"
-msgstr ""
+msgstr "Dohvat sa poslu¾itelja"
 
 msgid "Confirm Deletion of a Server"
-msgstr ""
+msgstr "Potvrdite brisanje poslu¾itelja"
 
 msgid "Selected Server:"
-msgstr ""
+msgstr "Oznaèeni poslu¾itelj"
 
 msgid "Confirm delete of selected server?"
-msgstr ""
+msgstr "Da zaista obri¹em oznaèeni poslu¾itelj?"
 
-#, fuzzy
 msgid "Confirm Delete"
-msgstr "Obri¹i"
+msgstr "Potvrda brisanja"
 
 msgid "Undefined Function"
-msgstr ""
+msgstr "Nedefinirana funkcija"
 
 msgid "Hey! Wath do You are looking for?"
-msgstr ""
+msgstr "Hej, kog vraga tra¾i¹?"
 
-#, fuzzy
 msgid "Fetch"
-msgstr "Filter"
+msgstr "POP3 dohvat"
 
 msgid "Warning, "
-msgstr ""
+msgstr "Pozor, "
 
 msgid "Mail Fetch Result:"
-msgstr ""
+msgstr "Rezultat dohvata po¹te"
 
 msgid "Simple POP3 Fetch Mail"
-msgstr ""
+msgstr "Jednostavan POP3 dohvat po¹te"
 
 msgid ""
 "This configures settings for downloading email from a pop3 mailbox to your "
 "account on this server."
-msgstr ""
+msgstr "Ovdje mo¾ete podesiti postavke za skidanje poruka sa ostalih POP3 raèuna u pretinac na ovom poslu¾itelju."
 
-#, fuzzy
 msgid "Message Details"
-msgstr "Lista poruka"
+msgstr "Izvorni oblik poruke"
 
-#, fuzzy
 msgid "Close Window"
 msgstr "Zatvori prozor"
 
-#, fuzzy
 msgid "Save Message"
-msgstr "Pogledaj poruku"
+msgstr "Spremi poruku"
 
-#, fuzzy
 msgid "View Message details"
-msgstr "Pogledaj poruku"
+msgstr "Prika¾i u izvornom obliku"
 
-#, fuzzy
+msgid "New Mail"
+msgstr "Nova po¹ta"
+
+msgid "SquirrelMail Notice:"
+msgstr "SquirrelMail obavijest:"
+
+msgid "You have new mail!"
+msgstr "Stigla Vam je po¹ta!"
+
 msgid "New Mail Notification"
-msgstr "Nema obavijesti"
+msgstr "Obavijest o novoj po¹ti"
 
 msgid ""
 "Select <b>Enable Media Playing</b> to turn on playing a media file when "
@@ -2882,30 +2385,17 @@ msgstr ""
 msgid "Select server file:"
 msgstr ""
 
-#, fuzzy
 msgid "(none)"
-msgstr "nema"
+msgstr ""
 
 msgid "Try"
 msgstr ""
 
-#, fuzzy
 msgid "Current File:"
-msgstr "Trenutni pretinac"
+msgstr "Trenutna datoteka:"
 
-msgid "New Mail"
-msgstr ""
-
-#, fuzzy
-msgid "SquirrelMail Notice:"
-msgstr "SquirrelMail verzija %s"
-
-msgid "You have new mail!"
-msgstr ""
-
-#, fuzzy
 msgid "NewMail Options"
-msgstr "Opcije"
+msgstr "Postavke &quot;Nove Po¹te&quot;"
 
 msgid ""
 "This configures settings for playing sounds and/or showing popup windows "
@@ -2915,50 +2405,58 @@ msgstr ""
 msgid "New Mail Notification options saved"
 msgstr ""
 
-#, fuzzy, c-format
+#, c-format
 msgid "%s New Messages"
-msgstr "Pogledaj poruku"
+msgstr "%s novih poruka"
 
-#, fuzzy, c-format
+#, c-format
 msgid "%s New Message"
-msgstr "Pogledaj poruku"
+msgstr "%s nova poruka"
 
 msgid "Test Sound"
-msgstr ""
+msgstr "Proba zvuènog signala"
 
 msgid "No sound specified"
-msgstr ""
+msgstr "Nije odabran zvuèni signal"
 
 msgid "Loading the sound..."
-msgstr ""
+msgstr "Uèitavam zvuèni signal..."
 
-#, fuzzy
 msgid "Sent Subfolders Options"
-msgstr "Specijalne opcije pretinca"
+msgstr "Postavke podpretinaca sa poslanim porukama"
 
-#, fuzzy
 msgid "Use Sent Subfolders"
-msgstr "Pretinac s poslanom po¹tom:"
+msgstr "Kori¹tenje podpretinaca sa poslanim porukama"
 
-#, fuzzy
+msgid "Disabled"
+msgstr "iskljuèeni"
+
 msgid "Monthly"
-msgstr "Sadr¾aj poruke"
+msgstr "mjeseèni"
 
 msgid "Quarterly"
-msgstr ""
+msgstr "kvartalni"
 
 msgid "Yearly"
+msgstr "godi¹nji"
+
+msgid "Base Sent Folder"
+msgstr "Osnovni pretinac s poslanom po¹tom"
+
+msgid "$showlink"
 msgstr ""
 
-#, fuzzy
-msgid "Base Sent Folder"
-msgstr "Pretinac s poslanom po¹tom:"
+msgid "SpamAssassin Configuration"
+msgstr "Postavke SpamAssassina"
+
+msgid "Here you can change the way our Spamassassin functions."
+msgstr "Ovdje mo¾ete podesiti naèin rada SpamAssassina"
 
 msgid "Report as Spam"
-msgstr ""
+msgstr "Prijavi spam"
 
 msgid "SpamCop - Spam Reporting"
-msgstr ""
+msgstr "SpamCop - prijava spama"
 
 msgid ""
 "Help fight the battle against unsolicited email.  SpamCop reads the spam "
@@ -2966,23 +2464,22 @@ msgid ""
 "fast, really smart, and easy to use."
 msgstr ""
 
-#, fuzzy
 msgid "SpellChecker Options"
-msgstr "Specijalne opcije pretinca"
+msgstr "Postavke provjere pravopisa"
 
 msgid ""
 "Here you may set up how your personal dictionary is stored, edit it, or "
 "choose which languages should be available to you when spell-checking."
-msgstr ""
+msgstr "Ovdje mo¾ete odabrati koji æe jezici biti u popisu moguæih za provjeru pravopisa, mo¾ete mijenjati va¹ osobni rjeènik ili podesiti naèin njegovog spremanja."
 
 msgid "Check Spelling"
-msgstr ""
+msgstr "Provjera pravopisa"
 
 msgid "Back to &quot;SpellChecker Options&quot; page"
-msgstr ""
+msgstr "Povratak na &qout;postavke SquirrelSpella (provjere pravopisa)&qout;"
 
 msgid "ATTENTION:"
-msgstr ""
+msgstr "POZOR:"
 
 msgid ""
 "SquirrelSpell was unable to decrypt your personal dictionary. This is most "
@@ -2993,325 +2490,29 @@ msgid ""
 "got mangled and is no longer valid. You will have to delete it and start "
 "anew. This is also true if you don't remember your old password -- without "
 "it, the encrypted data is no longer accessible."
-msgstr ""
+msgstr "SquirrelSpell nije uspio dekriptirati va¹ osobni rjeènik.  To se najvjerojatnije dogodilo jer ste u meðuvremenu promijenili zaporku za email. Za nastavak trebate unijeti staru zaporku, da SquirrelSpell mo¾e otvoriti rjeènik i ponovno ga kriptirati sa novom zaporkom.<br>Ako va¹ rjeènik nije bio kriptiran, do¹lo je do gre¹ke u njemu i trebat æete ga obrisati i ponovno stvoriti, kao i u sluèaju da ste zaboravili staru zaporku, bez koje nije moguæ pristup kriptiranim podacima iz rjeènika."
 
 msgid "Delete my dictionary and start a new one"
-msgstr ""
+msgstr "Obri¹i moj rjeènik i stvori novi"
 
 msgid "Decrypt my dictionary with my old password:"
-msgstr ""
+msgstr "Dekriptiraj rjeènik pomoæu stare zaporke:"
 
 msgid "Proceed"
-msgstr ""
+msgstr "Nastavak"
 
 msgid "You must make a choice"
-msgstr ""
+msgstr "Morate odabrati jedno"
 
 msgid ""
 "You can either delete your dictionary or type in the old password. Not both."
-msgstr ""
+msgstr "Mo¾ete ili obrisati rjeènik, ili upisati staru zaporku, ne oboje."
 
 msgid "This will delete your personal dictionary file. Proceed?"
-msgstr ""
+msgstr "Ovo æe obrisati va¹ osobni rjeènik.  Jeste li sigurni?"
 
 msgid "Error Decrypting Dictionary"
-msgstr ""
-
-msgid "Cute."
-msgstr ""
-
-#, c-format
-msgid "I tried to execute '%s', but it returned:"
-msgstr ""
-
-msgid "SquirrelSpell is misconfigured."
-msgstr ""
-
-msgid "SquirrelSpell Results"
-msgstr ""
-
-msgid "Spellcheck completed. Commit changes?"
-msgstr ""
-
-#, fuzzy
-msgid "No changes were made."
-msgstr "Niti jedna poruka nije selektirana."
-
-msgid "Now saving your personal dictionary... Please wait."
-msgstr ""
-
-#, c-format
-msgid "Found %s errors"
-msgstr ""
-
-msgid "Line with an error:"
-msgstr ""
-
-#, fuzzy
-msgid "Error:"
-msgstr "Pogre¹ka prilikom otvaranja"
-
-msgid "Suggestions:"
-msgstr ""
-
-msgid "Suggestions"
-msgstr ""
-
-msgid "Change to:"
-msgstr ""
-
-msgid "Occurs times:"
-msgstr ""
-
-msgid "Change this word"
-msgstr ""
-
-msgid "Change"
-msgstr ""
-
-msgid "Change ALL occurances of this word"
-msgstr ""
-
-#, fuzzy
-msgid "Change All"
-msgstr "Selektiraj sve"
-
-msgid "Ignore this word"
-msgstr ""
-
-#, fuzzy
-msgid "Ignore"
-msgstr "dalje"
-
-msgid "Ignore ALL occurances this word"
-msgstr ""
-
-#, fuzzy
-msgid "Ignore All"
-msgstr "dalje"
-
-msgid "Add this word to your personal dictionary"
-msgstr ""
-
-#, fuzzy
-msgid "Add to Dic"
-msgstr "Dodaj u osobni adresar"
-
-#, fuzzy
-msgid "Close and Commit"
-msgstr "Zatvori prozor"
-
-msgid "The spellcheck is not finished. Really close and commit changes?"
-msgstr ""
-
-#, fuzzy
-msgid "Close and Cancel"
-msgstr "Zatvori prozor"
-
-msgid "The spellcheck is not finished. Really close and discard changes?"
-msgstr ""
-
-#, fuzzy
-msgid "No errors found"
-msgstr "Pretinac nije pronaden"
-
-#, fuzzy
-msgid "Your personal dictionary was erased."
-msgstr "Osobne informacije"
-
-msgid "Dictionary Erased"
-msgstr ""
-
-msgid ""
-"Your personal dictionary was erased. Please close this window and click "
-"\"Check Spelling\" button again to start your spellcheck over."
-msgstr ""
-
-#, fuzzy
-msgid "Close this Window"
-msgstr "Zatvori prozor"
-
-msgid ""
-"Your personal dictionary was re-encrypted successfully. Now return to the "
-"&quot;SpellChecker options&quot; menu and make your selection again."
-msgstr ""
-
-#, fuzzy
-msgid "Successful Re-encryption"
-msgstr "Osobne informacije su uspje¹no snimljene!"
-
-msgid ""
-"Your personal dictionary was re-encrypted successfully. Please close this "
-"window and click \"Check Spelling\" button again to start your spellcheck "
-"over."
-msgstr ""
-
-msgid "Dictionary re-encrypted"
-msgstr ""
-
-msgid ""
-"Your personal dictionary has been <strong>encrypted</strong> and is now "
-"stored in an <strong>encrypted format</strong>."
-msgstr ""
-
-msgid ""
-"Your personal dictionary has been <strong>decrypted</strong> and is now "
-"stored as <strong>clear text</strong>."
-msgstr ""
-
-#, fuzzy
-msgid "Personal Dictionary Crypto Settings"
-msgstr "Osobne informacije"
-
-#, fuzzy
-msgid "Personal Dictionary"
-msgstr "Osobne informacije"
-
-#, fuzzy
-msgid "No words in your personal dictionary."
-msgstr "Osobne informacije"
-
-msgid "Please check any words you wish to delete from your dictionary."
-msgstr ""
-
-#, fuzzy, c-format
-msgid "%s dictionary"
-msgstr "Osobne informacije"
-
-#, fuzzy
-msgid "Delete checked words"
-msgstr "Brisanje selektiranog"
-
-#, fuzzy
-msgid "Edit your Personal Dictionary"
-msgstr "Osobne informacije"
-
-msgid "Please make your selection first."
-msgstr ""
-
-msgid ""
-"This will encrypt your personal dictionary and store it in an encrypted "
-"format. Proceed?"
-msgstr ""
-
-msgid ""
-"This will decrypt your personal dictionary and store it in a clear-text "
-"format. Proceed?"
-msgstr ""
-
-msgid ""
-"<p>Your personal dictionary is <strong>currently encrypted</strong>. This "
-"helps protect your privacy in case the web-mail system gets compromized and "
-"your personal dictionary ends up stolen. It is currently encrypted with the "
-"password you use to access your mailbox, making it hard for anyone to see "
-"what is stored in your personal dictionary.</p> <p><strong>ATTENTION:</"
-"strong> If you forget your password, your personal dictionary will become "
-"unaccessible, since it can no longer be decrypted. If you change your "
-"mailbox password, SquirrelSpell will recognize it and prompt you for your "
-"old password in order to re-encrypt the dictionary with a new key.</p>"
-msgstr ""
-
-msgid ""
-"Please decrypt my personal dictionary and store it in a clear-text format."
-msgstr ""
-
-msgid "Change crypto settings"
-msgstr ""
-
-msgid ""
-"<p>Your personal dictionary is <strong>currently not encrypted</strong>. You "
-"may wish to encrypt your personal dictionary to protect your privacy in case "
-"the webmail system gets compromized and your personal dictionary file gets "
-"stolen. When encrypted, the file's contents look garbled and are hard to "
-"decrypt without knowing the correct key (which is your mailbox password).</"
-"p> <strong>ATTENTION:</strong> If you decide to encrypt your personal "
-"dictionary, you must remember that it gets &quot;hashed&quot; with your "
-"mailbox password. If you forget your mailbox password and the administrator "
-"changes it to a new value, your personal dictionary will become useless and "
-"will have to be created anew. However, if you or your system administrator "
-"change your mailbox password but you still have the old password at hand, "
-"you will be able to enter the old key to re-encrypt the dictionary with the "
-"new value.</p>"
-msgstr ""
-
-msgid ""
-"Please encrypt my personal dictionary and store it in an encrypted format."
-msgstr ""
-
-#, c-format
-msgid "Deleting the following entries from <strong>%s</strong> dictionary:"
-msgstr ""
-
-#, fuzzy
-msgid "All done!"
-msgstr "Svi pretinci"
-
-#, fuzzy
-msgid "Personal Dictionary Updated"
-msgstr "Osobne informacije"
-
-#, fuzzy
-msgid "No changes requested."
-msgstr "Niti jedna poruka nije selektirana."
-
-msgid "Please wait, communicating with the server..."
-msgstr ""
-
-msgid ""
-"Please choose which dictionary you would like to use to spellcheck this "
-"message:"
-msgstr ""
-
-msgid "SquirrelSpell Initiating"
-msgstr ""
-
-#, c-format
-msgid ""
-"Settings adjusted to: <strong>%s</strong> with <strong>%s</strong> as "
-"default dictionary."
-msgstr ""
-
-#, c-format
-msgid "Using <strong>%s</strong> dictionary (system default) for spellcheck."
-msgstr ""
-
-msgid "International Dictionaries Preferences Updated"
-msgstr ""
-
-msgid ""
-"Please check any available international dictionaries which you would like "
-"to use when spellchecking:"
-msgstr ""
-
-msgid "Make this dictionary my default selection:"
-msgstr ""
-
-msgid "Make these changes"
-msgstr ""
-
-#, fuzzy
-msgid "Add International Dictionaries"
-msgstr "Osobne informacije"
-
-msgid "Please choose which options you wish to set up:"
-msgstr ""
-
-#, fuzzy
-msgid "Edit your personal dictionary"
-msgstr "Osobne informacije"
-
-msgid "Set up international dictionaries"
-msgstr ""
-
-msgid "Encrypt or decrypt your personal dictionary"
-msgstr ""
-
-#, fuzzy
-msgid "not available"
-msgstr "Nije ime datoteke"
-
-msgid "SquirrelSpell Options Menu"
-msgstr ""
+msgstr "Gre¹ka kod dekripcije rjeènika"
 
 msgid "Translator"
 msgstr ""
@@ -3323,258 +2524,852 @@ msgid "Your server options are as follows:"
 msgstr ""
 
 msgid "Maximum of 1000 characters translated, powered by Systran"
-msgstr ""
+msgstr "Do 1000 prevedenih znakova, powered by Systran"
 
 #, c-format
 msgid "Number of supported language pairs: %s"
-msgstr ""
+msgstr "Broj podr¾anih parova jezika za prevoðenje: %s"
 
 msgid "No known limits, powered by Systran"
-msgstr ""
+msgstr "Ogranièenja nisu poznata, powered by Systran"
 
 msgid "No known limits, powered by Translation Experts's InterTran"
-msgstr ""
+msgstr "Ogranièenja nisu poznata, powered by Translation Experts's InterTran"
 
 #, c-format
 msgid "Number of supported languages: %s"
-msgstr ""
+msgstr "Broj podr¾anih jezika: %s"
 
 msgid "No known limits, powered by GPLTrans (free, open source)"
-msgstr ""
+msgstr "Ogranièenja nisu poznata, powered by GPLTrans (slobodan, open source)"
 
 msgid "Hellenic translations, no known limits, powered by Systran"
-msgstr ""
+msgstr "Grèki prijevodi, bez poznatih ogranièenja, powered by Systran"
 
 msgid "Russian translations, maximum of 500 characters translated"
-msgstr ""
+msgstr "Prijevodi na i sa Ruskog, do 500 prevedenih znakova"
 
 msgid ""
 "You also decide if you want the translation box displayed, and where it will "
 "be located."
-msgstr ""
+msgstr "Odaberite hoæe li i gdje biti prikazan okvir za prijevod."
 
 msgid "Select your translator:"
-msgstr ""
+msgstr "Izbor prevoditelja:"
 
 msgid "When reading:"
-msgstr ""
+msgstr "Kod èitanja:"
 
 msgid "Show translation box"
-msgstr ""
+msgstr "Prikaz okvira za prijevod"
 
 msgid "to the left"
-msgstr ""
+msgstr "s lijeve strane"
 
 msgid "in the center"
-msgstr ""
+msgstr "u sredini"
 
 msgid "to the right"
-msgstr ""
+msgstr "s desne strane"
 
 msgid "Translate inside the SquirrelMail frames"
-msgstr ""
+msgstr "Unutar SquirrelMail okvira"
 
 msgid "When composing:"
-msgstr ""
+msgstr "Kod pisanja:"
 
 msgid "Not yet functional, currently does nothing"
-msgstr ""
+msgstr "Ova funkcija trenutno ne radi ni¹ta"
 
 msgid "Translation Options"
-msgstr ""
+msgstr "Postavke prijevoda"
 
 msgid ""
 "Which translator should be used when you get messages in a different "
 "language?"
 msgstr ""
 
-#, fuzzy, c-format
+#, c-format
 msgid "%s to %s"
-msgstr "Dodaj u osobni adresar"
+msgstr "%s u %s"
 
 msgid "English"
-msgstr ""
+msgstr "Engleski"
 
 msgid "Chinese"
-msgstr ""
+msgstr "Kineski"
 
 msgid "French"
-msgstr ""
+msgstr "Francuski"
 
 msgid "German"
-msgstr ""
+msgstr "Njemaèki"
 
 msgid "Italian"
-msgstr ""
+msgstr "Talijanski"
 
 msgid "Japanese"
-msgstr ""
+msgstr "Japanski"
 
-#, fuzzy
 msgid "Korean"
-msgstr "dalje"
+msgstr "Korejski"
 
 msgid "Portuguese"
-msgstr ""
+msgstr "Portugalski"
 
 msgid "Spanish"
-msgstr ""
+msgstr "©panjolski"
 
 msgid "Russian"
-msgstr ""
+msgstr "Ruski"
 
 msgid "Translate"
-msgstr ""
+msgstr "Prevedi"
 
 msgid "Brazilian Portuguese"
-msgstr ""
+msgstr "Brazilski portugalski"
 
 msgid "Bulgarian"
-msgstr ""
+msgstr "Bugarski"
 
 msgid "Croatian"
-msgstr ""
+msgstr "Hrvatski"
 
 msgid "Czech"
-msgstr ""
+msgstr "Èe¹ki"
 
 msgid "Danish"
-msgstr ""
+msgstr "Danski"
 
-#, fuzzy
 msgid "Dutch"
-msgstr "Filter"
+msgstr "Nizozemski"
 
 msgid "European Spanish"
-msgstr ""
+msgstr "Evropski ¹panjolski"
 
 msgid "Finnish"
-msgstr ""
+msgstr "Finski"
 
 msgid "Greek"
-msgstr ""
+msgstr "Grèki"
 
 msgid "Hungarian"
-msgstr ""
+msgstr "Maðarski"
 
 msgid "Icelandic"
-msgstr ""
+msgstr "Islandski"
 
 msgid "Latin American Spanish"
-msgstr ""
+msgstr "Srednjeamerièki ¹panjolski"
 
 msgid "Norwegian"
-msgstr ""
+msgstr "Norve¹ki"
 
 msgid "Polish"
-msgstr ""
+msgstr "Poljski"
 
 msgid "Romanian"
-msgstr ""
+msgstr "Rumunjski"
 
 msgid "Serbian"
-msgstr ""
+msgstr "Srpski"
 
 msgid "Slovenian"
-msgstr ""
+msgstr "Slovenski"
 
 msgid "Swedish"
-msgstr ""
+msgstr "©vedski"
 
 msgid "Turkish"
-msgstr ""
+msgstr "Turski"
 
 msgid "Welsh"
-msgstr ""
+msgstr "Vel¹ki"
 
 msgid "Indonesian"
-msgstr ""
+msgstr "Indonezijski"
 
-#, fuzzy
 msgid "Latin"
-msgstr "Prijava"
+msgstr "Latinski"
 
 msgid "to English"
-msgstr ""
+msgstr "na engleski"
 
 msgid "from English"
-msgstr ""
+msgstr "sa engleskog"
 
-#, fuzzy
 msgid "Interface language"
-msgstr "Jezik"
+msgstr "Jezik suèelja"
 
 msgid "Translation direction"
+msgstr "Smjer prijevoda"
+
+msgid "Command not implemented"
+msgstr "Naredba nije implementirana"
+
+msgid "Transaction failed"
+msgstr "Neuspje¹na transakcija"
+
+msgid "Unknown response"
+msgstr "Nepoznat odgovor"
+
+msgid "Theme"
+msgstr "Tema"
+
+msgid "Language"
+msgstr "Jezik"
+
+msgid "Use Javascript"
+msgstr "Koristi JavaScript"
+
+msgid "Number of Messages to Index"
+msgstr "Broj poruka po stranici"
+
+msgid "Maximum Number of Pages to Show"
+msgstr "Maksimalan broj poruka po stranici"
+
+msgid "Wrap Incoming Text At"
+msgstr "Prelomi tekst u stupcu"
+
+msgid "Size of Editor Window"
+msgstr "Velièina prozora editora"
+
+msgid "Location of Buttons when Composing"
+msgstr "Polo¾aj tipaka kod pisanja poruke"
+
+msgid "Before headers"
+msgstr "Prije zaglavlja"
+
+msgid "Between headers and message body"
+msgstr "Izmeðu zaglavlja i teksta poruke"
+
+msgid "After message body"
+msgstr "Iza teksta poruke"
+
+msgid "Addressbook Display Format"
+msgstr "Format prikaza adresara"
+
+msgid "Javascript"
+msgstr "JavaScript"
+
+msgid "HTML"
 msgstr ""
 
-msgid "Delivery error report"
-msgstr ""
+msgid "Enable Mail Delivery Notification"
+msgstr "Omoguæi obavijest o isporuèenim porukama"
 
-msgid "Undelivered Message Headers"
-msgstr ""
+msgid "Width of Compose Window"
+msgstr "©irina prozora kreiranja poruke"
 
-#~ msgid "(unknown sender)"
-#~ msgstr "(nepoznat po¹iljatelj)"
+msgid "Height of Compose Window"
+msgstr "Visina prozora kreiranja poruke"
 
-#~ msgid "Close window"
-#~ msgstr "Zatvori prozor"
+msgid "Special Folder Options"
+msgstr "Specijalne opcije pretinca"
+
+msgid "Folder Path"
+msgstr "Put do pretinca"
+
+msgid "Do not use Trash"
+msgstr "Ne koristi smeæe"
+
+msgid "Do not use Sent"
+msgstr "Ne koristi pretinac za poslanu po¹tu"
+
+msgid "Do not use Drafts"
+msgstr "Ne koristi pretinac za predlo¹ke"
+
+msgid "Folder List Options"
+msgstr "Opcije liste pretinca"
+
+msgid "Location of Folder List"
+msgstr "Pozicija liste pretinaca"
+
+msgid "Left"
+msgstr "Lijevo"
+
+msgid "Right"
+msgstr "Desno"
+
+msgid "Width of Folder List"
+msgstr "©irina liste pretinaca"
+
+msgid "Minutes"
+msgstr "min."
+
+msgid "Seconds"
+msgstr "sek."
+
+msgid "Minute"
+msgstr "min."
+
+msgid "Auto Refresh Folder List"
+msgstr "Automatsko osvje¾avanje liste pretinaca"
+
+msgid "Enable Unread Message Notification"
+msgstr "Omoguæi obavijest o nepregledanim porukama"
+
+msgid "Unread Message Notification Type"
+msgstr "Naèin obavijesæivanja o nepregledanim porukama"
+
+msgid "Enable Cumulative Unread Message Notification"
+msgstr "Omoguæi kumulativnu obavijest o nepregledanim porukama"
+
+msgid "Memory Search"
+msgstr "Pretra¾ivanje memorije"
+
+msgid "Folder Selection Options"
+msgstr "Opcije selekcije pretinaca"
+
+msgid "Email Address"
+msgstr "E-mail adresa"
+
+msgid "Timezone Options"
+msgstr "Opcije vremenske zone"
+
+msgid "No Citation"
+msgstr "Bez citiranja"
+
+msgid "Signature Options"
+msgstr "Opcije potpisa"
+
+msgid "Use Signature"
+msgstr "Upotrijebi potpis"
+
+msgid "No changes were made."
+msgstr "Promjene nisu uèinjene."
+
+msgid "Error:"
+msgstr "Gre¹ka:"
+
+msgid "Change All"
+msgstr "Spomijeni sve"
+
+msgid "Ignore"
+msgstr "Ignoriraj"
+
+msgid "Ignore All"
+msgstr "Ignoriraj sve"
+
+msgid "Add to Dic"
+msgstr "Dodaj u rjeènik"
+
+msgid "Close and Commit"
+msgstr "Zatvori i prihvati"
+
+msgid "Close and Cancel"
+msgstr "Odustani i zatvori"
+
+msgid "No errors found"
+msgstr "Gre¹ek nisu pronaðene"
+
+msgid "Your personal dictionary was erased."
+msgstr "Va¹ osobni rjeènik je obrisan."
+
+msgid "Close this Window"
+msgstr "Zatvori prozor"
+
+msgid "Successful Re-encryption"
+msgstr "Uspje¹no rekriptiranje"
+
+msgid "Personal Dictionary Crypto Settings"
+msgstr "Postavke kriptiranja osobnog rjeènika"
+
+msgid "Personal Dictionary"
+msgstr "Osobni rjeènik"
+
+msgid "No words in your personal dictionary."
+msgstr "Nema rijeèi u osobnom rjeèniku."
+
+msgid "%s dictionary"
+msgstr "%s rjeènik"
+
+msgid "Delete checked words"
+msgstr "Obri¹i oznaèene rijeèi"
+
+msgid "Edit your Personal Dictionary"
+msgstr "Uredite osobni rjeènik"
+
+msgid "All done!"
+msgstr "Sve je uèinjeno!"
+
+msgid "Personal Dictionary Updated"
+msgstr "Osobni rjeènik je a¾uriran"
+
+msgid "No changes requested."
+msgstr "Nisu zatra¾ene izmjene."
+
+msgid "Add International Dictionaries"
+msgstr "Dodaj rjeènik"
+
+msgid "Edit your personal dictionary"
+msgstr "Uredite osobni rjeènik"
+
+msgid "not available"
+msgstr "nije dostupno"
+
+msgid "(unknown sender)"
+msgstr "(nepoznat po¹iljatelj)"
+
+msgid "Close window"
+msgstr "Zatvori prozor"
+
+msgid "empty"
+msgstr "prazno"
+
+msgid "Welcome to %s's WebMail system"
+msgstr "Dobrodo¹li u %s-ov WebMail sustav"
 
 #, fuzzy
-#~ msgid "empty"
-#~ msgstr "Odgovori"
-
-#~ msgid "Welcome to %s's WebMail system"
-#~ msgstr "Dobrodo¹li u %s-ov WebMail sustav"
+msgid "Running SquirrelMail version %s (c) 1999-2001."
+msgstr "SquirrelMail verzija %s"
 
 #, fuzzy
-#~ msgid "Running SquirrelMail version %s (c) 1999-2001."
-#~ msgstr "SquirrelMail version %s (c) 1999-2000."
+msgid "No To Address"
+msgstr "Uzmi adresu"
+
+msgid "Found"
+msgstr "Nadeno"
 
 #, fuzzy
-#~ msgid "No To Address"
-#~ msgstr "Adresar"
+msgid "messages"
+msgstr "] poruka"
 
-#~ msgid "Found"
-#~ msgstr "Nadeno"
+#, fuzzy
+msgid "Folders created successfully!"
+msgstr "Uspje¹na promjena naziva!"
 
-#~ msgid "messages"
-#~ msgstr "poruka"
+msgid ""
+"In order for SquirrelMail to provide the full set of options you need to "
+"create the special folders listed below.  Just click the check box and hit "
+"the create button."
+msgstr "Da bi SquirrelMail mogao omoguciti sve opcije potrebno je da kreirate specijalni pretinac. Samo selektirajte ¾eljeni pretinac i pretisnite botun."
 
-#~ msgid "Folders created successfully!"
-#~ msgstr "Pretinac je uspje¹no kreiran"
+#, fuzzy
+msgid "Create Trash"
+msgstr "Stvori"
+
+#, fuzzy
+msgid "Successfully saved display preferences!"
+msgstr "Postavke uspje¹no spremljene"
+
+#, fuzzy
+msgid "Successfully saved folder preferences!"
+msgstr "Postavke uspje¹no spremljene"
+
+#, fuzzy
+msgid "Don't use Trash"
+msgstr "Ne koristi smeæe"
+
+#, fuzzy
+msgid "Don't use Sent"
+msgstr "Ne koristi pretinac za poslanu po¹tu"
+
+#, fuzzy
+msgid "Use a signature?"
+msgstr "Upotrijebi potpis"
+
+msgid "You must login first."
+msgstr "Molimo Vas da se prvo prijavite."
+
+msgid "total"
+msgstr "ukupno"
+
+#, fuzzy
+msgid "Addressbook %s is read-only"
+msgstr "Dozvoljeno je samo èitanje adresara"
+
+#~ msgid "Not available"
+#~ msgstr "Nije dostupan"
 
 #~ msgid ""
-#~ "In order for SquirrelMail to provide the full set of options you need to "
-#~ "create the special folders listed below.  Just click the check box and "
-#~ "hit the create button."
-#~ msgstr ""
-#~ "Da bi SquirrelMail mogao omoguciti sve opcije potrebno je da kreirate "
-#~ "specijalni pretinac. Samo selektirajte ¾eljeni pretinac i pretisnite "
-#~ "botun."
+#~ "You need to have php4 installed with the multibyte string function "
+#~ "enabled (using configure option --with-mbstring)."
+#~ msgstr "PHP4 mora biti instaliran s omoguæenom multibyte znakovnom funkcijom (konfiguriran s opcijom --with-mbstring)."
 
-#~ msgid "Create Trash"
-#~ msgstr "Kreirano Smeæe"
+#~ msgid "Unknown message number in reply from server: "
+#~ msgstr "Nepoznat broj poruke u odgovoru poslu¾itelja:"
 
-#~ msgid "Successfully saved display preferences!"
-#~ msgstr "Informacije o naèinu prikaza su uspje¹no snimljene!"
+#~ msgid "Service not available, closing channel"
+#~ msgstr "Usluga nije dostupna, zatvaram kanal"
 
-#~ msgid "Successfully saved folder preferences!"
-#~ msgstr "Inforamcije o pretincima su uspje¹no snimljene!"
+#~ msgid "Requested mail action not taken: mailbox unavailable"
+#~ msgstr "Zahtijevana akcija nije poduzeta: po¹tanski pretinac nije dostupan"
 
-#~ msgid "Don't use Trash"
-#~ msgstr "Ne koristi smeæe"
+#~ msgid "Requested action aborted: error in processing"
+#~ msgstr "Zahtijavana akcija je prekinuta: gre¹ka u procesiranju"
 
-#~ msgid "Don't use Sent"
-#~ msgstr "Ne koristi pretinac za poslanu po¹tu"
+#~ msgid "Requested action not taken: insufficient system storage"
+#~ msgstr "Zahtijevana akcija nije poduzeta: nedovoljan prostor za pohranu"
 
-#~ msgid "Use a signature?"
-#~ msgstr "Upotreba potpisa?"
+#~ msgid "Temporary authentication failure"
+#~ msgstr "Privremena neuspje¹na autentikacija"
 
-#~ msgid "You must login first."
-#~ msgstr "Molimo Vas da se prvo prijavite."
+#~ msgid "Syntax error; command not recognized"
+#~ msgstr "Sintaksna gre¹ka; naredba nije prepoznata"
 
-#~ msgid "total"
-#~ msgstr "ukupno"
+#~ msgid "Syntax error in parameters or arguments"
+#~ msgstr "Sintaksna gre¹ka u parametrima ili argumentima"
 
-#~ msgid "Addressbook %s is read-only"
-#~ msgstr "Adresar %s je dozvoljen samo za citanje"
+#~ msgid "Bad sequence of commands"
+#~ msgstr "Nevaljani niz naredbi"
+
+#~ msgid "Command parameter not implemented"
+#~ msgstr "Parametar naredbe nije primjenjiv"
+
+#~ msgid "Authentication required"
+#~ msgstr "Potrebna autentifikacija"
+
+#~ msgid "Authentication mechanism is too weak"
+#~ msgstr "Autentikacijski mehanizam je preslab"
+
+#~ msgid "Authentication failed"
+#~ msgstr "Neuspje¹na autentifikacija"
+
+#~ msgid "Encryption required for requested authentication mechanism"
+#~ msgstr "Potrebna je nekripcija za zahtijevani autentikacijski mehanizam"
+
+#~ msgid "Requested action not taken: mailbox unavailable"
+#~ msgstr "Zahtijevana naredba nije poduzeta: po¹tanski pretinac nije dostupan"
+
+#~ msgid "User not local; please try forwarding"
+#~ msgstr "Korisnik se ne nalazi na lokalnom poslu¾itelju; probajte s proslijeðivanjem"
+
+#~ msgid "Requested mail action aborted: exceeding storage allocation"
+#~ msgstr "Zahtijevana akcija je prekinuta: prema¹en je rezervirani prostor pohrane"
+
+#~ msgid "Requested action not taken: mailbox name not allowed"
+#~ msgstr "Zahtiejvana akcija nije poduzeta: naziv po¹tanskog pretinca nije dozvoljen"
+
+#~ msgid "General Display Options"
+#~ msgstr "Opæe postakve prikaza"
+
+#~ msgid "Autodetect"
+#~ msgstr "Autodetekcija"
+
+#~ msgid "Always"
+#~ msgstr "Uvijek"
+
+#~ msgid "Never"
+#~ msgstr "Nikad"
+
+#~ msgid "Mailbox Display Options"
+#~ msgstr "Opcije prikaza pretinca dolazne po¹te"
+
+#~ msgid "Enable Alternating Row Colors"
+#~ msgstr "Omoguæi naizmjeniène boje redaka"
+
+#~ msgid "Enable Page Selector"
+#~ msgstr "Omoguæi selektor stranice"
+
+#~ msgid "Message Display and Composition"
+#~ msgstr "Prikaz poruke i kreiranje nove"
+
+#~ msgid "Show HTML Version by Default"
+#~ msgstr "Prika¾i poèetno HTML verziju"
+
+#~ msgid "Enable Forward as Attachment"
+#~ msgstr "Dozvoli proslijeðivanje kao privitka"
+
+#~ msgid "Include CCs when Forwarding Messages"
+#~ msgstr "Ukljuèi i kopije kada proslijeðuje¹ poruke"
+
+#~ msgid "Include Me in CC when I Reply All"
+#~ msgstr "Ukljuèi i mene u kopiju poruke kada odgovaram s \"Odgovori svima\""
+
+#~ msgid "Enable Mailer Display"
+#~ msgstr "Omoguæi prikaz po¹iljatelja"
+
+#~ msgid "Display Attached Images with Message"
+#~ msgstr "Prika¾i slike iz privitka s porukom"
+
+#~ msgid "Enable Printer Friendly Clean Display"
+#~ msgstr "Omoguæi prikaz prilagoðen ispisu na pisaè"
+
+#~ msgid "Compose Messages in New Window"
+#~ msgstr "Kreiraj poruke u novom prozoru"
+
+#~ msgid "Append Signature before Reply/Forward Text"
+#~ msgstr "Dodaj potpis prije teksta odgovora/proslijeðivanja "
+
+#~ msgid "Enable Sort by of Receive Date"
+#~ msgstr "Omoguæi sortiranje po datumu primitka"
+
+#~ msgid "Enable Thread Sort by References Header"
+#~ msgstr "Omoguæi sortiranje niza poruka prema zaglavlju"
+
+#~ msgid "Enable Collapsable Folders"
+#~ msgstr "Omoguæi hierarhijske pretince"
+
+#~ msgid "Show Clock on Folders Panel"
+#~ msgstr "Prika¾i sat na panelu pretinaca"
+
+#~ msgid "No Clock"
+#~ msgstr "Bez sata"
+
+#~ msgid "Hour Format"
+#~ msgstr "Format prikaza sata"
+
+#~ msgid "12-hour clock"
+#~ msgstr "12-satni prikaz"
+
+#~ msgid "24-hour clock"
+#~ msgstr "24-satni prikaz"
+
+#~ msgid "Name and Address Options"
+#~ msgstr "Opcije imena i adresa"
+
+#~ msgid "Edit Advanced Identities"
+#~ msgstr "Uredi napredne opcije identiteta"
+
+#~ msgid "(discards changes made on this form so far)"
+#~ msgstr "(odustani od dosad uèinjenih promjena)"
+
+#~ msgid "Multiple Identities"
+#~ msgstr "Vi¹estruki idnetiteti"
+
+#~ msgid "Same as server"
+#~ msgstr "Isto kao poslu¾itelj"
+
+#~ msgid "Error opening timezone config, contact administrator."
+#~ msgstr "Gre¹ka u otvaranju konfiguracije vremenske zone, kontaktirajte administratora."
+
+#~ msgid "Your current timezone"
+#~ msgstr "Va¹a trenutna vremenska zona"
+
+#~ msgid "Reply Citation Options"
+#~ msgstr "Opcije citiranja odgovora"
+
+#~ msgid "Reply Citation Style"
+#~ msgstr "Stil citiranja odgovora"
+
+#~ msgid "AUTHOR Said"
+#~ msgstr "AUTHOR je rekao"
+
+#~ msgid "User-Defined"
+#~ msgstr "Korisnièki definirano"
+
+#~ msgid "User-Defined Citation Start"
+#~ msgstr "Korisnièki definirani poèetak citata"
+
+#~ msgid "User-Defined Citation End"
+#~ msgstr "Korisnièki definiran kraj citata"
+
+#~ msgid "Prefix Signature with '-- ' Line"
+#~ msgstr "Poèni poptips s '-- ' linijom"
+
+#~ msgid "35 min."
+#~ msgstr "35 min."
+
+#~ msgid "Mofify a Server"
+#~ msgstr "Modificirajte poslu¾itelj"
+
+#~ msgid "Message details"
+#~ msgstr "Detalji poruke"
+
+#~ msgid "(local media)"
+#~ msgstr "Lokalna zvuèna datoteka:"
+
+#~ msgid "I tried to execute '%s', but it returned:"
+#~ msgstr "Poiku¹ao sam izvr¹iti '%s' ali sam dobio kao odgovor:"
+
+#~ msgid "SquirrelSpell is misconfigured."
+#~ msgstr "SquirrelSpell nije ispravno konfiguriran."
+
+#~ msgid "SquirrelSpell Results"
+#~ msgstr "Rezultet provjere pravopisa"
+
+#~ msgid "Spellcheck completed. Commit changes?"
+#~ msgstr "Provjera pravopisa je gotova. Prihvaèate promjene?"
+
+#~ msgid "Now saving your personal dictionary... Please wait."
+#~ msgstr "Trenutno snimam va¹ osoni rjeènik... Molim vas da prièekate."
+
+#~ msgid "Found %s errors"
+#~ msgstr "Pronaðeno je %s gre¹aka"
+
+#~ msgid "Line with an error:"
+#~ msgstr "Linije s gre¹kom:"
+
+#~ msgid "Suggestions:"
+#~ msgstr "Sugeriramo:"
+
+#~ msgid "Suggestions"
+#~ msgstr "Sugeriramo"
+
+#~ msgid "Change to:"
+#~ msgstr "Promjeni u:"
+
+#~ msgid "Occurs times:"
+#~ msgstr "Broj pojavljivanja:"
+
+#~ msgid "Change this word"
+#~ msgstr "Promijeni ovu rijeè"
+
+#~ msgid "Change"
+#~ msgstr "Promijeni"
+
+#~ msgid "Change ALL occurances of this word"
+#~ msgstr "Promijeni SVA pojavljivanja ove rijeèi"
+
+#~ msgid "Ignore this word"
+#~ msgstr "Ignoriraj ovu rijeè"
+
+#~ msgid "Ignore ALL occurances this word"
+#~ msgstr "Ignoriraj SVA pojavljivanja ove rijeèi"
+
+#~ msgid "Add this word to your personal dictionary"
+#~ msgstr "Dodaj ovu rijeè u osobni rjeènik"
+
+#~ msgid "The spellcheck is not finished. Really close and commit changes?"
+#~ msgstr "Provjera pravopisa nije zavr¹ena. Sigurno ¾elite zavr¹iti i prihvatiti dosada¹nje promjene?"
+
+#~ msgid "The spellcheck is not finished. Really close and discard changes?"
+#~ msgstr "Provjera pravopisa nije zavr¹ena. Sigurno ¾elite zavr¹iti i odustati od dosada¹njih promjena?"
+
+#~ msgid "Dictionary Erased"
+#~ msgstr "Rjeènik je obrisan"
+
+#~ msgid ""
+#~ "Your personal dictionary was erased. Please close this window and click "
+#~ "\"Check Spelling\" button again to start your spellcheck over."
+#~ msgstr "Va¹ osobni rjeènik uspje¹no je obrisan. Molim vas da zatvorite prozor i ponovnim pritiskom na botun \"Provjera pravopisa\" pokrenete provjeru pravopisa."
+
+#~ msgid ""
+#~ "Your personal dictionary was re-encrypted successfully. Now return to the "
+#~ "&quot;SpellChecker options&quot; menu and make your selection again."
+#~ msgstr "Va¹ osobni rjeènik je uspje¹no rekriptiran. Vratite se na meni  &quot;Opcije provjere pravopisa&quot; i ponovite odabir."
+
+#~ msgid ""
+#~ "Your personal dictionary was re-encrypted successfully. Please close this "
+#~ "window and click \"Check Spelling\" button again to start your spellcheck "
+#~ "over."
+#~ msgstr "Va¹ osobni rjeènik uspje¹no je rekriptiran. Molim vas da zatvorite prozor i ponovnim pritiskom na botun \"Provjera pravopisa\" pokrenete provjeru pravopisa."
+
+#~ msgid "Dictionary re-encrypted"
+#~ msgstr "Rjeènik je rekriptiran"
+
+#~ msgid ""
+#~ "Your personal dictionary has been <strong>encrypted</strong> and is now "
+#~ "stored in an <strong>encrypted format</strong>."
+#~ msgstr "Va¹ osobni rjeènik je <strong>kriptiran</strong> i biti æe pohranjen u <strong>kriptiranom formatu</strong>."
+
+#~ msgid ""
+#~ "Your personal dictionary has been <strong>decrypted</strong> and is now "
+#~ "stored as <strong>clear text</strong>."
+#~ msgstr "Va¹ osobni rjeènik je <strong>dekriptiran</strong> i biti æe pohranjen kao <strong>obièan tekst</strong>."
+
+#~ msgid "Please check any words you wish to delete from your dictionary."
+#~ msgstr "Molimo vas da provjerite rijeèi koje ¾elite obrisati iz rjeènika."
+
+#~ msgid "Please make your selection first."
+#~ msgstr "Prvo odaberite ne¹to."
+
+#~ msgid ""
+#~ "This will encrypt your personal dictionary and store it in an encrypted "
+#~ "format. Proceed?"
+#~ msgstr "Ovim æete kriptirati osobni rjeènik i spremiti ga u kriptiranom obliku. Da nastavim?"
+
+#~ msgid ""
+#~ "This will decrypt your personal dictionary and store it in a clear-text "
+#~ "format. Proceed?"
+#~ msgstr "Ovime æete dekriptirati osobni rjeènik i spremiti ga u èistom tekstovnom obliku. Da nastavim?"
+
+#~ msgid ""
+#~ "<p>Your personal dictionary is <strong>currently encrypted</strong>. This "
+#~ "helps protect your privacy in case the web-mail system gets compromized "
+#~ "and your personal dictionary ends up stolen. It is currently encrypted "
+#~ "with the password you use to access your mailbox, making it hard for "
+#~ "anyone to see what is stored in your personal dictionary.</p> "
+#~ "<p><strong>ATTENTION:</strong> If you forget your password, your personal "
+#~ "dictionary will become unaccessible, since it can no longer be decrypted. "
+#~ "If you change your mailbox password, SquirrelSpell will recognize it and "
+#~ "prompt you for your old password in order to re-encrypt the dictionary "
+#~ "with a new key.</p>"
+#~ msgstr "<p>Va¹ osobni rjeènik je <strong>trenutno kriptiran</strong>. Kriptiranje poma¾e u za¹titi va¹e privatnosti u sluèaju da web-mail sustav bude kompromitiran i va¹ osobni rjeènik ukraden. Trenutno je kriptiran sa zaporkom koja se koristi za pristup va¹em pretincu tako da ne mo¾e bilo vidjeti sadr¾aj va¹eg osobnog rjeènika.</p> <p><strong>PA®NJA:</strong> Ukoliko zaboravite va¹u zaporku, va¹ osobni rjeènik biti æe nedostupan i neæete ga vi¹e moæi dekriptirati. Promijenite li zaporku pretinca, SquirrelSpell æe prepoznati promjenu i upitati vas za staru zaporku da bi mogao kriptirati rjeènik s novom zaporkom.</p>"
+
+#~ msgid ""
+#~ "Please decrypt my personal dictionary and store it in a clear-text format."
+#~ msgstr "Dekriptiraj osobni rjeènik i spremi ga u èistom tekstovnom obliku."
+
+#~ msgid "Change crypto settings"
+#~ msgstr "Promijeni kripto postavke"
+
+#~ msgid ""
+#~ "<p>Your personal dictionary is <strong>currently not encrypted</strong>. "
+#~ "You may wish to encrypt your personal dictionary to protect your privacy "
+#~ "in case the webmail system gets compromized and your personal dictionary "
+#~ "file gets stolen. When encrypted, the file's contents look garbled and "
+#~ "are hard to decrypt without knowing the correct key (which is your "
+#~ "mailbox password).</p> <strong>ATTENTION:</strong> If you decide to "
+#~ "encrypt your personal dictionary, you must remember that it gets &quot;"
+#~ "hashed&quot; with your mailbox password. If you forget your mailbox "
+#~ "password and the administrator changes it to a new value, your personal "
+#~ "dictionary will become useless and will have to be created anew. However, "
+#~ "if you or your system administrator change your mailbox password but you "
+#~ "still have the old password at hand, you will be able to enter the old "
+#~ "key to re-encrypt the dictionary with the new value.</p>"
+#~ msgstr "<p>Va¹ osobni rjeènik <strong>trenutno nije kriptiran</strong>. Mo¾ete kriptirati osobni rjeènik radi za¹tite privatnosti u sluèaju da web-mail sustav bude kompromitiran i va¹ osobni rjeènik ukraden. Kriptirani sadr¾aj je te¹ko dekriptirati bez ispravnog kljuèa (zaporke va¹eg pretinca).</p> <p><strong>PA®NJA:</strong> Ako odluèite kriptirati osobni rjeènik morate zapamtiti da æe biti kriptiran s va¹om zaporkom. Zaboravite li zaporku i administrator vam dodijeli novu, va¹ osobni rjeènik biti æe neupotrebljiv i morati æete stvoriti novi. Ukoliko vam administrator promijeni zaporku a stara vam je poznata, moæi æete unijeti staru radi ponovnog kriptiranja rjeènika novom zaporkom. </p>"
+
+#~ msgid ""
+#~ "Please encrypt my personal dictionary and store it in an encrypted format."
+#~ msgstr "Kriptiraj osobni rjeènik i spremi ga u kriptiranom formatu."
+
+#~ msgid "Deleting the following entries from <strong>%s</strong> dictionary:"
+#~ msgstr "Obri¹i slijedeæe zapise iz <strong>%s</strong> rjeènika:"
+
+#~ msgid "Please wait, communicating with the server..."
+#~ msgstr "Molim prièekajte, komuniciram s poslu¾iteljem..."
+
+#~ msgid ""
+#~ "Please choose which dictionary you would like to use to spellcheck this "
+#~ "message:"
+#~ msgstr "Molim odaberite rjeènik koji ¾elite koristiti za provjeru pravopisa ove poruke:"
+
+#~ msgid "SquirrelSpell Initiating"
+#~ msgstr "Inicijalizacija SquirrelSpell-a"
+
+#~ msgid ""
+#~ "Settings adjusted to: <strong>%s</strong> with <strong>%s</strong> as "
+#~ "default dictionary."
+#~ msgstr "Izmijenjene postavke za <strong>%s</strong>, sa <strong>%s</strong> kao poèetnim rjeènikom."
+
+#~ msgid ""
+#~ "Using <strong>%s</strong> dictionary (system default) for spellcheck."
+#~ msgstr "Koristi <strong>%s</strong> rjeènik za provjeru pravopisa."
+
+#~ msgid "International Dictionaries Preferences Updated"
+#~ msgstr "A¾urirane su postavke rjeènika"
+
+#~ msgid ""
+#~ "Please check any available international dictionaries which you would "
+#~ "like to use when spellchecking:"
+#~ msgstr "Provjerite je li dostupan rjeènik koji ¾elite koristiti prilikom provjere pravopisa:"
+
+#~ msgid "Make this dictionary my default selection:"
+#~ msgstr "Ovaj æe rjeènik biti poèetni izbor:"
+
+#~ msgid "Make these changes"
+#~ msgstr "Izvr¹i izmjene"
+
+#~ msgid "Please choose which options you wish to set up:"
+#~ msgstr "Odaberite postavke koje ¾elite izmijeniti:"
+
+#~ msgid "Set up international dictionaries"
+#~ msgstr "Postavite rjeènik"
+
+#~ msgid "Encrypt or decrypt your personal dictionary"
+#~ msgstr "Kriptirajte i dekriptirajte osobni rjeènik"
+
+#~ msgid "SquirrelSpell Options Menu"
+#~ msgstr "Menu postavki SquirrelSpell-a"
+
+#~ msgid ""
+#~ "10 language pairs, maximum of 25 kilobytes translated, powered by Systran"
+#~ msgstr "10 jeziènih parova, do 25 kB prevedenih znakova, powered by Systran"
+
+#~ msgid "Delivery error report"
+#~ msgstr "Izvje¹taj o gre¹kama neisporuèenih poruka"
+
+#~ msgid "Undelivered Message Headers"
+#~ msgstr "Zaglavlja neisporuèenih poruka"
