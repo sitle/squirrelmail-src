@@ -20,6 +20,9 @@ Version 1.4.1 -- CVS
     (#742705).
   - Fixed infinite loop in parseAddress on invalid mailadress (#742584).
   - Added Welsh translation.
+  - Fixed error with appending sent mail to sent folder when one wasn't set, or user
+    preferred not to append the sent mail.
+  - Updated plugin documentation.
 
 Version 1.4.0 -- 3 April 2003
 -----------------------------
