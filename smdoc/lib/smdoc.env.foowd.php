@@ -10,7 +10,7 @@
  */
 
 define('FOOWD_CLASS_NAME', 'smdoc');
-include_once(SM_PATH . 'env.foowd.php');
+include_once(SM_DIR . 'env.foowd.php');
 
 /**
  * The SMDoc Foowd environment class.
@@ -40,7 +40,7 @@ class smdoc extends foowd
     $this->debug = FALSE;
     if ( $settings['debug']['debug_enabled'] )
     {
-      require_once(SM_PATH . 'smdoc.env.debug.php');
+      require_once(SM_DIR . 'smdoc.env.debug.php');
       $this->debug = new smdoc_debug($this);
     }
 
@@ -49,13 +49,13 @@ class smdoc extends foowd
     /*
      * Initialize Database connection
      */
-    require_once(SM_PATH . 'smdoc.env.database.php');
+    require_once(SM_DIR . 'smdoc.env.database.php');
     $this->database = new smdoc_db($this);
 
     /*
      * Initialize template
      */
-    require_once(SM_PATH . 'env.template.php');
+    require_once(SM_DIR . 'env.template.php');
     $this->template = new foowd_template($this);
     $this->template->template_dir = $settings['template']['template_dir'];
     $this->template->assign_by_ref('foowd', $this);
@@ -63,13 +63,13 @@ class smdoc extends foowd
     /*
      * User group initialization
      */
-    require_once(SM_PATH . 'smdoc.class.group.php');
+    require_once(SM_DIR . 'smdoc.class.group.php');
     $this->groups = new smdoc_group($this);
 
     /*
      * Get current User
      */
-    require_once(SM_PATH . 'smdoc.class.user.php');
+    require_once(SM_DIR . 'smdoc.class.user.php');
     $this->user = smdoc_user::factory($this);
 
     $this->track();

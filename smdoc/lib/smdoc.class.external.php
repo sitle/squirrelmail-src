@@ -56,7 +56,7 @@ class smdoc_external extends foowd_object {
         $this->updatorid = 0;
         $this->updatorName = 'System';
         $this->url = getURI(array('classid' => EXTERNAL_CLASS_ID,
-                                  'objectid' => $objectid));
+                                  'objectid' => $objectid), FALSE);
 		
 		$this->title = htmlspecialchars($EXTERNAL_RESOURCES[$objectid]['title']);
 

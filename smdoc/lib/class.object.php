@@ -41,7 +41,6 @@ setPermission('foowd_object', 'object', 'admin', 'Gods');
 setPermission('foowd_object', 'object', 'revert', 'Gods');
 setPermission('foowd_object', 'object', 'delete', 'Gods');
 setPermission('foowd_object', 'object', 'clone', 'Gods');
-setPermission('foowd_object', 'object', 'permissions', 'Gods');
 
 /* Class descriptor */
 setClassMeta('foowd_object', 'Base Object');
@@ -301,6 +300,7 @@ class foowd_object {
     unset($returnArray['foowd_vars_meta']); // member variable meta data
     unset($returnArray['foowd_indexes']); // object indexes
     unset($returnArray['foowd_original_access_vars']); // indexes used to load object
+    unset($returnArray['foowd_primary_key']); // indices used as primary key for save/update/delete
     return array_keys($returnArray);
   }
 
@@ -336,6 +336,8 @@ class foowd_object {
     $this->foowd_original_access_vars['version'] = $this->version;
     $this->foowd_original_access_vars['classid'] = $this->classid;
     $this->foowd_original_access_vars['workspaceid'] = $this->workspaceid;
+// Default primary key
+    $this->foowd_primary_key = array('objectid','version','classid','workspaceid');
   }
 
   /**
@@ -555,7 +557,8 @@ class foowd_object {
     if ($result) {
       $this->foowd_changed = FALSE;
     }
-    $this->foowd->track(); return $result;
+    $this->foowd->track(); 
+    return $result;
   }
 
   /**
@@ -566,9 +569,11 @@ class foowd_object {
   function delete() { // remove all versions of an object from the database
     $this->foowd->track('foowd_object->delete');
     if ($this->foowd->database->delete($this)) {
-      $this->foowd->track(); return TRUE;
+      $this->foowd->track(); 
+      return TRUE;
     } else {
-      $this->foowd->track(); return FALSE;
+      $this->foowd->track(); 
+      return FALSE;
     }
   }
 
@@ -597,9 +602,9 @@ class foowd_object {
     unset($obj['foowd_indexes']);
     unset($obj['foowd_original_access_vars']);
 
-    include_once(FOOWD_DIR.'input.textarray.php');
-    include_once(FOOWD_DIR.'input.textarea.php');
-    include_once(FOOWD_DIR.'input.textbox.php');
+    include_once(INPUT_DIR.'input.textarray.php');
+    include_once(INPUT_DIR.'input.textarea.php');
+    include_once(INPUT_DIR.'input.textbox.php');
 
     foreach ($obj as $memberName => $memberVar) {
       if (isset($this->foowd_vars_meta[$memberName])) {
@@ -678,7 +683,7 @@ class foowd_object {
     $groups = $this->foowd->getUserGroups();
     $changed = FALSE;
 
-    include_once(FOOWD_DIR.'input.dropdown.php');
+    include_once(INPUT_DIR.'input.dropdown.php');
 
     foreach (get_class_methods($this) as $methodName) {
       if (substr($methodName, 0, 7) == 'method_') {
@@ -796,9 +801,9 @@ class foowd_object {
   function class_create(&$foowd, $className) {
     $foowd->track('foowd_object->class_create');
 
-    include_once(FOOWD_DIR.'input.querystring.php');
-    include_once(FOOWD_DIR.'input.form.php');
-    include_once(FOOWD_DIR.'input.textbox.php');
+    include_once(INPUT_DIR.'input.querystring.php');
+    include_once(INPUT_DIR.'input.form.php');
+    include_once(INPUT_DIR.'input.textbox.php');
 
     $queryTitle = new input_querystring('title', REGEX_TITLE, NULL);
     $createForm = new input_form('createForm', NULL, 'POST', _("Create"), NULL);
@@ -879,7 +884,7 @@ class foowd_object {
   function method_admin() {
     $this->foowd->track('foowd_object->method_admin');
 
-    include_once(FOOWD_DIR.'input.form.php');
+    include_once(INPUT_DIR.'input.form.php');
 
     $adminForm = new input_form('adminForm', NULL, 'POST');
     $this->addFormItemsToAdminForm($adminForm);
@@ -897,7 +902,7 @@ class foowd_object {
   function method_revert() {
     $this->foowd->track('foowd_object->method_revert');
 
-    include_once(FOOWD_DIR.'input.querystring.php');
+    include_once(INPUT_DIR.'input.querystring.php');
 
     $confirm = new input_querystring('confirm', '/^[y]$/', FALSE);
     if ($confirm->value) {
@@ -922,7 +927,7 @@ class foowd_object {
   function method_delete() {
     $this->foowd->track('foowd_object->method_delete');
 
-    include_once(FOOWD_DIR.'input.querystring.php');
+    include_once(INPUT_DIR.'input.querystring.php');
 
     $confirm = new input_querystring('confirm', '/^[y]$/', FALSE);
     if ($confirm->value) {
@@ -949,9 +954,9 @@ class foowd_object {
   function method_clone() {
     $this->foowd->track('foowd_object->method_clone');
 
-    include_once(FOOWD_DIR.'input.form.php');
-    include_once(FOOWD_DIR.'input.textbox.php');
-    include_once(FOOWD_DIR.'input.dropdown.php');
+    include_once(INPUT_DIR.'input.form.php');
+    include_once(INPUT_DIR.'input.textbox.php');
+    include_once(INPUT_DIR.'input.dropdown.php');
 
     $cloneForm = new input_form('cloneForm', NULL, 'POST', 'Clone Object', NULL);
     $cloneTitle = new input_textbox('cloneTitle', REGEX_TITLE, $this->getTitle(), 'Clone Title');
@@ -984,7 +989,7 @@ class foowd_object {
   function method_permissions() {
     $this->foowd->track('foowd_object->method_permissions');
 
-    include_once(FOOWD_DIR.'input.form.php');
+    include_once(INPUT_DIR.'input.form.php');
 
     $permissionForm = new input_form('permissionForm', NULL, 'POST');
     $changed = $this->addPermissionDropdowns($permissionForm);

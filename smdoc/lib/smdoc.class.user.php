@@ -14,11 +14,10 @@ setConst('USER_CLASS_ID', META_SMDOC_USER_CLASS_ID);
 setConst('USER_CLASS_NAME', constant('META_'. USER_CLASS_ID .'_CLASSNAME'));
 setConst('USER_CLASS', 'smdoc_user');
 
-setPermission('smdoc_user', 'object', 'xml', 'Nobody'); 
 setPermission('smdoc_user', 'object', 'clone', 'Nobody');
 
-include_once(SM_PATH . 'class.anonuser.php');
-include_once(SM_PATH . 'class.user.php');
+include_once(SM_DIR . 'class.anonuser.php');
+include_once(SM_DIR . 'class.user.php');
 
 /**
  * The smdoc extended user class.
@@ -839,14 +838,16 @@ class smdoc_user extends foowd_user
     $foowd->track('smdoc_user->class_create');
 
     include_once($foowd->path.'/input.textbox.php');
-    include_once(SM_PATH.'smdoc.input.password.php');
+    include_once(SM_DIR.'smdoc.input.password.php');
     include_once($foowd->path.'/input.form.php');
     
     $queryTitle = new input_querystring('title', REGEX_TITLE, NULL);
     $createUsername = new input_textbox('createUsername', REGEX_TITLE, $queryTitle->value, _("Username").':');
+
     $verifyPassword = new input_passwordbox('verifyPassword', REGEX_PASSWORD, NULL, _("Verify").':');
-    $createPassword = new input_verify_passwordbox('createPassword', $verifyPassword, REGEX_PASSWORD, NULL, _("Password").':');
-    $createEmail = new input_textbox('createEmail', REGEX_EMAIL, NULL, _("Email Address").':', NULL, NULL, NULL, FALSE);
+    $createPassword = new input_passwordbox('createPassword', REGEX_PASSWORD, NULL, _("Password").':', $verifyPassword);
+
+    $createEmail = new input_textbox('createEmail', REGEX_EMAIL, NULL, _("Email Address").':', FALSE);
     $createForm = new input_form('createForm', NULL, 'POST', _("Create"), _("Reset"));
 
     if ( $createForm->submitted() &&  $createUsername->value != '' )
@@ -867,7 +868,8 @@ class smdoc_user extends foowd_user
           $url = getURI(array('class' => $className,
                               'method' => 'login',
                               'ok' => USER_CREATE_OK,
-                              'username' => htmlspecialchars($createUsername->value)));
+                              'username' => htmlspecialchars($createUsername->value)),
+                        FALSE);
           header('Location: ' . $url);
           return NULL;
         case -1: 
@@ -935,7 +937,7 @@ class smdoc_user extends foowd_user
         $ok = ( $result == 0 ) ? USER_LOGIN_OK : USER_LOGIN_PREV;
         $url = getURI(array('objectid' => $foowd->user->objectid, 
                             'classid' => USER_CLASS_ID,
-                            'ok' => $ok));
+                            'ok' => $ok), FALSE);
         $foowd->track();
         header('Location: ' . $url);
       case 1:
@@ -948,7 +950,7 @@ class smdoc_user extends foowd_user
         $return['form'] = &$loginForm;
         break;
       case 8:
-        $url =  getURI(array('error' => USER_LOGIN_BAD_HOST));
+        $url =  getURI(array('error' => USER_LOGIN_BAD_HOST), FALSE);
         $foowd->track();
         header('Location: ' . $url);
     }
@@ -975,7 +977,7 @@ class smdoc_user extends foowd_user
       case 3:
         $url =  getURI(array('class'  => 'smdoc_user',
                              'method' => 'login',
-                             'ok'     => USER_LOGOUT_OK));
+                             'ok'     => USER_LOGOUT_OK), FALSE);
         header('Location: ' . $url);
         return NULL;
     }
@@ -999,7 +1001,9 @@ class smdoc_user extends foowd_user
     $return['lastvisit'] =  $this->updated;
     if ($foowd->user->objectid == $this->objectid) 
     {
-      $return['update'] = getURI(array('objectid' => $this->objectid, 'classid' => $this->classid, 'method' => 'update'));
+      $return['update'] = getURI(array('objectid' => $this->objectid, 
+                                       'classid' => $this->classid, 
+                                       'method' => 'update'));
       $return['SM_version'] = $this->smver_to_string();
       $return['IMAP_server'] = $this->imap_to_string();
       $return['SMTP_server'] = $this->smtp_to_string();
@@ -1031,16 +1035,16 @@ class smdoc_user extends foowd_user
     include_once($foowd->path.'/input.form.php');
     include_once($foowd->path.'/input.dropdown.php');
     include_once($foowd->path.'/input.textbox.php');
-    include_once(SM_PATH.'smdoc.input.checkbox.php');
-    include_once(SM_PATH.'smdoc.input.password.php');
+    include_once(SM_DIR.'smdoc.input.checkbox.php');
+    include_once(SM_DIR.'smdoc.input.password.php');
     
     $updateForm = new input_form('updateForm', NULL, 'POST', _("Update"));
 
-    $email = new input_textbox('email', REGEX_EMAIL, $this->email, _("Email").': ', NULL, NULL, NULL, FALSE);
+    $email = new input_textbox('email', REGEX_EMAIL, $this->email, _("Email").': ', FALSE);
     $showEmail = new input_smdoc_checkbox('show_email', $this->show_email, _("Share Email").': ');
 
-    $verify = new input_passwordbox('verify', REGEX_PASSWORD, '', _("Verify").': ', NULL, NULL, NULL, FALSE);
-    $password = new input_verify_passwordbox('password', $verify, REGEX_PASSWORD, '', _("Change Password").': ', NULL, NULL, NULL, FALSE);
+    $verify   = new input_passwordbox('verify', REGEX_PASSWORD, '', _("Verify").': ', NULL, FALSE);
+    $password = new input_passwordbox('password', REGEX_PASSWORD, '', _("Change Password").': ', $verify, FALSE);
 
     $nicks = $this->IM_nicks;
     if ( !array_key_exists('MSN', $nicks) ) $nicks['MSN'] = '';
@@ -1049,12 +1053,12 @@ class smdoc_user extends foowd_user
     if ( !array_key_exists('Y!', $nicks) )  $nicks['Y!'] = '';
     if ( !array_key_exists('WWW', $nicks) ) $nicks['WWW'] = '';
 
-    $ircNick = new input_textbox('irc', $this->foowd_vars_meta['irc'], $this->IRC_nick, 'IRC: ', NULL, NULL, NULL, FALSE);
-    $msnNick = new input_textbox('msn', $this->foowd_vars_meta['msn'], $nicks['MSN'], 'MSN: ', NULL, NULL, NULL, FALSE);
-    $aimNick = new input_textbox('aim', $this->foowd_vars_meta['aim'], $nicks['AIM'], 'AIM: ', NULL, NULL, NULL, FALSE);
-    $icqNick = new input_textbox('icq', $this->foowd_vars_meta['icq'], $nicks['ICQ'], 'ICQ: ', NULL, NULL, NULL, FALSE);
-    $yahooNick = new input_textbox('ym', $this->foowd_vars_meta['yahoo'], $nicks['Y!'], 'Y!: ', NULL, NULL, NULL, FALSE);
-    $www     = new input_textbox('www', $this->foowd_vars_meta['www'], $nicks['WWW'], 'WWW:', NULL, NULL, NULL, FALSE);
+    $ircNick = new input_textbox('irc', $this->foowd_vars_meta['irc'], $this->IRC_nick, 'IRC: ', FALSE);
+    $msnNick = new input_textbox('msn', $this->foowd_vars_meta['msn'], $nicks['MSN'], 'MSN: ', FALSE);
+    $aimNick = new input_textbox('aim', $this->foowd_vars_meta['aim'], $nicks['AIM'], 'AIM: ', FALSE);
+    $icqNick = new input_textbox('icq', $this->foowd_vars_meta['icq'], $nicks['ICQ'], 'ICQ: ', FALSE);
+    $yahooNick = new input_textbox('ym', $this->foowd_vars_meta['yahoo'], $nicks['Y!'], 'Y!: ', FALSE);
+    $www     = new input_textbox('www', $this->foowd_vars_meta['www'], $nicks['WWW'], 'WWW:', FALSE);
     $smtpServer = new input_dropdown('smtp', $this->SMTP_server, $this->smtp_to_string(true), _("SMTP Server:"));
     $imapServer = new input_dropdown('imap', $this->IMAP_server, $this->imap_to_string(true), _("IMAP Server:"));
     $smVersion  = new input_dropdown('smver', $this->SM_version, $this->smver_to_string(true), _("SquirrelMail Version:"));
@@ -1107,7 +1111,7 @@ class smdoc_user extends foowd_user
       case 1:
         $url = getURI(array('objectid' => $foowd->user->objectid, 
                             'classid' => USER_CLASS_ID,
-                            'ok' => USER_UPDATE_OK));
+                            'ok' => USER_UPDATE_OK), FALSE);
         header('Location: ' . $url);
         break;
       case 2: 

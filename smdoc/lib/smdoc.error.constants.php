@@ -9,6 +9,14 @@
  * $Id$
  */
 
+function getStatusStrings(&$ok, &$error)
+{
+  if ( isset($ok) && defined($ok.'_MSG') )
+    $ok = constant($ok.'_MSG');
+  elseif ( isset($error) && defined($error.'_MSG'))
+    $error = constant($error.'_MSG');
+}
+
 define('INVALID_METHOD', 1);
 define('1_MSG', _("Called invalid or disabled method"));
 
@@ -24,11 +32,21 @@ define('4_MSG', _("Your host is not valid for connecting as this user."));
 define('USER_LOGOUT_OK', 5);
 define('5_MSG', _("You are now logged out."));
 
+
 define('FORM_FILL_FIELDS', 6);
 define('6_MSG', _("Required fields are marked with an *"));
 
 define('USER_CREATE_OK', 7);
 define('7_MSG', _("User created and saved."));
 
-define('USER_UPDATE_OK', 8);
-define('8_MSG', _("User updated."));
+define('OBJECT_CREATE_OK', 8);
+define('8_MSG', -("Object created and saved."));
+
+define('USER_UPDATE_OK', 9);
+define('9_MSG', _("User updated."));
+
+define('OBJECT_UPDATE_OK', 10);
+define('10_MSG', _("Object updated."));
+
+define('OBJECT_UPDATE_CANCEL', 11);
+define('11_MSG', _("Action cancelled."));
