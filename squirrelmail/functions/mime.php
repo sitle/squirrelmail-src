@@ -672,7 +672,7 @@
             $replace = ereg_replace("_", " ", $res[3]);
 	    // Convert lowercase Quoted Printable to uppercase for
 	    // quoted_printable_decode to understand it.
-	    while (ereg("(=([0-9][abcdef])|([abcdef][0-9])|([abcdef][abcdef]))", $replace, $res)) {
+	    while (ereg("(=(([0-9][abcdef])|([abcdef][0-9])|([abcdef][abcdef])))", $replace, $res)) {
 	       $replace = str_replace($res[1], strtoupper($res[1]), $replace);
 	    }
             $replace = quoted_printable_decode($replace);
@@ -680,9 +680,10 @@
 
          $replace = charset_decode ($res[1], $replace);
 
-         $string = eregi_replace
-            ('=\\?([^?]+)\\?(q|b)\\?([^?]+)\\?=',
+         // Remove the name of the character set.
+         $string = eregi_replace ('=\\?([^?]+)\\?(q|b)\\?([^?]+)\\?=',
              $replace, $string);
+
          // In case there should be more encoding in the string: recurse
          return (decodeHeader($string));
       } else         
@@ -697,7 +698,6 @@
 
       // Encode only if the string contains 8-bit characters or =?
       if (ereg("([\200-\377]|=\\?)", $string)) {
-         $newstring = "=?$default_charset?Q?";
          
          // First the special characters
          $string = str_replace("=", "=3D", $string);
@@ -709,7 +709,6 @@
 	    $replace = chr($ch);
 	    $insert = sprintf("=%02X", $ch);
             $string = str_replace($replace, $insert, $string);
-	    $ch++;
          }
 
          $newstring = "=?$default_charset?Q?".$string."?=";
