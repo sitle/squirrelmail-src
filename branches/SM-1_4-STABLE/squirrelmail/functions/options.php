@@ -171,9 +171,6 @@ class SquirrelOption {
                        . '</font>';
         }
 
-        /* Add the script for this option. */
-        $result .= $this->script;
-
         /* Now, return the created widget. */
         return ($result);
     }
@@ -197,13 +194,13 @@ class SquirrelOption {
                 $width = 25;
         }
 
-        $result = "<input name=\"new_$this->name\" value=\"$this->value\" size=\"$width\">";
+        $result = "<input name=\"new_$this->name\" value=\"$this->value\" size=\"$width\" $this->script>";
         return ($result);
     }
 
     function createWidget_StrList() {
         /* Begin the select tag. */
-        $result = "<select name=\"new_$this->name\">";
+        $result = "<select name=\"new_$this->name\" $this->script>";
 
         /* Add each possible value to the select list. */
         foreach ($this->possible_values as $real_value => $disp_value) {
@@ -231,7 +228,7 @@ class SquirrelOption {
         $selected = array(strtolower($this->value));
 
         /* Begin the select tag. */
-        $result = "<select name=\"new_$this->name\">";
+        $result = "<select name=\"new_$this->name\" $this->script>";
 
         /* Add each possible value to the select list. */
         foreach ($this->possible_values as $real_value => $disp_value) {
@@ -269,20 +266,39 @@ class SquirrelOption {
             default: $rows = 5; $cols =  50;
         }
         $result = "<textarea name=\"new_$this->name\" rows=\"$rows\" "
-                . "cols=\"$cols\">$this->value</textarea>";
+                . "cols=\"$cols\" $this->script>$this->value</textarea>";
         return ($result);
     }
 
     function createWidget_Integer() {
 
-        return $this->createWidget_String();
-
+        global $javascript_on;
+ 
+        // add onChange javascript handler to a regular string widget
+        // which will strip out all non-numeric chars
+        if ($javascript_on)
+           return preg_replace('/>/', ' onChange="origVal=this.value; newVal=\'\'; '
+                    . 'for (i=0;i<origVal.length;i++) { if (origVal.charAt(i)>=\'0\' '
+                    . '&& origVal.charAt(i)<=\'9\') newVal += origVal.charAt(i); } '
+                    . 'this.value=newVal;">', $this->createWidget_String());
+        else
+           return $this->createWidget_String();
     }
 
     function createWidget_Float() {
         
-        return $this->createWidget_String();
-
+        global $javascript_on;
+ 
+        // add onChange javascript handler to a regular string widget
+        // which will strip out all non-numeric (period also OK) chars 
+        if ($javascript_on)
+           return preg_replace('/>/', ' onChange="origVal=this.value; newVal=\'\'; '
+                    . 'for (i=0;i<origVal.length;i++) { if ((origVal.charAt(i)>=\'0\' '
+                    . '&& origVal.charAt(i)<=\'9\') || origVal.charAt(i)==\'.\') '
+                    . 'newVal += origVal.charAt(i); } this.value=newVal;">'
+                , $this->createWidget_String());
+        else
+           return $this->createWidget_String();
     }
 
     function createWidget_Boolean() {
@@ -297,12 +313,12 @@ class SquirrelOption {
 
         /* Build the yes choice. */
         $yes_option = '<input type="radio" name="new_' . $this->name
-                    . '" value="' . SMPREF_YES . "\"$yes_chk>&nbsp;"
+                    . '" value="' . SMPREF_YES . "\"$yes_chk $this->script>&nbsp;"
                     . _("Yes");
 
         /* Build the no choice. */
         $no_option = '<input type="radio" name="new_' . $this->name
-                   . '" value="' . SMPREF_NO . "\"$no_chk>&nbsp;"
+                   . '" value="' . SMPREF_NO . "\"$no_chk $this->script>&nbsp;"
                    . _("No");
 
         /* Build and return the combined "boolean widget". */
@@ -312,7 +328,7 @@ class SquirrelOption {
 
     function createWidget_Hidden() {
         $result = '<input type="hidden" name="new_' . $this->name
-                . '" value="' . $this->value . '">';
+                . '" value="' . $this->value . ' ' . $this->script . '">';
         return ($result);
     }
 
