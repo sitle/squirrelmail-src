@@ -51,10 +51,13 @@
        $t['classid'] != USER_CLASS_ID )
   {
     $version = isset($t['version']) ? 'v. ' . $t['version'] . ', ' : '';
-    $lastUpdate = ' [ '. $version . _("Last Update") . ': '
-                  . date('Y/m/d, H:i T', $object->updated) . ' ] ';
-    if ( isset($t['workspaceid']) && $t['workspaceid'] != 0 )
-      $lastUpdate .= ' (' . getLink($foowd, $t['workspaceid']) . ')';
+    if ( $t['classid'] != ERROR_CLASS_ID )
+    {
+      $lastUpdate = ' [ '. $version . _("Last Update") . ': '
+                    . date('Y/m/d, H:i T', $object->updated) . ' ] ';
+      if ( isset($t['workspaceid']) && $t['workspaceid'] != 0 )
+        $lastUpdate .= ' (' . getLink($foowd, $t['workspaceid']) . ')';
+    }
   }
 
   if ( $method != 'view' )
