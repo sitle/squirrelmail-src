@@ -591,7 +591,36 @@ function sq_fwrite($fp, $string) {
 
         return $count;
 }
+/**
+ * Tests if string contains 8bit symbols.
+ *
+ * If charset is not set, function defaults to default_charset.
+ * $default_charset global must be set correctly if $charset is
+ * not used.
+ * @param string $string tested string
+ * @param string $charset charset used in a string
+ * @return bool true if 8bit symbols are detected
+ * @since 1.4.4
+ */
+function sq_is8bit($string,$charset='') {
+    global $default_charset;
 
+    if ($charset=='') $charset=$default_charset;
+
+    /**
+     * Don't use \240 in ranges. Sometimes RH 7.2 doesn't like it.
+     * Don't use \200-\237 for iso-8859-x charsets. This ranges
+     * stores control symbols in those charsets.
+     * Use preg_match instead of ereg in order to avoid problems
+     * with mbstring overloading
+     */
+    if (preg_match("/^iso-8859/i",$charset)) {
+        $needle='/\240|[\241-\377]/';
+    } else {
+        $needle='/[\200-\237]|\240|[\241-\377]/';
+    }
+    return preg_match("$needle",$string);
+}
 
 $PHP_SELF = php_self();
 ?>
