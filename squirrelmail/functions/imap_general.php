@@ -206,9 +206,36 @@ function sqimap_login ($username, $password, $imap_server_address, $imap_port, $
         }
         exit;
     }
+    if (1) {
+    // PLAIN disabled until I get around to adding logic to support conf.pl options 
+      // Can't use sqimap_run_command, since response can't include tags
+      $tag=sqimap_session_id(false);
+      $query=$tag . " AUTHENTICATE CRAM-MD5\r\n";
+      fputs($imap_stream,$query);
+      $answer=sqimap_fgets($imap_stream);
+	  // Trim the "+ " off the front
+      $response=explode(" ",$answer,3);
+      if ($response[0] == '+') {
+        // Got a challenge back
+        $challenge=$response[1];
+        $reply=cram_md5_response($username,$password,$challenge);
+        fputs($imap_stream,$reply);
+        $read=sqimap_fgets($imap_stream);
+        $results=explode(" ",$read,3);
+        $response=$results[1];
+        $message=$results[2];
+      } else {
+	    // Ideally, we fall back to plain gracefully.  For now, just log the failure.
+        error_log('IMAP server did not send a challenge to CRAM-MD5 request.',3,'/tmp/php.errors');
+		// Fake the response, so the error trap at the bottom will work
+		$response="IMAP server did not send a CRAM-MD5 challenge.";
+      }
 
-    $query = 'LOGIN "' . quoteIMAP($username) .  '" "' . quoteIMAP($password) . '"';
-    $read = sqimap_run_command ($imap_stream, $query, false, $response, $message);
+    } else {
+	  // Original PLAIN login code - can't happen right now
+      $query = 'LOGIN "' . quoteIMAP($username) .  '" "' . quoteIMAP($password) . '"';
+      $read = sqimap_run_command ($imap_stream, $query, false, $response, $message);
+    }
 
     /* If the connection was not successful, lets see why */
     if ($response != 'OK') {
