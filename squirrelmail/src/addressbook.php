@@ -6,7 +6,7 @@
  * Copyright (c) 1999-2004 The SquirrelMail Project Team
  * Licensed under the GNU GPL. For full terms see the file COPYING.
  *
- * Manage personal address book.
+ * Manage configured address books.
  *
  * @version $Id$
  * @package squirrelmail
@@ -81,6 +81,7 @@ function address_form($name, $submittext, $values = array()) {
                 addressbook_inp_field(_("Last name"),    'lastname', $name, 45, $values, '') .
                 addressbook_inp_field(_("First name"),  'firstname', $name, 45, $values, '') .
                 addressbook_inp_field(_("Additional info"), 'label', $name, 45, $values, '') .
+                list_writable_backends($name) .
                 html_tag( 'tr',
                     html_tag( 'td',
                         addSubmit($submittext, $name.'[SUBMIT]'),
@@ -95,6 +96,7 @@ function address_form($name, $submittext, $values = array()) {
                 addressbook_inp_field(_("First name"),  'firstname', $name, 45, $values, '') .
                 addressbook_inp_field(_("Last name"),    'lastname', $name, 45, $values, '') .
                 addressbook_inp_field(_("Additional info"), 'label', $name, 45, $values, '') .
+                list_writable_backends($name) .
                 html_tag( 'tr',
                     html_tag( 'td',
                         addSubmit($submittext, $name.'[SUBMIT]') ,
@@ -102,6 +104,43 @@ function address_form($name, $submittext, $values = array()) {
                     )
                 , 'center', '', 'border="0" cellpadding="1" width="90%"') ."\n";
     }
+}
+
+
+/**
+ * Provides list of writeable backends.
+ * Works only when address is added ($name='addaddr')
+ * @param string $name name of form
+ * @return string html formated backend field (select or hidden)
+ */
+function list_writable_backends($name) {
+    global $color, $abook;
+    if ( $name != 'addaddr' ) { return; }
+    $writeable_abook = 1;
+    if ( $abook->numbackends > 1 ) {
+        $backends = $abook->get_backend_list();
+        $writeable_abooks=array();
+        while (list($undef,$v) = each($backends)) {
+            if ($v->writeable) {
+                // add each backend to array
+                $writeable_abooks[$v->bnum]=$v->sname;
+                // save backend number
+                $writeable_abook=$v->bnum;
+            }
+        }
+        if (count($writeable_abooks)>1) {
+            // we have more than one writeable backend
+            $ret=addSelect('backend',$writeable_abooks,null,true);
+            return html_tag( 'tr',
+                             html_tag( 'td', _("Add to:"),'right', $color[4] ) .
+                             html_tag( 'td', $ret, 'left', $color[4] )) . "\n";
+        }
+    }
+    // Only one backend exists or is writeable.
+    return html_tag( 'tr',
+                     html_tag( 'td',
+                               addHidden('backend', $writeable_abook),
+                               'center', $color[4], 'colspan="2"')) . "\n";
 }
 
 /* Open addressbook, with error messages on but without LDAP (the *
@@ -377,8 +416,8 @@ if ($showaddrlist) {
                             '&nbsp;' ,
                             'center', '', 'valign="top" width="1%"' );
                 }
-                echo html_tag( 'td', '&nbsp;' . $row['nickname'] . '&nbsp;', 'left', '', 'valign="top" width="1%" nowrap' ) . 
-                    html_tag( 'td', '&nbsp;' . $row['lastname'] . ' ' . $row['firstname'] . '&nbsp;', 'left', '', 'valign="top" width="1%" nowrap' ) .
+                echo html_tag( 'td', '&nbsp;' . htmlspecialchars($row['nickname']) . '&nbsp;', 'left', '', 'valign="top" width="1%" nowrap' ) . 
+                    html_tag( 'td', '&nbsp;' . htmlspecialchars($row['lastname']) . ' ' . htmlspecialchars($row['firstname']) . '&nbsp;', 'left', '', 'valign="top" width="1%" nowrap' ) .
                     html_tag( 'td', '', 'left', '', 'valign="top" width="1%" nowrap' ) . '&nbsp;';
             } else {
                 echo html_tag( 'tr', '', '', $tr_bgcolor);
@@ -393,8 +432,8 @@ if ($showaddrlist) {
                             '&nbsp;' ,
                             'center', '', 'valign="top" width="1%"' );
                 }
-                echo html_tag( 'td', '&nbsp;' . $row['nickname'] . '&nbsp;', 'left', '', 'valign="top" width="1%" nowrap' ) .
-                    html_tag( 'td', '&nbsp;' . $row['name'] . '&nbsp;', 'left', '', 'valign="top" width="1%" nowrap' ) .
+                echo html_tag( 'td', '&nbsp;' . htmlspecialchars($row['nickname']) . '&nbsp;', 'left', '', 'valign="top" width="1%" nowrap' ) .
+                    html_tag( 'td', '&nbsp;' . htmlspecialchars($row['name']) . '&nbsp;', 'left', '', 'valign="top" width="1%" nowrap' ) .
                     html_tag( 'td', '', 'left', '', 'valign="top" width="1%" nowrap' ) . '&nbsp;';
             }
             $email = $abook->full_address($row);
