@@ -9,20 +9,23 @@
 </head>
 <?php
   $user =& $foowd->user;
-  if ( isset($t['success']) )
+
+  $status = new smdoc_input_form('status', NULL, NULL, NULL);
+  $status->getFormValue('ok', $ok);
+  $status->getFormValue('error', $error);
+  if ( $ok == NULL && isset($t['success']) )
     $ok = $t['success'];
-  elseif ( isset($t['failure']) )
+  elseif ( $error == NULL &&  isset($t['failure']) )
     $error = $t['failure'];
-  else {
-    $status = new smdoc_input_form('status', NULL, NULL, NULL);
-    $status->getFormValue('ok', $ok);
-    $status->getFormValue('error', $error);
-  }
+
+  if ( is_numeric($ok) )
+    $ok = getConst($ok . '_MSG');
+  if ( is_numeric($error) )
+    $error = getConst($error . '_MSG');
 
   foowd_translation::initialize($foowd, TRUE);
   $flag_links = foowd_translation::getLink($foowd);
   $loc_url = getURI(array());
-  $obj_url = getURI(array('objectid' => $object->objectid, 'classid' => $object->classid));
   $user_url = $loc_url . '?class='.USER_CLASS_NAME;
 ?>
 <body>
@@ -70,6 +73,11 @@
   <tr>
     <td class="titleblock" valign="bottom">
       <?php
+          if ( isset($object) )
+            $obj_url = getURI(array('objectid' => $object->objectid, 'classid' => $object->classid));
+          else
+            $t['showurl'] = false;
+
           if ( $t['showurl'] )
             echo '<a href="', $obj_url.'">'. $t['title'].'</a> ';
           else

@@ -97,7 +97,7 @@ class smdoc_error extends foowd_object {
         
         $return['title'] = $this->title;
         $return['failure'] = $this->errorString;
-        $return['body'] = '<p>An error has occurred, as indicated by the message above.</p>';
+        $return['body'] = '<p>'. _("An error has occurred"). ':</p><p>'. $this->errorString. '</p>';
 
 		$foowd->track();
         return $return;
