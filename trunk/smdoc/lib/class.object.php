@@ -362,7 +362,11 @@ class foowd_object
     }
 
     // Ensure that user has Permission to invoke method
-    $permission = $this->foowd->hasPermission(get_class($this), $methodName, 'object', $this);
+    $permission = $this->foowd->hasPermission(get_class($this), 
+                                              $methodName, 
+                                              'object', 
+                                              $this->permissions,
+                                              $this->creatorid);
 
     if ( !$permission )
     {
@@ -412,8 +416,10 @@ class foowd_object
       exit;
     }
 
-    $object = NULL;
-    $permission = $foowd->hasPermission($className, $methodName, 'class', $object);
+    $permission = $foowd->hasPermission($className, 
+                                        $methodName, 
+                                        'class');
+
     if ( !$permission )
     {
       $_SESSION['error'] = USER_NO_PERMISSION;

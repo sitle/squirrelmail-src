@@ -38,8 +38,7 @@ function show_news_body(&$foowd, $className, $method, &$user, &$object, &$t)
   if ( empty($t['newslist']) )
     echo '<h3>'._("No News Items Found").'</h3>';
 
-  $dummy=null;
-  if ( $foowd->hasPermission('smdoc_news', 'create', 'CLASS', $dummy) ) 
+  if ( $foowd->hasPermission('smdoc_news', 'create', 'CLASS') ) 
   {
     $uri_arr['class']='smdoc_news';
     $url = getURI($uri_arr);

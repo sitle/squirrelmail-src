@@ -75,6 +75,7 @@ if ( $fullIndex )
   $currentWorkspace = FALSE;
   $objid='objectid';
   $orderby = array('title', 'classid', 'version');
+  $limit = null;
 }
 else
 {
@@ -84,9 +85,9 @@ else
   $where['notlang'] = array('index' => 'classid', 'op' => '!=', 'value' => TRANSLATION_CLASS_ID);
   $currentWorkspace = TRUE;
   $objid = 'DISTINCT objectid';
-  $orderby = array('title', 'classid', 'workspaceid DESC', 'version');
+  $orderby = array('title', 'classid', 'workspaceid DESC', 'version DESC');
 }
-$indices = array( $objid,'classid','title','workspaceid','updated');
+$indices = array( $objid,'classid','title','workspaceid','updated','permissions');
  
 /*
  * standard doc information: additional indices, no special source table
@@ -104,7 +105,7 @@ if ( count($objects) > 0 )
   foreach ($objects as $object) 
   {
     // If viewer does not have permission to view this kind of object, skip it
-    if ( !$foowd->hasPermission(getClassName($object['classid']), 'view', 'object', $object) )
+    if ( !$foowd->hasPermission(getClassName($object['classid']), 'view', 'object', $object['permissions']) )
       continue;
 
     $list_objects[$i] = $object;

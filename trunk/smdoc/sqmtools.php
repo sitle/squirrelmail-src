@@ -31,7 +31,6 @@ require('config.php');
  */
 $foowd = new smdoc($foowd_parameters);
 $loc_url = getURI();
-$dummy = NULL;
 
 /* 
  * Links for classes user has permission to create instance of.. 
@@ -42,7 +41,7 @@ $classes = getFoowdClassNames();
 foreach ( $classes as $classid => $className )
 {
   if ( strpos($className, 'user') === false  &&   // NOT user classes
-       $foowd->hasPermission($className, 'create', 'CLASS', $obj) )
+       $foowd->hasPermission($className, 'create', 'CLASS') )
   {
     $create_list[$className] = getClassDescription($classid);
   }
@@ -54,9 +53,9 @@ $foowd->template->assign_by_ref('create_list', $create_list);
  * Admin links
  */
 $admin_link = array();
-if ( $foowd->hasPermission('smdoc_group_user','list','CLASS',$dummy) )
+if ( $foowd->hasPermission('smdoc_group_user','list','CLASS') )
   $admin_link[] = '<a href="'.$loc_url.'?class=smdoc_group_user&method=list">'._("User Groups").'</a>';
-if ( $foowd->hasPermission('smdoc_name_lookup','list','CLASS',$dummy) )
+if ( $foowd->hasPermission('smdoc_name_lookup','list','CLASS') )
   $admin_link[] = '<a href="'.$loc_url.'?class=smdoc_name_lookup&method=list">'._("Short Names").'</a>';
 if ( $foowd->user->inGroup('Gods') )
   $admin_link[] = '<a href="sqmindex.php?p=1">'._("Full Document Index").'</a>';

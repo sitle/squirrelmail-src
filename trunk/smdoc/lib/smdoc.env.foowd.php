@@ -174,20 +174,15 @@ class smdoc extends foowd
    * @param string $className Name of the class the method belongs to.
    * @param string $methodName Name of the method.
    * @param string $type  Type of method, 'CLASS' or 'OBJECT'.
-   * @param object $object Reference to current object being checked (may be NULL)
+   * @param mixed $objPerms array of custom permissions from object being checked (may be NULL)
+   * @param int   $creatorid id of object creator (may be NULL)
    * @return bool TRUE if user has access to method
    * @see base_user::inGroup()
    */
-  function hasPermission($className, $methodName, $type, &$object)
+  function hasPermission($className, $methodName, $type, $objPerms = NULL, $creatorid = NULL)
   {
-    $creatorid = NULL;
-    if ( isset($object) && is_object($object) ) 
-    {
-      if ( isset($object->creatorid) )
-        $creatorid = $object->creatorid;
-      if ( isset($object->permissions[$methodName]) )
-        $methodPermission = $object->permissions[$methodName];
-    } 
+    if ( isset($objectPerms) && is_array($objectPerms) && isset($objPerms[$methodName]) ) 
+      $methodPermission = $objectPerms[$methodName];
 
     if ( !isset($methodPermission) )
       $methodPermission = getPermission($className, $methodName, $type);

@@ -240,7 +240,7 @@
                  $methodName == 'diff' )
               continue;
 
-            if ($foowd->hasPermission($className,$methodName,'OBJECT',$object))
+            if ($foowd->hasPermission($className,$methodName,'OBJECT', $object->permissions))
               $edit_arr[] = '<a href="'.$obj_uri.'&method='.$methodName.'">'.ucfirst($methodName).'</a>';
           }
         }

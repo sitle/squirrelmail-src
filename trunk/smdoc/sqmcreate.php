@@ -42,13 +42,12 @@ require('config.php');
  */
 $foowd = new smdoc($foowd_parameters);
 
-$obj = NULL;
 $class_list = array();
 $classes = getFoowdClassNames();
 
 foreach ( $classes as $classid => $className )
 {
-  if ( $foowd->hasPermission($className, 'create', 'class', $obj) &&
+  if ( $foowd->hasPermission($className, 'create', 'class') &&
        strpos($className, 'user') === false )
   {
     $class_list[$className] = getClassDescription($classid);
