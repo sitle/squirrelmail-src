@@ -1,38 +1,36 @@
 # Swedish (sv_SE) select_range Translation (SquirrelMail plugin)
 # Copyright (C) 1999-2004 The Squirrelmail Development Team
 # This file is distributed under the same license as the SquirrelMail package.
-# Kurt Yoder <freespirit74@yahoo.com>, 2003
+# Kurt Yoder <freespirit74@yahoo.com> 2003
 # Fredrik Nilsson <debian@fnen.eu.org> 2004
 # Fredrik Jervfors <sqm_admin@fimbul.net> 2004
 msgid ""
 msgstr ""
-"Project-Id-Version: $Id$\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-02-23 21:43+0200\n"
-"PO-Revision-Date: 2004-03-05 02:38+0100\n"
+"Project-Id-Version: $Id: select_range.po,v 1.4 2004/03/05 02:40:24 kyoder "
+"Exp $\n"
+"POT-Creation-Date: 2004-02-10 18:28+0900\n"
+"PO-Revision-Date: 2004-03-18 16:20+0100\n"
 "Last-Translator: Fredrik Jervfors <sqm_admin@fimbul.net>\n"
 "Language-Team: Swedish <squirrelmail-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=ISO-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: functions.php:20
-msgid "Number of messages before showing select range link"
-msgstr "Antal brev innan länken \"Markera intervall\" visas"
+msgid "Select Range Options"
+msgstr "Intervallmarkeringar"
 
-#: functions.php:21
+msgid "Number of list items before showing link"
+msgstr "Antal poster innan länken \"Markera intervall\" visas"
+
 msgid "Set to 0 to always show the link"
-msgstr "(Ange \"0\" för alltid)"
+msgstr "(Ange \"0\" för alltid eller \"-1\" för aldrig)"
 
-#: functions.php:22
 msgid "Set to -1 to never show the link"
-msgstr "(Ange \"-1\" för aldrig)"
+msgstr " "
 
-#: functions.php:23
 msgid "Display select range errors"
 msgstr "Visa felmeddelanden vid intervallmarkeringar"
 
-#: functions.php:146
 msgid ""
 "Please leave at least one un-selected message between the first and last "
 "selected messages"
@@ -40,10 +38,18 @@ msgstr ""
 "Det måste vara minst ett omarkerat brev mellan den första och den sista "
 "markeringen."
 
-#: functions.php:147
 msgid "Please select at least two messages"
 msgstr "Välj minst två brev"
 
-#: functions.php:214
+msgid ""
+"Please leave at least one un-selected address between the first and last "
+"selected addresses"
+msgstr ""
+"Det måste vara minst en omarkerad adress mellan den första och den sista "
+"markeringen."
+
+msgid "Please select at least two addresses"
+msgstr "Välj minst två adresser"
+
 msgid "Select Range"
 msgstr "Markera intervall"
