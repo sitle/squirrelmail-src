@@ -173,7 +173,7 @@ class smdoc extends foowd
    *
    * @param string $className Name of the class the method belongs to.
    * @param string $methodName Name of the method.
-   * @param string $type  class/object method
+   * @param string $type  Type of method, 'CLASS' or 'OBJECT'.
    * @param object $object Reference to current object being checked (may be NULL)
    * @return bool TRUE if user has access to method
    * @see base_user::inGroup()

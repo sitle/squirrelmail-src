@@ -33,11 +33,12 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
 
 /** Method permissions */
-setPermission('foowd_object', 'class', 'create', 'Nobody');
-setPermission('foowd_object', 'object', 'admin', 'Gods');
+setPermission('foowd_object', 'class',  'create', 'Nobody');
+setPermission('foowd_object', 'object', 'admin',  'Gods');
 setPermission('foowd_object', 'object', 'revert', 'Gods');
 setPermission('foowd_object', 'object', 'delete', 'Gods');
-setPermission('foowd_object', 'object', 'clone', 'Gods');
+setPermission('foowd_object', 'object', 'clone',  'Gods');
+setPermission('foowd_object', 'object', 'xml',    'Nobody');
 
 /** Class descriptor/Meta information */
 setClassMeta('foowd_object', 'Base Object');

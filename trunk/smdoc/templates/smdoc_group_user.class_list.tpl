@@ -76,18 +76,7 @@ function group_list_body(&$foowd, $className, $method, &$user, &$object, &$t)
 <?php   $methods = array();
         if ( $arr['group_count'] > 0 )
           $methods[] = '<a href="'.getURI().'?class=smdoc_group_user&amp;method=edit&amp;id='.$id.'">Edit</a> ';
-
-        if ( !empty($methods) )
-        {
-          echo '( ';
-          foreach ( $methods as $i => $method )
-          {
-            if ( $i != 0 )
-              echo ' | ';
-            echo $method;
-          }
-          echo ' )&nbsp;';
-        }
+        print_arr($methods);
       ?> 
         </td>
         <td>&nbsp;<?php echo empty($arr['group_delete']) ? 
