@@ -1450,7 +1450,11 @@ function deliverMessage($composeMessage, $draft=false) {
 
     /* Here you can modify the message structure just before we hand
        it over to deliver */
-    do_hook('compose_send');
+    $hookReturn = do_hook('compose_send', $composeMessage);
+    /* Get any changes made by plugins to $composeMessage. */
+    if ( is_object($hookReturn[1]) ) {
+        $composeMessage = $hookReturn[1];
+    }
 
     if (!$useSendmail && !$draft) {
         require_once(SM_PATH . 'class/deliver/Deliver_SMTP.class.php');
