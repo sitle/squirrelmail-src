@@ -5,11 +5,23 @@
  *
  * This file is an addition/modification to the 
  * Framework for Object Orientated Web Development (Foowd).
- *
- * $Id$
  */
 
-require('config.php');             // include config and Foowd functions
+/** 
+ * Generic entry-point for all of Foowd/smdoc
+ *
+ * Modified by SquirrelMail Development
+ * $Id$
+ * 
+ * @package smdoc
+ */
+
+/** 
+ * Include initial configuration and basic set of 
+ * functions
+ * @see config.default.php
+ */
+require('config.php');
 
 /* 
  * Initialize SMDoc/FOOWD environment
@@ -79,7 +91,7 @@ if ( sqGetGlobalVar('form_cancel', $value, SQ_FORM) )
 
 $result = FALSE;
 
-/**
+/*
  * Processing an object method.
  * URL might look like:
  * index.php?object=faq  (default method view)
@@ -131,6 +143,9 @@ else  // call class method
   $methodName = 'class_'.$method;
 }
 
+/*
+ * Display results using appropriate template
+ */
 if ( $result === TRUE )
 {
   $tplName = $foowd->getTemplateName($className, $methodName);
@@ -140,7 +155,10 @@ if ( $result === TRUE )
 else 
   trigger_error("Previous error, no defined result", E_USER_NOTICE);
 
-// destroy Foowd
+/*
+ * destroy Foowd - triggers cleanup of database object and 
+ * display of debug information.
+ */
 $foowd->destroy();
 
 ?>
