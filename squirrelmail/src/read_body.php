@@ -625,9 +625,12 @@ function formatMenubar($mailbox, $passed_id, $passed_ent_id, $message, $mbx_resp
     $s .= $topbar_delimiter;
     $s .= makeComposeLink($comp_action_uri, _("Reply All"));
     $s .= '</small></td></tr></table>';
-    do_hook("read_body_menu_top");
+    $ret = concat_hook_function('read_body_menu_top', $s);
+    if($ret != '') {
+        $s = $ret;
+    }
     echo $s;
-    do_hook("read_body_menu_bottom");
+    do_hook('read_body_menu_bottom');
 }
 
 function formatToolbar($mailbox, $passed_id, $passed_ent_id, $message, $color) {
