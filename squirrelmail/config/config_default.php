@@ -521,10 +521,12 @@ global $use_smtp_tls;
 $use_imap_tls = false;
 $use_smtp_tls = false;
 
-/* auth_mech can be either 'plain', 'cram-md5', or 'digest-md5' */
+/* auth_mech can be either 'plain', 'cram-md5', or 'digest-md5'
+   SMTP can also be 'none'
+*/
 global $smtp_auth_mech;
 global $imap_auth_mech;
-$smtp_auth_mech = 'plain';
+$smtp_auth_mech = 'none';
 $imap_auth_mech = 'plain';
 
 /**
