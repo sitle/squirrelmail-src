@@ -3,8 +3,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: $Id$\n"
-"POT-Creation-Date: 2003-06-25 16:16+0300\n"
-"PO-Revision-Date: 2003-06-25 21:01+0100\n"
+"POT-Creation-Date: 2003-09-11 21:57+0300\n"
+"PO-Revision-Date: 2003-09-17 18:01+0100\n"
 "Last-Translator: Ralf Hildebrandt <ralf.hildebrandt@charite.de>\n"
 "Language-Team: German <squirrelmail-i18n@lists.squirrelmail.net>\n"
 "MIME-Version: 1.0\n"
@@ -94,9 +94,7 @@ msgid "Additional info"
 msgstr "Zus&auml;tzliche Informationen"
 
 msgid "No personal address book is defined. Contact administrator."
-msgstr ""
-"Es ist kein pers&ouml;nliches Adressbuch definiert. Kontaktieren Sie die "
-"Administratoren."
+msgstr "Es ist kein pers&ouml;nliches Adressbuch definiert. Kontaktieren Sie den Administrator."
 
 msgid "You can only edit one address at the time"
 msgstr "Sie k&ouml;nnen nur eine Adresse gleichzeitig bearbeiten"
@@ -223,8 +221,7 @@ msgid "Server replied: "
 msgstr "Server antwortete: "
 
 msgid "Illegal folder name.  Please select a different name."
-msgstr ""
-"Unzul&auml;ssiger Ordnername. Bitte w&auml;hlen Sie einen anderen Namen."
+msgstr "Unzul&auml;ssiger Ordnername. Bitte w&auml;hlen Sie einen anderen Namen."
 
 msgid "Click here to go back"
 msgstr "Hier klicken um zur&uuml;ckzugehen"
@@ -315,8 +312,7 @@ msgid "Subscribe to:"
 msgstr "Eintragen in:"
 
 msgid "You have not selected a folder to rename. Please do so."
-msgstr ""
-"Sie haben keine Ordner zum umbenennen ausgew&auml;hlt. Bitte ausw&auml;hlen."
+msgstr "Sie haben keine Ordner zum umbenennen ausgew&auml;hlt. Bitte ausw&auml;hlen."
 
 msgid "Rename a folder"
 msgstr "Ordner umbenennen"
@@ -374,24 +370,24 @@ msgstr "leeren"
 msgid "Last Refresh"
 msgstr "Letzte Aktualisierung"
 
+msgid "refresh unseen/total info"
+msgstr "Nachrichtenanzahl aktualisieren"
+
 msgid "Save folder tree"
 msgstr "Speichere Ordnerstruktur"
 
 msgid "Login"
 msgstr "Login"
 
-#, c-format
 msgid "%s Logo"
 msgstr "%s Logo"
 
-#, c-format
 msgid "SquirrelMail version %s"
 msgstr "SquirrelMail Version %s"
 
 msgid "By the SquirrelMail Development Team"
 msgstr "Vom SquirrelMail-Entwicklungsteam"
 
-#, c-format
 msgid "%s Login"
 msgstr "%s Login"
 
@@ -613,11 +609,11 @@ msgstr ""
 msgid "Message not printable"
 msgstr "Nachrichten filtern"
 
-msgid "Printer Friendly"
-msgstr "Druckerfreundlich"
-
 msgid "CC"
 msgstr "CC"
+
+msgid "Printer Friendly"
+msgstr "Druckerfreundlich"
 
 msgid "Print"
 msgstr "Drucken"
@@ -653,8 +649,8 @@ msgstr "Mailprogramm"
 msgid "Read receipt"
 msgstr "Empfangsbest&auml;tigung"
 
-msgid "send"
-msgstr "Senden"
+msgid "sent"
+msgstr "gesendet"
 
 msgid "requested"
 msgstr "abgerufen"
@@ -997,6 +993,9 @@ msgstr "D, j.m.Y, H:i"
 msgid "D, F j, Y G:i"
 msgstr "D, j.m.Y, H:i"
 
+msgid "M j, Y"
+msgstr "d.m.Y"
+
 msgid "g:i a"
 msgstr "H:i"
 
@@ -1008,9 +1007,6 @@ msgstr "D, H:i"
 
 msgid "D, G:i"
 msgstr "D, H:i"
-
-msgid "M j, Y"
-msgstr "d.m.Y"
 
 #, c-format
 msgid "Preference database error (%s). Exiting abnormally"
@@ -1041,19 +1037,25 @@ msgstr ""
 msgid ""
 "Preference file, %s, could not be opened. Contact your system administrator "
 "to resolve this issue."
-msgstr "Einstellungsdatei %s konnte nicht ge&oum;ffnet werden. Kontaktieren Sie Ihren Administrator, um Hilfe zu erhalten."
+msgstr ""
+"Einstellungsdatei %s konnte nicht ge&oum;ffnet werden. Kontaktieren Sie "
+"Ihren Administrator, um Hilfe zu erhalten."
 
 #, c-format
 msgid ""
 "Preference file, %s, could not be written. Contact your system administrator "
 "to resolve this issue."
-msgstr "Einstellungsdatei %s konnte nicht geschrieben werden. Kontaktieren Sie Ihren Administrator, um Hilfe zu erhalten."
+msgstr ""
+"Einstellungsdatei %s konnte nicht geschrieben werden. Kontaktieren Sie Ihren "
+"Administrator, um Hilfe zu erhalten."
 
 #, c-format
 msgid ""
 "Preference file, %s, could not be copied from temporary file, %s. Contact "
 "your system administrator to resolve this issue."
-msgstr "Einstellungsdatei %s konnte nicht von der temporären Datei %s kopiert werden. Kontaktieren Sie Ihren Administrator, um Hilfe zu erhalten."
+msgstr ""
+"Einstellungsdatei %s konnte nicht von der temporären Datei %s kopiert "
+"werden. Kontaktieren Sie Ihren Administrator, um Hilfe zu erhalten."
 
 #, c-format
 msgid "Error opening %s"
@@ -1076,29 +1078,38 @@ msgstr "%s sollte vom Benutzer %s beschreibbar sein"
 msgid ""
 "Signature file, %s, could not be opened. Contact your system administrator "
 "to resolve this issue."
-msgstr "Signaturdatei %s konnte nicht ge&ouml;ffnet werden. Kontaktieren Sie Ihren Administrator, um Hilfe zu erhalten."
+msgstr ""
+"Signaturdatei %s konnte nicht ge&ouml;ffnet werden. Kontaktieren Sie Ihren "
+"Administrator, um Hilfe zu erhalten."
 
 #, c-format
 msgid ""
 "Signature file, %s, could not be written. Contact your system administrator "
 "to resolve this issue."
-msgstr "Signaturdatei %s konnte nicht geschrieben werden. Kontaktieren Sie Ihren Administrator, um Hilfe zu erhalten."
+msgstr ""
+"Signaturdatei %s konnte nicht geschrieben werden. Kontaktieren Sie Ihren "
+"Administrator, um Hilfe zu erhalten."
 
 #, c-format
 msgid ""
 "Signature file, %s, could not be copied from temporary file, %s. Contact "
 "your system administrator to resolve this issue."
-msgstr "Signaturdatei %s konnte nicht von tempor&auml;rer Datei %s kopiert werden. Kontaktieren Sie Ihren Administrator, um Hilfe zu erhalten."
+msgstr ""
+"Signaturdatei %s konnte nicht von tempor&auml;rer Datei %s kopiert werden. "
+"Kontaktieren Sie Ihren Administrator, um Hilfe zu erhalten."
 
 msgid ""
 "You need to have php4 installed with the multibyte string function enabled "
 "(using configure option --enable-mbstring)."
 msgstr ""
-"PHP4 muss mit aktivierter Multibyte-String-Funktion (Konfigurationsoption "
-"--enable-mbstring) installiert worden sein."
+"PHP4 muss mit aktivierter Multibyte-String-Funktion (Konfigurationsoption --"
+"enable-mbstring) installiert worden sein."
 
 msgid "ERROR : No available imapstream."
 msgstr "FEHLER: Kein IMAP-Stream verf&uuml;gbar."
+
+msgid "ERROR : Connection dropped by imap-server."
+msgstr "FEHLER: Verbindung wurde vom IMAP Server abgbrochen."
 
 msgid "ERROR : Could not complete request."
 msgstr "FEHLER : Aktion konnte nicht ausgef&uuml;hrt werden."
@@ -1114,6 +1125,12 @@ msgstr "FEHLER: Falsche oder ung&uuml;ltige Anfrage."
 
 msgid "Server responded: "
 msgstr "Server antwortete: "
+
+msgid "ERROR : Imap server closed the connection."
+msgstr "FEHLER: Imap Server hat die Verbindungen geschlossen."
+
+msgid "ERROR : Unknown imap response."
+msgstr "FEHLER: Unbekannte IMAP antwort."
 
 #, c-format
 msgid "Error connecting to IMAP server: %s."
@@ -1151,6 +1168,15 @@ msgstr "Unbekannter Absender"
 
 msgid "Unknown response from IMAP server: "
 msgstr "Unbekannte Antwort vom IMAP-Server: "
+
+msgid "The server couldn't find the message you requested."
+msgstr "Der Server konnte die angeforderte Nachricht nicht finden."
+
+msgid ""
+"Most probably your message list was out of date and the message has been "
+"moved away or deleted (perhaps by another program accessing the same "
+"mailbox)."
+msgstr ""
 
 msgid "Unknown date"
 msgstr "Unbekanntes Datum"
@@ -1393,6 +1419,9 @@ msgstr "Seitenauswahl aktivieren"
 
 msgid "Maximum Number of Pages to Show"
 msgstr "Maximalanzahl von anzuzeigenden Seiten"
+
+msgid "Always Show Full Date"
+msgstr "Immer gesamtes Datum anzeigen"
 
 msgid "Message Display and Composition"
 msgstr "Nachrichtenanzeige und -erstellung"
@@ -2219,6 +2248,7 @@ msgstr ""
 msgid "FREE - SPAMhaus - A list of well-known SPAM sources."
 msgstr "KOSTENLOS - SPAMhaus - Eine Liste von allseits bekannten SPAM-Quellen."
 
+#, c-format
 msgid ""
 "FREE, for now - SPAMCOP - An interesting solution that lists servers that "
 "have a very high spam to legit email ratio (85% or more)."
@@ -2761,9 +2791,6 @@ msgstr "Soll der ausgew&auml;hlte Server gel&ouml;scht werden?"
 msgid "Confirm Delete"
 msgstr "L&ouml;schen best&auml;tigen"
 
-msgid "Mofify a Server"
-msgstr "Server modifizieren"
-
 msgid "Undefined Function"
 msgstr "Undefinierte Funktion"
 
@@ -2860,8 +2887,8 @@ msgid ""
 "mail arrives.  If no file is specified, \"(none)\", no sound will be used."
 msgstr ""
 "W&auml;hlen Sie aus der Liste der <b>Serverdateien</b> die Tondatei, die zur "
-"Signalisierung eintreffender neuer Nachrichten genutzt werden soll."
-"Wurde keine Datei gew&auml;hlt \"(kein)\", so wird keine Ton abgespielt."
+"Signalisierung eintreffender neuer Nachrichten genutzt werden soll.Wurde "
+"keine Datei gew&auml;hlt \"(kein)\", so wird keine Ton abgespielt."
 
 msgid "Enable Media Playing"
 msgstr "Aktiviere das Spielen von Medien"
@@ -3037,8 +3064,7 @@ msgstr "Zitiere"
 
 #, c-format
 msgid "I tried to execute '%s', but it returned:"
-msgstr ""
-"Ich versuchte '%s' auszuf&uurl;hren, aber ich erhielt folgende Antwort:"
+msgstr "Ich versuchte '%s' auszuf&uurl;hren, aber ich erhielt folgende Antwort:"
 
 msgid "SquirrelSpell is misconfigured."
 msgstr "SquirrelSpell ist falsch konfiguriert."
@@ -3047,8 +3073,7 @@ msgid "SquirrelSpell Results"
 msgstr "SquirrelSpell Ergebnis"
 
 msgid "Spellcheck completed. Commit changes?"
-msgstr ""
-"Rechtschreibpr&uuml;fung abgeschlossen. &Auml;nderungen &uuml;bernehmen?"
+msgstr "Rechtschreibpr&uuml;fung abgeschlossen. &Auml;nderungen &uuml;bernehmen?"
 
 msgid "No changes were made."
 msgstr "Es wurden keine &Auml;nderungen gemacht."
@@ -3112,8 +3137,7 @@ msgid "Close and Commit"
 msgstr "Schlie&szlig;en und best&auml;tigen"
 
 msgid "The spellcheck is not finished. Really close and commit changes?"
-msgstr ""
-"Die Rechtschreibpr&uuml;fung ist nicht beendet. Wirklich schlie&szlig;en und "
+msgstr "Die Rechtschreibpr&uuml;fung ist nicht beendet. Wirklich schlie&szlig;en und "
 "&Auml;nderungen &uuml;bernehmen?"
 
 msgid "Close and Cancel"
@@ -3386,29 +3410,29 @@ msgstr "&Uuml;bersetzungsoptionen"
 msgid "Your server options are as follows:"
 msgstr "Ihre Optionen sehen wie folgt aus:"
 
-msgid ""
-"19 language pairs, maximum of 1000 characters translated, powered by Systran"
-msgstr ""
-"19 Sprachenpaare, maximal 1000 Zeichen werden &uuml;bersetzt, von Systran"
+msgid "Maximum of 1000 characters translated, powered by Systran"
+msgstr "Maximal 1000 Zeichen werden &uuml;bersetzt, von Systran"
 
-msgid "12 language pairs, no known limits, powered by Systran"
-msgstr "12 Sprachenpaare, keine bekannten Limitierungen, von Systran"
+msgid "Number of supported language pairs: %s"
+msgstr "Anzahl unterst&uuml;tzter Sprachenpaare: %s"
 
-msgid ""
-"784 language pairs, no known limits, powered by Translation Experts's "
-"InterTran"
-msgstr ""
-"784 Sprachenpaare, keine bekannten Limitierungen, von Translation Experts's "
-"InterTran"
+msgid "No known limits, powered by Systran"
+msgstr "Keine bekannten Limitierungen, von Systran"
 
-msgid ""
-"8 language pairs, no known limits, powered by GPLTrans (free, open source)"
-msgstr ""
-"8 Sprachenpaare, keine bekannten Limitierungen, von GPLTrans (frei, Open "
-"Source)"
+msgid "No known limits, powered by Translation Experts's InterTran"
+msgstr "Keine bekannten Limitierungen, von Translation Experts's InterTran"
 
-msgid "4 language pairs for Hellenic, no known limits, powered by Systran"
-msgstr "4 Sprachenpaare f&uuml;r Hellenisch, keine bekannten Limitierungen, von Systran"
+msgid "Number of supported languages: %s"
+msgstr "Anzahl unterst&uuml;tzter Sprache: %s"
+
+msgid "No known limits, powered by GPLTrans (free, open source)"
+msgstr "Keine bekannten Limitierungen, von GPLTrans (frei, Open Source)"
+
+msgid "Hellenic translations, no known limits, powered by Systran"
+msgstr "Hellenische &Uuml;bersetzungen, keine bekannten Limitierungen, von Systran"
+
+msgid "Russian translations, maximum of 500 characters translated"
+msgstr "Russische &Uuml;bersetzungen, maximal 500 Zeichen werden &uuml;bersetzt"
 
 msgid ""
 "You also decide if you want the translation box displayed, and where it will "
@@ -3563,11 +3587,25 @@ msgstr "nach Englisch"
 msgid "from English"
 msgstr "von Englisch"
 
+msgid "Interface language"
+msgstr "Bediensprache"
+
+msgid "Translation direction"
+msgstr "&Uuml;bersetzungsrichtung"
+
 msgid "Delivery error report"
 msgstr "Zustellungsfehlerreport"
 
 msgid "Undelivered Message Headers"
 msgstr "Nicht zugestellter Nachrichtenkopf"
+
+#~ msgid "Mofify a Server"
+#~ msgstr "Server modifizieren"
+
+#~ msgid "4 language pairs for Hellenic, no known limits, powered by Systran"
+#~ msgstr ""
+#~ "4 Sprachenpaare f&uuml;r Hellenisch, keine bekannten Limitierungen, von "
+#~ "Systran"
 
 #~ msgid "Unknown message number in reply from server: "
 #~ msgstr "Unbekannte Nachrichtennummer in der Antwort vom Server: "
