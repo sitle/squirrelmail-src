@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: avelsieve\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2003-10-09 17:00+0300\n"
-"PO-Revision-Date: 2004-02-04 20:36+0100\n"
+"POT-Creation-Date: 2004-04-01 20:12+0300\n"
+"PO-Revision-Date: 2004-05-24 10:52+0200\n"
 "Last-Translator: Ola Ketil Siqveland <olaketil@hotmail.com>\n"
 "Language-Team: Nynorsk <nn@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=ISO-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.0.2\n"
+"X-Generator: KBabel 1.0.1\n"
 
 msgid "You have to define at least one header match text."
 msgstr "Du må definera minst ein topptekst til søket."
@@ -86,6 +86,9 @@ msgstr "Ferdig"
 msgid "Move on to step"
 msgstr "Flytt vidare til steg"
 
+msgid "None"
+msgstr "Ingen"
+
 msgid "What kind of rule would you like to add?"
 msgstr "Kva type regel vil du leggja til?"
 
@@ -94,6 +97,9 @@ msgid ""
 "message's headers:"
 msgstr ""
 "Denne regelen slår inn viss nokon av adressene finst i meldingshovudet:"
+
+msgid "To: or Cc"
+msgstr "Til: eller Kopi til"
 
 msgid "AND (Every item must match)"
 msgstr "OG (Alle element må passe)"
@@ -166,6 +172,9 @@ msgstr "Vidaresend til følgjande e-postadressa:"
 
 msgid "someone@example.org"
 msgstr "nokon@eksempel.no"
+
+msgid "Keep a local copy as well."
+msgstr "Også lagre ein lokal kopi "
 
 msgid "Move message into"
 msgstr "Flytt meldinga til"
@@ -260,7 +269,6 @@ msgstr ""
 "Denne spesielle regelen lar deg velje kav du skal gjera med slike meldinger "
 "når dei kjem til inboksen."
 
-#, php-format
 msgid ""
 "Select %s to add the predefined rule, or select the advanced SPAM filter to "
 "customize the rule."
@@ -277,7 +285,6 @@ msgstr "Avansert SPAM filter...."
 msgid "Target Score"
 msgstr "Poeng"
 
-#, php-format
 msgid ""
 "Messages with SPAM-Score higher than the target value, the maximum value "
 "being %s, will be considered SPAM."
@@ -288,48 +295,21 @@ msgstr ""
 msgid "SPAM Lists to check against"
 msgstr "SPAM liste å sjekka mot"
 
-msgid "Error Encountered"
-msgstr "Feil oppstod."
-
-msgid "For <strong>ALL</strong> incoming messages; "
-msgstr "For <strong>ALLE</strong> innkommande meldingar;"
+msgid "Whitelist"
+msgstr "Kviteliste"
 
 msgid ""
-"All messages considered as <strong>SPAM</strong> (unsolicited commercial "
-"messages)"
+"Messages that match any of these header rules will never end up in Junk "
+"Folders or regarded as SPAM."
 msgstr ""
-"Alle meldingar tolkast som <strong>SPAM</strong> (spontane reklame meldingar)"
+"Melding som treff ein av desse topptekst reglane vil aldri koma i søppel "
+"mappa eller rekna som søppel."
 
-msgid "matching the Spam List(s):"
-msgstr "treff i Spam lista:"
+msgid "Apply Changes"
+msgstr "Tilføy endringar"
 
-#, php-format
-msgid "and with score greater than %s"
-msgstr "og med poeng høgare en %s"
-
-msgid "will be"
-msgstr "er"
-
-msgid "stored in the Junk Folder."
-msgstr "lagra i søppelmappa."
-
-msgid "stored in the Trash Folder."
-msgstr "lagra i papirkorga"
-
-msgid "discarded."
-msgstr "forkast."
-
-msgid "If"
-msgstr "viss"
-
-msgid "<em>any</em> of the following mail headers match: "
-msgstr "<em>nokon</em> av dei følgjande topteksten eksisterer:"
-
-msgid "<em>all</em> of the following mail headers match: "
-msgstr "<em>alle</em> av dei følgjande topteksten eksisterer:"
-
-msgid "the header"
-msgstr "toptekst"
+msgid "Error Encountered"
+msgstr "Feil oppstod."
 
 msgid "is"
 msgstr "er"
@@ -379,6 +359,51 @@ msgstr "eksisterer"
 msgid "does not exist"
 msgstr "eksisterer ikkje"
 
+msgid "For <strong>ALL</strong> incoming messages; "
+msgstr "For <strong>ALLE</strong> innkommande meldingar;"
+
+msgid ""
+"All messages considered as <strong>SPAM</strong> (unsolicited commercial "
+"messages)"
+msgstr ""
+"Alle meldingar tolkast som <strong>SPAM</strong> (spontane reklame meldingar)"
+
+msgid "unless"
+msgstr "utan"
+
+msgid "or"
+msgstr "eller"
+
+msgid "matching the Spam List(s):"
+msgstr "treff i Spam lista:"
+
+msgid "and with score greater than %s"
+msgstr "og med poeng høgare en %s"
+
+msgid "will be"
+msgstr "er"
+
+msgid "stored in the Junk Folder."
+msgstr "lagra i søppelmappa."
+
+msgid "stored in the Trash Folder."
+msgstr "lagra i papirkorga"
+
+msgid "discarded."
+msgstr "forkast."
+
+msgid "If"
+msgstr "viss"
+
+msgid "<em>any</em> of the following mail headers match: "
+msgstr "<em>nokon</em> av dei følgjande topteksten eksisterer:"
+
+msgid "<em>all</em> of the following mail headers match: "
+msgstr "<em>alle</em> av dei følgjande topteksten eksisterer:"
+
+msgid "the header"
+msgstr "toptekst"
+
 msgid "the size of the message is"
 msgstr "storleiken på meldinga er"
 
@@ -408,6 +433,9 @@ msgstr "<em>lagre</em> i mappa <strong>"
 
 msgid "reply with this vacation message: "
 msgstr "svar med denne automatisk-svar-meldinga:"
+
+msgid "Also keep a local copy."
+msgstr "Også lager ein lokal kopi"
 
 msgid " Also keep a copy in INBOX, marked as deleted."
 msgstr " lagre også ei melding i Innboksen, merk som sletta."
@@ -515,13 +543,15 @@ msgstr "Flytt til Botn"
 msgid "Junk Folder"
 msgstr "SøppelMappe"
 
-#, php-format
 msgid ""
 "Store SPAM message in your Junk Folder. Messages older than %s days will be "
 "deleted automatically."
 msgstr ""
 "Lagre SPAM meldignar i søppelmappa. Meldingar eldre enn %s dagar vert "
 "automatisk sletta."
+
+msgid "Note that you can set the number of days in Folder Preferences."
+msgstr "Merk at ein kan setja talet på dager i Mappe Instillingane."
 
 msgid "Trash Folder"
 msgstr "Papirkurv"
@@ -543,9 +573,6 @@ msgstr ""
 msgid "Editing Mail Filtering Rule"
 msgstr "Rediger regelen for e-post filtrering"
 
-msgid "Apply Changes"
-msgstr "Tilføy endringar"
-
 msgid "Message Filters"
 msgstr "Meldingsfilter"
 
@@ -559,29 +586,29 @@ msgstr ""
 msgid "Filters"
 msgstr "Filter"
 
+msgid "Could not log on to timsieved daemon on your IMAP server"
+msgstr "Kunne ikkje logge på timsieved daemonen på IMAP-tenaren"
+
+msgid "Please contact your administrator."
+msgstr "Kontakt system-administrator."
+
+msgid "Could not set active script on your IMAP server"
+msgstr "Kunne ikkje aktivera regelsettet på IMAP tenaren."
+
 msgid "Unable to load script to server."
 msgstr "Klarte ikkje laste skript til tenaren."
 
 msgid "Server responded with:"
 msgstr "Tenar svara med:"
 
-msgid "Please contact your administrator."
-msgstr "Kontakt system-administrator."
-
-msgid "Could not log on to timsieved daemon on your IMAP server"
-msgstr "Kunne ikkje logge på timsieved daemonen på IMAP-tenaren"
+msgid "Test for Forged Header"
+msgstr "Test for falske topptekstar."
 
 msgid "Current Mail Filtering Rules"
 msgstr "Gjeldande filter reglar"
 
 msgid "No Filtering Rules Defined Yet"
 msgstr "Inga reglar definert ennå"
-
-msgid "in order to save your rules."
-msgstr "for å lagra reglar."
-
-msgid "Could not set active script on your IMAP server"
-msgstr "Kunne ikkje aktivera regelsettet på IMAP tenaren."
 
 msgid "Could not get SIEVE script from your IMAP server"
 msgstr "Kunne ikkje henta SIEVE regelsettet fra IMAP-tenaren."
@@ -591,6 +618,9 @@ msgstr "(Sannsynligvis er regelsettet tomt)."
 
 msgid "All your rules have been deleted"
 msgstr "Alle regler er sletta"
+
+msgid "Really delete this rule?"
+msgstr "Vil du sletta denne regelen?"
 
 msgid "Delete Selected"
 msgstr "Slett valde"
@@ -666,3 +696,6 @@ msgstr "Laga:"
 
 msgid "Last modified:"
 msgstr "Sist endra:"
+
+#~ msgid "in order to save your rules."
+#~ msgstr "for å lagra reglar."
