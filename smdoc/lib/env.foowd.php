@@ -262,6 +262,22 @@ class foowd
   {
     return unserialize($serializedObj);
   }
+
+  /**
+   * Load default class.
+   *
+   * Create a child of foowd_object for the given class name so that objects of
+   * that type can be loaded without their original class definition.
+   *
+   * @static
+   * @param str className Name of the class to load.
+   */
+  function loadDefaultClass($className) 
+  { 
+    setClassMeta($className, _('Unknown Foowd Class'));
+    eval('class '.$className.' extends foowd_object {}');
+  }
+
 }
 
 // set unserialize callback function

@@ -9,6 +9,9 @@
  * @subpackage user
  */
 
+/** Class Descriptor/Meta information */
+setClassMeta('foowd_anonuser', 'Anonymous User');
+
 /**
  * Anonymous user class.
  *

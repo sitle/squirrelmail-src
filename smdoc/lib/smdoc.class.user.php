@@ -17,7 +17,7 @@
  */
 
 /** Class Descriptor/Meta information */
-setClassMeta('smdoc_user', 'User');
+setClassMeta('smdoc_user', 'SMDoc User');
 setConst('USER_CLASS_ID', META_SMDOC_USER_CLASS_ID);
 setConst('USER_CLASS_NAME', 'smdoc_user');
 

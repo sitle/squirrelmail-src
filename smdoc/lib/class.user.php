@@ -19,7 +19,7 @@
 /**
  * Set constants and meta information for the user class
  */
-setClassMeta('base_user', 'User');
+setClassMeta('base_user', 'Base User');
 setConst('USER_CLASS_ID', META_BASE_USER_CLASS_ID);
 setConst('USER_CLASS_NAME', 'base_user');
 
@@ -731,15 +731,16 @@ class base_user extends foowd_object
    */
   function removeFromGroup($group)
   {
-    foreach($this->groups as $i => $g)
+    $groups = $this->groups;
+    foreach($groups as $i => $g)
     {
       if ( $g == $group )
       {
-        unset($this->groups[$g]);
+        unset($groups[$i]);
         break;
       }
     }
-    $this->set('groups', $this->groups);
+    $this->set('groups', $groups);
   }
 
 // ----------------------------- class methods --------------

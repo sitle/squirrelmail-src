@@ -28,7 +28,6 @@ require_once(INPUT_DIR . 'input.querystring.php');
 /* 
  * Initialize smdoc/FOOWD environment
  */
-$foowd_parameters['debug']['debug_enabled'] = TRUE;
 $foowd = new smdoc($foowd_parameters);
 
 $objectMethod = TRUE;
@@ -86,7 +85,6 @@ elseif ( $objectid == NULL )
     $_SESSION['error'] = OBJECT_NOT_FOUND;
   }
 }
-
 
 
 /*
@@ -160,7 +158,6 @@ elseif ( $objectMethod )  // fetch object and call object method
 else  // call class method
 {
   $foowd->debug('msg', 'fetch and call class method');
-
   if ( !isset($className) )
     $className = getClassName($classid);
 

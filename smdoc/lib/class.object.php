@@ -413,6 +413,7 @@ class foowd_object
     }
 
     $foowd->template->assign('className', $className);
+    $foowd->template->assign('method', $methodName);
     call_user_func(array($className, $classMethodName), &$foowd, $className); // call method
 
     $foowd->track(); 

@@ -30,7 +30,8 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
 
 /** Method permissions */
-setPermission('foowd_text_plain', 'object', 'edit', 'Editors');
+setPermission('foowd_text_plain', 'class','create', 'Edit');
+setPermission('foowd_text_plain', 'object', 'edit', 'Edit');
 
 /** Class descriptor/Meta information */
 setClassMeta('foowd_text_plain', 'Plain Text Document');
@@ -50,8 +51,8 @@ setConst('DIFF_SAME_REGEX', '/^ (.*)/');
  * @package smdoc
  * @subpackage text
  */
-class foowd_text_plain extends foowd_object {
-
+class foowd_text_plain extends foowd_object 
+{
   /**
    * The text body.
    *
@@ -70,24 +71,23 @@ class foowd_text_plain extends foowd_object {
    * @param string deleteGroup The user group for deleting the object.
    * @param string editGroup The user group for editing the object.
    */
-  function foowd_text_plain(
-    &$foowd,
-    $title = NULL,
-    $body = NULL,
-    $viewGroup = NULL,
-    $adminGroup = NULL,
-    $deleteGroup = NULL,
-    $editGroup = NULL
-  ) {
+  function foowd_text_plain( &$foowd,
+                             $title = NULL,
+                             $body = NULL,
+                             $viewGroup = NULL,
+                             $adminGroup = NULL,
+                             $deleteGroup = NULL,
+                             $editGroup = NULL ) 
+  {
     $foowd->track('foowd_text_plain->constructor');
   
-// base object constructor
+    // base object constructor
     parent::foowd_object($foowd, $title, $viewGroup, $adminGroup, $deleteGroup);
 
-/* set object vars */
+    /* set object vars */
     $this->set('body', $body);
 
-/* set method permissions */
+    /* set method permissions */
     if ($editGroup != NULL) $this->permissions['edit'] = $editGroup;
 
     $foowd->track();
@@ -119,6 +119,11 @@ class foowd_text_plain extends foowd_object {
     $classid = META_FOOWD_TEXT_HTML_CLASS_ID;
     $compatible_class[$classid] = getClassName($classid) . ' - ' 
                                 . getClassDescription($classid);
+
+    $classid = META_SMDOC_TEXTILE_CLASS_ID;
+    $compatible_class[$classid] = getClassName($classid) . ' - ' 
+                                . getClassDescription($classid)
+                                . ' - PREFERRED';
 
     parent::addClassDropdowns($form, $compatible_class);
   }

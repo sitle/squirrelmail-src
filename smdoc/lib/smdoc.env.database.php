@@ -431,7 +431,7 @@ class smdoc_db
         //   [2] => Array (
         //            [index] => classid
         //            [op] => =
-        //            [value] => 4324324324
+        //            [field] => othertable.id
         //        )
         // )
         // SO, the key is a conjunction, 
@@ -442,26 +442,30 @@ class smdoc_db
         else 
         {
           // otherwise, we have an index/op/value array
-          if ( !isset($index['value']) ) 
-          {
-            trigger_error('No value given for index "'.$index['index'].'".');
-            $index['value'] = '';
-          }
-
           if ( !isset($index['op']) )
             $index['op'] = '=';
           elseif ( $index['op'] == '!=' )
             $index['op'] = '<>';
+          $where .= ' '.$index['index'].' '.$index['op'].' ';
 
-          if ( !isset($index['value']) ) {
-            trigger_error('No value given for index "'.$index['index'].'".');
-            $value = '';
-          } else {
-            $value = $index['value'];
+          if ( isset($index['field']) )
+          {
+            $field = $index['field'];
+            $where .= $field;
+          }
+          else
+          {
+            if ( isset($index['value']) )
+              $value = $index['value'];
+            else
+            {
+              trigger_error('No value given for index "'.$index['index'].'".');
+              $value = '';
+            }
+
+            $where .= is_numeric($value) ? $value : $this->escape($value);
           }
 
-          $where .= ' '.$index['index'].' '.$index['op'].' ';
-          $where .= is_numeric($value) ? $value : $this->escape($value);
           $where .= ' ';
         }
       }

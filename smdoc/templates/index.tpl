@@ -90,7 +90,7 @@
     <td rowspan="3" class="skip">
       <a href="#start_content"><img src="templates/images/empty.png" alt="skip to content" /></a>
       <img src="templates/images/empty.png" alt="|" />
-      <a href="#end_content"><img src="templates/images/empty.png" alt="skip to admin functions" /></a>
+      <a href="#end_content"><img src="templates/images/empty.png" alt="skip to edit functions" /></a>
       <?php if ($foowd->debug) { ?>
           <img src="templates/images/empty.png" alt="|" />
           <a href="#debug"><img src="templates/images/empty.png" alt="skip to debug" /></a>
@@ -120,7 +120,8 @@
             if ( $user->inGroup('Gods') )
             {
               echo '&nbsp;<br /><span class="subtext">'._("Admin") .': '
-                 . '<a href="'.$loc_url.'?class=smdoc_group_user&method=list">' . _("Groups") . '</a>'
+                 . '<a href="sqmcreate.php">'._("Create").'</a> '
+                 . '| <a href="'.$loc_url.'?class=smdoc_group_user&method=list">' . _("Groups") . '</a>'
                  . '</span>';
             }
           } else {
