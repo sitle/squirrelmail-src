@@ -457,7 +457,7 @@ function newMail () {
         sqUnWordWrap($body);
         
         /* this corrects some wrapping/quoting problems on replies */
-        if ($reply_id || $edit_as_new || $forward_id) {
+        if ($reply_id || $edit_as_new || $forward_id || $draft_id) {
             $rewrap_body = explode("\n", $body);
             for ($i=0;$i<count($rewrap_body);$i++) {
                 sqWordWrap($rewrap_body[$i], ($editor_size - 2));
