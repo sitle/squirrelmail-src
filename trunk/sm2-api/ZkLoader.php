@@ -64,8 +64,7 @@ class ZkLoader {
             require_once($svcfile);
 
             /* Make a new service object for the given service. */
-            $code_mksvc = "\$svc = new $svcclass(\$options);";
-            eval($code_mksvc);
+            $svc = new $svcclass($options);
 
             /* If required, load a module for this service. */
             if ($modname != '') {
@@ -103,8 +102,7 @@ class ZkLoader {
             require_once($modfile);
 
             /* Make a new module object for the given module. */
-            $code_mkmod = "\$mod = new $modclass(\$options);";
-            eval($code_mkmod);
+            $mod = new $modclass($options);
 
             /* Load the newly created module into this service. */
             $svc->loadModule($mod, $options);
