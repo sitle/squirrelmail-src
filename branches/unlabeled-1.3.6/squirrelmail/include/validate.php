@@ -32,8 +32,10 @@ session_write_close();
 require_once(SM_PATH . 'class/mime.class.php');
 
 session_start();
+define('SM_LIB_PATH', SM_PATH .'lib/');
 
-require_once(SM_PATH . 'functions/i18n.php');
+require_once(SM_LIB_PATH . 'charset/i18n.php');
+//require_once(SM_PATH . 'functions/i18n.php');
 require_once(SM_PATH . 'functions/auth.php');
 require_once(SM_PATH . 'functions/strings.php');
 require_once(SM_PATH . 'functions/global.php');
