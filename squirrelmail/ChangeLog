@@ -52,6 +52,14 @@ Version 1.4.5 - CVS
     and a forwarded message should not be altered unneccessary (#1151047).
   - Fix wrong path to mailout.php in listcommands plugin.
   - Fixed edit form checks in address listing (#1124018).
+  - Sanitized searches in ldap address book backend.
+  - Added verbose error messages to addressbook_init() function.
+  - Added $force_decode option to charset_decode() function in order
+    to use this function correctly in charset_convert().
+  - Added wrapper function in order to use more than one locale name in 
+    setlocale() calls. Fixes translation issues on some broken glibc 
+    systems (#1105168).
+  - Removed unnecessary require_once() calls from abook_take plugin.
 
 Version 1.4.4 - 21 January 2005
 -------------------------------

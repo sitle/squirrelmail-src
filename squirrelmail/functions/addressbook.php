@@ -13,6 +13,17 @@
  * @subpackage addressbook
  */
 
+/**
+ * If SM_PATH isn't defined, define it.  Required to include files.
+ * @ignore
+ */
+if (!defined('SM_PATH'))  {
+    define('SM_PATH','../');
+}
+
+/* make sure that display_messages.php is loaded */
+include_once(SM_PATH . 'functions/display_messages.php');
+
 global $addrbook_dsn, $addrbook_global_dsn;
 
 /**
@@ -20,13 +31,16 @@ global $addrbook_dsn, $addrbook_global_dsn;
    Returns the created object
 */
 function addressbook_init($showerr = true, $onlylocal = false) {
-    global $data_dir, $username, $ldap_server, $address_book_global_filename;
+    global $data_dir, $username, $color, $ldap_server, $address_book_global_filename;
     global $addrbook_dsn, $addrbook_table;
     global $abook_global_file, $abook_global_file_writeable;
     global $addrbook_global_dsn, $addrbook_global_table, $addrbook_global_writeable, $addrbook_global_listing;
 
     /* Create a new addressbook object */
     $abook = new AddressBook;
+
+    /* Create empty error message */
+    $abook_init_error='';
 
     /*
         Always add a local backend. We use *either* file-based *or* a
@@ -42,8 +56,7 @@ function addressbook_init($showerr = true, $onlylocal = false) {
                             'owner' => $username,
                             'table' => $addrbook_table));
         if (!$r && $showerr) {
-            echo _("Error initializing addressbook database.");
-            exit;
+            $abook_init_error.=_("Error initializing addressbook database.") . "<br />\n" . $abook->error;
         }
     } else {
         /* File */
@@ -51,10 +64,8 @@ function addressbook_init($showerr = true, $onlylocal = false) {
         $r = $abook->add_backend('local_file', Array('filename' => $filename,
                               'create'   => true));
         if(!$r && $showerr) {
-            printf( _("Error opening file %s"), $filename );
-            exit;
+            $abook_init_error.=sprintf( _("Error opening file %s"), $filename );
         }
-
     }
 
     /* This would be for the global addressbook */
@@ -80,8 +91,8 @@ function addressbook_init($showerr = true, $onlylocal = false) {
                                                     'detect_writeable' => false,
                                                     'writeable'=> $abook_global_file_writeable));
         if (!$r && $showerr) {
-            echo _("Error initializing global addressbook.");
-            exit;
+            if ($abook_init_error!='') $abook_init_error.="<br />\n";
+            $abook_init_error.=_("Error initializing global addressbook.") . "<br />\n" . $abook->error;
         }
     }
 
@@ -98,12 +109,13 @@ function addressbook_init($showerr = true, $onlylocal = false) {
                                        'writeable' => $addrbook_global_writeable,
                                        'listing' => $addrbook_global_listing,
                                        'table' => $addrbook_global_table));
+        if (!$r && $showerr) {
+            if ($abook_init_error!='') $abook_init_error.="<br />\n";
+            $abook_init_error.=_("Error initializing global addressbook.") . "<br />\n" . $abook->error;
+    }
     }
 
-    if ($onlylocal) {
-        return $abook;
-    }
-
+    if (! $onlylocal) {
     /* Load configured LDAP servers (if PHP has LDAP support) */
     if (isset($ldap_server) && is_array($ldap_server) && function_exists('ldap_connect')) {
         reset($ldap_server);
@@ -111,13 +123,21 @@ function addressbook_init($showerr = true, $onlylocal = false) {
             if (is_array($param)) {
                 $r = $abook->add_backend('ldap_server', $param);
                 if (!$r && $showerr) {
-                    printf( '&nbsp;' . _("Error initializing LDAP server %s:") .
+                        if ($abook_init_error!='') $abook_init_error.="<br />\n";
+                        $abook_init_error.=sprintf(_("Error initializing LDAP server %s:") .
                             "<br />\n", $param['host']);
-                    echo '&nbsp;' . $abook->error;
-                    exit;
+                        $abook_init_error.= $abook->error;
+                    }
                 }
             }
         }
+    } // end of remote abook backends init
+
+    /**
+     * display address book init errors.
+     */
+    if ($abook_init_error!='' && $showerr) {
+        error_box($abook_init_error,$color);
     }
 
     /* Return the initialized object */

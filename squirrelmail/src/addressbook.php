@@ -143,6 +143,9 @@ function list_writable_backends($name) {
                                'center', $color[4], 'colspan="2"')) . "\n";
 }
 
+/* Create page header before addressbook_init in order to  display error messages correctly. */
+displayPageHeader($color, 'None');
+
 /* Open addressbook, with error messages on but without LDAP (the *
  * second "true"). Don't need LDAP here anyway                    */
 $abook = addressbook_init(true, true);
@@ -152,8 +155,6 @@ if($abook->localbackend == 0) {
             $color);
     exit();
 }
-
-displayPageHeader($color, 'None');
 
 $defdata   = array();
 $formerror = '';
