@@ -58,13 +58,13 @@ if (isset($className->value) && !isset($objectid->value) && !isset($objectName->
 $foowd->destroy();
 
 // prepend function
-function foowd_prepend(&$foowd, &$object) {
-	@include('header.php');
+function foowd_prepend(&$foowd, &$object, $page_title = NULL) {
+	include('header.php');
 }
 
 // append function
 function foowd_append(&$foowd, &$object) {
-	@include('footer.php');
+	include('footer.php');
 }
 
 ?>
