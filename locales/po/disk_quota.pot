@@ -1,39 +1,20 @@
-# Disk Quota Plugin Translation.
-# Copyright (C) 2003 Free Software Foundation, Inc.
-# Kerem Erkan <akerem@hacettepe.edu.tr>, 2003.
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-# fuzzy
+#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: 3.0\n"
-"POT-Creation-Date: 2003-10-16 12:37+0200\n"
-"PO-Revision-Date: 2003-10-16 13:50+0200\n"
-"Last-Translator: Kerem Erkan <akerem@hacettepe.edu.tr>\n"
-"Language-Team: Turkish <noteam@bogus.org>\n"
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2003-11-02 16:36+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=ISO-8859-9\n"
+"Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
-
-#############################################################
-# ATTENTION: When localising the following msgstr's use "_" #
-# instead of spaces. Also avoid special characters and use  #
-# only alphabetical characters adn numbers.                 #
-#############################################################
-
-msgid "Your_Disk_Usage"
-msgstr ""
-
-msgid "Click_on_graph_for_details"
-msgstr ""
-
-msgid "Click_on_one_of_the_graphs_for_details"
-msgstr ""
-
-#############################################################
-# ATTENTION: When localising the following msgstr's use "+" #
-# instead of spaces. You can use special characters like    #
-# "." or "," etc.                                           #
-#############################################################
 
 msgid "Your+Disk+Usage+on+The+Server"
 msgstr ""
@@ -59,40 +40,44 @@ msgstr ""
 msgid "Grace+Time"
 msgstr ""
 
-msgid "*+Hover+your+mouse+on+the+texts+and+graph+to+get+more+information..."
+msgid "Day"
 msgstr ""
 
 msgid "Days"
 msgstr ""
 
-msgid "Day"
+msgid "Hour"
 msgstr ""
 
 msgid "Hours"
 msgstr ""
 
-msgid "Hour"
+msgid "Minute"
 msgstr ""
 
 msgid "Minutes"
 msgstr ""
 
-msgid "Minute"
-msgstr ""
-
 msgid "Time+Expired!"
 msgstr ""
 
-msgid "This+is+the+bar+graph+of+your+status.The+green+bar+shows+the+amount+of+disk+space+you+use."
+msgid "*+Hover+your+mouse+on+the+texts+and+graph+to+get+more+information..."
 msgstr ""
 
-msgid "+The+red+line+shows+your+quota+and+the+area+after+the+red+line+shows+your+limit,+which+you+cannot+exceed."
+msgid ""
+"This+is+the+bar+graph+of+your+status.The+green+bar+shows+the+amount+of+disk"
+"+space+you+use."
 msgstr ""
 
-msgid "+At+this+time,+you+are+not+over+quota."
+msgid ""
+"+The+red+line+shows+your+quota+and+the+area+after+the+red+line+shows+your"
+"+limit,+which+you+cannot+exceed."
 msgstr ""
 
 msgid "+YOU+ARE+OVER+QUOTA+NOW!"
+msgstr ""
+
+msgid "+At+this+time,+you+are+not+over+quota."
 msgstr ""
 
 msgid "This+shows+your+percent+usage+compared+to+your+limit."
@@ -101,7 +86,9 @@ msgstr ""
 msgid "This+is+the+name+of+the+filesystem+on+which+your+data+is+kept."
 msgstr ""
 
-msgid "+Your+server+did+not+show+the+filesystem+name.+So+you+see+a+hyphen+for+the+name."
+msgid ""
+"+Your+server+did+not+show+the+filesystem+name.+So+you+see+a+hyphen+for+the"
+"+name."
 msgstr ""
 
 msgid "This+is+the+total+amount+of+data+you+are+using+on+your+server."
@@ -110,21 +97,23 @@ msgstr ""
 msgid "This+is+the+maximum+amount+of+data+you+can+keep+on+your+server."
 msgstr ""
 
-msgid "This+is+the+maximum+amount+of+data+you+can+keep+on+the+server+when+you+are+over+quota+in+your+grace+time."
+msgid ""
+"This+is+the+maximum+amount+of+data+you+can+keep+on+the+server+when+you+are"
+"+over+quota+in+your+grace+time."
 msgstr ""
 
-msgid "This+shows+the+time+left+in+which+you+must+delete+some+of+your+data+in+order+to+get+under+your+quota."
+msgid ""
+"This+shows+the+time+left+in+which+you+must+delete+some+of+your+data+in+order"
+"+to+get+under+your+quota."
 msgstr ""
 
 msgid "+You+are+not+over+quota+so+you+see+a+hyphen+for+the+grace+time."
 msgstr ""
 
-msgid "+After+this+time,if+you+are+still+over+quota,+you+will+not+be+able+to+get+any+e-mails."
+msgid ""
+"+After+this+time,if+you+are+still+over+quota,+you+will+not+be+able+to+get+any"
+"+e-mails."
 msgstr ""
-
-#############################################################
-# You can localise the following without restrictions.      #
-#############################################################
 
 msgid "Detailed Information"
 msgstr ""
@@ -132,7 +121,9 @@ msgstr ""
 msgid "There is no problem as you are now using "
 msgstr ""
 
-msgid "KB on the server which is under your quota. Be sure to always keep the data you use under your "
+msgid ""
+"KB on the server which is under your quota. Be sure to always keep the data "
+"you use under your "
 msgstr ""
 
 msgid "KB quota to ensure that you can always receive e-mails."
@@ -147,6 +138,18 @@ msgstr ""
 msgid "KB on the server which is over your quota. "
 msgstr ""
 
+msgid ""
+"You CANNOT get any e-mails now and all e-mails sent to you are bouncing back "
+"to their senders. "
+msgstr ""
+
+msgid ""
+"You must delete some e-mails from the server and get your usage under your "
+msgstr ""
+
+msgid "KB quota in order to be able to get new e-mails."
+msgstr ""
+
 msgid "If you don't delete some e-mails from the server in "
 msgstr ""
 
@@ -156,12 +159,11 @@ msgstr ""
 msgid "KB quota, you WILL NOT be able to get any more e-mails."
 msgstr ""
 
-msgid "You CANNOT get any e-mails now and all e-mails sent to you are bouncing back to their senders. "
+msgid "Your_Disk_Usage"
 msgstr ""
 
-msgid "You must delete some e-mails from the server and get your usage under your "
+msgid "Click_on_graph_for_details"
 msgstr ""
 
-msgid "KB quota in order to be able to get new e-mails."
+msgid "Click_on_one_of_the_graphs_for_details"
 msgstr ""
-
