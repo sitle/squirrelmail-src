@@ -145,9 +145,9 @@ require_once('../plugins/administrator/auth.php');
 */
 
 global $data_dir;
-$username = $_SESSION['username'];
 extract($_POST);
 extract($_GET);
+$username = $_SESSION['username'];
 
 if ( !adm_check_user() ) {
     header("Location: ../../src/options.php") ;
