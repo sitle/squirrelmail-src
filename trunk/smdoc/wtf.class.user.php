@@ -28,8 +28,7 @@ User Class
  * Modified by SquirrelMail Development Team
  * $Id$
  */
-
-$HARDCLASS[-1919691191] = 'user';
+$HARDCLASS[USERCLASSID] = 'user';
 
 class user extends thing { // a user
 
@@ -419,7 +418,8 @@ class user extends thing { // a user
 
 }
 
-$HARDCLASS[1909853392] = 'home';
+/* HOMECLASSID defined in wtf.config.php */
+$HARDCLASS[HOMECLASSID] = 'home';
 
 class home extends content { // a users home thing
 

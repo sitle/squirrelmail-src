@@ -28,8 +28,8 @@ Workspace Class
  * Modified by SquirrelMail Development Team
  * $Id$
  */
-
-$HARDCLASS[-1919680487] = 'workspace';
+/* WORKSPACECLASSID defined in wtf.config.php */
+$HARDCLASS[WORKSPACECLASSID] = 'workspace';
 
 if (!defined('WORKSPACECREATE')) define('WORKSPACECREATE', GODS);
 
@@ -54,7 +54,8 @@ class workspace extends thing {
 	function placeInWorkspace(&$obj) { // place a thing in this workspace
 		global $wtf;
 		track('workspace::placeInWorkspace');
-		if ($wtf->user->inGroup($this->editGroup) && ($obj->objectid != -1672260811 || $obj->classid != USERCLASSID)) { // if has access and object is not anonymous user
+		if ( $wtf->user->inGroup($this->editGroup) && 
+            ($obj->objectid != ANONYMOUSUSERID || $obj->classid != USERCLASSID)) { // if has access and object is not anonymous user
 			$obj->workspaceid = $this->objectid;
 			track(); return TRUE;
 		} else {
