@@ -68,7 +68,11 @@ spamcop_load();
       <br />
       <table width="95%" align="center" border="0" cellpadding="2" cellspacing="0">
       <tr><td bgcolor="<?php echo $color[0]; ?>">
-         <center><b><?php echo _("Options") . " - " . _("Spam reporting"); ?></b></center>
+         <center><b>
+	 <?php 
+	    echo _("Options") . " - " . _("Spam reporting"); 
+	 ?>
+	 </b></center>
       </td></tr></table>
       <br />
       
@@ -82,7 +86,7 @@ spamcop_load();
         <tr>
 	  <?php
 	  echo html_tag('td',_("Delete spam when reported:") . "<br />\n" .
-	  '<font size="-2">(' . _("Only works with email-based reporting") . ')</font>',
+	  '<small>(' . _("Only works with email-based reporting") . ')</small>',
 	  'right','','valign="top"');
 	  echo html_tag('td', spamcop_enable_disable($spamcop_delete,'save','delete'),'','','valign="top"');
 	  ?>
@@ -91,8 +95,8 @@ spamcop_load();
 	  <?php
 	  echo html_tag('td',_("Spam Reporting Method:"),'right');
 	  ?>
-	  <form method="post" action="options.php">
 	  <td>
+	  <form method="post" action="options.php">
 	    <select name="meth">
 		<?php
 		    if ($spamcop_quick_report) {
@@ -115,20 +119,24 @@ spamcop_load();
 		?>
 	      </option>
 	    </select>
-	    <input type="hidden" name="action" value="meth">
-	    <input type="submit" value="<?php echo _("Save Method"); ?>">
-	  </td></form>
+	    <input type="hidden" name="action" value="meth" />
+	    <?php
+		echo '<input type="submit" value="' . _("Save Method") . "\" />\n";
+	    ?>
+	  </form></td>
 	</tr>
 	<tr>
 	  <?php
 	    echo html_tag('td',_("Your SpamCop authorization code:") . "<br />" .
-	    '<font size="-2">(' . _("see below") . ')</font>','right','','valign="top"');
+	    '<small>(' . _("see below") . ')</small>','right','','valign="top"');
 	  ?>
-	  <form method="post" action="options.php"><td valign="top">
+	  <td valign="top"><form method="post" action="options.php">
 	    <input type="text" size="30" name="ID" value="<?php echo htmlspecialchars($spamcop_id) ?>" />
 	    <input type="hidden" name="action" value="save_id" />
-	    <input type="submit" value="<?php echo _("Save ID"); ?>" />
-	  </td></form>
+	    <?php
+		echo '<input type="submit" value="' . _("Save ID") . "\" />\n";
+	    ?>
+	  </form></td>
 	</tr>
       </table>
 <?php
