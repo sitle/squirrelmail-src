@@ -812,38 +812,46 @@ function sq_check_save_extension($message) {
  */
 
 /**
- * This function is more or less a wrapper around stripslashes. Apparently
- * Explorer is stupid enough to just remove the backslashes and then
- * execute the content of the attribute as if nothing happened.
- * Who does that?
+ * This function checks attribute values for entity-encoded values
+ * and returns them translated into 8-bit strings so we can run
+ * checks on them.
  *
- * @param  attvalue   The value of the attribute
- * @return attvalue   The value of the attribute stripslashed.
+ * @param  $attvalue A string to run entity check against.
+ * @return           Nothing, modifies a reference value.
  */
-function sq_unbackslash($attvalue){
+function sq_defang(&$attvalue){
+    $me = 'sq_defang';
     /**
-     * Remove any backslashes. See if there are any first.
+     * Skip this if there aren't ampersands or backslashes.
      */
-    if (strstr($attvalue, '\\') !== false){
-        $attvalue = stripslashes($attvalue);
+    if (strpos($attvalue, '&') === false
+        && strpos($attvalue, '\\') === false){
+        return;
     }
-    return $attvalue;
+    $m = false;
+    do {
+        $m = false;
+        $m = $m || sq_deent($attvalue, '/\&#0*(\d+);*/s');
+        $m = $m || sq_deent($attvalue, '/\&#x0*((\d|[a-f])+);*/si', true);
+        $m = $m || sq_deent($attvalue, '/\\\\(\d+)/s', true);
+    } while ($m == true);
+    $attvalue = stripslashes($attvalue);
 }
 
 /**
  * Kill any tabs, newlines, or carriage returns. Our friends the
  * makers of the browser with 95% market value decided that it'd
  * be funny to make "java[tab]script" be just as good as "javascript".
- *
+ * 
  * @param  attvalue  The attribute value before extraneous spaces removed.
- * @return attvalue  The attribute value after extraneous spaces removed.
+ * @return attvalue  Nothing, modifies a reference value.
  */
-function sq_unspace($attvalue){
-    if (strcspn($attvalue, "\t\r\n") != strlen($attvalue)){
-        $attvalue = str_replace(Array("\t", "\r", "\n"), Array('', '', ''),
-                                $attvalue);
+function sq_unspace(&$attvalue){
+    $me = 'sq_unspace';
+    if (strcspn($attvalue, "\t\r\n\0 ") != strlen($attvalue)){
+        $attvalue = str_replace(Array("\t", "\r", "\n", "\0", " "),
+                                Array('',   '',   '',   '',   ''), $attvalue);
     }
-    return $attvalue;
 }
 
 /**
@@ -858,7 +866,6 @@ function sq_unspace($attvalue){
  */
 function sq_tagprint($tagname, $attary, $tagtype){
     $me = 'sq_tagprint';
-
     if ($tagtype == 2){
         $fulltag = '</' . $tagname . '>';
     } else {
@@ -1249,50 +1256,31 @@ function sq_getnxtag($body, $offset){
 }
 
 /**
- * This function checks attribute values for entity-encoded values
- * and returns them translated into 8-bit strings so we can run
- * checks on them.
+ * Translates entities into literal values so they can be checked.
  *
- * @param  $attvalue A string to run entity check against.
- * @return           Translated value.
+ * @param $attvalue the by-ref value to check.
+ * @param $regex    the regular expression to check against.
+ * @param $hex      whether the entites are hexadecimal.
+ * @return          True or False depending on whether there were matches.
  */
-function sq_deent($attvalue){
+function sq_deent(&$attvalue, $regex, $hex=false){
     $me = 'sq_deent';
-    /**
-     * See if we have to run the checks first. All entities must start
-     * with "&".
-     */
-    if (strpos($attvalue, '&') === false){
-        return $attvalue;
-    }
-    /**
-     * Check named entities first.
-     */
-    $trans = get_html_translation_table(HTML_ENTITIES);
-    /**
-     * Leave &quot; in, as it can mess us up.
-     */
-    $trans = array_flip($trans);
-    unset($trans{'&quot;'});
-    while (list($ent, $val) = each($trans)){
-        $attvalue = preg_replace('/' . $ent . '*/si', $val, $attvalue);
-    }
-    /**
-     * Now translate numbered entities from 1 to 255 if needed.
-     */
-    if (strpos($attvalue, '#') !== false){
-        $omit = Array(34, 39);
-        for ($asc = 256; $asc >= 0; $asc--){
-            if (!in_array($asc, $omit)){
-                $chr = chr($asc);
-                $octrule = '/\&#0*' . $asc . ';*/si';
-                $hexrule = '/\&#x0*' . dechex($asc) . ';*/si';
-                $attvalue = preg_replace($octrule, $chr, $attvalue);
-                $attvalue = preg_replace($hexrule, $chr, $attvalue);
+    $ret_match = false;
+    preg_match_all($regex, $attvalue, $matches);
+    if (is_array($matches) && sizeof($matches[0]) > 0){
+        $repl = Array();
+        for ($i = 0; $i < sizeof($matches[0]); $i++){
+            $numval = $matches[1][$i];
+            if ($hex){
+                $numval = hexdec($numval);
             }
+            $repl{$matches[0][$i]} = chr($numval);
         }
+        $attvalue = strtr($attvalue, $repl);
+        return true;
+    } else {
+        return false;
     }
-    return $attvalue;
 }
 
 /**
@@ -1334,15 +1322,8 @@ function sq_fixatts($tagname,
         /**
          * Remove any backslashes, entities, and extraneous whitespace.
          */
-        $attvalue = sq_unbackslash($attvalue);
-        $attvalue = sq_deent($attvalue);
-        $attvalue = sq_unspace($attvalue);
-
-        /**
-         * Remove \r \n \t \0 " " "\\"
-         */
-        $attvalue = str_replace(Array("\r", "\n", "\t", "\0", " ", "\\"),
-                        Array('', '','','','',''), $attvalue);
+        sq_defang($attvalue);
+        sq_unspace($attvalue);
 
         /**
          * Now let's run checks on the attvalues.
@@ -1373,7 +1354,7 @@ function sq_fixatts($tagname,
          * Turn cid: urls into http-friendly ones.
          */
         if (preg_match("/^[\'\"]\s*cid:/si", $attvalue)){
-            $attary{$attname} = sq_cid2http($message, $id, $attvalue, $mailbox);
+            $attary{$attname}= sq_cid2http($message, $id, $attvalue, $mailbox);
         }
     }
     /**
