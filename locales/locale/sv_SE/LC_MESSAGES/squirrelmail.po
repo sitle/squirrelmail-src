@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: squirrelmail HEADPOT-Creation-Date: 2003-09-20 11:04"
 "+0300\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-02-24 20:39+0200\n"
-"PO-Revision-Date: 2004-02-29 15:45+0100\n"
+"POT-Creation-Date: 2004-02-02 18:51+0200\n"
+"PO-Revision-Date: 2004-03-01 14:00+0100\n"
 "Last-Translator: Fredrik Jervfors <sqm_admin@fimbul.net>\n"
 "Language-Team: Swedish <squirrelmail-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -98,6 +98,9 @@ msgstr "Förnamn"
 msgid "Additional info"
 msgstr "Extra information"
 
+msgid "Add to:"
+msgstr "Lägg till:"
+
 msgid "No personal address book is defined. Contact administrator."
 msgstr "Ingen personlig adressbok är angiven. Kontakta administratören."
 
@@ -122,9 +125,8 @@ msgstr "Ändra markerade"
 msgid "Delete selected"
 msgstr "Kasta markerade"
 
-#, c-format
-msgid "Add to %s"
-msgstr "Lägg till i %s"
+msgid "Add to address book"
+msgstr "Lägg till i adressboken"
 
 msgid "said"
 msgstr "skrev"
@@ -155,6 +157,9 @@ msgstr "Kunde inte flytta/kopiera filen. Filen bifogades inte."
 
 msgid "Draft Saved"
 msgstr "Utkast sparat"
+
+msgid "Your Message has been sent."
+msgstr "Brevet har skickats."
 
 msgid "From:"
 msgstr "Från:"
@@ -223,7 +228,7 @@ msgid "Server replied: "
 msgstr "Servern svarade: "
 
 msgid "Illegal folder name.  Please select a different name."
-msgstr "Otillåtet mappnamn.  Välj ett annat namn."
+msgstr "Otillåtet mappnamn. Välj ett annat namn."
 
 msgid "Click here to go back"
 msgstr "Klicka här för att gå tillbaka"
@@ -656,6 +661,15 @@ msgstr ""
 msgid "Send read receipt now"
 msgstr "Skicka mottagningsbevis nu"
 
+msgid "View Message"
+msgstr "Visa brev"
+
+msgid "Delete & Prev"
+msgstr "Kasta och visa föregående"
+
+msgid "Delete & Next"
+msgstr "Kasta och visa nästa"
+
 msgid "Search Results"
 msgstr "Sökresultat"
 
@@ -668,8 +682,11 @@ msgstr "Fortsätt med utkast"
 msgid "Edit Message as New"
 msgstr "Redigera som nytt brev"
 
-msgid "View Message"
-msgstr "Visa brev"
+msgid "Reply"
+msgstr "Svara"
+
+msgid "Reply All"
+msgstr "Svara Alla"
 
 msgid "Forward"
 msgstr "Vidarebefordra"
@@ -677,11 +694,14 @@ msgstr "Vidarebefordra"
 msgid "Forward as Attachment"
 msgstr "Vidarebefordra som bilaga"
 
-msgid "Reply"
-msgstr "Svara"
+msgid "Bypass Trash"
+msgstr "Kringgå papperskorgen"
 
-msgid "Reply All"
-msgstr "Svara Alla"
+msgid "Move to:"
+msgstr "Flytta till:"
+
+msgid "Move"
+msgstr "Flytta"
 
 msgid "View Full Header"
 msgstr "Visa alla Internetrubriker"
@@ -692,8 +712,35 @@ msgstr "Bilagor"
 msgid "You must be logged in to access this page."
 msgstr "Du måste vara inloggad för att nå denna sida."
 
-msgid "Folder:"
-msgstr "Mapp:"
+msgid "All Folders"
+msgstr "Alla mappar"
+
+msgid "Please enter something to search for"
+msgstr "Ange något att söka efter"
+
+msgid "There must be at least one criteria to search for"
+msgstr "Det måste finnas minst ett sökkriterium"
+
+msgid "Error in criteria argument"
+msgstr "Fel i kriteriumet"
+
+msgid "M j, Y"
+msgstr "M j, Y"
+
+msgid "(Illegal date)"
+msgstr "(Otillåtet datum)"
+
+msgid "(Wrong date)"
+msgstr "(Fel datum)"
+
+msgid "In"
+msgstr "In"
+
+msgid "(Missing argument)"
+msgstr "(Saknat argument)"
+
+msgid "(Spurious argument)"
+msgstr "(Falskt argument)"
 
 msgid "edit"
 msgstr "redigera"
@@ -704,8 +751,8 @@ msgstr "sök"
 msgid "delete"
 msgstr "ta bort"
 
-msgid "Recent Searches"
-msgstr "Senaste sökningarna"
+msgid "Saved Searches"
+msgstr "Sparade sökningar"
 
 msgid "save"
 msgstr "spara"
@@ -713,8 +760,113 @@ msgstr "spara"
 msgid "forget"
 msgstr "glöm"
 
-msgid "All Folders"
-msgstr "Alla mappar"
+msgid "Recent Searches"
+msgstr "Senaste sökningarna"
+
+msgid "Missing"
+msgstr "Saknas"
+
+msgid "and&nbsp;subfolders:"
+msgstr "och&nbsp;undermappar:"
+
+msgid "Exclude Criteria:"
+msgstr "Uteslutningskriterier:"
+
+msgid "Search Criteria"
+msgstr "Sökkriterier"
+
+msgid "Folder:"
+msgstr "Mapp:"
+
+msgid "Add New Criteria"
+msgstr "Lägg till nya kriterier"
+
+msgid "Remove Excluded Criteria"
+msgstr "Ta bort uteslutningskriterier"
+
+msgid "Remove All Criteria"
+msgstr "Ta bort alla kriterier"
+
+msgid "Answered"
+msgstr "Besvarad"
+
+msgid "Before"
+msgstr "Innan"
+
+msgid "Message Body"
+msgstr "Brevtext"
+
+msgid "Deleted"
+msgstr "Borttagen"
+
+msgid "Draft"
+msgstr "Utkast"
+
+msgid "Flagged"
+msgstr "Flaggad"
+
+msgid "Sent By"
+msgstr "Skickad av"
+
+msgid "Header Field"
+msgstr "Fält i huvud"
+
+msgid "Keyword"
+msgstr "Nyckelord"
+
+msgid "Larger Than"
+msgstr "Större än"
+
+msgid "Old"
+msgstr "Gammal"
+
+msgid "On"
+msgstr "På"
+
+msgid "Recent"
+msgstr "Nyligen"
+
+msgid "Seen"
+msgstr "Läst"
+
+msgid "Sent Before"
+msgstr "Skickat innan"
+
+msgid "Sent On"
+msgstr "Skickat den"
+
+msgid "Sent Since"
+msgstr "Skickat sedan"
+
+msgid "Since"
+msgstr "Sedan"
+
+msgid "Smaller Than"
+msgstr "Mindre än"
+
+msgid "Subject Contains"
+msgstr "Ärendet innehåller"
+
+msgid "Header and Body"
+msgstr "Huvud och text"
+
+msgid "Sent To"
+msgstr "Skickat till"
+
+msgid "Not"
+msgstr "Inte"
+
+msgid "And In"
+msgstr "och i"
+
+msgid "Or In"
+msgstr "eller i"
+
+msgid "And"
+msgstr "och"
+
+msgid "Or"
+msgstr "eller"
 
 msgid "No Messages Found"
 msgstr "Inga brev hittades"
@@ -772,6 +924,9 @@ msgstr "Visar alla rubriker"
 
 msgid "Viewing a text attachment"
 msgstr "Visar en bifogad text"
+
+msgid "Folder List"
+msgstr "Lista över mappar"
 
 msgid "Personal address book"
 msgstr "Personlig adressbok"
@@ -970,9 +1125,6 @@ msgstr "D, j F Y, g:i a"
 msgid "D, F j, Y G:i"
 msgstr "D, j F Y, G:i"
 
-msgid "M j, Y"
-msgstr "M j, Y"
-
 msgid "g:i a"
 msgstr "g:i a"
 
@@ -988,9 +1140,6 @@ msgstr "D, G:i"
 #, c-format
 msgid "Preference database error (%s). Exiting abnormally"
 msgstr "Fel i inställningsdatabas (%s). Avslutar programmet"
-
-msgid "Unknown user or password incorrect."
-msgstr "Felaktigt användarnamn eller lösenord."
 
 #, c-format
 msgid "Click here to return to %s"
@@ -1073,32 +1222,47 @@ msgstr ""
 "Det gick inte att kopiera brevfotsfilen %s från den temporära filen %s."
 "Vänligen rapportera detta fel till systemadministratören."
 
-msgid "ERROR : No available imapstream."
-msgstr "FEL : Ingen IMAP-stream tillgänglig."
-
-msgid "ERROR : Connection dropped by imap-server."
-msgstr "FEL : IMAP-servern har avbrutit anslutningen."
-
 msgid "ERROR : Could not complete request."
 msgstr "FEL : Operationen misslyckades."
-
-msgid "Query:"
-msgstr "Fråga:"
-
-msgid "Reason Given: "
-msgstr "Orsak: "
 
 msgid "ERROR : Bad or malformed request."
 msgstr "FEL : Felaktig eller felskriven operation."
 
-msgid "Server responded: "
-msgstr "Servern svarade: "
-
 msgid "ERROR : Imap server closed the connection."
 msgstr "FEL : IMAP-servern stängde förbindelsen."
 
+msgid "ERROR : Connection dropped by imap-server."
+msgstr "FEL : IMAP-servern har avbrutit anslutningen."
+
 msgid "ERROR : Unknown imap response."
 msgstr "FEL : Okänt svar från IMAP-servern."
+
+msgid "Reason Given: "
+msgstr "Orsak: "
+
+msgid "Possible reason : "
+msgstr "Trolig orsak : "
+
+msgid "Query:"
+msgstr "Fråga:"
+
+msgid "The imap server failed to handle threading."
+msgstr "IMAP-server kan inte hantera korrespondensvyer."
+
+msgid "Click here to unset thread view for this mailbox and start again."
+msgstr "Ta bort korrespondansvyer för denna brevlåda och börja om."
+
+msgid "ERROR : No available imapstream."
+msgstr "FEL : Ingen IMAP-stream tillgänglig."
+
+msgid "ERROR : Bad function call."
+msgstr "FEL : Felaktigt funktionsanrop."
+
+msgid "Reason:"
+msgstr "Orsak:"
+
+msgid "Server responded: "
+msgstr "Servern svarade: "
 
 #, c-format
 msgid "Error connecting to IMAP server: %s."
@@ -1114,6 +1278,9 @@ msgstr "Okänt fel: %s"
 
 msgid "Read data:"
 msgstr "Läs data:"
+
+msgid "Unknown user or password incorrect."
+msgstr "Felaktigt användarnamn eller lösenord."
 
 msgid "ERROR : Could not append message to"
 msgstr "FEL : Kunde inte lägga till brevet till"
@@ -1166,8 +1333,11 @@ msgstr ""
 msgid "THIS FOLDER IS EMPTY"
 msgstr "DENNA MAPP ÄR TOM"
 
-msgid "Move"
-msgstr "Flytta"
+msgid "Read"
+msgstr "Läst"
+
+msgid "Unread"
+msgstr "Oläst"
 
 msgid "Expunge"
 msgstr "Töm papperskorgen"
@@ -1175,17 +1345,14 @@ msgstr "Töm papperskorgen"
 msgid "mailbox"
 msgstr "brevlåda"
 
-msgid "Read"
-msgstr "Läst"
-
-msgid "Unread"
-msgstr "Oläst"
-
 msgid "Unthread View"
 msgstr "Normal vy"
 
 msgid "Thread View"
 msgstr "Korrespondensvy"
+
+msgid "Click here to change the sorting of the message list"
+msgstr "Klicka här för att ändra sorteringen av brevlistan"
 
 msgid "Toggle All"
 msgstr "Skifta markeringar"
@@ -1379,6 +1546,15 @@ msgstr "Antal sidor att visa"
 msgid "Always Show Full Date"
 msgstr "Visa alltid hela datumet"
 
+msgid "Length of From/To Field (0 for full)"
+msgstr "Längd på från-/till-fältet (0 för full längd)"
+
+msgid "Length of Subject Field (0 for full)"
+msgstr "Längd på ärendefältet (0 för full längd)"
+
+msgid "Show recipient name if the message is from your default identity"
+msgstr "Visa mottagarnamn om brevet är från din egen huvudidentitet"
+
 msgid "Message Display and Composition"
 msgstr "Brevvisning och -skrivning"
 
@@ -1457,11 +1633,17 @@ msgstr "Fokus på texten"
 msgid "Select body"
 msgstr "Välj text"
 
+msgid "Strip signature when replying"
+msgstr "Avlägsna brevfot vid svar"
+
 msgid "Enable Sort by of Receive Date"
 msgstr "Aktivera sortering på ankomstdatum"
 
 msgid "Enable Thread Sort by References Header"
 msgstr "Aktivera korrespondensvy baserad på brevhuvud"
+
+msgid "Show 'Delete & Prev/Next' Links"
+msgstr "Visa Kasta och visa föregående/nästa-länkar."
 
 msgid "Special Folder Options"
 msgstr "Inställningar för särskilda mappar"
@@ -1475,17 +1657,20 @@ msgstr "Använd inte \"papperskorg\""
 msgid "Trash Folder"
 msgstr "Mapp för kastade brev"
 
+msgid "Do not use Drafts"
+msgstr "Använd inte \"utkast\""
+
+msgid "Draft Folder"
+msgstr "Mapp för utkast"
+
 msgid "Do not use Sent"
 msgstr "Använd inte \"skickat\""
 
 msgid "Sent Folder"
 msgstr "Mapp för skickade brev"
 
-msgid "Do not use Drafts"
-msgstr "Använd inte \"utkast\""
-
-msgid "Draft Folder"
-msgstr "Mapp för utkast"
+msgid "Save Replies with Original Message"
+msgstr "Spara svar ihop med det ursprungliga brevet"
 
 msgid "Folder List Options"
 msgstr "Inställningar för mapplista"
@@ -1535,6 +1720,9 @@ msgstr "Endast olästa"
 msgid "Unseen and Total"
 msgstr "Olästa och totalt antal"
 
+msgid "Enable Collapsable Folders"
+msgstr "Tillåt att underliggande mappar döljs"
+
 msgid "Enable Cumulative Unread Message Notification"
 msgstr "Aktivera avisering vid ökande antal olästa brev"
 
@@ -1576,6 +1764,12 @@ msgstr "Typ av lista"
 
 msgid "Long: "
 msgstr "Lång: "
+
+msgid "Folder"
+msgstr "Mapp"
+
+msgid "Subfolder"
+msgstr "Undermapp"
 
 msgid "Indented: "
 msgstr "Indragen: "
@@ -1652,6 +1846,10 @@ msgstr "Spara till adressboken:"
 msgid "Try to verify addresses"
 msgstr "Försök att verifiera adresser"
 
+#, c-format
+msgid "Add to %s"
+msgstr "Lägg till i %s"
+
 msgid "Config File Version"
 msgstr "Version av inställningsfil"
 
@@ -1687,9 +1885,6 @@ msgstr "URI för leverantörslänken"
 
 msgid "Provider Name"
 msgstr "Leverantörsnamn"
-
-msgid "Default Language"
-msgstr "Förvalt språk"
 
 msgid "Top Frame"
 msgstr "Övre ram"
@@ -1820,9 +2015,6 @@ msgstr "Aktivera /NoSelect fix för mappar"
 msgid "General Options"
 msgstr "Allmänna inställningar"
 
-msgid "Default Charset"
-msgstr "Förvald teckenuppsättning"
-
 msgid "Data Directory"
 msgstr "Datamapp"
 
@@ -1901,6 +2093,51 @@ msgstr "Fält för nyckel"
 msgid "Preferences value field"
 msgstr "Fält för värde"
 
+msgid "Global address book DSN"
+msgstr "Global adressboks-DSN"
+
+msgid "Global address book table"
+msgstr "Global adressbokstabell"
+
+msgid "Allow writing into global address book"
+msgstr "Tillåt att skriva i den globala adressboken"
+
+msgid "Allow listing of global address book"
+msgstr "Tillåt att lista den globala adressboken"
+
+msgid "Language settings"
+msgstr "Språkinställningar"
+
+msgid "Default Language"
+msgstr "Förvalt språk"
+
+msgid "Default Charset"
+msgstr "Förvald teckenuppsättning"
+
+msgid "Show alternative language names"
+msgstr "Visa alternativa språknamn"
+
+msgid "Available languages"
+msgstr "Tillgängliga språk"
+
+msgid "Use agresive decoding"
+msgstr "Använd aggressiv avkodning"
+
+msgid "Tweaks"
+msgstr "Finjusteringar"
+
+msgid "Use advanced tree folder listing"
+msgstr "Använd avancerad mappträdlista"
+
+msgid "Use old folder listing functions"
+msgstr "Använd gamla mapplistefunktioner"
+
+msgid "Use php recode functions"
+msgstr "Använd PHP-omkodningsfunktioner"
+
+msgid "Use php iconv functions"
+msgstr "Använd PHP:s iconv-funktioner"
+
 msgid "Themes"
 msgstr "Teman"
 
@@ -1915,6 +2152,23 @@ msgstr "Använd temats indexnummer"
 
 msgid "Configuration Administrator"
 msgstr "Konfigurationsadministratör"
+
+msgid ""
+"Note: it is recommended that you configure your system using conf.pl, and "
+"not this plugin. conf.pl contains additional information regarding the "
+"purpose of variables and appropriate values, as well as additional "
+"verification steps."
+msgstr ""
+"OBS: Det är rekommenderat att du konfigurerar systemet med conf.pl, och inte "
+"med denna insticksmodul. conf.pl innehåller extra information om syftet med "
+"variabler och deras tillämpbara värden, såväl som extra "
+"verifikationsåtgärder."
+
+msgid ""
+"Run or consult conf.pl should you run into difficulty with your "
+"configuration."
+msgstr ""
+"Om du stöter på problem med konfigurationen, kör eller konsultera conf.pl."
 
 msgid "Theme Name"
 msgstr "Temats namn"
@@ -2138,15 +2392,6 @@ msgstr "6 timmar"
 
 msgid "Calendar"
 msgstr "Kalender"
-
-msgid "Delete & Prev"
-msgstr "Kasta och visa föregående"
-
-msgid "Delete & Next"
-msgstr "Kasta och visa nästa"
-
-msgid "Move to:"
-msgstr "Flytta till:"
 
 msgid ""
 "COMMERCIAL - This list contains servers that are verified spam senders. It "
@@ -2506,9 +2751,6 @@ msgstr "Ingen server angiven"
 msgid "Error "
 msgstr "Fel "
 
-msgid "No connection to server"
-msgstr "Kunde inte kontakta servern"
-
 msgid "POP3 user:"
 msgstr "POP3 användarnamn:"
 
@@ -2525,10 +2767,13 @@ msgid "No password submitted"
 msgstr "Inget lösenord angivet"
 
 msgid "authentication failed "
-msgstr "validering  misslyckades"
+msgstr "validering misslyckades"
 
 msgid "POP3 apop:"
 msgstr "POP3 apop:"
+
+msgid "No connection to server"
+msgstr "Kunde inte kontakta servern"
 
 msgid "No login ID submitted"
 msgstr "Inget användarnamn angivet"
@@ -2587,9 +2832,6 @@ msgstr "Inget brevnummer angivet"
 msgid "Command failed "
 msgstr "Kommandot misslyckades "
 
-msgid "Remote POP server Fetching Mail"
-msgstr "POP-servern hämtar brev"
-
 msgid "Select Server:"
 msgstr "Välj server:"
 
@@ -2598,6 +2840,15 @@ msgstr "Lösenord för"
 
 msgid "Fetch Mail"
 msgstr "Hämta brev"
+
+msgid "Remote POP server Fetching Mail"
+msgstr "POP-servern hämtar brev"
+
+msgid "No POP3 servers configured yet."
+msgstr "Inga POP3-servrar är konfigurerade."
+
+msgid "Click here to go to the options page."
+msgstr "Tillbaka till inställningar"
 
 msgid "Fetching from "
 msgstr "Hämtar från "
@@ -2683,7 +2934,7 @@ msgid ""
 "encryption anyway. Additionally, the encryption that we do to save it on the "
 "server can be undone by a hacker reading the source to this file."
 msgstr ""
-"Du bör veta att kryptering som används för att spara  ditt lösenord inte är "
+"Du bör veta att kryptering som används för att spara ditt lösenord inte är "
 "helt säker. I vilket fall som helst, om du använder pop så används ingen "
 "kryptering alls. Kryptering som används kan knäckas av en hacker som kommer "
 "åt källan till den här filen."
@@ -2970,6 +3221,15 @@ msgstr "Grundlig e-postbaserad rapportering"
 msgid "Web-based form"
 msgstr "Webbaserat formulär"
 
+msgid "Spam Service Type:"
+msgstr "Typ av skräpposttjänst:"
+
+msgid "Free reporting"
+msgstr "Gratis rapportering"
+
+msgid "Member services"
+msgstr "Medlemstjänster"
+
 msgid "Your SpamCop authorization code:"
 msgstr "Din behörighetskod till SpamCop:"
 
@@ -3077,16 +3337,29 @@ msgstr ""
 
 msgid ""
 "The SpamCop service will display information as it finds it, so scroll down "
-"until you see a form button.  It might pause a little while it is looking up "
-"information, so be a little patient.  Read what it says, and submit the "
-"spam.  Close the browser window.  Press Cancel or click on the appropriate "
-"mail folder to see messages and/or delete the spam."
+"until you see a form button. It might pause a little while it is looking up "
+"information, so be a little patient. Read what it says, and submit the spam. "
+"Close the browser window.  Press Cancel or click on the appropriate mail "
+"folder to see messages and/or delete the spam."
 msgstr ""
 "SpamCop-tjänsten visar informationen som den fått den, så bläddra nedåt till "
 "dess du ser en knapp. Det kan ta ett tag medan informationen kontrolleras, "
-"så ha tålamod. Läs vad det står och skicka sedan in rapporten. Stäng "
+"så ha tålamod. Läs vad det står och skicka in rapporten. Stäng "
 "fönstret. Klicka på avbryt eller tillämpbar mapp för att se skräpposten och/"
 "eller kasta den."
+
+msgid "Spamcop Service Type"
+msgstr "Typ av SpamCop-tjänst"
+
+msgid ""
+"Service type option allows selecting which spamcop services you are using. "
+"Member services use different web reporting forms  and does not display "
+"nags. You can purchase these services, if you want to support SpamCop."
+msgstr ""
+"Tjänstetypen tillåter dig att välja vilken tjänst du använder. "
+"Medlemstjänster använder andra webbrapporteringsformulär och visar inte "
+"irriterande meddelanden. Du kan köpa dessa tjänster om du vill stödja "
+"SpamCop."
 
 msgid ""
 "<b>For more information</b> about SpamCop, it's services, spam in general, "
@@ -3507,15 +3780,15 @@ msgstr "Antal språkpar som stöds: %s"
 msgid "No known limits, powered by Systran"
 msgstr "Inga kända begränsningar (använder Systran)"
 
+msgid "No known limits, powered by GPLTrans (free, open source)"
+msgstr "Inga kända begränsningar (använder GPLTrans (fri, öppen källkod)"
+
 msgid "No known limits, powered by Translation Experts's InterTran"
 msgstr "Inga kända begränsningar (använder Translation Experts' InterTran)"
 
 #, c-format
 msgid "Number of supported languages: %s"
 msgstr "Antal språk som stöds: %s"
-
-msgid "No known limits, powered by GPLTrans (free, open source)"
-msgstr "Inga kända begränsningar (använder GPLTrans (fri, öppen källkod)"
 
 msgid "Hellenic translations, no known limits, powered by Systran"
 msgstr "Helleniska översättningar, inga kända begränsningar (använder Systran)"
@@ -3620,6 +3893,9 @@ msgstr "Danska"
 msgid "Dutch"
 msgstr "Holländska"
 
+msgid "Filipino (Tagalog)"
+msgstr "Filippinska (Tagalog)"
+
 msgid "Finnish"
 msgstr "Finska"
 
@@ -3631,6 +3907,9 @@ msgstr "Ungerska"
 
 msgid "Icelandic"
 msgstr "Isländska"
+
+msgid "Latin"
+msgstr "Latin"
 
 msgid "Latin American Spanish"
 msgstr "Latinamerikansk spanska"
@@ -3662,304 +3941,23 @@ msgstr "Walesiska"
 msgid "Indonesian"
 msgstr "Indonesiska"
 
-msgid "Latin"
-msgstr "Latin"
-
 msgid "to English"
 msgstr "till Engelska"
 
 msgid "from English"
 msgstr "från Engelska"
 
+msgid "Simplified Chinese"
+msgstr "Kinsiska, förenklad"
+
+msgid "Traditional Chinese"
+msgstr "Kinesiska, traditionel"
+
 msgid "Interface language"
 msgstr "Språk för gränssnittet"
 
 msgid "Translation direction"
 msgstr "Översättningsriktning"
-
-msgid "Add to:"
-msgstr "Lägg till:"
-
-msgid "Add to address book"
-msgstr "Lägg till i adressboken"
-
-msgid "Your Message has been sent."
-msgstr "Brevet har skickats."
-
-msgid "Bypass Trash"
-msgstr "Kringgå papperskorgen"
-
-msgid "Please enter something to search for"
-msgstr "Ange något att söka efter"
-
-msgid "There must be at least one criteria to search for"
-msgstr "Det måste finnas minst ett sökkriterium"
-
-msgid "Error in criteria argument"
-msgstr "Fel i kriteriumet"
-
-msgid "(Illegal date)"
-msgstr "(Otillåtet datum)"
-
-msgid "(Wrong date)"
-msgstr "(Fel datum)"
-
-msgid "In"
-msgstr "In"
-
-msgid "(Missing argument)"
-msgstr "(Saknat argument)"
-
-msgid "(Spurious argument)"
-msgstr "(Falskt argument)"
-
-msgid "Saved Searches"
-msgstr "Sparade sökningar"
-
-msgid "Missing"
-msgstr "Saknas"
-
-msgid "and&nbsp;subfolders:"
-msgstr "och&nbsp;undermappar:"
-
-msgid "Exclude Criteria:"
-msgstr "Uteslutningskriterier:"
-
-msgid "Search Criteria"
-msgstr "Sökkriterier"
-
-msgid "Add New Criteria"
-msgstr "Lägg till nya kriterier"
-
-msgid "Remove Excluded Criteria"
-msgstr "Ta bort uteslutningskriterier"
-
-msgid "Remove All Criteria"
-msgstr "Ta bort alla kriterier"
-
-msgid "Answered"
-msgstr "Besvarad"
-
-msgid "Before"
-msgstr "Innan"
-
-msgid "Message Body"
-msgstr "Brevtext"
-
-msgid "Deleted"
-msgstr "Borttagen"
-
-msgid "Draft"
-msgstr "Utkast"
-
-msgid "Flagged"
-msgstr "Flaggad"
-
-msgid "Sent By"
-msgstr "Skickad av"
-
-msgid "Header Field"
-msgstr "Fält i huvud"
-
-msgid "Keyword"
-msgstr "Nyckelord"
-
-msgid "Larger Than"
-msgstr "Större än"
-
-msgid "Old"
-msgstr "Gammal"
-
-msgid "On"
-msgstr "På"
-
-msgid "Recent"
-msgstr "Nyligen"
-
-msgid "Seen"
-msgstr "Läst"
-
-msgid "Sent Before"
-msgstr "Skickat innan"
-
-msgid "Sent On"
-msgstr "Skickat den"
-
-msgid "Sent Since"
-msgstr "Skickat sedan"
-
-msgid "Since"
-msgstr "Sedan"
-
-msgid "Smaller Than"
-msgstr "Mindre än"
-
-msgid "Subject Contains"
-msgstr "Ärendet innehåller"
-
-msgid "Header and Body"
-msgstr "Huvud och text"
-
-msgid "Sent To"
-msgstr "Skickat till"
-
-msgid "Not"
-msgstr "Inte"
-
-msgid "And In"
-msgstr "och i"
-
-msgid "Or In"
-msgstr "eller i"
-
-msgid "And"
-msgstr "och"
-
-msgid "Or"
-msgstr "eller"
-
-msgid "Folder List"
-msgstr "Lista över mappar"
-
-msgid "Possible reason : "
-msgstr "Trolig orsak : "
-
-msgid "The imap server failed to handle threading."
-msgstr "IMAP-server kan inte hantera korrespondensvyer."
-
-msgid "Click here to unset thread view for this mailbox and start again."
-msgstr "Ta bort korrespondansvyer för denna brevlåda och börja om."
-
-msgid "ERROR : Bad function call."
-msgstr "FEL : Felaktigt funktionsanrop."
-
-msgid "Reason:"
-msgstr "Orsak:"
-
-msgid "Click here to change the sorting of the message list"
-msgstr "Klicka här för att ändra sorteringen av brevlistan"
-
-msgid "Length of From/To Field (0 for full)"
-msgstr "Längd på från-/till-fältet (0 för full längd)"
-
-msgid "Length of Subject Field (0 for full)"
-msgstr "Längd på ärendefältet (0 för full längd)"
-
-msgid "Show recipient name if the message is from your default identity"
-msgstr "Visa mottagarnamn om brevet är från din egen huvudidentitet"
-
-msgid "Strip signature when replying"
-msgstr "Avlägsna brevfot vid svar"
-
-msgid "Show 'Delete & Prev/Next' Links"
-msgstr "Visa Kasta och visa föregående/nästa-länkar."
-
-msgid "Save Replies with Original Message"
-msgstr "Spara svar ihop med det ursprungliga brevet"
-
-msgid "Enable Collapsable Folders"
-msgstr "Tillåt att underliggande mappar döljs"
-
-msgid "Folder"
-msgstr "Mapp"
-
-msgid "Subfolder"
-msgstr "Undermapp"
-
-msgid "Global address book DSN"
-msgstr "Global adressboks-DSN"
-
-msgid "Global address book table"
-msgstr "Global adressbokstabell"
-
-msgid "Allow writing into global address book"
-msgstr "Tillåt att skriva i den globala adressboken"
-
-msgid "Allow listing of global address book"
-msgstr "Tillåt att lista den globala adressboken"
-
-msgid "Language settings"
-msgstr "Språkinställningar"
-
-msgid "Show alternative language names"
-msgstr "Visa alternativa språknamn"
-
-msgid "Available languages"
-msgstr "Tillgängliga språk"
-
-msgid "Use agresive decoding"
-msgstr "Använd aggressiv avkodning"
-
-msgid "Tweaks"
-msgstr "Finjusteringar"
-
-msgid "Use advanced tree folder listing"
-msgstr "Använd avancerad mappträdlista"
-
-msgid "Use old folder listing functions"
-msgstr "Använd gamla mapplistefunktioner"
-
-msgid "Use php recode functions"
-msgstr "Använd PHP-omkodningsfunktioner"
-
-msgid "Use php iconv functions"
-msgstr "Använd PHP:s iconv-funktioner"
-
-msgid ""
-"Note: it is recommended that you configure your system using conf.pl, and "
-"not this plugin. conf.pl contains additional information regarding the "
-"purpose of variables and appropriate values, as well as additional "
-"verification steps."
-msgstr ""
-"OBS: Det är rekommenderat att du konfigurerar systemet med conf.pl, och inte "
-"med denna insticksmodul. conf.pl innehåller extra information om syftet med "
-"variabler och deras tillämpbara värden, såväl som extra "
-"verifikationsåtgärder."
-
-msgid ""
-"Run or consult conf.pl should you run into difficulty with your "
-"configuration."
-msgstr ""
-"Om du stöter på problem med konfigurationen, kör eller konsultera conf.pl."
-
-msgid "No POP3 servers configured yet."
-msgstr "Inga POP3-servrar är konfigurerade."
-
-msgid "Click here to go to the options page."
-msgstr "Tillbaka till inställningar"
-
-msgid "Spam Service Type:"
-msgstr "Typ av skräpposttjänst:"
-
-msgid "Free reporting"
-msgstr "Gratis rapportering"
-
-msgid "Member services"
-msgstr "Medlemstjänster"
-
-msgid "Spamcop Service Type"
-msgstr "Typ av SpamCop-tjänst"
-
-msgid ""
-"Service type option allows selecting which spamcop services you are using. "
-"Member services use different web reporting forms  and does not display "
-"nags. You can purchase these services, if you want to support SpamCop."
-msgstr ""
-"Tjänstetypen tillåter dig att välja vilken tjänst du använder. "
-"Medlemstjänster använder andra webbrapporteringsformulär och visar inte "
-"irriterande meddelanden. Du kan köpa dessa tjänster om du vill stödja "
-"SpamCop."
-
-msgid "Filipino (Tagalog)"
-msgstr "Filippinska (Tagalog)"
-
-#, c-format
-msgid "Simplified Chinese"
-msgstr "Kinsiska, förenklad"
-
-#, c-format
-msgid "Traditional Chinese"
-msgstr "Kinesiska, traditionel"
 
 msgid "Delivery error report"
 msgstr "Rapport om leveransfel"
