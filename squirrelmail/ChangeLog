@@ -15,6 +15,8 @@ Version 1.2.9 -- CVS
   - Bugfixes for using SquirrelMail with register_globals = off
   - Write/close session before redirecting after login; this should (partially)
     solve the "You must be logged in"-trouble.
+  - Enable TZ in safe_mode if safe_mode_allowed_env_vars permits this bug
+    #612148.
 
 Version 1.2.8 -- September 14, 2002
 -----------------------------------
