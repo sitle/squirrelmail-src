@@ -27,14 +27,16 @@ if ( ! sqgetGlobalVar('mailbox',$mailbox,SQ_GET) ||
     error_box(_("Invalid URL"),$color);
 } else {
     $passed_id= (int) $passed_id;
+    $view_unsafe_images = (bool) $_GET['view_unsafe_images'];
 /* end globals */
     displayHtmlHeader( _("Printer Friendly"), '', false, true );
     echo '<frameset rows="60, *">' . "\n";
     echo '<frame src="printer_friendly_top.php" name="top_frame" '
         . 'scrolling="no" noresize="noresize" frameborder="0" />' . "\n";
     echo '<frame src="printer_friendly_bottom.php?passed_ent_id='
-        . urlencode($passed_ent_id) . '&amp;mailbox=' . urlencode($mailbox) 
+        . urlencode($passed_ent_id) . '&amp;mailbox=' . urlencode($mailbox)
         . '&amp;passed_id=' . $passed_id
+        . '&amp;view_unsafe_images='.$view_unsafe_images
         . '" name="bottom_frame" frameborder="0" />' . "\n";
     echo "</frameset>\n";
 }
