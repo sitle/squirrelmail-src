@@ -14,16 +14,19 @@
       define ('validate_php', true); 
    }
 
-   function data_validate (&$item, $key) {
-      // This prevents overriding vars like $config_php
-
-      if (strstr ($key, "_php") /* ADD MORE CHECKS HERE */) {
-         echo "<br><br><center><b>Possible security breach!!</b><br>";
-         echo "If you received this message on accident, please notify your administrator.";
-         echo "</center>";
-         exit;
-      }
-   }
-   array_walk ($HTTP_GET_VARS, "data_validate");
-   array_walk ($HTTP_POST_VARS, "data_validate");
+#   // If problems ever arise where variables need validated for security
+#   // purposes, use this.
+#
+#   function data_validate (&$item, $key) {
+#      // This prevents overriding vars like $config_php
+#
+#      if (strstr ($key, "_php") /* ADD MORE CHECKS HERE */) {
+#         echo "<br><br><center><b>Possible security breach!!</b><br>";
+#         echo "If you received this message on accident, please notify your administrator.";
+#         echo "</center>";
+#         exit;
+#      }
+#   }
+#   array_walk ($HTTP_GET_VARS, "data_validate");
+#   array_walk ($HTTP_POST_VARS, "data_validate");
 ?>
