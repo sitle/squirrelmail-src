@@ -1,14 +1,13 @@
 # Squirrelmail Japanese Translation.
 # Copyright (c) 1999-2002 The Squirrelmail Development Team
 # HIGASHIYAMA Masato <masato@yamaai-tech.com>, 2002, 2003.
-#
+# $Id$
 msgid ""
 msgstr ""
-"Project-Id-Version: $Id: squirrelmail.po,v 1.6 2003/03/27 16:47:43 "
-"philippe_mingo Exp $\n"
+"Project-Id-Version: squirrelmail 1.4.3cvs\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2003-09-20 11:04+0300\n"
-"PO-Revision-Date: 2003-03-15 16:53+0900\n"
+"PO-Revision-Date: 2004-04-23 11:33+0900\n"
 "Last-Translator: Masato HIGASHIYAMA <masato@yamaai-tech.com>\n"
 "Language-Team: Japanese  <squirrelmail-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -86,7 +85,7 @@ msgid "Must be unique"
 msgstr "重複しないようにしてください"
 
 msgid "E-mail address"
-msgstr ""
+msgstr "E-mailアドレス"
 
 msgid "Last name"
 msgstr "姓"
@@ -373,7 +372,7 @@ msgid "Last Refresh"
 msgstr "前リフレッシュ"
 
 msgid "refresh unseen/total info"
-msgstr ""
+msgstr "未読/合計の更新"
 
 msgid "Save folder tree"
 msgstr "フォルダツリーの保存"
@@ -641,7 +640,6 @@ msgstr "メーラ"
 msgid "Read receipt"
 msgstr "受取通知"
 
-#, fuzzy
 msgid "sent"
 msgstr "送信済"
 
@@ -885,110 +883,98 @@ msgstr "金"
 msgid "Saturday"
 msgstr "土"
 
-#, fuzzy
 msgid "Sun"
 msgstr "日"
 
-#, fuzzy
 msgid "Mon"
 msgstr "月"
 
-#, fuzzy
 msgid "Tue"
 msgstr "火"
 
 msgid "Wed"
-msgstr ""
+msgstr "水"
 
 msgid "Thu"
-msgstr ""
+msgstr "木"
 
-#, fuzzy
 msgid "Fri"
 msgstr "金"
 
 msgid "Sat"
-msgstr ""
+msgstr "土"
 
 msgid "January"
-msgstr " 1"
+msgstr " 1月"
 
 msgid "February"
-msgstr " 2"
+msgstr " 2月"
 
 msgid "March"
-msgstr " 3"
+msgstr " 3月"
 
 msgid "April"
-msgstr " 4"
+msgstr " 4月"
 
 msgid "May"
-msgstr " 5"
+msgstr " 5月"
 
 msgid "June"
-msgstr " 6"
+msgstr " 6月"
 
 msgid "July"
-msgstr " 7"
+msgstr " 7月"
 
 msgid "August"
-msgstr " 8"
+msgstr " 8月"
 
 msgid "September"
-msgstr " 9"
+msgstr " 9月"
 
 msgid "October"
-msgstr "10"
+msgstr "10月"
 
 msgid "November"
-msgstr "11"
+msgstr "11月"
 
 msgid "December"
-msgstr "12"
+msgstr "12月"
 
-#, fuzzy
 msgid "Jan"
 msgstr " 1"
 
 msgid "Feb"
-msgstr ""
+msgstr " 2"
 
-#, fuzzy
 msgid "Mar"
 msgstr " 3"
 
-#, fuzzy
 msgid "Apr"
 msgstr " 4"
 
 msgid "Ma&#121;"
-msgstr ""
+msgstr " 5"
 
-#, fuzzy
 msgid "Jun"
 msgstr " 6"
 
-#, fuzzy
 msgid "Jul"
 msgstr " 7"
 
-#, fuzzy
 msgid "Aug"
 msgstr " 8"
 
 msgid "Sep"
-msgstr ""
+msgstr " 9"
 
-#, fuzzy
 msgid "Oct"
 msgstr "10"
 
-#, fuzzy
 msgid "Nov"
-msgstr "いいえ"
+msgstr "11"
 
 msgid "Dec"
-msgstr ""
+msgstr "12"
 
 msgid "D, F j, Y g:i a"
 msgstr "Y年 F月 j日 (D) g:i a"
@@ -1050,13 +1036,11 @@ msgstr ""
 "設定ファイル %s に書き込みできません。このエラーとともに管理者に連絡を取って"
 "ください。"
 
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Preference file, %s, could not be copied from temporary file, %s. Contact "
 "your system administrator to resolve this issue."
-msgstr ""
-"設定ファイル %s をオープンできません。このエラーとともに管理者に連絡を取って"
-"ください。"
+msgstr "設定ファイル %s を一時ファイル %s からコピーできません。このエラーとともに管理者に連絡を取ってください。"
 
 #, c-format
 msgid "Error opening %s"
@@ -1091,13 +1075,11 @@ msgstr ""
 "署名ファイル %s に書き込みできません。このエラーとともに管理者に連絡を取って"
 "ください。"
 
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Signature file, %s, could not be copied from temporary file, %s. Contact "
 "your system administrator to resolve this issue."
-msgstr ""
-"署名ファイル %s がオープンできません。このエラーとともに管理者に連絡を取って"
-"ください。"
+msgstr "署名ファイル %s が一時ファイル %s からコピーできません。このエラーとともに管理者に連絡を取ってください。"
 
 msgid ""
 "You need to have php4 installed with the multibyte string function enabled "
@@ -1108,7 +1090,7 @@ msgid "ERROR : No available imapstream."
 msgstr "エラー: imapstreamが利用できません"
 
 msgid "ERROR : Connection dropped by imap-server."
-msgstr ""
+msgstr "エラー: 接続がImapサーバによって切断されました。"
 
 msgid "ERROR : Could not complete request."
 msgstr "エラー: 要求を完了できませんでした。"
@@ -1126,11 +1108,10 @@ msgid "Server responded: "
 msgstr "サーバの応答:"
 
 msgid "ERROR : Imap server closed the connection."
-msgstr ""
+msgstr "エラー: Imapサーバが接続を閉じました。"
 
-#, fuzzy
 msgid "ERROR : Unknown imap response."
-msgstr "不明な応答"
+msgstr "エラー: 不明なImapの応答"
 
 #, c-format
 msgid "Error connecting to IMAP server: %s."
@@ -1159,7 +1140,7 @@ msgid ""
 msgstr "不要なメッセージをフォルダから削除してください。"
 
 msgid "(no subject)"
-msgstr ""
+msgstr "(無題)"
 
 msgid "Unknown Sender"
 msgstr "送信者不明"
@@ -1168,13 +1149,13 @@ msgid "Unknown response from IMAP server: "
 msgstr "異常な応答が IMAP サーバーからありました:"
 
 msgid "The server couldn't find the message you requested."
-msgstr ""
+msgstr "要求されたメッセージが見つかりませんでした。"
 
 msgid ""
 "Most probably your message list was out of date and the message has been "
 "moved away or deleted (perhaps by another program accessing the same "
 "mailbox)."
-msgstr ""
+msgstr "メッセージが他のプログラムによって移動または削除されています。"
 
 msgid "Unknown date"
 msgstr "日付不明"
@@ -1407,7 +1388,7 @@ msgid "Maximum Number of Pages to Show"
 msgstr "ページ数の表示の最大"
 
 msgid "Always Show Full Date"
-msgstr ""
+msgstr "常に完全な日付を表示する"
 
 msgid "Message Display and Composition"
 msgstr "メッセージ表示と構成"
@@ -1553,7 +1534,6 @@ msgstr "未読のみ"
 msgid "Unseen and Total"
 msgstr "未読と合計"
 
-#, fuzzy
 msgid "Enable Collapsible Folders"
 msgstr "フォルダの折り畳みを有効"
 
@@ -2036,9 +2016,8 @@ msgstr "0 分"
 msgid "15 min."
 msgstr "15 分"
 
-#, fuzzy
 msgid "30 min."
-msgstr "0 分"
+msgstr "30 分"
 
 msgid "45 min."
 msgstr "45分"
@@ -2170,7 +2149,6 @@ msgstr ""
 msgid "FREE - SPAMhaus - A list of well-known SPAM sources."
 msgstr "無償 - SPAMhaus - 良く知られるスパム源のリストです。"
 
-#, c-format
 msgid ""
 "FREE, for now - SPAMCOP - An interesting solution that lists servers that "
 "have a very high spam to legit email ratio (85% or more)."
@@ -2770,7 +2748,6 @@ msgstr ""
 "他のブラウザではエラーになるかもしれません。これは、あなたが「チェック"
 "RECENT」を有効にていても、新着メールがあるかどうか知らせてくれます。"
 
-#, fuzzy
 msgid ""
 "Select from the list of <b>server files</b> the media file to play when new "
 "mail arrives.  If no file is specified, \"(none)\", no sound will be used."
@@ -2801,9 +2778,8 @@ msgstr "新着メールがあるときにポップアップウインドウを開く"
 msgid "Select server file:"
 msgstr "サーバファイルの選択:"
 
-#, fuzzy
 msgid "(none)"
-msgstr "完了"
+msgstr "(なし)"
 
 msgid "Try"
 msgstr "試す"
@@ -2844,9 +2820,8 @@ msgstr "新着メッセージ %s 通"
 msgid "Test Sound"
 msgstr "テスト"
 
-#, fuzzy
 msgid "No sound specified"
-msgstr "サーバが設定されていない"
+msgstr "サウンドが設定されていない"
 
 msgid "Loading the sound..."
 msgstr "サウンドを読み込んでいます"
@@ -3244,7 +3219,7 @@ msgid "not available"
 msgstr "未実装"
 
 msgid "SquirrelSpell Options Menu"
-msgstr ""
+msgstr "SquirrelSpellオプションメニュー"
 
 msgid "Translator"
 msgstr "翻訳"
@@ -3255,37 +3230,31 @@ msgstr "翻訳オプションを保存しました"
 msgid "Your server options are as follows:"
 msgstr "サーバオプションは以下のとおり:"
 
-#, fuzzy
 msgid "Maximum of 1000 characters translated, powered by Systran"
-msgstr "13種類の言語の組み合わせ。最大1000文字までの制限。Systran提供。"
+msgstr "最大1000文字までの制限。Systran提供。"
 
 #, c-format
 msgid "Number of supported language pairs: %s"
-msgstr ""
+msgstr "サポートされる言語の組み合わせの数: %s"
 
-#, fuzzy
 msgid "No known limits, powered by Systran"
-msgstr "12言語の組み合わせ。制限不明。Systran提供。"
+msgstr "制限不明。Systran提供。"
 
-#, fuzzy
 msgid "No known limits, powered by Translation Experts's InterTran"
-msgstr "767言語の組み合わせ。制限不明。Translation Experts's InterTran提供。"
+msgstr "制限不明。Translation Experts's InterTran提供。"
 
 #, c-format
 msgid "Number of supported languages: %s"
-msgstr ""
+msgstr "サポートされる言語の数: %s"
 
-#, fuzzy
 msgid "No known limits, powered by GPLTrans (free, open source)"
-msgstr "8言語の組み合わせ。制限不明。GPLTrans提供(free, open source)"
+msgstr "制限不明。GPLTrans提供(free, open source)"
 
-#, fuzzy
 msgid "Hellenic translations, no known limits, powered by Systran"
-msgstr "12言語の組み合わせ。制限不明。Systran提供。"
+msgstr "ギリシャ語翻訳 制限不明。Systran提供。"
 
-#, fuzzy
 msgid "Russian translations, maximum of 500 characters translated"
-msgstr "13種類の言語の組み合わせ。最大1000文字までの制限。Systran提供。"
+msgstr "ロシア語翻訳、最大500文字までの制限。"
 
 msgid ""
 "You also decide if you want the translation box displayed, and where it will "
@@ -3334,9 +3303,8 @@ msgstr "%s から %s"
 msgid "English"
 msgstr "英語"
 
-#, fuzzy
 msgid "Chinese"
-msgstr "変更"
+msgstr "中国語"
 
 msgid "French"
 msgstr "フランス語"
@@ -3350,9 +3318,8 @@ msgstr "イタリア語"
 msgid "Japanese"
 msgstr "日本語"
 
-#, fuzzy
 msgid "Korean"
-msgstr "ノルウェー語"
+msgstr "韓国語"
 
 msgid "Portuguese"
 msgstr "ポルトガル語"
@@ -3432,21 +3399,17 @@ msgstr "インドネシア語"
 msgid "Latin"
 msgstr "ラテン語"
 
-#, fuzzy
 msgid "to English"
-msgstr "英語"
+msgstr "英語へ"
 
-#, fuzzy
 msgid "from English"
-msgstr "英語"
+msgstr "英語から"
 
-#, fuzzy
 msgid "Interface language"
-msgstr "デフォルト言語"
+msgstr "インターフェース言語"
 
-#, fuzzy
 msgid "Translation direction"
-msgstr "翻訳オプション"
+msgstr "翻訳方向"
 
 msgid "Delivery error report"
 msgstr "配送エラーレポート"
@@ -3454,85 +3417,3 @@ msgstr "配送エラーレポート"
 msgid "Undelivered Message Headers"
 msgstr "配送不能メッセージヘッダ"
 
-#~ msgid "Not available"
-#~ msgstr "未実装"
-
-#~ msgid "Unknown message number in reply from server: "
-#~ msgstr "不正なメッセージ番号がサーバから返されました："
-
-#~ msgid "(unknown sender)"
-#~ msgstr "(送信者不明)"
-
-#~ msgid "35 min."
-#~ msgstr "35 分"
-
-#~ msgid ""
-#~ "FREE - Osirusoft Relays - Osirusofts list of verified open relays. Seems "
-#~ "to include servers used by abuse@uunet.net auto-replies too."
-#~ msgstr ""
-#~ "無償 - Osirusoft Relays - Osirusoftsによる、立証できたオープンリレーのリス"
-#~ "ト。abuse@uunet.netが自動返信に使うサーバも含まれるようです。"
-
-#~ msgid "FREE - Osirusoft Dialups - Osirusofts Dialup Spam Source list."
-#~ msgstr ""
-#~ "無償 - Osirusoft Dialups - Osirusoftのダイヤルアップスパム元のリスト"
-
-#~ msgid ""
-#~ "FREE - Osirusoft Confirmed Spam Source - Sites that continually spam and "
-#~ "have been manually added after multiple nominations. Use with caution. "
-#~ "Seems to catch abuse auto-replies from some ISPs."
-#~ msgstr ""
-#~ "無償 - Osirusoft Confirmed Spam Source - 連続的にスパム行為を行ない、数回"
-#~ "にわたって候補者として指名を受けた結果追加されたサイトです。使用すべきかは"
-#~ "慎重な判断が必要です。悪用報告に対する、いくつかのISPによる自動返信も掴ん"
-#~ "でしまうようです。"
-
-#~ msgid ""
-#~ "FREE - Osirusoft Smart Hosts - List of hosts that are secure but relay "
-#~ "for other mail servers that are not secure."
-#~ msgstr ""
-#~ "無償 - Osirusoft Smart Hosts - セキュアだが、セキュアではないメールサーバ"
-#~ "の中継をしてしまうホストのリストです。"
-
-#~ msgid ""
-#~ "FREE - Osirusoft Spamware Developers - It is believed that these are IP "
-#~ "ranges of companies that are known to produce spam software. Seems to "
-#~ "catch abuse auto-replies from some ISPs."
-#~ msgstr ""
-#~ "無償 - Osirusoft Spamware Developers - これらのIP群はスパムのソフトウェア"
-#~ "を作ると知られる企業のものだとされています。いくつかのISPからのabuse自動返"
-#~ "信を捕まえるようです。"
-
-#~ msgid ""
-#~ "FREE - Osirusoft Unconfirmed OptIn Servers - List of listservers that opt "
-#~ "users in without confirmation."
-#~ msgstr ""
-#~ "無償 - Osirusoft 未確認オプトインサーバ - ユーザによる確認をなしに、登録す"
-#~ "るリストサーバのリストです。"
-
-#~ msgid ""
-#~ "FREE - Osirusoft Insecure formmail.cgi scripts - List of insecure "
-#~ "formmail.cgi scripts. (planned)."
-#~ msgstr ""
-#~ "無償 - Osirusoft Insecure formmail.cgi scripts - セキュアではないformmail "
-#~ "cgiのリストです。(予定)"
-
-#~ msgid "FREE - Osirusoft Open Proxy Servers - List of Open Proxy Servers."
-#~ msgstr ""
-#~ "無償 - Osirusoft Open Proxy Servers - オープンプロクシサーバのリストです。"
-
-#~ msgid "Mofify a Server"
-#~ msgstr "サーバの変更"
-
-#~ msgid "Message details"
-#~ msgstr "メッセージ詳細"
-
-#~ msgid "(local media)"
-#~ msgstr "(ローカルメディア)"
-
-#~ msgid "Local Media File:"
-#~ msgstr "ローカルファイル:"
-
-#~ msgid ""
-#~ "10 language pairs, maximum of 25 kilobytes translated, powered by Systran"
-#~ msgstr "10種類の言語の組み合わせ。制限不明。Systran提供。"
