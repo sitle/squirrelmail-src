@@ -55,10 +55,10 @@ sqextractGlobalVar('mailprio');
 sqextractGlobalVar('request_mdn');
 sqextractGlobalVar('request_dr');
 sqextractGlobalVar('html_addr_search');
+
 if ( isset($_POST['sigappend']) ) {
     $sigappend = $_POST['sigappend'];
 }
-
 /* From addressbook search */
 if ( isset($_POST['from_htmladdr_search']) ) {
     $from_htmladdr_search = $_POST['from_htmladdr_search'];
@@ -109,8 +109,10 @@ if (!isset($composesession)) {
 }
 
 if (!isset($session) || (isset($newmessage) && $newmessage)) {
+    sqsession_unregister('composesession');
     $session = "$composesession" +1; 
     $composesession = $session;        
+    sqsession_register($composesession, 'composesession');
 }     
 
 if (!isset($mailbox) || $mailbox == '' || ($mailbox == 'None')) {
@@ -911,7 +913,7 @@ function checkInput ($show) {
 /* True if FAILURE */
 function saveAttachedFiles($session) {
     global $_FILES, $attachment_dir, $attachments, $username;
-
+    sqsession_unregister('attachments');
     $hashed_attachment_dir = getHashedDir($username, $attachment_dir);
     $localfilename = GenerateRandomString(32, '', 7);
     $full_localfilename = "$hashed_attachment_dir/$localfilename";
@@ -934,8 +936,8 @@ function saveAttachedFiles($session) {
     if ($newAttachment['type'] == "") {
          $newAttachment['type'] = 'application/octet-stream';
     }
-
     $attachments[] = $newAttachment;
+    sqsession_register($attachments, 'attachments');
 }
 
 
