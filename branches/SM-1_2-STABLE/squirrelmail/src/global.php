@@ -55,7 +55,7 @@ function check_php_version ($a = '0', $b = '0', $c = '0')
     global $SQ_PHP_VERSION;
 
     if(!isset($SQ_PHP_VERSION))
-        $SQ_PHP_VERSION = str_pad( preg_replace('/\D/','', PHP_VERSION), 3, '0');             
+        $SQ_PHP_VERSION = substr( str_pad( preg_replace('/\D/','', PHP_VERSION), 3, '0'), 0, 3);
 
     return $SQ_PHP_VERSION >= ($a.$b.$c);
 }
@@ -84,6 +84,7 @@ function sqsession_register ($var, $name) {
        $_SESSION["$name"] = $var; 
     }
 }
+
 function sqsession_unregister ($name) {
     if ( !check_php_version(4,1) ) {
         global $HTTP_SESSION_VARS;
