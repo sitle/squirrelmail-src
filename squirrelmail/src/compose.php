@@ -34,6 +34,9 @@ $onetimepad = $_SESSION['onetimepad'];
 $base_uri = $_SESSION['base_uri'];
 $delimiter = $_SESSION['delimiter'];
 
+if (isset($_POST['return'])) {
+    $html_addr_search_done = 'Use Addresses';
+}
 if ( isset($_SESSION['composesession']) ) {
     $composesession = $_SESSION['composesession'];
 }
@@ -82,6 +85,9 @@ if ( isset($_POST['delete']) ) {
     $delete = &$_POST['delete'];
 }
 if ( isset($_POST['attachments']) ) {
+    $attachments = &$_POST['attachments'];
+}
+elseif ( isset($_SESSION['attachments'])) {
     $attachments = &$_SESSION['attachments'];
 }
 
@@ -148,9 +154,9 @@ if (isset($draft)) {
 }
 
 if (isset($send)) {
-    if (isset($HTTP_POST_FILES['attachfile']) &&
-        $HTTP_POST_FILES['attachfile']['tmp_name'] &&
-        $HTTP_POST_FILES['attachfile']['tmp_name'] != 'none') {
+    if (isset($_FILES['attachfile']) &&
+        $_FILES['attachfile']['tmp_name'] &&
+        $_FILES['attachfile']['tmp_name'] != 'none') {
         $AttachFailure = saveAttachedFiles($session);
     }
     if (checkInput(false) && !isset($AttachFailure)) {
@@ -269,9 +275,9 @@ if (isset($send)) {
     }
     showInputForm($session);
 } elseif (isset($html_addr_search)) {
-    if (isset($HTTP_POST_FILES['attachfile']) &&
-        $HTTP_POST_FILES['attachfile']['tmp_name'] &&
-        $HTTP_POST_FILES['attachfile']['tmp_name'] != 'none') {
+    if (isset($_FILES['attachfile']) &&
+        $_FILES['attachfile']['tmp_name'] &&
+        $_FILES['attachfile']['tmp_name'] != 'none') {
         if (saveAttachedFiles($session)) {
             plain_error_message(_("Could not move/copy file. File not attached"), $color);
         }
@@ -904,7 +910,7 @@ function checkInput ($show) {
 
 /* True if FAILURE */
 function saveAttachedFiles($session) {
-    global $HTTP_POST_FILES, $attachment_dir, $attachments, $username;
+    global $_FILES, $attachment_dir, $attachments, $username;
 
     $hashed_attachment_dir = getHashedDir($username, $attachment_dir);
     $localfilename = GenerateRandomString(32, '', 7);
@@ -914,15 +920,15 @@ function saveAttachedFiles($session) {
         $full_localfilename = "$hashed_attachment_dir/$localfilename";
     }
 
-    if (!@rename($HTTP_POST_FILES['attachfile']['tmp_name'], $full_localfilename)) {
-        if (!@copy($HTTP_POST_FILES['attachfile']['tmp_name'], $full_localfilename)) {
+    if (!@rename($_FILES['attachfile']['tmp_name'], $full_localfilename)) {
+        if (!@copy($_FILES['attachfile']['tmp_name'], $full_localfilename)) {
             return true;
         }
     }
 
     $newAttachment['localfilename'] = $localfilename;
-    $newAttachment['remotefilename'] = $HTTP_POST_FILES['attachfile']['name'];
-    $newAttachment['type'] = strtolower($HTTP_POST_FILES['attachfile']['type']);
+    $newAttachment['remotefilename'] = $_FILES['attachfile']['name'];
+    $newAttachment['type'] = strtolower($_FILES['attachfile']['type']);
     $newAttachment['session'] = $session;
 
     if ($newAttachment['type'] == "") {

@@ -14,7 +14,7 @@ require_once ('../src/validate.php');
 /* Print all the needed RFC822 headers */
 function write822HeaderForDraft ($fp, $t, $c, $b, $subject, $more_headers, $session) {
     global $data_dir, $username, $popuser, $domain, $version, $useSendmail;
-    global $default_charset, $identity;
+    global $default_charset, $identity, $_SERVER;
 
     /* get those globals */
     $REMOTE_ADDR = $_SERVER['REMOTE_ADDR'];
@@ -158,7 +158,7 @@ function saveMessageAsDraft($t, $c, $b, $subject, $body, $reply_id, $prio = 3, $
     global $useSendmail, $msg_id, $is_reply, $mailbox, $onetimepad,
            $data_dir, $domain, $version, $sent_folder,
            $imapServerAddress, $imapPort, $draft_folder, $attachment_dir,
-           $default_use_priority;
+           $default_use_priority, $_SESSION, $_COOKIE;
     $more_headers = Array();
 
     $username = $_SESSION['username'];

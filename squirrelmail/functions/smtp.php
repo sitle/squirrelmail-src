@@ -249,7 +249,7 @@ function timezone () {
 /* Print all the needed RFC822 headers */
 function write822Header ($fp, $t, $c, $b, $subject, $more_headers, $session, $rn="\r\n") {
     global $data_dir, $username, $popuser, $domain, $version, $useSendmail;
-    global $default_charset, $identity;
+    global $default_charset, $identity, $_SERVER;
 
     /* get those globals */
     $REMOTE_ADDR = $_SERVER['REMOTE_ADDR'];

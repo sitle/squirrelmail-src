@@ -421,6 +421,8 @@ if (isset($absolute_dl) && $absolute_dl == 'true') {
  */
 function DumpHeaders($type0, $type1, $filename, $force) {
 
+    global $_SERVER;
+
     $HTTP_USER_AGENT = $_SERVER['HTTP_USER_AGENT'];
 
     $isIE = 0;
