@@ -125,6 +125,7 @@ function attachSelectedMessages($msg, $imapConnection) {
 
 /* MAIN */
 
+/* get globals */
 
 $username = $_SESSION['username'];
 $key  = $_COOKIE['key'];
@@ -132,18 +133,53 @@ $onetimepad = $_SESSION['onetimepad'];
 $base_uri = $_SESSION['base_uri'];
 $delimiter = $_SESSION['delimiter'];
 
-if (isset(!_$POST['expungeButton'])) {
+if (isset($_GET['where'])) {
+    $where = $_GET['where'];
+}
+if (isset($_GET['what'])) {
+    $what = $_GET['what'];
+}
+if (isset($_GET['mailbox'])) {
+    $mailbox = $_GET['mailbox'];
+}
+if (isset($_GET['startMessage'])) {
+    $startMessage = $_GET['startMessage'];
+}
+if (isset($_POST['moveButton'])) {
+    $moveButton = $_POST['moveButton'];
+}
+if (isset($_POST['msg'])) {
+    $msg = $_POST['msg'];
+}
+elseif (isset($_GET['msg'])) {
+    $msg = $_GET['msg'];
+}
+if (isset($_POST['expungeButton'])) {
     $expungeButton = $_POST['expungeButton'];
 }
-if (isset(!_$POST['targetMailbox'])) {
+if (isset($_POST['targetMailbox'])) {
     $targetMailbox = $_POST['targetMailbox'];
 }
-if (isset(!_$POST['lastTargetMailbox'])) {
-    $lastTargetMailbox = $_POST['lastTargetMailbox'];
+if (isset($_SESSION['lastTargetMailbox'])) {
+    $lastTargetMailbox = $_SESSION['lastTargetMailbox'];
 }
-if (isset(!_$POST['expungeButton'])) {
+if (isset($_POST['expungeButton'])) {
     $expungeButton = $_POST['expungeButton'];
 }
+if (isset($_POST['undeleteButton'])) {
+    $undeleteButton = $_POST['undeleteButton'];
+}
+if (isset($_POST['markRead'])) {
+    $markRead = $_POST['markRead'];
+}
+if (isset($_POST['markUnread'])) {
+    $markUnread = $_POST['markUnread'];
+}
+if (isset($_POST['attache'])) {
+    $attache = $_POST['attache'];
+}
+
+/* end of get globals */
 
 $imapConnection = sqimap_login($username, $key, $imapServerAddress, $imapPort, 0);
 sqimap_mailbox_select($imapConnection, $mailbox);
@@ -266,7 +302,6 @@ if(isset($expungeButton)) {
         }
         if ($auto_expunge == true)
             sqimap_mailbox_expunge($imapConnection, $mailbox, true);
-
         $location = get_location();
         if (isset($where) && isset($what))
             header ("Location: $location/search.php?mailbox=".urlencode($mailbox)."&what=".urlencode($what)."&where=".urlencode($where));
