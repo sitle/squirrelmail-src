@@ -38,7 +38,7 @@ if (version_compare(phpversion(), '4.2.0', '<'))
  * define regex constants
  */
 setConst('REGEX_ID', '/^[0-9-]{1,11}$/');
-setConst('REGEX_TITLE', '/^[a-zA-Z0-9-_ ]{1,32}$/');
+setConst('REGEX_TITLE', '/^[a-zA-Z0-9-_ \[\]&\.]{1,32}$/');
 setConst('REGEX_VERSION', '/^[0-9]*$/');
 setConst('REGEX_PASSWORD', '/^[A-Za-z0-9]{4,32}$/');
 setConst('REGEX_DATETIME', '/^[0-9-]{1,10}$/');
