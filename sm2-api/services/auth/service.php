@@ -1,8 +1,8 @@
 <?php
 
-/*
- * Squirrelmail2 API
- * Copyright (c) 2001 Th Squirrelmail Foundation
+/**
+ * Zookeeper: service/auth/service.php
+ * Copyright (c) 2001-2002 The Zookeeper Project Team
  * Licensed under the GNU GPL. For full terms see the file COPYING.
  *
  * $Id$
@@ -14,83 +14,51 @@
  * The ZkSvc_auth class manages user authentication for a web application.
  */
 class ZkSvc_auth {
+    var $name;       /* str  - name of this service (auth)            */
+    var $mod;        /* obj  - authentication module for this service */
+    var $maxidle;    /* int  - max time login session can remain idle */
+    var $maxlogin;   /* int  - max time login session can last        */
+    var $loggedin;   /* bool - is the user logged in?                 */
+    var $idled;      /* bool - has this login session idled?          */
+    var $expired;    /* bool - is this login session expired?         */
 
-    var $name = 'auth';
-    var $ver = '$Id$';
-
-    var $serial;
-    var $bagname;
-
-    var $zkld;
-    var $mod;
-
-    var $username;
-    var $password;
-
-    var $maxlogin;
-    var $maxidle;
-    var $expired;
-    var $idled;
-    var $expires;
-    var $idles;
-
-    var $logged;
-
-    var $connector;
-    var $banner;
-    var $info;
-
-    /** CONSTRUCTOR
+    /**
      * Create a new ZkSvc_auth with the given module.
      *
      * @param object $module module to use for authentication
      * @param array  $options options to pass to ZkAuthHandler
      */
-    function ZkSvc_auth( $options, &$zkld, $serial ) {
+    function ZkSvc_auth($opts) {
+        $name = 'auth';
 
-        $this->serial = $serial;
-        $this->zkld = &$zkld;
+        /* Register the login session variable. */
+        global $zkauth;
+        session_register('zkauth');
 
-        $this->bag_name = $this->name . '_' . $this->serial;
+        /* Set the default values for this login session. */
+        $this->loggedin = FALSE;
+        $this->idled    = FALSE;
+        $this->expired  = FALSE;
 
-        if( $options['maxlogin'] == '' )
-            $this->maxlogin = 300;
-        else
-            $this->maxlogin = $options['maxlogin'];
+        /* Set values for maxlogin and maxidle. */
+        $this->maxidle  = ($opts['maxidle']  == '' ? 0 : $opts['maxidle']);
+        $this->maxlogin = ($opts['maxlogin'] == '' ? 0 : $opts['maxlogin']);
 
-        if( $options['maxidle'] == '' )
-            $this->maxidle = 15;
-        else
-            $this->maxidle = $options['maxidle'];
+        /* Only do authentication checks if we have a login session. */
+        if ($zkauth['username'] != '') {
+            /* To start off, set loggedin as TRUE! */
+            $this->loggedin = TRUE;
 
-        if( !isset($options['connector']) )
-            $this->connector = array( );
-        else
-            $this->connector = $options['connector'];
+            /* Check if our login session idled out. */
+            if (($this->maxidle > 0) && ($zkauth['idleTime'] < time())) {
+                $this->idle();
+            }
 
-        // Check of registered variables
-        if( isset( $zkld->bag_reg[$this->bag_name] ) &&
-            is_array( $zkld->bag_reg[$this->bag_name] ) ) {
-            // There are properties to be loaded, second time constructing
-            $this->username = $zkld->bag_reg[$this->bag_name]['username'];
-            $this->password = $zkld->bag_reg[$this->bag_name]['password'];
-            $this->idled = $zkld->bag_reg[$this->bag_name]['idled'];
-            $this->idles = $zkld->bag_reg[$this->bag_name]['idles'];
-            $this->expired = $zkld->bag_reg[$this->bag_name]['expired'];
-            $this->expires = $zkld->bag_reg[$this->bag_name]['expires'];
-            $this->logged = $zkld->bag_reg[$this->bag_name]['logged'];
-            $this->banner = $zkld->bag_reg[$this->bag_name]['banner'];
-            $this->info = $zkld->bag_reg[$this->bag_name]['info'];
-        } else {
-            $zkld->bag_reg[$this->bag_name] = array();
-            $this->expired = false;
-            $this->idled = false;
-            $this->activity();
-            $this->username = '';
-            $this->password = '';
-            $this->logged = FALSE;
+            /* Check if our login session has expired. */
+            if (($this->maxlogin > 0) && ($zkauth['expireTime'] < time())) {
+                $this->expire();
 
-            $this->Register();
+            }
         }
     }
 
@@ -104,29 +72,15 @@ class ZkSvc_auth {
     }
 
     /**
-     * Replace the Zookeeper authentication module loaded for this service.
+     * Set the Zookeeper authentication module being used for this service,
+     * replacing the current one (if need be).
      *
-     * @param object $module module to load for this authentication service
+     * @param object $mod module to load for this authentication service
      */
-    function loadModule( &$mod, $options ) {
-        $this->mod =&$mod;
+    function loadModule( &$mod, $opts ) {
+        $this->mod =& $mod;
     }
     
-    function Register() {
-    
-        $this->zkld->bag_reg[$this->bag_name]['username'] = $this->username;
-        $this->zkld->bag_reg[$this->bag_name]['password'] = $this->password;
-        $this->zkld->bag_reg[$this->bag_name]['idled'] = $this->idled ;
-        $this->zkld->bag_reg[$this->bag_name]['idles'] = $this->idles;
-        $this->zkld->bag_reg[$this->bag_name]['expired'] = $this->expired ;
-        $this->zkld->bag_reg[$this->bag_name]['expires'] = $this->expires ;
-        $this->zkld->bag_reg[$this->bag_name]['logged'] = $this->logged ;
-        $this->zkld->bag_reg[$this->bag_name]['banner'] = $this->banner;
-        $this->zkld->bag_reg[$this->bag_name]['info'] = $this->info;
-
-        $this->zkld->Register();
-    }
-
     /**
      * Attempt to login a user.
      *
@@ -134,41 +88,39 @@ class ZkSvc_auth {
      * @param string password password with which to authenticate
      */
     function login($username, $password) {
+        global $zkauth;
 
-        if ( $username <> $this->username &&
-             $password <> $this->password ) {
-            $this->logout();
-        }
+        /* Attempting to login again - log the user out, first. */
+        $this->logout();
 
-        $ret = ( $this->mod->checkPassword($username, $password) );
-        $this->banner = $this->mod->banner;
-        $this->info = $this->mod->info;
-        if ( $ret ) {
+        /* Use the authentication module to check the user and pass. */
+        $result = $this->mod->checkPassword($username, $password);
+        if ($result) {
             /* Save the current login information. */
-            $this->username = $username;
-            $this->password = $password;
-            $this->idled = FALSE;
-            $this->expired = FALSE;
-            $this->activity();
-            $this->logged = TRUE;
-            $this->Register();
-        } else {
-            $this->logout();
+            $zkauth['username'] = $username;
+            $zkauth['password'] = $password;
+
+            /* Set the expiration and idling data for this login session. */
+            $this->setExpiration();
+            $this->setIdling();
         }
 
-        return( $ret );
+        /* Return the password checking result. */
+        return ($result);
     }
 
     /**
      * Logout a user from his current login session.
      */
     function logout() {
-        $this->username = '';
-        $this->password = '';
-        $this->expired = TRUE;
-        $this->idled = TRUE;
-        $this->logged = FALSE;
-        $this->Register();
+        global $zkauth;
+
+        /* Clear the username and password for this login session. */
+        $zkauth['username'] = '';
+        $zkauth['password'] = '';
+
+        /* Set this login session as no longer logged in. */
+        $this->loggedin = FALSE;
     }
 
     /**
@@ -176,22 +128,37 @@ class ZkSvc_auth {
      *
      * @return bool indicates if user has a valid login session
      */
-    function checkLogin( $usr = '', $pass = '') {
-
-        if ( ( $usr <> '' && $usr <> $this->username ) ||
-             ( $pass <> '' && $pass <> $this->password ) ) {
-            $this->logout();
-        }
-        return( $this->logged );
+    function isLoggedIn() {
+        /* Return the result. */
+        return ($this->loggedin);
     }
 
+    /**
+     * Has this login session been idle too long?
+     *
+     * @return bool indicates if this login session has idled out
+     */
+    function isIdled() {
+        return ($this->idled);
+    }
+
+    /**
+     * Has this login session expired?
+     *
+     * @return bool indicates if this login session has expired
+     */
+    function isExpired() {
+        return ($this->expired);
+    }
+    
     /**
      * Get the username for this login session.
      *
      * @return string the username for this login session
      */
     function getUsername() {
-        return( $this->username );
+        global $zkauth;
+        return ($zkauth['username']);
     }
 
     /**
@@ -200,51 +167,46 @@ class ZkSvc_auth {
      * @return string the password for this login session
      */
     function getPassword() {
-        return( $this->password );
+        global $zkauth;
+        return ($zkauth['password']);
     }
 
     /**
-     * Has this login session expired?
-     *
-     * @return bool indicates if this login session has expired
+     * Set this login session as idled.
      */
-    function loginExpired() {
-        if( !$this->expired ) {
-            $this->expired = ( $this->expires < time() );
-            if( $this->expired )
-                $this->Register();
-        }
-        return( $this->expired );
+    function idle() {
+        $this->logout();
+        $this->idled = TRUE;
+    }
+    /**
+     * Set this login session as expired.
+     */
+    function expire() {
+        $this->logout();
+        $this->expired = TRUE;
     }
 
     /**
-     * Has this login session been idle too long?
-     *
-     * @return bool indicates if this login session has idled
+     * Set the idling data for this login session.
      */
-    function loginIdled() {
-
-        if( !$this->idled ) {
-            $this->idled = ( $this->idles < time() );
-            if( $this->idled )
-                $this->Register();
-        }
-
-        return( $this->idled );
+    function setIdling() {
+        global $zkauth;
+        
+        /* Set the idleTime and idled to false. */
+        $zkauth['idleTime'] = time() + $this->maxidle;
+        $this->idled = FALSE;
     }
 
-    function activity() {
+    /**
+     * Set the expiration data for this login session.
+     */
+    function setExpiration() {
+        global $zkauth;
 
-        if( !$this->expired ) {
-            $this->expires = time() + $this->maxlogin;
-            if( !$this->idled )
-                    $this->idles = time() + $this->maxidle;
-            $this->Register();
-        }
-
+        /* Set the expireTime and expired to false. */
+        $zkauth['expireTime'] = time() + $this->maxlogin;
+        $this->expired = FALSE;
     }
-
-
 }
 
 ?>
