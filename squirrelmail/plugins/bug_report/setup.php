@@ -34,7 +34,7 @@ function bug_report_button() {
         return;
     }
 
-    displayInternalLink('plugins/bug_report/bug_report.php', 'Bug', '');
+    displayInternalLink('plugins/bug_report/bug_report.php', _("Bug"), '');
     echo "&nbsp;&nbsp;\n";
 }
 
@@ -61,12 +61,12 @@ function bug_report_load() {
 function bug_report_options() {
     global $bug_report_visible;
 
-    echo '<tr><td align=right nowrap>' . _("Bug Reports:") . "</td>\n" .
-         '<td><input name="bug_report_bug_report_visible" type=CHECKBOX';
+    echo '<tr>' . html_tag('td',_("Bug Reports:"),'right','','nowrap') . "\n" .
+         '<td><input name="bug_report_bug_report_visible" type=checkbox';
     if ($bug_report_visible) {
-        echo ' CHECKED';
+        echo ' checked';
     }
-    echo '> ' . _("Show button in toolbar") . "</td></tr>\n";
+    echo ' /> ' . _("Show button in toolbar") . "</td></tr>\n";
 }
 
 ?>
