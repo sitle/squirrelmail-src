@@ -684,10 +684,13 @@ $languages['sv_SE']['CHARSET'] = 'iso-8859-1';
 $languages['sv_SE']['LOCALE']  = 'sv_SE.ISO8859-1';
 $languages['sv']['ALIAS']      = 'sv_SE';
 
+/* translation is disabled because it contains less than 50%
+ * translated strings
 $languages['th_TH']['NAME']    = 'Thai';
 $languages['th_TH']['CHARSET'] = 'tis-620';
 $languages['th_TH']['LOCALE']  = 'th_TH.TIS-620';
 $languages['th']['ALIAS'] = 'th_TH';
+*/
 
 $languages['tr_TR']['NAME']    = 'Turkish';
 $languages['tr_TR']['CHARSET'] = 'iso-8859-9';
