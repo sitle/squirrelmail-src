@@ -201,14 +201,14 @@ class foowd_text_plain extends foowd_object {
 
         if (!($fp1 = fopen($oldFile, 'w')) || !($fp2 = fopen($newFile, 'w'))) 
         {
-          trigger_error('Could not create temp files in "'.$temp_dir.'" required for diff engine.');
+          $this->foowd->track('msg','Could not create temp files in "'.$temp_dir.'" required for diff engine.');
           $returnValue = -4; // other error
         } 
         else 
         {
           if (fwrite($fp1, $oldPage) < 0 || fwrite($fp2, $newPage) < 0) 
           {
-            trigger_error('Could not write to temp files in "'.$temp_dir.'" required for diff engine.');
+            $this->foowd->track('msg','Could not write to temp files in "'.$temp_dir.'" required for diff engine.');
             $returnValue = -4; // other error
           } 
           else 
@@ -216,13 +216,13 @@ class foowd_text_plain extends foowd_object {
             fclose($fp1);
             fclose($fp2);
 
-            $this->foowd->track('executing external diff engine', '"'.DIFF_COMMAND.'"');
+            $this->foowd->track('msg','executing external diff engine', '"'.DIFF_COMMAND.'"');
             $diffResult = shell_exec(DIFF_COMMAND.' '.$oldFile.' '.$newFile);
             $this->foowd->track();
 
             if ($diffResult === FALSE) 
             {
-              trigger_error('Error occured running diff engine "', DIFF_COMMAND, '".');
+              $this->foowd->track('msg','Error occured running diff engine "', DIFF_COMMAND, '".');
               $returnValue = -4;                // other error
             } 
             elseif ($diffResult == FALSE) 
@@ -335,9 +335,9 @@ class foowd_text_plain extends foowd_object {
       switch ($result) 
       {
         case 1:
+          $_SESSION['ok'] = OBJECT_UPDATE_OK;
           $url = getURI(array('classid' => $this->classid,
-                              'objectid' => $this->objectid,
-                              'ok' => OBJECT_UPDATE_OK), FALSE);
+                              'objectid' => $this->objectid), FALSE);
           $this->save();
           $this->foowd->loc_forward($url);
           break;
@@ -408,13 +408,13 @@ class foowd_text_plain extends foowd_object {
     switch($result) 
     {
       case -1:
-        $this->foowd->template->assign('failure', DIFF_FAILED_SAME);
+        $this->foowd->template->assign('failure', _("Object can not be compared to itself."));
         break;
       case -2:
         $this->foowd->template->assign('failure', INVALID_METHOD);
         break;
       case -3:
-        $this->foowd->template->assign('failure', DIFF_OK_SAME);
+        $this->foowd->template->assign('failure', _("Object versions are identical."));
         break;
       default:
         $this->foowd->template->assign('version1', $this->version);

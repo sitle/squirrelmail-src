@@ -246,7 +246,9 @@ class smdoc_db
    */
   function num_rows($result) 
   {
-    return $result->numRows();
+    if ( $result )
+      return $result->numRows();
+    return 0;
   }
 
   /**
@@ -288,7 +290,7 @@ class smdoc_db
    * Verify that title is unique. If it is, assign a unique objectid.
    *
    * @param str title The proposed title
-   * @param int workspaceid The workspace to search in
+   * @param int workspaceid The workspace to search in, FALSE to leave workspaceid out
    * @param int objectid The object id generated from the title
    */
   function isTitleUnique($title, $workspace, &$objectid, 
@@ -297,21 +299,37 @@ class smdoc_db
     $this->getSource($in_source,$source,$makeTable);
 
     $indexes['title'] = $title;
-    $indexes['workspaceid'] = $workspace;
+    if ( $workspace !== FALSE )
+      $indexes['workspaceid'] = $workspace;
 
     $where = ' WHERE'.$this->buildWhere($indexes);
     $select = 'SELECT title FROM '.$source.$where;
 
     $query = $this->query($select);
+    if ( $query === FALSE )
+    {
+      // Query failed, check for correct fields (possibly create Table)
+      $fields = $this->getFields($in_source);
+      if ( $fields === FALSE )
+        return TRUE;
+      $query = $this->query($select);
+      if ( $query === FALSE )
+        return TRUE;
+    }
+
     if ( $this->num_rows($query) > 0 )
       return FALSE;
 
     if ( $uniqueObjectid )
     {
-      $objectid = strtolower($title);
-      $select = 'SELECT objectid FROM '.$source.'WHERE objectid = ';
-      while ( $query = $this->query($select.$objectid) )
+      $objectid = crc32(strtolower($title));
+      $select = 'SELECT objectid FROM '.$source.' WHERE objectid = ';
+      $query = $this->query($select.$objectid);
+      while ( $this->num_rows($query) > 0 )
+      {
         $objectid++;
+        $query = $this->query($select.$objectid);
+      }
     }
 
     return TRUE;
@@ -460,13 +478,17 @@ class smdoc_db
     $select .= ' FROM '.$source.$where;
     $object = FALSE;
 
-    if ( ($query = $this->query($select)) &&
-         ($result = $this->fetch($query)) )
+    $query = $this->query($select);
+    if ( $query )
     {
-      $object = $this->unserializeObject($source, $result);
-      $object->foowd = &$this->foowd; // create Foowd reference
-      $object->foowd_source = $in_source; // set source for object
-      $this->addToLoadedReference($object, $in_source);
+      $result = $this->fetch($query);
+      if ( $result && isset($result['object']) )
+      {
+        $object = unserialize($result['object']);
+        $object->foowd = &$this->foowd; // create Foowd reference
+        $object->foowd_source = $in_source; // set source for object
+        $this->addToLoadedReference($object, $in_source);
+      }
     }
 
     $this->foowd->track();
@@ -505,9 +527,10 @@ class smdoc_db
     $latest = 0;
     foreach ($records as $record) 
     {
-      $return[$record['version']] = $this->unserializeObject($source, $record);
+      $return[$record['version']] = unserialize($record['object']);
       $return[$record['version']]->foowd = &$this->foowd; // create Foowd reference
-      $this->addToLoadedReference($return[$record['version']]);
+      $return[$record['version']]->foowd_source = $in_source;
+      $this->addToLoadedReference($return[$record['version']], $in_source);
       if ($record['version'] > $latest) {
         $latest = $record['version'];
       }
@@ -585,7 +608,6 @@ class smdoc_db
     $select .= ' FROM '.$source.$where.$order.$limit;
 
     $records =& $this->queryAll($select);
-
     if ( $records === FALSE ) 
     {
       $this->foowd->track(); 
@@ -601,12 +623,12 @@ class smdoc_db
 
       if ( !isset($return[$id]) ) 
       {
-        if ($returnObjects) 
+        if ($returnObjects && isset($record['object']) ) 
         {
-          $return[$id] = $this->unserializeObject($source, $record);
+          $return[$id] = unserialize($record['object']);
           $return[$id]->foowd = &$this->foowd; // create Foowd reference
-          $return[$id]->source = $source;
-          $this->addToLoadedReference($return[$id]);
+          $return[$id]->source = $in_source;
+          $this->addToLoadedReference($return[$id], $in_source);
         } 
         else 
           $return[$id] = $record;
@@ -633,24 +655,6 @@ class smdoc_db
       return TRUE;
     
     return $record1['version'] > $record2['version'];
-  }
-
-  /**
-   * Highly specialized function to lookup the classid of
-   * an object to be deserialized based on either the 'classid' field,
-   * or it's source. 
-   * @access private
-   * @param str source The source to fetch the object from
-   * @param array record Retrieved associative array created from query row. 
-   * @see #getObjList
-   * @see #getObj
-   */
-  function unserializeObject($source, $record) 
-  {
-    if ( isset($record['object']) )
-      return $this->foowd->unserialize($record['object']);
-    
-    return new foowd_object();
   }
 
   /**
@@ -817,11 +821,12 @@ class smdoc_db
   function tidy(&$object) 
   {
     $this->foowd->track('foowd_db->tidy');
-    $this->getSource($object->foowd_source, $source, $makeTable);
 
     if ( !in_array('version',$object->foowd_primary_key) ||
          !in_array('updated',$object->foowd_primary_key) )
       return FALSE;
+
+    $this->getSource($object->foowd_source, $source, $makeTable);
 
     $delete = 'DELETE FROM '.$source.' WHERE ';
     $first = 1;
@@ -859,7 +864,9 @@ class smdoc_db
    */
   function getFields($in_source)
   {
+    $this->getSource($in_source, $table, $makeTable);
     $select = 'SELECT * FROM '.$table.' LIMIT 1';
+
     if ( $query = $this->query($select) )
     {
       if ($record = $this->fetch($query))
@@ -878,7 +885,6 @@ class smdoc_db
       // If couldn't query table fields, table might not exist.
       // try creating it - if it succeeds, retry request,
       // if not, return FALSE
-      $this->getSource($in_source, $source, $makeTable);
       if ( $makeTable )
         $result = call_user_func($makeTable, $this->foowd);
       else

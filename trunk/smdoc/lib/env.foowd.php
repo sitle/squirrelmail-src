@@ -225,7 +225,8 @@ class foowd {
     }
 
     if (isset($userid) && isset($classid)) { // load user from DB
-      if ($user = &$this->getObj(array('objectid' => $userid, 'classid' => $classid))) {
+      if ($user = &$this->getObj(array('objectid' => $userid, 
+                                       'classid' => $classid))) {
         if (isset($password) && $password != NULL && $user->passwordCheck($password) && $user->hostmaskCheck()) { // password and hostmask match, user is valid
           $this->user = &$user;
           if ($user->updated < time() - $this->session_length) { // session start
@@ -265,20 +266,9 @@ class foowd {
    * @return object The selected object or NULL on failure.
    * @see foowd_db::getObj
    */
-  function &getObj($indexes, $joins = NULL, $source = NULL) {
-    $this->track('foowd->getObj', $indexes);
-
-    if ($object = &$this->database->getObj($indexes, $joins, $source)) { // get object
-      $this->track(); return $object;
-
-    } elseif (isset($indexes['workspaceid']) && $indexes['workspaceid'] != 0) { // if not already looking in main workspace
-      $indexes['workspaceid'] = 0;
-      $this->track(); return $this->getObj($indexes); // WARNING: recursion in action
-		
-    } else {
-      $this->track(); return NULL;
-    }
-  }
+//  function &getObj($indexes, $source = NULL) {
+//          trigger_error('Function provided by smdoc: foowd->getObj', E_USER_ERROR);
+//  }
 
   /**
    * Get all versions of an object.
@@ -424,7 +414,8 @@ class foowd {
     $this->track('foowd->loadClass', $classid);
     if ( isset($this->config_settings['site']['definition_class']) &&
              class_exists($this->config_settings['site']['definition_class']) ) {
-      $class = $this->getObj(array('objectid' => $classid, 'classid' => crc32(strtolower($this->definition_class))));
+      $class = $this->getObj(array('objectid' => $classid, 
+                                   'classid' => crc32(strtolower($this->definition_class))));
       if (is_object($class)) {
   // if it inherits from another class, find out and load it now
         if (preg_match_all('|class ([-_a-zA-Z0-9]*) extends ([-_a-zA-Z0-9]*) ?{|', $class->body, $pregMatches)) { // i'd rather do this with catching errors on the eval, but that can't be done

@@ -350,8 +350,10 @@ class foowd_object
     // Check that method exists
     if ( $methodName == NULL || !method_exists($this, $method) )  
     {
-      $this->foowd->loc_forward(getURI(array('objectid' => $this->objectid,
-                                             'error' => INVALID_METHOD), FALSE)); 
+      $_SESSION['error'] = INVALID_METHOD;
+      $uri_arr['objectid'] = $this->objectid;
+      $uri_arr['classid'] = $this->classid;
+      $this->foowd->loc_forward(getURI($uri_arr, FALSE)); 
       exit;
     }
 
@@ -359,7 +361,8 @@ class foowd_object
     $permission = $this->foowd->hasPermission(get_class($this), $method, 'object', $this);
     if ( !$permission )
     {
-      $this->foowd->loc_forward(getURI(array('error' => USER_NO_PERMISSION), FALSE)); 
+      $_SESSION['error'] = USER_NO_PERMISSION;
+      $this->foowd->loc_forward(getURI(NULL, FALSE)); 
       exit;
     }
 
@@ -398,7 +401,8 @@ class foowd_object
 
     if ( $methodName == NULL || !in_array($classMethodName, $classMethods) ) 
     {
-      $foowd->loc_forward(getURI(array('error' => INVALID_METHOD), FALSE)); 
+      $_SESSION['error'] = INVALID_METHOD;
+      $foowd->loc_forward(getURI(NULL, FALSE)); 
       exit;
     }
 
@@ -406,10 +410,12 @@ class foowd_object
     $permission = $foowd->hasPermission($className, $methodName, 'class', $object);
     if ( !$permission )
     {
-      $this->foowd->loc_forward(getURI(array('error' => USER_NO_PERMISSION), FALSE)); 
+      $_SESSION['error'] = USER_NO_PERMISSION;
+      $foowd->loc_forward(getURI(NULL, FALSE)); 
       exit;
     }
 
+    $foowd->template->assign('className', $className);
     call_user_func(array($className, $classMethodName), &$foowd, $className); // call method
 
     $foowd->track(); 
@@ -426,21 +432,12 @@ class foowd_object
     return htmlspecialchars($this->title);
   }
 
-  /** 
-   * Return TRUE if title is Unique
-   *
-   * @param str String containing new title
-   * @param int ID of target workspace
-   * @param int Generated objectid (filled in)
-   * @param bool optional TRUE to generate unique object id (default)
-   * @return TRUE if title is unique in system
-   */
-  function isTitleUnique($title, $workspaceid, &$objectid, $uniqueObjectid = TRUE)
+  function isTitleUnique($title, $workspaceid, &$objectid, $in_source, $uniqueObjectid = TRUE)
   {
     return $this->foowd->database->isTitleUnique($title, 
                                                  $workspaceid, 
                                                  $objectid, 
-                                                 $this->foowd_source,
+                                                 $in_source,
                                                  $uniqueObjectid);
   }
 
@@ -484,9 +481,10 @@ class foowd_object
     }
 
     $okay = FALSE;
-    $regex = $this->foowd_vars_meta[$member];
+    $regex = isset($this->foowd_vars_meta[$member]) ?
+                isset($this->foowd_vars_meta[$member]) : NULL;
 
-    if ( !isset($regex) || $regex == NULL || $regex == '' || $regex == 'binary' )
+    if ( $regex == NULL || $regex == '' || $regex == 'binary' )
       $okay = TRUE;
     elseif ( is_array($value) )                           
       $okay = $this->setArray($value, $regex);
@@ -658,7 +656,7 @@ class foowd_object
         else
         {
           $error[] = OBJECT_DUPLICATE_TITLE;
-          $titleBox->wasValid = 0;
+          $titleBox->wasValid = FALSE;
         }
       }
       if ( $versionBox->value != $this->version )
@@ -997,9 +995,11 @@ class foowd_object
       $this->newVersion();
       $this->update();
       $this->save();
-      $url_arr['objectid'] = $this->objectid;
-      $url_arr['ok']       = OBJECT_UPDATE_OK;  
-      $this->foowd->loc_forward(getURI($url_arr, FALSE));
+
+      $_SESSION['ok']      = OBJECT_UPDATE_OK;  
+      $uri_arr['objectid'] = $this->objectid;
+      $uri_arr['classid'] = $this->classid;
+      $this->foowd->loc_forward(getURI($uri_arr, FALSE));
       exit;
     }
 
@@ -1028,7 +1028,8 @@ class foowd_object
     {
       if ($this->delete()) 
       {
-        $this->foowd->loc_forward( getURI(array('ok' => OBJECT_DELETE_OK), FALSE) );
+        $_SESSION['ok'] = OBJECT_DELETE_OK;
+        $this->foowd->loc_forward( getURI(NULL, FALSE) );
         exit;
       }
 
@@ -1067,8 +1068,9 @@ class foowd_object
       switch($rc)
       {
         case 1: 
+          $_SESSION['ok'] = OBJECT_CREATE_OK;
           $uri_arr['objectid'] = $this->objectid;
-          $uri_arr['ok'] = OBJECT_CREATE_OK;
+          $uri_arr['classid'] = $this->classid;
           $this->foowd->loc_forward( getURI($uri_arr, FALSE) );
           exit;
         case -1:

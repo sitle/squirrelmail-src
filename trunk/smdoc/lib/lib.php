@@ -289,7 +289,7 @@ function getURI($parameters = NULL, $relative = TRUE) {
     $uri .= '?';
     foreach ($parameters as $name => $value) {
       if ( $i++ > 0 )
-        $uri .= '&amp;';
+        $uri .= '&';
       $uri .= $name.'='.$value;
     }
   }

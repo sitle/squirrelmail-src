@@ -193,23 +193,23 @@ class smdoc_external extends foowd_object {
     }
 
     function method_history(&$foowd) {
-      $this->foowd->loc_forward( $this->url);
+      $this->foowd->loc_forward( $this->url.'&error='.INVALID_METHOD);
     }
 
     function method_admin(&$foowd) {
-      $this->foowd->loc_forward( $this->url);
+      $this->foowd->loc_forward( $this->url.'&error='.INVALID_METHOD);
     }
     
     function method_revert(&$foowd) {
-      $this->foowd->loc_forward( $this->url);
+      $this->foowd->loc_forward( $this->url.'&error='.INVALID_METHOD);
     }
 
     function method_delete(&$foowd) {
-      $this->foowd->loc_forward( $this->url);
+      $this->foowd->loc_forward( $this->url.'&error='.INVALID_METHOD);
     }
     
     function method_clone(&$foowd) {
-      $this->foowd->loc_forward( $this->url);
+      $this->foowd->loc_forward( $this->url.'&error='.INVALID_METHOD);
     }
 
 } // end static class

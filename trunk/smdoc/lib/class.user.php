@@ -305,7 +305,8 @@ class foowd_user extends foowd_object {
           return 7; // must have cookies enabled
         }
         if ($username) {
-          $user = &$foowd->getObj(array('objectid' => crc32(strtolower($username)), 'classid' => crc32(strtolower($foowd->user_class))));
+          $user = &$foowd->getObj(array('objectid' => crc32(strtolower($username)), 
+                                        'classid' => crc32(strtolower($foowd->user_class))));
           if (is_object($user) && strtolower($user->title) == strtolower($username)) {
             if ($user->hostmaskCheck()) {
               $salt = getConstOrDefault($foowd->password_salt, '');
@@ -444,7 +445,8 @@ class foowd_user extends foowd_object {
 
     if ($id == NULL && $username != '') { // user given username, fetch user and send stage 1 e-mail requrest 
 
-      $user = &$foowd->getObj(array('objectid' => crc32(strtolower($username)), 'classid' => crc32(strtolower($foowd->user_class))));
+      $user = &$foowd->getObj(array('objectid' => crc32(strtolower($username)), 
+                                    'classid' => crc32(strtolower($foowd->user_class))));
       if (isset($user->title) && strtolower($user->title) == strtolower($username)) {
         if (isset($user->email)) {
           $foowd->template->assign('sitename', $foowd->sitename);
@@ -473,7 +475,8 @@ class foowd_user extends foowd_object {
 
     } elseif ($id != '' && $queryUsername != '') { // user returned after stage 1 e-mail, change password and send stage 2 e-mail
 
-      $user = &$foowd->getObj(array('objectid' => crc32(strtolower($username)), 'classid' => crc32(strtolower($foowd->user_class))));
+      $user = &$foowd->getObj(array('objectid' => crc32(strtolower($username)), 
+                                    'classid' => crc32(strtolower($foowd->user_class))));
       if (
         isset($user->title) &&
         strtolower($user->title) == strtolower($queryUsername)
