@@ -100,7 +100,7 @@ function drawmonthview() {
                 $i=0;
                 while ($calfoo = each($calendardata[$cdate])) {
                     $calbar = $calendardata[$cdate][$calfoo['key']];
-                    echo ($calbar['priority']==1) ? "<FONT COLOR=\"$color[1]\">$calbar[title]</FONT><br>\n" : "$calbar[title]<br>\n";
+                    echo (isOdd($calbar['priority'])) ? "<FONT COLOR=\"$color[1]\">$calbar[title]</FONT><br>\n" : "$calbar[title]<br>\n";
                     $i=$i+1;
                     if($i==2){
                         break;

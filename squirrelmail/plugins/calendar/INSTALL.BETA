@@ -1,0 +1,58 @@
+SQCalendar INSTALL, v.1.3 2002/08/30
+GPL (C) Michal Szczotka <michal@tuxy.org>
+GPL (C) Jeff Hinrichs <jeffh@delasco.com>
+
+***THIS IS A BETA SO BACKUP YOUR ORINGAL CALENDAR PLUGIN***
+
+
+*********************************************************************
+* Installation
+*********************************************************************
+The beta is installed via the normal tar routine for SM plugins:
+	http://www.squirrelmail.org/wiki/InstallingPlugins
+
+
+*********************************************************************
+* Configuration
+*********************************************************************
+Step 1) You need to edit config.php  
+  $fromAcct	- account that the email is from
+  $fromName	- I use the name "Reminder"
+  $replyAcct	- If the user hit's reply, where should the email go?
+  $replyName	- name of reply to 
+  $allowRemote  - can script be run remotely 
+  $localDebug   - should script output debug info when run locally
+  $remoteDebug  - should script output debug info when run remotely
+
+Step 2) The notify script (notify.php) must be run every 5 minutes 
+via cron. I have included an example crontab file (crontab.dat) 
+showing how I schedule the job.
+
+  SHELL=/bin/sh
+  MAILTO=""
+  # run notify script every 5 minutes
+  0-59/5 * * * * wget -bO /dev/null http://localhost/plugins/calendar/notify.php
+
+ (The example uses wget in background mode and pipes any output to /dev/null)
+
+
+*********************************************************************
+* Security/Other
+*********************************************************************
+You can allow/disallow the remote invocation of the script and the
+debugging information returned via these settings in config.php.
+
+  $allowRemote  - can script be run remotely 
+  $localDebug   - should script output debug info when run locally
+  $remoteDebug  - should script output debug info when run remotely
+
+They are set to either 0 or 1, where 0=No and 1=Yes.  Will all 3
+variables turned off the system is secured as much as possible..
+
+*********************************************************************
+* TODO
+*********************************************************************
+1) Secure the script by checking requesting IP against a stored IP
+2) Log notification run completion status to system log
+3) Create a seperate notificaiton drop down besides priority
+4) ..?..

@@ -1,0 +1,8 @@
+#
+# An example crontab for running the notify script.
+# the path to the notify script is dependant on your installation and you
+# should edit as required.
+#
+MAILTO=""
+# run notify script every 5 minutes
+0-59/5 * * * * wget -bO /dev/null http://localhost/plugins/calendar/notify.php

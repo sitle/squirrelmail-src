@@ -96,6 +96,9 @@ function show_event_form() {
     global $color, $editor_size, $year, $day, $month, $hour, $minute, $calendardata;
 
     $tmparray = $calendardata["$month$day$year"]["$hour$minute"];
+    // 20020831 - JLH : Added warningMessage if notifyTime or eventTime has passed
+    $hostTime = date('YmdHi');
+    
     echo "\n<FORM name=eventupdate action=\"event_edit.php\" METHOD=POST >\n".
          "      <INPUT TYPE=hidden NAME=\"year\" VALUE=\"$year\">\n".
          "      <INPUT TYPE=hidden NAME=\"month\" VALUE=\"$month\">\n".
@@ -138,8 +141,14 @@ function show_event_form() {
          "      <SELECT NAME=\"event_priority\">\n";
     select_option_priority($tmparray[priority]);
     echo "      </SELECT>\n".
-         "      </TD></TR>\n".
-         "      <TR><TD BGCOLOR=\"$color[4]\" ALIGN=RIGHT>" . _("Title:") . "</TD>\n".
+         "      </TD></TR>\n";
+    echo "      <TR><TD BGCOLOR=\"$color[4]\" ALIGN=RIGHT>" . _("Notify:") . "</TD>\n".
+         "      <TD BGCOLOR=\"$color[4]\" ALIGN=LEFT>\n".
+         "      <SELECT NAME=\"event_notification\">\n";
+    select_option_notification($tmparray[priority]);
+    echo "      </SELECT>\n".
+         "      </TD></TR>\n";
+    echo "      <TR><TD BGCOLOR=\"$color[4]\" ALIGN=RIGHT>" . _("Title:") . "</TD>\n".
          "      <TD BGCOLOR=\"$color[4]\" ALIGN=LEFT>\n".
          "      <INPUT TYPE=text NAME=\"event_title\" VALUE=\"$tmparray[title]\" SIZE=30 MAXLENGTH=50><BR>\n".
          "      </TD></TR>\n".
@@ -162,7 +171,7 @@ function confirm_update() {
          _("Do you really want to change this event from:") . "<br>\n".
          "    </TH></TR>\n".
          "    <TR><TD ALIGN=RIGHT BGCOLOR=\"$color[4]\">" . _("Date:") . "</TD>\n".
-         "    <TD ALIGN=LEFT BGCOLOR=\"$color[4]\">$month/$day/$year</TD></TR>\n".
+         "    <TD ALIGN=LEFT BGCOLOR=\"$color[4]\">$month/$day/$year $hour:$minute</TD></TR>\n".
          "    <TR><TD ALIGN=RIGHT BGCOLOR=\"$color[4]\">" . _("Time:") . "</TD>\n".
          "    <TD ALIGN=LEFT BGCOLOR=\"$color[4]\">$hour:$minute</TD></TR>\n".
          "    <TR><TD ALIGN=RIGHT BGCOLOR=\"$color[4]\">" . _("Priority:") . "</TD>\n".
@@ -226,7 +235,7 @@ if ($day <= 0){
     $day = date( 'd' );
 }
 if ($hour <= 0){
-    $hour = '08';
+    $hour = date( 'H' );
 }
 
 $calself=basename($PHP_SELF);
@@ -252,6 +261,7 @@ if (!isset($updated)){
         $event_text=nl2br($event_text);
         $event_text=ereg_replace ("\n", '', $event_text);
         $event_text=ereg_replace ("\r", '', $event_text);
+        $event_priority = $event_priority + $event_notification;
         confirm_update();
     } else {
         update_event("$month$day$year", "$hour$minute");
