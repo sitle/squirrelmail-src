@@ -1,67 +1,138 @@
-body, p, td {
-	font-family: arial, verdana, trebuchet ms;
-	font-size: 10pt;
-	color: #000000;
+/*
+ * Modified by SquirrelMail Development Team
+ * $Id$
+ */
+body {
+    color: #333333; 
+    margin: 0px;
+    padding: 0px;
+    font-family: verdana, "trebuchet ms", arial; 
 }
-h1 {
-	font-family: arial, trebuchet ms, verdana;
-	font-size: 20pt;
-	color: #000000;
-	font-weight: bold;
+#pagetitle {
+    background: #afad97 url(sm_logo.png) no-repeat top left;
+    height: 85px;
+    padding: 1px 5px 2px 140px;
+    border-bottom: 1px solid gray;
+    font-size: x-large;
+    color: #666666;
+    text-align: right;
 }
-h2 {
-	font-family: arial, trebuchet ms, verdana;
-	font-size: 16pt;
-	color: #000000;
-	font-weight: bold;
+#usermenu {
+    padding-bottom: 20px;
+    font-size: small;
 }
-h3 {
-	font-family: arial, trebuchet ms, verdana;
-	font-size: 12pt;
-	color: #000000;
-	font-weight: bold;
+#workspaceid {
+    font-size: small;
 }
-h4 {
-	font-family: arial, trebuchet ms, verdana;
-	font-size: 10pt;
-	color: #000000;
-	font-weight: bold;
+#locationmenu {
+    background: #d3d1c2;
+    border-top: 1px solid gray;
+    border-bottom: 1px solid gray;
+    padding: 0px 5px;
+    font-size: small; 
+    color: #666666;    
 }
-li {
-	font-family: arial, verdana, trebuchet ms;
-	font-size: 10pt;
-	color: #000000;
+#content {
+    background: white;
+    margin: 5px 0px;
+    padding: 5px;
 }
-dt {
-	font-family: arial, trebuchet ms, verdana;
-	font-size: 10pt;
-	color: #000000;
-	margin: 3px;
-	margin-top: 10px;
-	font-weight: bold;
+#editmenu {
+    background: #d3d1c2;
+    border-top: 1px solid gray;
+    border-bottom: 1px solid gray;
+    padding: 2px;
+    margin: 0px;
+    font-size: small; 
+    color: #666666;    
+    text-align: center;
 }
+#copyright {
+    background: #afad97;
+    padding: 2px;
+    border-top: 1px solid gray;
+    border-bottom: 1px solid gray;
+    color: #666666;
+    font-size: small;
+    text-align: center; 
+}
+#footer {
+    color: gray;
+    text-align: center;
+    font-size: x-small;
+}
+form { 
+    padding: 0px; 
+    margin: 0px; 
+}
+.separator {
+    border-bottom: 1px solid #afad97;
+    margin-bottom: 10px;
+}
+.debug_output {
+    font-size: small;
+    margin: 0px 5px;
+}
+.indexitem {
+    margin: 0px 20px;
+}
+h3,
+.debug_output_heading,
+.indexhead {
+    margin: 15px 5px 5px 5px;
+    padding-right: 5px;
+    color: #afad97; 
+    font-weight: bold; 
+    text-decoration: none;
+    text-align: right;
+    border-bottom: 1px solid #afad97;
+}
+li { 
+    padding-bottom: 5px; 
+    margin: 0px; 
+}
+dt { 
+    padding: 5px; 
+    margin: 0px; 
+    font-weight: bold; 
+}
+
 blockquote, pre {
-	font-family: courier new, trebuchet ms;
-	font-size: 10pt;
-	color: #000000;
+	font-family: "courier new", monospace;
 	background-color: #eeeeee;
 	margin: 0px;
 	padding: 5px;
 }
-p.nb, p.para, p.membervars {
-	margin-left: 20px;
+.member_vars,
+.member_func {
+    font-family: "courier new", monospace;
+    font-size: small;
+    background-color: #eeeeee;
+    margin: 5px 20px;
+    padding: 5px;
 }
-a:link {
-	color:#0000ff;
+.parameters {
+    margin: 0px 20px;
 }
-a:visited {
-	color:#660099;
+.nb {
+    margin: 5px 20px 0px 20px;
 }
+a,
+a:link,
+a:visited,
 a:active {
-	color:#990000;
+    text-decoration: none;
+    outline: none;
+    color: #BB0000;
 }
-hr {
-	color: #000000;
+a:hover {
+    text-decoration: underline;
+    color: gray;
+}
+
+hr { 
+    color: #666666; 
+    height: 1px; 
 }
 p.quote {
 	font-style: italic;
@@ -97,4 +168,23 @@ tr.row_odd {
 }
 tr.row_even {
 	background-color: #f9f9f9;
+}
+.alt_row {
+    background: #d3d1c2;
+}
+.small { 
+    font-size: small; 
+}
+.xsmall { 
+    font-size: x-small; 
+}
+.subtext {
+    color: #666666;
+    font-size: small;
+}
+OL.upper_roman {
+    list-style-type: upper-roman
+}
+OL.decimal {
+    list-style-type: decimal
 }
