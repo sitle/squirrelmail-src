@@ -14,13 +14,12 @@
 Summary: SquirrelMail webmail client
 Name: squirrelmail
 Version: 1.2.8
-Release: 0.1
+Release: 0.2
 License: GPL
 URL: http://www.squirrelmail.org/
 Group: Applications/Internet
 Source: %{name}-%{version}.tar.gz
-Source1: squirrelmail.conf
-#Source2: squirrelmail-splash.png
+#Source1: squirrelmail-splash.png
 BuildRoot: %{_tmppath}/%{name}-%{version}-root
 BuildArch: noarch
 Requires: %{webserver}, php >= 4.0.4, perl, tmpwatch >= 2.8
@@ -42,7 +41,7 @@ address books, and folder manipulation.
 rm -f plugins/make_archive.pl
 
 # Rearrange the documentation
-mv AUTHORS ChangeLog COPYING INSTALL MIRRORS README UPGRADE doc/
+mv AUTHORS ChangeLog COPYING INSTALL README UPGRADE doc/
 mv ReleaseNotes doc/ReleaseNotes.txt
 mv themes/README.themes doc/
 for f in `find plugins -name "README*" -or -name INSTALL \
@@ -64,7 +63,7 @@ for f in contrib/RPM/squirrelmail.cron contrib/RPM/config.php.rh7; do
 done
 
 # replace splash screen
-#cp %{SOURCE2} images/sm_logo.png
+#cp %{SOURCE1} images/sm_logo.png
 
 %install
 [ "$RPM_BUILD_ROOT" != "/" ] && rm -rf $RPM_BUILD_ROOT
@@ -129,7 +128,8 @@ ln -s %{_datadir}/squirrelmail $RPM_BUILD_ROOT/var/www/html/webmail
 %else
 # install the config file
 mkdir -p $RPM_BUILD_ROOT%{_sysconfdir}/httpd/conf.d
-install -m 644 %{SOURCE1} $RPM_BUILD_ROOT%{_sysconfdir}/httpd/conf.d/
+install -m 644 contrib/RPM/squirrelmail.conf \
+	$RPM_BUILD_ROOT%{_sysconfdir}/httpd/conf.d/
 %endif
 
 
@@ -174,6 +174,7 @@ install -m 644 %{SOURCE1} $RPM_BUILD_ROOT%{_sysconfdir}/httpd/conf.d/
 - remove workarounds for #68669 (rh bugzilla), since 1.2.8 works with
   register_globals = Off.
 - Hardwiring localhost into the default config file. Makes sense.
+- No more such file MIRRORS.
 
 * Tue Aug  6 2002 Preston Brown <pbrown@redhat.com> 1.2.7-4
 - replacement splash screen.
