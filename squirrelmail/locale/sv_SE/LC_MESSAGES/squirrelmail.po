@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: squirrelmail HEADPOT-Creation-Date: 2003-09-20 11:04"
 "+0300\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-02-24 20:39+0200\n"
-"PO-Revision-Date: 2004-02-28 16:18+0100\n"
+"POT-Creation-Date: 2004-01-26 20:14+0200\n"
+"PO-Revision-Date: 2004-03-01 13:56+0100\n"
 "Last-Translator: Fredrik Jervfors <sqm_admin@fimbul.net>\n"
 "Language-Team: Swedish <squirrelmail-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -226,7 +226,7 @@ msgid "Server replied: "
 msgstr "Servern svarade: "
 
 msgid "Illegal folder name.  Please select a different name."
-msgstr "Otillåtet mappnamn.  Välj ett annat namn."
+msgstr "Otillåtet mappnamn. Välj ett annat namn."
 
 msgid "Click here to go back"
 msgstr "Klicka här för att gå tillbaka"
@@ -1419,11 +1419,8 @@ msgstr "Brevvisning och -skrivning"
 msgid "Wrap Incoming Text At"
 msgstr "Radbryt mottagen text vid"
 
-msgid "Width of Editor Window"
-msgstr "Textfönstrets bredd"
-
-msgid "Height of Editor Window"
-msgstr "Textfönstrets höjd"
+msgid "Size of Editor Window"
+msgstr "Textfönstrets storlek"
 
 msgid "Location of Buttons when Composing"
 msgstr "Knapparnas placering vid brevskrivning"
@@ -1664,9 +1661,6 @@ msgstr "AVSÄNDAREN skrev"
 
 msgid "Quote Who XML"
 msgstr "XML Citat"
-
-msgid "On DATE, AUTHOR Said"
-msgstr "DATUMET skrev AVSÄNDAREN"
 
 msgid "User-Defined"
 msgstr "Användardefinierat"
@@ -2586,7 +2580,7 @@ msgid "No password submitted"
 msgstr "Inget lösenord angivet"
 
 msgid "authentication failed "
-msgstr "validering  misslyckades"
+msgstr "validering misslyckades"
 
 msgid "POP3 apop:"
 msgstr "POP3 apop:"
@@ -2744,7 +2738,7 @@ msgid ""
 "encryption anyway. Additionally, the encryption that we do to save it on the "
 "server can be undone by a hacker reading the source to this file."
 msgstr ""
-"Du bör veta att kryptering som används för att spara  ditt lösenord inte är "
+"Du bör veta att kryptering som används för att spara ditt lösenord inte är "
 "helt säker. I vilket fall som helst, om du använder pop så används ingen "
 "kryptering alls. Kryptering som används kan knäckas av en hacker som kommer "
 "åt källan till den här filen."
@@ -3145,7 +3139,7 @@ msgid ""
 msgstr ""
 "SpamCop-tjänsten visar informationen som den fått den, så bläddra nedåt till "
 "dess du ser en knapp. Det kan ta ett tag medan informationen kontrolleras, "
-"så ha tålamod. Läs vad det står och skicka sedan in rapporten. Stäng "
+"så ha tålamod. Läs vad det står och skicka in rapporten. Stäng "
 "fönstret. Klicka på avbryt eller tillämpbar mapp för att se skräpposten och/"
 "eller kasta den."
 
@@ -3630,43 +3624,33 @@ msgstr "Vilken översättare skall användas om du får brev i ett annat språk?"
 msgid "%s to %s"
 msgstr "%s till %s"
 
-#, c-format
 msgid "English"
 msgstr "Engelska"
 
-#, c-format
 msgid "Chinese"
 msgstr "Kinesiska"
 
-#, c-format
 msgid "French"
 msgstr "Franska"
 
-#, c-format
 msgid "German"
 msgstr "Tyska"
 
-#, c-format
 msgid "Italian"
 msgstr "Italienska"
 
-#, c-format
 msgid "Japanese"
 msgstr "Japanska"
 
-#, c-format
 msgid "Korean"
 msgstr "Koreanska"
 
-#, c-format
 msgid "Portuguese"
 msgstr "Portugisiska"
 
-#, c-format
 msgid "Spanish"
 msgstr "Spanska"
 
-#, c-format
 msgid "Russian"
 msgstr "Ryska"
 
@@ -3688,7 +3672,6 @@ msgstr "Tjeckiska"
 msgid "Danish"
 msgstr "Danska"
 
-#, c-format
 msgid "Dutch"
 msgstr "Holländska"
 
@@ -3698,7 +3681,6 @@ msgstr "Europeisk spanska"
 msgid "Finnish"
 msgstr "Finska"
 
-#, c-format
 msgid "Greek"
 msgstr "Grekiska"
 
@@ -3752,306 +3734,6 @@ msgstr "Språk för gränssnittet"
 
 msgid "Translation direction"
 msgstr "Översättningsriktning"
-
-msgid "Add to:"
-msgstr "Lägg till:"
-
-msgid "Add to address book"
-msgstr "Lägg till i adressboken"
-
-msgid "Your Message has been sent."
-msgstr "Brevet har skickats."
-
-msgid "Bypass Trash"
-msgstr "Kringgå papperskorgen"
-
-msgid "Please enter something to search for"
-msgstr "Ange något att söka efter"
-
-msgid "There must be at least one criteria to search for"
-msgstr "Det måste finnas minst ett sökkriterium"
-
-msgid "Error in criteria argument"
-msgstr "Fel i kriteriumet"
-
-msgid "(Illegal date)"
-msgstr "(Otillåtet datum)"
-
-msgid "(Wrong date)"
-msgstr "(Fel datum)"
-
-msgid "In"
-msgstr "In"
-
-msgid "(Missing argument)"
-msgstr "(Saknat argument)"
-
-msgid "(Spurious argument)"
-msgstr "(Falskt argument)"
-
-msgid "Saved Searches"
-msgstr "Sparade sökningar"
-
-msgid "Missing"
-msgstr "Saknas"
-
-msgid "and&nbsp;subfolders:"
-msgstr "och&nbsp;undermappar:"
-
-msgid "Exclude Criteria:"
-msgstr "Uteslutningskriterier:"
-
-msgid "Search Criteria"
-msgstr "Sökkriterier"
-
-msgid "Add New Criteria"
-msgstr "Lägg till nya kriterier"
-
-msgid "Remove Excluded Criteria"
-msgstr "Ta bort uteslutningskriterier"
-
-msgid "Remove All Criteria"
-msgstr "Ta bort alla kriterier"
-
-msgid "Answered"
-msgstr "Besvarad"
-
-msgid "Before"
-msgstr "Innan"
-
-msgid "Message Body"
-msgstr "Brevtext"
-
-msgid "Deleted"
-msgstr "Borttagen"
-
-msgid "Draft"
-msgstr "Utkast"
-
-msgid "Flagged"
-msgstr "Flaggad"
-
-msgid "Sent By"
-msgstr "Skickad av"
-
-msgid "Header Field"
-msgstr "Fält i huvud"
-
-msgid "Keyword"
-msgstr "Nyckelord"
-
-msgid "Larger Than"
-msgstr "Större än"
-
-msgid "Old"
-msgstr "Gammal"
-
-msgid "On"
-msgstr "På"
-
-msgid "Recent"
-msgstr "Nyligen"
-
-msgid "Seen"
-msgstr "Läst"
-
-msgid "Sent Before"
-msgstr "Skickat innan"
-
-msgid "Sent On"
-msgstr "Skickat den"
-
-msgid "Sent Since"
-msgstr "Skickat sedan"
-
-msgid "Since"
-msgstr "Sedan"
-
-msgid "Smaller Than"
-msgstr "Mindre än"
-
-msgid "Subject Contains"
-msgstr "Ärendet innehåller"
-
-msgid "Header and Body"
-msgstr "Huvud och text"
-
-msgid "Sent To"
-msgstr "Skickat till"
-
-msgid "Not"
-msgstr "Inte"
-
-msgid "And In"
-msgstr "och i"
-
-msgid "Or In"
-msgstr "eller i"
-
-msgid "And"
-msgstr "och"
-
-msgid "Or"
-msgstr "eller"
-
-msgid "Folder List"
-msgstr "Lista över mappar"
-
-msgid "Possible reason : "
-msgstr "Trolig orsak : "
-
-msgid "The imap server failed to handle threading."
-msgstr "IMAP-server kan inte hantera korrespondensvyer."
-
-msgid "Click here to unset thread view for this mailbox and start again."
-msgstr "Ta bort korrespondansvyer för denna brevlåda och börja om."
-
-msgid "ERROR : Bad function call."
-msgstr "FEL : Felaktigt funktionsanrop."
-
-msgid "Reason:"
-msgstr "Orsak:"
-
-msgid "Click here to change the sorting of the message list"
-msgstr "Klicka här för att ändra sorteringen av brevlistan"
-
-msgid "Message Flags Icon Theme"
-msgstr "Tema för brevikoner"
-
-msgid "Length of From/To Field (0 for full)"
-msgstr "Längd på från-/till-fältet (0 för full längd)"
-
-msgid "Length of Subject Field (0 for full)"
-msgstr "Längd på ärendefältet (0 för full längd)"
-
-msgid "Show recipient name if the message is from your default identity"
-msgstr "Visa mottagarnamn om brevet är från din egen huvudidentitet"
-
-msgid "Strip signature when replying"
-msgstr "Avlägsna brevfot vid svar"
-
-msgid "Show 'Delete & Prev/Next' Links"
-msgstr "Visa Kasta och visa föregående/nästa-länkar."
-
-msgid "Save Replies with Original Message"
-msgstr "Spara svar ihop med det ursprungliga brevet"
-
-msgid "Enable Collapsable Folders"
-msgstr "Tillåt att underliggande mappar döljs"
-
-msgid "Folder"
-msgstr "Mapp"
-
-msgid "Subfolder"
-msgstr "Undermapp"
-
-msgid "Global address book DSN"
-msgstr "Global adressboks-DSN"
-
-msgid "Global address book table"
-msgstr "Global adressbokstabell"
-
-msgid "Allow writing into global address book"
-msgstr "Tillåt att skriva i den globala adressboken"
-
-msgid "Allow listing of global address book"
-msgstr "Tillåt att lista den globala adressboken"
-
-msgid "Language settings"
-msgstr "Språkinställningar"
-
-msgid "Show alternative language names"
-msgstr "Visa alternativa språknamn"
-
-msgid "Available languages"
-msgstr "Tillgängliga språk"
-
-msgid "Use agresive decoding"
-msgstr "Använd aggressiv avkodning"
-
-msgid "Tweaks"
-msgstr "Finjusteringar"
-
-msgid "Use advanced tree folder listing"
-msgstr "Använd avancerad mappträdlista"
-
-msgid "Use old folder listing functions"
-msgstr "Använd gamla mapplistefunktioner"
-
-msgid "Use php recode functions"
-msgstr "Använd PHP-omkodningsfunktioner"
-
-msgid "Use php iconv functions"
-msgstr "Använd PHP:s iconv-funktioner"
-
-msgid ""
-"Note: it is recommended that you configure your system using conf.pl, and "
-"not this plugin. conf.pl contains additional information regarding the "
-"purpose of variables and appropriate values, as well as additional "
-"verification steps."
-msgstr ""
-"OBS: Det är rekommenderat att du konfigurerar systemet med conf.pl, och inte "
-"med denna insticksmodul. conf.pl innehåller extra information om syftet med "
-"variabler och deras tillämpbara värden, såväl som extra "
-"verifikationsåtgärder."
-
-msgid ""
-"Run or consult conf.pl should you run into difficulty with your "
-"configuration."
-msgstr ""
-"Om du stöter på problem med konfigurationen, kör eller konsultera conf.pl."
-
-msgid "No POP3 servers configured yet."
-msgstr "Inga POP3-servrar är konfigurerade."
-
-msgid "Click here to go to the options page."
-msgstr "Tillbaka till inställningar"
-
-msgid "Spam Service Type:"
-msgstr "Typ av skräpposttjänst:"
-
-msgid "Free reporting"
-msgstr "Gratis rapportering"
-
-msgid "Member services"
-msgstr "Medlemstjänster"
-
-msgid ""
-"The SpamCop service will display information as it finds it, so scroll down "
-"until you see a form button. It might pause a little while it is looking up "
-"information, so be a little patient. Read what it says, and submit the spam. "
-"Close the browser window.  Press Cancel or click on the appropriate mail "
-"folder to see messages and/or delete the spam."
-msgstr ""
-"SpamCop-tjänsten visar informationen som den fått den, så bläddra nedåt till "
-"dess du ser en knapp. Det kan ta ett tag medan informationen kontrolleras, "
-"så ha tålamod. Läs vad det står och skicka in rapporten. Stäng fönstret. "
-"Klicka på avbryt eller tillämpbar mapp för att se skräpposten och/eller "
-"kasta den."
-
-msgid "Spamcop Service Type"
-msgstr "Typ av SpamCop-tjänst"
-
-msgid ""
-"Service type option allows selecting which spamcop services you are using. "
-"Member services use different web reporting forms  and does not display "
-"nags. You can purchase these services, if you want to support SpamCop."
-msgstr ""
-"Tjänstetypen tillåter dig att välja vilken tjänst du använder. "
-"Medlemstjänster använder andra webbrapporteringsformulär och visar inte "
-"irriterande meddelanden. Du kan köpa dessa tjänster om du vill stödja "
-"SpamCop."
-
-msgid "Filipino (Tagalog)"
-msgstr "Filippinska (Tagalog)"
-
-#, c-format
-msgid "Simplified Chinese"
-msgstr "Kinsiska, förenklad"
-
-#, c-format
-msgid "Traditional Chinese"
-msgstr "Kinesiska, traditionel"
 
 msgid "Delivery error report"
 msgstr "Rapport om leveransfel"
