@@ -35,11 +35,20 @@ include_once(TEMPLATE_PATH.'index.tpl');
  */
 function show_news_body(&$foowd, $className, $method, &$user, &$object, &$t)
 {
-if ( empty($t['newslist']) )
-{
-  echo '<h3>'._("No News Items Found").'</h3>';
-  return;
-}
+  if ( empty($t['newslist']) )
+    echo '<h3>'._("No News Items Found").'</h3>';
+
+  $dummy=null;
+  if ( $foowd->hasPermission('smdoc_news', 'create', 'CLASS', $dummy) ) 
+  {
+    $uri_arr['class']='smdoc_news';
+    $url = getURI($uri_arr);
+    echo '<p>'._("News Editor").': <a href="'.$url.'">'._("Add News Item").'</a></p>';
+  }
+
+  // If there are no news items, return without displaying the table, etc.
+  if ( empty($t['newslist']) )
+    return;
 
 ?>
 <table class="smdoc_table" width="80%">

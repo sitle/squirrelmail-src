@@ -52,7 +52,7 @@ PATH_PROJECT=$PWD
 #  *
 #  * @var               string PATH_PHPDOC
 #  */
-PATH_PHPDOC=$PWD/../phpDocumentor-1.2.3/phpdoc
+PATH_PHPDOC=$PWD/../phpDocumentor/phpdoc
 
 #/**
 #  * where documentation will be put
