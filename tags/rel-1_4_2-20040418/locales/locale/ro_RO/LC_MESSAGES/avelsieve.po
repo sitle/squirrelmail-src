@@ -1,0 +1,593 @@
+# translation of avelsieve.po to Romanian
+# translation of avelsieve.po to romanian.
+# AvelSieve Romanian Strings
+# Copyright (c) 2002 Marius Onica.
+# FIRST AUTHOR <omar@uoradea.ro>, 2002.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: avelsieve\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2003-09-01 19:37+0300\n"
+"PO-Revision-Date: 2003-06-13 15:20+0200\n"
+"Last-Translator: Marius Onica <omar@uoradea.ro>\n"
+"Language-Team: Romanian \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=ISO-8859-2\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "You have to define at least one header match text."
+msgstr "Trebuie sa definiti cel putin un header match text."
+
+msgid "You have not defined the name for the new folder."
+msgstr "Nu ati definit numele pentru noul director."
+
+msgid "Please try again."
+msgstr "Va rog incercati din nou."
+
+msgid "Illegal folder name.  Please select a different name"
+msgstr "Numele directorului este ilegal.  Va rugam alegeti o alta denumire."
+
+msgid "New Rule Wizard - Step"
+msgstr "Vrajitor pentru creare de noi reguli - Pasul"
+
+msgid "of"
+msgstr "din"
+
+msgid "Rule Type"
+msgstr "Tipul regulii de filtrare"
+
+msgid "Condition"
+msgstr "Conditia"
+
+msgid "Action"
+msgstr "Actiune"
+
+msgid "Confirmation"
+msgstr "Confirmare"
+
+msgid ""
+"<p>You have chosen to keep every mail. This is the default action anyway, so "
+"you might want to start over with a rule that makes more sense. Select &quot;"
+"finished&quot; to save this rule nonetheless.</p>"
+msgstr ""
+"<p>Dumneavoastra ati ales sa pastrati toate mesajele. Aceasta este ,oricum, "
+"actiunea implicita, asa ca, poate doriti sa incercati sa creati o regula "
+"noua, care are mai mult sens. Selectati &quot;Terminare&quot; pentru a salva "
+"totusi aceasta regula.</p>"
+
+msgid ""
+"Please use the buttons on the bottom instead of your browser's reload, back "
+"and forward buttons, to build a rule."
+msgstr ""
+"Pentru a construi o regula, va rugam sa folositi butoanele amplasate la "
+"sfarsitul paginii in loc de butoanele reload, back sau forward din cadrul "
+"browser-ului."
+
+msgid "Clear this Form"
+msgstr "Sterge Formularul"
+
+msgid "Start Over"
+msgstr "Incepe din Nou"
+
+msgid "Cancel"
+msgstr "Cancel"
+
+msgid "Move back to step"
+msgstr "Muta inapoi la pasul"
+
+msgid "Finished"
+msgstr "Terminat"
+
+msgid "Move on to step"
+msgstr "Muta la pasul"
+
+msgid "What kind of rule would you like to add?"
+msgstr "Ce fel de regula doriti sa adaugati ?"
+
+msgid ""
+"The rule will trigger if the following addresses appear anywhere in the "
+"message's headers:"
+msgstr ""
+"Regula se va declansa daca adresele urmatoare vor aprea undeva in Header-ul "
+"mesajului"
+
+msgid "AND (Every item must match)"
+msgstr "AND (Fiecare declaratie trebuie sa coincida"
+
+msgid "OR (Either item will match)"
+msgstr "SAU (Oricare dintre declaratii trebuie sa coincida)"
+
+msgid "The condition for the following rules is:"
+msgstr "Conditia pentru urmatoarele reguli este: "
+
+msgid "The header "
+msgstr "Header-ul "
+
+msgid "Less..."
+msgstr "Mai putin ..."
+
+msgid "More..."
+msgstr "Mai mult ..."
+
+msgid "This rule will trigger if message is"
+msgstr "Aceasta regula se va declansa dca mesajul este"
+
+msgid "bigger"
+msgstr "mai mare"
+
+msgid "smaller"
+msgstr "mai mic"
+
+msgid "than"
+msgstr " decat "
+
+msgid "KB (kilobytes)"
+msgstr "KB (Kilobyte)"
+
+msgid "MB (megabytes)"
+msgstr "MB (Megabyte)"
+
+msgid ""
+"The following action will be applied to <strong>all</strong> incoming "
+"messages that do not match any of the previous rules."
+msgstr ""
+"Urmatoarea actiune se va aplica <strong>tuturor</strong> mesajelor sosite "
+"care, nu indeplinesc conditiile regulilor precedente."
+
+msgid ""
+"This rule will trigger upon the occurrence of one or more strings in the "
+"body of an e-mail message. "
+msgstr ""
+"Aceasta regula se va activa cand va detecta existenta a unuia sau mai multe "
+"portiuni de text (strings) in continutul (body) mesajului. "
+
+msgid "Choose what to do when this rule triggers, from one of the following:"
+msgstr ""
+"Alege ce sa faci cand aceasta regula va intra in actiune, din urmatoarele "
+"posibilitati:"
+
+msgid "Keep (Default action)"
+msgstr "Pastreaza (Actiune implicita)"
+
+msgid "Discard Silently"
+msgstr "Ignora fara a actiona in vreun fel"
+
+msgid "Reject, sending this excuse to the sender:"
+msgstr "Refuza, trimitand acest mesaj de explicatii (scuze) expeditorului:"
+
+msgid "Please do not send me large attachments."
+msgstr "Va rog sa nu-mi trimiteti fisiere atasate de mari dimensiuni"
+
+msgid "Redirect to the following email address:"
+msgstr "Redirectare catre urmatoarea adresa de E-mail:"
+
+msgid "someone@example.org"
+msgstr "cineva@exemplu.ro"
+
+msgid "Move message into"
+msgstr "Muta mesajele in"
+
+msgid "the existing folder"
+msgstr "dosarul existent "
+
+msgid "a new folder, named"
+msgstr "un dosar nou, cu denumirea "
+
+msgid "created as a subfolder of"
+msgstr " creat ca un sub-dosar a "
+
+msgid "Also keep copy in INBOX, marked as deleted."
+msgstr "De asemenea pastreaza o copie in INBOX, marcate ca sterse ."
+
+msgid "Vacation"
+msgstr "Vacanta"
+
+msgid ""
+"The notice will be sent only once to each person that sends you mail, and "
+"will not be sent to a mailing list address."
+msgstr ""
+"Aceasta nota va fi trimisa doar o singura data fiecarei persoane care va "
+"trimite un E-mail,  si nu va fi trimisa adreselor gen: liste de discutii"
+
+msgid "Addresses: Only reply if sent to these addresses:"
+msgstr ""
+"Adresa: Trimite un raspuns doar daca primesti mesajul la aceasta adresa: "
+
+msgid "Days: Reply message will be resent after"
+msgstr "Zile: Mesajul de raspuns va fi retransmis dupa "
+
+msgid "days"
+msgstr "zile"
+
+msgid "Use the following message:"
+msgstr "Foloseste urmatorul mesaj:"
+
+msgid ""
+"This is an automated reply; I am away and will not be able to reply to you "
+"immediately."
+msgstr ""
+"Acesta este un raspuns automat . Sunt plecat din localitate si nu va pot "
+"raspunde imediat la mesajul Dumneavoastra."
+
+msgid "I will get back to you as soon as I return."
+msgstr "Va voi raspunde de indata ce ma intorc in localitate."
+
+msgid "Additional Actions"
+msgstr "Actiuni Aditionale"
+
+msgid "STOP"
+msgstr "STOP"
+
+msgid "If this rule matches, do not check any rules after it."
+msgstr ""
+"Daca aceasta regula se aplica (match), nu verifica nici o alta regula dupa "
+"aceasta."
+
+msgid "Notify me, using the following method:"
+msgstr "Notifica-ma, folosind urmatoarea metoda:"
+
+msgid "Notification ID"
+msgstr "ID al Notificarii"
+
+msgid "Parameters"
+msgstr "Parametrii"
+
+msgid "Message"
+msgstr "Mesaj"
+
+msgid "Help: Valid variables are:"
+msgstr "Help: Variabilele valide sunt:"
+
+msgid "Your new rule states:"
+msgstr "Noua Dvs. regula afirma:"
+
+msgid ""
+"If this is what you wanted, select Finished. You can also start over or "
+"cancel adding a rule altogether."
+msgstr ""
+"Daca acesta este ceea ce ati dorit sa obtineti, selectati Terminare. De "
+"asemenea puteti saReluati construirea regulii sau sa Anulati actiunea "
+"inceputa."
+
+msgid "Error Encountered"
+msgstr "Am intampinat o eroare"
+
+msgid "For <strong>ALL</strong> incoming messages; "
+msgstr "Pentru <strong>toate</strong> mesajele primite; "
+
+msgid "If"
+msgstr "Daca"
+
+msgid "<em>any</em> of the following mail headers match: "
+msgstr "<em>oricare</em> din urmatoarele Mail-Header-uri coincid: "
+
+msgid "<em>all</em> of the following mail headers match: "
+msgstr "<em>toate</em> urmatoarele Mail-Header-uri coincid: "
+
+msgid "the header"
+msgstr "Header-ul"
+
+msgid "is"
+msgstr "este"
+
+msgid "is not"
+msgstr "nu este"
+
+msgid "contains"
+msgstr "contine"
+
+msgid "does not contain"
+msgstr "nu contine"
+
+msgid "matches"
+msgstr "coincide cu"
+
+msgid "does not match"
+msgstr "nu coincide cu"
+
+msgid "is greater than"
+msgstr "este mai mare decat"
+
+msgid "is greater or equal to"
+msgstr "este mai mare sau egal cu"
+
+msgid "is lower than"
+msgstr "este mai mic decat"
+
+msgid "is lower or equal to"
+msgstr "este mai mic sau egal cu"
+
+msgid "is equal to"
+msgstr "este egal cu"
+
+msgid "is not equal to"
+msgstr "nu este egal cu"
+
+msgid "matches the regural expression"
+msgstr "coincide cu expresia regulara"
+
+msgid "does not match the regural expression"
+msgstr "nu coincide cu expresia regulara"
+
+msgid "exists"
+msgstr "exista"
+
+msgid "does not exist"
+msgstr "nu exista"
+
+msgid "the size of the message is"
+msgstr "spatiul ocupat de mesaj este"
+
+msgid " bigger"
+msgstr " mai mare"
+
+msgid " smaller"
+msgstr " mai mic"
+
+msgid "then"
+msgstr "apoi"
+
+msgid "<em>keep</em> it."
+msgstr "<em>pastreaza-l</em>."
+
+msgid "<em>discard</em> it."
+msgstr "<em>ignora</em>."
+
+msgid "<em>reject</em> it, sending this excuse back to the sender:"
+msgstr ""
+"<em>respinge-l</em> si transmite urmatorul mesaj (cu explicatii) inapoi la "
+"expeditor:"
+
+msgid "<em>redirect</em> it to the email address"
+msgstr "<em>redirecteaza-l</em> la urmatoarea adresa de e-mail"
+
+msgid "<em>file</em> it into the folder <strong>"
+msgstr "<em>salveaza-l</em> in dosarul <strong>"
+
+msgid "reply with this vacation message: "
+msgstr "trimite raspuns continand urmatorul mesaj de \"vacanta\": "
+
+msgid " Also keep a copy in INBOX, marked as deleted."
+msgstr " De asemenea pastreaza o copie in INBOX, marcat pentru stergere."
+
+msgid " Then <strong>STOP</strong> processing rules."
+msgstr " Apoi <strong>OPRESTE</strong> procesarea altor reguli."
+
+msgid " Also notify using the method"
+msgstr " De asemenea, notifica utilizand aceasta metoda"
+
+msgid "with"
+msgstr "cu"
+
+msgid "priority and the message"
+msgstr "prioritatea si mesajul"
+
+msgid "Address Match"
+msgstr "Coincide cu Adresa"
+
+#, fuzzy
+msgid ""
+"Perform an action depending on email addresses appearing in message headers."
+msgstr ""
+"Executa o actiune asupra mesajelor functie de marimea lor (spatiul ocupat de "
+"ele)."
+
+msgid "Header Match"
+msgstr "Coincide cu Mail-Header-ul"
+
+msgid ""
+"Perform an action on messages matching a specified header (From, To etc.)."
+msgstr ""
+"Executa o actiune asupra mesajelor care au un anume Mail-Header de exemplu "
+"(From, To, etc.)"
+
+msgid "Size"
+msgstr "Spatiul Ocupat"
+
+msgid "Perform an action on messages depending on their size."
+msgstr ""
+"Executa o actiune asupra mesajelor functie de marimea lor (spatiul ocupat de "
+"ele)."
+
+msgid "All Messages"
+msgstr "Toate Mesajele"
+
+msgid "Perform an action on <strong>all</strong> incoming messages."
+msgstr "Executa o actiune asupra <strong>tuturor</strong> mesajelor sosite"
+
+msgid "Body Match"
+msgstr "Coincide cu Corpul Mesajului"
+
+msgid "Perform an action on messages depending on their content (body text)."
+msgstr ""
+"Executa o actiune asupra mesajelor in functie de continutul lor (body text)."
+
+msgid "matches wildcard"
+msgstr "coincide cu wildcard-uri"
+
+msgid "does not match wildcard"
+msgstr "nu coincide cu wildcard-uri"
+
+msgid "matches regexp"
+msgstr "coincide cu o expresie regulara"
+
+msgid "verbose"
+msgstr "amanunt"
+
+msgid "terse"
+msgstr "scurt"
+
+msgid "Mobile Phone Message (SMS)"
+msgstr "Notificare prin SMS"
+
+msgid "Email notification"
+msgstr "Notificare prin E-Mail"
+
+msgid "Notification via Zephyr"
+msgstr "Notificare prin Zephyr"
+
+msgid "Notification via ICQ"
+msgstr "Notificare prin ICQ"
+
+msgid "Low"
+msgstr "Scazut"
+
+msgid "Normal"
+msgstr "Normal"
+
+msgid "High"
+msgstr "Mare"
+
+msgid "Delete"
+msgstr "Sterge"
+
+msgid "Edit"
+msgstr "Editeaza"
+
+msgid "Duplicate"
+msgstr "Copiaza"
+
+msgid "Move Up"
+msgstr "Muta in sus"
+
+#, fuzzy
+msgid "Move to Top"
+msgstr "Muta la pasul"
+
+msgid "Move Down"
+msgstr "Muta in jos"
+
+#, fuzzy
+msgid "Move to Bottom"
+msgstr "Muta la pasul"
+
+msgid "Editing Mail Filtering Rule"
+msgstr "Editare Regula de Filtrare"
+
+msgid "Add New Rule"
+msgstr "Adauga regula noua"
+
+msgid "Apply Changes"
+msgstr "Salveaza Modificarile"
+
+msgid "Message Filters"
+msgstr "Filtru de Mesaje"
+
+msgid ""
+"Server-Side mail filtering enables you to add criteria in order to "
+"automatically forward, delete or place a given message into a folder."
+msgstr ""
+"Filtrul de mesaje utilizand serverul de e-mail, va da posibilitatea de a "
+"adaugareguli (criterii) in scopul stergerii, forward-arii sau amplasarii "
+"unui mesaj intr-un anumit catalog."
+
+msgid "Filters"
+msgstr "Filtru"
+
+msgid "Could not log on to timsieved daemon on your IMAP server"
+msgstr "Nu ma pot loga la daemon-ul de timsieve pe serverul Dvs. de IMAP"
+
+msgid "Please contact your administrator."
+msgstr "Va rog contactati Administratorul Dvs.."
+
+msgid "Current Mail Filtering Rules"
+msgstr "Filtrele definite pana in acest moment"
+
+msgid "No Filtering Rules Defined Yet"
+msgstr "Nu s-au definit regulile de filtrare deocamdata"
+
+msgid "in order to save your rules."
+msgstr "pentru ca sa putem salva regulile Dumneavoastra."
+
+msgid "Could not set active script on your IMAP server"
+msgstr "Nu pot instala script-ul activ pe serverul de IMAP"
+
+msgid "Could not get SIEVE script from your IMAP server"
+msgstr "Nu pot citi script-ul SIEVE de pe serverul de IMAP"
+
+msgid "(Probably the script is size null)."
+msgstr "Probabil script-ul este de lungime zero"
+
+msgid "All your rules have been deleted"
+msgstr "Toate regulile Dvs. au fost sterse"
+
+msgid "Delete Selected"
+msgstr "Sterge pozitiile selectate"
+
+msgid "Server-Side Mail Filtering"
+msgstr "Filtru de mesaje utilizand serverul de e-mail"
+
+msgid ""
+"Here you can add or delete filtering rules for your email account. These "
+"filters will always apply to your incoming mail, wherever you check your "
+"email."
+msgstr ""
+"Aici Dvs. puteti adauga sau sterge reguli de filtrare referitoare la contul "
+"Dvs. de e-mail.Aceste filtre se vor aplica intotdeauna mesajelor de e-mail "
+"primite, indiferent de faptulca Dvs. va verificati e-mail-ul sau nu."
+
+msgid ""
+"You don't have any rules yet. Feel free to add any with the button &quot;Add "
+"a New Rule&quot;. When you are done, please select &quot;Save Changes&quot; "
+"to get back to the main options screen."
+msgstr ""
+"Dumneavoastra nu aveti nici o relgula definita. Aveti posibilitatea de a "
+"adauga o regula noua apasand butonul  &quot;Regula Noua &quot;. Cand ati "
+"terminat, va rugam selectati &quot;Salvare Modificari&quot; pentru a va "
+"reintoarce la ecranul cu optiunile principale"
+
+msgid ""
+"When you are done with editing, <strong>remember to select &quot;Save "
+"Changes&quot;</strong> to activate your changes!"
+msgstr ""
+"Cand ati terminat de editat, <strong>nu uitati sa selectati butonul &quot;"
+"Salveaza Modificarile&quot; </strong> in scopul activarii lor!"
+
+msgid "Successfully added new rule."
+msgstr "Am adaugat cu succes a regula noua"
+
+msgid "Successfully updated rule #"
+msgstr "Am modificat cu succes regula #"
+
+msgid "Successfully deleted rules #"
+msgstr "Am sters cu succes regulile #"
+
+msgid "Successfully deleted rule #"
+msgstr "Am sters cu succes regula #"
+
+msgid "The following table summarizes your current mail filtering rules."
+msgstr "Tabelul urmator afiseaza regulile Dvs. de filtrare curente."
+
+msgid "No"
+msgstr "Nu"
+
+msgid "Description of Rule"
+msgstr "Descrierea regulii"
+
+msgid "Display as:"
+msgstr "Afiseaza ca"
+
+msgid "Options"
+msgstr "Optiuni"
+
+msgid "Add a New Rule"
+msgstr "Adaugati o noua regula"
+
+msgid ""
+"When you are done, please click the button below to return to your webmail."
+msgstr ""
+"Cand ati terminat va rugam sa apasati pe butonul de dedesupt pentru a reveni "
+"la programul de webmail."
+
+msgid "Save Changes"
+msgstr "Salveaza Modificarile"
+
+#~ msgid "Size Match"
+#~ msgstr "Gr&ouml;ssenvergleich"
+
+#~ msgid "Action to Take"
+#~ msgstr "Aktion beim Zutreffen der Regel"
+
+#~ msgid "Here is your script."
+#~ msgstr "Aici este script-ul Dumneavoastra."
