@@ -101,12 +101,11 @@ echo html_tag( 'table', '', 'center', '', 'width="70%" cellpadding="4" cellspaci
      '<BR>'.
      "<TT><SELECT NAME=subfolder>\n";
 
-$show_selected=0;
-$skip_folders=0;
+$show_selected = array();
+$skip_folders = array();
 $server_type = strtolower($imap_server_type);
 if ( $server_type == 'courier' ) {
-  $show_selected = array('inbox');
-  $skip_folders = array('inbox.trash');
+  array_push($skip_folders, 'inbox.trash');
   if ( $default_folder_prefix == 'INBOX.' ) {
     array_push($skip_folders, 'inbox');
   }
@@ -119,7 +118,11 @@ if ( $default_sub_of_inbox == false ) {
     $show_selected = array('inbox');
 }
 
-echo sqimap_mailbox_option_list($imapConnection, $show_selected, $skip_folders, $boxes, 'noinferiors');
+// Call sqimap_mailbox_option_list, using existing connection to IMAP server,
+// the arrays of folders to include or skip (assembled above), 
+// use 'noinferiors' as a mailbox filter to leave out folders that can not contain other folders.
+// use the long format to show subfolders in an intelligible way if parent is missing (special folder)
+echo sqimap_mailbox_option_list($imapConnection, $show_selected, $skip_folders, $boxes, 'noinferiors', true);
 
 echo "</SELECT></TT>\n";
 if ($show_contain_subfolders_option) {
@@ -138,26 +141,33 @@ echo html_tag( 'tr',
 $count_special_folders = 0;
 $num_max = 1;
 if (strtolower($imap_server_type) == "courier" || $move_to_trash) {
-        $num_max++;
+    $num_max++;
 }
 if ($move_to_sent) {
-        $num_max++;
+    $num_max++;
 }
 if ($save_as_draft) {
-        $num_max++;
+    $num_max++;
 }
 for ($p = 0, $cnt = count($boxes); $p < $cnt && $count_special_folders < $num_max; $p++) {
     if (strtolower($boxes[$p]['unformatted']) == 'inbox')
         $count_special_folders++;
     else if (strtolower($imap_server_type) == 'courier' &&
-            strtolower($boxes[$p]['unformatted']) == 'inbox.trash')
+            strtolower($boxes[$p]['unformatted']) == 'inbox.trash') {
         $count_special_folders++;
-    else if ($boxes[$p]['unformatted'] == $trash_folder && $trash_folder)
+    }
+    else if ($boxes[$p]['unformatted'] == $trash_folder && $trash_folder) {
         $count_special_folders++;
-    else if ($boxes[$p]['unformatted'] == $sent_folder && $sent_folder)
+        array_push($skip_folders, strtolower($trash_folder));
+    }
+    else if ($boxes[$p]['unformatted'] == $sent_folder && $sent_folder) {
         $count_special_folders++;
-    else if ($boxes[$p]['unformatted'] == $draft_folder && $draft_folder)
+        array_push($skip_folders, strtolower($sent_folder));
+    }
+    else if ($boxes[$p]['unformatted'] == $draft_folder && $draft_folder) {
         $count_special_folders++;
+        array_push($skip_folders, strtolower($draft_folder));
+    }
 }
 
 
@@ -173,7 +183,11 @@ if ($count_special_folders < count($boxes)) {
        . "<TT><SELECT NAME=old>\n"
        . '         <OPTION VALUE="">[ ' . _("Select a folder") . " ]</OPTION>\n";
 
-    echo sqimap_mailbox_option_list($imapConnection, 0, $skip_folders, $boxes);
+    // use existing IMAP connection, we have no special values to show, 
+    // but we do include values to skip. Use the pre-created $boxes to save an IMAP query.
+    // send NULL for the flag - ALL folders are eligible for rename!
+    // use long format to make sure folder names make sense when parents may be missing.
+    echo sqimap_mailbox_option_list($imapConnection, 0, $skip_folders, $boxes, NULL, true);
 
     echo "</SELECT></TT>\n".
          "<input type=SUBMIT VALUE=\"".
@@ -201,7 +215,9 @@ if ($count_special_folders < count($boxes)) {
        . "<TT><SELECT NAME=mailbox>\n"
        . '         <OPTION VALUE="">[ ' . _("Select a folder") . " ]</OPTION>\n";
 
-    echo sqimap_mailbox_option_list($imapConnection, 0, $skip_folders, $boxes);
+    // send NULL for the flag - ALL folders are eligible for delete (except what we've got in skiplist)
+    // use long format to make sure folder names make sense when parents may be missing.
+    echo sqimap_mailbox_option_list($imapConnection, 0, $skip_folders, $boxes, NULL, true);
 
     echo "</SELECT></TT>\n"
        . '<input type=SUBMIT VALUE="'
