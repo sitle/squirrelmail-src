@@ -1,5 +1,4 @@
 <?php
-
 /**
  * decode/big5.php
  * $Id$
@@ -34,8 +33,8 @@
  * in the creation of products supporting Unicode.  Unicode, Inc.
  * specifically excludes the right to re-distribute this file directly
  * to third parties or other organizations whether for profit or not.
- * @package squirrelmail
- * @subpackage decode_extra
+ * @package decode
+ * @subpackage eastasia
  */
 
 /**
@@ -44,12 +43,12 @@
  * @return string $string decoded string
  */
 function charset_decode_big5 ($string) {
-    global $default_charset,$aggressive_decoding;
+    global $aggressive_decoding;
 
     if (!$aggressive_decoding) return $string;
 
-    /* Only do the slow convert if there are 8-bit characters */
-    if (! ereg("[\200-\377]", $string))
+    // don't do decoding when there are no 8bit symbols
+    if (! sq_is8bit($string,'big5'))
         return $string;
 
     $big5tounicode = array(

@@ -36,8 +36,8 @@
  * @copyright (c) 2004 The SquirrelMail Project Team
  * @license http://opensource.org/licenses/gpl-license.php GNU Public License
  * @version $Id$
- * @package squirrelmail
- * @subpackage decode_extra
+ * @package decode
+ * @subpackage eastasia
  */
 
 /**
@@ -46,11 +46,15 @@
  * @return string $string Decoded string
 */
 function charset_decode_euc_jp($string) {
-  global $aggressive_decoding;
+    global $aggressive_decoding;
 
-  if (!$aggressive_decoding) return $string;
+    if (!$aggressive_decoding) return $string;
 
-  $eucjp = array(
+    // don't do decoding when there are no 8bit symbols
+    if (! sq_is8bit($string,'euc-jp'))
+        return $string;
+
+    $eucjp = array(
         "\xA1\xA1" => '&#12288;',
         "\xA1\xA2" => '&#12289;',
         "\xA1\xA3" => '&#12290;',
