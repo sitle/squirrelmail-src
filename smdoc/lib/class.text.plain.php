@@ -19,15 +19,20 @@ along with Foowd; if not, write to the Free Software
 Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 */
 
-/*
-class.text.plain.php
-Foowd plain text class
-*/
+/**
+ * Base class for creation/storage/manipulation of documents.
+ *
+ * Modified by SquirrelMail Development
+ * $Id$
+ * 
+ * @package smdoc
+ * @subpackage Foowd
+ */
 
-/* Method permissions */
+/** Method permissions */
 setPermission('foowd_text_plain', 'object', 'edit', 'Editors');
 
-/* Class descriptor */
+/** Class descriptor/Meta information */
 setClassMeta('foowd_text_plain', 'Plain Text Document');
 
 /* Class settings */
@@ -42,21 +47,22 @@ setConst('DIFF_SAME_REGEX', '/^ (.*)/');
  * This class defines a plain text area and methods to view and edit that area.
  *
  * @author Paul James
- * @package Foowd
+ * @package smdoc
+ * @subpackage text
  */
 class foowd_text_plain extends foowd_object {
 
   /**
    * The text body.
    *
-   * @var str
+   * @var string
    */
   var $body;
   
   /**
    * Constructs a new plain text object.
    *
-   * @param object foowd The foowd environment object.
+   * @param smdoc foowd Reference to the foowd environment object.
    * @param str title The objects title.
    * @param str body The text content body.
    * @param str viewGroup The user group for viewing the object.
@@ -253,7 +259,7 @@ class foowd_text_plain extends foowd_object {
    * Output an object creation form and process its input.
    *
    * @static
-   * @param object foowd The foowd environment object.
+   * @param smdoc foowd Reference to the foowd environment object.
    * @param str className The name of the class.
    */
   function class_create(&$foowd, $className) 

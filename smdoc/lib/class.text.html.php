@@ -19,12 +19,17 @@ along with Foowd; if not, write to the Free Software
 Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 */
 
-/*
-class.text.html.php
-Foowd HTML text class
-*/
+/**
+ * Class for creation/storage/manipulation of HTML formatted documents.
+ *
+ * Modified by SquirrelMail Development
+ * $Id$
+ * 
+ * @package smdoc
+ * @subpackage Foowd
+ */
 
-/* Class descriptor */
+/** Class descriptor */
 setClassMeta('foowd_text_html', 'HTML Text Document');
 
 /**
@@ -33,7 +38,8 @@ setClassMeta('foowd_text_html', 'HTML Text Document');
  * This class defines a HTML text area and methods to view and edit that area.
  *
  * @author Paul James
- * @package Foowd
+ * @package smdoc
+ * @subpackage text
  */
 class foowd_text_html extends foowd_text_plain {
 
