@@ -419,10 +419,11 @@ function sqimap_read_data ($imap_stream, $tag_uid, $handle_errors,
 //            $result = array_merge($result, $res["$index"]);
 //        }
 //    }
+
+    // FIXME: test is always false in rg=off
     if (isset($result)) {
         return $result;
-    }
-    else {
+    } else {
         return $res[0];
     }
 
