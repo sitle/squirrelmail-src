@@ -15,8 +15,6 @@ if ( !isset( $AdminUser ) || empty( $AdminUser ) )
 if ( !isset( $AdminPass ) || empty( $AdminPass ) ) 
   die( "No admin password set.  Configuration impossible." );
 
-/* No, we aren't submitting, so display the form */
-
 ?>
 
 <html>
