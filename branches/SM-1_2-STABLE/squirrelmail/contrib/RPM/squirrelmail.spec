@@ -1,4 +1,8 @@
 ##
+# $Id$
+%define spec_release 1
+
+##
 # By default build rhl7 version. Rebuild with 
 # rpmbuild --rebuild --define 'rhl7 0' squirrelmail-1.2.x.src.rpm
 # to build for rhl8^Htnv. :)
@@ -7,20 +11,21 @@
 %{!?rhl7:%define rhl7 1}
 %if %{rhl7}
 	%define webserver apache
+    %define rpm_release %{spec_release}.7.x
 %else
 	%define webserver httpd
+    %define rpm_release %{spec_release}.8.x
 %endif
 
 Summary: SquirrelMail webmail client
 Name: squirrelmail
 Version: 1.2.8
-Release: 0.2
+Release: %{rpm_release}
 License: GPL
 URL: http://www.squirrelmail.org/
 Vendor: squirrelmail.org
 Group: Applications/Internet
 Source: %{name}-%{version}.tar.gz
-#Source1: squirrelmail-splash.png
 BuildRoot: %{_tmppath}/%{name}-%{version}-root
 BuildArch: noarch
 Requires: %{webserver}, php >= 4.0.4, perl, tmpwatch >= 2.8, aspell
@@ -63,8 +68,6 @@ for f in contrib/RPM/squirrelmail.cron contrib/RPM/config.php.rh7; do
 	     -e "s|__PREFSDIR__|%{_localstatedir}/lib/squirrelmail/prefs/|g;" $f
 done
 
-# replace splash screen
-#cp %{SOURCE1} images/sm_logo.png
 
 %install
 [ "$RPM_BUILD_ROOT" != "/" ] && rm -rf $RPM_BUILD_ROOT
@@ -167,7 +170,7 @@ install -m 644 contrib/RPM/squirrelmail.conf \
 %changelog
 * Sat Sep 14 2002 Konstantin Riabitsev <icon@duke.edu> 1.2.8-1
 - adopted RH's spec file so we don't duplicate effort. 
-- Quoted out rh'ized splash screen.
+- Removed rh'ized splash screen.
 - Adding fallbacks for building rhl7 version as well with the same 
   specfile. Makes the spec file not as clean, but hey.
 - remove workarounds for #68669 (rh bugzilla), since 1.2.8 works with
@@ -177,6 +180,7 @@ install -m 644 contrib/RPM/squirrelmail.conf \
 - Adding aspell as one of the req's, since squirrelspell is enabled by
   default
 - Added Vendor: line to distinguish ourselves from RH.
+- Doing the uglies with the release numbers.
 
 * Tue Aug  6 2002 Preston Brown <pbrown@redhat.com> 1.2.7-4
 - replacement splash screen.
