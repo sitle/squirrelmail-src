@@ -28,6 +28,8 @@ $FileExtensionToMimeType = array('bmp'  => 'image/x-bitmap',
                                  'vcf'  => 'text/x-vcard');
 
 /* Register browser-supported image types */
+$attachment_common_types = $_SESSION['attachment_common_types'];
+
 if (isset($attachment_common_types)) {
     /* Don't run this before being logged in. That may happen
        when plugins include mime.php */
@@ -49,7 +51,6 @@ if (isset($attachment_common_types)) {
 }
 
 /* Register text-type attachments */
-//register_attachment_common('message/rfc822', 'link_text');
 register_attachment_common('message/rfc822', 'link_message');
 register_attachment_common('text/plain',     'link_text');
 register_attachment_common('text/richtext',  'link_text');
