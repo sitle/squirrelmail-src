@@ -69,12 +69,16 @@ ECHO;
     $pageheader_sent = TRUE;
 }
 
-function displayInternalLink($path, $text, $target='') {
+function makeInternalLink($path, $text, $target='') {
     sqgetGlobalVar('base_uri', $base_uri, SQ_SESSION);
     if ($target != '') {
         $target = " target=\"$target\"";
     }
-    echo '<a href="'.$base_uri.$path.'"'.$target.'>'.$text.'</a>';
+    return '<a href="'.$base_uri.$path.'"'.$target.'>'.$text.'</a>';
+}
+
+function displayInternalLink($path, $text, $target='') {
+    echo makeInternalLink($path, $text, $target);
 }
 
 function displayPageHeader($color, $mailbox, $xtra='', $session=false) {
@@ -253,12 +257,7 @@ function displayPageHeader($color, $mailbox, $xtra='', $session=false) {
                                  : html_tag( 'td', '', 'left' ) )
         . "\n";
     $urlMailbox = urlencode($mailbox);
-    if ($compose_new_win == '1') {
-        echo '<a href="javascript:void(0)" onclick="comp_in_new()">'. _("Compose").'</a>';
-    }
-    else {
-        displayInternalLink ("src/compose.php?mailbox=$urlMailbox", _("Compose"), 'right');
-    } 
+    echo makeComposeLink('src/compose.php?mailbox='.$urlMailbox);
     echo "&nbsp;&nbsp;\n";
     displayInternalLink ('src/addressbook.php', _("Addresses"), 'right');
     echo "&nbsp;&nbsp;\n";

@@ -505,11 +505,11 @@ function formatMenubar($mailbox, $passed_id, $passed_ent_id, $message, $mbx_resp
         $s .= '<a href="' . $delete_url . '">' . _("Delete") . '</a>';
     }
 
-    $comp_uri = $base_uri . 'src/compose.php' .
-                            '?passed_id=' . $passed_id .
-                            '&amp;mailbox=' . $urlMailbox .
-                            '&amp;startMessage=' . $startMessage .
-                            (isset($passed_ent_id)?'&amp;passed_ent_id='.$passed_ent_id:'');
+    $comp_uri = 'src/compose.php' .
+                '?passed_id=' . $passed_id .
+                '&amp;mailbox=' . $urlMailbox .
+                '&amp;startMessage=' . $startMessage .
+                (isset($passed_ent_id)?'&amp;passed_ent_id='.$passed_ent_id:'');
 
     if ($compose_new_win == '1') {
         $link_open  = '<a href="javascript:void(0)" onclick="comp_in_new(\'';
@@ -527,7 +527,7 @@ function formatMenubar($mailbox, $passed_id, $passed_ent_id, $message, $mbx_resp
     }
     if (isset($comp_alt_uri)) {
         $s .= $topbar_delimiter;
-        $s .= $link_open . $comp_alt_uri . $link_close . $comp_alt_string . '</a>';
+	$s .= makeComposeLink($comp_alt_uri, $comp_alt_string);
     }
 
     $s .= '</small></td><td align="center" width="33%"><small>';
@@ -595,21 +595,21 @@ function formatMenubar($mailbox, $passed_id, $passed_ent_id, $message, $mbx_resp
     $s .= '</small></td>' . "\n" . 
           html_tag( 'td', '', 'right', '', 'width="33%" nowrap' ) . '<small>';
     $comp_action_uri = $comp_uri . '&amp;smaction=forward';
-    $s .= $link_open . $comp_action_uri . $link_close . _("Forward") . '</a>';
+    $s .= makeComposeLink($comp_action_uri, _("Forward"));
 
     if ($enable_forward_as_attachment) {
         $comp_action_uri = $comp_uri . '&amp;smaction=forward_as_attachment';
         $s .= $topbar_delimiter;
-        $s .= $link_open . $comp_action_uri . $link_close . _("Forward as Attachment") . '</a>';
+	$s .= makeComposeLink($comp_action_uri, _("Forward as Attachment"));
     }
 
     $comp_action_uri = $comp_uri . '&amp;smaction=reply';
     $s .= $topbar_delimiter;
-    $s .= $link_open . $comp_action_uri . $link_close . _("Reply") . '</a>';
+    $s .= makeComposeLink($comp_action_uri, _("Reply"));
 
     $comp_action_uri = $comp_uri . '&amp;smaction=reply_all';
     $s .= $topbar_delimiter;
-    $s .= $link_open . $comp_action_uri . $link_close . _("Reply All") . '</a>';
+    $s .= makeComposeLink($comp_action_uri, _("Reply All"));
     $s .= '</small></td></tr></table>';
     do_hook("read_body_menu_top");
     echo $s;
