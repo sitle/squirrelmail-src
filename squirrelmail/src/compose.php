@@ -743,7 +743,7 @@ function newMail ($mailbox='', $passed_id='', $passed_ent_id='', $action='', $se
                 }
                 $send_to = decodeHeader($send_to,false,false);
                 $subject = decodeHeader($orig_header->subject,false,false);
-                $subject = str_replace('"', "'", $subject);
+//                $subject = str_replace('"', '&quot;', $subject);
                 $subject = trim($subject);
                 if (substr(strtolower($subject), 0, 3) != 're:') {
                     $subject = 'Re: ' . $subject;
