@@ -6,7 +6,7 @@
  * Copyright (c) 1999-2002 The SquirrelMail Project Team
  * Licensed under the GNU GPL. For full terms see the file COPYING.
  *
- * Displays message highlighting options
+ * Displays index order options
  *
  * $Id$
  */
@@ -41,11 +41,6 @@ elseif (isset($_POST['submit'])) {
 }
 /* end of get globals */
 
-if (! isset($action)) { $action = ''; }
-if ($action == 'delete' && isset($theid)) {
-    removePref($data_dir, $username, "highlight$theid");
-} elseif ($action == 'save') {
-} 
 displayPageHeader($color, 'None');
 ?>
    <br>
