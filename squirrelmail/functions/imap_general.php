@@ -183,11 +183,17 @@ function sqimap_read_data ($imap_stream, $pre, $handle_errors, &$response, &$mes
  * will be displayed.  This function returns the imap connection handle.
  */
 function sqimap_login ($username, $password, $imap_server_address, $imap_port, $hide) {
-    global $color, $squirrelmail_language, $onetimepad;
+    global $color, $squirrelmail_language, $onetimepad, $use_imap_tls, $imap_auth_mech;
 
     $imap_server_address = sqimap_get_user_server($imap_server_address, $username);
+	
+	if (($use_imap_tls == true) and (check_php_version(4,3)) and (extension_loaded('openssl'))) {
+	  /* Use TLS by prefixing "tls://" to the hostname */
+	  $imap_server_address = 'tls://' . $imap_server_address;
+	}
+    
+	$imap_stream=fsockopen ( $imap_server_address, $imap_port, $error_number, $error_string, 15);
 
-    $imap_stream = fsockopen ( $imap_server_address, $imap_port, $error_number, $error_string, 15);
     if ( !$imap_stream ) {
         return false;
     }
@@ -208,9 +214,10 @@ function sqimap_login ($username, $password, $imap_server_address, $imap_port, $
         }
         exit;
     }
-    if (1) {
-    // PLAIN disabled until I get around to adding logic to support conf.pl options 
-      // Can't use sqimap_run_command, since response can't include tags
+    if (($imap_auth_mech == 'digest-md5') and (extension_loaded('mhash'))) {
+	  /* Insert digest-md5 code here */
+	} elseif (($imap_auth_mech == 'cram-md5') and (extension_loaded('mhash'))) {
+      // Can't use sqimap_run_command, since response shouldn't include command tag
       $tag=sqimap_session_id(false);
       $query=$tag . " AUTHENTICATE CRAM-MD5\r\n";
       fputs($imap_stream,$query);
@@ -227,14 +234,14 @@ function sqimap_login ($username, $password, $imap_server_address, $imap_port, $
         $response=$results[1];
         $message=$results[2];
       } else {
-	    // Ideally, we fall back to plain gracefully.  For now, just log the failure.
-        error_log('IMAP server did not send a challenge to CRAM-MD5 request.',3,'/tmp/php.errors');
 		// Fake the response, so the error trap at the bottom will work
-		$response="IMAP server did not send a CRAM-MD5 challenge.";
+		$response="BAD";
+		$message='IMAP server does not appear to support the authentication method selected.';
+		$message .= '  Please contact your system administrator.';
       }
 
     } else {
-	  // Original PLAIN login code - can't happen right now
+	  // Original PLAIN login code
       $query = 'LOGIN "' . quoteIMAP($username) .  '" "' . quoteIMAP($password) . '"';
       $read = sqimap_run_command ($imap_stream, $query, false, $response, $message);
     }
