@@ -94,6 +94,10 @@
       <center><b><?php echo _("Options") . ' - '. _("Translator"); ?></b></center>
    </td></tr></table>
 
+    <?php if (isset($_POST['submit_translate']) && $_POST['submit_translate'] ) {
+        print "<center><h4>"._("Saved Translation Options")."</h4></center>\n";
+    }?>
+
    <p><?php echo _("Your server options are as follows:"); ?></p>
 
    <ul>
