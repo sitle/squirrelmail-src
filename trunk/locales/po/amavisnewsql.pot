@@ -7,57 +7,22 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2003-12-12 11:14+0100\n"
-"PO-Revision-Date: 2003-15-12 10:45+0100\n"
-"Last-Translator: Stefano Ruberti <stefano.ruberti@iit.cnr.it>\n"
-"Language-Team: Italian <stefano.ruberti@iit.cnr.it>\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2004-04-03 15:19+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=ISO-8859-1\n"
+"Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-msgid "Quarantine"
+msgid "Add New Address"
 msgstr ""
 
-msgid "Here you may define your own white/black lists and customize your spam scoring rules."
-msgstr ""
-
-msgid "Options"
-msgstr ""
-
-msgid "SpamAssassin Configuration"
-msgstr ""
-
-msgid "Global Address List"
-msgstr ""
-
-msgid "Personal Allow / Deny Addresses List"
-msgstr ""
-
-msgid "No Personal Addresses Defined"
-msgstr ""
-
-msgid "Address"
+msgid "add_edit_wb_address"
 msgstr ""
 
 msgid "Address:"
-msgstr ""
-
-msgid "Type"
-msgstr ""
-
-msgid "Type:"
-msgstr ""
-
-msgid "Action"
-msgstr ""
-
-msgid "Edit"
-msgstr ""
-
-msgid "Delete"
-msgstr ""
-
-msgid "Add New Address"
 msgstr ""
 
 msgid "Examples"
@@ -75,10 +40,52 @@ msgstr ""
 msgid "domain only including the "
 msgstr ""
 
+msgid "Whitelist Everyone In Your Address Book"
+msgstr ""
+
+msgid "Type:"
+msgstr ""
+
 msgid "Whitelist"
 msgstr ""
 
 msgid "Blacklist"
+msgstr ""
+
+msgid "Priority:"
+msgstr ""
+
+msgid "Address"
+msgstr ""
+
+msgid "Type"
+msgstr ""
+
+msgid "Priority"
+msgstr ""
+
+msgid "Quarantine Level"
+msgstr ""
+
+msgid "Kill Level"
+msgstr ""
+
+msgid "Options"
+msgstr ""
+
+msgid "SpamAssassin Configuration"
+msgstr ""
+
+msgid "Global Address List"
+msgstr ""
+
+msgid "Personal Allow / Deny Addresses List"
+msgstr ""
+
+msgid "Action"
+msgstr ""
+
+msgid "No Personal Addresses Defined"
 msgstr ""
 
 msgid "Description"
@@ -87,16 +94,24 @@ msgstr ""
 msgid "Whitelist / Blacklist"
 msgstr ""
 
-msgid "Here you may list the addresses you wish to protect and those you wish to block. Please keep in mind that spammers often have throw-away or fake addresses so blacklisting these is pointless. The listed addresses appear in the same order as they will be applied by the mail server. Please read the section on priority to understand why this is important."
+msgid ""
+"Here you may list the addresses you wish to protect and those you wish to "
+"block. Please keep in mind that spammers often have throw-away or fake "
+"addresses so blacklisting these is pointless. The listed addresses appear in "
+"the same order as they will be applied by the mail server. Please read the "
+"section on priority to understand why this is important."
 msgstr ""
 
-msgid "Priority"
-msgstr ""
-
-msgid "Priority:"
-msgstr ""
-
-msgid "The priority determines the order of the list with the search stopping at the first matching address.  Overlapping addresses should be listed from specific to general.  E.g. if you want to allow one person from aol to mail you and block everyone else you would use two rules. The higher priority one set to whitelist friend@aol.com and a lower priority one set to blacklist @aol.com. The server will match the specific higher priority address first and end the search.  Addresses that are whitelisted for the whole company appear above with the lowest priorities.. your settings can always override the global ones."
+msgid ""
+"The priority determines the order of the list with the search stopping at "
+"the first matching address.  Overlapping addresses should be listed from "
+"specific to general.  E.g. if you want to allow one person from aol to mail "
+"you and block everyone else you would use two rules. The higher priority one "
+"set to whitelist friend@aol.com and a lower priority one set to blacklist "
+"@aol.com. The server will match the specific higher priority address first "
+"and end the search.  Addresses that are whitelisted for the whole company "
+"appear above with the lowest priorities.. your settings can always override "
+"the global ones."
 msgstr ""
 
 msgid "No Policies Defined"
@@ -105,10 +120,10 @@ msgstr ""
 msgid "Quarantine Settings"
 msgstr ""
 
-msgid "Currently:"
+msgid "How often should you receive quarantine reports?"
 msgstr ""
 
-msgid "How often should you receive quarantine reports?"
+msgid "Currently:"
 msgstr ""
 
 msgid "Week Days (Default)"
@@ -126,7 +141,9 @@ msgstr ""
 msgid "Monthly (1st)"
 msgstr ""
 
-msgid "How long should mail stay in the quarantine before being automatically removed?"
+msgid ""
+"How long should mail stay in the quarantine before being automatically "
+"removed?"
 msgstr ""
 
 msgid "3 Days"
@@ -156,46 +173,40 @@ msgstr ""
 msgid "Message Scoring Policy"
 msgstr ""
 
-msgid "Define Custom Policy"
-msgstr ""
-
-msgid "Set Custom Policy"
-msgstr ""
-
-msgid "Directions"
-msgstr ""
-
-msgid "Policies"
-msgstr ""
-
-msgid "Predefined Policies"
-msgstr ""
-
 msgid "Your Current Policy"
-msgstr ""
-
-msgid "Click To Select"
-msgstr ""
-
-msgid "You may select from one of several predefined scoring policies or you may define your own. Each email is assigned a numerical score based on the characteristics it shares with those common to spam."
 msgstr ""
 
 msgid "Tag Level"
 msgstr ""
 
-msgid "Quarantine Level"
+msgid "Predefined Policies"
 msgstr ""
 
-msgid "Kill Level"
+msgid "Click To Select"
+msgstr ""
+
+msgid "Define Custom Policy"
 msgstr ""
 
 msgid "Custom Policy"
 msgstr ""
 
-msgid "The tag level is the numerical score required to identify a message as being spam.  This will cause *SPAM* to be added to the subject line and the X-Spam-Flag header to be set to YES."
+msgid "Set Custom Policy"
 msgstr ""
 
-msgid "The $tag2_label is the numerical score required to prevent delivery of a message at the server.  This level should be higher or equal to Tag Level and high enough to avoid catching legitimate email. As your custom whitelist grows you should adjust these two levels to tag and block more spam."
+msgid "Policies"
+msgstr ""
+
+msgid ""
+"You may select from one of several predefined scoring policies or you may "
+"define your own. Each email is assigned a numerical score based on the "
+"characteristics it shares with those common to spam."
+msgstr ""
+
+msgid ""
+"The tag level is the numerical score required to identify a message as being "
+"spam.  This will cause *SPAM* to be added to the subject line and the X-Spam-"
+"Flag header to be set to YES."
 msgstr ""
 
 msgid "No Messages in Quarantine"
@@ -210,10 +221,16 @@ msgstr ""
 msgid "Release"
 msgstr ""
 
+msgid "Release + Add To Whitelist"
+msgstr ""
+
 msgid "Submit"
 msgstr ""
 
 msgid "Messages hilighted in RED likely contain viruses!"
+msgstr ""
+
+msgid "Toggle All"
 msgstr ""
 
 msgid "Spam Assassin Settings"
@@ -231,3 +248,13 @@ msgstr ""
 msgid "Score"
 msgstr ""
 
+msgid "Whitelist Sender"
+msgstr ""
+
+msgid ""
+"Here you may define your own white/black lists and customize your spam "
+"scoring rules."
+msgstr ""
+
+msgid "[Quarantine]"
+msgstr ""
