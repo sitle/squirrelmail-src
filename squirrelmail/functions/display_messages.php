@@ -123,6 +123,17 @@ function logout_error( $errString, $errTitle = '' ) {
 
 function error_box($string, $color) {
     global $pageheader_sent;
+    
+    if ( !isset( $color ) ) {
+        $color = array();
+        $color[0]  = '#DCDCDC';  /* light gray    TitleBar               */
+        $color[1]  = '#800000';  /* red                                  */
+        $color[2]  = '#CC0000';  /* light red     Warning/Error Messages */
+        $color[4]  = '#FFFFFF';  /* white         Normal Background      */
+        $color[7]  = '#0000CC';  /* blue          Links                  */
+        $color[8]  = '#000000';  /* black         Normal text            */
+        $color[9]  = '#ABABAB';  /* mid-gray      Darker version of #0   */
+    }
 
     $err = _("ERROR");
 
@@ -155,4 +166,6 @@ function error_box($string, $color) {
    echo '       </table></td></tr>';
    echo '    </table>';
 }
+
+// vim: et ts=4
 ?>
