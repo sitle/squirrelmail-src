@@ -516,7 +516,17 @@ function sqimap_login ($username, $password, $imap_server_address, $imap_port, $
             $message .= _("Please contact your system administrator and report this error.");
         } else {
             // Original IMAP login code
-            $query = 'LOGIN "' . quoteimap($username) .  '" "' . quoteimap($password) . '"';
+            $query = 'LOGIN';
+            if(sq_is8bit($username)) {
+                $query .= ' {' . strlen($username) . "}\r\n$username";
+            } else {
+                $query .= ' "' . quoteimap($username) . '"';
+            }
+            if(sq_is8bit($password)) {
+                $query .= ' {' . strlen($password) . "}\r\n$password";
+            } else {
+                $query .= ' "' . quoteimap($password) . '"';
+            }
             $read = sqimap_run_command ($imap_stream, $query, false, $response, $message);
         }
     } elseif ($imap_auth_mech == 'plain') {
