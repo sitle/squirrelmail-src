@@ -24,6 +24,11 @@ wtf.wikimenu.php
 Wiki Manu
 */
 
+/*
+ * Modified by SquirrelMail Development Team
+ * $Id$
+ */
+
 /* display the wiki menu */
 function wikiMenu(&$thing) {
 	global $wtf;
@@ -52,8 +57,8 @@ function wikiMenu(&$thing) {
 	echo '<a href="', FILENAME, '">Home page</a> | ';
 	echo '<a href="', THINGURI, 'search">Find pages</a> by searching | ';
 	echo '<a href="', THINGURI, 'wikipage">Create</a> a new page | ';
-	echo '<a href="', THINGURI, 'recent changes">Recent changes</a> to pages | ';
-	echo '<a href="', THINGURI. 'thing list">List</a> of pages ';
+	echo '<a href="', THINGURI, 'recentchanges">Recent changes</a> to pages | ';
+	echo '<a href="', THINGURI. 'sqmindex">List</a> of pages ';
 	
 // user
 	if ($wtf->user->objectid == ANONYMOUSUSERID) {
