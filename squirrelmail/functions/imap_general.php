@@ -186,6 +186,7 @@ function sqimap_login ($username, $password, $imap_server_address, $imap_port, $
     global $color, $squirrelmail_language, $onetimepad, $use_imap_tls, $imap_auth_mech;
 
     $imap_server_address = sqimap_get_user_server($imap_server_address, $username);
+	$host=$imap_server_address;
 	
 	if (($use_imap_tls == true) and (check_php_version(4,3)) and (extension_loaded('openssl'))) {
 	  /* Use TLS by prefixing "tls://" to the hostname */
@@ -214,38 +215,49 @@ function sqimap_login ($username, $password, $imap_server_address, $imap_port, $
         }
         exit;
     }
-    if (($imap_auth_mech == 'digest-md5') and (extension_loaded('mhash'))) {
-	  /* Insert digest-md5 code here */
-	} elseif (($imap_auth_mech == 'cram-md5') and (extension_loaded('mhash'))) {
-      // Can't use sqimap_run_command, since response shouldn't include command tag
-      $tag=sqimap_session_id(false);
-      $query=$tag . " AUTHENTICATE CRAM-MD5\r\n";
-      fputs($imap_stream,$query);
-      $answer=sqimap_fgets($imap_stream);
+	if ((($imap_auth_mech == 'cram-md5') OR ($imap_auth_mech == 'digest-md5')) AND (extension_loaded('mhash')))  {
+      // We're using some sort of authentication OTHER than plain
+	  $tag=sqimap_session_id(false);
+	  if ($imap_auth_mech == 'digest-md5') {
+	    $query = $tag . " AUTHENTICATE DIGEST-MD5\r\n";
+	  } elseif ($imap_auth_mech == 'cram-md5') {
+	    $query = $tag . " AUTHENTICATE CRAM-MD5\r\n";
+	  }
+	  fputs($imap_stream,$query);
+	  $answer=sqimap_fgets($imap_stream);
 	  // Trim the "+ " off the front
-      $response=explode(" ",$answer,3);
-      if ($response[0] == '+') {
-        // Got a challenge back
-        $challenge=$response[1];
-        $reply=cram_md5_response($username,$password,$challenge);
-        fputs($imap_stream,$reply);
-        $read=sqimap_fgets($imap_stream);
-        $results=explode(" ",$read,3);
-        $response=$results[1];
-        $message=$results[2];
+	  $response=explode(" ",$answer,3);
+	  if ($response[0] == '+') {
+	    // Got a challenge back
+		$challenge=$response[1];
+		if ($imap_auth_mech == 'digest-md5') {
+		  $reply = digest_md5_response($username,$password,$challenge,'imap',$host);
+		} elseif ($imap_auth_mech == 'cram-md5') {
+		  $reply = cram_md5_response($username,$password,$challenge);
+		}
+		fputs($imap_stream,$reply);
+		$read=sqimap_fgets($imap_stream);
+		if ($imap_auth_mech == 'digest-md5') {
+		  // DIGEST-MD5 has an extra step..
+		  if (substr($read,0,1) == '+') { // OK so far..
+		    fputs($imap_stream,"\r\n");
+		    $read=sqimap_fgets($imap_stream);
+		  }
+		}
+		$results=explode(" ",$read,3);
+		$response=$results[1];
+		$message=$results[2];
       } else {
 		// Fake the response, so the error trap at the bottom will work
 		$response="BAD";
 		$message='IMAP server does not appear to support the authentication method selected.';
 		$message .= '  Please contact your system administrator.';
       }
-
     } else {
 	  // Original PLAIN login code
       $query = 'LOGIN "' . quoteIMAP($username) .  '" "' . quoteIMAP($password) . '"';
       $read = sqimap_run_command ($imap_stream, $query, false, $response, $message);
     }
-
     /* If the connection was not successful, lets see why */
     if ($response != 'OK') {
         if (!$hide) {
