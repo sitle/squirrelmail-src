@@ -54,6 +54,7 @@
                                              'timeout' => $test_timeout ) );
     $authority['ftp'] = $zkld->loadService( 'auth', $ftp_opt, 'ftp', zkSS() );
 
+    $authority['php_imap'] = $zkld->loadService( 'auth', $imap_opt, 'php_imap', zkSS() );
 
     $html = $zkld->loadService( 'html', NULL, 'html40', zkSS() );
 
