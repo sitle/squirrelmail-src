@@ -36,7 +36,6 @@ class input_base
    * The name of the element.
    *
    * @attribute str name
-   * @class input_base
    */
   var $name;
 
@@ -44,7 +43,6 @@ class input_base
    * The value of the element.
    *
    * @attribute str value
-   * @class input_base
    */
   var $value;
 
@@ -52,7 +50,6 @@ class input_base
    * The regular expression used to validate the objects contents.
    *
    * @attribute str regex
-   * @class input_base
    */
   var $regex;
 
@@ -60,7 +57,6 @@ class input_base
    * Whether the value was set by form submission
    *
    * @attribute bool wasSet
-   * @class input_base
    */
   var $wasSet = FALSE;
 
@@ -68,7 +64,6 @@ class input_base
    * Whether the value set by form submission was correct
    *
    * @attribute bool wasSet
-   * @class input_base
    */
   var $wasValid = FALSE;
 
@@ -76,9 +71,14 @@ class input_base
    * Whether or not element is required
    * 
    * @attribute bool required
-   * @class input_base
    */
   var $required;
+
+  /** 
+   * Reference to form input object is part of
+   * @attribute input_form required
+   */
+  var $form;
 
   /**
    * Constructs a new base object.
@@ -95,6 +95,7 @@ class input_base
     $this->name = $name;
     $this->regex = $regex;
     $this->required = $required;
+    $this->form = NULL;
     
     if ( sqGetGlobalVar($name, $new_value, $method) )
     {

@@ -71,7 +71,7 @@ class input_dropdown extends input_base
   {
     if ( is_array($value) )
     {
-      if ( $multiple )
+      if ( $this->multiple )
       {
         foreach($value as $val)
         {
@@ -109,20 +109,25 @@ class input_dropdown extends input_base
   /**
    * Display the dropdown list.
    */
-  function display() {
-    echo $this->caption, ' <select name="', $this->name;
-    if ($this->multiple) {
-      echo '[]" multiple="multiple';
-    }
-    echo '" size="', $this->height, '" class="', $this->class, '">';
-    foreach ($this->items as $value => $item) {
-      echo '<option value="', $value, '"';
-      if ($this->multiple && is_array($this->value)) {
-        if (in_array($value, $this->value)) echo ' selected="selected"';
-      } else {
-        if ($this->value == $value) echo ' selected="selected"';
-      }
-      echo '>', $item, '</option>';
+  function display($class = NULL, $visibleItems = 1) 
+  {
+    $class = ( $class == NULL ) ? ''  : 'class="'.$class.'" ';
+    $multiple = ( $this->multiple ) ? 'multiple="multiple" ' : '';
+    $size = 'size="'.$visibleItems.'" ';
+    $name  = 'name="'.$this->name.'[]" ';
+
+
+    echo ' <select ',$name,$multiple,$size,$class,'>';
+    foreach ($this->items as $value => $item) 
+    {
+      $value = 'value="'.$value.'" ';
+      $selected = '';
+      
+      if ( $this->value == $value ||
+           ($this->multiple && is_array($this->value) && in_array($value, $this->value)) )
+        $selected = 'selected="selected" ';
+
+      echo '<option ',$value,$selected,'>',$item,'</option>';
     }
     echo '</select>';
   }
