@@ -74,6 +74,13 @@ Version 1.4.4 - CVS
   - Added Net-Style theme by Gabriele Maidecchi. Closes patch #1041323.
   - Disabled use of info plugin, when it is not enabled in config.
   - Fixed path used by random theme.
+  - Added global address book configuration support and options to select
+    writeable address book backend. Removed 'global_file' address book
+    backend. 'global_file' backend functions are provided by 'local_file'
+    backend.
+  - Sanitized nickname and name entries in address listing.
+  - LDAP backend will use internal squirrelmail charset conversion functions
+    instead of php xml extension. Closes bug #655137.
 
 Version 1.4.3a - 2 June 2004
 ----------------------------
