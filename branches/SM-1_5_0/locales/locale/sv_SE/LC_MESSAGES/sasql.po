@@ -1,0 +1,516 @@
+# Swedish (sv_SE) sasql Translation (SquirrelMail plugin)
+# Copyright (C) 1999-2005 The Squirrelmail Development Team
+# This file is distributed under the same license as the SquirrelMail package.
+# Fredrik Jervfors <sqm_admin@fimbul.net>, 2004-2005.
+# $Id$
+msgid ""
+msgstr ""
+"Project-Id-Version: sasql\n"
+"POT-Creation-Date: 2004-12-28 17:51+0200\n"
+"PO-Revision-Date: 2005-03-12 15:51+0100\n"
+"Last-Translator: Fredrik Jervfors <sqm_admin@fimbul.net>\n"
+"Language-Team: Swedish <squirrelmail-i18n@lists.sourceforge.net>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=ISO-8859-1\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "dspam Settings"
+msgstr "DSPAM-inställningar"
+
+msgid "Warning"
+msgstr "Varning"
+
+msgid "Enabling dspam will disable SpamAssassin scanning of your email."
+msgstr "SpamAssassin kommer inte att skanna dina brev om DSPAM aktiveras."
+
+msgid "SpamAssassin settings and white/blacklists will not be used by dspam."
+msgstr ""
+"DSPAM använder inte SpamAssassins inställningar samt svart- och vitlistor."
+
+msgid ""
+"This <a href='http://www.nuclearelephant.com/projects/dspam/faq.html#1.7' "
+"target='_blank'>FAQ</a> from the dspam web site explains the differences "
+"between SpamAssassin and dspam and why you might want to use dspam instead "
+"of SpamAssassin."
+msgstr ""
+"Dessa <a href='http://www.nuclearelephant.com/projects/dspam/faq.shtml#1.7' "
+"target='_blank'>vanliga frågor</a>(på engelska) från DSPAM:s webbsidor "
+"förklarar skillnaderna mellan DSPAM och SpamAssassinoch varför DSPAM kanske "
+"är att föredra."
+
+msgid ""
+"dspam is a learning system that filters spam based on what <i>you</i> tell "
+"it is spam and what isn't. Messages are analyzed as they are delivered and "
+"are assigned a spam probability between 0 and 1. The more messages you "
+"receive, both spam and innocent, the better dspam learns what <i>you</i> "
+"think is spam and what is not."
+msgstr ""
+"DSPAM är ett lärande system som filtrerar skräppost baserat på vad <i>du</i> "
+"anser vara eller inte vara skräppost. Brev analyseras vid leveransen och "
+"tilldelas ett sannolikehetsvärde mellan noll och ett. Ju fler brev du får, "
+"både önskade och oönskade, dess bättre lär sig DSPAM vad <i>du</i> anser "
+"vara skräppost."
+
+msgid "Reporting Spam"
+msgstr "Anmäla skräppost"
+
+msgid ""
+"If you receive a spam message in your Inbox, forward the message to "
+"<nobr>username-spam@domain</nobr> and it will be learned as spam. For "
+"example, if your address is joe@example.com, you would forward the message "
+"to <nobr>joe-spam@example.com</nobr>."
+msgstr ""
+"Om du får ett skräppostbrev i inkorgen ska du vidarebefordra det till "
+"<nobr>användarnamn-spam@domän</nobr> så det lärs in som skräppost. Ett "
+"exempel: om din adress är joe@example.com vidarebefordrar du skräppost till "
+"<nobr>joe-spam@example.com</nobr>."
+
+#, c-format
+msgid ""
+"You can also move your spam messages to the <i>%s</i> folder. This folder is "
+"periodically checked for messages which are then learned as spam and "
+"deleted. You do not need to move messages from your %s folder here because "
+"they have already been learned as spam."
+msgstr ""
+"Du kan också flytta skräppost till mappen <i>%s</i>. Denna mapp genomsöks "
+"periodiskt efter brev som ska läras in som skräppost och därefter kastas. Du "
+"behöver inte flytta dit brev från mappen %s, eftersom de redan lärts in som "
+"skräppost."
+
+msgid "Reporting False Positives"
+msgstr "Anmäla felaktigheter"
+
+msgid ""
+"From time to time, dspam will catch an innocent messages as spam. These "
+"messages are called \"false positives\". There is no way to prevent false "
+"positives entirely. If you find a false positive, forward the message to "
+"<nobr>username-fp@domain</nobr> and it will be learned as an innocent "
+"message. For example, if your email address is joe@example.com, you would "
+"forward the message to <nobr>joe-fp@example.com</nobr>."
+msgstr ""
+"Ibland kan det hända att DSPAM markerat ett legitimt brev som skräppost. "
+"Dessa brev kallas brev kallas \"felaktigt markerade\". Det finns tyvärr inte "
+"något garanterat sätt att förhindra att brev markeras felaktigt, men om du "
+"upptäcker att ett brev felaktigt markerats kan du skicka det till "
+"<nobr>användarnamn-fp@domän</nobr>. Ett exempel: om din adress är "
+"joe@example.com vidarebefordrar du skräppost till <nobr>joe-fp@example.com</"
+"nobr>."
+
+#, c-format
+msgid ""
+"You can also move your false positives to the <i>%s</i> folder from the %s "
+"folder. This folder is periodically checked for messages which are then "
+"learned as false positives and deleted."
+msgstr ""
+"Du kan också flytta ett felaktigt markerat brev till mappen <i>%s</i>. Denna "
+"mapp genomsöks periodiskt efter brev som ska läras in som legitima och "
+"därefter kastas."
+
+msgid "Disclaimer"
+msgstr "Förbehåll"
+
+msgid ""
+"dspam is a learning system. It only knows what is spam based on what you "
+"teach it is spam and what is not. Due to dspam's nature, you are more likely "
+"to see errors in spam detection until it is trained on your email. If you do "
+"not report a message as spam within ten days, the message will be "
+"permanently learned as innocent and you will be more likely to receive more "
+"spam."
+msgstr ""
+"DSPAM är ett lärande system. Dess enda möjlighet att särskilja skräppost "
+"från legitima brev är baserad på vad du lärt systemet. På grund av DSPAM:s "
+"natur är det mer sannolikt att fel upptäder i början när systemet inte fått "
+"så mycket träning. Om ett brev inte rapporterats som skräppost inom tio dygn "
+"kommer brevet att läras in som legitimt. Detta medför att risken för "
+"framtida skräppost ökar."
+
+msgid "Use dspam"
+msgstr "Använd DSPAM"
+
+#, c-format
+msgid "Clean out your %s folder on opt-in?"
+msgstr "Ska mappen %s tömmas när användandet påbörjas?"
+
+msgid "Note"
+msgstr "Observera"
+
+#, c-format
+msgid ""
+"Your %s folder may be unavailable during the purge. It will become available "
+"again when the purge is complete."
+msgstr ""
+"Mappen %s kan komma att vara otillgänglig medan den töms. När tömingen är "
+"klar går det att nå som vanligt."
+
+msgid "No messages were selected."
+msgstr "Inga brev var valda."
+
+msgid "Purge $spam_folder Folder"
+msgstr "Töm mappen $spam_folder"
+
+msgid "Purge"
+msgstr "Töm"
+
+#, c-format
+msgid "Delete all messages from your %s folder."
+msgstr "Kasta alla brev i mappen %s."
+
+msgid "Allow Senders from Address Book"
+msgstr "Tillåt brev från avsändare i adressboken"
+
+msgid "Allow all address in the address book."
+msgstr "Tillåt brev från alla avsändare i adressboken"
+
+msgid "0 - Very Aggressive"
+msgstr "0 - Mycket aggressiv"
+
+msgid "1"
+msgstr "1"
+
+msgid "2 - Aggressive"
+msgstr "2 - Aggressiv"
+
+msgid "3"
+msgstr "3"
+
+msgid "4"
+msgstr "4"
+
+msgid "5 - Recommended"
+msgstr "5 - Rekommenderad"
+
+msgid "6"
+msgstr "6"
+
+msgid "7"
+msgstr "7"
+
+msgid "8 - Lenient"
+msgstr "8 - Överseende"
+
+msgid "9"
+msgstr "9"
+
+msgid "10 - Very Lenient"
+msgstr "10 - Mycket överseende"
+
+msgid "Don't Filter"
+msgstr "Filtrera inte"
+
+msgid "All"
+msgstr "Alla"
+
+msgid "Afrikaans"
+msgstr "Afrikaans"
+
+msgid "Albanian"
+msgstr "Albanska"
+
+msgid "Amharic"
+msgstr "Amhariska"
+
+msgid "Arabic"
+msgstr "Arabiska"
+
+msgid "Armenian"
+msgstr "Armeniska"
+
+msgid "Basque"
+msgstr "Baskiska"
+
+msgid "Bosnian"
+msgstr "Bosniska"
+
+msgid "Bulgarian"
+msgstr "Bulgariska"
+
+msgid "Byelorussian"
+msgstr "Vitryska"
+
+msgid "Catalan"
+msgstr "Katalanska"
+
+msgid "Chinese"
+msgstr "Kinesiska"
+
+msgid "Croatian"
+msgstr "Kroatiska"
+
+msgid "Czech"
+msgstr "Tjeckiska"
+
+msgid "Danish"
+msgstr "Danska"
+
+msgid "Dutch"
+msgstr "Nederländska"
+
+msgid "English"
+msgstr "Engelska"
+
+msgid "Esperanto"
+msgstr "Esperanto"
+
+msgid "Estonian"
+msgstr "Estniska"
+
+msgid "Finnish"
+msgstr "Finska"
+
+msgid "French"
+msgstr "Franska"
+
+msgid "Frisian"
+msgstr "Frisiska"
+
+msgid "Georgian"
+msgstr "Georgiska"
+
+msgid "German"
+msgstr "Tyska"
+
+msgid "Greek"
+msgstr "Grekiska"
+
+msgid "Hebrew"
+msgstr "Hebreiska"
+
+msgid "Hindi"
+msgstr "Hindi"
+
+msgid "Hungarian"
+msgstr "Ungerska"
+
+msgid "Icelandic"
+msgstr "Isländska"
+
+msgid "Indonesian"
+msgstr "Indonesiska"
+
+msgid "Irish Gaelic"
+msgstr "Iriska"
+
+msgid "Italian"
+msgstr "Italienska"
+
+msgid "Japanese"
+msgstr "Japanska"
+
+msgid "Korean"
+msgstr "Koreanska"
+
+msgid "Latin"
+msgstr "Latin"
+
+msgid "Latvian"
+msgstr "Lettiska"
+
+msgid "Lithuanian"
+msgstr "Litauiska"
+
+msgid "Malay"
+msgstr "Malajiska"
+
+msgid "Marathi"
+msgstr "Marathi"
+
+msgid "Nepali"
+msgstr "Nepali"
+
+msgid "Norwegian"
+msgstr "Norska"
+
+msgid "Persian"
+msgstr "Persiska"
+
+msgid "Polish"
+msgstr "Polska"
+
+msgid "Portuguese"
+msgstr "Portugisiska"
+
+msgid "Quechua"
+msgstr "Quechua"
+
+msgid "Rhaeto-Romance"
+msgstr "Rätoromanska"
+
+msgid "Romanian"
+msgstr "Rumänska"
+
+msgid "Russian"
+msgstr "Ryska"
+
+msgid "Sanskrit"
+msgstr "Sanskrit"
+
+msgid "Scots"
+msgstr "Skotska (sco)"
+
+msgid "Scottish Gaelic"
+msgstr "Skotska (gd)"
+
+msgid "Serbian"
+msgstr "Serbiska"
+
+msgid "Slovak"
+msgstr "Slovakiska"
+
+msgid "Slovenian"
+msgstr "Slovenska"
+
+msgid "Spanish"
+msgstr "Spanska"
+
+msgid "Swahili"
+msgstr "Swahili"
+
+msgid "Swedish"
+msgstr "Svenska"
+
+msgid "Tagalog"
+msgstr "Tagalog"
+
+msgid "Tamil"
+msgstr "Tamil"
+
+msgid "Thai"
+msgstr "Thailändska"
+
+msgid "Turkish"
+msgstr "Turkiska"
+
+msgid "Ukrainian"
+msgstr "Ukrainska"
+
+msgid "Vietnamese"
+msgstr "Vietnamesiska"
+
+msgid "Welsh"
+msgstr "Walesiska"
+
+msgid "Yiddish"
+msgstr "Jiddisch"
+
+msgid "Disabled"
+msgstr "Inaktiverad"
+
+msgid "MIME Attachment"
+msgstr "MIME-bilaga"
+
+msgid "Text Attachment"
+msgstr "Textbilaga"
+
+msgid "General Settings"
+msgstr "Allmänna inställningar"
+
+#, c-format
+msgid "sasql_DBConnect Database error: %s"
+msgstr "sasql_DBConnect databasfel: %s"
+
+#, c-format
+msgid "sasql_ReadWBList Database error: $s"
+msgstr "sasql_ReadWBList databasfel: %s"
+
+#, c-format
+msgid "sasql_ReadPrefs Database error: %s"
+msgstr "sasql_ReadPrefs databasfel: %s"
+
+#, c-format
+msgid "sasql_UpdatePref Database error: %s"
+msgstr "sasql_UpdatePref databasfel: %s"
+
+#, c-format
+msgid "sasql_UpdatePref_multiple Database error: %s"
+msgstr "sasql_UpdatePref_multiple databasfel: %s"
+
+#, c-format
+msgid "sasql_AddPref Database error: %s"
+msgstr "sasql_AddPref databasfel: %s"
+
+#, c-format
+msgid "sasql_AddPref_multiple Database error: %s"
+msgstr "sasql_AddPref_multiple databasfel: %s"
+
+#, c-format
+msgid "sasql_DelPref Database error: %s"
+msgstr "sasql_DelPref databasfel: %s"
+
+#, c-format
+msgid "sasql_GetPref Database error: $s"
+msgstr "sasql_GetPref databasfel: %s"
+
+msgid "Spam Filter Configuration"
+msgstr "Konfigurera skräppostfilter"
+
+msgid "Here you may configure the behavior of the spam filtering software."
+msgstr "Regler för hur skräppost ska hanteras."
+
+msgid "Allow Sender"
+msgstr "Godkänn avsändare"
+
+msgid "remove"
+msgstr "Stryk"
+
+msgid "Whitelisted"
+msgstr "Vitlistad"
+
+msgid "Blacklisted"
+msgstr "Svartlistad"
+
+msgid "Options"
+msgstr "Inställningar"
+
+msgid "Error: You must include an e-mail address."
+msgstr "Fel: Du måste ange en e-postadress."
+
+msgid "Error: You have entered an invalid e-mail address."
+msgstr "Fel: Du har angivit en felaktig e-postadress."
+
+msgid "Error: Missing option."
+msgstr "Fel: Saknad inställning."
+
+msgid "Error: You must select Allow or Deny."
+msgstr "Fel: Du måste välja Tillåt eller Neka."
+
+msgid "Global Allow / Deny Address List"
+msgstr "Global Tillåt/Neka adresslista"
+
+msgid "Address"
+msgstr "Adress"
+
+msgid "Type"
+msgstr "Typ"
+
+msgid "Personal Allow / Deny Address List"
+msgstr "Personlig Tillåt/Neka adresslista"
+
+msgid "Action"
+msgstr "Aktivitet"
+
+msgid "Address Removed"
+msgstr "Adressen ströks"
+
+msgid "Unknown option: %s"
+msgstr "Okänd inställning: %s"
+
+msgid "Delete"
+msgstr "Stryk"
+
+msgid "Edit"
+msgstr "Redigera"
+
+msgid "Edit Address"
+msgstr "Redigera adress"
+
+msgid "Add New Address"
+msgstr "Lägg till adress"
+
+msgid "Address:"
+msgstr "Adress:"
+
+msgid "Type:"
+msgstr "Typ:"
+
+msgid "Description"
+msgstr "Beskrivning"
