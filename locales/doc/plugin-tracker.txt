@@ -47,14 +47,14 @@ compose_chars           0.1       -   untranslated
 compose_fix.tar.gz                -   untranslated (rtl issues)
 contactclean            2.01      1   added
 courier_vacation        1.1       0   added (sm domain)
-cpanel_pw_changer       1.2       -   variable based translation
+cpanel_pw_changer       1.3       1   added
 custom_from             1.1       0   added (sm domain)
 debugger                1.0       -   untranslated
 deref_ldap              1.0       -   patch, not plugin
 dictionary              0.6       0   part translated (sm domain, rtl)
 disk_quota              3.1.1     1   added
 download_all            0.1       -   untranslated
-email_footer            0.3       -   utility, no translatable strings
+email_footer            0.4       -   utility, no translatable strings
 emoticons               1.1       -   untranslated (rtl issues)
 empty_folders           1.1       1   added (rtl issues)
 empty_trash             1.3       -   utility, no translatable strings
@@ -69,11 +69,11 @@ folder_synch            0.8       -   untranslated (rtl issues)
 forced_prefs            1.0       -   utility, no translatable strings
 form_validation         1.1       -   untranslated
 freecell                1.0       -   untranslated
-get_uuencode            3.0       -   utility, no translatable strings
+get_uuencode            3.1       -   utility, no translatable strings
 global_sql_addressbook.tar.gz     -   patch
 got_hotmail             0.6.2     0   added (sm domain)
 gpg                     2.0       1   added (30 Dec 2003 v2.0 contains strings found during French translation)
-gzip                    2.01      1   added (rtl issues)
+gzip                    2.02      1   added (rtl issues)
 hancock                 1.4       -   untranslated (rtl issues)
 htmlarea                5.5       -   untranslated
 html_mail               2.0       -   mixed gettext and variable based translation.
@@ -97,7 +97,7 @@ listcommands            1.3       0   part of sm
 lock_down               2.1       -   untranslated
 lockout                 1.3       -   part translated
 login_alias             2.3       1   added
-login_auth              1.1       -   no translatable strings
+login_auth              2.0       0   part translated (sm domain)
 login_auto              1.1       0   part translated (sm domain)
 login_extra             1.1       -   untranslated
 login_image             0.2       -   no translatable strings
@@ -113,7 +113,7 @@ meteosat                0.9       -   template based translation (strings mixed 
 mini                    0.2       -   untranslated
 motd                    1.2       0   part of sm
 move_all_messages       0.1       -   untranslated
-msg_flags               1.0.3     -   patch without diff's
+msg_flags               1.4.3.1   -   patch (modifies strings in sm domain)
 multilogin              2.3.1     -   untranslated. string are only in config.
 naguser                 1.1       2   added
 newuser_wiz             1.1       -   untranslated
@@ -137,7 +137,7 @@ rewrap                  1.2       1   added
 restrict_senders        1.0       1   added
 retrieveuserdata        0.9       -   untranslated (only error messages)
 saconf                  1.0       -   part translated
-sasql                   3.0.0     2   added
+sasql                   3.0.1     2   added
 secure_login            1.2       -   a
 select_range            2.8.2     1   added
 send_to_semicolon       1.4       -   util, no translateable strings
@@ -171,16 +171,16 @@ tmdatools               1.02      0   added (sm domain)
 todo                    0.5       0   part translated (sm domain)
 translate               1.3       0   part of sm
 trueaday                1.1       -   no translatable strings
-twc_weather             1.2-rc2a  1   added
+twc_weather             1.3b4     1   added
 undelete                1.0       0   adds one button to sm, all function are part of sm
 unframe                 1.0       -   utility, no strings
-unsafe_image_rules      0.5       0   added (sm domain, untranslated strings)
+unsafe_image_rules      0.7       1   added
 user_logo               1.1       -   no translatable strings
 useracl                 2.0pre    1   added
 username                2.3       1   added (part untranslated)
 user_special_mailboxes  0.1       0   added (sm domain)
 vacation (qmail ldap)   0.2       -   untranslated
-vacation (local prog)   0.14      -   untranslated, variable strings
+vacation (local prog)   0.15      -   untranslated, variable strings
 vacation                1.41      1   added
 vadmin                  1.9.2     1   added
 variable_sent_folder    0.4       -   untranslated
