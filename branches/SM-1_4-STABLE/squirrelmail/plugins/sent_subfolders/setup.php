@@ -9,14 +9,22 @@
  * This is a standard Squirrelmail-1.2 API for plugins.
  *
  * $Id$
+ * @package plugins
+ * @subpackage sent_subfolders
  */
 
+/** 
+ * 
+ */
 define('SMPREF_SENT_SUBFOLDERS_DISABLED',  0);
 define('SMPREF_SENT_SUBFOLDERS_YEARLY',    1);
 define('SMPREF_SENT_SUBFOLDERS_QUARTERLY', 2);
 define('SMPREF_SENT_SUBFOLDERS_MONTHLY',   3);
 define('SMOPT_GRP_SENT_SUBFOLDERS','SENT_SUBFOLDERS');
 
+/**
+ * Adds plugin to squirrelmail hooks
+ */
 function squirrelmail_plugin_init_sent_subfolders() {
     /* Standard initialization API. */
     global $squirrelmail_plugin_hooks;
@@ -44,6 +52,11 @@ function squirrelmail_plugin_init_sent_subfolders() {
     $squirrelmail_plugin_hooks
     ['optpage_loadhook_folder']['sent_subfolders'] =
         'sent_subfolders_optpage_loadhook_folders';
+
+    /* mark base sent folder as special mailbox */
+    $squirrelmail_plugin_hooks
+    ['special_mailbox']['sent_subfolders'] = 
+	'sent_subfolders_special_mailbox';
 }
 
 function sent_subfolders_check_handleAsSent() {
@@ -69,6 +82,9 @@ function sent_subfolders_check_handleAsSent() {
     }
 }
 
+/**
+ * Loads sent_subfolders settings
+ */
 function sent_subfolders_load_prefs() {
     global $use_sent_subfolders, $data_dir, $username,
            $sent_subfolders_setting, $sent_subfolders_base;
@@ -83,6 +99,9 @@ function sent_subfolders_load_prefs() {
     ($data_dir, $username, 'sent_subfolders_base', SMPREF_NONE);
 }
 
+/**
+ * Adds sent_subfolders options in folder preferences
+ */
 function sent_subfolders_optpage_loadhook_folders() {
     global $optpage_data, $imapServerAddress, $imapPort;
 
@@ -133,6 +152,9 @@ function sent_subfolders_optpage_loadhook_folders() {
     $optpage_data['vals'][SMOPT_GRP_SENT_SUBFOLDERS] = $optvals;
 }
 
+/**
+ * Saves sent_subfolder_options
+ */
 function save_option_sent_subfolders_setting($option) {
     global $data_dir, $username, $use_sent_subfolders;
 
@@ -148,6 +170,12 @@ function save_option_sent_subfolders_setting($option) {
     save_option($option);
 }
 
+/**
+ * Update sent_subfolders settings
+ *
+ * function updates default sent folder value and 
+ * creates required imap folders
+ */
 function sent_subfolders_update_sentfolder() {
     global $sent_folder, $auto_create_special, $auto_create_done;
     global $sent_subfolders_base, $sent_subfolders_setting;
@@ -242,6 +270,12 @@ function sent_subfolders_update_sentfolder() {
     }
 }
 
+/**
+ * Sets quarter subfolder names
+ *
+ * @param string $month numeric month
+ * @return string quarter name (Q + number)
+ */
 function sent_subfolder_getQuarter($month) {
     switch ($month) {
         case '01':
@@ -272,4 +306,23 @@ function sent_subfolder_getQuarter($month) {
     return ('Q' . $result);
 }
 
+/**
+ * detects if mailbox is part of sent_subfolders
+ *
+ * @param string $mb imap folder name
+ * @return boolean 1 - is part of sent_subfolders, 0 - is not part of sent_subfolders
+ */
+function sent_subfolders_special_mailbox($mb) {
+    global $data_dir, $username;
+
+    $use_sent_subfolders = getPref
+        ($data_dir, $username, 'use_sent_subfolders', SMPREF_OFF);
+    $sent_subfolders_base = getPref($data_dir, $username, 'sent_subfolders_base', 'na');
+
+    if ($use_sent_subfolders == SMPREF_ON && 
+    ($mb == $sent_subfolders_base || stristr($mb,$sent_subfolders_base) ) ) {
+	return 1;
+    }
+    return 0;
+}
 ?>
