@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2004-06-02 19:24+0300\n"
+"POT-Creation-Date: 2004-06-07 20:03+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -224,7 +224,7 @@ msgstr ""
 msgid "Server replied: "
 msgstr ""
 
-msgid "Illegal folder name.  Please select a different name."
+msgid "Illegal folder name. Please select a different name."
 msgstr ""
 
 msgid "Click here to go back"
@@ -335,7 +335,7 @@ msgstr ""
 
 #, c-format
 msgid ""
-"The help has not been translated to %s.  It will be displayed in English "
+"The help has not been translated to %s. It will be displayed in English "
 "instead."
 msgstr ""
 
@@ -534,8 +534,8 @@ msgstr ""
 
 msgid ""
 "The index order is the order that the columns are arranged in the message "
-"index.  You can add, remove, and move columns around to customize them to "
-"fit your needs."
+"index. You can add, remove, and move columns around to customize them to fit "
+"your needs."
 msgstr ""
 
 msgid "up"
@@ -580,7 +580,7 @@ msgstr ""
 
 msgid ""
 "Based upon given criteria, incoming messages can have different background "
-"colors in the message list.  This helps to easily distinguish who the "
+"colors in the message list. This helps to easily distinguish who the "
 "messages are from, especially for mailing lists."
 msgstr ""
 
@@ -737,6 +737,12 @@ msgstr ""
 msgid "Viewing a Business Card"
 msgstr ""
 
+#, c-format
+msgid ""
+"vCard Version %s is not supported. Some information might not be converted "
+"correctly."
+msgstr ""
+
 msgid "Title"
 msgstr ""
 
@@ -768,6 +774,12 @@ msgid "Note"
 msgstr ""
 
 msgid "Add to Addressbook"
+msgstr ""
+
+msgid "Nickname:"
+msgstr ""
+
+msgid "Note Field Contains:"
 msgstr ""
 
 msgid "Title & Org. / Dept."
@@ -1672,7 +1684,7 @@ msgstr ""
 msgid "Config File Version"
 msgstr ""
 
-msgid "Squirrelmail Version"
+msgid "SquirrelMail Version"
 msgstr ""
 
 msgid "PHP Version"
@@ -2169,13 +2181,13 @@ msgstr ""
 
 msgid ""
 "COMMERCIAL - Servers that are configured (or misconfigured) to allow spam to "
-"be relayed through their system will be banned with this.  Another good one "
+"be relayed through their system will be banned with this. Another good one "
 "to use."
 msgstr ""
 
 msgid ""
 "COMMERCIAL - Dial-up users are often filtered out since they should use "
-"their ISP's mail servers to send mail.  Spammers typically get a dial-up "
+"their ISP's mail servers to send mail. Spammers typically get a dial-up "
 "account and send spam directly from there."
 msgstr ""
 
@@ -2224,7 +2236,7 @@ msgid "FREE - SPAMhaus - A list of well-known SPAM sources."
 msgstr ""
 
 msgid ""
-"FREE, for now - SPAMCOP - An interesting solution that lists servers that "
+"FREE, for now - SpamCop - An interesting solution that lists servers that "
 "have a very high spam to legit email ratio (85 percent or more)."
 msgstr ""
 
@@ -2358,10 +2370,10 @@ msgid ""
 msgstr ""
 
 msgid ""
-"The more messages you scan, the longer it takes.  I would suggest that you "
-"scan only new messages.  If you make a change to your filters, I would set "
-"it to scan all messages, then go view my INBOX, then come back and set it to "
-"scan only new messages.  That way, your new spam filters will be applied and "
+"The more messages you scan, the longer it takes. I would suggest that you "
+"scan only new messages. If you make a change to your filters, I would set it "
+"to scan all messages, then go view my INBOX, then come back and set it to "
+"scan only new messages. That way, your new spam filters will be applied and "
 "you'll scan even the spam you read with the new filters."
 msgstr ""
 
@@ -2405,7 +2417,7 @@ msgstr ""
 
 msgid ""
 "Run some test IMAP commands, displaying both the command and the result. "
-"These tests use the Squirrelmail IMAP commands and your current Squirrelmail "
+"These tests use the SquirrelMail IMAP commands and your current SquirrelMail "
 "configuration. Custom command strings can be used."
 msgstr ""
 
@@ -2633,7 +2645,7 @@ msgstr ""
 
 msgid ""
 "You should be aware that the encryption used to store your password is not "
-"perfectly secure.  However, if you are using pop, there is inherently no "
+"perfectly secure. However, if you are using pop, there is inherently no "
 "encryption anyway. Additionally, the encryption that we do to save it on the "
 "server can be undone by a hacker reading the source to this file."
 msgstr ""
@@ -2755,21 +2767,21 @@ msgstr ""
 msgid ""
 "Use the <b>Check RECENT</b> to only check for messages that are recent. "
 "Recent messages are those that have just recently showed up and have not "
-"been \"viewed\" or checked yet.  This can prevent being continuously annoyed "
+"been \"viewed\" or checked yet. This can prevent being continuously annoyed "
 "by sounds or popups for unseen mail."
 msgstr ""
 
 msgid ""
 "Selecting the <b>Change title</b> option will change the title in some "
 "browsers to let you know when you have new mail (requires JavaScript, and "
-"only works in IE but you won't see errors with other browsers).  This will "
+"only works in IE but you won't see errors with other browsers). This will "
 "always tell you if you have new mail, even if you have <b>Check RECENT</b> "
 "enabled."
 msgstr ""
 
 msgid ""
 "Select from the list of <b>server files</b> the media file to play when new "
-"mail arrives.  If no file is specified, \"(none)\", no sound will be used."
+"mail arrives. If no file is specified, \"(none)\", no sound will be used."
 msgstr ""
 
 msgid "Enable Media Playing"
@@ -2995,15 +3007,15 @@ msgid "SpamCop - Spam Reporting"
 msgstr ""
 
 msgid ""
-"Help fight the battle against unsolicited email.  SpamCop reads the spam "
-"email and determines the correct addresses to send complaints to.  Quite "
+"Help fight the battle against unsolicited email. SpamCop reads the spam "
+"email and determines the correct addresses to send complaints to. Quite "
 "fast, really smart, and easy to use."
 msgstr ""
 
 msgid ""
 "Sending this spam report will give you back a reply with URLs that you can "
 "click on to properly report this spam message to the proper authorities. "
-"This is a free service.  By pressing the \"Send Spam Report\" button, you "
+"This is a free service. By pressing the \"Send Spam Report\" button, you "
 "agree to follow SpamCop's rules/terms of service/etc."
 msgstr ""
 
@@ -3355,7 +3367,7 @@ msgstr ""
 msgid "No known limits, powered by Systran"
 msgstr ""
 
-msgid "No known limits, powered by Translation Experts's InterTran"
+msgid "No known limits, powered by Translation Experts' InterTran"
 msgstr ""
 
 #, c-format
@@ -3547,27 +3559,6 @@ msgstr ""
 msgid "Your Message has been sent."
 msgstr ""
 
-msgid "Illegal folder name. Please select a different name."
-msgstr ""
-
-#, c-format
-msgid ""
-"The help has not been translated to %s. It will be displayed in English "
-"instead."
-msgstr ""
-
-msgid ""
-"The index order is the order that the columns are arranged in the message "
-"index. You can add, remove, and move columns around to customize them to fit "
-"your needs."
-msgstr ""
-
-msgid ""
-"Based upon given criteria, incoming messages can have different background "
-"colors in the message list. This helps to easily distinguish who the "
-"messages are from, especially for mailing lists."
-msgstr ""
-
 msgid "As Attachment"
 msgstr ""
 
@@ -3718,12 +3709,6 @@ msgstr ""
 msgid "Signout"
 msgstr ""
 
-#, c-format
-msgid ""
-"vCard Version %s is not supported. Some information might not be converted "
-"correctly."
-msgstr ""
-
 msgid "Folder List"
 msgstr ""
 
@@ -3808,9 +3793,6 @@ msgid "Subfolder"
 msgstr ""
 
 msgid "XP"
-msgstr ""
-
-msgid "SquirrelMail Version"
 msgstr ""
 
 msgid "Hide SquirrelMail Header"
@@ -3989,18 +3971,6 @@ msgid "Show system specs"
 msgstr ""
 
 msgid ""
-"COMMERCIAL - Servers that are configured (or misconfigured) to allow spam to "
-"be relayed through their system will be banned with this. Another good one "
-"to use."
-msgstr ""
-
-msgid ""
-"COMMERCIAL - Dial-up users are often filtered out since they should use "
-"their ISP's mail servers to send mail. Spammers typically get a dial-up "
-"account and send spam directly from there."
-msgstr ""
-
-msgid ""
 "WARNING! Header filters should be of the format &quot;Header: value&quot;"
 msgstr ""
 
@@ -4015,7 +3985,7 @@ msgid "You must select a scan type."
 msgstr ""
 
 #, c-format
-msgid "WARNING! Tell the adminstrator to set the %s variable."
+msgid "WARNING! Tell the administrator to set the %s variable."
 msgstr ""
 
 msgid "Unread messages only"
@@ -4072,12 +4042,6 @@ msgstr ""
 msgid "Request:"
 msgstr ""
 
-msgid ""
-"Run some test IMAP commands, displaying both the command and the result. "
-"These tests use the SquirrelMail IMAP commands and your current SquirrelMail "
-"configuration. Custom command strings can be used."
-msgstr ""
-
 msgid "No POP3 servers configured yet."
 msgstr ""
 
@@ -4086,13 +4050,6 @@ msgstr ""
 
 #, c-format
 msgid "Login OK: Inbox contains %s messages"
-msgstr ""
-
-msgid ""
-"You should be aware that the encryption used to store your password is not "
-"perfectly secure. However, if you are using pop, there is inherently no "
-"encryption anyway. Additionally, the encryption that we do to save it on the "
-"server can be undone by a hacker reading the source to this file."
 msgstr ""
 
 msgid "POP3 Fetch Mail"
@@ -4220,20 +4177,7 @@ msgid ""
 "related topics, try reading through SpamCop's %sHelp and Feedback%s section."
 msgstr ""
 
-msgid ""
-"Help fight the battle against unsolicited email. SpamCop reads the spam "
-"email and determines the correct addresses to send complaints to. Quite "
-"fast, really smart, and easy to use."
-msgstr ""
-
 msgid "SpamCop reporting"
-msgstr ""
-
-msgid ""
-"Sending this spam report will give you back a reply with URLs that you can "
-"click on to properly report this spam message to the proper authorities. "
-"This is a free service. By pressing the \"Send Spam Report\" button, you "
-"agree to follow SpamCop's rules/terms of service/etc."
 msgstr ""
 
 msgid "Successful re-encryption"
