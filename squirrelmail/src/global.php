@@ -33,6 +33,28 @@ if ( (float)substr(PHP_VERSION,0,3) < 4.1 ) {
   $_SESSION =& $HTTP_SESSION_VARS;
 }
 
+/* if running with register_globals = 0 and 
+   magic_quotes_gpc then strip the slashes
+   from POST and GET global arrays */
+
+if (get_magic_quotes_gpc()) {
+    if (ini_get('register_globals') == 0) {
+        sqstripslashes($_GET);
+        sqstripslashes($_POST);
+    }
+}
+
+function sqstripslashes(&$array) {
+    foreach ($array as $index=>$value) {
+        if (is_array($array["$index"])) {
+            sqstripslashes($array["$index"]);
+        }
+        else {
+            $array["$index"] = stripslashes($value);
+        }
+    }
+}
+
 function sqsession_register ($var, $name) {
     $rg = ini_get('register_globals');
     if ( (float)substr(PHP_VERSION,0,3) < 4.1 && empty($rg)) {
