@@ -458,25 +458,32 @@ function user_strcasecmp($a, $b) {
  *            you know these options will be shown 3 times in a row.. (most often unset).
  */
 function sqimap_mailbox_option_list($imap_stream, $show_selected = 0, $folder_skip = 0, $boxes = 0 ) {
+    global $username, $data_dir;
     $mbox_options = '';
 
-    // The standard delimiter can look crappy (when /)
+    $shorten_box_names = getPref($data_dir, $username, 'indent_mailbox_selection', SMPREF_OFF);
+    
+    // The standard delimiter can look crappy (when / or \)
     //$delimiter = sqimap_get_delimiter ($imap_stream) . '&nbsp;';
     $delimiter = '.&nbsp;';
+
     if ( $boxes == 0 ) {
         $boxes = sqimap_mailbox_list($imap_stream);
     }   
     foreach ($boxes as $boxes_part) {
         if (!in_array('noselect', $boxes_part['flags'])) {
             $box = $boxes_part['unformatted'];
-	    $lowerbox = strtolower($box);
+            $lowerbox = strtolower($box);
+
             if ( $folder_skip != 0 && in_array($lowerbox, $folder_skip) ) {
-	      continue;
-	    }
-	    
-            $box2 = str_replace('&nbsp;&nbsp;', $delimiter, $boxes_part['formatted']);
-            if($box2 == 'INBOX') {
+                continue;
+            }
+            if ( $shorten_box_names ) {
+                $box2 = str_replace('&nbsp;&nbsp;', $delimiter, $boxes_part['formatted']);
+            } else if ($lowerbox == 'inbox'){
                 $box2 = _("INBOX");
+            } else {
+                $box2 = str_replace(' ', '&nbsp;', imap_utf7_decode_local($boxes_part['unformatted-disp']));
             }
             if ($show_selected != 0 && in_array($lowerbox, $show_selected) ) {
                 $mbox_options .= '<OPTION VALUE="'.$box.'" SELECTED>'.$box2.'</OPTION>' . "\n";
