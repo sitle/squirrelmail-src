@@ -38,7 +38,7 @@
         global $mailfetch_cypher;
         global $mailfetch_server_,$mailfetch_alias_,$mailfetch_user_,$mailfetch_pass_;
         global $mailfetch_lmos_, $mailfetch_uidl_, $mailfetch_login_, $mailfetch_fref_;
-        global $PHP_SELF;
+        global $PHP_SELF, $_SESSION;
 
         $username = $_SESSION['username'];
 
@@ -68,7 +68,7 @@
         require_once ('../plugins/mail_fetch/functions.php');
         require_once('../functions/i18n.php');
 
-        global $data_dir, $imapServerAddress,$imapPort;
+        global $data_dir, $imapServerAddress,$imapPort, $_SESSION, $_COOKIE;
 
         $username = $_SESSION['username'];
         $key = $_COOKIE['key'];

@@ -87,7 +87,7 @@ if (isset($plugins) && is_array($plugins)) {
      */
     function soupNazi(){
 
-        global $SQSPELL_SOUP_NAZI;
+        global $SQSPELL_SOUP_NAZI, $_SERVER;
         
         require_once('../plugins/squirrelspell/sqspell_config.php');
 
