@@ -15,8 +15,8 @@
 
 function squirrelmail_plugin_init_mail_utilities() {
     global $squirrelmail_plugin_hooks;
-    include_once("../plugins/mail_utilities/config.php");
-    include_once("../plugins/mail_utilities/functions.php");
+    include_once(SM_PATH . 'plugins/mail_utilities/config.php');
+    include_once(SM_PATH . 'plugins/mail_utilities/functions.php');
 
     $squirrelmail_plugin_hooks['menuline']['Utilities'] = 'mail_utilities_link';
 

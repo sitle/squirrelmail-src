@@ -42,7 +42,7 @@ If the utilities plugin doesn't exist, put it on the menuline
         ...
        global $plugins;
        if ( in_array('mail_utilities', $plugins ) ) {
-          include_once('../plugins/mail_utilities/functions.php');
+          include_once(SM_PATH . 'plugins/mail_utilities/functions.php');
 
           // This one is required - adds a link to the Utilities menu
           mail_utilities_add_menu_hook('plugin_name','plugin_name_link_function');
@@ -94,7 +94,7 @@ after the call to displayPageHeader:
 
     global $plugins;
     if ( in_array('mail_utilities', $plugins) ) {
-        include_once('../plugins/mail_utilities/functions.php');
+        include_once(SM_PATH . 'plugins/mail_utilities/functions.php');
         mail_utilities_display_menubar($color);
     }
 
@@ -110,6 +110,9 @@ Plugins that can exploit utilities:
 
 Change Log:
 =================
+
+Version 0.3 2003/01/27 ebullient@haaser.com
+Use SM_PATH For 1.3.x/1.4 compatibility.
 
 Version 0.2 2002/09/08 sizzle@haaser.com
 Housekeeping updates
