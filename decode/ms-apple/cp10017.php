@@ -19,7 +19,7 @@
  * 2. http://developer.apple.com/documentation/macos8/TextIntlSvcs/TextEncodingConversionManager/TEC1.5/TEC.b0.html
  * 3. http://shlimazl.nm.ru/rus/cptable.htm (page in Russian)
  * @package squirrelmail
- * @subpackage decode
+ * @subpackage decode_extra
  */
 
 /**
