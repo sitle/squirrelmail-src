@@ -123,10 +123,12 @@ $ShowValues = array(
 echo '<tr><td><br />' .
      '<table border="0" cellpadding="2" cellspacing="0" align="center">' . "\n";
 
-if (isset($vcard_safe['email;internet'])) {     $vcard_safe['email;internet'] = '<A HREF="../src/compose.php?send_to=' .
+if (isset($vcard_safe['email;internet'])) {
+    $vcard_safe['email;internet'] = '<a href="../src/compose.php?send_to=' .
         $vcard_safe['email;internet'] . '">' . $vcard_safe['email;internet'] .
-        '</A>';
+        '</a>';
 }
+
 if (isset($vcard_safe['url'])) {
     $vcard_safe['url'] = '<a href="' . $vcard_safe['url'] . '">' .
         $vcard_safe['url'] . '</a>';
@@ -153,9 +155,10 @@ echo '</table>' .
      '<form action="../src/addressbook.php" method="post" name="f_add">' .
      '<table border="0" cellpadding="2" cellspacing="0" align="center">' .
      '<tr><td align="right"><b>' . _("Nickname:") . '</b></td>' .
-     '<td><input type="text" name="addaddr[nickname]" size="20" value="' .
-     $vcard_safe['firstname'] . '-' . $vcard_safe['lastname'] .
-     '" /></td></tr>' .
+     '<td>' .
+     '<input type="text" name="addaddr[nickname]" size="20" value="' .
+     $vcard_safe['firstname'] . '-' . $vcard_safe['lastname'] . '" />' .
+     '</td></tr>' .
      '<tr><td align="right"><b>' . _("Note Field Contains:") . '</b></td><td>' .
      '<select name="addaddr[label]">';
 
