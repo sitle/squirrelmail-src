@@ -35,9 +35,11 @@ if (!defined('DEBUG_TRACE')) define('DEBUG_TRACE', FALSE);
 if (!defined('DEBUG_TIME'))  define('DEBUG_TIME',  FALSE);
 if (!defined('DEBUG_EXT'))   define('DEBUG_EXT',   FALSE);
 
-$TRACK[0] = 0;
-$DEBUGSTRING = '';
-$DBTRACKNUM = 0;
+if ( DEBUG ) {
+    $TRACK[0] = 0;
+    $DEBUGSTRING = '';
+    $DBTRACKNUM = 0;
+}
 $startTime = getTime();
 
 function writeDebug(&$foowd) {
@@ -71,30 +73,24 @@ function writeDebug(&$foowd) {
 
         if ( DEBUG_EXT ) {
             echo '<div class="debug_output_heading">External Resources</div>';
-            echo '<pre>';
-            echo "***** External Resources *****\n";
-            print_r($EXTERNAL_RESOURCES);
-            echo '</pre><br />';
+            show($EXTERNAL_RESOURCES);
         }
 
         if ( DEBUG_VAR ) {
-            echo '<div class="debug_output_heading">Variables and Objects</div>';
-
             $dbuser = $foowd->dbuser;
             $dbpass = $foowd->dbpass;
             unset($foowd->dbuser);
             unset($foowd->dbpass);
-            echo '<pre>';
-            echo "***** FOOWD Environment *****\n";
-            print_r($foowd); 
-            echo '</pre><br />';
+            echo '<div class="debug_output_heading">FOOWD Object</div>';
+            show($foowd);
             $foowd->dbuser = $dbuser;
             $foowd->dbpass = $dbpass;
 
-            echo '<pre>';
-            echo "***** REQUEST *****\n";
-            print_r($_REQUEST);
-            echo '</pre><br />';
+            echo '<div class="debug_output_heading">Request</div>';
+            show($_REQUEST);
+
+            echo '<div class="debug_output_heading">Request</div>';
+            show($_SESSION);
         }        
         echo '</div><br />';
     }
