@@ -379,12 +379,25 @@ function getChildren($parent) {
 function getWhere($thingid, $className, $workspaceid = NULL) {
 	global $wtf;
 	track('getWhere', $thingid, $className);
-	$where = array('objectid = '.$thingid, 'AND');
-	if (isset($workspaceid)) {
+	$where = array('objectid = '.$thingid);
+
+    if ($wtf->op == 'delete' && $wtf->class == 'user') {
+        // If we are currently trying to delete the user (in whatever workspace),
+        // don't add anything to the query
+	} elseif (isset($workspaceid)) {
+        // else, if we have a specific workspace in mind,
+        // only look for docs in that workspace
+        $where[] = 'AND';
 		$where[] = 'workspaceid = '.$workspaceid;
 	} elseif ($wtf->user->workspaceid == 0) {
+        // else, if the user is in the main workspace,
+        // only query elements that are also in the main workspace
+        $where[] = 'AND';
 		$where[] = 'workspaceid = 0';
 	} else {
+        // else look for things in the user's current workspace
+        // and (if not in the current workspace) in the main workspace.
+        $where[] = 'AND';
 		$where[] = '(workspaceid = '.$wtf->user->workspaceid;
 		$where[] = 'OR';
 		$where[] = 'workspaceid = 0)';
