@@ -18,6 +18,8 @@ $foowd_parameters['debug']['debug_enabled'] = TRUE;
 $foowd = new smdoc($foowd_parameters);
 
 $objectMethod = TRUE;
+$objectid = 0;
+$classid = 0;
 
 /*
  * Check for shorthand objectid using well-known object name:
@@ -26,10 +28,10 @@ $objectMethod = TRUE;
 $objectName_q = new input_querystring('object', REGEX_TITLE);
 if ( $objectName_q->wasValid )
 {
-  $result = smdoc_external::lookupObjectName($foowd, 
-                                   $objectName_q->value,
-                                   $objectid, // defined
-                                   $classid); // defined
+  $lookup =& smdoc_name_lookup::getInstance($foowd);
+  $result = $lookup->findObject($objectName_q->value,
+                                $objectid, // defined
+                                $classid); // defined
   if ( !$result )
     $_SESSION['error'] = OBJECT_NOT_FOUND;
 }
