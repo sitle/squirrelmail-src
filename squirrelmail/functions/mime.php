@@ -1187,7 +1187,7 @@ function sq_deent($attvalue){
     $trans = array_flip($trans);
     unset($trans{"&quot;"});
     while (list($ent, $val) = each($trans)){
-        $attvalue = preg_replace("/$ent*(\W)/si", "$val\\1", $attvalue);
+        $attvalue = preg_replace("/$ent*(\W)/i", "$val\\1", $attvalue);
     }
     /**
      * Now translate numbered entities from 1 to 255 if needed.
@@ -1197,9 +1197,9 @@ function sq_deent($attvalue){
         for ($asc=1; $asc<256; $asc++){
             if (!in_array($asc, $omit)){
                 $chr = chr($asc);
-                $attvalue = preg_replace("/\&#0*$asc;*(\D)/si", "$chr\\1", 
+                $attvalue = preg_replace("/\&#0*$asc;*(\D)/i", "$chr\\1", 
                                          $attvalue);
-                $attvalue = preg_replace("/\&#x0*".dechex($asc).";*(\W)/si",
+                $attvalue = preg_replace("/\&#x0*".dechex($asc).";*(\W)/i",
                                          "$chr\\1", $attvalue);
             }
         }
@@ -1340,9 +1340,9 @@ function sq_fixstyle($message, $id, $content){
      * Fix stupid css declarations which lead to vulnerabilities
      * in IE.
      */
-    $match   = Array('/expression/si',
-                     '/behaviou*r/si',
-                     '/binding/si');
+    $match   = Array('/expression/i',
+                     '/behaviou*r/i',
+                     '/binding/i');
     $replace = Array('idiocy', 'idiocy', 'idiocy');
     $content = preg_replace($match, $replace, $content);
     return $content;
@@ -1671,7 +1671,7 @@ function magicHTML($body, $id, $message, $mailbox = 'INBOX') {
                                 "\\1#\\2"
                                 )
                         ),
-                "/^style/si" =>
+                "/^style/i" =>
                     Array(
                           Array(
                                 "/expression/i",
@@ -1713,7 +1713,7 @@ function magicHTML($body, $id, $message, $mailbox = 'INBOX') {
     }
 
     $add_attr_to_tag = Array(
-                             "/^a$/si" => Array('target'=>'"_new"')
+                             "/^a$/i" => Array('target'=>'"_new"')
                              );
     $trusted = sq_sanitize($body, 
                            $tag_list, 
@@ -1727,7 +1727,7 @@ function magicHTML($body, $id, $message, $mailbox = 'INBOX') {
                            $id,
                            $mailbox
                            );
-    if (preg_match("|$secremoveimg|si", $trusted)){
+    if (preg_match("|$secremoveimg|i", $trusted)){
         $has_unsafe_images = true;
     } 
     return $trusted;
