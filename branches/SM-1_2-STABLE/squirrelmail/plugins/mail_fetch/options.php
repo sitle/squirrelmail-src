@@ -25,6 +25,9 @@
     if(isset($_POST['mf_cypher'])) {
         $mf_cypher = $_POST['mf_cypher'];
     }
+    else {
+        $mf_cyper = '';
+    }
     if(isset($_POST['mf_sn'])) {
         $mf_sn = $_POST['mf_sn'];
     }
