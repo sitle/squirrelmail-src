@@ -30,7 +30,7 @@ WTF Configuration
  */
 
 /* site defaults */
-define('DEFAULTPAGENAME', 'SquirrelMail - WebMail for Nuts'); // default page name
+define('DEFAULTPAGENAME', 'SquirrelMail'); // default page name
 
 /* content settings */
 define('MAXTITLELENGTH', 50); // maximum length of title allowed (DB field must support length)
