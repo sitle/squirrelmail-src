@@ -10,7 +10,7 @@
  * Original author: ronen at greyzone dot com
  *
  * @version $Id$
- * @copyright Copyright &copy; 2004-2005 The SquirrelMail Project Team
+ * @copyright Copyright &copy; SquirrelMail Development Team, 2004
  * @package squirrelmail
  * @subpackage encode
  */
@@ -34,7 +34,7 @@ function charset_encode_utf_8 ($string) {
  * Return utf8 symbol when unicode character number is provided
  *
  * This function is used internally by charset_encode_utf_8
- * function. It might be unavailable to other SquirrelMail functions.
+ * function. It might be unavailable to other squirrelmail functions.
  * Don't use it or make sure, that functions/encode/utf_8.php is
  * included.
  *

@@ -6,7 +6,7 @@
  * Unsupported characters are replaced with ?.
  *
  * @version $Id$
- * @copyright Copyright &copy; 2004-2005 The SquirrelMail Project Team
+ * @copyright Copyright &copy; SquirrelMail Development Team, 2004
  * @package squirrelmail
  * @subpackage encode
  */
@@ -30,7 +30,7 @@ function charset_encode_tis_620 ($string) {
  * Return tis-620 symbol when unicode character number is provided
  *
  * This function is used internally by charset_encode_tis_620
- * function. It might be unavailable to other SquirrelMail functions.
+ * function. It might be unavailable to other squirrelmail functions.
  * Don't use it or make sure, that functions/encode/tis_620.php is
  * included.
  *
