@@ -13521,8 +13521,19 @@ function charset_decode_x_mac_chintrad ($string) {
 	"\xF9D4" => '&#40777;',
 	"\xF9D5" => '&#40856;');
 
-    $string = str_replace(array_keys($mac_chintrad), array_values($mac_chintrad), $string);
+    $index=0;
+    $ret="";
 
-    return $string;
+    while ( $index < strlen($string)) {
+        if ( ereg("[\241-\364]", $string[$index])) {
+            $ret.= str_replace(array_keys($mac_chintrad), array_values($mac_chintrad), $string[$index] . $string[$index+1]);
+            $index=$index+2;
+        } else {
+            $ret.= $string[$index];
+            $index=$index+1;
+        }
+    }
+
+    return $ret;
 }
 ?>
