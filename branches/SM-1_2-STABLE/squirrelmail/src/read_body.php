@@ -824,16 +824,24 @@ echo                '</SMALL>' .
  * Auto-Select identity for replies (Jonathan Angliss - 2002/09/25)
  */
  
-$to_arr = formatRecipientString($message->header->to, 'to');
-$to_str = str_replace( array( '&gt;' , '&lt;' , '<' , '>' ) , '' , $to_arr['str']);
+// Get the To and CC array list for matching
+$to_arr = $message->header->to;
+$cc_arr = $message->header->cc;
+
+// Merge them to make searching easier and remove duplicated values
+$addr_arr = array_merge($to_arr , $cc_arr);
+$addr_arr = array_unique($addr_arr);
+
 $identity = '';
 $idents = getPref($data_dir, $username, 'identities');
 if (!empty($idents) && $idents > 1) {
     for ($i = 1; $i < $idents; $i++) {
-		$ident_addr = getPref($data_dir , $username , 'email_address' . $i);
-		if ($to_str == $ident_addr) {
-            $identity = $i;
-            break;
+        $ident_addr = getPref($data_dir , $username , 'email_address' . $i);
+        for($m = 0,$cnt_to = count($addr_arr); $m < $cnt_to; $m++) {
+            if (stristr($addr_arr[$m] , $ident_addr)) {
+                $identity = $i;
+                break 2;
+            }
         }
     }
 }
