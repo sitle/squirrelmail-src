@@ -1,0 +1,16 @@
+smallcal plugin v.0.8 uses squirrelmail domain.
+Included patch (smallcal-0.8.diff) sets domain to 
+smallcal and fixes CR lines that cause problems 
+with gettext utilities.
+
+Changes that were made:
+1. removed CR symbols from color.php and index.php. CR's 
+   in color.php cause problems with gettext.
+2. switched domain to smallcal. this plugin is not part of 
+   sm, it should use own domain.
+3. _("SMTWTFS") string works only if you have single byte symbols. 
+   For multibyte charsets (big5, gb2312, utf-8) name of weekday 
+   may be written in several bytes.
+4. converted some strings to gettext. Calendar size option use "Default", 
+   but in some languages word might be different depending on gender. 
+   changed option to "Default size"
