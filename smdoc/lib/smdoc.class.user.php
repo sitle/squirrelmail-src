@@ -33,8 +33,8 @@ class smdoc_user extends foowd_user
     // Load the user if loadUser is UNSET or TRUE
     if (!isset($user['loadUser']) || $user['loadUser'])
     {
-      $result = smdoc_user::getAuthInfo($foowd, $user);
-      if ( $result && isset($user['username']) && isset($user['password']) )
+      $user = smdoc_user::getUserDetails($foowd, $user);
+      if ( isset($user['username']) && isset($user['password']) )
       {
         $new_user = smdoc_user::fetchUser($foowd,
                          crc32(strtolower($user['username'])),
@@ -96,24 +96,50 @@ class smdoc_user extends foowd_user
   }
 
   /**
-   * Returns Authentication type,
+   * Get user details from an external mechanism.
+   *
+   * If not already set, populate the user array with the user classid and
+   * fetch the username and password of the current user from one of the input
+   * mechanisms
+   *
+   * @class foowd_user
+   * @method getUserDetails
+   * @param array user The user array passed into <code>foowd::foowd</code>.
+   * @return array The resulting user array.
    */
-  function getAuthType()
-  {
-    return 'cookie';
-  }
+  function getUserDetails(&$foowd, $user) {
+    $foowd->track('smdoc->getUserDetails', $user);
 
-  /**
-   * Fills $user authentication information 
-   * Returns FALSE on error
-   */
-  function getAuthInfo(&$foowd, &$user) {
-    sendTestCookie($foowd);
-    $username = new input_cookie('username', REGEX_TITLE);
-    $user['username'] = $username->value;
-    $password = new input_cookie('password', REGEX_PASSWORD);
-    $user['password'] = $password->value;
-    return TRUE;
+    // Get class id
+    $session_classid = new input_session('user_classid');
+    if ( !isset($session_classid->value) ) {
+        if ( !isset($user['classid']) ) {
+            if ( isset($user['class']) ) {
+                $user['classid'] = crc32(strtolower($user['class']));
+            } else {
+                $user['classid'] = getConstOrDefault('USER_CLASS_ID', crc32('foowd_user'));
+            }
+        }
+        $session_classid->set($user['classid']);
+    } else {
+        $user['classid'] = $session_classid->value;
+    }
+
+    // get username and password
+    if ( isset($user['username']) && isset($user['password']) ) {
+        if ( isset($user['plainPassword']) || strlen($user['password']) != 32) { // plain text password, md5 it
+            $user['password'] = md5(getConstOrDefault('PASSWORD_SALT', '').strtolower($user['password']));
+        }
+    } else {
+        sendTestCookie($foowd);
+        include_once($foowd->path.'/input.cookie.php');
+        $username = new input_cookie('username', REGEX_TITLE);
+        $user['username'] = $username->value;
+        $password = new input_cookie('password', REGEX_PASSWORD);
+        $user['password'] = $password->value;
+    }
+    $foowd->track();
+    return $user;
   }
 
   function smdoc_user( &$foowd,
