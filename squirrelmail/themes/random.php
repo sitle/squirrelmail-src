@@ -29,7 +29,7 @@ if (!session_is_registered('random_theme_good_theme')) {
     $good_themes[] = '../themes/default.php';
     $which = mt_rand(0, count($good_themes));
     $random_theme_good_theme = $good_themes[$which];
-    sqsession_register('random_theme_good_theme');
+    sqsession_register($random_theme_good_theme, 'random_theme_good_theme');
 }
    
 @include_once ($random_theme_good_theme);
