@@ -58,16 +58,6 @@ setConst('REGEX_GROUP', '/^[a-zA-Z0-9-]{0,32}$/');
  */
 class foowd {
 
-/* configuration vars */
-
-    /**
-     * Array of foowd configuration settings
-     *
-     * @var array
-     * @access public
-     */
-    var $config_settings;
-
 /* additional settings vars */
 
   /**

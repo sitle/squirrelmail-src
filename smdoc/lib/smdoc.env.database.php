@@ -9,7 +9,7 @@
  * $Id$
  */
 
-require_once 'DB.php';
+require_once('DB.php');
 include_once(SM_DIR.'smdoc.env.cache.php');
 
 /**
@@ -888,7 +888,7 @@ class smdoc_db
       if ( $makeTable )
         $result = call_user_func($makeTable, $this->foowd);
       else
-        $result = $this->query('CREATE TABLE '.$source.' (
+        $result = $this->query('CREATE TABLE '.$table.' (
 				\'objectid\' int(11) NOT NULL default \'0\',
 				\'version\' int(10) unsigned NOT NULL default \'1\',
 				\'classid\' int(11) NOT NULL default \'0\',

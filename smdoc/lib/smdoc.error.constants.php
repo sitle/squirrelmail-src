@@ -79,4 +79,5 @@ define('26_MSG', _("Object deleted."));
 define('OBJECT_DELETE_FAILED', 27);
 define('27_MSG', _("Object could not be deleted."));
 
-
+define('OBJECT_NOT_FOUND', 28);
+define('28_MSG', _("Object could not be found."));
