@@ -24,7 +24,13 @@ wtf.class.hardthing.php
 Hardthing Class
 */
 
-$HARDCLASS[1745862887] = 'hardthing';
+/*
+ * Modified by SquirrelMail Development Team
+ * $Id$
+ */
+
+/* HARDTHINGCLASSID defined in wtf.config.php */
+$HARDCLASS[HARDTHINGCLASSID] = 'hardthing';
 
 class hardthing extends content {
 

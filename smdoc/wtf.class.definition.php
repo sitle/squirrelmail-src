@@ -24,7 +24,13 @@ wtf.class.definition.php
 Definition Class
 */
 
-$HARDCLASS[1747988440] = 'definition';
+/*
+ * Modified by SquirrelMail Development Team
+ * $Id$
+ */
+
+/* DEFINITIONCLASSID defined in wtf.config.php */
+$HARDCLASS[DEFINITIONCLASSID] = 'definition';
 
 if (!defined('DEFINITIONCREATE')) define('DEFINITIONCREATE', GODS);
 

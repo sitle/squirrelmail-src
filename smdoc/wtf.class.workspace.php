@@ -133,7 +133,8 @@ class workspace extends thing {
 		global $conn, $wtf;
 		track('workspace::method::create');
 
-		if ($wtf->user->inGroup(WORKSPACECREATE)) { // check permission
+		if ($wtf->user->inGroup(WORKSPACECREATE) &&    // check permission
+            $wtf->user->workspaceid == 0 ) {           // avoid nested groups by only allowing create from main
 
 			if (isset($this)) {
 				$url = THINGIDURI.$this->objectid.'&amp;class='.get_class($this).'&amp;op=create';
@@ -164,6 +165,9 @@ class workspace extends thing {
 			}
 		} else {
 			echo '<create_permission/>';
+            if ( $wtf->user->workspaceid != 0 ) {
+                echo 'Cannot create a workspace in a workspace other than Main<br/>';
+            }
 		}
 		track();
 	}
