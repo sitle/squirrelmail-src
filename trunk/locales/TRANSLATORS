@@ -59,7 +59,8 @@ Greek - el_GR - iso-8859-7
     George P. Kremmydas <george at kefalonia-ithaki.gr>
     Alexandros Vellis <avel at noc.uoa.gr>
 
-Hebrew - he_IL - iso-8859-8
+* Hebrew - he_IL - iso-8859-8
+(SM uses cp1255, locale's header is in iso-8859-8)
     <yoavb@zavit.net.il>
 
 Hungarian - hu_HU - iso-8859-2
@@ -149,6 +150,9 @@ Turkish - tr_TR - iso-8859-9
     Dr.Hikmet Gumus <gumush@hitstar.org>
 
 * Ukrainian - uk_UA - koi8-u
+(Translation looks Russian for me.
+header says it is in koi8-r,
+translation contains Russian slang. Tomas)
     Oleg Baranovsky <oleg@uazone.net>
 
 * Vietnamese - vi_VN - utf-8
