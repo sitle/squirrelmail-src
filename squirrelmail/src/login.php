@@ -55,6 +55,7 @@ if (isset($emailaddress)) {
 
 require_once('../functions/strings.php');
 require_once('../config/config.php');
+require_once('../src/global.php');
 require_once('../functions/i18n.php');
 require_once('../functions/plugin.php');
 require_once('../functions/constants.php');
