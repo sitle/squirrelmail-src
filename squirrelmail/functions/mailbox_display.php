@@ -275,7 +275,7 @@ function showMessagesForMailbox($imapConnection, $mailbox, $num_msgs,
   if ($id == 'no') {
     echo '<b><small><center><font color=red>'.
          _("Server-side sorting is not supported by your IMAP server.<br>Please report this to the system administrator" ).
-         .'</center></small></b>';
+         '</center></small></b>';
     $sort = $server_sort_order;
 	  $allow_server_sort = FALSE;
 	  $id = array();
