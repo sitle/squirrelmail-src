@@ -43,12 +43,6 @@ class foowd {
   var $debug = NULL;              // debug output object
   var $tpl;                       // output template object
 
-  var $dbhost,
-      $dbuser,
-      $dbpass,
-      $dbname,
-      $dbtable;                   // database connection details
-
   /*
    * Constructor
    * -------------------------------------------------------------
@@ -59,7 +53,9 @@ class foowd {
    *  $debug_enabled - Optional Boolean indicating whether or not to enable debug
    * -------------------------------------------------------------
    */
-  function foowd($database = NULL, $user = NULL, $groups = NULL, $debug_enabled = NULL)
+  function foowd($database = NULL, 
+                 $user = NULL, $groups = NULL, 
+                 $debug_enabled = NULL)
   {
     $this->debug =& smdoc_debug::new_smdoc_debug($debug_enabled);
 
@@ -68,18 +64,8 @@ class foowd {
     $this->tpl = new smdoc_display('index.tpl');
     $this->tpl->assign_by_ref('FOOWD_OBJECT', $this);
 
-    /*
-     * Database connection initialization
-     */
-    $this->dbhost  = getVarOrConst($database['host'], 'DB_HOST');
-    $this->dbname  = getVarOrConst($database['name'], 'DB_NAME');
-    $this->dbuser  = getVarOrConst($database['user'], 'DB_USER');
-    $this->dbpass  = getVarOrConst($database['password'], 'DB_PASS');
-    $this->dbtable = getVarOrConst($database['table'], 'DB_TABLE');
-    $this->conn    = databaseOpen($this->dbhost,
-                                  $this->dbuser,
-                                  $this->dbpass,
-                                  $this->dbname);
+    $this->conn = new database($this, $database, 'make_FOOWD_Table');
+    $this->conn->open();
 
     /*
      * User group initialization
@@ -129,12 +115,12 @@ class foowd {
    */
   function destroy() 
   { 
-    if ($this->debug) { // display debug data
+    if ($this->debug) {       // display debug data
       $this->debug->debugDisplay($this);
     }
     $this->tpl->display();
-    databaseClose($this->conn); // close DB
-    unset($this); // unset object
+    $this->conn->close();     // close DB
+    unset($this);             // unset object
   }
 
 /*** fetch user ***/
@@ -146,11 +132,11 @@ class foowd {
             $whereClause[] = 'objectid = '.$userid;
             $whereClause[] = 'classid = '.USER_CLASS_ID;
 // do DB request
-            $query = DBSelect($this, NULL, array('object'), $whereClause, NULL, array('version DESC'), 1);
+            $query = $this->conn->DBSelect(NULL, array('object'), $whereClause, NULL, array('version DESC'), 1);
 // if retrieve successful, unserialize it
-            //if (getAffectedRows() > 0) {
+            //if ($this->conn->getAffectedRows() > 0) {
             if ($query) {
-            $record = getRecord($query);
+            $record = $this->conn->getRecord($query);
             $serializedObj = $record['object'];
             $user = unserialize($serializedObj);
                 if (isset($password) && $user->passwordCheck($password)) {
@@ -215,16 +201,16 @@ class foowd {
         }
 
         if ($version == 0) { // get latest version
-            $query = DBSelect($this, NULL, array('object'), $whereClause, NULL, array('version DESC'), 1);
+            $query = $this->conn->DBSelect(NULL, array('object'), $whereClause, NULL, array('version DESC'), 1);
         } else { // get specified version
             $whereClause[] = 'version = '.$version;
-            $query = DBSelect($this, NULL, array('object'), $whereClause, NULL, NULL, NULL);
+            $query = $this->conn->DBSelect(NULL, array('object'), $whereClause, NULL, NULL, NULL);
         }
 
 // if retrieve successful, unserialize it
-        //if (getAffectedRows() > 0) {
+        //if ($this->conn->getAffectedRows() > 0) {
         if ($query) {
-            $record = getRecord($query);
+            $record = $this->conn->getRecord($query);
             if (isset($record['object'])) {
                 $serializedObj = $record['object'];
                 $this->track(); return unserialize($serializedObj);
@@ -263,14 +249,15 @@ class foowd {
             $whereClause[] = 'classid = '.$classid;
         }
 
-        $query = DBSelect($this, NULL, array('object'), $whereClause, NULL, array('version DESC'), NULL);
+        $query = $this->conn->DBSelect(NULL, array('object'), $whereClause, NULL, array('version DESC'), NULL);
 
-        if (getAffectedRows() > 0) {
-            for ($foo = 0; $foo < returnedRows($query); $foo++) {
-                $record = getRecord($query);
+        if ($this->conn->getAffectedRows() > 0) {
+            for ($foo = 0; $foo < $this->conn->returnedRows($query); $foo++) {
+                $record = $this->conn->getRecord($query);
                 $objects[] = unserialize($record['object']);
             }
-            $this->track(); return $objects;
+            $this->track(); 
+            return $objects;
         } elseif ($workspaceid != 0) { // if not already looking in main workspace
             $obj['workspaceid'] = 0;
             $this->track();
@@ -346,9 +333,9 @@ class foowd {
             }
         }
 
-        $query = DBSelect($this, NULL, array('object'), $whereClause, $groupClause, $orderClause, $limit);
+        $query = $this->conn->DBSelect(NULL, array('object'), $whereClause, $groupClause, $orderClause, $limit);
 
-        if ($query && returnedRows($query) > 0) {
+        if ($query && $this->conn->returnedRows($query) > 0) {
             $this->track(); return $query;
         } else {
             $this->track(); return NULL;
@@ -357,7 +344,7 @@ class foowd {
 
 /*** returns the next object from a query result resource as a live object ***/
     function retrieveObject($query) {
-        $record = getRecord($query);
+        $record = $this->conn->getRecord($query);
         if ($record) {
             $serializedObj = $record['object'];
             return unserialize($serializedObj);
@@ -513,20 +500,43 @@ class foowd {
       $this->debug->track($function, $data);
     }
   }
-
-  /*
-   * debugDBTrack
-   * -------------------------------------------------------------
-   * Trace SQL query
-   *   $SQLString - SQL query string
-   * see smdoc.class.debug.php
-   * -------------------------------------------------------------
-   */
-  function debugDBTrack($SQLString)
-  {
-    if ($this->debug)
-      $this->debug->DBTrack($SQLString);
-  }
-
 }                                        /* END CLASS foowd                  */
+
+/**
+ * make table 
+ * called on query failure due to missing table
+ */
+function make_FOOWD_Table(&$db_conn, $table) {
+    $createString = 'CREATE TABLE `'.$table.'` (
+    `objectid` int(11) NOT NULL default \'0\',
+    `version` int(10) unsigned NOT NULL default \'1\',
+    `classid` int(11) NOT NULL default \'0\',
+    `workspaceid` int(11) NOT NULL default \'0\',
+    `object` longblob,
+    `title` varchar(255) NOT NULL default \'\',
+    `updated` datetime NOT NULL default \'0000-00-00 00:00:00\',
+    PRIMARY KEY (`objectid`,`version`,`classid`,`workspaceid`),
+    KEY `idxtblObjectTitle`(`title`),
+    KEY `idxtblObjectupdated`(`updated`),
+    KEY `idxtblObjectObjectid`(`objectid`),
+    KEY `idxtblObjectClassid`(`classid`),
+    KEY `idxtblObjectVersion`(`version`),
+    KEY `idxtblObjectWorkspaceid`(`workspaceid`)
+    )';
+    
+    if ($db_conn->execQuery($createString, false, false)) 
+    {
+        if ($db_conn->debug) 
+          $db_conn->debug->DBTrack($createString);
+          
+        $welcomeInsert = 'INSERT INTO `tblobject` VALUES("936075699","1","1158898744","0","O:15:\"foowd_text_html\":15:{s:5:\"title\";s:7:\"Welcome\";s:8:\"objectid\";s:9:\"936075699\";s:7:\"version\";s:1:\"1\";s:7:\"classid\";s:10:\"1158898744\";s:11:\"workspaceid\";s:1:\"0\";s:7:\"created\";s:10:\"1050232200\";s:9:\"creatorid\";s:11:\"-1316331025\";s:11:\"creatorName\";s:4:\"Peej\";s:7:\"updated\";i:1053681659;s:9:\"updatorid\";s:11:\"-1316331025\";s:11:\"updatorName\";s:4:\"Peej\";s:11:\"permissions\";a:5:{s:5:\"admin\";s:4:\"Gods\";s:6:\"delete\";s:4:\"Gods\";s:5:\"clone\";s:4:\"Gods\";s:4:\"edit\";s:4:\"Gods\";s:11:\"permissions\";s:4:\"Gods\";}s:4:\"body\";s:181:\"<h1>Congratulations!</h1>\r\n\r\n<h2>If you can see this page then FOOWD is working, well done.</h2>\r\n\r\n<p>Please follow the instructions in the README file to help get you started.</p>\";s:8:\"evalCode\";s:1:\"0\";s:14:\"processInclude\";s:1:\"0\";}","Welcome","2003-05-23 10:20:59");';
+        
+        if ($foowd->debug)
+          $db_conn->debug->DBTrack($welcomeInsert);
+        
+        if ($db_conn->execQuery($welcomeInsert, false, false)) 
+          return TRUE;
+    }
+    return FALSE;
+}
 
