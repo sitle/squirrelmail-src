@@ -24,7 +24,9 @@ file.class.file.php
 File Class
 */
 
-$HARDCLASS[-1935722992] = 'file';
+/* print crc32('file'); */
+define('FILECLASSID',-1935722992);
+$HARDCLASS[FILECLASSID] = 'file';
 
 if (!defined('FILECREATE')) define('FILECREATE', CREATORS);
 
@@ -257,7 +259,7 @@ class file extends thing {
 				$url = THINGIDURI.$this->objectid.'&amp;class='.get_class($this).'&amp;op=create';
 				$objectName = get_class($this);
 			} else {
-				$url = THINGURI.$thingName.'&amp;class=hardclass';
+                $url = THINGURI.$thingName.'&amp;class=hardclass';
 			}
 			$create = getValue('submit', FALSE);
 
