@@ -176,22 +176,22 @@ $onetimepad = $_SESSION['onetimepad'];
 $delimiter = $_SESSION['delimiter'];
 
 if (isset($_GET['mailbox'])) {
-    $mailbox = $_GET['mailbox'];
+    $mailbox = strip_tags($_GET['mailbox']);
 }
 if (isset($_GET['submit'])) {
-    $submit = $_GET['submit'];
+    $submit = strip_tags($_GET['submit']);
 }
 if (isset($_GET['what'])) {
     $what = $_GET['what'];
 }
 if (isset($_GET['where'])) {
-    $where = $_GET['where'];
+    $where = strip_tags($_GET['where']);
 }
 if (isset($_GET['checkall'])) {
-    $checkall = $_GET['checkall'];
+    $checkall = strip_tags($_GET['checkall']);
 }
 if (isset($_GET['count'])) {
-    $count = $_GET['count'];
+    $count = strip_tags($_GET['count']);
 }
 /* end of get globals */
 
@@ -263,9 +263,9 @@ if ($saved_count > 0) {
         } else {
             echo "<TR BGCOLOR=\"$color[4]\">";
         }
-        echo "<TD WIDTH=\"35%\">".$saved_attributes['saved_folder'][$i]."</TD>"
-        . "<TD ALIGN=LEFT>".$saved_attributes['saved_what'][$i]."</TD>"
-        . "<TD ALIGN=CENTER>".$saved_attributes['saved_where'][$i]."</TD>"
+        echo "<TD WIDTH=\"35%\">".htmlentities($saved_attributes['saved_folder'][$i])."</TD>"
+        . "<TD ALIGN=LEFT>".htmlentities($saved_attributes['saved_what'][$i])."</TD>"
+        . "<TD ALIGN=CENTER>".htmlentities($saved_attributes['saved_where'][$i])."</TD>"
         . '<TD ALIGN=RIGHT>'
         .   '<A HREF=search.php'
         .     '?mailbox=' . urlencode($saved_attributes['saved_folder'][$i])
@@ -307,9 +307,9 @@ if ($recent_count > 0) {
             }
             if (isset($attributes['search_what'][$i]) &&
                 !empty($attributes['search_what'][$i])) {
-            echo "<TD WIDTH=35%>".$attributes['search_folder'][$i]."</TD>"
-               . "<TD ALIGN=LEFT>".$attributes['search_what'][$i]."</TD>"
-               . "<TD ALIGN=CENTER>".$attributes['search_where'][$i]."</TD>"
+            echo "<TD WIDTH=35%>".htmlentities($attributes['search_folder'][$i])."</TD>"
+               . "<TD ALIGN=LEFT>".htmlentities($attributes['search_what'][$i])."</TD>"
+               . "<TD ALIGN=CENTER>".htmlentities($attributes['search_where'][$i])."</TD>"
                . '<TD ALIGN=RIGHT>'
                .   "<A HREF=search.php?count=$i&amp;submit=save>"
                .     _("save")
