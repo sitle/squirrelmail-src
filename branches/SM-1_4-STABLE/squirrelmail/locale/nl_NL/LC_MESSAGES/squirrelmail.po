@@ -5,8 +5,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: squirrelmail 1.4.3cvs\n"
-"POT-Creation-Date: 2004-03-22 11:43+0200\n"
-"PO-Revision-Date: 2004-03-23 23:10+0200\n"
+"POT-Creation-Date: 2004-04-21 09:34+0300\n"
+"PO-Revision-Date: 2004-04-24 12:30+0200\n"
 "Last-Translator: M.J. Prinsen <translation@prinsenonline.com>\n"
 "Language-Team: Dutch <squirrelmail-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -69,7 +69,7 @@ msgstr "Niet mogelijk om adressen te tonen van %s"
 msgid "Your search failed with the following error(s)"
 msgstr "Uw zoekopdracht is mislukt door de volgende fouten"
 
-msgid "No persons matching your search was found"
+msgid "No persons matching your search were found"
 msgstr "Geen personen gevonden die voldoen aan de zoekopdracht."
 
 msgid "Return"
@@ -219,8 +219,9 @@ msgstr "Bewaar concept"
 msgid "You have not filled in the \"To:\" field."
 msgstr "U heeft het \"Aan:\" veld niet ingevuld."
 
-msgid "Draft folder"
-msgstr "Concept map"
+#, c-format
+msgid "Error: Draft folder %s does not exist."
+msgstr "Fout: Map met concepten %s bestaat niet."
 
 msgid "Server replied: "
 msgstr "Server reageerde: "
@@ -721,7 +722,7 @@ msgid "save"
 msgstr "Bewaar"
 
 msgid "forget"
-msgstr "vergeet"
+msgstr "Vergeet"
 
 msgid "Current Search"
 msgstr "Huidige map"
@@ -1588,6 +1589,15 @@ msgstr "Activeer Herhaaldelijk Ongelezen bericht notificatie"
 msgid "Show Clock on Folders Panel"
 msgstr "Toon klok in mappenbalk"
 
+msgid "International date and time"
+msgstr "Internationale datum en tijd"
+
+msgid "American date and time"
+msgstr "Amerikaanse datum en tijd"
+
+msgid "European date and time"
+msgstr "Europese datum en tijd"
+
 msgid "Show weekday and time"
 msgstr "Toon dag van de week en tijd"
 
@@ -1857,7 +1867,7 @@ msgstr "Standaard ongelezen type"
 msgid "Auto Create Special Folders"
 msgstr "Automatisch aanmaken speciale mappen"
 
-msgid "Default Javascript Adrressbook"
+msgid "Default Javascript Addressbook"
 msgstr "Standaard Javascript adresboek"
 
 msgid "Auto delete folders"
@@ -2015,11 +2025,11 @@ msgid "You are currently using version %s."
 msgstr "U gebruikt momenteel versie %s."
 
 msgid ""
-"Check to see if you bug is already listed in the <a href=\"http://"
+"Check to see if your bug is already listed in the <a href=\"http://"
 "sourceforge.net/bugs/?group_id=311\">Bug List</a> on SourceForge. If it is, "
 "we already know about it and are trying to fix it."
 msgstr ""
-"Check of uw fout voorkomt in de<a href=\"http://sourceforge.net/bugs/?"
+"Check of uw fout al voorkomt in de<a href=\"http://sourceforge.net/bugs/?"
 "group_id=311\">Bug List</a> op SourceForge. Als dit het geval is, dan kennen "
 "we de bug al en proberen we deze te corrigeren."
 
@@ -2075,6 +2085,12 @@ msgstr "het algemene programma"
 
 msgid "a specific plugin"
 msgstr "een specifieke plugin"
+
+msgid "Start Bug Report Form"
+msgstr "Open foutrapportage formulier"
+
+msgid "Bug"
+msgstr "Fout"
 
 msgid "Bug Reports:"
 msgstr "Fout rapportages:"
@@ -3049,11 +3065,17 @@ msgstr "Grondige op e-mail gebaseerde rapportage"
 msgid "Web-based form"
 msgstr "Webformulier"
 
+msgid "Save Method"
+msgstr "Bewaarmethode"
+
 msgid "Your SpamCop authorization code:"
 msgstr "Uw SpamCop authorisatiecode:"
 
 msgid "see below"
 msgstr "zie onder"
+
+msgid "Save ID"
+msgstr "Bewaar ID"
 
 msgid ""
 "SpamCop is a free service that greatly assists in finding the true source of "
@@ -3100,10 +3122,10 @@ msgstr ""
 msgid ""
 "Once you have signed up with SpamCop and have received your SpamCop "
 "authorization code, you need to enable this plugin -- just click the link "
-"above.  Once enabled, you go about your normal life.  If you encounter a "
-"spam message in your mailbox, just view it.  On the right-hand side, near "
-"the top of where the message is displayed, you will see a link to report "
-"this message as spam.  Clicking on it brings you to a confirmation page. "
+"above. Once enabled, you go about your normal life. If you encounter a spam "
+"message in your mailbox, just view it. On the right-hand side, near the top "
+"of where the message is displayed, you will see a link to report this "
+"message as spam. Clicking on it brings you to a confirmation page. "
 "Confirming that you want the spam report sent will do different things with "
 "different reporting methods."
 msgstr ""
@@ -3120,11 +3142,11 @@ msgstr "Op e-mail gebaseerde rapportage"
 
 msgid ""
 "Pressing the button forwards the message to the SpamCop service and will "
-"optionally delete the message.  From there, you just need to go to your "
-"INBOX and quite soon a message should appear from SpamCop.  (It gets sent to "
-"the account you registered with, so make sure that your mail forwarder "
-"works!) Open it up, click on the appropriate link at the top, and a new "
-"browser window will open."
+"optionally delete the message. From there, you just need to go to your INBOX "
+"and quite soon a message should appear from SpamCop. (It gets sent to the "
+"account you registered with, so make sure that your mail forwarder works!) "
+"Open it up, click on the appropriate link at the top, and a new browser "
+"window will open."
 msgstr ""
 "Een druk op de knop stuurt het bericht door naar de SpamCop service en zal "
 "het bericht optioneel verwijderen. In uw INBOX zal nu vrij snel een bericht "
@@ -3135,7 +3157,7 @@ msgstr ""
 
 msgid ""
 "Currently, the quick reporting just forwards the request to the thorough "
-"reporting.  Also, it appears that this is for members (non-free) only. "
+"reporting. Also, it appears that this is for members (non-free) only. "
 "Hopefully this will change soon."
 msgstr ""
 "Momenteel wordt de snelle rapportage alleen doorgestuurd naar de grondige "
@@ -3158,10 +3180,10 @@ msgstr ""
 
 msgid ""
 "The SpamCop service will display information as it finds it, so scroll down "
-"until you see a form button.  It might pause a little while it is looking up "
-"information, so be a little patient.  Read what it says, and submit the "
-"spam.  Close the browser window.  Press Cancel or click on the appropriate "
-"mail folder to see messages and/or delete the spam."
+"until you see a form button. It might pause a little while it is looking up "
+"information, so be a little patient. Read what it says, and submit the spam. "
+"Close the browser window. Press Cancel or click on the appropriate mail "
+"folder to see messages and/or delete the spam."
 msgstr ""
 "De SpamCop service zal gevonden informatie tonen. Bekijk de pagina totdat u "
 "een formulierknop ziet. Afhankelijk van de informatie, kan het wat langer "
@@ -3203,6 +3225,12 @@ msgstr ""
 "URLs, die u kunt aanklikken om het bericht als spam te markeren bij integere "
 "autoriteiten. Dit is een vrije service. Door te klikken op de knop \"Send "
 "Spam Report\", gaat u akkoord met de voorwaarden van SpamCop."
+
+msgid "Cancel / Done"
+msgstr "Annuleer / Klaar"
+
+msgid "Send Spam Report"
+msgstr "Verzend spamrapportage"
 
 msgid "SpellChecker Options"
 msgstr "Spellingscontrole opties"
@@ -3667,43 +3695,33 @@ msgstr ""
 msgid "%s to %s"
 msgstr "%s in %s"
 
-#, c-format
 msgid "English"
 msgstr "Engels"
 
-#, c-format
 msgid "Chinese"
 msgstr "Chinees"
 
-#, c-format
 msgid "French"
 msgstr "Frans"
 
-#, c-format
 msgid "German"
 msgstr "Duits"
 
-#, c-format
 msgid "Italian"
 msgstr "Italiaans"
 
-#, c-format
 msgid "Japanese"
 msgstr "Japans"
 
-#, c-format
 msgid "Korean"
 msgstr "Koreaans"
 
-#, c-format
 msgid "Portuguese"
 msgstr "Portugees"
 
-#, c-format
 msgid "Spanish"
 msgstr "Spaans"
 
-#, c-format
 msgid "Russian"
 msgstr "Russisch"
 
@@ -3734,7 +3752,6 @@ msgstr "Europees Spaans"
 msgid "Finnish"
 msgstr "Fins"
 
-#, c-format
 msgid "Greek"
 msgstr "Grieks"
 
@@ -3794,6 +3811,9 @@ msgstr "Bezorgingsfout rapportage"
 
 msgid "Undelivered Message Headers"
 msgstr "Berichtkoppen onbestelbaar bericht"
+
+#~ msgid "Draft folder"
+#~ msgstr "Concept map"
 
 #~ msgid "Use Confirmation Flags"
 #~ msgstr "Gebruik bevestigings-flags"
@@ -3974,9 +3994,6 @@ msgstr "Berichtkoppen onbestelbaar bericht"
 #~ msgstr ""
 #~ "Neem a.u.b. contact op met uw systeembeheerder en rapporteer de volgende "
 #~ "foutmelding:"
-
-#~ msgid "Save to:"
-#~ msgstr "Bewaar in:"
 
 #~ msgid "Extract"
 #~ msgstr "Uitpakken"
