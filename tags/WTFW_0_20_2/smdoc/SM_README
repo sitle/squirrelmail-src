@@ -1,0 +1,15 @@
+This repository is designed to pull in the 3rd party source for
+WikiTypeFramework, while allowing for our updates and customizations.
+
+Original Import:
+cvs import -m "Import of wtfw-0.20.2" smdoc WTFW WTFW_0_20_2
+
+Updates for later WTFW versions (x.x.x):
+http://www.cvshome.org/docs/manual/cvs_13.html#SEC107
+
+$ tar xfz wdiff-x.x.x.tar.gz
+$ cd wdiff-x.x.x
+$ cvs import -m "Import of wtfw-x.x.x" smdoc WTFW WTFW_x_x_x
+$ cvs checkout -jWTFW_<prev_ver> -jWTFW_<new_ver> smdoc
+
+
