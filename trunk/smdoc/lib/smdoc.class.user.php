@@ -65,10 +65,8 @@ class smdoc_user extends foowd_user
   function &fetchUser(&$foowd, $userArray = NULL)
   {
     // If we don't have required elements, return early.
-    if ( !isset($userArray['userid'])   ||
-         !isset($userArray['password']) ||
-         !defined('USER_CLASS_ID') )
-      return NULL;
+    if ( !isset($userArray['userid']) )
+      return FALSE;
 
     $foowd->track('foowd_user::fetchUser', $userArray);
 
@@ -80,27 +78,30 @@ class smdoc_user extends foowd_user
     $query = $foowd->database->select($foowd, NULL, array('object'),
                                       $whereClause, NULL, array('version DESC'), 1);
 
-    if ($query && $query->returnedRows($query) > 0 )
-    {
-      $record = $query->getRecord($query);
-      if (isset($record['object']))
-      {
-        $serializedObj = $record['object'];
-        $user = unserialize($serializedObj);
-        if ( $user->passwordCheck($userArray['password']) && 
-             $user->hostmaskCheck() ) {
-          $foowd->debug('msg', 'Found user');
-          $foowd->track();
-          return $user;
-        } else {
-          $foowd->debug('msg', 'Password incorrect for user');
-        }
-      } else {
-        $foowd->debug('msg', 'Could not retrieve user from database');
-      }
-    } else {
+    if ( !$query || $query->returnedRows($query) <= 0 ) {
       $foowd->debug('msg', 'Could not find user in database');
+      $foowd->track();
+      return FALSE;
+    }  
+      
+    $record = $query->getRecord($query);
+
+    if ( !isset($record['object']) ) {
+      $foowd->debug('msg', 'Could not retrieve user from database');
+      $foowd->track();
+      return FALSE;
     }
+
+    $serializedObj = $record['object'];
+    $user = unserialize($serializedObj);
+        
+    if ( !isset($userArray['password']) || 
+         ( $user->passwordCheck($userArray['password']) && $user->hostmaskCheck() )) {
+      $foowd->track();
+      return $user;
+    } 
+          
+    $foowd->debug('msg', 'Password incorrect for user');
     $foowd->track();
     return FALSE;
   }
