@@ -70,23 +70,27 @@ define('DESTROYOLDERTHAN', '-1 month'); // time to keep an archive version of a 
 define('NUMBEROFARCHIVEVERSIONSTOKEEP', 1); // number of archived versions of a thing to keep (default = 1 version)
 
 /* special user groups */
-define('EVERYONE', 'Everyone'); // group of everyone (new users are placed in this group)
-define('GODS', 'Gods'); // group of gods
-define('EDITORS', 'Editors'); // group of editors
-define('AUTHOR', 'Author'); // group that automagically contains thing author only (if a user belongs to this group, they can still access all things in this group)
+define('EVERYONE', 'Everyone');      // group of everyone (new users are placed in this group)
+define('UNTOUCHABLE','Untouchable'); // group with no members, for no delete.
+define('GODS',     'Gods');          // group of gods
+define('EDITORS',  'Editors');       // group of editors
+define('AUTHOR',   'Author');        // group that automagically contains thing author only (if a user belongs to this group, they can still access all things in this group)
 
-define('CREATORS', EVERYONE); // group that can create content things
-define('GROUPS', GODS); // group that can create, remove, and alter user groups
+define('CREATORS', EDITORS);         // group that can create content things
+define('GROUPS',   GODS);            // group that can create, remove, and alter user groups
+
+define('WORKSPACECREATE', EDITORS);  // Editors can create workspaces
+define('WORKSPACEVIEW',   EDITORS);  // Editors can use/view workspaces
 
 /* default security levels */
-define('DEFAULTVIEWGROUP', EVERYONE); // default view group
-define('DEFAULTEDITGROUP', EVERYONE); // default edit group
-define('DEFAULTDELETEGROUP', EDITORS); // default delete group
-define('DEFAULTADMINGROUP', GODS); // default admin group
-define('USERVIEWGROUP', EVERYONE); // view group for user things
-define('USEREDITGROUP', AUTHOR); // edit group for user things
-define('USERDELETEGROUP', GODS); // delete group for user things
-define('USERADMINGROUP', GODS); // default admin group
+define('DEFAULTVIEWGROUP',   EVERYONE);  // default view group
+define('DEFAULTEDITGROUP',   EDITORS);   // default edit group
+define('DEFAULTDELETEGROUP', EDITORS);   // default delete group
+define('DEFAULTADMINGROUP',  GODS);      // default admin group
+define('USERVIEWGROUP',      EVERYONE);  // view group for user things
+define('USEREDITGROUP',      AUTHOR);    // edit group for user things
+define('USERDELETEGROUP',    GODS);      // delete group for user things
+define('USERADMINGROUP',     GODS);      // default admin group
 
 /* URI settings */
 define('THING', 'thing'); // thing name in querystring
@@ -108,9 +112,14 @@ define('HARDTHINGCREATED', '2002-01-01'); // date of hard things creation
 
 /* thing id's */
 define('ANONYMOUSUSERID', -1672260811); // userid of the anonymous user
-define('ROOTUSERID', 385153371); // userid of the root user
-define('USERCLASSID', -1919691191); // classid of user class
-define('NOTHINGFOUNDID', -941827936); // thingid of thing to display if nothing is found for a thing request
+define('ROOTUSERID', 385153371);        // userid of the root user
+define('USERCLASSID', -1919691191);     // classid of user class
+define('NOTHINGFOUNDID', -941827936);   // thingid of thing to display if nothing is found for a thing request
+
+/* additional thing id's */
+define('HOMECLASSID', 1909853392);      // classid of home class
+define('WORKSPACECLASSID',-1919680487); // classid of workspace class
+
 
 /* anonymous user settings */
 define('USEHOSTNAMEFORANONYMOUSUSER', FALSE); // use the users hostname for anonymous username
@@ -215,6 +224,9 @@ include(PATH.'wtf.thing.content.php');
 include(PATH.'wtf.thing.definition.php');
 include(PATH.'wtf.thing.workspace.php');
 include(PATH.'wtf.thing.search.php');
+
+include(PATH.'sqmail.thing.siteindex.php');
+include(PATH.'sqmail.thing.useradmin.php');
 
 /* load PIs */
 include(PATH.'wtf.pi.php.php');

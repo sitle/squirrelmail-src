@@ -41,13 +41,14 @@ function sqmNavMenu(&$thing) {
     }
     echo '</pagetitle>';
 
-	echo '<navmenu>';
 // Main page sections - Search/Index
-	echo '<a href="', FILENAME, '">Home</a> | ';
+    echo '<navmenu>';
+	echo '<a href="', FILENAME, '">Home</a> ';
     echo '</navmenu>';
     echo '<searchmenu>';
     echo '<a href="', THINGURI, 'search">Search</a> | ';
-    echo '<a href="', THINGURI. 'thing list">Index</a> ';
+    echo '<a href="', THINGURI. 'sqmuseradmin">Users</a> | ';
+    echo '<a href="', THINGURI. 'sqmindex">Index</a> ';
     echo '</searchmenu>';
  	
 	track();
