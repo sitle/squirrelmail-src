@@ -18,7 +18,7 @@
        // Use email-based reporting -- save as an attachment
        if(!isset($composesession)) {
         $composesession = 0;
-        session_register('composesession');
+        sqsession_register($composesession, 'composesession');
        }
        if (!isset($session)) {
          $session = "$composesession" +1;
@@ -27,7 +27,7 @@
 
        if (!isset($attachments)) {
           $attachments = array();
-          session_register('attachments');
+          sqsession_register($attachments, 'attachments');
        }
     
        foreach ($attachments as $info) {

@@ -498,7 +498,7 @@ function spam_filters($imap_stream) {
     if ($SpamFilters_SharedCache) {
        filters_SaveCache();
     } else {
-       session_register('SpamFilters_DNScache');
+       sqsession_register($SpamFilters_DNScache, 'SpamFilters_DNScache');
     }
 }
 
