@@ -34,15 +34,15 @@ global $AllowSpamFilters;
 
 displayPageHeader($color, 'None');
 
-if (isset($spam_submit)) {
+if (isset($_POST['spam_submit'])) {
     $spam_filters = load_spam_filters();
-    setPref($data_dir, $username, 'filters_spam_folder', $filters_spam_folder_set);
-    setPref($data_dir, $username, 'filters_spam_scan', $filters_spam_scan_set);
+    setPref($data_dir, $username, 'filters_spam_folder', $_POST['filters_spam_folder_set']);
+    setPref($data_dir, $username, 'filters_spam_scan', $_POST['filters_spam_scan_set']);
     foreach ($spam_filters as $Key => $Value) {
         $input = $spam_filters[$Key]['prefname'] . '_set';
-        if ( isset( $$input ) ) {
+        if ( isset( $_POST[$input] ) ) {
             setPref( $data_dir, $username, $spam_filters[$Key]['prefname'],
-                     $$input);
+                     $_POST[$input]);
         } else {
             removePref($data_dir, $username, $spam_filters[$Key]['prefname']);
         }
@@ -153,7 +153,7 @@ if (isset($action) && $action == 'spam') {
 
 }
 
-if (! isset($action) || $action != 'spam') {
+if (! isset($_GET['action']) || $_GET['action'] != 'spam') {
 
     echo '<p align=center>[<a href="spamoptions.php?action=spam">' . _("Edit") . '</a>]' .
          ' - [<a href="../../src/options.php">' . _("Done") . '</a>]</center><br><br>';

@@ -21,32 +21,32 @@
    require_once('../src/load_prefs.php');
    displayPageHeader($color, 'None');
 
-    if (isset($submit_translate) && $submit_translate ) {
-        if (isset($translate_translate_server)) {
-            setPref($data_dir, $username, 'translate_server', $translate_translate_server);
+    if (isset($_POST['submit_translate']) && $_POST['submit_translate'] ) {
+        if (isset($_POST['translate_translate_server'])) {
+            setPref($data_dir, $username, 'translate_server', $_POST['translate_translate_server']);
         } else {
             setPref($data_dir, $username, 'translate_server', 'babelfish');
         }
 
-        if (isset($translate_translate_location)) {
-            setPref($data_dir, $username, 'translate_location', $translate_translate_location);
+        if (isset($_POST['translate_translate_location'])) {
+            setPref($data_dir, $username, 'translate_location', $_POST['translate_translate_location']);
         } else {
             setPref($data_dir, $username, 'translate_location', 'center');
         }
 
-        if (isset($translate_translate_show_read)) {
+        if (isset($_POST['translate_translate_show_read'])) {
             setPref($data_dir, $username, 'translate_show_read', '1');
         } else {
             setPref($data_dir, $username, 'translate_show_read', '');
         }
 
-        if (isset($translate_translate_show_send)) {
+        if (isset($_POST['translate_translate_show_send'])) {
             setPref($data_dir, $username, 'translate_show_send', '1');
         } else {
             setPref($data_dir, $username, 'translate_show_send', '');
         }
 
-        if (isset($translate_translate_same_window)) {
+        if (isset($_POST['translate_translate_same_window'])) {
            setPref($data_dir, $username, 'translate_same_window', '1');
         } else {
             setPref($data_dir, $username, 'translate_same_window', '');

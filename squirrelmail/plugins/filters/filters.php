@@ -245,9 +245,12 @@ function filters_sqimap_read_data ($imap_stream, $pre, $handle_errors, &$respons
 
 
 function start_filters() {
-    global $mailbox, $username, $key, $imapServerAddress, $imapPort, $imap,
+    global $mailbox, $imapServerAddress, $imapPort, $imap,
         $imap_general, $filters, $imap_stream, $imapConnection,
     $UseSeparateImapConnection, $AllowSpamFilters;
+
+    $username = $_SESSION['username'];
+    $key = $_COOKIE['key'];
 
 #    if ($mailbox == 'INBOX') {
         // Detect if we have already connected to IMAP or not.
