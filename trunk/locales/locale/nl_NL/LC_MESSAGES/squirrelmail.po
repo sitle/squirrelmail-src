@@ -5,8 +5,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: squirrelmail VERSION\n"
-"POT-Creation-Date: 2004-07-03 09:34+0200\n"
-"PO-Revision-Date: 2004-07-14 00:35+0200\n"
+"POT-Creation-Date: 2004-09-28 08:53+0200\n"
+"PO-Revision-Date: 2004-09-28 23:35+0200\n"
 "Last-Translator: M.J. Prinsen <translation@prinsenonline.com>\n"
 "Language-Team: Dutch <squirrelmail-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -28,6 +28,15 @@ msgstr "Informatie"
 
 msgid "Source"
 msgstr "Bron"
+
+msgid "To"
+msgstr "Aan"
+
+msgid "Cc"
+msgstr "CC"
+
+msgid "Bcc"
+msgstr "BCC"
 
 msgid "No persons matching your search were found"
 msgstr "Geen personen gevonden die voldoen aan de zoekopdracht"
@@ -59,15 +68,6 @@ msgstr "Uw zoekopdracht is mislukt door de volgende fouten"
 
 msgid "All"
 msgstr "Alle"
-
-msgid "To"
-msgstr "Aan"
-
-msgid "Cc"
-msgstr "CC"
-
-msgid "Bcc"
-msgstr "BCC"
 
 msgid "Use Addresses"
 msgstr "Gebruik adressen"
@@ -161,18 +161,6 @@ msgstr "Uw bericht is verzonden"
 
 msgid "From:"
 msgstr "Van:"
-
-msgid "To:"
-msgstr "Aan:"
-
-msgid "CC:"
-msgstr "CC:"
-
-msgid "BCC:"
-msgstr "BCC:"
-
-msgid "Subject:"
-msgstr "Onderwerp:"
 
 msgid "Send"
 msgstr "Verstuur"
@@ -376,6 +364,9 @@ msgstr "legen"
 
 msgid "Last Refresh"
 msgstr "Laatste vernieuwing"
+
+msgid "Check mail"
+msgstr "Vernieuw mapstructuur"
 
 msgid "Save folder tree"
 msgstr "Sla mapstructuur op"
@@ -610,9 +601,6 @@ msgstr "Terug naar Opties"
 msgid "Message not printable"
 msgstr "Bericht niet printbaar"
 
-msgid "CC"
-msgstr "CC"
-
 msgid "Printer Friendly"
 msgstr "Printer vriendelijk"
 
@@ -628,8 +616,8 @@ msgstr "Gelezen:"
 msgid "Your message"
 msgstr "Uw bericht"
 
-msgid "Sent:"
-msgstr "Gezonden:"
+msgid "Sent"
+msgstr "Verzonden"
 
 #, c-format
 msgid "Was displayed on %s"
@@ -738,6 +726,9 @@ msgstr "Overal"
 
 msgid "No Messages Found"
 msgstr "Bekijk bericht"
+
+msgid "Signout"
+msgstr "Afmelden"
 
 msgid "Sign Out"
 msgstr "Afmelden"
@@ -1092,6 +1083,9 @@ msgstr "Kan bestand met voorkeuren niet aanmaken!"
 msgid "%s should be writable by user %s"
 msgstr "%s moet schrijfbaar zijn voor gebruiker %s"
 
+msgid "Signature is too big."
+msgstr "Handtekening is te groot"
+
 #, c-format
 msgid ""
 "Signature file, %s, could not be opened. Contact your system administrator "
@@ -1153,6 +1147,15 @@ msgstr "FOUT : Onbekend IMAP antwoord."
 #, c-format
 msgid "Error connecting to IMAP server: %s."
 msgstr "FOUT : kan IMAP server %s niet initialiseren."
+
+msgid "The IMAP server is reporting that plain text logins are disabled."
+msgstr "De IMAP server geeft aan dat aanmelden in platte tekst is uitgeschakeld."
+
+msgid "Using CRAM-MD5 or DIGEST-MD5 authentication instead may work."
+msgstr "Het gebruik van CRAM-MD5 of DIGEST-MD5 authorisaties kan wellicht werken."
+
+msgid "Also, the use of TLS may allow SquirrelMail to login."
+msgstr "Met het gebruik van TLS kan u zich wellicht ook aanmelden bij SquirrelMail."
 
 #, c-format
 msgid "Bad request: %s"
@@ -1261,8 +1264,8 @@ msgid "Viewing Messages: %s to %s (%s total)"
 msgstr "Bekijk berichten: %s t/m %s (%s totaal)"
 
 #, c-format
-msgid "Viewing Message: %s (1 total)"
-msgstr "Bekijk bericht: %s (1 totaal)"
+msgid "Viewing Message: %s (%s total)"
+msgstr "Bekijk bericht: %s (%s totaal)"
 
 msgid "Paginate"
 msgstr "Pagineer"
@@ -1517,6 +1520,9 @@ msgstr "Focus op berichttekst"
 
 msgid "Select body"
 msgstr "Selecteer berichttekst"
+
+msgid "No focus"
+msgstr "Geen focus"
 
 msgid "Enable Sort by of Receive Date"
 msgstr "Gebruik datum van ontvangst voor sorteren"
@@ -2919,6 +2925,21 @@ msgstr ""
 msgid "Message Details"
 msgstr "Berichtdetails"
 
+msgid "Bodystructure"
+msgstr "Hoofdstructuur bericht"
+
+msgid "Entity"
+msgstr "Entity"
+
+msgid "Content-Type"
+msgstr "Content-Type"
+
+msgid "Encoding"
+msgstr "Codering"
+
+msgid "RFC822 Message body"
+msgstr "RFC822 Berichttekst"
+
 msgid "Close Window"
 msgstr "Sluit venster"
 
@@ -2934,16 +2955,13 @@ msgstr "Nieuw bericht"
 msgid "SquirrelMail Notice:"
 msgstr "SquirrelMail notificatie:"
 
-msgid "You have"
-msgstr "U heeft"
+#, c-format
+msgid "You have %s new message"
+msgstr "U heeft %s nieuw bericht"
 
 #, c-format
-msgid "%s new message"
-msgstr "%s nieuw bericht"
-
-#, c-format
-msgid "%s new messages"
-msgstr "%s nieuwe berichten"
+msgid "You have %s new messages"
+msgstr "U heeft %s nieuwe berichten"
 
 msgid "New Mail Notification"
 msgstr "Geen notificatie nieuw bericht"
@@ -3370,9 +3388,6 @@ msgstr "Er is geprobeerd om '%s' te starten, maar het gaf de melding:"
 msgid "SquirrelSpell is misconfigured."
 msgstr "SquirrelSpell is onjuist geconfigureerd."
 
-msgid "SquirrelSpell Results"
-msgstr "SquirrelSpell resultaten"
-
 msgid "Spellcheck completed. Commit changes?"
 msgstr "Spellingscontrole voltooid. Wijzigingen toevoegen?"
 
@@ -3381,6 +3396,9 @@ msgstr "Er zijn geen veranderingen gemaakt."
 
 msgid "Now saving your personal dictionary... Please wait."
 msgstr "Opslaan van  uw persoonlijk woordenboek ... even geduld a.u.b."
+
+msgid "SquirrelSpell Results"
+msgstr "SquirrelSpell resultaten"
 
 #, c-format
 msgid "Found %s errors"
@@ -3890,6 +3908,18 @@ msgstr "sorteer op info"
 msgid "Add to address book"
 msgstr "Voeg toe aan adresboek"
 
+msgid "Purge"
+msgstr "legen"
+
+msgid "Error(s) happened while saving your options"
+msgstr "Fout(en) gevonden bij het opslaan van uw opties"
+
+msgid "Some of your preference changes are not applied."
+msgstr "Enkele van uw voorkeuren konden niet worden ingesteld."
+
+msgid "Invalid URL"
+msgstr "Ongeldige URL"
+
 msgid "As Attachment"
 msgstr "Als bijlage"
 
@@ -4037,9 +4067,6 @@ msgstr "Standaard zoekopdrachten"
 msgid "Advanced search"
 msgstr "Geavanceerde zoekopdrachten"
 
-msgid "Signout"
-msgstr "Afmelden"
-
 msgid "Folder List"
 msgstr "Mappenlijst"
 
@@ -4058,6 +4085,13 @@ msgstr "Reden:"
 
 msgid "Server responded:"
 msgstr "Server reageerde:"
+
+msgid ""
+"TLS is enabled, but this version of PHP does not support TLS sockets, or is "
+"missing the openssl extension."
+msgstr ""
+"TLS is geactiveerd, maar deze versie van PHP ondersteund geen TLS sockets of mist "
+"de openssl extensie."
 
 msgid "Unknown recipient"
 msgstr "Onbekende ontvanger"
@@ -4093,6 +4127,9 @@ msgstr "Prefix voor oorspronkelijk bericht bij beantwoorden"
 
 msgid "Strip signature when replying"
 msgstr "Verwijder handtekening bij beantwoorden"
+
+msgid "Sort by Received Date"
+msgstr "Gebruik datum van ontvangst voor sorteren"
 
 msgid "Show 'Delete & Prev/Next' Links"
 msgstr "Toon 'Verwijder & Vorige/Volgende' links"
@@ -4145,8 +4182,11 @@ msgstr "Toon alternatieve taalnamen"
 msgid "Available languages"
 msgstr "Beschikbare talen"
 
-msgid "Use agresive decoding"
+msgid "Enable aggressive decoding"
 msgstr "Gebruik agressieve codering"
+
+msgid "Enable lossy encoding"
+msgstr "Gebruik eenvoudige codering"
 
 msgid "Tweaks"
 msgstr "Tweaks"
@@ -4247,6 +4287,73 @@ msgstr "Zoek Bugtracker"
 msgid "Show system specs"
 msgstr "Toon systeemspecificaties"
 
+msgid "You must type in a new password."
+msgstr "U moet een nieuw wachtwoord intypen."
+
+msgid "You must also type in your new password in the verify box."
+msgstr "U moet uw nieuwe wachtwoord ook in de verificatie box intypen."
+
+msgid "Your new password does not match the verify password."
+msgstr "De beide nieuwe wachtwoorden komen niet overeen."
+
+msgid "You must type in your current password."
+msgstr "U moet uw huidige wachtwoord intypen."
+
+msgid "Your current password is not correct."
+msgstr "Uw huidige wachtwoord is niet correct."
+
+#, c-format
+msgid "Your new password should be %s to %s characters long."
+msgstr "Uw nieuwe wachtwoord moet bestaan uit %s tot %s karakters."
+
+msgid "Your new password contains invalid characters."
+msgstr "Uw nieuwe wachtwoord bevat illegale karakters."
+
+msgid "Change Password"
+msgstr "Verander wachtwoord"
+
+msgid "Current Password:"
+msgstr "Huidig wachtwoord:"
+
+msgid "New Password:"
+msgstr "Nieuw wachtwoord:"
+
+msgid "Verify New Password:"
+msgstr "Verifieer nieuw wachtwoord:"
+
+msgid "Use this to change your email password."
+msgstr "Gebruik dit om uw e-mail wachtwoord te veranderen."
+
+msgid "Curl module NOT available! Unable to change password!"
+msgstr "Curl module NIET beschikbaar! Onmogelijk om wachtwoord te veranderen!"
+
+msgid "Cannot change password! (Is user 'Self Configurable User' ?) (401)"
+msgstr "Kan het wachtwoord niet veranderen! (Is de gebruiker 'Self Configurable User' ?) (401)"
+
+msgid "Cannot change password!"
+msgstr "Kan wachtwoord niet veranderen!"
+
+msgid "Cannot connect to Database Server, please try later!"
+msgstr "Kan geen verbinding maken met de Database Server, probeer het later nog eens!"
+
+msgid "Database not found on server"
+msgstr "Geen database gevonden op de server"
+
+msgid "SQL call failed, try again later."
+msgstr "SQL call mislukt, probeer het later nog eens."
+
+msgid "Duplicate login entries detected, cannot change password!"
+msgstr "Dubbele aanmeldgegevens ontdekt, kan wachtwoord niet veranderen!"
+
+msgid "Password change was not successful!"
+msgstr "Wachtwoord veranderen was niet succesvol!"
+
+msgid "Closing Connection"
+msgstr "Sluiten verbinding"
+
+msgid "Connecting to Password Server"
+msgstr "Verbinden met wachtwoordserver"
+
 msgid "Plugin is disabled."
 msgstr "Plugin is uitgeschakeld"
 
@@ -4324,6 +4431,24 @@ msgstr "Berichtkoppen onbestelbaar bericht"
 
 msgid "This image has been removed for security reasons"
 msgstr "Deze afbeelding is om veiligheidsredenen verwijders"
+
+#~ msgid "To:"
+#~ msgstr "Aan:"
+
+#~ msgid "CC:"
+#~ msgstr "CC:"
+
+#~ msgid "BCC:"
+#~ msgstr "BCC:"
+
+#~ msgid "Subject:"
+#~ msgstr "Onderwerp:"
+
+#~ msgid "CC"
+#~ msgstr "CC"
+
+#~ msgid "You have"
+#~ msgstr "U heeft"
 
 #~ msgid "Your Message has been sent"
 #~ msgstr "Uw bericht is verzonden"
