@@ -29,7 +29,6 @@ if (!isset($classid->value) && isset($className->value)) {
 
 $objectid = $objectid->value;
 $classid = $classid->value;
-$version = $version->value;
 $method = $method->value;
 $result = FALSE;
 
@@ -39,10 +38,14 @@ if ( sqGetGlobalVar('form_cancel', $value, SQ_FORM) )
   if ( $objectid == NULL )
     $objectid = $foowd->config_settings['site']['default_objectid'];
 
-  header('Location: ' . getURI(array('objectid' => $objectid,
-                                     'classid'  => $classid,
-                                     'version'  => $version,
-                                     'ok' => OBJECT_UPDATE_CANCEL), FALSE));
+  unset($_SESSION['error']);
+  $_SESSION['ok'] = OBJECT_UPDATE_CANCEL;
+  $uri_arr['objectid'] = $objectid;
+  $uri_arr['classid']  = $classid;
+  if ( $version->wasSet )
+    $uri_arr['version']  = $version->value;
+  $foowd->loc_forward( getURI($uri_arr, FALSE));
+  exit;
 }
 
 if (isset($objectid))  // fetch object and call object method
@@ -52,9 +55,12 @@ if (isset($objectid))  // fetch object and call object method
   if ( !isset($method) )
     $method = $foowd->config_settings['site']['default_method'];
 
-  $object = &$foowd->getObj(array(
-                        'objectid' => $objectid,
-                        'version'  => $version));
+  $where['objectid'] = $objectid;
+  $where['classid']  = $classid;
+  if ( $version->wasSet )
+    $where['version']  = $version->value;
+
+  $object = &$foowd->getObj($where);
   if ( $object ) 
   {
     if (is_object($object)) 
@@ -67,6 +73,7 @@ if (isset($objectid))  // fetch object and call object method
   }
   else 
   {
+    $className = getClassName($classid);
     trigger_error('Object not found: ' 
                   . (isset($objectName->value) ?$objectName->value : $objectid)
                   . ' (' . $className . ')', E_USER_ERROR);
