@@ -1,5 +1,5 @@
 #!/bin/sh
-STRINGS="avelsieve change_ldappass change_merakpass change_mysqlpass chg_sasl_passwd contactclean disk_quota file_manager online_users show_user_and_ip squirrelmail view_as_html vpopmail"
+STRINGS=`ls po/*.pot | sed 's/^po\///' | sed 's/.pot$//'`
 for trans in `ls locale/`; do
     for string in $STRINGS ; do
 	if [ -f locale/${trans}/LC_MESSAGES/${string}.po ] ; then
