@@ -466,6 +466,8 @@ function sqimap_mailbox_option_list($imap_stream, $show_selected = 0, $folder_sk
             } else  {                      /* default, long names, style = 0 */
                 $box2 = str_replace(' ', '&nbsp;', imap_utf7_decode_local($boxes_part['unformatted-disp']));
             }
+            $box2 = str_replace(array('<','>'), array('&lt;','&gt;') , $box2);
+
             if ($show_selected != 0 && in_array($lowerbox, $show_selected) ) {
                 $mbox_options .= '<OPTION VALUE="'.$box.'" SELECTED>'.$box2.'</OPTION>' . "\n";
             } else {
