@@ -37,7 +37,8 @@ function send_ok($message="") {
 function send_err($message="") {
   global $rev, $adminemail, $prog;
 
-  mail($adminemail,"ERROR $prog ($rev)","$message\n");
+//  mail($adminemail,"ERROR $prog ($rev)","$message\n");
+  echo "ERROR $prog ($rev): $message\n";
 }
 
 
@@ -99,7 +100,11 @@ function getstats($file) {
 
   if ($ret==0) {
     if (preg_match("/t$/",$file)) {
-      preg_match("/^\s*(\d+)\s*translated[^\d]+(\d+)\s*fuzzy[^\d]+(\d+)\s*untranslated/",$output[0],$m);
+      if (preg_match("/^\s*(\d+)\s*translated[^\d]+(\d+)\s*fuzzy[^\d]+(\d+)\s*untranslated/",$output[0],$m)) {
+      } else if (preg_match("/^\s*(\d+)\s*translated[^\d]+(\d+)\s*untranslated[^\d]/",$output[0],$m)) {
+        $m[3]=$m[2];
+        $m[2]=0;
+      }
       $translated   = $m[1]+0;
       $fuzzy        = $m[2]+0;
       $untranslated = $m[3]+0;

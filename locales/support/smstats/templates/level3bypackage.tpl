@@ -27,7 +27,7 @@ include("header.php");
 </td></tr></table>
 </td></tr></table>
 
-<img src="../../../img/px.gif" height="5" width="1"><br>
+<img src="../../../img/px.png" height="5" width="1"><br>
 
 
 
@@ -48,7 +48,7 @@ include("header.php");
 
 
 </td>
-<td width="10"><img src="../../../img/px.gif" height="1" width="10"></td>
+<td width="10"><img src="../../../img/px.png" height="1" width="10"></td>
 <td width="100%">
 
 <table cellspacing="0" cellpadding="0" border="0" bgcolor="#8b898b" width="100%"><tr><td>
@@ -83,10 +83,10 @@ PO file have no POT file associated with it.<br>
 
 <br>
 <b>Legend:</b><br>
-&nbsp;&nbsp;<img src="../../../img/bar0.gif" height="15" width="30"> - translated messages<br>
-&nbsp;&nbsp;<img src="../../../img/bar4.gif" height="15" width="30"> - fuzzy messages<br>
-&nbsp;&nbsp;<img src="../../../img/bar1.gif" height="15" width="30"> - untranslated messages.<br>
-&nbsp;&nbsp;<img src="../../../img/bar6.gif" height="15" width="30"> - info not available<br>
+&nbsp;&nbsp;<img src="../../../img/bar0.png" height="15" width="30"> - translated messages<br>
+&nbsp;&nbsp;<img src="../../../img/bar4.png" height="15" width="30"> - fuzzy messages<br>
+&nbsp;&nbsp;<img src="../../../img/bar1.png" height="15" width="30"> - untranslated messages.<br>
+&nbsp;&nbsp;<img src="../../../img/bar6.png" height="15" width="30"> - info not available<br>
 <br>
 </font>
 
@@ -95,15 +95,15 @@ PO file have no POT file associated with it.<br>
 </table>
 
 
-<img src="../../../img/px.gif" height="5" width="1"><br>
+<img src="../../../img/px.png" height="5" width="1"><br>
 <table cellpadding="1" cellspacing="0" border="0" width="100%" bgcolor="#8b898b">
 <tr><td>
 <table cellpadding="2" cellspacing="0" border="0" width="100%" bgcolor="#ececec">
 <tr align="center"><td><font size="2">
 
 <a href="../../../index.php">index</a> |
-<a href="../../../about.html">about</a> |
-<a href="../../../help.html">help</a>
+<a href="../../../about.php">about</a> |
+<a href="../../../help.php">help</a>
 
 </font></td></tr></table>
 </td></tr></table>

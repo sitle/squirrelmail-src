@@ -27,7 +27,7 @@ include("header.php");
 </td></tr></table>
 </td></tr></table>
 
-<img src="../../../img/px.gif" height="5" width="1"><br>
+<img src="../../../img/px.png" height="5" width="1"><br>
 
 
 
@@ -48,7 +48,7 @@ include("header.php");
 
 
 </td>
-<td width="10"><img src="../../../img/px.gif" height="1" width="10"></td>
+<td width="10"><img src="../../../img/px.png" height="1" width="10"></td>
 <td width="100%">
 
 <a href="#partialy">Partialy Translated PO files</a> | 
@@ -64,15 +64,15 @@ include("header.php");
 </table>
 
 
-<img src="../../../img/px.gif" height="5" width="1"><br>
+<img src="../../../img/px.png" height="5" width="1"><br>
 <table cellpadding="1" cellspacing="0" border="0" width="100%" bgcolor="#8b898b">
 <tr><td>
 <table cellpadding="2" cellspacing="0" border="0" width="100%" bgcolor="#ececec">
 <tr align="center"><td><font size="2">
 
 <a href="../../../index.php">index</a> |
-<a href="../../../about.html">about</a> |
-<a href="../../../help.html">help</a>
+<a href="../../../about.php">about</a> |
+<a href="../../../help.php">help</a>
 
 </font></td></tr></table>
 </td></tr></table>

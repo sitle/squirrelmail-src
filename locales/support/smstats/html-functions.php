@@ -21,7 +21,7 @@ function make_partial($outfile="") {
   $output="\n";
   $bgcolor=$okbg;
   
-  $tpl=new FastTemplate("./");
+  $tpl=new FastTemplate("./templates/");
   $tpl->define(array("index" => "indexpartial.tpl"));
   
   $results1=@mysql_query("SELECT team, COUNT(*) AS partialytranslated "  .
@@ -100,7 +100,7 @@ function make_generalinfo($outfile="") {
   global $dbh, $currdate, $rundate, $rev, $m_teams, $m_packages, $errorbg;
 
   debug(10,"making general info page");
-  $tpl=new FastTemplate("./");
+  $tpl=new FastTemplate("./templates/");
   $tpl->define(array("index" => "indexgeneral.tpl"));
   
   // **** totals ****
@@ -368,7 +368,7 @@ function make_essential($outfile="") {
   }
   $output.="</tr>\n";
   
-  $tpl=new FastTemplate("./");
+  $tpl=new FastTemplate("./templates/");
   $tpl->define(array("index" => "indexessential.tpl"));
   
   // extract only the used team codes
@@ -503,7 +503,7 @@ function make_fullinfo($outfile="") {
   $output.="</tr>\n";
   
     
-  $tpl=new FastTemplate("./");
+  $tpl=new FastTemplate("./templates/");
   $tpl->define(array("index" => "indexfullinfo.tpl"));
 
   foreach (array_keys($m_teams) as $team) {  
@@ -561,10 +561,10 @@ function make_fullinfo($outfile="") {
 //
 // make top 10 (level 0)
 //
-function make_top10($outfile="") {
+function make_top($outfile="") {
   global $dbh, $currdate, $rundate, $rev, $m_teams, $okbg, $okbg2;
   
-  debug(10,"making top 10");
+  debug(10,"making top list");
   
   $output="\n";
   $i=1;
@@ -574,13 +574,13 @@ function make_top10($outfile="") {
   $total_untranslated=0;
   $total_total=0;
   
-  $tpl=new FastTemplate("./");
-  $tpl->define(array("index" => "indextop10.tpl"));
+  $tpl=new FastTemplate("./templates/");
+  $tpl->define(array("index" => "indextop.tpl"));
   
   $results=mysql_query("SELECT team, SUM(translated) AS translated, SUM(fuzzy) AS fuzzy, "   .
                        " SUM(untranslated) AS untranslated, SUM(total) AS total "            .
                        " FROM sum WHERE rev='$rev' GROUP BY team ORDER BY translated DESC, " .
-                       " team ASC LIMIT 0,10" 
+                       " team ASC LIMIT 0,100" 
                        ,$dbh);
   if (!$results) {
     send_err("SQL error: top10");
@@ -617,9 +617,9 @@ function make_top10($outfile="") {
                 "  <td bgcolor=\"$okbg2\" align=\"right\"><font size=\"2\">$puntranslated2</font></td>\n" .
                 "  <td align=\"right\"><font size=\"2\">$total</font></td>\n" .
                 "  <td>" .
-                  "<img src=\"../img/bar0.gif\" height=\"15\" width=\"$ptranslated\">" .
-                  "<img src=\"../img/bar4.gif\" height=\"15\" width=\"$pfuzzy\">" .
-                  "<img src=\"../img/bar1.gif\" height=\"15\" width=\"$puntranslated\">" .
+                  "<img src=\"../img/bar0.png\" height=\"15\" width=\"$ptranslated\">" .
+                  "<img src=\"../img/bar4.png\" height=\"15\" width=\"$pfuzzy\">" .
+                  "<img src=\"../img/bar1.png\" height=\"15\" width=\"$puntranslated\">" .
                 "</td>\n" .
                 "</tr>\n";
     } else {
@@ -634,7 +634,7 @@ function make_top10($outfile="") {
                 "  <td bgcolor=\"$okbg2\" align=\"right\"><font size=\"2\">0</font></td>\n" .
                 "  <td align=\"right\"><font size=\"2\">0</font></td>\n" .
                 "  <td>" .
-                  "<img src=\"../img/bar6.gif\" height=\"15\" width=\"200\">" .
+                  "<img src=\"../img/bar6.png\" height=\"15\" width=\"200\">" .
                 "</td>\n" .
                 "</tr>\n";
     }
@@ -670,7 +670,7 @@ function make_infobyteam($outfile="") {
   $total_untranslated=0;
   $total_total=0;
   
-  $tpl=new FastTemplate("./");
+  $tpl=new FastTemplate("./templates/");
   $tpl->define(array("index" => "indexbyteam.tpl"));
   
   $results=@mysql_query("SELECT team, SUM(translated) AS translated, SUM(fuzzy) AS fuzzy, "     .
@@ -724,7 +724,7 @@ function make_infobypackage($outfile="") {
   $total_untranslated=0;
   $total_total=0;
   
-  $tpl=new FastTemplate("./");
+  $tpl=new FastTemplate("./templates/");
   $tpl->define(array("index" => "indexbypackage.tpl"));
   
   $results=@mysql_query("SELECT package, SUM(translated) AS translated, SUM(fuzzy) AS fuzzy, "  .
@@ -800,9 +800,9 @@ function bypackage_line1($package,$error,$translated,$fuzzy,$untranslated,$total
               "  <td bgcolor=\"$bgcolor2\" align=\"right\"><font size=\"2\">$puntranslated2</font></td>\n" .
               "  <td align=\"right\"><font size=\"2\">$total</font></td>\n" .
               "  <td>" .
-                 "<img src=\"../img/bar0.gif\" height=\"15\" width=\"$ptranslated\">" .
-                 "<img src=\"../img/bar4.gif\" height=\"15\" width=\"$pfuzzy\">" .
-                 "<img src=\"../img/bar1.gif\" height=\"15\" width=\"$puntranslated\">" .
+                 "<img src=\"../img/bar0.png\" height=\"15\" width=\"$ptranslated\">" .
+                 "<img src=\"../img/bar4.png\" height=\"15\" width=\"$pfuzzy\">" .
+                 "<img src=\"../img/bar1.png\" height=\"15\" width=\"$puntranslated\">" .
               "</td>\n" .
               "  <td align=\"right\"><font size=\"2\">$error</font></td>\n" .
               "</tr>\n";
@@ -817,7 +817,7 @@ function bypackage_line1($package,$error,$translated,$fuzzy,$untranslated,$total
               "  <td bgcolor=\"$bgcolor2\" align=\"right\"><font size=\"2\"><nobr>n/a</nobr></font></td>\n" .
               "  <td align=\"right\"><font size=\"2\"><nobr>n/a</nobr></font></td>\n" .
               "  <td>" .
-                 "<img src=\"../img/bar6.gif\" height=\"15\" width=\"200\">" .
+                 "<img src=\"../img/bar6.png\" height=\"15\" width=\"200\">" .
               "</td>\n" .
               "  <td align=\"right\"><font size=\"2\"><nobr>n/a</nobr></font></td>\n" .
               "</tr>\n";
@@ -852,9 +852,9 @@ function bypackage_total1($errors,$translated,$fuzzy,$untranslated,$total) {
               "  <td bgcolor=\"#d0d0d0\" align=\"right\"><font size=\"2\">$puntranslated2</font></td>\n" .
               "  <td align=\"right\"><font size=\"2\">$total</font></td>\n" .
               "  <td>" .
-                 "<img src=\"../img/bar0.gif\" height=\"15\" width=\"$ptranslated\">" .
-                 "<img src=\"../img/bar4.gif\" height=\"15\" width=\"$pfuzzy\">" .
-                 "<img src=\"../img/bar1.gif\" height=\"15\" width=\"$puntranslated\">" .
+                 "<img src=\"../img/bar0.png\" height=\"15\" width=\"$ptranslated\">" .
+                 "<img src=\"../img/bar4.png\" height=\"15\" width=\"$pfuzzy\">" .
+                 "<img src=\"../img/bar1.png\" height=\"15\" width=\"$puntranslated\">" .
               "</td>\n" .
               "  <td align=\"right\"><font size=\"2\">$errors</font></td>\n" .
               "</tr>\n";
@@ -869,7 +869,7 @@ function bypackage_total1($errors,$translated,$fuzzy,$untranslated,$total) {
               "  <td bgcolor=\"#d0d0d0\" align=\"right\"><font size=\"2\"><nobr>n/a</nobr></font></td>\n" .
               "  <td align=\"right\"><font size=\"2\"><nobr>n/a</nobr></font></td>\n" .
               "  <td>" .
-                 "<img src=\"../img/bar6.gif\" height=\"15\" width=\"200\">" .
+                 "<img src=\"../img/bar6.png\" height=\"15\" width=\"200\">" .
               "</td>\n" .
               "  <td align=\"right\"><font size=\"2\"><nobr>n/a</nobr></font></td>\n" .
               "</tr>\n";
@@ -916,15 +916,15 @@ function byteam_line1($teamcode,$teamname,$error,$translated,$fuzzy,$untranslate
               "  <td align=\"right\"><font size=\"2\">$total</font></td>\n" .
               "  <td>";
 	if ($ptranslated==200) {
-		$output.= "<img src=\"../img/bar0.gif\" height=\"15\" width=\"200\">";
+		$output.= "<img src=\"../img/bar0.png\" height=\"15\" width=\"200\">";
     } else if ($pfuzzy==200) {
-		$output.= "<img src=\"../img/bar4.gif\" height=\"15\" width=\"200\">";
+		$output.= "<img src=\"../img/bar4.png\" height=\"15\" width=\"200\">";
     } else if ($puntranslated==200) {
-		$output.= "<img src=\"../img/bar1.gif\" height=\"15\" width=\"200\">";
+		$output.= "<img src=\"../img/bar1.png\" height=\"15\" width=\"200\">";
 	} else {	
-        $output.= "<img src=\"../img/bar0.gif\" height=\"15\" width=\"$ptranslated\">" .
-                  "<img src=\"../img/bar4.gif\" height=\"15\" width=\"$pfuzzy\">" .
-                  "<img src=\"../img/bar1.gif\" height=\"15\" width=\"$puntranslated\">";
+        $output.= "<img src=\"../img/bar0.png\" height=\"15\" width=\"$ptranslated\">" .
+                  "<img src=\"../img/bar4.png\" height=\"15\" width=\"$pfuzzy\">" .
+                  "<img src=\"../img/bar1.png\" height=\"15\" width=\"$puntranslated\">";
 	}
     $output.= "</td>\n" .
               "  <td align=\"right\"><font size=\"2\">$error</font></td>\n" .
@@ -940,7 +940,7 @@ function byteam_line1($teamcode,$teamname,$error,$translated,$fuzzy,$untranslate
               "  <td bgcolor=\"$bgcolor2\" align=\"right\"><font size=\"2\"><nobr>n/a</nobr></font></td>\n" .
               "  <td align=\"right\"><font size=\"2\"><nobr>n/a</nobr></font></td>\n" .
               "  <td>" .
-                 "<img src=\"../img/bar6.gif\" height=\"15\" width=\"200\">" .
+                 "<img src=\"../img/bar6.png\" height=\"15\" width=\"200\">" .
               "</td>\n" .
               "  <td align=\"right\"><font size=\"2\"><nobr>n/a</nobr></font></td>\n" .
               "</tr>\n";
@@ -976,15 +976,15 @@ function byteam_total1($errors,$translated,$fuzzy,$untranslated,$total) {
               "  <td align=\"right\"><font size=\"2\">$total</font></td>\n" .
               "  <td>";
 	if ($ptranslated==200) {
-		$output.= "<img src=\"../img/bar0.gif\" height=\"15\" width=\"200\">";
+		$output.= "<img src=\"../img/bar0.png\" height=\"15\" width=\"200\">";
     } else if ($pfuzzy==200) {
-		$output.= "<img src=\"../img/bar4.gif\" height=\"15\" width=\"200\">";
+		$output.= "<img src=\"../img/bar4.png\" height=\"15\" width=\"200\">";
     } else if ($puntranslated==200) {
-		$output.= "<img src=\"../img/bar1.gif\" height=\"15\" width=\"200\">";
+		$output.= "<img src=\"../img/bar1.png\" height=\"15\" width=\"200\">";
 	} else {	
-        $output.= "<img src=\"../img/bar0.gif\" height=\"15\" width=\"$ptranslated\">" .
-                  "<img src=\"../img/bar4.gif\" height=\"15\" width=\"$pfuzzy\">" .
-                  "<img src=\"../img/bar1.gif\" height=\"15\" width=\"$puntranslated\">";
+        $output.= "<img src=\"../img/bar0.png\" height=\"15\" width=\"$ptranslated\">" .
+                  "<img src=\"../img/bar4.png\" height=\"15\" width=\"$pfuzzy\">" .
+                  "<img src=\"../img/bar1.png\" height=\"15\" width=\"$puntranslated\">";
 	}
     $output.= "</td>\n" .
               "  <td align=\"right\"><font size=\"2\">$errors</font></td>\n" .
@@ -1000,7 +1000,7 @@ function byteam_total1($errors,$translated,$fuzzy,$untranslated,$total) {
               "  <td bgcolor=\"#d0d0d0\" align=\"right\"><font size=\"2\"><nobr>n/a</nobr></font></td>\n" .
               "  <td align=\"right\"><font size=\"2\"><nobr>n/a</nobr></font></td>\n" .
               "  <td>" .
-                 "<img src=\"../img/bar6.gif\" height=\"15\" width=\"200\">" .
+                 "<img src=\"../img/bar6.png\" height=\"15\" width=\"200\">" .
               "</td>\n" .
               "  <td align=\"right\"><font size=\"2\"><nobr>n/a</nobr></font></td>\n" .
               "</tr>\n";
@@ -1051,15 +1051,15 @@ function bypackage_line2($teamcode,$error,$translated,$fuzzy,$untranslated) {
               "  <td align=\"right\"><font size=\"2\">$total</font></td>\n" .
               "  <td>";
 	if ($ptranslated==200) {
-		$output.= "<img src=\"../../img/bar0.gif\" height=\"15\" width=\"200\">";
+		$output.= "<img src=\"../../img/bar0.png\" height=\"15\" width=\"200\">";
     } else if ($pfuzzy==200) {
-		$output.= "<img src=\"../../img/bar4.gif\" height=\"15\" width=\"200\">";
+		$output.= "<img src=\"../../img/bar4.png\" height=\"15\" width=\"200\">";
     } else if ($puntranslated==200) {
-		$output.= "<img src=\"../../img/bar1.gif\" height=\"15\" width=\"200\">";
+		$output.= "<img src=\"../../img/bar1.png\" height=\"15\" width=\"200\">";
 	} else {	
-        $output.= "<img src=\"../../img/bar0.gif\" height=\"15\" width=\"$ptranslated\">" .
-                  "<img src=\"../../img/bar4.gif\" height=\"15\" width=\"$pfuzzy\">" .
-                  "<img src=\"../../img/bar1.gif\" height=\"15\" width=\"$puntranslated\">";
+        $output.= "<img src=\"../../img/bar0.png\" height=\"15\" width=\"$ptranslated\">" .
+                  "<img src=\"../../img/bar4.png\" height=\"15\" width=\"$pfuzzy\">" .
+                  "<img src=\"../../img/bar1.png\" height=\"15\" width=\"$puntranslated\">";
 	}
 	$output.= "</td>\n" .
               "  <td align=\"right\"><font size=\"2\">$error</font></td>\n" .
@@ -1075,7 +1075,7 @@ function bypackage_line2($teamcode,$error,$translated,$fuzzy,$untranslated) {
               "  <td bgcolor=\"$bgcolor2\" align=\"right\"><font size=\"2\"><nobr>n/a</nobr></font></td>\n" .
               "  <td align=\"right\"><font size=\"2\"><nobr>n/a</nobr></font></td>\n" .
               "  <td>" .
-                 "<img src=\"../../img/bar6.gif\" height=\"15\" width=\"200\">" .
+                 "<img src=\"../../img/bar6.png\" height=\"15\" width=\"200\">" .
               "</td>\n" .
               "  <td align=\"right\"><font size=\"2\"><nobr>n/a</nobr></font></td>\n" .
               "</tr>\n";
@@ -1112,15 +1112,15 @@ function bypackage_total2($error,$translated,$fuzzy,$untranslated) {
               "  <td align=\"right\"><font size=\"2\">$total</font></td>\n" .
               "  <td>";
 	if ($ptranslated==200) {
-		$output.= "<img src=\"../../img/bar0.gif\" height=\"15\" width=\"200\">";
+		$output.= "<img src=\"../../img/bar0.png\" height=\"15\" width=\"200\">";
     } else if ($pfuzzy==200) {
-		$output.= "<img src=\"../../img/bar4.gif\" height=\"15\" width=\"200\">";
+		$output.= "<img src=\"../../img/bar4.png\" height=\"15\" width=\"200\">";
     } else if ($puntranslated==200) {
-		$output.= "<img src=\"../../img/bar1.gif\" height=\"15\" width=\"200\">";
+		$output.= "<img src=\"../../img/bar1.png\" height=\"15\" width=\"200\">";
 	} else {	
-        $output.= "<img src=\"../../img/bar0.gif\" height=\"15\" width=\"$ptranslated\">" .
-                  "<img src=\"../../img/bar4.gif\" height=\"15\" width=\"$pfuzzy\">" .
-                  "<img src=\"../../img/bar1.gif\" height=\"15\" width=\"$puntranslated\">";
+        $output.= "<img src=\"../../img/bar0.png\" height=\"15\" width=\"$ptranslated\">" .
+                  "<img src=\"../../img/bar4.png\" height=\"15\" width=\"$pfuzzy\">" .
+                  "<img src=\"../../img/bar1.png\" height=\"15\" width=\"$puntranslated\">";
 	}
     $output.= "</td>\n" .
               "  <td align=\"right\"><font size=\"2\">$error</font></td>\n" .
@@ -1136,7 +1136,7 @@ function bypackage_total2($error,$translated,$fuzzy,$untranslated) {
               "  <td bgcolor=\"#d0d0d0\" align=\"right\"><font size=\"2\"><nobr>n/a</nobr></font></td>\n" .
               "  <td align=\"right\"><font size=\"2\"><nobr>n/a</nobr></font></td>\n" .
               "  <td>" .
-                 "<img src=\"../../img/bar6.gif\" height=\"15\" width=\"200\">" .
+                 "<img src=\"../../img/bar6.png\" height=\"15\" width=\"200\">" .
               "</td>\n" .
               "  <td align=\"right\"><font size=\"2\"><nobr>n/a</nobr></font></td>\n" .
               "</tr>\n";
@@ -1184,15 +1184,15 @@ function byteam_line2($package,$error,$translated,$fuzzy,$untranslated) {
               "  <td align=\"right\"><font size=\"2\">$total</font></td>\n" .
               "  <td>";
 	if ($ptranslated==200) {
-		$output.= "<img src=\"../../img/bar0.gif\" height=\"15\" width=\"200\">";
+		$output.= "<img src=\"../../img/bar0.png\" height=\"15\" width=\"200\">";
     } else if ($pfuzzy==200) {
-		$output.= "<img src=\"../../img/bar4.gif\" height=\"15\" width=\"200\">";
+		$output.= "<img src=\"../../img/bar4.png\" height=\"15\" width=\"200\">";
     } else if ($puntranslated==200) {
-		$output.= "<img src=\"../../img/bar1.gif\" height=\"15\" width=\"200\">";
+		$output.= "<img src=\"../../img/bar1.png\" height=\"15\" width=\"200\">";
 	} else {	
-        $output.= "<img src=\"../../img/bar0.gif\" height=\"15\" width=\"$ptranslated\">" .
-                  "<img src=\"../../img/bar4.gif\" height=\"15\" width=\"$pfuzzy\">" .
-                  "<img src=\"../../img/bar1.gif\" height=\"15\" width=\"$puntranslated\">";
+        $output.= "<img src=\"../../img/bar0.png\" height=\"15\" width=\"$ptranslated\">" .
+                  "<img src=\"../../img/bar4.png\" height=\"15\" width=\"$pfuzzy\">" .
+                  "<img src=\"../../img/bar1.png\" height=\"15\" width=\"$puntranslated\">";
 	}
     $output.= "</td>\n" .
               "  <td align=\"right\"><font size=\"2\">$error</font></td>\n" .
@@ -1208,7 +1208,7 @@ function byteam_line2($package,$error,$translated,$fuzzy,$untranslated) {
               "  <td bgcolor=\"$bgcolor2\" align=\"right\"><font size=\"2\"><nobr>n/a</nobr></font></td>\n" .
               "  <td align=\"right\"><font size=\"2\"><nobr>n/a</nobr></font></td>\n" .
               "  <td>" .
-                 "<img src=\"../../img/bar6.gif\" height=\"15\" width=\"200\">" .
+                 "<img src=\"../../img/bar6.png\" height=\"15\" width=\"200\">" .
               "</td>\n" .
               "  <td align=\"right\"><font size=\"2\"><nobr>n/a</nobr></font></td>\n" .
               "</tr>\n";
@@ -1245,15 +1245,15 @@ function byteam_total2($error,$translated,$fuzzy,$untranslated) {
               "  <td align=\"right\"><font size=\"2\">$total</font></td>\n" .
               "  <td>";
 	if ($ptranslated==200) {
-		$output.= "<img src=\"../../img/bar0.gif\" height=\"15\" width=\"200\">";
+		$output.= "<img src=\"../../img/bar0.png\" height=\"15\" width=\"200\">";
     } else if ($pfuzzy==200) {
-		$output.= "<img src=\"../../img/bar4.gif\" height=\"15\" width=\"200\">";
+		$output.= "<img src=\"../../img/bar4.png\" height=\"15\" width=\"200\">";
     } else if ($puntranslated==200) {
-		$output.= "<img src=\"../../img/bar1.gif\" height=\"15\" width=\"200\">";
+		$output.= "<img src=\"../../img/bar1.png\" height=\"15\" width=\"200\">";
 	} else {	
-        $output.= "<img src=\"../../img/bar0.gif\" height=\"15\" width=\"$ptranslated\">" .
-                  "<img src=\"../../img/bar4.gif\" height=\"15\" width=\"$pfuzzy\">" .
-                  "<img src=\"../../img/bar1.gif\" height=\"15\" width=\"$puntranslated\">";
+        $output.= "<img src=\"../../img/bar0.png\" height=\"15\" width=\"$ptranslated\">" .
+                  "<img src=\"../../img/bar4.png\" height=\"15\" width=\"$pfuzzy\">" .
+                  "<img src=\"../../img/bar1.png\" height=\"15\" width=\"$puntranslated\">";
 	}
 	$output.= "</td>\n" .
               "  <td align=\"right\"><font size=\"2\">$error</font></td>\n" .
@@ -1269,7 +1269,7 @@ function byteam_total2($error,$translated,$fuzzy,$untranslated) {
               "  <td bgcolor=\"#d0d0d0\" align=\"right\"><font size=\"2\"><nobr>n/a</nobr></font></td>\n" .
               "  <td align=\"right\"><font size=\"2\"><nobr>n/a</nobr></font></td>\n" .
               "  <td>" .
-                 "<img src=\"../../img/bar6.gif\" height=\"15\" width=\"200\">" .
+                 "<img src=\"../../img/bar6.png\" height=\"15\" width=\"200\">" .
               "</td>\n" .
               "  <td align=\"right\"><font size=\"2\"><nobr>n/a</nobr></font></td>\n" .
               "</tr>\n";
@@ -1329,15 +1329,15 @@ function bypackage_line3($file,$error,$translated,$fuzzy,$untranslated,$teamcode
               "  <td align=\"right\"><font size=\"2\">$total</font></td>\n" .
               "  <td>";
 	if ($ptranslated==200) {
-		$output.= "<img src=\"../../../img/bar0.gif\" height=\"15\" width=\"200\">";
+		$output.= "<img src=\"../../../img/bar0.png\" height=\"15\" width=\"200\">";
     } else if ($pfuzzy==200) {
-		$output.= "<img src=\"../../../img/bar4.gif\" height=\"15\" width=\"200\">";
+		$output.= "<img src=\"../../../img/bar4.png\" height=\"15\" width=\"200\">";
     } else if ($puntranslated==200) {
-		$output.= "<img src=\"../../../img/bar1.gif\" height=\"15\" width=\"200\">";
+		$output.= "<img src=\"../../../img/bar1.png\" height=\"15\" width=\"200\">";
 	} else {	
-        $output.= "<img src=\"../../../img/bar0.gif\" height=\"15\" width=\"$ptranslated\">" .
-                  "<img src=\"../../../img/bar4.gif\" height=\"15\" width=\"$pfuzzy\">" .
-                  "<img src=\"../../../img/bar1.gif\" height=\"15\" width=\"$puntranslated\">";
+        $output.= "<img src=\"../../../img/bar0.png\" height=\"15\" width=\"$ptranslated\">" .
+                  "<img src=\"../../../img/bar4.png\" height=\"15\" width=\"$pfuzzy\">" .
+                  "<img src=\"../../../img/bar1.png\" height=\"15\" width=\"$puntranslated\">";
 	}
     $output.= "</td>\n" .
               "</tr>\n";
@@ -1352,7 +1352,7 @@ function bypackage_line3($file,$error,$translated,$fuzzy,$untranslated,$teamcode
               "  <td bgcolor=\"$bgcolor2\" align=\"right\"><font size=\"2\"><nobr>n/a</nobr></font></td>\n" .
               "  <td align=\"right\"><font size=\"2\"><nobr>n/a</nobr></font></td>\n" .
               "  <td>" .
-                 "<img src=\"../../../img/bar6.gif\" height=\"15\" width=\"200\">" .
+                 "<img src=\"../../../img/bar6.png\" height=\"15\" width=\"200\">" .
               "</td>\n" .
               "</tr>\n";
   }          
@@ -1389,15 +1389,15 @@ function bypackage_total3($error,$translated,$fuzzy,$untranslated) {
               "  <td align=\"right\"><font size=\"2\">$total</font></td>\n" .
               "  <td>";
 	if ($ptranslated==200) {
-		$output.= "<img src=\"../../../img/bar0.gif\" height=\"15\" width=\"200\">";
+		$output.= "<img src=\"../../../img/bar0.png\" height=\"15\" width=\"200\">";
     } else if ($pfuzzy==200) {
-		$output.= "<img src=\"../../../img/bar4.gif\" height=\"15\" width=\"200\">";
+		$output.= "<img src=\"../../../img/bar4.png\" height=\"15\" width=\"200\">";
     } else if ($puntranslated==200) {
-		$output.= "<img src=\"../../../img/bar1.gif\" height=\"15\" width=\"200\">";
+		$output.= "<img src=\"../../../img/bar1.png\" height=\"15\" width=\"200\">";
 	} else {	
-        $output.= "<img src=\"../../../img/bar0.gif\" height=\"15\" width=\"$ptranslated\">" .
-                  "<img src=\"../../../img/bar4.gif\" height=\"15\" width=\"$pfuzzy\">" .
-                  "<img src=\"../../../img/bar1.gif\" height=\"15\" width=\"$puntranslated\">";
+        $output.= "<img src=\"../../../img/bar0.png\" height=\"15\" width=\"$ptranslated\">" .
+                  "<img src=\"../../../img/bar4.png\" height=\"15\" width=\"$pfuzzy\">" .
+                  "<img src=\"../../../img/bar1.png\" height=\"15\" width=\"$puntranslated\">";
 	}
     $output.= "</td>\n" .
               "</tr>\n";
@@ -1412,7 +1412,7 @@ function bypackage_total3($error,$translated,$fuzzy,$untranslated) {
               "  <td bgcolor=\"#d0d0d0\" align=\"right\"><font size=\"2\"><nobr>n/a</nobr></font></td>\n" .
               "  <td align=\"right\"><font size=\"2\"><nobr>n/a</nobr></font></td>\n" .
               "  <td>" .
-                 "<img src=\"../../../img/bar6.gif\" height=\"15\" width=\"200\">" .
+                 "<img src=\"../../../img/bar6.png\" height=\"15\" width=\"200\">" .
               "</td>\n" .
               "</tr>\n";
   }          
@@ -1469,15 +1469,15 @@ function byteam_line3($file,$error,$translated,$fuzzy,$untranslated,$teamcode,$p
               "  <td align=\"right\"><font size=\"2\">$total</font></td>\n" .
               "  <td>";
 	if ($ptranslated==200) {
-		$output.= "<img src=\"../../../img/bar0.gif\" height=\"15\" width=\"200\">";
+		$output.= "<img src=\"../../../img/bar0.png\" height=\"15\" width=\"200\">";
     } else if ($pfuzzy==200) {
-		$output.= "<img src=\"../../../img/bar4.gif\" height=\"15\" width=\"200\">";
+		$output.= "<img src=\"../../../img/bar4.png\" height=\"15\" width=\"200\">";
     } else if ($puntranslated==200) {
-		$output.= "<img src=\"../../../img/bar1.gif\" height=\"15\" width=\"200\">";
+		$output.= "<img src=\"../../../img/bar1.png\" height=\"15\" width=\"200\">";
 	} else {	
-        $output.= "<img src=\"../../../img/bar0.gif\" height=\"15\" width=\"$ptranslated\">" .
-                  "<img src=\"../../../img/bar4.gif\" height=\"15\" width=\"$pfuzzy\">" .
-                  "<img src=\"../../../img/bar1.gif\" height=\"15\" width=\"$puntranslated\">";
+        $output.= "<img src=\"../../../img/bar0.png\" height=\"15\" width=\"$ptranslated\">" .
+                  "<img src=\"../../../img/bar4.png\" height=\"15\" width=\"$pfuzzy\">" .
+                  "<img src=\"../../../img/bar1.png\" height=\"15\" width=\"$puntranslated\">";
 	}
     $output.= "</td>\n" .
               "</tr>\n";
@@ -1492,7 +1492,7 @@ function byteam_line3($file,$error,$translated,$fuzzy,$untranslated,$teamcode,$p
               "  <td bgcolor=\"$bgcolor2\" align=\"right\"><font size=\"2\"><nobr>n/a</nobr></font></td>\n" .
               "  <td align=\"right\"><font size=\"2\"><nobr>n/a</nobr></font></td>\n" .
               "  <td>" .
-                 "<img src=\"../../../img/bar6.gif\" height=\"15\" width=\"200\">" .
+                 "<img src=\"../../../img/bar6.png\" height=\"15\" width=\"200\">" .
               "</td>\n" .
               "</tr>\n";
   }          
@@ -1529,15 +1529,15 @@ function byteam_total3($error,$translated,$fuzzy,$untranslated) {
               "  <td align=\"right\"><font size=\"2\">$total</font></td>\n" .
               "  <td>";
  	if ($ptranslated==200) {
-		$output.= "<img src=\"../../../img/bar0.gif\" height=\"15\" width=\"200\">";
+		$output.= "<img src=\"../../../img/bar0.png\" height=\"15\" width=\"200\">";
     } else if ($pfuzzy==200) {
-		$output.= "<img src=\"../../../img/bar4.gif\" height=\"15\" width=\"200\">";
+		$output.= "<img src=\"../../../img/bar4.png\" height=\"15\" width=\"200\">";
     } else if ($puntranslated==200) {
-		$output.= "<img src=\"../../../img/bar1.gif\" height=\"15\" width=\"200\">";
+		$output.= "<img src=\"../../../img/bar1.png\" height=\"15\" width=\"200\">";
 	} else {	
-        $output.= "<img src=\"../../../img/bar0.gif\" height=\"15\" width=\"$ptranslated\">" .
-                  "<img src=\"../../../img/bar4.gif\" height=\"15\" width=\"$pfuzzy\">" .
-                  "<img src=\"../../../img/bar1.gif\" height=\"15\" width=\"$puntranslated\">";
+        $output.= "<img src=\"../../../img/bar0.png\" height=\"15\" width=\"$ptranslated\">" .
+                  "<img src=\"../../../img/bar4.png\" height=\"15\" width=\"$pfuzzy\">" .
+                  "<img src=\"../../../img/bar1.png\" height=\"15\" width=\"$puntranslated\">";
 	}
     $output.= "</td>\n" .
               "</tr>\n";
@@ -1552,7 +1552,7 @@ function byteam_total3($error,$translated,$fuzzy,$untranslated) {
               "  <td bgcolor=\"#d0d0d0\" align=\"right\"><font size=\"2\"><nobr>n/a</nobr></font></td>\n" .
               "  <td align=\"right\"><font size=\"2\"><nobr>n/a</nobr></font></td>\n" .
               "  <td>" .
-                 "<img src=\"../../../img/bar6.gif\" height=\"15\" width=\"200\">" .
+                 "<img src=\"../../../img/bar6.png\" height=\"15\" width=\"200\">" .
               "</td>\n" .
               "</tr>\n";
   }          
@@ -1569,7 +1569,7 @@ function cvsweburl($rev,$teamcode,$package,$file) {
   global $cvswebformat1, $cvswebformat2;
   
   // action regarding PO / POT file type
-  if ($package=="kdelibs") {
+  if ($package=="squirrelmail") {
     $package_dir="";
   } else {
     $package_dir="$package/";
@@ -1580,9 +1580,9 @@ function cvsweburl($rev,$teamcode,$package,$file) {
     $cvswebformat=$cvswebformat2;
   }
   if (preg_match("/t$/",$file)) {
-    $cvsurl=sprintf($cvswebformat,"templates/$package_dir$file",$rev);
+    $cvsurl=sprintf($cvswebformat,$rev,"po/$package_dir$file");
   } else {
-    $cvsurl=sprintf($cvswebformat,"$teamcode/messages/$package_dir$file",$rev);
+    $cvsurl=sprintf($cvswebformat,$rev,"$teamcode/LC_MESSAGES/$package_dir$file");
   }
   return $cvsurl;
 }

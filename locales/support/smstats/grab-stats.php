@@ -9,7 +9,7 @@
 ////////////////////////////////////////////////////////////////////////////
 
 
-
+dl('mysql.so');
 include("grab-functions.php");
 include("grab-config.php");
 
@@ -24,13 +24,13 @@ if ($argv[1]=="") {
   $rev=$argv[1];
 };
 
-$podir       = "$basedir/$rev/kde-i18n";
-$potdir      = "$basedir/$rev/kde-i18n/templates";
-$teamnames   = "$basedir/$rev/kde-i18n/teamnames";
-$essential_f = "$basedir/$rev/kde-i18n/essential_files";
-$essential_p = "$basedir/$rev/kde-i18n/essential_packages";
-$packages_f  = "$basedir/$rev/kde-i18n/guistats_packages";
-$excludes_f  = "$basedir/$rev/kde-i18n/guistats_excludes";
+$podir       = "$basedir/$rev/locales/locale";
+$potdir      = "$basedir/$rev/locales/po";
+$teamnames   = "$basedir/$rev/locales/teamnames";
+$essential_f = "$basedir/$rev/locales/essential_files";
+$essential_p = "$basedir/$rev/locales/essential_packages";
+$packages_f  = "$basedir/$rev/locales/guistats_packages";
+$excludes_f  = "$basedir/$rev/locales/guistats_excludes";
 
 
 // preliminary checks
@@ -265,7 +265,7 @@ foreach (array_keys($ess_p) as $package) {
 debug(40,"grabing PO statistics");
 foreach ($teams as $teamcode => $teamname) {
   debug(10,"level1: statistics in $teamcode");
-  $teamdir="$podir/$teamcode/messages";
+  $teamdir="$podir/$teamcode/LC_MESSAGES";
   
   // intialize associative array with essential files
   $essential_f=array();

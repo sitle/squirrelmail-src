@@ -627,11 +627,11 @@ class FastTemplate {
 
 //	************************************************************
 //	Aliased function - used for compatibility with CGI::FastTemplate
-	function clear_parse ()
-	{
-		$this->clear_assign();
-	}
-
+//	function clear_parse ()
+//	{
+//		$this->clear_assign();
+//	}
+//
 //	************************************************************
 //	Clears all variables set by assign()
 

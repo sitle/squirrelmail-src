@@ -9,12 +9,11 @@
 
 
 // the output directory
-$outdir= "/home/httpd/i18n.kde.org/stats/gui";
+$outdir= "/home/tomas/smstats-work/www";
 // the base URL to KDE webcvs for HEAD branch
-$cvswebformat1  = "http://webcvs.kde.org/cgi-bin/cvsweb.cgi/kde-i18n/%s?rev=HEAD&content-type=text/plain";
+$cvswebformat1  = "/files/%s/locales/%s.gz";
 // the base URL to KDE webcvs for branch HEAD with tags
-$cvswebformat2  = "http://webcvs.kde.org/cgi-bin/cvsweb.cgi/kde-i18n/%s?rev=%s&content-type=text/plain";
-
+$cvswebformat2  = "/files/%s/locales/%s.gz";
 
 
 // thematic options
@@ -31,17 +30,17 @@ $nopotbg="#e0f0ff";
 $nopotbg2="#d0e0f0";
 
 // development options
-$debug=100;
+$debug=0;
 
 
 $prog="html-guistats";
-$adminemail="admin@i18n.kde.org";
+$adminemail="tomas@topolis.lt";
 
 
 // MySQL connection data
-$sql_user   = "gui_www";
+$sql_user   = "smstats";
 $sql_pass   = "";
-$sql_host   = "127.0.0.1";
-$sql_db     = "guistats";
+$sql_host   = "localhost";
+$sql_db     = "smstats";
 
 ?>

@@ -9,19 +9,19 @@
 
 
 // the output directory
-$outdir= "/home/httpd/i18n.kde.org/stats/gui";
+$outdir= "/home/www/smstats.topolis.inet/www";
 
 // development options
 $debug=100;
 
 
 $prog="history-guistats";
-$adminemail="admin@i18n.kde.org";
+$adminemail="tomas@topolis.lt";
 
 // MySQL connection data
-$sql_user   = "gui_www";
+$sql_user   = "smstats";
 $sql_pass   = "";
-$sql_host   = "127.0.0.1";
-$sql_db     = "guistats";
+$sql_host   = "localhost";
+$sql_db     = "smstats";
 
 ?>
