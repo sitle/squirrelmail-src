@@ -648,7 +648,7 @@ function formatToolbar($mailbox, $passed_id, $passed_ent_id, $message, $color) {
     }
 
     if (!empty($what)) {
-        $query_string .= '&amp;what=' . $urlencode($what);
+        $query_string .= '&amp;what=' . urlencode($what);
     }
 
     $url = $base_uri.'src/view_header.php?'.$query_string;
