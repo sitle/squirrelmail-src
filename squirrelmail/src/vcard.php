@@ -20,6 +20,7 @@ require_once('../src/load_prefs.php');
 /* globals */
 $key  = $_COOKIE['key'];
 $username = $_SESSION['username'];
+$onetimepad = $_SESISON['onetimepad'];
 
 $mailbox = $_GET['mailbox'];
 $passed_id = $_GET['passed_id'];
