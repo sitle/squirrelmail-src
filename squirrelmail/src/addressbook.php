@@ -229,7 +229,7 @@ if(sqgetGlobalVar('REQUEST_METHOD', $req_method, SQ_SERVER) && $req_method == 'P
                 } else {
 
                     /* Stage two: Write new data */
-                    if ($doedit = 1) {
+                    if ($doedit == 1) {
                         $newdata = $editaddr;
                         $r = $abook->modify($oldnick, $newdata, $backend);
 
