@@ -54,8 +54,8 @@ Version 1.4.4 - CVS
     incorrectly (#1027130).
   - Turkish translation uses C character case conversion rules. Fixes php and
     squirrelmail functions are assume English conversion rules.
-  - Removed X-Mailer: header from SquirrelMail. SpamAssassin 3.0 detects 
-    User-Agent: + X-Priority headers correctly. Older versions have to fix
+  - Removed X-Mailer header from SquirrelMail. SpamAssassin 3.0 detects 
+    User-Agent + X-Priority headers correctly. Older versions have to fix
     rules/20_head_tests.cf.
 
 Version 1.4.3a - 2 June 2004
