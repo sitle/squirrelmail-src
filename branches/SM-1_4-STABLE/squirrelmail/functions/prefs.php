@@ -52,6 +52,7 @@ function getHashedFile($username, $dir, $datafile, $hash_search = true) {
     $real_hash_dir = getHashedDir($username, $dir, $hash_dirs);
 
     /* Set the value of our real data file. */
+    $datafile = str_replace('/', '_', $datafile);
     $result = "$real_hash_dir/$datafile";
 
     /* Check for this file in the real hash directory. */
