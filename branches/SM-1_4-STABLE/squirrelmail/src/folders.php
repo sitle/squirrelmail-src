@@ -55,19 +55,19 @@ if ( isset($success) && $success ) {
     switch ($success)
     {
         case 'subscribe':
-            $td_str .=  _("Subscribed successfully!");
+            $td_str .=  _("Subscribed successfully.");
             break;
         case 'unsubscribe':
-            $td_str .=  _("Unsubscribed successfully!");
+            $td_str .=  _("Unsubscribed successfully.");
             break;
         case 'delete':
-            $td_str .=  _("Deleted folder successfully!");
+            $td_str .=  _("Deleted folder successfully.");
             break;
         case 'create':
-            $td_str .=  _("Created folder successfully!");
+            $td_str .=  _("Created folder successfully.");
             break;
         case 'rename':
-            $td_str .=  _("Renamed successfully!");
+            $td_str .=  _("Renamed successfully.");
             break;
         case 'subscribe-doesnotexist':
             $td_str .=  _("Subscription Unsuccessful - Folder does not exist.");
