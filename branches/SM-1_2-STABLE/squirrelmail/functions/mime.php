@@ -420,6 +420,16 @@ function mime_match_parenthesis ($pos, $structure) {
             }
         } elseif ( $structure{$pos} == '(' ) {
             $pos = mime_match_parenthesis ($pos, $structure);
+        } elseif ( $structure{$pos} == '{' ) {
+            $pos++;
+            $value = '';
+            while($structure{$pos} != '}' && $pos < $j) {
+                $value .= $structure{$pos};
+                $pos++;
+            }
+            if($value != '') {
+                $pos += 2 + $value;
+            }
         }
     }
     echo _("Error decoding mime structure.  Report this as a bug!") . '<br>';
