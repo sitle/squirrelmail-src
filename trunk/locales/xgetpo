@@ -143,6 +143,10 @@ xgettext ${XGETTEXT_OPTIONS} -j \
 xgettext ${XGETTEXT_OPTIONS} -j \
     ${SM_DEVEL_PATH}/plugins/calendar/*.php --output=${SM_LOCALES_PATH}/po/squirrelmail.pot
 xgettext ${XGETTEXT_OPTIONS} -j \
+    ${SM_DEVEL_PATH}/plugins/change_password/*.php --output=${SM_LOCALES_PATH}/po/squirrelmail.pot
+xgettext ${XGETTEXT_OPTIONS} -j \
+    ${SM_DEVEL_PATH}/plugins/change_password/backend/*.php --output=${SM_LOCALES_PATH}/po/squirrelmail.pot
+xgettext ${XGETTEXT_OPTIONS} -j \
     ${SM_DEVEL_PATH}/plugins/filters/*.php --output=${SM_LOCALES_PATH}/po/squirrelmail.pot
 xgettext ${XGETTEXT_OPTIONS} -j \
     ${SM_DEVEL_PATH}/plugins/fortune/*.php --output=${SM_LOCALES_PATH}/po/squirrelmail.pot
