@@ -1589,13 +1589,18 @@ function set_up_language($sm_language, $do_search = false, $default = false) {
 	if (function_exists('bind_textdomain_codeset')) {
 	     bind_textdomain_codeset ("squirrelmail", $languages[$sm_notAlias]['CHARSET'] );
 	}
+	if (isset($languages[$sm_notAlias]['LOCALE'])){
+	  $longlocale=$languages[$sm_notAlias]['LOCALE'];
+	} else {
+	  $longlocale=$sm_notAlias;
+	}
         if ( !ini_get('safe_mode') &&
-             getenv( 'LC_ALL' ) != $sm_notAlias ) {
-            putenv( "LC_ALL=$sm_notAlias" );
-            putenv( "LANG=$sm_notAlias" );
-            putenv( "LANGUAGE=$sm_notAlias" );
+             getenv( 'LC_ALL' ) != $longlocale ) {
+            putenv( "LC_ALL=$longlocale" );
+            putenv( "LANG=$longlocale" );
+            putenv( "LANGUAGE=$longlocale" );
         }
-        setlocale(LC_ALL, $sm_notAlias);
+        setlocale(LC_ALL, $longlocale);
         $squirrelmail_language = $sm_notAlias;
         if ($squirrelmail_language == 'ja_JP' && function_exists('mb_detect_encoding') ) {
             header ('Content-Type: text/html; charset=EUC-JP');
@@ -1751,8 +1756,10 @@ $languages['pt_BR']['CHARSET'] = 'iso-8859-1';
 $languages['pt']['ALIAS'] = 'pt_PT';
 
 $languages['ru_RU']['NAME']    = 'Russian';
-$languages['ru_RU']['CHARSET'] = 'koi8-r';
+$languages['ru_RU']['CHARSET'] = 'utf-8';
+$languages['ru_RU']['LOCALE'] = 'ru_RU.UTF-8';
 $languages['ru']['ALIAS'] = 'ru_RU';
+
 
 $languages['sr_YU']['NAME']    = 'Serbian';
 $languages['sr_YU']['CHARSET'] = 'iso-8859-2';
@@ -1787,7 +1794,8 @@ $languages['th_TH']['CHARSET'] = 'tis-620';
 $languages['th']['ALIAS'] = 'th_TH';
 
 $languages['lt_LT']['NAME']    = 'Lithuanian';
-$languages['lt_LT']['CHARSET'] = 'windows-1257';
+$languages['lt_LT']['CHARSET'] = 'iso-8859-4';
+$languages['lt_LT']['LOCALE'] = 'lt_LT.ISO-8859-4';
 $languages['lt']['ALIAS'] = 'lt_LT';
 
 $languages['sl_SI']['NAME']    = 'Slovenian';
