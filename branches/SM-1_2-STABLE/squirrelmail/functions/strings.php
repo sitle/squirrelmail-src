@@ -340,8 +340,10 @@ function sq_mt_randomize() {
     }
     
     /* Apache-specific */
-    sq_mt_seed(md5($_SERVER['UNIQUE_ID']));
-    
+    if(isset($_SERVER['UNIQUE_ID'])) {
+        sq_mt_seed(md5($_SERVER['UNIQUE_ID']));
+    }
+
     $randomized = 1;
 }
 
