@@ -353,23 +353,36 @@ if ($showaddrlist) {
             }
             if ($squirrelmail_language == 'ja_JP')
                 {
-            echo html_tag( 'tr', '', '', $tr_bgcolor) .
+            echo html_tag( 'tr', '', '', $tr_bgcolor);
+            if ($abook->backends[$row['backend']]->writeable) {
                 html_tag( 'td',
                           '<small>' .
 			  addCheckBox('sel[]', $selected, $row['backend'].':'.$row['nickname']).
                           '</small>' ,
-                          'center', '', 'valign="top" width="1%"' ) .
-                html_tag( 'td', '&nbsp;' . $row['nickname'] . '&nbsp;', 'left', '', 'valign="top" width="1%" nowrap' ) . 
+                          'center', '', 'valign="top" width="1%"' );
+            } else {
+                echo html_tag( 'td',
+                        '&nbsp;' ,
+                        'center', '', 'valign="top" width="1%"' );
+            }
+            echo html_tag( 'td', '&nbsp;' . $row['nickname'] . '&nbsp;', 'left', '', 'valign="top" width="1%" nowrap' ) . 
                 html_tag( 'td', '&nbsp;' . $row['lastname'] . ' ' . $row['firstname'] . '&nbsp;', 'left', '', 'valign="top" width="1%" nowrap' ) .
                 html_tag( 'td', '', 'left', '', 'valign="top" width="1%" nowrap' ) . '&nbsp;';
                 } else {
-            echo html_tag( 'tr', '', '', $tr_bgcolor) .
-            html_tag( 'td',
-                '<small>' .
-		addCheckBox('sel[]', $selected, $row['backend'] . ':' . $row['nickname']).
-                '</small>' ,
-                'center', '', 'valign="top" width="1%"' ) .
-            html_tag( 'td', '&nbsp;' . $row['nickname'] . '&nbsp;', 'left', '', 'valign="top" width="1%" nowrap' ) .
+            echo html_tag( 'tr', '', '', $tr_bgcolor);
+            if ($abook->backends[$row['backend']]->writeable) {
+                echo html_tag( 'td',
+                       '<small>' .
+                       addCheckBox('sel[]', $selected, $row['backend'] . ':' . $row['nickname']).
+                       '</small>' ,
+                       'center', '', 'valign="top" width="1%"' );
+            } else {
+                echo html_tag( 'td',
+                        '&nbsp;' ,
+                        'center', '', 'valign="top" width="1%"' );
+            }
+
+            echo html_tag( 'td', '&nbsp;' . $row['nickname'] . '&nbsp;', 'left', '', 'valign="top" width="1%" nowrap' ) .
             html_tag( 'td', '&nbsp;' . $row['name'] . '&nbsp;', 'left', '', 'valign="top" width="1%" nowrap' ) .
             html_tag( 'td', '', 'left', '', 'valign="top" width="1%" nowrap' ) . '&nbsp;';
                 }
