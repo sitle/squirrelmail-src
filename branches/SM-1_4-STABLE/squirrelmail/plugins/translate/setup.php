@@ -475,14 +475,14 @@ function translate_form_intertran($message) {
 function translate_form_gpltrans($message) {
     translate_new_form('http://www.translator.cx/cgi-bin/gplTrans');
     echo '<select name="language">'.
-        translate_lang_opt('nl', 'nl', 'dutch_dict',      _("Dutch")).
-        translate_lang_opt('fr', 'fr', 'french_dict',     _("French")).
-        translate_lang_opt('de', 'de', 'german_dict',     _("German")).
-        translate_lang_opt('',   '',   'indonesian_dict', _("Indonesian")).
-        translate_lang_opt('it', 'it', 'italian_dict',    _("Italian")).
-        translate_lang_opt('',   '',   'latin_dict',      _("Latin")).
-        translate_lang_opt('pt', 'pt', 'portuguese_dict', _("Portuguese")).
-        translate_lang_opt('es', 'es', 'spanish_dict',    _("Spanish")).
+        translate_lang_opt('', 'nl_NL', 'dutch_dict',      _("Dutch")).
+        translate_lang_opt('', 'fr_FR', 'french_dict',     _("French")).
+        translate_lang_opt('', 'de_DE', 'german_dict',     _("German")).
+        translate_lang_opt('', 'id_ID', 'indonesian_dict', _("Indonesian")).
+        translate_lang_opt('', 'it_IT', 'italian_dict',    _("Italian")).
+        translate_lang_opt('', 'la',    'latin_dict',      _("Latin")).
+        translate_lang_opt('', 'pt*',   'portuguese_dict', _("Portuguese")).
+        translate_lang_opt('', 'es_ES', 'spanish_dict',    _("Spanish")).
         '</select>';
     echo '<select name="toenglish">';
     echo '<option value="yes" >'. _("to English") . '</option>';
