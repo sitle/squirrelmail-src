@@ -48,7 +48,7 @@
    $languages['fi']['CHARSET'] = 'iso-8859-1';
 
    $languages['hu']['NAME']    = 'Hungarian';
-   $languages['hu']['CHARSET'] = 'iso-8859-1';
+   $languages['hu']['CHARSET'] = 'iso-8859-2';
 
    $languages['is']['NAME']    = 'Icelandic';
    $languages['is']['CHARSET'] = 'iso-8859-1';
