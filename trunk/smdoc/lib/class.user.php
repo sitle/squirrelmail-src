@@ -216,11 +216,11 @@ class base_user extends foowd_object
    *
    * @global array Specifies table information for user persistance.
    * @param smdoc foowd Reference to the foowd environment object.
-   * @param optional string username The users name.
-   * @param optional string password An MD5 hash of the users password.
-   * @param optional string email The users e-mail address.
-   * @param optional array groups The user groups the user belongs to.
-   * @param optional string hostmask The users hostmask.
+   * @param string username The users name.
+   * @param string password An MD5 hash of the users password.
+   * @param string email The users e-mail address.
+   * @param array groups The user groups the user belongs to.
+   * @param string hostmask The users hostmask.
    */
   function base_user( &$foowd,
                    $username = NULL,
@@ -378,8 +378,8 @@ class base_user extends foowd_object
    *
    * @static
    * @param smdoc foowd Reference to the foowd environment object.
-   * @param optional string username The username of the user to log in as.
-   * @param optional string password The plain text password of the user to log in with.
+   * @param string username The username of the user to log in as.
+   * @param string password The plain text password of the user to log in with.
    * @return int 0 = logged in successfully<br />
    *             1 = no user given<br />
    *             2 = unknown user<br />
@@ -425,7 +425,7 @@ class base_user extends foowd_object
    *
    * @static
    * @param smdoc foowd Reference to the foowd environment object.
-   * @param optional string authType The type of user authentication to use.
+   * @param string authType The type of user authentication to use.
    * @return int 0 = cookie logged out successfully<br />
    *             1 = http logged out successfully<br />
    *             2 = ip auth, can not log out<br />
@@ -483,8 +483,8 @@ class base_user extends foowd_object
    * @static
    * @param smdoc foowd Reference to the foowd environment object.
    * @param string username The name of the user to fetch the password for.
-   * @param optional string queryUsername Username given for stage 2 of the retrieval process.
-   * @param optional string id The ID given for stage 2 of the process.
+   * @param string queryUsername Username given for stage 2 of the retrieval process.
+   * @param string id The ID given for stage 2 of the process.
    * @return int 0 = nothing, display form<br />
    *             1 = password change request e-mail sent<br />
    *             2 = could not send e-mail due to technical problem<br />

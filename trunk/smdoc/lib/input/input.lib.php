@@ -96,10 +96,10 @@ class input_base
    * Constructs a new base object.
    *
    * @param string name The name of the form element.
-   * @param optional string regex The validation regular expression.
-   * @param optional string value The initial contents value.
-   * @param optional boolean  required is item required
-   * @param optional constant method SQ_GET, SQ_POST, SQ_SESSION, etc.
+   * @param string regex The validation regular expression.
+   * @param string value The initial contents value.
+   * @param bool  required is item required
+   * @param constant method SQ_GET, SQ_POST, SQ_SESSION, etc.
    */
   function input_base($name, $regex=NULL, $value=NULL, $required=FALSE, $method=SQ_FORM)
   {

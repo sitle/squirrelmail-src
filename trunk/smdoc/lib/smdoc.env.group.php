@@ -50,7 +50,7 @@ class smdoc_group
    * initializeUserGroups initializes an array in the session containing a list
    * of user groups as 'internal name/objectid' => 'external name'.
    *
-   * @param optional bool forceRefresh If true, force refresh of list in session.
+   * @param bool forceRefresh If true, force refresh of list in session.
    */
   function initializeUserGroups($forceRefresh=FALSE)
   {

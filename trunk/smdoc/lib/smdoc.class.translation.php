@@ -72,7 +72,7 @@ class smdoc_translation extends foowd_workspace
    * for each defined translation
    * @static
    * @param smdoc foowd Reference to the foowd environment object.
-   * @param boolean forceRefresh Force refresh of session cache.
+   * @param bool forceRefresh Force refresh of session cache.
    */
   function initialize(&$foowd, $forceRefresh = FALSE)
   {
@@ -142,7 +142,7 @@ class smdoc_translation extends foowd_workspace
    *
    * @static
    * @param smdoc foowd Reference to the foowd environment object.
-   * @param optional int objectid Specific translation to retrieve.
+   * @param int objectid Specific translation to retrieve.
    * @return URL for specified translation, or array of all translations.
    */
   function getLink(&$foowd, $objectid = FALSE)
@@ -168,7 +168,7 @@ class smdoc_translation extends foowd_workspace
    *
    * @static 
    * @param smdoc foowd Reference to the foowd environment object.
-   * @param optional int objectid Specific translation to retrieve.
+   * @param int objectid Specific translation to retrieve.
    * @return specified language string, or array of all languages.
    */
   function getLanguage(&$foowd, $objectid = FALSE)
