@@ -24,9 +24,9 @@ Version 1.4.3 - CVS
     Sent_subfolder plugin is hooked to special_mailbox hook.
     Stable 1.4 tracker #699920.
   - New hook function: boolean_hook_function()  Used for true/false hooks.
-  - Fixed #870365.
+  - Fixed special_mailbox hook to allow more than one hooked plugin (#870365).
   - Added new reply citation to include date and author.
-  - Fix for XSS issue.
+  - Fix some XSS issues.
   - Norwegian Bokmal translation uses nb_NO.
   - Improve display of some unparsable/absent dates (#891354).
   - Added non-anonymous LDAP bind and bind protocol patches from devel.
@@ -38,7 +38,8 @@ Version 1.4.3 - CVS
   - Fixed "Resume Draft" to use correct identity (#845290).
   - Fixed RFC2821 incompliancy by adding a fallback mechanism to HELO if
     EHLO is not supported.
-  - Fixed RFC2298 incompliancy by setting envelop sender to null.
+  - Fixed RFC2298 incompliancy by setting envelope sender to null.
+  - Allow single quotes to be used in theme name in conf.pl (#805309).
 
 
 Version 1.4.2 - 1 October 2003
