@@ -81,7 +81,8 @@ function displayPageHeader($color, $mailbox, $xtra='', $session=false) {
 
     global $hide_sm_attributions, $PHP_SELF, $frame_top,
            $compose_new_win, $compose_width, $compose_height,
-           $attachemessages, $provider_name, $provider_uri;
+           $attachemessages, $provider_name, $provider_uri,
+           $javascript_on, $default_use_mdn, $mdn_user_support;
 
     sqgetGlobalVar('base_uri', $base_uri, SQ_SESSION );
     sqgetGlobalVar('delimiter', $delimiter, SQ_SESSION );
@@ -99,10 +100,14 @@ function displayPageHeader($color, $mailbox, $xtra='', $session=false) {
         $compose_uri = $base_uri.'src/compose.php?newmessage=1';
 	$session = 0;
     }
-   
-    switch ( $module ) {
-    case 'src/read_body.php':
+
+    // only output JavaScript if actually turned on
+    if($javascript_on) {
+        switch ( $module ) {
+        case 'src/read_body.php':
             $js ='';
+
+            // compose in new window code
             if ($compose_new_win == '1') {
                 if (!preg_match("/^[0-9]{3,4}$/", $compose_width)) {
                     $compose_width = '640';
@@ -110,33 +115,36 @@ function displayPageHeader($color, $mailbox, $xtra='', $session=false) {
                 if (!preg_match("/^[0-9]{3,4}$/", $compose_height)) {
                     $compose_height = '550';
                 }
-                $js .= "\n".'<script language="JavaScript" type="text/javascript">' .
-                    "\n<!--\n";
                 $js .= "function comp_in_new(comp_uri) {\n".
 		     "       if (!comp_uri) {\n".
 		     '           comp_uri = "'.$compose_uri."\";\n".
-		     '       }'. "\n".
+                     '       }'. "\n".
                      '    var newwin = window.open(comp_uri' .
                      ', "_blank",'.
                      '"width='.$compose_width. ',height='.$compose_height.
                      ',scrollbars=yes,resizable=yes");'."\n".
                      "}\n\n";
+            }
 
-
+            // javascript for sending read receipts
+            if($default_use_mdn && $mdn_user_support) {
                 $js .= 'function sendMDN() {'."\n".
-                       "mdnuri=window.location+'&sendreceipt=1';".
+                       "    mdnuri=window.location+'&sendreceipt=1'; ".
                        "var newwin = window.open(mdnuri,'right');".
 	               "\n}\n\n";
+            }
 
-                $js .= "// -->\n".
-        	       "</script>\n";
+            // if any of the above passes, add the JS tags too.
+            if($js) {
+                $js = "\n".'<script language="JavaScript" type="text/javascript">' .
+                      "\n<!--\n" . $js . "// -->\n</script>\n";
+            }
 	     
-             }
-             displayHtmlHeader ('SquirrelMail', $js);
-             $onload = $xtra;
-        break;
-    case 'src/compose.php':
-        $js = '<script language="JavaScript" type="text/javascript">' .
+            displayHtmlHeader ('SquirrelMail', $js);
+            $onload = $xtra;
+          break;
+        case 'src/compose.php':
+            $js = '<script language="JavaScript" type="text/javascript">' .
              "\n<!--\n" .
              "function checkForm() {\n".
                 "var f = document.forms.length;\n".
@@ -158,14 +166,14 @@ function displayPageHeader($color, $mailbox, $xtra='', $session=false) {
                 "}\n".
             "}\n";
 	    
-        $js .= "// -->\n".
+            $js .= "// -->\n".
         	 "</script>\n";
-        $onload = 'onload="checkForm();"';
-        displayHtmlHeader ('SquirrelMail', $js);
-        break;   
+            $onload = 'onload="checkForm();"';
+            displayHtmlHeader ('SquirrelMail', $js);
+            break;   
 
-    default:
-        $js = '<script language="JavaScript" type="text/javascript">' .
+        default:
+            $js = '<script language="JavaScript" type="text/javascript">' .
              "\n<!--\n" .
              "function checkForm() {\n".
                 "var f = document.forms.length;\n".
@@ -212,8 +220,11 @@ function displayPageHeader($color, $mailbox, $xtra='', $session=false) {
 
         $onload = 'onload="checkForm();"';
         displayHtmlHeader ('SquirrelMail', $js);
-        break;   
-
+      } // end switch module
+    } else {
+        // JavaScript off
+        displayHtmlHeader ('SquirrelMail');
+        $onload = '';
     }
 
     echo "<body text=\"$color[8]\" bgcolor=\"$color[4]\" link=\"$color[7]\" vlink=\"$color[7]\" alink=\"$color[7]\" $onload>\n\n";
