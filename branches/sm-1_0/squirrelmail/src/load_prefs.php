@@ -142,7 +142,7 @@
 
    $prefix_sig = getPref($data_dir, $username, "prefix_sig");
    if ($prefix_sig == "")
-      $prefix_sig = false;
+      $prefix_sig = true;
 
    $left_refresh = getPref($data_dir, $username, "left_refresh");
    if ($left_refresh == "")
