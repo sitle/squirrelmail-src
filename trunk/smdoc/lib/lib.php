@@ -28,6 +28,39 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  * @package Foowd
  */
 
+/** 
+ * Unset any foowd vars contained in specified var
+ */
+function remove_foowd(&$var)
+{
+  if ( is_object($var)) 
+  {
+    if ( isset($var->config_settings) ) 
+      $var->config_settings = '*hidden*';
+    $var->foowd = '*hidden*';
+    $var->foowd_vars_meta = array('*hidden*');
+    $var->foowd_indexes = array('*hidden*');
+    $var->foowd_original_access_vars = array('*hidden*');
+    $returnArray = get_object_vars($var);
+    foreach($returnArray as $element)
+    {
+      if ( is_array($element) || is_object($element) )
+        remove_foowd($element);
+    }
+  }
+
+  if ( is_array($var) )
+  {
+    unset($var['foowd']);
+    foreach($var as $element)
+    {
+      if ( is_array($element) || is_object($element) )
+        remove_foowd($element);
+    }
+  }
+}
+
+
 /**
  * Display a variable in a formatted way.
  *
@@ -38,21 +71,11 @@ function show($var, $comment = NULL)
   echo '<pre>';
   if ( $comment )
     echo $comment . '<br />';
-  if (is_object($var)) 
-  {
-    if ( isset($var->config_settings) ) 
-      unset($var->config_settings);
-    unset($var->foowd);
-    unset($var->foowd_vars_meta);
-    unset($var->foowd_indexes);
-    unset($var->foowd_original_access_vars);
-    var_dump($var);
-  }
-  elseif ( is_array($var) )
-  {
-    unset($var['foowd']);
+
+  remove_foowd(&$var);
+
+  if ( is_array($var) )
     print_r($var);
-  } 
   else 
     var_dump($var);
 

@@ -25,7 +25,7 @@
  * @param string $trackString String containing accumulated debug information.
  * @param bool $debugVar TRUE if additional var information be displayed (_SESSION, _GET, etc.).
  */
-function debug_display($accessNumber, $execTime, &$trackString, $debugVar)
+function debug_display($accessNumber, $execTime, &$trackString, $debugVar, &$templateVar)
 {
 ?>
 <!-- begin debug -->
@@ -39,6 +39,10 @@ Total Execution Time: <?php echo $execTime; ?>  seconds
 
 <div class="debug_output_heading">Execution History</div>
 <pre><?php echo $trackString; ?></pre>
+
+<div class="debug_output_heading">Template Vars</div>
+<?php   show($templateVar); ?>
+</div>
 
 <?php if ( $debugVar ) 
       { ?>
