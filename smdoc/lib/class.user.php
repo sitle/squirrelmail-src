@@ -34,7 +34,9 @@ setPermission('base_user', 'class','login', 'Everybody');
 setPermission('base_user', 'class','logout','Registered');
 setPermission('base_user', 'class','create','Everybody');
 setPermission('base_user', 'class','list',  'Everybody');
+
 setPermission('base_user', 'object', 'groups', 'Gods');
+setPermission('base_user', 'object', 'update', 'Author');
 
 setPermission('base_user', 'object', 'clone', 'Nobody');
 setPermission('base_user', 'object', 'admin', 'Nobody');
