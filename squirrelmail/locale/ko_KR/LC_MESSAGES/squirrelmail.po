@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: $Id$\n"
-"POT-Creation-Date: 2002-09-05 09:11+0200\n"
+"POT-Creation-Date: 2002-11-13 13:37+0100\n"
 "PO-Revision-Date: 2001-12-15 09:45+0200\n"
 "Last-Translator: J.I. Kim <aporie@netian.com>\n"
 "Language-Team: Korean <squirrelmail-i18n@lists.sourceforge.org>\n"
@@ -26,33 +26,33 @@ msgstr "전체"
 
 #: squirrelmail/src/addrbook_search.php:116
 #: squirrelmail/src/addrbook_search_html.php:105
-#: squirrelmail/src/addressbook.php:314 squirrelmail/src/vcard.php:101
+#: squirrelmail/src/addressbook.php:317 squirrelmail/src/vcard.php:102
 msgid "Name"
 msgstr "이름"
 
 #: squirrelmail/src/addrbook_search.php:117
 #: squirrelmail/src/addrbook_search_html.php:106
-#: squirrelmail/src/addressbook.php:315
+#: squirrelmail/src/addressbook.php:318
 msgid "E-mail"
-msgstr "전자메일"
+msgstr "이메일"
 
 #: squirrelmail/src/addrbook_search.php:118
 #: squirrelmail/src/addrbook_search_html.php:107
-#: squirrelmail/src/addressbook.php:316
+#: squirrelmail/src/addressbook.php:319
 msgid "Info"
 msgstr "정보 사항"
 
 #: squirrelmail/src/addrbook_search.php:121
 #: squirrelmail/src/addrbook_search_html.php:112
 msgid "Source"
-msgstr "원본보기"
+msgstr "원본 보기"
 
-#: squirrelmail/functions/mailbox_display.php:752
+#: squirrelmail/functions/mailbox_display.php:745
 #: squirrelmail/plugins/filters/options.php:147
 #: squirrelmail/src/addrbook_search_html.php:122
-#: squirrelmail/src/compose.php:500 squirrelmail/src/download.php:363
+#: squirrelmail/src/compose.php:501 squirrelmail/src/download.php:363
 #: squirrelmail/src/download.php:370
-#: squirrelmail/src/options_highlight.php:357
+#: squirrelmail/src/options_highlight.php:366
 #: squirrelmail/src/printer_friendly_bottom.php:106
 #: squirrelmail/src/search.php:385
 msgid "To"
@@ -60,7 +60,7 @@ msgstr "받는 사람"
 
 #: squirrelmail/plugins/filters/options.php:150
 #: squirrelmail/src/addrbook_search_html.php:124
-#: squirrelmail/src/compose.php:507 squirrelmail/src/options_highlight.php:360
+#: squirrelmail/src/compose.php:508 squirrelmail/src/options_highlight.php:369
 #: squirrelmail/src/search.php:384
 msgid "Cc"
 msgstr "참조"
@@ -92,13 +92,13 @@ msgstr " : "
 msgid "All address books"
 msgstr "전체 주소록"
 
-#: squirrelmail/functions/page_header.php:239
+#: squirrelmail/functions/page_header.php:245
 #: squirrelmail/src/addrbook_search.php:210
 #: squirrelmail/src/addrbook_search_html.php:198
 #: squirrelmail/src/search.php:220 squirrelmail/src/search.php:224
 #: squirrelmail/src/search.php:244 squirrelmail/src/search.php:389
-#: squirrelmail/src/search.php:420 squirrelmail/src/search.php:441
-#: squirrelmail/src/search.php:451
+#: squirrelmail/src/search.php:419 squirrelmail/src/search.php:440
+#: squirrelmail/src/search.php:450
 msgid "Search"
 msgstr "찾기"
 
@@ -111,12 +111,12 @@ msgstr "전체 목록"
 #: squirrelmail/src/addrbook_search_html.php:229
 #, c-format
 msgid "Unable to list addresses from %s"
-msgstr "%s 로부터 주소목록을 가져올수 없습니다."
+msgstr "%s(으)로부터 주소목록을 가져올 수 없습니다."
 
 #: squirrelmail/src/addrbook_search.php:258
 #: squirrelmail/src/addrbook_search_html.php:254
 msgid "Your search failed with the following error(s)"
-msgstr "다음과 같은 에러가 발생했습니다."
+msgstr "다음과 같은 오류가 발생했습니다."
 
 #: squirrelmail/src/addrbook_search.php:178
 #: squirrelmail/src/addrbook_search.php:265
@@ -132,22 +132,22 @@ msgstr "돌아가기"
 #: squirrelmail/plugins/squirrelspell/modules/check_me.mod:121
 #: squirrelmail/plugins/squirrelspell/modules/check_me.mod:429
 #: squirrelmail/plugins/squirrelspell/modules/forget_me_not.mod:74
-#: squirrelmail/src/addrbook_search.php:213 squirrelmail/src/compose.php:671
+#: squirrelmail/src/addrbook_search.php:213 squirrelmail/src/compose.php:672
 msgid "Close"
 msgstr "종료"
 
-#: squirrelmail/src/addressbook.php:68 squirrelmail/src/addressbook.php:314
-#: squirrelmail/src/vcard.php:145
+#: squirrelmail/src/addressbook.php:68 squirrelmail/src/addressbook.php:317
+#: squirrelmail/src/vcard.php:146
 msgid "Nickname"
 msgstr "별명"
 
 #: squirrelmail/src/addressbook.php:69
 msgid "Must be unique"
-msgstr "중복된 이름은 사용할수 없습니다."
+msgstr "중복된 이름은 사용할 수 없습니다."
 
 #: squirrelmail/src/addressbook.php:70
 msgid "E-mail address"
-msgstr "전자메일 주소"
+msgstr "이메일 주소"
 
 #: squirrelmail/src/addressbook.php:71
 msgid "First name"
@@ -165,12 +165,12 @@ msgstr "추가 정보"
 msgid "No personal address book is defined. Contact administrator."
 msgstr "개인 주소록이 정의되지 않았습니다. 관리자에게 연락하세요"
 
-#: squirrelmail/src/addressbook.php:183
+#: squirrelmail/src/addressbook.php:185
 msgid "You can only edit one address at the time"
-msgstr "한번에 하나의 주소만 편집할수 있습니다."
+msgstr "한번에 하나의 주소만 편집할 수 있습니다."
 
-#: squirrelmail/src/addressbook.php:197 squirrelmail/src/addressbook.php:199
-#: squirrelmail/src/addressbook.php:229 squirrelmail/src/addressbook.php:231
+#: squirrelmail/src/addressbook.php:199 squirrelmail/src/addressbook.php:201
+#: squirrelmail/src/addressbook.php:231 squirrelmail/src/addressbook.php:233
 msgid "Update address"
 msgstr "주소 변경"
 
@@ -178,180 +178,180 @@ msgstr "주소 변경"
 #: squirrelmail/functions/display_messages.php:89
 #: squirrelmail/functions/display_messages.php:106
 #: squirrelmail/functions/display_messages.php:172
-#: squirrelmail/src/addressbook.php:220 squirrelmail/src/addressbook.php:268
+#: squirrelmail/src/addressbook.php:222 squirrelmail/src/addressbook.php:270
 msgid "ERROR"
-msgstr "에러"
+msgstr "오류"
 
-#: squirrelmail/src/addressbook.php:243
+#: squirrelmail/src/addressbook.php:245
 msgid "Unknown error"
-msgstr "알수없는 에러"
+msgstr "알 수 없는 오류"
 
-#: squirrelmail/src/addressbook.php:287 squirrelmail/src/addressbook.php:375
+#: squirrelmail/src/addressbook.php:289 squirrelmail/src/addressbook.php:378
 msgid "Add address"
 msgstr "주소 추가"
 
-#: squirrelmail/src/addressbook.php:299 squirrelmail/src/addressbook.php:357
+#: squirrelmail/src/addressbook.php:302 squirrelmail/src/addressbook.php:360
 msgid "Edit selected"
 msgstr "선택한 주소 편집"
 
-#: squirrelmail/src/addressbook.php:301 squirrelmail/src/addressbook.php:359
+#: squirrelmail/src/addressbook.php:304 squirrelmail/src/addressbook.php:362
 msgid "Delete selected"
 msgstr "선택한 주소 삭제"
 
-#: squirrelmail/src/addressbook.php:372
+#: squirrelmail/src/addressbook.php:375
 #, c-format
 msgid "Add to %s"
-msgstr "%s 에 추가"
+msgstr "%s에 추가"
 
 #: squirrelmail/src/compose.php:140
 msgid "Draft Email Saved"
 msgstr "이메일이 임시보관함에 저장되었습니다."
 
-#: squirrelmail/src/compose.php:243 squirrelmail/src/compose.php:287
-#: squirrelmail/src/compose.php:297
+#: squirrelmail/src/compose.php:244 squirrelmail/src/compose.php:288
+#: squirrelmail/src/compose.php:298
 msgid "Could not move/copy file. File not attached"
-msgstr "파일을 이동/복사할수 없습니다. 파일이 첨부되지 않았습니다. "
+msgstr "파일을 이동/복사할 수 없습니다. 파일이 첨부되지 않았습니다. "
 
-#: squirrelmail/src/compose.php:495
+#: squirrelmail/src/compose.php:496
 msgid "Original Message"
-msgstr "원래 메세지"
+msgstr "원본 메세지"
 
-#: squirrelmail/functions/mailbox_display.php:769
+#: squirrelmail/functions/mailbox_display.php:762
 #: squirrelmail/plugins/filters/options.php:156
-#: squirrelmail/src/compose.php:496 squirrelmail/src/download.php:361
+#: squirrelmail/src/compose.php:497 squirrelmail/src/download.php:361
 #: squirrelmail/src/download.php:366
-#: squirrelmail/src/options_highlight.php:366
-#: squirrelmail/src/options_order.php:64
+#: squirrelmail/src/options_highlight.php:375
+#: squirrelmail/src/options_order.php:59
 #: squirrelmail/src/printer_friendly_bottom.php:111
 #: squirrelmail/src/search.php:382
 msgid "Subject"
 msgstr "제목"
 
-#: squirrelmail/functions/mailbox_display.php:754
+#: squirrelmail/functions/mailbox_display.php:747
 #: squirrelmail/plugins/filters/options.php:144
-#: squirrelmail/src/compose.php:497 squirrelmail/src/download.php:150
+#: squirrelmail/src/compose.php:498 squirrelmail/src/download.php:150
 #: squirrelmail/src/download.php:362 squirrelmail/src/download.php:368
-#: squirrelmail/src/options_highlight.php:354
-#: squirrelmail/src/options_order.php:62
+#: squirrelmail/src/options_highlight.php:363
+#: squirrelmail/src/options_order.php:57
 #: squirrelmail/src/printer_friendly_bottom.php:105
 #: squirrelmail/src/search.php:383
 msgid "From"
 msgstr "보낸 사람"
 
-#: squirrelmail/functions/mailbox_display.php:762
-#: squirrelmail/src/compose.php:498 squirrelmail/src/download.php:364
-#: squirrelmail/src/download.php:372 squirrelmail/src/options_order.php:63
+#: squirrelmail/functions/mailbox_display.php:755
+#: squirrelmail/src/compose.php:499 squirrelmail/src/download.php:364
+#: squirrelmail/src/download.php:372 squirrelmail/src/options_order.php:58
 #: squirrelmail/src/printer_friendly_bottom.php:110
 msgid "Date"
 msgstr "날짜"
 
-#: squirrelmail/src/compose.php:663
+#: squirrelmail/src/compose.php:664
 msgid "Draft Saved"
 msgstr "임시보관함에 저장되었습니다."
 
-#: squirrelmail/src/compose.php:666
+#: squirrelmail/src/compose.php:667
 msgid "Your Message has been sent"
 msgstr "메세지가 전송되었습니다."
 
 #: squirrelmail/plugins/listcommands/mailout.php:57
-#: squirrelmail/src/compose.php:682 squirrelmail/src/read_body.php:905
+#: squirrelmail/src/compose.php:683 squirrelmail/src/read_body.php:908
 msgid "From:"
 msgstr "보낸 사람:"
 
-#: squirrelmail/src/compose.php:710 squirrelmail/src/download.php:162
-#: squirrelmail/src/read_body.php:222 squirrelmail/src/read_body.php:924
+#: squirrelmail/src/compose.php:711 squirrelmail/src/download.php:162
+#: squirrelmail/src/read_body.php:222 squirrelmail/src/read_body.php:927
 msgid "To:"
 msgstr "받는 사람:"
 
-#: squirrelmail/src/compose.php:718
+#: squirrelmail/src/compose.php:719
 msgid "CC:"
 msgstr "참조:"
 
-#: squirrelmail/src/compose.php:726
+#: squirrelmail/src/compose.php:727
 msgid "BCC:"
 msgstr "숨은 참조:"
 
-#: squirrelmail/src/compose.php:733 squirrelmail/src/download.php:155
-#: squirrelmail/src/read_body.php:223 squirrelmail/src/read_body.php:876
+#: squirrelmail/src/compose.php:734 squirrelmail/src/download.php:155
+#: squirrelmail/src/read_body.php:223 squirrelmail/src/read_body.php:879
 msgid "Subject:"
 msgstr "제목:"
 
-#: squirrelmail/src/compose.php:795 squirrelmail/src/compose.php:887
+#: squirrelmail/src/compose.php:796 squirrelmail/src/compose.php:888
 msgid "Send"
 msgstr "전송"
 
-#: squirrelmail/src/compose.php:801
+#: squirrelmail/src/compose.php:802
 msgid "Attach:"
 msgstr "첨부"
 
-#: squirrelmail/src/compose.php:806 squirrelmail/src/options_order.php:150
+#: squirrelmail/src/compose.php:807 squirrelmail/src/options_order.php:145
 msgid "Add"
 msgstr "추가"
 
-#: squirrelmail/src/compose.php:826
+#: squirrelmail/src/compose.php:827
 msgid "Delete selected attachments"
 msgstr "선택한 첨부물 삭제"
 
-#: squirrelmail/src/compose.php:856 squirrelmail/src/read_body.php:953
+#: squirrelmail/src/compose.php:857 squirrelmail/src/read_body.php:956
 msgid "Priority"
 msgstr "우선순위"
 
 #: squirrelmail/plugins/administrator/defines.php:201
-#: squirrelmail/plugins/calendar/functions.php:102
-#: squirrelmail/src/compose.php:857 squirrelmail/src/read_body.php:693
+#: squirrelmail/plugins/calendar/functions.php:100
+#: squirrelmail/src/compose.php:858 squirrelmail/src/read_body.php:696
 msgid "High"
 msgstr "높음"
 
-#: squirrelmail/plugins/calendar/functions.php:101
-#: squirrelmail/src/compose.php:858 squirrelmail/src/read_body.php:706
+#: squirrelmail/plugins/calendar/functions.php:99
+#: squirrelmail/src/compose.php:859 squirrelmail/src/read_body.php:709
 msgid "Normal"
 msgstr "보통"
 
 #: squirrelmail/plugins/administrator/defines.php:198
-#: squirrelmail/src/compose.php:859 squirrelmail/src/read_body.php:699
+#: squirrelmail/src/compose.php:860 squirrelmail/src/read_body.php:702
 msgid "Low"
 msgstr "낮음"
 
-#: squirrelmail/src/compose.php:865
+#: squirrelmail/src/compose.php:866
 msgid "Receipt"
-msgstr "수신"
+msgstr "수신확인"
 
-#: squirrelmail/src/compose.php:867
+#: squirrelmail/src/compose.php:868
 msgid "On read"
-msgstr "읽는중"
+msgstr "읽을때"
 
-#: squirrelmail/src/compose.php:869
+#: squirrelmail/src/compose.php:870
 msgid "On Delivery"
-msgstr "전송중"
+msgstr "수신할때"
 
-#: squirrelmail/src/compose.php:874
+#: squirrelmail/src/compose.php:875
 #: squirrelmail/src/options_identities.php:338
-#: squirrelmail/src/options_personal.php:104
+#: squirrelmail/src/options_personal.php:102
 msgid "Signature"
 msgstr "서명"
 
-#: squirrelmail/functions/page_header.php:233 squirrelmail/src/compose.php:877
-#: squirrelmail/src/compose.php:881 squirrelmail/src/compose.php:885
+#: squirrelmail/functions/page_header.php:239 squirrelmail/src/compose.php:878
+#: squirrelmail/src/compose.php:882 squirrelmail/src/compose.php:886
 msgid "Addresses"
 msgstr "주소록"
 
-#: squirrelmail/src/compose.php:890
+#: squirrelmail/src/compose.php:891
 msgid "Save Draft"
 msgstr "임시보관함에 저장"
 
-#: squirrelmail/src/compose.php:909
+#: squirrelmail/src/compose.php:910
 msgid "You have not filled in the \"To:\" field."
 msgstr "\"받는사람:\"란이 비었습니다."
 
-#: squirrelmail/src/compose.php:1005
+#: squirrelmail/src/compose.php:1011
 msgid "said"
 msgstr "님이 쓰시길"
 
-#: squirrelmail/src/compose.php:1008
+#: squirrelmail/src/compose.php:1014
 msgid "quote"
 msgstr "인용"
 
-#: squirrelmail/src/compose.php:1008
+#: squirrelmail/src/compose.php:1014
 msgid "who"
 msgstr "글쓴이"
 
@@ -361,13 +361,13 @@ msgstr "첨부된 문서 보기"
 
 #: squirrelmail/src/download.php:79 squirrelmail/src/download.php:84
 #: squirrelmail/src/download.php:128 squirrelmail/src/image.php:47
-#: squirrelmail/src/image.php:51 squirrelmail/src/read_body.php:505
-#: squirrelmail/src/vcard.php:51 squirrelmail/src/vcard.php:55
+#: squirrelmail/src/image.php:51 squirrelmail/src/read_body.php:508
+#: squirrelmail/src/vcard.php:52 squirrelmail/src/vcard.php:56
 msgid "View message"
 msgstr "메세지 보기"
 
-#: squirrelmail/functions/mime.php:793 squirrelmail/src/download.php:105
-#: squirrelmail/src/image.php:60 squirrelmail/src/vcard.php:212
+#: squirrelmail/functions/mime.php:801 squirrelmail/src/download.php:105
+#: squirrelmail/src/image.php:60 squirrelmail/src/vcard.php:213
 msgid "Download this as a file"
 msgstr "파일로 다운받기"
 
@@ -375,12 +375,12 @@ msgstr "파일로 다운받기"
 msgid "Viewing a message attachment"
 msgstr "첨부된 문서 보기"
 
-#: squirrelmail/plugins/calendar/event_create.php:168
-#: squirrelmail/plugins/calendar/event_delete.php:90
-#: squirrelmail/plugins/calendar/event_edit.php:116
-#: squirrelmail/plugins/calendar/event_edit.php:182
-#: squirrelmail/plugins/calendar/event_edit.php:195
-#: squirrelmail/src/download.php:168 squirrelmail/src/read_body.php:915
+#: squirrelmail/plugins/calendar/event_create.php:164
+#: squirrelmail/plugins/calendar/event_delete.php:89
+#: squirrelmail/plugins/calendar/event_edit.php:108
+#: squirrelmail/plugins/calendar/event_edit.php:166
+#: squirrelmail/plugins/calendar/event_edit.php:179
+#: squirrelmail/src/download.php:168 squirrelmail/src/read_body.php:918
 msgid "Date:"
 msgstr "받은날짜:"
 
@@ -392,147 +392,151 @@ msgstr "참조:"
 msgid "Bcc:"
 msgstr "숨은 참조"
 
-#: squirrelmail/src/download.php:201 squirrelmail/src/read_body.php:657
+#: squirrelmail/src/download.php:201 squirrelmail/src/read_body.php:660
 msgid "more"
 msgstr "자세히"
 
-#: squirrelmail/src/download.php:202 squirrelmail/src/read_body.php:658
+#: squirrelmail/src/download.php:202 squirrelmail/src/read_body.php:661
 msgid "less"
 msgstr "숨김"
 
-#: squirrelmail/src/folders_create.php:42
+#: squirrelmail/src/folders_create.php:39
 msgid "Illegal folder name.  Please select a different name."
 msgstr "편지함 이름이 잘못되었습니다. 다른이름을 사용하세요."
 
-#: squirrelmail/src/folders_create.php:42
-#: squirrelmail/src/folders_delete.php:39
-#: squirrelmail/src/folders_rename_getname.php:32
+#: squirrelmail/src/folders_create.php:39
+#: squirrelmail/src/folders_delete.php:41
+#: squirrelmail/src/folders_rename_getname.php:34
 msgid "Click here to go back"
 msgstr "되돌아가려면 여기를 누르세요."
 
-#: squirrelmail/src/folders_delete.php:39
+#: squirrelmail/src/folders_delete.php:40
 msgid "You have not selected a folder to delete. Please do so."
 msgstr "삭제할 편지함을 선택하시기 바랍니다."
 
-#: squirrelmail/functions/page_header.php:235 squirrelmail/src/folders.php:41
+#: squirrelmail/functions/page_header.php:241 squirrelmail/src/folders.php:40
 #: squirrelmail/src/left_main.php:250
 msgid "Folders"
 msgstr "편지함"
 
-#: squirrelmail/src/folders.php:54
+#: squirrelmail/src/folders.php:51
 msgid "Subscribed successfully!"
 msgstr "편지함으로 사용"
 
-#: squirrelmail/src/folders.php:56
+#: squirrelmail/src/folders.php:53
 msgid "Unsubscribed successfully!"
 msgstr "편지함으로 사용하지 않음"
 
-#: squirrelmail/src/folders.php:58
+#: squirrelmail/src/folders.php:55
 msgid "Deleted folder successfully!"
 msgstr "편지함이 삭제되었습니다."
 
-#: squirrelmail/src/folders.php:60
+#: squirrelmail/src/folders.php:57
 msgid "Created folder successfully!"
 msgstr "편지함이 생성되었습니다."
 
-#: squirrelmail/src/folders.php:62
+#: squirrelmail/src/folders.php:59
 msgid "Renamed successfully!"
 msgstr "변경되었습니다."
 
-#: squirrelmail/src/folders.php:65 squirrelmail/src/left_main.php:289
+#: squirrelmail/src/folders.php:62 squirrelmail/src/left_main.php:289
 msgid "refresh folder list"
 msgstr "편지함 목록 갱신"
 
-#: squirrelmail/src/folders.php:77
+#: squirrelmail/src/folders.php:74
 msgid "Create Folder"
 msgstr "편지함 생성"
 
-#: squirrelmail/src/folders.php:82
+#: squirrelmail/src/folders.php:79
 msgid "as a subfolder of"
 msgstr "의 하위편지함으로"
 
-#: squirrelmail/src/folders.php:86 squirrelmail/src/folders.php:88
+#: squirrelmail/src/folders.php:83 squirrelmail/src/folders.php:85
 msgid "None"
-msgstr "없슴"
+msgstr "없음"
 
-#: squirrelmail/src/folders.php:113
+#: squirrelmail/src/folders.php:110
 msgid "Let this folder contain subfolders"
 msgstr "이 편지함은 하위편지함을 갖습니다."
 
-#: squirrelmail/src/folders.php:116
+#: squirrelmail/src/folders.php:113
 msgid "Create"
 msgstr "만들기"
 
-#: squirrelmail/src/folders.php:151
+#: squirrelmail/src/folders.php:148
 msgid "Rename a Folder"
 msgstr "편지함 이름 변경"
 
-#: squirrelmail/src/folders.php:157 squirrelmail/src/folders.php:194
+#: squirrelmail/src/folders.php:154 squirrelmail/src/folders.php:191
 msgid "Select a folder"
 msgstr "편지함 선택"
 
-#: squirrelmail/src/folders.php:175
+#: squirrelmail/src/folders.php:172
 msgid "Rename"
 msgstr "이름변경"
 
-#: squirrelmail/src/folders.php:179 squirrelmail/src/folders.php:216
+#: squirrelmail/src/folders.php:176 squirrelmail/src/folders.php:213
 msgid "No folders found"
 msgstr "편지함이 없습니다."
 
-#: squirrelmail/src/folders.php:187
+#: squirrelmail/src/folders.php:184
 msgid "Delete Folder"
 msgstr "편지함 삭제"
 
-#: squirrelmail/functions/mailbox_display.php:703
+#: squirrelmail/functions/mailbox_display.php:697
 #: squirrelmail/plugins/filters/options.php:216
 #: squirrelmail/plugins/mail_fetch/options.php:207
 #: squirrelmail/plugins/mail_fetch/options.php:214
-#: squirrelmail/src/folders.php:212 squirrelmail/src/options_highlight.php:103
+#: squirrelmail/src/folders.php:209 squirrelmail/src/options_highlight.php:116
 #: squirrelmail/src/options_identities.php:350
-#: squirrelmail/src/read_body.php:758
+#: squirrelmail/src/read_body.php:761
 msgid "Delete"
 msgstr "삭제"
 
 #: squirrelmail/plugins/listcommands/setup.php:34
-#: squirrelmail/src/folders.php:223 squirrelmail/src/folders.php:243
+#: squirrelmail/src/folders.php:220 squirrelmail/src/folders.php:240
 msgid "Unsubscribe"
 msgstr "사용하지 않음"
 
 #: squirrelmail/plugins/listcommands/setup.php:33
-#: squirrelmail/src/folders.php:223 squirrelmail/src/folders.php:284
+#: squirrelmail/src/folders.php:220 squirrelmail/src/folders.php:280
 msgid "Subscribe"
 msgstr "사용함"
 
-#: squirrelmail/src/folders.php:247
+#: squirrelmail/src/folders.php:244
 msgid "No folders were found to unsubscribe from!"
 msgstr "사용하지 않기 위한 편지함이 없습니다."
 
-#: squirrelmail/src/folders.php:287
+#: squirrelmail/src/folders.php:283
 msgid "No folders were found to subscribe to!"
 msgstr "사용하기 위한 편지함이 없습니다."
 
-#: squirrelmail/src/folders_rename_getname.php:32
+#: squirrelmail/src/folders_rename_getname.php:33
 msgid "You have not selected a folder to rename. Please do so."
 msgstr "이름을 변경할 편지함을 선택하시기 바랍니다."
 
-#: squirrelmail/src/folders_rename_getname.php:57
+#: squirrelmail/src/folders_rename_getname.php:58
 msgid "Rename a folder"
 msgstr "편지함 이름 변경"
 
-#: squirrelmail/src/folders_rename_getname.php:61
+#: squirrelmail/src/folders_rename_getname.php:62
 msgid "New name:"
 msgstr "새로운 이름:"
 
-#: squirrelmail/functions/options.php:421
+#: squirrelmail/functions/options.php:419
 #: squirrelmail/plugins/filters/options.php:200
 #: squirrelmail/plugins/newmail/newmail_opt.php:146
 #: squirrelmail/plugins/translate/options.php:164
-#: squirrelmail/src/folders_rename_getname.php:68
-#: squirrelmail/src/options_highlight.php:379
+#: squirrelmail/src/folders_rename_getname.php:69
+#: squirrelmail/src/options_highlight.php:388
 msgid "Submit"
 msgstr "완료"
 
-#: squirrelmail/functions/page_header.php:241
+#: squirrelmail/src/help.php:70 squirrelmail/src/help.php:77
+msgid "ERROR: Help files are not in the right format!"
+msgstr "오류: 도움말 파일의 형식이 올바르지 않습니다!"
+
+#: squirrelmail/functions/page_header.php:247
 #: squirrelmail/plugins/listcommands/setup.php:37 squirrelmail/src/help.php:91
 msgid "Help"
 msgstr "도움말"
@@ -543,38 +547,40 @@ msgid ""
 "The help has not been translated to %s.  It will be displayed in English "
 "instead."
 msgstr ""
-"이 도움말은 %s 로 번역되지 않았습니다.번역되지 않은 메세지는  영어로 표시됩니"
-"다"
+"이 도움말은 %s(으)로 번역되지 않았습니다. "
+"번역되지 않은 메세지는 영어로 표시됩니다"
 
 #: squirrelmail/src/help.php:137
 msgid "Some or all of the help documents are not present!"
 msgstr "도움말의 일부 또는 전체가 없습니다!"
 
-#: squirrelmail/src/help.php:171 squirrelmail/src/help.php:193
+#: squirrelmail/src/help.php:174 squirrelmail/src/help.php:196
 msgid "Table of Contents"
 msgstr "목차"
 
-#: squirrelmail/functions/mailbox_display.php:934
-#: squirrelmail/functions/mailbox_display.php:937
-#: squirrelmail/functions/mailbox_display.php:940
-#: squirrelmail/plugins/delete_move_next/setup.php:171
+#: squirrelmail/functions/mailbox_display.php:926
+#: squirrelmail/functions/mailbox_display.php:929
+#: squirrelmail/functions/mailbox_display.php:932
 #: squirrelmail/plugins/delete_move_next/setup.php:173
-#: squirrelmail/src/help.php:187 squirrelmail/src/help.php:191
-#: squirrelmail/src/read_body.php:804 squirrelmail/src/read_body.php:806
+#: squirrelmail/plugins/delete_move_next/setup.php:175
+#: squirrelmail/src/help.php:190 squirrelmail/src/help.php:194
+#: squirrelmail/src/read_body.php:800 squirrelmail/src/read_body.php:806
+#: squirrelmail/src/read_body.php:808
 msgid "Previous"
 msgstr "이전"
 
-#: squirrelmail/functions/mailbox_display.php:935
-#: squirrelmail/functions/mailbox_display.php:938
-#: squirrelmail/functions/mailbox_display.php:941
-#: squirrelmail/plugins/delete_move_next/setup.php:176
+#: squirrelmail/functions/mailbox_display.php:927
+#: squirrelmail/functions/mailbox_display.php:930
+#: squirrelmail/functions/mailbox_display.php:933
 #: squirrelmail/plugins/delete_move_next/setup.php:178
-#: squirrelmail/src/help.php:195 squirrelmail/src/help.php:198
-#: squirrelmail/src/read_body.php:810 squirrelmail/src/read_body.php:812
+#: squirrelmail/plugins/delete_move_next/setup.php:180
+#: squirrelmail/src/help.php:198 squirrelmail/src/help.php:201
+#: squirrelmail/src/read_body.php:800 squirrelmail/src/read_body.php:812
+#: squirrelmail/src/read_body.php:814
 msgid "Next"
 msgstr "다음"
 
-#: squirrelmail/src/help.php:221
+#: squirrelmail/src/help.php:224
 msgid "Top"
 msgstr "위로"
 
@@ -582,10 +588,11 @@ msgstr "위로"
 msgid "Viewing an image attachment"
 msgstr "첨부된 문서 보기"
 
-#: squirrelmail/functions/imap_search.php:218
-#: squirrelmail/functions/mailbox_display.php:680
-#: squirrelmail/functions/page_header.php:207
-#: squirrelmail/plugins/delete_move_next/setup.php:222
+#: squirrelmail/functions/imap_search.php:190
+#: squirrelmail/functions/imap_search.php:200
+#: squirrelmail/functions/mailbox_display.php:675
+#: squirrelmail/functions/page_header.php:213
+#: squirrelmail/plugins/delete_move_next/setup.php:224
 #: squirrelmail/plugins/mail_fetch/options.php:181
 #: squirrelmail/plugins/mail_fetch/options.php:258
 #: squirrelmail/src/left_main.php:73 squirrelmail/src/search.php:346
@@ -681,7 +688,7 @@ msgid "Always"
 msgstr "항상"
 
 #: squirrelmail/src/options_display.php:99
-#: squirrelmail/src/options_folder.php:132
+#: squirrelmail/src/options_folder.php:130
 msgid "Never"
 msgstr "사용하지 않음"
 
@@ -747,7 +754,7 @@ msgstr "HTML"
 
 #: squirrelmail/src/options_display.php:192
 msgid "Show HTML Version by Default"
-msgstr "기본으로 HTML 로 보기"
+msgstr "기본으로 HTML로 보기"
 
 #: squirrelmail/src/options_display.php:199
 msgid "Include Me in CC when I Reply All"
@@ -801,263 +808,263 @@ msgstr "정렬시 수신 일자를 사용"
 msgid "Use References header for thread sort"
 msgstr "정렬시 참조 헤더를 사용"
 
-#: squirrelmail/src/options_folder.php:50
+#: squirrelmail/src/options_folder.php:48
 msgid "Special Folder Options"
 msgstr "특별한 편지함 설정"
 
-#: squirrelmail/src/options_folder.php:57
+#: squirrelmail/src/options_folder.php:55
 msgid "Folder Path"
 msgstr "편지함 경로"
 
-#: squirrelmail/src/options_folder.php:73
+#: squirrelmail/src/options_folder.php:71
 msgid "Do not use Trash"
 msgstr "사용하지 않습니다."
 
 #: squirrelmail/plugins/administrator/defines.php:135
-#: squirrelmail/src/options_folder.php:77
+#: squirrelmail/src/options_folder.php:75
 msgid "Trash Folder"
 msgstr "휴지통"
 
-#: squirrelmail/src/options_folder.php:84
+#: squirrelmail/src/options_folder.php:82
 msgid "Do not use Sent"
 msgstr "사용하지 않습니다."
 
 #: squirrelmail/plugins/administrator/defines.php:138
-#: squirrelmail/src/options_folder.php:88
+#: squirrelmail/src/options_folder.php:86
 msgid "Sent Folder"
 msgstr "보낸 편지함"
 
-#: squirrelmail/src/options_folder.php:95
+#: squirrelmail/src/options_folder.php:93
 msgid "Do not use Drafts"
 msgstr "사용하지 않습니다."
 
 #: squirrelmail/plugins/administrator/defines.php:141
-#: squirrelmail/src/options_folder.php:99
+#: squirrelmail/src/options_folder.php:97
 msgid "Draft Folder"
 msgstr "임시 보관함"
 
-#: squirrelmail/src/options_folder.php:107
+#: squirrelmail/src/options_folder.php:105
 msgid "Folder List Options"
 msgstr "편지함 목록 설정"
 
-#: squirrelmail/src/options_folder.php:112
+#: squirrelmail/src/options_folder.php:110
 msgid "Location of Folder List"
 msgstr "편지함 목록의 위치"
 
-#: squirrelmail/src/options_folder.php:115
+#: squirrelmail/src/options_folder.php:113
 msgid "Left"
 msgstr "왼쪽"
 
-#: squirrelmail/src/options_folder.php:116
+#: squirrelmail/src/options_folder.php:114
 msgid "Right"
 msgstr "오른쪽"
 
 #: squirrelmail/plugins/administrator/defines.php:45
-#: squirrelmail/src/options_folder.php:121
+#: squirrelmail/src/options_folder.php:119
 msgid "pixels"
 msgstr "픽셀"
 
-#: squirrelmail/src/options_folder.php:125
+#: squirrelmail/src/options_folder.php:123
 msgid "Width of Folder List"
 msgstr "편지함 목록의 폭"
 
-#: squirrelmail/src/options_folder.php:131
+#: squirrelmail/src/options_folder.php:129
 msgid "Minutes"
 msgstr "분"
 
-#: squirrelmail/src/options_folder.php:135
+#: squirrelmail/src/options_folder.php:133
 msgid "Seconds"
 msgstr "초"
 
-#: squirrelmail/src/options_folder.php:137
+#: squirrelmail/src/options_folder.php:135
 msgid "Minute"
 msgstr "분"
 
-#: squirrelmail/src/options_folder.php:144
+#: squirrelmail/src/options_folder.php:142
 msgid "Auto Refresh Folder List"
 msgstr "편지함목록 자동갱신 시간"
 
-#: squirrelmail/src/options_folder.php:152
+#: squirrelmail/src/options_folder.php:150
 msgid "Enable Unread Message Notification"
 msgstr "읽지않은 메세지 알림"
 
 #: squirrelmail/plugins/administrator/defines.php:162
-#: squirrelmail/src/options_folder.php:155
+#: squirrelmail/src/options_folder.php:153
 msgid "No Notification"
 msgstr "사용 안함"
 
 #: squirrelmail/plugins/administrator/defines.php:163
-#: squirrelmail/src/options_folder.php:156
+#: squirrelmail/src/options_folder.php:154
 msgid "Only INBOX"
 msgstr "받은 편지함만 사용"
 
 #: squirrelmail/plugins/administrator/defines.php:164
-#: squirrelmail/src/options_folder.php:157
+#: squirrelmail/src/options_folder.php:155
 msgid "All Folders"
 msgstr "전체 편지함"
 
-#: squirrelmail/src/options_folder.php:162
+#: squirrelmail/src/options_folder.php:160
 msgid "Unread Message Notification Type"
 msgstr "읽지않은 메세지 알림 방법"
 
 #: squirrelmail/plugins/administrator/defines.php:167
-#: squirrelmail/src/options_folder.php:165
+#: squirrelmail/src/options_folder.php:163
 msgid "Only Unseen"
 msgstr "읽지않은 메세지만"
 
 #: squirrelmail/plugins/administrator/defines.php:168
-#: squirrelmail/src/options_folder.php:166
+#: squirrelmail/src/options_folder.php:164
 msgid "Unseen and Total"
 msgstr "읽지않은 메세지와 전체메세지"
 
-#: squirrelmail/src/options_folder.php:171
+#: squirrelmail/src/options_folder.php:169
 msgid "Enable Collapsable Folders"
 msgstr "편지함을 트리구조로 사용"
 
-#: squirrelmail/src/options_folder.php:178
+#: squirrelmail/src/options_folder.php:176
 msgid "Show Clock on Folders Panel"
 msgstr "편지함 패널의 시간 형식"
 
-#: squirrelmail/src/options_folder.php:186
+#: squirrelmail/src/options_folder.php:184
 msgid "No Clock"
 msgstr "시계 사용안함"
 
-#: squirrelmail/src/options_folder.php:191
+#: squirrelmail/src/options_folder.php:189
 msgid "Hour Format"
 msgstr "시간 구분"
 
-#: squirrelmail/src/options_folder.php:194
+#: squirrelmail/src/options_folder.php:192
 msgid "12-hour clock"
 msgstr "12시간"
 
-#: squirrelmail/src/options_folder.php:195
+#: squirrelmail/src/options_folder.php:193
 msgid "24-hour clock"
 msgstr "24시간"
 
-#: squirrelmail/src/options_folder.php:200
+#: squirrelmail/src/options_folder.php:198
 msgid "Memory Search"
 msgstr "메모리 찾기"
 
-#: squirrelmail/plugins/sent_subfolders/setup.php:116
-#: squirrelmail/src/options_folder.php:203
+#: squirrelmail/plugins/sent_subfolders/setup.php:112
+#: squirrelmail/src/options_folder.php:201
 msgid "Disabled"
 msgstr "사용하지 않음"
 
-#: squirrelmail/functions/page_header.php:237
+#: squirrelmail/functions/page_header.php:243
 #: squirrelmail/plugins/filters/options.php:94
 #: squirrelmail/plugins/newmail/newmail_opt.php:37
 #: squirrelmail/plugins/translate/options.php:94
-#: squirrelmail/src/options.php:218 squirrelmail/src/options_highlight.php:89
+#: squirrelmail/src/options.php:225 squirrelmail/src/options_highlight.php:102
 #: squirrelmail/src/options_identities.php:53
-#: squirrelmail/src/options_order.php:55
+#: squirrelmail/src/options_order.php:50
 msgid "Options"
 msgstr "환경 설정"
 
-#: squirrelmail/src/options.php:166 squirrelmail/src/options.php:317
-#: squirrelmail/src/options_highlight.php:89
+#: squirrelmail/src/options.php:170 squirrelmail/src/options.php:324
+#: squirrelmail/src/options_highlight.php:102
 msgid "Message Highlighting"
 msgstr "메세지 강조"
 
 #: squirrelmail/plugins/filters/options.php:120
-#: squirrelmail/src/options_highlight.php:93
+#: squirrelmail/src/options_highlight.php:106
 msgid "New"
 msgstr "새 편지"
 
 #: squirrelmail/plugins/filters/options.php:121
 #: squirrelmail/plugins/filters/spamoptions.php:168
 #: squirrelmail/plugins/mail_fetch/fetch.php:239
-#: squirrelmail/src/options_highlight.php:94
+#: squirrelmail/src/options_highlight.php:107
 msgid "Done"
 msgstr "완료"
 
 #: squirrelmail/plugins/filters/options.php:214
 #: squirrelmail/plugins/filters/spamoptions.php:167
-#: squirrelmail/src/options_highlight.php:101
+#: squirrelmail/src/options_highlight.php:114
 msgid "Edit"
 msgstr "수정"
 
-#: squirrelmail/src/options_highlight.php:114
+#: squirrelmail/src/options_highlight.php:127
 msgid "No highlighting is defined"
 msgstr "메세지 강조가 정의되지 않았습니다."
 
-#: squirrelmail/src/options_highlight.php:286
+#: squirrelmail/src/options_highlight.php:295
 msgid "Identifying name"
-msgstr "식별할수 있는 이름"
+msgstr "식별할 수 있는 이름"
 
-#: squirrelmail/src/options_highlight.php:300
+#: squirrelmail/src/options_highlight.php:309
 msgid "Color"
 msgstr "색상"
 
-#: squirrelmail/src/options_highlight.php:304
+#: squirrelmail/src/options_highlight.php:313
 msgid "Dark Blue"
 msgstr "Dark Blue"
 
-#: squirrelmail/src/options_highlight.php:305
+#: squirrelmail/src/options_highlight.php:314
 msgid "Dark Green"
 msgstr "Dark Green"
 
-#: squirrelmail/src/options_highlight.php:306
+#: squirrelmail/src/options_highlight.php:315
 msgid "Dark Yellow"
 msgstr "Dark Yellow"
 
-#: squirrelmail/src/options_highlight.php:307
+#: squirrelmail/src/options_highlight.php:316
 msgid "Dark Cyan"
 msgstr "Dark Cyan"
 
-#: squirrelmail/src/options_highlight.php:308
+#: squirrelmail/src/options_highlight.php:317
 msgid "Dark Magenta"
 msgstr "Dark Magenta"
 
-#: squirrelmail/src/options_highlight.php:309
+#: squirrelmail/src/options_highlight.php:318
 msgid "Light Blue"
 msgstr "Light Blue"
 
-#: squirrelmail/src/options_highlight.php:310
+#: squirrelmail/src/options_highlight.php:319
 msgid "Light Green"
 msgstr "Light Green"
 
-#: squirrelmail/src/options_highlight.php:311
+#: squirrelmail/src/options_highlight.php:320
 msgid "Light Yellow"
 msgstr "Light Yellow"
 
-#: squirrelmail/src/options_highlight.php:312
+#: squirrelmail/src/options_highlight.php:321
 msgid "Light Cyan"
 msgstr "Light Cyan"
 
-#: squirrelmail/src/options_highlight.php:313
+#: squirrelmail/src/options_highlight.php:322
 msgid "Light Magenta"
 msgstr "Light Magenta"
 
-#: squirrelmail/src/options_highlight.php:314
+#: squirrelmail/src/options_highlight.php:323
 msgid "Dark Gray"
 msgstr "Dark Gray"
 
-#: squirrelmail/src/options_highlight.php:315
+#: squirrelmail/src/options_highlight.php:324
 msgid "Medium Gray"
 msgstr "Medium Gray"
 
-#: squirrelmail/src/options_highlight.php:316
+#: squirrelmail/src/options_highlight.php:325
 msgid "Light Gray"
 msgstr "Light Gray"
 
-#: squirrelmail/src/options_highlight.php:317
+#: squirrelmail/src/options_highlight.php:326
 msgid "White"
 msgstr "White"
 
-#: squirrelmail/src/options_highlight.php:319
+#: squirrelmail/src/options_highlight.php:328
 msgid "Other:"
 msgstr "기타:"
 
-#: squirrelmail/src/options_highlight.php:321
+#: squirrelmail/src/options_highlight.php:330
 msgid "Ex: 63aa7f"
 msgstr "예: 63aa7f"
 
 #: squirrelmail/plugins/filters/options.php:153
-#: squirrelmail/src/options_highlight.php:363
+#: squirrelmail/src/options_highlight.php:372
 msgid "To or Cc"
 msgstr "받는 사람 또는 참조"
 
-#: squirrelmail/src/options_highlight.php:368
+#: squirrelmail/src/options_highlight.php:377
 msgid "Matches"
 msgstr "일치"
 
@@ -1079,17 +1086,17 @@ msgid "Add a New Identity"
 msgstr "새로운 식별자 추가"
 
 #: squirrelmail/src/options_identities.php:335
-#: squirrelmail/src/options_personal.php:61
-#: squirrelmail/src/options_personal.php:69
+#: squirrelmail/src/options_personal.php:59
+#: squirrelmail/src/options_personal.php:67
 msgid "Full Name"
 msgstr "전체 이름"
 
 #: squirrelmail/src/options_identities.php:336
 msgid "E-Mail Address"
-msgstr "전자메일 주소"
+msgstr "이메일 주소"
 
 #: squirrelmail/src/options_identities.php:337
-#: squirrelmail/src/options_personal.php:96
+#: squirrelmail/src/options_personal.php:94
 msgid "Reply To"
 msgstr "회신"
 
@@ -1105,25 +1112,25 @@ msgstr "기본 식별자로 사용"
 msgid "Move Up"
 msgstr "이동"
 
-#: squirrelmail/src/options.php:178 squirrelmail/src/options.php:333
-#: squirrelmail/src/options_order.php:55
+#: squirrelmail/src/options.php:182 squirrelmail/src/options.php:340
+#: squirrelmail/src/options_order.php:50
 msgid "Index Order"
 msgstr "인덱스 순서"
 
-#: squirrelmail/src/options_order.php:61
+#: squirrelmail/src/options_order.php:56
 msgid "Checkbox"
 msgstr "체크박스"
 
-#: squirrelmail/src/options_order.php:65
+#: squirrelmail/src/options_order.php:60
 msgid "Flags"
 msgstr "플래그"
 
-#: squirrelmail/functions/mailbox_display.php:776
-#: squirrelmail/src/options_order.php:66
+#: squirrelmail/functions/mailbox_display.php:769
+#: squirrelmail/src/options_order.php:61
 msgid "Size"
 msgstr "크기"
 
-#: squirrelmail/src/options_order.php:109
+#: squirrelmail/src/options_order.php:104
 msgid ""
 "The index order is the order that the columns are arranged in the message "
 "index.  You can add, remove, and move columns around to customize them to "
@@ -1132,136 +1139,136 @@ msgstr ""
 "인덱스 순서는 메세지 인덱스에 정렬된 칼럼 순서입니다. 당신의 필요에 따라 칼럼"
 "을 추가, 삭제, 이동 할 수 있습니다."
 
-#: squirrelmail/src/options_order.php:118
+#: squirrelmail/src/options_order.php:113
 msgid "up"
 msgstr "위로"
 
-#: squirrelmail/src/options_order.php:120
+#: squirrelmail/src/options_order.php:115
 msgid "down"
 msgstr "다운로드"
 
-#: squirrelmail/src/options_order.php:125
+#: squirrelmail/src/options_order.php:120
 msgid "remove"
 msgstr "삭제"
 
-#: squirrelmail/src/options_order.php:154
+#: squirrelmail/src/options_order.php:149
 msgid "Return to options page"
 msgstr "환경 설정 페이지로 돌아가기"
 
-#: squirrelmail/src/options_personal.php:48
+#: squirrelmail/src/options_personal.php:46
 msgid "Name and Address Options"
 msgstr "이름 및 주소 설정"
 
-#: squirrelmail/src/options_personal.php:79
-#: squirrelmail/src/options_personal.php:87
+#: squirrelmail/src/options_personal.php:77
+#: squirrelmail/src/options_personal.php:85
 msgid "Email Address"
-msgstr "전자메일 주소"
+msgstr "이메일 주소"
 
-#: squirrelmail/src/options_personal.php:113
+#: squirrelmail/src/options_personal.php:111
 msgid "Edit Advanced Identities"
 msgstr "상세한 개인정보 설정"
 
-#: squirrelmail/src/options_personal.php:115
+#: squirrelmail/src/options_personal.php:113
 msgid "(discards changes made on this form so far)"
 msgstr "(이 폼을 올리시면 현재 입력 정보가 삭제됩니다.)"
 
-#: squirrelmail/src/options_personal.php:118
+#: squirrelmail/src/options_personal.php:116
 msgid "Multiple Identities"
 msgstr "다중 식별"
 
-#: squirrelmail/src/options_personal.php:126
+#: squirrelmail/src/options_personal.php:124
 msgid "Same as server"
 msgstr "서버와 동일"
 
-#: squirrelmail/src/options_personal.php:137
+#: squirrelmail/src/options_personal.php:135
 msgid "Timezone Options"
 msgstr "시간대 설정"
 
-#: squirrelmail/src/options_personal.php:142
+#: squirrelmail/src/options_personal.php:140
 msgid "Your current timezone"
 msgstr "현재 시간대"
 
-#: squirrelmail/src/options_personal.php:150
+#: squirrelmail/src/options_personal.php:148
 msgid "Reply Citation Options"
 msgstr "답글 인용문 형식"
 
-#: squirrelmail/src/options_personal.php:155
+#: squirrelmail/src/options_personal.php:153
 msgid "Reply Citation Style"
 msgstr "답글 인용문 형식"
 
-#: squirrelmail/src/options_personal.php:158
+#: squirrelmail/src/options_personal.php:156
 msgid "No Citation"
 msgstr "사용하지 않음"
 
-#: squirrelmail/src/options_personal.php:159
+#: squirrelmail/src/options_personal.php:157
 msgid "AUTHOR Said"
 msgstr "AUTHOR 답글:"
 
-#: squirrelmail/src/options_personal.php:160
+#: squirrelmail/src/options_personal.php:158
 msgid "Quote Who XML"
 msgstr "Who XML 구문 사용"
 
-#: squirrelmail/src/options_personal.php:161
+#: squirrelmail/src/options_personal.php:159
 msgid "User-Defined"
 msgstr "사용자 정의"
 
-#: squirrelmail/src/options_personal.php:166
+#: squirrelmail/src/options_personal.php:164
 msgid "User-Defined Citation Start"
 msgstr "사용자 정의 회신 인용문"
 
-#: squirrelmail/src/options_personal.php:174
+#: squirrelmail/src/options_personal.php:172
 msgid "User-Defined Citation End"
 msgstr "사용자 정의 회신 인용문"
 
-#: squirrelmail/src/options_personal.php:181
+#: squirrelmail/src/options_personal.php:179
 msgid "Signature Options"
 msgstr "서명 설정"
 
-#: squirrelmail/src/options_personal.php:186
+#: squirrelmail/src/options_personal.php:184
 msgid "Use Signature"
 msgstr "서명을 사용하시겠습니까?"
 
-#: squirrelmail/src/options_personal.php:193
+#: squirrelmail/src/options_personal.php:191
 msgid "Prefix Signature with '-- ' Line"
 msgstr " '--' 로 서명 접두사 사용 ?"
 
-#: squirrelmail/src/options.php:154 squirrelmail/src/options.php:301
+#: squirrelmail/src/options.php:158 squirrelmail/src/options.php:308
 msgid "Personal Information"
 msgstr "개인 정보"
 
-#: squirrelmail/src/options.php:160 squirrelmail/src/options.php:309
+#: squirrelmail/src/options.php:164 squirrelmail/src/options.php:316
 msgid "Display Preferences"
 msgstr "화면 설정"
 
-#: squirrelmail/src/options.php:172 squirrelmail/src/options.php:325
+#: squirrelmail/src/options.php:176 squirrelmail/src/options.php:332
 msgid "Folder Preferences"
 msgstr "편지함 환경설정"
 
-#: squirrelmail/src/options.php:284
+#: squirrelmail/src/options.php:291
 msgid "Successfully Saved Options"
 msgstr "설정상태가 저장되었습니다."
 
-#: squirrelmail/src/options.php:289
+#: squirrelmail/src/options.php:296
 msgid "Refresh Folder List"
 msgstr "편지함 갱신"
 
-#: squirrelmail/src/options.php:291
+#: squirrelmail/src/options.php:298
 msgid "Refresh Page"
 msgstr "페이지 갱신"
 
-#: squirrelmail/src/options.php:303
+#: squirrelmail/src/options.php:310
 msgid ""
 "This contains personal information about yourself such as your name, your "
 "email address, etc."
-msgstr "이름, 전자메일 주소등 이곳은 당신의 개인정보를 저장합니다."
+msgstr "이름, 이메일 주소등 이곳은 당신의 개인정보를 저장합니다."
 
-#: squirrelmail/src/options.php:311
+#: squirrelmail/src/options.php:318
 msgid ""
 "You can change the way that SquirrelMail looks and displays information to "
 "you, such as the colors, the language, and other settings."
-msgstr "SquirrelMail의 모습을 변경할수 있습니다. 색상, 언어, 기타등등"
+msgstr "SquirrelMail의 모습을 변경할 수 있습니다. 색상, 언어, 기타등등"
 
-#: squirrelmail/src/options.php:319
+#: squirrelmail/src/options.php:326
 msgid ""
 "Based upon given criteria, incoming messages can have different background "
 "colors in the message list.  This helps to easily distinguish who the "
@@ -1271,12 +1278,12 @@ msgstr ""
 "다. 이것은 특히 메일링 리스트로부터 당신이 구분하고자 하는 메세지를 쉽게 나타"
 "내기 위한 것입니다."
 
-#: squirrelmail/src/options.php:327
+#: squirrelmail/src/options.php:334
 msgid ""
 "These settings change the way your folders are displayed and manipulated."
 msgstr "이 설정으로 편지함을 사용합니다."
 
-#: squirrelmail/src/options.php:335
+#: squirrelmail/src/options.php:342
 msgid ""
 "The order of the message index can be rearranged and changed to contain the "
 "headers in any order you want."
@@ -1321,70 +1328,70 @@ msgstr "전송:"
 #: squirrelmail/src/read_body.php:226
 #, c-format
 msgid "Was displayed on %s"
-msgstr "%s로 표시되었습니다."
+msgstr "%s(으)로 표시되었습니다."
 
 #: squirrelmail/src/read_body.php:258
 msgid "Read:"
 msgstr "읽음:"
 
-#: squirrelmail/src/read_body.php:494
+#: squirrelmail/src/read_body.php:497
 msgid "Viewing Full Header"
 msgstr "전체 헤더보기"
 
-#: squirrelmail/src/read_body.php:750
+#: squirrelmail/src/read_body.php:753
 msgid "Message List"
 msgstr "메세지 목록"
 
-#: squirrelmail/src/read_body.php:772
+#: squirrelmail/src/read_body.php:780
 msgid "Resume Draft"
 msgstr "이메일 임시보관함 보기"
 
-#: squirrelmail/src/read_body.php:787
+#: squirrelmail/src/read_body.php:789
 msgid "Edit Message as New"
 msgstr "새메일로 메세지 편집"
 
-#: squirrelmail/functions/mailbox_display.php:692
-#: squirrelmail/src/read_body.php:833
+#: squirrelmail/functions/mailbox_display.php:686
+#: squirrelmail/src/read_body.php:863
 msgid "Forward"
 msgstr "전달"
 
-#: squirrelmail/src/read_body.php:848
+#: squirrelmail/src/read_body.php:865
 msgid "Reply"
 msgstr "회신"
 
-#: squirrelmail/src/read_body.php:863
+#: squirrelmail/src/read_body.php:867
 msgid "Reply All"
 msgstr "전체 회신"
 
-#: squirrelmail/src/read_body.php:887 squirrelmail/src/read_body.php:890
+#: squirrelmail/src/read_body.php:890 squirrelmail/src/read_body.php:893
 msgid "View Full Header"
 msgstr "전체 헤더 보기"
 
-#: squirrelmail/src/read_body.php:967
+#: squirrelmail/src/read_body.php:970
 msgid "Mailer"
 msgstr "메일러"
 
-#: squirrelmail/src/read_body.php:1016 squirrelmail/src/read_body.php:1029
-#: squirrelmail/src/read_body.php:1041 squirrelmail/src/read_body.php:1065
-#: squirrelmail/src/read_body.php:1110 squirrelmail/src/read_body.php:1126
+#: squirrelmail/src/read_body.php:1019 squirrelmail/src/read_body.php:1032
+#: squirrelmail/src/read_body.php:1044 squirrelmail/src/read_body.php:1068
+#: squirrelmail/src/read_body.php:1113 squirrelmail/src/read_body.php:1129
 msgid "Read receipt"
 msgstr ""
 
-#: squirrelmail/src/read_body.php:1018 squirrelmail/src/read_body.php:1112
+#: squirrelmail/src/read_body.php:1021 squirrelmail/src/read_body.php:1115
 msgid "send"
 msgstr "전송"
 
-#: squirrelmail/src/read_body.php:1031 squirrelmail/src/read_body.php:1043
-#: squirrelmail/src/read_body.php:1067 squirrelmail/src/read_body.php:1128
+#: squirrelmail/src/read_body.php:1034 squirrelmail/src/read_body.php:1046
+#: squirrelmail/src/read_body.php:1070 squirrelmail/src/read_body.php:1131
 msgid "requested"
 msgstr "요청되었습니다."
 
-#: squirrelmail/src/read_body.php:1044 squirrelmail/src/read_body.php:1068
-#: squirrelmail/src/read_body.php:1129
+#: squirrelmail/src/read_body.php:1047 squirrelmail/src/read_body.php:1071
+#: squirrelmail/src/read_body.php:1132
 msgid "Send read receipt now"
 msgstr "지금 답장 보내기"
 
-#: squirrelmail/src/read_body.php:1056
+#: squirrelmail/src/read_body.php:1059
 msgid ""
 "The message sender has requested a response to indicate that you have read "
 "this message. Would you like to send a receipt?"
@@ -1393,15 +1400,14 @@ msgstr ""
 "습니까?"
 
 #: squirrelmail/functions/auth.php:20 squirrelmail/src/redirect.php:80
-#: squirrelmail/src/redirect.php:102
 msgid "You must be logged in to access this page."
-msgstr "이 페이지에 접근하기 위해서는 정당한 비밀번호가 있어야 합니다."
+msgstr "이 페이지에 접근하기 위해서는 유효한 비밀번호가 있어야 합니다."
 
-#: squirrelmail/src/redirect.php:98
+#: squirrelmail/src/redirect.php:102
 msgid "There was an error contacting the mail server."
 msgstr "메일 서버에 접속하는데 오류가 발생했습니다."
 
-#: squirrelmail/src/redirect.php:100
+#: squirrelmail/src/redirect.php:104
 msgid "Contact your administrator for help."
 msgstr "관리자에게 도움을 요청하십시요."
 
@@ -1441,79 +1447,79 @@ msgstr "본문"
 msgid "Everywhere"
 msgstr "전체"
 
-#: squirrelmail/src/search.php:414 squirrelmail/src/search.php:443
+#: squirrelmail/src/search.php:413 squirrelmail/src/search.php:442
 msgid "Search Results"
 msgstr "검색 결과"
 
-#: squirrelmail/src/search.php:434
+#: squirrelmail/src/search.php:433
 msgid "No Messages found"
 msgstr "메세지가 없습니다."
 
-#: squirrelmail/functions/page_header.php:220 squirrelmail/src/signout.php:76
+#: squirrelmail/functions/page_header.php:226 squirrelmail/src/signout.php:74
 msgid "Sign Out"
 msgstr "웹메일 종료"
 
-#: squirrelmail/src/signout.php:82
+#: squirrelmail/src/signout.php:80
 msgid "You have been successfully signed out."
 msgstr "웹메일이 종료되었습니다."
 
-#: squirrelmail/src/signout.php:84
+#: squirrelmail/src/signout.php:82
 msgid "Click here to log back in."
 msgstr "다시 로그인 하시려면 여기를 누르세요."
 
-#: squirrelmail/src/vcard.php:46
+#: squirrelmail/src/vcard.php:47
 msgid "Viewing a Business Card"
 msgstr "업무용 카드 보기"
 
-#: squirrelmail/src/vcard.php:102 squirrelmail/src/vcard.php:162
+#: squirrelmail/src/vcard.php:103 squirrelmail/src/vcard.php:163
 msgid "Title"
 msgstr "제목"
 
-#: squirrelmail/src/vcard.php:103
+#: squirrelmail/src/vcard.php:104
 msgid "Email"
-msgstr "전자메일"
+msgstr "이메일"
 
-#: squirrelmail/src/vcard.php:104 squirrelmail/src/vcard.php:154
+#: squirrelmail/src/vcard.php:105 squirrelmail/src/vcard.php:155
 msgid "Web Page"
 msgstr "웹 페이지"
 
-#: squirrelmail/src/vcard.php:105 squirrelmail/src/vcard.php:166
+#: squirrelmail/src/vcard.php:106 squirrelmail/src/vcard.php:167
 msgid "Organization / Department"
 msgstr "부서"
 
-#: squirrelmail/src/vcard.php:106 squirrelmail/src/vcard.php:158
+#: squirrelmail/src/vcard.php:107 squirrelmail/src/vcard.php:159
 msgid "Address"
 msgstr "주소록"
 
-#: squirrelmail/src/vcard.php:107 squirrelmail/src/vcard.php:175
+#: squirrelmail/src/vcard.php:108 squirrelmail/src/vcard.php:176
 msgid "Work Phone"
 msgstr "사무실 전화"
 
-#: squirrelmail/src/vcard.php:108 squirrelmail/src/vcard.php:179
+#: squirrelmail/src/vcard.php:109 squirrelmail/src/vcard.php:180
 msgid "Home Phone"
 msgstr "집 전화"
 
-#: squirrelmail/src/vcard.php:109 squirrelmail/src/vcard.php:183
+#: squirrelmail/src/vcard.php:110 squirrelmail/src/vcard.php:184
 msgid "Cellular Phone"
 msgstr "휴대폰"
 
-#: squirrelmail/src/vcard.php:110 squirrelmail/src/vcard.php:187
+#: squirrelmail/src/vcard.php:111 squirrelmail/src/vcard.php:188
 msgid "Fax"
 msgstr "팩스"
 
-#: squirrelmail/src/vcard.php:111 squirrelmail/src/vcard.php:191
+#: squirrelmail/src/vcard.php:112 squirrelmail/src/vcard.php:192
 msgid "Note"
 msgstr "참조"
 
-#: squirrelmail/src/vcard.php:140 squirrelmail/src/vcard.php:203
+#: squirrelmail/src/vcard.php:141 squirrelmail/src/vcard.php:204
 msgid "Add to Addressbook"
 msgstr "주소 추가"
 
-#: squirrelmail/src/vcard.php:149
+#: squirrelmail/src/vcard.php:150
 msgid "Note Field Contains"
-msgstr ""
+msgstr "노트 필드 포함"
 
-#: squirrelmail/src/vcard.php:171
+#: squirrelmail/src/vcard.php:172
 msgid "Title & Org. / Dept."
 msgstr "타이틀 및 부서"
 
@@ -1532,15 +1538,15 @@ msgstr "개인 주소록"
 #: squirrelmail/functions/abook_database.php:327
 #, c-format
 msgid "Database error: %s"
-msgstr "데이타베이스 에러: %s"
+msgstr "데이타베이스 오류: %s"
 
 #: squirrelmail/functions/abook_database.php:221
 #: squirrelmail/functions/abook_database.php:260
 #: squirrelmail/functions/abook_database.php:293
-#: squirrelmail/functions/abook_local_file.php:243
-#: squirrelmail/functions/abook_local_file.php:267
-#: squirrelmail/functions/abook_local_file.php:292
-#: squirrelmail/functions/abook_local_file.php:324
+#: squirrelmail/functions/abook_local_file.php:250
+#: squirrelmail/functions/abook_local_file.php:274
+#: squirrelmail/functions/abook_local_file.php:299
+#: squirrelmail/functions/abook_local_file.php:331
 #: squirrelmail/functions/addressbook.php:351
 #: squirrelmail/functions/addressbook.php:386
 #: squirrelmail/functions/addressbook.php:439
@@ -1548,16 +1554,16 @@ msgid "Addressbook is read-only"
 msgstr "주소록은 읽기전용입니다."
 
 #: squirrelmail/functions/abook_database.php:231
-#: squirrelmail/functions/abook_local_file.php:248
+#: squirrelmail/functions/abook_local_file.php:255
 #, c-format
 msgid "User '%s' already exist"
-msgstr "사용자 '%s'는 이미 존재합니다."
+msgstr "사용자 '%s'(은)는 이미 존재합니다."
 
 #: squirrelmail/functions/abook_database.php:303
-#: squirrelmail/functions/abook_local_file.php:330
+#: squirrelmail/functions/abook_local_file.php:337
 #, c-format
 msgid "User '%s' does not exist"
-msgstr "사용자 '%s'는 존재하지 않습니다."
+msgstr "사용자 '%s'(은)는 존재하지 않습니다."
 
 #: squirrelmail/functions/abook_global_file.php:35
 msgid "Global address book"
@@ -1584,13 +1590,21 @@ msgstr "전체 주소록을 갱신할 수 없습니다."
 msgid "Not a file name"
 msgstr "파일명이 아닙니다."
 
-#: squirrelmail/functions/abook_local_file.php:272
-#: squirrelmail/functions/abook_local_file.php:298
-#: squirrelmail/functions/abook_local_file.php:337
+#: squirrelmail/functions/abook_local_file.php:150
+msgid "Write failed"
+msgstr "쓰기 실패"
+
+#: squirrelmail/functions/abook_local_file.php:157
+msgid "Unable to update"
+msgstr "갱신 오류"
+
+#: squirrelmail/functions/abook_local_file.php:279
+#: squirrelmail/functions/abook_local_file.php:305
+#: squirrelmail/functions/abook_local_file.php:344
 msgid "Could not lock datafile"
 msgstr "데이타파일 잠금 오류"
 
-#: squirrelmail/functions/abook_local_file.php:285
+#: squirrelmail/functions/abook_local_file.php:292
 msgid "Write to addressbook failed"
 msgstr "주소록 작성 오류"
 
@@ -1625,132 +1639,204 @@ msgstr "이름을 입력하세요"
 #: squirrelmail/functions/addressbook.php:337
 #: squirrelmail/functions/addressbook.php:424
 msgid "E-mail address is missing"
-msgstr "전자메일 주소를 입력하세요"
+msgstr "이메일 주소를 입력하세요"
 
 #: squirrelmail/functions/addressbook.php:345
 #: squirrelmail/functions/addressbook.php:429
 msgid "Nickname contains illegal characters"
 msgstr "별명이 잘못된 문자를 포함하고 있습니다."
 
-#: squirrelmail/functions/attachment_common.php:107
-#: squirrelmail/functions/attachment_common.php:128
-#: squirrelmail/functions/attachment_common.php:143
-#: squirrelmail/functions/attachment_common.php:168
+#: squirrelmail/functions/attachment_common.php:109
+#: squirrelmail/functions/attachment_common.php:130
+#: squirrelmail/functions/attachment_common.php:145
+#: squirrelmail/functions/attachment_common.php:170
 msgid "view"
 msgstr "보기"
 
-#: squirrelmail/functions/attachment_common.php:185
+#: squirrelmail/functions/attachment_common.php:187
 msgid "Business Card"
 msgstr "업무용 카드"
 
 #: squirrelmail/functions/date.php:91
-#: squirrelmail/plugins/calendar/calendar.php:68
+#: squirrelmail/plugins/calendar/calendar.php:67
 msgid "Sunday"
 msgstr "일"
 
 #: squirrelmail/functions/date.php:94
-#: squirrelmail/plugins/calendar/calendar.php:69
+#: squirrelmail/plugins/calendar/calendar.php:68
 msgid "Monday"
 msgstr "월"
 
 #: squirrelmail/functions/date.php:97
-#: squirrelmail/plugins/calendar/calendar.php:70
+#: squirrelmail/plugins/calendar/calendar.php:69
 msgid "Tuesday"
 msgstr "화"
 
 #: squirrelmail/functions/date.php:100
-#: squirrelmail/plugins/calendar/calendar.php:71
+#: squirrelmail/plugins/calendar/calendar.php:70
 msgid "Wednesday"
 msgstr "수"
 
 #: squirrelmail/functions/date.php:103
-#: squirrelmail/plugins/calendar/calendar.php:72
+#: squirrelmail/plugins/calendar/calendar.php:71
 msgid "Thursday"
 msgstr "목"
 
 #: squirrelmail/functions/date.php:106
-#: squirrelmail/plugins/calendar/calendar.php:73
+#: squirrelmail/plugins/calendar/calendar.php:72
 msgid "Friday"
 msgstr "금"
 
 #: squirrelmail/functions/date.php:109
-#: squirrelmail/plugins/calendar/calendar.php:74
+#: squirrelmail/plugins/calendar/calendar.php:73
 msgid "Saturday"
 msgstr "토"
 
-#: squirrelmail/functions/date.php:120
+#: squirrelmail/functions/date.php:121
+msgid "Sun"
+msgstr "일"
+
+#: squirrelmail/functions/date.php:124
+msgid "Mon"
+msgstr "월"
+
+#: squirrelmail/functions/date.php:127
+msgid "Tue"
+msgstr "화"
+
+#: squirrelmail/functions/date.php:130
+msgid "Wed"
+msgstr "수"
+
+#: squirrelmail/functions/date.php:133
+msgid "Thu"
+msgstr "목"
+
+#: squirrelmail/functions/date.php:136
+msgid "Fri"
+msgstr "금"
+
+#: squirrelmail/functions/date.php:139
+msgid "Sat"
+msgstr "토"
+
+#: squirrelmail/functions/date.php:150
 msgid "January"
 msgstr "1"
 
-#: squirrelmail/functions/date.php:123
+#: squirrelmail/functions/date.php:153
 msgid "February"
 msgstr "2"
 
-#: squirrelmail/functions/date.php:126
+#: squirrelmail/functions/date.php:156
 msgid "March"
 msgstr "3"
 
-#: squirrelmail/functions/date.php:129
+#: squirrelmail/functions/date.php:159
 msgid "April"
 msgstr "4"
 
-#: squirrelmail/functions/date.php:132
+#: squirrelmail/functions/date.php:162 squirrelmail/functions/date.php:206
 msgid "May"
 msgstr "5"
 
-#: squirrelmail/functions/date.php:135
+#: squirrelmail/functions/date.php:165
 msgid "June"
 msgstr "6"
 
-#: squirrelmail/functions/date.php:138
+#: squirrelmail/functions/date.php:168
 msgid "July"
 msgstr "7"
 
-#: squirrelmail/functions/date.php:141
+#: squirrelmail/functions/date.php:171
 msgid "August"
 msgstr "8"
 
-#: squirrelmail/functions/date.php:144
+#: squirrelmail/functions/date.php:174
 msgid "September"
 msgstr "9"
 
-#: squirrelmail/functions/date.php:147
+#: squirrelmail/functions/date.php:177
 msgid "October"
 msgstr "10"
 
-#: squirrelmail/functions/date.php:150
+#: squirrelmail/functions/date.php:180
 msgid "November"
 msgstr "11"
 
-#: squirrelmail/functions/date.php:153
+#: squirrelmail/functions/date.php:183
 msgid "December"
 msgstr "12"
 
-#: squirrelmail/functions/date.php:182
+#: squirrelmail/functions/date.php:194
+msgid "Jan"
+msgstr "1"
+
+#: squirrelmail/functions/date.php:197
+msgid "Feb"
+msgstr "2"
+
+#: squirrelmail/functions/date.php:200
+msgid "Mar"
+msgstr "3"
+
+#: squirrelmail/functions/date.php:203
+msgid "Apr"
+msgstr "4"
+
+#: squirrelmail/functions/date.php:209
+msgid "Jun"
+msgstr "6"
+
+#: squirrelmail/functions/date.php:212
+msgid "Jul"
+msgstr "7"
+
+#: squirrelmail/functions/date.php:215
+msgid "Aug"
+msgstr "8"
+
+#: squirrelmail/functions/date.php:218
+msgid "Sep"
+msgstr "9"
+
+#: squirrelmail/functions/date.php:221
+msgid "Oct"
+msgstr "10"
+
+#: squirrelmail/functions/date.php:224
+msgid "Nov"
+msgstr "11"
+
+#: squirrelmail/functions/date.php:227
+msgid "Dec"
+msgstr "12"
+
+#: squirrelmail/functions/date.php:257
 msgid "D, F j, Y g:i a"
 msgstr "Y-F-j, D, g:i a"
 
-#: squirrelmail/functions/date.php:184
+#: squirrelmail/functions/date.php:259
 msgid "D, F j, Y G:i"
 msgstr "Y-F-j, D, G:i"
 
-#: squirrelmail/functions/date.php:206
+#: squirrelmail/functions/date.php:281
 msgid "g:i a"
 msgstr "g:i a"
 
-#: squirrelmail/functions/date.php:208
+#: squirrelmail/functions/date.php:283
 msgid "G:i"
 msgstr "G:i"
 
-#: squirrelmail/functions/date.php:213
+#: squirrelmail/functions/date.php:288
 msgid "D, g:i a"
 msgstr "D, g:i a"
 
-#: squirrelmail/functions/date.php:215
+#: squirrelmail/functions/date.php:290
 msgid "D, G:i"
 msgstr "D, G:i"
 
-#: squirrelmail/functions/date.php:219
+#: squirrelmail/functions/date.php:294
 msgid "M j, Y"
 msgstr "Y M j"
 
@@ -1758,15 +1844,15 @@ msgstr "Y M j"
 #: squirrelmail/functions/db_prefs.php:59
 #: squirrelmail/functions/db_prefs.php:122
 #: squirrelmail/functions/db_prefs.php:125
-#: squirrelmail/functions/db_prefs.php:340
+#: squirrelmail/functions/db_prefs.php:277
 #, c-format
 msgid "Preference database error (%s). Exiting abnormally"
-msgstr "설정파일 %s가 없습니다. 비정상적으로 종료합니다."
+msgstr "설정파일 %s이(가) 없습니다. 비정상적으로 종료합니다."
 
 #: squirrelmail/functions/display_messages.php:73
-#: squirrelmail/functions/imap_general.php:226
+#: squirrelmail/functions/imap_general.php:227
 msgid "Unknown user or password incorrect."
-msgstr "알수없는 사용자 또는 비밀번호 오류"
+msgstr "알 수 없는 사용자 또는 비밀번호 오류"
 
 #: squirrelmail/functions/display_messages.php:75
 msgid "Click here to try again"
@@ -1775,7 +1861,7 @@ msgstr "다시 시도하려면 여기를 누르세요"
 #: squirrelmail/functions/display_messages.php:96
 #, c-format
 msgid "Click here to return to %s"
-msgstr "%s 로 되돌아가려면 여기를 누르세요 "
+msgstr "%s(으)로 되돌아가려면 여기를 누르세요 "
 
 #: squirrelmail/functions/display_messages.php:179
 msgid "Go to the login page"
@@ -1787,48 +1873,62 @@ msgid ""
 "Preference file, %s, does not exist. Log out, and log back in to create a "
 "default preference file."
 msgstr ""
-"설정파일 %s가 없습니다. 먼저 로그아웃하시고, 기본 설정으로 만들기위해 다시 로"
-"그인 하세요"
+"설정파일 %s이(가) 없습니다. 먼저 로그아웃하시고, "
+"기본 설정으로 만들기위해 다시 로그인 하세요"
 
 #: squirrelmail/functions/file_prefs.php:43
-#: squirrelmail/functions/file_prefs.php:102
-#, fuzzy, c-format
+#: squirrelmail/functions/file_prefs.php:111
 msgid ""
 "Preference file, %s, could not be opened. Contact your system administrator "
 "to resolve this issue."
-msgstr "이 오류에 대하여 관리자에게 도움을 요청하십시요."
+msgstr ""
+"설정파일 %s을(를) 열 수 없습니다. 시스템 관리자에게 도움을 요청하십시요."
 
-#: squirrelmail/functions/file_prefs.php:170
+#: squirrelmail/functions/file_prefs.php:119
+msgid ""
+"Preference file, %s, could not be written. Contact your system administrator "
+"to resolve this issue."
+msgstr "이 오류에 대하여 관리자에게 도움을 요청하십시요."
+"설정파일 %s을(를) 쓸 수 없습니다. 시스템 관리자에게 도움을 요청하십시요."
+
+#: squirrelmail/functions/file_prefs.php:185
 #, c-format
 msgid "Error opening %s"
 msgstr "%s 열기 오류"
 
-#: squirrelmail/functions/file_prefs.php:173
-msgid "Default preference file not found!"
-msgstr "기본 설정파일이 없습니다!"
+#: squirrelmail/functions/file_prefs.php:188
+msgid "Default preference file not found or not readable!"
+msgstr "기본 환경 설정파일이 없거나 읽을 수 없습니다!"
 
-#: squirrelmail/functions/file_prefs.php:174
-#: squirrelmail/functions/file_prefs.php:187
+#: squirrelmail/functions/file_prefs.php:189
+#: squirrelmail/functions/file_prefs.php:202
 #: squirrelmail/functions/prefs.php:102
 msgid "Please contact your system administrator and report this error."
 msgstr "이 오류에 대하여 관리자에게 도움을 요청하십시요."
 
-#: squirrelmail/functions/file_prefs.php:185
+#: squirrelmail/functions/file_prefs.php:200
 msgid "Could not create initial preference file!"
 msgstr "초기 환경설정 파일을 만들지 못했습니다!"
 
-#: squirrelmail/functions/file_prefs.php:186
+#: squirrelmail/functions/file_prefs.php:201
 #, c-format
 msgid "%s should be writable by user %s"
-msgstr "%s 는 사용자 %s가 쓰기권한을 갖고 있어야 합니다."
+msgstr "%s은(는) 사용자 %s이(가) 쓰기권한을 갖고 있어야 합니다."
 
-#: squirrelmail/functions/file_prefs.php:203
-#: squirrelmail/functions/file_prefs.php:221
-#, fuzzy, c-format
+#: squirrelmail/functions/file_prefs.php:218
+#: squirrelmail/functions/file_prefs.php:243
 msgid ""
 "Signature file, %s, could not be opened. Contact your system administrator "
 "to resolve this issue."
-msgstr "이 오류에 대하여 관리자에게 도움을 요청하십시요."
+msgstr ""
+"서명파일 %s을(를) 열 수 없습니다. 시스템 관리자에게 도움을 요청하십시요."
+
+#: squirrelmail/functions/file_prefs.php:224
+msgid ""
+"Signaute file, %s, could not be written. Contact your system administrator "
+"to resolve this issue."
+msgstr ""
+"서명파일 %s을(를) 쓸 수 없습니다. 시스템 관리자에게 도움을 요청하십시요."
 
 #: squirrelmail/functions/imap_general.php:115
 #: squirrelmail/functions/imap_messages.php:367
@@ -1836,7 +1936,7 @@ msgstr "이 오류에 대하여 관리자에게 도움을 요청하십시요."
 #: squirrelmail/functions/imap_messages.php:573
 #: squirrelmail/plugins/filters/filters.php:227
 msgid "ERROR : Could not complete request."
-msgstr "에러 : 요청이 중단되었습니다."
+msgstr "오류 : 요청이 중단되었습니다."
 
 #: squirrelmail/functions/imap_general.php:117
 #: squirrelmail/functions/imap_general.php:129
@@ -1851,7 +1951,7 @@ msgstr "사유:"
 #: squirrelmail/functions/imap_general.php:127
 #: squirrelmail/plugins/filters/filters.php:236
 msgid "ERROR : Bad or malformed request."
-msgstr "에러 : 잘못된 응답."
+msgstr "오류 : 잘못된 응답."
 
 #: squirrelmail/functions/imap_general.php:131
 #: squirrelmail/plugins/filters/filters.php:238
@@ -1861,7 +1961,7 @@ msgstr "서버 응답: "
 #: squirrelmail/functions/imap_general.php:185
 #, c-format
 msgid "Error connecting to IMAP server: %s."
-msgstr "IMAP 서버 연결 에러: %s."
+msgstr "IMAP 서버 연결 오류: %s."
 
 #: squirrelmail/functions/imap_general.php:201
 #, c-format
@@ -1871,7 +1971,7 @@ msgstr "잘못된 응답: %s"
 #: squirrelmail/functions/imap_general.php:203
 #, c-format
 msgid "Unknown error: %s"
-msgstr "알수없는 에러: %s"
+msgstr "알 수 없는 오류: %s"
 
 #: squirrelmail/functions/imap_general.php:205
 msgid "Read data:"
@@ -1884,19 +1984,19 @@ msgstr "IMAP 서버로부터 알수없는 응답을 받았습니다:"
 
 #: squirrelmail/functions/imap_messages.php:377
 msgid "Unknown message number in reply from server: "
-msgstr "알수없는 메세지 번호를 서버로부터 받았습니다:"
+msgstr "알 수 없는 메세지 번호를 서버로부터 받았습니다:"
 
 #: squirrelmail/functions/imap_messages.php:397
 #: squirrelmail/functions/imap_messages.php:498
 #: squirrelmail/functions/imap_messages.php:766
 #: squirrelmail/functions/imap_messages.php:830
-#: squirrelmail/functions/mailbox_display.php:1097
+#: squirrelmail/functions/mailbox_display.php:1089
 msgid "(no subject)"
 msgstr "(제목 없음)"
 
 #: squirrelmail/functions/imap_messages.php:398
 msgid "Unknown Sender"
-msgstr "알수없는 전송자"
+msgstr "알 수 없는 전송자"
 
 #: squirrelmail/functions/imap_messages.php:521
 msgid "No To Address"
@@ -1910,99 +2010,102 @@ msgstr "(알수없는 전송자)"
 msgid "No Messages Found"
 msgstr "메세지가 없습니다."
 
-#: squirrelmail/functions/imap_search.php:207
-#: squirrelmail/functions/imap_search.php:215
+#: squirrelmail/functions/imap_search.php:190
+#: squirrelmail/functions/imap_search.php:200
+msgid "Folder:"
+msgstr "편지함:"
+
+#: squirrelmail/functions/imap_search.php:192
+#: squirrelmail/functions/imap_search.php:202
 msgid "Found"
 msgstr "찾음"
 
-#: squirrelmail/functions/imap_search.php:207
-#: squirrelmail/functions/imap_search.php:215
+#: squirrelmail/functions/imap_search.php:192
+#: squirrelmail/functions/imap_search.php:202
 msgid "messages"
 msgstr "메세지"
-
-#: squirrelmail/functions/imap_search.php:222
-msgid "Folder:"
-msgstr "편지함:"
 
 #: squirrelmail/functions/mailbox_display.php:186
 msgid "A"
 msgstr "A"
 
-#: squirrelmail/functions/mailbox_display.php:278
+#: squirrelmail/functions/mailbox_display.php:276
 msgid ""
 "Server-side sorting is not supported by your IMAP server.<br>Please report "
 "this to the system administrator"
 msgstr ""
+"서버 정렬이 IMAP서버에서 지원되지 않습니다.<br>"
+"시스템 관리자에게 도움을 요청하십시오"
 
-#: squirrelmail/functions/mailbox_display.php:570
+#: squirrelmail/functions/mailbox_display.php:565
 msgid "THIS FOLDER IS EMPTY"
 msgstr "이 편지함은 비어 있습니다."
 
-#: squirrelmail/functions/mailbox_display.php:663
+#: squirrelmail/functions/mailbox_display.php:658
 msgid "Move Selected To:"
 msgstr "선택한 메일 이동:"
 
-#: squirrelmail/functions/mailbox_display.php:666
+#: squirrelmail/functions/mailbox_display.php:661
 msgid "Transform Selected Messages"
 msgstr "메세지 표시"
 
-#: squirrelmail/functions/mailbox_display.php:691
-#: squirrelmail/plugins/delete_move_next/setup.php:258
-#: squirrelmail/plugins/delete_move_next/setup.php:282
+#: squirrelmail/functions/mailbox_display.php:685
+#: squirrelmail/plugins/delete_move_next/setup.php:264
+#: squirrelmail/plugins/delete_move_next/setup.php:288
 msgid "Move"
 msgstr "이동"
 
-#: squirrelmail/functions/mailbox_display.php:698
+#: squirrelmail/functions/mailbox_display.php:692
 msgid "Expunge"
 msgstr "비우기"
 
-#: squirrelmail/functions/mailbox_display.php:699
+#: squirrelmail/functions/mailbox_display.php:693
 msgid "mailbox"
 msgstr "메일박스"
 
-#: squirrelmail/functions/mailbox_display.php:701
+#: squirrelmail/functions/mailbox_display.php:695
 msgid "Read"
 msgstr "읽음"
 
-#: squirrelmail/functions/mailbox_display.php:702
+#: squirrelmail/functions/mailbox_display.php:696
 msgid "Unread"
 msgstr "읽지 않음"
 
-#: squirrelmail/functions/mailbox_display.php:711
+#: squirrelmail/functions/mailbox_display.php:705
 msgid "Unthread View"
 msgstr "쓰레드 숨김"
 
-#: squirrelmail/functions/mailbox_display.php:715
+#: squirrelmail/functions/mailbox_display.php:708
 msgid "Thread View"
 msgstr "쓰레드 보기"
 
-#: squirrelmail/functions/mailbox_display.php:830
+#: squirrelmail/functions/mailbox_display.php:822
 msgid "Toggle All"
 msgstr "전체 선택"
 
-#: squirrelmail/functions/mailbox_display.php:854
+#: squirrelmail/functions/mailbox_display.php:846
 msgid "Unselect All"
 msgstr "전체 선택해제"
 
-#: squirrelmail/functions/mailbox_display.php:856
+#: squirrelmail/functions/mailbox_display.php:848
 msgid "Select All"
 msgstr "전체 선택"
 
-#: squirrelmail/functions/mailbox_display.php:873
+#: squirrelmail/functions/mailbox_display.php:865
 #, c-format
 msgid "Viewing Messages: <B>%s</B> to <B>%s</B> (%s total)"
 msgstr "메세지 보기: <B>%s</B> - <B>%s</B> (전체: %s)"
 
-#: squirrelmail/functions/mailbox_display.php:876
+#: squirrelmail/functions/mailbox_display.php:868
 #, c-format
 msgid "Viewing Message: <B>%s</B> (1 total)"
 msgstr "메세지 보기: <b>1</b> (1개의 메세지)"
 
-#: squirrelmail/functions/mailbox_display.php:1060
+#: squirrelmail/functions/mailbox_display.php:1052
 msgid "Paginate"
-msgstr "페이지 만들기"
+msgstr "페이지 구분"
 
-#: squirrelmail/functions/mailbox_display.php:1067
+#: squirrelmail/functions/mailbox_display.php:1059
 msgid "Show All"
 msgstr "전체 보기"
 
@@ -2013,86 +2116,79 @@ msgstr "MIME 디코딩 오류. 이것을 버그로 보고해 주세요!"
 #: squirrelmail/functions/mime.php:499
 msgid ""
 "Body retrieval error. The reason for this is most probably that the message "
-"is malformed. Please help us making future versions better by submitting "
-"this message to the developers knowledgebase!"
+"is malformed."
 msgstr ""
-"본문 읽기 오류. 이것의 원인은 대부분 메세지 형식이 잘못되었기 때문입니다. 이 "
-"메세지를 개발자들에게 알려주시면 우리의 차기버전에서는 이 문제가 수정되도록 "
-"할 것입니다."
+"본문 읽기 오류. 이것의 원인은 대부분 메세지 형식이 잘못되었기 때문입니다."
 
 #: squirrelmail/functions/mime.php:501
-msgid "Submit message"
-msgstr "메세지 보내기"
-
-#: squirrelmail/functions/mime.php:503
 msgid "Command:"
 msgstr "명령어:"
 
-#: squirrelmail/functions/mime.php:504
+#: squirrelmail/functions/mime.php:502
 msgid "Response:"
 msgstr "응답:"
 
-#: squirrelmail/functions/mime.php:505
-#: squirrelmail/plugins/calendar/event_create.php:174
-#: squirrelmail/plugins/calendar/event_delete.php:96
-#: squirrelmail/plugins/calendar/event_edit.php:190
-#: squirrelmail/plugins/calendar/event_edit.php:203
+#: squirrelmail/functions/mime.php:503
+#: squirrelmail/plugins/calendar/event_create.php:170
+#: squirrelmail/plugins/calendar/event_delete.php:95
+#: squirrelmail/plugins/calendar/event_edit.php:174
+#: squirrelmail/plugins/calendar/event_edit.php:187
 msgid "Message:"
 msgstr "메세지:"
 
-#: squirrelmail/functions/mime.php:506
+#: squirrelmail/functions/mime.php:504
 msgid "FETCH line:"
 msgstr "가져온 라인:"
 
-#: squirrelmail/functions/mime.php:796
+#: squirrelmail/functions/mime.php:804
 msgid "Hide Unsafe Images"
 msgstr "안전하지 않은 그림 숨기기"
 
-#: squirrelmail/functions/mime.php:798
+#: squirrelmail/functions/mime.php:806
 msgid "View Unsafe Images"
 msgstr "안전하지 않은 그림 보기"
 
-#: squirrelmail/functions/mime.php:827
+#: squirrelmail/functions/mime.php:835
 msgid "Attachments"
 msgstr "첨부"
 
-#: squirrelmail/functions/mime.php:863 squirrelmail/functions/mime.php:941
+#: squirrelmail/functions/mime.php:871 squirrelmail/functions/mime.php:949
 msgid "download"
 msgstr "다운로드"
 
-#: squirrelmail/functions/mime.php:1670 squirrelmail/functions/mime.php:1989
+#: squirrelmail/functions/mime.php:1673 squirrelmail/functions/mime.php:1995
 msgid "sec_remove_eng.png"
 msgstr "sec_remove_ko_KR.png"
 
 #: squirrelmail/functions/options.php:169
 #, c-format
 msgid "Option Type '%s' Not Found"
-msgstr "설정 형식 '%s'를 찾을 수 없습니다."
+msgstr "설정 형식 '%s'을(를) 찾을 수 없습니다."
 
 #: squirrelmail/functions/options.php:264
 #: squirrelmail/plugins/administrator/options.php:364
-#: squirrelmail/plugins/calendar/event_delete.php:109
-#: squirrelmail/plugins/calendar/event_edit.php:223
+#: squirrelmail/plugins/calendar/event_delete.php:108
+#: squirrelmail/plugins/calendar/event_edit.php:207
 msgid "Yes"
 msgstr "예"
 
 #: squirrelmail/functions/options.php:269
 #: squirrelmail/plugins/administrator/options.php:365
-#: squirrelmail/plugins/calendar/event_delete.php:116
-#: squirrelmail/plugins/calendar/event_edit.php:230
+#: squirrelmail/plugins/calendar/event_delete.php:115
+#: squirrelmail/plugins/calendar/event_edit.php:214
 msgid "No"
 msgstr "아니오"
 
-#: squirrelmail/functions/page_header.php:214
+#: squirrelmail/functions/page_header.php:220
 msgid "Current Folder"
 msgstr "현재 편지함"
 
-#: squirrelmail/functions/page_header.php:227
-#: squirrelmail/functions/page_header.php:230
-#: squirrelmail/functions/page_header.php:272
-#: squirrelmail/functions/page_header.php:299
+#: squirrelmail/functions/page_header.php:233
+#: squirrelmail/functions/page_header.php:236
+#: squirrelmail/functions/page_header.php:278
+#: squirrelmail/functions/page_header.php:305
 msgid "Compose"
-msgstr "새 메일"
+msgstr "편지 쓰기"
 
 #: squirrelmail/functions/prefs.php:100
 #, c-format
@@ -2200,7 +2296,7 @@ msgstr "무료 - Osirusoft 공개 프락시 서버 - 공개 프락시 서버 목록"
 msgid ""
 "FREE - ORDB was born when ORBS went off the air. It seems to have fewer "
 "false positives than ORBS did though."
-msgstr "무료 - ORDB는 ORBS이후에 생겨났습니다. ORBS보다 에러가 적어보입니다."
+msgstr "무료 - ORDB는 ORBS이후에 생겨났습니다. ORBS보다 오류가 적어보입니다."
 
 #: squirrelmail/plugins/filters/filters.php:678
 msgid "FREE - Five-Ten-sg.com - Direct SPAM sources."
@@ -2367,8 +2463,8 @@ msgstr "헤더"
 msgid "Contains:"
 msgstr "내용물:"
 
-#: squirrelmail/plugins/delete_move_next/setup.php:254
-#: squirrelmail/plugins/delete_move_next/setup.php:278
+#: squirrelmail/plugins/delete_move_next/setup.php:260
+#: squirrelmail/plugins/delete_move_next/setup.php:284
 #: squirrelmail/plugins/filters/options.php:178
 msgid "Move to:"
 msgstr "이동 :"
@@ -2494,15 +2590,15 @@ msgstr ""
 msgid "Check Spelling"
 msgstr "철자검사 시작"
 
-#: squirrelmail/plugins/squirrelspell/sqspell_functions.php:67
+#: squirrelmail/plugins/squirrelspell/sqspell_functions.php:65
 msgid "Back to &quot;SpellChecker Options&quot; page"
 msgstr "&quot;철자검사 설정&quot;페이지로 돌아가기"
 
-#: squirrelmail/plugins/squirrelspell/sqspell_functions.php:373
+#: squirrelmail/plugins/squirrelspell/sqspell_functions.php:371
 msgid "ATTENTION:"
 msgstr "주의:"
 
-#: squirrelmail/plugins/squirrelspell/sqspell_functions.php:374
+#: squirrelmail/plugins/squirrelspell/sqspell_functions.php:372
 msgid ""
 "SquirrelSpell was unable to decrypt your personal dictionary. This is most "
 "likely due to the fact that you have changed your mailbox password. In order "
@@ -2521,44 +2617,44 @@ msgstr ""
 "만약 이전암호를 기억하지 못할 경우에도 파일을 삭제하시기 바랍니다. 암호화된 "
 "파일에는 더이상 접근할 수 없습니다."
 
-#: squirrelmail/plugins/squirrelspell/sqspell_functions.php:380
+#: squirrelmail/plugins/squirrelspell/sqspell_functions.php:378
 msgid "Delete my dictionary and start a new one"
 msgstr "사전을 삭제하고 새로 시작합니다."
 
-#: squirrelmail/plugins/squirrelspell/sqspell_functions.php:381
+#: squirrelmail/plugins/squirrelspell/sqspell_functions.php:379
 msgid "Decrypt my dictionary with my old password:"
 msgstr "사전을 이전 암호로 해독"
 
-#: squirrelmail/plugins/squirrelspell/sqspell_functions.php:385
+#: squirrelmail/plugins/squirrelspell/sqspell_functions.php:383
 msgid "Proceed"
 msgstr "진행"
 
-#: squirrelmail/plugins/squirrelspell/sqspell_functions.php:391
+#: squirrelmail/plugins/squirrelspell/sqspell_functions.php:389
 msgid "You must make a choice"
 msgstr "하나를 선택해야 합니다."
 
-#: squirrelmail/plugins/squirrelspell/sqspell_functions.php:392
+#: squirrelmail/plugins/squirrelspell/sqspell_functions.php:390
 msgid ""
 "You can either delete your dictionary or type in the old password. Not both."
 msgstr "사전을 삭제하거나 기존 암호중 하나를 선택해야 합니다."
 
-#: squirrelmail/plugins/squirrelspell/sqspell_functions.php:393
+#: squirrelmail/plugins/squirrelspell/sqspell_functions.php:391
 msgid "This will delete your personal dictionary file. Proceed?"
 msgstr "개인사전파일을 삭제합니다. 계속하시겠습니까?"
 
-#: squirrelmail/plugins/squirrelspell/sqspell_functions.php:402
-#: squirrelmail/plugins/squirrelspell/sqspell_functions.php:405
+#: squirrelmail/plugins/squirrelspell/sqspell_functions.php:400
+#: squirrelmail/plugins/squirrelspell/sqspell_functions.php:403
 msgid "Error Decrypting Dictionary"
 msgstr "사전 암호해제 오류"
 
-#: squirrelmail/plugins/squirrelspell/sqspell_functions.php:525
+#: squirrelmail/plugins/squirrelspell/sqspell_functions.php:523
 msgid "Cute."
 msgstr "인용"
 
 #: squirrelmail/plugins/squirrelspell/modules/check_me.mod:117
 #, c-format
 msgid "I tried to execute '%s', but it returned:"
-msgstr "'%s'를 실행 리턴 결과:"
+msgstr "'%s'을(를) 실행, 리턴 결과:"
 
 #: squirrelmail/plugins/squirrelspell/modules/check_me.mod:123
 msgid "SquirrelSpell is misconfigured."
@@ -2798,7 +2894,7 @@ msgid ""
 msgstr ""
 "<p>개인 사전은 <strong>현재 암호화</strong>되어 있습니다. 이것은 개인 사전이 "
 "도단당하거나 웹메일 시스템에서 접근하는 경우에 대하여 당신의 사생활을 보호하"
-"는데 도움을 줍니다. 개인 사전에 저장된 내용을 다른 사람이 볼수 없도록 하기 위"
+"는데 도움을 줍니다. 개인 사전에 저장된 내용을 다른 사람이 볼 수 없도록 하기 위"
 "해, 현재 당신의 편지함에 접근하기 위해 사용하는 비밀번호로 암호화 되어 있습니"
 "다. </p> <p><strong>주의:</strong>만약 비밀번호를 잊어버린 경우에는 사전을 복"
 "호화 할 수 없기 때문에 개인 사전에 접근할 수 없게 됩니다. 편지함 비밀번호를 "
@@ -2875,7 +2971,7 @@ msgid ""
 "message:"
 msgstr "이메세지의 철자검사를 사용할 사전을 선택하세요:"
 
-#: squirrelmail/plugins/calendar/calendar.php:132
+#: squirrelmail/plugins/calendar/calendar.php:131
 #: squirrelmail/plugins/squirrelspell/modules/init.mod:53
 msgid "Go"
 msgstr "이동"
@@ -2949,9 +3045,8 @@ msgid "Translator"
 msgstr "번역기"
 
 #: squirrelmail/plugins/translate/options.php:98
-#, fuzzy
 msgid "Saved Translation Options"
-msgstr "번역 설정"
+msgstr "번역 설정이 저장되었습니다."
 
 #: squirrelmail/plugins/translate/options.php:101
 msgid "Your server options are as follows:"
@@ -2969,7 +3064,7 @@ msgstr "10개의 언어쌍 사용, 최대 25 kb 까지 번역. Systran 사용"
 
 #: squirrelmail/plugins/translate/options.php:112
 msgid "12 language pairs, no known limits, powered by Systran"
-msgstr "12개의 언어쌍을 사용. 제한사항 없슴. Systran 번역기 사용"
+msgstr "12개의 언어쌍을 사용. 제한사항 없음. Systran 번역기 사용"
 
 #: squirrelmail/plugins/translate/options.php:115
 msgid ""
@@ -3076,7 +3171,7 @@ msgstr "다른 언어의 메세지를 수신했을때 어떤 번역기를 사용하시겠습니까?"
 #: squirrelmail/plugins/translate/setup.php:481
 #, c-format
 msgid "%s to %s"
-msgstr "%s 를 %s 로 "
+msgstr "%s을(를) %s(으)로 "
 
 #: squirrelmail/plugins/translate/setup.php:231
 #: squirrelmail/plugins/translate/setup.php:235
@@ -3461,183 +3556,172 @@ msgstr "사운드 테스트"
 msgid "Loading the sound..."
 msgstr "사운드 불러오기..."
 
-#: squirrelmail/plugins/mail_fetch/class.POP3.php:82
-#: squirrelmail/plugins/mail_fetch/class.POP3.php:90
-#: squirrelmail/plugins/mail_fetch/class.POP3.php:102
+#: squirrelmail/plugins/mail_fetch/class.POP3.php:79
+#: squirrelmail/plugins/mail_fetch/class.POP3.php:87
+#: squirrelmail/plugins/mail_fetch/class.POP3.php:99
 msgid "POP3 connect:"
 msgstr "POP3 연결:"
 
-#: squirrelmail/plugins/mail_fetch/class.POP3.php:82
+#: squirrelmail/plugins/mail_fetch/class.POP3.php:79
 msgid "No server specified"
 msgstr "서버를 지정하지 않았습니다."
 
-#: squirrelmail/plugins/mail_fetch/class.POP3.php:90
-#: squirrelmail/plugins/mail_fetch/class.POP3.php:102
-#: squirrelmail/plugins/mail_fetch/class.POP3.php:141
-#: squirrelmail/plugins/mail_fetch/class.POP3.php:276
-#: squirrelmail/plugins/mail_fetch/class.POP3.php:330
-#: squirrelmail/plugins/mail_fetch/class.POP3.php:341
-#: squirrelmail/plugins/mail_fetch/class.POP3.php:389
-#: squirrelmail/plugins/mail_fetch/class.POP3.php:422
-#: squirrelmail/plugins/mail_fetch/class.POP3.php:455
-#: squirrelmail/plugins/mail_fetch/class.POP3.php:554
-#: squirrelmail/plugins/mail_fetch/class.POP3.php:577
+#: squirrelmail/plugins/mail_fetch/class.POP3.php:87
+#: squirrelmail/plugins/mail_fetch/class.POP3.php:99
+#: squirrelmail/plugins/mail_fetch/class.POP3.php:132
+#: squirrelmail/plugins/mail_fetch/class.POP3.php:255
+#: squirrelmail/plugins/mail_fetch/class.POP3.php:309
+#: squirrelmail/plugins/mail_fetch/class.POP3.php:320
+#: squirrelmail/plugins/mail_fetch/class.POP3.php:368
+#: squirrelmail/plugins/mail_fetch/class.POP3.php:401
+#: squirrelmail/plugins/mail_fetch/class.POP3.php:434
+#: squirrelmail/plugins/mail_fetch/class.POP3.php:533
+#: squirrelmail/plugins/mail_fetch/class.POP3.php:556
 msgid "Error "
 msgstr "오류 "
 
-#: squirrelmail/plugins/mail_fetch/class.POP3.php:110
-msgid "POP3: premature NOOP OK, NOT an RFC 1939 Compliant server"
-msgstr "POP3: 불안전한 NOOP OK, RFC 1939 호환 서버가 아닙니다."
-
-#: squirrelmail/plugins/mail_fetch/class.POP3.php:120
+#: squirrelmail/plugins/mail_fetch/class.POP3.php:111
 msgid "POP3 noop:"
 msgstr "POP3 noop:"
 
-#: squirrelmail/plugins/mail_fetch/class.POP3.php:120
-#: squirrelmail/plugins/mail_fetch/class.POP3.php:186
-#: squirrelmail/plugins/mail_fetch/class.POP3.php:235
-#: squirrelmail/plugins/mail_fetch/class.POP3.php:260
-#: squirrelmail/plugins/mail_fetch/class.POP3.php:302
-#: squirrelmail/plugins/mail_fetch/class.POP3.php:376
-#: squirrelmail/plugins/mail_fetch/class.POP3.php:415
-#: squirrelmail/plugins/mail_fetch/class.POP3.php:445
-#: squirrelmail/plugins/mail_fetch/class.POP3.php:479
-#: squirrelmail/plugins/mail_fetch/class.POP3.php:542
-#: squirrelmail/plugins/mail_fetch/class.POP3.php:610
+#: squirrelmail/plugins/mail_fetch/class.POP3.php:111
+#: squirrelmail/plugins/mail_fetch/class.POP3.php:171
+#: squirrelmail/plugins/mail_fetch/class.POP3.php:214
+#: squirrelmail/plugins/mail_fetch/class.POP3.php:239
+#: squirrelmail/plugins/mail_fetch/class.POP3.php:281
+#: squirrelmail/plugins/mail_fetch/class.POP3.php:355
+#: squirrelmail/plugins/mail_fetch/class.POP3.php:394
+#: squirrelmail/plugins/mail_fetch/class.POP3.php:424
+#: squirrelmail/plugins/mail_fetch/class.POP3.php:458
+#: squirrelmail/plugins/mail_fetch/class.POP3.php:521
+#: squirrelmail/plugins/mail_fetch/class.POP3.php:589
 msgid "No connection to server"
-msgstr "서버 연결 없슴"
+msgstr "서버 연결 없음"
 
-#: squirrelmail/plugins/mail_fetch/class.POP3.php:133
-#: squirrelmail/plugins/mail_fetch/class.POP3.php:136
-#: squirrelmail/plugins/mail_fetch/class.POP3.php:141
+#: squirrelmail/plugins/mail_fetch/class.POP3.php:124
+#: squirrelmail/plugins/mail_fetch/class.POP3.php:127
+#: squirrelmail/plugins/mail_fetch/class.POP3.php:132
 msgid "POP3 user:"
 msgstr "POP3 사용자:"
 
-#: squirrelmail/plugins/mail_fetch/class.POP3.php:133
+#: squirrelmail/plugins/mail_fetch/class.POP3.php:124
 msgid "no login ID submitted"
 msgstr "로그인 ID가 없습니다."
 
-#: squirrelmail/plugins/mail_fetch/class.POP3.php:136
-#: squirrelmail/plugins/mail_fetch/class.POP3.php:156
+#: squirrelmail/plugins/mail_fetch/class.POP3.php:127
+#: squirrelmail/plugins/mail_fetch/class.POP3.php:147
 msgid "connection not established"
 msgstr "연결되지 않았습니다."
 
-#: squirrelmail/plugins/mail_fetch/class.POP3.php:153
-#: squirrelmail/plugins/mail_fetch/class.POP3.php:156
-#: squirrelmail/plugins/mail_fetch/class.POP3.php:161
-#: squirrelmail/plugins/mail_fetch/class.POP3.php:170
+#: squirrelmail/plugins/mail_fetch/class.POP3.php:144
+#: squirrelmail/plugins/mail_fetch/class.POP3.php:147
+#: squirrelmail/plugins/mail_fetch/class.POP3.php:152
 msgid "POP3 pass:"
 msgstr "POP3 패스워드:"
 
-#: squirrelmail/plugins/mail_fetch/class.POP3.php:153
-#: squirrelmail/plugins/mail_fetch/class.POP3.php:195
+#: squirrelmail/plugins/mail_fetch/class.POP3.php:144
+#: squirrelmail/plugins/mail_fetch/class.POP3.php:180
 msgid "No password submitted"
 msgstr "비밀번호가 없습니다."
 
-#: squirrelmail/plugins/mail_fetch/class.POP3.php:161
+#: squirrelmail/plugins/mail_fetch/class.POP3.php:152
 msgid "authentication failed "
 msgstr "인증 실패 "
 
-#: squirrelmail/plugins/mail_fetch/class.POP3.php:170
-#: squirrelmail/plugins/mail_fetch/class.POP3.php:219
-msgid "NOOP failed. Server not RFC 1939 compliant"
-msgstr "NOOP 오류. 서버가 RFC 1939 호환이 아닙니다."
-
-#: squirrelmail/plugins/mail_fetch/class.POP3.php:186
-#: squirrelmail/plugins/mail_fetch/class.POP3.php:192
+#: squirrelmail/plugins/mail_fetch/class.POP3.php:171
+#: squirrelmail/plugins/mail_fetch/class.POP3.php:177
+#: squirrelmail/plugins/mail_fetch/class.POP3.php:180
+#: squirrelmail/plugins/mail_fetch/class.POP3.php:185
 #: squirrelmail/plugins/mail_fetch/class.POP3.php:195
-#: squirrelmail/plugins/mail_fetch/class.POP3.php:200
-#: squirrelmail/plugins/mail_fetch/class.POP3.php:210
-#: squirrelmail/plugins/mail_fetch/class.POP3.php:219
 msgid "POP3 apop:"
 msgstr "POP3 apop:"
 
-#: squirrelmail/plugins/mail_fetch/class.POP3.php:192
+#: squirrelmail/plugins/mail_fetch/class.POP3.php:177
 msgid "No login ID submitted"
-msgstr "로그인ID 가 없습니다."
+msgstr "로그인 ID가 없습니다."
 
-#: squirrelmail/plugins/mail_fetch/class.POP3.php:200
+#: squirrelmail/plugins/mail_fetch/class.POP3.php:185
 msgid "No server banner"
 msgstr "차단된 서버가 없습니다."
 
-#: squirrelmail/plugins/mail_fetch/class.POP3.php:200
-#: squirrelmail/plugins/mail_fetch/class.POP3.php:210
+#: squirrelmail/plugins/mail_fetch/class.POP3.php:185
+#: squirrelmail/plugins/mail_fetch/class.POP3.php:195
 msgid "abort"
 msgstr "취소"
 
-#: squirrelmail/plugins/mail_fetch/class.POP3.php:210
+#: squirrelmail/plugins/mail_fetch/class.POP3.php:195
 msgid "apop authentication failed"
 msgstr "apop 인증 오류"
 
-#: squirrelmail/plugins/mail_fetch/class.POP3.php:235
+#: squirrelmail/plugins/mail_fetch/class.POP3.php:214
 msgid "POP3 login:"
 msgstr "POP3 로그인:"
 
-#: squirrelmail/plugins/mail_fetch/class.POP3.php:260
-#: squirrelmail/plugins/mail_fetch/class.POP3.php:276
+#: squirrelmail/plugins/mail_fetch/class.POP3.php:239
+#: squirrelmail/plugins/mail_fetch/class.POP3.php:255
 msgid "POP3 top:"
 msgstr "POP3 top:"
 
-#: squirrelmail/plugins/mail_fetch/class.POP3.php:302
-#: squirrelmail/plugins/mail_fetch/class.POP3.php:330
-#: squirrelmail/plugins/mail_fetch/class.POP3.php:341
-#: squirrelmail/plugins/mail_fetch/class.POP3.php:353
+#: squirrelmail/plugins/mail_fetch/class.POP3.php:281
+#: squirrelmail/plugins/mail_fetch/class.POP3.php:309
+#: squirrelmail/plugins/mail_fetch/class.POP3.php:320
+#: squirrelmail/plugins/mail_fetch/class.POP3.php:332
 msgid "POP3 pop_list:"
 msgstr "POP3 pop_list:"
 
-#: squirrelmail/plugins/mail_fetch/class.POP3.php:353
+#: squirrelmail/plugins/mail_fetch/class.POP3.php:332
 msgid "Premature end of list"
 msgstr "리스트의 끝이 비정상적입니다."
 
-#: squirrelmail/plugins/mail_fetch/class.POP3.php:376
-#: squirrelmail/plugins/mail_fetch/class.POP3.php:389
+#: squirrelmail/plugins/mail_fetch/class.POP3.php:355
+#: squirrelmail/plugins/mail_fetch/class.POP3.php:368
 msgid "POP3 get:"
 msgstr "POP3 가져오기:"
 
-#: squirrelmail/plugins/mail_fetch/class.POP3.php:415
-#: squirrelmail/plugins/mail_fetch/class.POP3.php:422
+#: squirrelmail/plugins/mail_fetch/class.POP3.php:394
+#: squirrelmail/plugins/mail_fetch/class.POP3.php:401
 msgid "POP3 last:"
 msgstr "POP3 last:"
 
-#: squirrelmail/plugins/mail_fetch/class.POP3.php:445
-#: squirrelmail/plugins/mail_fetch/class.POP3.php:455
+#: squirrelmail/plugins/mail_fetch/class.POP3.php:424
+#: squirrelmail/plugins/mail_fetch/class.POP3.php:434
 msgid "POP3 reset:"
 msgstr "POP3 초기화:"
 
-#: squirrelmail/plugins/mail_fetch/class.POP3.php:479
-#: squirrelmail/plugins/mail_fetch/class.POP3.php:485
+#: squirrelmail/plugins/mail_fetch/class.POP3.php:458
+#: squirrelmail/plugins/mail_fetch/class.POP3.php:464
 msgid "POP3 send_cmd:"
 msgstr "POP3 전송 명령어:"
 
-#: squirrelmail/plugins/mail_fetch/class.POP3.php:485
+#: squirrelmail/plugins/mail_fetch/class.POP3.php:464
 msgid "Empty command string"
 msgstr "명령어가 비어있습니다."
 
-#: squirrelmail/plugins/mail_fetch/class.POP3.php:505
+#: squirrelmail/plugins/mail_fetch/class.POP3.php:484
 msgid "POP3 quit:"
 msgstr "POP3 종료:"
 
-#: squirrelmail/plugins/mail_fetch/class.POP3.php:505
+#: squirrelmail/plugins/mail_fetch/class.POP3.php:484
 msgid "connection does not exist"
 msgstr "연결된 서버가 존재하지 않습니다."
 
-#: squirrelmail/plugins/mail_fetch/class.POP3.php:542
-#: squirrelmail/plugins/mail_fetch/class.POP3.php:554
-#: squirrelmail/plugins/mail_fetch/class.POP3.php:577
+#: squirrelmail/plugins/mail_fetch/class.POP3.php:521
+#: squirrelmail/plugins/mail_fetch/class.POP3.php:533
+#: squirrelmail/plugins/mail_fetch/class.POP3.php:556
 msgid "POP3 uidl:"
 msgstr "POP3 uidl:"
 
-#: squirrelmail/plugins/mail_fetch/class.POP3.php:610
-#: squirrelmail/plugins/mail_fetch/class.POP3.php:615
-#: squirrelmail/plugins/mail_fetch/class.POP3.php:621
+#: squirrelmail/plugins/mail_fetch/class.POP3.php:589
+#: squirrelmail/plugins/mail_fetch/class.POP3.php:594
+#: squirrelmail/plugins/mail_fetch/class.POP3.php:600
 msgid "POP3 delete:"
 msgstr "POP3 삭제:"
 
-#: squirrelmail/plugins/mail_fetch/class.POP3.php:615
+#: squirrelmail/plugins/mail_fetch/class.POP3.php:594
 msgid "No msg number submitted"
 msgstr "메세지 번호가 없습니다."
 
-#: squirrelmail/plugins/mail_fetch/class.POP3.php:621
+#: squirrelmail/plugins/mail_fetch/class.POP3.php:600
 msgid "Command failed "
 msgstr "명령어 실패"
 
@@ -3675,7 +3759,7 @@ msgid "Opening POP server"
 msgstr "POP 서버 열기"
 
 #: squirrelmail/plugins/mail_fetch/fetch.php:148
-#: squirrelmail/plugins/mail_fetch/setup.php:135
+#: squirrelmail/plugins/mail_fetch/setup.php:131
 msgid "Login Failed:"
 msgstr "로그인 실패:"
 
@@ -3700,7 +3784,7 @@ msgid "Fetching UIDL..."
 msgstr "UIDL 가져오기..."
 
 #: squirrelmail/plugins/mail_fetch/fetch.php:183
-#: squirrelmail/plugins/mail_fetch/setup.php:166
+#: squirrelmail/plugins/mail_fetch/setup.php:162
 msgid "Server does not support UIDL."
 msgstr "서버가 UIDL을 지원하지 않습니다."
 
@@ -3733,9 +3817,9 @@ msgid "Delete failed:"
 msgstr "삭제 오류:"
 
 #: squirrelmail/plugins/mail_fetch/fetch.php:226
-#: squirrelmail/plugins/mail_fetch/setup.php:197
+#: squirrelmail/plugins/mail_fetch/setup.php:193
 msgid "Error Appending Message!"
-msgstr "메세지 추가 에러"
+msgstr "메세지 추가 오류"
 
 #: squirrelmail/plugins/mail_fetch/fetch.php:230
 msgid "Closing POP"
@@ -3767,7 +3851,7 @@ msgstr ""
 
 #: squirrelmail/plugins/mail_fetch/options.php:153
 msgid "If you leave password empty, it will be required when you fetch mail."
-msgstr "비밀번호를 비워두면, 메일을 가져올때 비밀번호를 입력해야 합니다."
+msgstr "비밀번호를 비워두면, 메일을 가져 올때 비밀번호를 입력해야 합니다."
 
 #: squirrelmail/plugins/mail_fetch/options.php:157
 msgid "Encrypt passwords (informative only)"
@@ -3869,20 +3953,20 @@ msgstr "이봐! 뭘 찾고 있는거야?"
 msgid "Fetch"
 msgstr "가져오기"
 
-#: squirrelmail/plugins/mail_fetch/setup.php:127
-#: squirrelmail/plugins/mail_fetch/setup.php:174
+#: squirrelmail/plugins/mail_fetch/setup.php:123
+#: squirrelmail/plugins/mail_fetch/setup.php:170
 msgid "Warning, "
 msgstr "경고, "
 
-#: squirrelmail/plugins/mail_fetch/setup.php:210
+#: squirrelmail/plugins/mail_fetch/setup.php:206
 msgid "Mail Fetch Result:"
 msgstr "메일 가져오기 결과:"
 
-#: squirrelmail/plugins/mail_fetch/setup.php:238
+#: squirrelmail/plugins/mail_fetch/setup.php:234
 msgid "Simple POP3 Fetch Mail"
 msgstr "간단한 POP3 메일 가져오기"
 
-#: squirrelmail/plugins/mail_fetch/setup.php:240
+#: squirrelmail/plugins/mail_fetch/setup.php:236
 msgid ""
 "This configures settings for downloading email from a pop3 mailbox to your "
 "account on this server."
@@ -3890,237 +3974,196 @@ msgstr ""
 "이 설정은 서버에서 당신의 계정으로 pop3 편지함으로부터 이메일을 다운받을 수 "
 "있게 설정합니다."
 
-#: squirrelmail/plugins/bug_report/setup.php:64
+#: squirrelmail/plugins/bug_report/setup.php:67
 msgid "Bug Reports:"
 msgstr "버그 전송:"
 
-#: squirrelmail/plugins/bug_report/setup.php:69
+#: squirrelmail/plugins/bug_report/setup.php:72
 msgid "Show button in toolbar"
 msgstr "툴바에서 버튼 보여주기"
 
-#: squirrelmail/plugins/sent_subfolders/setup.php:108
+#: squirrelmail/plugins/sent_subfolders/setup.php:104
 msgid "Sent Subfolders Options"
 msgstr "보낸 편지함 하위폴더 유형"
 
-#: squirrelmail/plugins/sent_subfolders/setup.php:113
+#: squirrelmail/plugins/sent_subfolders/setup.php:109
 msgid "Use Sent Subfolders"
 msgstr "보낸 편지함 하위폴더 사용"
 
-#: squirrelmail/plugins/sent_subfolders/setup.php:117
+#: squirrelmail/plugins/sent_subfolders/setup.php:113
 msgid "Monthly"
 msgstr "월별"
 
-#: squirrelmail/plugins/sent_subfolders/setup.php:118
+#: squirrelmail/plugins/sent_subfolders/setup.php:114
 msgid "Quarterly"
 msgstr "분기별"
 
-#: squirrelmail/plugins/sent_subfolders/setup.php:119
+#: squirrelmail/plugins/sent_subfolders/setup.php:115
 msgid "Yearly"
 msgstr "년별"
 
-#: squirrelmail/plugins/sent_subfolders/setup.php:134
+#: squirrelmail/plugins/sent_subfolders/setup.php:130
 msgid "Base Sent Folder"
 msgstr "보낸 편지함"
 
-#: squirrelmail/plugins/calendar/calendar.php:94
+#: squirrelmail/plugins/calendar/calendar.php:93
 msgid "TODAY"
 msgstr "오늘"
 
-#: squirrelmail/plugins/calendar/day.php:58
-#: squirrelmail/plugins/calendar/event_create.php:145
-#: squirrelmail/plugins/calendar/event_delete.php:143
-#, fuzzy
+#: squirrelmail/plugins/calendar/day.php:57
+#: squirrelmail/plugins/calendar/event_create.php:142
+#: squirrelmail/plugins/calendar/event_delete.php:142
 msgid "l, F j Y"
-msgstr "Y-F-j, D, G:i"
+msgstr "Y-F-j, I"
 
-#: squirrelmail/plugins/calendar/day.php:104
+#: squirrelmail/plugins/calendar/day.php:103
 msgid "ADD"
 msgstr "추가"
 
-#: squirrelmail/plugins/calendar/day.php:118
+#: squirrelmail/plugins/calendar/day.php:117
 msgid "EDIT"
 msgstr "편집"
 
-#: squirrelmail/plugins/calendar/day.php:120
+#: squirrelmail/plugins/calendar/day.php:119
 msgid "DEL"
 msgstr "삭제"
 
-#: squirrelmail/plugins/calendar/event_create.php:79
+#: squirrelmail/plugins/calendar/event_create.php:83
 msgid "Start time:"
 msgstr "시작 시간:"
 
-#: squirrelmail/plugins/calendar/event_create.php:89
-#: squirrelmail/plugins/calendar/event_edit.php:140
+#: squirrelmail/plugins/calendar/event_create.php:93
+#: squirrelmail/plugins/calendar/event_edit.php:132
 msgid "Length:"
 msgstr "길이:"
 
-#: squirrelmail/plugins/calendar/event_create.php:96
-#: squirrelmail/plugins/calendar/event_edit.php:146
-#: squirrelmail/plugins/calendar/event_edit.php:186
-#: squirrelmail/plugins/calendar/event_edit.php:199
+#: squirrelmail/plugins/calendar/event_create.php:99
+#: squirrelmail/plugins/calendar/event_edit.php:138
+#: squirrelmail/plugins/calendar/event_edit.php:170
+#: squirrelmail/plugins/calendar/event_edit.php:183
 msgid "Priority:"
 msgstr "우선순위:"
 
-#: squirrelmail/plugins/calendar/event_create.php:103
-#: squirrelmail/plugins/calendar/event_edit.php:153
-#, fuzzy
-msgid "Notify:"
-msgstr "변경"
-
-#: squirrelmail/plugins/calendar/event_create.php:109
-#: squirrelmail/plugins/calendar/event_create.php:172
-#: squirrelmail/plugins/calendar/event_delete.php:94
-#: squirrelmail/plugins/calendar/event_edit.php:160
-#: squirrelmail/plugins/calendar/event_edit.php:188
-#: squirrelmail/plugins/calendar/event_edit.php:201
+#: squirrelmail/plugins/calendar/event_create.php:105
+#: squirrelmail/plugins/calendar/event_create.php:168
+#: squirrelmail/plugins/calendar/event_delete.php:93
+#: squirrelmail/plugins/calendar/event_edit.php:144
+#: squirrelmail/plugins/calendar/event_edit.php:172
+#: squirrelmail/plugins/calendar/event_edit.php:185
 msgid "Title:"
 msgstr "제목"
 
-#: squirrelmail/plugins/calendar/event_create.php:117
+#: squirrelmail/plugins/calendar/event_create.php:113
 msgid "Set Event"
 msgstr "일정 설정"
 
-#: squirrelmail/plugins/calendar/event_create.php:167
+#: squirrelmail/plugins/calendar/event_create.php:163
 msgid "Event Has been added!"
 msgstr "일정이 등록되었습니다!"
 
-#: squirrelmail/plugins/calendar/event_create.php:170
-#: squirrelmail/plugins/calendar/event_delete.php:92
-#: squirrelmail/plugins/calendar/event_edit.php:130
-#: squirrelmail/plugins/calendar/event_edit.php:184
+#: squirrelmail/plugins/calendar/event_create.php:166
+#: squirrelmail/plugins/calendar/event_delete.php:91
+#: squirrelmail/plugins/calendar/event_edit.php:122
+#: squirrelmail/plugins/calendar/event_edit.php:168
 msgid "Time:"
 msgstr "시간:"
 
-#: squirrelmail/plugins/calendar/event_create.php:177
-#: squirrelmail/plugins/calendar/event_delete.php:149
-#: squirrelmail/plugins/calendar/event_edit.php:278
-#: squirrelmail/plugins/calendar/functions.php:26
+#: squirrelmail/plugins/calendar/event_create.php:173
+#: squirrelmail/plugins/calendar/event_delete.php:148
+#: squirrelmail/plugins/calendar/event_edit.php:262
+#: squirrelmail/plugins/calendar/functions.php:25
 msgid "Day View"
-msgstr "일자 보기"
+msgstr "일별 보기"
 
-#: squirrelmail/plugins/calendar/event_delete.php:89
+#: squirrelmail/plugins/calendar/event_delete.php:88
 msgid "Do you really want to delete this event?"
 msgstr "이 일정을 삭제하시겠습니까?"
 
-#: squirrelmail/plugins/calendar/event_delete.php:147
+#: squirrelmail/plugins/calendar/event_delete.php:146
 msgid "Event deleted!"
 msgstr "일정이 삭제되었습니다!"
 
-#: squirrelmail/plugins/calendar/event_delete.php:155
+#: squirrelmail/plugins/calendar/event_delete.php:154
 msgid "Nothing to delete!"
 msgstr "삭제할 일정이 없습니다!"
 
-#: squirrelmail/plugins/calendar/event_edit.php:168
+#: squirrelmail/plugins/calendar/event_edit.php:152
 msgid "Update Event"
 msgstr "일정 갱신"
 
-#: squirrelmail/plugins/calendar/event_edit.php:180
+#: squirrelmail/plugins/calendar/event_edit.php:164
 msgid "Do you really want to change this event from:"
 msgstr "이 일정을 정말로 수정하시겠습니까:"
 
-#: squirrelmail/plugins/calendar/event_edit.php:193
+#: squirrelmail/plugins/calendar/event_edit.php:177
 msgid "to:"
 msgstr "받는 사람:"
 
-#: squirrelmail/plugins/calendar/event_edit.php:258
+#: squirrelmail/plugins/calendar/event_edit.php:243
 msgid "l, F d Y"
 msgstr ""
 
-#: squirrelmail/plugins/calendar/event_edit.php:276
+#: squirrelmail/plugins/calendar/event_edit.php:260
 msgid "Event updated!"
 msgstr "일정이 갱신되었습니다!"
 
-#: squirrelmail/plugins/calendar/functions.php:24
+#: squirrelmail/plugins/calendar/functions.php:23
 msgid "Month View"
 msgstr "월별 보기"
 
-#: squirrelmail/plugins/calendar/functions.php:37
+#: squirrelmail/plugins/calendar/functions.php:36
 msgid "0 min."
 msgstr "0 분."
 
-#: squirrelmail/plugins/calendar/functions.php:38
+#: squirrelmail/plugins/calendar/functions.php:37
 msgid "15 min."
 msgstr "15 분."
 
-#: squirrelmail/plugins/calendar/functions.php:39
-#, fuzzy
-msgid "30 min."
-msgstr "0 분."
+#: squirrelmail/plugins/calendar/functions.php:38
+msgid "35 min."
+msgstr "35 분."
 
-#: squirrelmail/plugins/calendar/functions.php:40
+#: squirrelmail/plugins/calendar/functions.php:39
 msgid "45 min."
 msgstr "45 분."
 
-#: squirrelmail/plugins/calendar/functions.php:41
+#: squirrelmail/plugins/calendar/functions.php:40
 msgid "1 hr."
 msgstr "1 시간."
 
-#: squirrelmail/plugins/calendar/functions.php:42
+#: squirrelmail/plugins/calendar/functions.php:41
 msgid "1.5 hr."
 msgstr "1.5 시간"
 
-#: squirrelmail/plugins/calendar/functions.php:43
+#: squirrelmail/plugins/calendar/functions.php:42
 msgid "2 hr."
 msgstr "2 시간."
 
-#: squirrelmail/plugins/calendar/functions.php:44
+#: squirrelmail/plugins/calendar/functions.php:43
 msgid "2.5 hr."
 msgstr "2.5 시간"
 
-#: squirrelmail/plugins/calendar/functions.php:45
+#: squirrelmail/plugins/calendar/functions.php:44
 msgid "3 hr."
 msgstr "3 시간."
 
-#: squirrelmail/plugins/calendar/functions.php:46
+#: squirrelmail/plugins/calendar/functions.php:45
 msgid "3.5 hr."
 msgstr "3.5시간"
 
-#: squirrelmail/plugins/calendar/functions.php:47
+#: squirrelmail/plugins/calendar/functions.php:46
 msgid "4 hr."
 msgstr "4 시간"
 
-#: squirrelmail/plugins/calendar/functions.php:48
+#: squirrelmail/plugins/calendar/functions.php:47
 msgid "5 hr."
 msgstr "5 시간"
 
-#: squirrelmail/plugins/calendar/functions.php:49
+#: squirrelmail/plugins/calendar/functions.php:48
 msgid "6 hr."
 msgstr "6시간"
 
-#: squirrelmail/plugins/calendar/functions.php:187
-#, fuzzy
-msgid "Don't Email Me"
-msgstr "이메일이 임시보관함에 저장되었습니다."
-
-#: squirrelmail/plugins/calendar/functions.php:188
-msgid "Email Me - 0m prior"
-msgstr ""
-
-#: squirrelmail/plugins/calendar/functions.php:189
-msgid "Email Me - 5m prior"
-msgstr ""
-
-#: squirrelmail/plugins/calendar/functions.php:190
-msgid "Email Me - 15m prior"
-msgstr ""
-
-#: squirrelmail/plugins/calendar/functions.php:191
-msgid "Email Me - 30m prior"
-msgstr ""
-
-#: squirrelmail/plugins/calendar/functions.php:192
-msgid "Email Me - 1h prior"
-msgstr ""
-
-#: squirrelmail/plugins/calendar/functions.php:193
-msgid "Email Me - 4h prior"
-msgstr ""
-
-#: squirrelmail/plugins/calendar/functions.php:194
-msgid "Email Me - 1d prior"
-msgstr ""
-
-#: squirrelmail/plugins/calendar/setup.php:24
+#: squirrelmail/plugins/calendar/setup.php:23
 msgid "Calendar"
 msgstr "일정"
 
@@ -4179,30 +4222,30 @@ msgstr "리스트관리자 연락처"
 msgid "Mailing List:"
 msgstr "메일링 리스트:"
 
-#: squirrelmail/plugins/delete_move_next/setup.php:181
-#: squirrelmail/plugins/delete_move_next/setup.php:184
+#: squirrelmail/plugins/delete_move_next/setup.php:183
+#: squirrelmail/plugins/delete_move_next/setup.php:186
 msgid "Delete & Prev"
 msgstr "삭제 & 이전"
 
-#: squirrelmail/plugins/delete_move_next/setup.php:187
 #: squirrelmail/plugins/delete_move_next/setup.php:189
+#: squirrelmail/plugins/delete_move_next/setup.php:191
 msgid "Delete & Next"
 msgstr "삭제 & 다음"
 
-#: squirrelmail/plugins/delete_move_next/setup.php:322
+#: squirrelmail/plugins/delete_move_next/setup.php:334
 msgid "Delete/Move/Next Buttons:"
 msgstr "삭제/이동/다음 버튼:"
 
-#: squirrelmail/plugins/delete_move_next/setup.php:328
+#: squirrelmail/plugins/delete_move_next/setup.php:340
 msgid "Display at top"
 msgstr "상단에 표시"
 
-#: squirrelmail/plugins/delete_move_next/setup.php:334
 #: squirrelmail/plugins/delete_move_next/setup.php:346
+#: squirrelmail/plugins/delete_move_next/setup.php:358
 msgid "with move option"
 msgstr "이동 버튼과 함께"
 
-#: squirrelmail/plugins/delete_move_next/setup.php:340
+#: squirrelmail/plugins/delete_move_next/setup.php:352
 msgid "Display at bottom"
 msgstr "하단에 표시"
 
@@ -4292,7 +4335,7 @@ msgstr "Courier IMAP 서버"
 
 #: squirrelmail/plugins/administrator/defines.php:105
 msgid "Not one of the above servers"
-msgstr "서버 연결 없슴"
+msgstr "서버 연결 없음"
 
 #: squirrelmail/plugins/administrator/defines.php:106
 msgid "IMAP Folder Delimiter"
@@ -4541,10 +4584,3 @@ msgstr "전송 오류 보고"
 #: squirrelmail/po/independent_strings.txt:19
 msgid "Undelivered Message Headers"
 msgstr "전송할 수 없는 메세지 헤더"
-
-#~ msgid ""
-#~ "Please contact your system administrator and report the following error:"
-#~ msgstr "다음의 오류를 보고하고 시스템 관리자에게 도움을 요청하십시요:"
-
-#~ msgid "35 min."
-#~ msgstr "35 분."
