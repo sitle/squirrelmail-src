@@ -446,7 +446,7 @@ function RemoveSlashes(&$array) {
 
 /* returns a link to the compose-page, taking in consideration
  * the compose_in_new and javascript settings. */
-function makeComposeLink($url, $text = null)
+function makeComposeLink($url, $text = null, $target='')
 {
     global $compose_new_win,$javascript_on;
 
@@ -455,7 +455,7 @@ function makeComposeLink($url, $text = null)
     }
 
     if($compose_new_win != '1') {
-        return makeInternalLink($url, $text, 'right');
+        return makeInternalLink($url, $text, $target);
     }
 
     /* if we can use JS, use the fancy window, else just open a new one HTML-style */
