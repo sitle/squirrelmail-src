@@ -15,26 +15,27 @@ Version 1.4.3 - CVS
   - Fix SquirrelMail to work with PHP5.
   - Reintroduce alternating row colors in addressbook, which has
     accidentally disappeared somewhere in the dark past.
-  - Disabled Quick-email-reporting feature in spamcop plugin. Bug.809452. Admin
+  - Disabled Quick-email-reporting feature in spamcop plugin. (#809452). Admin
     can enable it by setting variable in plugins/spamcop/setup.php
   - Fix again for Internet Explorer's stupidity of decoding characters, then
     executing it blindly. See http://www.securityfocus.com/archive/1/340118.
-  - Replaced obsolate 2mbit.com RBL with ahbl.org RBL. Bug.No.829887
+  - Replaced obsolate 2mbit.com RBL with ahbl.org RBL (#829887).
   - Fixed sorting of sent_subfolders.
     Sent_subfolder plugin is hooked to special_mailbox hook.
-    Stable 1.4 tracker 699920
+    Stable 1.4 tracker #699920.
   - New hook function: boolean_hook_function()  Used for true/false hooks.
-  - Fixed 870365.
+  - Fixed #870365.
   - Added new reply citation to include date and author.
   - Fix for XSS issue.
-  - Norwegian Bokmal translation uses nb_NO
+  - Norwegian Bokmal translation uses nb_NOa
   - Improve display of some unparsable/absent dates (#891354).
-  - Added non-anonymous LDAP bind and bind protocol patches from devel
+  - Added non-anonymous LDAP bind and bind protocol patches from devel.
   - Add comment (Highest,Normal,Lowest) to X-Priority header.
   - Make writing of preferences, abook, calendars fail better when disk full
     (#915527).
   - Fix quoteimap() regex escaping problem (#921291).
   - Added international date format support (#927264).
+  - Fixed "Resume Draft" to use correct identity (#845290).
 
 Version 1.4.2 - 1 October 2003
 ------------------------------
