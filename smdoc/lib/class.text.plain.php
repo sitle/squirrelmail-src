@@ -63,12 +63,12 @@ class foowd_text_plain extends foowd_object {
    * Constructs a new plain text object.
    *
    * @param smdoc foowd Reference to the foowd environment object.
-   * @param str title The objects title.
-   * @param str body The text content body.
-   * @param str viewGroup The user group for viewing the object.
-   * @param str adminGroup The user group for administrating the object.
-   * @param str deleteGroup The user group for deleting the object.
-   * @param str editGroup The user group for editing the object.
+   * @param string title The objects title.
+   * @param string body The text content body.
+   * @param string viewGroup The user group for viewing the object.
+   * @param string adminGroup The user group for administrating the object.
+   * @param string deleteGroup The user group for deleting the object.
+   * @param string editGroup The user group for editing the object.
    */
   function foowd_text_plain(
     &$foowd,
@@ -126,7 +126,7 @@ class foowd_text_plain extends foowd_object {
   /**
    * Get object content.
    *
-   * @return str The objects text contents processed for outputting.
+   * @return string The objects text contents processed for outputting.
    */
   function view() 
   {
@@ -137,8 +137,8 @@ class foowd_text_plain extends foowd_object {
    * Process text content. Converts special chars into HTML entities and
    * replaces new lines with BR tags.
    *
-   * @param str content The text to process.
-   * @return str The processed content.
+   * @param string content The text to process.
+   * @return string The processed content.
    */
   function processContent($content) 
   {
@@ -150,7 +150,7 @@ class foowd_text_plain extends foowd_object {
   /**
    * Update the text content.
    *
-   * @param str body The new string to set the content to.
+   * @param string body The new string to set the content to.
    * @param bool newVersion Create a new version of the object.
    * @param int collisionTime The time the edit form was created.
    * @return mixed FALSE = failure<br />
@@ -260,7 +260,7 @@ class foowd_text_plain extends foowd_object {
    *
    * @static
    * @param smdoc foowd Reference to the foowd environment object.
-   * @param str className The name of the class.
+   * @param string className The name of the class.
    */
   function class_create(&$foowd, $className) 
   {

@@ -84,7 +84,6 @@ class smdoc extends foowd
      */
     require_once(SM_DIR . 'smdoc.env.group.php');
     $this->groups = new smdoc_group($this);
-
     /*
      * Get current User
      */
@@ -172,8 +171,8 @@ class smdoc extends foowd
   /**
    * Returns true if user has permission
    *
-   * @param str className Name of the class the method belongs to.
-   * @param str methodName Name of the method.
+   * @param string className Name of the class the method belongs to.
+   * @param string methodName Name of the method.
    * @param string type class/object method
    * @param object objectReference to current object being checked (may be NULL)
    * @return bool TRUE if user has access to method
@@ -237,7 +236,7 @@ class smdoc extends foowd
    * Get a list of objects.
    *
    * @param array indexes Array of indexes to be returned
-   * @param str source The source to fetch the object from
+   * @param string source The source to fetch the object from
    * @param array where Array of indexes and values to find object by
    * @param mixed order The index to sort the list on, or array of indices
    * @param mixed limit The length of the list to return, or a LIMIT string

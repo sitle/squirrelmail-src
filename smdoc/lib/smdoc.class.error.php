@@ -98,8 +98,8 @@ set_error_handler('smdocErrorCatch');
  * message and halts execution elegantly.
  *
  * @param int errorNumber The error code
- * @param str errorString Error description
- * @param str filename The filename in which the error occurred
+ * @param string errorString Error description
+ * @param string filename The filename in which the error occurred
  * @param int lineNumber The line number in which the error occurred
  * @param array context The context in which the error occurred
  */

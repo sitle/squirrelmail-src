@@ -85,7 +85,7 @@ class smdoc_db
    *
    * @static
    * @param smdoc foowd Reference to the foowd environment object.
-   * @param str type The type of database object to load.
+   * @param string type The type of database object to load.
    * @return mixed The new database object or FALSE on failure.
    */
   function factory(&$foowd)
@@ -139,6 +139,8 @@ class smdoc_db
     // With DB::isError you can differentiate between an error or a valid connection.
     if ( DB::isError($this->conn) )
     {
+      $this->foowd->track('msg', 'Error creating connection');
+      $this->foowd->track();
       trigger_error('Could not create DB connection: '
                       . $dsn . "<br />\n"
                       . htmlspecialchars($this->conn->getMessage()), 
@@ -158,6 +160,8 @@ class smdoc_db
       if ( isset($archive['tidy_delay']) )  
         $this->tidy_delay = $archive['tidy_delay'];
     }
+
+    $this->foowd->track();
   }
 
   /**
@@ -181,7 +185,7 @@ class smdoc_db
    *
    * @abstract
    * @access protected
-   * @param str query The query to execute
+   * @param string query The query to execute
    * @return resource The resulting query resource
    */
   function &query($query) 
@@ -204,7 +208,7 @@ class smdoc_db
    *
    * @abstract
    * @access protected
-   * @param str query The query to execute
+   * @param string query The query to execute
    * @return array The array of all resulting records
    */
   function &queryAll($query)
@@ -222,8 +226,8 @@ class smdoc_db
   /**
    * Escape a string for use in SQL string
    *
-   * @param str str String to escape
-   * @return str The escaped string
+   * @param string str String to escape
+   * @return string The escaped string
    */
   function escape($str) 
   {
@@ -324,7 +328,7 @@ class smdoc_db
    *
    * @access protected
    * @param array indexes Array of indexes and values to find object by
-   * @param str source The source to fetch the object from
+   * @param string source The source to fetch the object from
    */
   function &checkLoadedReference($indexes, $source) 
   {
@@ -334,7 +338,7 @@ class smdoc_db
   /**
    * Verify that title is unique. If it is, assign a unique objectid.
    *
-   * @param str title The proposed title
+   * @param string title The proposed title
    * @param int workspaceid The workspace to search in, FALSE to leave workspaceid out
    * @param int objectid The object id generated from the title
    * @param  mixed in_source Source to get object from
@@ -386,8 +390,8 @@ class smdoc_db
    *
    * @access protected
    * @param array indexes Array of indexes and values to find object by
-   * @param str conjuction Operand to use to join the elements of the clause
-   * @return str The generated where clause.
+   * @param string conjuction Operand to use to join the elements of the clause
+   * @return string The generated where clause.
    */
   function buildWhere($indexes, $conjunction = 'AND')  
   {
@@ -554,7 +558,7 @@ class smdoc_db
    * Get all versions of an object.
    *
    * @param array indexes Array of indexes and values to find object by
-   * @param str source The source to fetch the object from
+   * @param string source The source to fetch the object from
    * @return array An array of the retrieved object versions indexed by version number.
    */
   function &getObjHistory($indexes, $in_source = NULL)
@@ -599,7 +603,7 @@ class smdoc_db
    * Get a list of objects.
    *
    * @param array indexes Array of indexes to be returned
-   * @param str source The source to fetch the object from
+   * @param string source The source to fetch the object from
    * @param array where Array of indexes and values to find object by
    * @param mixed order The index to sort the list on, or array of indices
    * @param mixed limit The length of the list to return, or a LIMIT string
@@ -715,8 +719,8 @@ class smdoc_db
    * should be used.
    * @access private
    * @param mixed in_source Source specified by the caller
-   * @param str source Name of table to query
-   * @param str makeTable name of function for table creation
+   * @param string source Name of table to query
+   * @param string makeTable name of function for table creation
    */
   function getSource($in_source, &$source, &$makeTable)
   {
@@ -1051,7 +1055,7 @@ class smdoc_db
    *
    * @access protected
    * @param mixed in_source Source specified by the caller
-   * @param str column The column to add the index on.
+   * @param string column The column to add the index on.
    * @return bool TRUE on success.
    */
   function createIndex($table, $column) 

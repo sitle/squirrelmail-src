@@ -71,8 +71,8 @@ class foowd_text_html extends foowd_text_plain {
 	/**
 	 * Process processing instructions.
 	 *
-	 * @param str str The content string to process.
-	 * @return str The processed content.
+	 * @param string str The content string to process.
+	 * @return string The processed content.
 	 */
 	function processPIs($str) {
 		$this->foowd->track('foowd_text_html->processPIs');
@@ -130,8 +130,8 @@ class foowd_text_html extends foowd_text_plain {
 	/**
 	 * Process text content. Processes processing instructions.
 	 *
-	 * @param str content The text to process.
-	 * @return str The processed content.
+	 * @param string content The text to process.
+	 * @return string The processed content.
 	 */
 	function processContent($content) {
 		if ($this->evalCode || $this->processInclude) {

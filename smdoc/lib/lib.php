@@ -62,7 +62,7 @@ function show($var)
 /**
  * Return the value of a constant or a default value.
  *
- * @param str constant Name of a constant.
+ * @param string constant Name of a constant.
  * @param mixed default Default value.
  * @return mixed The value of the constant or the default value.
  */
@@ -77,7 +77,7 @@ function getConstOrDefault($constant, $default)
 /**
  * Set a constant to a value if the constant is defined.
  *
- * @param str constName Name of a constant.
+ * @param string constName Name of a constant.
  * @param mixed value The value to set.
  */
 function setConst($constName, $value) 
@@ -90,9 +90,9 @@ function setConst($constName, $value)
 /**
  * Find the max length of string allowed by a regex.
  *
- * @param str regex The regular expression to find the length of.
+ * @param string regex The regular expression to find the length of.
  * @param int default The default length to return if we can not find a length in the regular expression.
- * @return str The maximum length allowed by a regular expression.
+ * @return string The maximum length allowed by a regular expression.
  */
 function getRegexLength($regex, $default) 
 {
@@ -111,10 +111,10 @@ function getRegexLength($regex, $default)
 /**
  * Get the user group permission of a object or class method.
  *
- * @param str className Name of the class the method belongs to.
- * @param str methodName Name of the method.
- * @param str type Type of method, 'class' or 'object'.
- * @return str The user group string the permission is set to.
+ * @param string className Name of the class the method belongs to.
+ * @param string methodName Name of the method.
+ * @param string type Type of method, 'class' or 'object'.
+ * @return string The user group string the permission is set to.
  */
 function getPermission($className, $methodName, $type = '') 
 {
@@ -138,10 +138,10 @@ function getPermission($className, $methodName, $type = '')
 /**
  * Set the user group permission of a object or class method.
  *
- * @param str className Name of the class the method belongs to.
- * @param str type Type of method, 'class' or 'object'.
- * @param str methodName Name of the method.
- * @param str value User group string to set the permission to.
+ * @param string className Name of the class the method belongs to.
+ * @param string type Type of method, 'class' or 'object'.
+ * @param string methodName Name of the method.
+ * @param string value User group string to set the permission to.
  */
 function setPermission($className, $type, $methodName, $value = 'Everyone') 
 {
@@ -155,8 +155,8 @@ function setPermission($className, $type, $methodName, $value = 'Everyone')
 /**
  * Set class meta data.
  *
- * @param str className Name of the class.
- * @param str description Text description of the class.
+ * @param string className Name of the class.
+ * @param string description Text description of the class.
  */
 function setClassMeta($className, $description) 
 {
@@ -170,7 +170,7 @@ function setClassMeta($className, $description)
  * Get class name given the classid.
  *
  * @param int classid The id of the class.
- * @return str The class name.
+ * @return string The class name.
  */
 function getClassName($classid) 
 {
@@ -184,7 +184,7 @@ function getClassName($classid)
  * Get class description given the classid.
  *
  * @param int classid The id of the class.
- * @return str The class description.
+ * @return string The class description.
  */
 function getClassDescription($classid) 
 {
@@ -211,7 +211,7 @@ function classLoaded($classid = NULL)
 /**
  * Whether a class is a Foowd object.
  *
- * @param str className The name of the class.
+ * @param string className The name of the class.
  * @return bool TRUE if the class is a child of foowd_object.
  */
 function isFoowdObject($className) 
@@ -246,7 +246,7 @@ function getFoowdClassNames()
 /**
  * Get system temporary directory.
  *
- * @return str The system temporary directory.
+ * @return string The system temporary directory.
  */
 function getTempDir() 
 {
@@ -264,12 +264,12 @@ function getTempDir()
  * Generate a URI given certain parameters.
  *
  * @param array parameters An array of querystring value pairs.
- * @return str A URI.
+ * @return string A URI.
  */
 function getURI($parameters = NULL, $relative = TRUE) 
 { 
   $uri = $relative ? '' : 
-         (defined('BASE_URL') ? BASE_URL : 'http://'.$_SERVER['HTTP_HOST']) . '/';
+         ( defined('BASE_URL') ? BASE_URL : 'http://'.$_SERVER['HTTP_HOST'].'/' );
 
   $uri .= defined('FILENAME') ? FILENAME : $_SERVER['PHP_SELF'] ;
 
@@ -292,8 +292,8 @@ function getURI($parameters = NULL, $relative = TRUE)
 /**
  * Anti-spam an e-mail address.
  *
- * @param str emailAddress E-mail address to mangle.
- * @return str Munged e-mail address.
+ * @param string emailAddress E-mail address to mangle.
+ * @return string Munged e-mail address.
  */
 function mungEmail($emailAddress) 
 {
@@ -317,7 +317,7 @@ function mungEmail($emailAddress)
  * Return the time since a certain time in the past.
  *
  * @param int time The time in the past as a Unix timestamp.
- * @return str A string representation of roughly how long has passed.
+ * @return string A string representation of roughly how long has passed.
  */
 function timeSince($time) 
 {
@@ -345,11 +345,11 @@ function timeSince($time)
  * includes writing debugging data to the debug stream.
  *
  * @param smdoc foowd Reference to the foowd environment object.
- * @param str to The e-mail address to send the e-mail to.
- * @param str subject The subject of the e-mail.
- * @param str message The message to send.
- * @param str headers Additional e-mail headers.
- * @param str para Additional e-mail parameters.
+ * @param string to The e-mail address to send the e-mail to.
+ * @param string subject The subject of the e-mail.
+ * @param string message The message to send.
+ * @param string headers Additional e-mail headers.
+ * @param string para Additional e-mail parameters.
  * @return bool TRUE on success.
  */
 function email(&$foowd, $to, $subject, $message, $headers = NULL, $para = NULL) 
@@ -420,8 +420,8 @@ if (!function_exists('_'))
    * Fake Getext function. If Gettext support is not available, this function
    * acts as a passthru function in its place.
    *
-   * @param str text Text to return
-   * @return str The returned text.
+   * @param string text Text to return
+   * @return string The returned text.
    */
   function _($text) {
     global $LANG;

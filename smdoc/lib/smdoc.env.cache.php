@@ -128,7 +128,7 @@ class smdoc_object_cache
    *
    * @access protected
    * @param array indexes Array of indexes and values to find object by
-   * @param str source The source to fetch the object from
+   * @param string source The source to fetch the object from
    */
   function &checkLoadedReference($indexes, $source) 
   {
