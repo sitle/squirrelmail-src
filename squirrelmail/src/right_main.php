@@ -91,6 +91,10 @@ if ($imap_server_type == 'uw' && (strstr($mailbox, '../') ||
  * preferences.
  */
 
+if (empty($default_mailbox_pref)) {
+    $default_mailbox_pref[MBX_PREF_COLUMNS] =
+        array(SQM_COL_CHECK, SQM_COL_FROM, SQM_COL_DATE, SQM_COL_PRIO, SQM_COL_ATTACHMENT, SQM_COL_FLAGS, SQM_COL_SUBJ, SQM_COL_SIZE);
+}
 
 /* not sure if this hook should be capable to alter the global pref array */
 do_hook ('generic_header');
