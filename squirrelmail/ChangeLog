@@ -4,6 +4,12 @@
 
 Version 1.2.8 -- cvs
 --------------------
+  - returned generic_header hook to page_header.php. bug #554278
+  - fixed syntax error in darkness theme. bug #576066
+  - fixed some attachments not being displayed. bug #577052
+  - fixed matching uppercase headers on mailbox display. bug #584082
+  - fixed folder names containing regex characters. bug #574889, #578156
+  - fixed endless loop on raw binary data in email. bug #547662
 
 Version 1.2.7 -- June 21, 2002
 ------------------------------
