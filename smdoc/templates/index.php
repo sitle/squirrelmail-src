@@ -5,7 +5,7 @@
 <meta name="Description" content="Documentation, Plugins, Downloads for SquirrelMail"/>
 <meta name="Author" content="SquirrelMail Project Team"/>
 <title>SquirrelMail - <?php echo $t['title']; ?></title>
-<link rel="stylesheet" type="text/css" href="style.css" />
+<link rel="stylesheet" type="text/css" href="templates/style.css" />
 </head>
 <?php
   $user =& $foowd->user;
@@ -33,10 +33,10 @@
 <table id="pagetitle" width="100%" cellspacing="0" cellpadding="0">
   <tr>
     <td rowspan="2" width="304" class="logo">
-      <a href="#content"><img src="empty.png" alt="skip to content" border="0" /></a>
+      <a href="#content"><img src="templates/images/empty.png" alt="skip to content" border="0" /></a>
       <?php if ($foowd->debug) { ?>
-          <img src="empty.png" alt="|" border="0" />
-          <a href="#debug"><img src="empty.png" alt="skip to debug" border="0" /></a>
+          <img src="templates/images/empty.png" alt="|" border="0" />
+          <a href="#debug"><img src="templates/images/empty.png" alt="skip to debug" border="0" /></a>
        <?php } ?>
     </td>
     <td class="usermenu" valign="top">
@@ -118,9 +118,9 @@
   <div id="status"><span class="error"><?php echo $error; ?></span></div>
 <?php } ?>
 <!-- begin content -->
-<a name="content"><img src="empty.png" alt="------------- begin ----------------------------------------" border="0" /></a>
+<a name="content"><img src="templates/images/empty.png" alt="------------- begin ----------------------------------------" border="0" /></a>
 <div id="content">
-<img src="empty.png" alt="<?php echo $t['title']; ?>" border="0" />
+<img src="templates/images/empty.png" alt="<?php echo $t['title']; ?>" border="0" />
 <?php
   if ( isset($t['body']) )
     echo $t['body'];
@@ -134,7 +134,7 @@
     echo '<p>This object did not provide a BODY to the template.</p>';
 ?>
 </div>
-<a name="footer"><img src="empty.png" alt="------------- end ------------------------------------------" border="0" /></a>
+<a name="footer"><img src="templates/images/empty.png" alt="------------- end ------------------------------------------" border="0" /></a>
 <div id="editmenu">
   <?php
     if ( isset($object) &&                               // is object
@@ -197,7 +197,7 @@
 </div>
 <?php
 if ($foowd->debug) { // display debug data
-?><a name="debug"><img src="empty.png" alt="------------- debug ------------------------------------------" border="0" /></a><?php
+?><a name="debug"><img src="templates/images/empty.png" alt="------------- debug ------------------------------------------" border="0" /></a><?php
     $foowd->debug->display($foowd);
 }
 ?>
