@@ -435,7 +435,7 @@ function showMessagesForMailbox($imapConnection, $mailbox, $num_msgs,
                 if ($msgs === false) {
                     echo '<b><small><center><font color=red>' .
                         _("Thread sorting is not supported by your IMAP server.") . '<br />' .
-                        _("Please report this to the system administrator.") .
+                        _("Please contact your system administrator and report this error.") .
                         '</center></small></b>';
                     $thread_sort_messages = 0;
                     $msort = $msgs = array();
@@ -450,7 +450,7 @@ function showMessagesForMailbox($imapConnection, $mailbox, $num_msgs,
                 if ($msgs === false) {
                     echo '<b><small><center><font color=red>' .
                         _( "Server-side sorting is not supported by your IMAP server.") . '<br />' .
-                        _("Please report this to the system administrator.") .
+                        _("Please contact your system administrator and report this error.") .
                         '</center></small></b>';
                     $sort = $server_sort_order;
                     $allow_server_sort = FALSE;

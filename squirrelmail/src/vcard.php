@@ -154,12 +154,12 @@ echo '</table>' .
      '<tr><td align="center">' .
      '<form action="../src/addressbook.php" method="post" name="f_add">' .
      '<table border="0" cellpadding="2" cellspacing="0" align="center">' .
-     '<tr><td align="right"><b>' . _("Nickname:") . '</b></td>' .
+     '<tr><td align="right"><b>' . _("Nickname") . ':</b></td>' .
      '<td>' .
      '<input type="text" name="addaddr[nickname]" size="20" value="' .
      $vcard_safe['firstname'] . '-' . $vcard_safe['lastname'] . '" />' .
      '</td></tr>' .
-     '<tr><td align="right"><b>' . _("Note Field Contains:") . '</b></td><td>' .
+     '<tr><td align="right"><b>' . _("Additional info") . ':</b></td><td>' .
      '<select name="addaddr[label]">';
 
 if (isset($vcard_nice['url'])) {

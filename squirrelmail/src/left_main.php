@@ -101,7 +101,7 @@ function formatMailboxName($imapConnection, $box_array) {
         if (($numMessages > 0) or ($box_array['parent'] == 1)) {
             $urlMailbox = urlencode($real_box);
             $line .= "\n<small>\n" .
-                    '&nbsp;&nbsp;(<a href="empty_trash.php" style="text-decoration:none">'._("purge").'</a>)' .
+                    '&nbsp;&nbsp;(<a href="empty_trash.php" style="text-decoration:none">'._("Purge").'</a>)' .
                     '</small>';
         }
     } else {
@@ -343,7 +343,7 @@ function listBoxes ($boxes, $j=0 ) {
             if ($numMessages > 0) {
                 $urlMailbox = urlencode($mailbox);
                 $pre .= "\n<small>\n" .
-                "&nbsp;&nbsp;(<a href=\"empty_trash.php\" style=\"text-decoration:none\">"._("purge")."</a>)" .
+                "&nbsp;&nbsp;(<a href=\"empty_trash.php\" style=\"text-decoration:none\">"._("Purge")."</a>)" .
                 "</small>";
             }
         } else {
@@ -431,7 +431,7 @@ function ListAdvancedBoxes ($boxes, $mbx, $j='ID.0000' ) {
             if ($numMessages > 0) {
                 $urlMailbox = urlencode($mailbox);
                 $pre .= "\n<small>\n" .
-                    "&nbsp;&nbsp;(<a class=\"mbx_link\" href=\"empty_trash.php\">"._("purge")."</a>)" .
+                    "&nbsp;&nbsp;(<a class=\"mbx_link\" href=\"empty_trash.php\">"._("Purge")."</a>)" .
                     "</small>";
             }
         } else {
