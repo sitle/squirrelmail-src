@@ -132,7 +132,8 @@ function viewMessage($imapConnection, $id, $mailbox, $ent_id, $msg, $color, $wra
     	 "</A></CENTER><BR>\n".
     	 "</CENTER></B>\n".
     	 "</TD></TR></TABLE>\n".
-         "<TABLE WIDTH=\"100%\" BORDER=0 CELLSPACING=0 CELLPADDING=2 ALIGN=CENTER>\n".
+         "<TABLE WIDTH=\"100%\" BORDER=0 CELLSPACING=0 CELLPADDING=2 ".
+         " BGCOLOR=\"$color[0]\" ALIGN=CENTER>\n".
          "<TR><TD BGCOLOR=\"$color[0]\">\n".
     	 "</TD><TD BGCOLOR=\"$color[0]\"></TD></TR><TR><TD>\n".
          "$bodyheader </TABLE>\n".	     
