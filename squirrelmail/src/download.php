@@ -26,12 +26,12 @@ $key = $_COOKIE['key'];
 $username = $_SESSION['username'];
 $onetimepad = $_SESSION['onetimepad'];
 $mailbox = $_GET['mailbox'];
-$passed_id = $_GET['passed_id'];
-$passed_ent_id = $_GET['passed_ent_id'];
+$passed_id = (int) $_GET['passed_id'];
+$passed_ent_id = (int) $_GET['passed_ent_id'];
 $base_uri = $base_uri = $_SESSION['base_uri'];
 
 if (isset($_GET['startMessage'])) {
-    $startMessage = $_GET['startMessage'];
+    $startMessage = (int) $_GET['startMessage'];
 }
 if(isset($_GET['where'])) {
     $where = $_GET['where'];
@@ -40,22 +40,22 @@ if(isset($_GET['what'])) {
     $what = $_GET['what'];
 }
 if(isset($_GET['showHeaders'])) {
-    $showHeaders = $_GET['showHeaders'];
+    $showHeaders = (int) $_GET['showHeaders'];
 }
 if(isset($_GET['absolute_dl'])) {
-    $absolute_dl = $_GET['absolute_dl'];
+    $absolute_dl = (int) $_GET['absolute_dl'];
 }
 if (isset($_GET['show_more_cc'])) {
-    $show_more = $_GET['show_more_cc'];
+    $show_more = (int) $_GET['show_more_cc'];
 }
 if(isset($_GET['show_more_bcc'])) {
-    $show_more = $_GET['show_more_bcc'];
+    $show_more = (int) $_GET['show_more_bcc'];
 }
 if(isset($_GET['show_more'])) {
-    $show_more = $_GET['show_more'];
+    $show_more = (int) $_GET['show_more'];
 }
 if(isset($_GET['sort'])) {
-    $sort = $_GET['sort'];
+    $sort = (int) $_GET['sort'];
 }
     
 

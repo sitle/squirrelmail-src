@@ -23,13 +23,13 @@ $message = $_GET['message'];
 $mailbox = $_GET['mailbox'];
 
 if (isset($_GET['saved_draft'])) {
-    $saved_draft = $_GET['saved_draft'];
+    $saved_draft = (int) $_GET['saved_draft'];
 }
 if (isset($_GET['mail_sent'])) {
-    $mail_sent = $_GET['mail_sent'];
+    $mail_sent = (int) $_GET['mail_sent'];
 }
-$sort = $_GET['sort'];
-$startMessage = $_GET['startMessage'];
+$sort = (int) $_GET['sort'];
+$startMessage = (int) $_GET['startMessage'];
 
 if(isset($_GET['where'])) {
     $where = $_GET['where'];
