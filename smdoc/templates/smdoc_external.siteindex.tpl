@@ -82,13 +82,12 @@ foreach ( $temp_index as $char )
 <?php   // Add links for methods user has permission to invoke (convenience)
 
         $methods = array();
-        $dummy = NULL;
 
-        if ( $foowd->hasPermission(getClassName($arr['classid']),'admin','METHOD',$dummy) )
+        if ( $foowd->hasPermission(getClassName($arr['classid']),'admin','METHOD') )
           $methods[] = '<a href="'.$arr['url'].'&amp;method=admin">Admin</a> ';
-        if ( $foowd->hasPermission(getClassName($arr['classid']),'edit','METHOD',$dummy) )
+        if ( $foowd->hasPermission(getClassName($arr['classid']),'edit','METHOD') )
           $methods[] = '<a href="'.$arr['url'].'&amp;method=edit">Edit</a> '; 
-        if ( $foowd->hasPermission(getClassName($arr['classid']),'delete','METHOD',$dummy) )
+        if ( $foowd->hasPermission(getClassName($arr['classid']),'delete','METHOD') )
           $methods[] = '<a href="'.$arr['url'].'&amp;method=delete">Delete</a> ';         
 
         print_arr($methods);

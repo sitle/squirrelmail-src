@@ -240,7 +240,9 @@ class foowd_workspace extends foowd_object
       // Don't clone ourselves
       if ( $object->classid == $this->classid && $object->objectid == $this->objectid )
         unset($objects[$key]);
-      elseif ( !$this->foowd->hasPermission(get_class($object), 'clone', 'object', $object) )
+      elseif ( !$this->foowd->hasPermission(get_class($object), 
+                                            'clone', 'object', 
+                                            $object->permissions) )
         unset($objects[$key]); 
     }
 
@@ -360,7 +362,9 @@ class foowd_workspace extends foowd_object
       // Don't empty ourselves
       if ( $object->classid == $this->classid && $object->objectid == $this->objectid )
         unset($objects[$key]);
-      elseif ( !$this->foowd->hasPermission(get_class($object), 'clone', 'object', $object) )
+      elseif ( !$this->foowd->hasPermission(get_class($object), 
+                                            'clone', 'object', 
+                                            $object->permissions) )
         unset($objects[$key]);
     }
 
