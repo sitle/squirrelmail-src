@@ -270,9 +270,6 @@ if ( !$force_username_lowercase ) {
 if ( !$optional_delimiter ) {
     $optional_delimiter = "detect";
 }
-if ( !$use_authenticated_smtp ) {
-    $use_authenticated_smtp = "false";
-}
 if ( !$auto_create_special ) {
     $auto_create_special = "false";
 }
@@ -972,6 +969,8 @@ sub command17 {
 
 # authenticated server 
 sub command18 {
+    return;
+	# This sub disabled by tassium - it has been replaced with smtp_auth_mech
     print "Do you wish to use an authenticated SMTP server?  Your server must\n";
     print "support this in order for SquirrelMail to work with it.  We implemented\n";
     print "it according to RFC 2554.\n";
@@ -2468,7 +2467,7 @@ sub save_data {
 	# string
         print CF "\$sendmail_path          = '$sendmail_path';\n";
 	# boolean
-        print CF "\$use_authenticated_smtp = $use_authenticated_smtp;\n";
+#        print CF "\$use_authenticated_smtp = $use_authenticated_smtp;\n";
 	# boolean
         print CF "\$pop_before_smtp        = $pop_before_smtp;\n";
 	# string
