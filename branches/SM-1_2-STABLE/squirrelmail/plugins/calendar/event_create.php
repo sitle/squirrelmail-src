@@ -87,14 +87,21 @@ function show_event_form() {
          "      <SELECT NAME=\"event_length\">\n";
     select_option_length("0");
     echo "      </SELECT>\n".
-         "      </TD></TR>\n".
-         "      <TR><TD BGCOLOR=\"$color[4]\" ALIGN=RIGHT>" . _("Priority:") . "</TD>\n".
+         "      </TD></TR>\n";
+    echo "      <TR><TD BGCOLOR=\"$color[4]\" ALIGN=RIGHT>" . _("Priority:") . "</TD>\n".
          "      <TD BGCOLOR=\"$color[4]\" ALIGN=LEFT>\n".
          "      <SELECT NAME=\"event_priority\">\n";
     select_option_priority("0");
     echo "      </SELECT>\n".
-         "      </TD></TR>\n".
-         "      <TR><TD BGCOLOR=\"$color[4]\" ALIGN=RIGHT>" . _("Title:") . "</TD>\n".
+         "      </TD></TR>\n";
+
+    echo "      <TR><TD BGCOLOR=\"$color[4]\" ALIGN=RIGHT>" . _("Notify:") . "</TD>\n".
+         "      <TD BGCOLOR=\"$color[4]\" ALIGN=LEFT>\n".
+         "      <SELECT NAME=\"event_notification\">\n";
+    select_option_notification("2");
+    echo "      </SELECT>\n".
+         "      </TD></TR>\n";
+    echo "      <TR><TD BGCOLOR=\"$color[4]\" ALIGN=RIGHT>" . _("Title:") . "</TD>\n".
          "      <TD BGCOLOR=\"$color[4]\" ALIGN=LEFT>\n".
          "      <INPUT TYPE=text NAME=\"event_title\" VALUE=\"\" SIZE=30 MAXLENGTH=50><BR>\n".
          "      </TD></TR>\n".
@@ -117,7 +124,7 @@ if (!isset($day) || $day <= 0){
     $day = date( 'd' );
 }
 if (!isset($hour) || $hour <= 0){
-    $hour = '08';
+    $hour = date( 'H' );
 }
 
 $calself=basename($PHP_SELF);
@@ -142,6 +149,7 @@ if(!isset($event_text)){
     $event_text=nl2br($event_text);
     $event_text=ereg_replace ("\n", "", $event_text);
     $event_text=ereg_replace ("\r", "", $event_text);
+    $event_priority = $event_priority + $event_notification;
     $calendardata["$month$day$year"]["$event_hour$event_minute"] =
     array( 'length' => $event_length,
            'priority' => $event_priority,
