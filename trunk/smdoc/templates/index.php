@@ -26,13 +26,16 @@
   $user_url = $loc_url . '?class='.USER_CLASS_NAME;
 ?>
 <body>
-<a href="#content"><img src="empty.png" alt="skip to content" border="0" /></a>
-<?php if ($foowd->debug) { ?>| <a href="#debug"><img src="empty.png" alt="skip to debug" border="0" /></a><?php } ?>
-
 <!-- begin page title -->
 <table id="pagetitle" width="100%" cellspacing="0" cellpadding="0">
   <tr>
-    <td rowspan="2" width="304" class="logo">&nbsp;</td>
+    <td rowspan="2" width="304" class="logo">
+      <a href="#content"><img src="empty.png" alt="skip to content" border="0" /></a>
+      <?php if ($foowd->debug) { ?>
+          <img src="empty.png" alt="|" border="0" />
+          <a href="#debug"><img src="empty.png" alt="skip to debug" border="0" /></a>
+       <?php } ?>
+    </td>
     <td class="usermenu" valign="top">
       <!-- Start with array of translation flags -->
         <?php echo implode(' ', $flag_links); ?>
@@ -109,6 +112,7 @@
 <!-- begin content -->
 <a name="content"><img src="empty.png" alt="------------- begin ----------------------------------------" border="0" /></a>
 <div id="content">
+<img src="empty.png" alt="<?php echo $t['title']; ?>" border="0" />
 <?php
   if ( isset($t['body']) )
     echo $t['body'];
