@@ -1,0 +1,74 @@
+CHANGELOG
+
+Version 0.8.3, ?? May 2003 
+	* Changed foowd::retrieveObjects() to cope with nested array when looking for workspaceid in select clause.
+	+ Added date constraints to limit form in workspace::method_fill()
+	* Fixed foowd_object::method_permissions() error of not picking up on user group if user group add permission is set to "Author".
+	* Made foowd_text_html include PI cope with object names with spaces in them by wraping object names in double quotes. 
+	+ Added foowd_text_html::method_raw() that outputs the HTML content without the header/footer, useful for includes where the header/footer is not wanted. 
+	* Changed the default method for foowd_text_html include PI to be method_raw(). 
+
+Version 0.8.2, 17 May 2003 
+
+	* Fixed error in foowd_workspace::method_view that caused a PHP error if not objects exist within the workspace. 
+	* Fixed bug in input_checkbox::constructor that stopped checkbox from being read as unchecked if the form submit button was not called "submit". 
+	* Fixed issue in foowd::getobjects when trying to retrieve all objects where returnedRows() should have been used rather than getAffectedRows(). 
+	+ Added method_history() to foowd_text_plain (copy of old class_object version). 
+	* Changed foowd_object::method_history() to not display links to diff method since it doesn't have a diff method. 
+	* Changed input_textarray to handle nested arrays, if the regex definition contains an array structure then this structure is mirrored in the textarray. 
+	* Fixed problem in foowd_object::set() when handling nested arrays. 
+	* Fixed problem in foowd_object::admin() where failed updates to array elements were still displayed as changed. 
+	* Adjusted foowd_object::clone() so that objects can be cloned within their own workspace. 
+	+ Added two new member functions to input_file, isUploaded() and saveFile() that are wrappers for is_uploaded_file() and move_uploaded_file(). 
+	+ Added support for member variables containing binary data in foowd_object member functions and methods. 
+	+ Moved error handling to PHP error handling functions. 
+	+ Added new constant GETURI and changed system function getURI(). If GETURI is set getURI() will call the function named in GETURI instead of returning a uri string. This function should take one parameter (an array of querystring key pairs) and return a string containing the appropriate uri. 
+	+ Added function setVarOrConst() that works like setVarConstOrDefault but throws an error if neither value or constant are set. 
+	* Changed setVarConstOrDefault() to setVarOrConst() in foowd class for getting default objectid and classids, removes hardcoded values which may cause confusion. 
+	+ Added debugging and execution tracking data to foowd class. 
+	+ Added calls to foowd::track() to entry and exit points of functions and methods. 
+	+ Added new constant DIFF_TMPDIR for foowd_text_plain::method_diff() temp directory location. 
+	* Renamed functions startTime() and endTime() to getTime() and executionTime(). 
+	+ Added new constant REGEX_GROUP that contains a regex to match user group names. 
+	+ Added dynamic object definition class "class.definition.php" and added foowd::loadClass() to load dynamic classes as needed. 
+	* Renamed functions setVarConstOrDefault(), setVarOrConst(), setConstOrDefault() and setVarOrDefault() to getVarConstOrDefault(), getVarOrConst(), getConstOrDefault() and getVarOrDefault(). 
+	* foowd_class_meta global array replaced with constants. 
+	+ Two new system functions getClassName() and getClassDescription() get the class name and description from the constants given a class id. 
+	* Changed the way permissions are handled in class definitions. Now permission data for both class and object methods is kept in constants names "PERMISSION___". The class data is used directly to access a class method, the object method data used in class constructors to assign initial object method permissions. 
+	+ A new system function getPermission() retrieves the permission from the constants recursively checking for parents permissions as needed. 
+	* Removed need for class method passthru functions in class definitons due to discovery of being able to call static methods via the call_user_func() function. 
+	* Fixed error in objtool that caused invalid output upon finding a member variable array with the empty string for a key value. 
+	+ Added new parameter $multiple to input class input_dropdown, boolean value that says if the dropdown box allows mutliple selection. 
+	* Made changes to foowd::getObjects() to fix problem with not checking base workspace if user is in another workspace. This function will add grouping clauses if more than one workspace is required for retrieval, meaning that if an object exists in two workspaces it can not guarentee which one will be returned. 
+	+ Added two new methods foowd_workspace::method_fill() and foowd_workspace::method_empty() that allow cloning and moving of multiple objects into and out of a workspace. 
+	* Fixed error in foowd_object::delete() where if user was not in the base workspace, objects from the base workspace were still deleted. 
+	+ Added two new functions to environment class, foowd::retrieveObjects() is a replacement for foowd::getObjects() that returns a result query resource rather than an array of objects. foowd::retrieveObject() can then be used to retrieve the next items from the result query. This is faster than foowd::getObjects() for large result sets. foowd::getObjects() has been re-written to be based upon foowd::retrieveObjects(). 
+	+ Added method_import() and method_export to foowd_workspace that impoty/export serialized data of all objects within the workspace. 
+	+ Added new class foowd_group that represents a user group. They are totally optional in use, Foowd works without them, however they give more control over managing user groups and their members. 
+	* Made changes to loadClassCallback() to handle missing classes without errors and added new global function loadDefaultClass() to create the incomplete class type for the unserialized object. This means that objects of unknown types within the system will not cause processing to baulk. 
+
+Version 0.8.1, 03 May 2003
+
+	* Changed REGEX_ID default value to allow for id lengths up to 11 chars (10 digits plus minus sign) 
+	* Moved DEBUG and VERSION constant definitions from lib.php to class.foowd.php 
+	* Changed WHERE clause taken by DB functions to new format. 
+	+ Added file system connectivity module. Allows using the filesystem as the storage medium rather than MySQL, it is severely limited and untested, not recommended for use in live systems. 
+	+ Added foowd_user::lostPassword() class method for changing user password upon forgetting it, uses user e-mail address for verification. 
+	- Removed group by objectid clause from foowd::getObjects() function, if you want that clause you must now pass it in explicitly. 
+	* input_form::display_start() and input_form::display_end() added to enable you to output form header and footer individually without form elements. 
+	* Line break removed from after input objects output in display() function, input_form::display() now appends new line after each object upon output. This (combined with the two new form display functions) gives you more flexibility in outputting forms if you require it. 
+	+ Added constant ANONYMOUS_USER_CLASS, if set the value is taken as the classname to use for the pre-execution anonymous user object. 
+	* Fixed input_dropdown::set() to actually work :) 
+	* Moved calling of foowd_session_start() to before updating user last updated time in foowd::fetchUser(). 
+	+ Added group clause to foowd::getObjects() and fixed bug when adding workspaceid to where clause. 
+	+ Added global var $DBAccess that is used to count the number of database requests. Foowd::destroy() changed to show value of $DBAccess if DEBUG is set. 
+	* Fixed problem in setVarConstOrDefault() with setting value correctly when value is FALSE. 
+	* Added check into all create class methods to check for failed object creation (ie. the constructor found a problem and baulked). 
+	* Changed input_cookie constructor to not call input_cookie::set() and thus not try to write headers, set() must now be called explicitly if you want the cookie sent to the client. 
+	+ Added XML method to foowd_object that outputs the object as an XML document suitable for use with the objtool. 
+	* Re-wrote XML load section of objtool, will now load XML documents containing large numbers of objects. 
+	+ Added third parameter to foowd_object::save() that if set FALSE will prevent updating of updatorid, updatorName and updated member variables before saving (used in within objtool save). 
+
+Version 0.8, 13 April 2003
+
+	* First public alpha of FOOWD 
