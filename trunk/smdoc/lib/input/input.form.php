@@ -96,12 +96,12 @@ class input_form
   /**
    * Constructs a new form object.
    *
-   * @param str name The name of the form.
-   * @param str location URI for form to submit to.
+   * @param string name The name of the form.
+   * @param string location URI for form to submit to.
    * @param mixed method The submit method to use ('get', 'post', SQ_GET, SQ_POST)
-   * @param str submit Caption of the submit button.
-   * @param str reset Caption of the reset button.
-   * @param str preview Caption of the preview button.
+   * @param string submit Caption of the submit button.
+   * @param string reset Caption of the reset button.
+   * @param string preview Caption of the preview button.
    */
   function input_form($name, $location = NULL, $method = SQ_POST, 
                       $submit = FORM_DEFAULT_SUBMIT, 
@@ -146,7 +146,7 @@ class input_form
   /**
    * Add to a group of elements
    * under one name ( nested array )
-   * @param str    group Name of element group
+   * @param string    group Name of element group
    * @param object object The form object to add.
    * @return bool TRUE on success.
    */

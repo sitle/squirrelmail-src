@@ -54,10 +54,10 @@ class input_dropdown extends input_base
   /**
    * Constructs a new dropdown list object.
    *
-   * @param str name The name of the dropdown list.
-   * @param str value The initial selected item.
+   * @param string name The name of the dropdown list.
+   * @param string value The initial selected item.
    * @param array items List of items to choose from
-   * @param str caption The caption to display by the dropdown list.
+   * @param string caption The caption to display by the dropdown list.
    * @param bool multiple Dropdown list allows multiple selection.
    */
   function input_dropdown($name, $value = NULL, $items = NULL, $caption = NULL, $multiple = FALSE) 
@@ -72,7 +72,7 @@ class input_dropdown extends input_base
   /**
    * Sets the value of the dropdown list.
    *
-   * @param str value The item to select in the dropdown list.
+   * @param string value The item to select in the dropdown list.
    * @return bool TRUE on success.
    */
   function set($value)

@@ -41,9 +41,9 @@ class input_session extends input_base
   /**
    * Constructs a new textarea object.
    *
-   * @param str  name   The name of the textarea.
-   * @param str  regex  The validation regular expression.
-   * @param str  value  The initial contents value.
+   * @param string  name   The name of the textarea.
+   * @param string  regex  The validation regular expression.
+   * @param string  value  The initial contents value.
    * @param bool base64 Should the value be base64 encoded in the session.
    */    
   function input_session($name, 
@@ -88,7 +88,7 @@ class input_session extends input_base
    * Set the value for this object,
    * also set value in session if set_in_session is true.
    * 
-   * @param  str  value           The value to set.
+   * @param  string  value           The value to set.
    * @param  bool set_in_session  Should value also be set in session
    * @return bool TRUE on success.
    */
@@ -122,7 +122,7 @@ class input_session extends input_base
    * Verify value against regex. Will recursively verify array elements.
    * 
    * @access private
-   * @param  str  value           The value to verify.
+   * @param  string  value           The value to verify.
    * @return bool TRUE if value is valid.
    */
   function verifyData($value)

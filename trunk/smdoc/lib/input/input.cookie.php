@@ -99,12 +99,12 @@ class input_cookie
 	/**
 	 * Constructs a new cookie object.
 	 *
-	 * @param str name The name of the querystring object.
-	 * @param str regex The validation regular expression.
-	 * @param str value The initial contents value.
+	 * @param string name The name of the querystring object.
+	 * @param string regex The validation regular expression.
+	 * @param string value The initial contents value.
 	 * @param int expire How long til the cookie expires in seconds.
-	 * @param str path The path the cookie is valid for.
-	 * @param str domain The domain the cookie is valid for.
+	 * @param string path The path the cookie is valid for.
+	 * @param string domain The domain the cookie is valid for.
 	 * @param bool secure Whether the cookie should only be sent over secure HTTP.
 	 */
 	function input_cookie($name, $regex = NULL, $value = NULL, $expire = COOKIE_EXPIRE, $path = COOKIE_PATH, $domain = COOKIE_DOMAIN, $secure = COOKIE_SECURE) {
@@ -129,7 +129,7 @@ class input_cookie
 	/**
 	 * Sets the value of the cookie object.
 	 *
-	 * @param str value The value to set the cookie to.
+	 * @param string value The value to set the cookie to.
 	 * @return bool TRUE on success.
 	 */
 	function set($value){

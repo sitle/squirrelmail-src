@@ -95,9 +95,9 @@ class input_base
   /**
    * Constructs a new base object.
    *
-   * @param str name The name of the form element.
-   * @param optional str regex The validation regular expression.
-   * @param optional str value The initial contents value.
+   * @param string name The name of the form element.
+   * @param optional string regex The validation regular expression.
+   * @param optional string value The initial contents value.
    * @param optional boolean  required is item required
    * @param optional constant method SQ_GET, SQ_POST, SQ_SESSION, etc.
    */
@@ -121,7 +121,7 @@ class input_base
   /**
    * Sets the value of the object.
    *
-   * @param str value The value to set.
+   * @param string value The value to set.
    * @return bool TRUE on success.
    */
   function set($value)
