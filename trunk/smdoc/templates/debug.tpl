@@ -40,10 +40,6 @@ Total Execution Time: <?php echo $execTime; ?>  seconds
 <div class="debug_output_heading">Execution History</div>
 <pre><?php echo $trackString; ?></pre>
 
-<div class="debug_output_heading">Template Vars</div>
-<?php   show($templateVar); ?>
-</div>
-
 <?php if ( $debugVar ) 
       { ?>
 <div class="debug_output_heading">Request</div>
