@@ -10,20 +10,21 @@
     **
     **  $Id$
     **/
-   include_once ("../src/validate.php");
+   define ("download_php", true);
 
-   include_once("../functions/strings.php");
-   include_once("../config/config.php");
-   include_once("../functions/imap.php");
-   include_once("../functions/mime.php");
-   include_once("../functions/date.php");
-   include_once("../functions/i18n.php");
+   include ("../src/validate.php");
+   include("../functions/strings.php");
+   include("../config/config.php");
+   include("../functions/imap.php");
+   include("../functions/mime.php");
+   include("../functions/date.php");
+   include("../functions/i18n.php");
 
    session_start();
    header("Pragma: ");
    header("Cache-Control: cache");
 
-   include_once("../src/load_prefs.php");
+   include("../src/load_prefs.php");
 
    function viewText($color, $body, $id, $entid, $mailbox, $type1, $wrap_at) {
       global $where, $what, $charset;
@@ -138,7 +139,7 @@
             if ($type1 == "plain" || $type1 == "html") {
                 $body = mime_fetch_body($imapConnection, $passed_id, $passed_ent_id);
                 $body = decodeBody($body, $header->encoding);
-                include_once("../functions/page_header.php");
+                include("../functions/page_header.php");
                 viewText($color, $body, $passed_id, $passed_ent_id, $mailbox, $type1, $wrap_at);
             } else {
                 $body = mime_fetch_body($imapConnection, $passed_id, $passed_ent_id);
@@ -151,7 +152,7 @@
          case "message":
             $body = mime_fetch_body($imapConnection, $passed_id, $passed_ent_id);
             $body = decodeBody($body, $header->encoding);
-            include_once("../functions/page_header.php");
+            include("../functions/page_header.php");
             viewText($color, $body, $passed_id, $passed_ent_id, $mailbox, $type1, $wrap_at);
             break;
          default:
