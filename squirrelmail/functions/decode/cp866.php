@@ -1,6 +1,7 @@
 <?php
-/**
+/*
  * decode/cp866.php
+ * $Id$
  *
  * Copyright (c) 2003-2004 The SquirrelMail Project Team
  * Licensed under the GNU GPL. For full terms see the file COPYING.
@@ -19,17 +20,9 @@
     Authors:       Lori Brownell <loribr@microsoft.com>
                    K.D. Chang    <a-kchang@microsoft.com>
     The entries are in cp866_DOSCyrillicRussian order
- * 
- * @version $Id$
- * @package squirrelmail
- * @subpackage decode
 */
 
-/**
- * Decode a cp866-encoded string
- * @param string $string Encoded string
- * @return string $string Decoded string
- */
+
 function charset_decode_cp866 ($string) {
     global $default_charset;
 

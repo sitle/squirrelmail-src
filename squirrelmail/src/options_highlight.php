@@ -8,14 +8,10 @@
  *
  * Displays message highlighting options
  *
- * @version $Id$
- * @package squirrelmail
+ * $Id$
  */
 
-/**
- * Path for SquirrelMail required files.
- * @ignore
- */
+/* Path for SquirrelMail required files. */
 define('SM_PATH','../');
 
 /* SquirrelMail required files. */
@@ -70,7 +66,7 @@ if (isset($theid) && ($action == 'delete') ||
         case('up'):
             foreach($message_highlight_list as $rid => $rule) {
                 if($rid == $theid) {
-                    $temp_rule         = $new_rules[$rid-1];
+                    $temp_rule        = $new_rules[$rid-1];
                     $new_rules[$rid-1] = $rule;
                     $new_rules[$rid]   = $temp_rule;
                 } else {
@@ -82,11 +78,11 @@ if (isset($theid) && ($action == 'delete') ||
             $new_rules = $message_highlight_list;
             break;
     }
-    $message_highlight_list = $new_rules;    
+    $message_highlight_list = $new_rules;
 
     setPref($data_dir, $username, 'hililist', serialize($message_highlight_list));
 
-    header( 'Location: ' .get_location(). '/options_highlight.php' );
+    header( 'Location: options_highlight.php' );
     exit;
 } else if ($action == 'save') {
 

@@ -14,14 +14,8 @@
     * pop3 class
     *
     * $Id$
-    * @package plugins
-    * @subpackage mail_fetch
     */
 
-/**
- * This is the pop3 class - DOCUMENT ME
- * @package squirrelmail
- */
 class POP3 {
     var $ERROR      = '';       //  Error string.
 
@@ -112,6 +106,18 @@ class POP3 {
         $this->FP = $fp;
         $this->BANNER = $this->parse_banner($reply);
         return true;
+    }
+
+    function noop () {
+    
+        if(!isset($this->FP)) {
+            $this->ERROR = _("POP3 noop:") . ' ' . _("No connection to server");
+            return false;
+        } else {
+            $cmd = "NOOP";
+            $reply = $this->send_cmd( $cmd );
+            return( $this->is_ok( $reply ) );
+        }
     }
 
     function user ($user = "") {

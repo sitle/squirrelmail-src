@@ -1,4 +1,5 @@
 <?php
+
 /**
  * read_body.php
  *
@@ -8,14 +9,10 @@
  * This file is used for reading the msgs array and displaying
  * the resulting emails in the right frame.
  *
- * @version $Id$
- * @package squirrelmail
+ * $Id$
  */
 
-/**
- * Path for SquirrelMail required files.
- * @ignore
- */
+/* Path for SquirrelMail required files. */
 define('SM_PATH','../');
 
 /* SquirrelMail required files. */
@@ -27,70 +24,94 @@ require_once(SM_PATH . 'functions/date.php');
 require_once(SM_PATH . 'functions/url_parser.php');
 require_once(SM_PATH . 'functions/html.php');
 require_once(SM_PATH . 'functions/global.php');
-require_once(SM_PATH . 'functions/identity.php');
-require_once(SM_PATH . 'functions/mailbox_display.php');
 
 /**
  * Given an IMAP message id number, this will look it up in the cached
- * and sorted msgs array and return the index of the next message
+ * and sorted msgs array and return the index. Used for finding the next
+ * and previous messages.
  *
- * @param int $passed_id The current message UID
  * @return the index of the next valid message from the array
  */
-function findNextMessage($uidset,$passed_id='backwards') {
-    if ($passed_id=='backwards' || !is_array($uidset)) { // check for backwards compattibilty gpg plugin
-        $passed_id = $uidset;
-        sqgetGlobalVar('server_sort_array',$server_sort_array,SQ_SESSION);
-        $uidset = $server_sort_array;
+function findNextMessage($passed_id) {
+    global $msort, $msgs, $sort, 
+           $thread_sort_messages, $allow_server_sort,
+           $server_sort_array;
+    if (!is_array($server_sort_array)) {
+        $thread_sort_messages = 0;
+        $allow_server_sort = FALSE;
     }
     $result = -1;
-    $count = count($uidset) - 1;
-    foreach($uidset as $key=>$value) {
-        if ($passed_id == $value) {
-            if ($key == $count) {
-                break;
+    if ($thread_sort_messages || $allow_server_sort) {
+        $count = count($server_sort_array) - 1;
+        foreach($server_sort_array as $key=>$value) {
+            if ($passed_id == $value) {
+                if ($key == $count) {
+                    break;
+                }
+                $result = $server_sort_array[$key + 1];
+                break; 
             }
-            $result = $uidset[$key + 1];
-            break;
+        }
+    } else {
+        if (is_array($msort)) {
+            for (reset($msort); ($key = key($msort)), (isset($key)); next($msort)) {
+                if ($passed_id == $msgs[$key]['ID']) {
+                    next($msort);
+                    $key = key($msort);
+                    if (isset($key)){
+                        $result = $msgs[$key]['ID'];
+                        break;
+                    }
+                }
+            }
         }
     }
     return $result;
 }
 
-/**
- * Given an IMAP message id number, this will look it up in the cached
- * and sorted msgs array and return the index of the previous message
- *
- * @param int $passed_id The current message UID
- * @return the index of the next valid message from the array
- */
-
-function findPreviousMessage($uidset, $passed_id) {
-    if (!is_array($uidset)) { //obsolete check
-        sqgetGlobalVar('server_sort_array',$server_sort_array,SQ_SESSION);
-        $uidset = $server_sort_array;
-    }
+/** returns the index of the previous message from the array. */
+function findPreviousMessage($numMessages, $passed_id) {
+    global $msort, $sort, $msgs,
+           $thread_sort_messages,
+           $allow_server_sort, $server_sort_array;
     $result = -1;
-    foreach($uidset as $key=>$value) {
-        if ($passed_id == $value) {
-            if ($key != 0) {
-                $result = $uidset[$key - 1];
+    if (!is_array($server_sort_array)) {
+        $thread_sort_messages = 0;
+        $allow_server_sort = FALSE;
+    }
+    if ($thread_sort_messages || $allow_server_sort ) {
+        foreach($server_sort_array as $key=>$value) {
+            if ($passed_id == $value) {
+                if ($key == 0) {
+                    break;
+                }
+                $result = $server_sort_array[$key - 1];
+                break;
             }
-            break;
+        }
+    } else {
+        if (is_array($msort)) {
+            for (reset($msort); ($key = key($msort)), (isset($key)); next($msort)) {
+                if ($passed_id == $msgs[$key]['ID']) {
+                    prev($msort);
+                    $key = key($msort);
+                    if (isset($key)) {
+                        $result = $msgs[$key]['ID'];
+                        break;
+                    }
+                }
+            }
         }
     }
-
     return $result;
 }
 
 /**
  * Displays a link to a page where the message is displayed more
  * "printer friendly".
- * @param string $mailbox Name of current mailbox
- * @param int $passed_id
  */
-function printer_friendly_link($mailbox, $passed_id, $passed_ent_id) {
-    global $javascript_on, $color;
+function printer_friendly_link($mailbox, $passed_id, $passed_ent_id, $color) {
+    global $javascript_on;
 
     $params = '?passed_ent_id=' . urlencode($passed_ent_id) .
               '&mailbox=' . urlencode($mailbox) .
@@ -117,14 +138,14 @@ function printer_friendly_link($mailbox, $passed_id, $passed_ent_id) {
     return $result;
 }
 
-function ServerMDNSupport($aFlags) {
-    /* escaping $ doesn't work -> \x36 */
-    return ( in_array('$mdnsent',$aFlags,true) ||
-             in_array('\\*',$aFlags,true) ) ;
+function ServerMDNSupport($read) {
+    /* escaping $ doesn't work -> \x36 */    
+    $ret = preg_match('/(\x36MDNSent|\\\\\*)/i', $read);
+    return $ret;
 }
 
 function SendMDN ( $mailbox, $passed_id, $sender, $message, $imapConnection) {
-    global $username, $attachment_dir,
+    global $username, $attachment_dir, 
            $version, $attachments, $squirrelmail_language, $default_charset,
            $languages, $useSendmail, $domain, $sent_folder,
            $popuser, $data_dir, $username;
@@ -146,6 +167,24 @@ function SendMDN ( $mailbox, $passed_id, $sender, $message, $imapConnection) {
     $rfc822_header->to[] = $header->dnt;
     $rfc822_header->subject = _("Read:") . ' ' . encodeHeader($header->subject);
 
+    // FIX ME, use identity.php from SM 1.5. Change this also in compose.php
+
+    $reply_to = '';
+    if (isset($identity) && $identity != 'default') {
+        $from_mail = getPref($data_dir, $username, 
+                             'email_address' . $identity);
+        $full_name = getPref($data_dir, $username, 
+                             'full_name' . $identity);
+        $from_addr = '"'.$full_name.'" <'.$from_mail.'>';
+        $reply_to  = getPref($data_dir, $username, 
+                             'reply_to' . $identity);
+    } else {
+        $from_mail = getPref($data_dir, $username, 'email_address');
+        $full_name = getPref($data_dir, $username, 'full_name');
+        $from_addr = '"'.$full_name.'" <'.$from_mail.'>';
+        $reply_to  = getPref($data_dir, $username,'reply_to');
+    }
+
     // Patch #793504 Return Receipt Failing with <@> from Tim Craig (burny_md)
     // This merely comes from compose.php and only happens when there is no
     // email_addr specified in user's identity (which is the startup config)
@@ -157,18 +196,11 @@ function SendMDN ( $mailbox, $passed_id, $sender, $message, $imapConnection) {
        $popuser = $username;
     }
 
-    $reply_to = '';
-    $ident = get_identities();
-    if(!isset($identity)) $identity = 0;
-    $full_name = $ident[$identity]['full_name'];
-    $from_mail = $ident[$identity]['email_address'];
-    $from_addr = '"'.$full_name.'" <'.$from_mail.'>';
-    $reply_to  = $ident[$identity]['reply_to'];
-
     if (!$from_mail) {
        $from_mail = "$popuser@$domain";
        $from_addr = $from_mail;
     }
+
     $rfc822_header->from = $rfc822_header->parseAddress($from_addr,true);
     if ($reply_to) {
        $rfc822_header->reply_to = $rfc822_header->parseAddress($reply_to,true);
@@ -191,7 +223,7 @@ function SendMDN ( $mailbox, $passed_id, $sender, $message, $imapConnection) {
             sprintf( _("Was displayed on %s"), $now );
 
     $special_encoding = '';
-    if (isset($languages[$squirrelmail_language]['XTRA_CODE']) &&
+    if (isset($languages[$squirrelmail_language]['XTRA_CODE']) && 
         function_exists($languages[$squirrelmail_language]['XTRA_CODE'])) {
         $body = $languages[$squirrelmail_language]['XTRA_CODE']('encode', $body);
         if (strtolower($default_charset) == 'iso-2022-jp') {
@@ -254,8 +286,15 @@ function SendMDN ( $mailbox, $passed_id, $sender, $message, $imapConnection) {
         require_once(SM_PATH . 'class/deliver/Deliver_SMTP.class.php');
         $deliver = new Deliver_SMTP();
         global $smtpServerAddress, $smtpPort, $smtp_auth_mech, $pop_before_smtp;
+		if ($smtp_auth_mech == 'none') {
+			$user = '';
+			$pass = '';
+		} else {
+            global $key, $onetimepad;
+            $user = $username;
+            $pass = OneTimePadDecrypt($key, $onetimepad);
+        }
         $authPop = (isset($pop_before_smtp) && $pop_before_smtp) ? true : false;
-        get_smtp_user($user, $pass);
         $stream = $deliver->initStream($composeMessage,$domain,0,
                                        $smtpServerAddress, $smtpPort, $user, $pass, $authPop);
     }
@@ -284,11 +323,11 @@ function SendMDN ( $mailbox, $passed_id, $sender, $message, $imapConnection) {
     return $success;
 }
 
-function ToggleMDNflag ($set ,$imapConnection, $mailbox, $passed_id) {
+function ToggleMDNflag ($set ,$imapConnection, $mailbox, $passed_id, $uid_support) {
     $sg   =  $set?'+':'-';
     $cmd  = 'STORE ' . $passed_id . ' ' . $sg . 'FLAGS ($MDNSent)';
-    $read = sqimap_run_command ($imapConnection, $cmd, true, $response,
-                                $readmessage, TRUE);
+    $read = sqimap_run_command ($imapConnection, $cmd, true, $response, 
+                                $readmessage, $uid_support);
 }
 
 function ClearAttachments() {
@@ -365,25 +404,23 @@ function formatRecipientString($recipients, $item ) {
     return $string;
 }
 
-function formatEnvheader($aMailbox, $passed_id, $passed_ent_id, $message,
+function formatEnvheader($mailbox, $passed_id, $passed_ent_id, $message, 
                          $color, $FirstTimeSee) {
     global $msn_user_support, $default_use_mdn, $default_use_priority,
            $show_xmailer_default, $mdn_user_support, $PHP_SELF, $javascript_on,
 	   $squirrelmail_language;
 
-    $mailbox = $aMailbox['NAME']	;
-
     $header = $message->rfc822_header;
     $env = array();
-    $env[_("Subject")] = str_replace("&nbsp;"," ",decodeHeader($header->subject));
-
+    $env[_("Subject")] = decodeHeader($header->subject);
     $from_name = $header->getAddr_s('from');
-    if (!$from_name)
+    if (!$from_name) {
         $from_name = $header->getAddr_s('sender');
-    if (!$from_name)
-        $env[_("From")] = _("Unknown sender");
-    else
-        $env[_("From")] = decodeHeader($from_name);
+        if (!$from_name) {
+            $from_name = _("Unknown sender");
+        }
+    }
+    $env[_("From")] = decodeHeader($from_name);
     $env[_("Date")] = getLongDateString($header->date);
     $env[_("To")] = formatRecipientString($header->to, "to");
     $env[_("Cc")] = formatRecipientString($header->cc, "cc");
@@ -400,8 +437,8 @@ function formatEnvheader($aMailbox, $passed_id, $passed_ent_id, $message,
                 if ($message->is_mdnsent) {
                     $env[_("Read receipt")] = _("sent");
                 } else {
-                    $env[_("Read receipt")] = _("requested");
-                    if (!(handleAsSent($mailbox) ||
+                    $env[_("Read receipt")] = _("requested"); 
+                    if (!(handleAsSent($mailbox) || 
                           $message->is_deleted ||
                           $passed_ent_id)) {
                         $mdn_url = $PHP_SELF . '&sendreceipt=1';
@@ -436,7 +473,7 @@ function formatEnvheader($aMailbox, $passed_id, $passed_ent_id, $message,
         }
     }
     echo '<TABLE BGCOLOR="'.$color[9].'" WIDTH="100%" CELLPADDING="1"'.
-         ' CELLSPACING="0" BORDER="0" ALIGN="center">'."\n";
+         ' CELLSPACING="0" BORDER="0" ALIIGN="center">'."\n";
     echo '<TR><TD HEIGHT="5" COLSPAN="2" BGCOLOR="'.
           $color[4].'"></TD></TR><TR><TD align=center>'."\n";
     echo $s;
@@ -447,39 +484,92 @@ function formatEnvheader($aMailbox, $passed_id, $passed_ent_id, $message,
     echo '</TABLE>';
 }
 
-/**
- * Format message toolbar
- *
- * @param string $mailbox Name of current mailbox
- * @param int $passed_id UID of current message
- * @param int $passed_ent_id Id of entity within message
- * @param object $message Current message object
- * @param object $mbx_response
- */
-function formatMenubar($aMailbox, $passed_id, $passed_ent_id, $message, $mbx_response, $nav_on_top = TRUE) {
+function formatMenubar($mailbox, $passed_id, $passed_ent_id, $message, $mbx_response) {
     global $base_uri, $draft_folder, $where, $what, $color, $sort,
-           $startMessage, $PHP_SELF, $save_as_draft,
-           $enable_forward_as_attachment, $imapConnection, $lastTargetMailbox,
-           $data_dir, $username, $delete_prev_next_display,
-           $compose_new_win, $javascript_on;
-
-    //FIXME cleanup argument list, use $aMailbox where possible
-    $mailbox = $aMailbox['NAME'];
+           $startMessage, $compose_new_win, $PHP_SELF, $save_as_draft,
+           $enable_forward_as_attachment;
 
     $topbar_delimiter = '&nbsp;|&nbsp;';
-    $double_delimiter = '&nbsp;&nbsp;&nbsp;&nbsp;';
     $urlMailbox = urlencode($mailbox);
+    $s = '<table width="100%" cellpadding="3" cellspacing="0" align="center"'.
+         ' border="0" bgcolor="'.$color[9].'"><tr>' .
+         html_tag( 'td', '', 'left', '', 'width="33%"' ) . '<small>';
 
     $msgs_url = $base_uri . 'src/';
+    if (isset($where) && isset($what)) {
+        $msgs_url .= 'search.php?where=' . urlencode($where) .
+                     '&amp;what=' . urlencode($what) . '&amp;mailbox=' . $urlMailbox;
+        $msgs_str  = _("Search results");
+    } else {
+        $msgs_url .= 'right_main.php?sort=' . $sort . '&amp;startMessage=' .
+                     $startMessage . '&amp;mailbox=' . $urlMailbox;
+        $msgs_str  = _("Message List");
+    }
+    $s .= '<a href="' . $msgs_url . '">' . $msgs_str . '</a>';
 
-    // BEGIN NAV ROW - PREV/NEXT, DEL PREV/NEXT, LINKS TO INDEX, etc.
-    $nav_row = '<tr><td align="left" colspan="2" style="border: 1px solid '.$color[9].';"><small>';
+    $delete_url = $base_uri . 'src/delete_message.php?mailbox=' . $urlMailbox .
+                  '&amp;message=' . $passed_id . '&amp;';
+    if (!(isset($passed_ent_id) && $passed_ent_id)) {
+        if ($where && $what) {
+            $delete_url .= 'where=' . urlencode($where) . '&amp;what=' . urlencode($what);
+        } else {
+            $delete_url .= 'sort=' . $sort . '&amp;startMessage=' . $startMessage;
+        }
+        $s .= $topbar_delimiter;
+        $s .= '<a href="' . $delete_url . '">' . _("Delete") . '</a>';
+    }
 
-    // Create Prev & Next links
-    // Handle nested entities first (i.e. Mime Attach parts)
-    if (isset($passed_ent_id) && $passed_ent_id) {
-        // code for navigating through attached message/rfc822 messages
+    $comp_uri = 'src/compose.php' .
+                '?passed_id=' . $passed_id .
+                '&amp;mailbox=' . $urlMailbox .
+                '&amp;startMessage=' . $startMessage .
+                (isset($passed_ent_id)?'&amp;passed_ent_id='.urlencode($passed_ent_id):'');
+
+    if ($compose_new_win == '1') {
+        $link_open  = '<a href="javascript:void(0)" onclick="comp_in_new(\'';
+        $link_close = '\')">';
+    } else {
+        $link_open  = '<a href="';
+        $link_close = '">';
+    }
+    if (($mailbox == $draft_folder) && ($save_as_draft)) {
+        $comp_alt_uri = $comp_uri . '&amp;smaction=draft';
+        $comp_alt_string = _("Resume Draft");
+    } else if (handleAsSent($mailbox)) {
+        $comp_alt_uri = $comp_uri . '&amp;smaction=edit_as_new';
+        $comp_alt_string = _("Edit Message as New");
+    }
+    if (isset($comp_alt_uri)) {
+        $s .= $topbar_delimiter;
+	$s .= makeComposeLink($comp_alt_uri, $comp_alt_string);
+    }
+
+    $s .= '</small></td><td align="center" width="33%"><small>';
+
+    if (!(isset($where) && isset($what)) && !$passed_ent_id) {
+        $prev = findPreviousMessage($mbx_response['EXISTS'], $passed_id);
+        $next = findNextMessage($passed_id);
+        if ($prev != -1) {
+            $uri = $base_uri . 'src/read_body.php?passed_id='.$prev.
+                   '&amp;mailbox='.$urlMailbox.'&amp;sort='.$sort.
+                   '&amp;startMessage='.$startMessage.'&amp;show_more=0';
+            $s .= '<a href="'.$uri.'">'._("Previous").'</a>';       
+        } else {
+            $s .= _("Previous");
+        }
+        $s .= $topbar_delimiter;
+        if ($next != -1) {
+            $uri = $base_uri . 'src/read_body.php?passed_id='.$next.
+                   '&amp;mailbox='.$urlMailbox.'&amp;sort='.$sort.
+                   '&amp;startMessage='.$startMessage.'&amp;show_more=0';
+            $s .= '<a href="'.$uri.'">'._("Next").'</a>';
+        } else {
+            $s .= _("Next");
+        }
+    } else if (isset($passed_ent_id) && $passed_ent_id) {
+        /* code for navigating through attached message/rfc822 messages */
         $url = set_url_var($PHP_SELF, 'passed_ent_id',0);
+        $s .= '<a href="'.$url.'">'._("View Message").'</a>';
         $entities     = array();
         $entity_count = array();
         $c = 0;
@@ -491,219 +581,55 @@ function formatMenubar($aMailbox, $passed_id, $passed_ent_id, $message, $mbx_res
                 $entities[$ent->entity_id] = $c;
             }
         }
-
         $prev_link = _("Previous");
+        $next_link = _("Next");
         if($entities[$passed_ent_id] > 1) {
             $prev_ent_id = $entity_count[$entities[$passed_ent_id] - 1];
             $prev_link   = '<a href="'
                          . set_url_var($PHP_SELF, 'passed_ent_id', $prev_ent_id)
                          . '">' . $prev_link . '</a>';
         }
-
-        $next_link = _("Next");
         if($entities[$passed_ent_id] < $c) {
             $next_ent_id = $entity_count[$entities[$passed_ent_id] + 1];
             $next_link   = '<a href="'
                          . set_url_var($PHP_SELF, 'passed_ent_id', $next_ent_id)
                          . '">' . $next_link . '</a>';
         }
-
+        $s .= $topbar_delimiter . $prev_link;
         $par_ent_id = $message->parent->entity_id;
-        $up_link = '';
         if ($par_ent_id) {
             $par_ent_id = substr($par_ent_id,0,-2);
-            if ( $par_ent_id != 0 ) {
-                $up_link = $topbar_delimiter;
-                $url = set_url_var($PHP_SELF, 'passed_ent_id',$par_ent_id);
-                $up_link .= '<a href="'.$url.'">'._("Up").'</a>';
-            }
+            $s .= $topbar_delimiter;
+            $url = set_url_var($PHP_SELF, 'passed_ent_id',$par_ent_id);
+            $s .= '<a href="'.$url.'">'._("Up").'</a>';
         }
-
-        $nav_row .= $prev_link . $up_link . $topbar_delimiter . $next_link;
-        $nav_row .= $double_delimiter . '[<a href="'.$url.'">'._("View Message").'</a>]';
-
-    // Prev/Next links for regular messages
-    } else if ( !(isset($where) && isset($what)) ) {
-        $prev = findPreviousMessage($aMailbox['UIDSET'], $passed_id);
-        $next = findNextMessage($aMailbox['UIDSET'],$passed_id);
-
-        $prev_link = _("Previous");
-        if ($prev >= 0) {
-            $uri = $base_uri . 'src/read_body.php?passed_id='.$prev.
-                   '&amp;mailbox='.$urlMailbox.'&amp;sort='.$sort.
-                   '&amp;startMessage='.$startMessage.'&amp;show_more=0';
-            $prev_link = '<a href="'.$uri.'">'.$prev_link.'</a>';
-        }
-
-        $next_link = _("Next");
-        if ($next >= 0) {
-            $uri = $base_uri . 'src/read_body.php?passed_id='.$next.
-                   '&amp;mailbox='.$urlMailbox.'&amp;sort='.$sort.
-                   '&amp;startMessage='.$startMessage.'&amp;show_more=0';
-            $next_link = '<a href="'.$uri.'">'.$next_link.'</a>';
-        }
-
-        // Only bother with Delete & Prev and Delete & Next IF
-        // top display is enabled.
-        if ( $delete_prev_next_display == 1 &&
-               in_array('\\deleted', $mbx_response['PERMANENTFLAGS'],true) ) {
-            $del_prev_link = _("Delete & Prev");
-            if ($prev >= 0) {
-                $uri = $base_uri . 'src/read_body.php?passed_id='.$prev.
-                       '&amp;mailbox='.$urlMailbox.'&amp;sort='.$sort.
-                       '&amp;startMessage='.$startMessage.'&amp;show_more=0'.
-                       '&amp;delete_id='.$passed_id;
-                $del_prev_link = '<a href="'.$uri.'">'.$del_prev_link.'</a>';
-            }
-
-            $del_next_link = _("Delete & Next");
-            if ($next >= 0) {
-                $uri = $base_uri . 'src/read_body.php?passed_id='.$next.
-                       '&amp;mailbox='.$urlMailbox.'&amp;sort='.$sort.
-                       '&amp;startMessage='.$startMessage.'&amp;show_more=0'.
-                       '&amp;delete_id='.$passed_id;
-                $del_next_link = '<a href="'.$uri.'">'.$del_next_link.'</a>';
-            }
-        }
-
-        $nav_row .= '['.$prev_link.$topbar_delimiter.$next_link.']';
-        if ( isset($del_prev_link) && isset($del_next_link) )
-            $nav_row .= $double_delimiter.'['.$del_prev_link.$topbar_delimiter.$del_next_link.']';
+        $s .= $topbar_delimiter . $next_link;
     }
 
-    // Start with Search Results or Message List link.
-    if (isset($where) && isset($what)) {
-        $msgs_url .= 'search.php?where=' . urlencode($where) .
-                     '&amp;what=' . urlencode($what) . '&amp;mailbox=' . $urlMailbox;
-        $msgs_str  = _("Search Results");
-    } else {
-        $msgs_url .= 'right_main.php?sort=' . $sort . '&amp;startMessage=' .
-                     $startMessage . '&amp;mailbox=' . $urlMailbox;
-        $msgs_str  = _("Message List");
-    }
-    $nav_row .= $double_delimiter .
-                '[<a href="' . $msgs_url . '">' . $msgs_str . '</a>]';
+    $s .= '</small></td>' . "\n" . 
+          html_tag( 'td', '', 'right', '', 'width="33%" nowrap' ) . '<small>';
+    $comp_action_uri = $comp_uri . '&amp;smaction=forward';
+    $s .= makeComposeLink($comp_action_uri, _("Forward"));
 
-    $nav_row .= '</small></td></tr>';
-
-
-    // BEGIN MENU ROW - DELETE/REPLY/FORWARD/MOVE/etc.
-    $menu_row = '<tr bgcolor="'.$color[9].'"><td><small>';
-    $comp_uri = $base_uri.'src/compose.php' .
-                '?passed_id=' . $passed_id .
-                '&amp;mailbox=' . $urlMailbox .
-                '&amp;startMessage=' . $startMessage .
-                 (isset($passed_ent_id) ? '&amp;passed_ent_id='.$passed_ent_id : '');
-
-    // Start form for reply/reply all/forward..
-    $target = '';
-    $on_click='';
-    $method='method="post" ';
-    if ($compose_new_win == '1') {
-        if ( $javascript_on ) {
-          $on_click=' onclick="comp_in_new_form(\''.$comp_uri.'\', this, this.form)"';
-          $comp_uri = 'javascript:void(0)';
-          $method='method="get" ';
-        } else {
-          $target = 'target="_blank"';
-        }
+    if ($enable_forward_as_attachment) {
+        $comp_action_uri = $comp_uri . '&amp;smaction=forward_as_attachment';
+        $s .= $topbar_delimiter;
+	$s .= makeComposeLink($comp_action_uri, _("Forward as Attachment"));
     }
 
-    $menu_row .= "\n".'<form name="composeForm" action="'.$comp_uri.'" '.$method.$target.' style="display: inline">'."\n";
+    $comp_action_uri = $comp_uri . '&amp;smaction=reply';
+    $s .= $topbar_delimiter;
+    $s .= makeComposeLink($comp_action_uri, _("Reply"));
 
-    // If Draft folder - create Resume link
-    if (($mailbox == $draft_folder) && ($save_as_draft)) {
-        $new_button = 'smaction_draft';
-        $comp_alt_string = _("Resume Draft");
-    } else if (handleAsSent($mailbox)) {
-    // If in Sent folder, edit as new
-        $new_button = 'smaction_edit_new';
-        $comp_alt_string = _("Edit Message as New");
+    $comp_action_uri = $comp_uri . '&amp;smaction=reply_all';
+    $s .= $topbar_delimiter;
+    $s .= makeComposeLink($comp_action_uri, _("Reply All"));
+    $s .= '</small></td></tr></table>';
+    $ret = concat_hook_function('read_body_menu_top', $s);
+    if($ret != '') {
+        $s = $ret;
     }
-    // Show Alt URI for Draft/Sent
-    if (isset($comp_alt_string))
-        $menu_row .= getButton('SUBMIT', $new_button, $comp_alt_string, $on_click) . "\n";
-
-    $menu_row .= getButton('SUBMIT', 'smaction_reply', _("Reply"), $on_click) . "\n";
-    $menu_row .= getButton('SUBMIT', 'smaction_reply_all', _("Reply All"), $on_click) ."\n";
-    $menu_row .= getButton('SUBMIT', 'smaction_forward', _("Forward"), $on_click);
-    if ($enable_forward_as_attachment)
-        $menu_row .= '<input type="checkbox" name="smaction_attache">' . _("As Attachment") .'&nbsp;&nbsp;'."\n";
-
-    $menu_row .= '</form>&nbsp;';
-
-    if ( in_array('\\deleted', $mbx_response['PERMANENTFLAGS'],true) ) {
-    // Form for deletion
-        $delete_url = $base_uri . 'src/delete_message.php?mailbox=' . $urlMailbox;
-        $menu_row .= '<form action="'.$delete_url.'" method="post" style="display: inline">';
-
-        if (!(isset($passed_ent_id) && $passed_ent_id)) {
-            $menu_row .= addHidden('message', $passed_id);
-
-            if ($where && $what) {
-            $menu_row .= addHidden('where', $where);
-            $menu_row .= addHidden('what',  $what);
-            } else {
-            $menu_row .= addHidden('sort',  $sort);
-            $menu_row .= addHidden('startMessage', $startMessage);
-            }
-            $menu_row .= getButton('SUBMIT', 'delete', _("Delete"));
-            $menu_row .= '<input type="checkbox" name="bypass_trash">' . _("Bypass Trash");
-        }
-        else
-        $menu_row .= getButton('SUBMIT', 'delete', _("Delete"), '', FALSE) . "\n"; // delete button is disabled
-
-        $menu_row .= '</form>';
-    }
-
-    // Add top move link
-    $menu_row .= '</small></td><td align="right">';
-    if ( !(isset($passed_ent_id) && $passed_ent_id) &&
-        in_array('\\deleted', $mbx_response['PERMANENTFLAGS'],true) ) {
-
-        $current_box = 'mailbox='.$mailbox.'&sort='.$sort.'&startMessage='.$startMessage;
-
-        // Set subsequent location based on whether or not there is a 'next' message.
-        if ( isset($next) && $next >= 0 ) {
-            $location = $base_uri . 'src/read_body.php?passed_id='.$next.'&';
-        } elseif (isset($prev) && $prev >= 0) {
-            $location = $base_uri . 'src/read_body.php?passed_id='.$prev.'&';
-        } else {
-            $location = $base_uri . 'src/right_main.php?';
-        }
-
-        $menu_row .= '<form action="'.$base_uri.'src/move_messages.php?'.$current_box.'" method="post" style="display: inline">'.
-              '<small>'.
-	      addHidden('show_more', '0' ).
-	      addHidden('dmn', '1').
-	      addHidden('location', $location.$current_box).
-	      addHidden('msg[0]', $passed_id) . _("Move to:") .
-              '<select name="targetMailbox" style="padding: 0px; margin: 0px">';
-
-        if (isset($lastTargetMailbox) && !empty($lastTargetMailbox)) {
-            $menu_row .= sqimap_mailbox_option_list($imapConnection, array(strtolower($lastTargetMailbox)));
-        } else {
-            $menu_row .= sqimap_mailbox_option_list($imapConnection);
-        }
-        $menu_row .= '</select> ';
-
-        $menu_row .= getButton('SUBMIT', 'moveButton',_("Move")) . "\n" . '</form>';
-    }
-    $menu_row .= '</td></tr>';
-
-    // echo rows, with hooks
-    $ret = do_hook_function('read_body_menu_top', array($nav_row, $menu_row));
-    if (is_array($ret)) {
-        if (isset($ret[0]) && !empty($ret[0])) {
-            $nav_row = $ret[0];
-        }
-        if (isset($ret[1]) && !empty($ret[1])) {
-            $menu_row = $ret[1];
-        }
-    }
-    echo '<table width="100%" cellpadding="3" cellspacing="0" align="center" border="0">';
-    echo $nav_on_top ? $nav_row . $menu_row : $menu_row . $nav_row;
-    echo '</table>'."\n";
+    echo $s;
     do_hook('read_body_menu_bottom');
 }
 
@@ -713,6 +639,7 @@ function formatToolbar($mailbox, $passed_id, $passed_ent_id, $message, $color) {
     $urlMailbox = urlencode($mailbox);
     $urlPassed_id = urlencode($passed_id);
     $urlPassed_ent_id = urlencode($passed_ent_id);
+                                                                                                     
 
     $query_string = 'mailbox=' . $urlMailbox . '&amp;passed_id=' . $urlPassed_id . '&amp;passed_ent_id=' . $urlPassed_ent_id;
 
@@ -733,7 +660,7 @@ function formatToolbar($mailbox, $passed_id, $passed_ent_id, $message, $color) {
 
     /* Output the printer friendly link if we are in subtle mode. */
     $s .= '&nbsp;|&nbsp;' .
-          printer_friendly_link($mailbox, $passed_id, $passed_ent_id);
+          printer_friendly_link($mailbox, $passed_id, $passed_ent_id, $color);
     echo $s;
     do_hook("read_body_header_right");
     $s = "</SMALL></TD>\n" .
@@ -779,6 +706,9 @@ if ( sqgetGlobalVar('view_hdr', $temp,  SQ_GET) ) {
     $view_hdr = (int) $temp;
 }
 
+/** POST VARS */
+sqgetGlobalVar('move_id',       $move_id,       SQ_POST);
+
 /** GET/POST VARS */
 sqgetGlobalVar('passed_ent_id', $passed_ent_id);
 sqgetGlobalVar('mailbox',       $mailbox);
@@ -794,37 +724,11 @@ if ( sqgetGlobalVar('startMessage', $temp) ) {
 }
 
 /* end of get globals */
-global $sqimap_capabilities, $lastTargetMailbox;
+global $uid_support, $sqimap_capabilities;
 
 $imapConnection = sqimap_login($username, $key, $imapServerAddress, $imapPort, 0);
 $mbx_response   = sqimap_mailbox_select($imapConnection, $mailbox, false, false, true);
 
-global $allow_thread_sort, $auto_expunge;
-
-if ($allow_thread_sort && getPref($data_dir, $username, "thread_$mailbox",0)) {
-    $aMailbox['SORT_METHOD'] = 'THREAD';
-} else if ($allow_server_sort) {
-    $aMailbox['SORT_METHOD'] = 'SERVER';
-} else {
-    $aMailbox['SORT_METHOD'] = 'SQUIRREL';
-}
-sqgetGlobalVar('aLastSelectedMailbox',$aMailbox,SQ_SESSION);
-$aMailbox['UIDSET'] = $server_sort_array;
-$aMailbox['SORT'] = $sort;
-$aMailbox['NAME'] = $mailbox;
-$aMailbox['EXISTS'] = $mbx_response['EXISTS'];
-$aMailbox['AUTO_EXPUNGE'] = $auto_expunge;
-$aMailbox['MSG_HEADERS'] = $msgs;
-
-
-/**
- * Process Delete from delete-move-next
- * but only if delete_id was set
- */
-if ( sqgetGlobalVar('delete_id', $delete_id, SQ_GET) ) {
-    sqimap_messages_delete($imapConnection, $delete_id, $delete_id, $mailbox);
-    sqimap_mailbox_expunge_dmn($imapConnection,$aMailbox,$delete_id);
-}
 
 /**
  * $message contains all information about the message
@@ -836,7 +740,7 @@ $uidvalidity = $mbx_response['UIDVALIDITY'];
 if (!isset($messages[$uidvalidity])) {
    $messages[$uidvalidity] = array();
 }
-if (!isset($messages[$uidvalidity][$passed_id]) || $delete_id) {
+if (!isset($messages[$uidvalidity][$passed_id]) || !$uid_support) {
    $message = sqimap_get_message($imapConnection, $passed_id, $mailbox);
    $FirstTimeSee = !$message->is_seen;
    $message->is_seen = true;
@@ -852,7 +756,7 @@ if (isset($passed_ent_id) && $passed_ent_id) {
    if ($message->type0 != 'message'  && $message->type1 != 'rfc822') {
       $message = $message->parent;
    }
-   $read = sqimap_run_command ($imapConnection, "FETCH $passed_id BODY[$passed_ent_id.HEADER]", true, $response, $msg, TRUE);
+   $read = sqimap_run_command ($imapConnection, "FETCH $passed_id BODY[$passed_ent_id.HEADER]", true, $response, $msg, $uid_support);
    $rfc822_header = new Rfc822Header();
    $rfc822_header->parseHeader($read);
    $message->rfc822_header = $rfc822_header;
@@ -869,14 +773,19 @@ do_hook('html_top');
 
 if (isset($sendreceipt)) {
    if ( !$message->is_mdnsent ) {
-      $final_recipient = '';
-      if ((isset($identity)) && ($identity != 0))	//Main identity
-         $final_recipient = trim(getPref($data_dir, $username, 'email_address' . $identity, '' ));
-      if ($final_recipient == '' )
-         $final_recipient = trim(getPref($data_dir, $username, 'email_address', '' ));
+      if (isset($identity) ) {
+         $final_recipient = getPref($data_dir, $username, 'email_address0', '' );
+      } else {
+         $final_recipient = getPref($data_dir, $username, 'email_address', '' );
+      }
+
+      $final_recipient = trim($final_recipient);
+      if ($final_recipient == '' ) {
+         $final_recipient = getPref($data_dir, $username, 'email_address', '' );
+      }
       $supportMDN = ServerMDNSupport($mbx_response["PERMANENTFLAGS"]);
       if ( SendMDN( $mailbox, $passed_id, $final_recipient, $message, $imapConnection ) > 0 && $supportMDN ) {
-         ToggleMDNflag( true, $imapConnection, $mailbox, $passed_id);
+         ToggleMDNflag( true, $imapConnection, $mailbox, $passed_id, $uid_support);
          $message->is_mdnsent = true;
          $messages[$uidvalidity][$passed_id]=$message;
       }
@@ -905,8 +814,8 @@ for ($i = 0; $i < $cnt; $i++) {
 }
 
 displayPageHeader($color, $mailbox);
-formatMenuBar($aMailbox, $passed_id, $passed_ent_id, $message, $mbx_response);
-formatEnvheader($aMailbox, $passed_id, $passed_ent_id, $message, $color, $FirstTimeSee);
+formatMenuBar($mailbox, $passed_id, $passed_ent_id, $message, $mbx_response);
+formatEnvheader($mailbox, $passed_id, $passed_ent_id, $message, $color, $FirstTimeSee);
 echo '<table width="100%" cellpadding="0" cellspacing="0" align="center" border="0">';
 echo '  <tr><td>';
 echo '    <table width="100%" cellpadding="1" cellspacing="0" align="center" border="0" bgcolor="'.$color[9].'">';
@@ -918,7 +827,7 @@ echo html_tag( 'table' ,'' , 'left', '', 'cellpadding="1" cellspacing="5" border
 echo '              <tr>' . html_tag( 'td', '<br>'. $messagebody."\n", 'left')
                         . '</tr>';
 echo '            </table>';
-echo '          </td></tr>';
+echo '          </td></tr>';      
 echo '        </table></td></tr>';
 echo '    </table>';
 echo '  </td></tr>';
@@ -928,11 +837,12 @@ echo '<TR><TD HEIGHT="5" COLSPAN="2" BGCOLOR="'.
 
 $attachmentsdisplay = formatAttachments($message,$ent_ar,$mailbox, $passed_id);
 if ($attachmentsdisplay) {
-   echo '  </table>';
+   echo '  <tr><td>';
    echo '    <table width="100%" cellpadding="1" cellspacing="0" align="center"'.' border="0" bgcolor="'.$color[9].'">';
    echo '     <tr><td>';
    echo '       <table width="100%" cellpadding="0" cellspacing="0" align="center" border="0" bgcolor="'.$color[4].'">';
-   echo '        <tr>' . html_tag( 'td', '', 'left', $color[9] );
+ //  echo '        <tr><td ALIGN="left" bgcolor="'.$color[9].'">';
+   echo '        <tr>' . html_tag( 'td', '', 'left', $color[9] );              
    echo '           <b>' . _("Attachments") . ':</b>';
    echo '        </td></tr>';
    echo '        <tr><td>';
@@ -940,6 +850,7 @@ if ($attachmentsdisplay) {
    echo              $attachmentsdisplay;
    echo '          </td></tr></table>';
    echo '       </td></tr></table>';
+   echo '    </td></tr></table>';
    echo '  </td></tr>';
    echo '<TR><TD HEIGHT="5" COLSPAN="2" BGCOLOR="'.
           $color[4].'"></TD></TR>';
@@ -966,12 +877,10 @@ if (($attachment_common_show_images) &&
     }
 }
 
-formatMenuBar($aMailbox, $passed_id, $passed_ent_id, $message, $mbx_response, FALSE);
-
 do_hook('read_body_bottom');
 do_hook('html_bottom');
 sqimap_logout($imapConnection);
-/* sessions are written at the end of the script. it's better to register
+/* sessions are written at the end of the script. it's better to register 
    them at the end so we avoid double session_register calls */
 sqsession_register($messages,'messages');
 

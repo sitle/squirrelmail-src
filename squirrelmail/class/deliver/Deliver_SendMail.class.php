@@ -7,8 +7,10 @@
  *
  * Delivery backend for the Deliver class.
  *
- * @version $Id$
+ * $Id$
+ *
  * @author Marc Groot Koerkamp
+ *
  * @package squirrelmail
  */
 
@@ -17,9 +19,9 @@
 require_once(SM_PATH . 'class/deliver/Deliver.class.php');
  
 /**
- * Delivers messages using the sendmail binary
- * @package squirrelmail
+ * Delivers messages using the sendmail binary 
  */
+
 class Deliver_SendMail extends Deliver {
 
    /**

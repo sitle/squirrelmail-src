@@ -9,14 +9,10 @@
  * Handles attachment downloads to the users computer.
  * Also allows displaying of attachments when possible.
  *
- * @version $Id$
- * @package squirrelmail
+ * $Id$
  */
 
-/**
- * Path for SquirrelMail required files. 
- * @ignore
- */
+/* Path for SquirrelMail required files. */
 define('SM_PATH','../');
 
 /* SquirrelMail required files. */
@@ -40,6 +36,8 @@ if ( sqgetGlobalVar('passed_id', $temp, SQ_GET) ) {
 }
 
 /* end globals */
+
+global $uid_support;
 
 $imapConnection = sqimap_login($username, $key, $imapServerAddress, $imapPort, 0);
 $mbx_response =  sqimap_mailbox_select($imapConnection, $mailbox);
@@ -94,25 +92,29 @@ if (is_object($message->header->disposition)) {
     $filename = $header->getParameter('name');
 }
 
-//$filename = decodeHeader($filename, false, false);	//Don't want html output nor utf8 because it will return html output
-$filename = decodeHeader($filename, true, false);   //Don't want html output
+$filename = decodeHeader($filename);
 if (strlen($filename) < 1) {
-    //$filename = decodeHeader($subject, false, false);	//Don't want html output nor utf8 because it will return html output
-    $filename = decodeHeader($subject, true, false);   //Don't want html output
-    if ($type1 == 'plain' && $type0 == 'text')
+    if ($type1 == 'plain' && $type0 == 'text') {
         $suffix = 'txt';
-    else if ($type1 == 'richtext' && $type0 == 'text')
+        $filename = $subject . '.txt';
+    } else if ($type1 == 'richtext' && $type0 == 'text') {
         $suffix = 'rtf';
-    else if ($type1 == 'postscript' && $type0 == 'application')
+        $filename = $subject . '.rtf';
+    } else if ($type1 == 'postscript' && $type0 == 'application') {
         $suffix = 'ps';
-    else if ($type1 == 'rfc822' && $type0 == 'message')
-        $suffix = 'msg';
-    else
+        $filename = $subject . '.ps';
+    } else if ($type1 == 'rfc822' && $type0 == 'message') {
+        $suffix = 'eml';
+        $filename = $subject . '.msg';
+    } else {
         $suffix = $type1;
+    }
 
-    if ($filename == '')
-        $filename = 'untitled' . strip_tags($ent_id);
-    $filename = $filename . '.' . $suffix;
+    if (strlen($filename) < 1) {
+       $filename = 'untitled'.strip_tags($ent_id).'.'.$suffix;
+    } else {
+       $filename = "$filename.$suffix";
+    }
 }
 
 /*

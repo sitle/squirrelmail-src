@@ -8,9 +8,8 @@
  * Functions to build HTML forms in a safe and consistent manner.
  * All name, value attributes are htmlentitied.
  *
- * @version $Id$
+ * $Id$
  * @package squirrelmail
- * @subpackage forms
  */
 
 /**

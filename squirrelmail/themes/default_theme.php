@@ -1,22 +1,20 @@
 <?php
-/**
- * @author Luke Ehresman
- * January 2, 2000
- * Theme Name:   'Default Theme'
- * This is the default theme that comes standard with SquirrelMail.
- * Most of the colors were taken from mail.yahoo.com's theme on their
- * site.
- *
- * To create a new theme, just copy this file, and edit the colors.
- * Be sure to rename the file and keep the original, just in case.
- *
- * NOTE:
- * You might want to submit the theme you create to our Patches tracker
- * on http://sourceforge.net/projects/squirrelmail
- * for inclusion in further releases of SquirrelMail.
- * @package squirrelmail
- * @subpackage themes
- **/
+   /** Author:       Luke Ehresman
+       Date:         January 2, 2000
+       Theme Name:   'Default Theme'
+
+       This is the default theme that comes standard with SquirrelMail.
+       Most of the colors were taken from mail.yahoo.com's theme on their
+       site.
+
+       To create a new theme, just copy this file, and edit the colors.
+       Be sure to rename the file and keep the original, just in case.
+
+       NOTE:
+       You might want to submit the theme you create to our Patches tracker
+       on http://sourceforge.net/projects/squirrelmail
+       for inclusion in further releases of SquirrelMail.
+    **/
 
     global $color;
     $color[0]   = '#DCDCDC'; // (light gray)     TitleBar

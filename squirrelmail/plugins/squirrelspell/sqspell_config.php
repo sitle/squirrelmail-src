@@ -8,11 +8,8 @@
  *
  *
  * $Id$
- * @package plugins
- * @subpackage squirrelspell
  */
 
-/** */
 require_once(SM_PATH . 'functions/prefs.php');
 
 /* Just for poor wretched souls with E_ALL. :) */

@@ -1,16 +1,16 @@
 <?php
 
 /**
- * Name:    Sea Spray Theme
- * @author  Luke Ehresman
- * Date:    March 3, 2000
+ * seaspray_theme.php
+ *    Name:    Sea Spray Theme
+ *    Author:  Luke Ehresman
+ *    Date:    March 3, 2000
+ *    Comment: 
  *
  * Copyright (c) 2000-2004 The SquirrelMail Project Team
  * Licensed under the GNU GPL. For full terms see the file COPYING.
  *
  * $Id$
- * @package squirrelmail
- * @subpackage themes
  */
 
 global $color;

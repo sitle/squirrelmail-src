@@ -10,19 +10,15 @@
  *
  * This file is included from compose.php
  *
- * @version $Id$
- * @package squirrelmail
+ * $Id$
  */
 
-/** 
- * Path for SquirrelMail required files.
- * @ignore
- */
+/* Path for SquirrelMail required files. */
 if (! defined('SM_PATH') ) {
 	define('SM_PATH','../');
 }
 
-/** SquirrelMail required files. */
+/* SquirrelMail required files. */
 require_once(SM_PATH . 'include/validate.php');
 require_once(SM_PATH . 'functions/global.php');
 require_once(SM_PATH . 'functions/date.php');
@@ -38,9 +34,7 @@ sqgetGlobalVar('addrquery', $addrquery, SQ_POST);
 sqgetGlobalVar('listall',   $listall,   SQ_POST);
 sqgetGlobalVar('backend',   $backend,   SQ_POST);
 
-/**
- * Insert hidden data
- */
+/* Insert hidden data */
 function addr_insert_hidden() {
     global $body, $subject, $send_to, $send_to_cc, $send_to_bcc, $mailbox,
            $identity, $session;
@@ -62,11 +56,7 @@ function addr_insert_hidden() {
 }
 
 
-/**
- * List search results
- * @param array $res Array containing results of search
- * @param bool $includesource UNDOCUMENTED [Default=true]
- */
+/* List search results */
 function addr_display_result($res, $includesource = true) {
     global $color, $javascript_on, $PHP_SELF, $squirrelmail_language;
 

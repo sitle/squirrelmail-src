@@ -11,14 +11,8 @@
  * init plugin into squirrelmail
  *
  * $Id$ 
- * @package plugins
- * @subpackage calendar
  */
 
-/**
- * Initialize the plugin
- * @return void
- */
 function squirrelmail_plugin_init_calendar() {
     global $squirrelmail_plugin_hooks;
     $squirrelmail_plugin_hooks['menuline']['calendar'] = 'calendar';

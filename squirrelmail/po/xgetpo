@@ -5,8 +5,7 @@
 # **
 # ** Philipe Mingo <mingo@rotedic.com>
 # ** 
-# **  $Id$
-#
+# **  $Id$ 
 XGETTEXT_OPTIONS="--keyword=_ -keyword=N_ --default-domain=squirrelmail --no-location -C"
 cd ../..
 xgettext ${XGETTEXT_OPTIONS} \
@@ -25,8 +24,6 @@ xgettext ${XGETTEXT_OPTIONS} -j \
     squirrelmail/include/*.php --output=squirrelmail/po/squirrelmail.pot
 xgettext ${XGETTEXT_OPTIONS} -j \
     squirrelmail/include/options/*.php --output=squirrelmail/po/squirrelmail.pot
-xgettext ${XGETTEXT_OPTIONS} -j \
-    squirrelmail/images/themes/*/*.php --output=squirrelmail/po/squirrelmail.pot
     
 # ** Plugins
     
@@ -38,6 +35,8 @@ xgettext ${XGETTEXT_OPTIONS} -j \
     squirrelmail/plugins/bug_report/*.php --output=squirrelmail/po/squirrelmail.pot
 xgettext ${XGETTEXT_OPTIONS} -j \
     squirrelmail/plugins/calendar/*.php --output=squirrelmail/po/squirrelmail.pot
+xgettext ${XGETTEXT_OPTIONS} -j \
+    squirrelmail/plugins/delete_move_next/*.php --output=squirrelmail/po/squirrelmail.pot
 xgettext ${XGETTEXT_OPTIONS} -j \
     squirrelmail/plugins/filters/*.php --output=squirrelmail/po/squirrelmail.pot
 xgettext ${XGETTEXT_OPTIONS} -j \

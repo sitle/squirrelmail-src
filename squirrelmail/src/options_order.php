@@ -8,14 +8,10 @@
  *
  * Displays messagelist column order options
  *
- * @version $Id$
- * @package squirrelmail
+ * $Id$
  */
 
-/**
- * Path for SquirrelMail required files.
- * @ignore
- */
+/* Path for SquirrelMail required files. */
 define('SM_PATH','../');
 
 /* SquirrelMail required files. */
@@ -25,7 +21,6 @@ require_once(SM_PATH . 'functions/display_messages.php');
 require_once(SM_PATH . 'functions/imap.php');
 require_once(SM_PATH . 'functions/plugin.php');
 require_once(SM_PATH . 'functions/html.php');
-require_once(SM_PATH . 'functions/forms.php');
 
 /* get globals */
 sqgetGlobalVar('num',       $num,       SQ_GET);  
@@ -96,7 +91,7 @@ displayPageHeader($color, 'None');
     echo html_tag( 'table',
                 html_tag( 'tr',
                     html_tag( 'td',
-                        _("The index order is the order that the columns are arranged in the message index. You can add, remove, and move columns around to customize them to fit your needs.")
+                        _("The index order is the order that the columns are arranged in the message index.  You can add, remove, and move columns around to customize them to fit your needs.")
                     )
                 ) ,
             '', '', '', 'width="65%" border="0" cellpadding="0" cellspacing="0"' ) . "<br>\n";
@@ -126,8 +121,8 @@ displayPageHeader($color, 'None');
     }
     
     if (count($index_order) != count($available)) {
-
-	$opts = array();
+        echo '<form name="f" method="post" action="options_order.php">';
+        echo '<select name="add">';
         for ($i=1; $i <= count($available); $i++) {
             $found = false;
             for ($j=1; $j <= count($index_order); $j++) {
@@ -136,14 +131,12 @@ displayPageHeader($color, 'None');
                 }
             }
             if (!$found) {
-	        $opts[$i] = $available[$i];
+                echo "<option value=\"$i\">$available[$i]</option>";
             }
         }
-	
-        echo addForm('options_order.php', 'post', 'f');
-	echo addSelect('add', $opts, '', TRUE);
-        echo addHidden('method', 'add');
-	echo addSubmit(_("Add"), 'submit');
+        echo '</select>';
+        echo '<input type="hidden" value="add" name="method">';
+        echo '<input type="submit" value="'._("Add").'" name="submit">';
         echo '</form>';
     }
  

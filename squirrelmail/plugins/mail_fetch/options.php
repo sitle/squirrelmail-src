@@ -9,11 +9,8 @@
  * Setup of the mailfetch plugin.
  *
  * $Id$
- * @package plugins
- * @subpackage mail_fetch
  */
 
-/** @ignore */
 define('SM_PATH','../../');
 
 require_once(SM_PATH . 'include/validate.php');
@@ -162,7 +159,7 @@ sqgetGlobalVar('submit_mailfetch', $submit_mailfetch, SQ_POST);
             html_tag( 'table',
                 html_tag( 'tr',
                     html_tag( 'td',
-                        _("You should be aware that the encryption used to store your password is not perfectly secure. However, if you are using pop, there is inherently no encryption anyway. Additionally, the encryption that we do to save it on the server can be undone by a hacker reading the source to this file." ) ,
+                        _("You should be aware that the encryption used to store your password is not perfectly secure.  However, if you are using pop, there is inherently no encryption anyway. Additionally, the encryption that we do to save it on the server can be undone by a hacker reading the source to this file." ) ,
                     'left' )
                 ) .
                 html_tag( 'tr',
@@ -308,28 +305,23 @@ sqgetGlobalVar('submit_mailfetch', $submit_mailfetch, SQ_POST);
             html_tag( 'table' ) .
                 html_tag( 'tr',
                     html_tag( 'th', _("Server:"), 'right' ) .
-                    html_tag( 'td', '<input type="text" name="mf_server" value="' .
-                        htmlspecialchars($mailfetch_server_[$mf_sn]) . '" size="40">', 'left' )
+                    html_tag( 'td', '<input type="text" name="mf_server" value="' . htmlspecialchars($mailfetch_server_[$mf_sn]) . '" size="40">', 'left' )
                 ) .
                 html_tag( 'tr',
                     html_tag( 'th', _("Port:"), 'right' ) .
-                    html_tag( 'td', '<input type="text" name="mf_port" value="' .
-                        htmlspecialchars($mailfetch_port_[$mf_sn]) . '" size="40">', 'left' )
+                    html_tag( 'td', '<input type="text" name="mf_port" value="' . htmlspecialchars($mailfetch_port_[$mf_sn]) . '" size="40">', 'left' )
                 ) .
                 html_tag( 'tr',
                     html_tag( 'th', _("Alias:"), 'right' ) .
-                    html_tag( 'td', '<input type="text" name="mf_alias" value="' .
-                        htmlspecialchars($mailfetch_alias_[$mf_sn]) . '" size="40">', 'left' )
+                    html_tag( 'td', '<input type="text" name="mf_alias" value="' . htmlspecialchars($mailfetch_alias_[$mf_sn]) . '" size="40">', 'left' )
                 ) .
                 html_tag( 'tr',
                     html_tag( 'th', _("Username:"), 'right' ) .
-                    html_tag( 'td', '<input type="text" name="mf_user" value="' . 
-                        htmlspecialchars($mailfetch_user_[$mf_sn]) . '" size="20">', 'left' )
+                    html_tag( 'td', '<input type="text" name="mf_user" value="' . htmlspecialchars($mailfetch_user_[$mf_sn]) . '" size="20">', 'left' )
                 ) .
                 html_tag( 'tr',
                     html_tag( 'th', _("Password:"), 'right' ) .
-                    html_tag( 'td', '<input type="password" name="mf_pass" value="' .
-                        htmlspecialchars($mailfetch_pass_[$mf_sn]) . '" size="20">', 'left' )
+                    html_tag( 'td', '<input type="password" name="mf_pass" value="' . htmlspecialchars($mailfetch_pass_[$mf_sn]) . '" size="20">', 'left' )
                 ) .
                 html_tag( 'tr' ) .
                     html_tag( 'th', _("Store in Folder:"), 'right' ) .

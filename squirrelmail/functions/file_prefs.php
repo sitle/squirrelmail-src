@@ -8,11 +8,10 @@
  *
  * This contains functions for manipulating user preferences in files
  *
- * @version $Id$
- * @package squirrelmail
+ * $Id$
  */
 
-/** include this for error messages */
+/* include this for error messages */
 include_once(SM_PATH . 'functions/display_messages.php');
 
 /**

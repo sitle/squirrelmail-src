@@ -8,13 +8,9 @@
  *
  * This file provides the handling of often-used attachment types.
  *
- * @version $Id$
- * @package squirrelmail
+ * $Id$
  */
 
-/**
- * Needs documentation
- */
 require_once(SM_PATH . 'functions/global.php');
 
 global $attachment_common_show_images_list;
@@ -31,6 +27,7 @@ $FileExtensionToMimeType = array('bmp'  => 'image/x-bitmap',
                                  'png'  => 'image/png',
                                  'rtf'  => 'text/richtext',
                                  'txt'  => 'text/plain',
+				 'patch'=> 'text/plain',
                                  'vcf'  => 'text/x-vcard');
 
 /* Register browser-supported image types */

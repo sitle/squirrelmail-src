@@ -8,14 +8,10 @@
  *
  * Deletes a meesage from the IMAP server
  *
- * @version $Id$
- * @package squirrelmail
+ * $Id$
  */
 
-/**
- * Path for SquirrelMail required files.
- * @ignore
- */
+/* Path for SquirrelMail required files. */
 define('SM_PATH','../');
 
 /* SquirrelMail required files. */
@@ -28,37 +24,36 @@ sqgetGlobalVar('username', $username, SQ_SESSION);
 sqgetGlobalVar('key', $key, SQ_COOKIE);
 sqgetGlobalVar('onetimepad', $onetimepad, SQ_SESSION);
 
-sqgetGlobalVar('message', $message, SQ_FORM);
+sqgetGlobalVar('message', $message, SQ_GET);
 sqgetGlobalVar('mailbox', $mailbox, SQ_GET);
-
-sqgetGlobalVar('bypass_trash', $bypass_trash, SQ_FORM);
-
 /* end globals */
 
-if (sqGetGlobalVar('saved_draft', $tmp, SQ_GET)) {
-    $saved_draft = urlencode($tmp);
+if (isset($_GET['saved_draft'])) {
+    $saved_draft = urlencode($_GET['saved_draft']);
 }
-if (sqGetGlobalVar('mail_sent', $tmp, SQ_GET)) {
-    $mail_sent = urlencode($tmp);
+if (isset($_GET['mail_sent'])) {
+    $mail_sent = urlencode($_GET['mail_sent']);
 }
-if (sqGetGlobalVar('where', $tmp, SQ_FORM)) {
-    $where = urlencode($tmp);
+if (isset($_GET['sort'])) {
+	$sort = (int) $_GET['sort'];
 }
-if (sqGetGlobalVar('what', $tmp, SQ_FORM)) {
-    $what = urlencode($tmp);
+
+if (isset($_GET['startMessage'])) {
+	$startMessage = (int) $_GET['startMessage'];
 }
-if (sqGetGlobalVar('sort', $tmp, SQ_FORM)) {
-	$sort = (int) $tmp;
+
+if(isset($_GET['where'])) {
+    $where = urlencode($_GET['where']);
 }
-if (sqGetGlobalVar('startMessage', $tmp, SQ_FORM)) {
-	$startMessage = (int) $tmp;
+if(isset($_GET['what'])) {
+    $what = urlencode($_GET['what']);
 }
 
 $imapConnection = sqimap_login($username, $key, $imapServerAddress, $imapPort, 0);
 
 sqimap_mailbox_select($imapConnection, $mailbox);
 
-sqimap_messages_delete($imapConnection, $message, $message, $mailbox,$bypass_trash);
+sqimap_messages_delete($imapConnection, $message, $message, $mailbox);
 if ($auto_expunge) {
     sqimap_mailbox_expunge($imapConnection, $mailbox, true);
 }

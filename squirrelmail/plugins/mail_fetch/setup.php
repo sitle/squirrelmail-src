@@ -9,16 +9,10 @@
     **  Setup of the mailfetch plugin.
     **
     **  $Id$
-    * @package plugins
-    * @subpackage mail_fetch
     **/
-    
-    /**  */
+
     require_once(SM_PATH . 'plugins/mail_fetch/functions.php' );
 
-    /**
-     * Initialize the plugin
-     */
     function squirrelmail_plugin_init_mail_fetch() {
         global $squirrelmail_plugin_hooks;
 
@@ -229,9 +223,9 @@
       global $optpage_blocks;
 
       $optpage_blocks[] = array(
-         'name' => _("POP3 Fetch Mail"),
+         'name' => _("Simple POP3 Fetch Mail"),
          'url'  => '../plugins/mail_fetch/options.php',
-         'desc' => _("This configures settings for downloading email from a POP3 mailbox to your account on this server."),
+         'desc' => _("This configures settings for downloading email from a pop3 mailbox to your account on this server."),
          'js'   => false
       );
    }

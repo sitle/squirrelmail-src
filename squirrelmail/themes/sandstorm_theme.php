@@ -1,17 +1,16 @@
 <?php
 
 /**
- * Name:    Sand Storm
- * @author  Luke Ehresman
- * Date:    January 2, 2000
- * Comment: This is a theme using Tan as its main color.
+ * sandstorm_theme.php
+ *    Name:    Sand Storm
+ *    Author:  Luke Ehresman
+ *    Date:    January 2, 2000
+ *    Comment: This is a theme using Tan as its main color.
  *
  * Copyright (c) 2000-2004 The SquirrelMail Project Team
  * Licensed under the GNU GPL. For full terms see the file COPYING.
  *
  * $Id$
- * @package squirrelmail
- * @subpackage themes
  */
 
 global $color;

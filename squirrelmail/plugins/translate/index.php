@@ -8,9 +8,7 @@
     **
     **  Redirects to the login page.
     **
-    * @version $Id$
-    * @package plugins
-    * @subpackage translate
+    **  $Id$
     **/
 
    header("Location:../../src/login.php\n\n");

@@ -1,25 +1,16 @@
 <?php
 
 /**
- * Administrator Plugin - Options Page
+ * Administrator Plugin
  *
- * This script creates separate page, that allows to review and modify
- * SquirrelMail configuration file.
+ * Copyright (c) 1999-2004 The SquirrelMail Project Team
+ * Licensed under the GNU GPL. For full terms see the file COPYING.
  *
- * @version $Id$
- * @author Philippe Mingo
- * @copyright (c) 1999-2004 The SquirrelMail Project Team
- * @license http://opensource.org/licenses/gpl-license.php GNU Public License
- * @package plugins
- * @subpackage administrator
+ * Philippe Mingo
+ *
+ * $Id$
  */
 
-/**
- * parse the config file
- *
- * @param string $cfg_file
- * @access private
- */
 function parseConfig( $cfg_file ) {
 
     global $newcfg;
@@ -138,19 +129,14 @@ function parseConfig( $cfg_file ) {
     }
 }
 
-/**
- * Change paths containing SM_PATH to admin-friendly paths
- * relative to the config dir, i.e.:
- *    ''                          --> <empty string>
- *    SM_PATH . 'images/logo.gif' --> ../images/logo.gif
- *    '/absolute/path/logo.gif'   --> /absolute/path/logo.gif
- *    'http://whatever/'          --> http://whatever
- *  Note removal of quotes in returned value
- *  
- * @param string $old_path path that has to be converted
- * @return string new path
- * @access private
- */
+/* Change paths containing SM_PATH to admin-friendly paths
+   relative to the config dir, i.e.:
+     ''                          --> <empty string>
+     SM_PATH . 'images/logo.gif' --> ../images/logo.gif
+     '/absolute/path/logo.gif'   --> /absolute/path/logo.gif
+     'http://whatever/'          --> http://whatever
+   Note removal of quotes in returned value
+*/
 function change_to_rel_path($old_path) {
     $new_path = str_replace("SM_PATH . '", "../", $old_path); 
     $new_path = str_replace("../config/","", $new_path);
@@ -158,18 +144,13 @@ function change_to_rel_path($old_path) {
     return $new_path;
 }
 
-/**
- * Change relative path (relative to config dir) to 
- *  internal SM_PATH, i.e.:
- *     empty_string            --> ''
- *     ../images/logo.gif      --> SM_PATH . 'images/logo.gif'
- *     images/logo.gif         --> SM_PATH . 'config/images/logo.gif'
- *     /absolute/path/logo.gif --> '/absolute/path/logo.gif'
- *     http://whatever/        --> 'http://whatever'
- *  
- * @param string $old_path path that has to be converted
- * @return string new path
- * @access private
+/* Change relative path (relative to config dir) to 
+   internal SM_PATH, i.e.:
+     empty_string            --> ''
+     ../images/logo.gif      --> SM_PATH . 'images/logo.gif'
+     images/logo.gif         --> SM_PATH . 'config/images/logo.gif'
+     /absolute/path/logo.gif --> '/absolute/path/logo.gif'
+     http://whatever/        --> 'http://whatever'
 */     
 function change_to_sm_path($old_path) {
    if ( $old_path === '' || $old_path == "''" ) {
@@ -214,7 +195,6 @@ function change_to_sm_path($old_path) {
 
 /* ---------------------- main -------------------------- */
 
-/** @ignore */
 define('SM_PATH','../../');
 
 /* SquirrelMail required files. */
@@ -225,7 +205,7 @@ require_once(SM_PATH . 'include/load_prefs.php');
 require_once(SM_PATH . 'plugins/administrator/defines.php');
 require_once(SM_PATH . 'plugins/administrator/auth.php');
 
-global $data_dir, $username;
+GLOBAL $data_dir, $username;
 
 if ( !adm_check_user() ) {
     header('Location: ' . SM_PATH . 'src/options.php') ;
@@ -252,9 +232,7 @@ $colapse = array( 'Titles' => 'off',
                   'Group5' => getPref($data_dir, $username, 'adm_Group5', 'on' ),
                   'Group6' => getPref($data_dir, $username, 'adm_Group6', 'on' ),
                   'Group7' => getPref($data_dir, $username, 'adm_Group7', 'on' ),
-                  'Group8' => getPref($data_dir, $username, 'adm_Group8', 'on' ),
-                  'Group9' => getPref($data_dir, $username, 'adm_Group9', 'on' ),
-                  'Group10' => getPref($data_dir, $username, 'adm_Group10', 'on' ) );
+                  'Group8' => getPref($data_dir, $username, 'adm_Group8', 'on' ) );
 
 /* look in $_GET array for 'switch' */
 if ( sqgetGlobalVar('switch', $switch, SQ_GET) ) {
@@ -266,18 +244,18 @@ if ( sqgetGlobalVar('switch', $switch, SQ_GET) ) {
     setPref($data_dir, $username, "adm_$switch", $colapse[$switch] );
 }
 
-echo '<form action="options.php" method="post" name="options">' .
-    "<center><table width=\"95%\" bgcolor=\"$color[5]\"><tr><td>".
-    "<table width=\"100%\" cellspacing=\"0\" bgcolor=\"$color[4]\">" ,
-    "<tr bgcolor=\"$color[5]\"><th colspan=\"2\">" . _("Configuration Administrator") . "</th></tr>",
-    "<tr bgcolor=\"$color[5]\"><td colspan=\"2\" align=\"center\">";
-
-echo "<small>";
-echo _("Note: it is recommended that you configure your system using conf.pl, and not this plugin. conf.pl contains additional information regarding the purpose of variables and appropriate values, as well as additional verification steps.");
-echo "<br />";
-echo _("Run or consult conf.pl should you run into difficulty with your configuration.");
-echo "</small></td></tr>";
-
+echo "<form action=options.php method=post name=options>" .
+    "<center><table width=95% bgcolor=\"$color[5]\"><tr><td>".
+    "<table width=100% cellspacing=0 bgcolor=\"$color[4]\">" ,
+    "<tr bgcolor=\"$color[5]\"><th colspan=2>" . _("Configuration Administrator") . "</th></tr>",
+    "<tr bgcolor=\"$color[5]\"><td colspan=2 align=\"center\">";
+?>
+<small>Note: it is recommended that you configure your system using conf.pl, and not this plugin.
+conf.pl contains additional information regarding the purpose of variables and
+appropriate values, as well as additional verification steps.<br />
+Run or consult conf.pl should you run into difficulty with your configuration.</small>
+</td></tr>
+<?php
 
 $act_grp = 'Titles';  /* Active group */
 
@@ -337,8 +315,8 @@ foreach ( $newcfg as $k => $v ) {
             } else {
                 $sw = '(-)';
             }
-            echo "<tr bgcolor=\"$color[0]\"><th colspan=\"2\">" .
-                 "<a href=\"options.php?switch=$k\" style=\"text-decoration:none\"><b>$sw</b> </a>" .
+            echo "<tr bgcolor=\"$color[0]\"><th colspan=2>" .
+                 "<a href=options.php?switch=$k STYLE=\"text-decoration:none\"><b>$sw</b> </a>" .
                  "$name</th></tr>";
             $act_grp = $k;
             break;
@@ -359,7 +337,7 @@ foreach ( $newcfg as $k => $v ) {
                 $newcfg[$k] = $v;
             }
             echo "<tr><td>$name</td><td>".
-                 "<input size=\"10\" name=\"adm_$n\" value=\"$v\">";
+                 "<input size=10 name=\"adm_$n\" value=\"$v\">";
             if ( isset( $defcfg[$k]['comment'] ) ) {
                 echo ' &nbsp; ' . $defcfg[$k]['comment'];
             }
@@ -410,8 +388,8 @@ foreach ( $newcfg as $k => $v ) {
                 $v = '"' . $v . '"';
                 $newcfg[$k] = str_replace( "\n", '', $v );
             }
-            echo "<tr><td valign=\"top\">$name</td><td>".
-                 "<textarea cols=\"$size\" rows=\"4\" name=\"adm_$n\">" . substr( $v, 1, strlen( $v ) - 2 ) . "</textarea>";
+            echo "<tr><td valign=top>$name</td><td>".
+                 "<textarea cols=\"$size\" name=\"adm_$n\">" . substr( $v, 1, strlen( $v ) - 2 ) . "</textarea>";
             if ( isset( $defcfg[$k]['comment'] ) ) {
                 echo ' &nbsp; ' . $defcfg[$k]['comment'];
             }
@@ -447,8 +425,8 @@ foreach ( $newcfg as $k => $v ) {
                 $cf = ' checked';
             }
             echo "<tr><td>$name</td><td>" .
-                 "<input$ct type=\"radio\" name=\"adm_$n\" value=\"TRUE\">" . _("Yes") .
-                 "<input$cf type=\"radio\" name=\"adm_$n\" value=\"FALSE\">" . _("No");
+                 "<INPUT$ct type=radio NAME=\"adm_$n\" value=\"TRUE\">" . _("Yes") .
+                 "<INPUT$cf type=radio NAME=\"adm_$n\" value=\"FALSE\">" . _("No");
             if ( isset( $defcfg[$k]['comment'] ) ) {
                 echo ' &nbsp; ' . $defcfg[$k]['comment'];
             }
@@ -508,8 +486,8 @@ if ( $colapse['Group7'] == 'off' ) {
         $name = substr( $v1, 1, strlen( $v1 ) - 2 );
         $path = change_to_rel_path($v2);
         echo '<tr>'.
-             "<td align=\"right\">$i. <input name=\"$e1\" value=\"$name\" size=\"30\"></td>".
-             "<td><input name=\"$e2\" value=\"$path\" size=\"40\"></td>".
+             "<td align=right>$i. <input name=\"$e1\" value=\"$name\" size=30></td>".
+             "<td><input name=\"$e2\" value=\"$path\" size=40></td>".
              "</tr>\n";
         $i++;
 
@@ -522,8 +500,8 @@ if ( $colapse['Group8'] == 'on' ) {
 } else {
     $sw = '(-)';
 }
-echo "<tr bgcolor=\"$color[0]\"><th colspan=\"2\">" .
-     "<a href=\"options.php?switch=Group8\" style=\"text-decoration:none\"><b>$sw</b> </a>" .
+echo "<tr bgcolor=\"$color[0]\"><th colspan=2>" .
+     "<a href=options.php?switch=Group8 STYLE=\"text-decoration:none\"><b>$sw</b> </a>" .
      _("Plugins") . '</th></tr>';
 
 if( $colapse['Group8'] == 'off' ) {
@@ -570,33 +548,25 @@ if( $colapse['Group8'] == 'off' ) {
             $i++;
         }
       }
-      echo "<tr><td colspan=\"2\"><input type=\"hidden\" name=\"plg\" value=\"on\"><center><table>";
+      echo "<tr><td colspan=2><input type=hidden name=plg value=on><center><table><tr><td>";
       foreach ( $op_plugin as $plg ) {
         if ( in_array( $plg, $plugins ) ) {
             $sw = ' checked';
         } else {
             $sw = '';
         }
-        echo '<tr><td>';
-	if (file_exists(SM_PATH . "plugins/$plg/README")) {
-	    echo "<a href=\"../$plg/README\" target=\"_blank\">$plg</a>";
-	} else {
-	    echo $plg;
-	}
-	echo "</td>\n".
-	     "<td><input$sw type=\"checkbox\" name=\"plgs_$plg\"></td>".
+        echo '<tr>' .
+             "<td>$plg</td><td><input$sw type=checkbox name=plgs_$plg></td>".
              "</tr>\n";
       }
-      echo '</table></center></td></tr>';
+      echo '</td></tr></table></td></tr>';
   } else {
-      echo '<tr><td colspan="2" align="center">' . sprintf(_("Plugin directory could not be found: %s"),$plugpath) . "</td></tr>\n";
+      echo '<tr><td colspan=2 align="center">Plugin directory could not be found: ' . $plugpath . "</td></tr>\n";
   }
 }
-echo "<tr bgcolor=\"$color[5]\"><th colspan=\"2\"><input value=\"" .
-     _("Change Settings") . '" type="submit"><br />'.
-     '<a href="'.SM_PATH.'src/configtest.php" target="_blank">'._("Test Configuration").
-     "</a></th></tr>\n" ,
-     '</table></td></tr></table></center></form>';
+echo "<tr bgcolor=\"$color[5]\"><th colspan=2><input value=\"" .
+     _("Change Settings") . "\" type=submit></th></tr>" ,
+     '</table></td></tr></table></form>';
 
 /*
     Write the options to the file.
@@ -612,21 +582,20 @@ if( $fp = @fopen( $cfgfile, 'w' ) ) {
     "global \$version;\n" );
 
     foreach ( $newcfg as $k => $v ) {
-        if ( $k{0} == '$' && $v <> '' || is_int($v)) {
+        if ( $k{0} == '$' && $v <> '' ) {
             if ( substr( $k, 1, 11 ) == 'ldap_server' ) {
                 $v = substr( $v, 0, strlen( $v ) - 1 ) . "\n)";
                 $v = str_replace( 'array(', "array(\n\t", $v );
                 $v = str_replace( "',", "',\n\t", $v );
             }
             fwrite( $fp, "$k = $v;\n" );
-	}
+        }
     }
     fwrite( $fp, '?>' );
     fclose( $fp );
 } else {
-    echo '<br /><p align="center"><big>'.
+    echo '<font size=+1><br>'.
          _("Config file can't be opened. Please check config.php.").
-         '</big></p>';
+         '</font>';
 }
 ?>
-</body></html>

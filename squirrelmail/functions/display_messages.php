@@ -1,5 +1,4 @@
 <?php
-
 /**
  * display_messages.php
  *
@@ -9,13 +8,10 @@
  * This contains all messages, including information, error, and just
  * about any other message you can think of.
  *
- * @version $Id$
- * @package squirrelmail
+ * $Id$
  */
 
-/**
- * including plugin functions
- */
+//require plugin.php here to avois a do_hook error on session timeout
 require_once(SM_PATH . 'functions/plugin.php');
 
 /**
@@ -24,7 +20,7 @@ require_once(SM_PATH . 'functions/plugin.php');
  * called "src", "functions", or "plugins", but people who do that need
  * to be beaten with a steel pipe anyway.
  *
- * @return string the base uri of squirrelmail installation.
+ * @return  the base uri of squirrelmail installation.
  */
 function sqm_baseuri(){
     global $base_uri, $PHP_SELF;
@@ -40,14 +36,34 @@ function sqm_baseuri(){
     return $base_uri;
 }
 
+function error_username_password_incorrect() {
+    global $frame_top, $color;
+    /* XXX: Should really not start the HTML before this, or close off more
+       cleanly. */
+
+    if (!isset($frame_top)) {
+        $frame_top = '_top';
+    }
+    $string = '<TR><TD ALIGN="center">'.
+                 _("Unknown user or password incorrect.") .
+              '</TD></TR><TR><TD ALIGN="center">'.
+	         '<A HREF="' . sqm_baseuri() . '"login.php" TARGET='.
+                    $frame_top.'>' . _("Click here to try again") .
+                    '</A>.'.
+              '</TD></TR>';
+   error_box($string,$color);
+echo  '</BODY></HTML>';
+}
+
 function error_message($message, $mailbox, $sort, $startMessage, $color) {
     $urlMailbox = urlencode($mailbox);
+
     $string = '<tr><td ALIGN="center">' . $message . '</td></tr>'."\n".
                '<tr><td ALIGN="center">'.
                   '<A HREF="' . sqm_baseuri() 
                   . "src/right_main.php?sort=$sort&amp;startMessage=$startMessage"
                   . "&amp;mailbox=$urlMailbox\">" .
-    sprintf (_("Click here to return to %s"), strtoupper($mailbox) == 'INBOX' ? _("INBOX") : imap_utf7_decode_local($mailbox)) .
+	    sprintf (_("Click here to return to %s"), imap_utf7_decode_local($mailbox)) .
 	    '</A></td></tr>';
     error_box($string, $color);
 }
@@ -127,16 +143,6 @@ function logout_error( $errString, $errTitle = '' ) {
 function error_box($string, $color) {
     global $pageheader_sent;
 
-    if ( !isset( $color ) ) {
-        $color = array();
-        $color[0]  = '#DCDCDC';  /* light gray    TitleBar               */
-        $color[1]  = '#800000';  /* red                                  */
-        $color[2]  = '#CC0000';  /* light red     Warning/Error Messages */
-        $color[4]  = '#FFFFFF';  /* white         Normal Background      */
-        $color[7]  = '#0000CC';  /* blue          Links                  */
-        $color[8]  = '#000000';  /* black         Normal text            */
-    }
-
     $err = _("ERROR");
 
     $ret = concat_hook_function('error_box', $string);
@@ -157,7 +163,7 @@ function error_box($string, $color) {
    echo '     <tr><td>';
    echo '       <table width="100%" cellpadding="0" cellspacing="0" align="center" border="0" bgcolor="'.$color[4].'">';
    echo '        <tr><td ALIGN="center" bgcolor="'.$color[0].'">';
-   echo '           <font color="' . $color[2].'"><b>' . $err . ':</b></font>';
+   echo '           <font color="' . $color[2].'"><b>' . _("ERROR") . ':</b></font>';
    echo '        </td></tr>';
    echo '        <tr><td>';
    echo '            <table cellpadding="1" cellspacing="5" align="center" border="0">';
