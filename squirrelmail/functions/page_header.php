@@ -11,14 +11,22 @@
  * $Id$
  */
 
-require_once(SM_PATH . 'functions/strings.php');
-require_once(SM_PATH . 'functions/html.php');
-require_once(SM_PATH . 'functions/imap_mailbox.php');
+require_once('../functions/strings.php');
+require_once('../functions/imap_utf7_decode_local.php');
+require_once('../src/global.php');
 
 /* Always set up the language before calling these functions */
 function displayHtmlHeader( $title = 'SquirrelMail', $xtra = '', $do_hook = TRUE ) {
-
-    global $theme_css, $custom_css, $base_uri;
+    if ( (float)substr(PHP_VERSION,0,3) < 4.1 ) {
+            global $_SESSION;
+    }
+    if (isset($_SESSION['base_uri'])) {
+        $base_uri = $_SESSION['base_uri'];
+    }
+    else {
+        global $base_uri;
+    }
+    global $theme_css, $custom_css;
 
     echo '<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">' .
          "\n\n<HTML>\n<HEAD>\n";
@@ -33,28 +41,39 @@ function displayHtmlHeader( $title = 'SquirrelMail', $xtra = '', $do_hook = TRUE
     }
     
     if ($do_hook) {
-       do_hook("generic_header");
+        do_hook ("generic_header");
     }
-    
+
     echo "\n<title>$title</title>$xtra</head>\n\n";
+
 }
 
-
 function displayInternalLink($path, $text, $target='') {
-    global $base_uri;
 
+    if ( (float)substr(PHP_VERSION,0,3) < 4.1 ) {
+            global $_SESSION;
+    }
+
+    $base_uri = $_SESSION['base_uri'];    
     if ($target != '') {
         $target = " target=\"$target\"";
     }
+
     echo '<a href="'.$base_uri.$path.'"'.$target.'>'.$text.'</a>';
 }
 
 function displayPageHeader($color, $mailbox, $xtra='', $session=false) {
 
-    global $delimiter, $hide_sm_attributions, $base_uri, $PHP_SELF, $frame_top,
+    global $hide_sm_attributions, $PHP_SELF, $frame_top,
            $compose_new_win, $username, $datadir, $compose_width, $compose_height,
            $attachemessages, $session;
+           
+    if ( (float)substr(PHP_VERSION,0,3) < 4.1 ) {
+            global $_SESSION;
+    }
 
+    $base_uri = $_SESSION['base_uri'];
+    $delimiter = $_SESSION['delimiter'];
     $module = substr( $PHP_SELF, ( strlen( $PHP_SELF ) - strlen( $base_uri ) ) * -1 );
     if ($qmark = strpos($module, '?')) {
         $module = substr($module, 0, $qmark);
@@ -63,16 +82,19 @@ function displayPageHeader($color, $mailbox, $xtra='', $session=false) {
         $frame_top = '_top';
     }
 
+    /*
+        Locate the first displayable form element
+    */
+
     if ($session != false) {
-	$compose_uri = $base_uri.'src/compose.php?mailbox='. urlencode($mailbox).'&attachedmessages=true&session='."$session";
+	$compose_uri = 'src/compose.php?mailbox='. urlencode($mailbox).'&attachedmessages=true&session='."$session";
     } else {
-        $compose_uri = $base_uri.'src/compose.php?newmessage=1';
+        $compose_uri = 'src/compose.php?newmessage=1';
 	$session = 0;
     }
    
     switch ( $module ) {
     case 'src/read_body.php':
-            $js ='';
             if ($compose_new_win == '1') {
                 if (!preg_match("/^[0-9]{3,4}$/", $compose_width)) {
                     $compose_width = '640';
@@ -80,30 +102,27 @@ function displayPageHeader($color, $mailbox, $xtra='', $session=false) {
                 if (!preg_match("/^[0-9]{3,4}$/", $compose_height)) {
                     $compose_height = '550';
                 }
-                $js .= "\n".'<script language="JavaScript" type="text/javascript">' .
+                $js = "\n".'<script language="JavaScript" type="text/javascript">' .
                     "\n<!--\n";
-                $js .= "function comp_in_new(comp_uri) {\n".
-		     "       if (!comp_uri) {\n".
-		     '           comp_uri = "'.$compose_uri."\";\n".
+                $js .= "function comp_in_new(new_mes, comp_uri) {\n".
+		     '    if (new_mes) { '."\n".
+		     "       comp_uri = \"".$base_uri."src/compose.php?newmessage=1\";\n".
+		     '    } else { '."\n".
+		     "       if (comp_uri =='') {\n".
+		     '           comp_uri = "'.$base_uri.$compose_uri."\";\n".
 		     '       }'. "\n".
+		     '    }'. "\n".
                      '    var newwin = window.open(comp_uri' .
-                     ', "_blank",'.
-                     '"width='.$compose_width. ',height='.$compose_height.
-                     ',scrollbars=yes,resizable=yes");'."\n".
-                     "}\n\n";
+                     ', "_blank", "width='.$compose_width.",height=$compose_height".
+                     ",scrollbars=yes,resizable=yes\");\n".
+                     "}\n";
 
-
-                $js .= 'function sendMDN() {'."\n".
-                       "mdnuri=window.location+'&sendreceipt=1';".
-                       "var newwin = window.open(mdnuri,'right');".
-	               "\n}\n\n";
-
-                $js .= "// -->\n".
-        	       "</script>\n";
-	     
-             }
-             displayHtmlHeader ('Squirrelmail', $js);
-             $onload = $xtra;
+        $js .= "// -->\n".
+        	 "</script>\n";
+        displayHtmlHeader ('Squirrelmail', $js);
+            }
+        displayHtmlHeader();
+        $onload = $xtra;
         break;
     case 'src/compose.php':
         $js = '<script language="JavaScript" type="text/javascript">' .
@@ -165,52 +184,53 @@ function displayPageHeader($color, $mailbox, $xtra='', $session=false) {
                 if (!preg_match("/^[0-9]{3,4}$/", $compose_height)) {
                     $compose_height = '550';
                 }
-                $js .= "function comp_in_new(comp_uri) {\n".
-		     "       if (!comp_uri) {\n".
-		     '           comp_uri = "'.$compose_uri."\";\n".
+                $js .= "function comp_in_new(new_mes, comp_uri) {\n".
+		     '    if (new_mes) { '."\n".
+		     "       comp_uri = \"".$base_uri."src/compose.php?newmessage=1\";\n".
+		     '    } else { '."\n".
+		     "       if (comp_uri =='') {\n".
+		     '           comp_uri = "'.$base_uri.$compose_uri."\";\n".
 		     '       }'. "\n".
+		     '    }'. "\n".
                      '    var newwin = window.open(comp_uri' .
-                     ', "_blank",'.
-                     '"width='.$compose_width. ',height='.$compose_height.
-                     ',scrollbars=yes,resizable=yes");'."\n".
-                     "}\n\n";
-
+                     ', "_blank","width='.$compose_width.",height=$compose_height".
+                     ",scrollbars=yes,resizable=yes\");\n".
+                     "}\n";
             }
-        $js .= "// -->\n". "</script>\n";
-	
-
+        $js .= "// -->\n".
+        	 "</script>\n";
         $onload = "onLoad=\"checkForm();\"";
         displayHtmlHeader ('Squirrelmail', $js);
         break;   
 
     }
 
-    echo "<body text=\"$color[8]\" bgcolor=\"$color[4]\" link=\"$color[7]\" vlink=\"$color[7]\" alink=\"$color[7]\" $onload>\n\n";
+    echo "<BODY TEXT=\"$color[8]\" BGCOLOR=\"$color[4]\" LINK=\"$color[7]\" VLINK=\"$color[7]\" ALINK=\"$color[7]\" $onload>\n\n";
     /** Here is the header and wrapping table **/
     $shortBoxName = imap_utf7_decode_local(
 		      readShortMailboxName($mailbox, $delimiter));
     if ( $shortBoxName == 'INBOX' ) {
         $shortBoxName = _("INBOX");
     }
-    echo "<a name=\"pagetop\"></a>\n"
-        . html_tag( 'table', '', '', $color[4], 'border="0" width="100%" cellspacing="0" cellpadding="2"' ) ."\n"
-        . html_tag( 'tr', '', '', $color[9] ) ."\n"
-        . html_tag( 'td', '', 'left' ) ."\n";
+    echo "<A NAME=pagetop></A>\n"
+        . "<TABLE BGCOLOR=\"$color[4]\" BORDER=0 WIDTH=\"100%\" CELLSPACING=0 CELLPADDING=2>\n"
+        . "   <TR BGCOLOR=\"$color[9]\" >\n"
+        . "      <TD ALIGN=left>\n";
     if ( $shortBoxName <> '' && strtolower( $shortBoxName ) <> 'none' ) {
-        echo '         ' . _("Current Folder") . ": <b>$shortBoxName&nbsp;</b>\n";
+        echo '         ' . _("Current Folder") . ": <B>$shortBoxName&nbsp;</B>\n";
     } else {
         echo '&nbsp;';
     }
-    echo  "      </td>\n"
-        . html_tag( 'td', '', 'right' ) ."<b>\n";
+    echo  "      </TD>\n"
+        . '      <TD ALIGN=right><b>';
     displayInternalLink ('src/signout.php', _("Sign Out"), $frame_top);
-    echo "</b></td>\n"
-        . "   </tr>\n"
-        . html_tag( 'tr', '', '', $color[4] ) ."\n"
-        . html_tag( 'td', '', 'left' ) ."\n";
+    echo "</b></TD>\n"
+        . "   </TR>\n"
+        . "   <TR BGCOLOR=\"$color[4]\">\n"
+        . "      <TD ALIGN=left>\n";
     $urlMailbox = urlencode($mailbox);
     if ($compose_new_win == '1') {
-        echo "<a href=\"javascript:void(0)\" onclick=\"comp_in_new()\">". _("Compose"). '</a>';
+        echo "<a href=\"javascript:void(0)\" onclick=\"comp_in_new(true,'')\">". _("Compose"). '</a>';
     }
     else {
         displayInternalLink ("src/compose.php?mailbox=$urlMailbox", _("Compose"), 'right');
@@ -229,13 +249,12 @@ function displayPageHeader($color, $mailbox, $xtra='', $session=false) {
 
     do_hook("menuline");
 
-    echo "      </td>\n"
-        . html_tag( 'td', '', 'right' ) ."\n";
+    echo "      </TD>\n      <TD ALIGN=\"right\">";
     echo ($hide_sm_attributions ? '&nbsp;' :
-            '<a href="http://www.squirrelmail.org/" target="_blank">SquirrelMail</a>');
-    echo "</td>\n".
-        "   </tr>\n".
-        "</table><br>\n\n";
+            '<A HREF="http://www.squirrelmail.org/" TARGET="_blank">SquirrelMail</A>');
+    echo "</TD>\n".
+        "   </TR>\n".
+        "</TABLE>\n\n";
 }
 
 /* blatently copied/truncated/modified from the above function */
@@ -288,6 +307,6 @@ function compose_Header($color, $mailbox) {
 
     }
 
-    echo "<body text=\"$color[8]\" bgcolor=\"$color[4]\" link=\"$color[7]\" vlink=\"$color[7]\" alink=\"$color[7]\" $onload>\n\n";
+    echo "<BODY TEXT=\"$color[8]\" BGCOLOR=\"$color[4]\" LINK=\"$color[7]\" VLINK=\"$color[7]\" ALINK=\"$color[7]\" $onload>\n\n";
 }
 ?>

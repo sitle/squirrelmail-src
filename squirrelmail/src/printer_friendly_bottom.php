@@ -14,60 +14,67 @@
  * $Id$
  */
 
-/* Path for SquirrelMail required files. */
-define('SM_PATH','../');
+require_once('../src/validate.php');
+require_once('../functions/strings.php');
+require_once('../config/config.php');
+require_once('../src/load_prefs.php');
+require_once('../functions/imap.php');
+require_once('../functions/page_header.php');
 
-/* SquirrelMail required files. */
-require_once(SM_PATH . 'include/validate.php');
-require_once(SM_PATH . 'functions/strings.php');
-require_once(SM_PATH . 'config/config.php');
-require_once(SM_PATH . 'include/load_prefs.php');
-require_once(SM_PATH . 'functions/imap.php');
-require_once(SM_PATH . 'functions/page_header.php');
-require_once(SM_PATH . 'functions/html.php');
+/* get some of these globals */
+$key = $_COOKIE['key'];
+$username = $_SESSION['username'];
+$onetimepad = $_SESSION['onetimepad'];
+
+$passed_ent_id = $_GET['passed_ent_id'];
+$passed_id = $_GET['passed_id'];
+$mailbox = $_GET['mailbox'];
+/* end globals */
 
 $pf_cleandisplay = getPref($data_dir, $username, 'pf_cleandisplay');
-$mailbox = urldecode($mailbox);
-$imapConnection = sqimap_login($username, $key, $imapServerAddress, $imapPort, 0);
-sqimap_mailbox_select($imapConnection, $mailbox);
-$message = sqimap_get_message($imapConnection, $passed_id, $mailbox);
-$id = $passed_id;
-if (isset($passed_ent_id)) {
-   $message = $message->getEntity($passed_ent_id);
-}
 
+$imap_stream = sqimap_login($username, $key, $imapServerAddress, $imapPort, 0);
+sqimap_mailbox_select($imap_stream, $mailbox);
+$message = sqimap_get_message($imap_stream, $passed_id, $mailbox);
 
 /* --start display setup-- */
 
-$rfc822_header = $message->rfc822_header; 
 /* From and Date are usually fine as they are... */
-$from = decodeHeader($rfc822_header->getAddr_s('from'));
-$date = getLongDateString($rfc822_header->date);
-$subject = trim(decodeHeader($rfc822_header->subject));
+$from = decodeHeader($message->header->from);
+$date = getLongDateString($message->header->date);
 
 /* we can clean these up if the list is too long... */
-$cc = decodeHeader($rfc822_header->getAddr_s('cc'));
-$to = decodeHeader($rfc822_header->getAddr_s('to'));
+$cc = decodeHeader(getLineOfAddrs($message->header->cc));
+$to = decodeHeader(getLineOfAddrs($message->header->to));
 
-if ($show_html_default == 1) {
-    $ent_ar = $message->findDisplayEntity(array());
+/* and Body and Subject could easily stream off the page... */
+$id = $message->header->id;
+$ent_num = findDisplayEntity ($message, 0);  
+$body_message = getEntity($message, $ent_num);
+if (($body_message->header->type0 == 'text') ||
+    ($body_message->header->type0 == 'rfc822')) {    
+    $body = mime_fetch_body ($imap_stream, $id, $ent_num);
+    $body = decodeBody($body, $body_message->header->encoding);
+    $hookResults = do_hook('message_body', $body);
+    $body = $hookResults[1];
+    if ($body_message->header->type1 == 'html') {
+    if( $show_html_default <> 1 ) {
+        $body = strip_tags( $body );
+        translateText($body, $wrap_at, $body_message->header->charset);
+    } else {
+        $body = MagicHTML( $body, $id );
+    }
+    } else {
+        translateText($body, $wrap_at, $body_message->header->charset);
+    }              
 } else {
-    $ent_ar = $message->findDisplayEntity(array(), array('text/plain'));
+    $body = _("Message not printable");
 }
-$body = '';
-if ($ent_ar[0] != '') {
-  for ($i = 0; $i < count($ent_ar); $i++) {
-     $body .= formatBody($imapConnection, $message, $color, $wrap_at, $ent_ar[$i], $passed_id, $mailbox);
-     $body .= '<hr noshade size=1>';
-  }
-  $hookResults = do_hook('message_body', $body);
-  $body = $hookResults[1];
-} else {
-  $body = _("Message not printable");
-}
+
+$subject = trim(decodeHeader($message->header->subject));
 
  /* now, if they choose to, we clean up the display a bit... */
- 
+ /*
 if ( empty($pf_cleandisplay) || $pf_cleandisplay != 'no' ) {
 
     $num_leading_spaces = 9; // nine leading spaces for indentation
@@ -77,9 +84,7 @@ if ( empty($pf_cleandisplay) || $pf_cleandisplay != 'no' ) {
     $to = pf_clean_string(str_replace(',,', ',', $to), $num_leading_spaces);
 
      // the body should have no leading zeros
-    // disabled because it destroys html mail
-
-//    $body = pf_clean_string($body, 0);
+    $body = pf_clean_string($body, 0);
 
      // clean up everything else...
     $subject = pf_clean_string($subject, $num_leading_spaces);
@@ -87,7 +92,7 @@ if ( empty($pf_cleandisplay) || $pf_cleandisplay != 'no' ) {
     $date = pf_clean_string($date, $num_leading_spaces);
 
 } // end cleanup
-
+*/
 // --end display setup--
 
 
@@ -96,39 +101,23 @@ displayHtmlHeader( _("Printer Friendly"), '', FALSE );
 
 echo "<body text=\"$color[8]\" bgcolor=\"$color[4]\" link=\"$color[7]\" vlink=\"$color[7]\" alink=\"$color[7]\">\n" .
      /* headers (we use table because translations are not all the same width) */
-     html_tag( 'table', '', 'center', '', 'cellspacing="0" cellpadding="0" border="0"' ) .
-     html_tag( 'tr',
-         html_tag( 'td', _("From").'&nbsp;', 'left' ,'','valign="top"') .
-         html_tag( 'td', htmlspecialchars($from), 'left' )
-     ) . "\n" .
-     html_tag( 'tr',
-         html_tag( 'td', _("Subject").'&nbsp;', 'left','','valign="top"' ) .
-         html_tag( 'td', htmlspecialchars($subject), 'left' )
-     ) . "\n" .
-     html_tag( 'tr',
-         html_tag( 'td', _("Date").'&nbsp;', 'left' ) .
-         html_tag( 'td', htmlspecialchars($date), 'left' )
-     ) . "\n" .
-     html_tag( 'tr',
-         html_tag( 'td', _("To").'&nbsp;', 'left','','valign="top"' ) .
-         html_tag( 'td', htmlspecialchars($to), 'left' )
-     ) . "\n";
-    if ( strlen($cc) > 0 ) { /* only show CC: if it's there... */
-         echo html_tag( 'tr',
-             html_tag( 'td', _("CC").'&nbsp;', 'left','','valign="top"' ) .
-             html_tag( 'td', htmlspecialchars($cc), 'left' )
-         );
-     }
-     /* body */
-     echo html_tag( 'tr',
-         html_tag( 'td', '<hr noshade size=1><br>' . "\n" . $body, 'left', '', 'colspan="2"' )
-     ) . "\n" .
-
-     '</table>' . "\n" .
-     '</body></html>';
+     '<table>'.
+     '<tr><td>' . _("From") . ':</td><td>' . htmlspecialchars($from) . "</td></tr>\n".
+     '<tr><td>' . _("To") . ':</td><td>' . htmlspecialchars($to) . "</td></tr>\n";
+if ( strlen($cc) > 0 ) { /* only show CC: if it's there... */
+     echo '<tr><td>' . _("CC") . ':</td><td>' . htmlspecialchars($cc) . "</td></tr>\n";
+}
+echo '<tr><td>' . _("Date") . ':</td><td>' . htmlspecialchars($date) . "</td></tr>\n".
+     '<tr><td>' . _("Subject") . ':</td><td>' . htmlspecialchars($subject) . "</td></tr>\n".
+     '</table>'.
+     "\n";
+/* body */
+echo "<hr noshade size=1>\n";
+echo $body;
 
 /* --end browser output-- */
 
+echo '</body></html>';
 
 /* --start pf-specific functions-- */
 

@@ -11,51 +11,73 @@
  * $Id$
  */
 
-/* Path for SquirrelMail required files. */
-define('SM_PATH','../');
+require_once('../src/validate.php');
+require_once('../functions/array.php');
+require_once('../functions/display_messages.php');
+require_once('../functions/addressbook.php');
+require_once('../functions/strings.php');
 
-/* SquirrelMail required files. */
-require_once(SM_PATH . 'include/validate.php');
-require_once(SM_PATH . 'functions/array.php');
-require_once(SM_PATH . 'functions/display_messages.php');
-require_once(SM_PATH . 'functions/addressbook.php');
-require_once(SM_PATH . 'functions/strings.php');
-require_once(SM_PATH . 'functions/html.php');
+/* lets get the global vars we may need */
+$key  = $_COOKIE['key'];
 
+$username = $_SESSION['username'];
+$onetimepad = $_SESSION['onetimepad'];
+$base_uri = $_SESSION['base_uri'];
+$delimiter = $_SESSION['delimiter'];
+
+/* From the address form */
+if ( isset($_POST['addaddr']) ) {
+    $addaddr = &$_POST['addaddr'];
+}
+if ( isset($_POST['editaddr']) ) {
+    $editaddr = &$_POST['editaddr'];
+}
+if ( isset($_POST['deladdr']) ) {
+    $deladdr = &$_POST['deladdr'];
+}
+$sel = &$_POST['sel'];
+
+if (isset($_POST['oldnick'])) {
+    $oldnick = $_POST['oldnick'];
+}
+if (isset($_POST['backend'])) {
+    $backend = $_POST['backend'];
+}
+if (isset($_POST['doedit'])) {
+    $doedit = $_POST['doedit'];
+}
 /* Make an input field */
 function adressbook_inp_field($label, $field, $name, $size, $values, $add) {
     global $color;
-    $td_str = '<INPUT NAME="' . $name . '[' . $field . ']" SIZE="' . $size . '" VALUE="';
+    echo '<TR><TD BGCOLOR="' . $color[4] . '" ALIGN=RIGHT>' .
+         $label . ':</TD>' .
+         '<TD BGCOLOR="' . $color[4] . '" ALIGN=left>' .
+         '<INPUT NAME="' . $name . '[' . $field . ']" SIZE="' . $size . '" VALUE="';
     if (isset($values[$field])) {
-        $td_str .= htmlspecialchars( strip_tags( $values[$field] ) );
+        echo htmlspecialchars(strip_tags($values[$field]));
     }
-    $td_str .= '">' . $add . '';
-    return html_tag( 'tr' ,
-        html_tag( 'td', $label . ':', 'right', $color[4]) .
-        html_tag( 'td', $td_str, 'left', $color[4])
-        )
-    . "\n";
+    echo '">' . $add . '</TD></TR>' . "\n";
 }
 
 /* Output form to add and modify address data */
 function address_form($name, $submittext, $values = array()) {
     global $color;
-    
-    echo html_tag( 'table',
-                       adressbook_inp_field(_("Nickname"),     'nickname', $name, 15, $values,
-                           ' <SMALL>' . _("Must be unique") . '</SMALL>') .
-                       adressbook_inp_field(_("E-mail address"),  'email', $name, 45, $values, '') .
-                       adressbook_inp_field(_("First name"),  'firstname', $name, 45, $values, '') .
-                       adressbook_inp_field(_("Last name"),    'lastname', $name, 45, $values, '') .
-                       adressbook_inp_field(_("Additional info"), 'label', $name, 45, $values, '') .
-                       html_tag( 'tr',
-                           html_tag( 'td',
-                                       '<INPUT TYPE=submit NAME="' . $name . '[SUBMIT]" VALUE="' .
-                                       $submittext . '">',
-                                   'center', $color[4], 'colspan="2"')
-                       )
-    , 'center', '', 'border="0" cellpadding="1" width="90%"') ."\n";
+
+    echo '<TABLE BORDER=0 CELLPADDING=1 COLS=2 WIDTH="90%" ALIGN=center>' ."\n";
+
+    adressbook_inp_field(_("Nickname"),     'nickname', $name, 15, $values,
+        '<SMALL>' . _("Must be unique") . '</SMALL>');
+    adressbook_inp_field(_("E-mail address"),  'email', $name, 45, $values, '');
+    adressbook_inp_field(_("First name"),  'firstname', $name, 45, $values, '');
+    adressbook_inp_field(_("Last name"),    'lastname', $name, 45, $values, '');
+    adressbook_inp_field(_("Additional info"), 'label', $name, 45, $values, '');
+
+    echo '<TR><TD COLSPAN=2 BGCOLOR="' . $color[4] . '" ALIGN=center>' . "\n" .
+         '<INPUT TYPE=submit NAME="' . $name . '[SUBMIT]" VALUE="' .
+         $submittext . '"></TD></TR>' .
+         "\n</TABLE>\n";
 }
+
 
 /* Open addressbook, with error messages on but without LDAP (the *
  * second "true"). Don't need LDAP here anyway                    */
@@ -69,24 +91,25 @@ if($abook->localbackend == 0) {
 
 displayPageHeader($color, 'None');
 
+
 $defdata   = array();
 $formerror = '';
 $abortform = false;
 $showaddrlist = true;
 $defselected  = array();
-$form_url = 'addressbook.php';
 
 
 /* Handle user's actions */
-if($REQUEST_METHOD == 'POST') {
+if($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     /**************************************************
      * Add new address                                *
      **************************************************/
-    if (!empty($addaddr['nickname'])) {
+    if (!empty($addaddr)) {
         foreach( $addaddr as $k => $adr ) {
             $addaddr[$k] = strip_tags( $adr );
         }
+
         $r = $abook->add($addaddr, $abook->localbackend);
 
         /* Handle error messages */
@@ -168,15 +191,13 @@ if($REQUEST_METHOD == 'POST') {
                         $olddata = $abook->lookup($enick, $ebackend);
 
                         /* Display the "new address" form */
-                        echo '<FORM ACTION="' . $form_url . '" METHOD="POST">' .
+                        echo '<FORM ACTION="' . $PHP_SELF . '" METHOD="POST">' .
                              "\n" .
-                             html_tag( 'table',
-                                html_tag( 'tr',
-                                   html_tag( 'td',
-                                      "\n". '<strong>' . _("Update address") . '</strong>' ."\n",
-                                      'center', $color[0] )
-                                   ),
-                             'center', '', 'width="100%" ' );
+                             '<TABLE WIDTH="100%" COLS=1 ALIGN=CENTER>' . "\n" .
+                             '<TR><TD BGCOLOR="' . $color[0] .
+                             '" ALIGN=CENTER>' . "\n" . '<STRONG>' .
+                             _("Update address") .
+                             "</STRONG>\n</TD></TR>\n</TABLE>\n";
                         address_form("editaddr", _("Update address"), $olddata);
                         echo '<INPUT TYPE=hidden NAME=oldnick VALUE="' . 
                              htmlspecialchars($olddata["nickname"]) . "\">\n" .
@@ -195,25 +216,20 @@ if($REQUEST_METHOD == 'POST') {
                         /* Handle error messages */
                         if (!$r) {
                             /* Display error */
-                             echo html_tag( 'table',
-                                html_tag( 'tr',
-                                   html_tag( 'td',
-                                      "\n". '<br><strong><font color="' . $color[2] .
-                                      '">' . _("ERROR") . ': ' . $abook->error . '</font></strong>' ."\n",
-                                      'center' )
-                                   ),
-                             'center', '', 'width="100%"' );
+                            echo '<TABLE WIDTH="100%" COLS=1 ALIGN=CENTER>' .
+                                 "\n" . '<TR><TD ALIGN=CENTER>' . "\n" .
+                                 '<br><STRONG><FONT COLOR="' . $color[2] .
+                                 '">' . _("ERROR") . ": " . $abook->error .
+                                 '</FONT></STRONG>' . "\n</TD></TR>\n</TABLE>\n";
 
                             /* Display the "new address" form again */
-                            echo '<FORM ACTION="' . $form_url .
+                            echo '<FORM ACTION="' . $PHP_SELF .
                                  '" METHOD="POST">' . "\n" .
-                                 html_tag( 'table',
-                                     html_tag( 'tr',
-                                         html_tag( 'td',
-                                                    "\n". '<br><strong>' . _("Update address") . '</strong>' ."\n",
-                                         'center', $color[0] )
-                                     ),
-                                 'center', '', 'width="100%"' ) .
+                                 '<TABLE WIDTH="100%" COLS=1 ALIGN=CENTER>' .
+                                 "\n" . '<TR><TD BGCOLOR="' . $color[0] .
+                                 '" ALIGN=CENTER>' . "\n" . '<STRONG>' .
+                                 _("Update address") .
+                                 "</STRONG>\n</TD></TR>\n</TABLE>\n";
                             address_form("editaddr", _("Update address"), $newdata);
                             echo '<INPUT TYPE=hidden NAME=oldnick VALUE="' .
                                  htmlspecialchars($oldnick) . "\">\n" .
@@ -249,14 +265,10 @@ if($REQUEST_METHOD == 'POST') {
 
 /* Display error messages */
 if (!empty($formerror)) {
-    echo html_tag( 'table',
-        html_tag( 'tr',
-            html_tag( 'td',
-                   "\n". '<br><strong><font color="' . $color[2] .
-                   '">' . _("ERROR") . ': ' . $formerror . '</font></strong>' ."\n",
-            'center' )
-        ),
-    'center', '', 'width="100%"' );
+    echo '<TABLE WIDTH="100%" COLS=1 ALIGN=CENTER>' . "\n" .
+         '<TR><TD ALIGN=CENTER>' . "\n" . '<br><STRONG>' .
+         '<FONT COLOR="' . $color[2]. '">' . _("ERROR") . ': ' . $formerror .
+         '</FONT></STRONG>' . "\n</TD></TR>\n</TABLE>\n";
 }
 
 
@@ -273,44 +285,38 @@ if ($showaddrlist) {
     $prevbackend = -1;
     $headerprinted = false;
 
-    echo html_tag( 'p', '<a href="#AddAddress">' . _("Add address") . '</a>', 'center' ) . "\n";
+    echo '<p align=center><a href="#AddAddress">' .
+         _("Add address") . "</a></p>\n";
 
     /* List addresses */
     if (count($alist) > 0) {
-        echo '<FORM ACTION="' . $form_url . '" METHOD="POST">' . "\n";
+        echo '<FORM ACTION="' . $PHP_SELF . '" METHOD="POST">' . "\n";
         while(list($undef,$row) = each($alist)) {
     
             /* New table header for each backend */
             if($prevbackend != $row['backend']) {
                 if($prevbackend < 0) {
-                    echo html_tag( 'table',
-                                    html_tag( 'tr',
-                                          html_tag( 'td',
-                                                     '<INPUT TYPE=submit NAME=editaddr VALUE="' . 
-                                                     _("Edit selected") . "\">\n" .
-                                                     '<INPUT TYPE=submit NAME=deladdr VALUE="' .
-                                                     _("Delete selected") . "\">\n",
-                                          'center', '', 'colspan="5"' )
-                                    ) .
-                                    html_tag( 'tr',
-                                          html_tag( 'td', '&nbsp;<br>', 'center', '', 'colspan="5"' )
-                                    ) ,
-                             'center' );
+                    echo '<TABLE ALIGN="CENTER" WIDTH="95%">'."\n".
+                         '<TR><TD COLSPAN=5 ALIGN=center>' . "\n" .
+                         '<INPUT TYPE=submit NAME=editaddr VALUE="' . 
+                         _("Edit selected") . "\">\n" .
+                         '<INPUT TYPE=submit NAME=deladdr VALUE="' .
+                         _("Delete selected") . "\">\n</tr>\n" .
+                         '<TR><TD COLSPAN="5" ALIGN=center>' .
+                         '&nbsp;<BR></TD></TR></TABLE>' . "\n";
                 }
     
-                echo html_tag( 'table',
-                                html_tag( 'tr',
-                                    html_tag( 'td', "\n" . '<strong>' . $row['source'] . '</strong>' . "\n", 'center', $color[0] )
-                                ) ,
-                        'center', '', 'width="95%"' ) ."\n"
-                . html_tag( 'table', '', 'center', '', 'border="0" cellpadding="1" cellspacing="0" width="90%"' ) .
-                      html_tag( 'tr', "\n" .
-                          html_tag( 'th', '&nbsp;', 'left', '', 'width="1%"' ) .
-                          html_tag( 'th', _("Nickname"), 'left', '', 'width="1%"' ) .
-                          html_tag( 'th', _("Name"), 'left', '', 'width="1%"' ) .
-                          html_tag( 'th', _("E-mail"), 'left', '', 'width="1%"' ) .
-                          html_tag( 'th', _("Info"), 'left', '', 'width="1%"' ) ,
-                      '', $color[9] ) . "\n";
+                echo '<TABLE WIDTH="95%" COLS=1 ALIGN=CENTER>' . "\n" .
+                     '<TR><TD BGCOLOR="' . $color[0] . '" ALIGN=CENTER>' . "\n" .
+                     '<STRONG>' . $row['source'] .
+                     "</STRONG>\n</TD></TR>\n</TABLE>\n" .
+                     '<TABLE COLS="5" BORDER="0" CELLPADDING="1" CELLSPACING="0"' .
+                     ' WIDTH="90%" ALIGN="center">' .
+                     '<TR BGCOLOR="' . $color[9] .
+                     '"><TH ALIGN=left WIDTH="1%">&nbsp;<TH ALIGN=left WIDTH="1%">' .
+                     _("Nickname") . '<TH ALIGN=left WIDTH="1%">' . _("Name") .
+                     '<TH ALIGN=left WIDTH="1%">' . _("E-mail") .
+                     '<TH ALIGN=left WIDTH="%">' . _("Info") . "</TR>\n";
     
                 $line = 0;
                 $headerprinted = true;
@@ -326,56 +332,49 @@ if ($showaddrlist) {
             }
     
             /* Print one row */
-            $tr_bgcolor = '';
-            if ($line % 2) { $tr_bgcolor = $color[0]; }
-            echo html_tag( 'tr', '') .
-            html_tag( 'td',
-                '<SMALL>' .
-                '<INPUT TYPE=checkbox ' . $selected . ' NAME="sel[]" VALUE="' .
-                $row['backend'] . ':' . $row['nickname'] . '"></SMALL>' ,
-                'center', '', 'valign="top" width="1%"' ) .
-            html_tag( 'td', '&nbsp;' . $row['nickname'] . '&nbsp;', 'left', '', 'valign="top" width="1%" nowrap' ) .
-            html_tag( 'td', '&nbsp;' . $row['name'] . '&nbsp;', 'left', '', 'valign="top" width="1%" nowrap' ) .
-            html_tag( 'td', '', 'left', '', 'valign="top" width="1%" nowrap' ) . '&nbsp;';
-            $email = $abook->full_address($row);
-            if ($compose_new_win == '1') {
-                echo '<a href="javascript:void(0)" onclick=comp_in_new(false,"compose.php?send_to='.rawurlencode($email).'")>';
-            }
-            else {
-                echo '<A HREF="compose.php?send_to=' . rawurlencode($email).'">';
-            }
-            echo htmlspecialchars($row['email']) . '</A>&nbsp;</td>'."\n".
-            html_tag( 'td', '&nbsp;' . htmlspecialchars($row['label']) . '&nbsp;', 'left', '', 'valign="top" width="1%"' ) .
-            "</tr>\n";
+            echo '<TR';
+            if ($line % 2) { echo ' bgcolor="' . $color[0]. '"'; }
+            echo '><TD VALIGN=top ALIGN=center WIDTH="1%"><SMALL>' .
+                 '<INPUT TYPE=checkbox ' . $selected . ' NAME="sel[]" VALUE="' .
+                 $row['backend'] . ':' . $row['nickname'] . '"></SMALL></TD>' .
+                 '<TD VALIGN=top NOWRAP WIDTH="1%">&nbsp;' . $row['nickname'] .
+                 '&nbsp;</TD>' .
+                 '<TD VALIGN=top NOWRAP WIDTH="1%">&nbsp;' . $row['name'] .
+                 '&nbsp;</TD>',
+                 '<TD VALIGN=top WIDTH="1%">'; 
+                if ($compose_new_win == '1') {
+                    echo '<a href="javascript:void(0)" onclick=comp_in_new(false,"compose.php?send_to='.rawurlencode($row['email']).'")>';
+                }
+                else {
+                 echo '<A HREF="compose.php?send_to=' . rawurlencode($row['email']).'">';
+                }
+                echo $row['email'] . '</A>&nbsp;</TD>'."\n",
+                 '<TD VALIGN=top WIDTH="1%">&nbsp;' . $row['label'] . '&nbsp;</TD>' .
+                 "</TR>\n";
             $line++;
         }
     
         /* End of list. Close table. */
         if ($headerprinted) {
-            echo html_tag( 'tr',
-                        html_tag( 'td',
-                                '<INPUT TYPE="submit" NAME="editaddr" VALUE="' . _("Edit selected") .
-                                "\">\n" .
-                                '<INPUT TYPE="submit" NAME="deladdr" VALUE="' . _("Delete selected") .
-                                "\">\n",
-                         'center', '', 'colspan="5"' )
-                    );
+            echo '<TR><TD COLSPAN=5 ALIGN=center>' . "\n" .
+                 '<INPUT TYPE=submit NAME=editaddr VALUE="' . _("Edit selected") .
+                 "\">\n" .
+                 '<INPUT TYPE=submit NAME=deladdr VALUE="' . _("Delete selected") .
+                 "\">\n" . '</TR></TABLE>';
         }
-        echo '</table></FORM>';
+        echo '</FORM>';
     }
 } /* end of addresslist */
 
 
 /* Display the "new address" form */
 echo '<a name="AddAddress"></a>' . "\n" .
-    '<FORM ACTION="' . $form_url . '" NAME=f_add METHOD="POST">' . "\n" .
-    html_tag( 'table',  
-        html_tag( 'tr',
-            html_tag( 'td', "\n". '<strong>' . sprintf(_("Add to %s"), $abook->localbackendname) . '</strong>' . "\n",
-                'center', $color[0]
-            )
-        )
-    , 'center', '', 'width="100%"' ) ."\n";
+     '<FORM ACTION="' . $PHP_SELF . '" NAME=f_add METHOD="POST">' . "\n" .
+     '<TABLE WIDTH="100%" COLS=1 ALIGN=CENTER>' . "\n" .
+     '<TR><TD BGCOLOR="' . $color[0] . '" ALIGN=CENTER>' . "\n" . '<STRONG>',
+     sprintf(_("Add to %s"), $abook->localbackendname) .
+     "</STRONG>\n</TD></TR>\n" .
+     "</TABLE>\n";
 address_form('addaddr', _("Add address"), $defdata);
 echo '</FORM>';
 

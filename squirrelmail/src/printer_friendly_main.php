@@ -9,14 +9,16 @@
  * $Id$
  */
 
-/* Path for SquirrelMail required files. */
-define('SM_PATH','../');
-
-/* SquirrelMail required files. */
-require_once(SM_PATH . 'include/validate.php');
-require_once(SM_PATH . 'functions/page_header.php');
+require_once('../src/validate.php');
+require_once('../functions/page_header.php');
 
 displayHtmlHeader( _("Printer Friendly"), '', FALSE );
+
+/* get those globals into gear */
+$passed_ent_id = $_GET['passed_ent_id'];
+$passed_id = $_GET['passed_id'];
+$mailbox = $_GET['mailbox'];
+/* end globals */
 
 echo "<frameset rows=\"60, *\" noresize border=\"0\">\n".
      "<frame src=\"printer_friendly_top.php\" name=\"top_frame\" scrolling=\"no\">".

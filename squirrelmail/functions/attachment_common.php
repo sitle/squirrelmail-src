@@ -93,12 +93,14 @@ function attachment_common_link_text(&$Args)
        $Args[1]['attachment_common']['href'] = Where it links to
       
        This sets the 'href' of this plugin for a new link. */
-       
-    global $QUERY_STRING;
-    $Args[1]['attachment_common']['href'] = '../src/view_text.php?'. $QUERY_STRING;
-    $Args[1]['attachment_common']['href'] =
-          set_url_var($Args[1]['attachment_common']['href'], 
-	  'ent_id',$Args[5]);
+    $Args[1]['attachment_common']['href'] = '../src/download.php?startMessage=' .
+        $Args[2] . '&amp;passed_id=' . $Args[3] . '&amp;mailbox=' . $Args[4] .
+        '&amp;passed_ent_id=' . $Args[5] . '&amp;override_type0=text&amp;override_type1=plain';
+    
+    /* If we got here from a search, we should preserve these variables */
+    if ($Args[8] && $Args[9])
+        $Args[1]['attachment_common']['href'] .= '&amp;where=' . 
+        urlencode($Args[8]) . '&amp;what=' . urlencode($Args[9]);
   
     /* The link that we created needs a name.  "view" will be displayed for
        all text attachments handled by this plugin. */
@@ -115,33 +117,34 @@ function attachment_common_link_text(&$Args)
     $Args[6] = $Args[1]['attachment_common']['href'];
 }
 
+
 function attachment_common_link_message(&$Args)
 {
-    $Args[1]['attachment_common']['href'] = '../src/read_body.php?startMessage=' .
+    $Args[1]['attachment_common']['href'] = '../src/download.php?startMessage=' .
         $Args[2] . '&amp;passed_id=' . $Args[3] . '&amp;mailbox=' . $Args[4] .
         '&amp;passed_ent_id=' . $Args[5] . '&amp;override_type0=message&amp;override_type1=rfc822';
     /* The link that we created needs a name.  "view" will be displayed for
        all text attachments handled by this plugin. */
     $Args[1]['attachment_common']['text'] = _("view");
-
-    $Args[6] = $Args[1]['attachment_common']['href'];    
 }
 
 
 function attachment_common_link_html(&$Args)
 {
-    global $QUERY_STRING;
-    $Args[1]['attachment_common']['href'] = '../src/view_text.php?'. $QUERY_STRING.
-       /* why use the overridetype? can this be removed */
-       '&amp;override_type0=text&amp;override_type1=html';
-    $Args[1]['attachment_common']['href'] =
-          set_url_var($Args[1]['attachment_common']['href'], 
-	  'ent_id',$Args[5]);
+    $Args[1]['attachment_common']['href'] = '../src/download.php?startMessage=' . 
+        $Args[2] . '&amp;passed_id=' . $Args[3] . '&amp;mailbox=' . $Args[4] .
+       '&amp;passed_ent_id=' . $Args[5] . '&amp;override_type0=text&amp;override_type1=html';
+    
+    if ($Args[8] && $Args[9]) {
+        $Args[1]['attachment_common']['href'] .= '&amp;where=' . 
+        urlencode($Args[8]) . '&amp;what=' . urlencode($Args[9]);
+    }
 
     $Args[1]['attachment_common']['text'] = _("view");
 
     $Args[6] = $Args[1]['attachment_common']['href'];
 }
+
 
 function attachment_common_link_image(&$Args)
 {
@@ -153,26 +156,31 @@ function attachment_common_link_image(&$Args)
     
     $attachment_common_show_images_list[] = $info;
     
-    global $QUERY_STRING;
-    $Args[1]['attachment_common']['href'] = '../src/image.php?'. $QUERY_STRING;
-    $Args[1]['attachment_common']['href'] =
-          set_url_var($Args[1]['attachment_common']['href'], 
-	  'ent_id',$Args[5]);
+    $Args[1]['attachment_common']['href'] = '../src/image.php?startMessage=' .
+        $Args[2] . '&amp;passed_id=' . $Args[3] . '&amp;mailbox=' . $Args[4] .
+        '&amp;passed_ent_id=' . $Args[5];
+    
+    if ($Args[8] && $Args[9]) {
+        $Args[1]['attachment_common']['href'] .= '&amp;where=' . 
+        urlencode($Args[8]) . '&amp;what=' . urlencode($Args[9]);
+    }
   
     $Args[1]['attachment_common']['text'] = _("view");
     
     $Args[6] = $Args[1]['attachment_common']['href'];
-
+    
 }
 
 
 function attachment_common_link_vcard(&$Args)
 {
-    global $QUERY_STRING;
-    $Args[1]['attachment_common']['href'] = '../src/vcard.php?'. $QUERY_STRING;
-    $Args[1]['attachment_common']['href'] =
-          set_url_var($Args[1]['attachment_common']['href'], 
-	  'ent_id',$Args[5]);
+    $Args[1]['attachment_common']['href'] = '../src/vcard.php?startMessage=' .
+        $Args[2] . '&amp;passed_id=' . $Args[3] . '&amp;mailbox=' . $Args[4] .
+        '&amp;passed_ent_id=' . $Args[5];
+  
+    if (isset($where) && isset($what))
+        $Args[1]['attachment_common']['href'] .= '&amp;where=' . 
+        urlencode($Args[8]) . '&amp;what=' . urlencode($Args[9]);
   
     $Args[1]['attachment_common']['text'] = _("Business Card");
   

@@ -17,18 +17,27 @@
  * $Id$
  */
 
-/* Path for SquirrelMail required files. */
-define('SM_PATH','../');
+require_once('../src/validate.php');
+require_once('../functions/date.php');
+require_once('../functions/smtp.php');
+require_once('../functions/display_messages.php');
+require_once('../functions/addressbook.php');
+require_once('../functions/plugin.php');
+require_once('../functions/strings.php');
 
-/* SquirrelMail required files. */
-require_once(SM_PATH . 'include/validate.php');
-require_once(SM_PATH . 'functions/date.php');
-require_once(SM_PATH . 'functions/smtp.php');
-require_once(SM_PATH . 'functions/display_messages.php');
-require_once(SM_PATH . 'functions/addressbook.php');
-require_once(SM_PATH . 'functions/plugin.php');
-require_once(SM_PATH . 'functions/strings.php');
-require_once(SM_PATH . 'functions/html.php');
+
+$session = $_POST['session'];
+$mailbox = $_POST['mailbox'];
+if ( isset($_POST['addrquery']) ) {
+    $addrquery = $_POST['addrquery'];
+}
+if ( isset($_POST['listall']) ) {
+    $listall = $_POST['listall'];
+}
+if ( isset($_POST['backend'] ) ) {
+    $backend = $_POST['backend'];
+}
+
 
 /* Insert hidden data */
 function addr_insert_hidden() {
@@ -88,49 +97,46 @@ if ($javascript_on) {
             '&nbsp;&nbsp;'.
             '<a href="#" onClick="CheckAll(\'B\');">' . _("All") . '</a>';
     }
-    echo html_tag( 'table', '', 'center', '', 'border="0" width="98%"' ) .
-    html_tag( 'tr', '', '', $color[9] ) .
-    html_tag( 'th', '&nbsp;' . $chk_all, 'left' ) .
-    html_tag( 'th', '&nbsp;' . _("Name"), 'left' ) .
-    html_tag( 'th', '&nbsp;' . _("E-mail"), 'left' ) .
-    html_tag( 'th', '&nbsp;' . _("Info"), 'left' );
+    else {
+        $chk_all = '';
+    }
+    echo '<TABLE BORDER="0" WIDTH="98%" ALIGN="center">' .
+           '<TR BGCOLOR="' . $color[9] . '"><TH ALIGN="left">&nbsp;' . $chk_all . '</TH>' .
+          '<TH ALIGN="left">&nbsp;' . _("Name") . '</TH>' .
+          '<TH ALIGN="left">&nbsp;' . _("E-mail") . '</TH>' .
+          '<TH ALIGN="left">&nbsp;' . _("Info") . '</TH>';
+
+
 
     if ($includesource) {
-        echo html_tag( 'th', '&nbsp;' . _("Source"), 'left', '', 'width="10%"' );
+        echo '<TH ALIGN=left WIDTH="10%">&nbsp;' . _("Source"). '</TH>';
     }
 
-    echo "</tr>\n";
+    echo "</TR>\n";
 
     foreach ($res as $row) {
-        $tr_bgcolor = '';
-        $email = AddressBook::full_address($row);
-        if ($line % 2) { $tr_bgcolor = $color[0]; }
-        echo html_tag( 'tr', '', '', $tr_bgcolor, 'nowrap' ) .
-        html_tag( 'td',
+        echo '<tr';
+        if ($line % 2) { echo ' bgcolor="' . $color[0] . '"'; }
+        echo ' nowrap><td nowrap align=center width="5%">' .
              '<input type=checkbox name="send_to_search[T' . $line . ']" value = "' .
-             htmlspecialchars($email) . '">&nbsp;' . _("To") . '&nbsp;' .
+             htmlspecialchars($row['email']) . '">&nbsp;' . _("To") . '&nbsp;' .
              '<input type=checkbox name="send_to_search[C' . $line . ']" value = "' .
-             htmlspecialchars($email) . '">&nbsp;' . _("Cc") . '&nbsp;' .
+             htmlspecialchars($row['email']) . '">&nbsp;' . _("Cc") . '&nbsp;' .
              '<input type=checkbox name="send_to_search[B' . $line . ']" value = "' .
-             htmlspecialchars($email) . '">&nbsp;' . _("Bcc") . '&nbsp;' ,
-        'center', '', 'width="5%" nowrap' ) .
-        html_tag( 'td', '&nbsp;' . htmlspecialchars($row['name']) . '&nbsp;', 'left', '', 'nowrap' ) .
-        html_tag( 'td', '&nbsp;' . htmlspecialchars($row['email']) . '&nbsp;', 'left', '', 'nowrap' ) .
-        html_tag( 'td', '&nbsp;' . htmlspecialchars($row['label']) . '&nbsp;', 'left', '', 'nowrap' );
-
+             htmlspecialchars($row['email']) . '">&nbsp;' . _("Bcc") . '&nbsp;' . 
+             '</td><td nowrap>&nbsp;' . $row['name'] . '&nbsp;</td>' .
+             '<td >' . $row['email'] . '&nbsp;</td>' .
+             '<td nowrap>&nbsp;' . $row['label'] . '&nbsp;</td>';
          if ($includesource) {
-             echo html_tag( 'td', '&nbsp;' . $row['source'] . '&nbsp;', 'left', '', 'nowrap' );
+             echo '<td nowrap>&nbsp;' . $row['source'] . '&nbsp;</td>';
          }
          echo "</tr>\n";
          $line ++;
     }
-    if ($includesource) { $td_colspan = '5'; } else { $td_colspan = '4'; }
-    echo html_tag( 'tr',
-                html_tag( 'td',
-                        '<INPUT TYPE=submit NAME="addr_search_done" VALUE="' .
-                        _("Use Addresses") . '">' ,
-                'center', '', 'colspan="'. $td_colspan .'"' )
-            ) .
+    echo '<TR><TD ALIGN=center COLSPAN=';
+    if ($includesource) { echo '5'; } else { echo '4'; }
+    echo '><INPUT TYPE=submit NAME="addr_search_done" VALUE="' .
+         _("Use Addresses") . '"></TD></TR>' .
          '</TABLE>' .
          '<INPUT TYPE=hidden VALUE=1 NAME="html_addr_search_done">' .
          '</FORM>';
@@ -138,7 +144,6 @@ if ($javascript_on) {
 
 /* --- End functions --- */
 
-global $mailbox;
 if ($compose_new_win == '1') {
     compose_Header($color, $mailbox);
 }
@@ -148,23 +153,21 @@ else {
 /* Initialize addressbook */
 $abook = addressbook_init();
 
+?>
 
-echo '<br>' .
-html_tag( 'table',
-    html_tag( 'tr',
-        html_tag( 'td', '<b>' . _("Address Book Search") . '</b>', 'center', $color[0] )
-    ) ,
-'center', '', 'width="95%" cellpadding="2" cellspacing="2" border="0"' );
+<br>
+<table width="95%" align=center cellpadding=2 cellspacing=2 border=0>
+<tr><td bgcolor="<?php echo $color[0] ?>">
+   <center><b><?php echo _("Address Book Search") ?></b></center>
+</td></tr></table>
 
+<?php
 
 /* Search form */
-echo '<center>' .
-    html_tag( 'table', '', 'center', '', 'border="0"' ) .
-    html_tag( 'tr' ) .
-    html_tag( 'td', '', 'left', '', 'nowrap valign="middle"' ) . "\n" .
-    '<FORM METHOD=post NAME=f ACTION="' . $PHP_SELF .
-    '?html_addr_search=true">' . "\n<CENTER>\n" .
-    '  <nobr><STRONG>' . _("Search for") . "</STRONG>\n";
+echo "<CENTER>\n<TABLE BORDER=0><TR><TD NOWRAP VALIGN=middle>\n" .
+     '<FORM METHOD=post NAME=f ACTION="' . $PHP_SELF .
+     '?html_addr_search=true">' . "\n<CENTER>\n" .
+     '  <nobr><STRONG>' . _("Search for") . "</STRONG>\n";
 addr_insert_hidden();
 if (! isset($addrquery))
     $addrquery = '';
@@ -197,7 +200,7 @@ echo '<INPUT TYPE=submit VALUE="' . _("Search") . '">' .
      '" NAME=listall>' . "\n" .
      '</FORM></center></TD></TR></TABLE>' . "\n";
 addr_insert_hidden();
-echo '</center>';
+echo '</CENTER>';
 do_hook('addrbook_html_search_below');
 /* End search form */
 
@@ -222,10 +225,10 @@ if ($addrquery == '' && empty($listall)) {
             usort($res,'alistcmp');
             addr_display_result($res, false);
         } else {
-            echo html_tag( 'p', '<strong><br>' .
+            echo '<P ALIGN=center><STRONG>' .
                  sprintf(_("Unable to list addresses from %s"), 
-                 $abook->backends[$backend]->sname) . "</strong>\n" ,
-            'center' );
+                     $abook->backends[$backend]->sname) .
+                 "</STRONG></P>\n";
         }
 
     } else {
@@ -247,17 +250,14 @@ else {
         }
 
         if (!is_array($res)) {
-            echo html_tag( 'p', '<b><br>' .
-                             _("Your search failed with the following error(s)") .
-                            ':<br>' . $abook->error . "</b>\n" ,
-                   'center' ) .
-            "\n</BODY></HTML>\n";
+            echo '<P ALIGN=center><B><BR>' .
+                 _("Your search failed with the following error(s)") . ':<br>' .
+                  $abook->error . "</B></P>\n</BODY></HTML>\n";
         } else {
             if (sizeof($res) == 0) {
-                echo html_tag( 'p', '<br><b>' .
-                                 _("No persons matching your search was found") . "</b>\n" ,
-                       'center' ) .
-                "\n</BODY></HTML>\n";
+                echo '<P ALIGN=center><BR><B>' .
+                     _("No persons matching your search was found") .
+                     ".</B></P>\n</BODY></HTML>\n";
             } else {
                 addr_display_result($res);
             }

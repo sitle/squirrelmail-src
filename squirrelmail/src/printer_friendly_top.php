@@ -12,16 +12,11 @@
  * $Id$
  */
 
-/* Path for SquirrelMail required files. */
-define('SM_PATH','../');
-
-/* SquirrelMail required files. */
-require_once(SM_PATH . 'include/validate.php');
-require_once(SM_PATH . 'functions/strings.php');
-require_once(SM_PATH . 'config/config.php');
-require_once(SM_PATH . 'include/load_prefs.php');
-require_once(SM_PATH . 'functions/page_header.php');
-require_once(SM_PATH . 'functions/html.php');
+require_once('../src/validate.php');
+require_once('../functions/strings.php');
+require_once('../config/config.php');
+require_once('../src/load_prefs.php');
+require_once('../functions/page_header.php');
 
 displayHtmlHeader( _("Printer Friendly"),
              "<script language=\"javascript\" type=\"text/javascript\">\n".
@@ -34,17 +29,16 @@ displayHtmlHeader( _("Printer Friendly"),
              "</script>\n", FALSE );
 
 
-echo "<body text='$color[8]' bgcolor='$color[3]' link='$color[7]' vlink='$color[7]' alink='$color[7]'>\n" .
+echo "<body text=\"$color[8]\" bgcolor=\"$color[3]\" link=\"$color[7]\" vlink=\"$color[7]\" alink=\"$color[7]\">\n" .
      //'<table width="100%" height="100%" cellpadding="0" cellspacing="0" border="0"><tr><td valign="middle" align="center">'.
-     html_tag( 'div',
-         '<b>'.
-         '<form>'.
-         '<input type="button" value="' . _("Print") . '" onClick="printPopup()"> '.
-         '<input type="button" value="' . _("Close") . '" onClick="window.parent.close()">'.
-         '</form>'.
-         '</b>',
-     'right' );
+     '<center><b>'.
+     '<form>'.
+     '<input type="button" value="' . _("Print") . '" onClick="printPopup()"> '.
+     '<input type="button" value="' . _("Close Window") . '" onClick="window.parent.close()">'.
+     '</form>'.
+     '</b>'.
      //'</td></tr></table>'.
-     '</body></html>'. "\n";
+     '</center></body>'.
+     "</html>\n";
 
 ?>

@@ -2,7 +2,7 @@
 
 /**
  * sqspell_interface.php
- *
+ * ----------------------
  * Main wrapper for the pop-up.
  *
  * Copyright (c) 1999-2002 The SquirrelMail development team
@@ -22,33 +22,37 @@
  * defaults. Don't change these, * the setuppable stuff is in
  * sqspell_config.php
  */
-$SQSPELL_DIR='plugins/squirrelspell/';
+$SQSPELL_DIR='squirrelspell';
 $SQSPELL_CRYPTO=FALSE;
     
 /**
  * Load the stuff needed from squirrelmail
  */
-
-define('SM_PATH','../../');
-
-/* SquirrelMail required files. */
-require_once(SM_PATH . 'include/validate.php');
-require_once(SM_PATH . 'include/load_prefs.php');
-require_once(SM_PATH . $SQSPELL_DIR . 'sqspell_config.php');
-require_once(SM_PATH . $SQSPELL_DIR . 'sqspell_functions.php');
+chdir('..');
+require_once('../src/validate.php');
+require_once('../src/load_prefs.php');
+require_once("$SQSPELL_DIR/sqspell_config.php");
+require_once("$SQSPELL_DIR/sqspell_functions.php");
     
 /**
  * $MOD is the name of the module to invoke.
  * If $MOD is undefined, use "init", else check for security
  * breaches.
  */
+if(isset($_POST['MOD'])) {
+  $MOD = $_POST['MOD'];
+} elseif (isset($_GET['MOD'])) {
+  $MOD = $_GET['MOD'];
+} 
+
 if (!isset($MOD) || !$MOD){
-    $MOD='init';
+  $MOD='init';
 } else {
-    sqspell_ckMOD($MOD);
+  sqspell_ckMOD($MOD);
 }
 
-/* Include the module. */
-require_once(SM_PATH . $SQSPELL_DIR . "modules/$MOD.mod");
-
+/**
+ * Include the module.
+ */
+require_once("$SQSPELL_DIR/modules/$MOD.mod");
 ?>

@@ -33,7 +33,7 @@ define('SMDB_MYSQL', 1);
 define('SMDB_PGSQL', 2);
 
 require_once('DB.php');
-require_once(SM_PATH . 'config/config.php');
+require_once('../config/config.php');
 
 global $prefs_are_cached, $prefs_cache;
 
@@ -44,8 +44,8 @@ function cachePrefValues($username) {
         return;
     }
 
-    session_unregister('prefs_cache');
-    session_unregister('prefs_are_cached');
+    sqsession_unregister('prefs_cache');
+    sqsession_unregister('prefs_are_cached');
 
     $db = new dbPrefs;
     if(isset($db->error)) {
@@ -63,8 +63,8 @@ function cachePrefValues($username) {
 
     $prefs_are_cached = true;
 
-    session_register('prefs_cache');
-    session_register('prefs_are_cached');
+    sqsession_register($prefs_cache, 'prefs_cache');
+    sqsession_register($prefs_are_cached, 'prefs_are_cached');
 }
 
 class dbPrefs {
@@ -77,7 +77,7 @@ class dbPrefs {
     var $error = NULL;
     var $db_type = SMDB_UNKNOWN;
 
-    var $default = Array('theme_default' => 0,
+    var $default = Array('chosen_theme' => '../themes/default_theme.php',
                          'show_html_default' => '0');
 
     function open() {

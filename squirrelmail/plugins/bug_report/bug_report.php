@@ -16,22 +16,14 @@
  * $Id$
  */
 
-session_start();
-define('SM_PATH','../../');
+chdir('..');
 
-require_once(SM_PATH . 'config/config.php');
-require_once(SM_PATH . 'functions/strings.php');
-require_once(SM_PATH . 'functions/page_header.php');
-require_once(SM_PATH . 'functions/display_messages.php');
-require_once(SM_PATH . 'functions/imap.php');
-require_once(SM_PATH . 'functions/array.php');
-require_once(SM_PATH . 'functions/i18n.php');
-require_once(SM_PATH . 'include/load_prefs.php');
+require_once('../src/validate.php');
+
 displayPageHeader($color, 'None');
 
-
 function Show_Array($array) {
-    $str = '';
+    $str = "";
     foreach ($array as $key => $value) {
         if ($key != 0 || $value != '') {
         $str .= "    * $key = $value\n";
@@ -44,7 +36,8 @@ function Show_Array($array) {
 }
 
 $browser = get_browser();
-$body_top = "I subscribe to the squirrelmail-users mailing list.\n" .
+$body_top = "";
+$body_top .= "I subscribe to the squirrelmail-users mailing list.\n" .
                 "  [ ]  True - No need to CC me when replying\n" .
                 "  [ ]  False - Please CC me when replying\n" .
                 "\n" .
@@ -59,7 +52,7 @@ $body_top = "I subscribe to the squirrelmail-users mailing list.\n" .
                 "(Optional) I got really bored and here's a fix:\n\n\n" .
                 "----------------------------------------------\n" .
             "\nMy browser information:\n" .
-            "  $HTTP_USER_AGENT\n" .
+            "  ".$_SERVER['HTTP_USER_AGENT'] ."\n" .
             "  get_browser() information (List)\n" .
             Show_Array((array) $browser) .
             "\nMy web server information:\n" .
@@ -70,7 +63,7 @@ $body_top = "I subscribe to the squirrelmail-users mailing list.\n" .
             "  Version:  $version\n" .
             "  Plugins (List)\n" .
             Show_Array($plugins);
-if (isset($ldap_server) && $ldap_server[0] && ! extension_loaded('ldap')) {
+if (isset($ldap_server[0]) && $ldap_server[0] && ! extension_loaded('ldap')) {
     $warning = 1;
     $warnings['ldap'] = "LDAP server defined in SquirrelMail config, " .
         "but the module is not loaded in PHP";
@@ -80,7 +73,8 @@ if (isset($ldap_server) && $ldap_server[0] && ! extension_loaded('ldap')) {
     $corrections['ldap'][] = "Reconfigure SquirrelMail to not use LDAP";
 }
 
-$body = "\nMy IMAP server information:\n" .
+$body = "";
+$body .= "\nMy IMAP server information:\n" .
             "  Server type:  $imap_server_type\n";
 $imap_stream = fsockopen ($imapServerAddress, $imapPort, $error_number, $error_string);
 $server_info = fgets ($imap_stream, 1024);
@@ -107,9 +101,10 @@ if ($imap_stream) {
     $corrections['imap'][] = "Make sure the mail server is running IMAP, not POP";
     $corrections['imap'][] = "Make sure the server responds to port $imapPort";
 }
-$warning_html = '';
+
+$warning_html = "";
 $warning_num = 0;
-if (isset($warning) && $warning) {
+if (isset($warning)) {
     foreach ($warnings as $key => $value) {
         if ($warning_num == 0) {
             $body_top .= "WARNINGS WERE REPORTED WITH YOUR SETUP:\n";

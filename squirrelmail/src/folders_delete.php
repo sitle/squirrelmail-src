@@ -12,20 +12,27 @@
  * $Id$
  */
 
-/* Path for SquirrelMail required files. */
-define('SM_PATH','../');
 
-/* SquirrelMail required files. */
-require_once(SM_PATH . 'include/validate.php');
-require_once(SM_PATH . 'functions/imap.php');
-require_once(SM_PATH . 'functions/array.php');
-require_once(SM_PATH . 'functions/tree.php');
-require_once(SM_PATH . 'functions/display_messages.php');
+require_once('../src/validate.php');
+require_once('../functions/imap.php');
+require_once('../functions/array.php');
+require_once('../functions/tree.php');
+require_once('../functions/display_messages.php');
 
 /*
 *  Incoming values:
 *     $mailbox - selected mailbox from the form
 */
+
+/* globals */
+$username = $_SESSION['username'];
+$key = $_COOKIE['key'];
+$delimiter = $_SESSION['delimiter'];
+$onetimepad = $_SESSION['onetimepad'];
+
+$mailbox = $_POST['mailbox'];
+
+/* end globals */
 
 if ($mailbox == '') {
     displayPageHeader($color, 'None');
@@ -37,7 +44,7 @@ if ($mailbox == '') {
 
 $imap_stream = sqimap_login($username, $key, $imapServerAddress, $imapPort, 0);
 $boxes = sqimap_mailbox_list ($imap_stream);
-global $delimiter, $delete_folder;
+global $delete_folder;
 
 if (substr($mailbox, -1) == $delimiter)
     $mailbox_no_dm = substr($mailbox, 0, strlen($mailbox) - 1);

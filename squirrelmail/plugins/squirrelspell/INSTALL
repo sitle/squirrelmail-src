@@ -31,7 +31,9 @@ This is an options commented sqspell_config.php
     **/
 
     /* Just for poor wretched souls with E_ALL. :) */
-    global $username, $data_dir;
+    global $data_dir;
+
+    $username = $_SESSION['username'];
 
     /**
        SPELL-CHECKING APPLICATIONS:

@@ -236,12 +236,14 @@ msgid "Date"
 msgstr "Datum"
 
 #: squirrelmail/src/compose.php:547
+#, fuzzy
 msgid "Draft Saved"
 msgstr "Email ulo¾en do Konceptù"
 
 #: squirrelmail/src/compose.php:550
+#, fuzzy
 msgid "Your Message has been sent"
-msgstr "Zpráva byla odeslána"
+msgstr "zpráva byla zmìnìna"
 
 #: squirrelmail/plugins/listcommands/mailout.php:50
 #: squirrelmail/src/compose.php:565 squirrelmail/src/read_body.php:686
@@ -307,8 +309,9 @@ msgid "Receipt"
 msgstr "Doruèenka"
 
 #: squirrelmail/src/compose.php:738
+#, fuzzy
 msgid "On read"
-msgstr "Pøi pøeètení"
+msgstr "Nepøeètené"
 
 #: squirrelmail/src/compose.php:739
 msgid "On Delivery"
@@ -364,8 +367,9 @@ msgid "Download this as a file"
 msgstr "Ulo¾it jako soubor"
 
 #: squirrelmail/src/download.php:70
+#, fuzzy
 msgid "Viewing a message attachment"
-msgstr "Náhled pøilo¾eného souboru"
+msgstr "Náhled pøilo¾eného obrázku"
 
 #: squirrelmail/plugins/calendar/event_create.php:112
 #: squirrelmail/plugins/calendar/event_delete.php:32
@@ -377,8 +381,9 @@ msgid "Date:"
 msgstr "Datum:"
 
 #: squirrelmail/src/download.php:124
+#, fuzzy
 msgid "Cc:"
-msgstr "Kopie:"
+msgstr "Kopie"
 
 #: squirrelmail/src/download.php:132
 msgid "Bcc:"
@@ -460,8 +465,9 @@ msgid "Rename a Folder"
 msgstr "Pøejmenovat slo¾ku"
 
 #: squirrelmail/src/folders.php:142 squirrelmail/src/folders.php:179
+#, fuzzy
 msgid "Select a folder"
-msgstr "Vybrat slo¾ku"
+msgstr "Pøejmenovat slo¾ku"
 
 #: squirrelmail/src/folders.php:160
 msgid "Rename"
@@ -579,8 +585,9 @@ msgstr "Náhled pøilo¾eného obrázku"
 #: squirrelmail/plugins/mail_fetch/options.php:137
 #: squirrelmail/plugins/mail_fetch/options.php:214
 #: squirrelmail/src/left_main.php:73 squirrelmail/src/search.php:310
+#, fuzzy
 msgid "INBOX"
-msgstr "Doruèená po¹ta"
+msgstr "Pouze slo¾ka Doruèená po¹ta"
 
 #: squirrelmail/src/left_main.php:97
 msgid "empty"
@@ -595,9 +602,9 @@ msgid "Login"
 msgstr "Pøihlásit"
 
 #: squirrelmail/src/login.php:119
-#, c-format
+#, fuzzy, c-format
 msgid "%s Logo"
-msgstr "%s Logo"
+msgstr "%s Pøihlásit"
 
 #: squirrelmail/src/login.php:122
 #, c-format
@@ -624,8 +631,9 @@ msgid "Password:"
 msgstr "Heslo:"
 
 #: squirrelmail/src/move_messages.php:94
+#, fuzzy
 msgid "<No subject>"
-msgstr "<¾ádný pøedmìt>"
+msgstr "(¾ádný pøedmìt)"
 
 #: squirrelmail/src/move_messages.php:162
 #: squirrelmail/src/move_messages.php:206
@@ -1145,8 +1153,9 @@ msgid "Same as server"
 msgstr "Stejnì jako server"
 
 #: squirrelmail/src/options_personal.php:131
+#, fuzzy
 msgid "Timezone Options"
-msgstr "Èasové pásmo"
+msgstr "Mo¾nosti - Podpis"
 
 #: squirrelmail/src/options_personal.php:136
 msgid "Your current timezone"
@@ -1285,12 +1294,14 @@ msgid "View Printable Version"
 msgstr "Zobrazit verzi pro tisk"
 
 #: squirrelmail/src/read_body.php:166
+#, fuzzy
 msgid "Your message"
-msgstr "Va¹e zpráva"
+msgstr "zprávy"
 
 #: squirrelmail/src/read_body.php:169
+#, fuzzy
 msgid "Sent:"
-msgstr "Odeslána:"
+msgstr "Odeslat"
 
 #: squirrelmail/src/read_body.php:171
 #, c-format
@@ -1298,8 +1309,9 @@ msgid "Was displayed on %s"
 msgstr "Byla zobrazena %s"
 
 #: squirrelmail/src/read_body.php:203
+#, fuzzy
 msgid "Read:"
-msgstr "Pøeètena:"
+msgstr "Pøeètené"
 
 #: squirrelmail/src/read_body.php:354
 msgid "Viewing Full Header"
@@ -1378,30 +1390,36 @@ msgid "Contact your administrator for help."
 msgstr "O pomoc kontaktujte va¹eho administrátora "
 
 #: squirrelmail/src/search.php:242
+#, fuzzy
 msgid "edit"
-msgstr "editovat"
+msgstr "Editovat"
 
 #: squirrelmail/src/search.php:249 squirrelmail/src/search.php:288
+#, fuzzy
 msgid "search"
-msgstr "hledat"
+msgstr "Hledat"
 
 #: squirrelmail/src/search.php:252
+#, fuzzy
 msgid "delete"
-msgstr "odstranit"
+msgstr "Odstranit"
 
 #: squirrelmail/src/search.php:263
 msgid "Recent Searches"
 msgstr "Poslední hledání"
 
 #: squirrelmail/src/search.php:280
+#, fuzzy
 msgid "save"
-msgstr "ulo¾it"
+msgstr "Ulo¾it"
 
 #: squirrelmail/src/search.php:291
+#, fuzzy
 msgid "forget"
-msgstr "zapomenout"
+msgstr "více"
 
 #: squirrelmail/src/search.php:300
+#, fuzzy
 msgid "Current Search"
 msgstr "Aktuální slo¾ka"
 
@@ -1414,10 +1432,12 @@ msgid "Everywhere"
 msgstr "V¹ude"
 
 #: squirrelmail/src/search.php:367 squirrelmail/src/search.php:396
+#, fuzzy
 msgid "Search Results"
-msgstr "Výsledky hledání"
+msgstr "Hledat"
 
 #: squirrelmail/src/search.php:387
+#, fuzzy
 msgid "No Messages found"
 msgstr "Nebyly nalezeny ¾ádné zprávy"
 
@@ -1431,7 +1451,7 @@ msgstr "Odhlá¹ení probìhlo úspì¹nì"
 
 #: squirrelmail/src/signout.php:80
 msgid "Click here to log back in."
-msgstr "Pro nové pøihlá¹ení kliknìte zde "
+msgstr "Pro nové pøihlá¹ení kliknìtì zde "
 
 #: squirrelmail/src/vcard.php:30
 msgid "Viewing a Business Card"
@@ -1784,6 +1804,7 @@ msgid "Could not create initial preference file!"
 msgstr "Nemohu vytvoøit poèáteèní soubor s preferencemi!"
 
 #: squirrelmail/functions/imap_general.php:133
+#, fuzzy
 msgid ""
 "Please contact your system administrator and report the following error:"
 msgstr "Kontaktujte nás na adrese info@servery.cz a nahla¹te tuto chybu"
@@ -1800,8 +1821,9 @@ msgstr "Chyba: nelze dokonèit po¾adovaný úkol"
 
 #: squirrelmail/functions/imap_general.php:166
 #: squirrelmail/functions/imap_general.php:177
+#, fuzzy
 msgid "Query:"
-msgstr "Dotaz:"
+msgstr "Kvartálnì"
 
 #: squirrelmail/functions/imap_general.php:168
 #: squirrelmail/plugins/filters/filters.php:91
@@ -1886,8 +1908,9 @@ msgid "messages"
 msgstr "zprávy"
 
 #: squirrelmail/functions/imap_search.php:203
+#, fuzzy
 msgid "Folder:"
-msgstr "Slo¾ka:"
+msgstr "Slo¾ky"
 
 #: squirrelmail/functions/mailbox_display.php:156
 msgid "A"
@@ -1972,12 +1995,14 @@ msgstr ""
 "this message to the developers knowledgebase!"
 
 #: squirrelmail/functions/mime.php:443
+#, fuzzy
 msgid "Submit message"
-msgstr "Odeslat zprávu"
+msgstr "Zobrazit zprávu"
 
 #: squirrelmail/functions/mime.php:445
+#, fuzzy
 msgid "Command:"
-msgstr "Pøíkaz:"
+msgstr "Otevírání probìhlo neúspì¹nì"
 
 #: squirrelmail/functions/mime.php:446
 msgid "Response:"
@@ -2000,12 +2025,13 @@ msgid "Hide Unsafe Images"
 msgstr "Schovat nebezpeèné obrázky"
 
 #: squirrelmail/functions/mime.php:651
+#, fuzzy
 msgid "View Unsafe Images"
-msgstr "Zobrazit nebezpeèné obrázky"
+msgstr "Zobrazit zprávu"
 
 #: squirrelmail/functions/mime.php:680
 msgid "Attachments"
-msgstr "Pøílohy"
+msgstr "Pøilohy"
 
 #: squirrelmail/functions/mime.php:714 squirrelmail/functions/mime.php:792
 msgid "download"
@@ -3266,20 +3292,22 @@ msgid "Local Media File:"
 msgstr ""
 
 #: squirrelmail/plugins/newmail/newmail_opt.php:137
+#, fuzzy
 msgid "Current File:"
-msgstr "Aktuální soubor:"
+msgstr "Aktuální slo¾ka"
 
 #: squirrelmail/plugins/newmail/newmail.php:20
 msgid "New Mail"
-msgstr "Nová po¹ta"
+msgstr ""
 
 #: squirrelmail/plugins/newmail/newmail.php:27
+#, fuzzy
 msgid "SquirrelMail Notice:"
-msgstr "SquirrelMail poznámka:"
+msgstr "SquirrelMail verze %s"
 
 #: squirrelmail/plugins/newmail/newmail.php:31
 msgid "You have new mail!"
-msgstr "Máte novou zprávu!"
+msgstr ""
 
 #: squirrelmail/plugins/newmail/setup.php:78
 msgid "NewMail Options"

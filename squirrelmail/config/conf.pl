@@ -296,10 +296,6 @@ if ( !$allow_thread_sort ) {
 if ( !$allow_server_sort ) {
     $allow_server_sort = 'false';
 }
-if ( !$uid_support ) {
-    $uid_support = 'true';
-}
-
 if ( !$allow_charset_search ) {
     $allow_charset_search = 'true';
 }
@@ -438,7 +434,6 @@ while ( ( $command ne "q" ) && ( $command ne "Q" ) ) {
             print "13. Allow editing of name     : $WHT$edit_name$NRM\n";
         }
         print "14. Allow server charset search : $WHT$allow_charset_search$NRM\n";
-        print "15. Enable UID support : $WHT$uid_support$NRM\n";
         print "\n";
         print "R   Return to Main Menu\n";
     } elsif ( $menu == 5 ) {
@@ -621,7 +616,6 @@ while ( ( $command ne "q" ) && ( $command ne "Q" ) ) {
             elsif ( $command == 12 ) { $allow_server_sort        = command313(); }
             elsif ( $command == 13 ) { $edit_name                = command311(); }
             elsif ( $command == 14 ) { $allow_charset_search     = command314(); }
-            elsif ( $command == 15 ) { $uid_support              = command315(); }
         } elsif ( $menu == 5 ) {
             if ( $command == 1 ) { command41(); }
             elsif ( $command == 2 ) { $theme_css = command42(); }
@@ -1803,25 +1797,6 @@ sub command314 {
     return $allow_charset_search;
 }
 
-sub command315 {
-    print "This option allows you to enable unique identifier (UID) support.\n";
-    print "\n";
-
-    if ( lc($uid_support) eq "true" ) {
-        $default_value = "y";
-    } else {
-        $default_value = "n";
-    }
-    print "Enable Unique identifier (UID) support? (y/n) [$WHT$default_value$NRM]: $WHT";
-    $uid_support = <STDIN>;
-    if ( ( $uid_support =~ /^y\n/i ) || ( ( $uid_support =~ /^\n/ ) && ( $default_value eq "y" ) ) ) {
-        $uid_support = "true";
-    } else {
-        $uid_support = "false";
-    }
-    return $uid_support;
-}
-
 
 sub command41 {
     print "\nNow we will define the themes that you wish to use.  If you have added\n";
@@ -2404,9 +2379,7 @@ sub save_data {
 	# boolean
         print CF "\$allow_server_sort        = $allow_server_sort;\n";
         # boolean
-        print CF "\$allow_charset_search     = $allow_charset_search;\n";
-        # boolean
-        print CF "\$uid_support              = $uid_support;\n";
+        print CF "\$allow_charset_search        = $allow_charset_search;\n";
         print CF "\n";
 	
 	# all plugins are strings
@@ -2417,9 +2390,6 @@ sub save_data {
 
 	# strings
         print CF "\$theme_css = '$theme_css';\n";
-	if ( $theme_default eq '' ) { $theme_default = '0'; }
-        print CF "\$theme_default = $theme_default;\n";
-
         for ( $count = 0 ; $count <= $#theme_name ; $count++ ) {
             print CF "\$theme[$count]['PATH'] = '$theme_path[$count]';\n";
             print CF "\$theme[$count]['NAME'] = '$theme_name[$count]';\n";
@@ -2477,8 +2447,6 @@ sub save_data {
         print CF "\$prefs_key_field = '$prefs_key_field';\n";
 	# string
         print CF "\$prefs_val_field = '$prefs_val_field';\n";
-	# boolean
-	print CF "\$no_list_for_subscribe = '$no_list_for_subscribe';\n";
         print CF "\n";
 
         print CF "/**\n";

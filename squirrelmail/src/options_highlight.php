@@ -11,17 +11,39 @@
  * $Id$
  */
 
-/* Path for SquirrelMail required files. */
-define('SM_PATH','../');
+require_once('../src/validate.php');
+require_once('../functions/display_messages.php');
+require_once('../functions/imap.php');
+require_once('../functions/array.php');
+require_once('../functions/plugin.php');
+require_once('../functions/strings.php');
 
-/* SquirrelMail required files. */
-require_once(SM_PATH . 'include/validate.php');
-require_once(SM_PATH . 'functions/display_messages.php');
-require_once(SM_PATH . 'functions/imap.php');
-require_once(SM_PATH . 'functions/array.php');
-require_once(SM_PATH . 'functions/plugin.php');
-require_once(SM_PATH . 'functions/strings.php');
-require_once(SM_PATH . 'functions/html.php');
+/* get globals */
+if (isset($_GET['action'])) {
+    $action = $_GET['action'];
+}
+if (isset($_GET['theid'])) {
+    $theid = $_GET['theid'];
+}
+if (isset($_GET['identname'])) {
+    $identname = $_GET['identname'];
+}
+if (isset($_GET['newcolor_choose'])) {
+    $newcolor_choose = $_GET['newcolor_choose'];
+}
+if (isset($_GET['newcolor_input'])) {
+    $newcolor_input = $_GET['newcolor_input'];
+}
+if (isset($_GET['color_type'])) {
+    $color_type = $_GET['color_type'];
+}
+if (isset($_GET['match_type'])) {
+    $match_type = $_GET['match_type'];
+}
+if (isset($_GET['value'])) {
+    $value = $_GET['value'];
+}
+/* end of get globals */
 
 function oh_opt( $val, $sel, $tit ) {
     echo "<option value=\"$val\"";
@@ -61,56 +83,30 @@ if ($action == 'delete' && isset($theid)) {
     $message_highlight_list[$theid]['match_type'] = $match_type;
 }
 displayPageHeader($color, 'None');
+?>
+<br>
+<table width="95%" align="center" border="0" cellpadding="2" cellspacing="0"><tr><td bgcolor="<?php echo $color[0] ?>">
+    <center><b><?php echo _("Options") . ' - ' . _("Message Highlighting"); ?></b></center>
+</td></tr></table>
 
-echo
-html_tag( 'table', "\n" .
-    html_tag( 'tr', "\n" .
-        html_tag( 'td', '<center><b>' . _("Options") . ' - ' . _("Message Highlighting") . '</b></center>', 'left')
-    ),
-    'center', $color[9], 'width="95% border="0" cellpadding="1" cellspacing="0"' ) . "<br>\n" .
-html_tag( 'table', '', '', '', 'width="100% border="0" cellpadding="1" cellspacing="0"' ) . 
-     html_tag( 'tr' ) . "\n" .
-         html_tag( 'td', '', 'left' );
-
-echo '<center>[<a href="options_highlight.php?action=add">' . _("New") . '</a>]'.
+<?php
+echo '<br><center>[<a href="options_highlight.php?action=add">' . _("New") . '</a>]'.
         ' - [<a href="options.php">'._("Done").'</a>]</center><br>'."\n";
 if (count($message_highlight_list) >= 1) {
-    echo html_tag( 'table', '', 'center', '', 'width="80% border="0" cellpadding="3" cellspacing="0"' ) . "\n";
+    echo '<table border="0" cellpadding="3" cellspacing="0" align="center" width="80%">'."\n";
     for ($i=0; $i < count($message_highlight_list); $i++) {
-        $match_type = '';
-        switch ($message_highlight_list[$i]['match_type'] ) {
-            case 'from' :
-                $match_type = _("From");
-            break;
-            case 'to' :
-                $match_type = _("To");
-            break;
-            case 'cc' :
-                $match_type = _("Cc");
-            break;
-            case 'to_cc' :
-                $match_type = _("To or Cc");
-            break;
-            case 'subject' :
-                $match_type = _("subject");
-            break;
-        }
-
-        echo html_tag( 'tr',
-                    html_tag( 'td',
-                        '<small>[<a href="options_highlight.php?action=edit&amp;theid=' . $i . '">' .
-                        _("Edit") .
-                        '</a>]&nbsp;[<a href="options_highlight.php?action=delete&amp;theid='.
-                        $i . '">' . _("Delete") . '</a>]</small>' ,
-                    'left', $color[4], 'width="20%" nowrap' ) .
-                    html_tag( 'td',
-                        htmlspecialchars($message_highlight_list[$i]['name']) ,
-                    'left' ) .
-                    html_tag( 'td',
-                        $match_type . ' = ' .
-                        htmlspecialchars($message_highlight_list[$i]['value']) ,
-                    'left' ) ,
-                '', $message_highlight_list[$i]['color'] ) . "\n";
+        echo '<tr bgcolor="' . $message_highlight_list[$i]['color'] . '">'.
+                "<td width=\"20%\" bgcolor=\"$color[4]\" nowrap>".
+                "<small>[<a href=\"options_highlight.php?action=edit&amp;theid=$i\">".
+            _("Edit") .
+            '</a>]&nbsp;[<a href="options_highlight.php?action=delete&amp;theid='.
+            $i . '">' . _("Delete") . '</a>]</small>'.
+            '</td><td>'.
+            htmlspecialchars($message_highlight_list[$i]['name']) .
+            '</td><td>'.
+            $message_highlight_list[$i]['match_type'] . ' = ' .
+            htmlspecialchars($message_highlight_list[$i]['value']).
+            '</td></tr>';
     }
     echo "</table>\n".
         "<br>\n";
@@ -276,41 +272,20 @@ if ($action == 'edit' || $action == 'add') {
             }
     }
     }
-
-    if (isset($message_highlight_list[$theid]['color'])) {
-        $current_color = $message_highlight_list[$theid]['color'];
-    }
-    else {
-        $current_color = '63aa7f';
-    }
-
-    for($x = 0; $x < 5; $x++) {
-        for($y = 0; $y < 19; $y++) {
-            $gridindex = "$y,$x";
-            $gridcolor = $new_color_list[$gridindex];
-            if ($gridcolor == $current_color) {
-                $pre_defined_color = 1;
-                break;
-            }
-        }
-    }
-
     if (!isset($message_highlight_list[$theid]['color']))
         $selected_choose = ' checked';
-    else if ($pre_defined_color)
-        $selected_predefined = ' checked';
     else if ($selected_choose == '')
         $selected_input = ' checked';
 
     echo '<form name="f" action="options_highlight.php">' . "\n";
     echo '<input type="hidden" value="save" name="action">' . "\n";
     echo '<input type="hidden" value="'.$theid.'" name="theid">' . "\n";
-    echo html_tag( 'table', '', 'center', '', 'width="80%" cellpadding="3" cellspacing="0" border="0"' ) . "\n";
-    echo html_tag( 'tr', '', '', $color[0] ) . "\n";
-    echo html_tag( 'td', '', 'right', '', 'nowrap' ) . "<b>\n";
+    echo '<table width="80%" align="center" cellpadding="3" cellspacing="0" border="0">' . "\n";
+    echo "   <tr bgcolor=\"$color[0]\">\n";
+    echo "      <td align=\"right\" nowrap><b>\n";
     echo _("Identifying name") . ":";
     echo '      </b></td>' . "\n";
-    echo html_tag( 'td', '', 'left' ) . "\n";
+    echo '      <td>' . "\n";
     if (isset($message_highlight_list[$theid]['name']))
         $disp = $message_highlight_list[$theid]['name'];
     else
@@ -319,10 +294,12 @@ if ($action == 'edit' || $action == 'add') {
     echo "         <input type=\"text\" value=\"".$disp."\" name=\"identname\">";
     echo "      </td>\n";
     echo "   </tr>\n";
-    echo html_tag( 'tr', html_tag( 'td', '<small><small>&nbsp;</small></small>', 'left' ) ) ."\n";
-    echo html_tag( 'tr', '', '', $color[0] ) . "\n";
-    echo html_tag( 'td', '<b>'. _("Color") . ':</b>', 'right' );
-    echo html_tag( 'td', '', 'left' );
+    echo '   <tr><td><small><small>&nbsp;</small></small></td></tr>' . "\n";
+    echo "   <tr bgcolor=\"$color[0]\">\n";
+    echo '      <td align="right"><b>' . "\n";
+    echo _("Color") . ':';
+    echo "      </b></td>\n";
+    echo '      <td>' . "\n";
     echo "         <input type=\"radio\" name=color_type value=1$selected_choose> &nbsp;<select name=newcolor_choose>\n";
     echo "            <option value=\"$color_list[0]\"$selected0>" . _("Dark Blue") . "\n";
     echo "            <option value=\"$color_list[1]\"$selected1>" . _("Dark Green") . "\n";
@@ -346,26 +323,31 @@ if ($action == 'edit' || $action == 'add') {
     echo "   </tr>\n";
 
     # Show grid of color choices
-    echo html_tag( 'tr', '', '', $color[0] ) . "\n";
-    echo html_tag( 'td', '', 'left', '', 'colspan="2"' );
-    echo html_tag( 'table', '', 'center', '', 'border=0 cellpadding="2" cellspacing="1"' ) . "\n";
-
+    echo "<tr bgcolor=\"$color[0]\"><td colspan='2'>\n";
+    echo "<table border=0 cellpadding=\"2\" align=\"center\" cellspacing=\"1\">\n";
+    if (isset($message_highlight_list[$theid]['color'])) {
+        $current_color = $message_highlight_list[$theid]['color'];
+    }
+    else {
+        $current_color = '63aa7f';
+    }
     for($x = 0; $x < 5; $x++) {
-        echo html_tag( 'tr' ) . "\n";
+        echo "<tr>\n";
         for($y = 0; $y < 19; $y++) {
         $gridindex = "$y,$x";
         $gridcolor = $new_color_list[$gridindex];
-        $selected = ($gridcolor == $current_color) ? ' checked' : '' ;
-        echo html_tag( 'td', '<input type="radio" name="color_type" value="#' . $gridcolor .'"' . $selected . '>', 'left', $gridcolor, 'colspan="2"' );
+        $selected = ($gridcolor == $current_color)?'CHECKED':'' ;
+        echo "<td bgcolor=\"#$gridcolor\"><input type='radio' name=color_type value='#$gridcolor' $selected>\n";
+        echo "</td>\n";
         }
         echo "</tr>\n";
     }
     echo "</table>\n";
     echo "</td></tr>\n";
 
-    echo html_tag( 'tr', html_tag( 'td', '<small><small>&nbsp;</small></small>', 'left' ) ) . "\n";
-    echo html_tag( 'tr', '', '', $color[0] ) . "\n";
-    echo html_tag( 'td', '', 'center', '', 'colspan="2"' ) . "\n";
+    echo '   <tr><td><small><small>&nbsp;</small></small></td></tr>' . "\n";
+    echo "   <tr bgcolor=\"$color[0]\">\n";
+    echo '      <td align="center" colspan=2>' . "\n";
     echo "         <select name=match_type>\n";
     oh_opt( 'from',
             ($message_highlight_list[$theid]['match_type'] == 'from'),

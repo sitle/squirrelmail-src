@@ -25,22 +25,42 @@
  * $Id$
  */
 
-/* Path for SquirrelMail required files. */
-define('SM_PATH','../../');
-
-/* SquirrelMail required files. */
-require_once(SM_PATH . 'include/validate.php');
-require_once(SM_PATH . 'functions/page_header.php');
-require_once(SM_PATH . 'functions/imap.php');
-require_once(SM_PATH . 'include/load_prefs.php');
-require_once(SM_PATH . 'plugins/filters/filters.php');
+   chdir ('..');
+   require_once('../src/validate.php');
+   require_once('../functions/page_header.php');
+   require_once('../functions/imap.php');
+   require_once('../src/load_prefs.php');
 
    global $AllowSpamFilters;
 
    displayPageHeader($color, 'None');
 
-   if (isset($filter_submit)) {
-      if (!isset($theid)) $theid = 0;
+   $username = $_SESSION['username'];
+   $key = $_COOKIE['key'];
+   $onetimepad = $_SESSION['onetimepad'];
+   $delimiter = $_SESSION['delimiter'];
+   if(isset($_GET['theid'])) {
+       $theid = $_GET['theid'];
+   }
+   if(isset($_POST['theid'])) {
+       $theid = $_POST['theid'];
+   }
+   if(isset($_GET['action'])) {
+       $action = $_GET['action'];
+   }
+
+   if (isset($_POST['filter_submit'])) {
+      if(isset($_GET['theid'])) {
+          $theid = $_GET['theid'];
+      } elseif (isset($_POST['theid'])) {
+          $theid = $_POST['theid'];
+      } else {
+          $theid = 0;
+      }
+      $filter_what   = $_POST['filter_what'];
+      $filter_where  = $_POST['filter_where'];
+      $filter_folder = $_POST['filter_folder'];
+
       $filter_what = ereg_replace(",", " ", $filter_what);
       $filter_what = str_replace("\\\\", "\\", $filter_what);
       $filter_what = str_replace("\\\"", "\"", $filter_what);
@@ -60,63 +80,62 @@ require_once(SM_PATH . 'plugins/filters/filters.php');
       filter_swap($theid, $theid - 1);
    } elseif (isset($action) && $action == 'move_down') {
       filter_swap($theid, $theid + 1);
-   } elseif (isset($user_submit)) {
+   } elseif (isset($_POST['user_submit'])) {
+       setPref($data_dir, $username, 'filters_user_scan', $_POST['filters_user_scan_set']);
        echo "<br><center><b>"._("Saved Scan type")."</b></center>\n";
-       setPref($data_dir, $username, 'filters_user_scan', $filters_user_scan_set);
    }
 
    $filters = load_filters();
    $filters_user_scan = getPref($data_dir, $username, 'filters_user_scan');
 
-   echo html_tag( 'table',
-            html_tag( 'tr',
-                html_tag( 'td',
-                    '<center><b>' . _("Options") . ' -  ' . _("Message Filtering") . '</b></center>' ,
-                'left', $color[0] )
-            ) ,
-         'center', '', 'width="95%" border="0" cellpadding="2" cellspacing="0"' ) .
+   echo '<br>' .
+        '<table width=95% align=center border=0 cellpadding=2 cellspacing=0>'.
+        "<tr><td bgcolor=\"$color[0]\">".
+        '<center><b>' . _("Options") . ' -  ' . _("Message Filtering") . '</b></center>'.
+        '</td></tr></table>'.
 
         '<br><form method=post action="options.php">'.
         '<center>'.
-        html_tag( 'table', '', '', '', 'border="0" cellpadding="2" cellspacing="0"' ) .
-            html_tag( 'tr' ) .
-                html_tag( 'th', _("What to Scan:"), 'right', '', 'nowrap' ) .
-                html_tag( 'td', '', 'left' ) .
-            '<select name="filters_user_scan_set">'.
+        '<table cellpadding=2 cellspacing=0 border=0>'.
+        '<tr>'.
+            '<th align=right nowrap>' . _("What to Scan:") . '</th>'.
+            '<td><select name="filters_user_scan_set">'.
             '<option value=""';
     if ($filters_user_scan == '') {
-        echo ' selected';
+        echo ' SELECTED';
     }
     echo '>' . _("All messages") . '</option>'.
             '<option value="new"';
     if ($filters_user_scan == 'new') {
-        echo ' selected';
+        echo ' SELECTED';
     }
     echo '>' . _("Only unread messages") . '</option>' .
             '</select>'.
         '</td>'.
-        html_tag( 'td', '<input type=submit name="user_submit" value="' . _("Save") . '">', 'left' ) .
+        '<td><input type=submit name="user_submit" value="' . _("Save") . '"></td></tr>'.
         '</table>'.
         '</center>'.
         '</form>'.
 
-        html_tag( 'div', '[<a href="options.php?action=add">' . _("New") .
-            '</a>] - [<a href="../../src/options.php">' . _("Done") . '</a>]' ,
-        'center' ) . '<br>';
+        '<center>[<a href="options.php?action=add">' . _("New") .
+        '</a>] - [<a href="../../src/options.php">' . _("Done") . '</a>]</center><br>';
 
     if (isset($action) && ($action == 'add' || $action == 'edit')) {
+        $username = $_SESSION['username'];
+        $key = $_COOKIE['key'];
+
         $imapConnection = sqimap_login($username, $key, $imapServerAddress, $imapPort, 0);
         $boxes = sqimap_mailbox_list($imapConnection);
         sqimap_logout($imapConnection);
         if ( !isset($theid) ) {
             $theid = count($filters);
         }
-        echo html_tag( 'div', '', 'center' ) .
+        echo '<center>'.
              '<form action="options.php" method=post>'.
-             html_tag( 'table', '', '', '', 'border="0" cellpadding="2" cellspacing="0"' ) .
-             html_tag( 'tr' ) .
-                html_tag( 'td', _("Match:"), 'left' ) .
-                html_tag( 'td', '', 'left' ) .
+             '<table cellpadding=2 cellspacing=0 border=0>'.
+             '<tr>'.
+                '<td>' . _("Match:") . '</td>'.
+                '<td>'.
                     '<select name=filter_where>';
 
         $L = isset($filters[$theid]['where']);
@@ -142,9 +161,11 @@ require_once(SM_PATH . 'plugins/filters/filters.php');
         echo         '</select>'.
                 '</td>'.
             '</tr>'.
-            html_tag( 'tr' ) .
-                html_tag( 'td', _("Contains:"), 'right' ) .
-                html_tag( 'td', '', 'left' ) .
+            '<tr>'.
+                '<td align=right>'.
+                    _("Contains:").
+                '</td>'.
+                '<td>'.
                     '<input type=text size=32 name=filter_what value="';
         if (isset($filters[$theid]['what'])) {
             echo $filters[$theid]["what"];
@@ -152,9 +173,11 @@ require_once(SM_PATH . 'plugins/filters/filters.php');
         echo '">'.
                 '</td>'.
             '</tr>'.
-            html_tag( 'tr' ) .
-                html_tag( 'td', _("Move to:"), 'left' ) .
-                html_tag( 'td', '', 'left' ) .
+            '<tr>'.
+                '<td>'.
+                    _("Move to:").
+                '</td>'.
+                '<td>'.
                     '<tt>'.
                     '<select name=filter_folder>';
 
@@ -177,28 +200,21 @@ require_once(SM_PATH . 'plugins/filters/filters.php');
             '<input type=submit name=filter_submit value=' . _("Submit") . '>'.
             "<input type=hidden name=theid value=$theid>".
             '</form>'.
-            '</div>';
+            '</center>';
 
     }
 
-	echo html_tag( 'table', '', 'center', '', 'border="0" cellpadding="3" cellspacing="0"' );
+	echo '<table border=0 cellpadding=3 cellspacing=0 align=center>';
 
     for ($i=0; $i < count($filters); $i++) {
 
         $clr = (($i % 2)?$color[0]:$color[9]);
         $fdr = ($folder_prefix)?str_replace($folder_prefix, "", $filters[$i]["folder"]):$filters[$i]["folder"];
-        echo html_tag( 'tr', '', '', $clr ) .
-                   html_tag( 'td',
-                       '<small>' .
-                       "[<a href=\"options.php?theid=$i&action=edit\">" . _("Edit") . '</a>]'.
-                       '</small>' ,
-                   'left' ) .
-                   html_tag( 'td',
-                       '<small>' .
-                       "[<a href=\"options.php?theid=$i&action=delete\">" . _("Delete") . '</a>]'.
-                       '</small>' ,
-                   'left' ) .
-                   html_tag( 'td', '', 'center' ) . '<small>[';
+        echo "<tr bgcolor=\"$clr\"><td><small>".
+            "[<a href=\"options.php?theid=$i&action=edit\">" . _("Edit") . '</a>]'.
+            '</small></td><td><small>'.
+            "[<a href=\"options.php?theid=$i&action=delete\">" . _("Delete") . '</a>]'.
+            '</small></td><td align=center><small>[';
 
         if (isset($filters[$i + 1])) {
             echo "<a href=\"options.php?theid=$i&action=move_down\">" . _("Down") . '</a>';
@@ -209,17 +225,14 @@ require_once(SM_PATH . 'plugins/filters/filters.php');
         if ($i > 0) {
             echo "<a href=\"options.php?theid=$i&action=move_up\">" . _("Up") . '</a>';
         }
-        echo ']</small></td>'.
-            html_tag( 'td', '-', 'left' ) .
-            html_tag( 'td', '', 'left' );
+        echo ']</small></td><td>-</td><td>';
         printf( _("If <b>%s</b> contains <b>%s</b> then move to <b>%s</b>"), _($filters[$i]['where']), $filters[$i]['what'], $fdr );
         echo '</td></tr>';
 
     }
     echo '</table>'.
-        html_tag( 'table',
-            html_tag( 'tr',
-                html_tag( 'td', '&nbsp', 'left' )
-            ) ,
-        'center', '', 'width="80%" border="0" cellpadding="2" cellspacing="0"' );
+        '<table width=80% align=center border=0 cellpadding=2 cellspacing=0">'.
+            '<tr><td>&nbsp</td></tr>'.
+        '</table>';
+
 ?>

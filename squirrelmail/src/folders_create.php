@@ -12,16 +12,25 @@
  * $Id$
  */
 
-/* Path for SquirrelMail required files. */
-define('SM_PATH','../');
+require_once('../src/validate.php');
+require_once('../functions/imap.php');
+require_once('../functions/display_messages.php');
 
-/* SquirrelMail required files. */
-require_once(SM_PATH . 'include/validate.php');
-require_once(SM_PATH . 'functions/imap.php');
-require_once(SM_PATH . 'functions/display_messages.php');
+/* get globals we may need */
 
+$username = $_SESSION['username'];
+$key = $_COOKIE['key'];
+$delimiter = $_SESSION['delimiter'];
+$onetimepad = $_SESSION['onetimepad'];
+$folder_name = $_POST['folder_name'];
+$subfolder = $_POST['subfolder'];
+if (isset($_POST['contain_subs'])) {
+    $contain_subs = $_POST['contain_subs'];
+}
+
+/* end of get globals */
+ 
 $imapConnection = sqimap_login($username, $key, $imapServerAddress, $imapPort, 0);
-global $delimiter;
 
 $folder_name = trim($folder_name);
 

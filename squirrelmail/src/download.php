@@ -12,122 +12,329 @@
  * $Id$
  */
 
-/* Path for SquirrelMail required files. */
-define('SM_PATH','../');
-
-/* SquirrelMail required files. */
-require_once(SM_PATH . 'include/validate.php');
-require_once(SM_PATH . 'functions/imap.php');
-require_once(SM_PATH . 'functions/mime.php');
+require_once('../src/validate.php');
+require_once('../functions/imap.php');
+require_once('../functions/mime.php');
+require_once('../functions/date.php');
 
 header('Pragma: ');
 header('Cache-Control: cache');
 
-function get_extract_to_target_list($imapConnection) {
-    $boxes = sqimap_mailbox_list($imapConnection);
-    for ($i = 0; $i < count($boxes); $i++) {  
-        if (!in_array('noselect', $boxes[$i]['flags'])) {
-            $box = $boxes[$i]['unformatted'];
-            $box2 = str_replace(' ', '&nbsp;', $boxes[$i]['unformatted-disp']);
-            if ( $box2 == 'INBOX' ) {
-                $box2 = _("INBOX");
-            }
-            echo "<option value=\"$box\">$box2</option>\n";
-        }
-    }
-}
-$mailbox = decodeHeader($mailbox);
+/* globals */
 
-global $messages, $uid_support;
+$key = $_COOKIE['key'];
+$username = $_SESSION['username'];
+$onetimepad = $_SESSION['onetimepad'];
+$mailbox = $_GET['mailbox'];
+$passed_id = $_GET['passed_id'];
+$passed_ent_id = $_GET['passed_ent_id'];
+$base_uri = $base_uri = $_SESSION['base_uri'];
+
+if (isset($_GET['startMessage'])) {
+    $startMessage = $_GET['startMessage'];
+}
+if(isset($_GET['where'])) {
+    $where = $_GET['where'];
+}
+if(isset($_GET['what'])) {
+    $what = $_GET['what'];
+}
+if(isset($_GET['showHeaders'])) {
+    $showHeaders = $_GET['showHeaders'];
+}
+if(isset($_GET['absolute_dl'])) {
+    $absolute_dl = $_GET['absolute_dl'];
+}
+if (isset($_GET['show_more_cc'])) {
+    $show_more = $_GET['show_more_cc'];
+}
+if(isset($_GET['show_more_bcc'])) {
+    $show_more = $_GET['show_more_bcc'];
+}
+if(isset($_GET['show_more'])) {
+    $show_more = $_GET['show_more'];
+}
+if(isset($_GET['sort'])) {
+    $sort = $_GET['sort'];
+}
+    
+
+/* end globals */
+
+function viewText($color, $body, $id, $entid, $mailbox, $type1, $wrap_at) {
+    global $charset, $where, $what, $startMessage;
+    displayPageHeader($color, 'None');
+    $urlmailbox = urlencode($mailbox);
+
+    echo "<BR>\n".
+         "<TABLE WIDTH=\"100%\" BORDER=0 CELLSPACING=0 CELLPADDING=2 ALIGN=CENTER>\n".
+         "<TR><TD BGCOLOR=\"$color[9]\">\n".
+         "<B><CENTER>".
+         _("Viewing a text attachment") . " - ";
+    if (isset($where) && isset($what)) {
+        /* from a search */
+        echo "<a href=\"read_body.php?mailbox=".$urlmailbox.
+             "&passed_id=$id&where=".urlencode($where).
+             "&what=".urlencode($what)."\">". 
+             _("View message") . "</a>\n";
+    } 
+    else {
+        echo "<a href=\"read_body.php?mailbox=".$urlmailbox.
+             "&passed_id=$id&startMessage=$startMessage&show_more=0\">". 
+             _("View message") . "</a>\n";
+    }
+    echo "</B></TD></TR>\n".
+         "</TABLE><BR><CENTER>\n".
+         "<TABLE WIDTH=\"98%\"><TR><TD BGCOLOR=\"$color[0]\">\n".
+         "<TABLE WIDTH=\"100%\" BORDER=0 CELLSPACING=0 ".
+         "CELLPADDING=2 ALIGN=CENTER>\n".
+         "<TR><TD BGCOLOR=\"$color[4]\"></TD></TR>\n".
+         "<TR><TD BGCOLOR=\"$color[4]\"><TT>\n";
+
+    if ($type1 == 'html') {
+        $body = MagicHTML( $body, $id );
+    } 
+    else {
+        translateText($body, $wrap_at, $charset);
+    }
+    flush();
+    echo $body .
+         "</TT></TD></TR><TR><TD><CENTER>\n".
+         "<SMALL><A HREF=\"../src/download.php?absolute_dl=true&passed_id=$id".
+         "&passed_ent_id=$entid&mailbox=$urlmailbox\">".
+         _("Download this as a file").
+         "</A></SMALL></CENTER>\n".
+         "</TD></TR></TABLE></TD></TR></TABLE></CENTER>";
+}
+
+function viewMessage($imapConnection, $id, $mailbox, $ent_id, $msg, $color, $wrap_at) {
+   
+    global $startMessage;
+ 
+    $header = sqimap_get_ent_header($imapConnection,$id,$mailbox,$ent_id);
+    $msg->header = $header;
+    $msg->header->id = $id;
+    $body = formatBody($imapConnection, $msg, $color, $wrap_at);
+    $bodyheader = viewHeader($header, $color);
+    displayPageHeader($color, 'None');
+    $urlmailbox = urlencode($mailbox);
+    echo "<BR>\n".
+         "<TABLE WIDTH=\"100%\" BORDER=0 CELLSPACING=0 CELLPADDING=2 ALIGN=CENTER>\n".
+         "<TR><TD BGCOLOR=\"$color[9]\">\n".
+    	 "<B><CENTER>\n".
+         _("Viewing a message attachment") . " - ".
+         "<a href=\"read_body.php?mailbox=".$urlmailbox.
+         "&passed_id=$id&startMessage=$startMessage&show_more=0\">".
+         _("View message") . "</a>\n".
+         "</B></CENTER></TD></TR>\n".
+    	 "</TABLE>\n".
+         "<TABLE WIDTH=\"100%\" BORDER=0 CELLSPACING=0 CELLPADDING=2 ".
+         " BGCOLOR=\"$color[0]\" ALIGN=CENTER>\n".
+         "<TR><TD BGCOLOR=\"$color[0]\">\n".
+    	 "</TD><TD BGCOLOR=\"$color[0]\"></TD></TR><TR><TD>\n".
+         "$bodyheader </TABLE>\n".	     
+         "<TABLE WIDTH=\"98%\" BORDER=0 CELLSPACING=0 CELLPADDING=2 ALIGN=CENTER>\n".
+         "<TR><TD BGCOLOR=\"$color[4]\">\n".
+    	 "<TR><TD BGCOLOR=\"$color[4]\"><TT>\n".
+	     "$body </TT></TD></TR></TABLE>\n";	 
+}
+
+
+function viewHeader($header,$color) {
+
+    $bodyheader = '';
+
+    /** FORMAT THE FROM STRING **/
+    $from_name = decodeHeader(htmlspecialchars($header->from));
+    if(isset($from_name) && $from_name !='') {    
+	$bodyheader .= makeTableEntry($from_name,_("From"), $color);    
+    }
+    
+    $subject_string = decodeHeader(htmlspecialchars($header->subject));    
+    if(isset($subject_string) && $subject_string !='') {        
+	$bodyheader .= makeTableEntry($subject_string,_("Subject:"), $color);    
+    } 
+    /** FORMAT THE TO STRING **/
+    $to = formatRecipientString($header->to, "to");
+    $to_string = $to['str'];
+    $url_to_string = $to['url_str'];
+    if(isset($to_string) && $to_string !='') {
+	$bodyheader .= makeTableEntry($to_string,_("To:"), $color);
+    }
+
+    /** FORMAT THE DATE STRING **/    
+    $dateString = getLongDateString($header->date);
+    if(isset($dateString) && $dateString !='') {            
+	$bodyheader .= makeTableEntry($dateString,_("Date:"), $color);    
+    }
+    
+    /** FORMAT THE CC STRING **/
+    $cc = formatRecipientString($header->cc, "cc");
+    $cc_string = $cc['str'];
+    $url_cc_string = $cc['url_str'];
+    if(isset($cc_string) && $cc_string !='') {    
+	$bodyheader .= makeTableEntry($cc_string,_("Cc:"), $color);    	
+    }
+    
+    /** FORMAT THE BCC STRING **/
+    $bcc = formatRecipientString($header->bcc, "bcc");
+    $bcc_string = $bcc['str'];
+    $url_bcc_string = $bcc['url_str'];
+    if(isset($bcc_string) && $bcc_string !='') {    
+	$bodyheader .= makeTableEntry($bcc_string,_("Bcc:"), $color);
+    }
+    
+    return $bodyheader;
+}
+
+function makeTableEntry($str, $str_name, $color) {
+    $entry = '<tr><td bgcolor="'."$color[0]".'" align right valign top>'."$str_name".'</td><td bgcolor="'."$color[0]".
+	     '" valign top colspan=2><b>'."$str".'</b>&nbsp;</td></tr>'."\n";
+    return $entry;
+}
+
+function formatRecipientString($recipients, $item ) {
+    global $mailbox, $show_more, $show_more_cc, $show_more_bcc,
+           $startMessage, $passed_id, $passed_ent_id, $sort, $base_uri;
+
+    /** TEXT STRINGS DEFINITIONS **/
+    $echo_more = _("more");
+    $echo_less = _("less");
+
+    if (!isset($show_more_cc)) {
+	$show_more_cc = FALSE;
+    }
+    if (!isset($show_more_bcc)) {
+	$show_more_bcc = FALSE;
+    }
+
+
+    $urlMailbox = urlencode($mailbox);
+    $i = 0;
+    $url_string = '';
+    
+    if (isset ($recipients[0]) && trim($recipients[0])) {
+	$string = '';
+        $ary = explode(",",$recipients[0]);
+
+	switch ($item) {
+	    case 'to':
+		$show = "&amp;show_more=1&amp;show_more_cc=$show_more_cc&amp;show_more_bcc=$show_more_bcc";
+		$show_n = "&amp;show_more=0&amp;show_more_cc=$show_more_cc&amp;show_more_bcc=$show_more_bcc";
+		break;
+	    case 'cc':
+		$show = "&amp;show_more=$show_more&amp;show_more_cc=1&amp;show_more_bcc=$show_more_bcc";
+		$show_n = "&amp;show_more=$show_more&amp;show_more_cc=0&amp;show_more_bcc=$show_more_bcc";
+		$show_more = $show_more_cc;
+		break;
+	    case 'bcc':
+		$show = "&amp;show_more=$show_more&amp;show_more_cc=$show_more_cc&amp;show_more_bcc=1";
+		$show_n = "&amp;show_more=$show_more&amp;show_more_cc=$show_more_cc&amp;show_more_bcc=0";
+		$show_more = $show_more_bcc;
+		break;
+	    default:
+		$break;
+	}
+
+	while ($i < count($ary)) {
+    	    $ary[$i] = htmlspecialchars(decodeHeader($ary[$i]));
+    	    $url_string .= $ary[$i];
+    	    if ($string) {
+        	$string = "$string<BR>$ary[$i]";
+    	    } else {
+        	$string = "$ary[$i]";
+    	    }
+
+    	    $i++;
+    	    if (count($ary) > 1) {
+        	if ($show_more == false) {
+            	    if ($i == 1) {
+
+                	$string .= '&nbsp;(<A HREF="' . $base_uri .
+                                   "src/download.php?mailbox=$urlMailbox&amp;passed_id=$passed_id&amp;";
+                	if (isset($where) && isset($what)) {
+                    	    $string .= 'what=' . urlencode($what)."&amp;where=".urlencode($where)."&amp;passed_ent_id=$passed_ent_id$show\">$echo_more</A>)";
+                	} else {
+                    	    $string .= "sort=$sort&amp;startMessage=$startMessage"."&amp;passed_ent_id=$passed_ent_id$show\">$echo_more</A>)";
+                	}
+                	$i = count($ary);
+            	    }
+        	} else if ($i == 1) {
+
+            	    $string .= '&nbsp;(<A HREF="' . $base_uri .
+                               "src/download.php?mailbox=$urlMailbox&amp;passed_id=$passed_id&amp;";
+            	    if (isset($where) && isset($what)) {
+                	$string .= 'what=' . urlencode($what)."&amp;where=".urlencode($where)."&amp;passed_ent_id=$passed_ent_id$show_n\">$echo_less</A>)";
+            	    } else {
+                	$string .= "sort=$sort&amp;startMessage=$startMessage"."&amp;passed_ent_id=$passed_ent_id$show_n\">$echo_less</A>)";
+            	    }
+        	}
+    	    }
+
+	}
+    }
+    else {
+	$string = '';
+    }
+    $url_string = urlencode($url_string);
+    $result = array();
+    $result['str'] = $string;
+    $result['url_str'] = $url_string;
+    return $result;
+    
+}
+
 
 $imapConnection = sqimap_login($username, $key, $imapServerAddress, $imapPort, 0);
-$mbx_response =  sqimap_mailbox_select($imapConnection, $mailbox);
-if (!isset($passed_ent_id)) {
-   $passed_ent_id = '';
-}
-
-$message = &$messages[$mbx_response['UIDVALIDITY']]["$passed_id"];
-if (!is_object($message)) {
-    $message = sqimap_get_message($imapConnection,$passed_id, $mailbox);
-}
-$subject = $message->rfc822_header->subject;
-$message = &$message->getEntity($ent_id);
-$header = $message->header;
-if ($message->rfc822_header) {
-   $subject = $message->rfc822_header->subject;
-   $charset = $header->content_type->properties['charset'];
-} else {
-   $header = $message->header;
-   $charset = $header->getParameter('charset');
-}
-$type0 = $header->type0;
-$type1 = $header->type1;
-$encoding = strtolower($header->encoding);
+sqimap_mailbox_select($imapConnection, $mailbox);
 
 /*
-$extracted = false;
-if (isset($extract_message) && $extract_message) {
-  $cmd = "FETCH $passed_id BODY[$passed_ent_id]";
-  $read = sqimap_run_command ($imapConnection, $cmd, true, $response, $message, $uid_support);
-  $cnt = count($read);
-  $body = '';
-  $length = 0;
-  for ($i=1;$i<$cnt;$i++) {
-      $length = $length + strlen($read[$i]);
-      $body .= $read[$i];
-  }
-  if (isset($targetMailbox) && $length>0) {
-      sqimap_append ($imapConnection, $targetMailbox, $length);
-      fputs($imapConnection,$body);
-      sqimap_append_done ($imapConnection);
-      $extracted = true;
-  }
-}   
+ * $message contains all information about the message
+ * including header and body
+ */
+$message = sqimap_get_message($imapConnection, $passed_id, $mailbox);
 
+$top_header = $message->header;
 
-*/
 /*
  * lets redefine message as this particular entity that we wish to display.
  * it should hold only the header for this entity.  We need to fetch the body
  * yet before we can display anything.
  */
+$message = getEntity($message, $passed_ent_id);
 
+$header = $message->header;
+
+$charset = $header->charset;
+$type0 = $header->type0;
+$type1 = $header->type1;
 if (isset($override_type0)) {
     $type0 = $override_type0;
 }
 if (isset($override_type1)) {
     $type1 = $override_type1;
 }
-$filename = '';
-if (is_object($message->header->disposition)) {
-    $filename = decodeHeader($header->disposition->getProperty('filename'));
-    if (!$filename) {
-	$filename = decodeHeader($header->disposition->getProperty('name'));
-    }
+$filename = decodeHeader($header->filename);
+if (!$filename) {
+    $filename = decodeHeader($header->name);
 }
+
 if (strlen($filename) < 1) {
     if ($type1 == 'plain' && $type0 == 'text') {
         $suffix = 'txt';
-	$filename = $subject . '.txt';
     } else if ($type1 == 'richtext' && $type0 == 'text') {
         $suffix = 'rtf';
-	$filename = $subject . '.rtf';
     } else if ($type1 == 'postscript' && $type0 == 'application') {
         $suffix = 'ps';
-	$filename = $subject . '.ps';
     } else if ($type1 == 'rfc822' && $type0 == 'message') {
         $suffix = 'eml';
-	$filename = $subject . '.msg';
     } else {
         $suffix = $type1;
     }
 
-    if (strlen($filename) < 1) {
-       $filename = "untitled$ent_id.$suffix";
-    } else {
-       $filename = "$filename.$suffix";
-    }
+    $filename = "untitled$passed_ent_id.$suffix";
 }
+
 
 /*
  * Note:
@@ -145,20 +352,76 @@ if (strlen($filename) < 1) {
  *    content-type as application/octet-stream
  */
 if (isset($absolute_dl) && $absolute_dl == 'true') {
-    DumpHeaders($type0, $type1, $filename, 1);
+    switch($type0) {
+    case 'text':
+        DumpHeaders($type0, $type1, $filename, 1);
+        $body = mime_fetch_body($imapConnection, $passed_id, $passed_ent_id);
+        $body = decodeBody($body, $header->encoding);
+        if ($type1 == 'plain' && isset($showHeaders)) {
+            echo _("Subject") . ": " . decodeHeader($top_header->subject) . "\n".
+                 "   " . _("From") . ": " . decodeHeader($top_header->from) . "\n".
+                 "     " . _("To") . ": " . decodeHeader(getLineOfAddrs($top_header->to)) . "\n".
+                 "   " . _("Date") . ": " . getLongDateString($top_header->date) . "\n\n";
+        } elseif ($type1 == 'html' && isset($showHeaders)) {
+            echo '<table><tr><th align=right>' . _("Subject").
+                 ':</th><td>' . decodeHeader($top_header->subject).
+                 "</td></tr>\n<tr><th align=right>" . _("From").
+                 ':</th><td>' . decodeHeader($top_header->from).
+                 "</td></tr>\n<tr><th align=right>" . _("To").
+                 ':</th><td>' . decodeHeader(getLineOfAddrs($top_header->to)).
+                 "</td></tr>\n<tr><th align=right>" . _("Date").
+                 ':</th><td>' . getLongDateString($top_header->date).
+                 "</td></tr>\n</table>\n<hr>\n";
+        } 
+        echo $body;
+        break;
+    
+    default:
+        DumpHeaders($type0, $type1, $filename, 1);
+        mime_print_body_lines ($imapConnection, $passed_id, $passed_ent_id, $header->encoding);
+        break;
+    }
 } else {
-    DumpHeaders($type0, $type1, $filename, 0);
+    switch ($type0) {
+    case 'text':
+        if ($type1 == 'plain' || $type1 == 'html') {
+            $body = mime_fetch_body($imapConnection, $passed_id, $passed_ent_id);
+            $body = decodeBody($body, $header->encoding);
+            viewText($color, $body, $passed_id, $passed_ent_id, $mailbox, $type1, $wrap_at);
+        } else {
+            DumpHeaders($type0, $type1, $filename, 0);
+            $body = mime_fetch_body($imapConnection, $passed_id, $passed_ent_id);
+            $body = decodeBody($body, $header->encoding);
+            echo $body;
+        }
+        break;
+    case 'message':
+	if ($type1 == 'rfc822' ) {
+	    viewMessage($imapConnection, $passed_id, $mailbox, $passed_ent_id, $message, $color, $wrap_at);
+	} else {
+    	    $body = mime_fetch_body($imapConnection, $passed_id, $passed_ent_id);
+    	    $body = decodeBody($body, $header->encoding);
+    	    viewText($color, $body, $passed_id, $passed_ent_id, $mailbox, $type1, $wrap_at);
+        }
+        break;
+    default:
+        DumpHeaders($type0, $type1, $filename, 0);
+        mime_print_body_lines ($imapConnection, $passed_id, $passed_ent_id, $header->encoding);
+        break;
+    }
 }
-/* be aware that any warning caused by download.php will corrupt the
- * attachment in case of ERROR reporting = E_ALL and the output is the screen */
-mime_print_body_lines ($imapConnection, $passed_id, $ent_id, $encoding);
+
 
 /*
  * This function is verified to work with Netscape and the *very latest*
  * version of IE.  I don't know if it works with Opera, but it should now.
  */
 function DumpHeaders($type0, $type1, $filename, $force) {
-    global $HTTP_USER_AGENT, $languages, $squirrelmail_language;
+
+    global $_SERVER;
+
+    $HTTP_USER_AGENT = $_SERVER['HTTP_USER_AGENT'];
+
     $isIE = 0;
 
     if (strstr($HTTP_USER_AGENT, 'compatible; MSIE ') !== false &&
@@ -171,13 +434,7 @@ function DumpHeaders($type0, $type1, $filename, $force) {
         $isIE6 = 1;
     }
 
-    if (isset($languages[$squirrelmail_language]['XTRA_CODE']) &&
-        function_exists($languages[$squirrelmail_language]['XTRA_CODE'])) {
-        $filename = 
-            $languages[$squirrelmail_language]['XTRA_CODE']('downloadfilename', $filename, $HTTP_USER_AGENT);
-    } else {
-       $filename = ereg_replace('[^-a-zA-Z0-9\.]', '_', $filename);
-    }
+    $filename = ereg_replace('[^-a-zA-Z0-9\.]', '_', $filename);
 
     // A Pox on Microsoft and it's Office!
     if (! $force) {

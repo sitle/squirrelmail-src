@@ -11,14 +11,9 @@
  * $Id$
  */
 
-/* Path for SquirrelMail required files. */
-define('SM_PATH','../');
-
-/* SquirrelMail required files. */
-require_once(SM_PATH . 'include/validate.php');
-require_once(SM_PATH . 'functions/display_messages.php');
-require_once(SM_PATH . 'functions/imap.php');
-require_once(SM_PATH . 'functions/html.php');
+require_once('../src/validate.php');
+require_once('../functions/display_messages.php');
+require_once('../functions/imap.php');
 
 global $compose_new_win;
 
@@ -26,6 +21,7 @@ function putSelectedMessagesIntoString($msg) {
     $j = 0;
     $i = 0;
     $firstLoop = true;
+
     // If they have selected nothing msg is size one still, but will
     // be an infinite loop because we never increment j. so check to
     // see if msg[0] is set or not to fix this.
@@ -36,7 +32,9 @@ function putSelectedMessagesIntoString($msg) {
             } else {
                 $firstLoop = false;
             }
+
             $selectedMessages .= "selMsg[$j]=$msg[$i]";
+
             $j++;
         }
         $i++;
@@ -44,19 +42,19 @@ function putSelectedMessagesIntoString($msg) {
 }
 
 function attachSelectedMessages($msg, $imapConnection) {
+
     global $mailbox, $username, $attachment_dir, $attachments, $identity, 
-           $data_dir, $composesession, $lastTargetMailbox, $uid_support,
-	   $msgs, $startMessage, $show_num, $thread_sort_messages,
-	   $allow_server_sort;
+        $data_dir, $composesession, $lastTargetMailbox;
+
 
     if (!isset($attachments)) {
 	    $attachments = array();
-	    session_register('attachments');
+	    sqsession_register($attachments, 'attachments');
     }
 
-    if (!isset($composesession) ) {
+    if (!isset($composesession)) {
 	    $composesession = 1;
-	    session_register('composesession');
+	    sqsession_register($composesession, 'composesession');
     } else {
 	    $composesession++;
     }
@@ -75,13 +73,9 @@ function attachSelectedMessages($msg, $imapConnection) {
     	}
     }
 
+    sqsession_unregister('attachments');
     $attachments = $rem_attachments;
-
-    if ($thread_sort_messages || $allow_server_sort) {
-       $start_index=0;
-    } else {
-       $start_index = ($startMessage-1) * $show_num;
-    }
+    sqsession_register($attachments, 'attachments');
 
     $i = 0;
     $j = 0;
@@ -89,58 +83,131 @@ function attachSelectedMessages($msg, $imapConnection) {
     while ($j < count($msg)) {
         if (isset($msg[$i])) {
     	    $id = $msg[$i];
-    	    $body_a = sqimap_run_command($imapConnection, "FETCH $id RFC822",true, $response, $readmessage, $uid_support);
+    	    $body_a = sqimap_run_command($imapConnection, "FETCH $id RFC822",true, $response, $readmessage);
     	    if ($response = 'OK') {
-	        $k = $i + $start_index;
-		$subject = $msgs[$k]['SUBJECT'];
+    		    // get subject so we can set the remotefilename
+        		$read = sqimap_run_command ($imapConnection, "FETCH $id BODY.PEEK[HEADER.FIELDS (Subject)]", true, $response, $readmessage);
+        		$subject = substr($read[1], strpos($read[1], ' '));
+    		    $subject = trim($subject);
     
-        	array_shift($body_a);
-        	$body = implode('', $body_a);
-        	$body .= "\r\n";
+        		if (isset($subject) && $subject != '') {
+        		    $subject = htmlentities($subject);
+        		} else {
+        		    $subject = _("<No subject>");
+        		    $subject = htmlentities($subject);
+        		}
+    
+        		array_shift($body_a);
+        		$body = implode('', $body_a);
+        		$body .= "\r\n";
         		
-        	$localfilename = GenerateRandomString(32, 'FILE', 7);
-        	$full_localfilename = "$hashed_attachment_dir/$localfilename";
-        	
-        	$fp = fopen( $full_localfilename, 'wb');
-        	fwrite ($fp, $body);
-        	fclose($fp);
-    		$newAttachment = array();
-        	$newAttachment['localfilename'] = $localfilename;
-        	$newAttachment['type'] = "message/rfc822";
-            	$newAttachment['remotefilename'] = $subject.'.eml';
-            	$newAttachment['session'] = $composesession;
-        	$attachments[] = $newAttachment;
-        	flush();
+        		$localfilename = GenerateRandomString(32, 'FILE', 7);
+        		$full_localfilename = "$hashed_attachment_dir/$localfilename";
+        	    
+        		$fp = fopen( $full_localfilename, 'wb');
+        		fwrite ($fp, $body);
+        		fclose($fp);
+    
+        		$newAttachment = array();
+        		$newAttachment['localfilename'] = $localfilename;
+        		$newAttachment['type'] = "message/rfc822";
+                        $newAttachment['remotefilename'] = "$subject".".eml";
+                        $newAttachment['session'] = $composesession;
+                        sqsession_unregister('attachments');
+        		$attachments[] = $newAttachment;
+                        sqsession_register($attachments, 'attachments');
+        		flush();
     	    }
-	    $j++;
-	}
-	$i++;	
+            $j++;	    
+	    }
+	    $i++;	
+	
     }
-    setPref($data_dir, $username, 'attachments', serialize($attachments));
     return $composesession;
 }
 
+
+/* MAIN */
+
+/* get globals */
+
+$username = $_SESSION['username'];
+$key  = $_COOKIE['key'];
+$onetimepad = $_SESSION['onetimepad'];
+$base_uri = $_SESSION['base_uri'];
+$delimiter = $_SESSION['delimiter'];
+
+if (isset($_GET['where'])) {
+    $where = $_GET['where'];
+}
+if (isset($_GET['what'])) {
+    $what = $_GET['what'];
+}
+if (isset($_GET['mailbox'])) {
+    $mailbox = $_GET['mailbox'];
+}
+if (isset($_GET['startMessage'])) {
+    $startMessage = $_GET['startMessage'];
+}
+if (isset($_POST['moveButton'])) {
+    $moveButton = $_POST['moveButton'];
+}
+if (isset($_POST['msg'])) {
+    $msg = $_POST['msg'];
+}
+elseif (isset($_GET['msg'])) {
+    $msg = $_GET['msg'];
+}
+if (isset($_POST['expungeButton'])) {
+    $expungeButton = $_POST['expungeButton'];
+}
+if (isset($_POST['targetMailbox'])) {
+    $targetMailbox = $_POST['targetMailbox'];
+}
+if (isset($_SESSION['lastTargetMailbox'])) {
+    $lastTargetMailbox = $_SESSION['lastTargetMailbox'];
+}
+if (isset($_POST['expungeButton'])) {
+    $expungeButton = $_POST['expungeButton'];
+}
+if (isset($_POST['undeleteButton'])) {
+    $undeleteButton = $_POST['undeleteButton'];
+}
+if (isset($_POST['markRead'])) {
+    $markRead = $_POST['markRead'];
+}
+if (isset($_POST['markUnread'])) {
+    $markUnread = $_POST['markUnread'];
+}
+if (isset($_POST['attache'])) {
+    $attache = $_POST['attache'];
+}
+
+/* end of get globals */
+
 $imapConnection = sqimap_login($username, $key, $imapServerAddress, $imapPort, 0);
 sqimap_mailbox_select($imapConnection, $mailbox);
-
-$location = set_url_var($location,'composenew');
-$location = set_url_var($location,'composesession');
-$location = set_url_var($location,'session');
-
 
 /* remember changes to mailbox setting */
 if (!isset($lastTargetMailbox)) {
     $lastTargetMailbox = 'INBOX';
 }
 if ($targetMailbox != $lastTargetMailbox) {
+    sqsession_unregister('lastTargetMailbox');
     $lastTargetMailbox = $targetMailbox;
-    session_register('lastTargetMailbox');
+    sqsession_register($lastTargetMailbox, 'lastTargetMailbox');
 }
 
 // expunge-on-demand if user isn't using move_to_trash or auto_expunge
 if(isset($expungeButton)) {
     sqimap_mailbox_expunge($imapConnection, $mailbox, true);
-    header("Location: $location");
+    $location = get_location();
+    if (isset($where) && isset($what)) {
+        header ("Location: $location/search.php?mailbox=".urlencode($mailbox)."&what=".urlencode($what)."&where=".urlencode($where));
+    } else {
+        header ("Location: $location/right_main.php?sort=$sort&startMessage=$startMessage&mailbox=". urlencode($mailbox));
+    }
+
 } elseif(isset($undeleteButton)) {
     // undelete messages if user isn't using move_to_trash or auto_expunge
 
@@ -148,16 +215,22 @@ if(isset($expungeButton)) {
         // Removes \Deleted flag from selected messages
         $j = 0;
         $i = 0;
+
         // If they have selected nothing msg is size one still, but will be an infinite
         //    loop because we never increment j.  so check to see if msg[0] is set or not to fix this.
         while ($j < count($msg)) {
             if ($msg[$i]) {
-                sqimap_messages_remove_flag ($imapConnection, $msg[$i], $msg[$i], "Deleted", true);
-                $j++;
+            sqimap_messages_remove_flag ($imapConnection, $msg[$i], $msg[$i], "Deleted");
+            $j++;
             }
             $i++;
         }
-	header ("Location: $location"); 
+        $location = get_location();
+
+        if ($where && $what)
+            header ("Location: $location/search.php?mailbox=".urlencode($mailbox)."&what=".urlencode($what)."&where=".urlencode($where));
+        else
+            header ("Location: $location/right_main.php?sort=$sort&startMessage=$startMessage&mailbox=". urlencode($mailbox));
     } else {
         displayPageHeader($color, $mailbox);
         error_message(_("No messages were selected."), $mailbox, $sort, $startMessage, $color);
@@ -168,14 +241,15 @@ if(isset($expungeButton)) {
         // Marks the selected messages as 'Deleted'
         $j = 0;
         $i = 0;
+
         // If they have selected nothing msg is size one still, but will be an infinite
         //    loop because we never increment j.  so check to see if msg[0] is set or not to fix this.
         while ($j < count($msg)) {
             if (isset($msg[$i])) {
                 if (isset($markRead)) {
-                    sqimap_messages_flag($imapConnection, $msg[$i], $msg[$i], "Seen", true);
+                    sqimap_messages_flag($imapConnection, $msg[$i], $msg[$i], "Seen");
                 } else if (isset($markUnread)) {
-                    sqimap_messages_remove_flag($imapConnection, $msg[$i], $msg[$i], "Seen", true);
+                    sqimap_messages_remove_flag($imapConnection, $msg[$i], $msg[$i], "Seen");
                 } else if (isset($attache)) {
 		    break;
                 } else  {
@@ -188,18 +262,28 @@ if(isset($expungeButton)) {
         if ($auto_expunge) {
             sqimap_mailbox_expunge($imapConnection, $mailbox, true);
         }
-        if (isset($attache)) {
-	    $composesession = attachSelectedMessages($msg, $imapConnection);
-	    if ($compose_new_win) {
-        	header ("Location: $location&composenew=1&session=$composesession");
-	    } else {
-		$location = str_replace('search.php','compose.php',$location);
-		$location = str_replace('right_main.php','compose.php',$location);
-		header ("Location: $location&session=$composesession");
+        $location = get_location();
+        if (isset($where) && isset($what)) {
+	    if (isset($attache)) {
+		$composesession = attachSelectedMessages($msg, $imapConnection);
+		if ($compose_new_win == '1') {
+        	    header ("Location: $location/search.php?mailbox=".urlencode($mailbox)."&what=".urlencode($what)."&where=".urlencode($where)."&composenew=1&session=$composesession&attachedmessages=true");
+		} else {
+		    header ("Location: $location/compose.php?startMessage=$startMessage&mailbox=". urlencode($mailbox)."&session=$composesession&attachedmessages=true".$wherewhat);
+		}
+	    } else {		
+        	header ("Location: $location/search.php?mailbox=".urlencode($mailbox)."&what=".urlencode($what)."&where=".urlencode($where));
 	    }
-	} else {		
-            header ("Location: $location");
-        } 
+	} elseif(isset($attache)) {
+	    $composesession = attachSelectedMessages($msg, $imapConnection);
+	    if ($compose_new_win == '1') {
+        	header ("Location: $location/right_main.php?sort=$sort&startMessage=$startMessage&mailbox=". urlencode($mailbox)."&composenew=1&session=$composesession&attachedmessages=true");
+	    } else {
+		header ("Location: $location/compose.php?startMessage=$startMessage&mailbox=". urlencode($mailbox)."&session=$composesession&attachedmessages=true");
+	    }
+        } else {
+            header ("Location: $location/right_main.php?sort=$sort&startMessage=$startMessage&mailbox=". urlencode($mailbox));
+        }
     } else {
         displayPageHeader($color, $mailbox);
         error_message(_("No messages were selected."), $mailbox, $sort, $startMessage, $color);
@@ -209,26 +293,31 @@ if(isset($expungeButton)) {
     if (is_array($msg) == 1) {
         $j = 0;
         $i = 0;
+
         // If they have selected nothing msg is size one still, but will be an infinite
         //    loop because we never increment j.  so check to see if msg[0] is set or not to fix this.
         while ($j < count($msg)) {
             if (isset($msg[$i])) {
                 /** check if they would like to move it to the trash folder or not */
                 sqimap_messages_copy($imapConnection, $msg[$i], $msg[$i], $targetMailbox);
-                sqimap_messages_flag($imapConnection, $msg[$i], $msg[$i], "Deleted", true);
+                sqimap_messages_flag($imapConnection, $msg[$i], $msg[$i], "Deleted");
                 $j++;
             }
             $i++;
         }
-        if ($auto_expunge) {
+        if ($auto_expunge == true)
             sqimap_mailbox_expunge($imapConnection, $mailbox, true);
-	}
-	header ("Location: $location"); 
+        $location = get_location();
+        if (isset($where) && isset($what))
+            header ("Location: $location/search.php?mailbox=".urlencode($mailbox)."&what=".urlencode($what)."&where=".urlencode($where));
+        else
+            header ("Location: $location/right_main.php?sort=$sort&startMessage=$startMessage&mailbox=". urlencode($mailbox));
     } else {
         displayPageHeader($color, $mailbox);
         error_message(_("No messages were selected."), $mailbox, $sort, $startMessage, $color);
     }
 }
+
 // Log out this session
 sqimap_logout($imapConnection);
 

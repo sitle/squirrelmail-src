@@ -10,18 +10,39 @@
  * jason@stdbev.com
  */
 
-define('SM_PATH','../../');
-
-/* SquirrelMail required files. */
-require_once(SM_PATH . 'include/validate.php');
-require_once(SM_PATH . 'functions/page_header.php');
-require_once(SM_PATH . 'functions/imap.php');
-require_once(SM_PATH . 'plugins/info/functions.php');
+chdir ('..');
+  require_once('../src/validate.php');
+  require_once('../functions/page_header.php');
+  require_once('../functions/imap.php');
+  require_once('../plugins/info/functions.php');
 
 global $username, $color, $folder_prefix, $default_charset;
 $default_charset = strtoupper($default_charset);
 displayPageHeader($color, 'None');
 $mailbox = 'INBOX';
+
+/* GLOBALS */
+$username = $_SESSION['username'];
+$key  = $_COOKIE['key'];
+$onetimepad = $_SESSION['onetimepad'];
+
+if(isset($_POST['submit'])) {
+    $submit = $_POST['submit'];
+}
+
+for($i = 0; $i <= 9; $i++){
+    if(isset($_POST["CHECK_TEST_$i"])) {
+	$var = "CHECK_TEST_$i";
+        $$var = $_POST["CHECK_TEST_$i"];
+    }
+    if(isset($_POST["TEST_$i"])) {
+	$var = "TEST_$i";
+        $$var = $_POST["TEST_$i"];
+    }
+}
+
+/* END GLOBALS */
+
 $imap_stream = sqimap_login($username, $key, $imapServerAddress, $imapPort, 0);
 $caps_array = get_caps($imap_stream);
 $list = array (

@@ -12,15 +12,19 @@
  * $Id$
  */
 
-global $delimiter;
+require_once('../src/validate.php');
+require_once('../functions/imap.php');
 
-/* Path for SquirrelMail required files. */
-define('SM_PATH','../');
+/* get globals we may need */
 
-/* SquirrelMail required files. */
-require_once(SM_PATH . 'include/validate.php');
-require_once(SM_PATH . 'functions/imap.php');
-require_once(SM_PATH . 'functions/html.php');
+$username = $_SESSION['username'];
+$key = $_COOKIE['key'];
+$delimiter = $_SESSION['delimiter'];
+$onetimepad = $_SESSION['onetimepad'];
+
+$old = $_POST['old'];
+    
+/* end of get globals */
 
 if ($old == '') {
     displayPageHeader($color, 'None');
@@ -48,13 +52,11 @@ if (strpos($old, $delimiter)) {
 }
 
 displayPageHeader($color, 'None');
-echo '<br>' .
-    html_tag( 'table', '', 'center', '', 'width="95%" cols="1" border="0"' ) .
-        html_tag( 'tr',
-            html_tag( 'td', '<b>' . _("Rename a folder") . '</b>', 'center', $color[0] )
-        ) .
-        html_tag( 'tr' ) .
-            html_tag( 'td', '', 'center', $color[4] ) .
+echo "<br><TABLE align=center border=0 WIDTH=\"95%\" COLS=1>".
+     "<TR><TD BGCOLOR=\"$color[0]\" ALIGN=CENTER><B>".
+     _("Rename a folder").
+     "</B></TD></TR>".
+     "<TR><TD BGCOLOR=\"$color[4]\" ALIGN=CENTER>".
      "<FORM ACTION=\"folders_rename_do.php\" METHOD=\"POST\">\n".
      _("New name:").
      "<br><B>$old_parent $delimiter </B><INPUT TYPE=TEXT SIZE=25 NAME=new_name VALUE=\"$old_name\"><BR>\n";
@@ -64,8 +66,8 @@ if ( $isfolder ) {
 printf("<INPUT TYPE=HIDDEN NAME=orig VALUE=\"%s\">\n", $old);
 printf("<INPUT TYPE=HIDDEN NAME=old_name VALUE=\"%s\">\n", $old_name);
 echo "<INPUT TYPE=SUBMIT VALUE=\""._("Submit")."\">\n".
-     "</FORM><BR></td></tr>".
-     "</table>";
+     "</FORM><BR></TD></TR>".
+     "</TABLE>";
 
 /** Log out this session **/
 sqimap_logout($imapConnection);

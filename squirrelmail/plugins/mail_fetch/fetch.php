@@ -1,33 +1,44 @@
 <?php
 
-/**
- * mail_fetch/fetch.php
- *
- * Copyright (c) 1999-2002 The SquirrelMail Project Team
- * Licensed under the GNU GPL. For full terms see the file COPYING.
- *
- * Fetch code.
- *
- * $Id$
- */
+   /**
+    **  mail_fetch/fetch.php
+    **
+    **  Copyright (c) 1999-2002 The SquirrelMail Project Team
+    **  Licensed under the GNU GPL. For full terms see the file COPYING.
+    **
+    **  Fetch code.
+    **
+    **  $Id$
+    **/
 
-define('SM_PATH','../../');
+    chdir('..');
+    require_once('../src/validate.php');
+    require_once('../functions/page_header.php');
+    require_once('../functions/imap.php');
+    require_once('../src/load_prefs.php');
+    require_once('../plugins/mail_fetch/class.POP3.php');
+    require_once('../functions/i18n.php');
+    require_once( '../plugins/mail_fetch/functions.php' );
 
-require_once(SM_PATH . 'include/validate.php');
-require_once(SM_PATH . 'functions/page_header.php');
-require_once(SM_PATH . 'functions/imap.php');
-require_once(SM_PATH . 'include/load_prefs.php');
-require_once(SM_PATH . 'plugins/mail_fetch/class.POP3.php');
-require_once(SM_PATH . 'functions/i18n.php');
-require_once(SM_PATH . 'plugins/mail_fetch/functions.php' );
-require_once(SM_PATH . 'functions/html.php' );
+    /* globals */ 
+    $username = $_SESSION['username'];
+    $key = $_COOKIE['key'];
+    $onetimepad = $_SESSION['onetimepad'];
+    $delimter = $_SESSION['delimiter'];
+
+    /* This form, like the advanced identities form
+       uses dynamic post variable names so we need
+       to extract the whole $_POST array to make 
+       things work
+    */
+
+    extract($_POST);
+    /* end globals */
 
     function Mail_Fetch_Status($msg) {
-        echo html_tag( 'table',
-                   html_tag( 'tr',
-                       html_tag( 'td', htmlspecialchars( $msg ) , 'left' )
-                   ),
-                 '', '', 'width="90%"' );
+        echo '<table width="90%"><tr><td>' .
+            htmlspecialchars( $msg ) .
+            '</td></tr></table>';
         flush();
     }
 
@@ -53,49 +64,41 @@ require_once(SM_PATH . 'functions/html.php' );
     
     echo '<br><center>';
     
-    echo html_tag( 'table',
-               html_tag( 'tr',
-                   html_tag( 'td', '<b>' . _("Remote POP server Fetching Mail") . '</b>', 'center', $color[0] )
-               ) ,
-           'center', '', 'width="95%" cols="1"' );
+    echo '<TABLE WIDTH=95% COLS=1 ALIGN=CENTER>' .
+            "<TR><TD BGCOLOR=\"$color[0]\" ALIGN=CENTER><b>" . _("Remote POP server Fetching Mail") . '</b></TD></TR>' .
+         '</TABLE>';
     
     if (!isset( $server_to_fetch ) ) {
         
-        echo '<font size=-5><br></font>' .
-             "<form action=\"$PHP_SELF\" method=\"post\" target=\"_self\">" .
-             html_tag( 'table', '', 'center', '', 'width="70%" cols="2"' ) .
-                 html_tag( 'tr' ) .
-                     html_tag( 'td', _("Select Server:") . ' &nbsp; &nbsp;', 'right' ) .
-                     html_tag( 'td', '', 'left' ) .
-                         '<select name="server_to_fetch" size="1">' .
-                         '<option value="all" selected>..' . _("All") . "...\n";
+        echo '<font size=-5><BR></font>' .
+             "<form action=\"$PHP_SELF\" METHOD=POST TARGET=_self>" .
+             '<TABLE WIDTH=70% COLS=2 ALIGN=CENTER>' .
+                '<TR>' .
+                    '<TD ALIGN=RIGHT>' . _("Select Server:") . ' &nbsp; &nbsp; </TD>' .
+                    '<TD><SELECT NAME=server_to_fetch SIZE=1>' .
+                        '<OPTION VALUE="all" SELECTED>..' . _("All") . "...\n";
         for ($i=0;$i<$mailfetch_server_number;$i++) {
-             echo "<option value=\"$i\">" .
-                  (($mailfetch_alias_[$i]=='')?$mailfetch_server_[$i]:$mailfetch_alias_[$i]) .
-                  '</option>' . "\n";
+             echo "<OPTION VALUE=\"$i\">" .
+                  (($mailfetch_alias_[$i]=='')?$mailfetch_server_[$i]:$mailfetch_alias_[$i]);
         } 
-        echo            '</select>' .
-                    '</td>' .
-                '</tr>';
+        echo            '</SELECT>' .
+                    '</TD>' .
+                '</TR>';
         
         //if password not set, ask for it
         for ($i=0;$i<$mailfetch_server_number;$i++) {
              if ($mailfetch_pass_[$i]=='') {
-                  echo html_tag( 'tr',
-                              html_tag( 'td', _("Password for") . ' <b>' .
-                                  (($mailfetch_alias_[$i]=='')?$mailfetch_server_[$i]:$mailfetch_alias_[$i]) .
-                                  '</b>: &nbsp; &nbsp; ',
-                              'right' ) .
-                              html_tag( 'td', '<input type="password" name="pass_' . $i , '">', 'left' )
-                          );
+                  echo '<tr>' .
+                       '<TD ALIGN=RIGHT>' . _("Password for") . ' <B>' . (($mailfetch_alias_[$i]=='')?$mailfetch_server_[$i]:$mailfetch_alias_[$i]) . '</B>: &nbsp; &nbsp; </TD>' .
+                       "<TD><INPUT TYPE=PASSWORD NAME=pass_$i></TD>" .
+                       '</TR>';
              }
         }
-        echo html_tag( 'tr',
-                   html_tag( 'td', '&nbsp;' ) .
-                   html_tag( 'td', '<input type=submit name=submit_mailfetch value="' . _("Fetch Mail"). '">', 'left' )
-               );
-
-             '</table></form>';
+        echo '<TR>' .
+                '<TD>&nbsp;</TD>' .
+                '<TD><input type=submit name=submit_mailfetch value="' . _("Fetch Mail"). '"></TD>'.
+                '</TR>' .
+             '</TABLE></form>';
         exit();
     }
 
@@ -124,15 +127,10 @@ require_once(SM_PATH . 'functions/html.php' );
         
         $pop3 = new POP3($mailfetch_server, 60);
         
-        echo '<br>' .
-        html_tag( 'table',
-            html_tag( 'tr',
-                html_tag( 'td', '<b>' . _("Fetching from ") . 
-                    (($mailfetch_alias_[$i_loop] == '')?$mailfetch_server:$mailfetch_alias_[$i_loop]) . 
-                    '</b>',
-                'center' ) ,
-            '', $color[9] ) ,
-        '', '', 'width="90%"' );
+        echo "<br><table width=\"90%\"><tr bgcolor=\"$color[9]\"><td><b>" . 
+            _("Fetching from ") . 
+            (($mailfetch_alias_[$i_loop] == '')?$mailfetch_server:$mailfetch_alias_[$i_loop]) . 
+            "</b></td></tr></table>";
           
         flush();
         
@@ -154,7 +152,7 @@ require_once(SM_PATH . 'functions/html.php' );
         //   register_shutdown_function($pop3->quit());
         
         $msglist = $pop3->uidl();
-
+        
         $i = 1;
         for ($j = 1; $j < sizeof($msglist); $j++) {
            if ($msglist["$j"] == $mailfetch_uidl) {
@@ -196,31 +194,10 @@ require_once(SM_PATH . 'functions/html.php' );
             $Message = "";
             $MessArray = $pop3->get($i);
             
-            while ( (!$MessArray) or (gettype($MessArray) != "array")) {
-                 Mail_Fetch_Status(_("Oops, ") . $pop3->ERROR);
-                 // re-connect pop3
-                 Mail_Fetch_Status(_("Server error...Disconnect"));
-	         $pop3->quit();
-                 Mail_Fetch_Status(_("Reconnect from dead connection"));
-                 if (!$pop3->connect($mailfetch_server)) {
-                     Mail_Fetch_Status(_("Oops, ") . $pop3->ERROR );
-                     Mail_Fetch_Status(_("Saving UIDL"));
-                     setPref($data_dir,$username,"mailfetch_uidl_$i_loop", $mailfetch_uidl[$i-1]);
-
-                     continue;
-                 }
-                 $Count = $pop3->login($mailfetch_user, $mailfetch_pass);
-                 if (($Count == false || $Count == -1) && $pop3->ERROR != '') {
-                     Mail_Fetch_Status(_("Login Failed:") . ' ' . $pop3->ERROR );
-                     Mail_Fetch_Status(_("Saving UIDL"));
-                     setPref($data_dir,$username,"mailfetch_uidl_$i_loop", $mailfetch_uidl[$i-1]);
-
-                     continue;
-                 }
-                 Mail_Fetch_Status(_("Refetching message ") . "$i" );
-	         $MessArray = $pop3->get($i);
-
-            } // end while
+            if ( (!$MessArray) or (gettype($MessArray) != "array")) {
+                  Mail_Fetch_Status(_("Oops, ") . $pop3->ERROR);
+                  continue 2;
+            }
             
             while (list($lineNum, $line) = each ($MessArray)) {
                  $Message .= $line;
@@ -235,19 +212,7 @@ require_once(SM_PATH . 'functions/html.php' );
             if (substr($Line, 0, 1) == '+') {
                 fputs($imap_stream, $Message);
                 sqimap_read_data($imap_stream, "A3$i", false, $response, $message);
-                if ( $response <> 'OK' ) {
-                    Mail_Fetch_Status(_("Error Appending Message!")." ".$message );
-                    Mail_Fetch_Status(_("Closing POP"));
-                    $pop3->quit();
-                    Mail_Fetch_Status(_("Logging out from IMAP"));
-                    sqimap_logout($imap_stream);
-
-                    Mail_Fetch_Status(_("Saving UIDL"));
-                    setPref($data_dir,$username,"mailfetch_uidl_$i_loop", $mailfetch_uidl[$i-1]);
-	            exit;
-                } else {
-                    Mail_Fetch_Status(_("Message appended to mailbox"));
-                }
+                Mail_Fetch_Status(_("Message appended to mailbox"));
                 
                 if ($mailfetch_lmos != 'on') {
                    if( $pop3->delete($i) ) {
@@ -259,15 +224,6 @@ require_once(SM_PATH . 'functions/html.php' );
             } else {
                 echo "$Line";
                 Mail_Fetch_Status(_("Error Appending Message!"));
-                Mail_Fetch_Status(_("Closing POP"));
-                $pop3->quit();
-                Mail_Fetch_Status(_("Logging out from IMAP"));
-                sqimap_logout($imap_stream);
-
-                // not gurantee corect!
-                Mail_Fetch_Status(_("Saving UIDL"));
-                setPref($data_dir,$username,"mailfetch_uidl_$i_loop", $mailfetch_uidl[$i-1]);
-                exit;
             }
         }
         

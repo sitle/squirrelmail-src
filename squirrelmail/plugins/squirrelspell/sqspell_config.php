@@ -10,10 +10,16 @@
  * $Id$
  */
 
-require_once(SM_PATH . 'functions/prefs.php');
+require_once('../functions/prefs.php');
 
 /* Just for poor wretched souls with E_ALL. :) */
-global $username, $data_dir;
+global $data_dir;
+
+if ( (float)substr(PHP_VERSION,0,3) < 4.1 ) {
+    global $_SESSION;
+}
+
+$username = $_SESSION['username'];
 
 /**
  * Example:
@@ -28,7 +34,7 @@ $SQSPELL_WORDS_FILE =
    getHashedFile($username, $data_dir, "$username.words");
 
 $SQSPELL_EREG = 'ereg';
-#$SQSPELL_SOUP_NAZI = 'Mozilla/3, Mozilla/2, Opera 4, Opera/4, '
-#   . 'Macintosh, OmniWeb';
+$SQSPELL_SOUP_NAZI = 'Mozilla/3, Mozilla/2, Opera 4, Opera/4, '
+   . 'Macintosh, OmniWeb';
 
 ?>

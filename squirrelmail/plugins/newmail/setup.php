@@ -26,11 +26,10 @@
     */
 
     function CheckNewMailboxSound($imapConnection, $mailbox, $real_box, $delimeter, $unseen, &$total_unseen) {
-    
-        global $folder_prefix, $trash_folder, $sent_folder,
-               $color, $move_to_sent, $move_to_trash,
-               $unseen_notify, $unseen_type, $newmail_allbox, 
-               $newmail_recent, $newmail_changetitle;
+        global $folder_prefix, $trash_folder, $sent_folder;
+        global $color, $move_to_sent, $move_to_trash;
+        global $unseen_notify, $unseen_type, $newmail_allbox, $newmail_recent;
+        global $newmail_changetitle;
 
         $mailboxURL = urlencode($real_box);
         $unseen_found = 0;
@@ -86,48 +85,45 @@
 
     function newmail_sav() {
 
-        global $username,$data_dir;
-        global $submit_newmail,$media_file,$media_reset,$media_enable,$media_popup;
-        global $media_recent,$media_sel;
-        global $media_allbox, $media_changetitle;
-
-        if ( isset($submit_newmail) ) {
+        global $data_dir, $username, $_POST;
+     
+        if ( isset($_POST['submit_newmail']) ) {
          
-            if(isset($media_enable)) {
-                setPref($data_dir,$username,'newmail_enable',$media_enable);
+            if(isset($_POST['media_enable'])) {
+                setPref($data_dir,$username,'newmail_enable',$_POST['media_enable']);
             } else {
                 setPref($data_dir,$username,'newmail_enable','');
             }
-            if(isset($media_popup)) {
-                setPref($data_dir,$username,'newmail_popup',$media_popup);
+            if(isset($_POST['media_popup'])) {
+                setPref($data_dir,$username,'newmail_popup',$_POST['media_popup']);
             } else {
                 setPref($data_dir,$username,'newmail_popup','');
             }
-            if(isset($media_allbox)) {
-                setPref($data_dir,$username,'newmail_allbox',$media_allbox);
+            if(isset($_POST['media_allbox'])) {
+                setPref($data_dir,$username,'newmail_allbox',$_POST['media_allbox']);
             } else {
                 setPref($data_dir,$username,'newmail_allbox','');
             }
-            if(isset($media_recent)) {
-                setPref($data_dir,$username,'newmail_recent',$media_recent);
+            if(isset($_POST['media_recent'])) {
+                setPref($data_dir,$username,'newmail_recent',$_POST['media_recent']);
             } else {
                 setPref($data_dir,$username,'newmail_recent','');
             }
-            if(isset($media_changetitle)) {
-                setPref($data_dir,$username,'newmail_changetitle',$media_changetitle);
+            if(isset($_POST['media_changetitle'])) {
+                setPref($data_dir,$username,'newmail_changetitle',$_POST['media_changetitle']);
             } else {
                 setPref($data_dir,$username,'newmail_changetitle','');
             }
-            if(isset($media_sel)) {
-                if($media_sel == '(local media)') {
-                    setPref($data_dir,$username,'newmail_media',StripSlashes($media_file));
+            if(isset($_POST['media_sel'])) {
+                if($_POST['media_sel'] == '(local media)') {
+                    setPref($data_dir,$username,'newmail_media',StripSlashes($_POST['media_file']));
                 } else {
-                    setPref($data_dir,$username,'newmail_media',$media_sel);
+                    setPref($data_dir,$username,'newmail_media',$_POST['media_sel']);
                 }
             } else {
                 setPref($data_dir,$username,'newmail_media','');
             }
-            echo html_tag( 'p', _("New Mail Notification options saved"), 'center' );
+            echo '<center> ' . _("New Mail Notification options saved") . '</center>';
         }
     }
 
@@ -148,10 +144,10 @@
 
     function newmail_plugin() {
 
-        global $username, $key, $imapServerAddress, $imapPort,
-               $newmail_media, $newmail_enable, $newmail_popup,
-               $newmail_recent, $newmail_changetitle, $imapConnection;
-        
+        global $newmail_media,$newmail_enable,$newmail_popup,$newmail_recent;
+        global $newmail_changetitle;
+        global $imapConnection;
+
         if ($newmail_enable == 'on' ||
             $newmail_popup == 'on' ||
             $newmail_changetitle) {
@@ -169,31 +165,22 @@
                 $line = '';
                 $mailbox = $boxes[$i]['formatted'];
 
-                if (! isset($boxes[$i]['unseen'])) {
+                if (! isset($boxes[$i]['unseen']))
                     $boxes[$i]['unseen'] = '';
-                }
                 if ($boxes[$i]['flags']) {
                     $noselect = false;
                     for ($h = 0; $h < count($boxes[$i]['flags']); $h++) {
-                        if (strtolower($boxes[$i]["flags"][$h]) == 'noselect') {
+                        if (strtolower($boxes[$i]["flags"][$h]) == 'noselect')
                             $noselect = TRUE;
-                        }
                     }
                     if (! $noselect) {
-                        $status += CheckNewMailboxSound($imapConnection, 
-                                                        $mailbox,
-                                                        $boxes[$i]['unformatted'], 
-                                                        $delimeter, 
-                                                        $boxes[$i]['unseen'],
-                                                        $totalNew);
+                        $status = $status + CheckNewMailboxSound($imapConnection, $mailbox,
+                        $boxes[$i]['unformatted'], $delimeter, $boxes[$i]['unseen'],
+                        $totalNew);
                     }
                 } else {
-                    $status += CheckNewMailboxSound($imapConnection, 
-                                                    $mailbox, 
-                                                    $boxes[$i]['unformatted'],
-                                                    $delimeter, 
-                                                    $boxes[$i]['unseen'], 
-                                                    $totalNew);
+                    $status = $status + CheckNewMailboxSound($imapConnection, $mailbox, $boxes[$i]['unformatted'],
+                        $delimeter, $boxes[$i]['unseen'], $totalNew);
                 }
 
             }
@@ -208,11 +195,11 @@
                     "function ChangeTitleLoad() {\n";
                 if( $totalNew > 1 || $totalNew == 0 ) {
                     echo 'window.parent.document.title = "' .
-                        sprintf(_("%s New Messages"), $totalNew ) . 
+                        sprintf(_("%s New Messages"), $totalNew ) .
                         "\";\n";
                 } else {
                     echo 'window.parent.document.title = "' .
-                        sprintf(_("%s New Message"), $totalNew ) . 
+                        sprintf(_("%s New Message"), $totalNew ) .
                         "\";\n";
                 }
                 echo    "if (BeforeChangeTitle != null)\n".
@@ -223,17 +210,17 @@
                     "</script>\n";
             }
 
-            if ($totalNew > 0 && $newmail_enable == 'on') {
+            if ($status > 0 && $newmail_enable == 'on') {
                 echo "<EMBED SRC=\"$newmail_media\" HIDDEN=TRUE AUTOSTART=TRUE>\n";
             }
-            if ($totalNew > 0 && $newmail_popup == 'on') {
+            if ($status >0 && $newmail_popup == 'on') {
                 echo "<SCRIPT LANGUAGE=\"JavaScript\">\n".
                     "<!--\n".
                     "function PopupScriptLoad() {\n".
-                        'window.open("../plugins/newmail/newmail.php", "SMPopup",'.
-                                     "\"width=200,height=130,scrollbars=no\");\n".
-                        "if (BeforePopupScript != null)\n".
-                            "BeforePopupScript();\n".
+                    'window.open("../plugins/newmail/newmail.php", "SMPopup",'.
+                                "\"width=200,height=130,scrollbars=no\");\n".
+                    "if (BeforePopupScript != null)\n".
+                    "BeforePopupScript();\n".
                     "}\n".
                     "BeforePopupScript = window.onload;\n".
                     "window.onload = PopupScriptLoad;\n".

@@ -14,18 +14,38 @@
  * $Id$
  */
 
-/* Path for SquirrelMail required files. */
-define('SM_PATH','../');
+require_once('../src/validate.php');
+require_once('../functions/imap.php');
+require_once('../functions/smtp.php');
+require_once('../functions/page_header.php');
+require_once('../src/load_prefs.php');
 
-/* SquirrelMail required files. */
-require_once(SM_PATH . 'include/validate.php');
-require_once(SM_PATH . 'functions/imap.php');
-require_once(SM_PATH . 'functions/smtp.php');
-require_once(SM_PATH . 'functions/page_header.php');
-require_once(SM_PATH . 'include/load_prefs.php');
-
-$destination = 'retrievalerror@squirrelmail.org';
+$destination = 'retrievalerror@sqml.org';
 $attachments = array();
+
+/* globals */
+
+$key = $_COOKIE['key'];
+$username = $_SESSION['username'];
+$onetimepad = $_SESSION['onetimepad'];
+
+$mailbox = $_GET['mailbox'];
+$passed_id = $_GET['passed_id'];
+$startMessage = $_GET['startMessage'];
+$show_more = $_GET['show_more'];
+$response = $_GET['response'];
+$message = $_GET['message'];
+$topline = $_GET['topline'];
+
+if(isset($_GET['where'])) {
+    $where = $_GET['where'];
+}
+if(isset($_GET['what'])) {
+    $what = $_GET['what'];
+}
+
+/* end globals */
+
 
 function ClearAttachments() {
     global $attachments, $attachment_dir, $username;

@@ -72,6 +72,7 @@ class SquirrelOption {
 
     function SquirrelOption
     ($name, $caption, $type, $refresh_level, $possible_values = '') {
+    global $_POST, $_GLOBALS; 
         /* Set the basic stuff. */
         $this->name = $name;
         $this->caption = $caption;
@@ -90,8 +91,8 @@ class SquirrelOption {
         }
 
         /* Check for a new value. */
-        if (isset($GLOBALS["new_$name"])) {
-            $this->new_value = $GLOBALS["new_$name"];
+        if (isset($_POST["new_$name"])) {
+            $this->new_value = $_POST["new_$name"];
         } else {
             $this->new_value = '';
         }
@@ -164,9 +165,9 @@ class SquirrelOption {
                 $result = $this->createWidget_Comment();
                 break;
             default:
-               $result = '<font color="' . $color[2] . '">'
+               $result = '<FONT COLOR="' . $color[2] . '">'
                        . sprintf(_("Option Type '%s' Not Found"), $this->type)
-                       . '</font>';
+                       . '</FONT>';
         }
 
         /* Add the script for this option. */
@@ -195,33 +196,33 @@ class SquirrelOption {
                 $width = 25;
         }
 
-        $result = "<input name=\"new_$this->name\" value=\"$this->value\" size=\"$width\">";
+        $result = "<INPUT NAME=\"new_$this->name\" VALUE=\"$this->value\" SIZE=\"$width\">";
         return ($result);
     }
 
     function createWidget_StrList() {
         /* Begin the select tag. */
-        $result = "<select name=\"new_$this->name\">";
+        $result = "<SELECT NAME=\"new_$this->name\">";
 
         /* Add each possible value to the select list. */
         foreach ($this->possible_values as $real_value => $disp_value) {
             /* Start the next new option string. */
-            $new_option = "<option value=\"$real_value\"";
+            $new_option = "<OPTION VALUE=\"$real_value\"";
 
             /* If this value is the current value, select it. */
             if ($real_value == $this->value) {
-               $new_option .= ' selected';
+               $new_option .= ' SELECTED';
             }
 
             /* Add the display value to our option string. */
-            $new_option .= ">$disp_value</option>";
+            $new_option .= ">$disp_value</OPTION>";
 
             /* And add the new option string to our select tag. */
             $result .= $new_option;
         }
 
         /* Close the select tag and return our happy result. */
-        $result .= '</select>';
+        $result .= '</SELECT>';
         return ($result);
     }
 
@@ -234,8 +235,8 @@ class SquirrelOption {
             case SMOPT_SIZE_NORMAL:
             default: $rows = 5; $cols =  50;
         }
-        $result = "<textarea name=\"new_$this->name\" rows=\"$rows\" "
-                . "cols=\"$cols\">$this->value</textarea>";
+        $result = "<TEXTAREA NAME=\"new_$this->name\" ROWS=\"$rows\" "
+                . "COLS=\"$cols\">$this->value</TEXTAREA>";
         return ($result);
     }
 
@@ -250,21 +251,21 @@ class SquirrelOption {
     function createWidget_Boolean() {
         /* Do the whole current value thing. */
         if ($this->value != SMPREF_NO) {
-            $yes_chk = ' checked';
+            $yes_chk = ' CHECKED';
             $no_chk = '';
         } else {
             $yes_chk = '';
-            $no_chk = ' checked';
+            $no_chk = ' CHECKED';
         }
 
         /* Build the yes choice. */
-        $yes_option = '<input type="radio" name="new_' . $this->name
-                    . '" value="' . SMPREF_YES . "\"$yes_chk>&nbsp;"
+        $yes_option = '<INPUT TYPE="RADIO" NAME="new_' . $this->name
+                    . '" VALUE="' . SMPREF_YES . "\"$yes_chk>&nbsp;"
                     . _("Yes");
 
         /* Build the no choice. */
-        $no_option = '<input type="radio" name="new_' . $this->name
-                   . '" value="' . SMPREF_NO . "\"$no_chk>&nbsp;"
+        $no_option = '<INPUT TYPE="RADIO" NAME="new_' . $this->name
+                   . '" VALUE="' . SMPREF_NO . "\"$no_chk>&nbsp;"
                    . _("No");
 
         /* Build and return the combined "boolean widget". */
@@ -273,8 +274,8 @@ class SquirrelOption {
     }
 
     function createWidget_Hidden() {
-        $result = '<input type="hidden" name="new_' . $this->name
-                . '" value="' . $this->value . '">';
+        $result = '<INPUT TYPE="HIDDEN" NAME="new_' . $this->name
+                . '" VALUE="' . $this->value . '">';
         return ($result);
     }
 
@@ -289,16 +290,20 @@ class SquirrelOption {
     }
 
     function changed() {
-        return ($this->value != $this->new_value);
+        return ($this->value !== $this->new_value);
     }
 }
 
 function save_option($option) {
-    global $data_dir, $username;
+    if ( (float)substr(PHP_VERSION,0,3) < 4.1 ) {
+        global $_SESSION;
+    }
+    global $data_dir;
+    $username = $_SESSION['username'];
     setPref($data_dir, $username, $option->name, $option->new_value);
 
     /* I do not know if this next line does any good. */
-    $GLOBALS[$option->name] = $option->new_value;
+//    $GLOBALS[$option->name] = $option->new_value;
 }
 
 function save_option_noop($option) {
@@ -314,9 +319,9 @@ function create_optmode_element($optmode) {
 }
 
 function create_hidden_element($name, $value) {
-    $result = '<input type="hidden" '
-            . 'name="' . $name . '" '
-            . 'value="' . $value . '">';
+    $result = '<INPUT TYPE="HIDDEN" '
+            . 'NAME="' . $name . '" '
+            . 'VALUE="' . $value . '">';
     return ($result);
 }
 
@@ -387,37 +392,32 @@ function print_option_groups($option_groups) {
     foreach ($option_groups as $next_optgrp) {
         /* If it is not blank, print the name for this option group. */
         if ($next_optgrp['name'] != '') {
-            echo html_tag( 'tr', "\n".
-                        html_tag( 'td',
-                            '<b>' . $next_optgrp['name'] . '</b>' ,
-                        'center' ,'', 'valign="middle" colspan="2" nowrap' )
-                    ) ."\n";
+            echo '<TR><TD ALIGN=CENTER VALIGN=MIDDLE COLSPAN=2 NOWRAP><B>'
+               .   $next_optgrp['name']
+               . "</B></TD></TR>\n";
         }
 
         /* Print each option in this option group. */
         foreach ($next_optgrp['options'] as $option) {
             if ($option->type != SMOPT_TYPE_HIDDEN) {
-                echo html_tag( 'tr', "\n".
-                           html_tag( 'td', $option->caption . ':', 'right' ,'', 'valign="middle"' ) .
-                           html_tag( 'td', $option->createHTMLWidget(), 'left' )
-                       ) ."\n";
+                echo "<TR>\n";
+                echo '  <TD ALIGN="RIGHT" VALIGN="MIDDLE">'
+                   . $option->caption . ":</TD>\n";
+                echo '  <TD>' . $option->createHTMLWidget() . "</TD>\n";
+                echo "</TR>\n";
             } else {
                 echo $option->createHTMLWidget();
             }
         }
 
         /* Print an empty row after this option group. */
-        echo html_tag( 'tr',
-                   html_tag( 'td', '&nbsp;', 'left', '', 'colspan="2"' )
-                ) . "\n";
+        echo "<TR><TD COLSPAN=\"2\">&nbsp;</TD></TR>\n";
     }
 }
 
 function OptionSubmit( $name ) {
-        echo html_tag( 'tr',
-                   html_tag( 'td', '&nbsp;', 'left', '', 'colspan="2"' ) .
-                   html_tag( 'td', '<input type="submit" value="' . _("Submit") . '" name="' . $name . '">', 'left', '', 'colspan="2"' )
-                ) . "\n";
+    echo '<tr><td>&nbsp;</td><td><input type="submit" value="' . _("Submit") . '" name="' . $name . '">' .
+         '</td></tr>';
 }
 
 ?>

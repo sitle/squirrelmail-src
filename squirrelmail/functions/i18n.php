@@ -17,12 +17,6 @@
 
 /* Decodes a string to the internal encoding from the given charset */
 function charset_decode ($charset, $string) {
-    global $languages, $squirrelmail_language;
-
-    if (isset($languages[$squirrelmail_language]['XTRA_CODE']) &&
-        function_exists($languages[$squirrelmail_language]['XTRA_CODE'])) {
-        $string = $languages[$squirrelmail_language]['XTRA_CODE']('decode', $string);
-    }
 
     /* All HTML special characters are 7 bit and can be replaced first */
     $string = htmlspecialchars ($string);
@@ -34,12 +28,8 @@ function charset_decode ($charset, $string) {
             $ret = charset_decode_iso_8859_1 ($string);
         } else if ($res[1] == '2') {
             $ret = charset_decode_iso_8859_2 ($string);
-        } else if ($res[1] == '4') {
-            $ret = charset_decode_iso_8859_4 ($string);
         } else if ($res[1] == '7') {
             $ret = charset_decode_iso_8859_7 ($string);
-        } else if ($res[1] == '13') {
-            $ret = charset_decode_iso_8859_13 ($string);
         } else if ($res[1] == '15') {
             $ret = charset_decode_iso_8859_15 ($string);
         } else {
@@ -407,53 +397,6 @@ function charset_decode_iso_8859_2 ($string) {
     return $string;
 }
 
-/* 
-   iso-8859-4 is Baltic codeset used in some email clients 
-   instead of iso-8859-13 in Lithuania 
-   only Lithuanian charactes are added.
-*/
-
-function charset_decode_iso_8859_4 ($string) {
-    // latin capital a with ogonek
-    $string = str_replace ("\241", '&#0260;', $string);
-    // latin capital c with caron
-    $string = str_replace ("\310", '&#0268;', $string);
-    // latin capital e with ogonek
-    $string = str_replace ("\312", '&#0280;', $string);
-    // latin capital e with dot above
-    $string = str_replace ("\314", '&#0278;', $string);
-    // latin capital i with ogonek
-    $string = str_replace ("\307", '&#0302;', $string);
-    // latin capital s with caron
-    $string = str_replace ("\251", '&#0352;', $string);
-    // latin capital u with ogonek
-    $string = str_replace ("\331", '&#0370;', $string);
-    // latin capital u with macron
-    $string = str_replace ("\336", '&#0362;', $string);
-    // latin capital z with caron
-    $string = str_replace ("\256", '&#0381;', $string);
-    // latin small a with ogonek
-    $string = str_replace ("\261", '&#0261;', $string);
-    // latin small c with caron
-    $string = str_replace ("\350", '&#0269;', $string);
-    // latin small e with ogonek
-    $string = str_replace ("\352", '&#0281;', $string);
-    // latin small e with dot above
-    $string = str_replace ("\354", '&#0279;', $string);
-    // latin small i with ogonek
-    $string = str_replace ("\347", '&#0303;', $string);
-    // latin small s with caron
-    $string = str_replace ("\271", '&#0353;', $string);
-    // latin small u with ogonek
-    $string = str_replace ("\371", '&#0371;', $string);
-    // latin small u with macron
-    $string = str_replace ("\376", '&#0363;', $string);
-    // latin small z with caron
-    $string = str_replace ("\276", '&#0382;', $string);
-
-    return (charset_decode_iso_8859_1($string));
-}
-
 /* iso-8859-7 is Greek. */
 function charset_decode_iso_8859_7 ($string) {
     global $default_charset;
@@ -513,52 +456,6 @@ function charset_decode_iso_8859_7 ($string) {
     $string = preg_replace("/([\274-\376])/","'&#' . (ord(\\1)+720)",$string);
 
     return $string;
-}
-
-/*
- iso-8859-13 codeset used in Lithuania
- only Lithuanian charactes are added.
-*/
-
-function charset_decode_iso_8859_13 ($string) {
-    // latin capital a with ogonek
-    $string = str_replace ("\300", '&#0260;', $string);
-    // latin capital c with caron
-    $string = str_replace ("\310", '&#0268;', $string);
-    // latin capital e with ogonek
-    $string = str_replace ("\306", '&#0280;', $string);
-    // latin capital e with dot above
-    $string = str_replace ("\313", '&#0278;', $string);
-    // latin capital i with ogonek
-    $string = str_replace ("\301", '&#0302;', $string);
-    // latin capital s with caron
-    $string = str_replace ("\320", '&#0352;', $string);
-    // latin capital u with ogonek
-    $string = str_replace ("\330", '&#0370;', $string);
-    // latin capital u with macron
-    $string = str_replace ("\333", '&#0362;', $string);
-    // latin capital z with caron
-    $string = str_replace ("\336", '&#0381;', $string);
-    // latin small a with ogonek
-    $string = str_replace ("\340", '&#0261;', $string);
-    // latin small c with caron
-    $string = str_replace ("\350", '&#0269;', $string);
-    // latin small e with ogonek
-    $string = str_replace ("\346", '&#0281;', $string);
-    // latin small e with dot above
-    $string = str_replace ("\353", '&#0279;', $string);
-    // latin small i with ogonek
-    $string = str_replace ("\341", '&#0303;', $string);
-    // latin small s with caron
-    $string = str_replace ("\360", '&#0353;', $string);
-    // latin small u with ogonek
-    $string = str_replace ("\370", '&#0371;', $string);
-    // latin small u with macron
-    $string = str_replace ("\373", '&#0363;', $string);
-    // latin small z with caron
-    $string = str_replace ("\376", '&#0382;', $string);
-
-    return (charset_decode_iso_8859_1($string));
 }
 
 /*
@@ -776,7 +673,6 @@ function charset_decode_koi8r ($string) {
     return $string;
 }
 
-
 /*
  * Set up the language to be output
  * if $do_search is true, then scan the browser information
@@ -785,7 +681,7 @@ function charset_decode_koi8r ($string) {
 function set_up_language($sm_language, $do_search = false) {
 
     static $SetupAlready = 0;
-    global $HTTP_ACCEPT_LANGUAGE, $use_gettext, $languages,
+    global $use_gettext, $languages,
            $squirrelmail_language, $squirrelmail_default_language,
            $sm_notAlias;
 
@@ -794,8 +690,8 @@ function set_up_language($sm_language, $do_search = false) {
     }
     $SetupAlready = TRUE;
 
-    if ($do_search && ! $sm_language && isset($HTTP_ACCEPT_LANGUAGE)) {
-        $sm_language = substr($HTTP_ACCEPT_LANGUAGE, 0, 2);
+    if ($do_search && ! $sm_language && isset($_SERVER['HTTP_ACCEPT_LANGUAGE'])) {
+        $sm_language = substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2);
     }
     
     if (!$sm_language && isset($squirrelmail_default_language)) {
@@ -821,17 +717,8 @@ function set_up_language($sm_language, $do_search = false) {
         }
         setlocale(LC_ALL, $sm_notAlias);
         $squirrelmail_language = $sm_notAlias;
-        if ($squirrelmail_language == 'ja_JP' && function_exists('mb_detect_encoding') ) {
-            header ('Content-Type: text/html; charset=EUC-JP');
-            if (!function_exists('mb_internal_encoding')) {
-                echo _("You need to have php4 installed with the multibyte string function enabled (using configure option --with-mbstring).");
-            }
-            mb_internal_encoding('EUC-JP');
-            mb_http_output('pass');
-        } else {
         header( 'Content-Type: text/html; charset=' . $languages[$sm_notAlias]['CHARSET'] );
     }
-}
 }
 
 function set_my_charset(){
@@ -933,14 +820,8 @@ $languages['it_IT']['NAME']    = 'Italian';
 $languages['it_IT']['CHARSET'] = 'iso-8859-1';
 $languages['it']['ALIAS'] = 'it_IT';
 
-$languages['ja_JP']['NAME']    = 'Japanese';
-$languages['ja_JP']['CHARSET'] = 'iso-2022-jp';
-$languages['ja_JP']['XTRA_CODE'] = 'japanese_charset_xtra';
-$languages['ja']['ALIAS'] = 'ja_JP';
-
 $languages['ko_KR']['NAME']    = 'Korean';
 $languages['ko_KR']['CHARSET'] = 'euc-KR';
-$languages['ko_KR']['XTRA_CODE'] = 'korean_charset_xtra';
 $languages['ko']['ALIAS'] = 'ko_KR';
 
 $languages['nl_NL']['NAME']    = 'Dutch';
@@ -983,9 +864,11 @@ $languages['zh_TW']['NAME']    = 'Taiwan';
 $languages['zh_TW']['CHARSET'] = 'big5';
 $languages['tw']['ALIAS'] = 'zh_TW';
 
+/*
 $languages['zh_TW']['NAME']    = 'Chinese';
 $languages['zh_TW']['CHARSET'] = 'gb2312';
 $languages['tw']['ALIAS'] = 'zh_CN';
+*/
 
 $languages['sk_SK']['NAME']     = 'Slovak';
 $languages['sk_SK']['CHARSET']  = 'iso-8859-2';
@@ -1011,14 +894,6 @@ $languages['bg_BG']['NAME']    = 'Bulgarian';
 $languages['bg_BG']['CHARSET'] = 'windows-1251';
 $languages['bg']['ALIAS'] = 'bg_BG';
 
-// Right to left languages
-
-$languages['he_HE']['NAME']    = 'Hebrew';
-$languages['he_HE']['CHARSET'] = 'windows-1255';
-$languages['he_HE']['DIR']     = 'rtl';
-$languages['he']['ALIAS']      = 'he_HE';
-
-
 /* Detect whether gettext is installed. */
 $gettext_flags = 0;
 if (function_exists('_')) {
@@ -1038,7 +913,7 @@ if ($gettext_flags == 7) {
 /* If we can fake gettext, try that */
 elseif ($gettext_flags == 0) {
     $use_gettext = true;
-    include_once(SM_PATH . 'functions/gettext.php');
+    include_once('../functions/gettext.php');
 } else {
     /* Uh-ho.  A weird install */
     if (! $gettext_flags & 1) {
@@ -1056,114 +931,6 @@ elseif ($gettext_flags == 0) {
             return;
         }
     }
-}
-
-
-/*
- * Japanese charset extra function
- *
- */
-function japanese_charset_xtra() {
-    $ret = func_get_arg(1);  /* default return value */
-    if (function_exists('mb_detect_encoding')) {
-        switch (func_get_arg(0)) { /* action */
-        case 'decode':
-            $detect_encoding = mb_detect_encoding($ret);
-            if ($detect_encoding == 'JIS' ||
-                $detect_encoding == 'EUC-JP' ||
-                $detect_encoding == 'SJIS') {
-                
-                $ret = mb_convert_encoding($ret, 'EUC-JP', 'AUTO');
-            }
-            break;
-        case 'encode':
-            $detect_encoding = mb_detect_encoding($ret);
-            if ($detect_encoding == 'JIS' ||
-                $detect_encoding == 'EUC-JP' ||
-                $detect_encoding == 'SJIS') {
-                
-                $ret = mb_convert_encoding($ret, 'JIS', 'AUTO');
-            }
-            break;
-        case 'strimwidth':
-            $width = func_get_arg(2);
-            $ret = mb_strimwidth($ret, 0, $width, '...'); 
-            break;
-        case 'encodeheader':
-            $result = '';
-            if (strlen($ret) > 0) {
-                $tmpstr = mb_substr($ret, 0, 1);
-                $prevcsize = strlen($tmpstr);
-                for ($i = 1; $i < mb_strlen($ret); $i++) {
-                    $tmp = mb_substr($ret, $i, 1);
-                    if (strlen($tmp) == $prevcsize) {
-                        $tmpstr .= $tmp;
-                    } else {
-                        if ($prevcsize == 1) {
-                            $result .= $tmpstr;
-                        } else {
-                            $result .= mb_encode_mimeheader($tmpstr);
-                        }
-                        $tmpstr = $tmp;
-                        $prevcsize = strlen($tmp);
-                    }
-                }
-                if (strlen($tmpstr)) {
-                    if (strlen(mb_substr($tmpstr, 0, 1)) == 1)
-                        $result .= $tmpstr;
-                    else
-                        $result .= mb_encode_mimeheader($tmpstr);
-                }
-            }
-            $ret = $result;
-            //$ret = mb_encode_mimeheader($ret);
-            break;
-        case 'decodeheader':
-            $ret = str_replace("\t", "", $ret);
-            if (eregi('=\\?([^?]+)\\?(q|b)\\?([^?]+)\\?=', $ret))
-                $ret = mb_decode_mimeheader($ret);
-            $ret = mb_convert_encoding($ret, 'EUC-JP', 'AUTO');
-            break;
-        case 'downloadfilename':
-            $useragent = func_get_arg(2);
-            if (strstr($useragent, 'Windows') !== false ||
-                strstr($useragent, 'Mac_') !== false) {
-                $ret = mb_convert_encoding($ret, 'SJIS', 'AUTO');
-            } else {
-                $ret = mb_convert_encoding($ret, 'EUC-JP', 'AUTO');
-}
-            break;
-        }
-    }
-    return $ret;
-}
-
-
-/*
- * Korean charset extra function
- * Hangul(Korean Character) Attached File Name Fix.
- */
-function korean_charset_xtra() {
-    
-    $ret = func_get_arg(1);  /* default return value */
-    if (func_get_arg(0) == 'downloadfilename') { /* action */
-        $ret = str_replace("\x0D\x0A", '', $ret);  /* Hanmail's CR/LF Clear */
-        for ($i=0;$i<strlen($ret);$i++) {
-            if ($ret[$i] >= "\xA1" && $ret[$i] <= "\xFE") {   /* 0xA1 - 0XFE are Valid */
-                $i++;
-                continue;
-            } else if (($ret[$i] >= 'a' && $ret[$i] <= 'z') || /* From Original ereg_replace in download.php */
-                       ($ret[$i] >= 'A' && $ret[$i] <= 'Z') ||
-                       ($ret[$i] == '.') || ($ret[$i] == '-')) {
-                continue;
-            } else {
-                $ret[$i] = '_';
-            }
-        }
-
-    }
-
-    return $ret;
 }
 
 ?>

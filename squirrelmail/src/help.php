@@ -11,14 +11,10 @@
  * $Id$
  */
 
-/* Path for SquirrelMail required files. */
-define('SM_PATH','../');
-
-/* SquirrelMail required files. */
-require_once(SM_PATH . 'include/validate.php');
-require_once(SM_PATH . 'functions/display_messages.php');
-require_once(SM_PATH . 'functions/imap.php');
-require_once(SM_PATH . 'functions/array.php');
+require_once('../src/validate.php');
+require_once('../functions/display_messages.php');
+require_once('../functions/imap.php');
+require_once('../functions/array.php');
 
 displayPageHeader($color, 'None' );
 
@@ -41,7 +37,6 @@ $helpdir[8] = 'FAQ.hlp';
  */
 
 function get_info($doc, $pos) {
-
     for ($n=$pos; $n < count($doc); $n++) {
         if (trim(strtolower($doc[$n])) == '<chapter>'
             || trim(strtolower($doc[$n])) == '<section>') {
@@ -76,34 +71,36 @@ function get_info($doc, $pos) {
                 $ary[1] = $ary[0];
                 $ary[2] = $ary[0];
             }
-	    return( $ary );
+        return ($ary);
         }
     }
-    
     $ary[0] = _("ERROR: Help files are not in the right format!");
     $ary[1] = $ary[0];
 
-    return( $ary );
+    return $ary;
 }
 
 /**************[ END HELP FUNCTIONS ]******************/
 
+?>
 
+<br>
+<table width="95%" align="center" cellpadding="2" cellspacing="2" border="0">
+ <tr>
+  <td bgcolor="<?php echo $color[0] ?>">
+   <center><b><?php echo _("Help") ?></b></center>
+  </td>
+ </tr>
+</table>
 
-echo html_tag( 'table',
-        html_tag( 'tr',
-            html_tag( 'td','<center><b>' . _("Help") .'</b></center>', 'center', $color[0] )
-        ) ,
-    'center', '', 'width="95%" cellpadding="1" cellspacing="2" border="0"' );
+<?php do_hook("help_top") ?>
 
-do_hook("help_top");
-
-echo html_tag( 'table', '', 'center', '', 'width="90%" cellpadding="0" cellspacing="10" border="0"' ) .
-        html_tag( 'tr' ) .
-            html_tag( 'td' );
-
-if (isset($HTTP_REFERER)) {
-    $ref = strtolower($HTTP_REFERER);
+<table width="90%" cellpadding="0" cellspacing="10" border="0" align="center">
+<tr>
+<td>
+<?php 
+if (isset($_SERVER['HTTP_REFERER'])) {
+    $ref = strtolower($_SERVER['HTTP_REFERER']);
     if (strpos($ref, 'src/compose')){
         $context = 'compose';
     } else if (strpos($ref, 'src/addr')){
@@ -165,25 +162,24 @@ if ($help_exists == true) {
         $chapter = 3;
     } else if ($context == 'search'){
         $chapter = 8;
-    } else if ( isset( $_GET['chapter'] ) ) {
-    	$chapter = intval( $_GET['chapter']);
-    } else {
-    	$chapter = 0;
+    } else if (isset($_GET['chapter'])) {
+        $chapter = intval($_GET['chapter']);
+    }
+    else {
+        $chapter = 0;
     }
 
-    if ( $chapter == 0 || !isset( $helpdir[$chapter] ) ) {
-        echo html_tag( 'table', '', 'center', '', 'cellpadding="0" cellspacing="0" border="0"' );
-	            html_tag( 'tr' ) .
-                        html_tag( 'td' ) .
-                             '<b><center>' . _("Table of Contents") . '</center></b><br>';
+    if ($chapter == 0 || !isset($helpdir[$chapter])) {
+        echo '<table cellpadding="0" cellspacing="0" border="0" align="center"><tr><td>' .
+             '<b><center>' . _("Table of Contents") . '</center></b><br>';
         do_hook('help_chapter');
-        echo html_tag( 'ol' );
+        echo '<ol>';
         for ($i=0; $i < count($helpdir); $i++) {
             $doc = file("../help/$user_language/$helpdir[$i]");
             $help_info = get_info($doc, 0);
             echo '<li><a href="../src/help.php?chapter=' . ($i+1)
-                 . '">' . $help_info[0] . '</a>' .
-                 html_tag( 'ul', $help_info[2] );
+                 . '">' . $help_info[0] . '</a>';
+                 echo '<ul>' . $help_info[2] . '</ul>';
         }
         echo '</ol></td></tr></table>';
     } else {
@@ -199,7 +195,7 @@ if ($help_exists == true) {
         }
         echo '<a href="../src/help.php">' . _("Table of Contents") . '</a>';
         if ($chapter >= count($helpdir)){
-            echo ' | <font color="$color[9]">' . _("Next") . '</font>';
+            echo ' | <font color="' . $color[9]. '">' . _("Next") . '</font>';
         } else {
             echo ' | <a href="../src/help.php?chapter=' . ($chapter+1)
                  . '">' . _("Next") . '</a>';
@@ -211,15 +207,17 @@ if ($help_exists == true) {
         if (isset($help_info[1])){
             echo $help_info[1];
         } else {
-            echo html_tag( 'p', $help_info[2], 'left' );
+            echo '<p>' . $help_info[2] . '</p>';
         }
              
         $section = 0;
         for ($n = $help_info[3]; $n < count($doc); $n++) {
             $section++;
             $help_info = get_info($doc, $n);
-            echo "<b>$chapter.$section - $help_info[0]</b>" .
-                html_tag( 'ul', $help_info[1] );
+            echo "<b>$chapter.$section - $help_info[0]</b>";
+            echo '<ul>';
+            echo $help_info[1];
+            echo '</ul>';
             $n = $help_info[3];
         }
 
@@ -227,9 +225,6 @@ if ($help_exists == true) {
     }
 }
 do_hook('help_bottom');
-
-echo html_tag( 'tr',
-            html_tag( 'td', '&nbsp;', 'left', $color[0] )
-        ).
-       '</table></body></html>';
 ?>
+<tr><td bgcolor="<?php echo $color[0] ?>">&nbsp;</td></tr></table>
+</body></html>

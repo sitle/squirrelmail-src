@@ -1,20 +1,28 @@
 <?php
 
-define('SM_PATH','../../');
-
- /* SquirrelMail required files. */
-require_once(SM_PATH . 'include/validate.php');
-require_once(SM_PATH . 'functions/imap.php');
+    chdir('..');
+    include_once ('../src/validate.php');
+    include_once ('../functions/imap.php');
     
+    /* GLOBALS */
+
+    $username = $_SESSION['username'];
+    $key  = $_COOKIE['key'];
+    $onetimepad = $_SESSION['onetimepad'];
+
+    $mailbox = $_GET['mailbox'];
+    $passed_id = $_GET['passed_id'];
+    $startMessage = $_GET['startMessage'];
+
+    /* END GLOBALS */
+
     displayPageHeader($color, $mailbox);
 
     $imap_stream = sqimap_login($username, $key, $imapServerAddress, 
        $imapPort, 0);
     sqimap_mailbox_select($imap_stream, $mailbox);
-    $sid = sqimap_session_id($uid_support)
-    fputs($imap_stream, $sid.' FETCH ' . $passed_id . ' RFC822' . "\r\n");
-    
-    $read = sqimap_read_data($imap_stream, $sid, true, $response, $message);
+    fputs($imap_stream, 'a010 FETCH ' . $passed_id . ' RFC822' . "\r\n");
+    $read = sqimap_read_data($imap_stream, 'a010', true, $response, $message);
     array_shift($read);
 
     if ($spamcop_method == 'quick_email' || 
@@ -22,7 +30,7 @@ require_once(SM_PATH . 'functions/imap.php');
        // Use email-based reporting -- save as an attachment
        if(!isset($composesession)) {
         $composesession = 0;
-        session_register('composesession');
+        sqsession_register($composesession, 'composesession');
        }
        if (!isset($session)) {
          $session = "$composesession" +1;
@@ -31,7 +39,7 @@ require_once(SM_PATH . 'functions/imap.php');
 
        if (!isset($attachments)) {
           $attachments = array();
-          session_register('attachments');
+          sqsession_register($attachments, 'attachments');
        }
     
        foreach ($attachments as $info) {
@@ -51,7 +59,9 @@ require_once(SM_PATH . 'functions/imap.php');
        foreach ($read as $line) {
           fputs($fp, $line);
        }
+       sqsession_unregister('attachments');
        $attachments[] = $newAttachment;
+       sqsession_register($attachments , 'attachments');
     
        $fn = getPref($data_dir, $username, 'full_name');
        $em = getPref($data_dir, $username, 'email_address');
@@ -102,7 +112,7 @@ agree to follow SpamCop's rules/terms of service/etc.</p>
   <input type=hidden name="send_to" value="<?PHP echo $report_email ?>">
   <input type=hidden name="send_to_cc" value="">
   <input type=hidden name="send_to_bcc" value="">
-  <input type=hidden name="subject" value="reply anyway">
+  <input type=hidden name="subject" value="Spam Submission">
   <input type=hidden name="identity" value="default">
   <input type=hidden name="session" value="<?PHP echo $session?>">
   <input type=submit name="send" value="Send Spam Report">

@@ -12,37 +12,31 @@
 * $Id$
 */
 
-/* Path for SquirrelMail required files. */
-define('SM_PATH','../');
-
-/* SquirrelMail required files. */
-require_once(SM_PATH . 'functions/i18n.php');
-require_once(SM_PATH . 'functions/strings.php');
-require_once(SM_PATH . 'config/config.php');
-require_once(SM_PATH . 'functions/prefs.php');
-require_once(SM_PATH . 'functions/imap.php');
-require_once(SM_PATH . 'functions/plugin.php');
-require_once(SM_PATH . 'functions/constants.php');
-require_once(SM_PATH . 'functions/page_header.php');
-require_once(SM_PATH . 'functions/global.php');
+require_once('../functions/i18n.php');
+require_once('../functions/strings.php');
+require_once('../config/config.php');
+require_once('../functions/prefs.php');
+require_once('../functions/imap.php');
+require_once('../functions/plugin.php');
+require_once('../functions/constants.php');
+require_once('../functions/page_header.php');
+require_once('../src/global.php');
 
 // Remove slashes if PHP added them
-if (get_magic_quotes_gpc()) {
-    global $REQUEST_METHOD;
 
+$REQUEST_METHOD = $_SERVER['REQUEST_METHOD'];
+if (get_magic_quotes_gpc()) {
     if ($REQUEST_METHOD == 'POST') {
-        global $HTTP_POST_VARS;
-        RemoveSlashes($HTTP_POST_VARS);
+        RemoveSlashes($_POST);
     } else if ($REQUEST_METHOD == 'GET') {
-        global $HTTP_GET_VARS;
-        RemoveSlashes($HTTP_GET_VARS);
+        RemoveSlashes($_GET);
     }
 }
 
 /* Before starting the session, the base URI must be known. Assuming */
 /* that this file is in the src/ subdirectory (or something).        */
 if (!function_exists('sqm_baseuri')){
-    require_once(SM_PATH . 'functions/display_messages.php');
+    require_once('../functions/display_messages.php');
 }
 $base_uri = sqm_baseuri();
 
@@ -52,13 +46,30 @@ $location = get_location();
 session_set_cookie_params (0, $base_uri);
 session_start();
 
-session_unregister ('user_is_logged_in');
-session_register ('base_uri');
+sqsession_unregister ('user_is_logged_in');
+sqsession_register ($base_uri, 'base_uri');
 
-if (! isset($squirrelmail_language) ||
+
+/* get globals we me need */
+
+if (isset($_POST['login_username'])) {
+    $login_username = $_POST['login_username'];
+}
+if (!isset($_COOKIE['squirrelmail_language']) ||
     $squirrelmail_language == '' ) {
     $squirrelmail_language = $squirrelmail_default_language;
 }
+else {
+    $squirrelmail_language = $_COOKIE['squirrelmail_language'];
+}
+if (isset($_POST['secretkey'])) {
+    $secretkey = $_POST['secretkey'];
+}
+if (isset($_POST['js_autodetect_results'])) {
+    $js_autodetect_results = $_POST['js_autodetect_results'];
+}
+/* end of get globals */
+
 set_up_language($squirrelmail_language, true);
 /* Refresh the language cookie. */
 setcookie('squirrelmail_language', $squirrelmail_language, time()+2592000, 
@@ -75,10 +86,7 @@ if (!session_is_registered('user_is_logged_in')) {
 
     $onetimepad = OneTimePadCreate(strlen($secretkey));
     $key = OneTimePadEncrypt($secretkey, $onetimepad);
-    session_register('onetimepad');
-
-    /* remove redundant spaces */
-    $login_username = trim($login_username);
+    sqsession_register($onetimepad, 'onetimepad');
 
     /* Verify that username and password are correct. */
     if ($force_username_lowercase) {
@@ -94,15 +102,13 @@ if (!session_is_registered('user_is_logged_in')) {
         logout_error( $errString, $errTitle );            
         exit;
     } else {
-        $sqimap_capabilities = sqimap_capability($imapConnection);
-	session_register('sqimap_capabilities');
         $delimiter = sqimap_get_delimiter ($imapConnection);
     }
     sqimap_logout($imapConnection);
-    session_register('delimiter');
-    global $username;    
+    sqsession_register($delimiter, 'delimiter');
+
     $username = $login_username;
-    session_register ('username');
+    sqsession_register ($username, 'username');
     setcookie('key', $key, 0, $base_uri);
     do_hook ('login_verified');
 
@@ -113,23 +119,24 @@ $user_is_logged_in = true;
 $just_logged_in = true;
 
 /* And register with them with the session. */
-session_register ('user_is_logged_in');
-session_register ('just_logged_in');
+sqsession_register ($user_is_logged_in, 'user_is_logged_in');
+sqsession_register ($just_logged_in, 'just_logged_in');
 
 /* parse the accepted content-types of the client */
 $attachment_common_types = array();
 $attachment_common_types_parsed = array();
-session_register('attachment_common_types');
-session_register('attachment_common_types_parsed');
+sqsession_register($attachment_common_types, 'attachment_common_types');
+sqsession_register($attachment_common_types_parsed, 'attachment_common_types_parsed');
 
 $debug = false;
-if (isset($HTTP_SERVER_VARS['HTTP_ACCEPT']) &&
-    !isset($attachment_common_types_parsed[$HTTP_SERVER_VARS['HTTP_ACCEPT']])) {
-    attachment_common_parse($HTTP_SERVER_VARS['HTTP_ACCEPT'], $debug);
+
+if (isset($_SERVER['HTTP_ACCEPT']) &&
+    !isset($attachment_common_types_parsed[$_SERVER['HTTP_ACCEPT']])) {
+    attachment_common_parse($_SERVER['HTTP_ACCEPT'], $debug);
 }
-if (isset($HTTP_ACCEPT) &&
-    !isset($attachment_common_types_parsed[$HTTP_ACCEPT])) {
-    attachment_common_parse($HTTP_ACCEPT, $debug);
+if (isset($_SERVER['HTTP_ACCEPT']) &&
+    !isset($attachment_common_types_parsed[$_SERVER['HTTP_ACCEPT']])) {
+    attachment_common_parse($_SERVER['HTTP_ACCEPT'], $debug);
 }
 
 /* Complete autodetection of Javascript. */
@@ -151,35 +158,13 @@ if ($javascript_setting != SMPREF_JS_ON){
 /* Update the prefs */
 setPref($data_dir, $username, 'javascript_on', $js_pref);
 
-global $attachments;
-$attachments = unserialize(getPref($data_dir, $username, 'attachments', 0));
 /* Compute the URL to forward the user to. */
-    global $session_expired_location, $session_expired_post;
-    if (isset($session_expired_location) && $session_expired_location) {
-       $compose_new_win = getPref($data_dir, $username, 'compose_new_win', 0);
-       if ($compose_new_win) {
-          $redirect_url = $session_expired_location;
-       } else {
-          $redirect_url = 'webmail.php?right_frame='.urldecode($session_expired_location);
-       }
-       session_unregister('session_expired_location');
-       unset($session_expired_location);
-       if (is_array($attachments)) {
-          session_register('attachments');
-       }
-    } else {
-       if (is_array($attachments)) {
-          $hashed_attachment_dir = getHashedDir($username, $attachment_dir);
-          foreach ($attachments as $attachment) {
-    	     $attached_file = $hashed_attachment_dir.'/'.$attachment['localfilename'];
-    	     if (file_exists($attached_file)) {
-                unlink($attached_file);
-    	     }
-          }
-          removePref($data_dir, $username, 'attachments');
-       }
-       $redirect_url = 'webmail.php';
-    }
+if(isset($rcptemail)) {
+    $redirect_url = 'webmail.php?right_frame=compose.php&rcptaddress=';
+    $redirect_url .= $rcptemail;
+} else {
+    $redirect_url = 'webmail.php';
+}
 
 /* Send them off to the appropriate page. */
 header("Location: $redirect_url");
