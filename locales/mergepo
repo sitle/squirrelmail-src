@@ -5,8 +5,13 @@
 # ** It creates a backup of the old PO file as squirrelmail.po.bak
 # ** and puts the merged version in squirrelmail.po
 # **
-# ** Usage:   mergepo <locale id>
-# ** Example: mergepo es_ES
+# ** Usage:   mergepo <locale id> [translation]
+# ** Examples: mergepo es_ES 
+# **           mergepo es_ES squirrelmail
+# **           mergepo es_ES view_as_html
+# **
+# ** translation is optional. It defines which pot used when merging.
+# ** variable defaults to squirrelmail.
 # **
 # ** Philipe Mingo <mingo@rotedic.com>
 # ** Konstantin Riabitsev <icon@duke.edu>
@@ -16,6 +21,17 @@
 if [ -z "$1" ]; then
  echo "USAGE: mergepo [localename]"
  exit 1
+fi
+
+if [ -z "$2" ]; then
+ string="squirrelmail"
+else
+ if [ -f po/${2}.pot ]; then
+    string=$2
+ else
+    echo "ERROR: No such template in po directory"
+    exit 1
+ fi
 fi
 
 WORKDIR=./locale
@@ -36,18 +52,23 @@ if [ ! -d $LOCALEDIR ]; then
  fi
 fi
 
-echo "Merging $LOCALEDIR/LC_MESSAGES/squirrelmail.po"
-mv $LOCALEDIR/LC_MESSAGES/squirrelmail.po \
-     $LOCALEDIR/LC_MESSAGES/squirrelmail.po.bak 
-msgmerge $LOCALEDIR/LC_MESSAGES/squirrelmail.po.bak po/squirrelmail.pot > \
-     $LOCALEDIR/LC_MESSAGES/squirrelmail.po
+if [ -f $LOCALEDIR/LC_MESSAGES/${string}.po ]; then
+    echo "Merging $LOCALEDIR/LC_MESSAGES/${string}.po"
+    mv $LOCALEDIR/LC_MESSAGES/${string}.po \
+     $LOCALEDIR/LC_MESSAGES/${string}.po.bak
+    msgmerge $LOCALEDIR/LC_MESSAGES/${string}.po.bak po/${string}.pot > \
+     $LOCALEDIR/LC_MESSAGES/${string}.po
 
 # msgmerge will split long lines, such as the RCS Id line. If it did split
 # it, join the pieces back together.
-ed -s $LOCALEDIR/LC_MESSAGES/squirrelmail.po << END
+ed -s $LOCALEDIR/LC_MESSAGES/${string}.po << END
 /^"Project-Id-Version:/v/\\n"$/j\\
 s/""//
 wq
 END
 
-echo "Old po file renamed to squirrelmail.po.bak"
+    echo "Old po file renamed to ${string}.po.bak"
+else
+    echo "Created new $LOCALEDIR/LC_MESSAGES/${string}.po"
+    cp po/${string}.pot $LOCALEDIR/LC_MESSAGES/${string}.po
+fi 
