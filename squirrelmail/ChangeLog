@@ -5,11 +5,16 @@
 Version 1.2.10 [cvs]
 ---------------------------------
   - Fixed version checking to ignore patch levels.
-  - Fixed sqsession_register to register the session correctly in
-    verions of PHP below 4.1.0.
+  - Fixed bugs / worked around PHP problems in sqsession_register.
+    This should fix a small range of session-related problems.
   - Fixed that long preferences lines where not being read correctly.
-  - Raise requirements to PHP 4.0.4 (was 4.0.2).
+  - Raised requirements to PHP 4.0.4 (was 4.0.2).
   - Support for charactersets 8859-4, 8859-13 and windows-1257.
+  - Fixed problem with IE6 and iso-8859-13.
+  - Various E_ALL messages eliminated.
+  - Many updated translations.
+  - Allow POP3-server port number to be set in mail_fetch.
+  - Fixed sqm_topdir starting at the root.
 
 
 Version 1.2.9 -- October 30, 2002
