@@ -62,7 +62,7 @@ class Deliver {
             if ($i == $entCount-1) $last = true;
         }
         if ($boundary && $last) {
-            $s = "--".$boundary."--\r\n\r\n";
+            $s = "--".$boundary_new."--\r\n\r\n";
             $length_raw += strlen($s);
             if ($stream) {
                 $this->preWriteToStream($s);
