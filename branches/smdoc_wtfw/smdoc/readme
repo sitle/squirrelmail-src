@@ -1,0 +1,62 @@
+NAME
+	WTF - Wiki Type Framework
+
+VERSION
+	0.19.3
+
+DESCRIPTION
+	WTF is not a Wiki engine, although it can be used as one. It is
+	actually a generic web content management engine allowing you to create
+	web documents easily from the comfort of your browser. If you must
+	compare it to something, consider it a cross between a Blog, a Wiki,
+	and a forum.
+
+DOCUMENTATION
+	There is currently no system documentation apart from the files located
+	within this archive.
+
+REQUIREMENTS
+	* PHP 4.0.4+ (tested with 4.2.1)
+	* MySQL 3+ (tested with 3.23.28)
+	* A web server (duh) with access to the above tools.
+	
+INSTALLATION
+	* Extract the archive to your web directory. If you are overwriting an old
+	installation, make sure you backup your wtf.config.php and index.php files
+	if you want to keep them.
+	* Edit index.php to adjust the PATH constant so as to point to the location
+	of wtf.config.php.
+	* Edit wtf.config.php to set the database connection constants and the URI
+	settings.
+	* Use mysql.sql to build the required table structure (additional fields
+	will need to be added to this table by the code so make sure the user has
+	permission to ALTER tables within this database) and create the initial
+	data.
+	* Fire up your web browser, hit the server and log in as "root" with the
+	default password of "root". Then hit edit to change your root password
+	to something a little more secure.
+	* Enjoy.
+	
+COPYRIGHT AND LICENSE
+	The information below applies to everything in this distribution, except
+	where noted.
+
+	Copyright 2001 by Paul James.
+
+		paul@peej.co.uk
+		http://www.peej.co.uk/
+
+	WTF is free software; you can redistribute it and/or modify it under
+	the terms of the GNU General Public License as published by the Free
+	Software Foundation; either version 2 of the License, or (at your
+	option) any later version.
+
+	WTF is distributed in the hope that it will be useful, but WITHOUT ANY
+	WARRANTY; without even the implied warranty of MERCHANTABILITY or
+	FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for
+	more details.
+
+	You should have received a copy of the GNU General Public License along
+	with WTF (COPYING); if not, go to http://www.fsf.org/ or write to the
+	Free Software Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA
+	02111-1307, USA.
