@@ -3,11 +3,10 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2003-11-15 16:06-0500\n"
+"POT-Creation-Date: 2003-11-24 08:55-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -15,7 +14,7 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: addrbook_search.php:316 addrbook_search.php:343
+#: addrbook_search.php:315 addrbook_search.php:332
 msgid "Add"
 msgstr ""
 
@@ -31,7 +30,7 @@ msgstr ""
 msgid "Add to Existing Group: "
 msgstr ""
 
-#: addrbook_search.php:334
+#: addrbook_search.php:328
 msgid "Add to New Group (supply group name):"
 msgstr ""
 
@@ -39,8 +38,8 @@ msgstr ""
 msgid "Address Groups"
 msgstr ""
 
-#: abook_group_database.php:216 abook_group_database.php:315
-#: abook_group_database.php:384 abook_group_database.php:443
+#: abook_group_database.php:217 abook_group_database.php:317
+#: abook_group_database.php:385 abook_group_database.php:453
 msgid "Addressbook is read-only"
 msgstr ""
 
@@ -48,9 +47,13 @@ msgstr ""
 msgid "All address books"
 msgstr ""
 
-#: abook_group_database.php:477
+#: abook_group_database.php:487
 #, c-format
 msgid "Another group %s already exists"
+msgstr ""
+
+#: modifyGroup.php:70
+msgid "Are you sure you want to delete "
 msgstr ""
 
 #: addrbook_search.php:163
@@ -58,15 +61,19 @@ msgid "Close window"
 msgstr ""
 
 #: abook_group_database.php:109 abook_group_database.php:141
-#: abook_group_database.php:190 abook_group_database.php:298
-#: abook_group_database.php:372 abook_group_database.php:422
-#: abook_group_database.php:496
+#: abook_group_database.php:190 abook_group_database.php:301
+#: abook_group_database.php:373 abook_group_database.php:423
+#: abook_group_database.php:506
 #, c-format
 msgid "Database error: %s"
 msgstr ""
 
-#: list_abook_group.php:74
+#: list_abook_group.php:75
 msgid "Delete"
+msgstr ""
+
+#: modifyGroup.php:66
+msgid "Delete Group"
 msgstr ""
 
 #: abook_group_interface.php:66 addrbook_search.php:31
@@ -74,26 +81,30 @@ msgid "E-mail"
 msgstr ""
 
 #: abook_group_database.php:59 abook_group_database.php:175
-#: abook_group_database.php:247 abook_group_database.php:256
-#: abook_group_database.php:328 abook_group_database.php:337
+#: abook_group_database.php:248 abook_group_database.php:259
+#: abook_group_database.php:329 abook_group_database.php:338
 msgid "Global address book"
 msgstr ""
 
-#: abook_group_database.php:237
+#: abook_group_database.php:238
 #, c-format
 msgid "Group %s already exists"
 msgstr ""
 
-#: abook_group_database.php:403 abook_group_database.php:462
+#: abook_group_database.php:404 abook_group_database.php:472
 #, c-format
 msgid "Group %s does not exist"
 msgstr ""
 
-#: abook_group_database.php:434
+#: abook_group_database.php:436
 msgid "Group name is unchanged."
 msgstr ""
 
-#: abook_group_interface.php:140 list_abook_group.php:51 setup.php:65
+#: abook_group_database.php:444
+msgid "Group name was empty."
+msgstr ""
+
+#: abook_group_interface.php:140 list_abook_group.php:52 setup.php:65
 msgid "Groups"
 msgstr ""
 
@@ -101,7 +112,7 @@ msgstr ""
 msgid "Info"
 msgstr ""
 
-#: list_abook_group.php:75
+#: list_abook_group.php:76
 msgid "List"
 msgstr ""
 
@@ -113,15 +124,15 @@ msgstr ""
 msgid "List all"
 msgstr ""
 
-#: listMembers.php:91
+#: listMembers.php:90
 msgid "Members"
 msgstr ""
 
-#: list_abook_group.php:73 modifyGroup.php:125
+#: list_abook_group.php:74 modifyGroup.php:156
 msgid "Modify"
 msgstr ""
 
-#: modifyGroup.php:82
+#: modifyGroup.php:113
 msgid "Modify Group Name"
 msgstr ""
 
@@ -129,7 +140,7 @@ msgstr ""
 msgid "Name"
 msgstr ""
 
-#: modifyGroup.php:110
+#: modifyGroup.php:141
 msgid "New Group Name"
 msgstr ""
 
@@ -137,23 +148,27 @@ msgstr ""
 msgid "New Group Name is Empty"
 msgstr ""
 
+#: modifyGroup.php:75
+msgid "No"
+msgstr ""
+
 #: addrbook_search.php:253 addrbook_search.php:282
 msgid "No persons matching your search was found"
 msgstr ""
 
-#: addrbook_search.php:325
+#: addrbook_search.php:319
 msgid "OR"
 msgstr ""
 
-#: modifyGroup.php:98
+#: modifyGroup.php:129
 msgid "Old Group Name"
 msgstr ""
 
-#: listMembers.php:138
+#: listMembers.php:137
 msgid "Remove"
 msgstr ""
 
-#: listMembers.php:69
+#: listMembers.php:68
 msgid "Remove Successful"
 msgstr ""
 
@@ -186,19 +201,23 @@ msgstr ""
 msgid "Use Addresses"
 msgstr ""
 
-#: abook_group_database.php:277
+#: abook_group_database.php:280
 msgid "User Already Exists in The Group"
 msgstr ""
 
-#: abook_group_database.php:351
+#: abook_group_database.php:352
 msgid "User Does Not Exist in The Group"
 msgstr ""
 
-#: list_abook_group.php:90
+#: modifyGroup.php:74
+msgid "Yes"
+msgstr ""
+
+#: list_abook_group.php:91
 msgid "You Currently Do Not Have Any Groups"
 msgstr ""
 
-#: listMembers.php:126
+#: listMembers.php:125
 msgid "You Currently Do Not Have Any Members In This Group"
 msgstr ""
 
