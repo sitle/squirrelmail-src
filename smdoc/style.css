@@ -139,20 +139,6 @@ blockquote, pre {
 	margin: 0px;
 	padding: 5px;
 }
-.member_vars,
-.member_func {
-    font-family: "courier new", monospace;
-    font-size: small;
-    background-color: #eeeeee;
-    margin: 5px 20px;
-    padding: 5px;
-}
-.parameters {
-    margin: 0px 20px;
-}
-.nb {
-    margin: 5px 20px 0px 20px;
-}
 a,
 a:link,
 a:visited,
@@ -182,15 +168,6 @@ p.quote {
 	background-color: #eeeeee;
 	padding: 10px;
 }
-tr.diff_add {
-	background-color: #ccffcc;
-}
-tr.diff_minus {
-	background-color: #ffcccc;
-}
-tr.diff_same {
-	background-color: #eeeeee;
-}
 div.preview {
 	background-color: #eeeeee;
 	padding: 5px;
@@ -215,8 +192,29 @@ tr.row_odd {
 tr.row_even {
 	background-color: #f9f9f9;
 }
-.alt_row {
-    background: #d3d1c2;
+tr.diff_add {
+	background-color: #ccffcc;
+}
+tr.diff_minus {
+	background-color: #ffcccc;
+}
+tr.diff_same {
+	background-color: #eeeeee;
+}
+td.separator {
+    border-bottom: 1px solid #afad97;
+    padding: 10px 0px 0px 0px;
+    text-align: center;
+    font-weight: bold;
+    font-size: normal;
+    color: #afad97;
+}
+td.heading {
+    color: gray;
+    font-size: small;
+    font-weight: bold;
+    text-align: left;
+    vertical-align: top;
 }
 input.error {
 	background-color: #ffcccc;
@@ -228,14 +226,18 @@ input.error {
     font-family: "courier new", monospace;
     font-size: small; 
 }
-
 .xsmall { 
     font-size: x-small; 
 }
-.subtext {
+.subtext,
+.subtext_center {
     color: #666666;
     font-size: small;
 }
+.subtext_center {
+    text-align: center;
+}
+
 OL.upper_roman {
     list-style-type: upper-roman
 }

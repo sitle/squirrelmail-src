@@ -10,79 +10,92 @@ function user_view_body(&$foowd, $className, $method, $user, $object, &$t)
 <table border="0" align="center">
 <tr>
     <td></td>
-    <td rowspan="14" width="10"><img src="empty.png" border="0" alt="" /></td>
+    <td rowspan="20" width="10"><img src="empty.png" border="0" alt="" /></td>
     <td></td>
 </tr>
 <tr>
-  <th align="left"><?php echo _("Username"); ?>:</th>
+  <td class="heading"><?php echo _("Username"); ?>:</td>
   <td><?php echo $t['username']; ?></td>
 </tr>
 <tr>
-  <th align="left"><?php echo _("Created"); ?>:</th>
+  <td class="heading"><?php echo _("Created"); ?>:</td>
   <td class="smalldate"><?php echo $t['created']; ?></td>
 </tr>
 <tr>
-  <th align="left" valign="top"><?php echo _("Last Visit"); ?>:</th>
+  <td class="heading"><?php echo _("Last Visit"); ?>:</td>
   <td class="smalldate"><?php echo $t['lastvisit']; ?></td>
 </tr>
+<?php // DISPLAY IM ID's IF PRESENT
+  if ( isset($t['IM_nicks']) || isset($t['irc_nick']) )
+  {
+?>
 <tr>
-  <th align="left" valign="top"><?php echo _("IRC nickname"); ?>:</th>
+    <td colspan="3" class="separator"><br /><? echo _("Contact Information"); ?></td>
+</tr>
+<?php
+    if ( isset($t['IM_nicks']) && is_array($t['IM_nicks']) && !empty($t['IM_nicks']) )
+    { 
+      foreach( $t['IM_nicks'] as $prot => $id )
+      { ?>
+<tr>
+  <td class="heading"><?php echo htmlspecialchars($prot); ?>:</td>
+  <td><?php echo htmlspecialchars($id); ?></td>
+</tr>
+<?php
+      }
+    }
+?>
+<tr>
+  <td class="heading"><?php echo _("IRC nickname"); ?>:</td>
   <td><?php echo ($t['irc_nick']) ? $t['irc_nick'] : $none; ?><br />
       <span class="subtext">IRC handle(s) used in #squirrelmail on irc.freenode.net</span></td>
 </tr>
-<tr>
-  <th align="left"><?php echo _("Other IMs"); ?>:</th>
-  <td><?php if ( is_array($t['IM_nicks']) && !empty($t['IM_nicks']) )
-            { 
-              echo '<table border="0" cellspacing="0" cellpadding="0">';
-              foreach( $t['IM_nicks'] as $prot => $id )
-              {
-                echo '<tr><td>', htmlspecialchars($prot), '&nbsp;</td><td>',
-                     htmlspecialchars($id), '</td></tr>';
-              }
-              echo '</table>';
-            }
-            else
-              echo $none;
-       ?></td>
-</tr>
 
+<?php
+  } // END DISPLAY IM IDs
 
-<?php if ( $t['update'] ) 
-      { ?>
+  // begin AUTHOR only elements
+  if ( $t['update'] ) 
+  { 
+?>
 <tr>
-    <td colspan="3" align="center" class="separator"><br /><? echo _("Private Attributes"); ?>:</td>
+    <td colspan="3" class="separator"><br /><? echo _("Private Attributes"); ?></td>
 </tr>
 <tr>
     <td colspan="3" align="center" class="subtext">
     <?php 
         $string = _("<a href=\"%s\">Private attributes</a> are not shared with third parties.");
         printf($string, getURI(array('object' => 'privacy')));
-    ?></td>
+    ?>
+    </td>
 </tr>
 <tr>
-  <th align="left"><?php echo _("Email"); ?>:</th>
+  <td class="heading"><?php echo _("Email"); ?>:</td>
   <td><?php echo ($t['email']) ? htmlspecialchars($t['email']) : $none; ?></td>
 </tr>
 <tr>
-  <th align="left"><?php echo _("Preferred SMTP Server"); ?>:</th>
+  <td class="heading"><?php echo _("Preferred Applications"); ?>:</td>
+  <td class="heading">&nbsp;</td>
+</tr>
+<tr>
+  <td class="heading">&nbsp;&nbsp;<?php echo _("SMTP Server"); ?>:</th>
   <td><?php echo ($t['SMTP_server'] == 'Unknown') ? $none : $t['SMTP_server']; ?></td>
 </tr>
 <tr>
-  <th align="left"><?php echo _("Preferred IMAP Server"); ?>:</th>
+  <td class="heading">&nbsp;&nbsp;<?php echo _("IMAP Server"); ?>:</th>
   <td><?php echo ($t['IMAP_server'] == 'Unknown') ? $none : $t['IMAP_server']; ?></td>
 </tr>
 <tr>
-  <th align="left"><?php echo _("SquirrelMail Version"); ?>:</th>
-  <td><?php echo ($t['SM_version'] == 'Unknown') ? $none : $t['SM_version']; ?><br />
-      <span class="subtext">Version of SquirrelMail you most frequently use/maintain</span></td>
+  <td class="heading">&nbsp;&nbsp;<?php echo _("SquirrelMail Version"); ?>:</th>
+  <td><?php echo ($t['SM_version'] == 'Unknown') ? $none : $t['SM_version']; ?></td>
 </tr>
 <tr>
     <td colspan="3" align="center"><br /><a href="<?php echo $t['update']; ?>">Update your profile</a>.</td>
 </tr>
+<?php 
+  } // END AUTHOR ONLY ELEMENTS
+?>
 
-<?php } ?>
 </table>
 <?php
-show($t);
-}
+} // end display function
