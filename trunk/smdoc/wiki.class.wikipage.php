@@ -255,7 +255,8 @@ class wikipage extends content { // a wikipage
 		}
 	}
 
-	function drawForm($url, $title = NULL, $titleIsEditable = FALSE, $content = NULL, $comment = NULL, $small = NULL, $loadtime = NULL) {
+	function drawForm($url, $title = NULL, $titleIsEditable = FALSE, $content = NULL, 
+                      $comment = NULL, $small = NULL, $loadtime = NULL) {
 		global $wtf;
 		if (isset($this)) {
 			$objectid = $this->objectid;
@@ -263,17 +264,15 @@ class wikipage extends content { // a wikipage
 			$updatorid = $this->updatorid;
 			if ($title == NULL) $title = $this->title;
 			if ($content == NULL) $content = $this->content;
-			if ($comment == NULL) $contentIsXML = $this->comment;
 		} else {
 			$objectid = '';
 			$version = 1;
 			$updatorid = NULL;
 			if ($title == NULL) $title = '';
 			if ($content == NULL) $content = '';
-			if ($comment == NULL) $comment = FALSE;
 		}
 		if ($loadtime == NULL) $loadtime = time();
-		echo '<wikipage_form url="', $url, '" ';
+		echo '<content_form url="', $url, '" ';
 		echo 'thingidfield="thingid" thingid="', $objectid, '" ';
 		echo 'versionfield="version" version="', $version, '" ';
 		echo 'loadtimefield="loadtime" loadtime="'.$loadtime.'" submit="submit" preview="preview">';
@@ -282,7 +281,7 @@ class wikipage extends content { // a wikipage
 		} else {
 			echo '<content_title title="', $title, '" version="', $version, '"/>';
 		}
-		echo '<content_canvas name="content" maxlength="', MAXCONTENTLENGTH, '">', $content, '</content_canvas>';
+		echo '<wikipage_canvas name="content" maxlength="', MAXCONTENTLENGTH, '">', $content, '</wikipage_canvas>';
 		if ($wtf->user->objectid == $updatorid && $wtf->user->objectid != ANONYMOUSUSERID && isset($small)) {
 			if ($small == 'on') {
 				echo '<content_smallupdate checked="checked" name="small"/>';
@@ -291,9 +290,9 @@ class wikipage extends content { // a wikipage
 			}
 		}
 		if ($comment) {
-			echo '<wikipage_comment name="comment" maxlength="', MAXWIKIPAGECOMMENTLENGTH, '">', $comment, '</wikipage_comment>';
+			echo '<wikipage_comment name="comment" maxlength="', MAXWIKIPAGECOMMENTLENGTH, '"></wikipage_comment>';
 		}
-		echo '</wikipage_form>';
+		echo '</content_form>';
 	}
 
 /*** Methods ***/
@@ -363,7 +362,7 @@ class wikipage extends content { // a wikipage
 			$preview = getValue('preview', FALSE);
 			$small = getValue('small', FALSE);		
 			$content = getValue('content', FALSE);
-			$comment = getValue('comment', '');
+			$comment = getValue('comment', TRUE);
 			$loadtime = getValue('loadtime', NULL);
 
 			if ($update) { // update thing
@@ -386,7 +385,7 @@ class wikipage extends content { // a wikipage
 					if ($result['success']) {
 						$this->save(); // save thing to database
 						$this->tidyArchive(); // tidy up archived versions of thing
-						echo '<content_edit_updated/>';
+						echo '<wikipage_edit_updated message="', $comment, '"/>';
 					} else {
 						echo '<content_edit_failed message="', $result['error'], '"/>';
 						echo '<syntax>', $result['syntaxCheck'], '</syntax>';
@@ -414,7 +413,8 @@ class wikipage extends content { // a wikipage
 			}
 
 	// display form
-			$this->drawForm(THINGIDURI.$this->objectid.'&amp;class='.get_class($this).'&amp;op=edit', $title, FALSE, $content, $comment, $small, $loadtime);
+			$this->drawForm(THINGIDURI.$this->objectid.'&amp;class='.get_class($this).'&amp;op=edit', 
+                            $title, FALSE, $content, $comment, $small, $loadtime);
 
 		} else {
 			echo '<thing_permissionerror method="edit" title="'.$this->title.'"/>';
@@ -501,9 +501,8 @@ $NOPARSETAG[] = 'wikipage';
 $NOPARSETAG[] = 'wikipage_preview';
 
 $FORMAT = array_merge($FORMAT, array(
-	'wikipage_form' => '<form method="post" action="{url}"><input type="hidden" name="{thingidfield}" value="{thingid}" /><input type="hidden" name="{versionfield}" value="{version}" /><input type="hidden" name="{loadtimefield}" value="{loadtime}" />',
-	'/wikipage_form' => '<p><input type="submit" name="{submit}" value="Save" /> <input type="submit" name="{preview}" value="Preview" /></p></form>
-<hr />
+	'wikipage_canvas' => '<p><textarea name="{name}" rows="22" maxlength="{maxlength}" style="width: 100%;" wrap="virtual">',
+	'/wikipage_canvas' => '</textarea></p>
 <p>
 <a href="'.THINGURI.'Text%20Formatting%20Rules#wikipage">Text Formatting Rules</a> for a wikipage.<br />
 <b>Emphasis:</b> \'\'italics\'\' | \'\'\'bold\'\'\' | ---- horizontal rule<br />
@@ -515,6 +514,8 @@ $FORMAT = array_merge($FORMAT, array(
 	'/wikipage_comment' => '"/></p>',
 	'wikipage_preview' => '<p>Page Preview:</p><table width="100%" class="preview"><tr><td>',
 	'/wikipage_preview' => '</td></tr></table>',
+    'wikipage_edit_updated' => '<h2 class="success">Edit Successful</h2><p>Page updated successfully.</p><p>Update comment: {message}</p>',
+    '/wikipage_edit_updated' => '',
 
 	'wikipage_history_header' => '',
 	'/wikipage_history_header' => '<p>Currently archived versions.</p><table><tr><th>Title</th><th>Version</th><th>Author</th><th>Created</th><th>Workspace</th><th>Comment</th><th colspan="2">Diff</th></tr>',
