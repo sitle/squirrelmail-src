@@ -37,6 +37,8 @@ if (isset($_GET['right_frame'])) {
 
 is_logged_in();
 
+do_hook('webmail_top');
+
 /**
  * We'll need this to later have a noframes version
  *
