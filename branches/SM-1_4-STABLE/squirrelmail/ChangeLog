@@ -18,6 +18,8 @@ Version 1.4.4 - CVS
   - Disabled unmaintained Thai translation.
   - Security: Added hook for Preferences Backend to resolve potential
     insecure file inclusions. [CAN-2005-0075]
+  - Set up language before outputing errors in auth.php and signout.php
+    to make them appear in the correct language.
 
 Version 1.4.4 RC1 - 31 December 2004
 ------------------------------------
@@ -478,7 +480,7 @@ Version 1.2.6 -- April 29 2002
   - Added a server-side sorting global option
   - Compose in new window size can be set in Display prefs.
   - Logout error system unified.
-  - Security: Fix for a "theme passed as cookie" exploit. [CAN-2002-0516]
+  - Security: Fix for a "theme passed as cookie" exploit. [CVE-2002-0516]
   - PostgreSQL is now supported for database backed use
   - Added user option to sort messages by internal date
   - Changed attachment handling now attachments are adressed to
