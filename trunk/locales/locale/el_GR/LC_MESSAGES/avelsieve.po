@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: avelsieve-0.9.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2003-06-09 09:32+0300\n"
+"POT-Creation-Date: 2003-10-09 17:00+0300\n"
 "PO-Revision-Date: 2003-05-30 08:00+0200\n"
 "Last-Translator: Alexandros Vellis <avel@noc.uoa.gr>\n"
 "Language-Team: Greek <el@li.org>\n"
@@ -11,47 +11,39 @@ msgstr ""
 "Content-Type: text/plain; charset=iso-8859-7\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../addrule.php:82 ../process_input.php:39
 msgid "You have to define at least one header match text."
 msgstr "Πρέπει να ορίσετε τουλάχιστον ένα κείμενο στο ταίριασμα σε κεφαλίδες."
 
-#: ../addrule.php:134
 msgid "You have not defined the name for the new folder."
 msgstr "Δεν έχετε ορίσει το όνομα για τον νέο φάκελο."
 
-#: ../addrule.php:135
 msgid "Please try again."
 msgstr "Παρακαλώ ξαναπροσπαθήστε."
 
-#: ../addrule.php:146
 msgid "Illegal folder name.  Please select a different name"
 msgstr "Άκυρο όνομα φακέλου. Παρακαλώ επιλέξτε ένα διαφορετικό όνομα."
 
-#: ../addrule.php:391 ../addrule.php:396 ../addrule.php:463 ../addrule.php:473
+msgid "Add New Rule"
+msgstr "Πρόσθεση Νέου Κανόνα"
+
 msgid "New Rule Wizard - Step"
 msgstr "Οδηγός Δημιουργίας Νέου Κανόνα - Βήμα"
 
-#: ../addrule.php:391 ../addrule.php:396 ../addrule.php:463 ../addrule.php:473
 msgid "of"
 msgstr "από"
 
-#: ../addrule.php:391
 msgid "Rule Type"
 msgstr "Τύπος Κανόνα"
 
-#: ../addrule.php:396 ../edit.php:168
 msgid "Condition"
 msgstr "Συνθήκη"
 
-#: ../addrule.php:463 ../edit.php:197
 msgid "Action"
 msgstr "Ενέργεια"
 
-#: ../addrule.php:473
 msgid "Confirmation"
 msgstr "Επιβεβαίωση"
 
-#: ../addrule.php:476
 msgid ""
 "<p>You have chosen to keep every mail. This is the default action anyway, so "
 "you might want to start over with a rule that makes more sense. Select &quot;"
@@ -62,7 +54,6 @@ msgstr ""
 "Επιλέξτε &quot;Τέλος&quot; για να αποθηκεύσετε αυτόν τον κανόνα παρ'όλα αυτά."
 "</p>"
 
-#: ../addrule.php:485
 msgid ""
 "Please use the buttons on the bottom instead of your browser's reload, back "
 "and forward buttons, to build a rule."
@@ -71,35 +62,30 @@ msgstr ""
 "λειτουργίες πίσω/μπροστά/ανανέωση του φυλλομετρητή σας, όταν φτιάχνετε έναν "
 "κανόνα."
 
-#: ../addrule_html.php:41
 msgid "Clear this Form"
 msgstr "Επαναφορά Φόρμας"
 
-#: ../addrule_html.php:46
 msgid "Start Over"
 msgstr "Από την Αρχή"
 
-#: ../addrule_html.php:51 ../edit.php:218
 msgid "Cancel"
 msgstr "Ακύρωση"
 
-#: ../addrule_html.php:60
+msgid "Add SPAM Rule"
+msgstr "Πρόσθεση Νέου SPAM Κανόνα"
+
 msgid "Move back to step"
 msgstr "Πίσω στο Βήμα"
 
-#: ../addrule_html.php:66
 msgid "Finished"
 msgstr "Τέλος"
 
-#: ../addrule_html.php:70
 msgid "Move on to step"
 msgstr "Συνέχεια στο βήμα"
 
-#: ../addrule_html.php:120
 msgid "What kind of rule would you like to add?"
 msgstr "Τι τύπο κανόνα θα θέλατε να προσθέσετε;"
 
-#: ../addrule_html.php:153
 msgid ""
 "The rule will trigger if the following addresses appear anywhere in the "
 "message's headers:"
@@ -107,63 +93,49 @@ msgstr ""
 "Αυτός ο κανόνας θα ισχύσει αν οι ακόλουθες διευθύνσεις εμφανίζονται "
 "οπουδήποτε στην κεφαλίδα του μηνύματος:"
 
-#: ../addrule_html.php:238
 msgid "AND (Every item must match)"
 msgstr "ΚΑΙ (όλες οι συνθήκες πρέπει να ισχύουν)"
 
-#: ../addrule_html.php:239
 msgid "OR (Either item will match)"
 msgstr "Ή (οποιαδήποτε συνθήκη μπορεί να ισχύει)"
 
-#: ../addrule_html.php:242
 msgid "The condition for the following rules is:"
 msgstr "Η συνθήκη για τους ακόλουθους κανόνες είναι:"
 
-#: ../addrule_html.php:308
 msgid "The header "
 msgstr "Η κεφαλίδα "
 
-#: ../addrule_html.php:333
 msgid "Less..."
 msgstr "Λιγότερα..."
 
-#: ../addrule_html.php:339
 msgid "More..."
 msgstr "Περισσότερα..."
 
-#: ../addrule_html.php:355
 msgid "This rule will trigger if message is"
 msgstr "Αυτός ο κανόνας θα ισχύει αν το μήνυμα είναι"
 
-#: ../addrule_html.php:365
 msgid "bigger"
 msgstr "μεγαλύτερο"
 
-#: ../addrule_html.php:373
 msgid "smaller"
 msgstr "μικρότερο"
 
-#: ../addrule_html.php:375 ../buildrule.php:250
 msgid "than"
 msgstr "από"
 
-#: ../addrule_html.php:393
 msgid "KB (kilobytes)"
 msgstr "KB (kilobytes)"
 
-#: ../addrule_html.php:401
 msgid "MB (megabytes)"
 msgstr "MB (megabytes)"
 
-#: ../addrule_html.php:409
 msgid ""
 "The following action will be applied to <strong>all</strong> incoming "
 "messages that do not match any of the previous rules."
 msgstr ""
-"Αυτός ο κανόνας θα ισχύσει αν ταιριάξουν ένα ή περισσότερα κείμενα στο "
-"κυρίως μήνυμα. "
+"Αυτός ο κανόνας θα ισχύσει για <strong>όλα</strong> τα εισερχόμενα μηνύματα "
+"στα οποία δεν ταιριάζει ένας από τους προηγούμενος κανόνες."
 
-#: ../addrule_html.php:416
 msgid ""
 "This rule will trigger upon the occurrence of one or more strings in the "
 "body of an e-mail message. "
@@ -171,60 +143,46 @@ msgstr ""
 "Αυτός ο κανόνας θα ισχύσει αν ταιριάξουν ένα ή περισσότερα κείμενα στο "
 "κυρίως μήνυμα. "
 
-#: ../addrule_html.php:453
 msgid "Choose what to do when this rule triggers, from one of the following:"
 msgstr "Επιλέξτε την ενέργεια εάν αυτός ο κανόνας ισχύσει, από τα ακόλουθα:"
 
-#: ../addrule_html.php:459 ../constants.php:44
 msgid "Keep (Default action)"
 msgstr "Κράτηση (προκαθορισμένη ενέργεια)"
 
-#: ../addrule_html.php:465 ../constants.php:47
 msgid "Discard Silently"
 msgstr "Σιωπηλή Διαγραφή"
 
-#: ../addrule_html.php:473 ../constants.php:50
 msgid "Reject, sending this excuse to the sender:"
 msgstr "Απόρριψη, στέλνοντας αυτή τη δικαιολογία στον αποστολέα:"
 
-#: ../addrule_html.php:480
 msgid "Please do not send me large attachments."
 msgstr "Παρακαλώ μη μού στέλνετε μεγάλα συνημμένα αρχεία."
 
-#: ../addrule_html.php:492 ../constants.php:53
 msgid "Redirect to the following email address:"
 msgstr "Ανακατεύθυνση στην ακόλουθη διεύθυνση:"
 
-#: ../addrule_html.php:498
 msgid "someone@example.org"
 msgstr "someone@example.org"
 
-#: ../addrule_html.php:510 ../constants.php:56
 msgid "Move message into"
 msgstr "Μετακίνηση μηνύματος"
 
-#: ../addrule_html.php:517 ../addrule_html.php:526
 msgid "the existing folder"
 msgstr "στον υπάρχοντα φάκελο"
 
-#: ../addrule_html.php:533
 msgid "a new folder, named"
 msgstr "σε έναν νέο φάκελο με το όνομα"
 
-#: ../addrule_html.php:535
 msgid "created as a subfolder of"
 msgstr "που θα δημιουργηθεί ως υποφάκελος του"
 
-#: ../addrule_html.php:554
 msgid "Also keep copy in INBOX, marked as deleted."
 msgstr ""
 "Επίσης κράτησε ένα αντίγραφο στα ΕΙΣΕΡΧΟΜΕΝΑ, μαρκαρισμένο ως διαγραμμένο."
 
-#: ../addrule_html.php:574
 msgid "Vacation"
 msgstr "Διακοπές"
 
-#: ../addrule_html.php:576
 msgid ""
 "The notice will be sent only once to each person that sends you mail, and "
 "will not be sent to a mailing list address."
@@ -232,71 +190,55 @@ msgstr ""
 "Η σημείωση αυτή θα σταλεί μόνο μία φορά σε κάθε άτομο που σάς στέλνει μήνυμα,"
 "και δε θα σταλεί σε λίστα ταχυδρομείου."
 
-#: ../addrule_html.php:578
 msgid "Addresses: Only reply if sent to these addresses:"
 msgstr "Διευθύνσεις: Απάντηση μόνο αν ο παραλήπτης είναι κάποιος από:"
 
-#: ../addrule_html.php:587
 msgid "Days: Reply message will be resent after"
 msgstr "Ημέρες: Η σημείωση θα ξανασταλεί μετά από"
 
-#: ../addrule_html.php:595
 msgid "days"
 msgstr "μέρες"
 
-#: ../addrule_html.php:597
 msgid "Use the following message:"
 msgstr "Χρησιμοποίησε το ακόλουθο μήνυμα:"
 
-#: ../addrule_html.php:603
 msgid ""
 "This is an automated reply; I am away and will not be able to reply to you "
 "immediately."
 msgstr ""
-"Αυτή είναι μια αυτόματη απάντηση· δε βρίσκομαι κοντά σε υπολογιστή και δε "
-"θα μπορέσω να σάς απαντήσω άμεσα."
+"Αυτή είναι μια αυτόματη απάντηση· δε βρίσκομαι κοντά σε υπολογιστή και δε θα "
+"μπορέσω να σάς απαντήσω άμεσα."
 
-#: ../addrule_html.php:604
 msgid "I will get back to you as soon as I return."
 msgstr "Θα επικοινωνήσω μαζί σας με το που θα επιστρέψω."
 
-#: ../addrule_html.php:616
 msgid "Additional Actions"
 msgstr "Επιπρόσθετες Ενέργειες"
 
-#: ../addrule_html.php:627 ../addrule_html.php:630
 msgid "STOP"
 msgstr "ΣΤΟΠ"
 
-#: ../addrule_html.php:632
 msgid "If this rule matches, do not check any rules after it."
 msgstr "Αν ο κανόνας ταιριάξει, μην ελέγξεις άλλους κανόνες μετά απ'αυτόν."
 
-#: ../addrule_html.php:645
 msgid "Notify me, using the following method:"
 msgstr "Ειδοποίησέ με, χρησιμοποιώντας την ακόλουθη μέθοδο:"
 
-#: ../addrule_html.php:681
 msgid "Notification ID"
 msgstr "Όνομα Ειδοποίησης"
 
-#: ../addrule_html.php:690
-msgid "Parameters"
-msgstr "Παράμετροι"
+msgid "Destination"
+msgstr "Προορισμός"
 
-#: ../addrule_html.php:717
 msgid "Message"
 msgstr "Μήνυμα"
 
-#: ../addrule_html.php:726
 msgid "Help: Valid variables are:"
 msgstr "Βοήθεια: Έγκυρες μεταβητές είναι:"
 
-#: ../addrule_html.php:742
 msgid "Your new rule states:"
 msgstr "Ο νέος σας κανόνας λέει:"
 
-#: ../addrule_html.php:744
 msgid ""
 "If this is what you wanted, select Finished. You can also start over or "
 "cancel adding a rule altogether."
@@ -304,263 +246,318 @@ msgstr ""
 "Αν είναι αυτό που θέλατε, επιλέξτε Τέλος. Επίσης μπορείτε να ξεκινήσετε από "
 "την αρχή ή να ακυρώσετε τη δημιουργία νέου κανόνα."
 
-#: ../avelsieve_support.inc.php:42 ../avelsieve_support.inc.php:44
+msgid "Configure Anti-SPAM Protection"
+msgstr "Παραμετροποίηση της προστασίας από SPAM"
+
+msgid ""
+"All incoming mail is checked for unsolicited commercial content (SPAM) and "
+"marked accordingly. This special rule allows you to configure what to do "
+"with such messages once they arrive to your Inbox."
+msgstr ""
+"Όλα τα εισερχόμενα μηνύματα ελέγχονται αν έχουν διαφημιστικό περιεχόμενο "
+"(SPAM) και μαρκάρονται ανάλογα. Αυτός ο ειδικός κανόνας σάς επιτρέπει να "
+"ορίσετε τι θα γίνεται σε αυτά τα μηνύματα όταν φτάσουν στα εισερχόμενα."
+
+#, php-format
+msgid ""
+"Select %s to add the predefined rule, or select the advanced SPAM filter to "
+"customize the rule."
+msgstr ""
+"Επιλέξτε %s για να προσθέσετε τον προκαθορισμένο κανόνα, ή επιλέξτε την "
+"επιλογή για προχωρημένους για να παραμετροποιήσετε τον κανόνα."
+
+msgid "Add Spam Rule"
+msgstr "Πρόσθεση Νέου Spam Κανόνα"
+
+msgid "Advanced Spam Filter..."
+msgstr "Φίλτρο Spam για προχωρημένους..."
+
+msgid "Target Score"
+msgstr "Επιθυμητό Σκορ"
+
+#, php-format
+msgid ""
+"Messages with SPAM-Score higher than the target value, the maximum value "
+"being %s, will be considered SPAM."
+msgstr ""
+"Μηνύματα με Σκορ πάνω από την τιμή του επιθυμητού, με το μέγιστο να είναι "
+"%s, θα θεωρούνται SPAM."
+
+msgid "SPAM Lists to check against"
+msgstr "Λίστες SPAM με τις οποίες θα γίνει ο έλεγχος"
+
 msgid "Error Encountered"
 msgstr "Παρουσιάστηκε Λάθος"
 
-#: ../buildrule.php:54
 msgid "For <strong>ALL</strong> incoming messages; "
 msgstr "Για <strong>ΌΛΑ</strong> τα εισερχόμενα μηνύματα· "
 
-#: ../buildrule.php:57
+msgid ""
+"All messages considered as <strong>SPAM</strong> (unsolicited commercial "
+"messages)"
+msgstr ""
+"Όλα τα μηνύματα που θεωρούνται <strong>SPAM</strong> (ανεπιθύμητα "
+"διαφημιστικά μηνύματα)"
+
+msgid "matching the Spam List(s):"
+msgstr "που ταιριάζουν στη/στις λίστες Spam:"
+
+#, php-format
+msgid "and with score greater than %s"
+msgstr "και με σκορ μεγαλύτερο από %s"
+
+msgid "will be"
+msgstr "θα"
+
+msgid "stored in the Junk Folder."
+msgstr "αποθηκευτούν στον Φάκελο Αχρήστων"
+
+msgid "stored in the Trash Folder."
+msgstr "αποθηκευτούν στον Φάκελο Διαγραμμένων."
+
+msgid "discarded."
+msgstr "διαγραφούν."
+
 msgid "If"
 msgstr "Αν"
 
-#: ../buildrule.php:75
 msgid "<em>any</em> of the following mail headers match: "
 msgstr "<em>οποιαδήποτε</em> από τις ακόλουθες κεφαλίδες ταιριάξει: "
 
-#: ../buildrule.php:80
 msgid "<em>all</em> of the following mail headers match: "
 msgstr "<em>όλες</em> από τις ακόλουθες κεφαλίδες ταιριάξουν: "
 
-#: ../buildrule.php:93
 msgid "the header"
 msgstr "η κεφαλίδα"
 
-#: ../buildrule.php:101 ../constants.php:63
 msgid "is"
 msgstr "είναι"
 
-#: ../buildrule.php:106 ../constants.php:64
 msgid "is not"
 msgstr "δεν είναι"
 
-#: ../buildrule.php:111 ../constants.php:61
 msgid "contains"
 msgstr "περιέχει"
 
-#: ../buildrule.php:116 ../constants.php:62
 msgid "does not contain"
 msgstr "δεν περιέχει"
 
-#: ../buildrule.php:121
 msgid "matches"
-msgstr "ταιριάζει"
+msgstr "ταιριάζει στο"
 
-#: ../buildrule.php:127
 msgid "does not match"
-msgstr "δεν ταιριάζει"
+msgstr "δεν ταιριάζει στο"
 
-#: ../buildrule.php:133 ../constants.php:76
 msgid "is greater than"
 msgstr "είναι μεγαλύτερη από"
 
-#: ../buildrule.php:138 ../constants.php:77
 msgid "is greater or equal to"
 msgstr "είναι μεγαλύτερη ή ίση με"
 
-#: ../buildrule.php:143 ../constants.php:78
 msgid "is lower than"
 msgstr "είναι μικρότερη από"
 
-#: ../buildrule.php:148 ../constants.php:79
 msgid "is lower or equal to"
 msgstr "είναι μικρότερη ή ίση με"
 
-#: ../buildrule.php:153 ../constants.php:80
 msgid "is equal to"
 msgstr "ισούται με"
 
-#: ../buildrule.php:158 ../constants.php:81
 msgid "is not equal to"
 msgstr "δεν ισούται με"
 
-#: ../buildrule.php:163
 msgid "matches the regural expression"
-msgstr "ταιριάζει στο regexp"
+msgstr "ταιριάζει στο regural expression"
 
-#: ../buildrule.php:169
 msgid "does not match the regural expression"
-msgstr "δεν ταιριάζει στο regexp"
+msgstr "δεν ταιριάζει στο regural expression"
 
-#: ../buildrule.php:175
 msgid "exists"
 msgstr "υπάρχει"
 
-#: ../buildrule.php:180
 msgid "does not exist"
 msgstr "δεν υπάρχει"
 
-#: ../buildrule.php:237
 msgid "the size of the message is"
 msgstr "το μέγεθος του μηνύματος είναι"
 
-#: ../buildrule.php:244
 msgid " bigger"
 msgstr "μεγαλύτερο"
 
-#: ../buildrule.php:248
 msgid " smaller"
 msgstr "μικρότερο"
 
-#: ../buildrule.php:278
 msgid "then"
 msgstr "τότε"
 
-#: ../buildrule.php:285
 msgid "<em>keep</em> it."
 msgstr "<em>κράτησέ το</em>."
 
-#: ../buildrule.php:291
 msgid "<em>discard</em> it."
 msgstr "<em>διέγραψέ το</em>."
 
-#: ../buildrule.php:298
 msgid "<em>reject</em> it, sending this excuse back to the sender:"
 msgstr "<em>απόρριψέ το</em>, στέλντας την εξής δικαιολογία στον αποστολέα:"
 
-#: ../buildrule.php:304
 msgid "<em>redirect</em> it to the email address"
 msgstr "<em>ανακατεύθυνέ το</em> στη διεύθυνση"
 
-#: ../buildrule.php:311
 msgid "<em>file</em> it into the folder <strong>"
 msgstr "<em>αποθήκευσέ το</em> στον φάκελο"
 
-#: ../buildrule.php:328
 msgid "reply with this vacation message: "
 msgstr "απάντησε με το εξής μήνυμα διακοπών: "
 
-#: ../buildrule.php:337
 msgid " Also keep a copy in INBOX, marked as deleted."
 msgstr ""
 " Επίσης κράτησε ένα αντίγραφο στα ΕΙΣΕΡΧΟΜΕΝΑ, μαρκαρισμένο ως διαγραμμένο."
 
-#: ../buildrule.php:343
-msgid " Then <strong>STOP</strong> processing rules."
-msgstr " Τότε <strong>ΣΤΑΜΑΤΑ</strong> το έλεγχο για άλλους κανόνες."
-
-#: ../buildrule.php:365
 msgid " Also notify using the method"
 msgstr " Επίσης ειδοποίησέ με χρησιμοποιώντας τη μέθοδο"
 
-#: ../buildrule.php:367
 msgid "with"
 msgstr "με"
 
-#: ../buildrule.php:369
 msgid "priority and the message"
 msgstr "προτεραιότητα και το μήνυμα"
 
-#: ../constants.php:16
+msgid " Then <strong>STOP</strong> processing rules."
+msgstr " Τότε <strong>ΣΤΑΜΑΤΑ</strong> το έλεγχο για άλλους κανόνες."
+
 msgid "Address Match"
 msgstr "Ταίριασμα σε Διεύθυνση"
 
-#: ../constants.php:17 ../constants.php:22
+msgid ""
+"Perform an action depending on email addresses appearing in message headers."
+msgstr ""
+"Ορισμός μιας ενέργειας στα μηνύματα όπου ταιριάζουν ηλεκτρονικές διευθύνσεις "
+"στις κεφαλίδες τους."
+
+msgid "Header Match"
+msgstr "Ταίριασμα σε Κεφαλίδα"
+
 msgid ""
 "Perform an action on messages matching a specified header (From, To etc.)."
 msgstr ""
 "Ορισμός μιας ενέργειας στα μηνύματα που ταιριάζει μία κεφαλίδα (Από, Προς κ."
 "λπ.)"
 
-#: ../constants.php:21
-msgid "Header Match"
-msgstr "Ταίριασμα σε Κεφαλίδα"
-
-#: ../constants.php:26
 msgid "Size"
 msgstr "Μέγεθος"
 
-#: ../constants.php:27
 msgid "Perform an action on messages depending on their size."
 msgstr ""
 "Ορισμός μίας ενέργειας στα μηνύματα που έχουν κάποιο συγκεκριμένο μέγεθος."
 
-#: ../constants.php:31
 msgid "All Messages"
 msgstr "Όλα τα Μηνύματα"
 
-#: ../constants.php:32
 msgid "Perform an action on <strong>all</strong> incoming messages."
 msgstr ""
 "Ορισμός μιας ενέργειας για <strong>όλα</strong> τα εισερχόμενα μηνύματα."
 
-#: ../constants.php:37
 msgid "Body Match"
 msgstr "Ταίριασμα στο Κύριο Μέρος"
 
-#: ../constants.php:38
 msgid "Perform an action on messages depending on their content (body text)."
 msgstr ""
 "Ορισμός μιας ενέργειας σε μηνύματα ανάλογα με το περιεχόμενο του ίδιου του "
 "μηνύματος."
 
-#: ../constants.php:65
-msgid "matches wildcard"
-msgstr "ταιριάζει στο wildcard"
+msgid "wildcard"
+msgstr "wildcard"
 
-#: ../constants.php:66
-msgid "does not match wildcard"
-msgstr "δεν ταιριάζει στο wildcard"
+msgid "regexp"
+msgstr "regexp"
 
-#: ../constants.php:70
-msgid "matches regexp"
-msgstr "ταιριάζει στο regexp"
-
-#: ../constants.php:87
 msgid "verbose"
 msgstr "αναλυτικά"
 
-#: ../constants.php:88
 msgid "terse"
 msgstr "σύντομα"
 
-#: ../constants.php:96
 msgid "Mobile Phone Message (SMS)"
 msgstr "Μήνυμα σε Κινητό Τηλέφωνο (SMS)"
 
-#: ../constants.php:97
 msgid "Email notification"
 msgstr "Ειδοποίηση μέσω Email"
 
-#: ../constants.php:98
 msgid "Notification via Zephyr"
 msgstr "Ειδοποίηση μέσω Zephyr"
 
-#: ../constants.php:99
 msgid "Notification via ICQ"
 msgstr "Ειδοποίηση μέσω ICQ"
 
-#: ../constants.php:103
 msgid "Low"
 msgstr "Χαμηλή"
 
-#: ../constants.php:104
 msgid "Normal"
 msgstr "Κανονική"
 
-#: ../constants.php:105
 msgid "High"
 msgstr "Υψηλή"
 
-#: ../edit.php:135
+msgid "Delete"
+msgstr "Διαγραφή"
+
+msgid "Edit"
+msgstr "Επεξεργασία"
+
+msgid "Duplicate"
+msgstr "Αναπαραγωγή"
+
+msgid "Move Up"
+msgstr "Μετακίνηση Πάνω"
+
+msgid "Move to Top"
+msgstr "Μετακίνηση στην Αρχή"
+
+msgid "Move Down"
+msgstr "Μετακίνηση Κάτω"
+
+msgid "Move to Bottom"
+msgstr "Μετακίνηση στο Τέλος"
+
+msgid "Junk Folder"
+msgstr "Φάκελος Αχρήστων"
+
+#, php-format
+msgid ""
+"Store SPAM message in your Junk Folder. Messages older than %s days will be "
+"deleted automatically."
+msgstr ""
+"Αποθήκευσε το μήνυμα SPAM στον Φάκελο Αχρήστων. Μηνύματα παλαιότερα από %s "
+"μέρες θα διαγράφονται αυτόματα."
+
+msgid "Trash Folder"
+msgstr "Φάκελος Διαγραμμένων"
+
+msgid ""
+"Store SPAM message in your Trash Folder. You will have to purge the folder "
+"yourself."
+msgstr ""
+"Αποθήκευσε το μήνυμα SPAM στον Φάκελο Διαγραμμένων. Θα πρέπει να κάνετε "
+"τακτικά εκκαθάριση αυτού του φακέλου."
+
+msgid "Discard"
+msgstr "Απόρριψη"
+
+msgid ""
+"Discard SPAM message. You will get no indication that the message ever "
+"arrived."
+msgstr ""
+"Απόρριψη του μηνύματος SPAM. Δε θα λαμβάνετε καμμία ειδοποίηση ότι το "
+"μήνυμα αυτό έφτασε ποτέ."
+
 msgid "Editing Mail Filtering Rule"
 msgstr "Επεξεργασία του κανόνα φιλτραρίσματος"
 
-#: ../edit.php:214
-msgid "Add New Rule"
-msgstr "Πρόσθεση Νέου Κανόνα"
-
-#: ../edit.php:216
 msgid "Apply Changes"
 msgstr "Ενεργοποίηση Αλλαγών"
 
-#: ../setup.php:40
 msgid "Message Filters"
 msgstr "Φίλτρα Μηνυμάτων"
 
-#: ../setup.php:42
 msgid ""
 "Server-Side mail filtering enables you to add criteria in order to "
 "automatically forward, delete or place a given message into a folder."
@@ -569,75 +566,48 @@ msgstr ""
 "συνθήκες ώστε να ταξινομείτε, προωθείτε ή απορρίπτετε τα μηνύματά σας με "
 "αυτόματο τρόπο."
 
-#: ../setup.php:86
 msgid "Filters"
 msgstr "Φίλτρα"
 
-#: ../table.php:73 ../table.php:136
-msgid "Could not log on to timsieved daemon on your IMAP server"
-msgstr "Αδύνατη η σύνδεση με τον timsieved daemon στον εξυπηρετητή IMAP σας"
+msgid "Unable to load script to server."
+msgstr "Αδύνατο το φόρτωμα του script στον εξυπηρετητή."
 
-#: ../table.php:75 ../table.php:139 ../table.php:154 ../table.php:198
+msgid "Server responded with:"
+msgstr "Ο εξυπηρετητής απάντησε:"
+
 msgid "Please contact your administrator."
 msgstr "Παρακαλούμε ειδοποιήστε το διαχειριστή σας."
 
-#: ../table.php:90 ../table.php:359
+msgid "Could not log on to timsieved daemon on your IMAP server"
+msgstr "Αδύνατη η σύνδεση με τον timsieved daemon στον εξυπηρετητή IMAP σας"
+
 msgid "Current Mail Filtering Rules"
 msgstr "Τρέχοντες Κανόνες Φιλτραρίσματος Ταχυδρομείου"
 
-#: ../table.php:92 ../table.php:215
 msgid "No Filtering Rules Defined Yet"
 msgstr "Δεν έχουν οριστεί κανόνες ακόμα"
 
-#: ../table.php:138
 msgid "in order to save your rules."
 msgstr "ώστε να αποθηκεύσετε τους κανόνες σας."
 
-#: ../table.php:152
 msgid "Could not set active script on your IMAP server"
 msgstr "Αδύνατη η ενεργοποίηση του ενεργού script στον εξυπηρετητή IMAP"
 
-#: ../table.php:195
 msgid "Could not get SIEVE script from your IMAP server"
 msgstr "Αδύνατη η λήψη του SIEVE script από τον IMAP εξυπηρετητή"
 
-#: ../table.php:197
 msgid "(Probably the script is size null)."
 msgstr "(Ίσως το script έχει μέγεθος μηδέν)."
 
-#: ../table.php:269
 msgid "All your rules have been deleted"
 msgstr "Όλοι οι κανόνες διαγράφηκαν"
 
-#: ../table.php:392 ../table.php:394
-msgid "Edit"
-msgstr "Επεξεργασία"
-
-#: ../table.php:402 ../table.php:404
-msgid "Delete"
-msgstr "Διαγραφή"
-
-#: ../table.php:412 ../table.php:414
-msgid "Duplicate"
-msgstr "Αναπαραγωγή"
-
-#: ../table.php:422 ../table.php:425
-msgid "Move Up"
-msgstr "Μετακίνηση Πάνω"
-
-#: ../table.php:435 ../table.php:438
-msgid "Move Down"
-msgstr "Μετακίνηση Κάτω"
-
-#: ../table.php:453
 msgid "Delete Selected"
 msgstr "Διαγραφή Επιλεγμένων"
 
-#: ../table_html.php:17 ../table_html.php:33
 msgid "Server-Side Mail Filtering"
 msgstr "Φίλτρα Ταχυδρομείου στον Εξυπηρετητή"
 
-#: ../table_html.php:114 ../table_html.php:125
 msgid ""
 "Here you can add or delete filtering rules for your email account. These "
 "filters will always apply to your incoming mail, wherever you check your "
@@ -648,7 +618,6 @@ msgstr ""
 "πάντα κατά τη λήψη ταχυδρομείου, ανεξάρτητα από το πού ελέγχετε το  "
 "ταχυδρομείο σας."
 
-#: ../table_html.php:117
 msgid ""
 "You don't have any rules yet. Feel free to add any with the button &quot;Add "
 "a New Rule&quot;. When you are done, please select &quot;Save Changes&quot; "
@@ -659,59 +628,55 @@ msgstr ""
 "&quot;Αποθήκευση Αλλαγών&quot; για να επιστρέψετε στην οθόνη των κύριων "
 "επιλογών."
 
-#: ../table_html.php:128
 msgid ""
 "When you are done with editing, <strong>remember to select &quot;Save "
 "Changes&quot;</strong> to activate your changes!"
 msgstr ""
 "Όταν τελειώσετε την επεξεργασία, <strong>θυμηθείτε να επιλέξετε &quot;"
-"Αποθήκευση Αλλαγών&quot;<strong> για να ενεργοποιήσετε τις αλλαγές σας!"
+"Αποθήκευση Αλλαγών&quot;</strong> για να ενεργοποιήσετε τις αλλαγές σας!"
 
-#: ../table_html.php:137
 msgid "Successfully added new rule."
 msgstr "Νέος κανόνας προστέθηκε με επιτυχία."
 
-#: ../table_html.php:140
 msgid "Successfully updated rule #"
 msgstr "Ενημερώθηκε ο κανόνας #"
 
-#: ../table_html.php:145
 msgid "Successfully deleted rules #"
 msgstr "Διαγράφηκαν οι κανόνες #"
 
-#: ../table_html.php:153
 msgid "Successfully deleted rule #"
 msgstr "Διαγράφηκε ο κανόνας #"
 
-#: ../table_html.php:163
 msgid "The following table summarizes your current mail filtering rules."
 msgstr "Ο παρακάτω πίνακας δείχνει τους τρέχοντες κανόνες αλληλογραφίας σας."
 
-#: ../table_html.php:173
 msgid "No"
 msgstr "α/α"
 
-#: ../table_html.php:178
 msgid "Description of Rule"
 msgstr "Περιγραφή Κανόνα"
 
-#: ../table_html.php:181
 msgid "Display as:"
 msgstr "Δείξε ως:"
 
-#: ../table_html.php:193
 msgid "Options"
 msgstr "Επιλογές"
 
-#: ../table_html.php:223
 msgid "Add a New Rule"
 msgstr "Πρόσθεση Νέου Κανόνα"
 
-#: ../table_html.php:229
 msgid ""
 "When you are done, please click the button below to return to your webmail."
 msgstr "Όταν τελειώσετε, κάντε κλικ στο ακόλουθο κουμπί για να επιστρέψετε."
 
-#: ../table_html.php:231
 msgid "Save Changes"
 msgstr "Αποθήκευση Αλλαγών"
+
+msgid "Created:"
+msgstr "Δημιουργήθηκε:"
+
+msgid "Last modified:"
+msgstr "Τελευταία τροποποίηση:"
+
+#~ msgid "Parameters"
+#~ msgstr "Παράμετροι"
