@@ -33,9 +33,9 @@ class input_querystring extends input_base
   /**
    * Constructs a new querystring object.
    *
-   * @param str name The name of the querystring object.
-   * @param optional str regex The validation regular expression.
-   * @param optional str value The initial contents value.
+   * @param string name The name of the querystring object.
+   * @param optional string regex The validation regular expression.
+   * @param optional string value The initial contents value.
    */
   function input_querystring($name, $regex = NULL, $value = NULL)
   {

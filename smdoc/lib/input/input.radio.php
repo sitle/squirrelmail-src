@@ -40,7 +40,7 @@ class input_radio extends input_base
   /**
    * Constructs a new radio group.
    *
-   * @param str name The name of the radio.
+   * @param string name The name of the radio.
    * @param int value The initial value.
    * @param array buttons The buttons in the radio object.
    */
@@ -53,7 +53,7 @@ class input_radio extends input_base
   /**
    * Sets the value of the radio group.
    *
-   * @param str value The value to set the radio group to.
+   * @param string value The value to set the radio group to.
    * @return bool TRUE on success.
    */
   function set($value) 

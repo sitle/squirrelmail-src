@@ -51,10 +51,10 @@ class input_textbox extends input_base
   /**
    * Constructs a new textbox object.
    *
-   * @param str name The name of the textbox.
-   * @param str regex The validation regular expression.
-   * @param str value The initial contents value.
-   * @param str caption The caption to display by the textbox.
+   * @param string name The name of the textbox.
+   * @param string regex The validation regular expression.
+   * @param string value The initial contents value.
+   * @param string caption The caption to display by the textbox.
    * @param bool required Whether the texbox is allowed to contain no value.
    */
   function input_textbox($name, $regex = NULL, $value = NULL, $caption = NULL, $required = TRUE) 
@@ -118,10 +118,10 @@ class input_passwordbox extends input_textbox
   /**
    * Constructs a new passwordbox object.
    *
-   * @param str name The name of the textbox.
-   * @param str regex The validation regular expression.
-   * @param str value The initial contents value.
-   * @param str caption The caption to display by the textbox.
+   * @param string name The name of the textbox.
+   * @param string regex The validation regular expression.
+   * @param string value The initial contents value.
+   * @param string caption The caption to display by the textbox.
    * @param bool required Whether the texbox is allowed to contain no value.
    */
   function input_passwordbox($name, $regex = NULL, $value = NULL, $caption = NULL, $required = TRUE) 
@@ -147,10 +147,10 @@ class input_hiddenbox extends input_textbox
   /**
    * Constructs a new passwordbox object.
    *
-   * @param str name The name of the textbox.
-   * @param str regex The validation regular expression.
-   * @param str value The initial contents value.
-   * @param str caption The caption to display by the textbox.
+   * @param string name The name of the textbox.
+   * @param string regex The validation regular expression.
+   * @param string value The initial contents value.
+   * @param string caption The caption to display by the textbox.
    * @param bool required Whether the texbox is allowed to contain no value.
    */
   function input_hiddenbox($name, $regex = NULL, $value = NULL, $required = TRUE) 

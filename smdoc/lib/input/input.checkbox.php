@@ -45,9 +45,9 @@ class input_checkbox extends input_base
   /**
    * Constructs a new checkbox object.
    *
-   * @param str name The name of the checkbox.
+   * @param string name The name of the checkbox.
    * @param bool checked The initial checkbox state.
-   * @param str caption The caption to display by the checkbox.
+   * @param string caption The caption to display by the checkbox.
    */
   function input_checkbox($name, $checked = FALSE, $caption = NULL) 
   {

@@ -48,10 +48,10 @@ class input_textarea extends input_base
   /**
    * Constructs a new textarea object.
    *
-   * @param str name The name of the textarea.
-   * @param str regex The validation regular expression.
-   * @param str value The initial contents value.
-   * @param str caption The caption to display by the textarea.
+   * @param string name The name of the textarea.
+   * @param string regex The validation regular expression.
+   * @param string value The initial contents value.
+   * @param string caption The caption to display by the textarea.
    */
   function input_textarea($name, $regex = NULL, $value = NULL, $caption = NULL) 
   {
