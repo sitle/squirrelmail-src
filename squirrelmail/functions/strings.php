@@ -323,8 +323,9 @@ function sq_mt_randomize() {
     
     /* Global. */
     sq_mt_seed((int)((double) microtime() * 1000000));
-    sq_mt_seed(md5($_SERVER['REMOTE_PORT'] . $_SERVER['REMOTE_ADDR'] . getmypid()));
-    
+    if (isset($_SERVER['REMOTE_PORT']) && isset($_SERVER['REMOTE_ADDR'])) {
+        sq_mt_seed(md5($_SERVER['REMOTE_PORT'] . $_SERVER['REMOTE_ADDR'] . getmypid()));
+    }
     /* getrusage */
     if (function_exists('getrusage')) {
         /* Avoid warnings with Win32 */
