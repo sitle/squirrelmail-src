@@ -15,9 +15,9 @@
 require_once(SM_PATH . 'functions/imap.php');
 require_once(SM_PATH . 'functions/attachment_common.php');
 
-/* -------------------------------------------------------------------------- */
-/* MIME DECODING                                                              */
-/* -------------------------------------------------------------------------- */
+/* --------------------------------------------------------------------------------- */
+/* MIME DECODING                                                                     */
+/* --------------------------------------------------------------------------------- */
 
 /* This function gets the structure of a message and stores it in the "message" class.
  * It will return this object for use with all relevant header information and
@@ -99,7 +99,6 @@ function mime_fetch_body($imap_stream, $id, $ent_id=1) {
     /* Do a bit of error correction.  If we couldn't find the entity id, just guess
      * that it is the first one.  That is usually the case anyway.
      */
-
     if (!$ent_id) {
         $cmd = "FETCH $id BODY[]";
     } else {
@@ -157,6 +156,7 @@ function mime_fetch_body($imap_stream, $id, $ent_id=1) {
 function mime_print_body_lines ($imap_stream, $id, $ent_id=1, $encoding) {
     global $uid_support;
 
+    $sid = sqimap_session_id($uid_support);
     /* Don't kill the connection if the browser is over a dialup
      * and it would take over 30 seconds to download it.
      * Don´t call set_time_limit in safe mode.
@@ -165,35 +165,14 @@ function mime_print_body_lines ($imap_stream, $id, $ent_id=1, $encoding) {
     if (!ini_get('safe_mode')) {
         set_time_limit(0);
     }
-    /* in case of base64 encoded attachments, do not buffer them.
-       Instead, echo the decoded attachment directly to screen */
-    if (strtolower($encoding) == 'base64') {
-        if (!$ent_id) {
-           $query = "FETCH $id BODY[]";
-        } else {
-           $query = "FETCH $id BODY[$ent_id]";
-        }
-        sqimap_run_command($imap_stream,$query,true,$response,$message,$uid_support,'sqimap_base64_decode','php://stdout',true);
+    if ($uid_support) {
+       $sid_s = substr($sid,0,strpos($sid, ' '));
     } else {
-       $body = mime_fetch_body ($imap_stream, $id, $ent_id);
-       echo decodeBody($body, $encoding);
+       $sid_s = $sid;
     }
 
-    /* 
-       TODO, use the same method for quoted printable.
-       However, I assume that quoted printable attachments aren't that large
-       so the performancegain / memory usage drop will be minimal.
-       If we decide to add that then we need to adapt sqimap_fread because
-       we need to split te result on \n and fread doesn't stop at \n. That 
-       means we also should provide $results from sqimap_fread (by ref) to
-       te function and set $no_return to false. The $filter function for
-       quoted printable should handle unsetting of $results. 
-    */
-    /* 
-       TODO 2: find out how we write to the output stream php://stdout. fwrite
-       doesn't work because 'php://stdout isn't a stream.
-    */
-
+    $body = mime_fetch_body ($imap_stream, $id, $ent_id);
+    echo decodeBody($body, $encoding);
     return;
 /*
     fputs ($imap_stream, "$sid FETCH $id BODY[$ent_id]\r\n");
@@ -539,11 +518,6 @@ function formatAttachments($message, $exclude_id, $mailbox, $id) {
     return $attachments;
 }
 
-function sqimap_base64_decode(&$string) {
-    $string = str_replace("\r\n", "\n", $string);
-    $string = base64_decode($string);
-}
-
 /* This function decodes the body depending on the encoding type. */
 function decodeBody($body, $encoding) {
     global $show_html_default;
@@ -600,7 +574,6 @@ function decodeHeader ($string, $utfencode=true,$htmlsave=true) {
         $encoded = false;
         /* if encoded words are not separated by a linear-space-white we still catch them */
         $j = $i-1;
-//	if ($chunk{0} === '=') { /* performance, saves an unnessecarry preg call */
         while ($match = preg_match('/^(.*)=\?([^?]*)\?(Q|B)\?([^?]*)\?=(.*)$/Ui',$chunk,$res)) {
             /* if the last chunk isn't an encoded string then put back the space, otherwise don't */
             if ($iLastMatch !== $j) {
@@ -642,7 +615,6 @@ function decodeHeader ($string, $utfencode=true,$htmlsave=true) {
             $chunk = $res[5];
             $encoded = true;
         }
-//	}
         if (!$encoded) {
             if ($htmlsave) {
                 $ret .= '&nbsp;';

@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2003-05-31 14:56+0300\n"
+"POT-Creation-Date: 2003-07-06 14:37+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1074,10 +1074,13 @@ msgstr ""
 msgid "ERROR : No available imapstream."
 msgstr ""
 
-msgid "ERROR : Could not complete request."
+msgid "ERROR : Connection dropped by imap-server."
 msgstr ""
 
 msgid "Query:"
+msgstr ""
+
+msgid "ERROR : Could not complete request."
 msgstr ""
 
 msgid "Reason Given: "
@@ -1087,6 +1090,12 @@ msgid "ERROR : Bad or malformed request."
 msgstr ""
 
 msgid "Server responded: "
+msgstr ""
+
+msgid "ERROR : Imap server closed the connection."
+msgstr ""
+
+msgid "ERROR : Unknown imap response."
 msgstr ""
 
 #, c-format
@@ -1122,6 +1131,15 @@ msgid "Unknown Sender"
 msgstr ""
 
 msgid "Unknown response from IMAP server: "
+msgstr ""
+
+msgid "The server couldn't find the message you requested."
+msgstr ""
+
+msgid ""
+"Most probably your message list was out of date and the message has been "
+"moved away or deleted (perhaps by another program accessing the same "
+"mailbox)."
 msgstr ""
 
 msgid "Unknown date"
@@ -1494,7 +1512,7 @@ msgstr ""
 msgid "Unseen and Total"
 msgstr ""
 
-msgid "Enable Collapsable Folders"
+msgid "Enable Collapsible Folders"
 msgstr ""
 
 msgid "Enable Cumulative Unread Message Notification"
@@ -2366,6 +2384,12 @@ msgstr ""
 msgid "Error "
 msgstr ""
 
+msgid "POP3 noop:"
+msgstr ""
+
+msgid "No connection to server"
+msgstr ""
+
 msgid "POP3 user:"
 msgstr ""
 
@@ -2385,9 +2409,6 @@ msgid "authentication failed "
 msgstr ""
 
 msgid "POP3 apop:"
-msgstr ""
-
-msgid "No connection to server"
 msgstr ""
 
 msgid "No login ID submitted"
@@ -2602,9 +2623,6 @@ msgid "Confirm delete of selected server?"
 msgstr ""
 
 msgid "Confirm Delete"
-msgstr ""
-
-msgid "Mofify a Server"
 msgstr ""
 
 msgid "Undefined Function"

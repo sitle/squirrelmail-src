@@ -163,6 +163,7 @@ if ( sqgetGlobalVar('just_logged_in', $just_logged_in, SQ_SESSION) ) {
         $just_logged_in = false;
         sqsession_register($just_logged_in, 'just_logged_in');
 
+
         if (strlen(trim($motd)) > 0) {
             echo html_tag( 'table',
                         html_tag( 'tr',

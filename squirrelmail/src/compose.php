@@ -30,7 +30,6 @@ require_once(SM_PATH . 'functions/plugin.php');
 require_once(SM_PATH . 'functions/display_messages.php');
 require_once(SM_PATH . 'class/deliver/Deliver.class.php');
 require_once(SM_PATH . 'functions/addressbook.php');
-require_once(SM_PATH . 'functions/identity.php');
 
 /* --------------------- Get globals ------------------------------------- */
 /** COOKIE VARS */
@@ -49,9 +48,7 @@ sqgetGlobalVar('compose_messages',  $compose_messages,  SQ_SESSION);
 sqgetGlobalVar('action',$action);
 sqgetGlobalVar('session',$session);
 sqgetGlobalVar('mailbox',$mailbox);
-if(!sqgetGlobalVar('identity',$identity)) {
-    $identity=0;
-}
+sqgetGlobalVar('identity',$identity);
 sqgetGlobalVar('send_to',$send_to);
 sqgetGlobalVar('send_to_cc',$send_to_cc);
 sqgetGlobalVar('send_to_bcc',$send_to_bcc);
@@ -92,13 +89,11 @@ sqgetGlobalVar('attachedmessages', $attachedmessages, SQ_GET);
 
 /* Location (For HTTP 1.1 Header("Location: ...") redirects) */
 $location = get_location();
-/* Identities (fetch only once) */
-$idents = get_identities();
 
 /* --------------------- Specific Functions ------------------------------ */
 
 function replyAllString($header) {
-   global $include_self_reply_all, $idents;
+   global $include_self_reply_all, $username, $data_dir;
    $excl_ar = array();
    /**
     * 1) Remove the addresses we'll be sending the message 'to'
@@ -112,9 +107,18 @@ function replyAllString($header) {
     * TO list) only if $include_self_reply_all is turned off
     */
    if (!$include_self_reply_all) {
-       foreach($idents as $id) {
-           $excl_ar[strtolower(trim($id['email_address']))] = '';
-        }
+       $email_address = strtolower(trim(getPref($data_dir, $username, 'email_address')));
+       $excl_ar[$email_address] = '';
+       $idents = getPref($data_dir, $username, 'identities');
+       if ($idents != '' && $idents > 1) {
+              $first_id = false;
+          for ($i = 1; $i < $idents; $i ++) {
+             $cur_email_address = getPref($data_dir, $username, 
+                                         'email_address' . $i);
+             $cur_email_address = strtolower(trim($cur_email_address));
+             $excl_ar[$cur_email_address] = '';
+         }
+       }
    }
 
    /** 
@@ -459,8 +463,15 @@ if ($send) {
     showInputForm($session);
 }
 elseif (isset($sigappend)) {
-    $signature = $idents[$identity]['signature'];
-
+    $idents = getPref($data_dir, $username, 'identities', 0);
+    if ($idents > 1) {
+       if ($identity == 'default') {
+          $no = 'g';
+       } else {
+          $no = $identity;
+       }
+       $signature = getSig($data_dir, $username, $no);
+    }
     $body .= "\n\n".($prefix_sig==true? "-- \n":'').$signature;
     if ($compose_new_win == '1') {
          compose_Header($color, $mailbox);
@@ -544,7 +555,7 @@ exit();
 
 /* This function is used when not sending or adding attachments */
 function newMail ($mailbox='', $passed_id='', $passed_ent_id='', $action='', $session='') {
-    global $editor_size, $default_use_priority, $body, $idents,
+    global $editor_size, $default_use_priority, $body,
            $use_signature, $composesession, $data_dir, $username,
            $username, $key, $imapServerAddress, $imapPort, $compose_messages,
            $composeMessage;
@@ -618,24 +629,28 @@ function newMail ($mailbox='', $passed_id='', $passed_ent_id='', $action='', $se
         //ClearAttachments($session);
 
         $identity = '';
+        $idents = getPref($data_dir, $username, 'identities');
         $from_o = $orig_header->from;
         if (is_object($from_o)) {
             $orig_from = $from_o->getAddress();
         } else {
             $orig_from = '';
         }
-
         $identities = array();
-        if (count($idents) > 1) {
-            foreach($idents as $nr=>$data) {
-                $enc_from_name = '"'.$data['full_name'].'" <'. $data['email_address'].'>';
-                if($enc_from_name == $orig_from) {
-                    $identity = $nr;
+        if (!empty($idents) && $idents > 1) {
+            $identities[]  = '"'. getPref($data_dir, $username, 'full_name') 
+              . '" <' .  getPref($data_dir, $username, 'email_address') . '>';
+            for ($i = 1; $i < $idents; $i++) {
+                $enc_from_name = '"'. 
+                    getPref($data_dir, $username, 'full_name' . $i) .
+                        '" <' . 
+                    getPref($data_dir, $username, 'email_address' . $i) . '>';
+                if ($enc_from_name == $orig_from && $i) {
+                    $identity = $i;
                     break;
                 }
                 $identities[] = $enc_from_name;
             }
-
             $identity_match = $orig_header->findAddress($identities);
             if ($identity_match) {
                 $identity = $identity_match;
@@ -844,7 +859,7 @@ function showInputForm ($session, $values=false) {
            $editor_size, $attachments, $subject, $newmail,
            $use_javascript_addr_book, $send_to_bcc, $passed_id, $mailbox,
            $from_htmladdr_search, $location_of_buttons, $attachment_dir,
-           $username, $data_dir, $identity, $idents, $draft_id, $delete_draft,
+           $username, $data_dir, $identity, $draft_id, $delete_draft,
            $mailprio, $default_use_mdn, $mdn_user_support, $compose_new_win,
            $saved_draft, $mail_sent, $sig_first, $edit_as_new, $action, 
            $username, $compose_messages, $composesession, $default_charset;
@@ -912,21 +927,43 @@ function showInputForm ($session, $values=false) {
     }
 
     /* display select list for identities */
-    if (count($idents) > 1) {
+    $idents = getPref($data_dir, $username, 'identities', 0);
+    if ($idents > 1) {
+        $fn = getPref($data_dir, $username, 'full_name');
+        $em = getPref($data_dir, $username, 'email_address');
         echo '   <tr>' . "\n" .
                     html_tag( 'td', '', 'right', $color[4], 'width="10%"' ) .
                     _("From:") . '</td>' . "\n" .
                     html_tag( 'td', '', 'left', $color[4], 'width="90%"' ) .
-             '         <select name="identity">' . "\n" ;
-        foreach($idents as $id=>$data) {
-            echo '<option value="'.$id.'"';
-            if($id == $identity) {
+             '         <select name="identity">' . "\n" .
+             '         <option value="default">' .
+                       htmlspecialchars($fn);
+        if ($em != '') {
+            if($fn != '') {
+                echo htmlspecialchars(' <' . $em . '>') . "\n";
+            } else {
+                echo htmlspecialchars($em) . "\n";
+            }
+        }
+        echo '</option>';
+        for ($i = 1; $i < $idents; $i ++) {
+            $fn = getPref($data_dir, $username, 'full_name' . $i);
+            $em = getPref($data_dir, $username, 'email_address' . $i);
+
+            echo '<option value="' . $i . '"';
+            if (isset($identity) && $identity == $i) {
                 echo ' selected';
             }
-            echo '>'.htmlspecialchars($data['full_name'].' <'.$data['email_address'].'>').
-                 "</option>\n";
+            echo '>' . htmlspecialchars($fn);
+            if ($em != '') {
+                if($fn != '') {
+                    echo htmlspecialchars(' <' . $em . '>') . "\n";
+                } else {
+                    echo htmlspecialchars($em) . "\n";
+                }
+            }
+            echo '</option>';
         }
-
         echo '</select>' . "\n" .
              '      </td>' . "\n" .
              '   </tr>' . "\n";
@@ -983,7 +1020,14 @@ function showInputForm ($session, $values=false) {
     }
 
     if ($use_signature == true && $newmail == true && !isset($from_htmladdr_search)) {
-        $signature = $idents[$identity]['signature'];
+        if ($idents > 1) {
+            if ($identity == 'default') {
+                $no = 'g';
+        } else {
+            $no = $identity;
+        }
+        $signature = getSig($data_dir, $username, $no);
+    }
 
         if ($sig_first == '1') {
             if ($default_charset == 'iso-2022-jp') {
@@ -1042,7 +1086,7 @@ function showInputForm ($session, $values=false) {
     } else {
         $maxsize = '';
     }
-    echo '<INPUT TYPE="hidden" name="MAX_FILE_SIZE" value="'.min( $sizes ).'">';
+//    echo '<INPUT TYPE="hidden" name="MAX_FILE_SIZE" value="'.min( $sizes ).'">';
     echo '   <tr>' . "\n" .
          '      <td colspan="2">' . "\n" .
          '         <table width="100%" cellpadding="1" cellspacing="0" align="center"'.
@@ -1289,7 +1333,7 @@ function getByteSize($ini_size) {
 
 function deliverMessage($composeMessage, $draft=false) {
     global $send_to, $send_to_cc, $send_to_bcc, $mailprio, $subject, $body,
-           $username, $popuser, $usernamedata, $identity, $idents, $data_dir,
+           $username, $popuser, $usernamedata, $identity, $data_dir,
            $request_mdn, $request_dr, $default_charset, $color, $useSendmail,
            $domain, $action, $default_move_to_sent, $move_to_sent;
     global $imapServerAddress, $imapPort, $sent_folder, $key;
@@ -1330,9 +1374,15 @@ function deliverMessage($composeMessage, $draft=false) {
        $popuser = $username;
     }
     $reply_to = '';
-    $from_mail = $idents[$identity]['email_address'];
-    $full_name = $idents[$identity]['full_name'];
-    $reply_to  = $idents[$identity]['reply_to'];
+    if (isset($identity) && $identity != 'default') {
+        $from_mail = getPref($data_dir, $username,'email_address' . $identity);
+        $full_name = getPref($data_dir, $username,'full_name' . $identity);
+        $reply_to = getPref($data_dir, $username,'reply_to' . $identity);
+    } else {
+        $from_mail = getPref($data_dir, $username, 'email_address');
+        $full_name = getPref($data_dir, $username, 'full_name');
+        $reply_to = getPref($data_dir, $username,'reply_to');
+    }
     if (!$from_mail) {
        $from_mail = "$popuser@$domain";
     }

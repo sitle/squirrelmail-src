@@ -285,7 +285,7 @@ class SquirrelOption {
     function createWidget_Integer() {
 
         global $javascript_on;
-
+ 
         // add onChange javascript handler to a regular string widget
         // which will strip out all non-numeric chars
         if ($javascript_on)
@@ -300,7 +300,7 @@ class SquirrelOption {
     function createWidget_Float() {
         
         global $javascript_on;
-
+ 
         // add onChange javascript handler to a regular string widget
         // which will strip out all non-numeric (period also OK) chars 
         if ($javascript_on)

@@ -151,7 +151,7 @@ function load_optpage_data_folder() {
 
     $optvals[SMOPT_GRP_FOLDERLIST][] = array(
         'name'    => 'collapse_folders',
-        'caption' => _("Enable Collapsable Folders"),
+        'caption' => _("Enable Collapsible Folders"),
         'type'    => SMOPT_TYPE_BOOLEAN,
         'refresh' => SMOPT_REFRESH_FOLDERLIST
     );

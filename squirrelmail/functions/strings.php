@@ -12,26 +12,19 @@
  * $Id$
  */
 
-
 /**
  * SquirrelMail version number -- DO NOT CHANGE
  */
 global $version;
-$version = '1.5.0 [CVS]';
+$version = '1.4.1';
 
 /** 
  * SquirrelMail internal version number -- DO NOT CHANGE
  * $sm_internal_version = array (release, major, minor)
  */
 global $SQM_INTERNAL_VERSION;
-$SQM_INTERNAL_VERSION = array(1,5,0);
+$SQM_INTERNAL_VERSION = array(1,4,1);
 
-
-/**
- * There can be a circular issue with includes, where the $version string is
- * referenced by the include of global.php, etc. before it's defined.
- * For that reason, bring in global.php AFTER we define the version strings.
- */
 require_once(SM_PATH . 'functions/global.php');
 
 /**
@@ -415,30 +408,27 @@ function TrimArray(&$array) {
     }
 }   
 
-/* returns a link to the compose-page, taking in consideration
- * the compose_in_new and javascript settings. */
-function makeComposeLink($url, $text = null)
-{
-    global $compose_new_win,$javascript_on;
-
-    if(!$text) {
-        $text = _("Compose");
+/**
+ * Removes slashes from every element in the array
+ */
+function RemoveSlashes(&$array) {
+    foreach ($array as $k => $v) {
+        global $$k;
+        if (is_array($$k)) {
+            foreach ($$k as $k2 => $v2) {
+                $newArray[stripslashes($k2)] = stripslashes($v2);
+            }
+            $$k = $newArray;
+        } else {
+            $$k = stripslashes($v);
+        }
+        
+        /* Re-assign back to the array. */
+        $array[$k] = $$k;
     }
-
-    if($compose_new_win != '1') {
-        return makeInternalLink($url, $text, 'right');
-    }
-
-    /* if we can use JS, use the fancy window, else just open a new one HTML-style */
-    if($javascript_on) {
-        sqgetGlobalVar('base_uri', $base_uri, SQ_SESSION);
-        return '<a href="javascript:void(0)" onclick="comp_in_new(\''.$base_uri.$url.'\')">'. $text.'</a>';
-    }
-
-    return makeInternalLink($url, $text, '_blank');
 }
 
-/** 
+/**
 * sm_print_r($some_variable);
 * Debugging function - does the same as print_r, but makes sure special
 * characters are converted to htmlentities first.  This will allow
@@ -456,5 +446,3 @@ function sm_print_r($var) {
 }
 
 $PHP_SELF = php_self();
-
-?>

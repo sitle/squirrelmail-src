@@ -24,7 +24,6 @@ require_once(SM_PATH . 'functions/date.php');
 require_once(SM_PATH . 'functions/url_parser.php');
 require_once(SM_PATH . 'functions/html.php');
 require_once(SM_PATH . 'functions/global.php');
-require_once(SM_PATH . 'functions/identity.php');
 
 /**
  * Given an IMAP message id number, this will look it up in the cached
@@ -170,13 +169,20 @@ function SendMDN ( $mailbox, $passed_id, $sender, $message, $imapConnection) {
 
 
     $reply_to = '';
-    $ident = get_identities();
-    if(!isset($identity)) $identity = 0;
-    $full_name = $ident[$identity]['full_name'];
-    $from_mail = $ident[$identity]['email_address'];
-    $from_addr = '"'.$full_name.'" <'.$from_mail.'>';
-    $reply_to  = $ident[$identity]['reply_to'];
-
+    if (isset($identity) && $identity != 'default') {
+        $from_mail = getPref($data_dir, $username, 
+                             'email_address' . $identity);
+        $full_name = getPref($data_dir, $username, 
+                             'full_name' . $identity);
+        $from_addr = '"'.$full_name.'" <'.$from_mail.'>';
+        $reply_to  = getPref($data_dir, $username, 
+                             'reply_to' . $identity);
+    } else {
+        $from_mail = getPref($data_dir, $username, 'email_address');
+        $full_name = getPref($data_dir, $username, 'full_name');
+        $from_addr = '"'.$full_name.'" <'.$from_mail.'>';
+        $reply_to  = getPref($data_dir, $username,'reply_to');
+    }
     if (!$from_addr) {
        $from_addr = "$popuser@$domain";
        $from_mail = $from_addr;
@@ -266,10 +272,10 @@ function SendMDN ( $mailbox, $passed_id, $sender, $message, $imapConnection) {
         require_once(SM_PATH . 'class/deliver/Deliver_SMTP.class.php');
         $deliver = new Deliver_SMTP();
         global $smtpServerAddress, $smtpPort, $smtp_auth_mech, $pop_before_smtp;
-        if ($smtp_auth_mech == 'none') {
-            $user = '';
-            $pass = '';
-        } else {
+		if ($smtp_auth_mech == 'none') {
+			$user = '';
+			$pass = '';
+		} else {
             global $key, $onetimepad;
             $user = $username;
             $pass = OneTimePadDecrypt($key, $onetimepad);
@@ -466,7 +472,7 @@ function formatEnvheader($mailbox, $passed_id, $passed_ent_id, $message,
 
 function formatMenubar($mailbox, $passed_id, $passed_ent_id, $message, $mbx_response) {
     global $base_uri, $draft_folder, $where, $what, $color, $sort,
-           $startMessage, $PHP_SELF, $save_as_draft,
+           $startMessage, $compose_new_win, $PHP_SELF, $save_as_draft,
            $enable_forward_as_attachment;
 
     $topbar_delimiter = '&nbsp;|&nbsp;';
@@ -499,11 +505,18 @@ function formatMenubar($mailbox, $passed_id, $passed_ent_id, $message, $mbx_resp
         $s .= '<a href="' . $delete_url . '">' . _("Delete") . '</a>';
     }
 
-    $comp_uri = 'src/compose.php' .
+    $comp_uri = $base_uri . 'src/compose.php' .
                             '?passed_id=' . $passed_id .
                             '&amp;mailbox=' . $urlMailbox .
                             (isset($passed_ent_id)?'&amp;passed_ent_id='.$passed_ent_id:'');
 
+    if ($compose_new_win == '1') {
+        $link_open  = '<a href="javascript:void(0)" onclick="comp_in_new(\'';
+        $link_close = '\')">';
+    } else {
+        $link_open  = '<a href="';
+        $link_close = '">';
+    }
     if (($mailbox == $draft_folder) && ($save_as_draft)) {
         $comp_alt_uri = $comp_uri . '&amp;action=draft';
         $comp_alt_string = _("Resume Draft");
@@ -513,7 +526,7 @@ function formatMenubar($mailbox, $passed_id, $passed_ent_id, $message, $mbx_resp
     }
     if (isset($comp_alt_uri)) {
         $s .= $topbar_delimiter;
-        $s .= makeComposeLink($comp_alt_uri, $comp_alt_string);
+        $s .= $link_open . $comp_alt_uri . $link_close . $comp_alt_string . '</a>';
     }
 
     $s .= '</small></td><td align="center" width="33%"><small>';
@@ -581,25 +594,25 @@ function formatMenubar($mailbox, $passed_id, $passed_ent_id, $message, $mbx_resp
     $s .= '</small></td>' . "\n" . 
           html_tag( 'td', '', 'right', '', 'width="33%" nowrap' ) . '<small>';
     $comp_action_uri = $comp_uri . '&amp;action=forward';
-    $s .= makeComposeLink($comp_action_uri, _("Forward"));
+    $s .= $link_open . $comp_action_uri . $link_close . _("Forward") . '</a>';
 
     if ($enable_forward_as_attachment) {
         $comp_action_uri = $comp_uri . '&amp;action=forward_as_attachment';
         $s .= $topbar_delimiter;
-        $s .= makeComposeLink($comp_action_uri, _("Forward as Attachment"));
+        $s .= $link_open . $comp_action_uri . $link_close . _("Forward as Attachment") . '</a>';
     }
 
     $comp_action_uri = $comp_uri . '&amp;action=reply';
     $s .= $topbar_delimiter;
-    $s .= makeComposeLink($comp_action_uri, _("Reply"));
+    $s .= $link_open . $comp_action_uri . $link_close . _("Reply") . '</a>';
 
     $comp_action_uri = $comp_uri . '&amp;action=reply_all';
     $s .= $topbar_delimiter;
-    $s .= makeComposeLink($comp_action_uri, _("Reply All"));
+    $s .= $link_open . $comp_action_uri . $link_close . _("Reply All") . '</a>';
     $s .= '</small></td></tr></table>';
-    do_hook('read_body_menu_top');
+    do_hook("read_body_menu_top");
     echo $s;
-    do_hook('read_body_menu_bottom');
+    do_hook("read_body_menu_bottom");
 }
 
 function formatToolbar($mailbox, $passed_id, $passed_ent_id, $message, $color) {
@@ -793,10 +806,11 @@ echo '<TR><TD HEIGHT="5" COLSPAN="2" BGCOLOR="'.
 
 $attachmentsdisplay = formatAttachments($message,$ent_ar,$mailbox, $passed_id);
 if ($attachmentsdisplay) {
-   echo '  </table>';
+   echo '  <tr><td>';
    echo '    <table width="100%" cellpadding="1" cellspacing="0" align="center"'.' border="0" bgcolor="'.$color[9].'">';
    echo '     <tr><td>';
    echo '       <table width="100%" cellpadding="0" cellspacing="0" align="center" border="0" bgcolor="'.$color[4].'">';
+ //  echo '        <tr><td ALIGN="left" bgcolor="'.$color[9].'">';
    echo '        <tr>' . html_tag( 'td', '', 'left', $color[9] );              
    echo '           <b>' . _("Attachments") . ':</b>';
    echo '        </td></tr>';
@@ -805,6 +819,7 @@ if ($attachmentsdisplay) {
    echo              $attachmentsdisplay;
    echo '          </td></tr></table>';
    echo '       </td></tr></table>';
+   echo '    </td></tr></table>';
    echo '  </td></tr>';
    echo '<TR><TD HEIGHT="5" COLSPAN="2" BGCOLOR="'.
           $color[4].'"></TD></TR>';

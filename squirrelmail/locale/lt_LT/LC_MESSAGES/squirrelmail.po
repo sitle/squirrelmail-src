@@ -5,8 +5,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: $Id$\n"
-"POT-Creation-Date: 2003-05-31 14:56+0300\n"
-"PO-Revision-Date: 2003-05-31 15:01+0300\n"
+"POT-Creation-Date: 2003-05-02 14:08+0300\n"
+"PO-Revision-Date: 2003-05-31 15:06+0300\n"
 "Last-Translator: Tomas Kuliavas <tokul@users.sourceforge.net>\n"
 "Language-Team: Lithuanian <squirrelmail-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -421,12 +421,6 @@ msgstr "tema"
 msgid "Edit"
 msgstr "Taisyti"
 
-msgid "Up"
-msgstr "Aukðtyn"
-
-msgid "Down"
-msgstr "Þemyn"
-
 msgid "No highlighting is defined"
 msgstr "Joks iðskyrimas neapraðytas"
 
@@ -673,6 +667,9 @@ msgstr "Taisyti þinutæ kaip naujà"
 
 msgid "View Message"
 msgstr "Perþiûrëti þinutæ"
+
+msgid "Up"
+msgstr "Aukðtyn"
 
 msgid "Forward"
 msgstr "Persiøsti"
@@ -1145,14 +1142,20 @@ msgstr ""
 "Paðalinkite nereikalingas þinutes ið savo aplankø. Pradëti valymà reiktø nuo "
 "ðiukðlyno (Trash aplankas)."
 
+msgid "Unknown response from IMAP server: "
+msgstr "Nesuprantamas atsakymas ið IMAP serverio"
+
+msgid "Unknown message number in reply from server: "
+msgstr "Neþinomas þinutës numeris atsakyme, gautame ið serverio:"
+
 msgid "(no subject)"
 msgstr "(tema nenurodyta)"
 
 msgid "Unknown Sender"
 msgstr "Neþinomas siuntëjas"
 
-msgid "Unknown response from IMAP server: "
-msgstr "Nesuprantamas atsakymas ið IMAP serverio"
+msgid "(unknown sender)"
+msgstr "(neþinomas siuntëjas)"
 
 msgid "Unknown date"
 msgstr "Neþinoma data"
@@ -1530,7 +1533,7 @@ msgstr "Tik naujos þinutës"
 msgid "Unseen and Total"
 msgstr "Naujos þinutës ir bendras skaièius"
 
-msgid "Enable Collapsable Folders"
+msgid "Enable Collapsible Folders"
 msgstr "Aktyvuoti iðsiskleidþianèius aplankus"
 
 msgid "Enable Cumulative Unread Message Notification"
@@ -2322,6 +2325,9 @@ msgstr "Antraðtë"
 msgid "Contains:"
 msgstr "Turi:"
 
+msgid "Down"
+msgstr "Þemyn"
+
 #, c-format
 msgid "If <b>%s</b> contains <b>%s</b> then move to <b>%s</b>"
 msgstr "Jei <b>%s</b> turi <b>%s</b>, tada perkelti laiðkà á <b>%s</b> "
@@ -2483,6 +2489,12 @@ msgstr "Serveris nenurodytas"
 msgid "Error "
 msgstr "Klaida "
 
+msgid "POP3 noop:"
+msgstr "POP3 noop:"
+
+msgid "No connection to server"
+msgstr "Prisijungti prie serverio nepavyko"
+
 msgid "POP3 user:"
 msgstr "POP3 vartotojas:"
 
@@ -2503,9 +2515,6 @@ msgstr "autorizacija nepavyko "
 
 msgid "POP3 apop:"
 msgstr "POP3 apop:"
-
-msgid "No connection to server"
-msgstr "Prisijungti prie serverio nepavyko"
 
 msgid "No login ID submitted"
 msgstr "Nebuvo pateiktas vartotojo vardas"
@@ -3491,12 +3500,3 @@ msgstr "Ataskaita apie pristatymo klaidà"
 
 msgid "Undelivered Message Headers"
 msgstr "Nepristatytos þinutës antraðtës"
-
-#~ msgid "Unknown message number in reply from server: "
-#~ msgstr "Neþinomas þinutës numeris atsakyme, gautame ið serverio:"
-
-#~ msgid "(unknown sender)"
-#~ msgstr "(neþinomas siuntëjas)"
-
-#~ msgid "POP3 noop:"
-#~ msgstr "POP3 noop:"

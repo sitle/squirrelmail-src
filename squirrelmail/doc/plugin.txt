@@ -553,14 +553,14 @@ for you.  This is the preferred method of building options lists going forward.
                            SMOPT_TYPE_INTEGER    Integer input
                            SMOPT_TYPE_FLOAT      Floating point number input
                            SMOPT_TYPE_BOOLEAN    Boolean (yes/no radio buttons)
-                                                   input
-                           SMOPT_TYPE_HIDDEN     Hidden input (not actually
+                                                 input
+                           SMOPT_TYPE_HIDDEN     Hidden input (not actually 
                                                  shown on preferences page)
                            SMOPT_TYPE_COMMENT    Text is shown (specified by the
-                                                 'comment' attribute), but no
+                                                 'comment' attribute), but no 
                                                  user input is needed
                            SMOPT_TYPE_FLDRLIST   Select list of IMAP folders
-         refresh        Indicates if a link should be shown to refresh part or
+         refresh        Indicates if a link should be shown to refresh part or 
                         all of the window (optional).  Possible values are:
                            SMOPT_REFRESH_NONE         No refresh link is shown
                            SMOPT_REFRESH_FOLDERLIST   Link is shown to refresh
@@ -577,7 +577,7 @@ for you.  This is the preferred method of building options lists going forward.
                         input
          save           You may indicate that special functionality needs to be
                         used instead of just saving this setting by giving the
-                        name of a function to call when this value would 
+                        name of a function to call when this value would
                         otherwise just be saved in the user's preferences
          size           Specifies the size of certain input items (typically
                         textual inputs).  Possible values are:
@@ -589,7 +589,7 @@ for you.  This is the preferred method of building options lists going forward.
                            SMOPT_SIZE_NORMAL
          comment        For SMOPT_TYPE_COMMENT type options, this is the text
                         displayed to the user
-         script         This is where you may add any additional javascript 
+         script         This is where you may add any additional javascript
                         or other code to the user input
          post_script    You may specify some script (usually Javascript) that
                         will be placed after (outside of) the INPUT tag.

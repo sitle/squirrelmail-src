@@ -69,16 +69,12 @@ ECHO;
     $pageheader_sent = TRUE;
 }
 
-function makeInternalLink($path, $text, $target='') {
+function displayInternalLink($path, $text, $target='') {
     sqgetGlobalVar('base_uri', $base_uri, SQ_SESSION);
     if ($target != '') {
         $target = " target=\"$target\"";
     }
-    return '<a href="'.$base_uri.$path.'"'.$target.'>'.$text.'</a>';
-}
-
-function displayInternalLink($path, $text, $target='') {
-    echo makeInternalLink($path, $text, $target);
+    echo '<a href="'.$base_uri.$path.'"'.$target.'>'.$text.'</a>';
 }
 
 function displayPageHeader($color, $mailbox, $xtra='', $session=false) {
@@ -104,130 +100,129 @@ function displayPageHeader($color, $mailbox, $xtra='', $session=false) {
         $compose_uri = $base_uri.'src/compose.php?newmessage=1';
 	$session = 0;
     }
-  
-    if($javascript_on) { 
 
-      switch ( $module ) {
+    // only output JavaScript if actually turned on
+    if($javascript_on) {
+        switch ( $module ) {
         case 'src/read_body.php':
-                $js ='';
+            $js ='';
 
-                // compose in new window code
-                if ($compose_new_win == '1') {
-                    if (!preg_match("/^[0-9]{3,4}$/", $compose_width)) {
-                        $compose_width = '640';
-                    }
-                    if (!preg_match("/^[0-9]{3,4}$/", $compose_height)) {
-                        $compose_height = '550';
-                    }
-                    $js .= "function comp_in_new(comp_uri) {\n".
-    		     "       if (!comp_uri) {\n".
-    		     '           comp_uri = "'.$compose_uri."\";\n".
-    		     '       }'. "\n".
-                         '    var newwin = window.open(comp_uri' .
-                         ', "_blank",'.
-                         '"width='.$compose_width. ',height='.$compose_height.
-                         ',scrollbars=yes,resizable=yes");'."\n".
-                         "}\n\n";
+            // compose in new window code
+            if ($compose_new_win == '1') {
+                if (!preg_match("/^[0-9]{3,4}$/", $compose_width)) {
+                    $compose_width = '640';
                 }
-
-                // javascript for sending read receipts
-                if($default_use_mdn && $mdn_user_support) {
-                    $js .= 'function sendMDN() {'."\n".
-                           "    mdnuri=window.location+'&sendreceipt=1'; ".
-                           "var newwin = window.open(mdnuri,'right');".
-    	               "\n}\n\n";
+                if (!preg_match("/^[0-9]{3,4}$/", $compose_height)) {
+                    $compose_height = '550';
                 }
+                $js .= "function comp_in_new(comp_uri) {\n".
+		     "       if (!comp_uri) {\n".
+		     '           comp_uri = "'.$compose_uri."\";\n".
+                     '       }'. "\n".
+                     '    var newwin = window.open(comp_uri' .
+                     ', "_blank",'.
+                     '"width='.$compose_width. ',height='.$compose_height.
+                     ',scrollbars=yes,resizable=yes");'."\n".
+                     "}\n\n";
+            }
 
-                // if any of the above passes, add the JS tags too.
-                if($js) {
-                    $js = "\n".'<script language="JavaScript" type="text/javascript">' .
-                        "\n<!--\n" . $js . "// -->\n</script>\n";
-                }
+            // javascript for sending read receipts
+            if($default_use_mdn && $mdn_user_support) {
+                $js .= 'function sendMDN() {'."\n".
+                       "    mdnuri=window.location+'&sendreceipt=1'; ".
+                       "var newwin = window.open(mdnuri,'right');".
+	               "\n}\n\n";
+            }
 
-                displayHtmlHeader ('SquirrelMail', $js);
-                $onload = $xtra;
-            break;
+            // if any of the above passes, add the JS tags too.
+            if($js) {
+                $js = "\n".'<script language="JavaScript" type="text/javascript">' .
+                      "\n<!--\n" . $js . "// -->\n</script>\n";
+            }
+	     
+            displayHtmlHeader ('SquirrelMail', $js);
+            $onload = $xtra;
+          break;
         case 'src/compose.php':
             $js = '<script language="JavaScript" type="text/javascript">' .
-                 "\n<!--\n" .
-                 "function checkForm() {\n".
-                    "var f = document.forms.length;\n".
-                    "var i = 0;\n".
-                    "var pos = -1;\n".
-                    "while( pos == -1 && i < f ) {\n".
-                        "var e = document.forms[i].elements.length;\n".
-                        "var j = 0;\n".
-                        "while( pos == -1 && j < e ) {\n".
-                            "if ( document.forms[i].elements[j].type == 'text' ) {\n".
-                                "pos = j;\n".
-                            "}\n".
-                            "j++;\n".
+             "\n<!--\n" .
+             "function checkForm() {\n".
+                "var f = document.forms.length;\n".
+                "var i = 0;\n".
+                "var pos = -1;\n".
+                "while( pos == -1 && i < f ) {\n".
+                    "var e = document.forms[i].elements.length;\n".
+                    "var j = 0;\n".
+                    "while( pos == -1 && j < e ) {\n".
+                        "if ( document.forms[i].elements[j].type == 'text' ) {\n".
+                            "pos = j;\n".
                         "}\n".
-                    "i++;\n".
+                        "j++;\n".
                     "}\n".
-                    "if( pos >= 0 ) {\n".
-                        "document.forms[i-1].elements[pos].focus();\n".
-                    "}\n".
-                "}\n";
+                "i++;\n".
+                "}\n".
+                "if( pos >= 0 ) {\n".
+                    "document.forms[i-1].elements[pos].focus();\n".
+                "}\n".
+            "}\n";
 	    
             $js .= "// -->\n".
-            	 "</script>\n";
+        	 "</script>\n";
             $onload = 'onload="checkForm();"';
             displayHtmlHeader ('SquirrelMail', $js);
             break;   
 
         default:
             $js = '<script language="JavaScript" type="text/javascript">' .
-                 "\n<!--\n" .
-                 "function checkForm() {\n".
-                    "var f = document.forms.length;\n".
-                    "var i = 0;\n".
-                    "var pos = -1;\n".
-                    "while( pos == -1 && i < f ) {\n".
-                        "var e = document.forms[i].elements.length;\n".
-                        "var j = 0;\n".
-                        "while( pos == -1 && j < e ) {\n".
-                            "if ( document.forms[i].elements[j].type == 'text' " .
-                            "|| document.forms[i].elements[j].type == 'password' ) {\n".
-                                "pos = j;\n".
-                            "}\n".
-                            "j++;\n".
+             "\n<!--\n" .
+             "function checkForm() {\n".
+                "var f = document.forms.length;\n".
+                "var i = 0;\n".
+                "var pos = -1;\n".
+                "while( pos == -1 && i < f ) {\n".
+                    "var e = document.forms[i].elements.length;\n".
+                    "var j = 0;\n".
+                    "while( pos == -1 && j < e ) {\n".
+                        "if ( document.forms[i].elements[j].type == 'text' " .
+                        "|| document.forms[i].elements[j].type == 'password' ) {\n".
+                            "pos = j;\n".
                         "}\n".
-                    "i++;\n".
+                        "j++;\n".
                     "}\n".
-                    "if( pos >= 0 ) {\n".
-                        "document.forms[i-1].elements[pos].focus();\n".
-                    "}\n".
-	    	"$xtra\n".
-                "}\n";
+                "i++;\n".
+                "}\n".
+                "if( pos >= 0 ) {\n".
+                    "document.forms[i-1].elements[pos].focus();\n".
+                "}\n".
+		"$xtra\n".
+            "}\n";
 	    
-                if ($compose_new_win == '1') {
-                    if (!preg_match("/^[0-9]{3,4}$/", $compose_width)) {
-                        $compose_width = '640';
-                    }
-                    if (!preg_match("/^[0-9]{3,4}$/", $compose_height)) {
-                        $compose_height = '550';
-                    }
-                    $js .= "function comp_in_new(comp_uri) {\n".
-    		     "       if (!comp_uri) {\n".
-		         '           comp_uri = "'.$compose_uri."\";\n".
-	    	     '       }'. "\n".
-                         '    var newwin = window.open(comp_uri' .
-                         ', "_blank",'.
-                         '"width='.$compose_width. ',height='.$compose_height.
-                         ',scrollbars=yes,resizable=yes");'."\n".
-                         "}\n\n";
-
+            if ($compose_new_win == '1') {
+                if (!preg_match("/^[0-9]{3,4}$/", $compose_width)) {
+                    $compose_width = '640';
                 }
-            $js .= "// -->\n". "</script>\n";
-	
-            $onload = 'onload="checkForm();"';
-            displayHtmlHeader ('SquirrelMail', $js);
-            break;   
+                if (!preg_match("/^[0-9]{3,4}$/", $compose_height)) {
+                    $compose_height = '550';
+                }
+                $js .= "function comp_in_new(comp_uri) {\n".
+		     "       if (!comp_uri) {\n".
+		     '           comp_uri = "'.$compose_uri."\";\n".
+		     '       }'. "\n".
+                     '    var newwin = window.open(comp_uri' .
+                     ', "_blank",'.
+                     '"width='.$compose_width. ',height='.$compose_height.
+                     ',scrollbars=yes,resizable=yes");'."\n".
+                     "}\n\n";
 
-        }
+            }
+        $js .= "// -->\n". "</script>\n";
+	
+
+        $onload = 'onload="checkForm();"';
+        displayHtmlHeader ('SquirrelMail', $js);
+      } // end switch module
     } else {
-        /* do not use JavaScript */
+        // JavaScript off
         displayHtmlHeader ('SquirrelMail');
         $onload = '';
     }
@@ -256,7 +251,12 @@ function displayPageHeader($color, $mailbox, $xtra='', $session=false) {
         . html_tag( 'tr', '', '', $color[4] ) ."\n"
         . html_tag( 'td', '', 'left' ) ."\n";
     $urlMailbox = urlencode($mailbox);
-    echo makeComposeLink('src/compose.php?mailbox='.$urlMailbox);
+    if ($compose_new_win == '1') {
+        echo '<a href="javascript:void(0)" onclick="comp_in_new()">'. _("Compose").'</a>';
+    }
+    else {
+        displayInternalLink ("src/compose.php?mailbox=$urlMailbox", _("Compose"), 'right');
+    } 
     echo "&nbsp;&nbsp;\n";
     displayInternalLink ('src/addressbook.php', _("Addresses"), 'right');
     echo "&nbsp;&nbsp;\n";
@@ -285,54 +285,52 @@ function displayPageHeader($color, $mailbox, $xtra='', $session=false) {
 /* blatently copied/truncated/modified from the above function */
 function compose_Header($color, $mailbox) {
 
-    global $javascript_on;
+    global $delimiter, $hide_sm_attributions, $base_uri, $PHP_SELF, 
+           $data_dir, $username, $frame_top, $compose_new_win;
+
+
+    $module = substr( $PHP_SELF, ( strlen( $PHP_SELF ) - strlen( $base_uri ) ) * -1 );
+    if (!isset($frame_top)) {
+        $frame_top = '_top';
+    }
 
     /*
-     * Locate the first displayable form element (only when JavaScript on)
-     */
-    if($javascript_on) {
-        global $delimiter, $base_uri, $PHP_SELF, $data_dir, $username;
-
-        $module = substr( $PHP_SELF, ( strlen( $PHP_SELF ) - strlen( $base_uri ) ) * -1 );
-
-        switch ( $module ) {
-        case 'src/search.php':
-            $pos = getPref($data_dir, $username, 'search_pos', 0 ) - 1;
-            $onload = "onload=\"document.forms[$pos].elements[2].focus();\"";
-            displayHtmlHeader (_("Compose"));
-            break;
-        default:
-            $js = '<script language="JavaScript" type="text/javascript">' .
-                 "\n<!--\n" .
-                 "function checkForm() {\n".
-                    "var f = document.forms.length;\n".
-                    "var i = 0;\n".
-                    "var pos = -1;\n".
-                    "while( pos == -1 && i < f ) {\n".
-                        "var e = document.forms[i].elements.length;\n".
-                        "var j = 0;\n".
-                        "while( pos == -1 && j < e ) {\n".
-                            "if ( document.forms[i].elements[j].type == 'text' ) {\n".
-                                "pos = j;\n".
-                            "}\n".
-                            "j++;\n".
+        Locate the first displayable form element
+    */
+    switch ( $module ) {
+    case 'src/search.php':
+        $pos = getPref($data_dir, $username, 'search_pos', 0 ) - 1;
+        $onload = "onload=\"document.forms[$pos].elements[2].focus();\"";
+        displayHtmlHeader (_("Compose"));
+        break;
+    default:
+        $js = '<script language="JavaScript" type="text/javascript">' .
+             "\n<!--\n" .
+             "function checkForm() {\n".
+                "var f = document.forms.length;\n".
+                "var i = 0;\n".
+                "var pos = -1;\n".
+                "while( pos == -1 && i < f ) {\n".
+                    "var e = document.forms[i].elements.length;\n".
+                    "var j = 0;\n".
+                    "while( pos == -1 && j < e ) {\n".
+                        "if ( document.forms[i].elements[j].type == 'text' ) {\n".
+                            "pos = j;\n".
                         "}\n".
-                    "i++;\n".
+                        "j++;\n".
                     "}\n".
-                    "if( pos >= 0 ) {\n".
-                        "document.forms[i-1].elements[pos].focus();\n".
-                    "}\n".
-                "}\n";
-            $js .= "// -->\n".
-            	 "</script>\n";
-            $onload = 'onload="checkForm();"';
-            displayHtmlHeader (_("Compose"), $js);
-            break;   
-        }
-    } else {
-        /* javascript off */
-        displayHtmlHeader(_("Compose"));
-        $onload = '';
+                "i++;\n".
+                "}\n".
+                "if( pos >= 0 ) {\n".
+                    "document.forms[i-1].elements[pos].focus();\n".
+                "}\n".
+            "}\n";
+        $js .= "// -->\n".
+        	 "</script>\n";
+        $onload = 'onload="checkForm();"';
+        displayHtmlHeader (_("Compose"), $js);
+        break;   
+
     }
 
     echo "<body text=\"$color[8]\" bgcolor=\"$color[4]\" link=\"$color[7]\" vlink=\"$color[7]\" alink=\"$color[7]\" $onload>\n\n";

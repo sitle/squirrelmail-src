@@ -2925,7 +2925,6 @@ sub set_defaults {
             $show_contain_subfolders_option = false;
             $optional_delimiter             = ".";
             $disp_default_folder_prefix     = "<none>";
-            $force_username_lowercase       = false;
 
             $continue = 1;
         } elsif ( $server eq "uw" ) {
@@ -2940,7 +2939,6 @@ sub set_defaults {
             $optional_delimiter             = "/";
             $disp_default_folder_prefix     = $default_folder_prefix;
             $delete_folder                  = true;
-            $force_username_lowercase       = true;
             
             $continue = 1;
         } elsif ( $server eq "exchange" ) {
@@ -2954,7 +2952,6 @@ sub set_defaults {
             $show_contain_subfolders_option = false;
             $optional_delimiter             = "detect";
             $disp_default_folder_prefix     = "<none>";
-            $force_username_lowercase       = true;
 
             $continue = 1;
         } elsif ( $server eq "courier" ) {
@@ -2969,7 +2966,6 @@ sub set_defaults {
             $optional_delimiter             = ".";
             $disp_default_folder_prefix     = $default_folder_prefix;
             $delete_folder                  = true;
-            $force_username_lowercase       = false;
             
             $continue = 1;
         } elsif ( $server eq "macosx" ) {
@@ -3004,9 +3000,8 @@ sub set_defaults {
         print "show_contain_subfolders_option = $show_contain_subfolders_option\n";
         print "            optional_delimiter = $optional_delimiter\n";
         print "                 delete_folder = $delete_folder\n";
-        print "      force_username_lowercase = $force_username_lowercase\n";
     }
-    print "\nPress enter to continue...";
+    print "\nPress any key to continue...";
     $tmp = <STDIN>;
 }
 
