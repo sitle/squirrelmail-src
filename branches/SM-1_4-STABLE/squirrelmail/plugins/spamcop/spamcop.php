@@ -124,7 +124,7 @@ if(! sqgetGlobalVar('composesession', $composesession, SQ_SESSION) ) {
 
 
 echo "<p>";
-echo _("Sending this spam report will give you back a reply with URLs that you can click on to properly report this spam message to the proper authorities. This is a free service.  By pressing the \"Send Spam Report\" button, you agree to follow SpamCop's rules/terms of service/etc.");
+echo _("Sending this spam report will give you back a reply with URLs that you can click on to properly report this spam message to the proper authorities. This is a free service. By pressing the \"Send Spam Report\" button, you agree to follow SpamCop's rules/terms of service/etc.");
 echo "</p>";
 
 ?>
