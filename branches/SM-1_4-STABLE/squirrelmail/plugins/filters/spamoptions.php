@@ -184,9 +184,9 @@ if (! isset($_GET['action']) || $_GET['action'] != 'spam') {
     echo html_tag( 'p', '', 'center' ) .
          '[<a href="spamoptions.php?action=spam">' . _("Edit") . '</a>]' .
          ' - [<a href="../../src/options.php">' . _("Done") . '</a>]</center><br><br>';
-    printf( _("Spam is sent to %s"), ($filters_spam_folder?'<b>'.htmlspecialchars($filters_spam_folder).'</b>':'[<i>'._("not set yet").'</i>]' ) );
+    printf( _("Spam is sent to %s."), ($filters_spam_folder?'<b>'.htmlspecialchars($filters_spam_folder).'</b>':'[<i>'._("not set yet").'</i>]' ) );
     echo '<br>';
-    printf( _("Spam scan is limited to %s"), '<b>' . (($filters_spam_scan == 'new')?_("Unread messages only"):_("All messages") ) . '</b>');
+    printf( _("Spam scan is limited to %s."), '<b>' . (($filters_spam_scan == 'new')?_("Unread messages only"):_("All messages") ) . '</b>');
     echo '</p>'.
         "<table border=0 cellpadding=3 cellspacing=0 align=center bgcolor=\"$color[0]\">";
 
