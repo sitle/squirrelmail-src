@@ -69,7 +69,7 @@ function object_history_body(&$foowd, $className, $method, &$user, &$object, &$t
     <td class="smalldate"><?php echo $version['updated']; ?></td>
     <td class="small" align="center"><?php echo $version['author']; ?></td>
     <td class="small" align="center"><a href="<?php echo $link; ?>"><?php echo $version['version']; ?></a></td>
-<?php   if (isset($version['revert']) && $foowd->hasPermission($className,'revert','object',$object->permission) ) { ?>
+<?php   if (isset($version['revert']) && $foowd->hasPermission($className,'revert','object',$object->permissions) ) { ?>
     <td class="small"><a href="<?php echo $link,'&method=revert'; ?>">Revert</a></td>
 <?php   }
         if ( isset($version['diff']) && $foowd->hasPermission($className,'diff','object',$object)) { ?>
