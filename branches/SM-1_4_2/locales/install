@@ -7,3 +7,6 @@ cp -r -i locale ${smpath}
 if [ -d help ]; then
     cp -r -i help ${smpath}
 fi
+if [ -d images ]; then
+    cp -r -i images ${smpath}
+fi
