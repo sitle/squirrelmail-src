@@ -25,7 +25,7 @@ require_once(INPUT_DIR . 'input.lib.php');
 if (!defined('INPUT_TEXTAREA_WIDTH_MIN')) define('INPUT_TEXTAREA_WIDTH_MIN', 20);
 if (!defined('INPUT_TEXTAREA_WIDTH_MAX')) define('INPUT_TEXTAREA_WIDTH_MAX', 80);
 if (!defined('INPUT_TEXTAREA_HEIGHT_MIN')) define('INPUT_TEXTAREA_HEIGHT_MIN', 4);
-if (!defined('INPUT_TEXTAREA_HEIGHT_MAX')) define('INPUT_TEXTAREA_HEIGHT_MAX', 40);
+if (!defined('INPUT_TEXTAREA_HEIGHT_MAX')) define('INPUT_TEXTAREA_HEIGHT_MAX', 20);
 
 /**
  * Input textarea class.
@@ -79,6 +79,7 @@ class input_textarea extends input_base
     $this->form = NULL;
     $this->caption = $caption;
     $this->maxlength = $maxlength;
+    $this->default = $value;
     
     if ( sqGetGlobalVar($name, $new_value, SQ_FORM) )
     {
@@ -136,6 +137,7 @@ class input_textarea extends input_base
       $class .= ' error';
 
     $name  = 'name="'.$this->name.'" ';
+    $id    = 'id="'.$this->name.'" ';
     $value = 'value="'.htmlentities($this->value).'" ';
     $class  = ( $class == NULL ) ? ''  : 'class="'.$class.'" ';
 
@@ -157,7 +159,7 @@ class input_textarea extends input_base
     $height = 'rows="'.$height.'" ';
 
     // and finally, display it! 
-    echo '<textarea '.$name.$width.$height.$class.'wrap="virtual" >'."\n"
+    echo '<textarea '.$name.$id.$width.$height.$class.'wrap="virtual" >'."\n"
          .htmlentities($this->value)."\n"
          .'</textarea>'."\n";
   }

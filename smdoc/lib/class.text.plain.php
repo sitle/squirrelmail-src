@@ -317,8 +317,8 @@ class foowd_text_plain extends foowd_object
     include_once(INPUT_DIR.'input.textarea.php');
     include_once(INPUT_DIR.'input.checkbox.php');
 
-    $editForm = new input_form('editForm', NULL, 'POST', 
-                               FORM_DEFAULT_SUBMIT, NULL, FORM_DEFAULT_PREVIEW);
+    $editForm = new input_form('editForm', NULL, 'POST', FORM_DEFAULT_SUBMIT, NULL);
+    $editForm->addSubmitButton('preview', FORM_DEFAULT_PREVIEW);
 
     $editCollision = new input_hiddenbox('editCollision', REGEX_DATETIME, time());
     $editForm->addObject($editCollision);
@@ -328,7 +328,7 @@ class foowd_text_plain extends foowd_object
 
     // If author is same as last author and not anonymous, 
     // ask if they want to make a new version, or just save changes to existing version
-    $noNewVersion = new input_checkbox('noNewVersion', TRUE, _("Save this as the previous version?"));
+    $noNewVersion = new input_checkbox('noNewVersion', $editForm, TRUE, _("Save this as the previous version?"));
     if ( isset($this->foowd->user->objectid) &&  $this->updatorid == $this->foowd->user->objectid ) 
       $editForm->addObject($noNewVersion);
     
@@ -357,7 +357,7 @@ class foowd_text_plain extends foowd_object
           break;
       }
     } 
-    elseif ( $editForm->previewed() ) 
+    elseif ( $editForm->otherSubmitted('preview') ) 
       $this->foowd->template->assign('preview', $this->processContent($editArea->value));
 
     $this->foowd->track();

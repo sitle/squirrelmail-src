@@ -308,7 +308,7 @@ class smdoc_group_user extends smdoc_storage
         // only add checkboxes for groups that can be deleted
         if ( !smdoc_group::checkGroup($foowd, $id) )
         {
-          $deleteBox = new input_checkbox($id, FALSE, 'Delete');
+          $deleteBox = new input_checkbox($id, $deleteForm, FALSE, 'Delete');
           if ( $deleteForm->submitted() && $deleteBox->checked )
           {
             $foowd->groups->deleteGroup($id);
@@ -411,7 +411,7 @@ class smdoc_group_user extends smdoc_storage
     {
       foreach ( $members as $idx => $userArray )
       {
-        $deleteBox = new input_checkbox($userArray['objectid'], FALSE, 'Delete');
+        $deleteBox = new input_checkbox($userArray['objectid'], $deleteForm, FALSE, 'Delete');
 
         if ( $deleteForm->submitted() && $deleteBox->checked )
         {

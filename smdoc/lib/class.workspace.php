@@ -848,10 +848,12 @@ class foowd_workspace extends foowd_object
     
     $items = $this->getFillSelectionItems($objects);
 
-    $objectForm = new input_form('objectForm', NULL, SQ_POST, _("Clone Objects"), NULL, _("Move Objects"));
+    $objectForm = new input_form('objectForm', NULL, SQ_POST, _("Clone Objects"), NULL);
+    $objectForm->addSubmitButton('moveObjects', _("Move Objects"));
     $objectSelect = new input_dropdown('objectSelect', NULL, $items, _("Select Objects").':', 10, TRUE);
 
-    $result = $this->fillWorkspace($objects, $objectSelect->value, $objectForm->submitted(), $objectForm->previewed());
+    $result = $this->fillWorkspace($objects, $objectSelect->value, $objectForm->submitted(), 
+                                             $objectForm->otherSubmitted('moveObjects'));
     
     switch($result) {
     case 0: // cloned successfully
@@ -895,7 +897,8 @@ class foowd_workspace extends foowd_object
     include_once(INPUT_DIR.'input.form.php');
     include_once(INPUT_DIR.'input.dropdown.php');
     
-    $objectForm = new input_form('objectForm', NULL, SQ_POST, _("Move Objects"), NULL, _("Delete Objects"));
+    $objectForm = new input_form('objectForm', NULL, SQ_POST, _("Move Objects"), NULL);
+    $objectForm->addSubmitButton('deleteObjects', _("Delete Objects"));
 
     $return =& $this->getEmptyObjects();
     $items =& $return['items'];
@@ -903,7 +906,8 @@ class foowd_workspace extends foowd_object
 
     $objectSelect = new input_dropdown('objectSelect', NULL, $items, _("Select Objects").':', 10, TRUE);
     
-    $result = $this->emptyWorkspace($objects, $objectSelect->value, $objectForm->submitted(), $objectForm->previewed());
+    $result = $this->emptyWorkspace($objects, $objectSelect->value, $objectForm->submitted(), 
+                                              $objectForm->otherSubmitted('deleteObjects'));
     
     switch ($result) {
     case 0: // moved successfully

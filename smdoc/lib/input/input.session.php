@@ -56,6 +56,7 @@ class input_session extends input_base
     $this->regex = $regex;
     $this->required = FALSE;
     $this->form = NULL;
+    $this->default = $value;
     
     $this->refresh();
 
@@ -82,6 +83,15 @@ class input_session extends input_base
       $new_value = unserialize(base64_decode($new_value));
 
     $this->wasValid = $this->set($new_value, FALSE);
+  }
+
+  /**
+   * Reset value to default, set default value into session
+   */
+  function reset()
+  {
+    $this->remove();    
+    parent::reset();
   }
     
   /**

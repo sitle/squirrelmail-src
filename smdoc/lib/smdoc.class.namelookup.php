@@ -222,7 +222,7 @@ class smdoc_name_lookup extends smdoc_storage
         if ( is_string($idx) )
         {
           $elem = $value;
-          $deleteBox = new input_checkbox($idx, FALSE, 'Delete');
+          $deleteBox = new input_checkbox($idx, $deleteForm, FALSE, 'Delete');
 
           if ( $deleteForm->submitted() && $deleteBox->checked )
           {

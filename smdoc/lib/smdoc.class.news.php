@@ -383,7 +383,8 @@ class smdoc_news extends smdoc_text_textile
     include_once(INPUT_DIR.'input.textarea.php');
 
     $editForm = new input_form('editForm', NULL, 'POST', 
-                               FORM_DEFAULT_SUBMIT, NULL, FORM_DEFAULT_PREVIEW);
+                               FORM_DEFAULT_SUBMIT, NULL);
+    $editForm->addSubmitButton('preview', FORM_DEFAULT_PREVIEW);
 
     $editTitle = new input_textbox('editTitle', REGEX_TITLE, $this->title, 'Title', TRUE);
     $editForm->addObject($editTitle);
@@ -425,7 +426,7 @@ class smdoc_news extends smdoc_text_textile
           break;
       }
     } 
-    elseif ( $editForm->previewed() ) 
+    elseif ( $editForm->otherSubmitted('preview') ) 
       $this->foowd->template->assign('preview', $this->processContent($editArea->value));
 
     $this->foowd->track();

@@ -138,46 +138,6 @@ function setConst($constName, $value)
 }
 
 /**
- * Find the max length of string allowed by a regex.
- *
- * @param string regex The regular expression to find the length of.
- * @param int default The default length to return if we can not find a length in the regular expression.
- * @return string The maximum length allowed by a regular expression.
- */
-function getRegexLength($regex, $default) 
-{
-  if (preg_match('/\*/', $regex))
-    return 0;
-  if (preg_match('/\+/', $regex))
-    return 0;
-  if (preg_match('/\{[0-9,]*([0-9]+)\}/U', $regex, $results = array()))
-    return $results[1];
-  if (preg_match('/\?/', $regex))
-    return 1;
-
-  return $default;
-}
-
-/**
- * Make sure that the specified number lies between min and max
- *
- * @param int value Value to ensure is within range - changed if necessary
- * @param int min   Minimum value of range
- * @param int max   Maximum value of range
- */
-function ensureIntInRange(&$value, $min, $max)
-{
-  if ( $value === NULL || !is_int($value) )
-    return;
-
-  if ( $value > $max )
-    $value = $max;
-
-  if ( $value < $min )
-    $value = $min;
-}
-
-/**
  * Get the user group permission of a object or class method.
  *
  * @param string className Name of the class the method belongs to.
