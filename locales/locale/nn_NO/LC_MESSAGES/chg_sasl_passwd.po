@@ -1,130 +1,109 @@
 # translation of chg_sasl_passwd.po to Nynorsk
 # Copyright (C) 2004 Free Software Foundation, Inc.
 # Ola Ketil Siqveland <olaketil@hotmail.com>, 2004
+# Hans Fredrik Nordhaug <hans@nordhaug.priv.no>, 2005
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: chg_sasl_passwd\n"
-"POT-Creation-Date: 2003-09-01 22:41-0400\n"
-"PO-Revision-Date: 2004-05-27 10:10+0200\n"
-"Last-Translator: Ola Ketil Siqveland <olaketil@hotmail.com>\n"
-"Language-Team: Nynorsk <nn@li.org>\n"
+"POT-Creation-Date: 2005-03-04 14:58+0200\n"
+"PO-Revision-Date: 2005-03-09 11:59+0100\n"
+"Last-Translator: Hans Fredrik Nordhaug <hans@nordhaug.priv.no>\n"
+"Language-Team: Norwegian Nynorsk <i18n-nn@lister.ping.uio.no>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=ISO-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.0.1\n"
 
-#: options.php:155
-msgid " and "
-msgstr " og "
+msgid "Your password has successfully been changed."
+msgstr "Vellukka endring av passordet."
 
-#: options.php:155
-msgid " characters long."
-msgstr " karakterer lang "
+msgid "Please"
+msgstr " "
 
-#: options.php:123
+msgid "logout and log back in using your new password."
+msgstr "logg ut og inn at med ditt nye passord."
+
+msgid "Change Email Password"
+msgstr "Endra e-postpassord"
+
+msgid "Old Password:"
+msgstr "Gamalt passord:"
+
+msgid "New Password:"
+msgstr "Nytt passord:"
+
+msgid "Confirm:"
+msgstr "Stadfest:"
+
+msgid ""
+"WARNING! Changing your password will automatically log you out! After you "
+"are logged out, you may then log back in with your New password."
+msgstr ""
+"ÅTVARING! Endring av passord vil automatisk logga deg ut! Etter at du har "
+"logga ut, kan du logge inn at med ditt nye passord."
+
 msgid "Change"
 msgstr "Endra"
 
-#: options.php:84 options.php:142 setup.php:59
-msgid "Change Email Password"
-msgstr "Endra e-post passord"
+msgid "Error"
+msgstr "Feil"
 
-#: setup.php:61
+msgid "You have left a field blank. "
+msgstr "Du har late eit felt stå tomt."
+
+msgid "Please use your browser's back button to correct the information."
+msgstr "Bruk tilbake-knappen på nettlesaren for å korrigere informasjonen."
+
+msgid "Your passwords do not match. "
+msgstr "Dine passord samsvarer ikkje."
+
+msgid "Your old password is incorrect. "
+msgstr "Ditt gamle passord er feil."
+
+msgid "The new password you chose is too small. "
+msgstr "Det nye passordet du valde er for kort."
+
+msgid "The password must be between "
+msgstr "Passordet må være mellom "
+
+msgid " and "
+msgstr " og "
+
+msgid " characters long."
+msgstr " tegn langt "
+
+msgid "The new password you chose is too long. "
+msgstr "Det nye passordet du valde er for langt."
+
+msgid ""
+"Your NEW password is the same as your OLD password, please choose a "
+"different NEW password."
+msgstr ""
+"Ditt NYE passord er det same som ditt GAMLE passord, vel eit anna NYTT "
+"passord."
+
+msgid ""
+"The plugin has encountered an unknown error.  Please inform customer support "
+"of this."
+msgstr ""
+"Programtillegget har oppdaga ein ukjent feil. Informer kundestøtte om dette."
+
+msgid ""
+"Your password has been changed. This requires that you logout and then log "
+"back in with the new password."
+msgstr ""
+"Passord er endra. Dette krev at du logger ut og så inn at med det nye "
+"passordet."
+
+msgid "Logging out automagically"
+msgstr "Logger ut automatisk"
+
+msgid "Change Password"
+msgstr "Endra passord"
+
 msgid ""
 "Change the password to your email account (NOTE: you must know your current "
 "password to make any changes)."
 msgstr ""
 "Endra passord til e-postkonto (MERK: ein må kjenne noverande passord for å "
 "endra passordet)."
-
-#: options.php:106
-msgid "Confirm:"
-msgstr "Stadfest:"
-
-#: options.php:142
-msgid "Error"
-msgstr "Feil"
-
-#: options.php:99
-msgid "New Password:"
-msgstr "Nytt passord:"
-
-#: options.php:91
-msgid "Old Password:"
-msgstr "Gamalt passord:"
-
-#: options.php:84
-msgid "Options"
-msgstr "Val"
-
-#: options.php:68
-msgid "Please "
-msgstr " "
-
-#: options.php:155
-msgid ""
-"The password you chose to be your new password is too short. Please use your "
-"browser's back button and choose a different password, (longer and harder to "
-"guess). The password must be between "
-msgstr ""
-"Valt passord som nytt passord er for kort. Bruk tilbake knappen på "
-"nettlesaren ov vel eit anna passord, (lengre og vanskelegare å gjette) "
-"Passordet må vere mellom "
-
-#: options.php:157
-msgid ""
-"The plugin has encountered an unknown error.  Please inform your system "
-"administrator."
-msgstr ""
-"Programtillegget har opdaga ein ukjent feil. Informer systemadministrator."
-
-#: options.php:117
-msgid ""
-"WARNING! Changing your password will automatically log you out! If you are "
-"unable to log back in, please contact your friendly system adminstrator."
-msgstr ""
-"ÅTVARING! Erdring av passord vil automatisk logga deg ut! Viss du ikkje "
-"klarer å logg inn att, kontkat din venlege systemadministratoren."
-
-#: options.php:149
-msgid ""
-"You have left a field blank.  Please use your browser's back button and "
-"enter the missing information."
-msgstr ""
-"Det er eit tomt felt. Bruk tilbake knappen på nettlesaren og skriv inn "
-"manglande informasjon."
-
-#: options.php:151
-msgid ""
-"Your new password does not match.  Please use your browser's back button and "
-"re-enter your new password."
-msgstr ""
-"Nytt passord er ikkje like. Bruk tilbake knappen på nettlesaren og skriv inn "
-"passordet på nytt."
-
-#: options.php:153
-msgid ""
-"Your old password is incorrect.  Please use your browser's back button and "
-"enter it correctly."
-msgstr ""
-"Gamalt passord er feil. Bruk tilbake knappen på nettlesaren og skriv det "
-"rette."
-
-#: setup.php:47
-msgid ""
-"Your password has been changed.  This requires that you reauthenticate with "
-"the new password.<br><br>\n"
-" Logging out automagically."
-msgstr ""
-"Passord er endra. Dette krev at du autentifiserest med nytt passord "
-"<br><br>\n"
-" Automatisk utlogging."
-
-#: options.php:67
-msgid "Your password has successfully been changed."
-msgstr "Vellukka endring av passordet."
-
-#: options.php:70
-msgid "logout and log back in</a> using your new password."
-msgstr "logg ut og inn at </a> bruk nytt passord."
