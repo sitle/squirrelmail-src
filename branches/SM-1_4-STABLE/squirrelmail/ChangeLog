@@ -86,7 +86,9 @@ Version 1.4.4 - CVS
     about having to be logged in to be able to sign out.
   - Handle a reload of the signout page gracefully: do not present an error
     about having to be logged in to be able to sign out. Fixes #1070069.
-  - Prevent "&" being eaten in set_url_var, thanks Marcin Orlowski. Fixes #1053725.
+  - Prevent "&" being eaten in set_url_var, thanks Marcin Orlowski. Fixes
+    #1053725.
+  - Added size attributes to newmail plugin sounds. Fixes #818958.
 
 
 Version 1.4.3a - 2 June 2004
