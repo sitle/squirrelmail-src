@@ -11,13 +11,14 @@
 
 setClassMeta('smdoc_user', 'User');
 setConst('USER_CLASS_ID', META_SMDOC_USER_CLASS_ID);
-setConst('USER_CLASS_NAME', getConst('META_'. USER_CLASS_ID .'_CLASSNAME'));
+setConst('USER_CLASS_NAME', constant('META_'. USER_CLASS_ID .'_CLASSNAME'));
 setConst('USER_CLASS', 'smdoc_user');
 
 setPermission('smdoc_user', 'object', 'xml', 'Nobody'); 
 setPermission('smdoc_user', 'object', 'clone', 'Nobody');
 
-include_once(PATH . 'class.user.php');
+include_once(SM_PATH . 'class.anonuser.php');
+include_once(SM_PATH . 'class.user.php');
 
 /**
  * The smdoc extended user class.
@@ -32,28 +33,21 @@ class smdoc_user extends foowd_user
    * Fetch User
    *
    * @param object foowd The foowd environment object.
-   * @param mixed user Array containing user information (loadUser, username, userid, password).
    * @return retrieved foowd user or anonymous user instance
    */
-  function &factory(&$foowd, $user)
+  function &factory(&$foowd)
   {
-    if ( !isset($user) || $user == NULL )
-      $user = array();
+    $foowd->track('smdoc_user::factory');
 
-    $foowd->track('smdoc_user::factory', $user);
-
+    $user_info = array();
     $new_user = NULL;
 
-    // Load the user if loadUser is UNSET or TRUE
-    if (!isset($user['loadUser']) || $user['loadUser'])
+    $user_info = smdoc_user::getUserDetails($foowd);
+    if ( isset($user_info['username']) && isset($user_info['password']) )
     {
-      $user = smdoc_user::getUserDetails($foowd, $user);
-      if ( isset($user['username']) && isset($user['userid']) && isset($user['password']) )
-      {
-        if ( !isset($user['userid']) )
-            $user['userid'] = crc32(strtolower($user['username']));
-        $new_user =& smdoc_user::fetchUser($foowd, $user);
-      }
+      if ( !isset($user_info['userid']) )
+        $user_info['userid'] = crc32(strtolower($user_info['username']));
+      $new_user =& smdoc_user::fetchUser($foowd, $user_info);
     }
 
     // If loading the user is unsuccessful (or unattempted),
@@ -93,6 +87,7 @@ class smdoc_user extends foowd_user
     // If we don't have required elements, return early.
     if ( !isset($userArray['userid']) )
       return FALSE;
+
     $foowd->track('smdoc_user::fetchUser', $userArray);
 
     // Set up clause for DB Query
@@ -120,15 +115,8 @@ class smdoc_user extends foowd_user
     $serializedObj = $record['object'];
     $user = unserialize($serializedObj);
         
-    if ( !isset($userArray['password']) || 
-         ( $user->passwordCheck($userArray['password']) && $user->hostmaskCheck() )) {
-      $foowd->track();
-      return $user;
-    } 
-          
-    $foowd->debug('msg', 'Password incorrect for user');
     $foowd->track();
-    return FALSE;
+    return $user;
   }
 
   /**
@@ -138,33 +126,39 @@ class smdoc_user extends foowd_user
    * fetch the username and password of the current user from one of the input
    * mechanisms
    *
-   * @class smdoc_user
-   * @method getUserDetails
-   * @param array user The user array passed into <code>foowd::foowd</code>.
+   * @param object foowd The foowd environment object.
    * @return array The resulting user array.
    */
-  function getUserDetails(&$foowd, $user) 
+  function getUserDetails(&$foowd) 
   {
+    // If these are already set, they were passed explicitly.
+    if ( isset($foowd->user_username) &&  isset($foowd->user_password) )
+    {
+      $user['username'] = $foowd->user_username;
+      $salt = getConstOrDefault('PASSWORD_SALT', '');
+      $user['password'] = md5($salt.$foowd->user_password);
+      return $user;
+    }
+
+    // Otherwise, retrieve information from the session
     $session_userinfo = new input_session('userinfo', NULL, NULL, true);
     if ( $session_userinfo->value == NULL )
-      return $user;
+      return FALSE;
 
     $user_info = $session_userinfo->value;
     $update_session = FALSE;
+    $user = array();
 
     if ( !isset($user_info['classid']) ) 
     {
-      $user_info['classid'] = getConstOrDefault('USER_CLASS_ID', crc32('smdoc_user'));
+      $user_info['classid'] = USER_CLASS_ID;
       $update_session = TRUE;
     } 
 
-    if ( !isset($user['username']) && !isset($user['password']) ) 
-    {
-      $user['username'] = $user_info['username'];
-      $user['password'] = $user_info['password'];
-      $user['userid']   = $user_info['userid'];
-    }
-    $user['classid']   = $user_info['classid'];
+    $user['username'] = $user_info['username'];
+    $user['password'] = $user_info['password'];
+    $user['userid']   = $user_info['userid'];
+    $user['classid']  = $user_info['classid'];
 
     if ( $update_session )
       $session_userinfo->set($user_info);
@@ -574,6 +568,31 @@ class smdoc_user extends foowd_user
   }
 
   /**
+   * Returns true if user has permission
+   *
+   * @param str className Name of the class the method belongs to.
+   * @param str methodName Name of the method.
+   * @param string type class/object method
+   * @param object objectReference to current object being checked (may be NULL)
+   * @return bool TRUE if user has access to method
+   */
+  function hasPermission($className, $methodName, $type, &$object)
+  {
+    if ( isset($object) ) {
+      $creatorid =  $object->creatorid;
+      if ( isset($object->permissions[$methodName]) )
+        $methodPermission = $object->permissions[$methodName];
+    } else {
+      $creatorid = NULL;
+    }
+
+    if ( !isset($methodPermission) )
+      $methodPermission = getPermission($className, $methodName, $type);
+
+    return $this->inGroup($methodPermission, $creatorid);
+  }
+
+  /**
    * Log the user in.
    *
    * @class smdoc_user
@@ -612,14 +631,11 @@ class smdoc_user extends foowd_user
     if ( $newuser->password != md5($salt.strtolower($password)) )
       return 3;                             // bad password
 
-    $newuser->updated = time();
-    $newuser->updatorid = $newuser->objectid;
-    $newuser->updatorName = $newuser->title;
-    $newuser->save($foowd, FALSE);
-    $foowd->user = $newuser;
-
-    $session_userinfo = new input_session('userinfo', NULL, $user_info, true); 
+    // save user information
+    $foowd->user = $user;
+    $session_userinfo = new input_session('userinfo', NULL, NULL, true); 
     $session_userinfo->set($user_info);
+
     return 0;                               // logged in successfully
   }
 
@@ -641,11 +657,6 @@ class smdoc_user extends foowd_user
     if ( $foowd->user->isAnonymous() ) 
       return 3; // user already logged out
 
-    $foowd->user->updated = time();
-    $foowd->user->updatorid = $foowd->user->objectid;
-    $foowd->user->updatorName = $foowd->user->title;
-    $foowd->user->save($foowd, FALSE);
-      
     $foowd->user = smdoc_user::fetchAnonymousUser($foowd);
 
     $session_userinfo = new input_session('userinfo', NULL, NULL, true); 
@@ -823,6 +834,20 @@ class smdoc_user extends foowd_user
       return 6;                             // could not send e-mail due to technical problem (or could not save new password)
     }
   }
+
+
+  /**
+   * Check if the user is the anonymous user.
+   *
+   * @class smdoc_user
+   * @method isAnonymous
+   * @return bool Returns TRUE if the user is of the anonymous user class.
+   */
+  function isAnonymous() 
+  {
+    return FALSE;
+  }
+
 
 // ----------------------------- class methods --------------
 
@@ -1177,18 +1202,6 @@ class smdoc_user extends foowd_user
   function vars2XML($vars, $goodVars) 
   {
     trigger_error('vars2XML does not apply to smdoc_user' , E_USER_ERROR);
-  }
-
-  /**
-   * Check if the user is the anonymous user.
-   *
-   * @class smdoc_user
-   * @method isAnonymous
-   * @return bool Returns TRUE if the user is of the anonymous user class.
-   */
-  function isAnonymous() 
-  {
-    return FALSE;
   }
 }
 

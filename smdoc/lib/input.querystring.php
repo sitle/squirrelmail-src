@@ -9,6 +9,8 @@
  * $Id$
  */
 
+require_once(SM_PATH . 'input.lib.php');
+
 /**
  * Input querystring class.
  * Replacement for FOOWD input_querystring

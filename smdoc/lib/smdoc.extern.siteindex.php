@@ -24,13 +24,13 @@ function sqmindex(&$foowd, &$result) {
     /**
      * Print site content, leave out users, groups, workspaces
      */
-    $where[] = 'AND';
-    $where[] = 'classid != '.WORKSPACE_CLASS_ID;
-    $where[] = 'classid != '.USER_CLASS_ID;
-    $where[] = 'classid != '.TRANSLATION_CLASS_ID;
-
+    $where['classid'] = array('index'=>'classid', 'op' => '!=', 'value' => USER_CLASS_ID);
     $orderby = array('title', 'classid');
-    $objects = $foowd->getObjects($where, NULL, $orderby);
+ 
+    $objects =& $foowd->getObjList($where, NULL, 
+                                   $orderby, NULL, 
+                                   TRUE, TRUE);
+
     $list_objects = array();
 
     $i = 0;
@@ -69,7 +69,8 @@ function sqmindex(&$foowd, &$result) {
         $i++;
       }
     }
-    $result['objectList'] =& $list_objects;
-    $result['body_template'] = 'smdoc_external.siteindex.php';
+
+    $foowd->template->assign_by_ref('objectList', $list_objects);
+    $foowd->template->assign('body_template', 'smdoc_external.siteindex.tpl');
     $foowd->track();
 }

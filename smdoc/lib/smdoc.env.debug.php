@@ -9,81 +9,37 @@
  * $Id$
  */
 
-setConst('DEBUG_CLASS', 'smdoc_debug');
-include_once(PATH . 'env.debug.php');
+include_once(FOOWD_DIR . 'env.debug.php');
 
-class smdoc_debug extends foowd_debug {
+/**
+ * The Foowd debugging class.
+ *
+ * Handles tracking of program execution.
+ *
+ * @package smdoc
+ */
+class smdoc_debug extends foowd_debug 
+{
+  /**
+   * Reference to foowd environment
+   * @var object
+   */
+  var $foowd;
 
-
-  function smdoc_debug() {
+  /**
+   * smdoc_debug constructor.
+   * Defers to foowd_debug constructor.
+   */
+  function smdoc_debug(&$foowd) 
+  {
     parent::foowd_debug();
-  }
-
-  function &factory($enabled) {
-    if (getVarConstOrDefault($enabled, 'DEBUG', FALSE)) {
-      return new smdoc_debug();
-    } else {
-      return FALSE;
-    }
+    $this->foowd = &$foowd;
   }
 
   /**
-   * Function execution tracking.
-   *
-   * @class foowd_debug
-   * @method track
-   * @param str function The name of the function execution is entering.
-   * @param array args List of arguments passed to the function.
+   * Display the debugging information.
    */
-  function track($function, &$args) { // execution tracking
-        if ($function) {
-            $this->trackDepth++;
-            $this->trackString .= $this->executionTime() . ' '
-                               . str_repeat('|', $this->trackDepth - 1)
-                               . '+-' . str_repeat ('-', $this->trackDepth - 1)
-                               . ' ' .$function.'(';
-            if ($args) { // get parameters if given
-                $parameters = '';
-                foreach ($args as $key => $arg) {
-                    $parameters .= $this->makeVarViewable($arg).', ';
-                }
-                $this->trackString .= substr($parameters, 0, -2);
-            }
-            $this->trackString .= ')<br />';
-        } else {
-            $this->trackString .= $this->executionTime() . ' '
-                               . str_repeat('|', $this->trackDepth - 1)
-                               . '+-' . str_repeat ('-', $this->trackDepth - 1)
-                               . '<br />';
-            $this->trackDepth--;
-        }
-  }
-
-  /**
-   * Add message to debugging output.
-   *
-   * @class foowd_debug
-   * @method msg
-   * @param str string The message to add.
-   */
-  function msg($string) { // write debug message
-    $this->trackString .= $this->executionTime() . ' '
-                           . str_repeat('|', $this->trackDepth).' '
-                           . htmlspecialchars($string).'<br />';
-  }
-
-  /**
-   * Calculate the current execution time.
-   *
-   * @class foowd_debug
-   * @method executionTime
-   * @return int The time in microseconds.
-   */
-  function executionTime() { // calculate execution time
-    return sprintf("%.3f", round($this->getTime() - $this->startTime, 3));
-  }
-
-  function display(&$foowd)
+  function display()
   {
     echo '<div class="debug_output">'
        . '<div class="debug_output_heading">Debug Information</div>'. "\n"
@@ -94,8 +50,7 @@ class smdoc_debug extends foowd_debug {
        . '<div class="debug_output_heading">Execution History</div>'. "\n"
        . '<pre>' . $this->trackString . '</pre>';
 
-    $show_var = getConstOrDefault('DEBUG_VAR', FALSE);
-    if ( $show_var ) 
+    if ( $this->foowd->config_settings['debug']['debug_var'] ) 
     {
       echo '<div class="debug_output_heading">Request</div>'. "\n";
       show($_REQUEST);
@@ -104,8 +59,74 @@ class smdoc_debug extends foowd_debug {
       echo '<div class="debug_output_heading">Cookie</div>'. "\n";
       show($_COOKIE);
     }
+
+    if ( $this->foowd->config_settings['debug']['debug_ext'] ) 
+    {
+      echo '<div class="debug_output_heading">External Resources</div>'. "\n";
+      global $EXTERNAL_RESOURCES;
+      show($EXTERNAL_RESOURCES);        
+    }    
+
     echo '</div><br />';
   }
 
+  /**
+   * Function execution tracking.
+   *
+   * @param str function The name of the function execution is entering.
+   * @param array args List of arguments passed to the function.
+   */
+  function track($function, &$args) 
+  {
+    if ($function) 
+    {
+      $this->trackDepth++;
+      $this->trackString .= $this->executionTime() . ' '
+                         . str_repeat('|', $this->trackDepth - 1)
+                         . '+-' . str_repeat ('-', $this->trackDepth - 1)
+                         . ' ' .$function.'(';
+      if ($args) 
+      {
+        $parameters = '';
+        
+        foreach ($args as $key => $arg) 
+          $parameters .= $this->makeVarViewable($arg).', ';
+        
+        $this->trackString .= substr($parameters, 0, -2);
+      }
+      $this->trackString .= ')<br />';
+    } 
+    else 
+    {
+      $this->trackString .= $this->executionTime() . ' '
+                         . str_repeat('|', $this->trackDepth - 1)
+                         . '+-' . str_repeat ('-', $this->trackDepth - 1)
+                         . '<br />';
+      $this->trackDepth--;
+    }
+  }
+
+  /**
+   * Add message to debugging output.
+   *
+   * @param str string The message to add.
+   */
+  function msg($string) 
+  {
+    $this->trackString .= $this->executionTime() . ' '
+                       . str_repeat('|', $this->trackDepth).' '
+                       . htmlspecialchars($string).'<br />';
+  }
+
+  /**
+   * Calculate the current execution time.
+   *
+   * @access private
+   * @return int The time in microseconds.
+   */
+  function executionTime() 
+  {
+    return sprintf("%.3f", round($this->getTime() - $this->startTime, 3));
+  }
 }
 

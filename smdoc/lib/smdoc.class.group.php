@@ -12,13 +12,13 @@
 class smdoc_group
 {
   /**
-   * Initialize smdoc_group object
+   * smdoc_group Constructor
+   * 
+   * @param object foowd The foowd environment object.
    */
-  function factory(&$foowd, $groups=NULL)
+  function smdoc_group(&$foowd)
   {
-    $sm_groups = new smdoc_group();
-    $sm_groups->initializeUserGroups($foowd, $groups);
-    return $sm_groups;
+    $this->initializeUserGroups($foowd);
   }
 
   /**
@@ -28,7 +28,7 @@ class smdoc_group
    * @param array   $groups     - array of additional groups to include
    *                              in group list (for foowd object use).
    */
-  function initializeUserGroups(&$foowd, $groups=NULL, $forceRefresh=FALSE )
+  function initializeUserGroups(&$foowd, $forceRefresh=FALSE )
   {
     $session_groups = new input_session('user_groups',REGEX_GROUP);
 
@@ -49,22 +49,14 @@ class smdoc_group
 
 
     /*
-     *  - add groups passed in as parameter
+     *  - add groups passed to foowd as parameter
      */
-    if (isset($groups) && is_array($groups) ) {
+    if ( isset($foowd->config_settings['group']['more_groups']) )
+      $groups = &$foowd->config_settings['group']['more_groups'];
+
+    if (isset($groups) && is_array($groups) ) 
       $allgroups = array_merge($allgroups, $groups);
-    }
-
-    /*
-     *  - add groups defined via constants
-     */
-    $foo = 1;
-    while (defined('USERGROUP'.$foo)) {
-      $group = constant('USERGROUP'.$foo);
-      $allgroups[$group] = $group;
-      $foo++;
-    }
-
+    
     /*
      *  - add groups defined in DB
      */
