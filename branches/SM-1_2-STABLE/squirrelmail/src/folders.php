@@ -14,7 +14,6 @@
  */
 
 require_once('../src/validate.php');
-require_once('../functions/imap_utf7_decode_local.php');
 require_once('../functions/imap.php');
 require_once('../functions/array.php');
 require_once('../functions/plugin.php');

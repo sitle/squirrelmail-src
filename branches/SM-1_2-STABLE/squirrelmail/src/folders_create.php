@@ -41,8 +41,10 @@ if (substr_count($folder_name, '"') || substr_count($folder_name, "\\") ||
     exit;
 }
 
+$folder_name = imap_utf7_encode_local($folder_name);
+
 if (isset($contain_subs) && $contain_subs ) {
-    $folder_name = "$folder_name$delimiter";
+    $folder_name = $folder_name.$delimiter;
 }
 
 if ($folder_prefix && (substr($folder_prefix, -1) != $delimiter)) {

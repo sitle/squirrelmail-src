@@ -30,6 +30,10 @@ $new_name = $_POST['new_name'];
 
 $new_name = trim($new_name);
 
+$orig = imap_utf7_encode_local($orig);
+$old_name = imap_utf7_encode_local($old_name);
+$new_name = imap_utf7_encode_local($new_name);
+
 if ($old_name <> $new_name) {
 
     $imapConnection = sqimap_login($username, $key, $imapServerAddress, $imapPort, 0);

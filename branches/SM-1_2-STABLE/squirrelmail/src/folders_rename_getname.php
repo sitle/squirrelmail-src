@@ -43,6 +43,8 @@ if (substr($old, strlen($old) - strlen($delimiter)) == $delimiter) {
     $isfolder = FALSE;
 }
 
+$old = imap_utf7_decode_local($old);
+
 if (strpos($old, $delimiter)) {
     $old_name = substr($old, strrpos($old, $delimiter)+1, strlen($old));
     $old_parent = substr($old, 0, strrpos($old, $delimiter));
