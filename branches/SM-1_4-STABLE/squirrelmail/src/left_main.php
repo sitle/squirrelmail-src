@@ -891,13 +891,14 @@ if ($date_format != 6) {
     }
     $clk = str_replace(' ','&nbsp;',$clk);
 
-    echo '<nobr><small>' . str_replace(' ','&nbsp;',_("Last Refresh")) .
-         ": $clk</small></nobr><br />";
+    echo '<small><span style="white-space: nowrap;">' 
+       . str_replace(' ', '&nbsp;', _("Last Refresh")) 
+       . ":</span><br /><span style=\"white-space: nowrap;\">$clk</span></small><br />";
 }
 
 /* Next, display the refresh button. */
-echo '<nobr><small>(<a href="../src/left_main.php" target="left">'.
-     _("Check mail") . '</a>)</small></nobr></td></tr></table><br />';
+echo '<small style="white-space: nowrap;">(<a href="../src/left_main.php" target="left">'.
+     _("Check mail") . '</a>)</small></td></tr></table><br />';
 
 /* Lastly, display the folder list. */
 if ( $collapse_folders ) {
