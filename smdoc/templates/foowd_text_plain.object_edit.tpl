@@ -34,23 +34,30 @@ include(TEMPLATE_PATH.'index.tpl');
  */
 function text_plain_edit_body(&$foowd, $className, $method, $user, &$object, &$t)
 {
-  if ( isset($t['preview']) )
-    echo '<div class="preview">', $t['preview'], '</div>'."\n";
-
   $objects =& $t['form']->objects;
-
   $t['form']->display_start('smdoc_form');
-  echo '<div class="form_submit">';
-  $t['form']->display_buttons();
-  echo '</div>'."\n";
-
-  if ( isset($objects['noNewVersion']) )
-    $objects['noNewVersion']->display();
   $objects['editCollision']->display();
-  $objects['editArea']->display(NULL, 80, 20);
 
-  echo '<div class="form_submit">';
-  $t['form']->display_buttons();
-  echo '</div>'."\n";
+  if ( isset($t['preview']) )
+  { ?>
+<div class="preview"><?php echo $t['preview']; ?></div>
+<div class="form_submit"><?php $t['form']->display_buttons(); ?></div>
+<?php 
+  }
+?>
+
+<p align="center"><?php $objects['editArea']->display('smdoc_textarea'); ?></p>  
+<p align="center">
+<?php 
+  if ( isset($objects['noNewVersion']) )
+  {
+    $objects['noNewVersion']->display();
+    echo _("Minor Update (Do not create new version)");
+  }
+?>
+</p>
+<div class="form_submit"><?php $t['form']->display_buttons(); ?></div>
+
+<?php
   $t['form']->display_end();
 }
