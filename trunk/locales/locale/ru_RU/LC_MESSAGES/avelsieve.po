@@ -1,224 +1,204 @@
-# Translation of avelsieve to Russian.
+# translation of avelsieve.po into Russian
 # Copyright (C) 2002 Alexandros Vellis <avel@noc.uoa.gr>
 # Vadim Kozlov <vad@tomsknet.ru> 2002.
+# Gregory Mokhin <mok@kde.ru>, 2004.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: avelsieve 0.9\n"
+"Project-Id-Version: 1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2003-06-09 09:32+0300\n"
-"PO-Revision-Date: 2003-09-07 11:57+0200\n"
-"Last-Translator: Vadim Kozlov <vad@tomsknet.ru>\n"
-"Language-Team: Russian <ru@li.org>\n"
+"POT-Creation-Date: 2004-04-01 20:12+0300\n"
+"PO-Revision-Date: 2004-10-02 16:02-0400\n"
+"Last-Translator: Gregory Mokhin <mok@kde.ru>\n"
+"Language-Team: Russian <kde-russian@lists.kde.ru>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.3.1\n"
+"Plural-Forms:  nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
-#: ../addrule.php:82 ../process_input.php:39
 msgid "You have to define at least one header match text."
-msgstr "Вы должны определить хотя бы одну строку соответствия заголовка."
+msgstr "Следует задать хотя бы одну строку соответствия заголовка."
 
-#: ../addrule.php:134
-#, fuzzy
 msgid "You have not defined the name for the new folder."
-msgstr "Вы должны определить хотя бы одну строку соответствия заголовка."
+msgstr "Имя новой папки не указано."
 
-#: ../addrule.php:135
 msgid "Please try again."
-msgstr ""
+msgstr "Попробуйте еще раз."
 
-#: ../addrule.php:146
 msgid "Illegal folder name.  Please select a different name"
-msgstr ""
+msgstr "Недопустимое имя папки. Укажите другое имя."
 
-#: ../addrule.php:391 ../addrule.php:396 ../addrule.php:463 ../addrule.php:473
+msgid "Add New Rule"
+msgstr "Создать правило"
+
 msgid "New Rule Wizard - Step"
-msgstr "Построитель правил - шаг"
+msgstr "Мастер настройки правил - этап"
 
-#: ../addrule.php:391 ../addrule.php:396 ../addrule.php:463 ../addrule.php:473
 msgid "of"
 msgstr "из"
 
-#: ../addrule.php:391
 msgid "Rule Type"
 msgstr "Тип правила"
 
-#: ../addrule.php:396 ../edit.php:168
-#, fuzzy
 msgid "Condition"
-msgstr "Подтверждение"
+msgstr "Условие"
 
-#: ../addrule.php:463 ../edit.php:197
-#, fuzzy
 msgid "Action"
-msgstr "Отпуск"
+msgstr "Действие"
 
-#: ../addrule.php:473
 msgid "Confirmation"
 msgstr "Подтверждение"
 
-#: ../addrule.php:476
 msgid ""
 "<p>You have chosen to keep every mail. This is the default action anyway, so "
 "you might want to start over with a rule that makes more sense. Select &quot;"
 "finished&quot; to save this rule nonetheless.</p>"
 msgstr ""
+"<p>Выбрано правило сохранения всей почты. Это - действие по умолчанию, и "
+"возможно, следует начать сначала и создать более содержательное правило. "
+"Выберите &quot;Готово&quot;, чтобы сохранить это правило, несмотря ни на что."
+"</p>"
 
-#: ../addrule.php:485
 msgid ""
 "Please use the buttons on the bottom instead of your browser's reload, back "
 "and forward buttons, to build a rule."
 msgstr ""
+"Для создания правила используйте кнопки в нижней части страницы, но не "
+"кнопки браузера Обновить, Назад и Вперед."
 
-#: ../addrule_html.php:41
 msgid "Clear this Form"
 msgstr "Очистить форму"
 
-#: ../addrule_html.php:46
 msgid "Start Over"
 msgstr "Начать заново"
 
-#: ../addrule_html.php:51 ../edit.php:218
 msgid "Cancel"
-msgstr "отказаться"
+msgstr "Отмена"
 
-#: ../addrule_html.php:60
+msgid "Add SPAM Rule"
+msgstr "Создать правило для спама"
+
 msgid "Move back to step"
-msgstr "Вернуться на шаг "
+msgstr "Назад "
 
-#: ../addrule_html.php:66
 msgid "Finished"
 msgstr "Готово"
 
-#: ../addrule_html.php:70
 msgid "Move on to step"
-msgstr "Следующий шаг "
+msgstr "Далее "
 
-#: ../addrule_html.php:120
+msgid "None"
+msgstr "Нет"
+
 msgid "What kind of rule would you like to add?"
-msgstr "Правило какого типа Вы хотели бы добавить?"
+msgstr "Правило какого типа требуется создать?"
 
-#: ../addrule_html.php:153
 msgid ""
 "The rule will trigger if the following addresses appear anywhere in the "
 "message's headers:"
 msgstr ""
-"правило срабатывает, если следующие адреса имеются в каком-либо заголовке "
-"сообщения"
+"Правило срабатывает, если следующие адреса имеются в каком-либо заголовке "
+"сообщения:"
 
-#: ../addrule_html.php:238
+msgid "To: or Cc"
+msgstr "Кому: или Копия:"
+
 msgid "AND (Every item must match)"
 msgstr "И (выполнение всех условий)"
 
-#: ../addrule_html.php:239
 msgid "OR (Either item will match)"
 msgstr "ИЛИ (выполнение любого условия)"
 
-#: ../addrule_html.php:242
 msgid "The condition for the following rules is:"
 msgstr "Условием для этого правила является: "
 
-#: ../addrule_html.php:308
 msgid "The header "
 msgstr "Заголовок "
 
-#: ../addrule_html.php:333
 msgid "Less..."
-msgstr "Убавить..."
+msgstr "Меньше..."
 
-#: ../addrule_html.php:339
 msgid "More..."
-msgstr "Добавить..."
+msgstr "Больше..."
 
-#: ../addrule_html.php:355
 msgid "This rule will trigger if message is"
 msgstr "Это правило сработает, если сообщение "
 
-#: ../addrule_html.php:365
 msgid "bigger"
 msgstr "больше"
 
-#: ../addrule_html.php:373
 msgid "smaller"
 msgstr "меньше"
 
-#: ../addrule_html.php:375 ../buildrule.php:250
 msgid "than"
 msgstr "чем"
 
-#: ../addrule_html.php:393
 msgid "KB (kilobytes)"
-msgstr "KB (килобайт)"
+msgstr "Кб (килобайт)"
 
-#: ../addrule_html.php:401
 msgid "MB (megabytes)"
-msgstr "MB (мегабайт)"
+msgstr "Мб (мегабайт)"
 
-#: ../addrule_html.php:409
 msgid ""
 "The following action will be applied to <strong>all</strong> incoming "
 "messages that do not match any of the previous rules."
 msgstr ""
+"Следующее действие будет выполнено со <strong>всеми</strong> входящими "
+"сообщениями, не совпадающими ни с одним из вышеперечисленных правил."
 
-#: ../addrule_html.php:416
 msgid ""
 "This rule will trigger upon the occurrence of one or more strings in the "
 "body of an e-mail message. "
 msgstr ""
+"Правило сработает, если в теле сообщения встретится любая из указанных "
+"строк. "
 
-#: ../addrule_html.php:453
 msgid "Choose what to do when this rule triggers, from one of the following:"
-msgstr "Выберите действие, выполняющееся когда срабатывает данное правило:"
+msgstr "Выберите действие, выполняющееся при срабатывании данного правила:"
 
-#: ../addrule_html.php:459 ../constants.php:44
 msgid "Keep (Default action)"
 msgstr "Сохранить (по умолчанию)"
 
-#: ../addrule_html.php:465 ../constants.php:47
 msgid "Discard Silently"
-msgstr "Молча уничтожить"
+msgstr "Удалить"
 
-#: ../addrule_html.php:473 ../constants.php:50
 msgid "Reject, sending this excuse to the sender:"
 msgstr "Вернуть отправителю с пояснением:"
 
-#: ../addrule_html.php:480
 msgid "Please do not send me large attachments."
-msgstr "Пожалуйста, не отправляйте мне больших вложений."
+msgstr ""
+"Please do not send me large attachments. (Пожалуйста, не отправляйте мне "
+"больших вложений.)"
 
-#: ../addrule_html.php:492 ../constants.php:53
 msgid "Redirect to the following email address:"
 msgstr "Перенаправить на следующий адрес:"
 
-#: ../addrule_html.php:498
 msgid "someone@example.org"
 msgstr "someone@example.org"
 
-#: ../addrule_html.php:510 ../constants.php:56
+msgid "Keep a local copy as well."
+msgstr "Сохранять локальную копию."
+
 msgid "Move message into"
 msgstr "Переместить сообщение в"
 
-#: ../addrule_html.php:517 ../addrule_html.php:526
 msgid "the existing folder"
-msgstr "существующую папку "
+msgstr "существующую папку"
 
-#: ../addrule_html.php:533
 msgid "a new folder, named"
 msgstr "новую папку "
 
-#: ../addrule_html.php:535
 msgid "created as a subfolder of"
 msgstr " созданную в папке "
 
-#: ../addrule_html.php:554
 msgid "Also keep copy in INBOX, marked as deleted."
-msgstr ""
+msgstr "Также сохранить копию в INBOX и отметить как удаленное."
 
-#: ../addrule_html.php:574
 msgid "Vacation"
 msgstr "Отпуск"
 
-#: ../addrule_html.php:576
 msgid ""
 "The notice will be sent only once to each person that sends you mail, and "
 "will not be sent to a mailing list address."
@@ -226,496 +206,489 @@ msgstr ""
 "Уведомление будет отправлено только один раз каждому корреспонденту и не "
 "будет отправляться в списки рассылки."
 
-#: ../addrule_html.php:578
 msgid "Addresses: Only reply if sent to these addresses:"
-msgstr "Адреса: отвечать, если отправлено на эти адреса: "
+msgstr "Адреса: отвечать, только если отправлено на эти адреса: "
 
-#: ../addrule_html.php:587
 msgid "Days: Reply message will be resent after"
 msgstr "Дней: Ответное сообщение будет выслано через"
 
-#: ../addrule_html.php:595
 msgid "days"
 msgstr "дней"
 
-#: ../addrule_html.php:597
 msgid "Use the following message:"
 msgstr "Использовать следующее сообщение:"
 
-#: ../addrule_html.php:603
 msgid ""
 "This is an automated reply; I am away and will not be able to reply to you "
 "immediately."
 msgstr ""
-"Это автоматический ответ; В данный момент я отсутствую и не смогу ответить "
-"Вам немедленно."
+"This is an automated reply; I am away and will not be able to reply to you "
+"immediately. - Это автоматический ответ. В данный момент я отсутствую и не "
+"смогу ответить вам немедленно."
 
-#: ../addrule_html.php:604
 msgid "I will get back to you as soon as I return."
-msgstr "Я отвечу Вам когда вернусь"
+msgstr "I will get back to you as soon as I return - Я отвечу, когда вернусь"
 
-#: ../addrule_html.php:616
 msgid "Additional Actions"
-msgstr ""
+msgstr "Дополнительные действия"
 
-#: ../addrule_html.php:627 ../addrule_html.php:630
 msgid "STOP"
 msgstr "ЗАКОНЧИТЬ"
 
-#: ../addrule_html.php:632
 msgid "If this rule matches, do not check any rules after it."
 msgstr "Если это правило срабатывает, не проверять другие правила после него"
 
-#: ../addrule_html.php:645
 msgid "Notify me, using the following method:"
-msgstr ""
+msgstr "Извещать меня следующим способом:"
 
-#: ../addrule_html.php:681
 msgid "Notification ID"
-msgstr ""
+msgstr "ID извещения"
 
-#: ../addrule_html.php:690
-msgid "Parameters"
-msgstr ""
+msgid "Destination"
+msgstr "Назначение"
 
-#: ../addrule_html.php:717
-#, fuzzy
 msgid "Message"
-msgstr "Все сообщения"
+msgstr "Сообщение"
 
-#: ../addrule_html.php:726
 msgid "Help: Valid variables are:"
-msgstr ""
+msgstr "Справка: Допустимые значения:"
 
-#: ../addrule_html.php:742
 msgid "Your new rule states:"
-msgstr "Ваше новое правило гласит:"
+msgstr "Новое правило:"
 
-#: ../addrule_html.php:744
 msgid ""
 "If this is what you wanted, select Finished. You can also start over or "
 "cancel adding a rule altogether."
-msgstr "вообще отказаться от добавления правила"
-
-#: ../avelsieve_support.inc.php:42 ../avelsieve_support.inc.php:44
-msgid "Error Encountered"
 msgstr ""
+"Нажмите Готово, чтобы сохранить это правило. Можно начать заново или вообще "
+"отказаться от добавления этого правила."
 
-#: ../buildrule.php:54
-msgid "For <strong>ALL</strong> incoming messages; "
-msgstr "Для <strong>ВСЕХ<strong> входящих сообщений; "
+msgid "Configure Anti-SPAM Protection"
+msgstr "Настроить защиту от спама"
 
-#: ../buildrule.php:57
-msgid "If"
-msgstr "Если"
-
-#: ../buildrule.php:75
-msgid "<em>any</em> of the following mail headers match: "
-msgstr "<em>любой</em> из перечисленных почтовых заголовков соответствует: "
-
-#: ../buildrule.php:80
-msgid "<em>all</em> of the following mail headers match: "
-msgstr "<em>все</em> перечисленные почтовые заголовки соответствуют: "
-
-#: ../buildrule.php:93
-msgid "the header"
-msgstr "заголовок"
-
-#: ../buildrule.php:101 ../constants.php:63
-msgid "is"
-msgstr "совпадает"
-
-#: ../buildrule.php:106 ../constants.php:64
-msgid "is not"
-msgstr "не совпадает"
-
-#: ../buildrule.php:111 ../constants.php:61
-msgid "contains"
-msgstr "содержит"
-
-#: ../buildrule.php:116 ../constants.php:62
-msgid "does not contain"
-msgstr "не содержит"
-
-#: ../buildrule.php:121
-msgid "matches"
-msgstr ""
-
-#: ../buildrule.php:127
-#, fuzzy
-msgid "does not match"
-msgstr "не содержит"
-
-#: ../buildrule.php:133 ../constants.php:76
-msgid "is greater than"
-msgstr ""
-
-#: ../buildrule.php:138 ../constants.php:77
-msgid "is greater or equal to"
-msgstr ""
-
-#: ../buildrule.php:143 ../constants.php:78
-msgid "is lower than"
-msgstr ""
-
-#: ../buildrule.php:148 ../constants.php:79
-msgid "is lower or equal to"
-msgstr ""
-
-#: ../buildrule.php:153 ../constants.php:80
-msgid "is equal to"
-msgstr ""
-
-#: ../buildrule.php:158 ../constants.php:81
-msgid "is not equal to"
-msgstr ""
-
-#: ../buildrule.php:163
-msgid "matches the regural expression"
-msgstr ""
-
-#: ../buildrule.php:169
-msgid "does not match the regural expression"
-msgstr ""
-
-#: ../buildrule.php:175
-msgid "exists"
-msgstr ""
-
-#: ../buildrule.php:180
-#, fuzzy
-msgid "does not exist"
-msgstr "не содержит"
-
-#: ../buildrule.php:237
-msgid "the size of the message is"
-msgstr "размер сообщения"
-
-#: ../buildrule.php:244
-msgid " bigger"
-msgstr " больше"
-
-#: ../buildrule.php:248
-msgid " smaller"
-msgstr " меньше"
-
-#: ../buildrule.php:278
-msgid "then"
-msgstr "то"
-
-#: ../buildrule.php:285
-msgid "<em>keep</em> it."
-msgstr "<em>сохранить</em>"
-
-#: ../buildrule.php:291
-msgid "<em>discard</em> it."
-msgstr "<em>уничтожить на сервере</em>"
-
-#: ../buildrule.php:298
-msgid "<em>reject</em> it, sending this excuse back to the sender:"
-msgstr "<em>вернуть отправителю</em> с пояснением: "
-
-#: ../buildrule.php:304
-msgid "<em>redirect</em> it to the email address"
-msgstr "<em>перенаправить</em> на адрес"
-
-#: ../buildrule.php:311
-msgid "<em>file</em> it into the folder <strong>"
-msgstr "<em>сохранить</em> в папке <strong>"
-
-#: ../buildrule.php:328
-msgid "reply with this vacation message: "
-msgstr "ответить этим сообщением:"
-
-#: ../buildrule.php:337
-msgid " Also keep a copy in INBOX, marked as deleted."
-msgstr ""
-
-#: ../buildrule.php:343
-msgid " Then <strong>STOP</strong> processing rules."
-msgstr "Затем <strong>ОСТАНОВИТЬ<strong> обработку правил."
-
-#: ../buildrule.php:365
-msgid " Also notify using the method"
-msgstr ""
-
-#: ../buildrule.php:367
-msgid "with"
-msgstr ""
-
-#: ../buildrule.php:369
-msgid "priority and the message"
-msgstr ""
-
-#: ../constants.php:16
-msgid "Address Match"
-msgstr "Сравнение адреса"
-
-#: ../constants.php:17 ../constants.php:22
 msgid ""
-"Perform an action on messages matching a specified header (From, To etc.)."
-msgstr "Выполнить действие по результатам анализа заголовков сообщения"
+"All incoming mail is checked for unsolicited commercial content (SPAM) and "
+"marked accordingly. This special rule allows you to configure what to do "
+"with such messages once they arrive to your Inbox."
+msgstr "Вся входящая почта проверяется на спам и отмечается соответствующим образом. Это правило позволяет указать, что следует делать с такими письмами."
 
-#: ../constants.php:21
-msgid "Header Match"
-msgstr "Сравнение заголовков"
+#, php-format
+msgid ""
+"Select %s to add the predefined rule, or select the advanced SPAM filter to "
+"customize the rule."
+msgstr "Выберите %s, чтобы добавить готовое правило, или Дополнительные фильтры спама, чтобы его изменить."
 
-#: ../constants.php:26
-msgid "Size"
-msgstr "Размер"
+msgid "Add Spam Rule"
+msgstr "Создать правило для спама"
 
-#: ../constants.php:27
-msgid "Perform an action on messages depending on their size."
-msgstr "Выполнить действие в зависимости от размера сообщения."
+msgid "Advanced Spam Filter..."
+msgstr "Дополнительные фильтры спама..."
 
-#: ../constants.php:31
-msgid "All Messages"
-msgstr "Все сообщения"
+msgid "Target Score"
+msgstr "Целевые баллы"
 
-#: ../constants.php:32
-msgid "Perform an action on <strong>all</strong> incoming messages."
-msgstr "Выполнить действие для <strong>всех</strong> входящих сообщений."
-
-#: ../constants.php:37
-#, fuzzy
-msgid "Body Match"
-msgstr "Сравнение заголовков"
-
-#: ../constants.php:38
-#, fuzzy
-msgid "Perform an action on messages depending on their content (body text)."
-msgstr "Выполнить действие в зависимости от размера сообщения."
-
-#: ../constants.php:65
-msgid "matches wildcard"
+#, php-format
+msgid ""
+"Messages with SPAM-Score higher than the target value, the maximum value "
+"being %s, will be considered SPAM."
 msgstr ""
+"Сообщения с баллами SPAM-Score выше определенного порога, максимальное значение "
+"которого составляет %s, будут считаться спамом."
 
-#: ../constants.php:66
-#, fuzzy
-msgid "does not match wildcard"
-msgstr "не содержит"
+msgid "SPAM Lists to check against"
+msgstr "Списки рассыльщиков спама, с которыми следует сверяться"
 
-#: ../constants.php:70
-msgid "matches regexp"
-msgstr ""
+msgid "Whitelist"
+msgstr "Белый список"
 
-#: ../constants.php:87
-msgid "verbose"
-msgstr ""
+msgid ""
+"Messages that match any of these header rules will never end up in Junk "
+"Folders or regarded as SPAM."
+msgstr "Сообщения, совпадающие с любым из этих правил, не будут считаться спамом и не попадут в папки для спама."
 
-#: ../constants.php:88
-#, fuzzy
-msgid "terse"
-msgstr "Фильтры"
-
-#: ../constants.php:96
-msgid "Mobile Phone Message (SMS)"
-msgstr ""
-
-#: ../constants.php:97
-msgid "Email notification"
-msgstr ""
-
-#: ../constants.php:98
-msgid "Notification via Zephyr"
-msgstr ""
-
-#: ../constants.php:99
-msgid "Notification via ICQ"
-msgstr ""
-
-#: ../constants.php:103
-msgid "Low"
-msgstr ""
-
-#: ../constants.php:104
-msgid "Normal"
-msgstr ""
-
-#: ../constants.php:105
-msgid "High"
-msgstr ""
-
-#: ../edit.php:135
-#, fuzzy
-msgid "Editing Mail Filtering Rule"
-msgstr "Имеющиеся правила фильтрации"
-
-#: ../edit.php:214
-#, fuzzy
-msgid "Add New Rule"
-msgstr "Добавить новое правило"
-
-#: ../edit.php:216
-#, fuzzy
 msgid "Apply Changes"
 msgstr "Сохранить изменения"
 
-#: ../setup.php:40
+msgid "Error Encountered"
+msgstr "Ошибка"
+
+msgid "is"
+msgstr "совпадает"
+
+msgid "is not"
+msgstr "не совпадает"
+
+msgid "contains"
+msgstr "содержит"
+
+msgid "does not contain"
+msgstr "не содержит"
+
+msgid "matches"
+msgstr "совпадает"
+
+msgid "does not match"
+msgstr "не совпадает"
+
+msgid "is greater than"
+msgstr "больше чем"
+
+msgid "is greater or equal to"
+msgstr "не меньше чем"
+
+msgid "is lower than"
+msgstr "меньше чем"
+
+msgid "is lower or equal to"
+msgstr "не больше чем"
+
+msgid "is equal to"
+msgstr "равен"
+
+msgid "is not equal to"
+msgstr "не равен"
+
+msgid "matches the regural expression"
+msgstr "совпадает с регулярным выражением"
+
+msgid "does not match the regural expression"
+msgstr "не совпадает с регулярным выражением"
+
+msgid "exists"
+msgstr "существует"
+
+msgid "does not exist"
+msgstr "не существует"
+
+msgid "For <strong>ALL</strong> incoming messages; "
+msgstr "Для <strong>ВСЕХ<strong> входящих сообщений; "
+
+msgid ""
+"All messages considered as <strong>SPAM</strong> (unsolicited commercial "
+"messages)"
+msgstr "Все сообщения, отмеченные как <strong>спам</strong> (рекламные письма)"
+
+msgid "unless"
+msgstr "если не"
+
+msgid "or"
+msgstr "или"
+
+msgid "matching the Spam List(s):"
+msgstr "включены в списки рассыльщиков спама:"
+
+#, php-format
+msgid "and with score greater than %s"
+msgstr "с баллами больше чем %s"
+
+msgid "will be"
+msgstr "будут"
+
+msgid "stored in the Junk Folder."
+msgstr "сохранены в папке для спама."
+
+msgid "stored in the Trash Folder."
+msgstr "сохранены в Корзине."
+
+msgid "discarded."
+msgstr "удалены."
+
+msgid "If"
+msgstr "Если"
+
+msgid "<em>any</em> of the following mail headers match: "
+msgstr "<em>любой</em> из перечисленных почтовых заголовков соответствует: "
+
+msgid "<em>all</em> of the following mail headers match: "
+msgstr "<em>все</em> перечисленные почтовые заголовки соответствуют: "
+
+msgid "the header"
+msgstr "заголовок"
+
+msgid "the size of the message is"
+msgstr "размер сообщения"
+
+msgid " bigger"
+msgstr " больше"
+
+msgid " smaller"
+msgstr " меньше"
+
+msgid "then"
+msgstr "то"
+
+msgid "<em>keep</em> it."
+msgstr "<em>сохранить</em>"
+
+msgid "<em>discard</em> it."
+msgstr "<em>удалить</em>"
+
+msgid "<em>reject</em> it, sending this excuse back to the sender:"
+msgstr "<em>вернуть отправителю</em> с пояснением: "
+
+msgid "<em>redirect</em> it to the email address"
+msgstr "<em>перенаправить</em> на адрес"
+
+msgid "<em>file</em> it into the folder <strong>"
+msgstr "<em>сохранить</em> в папке <strong>"
+
+msgid "reply with this vacation message: "
+msgstr "ответить этим сообщением:"
+
+msgid "Also keep a local copy."
+msgstr "Сохранить локальную копию."
+
+msgid " Also keep a copy in INBOX, marked as deleted."
+msgstr " Также сохранить копию в INBOX и отметить как удаленное."
+
+msgid " Also notify using the method"
+msgstr " Также известить меня следующим способом"
+
+msgid "with"
+msgstr "с "
+
+msgid "priority and the message"
+msgstr "срочность и сообщение"
+
+msgid " Then <strong>STOP</strong> processing rules."
+msgstr " Затем <strong>ЗАКОНЧИТЬ<strong> обработку правил."
+
+msgid "Address Match"
+msgstr "Совпадение адреса"
+
+msgid "Perform an action depending on email addresses appearing in message headers."
+msgstr "Выполнить действие в зависимости от адресов в заголовках сообщения."
+
+msgid "Header Match"
+msgstr "Совпадение заголовков"
+
+msgid "Perform an action on messages matching a specified header (From, To etc.)."
+msgstr "Выполнить действие по результатам анализа заголовков сообщения"
+
+msgid "Size"
+msgstr "Размер"
+
+msgid "Perform an action on messages depending on their size."
+msgstr "Выполнить действие в зависимости от размера сообщения."
+
+msgid "All Messages"
+msgstr "Все сообщения"
+
+msgid "Perform an action on <strong>all</strong> incoming messages."
+msgstr "Выполнить действие для <strong>всех</strong> входящих сообщений."
+
+msgid "Body Match"
+msgstr "Совпадение содержания"
+
+msgid "Perform an action on messages depending on their content (body text)."
+msgstr "Выполнить действие в зависимости от содержания сообщения."
+
+msgid "wildcard"
+msgstr "шаблон"
+
+msgid "regexp"
+msgstr "регулярное выражение"
+
+msgid "verbose"
+msgstr "подробно"
+
+msgid "terse"
+msgstr "кратко"
+
+msgid "Mobile Phone Message (SMS)"
+msgstr "Мгновенное сообщение (SMS)"
+
+msgid "Email notification"
+msgstr "Почтовое уведомление"
+
+msgid "Notification via Zephyr"
+msgstr "Уведомление с помощью Zephyr"
+
+msgid "Notification via ICQ"
+msgstr "Уведомление по ICQ"
+
+msgid "Low"
+msgstr "Несрочное"
+
+msgid "Normal"
+msgstr "Обычное"
+
+msgid "High"
+msgstr "Срочное"
+
+msgid "Delete"
+msgstr "Удалить"
+
+msgid "Edit"
+msgstr "Изменить"
+
+msgid "Duplicate"
+msgstr "Скопировать"
+
+msgid "Move Up"
+msgstr "Переместить выше"
+
+msgid "Move to Top"
+msgstr "Переместить в начало"
+
+msgid "Move Down"
+msgstr "Переместить ниже"
+
+msgid "Move to Bottom"
+msgstr "Переместить в конец"
+
+msgid "Junk Folder"
+msgstr "Спам"
+
+#, php-format
+msgid ""
+"Store SPAM message in your Junk Folder. Messages older than %s days will be "
+"deleted automatically."
+msgstr "Сохранить сообщение в папке для спама. Сообщения старше, чем %s дней, будут удаляться автоматически."
+
+msgid "Note that you can set the number of days in Folder Preferences."
+msgstr "Число дней можно указать в параметрах папки."
+
+msgid "Trash Folder"
+msgstr "Корзина"
+
+msgid ""
+"Store SPAM message in your Trash Folder. You will have to purge the folder "
+"yourself."
+msgstr "Сохранить спам в Корзине. Сообщения из Корзины нужно будет удалять вручную."
+
+msgid "Discard"
+msgstr "Удалить"
+
+msgid ""
+"Discard SPAM message. You will get no indication that the message ever "
+"arrived."
+msgstr "Удалить спам. Вы не будете извещены о приходе спама."
+
+msgid "Editing Mail Filtering Rule"
+msgstr "Изменить правило фильтрации"
+
 msgid "Message Filters"
 msgstr "Фильтры сообщений"
 
-#: ../setup.php:42
 msgid ""
 "Server-Side mail filtering enables you to add criteria in order to "
 "automatically forward, delete or place a given message into a folder."
 msgstr ""
-"Фильтрация почты на сервере позволяет Вам определить критерии в соответствии "
-"с которыми данное сообщение будет автоматически пренаправлено, удалено или "
-"помещено в конкретную папку (IMAP)"
+"Фильтрация почты на сервере позволяет указать критерии, в соответствии с "
+"которыми данное сообщение будет автоматически перенаправлено, удалено или "
+"помещено в конкретную папку."
 
-#: ../setup.php:86
 msgid "Filters"
 msgstr "Фильтры"
 
-#: ../table.php:73 ../table.php:136
 msgid "Could not log on to timsieved daemon on your IMAP server"
-msgstr ""
+msgstr "Не удается войти на timsieved сервера IMAP"
 
-#: ../table.php:75 ../table.php:139 ../table.php:154 ../table.php:198
 msgid "Please contact your administrator."
-msgstr ""
+msgstr "Свяжитесь с администратором."
 
-#: ../table.php:90 ../table.php:359
-msgid "Current Mail Filtering Rules"
-msgstr "Имеющиеся правила фильтрации"
-
-#: ../table.php:92 ../table.php:215
-msgid "No Filtering Rules Defined Yet"
-msgstr ""
-
-#: ../table.php:138
-msgid "in order to save your rules."
-msgstr ""
-
-#: ../table.php:152
 msgid "Could not set active script on your IMAP server"
-msgstr ""
+msgstr "Не удается активировать скрипт на сервере IMAP"
 
-#: ../table.php:195
+msgid "Unable to load script to server."
+msgstr "Не удается загрузить скрипт на сервер."
+
+msgid "Server responded with:"
+msgstr "Ответ сервера:"
+
+msgid "Test for Forged Header"
+msgstr "Проверить подложные заголовки"
+
+msgid "Current Mail Filtering Rules"
+msgstr "Текущие правила фильтрации"
+
+msgid "No Filtering Rules Defined Yet"
+msgstr "Правила фильтрации не заданы"
+
 msgid "Could not get SIEVE script from your IMAP server"
-msgstr ""
+msgstr "Не удается получить скрипт SIEVE с сервера IMAP"
 
-#: ../table.php:197
 msgid "(Probably the script is size null)."
-msgstr ""
+msgstr "(Нулевой размер скрипта?)"
 
-#: ../table.php:269
 msgid "All your rules have been deleted"
-msgstr "Все Ваши правила были удалены"
+msgstr "Все правила были удалены"
 
-#: ../table.php:392 ../table.php:394
-msgid "Edit"
-msgstr ""
+msgid "Really delete this rule?"
+msgstr "Удалить правило?"
 
-#: ../table.php:402 ../table.php:404
-msgid "Delete"
-msgstr ""
-
-#: ../table.php:412 ../table.php:414
-msgid "Duplicate"
-msgstr ""
-
-#: ../table.php:422 ../table.php:425
-msgid "Move Up"
-msgstr ""
-
-#: ../table.php:435 ../table.php:438
-msgid "Move Down"
-msgstr ""
-
-#: ../table.php:453
 msgid "Delete Selected"
-msgstr ""
+msgstr "Удалить выбранные"
 
-#: ../table_html.php:17 ../table_html.php:33
 msgid "Server-Side Mail Filtering"
 msgstr "Фильтрация почты на сервере"
 
-#: ../table_html.php:114 ../table_html.php:125
 msgid ""
 "Here you can add or delete filtering rules for your email account. These "
 "filters will always apply to your incoming mail, wherever you check your "
 "email."
 msgstr ""
-"Здесь Вы можете добавить или удалить правила фильтрации для Вашего почтового "
-"ящика. Фильтры будут применяться ко всей Вашей входящей почте."
+"Здесь можно указать правила фильтрации для входящей почты. Фильтры будут "
+"применяться ко всей входящей почте всякий раз при проверке почты."
 
-#: ../table_html.php:117
 msgid ""
 "You don't have any rules yet. Feel free to add any with the button &quot;Add "
 "a New Rule&quot;. When you are done, please select &quot;Save Changes&quot; "
 "to get back to the main options screen."
 msgstr ""
-"Пока у Вас нет правил. Вы можете их добавить при помощи кнопки &quot;"
-"Добавить новое правило&quot;. Когда Вы закончите добавление, нажмите, "
-"пожалуйста, кнопку &quot;Сохранить изменения&quot; для возврата на основную "
-"страницу настроек."
+"Пока не создано ни одно правило. Правила можно добавить при помощи кнопки "
+"&quot;Создать правило&quot;. Закончив создание правила, нажмите кнопку &quot;"
+"Сохранить изменения&quot; для возврата на основную страницу настройки."
 
-#: ../table_html.php:128
-#, fuzzy
 msgid ""
 "When you are done with editing, <strong>remember to select &quot;Save "
 "Changes&quot;</strong> to activate your changes!"
 msgstr ""
 "Завершив редактирование, <strong>не забудьте</strong> нажать &quot;Сохранить "
-"изменения&quot;, чтобы они вступили в силу"
+"изменения&quot;, чтобы они вступили в силу."
 
-#: ../table_html.php:137
 msgid "Successfully added new rule."
-msgstr ""
+msgstr "Новое правило успешно создано."
 
-#: ../table_html.php:140
 msgid "Successfully updated rule #"
-msgstr ""
+msgstr "Обновлено правило #"
 
-#: ../table_html.php:145
 msgid "Successfully deleted rules #"
-msgstr ""
+msgstr "Удалены правила #"
 
-#: ../table_html.php:153
 msgid "Successfully deleted rule #"
-msgstr ""
+msgstr "Удалено правило #"
 
-#: ../table_html.php:163
 msgid "The following table summarizes your current mail filtering rules."
-msgstr ""
-"В таблице представлены текущие правила фильтрации Ваших почтовых сообщений"
+msgstr "В таблице представлены текущие правила фильтрации почтовых сообщений."
 
-#: ../table_html.php:173
 msgid "No"
-msgstr "N правила"
+msgstr "No"
 
-#: ../table_html.php:178
 msgid "Description of Rule"
 msgstr "Описание правила"
 
-#: ../table_html.php:181
 msgid "Display as:"
-msgstr ""
+msgstr "Показать как:"
 
-#: ../table_html.php:193
 msgid "Options"
-msgstr "Настройки"
+msgstr "Параметры"
 
-#: ../table_html.php:223
 msgid "Add a New Rule"
-msgstr "Добавить новое правило"
+msgstr "Создать правило"
 
-#: ../table_html.php:229
-msgid ""
-"When you are done, please click the button below to return to your webmail."
-msgstr "Нажмите эту кнопку когда закончите редактировать правила"
+msgid "When you are done, please click the button below to return to your webmail."
+msgstr ""
+"Закончив создание правила, нажмите эту кнопку, чтобы вернуться к работе с "
+"почтой."
 
-#: ../table_html.php:231
 msgid "Save Changes"
 msgstr "Сохранить изменения"
 
-#~ msgid "Size Match"
-#~ msgstr "Сравнение размера"
+msgid "Created:"
+msgstr "Создано:"
 
-#~ msgid "Action to Take"
-#~ msgstr "Выполняемое действие"
+msgid "Last modified:"
+msgstr "Изменено:"
 
-#~ msgid "Here is your script."
-#~ msgstr "Это Ваш скрипт"
