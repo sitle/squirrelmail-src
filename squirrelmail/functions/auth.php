@@ -10,7 +10,6 @@
  *
  * $Id$
  */
-
 function is_logged_in() {
 
     if ( sqsession_is_registered('user_is_logged_in') ) {
@@ -47,6 +46,54 @@ $challenge=base64_decode($challenge);
 $hash=bin2hex(mhash(MHASH_MD5,$challenge,$password));
 $response=base64_encode($username . " " . $hash) . "\r\n";
 return $response;
+}
+
+function digest_md5_response ($username,$password,$challenge,$service,$host) {
+/* Given the challenge from the server, calculate and return the response-string
+   for digest-md5 authentication.  (See RFC 2831 for more details) */
+  $result=digest_md5_parse_challenge($challenge);
+  
+// verify server supports qop=auth
+  $qop = explode(",",$result['qop']);
+  //if (!in_array("auth",$qop)) {
+    // rfc2831: client MUST fail if no qop methods supported
+   // return false;
+  //}
+  $cnonce = base64_encode(bin2hex(mhash(MHASH_MD5, microtime())));
+  $ncount = "00000001";
+
+  /* This can be auth (authentication only), auth-int (integrity protection), or
+     auth-conf (confidentiality protection).  Right now only auth is supported.
+	 DO NOT CHANGE THIS VALUE */
+  $qop_value = "auth";
+
+  $digest_uri_value = $service . '/' . $host;
+
+  // build the $response_value
+  //FIXME This will probably break badly if a server sends more than one realm
+  $string_a1 = utf8_encode($username).":";
+  $string_a1 .= utf8_encode($result['realm']).":";
+  $string_a1 .= utf8_encode($password);
+  $string_a1 = mhash(MHASH_MD5, $string_a1);
+  $A1 = $string_a1 . ":" . $result['nonce'] . ":" . $cnonce;
+  $A1 = bin2hex(mhash(MHASH_MD5, $A1));
+  $A2 = "AUTHENTICATE:$digest_uri_value";
+  // If qop is auth-int or auth-conf, A2 gets a little extra
+  if ($qop_value != 'auth') {
+    $A2 .= ':00000000000000000000000000000000';
+  }
+  $A2 = bin2hex(mhash(MHASH_MD5, $A2));
+
+  $string_response = $result['nonce'] . ':' . $ncount . ':' . $cnonce . ':' . $qop_value;
+  $response_value = bin2hex(mhash(MHASH_MD5, $A1.":".$string_response.":".$A2));
+
+  $reply = 'charset=utf-8,username="' . $username . '",realm="' . $result["realm"] . '",';
+  $reply .= 'nonce="' . $result['nonce'] . '",nc=' . $ncount . ',cnonce="' . $cnonce . '",';
+  $reply .= "digest-uri=\"$digest_uri_value\",response=$response_value";
+  $reply .= ',qop=' . $qop_value;
+  $reply = base64_encode($reply);
+  return $reply . "\r\n";
+ 
 }
 
 function digest_md5_parse_challenge($challenge) {
