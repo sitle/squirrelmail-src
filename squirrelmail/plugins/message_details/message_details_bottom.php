@@ -1,23 +1,27 @@
 <?php
-
-/** Message Source  
+/**
+ * Message Details plugin - bottom frame with message structure and rfc822 body
  *
  * Plugin to view the RFC822 raw message output and the bodystructure of a message
  *
- * Copyright (c) 2002 Marc Groot Koerkamp, The Netherlands
  * Licensed under the GNU GPL. For full terms see the file COPYING.
- * 
- * $Id$
+ *
+ * @author Marc Groot Koerkamp
+ * @copyright Copyright &copy; 2002 Marc Groot Koerkamp, The Netherlands
+ * @copyright Copyright &copy; 2004 The SquirrelMail Project Team
+ * @license http://opensource.org/licenses/gpl-license.php GNU Public License
+ * @version $Id$
+ * @package plugins
+ * @subpackage message_details
  */
 
+/** @ignore */
 define('SM_PATH','../../');
 
 /* SquirrelMail required files. */
 require_once(SM_PATH . 'include/validate.php');
 require_once(SM_PATH . 'functions/imap.php');
 require_once(SM_PATH . 'functions/mime.php');
-require_once(SM_PATH . 'config/config.php');
-require_once(SM_PATH . 'functions/prefs.php');
 
 global $color, $uid_support;
 
@@ -28,6 +32,13 @@ sqgetGlobalVar('username', $username, SQ_SESSION);
 sqgetGlobalVar('key', $key, SQ_COOKIE);
 sqgetGlobalVar('onetimepad', $onetimepad, SQ_SESSION);
 
+/**
+ * Calculates id of MIME entity
+ * @param string $entString
+ * @param integer $direction
+ * @return string
+ * @access private
+ */
 function CalcEntity($entString, $direction) {
     $result = $entString;
     if ($direction == -1) {
@@ -58,18 +69,8 @@ function CalcEntity($entString, $direction) {
     return ($result);
 }
 
-function returnTime($start) {
- $stop = gettimeofday();
- $timepassed =  1000000 * ($stop['sec'] - $start['sec']) + $stop['usec'] - $start['usec'];
- return $timepassed;
-}
-
-function GetMimeProperties($header) {
-}
-
 $imapConnection = sqimap_login($username, $key, $imapServerAddress, $imapPort, 0);
 $read = sqimap_mailbox_select($imapConnection, $mailbox);
-$start = gettimeofday();
 $body = sqimap_run_command($imapConnection, "FETCH $passed_id RFC822",true, $response, $readmessage, $uid_support);
 $message_body = '';
 $header = false;
@@ -101,7 +102,7 @@ for ($i=1; $i < $count; $i++) {
 	} else if ($messageheader) {
 	    if ($header) {
 		$header=false;
-		$end = "\n \n".'</div>'."\n \n".'<div class="ent_body" ID="'.$entStr.'B">'."\n \n"; 
+		$end = "\n \n".'</div>'."\n \n".'<div class="ent_body" id="'.$entStr.'B">'."\n \n"; 
 	    }
 	    $mimepart = -$header;
 	    $bnd_end = false;
@@ -113,7 +114,7 @@ for ($i=1; $i < $count; $i++) {
 	} else {
 	    if ($header) {
 	        $pre = '';
-		$end = "\n \n".'</div>'."\n \n".'<div class="ent_body" ID="'.$entStr.'B">'."\n \n"; 
+		$end = "\n \n".'</div>'."\n \n".'<div class="ent_body" id="'.$entStr.'B">'."\n \n"; 
 	    }
 	    $header = false;
 	    $mimepart=true;
@@ -125,7 +126,7 @@ for ($i=1; $i < $count; $i++) {
 	    $messageheaderstart=true;
 	    if ($pre != '<b>') {
 		$pre = '<i><font color ='."$color[1]>";
-		$end = '</i></font>';
+		$end = '</font></i>';
 	    }
 	}     
 	if (!$messageheader && !$header ) {
@@ -137,26 +138,26 @@ for ($i=1; $i < $count; $i++) {
 	$end = '';
     }
     if (  ( $header || $messageheader) && (preg_match("/^.*boundary=\"?(.+(?=\")|.+).*/i",$line,$reg)) )  {
-	$bnd = $reg[1];
-	$bndreg = $bnd;    
-	$bndreg = str_replace("\\","\\\\",$bndreg);	
-	$bndreg = str_replace("?","\\?",$bndreg);
-	$bndreg = str_replace("+","\\+",$bndreg);		
-	$bndreg = str_replace(".","\\.",$bndreg);			
-	$bndreg = str_replace("/","\\/",$bndreg);
-	$bndreg = str_replace("-","\\-",$bndreg);
-	$bndreg = str_replace("(","\\(",$bndreg);
-	$bndreg = str_replace(")","\\)",$bndreg);
+        $bnd = $reg[1];
+        $bndreg = $bnd;    
+        $bndreg = str_replace("\\","\\\\",$bndreg);	
+        $bndreg = str_replace("?","\\?",$bndreg);
+        $bndreg = str_replace("+","\\+",$bndreg);		
+        $bndreg = str_replace(".","\\.",$bndreg);			
+        $bndreg = str_replace("/","\\/",$bndreg);
+        $bndreg = str_replace("-","\\-",$bndreg);
+        $bndreg = str_replace("(","\\(",$bndreg);
+        $bndreg = str_replace(")","\\)",$bndreg);
 
-	$boundaries[] = array( 'bnd' => $bnd, 'bndreg' => $bndreg);
-	$messageheader = false;
-	$messageheaderstart=false;
-	$mimepart=false;
-	if ($entStr=='') {
-	    $entStr='0';
-	} else {
-	    $entStr = CalcEntity("$entStr",1);
-	}
+        $boundaries[] = array( 'bnd' => $bnd, 'bndreg' => $bndreg);
+        $messageheader = false;
+        $messageheaderstart=false;
+        $mimepart=false;
+        if ($entStr=='') {
+            $entStr='0';
+        } else {
+            $entStr = CalcEntity("$entStr",1);
+        }
     }
     
     if (($line != '' && $line{0} == '-' || $header)  && isset($boundaries[0])) {
@@ -173,26 +174,27 @@ for ($i=1; $i < $count; $i++) {
 		    $bndend = true;
 	    }
 	    if ($bndend) {
-		$entStr = CalcEntity("$entStr",-1);
-		array_pop($boundaries);
-		$pre .= '<b><font color ='."$color[2]>";
-		$end .= '</font></b>';
-		$header = true;
-		$mimepart = false;
-		$bnd_end = true;
-		$encoding = '';
+            $entStr = CalcEntity("$entStr",-1);
+            array_pop($boundaries);
+            $pre .= '<b><font color ='."$color[2]>";
+            $end .= '</font></b>';
+            $header = true;
+            $mimepart = false;
+            $bnd_end = true;
+            $encoding = '';
 	    } else {
-		$header = true;
-		$bnd_end = false;
-		$entStr = CalcEntity("$entStr",0);
-		$content_indx++;
-		$content[$content_indx]=array();		
-		$content[$content_indx]['ent'] = '<A HREF="#'."$entStr \">$entStr".'</a>';
-		$pre .= "\n \n".'</div>'."\n \n".'<div class="entheader" ID="'.$entStr.'H"><a name="'."$entStr".'"><b><font color ='."$color[2]>";
-		$end .= '</font></b>'."\n";
-		$header = true;
-		$mimepart = false;
-		$encoding = '';
+            $header = true;
+            $bnd_end = false;
+            $entStr = CalcEntity("$entStr",0);
+            $content_indx++;
+            $content[$content_indx]=array();		
+            $content[$content_indx]['ent'] = '<a href="#'."$entStr \">$entStr".'</a>';
+            $pre .= "\n \n".'</div>'."\n \n".'<div class="entheader" id="'.
+                $entStr.'H"><a name="'."$entStr".'"><b><font color ='."$color[2]>";
+            $end .= '</font></b>'."\n";
+            $header = true;
+            $mimepart = false;
+            $encoding = '';
 	    }
 	}  else {
 	    if ($header) {
@@ -240,12 +242,12 @@ for ($i=1; $i < $count; $i++) {
     } 	
 */
     $line = htmlspecialchars($line);
-    $message_body .= "$pre"."$line"."$end".'<BR>'."\r\n";
+    $message_body .= "$pre"."$line"."$end".'<br />'."\r\n";
 }
-//echo returnTime($start).'<BR>';
+
 $xtra = <<<ECHO
 
-<STYLE>
+<style>
 
 <!--
 .ent_body {
@@ -262,7 +264,7 @@ $xtra = <<<ECHO
 }
 //-->
 
-</STYLE>
+</style>
 
 ECHO;
 
@@ -271,36 +273,16 @@ displayHtmlHeader( _("Message Details"), $xtra, FALSE );
 echo "<body text=\"$color[8]\" bgcolor=\"$color[4]\" link=\"$color[7]\" vlink=\"$color[7]\" alink=\"$color[7]\">\n";
 echo '<code>'."\n";
 echo '<font face = "monospace">'."\n";
-echo '<BR>'."\n";
-
-
-//  margin-bottom:0.1em;
-//  padding-bottom:0.1em;
-//  border-style: solid none none none;
-//  border-width:0.1em;
-
-
-
-//session_register("entities");
-//$keys = array_keys($entities);
-//$start = gettimeofday();
-//foreach ($keys as $key) {
-//    if (isset($entities[$key])) {
-//    if ($entities[$key]['encoding'] == 'base64') {
-//	echo '<img src="message_viewentity.php?ent='.$entities[$key]['entity'].'&amp;name='.$entities[$key]['name'].'"><br>';
-//    }
-//    }
-//}
-//session_unregister("entities");
+echo '<br />'."\n";
 
 if (count($content) > 0) {
-    echo '<h2> Bodystructure </h2>'."\n\n";
+    echo '<h2>' . _("Bodystructure") . "</h2>\n\n";
     echo '<table border=1 width="98%"><thead>'.
 	  '<tr bgcolor="'."$color[7]".'">'.
-	    '<td><b><font color="'."$color[5]".'">Entity</font></b></td>'.
-	    '<td><b><font color="'."$color[5]".'">Content-Type</font></b></td>'.
-	    '<td><b><font color="'."$color[5]".'">Name</font></b></td>'.
-	    '<td><b><font color="'."$color[5]".'">Encoding</font></b></td>'.
+	    '<td><b><font color="'."$color[5]".'">' . _("Entity") . '</font></b></td>'.
+	    '<td><b><font color="'."$color[5]".'">' . _("Content-Type") . '</font></b></td>'.
+	    '<td><b><font color="'."$color[5]".'">' . _("Name") . '</font></b></td>'.
+	    '<td><b><font color="'."$color[5]".'">' . _("Encoding") . '</font></b></td>'.
 
 	  '</tr>'.
 	  '</thead><tbody>';
@@ -322,7 +304,7 @@ if (count($content) > 0) {
     }
     echo '</tbody></table><br>'."\n";
 }
-echo '<h2> RFC822 Message body </h2>'."\n\n";
+echo '<h2>' . _("RFC822 Message body") . "</h2>\n\n";
 echo '<div><div class="header">'."\n\n";
 echo $message_body;
 echo '</div></div></font></code></body></html>';
