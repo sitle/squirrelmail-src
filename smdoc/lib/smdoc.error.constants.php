@@ -9,6 +9,9 @@
  * $Id$
  */
 
+define('INVALID_METHOD', 1);
+define('1_MSG', _("Called invalid or disabled method"));
+
 define('USER_LOGIN_OK', 2);
 define('2_MSG', _("User logged in."));
 

@@ -40,7 +40,8 @@ class smdoc_debug extends foowd_debug {
             $this->trackDepth++;
             $this->trackString .= $this->executionTime() . ' '
                                . str_repeat('|', $this->trackDepth - 1)
-                               . '/- '.$function.'(';
+                               . '+-' . str_repeat ('-', $this->trackDepth - 1)
+                               . ' ' .$function.'(';
             if ($args) { // get parameters if given
                 $parameters = '';
                 foreach ($args as $key => $arg) {
@@ -52,7 +53,8 @@ class smdoc_debug extends foowd_debug {
         } else {
             $this->trackString .= $this->executionTime() . ' '
                                . str_repeat('|', $this->trackDepth - 1)
-                               . '\- <br />';
+                               . '+-' . str_repeat ('-', $this->trackDepth - 1)
+                               . '<br />';
             $this->trackDepth--;
         }
 	}

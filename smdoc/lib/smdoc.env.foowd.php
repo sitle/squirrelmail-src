@@ -11,6 +11,8 @@
 
 setConst('DEBUG_CLASS', 'smdoc_debug');
 setConst('FOOWD_CLASS_NAME', 'smdoc');
+setConst('DB_CLASS', 'smdoc_db_mysql');
+setConst('REGEX_PASSWORD','/^[A-Za-z0-9]{6,32}$/'); 
 
 include_once(PATH . 'env.foowd.php');
 
@@ -50,7 +52,7 @@ class smdoc extends foowd {
      * Initialize Debug object
      */
     $this->debug = call_user_func(array($debugClass,'factory'), $debug);
-    $this->track('foowd->constructor');
+    $this->track('smdoc->constructor');
 
     /*
      * Initialize Database connection
@@ -84,25 +86,41 @@ class smdoc extends foowd {
      * Get current User
      */
     $this->user = call_user_func(array($userClass,'factory'), &$this, $user);
+
     $this->track();
   }
 
-    /*
-     * Destructor
-     * -------------------------------------------------------------
-     * Cleans up/Finalizes foowd object
-     *   -- adds debug information to template
-     *   -- prints template
-     *   -- closes DB connection
-     *   -- unsets $foowd
-     * -------------------------------------------------------------
-     */
-    function destroy()
-    {
-        if ( $this->database )
-            $this->database->close(); // close DB
-        unset($this);               // unset object
-    }
+  /**
+   * Class destructor.
+   *
+   * Destroys the environment object outputting debugging information and
+   * closing the database connection.
+   */
+  function destroy()
+  {
+    // @ELH remove debug display.. 
+    if ( $this->database )
+      $this->database->close(); // close DB
+    unset($this);               // unset object
+  }
+
+	/**
+	 * Set database table.
+	 *
+	 * Switch the table used for data storage and retrieval in this environment
+	 * object.
+	 *
+	 * @param mixed table Array containing table name, and create function.
+	 * @return str  The name of the old table.
+	 */
+	function setTable($table) {
+        if ( is_Array($table) && method_exists($this->database, 'setTable') )
+		    return $this->database->setTable($table);
+        else
+            return parent::setTable($table);
+	}
+	
+
 
 	/**
 	 * Get the current user from the database.
@@ -116,7 +134,7 @@ class smdoc extends foowd {
 	 * @return mixed The selected user object or FALSE on failure.
 	 */
 	function fetchUser($userArray = NULL) {
-        trigger_error('foowd::fetchUser method deprecated in smdoc' , E_USER_ERROR);
+        return smdoc_user::fetchUser($this, $userArray);
 	}
 
     /**
@@ -184,9 +202,13 @@ class smdoc extends foowd {
         $new_obj = smdoc_external::factory($this, $objectid);
         if ( $new_obj == NULL )
         {
-            $new_obj = parent::fetchObject($objectid, $classid,
-                                           $version, $method, $workspaceid);
+            if ( $classid == USER_CLASS_ID )
+              $new_obj = $this->fetchUser(array('userid' => $objectid));
+            else
+              $new_obj = parent::fetchObject($objectid, $classid,
+                                             $version, $method, $workspaceid);
         }
+
 
         $this->track();
         return $new_obj;
