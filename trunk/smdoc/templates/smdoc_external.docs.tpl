@@ -22,16 +22,16 @@
 <table class="smdoc_table" style="width: 100%; margin-bottom:0px; padding-bottom: 0px;">
   <tr>
     <td class="col_left" style="width: 300px">
-      <IFRAME src="<?php echo $t['doc_elements']; ?>" class="doc_elements" 
+      <iframe src="<?php echo $t['doc_elements']; ?>" class="doc_elements" 
               name="left_bottom" id="left_bottom" onLoad="resizeMe(this)">
         <a href="<?php echo $t['doc_index']; ?>">View using regular frames</a>
-      </IFRAME>
+      </iframe>
     </td>
     <td class="col_right">
-      <IFRAME src="<?php echo $t['doc_content']; ?>" class="doc_content"
+      <iframe src="<?php echo $t['doc_content']; ?>" class="doc_content"
               name="right" id="right" onLoad="resizeMe(this)">
         <a href="<?php echo $t['doc_index']; ?>">View using regular frames</a>
-      </IFRAME>
+      </iframe>
     </td>
   </tr>
   <tr>

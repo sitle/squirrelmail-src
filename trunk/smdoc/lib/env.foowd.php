@@ -246,6 +246,29 @@ class foowd
   }
 
   /**
+   * Get list of workspaces within system.
+   *
+   * @return array Returns an array of workspace titles indexed by workspaceid.
+   */
+  function getWorkspaceList() 
+  {
+    $session_wklist = new input_session('workspaceList', NULL);
+    if ( isset($session_wklist->value) )
+      return $session_wklist->value;
+
+    $workspaceArray = array(0 => $this->config_settings['workspace']['workspace_base_name']);
+    $where['OR'][] = array('index' => 'classid', 'op' => '=', 'value' => WORKSPACE_CLASS_ID);
+    $where['OR'][] = array('index' => 'classid', 'op' => '=', 'value' => TRANSLATION_CLASS_ID); 
+    $indices = array('objectid','title');   
+    $workspaces = $this->getObjList($indices, NULL, $where, 'title', NULL, FALSE, FALSE);
+    foreach ($workspaces as $workspace) 
+      $workspaceArray[$workspace['objectid']] = htmlspecialchars($workspace['title']);
+
+    $session_wklist->set($workspaceArray);
+    return $session_wklist->value;
+  }
+
+  /**
    * Call class/object method.
    *
    * Checks if parameter is a class name or an object, and

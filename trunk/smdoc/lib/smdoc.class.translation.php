@@ -17,7 +17,7 @@
 
 /** METHOD PERMISSIONS **/
 setPermission('smdoc_translation', 'class', 'create', 'Translator');
-setPermission('smdoc_translation', 'object', 'enter', 'Everyone');
+setPermission('smdoc_translation', 'class', 'enter', 'Everyone');
 setPermission('smdoc_translation', 'object', 'fill', 'Translator');
 setPermission('smdoc_translation', 'object', 'empty', 'Translator');
 setPermission('smdoc_translation', 'object', 'export', 'Gods');
@@ -66,27 +66,6 @@ class smdoc_translation extends foowd_workspace
     smdoc_translation::initialize($foowd);
 
     $foowd->track();
-  }
-
-  /**
-   * Move the current user into or out of the workspace.
-   *
-   * @return bool Returns TRUE on success.
-   */
-  function enterWorkspace() 
-  {
-    if ($this->foowd->user->workspaceid == $this->objectid) 
-    {  // exit workspace
-      if ($this->foowd->user->set('workspaceid', 0))
-        return TRUE;
-    } 
-    else 
-    { // enter workspace
-      if ($this->foowd->user->set('workspaceid', $this->objectid)) 
-        return TRUE;
-    }
-
-    return FALSE;
   }
 
   /**
@@ -184,6 +163,7 @@ class smdoc_translation extends foowd_workspace
   function getLink(&$foowd, $objectid = FALSE)
   {
     $session_links = new input_session('lang_links', NULL);
+    $workspaces = $foowd->getWorkspaceList();
     if ( !isset($session_links->value) ) 
     {
       smdoc_translation::initialize($foowd);
@@ -195,6 +175,15 @@ class smdoc_translation extends foowd_workspace
 
     if ( isset($session_links->value[$objectid]) )
       return $session_links->value[$objectid];
+    elseif ( $workspaces != NULL && isset($workspaces[$objectid]) )
+    {
+      $url_arr['class']  = 'foowd_workspace';
+      $url_arr['method'] = 'enter';
+      $url_arr['langid'] = $objectid;
+      $the_url = '<a href="' .getURI($url_arr). '">';
+      $the_url .= htmlentities($workspaces[$objectid]) . '</a>';
+      return $the_url;
+    }
     else
       return NULL;
   }
@@ -313,34 +302,25 @@ class smdoc_translation extends foowd_workspace
 
     $foowd->track('foowd_workspace->class_enter', $translation_id->value);
 
+    $uri_arr = array();
     if ( $translation_id->wasSet &&
-         $translation_id->wasValid )
-    {
-      if ( $translation_id->value != $foowd->user->workspaceid )
-        $langid = $translation_id->value;  // enter workspace
-      else 
-        $langid = 0;  // leave workspace
+         $translation_id->wasValid &&
+         smdoc_translation::enterWorkspace($foowd, $translation_id->value) )
+    { 
+      if ( $translation_id->value == 0 )
+        $_SESSION['ok'] = USER_DEFAULT_TRANSLATION;
+      else
+        $_SESSION['ok'] = USER_NEW_TRANSLATION;
 
-      $foowd->user->set('workspaceid', $langid);
-
-      $uri_arr = array();
-      if ( $foowd->user->save() )
-      {
-        if ( $langid == 0 )
-          $uri_arr['ok'] = USER_DEFAULT_TRANSLATION;
-        else
-        { 
-          $uri_arr['ok'] = USER_NEW_TRANSLATION;
-          $uri_arr['objectid'] = $translation_id;
-          $uri_arr['classid']  = TRANSLATION_CLASS_ID;
-        }
-        $foowd->loc_forward(getURI($uri_arr, FALSE));
-      } 
-
-      $foowd->loc_forward(getURI($uri_arr, FALSE));
+      $uri_arr['objectid'] = $translation_id->value;
+      $uri_arr['classid'] = TRANSLATION_CLASS_ID;
     }
+    else
+      $_SESSION['error'] = WORKSPACE_CHANGE_FAILED;
 
     $foowd->track();
+//    $foowd->loc_forward( getURI($uri_arr, FALSE) );
+//    exit;
   }
 
 }

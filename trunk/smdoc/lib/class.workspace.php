@@ -32,6 +32,7 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
 /** Method permissions */
 setPermission('foowd_workspace', 'class', 'create', 'Gods');
+setPermission('foowd_workspace', 'class', 'enter', 'Gods');
 setPermission('foowd_workspace', 'object', 'edit', 'Gods');
 setPermission('foowd_workspace', 'object', 'enter', 'Gods');
 setPermission('foowd_workspace', 'object', 'fill', 'Gods');
@@ -121,15 +122,23 @@ class foowd_workspace extends foowd_object
    */
   function __sleep() 
   {
-    $returnArray = get_object_vars($this);
-    unset($returnArray['foowd_vars_meta']);
-    unset($returnArray['foowd_indexes']);
-    unset($returnArray['foowd_original_access_vars']);
-    unset($returnArray['level']);
-    unset($returnArray['varName']);
-    unset($returnArray['object']);
-    unset($returnArray['foowd']);
-    return array_keys($returnArray);
+    $returnArray = parent::__sleep();
+    $c = 0;
+    foreach ($returnArray as $i => $key)
+    {
+      switch($key)
+      {
+        case 'level':
+        case 'varName':
+        case 'object':
+          unset($returnArray[$i]);
+          if ( $c++ >= 2 )
+            break;
+        default:
+          continue;
+      }
+    }
+    return array_values($returnArray);
   }
 
   /**
@@ -146,21 +155,20 @@ class foowd_workspace extends foowd_object
   /**
    * Move the current user into or out of the workspace.
    *
+   * @static
+   * @param smdoc $foowd Reference to the foowd environment object.
+   * @param int   $objectid Id of workspace to enter/exit 
    * @return bool Returns TRUE on success.
    */
-  function enterWorkspace() 
+  function enterWorkspace(&$foowd, $objectid) 
   {
     // Leave workspace if we're already in it.
-    if ($this->foowd->user->workspaceid == $this->objectid) 
-    { 
-      if ($this->foowd->user->set('workspaceid', 0))
-        return TRUE;
-    } 
-    else // Otherwise, enter a new workspace 
-    { 
-      if ($this->foowd->user->set('workspaceid', $this->objectid))
-        return TRUE;
-    }
+    if ($foowd->user->workspaceid == $objectid) 
+      $objectid = 0;
+
+    if ($foowd->user->set('workspaceid', $objectid) &&
+        $foowd->user->save() )
+      return TRUE;
 
     return FALSE;
   }
@@ -664,6 +672,33 @@ class foowd_workspace extends foowd_object
     $foowd->track();
   }
 
+  /**
+   * Place the user in or take the user out of the workspace and redirect to
+   * the view method.
+   */
+  function class_enter(&$foowd) 
+  {
+    $workspace_id = new input_querystring('langid');
+    $foowd->track('foowd_workspace->class_enter');
+
+    $uri_arr = array();
+    if ( $workspace_id->wasSet &&
+         $workspace_id->wasValid &&
+         foowd_workspace::enterWorkspace($foowd, $workspace_id->value) )
+    {
+      $_SESSION['ok'] = WORKSPACE_CHANGE_SUCCEEDED;
+      $uri_arr['objectid'] = $workspace_id->value;
+      $uri_arr['classid'] = WORKSPACE_CLASS_ID;
+    }
+    else
+      $_SESSION['error'] = WORKSPACE_CHANGE_FAILED;
+
+ 
+    $foowd->track();
+    $foowd->loc_forward( getURI($uri_arr, FALSE) );
+    exit;
+  }
+
 /* Object methods */
 
   /**
@@ -764,7 +799,7 @@ class foowd_workspace extends foowd_object
   {
     $this->foowd->track('foowd_workspace->method_enter');
 
-    if ($this->enterWorkspace($this->foowd)) 
+    if ( foowd_workspace::enterWorkspace($this->foowd,$this->objectid) ) 
       $_SESSION['ok'] = WORKSPACE_CHANGE_SUCCEEDED;
     else
       $_SESSION['error'] = WORKSPACE_CHANGE_FAILED;

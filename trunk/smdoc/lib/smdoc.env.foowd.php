@@ -222,6 +222,10 @@ class smdoc extends foowd
         case USER_CLASS_ID:
           $new_obj =& smdoc_user::fetchUser($this, $where);
           break;
+        case WORKSPACE_CLASS_ID:
+        case TRANSLATION_CLASS_ID:
+          $setWorkspace = FALSE;
+          break;
       }
     }
 

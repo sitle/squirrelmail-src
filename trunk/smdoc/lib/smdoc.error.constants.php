@@ -103,8 +103,12 @@ define('40_MSG', _("User switched to default translation."));
 define('USER_NEW_TRANSLATION', 41);
 define('41_MSG', _("Selected translation updated."));
 
-define('WORKSPACE_CHANGE_SUCCEEDED', 42);
+
+define('WORKSPACE_CHANGE_SUCCEEDED', 50);
 define('50_MSG', _("User changed to selected workspace."));
 
-define('WORKSPACE_CHANGE_FAILED', 43);
+define('WORKSPACE_CHANGE_FAILED', 51);
 define('51_MSG', _("Unable to change to selected workspace/translation."));
+
+define('WORKSPACE_CLONE_FAILED', 52);
+define('52_MSG', _("Unable to clone object to specified workspace."));

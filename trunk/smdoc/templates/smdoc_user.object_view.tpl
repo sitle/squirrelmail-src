@@ -67,26 +67,26 @@ function user_view_body(&$foowd, $className, $method, &$user, &$object, &$t)
           {
             case 'MSN':
             case 'Email':
-              $id =  htmlspecialchars(mungEmail($id));
+              $id =  htmlentities(mungEmail($id));
               break;
             case 'IRC':
-              $id = htmlspecialchars($id);
+              $id = htmlentities($id);
               $id .= ' - <span class="subtext">#squirrelmail (<a href="http://freenode.net">irc.freenode.net</a>)</span>';
               break;
             case 'ICQ':
               $id = '<a href="http://wwp.icq.com/'.$id.'">'.$id.'</a>';
               break;
             case 'WWW':
-              $id = htmlspecialchars($id);
+              $id = htmlentities($id);
               $id = '<a href="'.$id.'">'.$id.'</a>';
               break;
             default:
-              $id = htmlspecialchars($id);
+              $id = htmlentities($id);
               break;
           }
 ?>
 <tr>
-  <td class="heading"><?php echo htmlspecialchars($prot); ?>:</td>
+  <td class="heading"><?php echo htmlentities($prot); ?>:</td>
   <td class="value"><?php echo $id; ?></td>
 </tr>
 <?php
@@ -115,7 +115,7 @@ function user_view_body(&$foowd, $className, $method, &$user, &$object, &$t)
         { ?>
 <tr>
   <td class="heading"><?php echo _("Email"); ?>:</td>
-  <td class="value"><?php echo isset($t['email']) ? htmlspecialchars($t['email']) : $none; ?></td>
+  <td class="value"><?php echo isset($t['email']) ? htmlentities($t['email']) : $none; ?></td>
 </tr>
 <?php   } ?>
 <tr>

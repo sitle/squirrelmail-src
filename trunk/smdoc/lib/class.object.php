@@ -37,7 +37,7 @@ setPermission('foowd_object', 'class',  'create', 'Nobody');
 setPermission('foowd_object', 'object', 'admin',  'Gods');
 setPermission('foowd_object', 'object', 'revert', 'Gods');
 setPermission('foowd_object', 'object', 'delete', 'Gods');
-setPermission('foowd_object', 'object', 'clone',  'Gods');
+setPermission('foowd_object', 'object', 'clone',  'Translator');
 setPermission('foowd_object', 'object', 'xml',    'Nobody');
 
 /** Class descriptor/Meta information */
@@ -198,11 +198,11 @@ class foowd_object
    * Constructs a new Foowd objcct.
    *
    * @param smdoc $foowd Reference to the foowd environment object.
-   * @param string title The objects title.
-   * @param string viewGroup The user group for viewing the object.
-   * @param string adminGroup The user group for administrating the object.
-   * @param string deleteGroup The user group for deleting the object.
-   * @param bool allowDuplicateTitle Allow object to have the same title as another object.
+   * @param string $title The objects title.
+   * @param string $viewGroup The user group for viewing the object.
+   * @param string $adminGroup The user group for administrating the object.
+   * @param string $deleteGroup The user group for deleting the object.
+   * @param bool $allowDuplicateTitle Allow object to have the same title as another object.
    */
   function foowd_object( &$foowd,
                          $title = NULL,
@@ -337,7 +337,7 @@ class foowd_object
    * Call an object method.
    *
    * @static
-   * @param string methodName Name of the method to call.
+   * @param string $methodName Name of the method to call.
    * @return bool Success or failure
    */
   function method($methodName = NULL) 
@@ -388,8 +388,8 @@ class foowd_object
    *
    * @static
    * @param smdoc $foowd Reference to the foowd environment object.
-   * @param string className Name of the class to call the method upon.
-   * @param string methodName Name of the method to call.
+   * @param string $className Name of the class to call the method upon.
+   * @param string $methodName Name of the method to call.
    * @return bool Success or failure
    */
   function classMethod(&$foowd, $className, $methodName = NULL ) 
@@ -415,7 +415,6 @@ class foowd_object
       $foowd->loc_forward(getURI(NULL, FALSE)); 
       exit;
     }
-
     $foowd->template->assign('className', $className);
     $foowd->template->assign('method', $methodName);
     call_user_func(array($className, $classMethodName), &$foowd, $className); // call method
@@ -460,7 +459,7 @@ class foowd_object
   /**
    * Get a member variable from this object.
    *
-   * @param string member The name of the member variable to get.
+   * @param string $member The name of the member variable to get.
    * @return mixed The variable or FALSE on failure.
    */
   function get($member) 
@@ -520,8 +519,8 @@ class foowd_object
   /**
    * Set a member variable to a complex array value.
    *
-   * @param array array The array value to set the member variable to.
-   * @param mixed regex The regular expression the values of the array must match for the assignment to be valid.
+   * @param array $array The array value to set the member variable to.
+   * @param mixed $regex The regular expression the values of the array must match for the assignment to be valid.
    * @return bool Returns TRUE on success.
    */
   function setArray($array, $regex = NULL ) 
@@ -711,17 +710,33 @@ class foowd_object
   /**
    * Clone the object.
    *
-   * @param string title The title of the new object clone.
-   * @param string workspaceid The workspace to place the object clone in.
+   * @param string $title The title of the new object clone.
+   * @param string $workspaceid The workspace to place the object clone in.
+   * @param bool   $keepObjectId Whether or not to preserve objectid association.
    * @return int 1 = success
    *            -1 = title already in use
    *            -2 = object could not be created
+   *            -3 = must specify to a different workspace
    */
-  function clone($title, $workspaceid) 
+  function clone($title, $workspaceid, $keepObjectId = TRUE) 
   {
-    if ( ($this->workspaceid == $workspaceid && $this->title == $title) ||
+    // If assigning a new title, make sure it's unique
+    // in target workspace
+    if ( $title != $this->title &&
          !$this->isTitleUnique($title, $workspaceid, $objectid) )
       return -1;
+
+    // In the case of a new translation, or a copy of an item into 
+    // a different workspace, we may want to keep the objectid the 
+    // same ( to preserve the association between the objects in 
+    // different workspaces )
+    if ( $keepObjectId )
+    {
+      // to keep the object id, we MUST be cloning to a different workspace
+      if ( $this->workspaceid == $workspaceid )
+        return -3;
+      $objectid = $this->objectid;
+    }
 
     $this->set('title', $title);
     $this->set('objectid', $objectid);
@@ -788,15 +803,9 @@ class foowd_object
    *
    * @return array Returns an array of workspaces indexed by workspaceid.
    */
-  function getWorkspaceList() 
+  function &getWorkspaceList() 
   {
-    $workspaceArray = array(0 => $this->foowd->config_settings['workspace']['workspace_base_name']);
-    $workspaces = $this->foowd->getObjList(NULL, NULL, array('classid' => WORKSPACE_CLASS_ID),
-                                           'title', NULL, FALSE, FALSE);
-    foreach ($workspaces as $workspace) 
-      $workspaceArray[$workspace['objectid']] = htmlspecialchars($workspace['title']);
-
-    return $workspaceArray;
+    return $this->foowd->getWorkspaceList();
   }
 
   /**
@@ -1100,15 +1109,17 @@ class foowd_object
     include_once(INPUT_DIR.'input.form.php');
     include_once(INPUT_DIR.'input.textbox.php');
     include_once(INPUT_DIR.'input.dropdown.php');
+    include_once(INPUT_DIR.'input.checkbox.php');
 
     $cloneForm = new input_form('cloneForm', NULL, SQ_POST);
-    $cloneTitle = new input_textbox('cloneTitle', REGEX_TITLE, '', 'Clone Title');
+    $cloneTitle = new input_textbox('cloneTitle', REGEX_TITLE, $this->title, 'Clone Title');
+    $cloneObjectId = new input_checkbox('cloneId', FALSE, 'New Object Translation');
     $cloneWorkspace = new input_dropdown('workspaceDropdown', NULL, $this->getWorkspaceList());
     $newWorkspace = $cloneWorkspace->value;
 
     if ($cloneForm->submitted()) 
     {
-      $rc = $this->clone($cloneTitle->value, $newWorkspace);
+      $rc = $this->clone($cloneTitle->value, $newWorkspace, $cloneObjectId->checked);
       switch($rc)
       {
         case 1: 
@@ -1121,6 +1132,8 @@ class foowd_object
           $this->foowd->template->assign('failure', OBJECT_DUPLICATE_TITLE);
           $cloneTitle->wasValid = 0;
           break;
+        case -3:
+          $this->foowd->template->assign('failure', OBJECT_DUPLICATE_TITLE);
         default:
         case -2:
           $this->foowd->template->assign('failure', OBJECT_CREATE_FAILED);
@@ -1130,6 +1143,7 @@ class foowd_object
 
     $cloneForm->addObject($cloneTitle);
     $cloneForm->addObject($cloneWorkspace);
+    $cloneForm->addObject($cloneObjectId);
     $this->foowd->template->assign_by_ref('form', $cloneForm);
 
     $this->foowd->track();

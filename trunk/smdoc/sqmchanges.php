@@ -79,7 +79,7 @@ foreach ($objects as $object)
   $list_objects[$i]['title']  = $object->title;
       
   if ( $object->workspaceid != 0 )
-    $list_objects[$i]['langid'] = foowd_translation::getLink($foowd, $object->workspaceid);
+    $list_objects[$i]['langid'] = smdoc_translation::getLink($foowd, $object->workspaceid);
   else 
     $list_objects[$i]['langid'] = '&nbsp;';
 

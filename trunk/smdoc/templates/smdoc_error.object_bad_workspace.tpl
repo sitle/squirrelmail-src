@@ -60,7 +60,7 @@ function error_bad_workspace_body(&$foowd, $className, $method, &$user, &$object
         $uri_arr['objectid'] = $obj['workspaceid'];
 ?>
 <tr>
-    <td><?php echo htmlspecialchars($obj['title']); ?></td>
+    <td><?php echo htmlentities($obj['title']); ?></td>
     <td align="center"><a href="<?php echo getURI($uri_arr); ?>"><?php echo $wlist[$obj['workspaceid']]; ?></a></td>
     <td class="smalldate"><?php echo $obj['updated']; ?></td>
 </tr>

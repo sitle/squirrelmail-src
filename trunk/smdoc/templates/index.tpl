@@ -59,7 +59,7 @@
     {
       $lastUpdate = ' [ '. $version . date('Y/m/d H:i T', $object->updated) . ' ] ';
       if ( isset($t['workspaceid']) && $t['workspaceid'] != 0 )
-        $lastUpdate .= ' (' . getLink($foowd, $t['workspaceid']) . ')';
+        $lastUpdate .= ' (' . smdoc_translation::getLink($foowd, $t['workspaceid']) . ')';
     }
   }
 
@@ -81,7 +81,7 @@
 <meta name="Author" content="SquirrelMail Project Team"/>
 <title>SquirrelMail<?php
     if ( isset($t['title']) )
-    echo ' - ', htmlspecialchars($t['title']);
+    echo ' - ', htmlentities($t['title']);
 ?></title>
 <link rel="stylesheet" type="text/css" href="templates/style.css" />
 </head>
