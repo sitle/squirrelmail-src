@@ -4,21 +4,23 @@ source version
 install -d packages
 # Compile locales
 for trans in `ls locale/`; do
-    if [ -f locale/${trans}/LC_MESSAGES/squirrelmail.po ]; then
-	msgfmt locale/${trans}/LC_MESSAGES/squirrelmail.po \
-	    -o locale/${trans}/LC_MESSAGES/squirrelmail.mo
+    for string in `ls po/*.pot | sed 's/^po\///' | sed 's/.pot$//'` ; do
+    if [ -f locale/${trans}/LC_MESSAGES/${string}.po ]; then
+	msgfmt locale/${trans}/LC_MESSAGES/${string}.po \
+	    -o locale/${trans}/LC_MESSAGES/${string}.mo
     fi
+    done
 done
 # Build separate locale package
 for trans in `ls locale/`; do
     if [ -f locale/${trans}/LC_MESSAGES/squirrelmail.po ]; then
 	tar -cf packages/${trans}-${STABLE_VERSION}-${date}.tar \
-	    locale/${trans}/LC_MESSAGES/squirrelmail.po \
-	    locale/${trans}/LC_MESSAGES/squirrelmail.mo \
+	    locale/${trans}/LC_MESSAGES/*.po \
+	    locale/${trans}/LC_MESSAGES/*.mo \
 	    install version
 	zip -q packages/${trans}-${STABLE_VERSION}-${date}.zip \
-	    locale/${trans}/LC_MESSAGES/squirrelmail.po \
-	    locale/${trans}/LC_MESSAGES/squirrelmail.mo \
+	    locale/${trans}/LC_MESSAGES/*.po \
+	    locale/${trans}/LC_MESSAGES/*.mo \
 	    install version
 	if [ -d help/${trans} ]; then
 	    tar -rf packages/${trans}-${STABLE_VERSION}-${date}.tar \
@@ -30,12 +32,12 @@ for trans in `ls locale/`; do
 done
 # Build full locale package
 tar -cf packages/all_locales-${STABLE_VERSION}-${date}.tar \
-    locale/*/LC_MESSAGES/squirrelmail.po \
-    locale/*/LC_MESSAGES/squirrelmail.mo \
+    locale/*/LC_MESSAGES/*.po \
+    locale/*/LC_MESSAGES/*.mo \
     help/*/*.hlp install version
 zip -q packages/all_locales-${STABLE_VERSION}-${date}.zip \
-    locale/*/LC_MESSAGES/squirrelmail.po \
-    locale/*/LC_MESSAGES/squirrelmail.mo \
+    locale/*/LC_MESSAGES/*.po \
+    locale/*/LC_MESSAGES/*.mo \
     help/*/*.hlp install version
 # Pack them
 for package in `ls packages/*-${date}.tar`; do
