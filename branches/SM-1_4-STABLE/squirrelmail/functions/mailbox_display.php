@@ -95,9 +95,6 @@ function printMessageInfo($imapConnection, $t, $not_last=true, $key, $mailbox,
         }
     }
     $senderName = str_replace('&nbsp;',' ',$senderName);
-    $msg['SUBJECT'] = decodeHeader($msg['SUBJECT']);
-    $subject = processSubject($msg['SUBJECT'], $indent_array[$msg['ID']]);
-    $subject = str_replace('&nbsp;',' ',$subject);    
     echo html_tag( 'tr','','','','VALIGN="top"') . "\n";
 
     if (isset($msg['FLAG_FLAGGED']) && ($msg['FLAG_FLAGGED'] == true)) {
@@ -153,8 +150,8 @@ function printMessageInfo($imapConnection, $t, $not_last=true, $key, $mailbox,
                         case('CC'):
                         case('FROM'):
                             foreach ($msg[$match_type] as $address) {
-                                $address[0] = decodeHeader($address[0]);
-                                $address[1] = decodeHeader($address[1]);
+                                $address[0] = decodeHeader($address[0], true, false);
+                                $address[1] = decodeHeader($address[1], true, false);
                                 if (strstr('^^' . strtolower($address[0]), $high_val) ||
                                     strstr('^^' . strtolower($address[1]), $high_val)) {
                                     $hlt_color = $message_highlight_list_part['color'];
@@ -163,7 +160,8 @@ function printMessageInfo($imapConnection, $t, $not_last=true, $key, $mailbox,
                             }
                             break;
                         default:
-                            if (strstr('^^' . strtolower($msg[$match_type]), $high_val)) {
+                            $headertest = strtolower(decodeHeader($msg[$match_type], true, false));
+                            if (strstr('^^' . $headertest, $high_val)) {
                                 $hlt_color = $message_highlight_list_part['color'];
                                 break 3; 
                             }
@@ -179,6 +177,9 @@ function printMessageInfo($imapConnection, $t, $not_last=true, $key, $mailbox,
     }
     $checked = ($checkall == 1) ? ' CHECKED' : '';
     $col = 0;
+    $msg['SUBJECT'] = decodeHeader($msg['SUBJECT']);
+    $subject = processSubject($msg['SUBJECT'], $indent_array[$msg['ID']]);
+    $subject = str_replace('&nbsp;',' ',$subject);    
     if (sizeof($index_order)) {
         foreach ($index_order as $index_order_part) {
             switch ($index_order_part) {
