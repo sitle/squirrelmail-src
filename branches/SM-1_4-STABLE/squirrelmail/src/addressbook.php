@@ -118,9 +118,6 @@ if(sqgetGlobalVar('REQUEST_METHOD', $req_method, SQ_SERVER) && $req_method == 'P
      * Add new address                                *
      **************************************************/
     if (isset($addaddr)) {
-        foreach( $addaddr as $k => $adr ) {
-            $addaddr[$k] = strip_tags( $adr );
-        }
         $r = $abook->add($addaddr, $abook->localbackend);
 
         /* Handle error messages */
