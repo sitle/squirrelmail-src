@@ -8,14 +8,10 @@
  *
  * This file shows an attched vcard
  *
- * @version $Id$
- * @package squirrelmail
+ * $Id$
  */
 
-/**
- * Path for SquirrelMail required files.
- * @ignore
- */
+/* Path for SquirrelMail required files. */
 Define('SM_PATH','../');
 
 /* SquirrelMail required files. */
@@ -92,9 +88,9 @@ if ($vcard_nice['version'] == '2.1') {
        $vcard_nice['email;internet'] = $vcard_nice['email;pref;internet'];
     }
 } else {
-    echo '<tr><td align="center">' .
-	sprintf(_("vCard Version %s is not supported. Some information might not be converted correctly."),$vcard_nice['version']) .
-	"</td></tr>\n";
+    echo '<tr><td align=center>vCard Version ' . $vcard_nice['version'] .
+        ' is not supported.  Some information might not be converted ' .
+    "correctly.</td></tr>\n";
 }
 
 foreach ($vcard_nice as $k => $v) {
@@ -119,11 +115,10 @@ $ShowValues = array(
 echo '<tr><td><br>' .
         '<TABLE border=0 cellpadding=2 cellspacing=0 align=center>' . "\n";
 
-if (isset($vcard_safe['email;internet'])) {
-    $vcard_safe['email;internet'] = makeComposeLink('src/compose.php?send_to='.urlencode($vcard_safe['email;internet']),
-        $vcard_safe['email;internet']);
+if (isset($vcard_safe['email;internet'])) {     $vcard_safe['email;internet'] = '<A HREF="../src/compose.php?send_to=' .
+        $vcard_safe['email;internet'] . '">' . $vcard_safe['email;internet'] .
+        '</A>';
 }
-
 if (isset($vcard_safe['url'])) {
     $vcard_safe['url'] = '<A HREF="' . $vcard_safe['url'] . '">' .
         $vcard_safe['url'] . '</A>';
@@ -147,56 +142,70 @@ echo '</table>' .
         _("Add to Addressbook") .
         '</td></tr>' .
         '<tr><td align=center>' .
-	addForm('../src/addressbook.php', 'POST', 'f_add') .
+        '<FORM ACTION="../src/addressbook.php" METHOD="POST" NAME=f_add>' .
         '<table border=0 cellpadding=2 cellspacing=0 align=center>' .
         '<tr><td align=right><b>Nickname:</b></td>' .
-        '<td>'.
-	addInput('addaddr[nickname]', $vcard_safe['firstname'] . '-' . $vcard_safe['lastname'], '20').
-        '</td></tr>' .
-        '<tr><td align=right><b>Note Field Contains:</b></td><td>' ;
+        '<td><input type=text name="addaddr[nickname]" size=20 value="' .
+        $vcard_safe['firstname'] . '-' . $vcard_safe['lastname'] .
+        '"></td></tr>' .
+        '<tr><td align=right><b>Note Field Contains:</b></td><td>' .
+        '<select name="addaddr[label]">';
 
-$opts = array();
 if (isset($vcard_nice['url'])) {
-    $opts[$vcard_nice['url']] = _("Web Page");
+    echo '<option value="' . htmlspecialchars($vcard_nice['url']) .
+        '">' . _("Web Page") . "</option>\n";
 }
 if (isset($vcard_nice['adr'])) {
-    $opts[$vcard_nice['adr']] = _("Address");
+    echo '<option value="' . htmlspecialchars($vcard_nice['adr']) .
+        '">' . _("Address") . "</option>\n";
 }
 if (isset($vcard_nice['title'])) {
-    $opts[$vcard_nice['title']] = _("Title");
+    echo '<option value="' . htmlspecialchars($vcard_nice['title']) .
+        '">' . _("Title") . "</option>\n";
 }
 if (isset($vcard_nice['org'])) {
-    $opts[$vcard_nice['org']] = _("Organization / Department");
+    echo '<option value="' . htmlspecialchars($vcard_nice['org']) .
+        '">' . _("Organization / Department") . "</option>\n";
 }
 if (isset($vcard_nice['title'])) {
-    $opts[$vcard_nice['title'].'; '.$vcard_nice['org']] = _("Title & Org. / Dept.");
+    echo '<option value="' . htmlspecialchars($vcard_nice['title']) .
+        '; ' . htmlspecialchars($vcard_nice['org']) .
+        '">' . _("Title & Org. / Dept.") . "</option>\n";
 }
 if (isset($vcard_nice['tel;work'])) {
-    $opts[$vcard_nice['tel;work']] = _("Work Phone");
+    echo '<option value="' . htmlspecialchars($vcard_nice['tel;work']) .
+        '">' . _("Work Phone") . "</option>\n";
 }
 if (isset($vcard_nice['tel;home'])) {
-    $opts[$vcard_nice['tel;home']] = _("Home Phone");
+    echo '<option value="' . htmlspecialchars($vcard_nice['tel;home']) .
+        '">' . _("Home Phone") . "</option>\n";
 }
 if (isset($vcard_nice['tel;cell'])) {
-    $opts[$vcard_nice['tel;cell']] = _("Cellular Phone");
+    echo '<option value="' . htmlspecialchars($vcard_nice['tel;cell']) .
+        '">' . _("Cellular Phone") . "</option>\n";
 }
 if (isset($vcard_nice['tel;fax'])) {
-    $opts[$vcard_nice['tel;fax']] = _("Fax");
+    echo '<option value="' . htmlspecialchars($vcard_nice['tel;fax']) .
+        '">' . _("Fax") . "</option>\n";
 }
 if (isset($vcard_nice['note'])) {
-    $opts[$vcard_nice['note']] = _("Note");
+    echo '<option value="' . htmlspecialchars($vcard_nice['note']) .
+        '">' . _("Note") . "</option>\n";
 }
-
-echo    addSelect('addaddr[label]', $opts, '', TRUE);
-echo    '</td></tr>' .
+echo '</select>' .
+        '</td></tr>' .
         '<tr><td colspan=2 align=center>' .
-	addHidden('addaddr[email]', $vcard_nice['email;internet']).
-	addHidden('addaddr[firstname]', $vcard_safe['firstname']).
-	addHidden('addaddr[lastname]', $vcard_safe['lastname']).
-	addSubmit(_("Add to Address Book"), 'addaddr[SUBMIT]').
+        '<INPUT NAME="addaddr[email]" type=hidden value="' .
+        htmlspecialchars($vcard_nice['email;internet']) . '">' .
+        '<INPUT NAME="addaddr[firstname]" type=hidden value="' .
+        $vcard_safe['firstname'] . '">' .
+        '<INPUT NAME="addaddr[lastname]" type=hidden value="' .
+        $vcard_safe['lastname'] . '">' .
+        '<INPUT TYPE=submit NAME="addaddr[SUBMIT]" ' .
+        'VALUE="'._("Add to Address Book").'">' .
         '</td></tr>' .
         '</table>' .
-        '</form>' .
+        '</FORM>' .
         '</td></tr>' .
         '<tr><td align=center>' .
         '<a href="../src/download.php?absolute_dl=true&amp;passed_id=' .

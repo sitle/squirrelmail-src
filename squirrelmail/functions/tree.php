@@ -10,20 +10,16 @@
  * used by the rest of the Squirrelmail code.
  *
  * $Id$
- * @package squirrelmail
  */
 
-/** Clearly, this needs the IMAP functions.. */
 require_once(SM_PATH . 'functions/imap.php');
 
 /**
- * Recursive function to find the correct parent for a new node.
+ * findParentForChild
  *
- * @param mixed value the value to find a parent for
- * @param int treeIndexToStart where to start the search, usually the root node (0)
- * @param array tree the tree to search
- * @return int the index of the parent
+ * Recursive function to find the correct parent for a new node
  */
+
 function findParentForChild($value, $treeIndexToStart, $tree) {
     // is $value in $tree[$treeIndexToStart]['value']
     if ((isset($tree[$treeIndexToStart])) && (strstr($value, $tree[$treeIndexToStart]['value']))) {
@@ -45,13 +41,6 @@ function findParentForChild($value, $treeIndexToStart, $tree) {
     }
 }
 
-/**
- * Will insert a new value into the tree, based on a given comparison value.
- *
- * @param mixed comparisonValue the value to determine where the new element should be placed.
- * @param mixed value the new node to insert
- * @param array tree the tree to insert the node in, by ref
- */
 function addChildNodeToTree($comparisonValue, $value, &$tree) {
     $parentNode = findParentForChild($comparisonValue, 0, $tree);
 
@@ -71,14 +60,6 @@ function addChildNodeToTree($comparisonValue, $value, &$tree) {
     }
 }
 
-/**
- * Recursively walk the tree of trash mailboxes and delete all folders and messages
- *
- * @param int index the place in the tree to start, usually 0
- * @param stream imap_stream the IMAP connection to send commands to
- * @param array tree the tree to walk
- * @return void
- */
 function walkTreeInPreOrderEmptyTrash($index, $imap_stream, $tree) {
     global $trash_folder;
     if ($tree[$index]['doIHaveChildren']) {
@@ -110,14 +91,6 @@ function walkTreeInPreOrderEmptyTrash($index, $imap_stream, $tree) {
 }
 
 
-/**
- * Recursively delete a tree of mail folders.
- *
- * @param int index the place in the tree to start, usually 0
- * @param stream imap_stream the IMAP connection to send commands to
- * @param array tree the tree to walk
- * @return void
- */
 function walkTreeInPreOrderDeleteFolders($index, $imap_stream, $tree) {
     if ($tree[$index]['doIHaveChildren']) {
         for ($j = 0; $j < count($tree[$index]['subNodes']); $j++) {
@@ -129,15 +102,10 @@ function walkTreeInPreOrderDeleteFolders($index, $imap_stream, $tree) {
     }
 }
 
-/**
- * Recursively walk a tree of folders to create them under the trash folder.
- */
 function walkTreeInPostOrderCreatingFoldersUnderTrash($index, $imap_stream, $tree, $topFolderName) {
     global $trash_folder, $delimiter;
 
-    $position = strrpos($topFolderName, $delimiter);
-    if ($position !== FALSE)
-        $position++;
+    $position = strrpos($topFolderName, $delimiter) + 1;
     $subFolderName = substr($tree[$index]['value'], $position);
 
     if ($tree[$index]['doIHaveChildren']) {
@@ -163,12 +131,6 @@ function walkTreeInPostOrderCreatingFoldersUnderTrash($index, $imap_stream, $tre
     }
 }
 
-/**
- * Recursive function that outputs a tree In-Pre-Order.
- * @param int index the node to start (usually 0)
- * @param array tree the tree to walk
- * @return void
- */
 function simpleWalkTreePre($index, $tree) {
     if ($tree[$index]['doIHaveChildren']) {
         for ($j = 0; $j < count($tree[$index]['subNodes']); $j++) {

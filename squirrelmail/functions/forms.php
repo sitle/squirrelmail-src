@@ -8,9 +8,8 @@
  * Functions to build HTML forms in a safe and consistent manner.
  * All name, value attributes are htmlentitied.
  *
- * @version $Id$
+ * $Id$
  * @package squirrelmail
- * @subpackage forms
  */
 
 /**
@@ -35,7 +34,7 @@ function addPwField($name , $value = null) {
 /**
  * Form checkbox
  */
-function addCheckBox($name, $checked = false, $value = null) {
+function addCheckBox($name, $checked = false, $value='') {
     return addInputField('checkbox', $name, $value,
         ($checked ? ' checked="checked"' : ''));
 }
@@ -43,7 +42,7 @@ function addCheckBox($name, $checked = false, $value = null) {
 /**
  * Form radio box
  */
-function addRadioBox($name, $checked = false, $value = null) {
+function addRadioBox($name, $checked = false, $value='') {
     return addInputField('radio', $name, $value, 
         ($checked ? ' checked="checked"' : ''));
 }

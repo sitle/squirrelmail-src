@@ -9,14 +9,10 @@
  * Gets folder names and enables renaming
  * Called from folders.php
  *
- * @version $Id$
- * @package squirrelmail
+ * $Id$
  */
 
-/**
- * Path for SquirrelMail required files.
- * @ignore
- */
+/* Path for SquirrelMail required files. */
 define('SM_PATH','../');
 
 /* SquirrelMail required files. */
@@ -71,7 +67,7 @@ echo '<br>' .
             html_tag( 'td', '', 'center', $color[4] ) .
 	    addForm('folders_rename_do.php').
      _("New name:").
-     '<br><b>' . htmlspecialchars($old_parent) . ' ' . htmlspecialchars($delimiter) . '</b>' .
+     '<br><b>'. htmlspecialchars($old_parent) .' '.htmlspecialchars($delimiter). '</b>'.
      addInput('new_name', $old_name, 25) . '<BR>' . "\n";
 if ( $isfolder ) {
     echo addHidden('isfolder', 'true');

@@ -11,20 +11,9 @@
  * html outputs.
  *
  * $Id$
- * @package squirrelmail
  */
 
-/**
- * Generate html tags
- *
- * @param string $tag Tag to output
- * @param string $val Value between tags
- * @param string $align Alignment (left, center, etc)
- * @param string $bgcolor Back color in hexadecimal
- * @param string $xtra Extra options
- * @return string HTML ready for output
- */
-function html_tag( $tag,                // Tag to output
+    function html_tag( $tag,                // Tag to output
                        $val = '',           // Value between tags
                        $align = '',         // Alignment
                        $bgcolor = '',       // Back color

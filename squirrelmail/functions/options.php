@@ -9,7 +9,6 @@
  * Functions needed to display the options pages.
  *
  * $Id$
- * @package squirrelmail
  */
 
 /**********************************************/
@@ -53,7 +52,6 @@ define('SMOPT_SAVE_NOOP', 'save_option_noop');
  * Also, I'd like to ask that people leave this alone (mostly :) until
  * I get it a little further along. That should only be a day or two or
  * three. I will remove this message when it is ready for primetime usage.
- * @package squirrelmail
  */
 class SquirrelOption {
     /* The basic stuff. */
@@ -223,7 +221,7 @@ class SquirrelOption {
 
             /* If this value is the current value, select it. */
             if ($real_value == $this->value) {
-               $new_option .= ' selected=""';
+               $new_option .= ' selected';
             }
 
             /* Add the display value to our option string. */
@@ -287,7 +285,7 @@ class SquirrelOption {
     function createWidget_Integer() {
 
         global $javascript_on;
-
+ 
         // add onChange javascript handler to a regular string widget
         // which will strip out all non-numeric chars
         if ($javascript_on)
@@ -302,7 +300,7 @@ class SquirrelOption {
     function createWidget_Float() {
         
         global $javascript_on;
-
+ 
         // add onChange javascript handler to a regular string widget
         // which will strip out all non-numeric (period also OK) chars 
         if ($javascript_on)
@@ -318,24 +316,22 @@ class SquirrelOption {
     function createWidget_Boolean() {
         /* Do the whole current value thing. */
         if ($this->value != SMPREF_NO) {
-            $yes_chk = ' checked=""';
+            $yes_chk = ' checked';
             $no_chk = '';
         } else {
             $yes_chk = '';
-            $no_chk = ' checked=""';
+            $no_chk = ' checked';
         }
 
         /* Build the yes choice. */
-        $yes_option = '<input type="radio" id="new_' . $this->name . '_yes" '
-                    . 'name="new_' . $this->name . '" value="' . SMPREF_YES . '"'
-                    . $yes_chk . ' ' . $this->script . '>&nbsp;'
-                    . '<label for="new_'.$this->name.'_yes">' . _("Yes") . '</label>';
+        $yes_option = '<input type="radio" name="new_' . $this->name
+                    . '" value="' . SMPREF_YES . "\"$yes_chk $this->script>&nbsp;"
+                    . _("Yes");
 
         /* Build the no choice. */
-        $no_option = '<input type="radio" id="new_' . $this->name . '_no" '
-                   . 'name="new_' . $this->name . '" value="' . SMPREF_NO . '"'
-                   . $no_chk . ' ' . $this->script . '>&nbsp;'
-                    . '<label for="new_'.$this->name.'_no">' . _("No") . '</label>';
+        $no_option = '<input type="radio" name="new_' . $this->name
+                   . '" value="' . SMPREF_NO . "\"$no_chk $this->script>&nbsp;"
+                   . _("No");
 
         /* Build and return the combined "boolean widget". */
         $result = "$yes_option&nbsp;&nbsp;&nbsp;&nbsp;$no_option";
@@ -411,7 +407,7 @@ function create_option_groups($optgrps, $optvals) {
                     $optset['name'],
                     $optset['caption'],
                     $optset['type'],
-                    (isset($optset['refresh']) ? $optset['refresh'] : SMOPT_REFRESH_NONE),
+		    (isset($optset['refresh']) ? $optset['refresh'] : SMOPT_REFRESH_NONE),
                     (isset($optset['initial_value']) ? $optset['initial_value'] : ''),
                     $optset['posvals']
                 );
@@ -421,7 +417,7 @@ function create_option_groups($optgrps, $optvals) {
                     $optset['name'],
                     $optset['caption'],
                     $optset['type'],
-                    (isset($optset['refresh']) ? $optset['refresh'] : SMOPT_REFRESH_NONE),
+    	    	    (isset($optset['refresh']) ? $optset['refresh'] : SMOPT_REFRESH_NONE),
                     (isset($optset['initial_value']) ? $optset['initial_value'] : '')
                 );
             }

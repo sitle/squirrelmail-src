@@ -1,5 +1,5 @@
 <?php
-/**
+/*
  * decode/gb2312.php
  * $Id$
  *
@@ -33,20 +33,13 @@
  * Unicode Standard, and to make copies of this file in any form for
  * internal or external distribution as long as this notice remains
  * attached.
- * @package squirrelmail
- * @subpackage decode
- */
-
-
-/**
- * Decode gb2312-euk encoded string
- * @param string $string Encoded string
- * @return string $string Decoded string
+ *
  */
 function charset_decode_gb2312 ($string) {
-    global $default_charset,$agresive_decoding;
+    global $default_charset;
 
-    if (!$agresive_decoding) return $string;
+    if (strtolower($default_charset) == 'gb2312')
+        return $string;
 
     /* Only do the slow convert if there are 8-bit characters */
     if ( ! ereg("[\241-\377]", $string) )

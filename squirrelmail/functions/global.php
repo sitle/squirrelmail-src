@@ -1,7 +1,7 @@
 <?php
 
 /**
- * global.php
+ * globals.php
  *
  * Copyright (c) 1999-2004 The SquirrelMail Project Team
  * Licensed under the GNU GPL. For full terms see the file COPYING.
@@ -11,34 +11,45 @@
  * php versions. 
  *
  * $Id$
- * @package squirrelmail
  */
 
-/** Bring in the config file. */
 require_once(SM_PATH . 'config/config.php');
 
-/** set the name of the session cookie */
+/* set the name of the session cookie */
 if(isset($session_name) && $session_name) {  
     ini_set('session.name' , $session_name);  
 } else {  
     ini_set('session.name' , 'SQMSESSID');  
 }
 
-/** If magic_quotes_runtime is on, SquirrelMail breaks in new and creative ways.
- *  Force magic_quotes_runtime off.
- *  tassium@squirrelmail.org - I put it here in the hopes that all SM code includes this.
- *  If there's a better place, please let me know.
+/* If magic_quotes_runtime is on, SquirrelMail breaks in new and creative ways.
+ * Force magic_quotes_runtime off.
+ * chilts@birdbrained.org - I put it here in the hopes that all SM code includes this.
+ * If there's a better place, please let me know.
  */
 ini_set('magic_quotes_runtime','0');
 
-/* Since we decided all IMAP servers must implement the UID command as defined in
- * the IMAP RFC, we force $uid_support to be on.
- */
-
-global $uid_support;
-$uid_support = true;
-
+/* convert old-style superglobals to current method
+ * this is executed if you are running PHP 4.0.x.
+ * it is run via a require_once directive in validate.php 
+ * and redirect.php. Patch submitted by Ray Black.
+ */ 
 sqsession_is_active();
+if ( !check_php_version(4,1) ) {
+  global $_COOKIE, $_ENV, $_FILES, $_GET, $_POST, $_SERVER, $_SESSION;
+  global $HTTP_COOKIE_VARS, $HTTP_ENV_VARS, $HTTP_POST_FILES, $HTTP_GET_VARS,
+         $HTTP_POST_VARS, $HTTP_SERVER_VARS, $HTTP_SESSION_VARS, $PHP_SELF;
+  $_COOKIE  =& $HTTP_COOKIE_VARS;
+  $_ENV     =& $HTTP_ENV_VARS;
+  $_FILES   =& $HTTP_POST_FILES;
+  $_GET     =& $HTTP_GET_VARS;
+  $_POST    =& $HTTP_POST_VARS;
+  $_SERVER  =& $HTTP_SERVER_VARS;
+  $_SESSION =& $HTTP_SESSION_VARS;
+  if (!isset($PHP_SELF) || empty($PHP_SELF)) {
+     $PHP_SELF =  $HTTP_SERVER_VARS['PHP_SELF'];
+  }
+}
 
 /* if running with magic_quotes_gpc then strip the slashes
    from POST and GET global arrays */
@@ -58,10 +69,6 @@ $_SERVER['PHP_SELF'] = strip_tags($_SERVER['PHP_SELF']);
  * returns true if current php version is at mimimum a.b.c 
  * 
  * Called: check_php_version(4,1)
- * @param int a major version number
- * @param int b minor version number
- * @param int c release number
- * @return bool
  */
 function check_php_version ($a = '0', $b = '0', $c = '0')             
 {
@@ -79,10 +86,6 @@ function check_php_version ($a = '0', $b = '0', $c = '0')
  * constructed by us, as an array of 3 ints.
  *
  * Called: check_sm_version(1,3,3)
- * @param int a major version number
- * @param int b minor version number
- * @param int c release number
- * @return bool
  */
 function check_sm_version($a = 0, $b = 0, $c = 0)
 {
@@ -98,11 +101,7 @@ function check_sm_version($a = 0, $b = 0, $c = 0)
 }
 
 
-/**
- * Recursively strip slashes from the values of an array.
- * @param array array the array to strip, passed by reference
- * @return void
- */
+/* recursively strip slashes from the values of an array */
 function sqstripslashes(&$array) {
     if(count($array) > 0) {
         foreach ($array as $index=>$value) {
@@ -116,49 +115,48 @@ function sqstripslashes(&$array) {
     }
 }
 
-/**
- * Add a variable to the session.
- * @param mixed $var the variable to register
- * @param string $name the name to refer to this variable
- * @return void
- */
 function sqsession_register ($var, $name) {
 
     sqsession_is_active();
 
-    $_SESSION["$name"] = $var; 
-    
+    if ( !check_php_version(4,1) ) {
+        global $HTTP_SESSION_VARS;
+        $HTTP_SESSION_VARS[$name] = $var;
+    }
+    else {
+        $_SESSION["$name"] = $var; 
+    }
     session_register("$name");
 }
 
-/**
- * Delete a variable from the session.
- * @param string $name the name of the var to delete
- * @return void
- */
 function sqsession_unregister ($name) {
 
     sqsession_is_active();
 
-    unset($_SESSION[$name]);
-    
+    if ( !check_php_version(4,1) ) {
+        global $HTTP_SESSION_VARS;
+        unset($HTTP_SESSION_VARS[$name]);
+    }
+    else {
+        unset($_SESSION[$name]);
+    }
     session_unregister("$name");
 }
 
-/**
- * Checks to see if a variable has already been registered
- * in the session.
- * @param string $name the name of the var to check
- * @return bool whether the var has been registered
- */
 function sqsession_is_registered ($name) {
     $test_name = &$name;
     $result = false;
-    
-    if (isset($_SESSION[$test_name])) {
-        $result = true;
+    if ( !check_php_version(4,1) ) {
+        global $HTTP_SESSION_VARS;
+        if (isset($HTTP_SESSION_VARS[$test_name])) {
+            $result = true;
+        }
     }
-    
+    else {
+        if (isset($_SESSION[$test_name])) {
+            $result = true;
+        }
+    }
     return $result;
 }
 
@@ -187,12 +185,21 @@ define('SQ_FORM',6);
  *    sqgetGlobalVar('username',$username,SQ_SESSION);
  *  -- no quotes around last param!
  *
- * @param string name the name of the var to search
- * @param mixed value the variable to return
- * @param int search constant defining where to look
- * @return bool whether variable is found.
+ * Returns FALSE if variable is not found.
+ * Returns TRUE if it is.
  */
 function sqgetGlobalVar($name, &$value, $search = SQ_INORDER) {
+
+    if ( !check_php_version(4,1) ) {
+        global $HTTP_COOKIE_VARS, $HTTP_GET_VARS, $HTTP_POST_VARS, 
+               $HTTP_SERVER_VARS, $HTTP_SESSION_VARS;
+
+        $_COOKIE  =& $HTTP_COOKIE_VARS;
+        $_GET     =& $HTTP_GET_VARS;
+        $_POST    =& $HTTP_POST_VARS;
+        $_SERVER  =& $HTTP_SERVER_VARS;
+        $_SESSION =& $HTTP_SESSION_VARS;
+    }
 
     /* NOTE: DO NOT enclose the constants in the switch
        statement with quotes. They are constant values,
@@ -203,7 +210,7 @@ function sqgetGlobalVar($name, &$value, $search = SQ_INORDER) {
 	   so that if a valid value isn't specified, 
 	   all three arrays will be searched. */
       default:
-      case SQ_INORDER: // check session, post, get
+      case SQ_INORDER:   // check session, post, get
       case SQ_SESSION:
         if( isset($_SESSION[$name]) ) {
             $value = $_SESSION[$name];
@@ -211,7 +218,7 @@ function sqgetGlobalVar($name, &$value, $search = SQ_INORDER) {
         } elseif ( $search == SQ_SESSION ) {
             break;
         }
-      case SQ_FORM:   // check post, get
+      case SQ_FORM:      //  check post, get
       case SQ_POST:
         if( isset($_POST[$name]) ) {
             $value = $_POST[$name];
@@ -242,10 +249,6 @@ function sqgetGlobalVar($name, &$value, $search = SQ_INORDER) {
     return FALSE;
 }
 
-/**
- * Deletes an existing session, more advanced than the standard PHP
- * session_destroy(), it explicitly deletes the cookies and global vars.
- */
 function sqsession_destroy() {
 
     /*
@@ -267,13 +270,18 @@ function sqsession_destroy() {
 
     $sessid = session_id();
     if (!empty( $sessid )) {
-        $_SESSION = array();
+        if ( !check_php_version(4,1) ) {
+            global $HTTP_SESSION_VARS;
+            $HTTP_SESSION_VARS = array();
+        } else {
+            $_SESSION = array();
+        }
         @session_destroy();
     }
 
 }
 
-/**
+/*
  * Function to verify a session has been started.  If it hasn't
  * start a session up.  php.net doesn't tell you that $_SESSION
  * (even though autoglobal), is not created unless a session is
@@ -281,7 +289,7 @@ function sqsession_destroy() {
  */
 
 function sqsession_is_active() {
-    
+
     $sessid = session_id();
     if ( empty( $sessid ) ) {
         session_start();

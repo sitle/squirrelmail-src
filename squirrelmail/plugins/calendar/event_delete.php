@@ -11,12 +11,6 @@
  * Functions to delete a event. 
  *
  * $Id$
- * @package plugins
- * @subpackage calendar
- */
-
-/**
- * @ignore
  */
 define('SM_PATH','../../');
 

@@ -10,14 +10,10 @@
  * shown can be given as parameters. If the user is not logged in
  * this file will verify username and password.
  *
- * @version $Id$
- * @package squirrelmail
+ * $Id$
  */
 
-/**
- * Path for SquirrelMail required files.
- * @ignore
- */
+/* Path for SquirrelMail required files. */
 define('SM_PATH','../');
 
 /* SquirrelMail required files. */
@@ -46,9 +42,6 @@ sqgetGlobalVar('right_frame', $right_frame, SQ_GET);
 if ( isset($_SESSION['session_expired_post']) ) {
     sqsession_unregister('session_expired_post');
 }
-if(!sqgetGlobalVar('mailto', $mailto)) {
-    $mailto = '';
-}
 
 is_logged_in();
 
@@ -66,25 +59,12 @@ if ($my_language != $squirrelmail_language) {
     setcookie('squirrelmail_language', $my_language, time()+2592000, $base_uri);
 }
 
-$err=set_up_language(getPref($data_dir, $username, 'language'));
+set_up_language(getPref($data_dir, $username, 'language'));
 
 $output = "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Frameset//EN\">\n".
           "<html><head>\n" .
           "<title>$org_title</title>\n".
           "</head>";
-
-// Japanese translation used without mbstring support
-if ($err==2) {
-    echo $output.
-         "<body>\n".
-	 "<p>You need to have php4 installed with the multibyte string function \n".
-	 "enabled (using configure option --enable-mbstring).</p>\n".
-	 "<p>System assumed that you accidently switched to Japanese translation \n".
-         "and reverted your language preference to English.</p>\n".
-	 "<p>Please refresh this page in order to use webmail.</p>\n".
-	 "</body></html>";
-    return;
-}
 
 $left_size = getPref($data_dir, $username, 'left_size');
 $location_of_bar = getPref($data_dir, $username, 'location_of_bar');
@@ -140,24 +120,19 @@ if ($right_frame == 'right_main.php') {
     $right_frame_url = 'options.php';
 } elseif ($right_frame == 'folders.php') {
     $right_frame_url = 'folders.php';
-} elseif ($right_frame == 'compose.php') {
-    $right_frame_url = 'compose.php?' . $mailto;
 } else if ($right_frame == '') {
     $right_frame_url = 'right_main.php';
 } else {
     $right_frame_url =  $right_frame;
 }
 
-$left_frame  = '<frame src="left_main.php" name="left" frameborder="1" title="'.
-               _("Folder List") ."\" />\n";
-$right_frame = '<frame src="'.$right_frame_url.'" name="right" frameborder="1" title="'.
-               _("Message List") ."\" />\n";
-
 if ($location_of_bar == 'right') {
-    $output .= $right_frame . $left_frame;
+    $output .= "<frame src=\"$right_frame_url\" name=\"right\" frameborder=\"1\" />\n" .
+               "<frame src=\"left_main.php\" name=\"left\" frameborder=\"1\" />\n";
 }
 else {
-    $output .= $left_frame . $right_frame;
+    $output .= "<frame src=\"left_main.php\" name=\"left\" frameborder=\"1\" />\n".
+               "<frame src=\"$right_frame_url\" name=\"right\" frameborder=\"1\" />\n";
 }
 $ret = concat_hook_function('webmail_bottom', $output);
 if($ret != '') {

@@ -9,10 +9,8 @@
  * This contains functions needed to handle mime messages.
  *
  * $Id$
- * @package squirrelmail
  */
 
-/** Load in the entire MIME system */
 require_once(SM_PATH . 'class/mime/Rfc822Header.class.php');
 require_once(SM_PATH . 'class/mime/MessageHeader.class.php');
 require_once(SM_PATH . 'class/mime/AddressStructure.class.php');

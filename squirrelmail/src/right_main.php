@@ -1,4 +1,5 @@
 <?php
+
 /**
  * right_main.php
  *
@@ -8,14 +9,10 @@
  * This is where the mailboxes are listed. This controls most of what
  * goes on in SquirrelMail.
  *
- * @version $Id$
- * @package squirrelmail
+ * $Id$
  */
 
-/**
- * Path for SquirrelMail required files.
- * @ignore
- */
+/* Path for SquirrelMail required files. */
 define('SM_PATH','../');
 
 /* SquirrelMail required files. */
@@ -57,7 +54,6 @@ sqgetGlobalVar('lastTargetMailbox', $lastTargetMailbox, SQ_SESSION);
 sqgetGlobalVar('numMessages'      , $numMessages,       SQ_SESSION);
 sqgetGlobalVar('session',           $session,           SQ_GET);
 sqgetGlobalVar('note',              $note,              SQ_GET);
-sqgetGlobalVar('mail_sent',         $mail_sent,         SQ_GET);
 sqgetGlobalVar('use_mailbox_cache', $use_mailbox_cache, SQ_GET);
 
 if ( sqgetGlobalVar('startMessage', $temp) ) {
@@ -103,13 +99,11 @@ else if( isset( $PG_SHOWNUM ) ) {
     $show_num = $PG_SHOWNUM;
 }
 
-if (isset($newsort) ) {
-    if ( $newsort != $sort )
-        setPref($data_dir, $username, 'sort', $newsort);
-
-    $sort = $newsort;
-    sqsession_register($sort, 'sort');
+if (isset($newsort) && $newsort != $sort) {
+    setPref($data_dir, $username, 'sort', $newsort);
 }
+
+
 
 /* If the page has been loaded without a specific mailbox, */
 /* send them to the inbox                                  */
@@ -161,11 +155,6 @@ if ($composenew) {
     displayPageHeader($color, $mailbox);
 }
 do_hook('right_main_after_header');
-
-/* display a message to the user that their mail has been sent */
-if (isset($mail_sent) && $mail_sent == 'yes') {
-    $note = _("Your Message has been sent.");
-}
 if (isset($note)) {
     echo html_tag( 'div', '<b>' . $note .'</b>', 'center' ) . "<br>\n";
 }
@@ -174,6 +163,7 @@ if ( sqgetGlobalVar('just_logged_in', $just_logged_in, SQ_SESSION) ) {
     if ($just_logged_in == true) {
         $just_logged_in = false;
         sqsession_register($just_logged_in, 'just_logged_in');
+
 
         if (strlen(trim($motd)) > 0) {
             echo html_tag( 'table',
@@ -191,6 +181,10 @@ if ( sqgetGlobalVar('just_logged_in', $just_logged_in, SQ_SESSION) ) {
     }
 }
 
+if (isset($newsort)) {
+    $sort = $newsort;
+    sqsession_register($sort, 'sort');
+}
 
 /*********************************************************************
  * Check to see if we can use cache or not. Currently the only time  *

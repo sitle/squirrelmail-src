@@ -11,14 +11,8 @@
  * message.
  *
  * $Id$
- * @package plugins
- * @subpackage abook_take
  */
 
-/**
- * If SM_PATH isn't defined, define it.  Required to include files.
- * @ignore
- */
 if (!defined('SM_PATH'))  {
     define('SM_PATH','../../');
 }
@@ -26,9 +20,6 @@ if (!defined('SM_PATH'))  {
 /* SquirrelMail required files. */
 require_once(SM_PATH . 'functions/url_parser.php');
 
-/**
- * Initialize the plugin
- */
 function squirrelmail_plugin_init_abook_take()
 {
     global $squirrelmail_plugin_hooks;
@@ -109,7 +100,7 @@ function abook_take_options()
     echo '<tr>' . html_tag('td',_("Address Book Take:"),'right','','nowrap') . "\n" .
          '<td><input name="abook_take_abook_take_verify" type="checkbox"';
     if (isset($abook_take_verify) && $abook_take_verify)
-        echo ' checked';
+	echo ' checked';
     echo ' /> ' . _("Try to verify addresses") . "</td></tr>\n";
 }
 

@@ -8,14 +8,10 @@
  *
  * This is the code to view the message header.
  *
- * @version $Id$
- * @package squirrelmail
+ * $Id$
  */
 
-/**
- * Path for SquirrelMail required files.
- * @ignore
- */
+/* Path for SquirrelMail required files. */
 define('SM_PATH','../');
 
 /* SquirrelMail required files. */
@@ -26,15 +22,16 @@ require_once(SM_PATH . 'functions/html.php');
 require_once(SM_PATH . 'functions/url_parser.php');
 
 function parse_viewheader($imapConnection,$id, $passed_ent_id) {
+    global $uid_support;
 
     $header_full = array();
     if (!$passed_ent_id) {
         $read=sqimap_run_command ($imapConnection, "FETCH $id BODY[HEADER]", 
-                              true, $a, $b, TRUE);
+                              true, $a, $b, $uid_support);
     } else {
         $query = "FETCH $id BODY[".$passed_ent_id.'.HEADER]';
         $read=sqimap_run_command ($imapConnection, $query, 
-                              true, $a, $b, TRUE);
+                              true, $a, $b, $uid_support);
     }    
     $cnum = 0;
     for ($i=1; $i < count($read); $i++) {

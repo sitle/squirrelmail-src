@@ -9,11 +9,8 @@
  * Displays all options relating to new mail sounds
  *
  * $Id$
- * @package plugins
- * @subpackage newmail
  */
 
-/** @ignore */
 define('SM_PATH','../../');
 
 /* SquirrelMail required files. */
@@ -53,14 +50,14 @@ if ($allowsound == "true") {
                _("Selecting the <b>Show popup</b> option will enable the showing of a popup window when unseen mail is in your folders (requires JavaScript).")
            ) . "\n" .
            html_tag( 'p',
-               _("Use the <b>Check RECENT</b> to only check for messages that are recent. Recent messages are those that have just recently showed up and have not been \"viewed\" or checked yet. This can prevent being continuously annoyed by sounds or popups for unseen mail.")
+               _("Use the <b>Check RECENT</b> to only check for messages that are recent. Recent messages are those that have just recently showed up and have not been \"viewed\" or checked yet.  This can prevent being continuously annoyed by sounds or popups for unseen mail.")
            ) . "\n" .
            html_tag( 'p',
-               _("Selecting the <b>Change title</b> option will change the title in some browsers to let you know when you have new mail (requires JavaScript, and only works in IE but you won't see errors with other browsers). This will always tell you if you have new mail, even if you have <b>Check RECENT</b> enabled.")
+               _("Selecting the <b>Change title</b> option will change the title in some browsers to let you know when you have new mail (requires JavaScript, and only works in IE but you won't see errors with other browsers).  This will always tell you if you have new mail, even if you have <b>Check RECENT</b> enabled.")
            );
     if ($allowsound == "true") {
         echo html_tag( 'p',
-                    _("Select from the list of <b>server files</b> the media file to play when new mail arrives. If no file is specified, \"(none)\", no sound will be used.")
+                    _("Select from the list of <b>server files</b> the media file to play when new mail arrives.  If no file is specified, \"(none)\", no sound will be used.")
                ) . "\n";
     }
     echo '<form action="'.sqm_baseuri().'src/options.php" method=post>'.
@@ -132,8 +129,7 @@ if ($allowsound == "true") {
             if ($fname == $media) {
                 echo 'selected ';
             }
-            echo 'value="' . htmlspecialchars($fname) . '">' .
-                htmlspecialchars($entry) . "</option>\n";
+            echo 'value="' . htmlspecialchars($fname) . '">' . htmlspecialchars($entry) . "</option>\n";
         }
     }
     $d->close();
@@ -147,9 +143,8 @@ if ($allowsound == "true") {
          '</tr>'.
          html_tag( 'tr', "\n" .
              html_tag( 'td', _("Current File:"), 'right', '', 'nowrap' ) .
-             html_tag( 'td', '<input type="hidden" value="' . 
-                 htmlspecialchars($media) . '" name="media_default">' .
-                 htmlspecialchars($media) . '', 'left' )
+             html_tag( 'td', '<input type="hidden" value="' . htmlspecialchars($media) .
+	         '" name="media_default">' . htmlspecialchars($media) . '', 'left' )
          ) . "\n";
     }
          echo html_tag( 'tr', "\n" .

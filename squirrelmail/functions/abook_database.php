@@ -27,18 +27,11 @@
  *  NOTE. This class should not be used directly. Use the
  *        "AddressBook" class instead.
  *
- * @version $Id$
- * @package squirrelmail
- * @subpackage addressbook
+ * $Id$
  */
-
-/** Needs the DB functions */   
+   
 require_once('DB.php');
-
-/**
- * Undocumented class - stores the addressbook in a sql database
- * @package squirrelmail
- */
+   
 class abook_database extends addressbook_backend {
     var $btype = 'local';
     var $bname = 'database';
@@ -73,10 +66,6 @@ class abook_database extends addressbook_backend {
 
             if (isset($param['writeable'])) {
                $this->writeable = $param['writeable'];
-            }
-
-            if (isset($param['listing'])) {
-               $this->listing = $param['listing'];
             }
 
             $this->open(true);
@@ -126,7 +115,7 @@ class abook_database extends addressbook_backend {
         if(!$this->open()) {
             return false;
         }
-
+         
         /* To be replaced by advanded search expression parsing */
         if (is_array($expr)) {
             return;
@@ -202,11 +191,6 @@ class abook_database extends addressbook_backend {
         if (!$this->open()) {
             return false;
         }
-	
-	if(isset($this->listing) && !$this->listing) {
-	    return array();
-	}
-
 
         $query = sprintf("SELECT * FROM %s WHERE owner='%s'",
                          $this->table, $this->owner);

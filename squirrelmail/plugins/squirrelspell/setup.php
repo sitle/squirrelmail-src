@@ -11,8 +11,6 @@
  *
  * @author Konstantin Riabitsev <icon@duke.edu> ($Author$)
  * @version $Date$
- * @package plugins
- * @subpackage squirrelspell
  */
 
 /**
@@ -39,9 +37,9 @@ function squirrelmail_plugin_init_squirrelspell() {
 function squirrelspell_optpage_register_block() {
   global $optpage_blocks;
   /**
-   * Check if this browser is capable of using the plugin
+   * soupNazi checks if this browser is capable of using the plugin.
    */
-  if (checkForJavascript()) {
+  if (!soupNazi()) {
     /**
      * The browser checks out.
      * Register Squirrelspell with the $optionpages array. 
@@ -66,7 +64,7 @@ function squirrelspell_setup() {
    * Check if this browser is capable of displaying SquirrelSpell
    * correctly.
    */
-  if (checkForJavascript()) {
+  if (!soupNazi()) {
     /**
      * Some people may choose to disable javascript even though their
      * browser is capable of using it. So these freaks don't complain,

@@ -1,18 +1,17 @@
 <?php
 
 /**
- * Name:   Slashdot Theme
- * @author Luke Ehresman
- * Date:   January 3, 2000
- * Comment This theme tries to mimic the color scheme from the
- *         "News for Nerds" web site, www.slashdot.org.
+ * slashdot_theme.php
+ *    Name:    Slashdot Theme
+ *    Author:  Luke Ehresman
+ *    Date:    January 3, 2000
+ *    Comment: This theme tries to mimic the color scheme from the
+ *             "News for Nerds" web site, www.slashdot.org.
  *
  * Copyright (c) 2000-2004 The SquirrelMail Project Team
  * Licensed under the GNU GPL. For full terms see the file COPYING.
  *
  * $Id$
- * @package squirrelmail
- * @subpackage themes
  */
 
 global $color;

@@ -2,17 +2,15 @@
 
 /**
  * deepocean2_theme.php
- * Name:    Deep Ocean 2
- * @author M.J. Prinsen
- * Date:    May 23, 2000
- * Comment: Deep Ocean 2 is very blue with a white background.
+ *    Name:    Deep Ocean 2
+ *    Author:  M.J. Prinsen
+ *    Date:    May 23, 2000
+ *    Comment: Deep Ocean 2 is very blue with a white background.
  *
  * Copyright (c) 2000-2004 The SquirrelMail Project Team
  * Licensed under the GNU GPL. For full terms see the file COPYING.
  *
  * $Id$
- * @package squirrelmail
- * @subpackage themes
  */
 
 global $color;

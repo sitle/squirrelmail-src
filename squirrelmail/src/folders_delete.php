@@ -9,14 +9,10 @@
  * Deletes folders from the IMAP server. 
  * Called from the folders.php
  *
- * @version $Id$
- * @package squirrelmail
+ * $Id$
  */
 
-/**
- * Path for SquirrelMail required files.
- * @ignore
- */
+/* Path for SquirrelMail required files. */
 define('SM_PATH','../');
 
 /* SquirrelMail required files. */
@@ -66,11 +62,11 @@ if( !sqgetGlobalVar('confirmed', $tmp, SQ_POST) ) {
         html_tag( 'tr' ) .
         html_tag( 'td', '', 'center', $color[4] ) .
         sprintf(_("Are you sure you want to delete %s?"), str_replace(array(' ','<','>'),array('&nbsp;','&lt;','&gt;'),imap_utf7_decode_local($mailbox))).
-	addForm('folders_delete.php', 'POST').
+	addForm('folders_delete.php', 'POST')."<p>\n".
 	addHidden('mailbox', $mailbox).
-        '<INPUT TYPE=SUBMIT NAME="confirmed" VALUE="'._("Yes")."\">\n".
-        '<INPUT TYPE=SUBMIT NAME="backingout" VALUE="'._("No")."\">\n".
-        '</p></FORM><BR></td></tr></table>';
+	addSubmit(_("Yes"), 'confirmed').
+	addSubmit(_("No"), 'backingout').
+        '</p></form><br></td></tr></table>';
 
     exit;
 }

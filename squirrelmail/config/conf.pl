@@ -267,52 +267,113 @@ while ( $line = <FILE> ) {
     }
 }
 close FILE;
+if ( lc($useSendmail) ne "true" ) {
+    $useSendmail = "false";
+}
+if ( !$sendmail_path ) {
+    $sendmail_path = "/usr/sbin/sendmail";
+}
+if ( !$pop_before_smtp ) {
+    $pop_before_smtp = "false";
+}
+if ( !$default_unseen_notify ) {
+    $default_unseen_notify = 2;
+}
+if ( !$default_unseen_type ) {
+    $default_unseen_type = 1;
+}
+if ( !$config_use_color ) {
+    $config_use_color = 0;
+}
+if ( !$invert_time ) {
+    $invert_time = "false";
+}
+if ( !$force_username_lowercase ) {
+    $force_username_lowercase = "false";
+}
+if ( !$optional_delimiter ) {
+    $optional_delimiter = "detect";
+}
+if ( !$auto_create_special ) {
+    $auto_create_special = "false";
+}
+if ( !$default_use_priority ) {
+    $default_use_priority = "true";
+}
+if ( !$hide_sm_attributions ) {
+    $hide_sm_attributions = "false";
+}
+if ( !$default_use_mdn ) {
+    $default_use_mdn = "true";
+}
+if ( !$delete_folder ) {
+    $delete_folder = "false";
+}
+if ( !$noselect_fix_enable ) {
+    $noselect_fix_enable = "false";
+}
+if ( !$frame_top ) {
+    $frame_top = "_top";
+}
 
-$useSendmail = 'false'                  if ( lc($useSendmail) ne 'true' );
-$sendmail_path = "/usr/sbin/sendmail"   if ( !$sendmail_path );
-$pop_before_smtp = 'false'              if ( !$pop_before_smtp );
-$default_unseen_notify = 2              if ( !$default_unseen_notify );
-$default_unseen_type = 1                if ( !$default_unseen_type );
-$config_use_color = 0                   if ( !$config_use_color );
-$invert_time = 'false'                  if ( !$invert_time );
-$force_username_lowercase = 'false'     if ( !$force_username_lowercase );
-$optional_delimiter = "detect"          if ( !$optional_delimiter );
-$auto_create_special = 'false'          if ( !$auto_create_special );
-$default_use_priority = 'true'          if ( !$default_use_priority );
-$hide_sm_attributions = 'false'         if ( !$hide_sm_attributions );
-$default_use_mdn = 'true'               if ( !$default_use_mdn );
-$delete_folder = 'false'                if ( !$delete_folder );
-$noselect_fix_enable = 'false'          if ( !$noselect_fix_enable );
-$frame_top = "_top"                     if ( !$frame_top );
-$provider_uri = ''                      if ( !$provider_uri );
-$provider_name = ''                     if ( !$provider_name );
-$edit_identity = 'true'                 if ( !$edit_identity );
-$edit_name = 'true'                     if ( !$edit_name );
-$allow_thread_sort = 'false'            if ( !$allow_thread_sort );
-$allow_server_sort = 'false'            if ( !$allow_server_sort );
-$no_list_for_subscribe = 'false'        if ( !$no_list_for_subscribe );
-$allow_charset_search = 'true'          if ( !$allow_charset_search );
-$allow_advanced_search = 0              if ( !$allow_advanced_search) ;
-$prefs_user_field = 'user'              if ( !$prefs_user_field );
-$prefs_key_field = 'prefkey'            if ( !$prefs_key_field );
-$prefs_val_field = 'prefval'            if ( !$prefs_val_field );
-$addrbook_global_table = 'global_abook' if ( !$addrbook_global_table );
-$addrbook_global_writeable = 'false'    if ( !$addrbook_global_writeable );
-$addrbook_global_listing = 'false'      if ( !$addrbook_global_listing );
-$use_smtp_tls= 'false'                  if ( !$use_smtp_tls);
-$smtp_auth_mech = 'none'                if ( !$smtp_auth_mech );
-$use_imap_tls = 'false'                 if ( !$use_imap_tls );
-$imap_auth_mech = 'login'               if ( !$imap_auth_mech );
-$session_name = 'SQMSESSID'             if ( !$session_name );
-$show_alternative_names = 'false'       if ( !$show_alternative_names );
-$available_languages = 'all'            if ( !$available_languages );
-$agresive_decoding = 'false'            if ( !$agresive_decoding );
-$advanced_tree = 'false'                if ( !$advanced_tree );
-$oldway = 'false'                       if ( !$oldway );
-$use_icons = 'false'                    if ( !$use_icons );
-$use_php_recode = 'false'               if ( !$use_php_recode );
-$use_php_iconv = 'false'                if ( !$use_php_iconv );
-$skip_SM_header = 'false'               if ( !$skip_SM_header ); 
+if ( !$provider_uri ) {
+    $provider_uri = "http://www.squirrelmail.org/";
+}
+
+if ( !$provider_name ) {
+    $provider_name = "SquirrelMail";
+}
+
+if ( !$edit_identity ) {
+    $edit_identity = "true";
+}
+if ( !$edit_name ) {
+    $edit_name = "true";
+}
+if ( !$allow_thread_sort ) {
+    $allow_thread_sort = 'false';
+}
+if ( !$allow_server_sort ) {
+    $allow_server_sort = 'false';
+}
+if ( !$uid_support ) {
+    $uid_support = 'true';
+}
+if ( !$no_list_for_subscribe ) {
+    $no_list_for_subscribe = 'false';
+}
+if ( !$allow_charset_search ) {
+    $allow_charset_search = 'true';
+}
+if ( !$prefs_user_field ) {
+    $prefs_user_field = 'user';
+}
+if ( !$prefs_key_field ) {
+    $prefs_key_field = 'prefkey';
+}
+if ( !$prefs_val_field ) {
+    $prefs_val_field = 'prefval';
+}
+
+if ( !$use_smtp_tls) {
+	$use_smtp_tls= 'false';
+}
+
+if ( !$smtp_auth_mech ) {
+	$smtp_auth_mech = 'none';
+}
+
+if ( !$use_imap_tls ) {
+    $use_imap_tls = 'false';
+}
+
+if ( !$imap_auth_mech ) {
+    $imap_auth_mech = 'login';
+}
+
+if (!$session_name ) {
+	$session_name = 'SQMSESSID';
+}
 
 if ( $ARGV[0] eq '--install-plugin' ) {
     print "Activating plugin " . $ARGV[1] . "\n";
@@ -360,8 +421,6 @@ while ( ( $command ne "q" ) && ( $command ne "Q" ) ) {
         print "7.  Message of the Day (MOTD)\n";
         print "8.  Plugins\n";
         print "9.  Database\n";
-        print "10. Language settings\n"; 
-        print "11. Tweaks\n"; 
         print "\n";
         print "D.  Set pre-defined settings for specific IMAP servers\n";
         print "\n";
@@ -372,9 +431,10 @@ while ( ( $command ne "q" ) && ( $command ne "Q" ) ) {
         print "3.  Org. Logo Width/Height : $WHT($org_logo_width/$org_logo_height)$NRM\n";
         print "4.  Organization Title     : $WHT$org_title$NRM\n";
         print "5.  Signout Page           : $WHT$signout_page$NRM\n";
-        print "6.  Top Frame              : $WHT$frame_top$NRM\n";
-        print "7.  Provider link          : $WHT$provider_uri$NRM\n";
-        print "8.  Provider name          : $WHT$provider_name$NRM\n";
+        print "6.  Default Language       : $WHT$squirrelmail_default_language$NRM\n";
+        print "7.  Top Frame              : $WHT$frame_top$NRM\n";
+        print "8.  Provider link          : $WHT$provider_uri$NRM\n";
+        print "9.  Provider name          : $WHT$provider_name$NRM\n";
 
         print "\n";
         print "R   Return to Main Menu\n";
@@ -385,7 +445,7 @@ while ( ( $command ne "q" ) && ( $command ne "Q" ) ) {
         print "1.  Domain                 : $WHT$domain$NRM\n";
         print "2.  Invert Time            : $WHT$invert_time$NRM\n";
         print "3.  Sendmail or SMTP       : $WHT";
-        if ( lc($useSendmail) eq 'true' ) {
+        if ( lc($useSendmail) eq "true" ) {
             print "Sendmail";
         } else {
             print "SMTP";
@@ -403,10 +463,9 @@ while ( ( $command ne "q" ) && ( $command ne "Q" ) ) {
           print "9.  Delimiter              : $WHT$optional_delimiter$NRM\n";
           print "\n";
         } elsif ( $show_smtp_settings ) {
-          if ( lc($useSendmail) eq 'true' ) {
+          if ( lc($useSendmail) eq "true" ) {
             print $WHT . "Sendmail" . $NRM . "\n--------\n";
             print "4.   Sendmail Path         : $WHT$sendmail_path$NRM\n";
-            print "5.   Suppress SM header    : $WHT$skip_SM_header$NRM\n";
             print "\n";
           } else {
             print $WHT . "SMTP Settings" . $NRM . "\n-------------\n";
@@ -415,7 +474,6 @@ while ( ( $command ne "q" ) && ( $command ne "Q" ) ) {
             print "6.   POP before SMTP       : $WHT$pop_before_smtp$NRM\n";
             print "7.   SMTP Authentication   : $WHT$smtp_auth_mech$NRM\n";
             print "8.   Secure SMTP (TLS)     : $WHT$use_smtp_tls$NRM\n";
-            print "9.   Suppress SM header    : $WHT$skip_SM_header$NRM\n";
             print "\n";
           }
         }
@@ -427,7 +485,7 @@ while ( ( $command ne "q" ) && ( $command ne "Q" ) ) {
           print "($WHT$imap_server_type$NRM)\n";
         } 
         if ($show_smtp_settings == 0) {
-          if ( lc($useSendmail) eq 'true' ) {
+          if ( lc($useSendmail) eq "true" ) {
             print "B.  Change Sendmail Config : $WHT$sendmail_path$NRM\n";
           } else {
             print "B.  Update SMTP Settings   : ";
@@ -439,7 +497,7 @@ while ( ( $command ne "q" ) && ( $command ne "Q" ) ) {
         {
           print "H.  Hide " . 
                 ($show_imap_settings ? "IMAP Server" : 
-                  (lc($useSendmail) eq 'true') ? "Sendmail" : "SMTP") . " Settings\n";
+                  (lc($useSendmail) eq "true") ? "Sendmail" : "SMTP") . " Settings\n";
         }
         
         print "\n";
@@ -468,20 +526,21 @@ while ( ( $command ne "q" ) && ( $command ne "Q" ) ) {
         print "R   Return to Main Menu\n";
     } elsif ( $menu == 4 ) {
         print $WHT. "General Options\n" . $NRM;
-        print "1.  Data Directory              : $WHT$data_dir$NRM\n";
-        print "2.  Attachment Directory        : $WHT$attachment_dir$NRM\n";
-        print "3.  Directory Hash Level        : $WHT$dir_hash_level$NRM\n";
-        print "4.  Default Left Size           : $WHT$default_left_size$NRM\n";
-        print "5.  Usernames in Lowercase      : $WHT$force_username_lowercase$NRM\n";
-        print "6.  Allow use of priority       : $WHT$default_use_priority$NRM\n";
-        print "7.  Hide SM attributions        : $WHT$hide_sm_attributions$NRM\n";
-        print "8.  Allow use of receipts       : $WHT$default_use_mdn$NRM\n";
-        print "9.  Allow editing of identity   : $WHT$edit_identity$NRM/$WHT$edit_name$NRM\n";
-        print "10. Allow server thread sort    : $WHT$allow_thread_sort$NRM\n";
-        print "11. Allow server-side sorting   : $WHT$allow_server_sort$NRM\n";
-        print "12. Allow server charset search : $WHT$allow_charset_search$NRM\n";
-        print "13. Allow advanced search       : $WHT$allow_advanced_search$NRM\n";
-        print "14. PHP session name            : $WHT$session_name$NRM\n";
+        print "1.  Default Charset             : $WHT$default_charset$NRM\n";
+        print "2.  Data Directory              : $WHT$data_dir$NRM\n";
+        print "3.  Attachment Directory        : $WHT$attachment_dir$NRM\n";
+        print "4.  Directory Hash Level        : $WHT$dir_hash_level$NRM\n";
+        print "5.  Default Left Size           : $WHT$default_left_size$NRM\n";
+        print "6.  Usernames in Lowercase      : $WHT$force_username_lowercase$NRM\n";
+        print "7.  Allow use of priority       : $WHT$default_use_priority$NRM\n";
+        print "8.  Hide SM attributions        : $WHT$hide_sm_attributions$NRM\n";
+        print "9.  Allow use of receipts       : $WHT$default_use_mdn$NRM\n";
+        print "10. Allow editing of identity   : $WHT$edit_identity$NRM/$WHT$edit_name$NRM\n";
+        print "11. Allow server thread sort    : $WHT$allow_thread_sort$NRM\n";
+        print "12. Allow server-side sorting   : $WHT$allow_server_sort$NRM\n";
+        print "13. Allow server charset search : $WHT$allow_charset_search$NRM\n";
+        print "14. Enable UID support          : $WHT$uid_support$NRM\n";
+		print "15. PHP session name            : $WHT$session_name$NRM\n";
         print "\n";
         print "R   Return to Main Menu\n";
     } elsif ( $menu == 5 ) {
@@ -560,31 +619,6 @@ while ( ( $command ne "q" ) && ( $command ne "Q" ) ) {
         print "6.  Field for prefs key    : $WHT$prefs_key_field$NRM\n";
         print "7.  Field for prefs value  : $WHT$prefs_val_field$NRM\n";
         print "\n";
-        print "8.  DSN for Global Address Book            : $WHT$addrbook_global_dsn$NRM\n";
-        print "9.  Table for Global Address Book          : $WHT$addrbook_global_table$NRM\n";
-        print "10. Allow writing into Global Address Book : $WHT$addrbook_global_writeable$NRM\n";
-        print "11. Allow listing of Global Address Book   : $WHT$addrbook_global_listing$NRM\n";
-        print "\n";
-        print "R   Return to Main Menu\n";
-    } elsif ( $menu == 10 ) {
-    print $WHT. "Language settings\n" . $NRM;
-    print "1.  Default Language                : $WHT$squirrelmail_default_language$NRM\n";
-    print "2.  Default Charset                 : $WHT$default_charset$NRM\n";
-    print "3.  Show alternative language names : $WHT$show_alternative_names$NRM\n";
-    print "4.  Available languages             : $WHT$available_languages$NRM\n";
-    print "5.  Use agresive decoding           : $WHT$agresive_decoding$NRM\n";
-    print "\n";
-        print "R   Return to Main Menu\n";
-    } elsif ( $menu == 11 ) {
-    print $WHT. "Interface tweaks\n" . $NRM;
-    print "1.  Advanced tree            : $WHT$advanced_tree$NRM\n";
-    print "2.  Oldway                   : $WHT$oldway$NRM\n";
-    print "3.  Use Icons                : $WHT$use_icons$NRM\n";
-    print "\n";
-    print $WHT. "PHP tweaks\n" . $NRM;
-    print "4.  Use php recode functions : $WHT$use_php_recode$NRM\n";
-    print "5.  Use php iconv functions  : $WHT$use_php_iconv$NRM\n";
-    print "\n";
         print "R   Return to Main Menu\n";
     }
     if ( $config_use_color == 1 ) {
@@ -632,7 +666,7 @@ while ( ( $command ne "q" ) && ( $command ne "Q" ) ) {
     } else {
         $saved = 0;
         if ( $menu == 0 ) {
-            if ( ( $command > 0 ) && ( $command < 12 ) ) {
+            if ( ( $command > 0 ) && ( $command < 10 ) ) {
                 $menu = $command;
             }
         } elsif ( $menu == 1 ) {
@@ -641,9 +675,10 @@ while ( ( $command ne "q" ) && ( $command ne "Q" ) ) {
             elsif ( $command == 3 ) { ($org_logo_width,$org_logo_height)  = command2a(); }
             elsif ( $command == 4 ) { $org_title                     = command3(); }
             elsif ( $command == 5 ) { $signout_page                  = command4(); }
-            elsif ( $command == 6 ) { $frame_top                     = command6(); }
-            elsif ( $command == 7 ) { $provider_uri                  = command7(); }
-            elsif ( $command == 8 ) { $provider_name                 = command8(); }
+            elsif ( $command == 6 ) { $squirrelmail_default_language = command5(); }
+            elsif ( $command == 7 ) { $frame_top                     = command6(); }
+            elsif ( $command == 8 ) { $provider_uri                  = command7(); }
+            elsif ( $command == 9 ) { $provider_name                 = command8(); }
 
         } elsif ( $menu == 2 ) {
             if ( $command eq "a" )    { $show_imap_settings = 1; $show_smtp_settings = 0; }
@@ -661,7 +696,7 @@ while ( ( $command ne "q" ) && ( $command ne "Q" ) ) {
               elsif ( $command == 7 )  { $use_imap_tls       = command113("IMAP",$use_imap_tls); }
               elsif ( $command == 8 )  { $imap_server_type       = command19(); }
               elsif ( $command == 9 )  { $optional_delimiter     = command111(); }
-            } elsif ( $show_smtp_settings && lc($useSendmail) eq 'true' ) {
+            } elsif ( $show_smtp_settings && lc($useSendmail) eq "true" ) {
               if ( $command == 4 )  { $sendmail_path          = command15(); }
             } elsif ( $show_smtp_settings ) {
               if    ( $command == 4 )  { $smtpServerAddress      = command16(); }
@@ -669,7 +704,6 @@ while ( ( $command ne "q" ) && ( $command ne "Q" ) ) {
               elsif ( $command == 6 )  { $pop_before_smtp        = command18a(); }
               elsif ( $command == 7 )  { $smtp_auth_mech    = command112b(); }
               elsif ( $command == 8 )  { $use_smtp_tls      = command113("SMTP",$use_smtp_tls); }
-              elsif ( $command == 9 )  { $skip_SM_header    = command114(); }
             }
         } elsif ( $menu == 3 ) {
             if    ( $command == 1 )  { $default_folder_prefix          = command21(); }
@@ -691,20 +725,21 @@ while ( ( $command ne "q" ) && ( $command ne "Q" ) ) {
             elsif ( $command == 17 ) { $delete_folder                  = command215(); }
             elsif ( $command == 18 ) { $noselect_fix_enable            = command216(); }
         } elsif ( $menu == 4 ) {
-            if    ( $command == 1 )  { $data_dir                 = command33a(); }
-            elsif ( $command == 2 )  { $attachment_dir           = command33b(); }
-            elsif ( $command == 3 )  { $dir_hash_level           = command33c(); }
-            elsif ( $command == 4 )  { $default_left_size        = command35(); }
-            elsif ( $command == 5 )  { $force_username_lowercase = command36(); }
-            elsif ( $command == 6 )  { $default_use_priority     = command37(); }
-            elsif ( $command == 7 )  { $hide_sm_attributions     = command38(); }
-            elsif ( $command == 8 )  { $default_use_mdn          = command39(); }
-            elsif ( $command == 9 ) { $edit_identity            = command310(); }
-            elsif ( $command == 10 ) { $allow_thread_sort        = command312(); }
-            elsif ( $command == 11 ) { $allow_server_sort        = command313(); }
-            elsif ( $command == 12 ) { $allow_charset_search     = command314(); }
-            elsif ( $command == 13 ) { $allow_advanced_search    = command316(); }
-            elsif ( $command == 14 ) { $session_name             = command317(); }
+            if    ( $command == 1 )  { $default_charset          = command31(); }
+            elsif ( $command == 2 )  { $data_dir                 = command33a(); }
+            elsif ( $command == 3 )  { $attachment_dir           = command33b(); }
+            elsif ( $command == 4 )  { $dir_hash_level           = command33c(); }
+            elsif ( $command == 5 )  { $default_left_size        = command35(); }
+            elsif ( $command == 6 )  { $force_username_lowercase = command36(); }
+            elsif ( $command == 7 )  { $default_use_priority     = command37(); }
+            elsif ( $command == 8 )  { $hide_sm_attributions     = command38(); }
+            elsif ( $command == 9 )  { $default_use_mdn          = command39(); }
+            elsif ( $command == 10 ) { $edit_identity            = command310(); }
+            elsif ( $command == 11 ) { $allow_thread_sort        = command312(); }
+            elsif ( $command == 12 ) { $allow_server_sort        = command313(); }
+            elsif ( $command == 13 ) { $allow_charset_search     = command314(); }
+            elsif ( $command == 14 ) { $uid_support              = command315(); }
+			elsif ( $command == 15 ) { $session_name             = command316(); }
         } elsif ( $menu == 5 ) {
             if ( $command == 1 ) { command41(); }
             elsif ( $command == 2 ) { $theme_css = command42(); }
@@ -723,32 +758,9 @@ while ( ( $command ne "q" ) && ( $command ne "Q" ) ) {
             elsif ( $command == 5 ) { $prefs_user_field = command95(); }
             elsif ( $command == 6 ) { $prefs_key_field  = command96(); }
             elsif ( $command == 7 ) { $prefs_val_field  = command97(); }
-            elsif ( $command == 8 ) { $addrbook_global_dsn       = command98(); }
-            elsif ( $command == 9 ) { $addrbook_global_table     = command99(); }
-            elsif ( $command == 10 ) { $addrbook_global_writeable = command910(); }
-            elsif ( $command == 11 ) { $addrbook_global_listing  = command911(); }
-        } elsif ( $menu == 10 ) {
-            if    ( $command == 1 ) { $squirrelmail_default_language = commandA1(); }
-            elsif ( $command == 2 ) { $default_charset           = commandA2(); }
-            elsif ( $command == 3 ) { $show_alternative_names        = commandA3(); }
-            elsif ( $command == 4 ) { $available_languages         = commandA4(); }
-            elsif ( $command == 5 ) { $agresive_decoding         = commandA5(); }
-        } elsif ( $menu == 11 ) {
-            if    ( $command == 1 ) { $advanced_tree  = commandB1(); }
-            elsif ( $command == 2 ) { $oldway            = commandB2(); }
-            elsif ( $command == 3 ) { $use_icons      = commandB3(); }
-            elsif ( $command == 4 ) { $use_php_recode = commandB4(); }
-            elsif ( $command == 5 ) { $use_php_iconv  = commandB5(); }
         }
     }
 }
-
-# we exit here
-print "\nExiting conf.pl.\n".
-    "You might want to test your configuration by browsing to\n".
-    "http://your-squirrelmail-location/src/configtest.php\n".
-    "Happy SquirrelMailing!\n\n";
-
 
 ####################################################################################
 
@@ -770,7 +782,7 @@ sub command1 {
         $new_org_name = $org_name;
     } else {
         $new_org_name =~ s/[\r|\n]//g;
-    $new_org_name =~ s/\"/&quot;/g;
+	$new_org_name =~ s/\"/&quot;/g;
     }
     return $new_org_name;
 }
@@ -814,8 +826,8 @@ sub command2a {
         $new_org_logo_height = <STDIN>;
         $new_org_logo_height =~ tr/0-9//cd;  # only want digits!
         if( $new_org_logo_height eq '' ) {
-        $new_org_logo_height = $org_logo_height;
-    }
+		$new_org_logo_height = $org_logo_height;
+	}
     } else {
         $new_org_logo_height = 0;
     }
@@ -840,7 +852,7 @@ sub command3 {
         $new_org_title = $org_title;
     } else {
         $new_org_title =~ s/[\r|\n]//g;
-    $new_org_title =~ s/\"/\'/g;
+	$new_org_title =~ s/\"/\'/g;
     }
     return $new_org_title;
 }
@@ -856,6 +868,23 @@ sub command4 {
     $new_signout_page = <STDIN>;
     if ( $new_signout_page eq "\n" ) {
         $new_signout_page = $signout_page;
+    } else {
+        $new_signout_page =~ s/[\r|\n]//g;
+        $new_signout_page =~ s/^\s+$//g;
+    }
+    return $new_signout_page;
+}
+
+# Default language
+sub command5 {
+    print "SquirrelMail attempts to set the language in many ways.  If it\n";
+    print "can not figure it out in another way, it will default to this\n";
+    print "language.  Please use the code for the desired language.\n";
+    print "\n";
+    print "[$WHT$squirrelmail_default_language$NRM]: $WHT";
+    $new_signout_page = <STDIN>;
+    if ( $new_signout_page eq "\n" ) {
+        $new_signout_page = $squirrelmail_default_language;
     } else {
         $new_signout_page =~ s/[\r|\n]//g;
         $new_signout_page =~ s/^\s+$//g;
@@ -960,7 +989,7 @@ sub command14 {
     print "You now need to choose the method that you will use for sending\n";
     print "messages in SquirrelMail.  You can either connect to an SMTP server\n";
     print "or use sendmail directly.\n";
-    if ( lc($useSendmail) eq 'true' ) {
+    if ( lc($useSendmail) eq "true" ) {
         $default_value = "1";
     } else {
         $default_value = "2";
@@ -972,9 +1001,9 @@ sub command14 {
     $use_sendmail = <STDIN>;
     if ( ( $use_sendmail =~ /^1\n/i )
         || ( ( $use_sendmail =~ /^\n/ ) && ( $default_value eq "1" ) ) ) {
-        $useSendmail = 'true';
+        $useSendmail = "true";
         } else {
-        $useSendmail = 'false';
+        $useSendmail = "false";
         }
     return $useSendmail;
 }
@@ -1024,20 +1053,20 @@ sub command17 {
 # authenticated server 
 sub command18 {
     return;
-    # This sub disabled by tassium - it has been replaced with smtp_auth_mech
+	# This sub disabled by tassium - it has been replaced with smtp_auth_mech
     print "Do you wish to use an authenticated SMTP server?  Your server must\n";
     print "support this in order for SquirrelMail to work with it.  We implemented\n";
     print "it according to RFC 2554.\n";
 
     $YesNo = 'n';
-    $YesNo = 'y' if ( lc($use_authenticated_smtp) eq 'true' );
+    $YesNo = 'y' if ( lc($use_authenticated_smtp) eq "true" );
 
     print "Use authenticated SMTP server (y/n) [$WHT$YesNo$NRM]: $WHT";
 
     $new_use_authenticated_smtp = <STDIN>;
     $new_use_authenticated_smtp =~ tr/yn//cd;
-    return 'true'  if ( $new_use_authenticated_smtp eq "y" );
-    return 'false' if ( $new_use_authenticated_smtp eq "n" );
+    return "true"  if ( $new_use_authenticated_smtp eq "y" );
+    return "false" if ( $new_use_authenticated_smtp eq "n" );
     return $use_authenticated_smtp;
 }
 
@@ -1047,14 +1076,14 @@ sub command18a {
     print "support this in order for SquirrelMail to work with it.\n";
 
     $YesNo = 'n';
-    $YesNo = 'y' if ( lc($pop_before_smtp) eq 'true' );
+    $YesNo = 'y' if ( lc($pop_before_smtp) eq "true" );
 
     print "Use pop before SMTP (y/n) [$WHT$YesNo$NRM]: $WHT";
 
     $new_pop_before_smtp = <STDIN>;
     $new_pop_before_smtp =~ tr/yn//cd;
-    return 'true'  if ( $new_pop_before_smtp eq "y" );
-    return 'false'  if ( $new_pop_before_smtp eq "n" );
+    return "true"  if ( $new_pop_before_smtp eq "y" );
+    return "false"  if ( $new_pop_before_smtp eq "n" );
     return $pop_before_smtp;
 }
 
@@ -1095,14 +1124,14 @@ sub command110 {
     print "    yes = Fix the time for this system\n";
 
     $YesNo = 'n';
-    $YesNo = 'y' if ( lc($invert_time) eq 'true' );
+    $YesNo = 'y' if ( lc($invert_time) eq "true" );
 
     print "Fix the time for this system (y/n) [$WHT$YesNo$NRM]: $WHT";
 
     $new_invert_time = <STDIN>;
     $new_invert_time =~ tr/yn//cd;
-    return 'true'  if ( $new_invert_time eq "y" );
-    return 'false' if ( $new_invert_time eq "n" );
+    return "true"  if ( $new_invert_time eq "y" );
+    return "false" if ( $new_invert_time eq "n" );
     return $invert_time;
 }
 
@@ -1125,62 +1154,61 @@ sub command111 {
     return $new_optional_delimiter;
 }
 # IMAP authentication type
-# Possible values: login, plain, cram-md5, digest-md5
+# Possible values: login, cram-md5, digest-md5
 # Now offers to detect supported mechs, assuming server & port are set correctly
 
 sub command112a {
     if ($use_imap_tls =~ /^true\b/i) {
         print "Auto-detection of login methods is unavailable when using TLS.\n";
     } else {
-        print "If you have already set the hostname and port number, I can try to\n";
-        print "detect the mechanisms your IMAP server supports.\n";
-        print "I will try to detect CRAM-MD5 and DIGEST-MD5 support.  I can't test\n";
-        print "for \"login\" or \"plain\" without knowing a username and password.\n";
-        print "Auto-detecting is optional - you can safely say \"n\" here.\n";
-        print "\nTry to detect supported mechanisms? [y/N]: ";
-        $inval=<STDIN>;
-        chomp($inval);
-        if ($inval =~ /^y\b/i) {
-          # Yes, let's try to detect.
-          print "Trying to detect IMAP capabilities...\n";
-          my $host = $imapServerAddress . ':'. $imapPort;
-          print "CRAM-MD5:\t";
-          my $tmp = detect_auth_support('IMAP',$host,'CRAM-MD5');
-          if (defined($tmp)) {
-              if ($tmp eq 'YES') {
-                  print "$WHT SUPPORTED$NRM\n";
-              } else {
-                print "$WHT NOT SUPPORTED$NRM\n";
-              }
+	    print "If you have already set the hostname and port number, I can try to\n";
+    	print "detect the mechanisms your IMAP server supports.\n";
+    	print "I will try to detect CRAM-MD5 and DIGEST-MD5 support.  I can't test\n";
+    	print "for \"login\" without knowing a username and password.\n";
+    	print "Auto-detecting is optional - you can safely say \"n\" here.\n";
+    	print "\nTry to detect supported mechanisms? [y/N]: ";
+    	$inval=<STDIN>;
+    	chomp($inval);
+    	if ($inval =~ /^y\b/i) {
+    	  # Yes, let's try to detect.
+    	  print "Trying to detect IMAP capabilities...\n";
+    	  my $host = $imapServerAddress . ':'. $imapPort;
+    	  print "CRAM-MD5:\t";
+    	  my $tmp = detect_auth_support('IMAP',$host,'CRAM-MD5');
+    	  if (defined($tmp)) {
+    		  if ($tmp eq 'YES') {
+    		  	print "$WHT SUPPORTED$NRM\n";
+    		  } else {
+    		    print "$WHT NOT SUPPORTED$NRM\n";
+    		  }
           } else {
-            print $WHT . " ERROR DETECTING$NRM\n";
-          }
+    	    print $WHT . " ERROR DETECTING$NRM\n";
+    	  }
 
-          print "DIGEST-MD5:\t";
-          $tmp = detect_auth_support('IMAP',$host,'DIGEST-MD5');
-          if (defined($tmp)) {
-              if ($tmp eq 'YES') {
-                print "$WHT SUPPORTED$NRM\n";
-            } else {
-                print "$WHT NOT SUPPORTED$NRM\n";
-            }
-          } else {
-            print $WHT . " ERROR DETECTING$NRM\n";
-          }
-          
-        }
-    } 
-      print "\nWhat authentication mechanism do you want to use for IMAP connections?\n\n";
-      print $WHT . "login" . $NRM . " - Plaintext. If you can do better, you probably should.\n";
-      print $WHT . "plain" . $NRM . " - SASL PLAIN. If you need this, you already know it.\n";
-      print $WHT . "cram-md5" . $NRM . " - Slightly better than plaintext methods.\n";
-      print $WHT . "digest-md5" . $NRM . " - Privacy protection - better than cram-md5.\n";
-      print "\n*** YOUR IMAP SERVER MUST SUPPORT THE MECHANISM YOU CHOOSE HERE ***\n";
-      print "If you don't understand or are unsure, you probably want \"login\"\n\n";
-      print "login, plain, cram-md5, or digest-md5 [$WHT$imap_auth_mech$NRM]: $WHT";
+    	  print "DIGEST-MD5:\t";
+    	  $tmp = detect_auth_support('IMAP',$host,'DIGEST-MD5');
+    	  if (defined($tmp)) {
+    	  	if ($tmp eq 'YES') {
+    			print "$WHT SUPPORTED$NRM\n";
+    		} else {
+    			print "$WHT NOT SUPPORTED$NRM\n";
+    		}
+    	  } else {
+    	    print $WHT . " ERROR DETECTING$NRM\n";
+    	  }
+	  
+    	} 
+    }
+	  print "\nWhat authentication mechanism do you want to use for IMAP connections?\n\n";
+	  print $WHT . "login" . $NRM . " - Plaintext. If you can do better, you probably should.\n";
+	  print $WHT . "cram-md5" . $NRM . " - Slightly better than plaintext methods.\n";
+	  print $WHT . "digest-md5" . $NRM . " - Privacy protection - better than cram-md5.\n";
+	  print "\n*** YOUR IMAP SERVER MUST SUPPORT THE MECHANISM YOU CHOOSE HERE ***\n";
+	  print "If you don't understand or are unsure, you probably want \"login\"\n\n";
+	  print "login, cram-md5, or digest-md5 [$WHT$imap_auth_mech$NRM]: $WHT";
       $inval=<STDIN>;
       chomp($inval);
-      if ( ($inval =~ /^cram-md5\b/i) || ($inval =~ /^digest-md5\b/i) || ($inval =~ /^login\b/i) || ($inval =~ /^plain\b/i)) {
+      if ( ($inval =~ /^cram-md5\b/i) || ($inval =~ /^digest-md5\b/i) || ($inval =~ /^login\b/i)) {
         return lc($inval);
       } else {
         # user entered garbage or default value so nothing needs to be set
@@ -1188,7 +1216,7 @@ sub command112a {
       }
 }
 
-    
+	
 # SMTP authentication type
 # Possible choices: none, plain, cram-md5, digest-md5
 sub command112b {
@@ -1196,52 +1224,52 @@ sub command112b {
         print "Auto-detection of login methods is unavailable when using TLS.\n";
     } else {
         print "If you have already set the hostname and port number, I can try to\n";
-        print "automatically detect some of the mechanisms your SMTP server supports.\n";
-        print "Auto-detection is *optional* - you can safely say \"n\" here.\n";
+        print "automatically detect the mechanisms your SMTP server supports.\n";
+    	print "Auto-detection is *optional* - you can safely say \"n\" here.\n";
         print "\nTry to detect auth mechanisms? [y/N]: ";
         $inval=<STDIN>;
         chomp($inval);
         if ($inval =~ /^y\b/i) {
-            # Yes, let's try to detect.
-            print "Trying to detect supported methods (SMTP)...\n";
-        
-            # Special case!
-            # Check none by trying to relay to junk@microsoft.com
-            $host = $smtpServerAddress . ':' . $smtpPort;
-            use IO::Socket;
-            my $sock = IO::Socket::INET->new($host);
-            print "Testing none:\t\t$WHT";
-            if (!defined($sock)) {
-                print " ERROR TESTING\n";
-                close $sock;
-            } else {
-                print $sock "mail from: tester\@squirrelmail.org\n";
-                $got = <$sock>;  # Discard
-                print $sock "rcpt to: junk\@microsoft.com\n";
-                $got = <$sock>;  # This is the important line
-                if ($got =~ /^250\b/) {  # SMTP will relay without auth
-                    print "SUPPORTED$NRM\n";
-                } else {
-                  print "NOT SUPPORTED$NRM\n";
-                }
-                print $sock "rset\n";
-                print $sock "quit\n";
-                close $sock;
-            }
-            # Try login (SquirrelMail default)
-            print "Testing login:\t\t";
-            $tmp=detect_auth_support('SMTP',$host,'LOGIN');
-            if (defined($tmp)) {
-                if ($tmp eq 'YES') {
-                    print $WHT . "SUPPORTED$NRM\n";
-                } else {
-                    print $WHT . "NOT SUPPORTED$NRM\n";
-                }
-              } else {
-                  print $WHT . "ERROR DETECTING$NRM\n";
-              }
+    		# Yes, let's try to detect.
+    		print "Trying to detect supported methods (SMTP)...\n";
+		
+    		# Special case!
+    		# Check none by trying to relay to junk@microsoft.com
+    		$host = $smtpServerAddress . ':' . $smtpPort;
+    		use IO::Socket;
+    		my $sock = IO::Socket::INET->new($host);
+    		print "Testing none:\t\t$WHT";
+    		if (!defined($sock)) {
+    			print " ERROR TESTING\n";
+    			close $sock;
+    		} else {
+    			print $sock "mail from: tester\@squirrelmail.org\n";
+    			$got = <$sock>;  # Discard
+    			print $sock "rcpt to: junk\@microsoft.com\n";
+    			$got = <$sock>;  # This is the important line
+    			if ($got =~ /^250\b/) {  # SMTP will relay without auth
+    				print "SUPPORTED$NRM\n";
+    	        } else {
+    			  print "NOT SUPPORTED$NRM\n";
+            	}
+    			print $sock "rset\n";
+    			print $sock "quit\n";
+    			close $sock;
+    		}
+    		# Try login (SquirrelMail default)
+    		print "Testing login:\t\t";
+    		$tmp=detect_auth_support('SMTP',$host,'LOGIN');
+    		if (defined($tmp)) {
+            	if ($tmp eq 'YES') {
+                	print $WHT . "SUPPORTED$NRM\n";
+    	        } else {
+        	        print $WHT . "NOT SUPPORTED$NRM\n";
+            	}
+    	      } else {
+        		  print $WHT . "ERROR DETECTING$NRM\n";
+          	}
     
-            # Try CRAM-MD5
+    		# Try CRAM-MD5
             print "Testing CRAM-MD5:\t";
             $tmp=detect_auth_support('SMTP',$host,'CRAM-MD5');
             if (defined($tmp)) {
@@ -1271,7 +1299,6 @@ sub command112b {
     print "\nWhat authentication mechanism do you want to use for SMTP connections?\n";
     print $WHT . "none" . $NRM . " - Your SMTP server does not require authorization.\n";
     print $WHT . "login" . $NRM . " - Plaintext. If you can do better, you probably should.\n";
-    print $WHT . "plain" . $NRM . " - SASL PLAIN.  You already know it if you need this.\n";
     print $WHT . "cram-md5" . $NRM . " - Slightly better than plaintext.\n";
     print $WHT . "digest-md5" . $NRM . " - Privacy protection - better than cram-md5.\n";
     print $WHT . "\n*** YOUR SMTP SERVER MUST SUPPORT THE MECHANISM YOU CHOOSE HERE ***\n" . $NRM;
@@ -1284,11 +1311,11 @@ sub command112b {
       return "none";
     }
     if ( ($inval =~ /^cram-md5\b/i) || ($inval =~ /^digest-md5\b/i) || 
-    ($inval =~ /^login\b/i) || ($inval =~/^plain\b/i)) {
+    ($inval =~ /^login\b/i)) {
       return lc($inval);
     } else {
       # user entered garbage, or default value so nothing needs to be set
-      return $smtp_auth_mech;
+	  return $smtp_auth_mech;
     }
 }
 
@@ -1296,17 +1323,17 @@ sub command112b {
 # This sub is reused for IMAP and SMTP
 # Args: service name, default value
 sub command113 {
-    my($default_val,$service,$inval);
-    $service=$_[0];
-    $default_val=$_[1];
-    print "TLS (Transport Layer Security) encrypts the traffic between server and client.\n";
-    print "If you're familiar with SSL, you get the idea.\n";
-    print "To use this feature, your " . $service . " server must offer TLS\n";
-    print "capability, plus PHP 4.3.x with OpenSSL support.\n";
-    print "\nIf your " . $service . " server is localhost, you can safely disable this.\n";
-    print "If it is remote, you may wish to seriously consider enabling this.\n";
+	my($default_val,$service,$inval);
+	$service=$_[0];
+	$default_val=$_[1];
+	print "TLS (Transport Layer Security) encrypts the traffic between server and client.\n";
+	print "If you're familiar with SSL, you get the idea.\n";
+	print "To use this feature, your " . $service . " server must offer TLS\n";
+	print "capability, plus PHP 4.3.x with OpenSSL support.\n";
+	print "\nIf your " . $service . " server is localhost, you can safely disable this.\n";
+	print "If it is remote, you may wish to seriously consider enabling this.\n";
     print "Enable TLS (y/n) [$WHT";
-    if ($default_val eq 'true') {
+    if ($default_val eq "true") {
       print "y";
     } else {
       print "n";
@@ -1314,26 +1341,13 @@ sub command113 {
     print "$NRM]: $WHT"; 
     $inval=<STDIN>;
     $inval =~ tr/yn//cd;
-    return 'true'  if ( $inval eq "y" );
-    return 'false' if ( $inval eq "n" );
+    return "true"  if ( $inval eq "y" );
+    return "false" if ( $inval eq "n" );
     return $default_val;
+
+
 }
 
-sub command114{
-    print "\nUse this to suppress insertion of SquirrelMail Received: headers\n";
-    print "in outbound messages.\n\n";
-
-    $YesNo = 'n';
-    $YesNo = 'y' if ( lc($skip_SM_header) eq 'true' );
-
-    print "Suppress SM header (y/n) [$WHT$YesNo$NRM]: $WHT";
-    $new_skip_SM_header = <STDIN>;
-    chomp($new_skip_SM_header);
-
-    return 'true'  if ( lc($new_skip_SM_header) eq 'y' );
-    return 'false'  if ( lc($new_skip_SM_header) eq 'n' );
-    return $skip_SM_header;    
-}
 
 # MOTD
 sub command71 {
@@ -1442,7 +1456,7 @@ sub command22 {
     print "       specify anything different.\n";
     print "\n";
 
-    if ( lc($show_prefix_option) eq 'true' ) {
+    if ( lc($show_prefix_option) eq "true" ) {
         $default_value = "y";
     } else {
         $default_value = "n";
@@ -1451,9 +1465,9 @@ sub command22 {
     print "Show option (y/n) [$WHT$default_value$NRM]: $WHT";
     $new_show = <STDIN>;
     if ( ( $new_show =~ /^y\n/i ) || ( ( $new_show =~ /^\n/ ) && ( $default_value eq "y" ) ) ) {
-        $show_prefix_option = 'true';
+        $show_prefix_option = "true";
     } else {
-        $show_prefix_option = 'false';
+        $show_prefix_option = "false";
     }
     return $show_prefix_option;
 }
@@ -1533,7 +1547,7 @@ sub command24a {
     print "Trash folder is currently: $trash_folder\n";
     print "\n";
 
-    if ( lc($default_move_to_trash) eq 'true' ) {
+    if ( lc($default_move_to_trash) eq "true" ) {
         $default_value = "y";
     } else {
         $default_value = "n";
@@ -1541,9 +1555,9 @@ sub command24a {
     print "By default, move to trash (y/n) [$WHT$default_value$NRM]: $WHT";
     $new_show = <STDIN>;
     if ( ( $new_show =~ /^y\n/i ) || ( ( $new_show =~ /^\n/ ) && ( $default_value eq "y" ) ) ) {
-        $default_move_to_trash = 'true';
+        $default_move_to_trash = "true";
     } else {
-        $default_move_to_trash = 'false';
+        $default_move_to_trash = "false";
     }
     return $default_move_to_trash;
 }
@@ -1557,7 +1571,7 @@ sub command24b {
     print "Sent folder is currently: $sent_folder\n";
     print "\n";
 
-    if ( lc($default_move_to_sent) eq 'true' ) {
+    if ( lc($default_move_to_sent) eq "true" ) {
         $default_value = "y";
     } else {
         $default_value = "n";
@@ -1565,9 +1579,9 @@ sub command24b {
     print "By default, move to sent (y/n) [$WHT$default_value$NRM]: $WHT";
     $new_show = <STDIN>;
     if ( ( $new_show =~ /^y\n/i ) || ( ( $new_show =~ /^\n/ ) && ( $default_value eq "y" ) ) ) {
-        $default_move_to_sent = 'true';
+        $default_move_to_sent = "true";
     } else {
-        $default_move_to_sent = 'false';
+        $default_move_to_sent = "false";
     }
     return $default_move_to_sent;
 }
@@ -1581,7 +1595,7 @@ sub command24c {
     print "Drafts folder is currently: $draft_folder\n";
     print "\n";
 
-    if ( lc($default_move_to_draft) eq 'true' ) {
+    if ( lc($default_move_to_draft) eq "true" ) {
         $default_value = "y";
     } else {
         $default_value = "n";
@@ -1589,9 +1603,9 @@ sub command24c {
     print "By default, save as draft (y/n) [$WHT$default_value$NRM]: $WHT";
     $new_show = <STDIN>;
     if ( ( $new_show =~ /^y\n/i ) || ( ( $new_show =~ /^\n/ ) && ( $default_value eq "y" ) ) ) {
-        $default_save_as_draft = 'true';
+        $default_save_as_draft = "true";
     } else {
-        $default_save_as_draft = 'false';
+        $default_save_as_draft = "false";
     }
     return $default_save_as_draft;
 }
@@ -1605,7 +1619,7 @@ sub command27 {
     print "listing.\n";
     print "\n";
 
-    if ( lc($list_special_folders_first) eq 'true' ) {
+    if ( lc($list_special_folders_first) eq "true" ) {
         $default_value = "y";
     } else {
         $default_value = "n";
@@ -1614,9 +1628,9 @@ sub command27 {
     print "List first (y/n) [$WHT$default_value$NRM]: $WHT";
     $new_show = <STDIN>;
     if ( ( $new_show =~ /^y\n/i ) || ( ( $new_show =~ /^\n/ ) && ( $default_value eq "y" ) ) ) {
-        $list_special_folders_first = 'true';
+        $list_special_folders_first = "true";
     } else {
-        $list_special_folders_first = 'false';
+        $list_special_folders_first = "false";
     }
     return $list_special_folders_first;
 }
@@ -1630,7 +1644,7 @@ sub command28 {
     print "color than the other folders.\n";
     print "\n";
 
-    if ( lc($use_special_folder_color) eq 'true' ) {
+    if ( lc($use_special_folder_color) eq "true" ) {
         $default_value = "y";
     } else {
         $default_value = "n";
@@ -1639,9 +1653,9 @@ sub command28 {
     print "Show color (y/n) [$WHT$default_value$NRM]: $WHT";
     $new_show = <STDIN>;
     if ( ( $new_show =~ /^y\n/i ) || ( ( $new_show =~ /^\n/ ) && ( $default_value eq "y" ) ) ) {
-        $use_special_folder_color = 'true';
+        $use_special_folder_color = "true";
     } else {
-        $use_special_folder_color = 'false';
+        $use_special_folder_color = "false";
     }
     return $use_special_folder_color;
 }
@@ -1655,7 +1669,7 @@ sub command29 {
     print "messages too.\n";
     print "\n";
 
-    if ( lc($auto_expunge) eq 'true' ) {
+    if ( lc($auto_expunge) eq "true" ) {
         $default_value = "y";
     } else {
         $default_value = "n";
@@ -1663,9 +1677,9 @@ sub command29 {
     print "Auto expunge (y/n) [$WHT$default_value$NRM]: $WHT";
     $new_show = <STDIN>;
     if ( ( $new_show =~ /^y\n/i ) || ( ( $new_show =~ /^\n/ ) && ( $default_value eq "y" ) ) ) {
-        $auto_expunge = 'true';
+        $auto_expunge = "true";
     } else {
-        $auto_expunge = 'false';
+        $auto_expunge = "false";
     }
     return $auto_expunge;
 }
@@ -1679,7 +1693,7 @@ sub command210 {
     print "to be subfolders of INBOX by default.\n";
     print "\n";
 
-    if ( lc($default_sub_of_inbox) eq 'true' ) {
+    if ( lc($default_sub_of_inbox) eq "true" ) {
         $default_value = "y";
     } else {
         $default_value = "n";
@@ -1687,9 +1701,9 @@ sub command210 {
     print "Default sub of INBOX (y/n) [$WHT$default_value$NRM]: $WHT";
     $new_show = <STDIN>;
     if ( ( $new_show =~ /^y\n/i ) || ( ( $new_show =~ /^\n/ ) && ( $default_value eq "y" ) ) ) {
-        $default_sub_of_inbox = 'true';
+        $default_sub_of_inbox = "true";
     } else {
-        $default_sub_of_inbox = 'false';
+        $default_sub_of_inbox = "false";
     }
     return $default_sub_of_inbox;
 }
@@ -1703,7 +1717,7 @@ sub command211 {
     print "creating contains subfolders or messages.\n";
     print "\n";
 
-    if ( lc($show_contain_subfolders_option) eq 'true' ) {
+    if ( lc($show_contain_subfolders_option) eq "true" ) {
         $default_value = "y";
     } else {
         $default_value = "n";
@@ -1711,9 +1725,9 @@ sub command211 {
     print "Show option (y/n) [$WHT$default_value$NRM]: $WHT";
     $new_show = <STDIN>;
     if ( ( $new_show =~ /^y\n/i ) || ( ( $new_show =~ /^\n/ ) && ( $default_value eq "y" ) ) ) {
-        $show_contain_subfolders_option = 'true';
+        $show_contain_subfolders_option = "true";
     } else {
-        $show_contain_subfolders_option = 'false';
+        $show_contain_subfolders_option = "false";
     }
     return $show_contain_subfolders_option;
 }
@@ -1762,7 +1776,7 @@ sub command214 {
     print "automatically create it again for them.\n";
     print "\n";
 
-    if ( lc($auto_create_special) eq 'true' ) {
+    if ( lc($auto_create_special) eq "true" ) {
         $default_value = "y";
     } else {
         $default_value = "n";
@@ -1770,52 +1784,48 @@ sub command214 {
     print "Auto create special folders? (y/n) [$WHT$default_value$NRM]: $WHT";
     $new_show = <STDIN>;
     if ( ( $new_show =~ /^y\n/i ) || ( ( $new_show =~ /^\n/ ) && ( $default_value eq "y" ) ) ) {
-        $auto_create_special = 'true';
+        $auto_create_special = "true";
     } else {
-        $auto_create_special = 'false';
+        $auto_create_special = "false";
     }
     return $auto_create_special;
 }
 
 # Automatically delete folders 
 sub command215 {
-    if ( $imap_server_type eq "uw" ) {
-        print "UW IMAP servers will not allow folders containing mail to also contain folders.\n";
-        print "Deleting folders will bypass the trash folder and be immediately deleted\n\n";
+    if ( $imap_server_type == "courier" ) {
+        print "Courier(or Courier-IMAP) IMAP servers do not support ";
+        print "subfolders of Trash. \n";
+        print "Deleting folders will bypass the trash folder and ";
+        print "be immediately deleted.\n\n";
         print "If this is not the correct value for your server,\n";
         print "please use option D on the Main Menu to configure your server correctly.\n\n";
         print "Press any key to continue...\n";
         $new_delete = <STDIN>;
-        $delete_folder = 'true';
+        $delete_folder = "true";
+    } elsif ( $imap_server_type == "uw" ) {
+        print "UW IMAP servers will not allow folders containing";
+        print "mail to also contain folders.\n";
+        print "Deleting folders will bypass the trash folder and";
+        print "be immediately deleted\n\n";
+        print "If this is not the correct value for your server,\n";
+        print "please use option D on the Main Menu to configure your server correctly.\n\n";
+        print "Press any key to continue...\n";
+        $new_delete = <STDIN>;
+        $delete_folder = "true";
     } else { 
-        if ( $imap_server_type eq "courier" ) {
-            print "Courier (or Courier-IMAP) IMAP servers may not support ";
-            print "subfolders of Trash. \n";
-            print "Specifically, if Courier is set to always move messages to Trash, \n";
-            print "Trash will be treated by Courier as a special folder that does not \n";
-            print "allow subfolders. \n\n";
-            print "Please verify your Courier configuration, and test folder deletion \n";
-            print "when changing this setting.\n\n";                                                             
-        }
-
-        print "Are subfolders of the Trash supported by your IMAP server?\n";
-        print "If so, should deleted folders be sent to Trash?\n";
-        print "If not, say no (deleted folders should not be sent to Trash)\n\n";
-        # reversal of logic.
-        # question was: Should folders be automatically deleted instead of sent to trash..
-        # we've changed the question to make it more clear, 
-        # and are here handling that to avoid changing the answers.. 
-        if ( lc($delete_folder) eq 'true' ) {
-            $default_value = "n";
-        } else {
+        print "Should folders selected for deletion bypass the Trash folder?\n\n";
+        if ( lc($delete_folder) eq "true" ) {
             $default_value = "y";
+        } else {
+            $default_value = "n";
         }
-        print "Send deleted folders to Trash? (y/n) [$WHT$default_value$NRM]: $WHT";
+        print "Auto delete folders? (y/n) [$WHT$default_value$NRM]: $WHT";
         $new_delete = <STDIN>;
         if ( ( $new_delete =~ /^y\n/i ) || ( ( $new_delete =~ /^\n/ ) && ( $default_value eq "y" ) ) ) {
-            $delete_folder = 'false';
+            $delete_folder = "true";
         } else {
-            $delete_folder = 'true';
+            $delete_folder = "false";
         }
     }
     return $delete_folder;
@@ -1828,7 +1838,7 @@ sub command216 {
     print "when this is the case, causing the /NoSelect folders to be displayed\n";
     print "\n";
 
-    if ( lc($noselect_fix_enable) eq 'true' ) {
+    if ( lc($noselect_fix_enable) eq "true" ) {
         $default_value = "y";
     } else {
         $default_value = "n";
@@ -1836,13 +1846,32 @@ sub command216 {
     print "enable noselect fix? (y/n) [$WHT$noselect_fix_enable$NRM]: $WHT";
     $noselect_fix_enable = <STDIN>;
     if ( ( $noselect_fix_enable =~ /^y\n/i ) || ( ( $noselect_fix_enable =~ /^\n/ ) && ( $default_value eq "y" ) ) ) {
-        $noselect_fix_enable = 'true';
+        $noselect_fix_enable = "true";
     } else {
-        $noselect_fix_enable = 'false';
+        $noselect_fix_enable = "false";
     }
     return $noselect_fix_enable;
 }
 ############# GENERAL OPTIONS #####################
+
+# Default Charset
+sub command31 {
+    print "This option controls what character set is used when sending\n";
+    print "mail and when sending HTML to the browser.  Do not set this\n";
+    print "to US-ASCII, use ISO-8859-1 instead.  For cyrillic, it is best\n";
+    print "to use KOI8-R, since this implementation is faster than most\n";
+    print "of the alternatives\n";
+    print "\n";
+
+    print "[$WHT$default_charset$NRM]: $WHT";
+    $new_default_charset = <STDIN>;
+    if ( $new_default_charset eq "\n" ) {
+        $new_default_charset = $default_charset;
+    } else {
+        $new_default_charset =~ s/[\r|\n]//g;
+    }
+    return $new_default_charset;
+}
 
 # Data directory
 sub command33a {
@@ -1853,7 +1882,7 @@ sub command33a {
     print "  Relative:    ../data/\n";     
     print "Relative paths to directories outside of the SquirrelMail distribution\n";
     print "will be converted to their absolute path equivalents in config.php.\n\n";
-    print "Note: There are potential security risks with having a writeable directory\n";
+    print "Note: There are potential security risks with having a writable directory\n";
     print "under the web server's root directory (ex: /home/httpd/html).\n";
     print "For this reason, it is recommended to put the data directory\n";
     print "in an alternate location of your choice. \n";
@@ -1973,7 +2002,7 @@ sub command36 {
     print "transparently changes all usernames to lowercase.";
     print "\n";
 
-    if ( lc($force_username_lowercase) eq 'true' ) {
+    if ( lc($force_username_lowercase) eq "true" ) {
         $default_value = "y";
     } else {
         $default_value = "n";
@@ -1981,16 +2010,16 @@ sub command36 {
     print "Convert usernames to lowercase (y/n) [$WHT$default_value$NRM]: $WHT";
     $new_show = <STDIN>;
     if ( ( $new_show =~ /^y\n/i ) || ( ( $new_show =~ /^\n/ ) && ( $default_value eq "y" ) ) ) {
-        return 'true';
+        return "true";
     }
-    return 'false';
+    return "false";
 }
 
 sub command37 {
     print "";
     print "\n";
 
-    if ( lc($default_use_priority) eq 'true' ) {
+    if ( lc($default_use_priority) eq "true" ) {
         $default_value = "y";
     } else {
         $default_value = "n";
@@ -1999,16 +2028,16 @@ sub command37 {
     print "Allow users to specify priority of outgoing mail (y/n) [$WHT$default_value$NRM]: $WHT";
     $new_show = <STDIN>;
     if ( ( $new_show =~ /^y\n/i ) || ( ( $new_show =~ /^\n/ ) && ( $default_value eq "y" ) ) ) {
-        return 'true';
+        return "true";
     }
-    return 'false';
+    return "false";
 }
 
 sub command38 {
     print "";
     print "\n";
 
-    if ( lc($default_hide_attribution) eq 'true' ) {
+    if ( lc($default_hide_attribution) eq "true" ) {
         $default_value = "y";
     } else {
         $default_value = "n";
@@ -2017,16 +2046,16 @@ sub command38 {
     print "Hide SM attributions (y/n) [$WHT$default_value$NRM]: $WHT";
     $new_show = <STDIN>;
     if ( ( $new_show =~ /^y\n/i ) || ( ( $new_show =~ /^\n/ ) && ( $default_value eq "y" ) ) ) {
-        return 'true';
+        return "true";
     }
-    return 'false';
+    return "false";
 }
 
 sub command39 {
     print "";
     print "\n";
 
-    if ( lc($default_use_mdn) eq 'true' ) {
+    if ( lc($default_use_mdn) eq "true" ) {
         $default_value = "y";
     } else {
         $default_value = "n";
@@ -2035,9 +2064,9 @@ sub command39 {
     print "Enable support for read/delivery receipt support (y/n) [$WHT$default_value$NRM]: $WHT";
     $new_show = <STDIN>;
     if ( ( $new_show =~ /^y\n/i ) || ( ( $new_show =~ /^\n/ ) && ( $default_value eq "y" ) ) ) {
-        return 'true';
+        return "true";
     }
-    return 'false';
+    return "false";
 }
 
 sub command310 {
@@ -2046,7 +2075,7 @@ sub command310 {
     print "retrieveuserdata plugin\n";
     print "\n";
 
-    if ( lc($edit_identity) eq 'true' ) {
+    if ( lc($edit_identity) eq "true" ) {
         $default_value = "y";
     } else {
         $default_value = "n";
@@ -2054,10 +2083,10 @@ sub command310 {
     print "Allow editing of user's identity? (y/n) [$WHT$default_value$NRM]: $WHT";
     $new_edit = <STDIN>;
     if ( ( $new_edit =~ /^y\n/i ) || ( ( $new_edit =~ /^\n/ ) && ( $default_value eq "y" ) ) ) {
-        $edit_identity = 'true';
-        $edit_name = 'true';
+        $edit_identity = "true";
+        $edit_name = "true";
     } else {
-        $edit_identity = 'false';
+        $edit_identity = "false";
         $edit_name = command311();
     }
     return $edit_identity;
@@ -2069,7 +2098,7 @@ sub command311 {
     print "change their username\n";
     print "\n";
 
-    if ( lc($edit_name) eq 'true' ) {
+    if ( lc($edit_name) eq "true" ) {
         $default_value = "y";
     } else {
         $default_value = "n";
@@ -2077,9 +2106,9 @@ sub command311 {
     print "Allow editing of the users full name? (y/n) [$WHT$default_value$NRM]: $WHT";
     $new_edit = <STDIN>;
     if ( ( $new_edit =~ /^y\n/i ) || ( ( $new_edit =~ /^\n/ ) && ( $default_value eq "y" ) ) ) {
-        $edit_name = 'true';
+        $edit_name = "true";
     } else {
-        $edit_name = 'false';
+        $edit_name = "false";
     }
     return $edit_name;
 }
@@ -2087,10 +2116,10 @@ sub command311 {
 sub command312 {
     print "This option allows you to choose if users can use thread sorting\n";
     print "Your IMAP server must support the THREAD command for this to work\n";
-    print "PHP versions later than 4.0.3 recommended\n";
+	print "PHP versions later than 4.0.3 recommended\n";
     print "\n";
 
-    if ( lc($allow_thread_sort) eq 'true' ) {
+    if ( lc($allow_thread_sort) eq "true" ) {
         $default_value = "y";
     } else {
         $default_value = "n";
@@ -2098,9 +2127,9 @@ sub command312 {
     print "Allow server side thread sorting? (y/n) [$WHT$default_value$NRM]: $WHT";
     $allow_thread_sort = <STDIN>;
     if ( ( $allow_thread_sort =~ /^y\n/i ) || ( ( $allow_thread_sort =~ /^\n/ ) && ( $default_value eq "y" ) ) ) {
-        $allow_thread_sort = 'true';
+        $allow_thread_sort = "true";
     } else {
-        $allow_thread_sort = 'false';
+        $allow_thread_sort = "false";
     }
     return $allow_thread_sort;
 }
@@ -2110,7 +2139,7 @@ sub command313 {
     print "Your IMAP server must support the SORT  command for this to work\n";
     print "\n";
 
-    if ( lc($allow_server_sort) eq 'true' ) {
+    if ( lc($allow_server_sort) eq "true" ) {
         $default_value = "y";
     } else {
         $default_value = "n";
@@ -2118,9 +2147,9 @@ sub command313 {
     print "Allow server-side sorting? (y/n) [$WHT$default_value$NRM]: $WHT";
     $allow_server_sort = <STDIN>;
     if ( ( $allow_server_sort =~ /^y\n/i ) || ( ( $allow_server_sort =~ /^\n/ ) && ( $default_value eq "y" ) ) ) {
-        $allow_server_sort = 'true';
+        $allow_server_sort = "true";
     } else {
-        $allow_server_sort = 'false';
+        $allow_server_sort = "false";
     }
     return $allow_server_sort;
 }
@@ -2130,7 +2159,7 @@ sub command314 {
     print "Your IMAP server must support the SEARCH CHARSET command for this to work\n";
     print "\n";
 
-    if ( lc($allow_charset_search) eq 'true' ) {
+    if ( lc($allow_charset_search) eq "true" ) {
         $default_value = "y";
     } else {
         $default_value = "n";
@@ -2138,40 +2167,39 @@ sub command314 {
     print "Allow charset searching? (y/n) [$WHT$default_value$NRM]: $WHT";
     $allow_charset_search = <STDIN>;
     if ( ( $allow_charset_search =~ /^y\n/i ) || ( ( $allow_charset_search =~ /^\n/ ) && ( $default_value eq "y" ) ) ) {
-        $allow_charset_search = 'true';
+        $allow_charset_search = "true";
     } else {
-        $allow_charset_search = 'false';
+        $allow_charset_search = "false";
     }
     return $allow_charset_search;
 }
 
-# command315 (UID support) obsoleted.
-
-# advanced search option
-sub command316 {
-    print "This option allows you to control the use of advanced search form.\n";
-    print "  0 = enable basic search only\n";
-    print "  1 = enable advanced search only\n";
-    print "  2 = enable both\n";
+sub command315 {
+    print "This option allows you to enable unique identifier (UID) support.\n";
     print "\n";
 
-    print "Allowed search (0,1,2)? [$WHT$allow_advanced_search$NRM]: $WHT";
-    $new_allow_advanced_search = <STDIN>;
-    if ( $new_allow_advanced_search =~ /^[0|1|2]\n/i ) {
-        $allow_advanced_search = $new_allow_advanced_search;
+    if ( lc($uid_support) eq "true" ) {
+        $default_value = "y";
+    } else {
+        $default_value = "n";
     }
-    $allow_advanced_search =~ s/[\r|\n]//g;
-    return $allow_advanced_search;
+    print "Enable Unique identifier (UID) support? (y/n) [$WHT$default_value$NRM]: $WHT";
+    $uid_support = <STDIN>;
+    if ( ( $uid_support =~ /^y\n/i ) || ( ( $uid_support =~ /^\n/ ) && ( $default_value eq "y" ) ) ) {
+        $uid_support = "true";
+    } else {
+        $uid_support = "false";
+    }
+    return $uid_support;
 }
 
-
-sub command317 {
-    print "This option allows you to change the name of the PHP session used\n";
-    print "by SquirrelMail.  Unless you know what you are doing, you probably\n";
-    print "don't need or want to change this from the default of SQMSESSID.\n";
+sub command316 {
+	print "This option allows you to change the name of the PHP session used\n";
+	print "by SquirrelMail.  Unless you know what you are doing, you probably\n";
+	print "don't need or want to change this from the default of SQMSESSID.\n";
     print "[$WHT$session_name$NRM]: $WHT";
     $new_session_name = <STDIN>;
-    chomp($new_session_name);
+	chomp($new_session_name);
     if ( $new_session_name eq "" ) {
         $new_session_name = $session_name;
     }
@@ -2381,7 +2409,7 @@ sub command61 {
                         print "      bindpw: $ldap_bindpw[$count]\n";
                     }
                 }
-        if ( $ldap_protocol[$count] ) {
+		if ( $ldap_protocol[$count] ) {
                     print "    protocol: $ldap_protocol[$count]\n";
                 }
 
@@ -2466,9 +2494,9 @@ sub command61 {
                 print "\n";
             }
 
-        print "You can specify bind protocol version here.\n";
+	    print "You can specify bind protocol version here.\n";
             print "Default protocol version depends on your php ldap settings.\n";
-        print "Press ENTER for default.\n";
+	    print "Press ENTER for default.\n";
             print "protocol: ";
             $name = <STDIN>;
             $name =~ s/[\r|\n]//g;
@@ -2518,7 +2546,6 @@ sub command61 {
             @ldap_binddn  = @new_ldap_binddn;
             @ldap_bindpw  = @new_ldap_bindpw;
             @ldap_protocol = @new_ldap_protocol;
-
         } elsif ( $input =~ /^\s*\?\s*/ ) {
             print ".-------------------------.\n";
             print "| +            (add host) |\n";
@@ -2544,18 +2571,18 @@ sub command62 {
     print "user can configure individually\n";
     print "\n";
 
-    if ( lc($default_use_javascript_addr_book) eq 'true' ) {
+    if ( lc($default_use_javascript_addr_book) eq "true" ) {
         $default_value = "y";
     } else {
-        $default_use_javascript_addr_book = 'false';
+        $default_use_javascript_addr_book = "false";
         $default_value                    = "n";
     }
     print "Use javascript version by default (y/n) [$WHT$default_value$NRM]: $WHT";
     $new_show = <STDIN>;
     if ( ( $new_show =~ /^y\n/i ) || ( ( $new_show =~ /^\n/ ) && ( $default_value eq "y" ) ) ) {
-        $default_use_javascript_addr_book = 'true';
+        $default_use_javascript_addr_book = "true";
     } else {
-        $default_use_javascript_addr_book = 'false';
+        $default_use_javascript_addr_book = "false";
     }
     return $default_use_javascript_addr_book;
 }
@@ -2684,314 +2711,6 @@ sub command97 {
     return $new_field;
 }
 
-sub command98 {
-    print "If you want to store your global address book in a database then\n";
-    print "you need to set this DSN to a valid value. The format for this is:\n";
-    print "mysql://user:pass\@hostname/dbname\n";
-    print "Where mysql can be one of the databases PHP supports, the most common\n";
-    print "of these are mysql, msql and pgsql\n";
-    print "If the DSN is left empty (hit space and then return) the database\n";
-    print "related code for global SQL address book will not be used\n";
-    print "\n";
-
-    if ( $addrbook_global_dsn eq "" ) {
-        $default_value = "Disabled";
-    } else {
-        $default_value = $addrbook_global_dsn;
-    }
-    print "[$WHT$addrbook_global_dsn$NRM]: $WHT";
-    $new_dsn = <STDIN>;
-    if ( $new_dsn eq "\n" ) {
-        $new_dsn = "";
-    } else {
-        $new_dsn =~ s/[\r|\n]//g;
-        $new_dsn =~ s/^\s+$//g;
-    }
-    return $new_dsn;
-}
-
-sub command99 {
-    print "This is the name of the table you want to store the global address book\n";
-    print "data in, it defaults to 'global_address'\n";
-    print "\n";
-    print "[$WHT$addrbook_global_table$NRM]: $WHT";
-    $new_table = <STDIN>;
-    if ( $new_table eq "\n" ) {
-        $new_table = $addrbook_global_table;
-    } else {
-        $new_table =~ s/[\r|\n]//g;
-    }
-    return $new_table;
-}
-
-sub command910 {
-    print "This option controls users\' ability to add or modify records stored \n";
-    print "in global address book\n";
-
-    if ( lc($addrbook_global_writeable) eq 'true' ) {
-        $default_value = "y";
-    } else {
-        $default_value = "n";
-    }
-    print "Allow writing into global address book? (y/n) [$WHT$default_value$NRM]: $WHT";
-    $addrbook_global_writeable = <STDIN>;
-    if ( ( $addrbook_global_writeable =~ /^y\n/i ) || ( ( $addrbook_global_writeable =~ /^\n/ ) && ( $default_value eq "y" ) ) ) {
-        $addrbook_global_writeable = 'true';
-    } else {
-        $addrbook_global_writeable = 'false';
-    }
-    return $addrbook_global_writeable;
-}
-
-sub command911 {
-    print "Enable this option if you want to see listing of addresses stored \n";
-    print "in global address book\n";
-
-    if ( lc($addrbook_global_listing) eq 'true' ) {
-        $default_value = "y";
-    } else {
-        $default_value = "n";
-    }
-    print "Allow listing of global address book? (y/n) [$WHT$default_value$NRM]: $WHT";
-    $addrbook_global_listing = <STDIN>;
-    if ( ( $addrbook_global_listing =~ /^y\n/i ) || ( ( $addrbook_global_listing =~ /^\n/ ) && ( $default_value eq "y" ) ) ) {
-        $addrbook_global_listing = 'true';
-    } else {
-        $addrbook_global_listing = 'false';
-    }
-    return $addrbook_global_listing;
-}
-
-
-# Default language
-sub commandA1 {
-    print "SquirrelMail attempts to set the language in many ways.  If it\n";
-    print "can not figure it out in another way, it will default to this\n";
-    print "language.  Please use the code for the desired language.\n";
-    print "\n";
-    print "[$WHT$squirrelmail_default_language$NRM]: $WHT";
-    $new_squirrelmail_default_language = <STDIN>;
-    if ( $new_squirrelmail_default_language eq "\n" ) {
-        $new_squirrelmail_default_language = $squirrelmail_default_language;
-    } else {
-        $new_squirrelmail_default_language =~ s/[\r|\n]//g;
-        $new_squirrelmail_default_language =~ s/^\s+$//g;
-    }
-    return $new_squirrelmail_default_language;
-}
-# Default Charset
-sub commandA2 {
-#    print "This option controls what character set is used when sending\n";
-#    print "mail and when sending HTML to the browser.  Do not set this\n";
-#    print "to US-ASCII, use ISO-8859-1 instead.  For cyrillic, it is best\n";
-#    print "to use KOI8-R, since this implementation is faster than most\n";
-#    print "of the alternatives\n";
-    print "This option is obsolate. Default charset depends on language\n";
-    print "you have selected in \"Default language\" option.\n";
-    print "\n";
-
-    print "[$WHT$default_charset$NRM]: $WHT";
-    $new_default_charset = <STDIN>;
-    if ( $new_default_charset eq "\n" ) {
-        $new_default_charset = $default_charset;
-    } else {
-        $new_default_charset =~ s/[\r|\n]//g;
-    }
-    return $new_default_charset;
-}
-# Alternative language names
-sub commandA3 {
-    print "Enable this option if you want to see localized language names in\n";
-    print "language selection box. Note, that if don't limit list of available\n";
-    print "languages, this option can trigger installation of foreign language\n";
-    print "support modules in some browsers.\n";
-    print "\n";
-
-    if ( lc($show_alternative_names) eq 'true' ) {
-        $default_value = "y";
-    } else {
-        $default_value = "n";
-    }
-    print "Show alternative language names? (y/n) [$WHT$default_value$NRM]: $WHT";
-    $show_alternative_names = <STDIN>;
-    if ( ( $show_alternative_names =~ /^y\n/i ) || ( ( $show_alternative_names =~ /^\n/ ) && ( $default_value eq "y" ) ) ) {
-        $show_alternative_names = 'true';
-    } else {
-        $show_alternative_names = 'false';
-    }
-    return $show_alternative_names;
-}
-# Available languages
-sub commandA4 {
-    print "This option allows to limit number of languages available in\n";
-    print "language selection box. You can enter as code of every language that\n";
-    print "you want to enable. Language codes should be separated by space. If you\n";
-    print "enter name unsupported by SquirrelMail, it will be ignored. If you enter\n";
-    print "special key \'all\' - all languages available in SquirrelMail will be\n";
-    print "listed. If you enter special key \'none\' - user won't be able to change";
-    print "language and interface will use language set it \"Default language\" option.\n";
-    print "\n";
-    print "Valid language names are:\n";
-    print " ar (Arabic), bg_BG (Bulgarian), ca_ES (Catalan), cy_GB (Welsh)\n";
-    print " cs_CZ (Chech), da_DK (Danish), de_DE (German), el_GR (Greek),\n";
-    print " en_US (English), es_ES (Spanish), et_EE (Estonian), fi_FI (Finnish),\n";
-    print " fo_FO (Faroese), fr_FR (French), he_IL (Hebrew), hr_HR (Croatian),\n";
-    print " hu_HU (Hungarian), id_ID (Indonesian), is_IS (Icelandic), it_IT (Italian),\n";
-    print " ja_JP (Japanese), ko_KR (Korean), lt_LT (Lithuanian), ms_MY (Malay),\n";
-    print " nl_NL (Dutch), nn_NO (Norwegian (Nynorsk)), no_NO (Norwegian (Bokmal)),\n";
-    print " pl_PL (Polish), pt_BR (Portuguese (Brazil)), pt_PT (Portuguese (Portugal)),\n";
-    print " ro_RO (Romanian), ru_RU (Russian), sk_SK (Slovak), sl_SI (Slovenian),\n";
-    print " sr_YU (Serbian), sv_SE (Swedish), th_TH (Thai), tr_TR (Turkish),\n";
-    print " zh_CN (Chinese Simplified), zh_TW (Chinese Traditional).\n";
-    print "\n";
-    print "[$WHT$available_languages$NRM]: $WHT";
-    $new_available_languages = <STDIN>;
-    if ( $new_available_languages eq "\n" ) {
-        $new_available_languages = $available_languages;
-    } else {
-        $new_available_languages =~ s/[\r|\n]//g;
-        $new_available_languages =~ s/^\s+$//g;
-    }
-    return $new_available_languages;
-}
-# Agresive decoding
-sub commandA5 {
-    print "Enable this option if you want to use CPU and memory intensive decoding\n";
-    print "functions. This option allows reading multibyte charset, that are used\n";
-    print "in Eastern Asia. SquirrelMail will try to use recode functions here,\n";
-    print "even when you have disabled use of recode in Tweaks section.\n";
-    print "\n";
-
-    if ( lc($agresive_decoding) eq 'true' ) {
-        $default_value = "y";
-    } else {
-        $default_value = "n";
-    }
-    print "Use agresive decoding? (y/n) [$WHT$default_value$NRM]: $WHT";
-    $agresive_decoding = <STDIN>;
-    if ( ( $agresive_decoding =~ /^y\n/i ) || ( ( $agresive_decoding =~ /^\n/ ) && ( $default_value eq "y" ) ) ) {
-        $agresive_decoding = 'true';
-    } else {
-        $agresive_decoding = 'false';
-    }
-    return $agresive_decoding;
-}
-
-# Advanced tree
-sub commandB1 {
-    print "Enable this option if you want to use DHTML based folder listing.\n";
-    print "Code is experimental, works only with some browsers and there might\n";
-    print "be some glitches.\n";
-    print "\n";
-
-    if ( lc($advanced_tree) eq 'true' ) {
-        $default_value = "y";
-    } else {
-        $default_value = "n";
-    }
-    print "Use advanced tree in folder listing? (y/n) [$WHT$default_value$NRM]: $WHT";
-    $advanced_tree = <STDIN>;
-    if ( ( $advanced_tree =~ /^y\n/i ) || ( ( $advanced_tree =~ /^\n/ ) && ( $default_value eq "y" ) ) ) {
-        $advanced_tree = 'true';
-    } else {
-        $advanced_tree = 'false';
-    }
-    return $advanced_tree;
-}
-# Oldway
-sub commandB2 {
-    print "Setting \$oldway to false causes left_main.php to use the new\n";
-    print "experimental way of getting the mailbox-tree.\n";
-    print "\n";
-
-    if ( lc($oldway) eq 'true' ) {
-        $default_value = "y";
-    } else {
-        $default_value = "n";
-    }
-    print "Use old way of folder list display? (y/n) [$WHT$default_value$NRM]: $WHT";
-    $oldway = <STDIN>;
-    if ( ( $oldway =~ /^y\n/i ) || ( ( $oldway =~ /^\n/ ) && ( $default_value eq "y" ) ) ) {
-        $oldway = 'true';
-    } else {
-        $oldway = 'false';
-    }
-    return $oldway;
-}
-# use icons
-sub commandB3 {
-    print "Enabling this option will cause icons to be used instead of text\n";
-    print "markers next to each message in mailbox lists that represent\n";
-    print "new, read, flagged, and deleted messages, as well as those that\n";
-    print "have been replied to and forwarded. Icons are also used next to\n";
-    print "(un)expanded folders in the folder list (Oldway = false).  These\n";
-    print "icons are quite small, but will obviously be more of a resource\n";
-    print "drain than text markers.\n";
-    print "\n";
-
-    if ( lc($use_icons) eq 'true' ) {
-        $default_value = "y";
-    } else {
-        $default_value = "n";
-    }
-    print "Use icons? (y/n) [$WHT$default_value$NRM]: $WHT";
-    $use_icons = <STDIN>;
-    if ( ( $use_icons =~ /^y\n/i ) || ( ( $use_icons =~ /^\n/ ) && ( $default_value eq "y" ) ) ) {
-        $use_icons = 'true';
-    } else {
-        $use_icons = 'false';
-    }
-    return $use_icons;
-}
-# php recode
-sub commandB4 {
-    print "Enable this option if you want to use php recode functions to read\n";
-    print "emails written in charset that differs from the one that is set in\n";
-    print "translation selected by user. Code is experimental, it might cause\n";
-    print "errors, if email contains charset unsupported by recode or if your\n";
-    print "php does not have recode support.\n";
-    print "\n";
-
-    if ( lc($use_php_recode) eq 'true' ) {
-        $default_value = "y";
-    } else {
-        $default_value = "n";
-    }
-    print "Use php recode functions? (y/n) [$WHT$default_value$NRM]: $WHT";
-    $use_php_recode = <STDIN>;
-    if ( ( $use_php_recode =~ /^y\n/i ) || ( ( $use_php_recode =~ /^\n/ ) && ( $default_value eq "y" ) ) ) {
-        $use_php_recode = 'true';
-    } else {
-        $use_php_recode = 'false';
-    }
-    return $use_php_recode;
-}
-# php iconv
-sub commandB5 {
-    print "Enable this option if you want to use php iconv functions to read\n";
-    print "emails written in charset that differs from the one that is set in\n";
-    print "translation selected by user. Code is experimental, it works only\n";
-    print "with translations that use utf-8 charset. Code might cause errors,\n";
-    print "if email contains charset unsupported by iconv or if your php does\n";
-    print "not have iconv support.\n";
-    print "\n";
-
-    if ( lc($use_php_iconv) eq 'true' ) {
-        $default_value = "y";
-    } else {
-        $default_value = "n";
-    }
-    print "Use php iconv functions? (y/n) [$WHT$default_value$NRM]: $WHT";
-    $use_php_iconv = <STDIN>;
-    if ( ( $use_php_iconv =~ /^y\n/i ) || ( ( $use_php_iconv =~ /^\n/ ) && ( $default_value eq "y" ) ) ) {
-        $use_php_iconv = 'true';
-    } else {
-        $use_php_iconv = 'false';
-    }
-    return $use_php_iconv;
-}
-
-
 sub save_data {
     $tab = "    ";
     if ( open( CF, ">config.php" ) ) {
@@ -3004,29 +2723,29 @@ sub save_data {
         print CF " */\n";
         print CF "\n";
         print CF "global \$version;\n";
-    
+	
         if ($print_config_version) {
             print CF "\$config_version = '$print_config_version';\n";
         }
-        # integer
+	# integer
         print CF "\$config_use_color = $config_use_color;\n";
         print CF "\n";
-    
-        # string
+	
+	# string
         print CF "\$org_name      = \"$org_name\";\n";
         # string
-        print CF "\$org_logo      = " . &change_to_SM_path($org_logo) . ";\n";
+	print CF "\$org_logo      = " . &change_to_SM_path($org_logo) . ";\n";
         $org_logo_width |= 0;
         $org_logo_height |= 0;
-        # string
+	# string
         print CF "\$org_logo_width  = '$org_logo_width';\n";
         # string
-        print CF "\$org_logo_height = '$org_logo_height';\n";
-        # string that can contain variables.
+	print CF "\$org_logo_height = '$org_logo_height';\n";
+	# string that can contain variables.
         print CF "\$org_title     = \"$org_title\";\n";
-        # string
+	# string
         print CF "\$signout_page  = " . &change_to_SM_path($signout_page) . ";\n";
-        # string
+	# string
         print CF "\$frame_top     = '$frame_top';\n";
         print CF "\n";
 
@@ -3036,128 +2755,120 @@ sub save_data {
         print CF "\$provider_name     = '$provider_name';\n";
         print CF "\n";
 
-        # string that can contain variables
+	# string that can contain variables
         print CF "\$motd = \"$motd\";\n";
         print CF "\n";
-    
-        # string
+	
+	# string
         print CF "\$squirrelmail_default_language = '$squirrelmail_default_language';\n";
-        # string
-        print CF "\$default_charset          = '$default_charset';\n";
-        # boolean
-        print CF "\$show_alternative_names   = $show_alternative_names;\n";
-        # string
-        print CF "\$available_languages   = '$available_languages';\n";
-        # boolean
-        print CF "\$agresive_decoding   = $agresive_decoding;\n";
         print CF "\n";
 
-        # string
+	# string
         print CF "\$domain                 = '$domain';\n";
-        # string
+	# string
         print CF "\$imapServerAddress      = '$imapServerAddress';\n";
-        # integer
+	# integer
         print CF "\$imapPort               = $imapPort;\n";
-        # boolean
+	# boolean
         print CF "\$useSendmail            = $useSendmail;\n";
-        # string
+	# string
         print CF "\$smtpServerAddress      = '$smtpServerAddress';\n";
-        # integer
+	# integer
         print CF "\$smtpPort               = $smtpPort;\n";
-        # string
+	# string
         print CF "\$sendmail_path          = '$sendmail_path';\n";
-        # boolean
+	# boolean
 #        print CF "\$use_authenticated_smtp = $use_authenticated_smtp;\n";
-        # boolean
+	# boolean
         print CF "\$pop_before_smtp        = $pop_before_smtp;\n";
-        # string
+	# string
         print CF "\$imap_server_type       = '$imap_server_type';\n";
-        # boolean
+	# boolean
         print CF "\$invert_time            = $invert_time;\n";
-        # string
+	# string
         print CF "\$optional_delimiter     = '$optional_delimiter';\n";
-        #boolean
-        print CF "\$skip_SM_header         = $skip_SM_header;\n";
         print CF "\n";
 
-    # string
+	# string
         print CF "\$default_folder_prefix          = '$default_folder_prefix';\n";
-    # string
+	# string
         print CF "\$trash_folder                   = '$trash_folder';\n";
-    # string
+	# string
         print CF "\$sent_folder                    = '$sent_folder';\n";
-    # string
+	# string
         print CF "\$draft_folder                   = '$draft_folder';\n";
-    # boolean
+	# boolean
         print CF "\$default_move_to_trash          = $default_move_to_trash;\n";
-    # boolean
+	# boolean
         print CF "\$default_move_to_sent           = $default_move_to_sent;\n";
-    # boolean
+	# boolean
         print CF "\$default_save_as_draft          = $default_save_as_draft;\n";
-    # boolean
+	# boolean
         print CF "\$show_prefix_option             = $show_prefix_option;\n";
-    # boolean
+	# boolean
         print CF "\$list_special_folders_first     = $list_special_folders_first;\n";
-    # boolean
+	# boolean
         print CF "\$use_special_folder_color       = $use_special_folder_color;\n";
-    # boolean
+	# boolean
         print CF "\$auto_expunge                   = $auto_expunge;\n";
-    # boolean
+	# boolean
         print CF "\$default_sub_of_inbox           = $default_sub_of_inbox;\n";
-    # boolean
+	# boolean
         print CF "\$show_contain_subfolders_option = $show_contain_subfolders_option;\n";
-    # integer
+	# integer
         print CF "\$default_unseen_notify          = $default_unseen_notify;\n";
-    # integer
+	# integer
         print CF "\$default_unseen_type            = $default_unseen_type;\n";
-    # boolean
+	# boolean
         print CF "\$auto_create_special            = $auto_create_special;\n";
-    # boolean
+	# boolean
         print CF "\$delete_folder                  = $delete_folder;\n";
     # boolean
         print CF "\$noselect_fix_enable            = $noselect_fix_enable;\n";
 
         print CF "\n";
 
-    # string
+	# string
+        print CF "\$default_charset          = '$default_charset';\n";
+	# string
         print CF "\$data_dir                 = " . &change_to_SM_path($data_dir) . ";\n";
-    # string that can contain a variable
+	# string that can contain a variable
         print CF "\$attachment_dir           = " . &change_to_SM_path($attachment_dir) . ";\n";
-    # integer
+	# integer
         print CF "\$dir_hash_level           = $dir_hash_level;\n";
-    # string
+	# string
         print CF "\$default_left_size        = '$default_left_size';\n";
-    # boolean
+	# boolean
         print CF "\$force_username_lowercase = $force_username_lowercase;\n";
-    # boolean
+	# boolean
         print CF "\$default_use_priority     = $default_use_priority;\n";
-    # boolean
+	# boolean
         print CF "\$hide_sm_attributions     = $hide_sm_attributions;\n";
-    # boolean
+	# boolean
         print CF "\$default_use_mdn          = $default_use_mdn;\n";
-    # boolean
+	# boolean
         print CF "\$edit_identity            = $edit_identity;\n";
-    # boolean
+	# boolean
         print CF "\$edit_name                = $edit_name;\n";
-    # boolean
+	# boolean
         print CF "\$allow_thread_sort        = $allow_thread_sort;\n";
-    # boolean
+	# boolean
         print CF "\$allow_server_sort        = $allow_server_sort;\n";
-    # boolean
+        # boolean
         print CF "\$allow_charset_search     = $allow_charset_search;\n";
-    # integer
-        print CF "\$allow_advanced_search    = $allow_advanced_search;\n";
+        # boolean
+        print CF "\$uid_support              = $uid_support;\n";
         print CF "\n";
-    
-    # all plugins are strings
+	
+	# all plugins are strings
         for ( $ct = 0 ; $ct <= $#plugins ; $ct++ ) {
             print CF "\$plugins[$ct] = '$plugins[$ct]';\n";
         }
         print CF "\n";
 
-    # strings
+	# strings
         print CF "\$theme_css = " . &change_to_SM_path($theme_css) . ";\n";
-    if ( $theme_default eq '' ) { $theme_default = '0'; }
+	if ( $theme_default eq '' ) { $theme_default = '0'; }
         print CF "\$theme_default = $theme_default;\n";
 
         for ( $count = 0 ; $count <= $#theme_name ; $count++ ) {
@@ -3170,36 +2881,36 @@ sub save_data {
         }
         print CF "\n";
 
-        if ( $default_use_javascript_addr_book ne 'true' ) {
-            $default_use_javascript_addr_book = 'false';
+        if ( $default_use_javascript_addr_book ne "true" ) {
+            $default_use_javascript_addr_book = "false";
         }
 
-    # boolean
+	# boolean
         print CF "\$default_use_javascript_addr_book = $default_use_javascript_addr_book;\n";
         for ( $count = 0 ; $count <= $#ldap_host ; $count++ ) {
             print CF "\$ldap_server[$count] = array(\n";
-        # string
+	    # string
             print CF "    'host' => '$ldap_host[$count]',\n";
-        # string
+	    # string
             print CF "    'base' => '$ldap_base[$count]'";
             if ( $ldap_name[$count] ) {
                 print CF ",\n";
-        # string
+		# string
                 print CF "    'name' => '$ldap_name[$count]'";
             }
             if ( $ldap_port[$count] ) {
                 print CF ",\n";
-        # integer
+		# integer
                 print CF "    'port' => $ldap_port[$count]";
             }
             if ( $ldap_charset[$count] ) {
                 print CF ",\n";
-        # string
+		# string
                 print CF "    'charset' => '$ldap_charset[$count]'";
             }
             if ( $ldap_maxrows[$count] ) {
                 print CF ",\n";
-        # integer
+		# integer
                 print CF "    'maxrows' => $ldap_maxrows[$count]";
             }
             if ( $ldap_binddn[$count] ) {
@@ -3214,7 +2925,7 @@ sub save_data {
             }
             if ( $ldap_protocol[$count] ) {
                 print CF ",\n";
-        # integer
+		# integer
                 print CF "    'protocol' => $ldap_protocol[$count]";
             }
             print CF "\n";
@@ -3222,74 +2933,47 @@ sub save_data {
             print CF "\n";
         }
 
-    # string
+	# string
         print CF "\$addrbook_dsn = '$addrbook_dsn';\n";
-    # string
+	# string
         print CF "\$addrbook_table = '$addrbook_table';\n\n";
-    # string
+	# string
         print CF "\$prefs_dsn = '$prefs_dsn';\n";
-    # string
+	# string
         print CF "\$prefs_table = '$prefs_table';\n";
-    # string
+	# string
         print CF "\$prefs_user_field = '$prefs_user_field';\n";
-    # string
+	# string
         print CF "\$prefs_key_field = '$prefs_key_field';\n";
-    # string
-        print CF "\$prefs_val_field = '$prefs_val_field';\n\n";
-    # string
-        print CF "\$addrbook_global_dsn = '$addrbook_global_dsn';\n";
-    # string
-        print CF "\$addrbook_global_table = '$addrbook_global_table';\n";
-    # boolean
-        print CF "\$addrbook_global_writeable = $addrbook_global_writeable;\n\n";
-    # boolean
-        print CF "\$addrbook_global_listing = $addrbook_global_listing;\n\n";
-    # boolean
-        print CF "\$no_list_for_subscribe = $no_list_for_subscribe;\n";
+	# string
+        print CF "\$prefs_val_field = '$prefs_val_field';\n";
+	# boolean
+		print CF "\$no_list_for_subscribe = $no_list_for_subscribe;\n";
 
-    # string
-        print CF "\$smtp_auth_mech = '$smtp_auth_mech';\n";
-    # string
-        print CF "\$imap_auth_mech = '$imap_auth_mech';\n";
-    # boolean
-        print CF "\$use_imap_tls = $use_imap_tls;\n";
-    # boolean
-        print CF "\$use_smtp_tls = $use_smtp_tls;\n";
-    # string
-        print CF "\$session_name = '$session_name';\n";
+	# string
+		print CF "\$smtp_auth_mech = '$smtp_auth_mech';\n";
+		print CF "\$imap_auth_mech = '$imap_auth_mech';\n";
+	# boolean
+	    print CF "\$use_imap_tls = $use_imap_tls;\n";
+		print CF "\$use_smtp_tls = $use_smtp_tls;\n";
 
-    print CF "\n";
+		print CF "\$session_name = '$session_name';\n";
 
-    # boolean
-    print CF "\$advanced_tree = $advanced_tree;\n";
-    print CF "\n";
-    # boolean
-    print CF "\$oldway = $oldway;\n";
-    print CF "\n";
-    # boolean
-    print CF "\$use_icons = $use_icons;\n";
-    print CF "\n";
-    # boolean
-    print CF "\$use_php_recode = $use_php_recode;\n";
-    print CF "\n";
-    # boolean
-    print CF "\$use_php_iconv = $use_php_iconv;\n";
-    print CF "\n";
-
-        print CF "\@include SM_PATH . 'config/config_local.php';\n";
+	    print CF "\n";
+		print CF "\@include SM_PATH . 'config/config_local.php';\n";
     
-        print CF "\n/**\n";
-        print CF " * Make sure there are no characters after the PHP closing\n";
-        print CF " * tag below (including newline characters and whitespace).\n";
-        print CF " * Otherwise, that character will cause the headers to be\n";
-        print CF " * sent and regular output to begin, which will majorly screw\n";
-        print CF " * things up when we try to send more headers later.\n";
-        print CF " */\n";
-        print CF "?>";
+		print CF "\n/**\n";
+	    print CF " * Make sure there are no characters after the PHP closing\n";
+	    print CF " * tag below (including newline characters and whitespace).\n";
+	    print CF " * Otherwise, that character will cause the headers to be\n";
+	    print CF " * sent and regular output to begin, which will majorly screw\n";
+	    print CF " * things up when we try to send more headers later.\n";
+	    print CF " */\n";
+	    print CF "?>";
         
-        close CF;
+		close CF;
 
-        print "Data saved in config.php\n";
+	    print "Data saved in config.php\n";
     } else {
         print "Error saving config.php: $!\n";
     }
@@ -3321,7 +3005,6 @@ sub set_defaults {
         print "    exchange   = Microsoft Exchange IMAP server\n";
         print "    courier    = Courier IMAP server\n";
         print "    macosx     = Mac OS X Mailserver\n";
-        print "    mercury32  = Mercury/32\n";
         print "    quit       = Do not change anything\n";
         print "Command >> ";
         $server = <STDIN>;
@@ -3339,7 +3022,6 @@ sub set_defaults {
             $show_contain_subfolders_option = false;
             $optional_delimiter             = ".";
             $disp_default_folder_prefix     = "<none>";
-            $force_username_lowercase       = false;
 
             $continue = 1;
         } elsif ( $server eq "uw" ) {
@@ -3354,7 +3036,6 @@ sub set_defaults {
             $optional_delimiter             = "/";
             $disp_default_folder_prefix     = $default_folder_prefix;
             $delete_folder                  = true;
-            $force_username_lowercase       = true;
             
             $continue = 1;
         } elsif ( $server eq "exchange" ) {
@@ -3368,7 +3049,6 @@ sub set_defaults {
             $show_contain_subfolders_option = false;
             $optional_delimiter             = "detect";
             $disp_default_folder_prefix     = "<none>";
-            $force_username_lowercase       = true;
 
             $continue = 1;
         } elsif ( $server eq "courier" ) {
@@ -3383,7 +3063,6 @@ sub set_defaults {
             $optional_delimiter             = ".";
             $disp_default_folder_prefix     = $default_folder_prefix;
             $delete_folder                  = true;
-            $force_username_lowercase       = false;
             
             $continue = 1;
         } elsif ( $server eq "macosx" ) {
@@ -3398,20 +3077,6 @@ sub set_defaults {
             $optional_delimiter             = "detect";
             $allow_charset_search           = false;
             $disp_default_folder_prefix     = $default_folder_prefix;
-
-            $continue = 1;
-        } elsif ( $server eq "mercury32" ) {
-            $imap_server_type               = "mercury32";
-            $default_folder_prefix          = "";
-            $trash_folder                   = "INBOX.Trash";
-            $sent_folder                    = "INBOX.Sent";
-            $draft_folder                   = "INBOX.Drafts";
-            $show_prefix_option             = false;
-            $default_sub_of_inbox           = true;
-            $show_contain_subfolders_option = true;
-            $optional_delimiter             = "detect";
-            $delete_folder                  = true;
-            $force_username_lowercase       = true;
 
             $continue = 1;
         } elsif ( $server eq "quit" ) {
@@ -3432,9 +3097,8 @@ sub set_defaults {
         print "show_contain_subfolders_option = $show_contain_subfolders_option\n";
         print "            optional_delimiter = $optional_delimiter\n";
         print "                 delete_folder = $delete_folder\n";
-        print "      force_username_lowercase = $force_username_lowercase\n";
     }
-    print "\nPress enter to continue...";
+    print "\nPress any key to continue...";
     $tmp = <STDIN>;
 }
 
@@ -3497,8 +3161,8 @@ sub change_to_SM_path() {
         $new_path .= "\'";
     } else {
         # Last, it's a relative path without any leading '.'
-    # Prepend SM_PATH and config, since the paths are 
-    # relative to the config directory
+	# Prepend SM_PATH and config, since the paths are 
+	# relative to the config directory
         $new_path = "SM_PATH . \'config/" . $old_path . "\'";
     }
   return $new_path;
@@ -3527,77 +3191,77 @@ sub detect_auth_support {
 # Called by 'command112a' and 'command112b'
 # ARGS: service-name (IMAP or SMTP), host:port, mech-name (ie. CRAM-MD5)
 
-    # Misc setup
-    use IO::Socket;
-    my $service = shift;
-    my $host = shift;
-    my $mech = shift;
-    # Sanity checks
-    if ((!defined($service)) or (!defined($host)) or (!defined($mech))) {
-      # Error - wrong # of args
-      print "BAD ARGS!\n";
-      return undef;
-    }
-    
-    if ($service eq 'SMTP') {
-        $cmd = "AUTH $mech\n";
-        $logout = "QUIT\n";
-    } elsif ($service eq 'IMAP') {
-        $cmd = "A01 AUTHENTICATE $mech\n";
-        $logout = "C01 LOGOUT\n";
-    } else {
-        # unknown service - whoops.
-        return undef;
-    }
+	# Misc setup
+	use IO::Socket;
+	my $service = shift;
+	my $host = shift;
+	my $mech = shift;
+	# Sanity checks
+	if ((!defined($service)) or (!defined($host)) or (!defined($mech))) {
+	  # Error - wrong # of args
+	  print "BAD ARGS!\n";
+	  return undef;
+	}
+	
+	if ($service eq 'SMTP') {
+		$cmd = "AUTH $mech\n";
+		$logout = "QUIT\n";
+	} elsif ($service eq 'IMAP') {
+		$cmd = "A01 AUTHENTICATE $mech\n";
+		$logout = "C01 LOGOUT\n";
+	} else {
+		# unknown service - whoops.
+		return undef;
+	}
 
-    # Get this show on the road
+	# Get this show on the road
     my $sock=IO::Socket::INET->new($host);
     if (!defined($sock)) {
         # Connect failed
         return undef;
     }
-    my $discard = <$sock>; # Server greeting/banner - who cares..
+	my $discard = <$sock>; # Server greeting/banner - who cares..
 
-    if ($service eq 'SMTP') {
-        # Say hello first..
-        print $sock "helo $domain\n";
-        $discard = <$sock>; # Yeah yeah, you're happy to see me..
-    }
-    print $sock $cmd;
+	if ($service eq 'SMTP') {
+		# Say hello first..
+		print $sock "helo $domain\n";
+		$discard = <$sock>; # Yeah yeah, you're happy to see me..
+	}
+	print $sock $cmd;
 
-    my $response = <$sock>;
-    chomp($response);
-    if (!defined($response)) {
-        return undef;
-    }
+	my $response = <$sock>;
+	chomp($response);
+	if (!defined($response)) {
+		return undef;
+	}
 
-    # So at this point, we have a response, and it is (hopefully) valid.
-    if ($service eq 'SMTP') {
-        if (($response =~ /^535/) or ($response =~/^502/)) {
-            # Not supported
-            close $sock;
-            return 'NO';
-        } elsif ($response =~ /^503/) {
-            #Something went wrong
-            return undef;
-        }
-    } elsif ($service eq 'IMAP') {
-        if ($response =~ /^A01/) {
-            # Not supported
-            close $sock;
-            return 'NO';
-        }
-    } else {
-        # Unknown service - this shouldn't be able to happen.
-        close $sock;
-        return undef;
-    }
+	# So at this point, we have a response, and it is (hopefully) valid.
+	if ($service eq 'SMTP') {
+		if (($response =~ /^535/) or ($response =~/^502/)) {
+			# Not supported
+			close $sock;
+			return 'NO';
+		} elsif ($response =~ /^503/) {
+			#Something went wrong
+			return undef;
+		}
+	} elsif ($service eq 'IMAP') {
+		if ($response =~ /^A01/) {
+			# Not supported
+			close $sock;
+			return 'NO';
+		}
+	} else {
+		# Unknown service - this shouldn't be able to happen.
+		close $sock;
+		return undef;
+	}
 
-    # If it gets here, the mech is supported
-    print $sock "*\n";  # Attempt to cancel authentication
-    print $sock $logout; # Try to log out, but we don't really care if this fails
-    close $sock;
-    return 'YES';
+	# If it gets here, the mech is supported
+	print $sock "*\n";  # Attempt to cancel authentication
+	print $sock $logout; # Try to log out, but we don't really care if this fails
+	close $sock;
+	return 'YES';
 }
 
 sub clear_screen() {

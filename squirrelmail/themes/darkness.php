@@ -1,14 +1,12 @@
 <?php
-/**
- * @author Tyler Akins
- * Theme Name:   'Darkness'
- * Like black?
- * @package squirrelmail
- * @subpackage themes
- */
+   /** Author:       Tyler Akins
+       Theme Name:   'Darkness'
 
-/**
- * Load up the usual suspects.. */
+       Like black?
+       
+   **/
+
+
 require_once(SM_PATH . 'functions/strings.php');
 
    // Note:  The text distance is actually pre-squared

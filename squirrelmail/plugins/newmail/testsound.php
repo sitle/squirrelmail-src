@@ -7,11 +7,8 @@
  * Licensed under the GNU GPL. For full terms see the file COPYING.        
  *
  * $Id$
- * @package plugins
- * @subpackage newmail
  */
 
-/** @ignore */
 define('SM_PATH','../../');
 
 /* SquirrelMail required files. */
@@ -37,7 +34,7 @@ if ( ! sqgetGlobalVar('sound', $sound, SQ_GET) ) {
 echo html_tag( 'table',
          html_tag( 'tr',
              html_tag( 'td',
-                    '<embed src="'.htmlspecialchars($sound)."\" hidden=\"true\" autostart=\"true\">\n".
+                    '<embed src="'.htmlspecialchars($sound)."\" hidden=\"true\" autostart=\"true\">".
                     '<br>'.
                     '<b>' . _("Loading the sound...") . '</b><br>'.
                     '<form>'.

@@ -11,13 +11,9 @@
  * miscelenous functions.
  *
  * $Id$
- * @package plugins
- * @subpackage calendar
  */
 
-/**
- * @return void
- */
+
 function calendar_header() {
     //Add Second layer ofCalendar links to upper menu
     global $color,$year,$day,$month;

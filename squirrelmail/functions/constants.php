@@ -11,10 +11,8 @@
  * src/load_prefs.php.
  *
  * $Id$
- * @package squirrelmail
  */
 
-/** Need to enable plugin functions for a hook */
 require_once(SM_PATH . 'functions/plugin.php');  /* Required for the hook */
 
 /**************************************************************/

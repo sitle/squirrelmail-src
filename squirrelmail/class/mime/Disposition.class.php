@@ -9,13 +9,8 @@
  * This contains functions needed to handle mime messages.
  *
  * $Id$
- * @package squirrelmail
  */
 
-/**
- * Undocumented class
- * @package squirrelmail
- */
 class Disposition {
     function Disposition($name) {
        $this->name = $name;

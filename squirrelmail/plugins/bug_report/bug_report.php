@@ -13,26 +13,37 @@
  *
  * This is a standard Squirrelmail-1.2 API for plugins.
  *
- * @version $Id$
- * @package plugins
- * @subpackage bug_report
+ * $Id$
  */
 
-/**
- * @ignore
- */
 define('SM_PATH','../../');
 
 require_once(SM_PATH . 'include/validate.php');
 
-// loading form functions
-require_once(SM_PATH . 'functions/forms.php');
-
 displayPageHeader($color, 'None');
 
-include_once(SM_PATH . 'plugins/bug_report/system_specs.php');
-include_once(SM_PATH . 'plugins/bug_report/functions.php');
-global $body;
+
+function Show_Array($array) {
+    $str = '';
+    foreach ($array as $key => $value) {
+        if ($key != 0 || $value != '') {
+        $str .= "    * $key = $value\n";
+        }
+    }
+    if ($str == '') {
+        return "    * Nothing listed\n";
+    }
+    return $str;
+}
+
+$browscap = ini_get('browscap');
+if(!empty($browscap)) {
+    $browser = get_browser();
+}
+
+sqgetGlobalVar('HTTP_USER_AGENT', $HTTP_USER_AGENT, SQ_SERVER);
+if ( ! sqgetGlobalVar('HTTP_USER_AGENT', $HTTP_USER_AGENT, SQ_SERVER) )
+    $HTTP_USER_AGENT="Browser information is not available.";
 
 $body_top = "I subscribe to the squirrelmail-users mailing list.\n" .
                 "  [ ]  True - No need to CC me when replying\n" .
@@ -47,12 +58,84 @@ $body_top = "I subscribe to the squirrelmail-users mailing list.\n" .
                 "I can reproduce the bug by:\n\n\n" .
                 "(Optional) I got bored and found the bug occurs in:\n\n\n" .
                 "(Optional) I got really bored and here's a fix:\n\n\n" .
-                "----------------------------------------------\n\n";
+                "----------------------------------------------\n" .
+            "\nMy browser information:\n" .
+            '  '.$HTTP_USER_AGENT . "\n" ;
+	    if(isset($browser)) {
+                $body_top .= "  get_browser() information (List)\n" .
+                Show_Array((array) $browser);
+            }
+            $body_top .= "\nMy web server information:\n" .
+            "  PHP Version " . phpversion() . "\n" .
+            "  PHP Extensions (List)\n" .
+            Show_Array(get_loaded_extensions()) .
+            "\nSquirrelMail-specific information:\n" .
+            "  Version:  $version\n" .
+            "  Plugins (List)\n" .
+            Show_Array($plugins);
+if (isset($ldap_server) && $ldap_server[0] && ! extension_loaded('ldap')) {
+    $warning = 1;
+    $warnings['ldap'] = "LDAP server defined in SquirrelMail config, " .
+        "but the module is not loaded in PHP";
+    $corrections['ldap'][] = "Reconfigure PHP with the option '--with-ldap'";
+    $corrections['ldap'][] = "Then recompile PHP and reinstall";
+    $corrections['ldap'][] = "-- OR --";
+    $corrections['ldap'][] = "Reconfigure SquirrelMail to not use LDAP";
+}
 
-$body = htmlspecialchars($body_top) . $body;
+$body = "\nMy IMAP server information:\n" .
+            "  Server type:  $imap_server_type\n";
+$imap_stream = fsockopen ($imapServerAddress, $imapPort, $error_number, $error_string);
+$server_info = fgets ($imap_stream, 1024);
+if ($imap_stream) {
+    // SUPRESS HOST NAME
+    $list = explode(' ', $server_info);
+    $list[2] = '[HIDDEN]';
+    $server_info = implode(' ', $list);
+    $body .=  "  Server info:  $server_info";
+    fputs ($imap_stream, "a001 CAPABILITY\r\n");
+    $read = fgets($imap_stream, 1024);
+    $list = explode(' ', $read);
+    array_shift($list);
+    array_shift($list);
+    $read = implode(' ', $list);
+    $body .= "  Capabilities:  $read";
+    fputs ($imap_stream, "a002 LOGOUT\r\n");
+    fclose($imap_stream);
+} else {
+    $body .= "  Unable to connect to IMAP server to get information.\n";
+    $warning = 1;
+    $warnings['imap'] = "Unable to connect to IMAP server";
+    $corrections['imap'][] = "Make sure you specified the correct mail server";
+    $corrections['imap'][] = "Make sure the mail server is running IMAP, not POP";
+    $corrections['imap'][] = "Make sure the server responds to port $imapPort";
+}
+$warning_html = '';
+$warning_num = 0;
+if (isset($warning) && $warning) {
+    foreach ($warnings as $key => $value) {
+        if ($warning_num == 0) {
+            $body_top .= "WARNINGS WERE REPORTED WITH YOUR SETUP:\n";
+            $body_top = "WARNINGS WERE REPORTED WITH YOUR SETUP -- SEE BELOW\n\n$body_top";
+            $warning_html = "<h1>Warnings were reported with your setup:</h1>\n<dl>\n";
+        }
+        $warning_num ++;
+        $warning_html .= "<dt><b>$value</b></dt>\n";
+        $body_top .= "\n$value\n";
+        foreach ($corrections[$key] as $corr_val) {
+            $body_top .= "  * $corr_val\n";
+            $warning_html .= "<dd>* $corr_val</dd>\n";
+        }
+    }
+    $warning_html .= "</dl>\n<p>$warning_num warning(s) reported.</p>\n<hr>\n";
+    $body_top .= "\n$warning_num warning(s) reported.\n";
+    $body_top .= "----------------------------------------------\n";
+}
+
+$body = htmlspecialchars($body_top . $body);
 
 ?>
-   <br />
+   <br>
    <table width="95%" align="center" border="0" cellpadding="2" cellspacing="0"><tr>
       <?php echo html_tag('td',"<b>"._("Submit a Bug Report")."</b>",'center',$color[0]); ?>
    </tr></table>
@@ -65,12 +148,12 @@ $body = htmlspecialchars($body_top) . $body;
 
    echo "<ul>";
    echo "<li>";
-   printf(_("Make sure that you are running the most recent copy of %s."),'<a href="http://www.squirrelmail.org/">SquirrelMail</a>');
-   printf(_("You are currently using version %s."),$version);
+   echo _("Make sure that you are running the most recent copy of <a href=\"http://www.squirrelmail.org/\">SquirrelMail</a>.");
+   echo sprintf(_("You are currently using version %s."),$version);
    echo "</li>\n";
 
    echo "<li>";
-   printf(_("Check to see if your bug is already listed in the %sBug List%s on SourceForge. If it is, we already know about it and are trying to fix it."), '<a href="http://sourceforge.net/bugs/?group_id=311">', '</a>');
+   echo _("Check to see if your bug is already listed in the <a href=\"http://sourceforge.net/bugs/?group_id=311\">Bug List</a> on SourceForge. If it is, we already know about it and are trying to fix it.");
    echo "</li>\n";
    
    echo "<li>";
@@ -78,7 +161,7 @@ $body = htmlspecialchars($body_top) . $body;
    echo "</li>\n";
 
    echo "<li>";
-   printf(_("If there were warnings displayed above, try to resolve them yourself. Read the guides in the %s directory where SquirrelMail was installed."), '<tt>doc/</tt>');
+   echo _("If there were warnings displayed above, try to resolve them yourself. Read the guides in the <tt>doc/</tt> directory where SquirrelMail was installed.");
    echo "</li>\n";
    echo "</ul>\n";
 
@@ -104,36 +187,15 @@ $body = htmlspecialchars($body_top) . $body;
    </tr>
    <tr>
      <td align="center">
-    <?php
-	echo addHidden("send_to_cc","");
-	echo addHidden("send_to_bcc","");
-	echo addHidden("subject","Bug Report");
-	echo addHidden("body",$body);
-	echo addSubmit(_("Start Bug Report Form"));
-    ?>
+       <input type="hidden" name="send_to_cc" value="" />
+       <input type="hidden" name="send_to_bcc" value="" />
+       <input type="hidden" name="subject" value="Bug Report" />
+       <input type="hidden" name="body" value="<?PHP echo $body ?>" />
+       <?php 
+        echo '<input type="submit" value="' . _("Start Bug Report Form") . "\" />\n";
+	?>
      </td>
    </tr>
    </table>
    </form>
-   <br />
-   <?php
-        // special forms that allow searching for bugs in mailing list and bugtracker
-	echo html_tag('table',
-                  html_tag('tr',
-                           html_tag('th',_("Search Mailing List Archives"),'center',$color[0])
-                           ) .
-                  html_tag('tr',
-                           html_tag('td', add_gmane_form())
-                           ) .
-                  html_tag('tr',
-                           html_tag('td', '&nbsp;<br />')
-                           ) .
-                  html_tag('tr',
-                           html_tag('th',_("Search SourceForge Bugtracker"),'center',$color[0])
-                           ) .
-                  html_tag('tr',
-                           html_tag('td', add_sf_bug_form())
-                           )
-                  ,'center','','width="95%"');
-  ?>
 </body></html>

@@ -7,101 +7,74 @@
  * Licensed under the GNU GPL. For full terms see the file COPYING.
  *
  * This implements functions that manipulate messages
- * NOTE: Quite a few functions in this file are obsolete
  *
- * @version $Id$
- * @package squirrelmail
- * @subpackage imap
+ * $Id$
  */
 
-/**
- * Copies specified messages to specified folder
- * @param int $imap_stream The resource ID for the IMAP connection
- * @param string $start Beginning of range to copy
- * @param string $end End of the range to copy
- * @param string $mailbox Which box to copy to
- * @deprecated This function is obsolete and should not be used
- */
+/* NOTE: quite some functions in this file are not used anymore. */
+
+/* Copies specified messages to specified folder */
+/* obsolete */
 function sqimap_messages_copy ($imap_stream, $start, $end, $mailbox) {
-    $read = sqimap_run_command ($imap_stream, "COPY $start:$end " . sqimap_encode_mailbox_name($mailbox), true, $response, $message, TRUE);
+    global $uid_support;
+    $read = sqimap_run_command ($imap_stream, "COPY $start:$end \"$mailbox\"", true, $response, $message, $uid_support);
 }
 
-/**
-* copy a range of messages ($id) to another mailbox ($mailbox)
-* @param int $imap_stream The resource ID for the IMAP socket
-* @param string $id The list of messages to copy
-* @param string $mailbox The destination to copy to
-* @return void
-*/
 function sqimap_msgs_list_copy ($imap_stream, $id, $mailbox) {
+    global $uid_support;
     $msgs_id = sqimap_message_list_squisher($id);    
-    $read = sqimap_run_command ($imap_stream, "COPY $msgs_id " . sqimap_encode_mailbox_name($mailbox), true, $response, $message, TRUE);
-}
-
-/**
-* move a range of messages ($id) to another mailbox. Deletes the originals.
-* @param int $imap_stream The resource ID for the IMAP socket
-* @param string $id The list of messages to move
-* @param string $mailbox The destination to move to
-* @return void
-*/
-function sqimap_msgs_list_move ($imap_stream, $id, $mailbox) {
-    $msgs_id = sqimap_message_list_squisher($id);
-    $read = sqimap_run_command ($imap_stream, "COPY $msgs_id " . sqimap_encode_mailbox_name($mailbox), true, $response, $message, TRUE);
-    $read = sqimap_run_command ($imap_stream, "STORE $msgs_id +FLAGS (\\Deleted)", true, $response,$message, TRUE);
+    $read = sqimap_run_command ($imap_stream, "COPY $msgs_id \"$mailbox\"", true, $response, $message, $uid_support);
+    $read = sqimap_run_command ($imap_stream, "STORE $msgs_id +FLAGS (\\Deleted)", true, $response, $message, $uid_support);
 }
 
 
-/**
- * Deletes specified messages and moves them to trash if possible
- * @deprecated This function is obsolete and should no longer be used
- * @param int $imap_steam The resource ID for the IMAP connection
- * @param string $start Start of range
- * @param string $end End of range
- * @param string $mailbox Mailbox messages are being deleted from
- * @return void
- */
-function sqimap_messages_delete ($imap_stream, $start, $end, $mailbox, $bypass_trash=false) {
-    global $move_to_trash, $trash_folder, $auto_expunge;
+/* Deletes specified messages and moves them to trash if possible */
+/* obsolete */
+function sqimap_messages_delete ($imap_stream, $start, $end, $mailbox) {
+    global $move_to_trash, $trash_folder, $auto_expunge, $uid_support;
 
-    if (($move_to_trash == true) && ($bypass_trash != true) &&
-        (sqimap_mailbox_exists($imap_stream, $trash_folder) && ($mailbox != $trash_folder))) {
+    if (($move_to_trash == true) && (sqimap_mailbox_exists($imap_stream, $trash_folder) && ($mailbox != $trash_folder))) {
         sqimap_messages_copy ($imap_stream, $start, $end, $trash_folder);
     }
     sqimap_messages_flag ($imap_stream, $start, $end, "Deleted", true);
 }
 
-function sqimap_msgs_list_delete ($imap_stream, $mailbox, $id, $bypass_trash=false) {
-    global $move_to_trash, $trash_folder;
+function sqimap_msgs_list_delete ($imap_stream, $mailbox, $id) {
+    global $move_to_trash, $trash_folder, $uid_support;
     $msgs_id = sqimap_message_list_squisher($id);
-    if (($move_to_trash == true) && ($bypass_trash != true) &&
-        (sqimap_mailbox_exists($imap_stream, $trash_folder) &&  ($mailbox != $trash_folder)) ) {
-        $read = sqimap_run_command ($imap_stream, "COPY $msgs_id " . sqimap_encode_mailbox_name($trash_folder), true, $response, $message, TRUE);
+    if (($move_to_trash == true) && (sqimap_mailbox_exists($imap_stream, $trash_folder) && ($mailbox != $trash_folder))) {
+        $read = sqimap_run_command ($imap_stream, "COPY $msgs_id \"$trash_folder\"", true, $response, $message, $uid_support);
     }
-    $read = sqimap_run_command ($imap_stream, "STORE $msgs_id +FLAGS (\\Deleted)", true, $response, $message, TRUE);
+    $read = sqimap_run_command ($imap_stream, "STORE $msgs_id +FLAGS (\\Deleted)", true, $response, $message, $uid_support);
 }
 
 
-/**
- * Sets the specified messages with specified flag
- */
+/* Sets the specified messages with specified flag */
 function sqimap_messages_flag ($imap_stream, $start, $end, $flag, $handle_errors) {
-    $read = sqimap_run_command ($imap_stream, "STORE $start:$end +FLAGS (\\$flag)", $handle_errors, $response, $message, TRUE);
+    global $uid_support;
+    $read = sqimap_run_command ($imap_stream, "STORE $start:$end +FLAGS (\\$flag)", $handle_errors, $response, $message, $uid_support);
+}
+
+/* Remove specified flag from specified messages */
+function sqimap_messages_remove_flag ($imap_stream, $start, $end, $flag, $handle_errors) {
+    global $uid_support;
+    $read = sqimap_run_command ($imap_stream, "STORE $start:$end -FLAGS (\\$flag)", $handle_errors, $response, $message, $uid_support);
 }
 
 function sqimap_toggle_flag($imap_stream, $id, $flag, $set, $handle_errors) {
+    global $uid_support;
     $msgs_id = sqimap_message_list_squisher($id);
     $set_string = ($set ? '+' : '-');
-    $read = sqimap_run_command ($imap_stream, "STORE $msgs_id ".$set_string."FLAGS ($flag)", $handle_errors, $response, $message, TRUE);
+    $read = sqimap_run_command ($imap_stream, "STORE $msgs_id ".$set_string."FLAGS ($flag)", $handle_errors, $response, $message, $uid_support);
 }
 
-/** @deprecated */
+// obsolete?
 function sqimap_get_small_header ($imap_stream, $id, $sent) {
     $res = sqimap_get_small_header_list($imap_stream, $id, $sent);
     return $res[0];
 }
 
-/**
+/*
  * Sort the message list and crunch to be as small as possible
  * (overflow could happen, so make it small if possible)
  */
@@ -129,13 +102,29 @@ function sqimap_message_list_squisher($messages_array) {
     return $msgs_str;
 }
 
-/**
- * Get sort order from server and return it as the $id array for mailbox_display.
+/* returns the references header lines */
+function get_reference_header ($imap_stream, $message) {
+    global $uid_support;
+    $responses = array ();
+    $results = array();
+    $references = "";
+    $responses = sqimap_run_command_list ($imap_stream, "FETCH $message BODY[HEADER.FIELDS (References)]", true, $response, $message, $uid_support);
+    if (!eregi("^\\* ([0-9]+) FETCH", $responses[0][0], $regs)) {
+        $responses = array ();
+    } 
+    return $responses;
+}
+
+
+/* get sort order from server and
+ * return it as the $id array for
+ * mailbox_display
  */
+
 function sqimap_get_sort_order ($imap_stream, $sort, $mbxresponse) {
     global  $default_charset, $thread_sort_messages,
             $internal_date_sort, $server_sort_array,
-            $sent_folder, $mailbox;
+            $sent_folder, $mailbox, $uid_support;
 
     if (sqsession_is_registered('server_sort_array')) {
         sqsession_unregister('server_sort_array');
@@ -148,20 +137,25 @@ function sqimap_get_sort_order ($imap_stream, $sort, $mbxresponse) {
     $sort_query = '';
 
     if ($sort == 6) {
-        if (isset($mbxresponse['UIDNEXT']) && $mbxresponse['UIDNEXT']) {
-            $uidnext = $mbxresponse['UIDNEXT']-1;
-        } else {
-            $uidnext = '*';
-        }
-        $query = "SEARCH UID 1:$uidnext";
-        $uids = sqimap_run_command ($imap_stream, $query, true, $response, $message, true);
-        if (isset($uids[0])) {
-            if (preg_match("/^\* SEARCH (.+)$/", $uids[0], $regs)) {
-                $server_sort_array = preg_split("/ /", trim($regs[1]));
+        if ($uid_support) {
+            if (isset($mbxresponse['UIDNEXT']) && $mbxresponse['UIDNEXT']) {
+                $uidnext = $mbxresponse['UIDNEXT']-1;
+            } else {
+                $uidnext = '*';
             }
-        }
-        if (!preg_match("/OK/", $response)) {
-            $server_sort_array = 'no';
+            $query = "SEARCH UID 1:$uidnext";
+            $uids = sqimap_run_command ($imap_stream, $query, true, $response, $message, true);
+            if (isset($uids[0])) {
+                if (preg_match("/^\* SEARCH (.+)$/", $uids[0], $regs)) {
+                    $server_sort_array = preg_split("/ /", trim($regs[1]));
+                }
+            }
+            if (!preg_match("/OK/", $response)) {
+                $server_sort_array = 'no';
+            }
+        } else {
+            $qty = $mbxresponse['EXISTS'];
+            $server_sort_array = range(1, $qty);
         }
         $server_sort_array = array_reverse($server_sort_array);
         sqsession_register($server_sort_array, 'server_sort_array');
@@ -184,13 +178,13 @@ function sqimap_get_sort_order ($imap_stream, $sort, $mbxresponse) {
     }
     if (!empty($sort_on[$sort])) {
         $query = "SORT ($sort_on[$sort]) ".strtoupper($default_charset).' ALL';
-        $sort_test = sqimap_run_command ($imap_stream, $query, true, $response, $message, TRUE);
+        $sort_test = sqimap_run_command ($imap_stream, $query, true, $response, $message, $uid_support);
     }
     if (isset($sort_test[0])) {
       for ($i=0,$iCnt=count($sort_test);$i<$iCnt;++$i) {
         if (preg_match("/^\* SORT (.+)$/", $sort_test[$i], $regs)) {
             $server_sort_array = preg_split("/ /", trim($regs[1]));
-	    break;
+            break;
         }
       }
     }
@@ -204,6 +198,7 @@ function sqimap_get_sort_order ($imap_stream, $sort, $mbxresponse) {
     return $server_sort_array;
 }
 
+
 /**
  * Get sort order from server if server does not have the SORT extension
  * and return it as array for mailbox_display.
@@ -213,6 +208,7 @@ function sqimap_get_sort_order ($imap_stream, $sort, $mbxresponse) {
  * @return array    $php_sort_array
  */
 function sqimap_get_php_sort_order ($imap_stream, $mbxresponse) {
+    global $uid_support;
 
     if (sqsession_is_registered('php_sort_array')) {
         sqsession_unregister('php_sort_array');
@@ -220,43 +216,48 @@ function sqimap_get_php_sort_order ($imap_stream, $mbxresponse) {
 
     $php_sort_array = array();
 
-    if (isset($mbxresponse['UIDNEXT']) && $mbxresponse['UIDNEXT']) {
-            $uidnext = $mbxresponse['UIDNEXT']-1;
-    } else {
-        $uidnext = '*';
-    }
-    $query = "SEARCH UID 1:$uidnext";
-    $uids = sqimap_run_command ($imap_stream, $query, true, $response, $message, true);
-    if (isset($uids[0])) {
-        $php_sort_array = array();
-        // EIMS workaround. EIMS returns the result as multiple untagged SEARCH responses
-        foreach($uids as $line) {
-            if (preg_match("/^\* SEARCH (.+)$/", $line, $regs)) {
-                 $php_sort_array += preg_split("/ /", trim($regs[1]));
+    if ($uid_support) {
+        if (isset($mbxresponse['UIDNEXT']) && $mbxresponse['UIDNEXT']) {
+                $uidnext = $mbxresponse['UIDNEXT']-1;
+        } else {
+            $uidnext = '*';
+        }
+        $query = "SEARCH UID 1:$uidnext";
+        $uids = sqimap_run_command ($imap_stream, $query, true, $response, $message, true);
+        if (isset($uids[0])) {
+            $php_sort_array = array();
+            // EIMS workaround. EIMS returns the result as multiple untagged SEARCH responses
+            foreach($uids as $line) {
+                if (preg_match("/^\* SEARCH (.+)$/", $line, $regs)) {
+                     $php_sort_array += preg_split("/ /", trim($regs[1]));
+                }
             }
         }
-    }
-    if (!preg_match("/OK/", $response)) {
-        $php_sort_array = 'no';
+        if (!preg_match("/OK/", $response)) {
+            $php_sort_array = 'no';
+        }
+    } else {
+       $qty = $mbxresponse['EXISTS'];
+       $php_sort_array = range(1, $qty);
     }
     sqsession_register($php_sort_array, 'php_sort_array');
     return $php_sort_array;
 }
 
 
-/**
- * Returns an indent array for printMessageinfo()
- * This represents the amount of indent needed (value),
- * for this message number (key)
- */
+/* returns an indent array for printMessageinfo()
+   this represents the amount of indent needed (value)
+   for this message number (key)
+*/
+
 function get_parent_level ($imap_stream) {
     global $sort_by_ref, $default_charset, $thread_new;
-    $parent = '';
-    $child  = '';
-    $cutoff = 0;
+        $parent = "";
+        $child = "";
+        $cutoff = 0;
 
-    /* loop through the threads and take unwanted characters out 
-       of the thread string then chop it up 
+    /* loop through the threads and take unwanted characters out
+       of the thread string then chop it up
      */
     for ($i=0;$i<count($thread_new);$i++) {
         $thread_new[$i] = preg_replace("/\s\(/", "(", $thread_new[$i]);
@@ -343,12 +344,13 @@ function get_parent_level ($imap_stream) {
 }
 
 
-/**
- * Returns an array with each element as a string representing one
- * message-thread as returned by the IMAP server.
- */
+/* returns an array with each element as a string
+   representing one message thread as returned by
+   the IMAP server
+*/
+
 function get_thread_sort ($imap_stream) {
-    global $thread_new, $sort_by_ref, $default_charset, $server_sort_array;
+    global $thread_new, $sort_by_ref, $default_charset, $server_sort_array, $uid_support;
     if (sqsession_is_registered('thread_new')) {
         sqsession_unregister('thread_new');
     }
@@ -363,14 +365,14 @@ function get_thread_sort ($imap_stream) {
         $sort_type = 'ORDEREDSUBJECT';
     }
     $query = "THREAD $sort_type ".strtoupper($default_charset)." ALL";
-    $thread_test = sqimap_run_command ($imap_stream, $query, true, $response, $message, TRUE);
+    $thread_test = sqimap_run_command ($imap_stream, $query, true, $response, $message, $uid_support);
     if (isset($thread_test[0])) {
-        for ($i=0,$iCnt=count($thread_test);$i<$iCnt;++$i) {
+       for ($i=0,$iCnt=count($thread_test);$i<$iCnt;++$i) {
            if (preg_match("/^\* THREAD (.+)$/", $thread_test[$i], $regs)) {
               $thread_list = trim($regs[1]);
 	      break;
            }
-        } 
+       } 	
     }
     else {
        $thread_list = "";
@@ -485,7 +487,7 @@ function parseArray($read,&$i) {
 
 function sqimap_get_small_header_list ($imap_stream, $msg_list, $show_num=false) {
     global $squirrelmail_language, $color, $data_dir, $username, $imap_server_type;
-    global $allow_server_sort;
+    global $uid_support, $allow_server_sort;
     /* Get the small headers for each message in $msg_list */
     $maxmsg = sizeof($msg_list);
     if ($show_num != '999999') {
@@ -511,19 +513,20 @@ function sqimap_get_small_header_list ($imap_stream, $msg_list, $show_num=false)
     } else {
         $query = "FETCH $msgs_str (FLAGS UID RFC822.SIZE BODY.PEEK[HEADER.FIELDS (Date To Cc From Subject X-Priority Content-Type)])";
     }
-    $read_list = sqimap_run_command_list ($imap_stream, $query, true, $response, $message, TRUE);
+    $read_list = sqimap_run_command_list ($imap_stream, $query, true, $response, $message, $uid_support);
     $i = 0;
     
     foreach ($read_list as $r) {
         /* initialize/reset vars */
         $subject = _("(no subject)");
-        $from = _("Unknown sender");
+        $from = _("Unknown Sender");
         $priority = 0;
         $messageid = '<>';
-	$type = array('','');
+        $type = array('','');
         $cc = $to = $inrepto = '';
         // use unset because we do isset below
         unset($date);
+	
         $flag_seen = $flag_answered = $flag_deleted = $flag_flagged = false;
 
         $read = implode('',$r);
@@ -662,8 +665,13 @@ function sqimap_get_small_header_list ($imap_stream, $msg_list, $show_num=false)
         } else {
             $tmpdate = $date = array();
         }
-        $msgi ="$unique_id";
-        $messages[$msgi]['ID'] = $unique_id;
+        if ($uid_support) {
+            $msgi ="$unique_id";
+            $messages[$msgi]['ID'] = $unique_id;
+        } else {
+            $msgi = "$id";
+            $messages[$msgi]['ID'] = $id;
+        }
         $messages[$msgi]['TIME_STAMP'] = getTimeStamp($tmpdate);
         $messages[$msgi]['DATE_STRING'] = getDateString($messages[$msgi]['TIME_STAMP']);
         $messages[$msgi]['FROM'] = $from; //parseAddress($from);
@@ -706,15 +714,73 @@ function sqimap_get_small_header_list ($imap_stream, $msg_list, $show_num=false)
     return $new_messages;
 }
 
-/**
+// obsolete?
+function sqimap_get_headerfield($imap_stream, $field) {
+    global $uid_support;
+    $sid = sqimap_session_id(false);
+
+    $results = array();
+    $read_list = array();
+
+    $query = "FETCH 1:* (UID BODY.PEEK[HEADER.FIELDS ($field)])";
+    $readin_list = sqimap_run_command_list ($imap_stream, $query, true, $response, $message, $uid_support);
+    $i = 0;
+
+    foreach ($readin_list as $r) {
+        $r = implode('',$r);
+        /* first we unfold the header */
+        $r = str_replace(array("\r\n", "\n\t","\n\s"),array("\n",'',''),$r);
+        /* 
+         * now we can make a new header array with each element representing 
+         * a headerline
+         */
+        $r = explode("\n" , $r);  
+        if (!$uid_support) {
+            if (!preg_match("/^\\*\s+([0-9]+)\s+FETCH/iAU",$r[0], $regs)) {
+                set_up_language($squirrelmail_language);
+                echo '<br><b><font color=$color[2]>' .
+                      _("ERROR : Could not complete request.") .
+                      '</b><br>' .
+                      _("Unknown response from IMAP server: ") . ' 1.' .
+                      $r[0] . "</font><br>\n";
+            } else {
+                $id = $regs[1];
+            }
+        } else {
+            if (!preg_match("/^\\*\s+([0-9]+)\s+FETCH.*UID\s+([0-9]+)\s+/iAU",$r[0], $regs)) {
+                set_up_language($squirrelmail_language);
+                echo '<br><b><font color=$color[2]>' .
+                     _("ERROR : Could not complete request.") .
+                     '</b><br>' .
+                     _("Unknown response from IMAP server: ") . ' 1.' .
+                     $r[0] . "</font><br>\n";
+            } else {
+                $id = $regs[2];
+            }
+        }
+        $field = $r[1];
+        $field = substr($field,strlen($field)+2);
+        $result[] = array($id,$field);
+    }
+    return $result;
+}
+
+
+
+
+ 
+/*
  * Returns a message array with all the information about a message.  
  * See the documentation folder for more information about this array.
  */
 function sqimap_get_message ($imap_stream, $id, $mailbox) {
-    // typecast to int to prohibit 1:* msgs sets
+    global $uid_support;
+
+    // prohibit 1:* msgs sets
     $id = (int) $id;
+
     $flags = array();
-    $read = sqimap_run_command ($imap_stream, "FETCH $id (FLAGS BODYSTRUCTURE)", true, $response, $message, TRUE);
+    $read = sqimap_run_command ($imap_stream, "FETCH $id (FLAGS BODYSTRUCTURE)", true, $response, $message, $uid_support);
     if ($read) {
         if (preg_match('/.+FLAGS\s\((.*)\)\s/AUi',$read[0],$regs)) {
             if (trim($regs[1])) {
@@ -733,11 +799,44 @@ function sqimap_get_message ($imap_stream, $id, $mailbox) {
     } 
     $bodystructure = implode('',$read);
     $msg =  mime_structure($bodystructure,$flags);
-    $read = sqimap_run_command ($imap_stream, "FETCH $id BODY[HEADER]", true, $response, $message, TRUE);
+    $read = sqimap_run_command ($imap_stream, "FETCH $id BODY[HEADER]", true, $response, $message, $uid_support);
     $rfc822_header = new Rfc822Header();
     $rfc822_header->parseHeader($read);
     $msg->rfc822_header = $rfc822_header;
     return $msg;
+}
+
+/* Wrapper function that reformats the header information. */
+// obsolete?
+function sqimap_get_message_header ($imap_stream, $id, $mailbox) {
+    global $uid_support;
+    $read = sqimap_run_command ($imap_stream, "FETCH $id BODY[HEADER]", true, $response, $message, $uid_support);
+    $header = sqimap_get_header($imap_stream, $read); 
+    $header->id = $id;
+    $header->mailbox = $mailbox;
+    return $header;
+}
+
+/* Wrapper function that reformats the entity header information. */
+// obsolete?
+function sqimap_get_ent_header ($imap_stream, $id, $mailbox, $ent) {
+    global $uid_support;
+    $read = sqimap_run_command ($imap_stream, "FETCH $id BODY[$ent.HEADER]", true, $response, $message, $uid_support);
+    $header = sqimap_get_header($imap_stream, $read); 
+    $header->id = $id;
+    $header->mailbox = $mailbox;
+    return $header;
+}
+
+/* function to get the mime headers */
+// obsolete?
+function sqimap_get_mime_ent_header ($imap_stream, $id, $mailbox, $ent) {
+    global $uid_support;
+    $read = sqimap_run_command ($imap_stream, "FETCH $id:$id BODY[$ent.MIME]", true, $response, $message, $uid_support);
+    $header = sqimap_get_header($imap_stream, $read); 
+    $header->id = $id;
+    $header->mailbox = $mailbox;
+    return $header;
 }
 
 ?>

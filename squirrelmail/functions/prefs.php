@@ -9,18 +9,21 @@
  * This contains functions for manipulating user preferences
  *
  * $Id$
- * @package squirrelmail
  */
 
-/** Include global.php */
 require_once(SM_PATH . 'functions/global.php');
 
 sqgetGlobalVar('prefs_cache', $prefs_cache, SQ_SESSION );
 sqgetGlobalVar('prefs_are_cached', $prefs_are_cached, SQ_SESSION );
 
+$rg = ini_get('register_globals');
+
+/* if php version >= 4.1 OR (4.0 AND $rg = off) */
 if ( !sqsession_is_registered('prefs_are_cached') ||
      !isset( $prefs_cache) ||
-     !is_array( $prefs_cache) 
+     !is_array( $prefs_cache) ||
+     check_php_version(4,1) ||
+     empty($rg)
    ) {
     $prefs_are_cached = false;
     $prefs_cache = array();
@@ -36,16 +39,6 @@ if (isset($prefs_backend) && file_exists(SM_PATH . $prefs_backend)) {
 
 /* Hashing functions */
 
-/**
- * Given a username and datafilename, this will return the path to the
- * hashed location of that datafile.
- *
- * @param string username the username of the current user
- * @param string dir the squirrelmail datadir
- * @param string datafile the name of the file to open
- * @param bool hash_seach default true
- * @return string the hashed location of datafile
- */
 function getHashedFile($username, $dir, $datafile, $hash_search = true) {
     global $dir_hash_level;
 
@@ -60,7 +53,7 @@ function getHashedFile($username, $dir, $datafile, $hash_search = true) {
     /* First, get and make sure the full hash directory exists. */
     $real_hash_dir = getHashedDir($username, $dir, $hash_dirs);
 
-    /* Set the value of our real data file, after we've removed unwanted characters. */
+    /* Set the value of our real data file. */
     $datafile = str_replace('/', '_', $datafile);
     $result = "$real_hash_dir/$datafile";
 
@@ -87,15 +80,6 @@ function getHashedFile($username, $dir, $datafile, $hash_search = true) {
     return ($result);
 }
 
-/**
- * Helper function for getHashedFile, given a username returns the hashed
- * dir for that username.
- *
- * @param string username the username of the current user
- * @param string dir the squirrelmail datadir
- * @param string hash_dirs default ''
- * @return the path to the hash dir for username
- */
 function getHashedDir($username, $dir, $hash_dirs = '') {
     global $dir_hash_level;
 
@@ -127,12 +111,6 @@ function getHashedDir($username, $dir, $hash_dirs = '') {
     return ($real_hash_dir);
 }
 
-/**
- * Helper function for getHashDir which does the actual hash calculation.
- *
- * @param string username the username to calculate the hash dir for
- * @return array a list of hash dirs for this username
- */
 function computeHashDirs($username) {
     /* Compute the hash for this user and extract the hash directories. */
     $hash = base_convert(crc32($username), 10, 16);
@@ -143,29 +121,6 @@ function computeHashDirs($username) {
 
     /* Return our array of hash directories. */
     return ($hash_dirs);
-}
-
-function checkForJavascript($reset = FALSE)
-{
-  global $data_dir, $username, $javascript_on, $javascript_setting;
-
-  if ( !$reset && sqGetGlobalVar('javascript_on', $javascript_on, SQ_SESSION) )
-    return $javascript_on;
-
-  if ( $reset || !isset($javascript_setting) )
-    $javascript_setting = getPref($data_dir, $username, 'javascript_setting', SMPREF_JS_AUTODETECT);
-
-  if ( !sqGetGlobalVar('new_js_autodetect_results', $js_autodetect_results) &&
-       !sqGetGlobalVar('js_autodetect_results', $js_autodetect_results) )
-    $js_autodetect_results = SMPREF_JS_OFF;
-
-  if ( $javascript_setting == SMPREF_JS_AUTODETECT )
-    $javascript_on = $js_autodetect_results;
-  else
-    $javascript_on = $javascript_setting;
-
-  sqsession_register($javascript_on, 'javascript_on');
-  return $javascript_on;
 }
 
 ?>

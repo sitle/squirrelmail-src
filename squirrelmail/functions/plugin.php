@@ -11,21 +11,14 @@
  * Documentation on how to write plugins might show up some time.
  *
  * $Id$
- * @package squirrelmail
  */
 
-/** Everything needs global.. */
 require_once(SM_PATH . 'functions/global.php');
-require_once(SM_PATH . 'functions/prefs.php');
 
 global $squirrelmail_plugin_hooks;
 $squirrelmail_plugin_hooks = array();
 
-/**
- * This function adds a plugin.
- * @param string $name Internal plugin name (ie. delete_move_next)
- * @return void
- */
+/* This function adds a plugin. */
 function use_plugin ($name) {
     if (file_exists(SM_PATH . "plugins/$name/setup.php")) {
         include_once(SM_PATH . "plugins/$name/setup.php");
@@ -36,11 +29,7 @@ function use_plugin ($name) {
     }
 }
 
-/**
- * This function executes a hook.
- * @param string $name Name of hook to fire
- * @return mixed $data
- */
+/* This function executes a hook. */
 function do_hook ($name) {
     global $squirrelmail_plugin_hooks;
     $data = func_get_args();
@@ -61,13 +50,7 @@ function do_hook ($name) {
     return $data;
 }
 
-/**
- * This function executes a hook and allows for parameters to be passed.
- *
- * @param string name the name of the hook
- * @param mixed param the parameters to pass to the hook function
- * @return mixed the return value of the hook function
- */
+/* This function executes a hook. */
 function do_hook_function($name,$parm=NULL) {
     global $squirrelmail_plugin_hooks;
     $ret = '';
@@ -87,14 +70,7 @@ function do_hook_function($name,$parm=NULL) {
     return $ret;
 }
 
-/**
- * This function executes a hook, concatenating the results of each
- * plugin that has the hook defined.
- *
- * @param string name the name of the hook
- * @param mixed parm optional hook function parameters
- * @return string a concatenation of the results of each plugin function
- */
+/* This function executes a hook. */
 function concat_hook_function($name,$parm=NULL) {
     global $squirrelmail_plugin_hooks;
     $ret = '';
@@ -170,13 +146,18 @@ function boolean_hook_function($name,$parm=NULL,$priority=0,$tie=false) {
  * This function checks whether the user's USER_AGENT is known to
  * be broken. If so, returns true and the plugin is invisible to the
  * offending browser.
- * *** THIS IS A TEST FOR JAVASCRIPT SUPPORT ***
- * This function needs to have its name changed!
- *
- * @return bool whether this browser properly supports JavaScript
  */
 function soupNazi(){
-    return !checkForJavascript();
+
+    $soup_menu = array('Mozilla/3','Mozilla/2','Mozilla/1', 'Opera 4',
+                       'Opera/4', 'OmniWeb', 'Lynx');
+    sqgetGlobalVar('HTTP_USER_AGENT', $user_agent, SQ_SERVER);
+    foreach($soup_menu as $browser) {
+        if(stristr($user_agent, $browser)) {
+            return 1;
+        }
+    }
+    return 0;
 }
 /*************************************/
 /*** MAIN PLUGIN LOADING CODE HERE ***/
