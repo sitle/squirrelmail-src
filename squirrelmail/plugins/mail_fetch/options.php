@@ -16,11 +16,17 @@
     require_once('../functions/imap.php');
     require_once('../src/load_prefs.php');
 
+    $username = $_SESSION['username'];
+    $key = $_COOKIE['key'];
+
     displayPageHeader( $color, 'None' );
 
     //if dosen't select any option
-    if (!isset($mf_action))
+    if (!isset($_POST['mf_action'])) {
         $mf_action = 'config';
+    } else {
+        $mf_action = $_POST['mf_action'];
+    }
 
     switch( $mf_action ) {
     case 'add':
