@@ -21,7 +21,7 @@ class ZkSvc_html {
 
     /* Properties */
     var $zkld;
-    
+
     var $buffer;        // Buffered output
     var $htmlmod;       // Module handler
     var $title;         // Page title
@@ -31,10 +31,8 @@ class ZkSvc_html {
     var $link;          // Link color
     var $vlink;         // Visited link color
     var $alink;         // Active link color
-    
-    var $tag_options;   // Array of tag options array
 
-    var $indentation;   // Indentation level
+    var $tag_options;   // Array of tag options array
 
     /**  CONSTRUCTOR
      */
@@ -52,8 +50,7 @@ class ZkSvc_html {
         $this->link = '#3300CC';
         $this->vlink = '#993333';
         $this->alink = '#993333';
-        $this->indentation = 0;
-        
+
         /* To know if a tag exists we check that it has got a place in the following array */
         $this->tag_options = array( 'table' => array( 'tag_name' => 'table',
                                                       'tag_closed' => TRUE ),
@@ -71,10 +68,18 @@ class ZkSvc_html {
                                                      'tag_closed' => TRUE ),
                                     'input' => array( 'tag_name' => 'input',
                                                       'tag_closed' => FALSE ),
+                                    'br' => array( 'tag_name' => 'br',
+                                                      'tag_closed' => FALSE ),
                                     'textarea' => array( 'tag_name' => 'textarea',
                                                          'tag_closed' => TRUE ),
                                     'p' => array( 'tag_name' => 'p',
                                                   'tag_closed' => TRUE ),
+                                    'a' => array( 'tag_name' => 'a',
+                                                  'tag_closed' => TRUE ),
+                                    'center' => array( 'name' => 'center',
+                                                       'tag_closed' => TRUE ),
+                                    'img' => array( 'name' => 'img',
+                                                    'tag_closed' => FALSE ),                                                       
                                     'blockquote' => array( 'tag_name' => 'blockquote',
                                                            'tag_closed' => TRUE )
                                     );
@@ -100,7 +105,7 @@ class ZkSvc_html {
     /**
      * Outputs the buffer and re-initialize it.
      *
-     */    
+     */
     function flush( $string = '' ) {
         echo $this->buffer . $string;
         flush();
@@ -138,6 +143,17 @@ class ZkSvc_html {
     }
 
     /**
+     * Builds a footer string
+     *
+     */
+    function footer() {
+
+        $this->buffer .= "\n</body>\n</html>\n";
+        $this->flush();
+
+    }
+
+    /**
      * Builds a tag string
      *
      */
@@ -147,7 +163,7 @@ class ZkSvc_html {
         if( $this->tag_options[$tag] <> NULL ) {
             if( $options == '' )
                 $options = $this->tag_options[$tag];
-               
+
            $ret = zkTag_html( $tag, $string, $options, $this->tag_options[$tag]['tag_closed'] );
         }
         return( $ret );
@@ -179,11 +195,14 @@ class ZkSvc_html {
  *
  */
 function zkGetParms_html( $parms ) {
-    
+
     $buffer = '';
     foreach( $parms as $key => $opt ) {
-        if( $opt <> '' && substr( $key, 0, 3 ) <> 'tag' )
-            $buffer .= " $key=\"$opt\"";
+        if( substr( $key, 0, 3 ) <> 'tag' ) {
+            $buffer .= " $key";
+            if ($opt <> '' )
+                $buffer .= "=\"$opt\"";
+        }
     }
     return( $buffer );
 }
