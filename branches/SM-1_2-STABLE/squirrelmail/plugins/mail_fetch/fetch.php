@@ -20,6 +20,20 @@
     require_once('../functions/i18n.php');
     require_once( '../plugins/mail_fetch/functions.php' );
 
+    /* globals */ 
+    $username = $_SESSION['username'];
+    $key = $_COOKIE['key'];
+    $onetimepad = $_SESSION['onetimepad'];
+    $delimter = $_SESSION['delimiter'];
+
+    /* This form, like the advanced identities form
+       uses dynamic post variable names so we need
+       to extract the whole $_POST array to make 
+       things work
+    */
+
+    extract($_POST);
+    /* end globals */
 
     function Mail_Fetch_Status($msg) {
         echo '<table width="90%"><tr><td>' .
