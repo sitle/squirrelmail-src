@@ -9,20 +9,20 @@
  */
 
 /**
- * ZkAuthImp_Test
+ * ZkMod_auth_test
  *
- * The ZkAuthImp_Test class purely meant for testing of the
- * ZkAuthHandler class.
+ * The ZkAuthMod_Test class purely meant for testing of the
+ * ZkSvc_auth class.
  */
-class ZkAuthImp_Test {
+class ZkMod_auth_test {
     /**
-     * Create a new ZkAuthImplementor with the given options.
+     * Create a new ZkMod_auth_test with the given options.
      *
      * @param array $options an associative array that can pass options
-     *                       to the authentication implementator
+     *                       to the authentication module
      */
-    function ZkAuthImpl_Test($options) {
-        /* Instantiate the Authentication Implementor Here! */
+    function ZkMod_auth_test($options) {
+        /* Instantiate the Authentication Module Here! */
     }
 
     /**
