@@ -17,7 +17,6 @@
  * Check if user has access to administrative functions
  *
  * @return boolean
- * @access private
  */
 function adm_check_user() {
     global $PHP_SELF;
@@ -32,11 +31,11 @@ function adm_check_user() {
         $auth = FALSE;
     } else if (file_exists(SM_PATH . 'plugins/administrator/admins')) {
         $auths = file(SM_PATH . 'plugins/administrator/admins');
-        array_walk($auths, 'trim');
+        array_walk($auths, 'adm_array_trim');
         $auth = in_array($username, $auths);
     } else if (file_exists(SM_PATH . 'config/admins')) {
         $auths = file(SM_PATH . 'config/admins');
-        array_walk($auths, 'trim');
+        array_walk($auths, 'adm_array_trim');
         $auth = in_array($username, $auths);
     } else if (($adm_id = fileowner(SM_PATH . 'config/config.php')) &&
                function_exists('posix_getpwuid')) {
@@ -49,4 +48,14 @@ function adm_check_user() {
     return ($auth);
 }
 
+/**
+ * Removes whitespace from array values
+ * @param string $value array value that has to be trimmed
+ * @param string $key array key
+ * @since 1.5.1 and 1.4.5
+ * @access private
+ */
+function adm_array_trim(&$value,$key) {
+    $value=trim($value);
+}
 ?>
