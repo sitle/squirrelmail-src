@@ -44,8 +44,8 @@ echo '<br><table width="100%" border="0" cellspacing="0" cellpadding="2" ' .
         '<b><center>' .
         _("Viewing a Business Card") . " - ";
 $msg_url = 'read_body.php?mailbox='.urlencode($mailbox).
-    '&amp;startMessage='.$startMessage.
-    '&amp;passed_id='.$passed_id;
+    '&amp;startMessage='.urlencode($startMessage).
+    '&amp;passed_id='.urlencode($passed_id);
 
 $msg_url = set_url_var($msg_url, 'ent_id', 0);
 
@@ -156,40 +156,40 @@ if (isset($vcard_nice['url'])) {
         '">' . _("Web Page") . "</option>\n";
 }
 if (isset($vcard_nice['adr'])) {
-    echo '<option value="' . $vcard_nice['adr'] .
+    echo '<option value="' . htmlspecialchars($vcard_nice['adr']) .
         '">' . _("Address") . "</option>\n";
 }
 if (isset($vcard_nice['title'])) {
-    echo '<option value="' . $vcard_nice['title'] .
+    echo '<option value="' . htmlspecialchars($vcard_nice['title']) .
         '">' . _("Title") . "</option>\n";
 }
 if (isset($vcard_nice['org'])) {
-    echo '<option value="' . $vcard_nice['org'] .
+    echo '<option value="' . htmlspecialchars($vcard_nice['org']) .
         '">' . _("Organization / Department") . "</option>\n";
 }
 if (isset($vcard_nice['title'])) {
-    echo '<option value="' . $vcard_nice['title'] .
-        '; ' . $vcard_nice['org'] .
+    echo '<option value="' . htmlspecialchars($vcard_nice['title']) .
+        '; ' . htmlspecialchars($vcard_nice['org']) .
         '">' . _("Title & Org. / Dept.") . "</option>\n";
 }
 if (isset($vcard_nice['tel;work'])) {
-    echo '<option value="' . $vcard_nice['tel;work'] .
+    echo '<option value="' . htmlspecialchars($vcard_nice['tel;work']) .
         '">' . _("Work Phone") . "</option>\n";
 }
 if (isset($vcard_nice['tel;home'])) {
-    echo '<option value="' . $vcard_nice['tel;home'] .
+    echo '<option value="' . htmlspecialchars($vcard_nice['tel;home']) .
         '">' . _("Home Phone") . "</option>\n";
 }
 if (isset($vcard_nice['tel;cell'])) {
-    echo '<option value="' . $vcard_nice['tel;cell'] .
+    echo '<option value="' . htmlspecialchars($vcard_nice['tel;cell']) .
         '">' . _("Cellular Phone") . "</option>\n";
 }
 if (isset($vcard_nice['tel;fax'])) {
-    echo '<option value="' . $vcard_nice['tel;fax'] .
+    echo '<option value="' . htmlspecialchars($vcard_nice['tel;fax']) .
         '">' . _("Fax") . "</option>\n";
 }
 if (isset($vcard_nice['note'])) {
-    echo '<option value="' . $vcard_nice['note'] .
+    echo '<option value="' . htmlspecialchars($vcard_nice['note']) .
         '">' . _("Note") . "</option>\n";
 }
 echo '</select>' .
@@ -202,14 +202,14 @@ echo '</select>' .
         '<INPUT NAME="addaddr[lastname]" type=hidden value="' .
         $vcard_safe['lastname'] . '">' .
         '<INPUT TYPE=submit NAME="addaddr[SUBMIT]" ' .
-        'VALUE="Add to Address Book">' .
+        'VALUE="'._("Add to Address Book").'">' .
         '</td></tr>' .
         '</table>' .
         '</FORM>' .
         '</td></tr>' .
         '<tr><td align=center>' .
         '<a href="../src/download.php?absolute_dl=true&amp;passed_id=' .
-        $passed_id . '&amp;mailbox=' . urlencode($mailbox) .
+        urlencode($passed_id) . '&amp;mailbox=' . urlencode($mailbox) .
         '&amp;ent_id=' . urlencode($ent_id) . '">' .
         _("Download this as a file") . '</A>' .
         '</TD></TR></TABLE>' .
