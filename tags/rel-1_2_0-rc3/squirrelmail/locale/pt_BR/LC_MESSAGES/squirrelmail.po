@@ -1,0 +1,850 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR Free Software Foundation, Inc.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: $Id$\n"
+"POT-Creation-Date: 2000-12-13 16:52-0500\n"
+"PO-Revision-Date: 2001-01-19 21:00-0300\n"
+"Last-Translator: Henrique MOura <henrique@fournet.inf.br>\n"
+"Language-Team: Portuguese (Brazilian) <squirrelmail-translations@lists.sourceforge.net\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=ISO-8859-1\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: squirrelmail/src/addrbook_popup.php:37
+msgid "Address Book"
+msgstr "Livro de Endereços"
+
+#: squirrelmail/src/addrbook_search.php:96
+#: squirrelmail/src/addrbook_search_html.php:75
+#: squirrelmail/src/addressbook.php:311
+msgid "Name"
+msgstr "Nome"
+
+#: squirrelmail/src/addrbook_search.php:96
+#: squirrelmail/src/addrbook_search_html.php:75
+#: squirrelmail/src/addressbook.php:312
+msgid "E-mail"
+msgstr "E-mail"
+
+#: squirrelmail/src/addrbook_search.php:96
+#: squirrelmail/src/addrbook_search_html.php:75
+#: squirrelmail/src/addressbook.php:313
+msgid "Info"
+msgstr "Informações"
+
+#: squirrelmail/src/addrbook_search.php:99
+#: squirrelmail/src/addrbook_search_html.php:78
+msgid "Source"
+msgstr "Fonte"
+
+#: squirrelmail/src/addrbook_search.php:134 squirrelmail/src/right_main.php:20
+#: squirrelmail/src/search.php:6
+msgid "You must login first."
+msgstr "Você deve fazer login primeiro."
+
+#: squirrelmail/src/addrbook_search.php:139 squirrelmail/src/right_main.php:25
+#: squirrelmail/src/search.php:11 squirrelmail/src/webmail.php:22
+msgid "You need a valid user and password to access this page!"
+msgstr "Você necessita de um usuário e senha válidos para acessar esta página!"
+
+#: squirrelmail/src/addrbook_search.php:174
+#: squirrelmail/src/addrbook_search.php:258
+#: squirrelmail/src/addrbook_search_html.php:210
+msgid "No persons matching your search was found"
+msgstr "Não foram encontradas pessoas para a pesquisa solicitada."
+
+#: squirrelmail/src/addrbook_search.php:187
+#: squirrelmail/src/addrbook_search_html.php:135
+msgid "Search for"
+msgstr "Procurar por"
+
+#: squirrelmail/src/addrbook_search.php:194
+#: squirrelmail/src/addrbook_search_html.php:143
+msgid "in"
+msgstr "em"
+
+#: squirrelmail/src/addrbook_search.php:196
+#: squirrelmail/src/addrbook_search_html.php:146
+msgid "All address books"
+msgstr "Todos os livros de endereços"
+
+#: squirrelmail/src/addrbook_search.php:206
+#: squirrelmail/src/addrbook_search_html.php:158
+#: squirrelmail/src/search.php:39 squirrelmail/src/search.php:93
+msgid "Search"
+msgstr "Perquisar"
+
+#: squirrelmail/src/addrbook_search.php:208
+#: squirrelmail/src/addrbook_search_html.php:160
+msgid "List all"
+msgstr "Listar todos"
+
+#: squirrelmail/src/addrbook_search.php:211
+msgid "Close window"
+msgstr "Fechar janela"
+
+#: squirrelmail/src/addrbook_search.php:229
+#: squirrelmail/src/addrbook_search_html.php:183
+#, c-format
+msgid "Unable to list addresses from %s"
+msgstr "Impossível listar endereço para %s"
+
+#: squirrelmail/src/addrbook_search.php:251
+#: squirrelmail/src/addrbook_search_html.php:206
+msgid "Your search failed with the following error(s)"
+msgstr "Sua pesquisa falhou retornando o seguinte erro(s)"
+
+#: squirrelmail/src/addrbook_search_html.php:101
+msgid "Use Addresses"
+msgstr "Use Endereços"
+
+#: squirrelmail/src/addrbook_search_html.php:125
+msgid "Address Book Search"
+msgstr "Pesquisa no Livro de Endereços"
+
+#: squirrelmail/src/addrbook_search_html.php:219
+msgid "Return"
+msgstr "Voltar"
+
+#: squirrelmail/src/addressbook.php:46 squirrelmail/src/addressbook.php:310
+msgid "Nickname"
+msgstr "Apelido"
+
+#: squirrelmail/src/addressbook.php:51
+msgid "Must be unique"
+msgstr "Deve ser único"
+
+#: squirrelmail/src/addressbook.php:53
+msgid "E-mail address"
+msgstr "Endereço de e-mail"
+
+#: squirrelmail/src/addressbook.php:58
+msgid "First name"
+msgstr "Primeiro Nome"
+
+#: squirrelmail/src/addressbook.php:63
+msgid "Last name"
+msgstr "Sobrenome"
+
+#: squirrelmail/src/addressbook.php:68
+msgid "Additional info"
+msgstr "Informação adicional"
+
+#: squirrelmail/src/addressbook.php:87
+msgid "No personal address book is defined. Contact administrator."
+msgstr "Nenhum livro de enderecos pessoal definido. Contacte o administrador."
+
+#: squirrelmail/src/addressbook.php:184
+msgid "You can only edit one address at the time"
+msgstr "Voce pode editar somente um endereco por vez"
+
+#: squirrelmail/src/addressbook.php:196 squirrelmail/src/addressbook.php:199
+#: squirrelmail/src/addressbook.php:228 squirrelmail/src/addressbook.php:231
+msgid "Update address"
+msgstr "Atualizar endereço"
+
+#: squirrelmail/src/addressbook.php:219 squirrelmail/src/addressbook.php:269
+msgid "ERROR"
+msgstr "ERRO"
+
+#: squirrelmail/src/addressbook.php:245
+msgid "Unknown error"
+msgstr "Erro desconhecido"
+
+#: squirrelmail/src/addressbook.php:348
+msgid "Edit selected"
+msgstr "Editar selecionados"
+
+#: squirrelmail/src/addressbook.php:350
+msgid "Delete selected"
+msgstr "Apagar selecionados"
+
+#: squirrelmail/src/addressbook.php:360
+#, c-format
+msgid "Add to %s"
+msgstr "Adicionar a %s"
+
+#: squirrelmail/src/addressbook.php:363
+msgid "Add address"
+msgstr "Adicionar endereço"
+
+#: squirrelmail/src/compose.php:101
+msgid "Original Message"
+msgstr "Mensagem Original"
+
+#: squirrelmail/src/compose.php:102 squirrelmail/src/download.php:116
+#: squirrelmail/src/options_order.php:50 squirrelmail/src/search.php:78
+#: squirrelmail/src/search.php:79
+msgid "Subject"
+msgstr "Assunto"
+
+#: squirrelmail/src/compose.php:103 squirrelmail/src/download.php:117
+#: squirrelmail/src/options_order.php:48 squirrelmail/src/search.php:81
+#: squirrelmail/src/search.php:82
+msgid "From"
+msgstr "De"
+
+#: squirrelmail/src/compose.php:104 squirrelmail/src/download.php:118
+#: squirrelmail/src/search.php:87 squirrelmail/src/search.php:88
+msgid "To"
+msgstr "Para"
+
+#: squirrelmail/src/compose.php:228 squirrelmail/src/read_body.php:352
+msgid "To:"
+msgstr "Para:"
+
+#: squirrelmail/src/compose.php:236
+msgid "CC:"
+msgstr "CC:"
+
+#: squirrelmail/src/compose.php:244
+msgid "BCC:"
+msgstr "BCC:"
+
+#: squirrelmail/src/compose.php:252 squirrelmail/src/read_body.php:322
+msgid "Subject:"
+msgstr "Assunto:"
+
+#: squirrelmail/src/compose.php:294 squirrelmail/src/compose.php:340
+msgid "Send"
+msgstr "Enviar"
+
+#: squirrelmail/src/compose.php:300
+msgid "Attach:"
+msgstr "Anexar:"
+
+#: squirrelmail/src/compose.php:306 squirrelmail/src/options_order.php:133
+msgid "Add"
+msgstr "Adicionar"
+
+#: squirrelmail/src/compose.php:318
+msgid "Delete selected attachments"
+msgstr "Apagar os anexos selecionados"
+
+#: squirrelmail/src/compose.php:333 squirrelmail/src/compose.php:335
+#: squirrelmail/src/compose.php:338
+msgid "Addresses"
+msgstr "Endereços"
+
+#: squirrelmail/src/compose.php:363
+msgid "You have not filled in the \"To:\" field."
+msgstr "Voce nao preencheu o campo \"Para:\"."
+
+#: squirrelmail/src/compose.php:409 squirrelmail/src/compose.php:443
+msgid "Could not move/copy file. File not attached"
+msgstr "Não posso mover/copiar arquivo. Arquivo não está anexado."
+
+#: squirrelmail/src/download.php:35
+msgid "Viewing a text attachment"
+msgstr "Visualizando texto anexado"
+
+#: squirrelmail/src/download.php:38 squirrelmail/src/download.php:40
+#: squirrelmail/src/read_body.php:48
+msgid "View message"
+msgstr "Ver mensagem"
+
+#: squirrelmail/src/download.php:45
+msgid "Download this as a file"
+msgstr "Fazer o download deste arquivo"
+
+#: squirrelmail/src/download.php:119 squirrelmail/src/options_order.php:49
+msgid "Date"
+msgstr "Data"
+
+#: squirrelmail/src/folders.php:35 squirrelmail/src/left_main.php:126
+msgid "Folders"
+msgstr "Pastas"
+
+#: squirrelmail/src/folders.php:43
+msgid "Subscribed successfully!"
+msgstr "Subscrito com sucesso!"
+
+#: squirrelmail/src/folders.php:45
+msgid "Unsubscribed successfully!"
+msgstr "Não está mais subscrito!"
+
+#: squirrelmail/src/folders.php:47
+msgid "Deleted folder successfully!"
+msgstr "Pasta apagada com sucesso!"
+
+#: squirrelmail/src/folders.php:49
+msgid "Created folder successfully!"
+msgstr "Pasta criada com sucesso!"
+
+#: squirrelmail/src/folders.php:51
+msgid "Renamed successfully!"
+msgstr "Renomeado com sucesso!"
+
+#: squirrelmail/src/folders.php:61
+msgid "Folders created successfully!"
+msgstr "Pastas criadas com sucesso!"
+
+#: squirrelmail/src/folders.php:64 squirrelmail/src/left_main.php:129
+msgid "refresh folder list"
+msgstr "Atualizar lista de pastas"
+
+#: squirrelmail/src/folders.php:77
+msgid "Special Folder Options"
+msgstr "Opções especias de pastas"
+
+#: squirrelmail/src/folders.php:80
+msgid ""
+"In order for SquirrelMail to provide the full set of options you need to "
+"create the special folders listed below.  Just click the check box and hit "
+"the create button."
+msgstr "Para que o SquirrelMail forneça todo o conjunto de opções, você precisará "
+"criar as pastas especiais listadas abaixo. Clique o check box e pressione "
+"o botão [Criar]"
+
+#: squirrelmail/src/folders.php:83
+msgid "Create Sent"
+msgstr "Criar Enviadas"
+
+#: squirrelmail/src/folders.php:86
+msgid "Create Trash"
+msgstr "Criar Lixeira"
+
+#: squirrelmail/src/folders.php:88 squirrelmail/src/folders.php:205
+msgid "Create"
+msgstr "Criar"
+
+#: squirrelmail/src/folders.php:96
+msgid "Delete Folder"
+msgstr "Apagar Pasta"
+
+#: squirrelmail/src/folders.php:137 squirrelmail/src/options_highlight.php:73
+#: squirrelmail/src/read_body.php:278
+msgid "Delete"
+msgstr "Apagar"
+
+#: squirrelmail/src/folders.php:141 squirrelmail/src/folders.php:237
+msgid "No folders found"
+msgstr "Não encontrou pastas"
+
+#: squirrelmail/src/folders.php:148
+msgid "Create Folder"
+msgstr "Criar Pasta"
+
+#: squirrelmail/src/folders.php:153
+msgid "as a subfolder of"
+msgstr "como subpasta de"
+
+#: squirrelmail/src/folders.php:202
+msgid "Let this folder contain subfolders"
+msgstr "Permitir que esta pasta contenha subpastas"
+
+#: squirrelmail/src/folders.php:212
+msgid "Rename a Folder"
+msgstr "Renomear uma Pasta"
+
+#: squirrelmail/src/folders.php:233
+msgid "Rename"
+msgstr "Renomear"
+
+#: squirrelmail/src/folders.php:246 squirrelmail/src/folders.php:265
+msgid "Unsubscribe"
+msgstr "Cancelar subscrição"
+
+#: squirrelmail/src/folders.php:246 squirrelmail/src/folders.php:308
+msgid "Subscribe"
+msgstr "Subscrever"
+
+#: squirrelmail/src/folders.php:269
+msgid "No folders were found to unsubscribe from!"
+msgstr "Não foram encontradas pastas para subscrever!"
+
+#: squirrelmail/src/folders.php:311
+msgid "No folders were found to subscribe to!"
+msgstr "Não foi encontrada uma pasta para subscrever!"
+
+#: squirrelmail/src/folders_create.php:33
+msgid "Illegal folder name.  Please select a different name."
+msgstr "Nome ilegal para pasta. Por favor escolha um nome diferente."
+
+#: squirrelmail/src/folders_create.php:33
+msgid "Click here to go back"
+msgstr "Clique aqui para voltar"
+
+#: squirrelmail/src/folders_rename_getname.php:46
+msgid "Rename a folder"
+msgstr "Renomear uma pasta"
+
+#: squirrelmail/src/folders_rename_getname.php:50
+msgid "New name:"
+msgstr "Novo nome:"
+
+#: squirrelmail/src/folders_rename_getname.php:56
+#: squirrelmail/src/options_highlight.php:187
+msgid "Submit"
+msgstr "Executar"
+
+#: squirrelmail/src/help.php:92
+msgid "Help"
+msgstr "Ajuda"
+
+#: squirrelmail/src/help.php:126
+#, c-format
+msgid ""
+"The help has not been translated to %s.  It will be displayed in English "
+"instead."
+msgstr "O help não foi traduzido para %s. Será apresentado em Inglês."
+
+#: squirrelmail/src/help.php:132
+msgid "Some or all of the help documents are not present!"
+msgstr "Alguns ou todos os documentos de ajuda não estão presentes!"
+
+#: squirrelmail/src/help.php:156 squirrelmail/src/help.php:175
+msgid "Table of Contents"
+msgstr "Índice"
+
+#: squirrelmail/src/help.php:173 squirrelmail/src/help.php:174
+#: squirrelmail/src/read_body.php:291 squirrelmail/src/read_body.php:293
+msgid "Previous"
+msgstr "Anterior"
+
+#: squirrelmail/src/help.php:176 squirrelmail/src/help.php:177
+#: squirrelmail/src/read_body.php:295 squirrelmail/src/read_body.php:297
+msgid "Next"
+msgstr "Seguinte"
+
+#: squirrelmail/src/help.php:196
+msgid "Top"
+msgstr "Início"
+
+#: squirrelmail/src/left_main.php:106
+msgid "purge"
+msgstr "apagar"
+
+#: squirrelmail/src/login.php:41 squirrelmail/src/login.php:83
+msgid "Login"
+msgstr "Login"
+
+#: squirrelmail/src/login.php:52
+#, c-format
+msgid "SquirrelMail version %s"
+msgstr "SquirrelMail versão %s"
+
+#: squirrelmail/src/login.php:54
+msgid "By the SquirrelMail Development Team"
+msgstr "Pela Equipe de Desenvolvimento Squirrelmail"
+
+#: squirrelmail/src/login.php:60
+#, c-format
+msgid "%s Login"
+msgstr "Login %s"
+
+#: squirrelmail/src/login.php:68
+msgid "Name:"
+msgstr "Nome:"
+
+#: squirrelmail/src/login.php:74
+msgid "Password:"
+msgstr "Senha:"
+
+#: squirrelmail/src/move_messages.php:85
+#: squirrelmail/src/move_messages.php:114
+#: squirrelmail/src/move_messages.php:143
+msgid "No messages were selected."
+msgstr "Nenhuma mensagem selecionada."
+
+#: squirrelmail/src/options.php:45 squirrelmail/src/options_display.php:37
+#: squirrelmail/src/options_folder.php:40
+#: squirrelmail/src/options_highlight.php:62
+#: squirrelmail/src/options_order.php:41
+#: squirrelmail/src/options_personal.php:41
+msgid "Options"
+msgstr "Opções"
+
+#: squirrelmail/src/options.php:59
+msgid "Successfully saved personal information!"
+msgstr "Informações pessoais gravadas com sucesso!"
+
+#: squirrelmail/src/options.php:75
+msgid "Successfully saved display preferences!"
+msgstr "Preferências de apresentação gravadas com sucesso!"
+
+#: squirrelmail/src/options.php:76
+msgid "Refresh Page"
+msgstr "Atualizar página"
+
+#: squirrelmail/src/options.php:97
+msgid "Successfully saved folder preferences!"
+msgstr "Preferências de pasta gravadas com sucesso!"
+
+#: squirrelmail/src/options.php:98
+msgid "Refresh Folder List"
+msgstr "Atualizar lista de pastas"
+
+#: squirrelmail/src/options.php:112 squirrelmail/src/options_personal.php:41
+msgid "Personal Information"
+msgstr "Informações Pessoais"
+
+#: squirrelmail/src/options.php:117
+msgid ""
+"This contains personal information about yourself such as your name, your "
+"email address, etc."
+msgstr "Contém informações pessoais sobre você, tais como nome, seu endereço de "
+"email, etc"
+
+#: squirrelmail/src/options.php:124 squirrelmail/src/options_highlight.php:62
+msgid "Message Highlighting"
+msgstr "Destacando mensagem"
+
+#: squirrelmail/src/options.php:129
+msgid ""
+"Based upon given criteria, incoming messages can have different background "
+"colors in the message list.  This helps to easily distinguish who the "
+"messages are from, especially for mailing lists."
+msgstr "Baseado nos critérios fornecidos, as mensagens recebidas podem ter fundos diferentes "
+"na lista de mensagens. Isto facilita distinguir quem está "
+"enviando as mensagens, especialmente em mailing lists."
+
+#: squirrelmail/src/options.php:136 squirrelmail/src/options_order.php:41
+msgid "Index Order"
+msgstr "Ordem de indexação"
+
+#: squirrelmail/src/options.php:141
+msgid ""
+"The order of the message index can be rearanged and changed to contain the "
+"headers in any order you want."
+msgstr "A ordem que as mensagens estão indexadas pode ser alterada para conter "
+"os cabeçalhos em qualquer ordem que você queira."
+
+#: squirrelmail/src/options.php:150 squirrelmail/src/options_display.php:37
+msgid "Display Preferences"
+msgstr "Preferências de Apresentação"
+
+#: squirrelmail/src/options.php:155
+msgid ""
+"You can change the way that SquirrelMail looks and displays information to "
+"you, such as the colors, the language, and other settings."
+msgstr "Você pode alterar a forma como o SquirrelMail apresenta informação para "
+"você, como as cores, linguagem e outras características."
+
+#: squirrelmail/src/options.php:162 squirrelmail/src/options_folder.php:40
+msgid "Folder Preferences"
+msgstr "Preferências de Pastas"
+
+#: squirrelmail/src/options.php:167
+msgid ""
+"These settings change the way your folders are displayed and manipulated."
+msgstr "Estas opções alteram a forma que as pastas são apresentadas e manipuladas."
+
+#: squirrelmail/src/options_display.php:43
+msgid "Theme"
+msgstr "Tema"
+
+#: squirrelmail/src/options_display.php:58
+msgid "Language"
+msgstr "Língua"
+
+#: squirrelmail/src/options_display.php:76
+msgid "Use Javascript or HTML addressbook?"
+msgstr "Usar Livro de Endereços com Javascript ou HTML?"
+
+#: squirrelmail/src/options_display.php:78
+#: squirrelmail/src/options_display.php:81
+msgid "JavaScript"
+msgstr "JavaScript"
+
+#: squirrelmail/src/options_display.php:79
+#: squirrelmail/src/options_display.php:82
+msgid "HTML"
+msgstr "HTML"
+
+#: squirrelmail/src/options_display.php:88
+msgid "Number of Messages to Index"
+msgstr "Número de mensagens a indexar"
+
+#: squirrelmail/src/options_display.php:99
+msgid "Wrap incoming text at"
+msgstr "Quebrar texto recebido em"
+
+#: squirrelmail/src/options_display.php:110
+msgid "Size of editor window"
+msgstr "Tamanho da janela de edição"
+
+#: squirrelmail/src/options_display.php:148
+msgid "Width of folder list"
+msgstr "Largura da lista de pastas"
+
+#: squirrelmail/src/options_display.php:202
+msgid "Auto refresh folder list"
+msgstr "Autoatualizar lista de pastas"
+
+#: squirrelmail/src/options_folder.php:48
+msgid "Folder Path"
+msgstr "Caminho da pasta"
+
+#: squirrelmail/src/options_folder.php:61
+msgid "Trash Folder:"
+msgstr "Lixeira:"
+
+#: squirrelmail/src/options_folder.php:65
+msgid "Don't use Trash"
+msgstr "Não use Lixeira"
+
+#: squirrelmail/src/options_folder.php:67
+msgid "Do not use Trash"
+msgstr "Não use Lixeira"
+
+#: squirrelmail/src/options_folder.php:89
+msgid "Sent Folder:"
+msgstr "Pasta de Enviadas:"
+
+#: squirrelmail/src/options_folder.php:93
+msgid "Don't use Sent"
+msgstr "Não utilize Enviar"
+
+#: squirrelmail/src/options_folder.php:95
+msgid "Do not use Sent"
+msgstr "Não use Enviar"
+
+#: squirrelmail/src/options_folder.php:117
+msgid "Unseen message notification"
+msgstr "Notificação de mensagens não lidas"
+
+#: squirrelmail/src/options_folder.php:120
+msgid "No notification"
+msgstr "Sem notificação"
+
+#: squirrelmail/src/options_folder.php:121
+msgid "Only INBOX"
+msgstr "Somente ENTRADA"
+
+#: squirrelmail/src/options_folder.php:122
+msgid "All Folders"
+msgstr "Todas as Pastas"
+
+#: squirrelmail/src/options_folder.php:129
+msgid "Unseen message notification type"
+msgstr "Tipo de notificação de mensagens não lidas"
+
+#: squirrelmail/src/options_folder.php:132
+msgid "Only unseen"
+msgstr "Somente não lidas"
+
+#: squirrelmail/src/options_folder.php:133
+msgid "Unseen and Total"
+msgstr "Não lidas e Total"
+
+#: squirrelmail/src/options_highlight.php:66
+msgid "New"
+msgstr "Novo"
+
+#: squirrelmail/src/options_highlight.php:67
+msgid "Done"
+msgstr "Feito"
+
+#: squirrelmail/src/options_highlight.php:73
+msgid "Edit"
+msgstr "Editar"
+
+#: squirrelmail/src/options_highlight.php:86
+msgid "No highlighting is defined"
+msgstr "Nenhum destaque foi definido"
+
+#: squirrelmail/src/options_highlight.php:124
+msgid "Identifying name"
+msgstr "Identificando nome"
+
+#: squirrelmail/src/options_highlight.php:137
+msgid "Color"
+msgstr "Cor"
+
+#: squirrelmail/src/options_highlight.php:141
+msgid "Dark Blue"
+msgstr "Azul escuro"
+
+#: squirrelmail/src/options_highlight.php:142
+msgid "Dark Green"
+msgstr "Verde escuro"
+
+#: squirrelmail/src/options_highlight.php:143
+msgid "Dark Yellow"
+msgstr "Amarelo escuro"
+
+#: squirrelmail/src/options_highlight.php:144
+msgid "Dark Cyan"
+msgstr "Cyan escuro"
+
+#: squirrelmail/src/options_highlight.php:145
+msgid "Dark Magenta"
+msgstr "Magenta escuro"
+
+#: squirrelmail/src/options_highlight.php:146
+msgid "Light Blue"
+msgstr "Azul claro"
+
+#: squirrelmail/src/options_highlight.php:147
+msgid "Light Green"
+msgstr "Verde claro"
+
+#: squirrelmail/src/options_highlight.php:148
+msgid "Light Yellow"
+msgstr "Amarelo claro"
+
+#: squirrelmail/src/options_highlight.php:149
+msgid "Light Cyan"
+msgstr "Cyan claro"
+
+#: squirrelmail/src/options_highlight.php:150
+msgid "Light Magenta"
+msgstr "Magenta claro"
+
+#: squirrelmail/src/options_highlight.php:151
+msgid "Dark Gray"
+msgstr "Cinza escuro"
+
+#: squirrelmail/src/options_highlight.php:152
+msgid "Medium Gray"
+msgstr "Cinza médio"
+
+#: squirrelmail/src/options_highlight.php:153
+msgid "Light Gray"
+msgstr "Cinza claro"
+
+#: squirrelmail/src/options_highlight.php:154
+msgid "White"
+msgstr "Branco"
+
+#: squirrelmail/src/options_highlight.php:156
+msgid "Other:"
+msgstr "Outro:"
+
+#: squirrelmail/src/options_highlight.php:158
+msgid "Ex: 63aa7f"
+msgstr "Ex: 63aa7f"
+
+#: squirrelmail/src/options_highlight.php:164
+msgid "Match"
+msgstr "Encontrado"
+
+#: squirrelmail/src/options_order.php:47
+msgid "Checkbox"
+msgstr "Checkbox"
+
+#: squirrelmail/src/options_order.php:51
+msgid "Flags"
+msgstr "Bandeiras"
+
+#: squirrelmail/src/options_order.php:52
+msgid "Size"
+msgstr "Tamanho"
+
+#: squirrelmail/src/options_order.php:90
+msgid ""
+"The index order is the order that the columns are arranged in the message "
+"index.  You can add, remove, and move columns around to customize them to "
+"fit your needs."
+msgstr "A ordem do índice é a ordem que as colunas estão arranjadas no índice da mensagem. "
+"você pode adicionar, remover e mover colunas para adequar à sua necessidade."
+
+#: squirrelmail/src/options_order.php:100
+msgid "up"
+msgstr "para cima"
+
+#: squirrelmail/src/options_order.php:102
+msgid "down"
+msgstr "para baixo"
+
+#: squirrelmail/src/options_order.php:107
+msgid "remove"
+msgstr "remover"
+
+#: squirrelmail/src/options_order.php:137
+msgid "Return to options page"
+msgstr "Voltar para página de opções"
+
+#: squirrelmail/src/options_personal.php:47
+msgid "Full Name"
+msgstr "Nome completo"
+
+#: squirrelmail/src/options_personal.php:53
+msgid "E-Mail Address"
+msgstr "E-Mail"
+
+#: squirrelmail/src/options_personal.php:59
+msgid "Reply To"
+msgstr "Responder a"
+
+#: squirrelmail/src/options_personal.php:65
+msgid "Signature"
+msgstr "Assinatura"
+
+#: squirrelmail/src/options_personal.php:69
+msgid "Use a signature"
+msgstr "Usar assinatura"
+
+#: squirrelmail/src/options_personal.php:72
+msgid "Use a signature?"
+msgstr "Usar assinatura?"
+
+#: squirrelmail/src/read_body.php:41
+msgid "Viewing full header"
+msgstr "Vendo cabeçalho completo"
+
+#: squirrelmail/src/read_body.php:181
+msgid "more"
+msgstr "mais"
+
+#: squirrelmail/src/read_body.php:182
+msgid "less"
+msgstr "menos"
+
+#: squirrelmail/src/read_body.php:271
+msgid "Message List"
+msgstr "Lista de Mensagens"
+
+#: squirrelmail/src/read_body.php:304
+msgid "Forward"
+msgstr "Encaminhar"
+
+#: squirrelmail/src/read_body.php:307
+msgid "Reply"
+msgstr "Responder"
+
+#: squirrelmail/src/read_body.php:310
+msgid "Reply All"
+msgstr "Responder Todas"
+
+#: squirrelmail/src/read_body.php:328 squirrelmail/src/read_body.php:330
+msgid "View full header"
+msgstr "Ver cabeçalho completo"
+
+#: squirrelmail/src/read_body.php:336
+msgid "From:"
+msgstr "De:"
+
+#: squirrelmail/src/read_body.php:344
+msgid "Date:"
+msgstr "Data:"
+
+#: squirrelmail/src/search.php:72 squirrelmail/src/search.php:73
+msgid "Body"
+msgstr "Corpo"
+
+#: squirrelmail/src/search.php:75 squirrelmail/src/search.php:76
+msgid "Everywhere"
+msgstr "Todo lugar"
+
+#: squirrelmail/src/search.php:84 squirrelmail/src/search.php:85
+msgid "Cc"
+msgstr "CC"
+
+#: squirrelmail/src/signout.php:48
+msgid "Sign Out"
+msgstr "Desconectar"
+
+#: squirrelmail/src/signout.php:55
+msgid "You have been successfully signed out."
+msgstr "Você desligou do sistema com sucesso."
+
+#: squirrelmail/src/signout.php:58
+msgid "Click here to log back in."
+msgstr "Clique aqui para efetuar novamente o logon."
+)
