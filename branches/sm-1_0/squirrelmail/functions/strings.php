@@ -569,5 +569,11 @@
       
       return $String;
    }
+   
+   
+   function quoteIMAP($str)
+   {
+       return ereg_replace('(["\\])', '\\\\1', $str);
+   }
 
 ?>
