@@ -16,34 +16,29 @@ include_once(PATH . 'env.foowd.php');
 
 class smdoc extends foowd {
 
-  var $tpl;                       // output template object
-
-  /*
-   * Constructor
-   * -------------------------------------------------------------
-   * Initializes new instance of FOOWD environment
-   *  $database      - Optional Array containing database settings
-   *  $user          - Optional containing user details
-   *  $groups        - Optional of additional user groups
-   *  $debug_enabled - Optional Boolean indicating whether or not to enable debug
-   * -------------------------------------------------------------
+  /**
+   * Constructs a new environment object.
+   *
+   * @constructor foowd
+   * @param optional array database An array of database connection parameters.
+   * @param optional array user An array of identifiers of the user to load.
+   * @param optional array groups An array of user groups to define.
+   * @param optional mixed debug Track execution, can be a boolean value or a string containing the debugging class to use.
    */
   function smdoc($database = NULL,
-                       $user = NULL, $groups = NULL,
-                       $debug = NULL)
+                 $user = NULL, $groups = NULL,
+                 $debug = NULL, $path = NULL, $cache = NULL, $template = NULL)
   {
     $this->path = getVarConstOrDefault($path, 'PATH', 'lib');
 
     $debugClass = getConstOrDefault('DEBUG_CLASS', 'foowd_debug');
-    $tplClass   = getConstOrDefault('TEMPLATE_CLASS', 'smdoc_display');
     $dbClass    = getConstOrDefault('DB_CLASS', 'foowd_db');
-    $userClass  = getConstOrDefault('USER_CLASS', 'smdoc_user');
     $groupClass  = getConstOrDefault('GROUP_CLASS', 'smdoc_group');
+    $userClass  = getVarConstOrDefault($user['class'],  'USER_CLASS',  'smdoc_user');
+    $cacheClass = getVarConstOrDefault($cache['class'], 'CACHE_CLASS', 'foowd_cache');
 
     if ( !class_exists($debugClass) )
       trigger_error('Could not find class "'.$debugClass,'"' , E_USER_ERROR);
-    if ( !class_exists($tplClass) )
-      trigger_error('Could not find class "'.$tplClass,'"' , E_USER_ERROR);
     if ( !class_exists($dbClass) )
       trigger_error('Could not find class "'.$dbClass,'"' , E_USER_ERROR);
     if ( !class_exists($userClass) )
@@ -63,18 +58,22 @@ class smdoc extends foowd {
     $this->database = call_user_func(array($dbClass,'factory'), &$this, $database);
     $this->database->open();
 
-    /*
-     * Initialize template
-     */
-    $this->tpl = call_user_func(array($tplClass,'factory'), 'index.tpl');
-    $this->tpl->assign_by_ref('FOOWD_OBJECT', $this);
-
     /* 
      * Cache settings
      */
-    if ((isset($cache) || getConstOrDefault('CACHE_ON', FALSE)) && class_exists('foowd_cache')) {
-      $this->cache = foowd_cache::factory($cache);
+    if ( (isset($cache) || getConstOrDefault('CACHE_ON', FALSE)) && class_exists($cacheClass) ) {
+        $this->cache = new $cacheClass(
+		    getVarOrDefault($cache['dir'], NULL),
+		    getVarOrDefault($cache['objects'], NULL)
+        );
+    } else {
+        $this->cache = FALSE;
     }
+
+    /*
+     * Initialize template
+     */
+    $this->template = getVarConstOrDefault($template, 'TEMPLATE_PATH', 'templates/default');
 
     /*
      * User group initialization
@@ -97,7 +96,6 @@ class smdoc extends foowd {
       $this->user->updatorName = $user->title;
       $this->user->save($this, FALSE);
     }
-    $this->tpl->assign_by_ref('CURRENT_USER', $this->user);
 
     $this->track();
   }
@@ -114,10 +112,6 @@ class smdoc extends foowd {
      */
     function destroy()
     {
-        if ($this->debug) {         // display debug data
-            $this->debug->display($this);
-        }
-        $this->tpl->display();      // display template
         if ( $this->database )
             $this->database->close(); // close DB
         unset($this);               // unset object
@@ -134,25 +128,9 @@ class smdoc extends foowd {
 	 * @param array userArray The user array passed into <code>{@link foowd::foowd}</code>.
 	 * @return mixed The selected user object or FALSE on failure.
 	 */
-	function fetchUser($userid, $password = NULL) { // fetches a user into $this->user, should only be used by Foowd constructor, fetch users as objects using fetchObject() if required
+	function fetchUser($userArray = NULL) {
         trigger_error('foowd::fetchUser method deprecated in smdoc' , E_USER_ERROR);
 	}
-
-	/**
-	 * Get user details from an external mechanism.
-	 *
-	 * If not already set, populate the user array with the user classid and
-	 * fetch the username and password of the current user from one of the input
-	 * mechanisms
-	 *
-	 * @class foowd
-	 * @method getUserDetails
-	 * @param array user The user array passed into <code>foowd::foowd</code>.
-	 * @return array The resulting user array.
-	 */
-    function getUserDetails(&$user) {
-        trigger_error('foowd::getUserDetails method deprecated in smdoc', E_USER_ERROR);
-    }
 
     /**
      * getUserGroups returns an array containing a list of user groups
@@ -198,26 +176,29 @@ class smdoc extends foowd {
 	 *
 	 * @class foowd
 	 * @method fetchObject
-	 * @param array obj An array of object access values.
+	 * @param optional int objectid Object ID of object to fetch.
+	 * @param optional int classid Class ID of object to fetch.
+	 * @param optional int version Version number of object to fetch.
+	 * @param optional str method Name of method that will be called upon object.
+	 * @param optional int workspaceid Workspace ID of object to fetch.
 	 * @return object The selected object or NULL on failure.
 	 * @see foowd::getObject
 	 */
-	function fetchObject($obj = NULL) {
-		$this->track('smdoc->fetchObject', $obj);
+	function fetchObject($objectid = NULL, $classid = NULL,
+                         $version = 0, $method = NULL, $workspaceid = NULL) {
+        $this->track('smdoc->fetchObject', $objectid, $classid, $version, $method, $workspaceid);
 
-		if (isset($obj['objectid']) && is_numeric($obj['objectid'])) {
-			$objectid = $obj['objectid'];
-		} elseif (isset($obj['object'])) {
-			$objectid = crc32(strtolower($obj['object']));
-		} else {
-			$objectid = getConst('DEFAULT_OBJECTID');
-		}
-
+        if ( is_array($objectid) && isset($objectid['objectid']) )
+            $objectid = $obj['objectid'];
+        elseif (!isset($objectid)) 
+            $objectid = getConst('DEFAULT_OBJECTID');       
+ 
         // @ELH - search for external items first
         $new_obj = smdoc_external::factory($this, $objectid);
         if ( $new_obj == NULL )
         {
-            $new_obj = parent::fetchObject($obj);
+            $new_obj = parent::fetchObject($objectid, $classid,
+                                           $version, $method, $workspaceid);
         }
 
         $this->track();

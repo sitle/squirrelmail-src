@@ -18,10 +18,8 @@ $EXTERNAL_RESOURCES[SQMINDEX_CLASS_ID]['title'] = 'Site Index';
  * shown based on the group, and includes categorized links for document
  * creation closer to other documents of the same type.
  */
-function sqmindex(&$foowd) {
+function sqmindex(&$foowd, &$result) {
     $foowd->track('sqmindex');
-
-    $siteindex = new smdoc_display('site_index.tpl');
 
     /**
      * Print site content, leave out users, groups, workspaces
@@ -33,7 +31,6 @@ function sqmindex(&$foowd) {
 
     $orderby = array('title', 'classid');
     $objects = $foowd->getObjects($where, NULL, $orderby);
-
     $list_objects = array();
 
     $i = 0;
@@ -72,8 +69,7 @@ function sqmindex(&$foowd) {
         $i++;
       }
     }
-
-    $siteindex->assign_by_ref('OBJECT_LIST', $list_objects);
-    $foowd->tpl->assign('BODY', $siteindex);
+    $result['objectList'] =& $list_objects;
+    $result['body_template'] = 'smdoc_external.siteindex.php';
     $foowd->track();
 }
