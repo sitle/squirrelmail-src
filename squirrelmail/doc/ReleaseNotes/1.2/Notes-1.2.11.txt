@@ -1,0 +1,111 @@
+/*****************************************************************
+ * Release Notes: SquirrelMail 1.2.11                            *
+ * The "Mixed Nuts" Release                                      *
+ * February 9 2003                                               *
+ *****************************************************************/
+
+In this edition of SquirrelMail Release Notes:
+   * All about this Release!!!
+   * Reporting my favorite SquirrelMail 1.2 bug
+   * Important Note about PHP versions
+   * About our Release Aliases
+
+All about this Release!!!
+=========================
+
+   This release brings some security fixes, and some session fixes
+releated to double logins of 1.2.10.  Combined with those, we hope
+we have managed to get some of the other noticable bugs in the
+1.2.10 release.
+
+   You'll not find nifty new features in this release because we're
+maintaining it only. Meanwhile, we are working on stabilizing the
+already quite stable development branch, which comes with loads
+of enhancements and improvements! We hope to present you with the
+shiny new 1.4 series Any Time Soon[tm].
+
+See the Changelog file for details of this release.
+
+   Being one of the most popular webmail clients, the developers of
+SquirrelMail feel a huge desire and responsibility to continue push
+the envelope and make SquirrelMail the best it can possibly be. Here
+is an incomplete list of some of the great features that Squirrelmail
+has to offer:
+
+  * Collapsible Folders - The folder list can be collapsed at any
+          parent folder. This makes folder lists with large
+          hierarchical structures much easier to manage and navigate.
+  * The Paginator! - This enables quick access to any page in the
+          message list by simply choosing the page number to view
+          rather than tediously clicking "next" 50 times.
+  * Drafts - It is now possible to compose a message and save it to
+          be sent at a later date with the drafts option.
+  * Ability to mark messages as read and unread from the message listing.
+  * Multiple Identities - It is now possible to create different
+          identities (home, work, school) that can be chosen upon
+          sending. Each identity can have its own email address,
+          full name, and signature.
+  * Ability to forward messages as attachments from the message listing.
+  * Reply Citations - Different types of citations are now possible
+          when replying to messages.
+  * Server-side sorting support adds speed to the mailbox display, even
+          with large mailboxes. Server-sid thread sorting support allows 
+          users to display mailboxes in thread-sort order.
+
+  
+I am sure there are plenty more features I have missed. You just have
+to try it for yourself!
+
+   Home Page:    http://www.squirrelmail.org/
+   Download:     http://www.squirrelmail.org/download.php
+   ScreenShots:  http://www.squirrelmail.org/screenshots.php
+
+
+Reporting my favorite SquirrelMail 1.2 bug
+==========================================
+
+Of course, in the words of Linus Torvalds, this release is officially
+certified to be Bug-Free (tm).
+
+However, if for some reason some bugs manage to find their way to the
+surface, please report them at once (after all, they ARE uncertified
+bugs!!!) The PROPER place to report these bugs is the SquirrelMail Bug
+Tracker.
+
+   http://www.squirrelmail.org/bugs
+
+Thank you for your cooperation in that issue. That helps us to make
+sure that nothing slips through the cracks. Also, it would help if
+people would check existing tracker items for a bug before reporting
+it again. This would help to eliminate duplicate reports, and
+increase the time we can spend CODING by DECREASING the time we
+spend sorting through bug reports. And remember, check not only OPEN
+bug reports, but also closed ones as a bug that you report MAY have
+been fixed in CVS already.
+
+
+Important Note about PHP versions
+=================================
+
+PHP Versions have changed in many ways from the 4.0.X series to the 
+current 4.2.3 release. While it is always recommended to be running
+the latest stable release of PHP we realize that may not be under
+your control. So while converting SquirrelMail to work without
+register_globals we were careful to test with a wide variety of
+PHP versions. The current recommended PHP versions for SquirrelMail
+are PHP 4.0.6 through 4.2.3. Versions earlier than 4.0.6 are known to
+work, as well as development PHP version but they are not considered
+the ideal versions for SquirrelMail. 
+
+
+About our Release Aliases - By Jonathan Angliss
+=========================
+
+Because we've been working hard on the 1.4 stable release, the
+security enhancements has brought a few confused minds into the camp.
+Chris suggested that it's all a bunch of Mixed Nuts, with the bug
+fixing, and testing of both stable versions.
+
+
+                  Happy SquirrelMailing!
+                    - The SquirrelMail Project Team
