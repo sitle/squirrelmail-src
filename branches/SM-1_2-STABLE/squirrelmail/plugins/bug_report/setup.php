@@ -41,7 +41,10 @@ function bug_report_button() {
 
 function bug_report_save() {
     global $username,$data_dir;
-
+    if ( (float)substr(PHP_VERSION,0,3) < 4.1 ) {
+        global $_POST;
+    }
+ 
     if(isset($_POST['bug_report_bug_report_visible'])) {
         setPref($data_dir, $username, 'bug_report_visible', '1');
     } else {

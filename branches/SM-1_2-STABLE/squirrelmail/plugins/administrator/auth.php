@@ -10,9 +10,7 @@
  */
 function adm_check_user() {
     if ( (float)substr(PHP_VERSION,0,3) < 4.1) {
-        if (ini_get('register_globals') == 0) {
-            global $_SESSION, $_SERVER;
-        }
+        global $_SESSION, $_SERVER;
     }
     if (isset($_SESSION['username'])) {
         $username = $_SESSION['username'];

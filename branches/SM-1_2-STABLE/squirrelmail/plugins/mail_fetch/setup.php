@@ -40,9 +40,7 @@
         global $mailfetch_lmos_, $mailfetch_uidl_, $mailfetch_login_, $mailfetch_fref_;
         global $PHP_SELF;
         if ( (float)substr(PHP_VERSION,0,3) < 4.1 ) {
-            if (ini_get('register_globals') == 0) {
-                global $_SESSION;
-            }
+            global $_SESSION;
         }
         $username = $_SESSION['username'];
 
@@ -72,11 +70,9 @@
         require_once ('../plugins/mail_fetch/functions.php');
         require_once('../functions/i18n.php');
 
-        global $data_dir, $imapServerAddress,$imapPort, $_COOKIE;
+        global $data_dir, $imapServerAddress,$imapPort;
         if ( (float)substr(PHP_VERSION,0,3) < 4.1 ) {
-            if (ini_get('register_globals') == 0) {
-                global $_SESSION;
-            }
+            global $_SESSION, $_COOKIE;
         }
         $username = $_SESSION['username'];
         $key = $_COOKIE['key'];
