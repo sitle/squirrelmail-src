@@ -54,6 +54,11 @@ if(!sqGetGlobalVar('squirrelmail_language', $squirrelmail_language) || $squirrel
     $squirrelmail_language = $squirrelmail_default_language;
 }
 
+if (!sqgetGlobalVar('mailto', $mailto)) {
+    $mailto = '';
+}
+
+
 /* end of get globals */
 
 set_up_language($squirrelmail_language, true);
@@ -151,6 +156,13 @@ if ( sqgetGlobalVar('session_expired_location', $session_expired_location, SQ_SE
     }
     unset($session_expired_location);
 }
+
+if($mailto != '') {
+    $redirect_url  = $location . '/webmail.php?right_frame=compose.php&mailto=';
+    $redirect_url .= urlencode($mailto);
+}
+
+
 
 /* Write session data and send them off to the appropriate page. */
 session_write_close();

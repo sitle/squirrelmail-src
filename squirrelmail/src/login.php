@@ -86,6 +86,13 @@ do_hook('login_top');
 
 $loginname_value = (sqGetGlobalVar('loginname', $loginname) ? htmlspecialchars($loginname) : '');
 
+
+if(sqgetGlobalVar('mailto', $mailto)) {
+    $rcptaddress = addHidden('mailto', $mailto);
+} else {
+    $rcptaddress = '';
+}
+
 /* If they don't have a logo, don't bother.. */
 if (isset($org_logo) && $org_logo) {
     /* Display width and height like good little people */
@@ -136,6 +143,7 @@ echo html_tag( 'table',
                                 html_tag( 'td',
 				    addPwField($password_form_name).
 				    addHidden('js_autodetect_results', SMPREF_JS_OFF).
+                    $rcptaddress . 
 				    addHidden('just_logged_in', '1'),
                                 'left', '', 'width="*"' )
                             ) ,
