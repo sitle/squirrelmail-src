@@ -50,7 +50,7 @@ function fortune() {
         "<tr><td align=\"center\">\n";
     echo '<table><tr><td>';
     if (!$exist) {
-        echo "$fortune_location" . _(" not found.");
+        printf(_("%s is not found."),$fortune_location);
     } else {
         echo "<center><em>" . _("Today's Fortune") . "</em><br /></font></center><pre>";
         htmlspecialchars(system($fortune_location));
