@@ -11,7 +11,7 @@
 
 /* Do not change this value. */
 global $config_version;
-$config_version = '1.2.1';
+$config_version = '1.2.0';
 
 /* Organization's logo picture (blank if none) */
 global $org_logo;
