@@ -893,8 +893,8 @@ function sq_findnxreg($body, $offset, $reg){
     $me = 'sq_findnxreg';
     $matches = Array();
     $retarr = Array();
-    preg_match("%^(.*?)($reg)%s", substr($body, $offset), $matches);
-    if (!$matches{0}){
+    preg_match("%^(.*?)($reg)%si", substr($body, $offset), $matches);
+    if (!isset($matches{0}) || !$matches{0}){
         $retarr = false;
     } else {
         $retarr{0} = $offset + strlen($matches{1});
@@ -1023,7 +1023,7 @@ function sq_getnxtag($body, $offset){
                 /**
                  * This is an invalid tag! Look for the next closing ">".
                  */
-                $gt = sq_findnxstr($body, $offset, ">");
+                $gt = sq_findnxstr($body, $lt, ">");
                 return Array(false, false, false, $lt, $gt);
             }
             break;
@@ -1335,9 +1335,15 @@ function sq_fixatts($tagname,
  * @param  $content  a string with whatever is between <style> and </style>
  * @return           a string with edited content.
  */
-function sq_fixstyle($message, $id, $content){
+function sq_fixstyle($body, $pos, $message, $id){
     global $view_unsafe_images;
     $me = 'sq_fixstyle';
+    $ret = sq_findnxreg($body, $pos, '</\s*style\s*>');
+    if ($ret == FALSE){
+        return array(FALSE, strlen($body));
+    }
+    $newpos = $ret[0] + strlen($ret[2]);
+    $content = $ret[1];
     /**
      * First look for general BODY style declaration, which would be
      * like so:
@@ -1349,25 +1355,25 @@ function sq_fixstyle($message, $id, $content){
     /**
      * Fix url('blah') declarations.
      */
-    $content = preg_replace("|url\(([\'\"])\s*\S+script\s*:.*?([\'\"])\)|si",
+    $content = preg_replace("|url\s*\(\s*([\'\"])\s*\S+script\s*:.*?([\'\"])\s*\)|si",
                             "url(\\1$secremoveimg\\2)", $content);
     /**
      * Fix url('https*://.*) declarations but only if $view_unsafe_images
      * is false.
      */
     if (!$view_unsafe_images){
-        $content = preg_replace("|url\(([\'\"])\s*https*:.*?([\'\"])\)|si",
+        $content = preg_replace("|url\s*\(\s*([\'\"])\s*https*:.*?([\'\"])\s*\)|si",
                                 "url(\\1$secremoveimg\\2)", $content);
     }
    
     /**
      * Fix urls that refer to cid:
      */
-    while (preg_match("|url\(([\'\"]\s*cid:.*?[\'\"])\)|si", $content, 
-                      $matches)){
+    while (preg_match("|url\s*\(\s*([\'\"]\s*cid:.*?[\'\"])\s*\)|si", 
+                      $content, $matches)){
         $cidurl = $matches{1};
         $httpurl = sq_cid2http($message, $id, $cidurl);
-        $content = preg_replace("|url\($cidurl\)|si",
+        $content = preg_replace("|url\s*\(\s*$cidurl\s*\)|si",
                                 "url($httpurl)", $content);
     }
 
@@ -1380,7 +1386,7 @@ function sq_fixstyle($message, $id, $content){
                      '/binding/i');
     $replace = Array('idiocy', 'idiocy', 'idiocy');
     $content = preg_replace($match, $replace, $content);
-    return $content;
+    return array($content, $newpos);
 }
 
 /**
@@ -1480,10 +1486,11 @@ function sq_sanitize($body,
                      $mailbox
                      ){
     $me = 'sq_sanitize';
+    $rm_tags = array_shift($tag_list);
     /**
      * Normalize rm_tags and rm_tags_with_content.
      */
-    @array_walk($rm_tags, 'sq_casenormalize');
+    @array_walk($tag_list, 'sq_casenormalize');
     @array_walk($rm_tags_with_content, 'sq_casenormalize');
     @array_walk($self_closing_tags, 'sq_casenormalize');
     /**
@@ -1491,7 +1498,6 @@ function sq_sanitize($body,
      * false  means remove these tags
      * true   means allow these tags
      */
-    $rm_tags = array_shift($tag_list);
     $curpos = 0;
     $open_tags = Array();
     $trusted = "<!-- begin sanitized html -->\n";
@@ -1502,18 +1508,21 @@ function sq_sanitize($body,
      */
     $body = preg_replace("/&(\{.*?\};)/si", "&amp;\\1", $body);
 
-    while (($curtag=sq_getnxtag($body, $curpos)) != FALSE){
+    while (($curtag = sq_getnxtag($body, $curpos)) != FALSE){
         list($tagname, $attary, $tagtype, $lt, $gt) = $curtag;
         $free_content = substr($body, $curpos, $lt-$curpos);
         /**
          * Take care of <style>
          */
-        if ($tagname == "style" && $tagtype == 2){
-            /**
-             * This is a closing </style>. Edit the
-             * content before we apply it.
-             */
-            $free_content = sq_fixstyle($message, $id, $free_content);
+        if ($tagname == "style" && $tagtype == 1){
+            list($free_content, $curpos) = 
+                sq_fixstyle($body, $gt+1, $message, $id);
+            if ($free_content != FALSE){
+                $trusted .= sq_tagprint($tagname, $attary, $tagtype);
+                $trusted .= $free_content;
+                $trusted .= sq_tagprint($tagname, false, 2);
+            }
+            continue;
         }
         if ($skip_content == false){
             $trusted .= $free_content;
@@ -1712,10 +1721,10 @@ function magicHTML($body, $id, $message, $mailbox = 'INBOX') {
                                 "/expression/i",
                                 "/binding/i",
                                 "/behaviou*r/i",
-                                "|url\(([\'\"])\s*\.\./.*([\'\"])\)|si",
-                                "/url\(([\'\"])\s*\S+script\s*:.*([\'\"])\)/si",
-                                "/url\(([\'\"])\s*mocha\s*:.*([\'\"])\)/si",
-                                "/url\(([\'\"])\s*about\s*:.*([\'\"])\)/si"
+                                "|url\s*\(\s*([\'\"])\s*\.\./.*([\'\"])\s*\)|si",
+                                "/url\s*\(\s*([\'\"])\s*\S+script\s*:.*([\'\"])\s*\)/si",
+                                "/url\s*\(\s*([\'\"])\s*mocha\s*:.*([\'\"])\s*\)/si",
+                                "/url\s*\(\s*([\'\"])\s*about\s*:.*([\'\"])\s*\)/si"
                                ),
                           Array(
                                 "idiocy",
