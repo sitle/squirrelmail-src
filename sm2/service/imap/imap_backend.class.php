@@ -223,7 +223,6 @@ class imap_backend extends parser {
      *                                     
      * @return    arr        $aResults     array with namespaces and their mailboxes.
      * @access    public
-     * @author    Marc Groot Koerkamp
      */    
     
             

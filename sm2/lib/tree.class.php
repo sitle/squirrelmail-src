@@ -3,15 +3,11 @@
 /**
  * tree.class.php
  *
- * Copyright (c) 2003 Marc Groot Koerkamp 
  * Copyright (c) 2003 The SquirrelMail Project Team
  * Licensed under the GNU GPL. For full terms see the file COPYING.
  *
  * Base tree class.
  * 
- *
- * Author: Marc Groot Koerkamp (Sourceforce username: stekkel) 2003
- *
  * $Id$
  */
 
@@ -61,7 +57,6 @@ class tree extends object{
      * @param     arr        $credentials  Experimental Testing     
      * @return    bool                     success
      * @access    public
-     * @author    Marc Groot Koerkamp
      */
     function tree($id,$credentials=array('self'=> SM_ACL_ALL)) {
         $this->id = $id;
@@ -84,7 +79,6 @@ class tree extends object{
      * @func      __sleep
      * @desc      see the php manual 
      * @access    private
-     * @author    Marc Groot Koerkamp
      */
     function __sleep() {
         $this->notify('sleep','',true);
@@ -101,7 +95,6 @@ class tree extends object{
      * @param     arr        $properties   optional node properties     
      * @return    bool                     success
      * @access     public
-     * @author     Marc Groot Koerkamp
      */
     
     function addNode(&$node, $parent=false, $properties=array() ) {//(&$node, $parent = $this->nodes[0], $properties=array() ) {
@@ -147,7 +140,6 @@ class tree extends object{
      * @param     obj        $node         The node object
      * @return    bool                     success
      * @access    public
-     * @author    Marc Groot Koerkamp
      */
     function nodeHasChildren($node) {
         if ($node && isset($this->p_c_rel[$node->id]) &&
@@ -166,7 +158,6 @@ class tree extends object{
      * @param     obj        $node         The node object
      * @return    bool                     success
      * @access    public
-     * @author    Marc Groot Koerkamp
      */
     function getChildren($node) {
         $children = array();
@@ -200,7 +191,6 @@ class tree extends object{
      * @param     obj        $target       target node
      * @return    bool                     success
      * @access    public
-     * @author    Marc Groot Koerkamp
      */
     function moveNode($node, $target) {    
         $parent_id = $node->parent_id;
@@ -219,7 +209,6 @@ class tree extends object{
      * @param     obj        $node         The node object
      * @return    bool                     success
      * @access    public
-     * @author    Marc Groot Koerkamp
      */
     function deleteNode($node) {
         if ($node->id !== 0 && $this->_sufficientPerm($node,SM_PERM_DEL,false)) {
@@ -267,7 +256,6 @@ class tree extends object{
      * @param      array    $nodes       array of node obj
      * @return     bool                  success
      * @access     private
-     * @author     Marc Groot Koerkamp
      */
     function _harvestNodes($node, &$nodes) {
         $children = $this->getChildren($node);
@@ -337,7 +325,6 @@ class tree extends object{
      * @param      bool     $reverse     reverse sort
      * @return     bool                  success
      * @access     public
-     * @author     Marc Groot Koerkamp
      */
     function sortNodes(&$nodes, $sort, $sortmethod, $reverse) {
         foreach ($nodes as $node) {
@@ -367,7 +354,6 @@ class tree extends object{
      * @return     bool    $ret        success
      *
      * @access     private
-     * @author     Marc Groot Koerkamp
      */
     function _sufficientPerm($node,$perm, $recursive = false) {
                 $ret = true;
@@ -448,7 +434,6 @@ class node extends object{
      * @param    arr        $acl        Access Control List
      *
      * @access     public
-     * @author     Marc Groot Koerkamp
      */
     function node($id=0, $acl = false) {
         if (!$acl) {

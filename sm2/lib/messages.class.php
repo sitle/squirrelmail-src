@@ -7,9 +7,6 @@
  *
  * messages functions.
  * 
- *
- * Author: Marc Groot Koerkamp (Sourceforce username: stekkel) 2003
- *
  * $Id$
  */
  
