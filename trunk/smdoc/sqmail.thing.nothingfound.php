@@ -16,10 +16,11 @@ $HARDTHING[NOTHINGFOUNDID]['lastmodified'] = '$Date$';
 
 function nothingfound() {
     global $wtf;
-    //header("Status: 404 Not Found");
     if (isset($wtf->thingtitle)) {
         echo '<p>Sorry, nothing was found for the page "', $wtf->thingtitle, '".</p>';
-        echo '<p>To create a new page called "', $wtf->thingtitle, '", <a href="', THINGURI, 'wikipage&amp;title=', $wtf->thingtitle, '">click here</a>.</p>';
+        if ( $wtf->user->inGroup(CREATORS) ) {
+            echo '<p>To create a new page called "', $wtf->thingtitle, '", <a href="', THINGURI, 'wikipage&amp;title=', $wtf->thingtitle, '">click here</a>.</p>';
+        }
     } else {
         echo '<p>Sorry, nothing was found for the page #', $wtf->thingid, '.</p>';
     }
