@@ -28,6 +28,8 @@ Version 1.4.1 -- CVS
   - Fix bug #722933 where resuming a draft message would lose the reference headers.
   - Fix that sending of read receipts failed when JavaScript on and comp in new off
     (#738130).
+  - New function: sm_print_r() intended for debugging.  See
+    functions/strings.php
 
 Version 1.4.0 -- 3 April 2003
 -----------------------------
