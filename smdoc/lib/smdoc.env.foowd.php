@@ -90,6 +90,17 @@ class smdoc extends foowd
   }
 
   /**
+   * Clean up foowd object, then set Location header for redirect.
+   * @param string new_loc Forwarding URL
+   */
+  function loc_forward($new_loc)
+  {
+    $this->destroy();
+    header('Location: ' . $new_loc);
+    exit;
+  }
+
+  /**
    * Get the current user from the database.
    *
    * Given the array of uesr details, fetch the corrisponding user object from
@@ -148,7 +159,7 @@ class smdoc extends foowd
   function hasPermission($className, $methodName, $type, &$object)
   {
     if ( isset($object) && is_object($object) ) {
-      $creatorid =  $object->creatorid;
+      $creatorid = isset($object->creatorid) ? $object->creatorid : NULL;
       if ( isset($object->permissions[$methodName]) )
         $methodPermission = $object->permissions[$methodName];
     } else {
@@ -169,19 +180,19 @@ class smdoc extends foowd
    * @return object The selected object or NULL on failure.
    * @see foowd_db::getObj
    */
-  function getObj($indexes, $source = NULL)
+  function getObj($indexes, $joins = NULL, $source = NULL)
   {
     $this->track('smdoc->getObj', $indexes, $source);
 
     if ( isset($indexes['objectid']) )
       $oid = $indexes['objectid'];
     else
-      $oid = $foowd->config_settings['site']['default_objectid '];
+      $oid = $this->config_settings['site']['default_objectid'];
 
     // @ELH - search for external items first
     $new_obj = smdoc_external::factory($this, $oid);
     if ( $new_obj == NULL )
-      $new_obj = parent::getObj($indexes, $source);
+      $new_obj = parent::getObj($indexes, $joins, $source);
 
     $this->track();
     return $new_obj;
@@ -191,22 +202,22 @@ class smdoc extends foowd
   /**
    * Get a list of objects.
    *
-   * @param array indexes Array of indexes and values to find object by
+   * @param array indexes Array of indexes to be returned
    * @param str source The source to fetch the object from
-   * @param array order The index to sort the list on
-   * @param bool reverse Display the list in reverse order
-   * @param int number The length of the list to return
+   * @param array where Array of indexes and values to find object by
+   * @param mixed order The index to sort the list on, or array of indices
+   * @param mixed limit The length of the list to return, or a LIMIT string
    * @param bool returnObjects Return the actual objects not just the object meta data
    * @param bool setWorkspace get specific workspace id (or any workspace ok)
    * @return array An array of object meta data or of objects.
    */   
   function &getObjList($indexes = NULL, $source = NULL, 
-                       $order = NULL, $number = NULL, 
+                       $where = NULL, $order = NULL, $limit = NULL,
                        $returnObjects = FALSE, $setWorkspace = TRUE) 
   {
     $this->track('foowd->getObjList', $indexes);
-    $objects = &$this->database->getObjList($indexes, $source, 
-                                            $order, $number, 
+    $objects = &$this->database->getObjList($indexes, $source,
+                                            $where, $order, $limit, 
                                             $returnObjects, $setWorkspace);
     $this->track();
     return $objects;

@@ -38,16 +38,22 @@ Foowd function library
 function show($var) {
   echo '<pre>';
   if (is_object($var)) {
+    if ( isset($var->config_settings) ) 
+      unset($var->config_settings);
     unset($var->foowd);
     unset($var->foowd_vars_meta);
     unset($var->foowd_indexes);
     unset($var->foowd_original_access_vars);
-    print_r($var);
-  } elseif (is_array($var)) {
-    print_r($var);
-  } else {
     var_dump($var);
   }
+  elseif ( is_array($var) )
+  {
+    unset($var['foowd']);
+    print_r($var);
+  } 
+  else 
+    var_dump($var);
+
   echo '</pre>';
 }
 
@@ -123,12 +129,9 @@ function getPermission($className, $methodName, $type = '') {
   if ( !isset($className) || !class_exists($className) )
     $className = 'foowd_object';
 
-  $genericName = 'PERMISSION_'.$type.'_'.strtoupper($methodName);
   $constName = 'PERMISSION_'.strtoupper($className).'_'.$type.'_'.strtoupper($methodName);
   if (defined($constName)) {
     return constant($constName);
-  } elseif (defined($genericName)) {
-    return constant($genericName);
   } elseif ($className == 'foowd_object') { // none found
     return 'Everyone';
   } else { // look at parent
@@ -279,14 +282,18 @@ function getURI($parameters = NULL, $relative = TRUE) {
   $uri = $relative ? '' : 
          (defined('BASE_URL') ? BASE_URL : 'http://'.$_SERVER['HTTP_HOST']);
 
-  $uri .= defined('FILENAME') ? FILENAME : $_SERVER['PHP_SELF'] . '?';
+  $uri .= defined('FILENAME') ? FILENAME : $_SERVER['PHP_SELF'] ;
 
-  if (is_array($parameters)) {
+  if (is_array($parameters) && count($parameters) > 0 ) {
+    $i = 0;
+    $uri .= '?';
     foreach ($parameters as $name => $value) {
-      $uri .= $name.'='.$value.'&';
+      if ( $i++ > 0 )
+        $uri .= '&amp;';
+      $uri .= $name.'='.$value;
     }
   }
-  return substr($uri, 0, -1);
+  return $uri;
 }
 
 /* Display functions */
@@ -300,15 +307,17 @@ function getURI($parameters = NULL, $relative = TRUE) {
  */
 function mungEmail($emailAddress) {
   switch (rand(1, 4)) {
-  case 1:
-    return str_replace('@', ' at ', str_replace('.', ' dot ', $emailAddress));
-  case 2:
-    return str_replace('@', '&', str_replace('.', ',', $emailAddress));
-  case 3:
-    $pos = rand(1, strlen($emailAddress) - 3);
-    return substr($emailAddress, 0, $pos).'[ ]'.substr($emailAddress, $pos + 3).' [\''.substr($emailAddress, $pos, 3).'\' in gap]';
-  case 4:
-    return str_replace('@', 'NO@SPAM', $emailAddress);
+    case 1:
+      return strtr($emailAddress, array('@' => ' at ', '.' => ' dot '));
+    case 2:
+      return strtr($emailAddress, array('@' => '#', '.' => ','));
+    case 3:
+      $pos = rand(1, strlen($emailAddress) - 3);
+      return substr($emailAddress, 0, $pos).'[ ]'.substr($emailAddress, $pos + 3).' [\''.substr($emailAddress, $pos, 3).'\' in gap]';
+    case 4:
+      return str_replace('@', 'NO@SPAM', $emailAddress);
+    case 5:
+      return strrev($emailAddress);
   }
 }
 

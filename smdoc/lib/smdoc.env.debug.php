@@ -41,7 +41,8 @@ class smdoc_debug extends foowd_debug
    */
   function display()
   {
-    echo '<div class="debug_output">'
+    echo '<div class="debug_output">' . "\n"
+       . '<a name="debug"><img src="templates/images/empty.png" alt="------------- debug ------------------------------------------" /></a>' . "\n"
        . '<div class="debug_output_heading">Debug Information</div>'. "\n"
        . '<pre>'
        . 'Total DB Executions: '  . $this->DBAccessNumber . '&nbsp;' . "\n"
@@ -67,7 +68,7 @@ class smdoc_debug extends foowd_debug
       show($EXTERNAL_RESOURCES);        
     }    
 
-    echo '</div><br />';
+    echo '</div>';
   }
 
   /**

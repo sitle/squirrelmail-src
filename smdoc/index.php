@@ -12,7 +12,7 @@ $objectid = new input_querystring('objectid', '/^[0-9-]*$/');
 $version    = new input_querystring('version', '/^[0-9]*$/');
 $className  = new input_querystring('class', REGEX_TITLE);
 $classid = new input_querystring('classid', '/^[0-9-]*$/', NULL);
-$method = new input_querystring('method', NULL, 'view');
+$method = new input_querystring('method', NULL);
 
 // convert object name into id (if name given rather than id)
 if (!isset($objectid->value) && isset($objectName->value)) {
@@ -36,10 +36,13 @@ $result = FALSE;
 // If form has been cancelled, redirect to view of that object
 if ( sqGetGlobalVar('form_cancel', $value, SQ_FORM) )
 {
-  header('Location: ' . getURI(FALSE, array('objectid' => $objectid,
-                                            'classid'  => $classid,
-                                            'version'  => $version,
-                                            'ok' => OBJECT_UPDATE_CANCEL)) );
+  if ( $objectid == NULL )
+    $objectid = $foowd->config_settings['site']['default_objectid'];
+
+  header('Location: ' . getURI(array('objectid' => $objectid,
+                                     'classid'  => $classid,
+                                     'version'  => $version,
+                                     'ok' => OBJECT_UPDATE_CANCEL), FALSE));
 }
 
 if (isset($objectid))  // fetch object and call object method
@@ -48,9 +51,9 @@ if (isset($objectid))  // fetch object and call object method
 
   if ( !isset($method) )
     $method = $foowd->config_settings['site']['default_method'];
+
   $object = &$foowd->getObj(array(
                         'objectid' => $objectid,
-                        'classid'  => $classid, 
                         'version'  => $version));
   if ( $object ) 
   {

@@ -193,23 +193,23 @@ class smdoc_external extends foowd_object {
     }
 
     function method_history(&$foowd) {
-      header('Location: '. $this->url);
+      $this->foowd->loc_forward( $this->url);
     }
 
     function method_admin(&$foowd) {
-      header('Location: '. $this->url);
+      $this->foowd->loc_forward( $this->url);
     }
     
     function method_revert(&$foowd) {
-      header('Location: '. $this->url);
+      $this->foowd->loc_forward( $this->url);
     }
 
     function method_delete(&$foowd) {
-      header('Location: '. $this->url);
+      $this->foowd->loc_forward( $this->url);
     }
     
     function method_clone(&$foowd) {
-      header('Location: '. $this->url);
+      $this->foowd->loc_forward( $this->url);
     }
 
 } // end static class

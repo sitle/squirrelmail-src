@@ -26,8 +26,11 @@ setConst('TRANSLATION_CLASS_ID', META_FOOWD_TRANSLATION_CLASS_ID);
 setConst('TRANSLATION_DEFAULT_LANGUAGE', 'en_US');
 //setConst('TRANSLATION_DEFAULT_LANGUAGE_ICON', 'en_US');
 
+require_once(FOOWD_DIR . 'class.workspace.php');
+
 /** CLASS DECLARATION **/
-class smdoc_translation extends foowd_workspace {
+class smdoc_translation extends foowd_workspace 
+{
 
     var $language_icon;
 
@@ -188,9 +191,9 @@ class smdoc_translation extends foowd_workspace {
 
         if ( $foowd->user->save($foowd, FALSE) )
         {
-          header('Location: '.getURI(array('objectid' => $translation_id,
-                                           'classid' => TRANSLATION_CLASS_ID),
-                                     FALSE));
+          $this->foowd->loc_forward(getURI(array('objectid' => $translation_id,
+                                                 'classid' => TRANSLATION_CLASS_ID),
+                                           FALSE));
         } else {
           trigger_error('Could not update user with selected translation.');
         }
