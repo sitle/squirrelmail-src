@@ -31,42 +31,76 @@ class input_dropdown {
 	var $caption; // caption to place next to dropdown
 	var $height; // height of dropdown
 	var $items; // items in dropdown
+	var $multiple; // multi select
+	var $class; // css class
 	
-	function input_dropdown($name, $value = NULL, $items = NULL, $caption = NULL, $height = 1) {
+	function input_dropdown($name, $value = NULL, $items = NULL, $caption = NULL, $height = 1, $multiple = FALSE, $class = NULL) {
 		$this->name = $name;
 		$this->items = $items;
-		if (isset($_POST[$name])) {
-			$this->set($_POST[$name]);
-		} elseif (isset($_GET[$name])) {
-			$this->set($_GET[$name]);
+		if ($multiple) {
+			if (isset($_POST[$name]) && is_array($_POST[$name])) {
+				$okay = TRUE;
+				foreach ($_POST[$name] as $val) {
+					if (!isset($this->items[$val])) {
+						$okay = FALSE;
+						break;
+					}
+				}
+				if ($okay) {
+					$this->value = $_POST[$name];
+				}
+			} elseif (isset($_GET[$name]) && is_array($_GET[$name])) {
+				$okay = TRUE;
+				foreach ($_GET[$name] as $val) {
+					if (!isset($this->items[$val])) {
+						$okay = FALSE;
+						break;
+					}
+				}
+				if ($okay) {
+					$this->value = $_GET[$name];
+				}
+			}
+		} else {
+			if (isset($_POST[$name])) {
+				$this->set($_POST[$name]);
+			} elseif (isset($_GET[$name])) {
+				$this->set($_GET[$name]);
+			}
 		}
 		if (!isset($this->value)) {
 			$this->value = $value;
 		}
 		$this->caption = $caption;
 		$this->height = $height;
+		$this->multiple = $multiple;
+		$this->class = $class;
 	}
 	
 	function set($value) {
-		reset($this->items);
-		if ($value >= key($this->items)) {
-			end($this->items);
-			if ($value <= key($this->items)) {
-				$this->value = $value;
-				return TRUE;
-			}
+		if (isset($this->items[$value])) {
+			$this->value = $value;
+			return TRUE;
 		}
 		return FALSE;
 	}
 	
 	function display() {
-		echo $this->caption, ' <select name="', $this->name, '" size="', $this->height, '">';
+		echo $this->caption, ' <select name="', $this->name;
+		if ($this->multiple) {
+			echo '[]" multiple="multiple';
+		}
+		echo '" size="', $this->height, '" class="', $this->class, '">';
 		foreach ($this->items as $value => $item) {
 			echo '<option value="', $value, '"';
-			if ($this->value == $value) echo ' selected="selected"';
+			if ($this->multiple && is_array($this->value)) {
+				if (in_array($value, $this->value)) echo ' selected="selected"';
+			} else {
+				if ($this->value == $value) echo ' selected="selected"';
+			}
 			echo '>', $item, '</option>';
 		}
-		echo '</select><br />';
+		echo '</select>';
 	}
 
 }
