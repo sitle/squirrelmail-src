@@ -46,7 +46,7 @@ function readcalendardata() {
                 ksort($data, SORT_NUMERIC);
                 $new_calendardata[$day] = $data;
             }
-            $calendardata = &$new_calendardata;
+            $calendardata = $new_calendardata;
         }
     }
 }
