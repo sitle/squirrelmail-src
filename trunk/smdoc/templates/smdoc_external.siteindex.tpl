@@ -1,4 +1,22 @@
 <?php
+/*
+ * Copyright (c) 1999-2003 The SquirrelMail Project Team
+ * Licensed under the GNU GPL. For full terms see the file COPYING.
+ *
+ * This file is an addition/modification to the
+ * Framework for Object Orientated Web Development (Foowd).
+ */
+
+/**
+ * Template for external site index
+ *
+ * Modified by SquirrelMail Development
+ * $Id$
+ *
+ * @package smdoc
+ * @subpackage template
+ */
+
     $temp_index = array('A','B','C','D','E','F','G','H','I','J','K','L','M',
                         'N','O','P','Q','R','S','T','U','V','W','X','Y','Z');
     $i = 0;

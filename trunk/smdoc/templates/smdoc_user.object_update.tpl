@@ -1,8 +1,36 @@
 <?php
-unset($t['version']);
+/*
+ * Copyright (c) 1999-2003 The SquirrelMail Project Team
+ * Licensed under the GNU GPL. For full terms see the file COPYING.
+ *
+ * This file is an addition/modification to the
+ * Framework for Object Orientated Web Development (Foowd).
+ */
+
+/**
+ * Template for performing object updates
+ *
+ * Modified by SquirrelMail Development
+ * $Id$
+ *
+ * @package smdoc
+ * @subpackage template
+ */
 $t['body_function'] = 'user_update_body';
+
+/** Include base template */
 include(TEMPLATE_PATH.'index.tpl');
 
+/**
+ * Base template will call back to this function
+ *
+ * @param smdoc foowd Reference to the foowd environment object.
+ * @param string className String containing invoked className.
+ * @param string method String containing called method name.
+ * @param smdoc_user user Reference to active user.
+ * @param object object Reference to object being invoked.
+ * @param mixed t Reference to array filled with template parameters.
+ */
 function user_update_body(&$foowd, $className, $method, $user, $object, &$t)
 {
   $t['form']->display_start('smdoc_form');
@@ -41,7 +69,7 @@ function user_update_body(&$foowd, $className, $method, $user, $object, &$t)
       { ?>
 <tr><td class="label"><?php echo $box->caption; ?>:</td>
     <td class="value">
-<?php   echo $box->display(); 
+<?php   echo $box->display();
         if ( $box->name == 'IRC' )
         { ?>
          <span class="subtext"> - #squirrelmail (<a href="http://freenode.net">irc.freenode.net</a>)</span>
@@ -65,7 +93,7 @@ function user_update_body(&$foowd, $className, $method, $user, $object, &$t)
 
 <?php
 /*
-  if ( isset($t['form']) ) 
+  if ( isset($t['form']) )
   {
     show($t['form']->objects);
 
@@ -96,7 +124,7 @@ function user_update_body(&$foowd, $className, $method, $user, $object, &$t)
 <?php $t['form']->display_end(); ?>
 
 <div class="subtext_center"><a id="email" name="email"></a>
-<?php 
+<?php
   echo _("Your email and other contact information is only shared with your consent.") . '<br />'
        . _("Displayed emails are dynamically munged to discourage spam.") . '<br />'
        . _("Server and version statistics are only viewed collectively.") . '<br />'

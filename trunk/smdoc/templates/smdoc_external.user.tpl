@@ -1,4 +1,22 @@
+<?php
+/*
+ * Copyright (c) 1999-2003 The SquirrelMail Project Team
+ * Licensed under the GNU GPL. For full terms see the file COPYING.
+ *
+ * This file is an addition/modification to the
+ * Framework for Object Orientated Web Development (Foowd).
+ */
 
+/**
+ * Template for external user list.
+ *
+ * Modified by SquirrelMail Development
+ * $Id$
+ *
+ * @package smdoc
+ * @subpackage template
+ */
+?>
 <table class="smdoc_table" width="100%">
 <tr>
 <td class="userstats">
@@ -10,8 +28,8 @@
   <tr><td colspan="2"><div class="separator"><?php echo _("SquirrelMail Versions"); ?></div></td></tr>
 <?php  $smver_string = smdoc_user::smver_to_string(TRUE);
        foreach ( $t['user_smver'] as $key => $number )
-       { 
-         if ( $number == 0 ) 
+       {
+         if ( $number == 0 )
           continue;
 ?>
   <tr>
@@ -26,8 +44,8 @@
     </div></td></tr>
 <?php  $smtp_servers = smdoc_user::smtp_to_string(TRUE);
        foreach ( $t['user_smtp'] as $key => $number )
-       { 
-         if ( $number == 0 ) 
+       {
+         if ( $number == 0 )
           continue;
 ?>
   <tr>
@@ -42,8 +60,8 @@
     </div></td></tr>
 <?php  $imap_servers = smdoc_user::imap_to_string(TRUE);
        foreach ( $t['user_imap'] as $key => $number )
-       { 
-         if ( $number == 0 ) 
+       {
+         if ( $number == 0 )
           continue;
 ?>
   <tr>
@@ -63,8 +81,8 @@
   </tr>
 <?php $row = 0;
       $isAdmin = $foowd->user->inGroup('Gods');
-      foreach ( $t['user_list'] as $arr ) 
-      { 
+      foreach ( $t['user_list'] as $arr )
+      {
         $uri_arr['objectid'] = $arr['objectid'];
         $uri_arr['classid']  = USER_CLASS_ID;
         $url = getURI($uri_arr);
@@ -76,7 +94,7 @@
     <td class="subtext">[<?php echo $arr['objectid']; ?>]&nbsp;</td>
     <td class="subtext">&nbsp;
 <?php $methods = '';
-      if ( $isAdmin ) 
+      if ( $isAdmin )
         $methods .= '<a href="'.$url.'&method=groups">Groups</a> ';
       if ( $foowd->user->inGroup('Author',$arr['objectid']) )
         $methods .= '<a href="'.$url.'&method=update">Update</a> ';
@@ -86,7 +104,7 @@
     <td align="left"><?php echo $arr['IRC']; ?></td>
   </tr>
 <?php    $row = !$row;
-       } 
+       }
 ?>
   </table>
 </td>
