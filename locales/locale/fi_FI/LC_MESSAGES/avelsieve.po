@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: avelsieve\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2003-06-09 09:32+0300\n"
+"POT-Creation-Date: 2003-09-01 19:37+0300\n"
 "PO-Revision-Date: 2003-03-19 14:24+0200\n"
 "Last-Translator: Veli Pirttila <titus@iki.fi>\n"
 "Language-Team: finnish <fi@li.org>\n"
@@ -14,47 +14,36 @@ msgstr ""
 "Content-Type: text/plain; charset=ISO-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../addrule.php:82 ../process_input.php:39
 msgid "You have to define at least one header match text."
 msgstr "Tekstin tulee sisältyä ainakin yhteen otsikkokenttään"
 
-#: ../addrule.php:134
 msgid "You have not defined the name for the new folder."
 msgstr "Tekstin tulee sisältyä ainakin yhteen otsikkokenttään."
 
-#: ../addrule.php:135
 msgid "Please try again."
 msgstr "Yritä uudelleen."
 
-#: ../addrule.php:146
 msgid "Illegal folder name.  Please select a different name"
 msgstr "Virheellinen kansion nimi. Valitse muu nimi."
 
-#: ../addrule.php:391 ../addrule.php:396 ../addrule.php:463 ../addrule.php:473
 msgid "New Rule Wizard - Step"
 msgstr "Uusi sääntö - Kohta"
 
-#: ../addrule.php:391 ../addrule.php:396 ../addrule.php:463 ../addrule.php:473
 msgid "of"
 msgstr "/"
 
-#: ../addrule.php:391
 msgid "Rule Type"
 msgstr "Säännön tyyppi"
 
-#: ../addrule.php:396 ../edit.php:168
 msgid "Condition"
 msgstr "Ehto"
 
-#: ../addrule.php:463 ../edit.php:197
 msgid "Action"
 msgstr "Toiminta"
 
-#: ../addrule.php:473
 msgid "Confirmation"
 msgstr "Varmistus"
 
-#: ../addrule.php:476
 msgid ""
 "<p>You have chosen to keep every mail. This is the default action anyway, so "
 "you might want to start over with a rule that makes more sense. Select &quot;"
@@ -63,7 +52,6 @@ msgstr ""
 "<p>Olet valinnut kaikki viestit pidettäviksi. Tämä on oletus, joten ehkä "
 "haluat aloittaa alusta tämän säännön kanssa.<p>"
 
-#: ../addrule.php:485
 msgid ""
 "Please use the buttons on the bottom instead of your browser's reload, back "
 "and forward buttons, to build a rule."
@@ -71,89 +59,68 @@ msgstr ""
 "Käytä alapuolella olevia nappuloita sen sijaan että käyttäisit selaimesi "
 "päivitä, takaisin, eteenpäin nappuloita tehdäksesi uuden säännön."
 
-#: ../addrule_html.php:41
 msgid "Clear this Form"
 msgstr "Tyhjennä"
 
-#: ../addrule_html.php:46
 msgid "Start Over"
 msgstr "Aloita alusta"
 
-#: ../addrule_html.php:51 ../edit.php:218
 msgid "Cancel"
 msgstr "Peruuta"
 
-#: ../addrule_html.php:60
 msgid "Move back to step"
 msgstr "Siirry takaisin kohtaan"
 
-#: ../addrule_html.php:66
 msgid "Finished"
 msgstr "Valmis"
 
-#: ../addrule_html.php:70
 msgid "Move on to step"
 msgstr "Siirry kohtaan"
 
-#: ../addrule_html.php:120
 msgid "What kind of rule would you like to add?"
 msgstr "Minkä tyyppisen ehdon haluaisit lisätä?"
 
-#: ../addrule_html.php:153
 msgid ""
 "The rule will trigger if the following addresses appear anywhere in the "
 "message's headers:"
 msgstr "Ehto käynnistyy jos seuraavanlaiset osoitteet ilmestyvät mihinkään"
 
-#: ../addrule_html.php:238
 msgid "AND (Every item must match)"
 msgstr "JA (Kaikkien tulee sisältyä)"
 
-#: ../addrule_html.php:239
 msgid "OR (Either item will match)"
 msgstr "TAI (Mikä tahansa voi sisältyä)"
 
-#: ../addrule_html.php:242
 msgid "The condition for the following rules is:"
 msgstr "Säännön tila on seuraavanlainen:"
 
-#: ../addrule_html.php:308
 msgid "The header "
 msgstr "Otsikko "
 
-#: ../addrule_html.php:333
 msgid "Less..."
 msgstr "Vähemmän.."
 
-#: ../addrule_html.php:339
 msgid "More..."
 msgstr "Enemmän.."
 
-#: ../addrule_html.php:355
 msgid "This rule will trigger if message is"
 msgstr "Tämä ehto käynnistyy jos viesti on"
 
-#: ../addrule_html.php:365
 msgid "bigger"
 msgstr "isompi"
 
-#: ../addrule_html.php:373
 msgid "smaller"
 msgstr "pienempi"
 
-#: ../addrule_html.php:375 ../buildrule.php:250
 msgid "than"
 msgstr "kuin"
 
-#: ../addrule_html.php:393
 msgid "KB (kilobytes)"
 msgstr "KT (kilotavua)"
 
-#: ../addrule_html.php:401
 msgid "MB (megabytes)"
 msgstr "MT (megatavua)"
 
-#: ../addrule_html.php:409
 msgid ""
 "The following action will be applied to <strong>all</strong> incoming "
 "messages that do not match any of the previous rules."
@@ -161,7 +128,6 @@ msgstr ""
 "Seuraava toiminta sisältyy <strong>jokaiseen</strong> sisääntulevaan "
 "viestiin jotka eivät sisälly edellisiin sääntöihin."
 
-#: ../addrule_html.php:416
 msgid ""
 "This rule will trigger upon the occurrence of one or more strings in the "
 "body of an e-mail message. "
@@ -169,59 +135,45 @@ msgstr ""
 "Tämä sääntö käynnistyy yhden tai enempien lauseiden sisältyessäviestin body-"
 "osaan"
 
-#: ../addrule_html.php:453
 msgid "Choose what to do when this rule triggers, from one of the following:"
 msgstr "Valitse seuraavista mitä tehdä kun tämä sääntö käynnistyy:"
 
-#: ../addrule_html.php:459 ../constants.php:44
 msgid "Keep (Default action)"
 msgstr "Ei tehdä mitään (Vakio toiminta)"
 
-#: ../addrule_html.php:465 ../constants.php:47
 msgid "Discard Silently"
 msgstr "Tuhoa Äänettömästi"
 
-#: ../addrule_html.php:473 ../constants.php:50
 msgid "Reject, sending this excuse to the sender:"
 msgstr "Hylkää ja lähetä seuraava viesti lähettäjälle:"
 
-#: ../addrule_html.php:480
 msgid "Please do not send me large attachments."
 msgstr "Älä lähetä minulle isoja liitetiedostoja."
 
-#: ../addrule_html.php:492 ../constants.php:53
 msgid "Redirect to the following email address:"
 msgstr "Edelleenohjaa seuraaviin postiosoitteisiin:"
 
-#: ../addrule_html.php:498
 msgid "someone@example.org"
 msgstr "email@osoite"
 
-#: ../addrule_html.php:510 ../constants.php:56
 msgid "Move message into"
 msgstr "Siirrä viesti"
 
-#: ../addrule_html.php:517 ../addrule_html.php:526
 msgid "the existing folder"
 msgstr "olemassaolevaan kansioon"
 
-#: ../addrule_html.php:533
 msgid "a new folder, named"
 msgstr "uuteen nimettyyn kansioon"
 
-#: ../addrule_html.php:535
 msgid "created as a subfolder of"
 msgstr "tee alikansioksi"
 
-#: ../addrule_html.php:554
 msgid "Also keep copy in INBOX, marked as deleted."
 msgstr "Pidä myös kopio sisääntulevissa ja merkkaa tuhotuksi"
 
-#: ../addrule_html.php:574
 msgid "Vacation"
 msgstr "Lomavastaaja"
 
-#: ../addrule_html.php:576
 msgid ""
 "The notice will be sent only once to each person that sends you mail, and "
 "will not be sent to a mailing list address."
@@ -229,24 +181,19 @@ msgstr ""
 "Muistutus lähetetään vain kerran jokaiselle lähettäjälle ja  "
 "postituslistoille ei myöskään vastata"
 
-#: ../addrule_html.php:578
 msgid "Addresses: Only reply if sent to these addresses:"
 msgstr ""
 "Osoitteet: Vastaa vain näihin osoitteisiin (jos tyhjä, vastaa kaikille):"
 
-#: ../addrule_html.php:587
 msgid "Days: Reply message will be resent after"
 msgstr "Päiviä: Vastaus lähetetään uudelleen tämän ajan kuluttua"
 
-#: ../addrule_html.php:595
 msgid "days"
 msgstr "päiviä"
 
-#: ../addrule_html.php:597
 msgid "Use the following message:"
 msgstr "Käytä seuraavanlaista viestiä:"
 
-#: ../addrule_html.php:603
 msgid ""
 "This is an automated reply; I am away and will not be able to reply to you "
 "immediately."
@@ -254,47 +201,36 @@ msgstr ""
 "Tämä on automaattinen vastaus; En ole tavoitettavissa enkä voi vastata juuri "
 "nyt. "
 
-#: ../addrule_html.php:604
 msgid "I will get back to you as soon as I return."
 msgstr "Palaan asiaan pikimiten palatessani."
 
-#: ../addrule_html.php:616
 msgid "Additional Actions"
 msgstr "Lisätoiminnot"
 
-#: ../addrule_html.php:627 ../addrule_html.php:630
 msgid "STOP"
 msgstr "PYSÄHDY"
 
-#: ../addrule_html.php:632
 msgid "If this rule matches, do not check any rules after it."
 msgstr "Jos tämä sääntö täsmää, älä tarkasta enää muita sääntöjä sen jälkeen."
 
-#: ../addrule_html.php:645
 msgid "Notify me, using the following method:"
 msgstr "Ilmoita minulle, käyttämällä seuraavanlaista tapaa:"
 
-#: ../addrule_html.php:681
 msgid "Notification ID"
 msgstr "Ilmoitus ID"
 
-#: ../addrule_html.php:690
 msgid "Parameters"
 msgstr "Parametrit"
 
-#: ../addrule_html.php:717
 msgid "Message"
 msgstr "Viesti"
 
-#: ../addrule_html.php:726
 msgid "Help: Valid variables are:"
 msgstr "Apua: Sallitut muuttujat ovat:"
 
-#: ../addrule_html.php:742
 msgid "Your new rule states:"
 msgstr "Uusi sääntösi:"
 
-#: ../addrule_html.php:744
 msgid ""
 "If this is what you wanted, select Finished. You can also start over or "
 "cancel adding a rule altogether."
@@ -302,256 +238,221 @@ msgstr ""
 "Jos tämä on se mitä halusit, valitse Valmis. Voit myös valita Aloita alusta "
 "tai olla lisäämättä sääntöä valitsemalla Peruuta"
 
-#: ../avelsieve_support.inc.php:42 ../avelsieve_support.inc.php:44
 msgid "Error Encountered"
 msgstr "Virhe"
 
-#: ../buildrule.php:54
 msgid "For <strong>ALL</strong> incoming messages; "
 msgstr "<strong>Kaikille</strong> sisääntuleville viesteille; "
 
-#: ../buildrule.php:57
 msgid "If"
 msgstr "Jos"
 
-#: ../buildrule.php:75
 msgid "<em>any</em> of the following mail headers match: "
 msgstr "<em>mikä vain</em> seuraavista otsikkokentistä sisältyy: "
 
-#: ../buildrule.php:80
 msgid "<em>all</em> of the following mail headers match: "
 msgstr "<em>kaikki</em> seuraavista otsikkokentistä sisältyy:"
 
-#: ../buildrule.php:93
 msgid "the header"
 msgstr "otsikko"
 
-#: ../buildrule.php:101 ../constants.php:63
 msgid "is"
 msgstr "on"
 
-#: ../buildrule.php:106 ../constants.php:64
 msgid "is not"
 msgstr "ei ole"
 
-#: ../buildrule.php:111 ../constants.php:61
 msgid "contains"
 msgstr "sisältää"
 
-#: ../buildrule.php:116 ../constants.php:62
 msgid "does not contain"
 msgstr "ei sisällä"
 
-#: ../buildrule.php:121
 msgid "matches"
 msgstr "sisältää"
 
-#: ../buildrule.php:127
 msgid "does not match"
 msgstr "ei sisällä"
 
-#: ../buildrule.php:133 ../constants.php:76
 msgid "is greater than"
 msgstr "on isompi kuin"
 
-#: ../buildrule.php:138 ../constants.php:77
 msgid "is greater or equal to"
 msgstr "on isompi tai yhtäsuuri kuin"
 
-#: ../buildrule.php:143 ../constants.php:78
 msgid "is lower than"
 msgstr "on pienempi kuin"
 
-#: ../buildrule.php:148 ../constants.php:79
 msgid "is lower or equal to"
 msgstr "on pienempi tai yhtäsuuri kuin"
 
-#: ../buildrule.php:153 ../constants.php:80
 msgid "is equal to"
 msgstr "on samansuuruinen kuin"
 
-#: ../buildrule.php:158 ../constants.php:81
 msgid "is not equal to"
 msgstr "ei ole samansuuruinen kuin"
 
-#: ../buildrule.php:163
 msgid "matches the regural expression"
 msgstr "sisältää rexepin"
 
-#: ../buildrule.php:169
 msgid "does not match the regural expression"
 msgstr "ei sisällä regexpiä"
 
-#: ../buildrule.php:175
 msgid "exists"
 msgstr "on olemassa"
 
-#: ../buildrule.php:180
 msgid "does not exist"
 msgstr "ei ole olemassa"
 
-#: ../buildrule.php:237
 msgid "the size of the message is"
 msgstr "viestin koko on"
 
-#: ../buildrule.php:244
 msgid " bigger"
 msgstr " isompi"
 
-#: ../buildrule.php:248
 msgid " smaller"
 msgstr " pienempi"
 
-#: ../buildrule.php:278
 msgid "then"
 msgstr "silloin"
 
-#: ../buildrule.php:285
 msgid "<em>keep</em> it."
 msgstr "<em>pidä</em> se."
 
-#: ../buildrule.php:291
 msgid "<em>discard</em> it."
 msgstr "<em>tuhoa</em> se."
 
-#: ../buildrule.php:298
 msgid "<em>reject</em> it, sending this excuse back to the sender:"
 msgstr "<em>hylkää</em> se ja lähetä seuraavanlainen viesti lähettäjälle:"
 
-#: ../buildrule.php:304
 msgid "<em>redirect</em> it to the email address"
 msgstr "<em>ohjaa uudelleen</em> osoitteeseen"
 
-#: ../buildrule.php:311
 msgid "<em>file</em> it into the folder <strong>"
 msgstr "<em>tallenna</em> se kansioon <strong>"
 
-#: ../buildrule.php:328
 msgid "reply with this vacation message: "
 msgstr "vastaa tällä lomaviestillä: "
 
-#: ../buildrule.php:337
 msgid " Also keep a copy in INBOX, marked as deleted."
 msgstr " Pidä myös kopio sisääntulevissa ja merkkaa poistetuksi."
 
-#: ../buildrule.php:343
 msgid " Then <strong>STOP</strong> processing rules."
 msgstr " Sen jälkeen <strong>Pysähdy</strong> prosessoimasta sääntöjä."
 
-#: ../buildrule.php:365
 msgid " Also notify using the method"
 msgstr " Myös ilmoita tavalla"
 
-#: ../buildrule.php:367
 msgid "with"
 msgstr "kanssa"
 
-#: ../buildrule.php:369
 msgid "priority and the message"
 msgstr "prioriteetti ja viesti"
 
-#: ../constants.php:16
 msgid "Address Match"
 msgstr "Osoite sisältää"
 
-#: ../constants.php:17 ../constants.php:22
+#, fuzzy
+msgid ""
+"Perform an action depending on email addresses appearing in message headers."
+msgstr "Tee toiminto liittyen viestin kokoon"
+
+msgid "Header Match"
+msgstr "Otsikko sisältyy"
+
 msgid ""
 "Perform an action on messages matching a specified header (From, To etc.)."
 msgstr "Tee toiminto otsikkotietojen (From,To jne) sisältyessä viestiin."
 
-#: ../constants.php:21
-msgid "Header Match"
-msgstr "Otsikko sisältyy"
-
-#: ../constants.php:26
 msgid "Size"
 msgstr "Koko"
 
-#: ../constants.php:27
 msgid "Perform an action on messages depending on their size."
 msgstr "Tee toiminto liittyen viestin kokoon"
 
-#: ../constants.php:31
 msgid "All Messages"
 msgstr "Kaikki viestit"
 
-#: ../constants.php:32
 msgid "Perform an action on <strong>all</strong> incoming messages."
 msgstr "Tee toiminto <strong>kaikille</strong> sisääntuleville viesteille."
 
-#: ../constants.php:37
 msgid "Body Match"
 msgstr "Viesti sisältää"
 
-#: ../constants.php:38
 msgid "Perform an action on messages depending on their content (body text)."
 msgstr "Tee toiminto viestin sisältöön liittyen"
 
-#: ../constants.php:65
 msgid "matches wildcard"
 msgstr "sisältää asteriksin"
 
-#: ../constants.php:66
 msgid "does not match wildcard"
 msgstr "ei sisällä asteriksia"
 
-#: ../constants.php:70
 msgid "matches regexp"
 msgstr "sisältää regexpin"
 
-#: ../constants.php:87
 msgid "verbose"
 msgstr "laaja"
 
-#: ../constants.php:88
 msgid "terse"
 msgstr "suppea"
 
-#: ../constants.php:96
 msgid "Mobile Phone Message (SMS)"
 msgstr "SMS-Viesti"
 
-#: ../constants.php:97
 msgid "Email notification"
 msgstr "Sähköpostimuistutus"
 
-#: ../constants.php:98
 msgid "Notification via Zephyr"
 msgstr "Muistutus Zephyrin kautta"
 
-#: ../constants.php:99
 msgid "Notification via ICQ"
 msgstr "Muistutus ICQn kautta"
 
-#: ../constants.php:103
 msgid "Low"
 msgstr "Pieni"
 
-#: ../constants.php:104
 msgid "Normal"
 msgstr "Normaali"
 
-#: ../constants.php:105
 msgid "High"
 msgstr "Korkea"
 
-#: ../edit.php:135
+msgid "Delete"
+msgstr "Poista"
+
+msgid "Edit"
+msgstr "Muokkaa"
+
+msgid "Duplicate"
+msgstr "Kopioi"
+
+msgid "Move Up"
+msgstr "Siirrä Ylös"
+
+#, fuzzy
+msgid "Move to Top"
+msgstr "Siirry kohtaan"
+
+msgid "Move Down"
+msgstr "Siirrä Alas"
+
+#, fuzzy
+msgid "Move to Bottom"
+msgstr "Siirry kohtaan"
+
 msgid "Editing Mail Filtering Rule"
 msgstr "Muokataan suodinsääntöä"
 
-#: ../edit.php:214
 msgid "Add New Rule"
 msgstr "Lisää uusi sääntö"
 
-#: ../edit.php:216
 msgid "Apply Changes"
 msgstr "Tallenna muutokset"
 
-#: ../setup.php:40
 msgid "Message Filters"
 msgstr "Viestien suodattimet"
 
-#: ../setup.php:42
 msgid ""
 "Server-Side mail filtering enables you to add criteria in order to "
 "automatically forward, delete or place a given message into a folder."
@@ -560,75 +461,42 @@ msgstr ""
 "viestien automaattiseen uudelleenohjaukseen, tuhoamiseen sekä ohjaamiseen "
 "eri kansioihin. Sisältää myös lomavastaaja -toiminnon."
 
-#: ../setup.php:86
 msgid "Filters"
 msgstr "Suodattimet"
 
-#: ../table.php:73 ../table.php:136
 msgid "Could not log on to timsieved daemon on your IMAP server"
 msgstr "Ei voitu sisäänkirjautua palveluun"
 
-#: ../table.php:75 ../table.php:139 ../table.php:154 ../table.php:198
 msgid "Please contact your administrator."
 msgstr "Ota yhteyttä ylläpitäjään"
 
-#: ../table.php:90 ../table.php:359
 msgid "Current Mail Filtering Rules"
 msgstr "Nykyiset suodinsäännöt"
 
-#: ../table.php:92 ../table.php:215
 msgid "No Filtering Rules Defined Yet"
 msgstr "Ei suodinsäätöjä vielä tehtynä"
 
-#: ../table.php:138
 msgid "in order to save your rules."
 msgstr "tallentaaksesi säännöt."
 
-#: ../table.php:152
 msgid "Could not set active script on your IMAP server"
 msgstr "Ei voitu aktivoida komentotiedostoa palvelimella"
 
-#: ../table.php:195
 msgid "Could not get SIEVE script from your IMAP server"
 msgstr "Ei voitu hakea komentotiedostoa palvelimelta"
 
-#: ../table.php:197
 msgid "(Probably the script is size null)."
 msgstr "(Ehkä komentotiedosto ei sisällä mitään)."
 
-#: ../table.php:269
 msgid "All your rules have been deleted"
 msgstr "Kaikki sääntösi on tuhottu"
 
-#: ../table.php:392 ../table.php:394
-msgid "Edit"
-msgstr "Muokkaa"
-
-#: ../table.php:402 ../table.php:404
-msgid "Delete"
-msgstr "Poista"
-
-#: ../table.php:412 ../table.php:414
-msgid "Duplicate"
-msgstr "Kopioi"
-
-#: ../table.php:422 ../table.php:425
-msgid "Move Up"
-msgstr "Siirrä Ylös"
-
-#: ../table.php:435 ../table.php:438
-msgid "Move Down"
-msgstr "Siirrä Alas"
-
-#: ../table.php:453
 msgid "Delete Selected"
 msgstr "Poista Valitut"
 
-#: ../table_html.php:17 ../table_html.php:33
 msgid "Server-Side Mail Filtering"
 msgstr "Palvelimen sisäinen suodinjärjestelmä"
 
-#: ../table_html.php:114 ../table_html.php:125
 msgid ""
 "Here you can add or delete filtering rules for your email account. These "
 "filters will always apply to your incoming mail, wherever you check your "
@@ -637,7 +505,6 @@ msgstr ""
 "Täällä voit lisätä tai poistaa suodinsääntöjä postilaatikollesi. Nämä "
 "suotimet ovat aina toiminnassa riippumatta siitä mistä luet postisi. "
 
-#: ../table_html.php:117
 msgid ""
 "You don't have any rules yet. Feel free to add any with the button &quot;Add "
 "a New Rule&quot;. When you are done, please select &quot;Save Changes&quot; "
@@ -647,7 +514,6 @@ msgstr ""
 "Lisääuusi sääntö&quot;. Kun olet valmis, paina &quot;Tallenna muutokset; "
 "päästäksesi takaisin."
 
-#: ../table_html.php:128
 msgid ""
 "When you are done with editing, <strong>remember to select &quot;Save "
 "Changes&quot;</strong> to activate your changes!"
@@ -655,53 +521,41 @@ msgstr ""
 "Muokkauksen jälkeen, <strong>muista tallentaa muutokset aktivoidaksesi "
 "muutokset!"
 
-#: ../table_html.php:137
 msgid "Successfully added new rule."
 msgstr "Onnistuneesti lisätty uusi sääntö."
 
-#: ../table_html.php:140
 msgid "Successfully updated rule #"
 msgstr "Onnistuneesti muutettu sääntöä #"
 
-#: ../table_html.php:145
 msgid "Successfully deleted rules #"
 msgstr "Onnistuneesti poistettu säännöt #"
 
-#: ../table_html.php:153
 msgid "Successfully deleted rule #"
 msgstr "Onnistuneesti poistettu sääntö#"
 
-#: ../table_html.php:163
 msgid "The following table summarizes your current mail filtering rules."
 msgstr "Alla näet nykyiset suodinsäännöt."
 
-#: ../table_html.php:173
 msgid "No"
 msgstr "Numero"
 
-#: ../table_html.php:178
 msgid "Description of Rule"
 msgstr "Säännön kuvaus"
 
-#: ../table_html.php:181
 msgid "Display as:"
 msgstr "Näytä seuraavalta:"
 
-#: ../table_html.php:193
 msgid "Options"
 msgstr "Asetukset"
 
-#: ../table_html.php:223
 msgid "Add a New Rule"
 msgstr "Lisää uusi sääntö"
 
-#: ../table_html.php:229
 msgid ""
 "When you are done, please click the button below to return to your webmail."
 msgstr ""
 "Kun olet valmis, napsauta alapuolella olevaa painiketta palataksesi "
 "webmailiin."
 
-#: ../table_html.php:231
 msgid "Save Changes"
 msgstr "Tallenna Muutokset"

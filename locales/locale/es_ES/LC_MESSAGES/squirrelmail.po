@@ -4,8 +4,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: $Id$\n"
-"POT-Creation-Date: 2003-04-30 14:14+0300\n"
+"Project-Id-Version: $Id: squirrelmail.po,v 1.1 2003/07/13 09:29:55 tokul Exp "
+"$\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2003-10-05 12:27+0300\n"
 "PO-Revision-Date: 2003-04-01 19:57+0100\n"
 "Last-Translator: Philippe Mingo <philippe@squirrelmail.org>\n"
 "Language-Team: spanish <squirrelmail-i18n@lists.sourceforge.net>\n"
@@ -423,6 +425,12 @@ msgstr "asunto"
 msgid "Edit"
 msgstr "Editar"
 
+msgid "Up"
+msgstr "Arriba"
+
+msgid "Down"
+msgstr "Abajo"
+
 msgid "No highlighting is defined"
 msgstr "No hay resaltadores definidos"
 
@@ -604,11 +612,11 @@ msgstr ""
 msgid "Message not printable"
 msgstr "Este mensaje no puede imprimirse"
 
-msgid "Printer Friendly"
-msgstr "Vista Preliminar"
-
 msgid "CC"
 msgstr "CC"
+
+msgid "Printer Friendly"
+msgstr "Vista Preliminar"
 
 msgid "Print"
 msgstr "Imprimir"
@@ -644,7 +652,8 @@ msgstr "Cliente"
 msgid "Read receipt"
 msgstr "Confirmación de lectura"
 
-msgid "send"
+#, fuzzy
+msgid "sent"
 msgstr "enviada"
 
 msgid "requested"
@@ -674,9 +683,6 @@ msgstr "Editar como nuevo mensaje"
 
 msgid "View Message"
 msgstr "Ver el mensaje"
-
-msgid "Up"
-msgstr "Arriba"
 
 msgid "Forward"
 msgstr "Reenviar"
@@ -989,6 +995,9 @@ msgstr "D, j \\d\\e F \\d\\e Y, g:i a"
 msgid "D, F j, Y G:i"
 msgstr "D, j \\d\\e F \\d\\e Y, G:i"
 
+msgid "M j, Y"
+msgstr "j/m/Y"
+
 msgid "g:i a"
 msgstr "g:i a"
 
@@ -1000,9 +1009,6 @@ msgstr "D, g:i a"
 
 msgid "D, G:i"
 msgstr "D, G:i"
-
-msgid "M j, Y"
-msgstr "j/m/Y"
 
 #, c-format
 msgid "Preference database error (%s). Exiting abnormally"
@@ -1104,6 +1110,9 @@ msgstr ""
 msgid "ERROR : No available imapstream."
 msgstr "ERROR : No hay ningún canal IMAP disponible."
 
+msgid "ERROR : Connection dropped by imap-server."
+msgstr ""
+
 msgid "ERROR : Could not complete request."
 msgstr "ERROR: No se pudo completar el pedido."
 
@@ -1118,6 +1127,13 @@ msgstr "ERROR: pedido erroneo o con formato erroneo."
 
 msgid "Server responded: "
 msgstr "El servidor respondió: "
+
+msgid "ERROR : Imap server closed the connection."
+msgstr ""
+
+#, fuzzy
+msgid "ERROR : Unknown imap response."
+msgstr "Respuesta desconocida"
 
 #, c-format
 msgid "Error connecting to IMAP server: %s."
@@ -1145,20 +1161,23 @@ msgid ""
 "folder."
 msgstr "Elimine todos los mensajes innecesarios y empiece por la papelera"
 
-msgid "Unknown response from IMAP server: "
-msgstr "Contestación desconocida del servidor IMAP:"
-
-msgid "Unknown message number in reply from server: "
-msgstr "Número de mensaje desconocido en la contestación del servidor:"
-
 msgid "(no subject)"
 msgstr "(sin asunto)"
 
 msgid "Unknown Sender"
 msgstr "Remitente Desconocido"
 
-msgid "(unknown sender)"
-msgstr "(remitente desconocido)"
+msgid "Unknown response from IMAP server: "
+msgstr "Contestación desconocida del servidor IMAP:"
+
+msgid "The server couldn't find the message you requested."
+msgstr ""
+
+msgid ""
+"Most probably your message list was out of date and the message has been "
+"moved away or deleted (perhaps by another program accessing the same "
+"mailbox)."
+msgstr ""
 
 msgid "Unknown date"
 msgstr "Fecha desconocida"
@@ -1392,6 +1411,9 @@ msgstr "Activar Paginador"
 msgid "Maximum Number of Pages to Show"
 msgstr "Número Máximo de Páginas a Mostrar"
 
+msgid "Always Show Full Date"
+msgstr ""
+
 msgid "Message Display and Composition"
 msgstr "Visualización y Composición de Mensajes"
 
@@ -1536,7 +1558,8 @@ msgstr "Solo Nuevos"
 msgid "Unseen and Total"
 msgstr "No leídos y total"
 
-msgid "Enable Collapsable Folders"
+#, fuzzy
+msgid "Enable Collapsible Folders"
 msgstr "Activar Carpetas en Cascada"
 
 msgid "Enable Cumulative Unread Message Notification"
@@ -2115,58 +2138,6 @@ msgid "COMMERCIAL - RBL+ Dial-up entries."
 msgstr "COMERCIAL - RBL+ conexiones RTC."
 
 msgid ""
-"FREE - Osirusoft Relays - Osirusofts list of verified open relays. Seems to "
-"include servers used by abuse@uunet.net auto-replies too."
-msgstr ""
-"GRATUITO - Enlaces Osirusoft - Lista \"Osirusoft\" de enlaces abiertos. "
-"Parece que también incluye servidores empleados por las respuestas "
-"automáticas de abuse@uunet.net"
-
-msgid "FREE - Osirusoft Dialups - Osirusofts Dialup Spam Source list."
-msgstr ""
-"GRATUITO - RTC de \"Osirusoft\" - Lista SPAM de \"Osirusoft\" de conexiones "
-"RTC."
-
-msgid ""
-"FREE - Osirusoft Confirmed Spam Source - Sites that continually spam and "
-"have been manually added after multiple nominations. Use with caution. Seems "
-"to catch abuse auto-replies from some ISPs."
-msgstr ""
-"GRATUITO - Lista Osirusoft de Emisores SPAM Confirmados - Sitios que mandan "
-"SPAM continuamente y que han sido añadidos manualmente después de múltiples "
-"nominaciones. A usar con precaución ya que parece emplear respuestas "
-"automáticas de algunos ISPs."
-
-msgid ""
-"FREE - Osirusoft Smart Hosts - List of hosts that are secure but relay for "
-"other mail servers that are not secure."
-msgstr ""
-"GRATUITO - \"Osirusoft Smart Hosts\" - Lista de servidores seguros que sin "
-"embargo permiten el paso a terceros que no lo son."
-
-msgid ""
-"FREE - Osirusoft Spamware Developers - It is believed that these are IP "
-"ranges of companies that are known to produce spam software. Seems to catch "
-"abuse auto-replies from some ISPs."
-msgstr ""
-"GRATUITO - Lista de Osirusoft de Desarrolladores de Programas SPAM - Se "
-"piensa que estas IPs pertenecen a desarrolladores de programas SPAM. Parece "
-"que intercepta abusos en las respuestas de algunos ISPs."
-
-msgid ""
-"FREE - Osirusoft Unconfirmed OptIn Servers - List of listservers that opt "
-"users in without confirmation."
-msgstr "GRATUITO - Lista Osirusoft de Servidores \"Opt-In\" sin confirmar."
-
-msgid ""
-"FREE - Osirusoft Insecure formmail.cgi scripts - List of insecure formmail."
-"cgi scripts. (planned)."
-msgstr "GRATUITO - Formularios inseguros de Osirusoft."
-
-msgid "FREE - Osirusoft Open Proxy Servers - List of Open Proxy Servers."
-msgstr "GRATUITO - Lista de servidores Proxy abiertos de Osirusoft."
-
-msgid ""
 "FREE - ORDB was born when ORBS went off the air. It seems to have fewer "
 "false positives than ORBS did though."
 msgstr ""
@@ -2325,9 +2296,6 @@ msgstr "Cabecera"
 
 msgid "Contains:"
 msgstr "Contiene:"
-
-msgid "Down"
-msgstr "Abajo"
 
 #, c-format
 msgid "If <b>%s</b> contains <b>%s</b> then move to <b>%s</b>"
@@ -2736,9 +2704,6 @@ msgstr "¿Confirma el borrado del servidor?"
 
 msgid "Confirm Delete"
 msgstr "Confirmar Borrado"
-
-msgid "Mofify a Server"
-msgstr "Modificar un Servidor"
 
 msgid "Undefined Function"
 msgstr "Función no definida"
@@ -3316,27 +3281,45 @@ msgstr "Opciones de Traducción Guardadas"
 msgid "Your server options are as follows:"
 msgstr "Estas son sus opciones de servidor:"
 
-msgid ""
-"13 language pairs, maximum of 1000 characters translated, powered by Systran"
+#, fuzzy
+msgid "Maximum of 1000 characters translated, powered by Systran"
 msgstr ""
 "13 pares de idiomas, un máximo de 1000 caracteres traducidos, motor de "
 "Systran"
 
-msgid "12 language pairs, no known limits, powered by Systran"
+#, c-format
+msgid "Number of supported language pairs: %s"
+msgstr ""
+
+#, fuzzy
+msgid "No known limits, powered by Systran"
 msgstr "12 pares de idiomas, no hay límites conocidos, motor de Systran"
 
-msgid ""
-"767 language pairs, no known limits, powered by Translation Experts's "
-"InterTran"
+#, fuzzy
+msgid "No known limits, powered by Translation Experts's InterTran"
 msgstr ""
 "767 pares de idiomas, no hay límites conocidos, motor InterTran de "
 "Translation Experts"
 
-msgid ""
-"8 language pairs, no known limits, powered by GPLTrans (free, open source)"
+#, c-format
+msgid "Number of supported languages: %s"
+msgstr ""
+
+#, fuzzy
+msgid "No known limits, powered by GPLTrans (free, open source)"
 msgstr ""
 "8 pares de idiomas, no hay límites conocidos, motor GPLTrans (gratuito, open "
 "source)"
+
+#, fuzzy
+msgid "Hellenic translations, no known limits, powered by Systran"
+msgstr "12 pares de idiomas, no hay límites conocidos, motor de Systran"
+
+#, fuzzy
+msgid "Russian translations, maximum of 500 characters translated"
+msgstr ""
+"13 pares de idiomas, un máximo de 1000 caracteres traducidos, motor de "
+"Systran"
 
 msgid ""
 "You also decide if you want the translation box displayed, and where it will "
@@ -3489,11 +3472,80 @@ msgstr "al Inglés"
 msgid "from English"
 msgstr "del Inglés"
 
+#, fuzzy
+msgid "Interface language"
+msgstr "Idioma por omisión"
+
+#, fuzzy
+msgid "Translation direction"
+msgstr "Opciones de Traducción"
+
 msgid "Delivery error report"
 msgstr "Informe de error en entrega"
 
 msgid "Undelivered Message Headers"
 msgstr "Cabecera de mensaje no entregado"
+
+#~ msgid "Unknown message number in reply from server: "
+#~ msgstr "Número de mensaje desconocido en la contestación del servidor:"
+
+#~ msgid "(unknown sender)"
+#~ msgstr "(remitente desconocido)"
+
+#~ msgid ""
+#~ "FREE - Osirusoft Relays - Osirusofts list of verified open relays. Seems "
+#~ "to include servers used by abuse@uunet.net auto-replies too."
+#~ msgstr ""
+#~ "GRATUITO - Enlaces Osirusoft - Lista \"Osirusoft\" de enlaces abiertos. "
+#~ "Parece que también incluye servidores empleados por las respuestas "
+#~ "automáticas de abuse@uunet.net"
+
+#~ msgid "FREE - Osirusoft Dialups - Osirusofts Dialup Spam Source list."
+#~ msgstr ""
+#~ "GRATUITO - RTC de \"Osirusoft\" - Lista SPAM de \"Osirusoft\" de "
+#~ "conexiones RTC."
+
+#~ msgid ""
+#~ "FREE - Osirusoft Confirmed Spam Source - Sites that continually spam and "
+#~ "have been manually added after multiple nominations. Use with caution. "
+#~ "Seems to catch abuse auto-replies from some ISPs."
+#~ msgstr ""
+#~ "GRATUITO - Lista Osirusoft de Emisores SPAM Confirmados - Sitios que "
+#~ "mandan SPAM continuamente y que han sido añadidos manualmente después de "
+#~ "múltiples nominaciones. A usar con precaución ya que parece emplear "
+#~ "respuestas automáticas de algunos ISPs."
+
+#~ msgid ""
+#~ "FREE - Osirusoft Smart Hosts - List of hosts that are secure but relay "
+#~ "for other mail servers that are not secure."
+#~ msgstr ""
+#~ "GRATUITO - \"Osirusoft Smart Hosts\" - Lista de servidores seguros que "
+#~ "sin embargo permiten el paso a terceros que no lo son."
+
+#~ msgid ""
+#~ "FREE - Osirusoft Spamware Developers - It is believed that these are IP "
+#~ "ranges of companies that are known to produce spam software. Seems to "
+#~ "catch abuse auto-replies from some ISPs."
+#~ msgstr ""
+#~ "GRATUITO - Lista de Osirusoft de Desarrolladores de Programas SPAM - Se "
+#~ "piensa que estas IPs pertenecen a desarrolladores de programas SPAM. "
+#~ "Parece que intercepta abusos en las respuestas de algunos ISPs."
+
+#~ msgid ""
+#~ "FREE - Osirusoft Unconfirmed OptIn Servers - List of listservers that opt "
+#~ "users in without confirmation."
+#~ msgstr "GRATUITO - Lista Osirusoft de Servidores \"Opt-In\" sin confirmar."
+
+#~ msgid ""
+#~ "FREE - Osirusoft Insecure formmail.cgi scripts - List of insecure "
+#~ "formmail.cgi scripts. (planned)."
+#~ msgstr "GRATUITO - Formularios inseguros de Osirusoft."
+
+#~ msgid "FREE - Osirusoft Open Proxy Servers - List of Open Proxy Servers."
+#~ msgstr "GRATUITO - Lista de servidores Proxy abiertos de Osirusoft."
+
+#~ msgid "Mofify a Server"
+#~ msgstr "Modificar un Servidor"
 
 #~ msgid "Not available"
 #~ msgstr "No disponible"
