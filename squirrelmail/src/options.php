@@ -129,8 +129,11 @@ $delimiter = $_SESSION['delimiter'];
 /* end of getting globals */
 
 /* Make sure we have an Option Page set. Default to main. */
-if (!isset($optpage)) {
-    $optpage = 'main';
+if (!isset($optpage) || $optpage == '') {
+    $optpage = 'SMOPT_PAGE_MAIN';
+}
+else {
+    $optpage = strip_tags($optpage);
 }
 
 /* Make sure we have an Option Mode set. Default to display. */
@@ -187,7 +190,10 @@ switch ($optpage) {
 /*** Second, load the option information for this page. ***/
 /**********************************************************/
 
-if ($optpage != SMOPT_PAGE_MAIN) {
+if ( !is_file( $optpage_file ) ) {
+    $optpage = SMOPT_PAGE_MAIN;
+} 
+elseif ($optpage != SMOPT_PAGE_MAIN ) {
     /* Include the file for this optionpage. */
     require_once($optpage_file);
 
