@@ -1,0 +1,94 @@
+# Lithuanian Change Sasl password translation
+# Copyright (C) 2003 Free Software Foundation, Inc.
+# Tomas Kuliavas <tokul@users.sourceforge.net>, 2003.
+msgid ""
+msgstr ""
+"Project-Id-Version: $Id$\n"
+"POT-Creation-Date: 2002-08-03 14:41-0400\n"
+"PO-Revision-Date: 2003-09-13 10:44+0300\n"
+"Last-Translator: Tomas Kuliavas <tokul@users.sourceforge.net>\n"
+"Language-Team: Lithuanian <squirrelmail-i18n@lists.sourceforge.net>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=ISO-8859-4\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: options.php:106
+msgid "Change"
+msgstr "Pakeisti"
+
+#: setup.php:46
+msgid "Change Cyrus Password"
+msgstr "Pakeisti Cyrus slapta¾odç"
+
+#: options.php:62 options.php:125
+msgid "Change Email Password"
+msgstr "Pakeisti pa¹to slapta¾odç"
+
+#: options.php:89
+msgid "Confirm:"
+msgstr "Patvirtinimas:"
+
+#: setup.php:48
+msgid ""
+"Cyrus SASL database authentication allows your Cyrus/squirrelmail "
+"installation to host mail users without requiring a Unix Shell account!"
+"<br><b><font size=-2>NOTE: This plugin only covers the &quot;sasldb&quot; "
+"case when using Cyrus SASL.  Kerberos and PAM authentication mechanisms will "
+"require other techniques to enable user password manipulations.</font></b>"
+msgstr "Cyrys SASL duomenù bazìs autorizavimas leid¾ia Jþsù Cyrus/SquirrelMail instaliacijai dirbti su virtualiais pa¹to vartotojais, kurie neturi normalaus Unix terminalo prisijungimo! <br><b><font size=-2>PASTABA: ©is priedas dirba tik su &quot;sasldb&quot; autorizavimo schema, kai naudojamas Cyrus SASL. Kerberos ir PAM autorizavimo mechanizmai reikalauja visi¹kai kitokiù çrankiù.</font></b>"
+
+#: options.php:125
+msgid "Error"
+msgstr "Klaida"
+
+#: options.php:82
+msgid "New Password:"
+msgstr "Naujas slapta¾odis:"
+
+#: options.php:75
+msgid "Old Password:"
+msgstr "Senas slapta¾odis:"
+
+#: options.php:62
+msgid "Options"
+msgstr "Nustatymai"
+
+#: options.php:138
+msgid ""
+"The plugin has encountered an unknown error.  Please inform your system "
+"administrator."
+msgstr "Çvyko klaida. Informuokite jþsù pa¹to sistemos administratoriù."
+
+#: options.php:66
+msgid "Username:"
+msgstr "Vartotojo vardas:"
+
+#: options.php:100
+msgid ""
+"WARNING! Changing your password will automatically log you out! If you are "
+"unable to log back in, please contact your friendly system adminstrator."
+msgstr "DÌMESIO! Pakeitê slapta¾odç Jþs bþsite automati¹kai atjungti nuo sistemos ir turìsite i¹ naujo prisijungti. Jei i¹ naujo prisijungiant kils kokios nors problemos, susisiekite su jþsù pa¹to sistemos administratoriumi."
+
+#: options.php:132
+msgid ""
+"You have left a field blank.  Please use your browser's back button and "
+"enter the missing information."
+msgstr "Jþs neu¾pildìte bþtino laukelio. Pra¹au paspausti jþsù nar¹yklìs grç¾imo atgal mygtuk± ir suvesti trþkstam± informacij±."
+
+#: options.php:134
+msgid ""
+"Your new password cannot be confirmed.  Please use your browser's back "
+"button and reconfirm your new password."
+msgstr "Nepavyko sulyginti jþsù naujo slapta¾od¾io. Pra¹au paspausti jþsù nar¹yklìs grç¾imo atgal mygtuk± ir suvesti vienodas reik¹mes ç naujo slapta¾od¾io ir patvirtinimo laukus."
+
+#: options.php:136
+msgid ""
+"Your old password doesn't pass muster.  Please use your browser's back "
+"button and enter it correctly."
+msgstr "Jþsù senasis slapta¾odis neteisingas. Pra¹au paspausti nar¹yklìs grç¾imo atgal mygtuk± ir çvesti teising± slapta¾odç."
+
+#: setup.php:34
+msgid ""
+"Your password has been changed.  This requires that you reauthenticate with "
+"the new password. Logging out automagically."
+msgstr "Jþsù slapta¾odis pakeistas. Dabar jums teks i¹ naujo prisijungti su nauju slapta¾od¾iu. Automati¹kai atsijungiame nuo pa¹to sistemos."
