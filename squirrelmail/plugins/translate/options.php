@@ -1,28 +1,25 @@
 <?php
+   /**
+    * options.php
+    *
+    * Copyright (c) 1999-2002 The SquirrelMail Project Team
+    * Licensed under the GNU GPL. For full terms see the file COPYING.
+    *
+    * Pick your translator to translate the body of incoming mail messages
+    *
+    * $Id$
+    */
 
-/**
- * options.php
- *
- * Copyright (c) 1999-2002 The SquirrelMail Project Team
- * Licensed under the GNU GPL. For full terms see the file COPYING.
- *
- * Pick your translator to translate the body of incoming mail messages
- *
- * $Id$
- */
-
-/* Path for SquirrelMail required files. */
-define('SM_PATH','../../');
-
-/* SquirrelMail required files. */
-require_once(SM_PATH . 'include/validate.php');
-require_once(SM_PATH . 'functions/strings.php');
-require_once(SM_PATH . 'functions/page_header.php');
-require_once(SM_PATH . 'functions/display_messages.php');
-require_once(SM_PATH . 'functions/imap.php');
-require_once(SM_PATH . 'include/load_prefs.php');
-
-    displayPageHeader($color, 'None');
+   chdir('..');
+   require_once('../src/validate.php');
+   require_once('../functions/strings.php');
+   require_once('../functions/page_header.php');
+   require_once('../functions/display_messages.php');
+   require_once('../functions/imap.php');
+   require_once('../functions/array.php');
+   require_once('../functions/i18n.php');
+   require_once('../src/load_prefs.php');
+   displayPageHeader($color, 'None');
 
     if (isset($_POST['submit_translate']) && $_POST['submit_translate'] ) {
         if (isset($_POST['translate_translate_server'])) {
@@ -92,7 +89,8 @@ require_once(SM_PATH . 'include/load_prefs.php');
     }
 
 ?>
-   <table width="95%" align=center border=0 cellpadding=1 cellspacing=0><tr><td bgcolor="<?php echo $color[0] ?>">
+   <br>
+   <table width="100%" align=center border=0 cellpadding=2 cellspacing=0><tr><td bgcolor="<?php echo $color[0] ?>">
       <center><b><?php echo _("Options") . ' - '. _("Translator"); ?></b></center>
    </td></tr></table>
 

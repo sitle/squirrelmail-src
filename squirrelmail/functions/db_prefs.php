@@ -33,7 +33,7 @@ define('SMDB_MYSQL', 1);
 define('SMDB_PGSQL', 2);
 
 require_once('DB.php');
-require_once(SM_PATH . 'config/config.php');
+require_once('../config/config.php');
 
 global $prefs_are_cached, $prefs_cache;
 
@@ -77,7 +77,7 @@ class dbPrefs {
     var $error = NULL;
     var $db_type = SMDB_UNKNOWN;
 
-    var $default = Array('theme_default' => 0,
+    var $default = Array('chosen_theme' => '../themes/default_theme.php',
                          'show_html_default' => '0');
 
     function open() {
@@ -108,7 +108,7 @@ class dbPrefs {
         }
         $dbh = DB::connect($prefs_dsn, true);
 
-        if(DB::isError($dbh)) {
+        if(DB::isError($dbh) || DB::isWarning($dbh)) {
             $this->error = DB::errorMessage($dbh);
             return false;
         }

@@ -30,19 +30,19 @@
   Include backends here.
 */
 
-require_once(SM_PATH . 'functions/abook_local_file.php');
-require_once(SM_PATH . 'functions/abook_ldap_server.php');
+require_once('../functions/abook_local_file.php');
+require_once('../functions/abook_ldap_server.php');
 
 global $addrbook_dsn;
 
 /* Use this if you wanna have a global address book */
 if (isset($address_book_global_filename)) {
-    include_once(SM_PATH . 'functions/abook_global_file.php');
+    include_once('../functions/abook_global_file.php');
 }
 
 /* Only load database backend if database is configured */
 if(isset($addrbook_dsn) && !empty($addrbook_dsn)) {
-  include_once(SM_PATH . 'functions/abook_database.php');
+  include_once('../functions/abook_database.php');
 }
 
 /*
@@ -200,26 +200,6 @@ class AddressBook {
         return $this->numbackends;
     }
 
-
-    /*
-     * This function takes a $row array as returned by the addressbook 
-     * search and returns an e-mail address with the full name or
-     * nickname optionally prepended.
-     */
-
-    function full_address($row) {
-        global $addrsrch_fullname, $datadir, $user;
-
-        if (($prefix = getPref($datadir, $user, 'addrsrch_fullname') or
-            isset($addrsrch_fullname) and $prefix = $addrsrch_fullname)
-            and $prefix !== 'noprefix') {
-            $name = ($prefix === 'nickname') ? $row['nickname']
-                : $row['name'];
-            return $name . ' <' . trim($row['email']) . '>';
-        } else {
-            return trim($row['email']);
-        }
-    }
 
     /*
         Return a list of addresses matching expression in

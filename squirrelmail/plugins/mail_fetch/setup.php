@@ -11,7 +11,7 @@
     **  $Id$
     **/
 
-    require_once(SM_PATH . 'plugins/mail_fetch/functions.php' );
+    require_once( '../plugins/mail_fetch/functions.php' );
 
     function squirrelmail_plugin_init_mail_fetch() {
         global $squirrelmail_plugin_hooks;
@@ -64,12 +64,13 @@
 
     function mail_fetch_login() {
 
-        require_once (SM_PATH . 'include/validate.php');
-        require_once (SM_PATH . 'functions/imap.php');
-        require_once (SM_PATH . 'plugins/mail_fetch/class.POP3.php');
-        require_once (SM_PATH . 'plugins/mail_fetch/functions.php');
+        require_once ('../src/validate.php');
+        require_once ('../functions/imap.php');
+        require_once ('../plugins/mail_fetch/class.POP3.php');
+        require_once ('../plugins/mail_fetch/functions.php');
+        require_once('../functions/i18n.php');
 
-        global $data_dir, $imapServerAddress, $imapPort;
+        global $data_dir, $imapServerAddress,$imapPort;
         if ( !check_php_version(4,1) ) {
             global $_SESSION, $_COOKIE;
         }
@@ -212,14 +213,13 @@
     function mail_fetch_setnew()    {
 
         global $data_dir;
-        require_once(SM_PATH . 'functions/prefs.php');
-
+        require_once('../functions/prefs.php');
         if (isset($_SESSION['username'])) {
             $username = $_SESSION['username'];
-        } else {
-           $username = '';
         }
-
+        else {
+            $username = '';
+        }
         if( $username <> '' ) {
             // Creates the pref file if it does not exist.
             setPref( $data_dir, $username, 'mailfetch_newlog', 'on' );

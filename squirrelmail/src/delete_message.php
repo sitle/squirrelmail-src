@@ -11,13 +11,9 @@
  * $Id$
  */
 
-/* Path for SquirrelMail required files. */
-define('SM_PATH','../');
-
-/* SquirrelMail required files. */
-require_once(SM_PATH . 'include/validate.php');
-require_once(SM_PATH . 'functions/display_messages.php');
-require_once(SM_PATH . 'functions/imap.php');
+require_once('../src/validate.php');
+require_once('../functions/display_messages.php');
+require_once('../functions/imap.php');
 
 $key = $_COOKIE['key'];
 $username = $_SESSION['username'];
@@ -50,13 +46,6 @@ sqimap_messages_delete($imapConnection, $message, $message, $mailbox);
 if ($auto_expunge) {
     sqimap_mailbox_expunge($imapConnection, $mailbox, true);
 }
-if (!isset($saved_draft)) {
-    $saved_draft = '';
-}
-
-if (!isset($mail_sent)) {
-    $mail_sent = '';
-}
 
 $location = get_location();
 
@@ -64,12 +53,20 @@ if (isset($where) && isset($what)) {
     header("Location: $location/search.php?where=" . urlencode($where) .
            '&what=' . urlencode($what) . '&mailbox=' . urlencode($mailbox));
 } else {
-    if (!empty($saved_draft) || !empty($mail_sent)) {
-          header("Location: $location/compose.php?mail_sent=$mail_sent&saved_draft=$saved_draft");
+    if (isset($saved_draft) || isset($mail_sent)) {
+    if (!isset($mail_sent)) {
+        $mail_sent = '';
+    }
+    if (!isset($saved_draft)) {
+        $saved_draft = '';
+    }
+        if (!empty($saved_draft) || !empty($mail_sent)) {
+            header("Location: $location/compose.php?mail_sent=$mail_sent&saved_draft=$saved_draft");
+        }
     }
     else {
         header("Location: $location/right_main.php?sort=$sort&startMessage=$startMessage&mailbox=" .
-               urlencode($mailbox));
+                urlencode($mailbox));
     }
 }
 

@@ -92,7 +92,7 @@ class abook_database extends addressbook_backend {
          
         $dbh = DB::connect($this->dsn, true);
          
-        if (DB::isError($dbh)) {
+        if (DB::isError($dbh) || DB::isWarning($dbh)) {
             return $this->set_error(sprintf(_("Database error: %s"),
                                             DB::errorMessage($dbh)));
         }

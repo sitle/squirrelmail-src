@@ -12,17 +12,13 @@
  * $Id$
  */
 
-/* Path for SquirrelMail required files. */
-define('SM_PATH','../');
-
-/* SquirrelMail required files. */
-require_once(SM_PATH . 'include/validate.php');
-require_once(SM_PATH . 'functions/imap.php');
-require_once(SM_PATH . 'functions/date.php');
-require_once(SM_PATH . 'functions/mime.php');
-require_once(SM_PATH . 'functions/mailbox_display.php');
-require_once(SM_PATH . 'functions/display_messages.php');
-require_once(SM_PATH . 'functions/html.php');
+require_once('../src/validate.php');
+require_once('../functions/imap.php');
+require_once('../functions/date.php');
+require_once('../functions/array.php');
+require_once('../functions/mime.php');
+require_once('../functions/mailbox_display.php');
+require_once('../functions/display_messages.php');
 
 /***********************************************************
  * incoming variables from URL:                            *
@@ -39,23 +35,18 @@ require_once(SM_PATH . 'functions/html.php');
  *                                                         *
  ***********************************************************/
 
-
 /* lets get the global vars we may need */
 $username = $_SESSION['username'];
 $key  = $_COOKIE['key'];
 $onetimepad = $_SESSION['onetimepad'];
 $base_uri = $_SESSION['base_uri'];
 $delimiter = $_SESSION['delimiter'];
- 
+
 if (isset($_GET['startMessage'])) {
     $startMessage = $_GET['startMessage'];
-} elseif (isset($_POST['startMessage'])) {
-    $startMessage = $_POST['startMessage'];
 }
 if (isset($_GET['mailbox'])) {
     $mailbox = $_GET['mailbox'];
-} else if (isset($_POST['mailbox'])) {
-    $mailbox = $_POST['mailbox'];
 }
 if (isset($_GET['PG_SHOWNUM'])) {
     $PG_SHOWNUM = $_GET['PG_SHOWNUM'];
@@ -69,12 +60,6 @@ if (isset($_GET['PG_SHOWALL'])) {
 if (isset($_GET['newsort'])) {
     $newsort = $_GET['newsort'];
 }
-if (isset($_GET['composenew'])) {
-    $composenew = $_GET['composenew'];
-} else {
-    $composenew = false;
-}
-
 if (isset($_GET['checkall'])) {
     $checkall = $_GET['checkall'];
 }
@@ -85,16 +70,9 @@ if (isset($_SESSION['lastTargetMailbox'])) {
     $lastTargetMailbox =$_SESSION['lastTargetMailbox'];
 }
 
-if (isset($_GET['session'])) {
-    $session = $_GET['session'];
-}
-
-
 /* end of get globals */
 
-
 /* Open a connection on the imap port (143) */
-
 $imapConnection = sqimap_login($username, $key, $imapServerAddress, $imapPort, 0);
 
 if (isset($PG_SHOWALL)) {
@@ -137,6 +115,7 @@ if ($imap_server_type == 'uw' && (strstr($mailbox, '../') ||
 }
 
 /* decide if we are thread sorting or not */
+
 if ($allow_thread_sort == TRUE) {
     if (isset($set_thread)) {
         if ($set_thread == 1) {
@@ -156,42 +135,41 @@ else {
     $thread_sort_messages = 0;
 } 
 
-do_hook ('generic_header');
 
 sqimap_mailbox_select($imapConnection, $mailbox);
 
-if ($composenew) {
-    $comp_uri = SM_PATH . 'src/compose.php?mailbox='. urlencode($mailbox).
-		"&session=$session";
-    displayPageHeader($color, $mailbox, "comp_in_new('$comp_uri');", false);
+if (isset($composenew) && $composenew) {
+    $comp_uri = "../src/compose.php?mailbox=". urlencode($mailbox).
+		"&amp;session=$composesession&amp;attachedmessages=true&amp";
+
+    displayPageHeader($color, $mailbox, "comp_in_new(false,'$comp_uri');", false);
 } else {
     displayPageHeader($color, $mailbox);
 }
+echo "<br>\n";
+
 do_hook('right_main_after_header');
 if (isset($note)) {
-    echo html_tag( 'div', '<b>' . $note .'</b>', 'center' ) . "<br>\n";
+    echo "<CENTER><B>$note</B></CENTER><BR>\n";
 }
 
 if (isset($_SESSION['just_logged_in'])) {
     $just_logged_in = $_SESSION['just_logged_in'];
     if ($just_logged_in == true) {
         $just_logged_in = false;
-
         if (strlen(trim($motd)) > 0) {
-            echo html_tag( 'table',
-                        html_tag( 'tr',
-                            html_tag( 'td', 
-                                html_tag( 'table',
-                                    html_tag( 'tr',
-                                        html_tag( 'td', $motd, 'center' )
-                                    ) ,
-                                '', $color[4], 'width="100%" cellpadding="5" cellspacing="1" border="0"' )
-                             )
-                        ) ,
-                    'center', $color[9], 'width="70%" cellpadding="0" cellspacing="3" border="0"' );
+            echo "<br><table align=center width=\"70%\" cellpadding=0 cellspacing=3 border=0 bgcolor=\"$color[9]\">" .
+                '<tr><td>' .
+                "<table width=\"100%\" cellpadding=5 cellspacing=1 border=0 bgcolor=\"$color[4]\">" .
+                "<tr><td align=center>$motd";
+                do_hook('motd');
+                echo '</td></tr>' .
+                    '</table>' .
+                    '</td></tr></table>';
         }
     }
 }
+
 
 if (isset($newsort)) {
     $sort = $newsort;
@@ -245,6 +223,6 @@ if ($use_mailbox_cache && sqsession_is_registered('msgs')) {
 do_hook('right_main_bottom');
 sqimap_logout ($imapConnection);
 
-echo '</body></html>';
+echo '</BODY></HTML>';
 
 ?>

@@ -165,15 +165,13 @@ for ($i=0; $i<sizeof($sqspell_output); $i++){
      */
     if (!$SQSPELL_EREG("\n$sqspell_word\n", $words)){
       $sqspell_symb=intval($tmparray[3])-1;
-      if (!isset($misses[$sqspell_word])) {
+      if (!$misses[$sqspell_word]) {
         $misses[$sqspell_word] = $right;
         $missed_words[$errors] = $sqspell_word;
         $errors++;
       }
-      if (isset($locations[$sqspell_word])){
+      if ($locations[$sqspell_word]){
         $locations[$sqspell_word] .= ', ';
-      } else { 
-        $locations[$sqspell_word] = '';
       }
       $locations[$sqspell_word] .= "$current_line:$sqspell_symb";
     }

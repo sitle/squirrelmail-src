@@ -14,12 +14,11 @@
  */
 
 sq_mt_randomize();
-
-require_once(SM_PATH . 'functions/global.php');
-   
+  
+require_once('../src/global.php'); 
 global $theme, $random_theme_good_themes;
    
-if (!sqsession_is_registered('random_theme_good_theme')) {
+if (!session_is_registered('random_theme_good_theme')) {
     $good_themes = array();
     foreach ($theme as $data) {
         if (substr($data['PATH'], -18) != '/themes/random.php') {

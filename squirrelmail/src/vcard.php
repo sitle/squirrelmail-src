@@ -11,30 +11,32 @@
  * $Id$
  */
 
-/* Path for SquirrelMail required files. */
-Define('SM_PATH','../');
-
-/* SquirrelMail required files. */
-require_once(SM_PATH . 'include/validate.php');
-require_once(SM_PATH . 'functions/date.php');
-require_once(SM_PATH . 'functions/page_header.php');
-require_once(SM_PATH . 'functions/mime.php');
-require_once(SM_PATH . 'include/load_prefs.php');
+require_once('../src/validate.php');
+require_once('../functions/date.php');
+require_once('../functions/page_header.php');
+require_once('../functions/mime.php');
+require_once('../src/load_prefs.php');
 
 /* globals */
 $key  = $_COOKIE['key'];
 $username = $_SESSION['username'];
 $onetimepad = $_SESSION['onetimepad'];
-$mailbox = decodeHeader($_GET['mailbox']);
+
+$mailbox = $_GET['mailbox'];
 $passed_id = $_GET['passed_id'];
-$ent_id = $_GET['ent_id'];
 $passed_ent_id = $_GET['passed_ent_id'];
-$QUERY_STRING = $_SERVER['QUERY_STRING'];
+$startMessage = $_GET['startMessage'];
+
+if(isset($_GET['where'])) {
+    $where = $_GET['where'];
+}
+if(isset($_GET['what'])) {
+    $what = $_GET['what'];
+}
 /* end globals */
 
 $imapConnection = sqimap_login($username, $key, $imapServerAddress, $imapPort, 0);
 sqimap_mailbox_select($imapConnection, $mailbox);
-
 
 displayPageHeader($color, 'None');
 
@@ -43,17 +45,23 @@ echo '<br><table width="100%" border="0" cellspacing="0" cellpadding="2" ' .
         '<tr><td bgcolor="' . $color[0] . '">' .
         '<b><center>' .
         _("Viewing a Business Card") . " - ";
-$msg_url = 'read_body.php?' . $QUERY_STRING;
-$msg_url = set_url_var($msg_url, 'ent_id', 0);
-echo '<a href="'.$msg_url.'">'. _("View message") . '</a>';
-
+if (isset($where) && isset($what)) {
+    // from a search
+    echo '<a href="../src/read_body.php?mailbox=' . urlencode($mailbox) .
+            '&amp;passed_id=' . $passed_id . '&amp;where=' . urlencode($where) .
+            '&amp;what=' . urlencode($what). '">' . _("View message") . '</a>';
+} else {
+    echo '<a href="../src/read_body.php?mailbox=' . urlencode($mailbox) .
+        '&amp;passed_id=' . $passed_id . '&amp;startMessage=' . $startMessage .
+        '&amp;show_more=0">' . _("View message") . '</a>';
+}
 echo '</center></b></td></tr>';
 
 $message = sqimap_get_message($imapConnection, $passed_id, $mailbox);
 
-$entity_vcard = getEntity($message,$ent_id);
+$entity_vcard = getEntity($message,$passed_ent_id);
 
-$vcard = mime_fetch_body ($imapConnection, $passed_id, $ent_id);
+$vcard = mime_fetch_body ($imapConnection, $passed_id, $passed_ent_id);
 $vcard = decodeBody($vcard, $entity_vcard->header->encoding);
 $vcard = explode ("\n",$vcard);
 foreach ($vcard as $l) {
@@ -135,11 +143,11 @@ echo '</table>' .
         '<tr><td align=center>' .
         '<FORM ACTION="../src/addressbook.php" METHOD="POST" NAME=f_add>' .
         '<table border=0 cellpadding=2 cellspacing=0 align=center>' .
-        '<tr><td align=right><b>Nickname:</b></td>' .
+        '<tr><td align=right><b>'._("Nickname").':</b></td>' .
         '<td><input type=text name="addaddr[nickname]" size=20 value="' .
         $vcard_safe['firstname'] . '-' . $vcard_safe['lastname'] .
         '"></td></tr>' .
-        '<tr><td align=right><b>Note Field Contains:</b></td><td>' .
+        '<tr><td align=right><b>'._("Note Field Contains").':</b></td><td>' .
         '<select name="addaddr[label]">';
 
 if (isset($vcard_nice['url'])) {
@@ -193,7 +201,7 @@ echo '</select>' .
         '<INPUT NAME="addaddr[lastname]" type=hidden value="' .
         $vcard_safe['lastname'] . '">' .
         '<INPUT TYPE=submit NAME="addaddr[SUBMIT]" ' .
-        'VALUE="Add to Address Book">' .
+        'VALUE="'. _("Add to Addressbook") . '">' .
         '</td></tr>' .
         '</table>' .
         '</FORM>' .

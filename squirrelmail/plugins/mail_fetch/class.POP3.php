@@ -102,7 +102,7 @@ class POP3 {
         }
         $this->FP = $fp;
         $this->BANNER = $this->parse_banner($reply);
-        return true;
+            return true;
     }
 
     function noop () {
@@ -156,7 +156,7 @@ class POP3 {
                 //  Auth successful.
                 $count = $this->last("count");
                 $this->COUNT = $count;
-                return $count;
+                    return $count;
             }
         }
     }
@@ -199,7 +199,7 @@ class POP3 {
                     //  Auth successful.
                     $count = $this->last("count");
                     $this->COUNT = $count;
-                    return $count;
+                        return $count;
                 }
             }
         }

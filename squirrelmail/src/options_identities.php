@@ -11,13 +11,8 @@
  * $Id$
  */
 
-/* Path for SquirrelMail required files. */
-define('SM_PATH','../');
-
-/* SquirrelMail required files. */
-require_once(SM_PATH . 'include/validate.php');
-require_once(SM_PATH . 'functions/display_messages.php');
-require_once(SM_PATH . 'functions/html.php');
+require_once('../src/validate.php');
+require_once('../functions/display_messages.php');
 
 /* POST data var names are dynamic because 
    of the possible multiple idents so lets get
@@ -48,46 +43,61 @@ if (!empty($_POST)) {
         SaveUpdateFunction();
     }
  
-   do_hook('options_identities_top');
    LoadInfo($full_name, $email_address, $reply_to, $signature, '');
-   $td_str = '';
-   $td_str .= '<form name="f" action="options_identities.php" method="post"><br>';
-   $td_str .= ShowTableInfo($full_name, $email_address, $reply_to, $signature, '');
+
+?>
+<br>
+<table width="95%" align=center border=0 cellpadding=2 cellspacing=0>
+<tr><td bgcolor="<?php echo $color[0] ?>" align="center">
+
+      <b><?php echo _("Options") . ' - ' . _("Advanced Identities"); ?></b>
+
+    <table width="100%" border="0" cellpadding="1" cellspacing="1">
+    <tr><td bgcolor="<?php echo $color[4] ?>" align="center">
+
+<form name="f" action="options_identities.php" method="post"><br>
+
+<?php do_hook('options_identities_top'); ?>
+
+<table width="80%" cellpadding=2 cellspacing=0 border=0>
+  <tr bgcolor="<?php echo $color[9] ?>">
+    <th colspan=2 align=center><?php echo _("Default Identity") ?></th>
+  </tr>
+<?PHP
+
+   ShowTableInfo($full_name, $email_address, $reply_to, $signature, '');
   
-   $num = 1;
-   while (LoadInfo($full_name, $email_address, $reply_to, $signature, $num)) {
-       $td_str .= html_tag( 'tr',
-                          html_tag( 'th', sprintf (_("Alternate Identity %d"), $num), 'center', '', 'colspan="2"' ) ,
-                      '', $color[9]);
-       $td_str .= ShowTableInfo($full_name, $email_address, $reply_to, $signature, $num);
-       $num ++;
-       }
+    $num = 1;
+   while (LoadInfo($full_name, $email_address, $reply_to, $signature, $num))
+    {
+?>
+  <tr bgcolor="<?PHP echo $color[9] ?>">
+    <th colspan=2 align=center><?PHP printf (_("Alternate Identity %d"),
+    $num) ?></th>
+  </tr>
+<?PHP
+       ShowTableInfo($full_name, $email_address, $reply_to, $signature, $num);
+        $num ++;
+    }
+   
+?>
+  <tr bgcolor="<?php echo $color[9] ?>">
+    <th colspan=2 align=center><?PHP echo _("Add a New Identity") ?></th>
+  </tr>
+<?php
+    ShowTableInfo('', '', '', '', $num);
+?>
+</table>
+</form>
 
-   echo '<br>' . 
-   html_tag( 'table', "\n" .
-       html_tag( 'tr', "\n" .
-           html_tag( 'td', "\n" .
-               '<b>'. _("Options") . ' - ' . _("Advanced Identities") .'</b><br>' .
-               html_tag( 'table', "\n" .
-                   html_tag( 'tr', "\n" .
-                       html_tag( 'td', "\n" .
-                           html_tag( 'table', "\n" .
-                               html_tag( 'tr', "\n" .
-                                   html_tag( 'th', _("Default Identity"), 'center', '', 'colspan="2"' ) ,
-                                   '', $color[9]) . "\n" .
-                                   $td_str . "\n" .
-                               html_tag( 'tr',
-                                   html_tag( 'th', _("Add a New Identity") . ShowTableInfo('', '', '', '', $num), 'center', '', 'colspan="2"' ) ,
-                               '', $color[9]) ,
-                            '', '', 'width="80%" cellpadding="2" cellspacing="0" border="0"' ) ,
-                       'center', $color[4] )
-                   ) ,
-               '', '', 'width="100%" border="0" cellpadding="1" cellspacing="1"' ) ,
-           'center', $color[0] )
-       ) ,
-   'center', '', 'width="95%" border="0" cellpadding="2" cellspacing="0"' ) .
+    </td></tr>
+    </table>
 
-   '</body></html>';
+</td></tr>
+</table>
+</body></html>
+
+<?PHP
 
     function SaveUpdateFunction() {
         global $username, $data_dir, $full_name, $email_address, $reply_to, $signature;
@@ -293,25 +303,27 @@ if (!empty($_POST)) {
     }
 
 function sti_input( $title, $hd, $data, $post, $bg ) {
-    $return_val = html_tag( 'tr',
-                           html_tag( 'td', $title . ':', 'right', '', 'nowrap' ) .
-                           html_tag( 'td', '<input size="50" type="text" value="' . htmlspecialchars($data) . '" name="' . $hd . $post . '">' , 'left' ) ,
-                       '', $bg );
-     return ($return_val);
+
+    echo "<tr$bg><td align=right nowrap>$title:".
+         '</td><td>'.
+         '<input size=50 type=text value="' . htmlspecialchars($data) .
+         "\" name=\"$hd$post\"></td></tr>";
+
 }
 
 function sti_textarea( $title, $hd, $data, $post, $bg ) {
-    $return_val = html_tag( 'tr',
-                           html_tag( 'td', $title . ':', 'right', '', 'nowrap' ) .
-                           html_tag( 'td', '<textarea cols="50" rows="5" name="' . $hd . $post . '">' . htmlspecialchars($data) . '</textarea>' , 'left' ) ,
-                       '', $bg );
-     return ($return_val);
+
+    echo "<tr$bg><td align=right nowrap>$title:".
+         '</td><td>'.
+         "<textarea cols=50 rows=5 name=\"$hd$post\">" . htmlspecialchars($data) .
+         "</textarea></td></tr>";
+
 }
 
 function ShowTableInfo($full_name, $email_address, $reply_to, $signature, $post) {
     global $color;
 
-    $OtherBG = $color[0];
+    $OtherBG = ' bgcolor="' . $color[0] . '"';
     if ($full_name == '' && $email_address == '' && $reply_to == '' && $signature == '')
         $OtherBG = '';
 
@@ -320,34 +332,29 @@ function ShowTableInfo($full_name, $email_address, $reply_to, $signature, $post)
     else
         $isEmptySection = false;
 
-    $return_val = '';
-    $return_val .= sti_input( _("Full Name"), 'full_name', $full_name, $post, $OtherBG );
-    $return_val .= sti_input( _("E-Mail Address"), 'email_address', $email_address, $post, $OtherBG );
-    $return_val .= sti_input( _("Reply To"), 'reply_to', $reply_to, $post, $OtherBG );
-    $return_val .= sti_textarea( _("Signature"), 'signature', $signature, $post, $OtherBG );
+    sti_input( _("Full Name"), 'full_name', $full_name, $post, $OtherBG );
+    sti_input( _("E-Mail Address"), 'email_address', $email_address, $post, $OtherBG );
+    sti_input( _("Reply To"), 'reply_to', $reply_to, $post, $OtherBG );
+    sti_textarea( _("Signature"), 'signature', $signature, $post, $OtherBG );
 
     do_hook('options_identities_table', $OtherBG, $isEmptySection, $post);
-    $return_val .= html_tag( 'tr', '', '', $OtherBG);
-    $return_val .= html_tag( 'td', '&nbsp;', 'left' );
-    $return_val .= html_tag( 'td', '', 'left' );
-    $return_val .= '<input type=hidden name="form_for_'. $post .'" value="1">';
-    $return_val .= '<input type="submit" name="update" value="' . _("Save / Update") . '">';
-
-
+    echo "<tr$OtherBG>".
+         '<td>&nbsp;</td><td>'.
+         "<input type=hidden name=\"form_for_$post\" value=\"1\">".
+         '<input type=submit name="update" value="'.
+         _("Save / Update") . '">';
     if (! $isEmptySection && $post != '') {
-        $return_val .= '<input type="submit" name="make_default_' . $post . '" value="'.
+        echo "<input type=submit name=\"make_default_$post\" value=\"".
              _("Make Default") . '">'.
-             '<input type=submit name="delete_' . $post . '" value="'.
+             "<input type=submit name=\"delete_$post\" value=\"".
              _("Delete") . '">';
     }
     if (! $isEmptySection && $post != '' && $post > 1) {
-        $return_val .= '<input type=submit name="promote_' . $post . '" value="'.
+        echo '<input type=submit name="promote_' . $post . '" value="'.
              _("Move Up") . '">';
     }
     do_hook('options_identities_buttons', $isEmptySection, $post);
-    $return_val .=  '</td></tr>'.
-         html_tag( 'tr', html_tag( 'td', '&nbsp;', 'left', '', 'colspan="2"' ));
-
-    return ($return_val);
+    echo '</td></tr>'.
+         '<tr><td colspan="2">&nbsp;</td></tr>';
 }
 ?>
