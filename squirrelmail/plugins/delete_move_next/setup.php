@@ -104,7 +104,7 @@ function delete_move_expunge_from_all($id) {
 function delete_move_next_action() {
 
     global $PHP_SELF;
-    if ( (float)substr(PHP_VERSION,0,3) < 4.1 ) {
+    if ( !check_php_version(4,1) ) {
         global $_GET, $_POST;
     }
     if (isset($_GET['delete_id'])) {
@@ -239,7 +239,7 @@ function delete_move_next_moveNextForm($next) {
            $urlMailbox, $sort, $startMessage, $delete_id, $move_id,
            $imapConnection, $lastTargetMailbox;
 
-if ( (float)substr(PHP_VERSION,0,3) < 4.1 ) {
+    if ( !check_php_version(4,1) ) {
         global $_POST;
     }
             
@@ -296,7 +296,7 @@ function delete_move_next_moveRightMainForm() {
 
 function delete_move_next_delete() {
     global $imapConnection, $auto_expunge;
-    if ( (float)substr(PHP_VERSION,0,3) < 4.1 ) {
+    if ( !check_php_version(4,1) ) {
         global $_GET;
     }
     $delete_id = $_GET['delete_id'];
@@ -310,7 +310,7 @@ function delete_move_next_delete() {
 
 function delete_move_next_move() {
     global $imapConnection, $auto_expunge;
-    if ( (float)substr(PHP_VERSION,0,3) < 4.1 ) {
+    if ( !check_php_version(4,1) ) {
         global $_POST;
     }
     $move_id = $_POST['move_id'];
@@ -362,7 +362,7 @@ function delete_move_next_display_inside() {
 function delete_move_next_display_save() {
 
     global $username, $data_dir;
-    if ( (float)substr(PHP_VERSION,0,3) < 4.1 ) {
+    if ( !check_php_version(4,1) ) {
         global $_POST;
     }
     if (isset($_POST['delete_move_next_ti'])) {
