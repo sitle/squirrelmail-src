@@ -13770,7 +13770,7 @@ function charset_decode_big5 ($string) {
 
     while ( $index < strlen($string)) {
       if ( ereg("[\241-\364]", $string[$index])) {
-        $ret.= str_replace(array_keys($eucjp), array_values($eucjp), $string[$index] . $string[$index+1]);
+        $ret.= str_replace(array_keys($big5tounicode), array_values($big5tounicode), $string[$index] . $string[$index+1]);
         $index=$index+2;
       } else {
         $ret.= $string[$index];
