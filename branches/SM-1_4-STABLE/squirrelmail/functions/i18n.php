@@ -1736,8 +1736,8 @@ $languages['ko_KR']['XTRA_CODE'] = 'korean_charset_xtra';
 $languages['ko']['ALIAS'] = 'ko_KR';
 
 $languages['lt_LT']['NAME']    = 'Lithuanian';
-$languages['lt_LT']['CHARSET'] = 'iso-8859-4';
-$languages['lt_LT']['LOCALE'] = 'lt_LT.ISO-8859-4';
+$languages['lt_LT']['CHARSET'] = 'utf-8';
+$languages['lt_LT']['LOCALE'] = 'lt_LT.UTF-8';
 $languages['lt']['ALIAS'] = 'lt_LT';
 
 $languages['ms_MY']['NAME']    = 'Bahasa Melayu';
