@@ -1,11 +1,11 @@
 <?php
 
 
-/* delete_move_next 2.0.2
+/* delete_move_next 2.1
      deletes or moves currently displayed message and displays
      next or previous message.
    
-   By Ben Brillat <brillat-sqplugin@mail.brillat.net>
+   By Ben Brillat <brillat-sqplugin@mainsheet.org>
    Based on Delete Move Next 1.0 by Bryan Stalcup <bryan@stalcup.net>
 
    Copyright (C) 2001 Benjamin Brillat, see "README" file for details.
@@ -134,10 +134,10 @@ function delete_move_next_moveForm($next) {
         <select name="targetMailbox"><?php
       $boxes = sqimap_mailbox_list($imapConnection);
       for ($i = 0; $i < count($boxes); $i++) {
-        if ($boxes[$i]["flags"][0] != "noselect" && $boxes[$i]["flags"][1] != "noselect" && $boxes[$i]["flags"][2] != "noselect") {
+	if (!in_array("noselect", $boxes[$i]['flags'])) {
           $box = $boxes[$i]["unformatted"];
-          $box2 = replace_spaces($boxes[$i]["formatted"]);
-          echo "          <option value=\"$box\">$box2\n";
+          $box2 = str_replace(' ', '&nbsp;', $boxes[$i]['unformatted-disp']);
+	  echo "          <option value=\"$box\">$box2\n";
         }
       }?></select>
        <input type=submit value="Move">
