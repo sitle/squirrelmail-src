@@ -1,12 +1,13 @@
 # SquirrelMail Spanish Translation
 # Copyright (c) 1999-2003 The Squirrelmail Development Team
-# Philippe Mingo <philippe@squirrelmail.org>, 2001.
+# Philippe Mingo <philippe@squirrelmail.org>, 2001-2004.
 # Marco Rocco <marco@verbux.com>, 2003.
+# $Id$
 msgid ""
 msgstr ""
-"Project-Id-Version: Squirrelmail $Id$\n"
-"POT-Creation-Date: 2003-12-26 17:29+0200\n"
-"PO-Revision-Date: 2004-01-11 10:55+0100\n"
+"Project-Id-Version: Squirrelmail\n"
+"POT-Creation-Date: 2003-10-24 20:06+0300\n"
+"PO-Revision-Date: 2004-01-10 17:43+0100\n"
 "Last-Translator: Philippe Mingo <philippe@squirrelmail.org>\n"
 "Language-Team: spanish <squirrelmail-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -95,9 +96,6 @@ msgstr "Nombre"
 msgid "Additional info"
 msgstr "Información adicional"
 
-msgid "Add to:"
-msgstr "Agregar a:"
-
 msgid "No personal address book is defined. Contact administrator."
 msgstr "No se han definido agendas personales. Contacte al administrador."
 
@@ -122,8 +120,9 @@ msgstr "Editar seleccionado"
 msgid "Delete selected"
 msgstr "Borrar seleccionado"
 
-msgid "Add to address book"
-msgstr "Agregar a la agenda"
+#, c-format
+msgid "Add to %s"
+msgstr "Agregar a %s"
 
 msgid "said"
 msgstr "dijo"
@@ -723,9 +722,6 @@ msgstr "Búsquedas Recientes"
 msgid "Missing"
 msgstr "Falta"
 
-msgid "and&nbsp;subfolders:"
-msgstr "y&nbsp;subcarpetas:"
-
 msgid "Exclude Criteria:"
 msgstr "Criterio de exclusión:"
 
@@ -1122,7 +1118,7 @@ msgstr "El fichero de preferencias %s no pudo abrirse para escritura. Contacte c
 
 #, c-format
 msgid "Preference file, %s, could not be copied from temporary file, %s. Contact your system administrator to resolve this issue."
-msgstr "El fichero de preferencias %s no pudo copiarse desde el fichero temporal. Contacte con su administrador y comuníquele este error para resolverlo."
+msgstr "El fichero de preferencias %s no pudo copiarse desde el fichero temporal %s. Contacte con su administrador y comuníquele este error para resolverlo."
 
 #, c-format
 msgid "Error opening %s"
@@ -1151,7 +1147,10 @@ msgstr "El fichero de firmas %s no pudo abrirse para escritura. Contacte a su ad
 
 #, c-format
 msgid "Signature file, %s, could not be copied from temporary file, %s. Contact your system administrator to resolve this issue."
-msgstr "El fichero de firmas %s no pudo abrirse. Contacte a su administrador y comuníquele este error."
+msgstr "El fichero de firmas %s no copiarse desde el fichero temporal %s. Contacte a su administrador y comuníquele este error."
+
+msgid "You need to have php4 installed with the multibyte string function enabled (using configure option --enable-mbstring)."
+msgstr "Error de sistema. Avise al administrador que necesita una versión de php4 con la opción multibyte activada (--with-mbstring)."
 
 msgid "ERROR : Could not complete request."
 msgstr "ERROR: No se pudo completar el pedido."
@@ -1162,26 +1161,14 @@ msgstr "ERROR: pedido erróneo o con formato erróneo."
 msgid "ERROR : Imap server closed the connection."
 msgstr "ERROR: El servidor IMAP cerró la conexión."
 
-msgid "ERROR : Connection dropped by imap-server."
-msgstr "ERROR: Conexión terminada por servidor IMAP."
-
 msgid "ERROR : Unknown imap response."
 msgstr "ERROR: Respuesta IMAP desconocida"
 
 msgid "Reason Given: "
 msgstr "Razón dada: "
 
-msgid "Possible reason : "
-msgstr "Posible motivo:"
-
 msgid "Query:"
 msgstr "Consulta:"
-
-msgid "The imap server failed to handle threading."
-msgstr "El servidor IMAP falló la gestión temática."
-
-msgid "Click here to unset thread view for this mailbox and start again."
-msgstr "Haga click aqui para anular la gestión temática para esta cuenta y empezar de nuevo."
 
 msgid "ERROR : No available imapstream."
 msgstr "ERROR : No hay ningún canal IMAP disponible."
@@ -1191,6 +1178,9 @@ msgstr "ERROR: Llamada incorrecta de función."
 
 msgid "Reason:"
 msgstr "Motivos:"
+
+msgid "ERROR : Connection dropped by imap-server."
+msgstr "ERROR: Conexión terminada por servidor IMAP."
 
 msgid "Server responded: "
 msgstr "El servidor respondió: "
@@ -1760,10 +1750,6 @@ msgstr "Meter en agenda:"
 msgid "Try to verify addresses"
 msgstr "Compruebe la dirección"
 
-#, c-format
-msgid "Add to %s"
-msgstr "Agregar a %s"
-
 msgid "Config File Version"
 msgstr "Versión de configuración"
 
@@ -1977,6 +1963,9 @@ msgstr "Usar ordenación temática de servidor"
 msgid "Allow server charset search"
 msgstr "Permitir búsquedas de servidor por juego de carácteres"
 
+msgid "UID support"
+msgstr "Soporte UID"
+
 msgid "PHP session name"
 msgstr "Nombre de la sesión PHP"
 
@@ -2007,17 +1996,17 @@ msgstr "Preferencias del campo clave"
 msgid "Preferences value field"
 msgstr "Preferencias de campos de valor"
 
-msgid "Global address book DSN"
-msgstr "Libro global de direcciones DSN"
+msgid "Themes"
+msgstr "Temas"
 
-msgid "Global address book table"
-msgstr "Libro global de direcciones"
+msgid "Style Sheet URL (css)"
+msgstr "URL de la hoja de estilos (css)"
 
-msgid "Allow writing into global address book"
-msgstr "Permitir escritura en libreta global de direcciones"
+msgid "Default theme"
+msgstr "Tema por omisión"
 
-msgid "Allow listing of global address book"
-msgstr "Permitir visualizar libreta global de direcciones"
+msgid "Use index number of theme"
+msgstr "Usar índice de temas"
 
 msgid "Language settings"
 msgstr "Opciones de idioma"
@@ -2051,18 +2040,6 @@ msgstr "Usar funciones recode de PHP"
 
 msgid "Use php iconv functions"
 msgstr "Usar funciones iconv de PHP"
-
-msgid "Themes"
-msgstr "Temas"
-
-msgid "Style Sheet URL (css)"
-msgstr "URL de la hoja de estilos (css)"
-
-msgid "Default theme"
-msgstr "Tema por omisión"
-
-msgid "Use index number of theme"
-msgstr "Usar índice de temas"
 
 msgid "Configuration Administrator"
 msgstr "Configuración del sistema"
@@ -2103,7 +2080,6 @@ msgstr "Antes de enviar su reporte de error, por favor asegúrese revisar esta li
 msgid "Make sure that you are running the most recent copy of <a href=\"http://www.squirrelmail.org/\">SquirrelMail</a>."
 msgstr "Asegúrese que está ejecutando la versión más reciente de <a href=\"http://www.squirrelmail.org/\">SquirrelMail</a>."
 
-#, c-format
 msgid "You are currently using version %s."
 msgstr "Está usando la versión %s."
 
@@ -2927,15 +2903,6 @@ msgstr "A través de un reporte por e-mail"
 msgid "Web-based form"
 msgstr "formulario por web"
 
-msgid "Spam Service Type:"
-msgstr "Tipo de servicio SPAM:"
-
-msgid "Free reporting"
-msgstr "Reportes gratuitos"
-
-msgid "Member services"
-msgstr "Servicios para miembros"
-
 msgid "Your SpamCop authorization code:"
 msgstr "Su código de autorización de SpamCop:"
 
@@ -2969,14 +2936,8 @@ msgstr "Reporte por web"
 msgid "When you press the button on the confirmation page, this will pop open a new browser window and the SpamCop service should appear inside. The message will not be deleted (working on that part), but you won't need to wait for a response email to start the spam reporting."
 msgstr "Cuando usted presiona el botón en la página de confirmación, esto abrirá una nueva ventana para navegar y el servicio de SpamCop deberá aparecer dentro. El mensaje no será eliminado (trabajando en esa parte), pero usted no necesitará esperar un correo de respuesta para comenzar con el informe de spam."
 
-msgid "The SpamCop service will display information as it finds it, so scroll down until you see a form button. It might pause a little while it is looking up information, so be a little patient. Read what it says, and submit the spam. Close the browser window.  Press Cancel or click on the appropriate mail folder to see messages and/or delete the spam."
+msgid "The SpamCop service will display information as it finds it, so scroll down until you see a form button.  It might pause a little while it is looking up information, so be a little patient.  Read what it says, and submit the spam.  Close the browser window.  Press Cancel or click on the appropriate mail folder to see messages and/or delete the spam."
 msgstr "El servicio de SpamCop exhibirá la información como la encuentre. Baje hasta que vea un botón. Podría demorar un poco mientras busca la información, sea paciente. Lea lo que dice y señale el spam. Cierre la ventana para navegar. Presione cancelar o pinche en la bandeja de correo apropiada para ver los mensajes y/o para borrar el spam."
-
-msgid "Spamcop Service Type"
-msgstr "Tipo de servicio Spamcop"
-
-msgid "Service type option allows selecting which spamcop services you are using. Member services use different web reporting forms  and does not display nags. You can purchase these services, if you want to support SpamCop."
-msgstr "La opción de tipo de servicio permite selección qué servicio spamcop está empleando. Los servicios para miembros utilizan diferentes formularios webs y no dan la tabarra. Puede pagar por estos servicios, si decide dar soporte a SpamCop."
 
 msgid "<b>For more information</b> about SpamCop, it's services, spam in general, and many related topics, try reading through SpamCop's <a href=\"http://spamcop.net/help.shtml\">Help and Feedback</a> section."
 msgstr "<b>Para más información</b> acerca de SpamCop, sus servicios, SPAM en general y muchos otros tópicos relacionados, dirígase a <a href=\"http://spamcop.net/help.shtml\">Ayuda y comentarios</a> de SpamCop."
@@ -3279,15 +3240,15 @@ msgstr "Número de pares de idiomas soportados: %s"
 msgid "No known limits, powered by Systran"
 msgstr "No hay límites conocidos, motor de Systran"
 
-msgid "No known limits, powered by GPLTrans (free, open source)"
-msgstr "No hay límites conocidos, motor GPLTrans (gratuito, open source)"
-
 msgid "No known limits, powered by Translation Experts's InterTran"
 msgstr "No hay límites conocidos, motor InterTran de Translation Experts"
 
 #, c-format
 msgid "Number of supported languages: %s"
 msgstr "Número de idiomas soportados: %s"
+
+msgid "No known limits, powered by GPLTrans (free, open source)"
+msgstr "No hay límites conocidos, motor GPLTrans (gratuito, open source)"
 
 msgid "Hellenic translations, no known limits, powered by Systran"
 msgstr "Traducciones griegas, no hay límites conocidos, motor de Systran"
