@@ -20,6 +20,16 @@
  * and redirect.php. Patch submitted by Ray Black.
  */ 
 
+
+/*
+ * Set a different session name to stop session conflicts on same server
+ * with software such as Gallery.  This *must* be set above all the rest
+ * of the code to stop other items launching a session first
+ */
+
+ini_set('session.name' , 'SQMSESSID');
+
+
 if ( !check_php_version(4,1) ) {
   global $_COOKIE, $_ENV, $_FILES, $_GET, $_POST, $_SERVER, $_SESSION;
   global $HTTP_COOKIE_VARS, $HTTP_ENV_VARS, $HTTP_POST_FILES, $HTTP_GET_VARS,
