@@ -372,6 +372,11 @@ $languages['et_EE']['CHARSET'] = 'iso-8859-15';
 $languages['et_EE']['LOCALE']  = 'et_EE.ISO8859-15';
 $languages['et']['ALIAS']      = 'et_EE';
 
+$languages['eu_ES']['NAME']    = 'Basque';
+$languages['eu_ES']['CHARSET'] = 'iso-8859-1';
+$languages['eu_ES']['LOCALE']  = 'eu_ES.ISO8859-1';
+$languages['eu']['ALIAS']      = 'eu_ES';
+
 $languages['fi_FI']['NAME']    = 'Finnish';
 $languages['fi_FI']['CHARSET'] = 'iso-8859-1';
 $languages['fi_FI']['LOCALE']  = 'fi_FI.ISO8859-1';
