@@ -12,7 +12,7 @@
 define('SQMINDEXTHINGID',-2548195);
 $HARDTHING[SQMINDEXTHINGID]['func'] = 'sqmindex';
 $HARDTHING[SQMINDEXTHINGID]['title'] = 'Site Index';
-$HARDTHING[SQMINDEXTHINGID]['lastmodified'] = filemtime(__FILE__);
+$HARDTHING[SQMINDEXTHINGID]['lastmodified'] = '$Date$';
 
 $FORMAT = array_merge($FORMAT, array(
 	'indexhead' => '<h3>',
