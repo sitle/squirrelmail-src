@@ -51,7 +51,7 @@ define('COOKIEPATH', '');
 define('COOKIEDOMAIN', '');
 define('PASSWORDSALT', 'wooyay'); // salt for added to password before encrypting for extra security (if you change this existing users passwords will become useless)
 define('USERTIMEOUT', 600); // seconds since last request until user is declared as having left the site.
-define('USERTHINGBODY', '<p>This space intentionally left blank.</p>');
+define('USERTHINGBODY', 'This space intentionally left blank.');
 
 /* output format of date stamps */
 define('DATEFORMAT', 'D jS F Y \a\t h:ia');
