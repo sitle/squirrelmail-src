@@ -1,3 +1,8 @@
+2004-03-30
+ - Updated main squirrelmail.pot. Pot has to extracted with gettext 0.10.40.
+   gettext 0.14.1 detects some languages as c-format. If -L php is used
+   it extracts different set of strings.
+
 2004-03-29
  - Updated sasql to 3.0.0rc2, ldap_abook to 1.02, chg_sasl_passwd to 1.4
  - Added select_range 2.8 translations
