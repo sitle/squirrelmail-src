@@ -1,38 +1,23 @@
 <?php
 /*
- * Copyright 2003, Paul James
- * 
- * This file is part of the Framework for Object Orientated Web Development (Foowd).
- * 
- * Foowd is free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
- * (at your option) any later version.
- * 
- * Foowd is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- * 
- * You should have received a copy of the GNU General Public License
- * along with Foowd; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
-
-/*
- * class.user.php
- * Foowd user object class
+ * Copyright (c) 1999-2003 The SquirrelMail Project Team
+ * Licensed under the GNU GPL. For full terms see the file COPYING.
+ *
+ * This file is an addition/modification to the
+ * Framework for Object Orientated Web Development (Foowd).
+ *
+ * $Id$
  */
 
 /** METHOD PERMISSIONS **/
-setPermission('foowd_user', 'class', 'create', 'Everyone'); // we want anyone to be able to create a user so we override this permission for this object with the empty string
-setPermission('foowd_user', 'object', 'xml', 'Gods'); // we don't want just anyone being able to see our encrypted user passwords
-setPermission('foowd_user', 'object', 'groups', 'Gods');
+setPermission('foowd_user', 'class',  'create', 'Everyone');
+setPermission('foowd_user', 'object', 'xml',    'Nobody');
+setPermission('foowd_user', 'object', 'groups', 'Nobody');
 setPermission('foowd_user', 'object', 'update', 'Author');
 
 /** CLASS DESCRIPTOR **/
 setClassMeta('foowd_user', 'User');
-    
+
 setConst('USER_CLASS_ID', META_FOOWD_USER_CLASS_ID);
 
 /** CLASS DECLARATION **/
@@ -42,8 +27,9 @@ class foowd_user extends foowd_object
     var $email;
     var $groups = array();
     
-/*** CONSTRUCTOR ***/
-
+    /**
+     * Constructor
+     */
     function foowd_user( &$foowd,
                          $username = NULL,
                          $password = NULL,
