@@ -842,46 +842,44 @@ if (!empty($idents) && $idents > 1) {
 
 $comp_uri = $base_uri . "src/compose.php?forward_id=$passed_id&amp;".
             "forward_subj=$url_subj&amp;".
-	    ($default_use_priority?"mailprio=$priority_level&amp;":'').
+            ($default_use_priority?"mailprio=$priority_level&amp;":'').
             "mailbox=$urlMailbox&amp;ent_num=$ent_num&amp;".
-			"identity=$identity";
-	     		   
+            "identity=$identity";
+
 if ($compose_new_win == '1') {
     echo "<a href=\"javascript:void(0)\" onclick=\"comp_in_new(false,'$comp_uri')\"";
 } else {
-    echo '|&nbsp;<A HREF="' . $comp_uri .'"';
+    echo '<A HREF="' . $comp_uri .'"';
 }
 
     echo '>'.
     _("Forward") .
-    '</A>&nbsp;|&nbsp;';
-	
-	
-	
+    '</A>&nbsp;';
+
 $comp_uri = $base_uri . "src/compose.php?send_to=$url_replyto&amp;".
             "reply_subj=$url_subj&amp;".
             ($default_use_priority?"mailprio=$priority_level&amp;":'').
             "reply_id=$passed_id&amp;mailbox=$urlMailbox&amp;ent_num=$ent_num".
-			"&amp;identity=$identity";
-	        
+            "&amp;identity=$identity";
+
 if ($compose_new_win == '1') {
-    echo "<a href=\"javascript:void(0)\" onclick=\"comp_in_new(false,'$comp_uri')\"";
+    echo "|&nbsp;<a href=\"javascript:void(0)\" onclick=\"comp_in_new(false,'$comp_uri')\"";
 } else {
     echo '|&nbsp;<A HREF="' . $comp_uri .'"';
 }
 
     echo '>'.
     _("Reply") .
-    '</A>&nbsp;|&nbsp;';
+    '</A>&nbsp;';
 
 $comp_uri = $base_uri . "src/compose.php?send_to=$url_replytoall&amp;".
             "send_to_cc=$url_replytoallcc&amp;reply_subj=$url_subj&amp;".
             ($default_use_priority?"mailprio=$priority_level&amp;":'').
             "reply_id=$passed_id&amp;mailbox=$urlMailbox&amp;ent_num=$ent_num".
-			"&amp;identity=$identity";
+            "&amp;identity=$identity";
 
 if ($compose_new_win == '1') {
-    echo "<a href=\"javascript:void(0)\" onclick=\"comp_in_new(false,'$comp_uri')\"";
+    echo "|&nbsp;<a href=\"javascript:void(0)\" onclick=\"comp_in_new(false,'$comp_uri')\"";
 } else {
     echo '|&nbsp;<A HREF="' . $comp_uri .'"';
 }
