@@ -7,6 +7,7 @@ Version 1.4.1 -- CVS
   - Fixes to conf.pl for handling relative dirs outside the SM tree (bug715119) and 
     the default delete_folder values for Courier-IMAP and UW-IMAP (bug715550)
   - Fixed problem with \ in passwords/usernames on login, fixes bug #718116.
+  - Added lowsrc to the list of untrusted attributes in HTML email.
 
 Version 1.4.0 -- 3 April 2003
 -----------------------------
