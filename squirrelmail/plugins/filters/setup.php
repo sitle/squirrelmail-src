@@ -101,7 +101,17 @@ require_once ('../plugins/filters/filters.php');
 
 function squirrelmail_plugin_init_filters() {
     global $squirrelmail_plugin_hooks;
-    sqextractGlobalVar('mailbox');
+
+    if (isset($_GET['mailbox'])) {
+        $mailbox = $_GET['mailbox'];
+    }
+    elseif (isset($_POST['mailbox'])) {
+        $mailbox = $_POST['mailbox'];
+    }
+    else {
+        $mailbox = 'INBOX';
+    }
+
     $squirrelmail_plugin_hooks['left_main_before']['filters'] = 'start_filters';
     if (isset($mailbox) && $mailbox == 'INBOX') {
         $squirrelmail_plugin_hooks['right_main_after_header']['filters'] = 'start_filters';
