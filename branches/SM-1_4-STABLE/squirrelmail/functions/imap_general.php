@@ -104,23 +104,60 @@ function sqimap_fread($imap_stream,$iSize,$filter=false,
     if (!$filter || !$outputstream) {
         $iBufferSize = $iSize;
     } else {
-        // FIXME This doesn't work with base64 decode, Why ?
-	// The idea is to use a buffersize of 32k i.e.
-        $iBufferSize = $iSize;
+        // see php bug 24033. They changed fread behaviour %$^&$%
+        $iBufferSize = 780; // multiple of 78 in case of base64 decoding.
     }
     $iRet = $iSize - $iBufferSize;
     $iRetrieved = 0;
     $i = 0;
-    $results = '';
+    $results = $sReadRem = '';
+    $bFinished = $bBufferSizeAdapted =  $bBufferIsOk = false;
     while (($iRetrieved < ($iSize - $iBufferSize))) {
         $sRead = fread($imap_stream,$iBufferSize);
-        if ($sRead === false) {
+        if (!$sRead) {
             $results = false;
             break;
         }
         $iRetrieved += $iBufferSize;
         if ($filter) {
-	   
+           // in case line-endings do not appear at position 78 we adapt the buffersize so we can base64 decode on the fly
+           if (!$bBufferSizeAdapted) {
+               $i = strpos($sRead,"\n");
+               if ($i) {
+                   ++$i;
+                   $iFragments = floor($iBufferSize / $i);
+                   $iNewBufferSize = $iFragments * $i;
+                   $iRemainder = $iNewBufferSize + $i - $iBufferSize;
+                   if ($iNewBufferSize == $iBufferSize) {
+                       $bBufferIsOk = true;
+                       $iRemainder = 0;
+                       $iNewBufferSize = $iBufferSize;
+                       $bBufferSizeAdapted = true;
+                   }
+                   if (!$bBufferIsOk && ($iRemainder + $iBufferSize)  < $iSize) {
+                       $sReadRem = fread($imap_stream,$iRemainder);
+                   } else if (!$bBufferIsOk) {
+                       $sReadRem = fread($imap_stream,$iSize - $iBufferSize);
+                       $bFinished = true;
+                   }
+                   if (!$sReadRem && $sReadRem !== '') {
+                        $results = false;
+                        break;
+                   }
+                   $iBufferSize = $iNewBufferSize;
+                   $bBufferSizeAdapted = true;
+               } else {
+                   $sReadRem = fread($imap_stream,$iSize - $iBufferSize);
+                   $bFinished = true;
+                   if (!$sReadRem) {
+                       $results = false;
+                       break;
+                   }
+               }
+               $sRead .= $sReadRem;
+               $iRetrieved += $iRemainder;
+               unset($sReadRem);
+           }
            $filter($sRead);
         }
         if ($outputstream) {
@@ -135,7 +172,7 @@ function sqimap_fread($imap_stream,$iSize,$filter=false,
         }    
         $results .= $sRead;
     }
-    if ($results !== false) {
+    if (!$results && !$bFinished) {
         $sRead = fread($imap_stream,($iSize - ($iRetrieved)));  
         if ($filter) {
            $filter($sRead);

@@ -156,7 +156,6 @@ function mime_fetch_body($imap_stream, $id, $ent_id=1) {
 function mime_print_body_lines ($imap_stream, $id, $ent_id=1, $encoding) {
     global $uid_support;
 
-    $sid = sqimap_session_id($uid_support);
     /* Don't kill the connection if the browser is over a dialup
      * and it would take over 30 seconds to download it.
      * Don´t call set_time_limit in safe mode.
@@ -165,43 +164,27 @@ function mime_print_body_lines ($imap_stream, $id, $ent_id=1, $encoding) {
     if (!ini_get('safe_mode')) {
         set_time_limit(0);
     }
-    if ($uid_support) {
-       $sid_s = substr($sid,0,strpos($sid, ' '));
-    } else {
-       $sid_s = $sid;
-    }
-
-    $body = mime_fetch_body ($imap_stream, $id, $ent_id);
-    echo decodeBody($body, $encoding);
-    return;
-/*
-    fputs ($imap_stream, "$sid FETCH $id BODY[$ent_id]\r\n");
-    $cnt = 0;
-    $continue = true;
-    $read = fgets ($imap_stream,8192);
-
-
-    // This could be bad -- if the section has sqimap_session_id() . ' OK'
-    // or similar, it will kill the download.
-    while (!ereg("^".$sid_s." (OK|BAD|NO)(.*)$", $read, $regs)) {
-        if (trim($read) == ')==') {
-            $read1 = $read;
-            $read = fgets ($imap_stream,4096);
-            if (ereg("^".$sid." (OK|BAD|NO)(.*)$", $read, $regs)) {
-                return;
-            } else {
-                echo decodeBody($read1, $encoding) .
-                     decodeBody($read, $encoding);
-            }
-        } else if ($cnt) {
-            echo decodeBody($read, $encoding);
+    /* in case of base64 encoded attachments, do not buffer them.
+       Instead, echo the decoded attachment directly to screen */
+    if (strtolower($encoding) == 'base64') {
+        if (!$ent_id) {
+           $query = "FETCH $id BODY[]";
+        } else {
+           $query = "FETCH $id BODY[$ent_id]";
         }
-        $read = fgets ($imap_stream,4096);
-        $cnt++;
-//      break;
+        sqimap_run_command($imap_stream,$query,true,$response,$message,$uid_support,'sqimap_base64_decode','php://stdout',true);
+    } else {
+       $body = mime_fetch_body ($imap_stream, $id, $ent_id);
+       echo decodeBody($body, $encoding);
     }
-*/
+    return;
 }
+
+function sqimap_base64_decode(&$string) {
+//    $string = str_replace("\r\n", "\n", $string);
+    $string = base64_decode($string);
+}
+
 
 /* -[ END MIME DECODING ]----------------------------------------------------------- */
 
