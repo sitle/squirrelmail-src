@@ -57,6 +57,7 @@ if ( in_array('mail_utilities', $plugins) ) {
 <TR>
   <TD ALIGN=CENTER>
   <?php
+  extract($_POST);
   mail_utilities_both_shortcut($color);
   if ( isset($chosen_one) ) {
     echo "<P>You selected: $chosen_one</p>";

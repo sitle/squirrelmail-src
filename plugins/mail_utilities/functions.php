@@ -68,8 +68,8 @@ function mail_utilities_display_menubar($color) {
         return;
     }
     echo '<p><TABLE BORDER=0 WIDTH="95%" CELLSPACING=0 CELLPADDING=2 ALIGN=CENTER><TR><TD>' . "\n";
-    displayInternalLink('plugins/mail_utilities/utils.php', _("<b>Utilities</b>"));
-    echo ': &nbsp;&nbsp;';
+    displayInternalLink('plugins/mail_utilities/utils.php', _("<b>Utilities:</b>"));
+    echo '&nbsp;&nbsp; ';
     foreach ($mail_utilities_hook['util_menu'] as $function) {
         if (function_exists($function)) {
             $function($color);
