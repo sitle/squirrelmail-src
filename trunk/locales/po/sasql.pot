@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-03-24 20:05+0200\n"
+"POT-Creation-Date: 2004-03-29 21:19+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,28 +16,103 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: dspam.inc.php:81
+#: dspam.inc.php:82
 msgid "dspam Settings"
 msgstr ""
 
-#: dspam.inc.php:98
+#: dspam.inc.php:89
+msgid ""
+"dspam is a learning system that filters spam based on what <i>you</i> tell "
+"it is spam and what isn't. Messages are analyzed as they are delivered and "
+"are assigned a spam probability between 0 and 1. The more messages you "
+"receive, both spam and innocent, the better dspam learns what <i>you</i> "
+"think is spam and what is not."
+msgstr ""
+
+#: dspam.inc.php:95
+msgid "Warning"
+msgstr ""
+
+#: dspam.inc.php:97
+msgid "Enabling dspam will disable SpamAssassin scanning of your email."
+msgstr ""
+
+#: dspam.inc.php:100
+msgid "SpamAssassin settings and white/blacklists will not be used by dspam."
+msgstr ""
+
+#: dspam.inc.php:105
+msgid ""
+"This <a href='http://www.nuclearelephant.com/projects/dspam/faq.html#1.7' "
+"target='_blank'>FAQ</a> from the dspam web site explains the differences "
+"between SpamAssassin and dspam and why you might want to use dspam instead "
+"of SpamAssassin."
+msgstr ""
+
+#: dspam.inc.php:110
 msgid "Reporting Spam"
 msgstr ""
 
-#: dspam.inc.php:109
+#: dspam.inc.php:113
+msgid ""
+"If you receive a spam message in your Inbox, forward the message to "
+"<nobr>username-spam@domain</nobr> and it will be learned as spam. For "
+"example, if your address is joe@example.com, you would forward the message "
+"to <nobr>joe-spam@example.com</nobr>."
+msgstr ""
+
+#: dspam.inc.php:119
+#, c-format
+msgid ""
+"You can also move your spam messages to the <i>%s</i> folder. This folder is "
+"periodically checked for messages which are then learned as spam and "
+"deleted. You do not need to move messages from your %s folder here because "
+"they have already been learned as spam."
+msgstr ""
+
+#: dspam.inc.php:124
 msgid "Reporting False Positives"
 msgstr ""
 
-#: dspam.inc.php:122
+#: dspam.inc.php:127
+msgid ""
+"From time to time, dspam will catch an innocent messages as spam. These "
+"messages are called \"false positives\". There is no way to prevent false "
+"positives entirely. If you find a false positive, forward the message to "
+"<nobr>username-fp@domain</nobr> and it will be learned as an innocent "
+"message. For example, if your email address is joe@example.com, you would "
+"forward the message to <nobr>joe-fp@example.com</nobr>."
+msgstr ""
+
+#: dspam.inc.php:133
+#, c-format
+msgid ""
+"You can also move your false positives to the <i>%s</i> folder from the %s "
+"folder. This folder is periodically checked for messages which are then "
+"learned as false positives and deleted."
+msgstr ""
+
+#: dspam.inc.php:138
 msgid "Disclaimer"
 msgstr ""
 
-#: dspam.inc.php:151
+#: dspam.inc.php:141
+msgid ""
+"dspam is a learning system. It only knows what is spam based on what you "
+"teach it is spam and what is not. Due to dspam's nature, you are more likely "
+"to see errors in spam detection until it is trained on your email. If you do "
+"not report a message as spam within ten days, the message will be "
+"permanently learned as innocent and you will be more likely to receive more "
+"spam."
+msgstr ""
+
+#: dspam.inc.php:159
 msgid "Use dspam"
 msgstr ""
 
-#: dspam.inc.php:161
-msgid "Clean out your $spam_folder folder on opt-in?"
+#: dspam.inc.php:169
+#, c-format
+msgid "Clean out your %s folder on opt-in?"
 msgstr ""
 
 #: purge.inc.php:22
@@ -49,7 +124,19 @@ msgid "Purge"
 msgstr ""
 
 #: purge.inc.php:33
-msgid "Delete all messages from your $spam_folder folder."
+#, c-format
+msgid "Delete all messages from your %s folder."
+msgstr ""
+
+#: purge.inc.php:37
+msgid "Note"
+msgstr ""
+
+#: purge.inc.php:38
+#, c-format
+msgid ""
+"Your %s folder may be unavailable during the purge. It will become available "
+"again when the purge is complete."
 msgstr ""
 
 #: sa_abooksync.inc.php:20
@@ -107,27 +194,27 @@ msgstr ""
 msgid "sasql_GetPref Database error: $s"
 msgstr ""
 
-#: sasql_hooks.php:89 sasql_options.php:62
+#: sasql_hooks.php:104 sasql_options.php:62
 msgid "Spam Filter Configuration"
 msgstr ""
 
-#: sasql_hooks.php:91
+#: sasql_hooks.php:106
 msgid "Here you may configure the behavior of the spam filtering software."
 msgstr ""
 
-#: sasql_hooks.php:164
+#: sasql_hooks.php:183
 msgid "Allow Sender"
 msgstr ""
 
-#: sasql_hooks.php:166
+#: sasql_hooks.php:185
 msgid "remove"
 msgstr ""
 
-#: sasql_hooks.php:178
+#: sasql_hooks.php:197
 msgid "Whitelisted"
 msgstr ""
 
-#: sasql_hooks.php:189
+#: sasql_hooks.php:208
 msgid "Blacklisted"
 msgstr ""
 
