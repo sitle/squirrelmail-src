@@ -9,6 +9,7 @@ Author: Paul Joseph Thompson <thomppj@squirrelmail.org>
 
 Purpose: To explain the purpose of the sm2-planning cvs module.
 
+
 Purpose of this Module
 ======================
 The purpose of the sm2-planning module is to serve as a melting pot for
@@ -17,15 +18,18 @@ a number of us have been writing up various of our ideas for SM2.
 However, we have all done so in our own little ways, scattered here and 
 there between web sites, the mailing list, irc chats, and tgz files.
 
-The sm2-planning module was created to standardize this effort. The mention of 
-documentation standards, as we are discussing in this thread, were simply to 
-add a little more cohesiveness to the effort. These two standardization efforts 
-will make our planning more productive by:
+The sm2-planning module was created to standardize this effort. 
+Furthermore along this concept of standardization, all documentation in 
+this module should conform to a common standard for how it is  written.
+The details of this standard are given in the file template.txt, located 
+in the same directory as this README. These two efforts of standardation 
+will:
 
-  a. Making it easier for us to share ideas
-     (hence CVS, available on our own computers or via the web)
-  b. Making it easier to follow each others thoughts
-     (hence the "documentation standard" being discussed)
+  a. Make it easier for us to share and exchange ideas
+     (hence the usage of cvs)
+  b. Make it easier to follow each others thoughts
+     (hence the "documentation standard" established)
+
 
 Directory Structure
 ===================
@@ -33,6 +37,7 @@ In this repository, each developer has their own working directory. These
 are located in the directory "developers". And then there is a common 
 directory for the ideas which have, more or less, been accepted. This 
 directory is named "docs".
+
 
 The Ultimate Goal
 =================
@@ -54,8 +59,6 @@ writing home about.
 
 
 And, when in doubt, think "melting pot".
-
----
 
 Here are some links which explain the concept of a melting pot:
   http://members.edventures.com/terms/m/melting_pot/definition.html
