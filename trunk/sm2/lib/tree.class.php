@@ -35,6 +35,16 @@ public methods:
 define('SM_NODE_EXPANDED',1);
 define('SM_NODE_VISIBLE',2);
 
+/* sort constants */
+define('SM_SORT_DEFAULT',0); // normal sort 
+define('SM_SORT_NAT',1);     // natural sort
+define('SM_SORT_NAT_CASE',2);// natural case sensitive sort
+define('SM_SORT_CASE',3);    // case sensitive sort
+define('SM_SORT_NUMERIC',4); // numeric sort 
+define('SM_SORT_STRING',5);  // string sort 
+
+
+
 
 class tree extends object{
     var $name,
@@ -159,8 +169,8 @@ class tree extends object{
     /**
      * @func      getChildren
      * @desc      returns array of children nodes
-     * @param     obj        $node         The node object
-     * @return    bool                     success
+     * @param     obj        $node             The node object
+     * @return    bool       $children/false   success/false
      * @access    public
      * @author    Marc Groot Koerkamp
      */
@@ -333,31 +343,69 @@ class tree extends object{
      * @param      array    $nodes       array of node obj
      * @param      str      $sort        field to sort on
      * @param      int      $sortmethod  method to use when sorting
+     *                      SM_SORT_DEFAULT,SM_SORT_NAT,SM_SORT_NAT_CASE,
+     *                      SM_SORT_CASE,SM_SORT_NUMERIC,SM_SORT_STRING,
      * @param      bool     $reverse     reverse sort
      * @return     bool                  success
      * @access     public
      * @author     Marc Groot Koerkamp
      */
-    function sortNodes(&$nodes, $sort, $sortmethod, $reverse) {
+    
+    function sortNodes(&$nodes, $sort, $sortmethod = SM_SORT_DEFAULT, $reverse=false) {
+        // copy sort var to sort field
         foreach ($nodes as $node) {
             $node = $node[0];
             $node->sort = $node->{$sort};
         }
-        // FIX ME, sort method should be CONSTANTS like SM_SORT_NAT
         switch ($sortmethod)
         {
-        case 'nat':        uasort($nodes,array($this,'_nodecmpnat')); break;
-        case 'natcase':    uasort($nodes,array($this,'_nodecmpnatcase')); break;
-        case 'case':       uasort($nodes,array($this,'_nodecmpcase')); break;
-        case 'numeric':    uasort($nodes,array($this,'_nodecmpnumeric')); break;
-        case 'string':     uasort($nodes,array($this,'_nodecmpstring')); break;
-        default:           uasort($nodes,array($this,'_nodecmp')); break;
+          case SM_SORT_NAT:      uasort($nodes,array($this,'_nodecmpnat')); break;
+          case SM_SORT_NAT_CASE: uasort($nodes,array($this,'_nodecmpnatcase')); break;
+          case SM_SORT_CASE:     uasort($nodes,array($this,'_nodecmpcase')); break;
+          case SM_SORT_NUMERIC:  uasort($nodes,array($this,'_nodecmpnumeric')); break;
+          case SM_SORT_STRING:   uasort($nodes,array($this,'_nodecmpstring')); break;
+          default:               uasort($nodes,array($this,'_nodecmp')); break;
         }
         if ($reverse) {
             $nodes = array_reverse($nodes);
         }
+        return true;
     }
 
+    /**
+     * @func       Node compare functions
+     * @desc       sort the nodes
+     * @access     internal
+     * @author     Marc Groot Koerkamp
+     */
+    function _nodecmp($a,$b) {
+        if ($a->sort == $b->sort) return 0;
+        return ($a->sort > $b->sort) ? -1 : 1;
+    }
+
+    function _nodecmpcase($a,$b) {
+        return strcasecmp($a->sort, $b->sort);
+    }
+    
+    function _nodecmpstring($a,$b) {
+        return strcmp($a->sort, $b->sort);
+    }
+
+    function _nodecmpnatcase($a,$b) {
+        return strnatcasecmp($a->sort,$b->sort);
+    }
+
+    function _nodecmpnat($a,$b) {
+        return strnatcmp($a->sort,$b->sort);
+    }
+
+    function _nodecmpnumeric($a,$b) {
+        if ((float) $a->sort == (float) $b->sort) return 0;
+        return ((float) $a->sort > (float) $b->sort) ? -1 : 1;
+    }
+    /* end nodecompare functions */
+    
+    
     /**
      * Check for permissions
      *
@@ -392,31 +440,6 @@ class tree extends object{
     }    
     
     
-    function _nodecmp($a,$b) {
-        if ($a->sort == $b->sort) return 0;
-        return ($a->sort > $b->sort) ? -1 : 1;
-    }
-
-    function _nodecmpcase($a,$b) {
-        return strcasecmp($a->sort, $b->sort);
-    }
-    
-    function _nodecmpstring($a,$b) {
-        return strcmp($a->sort, $b->sort);
-    }
-
-    function _nodecmpnatcase($a,$b) {
-        return strnatcasecmp($a->sort,$b->sort);
-    }
-
-    function _nodecmpnat($a,$b) {
-        return strnatcmp($a->sort,$b->sort);
-    }
-
-    function _nodecmpnumeric($a,$b) {
-        if ((float) $a->sort == (float) $b->sort) return 0;
-        return ((float) $a->sort > (float) $b->sort) ? -1 : 1;
-    }
 
     /* events */
     function beforeMove() {
@@ -451,11 +474,12 @@ class node extends object{
      * @author     Marc Groot Koerkamp
      */
     function node($id=0, $acl = false) {
-//        if (!$acl) {
-//           $acl =& new acl(array('self' => SM_ACL_ALL));
-//        } 
+        if (!$acl) {
+           $acl =& new acl(array('self' => SM_ACL_ALL));
+        }
         $this->id = $id;
-//        $this->acl = $acl;
+        $this->acl = $acl;
+
 //        $this->own = '';
 //        $this->grp = '';
         /* set the sleep notifyer */
