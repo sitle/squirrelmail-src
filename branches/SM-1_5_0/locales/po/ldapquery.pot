@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-10-23 19:40+0300\n"
+"POT-Creation-Date: 2005-03-01 09:22+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,92 +16,145 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ldapquery.php:161 ldapquery.php:256
+#: class.schema.php:43
+#, php-format
+msgid "Dublicate ldap attribute definition: %s."
+msgstr ""
+
+#: class.schema.php:77
+#, php-format
+msgid "Dublicate ldap object definition: %s."
+msgstr ""
+
+#: class.schema.php:92
+msgid "Any"
+msgstr ""
+
+#: functions.php:78
+msgid "Directory"
+msgstr ""
+
+#: functions.php:97 functions.php:142
+msgid "Directory Preferences"
+msgstr ""
+
+#: functions.php:99
+msgid ""
+"These settings control what type of output you will see when you use the "
+"Directory link to search Directory Services."
+msgstr ""
+
+#: functions.php:261 functions.php:327
 msgid "No records found"
 msgstr ""
 
-#: ldapquery.php:278
+#. Get the userdn to authenticate with
+#: ldapquery.php:47
 msgid "User DN:"
 msgstr ""
 
-#: ldapquery.php:282
+#. Get the user password
+#: ldapquery.php:51
 msgid "Password:"
 msgstr ""
 
-#: ldapquery.php:288
+#. Get the objectclass the user wants to search for
+#: ldapquery.php:57
 msgid "Search For:"
 msgstr ""
 
-#: ldapquery.php:300
-msgid "By:"
+#. Get the attribute the user wants to search by
+#: ldapquery.php:69
+msgid "Where:"
 msgstr ""
 
-#: ldapquery.php:313 ldapquery.php:315
+#: ldapquery.php:82 ldapquery.php:84
 msgid "Contains"
 msgstr ""
 
-#: ldapquery.php:317 ldapquery.php:319
+#: ldapquery.php:86 ldapquery.php:88
 msgid "Is"
 msgstr ""
 
-#: ldapquery.php:328
+#. Sort By menu
+#: ldapquery.php:97
 msgid "Sort By:"
 msgstr ""
 
-#: ldapquery.php:340
+#: ldapquery.php:112
 msgid "Search"
 msgstr ""
 
-#: ldapquery.php:347
+#: ldapquery.php:119
 msgid "Search Results"
 msgstr ""
 
-#: ldapquery.php:402
-#, c-format
+#: ldapquery.php:123
+#, php-format
+msgid "Comparetype is %s"
+msgstr ""
+
+#: ldapquery.php:143
+#, php-format
+msgid "QUERY is %s"
+msgstr ""
+
+#.
+#. * Used in debug mode
+#. * Example output "Querying: ldap-server-address on port some-port with base ldap-base-dn"
+#. * See http://www.php.net/sprintf if you want to rearrange order of arguments
+#.
+#: ldapquery.php:176
+#, php-format
+msgid "Querying: %s on port %d with base %s"
+msgstr ""
+
+#: ldapquery.php:183
+#, php-format
 msgid "Could not connect to LDAP server %s"
 msgstr ""
 
-#: ldapquery.php:412 ldapquery.php:417 ldapquery.php:422
+#: ldapquery.php:193 ldapquery.php:198 ldapquery.php:203
 msgid "Unable to bind to LDAP server"
 msgstr ""
 
-#: ldapquery.php:433
+#: ldapquery.php:215
 msgid "Nothing found!"
 msgstr ""
 
-#: ldapquery.php:441
-#, c-format
+#: ldapquery.php:223
+#, php-format
 msgid "output type is %s"
 msgstr ""
 
-#: ldapquery.php:442
-#, c-format
+#: ldapquery.php:224
+#, php-format
 msgid "output sorted by %s"
 msgstr ""
 
-#: options.php:62
+#: options.php:35
 msgid "Options - Directory Preferences"
 msgstr ""
 
-#: options.php:65
+#: options.php:41
 msgid "Output types can be:"
 msgstr ""
 
-#: options.php:68 options.php:78
+#: options.php:44 options.php:54
 msgid "One Table"
 msgstr ""
 
-#: options.php:69
+#: options.php:45
 msgid ""
 "One big table with one row per record found and each selected attribute as a "
 "separate column."
 msgstr ""
 
-#: options.php:70 options.php:79
+#: options.php:46 options.php:55
 msgid "Multiple Tables"
 msgstr ""
 
-#: options.php:71
+#: options.php:47
 msgid ""
 "One table per record found with 2 columns for each table. One column "
 "contains attribute names and the 2nd column shows values for each "
@@ -110,28 +163,613 @@ msgid ""
 "with no spaces (like labeledurl)."
 msgstr ""
 
-#: options.php:76
+#: options.php:52
 msgid "Select Output Type:"
 msgstr ""
 
-#: options.php:84
+#: options.php:60
 msgid "Select Displayed Fields"
 msgstr ""
 
-#: options.php:92
+#: options.php:68
 msgid "Submit"
 msgstr ""
 
-#: setup.php:36
-msgid "Directory"
+#. openldap system schemas
+#: schema/core.php:20
+msgid "Common Name"
 msgstr ""
 
-#: setup.php:47 setup.php:85
-msgid "Directory Preferences"
+#: schema/core.php:23
+msgid "Knowledge Information"
 msgstr ""
 
-#: setup.php:49
-msgid ""
-"These settings control what type of output you will see when you use the "
-"Directory link to search Directory Services."
+#: schema/core.php:25
+msgid "Surname"
+msgstr ""
+
+#: schema/core.php:27
+msgid "Serial Number"
+msgstr ""
+
+#: schema/core.php:29
+msgid "Country Name"
+msgstr ""
+
+#: schema/core.php:31
+msgid "Locality Name"
+msgstr ""
+
+#: schema/core.php:33
+msgid "State or Province Name"
+msgstr ""
+
+#: schema/core.php:35
+msgid "Street Address"
+msgstr ""
+
+#: schema/core.php:37
+msgid "Organisation Name"
+msgstr ""
+
+#: schema/core.php:39
+msgid "Organisational Unit Name"
+msgstr ""
+
+#: schema/core.php:41
+msgid "Title"
+msgstr ""
+
+#: schema/core.php:43
+msgid "Description"
+msgstr ""
+
+#: schema/core.php:45
+msgid "Search Guide"
+msgstr ""
+
+#: schema/core.php:47
+msgid "Business Category"
+msgstr ""
+
+#: schema/core.php:49
+msgid "Postal Address"
+msgstr ""
+
+#: schema/core.php:51
+msgid "Postal Code"
+msgstr ""
+
+#: schema/core.php:53
+msgid "Post Office Box"
+msgstr ""
+
+#: schema/core.php:55
+msgid "Physical Delivery Office Name"
+msgstr ""
+
+#: schema/core.php:57
+msgid "Telephone Number"
+msgstr ""
+
+#: schema/core.php:59
+msgid "Telex Number"
+msgstr ""
+
+#: schema/core.php:61
+msgid "Teletex Terminal Identifier"
+msgstr ""
+
+#: schema/core.php:63
+msgid "Facsimile (Fax) Telephone Number"
+msgstr ""
+
+#: schema/core.php:66
+msgid "X.121 Address"
+msgstr ""
+
+#: schema/core.php:68
+msgid "International ISDN Number"
+msgstr ""
+
+#: schema/core.php:70
+msgid "Registered Postal Address"
+msgstr ""
+
+#: schema/core.php:72
+msgid "Destination Indicator"
+msgstr ""
+
+#: schema/core.php:74
+msgid "Preferred Delivery Method"
+msgstr ""
+
+#: schema/core.php:76
+msgid "Presentation Address"
+msgstr ""
+
+#: schema/core.php:78
+msgid "Supported Application Context"
+msgstr ""
+
+#: schema/core.php:80
+msgid "Member of a group"
+msgstr ""
+
+#: schema/core.php:82
+msgid "Owner"
+msgstr ""
+
+#: schema/core.php:84
+msgid "Occupant of role"
+msgstr ""
+
+#: schema/core.php:86
+msgid "See also"
+msgstr ""
+
+#: schema/core.php:88
+msgid "User Certificate"
+msgstr ""
+
+#: schema/core.php:90
+msgid "CA Certificate"
+msgstr ""
+
+#: schema/core.php:92
+msgid "Authority Revocation List"
+msgstr ""
+
+#: schema/core.php:94
+msgid "Certificate Revocation List"
+msgstr ""
+
+#: schema/core.php:96
+msgid "Cross Certificate Pair"
+msgstr ""
+
+#: schema/core.php:98
+msgid "First Name"
+msgstr ""
+
+#: schema/core.php:101
+msgid "Initials"
+msgstr ""
+
+#: schema/core.php:103
+msgid "Generation Qualifier"
+msgstr ""
+
+#: schema/core.php:105
+msgid "X.500 unique identifier"
+msgstr ""
+
+#: schema/core.php:107
+msgid "DN qualifier"
+msgstr ""
+
+#: schema/core.php:109
+msgid "Enhanced Search Guide"
+msgstr ""
+
+#: schema/core.php:111
+msgid "Protocol Information"
+msgstr ""
+
+#: schema/core.php:113
+msgid "unique member of a group"
+msgstr ""
+
+#: schema/core.php:115
+msgid "House Identifier"
+msgstr ""
+
+#: schema/core.php:117
+msgid "Supported Algorithms"
+msgstr ""
+
+#: schema/core.php:119
+msgid "Delta Revocation List"
+msgstr ""
+
+#. FIXME: Add comment here
+#: schema/core.php:122
+msgid "Name of DMD"
+msgstr ""
+
+#: schema/core.php:124
+msgid "Labelled URI"
+msgstr ""
+
+#: schema/core.php:126
+msgid "User ID"
+msgstr ""
+
+#: schema/core.php:129
+msgid "Mail"
+msgstr ""
+
+#: schema/core.php:132
+msgid "Domain Component"
+msgstr ""
+
+#: schema/core.php:135
+msgid "Associated Domain"
+msgstr ""
+
+#: schema/core.php:137
+msgid "Email Address"
+msgstr ""
+
+#. * Object Classes
+#: schema/core.php:142 schema/cosine.php:84
+msgid "Country"
+msgstr ""
+
+#: schema/core.php:144
+msgid "Locality"
+msgstr ""
+
+#: schema/core.php:146
+msgid "Organisation"
+msgstr ""
+
+#: schema/core.php:148
+msgid "Organisational Unit"
+msgstr ""
+
+#: schema/core.php:150
+msgid "Person"
+msgstr ""
+
+#: schema/core.php:152
+msgid "Organisational Person"
+msgstr ""
+
+#: schema/core.php:154
+msgid "Organisational Role"
+msgstr ""
+
+#: schema/core.php:156
+msgid "Group of Names"
+msgstr ""
+
+#: schema/core.php:158
+msgid "Residential Person"
+msgstr ""
+
+#: schema/core.php:160
+msgid "Application Process"
+msgstr ""
+
+#: schema/core.php:162
+msgid "Application Entity"
+msgstr ""
+
+#. RFC2256: a directory system agent (a server)
+#: schema/core.php:165
+msgid "DSA"
+msgstr ""
+
+#: schema/core.php:167
+msgid "Device"
+msgstr ""
+
+#: schema/core.php:169
+msgid "Strong Authentication User"
+msgstr ""
+
+#: schema/core.php:171
+msgid "Certificate Authority"
+msgstr ""
+
+#: schema/core.php:173
+msgid "Group of Unique Names"
+msgstr ""
+
+#: schema/core.php:175
+msgid "User Security Information"
+msgstr ""
+
+#: schema/core.php:177
+msgid "Certificate Authority V2"
+msgstr ""
+
+#: schema/core.php:179
+msgid "CRL Distribution Point"
+msgstr ""
+
+#. FIXME: explain it
+#: schema/core.php:182
+msgid "dmd"
+msgstr ""
+
+#: schema/core.php:184
+msgid "PKI User"
+msgstr ""
+
+#: schema/core.php:186
+msgid "PKI CA"
+msgstr ""
+
+#: schema/core.php:188
+msgid "Delta CRL"
+msgstr ""
+
+#: schema/core.php:190
+msgid "Labeled URI Object"
+msgstr ""
+
+#: schema/core.php:192
+msgid "Simple Security Object"
+msgstr ""
+
+#: schema/core.php:194
+msgid "DC Object"
+msgstr ""
+
+#: schema/core.php:196
+msgid "UID Object"
+msgstr ""
+
+#: schema/cosine.php:19
+msgid "Encoded Text or Address"
+msgstr ""
+
+#: schema/cosine.php:21
+msgid "Info"
+msgstr ""
+
+#. Favorite drink (noun)
+#: schema/cosine.php:24
+msgid "Drink"
+msgstr ""
+
+#: schema/cosine.php:27
+msgid "Room Number"
+msgstr ""
+
+#: schema/cosine.php:29
+msgid "Photo"
+msgstr ""
+
+#: schema/cosine.php:31
+msgid "Category of user"
+msgstr ""
+
+#: schema/cosine.php:33
+msgid "Host"
+msgstr ""
+
+#: schema/cosine.php:35
+msgid "Manager"
+msgstr ""
+
+#: schema/cosine.php:37
+msgid "Document identifier"
+msgstr ""
+
+#: schema/cosine.php:39
+msgid "Document Title"
+msgstr ""
+
+#: schema/cosine.php:41
+msgid "Document version"
+msgstr ""
+
+#: schema/cosine.php:43
+msgid "Document author"
+msgstr ""
+
+#: schema/cosine.php:45
+msgid "Location of document"
+msgstr ""
+
+#: schema/cosine.php:47
+msgid "Home Phone"
+msgstr ""
+
+#: schema/cosine.php:50
+msgid "Secretary"
+msgstr ""
+
+#: schema/cosine.php:52
+msgid "Other Mailbox"
+msgstr ""
+
+#. DNS A record entries
+#: schema/cosine.php:55
+msgid "A Record"
+msgstr ""
+
+#. DNS MD record entries
+#: schema/cosine.php:58
+msgid "MD Record"
+msgstr ""
+
+#. DNS MX record entries
+#: schema/cosine.php:61
+msgid "MX Record"
+msgstr ""
+
+#. DNS NS record entries
+#: schema/cosine.php:64
+msgid "NS Record"
+msgstr ""
+
+#. DNS SOA record entries
+#: schema/cosine.php:67
+msgid "SOA Record"
+msgstr ""
+
+#. DNS CNAME record entries
+#: schema/cosine.php:70
+msgid "CNAME Record"
+msgstr ""
+
+#: schema/cosine.php:72
+msgid "Associated Name"
+msgstr ""
+
+#: schema/cosine.php:74
+msgid "Home Postal Address"
+msgstr ""
+
+#: schema/cosine.php:76
+msgid "Personal Title"
+msgstr ""
+
+#: schema/cosine.php:78
+msgid "Mobile Phone Number"
+msgstr ""
+
+#: schema/cosine.php:81
+msgid "Pager"
+msgstr ""
+
+#: schema/cosine.php:87
+msgid "Unique Identifier"
+msgstr ""
+
+#: schema/cosine.php:89
+msgid "Organizational status"
+msgstr ""
+
+#. FIXME: RFC1274
+#: schema/cosine.php:92
+msgid "Janet mailbox"
+msgstr ""
+
+#: schema/cosine.php:94
+msgid "Mail Preference Option"
+msgstr ""
+
+#: schema/cosine.php:96
+msgid "Name of building"
+msgstr ""
+
+#: schema/cosine.php:98
+msgid "DSA Quality"
+msgstr ""
+
+#: schema/cosine.php:100
+msgid "Single Level Quality"
+msgstr ""
+
+#: schema/cosine.php:102
+msgid "Subtree Minimum Quality"
+msgstr ""
+
+#: schema/cosine.php:104
+msgid "Subtree Maximum Quality"
+msgstr ""
+
+#: schema/cosine.php:106
+msgid "Personal Signature"
+msgstr ""
+
+#. FIXME: RFC1274
+#: schema/cosine.php:109
+msgid "DIT Redirect"
+msgstr ""
+
+#: schema/cosine.php:111
+msgid "Audio"
+msgstr ""
+
+#: schema/cosine.php:113
+msgid "Publisher of document"
+msgstr ""
+
+#: schema/cosine.php:116
+msgid "Pilot Person"
+msgstr ""
+
+#: schema/cosine.php:119
+msgid "Account"
+msgstr ""
+
+#: schema/cosine.php:121
+msgid "Document"
+msgstr ""
+
+#: schema/cosine.php:123
+msgid "Room"
+msgstr ""
+
+#: schema/cosine.php:125
+msgid "Document Series"
+msgstr ""
+
+#. FIXME: explain difference from dnsdomain
+#: schema/cosine.php:128
+msgid "Domain"
+msgstr ""
+
+#: schema/cosine.php:130
+msgid "RFC822 Local Part"
+msgstr ""
+
+#: schema/cosine.php:132
+msgid "DNS Domain"
+msgstr ""
+
+#: schema/cosine.php:134
+msgid "Object related to domain"
+msgstr ""
+
+#: schema/cosine.php:136
+msgid "Friendly Country"
+msgstr ""
+
+#: schema/cosine.php:138
+msgid "Pilot Organisation"
+msgstr ""
+
+#: schema/cosine.php:140
+msgid "Pilot DSA"
+msgstr ""
+
+#: schema/cosine.php:142
+msgid "Quality Labelled Data"
+msgstr ""
+
+#: schema/inetorgperson.php:20
+msgid "Car License"
+msgstr ""
+
+#: schema/inetorgperson.php:22
+msgid "Department Number"
+msgstr ""
+
+#: schema/inetorgperson.php:24
+msgid "Displayed Name"
+msgstr ""
+
+#: schema/inetorgperson.php:26
+msgid "Employee Number"
+msgstr ""
+
+#: schema/inetorgperson.php:28
+msgid "Employee Type"
+msgstr ""
+
+#: schema/inetorgperson.php:30
+msgid "JPEG Photo"
+msgstr ""
+
+#: schema/inetorgperson.php:32
+msgid "Preferred Language"
+msgstr ""
+
+#: schema/inetorgperson.php:34
+msgid "User SMIME Certificate"
+msgstr ""
+
+#: schema/inetorgperson.php:36
+msgid "User PKCS12"
+msgstr ""
+
+#: schema/inetorgperson.php:38
+msgid "Internet Organizational Person"
 msgstr ""
