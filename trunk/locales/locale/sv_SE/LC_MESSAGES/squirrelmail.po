@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: SquirrelMail HEAD\n"
-"POT-Creation-Date: 2004-07-03 09:34+0200\n"
-"PO-Revision-Date: 2004-08-06 06:20+0200\n"
+"POT-Creation-Date: 2004-08-10 14:49+0200\n"
+"PO-Revision-Date: 2004-08-11 04:08+0200\n"
 "Last-Translator: Fredrik Jervfors <sqm_admin@fimbul.net>\n"
 "Language-Team: Swedish <squirrelmail-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -372,6 +372,9 @@ msgstr "töm"
 
 msgid "Last Refresh"
 msgstr "Senast uppdaterad"
+
+msgid "Check mail"
+msgstr "Uppdatera"
 
 msgid "Save folder tree"
 msgstr "Spara mappstruktur"
@@ -1248,8 +1251,8 @@ msgid "Viewing Messages: %s to %s (%s total)"
 msgstr "Visar brev: %s till %s (%s totalt)"
 
 #, c-format
-msgid "Viewing Message: %s (1 total)"
-msgstr "Visar brev: %s (1 totalt)"
+msgid "Viewing Message: %s (%s total)"
+msgstr "Visar brev: %s (%s totalt)"
 
 msgid "Paginate"
 msgstr "Sidbryt"
@@ -1499,13 +1502,16 @@ msgid "Cursor Position when Replying"
 msgstr "Markörens position vid svar"
 
 msgid "To: field"
-msgstr "Till-fältet"
+msgstr "Tillfältet"
 
 msgid "Focus in body"
-msgstr "Fokus på texten"
+msgstr "Textfältet"
 
 msgid "Select body"
-msgstr "Välj text"
+msgstr "Textfältet (markerat)"
+
+msgid "No focus"
+msgstr "Ingen förvald"
 
 msgid "Enable Sort by of Receive Date"
 msgstr "Aktivera sortering på ankomstdatum"
@@ -3859,6 +3865,15 @@ msgstr "Sortera efter information"
 msgid "Add to address book"
 msgstr "Lägg till i adressboken"
 
+msgid "Purge"
+msgstr "Töm"
+
+msgid "Error(s) happened while saving your options"
+msgstr "Fel uppstod när inställningarna sparades"
+
+msgid "Some of your preference changes are not applied."
+msgstr "En del av ändringarna kommer inte att tillämpas."
+
 msgid "As Attachment"
 msgstr "som bilaga"
 
@@ -4014,6 +4029,9 @@ msgstr "Lista över mappar"
 
 msgid "Click here to change the sorting of the address list"
 msgstr "Ändra sorteringen av adresslistan"
+
+msgid "Signature is too big."
+msgstr "Brevfoten är för stor."
 
 msgid "Possible reason : "
 msgstr "Trolig orsak : "
