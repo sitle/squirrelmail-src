@@ -3025,7 +3025,15 @@ sub change_to_SM_path() {
 
     if ( $#rel_path > 1 ) {
         # more than two levels away. Make it absolute.
-        $new_path = "\'" . join('/', @abs_path) . "\'";
+        @abs_path = split(/\//, $dir);
+
+        # Lop off the relative pieces of the absolute path..
+        for ( $i = 0; $i <= $#rel_path; $i++ ) {
+            pop @abs_path;
+            shift @rel_path;
+        }
+        push @abs_path, @rel_path;
+       $new_path = "\'" . join('/', @abs_path) . "\'";
     } elsif ( $#rel_path > 0 ) {
         # it's within the SM tree, prepend SM_PATH
         $new_path = $old_path;
