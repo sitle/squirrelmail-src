@@ -5,15 +5,15 @@
 # $Id$
 msgid ""
 msgstr ""
-"Project-Id-Version: squirrelmail HEAD\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-04-12 17:38+0300\n"
-"PO-Revision-Date: 2004-04-13 00:17+0200\n"
+"Project-Id-Version: SquirrelMail HEAD\n"
+"POT-Creation-Date: 2004-04-21 10:08+0300\n"
+"PO-Revision-Date: 2004-04-29 23:56+0200\n"
 "Last-Translator: Fredrik Jervfors <sqm_admin@fimbul.net>\n"
 "Language-Team: Swedish <squirrelmail-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=iso-8859-1\n"
 "Content-Transfer-Encoding: 8-bit\n"
+"Report-Msgid-Bugs-To: \n"
 
 msgid "Address Book"
 msgstr "Adressbok"
@@ -70,8 +70,8 @@ msgstr "Det går inte att visa adresser från %s"
 msgid "Your search failed with the following error(s)"
 msgstr "Sökningen misslyckades med följande fel"
 
-msgid "No persons matching your search was found"
-msgstr "Kunde inte hitta några personer överensstämmande med din sökning"
+msgid "No persons matching your search were found"
+msgstr "Hittade inga personer överensstämmande med din sökning"
 
 msgid "Return"
 msgstr "Tillbaka"
@@ -513,7 +513,7 @@ msgid "Reply To"
 msgstr "Svarsadress"
 
 msgid "Save / Update"
-msgstr "Spara / Uppdatera"
+msgstr "Spara/uppdatera"
 
 msgid "Make Default"
 msgstr "Använd som förval"
@@ -538,20 +538,20 @@ msgid ""
 "index.  You can add, remove, and move columns around to customize them to "
 "fit your needs."
 msgstr ""
-"Indexordning är ordningen på kolumnerna i brevindexet. Du kan lägga till, ta "
-"bort och flytta kolumner så att de passar dina behov."
+"Indexeringsordning är ordningen på kolumnerna i indexet. Visa, dölj och "
+"flytta kolumnerna efter behov."
 
 msgid "up"
-msgstr "upp"
+msgstr "Upp"
 
 msgid "down"
-msgstr "ner"
+msgstr "Ner"
 
 msgid "remove"
-msgstr "ta bort"
+msgstr "Dölj"
 
 msgid "Return to options page"
-msgstr "Tillbaka till inställningar"
+msgstr "Tillbaka"
 
 msgid "Personal Information"
 msgstr "Personlig profil"
@@ -574,13 +574,12 @@ msgstr "Ladda om sidan"
 msgid ""
 "This contains personal information about yourself such as your name, your "
 "email address, etc."
-msgstr ""
-"Inställningar för personlig information, t.ex. namn, e-postadress, o.s.v."
+msgstr "Personlig information, t.ex. namn och e-postadress."
 
 msgid ""
 "You can change the way that SquirrelMail looks and displays information to "
 "you, such as the colors, the language, and other settings."
-msgstr "Du kan ändra utseende på SquirrelMail, bl.a. färger och språk."
+msgstr "Omfattar bl.a. färger, språk och hur brev visas."
 
 msgid ""
 "Based upon given criteria, incoming messages can have different background "
@@ -593,12 +592,12 @@ msgstr ""
 
 msgid ""
 "These settings change the way your folders are displayed and manipulated."
-msgstr "Dessa inställningar påverkar sättet mapparna visas och hanteras på."
+msgstr "Hur mappar visas och hanteras."
 
 msgid ""
 "The order of the message index can be rearranged and changed to contain the "
 "headers in any order you want."
-msgstr "Ordningen på breven i indexet kan konfigureras enligt önskemål."
+msgstr "Vilka kolumner som visas i indexet och ordningen på dessa."
 
 msgid "Message not printable"
 msgstr "Brevet går ej att skriva ut"
@@ -756,7 +755,7 @@ msgid "Web Page"
 msgstr "Webbsida"
 
 msgid "Organization / Department"
-msgstr "Organisation / Avdelning"
+msgstr "Organisation/avdelning"
 
 msgid "Address"
 msgstr "Adress"
@@ -780,7 +779,7 @@ msgid "Add to Addressbook"
 msgstr "Lägg till i adressboken"
 
 msgid "Title & Org. / Dept."
-msgstr "Titel & Org. / Avd."
+msgstr "Titel & org./avd."
 
 msgid "Viewing Full Header"
 msgstr "Visar alla rubriker"
@@ -1127,7 +1126,7 @@ msgstr "FEL : Okänt svar från IMAP-servern."
 
 #, c-format
 msgid "Error connecting to IMAP server: %s."
-msgstr "Kunde inte kontakta IMAP-server %s."
+msgstr "Kunde inte kontakta IMAP-servern: %s."
 
 #, c-format
 msgid "Bad request: %s"
@@ -1175,21 +1174,21 @@ msgid "Unknown date"
 msgstr "Okänt datum"
 
 msgid "A"
-msgstr "A"
+msgstr "B"
 
 msgid ""
 "Thread sorting is not supported by your IMAP server.<br>Please report this "
 "to the system administrator."
 msgstr ""
-"IMAP-server stödjer inte korrespondensvyer.<br>Vänligen rapportera detta "
+"IMAP-servern stödjer inte korrespondensvyer.<br>Vänligen rapportera detta "
 "till administratören."
 
 msgid ""
 "Server-side sorting is not supported by your IMAP server.<br>Please report "
 "this to the system administrator."
 msgstr ""
-"IMAP-servern har inte stöd för att sortera brev.<br>Vänligen rapportera "
-"detta till administratören."
+"IMAP-servern stödjer inte sortering av brev.<br>Vänligen rapportera detta "
+"till administratören."
 
 msgid "THIS FOLDER IS EMPTY"
 msgstr "DENNA MAPP ÄR TOM"
@@ -1633,7 +1632,7 @@ msgid "Delimited: "
 msgstr "Begränsad: "
 
 msgid "Name and Address Options"
-msgstr "Namn och adressinställningar"
+msgstr "Namn och adress"
 
 msgid "Email Address"
 msgstr "E-postadress"
@@ -1654,13 +1653,13 @@ msgid "Error opening timezone config, contact administrator."
 msgstr "Fel vid inställning av tidszon. Kontakta administratören."
 
 msgid "Timezone Options"
-msgstr "Inställningar för tidszoner"
+msgstr "Tidszon"
 
 msgid "Your current timezone"
 msgstr "Din nuvarande tidszon"
 
 msgid "Reply Citation Options"
-msgstr "Svarscitatsinställningar"
+msgstr "Svarscitat"
 
 msgid "Reply Citation Style"
 msgstr "Svarscitatsstil"
@@ -1672,7 +1671,7 @@ msgid "AUTHOR Said"
 msgstr "AVSÄNDAREN skrev"
 
 msgid "Quote Who XML"
-msgstr "XML Citat"
+msgstr "XML-citat"
 
 msgid "On DATE, AUTHOR Said"
 msgstr "DATUMET skrev AVSÄNDAREN"
@@ -1687,7 +1686,7 @@ msgid "User-Defined Citation End"
 msgstr "Användardefinierat svarscitat, slut"
 
 msgid "Signature Options"
-msgstr "Inställningar för brevfötter"
+msgstr "Brevfötter"
 
 msgid "Use Signature"
 msgstr "Använd brevfot"
@@ -1756,7 +1755,7 @@ msgid "IMAP Server Address"
 msgstr "Adress till IMAP-servern"
 
 msgid "IMAP Server Port"
-msgstr "Port för IMAP-server"
+msgstr "Port för IMAP-servern"
 
 msgid "IMAP Server Type"
 msgstr "Typ av IMAP-server"
@@ -1981,7 +1980,9 @@ msgid "Change Settings"
 msgstr "Ändra inställningar"
 
 msgid "Config file can't be opened. Please check config.php."
-msgstr "Det går inte att skriva till &quot;config.php&quot;. Kontrollera rättigheterna."
+msgstr ""
+"Det går inte att skriva till &quot;config.php&quot;. Kontrollera "
+"rättigheterna."
 
 msgid "Administration"
 msgstr "Administration"
@@ -2302,7 +2303,7 @@ msgid ""
 "have a very high spam to legit email ratio (85 percent or more)."
 msgstr ""
 "FRI, än så länge - SPAMCOP - Intressant lösning som listar servrar som har "
-"mycket hög andel skräppost (85% eller mer)."
+"mycket hög andel skräppost (85 procent eller mer)."
 
 msgid "FREE - dev.null.dk - I don't have any detailed info on this list."
 msgstr "FRI - dev.null.dk - Ingen detaljerad information om denna lista."
@@ -2420,7 +2421,7 @@ msgstr "Söksträng:"
 
 #, c-format
 msgid "If <b>%s</b> contains <b>%s</b> then move to <b>%s</b>"
-msgstr "Om <b>%s</b> innehåller <b>%s</b> flytta till <b>%s</b>"
+msgstr "Om <b>%s</b> innehåller <b>%s</b>, flytta till <b>%s</b>"
 
 msgid "Message Filters"
 msgstr "Brevfilter"
@@ -2446,7 +2447,7 @@ msgid "Spam Filtering"
 msgstr "Skräppostfiltrering"
 
 msgid "WARNING! Tell your admin to set the SpamFilters_YourHop variable"
-msgstr "VARNING! Be din administrator att sätta variabeln SpamFilters_YourHop"
+msgstr "VARNING! Be administratören att sätta variabeln SpamFilters_YourHop"
 
 msgid "Move spam to:"
 msgstr "Flytta skräppost till:"
@@ -2474,7 +2475,7 @@ msgstr ""
 "att bara kontrollera nyinkomna brev. Om du gör förändringar i filtren, byt "
 "tillfälligt till att kontrollera samtliga brev, gå till inkorgen, och byt "
 "tillbaks till att bara kontrollera nyinkomna brev. På detta sätt genomsöks "
-"alla brev med de nya filterinställningarna. "
+"alla brev med de nya filterinställningarna."
 
 #, c-format
 msgid "Spam is sent to <b>%s</b>"
@@ -2737,7 +2738,7 @@ msgid "Closing POP"
 msgstr "Avslutar POP"
 
 msgid "Logging out from IMAP"
-msgstr "Loggar ut från IMAP"
+msgstr "Loggar ut från IMAP-servern"
 
 msgid "Message appended to mailbox"
 msgstr "Brevet har lagts till i inkorgen"
@@ -2770,7 +2771,7 @@ msgstr ""
 "Om du inte fyller i ett lösenord efterfrågas detta när du hämtar din post."
 
 msgid "Encrypt passwords (informative only)"
-msgstr "Kryptera lösenord (bara info)"
+msgstr "Kryptera lösenord"
 
 msgid "Add Server"
 msgstr "Lägg till server"
@@ -2809,7 +2810,7 @@ msgid "Modify"
 msgstr "Ändra"
 
 msgid "No-one server in use. Try to add."
-msgstr "Ingen server används. Försök att lägga till en."
+msgstr "Det finns inte någon POP3-server angiven."
 
 msgid "Fetching Servers"
 msgstr "Hämtar servrar"
@@ -2848,8 +2849,7 @@ msgid ""
 "This configures settings for downloading email from a pop3 mailbox to your "
 "account on this server."
 msgstr ""
-"Här konfigurerar du inställningar för hämtning av brev från en POP3-brevlåda "
-"till denna server."
+"Det går att hämta brev från en POP3-brevlåda och spara dem på denna server."
 
 msgid "Message Details"
 msgstr "Brevets detaljer"
@@ -2916,8 +2916,8 @@ msgid ""
 "mail arrives.  If no file is specified, \"(none)\", no sound will be used."
 msgstr ""
 "Välj den fil som ska spelas när ny post anländer, från listan "
-"<b>serverfiler</b>. Om ingen fil väljs, &quot;(ingen)&quot;, kommer inget ljud att "
-"användas."
+"<b>serverfiler</b>. Om ingen fil väljs, &quot;(ingen)&quot;, kommer inget "
+"ljud att användas."
 
 msgid "Enable Media Playing"
 msgstr "Slå på mediauppspelning"
@@ -2973,11 +2973,11 @@ msgid ""
 "This configures settings for playing sounds and/or showing popup windows "
 "when new mail arrives."
 msgstr ""
-"Inställningar för uppspelning av ljud och/eller popup-fönster vid nyinkomna "
-"brev."
+"Aviseringen består av ett ljud och/eller ett popup-fönster när nya brev "
+"inkommer."
 
 msgid "New Mail Notification options saved"
-msgstr "Inställningar för avisering vid nyinkomna brev har sparats"
+msgstr "Inställningarna för avisering vid nyinkomna brev har sparats"
 
 #, c-format
 msgid "%s New Messages"
@@ -3204,10 +3204,11 @@ msgstr ""
 "När du skickar in denna skräppostrapport kommer du att få tillbaka ett brev "
 "med länkar som du kan klicka på för att rapportera skräpposten till rätt "
 "instanser. Denna tjänst är gratis. Genom att klicka på knappen &quot;Skicka "
-"skräppostrapport&quot; går du med på SpamCops regler, villkor för tjänsten o.s.v."
+"skräppostrapport&quot; går du med på SpamCops regler, villkor för tjänsten o."
+"s.v."
 
 msgid "Cancel / Done"
-msgstr "Avbryt/Klar"
+msgstr "Avbryt/klar"
 
 msgid "Send Spam Report"
 msgstr "Skicka skräppostrapport"
@@ -3372,8 +3373,8 @@ msgid ""
 "Your personal dictionary was erased. Please close this window and click "
 "\"Check Spelling\" button again to start your spellcheck over."
 msgstr ""
-"Din personliga ordlista har kastats. Stäng detta fönster och klicka på "
-"&quot;Kontrollera stavning&quot; för att starta stavningskontrollen."
+"Din personliga ordlista har kastats. Stäng detta fönster och klicka på &quot;"
+"Kontrollera stavning&quot; för att starta stavningskontrollen."
 
 msgid "Close this Window"
 msgstr "Stäng detta fönster"
@@ -3769,11 +3770,11 @@ msgstr "Språk för gränssnittet"
 msgid "Translation direction"
 msgstr "Översättningsriktning"
 
-msgid "No persons matching your search were found"
-msgstr "Kunde inte hitta några personer överensstämmande med din söknini"
-
 msgid "Add to:"
 msgstr "Lägg till:"
+
+msgid "Click here to change the sorting of the address list"
+msgstr "Ändra sorteringen av adresslistan"
 
 msgid "Add to address book"
 msgstr "Lägg till i adressboken"
@@ -3916,6 +3917,9 @@ msgstr "och"
 msgid "Or"
 msgstr "eller"
 
+msgid "Add to Address Book"
+msgstr "Lägg till i adressboken"
+
 msgid "Folder List"
 msgstr "Lista över mappar"
 
@@ -3923,7 +3927,7 @@ msgid "Possible reason : "
 msgstr "Trolig orsak : "
 
 msgid "The imap server failed to handle threading."
-msgstr "IMAP-server kan inte hantera korrespondensvyer."
+msgstr "IMAP-servern lyckades inte hantera korrespondensvyer."
 
 msgid "Click here to unset thread view for this mailbox and start again."
 msgstr "Ta bort korrespondansvyer för denna brevlåda och börja om."
@@ -3934,6 +3938,15 @@ msgstr "FEL : Felaktigt funktionsanrop."
 msgid "Reason:"
 msgstr "Orsak:"
 
+msgid "Thread sorting is not supported by your IMAP server."
+msgstr "IMAP-servern stödjer inte korrespondensvyer."
+
+msgid "Please report this to the system administrator."
+msgstr "Vänligen rapportera detta till administratören."
+
+msgid "Server-side sorting is not supported by your IMAP server."
+msgstr "IMAP-servern stödjer inte sortering av brev."
+
 msgid "Unflag"
 msgstr "Avmarkera"
 
@@ -3941,7 +3954,15 @@ msgid "Flag"
 msgstr "Markera"
 
 msgid "Click here to change the sorting of the message list"
-msgstr "Klicka här för att ändra sorteringen av brevlistan"
+msgstr "Ändrar sorteringen av brevlistan"
+
+#, c-format
+msgid "Viewing Messages: %s to %s (%s total)"
+msgstr "Visar brev: %s till %s (%s totalt)"
+
+#, c-format
+msgid "Viewing Message: %s (1 total)"
+msgstr "Visar brev: %s (1 totalt)"
 
 msgid "Message Flags Icon Theme"
 msgstr "Tema för brevikoner"
@@ -4030,16 +4051,17 @@ msgid ""
 "purpose of variables and appropriate values, as well as additional "
 "verification steps."
 msgstr ""
-"OBS: Det är rekommenderat att du konfigurerar systemet med &quot;conf.pl&quot;, och inte "
-"med denna insticksmodul. &quot;conf.pl&quot; innehåller extra information om syftet med "
-"variabler och deras tillämpbara värden, såväl som extra "
-"verifikationsåtgärder."
+"OBS: Det är rekommenderat att du konfigurerar systemet med &quot;conf."
+"pl&quot;, och inte med denna insticksmodul. &quot;conf.pl&quot; innehåller "
+"extra information om syftet med variabler och deras tillämpbara värden, "
+"såväl som extra verifikationsåtgärder."
 
 msgid ""
 "Run or consult conf.pl should you run into difficulty with your "
 "configuration."
 msgstr ""
-"Om du stöter på problem med konfigurationen, kör eller konsultera &quot;conf.pl&quot;."
+"Om du stöter på problem med konfigurationen, kör eller konsultera &quot;conf."
+"pl&quot;."
 
 #, c-format
 msgid "Plugin directory could not be found: %s"
@@ -4047,6 +4069,45 @@ msgstr "Kunde inte hitta katalogen för insticksmoduler: %s"
 
 msgid "Test Configuration"
 msgstr "Testa konfigurering"
+
+msgid "WARNING! Header filters should be of the format \"Header: value\""
+msgstr ""
+"VARNING! Filter baserade på rubriker i brevhuvudet ska ha formatet &quot;"
+"Rubrik: värde&qout;"
+
+#, c-format
+msgid "If %s contains %s then move to %s"
+msgstr "Om %s innehåller %s, flytta till %s"
+
+msgid "You must select spam folder."
+msgstr "Välj en mapp för skräppost."
+
+msgid "You must select scan type."
+msgstr "Välj typ av skanning."
+
+#, c-format
+msgid "WARNING! Tell your admin to set the %s variable"
+msgstr "VARNING! Be administratören att sätta variabeln %s"
+
+msgid ""
+"The more messages you scan, the longer it takes. I would suggest that you "
+"scan only new messages.  If you make a change to your filters, I would set "
+"it to scan all messages, then go view my INBOX, then come back and set it to "
+"scan only new messages. That way, your new spam filters will be applied and "
+"you'll scan even the spam you read with the new filters."
+msgstr ""
+"Ju fler brev som kontrolleras, desto längre tid tar det. Det rekommenderas "
+"att bara kontrollera nyinkomna brev. Om du gör förändringar i filtren, byt "
+"tillfälligt till att kontrollera samtliga brev, gå till inkorgen, och byt "
+"tillbaks till att bara kontrollera nyinkomna brev. På detta sätt genomsöks "
+"alla brev med de nya filterinställningarna."
+
+#, c-format
+msgid "Spam is sent to %s"
+msgstr "Skräppost skickas till %s"
+
+msgid "not set yet"
+msgstr "odefinierad"
 
 msgid "No POP3 servers configured yet."
 msgstr "Inga POP3-servrar är konfigurerade."
@@ -4061,8 +4122,7 @@ msgid ""
 "This configures settings for downloading email from a POP3 mailbox to your "
 "account on this server."
 msgstr ""
-"Här konfigurerar du inställningar för hämtning av brev från en POP3-brevlåda "
-"till denna server."
+"Det går att hämta brev från en POP3-brevlåda och spara dem på denna server."
 
 msgid "Spam Service Type:"
 msgstr "Typ av skräpposttjänst:"
