@@ -2,12 +2,14 @@
 /*
  *  notify.php - reminder notification script
  *
- *  Copyright (c) 2002 Jeff Hinrichs <jeffh@delasco.com>
- *  Licensed under the GNU GPL. For full terms see the file COPYING.
- * 
+ *
+ * Copyright (c) 2002 The SquirrelMail Project Team
+ * Licensed under the GNU GPL. For full terms see the file COPYING.
+ *
  *  Reminder (*.rem) file format:
  *  notifyTime|eventTime|Length|Priority|Title|Body
  *
+ * $Id: 
  */
 
 // Include plugin config data

@@ -3,8 +3,11 @@
  *
  *  calendar.php
  *
- *  Copyright (c) 2001 Michal Szczotka <michal@tuxy.org>
- *  Licensed under the GNU GPL. For full terms see the file COPYING.
+ *
+ * Copyright (c) 2002 The SquirrelMail Project Team
+ * Licensed under the GNU GPL. For full terms see the file COPYING.
+ *
+ * Originally contrubuted by Michal Szczotka <michal@tuxy.org>
  *
  *  Displays the main calendar page (month view).
  *
