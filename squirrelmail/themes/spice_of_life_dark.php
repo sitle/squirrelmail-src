@@ -1,18 +1,17 @@
 <?php
 
 /**
- * Name:   Spice of Life - Dark
- * @author Jorey Bump
- * Date:   October 20, 2001
- * Comment This theme generates random colors,
- *         featuring a dark background with light text.
+ * spice_of_life_dark.php
+ *    Name:    Spice of Life - Dark
+ *    Author:  Jorey Bump
+ *    Date:    October 20, 2001
+ *    Comment: This theme generates random colors,
+ *             featuring a dark background with light text.
  *
  * Copyright (c) 2000-2004 The SquirrelMail Project Team
  * Licensed under the GNU GPL. For full terms see the file COPYING.
  *
  * $Id$
- * @package squirrelmail
- * @subpackage themes
  */
 
 /** seed the random number generator **/

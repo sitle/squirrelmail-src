@@ -8,11 +8,10 @@
  *
  * This contains functions for manipulating user preferences in files
  *
- * @version $Id$
- * @package squirrelmail
+ * $Id$
  */
 
-/** include this for error messages */
+/* include this for error messages */
 include_once(SM_PATH . 'functions/display_messages.php');
 
 /**
@@ -20,14 +19,14 @@ include_once(SM_PATH . 'functions/display_messages.php');
  */
 function cachePrefValues($data_dir, $username) {
     global $prefs_are_cached, $prefs_cache;
-
+       
     if ( isset($prefs_are_cached) && $prefs_are_cached) {
         return;
     }
-
+    
     sqsession_unregister('prefs_cache');
     sqsession_unregister('prefs_are_cached');
-
+    
     /* Calculate the filename for the user's preference file */
     $filename = getHashedFile($username, $data_dir, "$username.pref");
 
@@ -82,7 +81,7 @@ function cachePrefValues($data_dir, $username) {
     sqsession_register($prefs_cache, 'prefs_cache');
     sqsession_register($prefs_are_cached, 'prefs_are_cached');
 }
-
+   
 /**
  * Return the value for the preference given by $string.
  */
@@ -91,15 +90,15 @@ function getPref($data_dir, $username, $string, $default = '') {
 
     $result = do_hook_function('get_pref_override',array($username,$string));
     if (!$result) {
-        cachePrefValues($data_dir, $username);
-        if (isset($prefs_cache[$string])) {
-                $result = $prefs_cache[$string];
-        } else {
-            $result = do_hook_function('get_pref', array($username,$string));
-            if (!$result) {
-                $result = $default;
-            }
-        }
+	cachePrefValues($data_dir, $username);
+	if (isset($prefs_cache[$string])) {
+    	    $result = $prefs_cache[$string];
+	} else {
+	    $result = do_hook_function('get_pref', array($username,$string));
+	    if (!$result) {	    
+    		$result = $default;
+	    }
+	}
     }
     return ($result);
 }
@@ -109,7 +108,7 @@ function getPref($data_dir, $username, $string, $default = '') {
  */
 function savePrefValues($data_dir, $username) {
     global $prefs_cache;
-
+   
     $filename = getHashedFile($username, $data_dir, "$username.pref");
 
     /* Open the file for writing, or else display an error to the user. */
@@ -143,11 +142,11 @@ function removePref($data_dir, $username, $string) {
     global $prefs_cache;
 
     cachePrefValues($data_dir, $username);
-
+ 
     if (isset($prefs_cache[$string])) {
         unset($prefs_cache[$string]);
     }
-
+ 
     savePrefValues($data_dir, $username);
 }
 

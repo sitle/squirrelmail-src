@@ -9,13 +9,9 @@
  * This code provides various string manipulation functions that are
  * used by the rest of the Squirrelmail code.
  *
- * @version $Id$
- * @package squirrelmail
+ * $Id$
  */
 
-/**
- * Undocumented - complain, then patch.
- */
 function replaceBlock (&$in, $replace, $start, $end) {
     $begin = substr($in,0,$start);
     $end   = substr($in,$end,strlen($in)-$end);
@@ -38,14 +34,8 @@ $Host_RegExp_Match = '(' . $IP_RegExp_Match .
 $Email_RegExp_Match = '[0-9a-z]([-_.+]?[0-9a-z])*(%' . $Host_RegExp_Match .
     ')?@' . $Host_RegExp_Match;
 
-/**
- * Parses a body and converts all found email addresses to clickable links.
- *
- * @param string body the body to process, by ref
- * @return int the number of unique addresses found
- */
 function parseEmail (&$body) {
-    global $color, $Email_RegExp_Match;
+    global $color, $Email_RegExp_Match, $compose_new_win;
     $sbody     = $body;
     $addresses = array();
 
@@ -74,7 +64,6 @@ $url_parser_url_tokens = array(
     'https://',
     'ftp://',
     'telnet:',  // Special case -- doesn't need the slashes
-    'mailto:',  // Special case -- doesn't use the slashes
     'gopher://',
     'news://');
 
@@ -84,27 +73,12 @@ $url_parser_poss_ends = array(' ', "\n", "\r", '<', '>', ".\r", ".\n",
     ']', '[', '{', '}', "\240", ', ', '. ', ",\n", ",\r");
 
 
-/**
- * rfc 2368 (mailto URL) preg_match() regexp
- * @link http://www.ietf.org/rfc/rfc2368.txt
- * @global string MailTo_PReg_Match the encapsulated regexp for preg_match()
- */
-global $MailTo_PReg_Match;
-$Mailto_Email_RegExp = '[0-9a-z%]([-_.+%]?[0-9a-z])*(%' . $Host_RegExp_Match . ')?@' . $Host_RegExp_Match;
-$MailTo_PReg_Match = '/((?:' . $Mailto_Email_RegExp . ')*)((?:\?(?:to|cc|bcc|subject|body)=[^\s\?&=,()]+)?(?:&amp;(?:to|cc|bcc|subject|body)=[^\s\?&=,()]+)*)/i';
-
-/**
- * Parses a body and converts all found URLs to clickable links.
- *
- * @param string body the body to process, by ref
- * @return void
- */
 function parseUrl (&$body) {
-    global $url_parser_poss_ends, $url_parser_url_tokens;
+    global $url_parser_poss_ends, $url_parser_url_tokens;;
     $start      = 0;
     $blength    = strlen($body);
 
-    while ($start < $blength) {
+    while ($start != $blength) {
         $target_token = '';
         $target_pos = $blength;
 
@@ -127,35 +101,6 @@ function parseUrl (&$body) {
         }
 
         /* If there was a token to replace, replace it */
-        if ($target_token == 'mailto:') {	// rfc 2368 (mailto URL)
-            $target_pos += 7;	//skip mailto:
-            $end = $blength;
-
-            $mailto = substr($body, $target_pos, $end-$target_pos);
-
-            global $MailTo_PReg_Match;
-            if ((preg_match($MailTo_PReg_Match, $mailto, $regs)) && ($regs[0] != '')) {
-                //sm_print_r($regs);
-                $mailto_before = $target_token . $regs[0];
-                $mailto_params = $regs[10];
-                if ($regs[1]) {	//if there is an email addr before '?', we need to merge it with the params
-                    $to = 'to=' . $regs[1];
-                    if (strpos($mailto_params, 'to=') > -1)	//already a 'to='
-                        $mailto_params = str_replace('to=', $to . '%2C%20', $mailto_params);
-                    else {
-                        if ($mailto_params)	//already some params, append to them
-                            $mailto_params .= '&amp;' . $to;
-                        else
-                            $mailto_params .= '?' . $to;
-                    }
-                }
-                $url_str = str_replace(array('to=', 'cc=', 'bcc='), array('send_to=', 'send_to_cc=', 'send_to_bcc='), $mailto_params);
-                $comp_uri = makeComposeLink('src/compose.php' . $url_str, $mailto_before);
-                replaceBlock($body, $comp_uri, $target_pos - 7, $target_pos + strlen($regs[0]));
-                $target_pos += strlen($comp_uri) - 7;
-            }
-        }
-        else
         if ($target_token != '') {
             /* Find the end of the URL */
             $end = $blength;

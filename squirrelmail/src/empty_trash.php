@@ -9,14 +9,10 @@
  * Handles deleting messages from the trash folder without
  * deleting subfolders.
  *
- * @version $Id$
- * @package squirrelmail
+ * $Id$
  */
 
-/**
- * Path for SquirrelMail required files.
- * @ignore
- */
+/* Path for SquirrelMail required files. */
 define('SM_PATH','../');
 
 /* SquirrelMail required files. */
@@ -35,6 +31,8 @@ sqgetGlobalVar('onetimepad', $onetimepad, SQ_SESSION);
 /* finished globals */
 
 $imap_stream = sqimap_login($username, $key, $imapServerAddress, $imapPort, 0);
+
+sqimap_mailbox_list($imap_stream);
 
 $mailbox = $trash_folder;
 $boxes = sqimap_mailbox_list($imap_stream);

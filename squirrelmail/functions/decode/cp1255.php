@@ -1,6 +1,7 @@
 <?php
-/**
+/*
  * decode/cp1255.php
+ * $Id$
  *
  * Copyright (c) 2003-2004 The SquirrelMail Project Team
  * Licensed under the GNU GPL. For full terms see the file COPYING.
@@ -18,16 +19,8 @@
  *   Date:          1/7/2000
  *   Contact:       cpxlate@microsoft.com
  *
- * @version $Id$
- * @package squirrelmail
- * @subpackage decode
  */
 
-/**
- * Decode cp1255-encoded string
- * @param string $string Encoded string
- * @return string $string decoded string
- */
 function charset_decode_cp1255 ($string) {
     global $default_charset;
 

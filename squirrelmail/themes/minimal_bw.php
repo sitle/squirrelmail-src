@@ -1,15 +1,14 @@
 <?php
-/**
- * @author Tomas Kuliavas
- * Date:         July 26, 2003
- * Theme Name:   'Minimal BW Theme'
- *    
- * This theme uses black color for text and white for background.
- * 
- * Problem: $color[9] is used for background and for disabled links.
- * @package squirrelmail
- * @subpackage themes
- */
+   /** Author:       Tomas Kuliavas
+       Date:         July 26, 2003
+       Theme Name:   'Minimal BW Theme'
+    
+    This theme uses black color for text and white for background.
+    
+    Problem: $color[9] is used for background and for disabled links.
+
+    $Id$
+    **/
 
     global $color;
     $color[0]   = '#FFFFFF'; // (white)   TitleBar

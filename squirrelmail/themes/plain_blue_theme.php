@@ -1,16 +1,16 @@
 <?php
 
 /**
- * Name: Plain Blue
- * @author Luke Ehresman
- * Date: April 30, 2000
+ * plain_blue_theme.php
+ *    Name:    Plain Blue
+ *    Author:  Luke Ehresman
+ *    Date:    April 30, 2000
+ *    Comment: 
  *
  * Copyright (c) 2000-2004 The SquirrelMail Project Team
  * Licensed under the GNU GPL. For full terms see the file COPYING.
  *
  * $Id$
- * @package squirrelmail
- * @subpackage themes
  */
 
 global $color;

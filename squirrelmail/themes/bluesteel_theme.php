@@ -7,8 +7,6 @@
  * Licensed under the GNU GPL. For full terms see the file COPYING.
  *
  * $Id$
- * @package squirrelmail
- * @subpackage themes
  */
 
 global $color;

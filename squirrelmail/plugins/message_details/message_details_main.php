@@ -7,14 +7,9 @@
  * Licensed under the GNU GPL. For full terms see the file COPYING.
  * 
  * $Id$
- * @package plugins
- * @subpackage message_details
  */
 
-/**
- * Path for SquirrelMail required files.
- * @ignore
- */
+/* Path for SquirrelMail required files. */
 define('SM_PATH','../../');
 
 /* SquirrelMail required files. */

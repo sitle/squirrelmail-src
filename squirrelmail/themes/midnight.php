@@ -2,17 +2,15 @@
 
 /**
  * midnight.php
- * Name:   Midnight
- * @author Jim Riffle
- * Date:   November 14, 2001
- * Comment: A popular theme with Jim's users
+ *    Name:   Midnight
+ *    Author: Jim Riffle
+ *    Date:   November 14, 2001
+ *    Comment: A popular theme with Jim's users
  *
  * Copyright (c) 2001-2004 The SquirrelMail Project Team
  * Licensed under the GNU GPL. For full terms see the file COPYING.
  *
  * $Id$
- * @package squirrelmail
- * @subpackage themes
  */
 
 global $color;

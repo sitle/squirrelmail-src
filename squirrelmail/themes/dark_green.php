@@ -1,11 +1,8 @@
 <?php
-/**
- * @author Jason Munro 
- * Date:         June 10 2002
- * Theme Name:   "Dark Green"
- * @package squirrelmail
- * @subpackage themes
- */
+   /** Author:       Jason Munro 
+       Date:         June 10 2002
+       Theme Name:   "Dark Green"
+    **/
 
     global $color;
     $color[0]   = "#0a2801"; 
