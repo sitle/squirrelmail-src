@@ -503,10 +503,10 @@ function displayMessageArray($imapConnection, $num_msgs, $start_msg,
     $indent_array, $thread_sort_messages, $allow_server_sort, $server_sort_order;
 
   /* If cache isn't already set, do it now. */
-  if (!session_is_registered('msgs')) {
+  if (!sqsession_is_registered('msgs')) {
     sqsession_register($msgs, 'msgs');
   }
-  if (!session_is_registered('msort')) {
+  if (!sqsession_is_registered('msort')) {
     sqsession_register($msort, 'msort');
   }
   

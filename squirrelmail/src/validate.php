@@ -18,17 +18,6 @@ require_once('../src/global.php');
 
 is_logged_in();
 
-/* Remove all slashes for form values. */
-if (get_magic_quotes_gpc()) {
-    global $REQUEST_METHOD;
-
-    if ($REQUEST_METHOD == 'POST') {
-        RemoveSlashes($_POST);
-    } else if ($REQUEST_METHOD == 'GET') {
-        RemoveSlashes($_GET);
-    }
-}
-
 /**
 * Auto-detection
 *
