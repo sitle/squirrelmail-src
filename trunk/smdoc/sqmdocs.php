@@ -26,7 +26,6 @@ require('config.php');
 /* 
  * Initialize smdoc/FOOWD environment
  */
-$foowd_parameters['debug']['debug_enabled'] = TRUE;
 $foowd = new smdoc($foowd_parameters);
 
 $foowd->template->assign('title', 'Site Framework');
