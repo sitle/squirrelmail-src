@@ -92,27 +92,30 @@ function delete_move_show_msg_array() {
 function delete_move_expunge_from_all($id) {
     global $msgs, $msort, $sort, $imapConnection, $mailbox, $uid_support;
     $delAt = -1;
-    for ($i = 0; $i < count($msort); $i++) {
-        if ($msgs[$i]['ID'] == $id) {
-            $delAt = $i;
-        } elseif ($msgs[$i]['ID'] > $id) {
-            if (!$uid_support) {
-               $msgs[$i]['ID']--;
+
+    if(isset($msort) && count($msort) > 0) {
+        for ($i = 0; $i < count($msort); $i++) {
+            if ($msgs[$i]['ID'] == $id) {
+                $delAt = $i;
+            } elseif ($msgs[$i]['ID'] > $id) {
+                if (!$uid_support) {
+                   $msgs[$i]['ID']--;
+                }
             }
         }
-    }
 
-    $msgs = delete_move_del_arr_elem($msgs, $delAt);
-    $msort = delete_move_del_arr_elem($msort, $delAt);
-    if ($sort < 6) {
-        if ($sort % 2) {
-            asort($msort);
-        } else {
-            arsort($msort);
+        $msgs = delete_move_del_arr_elem($msgs, $delAt);
+        $msort = delete_move_del_arr_elem($msort, $delAt);
+        if ($sort < 6) {
+            if ($sort % 2) {
+                asort($msort);
+            } else {
+                arsort($msort);
+            }
         }
+        sqsession_register($msgs, 'msgs');
+        sqsession_register($msort, 'msort');
     }
-    sqsession_register($msgs, 'msgs');
-    sqsession_register($msort, 'msort');
 
     sqimap_mailbox_expunge($imapConnection, $mailbox, true);
 }
