@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: avelsieve-0.9.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2003-09-01 19:37+0300\n"
+"POT-Creation-Date: 2003-10-09 17:00+0300\n"
 "PO-Revision-Date: 2003-05-30 08:00+0200\n"
 "Last-Translator: Alexandros Vellis <avel@noc.uoa.gr>\n"
 "Language-Team: Greek <el@li.org>\n"
@@ -22,6 +22,9 @@ msgstr "Παρακαλώ ξαναπροσπαθήστε."
 
 msgid "Illegal folder name.  Please select a different name"
 msgstr "Άκυρο όνομα φακέλου. Παρακαλώ επιλέξτε ένα διαφορετικό όνομα."
+
+msgid "Add New Rule"
+msgstr "Πρόσθεση Νέου Κανόνα"
 
 msgid "New Rule Wizard - Step"
 msgstr "Οδηγός Δημιουργίας Νέου Κανόνα - Βήμα"
@@ -67,6 +70,9 @@ msgstr "Από την Αρχή"
 
 msgid "Cancel"
 msgstr "Ακύρωση"
+
+msgid "Add SPAM Rule"
+msgstr "Πρόσθεση Νέου SPAM Κανόνα"
 
 msgid "Move back to step"
 msgstr "Πίσω στο Βήμα"
@@ -127,8 +133,8 @@ msgid ""
 "The following action will be applied to <strong>all</strong> incoming "
 "messages that do not match any of the previous rules."
 msgstr ""
-"Αυτός ο κανόνας θα ισχύσει αν ταιριάξουν ένα ή περισσότερα κείμενα στο "
-"κυρίως μήνυμα. "
+"Αυτός ο κανόνας θα ισχύσει για <strong>όλα</strong> τα εισερχόμενα μηνύματα "
+"στα οποία δεν ταιριάζει ένας από τους προηγούμενος κανόνες."
 
 msgid ""
 "This rule will trigger upon the occurrence of one or more strings in the "
@@ -221,8 +227,8 @@ msgstr "Ειδοποίησέ με, χρησιμοποιώντας την ακόλουθη μέθοδο:"
 msgid "Notification ID"
 msgstr "Όνομα Ειδοποίησης"
 
-msgid "Parameters"
-msgstr "Παράμετροι"
+msgid "Destination"
+msgstr "Προορισμός"
 
 msgid "Message"
 msgstr "Μήνυμα"
@@ -240,11 +246,77 @@ msgstr ""
 "Αν είναι αυτό που θέλατε, επιλέξτε Τέλος. Επίσης μπορείτε να ξεκινήσετε από "
 "την αρχή ή να ακυρώσετε τη δημιουργία νέου κανόνα."
 
+msgid "Configure Anti-SPAM Protection"
+msgstr "Παραμετροποίηση της προστασίας από SPAM"
+
+msgid ""
+"All incoming mail is checked for unsolicited commercial content (SPAM) and "
+"marked accordingly. This special rule allows you to configure what to do "
+"with such messages once they arrive to your Inbox."
+msgstr ""
+"Όλα τα εισερχόμενα μηνύματα ελέγχονται αν έχουν διαφημιστικό περιεχόμενο "
+"(SPAM) και μαρκάρονται ανάλογα. Αυτός ο ειδικός κανόνας σάς επιτρέπει να "
+"ορίσετε τι θα γίνεται σε αυτά τα μηνύματα όταν φτάσουν στα εισερχόμενα."
+
+#, php-format
+msgid ""
+"Select %s to add the predefined rule, or select the advanced SPAM filter to "
+"customize the rule."
+msgstr ""
+"Επιλέξτε %s για να προσθέσετε τον προκαθορισμένο κανόνα, ή επιλέξτε την "
+"επιλογή για προχωρημένους για να παραμετροποιήσετε τον κανόνα."
+
+msgid "Add Spam Rule"
+msgstr "Πρόσθεση Νέου Spam Κανόνα"
+
+msgid "Advanced Spam Filter..."
+msgstr "Φίλτρο Spam για προχωρημένους..."
+
+msgid "Target Score"
+msgstr "Επιθυμητό Σκορ"
+
+#, php-format
+msgid ""
+"Messages with SPAM-Score higher than the target value, the maximum value "
+"being %s, will be considered SPAM."
+msgstr ""
+"Μηνύματα με Σκορ πάνω από την τιμή του επιθυμητού, με το μέγιστο να είναι "
+"%s, θα θεωρούνται SPAM."
+
+msgid "SPAM Lists to check against"
+msgstr "Λίστες SPAM με τις οποίες θα γίνει ο έλεγχος"
+
 msgid "Error Encountered"
 msgstr "Παρουσιάστηκε Λάθος"
 
 msgid "For <strong>ALL</strong> incoming messages; "
 msgstr "Για <strong>ΌΛΑ</strong> τα εισερχόμενα μηνύματα· "
+
+msgid ""
+"All messages considered as <strong>SPAM</strong> (unsolicited commercial "
+"messages)"
+msgstr ""
+"Όλα τα μηνύματα που θεωρούνται <strong>SPAM</strong> (ανεπιθύμητα "
+"διαφημιστικά μηνύματα)"
+
+msgid "matching the Spam List(s):"
+msgstr "που ταιριάζουν στη/στις λίστες Spam:"
+
+#, php-format
+msgid "and with score greater than %s"
+msgstr "και με σκορ μεγαλύτερο από %s"
+
+msgid "will be"
+msgstr "θα"
+
+msgid "stored in the Junk Folder."
+msgstr "αποθηκευτούν στον Φάκελο Αχρήστων"
+
+msgid "stored in the Trash Folder."
+msgstr "αποθηκευτούν στον Φάκελο Διαγραμμένων."
+
+msgid "discarded."
+msgstr "διαγραφούν."
 
 msgid "If"
 msgstr "Αν"
@@ -271,10 +343,10 @@ msgid "does not contain"
 msgstr "δεν περιέχει"
 
 msgid "matches"
-msgstr "ταιριάζει"
+msgstr "ταιριάζει στο"
 
 msgid "does not match"
-msgstr "δεν ταιριάζει"
+msgstr "δεν ταιριάζει στο"
 
 msgid "is greater than"
 msgstr "είναι μεγαλύτερη από"
@@ -295,10 +367,10 @@ msgid "is not equal to"
 msgstr "δεν ισούται με"
 
 msgid "matches the regural expression"
-msgstr "ταιριάζει στο regexp"
+msgstr "ταιριάζει στο regural expression"
 
 msgid "does not match the regural expression"
-msgstr "δεν ταιριάζει στο regexp"
+msgstr "δεν ταιριάζει στο regural expression"
 
 msgid "exists"
 msgstr "υπάρχει"
@@ -340,9 +412,6 @@ msgid " Also keep a copy in INBOX, marked as deleted."
 msgstr ""
 " Επίσης κράτησε ένα αντίγραφο στα ΕΙΣΕΡΧΟΜΕΝΑ, μαρκαρισμένο ως διαγραμμένο."
 
-msgid " Then <strong>STOP</strong> processing rules."
-msgstr " Τότε <strong>ΣΤΑΜΑΤΑ</strong> το έλεγχο για άλλους κανόνες."
-
 msgid " Also notify using the method"
 msgstr " Επίσης ειδοποίησέ με χρησιμοποιώντας τη μέθοδο"
 
@@ -352,14 +421,17 @@ msgstr "με"
 msgid "priority and the message"
 msgstr "προτεραιότητα και το μήνυμα"
 
+msgid " Then <strong>STOP</strong> processing rules."
+msgstr " Τότε <strong>ΣΤΑΜΑΤΑ</strong> το έλεγχο για άλλους κανόνες."
+
 msgid "Address Match"
 msgstr "Ταίριασμα σε Διεύθυνση"
 
-#, fuzzy
 msgid ""
 "Perform an action depending on email addresses appearing in message headers."
 msgstr ""
-"Ορισμός μίας ενέργειας στα μηνύματα που έχουν κάποιο συγκεκριμένο μέγεθος."
+"Ορισμός μιας ενέργειας στα μηνύματα όπου ταιριάζουν ηλεκτρονικές διευθύνσεις "
+"στις κεφαλίδες τους."
 
 msgid "Header Match"
 msgstr "Ταίριασμα σε Κεφαλίδα"
@@ -392,14 +464,11 @@ msgstr ""
 "Ορισμός μιας ενέργειας σε μηνύματα ανάλογα με το περιεχόμενο του ίδιου του "
 "μηνύματος."
 
-msgid "matches wildcard"
-msgstr "ταιριάζει στο wildcard"
+msgid "wildcard"
+msgstr "wildcard"
 
-msgid "does not match wildcard"
-msgstr "δεν ταιριάζει στο wildcard"
-
-msgid "matches regexp"
-msgstr "ταιριάζει στο regexp"
+msgid "regexp"
+msgstr "regexp"
 
 msgid "verbose"
 msgstr "αναλυτικά"
@@ -440,22 +509,48 @@ msgstr "Αναπαραγωγή"
 msgid "Move Up"
 msgstr "Μετακίνηση Πάνω"
 
-#, fuzzy
 msgid "Move to Top"
-msgstr "Συνέχεια στο βήμα"
+msgstr "Μετακίνηση στην Αρχή"
 
 msgid "Move Down"
 msgstr "Μετακίνηση Κάτω"
 
-#, fuzzy
 msgid "Move to Bottom"
-msgstr "Συνέχεια στο βήμα"
+msgstr "Μετακίνηση στο Τέλος"
+
+msgid "Junk Folder"
+msgstr "Φάκελος Αχρήστων"
+
+#, php-format
+msgid ""
+"Store SPAM message in your Junk Folder. Messages older than %s days will be "
+"deleted automatically."
+msgstr ""
+"Αποθήκευσε το μήνυμα SPAM στον Φάκελο Αχρήστων. Μηνύματα παλαιότερα από %s "
+"μέρες θα διαγράφονται αυτόματα."
+
+msgid "Trash Folder"
+msgstr "Φάκελος Διαγραμμένων"
+
+msgid ""
+"Store SPAM message in your Trash Folder. You will have to purge the folder "
+"yourself."
+msgstr ""
+"Αποθήκευσε το μήνυμα SPAM στον Φάκελο Διαγραμμένων. Θα πρέπει να κάνετε "
+"τακτικά εκκαθάριση αυτού του φακέλου."
+
+msgid "Discard"
+msgstr "Απόρριψη"
+
+msgid ""
+"Discard SPAM message. You will get no indication that the message ever "
+"arrived."
+msgstr ""
+"Απόρριψη του μηνύματος SPAM. Δε θα λαμβάνετε καμμία ειδοποίηση ότι το "
+"μήνυμα αυτό έφτασε ποτέ."
 
 msgid "Editing Mail Filtering Rule"
 msgstr "Επεξεργασία του κανόνα φιλτραρίσματος"
-
-msgid "Add New Rule"
-msgstr "Πρόσθεση Νέου Κανόνα"
 
 msgid "Apply Changes"
 msgstr "Ενεργοποίηση Αλλαγών"
@@ -474,11 +569,17 @@ msgstr ""
 msgid "Filters"
 msgstr "Φίλτρα"
 
-msgid "Could not log on to timsieved daemon on your IMAP server"
-msgstr "Αδύνατη η σύνδεση με τον timsieved daemon στον εξυπηρετητή IMAP σας"
+msgid "Unable to load script to server."
+msgstr "Αδύνατο το φόρτωμα του script στον εξυπηρετητή."
+
+msgid "Server responded with:"
+msgstr "Ο εξυπηρετητής απάντησε:"
 
 msgid "Please contact your administrator."
 msgstr "Παρακαλούμε ειδοποιήστε το διαχειριστή σας."
+
+msgid "Could not log on to timsieved daemon on your IMAP server"
+msgstr "Αδύνατη η σύνδεση με τον timsieved daemon στον εξυπηρετητή IMAP σας"
 
 msgid "Current Mail Filtering Rules"
 msgstr "Τρέχοντες Κανόνες Φιλτραρίσματος Ταχυδρομείου"
@@ -532,7 +633,7 @@ msgid ""
 "Changes&quot;</strong> to activate your changes!"
 msgstr ""
 "Όταν τελειώσετε την επεξεργασία, <strong>θυμηθείτε να επιλέξετε &quot;"
-"Αποθήκευση Αλλαγών&quot;<strong> για να ενεργοποιήσετε τις αλλαγές σας!"
+"Αποθήκευση Αλλαγών&quot;</strong> για να ενεργοποιήσετε τις αλλαγές σας!"
 
 msgid "Successfully added new rule."
 msgstr "Νέος κανόνας προστέθηκε με επιτυχία."
@@ -570,3 +671,12 @@ msgstr "Όταν τελειώσετε, κάντε κλικ στο ακόλουθο κουμπί για να επιστρέψετε."
 
 msgid "Save Changes"
 msgstr "Αποθήκευση Αλλαγών"
+
+msgid "Created:"
+msgstr "Δημιουργήθηκε:"
+
+msgid "Last modified:"
+msgstr "Τελευταία τροποποίηση:"
+
+#~ msgid "Parameters"
+#~ msgstr "Παράμετροι"
