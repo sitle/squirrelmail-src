@@ -25,11 +25,10 @@ Foowd plain text class
 */
 
 /** METHOD PERMISSIONS **/
-if (!defined('PERMISSION_FOOWD_TEXT_PLAIN_OBJECT_EDIT')) define('PERMISSION_FOOWD_TEXT_PLAIN_OBJECT_EDIT', 'Gods');
+setPermission('foowd_text_plain', 'object', 'edit', 'Gods');
 
 /** CLASS DESCRIPTOR **/
-if (!defined('META_-518019526_CLASSNAME')) define('META_-518019526_CLASSNAME', 'foowd_text_plain');
-if (!defined('META_-518019526_DESCRIPTION')) define('META_-518019526_DESCRIPTION', 'Plain Text Document');
+setClassMeta('foowd_text_plain', 'Plain Text Document');
 
 /** CLASS DECLARATION **/
 class foowd_text_plain extends foowd_object {
@@ -56,8 +55,7 @@ class foowd_text_plain extends foowd_object {
 		$this->body = $body;
 
 /* set method permissions */
-		$className = get_class($this);
-		$this->permissions['edit'] = getPermission($className, 'edit', 'object'. $editGroup);
+		if ($editGroup != NULL) $this->permissions['edit'] = $editGroup;
 
 		$foowd->track();
 	}
@@ -76,10 +74,10 @@ class foowd_text_plain extends foowd_object {
 	function class_create(&$foowd, $className) {
 		$foowd->track('foowd_text_plain->class_create');
 		if (function_exists('foowd_prepend')) foowd_prepend($foowd, $this);
-		echo '<h1>Create new text object</h1>';
+		echo '<h1>', _("Create new text object"), '</h1>';
 		$queryTitle = new input_querystring('title', REGEX_TITLE, NULL);
-		$createForm = new input_form('createForm', NULL, 'POST', 'Create', NULL);
-		$createTitle = new input_textbox('createTitle', REGEX_TITLE, $queryTitle->value, 'Object Title:');
+		$createForm = new input_form('createForm', NULL, 'POST', _("Create"), NULL);
+		$createTitle = new input_textbox('createTitle', REGEX_TITLE, $queryTitle->value, _("Object Title").':');
 		$createBody = new input_textarea('createBody', '', NULL, NULL, 80, 20);
 		if (!$createForm->submitted() || $createTitle->value == '') {
 			$createForm->addObject($createTitle);
@@ -92,8 +90,8 @@ class foowd_text_plain extends foowd_object {
 				$createBody->value
 			);
 			if ($object->objectid != 0 && $object->save($foowd, FALSE)) {
-				echo '<p>Text object created and saved.</p>';
-				echo '<p><a href="', getURI(array('objectid' => $object->objectid, 'classid' => crc32(strtolower($className)))), '">Click here to view it now</a>.</p>';
+				echo '<p>', _("Text object created and saved."), '</p>';
+				echo '<p>', sprintf(_('<a href="%s">Click here to view it now</a>.'), getURI(array('objectid' => $object->objectid, 'classid' => crc32(strtolower($className))))), '</p>';
 			} else {
 				trigger_error('Could not create text object.');
 			}
@@ -120,8 +118,8 @@ class foowd_text_plain extends foowd_object {
 	function method_edit(&$foowd) {
 		$foowd->track('foowd_text_plain->method_edit');
 		if (function_exists('foowd_prepend')) foowd_prepend($foowd, $this);
-		echo '<h1>Editing version ', $this->version, ' of "', $this->getTitle(), '"</h1>';
-		$editForm = new input_form('editForm', NULL, 'POST', 'Save', NULL, 'Preview');
+
+		$editForm = new input_form('editForm', NULL, 'POST', _("Save"), NULL, _("Preview"));
 		$editCollision = new input_hiddenbox('editCollision', REGEX_DATETIME, time());
 		if ($editCollision->value >= $this->updated && $editForm->submitted()) { // if we're going to update, reset collision detect
 			$editCollision->set(time());		
@@ -130,7 +128,7 @@ class foowd_text_plain extends foowd_object {
 		$editArea = new input_textarea('editArea', NULL, $this->body, NULL, 80, 20);
 		$editForm->addObject($editArea);
 		if (isset($foowd->user->objectid) && $this->updatorid == $foowd->user->objectid) { // author is same as last author and not anonymous, so can just update
-			$newVersion = new input_checkbox('newVersion', TRUE, 'Do not archive previous version?');
+			$newVersion = new input_checkbox('newVersion', TRUE, _('Do not archive previous version?'));
 			$editForm->addObject($newVersion);
 		}
 		$editForm->display();
@@ -144,15 +142,15 @@ class foowd_text_plain extends foowd_object {
 					$createNewVersion = TRUE;
 				}
 				if ($this->save($foowd, $createNewVersion)) {
-					echo '<p>Text object updated and saved.</p>';
+					echo '<p>', _("Text object updated and saved."), '</p>';
 				} else {
 					trigger_error('Could not save text object.');
 				}
 			} else { // edit collision!
-				echo '<h3>Warning: This object has been updated by another user since you started editing, please reload the edit page and verify their changes before continuing to edit.</h3>';
+				echo '<h3>', _('Warning: This object has been updated by another user since you started editing, please reload the edit page and verify their changes before continuing to edit.'), '</h3>';
 			}
 		} elseif ($editForm->previewed()) {
-			echo '<h3>Preview</h3>';
+			echo '<h3>', _("Preview"), '</h3>';
 			$body = $editArea->value;
 			$body = htmlspecialchars($body);
 			$body = str_replace("\n", "<br />\n", $body);
@@ -167,29 +165,29 @@ class foowd_text_plain extends foowd_object {
 	function method_history(&$foowd) {
 		$foowd->track('foowd_text_plain->method_history');
 		if (function_exists('foowd_prepend')) foowd_prepend($foowd, $this);
-		echo '<h1>History of Object "', $this->getTitle(), '"</h1>';
+
 		$objArray = $foowd->getObject(array(
 			'objectid' => $this->objectid,
 			'classid' => $this->classid
 		));
 		
-		echo '<h3>Object Details</h3>';
+		echo '<h3>', _("Object Details"), '</h3>';
 		echo '<p>';
-		echo '<em>Title:</em> ', $this->getTitle(), '<br />';
-		echo '<em>Created:</em> ', date(DATETIME_FORMAT, $this->created), '<br />';
-		echo '<em>Author:</em> ', $this->creatorName, '<br />';
-		echo '<em>Object Type:</em> ', getClassDescription($this->classid), '<br />';
+		echo '<em>', _("Title"), ':</em> ', $this->getTitle(), '<br />';
+		echo '<em>', _("Created"), ':</em> ', date(DATETIME_FORMAT, $this->created), '<br />';
+		echo '<em>', _("Author"), ':</em> ', $this->creatorName, '<br />';
+		echo '<em>', _("Object Type"), ':</em> ', getClassDescription($this->classid), '<br />';
 		if ($this->workspaceid != 0) {
-			echo '<em>Workspace:</em> ', $this->workspaceid, '<br />';
+			echo '<em>', _("Workspace"), ':</em> ', $this->workspaceid, '<br />';
 		}
 		echo '</p>';
 		
-		echo '<h3>Archived Versions</h3>';
+		echo '<h3>', _("Archived Versions"), '</h3>';
 		echo '<table border="1">';
 		echo '<tr>';
-		echo '<th>Date</th>';
-		echo '<th>Author</th>';
-		echo '<th>Page Version</th>';
+		echo '<th>', _("Date"), '</th>';
+		echo '<th>', _("Author"), '</th>';
+		echo '<th>', _("Version"), '</th>';
 		echo '</tr>';
 		$foo = FALSE;
 		foreach ($objArray as $object) {
@@ -198,8 +196,8 @@ class foowd_text_plain extends foowd_object {
 			echo '<td>', $object->updatorName, '</td>';
 			echo '<td><a href="', getURI(array('method' => 'view', 'objectid' => $object->objectid, 'version' => $object->version, 'classid' => $object->classid)), '">', $object->version, '</a></td>';
 			if ($foo) {
-				echo '<td><a href="', getURI(array('method' => 'diff', 'objectid' => $object->objectid, 'version' => $object->version, 'classid' => $object->classid)), '">Diff</a></td>';
-				echo '<td><a href="', getURI(array('method' => 'revert', 'objectid' => $object->objectid, 'version' => $object->version, 'classid' => $object->classid)), '">Revert</a></td>';
+				echo '<td><a href="', getURI(array('method' => 'diff', 'objectid' => $object->objectid, 'version' => $object->version, 'classid' => $object->classid)), '">', _("Diff"), '</a></td>';
+				echo '<td><a href="', getURI(array('method' => 'revert', 'objectid' => $object->objectid, 'version' => $object->version, 'classid' => $object->classid)), '">', _("Revert"), '</a></td>';
 			}
 			echo '</tr>';
 			$foo = TRUE;
@@ -217,20 +215,18 @@ class foowd_text_plain extends foowd_object {
 		
 			$object = $foowd->fetchObject(array('objectid' => $this->objectid, 'classid' => $this->classid, 'workspaceid' => $this->workspaceid));
 
-			echo '<h1>Diff of "', $this->getTitle(), '"</h1>';
-
 			if ($this->version == $object->version) {
 			
-				echo '<p>You can not compare a version to itself.</p>';
-				echo '<p><a href="', getURI(array('objectid' => $this->objectid, 'classid' => $this->classid, 'version' => $this->version, 'method' => 'history')), '">Click here to view the archived versions of this object</a>.</p>';
+				echo '<p>', _("You can not compare a version to itself."), '</p>';
+				echo '<p>', sprintf(_('<a href="%s">Click here to view the archived versions of this object</a>.'), getURI(array('objectid' => $this->objectid, 'classid' => $this->classid, 'version' => $this->version, 'method' => 'history'))), '</p>';
 			
 			} else {
 
-				echo '<p>Differences between versions ', $this->version, ' and ', $object->version, ' of "', $this->getTitle(), '".</p>';
+				echo '<p>', sprintf(_("Differences between versions %d and %d of %s."), $this->version, $object->version, $this->getTitle()), '</p>';
 
 				$fileid = time();
 				
-				$temp_dir = getConst('DIFF_TMPDIR');
+				$temp_dir = getConstOrDefault('DIFF_TMPDIR', getTempDir());
 				
 				$oldFile = $temp_dir.'/foowd_diff_'.$fileid.'-1';
 				$newFile = $temp_dir.'/foowd_diff_'.$fileid.'-2';
@@ -241,9 +237,9 @@ class foowd_text_plain extends foowd_object {
 				ignore_user_abort(TRUE); // don't halt if aborted during diff
 
 				if (!($fp1 = fopen($oldFile, 'w')) || !($fp2 = fopen($newFile, 'w'))) {
-					echo '<p>Could not create temp files required for diff engine.</p>';
+					trigger_error('Could not create temp files required for diff engine.');
 				} elseif (fwrite($fp1, $oldPage) < 0 || fwrite($fp2, $newPage) < 0) {
-					echo '<p>Could not write to temp files required for diff engine.</p>';
+					trigger_error('Could not write to temp files required for diff engine.');
 				} else {
 
 					fclose($fp1);
@@ -254,20 +250,23 @@ class foowd_text_plain extends foowd_object {
 					if ($diffResult === FALSE) {
 						trigger_error('Error occured running diff engine "', DIFF_COMMAND, '".');
 					} elseif ($diffResult == FALSE) {
-						echo '<p>Versions are identical.</p>';
+						echo '<p>', _("Versions are identical."), '</p>';
 					} else { // parse output to be nice
 
 						$diffResultArray = explode("\n", $diffResult);
 						
 						$diffAddRegex = getConstOrDefault('DIFF_ADD_REGEX', '/^>(.*)$/');
 						$diffMinusRegex = getConstOrDefault('DIFF_MINUS_REGEX', '/^<(.*)$/');
+						$diffSameRegex = getConstOrDefault('DIFF_SAME_REGEX', '/^ (.*)$/');
 
 						echo '<table>';
 						foreach($diffResultArray as $diffLine) {
 							if (preg_match($diffAddRegex, $diffLine, $lineResult)) {
-								echo '<tr class="diff_add"><td class="diff_line">+</td><td>', htmlspecialchars($lineResult[1]), '</td></tr>';
+								echo '<tr class="diff_add"><td class="diff_line">+</td><td>', str_replace("\t", '&nbsp;&nbsp;', htmlspecialchars($lineResult[1])), '</td></tr>';
 							} elseif (preg_match($diffMinusRegex, $diffLine, $lineResult)) {
-								echo '<tr class="diff_minus"><td class="diff_line">-</td><td>', htmlspecialchars($lineResult[1]), '</td></tr>';
+								echo '<tr class="diff_minus"><td class="diff_line">-</td><td>', str_replace("\t", '&nbsp;&nbsp;', htmlspecialchars($lineResult[1])), '</td></tr>';
+							} elseif (preg_match($diffSameRegex, $diffLine, $lineResult)) {
+								echo '<tr class="diff_same"><td class="diff_line">&nbsp;</td><td>', str_replace("\t", '&nbsp;&nbsp;', htmlspecialchars($lineResult[1])), '</td></tr>';
 							}
 						}
 						echo '</table>';
@@ -283,7 +282,7 @@ class foowd_text_plain extends foowd_object {
 			}
 
 		} else {
-			echo '<p>Diffs have been disabled.</p>';
+			echo '<p>', _("Diffs have been disabled."), '</p>';
 		}
 		if (function_exists('foowd_append')) foowd_append($foowd, $this);
 		$foowd->track();

@@ -27,33 +27,27 @@
  * $Id$
  */
 
-/*
-print crc32('external');
-exit;
-*/
-
-define('EXTERNAL_CLASS_ID', 1481810360);
-
 /** 
  * ARRAY filled with external resources
  * Each static resource should supply the following:
  *   func - name of function to call to retrieve content
  *   title - title of external resource
- *   cvs_info - CVS file id string, for last modified and version (optional)
+ *   group - Group permitted to view external resource (Everyone by default)
  */
 if ( !isset($EXTERNAL_RESOURCES) ) $EXTERNAL_RESOURCES = array();
 
+/** METHOD PERMISSIONS **/
+setPermission('foowd_external', 'class',  'create', 'Nobody');
+setPermission('foowd_external', 'object', 'admin', 'Nobody');
+setPermission('foowd_external', 'object', 'revert', 'Nobody');
+setPermission('foowd_external', 'object', 'delete', 'Nobody');
+setPermission('foowd_external', 'object', 'clone', 'Nobody');
+setPermission('foowd_external', 'object', 'permissions', 'Nobody');
+
 /** CLASS DESCRIPTOR **/
-$foowd_class_meta[EXTERNAL_CLASS_ID]['className'] = 'foowd_external';
-$foowd_class_meta[EXTERNAL_CLASS_ID]['description'] = _('External Resource');
+setClassMeta('foowd_external', 'Externally Defined Objects');
 
-/** CLASS METHOD PASSTHRU FUNCTION **/
-function foowd_external_classmethod(&$foowd, $methodName) {
-    track('foowd_external_classmethod', $methodName);
-    foowd_external::$methodName($foowd, 'foowd_external'); 
-    track();
-}
-
+setConst('EXTERNAL_CLASS_ID', META_FOOWD_EXTERNAL_CLASS_ID);
 
 class foowd_external extends foowd_object {
 
@@ -64,7 +58,7 @@ class foowd_external extends foowd_object {
 		$objectid = NULL
 	) {
 		global $EXTERNAL_RESOURCES;
-        track('foowd_external::foowd_external');
+        $foowd->track('foowd_external::foowd_external');
 		
         $this->__wakeup(); // init meta arrays
 
@@ -78,36 +72,20 @@ class foowd_external extends foowd_object {
 		
 		$this->title = htmlspecialchars($EXTERNAL_RESOURCES[$objectid]['title']);
 
-        if ( isset($EXTERNAL_RESOURCES[$objectid]['cvs_info']) ) {
-            //$Id$
-            preg_match("/,v ([0-9.]+) (\d+)\/(\d+)\/(\d+) (\d+):(\d+):(\d+) /", 
-                       $EXTERNAL_RESOURCES[$objectid]['cvs_info'], $matches);
-            $this->version = $matches[1];
-            $last_modified = mktime($matches[5],$matches[6],$matches[7],
-                                    $matches[3],$matches[4],$matches[2]); 
-        } else {
-		    $this->version = 0;
-            $last_modified = time();
-        }
+        $this->version = 0;
 
+        $last_modified = time();
         $this->created = $last_modified;
         $this->updated = $last_modified;
 
         // method permissions
+        $view_group = NULL;
         if ( isset($EXTERNAL_RESOURCES[$objectid]['group']) ) 
             $view_group = htmlspecialchars($EXTERNAL_RESOURCES[$objectid]['group']);
-        else
-            $view_group = setVarConstOrDefault($viewGroup, 
-                                              'DEFAULT_VIEW_GROUP', 'Everyone');
 
-        $this->permissions['view'] = $view_group;
-        $this->permissions['admin'] = setConstOrDefault('DEFAULT_READONLY_GROUP', 
-                                                        'Untouchable');
-        $this->permissions['delete'] = setConstOrDefault('DEFAULT_READONLY_GROUP', 
-                                                         'Untouchable');
-        $this->permissions['clone'] = setConstOrDefault('DEFAULT_READONLY_GROUP', 
-                                                        'Untouchable');
-        track();
+		if ($view_group != NULL) $this->permissions['view'] = $view_group;
+
+        $foowd->track();
     }
 
     function set(&$foowd, $member, $value = NULL) {
@@ -125,7 +103,7 @@ class foowd_external extends foowd_object {
 /** METHODS */    
     function method_view(&$foowd) {     
         global $EXTERNAL_RESOURCES;
-        track('foowd_external::method_view');
+        $foowd->track('foowd_external::method_view');
 
         if (function_exists('foowd_prepend')) foowd_prepend($foowd, $this);
 
@@ -140,47 +118,47 @@ class foowd_external extends foowd_object {
         }
 
         if (function_exists('foowd_append')) foowd_append($foowd, $this);
-        track();
+        $foowd->track();
     }
 
     function method_history(&$foowd) {
-        track('foowd_external::method_history');
+        $foowd->track('foowd_external::method_history');
         if (function_exists('foowd_prepend')) foowd_prepend($foowd, $this);
         echo 'An external resource has no history.';
         if (function_exists('foowd_append')) foowd_append($foowd, $this);
-        track();
+        $foowd->track();
     }
 
     function method_admin(&$foowd) {
-        track('foowd_external::method_admin');
+        $foowd->track('foowd_external::method_admin');
         if (function_exists('foowd_prepend')) foowd_prepend($foowd, $this);
         echo 'Cannot administrate an external resource.';
         if (function_exists('foowd_append')) foowd_append($foowd, $this);
-        track();
+        $foowd->track();
     }
     
     function method_revert(&$foowd) {
-        track('foowd_external::method_revert');
+        $foowd->track('foowd_external::method_revert');
         if (function_exists('foowd_prepend')) foowd_prepend($foowd, $this);
         echo 'Cannot revert an external resource.';
         if (function_exists('foowd_append')) foowd_append($foowd, $this);
-        track();
+        $foowd->track();
     }
 
     function method_delete(&$foowd) {
-        track('foowd_external::method_delete');
+        $foowd->track('foowd_external::method_delete');
         if (function_exists('foowd_prepend')) foowd_prepend($foowd, $this);
         echo 'Cannot delete an external resource.';
         if (function_exists('foowd_append')) foowd_append($foowd, $this);
-        track();
+        $foowd->track();
     }
     
     function method_clone(&$foowd) {
-        track('foowd_external::method_clone');
+        $foowd->track('foowd_external::method_clone');
         if (function_exists('foowd_prepend')) foowd_prepend($foowd, $this);
         echo 'Cannot clone an external resource.';
         if (function_exists('foowd_append')) foowd_append($foowd, $this);
-        track();
+        $foowd->track();
     }
 } // end static class
 ?>

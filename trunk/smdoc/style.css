@@ -8,18 +8,19 @@ body {
     padding: 0px;
     font-family: verdana, "trebuchet ms", arial; 
 }
-#pagetitle {
+.pagetitle {
     background: #afad97 url(sm_logo.png) no-repeat top left;
     height: 85px;
-    padding: 1px 5px 2px 140px;
     border-bottom: 1px solid gray;
-    font-size: x-large;
     color: #666666;
+}
+.usermenu {
+    font-size: small;
     text-align: right;
 }
-#usermenu {
-    padding-bottom: 20px;
-    font-size: small;
+.titleblock {
+    font-size: x-large;
+    text-align: right;
 }
 #workspaceid {
     font-size: small;
@@ -62,8 +63,8 @@ body {
     font-size: x-small;
 }
 form { 
-    padding: 0px; 
-    margin: 0px; 
+    white-space: nowrap; 
+    display: inline; 
 }
 .separator {
     border-bottom: 1px solid #afad97;
@@ -75,6 +76,25 @@ form {
 }
 .indexitem {
     margin: 0px 20px;
+}
+h1 {
+    font-size: large;
+    margin: 15px 0px 5px 0px;
+    color: #666; 
+    font-weight: bold; 
+    text-decoration: none;
+    background: #eee;
+    border-top: 1px solid gray;
+    border-bottom: 1px solid gray;
+}
+h2 {
+    font-size: large;
+    margin: 15px 0px 5px 0px;
+    color: #afad97; 
+    font-weight: normal; 
+    text-decoration: none;
+    text-align: left;
+    border-bottom: 1px solid #afad97;
 }
 h3,
 .debug_output_heading,
@@ -129,7 +149,14 @@ a:hover {
     text-decoration: underline;
     color: gray;
 }
-
+.index {
+    font-size: small;
+    text-align: center;
+    color: gray;
+}
+.index a {
+    font-weight: bold;
+}
 hr { 
     color: #666666; 
     height: 1px; 
@@ -144,6 +171,9 @@ tr.diff_add {
 }
 tr.diff_minus {
 	background-color: #ffcccc;
+}
+tr.diff_same {
+	background-color: #eeeeee;
 }
 div.preview {
 	background-color: #eeeeee;
@@ -164,7 +194,7 @@ a.annotate, a.faq {
 	background-color: #ffff00;
 }
 tr.row_odd {
-	background-color: #eeeeee;
+	background-color: #f3f3f3;
 }
 tr.row_even {
 	background-color: #f9f9f9;
@@ -172,9 +202,17 @@ tr.row_even {
 .alt_row {
     background: #d3d1c2;
 }
+input.error {
+	background-color: #ffcccc;
+}
 .small { 
     font-size: small; 
 }
+.smalldate { 
+    font-family: "courier new", monospace;
+    font-size: small; 
+}
+
 .xsmall { 
     font-size: x-small; 
 }
@@ -188,3 +226,4 @@ OL.upper_roman {
 OL.decimal {
     list-style-type: decimal
 }
+

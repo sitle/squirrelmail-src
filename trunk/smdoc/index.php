@@ -22,7 +22,7 @@ if (!isset($classid->value) && isset($className->value)) {
 }
 
 // init Foowd
-$foowd = new foowd();
+$foowd = new foowd(NULL, NULL, $DEFAULT_GROUPS);
 
 // set callback environment, you need to set this to the environment object you want
 // to use if you unserialize an instance of a dynamic class.

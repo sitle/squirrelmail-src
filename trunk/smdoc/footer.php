@@ -12,48 +12,68 @@
 
 <div id="editmenu">
 <?php
-    if (isset($object) ) { // is object but isn't error object
-        if ( $object->classid == EXTERNAL_CLASS_ID ) {
-            // External resources have truncated Edit Menu (uneditable)
-            echo '<a href="',  getURI(array('object' => 'recentchanges')),
-                 '">Recent Changes</a><br />';
-            echo 'This Page last updated on ';
-            echo date( "F d Y H:i", $object->updated);
-            if ( $object->version != 0 )
-                echo '(v',$object->version,')';
-            echo ".\n";
-        } else {
-            foreach (get_class_methods(get_class($object)) as $methodName) {
-                if ( substr($methodName, 0, 7) == 'method_' ) {
-                    $methodName = substr($methodName, 7);
-                    if ( hasPermission($foowd->user, $object, $methodName) ) {
-                        echo '<a href="', getURI(array('objectid' => $object->objectid, 
-                                                       'classid' => $object->classid, 
-                                                       'version' => $object->version, 
-                                                       'method' => $methodName)), 
-                         '">', ucfirst($methodName), '</a> | ';
-                    }
+    if ( isset($object) &&                               // is object
+         $object->classid != EXTERNAL_CLASS_ID &&        // is not external object
+         $object->title != DEFAULT_ERROR_TITLE ) {       // is not error page
+        
+        $className = get_class($object);
+        $methods = get_class_methods($className);
+        
+        $notfirst = 0;
+        foreach ($methods as $methodName) {
+            if (substr($methodName, 0, 7) == 'method_' ) {
+                
+                $methodName = substr($methodName, 7);
+                
+                if ( $methodName == 'diff' || 
+                     $methodName == 'xml' ||
+                     $methodName == 'permissions' ||
+                     $methodName == 'raw' ) 
+                    continue;
+                    
+                if (isset($object->permissions[$methodName])) {
+                    $methodPermission = $object->permissions[$methodName];
+                } else {
+                    $methodPermission = getPermission($className, $methodName, 'object');
+                }
+                if ($foowd->user->inGroup($methodPermission, $object->creatorid)) { // check user permission
+                    if ( $notfirst )
+                        echo ' | ';
+                    $notfirst = 1;
+                    echo '<a href="', getURI(array('objectid' => $object->objectid, 
+                                                     'classid' => $object->classid, 
+                                                     'version' => $object->version, 
+                                                     'method' => $methodName)), '">', ucfirst($methodName), '</a>';
                 }
             }
-            echo '<a href="',  getURI(array('object' => 'recentchanges')),
-                 '">Recent Changes</a><br />';
-            echo 'Last Update: ' , date( "F d, Y H:i", $object->updated);
-            if ( $object->version != 0 )
-                echo ' <span class="xsmall">(v ',$object->version,')</span>';
-            echo ".\n";
-		}
-    } else { // object not set.
-        echo '<a href="', getURI(array('object' => 'Recent Changes')),
-             '">Recent Changes</a><br />';
-        echo '<br />';
+        }
+        if ( $notfirst )
+            echo ' | ';
+        echo '<a href="', getURI(array('object' => 'sqmchanges')), '">',
+             _("Recent Changes"), '</a>';
+        echo "<br />\n";
+        echo _("Last Update");
+        if ( $object->workspaceid != 0 ) {
+            $workspace = $foowd->fetchObject( array(
+                                               'objectid' => $object->workspaceid,
+                                               'classid' => WORKSPACE_CLASS_ID));
+            echo ' (';
+            if ( isset($workspace->language_icon) && $workspace->language_icon != '')
+                echo '<img src="', $workspace->language_icon, '" alt="', $workspace->title, '" />';
+            else 
+                echo $workspace->title;
+            echo ')';
+            unset($workspace);
+        }
+        echo  ': ', date('Y/m/d, H:i T', $object->updated);
+    } else { // object not set OR external object
+        echo '<a href="', getURI(array('object' => 'sqmchanges')), '">',
+             _("Recent Changes"), '</a><br />';
     }
 ?> 
 </div>
 <div id="copyright">
-This site is copyright &copy; 1999-2003 by the SquirrelMail Project Team.<br />
-<?php echo _("If you have any questions, please visit our") ?>
- <a href="<?php echo getURI(array('object' => 'FAQ')); ?>">FAQ</a>.
-</div>
+This site is copyright &copy; 1999-2003 by the SquirrelMail Project Team.</div>
 
 <div id="footer">
 Powered by <a href="http://foowd.peej.co.uk/">
