@@ -17,6 +17,7 @@
       define ('load_prefs_php', true); 
    }
 
+   session_start();
    $theme = array();
    include("../src/validate.php");
    include("../config/config.php");
