@@ -43,7 +43,8 @@ function putSelectedMessagesIntoString($msg) {
 
 function attachSelectedMessages($msg, $imapConnection) {
 
-    global $mailbox, $username, $attachment_dir, $attachments, $identity, $data_dir, $composesession, $lastTargetMailbox;
+    global $mailbox, $username, $attachment_dir, $attachments, $identity, 
+        $data_dir, $composesession, $lastTargetMailbox;
 
 
     if (!isset($attachments)) {
@@ -72,8 +73,9 @@ function attachSelectedMessages($msg, $imapConnection) {
     	}
     }
 
+    sqsession_unregister('attachments');
     $attachments = $rem_attachments;
-
+    sqsession_register($attachments, 'attachments');
 
     $i = 0;
     $j = 0;
@@ -109,9 +111,11 @@ function attachSelectedMessages($msg, $imapConnection) {
         		$newAttachment = array();
         		$newAttachment['localfilename'] = $localfilename;
         		$newAttachment['type'] = "message/rfc822";
-            	$newAttachment['remotefilename'] = "$subject".".eml";
-            	$newAttachment['session'] = $composesession;
+                        $newAttachment['remotefilename'] = "$subject".".eml";
+                        $newAttachment['session'] = $composesession;
+                        sqsession_unregister('attachments');
         		$attachments[] = $newAttachment;
+                        sqsession_register($attachments, 'attachments');
         		flush();
     	    }
             $j++;	    

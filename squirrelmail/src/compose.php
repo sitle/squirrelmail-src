@@ -25,7 +25,6 @@ require_once('../functions/smtp.php');
 require_once('../functions/display_messages.php');
 require_once('../functions/plugin.php');
 
-
 /* lets get the global vars we may need */
 $key  = $_COOKIE['key'];
 
@@ -40,9 +39,7 @@ if (isset($_POST['return'])) {
 if ( isset($_SESSION['composesession']) ) {
     $composesession = $_SESSION['composesession'];
 }
-if ( isset($_POST['session']) ) {
-    $session = $_POST['session'];
-}
+sqextractGlobalVar('session');
 
 sqextractGlobalVar('mailbox');
 sqextractGlobalVar('identity');
@@ -90,6 +87,11 @@ if ( isset($_POST['attachments']) ) {
 }
 elseif ( isset($_SESSION['attachments'])) {
     $attachments = &$_SESSION['attachments'];
+}
+
+/* Forward message as attachment */
+if ( isset($_GET['attachedmessages']) ) {
+    $attachedmessages = $_GET['attachedmessages'];
 }
 
 /* Drafts */
@@ -342,7 +344,6 @@ elseif (isset($sigappend)) {
     showInputForm($session);
     
 } elseif (isset($attachedmessages)) {
-
     /*
      * This handles the case if we attache message 
      */
@@ -808,12 +809,13 @@ function showInputForm ($session) {
          ' value="' . _("Add") .'">' . "\n" .
          '     </TD>' . "\n" .
          '   </TR>' . "\n";
-
+    
     if (count($attachments)) {
         $hashed_attachment_dir = getHashedDir($username, $attachment_dir);
         echo '<tr><td bgcolor="' . $color[0] . '" align=right>' . "\n" .
              '&nbsp;' .
              '</td><td align=left bgcolor="' . $color[0] . '">';
+
         foreach ($attachments as $key => $info) {
     	    if ($info['session'] == $session) { 
             	$attached_file = "$hashed_attachment_dir/$info[localfilename]";
