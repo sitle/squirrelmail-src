@@ -1115,7 +1115,7 @@ function charset_decode_windows_1257 ($string) {
 
 /* iso-8859-9 is Turkish. */
 function charset_decode_iso_8859_9 ($string) {
-    global $default_charset;
+    global $default_charset, $languages, $sm_notAlias;;
 
     if (strtolower($default_charset) == 'iso-8859-9') {
         return $string;
@@ -1123,6 +1123,11 @@ function charset_decode_iso_8859_9 ($string) {
 
     /* Only do the slow convert if there are 8-bit characters */
     if (!ereg("[\200-\377]", $string)) {
+        return $string;
+    }
+
+    /* maybe you don't need a conversion if locale's charset is iso-8859-9 */
+    if (strtolower($languages[$sm_notAlias]['CHARSET']) == 'iso-8859-9') {
         return $string;
     }
 
