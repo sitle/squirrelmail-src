@@ -8,7 +8,7 @@
  */
 
 /**
- * Template for user login
+ * Template for user creation
  *
  * Modified by SquirrelMail Development
  * $Id$
@@ -16,10 +16,9 @@
  * @package smdoc
  * @subpackage template
  */
-
-$t['title'] = _("User Login");
-$t['method'] = 'login';
-$t['body_function'] = 'user_login_body';
+$t['title'] = _("Create") . ': ' . $t['className'];
+$t['method'] = 'create';
+$t['body_function'] = 'text_plain_create_body';
 
 /** Include base template */
 include(TEMPLATE_PATH.'index.tpl');
@@ -34,33 +33,25 @@ include(TEMPLATE_PATH.'index.tpl');
  * @param object object Reference to object being invoked.
  * @param mixed t Reference to array filled with template parameters.
  */
-function user_login_body(&$foowd, $className, $method, $user, &$object, &$t)
+function text_plain_create_body(&$foowd, $className, $method, $user, &$object, &$t)
 {
   $t['form']->display_start('smdoc_form');
   $obj = $t['form']->objects;
 ?>
 
-<table cellspacing="0" cellpadding="0" class="smdoc_table">
-<tr><td class="label"><b><?php echo _("Login"); ?>:</b></td>
-    <td class="value"><?php echo $obj['loginUsername']->display(); ?></td></tr>
-<tr><td class="label"><b><?php echo _("Password"); ?>:</b></td>
-    <td class="value"><?php echo $obj['loginPassword']->display(); ?></td></tr>
-</table>
+<p align="center">
+<span class="label"><b><?php echo _("Object Title"); ?>:</b></span>
+<span class="value"><?php echo $obj['createTitle']->display(); ?></span>
+</p>
 
+<table cellspacing="0" cellpadding="0" class="smdoc_table" style="width: 100%">
+<tr><td><div class="separator"><?php echo _("Body Text"); ?></div></td></tr>
+<tr><td align="center"><?php echo $obj['createBody']->display('smdoc_textarea'); ?></td></tr>
+</table>
 <?php
   echo "\n" . '<div class="form_submit">';
   $t['form']->display_buttons();
   echo '</div>'."\n";
 
-  $url = getURI(array('class' => $className));
-  echo '<p class="small_center"><a href="'.$url.'&method=create">'
-       . _("Create new account.")
-       . '</a><br />'
-       . '<a href="'.$url.'&method=lostpassword">'
-       . _("Forgot your password?")
-       . '</a></p>';
-
   $t['form']->display_end();
 }
-
-?>

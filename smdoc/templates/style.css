@@ -50,6 +50,7 @@ body {
     text-align: right;
     padding: 0px 2px;
     vertical-align: bottom;
+    white-space: nowrap;
 }
 #pagetitle .locationmenu {
     background: #b0c3c6;
@@ -115,6 +116,14 @@ form {
 input.error {
 	background-color: #ffcccc;
 }
+.smdoc_textarea {
+    font-family: "Courier New", courier, monospace
+    font-size: 12px;
+    width: 80%;
+}
+.form_submit {
+    text-align: center;
+}
 
 /** Basic properties for tables */
 table.smdoc_table {
@@ -149,6 +158,7 @@ td.value {
     border-bottom: 1px solid #7a9294;
     margin: 15px 0px 10px 0px;
     font-weight: bold;
+    text-align: center;
 }
 
 /** Shade pre-formatted debug text */
@@ -281,17 +291,17 @@ div .preview {
 }
 
 /** Various text styles */
-.small { 
+.small,
+.small_date,
+.small_center { 
     font-size: small; 
 }
 .smalldate { 
-    font-family: "courier new", monospace;
-    font-size: small; 
+    font-family: "courier new", courier, monospace;
 }
 .xsmall { 
     font-size: x-small; 
 }
-
 .super {
     vertical-align: super;
     font-size: small;
@@ -302,6 +312,7 @@ div .preview {
     color: #666;
     font-size: small;
 }
+.small_center,
 .subtext_center {
     text-align: center;
 }

@@ -45,12 +45,12 @@ function object_admin_body(&$foowd, $className, $method, &$user, &$object, &$t)
 <tr><td class="label"><?php echo _("Title"); ?>:</td>
     <td class="value"><?php
         echo $obj['title']->display();
-        echo '&nbsp;[' . $object->objectid . ']';
+        echo '&nbsp;<span class="subtext">[' . $object->objectid . ']</span>';
     ?></td></tr>
 <tr><td class="label"><?php echo _("Version"); ?>:</td>
     <td class="value"><?php echo $obj['version']->display(NULL, 10); ?></td></tr>
 <tr><td class="label"><?php echo _("Class"); ?>:</td>
-    <td class="value"><?php echo $obj['classid']->display(); ?></td></tr>
+    <td class="value"><?php echo $className; ?></td></tr>
 <tr><td colspan="2">&nbsp;</td></tr>
 <tr><td class="label"><?php echo _("Translation"); ?>:</td>
     <td class="value"><?php echo $obj['workspaceid']->display(); ?></td></tr>
@@ -77,7 +77,7 @@ function object_admin_body(&$foowd, $className, $method, &$user, &$object, &$t)
 <tr><td colspan="2"><div class="separator"><?php echo _("URL Modifier"); ?></div></td></tr>
 <tr><td class="label"><?php echo _("URL Shortname"); ?>:</td>
     <td class="value"><?php echo $obj['shortname']->display(); ?>
-        <span class="subtext">(privacy, faq, ...)</td></tr>
+        <span class="subtext">(e.g. home, privacy, faq, ...)</td></tr>
 </tr>
 </table>
 <div class="form_submit"><?php $t['shortform']->display_buttons(); ?></div>
