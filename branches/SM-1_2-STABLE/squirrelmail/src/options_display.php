@@ -324,9 +324,7 @@ function save_option_theme($option) {
 function save_option_javascript_autodetect($option) {
     global $data_dir, $new_javascript_setting;
     if ( (float)substr(PHP_VERSION,0,3) < 4.1 ) {
-        if (ini_get('register_globals') == 0) {
-            global $_SESSION;
-        }
+        global $_SESSION;
     }
         $username = $_SESSION['username'];
 

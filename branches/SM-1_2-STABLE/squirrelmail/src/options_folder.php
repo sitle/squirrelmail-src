@@ -21,9 +21,7 @@ define('SMOPT_GRP_FOLDERLIST', 1);
 function load_optpage_data_folder() {
     global $imapServerAddress, $imapPort;
     if ( (float)substr(PHP_VERSION,0,3) < 4.1 ) {
-        if (ini_get('register_globals') == 0) {
-            global $_SESSION, $_COOKIE;
-        }
+        global $_SESSION, $_COOKIE;
     }
     global $folder_prefix, $default_folder_prefix, $show_prefix_option;
     
@@ -226,9 +224,7 @@ function load_optpage_data_folder() {
 function save_option_trash_folder($option) {
     global $data_dir;
     if ( (float)substr(PHP_VERSION,0,3) < 4.1 ) {
-        if (ini_get('register_globals') == 0) {
-            global $_SESSION;
-        }
+        global $_SESSION;
     }
     $username = $_SESSION['username'];
 
@@ -243,9 +239,7 @@ function save_option_trash_folder($option) {
 function save_option_sent_folder($option) {
     global $data_dir;
     if ( (float)substr(PHP_VERSION,0,3) < 4.1 ) {
-        if (ini_get('register_globals') == 0) {
-            global $_SESSION;
-        }
+        global $_SESSION;
     }
     $username = $_SESSION['username'];
 
@@ -260,9 +254,7 @@ function save_option_sent_folder($option) {
 function save_option_draft_folder($option) {
     global $data_dir;
     if ( (float)substr(PHP_VERSION,0,3) < 4.1 ) {
-        if (ini_get('register_globals') == 0) {
-            global $_SESSION;
-        }
+        global $_SESSION;
     }
     $username = $_SESSION['username'];
 

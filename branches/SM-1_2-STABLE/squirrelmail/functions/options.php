@@ -296,9 +296,7 @@ class SquirrelOption {
 
 function save_option($option) {
     if ( (float)substr(PHP_VERSION,0,3) < 4.1 ) {
-        if (ini_get('register_globals') == 0) { 
-            global $_SESSION;
-        }
+        global $_SESSION;
     }
     global $data_dir;
     $username = $_SESSION['username'];
