@@ -55,7 +55,7 @@ function plugin_listcommands_menu() {
         if ($proto == 'mailto') {
 
             if (($cmd == 'post') || ($cmd == 'owner')) {
-                $url = 'compose.php?';
+                $url = 'src/compose.php?';
             } else {
                 $url = "../plugins/listcommands/mailout.php?action=$cmd&amp;";
             }
