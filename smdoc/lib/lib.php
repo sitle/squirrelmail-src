@@ -458,27 +458,151 @@ function cookieTest(&$foowd)
 
 /* Locale functions */
 
-/** 
- * If locale support does not exist, 
- * define our own "_" function.
- */
-if (!function_exists('_')) 
-{
+/* ----- Detect whether gettext is installed and load missing functions ----- */
+$gettext_flags = 0;
+if (function_exists('_')) {
+  $gettext_flags += 1;
+}
+if (function_exists('bindtextdomain')) {
+  $gettext_flags += 2;
+}
+if (function_exists('textdomain')) {
+  $gettext_flags += 4;
+}
+if (function_exists('ngettext')) {
+  $gettext_flags += 8;
+}
+
+/* If gettext is fully loaded, cool */
+if ($gettext_flags == 15) {
+  $use_gettext = true;
+} /* If we can fake gettext, try that */
+elseif ($gettext_flags == 0) {
+  $use_gettext = true;
+
+  /* load php-gettext classes */
+  require_once(SM_DIR . 'class.gettext.php');
+  
   /**
-   * Fake Getext function. If Gettext support is not available, this function
-   * acts as a passthru function in its place.
+   * Alternative php gettext function (short form)
    *
-   * @param string text Text to return
-   * @return string The returned text.
+   * @link http://www.php.net/function.gettext
+   *
+   * @param string $str English string
+   * @return string translated string
    */
-  function _($text) {
-    global $LANG;
-    if (isset($LANG[$text])) {
-      return $LANG[$text];
-    } else {
-      return $text;
+  function _($str)
+  {
+    global $l10n, $gettext_domain;
+    if (! is_array($l10n) || $l10n[$gettext_domain]->error==1) return $str;
+    return $l10n[$gettext_domain]->translate($str);
+  }
+
+  /**
+   * Alternative php bindtextdomain function
+   *
+   * Sets path to directory containing domain translations
+   *
+   * @link http://www.php.net/function.bindtextdomain
+   * @param string $domain gettext domain name
+   * @param string $dir directory that contains all translations
+   * @return string path to translation directory
+   */
+  function bindtextdomain($domain,
+                          $dir)
+  {
+    global $l10n, $i18n_notAlias;
+
+    if (substr($dir, -1) != '/') $dir .= '/';
+    $mofile=$dir . $i18n_notAlias . '/LC_MESSAGES/' . $domain . '.mo';
+
+    $input = new FileReader($mofile);
+    $l10n[$domain] = new gettext_reader($input);
+
+    return $dir;
+  }
+
+  /**
+   * Alternative php textdomain function
+   *
+   * Sets default domain name
+   *
+   * @link http://www.php.net/function.textdomain
+   * @param string $name gettext domain name
+   * @return string gettext domain name
+   */
+  function textdomain($name = false)
+  {
+    global $gettext_domain;
+    if ($name) $gettext_domain=$name;
+    return $gettext_domain;
+  }
+
+  /**
+   * internal ngettext wrapper.
+   *
+   * provides ngettext support
+   * @link http://www.php.net/function.ngettext
+   * @param string $single English string, singular form
+   * @param string $plural English string, plural form
+   * @param integer $number number that shows used quantity
+   * @return string translated string
+   */
+  function ngettext($single,
+                    $plural,
+                    $number)
+  {
+    global $l10n, $gettext_domain;
+    if (! is_array($l10n) || $l10n[$gettext_domain]->error==1) return $single;
+    return $l10n[$gettext_domain]->ngettext($single, $plural, $number);
+  }
+} else {
+  /* Uh-ho.  A weird install */
+  if (! $gettext_flags & 1) {
+    /**
+     * Function is used as replacement in broken installs
+     * @ignore
+     */
+    function _($str)
+    {
+      return $str;
+    }
+  }
+  if (! $gettext_flags & 2) {
+    /**
+     * Function is used as replacement in broken installs
+     * @ignore
+     */
+    function bindtextdomain()
+    {
+      return;
+    }
+  }
+  if (! $gettext_flags & 4) {
+    /**
+     * Function is used as replacement in broken installs
+     * @ignore
+     */
+    function textdomain()
+    {
+      return;
+    }
+  }
+  if (! $gettext_flags & 8) {
+    /**
+     * Function is used as replacement in broken installs
+     * @ignore
+     */
+    function ngettext($str,
+                      $str2,
+                      $number)
+    {
+      if ($number>1) {
+        return $str2;
+      } else {
+        return $str;
+      }
     }
   }
 }
-
 ?>
