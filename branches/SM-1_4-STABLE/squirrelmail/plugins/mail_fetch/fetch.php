@@ -21,7 +21,7 @@ require_once(SM_PATH . 'plugins/mail_fetch/class.POP3.php');
 require_once(SM_PATH . 'plugins/mail_fetch/functions.php' );
 require_once(SM_PATH . 'functions/html.php' );
 
-/* globals */ 
+/* globals */
 sqgetGlobalVar('username',   $username,   SQ_SESSION);
 sqgetGlobalVar('key',        $key,        SQ_COOKIE);
 sqgetGlobalVar('onetimepad', $onetimepad, SQ_SESSION);
@@ -29,7 +29,7 @@ sqgetGlobalVar('delimiter',  $delimiter,  SQ_SESSION);
 
 /* FIXME: This form, like the advanced identities form
  * uses dynamic post variable names so we need
- * to extract the whole $_POST array to make 
+ * to extract the whole $_POST array to make
  * things work
  */
 
@@ -53,7 +53,7 @@ extract($_POST);
     if ($mailfetch_server_number<1) $mailfetch_server_number=0;
     for ($i=0;$i<$mailfetch_server_number;$i++) {
         $mailfetch_server_[$i] = getPref($data_dir, $username, "mailfetch_server_$i");
-		$mailfetch_port_[$i] = getPref($data_dir, $username, "mailfetch_port_$i");
+        $mailfetch_port_[$i] = getPref($data_dir, $username, "mailfetch_port_$i");
         $mailfetch_alias_[$i] = getPref($data_dir, $username, "mailfetch_alias_$i");
         $mailfetch_user_[$i] = getPref($data_dir, $username, "mailfetch_user_$i");
         $mailfetch_pass_[$i] = getPref($data_dir, $username, "mailfetch_pass_$i");
@@ -61,21 +61,24 @@ extract($_POST);
         $mailfetch_login_[$i] = getPref($data_dir, $username, "mailfetch_login_$i");
         $mailfetch_uidl_[$i] = getPref($data_dir, $username, "mailfetch_uidl_$i");
         $mailfetch_subfolder_[$i] = getPref($data_dir, $username, "mailfetch_subfolder_$i");
+        if($mailfetch_subfolder_[$i] == '') {
+            $mailfetch_subfolder_[$i] == 'INBOX';
+        }
         if( $mailfetch_cypher == 'on' ) {
             $mailfetch_pass_[$i] = decrypt( $mailfetch_pass_[$i] );
         }
     }
-    
+
     echo '<br><center>';
-    
+
     echo html_tag( 'table',
                html_tag( 'tr',
                    html_tag( 'td', '<b>' . _("Remote POP server Fetching Mail") . '</b>', 'center', $color[0] )
                ) ,
            'center', '', 'width="95%" cols="1"' );
-    
+
     if (!isset( $server_to_fetch ) ) {
-        
+
         echo '<font size=-5><br></font>' .
              "<form action=\"$PHP_SELF\" method=\"post\" target=\"_self\">" .
              html_tag( 'table', '', 'center', '', 'width="70%" cols="2"' ) .
@@ -88,11 +91,11 @@ extract($_POST);
              echo "<option value=\"$i\">" .
                  htmlspecialchars((($mailfetch_alias_[$i]=='')?$mailfetch_server_[$i]:$mailfetch_alias_[$i])) .
                   '</option>' . "\n";
-        } 
+        }
         echo            '</select>' .
                     '</td>' .
                 '</tr>';
-        
+
         //if password not set, ask for it
         for ($i=0;$i<$mailfetch_server_number;$i++) {
              if ($mailfetch_pass_[$i]=='') {
@@ -120,10 +123,10 @@ extract($_POST);
         $i_start = $server_to_fetch;
         $i_stop = $i_start+1;
     }
-    
+
     for ($i_loop=$i_start;$i_loop<$i_stop;$i_loop++) {
         $mailfetch_server=$mailfetch_server_[$i_loop];
-		$mailfetch_port=$mailfetch_port_[$i_loop];
+        $mailfetch_port=$mailfetch_port_[$i_loop];
         $mailfetch_user=$mailfetch_user_[$i_loop];
         if ($mailfetch_pass_[$i_loop]=="") {
             $tmp="pass_$i_loop";
@@ -135,39 +138,39 @@ extract($_POST);
         $mailfetch_login=$mailfetch_login_[$i_loop];
         $mailfetch_uidl=$mailfetch_uidl_[$i_loop];
         $mailfetch_subfolder=$mailfetch_subfolder_[$i_loop];
-        
-        
+
+
         $pop3 = new POP3($mailfetch_server, 60);
-        
+
         echo '<br>' .
         html_tag( 'table',
             html_tag( 'tr',
-                html_tag( 'td', '<b>' . _("Fetching from ") . 
-                    htmlspecialchars((($mailfetch_alias_[$i_loop] == '')?$mailfetch_server:$mailfetch_alias_[$i_loop])) . 
+                html_tag( 'td', '<b>' . _("Fetching from ") .
+                    htmlspecialchars((($mailfetch_alias_[$i_loop] == '')?$mailfetch_server:$mailfetch_alias_[$i_loop])) .
                     '</b>',
                 'center' ) ,
             '', $color[9] ) ,
         '', '', 'width="90%"' );
-          
+
         flush();
-        
+
         if (!$pop3->connect($mailfetch_server,$mailfetch_port)) {
             Mail_Fetch_Status(_("Oops, ") . $pop3->ERROR );
             continue;
         }
-        
+
         Mail_Fetch_Status(_("Opening IMAP server"));
         $imap_stream = sqimap_login($username, $key, $imapServerAddress, $imapPort, 10);
-        
+
         Mail_Fetch_Status(_("Opening POP server"));
         $Count = $pop3->login($mailfetch_user, $mailfetch_pass);
         if (($Count == false || $Count == -1) && $pop3->ERROR != '') {
             Mail_Fetch_Status(_("Login Failed:") . ' ' . $pop3->ERROR );
             continue;
         }
-        
+
         //   register_shutdown_function($pop3->quit());
-        
+
         $msglist = $pop3->uidl();
 
         $i = 1;
@@ -191,11 +194,11 @@ extract($_POST);
             $newmsgcount = $Count - $i + 1;
             Mail_Fetch_Status(_("Login OK: Inbox contains [") . $newmsgcount . _("] messages"));
         }
-        
+
         Mail_Fetch_Status(_("Fetching UIDL..."));
         // Faster to get them all at once
         $mailfetch_uidl = $pop3->uidl();
-        
+
         if (! is_array($mailfetch_uidl) && $mailfetch_lmos == 'on')
             Mail_Fetch_Status(_("Server does not support UIDL."));
 
@@ -204,18 +207,18 @@ extract($_POST);
         } else {
             Mail_Fetch_Status(_("Deleting messages from server..."));
         }
-        
+
         for (; $i <= $Count; $i++) {
             Mail_Fetch_Status(_("Fetching message ") . "$i" );
             set_time_limit(20); // 20 seconds per message max
             $Message = "";
             $MessArray = $pop3->get($i);
-            
+
             while ( (!$MessArray) or (gettype($MessArray) != "array")) {
                  Mail_Fetch_Status(_("Oops, ") . $pop3->ERROR);
                  // re-connect pop3
                  Mail_Fetch_Status(_("Server error...Disconnect"));
-	         $pop3->quit();
+                 $pop3->quit();
                  Mail_Fetch_Status(_("Reconnect from dead connection"));
                  if (!$pop3->connect($mailfetch_server)) {
                      Mail_Fetch_Status(_("Oops, ") . $pop3->ERROR );
@@ -233,22 +236,19 @@ extract($_POST);
                      continue;
                  }
                  Mail_Fetch_Status(_("Refetching message ") . "$i" );
-	         $MessArray = $pop3->get($i);
+                 $MessArray = $pop3->get($i);
 
             } // end while
-            
+
             while (list($lineNum, $line) = each ($MessArray)) {
                  $Message .= $line;
             }
-            
-            if ($mailfetch_subfolder=="") {
-                fputs($imap_stream, "A3$i APPEND INBOX {" . (strlen($Message) - 1) . "}\r\n");
-            } else {
-                fputs($imap_stream, "A3$i APPEND \"$mailfetch_subfolder\" {" . (strlen($Message) - 1) . "}\r\n");
-            }
+
+            fputs($imap_stream, "A3$i APPEND \"$mailfetch_subfolder\" {" . strlen($Message) . "}\r\n");
             $Line = fgets($imap_stream, 1024);
             if (substr($Line, 0, 1) == '+') {
                 fputs($imap_stream, $Message);
+                fputs($imap_stream, "\r\n");
                 sqimap_read_data($imap_stream, "A3$i", false, $response, $message);
                 if ( $response <> 'OK' ) {
                     Mail_Fetch_Status(_("Error Appending Message!")." ".$message );
@@ -259,11 +259,11 @@ extract($_POST);
 
                     Mail_Fetch_Status(_("Saving UIDL"));
                     setPref($data_dir,$username,"mailfetch_uidl_$i_loop", $mailfetch_uidl[$i-1]);
-	            exit;
+                    exit;
                 } else {
                     Mail_Fetch_Status(_("Message appended to mailbox"));
                 }
-                
+
                 if ($mailfetch_lmos != 'on') {
                    if( $pop3->delete($i) ) {
                         Mail_Fetch_Status(_("Message ") . $i . _(" deleted from Remote Server!"));
@@ -285,7 +285,7 @@ extract($_POST);
                 exit;
             }
         }
-        
+
         Mail_Fetch_Status(_("Closing POP"));
         $pop3->quit();
         Mail_Fetch_Status(_("Logging out from IMAP"));
@@ -294,7 +294,7 @@ extract($_POST);
             Mail_Fetch_Status(_("Saving UIDL"));
             setPref($data_dir,$username,"mailfetch_uidl_$i_loop", array_pop($mailfetch_uidl));
         }
-        
+
         Mail_Fetch_Status(_("Done"));
 
    }
