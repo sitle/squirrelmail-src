@@ -9,19 +9,19 @@
  */
 
 /**
- * implementor_auth
+ * ZkAuthImp_Test
  *
- * The implementor_auth class is the template for classes that provide
- * backend functionality to the Authentication API.
+ * The ZkAuthImp_Test class purely meant for testing of the
+ * ZkAuthHandler class.
  */
-class implementor_auth {
+class ZkAuthImp_Test {
     /**
-     * Create a new implementor_auth with the given options.
+     * Create a new ZkAuthImplementor with the given options.
      *
      * @param array $options an associative array that can pass options
      *                       to the authentication implementator
      */
-    function implementor_auth($options) {
+    function ZkAuthImpl_Test($options) {
         /* Instantiate the Authentication Implementor Here! */
     }
 
@@ -34,7 +34,9 @@ class implementor_auth {
      */
     function checkPassword($username, $password) {
         /* Code to check for success... */
-        return (true);
+        if (($username == 'captbunzo') && ($password == 'bunz-r-us')) {
+            return (true);
+        }
 
         /* Otherwise, fail authentication. */
         return (false);
