@@ -137,6 +137,19 @@ function logout_error( $errString, $errTitle = '' ) {
 }
 
 function error_box($string, $color) {
+    global $pageheader_sent;
+
+    $err = _("ERROR");
+
+    /* check if the page header has been sent; if not, send it! */
+    if(!isset($pageheader_sent) && !$pageheader_sent) {
+        /* include this just to be sure */
+        include_once( SM_PATH . 'functions/page_header.php' );
+        displayHtmlHeader('SquirrelMail: '.$err);
+        $pageheader_sent = TRUE;
+        echo "<body text=\"$color[8]\" bgcolor=\"$color[4]\" link=\"$color[7]\" vlink=\"$color[7]\" alink=\"$color[7]\">\n\n";
+    }
+
    echo '    <table width="100%" cellpadding="1" cellspacing="0" align="center"'.' border="0" bgcolor="'.$color[9].'">';
    echo '     <tr><td>';
    echo '       <table width="100%" cellpadding="0" cellspacing="0" align="center" border="0" bgcolor="'.$color[4].'">';
