@@ -12,7 +12,6 @@
     **
     **  $Id$
     **/
-   include ("../src/validate.php");
 
    session_start();
 
@@ -38,7 +37,6 @@
    include ('../functions/imap.php');
    include ('../functions/plugin.php');
    include ('../functions/auth.php');
-   include ('../src/load_prefs.php');
 
    // We'll need this to later have a noframes version
    //
@@ -55,12 +53,22 @@
    echo '<TITLE>';
    echo $org_title;
    echo '</TITLE>';
+
+   $left_size = getPref($data_dir, $username, "left_size");
+   $location_of_bar = getPref($data_dir, $username, "location_of_bar");
+   if ($left_size == "") {
+      if (isset($default_left_size))
+         $left_size = $default_left_size;
+      else
+         $left_size = 200;
+   }
+   if ($location_of_bar == '')
+       $location_of_bar = 'left';
    
    $bar_size = $left_size;
    
-   if ($location_of_bar == 'right')
-   {
-      echo "<FRAMESET COLS=\"*, $left_size\" NORESIZE=yes BORDER=0>";
+   if ($location_of_bar == 'right') {
+      echo "<FRAMESET COLS=\"*, $left_size\" NORESIZE BORDER=0>";
    } else {
       echo "<FRAMESET COLS=\"$left_size, *\" NORESIZE BORDER=0>";
    }
