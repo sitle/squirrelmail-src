@@ -57,6 +57,7 @@ Version 1.4.4 - CVS
   - Removed X-Mailer header from SquirrelMail. SpamAssassin 3.0 detects 
     User-Agent + X-Priority headers correctly. Older versions have to fix
     rules/20_head_tests.cf.
+  - When replying to message with a " in the subject, the " was a replaced with a '.
 
 Version 1.4.3a - 2 June 2004
 ----------------------------
