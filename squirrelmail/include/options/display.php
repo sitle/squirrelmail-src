@@ -102,7 +102,8 @@ function load_optpage_data_display() {
         'caption' => _("Language"),
         'type'    => SMOPT_TYPE_STRLIST,
         'refresh' => SMOPT_REFRESH_ALL,
-        'posvals' => $language_values
+        'posvals' => $language_values,
+        'htmlencoded' => true
     );
 
     /* Set values for the "use javascript" option. */
