@@ -11,29 +11,14 @@
  * $Id$
  */
 
-/*
-Tree class:
 
-public methods:
-  tree (constructor)
-  addNode
-  deleteNode
-  moveNode
-  nodeHasChilren
-  getChildren
-  expandNode
-  collapseNode
-  
- 
-
-*/
-
-/* node properties definitions */
-define('SM_NODE_VISIBLE',1);
+// node properties definitions
+define('SM_NODE_VISIBLE',1);   // for external usage
 define('SM_NODE_EXPANDED',2);
 define('SM_NODE_INSERT',4);
 define('SM_NODE_DELETE',8);
-define('SM_NODE_EXCECUTE',16);
+define('SM_NODE_EXCECUTE',16); // for external usage
+define('SM_NODE_ALL',31);
 
 /* sort constants */
 define('SM_SORT_DEFAULT',0); // normal sort
@@ -51,38 +36,76 @@ class tree extends object{
     var $name,
         $expanded = array(),
         $nodes = array(false),
+        $permissions,
 //        $listen = array(),
         /* events */
-        $events = array (
-            'beforeDelete' => false,
-            'afterDelete' => false,
-            'beforeMove' => false,
-            'afterMove' => false,
-            'beforeAdd' => false,
-            'afterAdd' => false
-            );
     /**
      * @func      tree
      * @desc      constructor
      * @param     str        $id           unique identifier
-     * @param     arr        $credentials  Experimental Testing
+     * @param     arr        $aProps       tree properties
      * @return    bool                     success
      * @access    public
      * @author    Marc Groot Koerkamp
      */
-    function tree($id,$credentials=array('self'=> SM_ACL_ALL)) {
+     function tree($id,$aProps=array()) {
+        // defaults properties:
+        $aPropsDefault = array ('security'     => false,
+                          'enable_acl'   => false,
+                          'permissions'  => SM_NODE_ALL, // default, non acl
+                          'acl'          => false,
+                          'inherit_acl'  => true,
+                          'hiderootnode' => true,
+                          'events'       => array(),
+                          'uid'          => false,
+                          'gid'          => false,
+                          'renderEngine' => false   // callback function
+                          )
+        // merge default props with provided props
+        $aProps = array_merge($aPropsDefault,$aProps);
+
+        foreach ($aProps as $key = > $value) {
+            $aPropsDefault[$key] = $value;
+        }
         $this->id = $id;
-        $this->p_c_rel = array(); /* parent -> child relations */
-        $this->nodes = array(); /* array with nodes accessible by the id of the node */
+        $this->p_c_rel = array(); // parent -> child relations
+        $this->nodes = array();   // array with nodes accessible by the id of the node
+        // use acl instead of default permissions
+        if ($aProps['acl']) {
+            $this->enable_acl = true;
+            $this->permissions = $aProps['acl'];
+        } else {
+            $this->permissions = $aProps['permissions'];
+            $this->enable_acl = false;
+        }
+        // in case of acl we nee uid and/or gid
+        $this->uid = false;
+        $this->gid = false;
+
 //        $this->listeners = array(&$this->nodes);
-        /* create root node */
-        $rootnode =& new node(0,array('self'=>SM_ACL_NONE));
+        // create root node
+        $rootnode =& new node(0,$this->permissions);
         $rootnode->id = 0;
         $this->p_c_rel[0] = array();
         $this->nextnodeid = 1;
         $this->nodes[] =& $rootnode;
         /* set the sleep notifyer */
         //$this->listen['sleep'] = array(&$this, '_sleep');
+
+        // register the renderEngine
+        $this->renderEngine = $aProps['renderEngine'];
+
+        // register the events
+        $aEventsDefault = array (
+                            'beforeDelete' => false,
+                            'afterDelete' => false,
+                            'beforeMove' => false,
+                            'afterMove' => false,
+                            'beforeAdd' => false,
+                            'afterAdd' => false
+                        );
+        // merge default props with provided props
+        $this->events = array_merge($aEventsDefault,$aProps['events']);
 
         return true;
     }
@@ -100,6 +123,25 @@ class tree extends object{
 //    function _sleep() {
 //    }
 
+
+
+    /**
+     * @func      render
+     * @desc      render the tree by external callback function
+     * @access    public
+     * @return    rendered tree
+     * @author    Marc Groot Koerkamp
+     */
+
+    // sort nodes, is it external or not ?
+
+    function render() {
+        if (is_callable($this->renderEngine)) {
+            return $this->renderEngine($this->nodes, $this->p_c_rel, array($this,'sortNodes'));
+        }
+        return false;
+    }
+
     /**
      * @func      addNode
      * @desc      Add a node to parent node
@@ -111,86 +153,183 @@ class tree extends object{
      * @author     Marc Groot Koerkamp
      */
 
-    function addNode(&$node, $parent=false,
-               $aProps=array('mask' => false,
-                             'expand_parent' => true,
-                             'enable_acl' =>true,
-                             'acl_add' => array('o',array(),0) )) {
+    function addNode(&$oNode, $parent=false,$aProps = array()) {
+        $adefaultProps=array('permissions'      => false, // acl or simple permissions, dependent of inialisation of the tree object
+                             'expand_parent'    => true,
+                             'sUid'              => false,  // in case of acl we need it to check perm
+                             'aGid'              => array());  // in case of acl we need it to check perm
+        // merge default props with provided props
+        $aProps = array_merge($aPropsDefault,$aProps);
+
         if (!$parent) {
             $parent = $this->nodes[0][0];
         }
-        // setting default mask
-        if ($aProps['mask'] === false) {
-            $aProps['mask'] = SM_NODE_VISIBLE + SM_NODE_EXPANDED;
-        }
-        $iParentMask = $this->nodes[$parent->id][1];
-        // check access
-        $bAllowAdd = true;
-        if ($aProps['enable_acl']) { //acl overrides mask
-            $aAcl = $aProps['acl_add'];
-            $bAllowAdd = acl::checkaccess($parent->acl,$aAcl[0],$aAcl[1],$aAcl[2]);
+        $sUid = $aProps['sUid'];
+        $aGid = $aProps['aGid'];
+        // Parentperm is a variant, an array in case of acl, an int in case of simple perm.
+        $vParentPerm =& $this->nodes[$parent->id][1];
+        if ($this->_checkPermissions($vParentPerm,SM_NODE_INSERT,$sUid,$aGid)) {
+            // setting default permissions
+            if ($aProps['permissions'] === false) {
+                $aProps['permissions'] = $this->permissions;
+            }
         } else {
-            $bAllowAdd = $iParentMask & SM_NODE_INSERT;
-        }
-        if (!$bAllowAdd) {
             //ERROR
             $this->error = SM_NODE_ACCESS_DENIED;
             return false;
         }
 
-        if (isset($node->id) && $node->id) {
-            /* check unique */
-            if (isset($this->nodes[$node->id])) {
+        if (isset($oNode->id) && $oNode->id) {
+            // check unique
+            if (isset($this->nodes[$oNode->id])) {
                 $this->error = SMNODE_ID_NOT_UNIQUE;
                 return false;
             }
-            $id = $node->id;
+            $id = $oNode->id;
         } else {
             $id = $this->nextnodeid;
-            $node->id = $id;
+            $oNode->id = $id;
         }
         ++$this->nextnodeid;
-        $this->nodes[$id] = array(&$node,$aProps['mask']);
-        /* assign the parent id to the node in order to speed up dependency checks */
+        $this->nodes[$id] = array(&$oNode,$aProps['permissions']);
+        // assign the parent id to the node in order to speed up dependency checks
         $node->parent_id = $parent->id;
-        /* add the node_id to the p_c_rel array */
+        // add the node_id to the p_c_rel array
         $this->p_c_rel[$parent->id][] = $id;
-        if ($aProps['expand_parent']) {
-            $iParentMask = ($iParentMask & SM_NODE_EXPANDED) ? $iParentMask : $iParentMask + SM_NODE_EXPANDED;
-        } else {
-            $iParentMask = ($iParentMask & SM_NODE_EXPANDED) ? $iParentMask - SM_NODE_EXPANDED : $iParentMask;
-        }
-        $this->nodes[$parent->id][1] = $iParentMask;
+        // if required, expand the parent node
+        $this->_alterPermissions(&$vParentPerm,SM_NODE_EXPANDED,
+                 $sUid,$aGid,$aProps['expand_parent']);
         return true;
     }
 
-
-    /* obsolete */
-    function setNodeProperties($properties) {
-        $node_visible = $node_expanded = 0;
-        foreach ($properties as $prop) {
-            if (!$node_visible && ($prop & SM_NODE_VISIBLE) == SM_ACL_LOOKUP) {
-                $acl_lookup = 1;
-            }
-            if (!$acl_read && ($perm & SM_ACL_READ) == SM_ACL_READ) {
-                $acl_read = 2;
-            }
-        }
-    
-    }
     /**
-     * @func      nodeHasChildren
-     * @desc      returns true if Node has children
-     * @param     obj        $node         The node object
+     * @func      moveNode
+     * @decr      move node (and child nodes) to another parent node
+     * @param     obj        $oNode         The node object
+     * @param     obj        $oTarget       target node
+     * @param     arr        $aProps       optional node properties
      * @return    bool                     success
      * @access    public
      * @author    Marc Groot Koerkamp
      */
-    function nodeHasChildren($node) {
-        if ($node && isset($this->p_c_rel[$node->id]) &&
-            count($this->p_c_rel[$node->id])) {
+    function moveNode($oNode, $oTarget,$aProps = array()) {
+        $aPropsDefault = array('sUid'=>false,'aGid'=>false);
+        // merge default props with provided props
+        $aProps = array_merge($aPropsDefault,$aProps);
+
+        $target_id = $oTarget;
+        $node_id = $oNode->id;
+        $vPerm = $this->nodes[$node_id][1];
+        $vTargetPerm = $this->nodes[$target_id][1];
+        $sUid = $aProps('sUid');
+        $aGid = $aProps('aGid');
+
+        // NB, only the permissions for the provided node are checked, children nodes
+        // related to the provided node are not checked for delete rights.
+
+        // check for delete permissions
+        if ($this->_checkPermissions($vPerm,SM_NODE_DELETE,$sUid,$aGid)) {
+            // check for insert permissions
+            if ($this->_checkPermissions($vTargetPerm,SM_NODE_INSERT,$sUid,$aGid)) {
+                // get the index of the node to delete
+                $key = array_search($node->id,$this->p_c_rel[$parent_id],true);
+                if ($key !== false && $key !== NULL) {
+                    unset($this->p_c_rel[$parent_id][$key]);
+                }
+                // add the node_it to the target children array
+                $this->p_c_rel[$target->id][] = $node_id;
+                return true;
+            }
+        }
+        // error, no sufficient rights
+        return false;
+    }
+
+    /**
+     * @func      deleteNode
+     * @decr      delete complete branch with $node as parent
+     * @param     obj        $oNode         The node object
+     * @param     bool       $force         do not check children permissions
+     * @param     arr        $aProps       optional node properties
+     * @return    bool                     success
+     * @access    public
+     * @author    Marc Groot Koerkamp
+     */
+    function deleteNode($oNode,$force = false,$aProps = array()) {
+        $aPropsDefault = array('sUid'=>false,'aGid'=>false);
+        // merge default props with provided props
+        $aProps = array_merge($aPropsDefault,$aProps);
+
+        $node_id = $oNode->id;
+        $vPerm = $this->nodes[$node_id][1];
+        $sUid = $aProps('sUid');
+        $aGid = $aProps('aGid');
+        if ($node->id !== 0 && $this->_checkPermissions($vPerm,SM_NODE_DELETE,$sUid,$aGid)) {
+            $beforeDelete = $this->events['beforeDelete'];
+            $afterDelete = $this->events['afterDelete'];
+
+            $aTrash = array();
+            /* retrieve child nodes */
+            $this->_harvestNodes($oNode,$aTrash);
+
+            /* delete from bottom to top */
+            $aTrash = array_reverse($aTrash);
+            // add the provided node to the trash array
+            $aTrash[] = $oNode
+
+            foreach ($aTrash as $oTrashNode) {
+                $id = $oTrashNode->id;
+                $bAllowDelete = true;
+                if (!$force) {
+                    $vPerm = $this->nodes[$id][1];
+                    if ($this->_checkPermissions($vPerm,SM_NODE_DELETE,$sUid,$aGid)) {
+                        // children nodes are not deleted due to permission problems
+                        if (isset($this->p_c_rel[$id]) && count($this->p_c_rel[$id]) ) {
+                            $bAllowDelete = false;
+                        }
+                     } else {
+                        $bAllowDelete = false;
+                     }
+                }
+                if ($bAllowDelete) {
+                    if ($beforeDelete) {
+                        call_user_func_array($this->events['beforeDelete'],&$this, &$oTrashNode);
+                    }
+                    // break child parents relations. In case of force we can delete the complete entry
+                    if ($id !== $node_id && $force && isset($this->p_c_rel[$id])) {
+                        unset($this->p_c_rel[$id]);
+                    } else {
+                        // remove node from parent
+                        $key = array_search($id,$this->p_c_rel[$oTrashNode->parent_id],true);
+                        if ($key !== false && $key !== NULL) {
+                            unset($this->p_c_rel[$parent_id][$key]);
+                        }
+                    }
+                    // unset the node
+                    unset($this->nodes[$id]);
+                    if ($afterDelete) {
+                        call_user_func_array($this->events['afterDelete'],&$this, &$oTrashNode);
+                    }
+                }
+            }
             return true;
-        } else if (!$node && isset($this->p_c_rel[0]) &&
+        }
+        return false;
+    }
+
+    /**
+     * @func      nodeHasChildren
+     * @desc      returns true if Node has children
+     * @param     obj        $oNode         The node object
+     * @return    bool                     success
+     * @access    public
+     * @author    Marc Groot Koerkamp
+     */
+    function nodeHasChildren($oNode) {
+        if ($oNode && isset($this->p_c_rel[$oNode->id]) &&
+            count($this->p_c_rel[$oNode->id])) {
+            return true;
+        } else if (!$oNode && isset($this->p_c_rel[0]) &&
             count($this->p_c_rel[0])) { /* root node */
             return true;
         }
@@ -205,9 +344,9 @@ class tree extends object{
      * @access    public
      * @author    Marc Groot Koerkamp
      */
-    function getChildren($node) {
+    function getChildren($oNode) {
         $children = array();
-        if ($this->nodeHasChildren($node)) {
+        if ($this->nodeHasChildren($oNode)) {
             if (!$node) {
                 foreach ($this->p_c_rel[0] as $child_id) {
                     $children[$child_id] =& $this->nodes[$child_id][0];
@@ -221,152 +360,6 @@ class tree extends object{
         } return false;
     }
 
-    function expandNode(&$node) {
-        $node->expanded  = true;
-    }
-
-    function collapseNode(&$node) {
-        $node->expanded = false;
-    }
-    
-
-    /**
-     * @func      moveNode
-     * @decr      move node to another parent node
-     * @param     obj        $node         The node object
-     * @param     obj        $target       target node
-     * @return    bool                     success
-     * @access    public
-     * @author    Marc Groot Koerkamp
-     */
-    function moveNode($node, $target) {    
-        $parent_id = $node->parent_id;
-        $node_id = $node->id;
-        $key = array_search($node->id,$this->p_c_rel[$parent_id],true);
-        if ($key !== false && $key !== NULL) {
-            unset($this->p_c_rel[$parent_id][$key]);
-        } 
-        $this->p_c_rel[$target->id][] = $node_id;
-        return true;
-    }
-    
-    /**
-     * @func      deleteNode
-     * @decr      delete complete branch with $node as parent
-     * @param     obj        $node         The node object
-     * @return    bool                     success
-     * @access    public
-     * @author    Marc Groot Koerkamp
-     */
-    function deleteNode($node) {
-        if ($node->id !== 0 && $this->_sufficientPerm($node,SM_PERM_DEL,false)) {
-            $beforeDelete = $this->events['beforeDelete'];
-            $afterDelete = $this->events['afterDelete'];
-            if ($this->_sufficientPerm($node,SM_PERM_DEL,true)) {
-                $trash = array();
-                /* retrieve child nodes */
-                $this->_harvestNodes($node,$trash);
-                /* delete from bottom to top */
-                $trash = array_reverse($trash);
-                foreach ($trash as $trashnode) {
-                    if ($beforeDelete) {
-                        call_user_func_array($this->events['beforeDelete'],&$this, &$node);
-                    }
-                    if (isset($this->p_c_rel[$trashnode->id])) {
-                        unset($this->p_c_rel[$trashnode->id]);
-                    }
-                    unset($this->nodes[$trashnode->id]);
-                    if ($afterDelete) {
-                        call_user_func_array($this->events['afterDelete'],&$this, &$node);
-                    }
-                }
-                if ($beforeDelete) {
-                    call_user_func_array($this->events['beforeDelete'],&$this, &$node);
-                }
-                $key = array_search($node->id,$this->p_c_rel[$node->parent_id],true);
-                if ($key !== false && $key !== NULL) {
-                    unset($this->p_c_rel[$parent_id][$key]);
-                }
-                unset($this->nodes[$node->id]); 
-                if ($afterDelete) {
-                    call_user_func_array($this->events['afterDelete'],&$this, &$node);
-                }
-                return true;
-            }
-        }
-        return false;
-    }
-
-    /**
-     * @func       _harvestNodes
-     * @desc       Retrieve all child nodes
-     * @param      obj      $node        The node object
-     * @param      array    $nodes       array of node obj
-     * @return     bool                  success
-     * @access     private
-     * @author     Marc Groot Koerkamp
-     */
-    function _harvestNodes($node, &$nodes) {
-        $children = $this->getChildren($node);
-        foreach ($children as $child) {
-            $nodes[] = $child;
-            if ($this->hasChildren($child)) {
-                $this->_harvestNodes($child,$nodes);
-            }
-        }
-        return true;
-    }
-
-    /* obsolete */
-    // move me to optional visualisation class that can be added as var
-    function getNodeArray(&$res, $node = false, $incl_collapsed = false, $incl_invisible = true, $sort = false, $sortmethod = false, $reverse = false,
-                           $maxdepth=0, $_depth = 0, $_visble = true, $_parent = 0) {
-        if (!$node) {
-            $node = $this->nodes[0];
-        }
-        $id = $node->id;
-        /* get children */
-        $children = $this->getChildren($node);
-        //echo '<b>children:</b><br>';
-        //print_r($children);
-        if ($children && (!$maxdepth || $depth < $maxdepth)) {
-            $res[$id] = array(&$node,  'HAS_CHILDREN' => true,
-                                       'DEPTH' => $_depth,
-                                       'VISIBLE' => $_visible,
-                                       'EXPANDED' => $this->expanded[$id],
-                                       'PARENT_ID' => $_parent);
-            if ($sort) {
-                $this->sortNodes($children,$sort, $sortmethod, $reverse);
-            }
-            ++$_depth;
-            foreach($children as $child_id => $child) {
-                $visible = $this->c_p_rel[$child_id][$id];
-                if ($incl_invisible && $incl_collapsed) {
-                    $this->getNodeArray($res, $child, $incl_collapsed, $incl_invisible, $sort, $sortmethod, $reverse, $maxdepth, $_depth, $_visible, $id);
-                } else if ($visible && $incl_collapsed) {
-                    $this->getNodeArray($res, $child, $incl_collapsed, $incl_invisible, $sort, $sortmethod, $reverse, $maxdepth, $_depth, $_visible, $id);
-                }
-            }
-            $firstnode = reset($children);
-            $lastnode = end($children);
-            $res[$firstnode->id]['FIRST'] = true;
-            $res[$lastnode->id]['LAST'] = true;
-        } else {
-            $res[$id] = array(&$node,  'HAS_CHILDREN' => false,
-                                       'DEPTH' => $_depth,
-                                       'VISIBLE' => $_visible,
-                                       'EXPANDED' => false,
-                                       'PARENT_ID' => $_parent);
-        }
-        return true;
-    }
-        /* has_children  OK*/
-        /* first  OK*/
-        /* last  OK*/
-        /* visible OK */
-        /* depth OK*/
-        /* parent_id OK */
-        /* other parents ? */
 
     /**
      * @func       sortNodes
@@ -381,7 +374,7 @@ class tree extends object{
      * @access     public
      * @author     Marc Groot Koerkamp
      */
-    
+
     function sortNodes(&$nodes, $sort, $sortmethod = SM_SORT_DEFAULT, $reverse=false) {
         // copy sort var to sort field
         foreach ($nodes as $node) {
@@ -414,63 +407,97 @@ class tree extends object{
         return ($a->sort > $b->sort) ? -1 : 1;
     }
 
-    function _nodecmpcase($a,$b) {
-        return strcasecmp($a->sort, $b->sort);
-    }
-    
-    function _nodecmpstring($a,$b) {
-        return strcmp($a->sort, $b->sort);
-    }
-
-    function _nodecmpnatcase($a,$b) {
-        return strnatcasecmp($a->sort,$b->sort);
-    }
-
-    function _nodecmpnat($a,$b) {
-        return strnatcmp($a->sort,$b->sort);
-    }
+    function _nodecmpcase($a,$b)    { return strcasecmp($a->sort, $b->sort);   }
+    function _nodecmpstring($a,$b)  { return strcmp($a->sort, $b->sort);       }
+    function _nodecmpnatcase($a,$b) { return strnatcasecmp($a->sort,$b->sort); }
+    function _nodecmpnat($a,$b)     { return strnatcmp($a->sort,$b->sort);     }
 
     function _nodecmpnumeric($a,$b) {
         if ((float) $a->sort == (float) $b->sort) return 0;
         return ((float) $a->sort > (float) $b->sort) ? -1 : 1;
     }
     /* end nodecompare functions */
-    
-    
+
+
     /**
-     * Check for permissions
-     *
-     * @param     obj        $node        The node object
-     * @param     int        $perm        Sufficient permission
-     * @param     bool    $recursive    Recursive check
-     * @return     bool    $ret        success
-     *
+     * @func       _harvestNodes
+     * @desc       Retrieve all nodes belonging to a subtree
+     * @param      obj      $node        The node object
+     * @param      array    $nodes       array of node obj
+     * @return     bool                  success
      * @access     private
      * @author     Marc Groot Koerkamp
      */
-    function _sufficientPerm($node,$perm, $recursive = false) {
-                $ret = true;
-        if (($node->perm & $perm) != $perm) {
-            return false;
-        }
-        if ($recursive) {
-            $children = $this->getChildren($node);
-            foreach ($children as $child) {
-                if (($child->perm & $perm) == $perm) {
-                    return false;
-                }
-                if ($this->hasChildren($node)) {
-                    $ret = $this->_sufficientPerm($child, $perm, $recursive);
-                    if (!$ret) {
-                        return false;
-                    }
-                }
+    function _harvestNodes($node, &$nodes) {
+        $children = $this->getChildren($node);
+        foreach ($children as $child) {
+            $nodes[] = $child;
+            if ($this->hasChildren($child)) {
+                $this->_harvestNodes($child,$nodes);
             }
         }
-        return $ret;
-    }    
-    
-    
+        return true;
+    }
+
+
+    /**
+     * @func      _checkPermissions
+     * @desc      Check for suffient permissions
+     * @param     arr|int    $vPermissions AclList or simple permissions int
+     * @param     int        $iWhat        Which permissions bit are involved
+     * @param     str        $sUid         uid to check
+     * @param     arr        $aGid         groups to check
+     * @return    bool                     success
+     * @access    private
+     * @author    Marc Groot Koerkamp
+     */
+    function _checkPermission($vPermissions, $iWhat, $sUid, $aGid) {
+        $bResult = true;
+        if ($this->enable_acl) {
+            // use tree defaults if uid/gid are not supplied
+            if (!$sUid) $sUid = $this->uid;
+            if (!count($aGid)) $aGid = $this->gid;
+            $bResult = acl::checkaccess($vPermissions,$sUid,$aGid,$iWhat);
+        } else {
+            if ($vPermissions & $iWhat == $iWhat) {
+               $bResult = true;
+            }
+        }
+        return $bResult;
+    }
+
+    /**
+     * @func      _alterPermissions
+     * @desc      Alter the specified permissions bits
+     * @param     arr|int    $vPermissions AclList or simple permissions int
+     * @param     int        $iWhat        Which permissions bit are involved
+     * @param     str        $sUid         uid to check
+     * @param     arr        $aGid         groups to check
+     * @param     bool       $bSet         set or remove
+     * @return    bool                     success
+     * @access    private
+     * @author    Marc Groot Koerkamp
+     */
+    function _alterPermission(&$vPermission,$iWhat, $sUid, $aGid, $bSet = true) {
+        $bResult = true;
+        if ($this->enable_acl) {
+            // use tree defaults if sUid/aGid are not supplied
+            if (!$sUid) $sUid = $this->uid;
+            if (!count($aGid)) $aGid = $this->gid;
+
+            if (! acl::alterMyPerm($vPermission,$iWhat, $sUid, $aGid, $bSet)) {
+                return false;
+            }
+        } else {
+            if ($bSet) {
+               $vPermission = ($vPermission ^ $iWhat) + ($vPermission & $iWhat);
+            } else {
+               $vPermission = ($vPermission | $iWhat) - $iWhat;
+            }
+        }
+        return $bResult;
+    }
+
 
     /* events */
     function beforeMove() {
@@ -491,6 +518,7 @@ class tree extends object{
     function onExpand() {
     }
 
+
 }
 
 class node extends object{
@@ -499,20 +527,13 @@ class node extends object{
      * Contructor
      *
      * @param     int        $id            Node identifier
-     * @param    arr        $acl        Access Control List
      *
      * @access     public
      * @author     Marc Groot Koerkamp
      */
-    function node($id=0, $acl = false) {
-        if (!$acl) {
-           $acl =& new acl(array('self' => SM_ACL_ALL));
-        }
+    function node($id=0) {
         $this->id = $id;
-        $this->acl = $acl;
 
-//        $this->own = '';
-//        $this->grp = '';
         /* set the sleep notifyer */
         //$this->listen['sleep'] = array(&$this, '_sleep');
     }
@@ -520,21 +541,5 @@ class node extends object{
     function _sleep() {
     }
 }
-
-/* permisions */
-define('SM_ACL_LOOKUP',1);      /* user may view node */
-define('SM_ACL_READ',2);        /* user may see node content */
-define('SM_ACL_WRITE',4);       /* user may adapt node content */
-define('SM_ACL_INSERT',8);      /* user may add child nodes */
-define('SM_ACL_CREATE',16);     /* user may contain child nodes that can contain nodes */
-define('SM_ACL_DEL',32);        /* user may delete node */
-define('SM_ACL_ADM',64);        /* user may modify acl entry */
-/* permissions macro's */
-define('SM_ACL_NONE',0);
-define('SM_ACL_RO',3);
-define('SM_ACL_RW',7);
-define('SM_ACL_FULL',63);
-define('SM_ACL_ALL',127);
-
 
 ?>
