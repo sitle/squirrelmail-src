@@ -1,7 +1,12 @@
 <?php
 
-//define('PATH', substr($HTTP_SERVER_VARS["PATH_TRANSLATED"], 0 ,strrpos($HTTP_SERVER_VARS['PATH_TRANSLATED'], '/') + 1));
-define('PATH', 'C:/Documents and Settings/Paul James/My Documents/Docs/wtf/');
+/*
+ * Modified by SquirrelMail Development Team
+ * $Id$
+ */
+
+/* Define PATH, DB vars in config.php */
+include('site-config.php');
 
 include(PATH.'wtf.config.php');
 
@@ -11,13 +16,19 @@ $wtf = new wtf();
 
 $wtf->loadThing();
 
-echo '<p>';
+if ( $wtf->user->skin == 'sqmail' ) {
+  sqmNavMenu($wtf->thing);
+}
 
+echo '<content>';
 $wtf->doOp();
+echo '</content>';
 
-echo '</p>';
-
-wikiMenu($wtf->thing);
+if ( $wtf->user->skin == 'sqmail' ) {
+  sqmEditMenu($wtf->thing);
+} else {
+  wikiMenu($wtf->thing);
+}
 
 $wtf->display();
 
