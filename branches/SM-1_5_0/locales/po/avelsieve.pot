@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-01-22 16:55+0200\n"
+"POT-Creation-Date: 2004-04-01 20:12+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -90,6 +90,9 @@ msgstr ""
 msgid ""
 "The rule will trigger if the following addresses appear anywhere in the "
 "message's headers:"
+msgstr ""
+
+msgid "To: or Cc"
 msgstr ""
 
 msgid "AND (Every item must match)"
@@ -270,46 +273,18 @@ msgstr ""
 msgid "SPAM Lists to check against"
 msgstr ""
 
-msgid "Error Encountered"
-msgstr ""
-
-msgid "For <strong>ALL</strong> incoming messages; "
+msgid "Whitelist"
 msgstr ""
 
 msgid ""
-"All messages considered as <strong>SPAM</strong> (unsolicited commercial "
-"messages)"
+"Messages that match any of these header rules will never end up in Junk "
+"Folders or regarded as SPAM."
 msgstr ""
 
-msgid "matching the Spam List(s):"
+msgid "Apply Changes"
 msgstr ""
 
-#, php-format
-msgid "and with score greater than %s"
-msgstr ""
-
-msgid "will be"
-msgstr ""
-
-msgid "stored in the Junk Folder."
-msgstr ""
-
-msgid "stored in the Trash Folder."
-msgstr ""
-
-msgid "discarded."
-msgstr ""
-
-msgid "If"
-msgstr ""
-
-msgid "<em>any</em> of the following mail headers match: "
-msgstr ""
-
-msgid "<em>all</em> of the following mail headers match: "
-msgstr ""
-
-msgid "the header"
+msgid "Error Encountered"
 msgstr ""
 
 msgid "is"
@@ -358,6 +333,51 @@ msgid "exists"
 msgstr ""
 
 msgid "does not exist"
+msgstr ""
+
+msgid "For <strong>ALL</strong> incoming messages; "
+msgstr ""
+
+msgid ""
+"All messages considered as <strong>SPAM</strong> (unsolicited commercial "
+"messages)"
+msgstr ""
+
+msgid "unless"
+msgstr ""
+
+msgid "or"
+msgstr ""
+
+msgid "matching the Spam List(s):"
+msgstr ""
+
+#, php-format
+msgid "and with score greater than %s"
+msgstr ""
+
+msgid "will be"
+msgstr ""
+
+msgid "stored in the Junk Folder."
+msgstr ""
+
+msgid "stored in the Trash Folder."
+msgstr ""
+
+msgid "discarded."
+msgstr ""
+
+msgid "If"
+msgstr ""
+
+msgid "<em>any</em> of the following mail headers match: "
+msgstr ""
+
+msgid "<em>all</em> of the following mail headers match: "
+msgstr ""
+
+msgid "the header"
 msgstr ""
 
 msgid "the size of the message is"
@@ -523,9 +543,6 @@ msgid ""
 msgstr ""
 
 msgid "Editing Mail Filtering Rule"
-msgstr ""
-
-msgid "Apply Changes"
 msgstr ""
 
 msgid "Message Filters"
