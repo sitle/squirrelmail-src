@@ -74,11 +74,11 @@ else  // call class method
   $methodName = 'class_'.$method;
 }
 
-$foowd->debug('msg', 'display result using template');
-
 if ( $result === TRUE )
 {
-  $foowd->template->display($foowd->getTemplateName($className, $methodName));
+  $tplName = $foowd->getTemplateName($className, $methodName);
+  $foowd->debug('msg', 'display result using template: ' . $tplName);
+  $foowd->template->display($tplName);
 }
 else 
   trigger_error("Previous error, no defined result", E_USER_NOTICE);

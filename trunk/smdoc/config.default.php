@@ -13,6 +13,7 @@ define('SM_PATH', 'lib/');
 define('FOOWD_DIR', '../foowd/lib/');
 define('CFG_PATH','config/');
 define('TEMPLATE_PATH','templates/');
+define('DATETIME_FORMAT', 'Y/m/d h:ia'); // formatting string to format dates
 
 $foowd_parameters = array(
 
@@ -35,7 +36,6 @@ $foowd_parameters = array(
           'email_webmaster' => 'webmaster@example.org',
             'email_noreply' => 'noreply@example.org',
                 'site_name' => 'Default Foowd site',
-          'datetime_format' => 'D jS F Y \a\t h:ia',
     'allow_duplicate_title' => FALSE,
                    ),
 
@@ -74,7 +74,7 @@ $foowd_parameters = array(
             'user_path' => SM_PATH . 'smdoc.class.user.php',
        'user_auth_type' => 'session',
       'anon_user_class' => 'foowd_anonuser',
-       'anon_user_path' => FOOWD_DIR . 'class.anonuser.php',
+       'anon_user_path' => SM_PATH . 'class.anonuser.php',
        'anon_user_name' => 'Anonymous',
         'anon_user_god' => FALSE,
         'password_salt' => '',
