@@ -293,7 +293,7 @@ class Rfc822Header {
                 // check the next token in case comments appear in the middle of email addresses
                 $prevToken = end($aTokens);
                 if (!in_array($prevToken,$aSpecials,true)) {
-                    if (isset($address{$i+1}) && !in_array($address{$i+1},$aSpecials,true)) {
+                    if ($i+1<strlen($address) && !in_array($address{$i+1},$aSpecials,true)) {
                         $iEnd = strpos($address,' ',$i+1);
                         if ($iEnd) {
                             $sNextToken = trim(substr($address,$i+1,$iEnd - $i -1));
@@ -503,6 +503,38 @@ class Rfc822Header {
         }
         $this->content_type = $content_type;
     }
+    
+    /* RFC2184 */
+    function processParameters($aParameters) { 
+        $aResults = array();
+	$aCharset = array();
+	// handle multiline parameters
+        foreach($aParameters as $key => $value) {
+	    if ($iPos = strpos($key,'*')) {
+	        $sKey = substr($key,0,$iPos);
+		if (!isset($aResults[$sKey])) {
+		    $aResults[$sKey] = $value;
+		    if (substr($key,-1) == '*') { // parameter contains language/charset info
+		        $aCharset[] = $sKey;
+		    }
+	        } else {
+		    $aResults[$sKey] .= $value;
+		}
+	    }
+        }
+	foreach ($aCharset as $key) {
+	    $value = $aResults[$key];
+	    // extract the charset & language
+	    $charset = substr($value,0,strpos($value,"'"));
+	    $value = substr($value,strlen($charset)+1);
+	    $language = substr($value,0,strpos($value,"'"));
+	    $value = substr($value,strlen($charset)+1);
+	    // FIX ME What's the status of charset decode with language information ????
+	    $value = charset_decode($charset,$value);
+	    $aResults[$key] = $value;
+	}
+	return $aResults;    
+    }
 
     function parseProperties($value) {
         $propArray = explode(';', $value);
@@ -519,7 +551,7 @@ class Rfc822Header {
                 $propResultArray[$key] = $val;
             }
         }
-        return $propResultArray;
+        return $this->processParameters($propResultArray);
     }
 
     function parseDisposition($value) {
