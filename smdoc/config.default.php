@@ -16,11 +16,11 @@
  */
 
 /** Path for smdoc includes */
-define('SM_DIR',    'lib/');
+define('SM_DIR',    './lib/');
 /** Path for input classes */
-define('INPUT_DIR', 'lib/input/');
+define('INPUT_DIR', './lib/input/');
 /** Path for template files */
-define('TEMPLATE_PATH','templates/');
+define('TEMPLATE_PATH','./templates/');
 /** Preferred Date display format */
 define('DATETIME_FORMAT', 'Y/m/d h:ia');
 /** Location of tmp directory for diff */
@@ -159,6 +159,13 @@ include_once(SM_DIR . 'smdoc.class.namelookup.php');
 include_once(SM_DIR . 'smdoc.class.translation.php');
 /** Customized user implementation. */
 include_once(SM_DIR . 'smdoc.class.user.php');
+
+/** Other object types */
+include_once(SM_DIR . 'class.text.plain.php');
+include_once(SM_DIR . 'smdoc.class.text.textile.php');
+include_once(SM_DIR . 'smdoc.class.news.php');
+include_once(SM_DIR . 'smdoc.class.spec.php');
+
 
 /*
  * Session initialization
