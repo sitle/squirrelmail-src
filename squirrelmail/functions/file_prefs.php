@@ -109,8 +109,8 @@ function savePrefValues($data_dir, $username) {
         }
     }
     fclose($file);
-    copy("$filename.tmp","$filename");
-    unlink("$filename.tmp");
+    @copy("$filename.tmp","$filename");
+    @unlink("$filename.tmp");
     chmod($filename, 0600);
 }
 
