@@ -599,6 +599,7 @@ class foowd_object
     $this->foowd->track('foowd_object->delete');
 
     $result = $this->foowd->database->delete($this);
+    smdoc_external::deleteShortName($this->foowd, $this);
  
     $this->foowd->track(); 
     return $result ? TRUE : FALSE;
@@ -793,10 +794,9 @@ class foowd_object
    */
   function getWorkspaceList() 
   {
-    $workspace_name = getClassName(WORKSPACE_CLASS_ID);
     $workspaceArray = array(0 => $this->foowd->config_settings['workspace']['workspace_base_name']);
     $workspaces = $this->foowd->getObjList(NULL, NULL, array('classid' => WORKSPACE_CLASS_ID),
-                                           'title', NULL, NULL, FALSE, FALSE);
+                                           'title', NULL, FALSE, FALSE);
     foreach ($workspaces as $workspace) 
       $workspaceArray[$workspace['objectid']] = htmlspecialchars($workspace['title']);
 
@@ -961,8 +961,12 @@ class foowd_object
     $this->foowd->track('foowd_object->method_admin');
 
     include_once(INPUT_DIR.'input.form.php');
-    $adminForm = new input_form('adminForm');
 
+    $shortForm = new input_form('shortform');
+    smdoc_external::addShortName($this->foowd, $this, $shortForm);
+    $this->foowd->template->assign_by_ref('shortform', $shortForm);
+ 
+    $adminForm = new input_form('adminForm');
     $this->addFormItemsToAdminForm($adminForm);
     if ( $adminForm->submitted() && $this->foowd_changed )
     {
@@ -971,8 +975,8 @@ class foowd_object
       else
         $this->foowd->template->assign('failure', OBJECT_UPDATE_FAILED);
     }
-
     $this->foowd->template->assign_by_ref('form', $adminForm);
+    
     $this->foowd->track();
   }
 

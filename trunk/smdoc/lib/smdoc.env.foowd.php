@@ -24,6 +24,14 @@ include_once(SM_DIR . 'env.foowd.php');
  */
 class smdoc extends foowd
 {
+  /**
+   * Array of foowd configuration settings
+   *
+   * @var array
+   * @access public
+   */
+  var $config_settings;
+
 
   /**
    * Constructs a new environment object.
@@ -186,27 +194,29 @@ class smdoc extends foowd
   {
     $this->track('smdoc->getObj', $where, $in_source);
 
-    if ( isset($where['objectid']) )
-      $oid = $where['objectid'];
-    else
-      $oid = $this->config_settings['site']['default_objectid'];
+    $new_obj = NULL;
 
-    // @ELH - search for external items first
-    $new_obj =& smdoc_external::factory($this, $oid);
+    if ( $in_source == NULL && isset($where['classid']) )
+    {
+      switch($where['classid'])
+      {
+        case USER_CLASS_ID: 
+          global $USER_SOURCE;
+          $in_source = $USER_SOURCE;
+          unset($where['classid']);
+          break;
+        case EXTERNAL_CLASS_ID:
+          if ( isset($where['objectid']) )
+            $oid = $where['objectid'];
+          else
+            $oid = $this->config_settings['site']['default_objectid'];
+          $new_obj =& smdoc_external::factory($this, $oid);
+          break;
+      }
+    }
+
     if ( $new_obj == NULL )
     {
-      if ( $in_source == NULL && isset($where['classid']) )
-      {
-        switch($where['classid'])
-        {
-          case USER_CLASS_ID: 
-            global $USER_SOURCE;
-            $in_source = $USER_SOURCE;
-            unset($where['classid']);
-            break;
-        }
-      }
-
       $new_obj = &$this->database->getObj($where, $in_source, $indexes, $setWorkspace);
       if ( $new_obj == NULL && $setWorkspace &&
            isset($where['workspaceid']) && $where['workspaceid'] != 0 )

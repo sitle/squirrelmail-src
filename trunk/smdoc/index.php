@@ -1,54 +1,90 @@
 <?php
+/*
+ * Copyright (c) 1999-2003 The SquirrelMail Project Team
+ * Licensed under the GNU GPL. For full terms see the file COPYING.
+ *
+ * This file is an addition/modification to the 
+ * Framework for Object Orientated Web Development (Foowd).
+ *
+ * $Id$
+ */
 
 require('config.php');             // include config and Foowd functions
 
-// init Foowd
+/* 
+ * Initialize SMDoc/FOOWD environment
+ */
 $foowd_parameters['debug']['debug_enabled'] = TRUE;
 $foowd = new smdoc($foowd_parameters);
 
-// get object details
-$objectName = new input_querystring('object', REGEX_TITLE);
-$objectid = new input_querystring('objectid', '/^[0-9-]*$/');
-$version    = new input_querystring('version', '/^[0-9]*$/');
-$className  = new input_querystring('class', REGEX_TITLE);
-$classid = new input_querystring('classid', '/^[0-9-]*$/', NULL);
-$method = new input_querystring('method', NULL);
+$objectMethod = TRUE;
 
-// convert object name into id (if name given rather than id)
-if (!isset($objectid->value) && isset($objectName->value)) {
-	$objectid->set(crc32(strtolower($objectName->value)));
+/*
+ * Check for shorthand objectid using well-known object name:
+ * e.g. object=sqmindex, object=faq, object=privacy, etc.
+ */
+$objectName_q = new input_querystring('object', REGEX_TITLE);
+if ( $objectName_q->wasValid )
+{
+  $result = smdoc_external::lookupObjectName($foowd, 
+                                   $objectName_q->value,
+                                   $objectid, // defined
+                                   $classid); // defined
+  if ( !$result )
+    $_SESSION['error'] = OBJECT_NOT_FOUND;
+}
+else
+{
+  $classid_q = new input_querystring('classid', '/^[0-9-]*$/', NULL);
+  $classid = $classid_q->value;
+
+  $objectid_q = new input_querystring('objectid', '/^[0-9-]*$/', NULL);
+  $objectid = $objectid_q->value;
 }
 
-// convert class name into id (if name given rather than id)
-if (!isset($classid->value) && isset($className->value)) {
-    $className = $className->value;
-    $classid->set(crc32(strtolower($className)));
-} elseif (!isset($objectid->value)) {
-    $objectid->set($foowd->config_settings['site']['default_objectid']);
+if ( $objectid == NULL )
+  $objectid = $foowd->config_settings['site']['default_objectid'];
+
+$version_q = new input_querystring('version', '/^[0-9]*$/');
+$method_q = new input_querystring('method', NULL);
+$method = $method_q->value;
+
+$className_q  = new input_querystring('class', REGEX_TITLE, NULL);
+if ( $className_q->wasValid )
+{
+  $className = $className_q->value;
+  $objectMethod = FALSE;
 }
+elseif ( $classid != NULL )
+  $className = getClassName($classid);
 
-$objectid = $objectid->value;
-$classid = $classid->value;
-$method = $method->value;
-$result = FALSE;
-
-// If form has been cancelled, redirect to view of that object
+/*
+ * If form has been cancelled, redirect to view of that object
+ */
 if ( sqGetGlobalVar('form_cancel', $value, SQ_FORM) )
 {
-  if ( $objectid == NULL )
-    $objectid = $foowd->config_settings['site']['default_objectid'];
-
   unset($_SESSION['error']);
   $_SESSION['ok'] = OBJECT_UPDATE_CANCEL;
+
   $uri_arr['objectid'] = $objectid;
-  $uri_arr['classid']  = $classid;
-  if ( $version->wasSet )
-    $uri_arr['version']  = $version->value;
+  if ( !empty($classid) )
+    $uri_arr['classid']  = $classid;
+  if ( $version_q->wasSet )
+    $uri_arr['version']  = $version_q->value;
   $foowd->loc_forward( getURI($uri_arr, FALSE));
   exit;
 }
 
-if (isset($objectid))  // fetch object and call object method
+$result = FALSE;
+
+/**
+ * Processing an object method.
+ * URL might look like:
+ * index.php?object=faq  (default method view)
+ * index.php?object=faq&method=admin
+ * index.php?objectid=3218321&classid=43872432&method=groups
+ */
+if ( $objectMethod )  // fetch object and call object method
 {
   $foowd->debug('msg', 'fetch and call object method');
 
@@ -56,27 +92,27 @@ if (isset($objectid))  // fetch object and call object method
     $method = $foowd->config_settings['site']['default_method'];
 
   $where['objectid'] = $objectid;
-  $where['classid']  = $classid;
-  if ( $version->wasSet )
-    $where['version']  = $version->value;
+  if ( !empty($classid) )
+    $where['classid']  = $classid;
+  if ( $version_q->wasSet )
+    $where['version']  = $version_q->value;
 
   $object = &$foowd->getObj($where);
-  if ( $object ) 
-  {
-    if (is_object($object)) 
-      $className = getClassName($object->classid);
-    else 
-      $className = getClassName($classid);
 
+  if ( is_object($object) ) 
+  {
+    $classid = $object->classid;
+    $className = getClassName($classid);
     $result = $foowd->method($object, $method);
     $methodName = 'object_'.$method;
   }
   else 
   {
-    $className = getClassName($classid);
+    if ( empty($className) )
+      $className = 'unknown';
+
     trigger_error('Object not found: ' 
-                  . (isset($objectName->value) ?$objectName->value : $objectid)
-                  . ' (' . $className . ')', E_USER_ERROR);
+                  . $objectid . ' (' . $className . ')', E_USER_ERROR);
   }
 } 
 else  // call class method

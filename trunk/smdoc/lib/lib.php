@@ -35,9 +35,11 @@ Foowd function library
  * @package Foowd/Lib
  * @param mixed var Variable to output.
  */
-function show($var) {
+function show($var) 
+{
   echo '<pre>';
-  if (is_object($var)) {
+  if (is_object($var)) 
+  {
     if ( isset($var->config_settings) ) 
       unset($var->config_settings);
     unset($var->foowd);

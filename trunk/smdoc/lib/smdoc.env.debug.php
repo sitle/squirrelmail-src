@@ -65,7 +65,10 @@ class smdoc_debug extends foowd_debug
     {
       echo '<div class="debug_output_heading">External Resources</div>'. "\n";
       global $EXTERNAL_RESOURCES;
-      show($EXTERNAL_RESOURCES);        
+      show($EXTERNAL_RESOURCES);       
+      echo '<div class="debug_output_heading">Internal Resources</div>'. "\n";
+      global $INTERNAL_LOOKUP;
+      show($INTERNAL_LOOKUP);
     }    
 
     echo '</div>';
