@@ -19,30 +19,27 @@ along with Foowd; if not, write to the Free Software
 Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 */
 
-/*
+/**
+ * The FOOWD base system class, this class is the base class for all 
+ * other system classes. It has member functions for saving objects 
+ * to the storage medium, administrating objects, etc. all the 
+ * base FOOWD object functionality.
+ * 
  * Modified by SquirrelMail Development
  * $Id$
+ * 
+ * @package smdoc
+ * @subpackage Foowd
  */
 
-/*
-class.object.php
-Foowd base object class
-*/
-
-/*
-The FOOWD base system class, this class is the base class for all other system
-classes. It has member functions for saving objects to the storage medium,
-administrating objects, etc. all the base FOOWD object functionality.
-*/
-
-/* Method permissions */
+/** Method permissions */
 setPermission('foowd_object', 'class', 'create', 'Gods');
 setPermission('foowd_object', 'object', 'admin', 'Gods');
 setPermission('foowd_object', 'object', 'revert', 'Gods');
 setPermission('foowd_object', 'object', 'delete', 'Gods');
 setPermission('foowd_object', 'object', 'clone', 'Gods');
 
-/* Class descriptor */
+/** Class descriptor/Meta information */
 setClassMeta('foowd_object', 'Base Object');
 
 /**
@@ -93,7 +90,7 @@ class foowd_object
    * The source the object is stored in.
    *
    * @access private
-   * @var str
+   * @var string
    */
   var $foowd_source;
 
@@ -115,7 +112,7 @@ class foowd_object
   /**
    * The objects title.
    *
-   * @var str
+   * @var string
    */
   var $title;
 
@@ -164,7 +161,7 @@ class foowd_object
   /**
    * Name of the user that created the object.
    *
-   * @var str
+   * @var string
    */
   var $creatorName;
 
@@ -185,7 +182,7 @@ class foowd_object
   /**
    * Name of the user that last updated the object.
    *
-   * @var str
+   * @var string
    */
   var $updatorName;
 
@@ -199,7 +196,7 @@ class foowd_object
   /**
    * Constructs a new Foowd objcct.
    *
-   * @param object foowd The foowd environment object.
+   * @param smdoc foowd Reference to the foowd environment object.
    * @param str title The objects title.
    * @param str viewGroup The user group for viewing the object.
    * @param str adminGroup The user group for administrating the object.
@@ -386,7 +383,7 @@ class foowd_object
   /**
    * Call a class method.
    *
-   * @param object foowd The foowd environment object.
+   * @param smdoc foowd Reference to the foowd environment object.
    * @param str className Name of the class to call the method upon.
    * @param str methodName Name of the method to call.
    * @return bool Success or failure
@@ -863,7 +860,7 @@ class foowd_object
    *
    * @static
    * @access protected
-   * @param object foowd The foowd environment object.
+   * @param smdoc foowd Reference to the foowd environment object.
    * @param str className The name of the class.
    */
   function class_create(&$foowd, $className) 

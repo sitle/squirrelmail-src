@@ -1,7 +1,12 @@
 <?php
-/* 
+/**
+ * Definition of Anonymous user
+ * 
  * Modified by SquirrelMail Development
  * $Id$
+ *
+ * @package smdoc
+ * @subpackage user
  */
 
 /**
@@ -14,13 +19,15 @@
  * need users.
  *
  * @author Paul James
+ * @package smdoc
+ * @subpackage user
  */
-class foowd_anonuser extends foowd_object {
-
+class foowd_anonuser extends foowd_object 
+{
   /**
    * Constructs a new anonymous user.
    *
-   * @param object foowd The foowd environment object.
+   * @param smdoc foowd Reference to the foowd environment object.
    */
   function foowd_anonuser(&$foowd) {
     $foowd->track('foowd_anonuser->constructor');
@@ -50,7 +57,9 @@ class foowd_anonuser extends foowd_object {
   function inGroup($groupName, $creatorid = NULL) { // *SQM
     if ($groupName == 'Everyone')
       return TRUE;
-    if ( $groupName == 'Nobody')
+    elseif ($groupName == 'Nobody')
+      return FALSE;
+    elseif ($groupName == 'Registered')
       return FALSE;
     if ($this->foowd->config_settings['user']['anon_user_god'])
       return TRUE;
