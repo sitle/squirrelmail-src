@@ -79,7 +79,6 @@ if ( !sqgetGlobalVar('composenew', $composenew, SQ_GET) ) {
 }
 /* end of get globals */
 
-
 /* Open a connection on the imap port (143) */
 
 $imapConnection = sqimap_login($username, $key, $imapServerAddress, $imapPort, 0);
@@ -97,6 +96,11 @@ if (isset($PG_SHOWALL)) {
 }
 else if( isset( $PG_SHOWNUM ) ) {
     $show_num = $PG_SHOWNUM;
+}
+
+if (!isset($show_num) || empty($show_num) || ($show_num == 0)) {
+    setPref($data_dir, $username, 'show_num' , 15);
+    $show_num = 15;
 }
 
 if (isset($newsort) && $newsort != $sort) {
@@ -195,6 +199,7 @@ if (isset($newsort)) {
 if (! isset($use_mailbox_cache)) {
     $use_mailbox_cache = 0;
 }
+
 
 if ($use_mailbox_cache && sqsession_is_registered('msgs')) {
     showMessagesForMailbox($imapConnection, $mailbox, $numMessages, $startMessage, $sort, $color, $show_num, $use_mailbox_cache);
