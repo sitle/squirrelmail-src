@@ -1,5 +1,4 @@
 <?php
-
 /**
  * display_messages.php
  *
@@ -11,6 +10,9 @@
  *
  * $Id$
  */
+
+//require plugin.php here to avois a do_hook error on session timeout
+require_once(SM_PATH . 'functions/plugin.php');
 
 /**
  * Find out where squirrelmail lives and try to be smart about it.
