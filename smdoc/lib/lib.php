@@ -274,22 +274,20 @@ function getTempDir() {
  * @param array parameters An array of querystring value pairs.
  * @return str A URI.
  */
-function getURI($parameters = NULL) { // create a site URI given object details and a method
-  if (defined('GETURI') && function_exists(GETURI)) {
-    return call_user_func(GETURI, $parameters);
-  } else { // create querystring uri
-    $uri = defined('BASE_URL') ? BASE_URL : 'http://'.$_SERVER['HTTP_HOST'];
-    $uri .= defined('FILENAME') ? FILENAME : $_SERVER['PHP_SELF'] . '?';
+function getURI($parameters = NULL, $relative = TRUE) { 
 
-    if (is_array($parameters)) {
-      foreach ($parameters as $name => $value) {
-        $uri .= $name.'='.$value.'&';
-      }
+  $uri = $relative ? '' : 
+         (defined('BASE_URL') ? BASE_URL : 'http://'.$_SERVER['HTTP_HOST']);
+
+  $uri .= defined('FILENAME') ? FILENAME : $_SERVER['PHP_SELF'] . '?';
+
+  if (is_array($parameters)) {
+    foreach ($parameters as $name => $value) {
+      $uri .= $name.'='.$value.'&';
     }
-    return substr($uri, 0, -1);
   }
+  return substr($uri, 0, -1);
 }
-
 
 /* Display functions */
 
@@ -380,7 +378,7 @@ function email(&$foowd, $to, $subject, $message, $headers = NULL, $para = NULL) 
  */
 function sendTestCookie(&$foowd) {
   if ($foowd->cookie_test) {
-    include_once(FOOWD_DIR.'input.cookie.php');
+    include_once(INPUT_DIR.'input.cookie.php');
     $cookieTest = new input_cookie('test', '/^[12]$/', 2);
     if ($cookieTest->value == 2) {
       $cookieTest->set(1);
@@ -400,7 +398,7 @@ function sendTestCookie(&$foowd) {
  */
 function cookieTest(&$foowd) {
   if ($foowd->cookie_test && $foowd->user_authType == 'cookie') {
-    include_once(FOOWD_DIR.'input.cookie.php');
+    include_once(INPUT_DIR.'input.cookie.php');
     $cookieTest = new input_cookie('test', '/^[12]$/', 2);
     if ($cookieTest->value == 2) {
       return FALSE;

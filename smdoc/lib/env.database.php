@@ -21,6 +21,7 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
 /*
  * Modified by SquirrelMail Development
+ * marked by *SQM
  * $Id$
  */
 
@@ -61,7 +62,14 @@ class foowd_db {
    *
    * @var array
    */
-  var $objects;
+  var $objects; // *SQM
+
+  /**
+   * Default table 
+   * 
+   * @var str
+   */
+  var $default_source;  // *SQM
 
   /**
    * Reference to the Foowd object.
@@ -81,6 +89,84 @@ class foowd_db {
   }
 
   /**
+   * Database factory method.
+   *
+   * Used for creating a database object of the correct sub-class. Given the
+   * name of the DB layer to use, the method will load the corrisponding DB
+   * layer class if it has not already been loaded.
+   *
+   * @static
+   * @param object foowd The foowd environment object.
+   * @param str type The type of database object to load.
+   * @return mixed The new database object or FALSE on failure.
+   */
+  function factory(&$foowd, $type) {
+    trigger_error('Function provided by smdoc_db: foowd_db->factory', E_USER_ERROR);
+  }
+
+  /**
+   * Destructs the storage object.
+   */
+  function destroy() {
+    trigger_error('Function provided by smdoc_db: foowd_db->destroy', E_USER_ERROR);
+  }
+
+  /**
+   * Execute query
+   *
+   * @abstract
+   * @access protected
+   * @param str query The query to execute
+   * @return resource The resulting query resource
+   */
+  function query($query) {
+    return FALSE;
+  }
+
+  /**
+   * Escape a string for use in SQL string
+   *
+   * @abstract
+   * @access protected
+   * @param str str String to escape
+   * @return str The escaped string
+   */
+  function escape($str) {
+    return FALSE;
+  }
+
+  /**
+   * Add an object reference to the loaded objects array.
+   *
+   * @access protected
+   * @param array indexes Array of indexes and values to find object by
+   * @param object object Reference of the object to add
+   */
+  function addToLoadedReference(&$object) {
+    trigger_error('Function provided by smdoc_db: foowd_db->addToLoadedReference', E_USER_ERROR);
+  }
+
+  /**
+   * Check if an object is referenced in the object reference array.
+   *
+   * @access protected
+   * @param array indexes Array of indexes and values to find object by
+   */
+  function &checkLoadedReference($indexes) {
+    trigger_error('Function provided by smdoc_db: foowd_db->checkLoadedReference', E_USER_ERROR);
+  }
+
+  /**
+   * Create a unique hash to store the object reference under.
+   *
+   * @access protected
+   * @param array indexes Array of indexes and values to find object by
+   */
+  function createHashFromIndexes($indexes) {
+    trigger_error('Function removed by smdoc: foowd_db->createHashFromIndexes', E_USER_ERROR);
+  }
+
+  /**
    * Build where clause from indexes array.
    *
    * @access protected
@@ -88,32 +174,57 @@ class foowd_db {
    * @param str conjuction Operand to use to join the elements of the clause
    * @return str The generated where clause.
    */
-  function buildWhere($indexes, $conjunction = 'AND') {
+  function buildWhere($indexes, $conjunction = 'AND')  // *SQM - much of method changed
+  {
+    // array('raw_where' => 'WHERE classid <> ERROR_CLASS_ID');
     if ( isset($index['raw_where']) )
         return $index['raw_where'];
 
     $where = '';
- 
+
     if ( $conjunction != 'AND' )
       $conjunction = ' OR';
 
-    foreach ($indexes as $key => $index) {
-      if ( !isset($index) )  
+    foreach ($indexes as $key => $index) 
+    {
+      if ( !isset($index) )
         continue;
 
       $where .= $conjunction;
-       
-      // standard 'classid' => ERROR_CLASS_ID
-      if (!is_array($index)) {
+
+      // array('classid' => ERROR_CLASS_ID, 'objectid' => 83921);
+      if (!is_array($index)) 
+      {
         $where .= ' '.$key.' = ';
-        $where .= is_numeric($index) ? $index : '\''.$index.'\'';
-        $where .= ' ';        
-      } else {
-        // dealing with an array as the $index
-        if ( !isset($index['index']) ) {
+        $where .= is_numeric($index) ? $index : '\''.$this->escape($index).'\'';
+        $where .= ' ';
+      } 
+      else 
+      {
+        // dealing with an array:
+        // Array (
+        //   [0] => OR
+        //   [1] => Array (
+        //            [index] => classid
+        //            [op] => =
+        //            [value] => 84324322
+        //        )
+        //   [2] => Array (
+        //            [index] => classid
+        //            [op] => =
+        //            [value] => 4324324324
+        //        )
+        // )
+        // SO, the key is a conjunction, 
+        // and $index is an array containing clauses that should 
+        // be grouped together with that conjunction
+        if ( !isset($index['index']) ) 
           $where .= $this->buildWhere($index, $key);
-        } else {
-          if ( !isset($index['value']) ) {
+        else 
+        {
+          // otherwise, we have an index/op/value array
+          if ( !isset($index['value']) ) 
+          {
             trigger_error('No value given for index "'.$index['index'].'".');
             $index['value'] = '';
           }
@@ -132,10 +243,10 @@ class foowd_db {
 
           $where .= ' '.$index['index'].' '.$index['op'].' ';
           $where .= is_numeric($value) ? $value : '\''.$value.'\'';
-          $where .= ' ';        
+          $where .= ' ';
         }
       }
-    }    
+    }
 
     return ' ('.substr($where, 3).') ';
   }
@@ -184,13 +295,13 @@ class foowd_db {
     $this->setWorkspace($indexes);
 
 // check previously loaded object reference
-    if ($object = &$this->checkLoadedReference($indexes, $source)) {
+    if ($object = &$this->checkLoadedReference($indexes, $source)) {    // *SQM
       return $object;
     }
 
 // set source
     if (!isset($source)) {
-      $source = $this->foowd->config_settings['database']['db_table'];
+      $source = $this->default_source;  // *SQM
     }
 
 // build joins
@@ -264,7 +375,7 @@ class foowd_db {
 
 // set source
     if (!isset($source)) {
-      $source = $this->foowd->config_settings['database']['db_table'];
+      $source = $this->default_source;  // *SQM
     }
 
 // set workspace
@@ -313,75 +424,7 @@ class foowd_db {
    * @return array An array of object meta data or of objects.
    */
   function &getObjList($indexes, $source = NULL, $order = NULL, $reverse = NULL, $offset = NULL, $number = NULL, $returnObjects = FALSE) {
-    $this->foowd->track('foowd_db->getObjList');
-
-// set source
-    if (!isset($source)) {
-      $source = $this->foowd->config_settings['database']['db_table'];
-    }
-
-// set workspace
-    $this->setWorkspace($indexes);
-
-// build where
-    $where = ' WHERE'.$this->buildWhere($indexes);
-
-// build order
-    if (isset($order)) {
-      if (is_array($order)) {
-        $order = ' ORDER BY '.join(', ', $order);
-      } else {
-        $order = ' ORDER BY '.$order;
-      }
-      if (isset($reverse) && !$reverse) {
-        $order .= ' DESC';
-      }
-    } else {
-      $order = '';
-    }
-
-// build limit
-    if (isset($number)) {
-      $limit = ' LIMIT ';
-      if (isset($offset)) {
-        $limit .= $offset.', ';
-      }
-      $limit .= $number;
-    } else {
-      $limit = '';
-    }
-
-    $select = 'SELECT '.$source.'.objectid AS objectid, '.$source.'.classid AS classid, '.$source.'.version AS version, '.$source.'.workspaceid AS workspaceid, '.$source.'.title AS title, '.$source.'.object AS object FROM '.$source.$where.$order.$limit;
-
-    if ($query = $this->query($select)) {
-      if ($this->num_rows($query) > 0) {
-        $return = array();
-        while ($record = $this->fetch($query)) {
-          if (!isset($return[$record['objectid']]) || $record['version'] > $return[$record['objectid']]['version']) {
-            if ($returnObjects) {
-              $return[$record['objectid']] = $this->foowd->unserialize($record['object']. $record['classid']);
-              $return[$record['objectid']]->foowd = &$this->foowd; // create Foowd reference
-              $return[$record['objectid']]->source = $source;
-              $this->addToLoadedReference($return[$record['objectid']]);
-            } else {
-              $return[$record['objectid']] = array(
-                'objectid' => $record['objectid'],
-                'classid' => $record['classid'],
-                'version' => $record['version'],
-                'workspaceid' => $record['workspaceid'],
-                'title' => $record['title']
-              );
-            }
-          }
-        }
-        $this->foowd->track(); return $return;
-      } else {
-        $this->foowd->track(); return FALSE;
-      }
-    } else {
-      $this->foowd->track(); return FALSE;
-    }
-
+    trigger_error('Function provided by smdoc: foowd_db->getObjList', E_USER_ERROR);
   }
 
   /**
@@ -391,109 +434,7 @@ class foowd_db {
    * @return bool Success or failure.
    */
   function save(&$object) {
-    $this->foowd->track('foowd_db->save');
-
-    if (!isset($object->foowd_update) || $object->foowd_update) {
-      $object->update(); // update object meta data
-    }
-
-    $serializedObj = serialize($object);
-
-    if (isset($object->foowd_source)) {
-      $source = $object->foowd_source;
-    } else {
-      $source = $this->foowd->config_settings['database']['db_table'];
-    }
-
-// build field array from object indexes
-    $fieldArray['object'] = $serializedObj;
-    foreach ($object->foowd_indexes as $index => $definition) {
-      if (isset($object->$index)) {
-        if ($object->$index == FALSE) {
-          $fieldArray[$index] = 0;
-        } else {
-          $fieldArray[$index] = $object->$index;
-        }
-      }
-    }
-
-// build where
-    $where = ' WHERE objectid = '.$object->foowd_original_access_vars['objectid']
-      .' AND version = '.$object->foowd_original_access_vars['version']
-      .' AND classid = '.$object->foowd_original_access_vars['classid']
-      .' AND workspaceid = '.$object->foowd_original_access_vars['workspaceid'];
-
-// build update query
-    $update = 'UPDATE '.$source.' SET ';
-    $foo = FALSE;
-    foreach($fieldArray as $field => $value) {
-      if ($foo) {
-        $update .= ', ';
-      }
-      if (isset($object->foowd_indexes[$field]['type']) && $object->foowd_indexes[$field]['type'] == 'INT') {
-        $update .= $field.' = '.$value;
-      } elseif (isset($object->foowd_indexes[$field]['type']) && $object->foowd_indexes[$field]['type'] == 'DATETIME') {
-        $update .= $field.' = \''.date($this->dateTimeFormat, $value).'\'';
-      } else {
-        $update .= $field.' = \''.$this->escape($value).'\'';
-      }
-      $foo = TRUE;
-    }
-    $update .= $where;
-
-// build insert query
-    $insert = 'INSERT INTO '.$source.' (';
-    $values = '';
-    $foo = FALSE;
-    foreach($fieldArray as $field => $value) {
-      if ($foo) {
-        $insert .= ', ';
-        $values .= ', ';
-      }
-      $insert .= $field;
-      if (isset($object->foowd_indexes[$field]['type']) && $object->foowd_indexes[$field]['type'] == 'INT') {
-        $values .= $value;
-      } elseif (isset($object->foowd_indexes[$field]['type']) && $object->foowd_indexes[$field]['type'] == 'DATETIME') {
-        $values .= '\''.date($this->dateTimeFormat, $value).'\'';
-      } else {
-        $values .= '\''.$this->escape($value).'\'';
-      }
-      $foo = TRUE;
-    }
-    $insert .= ') VALUES ('.$values.')';
-
-    $saveResult = 0;
-// try to update existing record
-    $result = $this->query($update);
-    if ($this->query_success($result)) {
-      $saveResult = 1;
-    } else {
-// if fail, write new record
-      $result = $this->query($insert);
-      if ($this->query_success($result)) {
-        $saveResult = 2;
-      } else {
-// if fail, modify table to include indexes from class definition
-        if ($this->alterTable($source, $fieldArray)) {
-          $result = $this->query($update);
-          if ($this->query_success($result)) {
-            $saveResult = 3;
-          } else {
-            $result = $this->query($insert);
-            if ($this->query_success($result)) {
-              $saveResult = 4;
-            }
-          }
-        }
-      }
-    }
-
-// tidy old archived versions
-    if ($saveResult && $object->updated < time() - $this->foowd->tidy_delay) {
-      $this->tidy($object);
-    }
-
-    $this->foowd->track(); return $saveResult;
+    trigger_error('Function provided by smdoc: foowd_db->save', E_USER_ERROR);
   }
 
   /**
@@ -506,9 +447,10 @@ class foowd_db {
     $this->foowd->track('foowd_db->delete');
 
     if (isset($object->foowd_source)) {
-      $source = $object->foowd_source;
+      $source = $object->foowd_source['table'];           // *SQM
+      $makeTable = $object->foowd_source['table_create']; // *SQM
     } else {
-      $source = $this->foowd->config_settings['database']['db_table'];
+      $source = $this->default_source;  // *SQM
     }
 
 // build delete
@@ -518,10 +460,10 @@ class foowd_db {
       .' AND workspaceid = '.$object->foowd_original_access_vars['workspaceid'];
 
     if ($this->query($delete)) {
-      $this->foowd->track(); 
+      $this->foowd->track();
       return TRUE;
     } else {
-      $this->foowd->track(); 
+      $this->foowd->track();
       return FALSE;
     }
   }
@@ -538,7 +480,7 @@ class foowd_db {
     if (isset($object->foowd_source)) {
       $source = $object->foowd_source;
     } else {
-      $source = $this->foowd->config_settings['database']['db_table'];
+      $source = $this->default_source;  // *SQM
     }
 
 // build delete

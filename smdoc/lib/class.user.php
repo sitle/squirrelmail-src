@@ -26,7 +26,6 @@ Foowd user object class
 
 /* Method permissions */
 setPermission('foowd_user', 'class', 'create', 'Everyone'); // we want anyone to be able to create a user so we override this permission for this object with the empty string
-setPermission('foowd_user', 'object', 'xml', 'Gods'); // we don't want just anyone being able to see our encrypted user passwords
 setPermission('foowd_user', 'object', 'groups', 'Gods');
 setPermission('foowd_user', 'object', 'update', 'Author');
 
@@ -257,7 +256,7 @@ class foowd_user extends foowd_object {
       switch ($authType) {
       case 'cookie': // use cookie to retrieve user details
         sendTestCookie($foowd);
-        include_once(FOOWD_DIR.'input.cookie.php');
+        include_once(INPUT_DIR.'input.cookie.php');
         $username = new input_cookie('username', REGEX_TITLE);
         $user['username'] = $username->value;
         $password = new input_cookie('password', '/^[a-z0-9]{32}$/');
@@ -317,7 +316,7 @@ class foowd_user extends foowd_object {
                 } else {
                   $expireTime = 0;
                 }
-                include_once(FOOWD_DIR.'input.cookie.php');
+                include_once(INPUT_DIR.'input.cookie.php');
                 $cookieUsername = new input_cookie('username', REGEX_TITLE, NULL, $expireTime);
                 $cookiePassword = new input_cookie('password', '/^[a-z0-9]{32}$/', NULL, $expireTime);
                 $cookieUsername->set($user->title);
@@ -370,7 +369,7 @@ class foowd_user extends foowd_object {
         if (class_exists($anonUserClass)) {
           $foowd->user = &new $anonUserClass($foowd);
         }
-        include_once(FOOWD_DIR.'input.cookie.php');
+        include_once(INPUT_DIR.'input.cookie.php');
         $cookieUsername = new input_cookie('username', REGEX_TITLE);
         $cookiePassword = new input_cookie('password', '/^[a-z0-9]{32}$/');
         $cookieUsername->delete();
@@ -542,7 +541,7 @@ class foowd_user extends foowd_object {
     } elseif ($pwd1 != '') {
       $this->set('password', md5($this->foowd->password_salt.strtolower($pwd1)));
       if ($this->foowd->user_authType == 'cookie') {
-        include_once(FOOWD_DIR.'input.cookie.php');
+        include_once(INPUT_DIR.'input.cookie.php');
         $cookiePassword = new input_cookie('password', '/^[a-z0-9]{32}$/', NULL);
         $cookiePassword->set($this->password);
       }
@@ -601,14 +600,14 @@ class foowd_user extends foowd_object {
   function class_create(&$foowd, $className) {
     $foowd->track('foowd_user->class_create');
 
-    include_once(FOOWD_DIR.'input.querystring.php');
-    include_once(FOOWD_DIR.'input.textbox.php');
-    include_once(FOOWD_DIR.'input.form.php');
+    include_once(INPUT_DIR.'input.querystring.php');
+    include_once(INPUT_DIR.'input.textbox.php');
+    include_once(INPUT_DIR.'input.form.php');
     
     $queryTitle = new input_querystring('title', REGEX_TITLE, NULL);
     $createUsername = new input_textbox('createUsername', REGEX_TITLE, $queryTitle->value, _("Username").':');
     $createPassword = new input_passwordbox('createPassword', REGEX_PASSWORD, NULL, _("Password").':');
-    $createEmail = new input_textbox('createEmail', REGEX_EMAIL, NULL, _("E-mail Address").':', NULL, NULL, NULL, FALSE);
+    $createEmail = new input_textbox('createEmail', REGEX_EMAIL, NULL, _("E-mail Address").':', FALSE);
     $createForm = new input_form('createForm', NULL, 'POST', _("Create"), NULL);
     if ($createForm->submitted()) {
     
@@ -665,10 +664,10 @@ class foowd_user extends foowd_object {
   
     if ($foowd->user_authType == 'cookie') {
     
-      include_once(FOOWD_DIR.'input.querystring.php');
-      include_once(FOOWD_DIR.'input.textbox.php');
-      include_once(FOOWD_DIR.'input.checkbox.php');
-      include_once(FOOWD_DIR.'input.form.php');
+      include_once(INPUT_DIR.'input.querystring.php');
+      include_once(INPUT_DIR.'input.textbox.php');
+      include_once(INPUT_DIR.'input.checkbox.php');
+      include_once(INPUT_DIR.'input.form.php');
     
       $usernameQuery = new input_querystring('username', REGEX_TITLE, '');
       $loginUsername = new input_textbox('loginUsername', REGEX_TITLE, $usernameQuery->value, _("Username").':');
@@ -749,9 +748,9 @@ class foowd_user extends foowd_object {
   function class_lostPassword(&$foowd, $className) {
     $foowd->track('foowd_user->class_lostPassword');
 
-    include_once(FOOWD_DIR.'input.querystring.php');
-    include_once(FOOWD_DIR.'input.textbox.php');
-    include_once(FOOWD_DIR.'input.form.php');
+    include_once(INPUT_DIR.'input.querystring.php');
+    include_once(INPUT_DIR.'input.textbox.php');
+    include_once(INPUT_DIR.'input.form.php');
 
     $usernameQuery = new input_querystring('username', REGEX_TITLE, NULL);
     $idQuery = new input_querystring('id', '/[a-z0-9]{32}/', NULL);
@@ -833,8 +832,8 @@ class foowd_user extends foowd_object {
   function method_update() {
     $this->foowd->track('foowd_user->method_update');
     
-    include_once(FOOWD_DIR.'input.form.php');
-    include_once(FOOWD_DIR.'input.textbox.php');
+    include_once(INPUT_DIR.'input.form.php');
+    include_once(INPUT_DIR.'input.textbox.php');
     
     $updateForm = new input_form('updateForm', NULL, 'POST', _("Update"));
     $email = new input_textbox('email', REGEX_EMAIL, $this->email, _("E-mail").': ');
@@ -875,8 +874,8 @@ class foowd_user extends foowd_object {
   function method_groups() {
     $this->foowd->track('foowd_object->method_groups');
 
-    include_once(FOOWD_DIR.'input.form.php');
-    include_once(FOOWD_DIR.'input.dropdown.php');
+    include_once(INPUT_DIR.'input.form.php');
+    include_once(INPUT_DIR.'input.dropdown.php');
 
     $permissionForm = new input_form('permissionForm', NULL, 'POST');
 

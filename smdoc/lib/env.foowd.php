@@ -33,7 +33,7 @@ Foowd environment class
 if (version_compare(phpversion(), '4.2.0', '<')) trigger_error('You need PHP version 4.2.0 or greater to run FOOWD, please upgrade', E_USER_ERROR);
 
 // include foowd lib
-require_once(SM_PATH.'lib.php'); // FOOWD lib
+require_once(SM_DIR.'lib.php'); // FOOWD lib
 
 // define regex constants
 
@@ -378,12 +378,7 @@ class foowd {
    * @see foowd::getObjList
    */
   function &getObjList($indexes, $source = NULL, $order = NULL, $reverse = NULL, $offset = NULL, $number = NULL, $returnObjects = FALSE) {
-    $this->track('foowd->getObjList', $indexes);
-    if ($objects = &$this->database->getObjList($indexes, $source, $order, $reverse, $offset, $number, $returnObjects)) {
-      $this->track(); return $objects;
-    } else {
-      $this->track(); return NULL;
-    }
+    trigger_error('Function provided by smdoc: foowd->getObjList', E_USER_ERROR);
   }
 
   /**
@@ -470,7 +465,7 @@ class foowd {
    */
   function unserialize($serializedObj, $classid = NULL) {
     $this->track('foowd->unserialize', $classid);
-    if (!classLoaded($classid)) { // class definition not found, load
+    if ( $classid != NULL && !classLoaded($classid)) { // class definition not found, load
       $this->loadClass($classid);
     }
     $this->track();
