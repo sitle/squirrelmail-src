@@ -517,7 +517,7 @@ function smtpReadData($smtpConnection) {
 function sendSMTP($t, $c, $b, $subject, $body, $more_headers, $session) {
     global $username, $popuser, $domain, $version, $smtpServerAddress, 
         $smtpPort, $data_dir, $color, $use_authenticated_smtp, $identity, 
-        $key, $onetimepad;
+        $key, $onetimepad, $compose_new_win;
     
     $to = expandRcptAddrs(parseAddrs($t));
     $cc = expandRcptAddrs(parseAddrs($c));
@@ -569,10 +569,19 @@ function sendSMTP($t, $c, $b, $subject, $body, $more_headers, $session) {
     
     $smtpConnection = fsockopen($smtpServerAddress, $smtpPort, 
                                 $errorNumber, $errorString);
-    if (!$smtpConnection) {
-        echo 'Error connecting to SMTP Server.<br>';
-        echo "$errorNumber : $errorString<br>";
-        exit;
+	if (!$smtpConnection) {
+	    include_once('../functions/page_header.php');
+        if ($compose_new_win == '1') {
+            compose_Header($color, 'None');
+        }
+        else {
+            displayPageHeader($color, 'None');
+        }
+        include_once('../functions/display_messages.php');
+        $msg = "\nError connecting to SMTP Server.<br>";
+		$msg = $msg . "\n$errorNumber : $errorString<br><br>";
+        plain_error_message($msg, $color);
+		return(0);
     }
     $tmp = fgets($smtpConnection, 1024);
     if (errorCheck($tmp, $smtpConnection)!=5) {
@@ -922,6 +931,9 @@ function sendMessage($t, $c, $b, $subject, $body, $reply_id, $MDN,
         $body_smtp = str_replace("\n.","\n..",$body_smtp);
         $length = sendSMTP($t, $c, $b, $subject, $body_smtp, $more_headers, 
                            $session);
+    }
+    if ($length == 0) {
+        return(0);
     }
     if (sqimap_mailbox_exists ($imap_stream, $sent_folder)) {
 		$headerlength = write822Header (false, $t, $c, $b, $subject, $more_headers, $session, "\r\n");
