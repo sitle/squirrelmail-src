@@ -38,7 +38,7 @@ function do_err($str, $exit = TRUE) {
 $IND = str_repeat('&nbsp;',4);
 
 ob_implicit_flush();
-define(SM_PATH, '../');
+define('SM_PATH', '../');
 
 include(SM_PATH . 'config/config.php');
 include(SM_PATH . 'functions/strings.php');
