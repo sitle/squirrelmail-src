@@ -82,9 +82,7 @@ function sqsession_unregister ($name) {
  */
 function sqextractGlobalVar ($name) {
     if ( (float)substr(PHP_VERSION,0,3) < 4.1 ) {
-        if (ini_get('register_globals') == 0) {
-            global $_SESSION, $_GET, $_POST;
-        }
+        global $_SESSION, $_GET, $_POST;
     }
     global  $$name;
     if( isset($_SESSION[$name]) ) {
