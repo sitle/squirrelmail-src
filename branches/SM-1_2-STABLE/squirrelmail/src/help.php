@@ -99,8 +99,8 @@ function get_info($doc, $pos) {
 <tr>
 <td>
 <?php 
-if (isset($HTTP_REFERER)) {
-    $ref = strtolower($HTTP_REFERER);
+if (isset($_SERVER['HTTP_REFERER'])) {
+    $ref = strtolower($_SERVER['HTTP_REFERER']);
     if (strpos($ref, 'src/compose')){
         $context = 'compose';
     } else if (strpos($ref, 'src/addr')){
@@ -162,6 +162,8 @@ if ($help_exists == true) {
         $chapter = 3;
     } else if ($context == 'search'){
         $chapter = 8;
+    } else {
+        $chapter = $_GET['chapter'];
     }
 
     if (!isset($chapter)) {
@@ -190,7 +192,7 @@ if ($help_exists == true) {
         }
         echo '<a href="../src/help.php">' . _("Table of Contents") . '</a>';
         if ($chapter >= count($helpdir)){
-            echo ' | <font color="$color[9]">' . _("Next") . '</font>';
+            echo ' | <font color="' . $color[9]. '">' . _("Next") . '</font>';
         } else {
             echo ' | <a href="../src/help.php?chapter=' . ($chapter+1)
                  . '">' . _("Next") . '</a>';
