@@ -117,9 +117,11 @@ define('USERCLASSID', -1919691191);     // classid of user class
 define('NOTHINGFOUNDID', -941827936);   // thingid of thing to display if nothing is found for a thing request
 
 /* additional thing id's */
-define('HOMECLASSID', 1909853392);      // classid of home class
-define('WORKSPACECLASSID',-1919680487); // classid of workspace class
-
+define('HOMECLASSID', 1909853392);       // classid of home class
+define('DEFINITIONCLASSID', 1747988440); // classid of definition class
+define('HARDTHINGCLASSID', 1745862887);  // classid of hard thing class
+define('WORKSPACECLASSID',-1919680487);  // classid of workspace class
+define('SECTIONCLASSID',762542831);      // classid of section class
 
 /* anonymous user settings */
 define('USEHOSTNAMEFORANONYMOUSUSER', FALSE); // use the users hostname for anonymous username
@@ -210,6 +212,7 @@ include(PATH.'wiki.config.php');
 include(PATH.'file.config.php'); // uncomment to load file extension
 
 include(PATH.'sqmail.wikimenu.php');
+include(PATH.'sqmail.class.section.php');
 
 /* wtf functions */
 include(PATH.'wtf.func.php');
@@ -225,8 +228,11 @@ include(PATH.'wtf.thing.definition.php');
 include(PATH.'wtf.thing.workspace.php');
 include(PATH.'wtf.thing.search.php');
 
+include(PATH.'sqmail.thing.nothingfound.php');
+include(PATH.'sqmail.thing.recentchanges.php');
 include(PATH.'sqmail.thing.siteindex.php');
 include(PATH.'sqmail.thing.useradmin.php');
+include(PATH.'sqmail.thing.section.php');
 
 /* load PIs */
 include(PATH.'wtf.pi.php.php');
