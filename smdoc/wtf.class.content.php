@@ -482,8 +482,8 @@ class content extends thing { // a thing
 					echo '<diff old="', $oldVersion, '" new="', $this->version, '">';
 
 					$fileid = time();
-					$oldFile = $_ENV['TEMP'].'/wtf'.$fileid.'-1';
-					$newFile = $_ENV['TEMP'].'/wtf'.$fileid.'-2';
+					$oldFile = WTFW_DIFF_TEMP.'wtf'.$fileid.'-1';
+					$newFile = WTFW_DIFF_TEMP.'wtf'.$fileid.'-2';
 
 					ignore_user_abort(TRUE); // don't halt if aborted during diff
 
