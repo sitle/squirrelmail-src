@@ -14,7 +14,12 @@
  * The ZkSvc_auth class manages user authentication for a web application.
  */
 class ZkSvc_auth {
-    var $name;       /* str  - name of this service (auth)            */
+
+    /* Constants */
+    var $name = 'auth';
+    var $ver = '$Id$';
+
+    /* Properties */
     var $mod;        /* obj  - authentication module for this service */
     var $maxidle;    /* int  - max time login session can remain idle */
     var $maxlogin;   /* int  - max time login session can last        */
@@ -25,12 +30,9 @@ class ZkSvc_auth {
     /**
      * Create a new ZkSvc_auth with the given module.
      *
-     * @param object $module module to use for authentication
      * @param array  $options options to pass to ZkAuthHandler
      */
-    function ZkSvc_auth($opts) {
-        $name = 'auth';
-
+    function ZkSvc_auth($options) {
         /* Register the login session variable. */
         global $zkauth;
         session_register('zkauth');
@@ -41,8 +43,8 @@ class ZkSvc_auth {
         $this->expired  = FALSE;
 
         /* Set values for maxlogin and maxidle. */
-        $this->maxidle  = ($opts['maxidle']  == '' ? 0 : $opts['maxidle']);
-        $this->maxlogin = ($opts['maxlogin'] == '' ? 0 : $opts['maxlogin']);
+        $this->maxidle  = ($options['maxidle']) == '' ? 0 : $options['maxidle']);
+        $this->maxlogin = ($options['maxlogin']) == '' ? 0 : $options['maxlogin']);
 
         /* Only do authentication checks if we have a login session. */
         if ($zkauth['username'] != '') {
@@ -57,7 +59,6 @@ class ZkSvc_auth {
             /* Check if our login session has expired. */
             if (($this->maxlogin > 0) && ($zkauth['expireTime'] < time())) {
                 $this->expire();
-
             }
         }
     }
@@ -68,7 +69,7 @@ class ZkSvc_auth {
      * @return string the name of this service
      */
     function getServiceName() {
-        return( $this->name );
+        return($this->name);
     }
 
     /**
@@ -76,16 +77,17 @@ class ZkSvc_auth {
      * replacing the current one (if need be).
      *
      * @param object $mod module to load for this authentication service
+     * @param array  $options array of options for the module
      */
-    function loadModule( &$mod, $opts ) {
+    function loadModule(&$mod, $options) {
         $this->mod =& $mod;
     }
     
     /**
      * Attempt to login a user.
      *
-     * @param string username username with which to authenticate
-     * @param string password password with which to authenticate
+     * @param string $username username with which to authenticate
+     * @param string $password password with which to authenticate
      */
     function login($username, $password) {
         global $zkauth;

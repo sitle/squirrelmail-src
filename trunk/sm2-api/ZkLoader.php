@@ -41,9 +41,9 @@ class ZkLoader {
     /**
      * Attempt to load the requested service.
      *
-     * @param string $svcname
-     * @param string $options
-     * @param string $modname
+     * @param string $svcname service name
+     * @param array  $options array of options for the module
+     * @param string $modname module name to load
      * @return bool/string
      */
     function &loadService($svcname, $options = array(), $modname = '') {
