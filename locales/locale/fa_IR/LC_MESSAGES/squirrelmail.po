@@ -10,9 +10,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: squirrelmail\n"
 "Report-Msgid-Bugs-To: remohammadi@cs.sharif.edu\n"
-"POT-Creation-Date: 2004-12-29 20:14+0100\n"
-"PO-Revision-Date: 2005-01-14 16:46+0330\n"
-"Last-Translator: Reza Mohammadi\n"
+"POT-Creation-Date: 2005-01-01 10:16+0200\n"
+"PO-Revision-Date: 2005-03-10 07:27+0100\n"
+"Last-Translator: Reza Mohammadi <remohammadi@cs.sharif.edu>\n"
 "Language-Team: Farsi (Persian) <farsi@ims.ir>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -21,6 +21,15 @@ msgstr ""
 
 msgid "Address Book"
 msgstr "دفترچه‌آدرس"
+
+msgid "All"
+msgstr "همه"
+
+msgid "To"
+msgstr "به"
+
+msgid "Cc"
+msgstr "رونوشت"
 
 msgid "Name"
 msgstr "نام"
@@ -34,17 +43,14 @@ msgstr "اطلاعات"
 msgid "Source"
 msgstr "منبع"
 
-msgid "To"
-msgstr "به"
-
-msgid "Cc"
-msgstr "رونوشت"
-
 msgid "Bcc"
 msgstr "رونوشت پنهان"
 
-msgid "No persons matching your search were found"
-msgstr "شخص موردنظر پیدا نشد"
+msgid "Use Addresses"
+msgstr "از آدرس‌ها استفاده کن"
+
+msgid "Address Book Search"
+msgstr "جستجوی دفترچه‌آدرس‌ها"
 
 msgid "Search for"
 msgstr "جستجو برای"
@@ -61,9 +67,6 @@ msgstr "جستجو"
 msgid "List all"
 msgstr "همه را لیست کن"
 
-msgid "Close"
-msgstr "بستن"
-
 #, c-format
 msgid "Unable to list addresses from %s"
 msgstr "ناتوان در لیست همه آدرس‌ها از %s"
@@ -71,17 +74,14 @@ msgstr "ناتوان در لیست همه آدرس‌ها از %s"
 msgid "Your search failed with the following error(s)"
 msgstr "جستجوی شما با خطا روبرو شد"
 
-msgid "All"
-msgstr "همه"
-
-msgid "Use Addresses"
-msgstr "از آدرس‌ها استفاده کن"
-
-msgid "Address Book Search"
-msgstr "جستجوی دفترچه‌آدرس‌ها"
+msgid "No persons matching your search were found"
+msgstr "شخص موردنظر پیدا نشد"
 
 msgid "Return"
 msgstr "بازگشت"
+
+msgid "Close"
+msgstr "بستن"
 
 msgid "Nickname"
 msgstr "نام مستعار"
@@ -108,7 +108,7 @@ msgid "No personal address book is defined. Contact administrator."
 msgstr "دفترچه‌آدرس شخصی تعریف نشده است. به مدیر مراجعه کنید."
 
 msgid "You can only edit one address at the time"
-msgstr "شما فقط یک آدرس را در یک زمان می‌توانید ویرایش کنید."
+msgstr "شما فقط یک آدرس را در یک زمان میتوانید ویرایش کنید."
 
 msgid "Update address"
 msgstr "به‌روزسازی آدرس"
@@ -157,7 +157,7 @@ msgid "Draft Email Saved"
 msgstr "پست الکترونیکی پیش‌نویس ذخیره شد"
 
 msgid "Could not move/copy file. File not attached"
-msgstr "نمی‌توان فایل را کپی و یا جابه‌جا کرد. فایل ضمیمه نشده است"
+msgstr "نمیتوان فایل را کپی و یا جابه‌جا کرد. فایل ضمیمه نشده است"
 
 msgid "Draft Saved"
 msgstr "پیش‌نویس ذخیره شد"
@@ -220,6 +220,28 @@ msgstr "خطا: پوشه پیش‌نویس %s وجود ندارد"
 msgid "Server replied: "
 msgstr "جواب میزبان"
 
+msgid "Illegal folder name. Please select a different name."
+msgstr "نام پوشه نادرست است. لطفاً نام دیگری را انتخاب کنید."
+
+msgid "Click here to go back"
+msgstr "اینجا را برای بازگشت کلیک کنید."
+
+msgid "You have not selected a folder to delete. Please do so."
+msgstr "شما پوشه‌ای برای حذف انتخاب نکرده‌اید."
+
+msgid "Delete Folder"
+msgstr "حذف پوشه"
+
+#, c-format
+msgid "Are you sure you want to delete %s?"
+msgstr "آیا مطمئنید که میخواهید پوشه %s را حذف کنید؟"
+
+msgid "Yes"
+msgstr "بله"
+
+msgid "No"
+msgstr "خیر"
+
 msgid "Folders"
 msgstr "پوشه‌ها"
 
@@ -271,9 +293,6 @@ msgstr "تغییر نام"
 msgid "No folders found"
 msgstr "پوشه‌ای یافت نشد"
 
-msgid "Delete Folder"
-msgstr "حذف پوشه"
-
 msgid "Delete"
 msgstr "حذف"
 
@@ -291,25 +310,6 @@ msgstr "پوشه‌ای برای اشتراک پیدا نشد!"
 
 msgid "Subscribe to:"
 msgstr "اشتراک در:"
-
-msgid "Illegal folder name. Please select a different name."
-msgstr "نام پوشه نادرست است. لطفاً نام دیگری را انتخاب کنید."
-
-msgid "Click here to go back"
-msgstr "اینجا را برای بازگشت کلیک کنید."
-
-msgid "You have not selected a folder to delete. Please do so."
-msgstr "شما پوشه‌ای برای حذف انتخاب نکرده‌اید."
-
-#, c-format
-msgid "Are you sure you want to delete %s?"
-msgstr "آیا مطمئنید که می‌خواهید پوشه %s را حذف کنید؟"
-
-msgid "Yes"
-msgstr "بله"
-
-msgid "No"
-msgstr "خیر"
 
 msgid "You have not selected a folder to rename. Please do so."
 msgstr "شما پوشه‌ای را برای تغییر نام انتخاب نکرده‌اید"
@@ -330,11 +330,13 @@ msgid "Help"
 msgstr "راهنما"
 
 #, c-format
-msgid "The help has not been translated to %s. It will be displayed in English instead."
-msgstr "راهنما به زبان %s ترجمه نشده است و به زبان انگلیسی نمایش داده می‌شود."
+msgid ""
+"The help has not been translated to %s. It will be displayed in English "
+"instead."
+msgstr "راهنما به زبان %s ترجمه نشده است و به زبان انگلیسی نمایش داده میشود."
 
 msgid "Some or all of the help documents are not present!"
-msgstr "قسمتی از راهنما پیدا نمی‌شود!"
+msgstr "قسمتی از راهنما پیدا نمیشود!"
 
 msgid "Table of Contents"
 msgstr "فهرست"
@@ -394,52 +396,16 @@ msgid "Name:"
 msgstr "نام:"
 
 msgid "Password:"
-msgstr "کلمه عبور:"
+msgstr "گذرواژه:"
 
 msgid "No messages were selected."
 msgstr "پیغامی انتخاب نشده است."
 
-msgid "Personal Information"
-msgstr "اطلاعات شخصی"
-
-msgid "Display Preferences"
-msgstr "تنظیمات نما"
-
-msgid "Message Highlighting"
-msgstr "رنگ‌آمیزی پیغام‌ها"
-
-msgid "Folder Preferences"
-msgstr "تنظیمات پوشه‌ها"
-
-msgid "Index Order"
-msgstr "ترتیب فهرست"
-
 msgid "Options"
 msgstr "تنظیمات"
 
-msgid "Successfully Saved Options"
-msgstr "تنظیمات با موفقیت ذخیره شد."
-
-msgid "Refresh Folder List"
-msgstr "بازخوانی لیست"
-
-msgid "Refresh Page"
-msgstr "بازخوانی صفحه"
-
-msgid "This contains personal information about yourself such as your name, your email address, etc."
-msgstr "در این قسمت اطلاعاتی مانند نام و آدرس پست الکترونیکی خود را می‌توانید مشخص کنید."
-
-msgid "You can change the way that SquirrelMail looks and displays information to you, such as the colors, the language, and other settings."
-msgstr "شما می‌توانید نمای ظاهری این برنامه را عوض کنید. مثلاً تغییر رنگ یا زبان."
-
-msgid "Based upon given criteria, incoming messages can have different background colors in the message list. This helps to easily distinguish who the messages are from, especially for mailing lists."
-msgstr "برای راحت‌تر تمیز دادن پیغام‌هایتان می‌توانید تنظیماتی در این قسمت انجام دهید تا رنگ آنها بر اساس موضوعشان در لیست متفاوت باشد."
-
-msgid "These settings change the way your folders are displayed and manipulated."
-msgstr "در این قسمت ساختار پوشه‌بندی خود را می‌توانید تغییر دهید."
-
-msgid "The order of the message index can be rearranged and changed to contain the headers in any order you want."
-msgstr "ترتیب نمایش نامه‌هایتان در لیست را می‌توانید از این قسمت تغییر دهید."
+msgid "Message Highlighting"
+msgstr "رنگ‌آمیزی پیغام‌ها"
 
 msgid "New"
 msgstr "جدید"
@@ -553,6 +519,9 @@ msgstr "تبدیل به پیش‌فرض"
 msgid "Move Up"
 msgstr "ببر بالا"
 
+msgid "Index Order"
+msgstr "ترتیب فهرست"
+
 msgid "Checkbox"
 msgstr "گزینه"
 
@@ -562,8 +531,13 @@ msgstr "پرچم‌ها"
 msgid "Size"
 msgstr "اندازه"
 
-msgid "The index order is the order that the columns are arranged in the message index. You can add, remove, and move columns around to customize them to fit your needs."
-msgstr "در این قسمت شما می‌توانید ترتیب نمایش پیغام‌هایتان را تغییر دهید و یا ستونی برای نمایش جزئیات پیغام‌ها اضافه و یا حذف نمایید."
+msgid ""
+"The index order is the order that the columns are arranged in the message "
+"index. You can add, remove, and move columns around to customize them to fit "
+"your needs."
+msgstr ""
+"در این قسمت شما میتوانید ترتیب نمایش پیغام‌هایتان را تغییر دهید و یا ستونی "
+"برای نمایش جزئیات پیغام‌ها اضافه و یا حذف نمایید."
 
 msgid "up"
 msgstr "بالا"
@@ -576,6 +550,54 @@ msgstr "حذف"
 
 msgid "Return to options page"
 msgstr "برگشت به صفحه تنظیمات"
+
+msgid "Personal Information"
+msgstr "اطلاعات شخصی"
+
+msgid "Display Preferences"
+msgstr "تنظیمات نما"
+
+msgid "Folder Preferences"
+msgstr "تنظیمات پوشه‌ها"
+
+msgid "Successfully Saved Options"
+msgstr "تنظیمات با موفقیت ذخیره شد."
+
+msgid "Refresh Folder List"
+msgstr "بازخوانی لیست"
+
+msgid "Refresh Page"
+msgstr "بازخوانی صفحه"
+
+msgid ""
+"This contains personal information about yourself such as your name, your "
+"email address, etc."
+msgstr ""
+"در این قسمت اطلاعاتی مانند نام و آدرس پست الکترونیکی خود را میتوانید مشخص "
+"کنید."
+
+msgid ""
+"You can change the way that SquirrelMail looks and displays information to "
+"you, such as the colors, the language, and other settings."
+msgstr ""
+"شما میتوانید نمای ظاهری این برنامه را عوض کنید. مثلاً تغییر رنگ یا زبان."
+
+msgid ""
+"Based upon given criteria, incoming messages can have different background "
+"colors in the message list. This helps to easily distinguish who the "
+"messages are from, especially for mailing lists."
+msgstr ""
+"برای راحت‌تر تمیز دادن پیغام‌هایتان میتوانید تنظیماتی در این قسمت انجام دهید "
+"تا رنگ آنها بر اساس موضوعشان در لیست متفاوت باشد."
+
+msgid ""
+"These settings change the way your folders are displayed and manipulated."
+msgstr "در این قسمت ساختار پوشه‌بندی خود را میتوانید تغییر دهید."
+
+msgid ""
+"The order of the message index can be rearranged and changed to contain the "
+"headers in any order you want."
+msgstr "ترتیب نمایش نامه‌هایتان در لیست را میتوانید از این قسمت تغییر دهید."
 
 msgid "Message not printable"
 msgstr "پیغام غیر قابل چاپ"
@@ -626,8 +648,12 @@ msgstr "فرستاده شد"
 msgid "requested"
 msgstr "درخواست شده"
 
-msgid "The message sender has requested a response to indicate that you have read this message. Would you like to send a receipt?"
-msgstr "فرستنده پیغام می‌خواهد از خواندن پیغام مطمئن شود. آیا شما با فرستادن رسید موافقید؟"
+msgid ""
+"The message sender has requested a response to indicate that you have read "
+"this message. Would you like to send a receipt?"
+msgstr ""
+"فرستنده پیغام میخواهد از خواندن پیغام مطمئن شود. آیا شما با فرستادن رسید "
+"موافقید؟"
 
 msgid "Send read receipt now"
 msgstr "هم‌اکنون رسید را بفرست"
@@ -720,8 +746,11 @@ msgid "Viewing a Business Card"
 msgstr "نمایش یک کارت کاری"
 
 #, c-format
-msgid "vCard Version %s is not supported. Some information might not be converted correctly."
-msgstr "vCard نسخه %s پشتیبانی نمی‌شود. بعضی از اطلاعات ممکن است به درستی تبدیل نشوند."
+msgid ""
+"vCard Version %s is not supported. Some information might not be converted "
+"correctly."
+msgstr ""
+"vCard نسخه %s پشتیبانی نمیشود. بعضی از اطلاعات ممکن است به درستی تبدیل نشوند."
 
 msgid "Title"
 msgstr "عنوان"
@@ -768,7 +797,8 @@ msgstr "نمایش کامل سرآمد"
 msgid "Viewing a text attachment"
 msgstr "نمایش ضمیمه متنی"
 
-msgid "Could not include PEAR database functions required for the database backend."
+msgid ""
+"Could not include PEAR database functions required for the database backend."
 msgstr ""
 
 #, c-format
@@ -797,7 +827,7 @@ msgid "User '%s' does not exist"
 msgstr "کاربر '%s' وجود ندارد"
 
 msgid "Not a file name"
-msgstr "نام فایل نمی‌باشد"
+msgstr "نام فایل نمیباشد"
 
 msgid "No such file or directory"
 msgstr "چنین فایل و یا دایرکتوری‌ای یافت نشد"
@@ -812,7 +842,7 @@ msgid "Unable to update"
 msgstr "ناتوان در بازنویسی"
 
 msgid "Could not lock datafile"
-msgstr "نمی‌توان فایل اطلاعات را قفل کرد"
+msgstr "نمیتوان فایل اطلاعات را قفل کرد"
 
 msgid "Write to addressbook failed"
 msgstr "ناتوان در نوشتن دفترچه‌آدرس"
@@ -999,19 +1029,29 @@ msgid "Go to the login page"
 msgstr "برو به صفحه ورود"
 
 #, c-format
-msgid "Preference file, %s, does not exist. Log out, and log back in to create a default preference file."
-msgstr "فایل تنظیمات نما، %s، موجود نمی‌باشد. از سیستم خارج شده و دوباره وارد شوید تا این فایل با استفاده از مقادیر پیش‌فرض ساخته شود."
+msgid ""
+"Preference file, %s, does not exist. Log out, and log back in to create a "
+"default preference file."
+msgstr ""
+"فایل تنظیمات نما، %s، موجود نمیباشد. از سیستم خارج شده و دوباره وارد شوید تا "
+"این فایل با استفاده از مقادیر پیش‌فرض ساخته شود."
 
 #, c-format
-msgid "Preference file, %s, could not be opened. Contact your system administrator to resolve this issue."
+msgid ""
+"Preference file, %s, could not be opened. Contact your system administrator "
+"to resolve this issue."
 msgstr ""
 
 #, c-format
-msgid "Preference file, %s, could not be written. Contact your system administrator to resolve this issue."
+msgid ""
+"Preference file, %s, could not be written. Contact your system administrator "
+"to resolve this issue."
 msgstr ""
 
 #, c-format
-msgid "Preference file, %s, could not be copied from temporary file, %s. Contact your system administrator to resolve this issue."
+msgid ""
+"Preference file, %s, could not be copied from temporary file, %s. Contact "
+"your system administrator to resolve this issue."
 msgstr ""
 
 #, c-format
@@ -1022,7 +1062,7 @@ msgid "Default preference file not found or not readable!"
 msgstr "فایل تنظیمات نمای پیش‌فرض وجود ندارد و یا قابل خواندن نیست!"
 
 msgid "Could not create initial preference file!"
-msgstr "فایل اولیه تنظیمات نما را نمی‌توانم بسازم!"
+msgstr "فایل اولیه تنظیمات نما را نمیتوانم بسازم!"
 
 #, c-format
 msgid "%s should be writable by user %s"
@@ -1032,19 +1072,35 @@ msgid "Signature is too big."
 msgstr "امضا زیادی طولانی است."
 
 #, c-format
-msgid "Signature file, %s, could not be opened. Contact your system administrator to resolve this issue."
-msgstr "فایل امضا، %s، قابل خواندن نمی‌باشد. لطفاً جهت رفع مشکل با مدیر سیستم تماس بگیرید."
+msgid ""
+"Signature file, %s, could not be opened. Contact your system administrator "
+"to resolve this issue."
+msgstr ""
+"فایل امضا، %s، قابل خواندن نمیباشد. لطفاً جهت رفع مشکل با مدیر سیستم تماس "
+"بگیرید."
 
 #, c-format
-msgid "Signature file, %s, could not be written. Contact your system administrator to resolve this issue."
-msgstr "فایل امضا، %s، قابل نوشتن نمی‌باشد. لطفاً جهت رفع مشکل با مدیر سیستم تماس بگیرید."
+msgid ""
+"Signature file, %s, could not be written. Contact your system administrator "
+"to resolve this issue."
+msgstr ""
+"فایل امضا، %s، قابل نوشتن نمیباشد. لطفاً جهت رفع مشکل با مدیر سیستم تماس "
+"بگیرید."
 
 #, c-format
-msgid "Signature file, %s, could not be copied from temporary file, %s. Contact your system administrator to resolve this issue."
-msgstr "فایل امضا، %s، قابل تهیه از نسخه موقت، %s، نمی‌باشد. لطفاً جهت رفع مشکل با مدیر سیستم تماس بگیرید."
+msgid ""
+"Signature file, %s, could not be copied from temporary file, %s. Contact "
+"your system administrator to resolve this issue."
+msgstr ""
+"فایل امضا، %s، قابل تهیه از نسخه موقت، %s، نمیباشد. لطفاً جهت رفع مشکل با "
+"مدیر سیستم تماس بگیرید."
 
-msgid "You need to have php4 installed with the multibyte string function enabled (using configure option --enable-mbstring)."
-msgstr "می‌بایست php4 را با قابلیت رشته‌های چندبایتی نصب می‌کردید)از --enable-mbstring استفاده کنید(."
+msgid ""
+"You need to have php4 installed with the multibyte string function enabled "
+"(using configure option --enable-mbstring)."
+msgstr ""
+"میبایست php4 را با قابلیت رشته‌های چندبایتی نصب میکردید)از --enable-mbstring "
+"استفاده کنید(."
 
 msgid "ERROR : No available imapstream."
 msgstr "خطا: imapstream وجود ندارد."
@@ -1098,19 +1154,21 @@ msgid "Read data:"
 msgstr "اطلاعات خوانده‌شده:"
 
 msgid "Unknown user or password incorrect."
-msgstr "کاربر وجود ندارد و یا کلمه عبور نادرست وارد گشته است."
+msgstr "کاربر وجود ندارد و یا گذرواژه نادرست وارد گشته است."
 
 msgid "ERROR : Could not append message to"
-msgstr "خطا: نمی‌توان پیغام را اضافه کرد به"
+msgstr "خطا: نمیتوان پیغام را اضافه کرد به"
 
 msgid "Solution: "
 msgstr "راه حل:"
 
-msgid "Remove unneccessary messages from your folder and start with your Trash folder."
+msgid ""
+"Remove unneccessary messages from your folder and start with your Trash "
+"folder."
 msgstr "پیغام‌های غیر ضروری را از پوشه حذف کنید. از سطل آشغال شروع کنید."
 
 msgid "(no subject)"
-msgstr ")بدون موضوع("
+msgstr "(بدون موضوع)"
 
 msgid "Unknown Sender"
 msgstr "فرستنده ناشناس"
@@ -1121,7 +1179,10 @@ msgstr "جواب ناشناخته از میزبان IMAP:"
 msgid "The server couldn't find the message you requested."
 msgstr "میزبان نتوانست پیغام مورد درخواست شما را بیابد."
 
-msgid "Most probably your message list was out of date and the message has been moved away or deleted (perhaps by another program accessing the same mailbox)."
+msgid ""
+"Most probably your message list was out of date and the message has been "
+"moved away or deleted (perhaps by another program accessing the same "
+"mailbox)."
 msgstr ""
 
 msgid "Unknown date"
@@ -1137,7 +1198,7 @@ msgid "Server-side sorting is not supported by your IMAP server."
 msgstr ""
 
 msgid "THIS FOLDER IS EMPTY"
-msgstr "این پوشه خالی می‌باشد!"
+msgstr "این پوشه خالی میباشد!"
 
 msgid "Move Selected To"
 msgstr "منتقل کن به"
@@ -1195,7 +1256,9 @@ msgstr "برنامه نتوانست ساختار پیغام را تشخیص ده
 msgid "the provided bodystructure by your imap-server"
 msgstr "ساختار ارائه شده توسط میزبان imap"
 
-msgid "Body retrieval error. The reason for this is most probably that the message is malformed."
+msgid ""
+"Body retrieval error. The reason for this is most probably that the message "
+"is malformed."
 msgstr ""
 
 msgid "Command:"
@@ -1223,7 +1286,7 @@ msgid "sec_remove_eng.png"
 msgstr ""
 
 msgid "This external link will open in a new window"
-msgstr "این لینک خارج از سیستم در پنجره دیگری باز می‌گردد"
+msgstr "این لینک خارج از سیستم در پنجره دیگری باز میگردد"
 
 #, c-format
 msgid "Option Type '%s' Not Found"
@@ -1336,7 +1399,7 @@ msgid "Mailbox Display Options"
 msgstr "تنظیمات نمای فضای پیغام‌ها"
 
 msgid "Number of Messages to Index"
-msgstr "تعداد پیغام‌هایی که در فهرست می‌آیند"
+msgstr "تعداد پیغام‌هایی که در فهرست میآیند"
 
 msgid "Enable Alternating Row Colors"
 msgstr "رنگ‌آمیزی یکی‌درمیان سطرها"
@@ -1589,7 +1652,7 @@ msgid "Edit Advanced Identities"
 msgstr "ویرایش مشخصات (پیشرفته)"
 
 msgid "(discards changes made on this form so far)"
-msgstr "(چنانچه کلیک کنید، تغییراتی که هم‌اکنون انجام داده‌اید از بین می‌رود)"
+msgstr "(چنانچه کلیک کنید، تغییراتی که هم‌اکنون انجام داده‌اید از بین میرود)"
 
 msgid "Multiple Identities"
 msgstr "چند شناسه‌ای"
@@ -1960,10 +2023,16 @@ msgstr ""
 msgid "Configuration Administrator"
 msgstr ""
 
-msgid "Note: it is recommended that you configure your system using conf.pl, and not this plugin. conf.pl contains additional information regarding the purpose of variables and appropriate values, as well as additional verification steps."
+msgid ""
+"Note: it is recommended that you configure your system using conf.pl, and "
+"not this plugin. conf.pl contains additional information regarding the "
+"purpose of variables and appropriate values, as well as additional "
+"verification steps."
 msgstr ""
 
-msgid "Run or consult conf.pl should you run into difficulty with your configuration."
+msgid ""
+"Run or consult conf.pl should you run into difficulty with your "
+"configuration."
 msgstr ""
 
 msgid "Theme Name"
@@ -1991,35 +2060,65 @@ msgstr ""
 msgid "Administration"
 msgstr ""
 
-msgid "This module allows administrators to manage SquirrelMail main configuration remotely."
+msgid ""
+"This module allows administrators to manage SquirrelMail main configuration "
+"remotely."
 msgstr ""
 
 msgid "Submit a Bug Report"
 msgstr ""
 
-msgid "Before you send your bug report, please make sure to check this checklist for any common problems."
+msgid ""
+"Before you send your bug report, please make sure to check this checklist "
+"for any common problems."
 msgstr ""
 
 #, c-format
-msgid "Make sure that you are running the most recent copy of %s. You are currently using version %s."
-msgstr "مطمئن شوید که از جدیدترین نسخه %s استفاده میکنید. شما دارید از نسخه %s استفاده می‌کنید."
+msgid ""
+"Make sure that you are running the most recent copy of %s. You are currently "
+"using version %s."
+msgstr ""
+"مطمئن شوید که از جدیدترین نسخه %s استفاده میکنید. شما دارید از نسخه %s "
+"استفاده میکنید."
 
 #, c-format
-msgid "Check to see if your bug is already listed in the %sBug List%s on SourceForge. If it is, we already know about it and are trying to fix it."
-msgstr " برای رفع مشکل خود %sلیست مشکلات%s را نگاه کنید. چنانچه در لیست موجود بود, ما از بروز این مشکل آگاهی داریم و در پی برطرف کردن آنیم."
+msgid ""
+"Check to see if your bug is already listed in the %sBug List%s on "
+"SourceForge. If it is, we already know about it and are trying to fix it."
+msgstr ""
+" برای رفع مشکل خود %sلیست مشکلات%s را نگاه کنید. چنانچه در لیست موجود بود, "
+"ما از بروز این مشکل آگاهی داریم و در پی برطرف کردن آنیم."
 
-msgid "Try to make sure that you can repeat it. If the bug happens sporatically, try to document what you did when it happened. If it always occurs when you view a specific message, keep that message around so maybe we can see it."
+msgid ""
+"Try to make sure that you can repeat it. If the bug happens sporatically, "
+"try to document what you did when it happened. If it always occurs when you "
+"view a specific message, keep that message around so maybe we can see it."
 msgstr ""
 
 #, c-format
-msgid "If there were warnings displayed above, try to resolve them yourself. Read the guides in the %s directory where SquirrelMail was installed."
+msgid ""
+"If there were warnings displayed above, try to resolve them yourself. Read "
+"the guides in the %s directory where SquirrelMail was installed."
 msgstr ""
 
-msgid "Pressing the button below will start a mail message to the developers of SquirrelMail that will contain a lot of information about your system, your browser, how SquirrelMail is set up, and your IMAP server. It will also prompt you for information. Just fill out the sections at the top. If you like, you can scroll down in the message to see what else is being sent."
+msgid ""
+"Pressing the button below will start a mail message to the developers of "
+"SquirrelMail that will contain a lot of information about your system, your "
+"browser, how SquirrelMail is set up, and your IMAP server. It will also "
+"prompt you for information. Just fill out the sections at the top. If you "
+"like, you can scroll down in the message to see what else is being sent."
 msgstr ""
 
-msgid "Please make sure to fill out as much information as you possibly can to give everyone a good chance of finding and removing the bug. Submitting your bug like this will not have it automatically added to the bug list on SourceForge, but someone who gets your message may add it for you."
-msgstr "مطمئن شوید که هر اطلاعاتی را که داشته اید نوشته اید. در این صورت شما این شانس را به بقیه داده اید که مشکلاتشان را راحت‌تر پیدا و حل کنند. با فرستادن این مشکل، آن را در لیست مشکلات قرار نمی‌دهید. بلکه کسی که پیغام شما را دریافت می‌کند، ممکن است آن را برای شما اضافه کند."
+msgid ""
+"Please make sure to fill out as much information as you possibly can to give "
+"everyone a good chance of finding and removing the bug. Submitting your bug "
+"like this will not have it automatically added to the bug list on "
+"SourceForge, but someone who gets your message may add it for you."
+msgstr ""
+"مطمئن شوید که هر اطلاعاتی را که داشته اید نوشته اید. در این صورت شما این "
+"شانس را به بقیه داده اید که مشکلاتشان را راحت‌تر پیدا و حل کنند. با فرستادن "
+"این مشکل، آن را در لیست مشکلات قرار نمیدهید. بلکه کسی که پیغام شما را دریافت "
+"میکند، ممکن است آن را برای شما اضافه کند."
 
 msgid "This bug involves"
 msgstr "این مشکل شامل"
@@ -2042,15 +2141,15 @@ msgstr "گزارش‌های مشکلات:"
 msgid "Show button in toolbar"
 msgstr "نمایش دکمه در نوار ابزار"
 
+#, c-format
+msgid "Could not write calendar file %s"
+msgstr ""
+
 msgid "TODAY"
 msgstr "امروز"
 
 msgid "Go"
 msgstr "برو"
-
-#, c-format
-msgid "Could not write calendar file %s"
-msgstr ""
 
 msgid "l, F j Y"
 msgstr ""
@@ -2178,13 +2277,21 @@ msgstr "با امکان جابه‌جایی"
 msgid "Display at bottom"
 msgstr "پایین نمایششان بده"
 
-msgid "COMMERCIAL - This list contains servers that are verified spam senders. It is a pretty reliable list to scan spam from."
+msgid ""
+"COMMERCIAL - This list contains servers that are verified spam senders. It "
+"is a pretty reliable list to scan spam from."
 msgstr ""
 
-msgid "COMMERCIAL - Servers that are configured (or misconfigured) to allow spam to be relayed through their system will be banned with this. Another good one to use."
+msgid ""
+"COMMERCIAL - Servers that are configured (or misconfigured) to allow spam to "
+"be relayed through their system will be banned with this. Another good one "
+"to use."
 msgstr ""
 
-msgid "COMMERCIAL - Dial-up users are often filtered out since they should use their ISP's mail servers to send mail. Spammers typically get a dial-up account and send spam directly from there."
+msgid ""
+"COMMERCIAL - Dial-up users are often filtered out since they should use "
+"their ISP's mail servers to send mail. Spammers typically get a dial-up "
+"account and send spam directly from there."
 msgstr ""
 
 msgid "COMMERCIAL - RBL+ Blackhole entries."
@@ -2196,7 +2303,9 @@ msgstr ""
 msgid "COMMERCIAL - RBL+ Dial-up entries."
 msgstr ""
 
-msgid "FREE - ORDB was born when ORBS went off the air. It seems to have fewer false positives than ORBS did though."
+msgid ""
+"FREE - ORDB was born when ORBS went off the air. It seems to have fewer "
+"false positives than ORBS did though."
 msgstr ""
 
 msgid "FREE - Five-Ten-sg.com - Direct SPAM sources."
@@ -2220,13 +2329,18 @@ msgstr ""
 msgid "FREE - Five-Ten-sg.com - Web Form IPs."
 msgstr ""
 
-msgid "FREE - Dorkslayers appears to include only really bad open relays outside the US to avoid being sued. Interestingly enough, their website recommends you NOT use their service."
+msgid ""
+"FREE - Dorkslayers appears to include only really bad open relays outside "
+"the US to avoid being sued. Interestingly enough, their website recommends "
+"you NOT use their service."
 msgstr ""
 
 msgid "FREE - SPAMhaus - A list of well-known SPAM sources."
 msgstr ""
 
-msgid "FREE, for now - SpamCop - An interesting solution that lists servers that have a very high spam to legit email ratio (85 percent or more)."
+msgid ""
+"FREE, for now - SpamCop - An interesting solution that lists servers that "
+"have a very high spam to legit email ratio (85 percent or more)."
 msgstr ""
 
 msgid "FREE - dev.null.dk - I don't have any detailed info on this list."
@@ -2244,25 +2358,42 @@ msgstr ""
 msgid "FREE - ahbl.org SPAM ISPs - List of SPAM-friendly ISPs."
 msgstr ""
 
-msgid "FREE - Leadmon DUL - Another list of Dial-up or otherwise dynamically assigned IPs."
+msgid ""
+"FREE - Leadmon DUL - Another list of Dial-up or otherwise dynamically "
+"assigned IPs."
 msgstr ""
 
-msgid "FREE - Leadmon SPAM Source - List of IPs Leadmon.net has received SPAM directly from."
+msgid ""
+"FREE - Leadmon SPAM Source - List of IPs Leadmon.net has received SPAM "
+"directly from."
 msgstr ""
 
-msgid "FREE - Leadmon Bulk Mailers - Bulk mailers that do not require confirmed opt-in or that have allowed known spammers to become clients and abuse their services."
+msgid ""
+"FREE - Leadmon Bulk Mailers - Bulk mailers that do not require confirmed opt-"
+"in or that have allowed known spammers to become clients and abuse their "
+"services."
 msgstr ""
 
-msgid "FREE - Leadmon Open Relays - Single Stage Open Relays that are not listed on other active RBLs."
+msgid ""
+"FREE - Leadmon Open Relays - Single Stage Open Relays that are not listed on "
+"other active RBLs."
 msgstr ""
 
-msgid "FREE - Leadmon Multi-stage - Multi-Stage Open Relays that are not listed on other active RBLs and that have sent SPAM to Leadmon.net."
+msgid ""
+"FREE - Leadmon Multi-stage - Multi-Stage Open Relays that are not listed on "
+"other active RBLs and that have sent SPAM to Leadmon.net."
 msgstr ""
 
-msgid "FREE - Leadmon SpamBlock - Sites on this listing have sent Leadmon.net direct SPAM from IPs in netblocks where the entire block has no DNS mappings. It's a list of BLOCKS of IPs being used by people who have SPAMmed Leadmon.net."
+msgid ""
+"FREE - Leadmon SpamBlock - Sites on this listing have sent Leadmon.net "
+"direct SPAM from IPs in netblocks where the entire block has no DNS "
+"mappings. It's a list of BLOCKS of IPs being used by people who have SPAMmed "
+"Leadmon.net."
 msgstr ""
 
-msgid "FREE, for now - Not Just Another Blacklist - Both Open Relays and Direct SPAM Sources."
+msgid ""
+"FREE, for now - Not Just Another Blacklist - Both Open Relays and Direct "
+"SPAM Sources."
 msgstr ""
 
 msgid "FREE, for now - Not Just Another Blacklist - Dial-up IPs."
@@ -2277,7 +2408,8 @@ msgstr ""
 msgid "FREE - Distributed Sender Boycott List - UN-Confirmed Relays"
 msgstr ""
 
-msgid "WARNING! Header filters should be of the format &quot;Header: value&quot;"
+msgid ""
+"WARNING! Header filters should be of the format &quot;Header: value&quot;"
 msgstr ""
 
 msgid "Saved Scan type"
@@ -2314,14 +2446,22 @@ msgstr "اگز %s شامل %s باشه، آنگاه به %s منتقلش کن"
 msgid "Message Filters"
 msgstr "صافی‌های پیغام‌ها"
 
-msgid "Filtering enables messages with different criteria to be automatically filtered into different folders for easier organization."
-msgstr "صافی پیغام‌ها این امکان را به شما می‌دهد تا پیغام‌هایتان را براساس معیار‌هایی به طور خودکار دسته‌بندی نمایید تا سازمان‌دهی آنها راحت‌تر باشد."
+msgid ""
+"Filtering enables messages with different criteria to be automatically "
+"filtered into different folders for easier organization."
+msgstr ""
+"صافی پیغام‌ها این امکان را به شما میدهد تا پیغام‌هایتان را براساس معیار‌هایی به "
+"طور خودکار دسته‌بندی نمایید تا سازمان‌دهی آنها راحت‌تر باشد."
 
 msgid "SPAM Filters"
 msgstr "صافی‌های هرزنامه‌ها"
 
-msgid "SPAM filters allow you to select from various DNS based blacklists to detect junk email in your INBOX and move it to another folder (like Trash)."
-msgstr "شما می‌توانید در این قسمت با استفاده از لیست‌های سیاه نامه‌های تبلیغاتی و هرزنامه را به طور خودکار شناسایی کرده و به پوشه دیگری منتقل کنید."
+msgid ""
+"SPAM filters allow you to select from various DNS based blacklists to detect "
+"junk email in your INBOX and move it to another folder (like Trash)."
+msgstr ""
+"شما میتوانید در این قسمت با استفاده از لیست‌های سیاه نامه‌های تبلیغاتی و "
+"هرزنامه را به طور خودکار شناسایی کرده و به پوشه دیگری منتقل کنید."
 
 msgid "You must select a spam folder."
 msgstr "شما باید یک پوشه برای هرزنامه‌ها انتخاب کنید."
@@ -2339,13 +2479,24 @@ msgstr "هشدار! به مدیریت بگویید که متغیر %s را تن�
 msgid "Move spam to:"
 msgstr "هرزنامه را منتقل کن به:"
 
-msgid "Moving spam directly to the trash may not be a good idea at first, since messages from friends and mailing lists might accidentally be marked as spam. Whatever folder you set this to, make sure that it gets cleaned out periodically, so that you don't have an excessively large mailbox hanging around."
+msgid ""
+"Moving spam directly to the trash may not be a good idea at first, since "
+"messages from friends and mailing lists might accidentally be marked as "
+"spam. Whatever folder you set this to, make sure that it gets cleaned out "
+"periodically, so that you don't have an excessively large mailbox hanging "
+"around."
 msgstr ""
 
 msgid "Unread messages only"
 msgstr "فقط پیغام‌های خوانده نشده"
 
-msgid "The more messages scanned, the longer it takes. It's recommended to scan unread messages only. If a change to the filters is made, it's recommended to set it to scan all messages, then go view the INBOX, then come back and set it to scan unread messages only. That way, the new spam filters will be applied and even the spam you didn't catch with the old filters will be scanned."
+msgid ""
+"The more messages scanned, the longer it takes. It's recommended to scan "
+"unread messages only. If a change to the filters is made, it's recommended "
+"to set it to scan all messages, then go view the INBOX, then come back and "
+"set it to scan unread messages only. That way, the new spam filters will be "
+"applied and even the spam you didn't catch with the old filters will be "
+"scanned."
 msgstr ""
 
 #, c-format
@@ -2384,22 +2535,31 @@ msgstr "متصل‌شونده فعال نیست."
 msgid "IMAP server information"
 msgstr "اطلاعات میزبان IMAP"
 
-msgid "Run some test IMAP commands, displaying both the command and the result. These tests use the SquirrelMail IMAP commands and your current SquirrelMail configuration. Custom command strings can be used."
+msgid ""
+"Run some test IMAP commands, displaying both the command and the result. "
+"These tests use the SquirrelMail IMAP commands and your current SquirrelMail "
+"configuration. Custom command strings can be used."
 msgstr ""
 
 msgid "Mailinglist"
 msgstr ""
 
 #, c-format
-msgid "This will send a message to %s requesting help for this list. You will receive an emailed response at the address below."
+msgid ""
+"This will send a message to %s requesting help for this list. You will "
+"receive an emailed response at the address below."
 msgstr ""
 
 #, c-format
-msgid "This will send a message to %s requesting that you will be subscribed to this list. You will be subscribed with the address below."
+msgid ""
+"This will send a message to %s requesting that you will be subscribed to "
+"this list. You will be subscribed with the address below."
 msgstr ""
 
 #, c-format
-msgid "This will send a message to %s requesting that you will be unsubscribed from this list. It will try to unsubscribe the adress below."
+msgid ""
+"This will send a message to %s requesting that you will be unsubscribed from "
+"this list. It will try to unsubscribe the adress below."
 msgstr ""
 
 msgid "Send Mail"
@@ -2541,11 +2701,11 @@ msgid "Login OK: No new messages"
 msgstr "ورود موفق: پیغام جدیدی وجود ندارد"
 
 msgid "Login OK: Inbox EMPTY"
-msgstr "ورود موفق: Inbox خالی می‌باشد"
+msgstr "ورود موفق: Inbox خالی میباشد"
 
 #, c-format
 msgid "Login OK: Inbox contains %s messages"
-msgstr "ورود موفق: Inbox شامل %s پیغام می‌باشده"
+msgstr "ورود موفق: Inbox شامل %s پیغام میباشده"
 
 msgid "Fetching UIDL..."
 msgstr ""
@@ -2598,7 +2758,11 @@ msgstr "پاک نشده‌ها:"
 msgid "Remote POP server settings"
 msgstr ""
 
-msgid "You should be aware that the encryption used to store your password is not perfectly secure. However, if you are using pop, there is inherently no encryption anyway. Additionally, the encryption that we do to save it on the server can be undone by a hacker reading the source to this file."
+msgid ""
+"You should be aware that the encryption used to store your password is not "
+"perfectly secure. However, if you are using pop, there is inherently no "
+"encryption anyway. Additionally, the encryption that we do to save it on the "
+"server can be undone by a hacker reading the source to this file."
 msgstr ""
 
 msgid "If you leave password empty, it will be required when you fetch mail."
@@ -2679,8 +2843,12 @@ msgstr "نتیجه‌ی دریافت پست الکترونیکی"
 msgid "POP3 Fetch Mail"
 msgstr "دریافت پست الکترونیکی از روش POP3"
 
-msgid "This configures settings for downloading email from a POP3 mailbox to your account on this server."
-msgstr "در این قسمت می‌توانید مشخص کنید که از چه میزبان‌های POP3 ای می‌خواهید پیغام‌هایتان دریافت شود."
+msgid ""
+"This configures settings for downloading email from a POP3 mailbox to your "
+"account on this server."
+msgstr ""
+"در این قسمت میتوانید مشخص کنید که از چه میزبان‌های POP3 ای میخواهید "
+"پیغام‌هایتان دریافت شود."
 
 msgid "Message Details"
 msgstr "جزئیات پیغام"
@@ -2709,60 +2877,63 @@ msgstr "ذخیره سازی پیغام"
 msgid "View Message details"
 msgstr "نمایش جزئیات پیغام"
 
-msgid "New Mail"
-msgstr "پیغام جدید"
-
-msgid "SquirrelMail Notice:"
-msgstr ""
-
-#, c-format
-msgid "You have %s new message"
-msgstr "شما %s پیغام جدید دارید"
-
-#, c-format
-msgid "You have %s new messages"
-msgstr "شما %s پیغام جدید دارید"
-
 msgid "New Mail Notification"
 msgstr "آگاه کننده دریافت پست الکترونیکی جدید"
 
 #, c-format
-msgid "The %s option will check ALL of your folders for unseen mail, not just the inbox for notification."
+msgid ""
+"The %s option will check ALL of your folders for unseen mail, not just the "
+"inbox for notification."
 msgstr ""
 
 msgid "Check all boxes, not just INBOX"
 msgstr "تمام جعبه‌ها را چک کن، نه فقط INBOX را"
 
 #, c-format
-msgid "Selecting the %s option will enable the showing of a popup window when unseen mail is in your folders (requires JavaScript)."
+msgid ""
+"Selecting the %s option will enable the showing of a popup window when "
+"unseen mail is in your folders (requires JavaScript)."
 msgstr ""
 
 msgid "Show popup window on new mail"
 msgstr ""
 
 #, c-format
-msgid "Use the %s option to only check for messages that are recent. Recent messages are those that have just recently showed up and have not been \"viewed\" or checked yet. This can prevent being continuously annoyed by sounds or popups for unseen mail."
+msgid ""
+"Use the %s option to only check for messages that are recent. Recent "
+"messages are those that have just recently showed up and have not been "
+"\"viewed\" or checked yet. This can prevent being continuously annoyed by "
+"sounds or popups for unseen mail."
 msgstr ""
 
 msgid "Count only messages that are RECENT"
 msgstr "فقط پیغام‌هایی که اخیراً ارسال شده را بشمار"
 
 #, c-format
-msgid "Selecting the %s option will change the title in some browsers to let you know when you have new mail (requires JavaScript, and only works in IE but you won't see errors with other browsers). This will always tell you if you have new mail, even if you have %s enabled."
+msgid ""
+"Selecting the %s option will change the title in some browsers to let you "
+"know when you have new mail (requires JavaScript, and only works in IE but "
+"you won't see errors with other browsers). This will always tell you if you "
+"have new mail, even if you have %s enabled."
 msgstr ""
 
 msgid "Change title on supported browsers"
 msgstr "تغییرعنوان را در مرورگرهای پشتیبانی شده "
 
 #, c-format
-msgid "Select %s to turn on playing a media file when unseen mail is in your folders. When enabled, you can specify the media file to play in the provided file box."
+msgid ""
+"Select %s to turn on playing a media file when unseen mail is in your "
+"folders. When enabled, you can specify the media file to play in the "
+"provided file box."
 msgstr ""
 
 msgid "Enable Media Playing"
 msgstr "فعالسازی اجرای صوت "
 
 #, c-format
-msgid "Select from the list of %s the media file to play when new mail arrives. If no file is specified, %s, no sound will be used."
+msgid ""
+"Select from the list of %s the media file to play when new mail arrives. If "
+"no file is specified, %s, no sound will be used."
 msgstr ""
 
 msgid "Select server file"
@@ -2780,11 +2951,29 @@ msgstr "سعی کن"
 msgid "Current File:"
 msgstr "پرونده جاری"
 
+msgid "New Mail"
+msgstr "پیغام جدید"
+
+msgid "SquirrelMail Notice:"
+msgstr ""
+
+#, c-format
+msgid "You have %s new message"
+msgstr "شما %s پیغام جدید دارید"
+
+#, c-format
+msgid "You have %s new messages"
+msgstr "شما %s پیغام جدید دارید"
+
 msgid "NewMail Options"
 msgstr "تنظیمات پست جدید"
 
-msgid "This configures settings for playing sounds and/or showing popup windows when new mail arrives."
-msgstr "وقتی پیغام جدیدی می‌رسد با توجه به تنظیمات این قسمت صدایی پخش می‌شود و یا یک پنجره کوچک باز می‌شود."
+msgid ""
+"This configures settings for playing sounds and/or showing popup windows "
+"when new mail arrives."
+msgstr ""
+"وقتی پیغام جدیدی میرسد با توجه به تنظیمات این قسمت صدایی پخش میشود و یا یک "
+"پنجره کوچک باز میشود."
 
 #, c-format
 msgid "%s New Messages"
@@ -2869,52 +3058,94 @@ msgstr "ذخیره شناسه"
 msgid "About SpamCop"
 msgstr ""
 
-msgid "SpamCop is a free service that greatly assists in finding the true source of the spam and helps in letting the proper people know about the abuse."
+msgid ""
+"SpamCop is a free service that greatly assists in finding the true source of "
+"the spam and helps in letting the proper people know about the abuse."
 msgstr ""
 
 #, c-format
-msgid "To use it, you must get a SpamCop authorization code. There is a free %ssign up page%s so you can use SpamCop."
+msgid ""
+"To use it, you must get a SpamCop authorization code. There is a free %ssign "
+"up page%s so you can use SpamCop."
 msgstr ""
 
 msgid "Before you sign up, be warned"
 msgstr "قبل از ثبت نام، آگاه باشید"
 
 #, c-format
-msgid "Some users have reported that the email addresses used with SpamCop find their way onto spam lists. To be safe, you can just create an email forwarding account and have all SpamCop reports get sent to there. Also, if it gets flooded with spam, you can then just delete that account with no worries about losing your real email address. Just go create an email forwarder somewhere (%s has a %slist of places%s) so that messages from system administrators and what not can be sent to you."
+msgid ""
+"Some users have reported that the email addresses used with SpamCop find "
+"their way onto spam lists. To be safe, you can just create an email "
+"forwarding account and have all SpamCop reports get sent to there. Also, if "
+"it gets flooded with spam, you can then just delete that account with no "
+"worries about losing your real email address. Just go create an email "
+"forwarder somewhere (%s has a %slist of places%s) so that messages from "
+"system administrators and what not can be sent to you."
 msgstr ""
 
-msgid "Once you have signed up with SpamCop and have received your SpamCop authorization code, you need to enable this plugin by clicking the link above. Once enabled, you go about your normal life. If you encounter a spam message in your mailbox, just view it. On the right-hand side, near the top of where the message is displayed, you will see a link to report this message as spam. Clicking on it brings you to a confirmation page. Confirming that you want the spam report sent will do different things with different reporting methods."
+msgid ""
+"Once you have signed up with SpamCop and have received your SpamCop "
+"authorization code, you need to enable this plugin by clicking the link "
+"above. Once enabled, you go about your normal life. If you encounter a spam "
+"message in your mailbox, just view it. On the right-hand side, near the top "
+"of where the message is displayed, you will see a link to report this "
+"message as spam. Clicking on it brings you to a confirmation page. "
+"Confirming that you want the spam report sent will do different things with "
+"different reporting methods."
 msgstr ""
 
 msgid "Email-based reporting"
 msgstr "گزارش دهنده تحت پست الکترونیک "
 
-msgid "Pressing the button forwards the message to the SpamCop service and will optionally delete the message. From there, you just need to go to your INBOX and quite soon a message should appear from SpamCop. (It gets sent to the account you registered with, so make sure that your mail forwarder works!) Open it up, click on the appropriate link at the top, and a new browser window will open."
+msgid ""
+"Pressing the button forwards the message to the SpamCop service and will "
+"optionally delete the message. From there, you just need to go to your INBOX "
+"and quite soon a message should appear from SpamCop. (It gets sent to the "
+"account you registered with, so make sure that your mail forwarder works!) "
+"Open it up, click on the appropriate link at the top, and a new browser "
+"window will open."
 msgstr ""
 
-msgid "Currently, the quick reporting just forwards the request to the thorough reporting. Also, it appears that this is for members (non-free) only. Hopefully this will change soon."
+msgid ""
+"Currently, the quick reporting just forwards the request to the thorough "
+"reporting. Also, it appears that this is for members (non-free) only. "
+"Hopefully this will change soon."
 msgstr ""
 
 msgid "Web-based reporting"
 msgstr "گزارش دهنده‌ی تحت وب"
 
-msgid "When you press the button on the confirmation page, this will pop open a new browser window and the SpamCop service should appear inside. The message will not be deleted (working on that part), but you won't need to wait for a response email to start the spam reporting."
+msgid ""
+"When you press the button on the confirmation page, this will pop open a new "
+"browser window and the SpamCop service should appear inside. The message "
+"will not be deleted (working on that part), but you won't need to wait for a "
+"response email to start the spam reporting."
 msgstr ""
 
-msgid "The SpamCop service will display information as it finds it, so scroll down until you see a form button. It might pause a little while it is looking up information, so be a little patient. Read what it says, and submit the spam. Close the browser window. Press Cancel or click on the appropriate mail folder to see messages and/or delete the spam."
+msgid ""
+"The SpamCop service will display information as it finds it, so scroll down "
+"until you see a form button. It might pause a little while it is looking up "
+"information, so be a little patient. Read what it says, and submit the spam. "
+"Close the browser window. Press Cancel or click on the appropriate mail "
+"folder to see messages and/or delete the spam."
 msgstr ""
 
 msgid "SpamCop service type"
 msgstr ""
 
-msgid "Service type option allows selecting which SpamCop services you are using. Member services use different web reporting forms and does not display nags. You can purchase these services, if you want to support SpamCop."
+msgid ""
+"Service type option allows selecting which SpamCop services you are using. "
+"Member services use different web reporting forms and does not display nags. "
+"You can purchase these services, if you want to support SpamCop."
 msgstr ""
 
 msgid "More information"
 msgstr "اطلاعات بیشتر"
 
 #, c-format
-msgid "For more information about SpamCop, it's services, spam in general, and many related topics, try reading through SpamCop's %sHelp and Feedback%s section."
+msgid ""
+"For more information about SpamCop, it's services, spam in general, and many "
+"related topics, try reading through SpamCop's %sHelp and Feedback%s section."
 msgstr ""
 
 msgid "Report as Spam"
@@ -2923,10 +3154,17 @@ msgstr ""
 msgid "SpamCop - Spam Reporting"
 msgstr ""
 
-msgid "Help fight the battle against unsolicited email. SpamCop reads the spam email and determines the correct addresses to send complaints to. Quite fast, really smart, and easy to use."
+msgid ""
+"Help fight the battle against unsolicited email. SpamCop reads the spam "
+"email and determines the correct addresses to send complaints to. Quite "
+"fast, really smart, and easy to use."
 msgstr ""
 
-msgid "Sending this spam report will give you back a reply with URLs that you can click on to properly report this spam message to the proper authorities. This is a free service. By pressing the \"Send Spam Report\" button, you agree to follow SpamCop's rules/terms of service/etc."
+msgid ""
+"Sending this spam report will give you back a reply with URLs that you can "
+"click on to properly report this spam message to the proper authorities. "
+"This is a free service. By pressing the \"Send Spam Report\" button, you "
+"agree to follow SpamCop's rules/terms of service/etc."
 msgstr ""
 
 msgid "Cancel / Done"
@@ -2938,8 +3176,13 @@ msgstr "ارسال گزارش هرزنامه"
 msgid "SpellChecker Options"
 msgstr "تنظیمات غلط املایی یاب"
 
-msgid "Here you may set up how your personal dictionary is stored, edit it, or choose which languages should be available to you when spell-checking."
-msgstr "دراینجا شما می‌توانید تنظیم کنید که چگونه دیکشنری شخصی شما برپا گردد، چگونه آنرا ویرایش کنید، یا اینکه کدام زبان برای چک کردن املا شما مورد استفاده قرار گیرد."
+msgid ""
+"Here you may set up how your personal dictionary is stored, edit it, or "
+"choose which languages should be available to you when spell-checking."
+msgstr ""
+"دراینجا شما میتوانید تنظیم کنید که چگونه دیکشنری شخصی شما برپا گردد، چگونه "
+"آنرا ویرایش کنید، یا اینکه کدام زبان برای چک کردن املا شما مورد استفاده قرار "
+"گیرد."
 
 msgid "Check Spelling"
 msgstr "چک کردن املا"
@@ -2950,7 +3193,15 @@ msgstr "برگشت به صفحه غلط املایی یاب"
 msgid "ATTENTION:"
 msgstr "توجه:"
 
-msgid "SquirrelSpell was unable to decrypt your personal dictionary. This is most likely due to the fact that you have changed your mailbox password. In order to proceed, you will have to supply your old password so that SquirrelSpell can decrypt your personal dictionary. It will be re-encrypted with your new password after this. If you haven't encrypted your dictionary, then it got mangled and is no longer valid. You will have to delete it and start anew. This is also true if you don't remember your old password -- without it, the encrypted data is no longer accessible."
+msgid ""
+"SquirrelSpell was unable to decrypt your personal dictionary. This is most "
+"likely due to the fact that you have changed your mailbox password. In order "
+"to proceed, you will have to supply your old password so that SquirrelSpell "
+"can decrypt your personal dictionary. It will be re-encrypted with your new "
+"password after this. If you haven't encrypted your dictionary, then it got "
+"mangled and is no longer valid. You will have to delete it and start anew. "
+"This is also true if you don't remember your old password -- without it, the "
+"encrypted data is no longer accessible."
 msgstr ""
 
 msgid "Delete my dictionary and start a new one"
@@ -2965,8 +3216,11 @@ msgstr "ادامه بده"
 msgid "You must make a choice"
 msgstr "شما باید گزینه ای را انتخاب کنید"
 
-msgid "You can either delete your dictionary or type in the old password. Not both."
-msgstr "شما می‌توانید دیکشنری خود را پاک کرده یا اینکه کلمه عبور قدیمی خود را وارد کنید. "
+msgid ""
+"You can either delete your dictionary or type in the old password. Not both."
+msgstr ""
+"شما میتوانید دیکشنری خود را پاک کرده یا اینکه گذرواژه قدیمی خود را وارد "
+"کنید. "
 
 msgid "This will delete your personal dictionary file. Proceed?"
 msgstr ""
@@ -3063,37 +3317,47 @@ msgstr ""
 msgid "No errors found"
 msgstr "خطایی یافت نشد"
 
-msgid "Your personal dictionary has been encrypted and is now stored in an encrypted format."
-msgstr ""
-
-msgid "Your personal dictionary has been decrypted and is now stored as plain text."
-msgstr ""
-
-msgid "Personal Dictionary Crypto Settings"
-msgstr ""
-
 msgid "Your personal dictionary was erased."
 msgstr "دیکشنری شخصی شما پاک شد."
 
 msgid "Dictionary Erased"
 msgstr "دیکشنری پاک شد"
 
-msgid "Your personal dictionary was erased. Please close this window and click \"Check Spelling\" button again to start your spellcheck over."
+msgid ""
+"Your personal dictionary was erased. Please close this window and click "
+"\"Check Spelling\" button again to start your spellcheck over."
 msgstr ""
 
 msgid "Close this Window"
 msgstr "بستن پنجره"
 
-msgid "Your personal dictionary was re-encrypted successfully. Now return to the &quot;SpellChecker options&quot; menu and make your selection again."
+msgid ""
+"Your personal dictionary was re-encrypted successfully. Now return to the "
+"&quot;SpellChecker options&quot; menu and make your selection again."
 msgstr ""
 
 msgid "Successful re-encryption"
 msgstr ""
 
-msgid "Your personal dictionary was re-encrypted successfully. Please close this window and click \"Check Spelling\" button again to start your spellcheck over."
+msgid ""
+"Your personal dictionary was re-encrypted successfully. Please close this "
+"window and click \"Check Spelling\" button again to start your spellcheck "
+"over."
 msgstr ""
 
 msgid "Dictionary re-encrypted"
+msgstr ""
+
+msgid ""
+"Your personal dictionary has been encrypted and is now stored in an "
+"encrypted format."
+msgstr ""
+
+msgid ""
+"Your personal dictionary has been decrypted and is now stored as plain text."
+msgstr ""
+
+msgid "Personal Dictionary Crypto Settings"
 msgstr ""
 
 msgid "Personal Dictionary"
@@ -3118,22 +3382,35 @@ msgstr "ویرایش دیکشنری شخصی"
 msgid "Please make your selection first."
 msgstr "لطفاً ابتدا انتخاب کنید."
 
-msgid "This will encrypt your personal dictionary and store it in an encrypted format. Proceed?"
+msgid ""
+"This will encrypt your personal dictionary and store it in an encrypted "
+"format. Proceed?"
 msgstr ""
 
-msgid "This will decrypt your personal dictionary and store it in a plain text format. Proceed?"
+msgid ""
+"This will decrypt your personal dictionary and store it in a plain text "
+"format. Proceed?"
 msgstr ""
 
 msgid "Your personal dictionary is currently encrypted."
 msgstr ""
 
-msgid "This helps protect your privacy in case the web-mail system gets compromized and your personal dictionary ends up stolen. It is currently encrypted with the password you use to access your mailbox, making it hard for anyone to see what is stored in your personal dictionary."
+msgid ""
+"This helps protect your privacy in case the web-mail system gets compromized "
+"and your personal dictionary ends up stolen. It is currently encrypted with "
+"the password you use to access your mailbox, making it hard for anyone to "
+"see what is stored in your personal dictionary."
 msgstr ""
 
-msgid "If you forget your password, your personal dictionary will become unaccessible, since it can no longer be decrypted. If you change your mailbox password, SquirrelSpell will recognize it and prompt you for your old password in order to re-encrypt the dictionary with a new key."
+msgid ""
+"If you forget your password, your personal dictionary will become "
+"unaccessible, since it can no longer be decrypted. If you change your "
+"mailbox password, SquirrelSpell will recognize it and prompt you for your "
+"old password in order to re-encrypt the dictionary with a new key."
 msgstr ""
 
-msgid "Please decrypt my personal dictionary and store it in a clear-text format."
+msgid ""
+"Please decrypt my personal dictionary and store it in a clear-text format."
 msgstr ""
 
 msgid "Change crypto settings"
@@ -3142,13 +3419,25 @@ msgstr ""
 msgid "Your personal dictionary is currently not encrypted."
 msgstr ""
 
-msgid "You may wish to encrypt your personal dictionary to protect your privacy in case the webmail system gets compromized and your personal dictionary file gets stolen. When encrypted, the file's contents look garbled and are hard to decrypt without knowing the correct key (which is your mailbox password)."
+msgid ""
+"You may wish to encrypt your personal dictionary to protect your privacy in "
+"case the webmail system gets compromized and your personal dictionary file "
+"gets stolen. When encrypted, the file's contents look garbled and are hard "
+"to decrypt without knowing the correct key (which is your mailbox password)."
 msgstr ""
 
-msgid "If you decide to encrypt your personal dictionary, you must remember that it gets &quot;hashed&quot; with your mailbox password. If you forget your mailbox password and the administrator changes it to a new value, your personal dictionary will become useless and will have to be created anew. However, if you or your system administrator change your mailbox password but you still have the old password at hand, you will be able to enter the old key to re-encrypt the dictionary with the new value."
+msgid ""
+"If you decide to encrypt your personal dictionary, you must remember that it "
+"gets &quot;hashed&quot; with your mailbox password. If you forget your "
+"mailbox password and the administrator changes it to a new value, your "
+"personal dictionary will become useless and will have to be created anew. "
+"However, if you or your system administrator change your mailbox password "
+"but you still have the old password at hand, you will be able to enter the "
+"old key to re-encrypt the dictionary with the new value."
 msgstr ""
 
-msgid "Please encrypt my personal dictionary and store it in an encrypted format."
+msgid ""
+"Please encrypt my personal dictionary and store it in an encrypted format."
 msgstr ""
 
 #, c-format
@@ -3167,7 +3456,9 @@ msgstr "تغییری درخواست نشده بود."
 msgid "Please wait, communicating with the server..."
 msgstr "لطفا صبر کنید، در حال برقراری ارتباط با میزبان..."
 
-msgid "Please choose which dictionary you would like to use to spellcheck this message:"
+msgid ""
+"Please choose which dictionary you would like to use to spellcheck this "
+"message:"
 msgstr "لطفاً دیکشنری مورد نظر خود را برای چک کردن نوشتار را انتخاب کنید:"
 
 msgid "SquirrelSpell Initiating"
@@ -3175,7 +3466,8 @@ msgstr "در حال اجرای SquirrelSpell"
 
 #, c-format
 msgid "Settings adjusted to: %s with %s as default dictionary."
-msgstr "تنظیمات بر اساس %s با استفاده از %s به عنوان دیکشنری اصلی بر‌قرار گردید. "
+msgstr ""
+"تنظیمات بر اساس %s با استفاده از %s به عنوان دیکشنری اصلی بر‌قرار گردید. "
 
 #, c-format
 msgid "Using %s dictionary (system default) for spellcheck."
@@ -3184,7 +3476,9 @@ msgstr "استفاده از دیکشنری %s به عنوان دیکشنری ا�
 msgid "International Dictionaries Preferences Updated"
 msgstr "ترجیحات دیکشنری بین‌المللی بروز شد"
 
-msgid "Please check any available international dictionaries which you would like to use when spellchecking:"
+msgid ""
+"Please check any available international dictionaries which you would like "
+"to use when spellchecking:"
 msgstr ""
 
 msgid "Make this dictionary my default selection:"
@@ -3197,7 +3491,7 @@ msgid "Add International Dictionaries"
 msgstr "اضافه‌کردن دیکشنری‌های بین‌المللی"
 
 msgid "Please choose which options you wish to set up:"
-msgstr "لطفاً تنظیماتی را که می‌خواهید اعمال شود را انتخاب کنید:"
+msgstr "لطفاً تنظیماتی را که میخواهید اعمال شود را انتخاب کنید:"
 
 msgid "Edit your personal dictionary"
 msgstr "ویرایش دیکشنری شخصی"
@@ -3221,7 +3515,7 @@ msgid "Saved Translation Options"
 msgstr "تنظیمات ذخیره شده ی ترجمه"
 
 msgid "Your server options are as follows:"
-msgstr "تنظیمات میزبان شما بدین گونه می‌باشد:"
+msgstr "تنظیمات میزبان شما بدین گونه میباشد:"
 
 msgid "Maximum of 150 words translated, powered by Systran"
 msgstr ""
@@ -3246,8 +3540,11 @@ msgstr ""
 msgid "Russian translations, maximum of 500 characters translated"
 msgstr ""
 
-msgid "You also decide if you want the translation box displayed, and where it will be located."
-msgstr "شما همچنین می‌توانید در مورد نمایش داده شدن فضای ترجمه و مکان آن تصمیم بگیرید."
+msgid ""
+"You also decide if you want the translation box displayed, and where it will "
+"be located."
+msgstr ""
+"شما همچنین میتوانید در مورد نمایش داده شدن فضای ترجمه و مکان آن تصمیم بگیرید."
 
 msgid "Select your translator:"
 msgstr "مترجم خود را انتخاب کنید:"
@@ -3273,7 +3570,9 @@ msgstr "ترجمه در داخل فریم برنامه"
 msgid "Translation Options"
 msgstr "تنظیمات ترجمه‌گر"
 
-msgid "Which translator should be used when you get messages in a different language?"
+msgid ""
+"Which translator should be used when you get messages in a different "
+"language?"
 msgstr "در صورت دریافت یک نامه به زبان خارجی از کدام مترجم باید استفاده شود؟"
 
 #, c-format
@@ -3402,4 +3701,3 @@ msgstr "سرآمدهای پیغام منتقل نشده"
 
 msgid "This image has been removed for security reasons"
 msgstr "این تصویر به دلایل امنیتی حذف شده است"
-
