@@ -225,6 +225,8 @@
             $end = $startMessage + $show_num - 1;
             if ($numMessages < $show_num)
                 $end_loop = $numMessages;
+            else if ($numMessages - $startMessage + 1 < $show_num)
+                $end_loop = $numMessages - $startMessage + 1;
             else
                 $end_loop = $show_num;
          } else {

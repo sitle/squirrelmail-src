@@ -17,10 +17,13 @@
       include("../functions/prefs.php");
    if (!isset($plugin_php))
       include("../functions/plugin.php");
+   if (!isset($auth_php))
+      include("../functions/auth.php");
       
+   is_logged_in();
+
    $load_prefs_php = true;
-   if (!isset($username))
-       $username = '';
+
    checkForPrefs($data_dir, $username);
 
    $chosen_theme = getPref($data_dir, $username, "chosen_theme");
