@@ -26,9 +26,6 @@ function mail_utilities_add_menu_hook($plugin_name, $plugin_link_function) {
     mail_utilities_setup_hook();
 
     $mail_utilities_hook['util_menu'][$plugin_name] = $plugin_link_function;
-    if ( count($mail_utilities_hook['util_menu']) > 1 ) {
-        ksort($mail_utilities_hook['util_menu']);
-    }
 }
 
 function mail_utilities_add_shortcut($plugin_name,
@@ -67,6 +64,11 @@ function mail_utilities_display_menubar($color) {
     if ( !mail_utilities_has_menu_plugins() ) {
         return;
     }
+
+    if ( count($mail_utilities_hook['util_menu']) > 1 ) {
+        ksort($mail_utilities_hook['util_menu']);
+    }
+
     echo '<p><TABLE BORDER=0 WIDTH="95%" CELLSPACING=0 CELLPADDING=2 ALIGN=CENTER><TR><TD>' . "\n";
     displayInternalLink('plugins/mail_utilities/utils.php', _("<b>Utilities:</b>"));
     echo '&nbsp;&nbsp; ';
