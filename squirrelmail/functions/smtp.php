@@ -110,7 +110,7 @@ function expandRcptAddrs ($array) {
 
 /* Attach the files that are due to be attached
  */
-function attachFiles ($fp, $session, $rn="\r\n") {
+function attachFiles ($fp, $session, $rn="\r\n", $checkdot = false) {
     global $attachments, $attachment_dir, $username;
 
     $length = 0;
@@ -137,7 +137,6 @@ function attachFiles ($fp, $session, $rn="\r\n") {
                     $header .= "Content-Type: $filetype$rn";
                 }
 
-                
                 /* Use 'rb' for NT systems -- read binary
                  * Unix doesn't care -- everything's binary!  :-)
                  */
@@ -152,22 +151,47 @@ function attachFiles ($fp, $session, $rn="\r\n") {
 					    fputs ($fp, $header);
 					}
                     $length += strlen($header);
+
+                    if ($checkdot) {
+                        $checkdot_begin=true;
+                    } 
+                    else {
+                        $checkdot_begin=false;
+                    }
+
                     while ($tmp = fgets($file, 4096)) {
                         $tmp = str_replace("\r\n", "\n", $tmp);
                         $tmp = str_replace("\r", "\n", $tmp);
+
+                        if ($tmp{0} == '.' && $checkdot_begin) {
+                            $tmp = '.' . $tmp;
+                        }
+                        if ($checkdot) {
+                            $tmp = str_replace("\n.","\n..",$tmp);
+                        }
                         if ($rn == "\r\n"){
                             $tmp = str_replace("\n", "\r\n", $tmp);
+                        }
+                        $tmp_length = strlen($tmp);
+                        if ($tmp{$tmp_length-1} == "\n" && $checkdot) {
+                            $checkdot_begin = true;
+                        } 
+                        else {
+                            $checkdot_begin = false;
                         }
                         if ($fp) {
                             fputs($fp, $tmp);
                         }
                         $length += strlen($tmp);
                     }
+
                     if (substr($tmp, strlen($tmp) - strlen($rn), strlen($rn)) != $rn) {
                         if ($fp) {
                             fputs($fp, $rn);
                         }
+                    $length += strlen($rn);
                     }
+                    
                 } else {
                     $header .= "Content-Transfer-Encoding: base64" 
                         . "$rn" . "$rn";
@@ -410,7 +434,7 @@ function write822Header ($fp, $t, $c, $b, $subject, $more_headers, $session, $rn
 
 /* Send the body
  */
-function writeBody ($fp, $passedBody, $session, $rn="\r\n") {
+function writeBody ($fp, $passedBody, $session, $rn="\r\n", $checkdot = false) {
     global $default_charset;
 
     $attachmentlength = 0;
@@ -429,7 +453,7 @@ function writeBody ($fp, $passedBody, $session, $rn="\r\n") {
         $body .= $passedBody . $rn . $rn;
         if ($fp) fputs ($fp, $body);
         
-        $attachmentlength = attachFiles($fp, $session, $rn);
+        $attachmentlength = attachFiles($fp, $session, $rn, $checkdot);
         
         if (!isset($postbody)) { 
             $postbody = ""; 
@@ -472,7 +496,7 @@ function sendSendmail($t, $c, $b, $subject, $body, $more_headers, $session) {
     
     $headerlength = write822Header ($fp, $t, $c, $b, $subject, 
                                     $more_headers, $session, "\n");
-    $bodylength = writeBody($fp, $body, $session, "\n");
+    $bodylength = writeBody($fp, $body, $session, "\n", true);
     
     pclose($fp);
 
@@ -629,7 +653,7 @@ function sendSMTP($t, $c, $b, $subject, $body, $more_headers, $session) {
     /* Send the message */
     $headerlength = write822Header ($smtpConnection, $t, $c, $b, 
                                     $subject, $more_headers, $session);
-    $bodylength = writeBody($smtpConnection, $body, $session);
+    $bodylength = writeBody($smtpConnection, $body, $session, "\r\n", true);
     
     fputs($smtpConnection, ".\r\n"); /* end the DATA part */
     $tmp = fgets($smtpConnection, 1024);
@@ -857,13 +881,6 @@ function sendMessage($t, $c, $b, $subject, $body, $reply_id, $MDN,
         $more_headers = array_merge($more_headers, createReceiptHeaders($requestRecipt));
     }
 
-    /* In order to remove the problem of users not able to create
-     * messages with "." on a blank line, RFC821 has made provision
-     * in section 4.5.2 (Transparency).
-     */
-    $body = ereg_replace("\n\\.", "\n..", $body);
-    $body = ereg_replace("^\\.", "..", $body);
-
     /* this is to catch all plain \n instances and
      * replace them with \r\n.  All newlines were converted
      * into just \n inside the compose.php file.
@@ -876,17 +893,39 @@ function sendMessage($t, $c, $b, $subject, $body, $reply_id, $MDN,
     }
 
     if ($useSendmail) {
-        $length = sendSendmail($t, $c, $b, $subject, $body, $more_headers, 
-                               $session);
+
+        /* In order to remove the problem of users not able to create
+         * messages with "." on a blank line, RFC821 has made provision
+         * in section 4.5.2 (Transparency).
+         */
+
+        $body_sendmail = $body;
+        if (($body_sendmail{0} == '.')) {
+            $body_sendmail = '.' . $body_sendmail;
+        }
+        $body_sendmail = str_replace("\n.","\n..",$body_sendmail);
+        $length = sendSendmail($t, $c, $b, $subject, $body_sendmail, 
+                               $more_headers, $session);
         $body = ereg_replace("\n", "\r\n", $body);
     } else {
         $body = ereg_replace("\n", "\r\n", $body);
-        $length = sendSMTP($t, $c, $b, $subject, $body, $more_headers, 
+
+        /* In order to remove the problem of users not able to create
+         * messages with "." on a blank line, RFC821 has made provision
+         * in section 4.5.2 (Transparency).
+         */
+
+        $body_smtp = $body;
+        if (($body_smtp{0} == '.')) {
+            $body_smtp = '.' . $body_smtp;
+        }
+        $body_smtp = str_replace("\n.","\n..",$body_smtp);
+        $length = sendSMTP($t, $c, $b, $subject, $body_smtp, $more_headers, 
                            $session);
     }
     if (sqimap_mailbox_exists ($imap_stream, $sent_folder)) {
-		$headerlength = write822Header (FALSE, $t, $c, $b, $subject, $more_headers, $session, "\r\n");
-		$bodylength = writeBody(FALSE, $body, $session, "\r\n");
+		$headerlength = write822Header (false, $t, $c, $b, $subject, $more_headers, $session, "\r\n");
+		$bodylength = writeBody(false, $body, $session, "\r\n");
 		$length = $headerlength + $bodylength;
 
         sqimap_append ($imap_stream, $sent_folder, $length);
