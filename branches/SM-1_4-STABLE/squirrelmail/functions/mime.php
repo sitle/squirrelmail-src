@@ -353,24 +353,28 @@ function formatBody($imap_stream, $message, $color, $wrap_at, $ent_num, $id, $ma
             translateText($body, $wrap_at,
                           $body_message->header->getParameter('charset'));
         }
-        $link = 'read_body.php?passed_id=' . $id . '&amp;ent_id='.$ent_num.
+        $link = 'passed_id=' . $id . '&amp;ent_id='.$ent_num.
                 '&amp;mailbox=' . $urlmailbox .'&amp;sort=' . $sort .
                 '&amp;startMessage=' . $startMessage . '&amp;show_more=0';
         if (isset($passed_ent_id)) {
             $link .= '&amp;passed_ent_id='.$passed_ent_id;
         }
+        $body .= '<center><small><a href="download.php?absolute_dl=true&amp;' . 
+                 $link . '">' . _("Download this as a file") .  '</a>';
         if ($view_unsafe_images) {
             $text = _("Hide Unsafe Images");
         } else {
             if (isset($has_unsafe_images) && $has_unsafe_images) {
                 $link .= '&amp;view_unsafe_images=1';
-                $text = _("View Unsafe Images");
+                $text  = _("View Unsafe Images");
             } else {
-                $text = '';
+                $text  = '';
             }
         }
-        $body .= '<center><small><a href="'.$link.'">'.$text.
-                 '</a></small></center><br>' . "\n";
+        if($text != '') {
+            $body .= '&nbsp;|&nbsp;<a href="read_body.php?' . $link . '">' . $text . '</a>';
+        }
+        $body .= '</small></center><br>' . "\n";
     }
     return $body;
 }
