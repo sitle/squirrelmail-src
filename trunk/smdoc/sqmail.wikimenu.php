@@ -68,13 +68,19 @@ function sqmEditMenu(&$thing) {
 	track('wikiMenu');
 	
 	echo '<editmenu>';
+    
     if ( $thing->classid != HARDTHINGCLASSID ) {
         // None of these functions (including History) are available for Hard Things
-        if ( $wtf->user->inGroup($thing->viewGroup) ) {
-	        echo '<a href="', THINGIDURI, $wtf->thingid, '&amp;class=', $wtf->class, '&amp;version=', $wtf->thing->version, '&amp;op=view">View</a> | ';
-        }
-        if ( $wtf->user->inGroup($thing->editGroup) ) {
-	        echo '<a href="', THINGIDURI, $wtf->thingid, '&amp;class=', $wtf->class, '&amp;version=', $wtf->thing->version, '&amp;op=edit">Edit</a> | ';
+
+        if ( $thing->classid != WORKSPACECLASSID ) {
+            // Workspaces are not editable, and do not view in the expected way.
+            // The Current Workspace link up by the user's login can be used to return to Main
+            if ( $wtf->user->inGroup($thing->viewGroup) ) {
+	            echo '<a href="', THINGIDURI, $wtf->thingid, '&amp;class=', $wtf->class, '&amp;version=', $wtf->thing->version, '&amp;op=view">View</a> | ';
+            }
+            if ( $wtf->user->inGroup($thing->editGroup) ) {
+	            echo '<a href="', THINGIDURI, $wtf->thingid, '&amp;class=', $wtf->class, '&amp;version=', $wtf->thing->version, '&amp;op=edit">Edit</a> | ';
+            }
         }
         if ( $wtf->user->inGroup($thing->deleteGroup) ) {
   	       echo '<a href="', THINGIDURI, $wtf->thingid, '&amp;class=', $wtf->class, '&amp;version=', $wtf->thing->version, '&amp;op=delete">Delete</a> | ';
