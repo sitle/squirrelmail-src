@@ -1,8 +1,12 @@
 <?php
 
-function default_body($foowd, $className, $method, $user, $object, $t)
+$t['body_function'] = 'default_body';
+include(TEMPLATE_PATH.'/index.tpl');
+
+function default_body(&$foowd, $className, $method, $user, &$object, &$t)
 {
     echo '<h3>Default Object Display</h3>';
+
     if ( isset($object) )
     {
       echo '<pre>Class: ', $className, "\n", 'Method: ',  $method, '</pre>';
@@ -11,6 +15,4 @@ function default_body($foowd, $className, $method, $user, $object, $t)
     }
 }
 
-$t['body_function'] = 'default_body';
-include(TEMPLATE_PATH.'/index.php');
 ?>
