@@ -20,4 +20,18 @@ $replyAcct = "reminder"; 	//the info to the left of the @ sybmol in replyAcct@do
 $localDebug  = 0;		//script debug output when run from this machine
 $remoteDebug = 0;		//script debug output when run from a remote machine
 $allowRemote = 0;		//Allow script to be run remotely
+
+// System Wide Settings
+$enableNotification  = 1;	//Enable notification drop down display
+				// 1 = Enable, 0 = Disable
+$defaultNotification = 2;	//Default Notification response on Add New
+				// Acceptable Values:
+				// 0	- Don't Email
+				// 2	- Email Me - 0m prior
+				// 4	- Email Me - 5m prior
+				// 6	- Email Me - 15m prior
+				// 8	- Email Me - 30m prior
+				// 10	- Email Me - 1h prior
+				// 12	- Email Me - 4h prior
+				// 14	- Email Me - 1d prior
 ?>
