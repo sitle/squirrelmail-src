@@ -575,7 +575,7 @@ function decodeHeader ($string, $utfencode=true,$htmlsave=true) {
             /* if the last chunk isn't an encoded string then put back the space, otherwise don't */
             if ($iLastMatch !== $j) {
                 if ($htmlsave) {
-                    $ret .= '&nbsp;';
+                    $ret .= '&#32;';
                 } else {
                     $ret .= ' ';
                 }
@@ -614,7 +614,7 @@ function decodeHeader ($string, $utfencode=true,$htmlsave=true) {
         }
         if (!$encoded) {
             if ($htmlsave) {
-                $ret .= '&nbsp;';
+                $ret .= '&#32;';
             } else {
                 $ret .= ' ';
             }
@@ -630,7 +630,7 @@ function decodeHeader ($string, $utfencode=true,$htmlsave=true) {
     /* remove the first added space */
     if ($ret) {
         if ($htmlsave) {
-            $ret = substr($ret,6);
+            $ret = substr($ret,5);
         } else {
             $ret = substr($ret,1);
         }
@@ -650,9 +650,6 @@ function encodeHeader ($string) {
     if (isset($languages[$squirrelmail_language]['XTRA_CODE']) &&
         function_exists($languages[$squirrelmail_language]['XTRA_CODE'])) {
         return  $languages[$squirrelmail_language]['XTRA_CODE']('encodeheader', $string);
-    }
-    if (strtolower($default_charset) == 'iso-8859-1') {
-        $string = str_replace("\240",' ',$string);
     }
 
     // Encode only if the string contains 8-bit characters or =?
@@ -1879,7 +1876,7 @@ function magicHTML($body, $id, $message, $mailbox = 'INBOX') {
          $filename =
          $languages[$squirrelmail_language]['XTRA_CODE']('downloadfilename', $filename, $HTTP_USER_AGENT);
      } else {
-         $filename = ereg_replace('[\\/:\*\?"<>\|;]', '_', str_replace('&nbsp;', ' ', $filename));
+         $filename = ereg_replace('[\\/:\*\?"<>\|;]', '_', str_replace('&#32;', ' ', $filename));
      }
 
      // A Pox on Microsoft and it's Internet Explorer!
