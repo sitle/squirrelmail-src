@@ -44,14 +44,13 @@ class input_verify_passwordbox extends input_passwordbox {
    */
   function set($value) 
   {
-    if (get_magic_quotes_gpc()) 
+    if ($value !=NULL && get_magic_quotes_gpc()) 
       $value = stripslashes($value); 
 
-    if ( $this->regex == NULL || preg_match($this->regex, $value) )
+    if ( $value == NULL || $this->regex == NULL || preg_match($this->regex, $value) )
     {
       // value passed regex requirements, check against other box
-      if ( $this->otherbox->wasSet && 
-           $value == $this->otherbox->value )
+      if ( $this->otherbox->wasSet && $value == $this->otherbox->value )
       {
         $this->value = $value;
         $this->wasSet = TRUE;

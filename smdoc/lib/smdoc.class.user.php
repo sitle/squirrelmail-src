@@ -28,21 +28,6 @@ include_once(PATH . 'class.user.php');
  */
 class smdoc_user extends foowd_user
 {
-  /** #squirrelmail IRC channel nick */
-  var $IRC_nick;       
-  
-  /** Array containing other IM nicks */
-  var $IM_nicks;         
-
-  /** Main supported IM version. @see smver_to_string */
-  var $SM_version;       
-
-  /** Preferred IMAP server. @see imap_to_string */
-  var $IMAP_server;     
-
-  /** Preferred SMTP server. @see smtp_to_string */
-  var $SMTP_server;
-
   /**
    * Fetch User
    *
@@ -67,14 +52,14 @@ class smdoc_user extends foowd_user
       {
         if ( !isset($user['userid']) )
             $user['userid'] = crc32(strtolower($user['username']));
-        $new_user = smdoc_user::fetchUser($foowd, $user);
+        $new_user =& smdoc_user::fetchUser($foowd, $user);
       }
     }
 
     // If loading the user is unsuccessful (or unattempted),
     // fetch an anonymous user
     if ( $new_user == NULL )
-      $new_user = smdoc_user::fetchAnonymousUser($foowd);
+      $new_user =& smdoc_user::fetchAnonymousUser($foowd);
 
     $foowd->track();
     return $new_user;
@@ -329,6 +314,24 @@ class smdoc_user extends foowd_user
 
 //-------------------------------------------------------------------------------------
 
+  /** #squirrelmail IRC channel nick */
+  var $IRC_nick;       
+  
+  /** Array containing other IM nicks */
+  var $IM_nicks;         
+
+  /** Main supported IM version. @see smver_to_string */
+  var $SM_version;       
+
+  /** Preferred IMAP server. @see imap_to_string */
+  var $IMAP_server;     
+
+  /** Preferred SMTP server. @see smtp_to_string */
+  var $SMTP_server;
+
+  /** Show email in profile. */
+  var $show_email;
+
   /**
    * Constructs a new user.
    *
@@ -402,6 +405,7 @@ class smdoc_user extends foowd_user
     $this->updated = time();
 
     $this->hostmask = $hostmask;
+    $this->show_email = false;
     $this->SM_version = 0;
     $this->IMAP_server = 0;
     $this->SMTP_server = 0;
@@ -451,12 +455,12 @@ class smdoc_user extends foowd_user
     $this->foowd_indexes['updated'] = array('name' => 'updated', 'type' => 'DATETIME', 'notnull' => TRUE);
 
     // add some regex verification
-    $this->foowd_vars_meta['irc'] = '/^[a-zA-Z0-9_]{12}$/';
+    $this->foowd_vars_meta['irc'] = '/^[a-zA-Z0-9_]{1,12}$/';
     $this->foowd_vars_meta['msn'] = REGEX_EMAIL;
-    $this->foowd_vars_meta['icq'] = '/^[0-9]{16}$/';
-    $this->foowd_vars_meta['aim'] = '/^[a-zA-Z0-9_]{16}$/';
-    $this->foowd_vars_meta['yahoo'] = '/^[a-zA-Z0-9_]{128}$/';  // completely random guess.
-    $this->foowd_vars_meta['www'] = '/^https?://[A-Za-z0-9._-]+\.[A-Za-z]/?[A-Za-z0-9._-/]+$/';
+    $this->foowd_vars_meta['icq'] = '/^[0-9]{3,16}$/';
+    $this->foowd_vars_meta['aim'] = '/^[a-zA-Z0-9_]{3,16}$/';
+    $this->foowd_vars_meta['yahoo'] = '/^[a-zA-Z0-9_]{1,32}$/';
+    $this->foowd_vars_meta['www'] = '/^https?:\/\/[a-zA-Z0-9_\-\.]+\.[a-zA-Z]+[a-zA-Z0-9_\-\.\/~]*$/';
   }
 
   /**
@@ -697,19 +701,39 @@ class smdoc_user extends foowd_user
   {
     $changed = FALSE;
 
-    if ($form['email'] != $this->email) 
+    // Handle array of IM nick names first
+    foreach ($form['nick'] as $prot => $value)
     {
-      $this->email = $form['email'];
+      if ( (isset($this->IM_nicks[$prot]) && $this->IM_nicks[$prot] == $value) || 
+           (!isset($this->IM_nicks[$prot]) && $value == NULL) )
+        continue;
+      $changed = TRUE;
+      if ( $value == NULL )
+        unset($this->IM_nicks[$prot]);
+      else
+        $this->IM_nicks[$prot] = $value;
+    }
+    unset($form['nick']);
+
+    // Handle other form values
+    foreach ($form as $key => $value)
+    {
+      if ( (isset($this->$key) && $this->$key == $value) || 
+           (!isset($this->$key) && $value == NULL) ||
+           ($key == 'password' && $value == NULL) )
+        continue;
+      $this->$key = $value;
       $changed = TRUE;
     }
 
-    if ($changed) 
-    {
-      if ($this->save($foowd, FALSE)) 
+    // check value of show_email
+    if ( $this->show_email && $this->email )
+      $this->IM_nicks['Email'] = $this->email;
+    else
+      unset($this->IM_nicks['Email']);
+
+    if ($changed && $this->save($foowd, FALSE) ) 
         return TRUE;
-      else 
-        trigger_error('Could not update user.');
-    }
 
     return FALSE;
   }
@@ -739,9 +763,11 @@ class smdoc_user extends foowd_user
     if ( $username == '' ) 
       return 0;                             // nothing, display form
 
-    $lostuser = $foowd->fetchObject(crc32(strtolower($username)), USER_CLASS_ID);
+    $user_info['username'] = $username;
+    $user_info['userid']   = crc32(strtolower($username));
+    $lostuser =& smdoc_user::fetchUser($foowd, $user_info);
 
-    if ( !isset($lostuser->title) || strtolower($lostuser->title) != strtolower($username) )
+    if ( !$lostuser || !isset($lostuser->title) || strtolower($lostuser->title) != strtolower($username) )
       return 4;                             // user does not exist
     if ( !isset($lostuser->email) )
       return 3;                             // user has no e-mail address
@@ -755,9 +781,9 @@ class smdoc_user extends foowd_user
                         $lostuser->getTitle(),
                         md5($lostuser->updated.$lostuser->title) ); 
       $result = email($foowd, $lostuser->email, 
-                        sprintf(_("%s - Password Change Request"), 
-                        getSiteName()), $message,
-                        'From: '.getWebmasterEmail().'\r\nReply-To: '.getNoreplyEmail());
+                      sprintf(_("%s - Password Change Request"), getSiteName()), 
+                      $message,
+                      'From: '.getWebmasterEmail().'\r\nReply-To: '.getNoreplyEmail());
       if ( $result )
         return 1;                           // password change request e-mail sent
       else
@@ -798,8 +824,7 @@ class smdoc_user extends foowd_user
     }
   }
 
-
-/* Class methods */
+// ----------------------------- class methods --------------
 
   /**
    * Output an object creation form and process its input.
@@ -821,7 +846,7 @@ class smdoc_user extends foowd_user
     $createUsername = new input_textbox('createUsername', REGEX_TITLE, $queryTitle->value, _("Username").':');
     $verifyPassword = new input_passwordbox('verifyPassword', REGEX_PASSWORD, NULL, _("Verify").':');
     $createPassword = new input_verify_passwordbox('createPassword', $verifyPassword, REGEX_PASSWORD, NULL, _("Password").':');
-    $createEmail = new input_textbox('createEmail', REGEX_EMAIL, NULL, _("E-mail Address").':', NULL, NULL, NULL, FALSE);
+    $createEmail = new input_textbox('createEmail', REGEX_EMAIL, NULL, _("Email Address").':', NULL, NULL, NULL, FALSE);
     $createForm = new input_form('createForm', NULL, 'POST', _("Create"), _("Reset"));
 
     if ( $createForm->submitted() &&  $createUsername->value != '' )
@@ -957,7 +982,7 @@ class smdoc_user extends foowd_user
     trigger_error('Unexpected response when logging out user: ' . $result, E_USER_ERROR);
   }
 
-/* Object methods */
+// -----------------------------object methods --------------
 
   /**
    * Output the object.
@@ -970,18 +995,23 @@ class smdoc_user extends foowd_user
     
     $return['username'] = $this->getTitle();
 
-    $return['created'] = date(DATETIME_FORMAT, $this->created).' ('.timeSince($this->created).' ago)';
-    $return['lastvisit'] =  date(DATETIME_FORMAT, $this->updated).' ('.timeSince($this->updated).' ago)';
-    if ($foowd->user->objectid == $this->objectid) {
-      $return['email'] = ($this->email) ? mungEmail($this->email) : '';
+    $return['created'] = $this->created;
+    $return['lastvisit'] =  $this->updated;
+    if ($foowd->user->objectid == $this->objectid) 
+    {
       $return['update'] = getURI(array('objectid' => $this->objectid, 'classid' => $this->classid, 'method' => 'update'));
       $return['SM_version'] = $this->smver_to_string();
       $return['IMAP_server'] = $this->imap_to_string();
       $return['SMTP_server'] = $this->smtp_to_string();
+
+      if ( $this->email ) 
+        $return['email'] = (!$this->show_email) ?  mungEmail($this->email) : _("Email listed with contact information");
+      else
+        $return['email'] = '';
     }
 
     if ( $this->IRC_nick != '' )
-      $return['irc_nick'] = $this->IRC_nick;
+      $return['IRC_nick'] = $this->IRC_nick;
     if ( !empty($this->IM_nicks) )
       $return['IM_nicks'] = $this->IM_nicks;
 
@@ -994,17 +1024,20 @@ class smdoc_user extends foowd_user
    *
    * @param object foowd The foowd environment object.
    */
-  function method_update(&$foowd) {
+  function method_update(&$foowd) 
+  {
     $foowd->track('smdoc_user->method_update');
     
     include_once($foowd->path.'/input.form.php');
     include_once($foowd->path.'/input.dropdown.php');
     include_once($foowd->path.'/input.textbox.php');
+    include_once(SM_PATH.'smdoc.input.checkbox.php');
     include_once(SM_PATH.'smdoc.input.password.php');
     
     $updateForm = new input_form('updateForm', NULL, 'POST', _("Update"));
 
-    $email = new input_textbox('email', REGEX_EMAIL, $this->email, _("E-mail").': ', NULL, NULL, NULL, FALSE);
+    $email = new input_textbox('email', REGEX_EMAIL, $this->email, _("Email").': ', NULL, NULL, NULL, FALSE);
+    $showEmail = new input_smdoc_checkbox('show_email', $this->show_email, _("Share Email").': ');
 
     $verify = new input_passwordbox('verify', REGEX_PASSWORD, '', _("Verify").': ', NULL, NULL, NULL, FALSE);
     $password = new input_verify_passwordbox('password', $verify, REGEX_PASSWORD, '', _("Change Password").': ', NULL, NULL, NULL, FALSE);
@@ -1022,10 +1055,9 @@ class smdoc_user extends foowd_user
     $icqNick = new input_textbox('icq', $this->foowd_vars_meta['icq'], $nicks['ICQ'], 'ICQ: ', NULL, NULL, NULL, FALSE);
     $yahooNick = new input_textbox('ym', $this->foowd_vars_meta['yahoo'], $nicks['Y!'], 'Y!: ', NULL, NULL, NULL, FALSE);
     $www     = new input_textbox('www', $this->foowd_vars_meta['www'], $nicks['WWW'], 'WWW:', NULL, NULL, NULL, FALSE);
-
-    $smtpServer = new input_dropdown('smtp', 0, $this->smtp_to_string(true), _("SMTP Server:"));
-    $imapServer = new input_dropdown('imap', 0, $this->imap_to_string(true), _("IMAP Server:"));
-    $smVersion  = new input_dropdown('smver', 0, $this->smver_to_string(true), _("SquirrelMail Version:"));
+    $smtpServer = new input_dropdown('smtp', $this->SMTP_server, $this->smtp_to_string(true), _("SMTP Server:"));
+    $imapServer = new input_dropdown('imap', $this->IMAP_server, $this->imap_to_string(true), _("IMAP Server:"));
+    $smVersion  = new input_dropdown('smver', $this->SM_version, $this->smver_to_string(true), _("SquirrelMail Version:"));
 
     // public fields
     $updateForm->addObject($ircNick);
@@ -1037,37 +1069,36 @@ class smdoc_user extends foowd_user
 
     // private fields
     $updateForm->addObject($email);
+    $updateForm->addObject($showEmail);
     $updateForm->addObject($password);
     $updateForm->addObject($verify);
     $updateForm->addObject($smtpServer);
     $updateForm->addObject($imapServer);
     $updateForm->addObject($smVersion);
- 
+
     $return['form'] = &$updateForm;
     $result = 0;
-  
+ 
     if ( $updateForm->submitted() )
     {
       if ( $verify->wasSet && !$password->wasSet )
           $result = 2;                      // both password and verify were not set or did not match
       else
       {
-        if ( $password->wasSet )   $form['password'] = $password->value;
-        if ( $email->wasSet )      $form['email'] = $email->value;
-        if ( $ircNick->wasSet )    $form['irc'] = $ircNick->value;
-        if ( $msnNick->wasSet )    $form['nick']['MSN'] = $msnNick->value;
-        if ( $aimNick->wasSet )    $form['nick']['AIM'] = $aimNick->value; 
-        if ( $icqNick->wasSet )    $form['nick']['ICQ'] = $icqNick->value;
-        if ( $yahooNick->wasSet )  $form['nick']['Y!']  = $yahooNick->value;
-        if ( $smtpServer->wasSet ) $form['smtp'] = $smtpServer->value;
-        if ( $imapServer->wasSet ) $form['imap'] = $imapServer->value;
-        if ( $smVersion->wasSet )  $form['smver'] = $smVersion->value;
+        $form['IRC_nick'] = $ircNick->value;
+        $form['nick']['MSN'] = $msnNick->value;
+        $form['nick']['AIM'] = $aimNick->value; 
+        $form['nick']['ICQ'] = $icqNick->value;
+        $form['nick']['Y!']  = $yahooNick->value;
+        $form['nick']['WWW']  = $www->value;
+        $form['password'] = $password->value;
+        $form['email'] = $email->value;
+        $form['show_email'] = $showEmail->checked;
+        $form['SMTP_server'] = $smtpServer->value;
+        $form['IMAP_server'] = $imapServer->value;
+        $form['SM_version'] = $smVersion->value;
 
-        if ($this->updateUser($foowd, $form)) {
-            $result = 1;
-        } else {
-            $result = 3;
-        }
+        $result =  ($this->updateUser($foowd, $form)) ? 1 : 3;
       }
     }
 
@@ -1090,8 +1121,6 @@ class smdoc_user extends foowd_user
     $foowd->track(); 
     return $return;
   }
-
-
 
 // ----------------------------- disabled methods --------------
 
