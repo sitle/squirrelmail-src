@@ -35,7 +35,7 @@ define('BASE_URL', 'http://'.$_SERVER['HTTP_HOST'].'/smdoc/');
  * Configuration array containing initial parameters for foowd
  * @var array
  */
-$foowd_parameters = array(
+$smdoc_parameters = array(
 
 /*
  * Debug Settings
@@ -131,7 +131,7 @@ $foowd_parameters = array(
              'template_dir' => TEMPLATE_PATH,
                        ),
 
-);                                   /* end $foowd_parameters */
+);                                   /* end $smdoc_parameters */
 
 /*
  * Common includes

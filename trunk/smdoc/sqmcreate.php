@@ -40,7 +40,7 @@ require('smdoc_init.php');
 /* 
  * Initialize smdoc/FOOWD environment
  */
-$foowd = new smdoc($foowd_parameters);
+$foowd = new smdoc($smdoc_parameters);
 
 $class_list = array();
 $classes = getFoowdClassNames();
