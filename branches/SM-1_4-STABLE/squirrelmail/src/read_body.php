@@ -167,6 +167,7 @@ function SendMDN ( $mailbox, $passed_id, $sender, $message, $imapConnection) {
     $rfc822_header->to[] = $header->dnt;
     $rfc822_header->subject = _("Read:") . ' ' . encodeHeader($header->subject);
 
+    // FIX ME, use identity.php from SM 1.5. Change this also in compose.php
 
     $reply_to = '';
     if (isset($identity) && $identity != 'default') {
@@ -183,10 +184,23 @@ function SendMDN ( $mailbox, $passed_id, $sender, $message, $imapConnection) {
         $from_addr = '"'.$full_name.'" <'.$from_mail.'>';
         $reply_to  = getPref($data_dir, $username,'reply_to');
     }
-    if (!$from_addr) {
-       $from_addr = "$popuser@$domain";
-       $from_mail = $from_addr;
+
+    // Patch #793504 Return Receipt Failing with <@> from Tim Craig (burny_md)
+    // This merely comes from compose.php and only happens when there is no
+    // email_addr specified in user's identity (which is the startup config)
+    if (ereg("^([^@%/]+)[@%/](.+)$", $username, $usernamedata)) {
+       $popuser = $usernamedata[1];
+       $domain  = $usernamedata[2];
+       unset($usernamedata);
+    } else {
+       $popuser = $username;
     }
+
+    if (!$from_mail) {
+       $from_mail = "$popuser@$domain";
+       $from_addr = $from_mail;
+    }
+
     $rfc822_header->from = $rfc822_header->parseAddress($from_addr,true);
     if ($reply_to) {
        $rfc822_header->reply_to = $rfc822_header->parseAddress($reply_to,true);
@@ -744,7 +758,7 @@ do_hook('html_top');
 if (isset($sendreceipt)) {
    if ( !$message->is_mdnsent ) {
       if (isset($identity) ) {
-         $final_recipient = getPref($data_dir, $username, 'email_address' . '0', '' );
+         $final_recipient = getPref($data_dir, $username, 'email_address0', '' );
       } else {
          $final_recipient = getPref($data_dir, $username, 'email_address', '' );
       }
