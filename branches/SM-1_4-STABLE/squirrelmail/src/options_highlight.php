@@ -351,6 +351,7 @@ if ($action == 'edit' || $action == 'add') {
         $current_color = '63aa7f';
     }
 
+    $pre_defined_color = 0;
     for($x = 0; $x < 5; $x++) {
         for($y = 0; $y < 19; $y++) {
             $gridindex = "$y,$x";
@@ -362,7 +363,7 @@ if ($action == 'edit' || $action == 'add') {
         }
     }
 
-    if (!isset($message_highlight_list[$theid]['color']))
+    if (isset($theid) && !isset($message_highlight_list[$theid]['color']))
         $selected_choose = ' checked';
     else if ($pre_defined_color)
         $selected_predefined = ' checked';
