@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: $Id$\n"
-"POT-Creation-Date: 2002-12-07 09:55+0100\n"
+"POT-Creation-Date: 2002-12-07 18:05+0100\n"
 "PO-Revision-Date: 2002-12-07 09:44+0100\n"
 "Last-Translator: Nenad Peric <nesha@teleportgroup.net>\n"
 "Language-Team: Serbian <squirrelmail-i18n@lists.sourceforge.net>\n"
@@ -14,1127 +14,731 @@ msgstr ""
 "Content-Type: text/plain; charset=iso-8859-2\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: squirrelmail/src/addrbook_popup.php:22
 msgid "Address Book"
 msgstr "Adresar"
 
-#: squirrelmail/plugins/mail_fetch/fetch.php:159
-#: squirrelmail/src/addrbook_search_html.php:94
-#: squirrelmail/src/addrbook_search_html.php:96
-#: squirrelmail/src/addrbook_search_html.php:98
 msgid "All"
 msgstr "Sve"
 
-#: squirrelmail/src/addrbook_search.php:116
-#: squirrelmail/src/addrbook_search_html.php:105
-#: squirrelmail/src/addressbook.php:317 squirrelmail/src/vcard.php:102
 msgid "Name"
 msgstr "Ime"
 
-#: squirrelmail/src/addrbook_search.php:117
-#: squirrelmail/src/addrbook_search_html.php:106
-#: squirrelmail/src/addressbook.php:318
 msgid "E-mail"
 msgstr "E-mail"
 
-#: squirrelmail/src/addrbook_search.php:118
-#: squirrelmail/src/addrbook_search_html.php:107
-#: squirrelmail/src/addressbook.php:319
 msgid "Info"
 msgstr "Info"
 
-#: squirrelmail/src/addrbook_search.php:121
-#: squirrelmail/src/addrbook_search_html.php:112
 msgid "Source"
 msgstr "Izvor"
 
-#: squirrelmail/functions/mailbox_display.php:745
-#: squirrelmail/plugins/filters/options.php:147
-#: squirrelmail/src/addrbook_search_html.php:122
-#: squirrelmail/src/compose.php:501 squirrelmail/src/download.php:365
-#: squirrelmail/src/download.php:372
-#: squirrelmail/src/options_highlight.php:366
-#: squirrelmail/src/printer_friendly_bottom.php:105
-#: squirrelmail/src/search.php:385
 msgid "To"
 msgstr "Prima"
 
-#: squirrelmail/plugins/filters/options.php:150
-#: squirrelmail/src/addrbook_search_html.php:124
-#: squirrelmail/src/compose.php:508 squirrelmail/src/options_highlight.php:369
-#: squirrelmail/src/search.php:384
 msgid "Cc"
 msgstr "Kopija"
 
-#: squirrelmail/src/addrbook_search_html.php:126
 msgid "Bcc"
 msgstr "Bcc"
 
-#: squirrelmail/src/addrbook_search_html.php:139
 msgid "Use Addresses"
 msgstr "Koristi adrese"
 
-#: squirrelmail/src/addrbook_search_html.php:161
 msgid "Address Book Search"
 msgstr "Pretra¾ivanje adresara"
 
-#: squirrelmail/src/addrbook_search.php:192
-#: squirrelmail/src/addrbook_search_html.php:170
 msgid "Search for"
 msgstr "Tra¾i"
 
-#: squirrelmail/src/addrbook_search.php:198
-#: squirrelmail/src/addrbook_search_html.php:180
 msgid "in"
 msgstr "u"
 
-#: squirrelmail/src/addrbook_search.php:199
-#: squirrelmail/src/addrbook_search_html.php:183
 msgid "All address books"
 msgstr "Svi adresari"
 
-#: squirrelmail/functions/page_header.php:245
-#: squirrelmail/src/addrbook_search.php:210
-#: squirrelmail/src/addrbook_search_html.php:198
-#: squirrelmail/src/search.php:220 squirrelmail/src/search.php:224
-#: squirrelmail/src/search.php:244 squirrelmail/src/search.php:389
-#: squirrelmail/src/search.php:419 squirrelmail/src/search.php:440
-#: squirrelmail/src/search.php:450
 msgid "Search"
 msgstr "Pretra¾ivanje"
 
-#: squirrelmail/src/addrbook_search.php:211
-#: squirrelmail/src/addrbook_search_html.php:199
 msgid "List all"
 msgstr "Prika¾i sve"
 
-#: squirrelmail/src/addrbook_search.php:232
-#: squirrelmail/src/addrbook_search_html.php:229
 #, c-format
 msgid "Unable to list addresses from %s"
 msgstr "Ne mogu da izlistam adrese iz  %s"
 
-#: squirrelmail/src/addrbook_search.php:258
-#: squirrelmail/src/addrbook_search_html.php:254
 msgid "Your search failed with the following error(s)"
 msgstr "Va¹e pretra¾ivanje nije uspelo zbog sledeæih gre¹aka"
 
-#: squirrelmail/src/addrbook_search.php:178
-#: squirrelmail/src/addrbook_search.php:265
-#: squirrelmail/src/addrbook_search_html.php:259
 msgid "No persons matching your search was found"
 msgstr "Nema osoba koje ste tra¾ili."
 
-#: squirrelmail/src/addrbook_search_html.php:272
 msgid "Return"
 msgstr "Povratak"
 
-#: squirrelmail/plugins/newmail/testsound.php:35
-#: squirrelmail/plugins/squirrelspell/modules/check_me.mod:121
-#: squirrelmail/plugins/squirrelspell/modules/check_me.mod:429
-#: squirrelmail/plugins/squirrelspell/modules/forget_me_not.mod:74
-#: squirrelmail/src/addrbook_search.php:213 squirrelmail/src/compose.php:672
 msgid "Close"
 msgstr "Zatvori"
 
-#: squirrelmail/src/addressbook.php:68 squirrelmail/src/addressbook.php:317
-#: squirrelmail/src/vcard.php:146
 msgid "Nickname"
 msgstr "Nadimak"
 
-#: squirrelmail/src/addressbook.php:69
 msgid "Must be unique"
 msgstr "Mora biti jedinstven (unique)"
 
-#: squirrelmail/src/addressbook.php:70
 msgid "E-mail address"
 msgstr "E-mail adresa"
 
-#: squirrelmail/src/addressbook.php:71
 msgid "First name"
 msgstr "Ime"
 
-#: squirrelmail/src/addressbook.php:72
 msgid "Last name"
 msgstr "Prezime"
 
-#: squirrelmail/src/addressbook.php:73
 msgid "Additional info"
 msgstr "Dodatne informacije"
 
-#: squirrelmail/src/addressbook.php:87
 msgid "No personal address book is defined. Contact administrator."
 msgstr "Lièni adresar nije definisan. Kontaktirajte administratora."
 
-#: squirrelmail/src/addressbook.php:185
 msgid "You can only edit one address at the time"
 msgstr "Mo¾ete menjati samo jednu adresu i isto vreme"
 
-#: squirrelmail/src/addressbook.php:199 squirrelmail/src/addressbook.php:201
-#: squirrelmail/src/addressbook.php:231 squirrelmail/src/addressbook.php:233
 msgid "Update address"
 msgstr "A¾uriraj adresu"
 
-#: squirrelmail/functions/display_messages.php:70
-#: squirrelmail/functions/display_messages.php:89
-#: squirrelmail/functions/display_messages.php:106
-#: squirrelmail/functions/display_messages.php:172
-#: squirrelmail/src/addressbook.php:222 squirrelmail/src/addressbook.php:270
 msgid "ERROR"
 msgstr "GRE©KA"
 
-#: squirrelmail/src/addressbook.php:245
 msgid "Unknown error"
 msgstr "Nepoznata gre¹ka"
 
-#: squirrelmail/src/addressbook.php:289 squirrelmail/src/addressbook.php:378
 msgid "Add address"
 msgstr "Dodaj adresu"
 
-#: squirrelmail/src/addressbook.php:302 squirrelmail/src/addressbook.php:360
 msgid "Edit selected"
 msgstr "Promeni izabrano"
 
-#: squirrelmail/src/addressbook.php:304 squirrelmail/src/addressbook.php:362
 msgid "Delete selected"
 msgstr "Obri¹i izabrano"
 
-#: squirrelmail/src/addressbook.php:375
 #, c-format
 msgid "Add to %s"
 msgstr "Dodaj u %s"
 
-#: squirrelmail/src/compose.php:140
 msgid "Draft Email Saved"
 msgstr "Draft poruka saèuvana"
 
-#: squirrelmail/src/compose.php:244 squirrelmail/src/compose.php:288
-#: squirrelmail/src/compose.php:298
 msgid "Could not move/copy file. File not attached"
 msgstr "Ne mogu premestiti/kopirati datoteku. Datoteka nije dodata."
 
-#: squirrelmail/src/compose.php:496
 msgid "Original Message"
 msgstr "Originalna poruka"
 
-#: squirrelmail/functions/mailbox_display.php:762
-#: squirrelmail/plugins/filters/options.php:156
-#: squirrelmail/src/compose.php:497 squirrelmail/src/download.php:363
-#: squirrelmail/src/download.php:368
-#: squirrelmail/src/options_highlight.php:375
-#: squirrelmail/src/options_order.php:59
-#: squirrelmail/src/printer_friendly_bottom.php:110
-#: squirrelmail/src/search.php:382
 msgid "Subject"
 msgstr "Naslov"
 
-#: squirrelmail/functions/mailbox_display.php:747
-#: squirrelmail/plugins/filters/options.php:144
-#: squirrelmail/src/compose.php:498 squirrelmail/src/download.php:151
-#: squirrelmail/src/download.php:364 squirrelmail/src/download.php:370
-#: squirrelmail/src/options_highlight.php:363
-#: squirrelmail/src/options_order.php:57
-#: squirrelmail/src/printer_friendly_bottom.php:104
-#: squirrelmail/src/search.php:383
 msgid "From"
 msgstr "Od"
 
-#: squirrelmail/functions/mailbox_display.php:755
-#: squirrelmail/src/compose.php:499 squirrelmail/src/download.php:366
-#: squirrelmail/src/download.php:374 squirrelmail/src/options_order.php:58
-#: squirrelmail/src/printer_friendly_bottom.php:109
 msgid "Date"
 msgstr "Datum"
 
-#: squirrelmail/src/compose.php:664
 #, fuzzy
 msgid "Draft Saved"
 msgstr "Draft poruka saèuvana"
 
-#: squirrelmail/src/compose.php:667
 msgid "Your Message has been sent"
 msgstr "Va¹a poruka je poslata."
 
-#: squirrelmail/plugins/listcommands/mailout.php:57
-#: squirrelmail/src/compose.php:683 squirrelmail/src/read_body.php:915
 msgid "From:"
 msgstr "Od:"
 
-#: squirrelmail/src/compose.php:711 squirrelmail/src/download.php:163
-#: squirrelmail/src/read_body.php:222 squirrelmail/src/read_body.php:934
 msgid "To:"
 msgstr "Prima:"
 
-#: squirrelmail/src/compose.php:719
 msgid "CC:"
 msgstr "Kopija:"
 
-#: squirrelmail/src/compose.php:727
 msgid "BCC:"
 msgstr "BCC:"
 
-#: squirrelmail/src/compose.php:734 squirrelmail/src/download.php:156
-#: squirrelmail/src/read_body.php:223 squirrelmail/src/read_body.php:886
 msgid "Subject:"
 msgstr "Naslov:"
 
-#: squirrelmail/src/compose.php:796 squirrelmail/src/compose.php:888
 msgid "Send"
 msgstr "Po¹alji"
 
-#: squirrelmail/src/compose.php:802
 msgid "Attach:"
 msgstr "Zakaèi:"
 
-#: squirrelmail/src/compose.php:807 squirrelmail/src/options_order.php:145
 msgid "Add"
 msgstr "Dodaj"
 
-#: squirrelmail/src/compose.php:827
 msgid "Delete selected attachments"
 msgstr "Izbri¹i dodatak"
 
-#: squirrelmail/src/compose.php:857 squirrelmail/src/read_body.php:963
 msgid "Priority"
 msgstr "Prioritet"
 
-#: squirrelmail/plugins/administrator/defines.php:203
-#: squirrelmail/plugins/calendar/functions.php:100
-#: squirrelmail/src/compose.php:858 squirrelmail/src/read_body.php:695
 msgid "High"
 msgstr "Visok"
 
-#: squirrelmail/plugins/calendar/functions.php:99
-#: squirrelmail/src/compose.php:859 squirrelmail/src/read_body.php:708
 msgid "Normal"
 msgstr "Normalan"
 
-#: squirrelmail/plugins/administrator/defines.php:200
-#: squirrelmail/src/compose.php:860 squirrelmail/src/read_body.php:701
 msgid "Low"
 msgstr "Nizak"
 
-#: squirrelmail/src/compose.php:866
 msgid "Receipt"
 msgstr "Potvrda"
 
-#: squirrelmail/src/compose.php:868
 msgid "On read"
 msgstr "Pri èitanju"
 
-#: squirrelmail/src/compose.php:870
 msgid "On Delivery"
 msgstr "Pri isporuci"
 
-#: squirrelmail/src/compose.php:875
-#: squirrelmail/src/options_identities.php:338
-#: squirrelmail/src/options_personal.php:102
 msgid "Signature"
 msgstr "Potpis"
 
-#: squirrelmail/functions/page_header.php:239 squirrelmail/src/compose.php:878
-#: squirrelmail/src/compose.php:882 squirrelmail/src/compose.php:886
 msgid "Addresses"
 msgstr "Adrese"
 
-#: squirrelmail/src/compose.php:891
 msgid "Save Draft"
 msgstr "Snimi Draft"
 
-#: squirrelmail/src/compose.php:910
 msgid "You have not filled in the \"To:\" field."
 msgstr "Niste popunili polje \"Prima:\""
 
-#: squirrelmail/src/compose.php:1009
 msgid "said"
 msgstr "je rekao(la)"
 
-#: squirrelmail/src/compose.php:1012
 msgid "quote"
 msgstr "citat"
 
-#: squirrelmail/src/compose.php:1012
 msgid "who"
 msgstr "ko"
 
-#: squirrelmail/src/download.php:74
 msgid "Viewing a text attachment"
 msgstr "Pregled tekst poruke"
 
-#: squirrelmail/src/download.php:80 squirrelmail/src/download.php:85
-#: squirrelmail/src/download.php:129 squirrelmail/src/image.php:47
-#: squirrelmail/src/image.php:51 squirrelmail/src/read_body.php:507
-#: squirrelmail/src/vcard.php:52 squirrelmail/src/vcard.php:56
 msgid "View message"
 msgstr "Pregledaj poruku"
 
-#: squirrelmail/functions/mime.php:801 squirrelmail/src/download.php:106
-#: squirrelmail/src/image.php:60 squirrelmail/src/vcard.php:213
 msgid "Download this as a file"
 msgstr "Snimi kao fajl."
 
-#: squirrelmail/src/download.php:126
 msgid "Viewing a message attachment"
 msgstr "Pregledanje prikaèenog fajla"
 
-#: squirrelmail/plugins/calendar/event_create.php:164
-#: squirrelmail/plugins/calendar/event_delete.php:89
-#: squirrelmail/plugins/calendar/event_edit.php:108
-#: squirrelmail/plugins/calendar/event_edit.php:166
-#: squirrelmail/plugins/calendar/event_edit.php:179
-#: squirrelmail/src/download.php:169 squirrelmail/src/read_body.php:925
 msgid "Date:"
 msgstr "Datum:"
 
-#: squirrelmail/src/download.php:177
 #, fuzzy
 msgid "Cc:"
 msgstr "Kopija"
 
-#: squirrelmail/src/download.php:185
 msgid "Bcc:"
 msgstr "Bcc:"
 
-#: squirrelmail/src/download.php:202 squirrelmail/src/read_body.php:659
 msgid "more"
 msgstr "vi¹e"
 
-#: squirrelmail/src/download.php:203 squirrelmail/src/read_body.php:660
 msgid "less"
 msgstr "manje"
 
-#: squirrelmail/src/folders_create.php:39
 msgid "Illegal folder name.  Please select a different name."
 msgstr "Nedozvoljeno ime direktorijuma. Molim izberite drugo ime."
 
-#: squirrelmail/src/folders_create.php:39
-#: squirrelmail/src/folders_delete.php:41
-#: squirrelmail/src/folders_rename_getname.php:34
 msgid "Click here to go back"
 msgstr "Pritisnite za povratak"
 
-#: squirrelmail/src/folders_delete.php:40
 msgid "You have not selected a folder to delete. Please do so."
 msgstr "Niste izabrali folder za brisanje. Molim izaberite."
 
-#: squirrelmail/functions/page_header.php:241 squirrelmail/src/folders.php:40
-#: squirrelmail/src/left_main.php:250
 msgid "Folders"
 msgstr "Direktorijumi"
 
-#: squirrelmail/src/folders.php:51
 msgid "Subscribed successfully!"
 msgstr "Uspe¹no prijavljen!"
 
-#: squirrelmail/src/folders.php:53
 msgid "Unsubscribed successfully!"
 msgstr "Uspe¹no odjavljen!"
 
-#: squirrelmail/src/folders.php:55
 msgid "Deleted folder successfully!"
 msgstr "Uspe¹no brisanje direktorijuma!"
 
-#: squirrelmail/src/folders.php:57
 msgid "Created folder successfully!"
 msgstr "Uspe¹no kreiranje direktorijuma!"
 
-#: squirrelmail/src/folders.php:59
 msgid "Renamed successfully!"
 msgstr "Preimenovanje uspe¹no!"
 
-#: squirrelmail/src/folders.php:62 squirrelmail/src/left_main.php:289
 msgid "refresh folder list"
 msgstr "osve¾i listu direktorijuma"
 
-#: squirrelmail/src/folders.php:74
 msgid "Create Folder"
 msgstr "Kreiraj direktorijum"
 
-#: squirrelmail/src/folders.php:79
 msgid "as a subfolder of"
 msgstr "kao poddirektorijum od"
 
-#: squirrelmail/src/folders.php:83 squirrelmail/src/folders.php:85
 msgid "None"
 msgstr "Nijedan"
 
-#: squirrelmail/src/folders.php:110
 msgid "Let this folder contain subfolders"
 msgstr "Neka ovaj direktorijum sadr¾i poddirektorijume"
 
-#: squirrelmail/src/folders.php:113
 msgid "Create"
 msgstr "Kreiraj"
 
-#: squirrelmail/src/folders.php:148
 msgid "Rename a Folder"
 msgstr "Preimenuj direktorijum"
 
-#: squirrelmail/src/folders.php:154 squirrelmail/src/folders.php:191
 msgid "Select a folder"
 msgstr "Izaberite direktorijum"
 
-#: squirrelmail/src/folders.php:172
 msgid "Rename"
 msgstr "Preimenuj"
 
-#: squirrelmail/src/folders.php:176 squirrelmail/src/folders.php:213
 msgid "No folders found"
 msgstr "Nema direktorijuma"
 
-#: squirrelmail/src/folders.php:184
 msgid "Delete Folder"
 msgstr "Obri¹i direktorijum"
 
-#: squirrelmail/functions/mailbox_display.php:697
-#: squirrelmail/plugins/filters/options.php:216
-#: squirrelmail/plugins/mail_fetch/options.php:218
-#: squirrelmail/plugins/mail_fetch/options.php:225
-#: squirrelmail/src/folders.php:209 squirrelmail/src/options_highlight.php:116
-#: squirrelmail/src/options_identities.php:350
-#: squirrelmail/src/read_body.php:760
 msgid "Delete"
 msgstr "Obri¹i"
 
-#: squirrelmail/plugins/listcommands/setup.php:34
-#: squirrelmail/src/folders.php:220 squirrelmail/src/folders.php:240
 msgid "Unsubscribe"
 msgstr "Odjavi"
 
-#: squirrelmail/plugins/listcommands/setup.php:33
-#: squirrelmail/src/folders.php:220 squirrelmail/src/folders.php:280
 msgid "Subscribe"
 msgstr "Prijavi"
 
-#: squirrelmail/src/folders.php:244
 msgid "No folders were found to unsubscribe from!"
 msgstr "Nisam prona¹ao direktorijume koji bi se mogli odjaviti!"
 
-#: squirrelmail/src/folders.php:283
 msgid "No folders were found to subscribe to!"
 msgstr "Nisu pronadjeni direktorijumi koje biste mogli prijaviti!"
 
-#: squirrelmail/src/folders_rename_getname.php:33
 msgid "You have not selected a folder to rename. Please do so."
 msgstr ""
 "Niste izabrali folder koji cete preimenovati. Molim izaberite neki folder."
 
-#: squirrelmail/src/folders_rename_getname.php:58
 msgid "Rename a folder"
 msgstr "Preimenovanje direktorijuma"
 
-#: squirrelmail/src/folders_rename_getname.php:62
 msgid "New name:"
 msgstr "Novo ime:"
 
-#: squirrelmail/functions/options.php:419
-#: squirrelmail/plugins/filters/options.php:200
-#: squirrelmail/plugins/newmail/newmail_opt.php:146
-#: squirrelmail/plugins/translate/options.php:164
-#: squirrelmail/src/folders_rename_getname.php:69
-#: squirrelmail/src/options_highlight.php:388
 msgid "Submit"
 msgstr "Po¹alji"
 
-#: squirrelmail/src/help.php:70 squirrelmail/src/help.php:77
 msgid "ERROR: Help files are not in the right format!"
 msgstr "GRE©KA: Help datoteke nisu u ispravnom formatu"
 
-#: squirrelmail/functions/page_header.php:247
-#: squirrelmail/plugins/listcommands/setup.php:37 squirrelmail/src/help.php:91
 msgid "Help"
 msgstr "Pomoæ"
 
-#: squirrelmail/src/help.php:131
 #, c-format
 msgid ""
 "The help has not been translated to %s.  It will be displayed in English "
 "instead."
 msgstr "Pomoæ nije prevedena na  %s., pa æe biti prikazana na engleskom!"
 
-#: squirrelmail/src/help.php:137
 msgid "Some or all of the help documents are not present!"
 msgstr "Neki ili svi help dokumenti nisu pronaðeni!"
 
-#: squirrelmail/src/help.php:174 squirrelmail/src/help.php:196
 msgid "Table of Contents"
 msgstr "Sadr¾aj"
 
-#: squirrelmail/functions/mailbox_display.php:926
-#: squirrelmail/functions/mailbox_display.php:929
-#: squirrelmail/functions/mailbox_display.php:932
-#: squirrelmail/plugins/delete_move_next/setup.php:173
-#: squirrelmail/plugins/delete_move_next/setup.php:175
-#: squirrelmail/src/help.php:190 squirrelmail/src/help.php:194
-#: squirrelmail/src/read_body.php:799 squirrelmail/src/read_body.php:805
-#: squirrelmail/src/read_body.php:807
 msgid "Previous"
 msgstr "Prethodna"
 
-#: squirrelmail/functions/mailbox_display.php:927
-#: squirrelmail/functions/mailbox_display.php:930
-#: squirrelmail/functions/mailbox_display.php:933
-#: squirrelmail/plugins/delete_move_next/setup.php:178
-#: squirrelmail/plugins/delete_move_next/setup.php:180
-#: squirrelmail/src/help.php:198 squirrelmail/src/help.php:201
-#: squirrelmail/src/read_body.php:799 squirrelmail/src/read_body.php:811
-#: squirrelmail/src/read_body.php:813
 msgid "Next"
 msgstr "Sledeæa"
 
-#: squirrelmail/src/help.php:224
 msgid "Top"
 msgstr "Vrh"
 
-#: squirrelmail/src/image.php:42
 msgid "Viewing an image attachment"
 msgstr "Pregledanje slike"
 
-#: squirrelmail/functions/imap_search.php:190
-#: squirrelmail/functions/imap_search.php:200
-#: squirrelmail/functions/mailbox_display.php:675
-#: squirrelmail/functions/page_header.php:213
-#: squirrelmail/plugins/delete_move_next/setup.php:224
-#: squirrelmail/plugins/mail_fetch/options.php:192
-#: squirrelmail/plugins/mail_fetch/options.php:271
-#: squirrelmail/src/left_main.php:73 squirrelmail/src/search.php:346
 msgid "INBOX"
 msgstr "INBOX"
 
-#: squirrelmail/src/left_main.php:97
 #, fuzzy
 msgid "purge"
 msgstr "isprazni"
 
-#: squirrelmail/src/left_main.php:283
 msgid "Last Refresh"
 msgstr "Poslednja provera"
 
-#: squirrelmail/src/login.php:106 squirrelmail/src/login.php:160
 msgid "Login"
 msgstr "Login"
 
-#: squirrelmail/functions/display_messages.php:164
-#: squirrelmail/src/login.php:128
 #, fuzzy, c-format
 msgid "%s Logo"
 msgstr "%s WEBmail"
 
-#: squirrelmail/functions/display_messages.php:167
-#: squirrelmail/src/login.php:131
 #, c-format
 msgid "SquirrelMail version %s"
 msgstr "SquirrelMail verzija %s"
 
-#: squirrelmail/functions/display_messages.php:168
-#: squirrelmail/src/login.php:132
 msgid "By the SquirrelMail Development Team"
 msgstr "SquirrelMail Razvojni Tim"
 
-#: squirrelmail/src/login.php:138
 #, c-format
 msgid "%s Login"
 msgstr "%s WEBmail"
 
-#: squirrelmail/src/login.php:142
 msgid "Name:"
 msgstr "Korisnièko ime:"
 
-#: squirrelmail/plugins/mail_fetch/options.php:181
-#: squirrelmail/plugins/mail_fetch/options.php:259
-#: squirrelmail/src/login.php:148
 msgid "Password:"
 msgstr "©ifra:"
 
-#: squirrelmail/src/move_messages.php:96
 #, fuzzy
 msgid "<No subject>"
 msgstr "(bez naslova)"
 
-#: squirrelmail/src/move_messages.php:236
-#: squirrelmail/src/move_messages.php:289
-#: squirrelmail/src/move_messages.php:317
 msgid "No messages were selected."
 msgstr "Nije izabrana nijedna poruka."
 
-#: squirrelmail/src/options_display.php:33
 msgid "General Display Options"
 msgstr "Glavne Opcije Prikazivanja"
 
-#: squirrelmail/src/options_display.php:45
 msgid "Theme"
 msgstr "Tema"
 
-#: squirrelmail/plugins/administrator/defines.php:42
-#: squirrelmail/src/options_display.php:52
-#: squirrelmail/src/options_display.php:81
 msgid "Default"
 msgstr "Standardno"
 
-#: squirrelmail/src/options_display.php:65
 msgid "Custom Stylesheet"
 msgstr "Custom style sheet (CSS)"
 
-#: squirrelmail/src/options_display.php:85
 msgid "Language"
 msgstr "Jezik"
 
-#: squirrelmail/src/options_display.php:94
 msgid "Use Javascript"
 msgstr "Koristi JavaScript"
 
-#: squirrelmail/src/options_display.php:97
 msgid "Autodetect"
 msgstr "Auto-detekcija"
 
-#: squirrelmail/src/options_display.php:98
 msgid "Always"
 msgstr "Uvek"
 
-#: squirrelmail/src/options_display.php:99
-#: squirrelmail/src/options_folder.php:130
 msgid "Never"
 msgstr "Nikad"
 
-#: squirrelmail/src/options_display.php:117
 msgid "Mailbox Display Options"
 msgstr "Opcije prikazivanja mailbox-a"
 
-#: squirrelmail/src/options_display.php:122
 msgid "Number of Messages to Index"
 msgstr "Broj poruka za indeksiranje"
 
-#: squirrelmail/src/options_display.php:130
 msgid "Enable Alternating Row Colors"
 msgstr "Ukljuèi promenjive boje redova"
 
-#: squirrelmail/src/options_display.php:137
 msgid "Enable Page Selector"
 msgstr "Ukljuèi izbor stranica"
 
-#: squirrelmail/src/options_display.php:144
 msgid "Maximum Number of Pages to Show"
 msgstr "Najveæi broj strana koji se prikazuje"
 
-#: squirrelmail/src/options_display.php:151
 msgid "Message Display and Composition"
 msgstr "Prikazivanje poruka i kreiranje"
 
-#: squirrelmail/src/options_display.php:156
 msgid "Wrap Incoming Text At"
 msgstr "Prelomi tekst na "
 
-#: squirrelmail/src/options_display.php:164
 msgid "Size of Editor Window"
 msgstr "Velièina prozora za pisanje"
 
-#: squirrelmail/src/options_display.php:172
 msgid "Location of Buttons when Composing"
 msgstr "Polo¾aj dugmiæa pri pisanju poruke"
 
-#: squirrelmail/src/options_display.php:175
 msgid "Before headers"
 msgstr "Pre zaglavlja"
 
-#: squirrelmail/src/options_display.php:176
 msgid "Between headers and message body"
 msgstr "Izmeðu zaglavlja i tela poruke"
 
-#: squirrelmail/src/options_display.php:177
 msgid "After message body"
 msgstr "Posle tela poruke"
 
-#: squirrelmail/src/options_display.php:183
 msgid "Addressbook Display Format"
 msgstr "Format prikazivanja adresara"
 
-#: squirrelmail/src/options_display.php:186
 msgid "Javascript"
 msgstr "JavaScript"
 
-#: squirrelmail/src/options_display.php:187
 msgid "HTML"
 msgstr "HTML"
 
-#: squirrelmail/src/options_display.php:192
 msgid "Show HTML Version by Default"
 msgstr "Prika¾i HTML kao default"
 
-#: squirrelmail/src/options_display.php:199
 msgid "Include Me in CC when I Reply All"
 msgstr "Ukljuèi mene u Kopiju kada ¹aljem odgovor svima. "
 
-#: squirrelmail/src/options_display.php:206
 msgid "Include CCs when forwarding messages"
 msgstr "Ukljuci CC kad se prosledjuje poruka"
 
-#: squirrelmail/src/options_display.php:213
 msgid "Enable Mailer Display"
 msgstr "Ukljuèi prikazivanje mailer-a"
 
-#: squirrelmail/src/options_display.php:220
 msgid "Display Attached Images with Message"
 msgstr "Prika¾i prilo¾ene slike uz poruku"
 
-#: squirrelmail/src/options_display.php:227
 msgid "Enable Subtle Printer Friendly Link"
 msgstr "Omoguæi link za pregled za ¹tampu"
 
-#: squirrelmail/src/options_display.php:234
 msgid "Enable Printer Friendly Clean Display"
 msgstr "Ukljuèi èist prikaz za ¹tampu"
 
-#: squirrelmail/src/options_display.php:242
 msgid "Enable request/confirm reading"
 msgstr "Omoguæi zahtev/potvrdu o èitanju poruke"
 
-#: squirrelmail/src/options_display.php:250
 msgid "Always compose in a new window"
 msgstr "Uvek kreiraj u novom prozoru"
 
-#: squirrelmail/src/options_display.php:257
 msgid "Width of compose window"
 msgstr "©irina prozora za kreiranje poruke"
 
-#: squirrelmail/src/options_display.php:265
 msgid "Height of compose window"
 msgstr "Visina prozora za pisanje poruke"
 
-#: squirrelmail/src/options_display.php:273
 msgid "Append signature before reply/forward text"
 msgstr "Dodaj potpis pre odgovora/prosledjene poruke"
 
-#: squirrelmail/src/options_display.php:280
 msgid "Use receive date for sort"
 msgstr "Koristi datum prijema za sortiranje"
 
-#: squirrelmail/src/options_display.php:287
 msgid "Use References header for thread sort"
 msgstr "Koristi zaglavlje reference u sortiranju"
 
-#: squirrelmail/src/options_folder.php:48
 msgid "Special Folder Options"
 msgstr "Posebne opcije direktorijuma"
 
-#: squirrelmail/src/options_folder.php:55
 msgid "Folder Path"
 msgstr "Putanja do direktorijuma"
 
-#: squirrelmail/src/options_folder.php:71
 msgid "Do not use Trash"
 msgstr "Ne upotrebljavaj kantu (trash)"
 
-#: squirrelmail/plugins/administrator/defines.php:135
-#: squirrelmail/src/options_folder.php:75
 msgid "Trash Folder"
 msgstr "Kanta (trash)"
 
-#: squirrelmail/src/options_folder.php:82
 msgid "Do not use Sent"
 msgstr "Ne upotrebljavaj Sent direktorijum"
 
-#: squirrelmail/plugins/administrator/defines.php:138
-#: squirrelmail/src/options_folder.php:86
 msgid "Sent Folder"
 msgstr "Poslato"
 
-#: squirrelmail/src/options_folder.php:93
 msgid "Do not use Drafts"
 msgstr "Ne upotrebljavaj Drafts"
 
-#: squirrelmail/plugins/administrator/defines.php:141
-#: squirrelmail/src/options_folder.php:97
 msgid "Draft Folder"
 msgstr "Draft direktorijum"
 
-#: squirrelmail/src/options_folder.php:105
 msgid "Folder List Options"
 msgstr "Opcije listanja direktorijuma"
 
-#: squirrelmail/src/options_folder.php:110
 msgid "Location of Folder List"
 msgstr "Pozicija liste direktorijuma"
 
-#: squirrelmail/src/options_folder.php:113
 msgid "Left"
 msgstr "Levo"
 
-#: squirrelmail/src/options_folder.php:114
 msgid "Right"
 msgstr "Desno"
 
-#: squirrelmail/plugins/administrator/defines.php:45
-#: squirrelmail/src/options_folder.php:119
 msgid "pixels"
 msgstr "taèke (pikseli)"
 
-#: squirrelmail/src/options_folder.php:123
 msgid "Width of Folder List"
 msgstr "©irina liste direktorijuma"
 
-#: squirrelmail/src/options_folder.php:129
 msgid "Minutes"
 msgstr "Minuta"
 
-#: squirrelmail/src/options_folder.php:133
 msgid "Seconds"
 msgstr "Sekundi"
 
-#: squirrelmail/src/options_folder.php:135
 msgid "Minute"
 msgstr "Minut"
 
-#: squirrelmail/src/options_folder.php:142
 msgid "Auto Refresh Folder List"
 msgstr "Automatsko osve¾avanje direktorijuma"
 
-#: squirrelmail/src/options_folder.php:150
 msgid "Enable Unread Message Notification"
 msgstr "Ukljuèi obave¹tenje o neproèitanim porukama"
 
-#: squirrelmail/plugins/administrator/defines.php:162
-#: squirrelmail/src/options_folder.php:153
 msgid "No Notification"
 msgstr "Bez obave¹tenja"
 
-#: squirrelmail/plugins/administrator/defines.php:163
-#: squirrelmail/src/options_folder.php:154
 msgid "Only INBOX"
 msgstr "Samo INBOX"
 
-#: squirrelmail/plugins/administrator/defines.php:164
-#: squirrelmail/src/options_folder.php:155
 msgid "All Folders"
 msgstr "Svi direktorijumi"
 
-#: squirrelmail/src/options_folder.php:160
 msgid "Unread Message Notification Type"
 msgstr "Tip obave¹tenja o neproèitanim porukama"
 
-#: squirrelmail/plugins/administrator/defines.php:167
-#: squirrelmail/src/options_folder.php:163
 msgid "Only Unseen"
 msgstr "Samo neproèitane"
 
-#: squirrelmail/plugins/administrator/defines.php:168
-#: squirrelmail/src/options_folder.php:164
 msgid "Unseen and Total"
 msgstr "Neproèitane i ukupno"
 
-#: squirrelmail/src/options_folder.php:169
 msgid "Enable Collapsable Folders"
 msgstr "Ukljuèi prikazivanje direktorijuma u vi¹e nivoa"
 
-#: squirrelmail/src/options_folder.php:176
 msgid "Show Clock on Folders Panel"
 msgstr "Prika¾i sat u listi direktorijuma"
 
-#: squirrelmail/src/options_folder.php:184
 msgid "No Clock"
 msgstr "Bez sata"
 
-#: squirrelmail/src/options_folder.php:189
 msgid "Hour Format"
 msgstr "Format sata"
 
-#: squirrelmail/src/options_folder.php:192
 msgid "12-hour clock"
 msgstr "12-èasovni sat"
 
-#: squirrelmail/src/options_folder.php:193
 msgid "24-hour clock"
 msgstr "24-èasovni sat"
 
-#: squirrelmail/src/options_folder.php:198
 msgid "Memory Search"
 msgstr "Pretra¾ivanje memorije"
 
-#: squirrelmail/plugins/sent_subfolders/setup.php:112
-#: squirrelmail/src/options_folder.php:201
 msgid "Disabled"
 msgstr "Iskljuèeno"
 
-#: squirrelmail/functions/page_header.php:243
-#: squirrelmail/plugins/filters/options.php:94
-#: squirrelmail/plugins/newmail/newmail_opt.php:37
-#: squirrelmail/plugins/translate/options.php:94
-#: squirrelmail/src/options.php:225 squirrelmail/src/options_highlight.php:102
-#: squirrelmail/src/options_identities.php:53
-#: squirrelmail/src/options_order.php:50
 msgid "Options"
 msgstr "Opcije"
 
-#: squirrelmail/src/options.php:170 squirrelmail/src/options.php:324
-#: squirrelmail/src/options_highlight.php:102
 msgid "Message Highlighting"
 msgstr "Markiranje poruka"
 
-#: squirrelmail/plugins/filters/options.php:120
-#: squirrelmail/src/options_highlight.php:106
 msgid "New"
 msgstr "Novo"
 
-#: squirrelmail/plugins/filters/options.php:121
-#: squirrelmail/plugins/filters/spamoptions.php:168
-#: squirrelmail/plugins/mail_fetch/fetch.php:481
-#: squirrelmail/src/options_highlight.php:107
 msgid "Done"
 msgstr "Zavr¹i"
 
-#: squirrelmail/plugins/filters/options.php:214
-#: squirrelmail/plugins/filters/spamoptions.php:167
-#: squirrelmail/src/options_highlight.php:114
 msgid "Edit"
 msgstr "Promeni"
 
-#: squirrelmail/src/options_highlight.php:127
 msgid "No highlighting is defined"
 msgstr "Nije definisano markiranje"
 
-#: squirrelmail/src/options_highlight.php:295
 msgid "Identifying name"
 msgstr "Identifikacija"
 
-#: squirrelmail/src/options_highlight.php:309
 msgid "Color"
 msgstr "Boja"
 
-#: squirrelmail/src/options_highlight.php:313
 msgid "Dark Blue"
 msgstr "Tamno plava"
 
-#: squirrelmail/src/options_highlight.php:314
 msgid "Dark Green"
 msgstr "Tamno zelena"
 
-#: squirrelmail/src/options_highlight.php:315
 msgid "Dark Yellow"
 msgstr "Tamno ¾uta"
 
-#: squirrelmail/src/options_highlight.php:316
 msgid "Dark Cyan"
 msgstr "Tamna Cyan"
 
-#: squirrelmail/src/options_highlight.php:317
 msgid "Dark Magenta"
 msgstr "Tamna Magenta"
 
-#: squirrelmail/src/options_highlight.php:318
 msgid "Light Blue"
 msgstr "Svetlo plava"
 
-#: squirrelmail/src/options_highlight.php:319
 msgid "Light Green"
 msgstr "Svetlo zelena"
 
-#: squirrelmail/src/options_highlight.php:320
 msgid "Light Yellow"
 msgstr "Svetlo ¾uta"
 
-#: squirrelmail/src/options_highlight.php:321
 msgid "Light Cyan"
 msgstr "Svetla Cyan"
 
-#: squirrelmail/src/options_highlight.php:322
 msgid "Light Magenta"
 msgstr "Svetla magenta"
 
-#: squirrelmail/src/options_highlight.php:323
 msgid "Dark Gray"
 msgstr "Tamno siva"
 
-#: squirrelmail/src/options_highlight.php:324
 msgid "Medium Gray"
 msgstr "Siva"
 
-#: squirrelmail/src/options_highlight.php:325
 msgid "Light Gray"
 msgstr "Svetlo siva"
 
-#: squirrelmail/src/options_highlight.php:326
 msgid "White"
 msgstr "Bela"
 
-#: squirrelmail/src/options_highlight.php:328
 msgid "Other:"
 msgstr "Druga:"
 
-#: squirrelmail/src/options_highlight.php:330
 msgid "Ex: 63aa7f"
 msgstr "npr.: 63aa7f"
 
-#: squirrelmail/plugins/filters/options.php:153
-#: squirrelmail/src/options_highlight.php:372
 msgid "To or Cc"
 msgstr "Za ili kopija"
 
-#: squirrelmail/src/options_highlight.php:377
 msgid "Matches"
 msgstr "Jednako"
 
-#: squirrelmail/src/options_identities.php:53
 msgid "Advanced Identities"
 msgstr "Napredni Identiteti"
 
-#: squirrelmail/src/options_identities.php:64
 msgid "Default Identity"
 msgstr "Glavni Indentitet"
 
-#: squirrelmail/src/options_identities.php:75
 #, c-format
 msgid "Alternate Identity %d"
 msgstr "Alternativni identitet %d"
 
-#: squirrelmail/src/options_identities.php:85
 msgid "Add a New Identity"
 msgstr "Dodaj novi identitet"
 
-#: squirrelmail/src/options_identities.php:335
-#: squirrelmail/src/options_personal.php:59
-#: squirrelmail/src/options_personal.php:67
 msgid "Full Name"
 msgstr "Puno ime"
 
-#: squirrelmail/src/options_identities.php:336
 msgid "E-Mail Address"
 msgstr "E-mail adresa"
 
-#: squirrelmail/src/options_identities.php:337
-#: squirrelmail/src/options_personal.php:94
 msgid "Reply To"
 msgstr "Odgovori na"
 
-#: squirrelmail/src/options_identities.php:345
 msgid "Save / Update"
 msgstr "Snimi / A¾uriraj"
 
-#: squirrelmail/src/options_identities.php:348
 msgid "Make Default"
 msgstr "Postavi kao osnovno"
 
-#: squirrelmail/src/options_identities.php:354
 msgid "Move Up"
 msgstr "Pomeri gore"
 
-#: squirrelmail/src/options.php:182 squirrelmail/src/options.php:340
-#: squirrelmail/src/options_order.php:50
 msgid "Index Order"
 msgstr "Redosled indeksa"
 
-#: squirrelmail/src/options_order.php:56
 msgid "Checkbox"
 msgstr "Polje"
 
-#: squirrelmail/src/options_order.php:60
 msgid "Flags"
 msgstr "Zastavice"
 
-#: squirrelmail/functions/mailbox_display.php:769
-#: squirrelmail/src/options_order.php:61
 msgid "Size"
 msgstr "Velièina"
 
-#: squirrelmail/src/options_order.php:104
 msgid ""
 "The index order is the order that the columns are arranged in the message "
 "index.  You can add, remove, and move columns around to customize them to "
@@ -1144,124 +748,93 @@ msgstr ""
 "Mo¾ete dodavati, brisati i pomerati kolone kako vam se dopada da bi "
 "odgovaralo  va¹im potrebama."
 
-#: squirrelmail/src/options_order.php:113
 msgid "up"
 msgstr "gore"
 
-#: squirrelmail/src/options_order.php:115
 msgid "down"
 msgstr "dole"
 
-#: squirrelmail/src/options_order.php:120
 msgid "remove"
 msgstr "obri¹i"
 
-#: squirrelmail/src/options_order.php:149
 msgid "Return to options page"
 msgstr "Povratak na stranu s opcijama"
 
-#: squirrelmail/src/options_personal.php:46
 msgid "Name and Address Options"
 msgstr "Opcije Imena i Adresa"
 
-#: squirrelmail/src/options_personal.php:77
-#: squirrelmail/src/options_personal.php:85
 msgid "Email Address"
 msgstr "E-mail adresa"
 
-#: squirrelmail/src/options_personal.php:111
 msgid "Edit Advanced Identities"
 msgstr "Promeni napredne identitete"
 
-#: squirrelmail/src/options_personal.php:113
 msgid "(discards changes made on this form so far)"
 msgstr "(odbacuje promene koje ste dosad napravili)"
 
-#: squirrelmail/src/options_personal.php:116
 msgid "Multiple Identities"
 msgstr "Vi¹e identiteta"
 
-#: squirrelmail/src/options_personal.php:124
 msgid "Same as server"
 msgstr "Isto kao server"
 
-#: squirrelmail/src/options_personal.php:135
 msgid "Timezone Options"
 msgstr "Pode¹avanje Vremena"
 
-#: squirrelmail/src/options_personal.php:140
 msgid "Your current timezone"
 msgstr "Va¹a trenutna vremenska zona"
 
-#: squirrelmail/src/options_personal.php:148
 msgid "Reply Citation Options"
 msgstr "Stil citata pri odgovoru"
 
-#: squirrelmail/src/options_personal.php:153
 msgid "Reply Citation Style"
 msgstr "Stil citata pri odgovoru"
 
-#: squirrelmail/src/options_personal.php:156
 msgid "No Citation"
 msgstr "Bez citiranja"
 
-#: squirrelmail/src/options_personal.php:157
 msgid "AUTHOR Said"
 msgstr "AUTOR je rekao(la)"
 
-#: squirrelmail/src/options_personal.php:158
 msgid "Quote Who XML"
 msgstr "Citiraj kao XML"
 
-#: squirrelmail/src/options_personal.php:159
 msgid "User-Defined"
 msgstr "Korisni¹ki definisano"
 
-#: squirrelmail/src/options_personal.php:164
 msgid "User-Defined Citation Start"
 msgstr "Korisnièki definisan poèetak citata"
 
-#: squirrelmail/src/options_personal.php:172
 msgid "User-Defined Citation End"
 msgstr "Korisnièki definisan kraj citata"
 
-#: squirrelmail/src/options_personal.php:179
 msgid "Signature Options"
 msgstr "Opcije potpisa"
 
-#: squirrelmail/src/options_personal.php:184
 msgid "Use Signature"
 msgstr "Koristi potpis"
 
-#: squirrelmail/src/options_personal.php:191
 msgid "Prefix Signature with '-- ' Line"
 msgstr "Pre potpisa napi¹i liniju sa '--'"
 
-#: squirrelmail/src/options.php:158 squirrelmail/src/options.php:308
 msgid "Personal Information"
 msgstr "Liène informacije"
 
-#: squirrelmail/src/options.php:164 squirrelmail/src/options.php:316
 msgid "Display Preferences"
 msgstr "Opcije prikaza"
 
-#: squirrelmail/src/options.php:176 squirrelmail/src/options.php:332
 msgid "Folder Preferences"
 msgstr "Opcije prikaza direktorijuma"
 
-#: squirrelmail/src/options.php:291
 msgid "Successfully Saved Options"
 msgstr "Opcije uspe¹no saèuvane!"
 
-#: squirrelmail/src/options.php:296
 msgid "Refresh Folder List"
 msgstr "Osve¾i listu direktorijuma"
 
-#: squirrelmail/src/options.php:298
 msgid "Refresh Page"
 msgstr "Osve¾i stranu"
 
-#: squirrelmail/src/options.php:310
 msgid ""
 "This contains personal information about yourself such as your name, your "
 "email address, etc."
@@ -1269,7 +842,6 @@ msgstr ""
 "Ovde su sme¹tene va¹e liène informacije, kao ¹to su va¹e ime, email adresa "
 "itd."
 
-#: squirrelmail/src/options.php:318
 msgid ""
 "You can change the way that SquirrelMail looks and displays information to "
 "you, such as the colors, the language, and other settings."
@@ -1277,7 +849,6 @@ msgstr ""
 "Mo¾ete promeniti izgled va¹eg maila i prikazivanje poruka,kao ¹to su boje, "
 "jezik, izgled mail kolona i ostala pode¹avanja."
 
-#: squirrelmail/src/options.php:326
 msgid ""
 "Based upon given criteria, incoming messages can have different background "
 "colors in the message list.  This helps to easily distinguish who the "
@@ -1288,12 +859,10 @@ msgstr ""
 "te da razlikujete poruke po po¹iljaocu, i lak¹e pronalazite poruke sa "
 "mailing lista."
 
-#: squirrelmail/src/options.php:334
 msgid ""
 "These settings change the way your folders are displayed and manipulated."
 msgstr "Ova pode¹avanja menjaju izgled i manipulaciju va¹ih direktorijuma"
 
-#: squirrelmail/src/options.php:342
 msgid ""
 "The order of the message index can be rearranged and changed to contain the "
 "headers in any order you want."
@@ -1301,108 +870,77 @@ msgstr ""
 "Red indeksiranih poruka mo¾ete podesiti tako da sadr¾i zaglavlja u rasporedu "
 "koji vama odgovara."
 
-#: squirrelmail/src/printer_friendly_bottom.php:70
 msgid "Message not printable"
 msgstr "Poruka ne mo¾e da se ¹tampa"
 
-#: squirrelmail/src/printer_friendly_bottom.php:99
-#: squirrelmail/src/printer_friendly_main.php:15
-#: squirrelmail/src/printer_friendly_top.php:21
 msgid "Printer Friendly"
 msgstr "Sreðeno za ¹tampu"
 
-#: squirrelmail/src/printer_friendly_bottom.php:107
 msgid "CC"
 msgstr "Kopija:"
 
-#: squirrelmail/src/printer_friendly_top.php:36
 msgid "Print"
 msgstr "©tampaj"
 
-#: squirrelmail/src/printer_friendly_top.php:37
 msgid "Close Window"
 msgstr "Zatvori prozor"
 
-#: squirrelmail/src/read_body.php:156
 msgid "View Printable Version"
 msgstr "Pregled varijante pripremljene za ¹tampu"
 
-#: squirrelmail/src/read_body.php:221
 msgid "Your message"
 msgstr "Va¹a poruka"
 
-#: squirrelmail/src/read_body.php:224
 msgid "Sent:"
 msgstr "Poslato:"
 
-#: squirrelmail/src/read_body.php:226
 #, c-format
 msgid "Was displayed on %s"
 msgstr "Je prikazana na %s"
 
-#: squirrelmail/src/read_body.php:258
 msgid "Read:"
 msgstr "Proèitano:"
 
-#: squirrelmail/src/read_body.php:496
 msgid "Viewing Full Header"
 msgstr "Pregled celog zaglavlja"
 
-#: squirrelmail/src/read_body.php:752
 msgid "Message List"
 msgstr "Lista poruka"
 
-#: squirrelmail/src/read_body.php:779
 msgid "Resume Draft"
 msgstr "Nastavi Draft"
 
-#: squirrelmail/src/read_body.php:788
 msgid "Edit Message as New"
 msgstr "Sredi poruku kao da je Nova"
 
-#: squirrelmail/functions/mailbox_display.php:686
-#: squirrelmail/src/read_body.php:870
 msgid "Forward"
 msgstr "Prosledi"
 
-#: squirrelmail/src/read_body.php:872
 msgid "Reply"
 msgstr "Odgovori"
 
-#: squirrelmail/src/read_body.php:874
 msgid "Reply All"
 msgstr "Odgovori svima"
 
-#: squirrelmail/src/read_body.php:897 squirrelmail/src/read_body.php:900
 msgid "View Full Header"
 msgstr "Pregled celog zaglavlja"
 
-#: squirrelmail/src/read_body.php:977
 msgid "Mailer"
 msgstr "Program za po¹tu (Mailer)"
 
-#: squirrelmail/src/read_body.php:1026 squirrelmail/src/read_body.php:1039
-#: squirrelmail/src/read_body.php:1051 squirrelmail/src/read_body.php:1075
-#: squirrelmail/src/read_body.php:1120 squirrelmail/src/read_body.php:1136
 msgid "Read receipt"
 msgstr "Proèitaj potvrdu"
 
-#: squirrelmail/src/read_body.php:1028 squirrelmail/src/read_body.php:1122
 #, fuzzy
 msgid "send"
 msgstr "Po¹alji"
 
-#: squirrelmail/src/read_body.php:1041 squirrelmail/src/read_body.php:1053
-#: squirrelmail/src/read_body.php:1077 squirrelmail/src/read_body.php:1138
 msgid "requested"
 msgstr "tra¾eno"
 
-#: squirrelmail/src/read_body.php:1054 squirrelmail/src/read_body.php:1078
-#: squirrelmail/src/read_body.php:1139
 msgid "Send read receipt now"
 msgstr "Po¹alju potvrdu o èitanju"
 
-#: squirrelmail/src/read_body.php:1066
 msgid ""
 "The message sender has requested a response to indicate that you have read "
 "this message. Would you like to send a receipt?"
@@ -1410,492 +948,342 @@ msgstr ""
 "Po¹iljalac poruke je tra¾io odgovor da bi znao da ste proèitali poruku. Da "
 "li ¾elite da se po¹alje potvrda?"
 
-#: squirrelmail/functions/auth.php:20 squirrelmail/src/redirect.php:80
 msgid "You must be logged in to access this page."
 msgstr "Morate biti prijavljeni da biste pristupili ovoj strani."
 
-#: squirrelmail/src/redirect.php:102
 msgid "There was an error contacting the mail server."
 msgstr "Gre¹ka pri kontaktiranju Mail servera."
 
-#: squirrelmail/src/redirect.php:104
 msgid "Contact your administrator for help."
 msgstr "Kontaktirajte va¹eg administratora za pomoæ."
 
-#: squirrelmail/src/search.php:274
 #, fuzzy
 msgid "edit"
 msgstr "Promeni"
 
-#: squirrelmail/src/search.php:281 squirrelmail/src/search.php:323
 #, fuzzy
 msgid "search"
 msgstr "Pretra¾ivanje"
 
-#: squirrelmail/src/search.php:284
 #, fuzzy
 msgid "delete"
 msgstr "Obri¹i"
 
-#: squirrelmail/src/search.php:295
 msgid "Recent Searches"
 msgstr "Skora¹nje pretrage"
 
-#: squirrelmail/src/search.php:315
 #, fuzzy
 msgid "save"
 msgstr "Snimi"
 
-#: squirrelmail/src/search.php:326
 msgid "forget"
 msgstr "zaboravi"
 
-#: squirrelmail/src/search.php:335
 msgid "Current Search"
 msgstr "Trenutna pretraga"
 
-#: squirrelmail/src/search.php:380
 msgid "Body"
 msgstr "Telo poruke"
 
-#: squirrelmail/src/search.php:381
 msgid "Everywhere"
 msgstr "Svuda"
 
-#: squirrelmail/src/search.php:413 squirrelmail/src/search.php:442
 msgid "Search Results"
 msgstr "Rezultat pretrage:"
 
-#: squirrelmail/src/search.php:433
 #, fuzzy
 msgid "No Messages found"
 msgstr "Nema poruka"
 
-#: squirrelmail/functions/page_header.php:226 squirrelmail/src/signout.php:74
 msgid "Sign Out"
 msgstr "Odjavljivanje"
 
-#: squirrelmail/src/signout.php:80
 msgid "You have been successfully signed out."
 msgstr "Uspe¹no ste se odjavili."
 
-#: squirrelmail/src/signout.php:82
 msgid "Click here to log back in."
 msgstr "Kliknite ovde da biste se ponovo ulogovali."
 
-#: squirrelmail/src/vcard.php:47
 msgid "Viewing a Business Card"
 msgstr "Pregled vizit karte"
 
-#: squirrelmail/src/vcard.php:103 squirrelmail/src/vcard.php:163
 msgid "Title"
 msgstr "Naslov"
 
-#: squirrelmail/src/vcard.php:104
 msgid "Email"
 msgstr "E-mail"
 
-#: squirrelmail/src/vcard.php:105 squirrelmail/src/vcard.php:155
 msgid "Web Page"
 msgstr "Web strana"
 
-#: squirrelmail/src/vcard.php:106 squirrelmail/src/vcard.php:167
 msgid "Organization / Department"
 msgstr "Organizacija / Odeljenje"
 
-#: squirrelmail/src/vcard.php:107 squirrelmail/src/vcard.php:159
 msgid "Address"
 msgstr "Adresa"
 
-#: squirrelmail/src/vcard.php:108 squirrelmail/src/vcard.php:176
 msgid "Work Phone"
 msgstr "Slu¾beni telefon"
 
-#: squirrelmail/src/vcard.php:109 squirrelmail/src/vcard.php:180
 msgid "Home Phone"
 msgstr "Kuæni telefon"
 
-#: squirrelmail/src/vcard.php:110 squirrelmail/src/vcard.php:184
 msgid "Cellular Phone"
 msgstr "Mobilni telefon"
 
-#: squirrelmail/src/vcard.php:111 squirrelmail/src/vcard.php:188
 msgid "Fax"
 msgstr "Fax"
 
-#: squirrelmail/src/vcard.php:112 squirrelmail/src/vcard.php:192
 msgid "Note"
 msgstr "Napomena"
 
-#: squirrelmail/src/vcard.php:141 squirrelmail/src/vcard.php:204
 msgid "Add to Addressbook"
 msgstr "Dodaj u adresar"
 
-#: squirrelmail/src/vcard.php:150
 msgid "Note Field Contains"
 msgstr ""
 
-#: squirrelmail/src/vcard.php:172
 msgid "Title & Org. / Dept."
 msgstr "Naslov & Org. /Ode."
 
-#: squirrelmail/functions/abook_database.php:50
-#: squirrelmail/functions/abook_local_file.php:37
-#: squirrelmail/functions/addressbook.php:155
 msgid "Personal address book"
 msgstr "Lièni adresar"
 
-#: squirrelmail/functions/abook_database.php:96
-#: squirrelmail/functions/abook_database.php:136
-#: squirrelmail/functions/abook_database.php:171
-#: squirrelmail/functions/abook_database.php:201
-#: squirrelmail/functions/abook_database.php:253
-#: squirrelmail/functions/abook_database.php:286
-#: squirrelmail/functions/abook_database.php:327
 #, c-format
 msgid "Database error: %s"
 msgstr "Gre¹ka u bazi podataka: %s"
 
-#: squirrelmail/functions/abook_database.php:221
-#: squirrelmail/functions/abook_database.php:260
-#: squirrelmail/functions/abook_database.php:293
-#: squirrelmail/functions/abook_local_file.php:250
-#: squirrelmail/functions/abook_local_file.php:274
-#: squirrelmail/functions/abook_local_file.php:299
-#: squirrelmail/functions/abook_local_file.php:331
-#: squirrelmail/functions/addressbook.php:351
-#: squirrelmail/functions/addressbook.php:386
-#: squirrelmail/functions/addressbook.php:439
 msgid "Addressbook is read-only"
 msgstr "Adresar je samo za èitanje"
 
-#: squirrelmail/functions/abook_database.php:231
-#: squirrelmail/functions/abook_local_file.php:255
 #, c-format
 msgid "User '%s' already exist"
 msgstr "Korisnik '%s' veæ postoji"
 
-#: squirrelmail/functions/abook_database.php:303
-#: squirrelmail/functions/abook_local_file.php:337
 #, c-format
 msgid "User '%s' does not exist"
 msgstr "Korisnik '%s' ne postoji"
 
-#: squirrelmail/functions/abook_global_file.php:35
 msgid "Global address book"
 msgstr "Globalni adresar"
 
-#: squirrelmail/functions/abook_global_file.php:56
-#: squirrelmail/functions/abook_local_file.php:83
 msgid "No such file or directory"
 msgstr "Nepostojeæa datoteka ili direktorijum."
 
-#: squirrelmail/functions/abook_global_file.php:69
-#: squirrelmail/functions/abook_local_file.php:104
-#: squirrelmail/functions/abook_local_file.php:140
 msgid "Open failed"
 msgstr "Neuspe¹no otvaranje"
 
-#: squirrelmail/functions/abook_global_file.php:171
-#: squirrelmail/functions/abook_global_file.php:177
-#: squirrelmail/functions/abook_global_file.php:183
 msgid "Can not modify global address book"
 msgstr "Ne mogu promeniti globalni adresar"
 
-#: squirrelmail/functions/abook_local_file.php:46
 msgid "Not a file name"
 msgstr "Nije ime datoteke"
 
-#: squirrelmail/functions/abook_local_file.php:150
 #, fuzzy
 msgid "Write failed"
 msgstr "Neuspe¹no otvaranje"
 
-#: squirrelmail/functions/abook_local_file.php:157
 msgid "Unable to update"
 msgstr "Neuspelo a¾uriranje"
 
-#: squirrelmail/functions/abook_local_file.php:279
-#: squirrelmail/functions/abook_local_file.php:305
-#: squirrelmail/functions/abook_local_file.php:344
 msgid "Could not lock datafile"
 msgstr "Ne mogu zakljuèati datoteku sa podacima"
 
-#: squirrelmail/functions/abook_local_file.php:292
 msgid "Write to addressbook failed"
 msgstr "Upis u adresar nije uspeo"
 
-#: squirrelmail/functions/addressbook.php:73
 msgid "Error initializing addressbook database."
 msgstr "Gre¹ka pri inicializaciji baze adresara"
 
-#: squirrelmail/functions/addressbook.php:82
 #, c-format
 msgid "Error opening file %s"
 msgstr "Gre¹ka pri otvaranju datoteke %s"
 
-#: squirrelmail/functions/addressbook.php:92
 msgid "Error initializing global addressbook."
 msgstr "Gre¹ka pri inicializaciji globalnog adresara"
 
-#: squirrelmail/functions/addressbook.php:108
 #, c-format
 msgid "Error initializing LDAP server %s:"
 msgstr "Gre¹ka pri inicijalizaciji LDAP servera %s:"
 
-#: squirrelmail/functions/addressbook.php:329
-#: squirrelmail/functions/addressbook.php:416
 msgid "Invalid input data"
 msgstr "Neispravno uneti podaci"
 
-#: squirrelmail/functions/addressbook.php:333
-#: squirrelmail/functions/addressbook.php:420
 msgid "Name is missing"
 msgstr "Nedostaje ime"
 
-#: squirrelmail/functions/addressbook.php:337
-#: squirrelmail/functions/addressbook.php:424
 msgid "E-mail address is missing"
 msgstr "Nedostzaje e-mail adresa"
 
-#: squirrelmail/functions/addressbook.php:345
-#: squirrelmail/functions/addressbook.php:429
 msgid "Nickname contains illegal characters"
 msgstr "Nadimak sadr¾i ilegalne karaktere"
 
-#: squirrelmail/functions/attachment_common.php:109
-#: squirrelmail/functions/attachment_common.php:130
-#: squirrelmail/functions/attachment_common.php:145
-#: squirrelmail/functions/attachment_common.php:170
 msgid "view"
 msgstr "pregled"
 
-#: squirrelmail/functions/attachment_common.php:187
 msgid "Business Card"
 msgstr "Vizit karta"
 
-#: squirrelmail/functions/date.php:91
-#: squirrelmail/plugins/calendar/calendar.php:67
 msgid "Sunday"
 msgstr "Nedelja"
 
-#: squirrelmail/functions/date.php:94
-#: squirrelmail/plugins/calendar/calendar.php:68
 msgid "Monday"
 msgstr "Ponedeljak"
 
-#: squirrelmail/functions/date.php:97
-#: squirrelmail/plugins/calendar/calendar.php:69
 msgid "Tuesday"
 msgstr "Utorak"
 
-#: squirrelmail/functions/date.php:100
-#: squirrelmail/plugins/calendar/calendar.php:70
 msgid "Wednesday"
 msgstr "Sreda"
 
-#: squirrelmail/functions/date.php:103
-#: squirrelmail/plugins/calendar/calendar.php:71
 msgid "Thursday"
 msgstr "Èetvrtak"
 
-#: squirrelmail/functions/date.php:106
-#: squirrelmail/plugins/calendar/calendar.php:72
 msgid "Friday"
 msgstr "Petak"
 
-#: squirrelmail/functions/date.php:109
-#: squirrelmail/plugins/calendar/calendar.php:73
 msgid "Saturday"
 msgstr "Subota"
 
-#: squirrelmail/functions/date.php:121
 #, fuzzy
 msgid "Sun"
 msgstr "Nedelja"
 
-#: squirrelmail/functions/date.php:124
 #, fuzzy
 msgid "Mon"
 msgstr "Ponedeljak"
 
-#: squirrelmail/functions/date.php:127
 #, fuzzy
 msgid "Tue"
 msgstr "Utorak"
 
-#: squirrelmail/functions/date.php:130
 msgid "Wed"
 msgstr "Sreda"
 
-#: squirrelmail/functions/date.php:133
 msgid "Thu"
 msgstr "Èetvrtak"
 
-#: squirrelmail/functions/date.php:136
 #, fuzzy
 msgid "Fri"
 msgstr "Petak"
 
-#: squirrelmail/functions/date.php:139
 msgid "Sat"
 msgstr "Subota"
 
-#: squirrelmail/functions/date.php:150
 msgid "January"
 msgstr "Januar"
 
-#: squirrelmail/functions/date.php:153
 msgid "February"
 msgstr "Februar"
 
-#: squirrelmail/functions/date.php:156
 msgid "March"
 msgstr "Mart"
 
-#: squirrelmail/functions/date.php:159
 msgid "April"
 msgstr "April"
 
-#: squirrelmail/functions/date.php:162 squirrelmail/functions/date.php:206
 msgid "May"
 msgstr "Maj"
 
-#: squirrelmail/functions/date.php:165
 msgid "June"
 msgstr "Jun"
 
-#: squirrelmail/functions/date.php:168
 msgid "July"
 msgstr "Jul"
 
-#: squirrelmail/functions/date.php:171
 msgid "August"
 msgstr "Avgust"
 
-#: squirrelmail/functions/date.php:174
 msgid "September"
 msgstr "Septembar"
 
-#: squirrelmail/functions/date.php:177
 msgid "October"
 msgstr "Oktobar"
 
-#: squirrelmail/functions/date.php:180
 msgid "November"
 msgstr "Novembar"
 
-#: squirrelmail/functions/date.php:183
 msgid "December"
 msgstr "Decembar"
 
-#: squirrelmail/functions/date.php:194
 #, fuzzy
 msgid "Jan"
 msgstr "Januar"
 
-#: squirrelmail/functions/date.php:197
 msgid "Feb"
 msgstr "Februar"
 
-#: squirrelmail/functions/date.php:200
 #, fuzzy
 msgid "Mar"
 msgstr "Mart"
 
-#: squirrelmail/functions/date.php:203
 #, fuzzy
 msgid "Apr"
 msgstr "April"
 
-#: squirrelmail/functions/date.php:209
 #, fuzzy
 msgid "Jun"
 msgstr "Jun"
 
-#: squirrelmail/functions/date.php:212
 #, fuzzy
 msgid "Jul"
 msgstr "Jul"
 
-#: squirrelmail/functions/date.php:215
 #, fuzzy
 msgid "Aug"
 msgstr "Avgust"
 
-#: squirrelmail/functions/date.php:218
 msgid "Sep"
 msgstr "Septembar"
 
-#: squirrelmail/functions/date.php:221
 #, fuzzy
 msgid "Oct"
 msgstr "Oktobar"
 
-#: squirrelmail/functions/date.php:224
 msgid "Nov"
 msgstr "Novembar"
 
-#: squirrelmail/functions/date.php:227
 msgid "Dec"
 msgstr "Decembar"
 
-#: squirrelmail/functions/date.php:257
 msgid "D, F j, Y g:i a"
 msgstr "D, F j, Y g:i a"
 
-#: squirrelmail/functions/date.php:259
 msgid "D, F j, Y G:i"
 msgstr "D, F j, Y G:i a"
 
-#: squirrelmail/functions/date.php:281
 msgid "g:i a"
 msgstr "g:i a"
 
-#: squirrelmail/functions/date.php:283
 msgid "G:i"
 msgstr "G:i"
 
-#: squirrelmail/functions/date.php:288
 msgid "D, g:i a"
 msgstr "D, g:i a"
 
-#: squirrelmail/functions/date.php:290
 msgid "D, G:i"
 msgstr "D, G:i"
 
-#: squirrelmail/functions/date.php:294
 msgid "M j, Y"
 msgstr "M j, Y"
 
-#: squirrelmail/functions/db_prefs.php:52
-#: squirrelmail/functions/db_prefs.php:59
-#: squirrelmail/functions/db_prefs.php:122
-#: squirrelmail/functions/db_prefs.php:125
-#: squirrelmail/functions/db_prefs.php:277
 #, c-format
 msgid "Preference database error (%s). Exiting abnormally"
 msgstr "Gre¹ka u bazi sa pode¹avanjima (%s). Nenormalan izlaz"
 
-#: squirrelmail/functions/display_messages.php:73
-#: squirrelmail/functions/imap_general.php:228
 msgid "Unknown user or password incorrect."
 msgstr "Nepoznat korisnik ili neispravna ¹ifra."
 
-#: squirrelmail/functions/display_messages.php:75
 msgid "Click here to try again"
 msgstr "Klikni ovde i probaj ponovo."
 
-#: squirrelmail/functions/display_messages.php:96
 #, c-format
 msgid "Click here to return to %s"
 msgstr "Klikni ovde za povratak na %s"
 
-#: squirrelmail/functions/display_messages.php:179
 msgid "Go to the login page"
 msgstr "Idi na stranu za prijavljivanje"
 
-#: squirrelmail/functions/file_prefs.php:37
 #, c-format
 msgid ""
 "Preference file, %s, does not exist. Log out, and log back in to create a "
@@ -1904,8 +1292,6 @@ msgstr ""
 "Datoteka s pode¹avanjima, %s, ne postoji. Odjavite se i ponovo se prijavite "
 "da vam se kreira datoteka sa poèetnim pode¹avanjima."
 
-#: squirrelmail/functions/file_prefs.php:43
-#: squirrelmail/functions/file_prefs.php:111
 #, c-format
 msgid ""
 "Preference file, %s, could not be opened. Contact your system administrator "
@@ -1914,7 +1300,6 @@ msgstr ""
 "Fajl preferenci %s, nije mogao da se otvori. Molim kontaktirajte sistem "
 "administratora i prijavite ovu gre¹ku."
 
-#: squirrelmail/functions/file_prefs.php:119
 #, c-format
 msgid ""
 "Preference file, %s, could not be written. Contact your system administrator "
@@ -1923,34 +1308,25 @@ msgstr ""
 "Fajl preferenci, %s, nije mogao da se upi¹e. Molim kontaktirajte sistem "
 "administratora i prijavite ovu gre¹ku."
 
-#: squirrelmail/functions/file_prefs.php:185
 #, c-format
 msgid "Error opening %s"
 msgstr "Gre¹ka pri otvaranju %s"
 
-#: squirrelmail/functions/file_prefs.php:188
 msgid "Default preference file not found or not readable!"
 msgstr ""
 "Poèetne datoteke sa pode¹avanjima nisu pronaðene, ili ne mogu da se "
 "proèitaju!"
 
-#: squirrelmail/functions/file_prefs.php:189
-#: squirrelmail/functions/file_prefs.php:202
-#: squirrelmail/functions/prefs.php:102
 msgid "Please contact your system administrator and report this error."
 msgstr "Molim kontaktirajte sistem administratora i prijavite ovu gre¹ku."
 
-#: squirrelmail/functions/file_prefs.php:200
 msgid "Could not create initial preference file!"
 msgstr "Ne mogu da kreiram po¹etne datoteke s pode¹avanjima!"
 
-#: squirrelmail/functions/file_prefs.php:201
 #, c-format
 msgid "%s should be writable by user %s"
 msgstr "%s bi trebalo da je omoguæen za pisanje, za korisnika %s"
 
-#: squirrelmail/functions/file_prefs.php:218
-#: squirrelmail/functions/file_prefs.php:243
 #, c-format
 msgid ""
 "Signature file, %s, could not be opened. Contact your system administrator "
@@ -1959,7 +1335,6 @@ msgstr ""
 "Datoteka s potpisom, %s, nije mogla da se otvori. Molim kontaktirajte sistem "
 "administratora i prijavite ovu gre¹ku."
 
-#: squirrelmail/functions/file_prefs.php:224
 #, c-format
 msgid ""
 "Signature file, %s, could not be written. Contact your system administrator "
@@ -1968,106 +1343,69 @@ msgstr ""
 "Nije bilo moguæe upisati u datoteku s potpisom, %s. Molim kontaktirajte "
 "sistem administratora i prijavite ovu gre¹ku."
 
-#: squirrelmail/functions/imap_general.php:115
-#: squirrelmail/functions/imap_messages.php:367
-#: squirrelmail/functions/imap_messages.php:375
-#: squirrelmail/functions/imap_messages.php:573
-#: squirrelmail/plugins/filters/filters.php:227
 msgid "ERROR : Could not complete request."
 msgstr "GRE©KA: Ne mogu izvr¹iti zahtev."
 
-#: squirrelmail/functions/imap_general.php:117
-#: squirrelmail/functions/imap_general.php:129
 msgid "Query:"
 msgstr "Upit:"
 
-#: squirrelmail/functions/imap_general.php:119
-#: squirrelmail/plugins/filters/filters.php:229
 msgid "Reason Given: "
 msgstr "Razlog:"
 
-#: squirrelmail/functions/imap_general.php:127
-#: squirrelmail/plugins/filters/filters.php:236
 msgid "ERROR : Bad or malformed request."
 msgstr "GRE©KA: Lo¹ ili pogre¹no formiran zahtev."
 
-#: squirrelmail/functions/imap_general.php:131
-#: squirrelmail/plugins/filters/filters.php:238
 msgid "Server responded: "
 msgstr "Odgovor servera:"
 
-#: squirrelmail/functions/imap_general.php:185
 #, c-format
 msgid "Error connecting to IMAP server: %s."
 msgstr "Gre¹ka pri prijavi na IMAP server: %s."
 
-#: squirrelmail/functions/imap_general.php:202
 #, c-format
 msgid "Bad request: %s"
 msgstr "Lo¹ zahtev: %s"
 
-#: squirrelmail/functions/imap_general.php:204
 #, c-format
 msgid "Unknown error: %s"
 msgstr "Nepoznata gre¹ka: %s"
 
-#: squirrelmail/functions/imap_general.php:206
 msgid "Read data:"
 msgstr "Proèitan podatak:"
 
-#: squirrelmail/functions/imap_messages.php:369
-#: squirrelmail/functions/imap_messages.php:575
 msgid "Unknown response from IMAP server: "
 msgstr "Nepoznat odziv IMAP servera:"
 
-#: squirrelmail/functions/imap_messages.php:377
 msgid "Unknown message number in reply from server: "
 msgstr "Nepoznat broj poruke u odgovoru od servera:"
 
-#: squirrelmail/functions/imap_messages.php:397
-#: squirrelmail/functions/imap_messages.php:498
-#: squirrelmail/functions/imap_messages.php:766
-#: squirrelmail/functions/imap_messages.php:830
-#: squirrelmail/functions/mailbox_display.php:1089
 msgid "(no subject)"
 msgstr "(bez naslova)"
 
-#: squirrelmail/functions/imap_messages.php:398
 msgid "Unknown Sender"
 msgstr "Nepoznat po¹iljalac"
 
-#: squirrelmail/functions/imap_messages.php:521
 msgid "No To Address"
 msgstr "Ne postoji adresa na koju se ¹alje"
 
-#: squirrelmail/functions/imap_messages.php:833
 msgid "(unknown sender)"
 msgstr "(nepoznat po¹iljalac)"
 
-#: squirrelmail/functions/imap_search.php:99
 msgid "No Messages Found"
 msgstr "Nema poruka"
 
-#: squirrelmail/functions/imap_search.php:190
-#: squirrelmail/functions/imap_search.php:200
 msgid "Folder:"
 msgstr "Direktorijum:"
 
-#: squirrelmail/functions/imap_search.php:192
-#: squirrelmail/functions/imap_search.php:202
 msgid "Found"
 msgstr "Naðeno"
 
-#: squirrelmail/functions/imap_search.php:192
-#: squirrelmail/functions/imap_search.php:202
 msgid "messages"
 msgstr "poruka"
 
-#: squirrelmail/functions/mailbox_display.php:186
 msgid "A"
 msgstr ""
 
-#: squirrelmail/functions/mailbox_display.php:276
 msgid ""
 "Server-side sorting is not supported by your IMAP server.<br>Please report "
 "this to the system administrator"
@@ -2075,84 +1413,63 @@ msgstr ""
 "Sortiranje na serveru nije podr¾ano od strane servera.<br>Molimo obavestite "
 "administratora sistema o ovome"
 
-#: squirrelmail/functions/mailbox_display.php:565
 msgid "THIS FOLDER IS EMPTY"
 msgstr "OVAJ DIREKTORIJUM JE PRAZAN"
 
-#: squirrelmail/functions/mailbox_display.php:658
 msgid "Move Selected To:"
 msgstr "Premesti izabrano u:"
 
-#: squirrelmail/functions/mailbox_display.php:661
 msgid "Transform Selected Messages"
 msgstr "Promeni izabrane poruke"
 
-#: squirrelmail/functions/mailbox_display.php:685
-#: squirrelmail/plugins/delete_move_next/setup.php:264
-#: squirrelmail/plugins/delete_move_next/setup.php:288
 msgid "Move"
 msgstr "Premesti"
 
-#: squirrelmail/functions/mailbox_display.php:692
 msgid "Expunge"
 msgstr "isprazni"
 
-#: squirrelmail/functions/mailbox_display.php:693
 msgid "mailbox"
 msgstr "mailbox"
 
-#: squirrelmail/functions/mailbox_display.php:695
 msgid "Read"
 msgstr "Proèitano"
 
-#: squirrelmail/functions/mailbox_display.php:696
 msgid "Unread"
 msgstr "Neproèitano"
 
-#: squirrelmail/functions/mailbox_display.php:705
 msgid "Unthread View"
 msgstr "Meseèni pregled"
 
-#: squirrelmail/functions/mailbox_display.php:708
 #, fuzzy
 msgid "Thread View"
 msgstr "Dnevni pregled"
 
-#: squirrelmail/functions/mailbox_display.php:822
 msgid "Toggle All"
 msgstr "Promeni sve"
 
-#: squirrelmail/functions/mailbox_display.php:846
 msgid "Unselect All"
 msgstr "Deselektuj izbor"
 
-#: squirrelmail/functions/mailbox_display.php:848
 msgid "Select All"
 msgstr "Izaberi sve"
 
-#: squirrelmail/functions/mailbox_display.php:865
 #, c-format
 msgid "Viewing Messages: <B>%s</B> to <B>%s</B> (%s total)"
 msgstr "Pregled poruka:<B>%s</B> do <B>%s</B> (%s ukupno)"
 
-#: squirrelmail/functions/mailbox_display.php:868
 #, c-format
 msgid "Viewing Message: <B>%s</B> (1 total)"
 msgstr "Pregled poruke:<B>%s</B> (1 ukupno)"
 
-#: squirrelmail/functions/mailbox_display.php:1052
 msgid "Paginate"
 msgstr "Numeri¹i strane"
 
-#: squirrelmail/functions/mailbox_display.php:1059
 msgid "Show All"
 msgstr "Prika¾i sve"
 
-#: squirrelmail/functions/mime.php:425
 msgid "Error decoding mime structure.  Report this as a bug!"
 msgstr "Gre¹ka pri dekodiranju MIME strukture. Prijavite ovo kao bug!"
 
-#: squirrelmail/functions/mime.php:499
 msgid ""
 "Body retrieval error. The reason for this is most probably that the message "
 "is malformed."
@@ -2161,87 +1478,57 @@ msgstr ""
 "Molimo pomozite nam da buduæe verzije budu bolje slanjem ove porukerazvojnom "
 "timu web-maila!"
 
-#: squirrelmail/functions/mime.php:501
 msgid "Command:"
 msgstr "Komanda:"
 
-#: squirrelmail/functions/mime.php:502
 msgid "Response:"
 msgstr "Odgovor:"
 
-#: squirrelmail/functions/mime.php:503
-#: squirrelmail/plugins/calendar/event_create.php:170
-#: squirrelmail/plugins/calendar/event_delete.php:95
-#: squirrelmail/plugins/calendar/event_edit.php:174
-#: squirrelmail/plugins/calendar/event_edit.php:187
 msgid "Message:"
 msgstr "Poruka:"
 
-#: squirrelmail/functions/mime.php:504
 msgid "FETCH line:"
 msgstr "UZMI red:"
 
-#: squirrelmail/functions/mime.php:804
 msgid "Hide Unsafe Images"
 msgstr "Sakrij nesigurne slike"
 
-#: squirrelmail/functions/mime.php:806
 msgid "View Unsafe Images"
 msgstr "Prika¾i sve (nesigurne) slike"
 
-#: squirrelmail/functions/mime.php:835
 msgid "Attachments"
 msgstr "Dodaci:"
 
-#: squirrelmail/functions/mime.php:871 squirrelmail/functions/mime.php:949
 msgid "download"
 msgstr "preuzmi dodatak"
 
-#: squirrelmail/functions/mime.php:1673 squirrelmail/functions/mime.php:1995
 msgid "sec_remove_eng.png"
 msgstr "sec_remove_sr_YU.png"
 
-#: squirrelmail/functions/options.php:169
 #, c-format
 msgid "Option Type '%s' Not Found"
 msgstr "Nisam na¹ao opcije tipa '%s' "
 
-#: squirrelmail/functions/options.php:264
-#: squirrelmail/plugins/administrator/options.php:364
-#: squirrelmail/plugins/calendar/event_delete.php:108
-#: squirrelmail/plugins/calendar/event_edit.php:207
 msgid "Yes"
 msgstr "Da"
 
-#: squirrelmail/functions/options.php:269
-#: squirrelmail/plugins/administrator/options.php:365
-#: squirrelmail/plugins/calendar/event_delete.php:115
-#: squirrelmail/plugins/calendar/event_edit.php:214
 msgid "No"
 msgstr "Ne"
 
-#: squirrelmail/functions/page_header.php:220
 msgid "Current Folder"
 msgstr "Trenutni direktorijum"
 
-#: squirrelmail/functions/page_header.php:233
-#: squirrelmail/functions/page_header.php:236
-#: squirrelmail/functions/page_header.php:278
-#: squirrelmail/functions/page_header.php:305
 msgid "Compose"
 msgstr "Nova poruka"
 
-#: squirrelmail/functions/prefs.php:100
 #, c-format
 msgid "Error creating directory %s."
 msgstr "Gre¹ka pri kreiranju direktorijuma %s"
 
 # TODO: najdi primeren prevod za hash
-#: squirrelmail/functions/prefs.php:101
 msgid "Could not create hashed directory structure!"
 msgstr "Nisam uspeo da kreiram 'hash' strukturu direktorijuma!"
 
-#: squirrelmail/plugins/filters/filters.php:557
 msgid ""
 "COMMERCIAL - This list contains servers that are verified spam senders. It "
 "is a pretty reliable list to scan spam from."
@@ -2249,7 +1536,6 @@ msgstr ""
 "KOMERCIJALAN - Ova lista sadr¾i proverene spam po¹iljaoce. Spada u "
 "priliènopouzdanu listu za skeniranje po¹te protiv spam-a "
 
-#: squirrelmail/plugins/filters/filters.php:565
 msgid ""
 "COMMERCIAL - Servers that are configured (or misconfigured) to allow spam to "
 "be relayed through their system will be banned with this.  Another good one "
@@ -2259,7 +1545,6 @@ msgstr ""
 "dadozvoljavaju ne¾eljenoj po¹ti da prolazi kroz sistem æe biti ovim "
 "blokirani. Jo¹ jedan dobar za upotrebu."
 
-#: squirrelmail/plugins/filters/filters.php:573
 msgid ""
 "COMMERCIAL - Dial-up users are often filtered out since they should use "
 "their ISP's mail servers to send mail.  Spammers typically get a dial-up "
@@ -2269,19 +1554,15 @@ msgstr ""
 "trebalo da koriste mail server svog Internet provajdera za slanje po¹te. "
 "Spameriuglavnom uzimaju dial-up linije i ¹alju po¹tu direktno sa njih "
 
-#: squirrelmail/plugins/filters/filters.php:581
 msgid "COMMERCIAL - RBL+ Blackhole entries."
 msgstr "KOMERCIJALAN - RBL+ Blackhole unosi"
 
-#: squirrelmail/plugins/filters/filters.php:589
 msgid "COMMERCIAL - RBL+ OpenRelay entries."
 msgstr "KOMERCIJALAN - RBL + OpenRelay serveri"
 
-#: squirrelmail/plugins/filters/filters.php:597
 msgid "COMMERCIAL - RBL+ Dial-up entries."
 msgstr "KOMERCIJALAN - RBL + Dial-up linije"
 
-#: squirrelmail/plugins/filters/filters.php:606
 msgid ""
 "FREE - Osirusoft Relays - Osirusofts list of verified open relays. Seems to "
 "include servers used by abuse@uunet.net auto-replies too."
@@ -2290,11 +1571,9 @@ msgstr ""
 "openrelayservera. Izgleda da ukljuèuje servere koje koristi automatske "
 "odgovore sa abuse@uunet.net "
 
-#: squirrelmail/plugins/filters/filters.php:614
 msgid "FREE - Osirusoft Dialups - Osirusofts Dialup Spam Source list."
 msgstr "BESPLATAN - Osirusoft Dial-up.- Osirusoftova Dial-up lista. "
 
-#: squirrelmail/plugins/filters/filters.php:622
 msgid ""
 "FREE - Osirusoft Confirmed Spam Source - Sites that continually spam and "
 "have been manually added after multiple nominations. Use with caution. Seems "
@@ -2305,7 +1584,6 @@ msgstr ""
 "Upotrebljavajtesa oprezom. Izgleda da hvata i automatkse odogovore na "
 "prijave ¾albi sanekih Internet provajdera."
 
-#: squirrelmail/plugins/filters/filters.php:630
 msgid ""
 "FREE - Osirusoft Smart Hosts - List of hosts that are secure but relay for "
 "other mail servers that are not secure."
@@ -2313,7 +1591,6 @@ msgstr ""
 "BESPLATAN - Osirusoft Pametni Serveri - Lista servera koji su sigurni ali "
 "prosleðuju po¹tu od drugih servera koji nisu."
 
-#: squirrelmail/plugins/filters/filters.php:638
 msgid ""
 "FREE - Osirusoft Spamware Developers - It is believed that these are IP "
 "ranges of companies that are known to produce spam software. Seems to catch "
@@ -2323,7 +1600,6 @@ msgstr ""
 "adresa kompanija za koje je poznato da prouzrokuju spam. Izgleda da hvata "
 "automatske poruke o zloupotrebi sa nekih ISP-a "
 
-#: squirrelmail/plugins/filters/filters.php:646
 msgid ""
 "FREE - Osirusoft Unconfirmed OptIn Servers - List of listservers that opt "
 "users in without confirmation."
@@ -2332,7 +1608,6 @@ msgstr ""
 "spisak mailing lista koje ukljuèuju korisnike bez njihovog odobrenja ili "
 "potvrde"
 
-#: squirrelmail/plugins/filters/filters.php:654
 msgid ""
 "FREE - Osirusoft Insecure formmail.cgi scripts - List of insecure formmail."
 "cgi scripts. (planned)."
@@ -2340,11 +1615,9 @@ msgstr ""
 "FREE - Osirusoft Insecure formmail.cgi scripts - Lista nesigurnih formmail."
 "cgi scripti. (u planu)."
 
-#: squirrelmail/plugins/filters/filters.php:662
 msgid "FREE - Osirusoft Open Proxy Servers - List of Open Proxy Servers."
 msgstr "FREE - Osirusoft Open Proxy Servers - Lista otvorenih Proxy Servera."
 
-#: squirrelmail/plugins/filters/filters.php:670
 msgid ""
 "FREE - ORDB was born when ORBS went off the air. It seems to have fewer "
 "false positives than ORBS did though."
@@ -2352,39 +1625,31 @@ msgstr ""
 "BESPLATAN - ORDB je stvoren kad je ORBS bio iskljuèen.izgleda da ima manje "
 "pogre¹nih blokiranja nego ORBS dodu¹e"
 
-#: squirrelmail/plugins/filters/filters.php:678
 msgid "FREE - Five-Ten-sg.com - Direct SPAM sources."
 msgstr "BESPLATAN - Five-Ten-sg.com - Direktni izvori SPAM po¹te."
 
-#: squirrelmail/plugins/filters/filters.php:686
 msgid "FREE - Five-Ten-sg.com - Dial-up lists - includes some DSL IPs."
 msgstr ""
 "BESPLATAN - Five-Ten-sg.com Dial up lista koja ukljuèuje i neke DSL IP "
 "brojeve"
 
-#: squirrelmail/plugins/filters/filters.php:694
 msgid "FREE - Five-Ten-sg.com - Bulk mailers that do not use confirmed opt-in."
 msgstr ""
 "BESPLATAN - Five-Ten-sg.com - Masovni maileri koji ne koriste potvrdu/"
 "odobravanjeod strane korisnika"
 
-#: squirrelmail/plugins/filters/filters.php:702
 msgid "FREE - Five-Ten-sg.com - Other misc. servers."
 msgstr "BESPLATAN - Five-Ten-sg.com - Razni ostali serveri."
 
-#: squirrelmail/plugins/filters/filters.php:710
 msgid "FREE - Five-Ten-sg.com - Single Stage servers."
 msgstr "BESPLATAN - Five-Ten-sg.com - Single Stage servers."
 
-#: squirrelmail/plugins/filters/filters.php:718
 msgid "FREE - Five-Ten-sg.com - SPAM Support servers."
 msgstr "BESPLATAN - Five-Ten-sg.com - Serveri koji podr¾avaju SPAM "
 
-#: squirrelmail/plugins/filters/filters.php:726
 msgid "FREE - Five-Ten-sg.com - Web Form IPs."
 msgstr "BESPLATAN - Five-Ten-sg.com - IP brojevi WEB obrazaca."
 
-#: squirrelmail/plugins/filters/filters.php:734
 msgid ""
 "FREE - Dorkslayers appears to include only really bad open relays outside "
 "the US to avoid being sued. Interestingly enough, their website recommends "
@@ -2393,11 +1658,9 @@ msgstr ""
 "BESPLATAN - Dorkslayers ukljuèuje samo zaista lo¹e openrelaz servere van SAD "
 "da bi izbegli tu¾bu"
 
-#: squirrelmail/plugins/filters/filters.php:742
 msgid "FREE - SPAMhaus - A list of well-known SPAM sources."
 msgstr "FREE - SPAMhaus - Lista dobro poznatih izvora SPAM-a."
 
-#: squirrelmail/plugins/filters/filters.php:750
 #, c-format
 msgid ""
 "FREE, for now - SPAMCOP - An interesting solution that lists servers that "
@@ -2406,59 +1669,48 @@ msgstr ""
 "BESPLATAN, za sada - SPAMCOP - Zanimljivo re¹enje koje lista servere koji "
 "imaju jako visok nivo SPAM-a do dozvoljenog zakonskog nivoa (85% ili vi¹e)"
 
-#: squirrelmail/plugins/filters/filters.php:758
 msgid "FREE - dev.null.dk - I don't have any detailed info on this list."
 msgstr ""
 
-#: squirrelmail/plugins/filters/filters.php:766
 msgid "FREE - visi.com - Relay Stop List. Very conservative OpenRelay List."
 msgstr ""
 
-#: squirrelmail/plugins/filters/filters.php:774
 msgid "FREE - 2mbit.com Open Relays - Another list of Open Relays."
 msgstr ""
 
-#: squirrelmail/plugins/filters/filters.php:782
 #, fuzzy
 msgid "FREE - 2mbit.com SPAM Source - List of Direct SPAM Sources."
 msgstr "BESPLATAN - Five-Ten-sg.com - Direktni izvori SPAM po¹te."
 
-#: squirrelmail/plugins/filters/filters.php:790
 msgid "FREE - 2mbit.com SPAM ISPs - List of SPAM-friendly ISPs."
 msgstr ""
 
-#: squirrelmail/plugins/filters/filters.php:798
 msgid ""
 "FREE - Leadmon DUL - Another list of Dial-up or otherwise dynamically "
 "assigned IPs."
 msgstr ""
 
-#: squirrelmail/plugins/filters/filters.php:806
 msgid ""
 "FREE - Leadmon SPAM Source - List of IPs Leadmon.net has received SPAM "
 "directly from."
 msgstr ""
 
-#: squirrelmail/plugins/filters/filters.php:814
 msgid ""
 "FREE - Leadmon Bulk Mailers - Bulk mailers that do not require confirmed opt-"
 "in or that have allowed known spammers to become clients and abuse their "
 "services."
 msgstr ""
 
-#: squirrelmail/plugins/filters/filters.php:822
 msgid ""
 "FREE - Leadmon Open Relays - Single Stage Open Relays that are not listed on "
 "other active RBLs."
 msgstr ""
 
-#: squirrelmail/plugins/filters/filters.php:830
 msgid ""
 "FREE - Leadmon Multi-stage - Multi-Stage Open Relays that are not listed on "
 "other active RBLs and that have sent SPAM to Leadmon.net."
 msgstr ""
 
-#: squirrelmail/plugins/filters/filters.php:838
 msgid ""
 "FREE - Leadmon SpamBlock - Sites on this listing have sent Leadmon.net "
 "direct SPAM from IPs in netblocks where the entire block has no DNS "
@@ -2466,80 +1718,57 @@ msgid ""
 "Leadmon.net."
 msgstr ""
 
-#: squirrelmail/plugins/filters/filters.php:846
 msgid ""
 "FREE, for now - Not Just Another Blacklist - Both Open Relays and Direct "
 "SPAM Sources."
 msgstr ""
 
-#: squirrelmail/plugins/filters/filters.php:854
 msgid "FREE, for now - Not Just Another Blacklist - Dial-up IPs."
 msgstr ""
 
-#: squirrelmail/plugins/filters/options.php:85
 msgid "Saved Scan type"
 msgstr "Snimljen tip skeniranja"
 
-#: squirrelmail/plugins/filters/options.php:94
 msgid "Message Filtering"
 msgstr "Filtriranje poruka"
 
-#: squirrelmail/plugins/filters/options.php:101
-#: squirrelmail/plugins/filters/spamoptions.php:114
 msgid "What to Scan:"
 msgstr "©ta da se skenira: "
 
-#: squirrelmail/plugins/filters/options.php:107
-#: squirrelmail/plugins/filters/spamoptions.php:120
 msgid "All messages"
 msgstr "Sve poruke"
 
-#: squirrelmail/plugins/filters/options.php:112
-#: squirrelmail/plugins/filters/spamoptions.php:125
 msgid "Only unread messages"
 msgstr "Samo neproèitana po¹ta"
 
-#: squirrelmail/plugins/filters/options.php:115
-#: squirrelmail/plugins/filters/spamoptions.php:158
 msgid "Save"
 msgstr "Snimi"
 
-#: squirrelmail/plugins/filters/options.php:137
 msgid "Match:"
 msgstr "Pronadjeno:"
 
-#: squirrelmail/plugins/filters/options.php:159
 msgid "Header"
 msgstr "Zaglavlje"
 
-#: squirrelmail/plugins/filters/options.php:166
 msgid "Contains:"
 msgstr "Sadr¾i:"
 
-#: squirrelmail/plugins/delete_move_next/setup.php:260
-#: squirrelmail/plugins/delete_move_next/setup.php:284
-#: squirrelmail/plugins/filters/options.php:178
 msgid "Move to:"
 msgstr "Pomeri u:"
 
-#: squirrelmail/plugins/filters/options.php:220
 msgid "Down"
 msgstr "Dole"
 
-#: squirrelmail/plugins/filters/options.php:226
 msgid "Up"
 msgstr "Gore"
 
-#: squirrelmail/plugins/filters/options.php:229
 #, c-format
 msgid "If <b>%s</b> contains <b>%s</b> then move to <b>%s</b>"
 msgstr "Ukoliko <b>%s</b> sadr¾i <b>%s</b> onda premesti u <b>%s</b>"
 
-#: squirrelmail/plugins/filters/setup.php:137
 msgid "Message Filters"
 msgstr "Filteri poruka"
 
-#: squirrelmail/plugins/filters/setup.php:139
 msgid ""
 "Filtering enables messages with different criteria to be automatically "
 "filtered into different folders for easier organization."
@@ -2547,11 +1776,9 @@ msgstr ""
 "Filtriranje omoguæava da se poruke po razlièitom kriterijumu automatski "
 "rasporeðuju u ralièite direktorijume radi lak¹e organizacije."
 
-#: squirrelmail/plugins/filters/setup.php:145
 msgid "SPAM Filters"
 msgstr "SPAM filteri"
 
-#: squirrelmail/plugins/filters/setup.php:147
 msgid ""
 "SPAM filters allow you to select from various DNS based blacklists to detect "
 "junk email in your INBOX and move it to another folder (like Trash)."
@@ -2560,21 +1787,17 @@ msgstr ""
 "ne¾eljene po¹te u va¹em INBOX-u i preme¹tanje u drugi direktorijum kao ¹to "
 "je, na primer, Trash."
 
-#: squirrelmail/plugins/filters/spamoptions.php:66
 msgid "Spam Filtering"
 msgstr "Filtriranje ne¾eljene po¹te."
 
-#: squirrelmail/plugins/filters/spamoptions.php:71
 msgid "WARNING! Tell your admin to set the SpamFilters_YourHop variable"
 msgstr ""
 "UPOZORENJE! Recite va¹em administratoru da podesi promenjivu "
 "SpamFilters_YourHop"
 
-#: squirrelmail/plugins/filters/spamoptions.php:93
 msgid "Move spam to:"
 msgstr "Premesti SPAM poruke u:"
 
-#: squirrelmail/plugins/filters/spamoptions.php:111
 msgid ""
 "Moving spam directly to the trash may not be a good idea at first, since "
 "messages from friends and mailing lists might accidentally be marked as "
@@ -2588,7 +1811,6 @@ msgstr ""
 "SPAM, postarajte se da ga periodièno bri¹ete da ne biste prepunili va¹u mail "
 "kvotu."
 
-#: squirrelmail/plugins/filters/spamoptions.php:131
 msgid ""
 "The more messages you scan, the longer it takes.  I would suggest that you "
 "scan only new messages.  If you make a change to your filters, I would set "
@@ -2602,41 +1824,32 @@ msgstr ""
 "skenira samo novu po¹tu. Tako æe va¹i novi spam filteri biti ukljuèeni za "
 "svu po¹tu (i novu i staru)"
 
-#: squirrelmail/plugins/filters/spamoptions.php:169
 #, c-format
 msgid "Spam is sent to <b>%s</b>"
 msgstr "Ne¾eljena po¹ta je poslata na <b>%s</b>"
 
-#: squirrelmail/plugins/filters/spamoptions.php:169
 msgid "[<i>not set yet</i>]"
 msgstr "[<i> jo¹ nije pode¹eno </i>]"
 
-#: squirrelmail/plugins/filters/spamoptions.php:171
 #, c-format
 msgid "Spam scan is limited to <b>%s</b>"
 msgstr "Skeniranje ne¾eljene po¹te je ogranièeno na <b>%s</b>"
 
-#: squirrelmail/plugins/filters/spamoptions.php:171
 msgid "New Messages Only"
 msgstr "Samo nove poruke"
 
-#: squirrelmail/plugins/filters/spamoptions.php:171
 msgid "All Messages"
 msgstr "Sve poruke"
 
-#: squirrelmail/plugins/filters/spamoptions.php:181
 msgid "ON"
 msgstr "UKLJUÈEN"
 
-#: squirrelmail/plugins/filters/spamoptions.php:183
 msgid "OFF"
 msgstr "ISKLJUÈEN"
 
-#: squirrelmail/plugins/squirrelspell/setup.php:49
 msgid "SpellChecker Options"
 msgstr "Opcije spell-checkera"
 
-#: squirrelmail/plugins/squirrelspell/setup.php:51
 msgid ""
 "Here you may set up how your personal dictionary is stored, edit it, or "
 "choose which languages should be available to you when spell-checking."
@@ -2645,19 +1858,15 @@ msgstr ""
 "provera pravopisa, mo¾ete menjati ili birati jezik koji æe vam biti "
 "dostupan  pri proveri pravopisa "
 
-#: squirrelmail/plugins/squirrelspell/setup.php:77
 msgid "Check Spelling"
 msgstr "Proveri pravopis"
 
-#: squirrelmail/plugins/squirrelspell/sqspell_functions.php:65
 msgid "Back to &quot;SpellChecker Options&quot; page"
 msgstr "Nazad na stranu sa opcijama za &quot;Pravopis&quot; "
 
-#: squirrelmail/plugins/squirrelspell/sqspell_functions.php:371
 msgid "ATTENTION:"
 msgstr "PA®NJA:"
 
-#: squirrelmail/plugins/squirrelspell/sqspell_functions.php:372
 msgid ""
 "SquirrelSpell was unable to decrypt your personal dictionary. This is most "
 "likely due to the fact that you have changed your mailbox password. In order "
@@ -2676,164 +1885,123 @@ msgstr ""
 "koristiti Moraæete da ga obri¹ete i poènete s novim reènikom. isto va¾i i "
 "ukoliko se ne seæate stare ¹ifre, pa je kriptovan reènik sada nedostupan."
 
-#: squirrelmail/plugins/squirrelspell/sqspell_functions.php:378
 msgid "Delete my dictionary and start a new one"
 msgstr "Izbri¹i moj reènik i zapoèni novi."
 
-#: squirrelmail/plugins/squirrelspell/sqspell_functions.php:379
 msgid "Decrypt my dictionary with my old password:"
 msgstr "De¹ifruj moj reènik s mojom starom ¹ifrom:"
 
-#: squirrelmail/plugins/squirrelspell/sqspell_functions.php:383
 msgid "Proceed"
 msgstr "Nastavi"
 
-#: squirrelmail/plugins/squirrelspell/sqspell_functions.php:389
 msgid "You must make a choice"
 msgstr "Morate se odluèiti"
 
-#: squirrelmail/plugins/squirrelspell/sqspell_functions.php:390
 msgid ""
 "You can either delete your dictionary or type in the old password. Not both."
 msgstr "Mo¾ete ili obrisati stari reènik ili ukucati staru ¹ifru. Ne oba."
 
-#: squirrelmail/plugins/squirrelspell/sqspell_functions.php:391
 msgid "This will delete your personal dictionary file. Proceed?"
 msgstr "Ovo æe izbrisati va¹ lièni reènik. Nastavljam?"
 
-#: squirrelmail/plugins/squirrelspell/sqspell_functions.php:400
-#: squirrelmail/plugins/squirrelspell/sqspell_functions.php:403
 msgid "Error Decrypting Dictionary"
 msgstr "Gre¹ka pri dekodiranju reènika"
 
-#: squirrelmail/plugins/squirrelspell/sqspell_functions.php:523
 msgid "Cute."
 msgstr "Fino."
 
-#: squirrelmail/plugins/squirrelspell/modules/check_me.mod:117
 #, c-format
 msgid "I tried to execute '%s', but it returned:"
 msgstr "Poku¹ao sam da izvr¹im '%s' ali je vraceno:"
 
-#: squirrelmail/plugins/squirrelspell/modules/check_me.mod:123
 msgid "SquirrelSpell is misconfigured."
 msgstr "Squrrel Provera pravopisa je posgre¹no konfigurisana."
 
-#: squirrelmail/plugins/squirrelspell/modules/check_me.mod:213
 msgid "SquirrelSpell Results"
 msgstr "Rezultati provere pravopisa"
 
-#: squirrelmail/plugins/squirrelspell/modules/check_me.mod:273
 msgid "Spellcheck completed. Commit changes?"
 msgstr "Provera je zavr¹ena. Izvr¹iti promene?"
 
-#: squirrelmail/plugins/squirrelspell/modules/check_me.mod:275
 msgid "No changes were made."
 msgstr "Nije bilo promena."
 
-#: squirrelmail/plugins/squirrelspell/modules/check_me.mod:277
 msgid "Now saving your personal dictionary... Please wait."
 msgstr "Snimam va¹ lièni reènik... Molim saèekajte."
 
-#: squirrelmail/plugins/squirrelspell/modules/check_me.mod:298
 #, c-format
 msgid "Found %s errors"
 msgstr "Na¹ao %s gre¹aka"
 
-#: squirrelmail/plugins/squirrelspell/modules/check_me.mod:319
 msgid "Line with an error:"
 msgstr "Linija s gre¹kom:"
 
-#: squirrelmail/plugins/squirrelspell/modules/check_me.mod:329
 msgid "Error:"
 msgstr "Gre¹ka:"
 
-#: squirrelmail/plugins/squirrelspell/modules/check_me.mod:338
 msgid "Suggestions:"
 msgstr "Predlozi:"
 
-#: squirrelmail/plugins/squirrelspell/modules/check_me.mod:345
 msgid "Suggestions"
 msgstr "Predlozi"
 
-#: squirrelmail/plugins/squirrelspell/modules/check_me.mod:353
 msgid "Change to:"
 msgstr "Promeni u:"
 
-#: squirrelmail/plugins/squirrelspell/modules/check_me.mod:362
 msgid "Occurs times:"
 msgstr "Pojavljuje se puta:"
 
-#: squirrelmail/plugins/squirrelspell/modules/check_me.mod:379
 msgid "Change this word"
 msgstr "Promeni ovu rec"
 
-#: squirrelmail/plugins/squirrelspell/modules/check_me.mod:380
 msgid "Change"
 msgstr "Promeni"
 
-#: squirrelmail/plugins/squirrelspell/modules/check_me.mod:382
 msgid "Change ALL occurances of this word"
 msgstr "Promeni SVA pojavljivanja ove reèi"
 
-#: squirrelmail/plugins/squirrelspell/modules/check_me.mod:383
 msgid "Change All"
 msgstr "Promeni Sve"
 
-#: squirrelmail/plugins/squirrelspell/modules/check_me.mod:385
 msgid "Ignore this word"
 msgstr "Ignori¹i reè"
 
-#: squirrelmail/plugins/squirrelspell/modules/check_me.mod:386
 msgid "Ignore"
 msgstr "Ignori¹i"
 
-#: squirrelmail/plugins/squirrelspell/modules/check_me.mod:388
 msgid "Ignore ALL occurances this word"
 msgstr "Ignori¹i SVA pojavljivanja ove reèi"
 
-#: squirrelmail/plugins/squirrelspell/modules/check_me.mod:389
 msgid "Ignore All"
 msgstr "Ignori¹i sve"
 
-#: squirrelmail/plugins/squirrelspell/modules/check_me.mod:391
 msgid "Add this word to your personal dictionary"
 msgstr "Dodaj ovu reè u lièni reènik."
 
-#: squirrelmail/plugins/squirrelspell/modules/check_me.mod:392
 msgid "Add to Dic"
 msgstr "Dodaj u reènik"
 
-#: squirrelmail/plugins/squirrelspell/modules/check_me.mod:405
 msgid "Close and Commit"
 msgstr "Zatvori i zapamti"
 
-#: squirrelmail/plugins/squirrelspell/modules/check_me.mod:407
 msgid "The spellcheck is not finished. Really close and commit changes?"
 msgstr "Provera nije zavr¹ena. Zaista da zatvorim i zapamtim promene?"
 
-#: squirrelmail/plugins/squirrelspell/modules/check_me.mod:410
 msgid "Close and Cancel"
 msgstr "Zatvori i otka¾i"
 
-#: squirrelmail/plugins/squirrelspell/modules/check_me.mod:412
 msgid "The spellcheck is not finished. Really close and discard changes?"
 msgstr "Provera nije zavr¹ena. Da zaista zatvorim i ignori¹em promene?"
 
-#: squirrelmail/plugins/squirrelspell/modules/check_me.mod:431
 msgid "No errors found"
 msgstr "Nema gre¹aka"
 
-#: squirrelmail/plugins/squirrelspell/modules/crypto_badkey.mod:39
 msgid "Your personal dictionary was erased."
 msgstr "Va¹ lièni reènik je obrisan."
 
-#: squirrelmail/plugins/squirrelspell/modules/crypto_badkey.mod:40
-#: squirrelmail/plugins/squirrelspell/modules/crypto_badkey.mod:53
 msgid "Dictionary Erased"
 msgstr "Reènik izbrisan."
 
-#: squirrelmail/plugins/squirrelspell/modules/crypto_badkey.mod:47
 msgid ""
 "Your personal dictionary was erased. Please close this window and click "
 "\"Check Spelling\" button again to start your spellcheck over."
@@ -2841,12 +2009,9 @@ msgstr ""
 "Va¹ lièni reènik je obrisan. Molim zatvorite ovaj prozor i kliknite na "
 "\"Proveri pravopis\", za ponovno proveravanje."
 
-#: squirrelmail/plugins/squirrelspell/modules/crypto_badkey.mod:51
-#: squirrelmail/plugins/squirrelspell/modules/crypto_badkey.mod:83
 msgid "Close this Window"
 msgstr "Zatvori prozor"
 
-#: squirrelmail/plugins/squirrelspell/modules/crypto_badkey.mod:76
 msgid ""
 "Your personal dictionary was re-encrypted successfully. Now return to the "
 "&quot;SpellChecker options&quot; menu and make your selection again."
@@ -2854,11 +2019,9 @@ msgstr ""
 "Va¹ lièni reènik je uspe¹no ponovo kriptovan. Vratite se na meni &quot;"
 "Opcije pravopisa&quot; i ponovo izaberite."
 
-#: squirrelmail/plugins/squirrelspell/modules/crypto_badkey.mod:78
 msgid "Successful Re-encryption"
 msgstr "Uspe¹no ponovno kriptovanje"
 
-#: squirrelmail/plugins/squirrelspell/modules/crypto_badkey.mod:81
 msgid ""
 "Your personal dictionary was re-encrypted successfully. Please close this "
 "window and click \"Check Spelling\" button again to start your spellcheck "
@@ -2867,11 +2030,9 @@ msgstr ""
 "Va¹ lièni reènik je uspe¹no ponovo kriptovan. Vratite se na meni &quot;"
 "Proveri pravopis&quot; za novu proveru "
 
-#: squirrelmail/plugins/squirrelspell/modules/crypto_badkey.mod:85
 msgid "Dictionary re-encrypted"
 msgstr "Reènik je ponovo kriptovan."
 
-#: squirrelmail/plugins/squirrelspell/modules/crypto.mod:42
 msgid ""
 "Your personal dictionary has been <strong>encrypted</strong> and is now "
 "stored in an <strong>encrypted format</strong>."
@@ -2879,7 +2040,6 @@ msgstr ""
 "Va¹ lièni reènik je <strong>kriptovan</strong> i sada je snimljen u "
 "<strong>kriptiranom formatu</strong>."
 
-#: squirrelmail/plugins/squirrelspell/modules/crypto.mod:57
 msgid ""
 "Your personal dictionary has been <strong>decrypted</strong> and is now "
 "stored as <strong>clear text</strong>."
@@ -2887,50 +2047,37 @@ msgstr ""
 "Va¹ lièni reènik je <strong>dekriptovan</strong> i sada je saèuvan kao "
 "<strong>èist tekst</strong>."
 
-#: squirrelmail/plugins/squirrelspell/modules/crypto.mod:68
-#: squirrelmail/plugins/squirrelspell/modules/enc_setup.mod:76
 msgid "Personal Dictionary Crypto Settings"
 msgstr "Kriptografska pode¹avanja liènog reènika"
 
-#: squirrelmail/plugins/squirrelspell/modules/edit_dic.mod:28
-#: squirrelmail/plugins/squirrelspell/modules/forget_me.mod:81
 msgid "Personal Dictionary"
 msgstr "Lièni Reènik"
 
-#: squirrelmail/plugins/squirrelspell/modules/edit_dic.mod:29
-#: squirrelmail/plugins/squirrelspell/modules/edit_dic.mod:99
 msgid "No words in your personal dictionary."
 msgstr "U va¹em liènom reèniku nema reèi."
 
-#: squirrelmail/plugins/squirrelspell/modules/edit_dic.mod:36
 msgid "Please check any words you wish to delete from your dictionary."
 msgstr "Molim obele¾ite reèi koje ¾elite da izbri¹ete iz va¹eg reènika."
 
-#: squirrelmail/plugins/squirrelspell/modules/edit_dic.mod:58
 #, c-format
 msgid "%s dictionary"
 msgstr "%s reènik"
 
-#: squirrelmail/plugins/squirrelspell/modules/edit_dic.mod:89
 msgid "Delete checked words"
 msgstr "Obri¹i izabrane reèi"
 
-#: squirrelmail/plugins/squirrelspell/modules/edit_dic.mod:103
 msgid "Edit your Personal Dictionary"
 msgstr "Promenite va¹ lièni reènik"
 
-#: squirrelmail/plugins/squirrelspell/modules/enc_setup.mod:25
 msgid "Please make your selection first."
 msgstr "Molim, prvo izaberite."
 
-#: squirrelmail/plugins/squirrelspell/modules/enc_setup.mod:27
 msgid ""
 "This will encrypt your personal dictionary and store it in an encrypted "
 "format. Proceed?"
 msgstr ""
 "Ovo æe kriptovati va¹ reènik i snimiti ga u kriptovanom formatu. Nastavljam?"
 
-#: squirrelmail/plugins/squirrelspell/modules/enc_setup.mod:30
 msgid ""
 "This will decrypt your personal dictionary and store it in a clear-text "
 "format. Proceed?"
@@ -2938,7 +2085,6 @@ msgstr ""
 "Ovo æe dekriptovati va¹ reènik i snimiti ga u tekstualnom formatu. "
 "Nastavljam?"
 
-#: squirrelmail/plugins/squirrelspell/modules/enc_setup.mod:47
 msgid ""
 "<p>Your personal dictionary is <strong>currently encrypted</strong>. This "
 "helps protect your privacy in case the web-mail system gets compromized and "
@@ -2959,17 +2105,13 @@ msgstr ""
 "promenite va¹u ¹ifru, program æe prepoznati i tra¾iæe va¹ stari password za "
 "dekripciju nakon èega æe kriptovati reènik novom ¹ifrom.</p>"
 
-#: squirrelmail/plugins/squirrelspell/modules/enc_setup.mod:52
 msgid ""
 "Please decrypt my personal dictionary and store it in a clear-text format."
 msgstr "Molim dekriptuj moj reènik i snimi ga u obliku èistog teksta."
 
-#: squirrelmail/plugins/squirrelspell/modules/enc_setup.mod:55
-#: squirrelmail/plugins/squirrelspell/modules/enc_setup.mod:73
 msgid "Change crypto settings"
 msgstr "Promeni  kriptografska pode¹avanja"
 
-#: squirrelmail/plugins/squirrelspell/modules/enc_setup.mod:65
 msgid ""
 "<p>Your personal dictionary is <strong>currently not encrypted</strong>. You "
 "may wish to encrypt your personal dictionary to protect your privacy in case "
@@ -2996,50 +2138,38 @@ msgstr ""
 "va¹u staru ¹ifru da biste dekriptovali reènik koji æe nakon toga biti ponovo "
 "enkriptovan s novom ¹ifrom.</p>"
 
-#: squirrelmail/plugins/squirrelspell/modules/enc_setup.mod:70
 msgid ""
 "Please encrypt my personal dictionary and store it in an encrypted format."
 msgstr "Molim kriptuj moj lièni reènik i snimi ga u kriptovanoj formi."
 
-#: squirrelmail/plugins/squirrelspell/modules/forget_me.mod:32
 #, c-format
 msgid "Deleting the following entries from <strong>%s</strong> dictionary:"
 msgstr "Brisanje slede¾ih unosa iz <strong>%s</strong> reènika:"
 
-#: squirrelmail/plugins/squirrelspell/modules/forget_me.mod:75
 msgid "All done!"
 msgstr "Zavr¹eno!"
 
-#: squirrelmail/plugins/squirrelspell/modules/forget_me.mod:76
-#: squirrelmail/plugins/squirrelspell/modules/forget_me_not.mod:75
 msgid "Personal Dictionary Updated"
 msgstr "Lièni reènik a¾uriran"
 
-#: squirrelmail/plugins/squirrelspell/modules/forget_me.mod:82
 msgid "No changes requested."
 msgstr "Nije bilo zahteva za promenom."
 
-#: squirrelmail/plugins/squirrelspell/modules/init.mod:33
 msgid "Please wait, communicating with the server..."
 msgstr "Molim saèekajte, komuniciram sa serverom..."
 
-#: squirrelmail/plugins/squirrelspell/modules/init.mod:42
 msgid ""
 "Please choose which dictionary you would like to use to spellcheck this "
 "message:"
 msgstr ""
 "Molim izaberite kojim reènikom æete proveravati pravopis u ovoj poruci:"
 
-#: squirrelmail/plugins/calendar/calendar.php:131
-#: squirrelmail/plugins/squirrelspell/modules/init.mod:53
 msgid "Go"
 msgstr "Kreni"
 
-#: squirrelmail/plugins/squirrelspell/modules/init.mod:57
 msgid "SquirrelSpell Initiating"
 msgstr "Inicializacija provere pravopisa"
 
-#: squirrelmail/plugins/squirrelspell/modules/lang_change.mod:76
 #, c-format
 msgid ""
 "Settings adjusted to: <strong>%s</strong> with <strong>%s</strong> as "
@@ -3048,16 +2178,13 @@ msgstr ""
 "Pode¹avanja name¹tena na:<strong>%s</strong> sa <strong>%s</strong> kao "
 "glavnim reènikom."
 
-#: squirrelmail/plugins/squirrelspell/modules/lang_change.mod:83
 #, c-format
 msgid "Using <strong>%s</strong> dictionary (system default) for spellcheck."
 msgstr "Upotrbljen <strong>%s</strong> reènik (sistemski glavni) za proveru."
 
-#: squirrelmail/plugins/squirrelspell/modules/lang_change.mod:94
 msgid "International Dictionaries Preferences Updated"
 msgstr "Pode¹avanje meðunarodnih reènika a¾urirano"
 
-#: squirrelmail/plugins/squirrelspell/modules/lang_setup.mod:22
 msgid ""
 "Please check any available international dictionaries which you would like "
 "to use when spellchecking:"
@@ -3065,70 +2192,53 @@ msgstr ""
 "Molim oznaèite sve raspolo¾ive reènike koje biste voleli da koristite "
 "prilikom provere pravopisa:"
 
-#: squirrelmail/plugins/squirrelspell/modules/lang_setup.mod:32
 msgid "Make this dictionary my default selection:"
 msgstr "Nek ovaj reènik bude glavni:"
 
-#: squirrelmail/plugins/squirrelspell/modules/lang_setup.mod:49
 msgid "Make these changes"
 msgstr "Napravi sledeæe promene"
 
-#: squirrelmail/plugins/squirrelspell/modules/lang_setup.mod:50
 msgid "Add International Dictionaries"
 msgstr "Dodaj meðunarodne reènike"
 
-#: squirrelmail/plugins/squirrelspell/modules/options_main.mod:19
 msgid "Please choose which options you wish to set up:"
 msgstr "Molim izaberite opcije koje  ¾elite promeniti:"
 
-#: squirrelmail/plugins/squirrelspell/modules/options_main.mod:23
 msgid "Edit your personal dictionary"
 msgstr "Promenite va¹ lièni reènik"
 
-#: squirrelmail/plugins/squirrelspell/modules/options_main.mod:30
 msgid "Set up international dictionaries"
 msgstr "Podesite meðunarodne reènike"
 
-#: squirrelmail/plugins/squirrelspell/modules/options_main.mod:40
-#: squirrelmail/plugins/squirrelspell/modules/options_main.mod:44
 msgid "Encrypt or decrypt your personal dictionary"
 msgstr "Kriptujte ili dekriptujte va¹ lièni reènik"
 
-#: squirrelmail/plugins/squirrelspell/modules/options_main.mod:45
 msgid "not available"
 msgstr "nije dostupan"
 
-#: squirrelmail/plugins/squirrelspell/modules/options_main.mod:48
 msgid "SquirrelSpell Options Menu"
 msgstr "Opcije Provere Pravopisa"
 
-#: squirrelmail/plugins/translate/options.php:94
 msgid "Translator"
 msgstr "Prevodilac"
 
-#: squirrelmail/plugins/translate/options.php:98
 msgid "Saved Translation Options"
 msgstr "Snimljene opcije za prevoðenje"
 
-#: squirrelmail/plugins/translate/options.php:101
 msgid "Your server options are as follows:"
 msgstr "Opcije va¹eg servera su sledeæe:"
 
-#: squirrelmail/plugins/translate/options.php:106
 msgid ""
 "13 language pairs, maximum of 1000 characters translated, powered by Systran"
 msgstr "13 jezièkih parova, najvi¹e 1000 znakova prevedeno, prevodilac Systran"
 
-#: squirrelmail/plugins/translate/options.php:109
 msgid ""
 "10 language pairs, maximum of 25 kilobytes translated, powered by Systran"
 msgstr "10 jezièkih parova, najvi¹e 25kb prevoda, prevodilac Systran"
 
-#: squirrelmail/plugins/translate/options.php:112
 msgid "12 language pairs, no known limits, powered by Systran"
 msgstr "12 jezièkih parova, bez poznatih ogranièenja, prevodilac Systran"
 
-#: squirrelmail/plugins/translate/options.php:115
 msgid ""
 "767 language pairs, no known limits, powered by Translation Experts's "
 "InterTran"
@@ -3136,14 +2246,12 @@ msgstr ""
 "767 jezièkih parova, bez poznatih ogranièenja, prevodilac Translation "
 "Expert'sInterTran"
 
-#: squirrelmail/plugins/translate/options.php:118
 msgid ""
 "8 language pairs, no known limits, powered by GPLTrans (free, open source)"
 msgstr ""
 "8 jezièkih parova, bez poznatih ogranièenja, prevodilac GPLTrans (besplatan, "
 "otvorenog koda)"
 
-#: squirrelmail/plugins/translate/options.php:124
 msgid ""
 "You also decide if you want the translation box displayed, and where it will "
 "be located."
@@ -3151,325 +2259,139 @@ msgstr ""
 "Odluèite se da li ¾elite prikazivanje prozora za prevoðenje, i gde æe biti "
 "postavljen"
 
-#: squirrelmail/plugins/translate/options.php:128
 msgid "Select your translator:"
 msgstr "Izberite va¹ prevodilac:"
 
-#: squirrelmail/plugins/translate/options.php:140
 msgid "When reading:"
 msgstr "Pri èitanju:"
 
-#: squirrelmail/plugins/translate/options.php:145
 msgid "Show translation box"
 msgstr "Prika¾i prozor za prevoðenje"
 
-#: squirrelmail/plugins/translate/options.php:147
 msgid "to the left"
 msgstr "levo"
 
-#: squirrelmail/plugins/translate/options.php:148
 msgid "in the center"
 msgstr "u sredini"
 
-#: squirrelmail/plugins/translate/options.php:149
 msgid "to the right"
 msgstr "desno"
 
-#: squirrelmail/plugins/translate/options.php:154
 msgid "Translate inside the SquirrelMail frames"
 msgstr "Prevodi unutar okvira SquirrelMail-a"
 
-#: squirrelmail/plugins/translate/options.php:157
 msgid "When composing:"
 msgstr "Pri pisanju poruke:"
 
-#: squirrelmail/plugins/translate/options.php:161
 msgid "Not yet functional, currently does nothing"
 msgstr "Jo¹ nije funkcionalan, trenutno ne radi ni¹ta"
 
-#: squirrelmail/plugins/translate/setup.php:104
 msgid "Translation Options"
 msgstr "Opcije za prevoðenje"
 
-#: squirrelmail/plugins/translate/setup.php:106
 msgid ""
 "Which translator should be used when you get messages in a different "
 "language?"
 msgstr ""
 "Koji prevodilac bi trebalo da se koristi kad dobijete poruku u drugom jeziku?"
 
-#: squirrelmail/plugins/translate/setup.php:230
-#: squirrelmail/plugins/translate/setup.php:234
-#: squirrelmail/plugins/translate/setup.php:238
-#: squirrelmail/plugins/translate/setup.php:242
-#: squirrelmail/plugins/translate/setup.php:246
-#: squirrelmail/plugins/translate/setup.php:250
-#: squirrelmail/plugins/translate/setup.php:254
-#: squirrelmail/plugins/translate/setup.php:258
-#: squirrelmail/plugins/translate/setup.php:262
-#: squirrelmail/plugins/translate/setup.php:266
-#: squirrelmail/plugins/translate/setup.php:270
-#: squirrelmail/plugins/translate/setup.php:274
-#: squirrelmail/plugins/translate/setup.php:278
-#: squirrelmail/plugins/translate/setup.php:293
-#: squirrelmail/plugins/translate/setup.php:297
-#: squirrelmail/plugins/translate/setup.php:301
-#: squirrelmail/plugins/translate/setup.php:305
-#: squirrelmail/plugins/translate/setup.php:309
-#: squirrelmail/plugins/translate/setup.php:313
-#: squirrelmail/plugins/translate/setup.php:317
-#: squirrelmail/plugins/translate/setup.php:321
-#: squirrelmail/plugins/translate/setup.php:325
-#: squirrelmail/plugins/translate/setup.php:329
-#: squirrelmail/plugins/translate/setup.php:404
-#: squirrelmail/plugins/translate/setup.php:437
-#: squirrelmail/plugins/translate/setup.php:441
-#: squirrelmail/plugins/translate/setup.php:445
-#: squirrelmail/plugins/translate/setup.php:449
-#: squirrelmail/plugins/translate/setup.php:453
-#: squirrelmail/plugins/translate/setup.php:457
-#: squirrelmail/plugins/translate/setup.php:461
-#: squirrelmail/plugins/translate/setup.php:465
-#: squirrelmail/plugins/translate/setup.php:469
-#: squirrelmail/plugins/translate/setup.php:473
-#: squirrelmail/plugins/translate/setup.php:477
-#: squirrelmail/plugins/translate/setup.php:481
 #, c-format
 msgid "%s to %s"
 msgstr "%s u %s"
 
-#: squirrelmail/plugins/translate/setup.php:231
-#: squirrelmail/plugins/translate/setup.php:235
-#: squirrelmail/plugins/translate/setup.php:239
-#: squirrelmail/plugins/translate/setup.php:243
-#: squirrelmail/plugins/translate/setup.php:247
-#: squirrelmail/plugins/translate/setup.php:252
-#: squirrelmail/plugins/translate/setup.php:256
-#: squirrelmail/plugins/translate/setup.php:260
-#: squirrelmail/plugins/translate/setup.php:264
-#: squirrelmail/plugins/translate/setup.php:268
-#: squirrelmail/plugins/translate/setup.php:280
-#: squirrelmail/plugins/translate/setup.php:294
-#: squirrelmail/plugins/translate/setup.php:298
-#: squirrelmail/plugins/translate/setup.php:302
-#: squirrelmail/plugins/translate/setup.php:306
-#: squirrelmail/plugins/translate/setup.php:310
-#: squirrelmail/plugins/translate/setup.php:315
-#: squirrelmail/plugins/translate/setup.php:319
-#: squirrelmail/plugins/translate/setup.php:323
-#: squirrelmail/plugins/translate/setup.php:327
-#: squirrelmail/plugins/translate/setup.php:331
-#: squirrelmail/plugins/translate/setup.php:352
-#: squirrelmail/plugins/translate/setup.php:382
-#: squirrelmail/plugins/translate/setup.php:438
-#: squirrelmail/plugins/translate/setup.php:442
-#: squirrelmail/plugins/translate/setup.php:446
-#: squirrelmail/plugins/translate/setup.php:450
-#: squirrelmail/plugins/translate/setup.php:454
-#: squirrelmail/plugins/translate/setup.php:459
-#: squirrelmail/plugins/translate/setup.php:471
-#: squirrelmail/plugins/translate/setup.php:475
-#: squirrelmail/plugins/translate/setup.php:479
-#: squirrelmail/plugins/translate/setup.php:483
 msgid "English"
 msgstr "Engleski"
 
-#: squirrelmail/plugins/translate/setup.php:232
-#: squirrelmail/plugins/translate/setup.php:251
-#: squirrelmail/plugins/translate/setup.php:272
-#: squirrelmail/plugins/translate/setup.php:275
-#: squirrelmail/plugins/translate/setup.php:299
-#: squirrelmail/plugins/translate/setup.php:318
-#: squirrelmail/plugins/translate/setup.php:355
-#: squirrelmail/plugins/translate/setup.php:385
-#: squirrelmail/plugins/translate/setup.php:417
-#: squirrelmail/plugins/translate/setup.php:439
-#: squirrelmail/plugins/translate/setup.php:458
-#: squirrelmail/plugins/translate/setup.php:462
-#: squirrelmail/plugins/translate/setup.php:467
 msgid "French"
 msgstr "Francuski"
 
-#: squirrelmail/plugins/translate/setup.php:236
-#: squirrelmail/plugins/translate/setup.php:255
-#: squirrelmail/plugins/translate/setup.php:271
-#: squirrelmail/plugins/translate/setup.php:276
-#: squirrelmail/plugins/translate/setup.php:303
-#: squirrelmail/plugins/translate/setup.php:322
-#: squirrelmail/plugins/translate/setup.php:356
-#: squirrelmail/plugins/translate/setup.php:386
-#: squirrelmail/plugins/translate/setup.php:418
-#: squirrelmail/plugins/translate/setup.php:443
-#: squirrelmail/plugins/translate/setup.php:463
-#: squirrelmail/plugins/translate/setup.php:466
-#: squirrelmail/plugins/translate/setup.php:470
 msgid "German"
 msgstr "Nemaèki"
 
-#: squirrelmail/plugins/translate/setup.php:240
-#: squirrelmail/plugins/translate/setup.php:259
-#: squirrelmail/plugins/translate/setup.php:307
-#: squirrelmail/plugins/translate/setup.php:326
-#: squirrelmail/plugins/translate/setup.php:360
-#: squirrelmail/plugins/translate/setup.php:390
-#: squirrelmail/plugins/translate/setup.php:420
-#: squirrelmail/plugins/translate/setup.php:447
-#: squirrelmail/plugins/translate/setup.php:474
 msgid "Italian"
 msgstr "Italijanski"
 
-#: squirrelmail/plugins/translate/setup.php:244
-#: squirrelmail/plugins/translate/setup.php:263
-#: squirrelmail/plugins/translate/setup.php:311
-#: squirrelmail/plugins/translate/setup.php:330
-#: squirrelmail/plugins/translate/setup.php:365
-#: squirrelmail/plugins/translate/setup.php:395
-#: squirrelmail/plugins/translate/setup.php:422
-#: squirrelmail/plugins/translate/setup.php:451
-#: squirrelmail/plugins/translate/setup.php:478
 msgid "Portuguese"
 msgstr "Portugalski"
 
-#: squirrelmail/plugins/translate/setup.php:248
-#: squirrelmail/plugins/translate/setup.php:267
-#: squirrelmail/plugins/translate/setup.php:295
-#: squirrelmail/plugins/translate/setup.php:314
-#: squirrelmail/plugins/translate/setup.php:370
-#: squirrelmail/plugins/translate/setup.php:400
-#: squirrelmail/plugins/translate/setup.php:423
-#: squirrelmail/plugins/translate/setup.php:455
-#: squirrelmail/plugins/translate/setup.php:482
 msgid "Spanish"
 msgstr "©panski"
 
-#: squirrelmail/plugins/translate/setup.php:279
-#: squirrelmail/plugins/translate/setup.php:367
-#: squirrelmail/plugins/translate/setup.php:397
 msgid "Russian"
 msgstr "Ruski"
 
-#: squirrelmail/plugins/translate/setup.php:282
-#: squirrelmail/plugins/translate/setup.php:334
-#: squirrelmail/plugins/translate/setup.php:405
-#: squirrelmail/plugins/translate/setup.php:426
-#: squirrelmail/plugins/translate/setup.php:485
 msgid "Translate"
 msgstr "Prevedi"
 
-#: squirrelmail/plugins/translate/setup.php:346
-#: squirrelmail/plugins/translate/setup.php:376
 msgid "Brazilian Portuguese"
 msgstr "Brazilsko-portugalski"
 
-#: squirrelmail/plugins/translate/setup.php:347
-#: squirrelmail/plugins/translate/setup.php:377
 msgid "Bulgarian"
 msgstr "Bugarski"
 
-#: squirrelmail/plugins/translate/setup.php:348
-#: squirrelmail/plugins/translate/setup.php:378
 msgid "Croatian"
 msgstr "Hrvatski"
 
-#: squirrelmail/plugins/translate/setup.php:349
-#: squirrelmail/plugins/translate/setup.php:379
 msgid "Czech"
 msgstr "Èe¹ki"
 
-#: squirrelmail/plugins/translate/setup.php:350
-#: squirrelmail/plugins/translate/setup.php:380
 msgid "Danish"
 msgstr "Danski"
 
-#: squirrelmail/plugins/translate/setup.php:351
-#: squirrelmail/plugins/translate/setup.php:381
-#: squirrelmail/plugins/translate/setup.php:416
 msgid "Dutch"
 msgstr "Holandski"
 
-#: squirrelmail/plugins/translate/setup.php:353
-#: squirrelmail/plugins/translate/setup.php:383
 msgid "European Spanish"
 msgstr "Evropski ¹panski"
 
-#: squirrelmail/plugins/translate/setup.php:354
-#: squirrelmail/plugins/translate/setup.php:384
 msgid "Finnish"
 msgstr "Finski"
 
-#: squirrelmail/plugins/translate/setup.php:357
-#: squirrelmail/plugins/translate/setup.php:387
 msgid "Greek"
 msgstr "Gr¹ki"
 
-#: squirrelmail/plugins/translate/setup.php:358
-#: squirrelmail/plugins/translate/setup.php:388
 msgid "Hungarian"
 msgstr "Maðarski"
 
-#: squirrelmail/plugins/translate/setup.php:359
-#: squirrelmail/plugins/translate/setup.php:389
 msgid "Icelandic"
 msgstr "Islandski"
 
-#: squirrelmail/plugins/translate/setup.php:361
-#: squirrelmail/plugins/translate/setup.php:391
 msgid "Japanese"
 msgstr "Japanski"
 
-#: squirrelmail/plugins/translate/setup.php:362
-#: squirrelmail/plugins/translate/setup.php:392
 msgid "Latin American Spanish"
 msgstr "Latino ameri¹ki ¹panski"
 
-#: squirrelmail/plugins/translate/setup.php:363
-#: squirrelmail/plugins/translate/setup.php:393
 msgid "Norwegian"
 msgstr "Norve¹ki"
 
-#: squirrelmail/plugins/translate/setup.php:364
-#: squirrelmail/plugins/translate/setup.php:394
 msgid "Polish"
 msgstr "Poljski"
 
-#: squirrelmail/plugins/translate/setup.php:366
-#: squirrelmail/plugins/translate/setup.php:396
 msgid "Romanian"
 msgstr "Rumunski"
 
-#: squirrelmail/plugins/translate/setup.php:368
-#: squirrelmail/plugins/translate/setup.php:398
 msgid "Serbian"
 msgstr "Srpski"
 
-#: squirrelmail/plugins/translate/setup.php:369
-#: squirrelmail/plugins/translate/setup.php:399
 msgid "Slovenian"
 msgstr "Slovenaèki"
 
-#: squirrelmail/plugins/translate/setup.php:371
-#: squirrelmail/plugins/translate/setup.php:401
 msgid "Swedish"
 msgstr "©vedski"
 
-#: squirrelmail/plugins/translate/setup.php:372
-#: squirrelmail/plugins/translate/setup.php:402
 msgid "Welsh"
 msgstr "Vel¹ki"
 
-#: squirrelmail/plugins/translate/setup.php:419
 msgid "Indonesian"
 msgstr "Indone¾anski"
 
-#: squirrelmail/plugins/translate/setup.php:421
 msgid "Latin"
 msgstr "Latinski"
 
-#: squirrelmail/plugins/newmail/newmail_opt.php:37
 msgid "New Mail Notification"
 msgstr "Obve¹tenje o novoj po¹ti"
 
-#: squirrelmail/plugins/newmail/newmail_opt.php:41
 msgid ""
 "Select <b>Enable Media Playing</b> to turn on playing a media file when "
 "unseen mail is in your folders. When enabled, you can specify the media file "
@@ -3479,7 +2401,6 @@ msgstr ""
 "audio fajl kad vam stigne nova po¹ta u va¹ direktorijum. Kada je ukljuèeno, "
 "mo¾ete odrediti koji media fajl ¾elite da bude pu¹tan."
 
-#: squirrelmail/plugins/newmail/newmail_opt.php:45
 msgid ""
 "The <b>Check all boxes, not just INBOX</b> option will check ALL of your "
 "folders for unseen mail, not just the inbox for notification."
@@ -3487,7 +2408,6 @@ msgstr ""
 "Opcija <b>Proveri sve direktorijume, a ne samo INBOX</b> æe proveriti sve "
 "va¹e direktorijumea ne samo po¹tu koja sti¾e u inbox."
 
-#: squirrelmail/plugins/newmail/newmail_opt.php:47
 msgid ""
 "Selecting the <b>Show popup</b> option will enable the showing of a popup "
 "window when unseen mail is in your folders (requires JavaScript)."
@@ -3495,7 +2415,6 @@ msgstr ""
 "Izborom opcije <b>Poka¾i obave¹tenje</b>, pojaviæe se prozor pri dolasku "
 "nove po¹te koje æe vas obavestiti da je po¹tsa stigla. (zahteva JavaScript)."
 
-#: squirrelmail/plugins/newmail/newmail_opt.php:49
 msgid ""
 "Use the <b>Check RECENT</b> to only check for messages that are recent. "
 "Recent messages are those that have just recently showed up and have not "
@@ -3507,7 +2426,6 @@ msgstr ""
 "ali nisu jos proverene i onznaèene kao proèitane. Ovo mo¾e spreèiti "
 "nervirajuæe pop'up proyore i zvuke upozorenja za po¹tu koja nije pregledana. "
 
-#: squirrelmail/plugins/newmail/newmail_opt.php:51
 msgid ""
 "Selecting the <b>Change title</b> option will change the title in some "
 "browsers to let you know when you have new mail (requires JavaScript, and "
@@ -3522,7 +2440,6 @@ msgstr ""
 "server na vreme obavesti o prispeæu nove po¹te. Rad èak i kada vam je "
 "ukljuèena opcija  <b>Proveri NEDAVNE</b> "
 
-#: squirrelmail/plugins/newmail/newmail_opt.php:55
 msgid ""
 "Select from the list of <b>server files</b> the media file to play when new "
 "mail arrives.  Selecting <b>local media</b> will play the file specified in "
@@ -3535,68 +2452,51 @@ msgstr ""
 "raèunaru. Ukoliko nij enijedan fajl izabran, sistem æe koristiti standardni "
 "sa servera. "
 
-#: squirrelmail/plugins/newmail/newmail_opt.php:67
 msgid "Enable Media Playing"
 msgstr "Ukljuèi pu¹tanje media fajlova"
 
-#: squirrelmail/plugins/newmail/newmail_opt.php:76
 msgid "Check all boxes, not just INBOX"
 msgstr "Proveri sve direktorijume, ne samo INBOX"
 
-#: squirrelmail/plugins/newmail/newmail_opt.php:84
 msgid "Count only messages that are RECENT"
 msgstr "Proveri samo NEDAVNO pristigle poruke "
 
-#: squirrelmail/plugins/newmail/newmail_opt.php:92
 msgid "Change title on supported browsers."
 msgstr "Promeni naslov prozora na browserima koji to podr¾avaju."
 
-#: squirrelmail/plugins/newmail/newmail_opt.php:92
-#: squirrelmail/plugins/newmail/newmail_opt.php:100
 msgid "requires JavaScript to work"
 msgstr "neophodan JavaScript da bi radilo"
 
-#: squirrelmail/plugins/newmail/newmail_opt.php:100
 msgid "Show popup window on new mail"
 msgstr "Prika¾i novi prozor pro prispeæu nove po¹te"
 
-#: squirrelmail/plugins/newmail/newmail_opt.php:104
 msgid "Select server file:"
 msgstr "Izberi datoteku na serveru:"
 
-#: squirrelmail/plugins/newmail/newmail_opt.php:106
 msgid "(local media)"
 msgstr "(lokalni media fajl)"
 
-#: squirrelmail/plugins/newmail/newmail_opt.php:123
 msgid "Try"
 msgstr "Isprobaj"
 
-#: squirrelmail/plugins/newmail/newmail_opt.php:131
 msgid "Local Media File:"
 msgstr "Lokalna media datoteka:"
 
-#: squirrelmail/plugins/newmail/newmail_opt.php:137
 msgid "Current File:"
 msgstr "Trenutna datoteka:"
 
-#: squirrelmail/plugins/newmail/newmail.php:20
 msgid "New Mail"
 msgstr "Nova po¹ta"
 
-#: squirrelmail/plugins/newmail/newmail.php:27
 msgid "SquirrelMail Notice:"
 msgstr "SquirrelMail Obave¹tenje:"
 
-#: squirrelmail/plugins/newmail/newmail.php:31
 msgid "You have new mail!"
 msgstr "Stigla vam je po¹ta!"
 
-#: squirrelmail/plugins/newmail/setup.php:78
 msgid "NewMail Options"
 msgstr "Opcije za novu po¹tu"
 
-#: squirrelmail/plugins/newmail/setup.php:80
 msgid ""
 "This configures settings for playing sounds and/or showing popup windows "
 "when new mail arrives."
@@ -3604,310 +2504,197 @@ msgstr ""
 "Ova opcija konfiguri¹e pu¹tanje media fajla i/ili otvaranje novih prozora "
 "pri stizanju nove po¹te."
 
-#: squirrelmail/plugins/newmail/setup.php:126
 msgid "New Mail Notification options saved"
 msgstr "Opcije za obave¹tavanje o prispeæu nove po¹te saèuvane"
 
-#: squirrelmail/plugins/newmail/setup.php:198
 #, c-format
 msgid "%s New Messages"
 msgstr "%s novih poruka"
 
-#: squirrelmail/plugins/newmail/setup.php:202
 #, c-format
 msgid "%s New Message"
 msgstr "%s nova poruka"
 
-#: squirrelmail/plugins/newmail/testsound.php:26
 msgid "Test Sound"
 msgstr "Test zvuk"
 
-#: squirrelmail/plugins/newmail/testsound.php:32
 msgid "Loading the sound..."
 msgstr "Uèitavam zvuk ..."
 
-#: squirrelmail/plugins/mail_fetch/class.POP3.php:79
-#: squirrelmail/plugins/mail_fetch/class.POP3.php:88
-#: squirrelmail/plugins/mail_fetch/class.POP3.php:100
 msgid "POP3 connect:"
 msgstr "POP3 povezivanje:"
 
-#: squirrelmail/plugins/mail_fetch/class.POP3.php:79
 msgid "No server specified"
 msgstr "Nije odreðen server"
 
-#: squirrelmail/plugins/mail_fetch/class.POP3.php:88
-#: squirrelmail/plugins/mail_fetch/class.POP3.php:100
-#: squirrelmail/plugins/mail_fetch/class.POP3.php:133
-#: squirrelmail/plugins/mail_fetch/class.POP3.php:256
-#: squirrelmail/plugins/mail_fetch/class.POP3.php:310
-#: squirrelmail/plugins/mail_fetch/class.POP3.php:321
-#: squirrelmail/plugins/mail_fetch/class.POP3.php:369
-#: squirrelmail/plugins/mail_fetch/class.POP3.php:402
-#: squirrelmail/plugins/mail_fetch/class.POP3.php:435
-#: squirrelmail/plugins/mail_fetch/class.POP3.php:534
-#: squirrelmail/plugins/mail_fetch/class.POP3.php:557
 msgid "Error "
 msgstr "Gre¹ka"
 
-#: squirrelmail/plugins/mail_fetch/class.POP3.php:112
 msgid "POP3 noop:"
 msgstr "POP3 noop:"
 
-#: squirrelmail/plugins/mail_fetch/class.POP3.php:112
-#: squirrelmail/plugins/mail_fetch/class.POP3.php:172
-#: squirrelmail/plugins/mail_fetch/class.POP3.php:215
-#: squirrelmail/plugins/mail_fetch/class.POP3.php:240
-#: squirrelmail/plugins/mail_fetch/class.POP3.php:282
-#: squirrelmail/plugins/mail_fetch/class.POP3.php:356
-#: squirrelmail/plugins/mail_fetch/class.POP3.php:395
-#: squirrelmail/plugins/mail_fetch/class.POP3.php:425
-#: squirrelmail/plugins/mail_fetch/class.POP3.php:459
-#: squirrelmail/plugins/mail_fetch/class.POP3.php:522
-#: squirrelmail/plugins/mail_fetch/class.POP3.php:590
 msgid "No connection to server"
 msgstr "Nema konekcije sa serverom"
 
-#: squirrelmail/plugins/mail_fetch/class.POP3.php:125
-#: squirrelmail/plugins/mail_fetch/class.POP3.php:128
-#: squirrelmail/plugins/mail_fetch/class.POP3.php:133
 msgid "POP3 user:"
 msgstr "POP3 korisnik:"
 
-#: squirrelmail/plugins/mail_fetch/class.POP3.php:125
 msgid "no login ID submitted"
 msgstr "nije prosleðeno ime za prijavljivanje"
 
-#: squirrelmail/plugins/mail_fetch/class.POP3.php:128
-#: squirrelmail/plugins/mail_fetch/class.POP3.php:148
 msgid "connection not established"
 msgstr "konekcija nije uspostavljena"
 
-#: squirrelmail/plugins/mail_fetch/class.POP3.php:145
-#: squirrelmail/plugins/mail_fetch/class.POP3.php:148
-#: squirrelmail/plugins/mail_fetch/class.POP3.php:153
 msgid "POP3 pass:"
 msgstr "POP3 ¹ifra:"
 
-#: squirrelmail/plugins/mail_fetch/class.POP3.php:145
-#: squirrelmail/plugins/mail_fetch/class.POP3.php:181
 msgid "No password submitted"
 msgstr "©ifra nije prosleðena:"
 
-#: squirrelmail/plugins/mail_fetch/class.POP3.php:153
 msgid "authentication failed "
 msgstr "Autentifikacija neuspe¹na"
 
-#: squirrelmail/plugins/mail_fetch/class.POP3.php:172
-#: squirrelmail/plugins/mail_fetch/class.POP3.php:178
-#: squirrelmail/plugins/mail_fetch/class.POP3.php:181
-#: squirrelmail/plugins/mail_fetch/class.POP3.php:186
-#: squirrelmail/plugins/mail_fetch/class.POP3.php:196
 msgid "POP3 apop:"
 msgstr "POP3 apop:"
 
-#: squirrelmail/plugins/mail_fetch/class.POP3.php:178
 msgid "No login ID submitted"
 msgstr "Nije prosleðeno ime za prijavljivanje"
 
-#: squirrelmail/plugins/mail_fetch/class.POP3.php:186
 msgid "No server banner"
 msgstr "No server banner"
 
-#: squirrelmail/plugins/mail_fetch/class.POP3.php:186
-#: squirrelmail/plugins/mail_fetch/class.POP3.php:196
 msgid "abort"
 msgstr "prekini"
 
-#: squirrelmail/plugins/mail_fetch/class.POP3.php:196
 msgid "apop authentication failed"
 msgstr "apop autentifikacija nije uspela"
 
-#: squirrelmail/plugins/mail_fetch/class.POP3.php:215
 msgid "POP3 login:"
 msgstr "POP3 prijava:"
 
-#: squirrelmail/plugins/mail_fetch/class.POP3.php:240
-#: squirrelmail/plugins/mail_fetch/class.POP3.php:256
 msgid "POP3 top:"
 msgstr "POP3 vrh:"
 
-#: squirrelmail/plugins/mail_fetch/class.POP3.php:282
-#: squirrelmail/plugins/mail_fetch/class.POP3.php:310
-#: squirrelmail/plugins/mail_fetch/class.POP3.php:321
-#: squirrelmail/plugins/mail_fetch/class.POP3.php:333
 msgid "POP3 pop_list:"
 msgstr "POP3 pop_lista:"
 
-#: squirrelmail/plugins/mail_fetch/class.POP3.php:333
 msgid "Premature end of list"
 msgstr "Preran zavr¹etak liste"
 
-#: squirrelmail/plugins/mail_fetch/class.POP3.php:356
-#: squirrelmail/plugins/mail_fetch/class.POP3.php:369
 msgid "POP3 get:"
 msgstr "POP3 je dobio:"
 
-#: squirrelmail/plugins/mail_fetch/class.POP3.php:395
-#: squirrelmail/plugins/mail_fetch/class.POP3.php:402
 msgid "POP3 last:"
 msgstr "POP3 poslednji:"
 
-#: squirrelmail/plugins/mail_fetch/class.POP3.php:425
-#: squirrelmail/plugins/mail_fetch/class.POP3.php:435
 msgid "POP3 reset:"
 msgstr "POP3 poni¹ti:"
 
-#: squirrelmail/plugins/mail_fetch/class.POP3.php:459
-#: squirrelmail/plugins/mail_fetch/class.POP3.php:465
 msgid "POP3 send_cmd:"
 msgstr "POP3 send_cmd:"
 
-#: squirrelmail/plugins/mail_fetch/class.POP3.php:465
 msgid "Empty command string"
 msgstr "Prazan komandni string"
 
-#: squirrelmail/plugins/mail_fetch/class.POP3.php:485
 msgid "POP3 quit:"
 msgstr "POP3 izlaz:"
 
-#: squirrelmail/plugins/mail_fetch/class.POP3.php:485
 msgid "connection does not exist"
 msgstr "konekcija ne postoji"
 
-#: squirrelmail/plugins/mail_fetch/class.POP3.php:522
-#: squirrelmail/plugins/mail_fetch/class.POP3.php:534
-#: squirrelmail/plugins/mail_fetch/class.POP3.php:557
 msgid "POP3 uidl:"
 msgstr "POP3 uidl:"
 
-#: squirrelmail/plugins/mail_fetch/class.POP3.php:590
-#: squirrelmail/plugins/mail_fetch/class.POP3.php:595
-#: squirrelmail/plugins/mail_fetch/class.POP3.php:601
 msgid "POP3 delete:"
 msgstr "POP3 bri¹i:"
 
-#: squirrelmail/plugins/mail_fetch/class.POP3.php:595
 msgid "No msg number submitted"
 msgstr "Nije prosleðen broj poruke "
 
-#: squirrelmail/plugins/mail_fetch/class.POP3.php:601
 msgid "Command failed "
 msgstr "Komanda neuspe¹na"
 
-#: squirrelmail/plugins/mail_fetch/fetch.php:137
 msgid "Remote POP server Fetching Mail"
 msgstr "Udaljeni POP server prenosi po¹tu"
 
-#: squirrelmail/plugins/mail_fetch/fetch.php:155
 msgid "Select Server:"
 msgstr "Izberite server:"
 
-#: squirrelmail/plugins/mail_fetch/fetch.php:185
 msgid "Password for"
 msgstr "©ifra za"
 
-#: squirrelmail/plugins/mail_fetch/fetch.php:199
 msgid "Fetch Mail"
 msgstr "Prenesi Po¹tu"
 
-#: squirrelmail/plugins/mail_fetch/fetch.php:265
 msgid "Fetching from "
 msgstr "Prenos sa "
 
-#: squirrelmail/plugins/mail_fetch/fetch.php:279
-#: squirrelmail/plugins/mail_fetch/fetch.php:399
 msgid "Oops, "
 msgstr "Oops, "
 
-#: squirrelmail/plugins/mail_fetch/fetch.php:287
 msgid "Opening IMAP server"
 msgstr "Kontaktiram IMAP server"
 
-#: squirrelmail/plugins/mail_fetch/fetch.php:293
 msgid "Opening POP server"
 msgstr "Kontaktiram POP server"
 
-#: squirrelmail/plugins/mail_fetch/fetch.php:299
-#: squirrelmail/plugins/mail_fetch/setup.php:134
 msgid "Login Failed:"
 msgstr "Prijava nije uspela:"
 
-#: squirrelmail/plugins/mail_fetch/fetch.php:333
 msgid "Login OK: No new messages"
 msgstr "Prijava uspela: Nema novih poruka"
 
-#: squirrelmail/plugins/mail_fetch/fetch.php:343
 msgid "Login OK: Inbox EMPTY"
 msgstr "Prijava uspela: Direktorijum INBOX prazan"
 
-#: squirrelmail/plugins/mail_fetch/fetch.php:353
 msgid "Login OK: Inbox contains ["
 msgstr "Prijava uspela: Direktorijum INBOX sadr¾i ["
 
-#: squirrelmail/plugins/mail_fetch/fetch.php:353
 msgid "] messages"
 msgstr "] poruka"
 
-#: squirrelmail/plugins/mail_fetch/fetch.php:359
 msgid "Fetching UIDL..."
 msgstr "Prenosim UIDL..."
 
-#: squirrelmail/plugins/mail_fetch/fetch.php:369
-#: squirrelmail/plugins/mail_fetch/setup.php:165
 msgid "Server does not support UIDL."
 msgstr "Server ne podr¾ava UIDL."
 
-#: squirrelmail/plugins/mail_fetch/fetch.php:375
 msgid "Leaving Mail on Server..."
 msgstr "Ostavljam po¹tu na serveru ..."
 
-#: squirrelmail/plugins/mail_fetch/fetch.php:379
 msgid "Deleting messages from server..."
 msgstr "Brisanje poruka sa servera..."
 
-#: squirrelmail/plugins/mail_fetch/fetch.php:387
 msgid "Fetching message "
 msgstr "Prenosim poruku"
 
-#: squirrelmail/plugins/mail_fetch/fetch.php:433
 msgid "Message appended to mailbox"
 msgstr "Poruka dodata u sanduèe"
 
-#: squirrelmail/plugins/mail_fetch/fetch.php:441
 msgid "Message "
 msgstr "Poruka "
 
-#: squirrelmail/plugins/mail_fetch/fetch.php:441
 msgid " deleted from Remote Server!"
 msgstr " obrisano sa udaljenog servera!"
 
-#: squirrelmail/plugins/mail_fetch/fetch.php:445
 msgid "Delete failed:"
 msgstr "Brisanje nije uspelo:"
 
-#: squirrelmail/plugins/mail_fetch/fetch.php:455
-#: squirrelmail/plugins/mail_fetch/setup.php:196
 msgid "Error Appending Message!"
 msgstr "Gre¹ka u dodavanju po¹te!"
 
-#: squirrelmail/plugins/mail_fetch/fetch.php:463
 msgid "Closing POP"
 msgstr "Zatvaram POP"
 
-#: squirrelmail/plugins/mail_fetch/fetch.php:467
 msgid "Logging out from IMAP"
 msgstr "Odjava sa IMAP-a"
 
-#: squirrelmail/plugins/mail_fetch/fetch.php:473
 msgid "Saving UIDL"
 msgstr "Snimam UIDL"
 
-#: squirrelmail/plugins/mail_fetch/options.php:159
 msgid "Remote POP server settings"
 msgstr "Pode¹avanje udaljenog POP servera"
 
-#: squirrelmail/plugins/mail_fetch/options.php:161
 msgid ""
 "You should be aware that the encryption used to store your password is not "
 "perfectly secure.  However, if you are using pop, there is inherently no "
@@ -3920,129 +2707,87 @@ msgstr ""
 "server se mo¾e razbiti od strane nekog hakera koji bi proèitao source kod za "
 "njen nastanak."
 
-#: squirrelmail/plugins/mail_fetch/options.php:163
 msgid "If you leave password empty, it will be required when you fetch mail."
 msgstr "Ako ostavite ¹ifru praznom, moraæete je uneti pri proveravanju po¹te "
 
-#: squirrelmail/plugins/mail_fetch/options.php:167
 msgid "Encrypt passwords (informative only)"
 msgstr "Kriptuj ¹ifre (samo informativno)"
 
-#: squirrelmail/plugins/mail_fetch/options.php:173
-#: squirrelmail/plugins/mail_fetch/options.php:201
 msgid "Add Server"
 msgstr "Dodaj server"
 
-#: squirrelmail/plugins/mail_fetch/options.php:177
-#: squirrelmail/plugins/mail_fetch/options.php:251
 msgid "Server:"
 msgstr "Server:"
 
-#: squirrelmail/plugins/mail_fetch/options.php:178
-#: squirrelmail/plugins/mail_fetch/options.php:253
 msgid "Port:"
 msgstr "Port:"
 
-#: squirrelmail/plugins/mail_fetch/options.php:179
-#: squirrelmail/plugins/mail_fetch/options.php:255
 msgid "Alias:"
 msgstr "Alias:"
 
-#: squirrelmail/plugins/mail_fetch/options.php:180
-#: squirrelmail/plugins/mail_fetch/options.php:257
 msgid "Username:"
 msgstr "Korisnièko ime:"
 
-#: squirrelmail/plugins/mail_fetch/options.php:182
-#: squirrelmail/plugins/mail_fetch/options.php:261
 msgid "Store in Folder:"
 msgstr "Snimi u direktorijum:"
 
-#: squirrelmail/plugins/mail_fetch/options.php:198
-#: squirrelmail/plugins/mail_fetch/options.php:281
 msgid "Leave Mail on Server"
 msgstr "Ostavi mail na serveru:"
 
-#: squirrelmail/plugins/mail_fetch/options.php:199
-#: squirrelmail/plugins/mail_fetch/options.php:283
 msgid "Check mail during login"
 msgstr "Proveri po¹tu u prilikom prijavljivanja"
 
-#: squirrelmail/plugins/mail_fetch/options.php:200
-#: squirrelmail/plugins/mail_fetch/options.php:285
 msgid "Check mail during folder refresh"
 msgstr "Proveri po¹tu prilikom osve¾avanja direktorijuma"
 
-#: squirrelmail/plugins/mail_fetch/options.php:207
-#: squirrelmail/plugins/mail_fetch/options.php:286
 msgid "Modify Server"
 msgstr "Promeni Server"
 
-#: squirrelmail/plugins/mail_fetch/options.php:211
 msgid "Server Name:"
 msgstr "Ime servera:"
 
-#: squirrelmail/plugins/mail_fetch/options.php:217
-#: squirrelmail/plugins/mail_fetch/options.php:240
 msgid "Modify"
 msgstr "Promeni"
 
-#: squirrelmail/plugins/mail_fetch/options.php:221
 msgid "No-one server in use. Try to add."
 msgstr "Nijedan server nije u upotrebi, Poku¹ajte dodati."
 
-#: squirrelmail/plugins/mail_fetch/options.php:227
-#: squirrelmail/plugins/mail_fetch/options.php:242
-#: squirrelmail/plugins/mail_fetch/options.php:291
 msgid "Fetching Servers"
 msgstr "Prenos sa servera."
 
-#: squirrelmail/plugins/mail_fetch/options.php:231
 msgid "Confirm Deletion of a Server"
 msgstr "Potvrdite brisanje servera"
 
-#: squirrelmail/plugins/mail_fetch/options.php:235
 msgid "Selected Server:"
 msgstr "Izabrani Server:"
 
-#: squirrelmail/plugins/mail_fetch/options.php:236
 msgid "Confirm delete of selected server?"
 msgstr "Potvrdite brisanje izabranog servera?"
 
-#: squirrelmail/plugins/mail_fetch/options.php:237
 msgid "Confirm Delete"
 msgstr "Potvrdi brisanje"
 
-#: squirrelmail/plugins/mail_fetch/options.php:246
 msgid "Mofify a Server"
 msgstr "Promeni server"
 
-#: squirrelmail/plugins/mail_fetch/options.php:294
 msgid "Undefined Function"
 msgstr "Nedefinisana funkcija"
 
-#: squirrelmail/plugins/mail_fetch/options.php:296
 msgid "Hey! Wath do You are looking for?"
 msgstr "Hej! ©ta tra¾i¹?"
 
-#: squirrelmail/plugins/mail_fetch/setup.php:29
 msgid "Fetch"
 msgstr "Prenesi"
 
-#: squirrelmail/plugins/mail_fetch/setup.php:126
-#: squirrelmail/plugins/mail_fetch/setup.php:173
 msgid "Warning, "
 msgstr "Upozorenje, "
 
-#: squirrelmail/plugins/mail_fetch/setup.php:209
 msgid "Mail Fetch Result:"
 msgstr "Rezultat prenosa po¹te:"
 
-#: squirrelmail/plugins/mail_fetch/setup.php:237
 msgid "Simple POP3 Fetch Mail"
 msgstr "Jednostavan POP3 prenos po¹te"
 
-#: squirrelmail/plugins/mail_fetch/setup.php:239
 msgid ""
 "This configures settings for downloading email from a pop3 mailbox to your "
 "account on this server."
@@ -4050,204 +2795,141 @@ msgstr ""
 "Ova opcija konfiguri¹e prenos po¹te sa pop3 mailboxa na va¹ nalog na ovom "
 "serveru."
 
-#: squirrelmail/plugins/bug_report/setup.php:67
 msgid "Bug Reports:"
 msgstr "Izve¹taj o gre¹kama:"
 
-#: squirrelmail/plugins/bug_report/setup.php:72
 msgid "Show button in toolbar"
 msgstr "Prika¾i dugme na toolbaru"
 
-#: squirrelmail/plugins/sent_subfolders/setup.php:104
 msgid "Sent Subfolders Options"
 msgstr "Opcije Sent podfoldera"
 
-#: squirrelmail/plugins/sent_subfolders/setup.php:109
 msgid "Use Sent Subfolders"
 msgstr "Koristi podfolder Sent"
 
-#: squirrelmail/plugins/sent_subfolders/setup.php:113
 msgid "Monthly"
 msgstr "Meseèno"
 
-#: squirrelmail/plugins/sent_subfolders/setup.php:114
 msgid "Quarterly"
 msgstr "Kvartalno"
 
-#: squirrelmail/plugins/sent_subfolders/setup.php:115
 msgid "Yearly"
 msgstr "Godi¹nje"
 
-#: squirrelmail/plugins/sent_subfolders/setup.php:130
 msgid "Base Sent Folder"
 msgstr "Osnovni Sent direktorijum"
 
-#: squirrelmail/plugins/calendar/calendar.php:93
 msgid "TODAY"
 msgstr "DANAS"
 
-#: squirrelmail/plugins/calendar/day.php:57
-#: squirrelmail/plugins/calendar/event_create.php:142
-#: squirrelmail/plugins/calendar/event_delete.php:142
 msgid "l, F j Y"
 msgstr "D, F j, Y"
 
-#: squirrelmail/plugins/calendar/day.php:103
 msgid "ADD"
 msgstr "DODAJ"
 
-#: squirrelmail/plugins/calendar/day.php:117
 msgid "EDIT"
 msgstr "PROMENI"
 
-#: squirrelmail/plugins/calendar/day.php:119
 msgid "DEL"
 msgstr "BRI©I"
 
-#: squirrelmail/plugins/calendar/event_create.php:83
 msgid "Start time:"
 msgstr "Vreme poèetka:"
 
-#: squirrelmail/plugins/calendar/event_create.php:93
-#: squirrelmail/plugins/calendar/event_edit.php:132
 msgid "Length:"
 msgstr "Du¾ina:"
 
-#: squirrelmail/plugins/calendar/event_create.php:99
-#: squirrelmail/plugins/calendar/event_edit.php:138
-#: squirrelmail/plugins/calendar/event_edit.php:170
-#: squirrelmail/plugins/calendar/event_edit.php:183
 msgid "Priority:"
 msgstr "Prioritet:"
 
-#: squirrelmail/plugins/calendar/event_create.php:105
-#: squirrelmail/plugins/calendar/event_create.php:168
-#: squirrelmail/plugins/calendar/event_delete.php:93
-#: squirrelmail/plugins/calendar/event_edit.php:144
-#: squirrelmail/plugins/calendar/event_edit.php:172
-#: squirrelmail/plugins/calendar/event_edit.php:185
 msgid "Title:"
 msgstr "Naslov:"
 
-#: squirrelmail/plugins/calendar/event_create.php:113
 msgid "Set Event"
 msgstr "Postavi dogaðaj"
 
-#: squirrelmail/plugins/calendar/event_create.php:163
 msgid "Event Has been added!"
 msgstr "Dogaðaj je dodat!"
 
-#: squirrelmail/plugins/calendar/event_create.php:166
-#: squirrelmail/plugins/calendar/event_delete.php:91
-#: squirrelmail/plugins/calendar/event_edit.php:122
-#: squirrelmail/plugins/calendar/event_edit.php:168
 msgid "Time:"
 msgstr "Vreme:"
 
-#: squirrelmail/plugins/calendar/event_create.php:173
-#: squirrelmail/plugins/calendar/event_delete.php:148
-#: squirrelmail/plugins/calendar/event_edit.php:262
-#: squirrelmail/plugins/calendar/functions.php:25
 msgid "Day View"
 msgstr "Dnevni pregled"
 
-#: squirrelmail/plugins/calendar/event_delete.php:88
 msgid "Do you really want to delete this event?"
 msgstr "Da li zaista ¾elite da izbri¹ete ovaj dogaðaj?"
 
-#: squirrelmail/plugins/calendar/event_delete.php:146
 msgid "Event deleted!"
 msgstr "Dogaðaj izbrisan!"
 
-#: squirrelmail/plugins/calendar/event_delete.php:154
 msgid "Nothing to delete!"
 msgstr "Nema nièega za brisanje"
 
-#: squirrelmail/plugins/calendar/event_edit.php:152
 msgid "Update Event"
 msgstr "Promeni dogaðaj"
 
-#: squirrelmail/plugins/calendar/event_edit.php:164
 msgid "Do you really want to change this event from:"
 msgstr "Da li zaista ¾elite da promenite ovaj dogaðaj iz:"
 
-#: squirrelmail/plugins/calendar/event_edit.php:177
 msgid "to:"
 msgstr "u:"
 
-#: squirrelmail/plugins/calendar/event_edit.php:243
 msgid "l, F d Y"
 msgstr ""
 
-#: squirrelmail/plugins/calendar/event_edit.php:260
 msgid "Event updated!"
 msgstr "Dogaðaj promenjen!"
 
-#: squirrelmail/plugins/calendar/functions.php:23
 msgid "Month View"
 msgstr "Meseèni pregled"
 
-#: squirrelmail/plugins/calendar/functions.php:36
 msgid "0 min."
 msgstr "0 min."
 
-#: squirrelmail/plugins/calendar/functions.php:37
 msgid "15 min."
 msgstr "15 min."
 
-#: squirrelmail/plugins/calendar/functions.php:38
 msgid "35 min."
 msgstr "35 min."
 
-#: squirrelmail/plugins/calendar/functions.php:39
 msgid "45 min."
 msgstr "45 min."
 
-#: squirrelmail/plugins/calendar/functions.php:40
 msgid "1 hr."
 msgstr "1 sat"
 
-#: squirrelmail/plugins/calendar/functions.php:41
 msgid "1.5 hr."
 msgstr "sat i po"
 
-#: squirrelmail/plugins/calendar/functions.php:42
 msgid "2 hr."
 msgstr "2 sata"
 
-#: squirrelmail/plugins/calendar/functions.php:43
 msgid "2.5 hr."
 msgstr "2.5 sata"
 
-#: squirrelmail/plugins/calendar/functions.php:44
 msgid "3 hr."
 msgstr "3 sata"
 
-#: squirrelmail/plugins/calendar/functions.php:45
 msgid "3.5 hr."
 msgstr "3.5 sata "
 
-#: squirrelmail/plugins/calendar/functions.php:46
 msgid "4 hr."
 msgstr "4 sata"
 
-#: squirrelmail/plugins/calendar/functions.php:47
 msgid "5 hr."
 msgstr "5 sati"
 
-#: squirrelmail/plugins/calendar/functions.php:48
 msgid "6 hr."
 msgstr "6 sati"
 
-#: squirrelmail/plugins/calendar/setup.php:23
 msgid "Calendar"
 msgstr "Kalendar"
 
-#: squirrelmail/plugins/listcommands/mailout.php:26
 msgid "Mailinglist"
 msgstr "Mailing Lista"
 
-#: squirrelmail/plugins/listcommands/mailout.php:32
 #, c-format
 msgid ""
 "This will send a message to %s requesting help for this list. You will "
@@ -4256,7 +2938,6 @@ msgstr ""
 "Ovo æe poslati poruku %s sa zahtevom za pomoæ u vezi liste. Dobiæete email "
 "odgovor na naznaèenu e-mail adresu."
 
-#: squirrelmail/plugins/listcommands/mailout.php:35
 #, c-format
 msgid ""
 "This will send a message to %s requesting that you will be subscribed to "
@@ -4265,7 +2946,6 @@ msgstr ""
 "Ovo æe poslati poruku %s sa zahtevom za prijavljivanje na listu. Biæete "
 "prijavljeni na naznaèenu adresu."
 
-#: squirrelmail/plugins/listcommands/mailout.php:38
 #, c-format
 msgid ""
 "This will send a message to %s requesting that you will be unsubscribed from "
@@ -4274,390 +2954,291 @@ msgstr ""
 "Ovo èe poslati poruku %s sa zahtevom za odjavljivanjem sa liste. Poku¹aæe da "
 "vas odjavi sa naznaèene adrese."
 
-#: squirrelmail/plugins/listcommands/mailout.php:86
 msgid "Send Mail"
 msgstr "Po¹alji po¹tu"
 
-#: squirrelmail/plugins/listcommands/setup.php:31
 msgid "Post to List"
 msgstr "Po¹ljai na Listu"
 
-#: squirrelmail/plugins/listcommands/setup.php:32
 msgid "Reply to List"
 msgstr "Odgovori na Listu"
 
-#: squirrelmail/plugins/listcommands/setup.php:35
 msgid "List Archives"
 msgstr "Arhiva Mailing Lista"
 
-#: squirrelmail/plugins/listcommands/setup.php:36
 msgid "Contact Listowner"
 msgstr "Kontaktirajte vlasnika maling liste"
 
-#: squirrelmail/plugins/listcommands/setup.php:113
 msgid "Mailing List:"
 msgstr "Mailing Lista:"
 
-#: squirrelmail/plugins/delete_move_next/setup.php:183
-#: squirrelmail/plugins/delete_move_next/setup.php:186
 msgid "Delete & Prev"
 msgstr "Izbri¹i & prethodni"
 
-#: squirrelmail/plugins/delete_move_next/setup.php:189
-#: squirrelmail/plugins/delete_move_next/setup.php:191
 msgid "Delete & Next"
 msgstr "Izbri¹i & sledeæi"
 
-#: squirrelmail/plugins/delete_move_next/setup.php:334
 msgid "Delete/Move/Next Buttons:"
 msgstr "Obri¹i/Premesti/Sledeæi dugmiæi:"
 
-#: squirrelmail/plugins/delete_move_next/setup.php:340
 #, fuzzy
 msgid "Display at top"
 msgstr "Prika¾i na vrhu"
 
-#: squirrelmail/plugins/delete_move_next/setup.php:346
-#: squirrelmail/plugins/delete_move_next/setup.php:358
 msgid "with move option"
 msgstr "sa opcijom za preme¹tanje"
 
-#: squirrelmail/plugins/delete_move_next/setup.php:352
 #, fuzzy
 msgid "Display at bottom"
 msgstr "prika¾i na dnu"
 
-#: squirrelmail/plugins/administrator/defines.php:48
 msgid "Config File Version"
 msgstr "Verzija konfiguracionog fajla"
 
-#: squirrelmail/plugins/administrator/defines.php:51
 msgid "Squirrelmail Version"
 msgstr "SquirrelMail verzija"
 
-#: squirrelmail/plugins/administrator/defines.php:54
 msgid "PHP Version"
 msgstr "PHP verzija"
 
-#: squirrelmail/plugins/administrator/defines.php:58
 msgid "Organization Preferences"
 msgstr "Podaci o firmi"
 
-#: squirrelmail/plugins/administrator/defines.php:60
 msgid "Organization Name"
 msgstr "Ime organizacije"
 
-#: squirrelmail/plugins/administrator/defines.php:63
 msgid "Organization Logo"
 msgstr "Logotip organizacije"
 
-#: squirrelmail/plugins/administrator/defines.php:66
 msgid "Organization Logo Width"
 msgstr "©irina logotipa organizacije"
 
-#: squirrelmail/plugins/administrator/defines.php:70
 msgid "Organization Logo Height"
 msgstr "Visina logotipa organizacije"
 
-#: squirrelmail/plugins/administrator/defines.php:74
 msgid "Organization Title"
 msgstr "Naziv organizacije"
 
-#: squirrelmail/plugins/administrator/defines.php:77
 msgid "Signout Page"
 msgstr "Strana za odjavljivanje"
 
-#: squirrelmail/plugins/administrator/defines.php:80
 msgid "Default Language"
 msgstr "Osnovni jezik"
 
-#: squirrelmail/plugins/administrator/defines.php:84
 msgid "Top Frame"
 msgstr "Gornji frejm"
 
-#: squirrelmail/plugins/administrator/defines.php:89
 msgid "Server Settings"
 msgstr "Pode¹avanje servera"
 
-#: squirrelmail/plugins/administrator/defines.php:91
 msgid "Mail Domain"
 msgstr "Mail domen"
 
-#: squirrelmail/plugins/administrator/defines.php:94
 msgid "IMAP Server Address"
 msgstr "ime IMAP servera"
 
-#: squirrelmail/plugins/administrator/defines.php:97
 msgid "IMAP Server Port"
 msgstr "Port IMAP servera"
 
-#: squirrelmail/plugins/administrator/defines.php:99
 msgid "IMAP Server Type"
 msgstr "Tip IMAP servera"
 
-#: squirrelmail/plugins/administrator/defines.php:101
 msgid "Cyrus IMAP server"
 msgstr "Cyrus IMAP server"
 
-#: squirrelmail/plugins/administrator/defines.php:102
 msgid "University of Washington's IMAP server"
 msgstr "University of Washington's IMAP server"
 
-#: squirrelmail/plugins/administrator/defines.php:103
 msgid "Microsoft Exchange IMAP server"
 msgstr "Microsoft Exchange IMAP server"
 
-#: squirrelmail/plugins/administrator/defines.php:104
 msgid "Courier IMAP server"
 msgstr "Courier IMAP server"
 
-#: squirrelmail/plugins/administrator/defines.php:105
 msgid "Not one of the above servers"
 msgstr "Nijedan od gore pomenutih"
 
-#: squirrelmail/plugins/administrator/defines.php:106
 msgid "IMAP Folder Delimiter"
 msgstr "Graniènik IMAP direktorijuma"
 
-#: squirrelmail/plugins/administrator/defines.php:108
 msgid "Use \"detect\" to auto-detect."
 msgstr "Upotrebi \"detect\" za automatsko prepoznavanje"
 
-#: squirrelmail/plugins/administrator/defines.php:111
 msgid "Use Sendmail"
 msgstr "Koristii Sendmail"
 
-#: squirrelmail/plugins/administrator/defines.php:113
 msgid "Sendmail Path"
 msgstr "Put do Sendmaila"
 
-#: squirrelmail/plugins/administrator/defines.php:116
 msgid "SMTP Server Address"
 msgstr "Adresa SMTP Servera"
 
-#: squirrelmail/plugins/administrator/defines.php:119
 msgid "SMTP Server Port"
 msgstr "Port SMTP servera"
 
-#: squirrelmail/plugins/administrator/defines.php:121
 msgid "Authenticated SMTP"
 msgstr "Autorizovan SMTP"
 
-#: squirrelmail/plugins/administrator/defines.php:123
 msgid "Invert Time"
 msgstr "Obrni vreme"
 
-#: squirrelmail/plugins/administrator/defines.php:125
 msgid "Use Confirmation Flags"
 msgstr "Koristi oznaèavanje potvrde"
 
-#: squirrelmail/plugins/administrator/defines.php:128
 msgid "Folders Defaults"
 msgstr "Pode¹avanja direktorijuma"
 
-#: squirrelmail/plugins/administrator/defines.php:130
 msgid "Default Folder Prefix"
 msgstr "Osnovni folder prefiks"
 
-#: squirrelmail/plugins/administrator/defines.php:133
 msgid "Show Folder Prefix Option"
 msgstr "Prika¾i prefiks opcije foldera"
 
-#: squirrelmail/plugins/administrator/defines.php:144
 msgid "By default, move to trash"
 msgstr "Ukoliko nije navedeno drugaèije, premesti u trash"
 
-#: squirrelmail/plugins/administrator/defines.php:146
 msgid "By default, move to sent"
 msgstr "Ukoliko nije navedeno drugaèije, pemesti u poslato"
 
-#: squirrelmail/plugins/administrator/defines.php:148
 msgid "By default, save as draft"
 msgstr "Ukoliko nije navedeno drugaèije, snimi kao draft"
 
-#: squirrelmail/plugins/administrator/defines.php:150
 msgid "List Special Folders First"
 msgstr "Prika¾i posebne direktorijume na poèetku"
 
-#: squirrelmail/plugins/administrator/defines.php:152
 msgid "Show Special Folders Color"
 msgstr "Prika¾i boju posebnih direktorijuma"
 
-#: squirrelmail/plugins/administrator/defines.php:154
 msgid "Auto Expunge"
 msgstr "Automatsko pra¾njenje"
 
-#: squirrelmail/plugins/administrator/defines.php:156
 msgid "Default Sub. of INBOX"
 msgstr "Osnovni podfolder od INBOX"
 
-#: squirrelmail/plugins/administrator/defines.php:158
 msgid "Show 'Contain Sub.' Option"
 msgstr "Prika¾i opciju 'sadr¾i podfoldere'"
 
-#: squirrelmail/plugins/administrator/defines.php:160
 msgid "Default Unseen Notify"
 msgstr "Osnovno najavljivanje nepro¹itanih poruka"
 
-#: squirrelmail/plugins/administrator/defines.php:165
 msgid "Default Unseen Type"
 msgstr "Osnovni tip neproèitanih poruka"
 
-#: squirrelmail/plugins/administrator/defines.php:169
 msgid "Auto Create Special Folders"
 msgstr "Samostalno kreiraj posebne foldere"
 
-#: squirrelmail/plugins/administrator/defines.php:171
 msgid "Default Javascript Adrressbook"
 msgstr "Osnovni Javascript adresar"
 
-#: squirrelmail/plugins/administrator/defines.php:173
 msgid "Auto delete folders"
 msgstr "Automatsko brisanje direktorijuma"
 
-#: squirrelmail/plugins/administrator/defines.php:176
 msgid "General Options"
 msgstr "Osnovne opcije"
 
-#: squirrelmail/plugins/administrator/defines.php:178
 msgid "Default Charset"
 msgstr "Osnovni set znakova (charset)"
 
-#: squirrelmail/plugins/administrator/defines.php:191
 msgid "Data Directory"
 msgstr "Data direktorijum"
 
-#: squirrelmail/plugins/administrator/defines.php:194
 msgid "Temp Directory"
 msgstr "Temp direktorijum"
 
-#: squirrelmail/plugins/administrator/defines.php:197
 msgid "Hash Level"
 msgstr "Nivo hash-a"
 
-#: squirrelmail/plugins/administrator/defines.php:199
 msgid "Hash Disabled"
 msgstr "Hash iskljucen"
 
-#: squirrelmail/plugins/administrator/defines.php:201
 msgid "Moderate"
 msgstr "Umeren"
 
-#: squirrelmail/plugins/administrator/defines.php:202
 msgid "Medium"
 msgstr "Srednji"
 
-#: squirrelmail/plugins/administrator/defines.php:204
 msgid "Default Left Size"
 msgstr "Osnovna leva strana"
 
-#: squirrelmail/plugins/administrator/defines.php:207
 msgid "Usernames in Lowercase"
 msgstr "Korisnièko ime malim slovima"
 
-#: squirrelmail/plugins/administrator/defines.php:209
 msgid "Allow use of priority"
 msgstr "Dozvoli upotrebu prioriteta"
 
-#: squirrelmail/plugins/administrator/defines.php:211
 msgid "Hide SM attributions"
 msgstr "Sakrij dodatke SM"
 
-#: squirrelmail/plugins/administrator/defines.php:213
 msgid "Enable use of delivery receipts"
 msgstr "Ukljuèi upotrebu potvrde prijema"
 
-#: squirrelmail/plugins/administrator/defines.php:215
 msgid "Allow editing of identities"
 msgstr "Dozvoli promene identiteta"
 
-#: squirrelmail/plugins/administrator/defines.php:217
 msgid "Allow editing of full name"
 msgstr "Dozvoli promene punog imena"
 
-#: squirrelmail/plugins/administrator/defines.php:220
-#: squirrelmail/plugins/administrator/defines.php:222
 msgid "Message of the Day"
 msgstr "Poruka dana (MOTD)"
 
-#: squirrelmail/plugins/administrator/defines.php:226
 msgid "Database"
 msgstr "Baza podataka"
 
-#: squirrelmail/plugins/administrator/defines.php:228
 msgid "Address book DSN"
 msgstr "Adresar DSN"
 
-#: squirrelmail/plugins/administrator/defines.php:231
 msgid "Address book table"
 msgstr "tabela adresara"
 
-#: squirrelmail/plugins/administrator/defines.php:235
 msgid "Preferences DSN"
 msgstr "DSN preferenci"
 
-#: squirrelmail/plugins/administrator/defines.php:238
 msgid "Preferences table"
 msgstr "tabela preferenci"
 
-#: squirrelmail/plugins/administrator/defines.php:242
 msgid "Preferences username field"
 msgstr "Polje korisnièkog imena"
 
-#: squirrelmail/plugins/administrator/defines.php:246
 msgid "Preferences key field"
 msgstr "Polje kljuèa u pode¹avanjima"
 
-#: squirrelmail/plugins/administrator/defines.php:250
 msgid "Preferences value field"
 msgstr "Polje vrednosti u pode¹avanjima"
 
-#: squirrelmail/plugins/administrator/defines.php:255
 msgid "Themes"
 msgstr "Teme"
 
-#: squirrelmail/plugins/administrator/defines.php:257
 msgid "Style Sheet URL (css)"
 msgstr "Style Sheet URL (css)"
 
-#: squirrelmail/plugins/administrator/options.php:193
 msgid "Configuration Administrator"
 msgstr "Administrator konfiguracije"
 
-#: squirrelmail/plugins/administrator/options.php:386
 msgid "Theme Name"
 msgstr "Ime teme"
 
-#: squirrelmail/plugins/administrator/options.php:387
 msgid "Theme Path"
 msgstr "Putanja do teme"
 
-#: squirrelmail/plugins/administrator/options.php:425
 msgid "Plugins"
 msgstr "Dodatci"
 
-#: squirrelmail/plugins/administrator/options.php:487
 msgid "Change Settings"
 msgstr "Promeni Pode¹avanja"
 
-#: squirrelmail/plugins/administrator/options.php:538
 msgid "Config file can't be opened. Please check config.php."
 msgstr "Ne mogu da otvorim konfiguracioni fajl. Proverite config.php "
 
-#: squirrelmail/plugins/administrator/setup.php:30
 msgid "Administration"
 msgstr "Administracija"
 
-#: squirrelmail/plugins/administrator/setup.php:32
 msgid ""
 "This module allows administrators to manage SquirrelMail main configuration "
 "remotely."
 msgstr "Ovaj modul omoguæava udaljeno upravaljane SquirrelMail konfiguracije.."
 
-#: squirrelmail/po/independent_strings.txt:18
 msgid "Delivery error report"
 msgstr "Gre¹ka pri slanju po¹te"
 
-#: squirrelmail/po/independent_strings.txt:19
 msgid "Undelivered Message Headers"
 msgstr "Zaglavlja neposlatih poruka"
