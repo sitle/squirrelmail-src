@@ -3,122 +3,236 @@
  * Copyright (c) 1999-2003 The SquirrelMail Project Team
  * Licensed under the GNU GPL. For full terms see the file COPYING.
  *
- * This file is an addition/modification to the 
+ * This file is an addition/modification to the
  * Framework for Object Orientated Web Development (Foowd).
  *
  * $Id$
  */
 
-class GroupManager 
+class smdoc_group
 {
-  /** STATIC
-   * createUserGroups initializes an array in the session containing a list 
+  /**
+   * Initialize smdoc_group object
+   */
+  function factory(&$foowd, $groups=NULL)
+  {
+    $sm_groups = new smdoc_group();
+    $sm_groups->initializeUserGroups($foowd, $groups);
+    return $sm_groups;
+  }
+
+  /**
+   * initializeUserGroups initializes an array in the session containing a list
    * of user groups as 'internal name/objectid' => 'external name'.
-   * 
+   *
    * @param array   $groups     - array of additional groups to include
    *                              in group list (for foowd object use).
    */
-  function createUserGroups(&$foowd, $groups=NULL, $forceRefresh=FALSE ) 
+  function initializeUserGroups(&$foowd, $groups=NULL, $forceRefresh=FALSE )
   {
     $session_groups = new input_session('user_groups',REGEX_GROUP);
 
-    if ( isset($session_groups->value) && !$forceRefresh ) 
+    if ( isset($session_groups->value) && !$forceRefresh )
       return;
-      
+
     $allgroups = array();
-  
+
     /*
      * Set Available User Groups:
      *  - start with basic four (Everyone, Author, Gods, Nobody)
      */
-    $allgroups['Everyone'] = getConstOrDefault('GROUPNAME_EVERYONE', 'Everyone');
-    $allgroups['Author']   = getConstOrDefault('GROUPNAME_AUTHOR', 'Author');
-    $allgroups['Gods']     = getConstOrDefault('GROUPNAME_ADMIN', 'Gods');
-    $allgroups['Nobody']   = getConstOrDefault('GROUPNAME_NOBODY', 'Nobody');
-    
+    $allgroups['Everyone']   = getConstOrDefault('GROUPNAME_EVERYONE', 'Everyone');
+    $allgroups['Author']     = getConstOrDefault('GROUPNAME_AUTHOR', 'Author');
+    $allgroups['Gods']       = getConstOrDefault('GROUPNAME_ADMIN', 'Gods');
+    $allgroups['Nobody']     = getConstOrDefault('GROUPNAME_NOBODY', 'Nobody');
+    $allgroups['Registered'] = getConstOrDefault('GROUPNAME_REGISTERED', 'Registered');
+
+
     /*
      *  - add groups passed in as parameter
      */
-    if (isset($groups) && is_array($groups) ) { 
+    if (isset($groups) && is_array($groups) ) {
       $allgroups = array_merge($allgroups, $groups);
     }
-  
+
     /*
      *  - add groups defined via constants
      */
     $foo = 1;
-    while (defined('USERGROUP'.$foo)) { 
+    while (defined('USERGROUP'.$foo)) {
       $group = constant('USERGROUP'.$foo);
       $allgroups[$group] = $group;
       $foo++;
     }
-  
+
     /*
-     *  - add groups defined via Group class
+     *  - add groups defined in DB
      */
-    if (defined('GROUP_CLASS_ID')) 
-    {
-      $userGroups = $this->retrieveObjects(
-                            array('classid = '.GROUP_CLASS_ID),
-                            NULL,
-                            array('title'));
-      if ($userGroups) 
-      {
-        while ($userGroup = $this->retrieveObject($userGroups))
-          $allgroups[$userGroup->objectid] = $userGroup->getTitle();
-      }
-    }    
-  
+
     /*
      * Sort list of groups by display name (value), and add to session
      */
     asort($allgroups);
     $session_groups->set($allgroups);
   }
-  
-  /** STATIC
-   * getUserGroups returns an array containing a list 
+
+  /**
+   * addGroup
+   * adds Group to the list stored in the session
+   */
+  function addGroup(&$foowd, $group_arg)
+  {
+    $session_groups = new input_session('user_groups',REGEX_GROUP);
+    if ( !isset($session_groups->value) ) {
+      initializeUserGroups($foowd);
+      $session_groups->refresh();
+    }
+
+    if ( is_array($group_arg) ) {
+      foreach ($group_arg as $group) {
+        _addGroup($session_groups->value, $group);
+      }
+    } else {
+      _addGroup($session_groups->value, $group_arg);
+    }
+
+    /*
+     * Sort list of groups by display name (value), and add to session
+     */
+    asort($session_groups);
+    $session_groups->set($session_groups);
+  }
+
+  /**
+   * deleteGroup
+   * removes Group from the list stored in the session
+   */
+  function deleteGroup(&$foowd, $group_arg)
+  {
+    $session_groups = new input_session('user_groups',REGEX_GROUP);
+    if ( !isset($session_groups->value) ) {
+      initializeUserGroups($foowd);
+      $session_groups->refresh();
+    }
+
+    if ( is_array($group_arg) ) {
+      foreach ($group_arg as $group) {
+        _deleteGroup($session_groups->value, $group);
+      }
+    } else {
+      _deleteGroup($session_groups->value, $group_arg);
+    }
+
+    $session_groups->set($session_groups->value);
+  }
+
+  /**
+   * getUserGroups returns an array containing a list
    * of user groups as 'internal name/objectid' => 'external name'.
-   * 
-   * If userAssignOnly is TRUE, then only groups users can be assigned 
+   *
+   * If userAssignOnly is TRUE, then only groups users can be assigned
    * to will be returned - meaning that groups like Everyone, Nobody, and
    * Author, which are useful for defining permissions but are not assignable
    * to users, will be left out.
    */
-  function getUserGroups(&$foowd,$userAssignOnly = FALSE) 
+  function getUserGroups(&$foowd, $userAssignOnly = FALSE)
   {
     $session_groups = new input_session('user_groups',REGEX_GROUP);
     if ( !isset($session_groups->value) ) {
-      GroupManager::createUserGroups($foowd);
+      initializeUserGroups($foowd);
       $session_groups->refresh();
     }
-      
-    if ( $userAssignOnly ) 
+
+    if ( $userAssignOnly )
     {
       unset($session_groups->value['Everyone']);
       unset($session_groups->value['Author']);
       unset($session_groups->value['Nobody']);
+      unset($session_groups->value['Registered']);
     }
-    
+
     return $session_groups->value;
   }
-  
-  /** STATIC
+
+  /**
    * getDisplayGroupName returns a string containing the display
    * name for the specified group (or NULL if not found).
    */
-  function getDisplayName(&$foowd, $group) 
+  function getDisplayName(&$foowd, $group)
   {
     $session_groups = new input_session('user_groups',REGEX_GROUP);
-    if ( !isset($session_groups->value) )
-      createUserGroups($foowd);
+    if ( !isset($session_groups->value) ) {
+      initializeUserGroups($foowd);
+      $session_groups->refresh();
+    }
 
     if ( isset($session_groups->value[$group]) )
       return $session_groups->value[$group];
     else
-      return NULL;            
+      return NULL;
   }
 
+  /**
+   * checkGroup
+   * checks for System group
+   */
+  function _checkGroup($groupID)
+  {
+    switch ($groupId)
+    {
+      case 'Gods':
+      case 'Author':
+      case 'Nobody':
+      case 'Everyone':
+      case 'Registered':
+      case 'System':
+        return TRUE;  // group is a system group
+      default:
+        return FALSE;
+    }
+  }
+
+  /**
+   * addGroup
+   * adds Group to the list stored in the session
+   */
+  function _addGroup(&$groupList, $group_arg)
+  {
+    if ( is_object($group_arg) ) {
+      $groupName = $group_arg->getTitle();
+      $groupId   = $group_arg->objectid;
+    } elseif ( is_string($group_arg) ) {
+      $groupName = $group_arg;
+      $groupId   = $group_arg;
+    } else {
+      return; // we don't know what this thing is, don't muck up the list.
+    }
+
+    if ( _checkGroup($groupId) )
+      return; // can't reset system groups
+
+    $groupList[$groupId] = $groupName;
+  }
+
+  /**
+   * _deleteGroup
+   * removes Group from the list stored in the session
+   */
+  function _deleteGroup(&$groupList, $group_arg)
+  {
+    if ( is_object($group_arg) ) {
+      $groupId   = $group_arg->objectid;
+    } elseif ( is_string($group_arg) ) {
+      $groupId   = $group_arg;
+    } else {
+      return; // we don't know what this thing is, don't muck up the list.
+    }
+
+    if ( _checkGroup($groupId) )
+      return; // can't reset system groups
+
+    unset($groupList[$groupId]);
+  }
 
 }
 
