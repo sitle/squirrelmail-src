@@ -1,7 +1,7 @@
 <?php
 
 
-/* delete_move_next 2.0 
+/* delete_move_next 2.0.2
      deletes or moves currently displayed message and displays
      next or previous message.
    
@@ -256,3 +256,4 @@ function delete_move_next_loading_prefs()
 
 }
 
+?>
