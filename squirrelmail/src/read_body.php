@@ -518,10 +518,10 @@ function formatMenubar($mailbox, $passed_id, $passed_ent_id, $message, $mbx_resp
         $link_close = '">';
     }
     if (($mailbox == $draft_folder) && ($save_as_draft)) {
-        $comp_alt_uri = $comp_uri . '&amp;action=draft';
+        $comp_alt_uri = $comp_uri . '&amp;smaction=draft';
         $comp_alt_string = _("Resume Draft");
     } else if (handleAsSent($mailbox)) {
-        $comp_alt_uri = $comp_uri . '&amp;action=edit_as_new';
+        $comp_alt_uri = $comp_uri . '&amp;smaction=edit_as_new';
         $comp_alt_string = _("Edit Message as New");
     }
     if (isset($comp_alt_uri)) {
@@ -593,20 +593,20 @@ function formatMenubar($mailbox, $passed_id, $passed_ent_id, $message, $mbx_resp
 
     $s .= '</small></td>' . "\n" . 
           html_tag( 'td', '', 'right', '', 'width="33%" nowrap' ) . '<small>';
-    $comp_action_uri = $comp_uri . '&amp;action=forward';
+    $comp_action_uri = $comp_uri . '&amp;smaction=forward';
     $s .= $link_open . $comp_action_uri . $link_close . _("Forward") . '</a>';
 
     if ($enable_forward_as_attachment) {
-        $comp_action_uri = $comp_uri . '&amp;action=forward_as_attachment';
+        $comp_action_uri = $comp_uri . '&amp;smaction=forward_as_attachment';
         $s .= $topbar_delimiter;
         $s .= $link_open . $comp_action_uri . $link_close . _("Forward as Attachment") . '</a>';
     }
 
-    $comp_action_uri = $comp_uri . '&amp;action=reply';
+    $comp_action_uri = $comp_uri . '&amp;smaction=reply';
     $s .= $topbar_delimiter;
     $s .= $link_open . $comp_action_uri . $link_close . _("Reply") . '</a>';
 
-    $comp_action_uri = $comp_uri . '&amp;action=reply_all';
+    $comp_action_uri = $comp_uri . '&amp;smaction=reply_all';
     $s .= $topbar_delimiter;
     $s .= $link_open . $comp_action_uri . $link_close . _("Reply All") . '</a>';
     $s .= '</small></td></tr></table>';
