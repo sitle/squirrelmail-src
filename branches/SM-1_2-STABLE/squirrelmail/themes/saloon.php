@@ -22,4 +22,3 @@ $color[14]  = '#474239'; // double quoted text
 $color[15]  = '#474237'; // noselect folders
 
 ?>
-
