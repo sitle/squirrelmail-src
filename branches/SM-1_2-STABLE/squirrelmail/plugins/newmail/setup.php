@@ -85,8 +85,8 @@
 
     function newmail_sav() {
 
-        global $username,$data_dir;
-
+        global $data_dir, $username, $_POST;
+     
         if ( isset($_POST['submit_newmail']) ) {
          
             if(isset($_POST['media_enable'])) {
