@@ -221,7 +221,7 @@ function setSig($data_dir, $username, $number, $value) {
     $tmpwrite = @fwrite($file, $value);
     if ($tmpwrite == -1) {
        include_once( '../functions/display_messages.php' );
-       logout_error( sprintf( _("Signaute file, %s, could not be written. Contact your system administrator to resolve this issue.") , $filename . '.tmp'));
+       logout_error( sprintf( _("Signature file, %s, could not be written. Contact your system administrator to resolve this issue.") , $filename . '.tmp'));
        exit;
     }
     fclose($file);

@@ -32,6 +32,8 @@ function charset_decode ($charset, $string) {
             $ret = charset_decode_iso_8859_4 ($string);
         } else if ($res[1] == '7') {
             $ret = charset_decode_iso_8859_7 ($string);
+        } else if ($res[1] == '9') {
+	    $ret = charset_decode_iso_8859_9 ($string);
         } else if ($res[1] == '13') {
             $ret = charset_decode_iso_8859_13 ($string);
         } else if ($res[1] == '15') {
@@ -47,6 +49,8 @@ function charset_decode ($charset, $string) {
         $ret = charset_decode_windows_1251 ($string);
     } else if ($charset == 'windows-1257') {
         $ret = charset_decode_windows_1257 ($string);
+    } else if ($charset == 'windows-1254') {
+        $ret = charset_decode_iso_8859_9 ($string);
     } else {
         $ret = $string;
     }
@@ -1107,6 +1111,35 @@ function charset_decode_windows_1257 ($string) {
 
     // Rest of charset is like iso-8859-1
     return (charset_decode_iso_8859_1($string));
+}
+
+/* iso-8859-9 is Turkish. */
+function charset_decode_iso_8859_9 ($string) {
+    global $default_charset;
+
+    if (strtolower($default_charset) == 'iso-8859-9') {
+        return $string;
+    }
+
+    /* Only do the slow convert if there are 8-bit characters */
+    if (!ereg("[\200-\377]", $string)) {
+        return $string;
+    }
+
+    $string = str_replace("\307", '&#199;', $string);
+    $string = str_replace("\320", '&#272;', $string);
+    $string = str_replace("\326", '&#214;', $string);
+    $string = str_replace("\334", '&#220;', $string);
+    $string = str_replace("\335", '&#221;', $string);
+    $string = str_replace("\336", '&#222;', $string);
+    $string = str_replace("\347", '&#231;', $string);
+    $string = str_replace("\360", '&#240;', $string);
+    $string = str_replace("\366", '&#246;', $string);
+    $string = str_replace("\374", '&#252;', $string);
+    $string = str_replace("\375", '&#253;', $string);
+    $string = str_replace("\376", '&#254;', $string);
+
+    return $string;
 }
 
 
