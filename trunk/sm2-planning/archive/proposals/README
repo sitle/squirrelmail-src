@@ -1,0 +1,51 @@
+$Id$
+$Author$
+$Date$
+--
+
+Architecture Proposals README
+Authors: Luke Ehresman <luke@squirrelmail.org>
+         Paul Joseph Thompson <thomppj@squirrelmail.org>
+========================================================
+
+Purpose: To explain the process for making proposals concerning the 
+development and architecture of SquirrelMail 2.
+
+
+What is this all about?
+=======================
+This all came about during one of our developer meetings. Many proposals 
+were made, more than we could handle at one time. Additionally, we wanted 
+to see what some of these proposals were made of (some working demos). 
+Therefore, we decided to create this proposals directory as a part of the 
+sm2-planning module. It is a place for proposals to take shape, flourish 
+a little, and maybe even become something real.
+
+
+What are the directories for?
+=============================
+There are three stages of a proposal: crawl, walk, sprint.
+
+The crawl stage involves a very basic implementation of the proposal. It 
+should be extremely simple and, if possible, be implemented as some form 
+of the classic "Hello World" program. (::crawl/::).
+
+If all goes well with the crawl stage of the proposal, it will continue 
+onward with the walk stage. This implementation of the proposal should 
+take a little more time to develop and generally be a more filled in. It 
+should be a clear working model that does a good job demonstrating and 
+explaining your proposal. (::walk/::).
+
+Lastly, proposals that make it past the walk stage will move on to the 
+sprint stage. In this stage, development will begin on the proposal as it 
+would actually be implemented as a part of SquirrelMail 2. If a proposal 
+is accepted for the development of SquirrelMail 2, this code will usually 
+form the foundation for the integration of this proposal. (::sprint/::)
+
+
+Proposal Review
+===============
+When a proposal in crawl or walk stage is ready for review, a message 
+should be sent to the development list requesting that we start looking 
+over your idea. This will be done on an individual level, and through 
+mailing list and irc discussion.
