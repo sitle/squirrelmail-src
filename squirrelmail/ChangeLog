@@ -36,6 +36,10 @@ Version 1.4.3 - CVS
   - Fix quoteimap() regex escaping problem (#921291).
   - Added international date format support (#927264).
   - Fixed "Resume Draft" to use correct identity (#845290).
+  - Fixed RFC2821 incompliancy by adding a fallback mechanism to HELO if
+    EHLO is not supported.
+  - Fixed RFC2298 incompliancy by setting envelop sender to null.
+
 
 Version 1.4.2 - 1 October 2003
 ------------------------------
