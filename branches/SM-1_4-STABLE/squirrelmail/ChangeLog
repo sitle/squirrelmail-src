@@ -11,6 +11,8 @@ Version 1.4.5 - CVS
   - Remove is_readable($data_dir) test in configtest, because SquirrelMail
     functions fine with stricter permissions.
   - 24hr clock format should include a leading 0.
+  - Fixed uid based authentication in administrator plugin. Thanks to
+    Gareth Johnston.
 
 Version 1.4.4 - 21 January 2005
 -------------------------------
