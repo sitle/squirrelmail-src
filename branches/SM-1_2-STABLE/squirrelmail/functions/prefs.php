@@ -21,12 +21,13 @@ if (isset($_SESSION['prefs_are_cached'])) {
 }
 
 $rg = ini_get('register_globals');
+/* if php version >= 4.1 OR (4.0 AND $rg = off) */
 if ( !sqsession_is_registered('prefs_are_cached') ||
      !isset( $prefs_cache) ||
      !is_array( $prefs_cache) ||
-     substr( phpversion(), 0, 3 ) == '4.1' ||
-     substr( phpversion(), 0, 3 ) == '4.2' ||
-     (substr( phpversion(), 0, 3 ) == '4.0' && empty($rg))) {
+     check_php_version(4,1) ||
+     empty($rg)
+   ) {
     $prefs_are_cached = false;
     $prefs_cache = array();
 }
