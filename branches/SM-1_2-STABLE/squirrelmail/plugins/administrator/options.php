@@ -140,7 +140,14 @@ require_once('../src/load_prefs.php');
 require_once('../plugins/administrator/defines.php');
 require_once('../plugins/administrator/auth.php');
 
-GLOBAL $data_dir, $username;
+/* too many globals to define one by one
+   so we extract all of $_POST and $_GET
+*/
+
+global $data_dir;
+$username = $_SESSION['username'];
+extract($_POST);
+extract($_GET);
 
 if ( !adm_check_user() ) {
     header("Location: ../../src/options.php") ;
