@@ -1,14 +1,4 @@
 <?php
-
-/**
- * imap_fetch.inc
- *
- * Copyright (c) 1999-2002 The SquirrelMail Project Team
- * Licensed under the GNU GPL. For full terms see the file COPYING.
- *
- * $Id$
- */
-
     /*
      * Fetch response parser
      *
@@ -36,29 +26,29 @@ class imap_fetch extends imap {
 	return $s;
     }
     
-    function parseFetch($string) {
+    function parseFetch() {
         $sArg = $aVal = '';
 	$result = array();
 	$this->iTot_Cnt = 0;
-        $string = $this->sqimap_fgets();
+        $read = $this->sqimap_fgets();
 	while (!$this->response) {
-	    for ($i=0,$iCnt=strlen($string);$i<$iCnt;++$i) {
-		$char = $string{$i};
-		switch ($string{$i}) {
+	    for ($i=0,$iCnt=strlen($read);$i<$iCnt;++$i) {
+		$char = $read{$i};
+		switch ($read{$i}) {
 		case ' ':
 		    if (!$sArg) {
-		       $sArg = strtoupper($this->parseArgument($string,$i, $changed));
+		       $sArg = strtoupper($this->parseArgument($read,$i,$iCnt));
 		    } else {
 		       switch ($sArg) {
 		         case 'INTERNALDATE':
-			    $result[$sArg] = $this->parseString($read,$i, $changed);
+			    $result[$sArg] = $this->parseString($read,$i,$iCnt);
 			    $sArg = '';
 			    break;
 			 case 'ENVELOPE':
 			    ++$i;
 			    require_once(SM_LIB_PATH . 'message/Rfc822Header.inc');
 			    $hdr = new Rfc822Header();
-			    $hdr = $this->parseEnvelope($string,$i,$hdr);
+			    $hdr = $this->parseEnvelope($read,$i,$hdr);
 			    $result[$sArg] = $hdr;
 			    $sArg = '';			    
 			    break;
@@ -77,6 +67,7 @@ class imap_fetch extends imap {
 			    $sArg = '';
 			    break;
 			 case 'BODY':
+			    
 			 case 'BODYSTRUCTURE':
 			    ++$i;
 			    $msg = $this->parseStructure($read,$i);
@@ -91,12 +82,12 @@ class imap_fetch extends imap {
 			    $result['RFC822.TEXT'] = ..
 			    
 			 case 'BODY[':
-			 
+			 case 'BODY[HEADER.FIELDS 
 			 default: ++$i; break;
 		    }
 		case '*':
 		    if ($i == 0) {
-			$id = $this->initFetch($string, $i);
+			$id = $this->initFetch($read, $i);
 			if (count($result)) {
 			    $data[] = $result;
 			    $result = array();
@@ -109,7 +100,7 @@ class imap_fetch extends imap {
 		case $sid{0}:
 		    if (substr($string,$i,strlen($sid)) == $sid) {
 		        $i += strlen($sid) +1;
-			if ($this->parseResponse($string)) {
+			if ($this->parseResponse($read)) {
 			   return $result;
 			}
 			break;
@@ -117,13 +108,66 @@ class imap_fetch extends imap {
 	        default: ++$i; break;
 		}
 	    }
-	    $string = $this->sqimap_fgets();
+	    $read = $this->sqimap_fgets();
 	}
 	if (count($result)) {
 	    $data[] = $result;
         }
 	
     }         	   
+
+    function parseFlags(&$read, &$i, &$iCnt) {
+        $aFlags = array();
+	$s = '';
+	
+	++$i; /* skip the first ( */
+        for (++$i; $read{$i} != ')'; ++$i) {
+             $s .= $read{$i};
+     	     if ($i == $iCnt -1) {
+	        $read = $this->sqimap_fgets();
+	        $i = 0;
+	        $iCnt = strlen($read);
+	     } 
+        }
+	++$i;
+	return (explode(' ',$s));
+    }
+    
+    function sqimap_fgets_next(&$i, &$iCnt) {
+	$read = $this->sqimap_fgets();
+	$i = 0;
+	$iCnt = strlen($read);
+	return $read;
+    }
+	
+    function parseArgument(&$read, &$i, &$iCnt) {
+        $s = '';
+        for (++$i; $read{$i} != ' '; ++$i) {
+	    switch ($read{$i}) {
+	    case '[':
+	        --$i;
+		break;
+	    default:
+                $s .= $read{$i};
+     	        if ($i == $iCnt -1) $read = $this->sqimap_fgets_next($i, $iCnt);
+		break;
+    	    }
+	}
+        return $s;
+    }
+
+    function parseInteger(&$read, &$i, &$iCnt) {
+        $s = '';
+        for (++$i; $read{$i} != ' '; ++$i) {
+             $s .= $read{$i};
+     	     if ($i == $iCnt -1) {
+	        $read = $this->sqimap_fgets();
+	        $i = 0;
+	        $iCnt = strlen($read);
+	     } 
+        }
+        return $s;
+    }
 
     function parseStructure(&$read, &$i, &$iCnt, $sub_msg = '') {
         $arg_no = 0;
@@ -423,48 +467,8 @@ class imap_fetch extends imap {
         return $hdr;
     }
     
-    function parseArgument(&$read, &$i, &$iCnt) {
-        $s = '';
-        for (++$i; $read{$i} != ' '; ++$i) {
-             $s .= $read{$i};
-     	     if ($i == $iCnt -1) {
-	        $read = $this->sqimap_fgets();
-	        $i = 0;
-	        $iCnt = strlen($read);
-	     } 
-        }
-        return $s;
-    }
-
-    function parseInteger(&$read, &$i, &$iCnt) {
-        $s = '';
-        for (++$i; $read{$i} != ' '; ++$i) {
-             $s .= $read{$i};
-     	     if ($i == $iCnt -1) {
-	        $read = $this->sqimap_fgets();
-	        $i = 0;
-	        $iCnt = strlen($read);
-	     } 
-        }
-        return $s;
-    }
 
     
-    function parseFlags(&$read, &$i, &$iCnt) {
-        $aFlags = array();
-	$s = '';
-	++$i; /* skip the first ( */
-        for (++$i; $read{$i} != ')'; ++$i) {
-             $s .= $read{$i};
-     	     if ($i == $iCnt -1) {
-	        $read = $this->sqimap_fgets();
-	        $i = 0;
-	        $iCnt = strlen($read);
-	     } 
-        }
-	++$i;
-	return (explode(' ',$s));
-    }
     
 			
 
@@ -963,4 +967,3 @@ class imap_fetch extends imap {
         $this->mlist[$field] = $res_a;
     }
 
-?>
