@@ -10,7 +10,9 @@ Version 1.4.4 - CVS
     links, and return to message page that originally called from.
   - Max upload file size now correctly handles a '-1' value, meaning
     unlimited (#1094569). 
-  - Send 8-bit username or password as literals (#1081259)
+  - Send 8-bit username or password as literals (#1081259).
+  - configtest.php now checks whether default language is actually
+    present.
 
 Version 1.4.4 RC1 - 31 December 2004
 ------------------------------------
