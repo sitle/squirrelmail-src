@@ -1,16 +1,20 @@
 <?php
 
-define('PATH', ''); // application path
+define('PATH', '');                      // application path
+require('config.foowd.php');             // include config and Foowd functions
 
-require('config.foowd.php'); // include config and Foowd functions
-
-// get object details
+/*
+ * Object Details 
+ * -------------------------------------------------------------
+ * Retrieve information about object from query string.
+ * -------------------------------------------------------------
+ */
 $objectName = new input_querystring('object', REGEX_TITLE);
-$objectid = new input_querystring('objectid', '/^[0-9-]*$/');
-$version = new input_querystring('version', '/^[0-9]*$/');
-$className = new input_querystring('class', REGEX_TITLE);
-$classid = new input_querystring('classid', '/^[0-9-]*$/');
-$method = new input_querystring('method', NULL, NULL);
+$objectid   = new input_querystring('objectid', '/^[0-9-]*$/');
+$version    = new input_querystring('version', '/^[0-9]*$/');
+$className  = new input_querystring('class', REGEX_TITLE);
+$classid    = new input_querystring('classid', '/^[0-9-]*$/');
+$method     = new input_querystring('method', NULL, NULL);
 
 // convert object name into id (if name given rather than id)
 if (!isset($objectid->value) && isset($objectName->value)) {
@@ -57,14 +61,5 @@ if (isset($className->value) && !isset($objectid->value) && !isset($objectName->
 // destroy Foowd
 $foowd->destroy();
 
-// prepend function
-function foowd_prepend(&$foowd, &$object, $page_title = NULL) {
-	include('header.php');
-}
-
-// append function
-function foowd_append(&$foowd, &$object) {
-	include('footer.php');
-}
 
 ?>
