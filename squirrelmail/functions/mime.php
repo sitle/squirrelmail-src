@@ -1844,7 +1844,7 @@ function magicHTML($body, $id, $message, $mailbox = 'INBOX') {
  * @param boolean $force whether to force the download dialog to pop
  * @return void
  */
- function SendDownloadHeaders($type0, $type1, $filename, $force) {
+ function SendDownloadHeaders($type0, $type1, $filename, $force, $filesize=0 ) {
      global $languages, $squirrelmail_language;
      $isIE = $isIE6 = 0;
 
@@ -1905,6 +1905,12 @@ function magicHTML($body, $id, $message, $mailbox = 'INBOX') {
              header("Content-Type: application/octet-stream; name=\"$filename\"");
          }
      }
- }
+
+     //send the content-length header if the calling function provides it
+     if ($filesize > 0) {
+        header("Content-Length: $filesize");
+     }
+
+ }  // end fn SendDownlaodHeaders
 
 ?>
