@@ -8,10 +8,11 @@
  *
  * This contains functions for manipulating user preferences in files
  *
- * $Id$
+ * @version $Id$
+ * @package squirrelmail
  */
 
-/* include this for error messages */
+/** include this for error messages */
 include_once(SM_PATH . 'functions/display_messages.php');
 
 /**
@@ -22,13 +23,13 @@ function cachePrefValues($data_dir, $username) {
 
     sqgetGlobalVar('prefs_are_cached', $prefs_are_cached, SQ_SESSION );
     if ( isset($prefs_are_cached) && $prefs_are_cached) {
-        sqgetGlobalVar('prefs_cache', $prefs_cache, SQ_SESSION );    
+        sqgetGlobalVar('prefs_cache', $prefs_cache, SQ_SESSION );
         return;
     }
-    
+
     sqsession_unregister('prefs_cache');
     sqsession_unregister('prefs_are_cached');
-    
+
     /* Calculate the filename for the user's preference file */
     $filename = getHashedFile($username, $data_dir, "$username.pref");
 
@@ -83,7 +84,7 @@ function cachePrefValues($data_dir, $username) {
     sqsession_register($prefs_cache, 'prefs_cache');
     sqsession_register($prefs_are_cached, 'prefs_are_cached');
 }
-   
+
 /**
  * Return the value for the preference given by $string.
  */
@@ -97,7 +98,7 @@ function getPref($data_dir, $username, $string, $default = '') {
     	    $result = $prefs_cache[$string];
 	} else {
 	    $result = do_hook_function('get_pref', array($username,$string));
-	    if (!$result) {	    
+	    if (!$result) {
     		$result = $default;
 	    }
 	}
@@ -110,7 +111,7 @@ function getPref($data_dir, $username, $string, $default = '') {
  */
 function savePrefValues($data_dir, $username) {
     global $prefs_cache;
-   
+
     $filename = getHashedFile($username, $data_dir, "$username.pref");
 
     /* Open the file for writing, or else display an error to the user. */
@@ -144,11 +145,11 @@ function removePref($data_dir, $username, $string) {
     global $prefs_cache;
 
     cachePrefValues($data_dir, $username);
- 
+
     if (isset($prefs_cache[$string])) {
         unset($prefs_cache[$string]);
     }
- 
+
     savePrefValues($data_dir, $username);
 }
 

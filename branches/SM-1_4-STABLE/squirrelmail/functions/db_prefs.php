@@ -1,6 +1,6 @@
 <?php
 
-/*
+/**
  * db_prefs.php
  *
  * Copyright (c) 1999-2004 The SquirrelMail Project Team
@@ -25,11 +25,15 @@
  * Configuration of databasename, username and password is done
  * by using conf.pl or the administrator plugin
  *
- * $Id$
+ * @version $Id$
+ * @package squirrelmail
  */
 
+/** Unknown database */
 define('SMDB_UNKNOWN', 0);
+/** MySQL */
 define('SMDB_MYSQL', 1);
+/** PostgreSQL */
 define('SMDB_PGSQL', 2);
 
 require_once(SM_PATH . 'config/config.php');
@@ -46,6 +50,9 @@ if (!include_once('DB.php')) {
 
 global $prefs_are_cached, $prefs_cache;
 
+/**
+ * @ignore
+ */
 function cachePrefValues($username) {
     global $prefs_are_cached, $prefs_cache;
 
@@ -78,6 +85,10 @@ function cachePrefValues($username) {
     sqsession_register($prefs_are_cached, 'prefs_are_cached');
 }
 
+/**
+ * Completely undocumented class - someone document it!
+ * @package squirrelmail
+ */
 class dbPrefs {
     var $table = 'userprefs';
     var $user_field = 'user';
@@ -281,7 +292,10 @@ class dbPrefs {
 } /* end class dbPrefs */
 
 
-/* returns the value for the pref $string */
+/**
+ * returns the value for the pref $string
+ * @ignore
+ */
 function getPref($data_dir, $username, $string, $default = '') {
     $db = new dbPrefs;
     if(isset($db->error)) {
@@ -293,7 +307,10 @@ function getPref($data_dir, $username, $string, $default = '') {
     return $db->getKey($username, $string, $default);
 }
 
-/* Remove the pref $string */
+/**
+ * Remove the pref $string
+ * @ignore
+ */
 function removePref($data_dir, $username, $string) {
     global $prefs_cache;
     $db = new dbPrefs;
@@ -311,7 +328,10 @@ function removePref($data_dir, $username, $string) {
     return;
 }
 
-/* sets the pref, $string, to $set_to */
+/**
+ * sets the pref, $string, to $set_to
+ * @ignore
+ */
 function setPref($data_dir, $username, $string, $set_to) {
     global $prefs_cache;
 
@@ -338,7 +358,10 @@ function setPref($data_dir, $username, $string, $set_to) {
     return;
 }
 
-/* This checks if the prefs are available */
+/**
+ * This checks if the prefs are available
+ * @ignore
+ */
 function checkForPrefs($data_dir, $username) {
     $db = new dbPrefs;
     if(isset($db->error)) {
@@ -346,7 +369,10 @@ function checkForPrefs($data_dir, $username) {
     }
 }
 
-/* Writes the Signature */
+/**
+ * Writes the Signature
+ * @ignore
+ */
 function setSig($data_dir, $username, $number, $string) {
     if ($number == "g") {
         $key = '___signature___';
@@ -357,7 +383,10 @@ function setSig($data_dir, $username, $number, $string) {
     return;
 }
 
-/* Gets the signature */
+/**
+ * Gets the signature
+ * @ignore
+ */
 function getSig($data_dir, $username, $number) {
     if ($number == "g") {
         $key = '___signature___';

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * abook_local_file.php
+ * abook_global_file.php
  *
  * Copyright (c) 1999-2004 The SquirrelMail Project Team
  * Licensed under the GNU GPL. For full terms see the file COPYING.
@@ -16,9 +16,15 @@
  *
  * Make sure you configure this before using it!
  *
- * $Id$
+ * @version $Id$
+ * @package squirrelmail
+ * @subpackage addressbook
  */
 
+/**
+ * Undocumented class - fixme
+ * @package squirrelmail
+ */
 class abook_global_file extends addressbook_backend {
     var $btype = 'local';
     var $bname = 'global_file';
@@ -31,15 +37,15 @@ class abook_global_file extends addressbook_backend {
     function abook_global_file() {
         global $address_book_global_filename;
         $this->global_filename = $address_book_global_filename;
-      
+
         $this->sname = _("Global address book");
- 
+
         $this->open(true);
     }
 
     /* Open the addressbook file and store the file pointer.
-     * Use $file as the file to open, or the class' own 
-     * filename property. If $param is empty and file is  
+     * Use $file as the file to open, or the class' own
+     * filename property. If $param is empty and file is
      * open, do nothing. */
     function open($new = false) {
         $this->error = '';
@@ -48,27 +54,27 @@ class abook_global_file extends addressbook_backend {
         if($this->filehandle && !$new) {
             return true;
         }
- 
+
         /* Check that new file exists */
-        if (! file_exists($this->global_filename) || 
+        if (! file_exists($this->global_filename) ||
             ! is_readable($this->global_filename)) {
             return $this->set_error($this->global_filename . ': ' .
                 _("No such file or directory"));
         }
- 
+
         /* Close old file, if any */
         if ($this->filehandle) {
             $this->close();
         }
-        
+
         /* Open file, read only. */
         $fh = @fopen($this->global_filename, 'r');
         $this->writeable  = false;
         if(! $fh) {
-            return $this->set_error($this->global_filename . ': ' . 
+            return $this->set_error($this->global_filename . ': ' .
                 _("Open failed"));
         }
- 
+
         $this->filehandle = &$fh;
         return true;
     }
@@ -82,7 +88,7 @@ class abook_global_file extends addressbook_backend {
     }
 
     /* ========================== Public ======================== */
-    
+
     /* Search the file */
     function search($expr) {
 
@@ -90,19 +96,19 @@ class abook_global_file extends addressbook_backend {
         if(is_array($expr)) {
             return;
         }
- 
+
         /* Make regexp from glob'ed expression
          * May want to quote other special characters like (, ), -, [, ], etc. */
         $expr = str_replace('?', '.', $expr);
         $expr = str_replace('*', '.*', $expr);
- 
+
         $res = array();
         if(!$this->open()) {
             return false;
         }
- 
+
         @rewind($this->filehandle);
-        
+
         while ($row = @fgetcsv($this->filehandle, 2048, '|')) {
             $line = join(' ', $row);
             if (eregi($expr, $line)) {
@@ -116,21 +122,21 @@ class abook_global_file extends addressbook_backend {
                                'source'    => &$this->sname);
             }
         }
-        
+
         return $res;
     }
-    
+
     /* Lookup alias */
     function lookup($alias) {
         if (empty($alias)) {
             return array();
         }
- 
+
         $alias = strtolower($alias);
-        
+
         $this->open();
         @rewind($this->filehandle);
-        
+
         while ($row = @fgetcsv($this->filehandle, 2048, '|')) {
             if (strtolower($row[0]) == $alias) {
                 return array('nickname'  => $row[0],
@@ -143,7 +149,7 @@ class abook_global_file extends addressbook_backend {
                              'source'    => &$this->sname);
             }
         }
-      
+
         return array();
     }
 
@@ -152,7 +158,7 @@ class abook_global_file extends addressbook_backend {
         $res = array();
         $this->open();
         @rewind($this->filehandle);
-        
+
         while ($row = @fgetcsv($this->filehandle, 2048, '|')) {
             $res[] = array('nickname'  => $row[0],
                            'name'      => $row[1] . ' ' . $row[2],
@@ -183,6 +189,6 @@ class abook_global_file extends addressbook_backend {
         $this->set_error(_("Can not modify global address book"));
         return false;
     }
-     
+
 } /* End of class abook_local_file */
 ?>

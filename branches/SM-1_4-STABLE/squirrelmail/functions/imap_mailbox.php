@@ -8,16 +8,20 @@
  *
  * This impliments all functions that manipulate mailboxes
  *
- * $Id$
+ * @version $Id$
+ * @package squirrelmail
+ * @subpackage imap
  */
+
+/** UTF7 support */
 require_once(SM_PATH . 'functions/imap_utf7_local.php');
 
 global $boxesnew;
 
 class mailboxes {
-    var $mailboxname_full = '', $mailboxname_sub= '', $is_noselect = false, 
+    var $mailboxname_full = '', $mailboxname_sub= '', $is_noselect = false,
         $is_special = false, $is_root = false, $is_inbox = false, $is_sent = false,
-        $is_trash = false, $is_draft = false,  $mbxs = array(), 
+        $is_trash = false, $is_draft = false,  $mbxs = array(),
         $unseen = false, $total = false;
 
     function addMbx($mbx, $delimiter, $start, $specialfirst) {
@@ -74,7 +78,7 @@ function sortSpecialMbx($a, $b) {
 }
 
 function find_mailbox_name ($mailbox) {
-    if (preg_match('/\*.+\"([^\r\n\"]*)\"[\s\r\n]*$/', $mailbox, $regs)) 
+    if (preg_match('/\*.+\"([^\r\n\"]*)\"[\s\r\n]*$/', $mailbox, $regs))
         return $regs[1];
     if (ereg(" *\"([^\r\n\"]*)\"[ \r\n]*$", $mailbox, $regs))
         return $regs[1];
@@ -105,13 +109,13 @@ function readMailboxParent($haystack, $needle) {
     return( $ret );
 }
 
-/** 
+/**
  * Check if $subbox is below the specified $parentbox
  */
 function isBoxBelow( $subbox, $parentbox ) {
     global $delimiter;
-    /* 
-     * Eliminate the obvious mismatch, where the 
+    /*
+     * Eliminate the obvious mismatch, where the
      * subfolder path is shorter than that of the potential parent
      */
     if ( strlen($subbox) < strlen($parentbox) ) {
@@ -434,7 +438,7 @@ function user_strcasecmp($a, $b) {
  *           NULL to avoid flag check entirely.
  *   $use_long_format - override folder display preference and always show full folder name.
  */
-function sqimap_mailbox_option_list($imap_stream, $show_selected = 0, $folder_skip = 0, $boxes = 0, 
+function sqimap_mailbox_option_list($imap_stream, $show_selected = 0, $folder_skip = 0, $boxes = 0,
                                     $flag = 'noselect', $use_long_format = false ) {
     global $username, $data_dir;
     $mbox_options = '';
@@ -456,13 +460,13 @@ function sqimap_mailbox_option_list($imap_stream, $show_selected = 0, $folder_sk
             if ($folder_skip != 0 && in_array($box, $folder_skip) ) {
                 continue;
             }
-            $lowerbox = strtolower($box); 
+            $lowerbox = strtolower($box);
 	    // mailboxes are casesensitive => inbox.sent != inbox.Sent
 	    // nevermind, to many dependencies this should be fixed!
-	    
+
             if (strtolower($box) == 'inbox') { // inbox is special and not casesensitive
                 $box2 = _("INBOX");
-            } else { 
+            } else {
 	        switch ($shorten_box_names)
 		{
 		  case 2:   /* delimited, style = 2 */
@@ -504,7 +508,7 @@ function mailtree_sort(&$lsub) {
 }
 
 /*
- * Returns sorted mailbox lists in several different ways. 
+ * Returns sorted mailbox lists in several different ways.
  * See comment on sqimap_mailbox_parse() for info about the returned array.
  */
 function sqimap_mailbox_list($imap_stream, $force=false) {
@@ -533,7 +537,7 @@ function sqimap_mailbox_list($imap_stream, $force=false) {
         for ($i = 0, $cnt = count($lsub_ary);$i < $cnt; $i++) {
             /*
              * Workaround for mailboxes returned as literal
-             * Doesn't work if the mailbox name is multiple lines 
+             * Doesn't work if the mailbox name is multiple lines
 	     * (larger then fgets buffer)
              */
             if (isset($lsub_ary[$i + 1]) && substr($lsub_ary[$i],-3) == "}\r\n") {
@@ -755,7 +759,7 @@ function sqimap_mailbox_tree($imap_stream) {
                                         true, $response, $message);
 
         /*
-         * Section about removing the last element was removed 
+         * Section about removing the last element was removed
          * We don't return "* OK" anymore from sqimap_read_data
          */
         $sorted_lsub_ary = array();
@@ -776,7 +780,7 @@ function sqimap_mailbox_tree($imap_stream) {
             if (preg_match("/^\*\s+LSUB\s+\((.*)\)\s+\"(.*)\"\s+\"?(.+(?=\")|.+).*$/",$lsub_ary[$i],$regs)) {
                 $flag = $regs[1];
                 $mbx = trim($regs[3]);
-                $sorted_lsub_ary[] = array ('mbx' => $mbx, 'flag' => $flag); 
+                $sorted_lsub_ary[] = array ('mbx' => $mbx, 'flag' => $flag);
             }
             */
             $mbx = find_mailbox_name($lsub_ary[$i]);
@@ -784,7 +788,7 @@ function sqimap_mailbox_tree($imap_stream) {
             if (substr($mbx, -1) == $delimiter) {
                 $mbx = substr($mbx, 0, strlen($mbx) - 1);
             }
-            $sorted_lsub_ary[] = array ('mbx' => $mbx, 'noselect' => $noselect); 
+            $sorted_lsub_ary[] = array ('mbx' => $mbx, 'noselect' => $noselect);
         }
         array_multisort($sorted_lsub_ary, SORT_ASC, SORT_REGULAR);
 
@@ -814,7 +818,7 @@ function sqimap_mailbox_tree($imap_stream) {
                 $mbx = substr($mbx, 0, strlen($mbx) - 1);
             }
             if ($mbx == 'INBOX') {
-                $sorted_lsub_ary[] = array ('mbx' => $mbx, 'flag' => ''); 
+                $sorted_lsub_ary[] = array ('mbx' => $mbx, 'flag' => '');
                 sqimap_subscribe($imap_stream, 'INBOX');
                 $cnt++;
             }
@@ -826,7 +830,7 @@ function sqimap_mailbox_tree($imap_stream) {
                 if (substr($mbx, -1) == $delimiter) {
                     $mbx = substr($mbx, 0, strlen($mbx) - 1);
                 }
-                $sorted_lsub_ary[] = array ('mbx' => $mbx, 'flag' => $flag); 
+                $sorted_lsub_ary[] = array ('mbx' => $mbx, 'flag' => $flag);
             }
             */
         }
@@ -838,7 +842,7 @@ function sqimap_mailbox_tree($imap_stream) {
                 if($sorted_lsub_ary[$i]['noselect']) {
                     $sorted_lsub_ary[$i]['unseen'] = 0;
                 } else {
-                    $sorted_lsub_ary[$i]['unseen'] = 
+                    $sorted_lsub_ary[$i]['unseen'] =
                         sqimap_unseen_messages($imap_stream, $mbx);
                 }
                 if (($unseen_type == 2) ||

@@ -10,10 +10,21 @@
  * the right to left implementation by "functionize" some
  * html outputs.
  *
- * $Id$
+ * @version $Id$
+ * @package squirrelmail
  */
 
-    function html_tag( $tag,                // Tag to output
+/**
+ * Generate html tags
+ *
+ * @param string $tag Tag to output
+ * @param string $val Value between tags
+ * @param string $align Alignment (left, center, etc)
+ * @param string $bgcolor Back color in hexadecimal
+ * @param string $xtra Extra options
+ * @return string HTML ready for output
+ */
+function html_tag( $tag,                // Tag to output
                        $val = '',           // Value between tags
                        $align = '',         // Alignment
                        $bgcolor = '',       // Back color
@@ -40,7 +51,7 @@
         }
 
         if ( $bgcolor <> '' ) {
-            $bgc = " bgcolor=\"$bgcolor\""; 
+            $bgc = " bgcolor=\"$bgcolor\"";
         }
 
         switch ( $align ) {
@@ -73,7 +84,7 @@
             $ret .= ">$val</$tag>";
         } else {
             $ret .= '>';
-        } 
+        }
 
         return( $ret );
     }
@@ -89,7 +100,7 @@
                        '/.+(\\?'.$var.')=(.*)$/AU',     /* at front and only var */
                        '/.+(\\&'.$var.')=(.*)$/AU'      /* at the end */
                      );
-	preg_replace('/&amp;/','&',$url);	     
+	preg_replace('/&amp;/','&',$url);
         switch (true) {
             case (preg_match($pat_a[0],$url,$regs)):
                 $k = $regs[1];
@@ -140,7 +151,7 @@
     function echo_template_var($var, $format_ar = array() ) {
         $frm_last = count($format_ar) -1;
 
-        if (isset($format_ar[0])) echo $format_ar[0]; 
+        if (isset($format_ar[0])) echo $format_ar[0];
             $i = 1;
 
         switch (true) {

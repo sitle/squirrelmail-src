@@ -8,9 +8,14 @@
  *
  * IMAP search routines
  *
- * $Id$
+ * @version $Id$
+ * @package squirrelmail
+ * @subpackage imap
+ * @deprecated This search interface has been largely replaced by asearch
  */
 
+/**
+ * Load up a bunch of SM functions */
 require_once(SM_PATH . 'functions/imap.php');
 require_once(SM_PATH . 'functions/date.php');
 require_once(SM_PATH . 'functions/mailbox_display.php');
@@ -34,7 +39,7 @@ function sqimap_search($imapConnection, $search_where, $search_what, $mailbox,
     $multi_search = explode(' ', $search_what);
     $search_string = '';
 
-    /* it seems macosx does not support the prefered search 
+    /* it seems macosx does not support the prefered search
        syntax so we fall back to the older style. This IMAP
        server has a problem with multiple search terms. Instead
        of returning the messages that match all the terms it
@@ -66,7 +71,7 @@ function sqimap_search($imapConnection, $search_where, $search_what, $mailbox,
     if ($allow_charset_search && isset($languages[$squirrelmail_language]['CHARSET']) &&
         $languages[$squirrelmail_language]['CHARSET']) {
         $ss = "SEARCH CHARSET "
-            . strtoupper($languages[$squirrelmail_language]['CHARSET']) 
+            . strtoupper($languages[$squirrelmail_language]['CHARSET'])
             . " ALL $search_string";
     } else {
         $ss = "SEARCH ALL $search_string";
@@ -76,10 +81,10 @@ function sqimap_search($imapConnection, $search_where, $search_what, $mailbox,
     $readin = sqimap_run_command($imapConnection, $ss, false, $result, $message, $uid_support);
 
     /* try US-ASCII charset if search fails */
-    if (isset($languages[$squirrelmail_language]['CHARSET']) 
+    if (isset($languages[$squirrelmail_language]['CHARSET'])
         && strtolower($result) == 'no') {
         $ss = "SEARCH CHARSET \"US-ASCII\" ALL $search_string";
-        $readin = sqimap_run_command ($imapConnection, $ss, true, 
+        $readin = sqimap_run_command ($imapConnection, $ss, true,
                                       $result, $message);
     }
 

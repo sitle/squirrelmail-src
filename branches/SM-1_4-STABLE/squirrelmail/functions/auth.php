@@ -8,10 +8,11 @@
  *
  * Contains functions used to do authentication.
  *
- * $Id$
+ * @version $Id$
+ * @package squirrelmail
  */
 
-/* Put in a safety net here, in case a naughty admin didn't run conf.pl when they upgraded */
+/** Put in a safety net here, in case a naughty admin didn't run conf.pl when they upgraded */
 
 if (! isset($smtp_auth_mech)) {
   $smtp_auth_mech = 'none';
@@ -34,7 +35,7 @@ function is_logged_in() {
     if ( sqsession_is_registered('user_is_logged_in') ) {
         return;
     } else {
-        global $PHP_SELF, $HTTP_POST_VARS, $_POST, $session_expired_post, 
+        global $PHP_SELF, $HTTP_POST_VARS, $_POST, $session_expired_post,
 	       $session_expired_location;
 
         /*  First we store some information in the new session to prevent
@@ -46,7 +47,7 @@ function is_logged_in() {
     	    $session_expired_post = $_POST;
 	}
         $session_expired_location = $PHP_SELF;
-        if (!sqsession_is_registered('session_expired_post')) {    
+        if (!sqsession_is_registered('session_expired_post')) {
            sqsession_register($session_expired_post,'session_expired_post');
         }
         if (!sqsession_is_registered('session_expired_location')) {
@@ -73,7 +74,7 @@ function digest_md5_response ($username,$password,$challenge,$service,$host) {
 /* Given the challenge from the server, calculate and return the response-string
    for digest-md5 authentication.  (See RFC 2831 for more details) */
   $result=digest_md5_parse_challenge($challenge);
-  
+
 // verify server supports qop=auth
   // $qop = explode(",",$result['qop']);
   //if (!in_array("auth",$qop)) {
@@ -114,7 +115,7 @@ function digest_md5_response ($username,$password,$challenge,$service,$host) {
   $reply .= ',qop=' . $qop_value;
   $reply = base64_encode($reply);
   return $reply . "\r\n";
- 
+
 }
 
 function digest_md5_parse_challenge($challenge) {

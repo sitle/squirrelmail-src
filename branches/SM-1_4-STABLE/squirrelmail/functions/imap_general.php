@@ -8,9 +8,12 @@
  *
  * This implements all functions that do general imap functions.
  *
- * $Id$
+ * @version $Id$
+ * @package squirrelmail
+ * @subpackage imap
  */
 
+/** Includes.. */
 require_once(SM_PATH . 'functions/page_header.php');
 require_once(SM_PATH . 'functions/auth.php');
 
@@ -48,10 +51,10 @@ function sqimap_run_command_list ($imap_stream, $query, $handle_errors, &$respon
         error_box($string,$color);
         return false;
     }
-    
+
 }
 
-function sqimap_run_command ($imap_stream, $query, $handle_errors, &$response, 
+function sqimap_run_command ($imap_stream, $query, $handle_errors, &$response,
                             &$message, $unique_id = false,$filter=false,
                              $outputstream=false,$no_return=false) {
     if ($imap_stream) {
@@ -70,11 +73,11 @@ function sqimap_run_command ($imap_stream, $query, $handle_errors, &$response,
         error_box($string,$color);
         return false;
     }
-    
+
 }
 
 
-/* 
+/*
  * custom fgets function. gets a line from IMAP
  * no matter how big it may be
  */
@@ -114,7 +117,7 @@ function sqimap_fread($imap_stream,$iSize,$filter=false,
     $iRetrieved = 0;
     $results = '';
     $sRead = $sReadRem = '';
-    // NB: fread can also stop at end of a packet on sockets. 
+    // NB: fread can also stop at end of a packet on sockets.
     while ($iRetrieved < $iSize) {
         $sRead = fread($imap_stream,$iBufferSize);
         $iLength = strlen($sRead);
@@ -133,7 +136,7 @@ function sqimap_fread($imap_stream,$iSize,$filter=false,
         }
 
         if ($filter && $sRead) {
-           // in case the filter is base64 decoding we return a remainder 
+           // in case the filter is base64 decoding we return a remainder
            $sReadRem = $filter($sRead);
         }
         if ($outputstream && $sRead) {
@@ -145,12 +148,12 @@ function sqimap_fread($imap_stream,$iSize,$filter=false,
         }
         if ($no_return) {
             $sRead = '';
-        } else {    
+        } else {
             $results .= $sRead;
         }
     }
-    return $results;       
-}        
+    return $results;
+}
 
 /*
  * Reads the output from the IMAP stream.  If handle_errors is set to true,
@@ -158,7 +161,7 @@ function sqimap_fread($imap_stream,$iSize,$filter=false,
  * the errors will be sent back through $response and $message
  */
 
-function sqimap_read_data_list ($imap_stream, $tag_uid, $handle_errors, 
+function sqimap_read_data_list ($imap_stream, $tag_uid, $handle_errors,
           &$response, &$message, $query = '',
            $filter = false, $outputstream = false, $no_return = false) {
     global $color, $squirrelmail_language;
@@ -199,7 +202,7 @@ function sqimap_read_data_list ($imap_stream, $tag_uid, $handle_errors,
                     $response = $arg;
                     $message = trim(substr($read,$i+strlen($arg)));
                     break 3; /* switch switch while */
-                  default: 
+                  default:
                     /* this shouldn't happen */
                     $response = $arg;
                     $message = trim(substr($read,$i+strlen($arg)));
@@ -241,7 +244,7 @@ function sqimap_read_data_list ($imap_stream, $tag_uid, $handle_errors,
                                 $fetch_data[] = $line ."\n";
                             }
                             /* release not neaded data */
-                            unset($aLiteral); 
+                            unset($aLiteral);
                             /* next fgets belongs to this fetch because
                                we just got the exact literalsize and there
                                must follow data to complete the response */
@@ -300,7 +303,7 @@ function sqimap_read_data_list ($imap_stream, $tag_uid, $handle_errors,
           } // end case '*'
         }   // end switch
     } // end while
-    
+
     /* error processing in case $read is false */
     if ($read === false) {
         unset($data);
@@ -315,16 +318,16 @@ function sqimap_read_data_list ($imap_stream, $tag_uid, $handle_errors,
             $string .= ("Query:") . ' '. htmlspecialchars($query)
             . '<br>' . "</font><br>\n";
         }
-        error_box($string,$color);    
+        error_box($string,$color);
         exit;
     }
-    
+
     /* Set $resultlist array */
     if (!empty($data)) {
         $resultlist[] = $data;
     }
     elseif (empty($resultlist)) {
-        $resultlist[] = array(); 
+        $resultlist[] = array();
     }
 
     /* Return result or handle errors */
@@ -336,7 +339,7 @@ function sqimap_read_data_list ($imap_stream, $tag_uid, $handle_errors,
     case 'OK':
         return $resultlist;
         break;
-    case 'NO': 
+    case 'NO':
         /* ignore this error from M$ exchange, it is not fatal (aka bug) */
         if (strstr($message, 'command resulted in') === false) {
             set_up_language($squirrelmail_language);
@@ -353,7 +356,7 @@ function sqimap_read_data_list ($imap_stream, $tag_uid, $handle_errors,
             exit;
         }
         break;
-    case 'BAD': 
+    case 'BAD':
         set_up_language($squirrelmail_language);
         require_once(SM_PATH . 'functions/display_messages.php');
         $string = "<b><font color=$color[2]>\n" .
@@ -364,9 +367,9 @@ function sqimap_read_data_list ($imap_stream, $tag_uid, $handle_errors,
             _("Server responded: ") .
             htmlspecialchars($message) . "</font><br>\n";
         error_box($string,$color);
-        echo '</body></html>';        
-        exit; 
-    case 'BYE': 
+        echo '</body></html>';
+        exit;
+    case 'BYE':
         set_up_language($squirrelmail_language);
         require_once(SM_PATH . 'functions/display_messages.php');
         $string = "<b><font color=$color[2]>\n" .
@@ -377,9 +380,9 @@ function sqimap_read_data_list ($imap_stream, $tag_uid, $handle_errors,
             _("Server responded: ") .
             htmlspecialchars($message) . "</font><br>\n";
         error_box($string,$color);
-        echo '</body></html>';        
+        echo '</body></html>';
         exit;
-    default: 
+    default:
         set_up_language($squirrelmail_language);
         require_once(SM_PATH . 'functions/display_messages.php');
         $string = "<b><font color=$color[2]>\n" .
@@ -392,23 +395,23 @@ function sqimap_read_data_list ($imap_stream, $tag_uid, $handle_errors,
         error_box($string,$color);
        /* the error is displayed but because we don't know the reponse we
           return the result anyway */
-       return $resultlist;    
+       return $resultlist;
        break;
     }
 }
 
-function sqimap_read_data ($imap_stream, $tag_uid, $handle_errors, 
+function sqimap_read_data ($imap_stream, $tag_uid, $handle_errors,
                            &$response, &$message, $query = '',
                            $filter=false,$outputstream=false,$no_return=false) {
-    $res = sqimap_read_data_list($imap_stream, $tag_uid, $handle_errors, 
-              $response, $message, $query,$filter,$outputstream,$no_return); 
+    $res = sqimap_read_data_list($imap_stream, $tag_uid, $handle_errors,
+              $response, $message, $query,$filter,$outputstream,$no_return);
     /* sqimap_read_data should be called for one response
-       but since it just calls sqimap_read_data_list which 
+       but since it just calls sqimap_read_data_list which
        handles multiple responses we need to check for that
-       and merge the $res array IF they are seperated and 
+       and merge the $res array IF they are seperated and
        IF it was a FETCH response. */
-  
-//    if (isset($res[1]) && is_array($res[1]) && isset($res[1][0]) 
+
+//    if (isset($res[1]) && is_array($res[1]) && isset($res[1][0])
 //        && preg_match('/^\* \d+ FETCH/', $res[1][0])) {
 //        $result = array();
 //        foreach($res as $index=>$value) {
@@ -436,12 +439,12 @@ function sqimap_login ($username, $password, $imap_server_address, $imap_port, $
     }
     $imap_server_address = sqimap_get_user_server($imap_server_address, $username);
         $host=$imap_server_address;
-        
+
         if (($use_imap_tls == true) and (check_php_version(4,3)) and (extension_loaded('openssl'))) {
           /* Use TLS by prefixing "tls://" to the hostname */
           $imap_server_address = 'tls://' . $imap_server_address;
         }
-    
+
     $imap_stream = @fsockopen ( $imap_server_address, $imap_port, $error_number, $error_string, 15);
 
     /* Do some error correction */
@@ -505,7 +508,7 @@ function sqimap_login ($username, $password, $imap_server_address, $imap_port, $
         // devel but requires functions not available in stable. RFC requires us to
         // not send LOGIN when LOGINDISABLED is advertised.
         if(stristr($server_info, 'LOGINDISABLED')) {
-            $response = 'BAD';	
+            $response = 'BAD';
             $message = _("The IMAP server is reporting that plain text logins are disabled.").' '.
                 _("Using CRAM-MD5 or DIGEST-MD5 authentication instead may work.").' ';
             if (!$use_imap_tls) {
@@ -525,7 +528,7 @@ function sqimap_login ($username, $password, $imap_server_address, $imap_port, $
         $response="BAD";
         $message="Internal SquirrelMail error - unknown IMAP authentication method chosen.  Please contact the developers.";
     }
-    
+
     /* If the connection was not successful, lets see why */
     if ($response != 'OK') {
         if (!$hide) {
@@ -558,7 +561,7 @@ function sqimap_login ($username, $password, $imap_server_address, $imap_port, $
                  * $squirrelmail_language is set by a cookie when
                  * the user selects language and logs out
                  */
-                
+
                 set_up_language($squirrelmail_language, true);
                 include_once(SM_PATH . 'functions/display_messages.php' );
                 sqsession_destroy();
@@ -757,7 +760,7 @@ function parseAddress($address, $max=0) {
           case '=':
           case '"':
           case ' ':
-            $aStack[] = $sToken; 
+            $aStack[] = $sToken;
             break;
           case '(':
             $aComment[] = substr($sToken,1,-1);
@@ -778,7 +781,7 @@ function parseAddress($address, $max=0) {
             }
             if (count($aStack)) {
                 $sPersonal = trim(implode('',$aStack));
-            } else { 
+            } else {
                 $sPersonal = '';
             }
             if (!$sPersonal && count($aComment)) {
@@ -789,7 +792,7 @@ function parseAddress($address, $max=0) {
             $sPersonal = $sComment = $sEmail = '';
             $aStack = $aComment = array();
             break;
-          case ':': 
+          case ':':
             $sGroup = implode(' ',$aStack); break;
             $aStack = array();
             break;
@@ -798,7 +801,7 @@ function parseAddress($address, $max=0) {
             break;
           case '>':
             /* skip */
-            break; 
+            break;
           default: $aStack[] = $sToken; break;
         }
     }
@@ -819,7 +822,7 @@ function parseAddress($address, $max=0) {
     }
     $aAddress[] = array($sEmail,$sPersonal);
     return $aAddress;
-} 
+}
 
 
 
@@ -856,7 +859,7 @@ function sqimap_status_messages ($imap_stream, $mailbox) {
         }
         if (preg_match('/RECENT\s+([0-9]+)/i', $read_ary[$i], $regs)) {
             $recent = $regs[1];
-        }        
+        }
         $i++;
     }
     return array('MESSAGES' => $messages, 'UNSEEN'=>$unseen, 'RECENT' => $recent);
@@ -886,8 +889,8 @@ function sqimap_append_done ($imap_stream, $folder='') {
                   _("Server responded: ") .
                   $reason . "<br>\n";
            if (preg_match("/(.*)(quota)(.*)$/i", $reason, $regs)) {
-              $string .= _("Solution: ") . 
-            _("Remove unneccessary messages from your folder and start with your Trash folder.") 
+              $string .= _("Solution: ") .
+            _("Remove unneccessary messages from your folder and start with your Trash folder.")
               ."<br>\n";
            }
            $string .= "</font>\n";
@@ -913,13 +916,13 @@ function sqimap_get_user_server ($imap_server, $username) {
 }
 
 /* This is an example that gets imapservers from yellowpages (NIS).
- * you can simple put map:map_yp_alias in your $imap_server_address 
+ * you can simple put map:map_yp_alias in your $imap_server_address
  * in config.php use your own function instead map_yp_alias to map your
  * LDAP whatever way to find the users imapserver. */
 
 function map_yp_alias($username) {
    $yp = `ypmatch $username aliases`;
    return chop(substr($yp, strlen($username)+1));
-} 
+}
 
 ?>

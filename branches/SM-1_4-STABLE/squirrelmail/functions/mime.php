@@ -9,9 +9,11 @@
  * This contains the functions necessary to detect and decode MIME
  * messages.
  *
- * $Id$
+ * @version $Id$
+ * @package squirrelmail
  */
 
+/** The typical includes... */
 require_once(SM_PATH . 'functions/imap.php');
 require_once(SM_PATH . 'functions/attachment_common.php');
 
@@ -191,7 +193,7 @@ function sqimap_base64_decode(&$string) {
     // remove the noise in order to check if the 4 bytes pairs are complete
     $string = str_replace(array("\r\n","\n", "\r", " "),array('','','',''),$string);
 
-    $sStringRem = '';    
+    $sStringRem = '';
     $iMod = strlen($string) % 4;
     if ($iMod) {
         $sStringRem = substr($string,-$iMod);
@@ -507,7 +509,7 @@ function formatAttachments($message, $exclude_id, $mailbox, $id) {
                         '<A HREF="'.$defaultlink.'">'.decodeHeader($display_filename).'</A>&nbsp;</TD>' .
                         '<TD><SMALL><b>' . show_readable_size($header->size) .
                         '</b>&nbsp;&nbsp;</small></TD>' .
-                        '<TD><SMALL>[ '. 
+                        '<TD><SMALL>[ '.
                          htmlspecialchars($type0).'/'.htmlspecialchars($type1).
                         ' ]&nbsp;</SMALL></TD>'.
                         '<TD><SMALL>';
@@ -846,7 +848,7 @@ function sq_defang(&$attvalue){
  * Kill any tabs, newlines, or carriage returns. Our friends the
  * makers of the browser with 95% market value decided that it'd
  * be funny to make "java[tab]script" be just as good as "javascript".
- * 
+ *
  * @param  attvalue  The attribute value before extraneous spaces removed.
  * @return attvalue  Nothing, modifies a reference value.
  */

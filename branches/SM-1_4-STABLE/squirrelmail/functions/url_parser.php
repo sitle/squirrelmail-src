@@ -9,9 +9,13 @@
  * This code provides various string manipulation functions that are
  * used by the rest of the Squirrelmail code.
  *
- * $Id$
+ * @version $Id$
+ * @package squirrelmail
  */
 
+/**
+ * Undocumented - complain, then patch.
+ */
 function replaceBlock (&$in, $replace, $start, $end) {
     $begin = substr($in,0,$start);
     $end   = substr($in,$end,strlen($in)-$end);
@@ -68,8 +72,8 @@ $url_parser_url_tokens = array(
     'news://');
 
 global $url_parser_poss_ends;
-$url_parser_poss_ends = array(' ', "\n", "\r", '<', '>', ".\r", ".\n", 
-    '.&nbsp;', '&nbsp;', ')', '(', '&quot;', '&lt;', '&gt;', '.<', 
+$url_parser_poss_ends = array(' ', "\n", "\r", '<', '>', ".\r", ".\n",
+    '.&nbsp;', '&nbsp;', ')', '(', '&quot;', '&lt;', '&gt;', '.<',
     ']', '[', '{', '}', "\240", ', ', '. ', ",\n", ",\r");
 
 
@@ -136,5 +140,5 @@ function parseUrl (&$body) {
         $start   = $target_pos;
         $blength = strlen($body);
     }
-} 
+}
 ?>
