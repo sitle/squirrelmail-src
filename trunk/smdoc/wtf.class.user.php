@@ -443,7 +443,7 @@ class user extends thing { // a user
 /* HOMECLASSID defined in wtf.config.php */
 $HARDCLASS[HOMECLASSID] = 'home';
 
-class home extends content { // a users home thing
+class home extends wikipage { // a users home thing
 
 /*** Constructor ***/
 
@@ -452,7 +452,7 @@ class home extends content { // a users home thing
 		$username = NULL
 	) {
 		track('home::home', $username);
-		parent::content($user, $username, USERTHINGBODY, TRUE, USERVIEWGROUP, USEREDITGROUP, USERDELETEGROUP, USERADMINGROUP);
+		parent::content($user, $username, USERTHINGBODY, USERVIEWGROUP, USEREDITGROUP, USERDELETEGROUP, USERADMINGROUP);
 		track();
 	}
 
@@ -465,11 +465,6 @@ class home extends content { // a users home thing
 		if (hasPermission($this, $wtf->user, 'viewGroup')) {	// check permission
 			$user = &wtf::loadObject($this->objectid, 0, 'user');
 			if ($user) {
-				if ($this->contentIsXML) {
-					$newLine = CONVERTNEWLINESTO;
-				} else {
-					$newLine = "\n";
-				}
                 
                 $username =  htmlspecialchars($user->title);
                 $msg = getValue('show_msg', FALSE);
@@ -479,11 +474,17 @@ class home extends content { // a users home thing
                   echo '<register_success username="', $username, '"/>';
                 } 
 
-				echo 'Username: '.htmlspecialchars($user->title). $newLine;
-	//			echo 'E-mail: '.htmlspecialchars(encodeEmail($user->email)), $newLine;
-				echo 'Registered: '.date(DATEFORMAT, dbdate2unixtime($user->creatorDatetime)), $newLine;
-				echo 'Last Visited: '.date(DATEFORMAT, dbdate2unixtime($user->updatorDatetime)), $newLine;
-				echo 'User Groups: ';
+                echo '<user_record>';
+				echo '<user_record_item key="Username" value="'.htmlspecialchars($user->title).'" />';
+                if ($user->objectid == $wtf->user->objectid) {
+                    echo '<user_record_item key="E-mail" value="'.
+                          htmlspecialchars(encodeEmail($user->email)).'" />';
+                }
+				echo '<user_record_item key="Registered" value="'.
+                     date(DATEFORMAT, dbdate2unixtime($user->creatorDatetime)).'" />';
+				echo '<user_record_item key="Last Visited" value="'.
+                     date(DATEFORMAT, dbdate2unixtime($user->updatorDatetime)).'" />';
+				echo '<user_record_item key="User Groups" value="';
 				if (isset($user->groups) && is_array($user->groups)) {
 					foreach ($user->groups as $group) {
 						echo htmlspecialchars($group), ' ';
@@ -491,11 +492,11 @@ class home extends content { // a users home thing
 				} else {
 					echo 'Unknown';
 				}
-				echo $newLine;
+                echo '" /></user_record>';
+
 				if ($user->objectid == $wtf->user->objectid) {
-					echo $newLine;
-					echo '<a href="', THINGIDURI, $user->objectid, '&amp;class=user&amp;op=edit">Update your user information</a>.', $newLine;
-                    echo '<a href="', THINGIDURI, $user->objectid, '&amp;class=home&amp;op=edit">Update your profile</a>.', $newLine;
+					echo '<a href="', THINGIDURI, $user->objectid, '&amp;class=user&amp;op=edit">Update your user information</a>.<br/>';
+                    echo '<a href="', THINGIDURI, $user->objectid, '&amp;class=home&amp;op=edit">Update your profile</a>.<br/>';
 				}
 			}
 			unset($user);
@@ -553,6 +554,12 @@ E-mail: <input type="text" name="{emailfield}" value="" size="40" /><br />
 	'/register_error' => '',
 	'register_already' => '<p class="error">You\'re logged in, you don\'t need to create an account, you already have one.</p>',
 	'/register_already' => '',
+
+// view
+    'user_record' => '<p>',
+    '/user_record' => '</p>',
+    'user_record_item' => '',
+    '/user_record_item' => "{key}: {value}<br />\n",
 
 // edit
 	'profile_form' => '
