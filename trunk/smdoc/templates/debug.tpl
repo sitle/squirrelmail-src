@@ -29,26 +29,23 @@ function debug_display($accessNumber, $execTime, &$trackString, $debugVar, &$tem
 {
 ?>
 <!-- begin debug -->
-<div class="debug_output">
-<a name="debug"><img src="templates/images/empty.png" alt="------------- debug ------------------------------------------" /></a>
+<div id="debug_output">
 
-<div class="debug_output_heading">Debug Information</div>
+<h1>Debug Information</h1>
 <pre>Total DB Executions: <?php echo $accessNumber; ?>&nbsp;
 Total Execution Time: <?php echo $execTime; ?>  seconds
 </pre>
 
-<div class="debug_output_heading">Execution History</div>
+<h2>Execution History</h2>
 <pre><?php echo $trackString; ?></pre>
 
 <?php if ( $debugVar ) 
       { ?>
-<div class="debug_output_heading">Request</div>
+<h2>Request</h2>
 <?php   show($_REQUEST); ?>
-
-<div class="debug_output_heading">Session</div>
+<h2>Session</h2>
 <?php   show($_SESSION); ?>
-
-<div class="debug_output_heading">Cookie</div>
+<h2>Cookie</h2>
 <?php   show($_COOKIE);
       } ?>
 </div>

@@ -1,169 +1,36 @@
-/*
- * Modified by SquirrelMail Development Team
- * $Id$
- */
-
-/** 
- * Basic style elements that make up the page:
- * body
- * pagetitle (includes skip-link area for textonly browsing,
- *			usermenu, titleblock, and titleupdate)
- * status (error and ok)
- * content
- * editmenu
- * copyright
- * footer
- */ 
-body {
-	color: #333333; 
-	margin: 0px;
-	padding: 0px;
-	font-family: verdana, "trebuchet ms", arial; 
+#sitetitle {
+    font-size: xx-large;
 }
-#pagetitle {
-	margin: 0px;
-	border-bottom: 1px solid gray;
-	background: url(images/squirrelmail-2small.gif) no-repeat top left;
+#copyright,
+#subsitetitle {
+    text-align: center;
 }
-#pagetitle .skip {
-	width: 151px;
-	height: 150px;
+#contentupdate {
+    text-align: right;
+    font-size: small;
 }
-#pagetitle .usermenu {
-	background: url(images/header.gif) no-repeat top left;
-	font-size: small;
-	text-align: right;
-	padding: 2px;
-	height: 65px;
-	color: #666;
+#flagline {
+    font-size: small;
+    float: right;
 }
-#pagetitle .titleblock {
-	color: #666;
-	font-size: x-large;
-	text-align: left;
-	padding: 0px 20px;
-	margin: 0px;
-}
-#pagetitle .titleupdate {
-	color: #999;
-	font-size: small;
-	text-align: right;
-	padding: 0px 2px;
-	vertical-align: bottom;
-	white-space: nowrap;
-}
-#pagetitle .locationmenu {
-	background: #b0c3c6;
-	border-top: 1px solid gray;
-	padding: 2px;
-	font-size: small; 
-	color: #666;	
-	margin: 0px;
-}
-#status {
-	font-size: small;
-	text-align: center;
-	border-bottom: 1px dashed gray;
-	padding: 2px 5px;
-	margin: 0px;
-}
-#status .error {
-	color: #BB0000;	
-}
-#status .ok {
-	color: #00BB00;
-}
-#content {
-	background: white;
-	margin: 5px 0px;
-	padding: 5px;
-}
-#editmenu {
-	background: #b0c3c6;
-	border-top: 1px solid gray;
-	padding: 2px;
-	margin: 0px;
-	font-size: small; 
-	color: #666;	
-	text-align: center;
+#debug_output h1,
+#content h1,
+#flagline {
+    margin: 0px;
+    padding: 0px;
 }
 #copyright {
-	background: #7a9294;
-	padding: 2px;
-	border-top: 1px solid gray;
-	border-bottom: 1px solid gray;
-	color: #eee;
-	font-size: small;
-	text-align: center; 
+    margin-top: 5px;
+    padding: 0px;
+    font-size: small;
+    clear: both;
 }
-#footer {
-	color: #666;
-	text-align: center;
-	font-size: x-small;
+#usermenu {
+    padding: 2px 2px;
 }
 
-/** Basic image properties */
-IMG {
-	border: 0px;
-}
-
-/** Basic properties for forms */
-form { 
-	white-space: nowrap; 
-	display: inline;
-	text-align: center;
-}
-select,
-textarea,
-input {
-	font-family: "Courier New", courier, monospace;
-	font-size: 12px;
-    background-color: #F0F0F0;
-}
-select.error,
-textarea.error,
-input.error {
-	background-color: #ffcccc;
-}
-.smdoc_textarea {
-	width: 80%;
-}
-.form_submit {
-	text-align: center;
-}
-
-/** Basic properties for tables */
-table.smdoc_table {
-	margin: 0px auto 10px auto;
-}
-tr.row_odd {
-	background-color: #f3f3f3;
-}
-tr.row_even {
-	background-color: #f9f9f9;
-}
-/** Label/Value pairs */
-.heading,
-.label {
-	padding: 0px 5px;
-	vertical-align: top;
-	font-weight: bold;
-}
-.heading {
-	text-align: left;
-}
-.label {
-	text-align: right;
-}
-.value {
-	padding: 0px 5px;
-	text-align: left;
-}
-
-/** Shade pre-formatted debug text */
-.debug_output {
-	font-size: small;
-	margin: 0px 5px;
+h1 {
+    font-size: x-large;
 }
 
 /** Attributes for index characters used by siteindex */
@@ -179,216 +46,7 @@ tr.row_even {
 	margin: 0px 20px;
 }
 
-/** 
- * Styles for commonly used headers
- * h1
- * h2
- * h3, debug_output_heading, index heading, separator
- */
-h1 {
-	margin: 5px 0px;
-	padding: 0px;
-	color: #7a9294;
-	font-weight: bold; 
-	text-decoration: none;
-	text-align: center;
-}
-.indexhead,
-.separator,
-h2 {
-	margin: 5px 0px;
-	color: #7a9294; 
-	font-weight: bold; 
-	text-decoration: none;
-	text-align: left;
-}
-.debug_output_heading,
-h3 {
-	margin: 5px;
-	padding-right: 5px;
-	color: #7a9294; 
-	font-weight: bold; 
-	text-decoration: none;
-}
-
-/** Separator line */
-.debug_output_heading,
-.indexhead,
-.separator,
-.line {
-	border-bottom: 1px solid #7a9294;
-}
-.separator {
-	color: #000;
-	margin: 15px 0px 10px 0px;
-	text-align: center;
-}
-
-/**
- * List formatting
- */
-OL .upper_roman {
-	list-style-type: upper-roman
-}
-OL .decimal {
-	list-style-type: decimal
-}
-li { 
-	padding-bottom: 5px; 
-	margin: 0px; 
-}
-dt { 
-	padding: 5px; 
-	margin: 0px; 
-	font-weight: bold; 
-}
-
-/** Preformatted text attributes */
-blockquote, pre {
-	font-family: "courier new", courier, monospace;
-	background-color: #eee;
-	margin: 0px;
-	padding: 5px;
-}
-
-/** Anchor tag attributes */
-a,
-a:link,
-a:visited,
-a:active {
-	text-decoration: none;
-	outline: none;
-	color: #006666;
-}
-a:hover {
-	text-decoration: underline;
-	color: gray;
-}
-
-/** Miscellaneous styles for common attributes */
-hr { 
-	color: #666; 
-	height: 1px; 
-}
-p .quote {
-	font-style: italic;
-	background-color: #eee;
-	padding: 10px;
-}
-div .preview {
-	padding: 5px;
-	margin: 10px 0px;
-	border: dotted 1px red;
-    text-align: left;
-}
-
-/** 
- * Styles used for viewing diffs
- */
-.diff_add {
-	background-color: #ccffcc;
-	font-family: "courier new", courier, monospace;
-}
-.diff_minus {
-	background-color: #ffcccc;
-	font-family: "courier new", courier, monospace;
-}
-.diff_same {
-	background-color: #eee;
-	font-family: "courier new", courier, monospace;
-}
-
-/** Various text styles */
-small,
-.small,
-.smalldate,
-.small_center { 
-	font-size: small; 
-}
-.smalldate { 
-	font-family: "courier new", courier, monospace;
-}
-.xsmall { 
-	font-size: x-small; 
-}
-.super {
-	vertical-align: super;
-	font-size: small;
-}
-.subtext,
-.subtext_center,
-.menu_subtext {
-	color: #666;
-	font-size: small;
-}
-.small_center,
-.subtext_center {
-	text-align: center;
-}
-.menu_subtext {
-	white-space: nowrap;
-}
-
-/**
- * Classes used for hiding navigation elements for 
- * text-only browsers
- */
-.nothere {
-	height: 1px;
-}
-
-/**
- * Styles for user list/table columns
- */
-.col_left {
-	width: 200px;
-	vertical-align: top;
-}
-.col_top,
-.col_right {
-	vertical-align: top;
-}
-
-/**
- * Style for IFrameset used for phpDocumentor viewing
- */
-iframe {
-	border: 1px dashed gray;
-	margin: 0px;
-}
-.doc_content {
-	height: 400px;
-	vertical-align: top;
-	width: 100%;
-}
-.doc_elements {
-	height: 400px;
-	width: 100%;
-	vertical-align: top;
-}
-/**
- * Style for textile instructions
- */
-.textile_howto {
-	width: 170px; 
-	text-align: left;
-	padding-left: 5px; 
-	border-left: 1px solid gray;
-	vertical-align: top;
-}
-.textile {
-	width: 95%;
-}
-
-/*
- * Style for News listing
- */
-.newsdate {
-    text-align: right;
-    vertical-align: top;
-}
-.newssummary {
-    text-align: left;
-    padding: 0px 15px;
-    border-bottom: 1px dashed gray;
+/** Classes for floating to one side or the other */
+.float-right {
+    float: right;
 }

@@ -1,0 +1,94 @@
+/*
+ * Modified by SquirrelMail Development Team
+ * $Id$
+ */
+
+/** 
+ * Basic style elements that make up the page:
+ * body
+ * pagetitle (includes skip-link area for textonly browsing,
+ *			usermenu, titleblock, and titleupdate)
+ * status (error and ok)
+ * content
+ * editmenu
+ * copyright
+ * footer
+ */
+.darkest { color: #36F; }
+.dark    { color: #69F; }
+.med     { color: #9CF; }
+.light   { color: #cce8ff; }
+
+body {
+	color: #333; 
+	font-family: verdana, arial;
+    background-color: #9CF;
+    background-image: url(images/sqm-blue.png);
+    background-repeat: no-repeat;
+    background-position: 0 0;
+    background-attachment: fixed; 
+}
+#sitetitle a {
+    text-decoration: none;
+    color: #36F;
+    font-weight: bold;
+}
+#locationmenu a,
+#debug_output,
+#content {
+    background-color: #FFF;
+    background-image: url(images/sqm-blue-body.png);
+    background-repeat: no-repeat;
+    background-position: 0 0;
+    background-attachment: fixed;
+    border: 1px #69F solid;
+}
+#locationmenu a {
+    text-decoration: none; 
+    color: #36F;
+}
+#locationmenu .special a:hover,
+#locationmenu a:hover {
+    background-color: #69F;
+    color: #FFF;
+}
+#locationmenu .special a {
+    background-color: #cce8ff;
+}
+#editmenu,
+#usermenu {
+    background-color: #69F;
+    margin-top: 0px;
+}
+#editmenu a,
+#usermenu a {
+    padding: 2px;
+    text-decoration: none; 
+    color: #FFF;
+}
+#sitetitle a:hover,
+#editmenu a:hover,
+#usermenu a:hover {
+    background-color: #FFF;
+    color: #36F;
+}
+#copyright {
+    border-top: 1px #69F solid;
+}
+h1,
+h2,
+h3 {
+    color: #69F;
+}
+#debug_output h1,
+#content h1 {
+    text-align: center;
+}
+#content h1 a {
+    text-decoration: none;
+    color: #69F;
+}
+#content h1 a:hover {
+    color: #9CF; 
+}
+
