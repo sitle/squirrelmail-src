@@ -144,42 +144,6 @@ function readShortMailboxName($haystack, $needle) {
     return( $elem );
 }
 
-/**
- * Returns an array of email addresses.
- * Be cautious of "user@host.com"
- */
-function parseAddrs($text) {
-    if (trim($text) == '')
-        return array();
-    $text = str_replace(' ', '', $text);
-    $text = ereg_replace('"[^"]*"', '', $text);
-    $text = ereg_replace('\\([^\\)]*\\)', '', $text);
-    $text = str_replace(',', ';', $text);
-    $array = explode(';', $text);
-    for ($i = 0; $i < count ($array); $i++) {
-        $array[$i] = eregi_replace ('^.*[<]', '', $array[$i]);
-        $array[$i] = eregi_replace ('[>].*$', '', $array[$i]);
-    }
-    return $array;
-}
-
-/**
- * Returns a line of comma separated email addresses from an array.
- */
-function getLineOfAddrs($array) {
-    if (is_array($array)) {
-        $to_line = implode(', ', $array);
-        $to_line = ereg_replace(', (, )+', ', ', $to_line);
-        $to_line = trim(ereg_replace('^, ', '', $to_line));
-        if( substr( $to_line, -1 ) == ',' )
-            $to_line = substr( $to_line, 0, -1 );
-    } else {
-        $to_line = '';
-    }
-    
-    return( $to_line );
-}
-
 function php_self () {
     if ( sqgetGlobalVar('REQUEST_URI', $req_uri, SQ_SERVER) && !empty($req_uri) ) {
       return $req_uri;
@@ -465,5 +429,3 @@ function RemoveSlashes(&$array) {
 }
 
 $PHP_SELF = php_self();
-
-?>
