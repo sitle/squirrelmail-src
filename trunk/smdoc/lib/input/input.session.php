@@ -1,6 +1,6 @@
 <?php
 /*
- * Copyright (c) 1999-2003 The SquirrelMail Project Team
+ * Copyright (c) 2003-2004 The SquirrelMail Project Team
  * Licensed under the GNU GPL. For full terms see the file COPYING.
  *
  * This file is an addition to the 
