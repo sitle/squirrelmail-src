@@ -818,12 +818,12 @@ function ShowThreadButton($source_url, $sort, $mailbox) {
     if ($allow_thread_sort == TRUE) {
         if ($thread_sort_messages == 1 ) {
             $set_thread = 2;
-            $text = '[Unthread]';
+            $text = '[U]';
             $img = 'unthreaded.png';
         } elseif ($thread_sort_messages == 0) {
             $set_thread = 1;
             $img = 'threaded.png';
-            $text = '[Thread]';
+            $text = '[T]';
         }
         echo ' <a href=' . $source_url . '?sort='
              . $sort . '&start_messages=1&set_thread=' . $set_thread
