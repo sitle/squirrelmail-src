@@ -8,6 +8,8 @@
  *
  * Base messages class.
  * 
+ *
+ *
  * $Id$
  */
 
@@ -22,10 +24,10 @@ class messages extends service {
        $username = '',
        $password = '',
        $ignore_capabilities = array(),
-       $capability = false,
+       $capability = array(),
        $aFolderProps,
-       $cached_lsub = false,
-       $cached_list = false,
+//       $cached_lsub = false,
+//       $cached_list = false,
        $resource = false;
 
     /* constructor */
@@ -64,7 +66,10 @@ class messages extends service {
                 'default_sort_dir' => 0, // 0 = Ascending, 1 = Descending?
                 'default_sort_hdr' => 'date',
                 'default_move_to_trash' => false,
-                'default_auto_expunge'  => false
+                'default_auto_expunge'  => false,
+                'default_initial_mailbox' => false,
+                'default_initial_tree' => 'lsub',
+                'default_namespace' => array() // sysadmin defined namespace overrides NAMESPACE
                 // show special first? probably we should always do that, no setting required 
                 ); 
         $this->id = $id;
@@ -84,14 +89,17 @@ class messages extends service {
             $this->ignore_capability = $properties['ignore_capability'];
         }
         /* folder settings merged with defaults */
-        foreach($properties['folders'] as $key => $value) {
+        if (isset($properties['folders'])) {
+            $aFolderProps = $properties['folders'];
+            foreach($aFolderProps as $key => $value) {
                 $aFolderProps[$key] = $value;
+            }
         }
         $this->aFolderProps = $aFolderProps;
 
         if (isset($properties['cached_lsub'])) {
             /* cached data format: array (expirationtime, cached folders, streamformat */
-            if (time < $properties['cached_lsub'][0]) {
+            if (time() < $properties['cached_lsub'][0]) {
                $lsub_tree = new mailboxlist();
                $lsub_tree->loadFromStream($properties['cached_lsub'][1],$properties['cached_lsub'][2]);
                $this->folders_lsub = $lsub_tree;
@@ -134,6 +142,10 @@ class messages extends service {
     
     // TODO
     
+    function __sleep() {
+        /* cache the mailbox-tree */
+        
+    }
     
     function login() {
         if (!$this->backend->resource) {
@@ -153,6 +165,56 @@ class messages extends service {
         }
         return $res;
     }
+    
+    /* mailbox tree related functions */
+    function getMailboxTree($type='LSUB', $aNamespace=array(), $aProperties=
+             array('expand' => false, 'haschildren' => true, 'verifyflags' => true)) {
+        if (!$aNamespace) {
+           $aNameSpace = $this->aFolderProps['default_namespace'];
+        }
+        if (isset($this->{'cached_'.$type})) {
+            $ret =& $this->{'cached_'.$type};
+        } else {
+            /* $aList array(mailboxname, flags, delimiter) */
+            $aList =& $this->backend->getmailboxList($type,$aNamespace,$aProperties);
+            $mbxtree =& new mailboxtree('test');
+            $mbxtree->loadfromstream('namespace',$aList);
+            
+        }
+        return $ret;
+    }
+    
+    
+    function _initMailboxTree($tree_id, $depth) {
+    
+    }
+    
+    function expandMaibox($tree_id, $oMbx) {
+    
+    }
+    
+    function collapseMailbox($tree_id, $oMbx) {
+    
+    }
+    
+    /* mailbox related functions */
+    function renameMailbox(&$oMbx, $name) {
+    
+    }
+    
+    function copyMailbox(&$oMbxSource, $oMbxTarget, $oService=false) {
+    
+    }
+    
+    function moveMailbox(&$oMbxSource, $oMbxTarget, $oService=false) {
+    
+    }
+    
+    function deleteMailbox(&$oMbx) {
+    
+    }
+    
+    
         
 
 }
