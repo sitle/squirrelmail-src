@@ -1,57 +1,63 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR Free Software Foundation, Inc.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# Squirrelmail Address Add plugin
+# Russian translation
+# Copyright (C) 2003 Free Software Foundation, Inc.
+# Jimmy Conner <jimmy@advcs.org>, 2003.
+# $Id$
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-01-11 18:56+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Khohlov Sergii <sergkh@westlucky.net>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"Project-Id-Version: address_add 1.9\n"
+"PO-Revision-Date: 2003-03-08 15:12-0800\n"
+"Last-Translator: Jimmy Conner <jimmy@advcs.org>\n"
+"Language-Team: Plugin Developer\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=koi8-u\n"
+"Content-Type: text/plain; charset=koi8-r\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: add.php:60
-#, c-format
+#: showlink.php:18
+msgid "Add"
+msgstr "Добавить"
+
+#, showlink.php:16
+msgid "Add to Addressbook"
+msgstr "Добавить в адресную книгу"
+
+#, add.php
+msgid "Personal address book"
+msgstr "Персональная адресная книга"
+
+#, add.php
+msgid "Global address book"
+msgstr "Общая Адресная книга"
+
+#, c-format add.php:74
 msgid "Add to %s"
-msgstr "Додати до %s"
+msgstr "Добавить в %s"
 
-#: add.php:66
+#: add.php:80
 msgid "Nickname"
-msgstr "Псевдо"
+msgstr "Никнейм"
 
-#: add.php:67
+#: add.php:81
 msgid "Must be unique"
-msgstr "повнинно бути ун╕кальне"
-
-#: add.php:69
-msgid "E-mail address"
-msgstr "Адреса електронно╖ пошти"
-
-#: add.php:75
-msgid "First name"
-msgstr "Пр╕звище"
-
-#: add.php:79
-msgid "Last name"
-msgstr "╤м'я"
+msgstr "Должен быть уникальным"
 
 #: add.php:83
+msgid "E-mail address"
+msgstr "Адрес эл. Почты:"
+
+#: add.php:89
+msgid "First name"
+msgstr "Имя"
+
+#: add.php:93
+msgid "Last name"
+msgstr "Фамилия"
+
+#: add.php:97
 msgid "Additional info"
-msgstr "Додаткова ╕нформац╕я"
+msgstr "Дополнительная информация"
 
-#: add.php:87
+#: add.php:101
 msgid "Add address"
-msgstr "Додати адресу"
-
-#: classes/showlink.php:16
-msgid "Add to Addressbook"
-msgstr "Додати до адресно╖ книги"
-
-#: classes/showlink.php:20
-msgid "Add"
-msgstr "Додати"
+msgstr "Добавить адрес"
 
