@@ -7,3 +7,21 @@ for trans in `ls locale/`; do
 	fi
     done
 done
+
+for trans in `ls locale/`; do
+    for string in `ls po/plugins/*.pot | sed 's/^po\/plugins\///' | sed 's/.pot$//'` ; do
+	if [ -f locale/${trans}/LC_MESSAGES/plugins/${string}.po ]; then
+    	    msgfmt locale/${trans}/LC_MESSAGES/plugins/${string}.po \
+		-o locale/${trans}/LC_MESSAGES/plugins/${string}.mo
+	fi
+    done
+done
+
+for trans in `ls locale/`; do
+    for string in `ls po/extra/*.pot | sed 's/^po\/extra\///' | sed 's/.pot$//'` ; do
+	if [ -f locale/${trans}/LC_MESSAGES/extra/${string}.po ]; then
+    	    msgfmt locale/${trans}/LC_MESSAGES/extra/${string}.po \
+		-o locale/${trans}/LC_MESSAGES/extra/${string}.mo
+	fi
+    done
+done
