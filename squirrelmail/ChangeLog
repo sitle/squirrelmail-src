@@ -46,6 +46,7 @@ Version 1.4.4 - CVS
   - Referenced document (presets.txt) missing.  Copied from devel.
   - Make SMTP Authentication detection in conf.pl more RFC-compliant.
   - Fixed IMAP errors when using mail_fetch plugin to auto-fetch on login.
+  - Fixed folder list in Create Folders list for Courier (properly skip INBOX)
 
 Version 1.4.3a - 2 June 2004
 ----------------------------
