@@ -30,10 +30,10 @@ global $USER_SOURCE;
 $USER_SOURCE = array('table' => 'smdoc_user',
                      'table_create' => array(getClassname(USER_CLASS_ID),'makeTable'));
 
-setPermission('base_user', 'class','login', 'Everyone');
+setPermission('base_user', 'class','login', 'Everybody');
 setPermission('base_user', 'class','logout','Registered');
-setPermission('base_user', 'class','create','Everyone');
-setPermission('base_user', 'class','list',  'Everyone');
+setPermission('base_user', 'class','create','Everybody');
+setPermission('base_user', 'class','list',  'Everybody');
 setPermission('base_user', 'object', 'groups', 'Gods');
 
 setPermission('base_user', 'object', 'clone', 'Nobody');
@@ -319,7 +319,7 @@ class base_user extends foowd_object
    */
   function inGroup($groupName, $creatorid = NULL) 
   {
-    if ($groupName == 'Everyone')               // group is everyone
+    if ($groupName == 'Everybody')               // group is everyone
       return TRUE;
     if ($groupName == 'Nobody')                 // group is nobody
       return FALSE;

@@ -17,7 +17,7 @@
 
 /** METHOD PERMISSIONS **/
 setPermission('smdoc_translation', 'class', 'create', 'Translator');
-setPermission('smdoc_translation', 'class', 'enter', 'Everyone');
+setPermission('smdoc_translation', 'class', 'enter', 'Everybody');
 setPermission('smdoc_translation', 'object', 'fill', 'Translator');
 setPermission('smdoc_translation', 'object', 'empty', 'Translator');
 setPermission('smdoc_translation', 'object', 'export', 'Gods');

@@ -25,7 +25,7 @@ setConst('ERROR_TITLE', _("Page Error"));
 
 
 /** METHOD PERMISSIONS **/
-setPermission('smdoc_error', 'object', 'view', 'Everyone');
+setPermission('smdoc_error', 'object', 'view', 'Everybody');
 
 /**
  * Error class.
