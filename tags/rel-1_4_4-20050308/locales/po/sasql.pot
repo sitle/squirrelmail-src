@@ -1,0 +1,620 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2005-02-15 12:39+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: dspam.inc.php:82
+msgid "dspam Settings"
+msgstr ""
+
+#: dspam.inc.php:89
+msgid "Warning"
+msgstr ""
+
+#: dspam.inc.php:91
+msgid "Enabling dspam will disable SpamAssassin scanning of your email."
+msgstr ""
+
+#: dspam.inc.php:94
+msgid "SpamAssassin settings and white/blacklists will not be used by dspam."
+msgstr ""
+
+#: dspam.inc.php:99
+msgid ""
+"This <a href='http://www.nuclearelephant.com/projects/dspam/faq.html#1.7' "
+"target='_blank'>FAQ</a> from the dspam web site explains the differences "
+"between SpamAssassin and dspam and why you might want to use dspam instead "
+"of SpamAssassin."
+msgstr ""
+
+#: dspam.inc.php:110
+msgid ""
+"dspam is a learning system that filters spam based on what <i>you</i> tell "
+"it is spam and what isn't. Messages are analyzed as they are delivered and "
+"are assigned a spam probability between 0 and 1. The more messages you "
+"receive, both spam and innocent, the better dspam learns what <i>you</i> "
+"think is spam and what is not."
+msgstr ""
+
+#: dspam.inc.php:114
+msgid "Reporting Spam"
+msgstr ""
+
+#: dspam.inc.php:117
+msgid ""
+"If you receive a spam message in your Inbox, forward the message to "
+"<nobr>username-spam@domain</nobr> and it will be learned as spam. For "
+"example, if your address is joe@example.com, you would forward the message "
+"to <nobr>joe-spam@example.com</nobr>."
+msgstr ""
+
+#: dspam.inc.php:123
+#, c-format
+msgid ""
+"You can also move your spam messages to the <i>%s</i> folder. This folder is "
+"periodically checked for messages which are then learned as spam and "
+"deleted. You do not need to move messages from your %s folder here because "
+"they have already been learned as spam."
+msgstr ""
+
+#: dspam.inc.php:128
+msgid "Reporting False Positives"
+msgstr ""
+
+#: dspam.inc.php:131
+msgid ""
+"From time to time, dspam will catch an innocent messages as spam. These "
+"messages are called \"false positives\". There is no way to prevent false "
+"positives entirely. If you find a false positive, forward the message to "
+"<nobr>username-fp@domain</nobr> and it will be learned as an innocent "
+"message. For example, if your email address is joe@example.com, you would "
+"forward the message to <nobr>joe-fp@example.com</nobr>."
+msgstr ""
+
+#: dspam.inc.php:137
+#, c-format
+msgid ""
+"You can also move your false positives to the <i>%s</i> folder from the %s "
+"folder. This folder is periodically checked for messages which are then "
+"learned as false positives and deleted."
+msgstr ""
+
+#: dspam.inc.php:142
+msgid "Disclaimer"
+msgstr ""
+
+#: dspam.inc.php:145
+msgid ""
+"dspam is a learning system. It only knows what is spam based on what you "
+"teach it is spam and what is not. Due to dspam's nature, you are more likely "
+"to see errors in spam detection until it is trained on your email. If you do "
+"not report a message as spam within ten days, the message will be "
+"permanently learned as innocent and you will be more likely to receive more "
+"spam."
+msgstr ""
+
+#: dspam.inc.php:173
+msgid "Use dspam"
+msgstr ""
+
+#: dspam.inc.php:183
+#, c-format
+msgid "Clean out your %s folder on opt-in?"
+msgstr ""
+
+#: dspam.inc.php:184 purge.inc.php:37
+msgid "Note"
+msgstr ""
+
+#: dspam.inc.php:185 purge.inc.php:38
+#, c-format
+msgid ""
+"Your %s folder may be unavailable during the purge. It will become available "
+"again when the purge is complete."
+msgstr ""
+
+#: move_to.php:98
+msgid "No messages were selected."
+msgstr ""
+
+#: purge.inc.php:22
+msgid "Purge $spam_folder Folder"
+msgstr ""
+
+#: purge.inc.php:30
+msgid "Purge"
+msgstr ""
+
+#: purge.inc.php:33
+#, c-format
+msgid "Delete all messages from your %s folder."
+msgstr ""
+
+#: sa_abooksync.inc.php:20
+msgid "Allow Senders from Address Book"
+msgstr ""
+
+#: sa_abooksync.inc.php:27
+msgid "Allow all address in the address book."
+msgstr ""
+
+#: sa_opts-dist.php:18
+msgid "0 - Very Aggressive"
+msgstr ""
+
+#: sa_opts-dist.php:19
+msgid "1"
+msgstr ""
+
+#: sa_opts-dist.php:20
+msgid "2 - Aggressive"
+msgstr ""
+
+#: sa_opts-dist.php:21
+msgid "3"
+msgstr ""
+
+#: sa_opts-dist.php:22
+msgid "4"
+msgstr ""
+
+#: sa_opts-dist.php:23
+msgid "5 - Recommended"
+msgstr ""
+
+#: sa_opts-dist.php:24
+msgid "6"
+msgstr ""
+
+#: sa_opts-dist.php:25
+msgid "7"
+msgstr ""
+
+#: sa_opts-dist.php:26
+msgid "8 - Lenient"
+msgstr ""
+
+#: sa_opts-dist.php:27
+msgid "9"
+msgstr ""
+
+#: sa_opts-dist.php:28
+msgid "10 - Very Lenient"
+msgstr ""
+
+#: sa_opts-dist.php:29
+msgid "Don't Filter"
+msgstr ""
+
+#: sa_opts-dist.php:99
+msgid "All"
+msgstr ""
+
+#: sa_opts-dist.php:100
+msgid "Afrikaans"
+msgstr ""
+
+#: sa_opts-dist.php:101
+msgid "Albanian"
+msgstr ""
+
+#: sa_opts-dist.php:102
+msgid "Amharic"
+msgstr ""
+
+#: sa_opts-dist.php:103
+msgid "Arabic"
+msgstr ""
+
+#: sa_opts-dist.php:104
+msgid "Armenian"
+msgstr ""
+
+#: sa_opts-dist.php:105
+msgid "Basque"
+msgstr ""
+
+#: sa_opts-dist.php:106
+msgid "Bosnian"
+msgstr ""
+
+#: sa_opts-dist.php:107
+msgid "Bulgarian"
+msgstr ""
+
+#: sa_opts-dist.php:108
+msgid "Byelorussian"
+msgstr ""
+
+#: sa_opts-dist.php:109
+msgid "Catalan"
+msgstr ""
+
+#: sa_opts-dist.php:110
+msgid "Chinese"
+msgstr ""
+
+#: sa_opts-dist.php:111
+msgid "Croatian"
+msgstr ""
+
+#: sa_opts-dist.php:112
+msgid "Czech"
+msgstr ""
+
+#: sa_opts-dist.php:113
+msgid "Danish"
+msgstr ""
+
+#: sa_opts-dist.php:114
+msgid "Dutch"
+msgstr ""
+
+#: sa_opts-dist.php:115
+msgid "English"
+msgstr ""
+
+#: sa_opts-dist.php:116
+msgid "Esperanto"
+msgstr ""
+
+#: sa_opts-dist.php:117
+msgid "Estonian"
+msgstr ""
+
+#: sa_opts-dist.php:118
+msgid "Finnish"
+msgstr ""
+
+#: sa_opts-dist.php:119
+msgid "French"
+msgstr ""
+
+#: sa_opts-dist.php:120
+msgid "Frisian"
+msgstr ""
+
+#: sa_opts-dist.php:121
+msgid "Georgian"
+msgstr ""
+
+#: sa_opts-dist.php:122
+msgid "German"
+msgstr ""
+
+#: sa_opts-dist.php:123
+msgid "Greek"
+msgstr ""
+
+#: sa_opts-dist.php:124
+msgid "Hebrew"
+msgstr ""
+
+#: sa_opts-dist.php:125
+msgid "Hindi"
+msgstr ""
+
+#: sa_opts-dist.php:126
+msgid "Hungarian"
+msgstr ""
+
+#: sa_opts-dist.php:127
+msgid "Icelandic"
+msgstr ""
+
+#: sa_opts-dist.php:128
+msgid "Indonesian"
+msgstr ""
+
+#: sa_opts-dist.php:129
+msgid "Irish Gaelic"
+msgstr ""
+
+#: sa_opts-dist.php:130
+msgid "Italian"
+msgstr ""
+
+#: sa_opts-dist.php:131
+msgid "Japanese"
+msgstr ""
+
+#: sa_opts-dist.php:132
+msgid "Korean"
+msgstr ""
+
+#: sa_opts-dist.php:133
+msgid "Latin"
+msgstr ""
+
+#: sa_opts-dist.php:134
+msgid "Latvian"
+msgstr ""
+
+#: sa_opts-dist.php:135
+msgid "Lithuanian"
+msgstr ""
+
+#: sa_opts-dist.php:136
+msgid "Malay"
+msgstr ""
+
+#: sa_opts-dist.php:137
+msgid "Marathi"
+msgstr ""
+
+#: sa_opts-dist.php:138
+msgid "Nepali"
+msgstr ""
+
+#: sa_opts-dist.php:139
+msgid "Norwegian"
+msgstr ""
+
+#: sa_opts-dist.php:140
+msgid "Persian"
+msgstr ""
+
+#: sa_opts-dist.php:141
+msgid "Polish"
+msgstr ""
+
+#: sa_opts-dist.php:142
+msgid "Portuguese"
+msgstr ""
+
+#: sa_opts-dist.php:143
+msgid "Quechua"
+msgstr ""
+
+#: sa_opts-dist.php:144
+msgid "Rhaeto-Romance"
+msgstr ""
+
+#: sa_opts-dist.php:145
+msgid "Romanian"
+msgstr ""
+
+#: sa_opts-dist.php:146
+msgid "Russian"
+msgstr ""
+
+#: sa_opts-dist.php:147
+msgid "Sanskrit"
+msgstr ""
+
+#: sa_opts-dist.php:148
+msgid "Scots"
+msgstr ""
+
+#: sa_opts-dist.php:149
+msgid "Scottish Gaelic"
+msgstr ""
+
+#: sa_opts-dist.php:150
+msgid "Serbian"
+msgstr ""
+
+#: sa_opts-dist.php:151
+msgid "Slovak"
+msgstr ""
+
+#: sa_opts-dist.php:152
+msgid "Slovenian"
+msgstr ""
+
+#: sa_opts-dist.php:153
+msgid "Spanish"
+msgstr ""
+
+#: sa_opts-dist.php:154
+msgid "Swahili"
+msgstr ""
+
+#: sa_opts-dist.php:155
+msgid "Swedish"
+msgstr ""
+
+#: sa_opts-dist.php:156
+msgid "Tagalog"
+msgstr ""
+
+#: sa_opts-dist.php:157
+msgid "Tamil"
+msgstr ""
+
+#: sa_opts-dist.php:158
+msgid "Thai"
+msgstr ""
+
+#: sa_opts-dist.php:159
+msgid "Turkish"
+msgstr ""
+
+#: sa_opts-dist.php:160
+msgid "Ukrainian"
+msgstr ""
+
+#: sa_opts-dist.php:161
+msgid "Vietnamese"
+msgstr ""
+
+#: sa_opts-dist.php:162
+msgid "Welsh"
+msgstr ""
+
+#: sa_opts-dist.php:163
+msgid "Yiddish"
+msgstr ""
+
+#: sa_opts-dist.php:183
+msgid "Disabled"
+msgstr ""
+
+#: sa_opts-dist.php:184
+msgid "MIME Attachment"
+msgstr ""
+
+#: sa_opts-dist.php:185
+msgid "Text Attachment"
+msgstr ""
+
+#: sa_settings.inc.php:113
+msgid "General Settings"
+msgstr ""
+
+#: sasql_db.php:11
+#, c-format
+msgid "sasql_DBConnect Database error: %s"
+msgstr ""
+
+#: sasql_db.php:29
+msgid "sasql_ReadWBList Database error: $s"
+msgstr ""
+
+#: sasql_db.php:109
+#, c-format
+msgid "sasql_ReadPrefs Database error: %s"
+msgstr ""
+
+#: sasql_db.php:149
+#, c-format
+msgid "sasql_UpdatePref Database error: %s"
+msgstr ""
+
+#: sasql_db.php:168
+#, c-format
+msgid "sasql_UpdatePref_multiple Database error: %s"
+msgstr ""
+
+#: sasql_db.php:182
+#, c-format
+msgid "sasql_AddPref Database error: %s"
+msgstr ""
+
+#: sasql_db.php:202
+#, c-format
+msgid "sasql_AddPref_multiple Database error: %s"
+msgstr ""
+
+#: sasql_db.php:218 sasql_db.php:231 sasql_db.php:244
+#, c-format
+msgid "sasql_DelPref Database error: %s"
+msgstr ""
+
+#: sasql_db.php:256 sasql_db.php:282
+msgid "sasql_GetPref Database error: $s"
+msgstr ""
+
+#: sasql_hooks.php:104 sasql_options.php:62
+msgid "Spam Filter Configuration"
+msgstr ""
+
+#: sasql_hooks.php:106
+msgid "Here you may configure the behavior of the spam filtering software."
+msgstr ""
+
+#: sasql_hooks.php:199
+msgid "Allow Sender"
+msgstr ""
+
+#: sasql_hooks.php:201 sasql_hooks.php:203
+msgid "remove"
+msgstr ""
+
+#: sasql_hooks.php:217 sasql_hooks.php:225
+msgid "Whitelisted"
+msgstr ""
+
+#: sasql_hooks.php:239 sasql_hooks.php:247
+msgid "Blacklisted"
+msgstr ""
+
+#: sasql_options.php:62
+msgid "Options"
+msgstr ""
+
+#: sasql_wblist.php:41 sa_whitelist.inc.php:42
+msgid "Error: You must include an e-mail address."
+msgstr ""
+
+#: sasql_wblist.php:48 sa_whitelist.inc.php:48
+msgid "Error: You have entered an invalid e-mail address."
+msgstr ""
+
+#: sasql_wblist.php:53
+msgid "Error: Missing option."
+msgstr ""
+
+#: sa_whitelist.inc.php:52
+msgid "Error: You must select Allow or Deny."
+msgstr ""
+
+#: sa_whitelist.inc.php:75
+msgid "Global Allow / Deny Address List"
+msgstr ""
+
+#: sa_whitelist.inc.php:82 sa_whitelist.inc.php:124
+msgid "Address"
+msgstr ""
+
+#: sa_whitelist.inc.php:83 sa_whitelist.inc.php:125
+msgid "Type"
+msgstr ""
+
+#: sa_whitelist.inc.php:117
+msgid "Personal Allow / Deny Address List"
+msgstr ""
+
+#: sa_whitelist.inc.php:126
+msgid "Action"
+msgstr ""
+
+#: sa_whitelist.inc.php:133
+msgid "Address Removed"
+msgstr ""
+
+#: sa_whitelist.inc.php:159
+#, c-format
+msgid "Unknown option: %s"
+msgstr ""
+
+#: sa_whitelist.inc.php:167
+msgid "Delete"
+msgstr ""
+
+#: sa_whitelist.inc.php:173
+msgid "Edit"
+msgstr ""
+
+#: sa_whitelist.inc.php:187
+msgid "Edit Address"
+msgstr ""
+
+#: sa_whitelist.inc.php:193
+msgid "Add New Address"
+msgstr ""
+
+#: sa_whitelist.inc.php:219
+msgid "Address:"
+msgstr ""
+
+#: sa_whitelist.inc.php:223
+msgid "Type:"
+msgstr ""
+
+#: sa_whitelist.inc.php:244
+msgid "Description"
+msgstr ""
