@@ -113,9 +113,9 @@ function findPreviousMessage($numMessages, $passed_id) {
 function printer_friendly_link($mailbox, $passed_id, $passed_ent_id, $color) {
     global $javascript_on;
 
-    $params = '?passed_ent_id=' . $passed_ent_id .
+    $params = '?passed_ent_id=' . urlencode($passed_ent_id) .
               '&mailbox=' . urlencode($mailbox) .
-              '&passed_id=' . $passed_id;
+              '&passed_id=' . urlencode($passed_id);
 
     $print_text = _("View Printable Version");
 
@@ -523,7 +523,7 @@ function formatMenubar($mailbox, $passed_id, $passed_ent_id, $message, $mbx_resp
                 '?passed_id=' . $passed_id .
                 '&amp;mailbox=' . $urlMailbox .
                 '&amp;startMessage=' . $startMessage .
-                (isset($passed_ent_id)?'&amp;passed_ent_id='.$passed_ent_id:'');
+                (isset($passed_ent_id)?'&amp;passed_ent_id='.urlencode($passed_ent_id):'');
 
     if ($compose_new_win == '1') {
         $link_open  = '<a href="javascript:void(0)" onclick="comp_in_new(\'';
