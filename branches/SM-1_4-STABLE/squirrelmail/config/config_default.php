@@ -381,6 +381,9 @@ $theme[34]['NAME'] = 'Penguin';
 $theme[35]['PATH'] = SM_PATH . 'themes/minimal_bw.php';
 $theme[35]['NAME'] = 'Minimal BW';
 
+$theme[36]['PATH'] = SM_PATH . 'themes/redmond.php';
+$theme[36]['NAME'] = 'Redmond';
+
 /**
  * LDAP server(s)
  *   Array of arrays with LDAP server parameters. See
