@@ -54,7 +54,7 @@ $AllowSpamFilters = true;
  * the header (lots of false alarms here tho).
  */
 global $SpamFilters_YourHop;
-$SpamFilters_YourHop = '';
+$SpamFilters_YourHop = ' ';
 
 /*
  * Some of the SPAM filters are COMMERCIAL and require a fee. If your users
