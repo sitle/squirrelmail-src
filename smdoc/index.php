@@ -28,7 +28,7 @@ require_once(INPUT_DIR . 'input.querystring.php');
 /* 
  * Initialize smdoc/FOOWD environment
  */
-$foowd = new smdoc($foowd_parameters);
+$foowd = new smdoc($smdoc_parameters);
 
 $objectMethod = TRUE;
 $objectid = 0;

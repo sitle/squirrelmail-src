@@ -25,8 +25,8 @@ require('smdoc_init.php');
 /* 
  * Initialize smdoc/FOOWD environment
  */
-$foowd_parameters['debug']['debug_enabled'] = TRUE;
-$foowd = new smdoc($foowd_parameters);
+$smdoc_parameters['debug']['debug_enabled'] = TRUE;
+$foowd = new smdoc($smdoc_parameters);
 
 $foowd->template->assign('title', _("Site Search"));
 $foowd->template->assign('method', '');
