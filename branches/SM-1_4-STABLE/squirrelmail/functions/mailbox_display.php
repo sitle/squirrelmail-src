@@ -1071,8 +1071,8 @@ function get_paginator_str($box, $start_msg, $end_msg, $num_msgs,
             /* Adjust if the first and second quarters intersect. */
             } else if (($cur_pg - $q2_pgs - ceil($q2_pgs/3)) <= $q1_pgs) {
                 $extra_pgs = $q2_pgs;
-                $extra_pgs -= ceil(($cur_pg - $q1_pgs - 1) * 0.75);
-                $q2_pgs = ceil(($cur_pg - $q1_pgs - 1) * 0.75);
+                $extra_pgs -= ceil(($cur_pg - $q1_pgs - 1) * 3/4);
+                $q2_pgs = ceil(($cur_pg - $q1_pgs - 1) * 3/4);
                 $q3_pgs += ceil($extra_pgs / 2);
                 $q4_pgs += floor($extra_pgs / 2);
 
@@ -1085,10 +1085,10 @@ function get_paginator_str($box, $start_msg, $end_msg, $num_msgs,
                 $q2_pgs += ceil($extra_pgs / 2);
 
             /* Adjust if the third and fourth quarter intersect. */
-            } else if (($cur_pg + $q3_pgs + 1) >= ($tot_pgs - $q4_pgs + 1)) {
+            } else if (($cur_pg + $q3_pgs) >= ($tot_pgs - $q4_pgs)) {
                 $extra_pgs = $q3_pgs;
-                $extra_pgs -= ceil(($tot_pgs - $cur_pg - $q4_pgs) * 0.75);
-                $q3_pgs = ceil(($tot_pgs - $cur_pg - $q4_pgs) * 0.75);
+                $extra_pgs -= ceil(($tot_pgs - $cur_pg - $q4_pgs) * 3/4);
+                $q3_pgs = ceil(($tot_pgs - $cur_pg - $q4_pgs) * 3/4);
                 $q1_pgs += floor($extra_pgs / 2);
                 $q2_pgs += ceil($extra_pgs / 2);
             }
@@ -1097,9 +1097,10 @@ function get_paginator_str($box, $start_msg, $end_msg, $num_msgs,
         /*
          * I am leaving this debug code here, commented out, because
          * it is a really nice way to see what the above code is doing.
-         * echo "qts =  $q1_pgs/$q2_pgs/$q3_pgs/$q4_pgs = "
-         *    . ($q1_pgs + $q2_pgs + $q3_pgs + $q4_pgs) . '<br>';
-         */
+	 */
+         // echo "qts =  $q1_pgs/$q2_pgs/$q3_pgs/$q4_pgs = "
+         //     . ($q1_pgs + $q2_pgs + $q3_pgs + $q4_pgs) . '<br>';
+         
 
         /* Print out the page links from the compute page quarters. */
 
