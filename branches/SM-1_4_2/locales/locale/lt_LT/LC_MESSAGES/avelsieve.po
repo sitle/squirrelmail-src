@@ -1,0 +1,717 @@
+# avelsieve - SIEVE Mail Filters for Squirrelmail - Translation file
+# Lithuanian Translation
+# Copyright (C) 2003 Alexandros Vellis
+# This file is distributed under the same license as the PACKAGE package.
+# Tomas Kuliavas <tokul@users.sourceforge.net>, 2003.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: $Id$ "
+"(avelsieve 0.9.2)\n"
+"Report-Msgid-Bugs-To: tokul@users.sourceforge.net\n"
+"POT-Creation-Date: 2003-06-09 09:32+0300\n"
+"PO-Revision-Date: 2003-09-07 11:53+0300\n"
+"Last-Translator: Tomas Kuliavas <tokul@users.sourceforge.net>\n"
+"Language-Team: SquirrelMail I18N Team <squirrelmail-i18n@lists.sourceforge."
+"net>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../addrule.php:82 ../process_input.php:39
+msgid "You have to define at least one header match text."
+msgstr "Jūs turite nurodyti bent vieną antraštę atitinkančią teksto eilutę."
+
+#: ../addrule.php:134
+msgid "You have not defined the name for the new folder."
+msgstr "Jūs nenurodėte naujo aplanko vardo."
+
+#: ../addrule.php:135
+msgid "Please try again."
+msgstr "Pabandykite dar karta."
+
+#: ../addrule.php:146
+msgid "Illegal folder name.  Please select a different name"
+msgstr "Netinkamas aplanko vardas. Pasirinkite kita"
+
+#: ../addrule.php:391 ../addrule.php:396 ../addrule.php:463 ../addrule.php:473
+msgid "New Rule Wizard - Step"
+msgstr "Naujos taisyklės kūrimo pagalbininkas - Žingsnis"
+
+#: ../addrule.php:391 ../addrule.php:396 ../addrule.php:463 ../addrule.php:473
+msgid "of"
+msgstr "iš"
+
+#: ../addrule.php:391
+msgid "Rule Type"
+msgstr "Taisyklės tipas"
+
+#: ../addrule.php:396 ../edit.php:168
+msgid "Condition"
+msgstr "Sąlyga"
+
+#: ../addrule.php:463 ../edit.php:197
+msgid "Action"
+msgstr "Veiksmas"
+
+#: ../addrule.php:473
+msgid "Confirmation"
+msgstr "Patvirtinimas"
+
+#: ../addrule.php:476
+msgid ""
+"<p>You have chosen to keep every mail. This is the default action anyway, so "
+"you might want to start over with a rule that makes more sense. Select &quot;"
+"finished&quot; to save this rule nonetheless.</p>"
+msgstr ""
+"<p>Jūs pasirinkote išsaugoti visas žinutes nepakeistas. Kadangi tai yra "
+"standartinis veiksmas pagal nutylėjimą, jis yra beprasmis. Gal vertėtų "
+"suformuoti taisyklę iš naujo? Pasirinkite &quot;Baigti&quot;, jei vis tik "
+"norite išsaugoti šią taisyklę.</p>"
+
+#: ../addrule.php:485
+msgid ""
+"Please use the buttons on the bottom instead of your browser's reload, back "
+"and forward buttons, to build a rule."
+msgstr ""
+"Norėdami sukurti taisyklę naudokitės žemiau esančiais navigacijos "
+"mytgtukais, o ne naršyklės puslapio perkrovimo mygtuku ar komanda."
+
+#: ../addrule_html.php:41
+msgid "Clear this Form"
+msgstr "Išvalyti šią formą"
+
+#: ../addrule_html.php:46
+msgid "Start Over"
+msgstr "Pradėti iš naujo"
+
+#: ../addrule_html.php:51 ../edit.php:218
+msgid "Cancel"
+msgstr "Atšaukti"
+
+#: ../addrule_html.php:60
+msgid "Move back to step"
+msgstr "Grįžti atgal"
+
+#: ../addrule_html.php:66
+msgid "Finished"
+msgstr "Baigti"
+
+#: ../addrule_html.php:70
+msgid "Move on to step"
+msgstr "Peršokti į žingsnį"
+
+#: ../addrule_html.php:120
+msgid "What kind of rule would you like to add?"
+msgstr "Kokio tipo taisyklę jūs norite sukurti?"
+
+#: ../addrule_html.php:153
+msgid ""
+"The rule will trigger if the following addresses appear anywhere in the "
+"message's headers:"
+msgstr ""
+"Taisyklė sureaguos jei taip žinutės antraščių pasirodys nurodyti adresai:"
+
+#: ../addrule_html.php:238
+msgid "AND (Every item must match)"
+msgstr "IR (Turi sutapti visi požymiai)"
+
+#: ../addrule_html.php:239
+msgid "OR (Either item will match)"
+msgstr "ARBA (Turi sutapti bent vienas požymis)"
+
+#: ../addrule_html.php:242
+msgid "The condition for the following rules is:"
+msgstr "Šios taisyklės sąlyga yra:"
+
+#: ../addrule_html.php:308
+msgid "The header "
+msgstr "Antraštė"
+
+#: ../addrule_html.php:333
+msgid "Less..."
+msgstr "Mažiau..."
+
+#: ../addrule_html.php:339
+msgid "More..."
+msgstr "Daugiau..."
+
+#: ../addrule_html.php:355
+msgid "This rule will trigger if message is"
+msgstr "Ši taisyklė suveiks jei žinutė yra"
+
+#: ../addrule_html.php:365
+msgid "bigger"
+msgstr "didesnė"
+
+#: ../addrule_html.php:373
+msgid "smaller"
+msgstr "mažesnė"
+
+#: ../addrule_html.php:375 ../buildrule.php:250
+msgid "than"
+msgstr "nei"
+
+#: ../addrule_html.php:393
+msgid "KB (kilobytes)"
+msgstr "KB (kilobaitų)"
+
+#: ../addrule_html.php:401
+msgid "MB (megabytes)"
+msgstr "MB (megabaitų)"
+
+#: ../addrule_html.php:409
+msgid ""
+"The following action will be applied to <strong>all</strong> incoming "
+"messages that do not match any of the previous rules."
+msgstr ""
+"Šis veiksmas bus pritaikytas <strong>visoms</strong> atėjusios žinutėms, "
+"kurios neatitiks nei vienos iš ankstesnių taisyklių."
+
+#: ../addrule_html.php:416
+msgid ""
+"This rule will trigger upon the occurrence of one or more strings in the "
+"body of an e-mail message. "
+msgstr ""
+"Ši taisyklė suveiks jei žinutės tekste ar antraštėse bus viena ar kelios "
+"nurodytos simbolių sekos. "
+
+#: ../addrule_html.php:453
+msgid "Choose what to do when this rule triggers, from one of the following:"
+msgstr "Pasirinkite ką daryti, kai taisyklė suveikia, iš galimų veiksmų: "
+
+#: ../addrule_html.php:459 ../constants.php:44
+msgid "Keep (Default action)"
+msgstr "Išsaugoti nepakeista (standartinis veiksmas)"
+
+#: ../addrule_html.php:465 ../constants.php:47
+msgid "Discard Silently"
+msgstr "Tyliai ištrinti"
+
+#: ../addrule_html.php:473 ../constants.php:50
+msgid "Reject, sending this excuse to the sender:"
+msgstr "Atmesti, gražinant siuntėjui nurodytą pranešimą:"
+
+#: ../addrule_html.php:480
+msgid "Please do not send me large attachments."
+msgstr "Prašau nesiųsti man didelių priedų."
+
+#: ../addrule_html.php:492 ../constants.php:53
+msgid "Redirect to the following email address:"
+msgstr "Persiųsti į nurodytą adresą:"
+
+#: ../addrule_html.php:498
+msgid "someone@example.org"
+msgstr ""
+
+#: ../addrule_html.php:510 ../constants.php:56
+msgid "Move message into"
+msgstr "Perkelti žinutę į"
+
+#: ../addrule_html.php:517 ../addrule_html.php:526
+msgid "the existing folder"
+msgstr "egzistuojantį aplanką"
+
+#: ../addrule_html.php:533
+msgid "a new folder, named"
+msgstr "naują aplanką, pavadintą"
+
+#: ../addrule_html.php:535
+msgid "created as a subfolder of"
+msgstr "sukurtą aplanke"
+
+#: ../addrule_html.php:554
+msgid "Also keep copy in INBOX, marked as deleted."
+msgstr "Kartu išsaugoti kopiją tarp INBOX, pažymėtą kaip ištrintą."
+
+#: ../addrule_html.php:574
+msgid "Vacation"
+msgstr "Atostogos"
+
+#: ../addrule_html.php:576
+msgid ""
+"The notice will be sent only once to each person that sends you mail, and "
+"will not be sent to a mailing list address."
+msgstr ""
+"Perspėjimas bus nusiųstas vieną kartą kiekvienam asmeniui, kuris bandys jums "
+"atsiųsti laišką, bet nebus siunčiamas į susirašinėjimo sąrašus."
+
+#: ../addrule_html.php:578
+msgid "Addresses: Only reply if sent to these addresses:"
+msgstr "Adresai: Atsakyti tik nurodytiems adresams:"
+
+#: ../addrule_html.php:587
+msgid "Days: Reply message will be resent after"
+msgstr "Dienos: Pakartotinai perspėjimas bus nusiųstas po"
+
+#: ../addrule_html.php:595
+msgid "days"
+msgstr "dienos(ų)"
+
+#: ../addrule_html.php:597
+msgid "Use the following message:"
+msgstr "Naudoti nurodytą pranešimą:"
+
+#: ../addrule_html.php:603
+msgid ""
+"This is an automated reply; I am away and will not be able to reply to you "
+"immediately."
+msgstr ""
+"Tai yra autoatsakiklis. Aš šiuo metu esu toli ir negaliu tuoj pat atsakyti į "
+"jūsų žinutę."
+
+#: ../addrule_html.php:604
+msgid "I will get back to you as soon as I return."
+msgstr "Atsakysiu jums kai tik galėsiu."
+
+#: ../addrule_html.php:616
+msgid "Additional Actions"
+msgstr "Papildomi veikmai"
+
+#: ../addrule_html.php:627 ../addrule_html.php:630
+msgid "STOP"
+msgstr "Sustoti"
+
+#: ../addrule_html.php:632
+msgid "If this rule matches, do not check any rules after it."
+msgstr "Jei taisyklė sutampa, nebetikrinti kitų taisyklių."
+
+#: ../addrule_html.php:645
+msgid "Notify me, using the following method:"
+msgstr "Praneškite man nurodytu metodu:"
+
+#: ../addrule_html.php:681
+msgid "Notification ID"
+msgstr "Pranešimo ID"
+
+#: ../addrule_html.php:690
+msgid "Parameters"
+msgstr "Nustatymai"
+
+#: ../addrule_html.php:717
+msgid "Message"
+msgstr "žinutė"
+
+#: ../addrule_html.php:726
+msgid "Help: Valid variables are:"
+msgstr "Pagalba: Tinkami kintamieji yra:"
+
+#: ../addrule_html.php:742
+msgid "Your new rule states:"
+msgstr "Jūsų nauja taisyklė teigia:"
+
+#: ../addrule_html.php:744
+msgid ""
+"If this is what you wanted, select Finished. You can also start over or "
+"cancel adding a rule altogether."
+msgstr ""
+"Jei tai yra tai, ko jūs norite, pasirinkite Baigti. Tai pat jūs galite "
+"pradėti iš naujo arba visai atšaukti šią taisyklę."
+
+#: ../avelsieve_support.inc.php:42 ../avelsieve_support.inc.php:44
+msgid "Error Encountered"
+msgstr "Įvyko klaida"
+
+#: ../buildrule.php:54
+msgid "For <strong>ALL</strong> incoming messages; "
+msgstr "<strong>VISOMS</strong> ateinančioms žinutėms; "
+
+#: ../buildrule.php:57
+msgid "If"
+msgstr "Jei"
+
+#: ../buildrule.php:75
+msgid "<em>any</em> of the following mail headers match: "
+msgstr "<em>bent viena</em> iš nurodytų antraščių atitinka: "
+
+#: ../buildrule.php:80
+msgid "<em>all</em> of the following mail headers match: "
+msgstr "<em>visos</em> nurodytos pašto antraštos atitinka: "
+
+#: ../buildrule.php:93
+msgid "the header"
+msgstr "antraštė"
+
+#: ../buildrule.php:101 ../constants.php:63
+msgid "is"
+msgstr "yra"
+
+#: ../buildrule.php:106 ../constants.php:64
+msgid "is not"
+msgstr "nėra"
+
+#: ../buildrule.php:111 ../constants.php:61
+msgid "contains"
+msgstr "turi"
+
+#: ../buildrule.php:116 ../constants.php:62
+msgid "does not contain"
+msgstr "neturi"
+
+#: ../buildrule.php:121
+msgid "matches"
+msgstr "atitinka"
+
+#: ../buildrule.php:127
+msgid "does not match"
+msgstr "neatitinka"
+
+#: ../buildrule.php:133 ../constants.php:76
+msgid "is greater than"
+msgstr "yra didesnė nei"
+
+#: ../buildrule.php:138 ../constants.php:77
+msgid "is greater or equal to"
+msgstr "yra didesnė arba lygi"
+
+#: ../buildrule.php:143 ../constants.php:78
+msgid "is lower than"
+msgstr "yra mažesnė nei"
+
+#: ../buildrule.php:148 ../constants.php:79
+msgid "is lower or equal to"
+msgstr "yra mažesnė arba lygi"
+
+#: ../buildrule.php:153 ../constants.php:80
+msgid "is equal to"
+msgstr "yra lygi"
+
+#: ../buildrule.php:158 ../constants.php:81
+msgid "is not equal to"
+msgstr "yra nelygi"
+
+#: ../buildrule.php:163
+msgid "matches the regural expression"
+msgstr "atitinka išraišką"
+
+#: ../buildrule.php:169
+msgid "does not match the regural expression"
+msgstr "neatitinka išraiškos"
+
+#: ../buildrule.php:175
+msgid "exists"
+msgstr "egzistuoja"
+
+#: ../buildrule.php:180
+msgid "does not exist"
+msgstr "neegzistuoja"
+
+#: ../buildrule.php:237
+msgid "the size of the message is"
+msgstr "žinutės dydis yra"
+
+#: ../buildrule.php:244
+msgid " bigger"
+msgstr "didesnis"
+
+#: ../buildrule.php:248
+msgid " smaller"
+msgstr "mažesnis"
+
+#: ../buildrule.php:278
+msgid "then"
+msgstr "nei"
+
+#: ../buildrule.php:285
+msgid "<em>keep</em> it."
+msgstr "<em>išsaugoti</em>"
+
+#: ../buildrule.php:291
+msgid "<em>discard</em> it."
+msgstr "<em>atsikratyti</em>"
+
+#: ../buildrule.php:298
+msgid "<em>reject</em> it, sending this excuse back to the sender:"
+msgstr "<em>atmesti</em> siuntėjui su nurodytu pranešimu:"
+
+#: ../buildrule.php:304
+msgid "<em>redirect</em> it to the email address"
+msgstr "<em>persiųsti</em> į nurodytą adresą"
+
+#: ../buildrule.php:311
+msgid "<em>file</em> it into the folder <strong>"
+msgstr "<em>išsaugoti</em> aplanke <strong>"
+
+#: ../buildrule.php:328
+msgid "reply with this vacation message: "
+msgstr "atsakyti su atostogų žinute: "
+
+#: ../buildrule.php:337
+msgid " Also keep a copy in INBOX, marked as deleted."
+msgstr "Išsaugoti kopiją tarp INBOX, pažymėti kaip ištrintą."
+
+#: ../buildrule.php:343
+msgid " Then <strong>STOP</strong> processing rules."
+msgstr "Tada <strong>LIAUTIS</strong> apdoroti kitas taisykles."
+
+#: ../buildrule.php:365
+msgid " Also notify using the method"
+msgstr "Taip pat informuoti naudojant metodą"
+
+#: ../buildrule.php:367
+msgid "with"
+msgstr "su"
+
+#: ../buildrule.php:369
+msgid "priority and the message"
+msgstr "prioritetu ir žinute"
+
+#: ../constants.php:16
+msgid "Address Match"
+msgstr "Adreso sutapimas"
+
+#: ../constants.php:17 ../constants.php:22
+msgid ""
+"Perform an action on messages matching a specified header (From, To etc.)."
+msgstr ""
+"Atlikti veiksmus su žinutėmis turinčiomis atitinkamas antraštes (Nuo, Kam ir "
+"kt.)."
+
+#: ../constants.php:21
+msgid "Header Match"
+msgstr "Antraštės sutapimas"
+
+#: ../constants.php:26
+msgid "Size"
+msgstr "Dydis"
+
+#: ../constants.php:27
+msgid "Perform an action on messages depending on their size."
+msgstr "Atlikti veiksmus su žinutėmis priklausomai nuo jų dydžio."
+
+#: ../constants.php:31
+msgid "All Messages"
+msgstr "Visos žinutės"
+
+#: ../constants.php:32
+msgid "Perform an action on <strong>all</strong> incoming messages."
+msgstr "Apdoroti <strong>visas</strong> ateinančias žinutes."
+
+#: ../constants.php:37
+msgid "Body Match"
+msgstr "Turinio sutapimas"
+
+#: ../constants.php:38
+msgid "Perform an action on messages depending on their content (body text)."
+msgstr ""
+"Atlikti veiksmus su žinutėmis priklausomai nuo jų turinio (viso žinutės "
+"teksto)."
+
+#: ../constants.php:65
+msgid "matches wildcard"
+msgstr "atitinka apibrėžimą"
+
+#: ../constants.php:66
+msgid "does not match wildcard"
+msgstr "neatitinka apibrėžimo"
+
+#: ../constants.php:70
+msgid "matches regexp"
+msgstr "atitinką išraišką"
+
+#: ../constants.php:87
+msgid "verbose"
+msgstr "išsamus"
+
+#: ../constants.php:88
+msgid "terse"
+msgstr "trumpas"
+
+#: ../constants.php:96
+msgid "Mobile Phone Message (SMS)"
+msgstr "Pranešimas į mobilų (SMS)"
+
+#: ../constants.php:97
+msgid "Email notification"
+msgstr "Pranešimas į paštą"
+
+#: ../constants.php:98
+msgid "Notification via Zephyr"
+msgstr "Pranešimas per Zephyr sistemą"
+
+#: ../constants.php:99
+msgid "Notification via ICQ"
+msgstr "Pranešimas per ICQ sistemą"
+
+#: ../constants.php:103
+msgid "Low"
+msgstr "Žemas"
+
+#: ../constants.php:104
+msgid "Normal"
+msgstr "Normalus"
+
+#: ../constants.php:105
+msgid "High"
+msgstr "Aukštas"
+
+#: ../edit.php:135
+msgid "Editing Mail Filtering Rule"
+msgstr "Taisoma pašto filtravimo taisyklė"
+
+#: ../edit.php:214
+msgid "Add New Rule"
+msgstr "Pridėti naują taisyklę"
+
+#: ../edit.php:216
+msgid "Apply Changes"
+msgstr "Išsaugoti pakeitimus"
+
+#: ../setup.php:40
+msgid "Message Filters"
+msgstr "Žinučių filtrai"
+
+#: ../setup.php:42
+msgid ""
+"Server-Side mail filtering enables you to add criteria in order to "
+"automatically forward, delete or place a given message into a folder."
+msgstr ""
+"Serverio pusės filtrai leidžia jums nustatyti kriterijus, kurias remiantis "
+"pašto sistema automatiškai persiųs, ištrins ar patalpins gautas žinutes į "
+"nurodytą aplanką."
+
+#: ../setup.php:86
+msgid "Filters"
+msgstr "Filtrai"
+
+#: ../table.php:73 ../table.php:136
+msgid "Could not log on to timsieved daemon on your IMAP server"
+msgstr "Nepavyko prisijungti prie jūsų IMAP serverio timsieved posistemės"
+
+#: ../table.php:75 ../table.php:139 ../table.php:154 ../table.php:198
+msgid "Please contact your administrator."
+msgstr "Susisiekite su jūsų pašto administratoriumi."
+
+#: ../table.php:90 ../table.php:359
+msgid "Current Mail Filtering Rules"
+msgstr "Esamos pašto filtravimo taisyklės"
+
+#: ../table.php:92 ../table.php:215
+msgid "No Filtering Rules Defined Yet"
+msgstr "Nėra jokių pašto filtravimo taisyklių"
+
+#: ../table.php:138
+msgid "in order to save your rules."
+msgstr "norint išsaugoti jūsų taisykles."
+
+#: ../table.php:152
+msgid "Could not set active script on your IMAP server"
+msgstr "Nepavyko nustatyti aktyvaus skripto jūsų IMAP serveryje"
+
+#: ../table.php:195
+msgid "Could not get SIEVE script from your IMAP server"
+msgstr "Nepavyko gauti SIEVE skripto iš jūsų IMAP serverio"
+
+#: ../table.php:197
+msgid "(Probably the script is size null)."
+msgstr "(Greičiausiai skripto dydis yra nulinis)."
+
+#: ../table.php:269
+msgid "All your rules have been deleted"
+msgstr "Visos jūsų taisyklės ištrintos"
+
+#: ../table.php:392 ../table.php:394
+msgid "Edit"
+msgstr "Taisyti"
+
+#: ../table.php:402 ../table.php:404
+msgid "Delete"
+msgstr "Ištrinti"
+
+#: ../table.php:412 ../table.php:414
+msgid "Duplicate"
+msgstr "Dubliuoti"
+
+#: ../table.php:422 ../table.php:425
+msgid "Move Up"
+msgstr "Perkelti aukštyn"
+
+#: ../table.php:435 ../table.php:438
+msgid "Move Down"
+msgstr "Perkelti žemyn"
+
+#: ../table.php:453
+msgid "Delete Selected"
+msgstr "Ištrinti pasirinktą"
+
+#: ../table_html.php:17 ../table_html.php:33
+msgid "Server-Side Mail Filtering"
+msgstr "Serverio pusės pašto filtravimas"
+
+#: ../table_html.php:114 ../table_html.php:125
+msgid ""
+"Here you can add or delete filtering rules for your email account. These "
+"filters will always apply to your incoming mail, wherever you check your "
+"email."
+msgstr ""
+"Čia jūs galite pridėti ar pašalinti filtravimo taisykles galiojančias jūsų "
+"paštui. Filtrai suveiks su kiekviena jums atėjusia žinute, kai tik jūs "
+"patikrinsite savo paštą."
+
+#: ../table_html.php:117
+msgid ""
+"You don't have any rules yet. Feel free to add any with the button &quot;Add "
+"a New Rule&quot;. When you are done, please select &quot;Save Changes&quot; "
+"to get back to the main options screen."
+msgstr ""
+"Jūs neturite nei vienos taisyklės. Galite jas sukurit pasinaudomi &quot;"
+"Pridėti naują taisyklę&quot; mygtuku. Pabaigę išsaugokite savo pakeitimus, "
+"kad grįžti į pradinį langą."
+
+#: ../table_html.php:128
+msgid ""
+"When you are done with editing, <strong>remember to select &quot;Save "
+"Changes&quot;</strong> to activate your changes!"
+msgstr ""
+"Pabaigę taisyklių kūrimą <strong>nepamirškite jų išsaugoti</strong>, kad "
+"pakeitimai suveiktų!"
+
+#: ../table_html.php:137
+msgid "Successfully added new rule."
+msgstr "Sėkmingai pridėta nauja taisyklė."
+
+#: ../table_html.php:140
+msgid "Successfully updated rule #"
+msgstr "Sėkmingai atnaujinta taisyklė Nr."
+
+#: ../table_html.php:145
+msgid "Successfully deleted rules #"
+msgstr "Sėkmingai ištrintos taisyklės Nr."
+
+#: ../table_html.php:153
+msgid "Successfully deleted rule #"
+msgstr "Sėkmingai ištrinta taisyklė Nr."
+
+#: ../table_html.php:163
+msgid "The following table summarizes your current mail filtering rules."
+msgstr "Ši lentelė apibendrina jūsų dabartines pašto filtravimo taisykles."
+
+#: ../table_html.php:173
+msgid "No"
+msgstr "Ne"
+
+#: ../table_html.php:178
+msgid "Description of Rule"
+msgstr "Taisyklės aprašymas"
+
+#: ../table_html.php:181
+msgid "Display as:"
+msgstr "Parodyti kaip:"
+
+#: ../table_html.php:193
+msgid "Options"
+msgstr "Nustatymai"
+
+#: ../table_html.php:223
+msgid "Add a New Rule"
+msgstr "Pridėti naują taisyklę"
+
+#: ../table_html.php:229
+msgid ""
+"When you are done, please click the button below to return to your webmail."
+msgstr ""
+"Kai baigsite, paspauskite žemiau esantį mygtuką, kad grįžti į savo paštą."
+
+#: ../table_html.php:231
+msgid "Save Changes"
+msgstr "Išsaugoti pakeitimus"
