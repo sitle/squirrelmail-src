@@ -179,7 +179,7 @@ class Message {
         } else {
             $message = new Message();
         }
-        $this = $message;    
+    
         for ($cnt = strlen($read); $i < $cnt; ++$i) {
             $char = strtoupper($read{$i});
             switch ($char) {
