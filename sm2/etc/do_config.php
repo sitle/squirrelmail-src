@@ -8,7 +8,7 @@
 
 /* Make sure we are logged in first */
 require_once( 'admin.inc.php' );
-
+header( 'Pragma: no-cache' );
 session_start( );
 is_logged_in( );
 

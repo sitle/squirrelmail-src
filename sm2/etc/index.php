@@ -8,6 +8,7 @@
 */
 
 require_once( 'admin.inc.php' );
+header( 'Pragma: no-cache' );
 
 /* Check to see if they setup someone with rights */
 if ( !isset( $AdminUser ) || empty( $AdminUser ) ) 
