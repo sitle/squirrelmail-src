@@ -19,31 +19,6 @@
  */
 
 /**
- * Function for printing an array of strings as:
- *  $use_parens = TRUE:  ( one | two | three )
- *  $use_parens = FALSE:   one | two | three
- * @param array $arr Array of strings to print
- * @param bool  $use_parens If TRUE will surround list with parenthesis.
- */
-function print_arr($arr, $use_parens = TRUE)
-{  
-  if ( empty($arr) )
-    return;
-
-  if ( $use_parens )
-    echo '( ';
-  foreach ( $arr as $i => $element )
-  {
-    if ( $i != 0 )
-      echo ' | ';
-    echo $element;
-  }
-
-  if ( $use_parens )
-   echo ' )';
-}
-
-/**
  * Begin with definitions of common values
  */
  
@@ -92,7 +67,7 @@ function print_arr($arr, $use_parens = TRUE)
     $lastUpdate = $method . $lastUpdate;
 
 //  smdoc_translation::initialize($foowd);
-//  $flag_links = smdoc_translation::getLink($foowd);
+  $flag_links = smdoc_translation::getLink($foowd);
   $loc_url = getURI();
   $user_url = $loc_url . '?class=smdoc_user';
 
@@ -126,24 +101,26 @@ function print_arr($arr, $use_parens = TRUE)
     </td>
     <td class="usermenu" valign="top">
       <!-- Start with array of translation flags -->
-        <?php // echo implode(' ', $flag_links); ?>
+        <?php echo implode(' ', $flag_links); ?>
         <br />
       <!-- User Login/Language/Workspace information -->
         <?php
           $lang_url = NULL;
           $links = array();
           $user_link = NULL;
+          $tools = array();
 
           // Create list of links
           // Start with current translation link
-//          if ( $user->workspaceid != 0 )
-//            $links[] = foowd_translation::getLink($user->workspaceid);
+          if ( $user->workspaceid != 0 )
+            $links[] = smdoc_translation::getLink($foowd, $user->workspaceid);
 
           // Define link for user (or Anon), do we have login/register or logout links?
           if ( isset($user->objectid) )
           {
             $user_link = '<a href="'.$loc_url.'?classid='.USER_CLASS_ID.'&objectid='.$user->objectid.'">'.$user->title.'</a> ';
             $links[]  = '<a href="'.$user_url.'&method=logout">'. _("Logout") .'</a>';
+            $tools[]  = '<a href="sqmtools.php">'._("Tools").'</a>';
           }
           else
           {
@@ -151,15 +128,15 @@ function print_arr($arr, $use_parens = TRUE)
             $links[] = '<a href="'.$user_url.'&method=login">'. _("Login") .'</a>';
             $links[] = '<a href="'.$user_url.'&method=create">'. _("Register") .'</a>';
           }
+          $tools[] = '<a href="'.$user_url.'&method=list">'._("Users").'</a>';
 
           // Print username ( methodlist ) based on above
           echo $user_link . '&nbsp;';
           print_arr($links);
 
           // Miscellaneous links
-          echo '<br />'
-             . '<a href="'.$user_url.'&method=list">'._("Users").'</a> | '
-             . '<a href="sqmtools.php">'._("Tools").'</a>';
+          echo '<br />';
+          print_arr($tools, FALSE);
         ?>
     </td>
   </tr>

@@ -21,7 +21,7 @@ $t['title'] = _("Group Index");
 $t['body_function'] = 'group_list_body';
 
 /** Include base template */
-include(TEMPLATE_PATH.'index.tpl');
+include_once(TEMPLATE_PATH.'index.tpl');
 
 /**
  * Base template will call back to this function

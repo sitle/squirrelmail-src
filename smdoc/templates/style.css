@@ -120,7 +120,7 @@ input.error {
 	background-color: #ffcccc;
 }
 .smdoc_textarea {
-	font-family: "Courier New", courier, monospace
+	font-family: "Courier New", courier, monospace;
 	font-size: 12px;
 	width: 80%;
     background-color: #F0F0F0;
@@ -183,10 +183,9 @@ tr.row_even {
  * h3, debug_output_heading, index heading, separator
  */
 h1 {
-	font-size: large;
 	margin: 5px 0px;
 	padding: 0px;
-	color: #000;
+	color: #7a9294;
 	font-weight: bold; 
 	text-decoration: none;
 	text-align: center;
@@ -207,7 +206,6 @@ h3 {
 	color: #7a9294; 
 	font-weight: bold; 
 	text-decoration: none;
-	text-align: right;
 }
 
 /** Separator line */
@@ -286,15 +284,15 @@ div .preview {
  */
 .diff_add {
 	background-color: #ccffcc;
-	font-family: monospace;
+	font-family: "courier new", courier, monospace;
 }
 .diff_minus {
 	background-color: #ffcccc;
-	font-family: monospace;
+	font-family: "courier new", courier, monospace;
 }
 .diff_same {
 	background-color: #eee;
-	font-family: monospace;
+	font-family: "courier new", courier, monospace;
 }
 
 /** Various text styles */
