@@ -37,7 +37,6 @@ require_once('../functions/display_messages.php');
 
 
 /* lets get the global vars we may need */
-print "here";
 $username = $_SESSION['username'];
 $key  = $_COOKIE['key'];
 $onetimepad = $_SESSION['onetimepad'];
