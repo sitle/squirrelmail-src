@@ -219,7 +219,22 @@ echo html_tag( 'table', '', 'center', '', 'width="70%" cols="2" cellpadding="4" 
 if ($count_special_folders < count($boxes)) {
     echo "<FORM ACTION=\"folders_subscribe.php?method=unsub\" METHOD=\"POST\">\n";
     echo "<TT><SELECT NAME=\"mailbox[]\" multiple size=8>\n";
-    echo sqimap_mailbox_option_list($imapConnection, 0, $skip_folders, $boxes);
+    if ($count_special_folders < count($boxes)) {
+        echo "<FORM ACTION=\"folders_subscribe.php?method=unsub\" METHOD=\"POST\">\n";
+        echo "<TT><SELECT NAME=\"mailbox[]\" multiple size=8>\n";
+	for ($i = 0; $i < count($boxes); $i++) {
+	    $use_folder = true;
+	    if ((strtolower($boxes[$i]["unformatted"]) != "inbox") &&
+	        ($boxes[$i]["unformatted"] != $trash_folder) &&
+	        ($boxes[$i]["unformatted"] != $sent_folder) &&
+	        ($boxes[$i]["unformatted"] != $draft_folder)) {
+	        $box = $boxes[$i]["unformatted-dm"];
+	        $box2 = str_replace(' ', '&nbsp;',
+	                            imap_utf7_decode_local($boxes[$i]["unformatted-disp"]));
+	        echo "         <OPTION VALUE=\"$box\">$box2\n";
+	    }
+	}
+    }
     echo "</SELECT></TT><br><br>\n";
     echo "<input type=SUBMIT VALUE=\"";
     echo _("Unsubscribe");
@@ -235,30 +250,35 @@ echo html_tag( 'td', '', 'center', $color[0], 'width="50%"' );
 if(!$no_list_for_subscribe) {
   $boxes_all = sqimap_mailbox_list_all ($imapConnection);
 
-  $box = array();
+  $box = '';
+  $box2 = '';
   $q = 0;
 
   foreach ($boxes_all as $boxes_part) {
     $use_folder = true;
-    if ( $boxes_part["unformatted-dm"] == $folder_prefix ) {
+    if ( $boxes_part['unformatted-dm'] == $folder_prefix ) {
         $use_folder = false;
     } else {
         foreach($boxes as $sub_box) {
-	    if ($boxes_part["unformatted"] == $sub_box["unformatted"]) {
+	    if ($boxes_part['unformatted'] == $sub_box['unformatted']) {
 	        $use_folder = false;
 		continue;
             }
 	}
     }
     if ($use_folder == true) {
-      $box[$q] = $boxes_all[$i]["unformatted-dm"];
+      $box[$q] = $boxes_part['unformatted-dm'];
+      $box2[$q] = imap_utf7_decode_local($boxes_part['unformatted-disp']);
       $q++;
     }
   }
-  if ($box) {
+  if ($box && $box2) {
     echo "<FORM ACTION=\"folders_subscribe.php?method=sub\" METHOD=\"POST\">\n";
     echo "<tt><select name=\"mailbox[]\" multiple size=8>";
-    echo sqimap_mailbox_option_list($imapConnection, 0, 0, $box);
+    
+    for ($q = 0; $q < count($box); $q++) {
+        echo "         <OPTION VALUE=\"$box[$q]\">".$box2[$q]."\n";
+    }
     echo "</select></tt><br><br>";
     echo "<input type=SUBMIT VALUE=\"". _("Subscribe") . "\">\n";
     echo "</FORM></td></tr></table><BR>\n";
