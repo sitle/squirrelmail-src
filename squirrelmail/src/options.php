@@ -43,6 +43,7 @@ define('SMOPT_PAGE_DISPLAY', 'display');
 define('SMOPT_PAGE_HIGHLIGHT', 'highlight');
 define('SMOPT_PAGE_FOLDER', 'folder');
 define('SMOPT_PAGE_ORDER', 'order');
+define('SMOPT_PAGE_MAILBOX', 'mailbox');
 
 function process_optionmode_submit($optpage, $optpage_data) {
     /* Initialize the maximum option refresh level. */
@@ -51,6 +52,64 @@ function process_optionmode_submit($optpage, $optpage_data) {
     /* Save each option in each option group. */
     foreach ($optpage_data['options'] as $option_grp) {
         foreach ($option_grp['options'] as $option) {
+            /* Remove Debug Mode Until Needed
+            echo "name = '$option->name', "
+               . "value = '$option->value', "
+               . "new_value = '$option->new_value'\n";
+            echo "<br>";
+            */
+            $sButton = '';
+            if ($option->type == SMOPT_TYPE_HDRLIST) {
+                echo "Ja?";
+                sm_print_r($option);
+                $sButton = (sqgetGlobalVar('add_'.$option->name,$sTmp, SQ_POST)) ? 'add'         : $sButton;
+                $sButton = (sqgetGlobalVar('remove_'.$option->name,$sTmp, SQ_POST)) ? 'remove'         : $sButton;
+                $sButton = (sqgetGlobalVar('moveUp_'.$option->name,$sTmp, SQ_POST)) ? 'moveUp'         : $sButton;
+                $sButton = (sqgetGlobalVar('moveDown_'.$option->name,$sTmp, SQ_POST)) ? 'moveDown'         : $sButton;
+                $sButton = (sqgetGlobalVar('moveTop_'.$option->name,$sTmp, SQ_POST)) ? 'moveTop'         : $sButton;
+                $sButton = (sqgetGlobalVar('moveBottom_'.$option->name,$sTmp, SQ_POST)) ? 'moveBottom'         : $sButton;
+                switch ($sButton) {
+                  case 'add':
+                     sqgetGlobalVar('src_'.$option->name,$aSrc,SQ_POST);
+                     foreach ($aSrc as $v) {
+                          $option->value[] = $v;
+                     }
+                     break;
+                  case 'remove':
+                     $aValue = array();
+                     foreach ($option->new_value as $v) {
+                          if (!in_array($option->new_value)) {
+                              $aValue[] = $v;
+                          }
+                     }
+                     $option->value = $aValue;
+                     break;
+                }
+                //sm_print_r($option);
+                $option->save();
+
+            } else {
+                if ($option->changed()) {
+                    $option->save();
+                    $max_refresh = max($max_refresh, $option->refresh_level);
+                }
+            }
+        }
+    }
+
+    /* Return the max refresh level. */
+    return ($max_refresh);
+}
+
+function process_optionmode_blah($optpage,$optpage_data) {
+   /* Initialize the maximum option refresh level. */
+    $max_refresh = SMOPT_REFRESH_NONE;
+
+    /* Save each option in each option group. */
+    foreach ($optpage_data['options'] as $option_grp) {
+        foreach ($option_grp['options'] as $option) {
+
+
             /* Remove Debug Mode Until Needed
             echo "name = '$option->name', "
                . "value = '$option->value', "
@@ -128,7 +187,7 @@ sqgetGlobalVar('optpage',     $optpage);
 sqgetGlobalVar('optmode',     $optmode,      SQ_FORM);
 sqgetGlobalVar('optpage_data',$optpage_data, SQ_POST);
 /* end of getting globals */
-
+echo "optpage: $optpage<br>";
 /* Make sure we have an Option Page set. Default to main. */
 if ( !isset($optpage) || $optpage == '' ) {
     $optpage = SMOPT_PAGE_MAIN;
@@ -142,7 +201,7 @@ if (!isset($optmode)) {
 }
 
 /*
- * First, set the load information for each option page.   
+ * First, set the load information for each option page.
  */
 
 /* Initialize load information variables. */
@@ -152,7 +211,7 @@ $optpage_loader = '';
 
 /* Set the load information for each page. */
 switch ($optpage) {
-    case SMOPT_PAGE_MAIN: 
+    case SMOPT_PAGE_MAIN:
         break;
     case SMOPT_PAGE_PERSONAL:
         $optpage_name     = _("Personal Information");
@@ -184,6 +243,12 @@ switch ($optpage) {
         $optpage_loader = 'load_optpage_data_order';
         $optpage_loadhook = 'optpage_loadhook_order';
         break;
+    case SMOPT_PAGE_MAILBOX:
+        $optpage_name = _("Index Order");
+        $optpage_file = SM_PATH . 'include/options/mailbox.php';
+        $optpage_loader = 'load_optpage_data_mailbox';
+        $optpage_loadhook = 'optpage_loadhook_mailbox';
+        break;
     default: do_hook('optpage_set_loadinfo');
 }
 
@@ -195,7 +260,7 @@ if ( !@is_file( $optpage_file ) ) {
     $optpage = SMOPT_PAGE_MAIN;
 } else if ($optpage != SMOPT_PAGE_MAIN ) {
     /* Include the file for this optionpage. */
-    
+
     require_once($optpage_file);
 
     /* Assemble the data for this option page. */
@@ -243,7 +308,7 @@ if ($optmode == SMOPT_MODE_SUBMIT) {
         case SMOPT_PAGE_FOLDER:
             $save_hook_name = 'options_folder_save';
             break;
-        default: 
+        default:
             $save_hook_name = 'options_save';
             break;
     }
@@ -258,8 +323,8 @@ if ($optmode == SMOPT_MODE_SUBMIT) {
 
 /* If this is the result of an option page being submitted, then */
 /* show the main page. Otherwise, show whatever page was called. */
-
-if ($optmode == SMOPT_MODE_SUBMIT) {
+echo "optmode: $optmode<br>";
+if ($optmode == SMOPT_MODE_SUBMIT && !$optpage) {
     $optpage = SMOPT_PAGE_MAIN;
 }
 
@@ -394,10 +459,13 @@ if ($optpage == SMOPT_PAGE_MAIN) {
 /* If we are not looking at the main option page, display the page here. */
 /*************************************************************************/
 } else {
+
     echo addForm('options.php', 'POST', 'f')
-       . create_optpage_element($optpage)
-       . create_optmode_element(SMOPT_MODE_SUBMIT)
-       . html_tag( 'table', '', '', '', 'width="100%" cellpadding="2" cellspacing="0" border="0"' ) . "\n"
+       . create_optpage_element($optpage);
+       if ($optmode !== 'link') {
+           echo create_optmode_element(SMOPT_MODE_SUBMIT);
+       }
+       echo html_tag( 'table', '', '', '', 'width="100%" cellpadding="2" cellspacing="0" border="0"' ) . "\n"
        . html_tag( 'tr' ) . "\n"
        . html_tag( 'td', '', 'left' ) . "\n";
 
@@ -439,7 +507,7 @@ if ($optpage == SMOPT_PAGE_MAIN) {
 
     /* If it is not empty, trigger the inside hook. */
     if ($inside_hook_name != '') {
-        do_hook($inside_hook_name);    
+        do_hook($inside_hook_name);
     }
 
     /* Spit out a submit button. */
@@ -448,7 +516,7 @@ if ($optpage == SMOPT_PAGE_MAIN) {
 
     /* If it is not empty, trigger the bottom hook. */
     if ($bottom_hook_name != '') {
-        do_hook($bottom_hook_name);    
+        do_hook($bottom_hook_name);
     }
 }
 

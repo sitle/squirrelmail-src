@@ -60,12 +60,12 @@ if (!sqgetGlobalVar('mailto', $mailto)) {
 
 set_up_language($squirrelmail_language, true);
 /* Refresh the language cookie. */
-setcookie('squirrelmail_language', $squirrelmail_language, time()+2592000, 
+setcookie('squirrelmail_language', $squirrelmail_language, time()+2592000,
           $base_uri);
 
 if (!isset($login_username)) {
     include_once(SM_PATH .  'functions/display_messages.php' );
-    logout_error( _("You must be logged in to access this page.") );    
+    logout_error( _("You must be logged in to access this page.") );
     exit;
 }
 
@@ -87,6 +87,19 @@ if (!sqsession_is_registered('user_is_logged_in')) {
     $imapConnection = sqimap_login($login_username, $key, $imapServerAddress, $imapPort, 0);
 
     $sqimap_capabilities = sqimap_capability($imapConnection);
+    if (!$allow_server_sort) {
+        $sqimap_capabilities['SORT'] = false;
+    }
+    if (!$allow_thread_sort) {
+        $sqimap_capabilities['THREAD'] = false;
+    }
+    /* setup alignment in case of right to left languages*/
+    $dir = (isset( $languages[$squirrelmail_language]['DIR'])) ? $languages[$squirrelmail_language]['DIR'] : 'lft';
+    $rgt = ($dir == 'ltr' ) ? 'right' : 'left';
+    $lft = ($dir == 'ltr' ) ? 'left'  : 'right';
+    $align = array('right' => $rgt,'left' => $lft);
+    sqsession_register($align, 'align');
+
     sqsession_register($sqimap_capabilities, 'sqimap_capabilities');
     $delimiter = sqimap_get_delimiter ($imapConnection);
 
@@ -154,13 +167,13 @@ function attachment_common_parse($str, $debug) {
     global $attachment_common_types, $attachment_common_types_parsed;
 
     $attachment_common_types_parsed[$str] = true;
-    
-    /* 
-     * Replace ", " with "," and explode on that as Mozilla 1.x seems to  
+
+    /*
+     * Replace ", " with "," and explode on that as Mozilla 1.x seems to
      * use "," to seperate whilst IE, and earlier versions of Mozilla use
      * ", " to seperate
      */
-    
+
     $str = str_replace( ', ' , ',' , $str );
     $types = explode(',', $str);
 
