@@ -76,6 +76,9 @@ if ($signout_page) {
     header("Location: $signout_page");
     exit; /* we send no content if we're redirecting. */
 }
+
+/* internal gettext functions will fail, if language is not set */
+set_up_language($squirrelmail_language, true, true);
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
@@ -89,7 +92,7 @@ if ($signout_page) {
 ?>
    <title><?php echo $org_title . ' - ' . _("Signout"); ?></title>
 </head>
-<body text="<?php echo $color[8]; ?>" bgcolor="<?php echo $color[4]; ?>" 
+<body text="<?php echo $color[8]; ?>" bgcolor="<?php echo $color[4]; ?>"
 link="<?php echo $color[7]; ?>" vlink="<?php echo $color[7]; ?>"
 alink="<?php echo $color[7]; ?>">
 <br /><br />
