@@ -29,15 +29,47 @@ require_once('../functions/display_messages.php');
  *    $mailbox          Full Mailbox name                  *
  *                                                         *
  * incoming from cookie:                                   *
- *    $username         duh                                *
  *    $key              pass                               *
+ * incoming from session:                                  *
+ *    $username         duh                                *
+ *                                                         *
  ***********************************************************/
 
-/* Open a connection on the imap port (143) */
 
+/* lets get the global vars we may need */
+
+$username = $_SESSION['username'];
+$key  = $_COOKIE['key'];
+$onetimepad = $_SESSION['onetimepad'];
+$base_uri = $_SESSION['base_uri'];
+
+if (isset($_GET['startMessage'])) {
+    $startMessage = $_GET['startMessage'];
+}
+if (isset($_GET['mailbox'])) {
+    $mailbox = $_GET['mailbox'];
+}
+if (isset($_GET['PG_SHOWNUM'])) {
+    $PG_SHOWNUM = $_GET['PG_SHOWNUM'];
+}
+if (isset($_GET['PG_SHOWALL'])) {
+    $PG_SHOWALL = $_GET['PG_SHOWALL'];
+}
+if (isset($_GET['newsort'])) {
+    $newsort = $_GET['newsort'];
+}
+if (isset($_GET['checkall'])) {
+    $checkall = $_GET['checkall'];
+}
+if (isset($_GET['set_thread'])) {
+    $set_thread = $_GET['set_thread'];
+}
+
+/* end of get globals */
+
+/* Open a connection on the imap port (143) */
 $imapConnection = sqimap_login($username, $key, $imapServerAddress, $imapPort, 0);
 
-global $PG_SHOWNUM;
 if (isset($PG_SHOWALL)) {
     if ($PG_SHOWALL) {
        $PG_SHOWNUM=999999;
@@ -78,7 +110,7 @@ if ($imap_server_type == 'uw' && (strstr($mailbox, '../') ||
 }
 
 /* decide if we are thread sorting or not */
-global $allow_thread_sort;
+
 if ($allow_thread_sort == TRUE) {
     if (isset($set_thread)) {
         if ($set_thread == 1) {
@@ -98,7 +130,6 @@ else {
     $thread_sort_messages = 0;
 } 
 
-global $color;
 
 sqimap_mailbox_select($imapConnection, $mailbox);
 
@@ -117,20 +148,23 @@ if (isset($note)) {
     echo "<CENTER><B>$note</B></CENTER><BR>\n";
 }
 
-if ($just_logged_in == true) {
-    $just_logged_in = false;
-
-    if (strlen(trim($motd)) > 0) {
-        echo "<br><table align=center width=\"70%\" cellpadding=0 cellspacing=3 border=0 bgcolor=\"$color[9]\">" .
-         '<tr><td>' .
-             "<table width=\"100%\" cellpadding=5 cellspacing=1 border=0 bgcolor=\"$color[4]\">" .
-             "<tr><td align=center>$motd";
-        do_hook('motd');
-        echo '</td></tr>' .
-             '</table>' .
-             '</td></tr></table>';
+if (isset($_SESSION['just_logged_in'])) {
+    $just_logged_in = $_SESSION['just_logged_in'];
+    if ($just_logged_in == true) {
+        $just_logged_in = false;
+        if (strlen(trim($motd)) > 0) {
+            echo "<br><table align=center width=\"70%\" cellpadding=0 cellspacing=3 border=0 bgcolor=\"$color[9]\">" .
+                '<tr><td>' .
+                "<table width=\"100%\" cellpadding=5 cellspacing=1 border=0 bgcolor=\"$color[4]\">" .
+                "<tr><td align=center>$motd";
+                do_hook('motd');
+                echo '</td></tr>' .
+                    '</table>' .
+                    '</td></tr></table>';
+        }
     }
 }
+
 
 if (isset($newsort)) {
     $sort = $newsort;
@@ -146,13 +180,6 @@ if (isset($newsort)) {
 if (! isset($use_mailbox_cache)) {
     $use_mailbox_cache = 0;
 }
-
-/* There is a problem with registered vars in 4.1 */
-/*
-if( substr( phpversion(), 0, 3 ) == '4.1'  ) {
-    $use_mailbox_cache = FALSE;
-}
-*/
 
 if ($use_mailbox_cache && session_is_registered('msgs')) {
     showMessagesForMailbox($imapConnection, $mailbox, $numMessages, $startMessage, $sort, $color, $show_num, $use_mailbox_cache);

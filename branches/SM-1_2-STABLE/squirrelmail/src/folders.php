@@ -21,6 +21,17 @@ require_once('../functions/plugin.php');
 
 displayPageHeader($color, 'None');
 
+/* get globals we may need */
+
+$username = $_SESSION['username'];
+$key = $_COOKIE['key'];
+$delimiter = $_SESSION['delimiter'];
+$onetimepad = $_SESSION['onetimepad'];
+if (isset($_GET['success'])) {
+    $success = $_GET['success'];
+}
+
+/* end of get globals */
 ?>
 
 <br>

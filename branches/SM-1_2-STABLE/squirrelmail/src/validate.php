@@ -14,6 +14,7 @@ session_start();
 require_once('../functions/i18n.php');
 require_once('../functions/auth.php');
 require_once('../functions/strings.php');
+require_once('../src/global.php');
 
 is_logged_in();
 
@@ -22,11 +23,9 @@ if (get_magic_quotes_gpc()) {
     global $REQUEST_METHOD;
 
     if ($REQUEST_METHOD == 'POST') {
-        global $HTTP_POST_VARS;
-        RemoveSlashes($HTTP_POST_VARS);
+        RemoveSlashes($_POST);
     } else if ($REQUEST_METHOD == 'GET') {
-        global $HTTP_GET_VARS;
-        RemoveSlashes($HTTP_GET_VARS);
+        RemoveSlashes($_GET);
     }
 }
 
@@ -39,16 +38,23 @@ if (get_magic_quotes_gpc()) {
 *
 * This is for a RedHat package bug and a Konqueror (pre 2.1.1?) bug
 */
-global $send, $PHP_SELF;
+
+global $PHP_SELF;
+
+if (isset($_POST['send'])) {
+    $send = $_POST['send'];
+}
+elseif (isset($_GET['send'])) {
+    $send = $_GET['send'];
+}
+
 if (isset($send)
     && (substr($send, 0, 1) == "\n")
     && (substr($PHP_SELF, -12) == '/compose.php')) {
     if ($REQUEST_METHOD == 'POST') {
-        global $HTTP_POST_VARS;
-        TrimArray($HTTP_POST_VARS);
+        TrimArray($_POST);
     } else {
-        global $HTTP_GET_VARS;
-        TrimArray($HTTP_GET_VARS);
+        TrimArray($_GET);
     }
 }
 
@@ -66,7 +72,7 @@ if (isset($send)
  * Reset the $theme() array in case a value was passed via a cookie.
  * This is until theming is rewritten.
  */
-global $theme;
+
 unset($theme);
 $theme=array();
 
@@ -76,7 +82,6 @@ require_once('../functions/page_header.php');
 require_once('../functions/prefs.php');
 
 /* Set up the language (i18n.php was included by auth.php). */
-global $username, $data_dir;
 set_up_language(getPref($data_dir, $username, 'language'));
 
 $timeZone = getPref($data_dir, $username, 'timezone');

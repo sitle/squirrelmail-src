@@ -17,6 +17,10 @@ require_once('../functions/prefs.php');
 require_once('../functions/plugin.php');
 require_once('../functions/constants.php');
 
+/* get globals we may need */
+$username = $_SESSION['username'];
+/* end of get globals */
+
 $username = ( !isset($username) ? '' : $username );
 
 $custom_css = getPref($data_dir, $username, 'custom_css', 'none' );

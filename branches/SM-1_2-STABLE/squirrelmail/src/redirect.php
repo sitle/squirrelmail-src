@@ -20,17 +20,16 @@ require_once('../functions/imap.php');
 require_once('../functions/plugin.php');
 require_once('../functions/constants.php');
 require_once('../functions/page_header.php');
+require_once('../src/global.php');
 
 // Remove slashes if PHP added them
 if (get_magic_quotes_gpc()) {
     global $REQUEST_METHOD;
 
     if ($REQUEST_METHOD == 'POST') {
-        global $HTTP_POST_VARS;
-        RemoveSlashes($HTTP_POST_VARS);
+        RemoveSlashes($_POST);
     } else if ($REQUEST_METHOD == 'GET') {
-        global $HTTP_GET_VARS;
-        RemoveSlashes($HTTP_GET_VARS);
+        RemoveSlashes($_GET);
     }
 }
 
@@ -50,10 +49,25 @@ session_start();
 session_unregister ('user_is_logged_in');
 session_register ('base_uri');
 
-if (! isset($squirrelmail_language) ||
+
+/* get globals we me need */
+
+if (isset($_POST['login_username'])) {
+    $login_username = $_POST['login_username'];
+}
+if (!isset($_COOKIE['squirrelmail_language']) ||
     $squirrelmail_language == '' ) {
     $squirrelmail_language = $squirrelmail_default_language;
 }
+else {
+    $squirrelmail_language = $_COOKIE['squirrelmail_language'];
+}
+if (isset($_POST['secretkey'])) {
+    $secretkey = $_POST['secretkey'];
+}
+
+/* end of get globals */
+
 set_up_language($squirrelmail_language, true);
 /* Refresh the language cookie. */
 setcookie('squirrelmail_language', $squirrelmail_language, time()+2592000, 
