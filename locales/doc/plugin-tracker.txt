@@ -31,6 +31,7 @@ bookmarks               2.0.3     -   untranslated (cr and rtl issues)
 bounce                  0.5       1   added
 browser_info            3.0       -   utility, no translatable strings
 calendar                0.2       0   part of core
+calendar_file_backend   1.0       -   untranslated
 can_weather             2.2.2     -   untranslated (font and rtl issues)
 change_ldappass         1.8       1   added
 change_merakpass        0.9       1   added
@@ -39,7 +40,7 @@ change_pass             2.7       1   added
 change_passwd           4.1       1   added
 change_qldforward       1.00      -   untranslated (rtl issues)
 check_quota             1.2       1   added
-chg_sasl_passwd         1.4       1   added
+chg_sasl_passwd         1.4.1     1   added
 cleanup                 0.2       -   utility, no translatable strings
 click_menu                        -   untranslated
 collapsing_folders_list 1.0       -   no translatable strings
@@ -51,6 +52,7 @@ cookie_warning          1.0       2   added
 courier_vacation        1.1       0   added (sm domain)
 cpanel_pw_changer       1.3       1   added
 cpanel_vacation         0.1       1   added
+custom_charset          1.0       2   added
 custom_from             1.1       0   added (sm domain)
 debugger                1.0       -   untranslated
 deref_ldap              1.0       -   patch, not plugin
@@ -60,7 +62,7 @@ download_all            0.1       -   untranslated
 email_footer            0.4       -   utility, no translatable strings
 emoticons               1.1       -   untranslated (rtl issues)
 empty_folders           1.1       1   added (rtl issues)
-empty_trash             1.3       -   utility, no translatable strings
+empty_trash             1.4       -   utility, no translatable strings
 enews                   0.5       1   added
 exchange_meeting        0.3       -   untranslated (cr and multibyte charsets issues)
 extract                 0.1       0   added (sm domain)
@@ -82,7 +84,7 @@ htmlarea                5.5       -   untranslated
 html_mail               2.0       -   mixed gettext and variable based translation.
                                       Patches that move variable translations to gettext are available.
 http_auth               1.1       -   utility, no translated strings
-image_buttons           1.31      0   added (sm domain, rtl issues)
+image_buttons           1.32      0   added (sm domain, rtl issues)
 ip_users                1.1
 japanese_input          1.0       1   added
 jsclock                 0.7       -   untranslated (rtl issues)
@@ -111,7 +113,8 @@ mail_fetch              1.3       0   part of sm
 mail_fetchmail          0.4       -   untranslated
 mail_fwd                0.4.1     0   part translated (sm domain)
 mail_utilities          0.4       0   part translated (sm domain)
-mark_read               1.3       1   added (rtl issues?)
+mailbox_usage           1.0       -   no translatable strings
+mark_read               1.4.1     1   added (rtl issues?)
 message_source          1.3       0   part of sm 1.4
 metea                   1.7       -   uses French strings
 meteosat                0.9       -   template based translation (strings mixed with functions)
@@ -145,22 +148,22 @@ retrieveuserdata        0.9       -   untranslated (only error messages)
 saconf                  1.0       -   part translated
 sasql                   3.1.1     2   added
 secure_login            1.2       -   a
-select_range            2.8.2     1   added
+select_range            3.5       1   added
 send_to_semicolon       1.4       -   util, no translateable strings
 sent_confirmation       1.6       1   added
 serversidefilter        1.42      2   added
-shared_calendars        1.1       0   (sm-domain, multiline print strings, problems with multibyte charsets)
-                                      It is not added because it will replace official calendar plugin
+shared_calendars        2.0       2   added (calendar domain)
 sharedtodolists         1.4       -   untranslated
 show_headers            1.2       0   added (sm domain, rtl issues)
 show_ssl_link           2.1       -   string is only in config
-show_user_and_ip        3.1       1   added
+show_user_and_ip        3.2       1   added
 signout                 2.0       -   patch
 sigtag                  1.1       -   untranslated
 smallcal                0.8       2   added 0.9patch
 smime                   0.6       0   added (sm domain)
 smrestradmin            0.11      -   untranslated
 smrestrict              0.10      -   untranslated
+spam_buttons            1.0       2   added
 spamassassin            2.02      -   untranslated
 spamrule                0.3       -   untranslated
 squirrel_logger         1.3.0     -   untranslated
@@ -177,7 +180,7 @@ tmdatools               1.02      0   added (sm domain)
 todo                    0.5       0   part translated (sm domain)
 translate               1.3       0   part of sm
 trueaday                1.1       -   no translatable strings
-twc_weather             1.3-p1-rc2a 1   added
+twc_weather             1.3p2-rc1 1   added
 undelete                1.0       0   adds one button to sm, all function are part of sm
 unframe                 1.0       -   utility, no strings
 unsafe_image_rules      0.7       1   added
