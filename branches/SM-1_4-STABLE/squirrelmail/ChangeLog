@@ -9,7 +9,7 @@ Version 1.4.5 - CVS
     Patch by Ray Ferguson, backported from devel.
   - Add support for Mail-Followup-To header, from devel.
   - Remove is_readable($data_dir) test in configtest, because SquirrelMail
-    functions fine with stricter permissions.
+    functions fine with stricter permissions on that dir.
   - 24hr clock format should include a leading 0.
   - Fixed uid based authentication in administrator plugin. Thanks to
     Gareth Johnston.
@@ -21,9 +21,10 @@ Version 1.4.5 - CVS
     specified location.
   - Added trailing slash for data directory used by global file based
     address book (#1105760).
-  - Fixed possible php E_ALL warnings in translate plugin gpltrans engine
+  - Fixed possible PHP E_ALL warnings in translate plugin with GPLtrans engine
     (#1100789).
   - Fixed adding addresses to global address books.
+  - Fix typos in Deliver.class.php which caused an error with PHP 5.
 
 Version 1.4.4 - 21 January 2005
 -------------------------------
