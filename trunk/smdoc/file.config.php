@@ -25,7 +25,7 @@ WTF File Upload Extension
 */
 
 if (!defined('FILEUPLOADDIR')) define('FILEUPLOADDIR', PATH.'files'); // upload directory
-if (!defined('FILEUPLOADWEBROOT')) define('FILEUPLOADWEBROOT', '/smdoc/files'); // upload directory as accessed from the web site
+if (!defined('FILEUPLOADWEBROOT')) define('FILEUPLOADWEBROOT', URI_PATH . 'files'); // upload directory as accessed from the web site
 if (!defined('MAXFILEUPLOADSIZE')) define('MAXFILEUPLOADSIZE', 1048576); // maximum size of file to allow in bytes
 
 /* load classes */
