@@ -88,12 +88,12 @@
 <table width="100%" cellspacing="0" cellpadding="0">
   <tr>
     <td rowspan="3" class="skip">
-      <a href="#start_content"><img src="templates/images/empty.gif" alt="skip to content" /></a>
-      <img src="templates/images/empty.gif" alt="|" />
-      <a href="#end_content"><img src="templates/images/empty.gif" alt="skip to edit functions" /></a>
+      <a href="#start_content"><img src="templates/images/empty.png" alt="skip to content" /></a>
+      <img src="templates/images/empty.png" alt="|" />
+      <a href="#end_content"><img src="templates/images/empty.png" alt="skip to edit functions" /></a>
       <?php if ($foowd->debug) { ?>
-          <img src="templates/images/empty.gif" alt="|" />
-          <a href="#debug"><img src="templates/images/empty.gif" alt="skip to debug" /></a>
+          <img src="templates/images/empty.png" alt="|" />
+          <a href="#debug"><img src="templates/images/empty.png" alt="skip to debug" /></a>
        <?php } ?>
     </td>
     <td class="usermenu" valign="top">
@@ -186,7 +186,7 @@
 <?php } elseif( $error != NULL ) { ?>
   <div id="status"><span class="error"><?php echo $error; ?></span></div>
 <?php } ?>
-<div class="nothere"><a id="start_content" name="start_content"><img src="templates/images/empty.gif" alt="------------- begin content ----------------------------------------" /></a></div>
+<div class="nothere"><a id="start_content" name="start_content"><img src="templates/images/empty.png" alt="------------- begin content ----------------------------------------" /></a></div>
 <!-- begin content -->
 <div id="content">
 <?php
@@ -205,7 +205,7 @@
 
 </div>
 <!-- end content -->
-<div class="nothere"><a id="end_content" name="end_content"><img src="templates/images/empty.gif" alt="------------- end content ------------------------------------------" /></a></div>
+<div class="nothere"><a id="end_content" name="end_content"><img src="templates/images/empty.png" alt="------------- end content ------------------------------------------" /></a></div>
 <!-- begin editmenu -->
 <div id="editmenu">
  <?php

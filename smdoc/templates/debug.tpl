@@ -30,7 +30,7 @@ function debug_display($accessNumber, $execTime, &$trackString, $debugVar)
 ?>
 <!-- begin debug -->
 <div class="debug_output">
-<a name="debug"><img src="templates/images/empty.gif" alt="------------- debug ------------------------------------------" /></a>
+<a name="debug"><img src="templates/images/empty.png" alt="------------- debug ------------------------------------------" /></a>
 
 <div class="debug_output_heading">Debug Information</div>
 <pre>Total DB Executions: <?php echo $accessNumber; ?>&nbsp;
