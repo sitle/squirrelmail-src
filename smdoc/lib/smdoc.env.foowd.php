@@ -32,7 +32,6 @@ class smdoc extends foowd
    */
   var $config_settings;
 
-
   /**
    * Constructs a new environment object.
    * smdoc: Simplified for smdoc objects, different group implementation.
@@ -71,7 +70,7 @@ class smdoc extends foowd
     /*
      * User group initialization
      */
-    require_once(SM_DIR . 'smdoc.class.group.php');
+    require_once(SM_DIR . 'smdoc.env.group.php');
     $this->groups = new smdoc_group($this);
 
     /*
@@ -105,6 +104,8 @@ class smdoc extends foowd
    */
   function loc_forward($new_loc)
   {
+    unset($this->debug);
+    $this->debug = FALSE;
     $this->destroy();
     header('Location: ' . $new_loc);
     exit;

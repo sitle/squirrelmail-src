@@ -654,15 +654,29 @@ class base_user extends foowd_object
       $new_groups = array();
       $grps = $groupBox->value;
 
-      // If we haven't selected None to clear all,
-      // Create new array with selected groups
-      if ( !in_array('None', $grps) )
+      // If none selected, remove user from all groups
+      if ( in_array('None', $grps) )
+        $this->foowd->groups->removeUser($this->objectid, $this->groups);
+      else
       {
-        $new_groups = array();
-        foreach( $grps as $name )
-          $new_groups[] = $name;
+        $remove_groups = array();
+        $ok_groups = array();
+        foreach ( $allGroups as $id => $name )
+        {
+          if ( in_array($id, $this->groups) )
+          {
+            if ( !in_array($id, $grps) )
+              $remove_groups[] = $id;
+            else
+              $ok_groups[] = $id;
+          }
+          elseif ( in_array($id, $grps) )
+            $new_groups[] = $id;
+        }
+        $this->foowd->groups->removeUser($this->objectid, $remove_groups);
+        $this->foowd->groups->addUser($this->objectid, $new_groups);
+        $new_groups = array_merge($new_groups, $ok_groups);
       }
-
       $this->set('groups', $new_groups);
     }
 
@@ -947,7 +961,7 @@ class base_user extends foowd_object
         $_SESSION['ok'] = USER_UPDATE_OK;
         $uri_arr['objectid'] = $this->objectid;
         $uri_arr['classid'] = USER_CLASS_ID;        
-        $this->foowd->loc_forward( getURI($uri_arr, FALSE));
+//        $this->foowd->loc_forward( getURI($uri_arr, FALSE));
       }
       else
         $this->foowd->template->assign('failure', OBJECT_UPDATE_FAILED);

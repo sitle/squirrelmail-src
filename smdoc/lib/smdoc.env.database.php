@@ -247,13 +247,23 @@ class smdoc_db
   function count($in_source, $where = '')
   {
     $this->getSource($in_source, $source, $makeTable);
+
     if ( $where )
       $where = ' WHERE ' . $this->buildWhere($where);
 
     $select = 'SELECT count(*) FROM '.$source.$where;
     $query = $this->query($select);
     if ( $query === FALSE )
-      return 0;
+    {
+      // Query failed, check for correct fields (possibly create Table)
+      $fields = $this->getFields($in_source);
+      if ( $fields === FALSE )
+        return 0;
+
+      $query = $this->query($select);
+      if ( $query === FALSE )
+        return 0;
+    }
     
     $row = $this->fetch($query);
     return intval($row['count(*)']);
@@ -612,7 +622,7 @@ class smdoc_db
     elseif ( !is_string($limit) ) 
       $limit = ' LIMIT ' . $limit;
 
-    $select = 'SELECT ';
+    $select = '';
     if ( $indexes == NULL ) 
     {
       $select .= $source.'.objectid AS objectid, '
@@ -624,18 +634,15 @@ class smdoc_db
     } 
     else 
     {
-      $first = 1;
       foreach ( $indexes as $index ) 
       {
-        if ( !$first )
+        if ( $select != '')
           $select .= ', ';
-        else
-          $first = 0;
 
         $select .= $index;
       }
     }
-    $select .= ' FROM '.$source.$where.$order.$limit;
+    $select = 'SELECT '.$select.' FROM '.$source.$where.$order.$limit;
 
     $records =& $this->queryAll($select);
     if ( $records === FALSE ) 
@@ -650,6 +657,8 @@ class smdoc_db
       $id = $record['objectid'];
       if ( isset($record['version']) ) 
         $id .= '.' . $record['version'];
+      if ( isset($record['title']) )
+        $id .= '.' . $record['title'];
 
       if ( !isset($return[$id]) ) 
       {
@@ -744,8 +753,8 @@ class smdoc_db
     // buildWhere
     foreach( $object->foowd_primary_key as $k => $index )
       $where[$index] = $object->foowd_original_access_vars[$index];
-    $where = ' WHERE ' . $this->buildWhere($where);
 
+    $where = ' WHERE ' . $this->buildWhere($where);
     $update = 'UPDATE '.$source.' SET ';
     $insert = 'INSERT INTO '.$source.' (';
     $values = '';

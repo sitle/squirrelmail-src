@@ -9,29 +9,18 @@
  * $Id$
  */
 
-/** METHOD PERMISSIONS */
-setPermission('smdoc_name_lookup', 'class',  'create', 'Nobody');
-setPermission('smdoc_name_lookup', 'object', 'admin',  'Nobody');
-setPermission('smdoc_name_lookup', 'object', 'revert', 'Nobody');
-setPermission('smdoc_name_lookup', 'object', 'delete', 'Nobody');
-setPermission('smdoc_name_lookup', 'object', 'clone',  'Nobody');
-setPermission('smdoc_name_lookup', 'object', 'permissions', 'Nobody');
-setPermission('smdoc_name_lookup', 'object', 'history','Nobody');
-setPermission('smdoc_name_lookup', 'object', 'diff',   'Nobody');
-setPermission('smdoc_name_lookup', 'object', 'view',   'Nobody');
-
-
-/** CLASS DESCRIPTOR **/
-setClassMeta('smdoc_name_lookup', 'Singleton class managing short names');
+setClassMeta('smdoc_name_lookup', 'Singleton object lookup/name manager');
 setConst('REGEX_SHORTNAME', '/^[a-z_-]{0,11}$/');
 setConst('SHORTNAMES_ID', 1063068242);
+
+include_once(SM_DIR . 'smdoc.class.storage.php');
 
 /**
  * Singleton class provides a basic mapping for 
  * well-known simple names (faq, privacy..)
  * to objectid/className pairs.
  */
-class smdoc_name_lookup extends foowd_object
+class smdoc_name_lookup extends smdoc_storage
 {
   /**
    * Array mapping shortnames to objectid/classid pairs
@@ -41,29 +30,12 @@ class smdoc_name_lookup extends foowd_object
 
   /**
    * Constructor
-   * Initialize new instance of smdoc_internal_mapping. 
+   * Initialize new instance of smdoc_internal_mapping.
+   * @param foowd foowd Reference to Foowd environment 
    */
   function smdoc_name_lookup(&$foowd) 
   {
-    $this->foowd =& $foowd;
-
-    // init meta arrays
-    $this->__wakeup();
-
-    $this->title = '__SHORTNAMES__';
-    $this->objectid = SHORTNAMES_ID;
-    $this->classid = META_SMDOC_NAME_LOOKUP_CLASS_ID;
-    $this->workspaceid = 0;
-    $this->version = 0;
-
-    $last_modified = time();
-    $this->creatorid = 0;
-    $this->creatorName = 'System';
-    $this->created = $last_modified;
-    $this->updatorid = 0;
-    $this->updatorName = 'System';
-    $this->updated = $last_modified;
-
+    parent::smdoc_storage($foowd, '__SHORTNAMES__', SHORTNAMES_ID);
     $this->shortNames = array();
   }
 
@@ -183,57 +155,20 @@ class smdoc_name_lookup extends foowd_object
     return FALSE;
   }
 
-  /**
-   * Delete the object.
-   *
-   * @return bool Always returns false.
-   */
-  function delete() 
-  {
-    return FALSE;
-  }
-
-  /**
-   * Clone the object.
-   *
-   * @return bool Always returns false.
-   */
-  function clone() 
-  {
-    return FALSE;
-  }
-
   //----------------- STATIC METHODS -------------------
 
   /**
    * Retrieve singleton instance of naming lookup object
+   * @access static
+   * @param foowd foowd Reference to Foowd Environment
+   * @return Reference to singleton lookup object
    */
   function &getInstance(&$foowd)
   {
-    // Where conditions for the singleton namelookup object instance
-    $where['classid']  = META_SMDOC_NAME_LOOKUP_CLASS_ID;
-    $where['objectid'] = SHORTNAMES_ID;
-    $where['version']  = 0;
-    $where['workspaceid'] = 0; 
-
-    // get Object - use where clause, no special source, skip workspace check
-    $obj =& $foowd->getObj($where, NULL, FALSE);
-
-    // If object couldn't be found, build a new one
-    if ( $obj == NULL )
-    {
-      $obj = new smdoc_name_lookup($foowd);
-
-      // If save failed, try retrieve again (maybe someone beat you to it..)
-      if ( !$obj->save() )
-      {
-        $obj =& $foowd->getObj($where, NULL, FALSE);
-        if ( $obj == NULL )
-          trigger_error('Unable to retrieve object from database', E_USER_ERROR);
-      }
-    }
-
-    return $obj;
+    return parent::getInstance($foowd, 
+                               'smdoc_name_lookup',
+                                META_SMDOC_NAME_LOOKUP_CLASS_ID,
+                                SHORTNAMES_ID);
   }
 
 }
