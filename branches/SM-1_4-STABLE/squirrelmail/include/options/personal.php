@@ -161,6 +161,7 @@ function load_optpage_data_personal() {
         'posvals' => array(SMPREF_NONE    => _("No Citation"),
                            'author_said'  => _("AUTHOR Said"),
                            'quote_who'    => _("Quote Who XML"),
+                           'date_time_author' => _("On DATE, AUTHOR Said"),
                            'user-defined' => _("User-Defined"))
     );
 
