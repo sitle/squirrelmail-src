@@ -167,7 +167,7 @@ calendar_header();
 echo "<TR BGCOLOR=\"$color[0]\"><TD>" .
      "<TABLE WIDTH=100% BORDER=0 CELLPADDING=2 CELLSPACING=1 BGCOLOR=\"$color[0]\">" .
      '<tr><td COLSPAN=2>' .
-     date_intl( 'l, F d Y', mktime(0, 0, 0, $month, $day, $year)) .
+     date_intl( _("l, F d Y"), mktime(0, 0, 0, $month, $day, $year)) .
      '</td></tr>';
 if (!isset($updated)){
     //get changes to event
