@@ -46,7 +46,7 @@ class smdoc_error extends smdoc_storage
   /**
    * Constructs a new error object.
    *
-   * @param smdoc foowd Reference to the foowd environment object.
+   * @param smdoc $foowd Reference to the foowd environment object.
    * @param string title The error title
    * @param string errorString The error message.
    */

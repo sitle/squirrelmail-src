@@ -68,7 +68,7 @@ class foowd_workspace extends foowd_object {
   /**
    * Constructs a new workspace.
    *
-   * @param smdoc foowd Reference to the foowd environment object.
+   * @param smdoc $foowd Reference to the foowd environment object.
    * @param string title The name of the workspace.
    * @param string description A text description of the workspace.
    * @param string viewGroup The user group for viewing the workspace.
@@ -545,7 +545,7 @@ class foowd_workspace extends foowd_object {
    * Output an object creation form and process its input.
    *
    * @static
-   * @param smdoc foowd Reference to the foowd environment object.
+   * @param smdoc $foowd Reference to the foowd environment object.
    * @param string className The name of the class.
    */
   function class_create(&$foowd, $className) 
@@ -557,7 +557,7 @@ class foowd_workspace extends foowd_object {
     include_once(INPUT_DIR.'input.textbox.php');
     
     $queryTitle = new input_querystring('title', REGEX_TITLE, NULL);
-    $createForm = new input_form('createForm', NULL, 'POST', _("Create"), NULL);
+    $createForm = new input_form('createForm', NULL, SQ_POST, _("Create"), NULL);
     $createTitle = new input_textbox('createTitle', REGEX_TITLE, $queryTitle->value, _("Title").':');
     $createDescription = new input_textbox('createDescription', '/^.{1,1024}$/', NULL, _("Description").':', NULL, NULL, NULL, FALSE);
     if (!$createForm->submitted() || $createTitle->value == '') {
@@ -666,7 +666,7 @@ class foowd_workspace extends foowd_object {
     include_once(INPUT_DIR.'input.dropdown.php');
     include_once(INPUT_DIR.'input.textbox.php');
 
-    $limitForm = new input_form('limitForm', NULL, 'POST', _("Limit Selection"), NULL);
+    $limitForm = new input_form('limitForm', NULL, SQ_POST, _("Limit Selection"), NULL);
     $limitSelect = new input_dropdown('limitSelect', NULL, getFoowdClassNames(), _("Class Types").':', 6, TRUE);
     $beforeDay = new input_textbox('beforeDay', '/^[1-3]?[0-9]$/', NULL, NULL, 2, 2, NULL, FALSE);
     $beforeMonth = new input_textbox('beforeMonth', '/^[0|1]?[0-9]$/', NULL, NULL, 2, 2, NULL, FALSE);
@@ -687,7 +687,7 @@ class foowd_workspace extends foowd_object {
     
     $items = $this->getFillSelectionItems($objects);
 
-    $objectForm = new input_form('objectForm', NULL, 'POST', _("Clone Objects"), NULL, _("Move Objects"));
+    $objectForm = new input_form('objectForm', NULL, SQ_POST, _("Clone Objects"), NULL, _("Move Objects"));
     $objectSelect = new input_dropdown('objectSelect', NULL, $items, _("Select Objects").':', 10, TRUE);
 
     $result = $this->fillWorkspace($objects, $objectSelect->value, $objectForm->submitted(), $objectForm->previewed());
@@ -734,7 +734,7 @@ class foowd_workspace extends foowd_object {
     include_once(INPUT_DIR.'input.form.php');
     include_once(INPUT_DIR.'input.dropdown.php');
     
-    $objectForm = new input_form('objectForm', NULL, 'POST', _("Move Objects"), NULL, _("Delete Objects"));
+    $objectForm = new input_form('objectForm', NULL, SQ_POST, _("Move Objects"), NULL, _("Delete Objects"));
 
     $return =& $this->getEmptyObjects();
     $items =& $return['items'];
@@ -807,7 +807,7 @@ class foowd_workspace extends foowd_object {
     include_once(INPUT_DIR.'input.form.php');
     include_once(INPUT_DIR.'input.file.php');
 
-    $importForm = new input_form('importForm', NULL, 'POST', _("Import"), NULL);
+    $importForm = new input_form('importForm', NULL, SQ_POST, _("Import"), NULL);
     $importFile = new input_file('importFile', _("Import file").':', NULL, getConstOrDefault('INPUT_FILE_SIZE_MAX', 2097152));
     
     if ($importForm->submitted()) {

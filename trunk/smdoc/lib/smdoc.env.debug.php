@@ -73,27 +73,12 @@ class smdoc_debug
    */
   function display()
   {
-    echo '<div class="debug_output">' . "\n"
-       . '<a name="debug"><img src="templates/images/empty.png" alt="------------- debug ------------------------------------------" /></a>' . "\n"
-       . '<div class="debug_output_heading">Debug Information</div>'. "\n"
-       . '<pre>'
-       . 'Total DB Executions: '  . $this->DBAccessNumber . '&nbsp;' . "\n"
-       . 'Total Execution Time: ' . $this->executionTime(). ' seconds'. "\n"
-       . '</pre>'
-       . '<div class="debug_output_heading">Execution History</div>'. "\n"
-       . '<pre>' . $this->trackString . '</pre>';
+    include_once(TEMPLATE_PATH . 'debug.tpl');
 
-    if ( $this->foowd->config_settings['debug']['debug_var'] ) 
-    {
-      echo '<div class="debug_output_heading">Request</div>'. "\n";
-      show($_REQUEST);
-      echo '<div class="debug_output_heading">Session</div>'. "\n";
-      show($_SESSION);
-      echo '<div class="debug_output_heading">Cookie</div>'. "\n";
-      show($_COOKIE);
-    }
-
-    echo '<br /></div></body></html>';
+    debug_display($this->DBAccessNumber, 
+                  $this->executionTime(), 
+                  &$this->trackString, 
+                  $this->foowd->config_settings['debug']['debug_var']);
   }
 
   /**

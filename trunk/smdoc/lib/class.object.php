@@ -33,7 +33,7 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
 
 /** Method permissions */
-setPermission('foowd_object', 'class', 'create', 'Gods');
+setPermission('foowd_object', 'class', 'create', 'Nobody');
 setPermission('foowd_object', 'object', 'admin', 'Gods');
 setPermission('foowd_object', 'object', 'revert', 'Gods');
 setPermission('foowd_object', 'object', 'delete', 'Gods');
@@ -196,7 +196,7 @@ class foowd_object
   /**
    * Constructs a new Foowd objcct.
    *
-   * @param smdoc foowd Reference to the foowd environment object.
+   * @param smdoc $foowd Reference to the foowd environment object.
    * @param string title The objects title.
    * @param string viewGroup The user group for viewing the object.
    * @param string adminGroup The user group for administrating the object.
@@ -335,6 +335,7 @@ class foowd_object
   /**
    * Call an object method.
    *
+   * @static
    * @param string methodName Name of the method to call.
    * @return bool Success or failure
    */
@@ -383,7 +384,8 @@ class foowd_object
   /**
    * Call a class method.
    *
-   * @param smdoc foowd Reference to the foowd environment object.
+   * @static
+   * @param smdoc $foowd Reference to the foowd environment object.
    * @param string className Name of the class to call the method upon.
    * @param string methodName Name of the method to call.
    * @return bool Success or failure
@@ -430,7 +432,21 @@ class foowd_object
     return htmlspecialchars($this->title);
   }
 
-  function isTitleUnique($title, $workspaceid, &$objectid, $in_source = NULL, $uniqueObjectid = TRUE)
+  /**
+   * Verify that title is unique. 
+   * If it is, and the uniqueObjectid parameter is TRUE, 
+   * a unique objectid is generated and assigned to the objectid parameter.
+   *
+   * @param string $title The proposed title
+   * @param int $workspaceid The workspace to search in, FALSE to leave workspaceid out
+   * @param int $objectid The object id generated from the title
+   * @param mixed $in_source Source to get object from
+   * @param bool $uniqueObjectid Generate unique object id for unique title
+   * @return TRUE if Title is Unique.
+   * @see smdoc_db::isTitleUnique()
+   */
+  function isTitleUnique($title, $workspaceid, &$objectid, 
+                         $in_source = NULL, $uniqueObjectid = TRUE)
   {
     return $this->foowd->database->isTitleUnique($title, 
                                                  $workspaceid, 
@@ -463,19 +479,21 @@ class foowd_object
    * Checks the new value against the regular expression stored in
    * foowd_vars_meta to make sure the new value is valid.
    *
-   * @param string member The name of the member variable to set.
-   * @param mixed value The value to set the member variable to.
+   * @param string $member The name of the member variable to set.
+   * @param mixed $value The value to set the member variable to.
    * @return mixed Returns TRUE on success.
    */
   function set($member, $value = NULL) 
   {
     $this->foowd->track('foowd_object->set', $member, $value);
     $object_vars = get_object_vars($this);
-    if ( !isset($object_vars[$member]) )   // if member variable doesn't exist, return early
+
+    if ( !array_key_exists($member, $object_vars) )   // if member variable doesn't exist, return early
     {
       $this->foowd->track();
       return FALSE;
     }
+
     $okay = FALSE;
     $regex = isset($this->foowd_vars_meta[$member]) ?
                    $this->foowd_vars_meta[$member] : NULL;
@@ -666,7 +684,6 @@ class foowd_object
     $adminForm->addObject($workspaceBox);
 
     $this->addPermissionDropdowns($adminForm);
-    $this->addClassDropdowns($adminForm);
 
     if ( $error != 0 )
     {
@@ -765,26 +782,6 @@ class foowd_object
   }
 
   /**
-   * Add permission selection dropdown lists for each object method to a form.
-   *
-   * @param object form The form to add the dropdown lists to.
-   * @param mixed optional Array containing compatible classes (for use by subclasses..)
-   */
-  function addClassDropdowns(&$form, $compatible_class = NULL) 
-  {
-    include_once(INPUT_DIR.'input.dropdown.php');
-
-    $classid = META_FOOWD_OBJECT_CLASS_ID;
-    $compatible_class[$classid] = getClassname($classid) . ' - ' 
-                                . getClassDescription($classid);
-
-    $classBox = new input_dropdown('classid', $this->classid, $compatible_class, 'Class');
-    $form->addObject($classBox);
-    if ( $form->submitted() && $classBox->value != $this->classid ) 
-      $this->set('classid', $classBox->value);
-  }
-
-  /**
    * Get list of workspaces within system.
    *
    * @return array Returns an array of workspaces indexed by workspaceid.
@@ -806,25 +803,38 @@ class foowd_object
    * @param array vars The variables to convert.
    * @param array goodVars List of variables to convert.
    */
-  function vars2XML($vars, $goodVars) {
-    foreach ($vars as $memberName => $memberVar) {
-      if ($memberName !== '' && (!$goodVars || in_array($memberName, $goodVars))) {
-        if (is_numeric(substr($memberName, 0, 1))) {
+  function vars2XML($vars, $goodVars) 
+  {
+    foreach ($vars as $memberName => $memberVar) 
+    {
+      if ($memberName !== '' && 
+          (!$goodVars || in_array($memberName, $goodVars))) 
+      {
+        if (is_numeric(substr($memberName, 0, 1))) 
           $memberName = 'i'.$memberName;
-        }
+
         echo "\t\t", '<', $memberName, '>';
-        if (is_array($memberVar)) { // an array
+        if (is_array($memberVar)) 
+        { // an array
           echo "\n\t";
           $this->vars2XML($memberVar, FALSE);
           echo "\t\t";
-        } elseif (isset($this->foowd_vars_meta[$memberName]) && $this->foowd_vars_meta[$memberName] == 'binary') { // binary data
+        } 
+        elseif (isset($this->foowd_vars_meta[$memberName]) && 
+                $this->foowd_vars_meta[$memberName] == 'binary') 
+        { // binary data
           echo '<![CDATA['.utf8_encode($memberVar).']]>';
-        } else { // yay, a var
-          if (strstr($memberVar, '<') || strstr($memberVar, '>') || strstr($memberVar, '&')) {
+        } 
+        else 
+        { // yay, a var
+          if (strstr($memberVar, '<') || 
+              strstr($memberVar, '>') ||
+              strstr($memberVar, '&')) 
+          {
             echo '<![CDATA['.$memberVar.']]>';
-          } else {
+          } 
+          else
             echo $memberVar;
-          }
         }
         echo '</', $memberName, ">\n";
       }
@@ -837,18 +847,21 @@ class foowd_object
    * @param bool classMethods Get list of class methods rather than object methods.
    * @return array Returns an array of methods.
    */
-  function getMethods($classMethods = FALSE) {
+  function getMethods($classMethods = FALSE) 
+  {
     $methods = get_class_methods(get_class($this));
     $results = array();
-    foreach ($methods as $method) {
-      if ($classMethods) {
-        if (substr($method, 0, 6) == 'class_') {
+    foreach ($methods as $method) 
+    {
+      if ($classMethods) 
+      {
+        if (substr($method, 0, 6) == 'class_') 
           $results[] = substr($method, 6);
-        }
-      } else {
-        if (substr($method, 0, 7) == 'method_') {
+      } 
+      else 
+      {
+        if (substr($method, 0, 7) == 'method_')
           $results[] = substr($method, 7);
-        }
       }
     }
     return $results;
@@ -861,7 +874,7 @@ class foowd_object
    *
    * @static
    * @access protected
-   * @param smdoc foowd Reference to the foowd environment object.
+   * @param smdoc $foowd Reference to the foowd environment object.
    * @param string className The name of the class.
    */
   function class_create(&$foowd, $className) 
@@ -874,26 +887,48 @@ class foowd_object
 
     $queryTitle = new input_querystring('title', REGEX_TITLE, NULL);
     $createForm = new input_form('createForm', NULL, SQ_POST, _("Create"), NULL);
-    $createTitle = new input_textbox('createTitle', REGEX_TITLE, $queryTitle->value, _("Object Title").':');
+    $createTitle = new input_textbox('createTitle', REGEX_TITLE, $queryTitle->value, 'Object Title');
 
-    if ($createForm->submitted() && $createTitle->value != '') 
+    if ($createForm->submitted() && 
+        $createTitle->wasSet && $createTitle->wasValid && $createTitle->value != '') 
     {
-      $object = &new $className($foowd, $createTitle->value);
-
-      if ($object->objectid != 0) 
-      {
-        $foowd->template->assign('success', TRUE);
-        $foowd->template->assign('objectid', $object->objectid);
-        $foowd->template->assign('classid', $object->classid);
-      } 
+      // Ensure unique title
+      $oid = NULL;
+      if ( !$foowd->database->isTitleUnique($createTitle->value, $foowd->user->workspaceid, $oid, NULL, FALSE) )
+        $result = 1;
       else
-        $foowd->template->assign('success', FALSE);
+      {
+        $object = &new $className($foowd, $createTitle->value);
+        if ( $object->objectid != 0 && $object->save($foowd) ) 
+          $result = 0; // created ok
+        else
+          $result = 2; // error
+      }
     } 
     else
+      $result = -1;
+
+    switch ( $result )
     {
-      $createForm->addObject($createTitle);
-      $foowd->template->assign_by_ref('form', $createForm);
+      case 0:
+        $_SESSION['ok'] = OBJECT_CREATE_OK;
+        $uri_arr['classid'] = $object->classid;
+        $uri_arr['objectid'] = $object->objectid;
+        $foowd->loc_forward(getURI($uri_arr, FALSE));
+        exit;
+      case 1:
+        $foowd->template->assign('failure', OBJECT_DUPLICATE_TITLE);
+        $createTitle->wasValid = FALSE;
+        break;
+      case 2:
+        $foowd->template->assign('failure', OBJECT_CREATE_FAILED);
+        break;
+      default:
+        $foowd->template->assign('failure', FORM_FILL_FIELDS);
     }
+      
+    $createForm->addObject($createTitle);
+    $foowd->template->assign_by_ref('form', $createForm);
 
     $foowd->track();
   }
@@ -907,7 +942,6 @@ class foowd_object
    */
   function method_view() 
   {
-    $this->foowd->template->assign('heading', $this->getTitle());
     $this->foowd->template->assign('body', $this->view());
   }
 

@@ -43,7 +43,7 @@ class smdoc_user extends base_user
    * statement again.
    *
    * @global array Specifies table information for user persistance.
-   * @param smdoc foowd Reference to the foowd environment object.
+   * @param smdoc $foowd Reference to the foowd environment object.
    * @param string SQLString The original SQL string that failed to execute due to missing database table.
    * @return mixed The resulting database query resource or FALSE on failure.
    */
@@ -192,7 +192,7 @@ class smdoc_user extends base_user
    * Constructs a new user.
    *
    * @global array Specifies table information for user persistance.
-   * @param smdoc foowd Reference to the foowd environment object.
+   * @param smdoc $foowd Reference to the foowd environment object.
    * @param string username The users name.
    * @param string password An MD5 hash of the users password.
    * @param string email The users e-mail address.
@@ -351,7 +351,7 @@ class smdoc_user extends base_user
    * 
    * @static
    * @global array Specifies table information for user persistance.
-   * @param smdoc foowd Reference to the foowd environment object.
+   * @param smdoc $foowd Reference to the foowd environment object.
    * @param string className The name of the class.
    * @see base_user::class_list()
    */
@@ -400,7 +400,7 @@ class smdoc_user extends base_user
   /**
    * Output the object.
    *
-   * @param smdoc foowd Reference to the foowd environment object.
+   * @param smdoc $foowd Reference to the foowd environment object.
    */
   function method_view()
   {

@@ -84,7 +84,7 @@ class smdoc_db
    * layer class if it has not already been loaded.
    *
    * @static
-   * @param smdoc foowd Reference to the foowd environment object.
+   * @param smdoc $foowd Reference to the foowd environment object.
    * @param string type The type of database object to load.
    * @return mixed The new database object or FALSE on failure.
    */
@@ -110,7 +110,7 @@ class smdoc_db
   /**
    * Constructs a new database object.
    *
-   * @param smdoc foowd Reference to the foowd environment object.
+   * @param smdoc $foowd Reference to the foowd environment object.
    */
   function smdoc_db(&$foowd) 
   {
@@ -336,12 +336,16 @@ class smdoc_db
   }
 
   /**
-   * Verify that title is unique. If it is, assign a unique objectid.
+   * Verify that title is unique. 
+   * If it is, and the uniqueObjectid parameter is TRUE, 
+   * a unique objectid is generated and assigned to the objectid parameter.
    *
-   * @param string title The proposed title
-   * @param int workspaceid The workspace to search in, FALSE to leave workspaceid out
-   * @param int objectid The object id generated from the title
-   * @param  mixed in_source Source to get object from
+   * @param string $title The proposed title
+   * @param int $workspaceid The workspace to search in, FALSE to leave workspaceid out
+   * @param int $objectid The object id generated from the title
+   * @param mixed $in_source Source to get object from
+   * @param bool $uniqueObjectid Generate unique object id for unique title
+   * @return TRUE if Title is Unique.
    */
   function isTitleUnique($title, $workspace, &$objectid, 
                          $in_source = NULL, $uniqueObjectid = TRUE)
