@@ -7,9 +7,9 @@ msgstr ""
 "Project-Id-Version: $Id: squirrelmail.po,v 1.5.2.1 2003/06/25 10:42:46 tokul "
 "Exp $ POT-Creation-Date: 2003-05-02 14:08+0300\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2003-09-20 11:04+0300\n"
-"PO-Revision-Date: 2003-09-11 17:30+0300\n"
-"Last-Translator: George P. Kremmydas <george@kefalonia-ithaki.gr>\n"
+"POT-Creation-Date: 2003-10-24 20:03+0300\n"
+"PO-Revision-Date: 2003-11-31 21:30+0300\n"
+"Last-Translator: Alexandros Vellis <avel@noc.uoa.gr>\n"
 "Language-Team: Greek <squirrelmail-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=ISO-8859-7\n"
@@ -159,7 +159,7 @@ msgstr ""
 msgid "Draft Saved"
 msgstr "Πρόχειρο Αποθηκεύτηκε"
 
-msgid "Your Message has been sent"
+msgid "Your Message has been sent."
 msgstr "Το Μήνυμα σας έχει αποσταλεί"
 
 msgid "From:"
@@ -376,9 +376,6 @@ msgstr "εκκαθάριση"
 
 msgid "Last Refresh"
 msgstr "Τελευταία Ενημέρωση"
-
-msgid "refresh unseen/total info"
-msgstr "ανανέωση πληροφοριών μη αναγνωσμένων/συνολικών"
 
 msgid "Save folder tree"
 msgstr "Αποθήκευση δέντρου φακέλων"
@@ -712,8 +709,35 @@ msgstr "Συνημμένα"
 msgid "You must be logged in to access this page."
 msgstr "Πρέπει να έχετε συνδεθεί για να έχετε πρόσβαση σε αυτή τη σελίδα."
 
-msgid "Folder:"
-msgstr "Φάκελος:"
+msgid "All Folders"
+msgstr "Όλοι οι Φάκελοι"
+
+msgid "Please enter something to search for"
+msgstr "Παρακαλώ εισάγετε κάτι για το οποίο να γίνει η αναζήτηση"
+
+msgid "There must be at least one criteria to search for"
+msgstr "Πρέπει να υπάρχει τουλάχιστον ένα κριτήριο για την αναζήτηση"
+
+msgid "Error in criteria argument"
+msgstr "Λάθος στο όρισμα του κριτηρίου."
+
+msgid "M j, Y"
+msgstr "M j, Y"
+
+msgid "(Illegal date)"
+msgstr "(Άτοπη ημερομηνία)"
+
+msgid "(Wrong date)"
+msgstr "(Λανθασμένη ημερομηνία)"
+
+msgid "In"
+msgstr "Στον"
+
+msgid "(Missing argument)"
+msgstr "(Λείπει όρισμα)"
+
+msgid "(Spurious argument)"
+msgstr "(Πλαστό όρισμα)"
 
 msgid "edit"
 msgstr "επεξεργασία"
@@ -724,8 +748,8 @@ msgstr "εξερεύνηση"
 msgid "delete"
 msgstr "διαγραφή"
 
-msgid "Recent Searches"
-msgstr "Πρόσφατες Αναζητήσεις"
+msgid "Saved Searches"
+msgstr "Αποθηκευμένες Αναζητήσεις"
 
 msgid "save"
 msgstr "αποθήκευση"
@@ -733,17 +757,110 @@ msgstr "αποθήκευση"
 msgid "forget"
 msgstr "ξέχασε το"
 
-msgid "Current Search"
-msgstr "Τρέχουσα Αναζήτηση"
+msgid "Recent Searches"
+msgstr "Πρόσφατες Αναζητήσεις"
 
-msgid "All Folders"
-msgstr "Όλοι οι Φάκελοι"
+msgid "Missing"
+msgstr "Λείπει"
 
-msgid "Body"
-msgstr "Σώμα"
+msgid "Exclude Criteria:"
+msgstr "Εξαίρεση Κριτηρίων:"
 
-msgid "Everywhere"
-msgstr "Παντού"
+msgid "Search Criteria"
+msgstr "Κριτήριο Αναζήτησης"
+
+msgid "Folder:"
+msgstr "Φάκελος:"
+
+msgid "Add New Criteria"
+msgstr "Προσθήκη Κριτηρίου"
+
+msgid "Remove Excluded Criteria"
+msgstr "Αφαίρεση Εξαιρούμενων Κριτηρίων"
+
+msgid "Remove All Criteria"
+msgstr "Αφαίρεση Όλων των Κριτηρίων"
+
+msgid "Answered"
+msgstr "Απαντήθηκε"
+
+msgid "Before"
+msgstr "Πριν"
+
+msgid "Message Body"
+msgstr "Κείμενο Μηνύματος"
+
+msgid "Deleted"
+msgstr "Διαγραμμένο"
+
+msgid "Draft"
+msgstr "Πρόχειρο"
+
+msgid "Flagged"
+msgstr "Σημειωμένο"
+
+msgid "Sent By"
+msgstr "Απεσταλμένο από:"
+
+msgid "Header Field"
+msgstr "Πεδίο Κεφαλίδας"
+
+msgid "Keyword"
+msgstr "Λέξη Κλειδί"
+
+msgid "Larger Than"
+msgstr "Μεγαλύτερο από"
+
+msgid "Old"
+msgstr "Παλιό"
+
+msgid "On"
+msgstr "Στο"
+
+msgid "Recent"
+msgstr "Πρόσφατο"
+
+msgid "Seen"
+msgstr "Αναγνωσμένο"
+
+msgid "Sent Before"
+msgstr "Στάλθηκε Πριν Από"
+
+msgid "Sent On"
+msgstr "Στάλθηκε Στις"
+
+msgid "Sent Since"
+msgstr "Στάλθηκε Μετά Από"
+
+msgid "Since"
+msgstr "Από"
+
+msgid "Smaller Than"
+msgstr "Μικρότερο Από"
+
+msgid "Subject Contains"
+msgstr "Θέμα Περιέχει"
+
+msgid "Header and Body"
+msgstr "Κεφαλίδες και Κύριο Μέρος"
+
+msgid "Sent To"
+msgstr "Στάλθηκε Προς"
+
+msgid "Not"
+msgstr "Όχι"
+
+msgid "And In"
+msgstr "Και στον"
+
+msgid "Or In"
+msgstr "Ή στον"
+
+msgid "And"
+msgstr "Και"
+
+msgid "Or"
+msgstr "Ή"
 
 msgid "Search Results"
 msgstr "Αποτελέσματα Αναζήτησης"
@@ -804,6 +921,9 @@ msgstr "Εμφάνιση Πλήρους Κεφαλίδας"
 
 msgid "Viewing a text attachment"
 msgstr "Βλέπετε συνημμένο σε μορφή κειμένου"
+
+msgid "Folder List"
+msgstr "Λίστα Φακέλων"
 
 msgid "Personal address book"
 msgstr "Προσωπικό βιβλίο διευθύνσεων"
@@ -1002,9 +1122,6 @@ msgstr "D, F j, Y g:i a"
 msgid "D, F j, Y G:i"
 msgstr "D, F j, Y G:i"
 
-msgid "M j, Y"
-msgstr "M j, Y"
-
 msgid "g:i a"
 msgstr "g:i a"
 
@@ -1020,12 +1137,6 @@ msgstr "D, G:i"
 #, c-format
 msgid "Preference database error (%s). Exiting abnormally"
 msgstr "Σφάλμα βάσης δεδομένων προτιμήσεων (%s). Μη ομαλή έξοδος"
-
-msgid "Unknown user or password incorrect."
-msgstr "Άγνωστος χρήστης η εσφαλμένος κωδικός."
-
-msgid "Click here to try again"
-msgstr "Κάντε κλικ εδώ για να προσπαθήσετε πάλι"
 
 #, c-format
 msgid "Click here to return to %s"
@@ -1118,32 +1229,38 @@ msgstr ""
 "Πρέπει να έχετε εγκαταστήσει php4 με ενεργοποιημένες τις λειτουργίες "
 "multibyte string (χρήση επιλογής ρυθμίσεων --with-mbstring)"
 
-msgid "ERROR : No available imapstream."
-msgstr "ΣΦΑΛΜΑ : Μη διαθέσιμο imapstream."
-
-msgid "ERROR : Connection dropped by imap-server."
-msgstr "ΣΦΑΛΜΑ : Η σύνδεση διακόπηκε από τον εξυπηρετητή imap."
-
 msgid "ERROR : Could not complete request."
 msgstr "ΣΦΑΛΜΑ: Δεν ήταν δυνατό να ολοκληρωθεί το αίτημα."
 
-msgid "Query:"
-msgstr "Εξερεύνηση:"
-
-msgid "Reason Given: "
-msgstr "Αιτιολογία που Δόθηκε:"
-
 msgid "ERROR : Bad or malformed request."
 msgstr "ΣΦΑΛΜΑ: Κακό η κακώς διαμορφωμένο."
-
-msgid "Server responded: "
-msgstr "Απόκριση του εξυπηρετητή:"
 
 msgid "ERROR : Imap server closed the connection."
 msgstr "ΣΦΑΛΜΑ : Ο Imap εξυπηρετητής έκλεισε τη σύνδεση."
 
 msgid "ERROR : Unknown imap response."
 msgstr "ΣΦΑΛΜΑ : Άγνωστη Απόκριση imap."
+
+msgid "Reason Given: "
+msgstr "Αιτιολογία που Δόθηκε:"
+
+msgid "Query:"
+msgstr "Εξερεύνηση:"
+
+msgid "ERROR : No available imapstream."
+msgstr "ΣΦΑΛΜΑ : Μη διαθέσιμο imapstream."
+
+msgid "ERROR : Bad function call."
+msgstr ""
+
+msgid "Reason:"
+msgstr "Λόγος:"
+
+msgid "ERROR : Connection dropped by imap-server."
+msgstr "ΣΦΑΛΜΑ : Η σύνδεση διακόπηκε από τον εξυπηρετητή imap."
+
+msgid "Server responded: "
+msgstr "Απόκριση του εξυπηρετητή:"
 
 #, c-format
 msgid "Error connecting to IMAP server: %s."
@@ -1160,6 +1277,9 @@ msgstr "Άγνωστο σφάλμα: %s"
 msgid "Read data:"
 msgstr "Ανάγνωση δεδομένων:"
 
+msgid "Unknown user or password incorrect."
+msgstr "Άγνωστος χρήστης η εσφαλμένος κωδικός."
+
 msgid "ERROR : Could not append message to"
 msgstr "ΣΦΑΛΜΑ: Δεν ήταν δυνατό να προσαρτηθεί το μήνυμα"
 
@@ -1175,9 +1295,6 @@ msgstr ""
 
 msgid "(no subject)"
 msgstr "(κανένα θέμα)"
-
-msgid "Unknown Sender"
-msgstr "Άγνωστος Αποστολέας"
 
 msgid "Unknown response from IMAP server: "
 msgstr "Άγνωστη απόκριση από τον εξυπηρετητή IMAP: "
@@ -1246,6 +1363,12 @@ msgstr "Μη Εμφάνιση Αλληλουχίας"
 msgid "Thread View"
 msgstr "Εμφάνιση Αλληλουχίας"
 
+msgid "Bypass Trash"
+msgstr "Παράκαμψη Διαγραμμένων"
+
+msgid "Click here to change the sorting of the message list"
+msgstr "Κάντε κλικ εδώ για να αλλάξετε την ταξινόμηση της λίστας μηνυμάτων"
+
 msgid "Toggle All"
 msgstr "Αναστροφή Όλων"
 
@@ -1307,6 +1430,9 @@ msgstr "κατέβασμα"
 
 msgid "sec_remove_eng.png"
 msgstr "sec_remove_eng.png"
+
+msgid "This external link will open in a new window"
+msgstr ""
 
 #, c-format
 msgid "Option Type '%s' Not Found"
@@ -1441,6 +1567,15 @@ msgstr "Μέγιστος Αριθμός Σελίδων για Εμφάνιση"
 msgid "Always Show Full Date"
 msgstr "Πάντοτε Εμφάνιση ολόκληρης της Ημερομηνίας"
 
+msgid "Length of From/To Field (0 for full)"
+msgstr "Μήκος του Από/Προς Πεδίου (0 για όλο)"
+
+msgid "Length of Subject Field (0 for full)"
+msgstr "Μήκος του Πεδίου Θέματος (0 για όλο)"
+
+msgid "Show recipient name if the message is from your default identity"
+msgstr "Εμφάνιση ονόματος αποστολέα αν το μήνυμα είναι από την προκαθορισμένη σας ταυτότητα"
+
 msgid "Message Display and Composition"
 msgstr "Εμφάνιση Μηνύματος και Συγγραφής"
 
@@ -1506,6 +1641,21 @@ msgstr "Ύψος Παραθύρου Σύνθεσης"
 
 msgid "Append Signature before Reply/Forward Text"
 msgstr "Προσάρτηση υπογραφής πριν το Κείμενο Απάντησης/Προώθησης"
+
+msgid "Cursor Position when Replying"
+msgstr "Θέση Δρομέα κατά την Απάντηση"
+
+msgid "To: field"
+msgstr "Πεδίο Προς:"
+
+msgid "Focus in body"
+msgstr "Επικέντρωση στο Κύριο Μέρος"
+
+msgid "Select body"
+msgstr "Επιλογή Κύριου μέρους μηνύματος"
+
+msgid "Strip signature when replying"
+msgstr "Αφαίρεση υπογραφής κατά την απάντηση"
 
 msgid "Enable Sort by of Receive Date"
 msgstr "Ενεργοποίηση Ταξινόμησης με Ημερομηνία Παραλαβής"
@@ -1585,7 +1735,7 @@ msgstr "Μόνο όσα δεν έχουν Κοιταχτεί"
 msgid "Unseen and Total"
 msgstr "Όσα δεν έχουν κοιταχτεί και Συνολικά"
 
-msgid "Enable Collapsible Folders"
+msgid "Enable Collapsable Folders"
 msgstr "Ενεργοποίηση Πτυσσόμενων Φακέλων"
 
 msgid "Enable Cumulative Unread Message Notification"
@@ -1593,6 +1743,15 @@ msgstr "Ενεργοποίηση Συσσωρευμένης Ειδοποίησης Μη-Αναγνωσμένων Μηνυμάτων"
 
 msgid "Show Clock on Folders Panel"
 msgstr "Εμφάνιση Ρολογιού στο Πάνελ των Φακέλων"
+
+msgid "Show weekday and time"
+msgstr "Εμφάνιση ημέρας και ώρας"
+
+msgid "Show time with seconds"
+msgstr "Εμφάνιση ώρας με δευτερόλεπτα"
+
+msgid "Show time"
+msgstr "Εμφάνιση ώρας"
 
 msgid "No Clock"
 msgstr "Όχι Ρολόι"
@@ -1620,6 +1779,12 @@ msgstr "Στυλ Λίστας Επιλογής"
 
 msgid "Long: "
 msgstr "Μακρύ:"
+
+msgid "Folder"
+msgstr "Φάκελοι"
+
+msgid "Subfolder"
+msgstr "Υποφάκέλος"
 
 msgid "Indented: "
 msgstr "Με κενό:"
@@ -1733,9 +1898,6 @@ msgstr "Δεσμός URI Παροχέα"
 
 msgid "Provider Name"
 msgstr "Όνομα Παροχέα"
-
-msgid "Default Language"
-msgstr "Εξ ορισμού Γλώσσα"
 
 msgid "Top Frame"
 msgstr "Πλαίσιο Κορυφής"
@@ -1866,9 +2028,6 @@ msgstr "Ενεργοποίηση / Μη Επιλογή επιδιόρθωσης φακέλων"
 msgid "General Options"
 msgstr "Γενικές Επιλογές"
 
-msgid "Default Charset"
-msgstr "Εξ ορισμού Σύνολο Χαρακτήρων"
-
 msgid "Data Directory"
 msgstr "Φάκελος Δεδομένων"
 
@@ -1962,8 +2121,54 @@ msgstr "Εξ ορισμού Θέμα"
 msgid "Use index number of theme"
 msgstr "Χρήση αριθμού καταλόγου του Θέματος"
 
+msgid "Language settings"
+msgstr "Ρυθμίσεις Γλώσσας"
+
+msgid "Default Language"
+msgstr "Εξ ορισμού Γλώσσα"
+
+msgid "Default Charset"
+msgstr "Εξ ορισμού Σύνολο Χαρακτήρων"
+
+msgid "Show alternative language names"
+msgstr "Εμφάνιση εναλλακτικών ονομάτων γλωσσών"
+
+msgid "Available languages"
+msgstr "Διαθέσιμες γλώσσες"
+
+#, fuzzy
+msgid "Use agresive decoding"
+msgstr "Χρήση ταξινόμησης από τον εξυπηρετητή"
+
+msgid "Tweaks"
+msgstr "Πειράγματα"
+
+msgid "Use advanced tree folder listing"
+msgstr "Χρήση δέντρου λίστας φακέλων για προχωρημένους χρήστες"
+
+msgid "Use old folder listing functions"
+msgstr "Χρήση λειτουργιών παλιάς λίστας φακέλων"
+
+msgid "Use php recode functions"
+msgstr "Χρήση λειτουργιών recode της PHP"
+
+msgid "Use php iconv functions"
+msgstr "Χρήση λειτουργιών iconv της PHP"
+
 msgid "Configuration Administrator"
 msgstr "Διαχειριστής Ρυθμίσεων"
+
+msgid ""
+"Note: it is recommended that you configure your system using conf.pl, and "
+"not this plugin. conf.pl contains additional information regarding the "
+"purpose of variables and appropriate values, as well as additional "
+"verification steps."
+msgstr ""
+
+msgid ""
+"Run or consult conf.pl should you run into difficulty with your "
+"configuration."
+msgstr ""
 
 msgid "Theme Name"
 msgstr "Όνομα Θέματος"
@@ -1990,6 +2195,64 @@ msgid ""
 msgstr ""
 "Αυτό το πακέτο (module) επιτρέπει στους Διαχειριστές να διαχειρίζονται την "
 "κεντρική διαμόρφωση του SquirrelMail από απόσταση."
+
+msgid "Submit a Bug Report"
+msgstr "Αναφέρετε ένα Σφάλμα (bug)"
+
+msgid ""
+"Before you send your bug report, please make sure to check this checklist "
+"for any common problems."
+msgstr ""
+
+msgid ""
+"Make sure that you are running the most recent copy of <a href=\"http://www."
+"squirrelmail.org/\">SquirrelMail</a>."
+msgstr ""
+
+#, c-format
+msgid "You are currently using version %s."
+msgstr "Αυτή τη στιγμή χρησιμοποιείτε την έκδοση %s."
+
+msgid ""
+"Check to see if you bug is already listed in the <a href=\"http://"
+"sourceforge.net/bugs/?group_id=311\">Bug List</a> on SourceForge. If it is, "
+"we already know about it and are trying to fix it."
+msgstr ""
+
+msgid ""
+"Try to make sure that you can repeat it. If the bug happens sporatically, "
+"try to document what you did when it happened. If it always occurs when you "
+"view a specific message, keep that message around so maybe we can see it."
+msgstr ""
+
+msgid ""
+"If there were warnings displayed above, try to resolve them yourself. Read "
+"the guides in the <tt>doc/</tt> directory where SquirrelMail was installed."
+msgstr ""
+
+msgid ""
+"Pressing the button below will start a mail message to the developers of "
+"SquirrelMail that will contain a lot of information about your system, your "
+"browser, how SquirrelMail is set up, and your IMAP server. It will also "
+"prompt you for information. Just fill out the sections at the top. If you "
+"like, you can scroll down in the message to see what else is being sent."
+msgstr ""
+
+msgid ""
+"Please make sure to fill out as much information as you possibly can to give "
+"everyone a good chance of finding and removing the bug. Submitting your bug "
+"like this will not have it automatically added to the bug list on "
+"SourceForge, but someone who gets your message may add it for you."
+msgstr ""
+
+msgid "This bug involves"
+msgstr ""
+
+msgid "the general program"
+msgstr ""
+
+msgid "a specific plugin"
+msgstr ""
 
 msgid "Bug Reports:"
 msgstr "Αναφορές Σφαλμάτων (bug):"
@@ -2215,14 +2478,13 @@ msgid "FREE - SPAMhaus - A list of well-known SPAM sources."
 msgstr ""
 "ΔΩΡΕΑΝ - SPAMhaus - Λίστα γνωστών πηγών κακόβουλου ταχυδρομείου (SPAM)."
 
-#, c-format
 msgid ""
 "FREE, for now - SPAMCOP - An interesting solution that lists servers that "
-"have a very high spam to legit email ratio (85% or more)."
+"have a very high spam to legit email ratio (85 percent or more)."
 msgstr ""
 "ΔΩΡΕΑΝ, προς το παρόν - SPAMCOP - Ενδιαφέρουσα λύση που αναφέρει "
 "εξυπηρετητές που έχουν υψηλό ποσοστό κακόβουλου (spam) προς κανονικό-"
-"ταχυδρομείο (85% or more)."
+"ταχυδρομείο (85 τοις εκατό ή περισσότερο)."
 
 msgid "FREE - dev.null.dk - I don't have any detailed info on this list."
 msgstr ""
@@ -2520,12 +2782,6 @@ msgstr "Δεν έχει καθοριστεί εξυπηρετητής"
 msgid "Error "
 msgstr "Σφάλμα "
 
-msgid "POP3 noop:"
-msgstr "POP3 noop:"
-
-msgid "No connection to server"
-msgstr "Δεν υπάρχει σύνδεση στον εξυπηρετητή"
-
 msgid "POP3 user:"
 msgstr "POP3 χρήστης:"
 
@@ -2546,6 +2802,9 @@ msgstr "αποτυχία πιστοποίησης ταυτότητας"
 
 msgid "POP3 apop:"
 msgstr "POP3 apop:"
+
+msgid "No connection to server"
+msgstr "Δεν υπάρχει σύνδεση στον εξυπηρετητή"
 
 msgid "No login ID submitted"
 msgstr "Δεν υποβλήθηκε ταυτότητα σύνδεσης"
@@ -2604,9 +2863,6 @@ msgstr "Δεν υποβλήθηκε αριθμός μηνυμάτων"
 msgid "Command failed "
 msgstr "Αποτυχία εντολής"
 
-msgid "Remote POP server Fetching Mail"
-msgstr "Λήψη Ταχυδρομείου από Απομακρυσμένο Εξυπηρετητή POP"
-
 msgid "Select Server:"
 msgstr "Επιλογή Εξυπηρετητή:"
 
@@ -2615,6 +2871,15 @@ msgstr "Κωδικός για"
 
 msgid "Fetch Mail"
 msgstr "Λήψη Ταχυδρομείου"
+
+msgid "Remote POP server Fetching Mail"
+msgstr "Λήψη Ταχυδρομείου από Απομακρυσμένο Εξυπηρετητή POP"
+
+msgid "No POP3 servers configured yet."
+msgstr "Δεν έχουν καθοριστεί POP3 εξυπηρετητές ακόμα."
+
+msgid "Click here to go to the options page."
+msgstr "Κάντε κλικ εδώ για να πάτε στη σελίδα επιλογών."
 
 msgid "Fetching from "
 msgstr "Λήψη από "
@@ -2901,8 +3166,16 @@ msgstr "Νέο Ταχυδρομείο"
 msgid "SquirrelMail Notice:"
 msgstr "Σημείωση SquirrelMail:"
 
-msgid "You have new mail!"
-msgstr "Έχετε νέο ταχυδρομείο!"
+msgid "You have"
+msgstr "Έχετε"
+
+#, c-format
+msgid "%s new message"
+msgstr "%s νέο μήνυμα"
+
+#, c-format
+msgid "%s new messages"
+msgstr "%s νέα μηνύματα"
 
 msgid "NewMail Options"
 msgstr "Επιλογές Νέου Ταχυδρομείου"
@@ -2952,6 +3225,123 @@ msgstr "Ετήσια"
 msgid "Base Sent Folder"
 msgstr "Απεσταλμένος Φάκελος Βάσης"
 
+msgid "Enabled"
+msgstr "Ενεργοποιημένο"
+
+msgid "Disable it"
+msgstr "Απενεργοποίησέ το"
+
+msgid "Enable it"
+msgstr "Ενεργοποίησέ το"
+
+msgid "Spam reporting"
+msgstr "Αναφορά Κακόβουλης Αλληλογραφίας (SPAM)"
+
+msgid "SpamCop link is:"
+msgstr "Ο σύνδεσμος του SpamCop είναι:"
+
+msgid "Delete spam when reported:"
+msgstr "Διαγραφή του spam όταν αναφέρεται:"
+
+msgid "Only works with email-based reporting"
+msgstr "Δουλεύει μόνο με αναφορά βασισμένη στο ταχυδρομείο"
+
+msgid "Spam Reporting Method:"
+msgstr "Μέθοδος Αναφοράς κακόβουλου ταχυδρομείου (Spam)"
+
+msgid "Quick email-based reporting"
+msgstr ""
+
+msgid "Thorough email-based reporting"
+msgstr ""
+
+msgid "Web-based form"
+msgstr ""
+
+msgid "Your SpamCop authorization code:"
+msgstr ""
+
+msgid "see below"
+msgstr ""
+
+msgid ""
+"SpamCop is a free service that greatly assists in finding the true source of "
+"the spam and helps in letting the proper people know about the abuse."
+msgstr ""
+
+msgid ""
+"To use it, you must get a SpamCop authorization code. There is a free <a "
+"href=\"http://spamcop.net/anonsignup.shtml\">sign up page</a> so you can use "
+"SpamCop."
+msgstr ""
+
+msgid ""
+"<b>Before you sign up, be warned:</b> Some users have reported that the "
+"email addresses used with SpamCop find their way onto spam lists. To be "
+"safe, you can just create an email forwarding account and have all SpamCop "
+"reports get sent to there. Also, if it gets flooded with spam, you can then "
+"just delete that account with no worries about losing your real email "
+"address. Just go create an email forwarder somewhere (<a href=\"http://www."
+"yahoo.com/\">Yahoo!</a> has a <a href=\"http://dir.yahoo.com/"
+"Business_and_Economy/Business_to_Business/Communications_and_Networking/"
+"Internet_and_World_Wide_Web/Email_Providers/Forwarding_Services/"
+"Free_Forwarding/\">list of places</a>) so that messages from system "
+"administrators and whatnot can be sent to you."
+msgstr ""
+
+msgid ""
+"Once you have signed up with SpamCop and have received your SpamCop "
+"authorization code, you need to enable this plugin -- just click the link "
+"above.  Once enabled, you go about your normal life.  If you encounter a "
+"spam message in your mailbox, just view it.  On the right-hand side, near "
+"the top of where the message is displayed, you will see a link to report "
+"this message as spam.  Clicking on it brings you to a confirmation page. "
+"Confirming that you want the spam report sent will do different things with "
+"different reporting methods."
+msgstr ""
+
+msgid "Email-based Reporting"
+msgstr ""
+
+msgid ""
+"Pressing the button forwards the message to the SpamCop service and will "
+"optionally delete the message.  From there, you just need to go to your "
+"INBOX and quite soon a message should appear from SpamCop.  (It gets sent to "
+"the account you registered with, so make sure that your mail forwarder "
+"works!) Open it up, click on the appropriate link at the top, and a new "
+"browser window will open."
+msgstr ""
+
+msgid ""
+"Currently, the quick reporting just forwards the request to the thorough "
+"reporting.  Also, it appears that this is for members (non-free) only. "
+"Hopefully this will change soon."
+msgstr ""
+
+msgid "Web-based Reporting"
+msgstr ""
+
+msgid ""
+"When you press the button on the confirmation page, this will pop open a new "
+"browser window and the SpamCop service should appear inside. The message "
+"will not be deleted (working on that part), but you won't need to wait for a "
+"response email to start the spam reporting."
+msgstr ""
+
+msgid ""
+"The SpamCop service will display information as it finds it, so scroll down "
+"until you see a form button.  It might pause a little while it is looking up "
+"information, so be a little patient.  Read what it says, and submit the "
+"spam.  Close the browser window.  Press Cancel or click on the appropriate "
+"mail folder to see messages and/or delete the spam."
+msgstr ""
+
+msgid ""
+"<b>For more information</b> about SpamCop, it's services, spam in general, "
+"and many related topics, try reading through SpamCop's <a href=\"http://"
+"spamcop.net/help.shtml\">Help and Feedback</a> section."
+msgstr ""
+
 msgid "Report as Spam"
 msgstr "Ανέφερε ως Κακόβουλη Αλληλογραφία (Spam)"
 
@@ -2967,6 +3357,13 @@ msgstr ""
 "SpamCop διαβάζει κακόβουλο ηλεκτρονικό ταχυδρομείο (spam) και καθορίζει την "
 "σωστή διεύθυνση για την αποστολή παραπόνων. Αρκετά γρήγορο, πραγματικά "
 "έξυπνο και εύκολο στη χρήση."
+
+msgid ""
+"Sending this spam report will give you back a reply with URLs that you can "
+"click on to properly report this spam message to the proper authorities. "
+"This is a free service.  By pressing the \"Send Spam Report\" button, you "
+"agree to follow SpamCop's rules/terms of service/etc."
+msgstr ""
 
 msgid "SpellChecker Options"
 msgstr "Επιλογές Διορθωτή Ορθογραφίας"
@@ -3567,64 +3964,3 @@ msgstr "Αναφορά σφάλματος παράδοσης"
 msgid "Undelivered Message Headers"
 msgstr "Κεφαλίδες Μη-Απεσταλμένων Μηνυμάτων"
 
-#~ msgid ""
-#~ "FREE - Osirusoft Relays - Osirusofts list of verified open relays. Seems "
-#~ "to include servers used by abuse@uunet.net auto-replies too."
-#~ msgstr ""
-#~ "ΔΩΡΕΑΝ- Osirusoft Relays - Η λίστα των διαπιστωμένων ανοικτών "
-#~ "αναμεταδόσεων Osirusoft . Φαίνεται να περιλαμβάνει εξυπηρετητές που "
-#~ "χρησιμοποιούνται και από το abuse@uunet.net auto-replies."
-
-#~ msgid "FREE - Osirusoft Dialups - Osirusofts Dialup Spam Source list."
-#~ msgstr ""
-#~ "ΔΩΡΕΑΝ - Osirusoft Dialups - Η λίστα κακόβουλου ηλεκτρονικού ταχυδρομείου "
-#~ "dialup πρόσβασης Osirusoft."
-
-#~ msgid ""
-#~ "FREE - Osirusoft Confirmed Spam Source - Sites that continually spam and "
-#~ "have been manually added after multiple nominations. Use with caution. "
-#~ "Seems to catch abuse auto-replies from some ISPs."
-#~ msgstr ""
-#~ "ΔΩΡΕΑΝ - Πηγή Επιβεβαιωμένης Κακόβουλης Αλληλογραφίας Osirusoft -  Κόμβοι "
-#~ "που συνεχώς στέλνουν κακόβουλη αλληλογραφία και έχουν προστεθεί με το "
-#~ "χέρι μετά από πολλαπλές συστάσεις. Χρησιμοποιήστε με προσοχή. Φαίνεται να "
-#~ "πιάνει κατάχρηση αυτόματης-απάντησης από μερικούς παροχείς πρόσβασης "
-#~ "(ISPs)."
-
-#~ msgid ""
-#~ "FREE - Osirusoft Smart Hosts - List of hosts that are secure but relay "
-#~ "for other mail servers that are not secure."
-#~ msgstr ""
-#~ "ΔΩΡΕΑΝ - Osirusoft Smart Hosts - Λίστες εξυπηρετητών που είναι ασφαλείς "
-#~ "αλλά αναδιανέμουν προς άλλους εξυπηρετητές ηλεκτρονικού ταχυδρομείου που "
-#~ "δεν είναι ασφαλείς."
-
-#~ msgid ""
-#~ "FREE - Osirusoft Spamware Developers - It is believed that these are IP "
-#~ "ranges of companies that are known to produce spam software. Seems to "
-#~ "catch abuse auto-replies from some ISPs."
-#~ msgstr ""
-#~ "ΔΩΡΕΑΝ - Osirusoft Spamware Developers - Πιστεύεται ότι αυτές είναι "
-#~ "περιοχές διευθύνσεων IP από εταιρείες που είναι γνωστές ότι παράγουν "
-#~ "κακόβουλο λογισμικό.  Φαίνεται να πιάνει κατάχρηση αυτόματης-απάντησης "
-#~ "από μερικούς παροχείς πρόσβασης (ISPs)."
-
-#~ msgid ""
-#~ "FREE - Osirusoft Unconfirmed OptIn Servers - List of listservers that opt "
-#~ "users in without confirmation."
-#~ msgstr ""
-#~ "ΔΩΡΕΑΝ - Osirusoft Unconfirmed OptIn Servers - Λίστα εξυπηρετητών με "
-#~ "λίστες ηλεκτρονικού ταχυδρομείου που επιτρέπουν πρόσβαση στους χρήστες "
-#~ "χωρίς επιβεβαίωση."
-
-#~ msgid ""
-#~ "FREE - Osirusoft Insecure formmail.cgi scripts - List of insecure "
-#~ "formmail.cgi scripts. (planned)."
-#~ msgstr ""
-#~ "ΔΩΡΕΑΝ - Osirusoft Μη-ασφαλή formmail.cgi scripts - Λίστα μη-ασφαλών  "
-#~ "formmail.cgi scripts. (προγραμματισμένο)."
-
-#~ msgid "FREE - Osirusoft Open Proxy Servers - List of Open Proxy Servers."
-#~ msgstr ""
-#~ "ΔΩΡΕΑΝ - Osirusoft Ανοιχτοί Proxy Εξυπηρετητές - Λίστα Ανοιχτών Proxy "
-#~ "Εξυπηρετητών."
