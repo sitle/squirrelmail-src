@@ -10,10 +10,14 @@
  * A SINGLE FREAKING COMMENT IN! Whoever is responsible for this,
  * be very ashamed.
  *
- * $Id$
+ * @version $Id$
+ * @package squirrelmail
  */
 
-/* Path for SquirrelMail required files. */
+/**
+ * Path for SquirrelMail required files.
+ * @ignore
+ */
 define('SM_PATH','../');
 
 /* SquirrelMail required files. */
@@ -44,41 +48,40 @@ if ( !sqgetGlobalVar('passed_ent_id', $passed_ent_id, SQ_GET) ) {
 
 
 $imapConnection = sqimap_login($username, $key, $imapServerAddress, $imapPort, 0);
-$mbx_response =  sqimap_mailbox_select($imapConnection, $mailbox);
+$mbx_response = sqimap_mailbox_select($imapConnection, $mailbox);
 
-$message = &$messages[$mbx_response['UIDVALIDITY']]["$passed_id"];
+$message = &$messages[$mbx_response['UIDVALIDITY']][$passed_id];
 $message_ent = &$message->getEntity($ent_id);
 if ($passed_ent_id) {
     $message = &$message->getEntity($passed_ent_id);
 }
-   
-$header = $message_ent->header;
-$charset = $header->getParameter('charset');
-$type0 = $header->type0;
-$type1 = $header->type1;
+$header   = $message_ent->header;
+$type0    = $header->type0;
+$type1    = $header->type1;
+$charset  = $header->getParameter('charset');
 $encoding = strtolower($header->encoding);
 
-$msg_url = 'read_body.php?' . $QUERY_STRING;
-$msg_url = set_url_var($msg_url, 'ent_id', 0);
+$msg_url   = 'read_body.php?' . $QUERY_STRING;
+$msg_url   = set_url_var($msg_url, 'ent_id', 0);
 
 $body = mime_fetch_body($imapConnection, $passed_id, $ent_id);
 $body = decodeBody($body, $encoding);
 
 displayPageHeader($color, 'None');
 
-echo "<BR><TABLE WIDTH=\"100%\" BORDER=0 CELLSPACING=0 CELLPADDING=2 ALIGN=CENTER><TR><TD BGCOLOR=\"$color[0]\">".
-     "<B><CENTER>".
+echo '<br /><table width="100%" border="0" cellspacing="0" cellpadding="2" align="center"><tr><td bgcolor="'.$color[0].'">'.
+     "<b><center>".
      _("Viewing a text attachment") . " - ";
 echo '<a href="'.$msg_url.'">'. _("View message") . '</a>';
 
 $dwnld_url = '../src/download.php?'. $QUERY_STRING.'&amp;absolute_dl=true';
-echo '</b></td><tr><tr><td><CENTER><A HREF="'.$dwnld_url. '">'.
+echo '</b></td><tr><tr><td><center><a href="'.$dwnld_url. '">'.
      _("Download this as a file").
-     "</A></CENTER><BR>".
-     "</CENTER></B>".
-     "</TD></TR></TABLE>".
-     "<TABLE WIDTH=\"98%\" BORDER=0 CELLSPACING=0 CELLPADDING=2 ALIGN=CENTER><TR><TD BGCOLOR=\"$color[0]\">".
-     "<TR><TD BGCOLOR=\"$color[4]\"><TT>";
+     '</a></center><br />'.
+     '</center></b>'.
+     '</td></tr></table>'.
+     '<table width="98%" border="0" cellspacing="0" cellpadding="2" align="center"><tr><td bgcolor="'.$color[0].'">'.
+     '<tr><td bgcolor="'.$color[4].'"><tt>';
 
     if (isset($languages[$squirrelmail_language]['XTRA_CODE']) &&
         function_exists($languages[$squirrelmail_language]['XTRA_CODE'])) {
@@ -92,6 +95,8 @@ if ($type1 == 'html' || (isset($override_type1) &&  $override_type1 == 'html')) 
 } else {
     translateText($body, $wrap_at, $charset);
 }
-echo $body . "</TT></TD></TR></TABLE>";
+echo $body;
 
 ?>
+</tt></td></tr></table>
+</body></html>
