@@ -1,13 +1,13 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# Copyright (C) 2003 Squirrelmail GPG Development Team
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2003-12-29 17:58-0600\n"
+"Project-Id-Version: GPG Plugin v 2.0\n"
+"POT-Creation-Date: 2003-12-30 13:50-0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -280,6 +280,7 @@ msgid ""
 "administrator?"
 msgstr ""
 
+#: gpg_help.php:79 modules/gpg_recipientlist.php:84
 #: modules/keyring_main.php:84
 msgid "Done"
 msgstr ""
@@ -444,8 +445,8 @@ msgstr ""
 msgid "GPG Plugin Error:No body text received from Compose page"
 msgstr ""
 
-#: gpg_help_base.php:57 gpg_help_base.php:62 gpg_help.php:56
-#: modules/options_main.mod:43
+#: gpg_help_base.php:57 gpg_help_base.php:62 gpg_help.php:56 gpg_help.php:61
+#: setup.php:95 modules/options_main.mod:43
 msgid "GPG Plugin Help"
 msgstr ""
 
@@ -485,6 +486,10 @@ msgstr ""
 
 #: gpg_encrypt_functions.php:285
 msgid "GPG Plugin: gpg returned a non-clean return value of: "
+msgstr ""
+
+#: modules/gpg_recipientlist.php:61
+msgid "GPG Recipient List"
 msgstr ""
 
 #: modules/passpop.mod:45
@@ -825,6 +830,10 @@ msgstr ""
 
 #: modules/getstart.php:143 modules/keyring_main.php:675
 msgid "Look up keys on a public keyserver"
+msgstr ""
+
+#: modules/keyserver.mod:64
+msgid "Make this my default keyserver"
 msgstr ""
 
 #: modules/gpgdecrypt.mod:224
