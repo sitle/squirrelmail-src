@@ -11,11 +11,13 @@
  * $Id$
  */
 
-   chdir ("../");
+   chdir ('../');
    require_once('../src/validate.php');
    require_once("../src/load_prefs.php");
-   if (!isset($sound)) {
-    $sound = "Click.wav";
+   if (!isset($_GET['sound'])) {
+       $sound = 'Click.wav';
+   } else {
+       $sound = $_GET['sound'];
    }
    $sound = str_replace('../plugins/newmail/', '', $sound);
    $sound = str_replace('../', '', $sound);
