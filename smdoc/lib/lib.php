@@ -159,6 +159,25 @@ function getRegexLength($regex, $default)
 }
 
 /**
+ * Make sure that the specified number lies between min and max
+ *
+ * @param int value Value to ensure is within range - changed if necessary
+ * @param int min   Minimum value of range
+ * @param int max   Maximum value of range
+ */
+function ensureIntInRange(&$value, $min, $max)
+{
+  if ( $value === NULL || !is_int($value) )
+    return;
+
+  if ( $value > $max )
+    $value = $max;
+
+  if ( $value < $min )
+    $value = $min;
+}
+
+/**
  * Get the user group permission of a object or class method.
  *
  * @param string className Name of the class the method belongs to.

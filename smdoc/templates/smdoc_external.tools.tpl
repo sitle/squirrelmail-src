@@ -20,8 +20,10 @@ $uri = getURI();
 
       if ( !empty($t['admin_list']) )
       { ?>
-<p><span class="heading"><?php echo _("Site Administration"); ?>:</span>&nbsp;
-<?php   print_arr($t['admin_list'], FALSE);
+<h3><?php echo _("Site Administration"); ?></h3>
+<?php   
+        foreach ( $t['admin_list'] as $item )
+            echo '<span class="heading">'.$item.'</span><br />';
       }
 
 // List create new resource links

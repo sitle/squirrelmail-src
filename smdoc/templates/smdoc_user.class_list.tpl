@@ -18,7 +18,6 @@
  */
 
 $t['title'] = _("User Index");
-$t['method'] = 'list';
 $t['body_function'] = 'user_list_body';
 
 /** Include base template */

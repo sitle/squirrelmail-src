@@ -55,7 +55,7 @@ $foowd->template->assign_by_ref('create_list', $create_list);
  */
 $admin_link = array();
 if ( $foowd->hasPermission('smdoc_group_user','list','CLASS',$dummy) )
-  $admin_link[] = '<a href="'.$loc_url.'?class=smdoc_group_user&method=list">'._("Groups").'</a>';
+  $admin_link[] = '<a href="'.$loc_url.'?class=smdoc_group_user&method=list">'._("User Groups").'</a>';
 if ( $foowd->hasPermission('smdoc_name_lookup','list','CLASS',$dummy) )
   $admin_link[] = '<a href="'.$loc_url.'?class=smdoc_name_lookup&method=list">'._("Short Names").'</a>';
 if ( $foowd->user->inGroup('Gods') )

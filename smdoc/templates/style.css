@@ -113,17 +113,20 @@ form {
 	display: inline;
 	text-align: center;
 }
+select,
+textarea,
 input {
+	font-family: "Courier New", courier, monospace;
+	font-size: 12px;
     background-color: #F0F0F0;
 }
+select.error,
+textarea.error,
 input.error {
 	background-color: #ffcccc;
 }
 .smdoc_textarea {
-	font-family: "Courier New", courier, monospace;
-	font-size: 12px;
 	width: 80%;
-    background-color: #F0F0F0;
 }
 .form_submit {
 	text-align: center;
@@ -374,10 +377,18 @@ iframe {
 	vertical-align: top;
 }
 .textile {
-	font-family: "Courier New", courier, monospace
-	font-size: 12px;
 	width: 95%;
-    background-color: #F0F0F0;
 }
 
-
+/*
+ * Style for News listing
+ */
+.newsdate {
+    text-align: right;
+    vertical-align: top;
+}
+.newssummary {
+    text-align: left;
+    padding: 0px 15px;
+    border-bottom: 1px dashed gray;
+}

@@ -38,7 +38,7 @@ setPermission('foowd_text_plain', 'object','clone', 'Edit');
 
 
 /** Class descriptor/Meta information */
-setClassMeta('foowd_text_plain', 'Plain Text Document');
+setClassMeta('foowd_text_plain', 'Plain Text');
 
 /* Class settings */
 setConst('DIFF_COMMAND', 'diff -Bb -u5');

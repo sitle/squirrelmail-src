@@ -350,6 +350,7 @@ class smdoc_db
   function isTitleUnique($title, $workspace, &$objectid, 
                          $in_source = NULL, $uniqueObjectid = TRUE)
   {
+    $this->foowd->track('smdoc_db->isTitleUnique', $title);
     $this->getSource($in_source,$source,$makeTable);
 
     $indexes['title'] = $title;
@@ -359,21 +360,29 @@ class smdoc_db
     $where = ' WHERE'.$this->buildWhere($indexes);
     $select = 'SELECT title FROM '.$source.$where;
 
+    // Make the query to find all items in the same workspace
+    // that have the same title
     $query = $this->query($select);
     if ( $query === FALSE )
     {
       // Query failed, check for correct fields (possibly create Table)
       $fields = $this->getFields($in_source);
       if ( $fields === FALSE )
-        return TRUE;
+        trigger_error('Unable to create table using specified source: '.$in_source['table']);
+
       $query = $this->query($select);
       if ( $query === FALSE )
-        return TRUE;
+        trigger_error('Unable to find title in specified source: '.$in_source['table']);
     }
+    
+    // If ANY rows were returned with the query, 
+    // the title is NOT unique (result = FALSE).
+    $result = $this->num_rows($query) > 0 ? FALSE : TRUE;
 
-    if ( $this->num_rows($query) > 0 )
-      return FALSE;
-
+    // Regardless of the uniqueness of the title,
+    // do we want a unique object id to be assigned?
+    // This query is only against objectids, and is
+    // independent of workspace.
     if ( $uniqueObjectid )
     {
       $objectid = crc32(strtolower($title));
@@ -386,7 +395,8 @@ class smdoc_db
       }
     }
 
-    return TRUE;
+    $this->foowd->track();
+    return $result;
   }
 
   /**
@@ -950,20 +960,16 @@ class smdoc_db
   function getFields($in_source)
   {
     $this->getSource($in_source, $table, $makeTable);
-    $select = 'SELECT * FROM '.$table.' LIMIT 1';
+    $select = 'DESCRIBE '.$table;
+    $records =& $this->queryAll($select);
 
-    if ( $query = $this->query($select) )
+    if ( $records !== FALSE )
     {
-      if ($record = $this->fetch($query))
-      {
-        $return = array();
-        foreach ($record as $field => $value)
-        {
-          if (!is_numeric($field))
-		    $return[] = $field;
-        }
-        return $return;
-      }
+      $return = array();
+      foreach ($records as $field_data)
+        $return[] = $field_data['Field'];
+
+      return $return;
     }
     else
     {

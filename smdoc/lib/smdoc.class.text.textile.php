@@ -17,7 +17,7 @@
  */
 
 /** Class Descriptor/Meta information */
-setClassMeta('smdoc_text_textile', 'HTML + Textile Formatting');
+setClassMeta('smdoc_text_textile', 'Textile');
 
 /**
  * HTML and Textile text object class.
