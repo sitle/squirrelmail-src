@@ -9,10 +9,14 @@
  * This file is used for reading the msgs array and displaying
  * the resulting emails in the right frame.
  *
- * $Id$
+ * @version $Id$
+ * @package squirrelmail
  */
 
-/* Path for SquirrelMail required files. */
+/**
+ * Path for SquirrelMail required files.
+ * @ignore
+ */
 define('SM_PATH','../');
 
 /* SquirrelMail required files. */
@@ -145,7 +149,7 @@ function ServerMDNSupport($read) {
 }
 
 function SendMDN ( $mailbox, $passed_id, $sender, $message, $imapConnection) {
-    global $username, $attachment_dir, 
+    global $username, $attachment_dir,
            $version, $attachments, $squirrelmail_language, $default_charset,
            $languages, $useSendmail, $domain, $sent_folder,
            $popuser, $data_dir, $username;
@@ -216,14 +220,14 @@ function SendMDN ( $mailbox, $passed_id, $sender, $message, $imapConnection) {
     $now = getLongDateString( time() );
     set_my_charset();
     $body = _("Your message") . "\r\n\r\n" .
-            "\t" . _("To:") . ' ' . decodeHeader($to,false,false) . "\r\n" .
-            "\t" . _("Subject:") . ' ' . decodeHeader($header->subject,false,false) . "\r\n" .
-            "\t" . _("Sent:") . ' ' . $senton . "\r\n" .
+            "\t" . _("To") . ': ' . decodeHeader($to,false,false) . "\r\n" .
+            "\t" . _("Subject") . ': ' . decodeHeader($header->subject,false,false) . "\r\n" .
+            "\t" . _("Sent") . ': ' . $senton . "\r\n" .
             "\r\n" .
             sprintf( _("Was displayed on %s"), $now );
 
     $special_encoding = '';
-    if (isset($languages[$squirrelmail_language]['XTRA_CODE']) && 
+    if (isset($languages[$squirrelmail_language]['XTRA_CODE']) &&
         function_exists($languages[$squirrelmail_language]['XTRA_CODE'])) {
         $body = $languages[$squirrelmail_language]['XTRA_CODE']('encode', $body);
         if (strtolower($default_charset) == 'iso-2022-jp') {
@@ -286,10 +290,10 @@ function SendMDN ( $mailbox, $passed_id, $sender, $message, $imapConnection) {
         require_once(SM_PATH . 'class/deliver/Deliver_SMTP.class.php');
         $deliver = new Deliver_SMTP();
         global $smtpServerAddress, $smtpPort, $smtp_auth_mech, $pop_before_smtp;
-		if ($smtp_auth_mech == 'none') {
-			$user = '';
-			$pass = '';
-		} else {
+        if ($smtp_auth_mech == 'none') {
+            $user = '';
+            $pass = '';
+        } else {
             global $key, $onetimepad;
             $user = $username;
             $pass = OneTimePadDecrypt($key, $onetimepad);
@@ -304,7 +308,7 @@ function SendMDN ( $mailbox, $passed_id, $sender, $message, $imapConnection) {
         $success = $deliver->finalizeStream($stream);
     }
     if (!$success) {
-        $msg  = $deliver->dlv_msg . '<br>' .
+        $msg  = $deliver->dlv_msg . '<br />' .
                 _("Server replied: ") . $deliver->dlv_ret_nr . ' '.
                 $deliver->dlv_server_msg;
         require_once(SM_PATH . 'functions/display_messages.php');
@@ -326,7 +330,7 @@ function SendMDN ( $mailbox, $passed_id, $sender, $message, $imapConnection) {
 function ToggleMDNflag ($set ,$imapConnection, $mailbox, $passed_id, $uid_support) {
     $sg   =  $set?'+':'-';
     $cmd  = 'STORE ' . $passed_id . ' ' . $sg . 'FLAGS ($MDNSent)';
-    $read = sqimap_run_command ($imapConnection, $cmd, true, $response, 
+    $read = sqimap_run_command ($imapConnection, $cmd, true, $response,
                                 $readmessage, $uid_support);
 }
 
@@ -337,16 +341,16 @@ function ClearAttachments() {
 
     $rem_attachments = array();
     if (isset($attachments)) {
-	foreach ($attachments as $info) {
-    	    if ($info['session'] == -1) {
-        	$attached_file = "$hashed_attachment_dir/$info[localfilename]";
-        	if (file_exists($attached_file)) {
-            	    unlink($attached_file);
-        	}
-    	    } else {
-        	$rem_attachments[] = $info;
-    	    }
-	}
+        foreach ($attachments as $info) {
+            if ($info['session'] == -1) {
+                $attached_file = "$hashed_attachment_dir/$info[localfilename]";
+                if (file_exists($attached_file)) {
+                    unlink($attached_file);
+                }
+            } else {
+                $rem_attachments[] = $info;
+            }
+        }
     }
     $attachments = $rem_attachments;
 }
@@ -386,15 +390,15 @@ function formatRecipientString($recipients, $item ) {
         foreach($recipients as $r) {
             $add = decodeHeader($r->getAddress(true));
             if ($string) {
-                $string .= '<BR>' . $add;
+                $string .= '<br />' . $add;
             } else {
                 $string = $add;
                 if ($cnt > 1) {
-                    $string .= '&nbsp;(<A HREF="'.$url;
+                    $string .= '&nbsp;(<a href="'.$url;
                     if ($show) {
-                       $string .= '">'._("less").'</A>)';
+                       $string .= '">'._("less").'</a>)';
                     } else {
-                       $string .= '">'._("more").'</A>)';
+                       $string .= '">'._("more").'</a>)';
                        break;
                     }
                 }
@@ -408,7 +412,7 @@ function formatEnvheader($mailbox, $passed_id, $passed_ent_id, $message,
                          $color, $FirstTimeSee) {
     global $msn_user_support, $default_use_mdn, $default_use_priority,
            $show_xmailer_default, $mdn_user_support, $PHP_SELF, $javascript_on,
-	   $squirrelmail_language;
+           $squirrelmail_language;
 
     $header = $message->rfc822_header;
     $env = array();
@@ -437,8 +441,8 @@ function formatEnvheader($mailbox, $passed_id, $passed_ent_id, $message,
                 if ($message->is_mdnsent) {
                     $env[_("Read receipt")] = _("sent");
                 } else {
-                    $env[_("Read receipt")] = _("requested"); 
-                    if (!(handleAsSent($mailbox) || 
+                    $env[_("Read receipt")] = _("requested");
+                    if (!(handleAsSent($mailbox) ||
                           $message->is_deleted ||
                           $passed_ent_id)) {
                         $mdn_url = $PHP_SELF . '&sendreceipt=1';
@@ -462,26 +466,26 @@ function formatEnvheader($mailbox, $passed_id, $passed_ent_id, $message,
         }
     }
 
-    $s  = '<TABLE WIDTH="100%" CELLPADDING="0" CELLSPACING="2" BORDER="0"';
-    $s .= ' ALIGN="center" BGCOLOR="'.$color[0].'">';
+    $s  = '<table width="100%" cellpadding="0" cellspacing="2" border="0"';
+    $s .= ' align="center" bgcolor="'.$color[0].'">';
     foreach ($env as $key => $val) {
         if ($val) {
-            $s .= '<TR>';
-            $s .= html_tag('TD', '<B>' . $key . ':&nbsp;&nbsp;</B>', 'RIGHT', '', 'VALIGN="TOP" WIDTH="20%"') . "\n";
-            $s .= html_tag('TD', $val, 'left', '', 'VALIGN="TOP" WIDTH="80%"') . "\n";
-            $s .= '</TR>';
+            $s .= '<tr>';
+            $s .= html_tag('td', '<b>' . $key . ':&nbsp;&nbsp;</b>', 'right', '', 'valign="top" width="20%"') . "\n";
+            $s .= html_tag('td', $val, 'left', '', 'valign="top" width="80%"') . "\n";
+            $s .= '</tr>';
         }
     }
-    echo '<TABLE BGCOLOR="'.$color[9].'" WIDTH="100%" CELLPADDING="1"'.
-         ' CELLSPACING="0" BORDER="0" ALIIGN="center">'."\n";
-    echo '<TR><TD HEIGHT="5" COLSPAN="2" BGCOLOR="'.
-          $color[4].'"></TD></TR><TR><TD align=center>'."\n";
+    echo '<table bgcolor="'.$color[9].'" width="100%" cellpadding="1"'.
+         ' cellspacing="0" border="0" align="center">'."\n";
+    echo '<tr><td height="5" colspan="2" bgcolor="'.
+          $color[4].'"></td></tr><tr><td align="center">'."\n";
     echo $s;
     do_hook('read_body_header');
     formatToolbar($mailbox, $passed_id, $passed_ent_id, $message, $color);
-    echo '</TABLE>';
-    echo '</TD></TR><TR><TD HEIGHT="5" COLSPAN="2" BGCOLOR="'.$color[4].'"></TD></TR>'."\n";
-    echo '</TABLE>';
+    echo '</table>';
+    echo '</td></tr><tr><td height="5" colspan="2" bgcolor="'.$color[4].'"></td></tr>'."\n";
+    echo '</table>';
 }
 
 function formatMenubar($mailbox, $passed_id, $passed_ent_id, $message, $mbx_response) {
@@ -541,7 +545,7 @@ function formatMenubar($mailbox, $passed_id, $passed_ent_id, $message, $mbx_resp
     }
     if (isset($comp_alt_uri)) {
         $s .= $topbar_delimiter;
-	$s .= makeComposeLink($comp_alt_uri, $comp_alt_string);
+        $s .= makeComposeLink($comp_alt_uri, $comp_alt_string);
     }
 
     $s .= '</small></td><td align="center" width="33%"><small>';
@@ -581,14 +585,16 @@ function formatMenubar($mailbox, $passed_id, $passed_ent_id, $message, $mbx_resp
                 $entities[$ent->entity_id] = $c;
             }
         }
+
         $prev_link = _("Previous");
-        $next_link = _("Next");
         if($entities[$passed_ent_id] > 1) {
             $prev_ent_id = $entity_count[$entities[$passed_ent_id] - 1];
             $prev_link   = '<a href="'
                          . set_url_var($PHP_SELF, 'passed_ent_id', $prev_ent_id)
                          . '">' . $prev_link . '</a>';
         }
+
+        $next_link = _("Next");
         if($entities[$passed_ent_id] < $c) {
             $next_ent_id = $entity_count[$entities[$passed_ent_id] + 1];
             $next_link   = '<a href="'
@@ -614,7 +620,7 @@ function formatMenubar($mailbox, $passed_id, $passed_ent_id, $message, $mbx_resp
     if ($enable_forward_as_attachment) {
         $comp_action_uri = $comp_uri . '&amp;smaction=forward_as_attachment';
         $s .= $topbar_delimiter;
-	$s .= makeComposeLink($comp_action_uri, _("Forward as Attachment"));
+        $s .= makeComposeLink($comp_action_uri, _("Forward as Attachment"));
     }
 
     $comp_action_uri = $comp_uri . '&amp;smaction=reply';
@@ -639,7 +645,6 @@ function formatToolbar($mailbox, $passed_id, $passed_ent_id, $message, $color) {
     $urlMailbox = urlencode($mailbox);
     $urlPassed_id = urlencode($passed_id);
     $urlPassed_ent_id = urlencode($passed_ent_id);
-                                                                                                     
 
     $query_string = 'mailbox=' . $urlMailbox . '&amp;passed_id=' . $urlPassed_id . '&amp;passed_ent_id=' . $urlPassed_ent_id;
 
@@ -653,9 +658,9 @@ function formatToolbar($mailbox, $passed_id, $passed_ent_id, $message, $color) {
 
     $url = $base_uri.'src/view_header.php?'.$query_string;
 
-    $s  = "<TR>\n" .
-          html_tag( 'td', '', 'right', '', 'VALIGN="MIDDLE" WIDTH="20%"' ) . '<B>' . _("Options") . ":&nbsp;&nbsp;</B></TD>\n" .
-          html_tag( 'td', '', 'left', '', 'VALIGN="MIDDLE" WIDTH="80%"' ) . '<SMALL>' .
+    $s  = "<tr>\n" .
+          html_tag( 'td', '', 'right', '', 'valign="middle" width="20%"' ) . '<b>' . _("Options") . ":&nbsp;&nbsp;</b></td>\n" .
+          html_tag( 'td', '', 'left', '', 'valign="middle" width="80%"' ) . '<small>' .
           '<a href="'.$url.'">'._("View Full Header").'</a>';
 
     /* Output the printer friendly link if we are in subtle mode. */
@@ -663,8 +668,8 @@ function formatToolbar($mailbox, $passed_id, $passed_ent_id, $message, $color) {
           printer_friendly_link($mailbox, $passed_id, $passed_ent_id, $color);
     echo $s;
     do_hook("read_body_header_right");
-    $s = "</SMALL></TD>\n" .
-         "</TR>\n";
+    $s = "</small></td>\n" .
+         "</tr>\n";
     echo $s;
 
 }
@@ -752,16 +757,16 @@ if (!isset($messages[$uidvalidity][$passed_id]) || !$uid_support) {
 }
 
 if (isset($passed_ent_id) && $passed_ent_id) {
-   $message = $message->getEntity($passed_ent_id);
-   if ($message->type0 != 'message'  && $message->type1 != 'rfc822') {
-      $message = $message->parent;
-   }
-   $read = sqimap_run_command ($imapConnection, "FETCH $passed_id BODY[$passed_ent_id.HEADER]", true, $response, $msg, $uid_support);
-   $rfc822_header = new Rfc822Header();
-   $rfc822_header->parseHeader($read);
-   $message->rfc822_header = $rfc822_header;
+    $message = $message->getEntity($passed_ent_id);
+    if ($message->type0 != 'message'  && $message->type1 != 'rfc822') {
+        $message = $message->parent;
+    }
+    $read = sqimap_run_command ($imapConnection, "FETCH $passed_id BODY[$passed_ent_id.HEADER]", true, $response, $msg, $uid_support);
+    $rfc822_header = new Rfc822Header();
+    $rfc822_header->parseHeader($read);
+    $message->rfc822_header = $rfc822_header;
 } else {
-   $passed_ent_id = 0;
+    $passed_ent_id = 0;
 }
 $header = $message->header;
 
@@ -824,16 +829,16 @@ echo '        <table width="100%" cellpadding="3" cellspacing="0" align="center"
 echo '          <tr bgcolor="'.$color[4].'"><td>';
 // echo '            <table cellpadding="1" cellspacing="5" align="left" border="0">';
 echo html_tag( 'table' ,'' , 'left', '', 'cellpadding="1" cellspacing="5" border="0"' );
-echo '              <tr>' . html_tag( 'td', '<br>'. $messagebody."\n", 'left')
+echo '              <tr>' . html_tag( 'td', '<br />'. $messagebody."\n", 'left')
                         . '</tr>';
 echo '            </table>';
-echo '          </td></tr>';      
+echo '          </td></tr>';
 echo '        </table></td></tr>';
 echo '    </table>';
 echo '  </td></tr>';
 
-echo '<TR><TD HEIGHT="5" COLSPAN="2" BGCOLOR="'.
-          $color[4].'"></TD></TR>'."\n";
+echo '<tr><td height="5" colspan="2" bgcolor="'.
+          $color[4].'"></td></tr>'."\n";
 
 $attachmentsdisplay = formatAttachments($message,$ent_ar,$mailbox, $passed_id);
 if ($attachmentsdisplay) {
@@ -841,8 +846,7 @@ if ($attachmentsdisplay) {
    echo '    <table width="100%" cellpadding="1" cellspacing="0" align="center"'.' border="0" bgcolor="'.$color[9].'">';
    echo '     <tr><td>';
    echo '       <table width="100%" cellpadding="0" cellspacing="0" align="center" border="0" bgcolor="'.$color[4].'">';
- //  echo '        <tr><td ALIGN="left" bgcolor="'.$color[9].'">';
-   echo '        <tr>' . html_tag( 'td', '', 'left', $color[9] );              
+   echo '        <tr>' . html_tag( 'td', '', 'left', $color[9] );
    echo '           <b>' . _("Attachments") . ':</b>';
    echo '        </td></tr>';
    echo '        <tr><td>';
@@ -852,8 +856,8 @@ if ($attachmentsdisplay) {
    echo '       </td></tr></table>';
    echo '    </td></tr></table>';
    echo '  </td></tr>';
-   echo '<TR><TD HEIGHT="5" COLSPAN="2" BGCOLOR="'.
-          $color[4].'"></TD></TR>';
+   echo '<tr><td height="5" colspan="2" bgcolor="'.
+          $color[4].'"></td></tr>';
 }
 echo '</table>';
 
@@ -870,10 +874,10 @@ if (($attachment_common_show_images) &&
 
         echo html_tag( 'table', "\n" .
                     html_tag( 'tr', "\n" .
-                        html_tag( 'td', '<img src="' . $imgurl . '">' ."\n", 'left'
+                        html_tag( 'td', '<img src="' . $imgurl . '" />' ."\n", 'left'
                         )
                     ) ,
-        'center', '', 'cellspacing=0 border="0" cellpadding="2"');
+        'center', '', 'cellspacing="0" border="0" cellpadding="2"');
     }
 }
 
@@ -885,5 +889,4 @@ sqimap_logout($imapConnection);
 sqsession_register($messages,'messages');
 
 ?>
-</body>
-</html>
+</body></html>

@@ -9,10 +9,14 @@
  * This is where the mailboxes are listed. This controls most of what
  * goes on in SquirrelMail.
  *
- * $Id$
+ * @version $Id$
+ * @package squirrelmail
  */
 
-/* Path for SquirrelMail required files. */
+/**
+ * Path for SquirrelMail required files.
+ * @ignore
+ */
 define('SM_PATH','../');
 
 /* SquirrelMail required files. */
@@ -57,7 +61,7 @@ sqgetGlobalVar('note',              $note,              SQ_GET);
 sqgetGlobalVar('use_mailbox_cache', $use_mailbox_cache, SQ_GET);
 
 if ( sqgetGlobalVar('startMessage', $temp) ) {
-  $startMessage = (int) $temp;
+    $startMessage = (int) $temp;
 }
 if ( sqgetGlobalVar('PG_SHOWNUM', $temp) ) {
   $PG_SHOWNUM = (int) $temp;
@@ -158,16 +162,16 @@ if ($composenew) {
 } else {
     displayPageHeader($color, $mailbox);
 }
+
 do_hook('right_main_after_header');
 if (isset($note)) {
-    echo html_tag( 'div', '<b>' . $note .'</b>', 'center' ) . "<br>\n";
+    echo html_tag( 'div', '<b>' . $note .'</b>', 'center' ) . "<br />\n";
 }
 
 if ( sqgetGlobalVar('just_logged_in', $just_logged_in, SQ_SESSION) ) {
     if ($just_logged_in == true) {
         $just_logged_in = false;
         sqsession_register($just_logged_in, 'just_logged_in');
-
 
         if (strlen(trim($motd)) > 0) {
             echo html_tag( 'table',

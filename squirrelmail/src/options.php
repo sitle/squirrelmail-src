@@ -9,10 +9,14 @@
  * Displays the options page. Pulls from proper user preference files
  * and config.php. Displays preferences as selected and other options.
  *
- * $Id$
+ * @version $Id$
+ * @package squirrelmail
  */
 
-/* Path for SquirrelMail required files. */
+/**
+ * Path for SquirrelMail required files.
+ * @ignore
+ */
 define('SM_PATH','../');
 
 /* SquirrelMail required files. */
@@ -51,7 +55,7 @@ function process_optionmode_submit($optpage, $optpage_data) {
             echo "name = '$option->name', "
                . "value = '$option->value', "
                . "new_value = '$option->new_value'\n";
-            echo "<br>";
+            echo "<br />";
             */
             if ($option->changed()) {
                 $option->save();
@@ -121,7 +125,7 @@ sqgetGlobalVar('onetimepad',$onetimepad,    SQ_SESSION);
 sqgetGlobalVar('delimiter', $delimiter,     SQ_SESSION);
 
 sqgetGlobalVar('optpage',     $optpage);
-sqgetGlobalVar('optmode',     $optmode, SQ_FORM);
+sqgetGlobalVar('optmode',     $optmode,      SQ_FORM);
 sqgetGlobalVar('optpage_data',$optpage_data, SQ_POST);
 /* end of getting globals */
 
@@ -268,7 +272,7 @@ displayPageHeader($color, 'None', (isset($optpage_data['xtra']) ? $optpage_data[
 echo html_tag( 'table', '', 'center', $color[0], 'width="95%" cellpadding="1" cellspacing="0" border="0"' ) . "\n" .
         html_tag( 'tr' ) . "\n" .
             html_tag( 'td', '', 'center' ) .
-                "<b>$optpage_title</b><br>\n".
+                "<b>$optpage_title</b><br />\n".
                 html_tag( 'table', '', '', '', 'width="100%" cellpadding="5" cellspacing="0" border="0"' ) . "\n" .
                     html_tag( 'tr' ) . "\n" .
                         html_tag( 'td', '', 'center', $color[4] ) . "\n";
@@ -286,14 +290,14 @@ if ($optpage == SMOPT_PAGE_MAIN) {
             $frame_top = '_top';
         }
         /* Display a message indicating a successful save. */
-        echo '<b>' . _("Successfully Saved Options") . ": $optpage_name</b><br>\n";
+        echo '<b>' . _("Successfully Saved Options") . ": $optpage_name</b><br />\n";
 
         /* If $max_refresh != SMOPT_REFRESH_NONE, provide a refresh link. */
         if ( !isset( $max_refresh ) ) {
         } else if ($max_refresh == SMOPT_REFRESH_FOLDERLIST) {
-            echo '<a href="../src/left_main.php" target="left">' . _("Refresh Folder List") . '</a><br>';
+            echo '<a href="../src/left_main.php" target="left">' . _("Refresh Folder List") . '</a><br />';
         } else if ($max_refresh) {
-            echo '<a href="../src/webmail.php?right_frame=options.php" target="' . $frame_top . '">' . _("Refresh Page") . '</a><br>';
+            echo '<a href="../src/webmail.php?right_frame=options.php" target="' . $frame_top . '">' . _("Refresh Page") . '</a><br />';
         }
     }
     /******************************************/
@@ -447,11 +451,9 @@ if ($optpage == SMOPT_PAGE_MAIN) {
         do_hook($bottom_hook_name);    
     }
 }
-
-echo        '</td></tr>' .
-        '</table>'.
-        '</td></tr>'.
-     '</table>' .
-     '</body></html>';
-
 ?>
+</td></tr>
+</table>
+</td></tr>
+</table>
+</body></html>

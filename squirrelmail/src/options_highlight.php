@@ -8,10 +8,14 @@
  *
  * Displays message highlighting options
  *
- * $Id$
+ * @version $Id$
+ * @package squirrelmail
  */
 
-/* Path for SquirrelMail required files. */
+/**
+ * Path for SquirrelMail required files.
+ * @ignore
+ */
 define('SM_PATH','../');
 
 /* SquirrelMail required files. */
@@ -38,7 +42,7 @@ sqGetGlobalVar('value', $value);
 function oh_opt( $val, $sel, $tit ) {
     echo "<option value=\"$val\"";
     if ( $sel )
-        echo ' selected';
+        echo ' selected="selected"';
     echo  ">$tit</option>\n";
 }
 
@@ -66,7 +70,7 @@ if (isset($theid) && ($action == 'delete') ||
         case('up'):
             foreach($message_highlight_list as $rid => $rule) {
                 if($rid == $theid) {
-                    $temp_rule        = $new_rules[$rid-1];
+                    $temp_rule         = $new_rules[$rid-1];
                     $new_rules[$rid-1] = $rule;
                     $new_rules[$rid]   = $temp_rule;
                 } else {
@@ -114,13 +118,13 @@ html_tag( 'table', "\n" .
     html_tag( 'tr', "\n" .
         html_tag( 'td', '<center><b>' . _("Options") . ' - ' . _("Message Highlighting") . '</b></center>', 'left')
     ),
-    'center', $color[9], 'width="95%" border="0" cellpadding="1" cellspacing="0"' ) . "<br>\n" .
+    'center', $color[9], 'width="95%" border="0" cellpadding="1" cellspacing="0"' ) . "<br />\n" .
 html_tag( 'table', '', '', '', 'width="100%" border="0" cellpadding="1" cellspacing="0"' ) . 
      html_tag( 'tr' ) . "\n" .
          html_tag( 'td', '', 'left' );
 
 echo '<center>[<a href="options_highlight.php?action=add">' . _("New") . '</a>]'.
-        ' - [<a href="options.php">'._("Done").'</a>]</center><br>'."\n";
+        ' - [<a href="options.php">'._("Done").'</a>]</center><br />'."\n";
 $mhl_count = count($message_highlight_list);
 if ($mhl_count > 0) {
     echo html_tag( 'table', '', 'center', '', 'width="80%" border="0" cellpadding="3" cellspacing="0"' ) . "\n";
@@ -170,10 +174,10 @@ if ($mhl_count > 0) {
                 '', $message_highlight_list[$i]['color'] ) . "\n";
     }
     echo "</table>\n".
-        "<br>\n";
+        "<br />\n";
 } else {
-    echo '<center>' . _("No highlighting is defined") . "</center><br>\n".
-        "<br>\n";
+    echo '<center>' . _("No highlighting is defined") . "</center><br />\n".
+        "<br />\n";
 }
 if ($action == 'edit' || $action == 'add') {
 
@@ -382,37 +386,37 @@ if ($action == 'edit' || $action == 'add') {
     echo '         '.addRadioBox('color_type', $selected_choose, '1');
 
     $selops = array (
-    	$color_list[0] => _("Dark Blue"),
-	$color_list[1] => _("Dark Green"),
-	$color_list[2] => _("Dark Yellow"),
-	$color_list[3] => _("Dark Cyan"),
-	$color_list[4] => _("Dark Magenta"),
-	$color_list[5] => _("Light Blue"),
-	$color_list[6] => _("Light Green"),
-	$color_list[7] => _("Light Yellow"),
-	$color_list[8] => _("Light Cyan"),
-	$color_list[9] => _("Light Magenta"),
-	$color_list[10] => _("Dark Gray"),
-	$color_list[11] => _("Medium Gray"),
-	$color_list[12] => _("Light Gray"),
-	$color_list[13] => _("White") );
-	
+        $color_list[0] => _("Dark Blue"),
+        $color_list[1] => _("Dark Green"),
+        $color_list[2] => _("Dark Yellow"),
+        $color_list[3] => _("Dark Cyan"),
+        $color_list[4] => _("Dark Magenta"),
+        $color_list[5] => _("Light Blue"),
+        $color_list[6] => _("Light Green"),
+        $color_list[7] => _("Light Yellow"),
+        $color_list[8] => _("Light Cyan"),
+        $color_list[9] => _("Light Magenta"),
+        $color_list[10] => _("Dark Gray"),
+        $color_list[11] => _("Medium Gray"),
+        $color_list[12] => _("Light Gray"),
+        $color_list[13] => _("White") );
+
     echo addSelect('newcolor_choose', $selops, $selected_i, TRUE);
-    echo "<br>\n";
+    echo "<br />\n";
 
     echo '         '.addRadioBox('color_type', $selected_input, 2).
         ' &nbsp;'. _("Other:") .
-	addInput('newcolor_input',
-	    (($selected_input && isset($theid)) ? $message_highlight_list[$theid]['color'] : ''),
-	    '7');
-    echo _("Ex: 63aa7f")."<br>\n";
+        addInput('newcolor_input',
+            (($selected_input && isset($theid)) ? $message_highlight_list[$theid]['color'] : ''),
+            '7');
+    echo _("Ex: 63aa7f")."<br />\n";
     echo "      </td>\n";
     echo "   </tr>\n";
 
     # Show grid of color choices
     echo html_tag( 'tr', '', '', $color[0] ) . "\n";
     echo html_tag( 'td', '', 'left', '', 'colspan="2"' );
-    echo html_tag( 'table', '', 'center', '', 'border=0 cellpadding="2" cellspacing="1"' ) . "\n";
+    echo html_tag( 'table', '', 'center', '', 'border="0" cellpadding="2" cellspacing="1"' ) . "\n";
 
     for($x = 0; $x < 5; $x++) {
         echo html_tag( 'tr' ) . "\n";
@@ -420,7 +424,7 @@ if ($action == 'edit' || $action == 'add') {
         $gridindex = "$y,$x";
         $gridcolor = $new_color_list[$gridindex];
         echo html_tag( 'td', addRadioBox('color_type', ($gridcolor == $current_color), '#'.$gridcolor),
-	    'left', $gridcolor, 'colspan="2"' );
+            'left', $gridcolor, 'colspan="2"' );
         }
         echo "</tr>\n";
     }
@@ -430,7 +434,7 @@ if ($action == 'edit' || $action == 'add') {
     echo html_tag( 'tr', html_tag( 'td', '<small><small>&nbsp;</small></small>', 'left' ) ) . "\n";
     echo html_tag( 'tr', '', '', $color[0] ) . "\n";
     echo html_tag( 'td', '', 'center', '', 'colspan="2"' ) . "\n";
-    echo "         <select name=match_type>\n";
+    echo "         <select name=\"match_type\">\n";
     oh_opt( 'from',
             (isset($theid)?$message_highlight_list[$theid]['match_type'] == 'from':1),
             _("From") );
@@ -456,7 +460,7 @@ if ($action == 'edit' || $action == 'add') {
     echo "        </td>\n";
     echo "   </tr>\n";
     echo "</table>\n";
-    echo '<center><input type="submit" value="' . _("Submit") . "\"></center>\n";
+    echo '<center><input type="submit" value="' . _("Submit") . "\" /></center>\n";
     echo "</form>\n";
 }
 do_hook('options_highlight_bottom');

@@ -9,10 +9,14 @@
 *
 * Prevents users from reposting their form data after a successful logout.
 *
-* $Id$
+* @version $Id$
+* @package squirrelmail
 */
 
-/* Path for SquirrelMail required files. */
+/**
+ * Path for SquirrelMail required files.
+ * @ignore
+ */
 define('SM_PATH','../');
 
 /* SquirrelMail required files. */
@@ -47,7 +51,7 @@ sqGetGlobalVar('login_username', $login_username);
 sqGetGlobalVar('secretkey', $secretkey);
 sqGetGlobalVar('js_autodetect_results', $js_autodetect_results);
 if(!sqGetGlobalVar('squirrelmail_language', $squirrelmail_language) || $squirrelmail_language == '') {
-	$squirrelmail_language = $squirrelmail_default_language;
+    $squirrelmail_language = $squirrelmail_default_language;
 }
 
 /* end of get globals */

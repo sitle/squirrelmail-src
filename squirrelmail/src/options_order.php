@@ -8,10 +8,14 @@
  *
  * Displays messagelist column order options
  *
- * $Id$
+ * @version $Id$
+ * @package squirrelmail
  */
 
-/* Path for SquirrelMail required files. */
+/**
+ * Path for SquirrelMail required files.
+ * @ignore
+ */
 define('SM_PATH','../');
 
 /* SquirrelMail required files. */
@@ -94,7 +98,7 @@ displayPageHeader($color, 'None');
                         _("The index order is the order that the columns are arranged in the message index. You can add, remove, and move columns around to customize them to fit your needs.")
                     )
                 ) ,
-            '', '', '', 'width="65%" border="0" cellpadding="0" cellspacing="0"' ) . "<br>\n";
+            '', '', '', 'width="65%" border="0" cellpadding="0" cellspacing="0"' ) . "<br />\n";
  
     if (count($index_order))
     {
@@ -135,12 +139,12 @@ displayPageHeader($color, 'None');
             }
         }
         echo '</select>';
-        echo '<input type="hidden" value="add" name="method">';
-        echo '<input type="submit" value="'._("Add").'" name="submit">';
+        echo '<input type="hidden" value="add" name="method" />';
+        echo '<input type="submit" value="'._("Add").'" name="submit" />';
         echo '</form>';
     }
  
-    echo html_tag( 'p', '<a href="../src/options.php">' . _("Return to options page") . '</a></p><br>' );
+    echo html_tag( 'p', '<a href="../src/options.php">' . _("Return to options page") . '</a></p><br />' );
 
 ?>
     </td></tr>

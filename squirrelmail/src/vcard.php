@@ -8,10 +8,14 @@
  *
  * This file shows an attched vcard
  *
- * $Id$
+ * @version $Id$
+ * @package squirrelmail
  */
 
-/* Path for SquirrelMail required files. */
+/**
+ * Path for SquirrelMail required files.
+ * @ignore
+ */
 Define('SM_PATH','../');
 
 /* SquirrelMail required files. */
@@ -38,11 +42,12 @@ sqimap_mailbox_select($imapConnection, $mailbox);
 
 displayPageHeader($color, 'None');
 
-echo '<br><table width="100%" border="0" cellspacing="0" cellpadding="2" ' .
-            'align="center">' . "\n" .
-        '<tr><td bgcolor="' . $color[0] . '">' .
-        '<b><center>' .
-        _("Viewing a Business Card") . " - ";
+echo '<br /><table width="100%" border="0" cellspacing="0" cellpadding="2" ' .
+        'align="center">' . "\n" .
+     '<tr><td bgcolor="' . $color[0] . '">' .
+     '<b><center>' .
+     _("Viewing a Business Card") . " - ";
+
 $msg_url = 'read_body.php?mailbox='.urlencode($mailbox).
     '&amp;startMessage='.urlencode($startMessage).
     '&amp;passed_id='.urlencode($passed_id);
@@ -89,8 +94,8 @@ if ($vcard_nice['version'] == '2.1') {
     }
 } else {
     echo '<tr><td align="center">' .
-    sprintf(_("vCard Version %s is not supported. Some information might not be converted correctly."),$vcard_nice['version']) .
-    "</td></tr>\n";
+         sprintf(_("vCard Version %s is not supported. Some information might not be converted correctly."),$vcard_nice['version']) .
+         "</td></tr>\n";
 }
 
 foreach ($vcard_nice as $k => $v) {
@@ -112,44 +117,44 @@ $ShowValues = array(
     'tel;fax' =>        _("Fax"),
     'note' =>           _("Note"));
 
-echo '<tr><td><br>' .
-        '<TABLE border=0 cellpadding=2 cellspacing=0 align=center>' . "\n";
+echo '<tr><td><br />' .
+     '<table border="0" cellpadding="2" cellspacing="0" align="center">' . "\n";
 
 if (isset($vcard_safe['email;internet'])) {     $vcard_safe['email;internet'] = '<A HREF="../src/compose.php?send_to=' .
         $vcard_safe['email;internet'] . '">' . $vcard_safe['email;internet'] .
         '</A>';
 }
 if (isset($vcard_safe['url'])) {
-    $vcard_safe['url'] = '<A HREF="' . $vcard_safe['url'] . '">' .
-        $vcard_safe['url'] . '</A>';
+    $vcard_safe['url'] = '<a href="' . $vcard_safe['url'] . '">' .
+        $vcard_safe['url'] . '</a>';
 }
 
 foreach ($ShowValues as $k => $v) {
     if (isset($vcard_safe[$k]) && $vcard_safe[$k])     {
-        echo "<tr><td align=right><b>$v:</b></td><td>" . $vcard_safe[$k] .
+        echo "<tr><td align=\"right\"><b>$v:</b></td><td>" . $vcard_safe[$k] .
                 "</td><tr>\n";
     }
 }
 
 echo '</table>' .
-        '<br>' .
-        '</td></tr></table>' .
-        '<table width="100%" border="0" cellspacing="0" cellpadding="2" ' .
+     '<br />' .
+     '</td></tr></table>' .
+     '<table width="100%" border="0" cellspacing="0" cellpadding="2" ' .
         'align="center">' .
-        '<tr>' .
-        '<td bgcolor="' . $color[0] . '">' .
-        '<b><center>' .
-        _("Add to Addressbook") .
-        '</td></tr>' .
-        '<tr><td align=center>' .
-        '<FORM ACTION="../src/addressbook.php" METHOD="POST" NAME=f_add>' .
-        '<table border=0 cellpadding=2 cellspacing=0 align=center>' .
-        '<tr><td align=right><b>' . _("Nickname:") . '</b></td>' .
-        '<td><input type=text name="addaddr[nickname]" size=20 value="' .
-        $vcard_safe['firstname'] . '-' . $vcard_safe['lastname'] .
-        '"></td></tr>' .
-        '<tr><td align=right><b>' . _("Note Field Contains:") . '</b></td><td>' .
-        '<select name="addaddr[label]">';
+     '<tr>' .
+     '<td bgcolor="' . $color[0] . '">' .
+     '<b><center>' .
+     _("Add to Addressbook") .
+     '</td></tr>' .
+     '<tr><td align="center">' .
+     '<form action="../src/addressbook.php" method="post" name="f_add">' .
+     '<table border="0" cellpadding="2" cellspacing="0" align="center">' .
+     '<tr><td align="right"><b>' . _("Nickname:") . '</b></td>' .
+     '<td><input type="text" name="addaddr[nickname]" size="20" value="' .
+     $vcard_safe['firstname'] . '-' . $vcard_safe['lastname'] .
+     '" /></td></tr>' .
+     '<tr><td align="right"><b>' . _("Note Field Contains:") . '</b></td><td>' .
+     '<select name="addaddr[label]">';
 
 if (isset($vcard_nice['url'])) {
     echo '<option value="' . htmlspecialchars($vcard_nice['url']) .
@@ -192,31 +197,35 @@ if (isset($vcard_nice['note'])) {
     echo '<option value="' . htmlspecialchars($vcard_nice['note']) .
         '">' . _("Note") . "</option>\n";
 }
-echo '</select>' .
-        '</td></tr>' .
-        '<tr><td colspan=2 align=center>' .
-        '<INPUT NAME="addaddr[email]" type=hidden value="' .
-        htmlspecialchars($vcard_nice['email;internet']) . '">' .
-        '<INPUT NAME="addaddr[firstname]" type=hidden value="' .
-        $vcard_safe['firstname'] . '">' .
-        '<INPUT NAME="addaddr[lastname]" type=hidden value="' .
-        $vcard_safe['lastname'] . '">' .
-        '<INPUT TYPE=submit NAME="addaddr[SUBMIT]" ' .
-        'VALUE="'._("Add to Address Book").'">' .
-        '</td></tr>' .
-        '</table>' .
-        '</FORM>' .
-        '</td></tr>' .
-        '<tr><td align=center>' .
-        '<a href="../src/download.php?absolute_dl=true&amp;passed_id=' .
-        urlencode($passed_id) . '&amp;mailbox=' . urlencode($mailbox) .
-        '&amp;ent_id=' . urlencode($ent_id) . '">' .
-        _("Download this as a file") . '</A>' .
-        '</TD></TR></TABLE>' .
-
-        '<TABLE BORDER=0 CELLSPACING=0 CELLPADDING=2 ALIGN=CENTER>' .
-        '<TR><TD BGCOLOR="' . $color[4] . '">' .
-        '</TD></TR></TABLE>' .
-        '</body></html>';
+echo '</select>';
+?>
+</td></tr>
+<tr><td colspan="2" align="center">
+<?php
+echo '<input name="addaddr[email]" type="hidden" value="' .
+        htmlspecialchars($vcard_nice['email;internet']) . '" />' .
+     '<input name="addaddr[firstname]" type="hidden" value="' .
+        $vcard_safe['firstname'] . '" />' .
+     '<input name="addaddr[lastname]" type="hidden" value="' .
+        $vcard_safe['lastname'] . '" />' .
+     '<input type="submit" name="addaddr[SUBMIT]" ' .
+        'value="'._("Add to Address Book").'" />';
 
 ?>
+</td></tr>
+</table>
+</form>
+</td></tr>
+<tr><td align="center">
+<?php
+echo '<a href="../src/download.php?absolute_dl=true&amp;passed_id='.
+     urlencode($passed_id) . '&amp;mailbox=' . urlencode($mailbox) .
+     '&amp;ent_id=' . urlencode($ent_id) .'">'.
+     _("Download this as a file") . '</a>';
+?>
+</td></tr></table>
+
+<table border="0" cellspacing="0" cellpadding="2" align="center">
+<tr><td bgcolor="<?php echo $color[4]; ?>">
+</td></tr></table>
+</body></html>

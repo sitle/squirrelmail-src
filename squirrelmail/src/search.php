@@ -6,13 +6,18 @@
  * Copyright (c) 1999-2004 The SquirrelMail Project Team
  * Licensed under the GNU GPL. For full terms see the file COPYING.
  *
- * $Id$
+ * @version $Id$
+ * @package squirrelmail
  */
 
-/* Path for SquirrelMail required files. */
+/**
+ * Path for SquirrelMail required files.
+ * @ignore
+ */
 define('SM_PATH','../');
 
-/* SquirrelMail required files. */
+/** SquirrelMail required files.
+ */
 require_once(SM_PATH . 'include/validate.php');
 require_once(SM_PATH . 'functions/imap.php');
 require_once(SM_PATH . 'functions/imap_search.php');
@@ -55,7 +60,7 @@ if (isset($_GET['count'])) {
 function s_opt( $val, $sel, $tit ) {
     echo "            <option value=\"$val\"";
     if ( $sel == $val ) {
-        echo ' selected';
+        echo ' selected="selected"';
     }
     echo  ">$tit</option>\n";
 }
@@ -193,43 +198,42 @@ function save_recent($save_index, $username, $data_dir) {
 function printSearchMessages($msgs,$mailbox, $cnt, $imapConnection, $where, $what, $usecache = false, $newsort = false) {
     global $sort, $color;
     
-	if ($cnt > 0) {
-	   $msort = calc_msort($msgs, $sort);
-       if ( $mailbox == 'INBOX' ) {
-           $showbox = _("INBOX");
-       } else {
+    if ($cnt > 0) {
+        $msort = calc_msort($msgs, $sort);
+        if ( $mailbox == 'INBOX' ) {
+            $showbox = _("INBOX");
+        } else {
             $showbox = imap_utf7_decode_local($mailbox);
-       }
-       echo html_tag( 'div', '<b><big>' . _("Folder:") . ' '. $showbox.'</big></b>','center') . "\n";
+        }
+        echo html_tag( 'div', '<b><big>' . _("Folder:") . ' '. $showbox.'</big></b>','center') . "\n";
 
+        $msg_cnt_str = get_msgcnt_str(1, $cnt, $cnt);
+        $toggle_all = get_selectall_link(1, $sort);
 
-       $msg_cnt_str = get_msgcnt_str(1, $cnt, $cnt);
-       $toggle_all = get_selectall_link(1, $sort);
+        echo '<table border="0" width="100%" cellpadding="0" cellspacing="0">';
+        echo '<tr><td>';
 
-       echo '<table border="0" width="100%" cellpadding="0" cellspacing="0">';
-       echo '<tr><td>';
-
-       mail_message_listing_beginning($imapConnection, $mailbox, $sort, 
+        mail_message_listing_beginning($imapConnection, $mailbox, $sort, 
                                        $msg_cnt_str, $toggle_all, 1);
 
-       echo '</td></tr>';
-       echo '<tr><td HEIGHT="5" BGCOLOR="'.$color[4].'"></td></tr>';  
-       echo '<tr><td>';
-       echo '    <table width="100%" cellpadding="1" cellspacing="0" align="center"'.' border="0" bgcolor="'.$color[9].'">';
-       echo '     <tr><td>';
-       echo '       <table width="100%" cellpadding="1" cellspacing="0" align="center" border="0" bgcolor="'.$color[5].'">';
-       echo '<tr><td>';
+        echo '</td></tr>';
+        echo '<tr><td height="5" bgcolor="'.$color[4].'"></td></tr>';  
+        echo '<tr><td>';
+        echo '    <table width="100%" cellpadding="1" cellspacing="0" align="center"'.' border="0" bgcolor="'.$color[9].'">';
+        echo '     <tr><td>';
+        echo '       <table width="100%" cellpadding="1" cellspacing="0" align="center" border="0" bgcolor="'.$color[5].'">';
+        echo '<tr><td>';
 
-       printHeader($mailbox, 6, $color, false);
+        printHeader($mailbox, 6, $color, false);
 
-       displayMessageArray($imapConnection, $cnt, 1, 
-		          $msort, $mailbox, $sort, $color, $cnt, $where, $what);
+        displayMessageArray($imapConnection, $cnt, 1, 
+            $msort, $mailbox, $sort, $color, $cnt, $where, $what);
 
-       echo '</td></tr></table></td></tr></table>';
-       mail_message_listing_end($cnt, '', $msg_cnt_str, $color); 
-       echo '</td></tr></table>';
+        echo '</td></tr></table></td></tr></table>';
+        mail_message_listing_end($cnt, '', $msg_cnt_str, $color); 
+        echo '</td></tr></table>';
     }
-}			      
+}
 
 /* ------------------------ main ------------------------ */
 
@@ -255,7 +259,7 @@ if ($mailbox == 'All Folders') {
 
 if (isset($composenew) && $composenew) {
     $comp_uri = "../src/compose.php?mailbox=". urlencode($mailbox).
-		"&session=$composesession&attachedmessages=true&amp";
+        "&session=$composesession&attachedmessages=true&amp";
     displayPageHeader($color, $mailbox, "comp_in_new('$comp_uri');", false);
 } else {
     displayPageHeader($color, $mailbox);
@@ -297,7 +301,7 @@ $count_all = 0;
 
 /* Saved Search Table */
 if ($saved_count > 0) {
-    echo "<br>\n"
+    echo "<br />\n"
     . html_tag( 'table', '', 'center', $color[9], 'width="95%" cellpadding="1" cellspacing="1" border="0"' )
     . html_tag( 'tr',
           html_tag( 'td', '<b>Saved Searches</b>', 'center' )
@@ -315,20 +319,20 @@ if ($saved_count > 0) {
         . html_tag( 'td', $saved_attributes['saved_what'][$i], 'left' )
         . html_tag( 'td', $saved_attributes['saved_where'][$i], 'center' )
         . html_tag( 'td', '', 'right' )
-        .   '<a href=search.php'
+        .   '<a href="search.php'
         .     '?mailbox=' . htmlspecialchars($saved_attributes['saved_folder'][$i])
         .     '&amp;what=' . htmlspecialchars($saved_attributes['saved_what'][$i])
         .     '&amp;where=' . htmlspecialchars($saved_attributes['saved_where'][$i])
-        .   '>' . _("edit") . '</a>'
+        .   '">' . _("edit") . '</a>'
         .   '&nbsp;|&nbsp;'
-        .   '<a href=search.php'
+        .   '<a href="search.php'
         .     '?mailbox=' . urlencode($saved_attributes['saved_folder'][$i])
         .     '&amp;what=' . urlencode($saved_attributes['saved_what'][$i])
         .     '&amp;where=' . urlencode($saved_attributes['saved_where'][$i])
         .     '&amp;submit=Search_no_update'
-        .   '>' . _("search") . '</a>'
+        .   '">' . _("search") . '</a>'
         .   '&nbsp;|&nbsp;'
-        .   "<a href=search.php?count=$i&amp;submit=delete>"
+        .   "<a href=\"search.php?count=$i&amp;submit=delete\">"
         .     _("delete")
         .   '</a>'
         . '</td></tr>';
@@ -337,7 +341,7 @@ if ($saved_count > 0) {
 }
 
 if ($recent_count > 0) {
-    echo "<br>\n"
+    echo "<br />\n"
        . html_tag( 'table', '', 'center', $color[9], 'width="95%" cellpadding="1" cellspacing="1" border="0"' )
        . html_tag( 'tr',
              html_tag( 'td', '<b>' . _("Recent Searches") . '</b>', 'center' )
@@ -362,24 +366,24 @@ if ($recent_count > 0) {
                . html_tag( 'td', htmlspecialchars($attributes['search_what'][$i]), 'left' )
                . html_tag( 'td', $attributes['search_where'][$i], 'center' )
                . html_tag( 'td', '', 'right' )
-               .   "<a href=search.php?count=$i&amp;submit=save>"
+               .   "<a \"href=search.php?count=$i&amp;submit=save\">"
                .     _("save")
                .   '</a>'
                .   '&nbsp;|&nbsp;'
-               .   '<a href=search.php'
+               .   '<a href="search.php'
                .     '?mailbox=' . urlencode($attributes['search_folder'][$i])
                .     '&amp;what=' . urlencode($attributes['search_what'][$i])
                .     '&amp;where=' . urlencode($attributes['search_where'][$i])
                .     '&amp;submit=Search_no_update'
-               .   '>' . _("search") . '</a>'
+               .   '">' . _("search") . '</a>'
                .   '&nbsp;|&nbsp;'
-               .   "<a href=search.php?count=$i&amp;submit=forget>"
+               .   "<a href=\"search.php?count=$i&amp;submit=forget\">"
                .     _("forget")
                .   '</a>'
                . '</td></tr>';
         }
         }
-    echo '</table></td></tr></table><br>';
+    echo '</table></td></tr></table><br />';
 }
 
 
@@ -414,7 +418,7 @@ echo html_tag( 'div', '<b>' . _("Current Search") . '</b>', 'left' ) . "\n"
    . '<select name="mailbox">'
    . '<option value="All Folders"';
    if ($mailbox == 'All Folders') {
-       echo ' selected';
+       echo ' selected="selected"';
    }
    echo '>[ ' . _("All Folders") . " ]</option>\n";
 
@@ -435,7 +439,7 @@ $what_disp = str_replace(',', ' ', $what);
 $what_disp = str_replace('\\\\', '\\', $what_disp);
 $what_disp = str_replace('\\"', '"', $what_disp);
 $what_disp = str_replace('"', '&quot;', $what_disp);
-echo html_tag( 'td', '<input type="text" size="35" name="what" value="' . $what_disp . '">' . "\n", 'center' )
+echo html_tag( 'td', '<input type="text" size="35" name="what" value="' . $what_disp . '" />' . "\n", 'center' )
      . html_tag( 'td', '', 'right' )
      . "<select name=\"where\">";
 s_opt( 'BODY', $where, _("Body") );
@@ -446,7 +450,7 @@ s_opt( 'CC', $where, _("Cc") );
 s_opt( 'TO', $where, _("To") );
 echo "         </select>\n" .
      "        </td>\n".
-     html_tag( 'td', '<input type="submit" name="submit" value="' . _("Search") . '">' . "\n", 'center', '', 'colspan="3"' ) .
+     html_tag( 'td', '<input type="submit" name="submit" value="' . _("Search") . '" />' . "\n", 'center', '', 'colspan="3"' ) .
      "     </tr>\n".
      "</form>\n".
      "   </table>\n".
@@ -471,9 +475,9 @@ if ($allow_thread_sort == TRUE) {
 if ($search_all == 'all') {
     $mailbox == '';
     $boxcount = count($boxes);
-    echo '<BR><CENTER><B>' .
+    echo '<br /><center><b>' .
          _("Search Results") .
-         "</B></CENTER><BR>\n";
+         "</b></center><br />\n";
     for ($x=0;$x<$boxcount;$x++) {
         if (!in_array('noselect', $boxes[$x]['flags'])) {
             $mailbox = $boxes[$x]['unformatted'];
@@ -481,9 +485,9 @@ if ($search_all == 'all') {
         if (($submit == _("Search") || $submit == 'Search_no_update') && !empty($what)) {
             sqimap_mailbox_select($imapConnection, $mailbox);
             $msgs = sqimap_search($imapConnection, $where, $what, $mailbox, $color, 0, $search_all, $count_all);
-	    $count_all = count($msgs);
+            $count_all = count($msgs);
             printSearchMessages($msgs, $mailbox, $count_all, $imapConnection, 
-	                        $where, $what, false, false);
+                                $where, $what, false, false);
             array_push($perbox_count, $count_all);
         }
     }
@@ -494,29 +498,29 @@ if ($search_all == 'all') {
         }
     }
     if (!$count_all) {
-       echo '<br><center>' . _("No Messages Found") . '</center>';
+       echo '<br /><center>' . _("No Messages Found") . '</center>';
     }
 }
 
 /*  search one folder option  */
 else {
     if (($submit == _("Search") || $submit == 'Search_no_update') && !empty($what)) {
-        echo '<br>'
+        echo '<br />'
         . html_tag( 'div', '<b>' . _("Search Results") . '</b>', 'center' ) . "\n";
         sqimap_mailbox_select($imapConnection, $mailbox);
         $msgs = sqimap_search($imapConnection, $where, $what, $mailbox, $color, 0, $search_all, $count_all);
-	if (count($msgs)) {
-           printSearchMessages($msgs, $mailbox, count($msgs), $imapConnection,
-	                       $where, $what, false, false);
-	} else {
-           echo '<br><center>' . _("No Messages Found") . '</center>';
-	}
+        if (count($msgs)) {
+            printSearchMessages($msgs, $mailbox, count($msgs), $imapConnection,
+                                $where, $what, false, false);
+        } else {
+            echo '<br /><center>' . _("No Messages Found") . '</center>';
+        }
     }
 }
 
 /*  must have search terms to search  */
 if ($submit == _("Search") && empty($what)) {
-        echo '<br>'
+        echo '<br />'
         . html_tag( 'div', '<b>Please enter something to search for</b>', 'center' ) . "\n";
 }
 
@@ -524,7 +528,6 @@ $allow_thread_sort = $old_value;
 
 
 do_hook('search_bottom');
-sqimap_logout ($imapConnection);
+sqimap_logout($imapConnection);
 echo '</body></html>';
-
 ?>
