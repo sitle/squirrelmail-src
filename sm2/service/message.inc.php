@@ -115,19 +115,19 @@ class messages extends service {
         }
         /* attach the backend code */
         $backend = $this->type.'_backend';
-        
+
         /* include the backend. dependencies are resolved with help from central file with locations
            and depencies */
         sm_include($backend);
-        
+
         /* auto set the resource on a connect */
         $this->backend =& new $backend(&$this->resource);
-        
+
         /* TODO:
-           define a set of capabilities for the message class which can be disabled by the 
+           define a set of capabilities for the message class which can be disabled by the
            backend class so we can decide inside messages which methods are supported.
-        */   
-        
+        */
+
         /* global permissions regarding sort, thread, filter */
         /* TODO
 		DEFAULTACL
@@ -137,15 +137,34 @@ class messages extends service {
 		ALLOW_PREVIEW
         */
     }
-    
+
     /* sleep, wakeup and listener code */
-    
+
     // TODO
-    
+
     function __sleep() {
-        /* cache the mailbox-tree */
-        
+        if (isset($this->mailboxtree_LIST)) {
+            unset($this->mailboxtree_LIST->creator);
+        }
+        $a = get_object_vars($this);
+        $ar = array();
+        foreach ($a as $k => $v) {
+            if ($v) {
+                $ar[] = $k;
+            }
+        }
+        return $ar;
     }
+
+    function __wakeup() {
+        if (isset($this->mailboxtree_LIST)) {
+            $this->mailboxtree_LIST->creator =& $this->backend;
+        }
+    }
+
+        /* cache the mailbox-tree */
+
+
     
     function login() {
         if (!$this->backend->resource) {
@@ -165,51 +184,66 @@ class messages extends service {
         }
         return $res;
     }
-    
-    /* mailbox tree related functions */
-    function getMailboxTree($type='LSUB', $aNamespace=array(), $aProperties=
-             array('expand' => false, 'haschildren' => true, 'verifyflags' => true)) {
-        if (!$aNamespace) {
-           $aNameSpace = $this->aFolderProps['default_namespace'];
-        }
-        if (isset($this->{'cached_'.$type})) {
-            $ret =& $this->{'cached_'.$type};
-        } else {
-            /* $aList array(mailboxname, flags, delimiter) */
-            $aList =& $this->backend->getmailboxList($type,$aNamespace,$aProperties);
-            $mbxtree =& new mailboxtree('test');
-            $ret =& $mbxtree->loadfromstream('namespace',$aList);
 
+    /* mailbox tree related functions */
+    function getMailboxTree($type='LSUB', $aProps, $aExpand = array(), $aNamespace=array(), $aHideFromHierarchy = array()) {
+        $aPropsDefault = array('expand' => false,     // retrieve all mailboxes
+                               'haschildren' => true, // in case expand = false, get children info if CHILDREN CAP is not supported
+                               'verifyflags' => true  // IMAP
+                              );
+        $aProps = array_merge($aPropsDefault,$aProps);
+        $aProps['type'] = $type;
+        if (!isset($this->{"mailboxtree_$type"})) {
+            if (!count($aNamespace)) {
+                $aNamespace = $this->aFolderProps['default_namespace'];
+                if (!count($aNamespace)) {
+                    // try to receive a namespace
+                    $aNamespace =& $this->backend->getNamespace();
+                }
+            }
+            // $aList array(mailboxname, flags, delimiter)
+            //$aList =& $this->backend->getmailboxList($type,$aList,$aProps);
+            $oMbxTree =& new mailboxtree('test', array(), &$this->backend);
+            $aHide = array();
+            $oMbxTree->init($aNamespace, $aExpand, $aHide, $aProps);
+            //$oMbxTree->loadfromstream('namespace',$aList);
+            $this->{"mailboxtree_$type"} = $oMbxTree;
         }
-        return $ret;
+        return $this->{"mailboxtree_$type"};
     }
-    
-    
-    function _initMailboxTree($tree_id, $depth) {
-    
+
+    function renewMailboxTree($type) {
+        // retrieve the properties of the old tree
+        // $aProps = ....
+        // $aNamespace = ...
+        // $aExpand = ....
+        // unset it
+        unset($this->$this->{"mailboxtree_$type"});
+        return $this->getMailboxTree($type, $aProps, $aExpand, $aNamespace);
     }
-    
+
+
     function expandMaibox($tree_id, $oMbx) {
-    
+
     }
-    
+
     function collapseMailbox($tree_id, $oMbx) {
-    
+
     }
-    
+
     /* mailbox related functions */
     function renameMailbox(&$oMbx, $name) {
-    
+
     }
-    
+
     function copyMailbox(&$oMbxSource, $oMbxTarget, $oService=false) {
-    
+
     }
-    
+
     function moveMailbox(&$oMbxSource, $oMbxTarget, $oService=false) {
-    
+
     }
-    
+
     function deleteMailbox(&$oMbx) {
     
     }

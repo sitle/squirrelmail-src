@@ -10,6 +10,9 @@
  * $Id$
  */
 
+define('SM_MBXLIST_MBX',0);
+define('SM_MBXLIST_SUB',1);
+define('SM_MBXLIST_ALL',2);
 
 
 class method {
@@ -74,14 +77,14 @@ class imap_backend extends parser {
      * @param     stream     $resource       resource stream to imap connection
      * @access    public
      * @author    Marc Groot Koerkamp
-     */          
+     */
     function imap_backend($resource) {
-    $this->stack['OK'] = array();
-    $this->stack['NO'] = array();
-    $this->stack['BAD'] = array();
-    $this->stack['SERVER'] = array();
+        $this->stack['OK'] = array();
+        $this->stack['NO'] = array();
+        $this->stack['BAD'] = array();
+        $this->stack['SERVER'] = array();
 
-    $this->initHooks();
+        $this->initHooks();
        
         $this->resource =& $resource;
     }
@@ -145,7 +148,7 @@ class imap_backend extends parser {
             $aresult = $this->_sqimap_process_stream($sTag);
             if ($aResult['RESPONSE'] == 'OK') {
                 break;
-            } 
+            }
         case $aAuth['CRAM-MD5']:
             $query = "AUTHENTICATE CRAM-MD5";
             $sTag = $this->sqimap_run_command($query);
@@ -211,14 +214,14 @@ class imap_backend extends parser {
 
     /**
      * @func      getMailboxList
-     * @desc      Retrieve an array with mailboxes catagorised per namespace 
+     * @desc      Retrieve an array with mailboxes catagorised per namespace
      * @param     str        $type         LSUB or LIST
-     * @param     arr        $aNamespace   array with namespaces, normally we have the following 
+     * @param     arr        $aNamespace   array with namespaces, normally we have the following
      *                                     namespaces: Personal, Other Users and Shared. The keys
      *                                     I use are 'personal', 'otherusers' and 'shared'. Each
      *                                     namespace can contain muliple definitions. A definition is
-     *                                     in the form  
-     *                                     array('namespace' => folderprefix, 
+     *                                     in the form
+     *                                     array('namespace' => folderprefix,
      *                                           'delimiter' => hierarchieseparator).
      *                                     By providing your own namespace, the system namespace is overrided.
      * @param     arr        $aProperties  array with params to manipulate default behaviour.
@@ -232,10 +235,14 @@ class imap_backend extends parser {
      * @author    Marc Groot Koerkamp
      */
 
-
+/*
     // $aNamespace: array with prefixes;
-    function getMailboxList($type,&$aNamespace,$aProps =
-             array('expand' => false, 'haschildren' => true, 'verifyflags' => true,'prefix' => '')) {
+    function getMailboxListblah($type,&$aNamespace,$aProps = $array()) {
+        $aPropsDefault = array('expand' => false,
+                               'haschildren' => true,
+                               'verifyflags' => true,
+                               'prefix' => '');
+        $aProps = array_merge($aPropsDefault,$aProps);
         $type = strtoupper ($type);
         if (isset($aProps['prefix'])) {
             $sPrefix = $aProps['prefix'];
@@ -247,41 +254,41 @@ class imap_backend extends parser {
         }
 
         if (!count($aNamespace)) {
-           /* no namespace suplied, try to get one */
+           // no namespace suplied, try to get one
            if ($this->capability['NAMESPACE']) {
                $aNamespace = $this->_namespace();
            } else {
-               $aNamespace = array(array('namespace' => ''), false, false); /* we do not use the delimiter */
+               $aNamespace = array(array('namespace' => ''), false, false); // we do not use the delimiter
            }
         }
-        //print_r($aNamespace);
+//        exit;
         $aTags = array();
         if (!$aProps['expand']) {
-           $sSearch = '%%';
+           $sSearch = '%';//%%
         } else {
-           $sSearch = '*%';
+           $sSearch = '*';//*%
         }
         $aResults = array();
         if (isset($aNamespace['personal'])) {
             foreach ($aNamespace['personal'] as $key => $definition) {
                 if (substr(strtoupper($definition['namespace']),0,5) == 'INBOX' &&
                     substr($definition['namespace'],-1) == $definition['delimiter']) {
-                    /* remove the delimiter in order to achieve that INBOX is displayed */
+                    // remove the delimiter in order to achieve that INBOX is displayed
 //                    $aNamespace['personal'][$key]['namespace'] = substr($definition['namespace'],0,-1);
                 }
             }
         }
-        /* pipelined server requests for LSUB OR LIST */
+        // pipelined server requests for LSUB OR LIST
         foreach ($aNamespace as $key => $aSubNamespace) {
             if ($aSubNamespace) {
                 foreach ($aSubNamespace as $aReference) {
                     $query = strtoupper($type).' ' . $this->_getString($aReference['namespace']) . " \"$sSearch\"";
-                    /* store the tags temporarely in the result */
+                    // store the tags temporarely in the result
                     $aResults[$key][$aReference['namespace']] = $this->sqimap_run_command($query);
                 }
             }
         }
-        /* retrieve the results */
+        // retrieve the results
         foreach ($aResults as $key => $value) {
             $i = 0;
             foreach($value as $sReference => $sTag) {
@@ -290,7 +297,7 @@ class imap_backend extends parser {
                     $aResults[$key][$sReference] = $aRes[$type];
                     if ($sReference == 'INBOX.') {
                          $aResults[$key][$sReference]['INBOX'] =
-                            array('flags' => array(),'delimiter' => $aNamespace[$key][$i]['delimiter']);
+                         array('flags' => array(),'delimiter' => $aNamespace[$key][$i]['delimiter']);
                     }
                 } else {
                    $aResults[$key][$sReference] = false;
@@ -329,7 +336,9 @@ class imap_backend extends parser {
                 }
             }
         }
-        print_r($aProps);
+
+        // If the imap server doesn't have the CHILDREN capability then we need to do an extra
+        // LSUB or LIST request to determine if the mailbox has children
         if ($aProps['haschildren'] && !$this->capability['CHILDREN']) {
             foreach ($aResults as $key => $value) {
                 foreach($value as $sReference => $aList) {
@@ -367,6 +376,275 @@ class imap_backend extends parser {
         //print_r($aResults);
         return $aResults;
     }
+*/
+    /*
+      rfc3501 6.3.8.  LIST Command examples:
+
+               Reference     Mailbox Name  Interpretation
+               ------------  ------------  --------------
+               ~smith/Mail/  foo.*         ~smith/Mail/foo.*
+               archive/      %             archive/%
+               #news.        comp.mail.*   #news.comp.mail.*
+               ~smith/Mail/  /usr/doc/foo  /usr/doc/foo
+               archive/      ~fred/Mail/*  ~fred/Mail/*
+     */
+
+
+    /**
+     * @func      getMailboxList
+     * @desc      Retrieve an array with mailboxes catagorised per Refrence and mailbox
+     * @param     str        $type         LSUB or LIST
+     * @param     array      $aList        array with References, Mailboxes and Delimiter in the form:
+     *                                     $aList: array(
+     *                                                    array($sRef, $sMbx, $sDel),
+     *                                                    array(      ..                 )
+     *                                                  )
+     *                                     $sRef should be the namespace,
+     *                                     $sMbx is the mailboxname in the provided reference
+     *                                     $sDel is the mailbox hierarchie separator
+     * @param     array      $aProperties  array with params to manipulate default behaviour.
+     *                                     expand => retrieve the whole list instead of 1 level deep
+     *                                     haschildren => retrieve children information
+     *                                     verifyflags => in case of LSUB retrieve the flags with
+     *                                     a LIST call
+     * @param     constant   $iSearch      SM_MBXLIST_MBX, SM_MBXLIST_SUB or SM_MBXLIST_ALL
+     * @return    arr        $aResults     multidimensional array with references, mailboxes and properties
+     * @access    public
+     * @author    Marc Groot Koerkamp
+     */
+
+    /*
+     * This function is cleaned from bugs with help from the Metallica song "Seek and Destroy"
+     * (IMHO the best song ever from Metallica)
+     */
+
+    function getMailboxList($aList, $aProps) {
+        $aPropsDefault = array (
+                                'haschildren' => false,
+                                'verifyflags' => false);
+        $aProps = array_merge($aPropsDefault,$aProps);
+        $aResults = array();
+        // % matches hierarchie separator. make sure the provided
+        // * matches all, returns all mailboxes under provided reference
+
+        // pipelined server requests for LSUB OR LIST
+        foreach($aList as $indx => $aRef_Mailbox) {
+            $sRef = $aRef_Mailbox[0];
+            $sMbx = $aRef_Mailbox[1];
+            $sDel = $aRef_Mailbox[2];
+            $iSearch = $aRef_Mailbox[3];
+            $type = $aRef_Mailbox[4];
+            switch ($iSearch)
+            {
+                case SM_MBXLIST_SUB:  $sSearch = '%'; break; // % matches hierarchy separator.
+                case SM_MBXLIST_ALL:  $sSearch = '*'; break; // * matches all, returns all mailboxes under provided reference
+                case SM_MBXLIST_MBX:
+                default: $sSearch = ''; break;
+            }
+
+            // ?? Old cyrus bug, namespace is not ending with a delimiter => add it
+            if ($iSearch == SM_MBXLIST_SUB && $sRef && $sDel && substr($sRef,-1) !== $sDel) { // ????
+                $sRef .= $sDel;
+            }
+            // verify the mailbox is ending in a delimiter
+            if ($iSearch == SM_MBXLIST_SUB && $sDel && $sMbx && substr($sMbx,-1) !== $sDel) {
+                $sMbx .= $sDel;
+            }
+
+            // NB if the mailbox is ending in a delimiter and it contains no sub mailboxes
+            // then if mailbox search string is INBOX/% then INBOX/ can be part of the response.
+            // Cyrus doesn't return it this but UW does returns it because it has to deal with
+            // \NoSelect mailboxes.
+            // For the entire discussion, see http://www.washington.edu/imap/listarch/current/thrd24.html
+            $query = strtoupper($type).' ' . $this->_getString($sRef) . ' ' .$this->_getString($sMbx.$sSearch);
+            // store the tags temporarely in the result
+            if (!$sRef && $sMbx) $sRef = $sMbx;
+
+            $aDummy[$indx]['TAG'] = $this->sqimap_run_command($query);
+            $aDummy[$indx]['type'] = $type;
+            $aDummy[$indx]['ref'] = $sRef;
+            $aDummy[$indx]['mbx'] = $sMbx;
+            // Now retrieve the individual
+        } // foreach($aList as $aRef_Mailbox)
+
+        // retrieve the results
+        foreach($aDummy as $indx => $aVal) {
+            $sTag = $aVal['TAG'];
+            unset($aDummy[$indx]['TAG']);
+            $type = $aVal['type'];
+            $sRef = $aVal['ref'];
+            $aData = $this->_sqimap_process_stream($sTag);
+            if ($aData['RESPONSE'] == 'OK' && isset($aData[$type]) && count($aData[$type])) {
+                // we are using the reference to get the submailboxes we do not want the reference it self
+                if ($aDummy[$indx]['ref'] != $aDummy[$indx]['mbx'] && isset($aData[$type][$sRef])) {
+                     unset($aData[$type][$sRef]);
+                }
+                // remove the mailboxes with a delimiter as last char NEEDS TESTING !!!!
+                $aDataNew = array();
+                foreach ($aData[$type] as $sMbx => $aMbxProps) {
+                    if (!($sMbx && $aMbxProps['delimiter'] && substr($sMbx,-1) == $aMbxProps['delimiter'])) {
+                        $aDataNew[$sMbx] = $aMbxProps;
+                    }
+                }
+                $aData[$type] = $aDataNew;
+                //$aData[$type] = array_filter($aData[$type],array($this,'_filterNoEndHierarchySep') );
+                // we are using the reference to get the submailboxes we do not want the reference it self
+                // 2ed check
+                if ($aDummy[$indx]['ref'] != $aDummy[$indx]['mbx'] && isset($aData[$type][$sRef])) {
+                    unset($aData[$type][$sRef]);
+                }
+                // we did not request  the INBOX, remove it from the results.
+                // if (!(strpos($aRef_Mailbox[0],'INBOX' || strpos($aRef_Mailbox[0],'INBOX'))
+                //     && isset($aData[$type]['INBOX'])) {
+                //     unset($aData[$type]['INBOX']);
+                // }
+                // sort the results.
+                ksort($aData[$type]);
+
+                $aResults[$indx] = &$aData[$type];
+
+            } else { // NO|BAD
+                // error requested mailbox probably don't exist anymore
+
+            } // if ($aData['RESPONSE'] == 'OK' && isset($aData[$type]))
+        } // foreach($aResult as $sRefAr => $sMbxAr)
+
+        // retrieve i.e. \NoSelect flags. The LSUB response does not require to return all the flags
+        //print_r($aResults);
+
+        // what a fun bugtracking this code :S
+
+        if ($aProps['verifyflags']) {
+            foreach ($aResults as $indx => $aMbx) {
+                if ($aDummy[$indx]['type'] == 'LSUB') {
+                    $sRef = $aDummy[$indx]['ref'];
+                    foreach ($aMbx as $sSubMbx => $aMbxProps) {
+                        // if the reference part is not part of the submailbox then use the reference
+                        $sPrefix = ($sRef && substr($sSubMbx,0,strlen($sRef)) !== $sRef ? $sRef : '');
+                        $query = 'LIST ' . $this->_getString($sPrefix) . ' ' . $this->_getString($sSubMbx);
+                        $aDummy[$indx]['SUB'][$sSubMbx]['TAG'] = $this->sqimap_run_command($query);
+                    }
+                }
+            }
+            foreach ($aDummy as $indx => $aMbxAr) {
+                if ($aDummy[$indx]['type'] == 'LSUB' && isset($sMbxAr['SUB'])) {
+                    foreach($aMbxAr['SUB'] as $sSubMbx => $aMbxProps) {
+                        $sTag = $aMbxProps['TAG'];
+                        $aData = $this->_sqimap_process_stream($sTag);
+                        if ($aData['RESPONSE'] == 'OK') {
+                            //print_r($aData);
+                            if (isset($aData['LIST'][$sSubMbx])) {
+                                $aFlags = array_merge($aResults[$indx][$sSubMbx]['flags'],$aData['LIST'][$sSubMbx]['flags']);
+                                $aResults[$indx][$sSubMbx]['flags'] = $aFlags;
+                            } else {
+                                unset($aResults[$indx][$sSubMbx]);
+                                //$aFlags = array_merge($aResults[$sRefAr][$sSubMbx]['flags'],array('\\nonexistent'));
+                                //$aResults[$sRefAr][$sSubMbx]['flags'] = $aFlags;
+                            } // if (isset($aData['LIST'][$sSubMbx]))
+                            unset($aDummy[$indx][$sSubMbx]['TAG']);
+                        } else {
+                            // Mailbox doesn't exist anymore
+                            unset($aResults[$indx][$sSubMbx]);
+                        } // if ($aData['RESPONSE'] == 'OK')
+                    }
+                    unset($aDummy[$indx]['SUB']);
+                }
+            } // foreach ($aResults as $sRefAr => $sMbxAr)
+        } // if ($aProps['verifyflags'] && $type = 'LSUB')
+        if ($aProps['haschildren'] && !$this->capability['CHILDREN']) {
+            foreach ($aResults as $sRefAr => $sMbxAr) {
+                foreach ($aMbxAr as $sSubMbx => $aMbxProps) {
+                    // \NoInferiors implicates \HasNoChildren => no need for retrieving submailboxes.
+                    if (in_array('\\noinferiors',$aMbxProps['flags'])) {
+                        $aResults[$sRef][$sSubMbx]['flags'][] = '\\hasnochildren';
+                        $aResults[$sRef][$sSubMbx]['TAG'] = false;
+                        continue;
+                    }
+                    // if the reference part is not part of the submailbox then use the reference
+                    $sPrefix = ($sRef && substr($sSubMbx,0,strlen($sRef)) !== $sRef ? $sRef : '');
+                    $sSuffix = (substr($sSubMbx,-1) !== $aMbxProps['delimiter'] ? $aMbxProps['delimiter'].'%' : '%');
+                    strtoupper($type).' ' . $this->_getString($sPrefix) . ' ' .$this->_getString($sSubMbx.$sSuffix);
+                    $aResults[$sRef][$sSubMbx]['TAG'] = $this->sqimap_run_command($query);
+                } // foreach ($aMbxAr as $sSubMbx => $aMbxProps)
+            } // foreach ($aResults as $sRefAr => $sMbxAr)
+            foreach ($aResults as $sRefAr => $sMbxAr) {
+                foreach($sMbxAr as $sSubMbx => $aMbxProps) {
+                    if ($aMbxProps['TAG']) {
+                        $aData = $this->_sqimap_process_stream($aMbxProps['TAG']);
+                        if ($aData['RESPONSE'] == 'OK') {
+                            // remove not requested mailboxes (UW behaviour)
+                            if (isset($aData[$type]['INBOX'])) unset($aData[$type]['INBOX']);
+                            if (isset($aData[$type][$sSubMbx])) unset($aData[$type][$sSubMbx]);
+                            if (count($aData[$type])) {
+                                $aFlags = array_merge($aResults[$sRefAr][$sSubMbx]['flags'],array('\\haschildren'));
+                                $aResults[$sRefAr][$sSubMbx]['flags'] = $aFlags;
+                                // should we store the subsubmailboxes as well?
+
+                            } else {
+                                $aFlags = array_merge($aResults[$sRefAr][$sSubMbx]['flags'],array('\\hasnochildren'));
+                                $aResults[$sRefAr][$sSubMbx]['flags'] = $aFlags;
+                            }
+                            unset($aResults[$sRefAr][$sSubMbx]['TAG']);
+                        } else {
+                            // Mailbox doesn't exist anymore
+                            unset($aResults[$sRefAr][$sSubMbx]);
+                        } // if ($aData['RESPONSE'] == 'OK')
+                    } // if ($aMbxProps['TAG']) {
+                } // foreach($sMbxAr as $sSubMbx => $aMbxProps) {
+            } // foreach ($aResults as $sRefAr => $sMbxAr)
+        } // if ($aProps['haschildren'] && !$this->capability['CHILDREN'])
+
+        return $aResults;
+    } // function getMailboxList($aList, $aProps)
+
+    function _filterNoEndHierarchySep($mbx,$aProp) {
+        return ($aProp['delimiter'] == substr($mbx,-1)) ? 0 : 1;
+    }
+
+    function getNamespace() {
+        if ($this->capability['NAMESPACE']) {
+            $aNamespace = $this->_namespace();
+        } else {
+            // retrieve the toplevel mailboxes
+            $aData = $this->_sqimap_process_stream($this->sqimap_run_command('LIST "" %'));
+            if ($aData['RESPONSE'] == 'OK') {
+                if (isset($aData['LIST'])) {
+                    $aPersonal = $aShared = $aOthers = false;
+                    foreach ($aData['LIST'] as $sMbx => $aProps) {
+                        $sDel = $aProps['delimiter'];
+                        if ($sDel && substr($sMbx,-1) !== $sDel) $sMbx .= $sDel;
+
+                        switch ($sMbx) { // known namespaces should be added
+                          case '#news':
+                          case '#shared':
+                          case 'shared': // Cyrus
+                             $aShared[] = array('namespace' => $sMbx,'delimiter' => $sDel);
+                             break;
+                          case 'user': // Cyrus
+                          case '#other':
+                             $aOthers[] = array('namespace' => $sMbx,'delimiter' => $sDel);
+                             break;
+                          default:
+                             $aPersonal[] = array('namespace' => $sMbx,'delimiter' => $sDel);
+                             break;
+                        }
+                    }
+                    $aNamespace = array('personal' => $aPersonal, 'otherusers' => $aOthers, 'shared' => $aShared);
+                } else {
+                    // No Mailboxes
+                    $aNamespace = false;
+                }
+            } else {
+                $aNamespace = false;
+            }
+        }
+        return $aNamespace;
+    }
+
+    function _pipelinedCommand($aCommands, &$aResults) {
+
+    }
+
 
     /**
      * @func      _parseLiteral
@@ -386,10 +664,10 @@ class imap_backend extends parser {
         return $s;
     }
 
-    
+
     /**
      * @func      _getString
-     * @desc      prepare a string ready for an imap query 
+     * @desc      prepare a string ready for an imap query
      * @param     str        $string         string to prepare
      * @return    str        $string         quoted or literal string
      * @access    private
@@ -414,7 +692,7 @@ class imap_backend extends parser {
     
     /**
      * @func      namespace
-     * @desc      receive the namespace 
+     * @desc      receive the namespace
      * @return    arr|bool       $aResult|false          namespace|false on error
      * @access    private
      * @author    Marc Groot Koerkamp
@@ -427,7 +705,7 @@ class imap_backend extends parser {
          }
          return false;
     }
-    
+
     function getValidCommandArguments($sCommand) {
         switch ($sCommand)
         {
@@ -446,7 +724,7 @@ class imap_backend extends parser {
                         return false;
                 }
         }
-
+/*
     function __sleep() {
         unset($this->imapstream);
         $this->selected_mailbox = false;
@@ -454,9 +732,10 @@ class imap_backend extends parser {
         $this->alerts = array();
         $this->stack = array();
     }
+*/
 
-    function __wakeup() {
-    }
+//    function __wakeup() {
+//    }
     // obsolete
     /*
      * register section for default methods
@@ -571,6 +850,7 @@ class imap_backend extends parser {
         }
 //        echo "<b>$sTag</b><BR>";
 //        $this->print_var($this->stack[$sTag]);
+        //echo "C: $sTag $query<BR>";
         return $sTag;
     }
 
@@ -946,6 +1226,7 @@ class imap_backend extends parser {
                          $iEndNamespace = strpos($sRead,')',$i);
                          $sNamespace = substr($sRead,$i,$iEndNamespace-$i);
                          if (preg_match('/^\"(.+)\"\s\"(.{1})\"$/',$sNamespace,$aMatch)) {
+
                              $aNamespace[] = array('namespace' => $aMatch[1], 'delimiter' => $aMatch[2]);
                          }
                          $i = $iEndNamespace+1;
@@ -997,7 +1278,7 @@ class imap_backend extends parser {
        }
        $i +=4;
        $sMbx = false;
-       while (!$sMbx) {
+       while ($sMbx === false) {
            switch($sRead{$i})
            {
            case '"': $sMbx = $this->parseQuote($sRead,$i); break;
@@ -1005,6 +1286,10 @@ class imap_backend extends parser {
            case ' ': ++$i; break;
            default: $sMbx = substr($sRead,$i,-2); break;// strip off \r\n
            }
+       }
+       // INBOX is a caseinsensitive special mailbox. Treat it internally as uppercase.
+       if (strtoupper($sMbx) == 'INBOX') {
+           $sMbx = 'INBOX';
        }
        $i = strlen($sRead);
        return array('flags' => $aFlags, 'delimiter' => $delimiter);
