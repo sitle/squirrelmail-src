@@ -15,7 +15,7 @@ function zkload_session($zookeeper_home) {
     }
 
     /* Load the zookeeper session classes. */
-    require_once("$zookeeper_home/lib/session/service.php");
+    require_once("$zookeeper_home/services/session/service.php");
     return (true);
 }
 

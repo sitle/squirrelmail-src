@@ -35,7 +35,15 @@
                                              'port' => 143,
                                              'timeout' => 2 ) );    
     $authority['imap'] = $zkld->loadService( 'auth', $imap_opt, 'imap', zkSS() );
+
+    $pop3_opt = array( 'maxlogin' => 300,
+                       'maxidle' => 10,
+                       'connector' => array( 'host' => localhost,
+                                             'port' => 110,
+                                             'timeout' => 2 ) );    
+    $authority['pop3'] = $zkld->loadService( 'auth', $pop3_opt, 'pop3', zkSS() );
     
+
     $html = $zkld->loadService( 'html', NULL, 'html40', zkSS() );
 
     /*** END ZOOKEEPER INITIAL LOAD CODE ***/

@@ -16,7 +16,7 @@ function zkload_logging($zookeeper_home) {
     }
 
     /* Load the zookeeper logging classes. */
-    require_once("$zookeeper_home/lib/logging/service.php");
+    require_once("$zookeeper_home/services/logging/service.php");
     return (true);
 }
 

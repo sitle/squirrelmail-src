@@ -9,13 +9,13 @@
  */
 
 /**
- * ZkMod_auth_imap
+ * ZkMod_auth_pop3
  *
  */
-class ZkMod_auth_imap {
+class ZkMod_auth_pop3 {
 
     var $ver = '$Id$';
-    var $name = 'auth/imap';
+    var $name = 'auth/pop3';
 
     var $srv;	// backward pointer to the service
     var $info;	// cargo
@@ -26,7 +26,7 @@ class ZkMod_auth_imap {
      * @param array $options an associative array that can pass options
      *                       to the authentication module
      */
-    function ZkMod_auth_imap( $options, &$srv ) {
+    function ZkMod_auth_pop3( $options, &$srv ) {
         $this->srv = &$srv;
     }
 
@@ -46,16 +46,16 @@ class ZkMod_auth_imap {
                              $error_number, $error_string, 
                              $this->srv->connector['timeout'] );
             
-            $this->info = "<b>Imap Session</b><br>";
+            $this->info = '<b>POP3 Session</b><br>';
             if( $sp ) {        
                 socket_set_timeout( $sp, $this->srv->connector['timeout'] );
                 $ret = TRUE;
                 $this->srv->banner = fgets( $sp, 1024 );
                 // Check compatibilities in here
                 // Identifies the user
-                $ret = $this->query( $sp, 'LOGIN "' . quoteIMAP($username) .
-                                     '" "' . quoteIMAP($password) . '"' );
-		$ret = $this->query( $sp, 'LOGOUT' );
+                if ( $ret = $this->query( $sp, 'USER ' . $username ) ) {
+                    $ret = $this->query( $sp, 'PASS ' . $password );
+		}
             } else {
                 $ret = FALSE;
             }
@@ -70,26 +70,15 @@ class ZkMod_auth_imap {
     function query( $sp, $cmd ) {
 
         $buffer = '?';
-        $a = array( '*', 'NOPE' );
-        $isid = substr( session_id(), -4 );
-        if( $isid == '' ) {
-            // Not sessionized
-            $isid = rand( 1000, 9999 );
-        }
+        $a = array( 'AAA', 'NOPE' );
         
-        $this->info .= '<p><i>' . $cmd . '</i> ';
+	$this->info .= '<p><i>' . $cmd . '</i> ==> ';
         
-        fputs( $sp, $isid . ' ' . $cmd . "\r\n" );
-        
-        while( !eregi( ".*$a[1]-", 'OK-BAD-NO-' ) && $buffer <> '' ) {
-            $buffer = fgets( $sp, 1024 );
-            $a = explode( ' ', $buffer );
-            $this->info .= $buffer . '<br>';
-        }
-        
-        $this->info .= '</p>';
-        
-        return( $a[1] == 'OK' );
+        fputs( $sp, $cmd . "\r\n" );
+	$buffer = fgets( $sp, 1024 );
+	$this->info .= $buffer;
+         
+        return( $buffer{0} == '+' );
     }    
     
 }
