@@ -32,6 +32,7 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
 /** Method permissions */
 setPermission('foowd_workspace', 'class', 'create', 'Gods');
+setPermission('foowd_workspace', 'object', 'edit', 'Gods');
 setPermission('foowd_workspace', 'object', 'enter', 'Gods');
 setPermission('foowd_workspace', 'object', 'fill', 'Gods');
 setPermission('foowd_workspace', 'object', 'empty', 'Gods');
@@ -55,8 +56,8 @@ setConst('WORKSPACE_EXPORT_COMPRESS', FALSE);
  * @author Paul James
  * @package Foowd
  */
-class foowd_workspace extends foowd_object {
-
+class foowd_workspace extends foowd_object 
+{
   /**
    * A text description of the workspace.
    * 
@@ -283,7 +284,6 @@ class foowd_workspace extends foowd_object {
     if ( !is_array($selection) ) 
       return 2; // nothing selected.
  
-
     if ($clone || $move) 
     {
       foreach ($objects as $object) 
@@ -678,20 +678,21 @@ class foowd_workspace extends foowd_object {
     $this->foowd->template->assign('access', getPermission(get_class($this), 'enter', 'object'));
     $this->foowd->template->assign('description', htmlspecialchars($this->description));
 
-    if ($this->foowd->user->workspaceid == $this->objectid) {
+    if ($this->foowd->user->workspaceid == $this->objectid)
       $this->foowd->template->assign('enter', FALSE);
-    } else {
+    else
       $this->foowd->template->assign('enter', TRUE);
-    }
 
     // Get objects within this workspace
     // Get object list - no order, no limit, get actual objects
     $whereClause['this'] = array('workspaceid' => $this->objectid);
+    $indexes = array('DISTINCT objectid','title','classid','updated');
+    $orderby = array('title', 'classid', 'version');
     $objects =& $this->foowd->getObjList( 
-                        NULL,            // indexes to return (default set)
+                        $indexes,        // indexes to return (default set)
                         NULL,            // source
                         $whereClause,    // conditions
-                        NULL,            // order
+                        $orderby,        // order
                         NULL,            // limit
                         FALSE,           // return actual object
                         FALSE );         // workspace in where clause

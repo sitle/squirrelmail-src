@@ -34,17 +34,21 @@ include_once(TEMPLATE_PATH.'index.tpl');
  */
 function object_history_body(&$foowd, $className, $method, &$user, &$object, &$t)
 {?>
-<h1>History of <?php echo $t['title']; ?></h1>
+<h1><?php echo _("History"); ?></h1>
 
 <p>
-<table border="0" cellspacing="0" cellpadding="0" align="center">
-<tr><td></td><td rowspan="6" width="10"><img src="empty.png" border="0" alt="" /></td><td></td></tr>
-<tr><td><b><?php echo _("Title"); ?>:</b>      </td><td><?php echo $t['detailsTitle']; ?></td></tr>
-<tr><td><b><?php echo _("Created"); ?>:</b>    </td><td><?php echo $t['detailsCreated']; ?></td></tr>
-<tr><td><b><?php echo _("Author"); ?>:</b>     </td><td><?php echo $t['detailsAuthor']; ?></td></tr>
-<tr><td><b><?php echo _("Object Type"); ?>:</b></td><td><?php echo $t['detailsType']; ?></td></tr>
+<table cellspacing="0" cellpadding="0" class="smdoc_table">
+<tr><td class="heading"><b><?php echo _("Title"); ?>:</b></td>
+    <td class="value"><?php echo $t['detailsTitle']; ?></td></tr>
+<tr><td class="heading"><b><?php echo _("Created"); ?>:</b></td>
+    <td class="value"><?php echo $t['detailsCreated']; ?></td></tr>
+<tr><td class="heading"><b><?php echo _("Author"); ?>:</b></td>
+    <td class="value"><?php echo $t['detailsAuthor']; ?></td></tr>
+<tr><td class="heading"><b><?php echo _("Object Type"); ?>:</b></td>
+    <td class="value"><?php echo $t['detailsType']; ?></td></tr>
 <?php if (isset($t['detailsWorkspace'])) { ?>
-<tr><td><b><?php echo _("Workspace"); ?>:</b>  </td><td><?php echo $t['detailsWorkspace']; ?></td></tr>
+<tr><td class="heading"><b><?php echo _("Workspace"); ?>:</b></td>
+    <td class="value"><?php echo $t['detailsWorkspace']; ?></td></tr>
 <?php } ?>
 </table>
 </p>
