@@ -24,23 +24,13 @@ wtf.config.php
 WTF Configuration
 */
 
-/* database settings */
-define('DATABASE', 'mysql'); // database type (MySQL is the only DB module at the moment)
-define('DBHOST', 'localhost'); // database IP address
-define('DBNAME', 'wtf'); // database name
-define('DBUSER', 'root'); // database username
-define('DBPASS', ''); // database password
-
-/* debugging */
-define('DEBUG', FALSE); // show debug information
-define('DEBUG_VAR', TRUE); // show variable debug information
-define('DEBUG_TRACE', TRUE); // show trace debug information
-define('DEBUG_SQL', TRUE); // show SQL debug information
-define('DEBUG_TIME', TRUE); // show execution time
-define('RENDER', TRUE); // use rendering engine (FALSE bypasses rendering phase)
+/*
+ * Modified by SquirrelMail Development Team
+ * $Id$
+ */
 
 /* site defaults */
-define('DEFAULTPAGENAME', 'Wiki Type Framework'); // default page name
+define('DEFAULTPAGENAME', 'SquirrelMail - WebMail for Nuts'); // default page name
 
 /* content settings */
 define('MAXTITLELENGTH', 50); // maximum length of title allowed (DB field must support length)
@@ -129,8 +119,9 @@ define('USEHOSTIPFORANONYMOUSUSER', TRUE); // use the users ip for anonymous use
 define('ANONYMOUSUSERNAME', 'Anonymous User'); // name for anonymous user
 
 /* formatting settings */
-define('DEFAULTSKIN', 'default'); // default skin (used when new users are generated)
+define('DEFAULTSKIN', 'sqmail'); // default skin (used when new users are generated)
 $SKIN['default'] = 'formatting/default/default.php';
+$SKIN['sqmail'] = 'formatting/sqmail/default.php';
 $SKIN['xml'] = 'formatting/xml/xml.php';
 //$SKINBROWSER['/googlebot/'] = 'default'; // give certain formatting to a certain user agent regex match
 
@@ -191,7 +182,6 @@ $ENTITY['alpha'] = '&#945;';
 $ENTITY['beta'] = '&#946;';
 $ENTITY['gamma'] = '&#947;';
 $ENTITY['euro'] = '&#8364;';
-$ENTITY['peej'] = 'I can\'t live without my PeejCola';
 
 /* database */
 if (DATABASE == 'mysql') include(PATH.'wtf.mysql.php'); // mysql functions
@@ -209,7 +199,9 @@ include(PATH.'wtf.class.workspace.php');
 
 /* load extensions */
 include(PATH.'wiki.config.php');
-//include(PATH.'file.config.php'); // uncomment to load file extension
+include(PATH.'file.config.php'); // uncomment to load file extension
+
+include(PATH.'sqmail.wikimenu.php');
 
 /* wtf functions */
 include(PATH.'wtf.func.php');
