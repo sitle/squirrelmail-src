@@ -29,11 +29,11 @@ require('config.php');
 $foowd_parameters['debug']['debug_enabled'] = TRUE;
 $foowd = new smdoc($foowd_parameters);
 
-$foowd->template->assign('title', 'SquirrelMail Documentation Framework');
+$foowd->template->assign('title', 'Site Framework');
 
 $string = 'Packages: ' . 
-          '<a href="docs/li_smdoc.html" target="left_bottom">smdoc</a> | ' .
-          '<a href="docs/li_Foowd.html" target="left_bottom">Foowd</a>';
+          '<a href="sqmdocs/li_smdoc.html" target="left_bottom">smdoc</a> | ' .
+          '<a href="sqmdocs/li_Foowd.html" target="left_bottom">Foowd</a>';
 
 $foowd->template->assign('method', $string);
 $foowd->template->assign('body_template','smdoc_external.docs.tpl');
