@@ -8,6 +8,7 @@
  * Generic parser functions.
  * Also allows displaying of attachments when possible.
  *
+ *
  * $Id$
  */
 
@@ -27,6 +28,7 @@ class Parser {
 	 * @return  bool	$ret		failure
 	 *
 	 * @access 	public
+	 * @author	Marc Groot Koerkamp
 	 */
 	function parseString($s, $aEndChars, &$iOffset) {
 		$ret = false;
@@ -56,6 +58,7 @@ class Parser {
 	 * @return	bool		$ret		failure
 	 *
 	 * @access 	public
+	 * @author	Marc Groot Koerkamp
 	 */
 	function parseInteger($s, $aEndChars, &$iOffset) {
 		$ret = false;
@@ -88,6 +91,7 @@ class Parser {
 	 * @return	bool		$ret		failure
 	 *
 	 * @access 	public
+	 * @author	Marc Groot Koerkamp
 	 */
 	function parseBracket(&$s, &$iOffset) {
 		$ret = false;
@@ -117,6 +121,7 @@ class Parser {
 	 * @return	bool		$ret		failure
 	 *
 	 * @access 	public
+	 * @author	Marc Groot Koerkamp
 	 */
 	function parseEnclosed(&$s, &$iOffset, $sStartchar, $sEndchar) {
 		$ret = false;
