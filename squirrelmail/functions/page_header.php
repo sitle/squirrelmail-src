@@ -150,8 +150,16 @@ function displayPageHeader($color, $mailbox, $xtra='', $session=false) {
         case 'src/compose.php':
             $js = '<script language="JavaScript" type="text/javascript">' .
              "\n<!--\n" .
-             "function checkForm() {\n".
-                "var f = document.forms.length;\n".
+             "function checkForm() {\n";
+
+            global $action, $reply_focus;
+            if (strpos($action, 'reply') !== FALSE && $reply_focus)
+            {
+                if ($reply_focus == 'select') $js .= "document.forms['compose'].body.select();}\n";
+                else if ($reply_focus == 'focus') $js .= "document.forms['compose'].body.focus();}\n";
+            }
+            else
+                $js .= "var f = document.forms.length;\n".
                 "var i = 0;\n".
                 "var pos = -1;\n".
                 "while( pos == -1 && i < f ) {\n".
@@ -310,8 +318,16 @@ function compose_Header($color, $mailbox) {
     default:
         $js = '<script language="JavaScript" type="text/javascript">' .
              "\n<!--\n" .
-             "function checkForm() {\n".
-                "var f = document.forms.length;\n".
+             "function checkForm() {\n";
+
+            global $action, $reply_focus;
+            if (strpos($action, 'reply') !== FALSE && $reply_focus)
+            {
+                if ($reply_focus == 'select') $js .= "document.forms['compose'].body.select();}\n";
+                else if ($reply_focus == 'focus') $js .= "document.forms['compose'].body.focus();}\n";
+            }
+            else
+                $js .= "var f = document.forms.length;\n".
                 "var i = 0;\n".
                 "var pos = -1;\n".
                 "while( pos == -1 && i < f ) {\n".
