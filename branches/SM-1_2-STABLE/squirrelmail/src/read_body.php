@@ -389,7 +389,6 @@ function formatRecipientString($recipients, $item ) {
 $username = $_SESSION['username'];
 $key = $_COOKIE['key'];
 $onetimepad = $_SESSION['onetimepad'];
-$msgs = $_SESSION['msgs'];
 $base_uri = $_SESSION['base_uri'];
 $delimiter = $_SESSION['delimiter'];
 
