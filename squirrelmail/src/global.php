@@ -44,6 +44,12 @@ if (get_magic_quotes_gpc()) {
     }
 }
 
+/* strip any tags added to the url from PHP_SELF.
+   This fixes hand crafted url XXS expoits for any
+   page that uses PHP_SELF as the FORM action */
+
+strip_tags($_SERVER['PHP_SELF']);
+
 function sqstripslashes(&$array) {
     foreach ($array as $index=>$value) {
         if (is_array($array["$index"])) {

@@ -39,7 +39,7 @@ if (get_magic_quotes_gpc()) {
 * This is for a RedHat package bug and a Konqueror (pre 2.1.1?) bug
 */
 
-global $PHP_SELF;
+$PHP_SELF = $_SERVER['PHP_SELF'];
 
 if (isset($_POST['send'])) {
     $send = $_POST['send'];
