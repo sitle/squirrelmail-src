@@ -10,7 +10,7 @@
 
 function zkload_html($zookeeper_home) {
 
-    require_once("$zookeeper_home/lib/html/service.php");
+    require_once("$zookeeper_home/services/html/service.php");
     return( TRUE );
 }
 

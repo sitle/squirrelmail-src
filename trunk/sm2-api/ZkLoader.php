@@ -55,7 +55,7 @@ foreach( $bag_reg as $key => $reg ) {
 
         $this->appname = $appname;
         $this->zkhome = $zkhome;
-        $this->libhome = "$zkhome/lib";
+        $this->libhome = "$zkhome/services";
         $this->modhome = "$zkhome/modules";
 
         /* Load the core Zookeeper constants and functions files. */

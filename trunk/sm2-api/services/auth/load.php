@@ -13,7 +13,7 @@ function zkload_auth($zookeeper_home) {
     // $ret = ( session_id() <> '' );
     // if( $ret ) {
        /* Load the zookeeper authentication classes. */
-       require_once("$zookeeper_home/lib/auth/service.php");
+       require_once("$zookeeper_home/services/auth/service.php");
 // echo '<b>Requiring ' . "$zookeeper_home/lib/auth/service.php<br></b>";
     // }
     // return( $ret );
