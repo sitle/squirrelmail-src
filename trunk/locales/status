@@ -31,7 +31,7 @@ for locale in `ls --ignore=index.php --ignore=CVS --ignore=timezones.cfg ${SM_LO
 		  echo "" >> ${SM_LOCALES_PATH}/status.tmp
 		  echo "<i>Merging</i>" >> ${SM_LOCALES_PATH}/status.tmp
 		  msgmerge ${SM_LOCALES_PATH}/locale/${locale}/LC_MESSAGES/squirrelmail.po \
-		   ${SM_LOCALES_PATH}/squirrelmail.po \
+		   ${SM_LOCALES_PATH}/po/squirrelmail.pot \
 		   > ${SM_LOCALES_PATH}/locale/${locale}/LC_MESSAGES/squirrelmail-merged.po \
 		   2>> ${SM_LOCALES_PATH}/status.tmp
 		  echo "" >> ${SM_LOCALES_PATH}/status.tmp

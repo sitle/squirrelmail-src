@@ -34,121 +34,121 @@ fi
 # ** Stable core strings
   
 xgettext --keyword=_ -keyword=N_  --default-domain=squirrelmail \
-    --no-location -C ${SM_STABLE_PATH}/src/*.php --output-dir=${SM_LOCALES_PATH}/
+    --no-location -C ${SM_STABLE_PATH}/src/*.php --output=${SM_LOCALES_PATH}/po/squirrelmail.pot
 xgettext --keyword=_ -keyword=N_  --default-domain=squirrelmail -j \
-    --no-location -C ${SM_STABLE_PATH}/functions/*.php --output-dir=${SM_LOCALES_PATH}/
+    --no-location -C ${SM_STABLE_PATH}/functions/*.php --output=${SM_LOCALES_PATH}/po/squirrelmail.pot
 xgettext --keyword=_ -keyword=N_  --default-domain=squirrelmail -j \
-    --no-location -C ${SM_STABLE_PATH}/class/*.php --output-dir=${SM_LOCALES_PATH}/
+    --no-location -C ${SM_STABLE_PATH}/class/*.php --output=${SM_LOCALES_PATH}/po/squirrelmail.pot
 xgettext --keyword=_ -keyword=N_  --default-domain=squirrelmail -j \
-    --no-location -C ${SM_STABLE_PATH}/class/mime/*.php --output-dir=${SM_LOCALES_PATH}/
+    --no-location -C ${SM_STABLE_PATH}/class/mime/*.php --output=${SM_LOCALES_PATH}/po/squirrelmail.pot
 xgettext --keyword=_ -keyword=N_  --default-domain=squirrelmail -j \
-    --no-location -C ${SM_STABLE_PATH}/class/deliver/*.php --output-dir=${SM_LOCALES_PATH}/
+    --no-location -C ${SM_STABLE_PATH}/class/deliver/*.php --output=${SM_LOCALES_PATH}/po/squirrelmail.pot
 xgettext --keyword=_ -keyword=N_  --default-domain=squirrelmail -j \
-    --no-location -C ${SM_STABLE_PATH}/class/helper/*.php --output-dir=${SM_LOCALES_PATH}/    
+    --no-location -C ${SM_STABLE_PATH}/class/helper/*.php --output=${SM_LOCALES_PATH}/po/squirrelmail.pot
 xgettext --keyword=_ -keyword=N_  --default-domain=squirrelmail -j \
-    --no-location -C ${SM_STABLE_PATH}/include/*.php --output-dir=${SM_LOCALES_PATH}/
+    --no-location -C ${SM_STABLE_PATH}/include/*.php --output=${SM_LOCALES_PATH}/po/squirrelmail.pot
 xgettext --keyword=_ -keyword=N_  --default-domain=squirrelmail -j \
-    --no-location -C ${SM_STABLE_PATH}/include/options/*.php --output-dir=${SM_LOCALES_PATH}/
+    --no-location -C ${SM_STABLE_PATH}/include/options/*.php --output=${SM_LOCALES_PATH}/po/squirrelmail.pot
     
 # ** Stable plugins
     
 xgettext --keyword=_ -keyword=N_  --default-domain=squirrelmail -j \
-    --no-location -C ${SM_STABLE_PATH}/plugins/abook_take/*.php --output-dir=${SM_LOCALES_PATH}/
+    --no-location -C ${SM_STABLE_PATH}/plugins/abook_take/*.php --output=${SM_LOCALES_PATH}/po/squirrelmail.pot
 xgettext --keyword=_ -keyword=N_  --default-domain=squirrelmail -j \
-    --no-location -C ${SM_STABLE_PATH}/plugins/administrator/*.php --output-dir=${SM_LOCALES_PATH}/
+    --no-location -C ${SM_STABLE_PATH}/plugins/administrator/*.php --output=${SM_LOCALES_PATH}/po/squirrelmail.pot
 xgettext --keyword=_ -keyword=N_  --default-domain=squirrelmail -j \
-    --no-location -C ${SM_STABLE_PATH}/plugins/bug_report/*.php --output-dir=${SM_LOCALES_PATH}/
+    --no-location -C ${SM_STABLE_PATH}/plugins/bug_report/*.php --output=${SM_LOCALES_PATH}/po/squirrelmail.pot
 xgettext --keyword=_ -keyword=N_  --default-domain=squirrelmail -j \
-    --no-location -C ${SM_STABLE_PATH}/plugins/calendar/*.php --output-dir=${SM_LOCALES_PATH}/
+    --no-location -C ${SM_STABLE_PATH}/plugins/calendar/*.php --output=${SM_LOCALES_PATH}/po/squirrelmail.pot
 xgettext --keyword=_ -keyword=N_  --default-domain=squirrelmail -j \
-    --no-location -C ${SM_STABLE_PATH}/plugins/delete_move_next/*.php --output-dir=${SM_LOCALES_PATH}/
+    --no-location -C ${SM_STABLE_PATH}/plugins/delete_move_next/*.php --output=${SM_LOCALES_PATH}/po/squirrelmail.pot
 xgettext --keyword=_ -keyword=N_  --default-domain=squirrelmail -j \
-    --no-location -C ${SM_STABLE_PATH}/plugins/filters/*.php --output-dir=${SM_LOCALES_PATH}/
+    --no-location -C ${SM_STABLE_PATH}/plugins/filters/*.php --output=${SM_LOCALES_PATH}/po/squirrelmail.pot
 xgettext --keyword=_ -keyword=N_  --default-domain=squirrelmail -j \
-    --no-location -C ${SM_STABLE_PATH}/plugins/fortune/*.php --output-dir=${SM_LOCALES_PATH}/
+    --no-location -C ${SM_STABLE_PATH}/plugins/fortune/*.php --output=${SM_LOCALES_PATH}/po/squirrelmail.pot
 xgettext --keyword=_ -keyword=N_  --default-domain=squirrelmail -j \
-    --no-location -C ${SM_STABLE_PATH}/plugins/info/*.php --output-dir=${SM_LOCALES_PATH}/
+    --no-location -C ${SM_STABLE_PATH}/plugins/info/*.php --output=${SM_LOCALES_PATH}/po/squirrelmail.pot
 xgettext --keyword=_ -keyword=N_  --default-domain=squirrelmail -j \
-    --no-location -C ${SM_STABLE_PATH}/plugins/listcommands/*.php --output-dir=${SM_LOCALES_PATH}/
+    --no-location -C ${SM_STABLE_PATH}/plugins/listcommands/*.php --output=${SM_LOCALES_PATH}/po/squirrelmail.pot
 xgettext --keyword=_ -keyword=N_  --default-domain=squirrelmail -j \
-    --no-location -C ${SM_STABLE_PATH}/plugins/mail_fetch/*.php --output-dir=${SM_LOCALES_PATH}/
+    --no-location -C ${SM_STABLE_PATH}/plugins/mail_fetch/*.php --output=${SM_LOCALES_PATH}/po/squirrelmail.pot
 xgettext --keyword=_ -keyword=N_  --default-domain=squirrelmail -j \
-    --no-location -C ${SM_STABLE_PATH}/plugins/message_details/*.php --output-dir=${SM_LOCALES_PATH}/
+    --no-location -C ${SM_STABLE_PATH}/plugins/message_details/*.php --output=${SM_LOCALES_PATH}/po/squirrelmail.pot
 xgettext --keyword=_ -keyword=N_  --default-domain=squirrelmail -j \
-    --no-location -C ${SM_STABLE_PATH}/plugins/newmail/*.php --output-dir=${SM_LOCALES_PATH}/
+    --no-location -C ${SM_STABLE_PATH}/plugins/newmail/*.php --output=${SM_LOCALES_PATH}/po/squirrelmail.pot
 xgettext --keyword=_ -keyword=N_  --default-domain=squirrelmail -j \
-    --no-location -C ${SM_STABLE_PATH}/plugins/sent_subfolders/*.php --output-dir=${SM_LOCALES_PATH}/
+    --no-location -C ${SM_STABLE_PATH}/plugins/sent_subfolders/*.php --output=${SM_LOCALES_PATH}/po/squirrelmail.pot
 xgettext --keyword=_ -keyword=N_  --default-domain=squirrelmail -j \
-   --no-location  -C ${SM_STABLE_PATH}/plugins/spamcop/*.php --output-dir=${SM_LOCALES_PATH}/
+   --no-location  -C ${SM_STABLE_PATH}/plugins/spamcop/*.php --output=${SM_LOCALES_PATH}/po/squirrelmail.pot
 xgettext --keyword=_ -keyword=N_  --default-domain=squirrelmail -j \
-    --no-location -C ${SM_STABLE_PATH}/plugins/squirrelspell/*.php --output-dir=${SM_LOCALES_PATH}/
+    --no-location -C ${SM_STABLE_PATH}/plugins/squirrelspell/*.php --output=${SM_LOCALES_PATH}/po/squirrelmail.pot
 xgettext --keyword=_ -keyword=N_  --default-domain=squirrelmail -j \
     --no-location -C ${SM_STABLE_PATH}/plugins/squirrelspell/modules/*.mod \
-    --output-dir=${SM_LOCALES_PATH}/
+    --output=${SM_LOCALES_PATH}/po/squirrelmail.pot
 xgettext --keyword=_ -keyword=N_  --default-domain=squirrelmail -j \
-    --no-location -C ${SM_STABLE_PATH}/plugins/translate/*.php --output-dir=${SM_LOCALES_PATH}/
+    --no-location -C ${SM_STABLE_PATH}/plugins/translate/*.php --output=${SM_LOCALES_PATH}/po/squirrelmail.pot
 
 # ** Devel core strings
 
 xgettext --keyword=_ -keyword=N_  --default-domain=squirrelmail \
-    --no-location -C ${SM_DEVEL_PATH}/src/*.php --output-dir=${SM_LOCALES_PATH}/
+    --no-location -C ${SM_DEVEL_PATH}/src/*.php --output=${SM_LOCALES_PATH}/po/squirrelmail.pot
 xgettext --keyword=_ -keyword=N_  --default-domain=squirrelmail -j \
-    --no-location -C ${SM_DEVEL_PATH}/functions/*.php --output-dir=${SM_LOCALES_PATH}/
+    --no-location -C ${SM_DEVEL_PATH}/functions/*.php --output=${SM_LOCALES_PATH}/po/squirrelmail.pot
 xgettext --keyword=_ -keyword=N_  --default-domain=squirrelmail -j \
-    --no-location -C ${SM_DEVEL_PATH}/class/*.php --output-dir=${SM_LOCALES_PATH}/
+    --no-location -C ${SM_DEVEL_PATH}/class/*.php --output=${SM_LOCALES_PATH}/po/squirrelmail.pot
 xgettext --keyword=_ -keyword=N_  --default-domain=squirrelmail -j \
-    --no-location -C ${SM_DEVEL_PATH}/class/mime/*.php --output-dir=${SM_LOCALES_PATH}/
+    --no-location -C ${SM_DEVEL_PATH}/class/mime/*.php --output=${SM_LOCALES_PATH}/po/squirrelmail.pot
 xgettext --keyword=_ -keyword=N_  --default-domain=squirrelmail -j \
-    --no-location -C ${SM_DEVEL_PATH}/class/deliver/*.php --output-dir=${SM_LOCALES_PATH}/
+    --no-location -C ${SM_DEVEL_PATH}/class/deliver/*.php --output=${SM_LOCALES_PATH}/po/squirrelmail.pot
 xgettext --keyword=_ -keyword=N_  --default-domain=squirrelmail -j \
-    --no-location -C ${SM_DEVEL_PATH}/class/helper/*.php --output-dir=${SM_LOCALES_PATH}/    
+    --no-location -C ${SM_DEVEL_PATH}/class/helper/*.php --output=${SM_LOCALES_PATH}/po/squirrelmail.pot
 xgettext --keyword=_ -keyword=N_  --default-domain=squirrelmail -j \
-    --no-location -C ${SM_DEVEL_PATH}/include/*.php --output-dir=${SM_LOCALES_PATH}/
+    --no-location -C ${SM_DEVEL_PATH}/include/*.php --output=${SM_LOCALES_PATH}/po/squirrelmail.pot
 xgettext --keyword=_ -keyword=N_  --default-domain=squirrelmail -j \
-    --no-location -C ${SM_DEVEL_PATH}/include/options/*.php --output-dir=${SM_LOCALES_PATH}/
+    --no-location -C ${SM_DEVEL_PATH}/include/options/*.php --output=${SM_LOCALES_PATH}/po/squirrelmail.pot
     
 # ** Plugins
     
 xgettext --keyword=_ -keyword=N_  --default-domain=squirrelmail -j \
-    --no-location -C ${SM_DEVEL_PATH}/plugins/abook_take/*.php --output-dir=${SM_LOCALES_PATH}/
+    --no-location -C ${SM_DEVEL_PATH}/plugins/abook_take/*.php --output=${SM_LOCALES_PATH}/po/squirrelmail.pot
 xgettext --keyword=_ -keyword=N_  --default-domain=squirrelmail -j \
-    --no-location -C ${SM_DEVEL_PATH}/plugins/administrator/*.php --output-dir=${SM_LOCALES_PATH}/
+    --no-location -C ${SM_DEVEL_PATH}/plugins/administrator/*.php --output=${SM_LOCALES_PATH}/po/squirrelmail.pot
 xgettext --keyword=_ -keyword=N_  --default-domain=squirrelmail -j \
-    --no-location -C ${SM_DEVEL_PATH}/plugins/bug_report/*.php --output-dir=${SM_LOCALES_PATH}/
+    --no-location -C ${SM_DEVEL_PATH}/plugins/bug_report/*.php --output=${SM_LOCALES_PATH}/po/squirrelmail.pot
 xgettext --keyword=_ -keyword=N_  --default-domain=squirrelmail -j \
-    --no-location -C ${SM_DEVEL_PATH}/plugins/calendar/*.php --output-dir=${SM_LOCALES_PATH}/
+    --no-location -C ${SM_DEVEL_PATH}/plugins/calendar/*.php --output=${SM_LOCALES_PATH}/po/squirrelmail.pot
 xgettext --keyword=_ -keyword=N_  --default-domain=squirrelmail -j \
-    --no-location -C ${SM_DEVEL_PATH}/plugins/delete_move_next/*.php --output-dir=${SM_LOCALES_PATH}/
+    --no-location -C ${SM_DEVEL_PATH}/plugins/delete_move_next/*.php --output=${SM_LOCALES_PATH}/po/squirrelmail.pot
 xgettext --keyword=_ -keyword=N_  --default-domain=squirrelmail -j \
-    --no-location -C ${SM_DEVEL_PATH}/plugins/filters/*.php --output-dir=${SM_LOCALES_PATH}/
+    --no-location -C ${SM_DEVEL_PATH}/plugins/filters/*.php --output=${SM_LOCALES_PATH}/po/squirrelmail.pot
 xgettext --keyword=_ -keyword=N_  --default-domain=squirrelmail -j \
-    --no-location -C ${SM_DEVEL_PATH}/plugins/fortune/*.php --output-dir=${SM_LOCALES_PATH}/
+    --no-location -C ${SM_DEVEL_PATH}/plugins/fortune/*.php --output=${SM_LOCALES_PATH}/po/squirrelmail.pot
 xgettext --keyword=_ -keyword=N_  --default-domain=squirrelmail -j \
-    --no-location -C ${SM_DEVEL_PATH}/plugins/info/*.php --output-dir=${SM_LOCALES_PATH}/
+    --no-location -C ${SM_DEVEL_PATH}/plugins/info/*.php --output=${SM_LOCALES_PATH}/po/squirrelmail.pot
 xgettext --keyword=_ -keyword=N_  --default-domain=squirrelmail -j \
-    --no-location -C ${SM_DEVEL_PATH}/plugins/listcommands/*.php --output-dir=${SM_LOCALES_PATH}/
+    --no-location -C ${SM_DEVEL_PATH}/plugins/listcommands/*.php --output=${SM_LOCALES_PATH}/po/squirrelmail.pot
 xgettext --keyword=_ -keyword=N_  --default-domain=squirrelmail -j \
-    --no-location -C ${SM_DEVEL_PATH}/plugins/mail_fetch/*.php --output-dir=${SM_LOCALES_PATH}/
+    --no-location -C ${SM_DEVEL_PATH}/plugins/mail_fetch/*.php --output=${SM_LOCALES_PATH}/po/squirrelmail.pot
 xgettext --keyword=_ -keyword=N_  --default-domain=squirrelmail -j \
-    --no-location -C ${SM_DEVEL_PATH}/plugins/message_details/*.php --output-dir=${SM_LOCALES_PATH}/
+    --no-location -C ${SM_DEVEL_PATH}/plugins/message_details/*.php --output=${SM_LOCALES_PATH}/po/squirrelmail.pot
 xgettext --keyword=_ -keyword=N_  --default-domain=squirrelmail -j \
-    --no-location -C ${SM_DEVEL_PATH}/plugins/newmail/*.php --output-dir=${SM_LOCALES_PATH}/
+    --no-location -C ${SM_DEVEL_PATH}/plugins/newmail/*.php --output=${SM_LOCALES_PATH}/po/squirrelmail.pot
 xgettext --keyword=_ -keyword=N_  --default-domain=squirrelmail -j \
-    --no-location -C ${SM_DEVEL_PATH}/plugins/sent_subfolders/*.php --output-dir=${SM_LOCALES_PATH}/
+    --no-location -C ${SM_DEVEL_PATH}/plugins/sent_subfolders/*.php --output=${SM_LOCALES_PATH}/po/squirrelmail.pot
 xgettext --keyword=_ -keyword=N_  --default-domain=squirrelmail -j \
-   --no-location  -C ${SM_DEVEL_PATH}/plugins/spamcop/*.php --output-dir=${SM_LOCALES_PATH}/
+   --no-location  -C ${SM_DEVEL_PATH}/plugins/spamcop/*.php --output=${SM_LOCALES_PATH}/po/squirrelmail.pot
 xgettext --keyword=_ -keyword=N_  --default-domain=squirrelmail -j \
-    --no-location -C ${SM_DEVEL_PATH}/plugins/squirrelspell/*.php --output-dir=${SM_LOCALES_PATH}/
+    --no-location -C ${SM_DEVEL_PATH}/plugins/squirrelspell/*.php --output=${SM_LOCALES_PATH}/po/squirrelmail.pot
 xgettext --keyword=_ -keyword=N_  --default-domain=squirrelmail -j \
     --no-location -C ${SM_DEVEL_PATH}/plugins/squirrelspell/modules/*.mod \
-    --output-dir=${SM_LOCALES_PATH}/
+    --output=${SM_LOCALES_PATH}/po/squirrelmail.pot
 xgettext --keyword=_ -keyword=N_  --default-domain=squirrelmail -j \
-    --no-location -C ${SM_DEVEL_PATH}/plugins/translate/*.php --output-dir=${SM_LOCALES_PATH}/
+    --no-location -C ${SM_DEVEL_PATH}/plugins/translate/*.php --output=${SM_LOCALES_PATH}/po/squirrelmail.pot
 
 # Independent strings
 
 xgettext --keyword=_ -keyword=N_  --default-domain=squirrelmail -j \
-    --no-location -C ${SM_LOCALES_PATH}/independent_strings.txt --output-dir=${SM_LOCALES_PATH}/
+    --no-location -C ${SM_LOCALES_PATH}/independent_strings.txt --output=${SM_LOCALES_PATH}/po/squirrelmail.pot
 
 # print stats
-msgfmt --statistics ${SM_LOCALES_PATH}/squirrelmail.po
+msgfmt --statistics ${SM_LOCALES_PATH}/po/squirrelmail.pot

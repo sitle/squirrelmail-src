@@ -3,7 +3,8 @@ for trans in `ls locale/`; do
     mv locale/${trans}/LC_MESSAGES/squirrelmail.po \
 	locale/${trans}/LC_MESSAGES/squirrelmail.po.bak
     msgmerge --no-location locale/${trans}/LC_MESSAGES/squirrelmail.po.bak \
-	../locales/squirrelmail.po > \
+	po/squirrelmail.pot > \
 	locale/${trans}/LC_MESSAGES/squirrelmail.po
+#    rm locale/${trans}/LC_MESSAGES/squirrelmail.po.bak
 done
 	  
