@@ -37,7 +37,7 @@ require_once(SM_PATH . 'functions/global.php');
  * @return the index of the next valid message from the array
  */
 function findNextMessage($passed_id) {
-    global $msort, $msgs, $sort, 
+    global $msort, $msgs, $sort,
            $thread_sort_messages, $allow_server_sort,
            $server_sort_array;
     if (!is_array($server_sort_array)) {
@@ -53,7 +53,7 @@ function findNextMessage($passed_id) {
                     break;
                 }
                 $result = $server_sort_array[$key + 1];
-                break; 
+                break;
             }
         }
     } else {
@@ -117,9 +117,17 @@ function findPreviousMessage($numMessages, $passed_id) {
 function printer_friendly_link($mailbox, $passed_id, $passed_ent_id, $color) {
     global $javascript_on;
 
+    /* hackydiehack */
+    if( !sqgetGlobalVar('view_unsafe_images', $view_unsafe_images, SQ_GET) ) {
+        $view_unsafe_images = false;
+    } else {
+        $view_unsafe_images = true;
+    }
+
     $params = '?passed_ent_id=' . urlencode($passed_ent_id) .
               '&mailbox=' . urlencode($mailbox) .
-              '&passed_id=' . urlencode($passed_id);
+              '&passed_id=' . urlencode($passed_id).
+              '&view_unsafe_images='. (bool) $view_unsafe_images;
 
     $print_text = _("View Printable Version");
 
@@ -143,7 +151,7 @@ function printer_friendly_link($mailbox, $passed_id, $passed_ent_id, $color) {
 }
 
 function ServerMDNSupport($read) {
-    /* escaping $ doesn't work -> \x36 */    
+    /* escaping $ doesn't work -> \x36 */
     $ret = preg_match('/(\x36MDNSent|\\\\\*)/i', $read);
     return $ret;
 }
@@ -175,12 +183,12 @@ function SendMDN ( $mailbox, $passed_id, $sender, $message, $imapConnection) {
 
     $reply_to = '';
     if (isset($identity) && $identity != 'default') {
-        $from_mail = getPref($data_dir, $username, 
+        $from_mail = getPref($data_dir, $username,
                              'email_address' . $identity);
-        $full_name = getPref($data_dir, $username, 
+        $full_name = getPref($data_dir, $username,
                              'full_name' . $identity);
         $from_addr = '"'.$full_name.'" <'.$from_mail.'>';
-        $reply_to  = getPref($data_dir, $username, 
+        $reply_to  = getPref($data_dir, $username,
                              'reply_to' . $identity);
     } else {
         $from_mail = getPref($data_dir, $username, 'email_address');
@@ -411,7 +419,7 @@ function formatRecipientString($recipients, $item ) {
     return $string;
 }
 
-function formatEnvheader($mailbox, $passed_id, $passed_ent_id, $message, 
+function formatEnvheader($mailbox, $passed_id, $passed_ent_id, $message,
                          $color, $FirstTimeSee) {
     global $msn_user_support, $default_use_mdn, $default_use_priority,
            $show_xmailer_default, $mdn_user_support, $PHP_SELF, $javascript_on,
@@ -553,7 +561,7 @@ function formatMenubar($mailbox, $passed_id, $passed_ent_id, $message, $mbx_resp
             $uri = $base_uri . 'src/read_body.php?passed_id='.$prev.
                    '&amp;mailbox='.$urlMailbox.'&amp;sort='.$sort.
                    '&amp;startMessage='.$startMessage.'&amp;show_more=0';
-            $s .= '<a href="'.$uri.'">'._("Previous").'</a>';       
+            $s .= '<a href="'.$uri.'">'._("Previous").'</a>';
         } else {
             $s .= _("Previous");
         }
@@ -608,7 +616,7 @@ function formatMenubar($mailbox, $passed_id, $passed_ent_id, $message, $mbx_resp
         $s .= $topbar_delimiter . $next_link;
     }
 
-    $s .= '</small></td>' . "\n" . 
+    $s .= '</small></td>' . "\n" .
           html_tag( 'td', '', 'right', '', 'width="33%" nowrap' ) . '<small>';
     $comp_action_uri = $comp_uri . '&amp;smaction=forward';
     $s .= makeComposeLink($comp_action_uri, _("Forward"));
@@ -880,7 +888,7 @@ if (($attachment_common_show_images) &&
 do_hook('read_body_bottom');
 do_hook('html_bottom');
 sqimap_logout($imapConnection);
-/* sessions are written at the end of the script. it's better to register 
+/* sessions are written at the end of the script. it's better to register
    them at the end so we avoid double session_register calls */
 sqsession_register($messages,'messages');
 
