@@ -61,7 +61,7 @@ function translate_read_form() {
         $new_body = substr($new_body, 0, $pos);
     }
                      
-    $trans = get_html_translation_table('HTMLENTITIES');
+    $trans = get_html_translation_table(HTML_ENTITIES);
     $trans[' '] = '&nbsp;';
     $trans = array_flip($trans);
     $new_body = strtr($new_body, $trans);
