@@ -29,19 +29,21 @@ class input_checkbox {
 	var $name; // checkbox name
 	var $checked; // value of checkbox
 	var $caption; // caption to place next to checkbox
+	var $class; // css class
 	
-	function input_checkbox($name, $checked = FALSE, $caption = NULL) {
+	function input_checkbox($name, $checked = FALSE, $caption = NULL, $class = NULL) {
 		$this->name = $name;
 		if (isset($_POST[$name])) {
 			$this->checked = TRUE;
 		} elseif (isset($_GET[$name])) {
 			$this->checked = TRUE;
-		} elseif ($checked && !isset($_POST['submit'])) {
+		} elseif ($checked && count($_POST) == 0) {
 			$this->checked = TRUE;
 		} else {
 			$this->checked = FALSE;
 		}
 		$this->caption = $caption;
+		$this->class = $class;
 	}
 	
 	function set($value) {
@@ -56,7 +58,7 @@ class input_checkbox {
 	function display() {
 		echo '<input name="', $this->name, '" id="', $this->name, '" type="checkbox" ';
 		if ($this->checked) echo 'checked="checked" ';
-		echo ' title="', $this->caption, '" /> <label for="', $this->name, '">', $this->caption, '</label><br />';
+		echo ' title="', $this->caption, '" class="', $this->class, '" /> <label for="', $this->name, '">', $this->caption, '</label>';
 	}
 
 }

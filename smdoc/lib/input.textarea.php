@@ -24,10 +24,10 @@ input.textarea.php
 Textarea input object
 */
 
-define('INPUT_TEXTAREA_WIDTH_MIN', 20);
-define('INPUT_TEXTAREA_WIDTH_MAX', 100);
-define('INPUT_TEXTAREA_HEIGHT_MIN', 4);
-define('INPUT_TEXTAREA_HEIGHT_MAX', 30);
+if (!defined('INPUT_TEXTAREA_WIDTH_MIN')) define('INPUT_TEXTAREA_WIDTH_MIN', 20);
+if (!defined('INPUT_TEXTAREA_WIDTH_MAX')) define('INPUT_TEXTAREA_WIDTH_MAX', 80);
+if (!defined('INPUT_TEXTAREA_HEIGHT_MIN')) define('INPUT_TEXTAREA_HEIGHT_MIN', 4);
+if (!defined('INPUT_TEXTAREA_HEIGHT_MAX')) define('INPUT_TEXTAREA_HEIGHT_MAX', 20);
 
 class input_textarea {
 	
@@ -37,8 +37,9 @@ class input_textarea {
 	var $caption; // caption to place next to textbox
 	var $width, $height; // size of textarea
 	var $maxlength; // maxlength of text allowed
+	var $class; // css class
 	
-	function input_textarea($name, $regex = NULL, $value = NULL, $caption = NULL, $width = NULL, $height = NULL, $maxlength = NULL) {
+	function input_textarea($name, $regex = NULL, $value = NULL, $caption = NULL, $width = NULL, $height = NULL, $maxlength = NULL, $class = NULL) {
 		$this->name = $name;
 		$newValue = NULL;
 		$this->regex = $regex;
@@ -76,7 +77,7 @@ class input_textarea {
 			if ($this->height < INPUT_TEXTAREA_HEIGHT_MIN) $this->height = INPUT_TEXTAREA_HEIGHT_MIN;
 			if ($this->height > INPUT_TEXTAREA_HEIGHT_MAX) $this->height = INPUT_TEXTAREA_HEIGHT_MAX;
 		}
-
+		$this->class = $class;
 	}
 	
 	function set($value) {
@@ -90,7 +91,7 @@ class input_textarea {
 	}
 	
 	function display() {
-		echo $this->caption, ' <textarea name="', $this->name, '" cols="', $this->width, '" rows="', $this->height, '" wrap="virtual">', htmlentities($this->value), '</textarea><br />';
+		echo $this->caption, ' <textarea name="', $this->name, '" cols="', $this->width, '" rows="', $this->height, '" wrap="virtual" class="', $this->class, '">', htmlentities($this->value), '</textarea>';
 	}
 
 }

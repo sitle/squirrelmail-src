@@ -29,8 +29,9 @@ class input_checkgroup {
 	var $name; // checkgroup name
 	var $value; // value of checkgroup
 	var $checks; // array of checkboxes
+	var $class; // css class
 	
-	function input_checkgroup($name, $value = NULL, $checks = NULL) {
+	function input_checkgroup($name, $value = NULL, $checks = NULL, $class = NULL) {
 		$this->name = $name;
 		$this->checks = $checks;
 		if (isset($_POST)) {
@@ -53,6 +54,7 @@ class input_checkgroup {
 		if (!isset($this->value)) {
 			$this->set($value);
 		}
+		$this->class = $class;
 	}
 	
 	function set($value) {
@@ -79,7 +81,7 @@ class input_checkgroup {
 		foreach ($this->checks as $check) {
 			echo '<input name="', $this->name, '_', $index, '" id="', $this->name, '_', $index, '" type="checkbox" value="', $index, '" ';
 			if ($this->value & $index) echo 'checked="checked" ';
-			echo 'title="', $check, '" /> <label for="', $this->name, '_', $index, '">', $check, '</label><br />';
+			echo 'title="', $check, '" class="', $this->class, '" /> <label for="', $this->name, '_', $index, '">', $check, '</label>';
 			$index = $index * 2;
 		}
 	}

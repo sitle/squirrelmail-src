@@ -1,18 +1,8 @@
 <?php
-// prepend function
-function foowd_prepend(&$foowd, &$object, $page_title = NULL) {
-	include(PATH.'layout/header.php');
-}
-
-// append function
-function foowd_append(&$foowd, &$object) {
-	include(PATH.'layout/footer.php');
-}
 
 define('PATH', ''); // application path
 
-require('site-config.php');    // include site-specific config addendums
-require('config.default.php'); // include config and Foowd functions
+require('config.foowd.php'); // include config and Foowd functions
 
 // get object details
 $objectName = new input_querystring('object', REGEX_TITLE);
@@ -32,39 +22,49 @@ if (!isset($classid->value) && isset($className->value)) {
 }
 
 // init Foowd
-$foowd = new foowd(
-	array(),
-	array('loadUser' => TRUE)
-);
+$foowd = new foowd();
+
+// set callback environment, you need to set this to the environment object you want
+// to use if you unserialize an instance of a dynamic class.
+$FOOWD_LOADCLASSCALLBACK = &$foowd;
 
 // fetch object / call methods
-if (isset($className->value) && !isset($objectid->value) && !isset($objectName->value)) {
-     // call class method
-	$foowd->callClassMethod($className->value, $method->value);
-} else { 
-    // fetch object
-	$cacheName = getCacheName($objectid->value, $classid->value, $method->value);
+if (isset($className->value) && !isset($objectid->value) && !isset($objectName->value)) { // call class method
+	if ($methodError = $foowd->callClassMethod($className->value, $method->value)) {
+		trigger_error($methodError, E_USER_NOTICE);
+	}
+} else { // fetch object
 
-    // check cache settings
-	if (!readCache($cacheName)) { 
-        // if couldn't read cache go fetch object
-		$object = $foowd->fetchObject(
+	$cacheName = getCacheName($objectid->value, $classid->value, $method->value); // check cache settings
+	if (!readCache($cacheName)) { // if couldn't read cache go fetch object
+		if ($object = $foowd->fetchObject(
 			array(
 				'objectid' => $objectid->value,
 				'version' => $version->value,
 				'classid' => $classid->value
 			)
-		);
-		$foowd->callMethod($object, $method->value, $cacheName); // call object method
+		)) {
+			if ($methodError = $foowd->callMethod($object, $method->value, $cacheName)) { // call object method
+				trigger_error($methodError, E_USER_NOTICE);
+			}
+		} else {
+			trigger_error('Object not found', E_USER_NOTICE);
+		}
 	}
-}
 
-// footer will be appended by called method.
-// if we're debugging, include debug content before $foowd object is cleaned up
-if ( DEBUG ) writeDebug($foowd);
+}
 
 // destroy Foowd
 $foowd->destroy();
+
+// prepend function
+function foowd_prepend(&$foowd, &$object) {
+	@include('header.php');
+}
+
+// append function
+function foowd_append(&$foowd, &$object) {
+	@include('footer.php');
+}
+
 ?>
-</body>
-</html>

@@ -20,22 +20,13 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 */
 
 /*
- * Modified by SquirrelMail Development Team
- *
- * $Id$
- */
-
-define('TEXT_HTML_CLASS_ID',1158898744); 
+class.text.html.php
+Foowd HTML text class
+*/
 
 /** CLASS DESCRIPTOR **/
-$foowd_class_meta[TEXT_HTML_CLASS_ID]['className'] = 'foowd_text_html';
-$foowd_class_meta[TEXT_HTML_CLASS_ID]['description'] = 'HTML Text Object';
-
-/** CLASS METHOD PERMISSIONS **/
-define('FOOWD_TEXT_HTML_CREATE_PERMISSION', 'Gods');
-
-/** CLASS METHOD PASSTHRU FUNCTION **/
-function foowd_text_html_classmethod(&$foowd, $methodName) { foowd_text_html::$methodName($foowd, 'foowd_text_html'); }
+if (!defined('META_1158898744_CLASSNAME')) define('META_1158898744_CLASSNAME', 'foowd_text_html');
+if (!defined('META_1158898744_DESCRIPTION')) define('META_1158898744_DESCRIPTION', 'HTML Text Document');
 
 /** CLASS DECLARATION **/
 class foowd_text_html extends foowd_text_plain {
@@ -46,6 +37,7 @@ class foowd_text_html extends foowd_text_plain {
 /*** MEMBER FUNCTIONS ***/
 
 	function processPIs(&$foowd, $str) {
+		$foowd->track('foowd_text_html->processPIs');
 		static $includeTrack = array();
 		$parts = preg_split('/(<\?|\?>)/Us', $str);
 		$newStr = '';
@@ -58,25 +50,40 @@ class foowd_text_html extends foowd_text_plain {
 			} elseif ($this->processInclude && substr($part, 0, 7) == 'include') { // include another object
 				$include = explode(' ', trim(substr($part, 7)));
 				$includeObject = $include[0];
-				$includeMethod = setVarConstOrDefault($include[1], 'DEFAULT_METHOD', 'view');
-				if (in_array($include[0], $includeTrack) || $include[0] == $this->title) {
+				$foo = 1;
+				if (substr($includeObject, 0, 1) == '"') {	
+					$includeObject = substr($includeObject, 1);
+					while (!isset($index[$foo])) {
+						$includeObject .= ' '.$include[$foo];
+						if (substr($includeObject, -1, 1) == '"') {
+							$includeObject = substr($includeObject, 0, -1);
+							break;
+						}
+						$foo++;
+					}
+					$foo++;
+				}
+				$includeMethod = getVarConstOrDefault($include[$foo], 'DEFAULT_METHOD', 'raw');
+				if (in_array($includeObject, $includeTrack) || $includeObject == $this->title) {
 					$newStr .= '<p>Can not nest includes of the same object!</p>';
 				} else {
 					$includeTrack[] = $includeObject;
 					$object = $foowd->fetchObject(array(
 						'objectid' => crc32(strtolower($includeObject))
 					));
-					ob_start();
-					$foowd->callMethod($object, $includeMethod); // call object method
-					$newStr .= ob_get_contents();
-					ob_end_clean();
+					if ($object) {
+						ob_start();
+						$foowd->callMethod($object, $includeMethod); // call object method
+						$newStr .= ob_get_contents();
+						ob_end_clean();
+					}
 					array_pop($includeTrack);
 				}
 			} else { // not a PI so just leave alone
 				$newStr .= $part;
 			}
 		}
-		return $newStr;
+		$foowd->track(); return $newStr;
 	}
 
 /*** SERIALIZE FUNCTIONS ***/
@@ -91,6 +98,7 @@ class foowd_text_html extends foowd_text_plain {
 
 /* view object */
 	function method_view(&$foowd) {
+		$foowd->track('foowd_text_html->method_view');
 		if (function_exists('foowd_prepend')) foowd_prepend($foowd, $this);
 		if ($this->evalCode || $this->processInclude) {
 			echo $this->processPIs($foowd, $this->body);
@@ -98,10 +106,12 @@ class foowd_text_html extends foowd_text_plain {
 			echo $this->body;
 		}
 		if (function_exists('foowd_append')) foowd_append($foowd, $this);
+		$foowd->track();
 	}
 
 /* edit object */
 	function method_edit(&$foowd) {
+		$foowd->track('foowd_text_html->method_edit');
 		if (function_exists('foowd_prepend')) foowd_prepend($foowd, $this);
 		echo '<h1>Editing version ', $this->version, ' of "', $this->getTitle(), '"</h1>';
 		$editForm = new input_form('editForm', NULL, 'POST', 'Save', NULL, 'Preview');
@@ -127,9 +137,9 @@ class foowd_text_html extends foowd_text_plain {
 					$createNewVersion = TRUE;
 				}
 				if ($this->save($foowd, $createNewVersion)) {
-					echo '<p>Object updated and saved.</p>';
+					echo '<p>HTML text object updated and saved.</p>';
 				} else {
-					echo '<p>Could not save object.</p>';
+					trigger_error('Could not save HTML text object.');
 				}
 			} else { // edit collision!
 				echo '<h3>Warning: This object has been updated by another user since you started editing, please reload the edit page and verify their changes before continuing to edit.</h3>';
@@ -143,6 +153,18 @@ class foowd_text_html extends foowd_text_plain {
 			echo '<p class="preview">', $body, '</p>';
 		}
 		if (function_exists('foowd_append')) foowd_append($foowd, $this);
+		$foowd->track();
+	}
+
+/* raw object */
+	function method_raw(&$foowd) {
+		$foowd->track('foowd_text_html->method_raw');
+		if ($this->evalCode || $this->processInclude) {
+			echo $this->processPIs($foowd, $this->body);
+		} else {
+			echo $this->body;
+		}
+		$foowd->track();
 	}
 	
 }

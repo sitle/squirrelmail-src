@@ -36,10 +36,10 @@ function databaseOpen($host, $user, $pass, $name) {
 		if (databaseSelect($name, $conn)) {
 			return $conn;
 		} else {
-			die('Could not select database.');
+			trigger_error('Could not select database.', E_USER_ERROR);
 		}
 	} else {
-		die('Could not open database.');
+		trigger_error('Could not open database.', E_USER_ERROR);
 	}
 }
 
@@ -85,7 +85,7 @@ function dbdate2string($datetime, $format = DATEFORMAT) {
 	if ($datetime = dbdate2unixtime($datetime)) {
 		return date($format, $datetime);
 	} else {
-		return false;
+		return FALSE;
 	}
 }
 
@@ -94,7 +94,7 @@ function dbdate2unixtime($datetime) {
 	if (!isemptydbdate($datetime)) {
 		return mktime(substr($datetime, 11, 2), substr($datetime, 14, 2), substr($datetime, 17, 2), substr($datetime, 5, 2), substr($datetime, 8, 2), substr($datetime, 0, 4));
 	} else {
-		return false;
+		return FALSE;
 	}
 }
 
@@ -106,17 +106,43 @@ function unixtime2dbdate($datetime) {
 /* returns if a database datetime is empty */
 function isemptydbdate($datetime) {
 	if ($datetime == 0) {
-		return true;
+		return TRUE;
 	} else {
-		return false;
+		return FALSE;
 	}
+}
+
+/*** DB MySQL Specific Functions ***/
+
+function DBMySQL_doWhereRecurse($conditions) {
+	$SQL = '(';
+	$conjunction = array_shift($conditions);
+	if ($conjunction == 'or' || $conjunction == 'OR') {
+		$conjunction = 'OR';
+	} elseif ($conjunction == 'and' || $conjunction == 'AND') {
+		$conjunction = 'AND';
+	}	elseif (count($conditions) == 0) {
+		return $conjunction;
+	}	else {
+		$conjunction = 'AND';
+	}
+	foreach ($conditions as $condition) {
+		if (is_array($condition)) {
+			$SQL .= DBMySQL_doWhereRecurse($condition).' '.$conjunction.' ';
+		} else {
+			$SQL .= $condition.' '.$conjunction.' ';
+		}
+	}
+	return substr($SQL, 0, -(strlen($conjunction) + 2)).')';
 }
 
 /*** Generic DB Functions ***/
 
 /* select */
-function DBSelect(&$conn, $table, $joins, $fields, $conditions, $groups, $orders, $limit) {
+function DBSelect(&$foowd, $joins, $fields, $conditions, $groups, $orders, $limit) {
+	$foowd->debugDBAccessNumber++;
 	$SQLString = '';
+	$table = $foowd->dbtable;
 	if ($table && $fields) {
 		$SQLString = 'SELECT';
 		foreach ($fields as $field) {
@@ -134,10 +160,8 @@ function DBSelect(&$conn, $table, $joins, $fields, $conditions, $groups, $orders
 			}
 		}
 		if ($conditions) {
-			$SQLString .= ' WHERE';
-			foreach ($conditions as $condition) {
-				$SQLString .= ' '.$condition;
-			}
+			$SQLString .= ' WHERE ';
+			$SQLString .= DBMySQL_doWhereRecurse($conditions);
 		}
 		if ($groups) {
 			$SQLString .= ' GROUP BY';
@@ -156,21 +180,23 @@ function DBSelect(&$conn, $table, $joins, $fields, $conditions, $groups, $orders
 		if ($limit) {
 			$SQLString .= ' LIMIT '.$limit;
 		}
-		if (DEBUG) DBTrack($SQLString);
-		$query = mysql_query($SQLString, $conn) or error('Database query failed');		
+		if ($foowd->debug) $foowd->debugDBTrack($SQLString);
+		$query = mysql_query($SQLString, $foowd->conn) or trigger_error('Database query failed', E_USER_ERROR);
 	} else {
-		$query = false;
+		$query = FALSE;
 	}
-	if ($query && mysql_affected_rows($conn) > 0) {
+	if ($query && mysql_affected_rows($foowd->conn) > 0) {
 		return $query;
 	} else {
-		return false;
+		return FALSE;
 	}
 }
 
 /* insert */
-function DBInsert(&$conn, $table, $fields) {
+function DBInsert(&$foowd, $fields) {
+	$foowd->debugDBAccessNumber++;
 	$SQLString = '';
+	$table = $foowd->dbtable;
 	if ($table && $fields) {
 		$SQLString = 'INSERT INTO '.$table.'(';
 		foreach ($fields as $key => $field) {
@@ -187,20 +213,22 @@ function DBInsert(&$conn, $table, $fields) {
 		}
 		$SQLString = substr($SQLString, 0, -1);
 		$SQLString .= ')';
-		if (DEBUG) DBTrack($SQLString);
-		if ($query = mysql_query($SQLString, $conn)) {
-			return true;
+		if ($foowd->debug) $foowd->debugDBTrack($SQLString);
+		if ($query = mysql_query($SQLString, $foowd->conn)) {
+			return TRUE;
 		} else {
-			return false;
+			return FALSE;
 		}
 	} else {
-		return false;
+		return FALSE;
 	}
 }
 
 /* update */
-function DBUpdate(&$conn, $table, $fields, $conditions) {
+function DBUpdate(&$foowd, $fields, $conditions) {
+	$foowd->debugDBAccessNumber++;
 	$SQLString = '';
+	$table = $foowd->dbtable;
 	if ($table && $fields) {
 		$SQLString = 'UPDATE '.$table.' SET ';
 		foreach ($fields as $key => $field) {
@@ -212,50 +240,46 @@ function DBUpdate(&$conn, $table, $fields, $conditions) {
 		}
 		$SQLString = substr($SQLString, 0, -1);
 		if ($conditions) {
-			$SQLString .= ' WHERE';
-			foreach ($conditions as $condition) {
-				$SQLString .= ' '.$condition;
-			}
+			$SQLString .= ' WHERE ';
+			$SQLString .= DBMySQL_doWhereRecurse($conditions);
 		}
-		if (DEBUG) DBTrack($SQLString);
-		if ($query = mysql_query($SQLString, $conn) && getAffectedRows() > 0) {
-			return true;
+		if ($foowd->debug) $foowd->debugDBTrack($SQLString);
+		if ($query = mysql_query($SQLString, $foowd->conn) && getAffectedRows() > 0) {
+			return TRUE;
 		} else {
-			return false;
+			return FALSE;
 		}
 	} else {
-		return false;
+		return FALSE;
 	}
 }
 
 /* delete */
-function DBDelete(&$conn, $table, $conditions) {
+function DBDelete(&$foowd, $conditions) {
+	$foowd->debugDBAccessNumber++;
 	$SQLString = '';
+	$table = $foowd->dbtable;
 	if ($table) {
 		$SQLString = 'DELETE FROM '.$table;
 		if ($conditions) {
-			$SQLString .= ' WHERE';
-			if (is_array($conditions)) {
-				foreach ($conditions as $condition) {
-					$SQLString .= ' '.$condition;
-				}
-			} else {
-				$SQLString .= ' '.$conditions;
-			}
+			$SQLString .= ' WHERE ';
+			$SQLString .= DBMySQL_doWhereRecurse($conditions);
 		}
-		if (DEBUG) DBTrack($SQLString);
-		if (mysql_query($SQLString, $conn) or error('Database query failed')) {
-			return true;
+		if ($foowd->debug) $foowd->debugDBTrack($SQLString);
+		if (mysql_query($SQLString, $foowd->conn) or trigger_error('Database query failed', E_USER_ERROR)) {
+			return TRUE;
 		} else {
-			return false;
+			return FALSE;
 		}
 	} else {
-		return false;
+		return FALSE;
 	}
 }
 
 /* create table */
-function DBCreateTable(&$conn, $name, $columns) {
+function DBCreateTable(&$foowd, $columns) {
+	$foowd->debugDBAccessNumber++;
+	$name = $foowd->dbtable;
 	if (isset($columns) && is_array($columns)) {
 		$SQLString = 'CREATE TABLE '.$name.' (';
 		$PrimaryKeyString = '';
@@ -290,18 +314,20 @@ function DBCreateTable(&$conn, $name, $columns) {
 			$SQLString .= $PrimaryKeyString;
 		}
 		$SQLString = substr($SQLString, 0, -2).')';
-		if (DEBUG) DBTrack($SQLString);
-		if (mysql_query($SQLString)) {
-			return true;
+		if ($foowd->debug) $foowd->debugDBTrack($SQLString);
+		if (mysql_query($SQLString, $foowd->conn)) {
+			return TRUE;
 		} else {
-			return false;
+			return FALSE;
 		}
 	}	
-	return false;
+	return FALSE;
 }
 
 /* alter table */
-function DBAlterTable(&$conn, $name, $columns) {
+function DBAlterTable(&$foowd, $columns) {
+	$foowd->debugDBAccessNumber++;
+	$name = $foowd->dbtable;
 	if (isset($columns) && is_array($columns)) {
 		$SQLString = 'ALTER TABLE '.$name.' ADD COLUMN (';
 		$PrimaryKeyString = '';
@@ -341,14 +367,14 @@ function DBAlterTable(&$conn, $name, $columns) {
 		if ($IndexString != '') {
 			$SQLString .= $IndexString;
 		}
-		if (DEBUG) DBTrack($SQLString);
-		if (mysql_query($SQLString)) {
-			return true;
+		if ($foowd->debug) $foowd->debugDBTrack($SQLString);
+		if (mysql_query($SQLString, $foowd->conn)) {
+			return TRUE;
 		} else {
-			return false;
+			return FALSE;
 		}
 	}	
-	return false;
+	return FALSE;
 }
 
 ?>
