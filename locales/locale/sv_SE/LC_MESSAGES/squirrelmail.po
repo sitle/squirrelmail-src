@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: SquirrelMail HEAD\n"
-"POT-Creation-Date: 2004-12-09 02:10+0100\n"
-"PO-Revision-Date: 2004-12-09 02:19+0100\n"
+"POT-Creation-Date: 2004-12-28 13:45+0200\n"
+"PO-Revision-Date: 2004-12-29 16:20+0100\n"
 "Last-Translator: Fredrik Jervfors <sqm_admin@fimbul.net>\n"
 "Language-Team: Swedish <squirrelmail-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -1798,6 +1798,12 @@ msgstr "Microsoft Exchange IMAP-server"
 msgid "Courier IMAP server"
 msgstr "Courier IMAP-server"
 
+msgid "Mac OS X Mailserver"
+msgstr "Mac OS X e-postserver"
+
+msgid "hMailServer IMAP server"
+msgstr "hMailServer IMAP-server"
+
 msgid "Not one of the above servers"
 msgstr "Ingen av ovanstående servrar"
 
@@ -3092,9 +3098,6 @@ msgstr ""
 "Aviseringen består av ett ljud och/eller ett popup-fönster när nya brev "
 "inkommer."
 
-msgid "New Mail Notification options saved"
-msgstr "Inställningarna för avisering vid nyinkomna brev har sparats"
-
 #, c-format
 msgid "%s New Messages"
 msgstr "%s nya brev"
@@ -3736,9 +3739,6 @@ msgstr "Inga kända begränsningar (använder Translation Experts' InterTran)"
 msgid "Number of supported languages: %s"
 msgstr "Antal språk som stödjs: %s"
 
-msgid "No known limits, powered by GPLTrans (free, open source)"
-msgstr "Inga kända begränsningar (använder GPLTrans (fri, öppen källkod)"
-
 msgid "Hellenic translations, no known limits, powered by Systran"
 msgstr "Helleniska översättningar, inga kända begränsningar (använder Systran)"
 
@@ -3773,12 +3773,6 @@ msgstr "till höger"
 msgid "Translate inside the SquirrelMail frames"
 msgstr "Översätt inom SquirrelMails ramar"
 
-msgid "When composing:"
-msgstr "Vid skrivning:"
-
-msgid "Not yet functional, currently does nothing"
-msgstr "Ej implementerat"
-
 msgid "Translation Options"
 msgstr "Översättningsinställningar"
 
@@ -3791,17 +3785,26 @@ msgstr "Vilken översättare skall användas om du får brev i ett annat språk?"
 msgid "%s to %s"
 msgstr "%s till %s"
 
+msgid "Chinese, Simplified"
+msgstr "Kinsiska, förenklad"
+
 msgid "English"
 msgstr "Engelska"
 
-msgid "Chinese"
-msgstr "Kinesiska"
+msgid "Chinese, Traditional"
+msgstr "Kinesiska, traditionell"
+
+msgid "Dutch"
+msgstr "Holländska"
 
 msgid "French"
 msgstr "Franska"
 
 msgid "German"
 msgstr "Tyska"
+
+msgid "Greek"
+msgstr "Grekiska"
 
 msgid "Italian"
 msgstr "Italienska"
@@ -3815,11 +3818,11 @@ msgstr "Koreanska"
 msgid "Portuguese"
 msgstr "Portugisiska"
 
-msgid "Spanish"
-msgstr "Spanska"
-
 msgid "Russian"
 msgstr "Ryska"
+
+msgid "Spanish"
+msgstr "Spanska"
 
 msgid "Translate"
 msgstr "Översätt"
@@ -3839,23 +3842,20 @@ msgstr "Tjeckiska"
 msgid "Danish"
 msgstr "Danska"
 
-msgid "Dutch"
-msgstr "Holländska"
-
-msgid "European Spanish"
-msgstr "Europeisk spanska"
+msgid "Filipino (Tagalog)"
+msgstr "Filippinska (Tagalog)"
 
 msgid "Finnish"
 msgstr "Finska"
-
-msgid "Greek"
-msgstr "Grekiska"
 
 msgid "Hungarian"
 msgstr "Ungerska"
 
 msgid "Icelandic"
 msgstr "Isländska"
+
+msgid "Latin"
+msgstr "Latin"
 
 msgid "Latin American Spanish"
 msgstr "Latinamerikansk spanska"
@@ -3886,9 +3886,6 @@ msgstr "Walesiska"
 
 msgid "Indonesian"
 msgstr "Indonesiska"
-
-msgid "Latin"
-msgstr "Latin"
 
 msgid "to English"
 msgstr "till Engelska"
@@ -4419,17 +4416,17 @@ msgstr "Översättningsinställningar"
 msgid "Maximum of 25 kilobytes translated, powered by Systran"
 msgstr "Maximalt 25 000 översatta tecken (använder Systran)"
 
-msgid "Chinese, Simplified"
-msgstr "Kinsiska, förenklad"
-
-msgid "Chinese, Traditional"
-msgstr "Kinesiska, traditionell"
-
-msgid "Filipino (Tagalog)"
-msgstr "Filippinska (Tagalog)"
+msgid "No known limits, powered by GPLTrans (free, open source)"
+msgstr "Inga kända begränsningar (använder GPLTrans (fri, öppen källkod)"
 
 msgid "Transliterate unknown words:"
 msgstr "Transkribera okända ord:"
+
+msgid "When composing:"
+msgstr "Vid skrivning:"
+
+msgid "Not yet functional, currently does nothing"
+msgstr "Ej implementerat"
 
 msgid "Delivery error report"
 msgstr "Rapport om leveransfel"
