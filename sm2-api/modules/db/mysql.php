@@ -63,14 +63,14 @@ class ZkMod_db_mysql {
     
     function query( $sql ) {
  
-        $ret = mysql_query( $sql, $this->lk ) or die('La cagó');
-        
+        $ret = mysql_query( $sql, $this->lk ) or die('Query error');
+
         return( $ret );
-        
+
     }
-    
-    function html_table( $rs ) {
-    
+
+    function html_table( $rs, $tt = '' ) {
+
         $i = 0;
         $ret = '<table><tr>';
         while( $fn = @mysql_field_name ( $rs, $i++ ) ) {
@@ -78,24 +78,44 @@ class ZkMod_db_mysql {
         }
         $ret .= '</tr>';
         $i = 0;
+        $j = 0;
+        $c = '';
         while( $rw = mysql_fetch_row( $rs ) ) {
+            if ( $tt != '' && $c != $rw[$tt] ) {
+                if ( $i != 0 )
+                    $ret .= "<tr><td align=right colspan=$f><i>Total $c ...... $i unidades</i></td></tr>";
+                $c = $rw[$tt];
+                $j += $i;
+                $i = 0;
+            }
             if ( $i % 2 )
                 $clr = '#f0f0f0';
             else
-                $clr = '#ffffff';            
+                $clr = '#ffffff';
             $ret .= "<tr bgcolor=$clr>";
+            $f = 0;
             foreach( $rw as $fl ) {
                 $ret .= "<td>$fl</td>";
+                $f++;
             }
-            $ret .= '</tr>';
+            $ret .= "</tr>\n";
             $i++;
         }
+        $j += $i;
+        $ret .= "<tr><td align=right colspan=$f><i>Total $c ........ $i unidades</i></td></tr>";
+        $ret .= "<tr><td align=right colspan=$f><b>Total General .......... $j unidades</b></td></tr>";
         $ret .= '</table>';
-    
+
         return( $ret );
-    
+
     }
     
+    function getRow( $rs ) {
+    
+        return( mysql_fetch_row( $rs ) );
+        
+    }
+
 }
 
 ?>
