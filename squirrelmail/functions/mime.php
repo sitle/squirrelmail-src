@@ -795,7 +795,7 @@ function formatBody($imap_stream, $message, $color, $wrap_at) {
         }
 
         /** Display the ATTACHMENTS: message if there's more than one part **/
-        if (isset($message->entities[1])) {
+        if (isset($message->entities[1]) || ($message->header->type0 == 'multipart')) {
             $body .= formatAttachments ($message, $ent_num, $message->header->mailbox, $id);
         }
     } else {
