@@ -88,12 +88,12 @@ class input_form
    *
    * @param str name The name of the form.
    * @param str location URI for form to submit to.
-   * @param str method The submit method to use.
+   * @param mixed method The submit method to use ('get', 'post', SQ_GET, SQ_POST)
    * @param str submit Caption of the submit button.
    * @param str reset Caption of the reset button.
    * @param str preview Caption of the preview button.
    */
-  function input_form($name, $location = NULL, $method = 'POST', 
+  function input_form($name, $location = NULL, $method = SQ_POST, 
                       $submit = FORM_DEFAULT_SUBMIT, 
                       $reset = FORM_DEFAULT_RESET, 
                       $preview = NULL) 
@@ -101,16 +101,12 @@ class input_form
     $this->name = $name;
 
     if ($location == NULL) 
-    {
-      $location = getURI();
-      if (isset($_SERVER['QUERY_STRING']) && $_SERVER['QUERY_STRING'] != '') 
-        $location .= '?'.$_SERVER['QUERY_STRING'];
-    }
+      $location = getURI($_GET);
 
     if ( is_string($method) ) 
-    {
-      $method = ( $method == 'POST' ) ? SQ_POST : SQ_GET;
-    }
+      $method = ( strtolower($method) == 'post' ) ? SQ_POST : SQ_GET;
+    else 
+      $method = ( $method == SQ_POST ) ? SQ_POST : SQ_GET;
 
     $this->location = $location;
     $this->method = $method;
@@ -131,6 +127,25 @@ class input_form
     {
       $object->form =& $this;
       $this->objects[$object->name] =& $object;
+      return TRUE;
+    }
+
+    return FALSE;
+  }
+
+  /**
+   * Add to a group of elements
+   * under one name ( nested array )
+   * @param str    group Name of element group
+   * @param object object The form object to add.
+   * @return bool TRUE on success.
+   */
+  function addToGroup($group, $object)
+  {
+    if ( is_object($object) && isset($object->name) && isset($group) )
+    {
+      $object->form =& $this;
+      $this->objects[$group][$object->name] =& $object;
       return TRUE;
     }
 
@@ -171,12 +186,12 @@ class input_form
    */
   function display_start($form_class = NULL) 
   {
-    $method = ( $this->method == SQ_POST ) ? 'POST' : 'GET';
+    $method = ( $this->method == SQ_POST ) ? 'post' : 'get';
 
     $enctype = 'enctype="multipart/form-data" ';
     $method  = 'method="'.$method.'" ';
     $action  = 'action="'.$this->location.'" ';
-    $name    = 'name="'.$this->name.'" ';
+    $name    = 'id="'.$this->name.'" ';
     $class = ( $form_class == NULL ) ? '' : 'class="'.$form_class.'" ';
  
     echo '<form '.$name.$action.$method.$enctype.$class.'>'."\n";

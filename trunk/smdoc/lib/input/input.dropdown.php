@@ -111,25 +111,26 @@ class input_dropdown extends input_base
    */
   function display($class = NULL, $visibleItems = 1) 
   {
-    $class = ( $class == NULL ) ? ''  : 'class="'.$class.'" ';
-    $multiple = ( $this->multiple ) ? 'multiple="multiple" ' : '';
-    $size = 'size="'.$visibleItems.'" ';
-    $name  = 'name="'.$this->name.'[]" ';
+    $class = ( $class == NULL ) ? ''  : ' class="'.$class.'"';
+    $multiple = ( $this->multiple ) ? ' multiple="multiple"' : '';
+    $size = ' size="'.$visibleItems.'"';
+    $name  = ' name="'.$this->name.'[]"';
 
 
-    echo ' <select ',$name,$multiple,$size,$class,'>';
-    foreach ($this->items as $value => $item) 
+    echo ' <select',$name,$multiple,$size,$class,'>'."\n";
+
+    foreach ($this->items as $val => $item) 
     {
-      $value = 'value="'.$value.'" ';
+      $value = ' value="'.$val.'"';
       $selected = '';
       
-      if ( $this->value == $value ||
-           ($this->multiple && is_array($this->value) && in_array($value, $this->value)) )
-        $selected = 'selected="selected" ';
+      if ( $this->value == $val ||
+           ($this->multiple && is_array($this->value) && in_array($val, $this->value)) )
+        $selected = ' selected="selected"';
 
-      echo '<option ',$value,$selected,'>',$item,'</option>';
+      echo '<option',$selected,$value,'>',$item,'</option>'."\n";
     }
-    echo '</select>';
+    echo '</select>'."\n";
   }
 
 }
