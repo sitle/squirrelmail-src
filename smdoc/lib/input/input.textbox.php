@@ -3,15 +3,23 @@
  * Copyright (c) 1999-2003 The SquirrelMail Project Team
  * Licensed under the GNU GPL. For full terms see the file COPYING.
  *
- * This file is an addition to the Framework for Object Orientated Web Development (Foowd).
- *
- * It provides methods for managing groups and tracking permissions to 
- * consolidate operations using groups without using the groups class.
+ * This file is an addition/modification to the 
+ * Framework for Object Orientated Web Development (Foowd).
+ */
+
+/** 
+ * Manage input from form textboxes.
  *
  * $Id$
+ *
+ * @package smdoc
+ * @subpackage input
  */
+
+/** Include base input library functions and input base class */
 require_once(INPUT_DIR . 'input.lib.php');
 
+/** Define maximum and minimum size for textbox. */
 if (!defined('INPUT_TEXTBOX_SIZE_MIN')) define('INPUT_TEXTBOX_SIZE_MIN', 4);
 if (!defined('INPUT_TEXTBOX_SIZE_MAX')) define('INPUT_TEXTBOX_SIZE_MAX', 50);
 
@@ -21,21 +29,22 @@ if (!defined('INPUT_TEXTBOX_SIZE_MAX')) define('INPUT_TEXTBOX_SIZE_MAX', 50);
  * This class defines an input textbox, it handles input validation, value
  * persistancy, and displaying the object.
  *
- * @package smdoc/input
+ * @package smdoc
+ * @subpackage input
  */
 class input_textbox extends input_base
 {
   /**
    * The textboxes caption.
    *
-   * @type str
+   * @var string
    */
   var $caption;
 
   /**
    * The textbox type.
    *
-   * @type str
+   * @var string
    */
   var $type;
   
@@ -94,14 +103,15 @@ class input_textbox extends input_base
  * This class defines an input password textbox. It differs from the standard
  * textbox by hiding the input of the user.
  *
- * @package smdoc/input
+ * @package smdoc
+ * @subpackage input
  */
 class input_passwordbox extends input_textbox 
 {
   /**
    * Textbox to verify contents against
    *
-   * @type object
+   * @var object
    */
   var $verify;
 
@@ -129,7 +139,8 @@ class input_passwordbox extends input_textbox
  * This class defines an input hidden textbox. It differs from the standard
  * textbox by no being visible to the user and thus not accepting user input.
  *
- * @package smdoc/input
+ * @package smdoc
+ * @subpackage input
  */
 class input_hiddenbox extends input_textbox 
 {

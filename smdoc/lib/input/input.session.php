@@ -3,22 +3,29 @@
  * Copyright (c) 1999-2003 The SquirrelMail Project Team
  * Licensed under the GNU GPL. For full terms see the file COPYING.
  *
- * This file is an addition to the Framework for Object Orientated Web Development (Foowd).
- *
- * It provides methods for managing groups and tracking permissions to 
- * consolidate operations using groups without using the groups class.
- *
- * $Id$
+ * This file is an addition to the 
+ * Framework for Object Orientated Web Development (Foowd).
  */
 
+/**
+ * Manage values added to and retrieved from the session.
+ * 
+ * $Id$
+ * 
+ * @package smdoc
+ * @subpackage input
+ */
+
+/** Include base input library functions and input base class */
 require_once(INPUT_DIR . 'input.lib.php');
 
 /**
- * The SMdoc input_session class.
+ * The smdoc input_session class.
  *
  * Used to store/retrieve data from the session.
  *
- * @package smdoc/input
+ * @package smdoc
+ * @subpackage input
  */
 class input_session extends input_base
 {

@@ -3,13 +3,20 @@
  * Copyright (c) 1999-2003 The SquirrelMail Project Team
  * Licensed under the GNU GPL. For full terms see the file COPYING.
  *
- * This file is an addition to the Framework for Object Orientated Web Development (Foowd).
- *
- * It provides methods for managing groups and tracking permissions to 
- * consolidate operations using groups without using the groups class.
+ * This file is an addition/modification to the 
+ * Framework for Object Orientated Web Development (Foowd).
+ */
+
+/**
+ * Manages input via radio form elements.
  *
  * $Id$
+ * 
+ * @package smdoc
+ * @subpackage input
  */
+
+/** Include base input library functions and input base class */
 require_once(INPUT_DIR . 'input.lib.php');
 
 /**
@@ -18,14 +25,15 @@ require_once(INPUT_DIR . 'input.lib.php');
  * This class defines an input radio group, it handles input validation, value
  * persistancy, and displaying the object.
  *
- * @package smdoc/input
+ * @package smdoc
+ * @subpackage input
  */
 class input_radio extends input_base 
 {
   /**
    * The radio buttons in the radio group.
    *
-   * @type array
+   * @var array
    */
   var $buttons;
 

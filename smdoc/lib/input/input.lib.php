@@ -6,7 +6,17 @@
  * This file is an addition/modification to the 
  * Framework for Object Orientated Web Development (Foowd).
  *
+ */
+
+/**
+ * Library for management of user form input.
+ * Ensures incoming variables are cleaned up, provides base
+ * input class used by other elements for value manipulation.
+ * 
  * $Id$
+ * 
+ * @package smdoc
+ * @subpackage input
  */
 
 /*
@@ -29,61 +39,62 @@ if (get_magic_quotes_gpc()) {
  * base input element class.
  * Used to over-ride FOOWD elements.
  *
+ * @package smdoc
+ * @subpackage input
  */
 class input_base 
 {
   /**
    * The name of the element.
    *
-   * @attribute str name
+   * @var string
    */
   var $name;
 
   /**
    * The value of the element.
    *
-   * @attribute str value
+   * @var string
    */
   var $value;
 
   /**
    * The regular expression used to validate the objects contents.
    *
-   * @attribute str regex
+   * @var string
    */
   var $regex;
 
   /**
    * Whether the value was set by form submission
    *
-   * @attribute bool wasSet
+   * @var bool
    */
   var $wasSet = FALSE;
 
   /**
    * Whether the value set by form submission was correct
    *
-   * @attribute bool wasSet
+   * @var bool
    */
   var $wasValid = FALSE;
 
   /**
    * Whether or not element is required
    * 
-   * @attribute bool required
+   * @var bool
    */
   var $required;
 
   /** 
    * Reference to form input object is part of
-   * @attribute input_form required
+   * @var input_form
    */
   var $form;
 
   /**
    * Constructs a new base object.
    *
-   * @constructor input_base
    * @param str name The name of the form element.
    * @param optional str regex The validation regular expression.
    * @param optional str value The initial contents value.
@@ -110,7 +121,6 @@ class input_base
   /**
    * Sets the value of the object.
    *
-   * @method set
    * @param str value The value to set.
    * @return bool TRUE on success.
    */
@@ -131,6 +141,7 @@ class input_base
 /**
  * recursively strip slashes from the values of an array 
  * From SquirrelMail 1.4.1 functions/global.php
+ * 
  */
 function sqstripslashes(&$array) 
 {
@@ -146,6 +157,10 @@ function sqstripslashes(&$array)
   }
 }
 
+/**
+ * Constants for retrieving user input from 
+ * Form, Session, Cookie, or Server global vars.
+ */
 define('SQ_INORDER',0);
 define('SQ_GET',1);
 define('SQ_POST',2);
@@ -153,6 +168,7 @@ define('SQ_SESSION',3);
 define('SQ_COOKIE',4);
 define('SQ_SERVER',5);
 define('SQ_FORM',6);
+
 /**
  * Search for the var $name in $_SESSION, $_POST, $_GET,
  * $_COOKIE, or $_SERVER and set it in provided var. 
