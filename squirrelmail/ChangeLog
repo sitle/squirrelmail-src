@@ -8,6 +8,8 @@ Version 1.4.4 - CVS
   - Fix listcommands plugin to include src/ in compose links.
   - Fix listcommands plugin to behave like normal reply/compose
     links, and return to message page that originally called from.
+  - Max upload file size now correctly handles a '-1' value, meaning
+    unlimited (#1094569). 
   
 Version 1.4.4 RC1 - 31 December 2004
 ------------------------------------
