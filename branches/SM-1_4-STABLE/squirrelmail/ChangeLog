@@ -19,16 +19,17 @@ Version 1.4.4 - CVS
   - Fixed forward in new window from search page courtesy of Jason Munro.
   - Prefs caching didn't work properly with register_globals off (#995102).
   - Various fixes for minor user interface glitches.
-  - Fixed broken POP before SMTP (password wasn't being used)
-  - Custom option page values now repopulate correctly
+  - Fixed broken POP before SMTP (password wasn't being used).
+  - Custom option page values now repopulate correctly.
   - Added "no focus" option for compose page in display preferences (setting
-    reply focus to "No focus" also affects composing new messages)
+    reply focus to "No focus" also affects composing new messages).
   - Fix bug when Saving to Draft folder that contains special characters.
   - Fix RFC822 incompliant use of IP-address in Message-ID.
-  - Uneditable address book entries no longer have checkboxes on addresses page 
+  - Uneditable address book entries no longer have checkboxes on addresses page.
   - Fix that viewing the last page of a mailbox with one message always
     claimed that the total of messages in that mailbox was 1.
-  - Alignment of title text above folder list fixed
+  - Alignment of title text above folder list fixed.
+  - Added Uighur language support.
 
 Version 1.4.3a - 2 June 2004
 ----------------------------
