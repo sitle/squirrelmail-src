@@ -107,8 +107,7 @@ function displayPageHeader($color, $mailbox, $xtra='', $session=false) {
 		     '       }'. "\n".
 		     '    }'. "\n".
                      '    var newwin = window.open(comp_uri' .
-                     ', "_blank",
-                "width='.$compose_width.",height=$compose_height".
+                     ', "_blank", "width='.$compose_width.",height=$compose_height".
                      ",scrollbars=yes,resizable=yes\");\n".
                      "}\n";
 
@@ -188,8 +187,7 @@ function displayPageHeader($color, $mailbox, $xtra='', $session=false) {
 		     '       }'. "\n".
 		     '    }'. "\n".
                      '    var newwin = window.open(comp_uri' .
-                     ', "_blank",
-                "width='.$compose_width.",height=$compose_height".
+                     ', "_blank","width='.$compose_width.",height=$compose_height".
                      ",scrollbars=yes,resizable=yes\");\n".
                      "}\n";
             }
