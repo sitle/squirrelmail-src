@@ -759,35 +759,34 @@ if ($where && $what) {
     echo "sort=$sort&amp;startMessage=$startMessage\">";
 }
 echo _("Delete") . '</A>&nbsp;';
+$comp_uri  = $base_uri . "src/compose.php?identity=$identity&amp;" .
+             "ent_num=$ent_num&amp;mailbox=$urlMailbox&amp;";
+$comp_uri .= $default_use_priority?"mailprio=$priority_level&amp;":"";
+if ($compose_new_win == '1') {
+    $link_open  = '<a href="javascript:void(0)" onclick="comp_in_new(false,\'';
+    $link_close = '\')">';
+} else {
+    $link_open  = '<a href="';
+    $link_close = '">';
+}
+$link_open .= $comp_uri;
 if (($mailbox == $draft_folder) && ($save_as_draft)) {
-    $comp_uri = $base_uri . "src/compose.php?mailbox=$mailbox&amp;".
-                "identity=$identity&amp;send_to=$url_to_string&amp;".
-		"send_to_cc=$url_cc_string&amp;send_to_bcc=$url_bcc_string&amp;".
-		"subject=$url_subj&amp;mailprio=$priority_level&amp;".
-		"draft_id=$passed_id&amp;ent_num=$ent_num";
-    
-    if ($compose_new_win == '1') {
-        echo "<a href=\"javascript:void(0)\" onclick=\"comp_in_new(false,'$comp_uri')\"";
-    } else {
-        echo '|&nbsp;<A HREF="' . $comp_uri .'"';
-    }
-    echo '>'.
+    $draft_uri = "send_to=$url_to_string&amp;".
+                 "send_to_cc=$url_cc_string&amp;send_to_bcc=$url_bcc_string&amp;".
+                 "subject=$url_subj&amp;".
+                 "draft_id=$passed_id";
+
+    echo '|&nbsp;' . $link_open . $draft_uri . $link_close .
          _("Resume Draft") . '</a>';
 }
 if ($mailbox == $sent_folder) {
-    $comp_uri = $base_uri . "src/compose.php?mailbox=$mailbox&amp;".
-                "identity=$identity&amp;send_to=$url_to_string&amp;".
-		"send_to_cc=$url_cc_string&amp;send_to_bcc=$url_bcc_string&amp;".
-		"subject=$url_subj&amp;mailprio=$priority_level&amp;".
-		"ent_num=$ent_num&amp;passed_id=$passed_id&amp;edit_as_new=1";
+    $sent_uri = "send_to=$url_to_string&amp;".
+                "send_to_cc=$url_cc_string&amp;send_to_bcc=$url_bcc_string&amp;".
+                "subject=$url_subj&amp;".
+                "passed_id=$passed_id&amp;edit_as_new=1";
 
-    if ($compose_new_win == '1') {
-        echo "<a href=\"javascript:void(0)\" onclick=\"comp_in_new(false,'$comp_uri')\"";
-    } else {
-        echo '|&nbsp;<A HREF="' . $comp_uri .'"';
-    }
-    echo '>'.
-          _("Edit Message as New") . '</a>';
+    echo '|&nbsp;' . $link_open . $sent_uri . $link_close .
+         _("Edit Message as New") . '</a>';
 }
 
 echo '&nbsp;&nbsp;' .
@@ -840,53 +839,32 @@ if (!empty($idents) && $idents > 1) {
     }
 }
 
-$comp_uri = $base_uri . "src/compose.php?forward_id=$passed_id&amp;".
-            "forward_subj=$url_subj&amp;".
-            ($default_use_priority?"mailprio=$priority_level&amp;":'').
-            "mailbox=$urlMailbox&amp;ent_num=$ent_num&amp;".
-            "identity=$identity";
+$comp_uri  = $base_uri . "src/compose.php?identity=$identity&amp;" .
+             "ent_num=$ent_num&amp;mailbox=$urlMailbox&amp;";
+$comp_uri .= $default_use_priority?"mailprio=$priority_level&amp;":"";
 
 if ($compose_new_win == '1') {
-    echo "<a href=\"javascript:void(0)\" onclick=\"comp_in_new(false,'$comp_uri')\"";
+    $link_open  = '<a href="javascript:void(0)" onclick="comp_in_new(false,\'';
+    $link_close = '\')">';
 } else {
-    echo '<A HREF="' . $comp_uri .'"';
+    $link_open  = '<a href="';
+    $link_close = '">';
 }
-
-    echo '>'.
-    _("Forward") .
-    '</A>&nbsp;';
-
-$comp_uri = $base_uri . "src/compose.php?send_to=$url_replyto&amp;".
-            "reply_subj=$url_subj&amp;".
-            ($default_use_priority?"mailprio=$priority_level&amp;":'').
-            "reply_id=$passed_id&amp;mailbox=$urlMailbox&amp;ent_num=$ent_num".
-            "&amp;identity=$identity";
-
-if ($compose_new_win == '1') {
-    echo "|&nbsp;<a href=\"javascript:void(0)\" onclick=\"comp_in_new(false,'$comp_uri')\"";
-} else {
-    echo '|&nbsp;<A HREF="' . $comp_uri .'"';
-}
-
-    echo '>'.
-    _("Reply") .
-    '</A>&nbsp;';
-
-$comp_uri = $base_uri . "src/compose.php?send_to=$url_replytoall&amp;".
-            "send_to_cc=$url_replytoallcc&amp;reply_subj=$url_subj&amp;".
-            ($default_use_priority?"mailprio=$priority_level&amp;":'').
-            "reply_id=$passed_id&amp;mailbox=$urlMailbox&amp;ent_num=$ent_num".
-            "&amp;identity=$identity";
-
-if ($compose_new_win == '1') {
-    echo "|&nbsp;<a href=\"javascript:void(0)\" onclick=\"comp_in_new(false,'$comp_uri')\"";
-} else {
-    echo '|&nbsp;<A HREF="' . $comp_uri .'"';
-}
-
-    echo '>'.
-    _("Reply All") .
-    '</A>&nbsp;&nbsp;' .
+$link_open .= $comp_uri;
+$forward_uri   = "forward_id=$passed_id&amp;" .
+                 "forward_subj=$url_subj";
+$reply_uri     = "send_to=$url_replyto&amp;".
+                 "reply_subj=$url_subj&amp;".
+                 "reply_id=$passed_id";
+$reply_all_uri = "send_to=$url_replytoall&amp;".
+                 "send_to_cc=$url_replytoallcc&amp;reply_subj=$url_subj&amp;".
+                 "reply_id=$passed_id";
+echo $link_open . $forward_uri . $link_close .
+     _("Forward") . '</a>&nbsp;|&nbsp;' .
+     $link_open . $reply_uri . $link_close .
+     _("Reply") . '</a>&nbsp;|&nbsp;' .
+     $link_open . $reply_all_uri . $link_close .
+     _("Reply All") . '</a>&nbsp;&nbsp;' .
                    '</SMALL>' .
                 '</TD>' .
              '</TR>' .
