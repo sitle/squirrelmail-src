@@ -4,8 +4,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: $Id$\n"
-"POT-Creation-Date: 2003-09-20 12:22+0300\n"
+"Project-Id-Version: $Id: squirrelmail.po,v 1.5 2003/09/23 06:59:53 tokul Exp "
+"$\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2003-10-05 12:27+0300\n"
 "PO-Revision-Date: 2003-09-23 00:17+0200\n"
 "Last-Translator: M.J. Prinsen <translation@prinsenonline.com>\n"
 "Language-Team: Dutch <squirrelmail-i18n@lists.sourceforge.net>\n"
@@ -155,7 +157,8 @@ msgstr "Kan het bestand niet verplaatsen/kopieren. Bestand niet toegevoegd."
 msgid "Draft Saved"
 msgstr "Concept e-mail bewaard"
 
-msgid "Your Message has been sent."
+#, fuzzy
+msgid "Your Message has been sent"
 msgstr "Uw bericht is verzonden."
 
 msgid "From:"
@@ -701,35 +704,8 @@ msgid "You must be logged in to access this page."
 msgstr ""
 "U heeft een geldige gebruikersnaam en wachtwoord nodig voor deze pagina!"
 
-msgid "All Folders"
-msgstr "Alle mappen"
-
-msgid "Please enter something to search for"
-msgstr "Vul a.u.b. iets in om te zoeken"
-
-msgid "There must be at least one criteria to search for"
-msgstr "Er moet in ieder geval een criterium zijn om voor te zoeken"
-
-msgid "Error in criteria argument"
-msgstr "Syntax fout in parameters of argumenten"
-
-msgid "M j, Y"
-msgstr "j M, Y"
-
-msgid "(Illegal date)"
-msgstr "(Illegale datum)"
-
-msgid "(Wrong date)"
-msgstr "(Verkeerde datum)"
-
-msgid "In"
-msgstr "In"
-
-msgid "(Missing argument)"
-msgstr "(Missend argument)"
-
-msgid "(Spurious argument)"
-msgstr "(Verdacht argument)"
+msgid "Folder:"
+msgstr "Map:"
 
 msgid "edit"
 msgstr "Wijzig"
@@ -740,8 +716,8 @@ msgstr "Zoek"
 msgid "delete"
 msgstr "Verwijder"
 
-msgid "Saved Searches"
-msgstr "Opgeslagen zoekopdrachten"
+msgid "Recent Searches"
+msgstr "Recente zoekopdrachten"
 
 msgid "save"
 msgstr "Bewaar"
@@ -749,110 +725,17 @@ msgstr "Bewaar"
 msgid "forget"
 msgstr "vergeet"
 
-msgid "Recent Searches"
-msgstr "Recente zoekopdrachten"
+msgid "Current Search"
+msgstr "Huidige map"
 
-msgid "Missing"
-msgstr "Ontbrekend"
+msgid "All Folders"
+msgstr "Alle mappen"
 
-msgid "Exclude Criteria:"
-msgstr "Uitsluitingscriteria:"
+msgid "Body"
+msgstr "Inhoud"
 
-msgid "Search Criteria"
-msgstr "Zoekcriteria"
-
-msgid "Folder:"
-msgstr "Map:"
-
-msgid "Add New Criteria"
-msgstr "Voeg nieuwe criteria toe"
-
-msgid "Remove Excluded Criteria"
-msgstr "Verwijder uitsluitingscriteria"
-
-msgid "Remove All Criteria"
-msgstr "Verwijder alle criteria"
-
-msgid "Answered"
-msgstr "Beantwoord"
-
-msgid "Before"
-msgstr "Voor"
-
-msgid "Message Body"
-msgstr "Berichttekst"
-
-msgid "Deleted"
-msgstr "Verwijderd"
-
-msgid "Draft"
-msgstr "Concept"
-
-msgid "Flagged"
-msgstr "Gevlagd"
-
-msgid "Sent By"
-msgstr "Verzonden door"
-
-msgid "Header Field"
-msgstr "Berichtkop veld"
-
-msgid "Keyword"
-msgstr "Sleutelwoord"
-
-msgid "Larger Than"
-msgstr "Groter dan"
-
-msgid "Old"
-msgstr "Oud"
-
-msgid "On"
-msgstr "Aan"
-
-msgid "Recent"
-msgstr "Recent"
-
-msgid "Seen"
-msgstr "Gelezen"
-
-msgid "Sent Before"
-msgstr "Verzonden voordat"
-
-msgid "Sent On"
-msgstr "Verzonden aan"
-
-msgid "Sent Since"
-msgstr "Verzonden sinds"
-
-msgid "Since"
-msgstr "Sinds"
-
-msgid "Smaller Than"
-msgstr "Kleiner dan"
-
-msgid "Subject Contains"
-msgstr "Onderwerp bevat"
-
-msgid "Header and Body"
-msgstr "Berichtkop en berichttekst"
-
-msgid "Sent To"
-msgstr "Verzonden aan"
-
-msgid "Not"
-msgstr "Niet"
-
-msgid "And In"
-msgstr "En in"
-
-msgid "Or In"
-msgstr "Of in"
-
-msgid "And"
-msgstr "En"
-
-msgid "Or"
-msgstr "Of"
+msgid "Everywhere"
+msgstr "Overal"
 
 msgid "Search Results"
 msgstr "Zoek resultaten"
@@ -913,9 +796,6 @@ msgstr "Bekijk volledige berichtinformatie"
 
 msgid "Viewing a text attachment"
 msgstr "Bekijk een tekst bijlage"
-
-msgid "Folder List"
-msgstr "Mappenlijst"
 
 msgid "Personal address book"
 msgstr "Persoonlijk adresboek"
@@ -1114,6 +994,9 @@ msgstr "D, j F, Y g:i a"
 msgid "D, F j, Y G:i"
 msgstr "D, j F, Y G:i"
 
+msgid "M j, Y"
+msgstr "j M, Y"
+
 msgid "g:i a"
 msgstr "g:i a"
 
@@ -1129,6 +1012,12 @@ msgstr "D, G:i"
 #, c-format
 msgid "Preference database error (%s). Exiting abnormally"
 msgstr "Bestand met voorkeuren (%s) niet gevonden. Programma afgebroken."
+
+msgid "Unknown user or password incorrect."
+msgstr "Onbekende gebruiker of verkeerd wachtwoord"
+
+msgid "Click here to try again"
+msgstr "Klik hier om het nog eens te proberen"
 
 #, c-format
 msgid "Click here to return to %s"
@@ -1217,38 +1106,32 @@ msgstr ""
 "U dient php4 te hebben geinstalleerd met de multibyte string functie enabled "
 "(gebruik configure met de optie --with-mbstring)."
 
+msgid "ERROR : No available imapstream."
+msgstr "FOUT : Imapstream niet beschikbaar."
+
+msgid "ERROR : Connection dropped by imap-server."
+msgstr "FOUT : Verbinding verbroken door IMAP server"
+
 msgid "ERROR : Could not complete request."
 msgstr "FOUT : Kan opdracht niet verwerken."
 
+msgid "Query:"
+msgstr "Verzoek:"
+
+msgid "Reason Given: "
+msgstr "Reden: "
+
 msgid "ERROR : Bad or malformed request."
 msgstr "FOUT : Foute of corrupte aanvraag."
+
+msgid "Server responded: "
+msgstr "Server reageerde: "
 
 msgid "ERROR : Imap server closed the connection."
 msgstr "FOUT : IMAP server verbrak de verbinding."
 
 msgid "ERROR : Unknown imap response."
 msgstr "FOUT : Onbekend IMAP antwoord."
-
-msgid "Reason Given: "
-msgstr "Reden: "
-
-msgid "Query:"
-msgstr "Verzoek:"
-
-msgid "ERROR : No available imapstream."
-msgstr "FOUT : Imapstream niet beschikbaar."
-
-msgid "ERROR : Bad function call."
-msgstr "FOUT : Bad function call."
-
-msgid "Reason:"
-msgstr "Antwoord:"
-
-msgid "ERROR : Connection dropped by imap-server."
-msgstr "FOUT : Verbinding verbroken door IMAP server"
-
-msgid "Server responded: "
-msgstr "Server reageerde: "
 
 #, c-format
 msgid "Error connecting to IMAP server: %s."
@@ -1265,9 +1148,6 @@ msgstr "Onbekende fout: %s"
 msgid "Read data:"
 msgstr "Lees data:"
 
-msgid "Unknown user or password incorrect."
-msgstr "Onbekende gebruiker of verkeerd wachtwoord"
-
 msgid "ERROR : Could not append message to"
 msgstr "FOUT : Kan bericht niet toevoegen aan"
 
@@ -1283,6 +1163,9 @@ msgstr ""
 
 msgid "(no subject)"
 msgstr "(geen onderwerp)"
+
+msgid "Unknown Sender"
+msgstr "Onbekende afzender"
 
 msgid "Unknown response from IMAP server: "
 msgstr "Onbekend antwoord van IMAP server: "
@@ -1348,12 +1231,6 @@ msgstr "Verberg boomstructuur"
 
 msgid "Thread View"
 msgstr "Weergave boomstructuur"
-
-msgid "Bypass Trash"
-msgstr "Omzeil verwijderde Items"
-
-msgid "Click here to change the sorting of the message list"
-msgstr "Klik hier om de sortering van de berichtenlijst te veranderen"
 
 msgid "Toggle All"
 msgstr "(de)Selecteer alles"
@@ -1542,15 +1419,6 @@ msgstr "Maximum aantal te tonen pagina's"
 msgid "Always Show Full Date"
 msgstr "Toon altijd de volledige datum"
 
-msgid "Length of From/To Field (0 for full)"
-msgstr "Lengte van VAN/AAN veld (0 = onbeperkt)"
-
-msgid "Length of Subject Field (0 for full)"
-msgstr "Lengte van Onderwerp veld (0 = onbeperkt)"
-
-msgid "Show recipient name if the message is from your default identity"
-msgstr "Toon naam ontvanger als het bericht van uw standaard identiteit is"
-
 msgid "Message Display and Composition"
 msgstr "Bericht weergave en compositie"
 
@@ -1616,9 +1484,6 @@ msgstr "Hoogte van berichtvenster"
 
 msgid "Append Signature before Reply/Forward Text"
 msgstr "Voeg handtekening toe _voor_ de beantwoorde/doorgestuurde tekst"
-
-msgid "Strip signature when replying"
-msgstr "Verwijder handtekening bij beantwoording"
 
 msgid "Enable Sort by of Receive Date"
 msgstr "Gebruik datum van ontvangst voor sorteren"
@@ -1698,7 +1563,8 @@ msgstr "Alleen ongelezen"
 msgid "Unseen and Total"
 msgstr "Ongelezen en Totaal"
 
-msgid "Enable Collapsable Folders"
+#, fuzzy
+msgid "Enable Collapsible Folders"
 msgstr "Maak uitklapbare mappen mogelijk"
 
 msgid "Enable Cumulative Unread Message Notification"
@@ -1733,12 +1599,6 @@ msgstr "Selectie mappenlijstweergave"
 
 msgid "Long: "
 msgstr "Lang: "
-
-msgid "Folder"
-msgstr "Map"
-
-msgid "Subfolder"
-msgstr "Submap"
 
 msgid "Indented: "
 msgstr "Ingesprongen: "
@@ -2604,6 +2464,12 @@ msgstr "Geen server gespecificeerd"
 msgid "Error "
 msgstr "Fout "
 
+msgid "POP3 noop:"
+msgstr "POP3 noop:"
+
+msgid "No connection to server"
+msgstr "Geen verbinding met server"
+
 msgid "POP3 user:"
 msgstr "POP3 user:"
 
@@ -2624,9 +2490,6 @@ msgstr "authorisatie mislukt "
 
 msgid "POP3 apop:"
 msgstr "POP3 apop:"
-
-msgid "No connection to server"
-msgstr "Geen verbinding met server"
 
 msgid "No login ID submitted"
 msgstr "Geen gebruikersnaam opgegeven"
@@ -2685,6 +2548,9 @@ msgstr "Geen berichtnummer opgegeven"
 msgid "Command failed "
 msgstr "Commando mislukt"
 
+msgid "Remote POP server Fetching Mail"
+msgstr "Ophalen mail van externe POP-servers"
+
 msgid "Select Server:"
 msgstr "Selecteer server:"
 
@@ -2693,15 +2559,6 @@ msgstr "Wachtwoord voor"
 
 msgid "Fetch Mail"
 msgstr "Ophalen berichten"
-
-msgid "Remote POP server Fetching Mail"
-msgstr "Ophalen mail van externe POP-servers"
-
-msgid "No POP3 servers configured yet."
-msgstr "Nog geen POP3 servers geconfigureerd "
-
-msgid "Click here to go to the options page."
-msgstr "Klik hier om naar de opties pagina te gaan."
 
 msgid "Fetching from "
 msgstr "Ophalen van "
@@ -3635,8 +3492,170 @@ msgstr "Bezorgingsfout rapportage"
 msgid "Undelivered Message Headers"
 msgstr "Berichtkoppen onbestelbaar bericht"
 
-#~ msgid "Unknown Sender"
-#~ msgstr "Onbekende afzender"
+#~ msgid "Please enter something to search for"
+#~ msgstr "Vul a.u.b. iets in om te zoeken"
+
+#~ msgid "There must be at least one criteria to search for"
+#~ msgstr "Er moet in ieder geval een criterium zijn om voor te zoeken"
+
+#~ msgid "Error in criteria argument"
+#~ msgstr "Syntax fout in parameters of argumenten"
+
+#~ msgid "(Illegal date)"
+#~ msgstr "(Illegale datum)"
+
+#~ msgid "(Wrong date)"
+#~ msgstr "(Verkeerde datum)"
+
+#~ msgid "In"
+#~ msgstr "In"
+
+#~ msgid "(Missing argument)"
+#~ msgstr "(Missend argument)"
+
+#~ msgid "(Spurious argument)"
+#~ msgstr "(Verdacht argument)"
+
+#~ msgid "Saved Searches"
+#~ msgstr "Opgeslagen zoekopdrachten"
+
+#~ msgid "Missing"
+#~ msgstr "Ontbrekend"
+
+#~ msgid "Exclude Criteria:"
+#~ msgstr "Uitsluitingscriteria:"
+
+#~ msgid "Search Criteria"
+#~ msgstr "Zoekcriteria"
+
+#~ msgid "Add New Criteria"
+#~ msgstr "Voeg nieuwe criteria toe"
+
+#~ msgid "Remove Excluded Criteria"
+#~ msgstr "Verwijder uitsluitingscriteria"
+
+#~ msgid "Remove All Criteria"
+#~ msgstr "Verwijder alle criteria"
+
+#~ msgid "Answered"
+#~ msgstr "Beantwoord"
+
+#~ msgid "Before"
+#~ msgstr "Voor"
+
+#~ msgid "Message Body"
+#~ msgstr "Berichttekst"
+
+#~ msgid "Deleted"
+#~ msgstr "Verwijderd"
+
+#~ msgid "Draft"
+#~ msgstr "Concept"
+
+#~ msgid "Flagged"
+#~ msgstr "Gevlagd"
+
+#~ msgid "Sent By"
+#~ msgstr "Verzonden door"
+
+#~ msgid "Header Field"
+#~ msgstr "Berichtkop veld"
+
+#~ msgid "Keyword"
+#~ msgstr "Sleutelwoord"
+
+#~ msgid "Larger Than"
+#~ msgstr "Groter dan"
+
+#~ msgid "Old"
+#~ msgstr "Oud"
+
+#~ msgid "On"
+#~ msgstr "Aan"
+
+#~ msgid "Recent"
+#~ msgstr "Recent"
+
+#~ msgid "Seen"
+#~ msgstr "Gelezen"
+
+#~ msgid "Sent Before"
+#~ msgstr "Verzonden voordat"
+
+#~ msgid "Sent On"
+#~ msgstr "Verzonden aan"
+
+#~ msgid "Sent Since"
+#~ msgstr "Verzonden sinds"
+
+#~ msgid "Since"
+#~ msgstr "Sinds"
+
+#~ msgid "Smaller Than"
+#~ msgstr "Kleiner dan"
+
+#~ msgid "Subject Contains"
+#~ msgstr "Onderwerp bevat"
+
+#~ msgid "Header and Body"
+#~ msgstr "Berichtkop en berichttekst"
+
+#~ msgid "Sent To"
+#~ msgstr "Verzonden aan"
+
+#~ msgid "Not"
+#~ msgstr "Niet"
+
+#~ msgid "And In"
+#~ msgstr "En in"
+
+#~ msgid "Or In"
+#~ msgstr "Of in"
+
+#~ msgid "And"
+#~ msgstr "En"
+
+#~ msgid "Or"
+#~ msgstr "Of"
+
+#~ msgid "Folder List"
+#~ msgstr "Mappenlijst"
+
+#~ msgid "ERROR : Bad function call."
+#~ msgstr "FOUT : Bad function call."
+
+#~ msgid "Reason:"
+#~ msgstr "Antwoord:"
+
+#~ msgid "Bypass Trash"
+#~ msgstr "Omzeil verwijderde Items"
+
+#~ msgid "Click here to change the sorting of the message list"
+#~ msgstr "Klik hier om de sortering van de berichtenlijst te veranderen"
+
+#~ msgid "Length of From/To Field (0 for full)"
+#~ msgstr "Lengte van VAN/AAN veld (0 = onbeperkt)"
+
+#~ msgid "Length of Subject Field (0 for full)"
+#~ msgstr "Lengte van Onderwerp veld (0 = onbeperkt)"
+
+#~ msgid "Show recipient name if the message is from your default identity"
+#~ msgstr "Toon naam ontvanger als het bericht van uw standaard identiteit is"
+
+#~ msgid "Strip signature when replying"
+#~ msgstr "Verwijder handtekening bij beantwoording"
+
+#~ msgid "Folder"
+#~ msgstr "Map"
+
+#~ msgid "Subfolder"
+#~ msgstr "Submap"
+
+#~ msgid "No POP3 servers configured yet."
+#~ msgstr "Nog geen POP3 servers geconfigureerd "
+
+#~ msgid "Click here to go to the options page."
+#~ msgstr "Klik hier om naar de opties pagina te gaan."
 
 #~ msgid ""
 #~ "FREE - Osirusoft Relays - Osirusofts list of verified open relays. Seems "
@@ -3690,18 +3709,6 @@ msgstr "Berichtkoppen onbestelbaar bericht"
 #~ msgid "FREE - Osirusoft Open Proxy Servers - List of Open Proxy Servers."
 #~ msgstr "FREE - Osirusoft Open Proxy Servers - Lijst van Open Proxy Servers."
 
-#~ msgid "Click here to try again"
-#~ msgstr "Klik hier om het nog eens te proberen"
-
-#~ msgid "Current Search"
-#~ msgstr "Huidige map"
-
-#~ msgid "Body"
-#~ msgstr "Inhoud"
-
-#~ msgid "Everywhere"
-#~ msgstr "Overal"
-
 #~ msgid "Mofify a Server"
 #~ msgstr "Bewerk een server"
 
@@ -3720,9 +3727,6 @@ msgstr "Berichtkoppen onbestelbaar bericht"
 
 #~ msgid "35 min."
 #~ msgstr "35 min."
-
-#~ msgid "POP3 noop:"
-#~ msgstr "POP3 noop:"
 
 #~ msgid "Message details"
 #~ msgstr "Berichtdetails"

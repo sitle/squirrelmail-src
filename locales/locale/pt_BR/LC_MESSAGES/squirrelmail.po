@@ -8,8 +8,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: $Id$\n"
-"POT-Creation-Date: 2003-08-24 15:06+0300\n"
+"Project-Id-Version: $Id: squirrelmail.po,v 1.5 2003/09/23 07:01:02 tokul Exp "
+"$\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2003-10-05 12:27+0300\n"
 "PO-Revision-Date: 2003-09-17 01:54-0300\n"
 "Last-Translator: Marcos Tadeu <marcos@v2r.com.br>\n"
 "Language-Team: Portuguese (Brazilian) <squirrelmail-i18n@lists.sourceforge."
@@ -159,7 +161,8 @@ msgstr "Não posso mover/copiar arquivo. Arquivo não está anexado."
 msgid "Draft Saved"
 msgstr "Rascunho salvo"
 
-msgid "Your Message has been sent."
+#, fuzzy
+msgid "Your Message has been sent"
 msgstr "Sua mensagem foi enviada."
 
 msgid "From:"
@@ -707,35 +710,8 @@ msgstr "Anexados"
 msgid "You must be logged in to access this page."
 msgstr "Você necessita de um usuário e senha válidos para acessar esta página!"
 
-msgid "All Folders"
-msgstr "Todas as Pastas"
-
-msgid "Please enter something to search for"
-msgstr "Por favor, entre com algo para procurar"
-
-msgid "There must be at least one criteria to search for"
-msgstr "Deve haver pelo menos um critério para a procura"
-
-msgid "Error in criteria argument"
-msgstr "Erro no argumentos dos critérios"
-
-msgid "M j, Y"
-msgstr "M j, Y"
-
-msgid "(Illegal date)"
-msgstr "(Data ilegal)"
-
-msgid "(Wrong date)"
-msgstr "(Data errada)"
-
-msgid "In"
-msgstr "Em"
-
-msgid "(Missing argument)"
-msgstr "(Falta argumento)"
-
-msgid "(Spurious argument)"
-msgstr "(argumento demais)"
+msgid "Folder:"
+msgstr "Pasta:"
 
 msgid "edit"
 msgstr "editar"
@@ -746,8 +722,8 @@ msgstr "pesquisar"
 msgid "delete"
 msgstr "apagar"
 
-msgid "Saved Searches"
-msgstr "Buscas guardadas"
+msgid "Recent Searches"
+msgstr "Procurar nos recentes"
 
 msgid "save"
 msgstr "salvar"
@@ -755,110 +731,17 @@ msgstr "salvar"
 msgid "forget"
 msgstr "esquecer"
 
-msgid "Recent Searches"
-msgstr "Procurar nos recentes"
+msgid "Current Search"
+msgstr "Pesquisa Atual"
 
-msgid "Missing"
-msgstr "Faltando"
+msgid "All Folders"
+msgstr "Todas as Pastas"
 
-msgid "Exclude Criteria:"
-msgstr "Critério exclusivo:"
+msgid "Body"
+msgstr "Corpo"
 
-msgid "Search Criteria"
-msgstr "Critério de procura"
-
-msgid "Folder:"
-msgstr "Pasta:"
-
-msgid "Add New Criteria"
-msgstr "Adicionar novo critério"
-
-msgid "Remove Excluded Criteria"
-msgstr "Remover o critério exclusivo"
-
-msgid "Remove All Criteria"
-msgstr "Remover todos os critérios"
-
-msgid "Answered"
-msgstr "Respondido"
-
-msgid "Before"
-msgstr "Antes de"
-
-msgid "Message Body"
-msgstr "Corpo da Mensagem"
-
-msgid "Deleted"
-msgstr "Apagado"
-
-msgid "Draft"
-msgstr "Rascunho"
-
-msgid "Flagged"
-msgstr "Marcadas"
-
-msgid "Sent By"
-msgstr "Enviado por"
-
-msgid "Header Field"
-msgstr "Campo do Cabeçalho"
-
-msgid "Keyword"
-msgstr "Palavra chave"
-
-msgid "Larger Than"
-msgstr "Maior que"
-
-msgid "Old"
-msgstr "Antigo"
-
-msgid "On"
-msgstr "Em"
-
-msgid "Recent"
-msgstr "Recente"
-
-msgid "Seen"
-msgstr "Visto"
-
-msgid "Sent Before"
-msgstr "Enviada antes de"
-
-msgid "Sent On"
-msgstr "Enviada em"
-
-msgid "Sent Since"
-msgstr "Enviado desde"
-
-msgid "Since"
-msgstr "Desde"
-
-msgid "Smaller Than"
-msgstr "Menor que"
-
-msgid "Subject Contains"
-msgstr "Assunto Contém"
-
-msgid "Header and Body"
-msgstr "Cabeçalho e Corpo"
-
-msgid "Sent To"
-msgstr "Enviada para"
-
-msgid "Not"
-msgstr "Não"
-
-msgid "And In"
-msgstr "E Em"
-
-msgid "Or In"
-msgstr "Ou Em"
-
-msgid "And"
-msgstr "E"
-
-msgid "Or"
-msgstr "Or"
+msgid "Everywhere"
+msgstr "qualquer lugar"
 
 msgid "Search Results"
 msgstr "Resultados da busca"
@@ -919,9 +802,6 @@ msgstr "Vendo cabeçalho completo"
 
 msgid "Viewing a text attachment"
 msgstr "Visualizando texto anexado"
-
-msgid "Folder List"
-msgstr "Lista de Pastas"
 
 msgid "Personal address book"
 msgstr "Livro de Endereços pessoal"
@@ -1120,6 +1000,9 @@ msgstr "D, F j, Y g:i a"
 msgid "D, F j, Y G:i"
 msgstr "D, F j, Y G:i"
 
+msgid "M j, Y"
+msgstr "M j, Y"
+
 msgid "g:i a"
 msgstr "g:i a"
 
@@ -1135,6 +1018,12 @@ msgstr "D, G:i"
 #, c-format
 msgid "Preference database error (%s). Exiting abnormally"
 msgstr "Erro na base de Preferências (%s). Terminando"
+
+msgid "Unknown user or password incorrect."
+msgstr "Usuário desconhecido ou senha incorreta."
+
+msgid "Click here to try again"
+msgstr "Clique aqui para tentar novamente."
 
 #, c-format
 msgid "Click here to return to %s"
@@ -1223,38 +1112,32 @@ msgstr ""
 "Você precisa ter php4 instalado com a função \"multibyte string\" habilitada "
 "(use a opção de configuração --with-mbstring na compilação)."
 
+msgid "ERROR : No available imapstream."
+msgstr "ERRO: \"stream\" imap não disponível"
+
+msgid "ERROR : Connection dropped by imap-server."
+msgstr "ERRO: Conexão derrubada pelo servidor imap."
+
 msgid "ERROR : Could not complete request."
 msgstr "Erro: pedido não pode ser completado."
 
+msgid "Query:"
+msgstr "Requisição:"
+
+msgid "Reason Given: "
+msgstr "Razão alegada: "
+
 msgid "ERROR : Bad or malformed request."
 msgstr "Erro: Pedido errado ou mal formado."
+
+msgid "Server responded: "
+msgstr "Resposta do servidor: "
 
 msgid "ERROR : Imap server closed the connection."
 msgstr "ERRO: O servidor IMAp fechou a conexão."
 
 msgid "ERROR : Unknown imap response."
 msgstr "ERRO: Resposta imap desconhecida"
-
-msgid "Reason Given: "
-msgstr "Razão alegada: "
-
-msgid "Query:"
-msgstr "Requisição:"
-
-msgid "ERROR : No available imapstream."
-msgstr "ERRO: \"stream\" imap não disponível"
-
-msgid "ERROR : Bad function call."
-msgstr "ERRO: chamada errada de função."
-
-msgid "Reason:"
-msgstr "Razão:"
-
-msgid "ERROR : Connection dropped by imap-server."
-msgstr "ERRO: Conexão derrubada pelo servidor imap."
-
-msgid "Server responded: "
-msgstr "Resposta do servidor: "
 
 #, c-format
 msgid "Error connecting to IMAP server: %s."
@@ -1270,9 +1153,6 @@ msgstr "Erro desconhecido: %s"
 
 msgid "Read data:"
 msgstr "Dados lidos:"
-
-msgid "Unknown user or password incorrect."
-msgstr "Usuário desconhecido ou senha incorreta."
 
 msgid "ERROR : Could not append message to"
 msgstr "Erro: não pôde adicionar a messagem para"
@@ -1356,9 +1236,6 @@ msgstr "Visão normal"
 
 msgid "Thread View"
 msgstr "Agrupar por assunto"
-
-msgid "Click here to change the sorting of the message list"
-msgstr "Clique aqui para alterar a ordenação da lista de mensagens"
 
 msgid "Toggle All"
 msgstr "Inverter Todas"
@@ -1546,9 +1423,6 @@ msgstr "Número max. de páginas para mostrar"
 msgid "Always Show Full Date"
 msgstr "Sempre mostre a data completa"
 
-msgid "Length of From/To Field (0 for full)"
-msgstr "Tamanho do campo De/Para (0 para todo)"
-
 msgid "Message Display and Composition"
 msgstr "Composição e disposição da mensagem"
 
@@ -1616,9 +1490,6 @@ msgstr "Altura da janela de edição"
 
 msgid "Append Signature before Reply/Forward Text"
 msgstr "Coloque a assinatura antes do texto da mensagem original"
-
-msgid "Strip signature when replying"
-msgstr "Deixar sem assinatura quando respondendo"
 
 msgid "Enable Sort by of Receive Date"
 msgstr "Habilitar a classificação pela data de recepção"
@@ -1698,7 +1569,8 @@ msgstr "Somente não lidas"
 msgid "Unseen and Total"
 msgstr "Não lidas e Total"
 
-msgid "Enable Collapsable Folders"
+#, fuzzy
+msgid "Enable Collapsible Folders"
 msgstr "Permitir pastas com sub-pastas"
 
 msgid "Enable Cumulative Unread Message Notification"
@@ -2272,62 +2144,6 @@ msgid "COMMERCIAL - RBL+ Dial-up entries."
 msgstr "COMERCIAL - lista negra RBL+ com acesso discado"
 
 msgid ""
-"FREE - Osirusoft Relays - Osirusofts list of verified open relays. Seems to "
-"include servers used by abuse@uunet.net auto-replies too."
-msgstr ""
-"FREE - Osirusoft Relays - lista Osirusofts de relays abertos verificados. "
-"Parece incluir servidores usados pelas respostas automáticas de abuse@uunet."
-"net"
-
-msgid "FREE - Osirusoft Dialups - Osirusofts Dialup Spam Source list."
-msgstr ""
-"FREE - Osirusoft Dialups - Lista de acessos discados originadores de SPAM da "
-"Osirusofts"
-
-msgid ""
-"FREE - Osirusoft Confirmed Spam Source - Sites that continually spam and "
-"have been manually added after multiple nominations. Use with caution. Seems "
-"to catch abuse auto-replies from some ISPs."
-msgstr ""
-"FREE - Fontes confrmadas da Osirusoft - Locais que continuamente enviam SPAM "
-"e foram adcionados manualmente, após múiltiplas acusações. Use com cautela. "
-"Parece travar respostas automáticas de alguns provedores."
-
-msgid ""
-"FREE - Osirusoft Smart Hosts - List of hosts that are secure but relay for "
-"other mail servers that are not secure."
-msgstr ""
-"FREE - Osirusoft Smart Hosts - Lista de máquinas que são seguras, mas que "
-"fazem relay para outras máquina não seguras."
-
-msgid ""
-"FREE - Osirusoft Spamware Developers - It is believed that these are IP "
-"ranges of companies that are known to produce spam software. Seems to catch "
-"abuse auto-replies from some ISPs."
-msgstr ""
-"FREE - Osirusoft Spamware Developers - Acredita-se que contém IPs de "
-"companhias que produzem software para SPAM. Parece travar respostas "
-"automáticas de alguns provedores."
-
-msgid ""
-"FREE - Osirusoft Unconfirmed OptIn Servers - List of listservers that opt "
-"users in without confirmation."
-msgstr ""
-"FREE - Osirusoft Unconfirmed OptIn Servers - Lista de servidores de listas "
-"de email que permitem a entrada de usuários sem confirmação."
-
-msgid ""
-"FREE - Osirusoft Insecure formmail.cgi scripts - List of insecure formmail."
-"cgi scripts. (planned)."
-msgstr ""
-"FREE - Osirusoft Insecure formmail.cgi scripts - Lista de servidores com cgi "
-"de formulários considerados inseguros. (planejado)."
-
-msgid "FREE - Osirusoft Open Proxy Servers - List of Open Proxy Servers."
-msgstr ""
-"FREE - Osirusoft Open Proxy Servers - Lista de servidores proxy abertos."
-
-msgid ""
 "FREE - ORDB was born when ORBS went off the air. It seems to have fewer "
 "false positives than ORBS did though."
 msgstr ""
@@ -2653,6 +2469,12 @@ msgstr "Nenhum servidor especificado"
 msgid "Error "
 msgstr "Erro "
 
+msgid "POP3 noop:"
+msgstr "POP3 noop:"
+
+msgid "No connection to server"
+msgstr "Sem conexão com o servidor"
+
 msgid "POP3 user:"
 msgstr "usuário POP3:"
 
@@ -2673,9 +2495,6 @@ msgstr "falha na autenticação"
 
 msgid "POP3 apop:"
 msgstr "POP3 apop:"
-
-msgid "No connection to server"
-msgstr "Sem conexão com o servidor"
 
 msgid "No login ID submitted"
 msgstr "Nenhuma identificação de login submetida"
@@ -2734,6 +2553,9 @@ msgstr "Nenhum número de mensagem submetido"
 msgid "Command failed "
 msgstr "Comando falhou "
 
+msgid "Remote POP server Fetching Mail"
+msgstr "Buscando Email em servidor POP remoto"
+
 msgid "Select Server:"
 msgstr "Selecionar o Servidor:"
 
@@ -2742,15 +2564,6 @@ msgstr "Senha para "
 
 msgid "Fetch Mail"
 msgstr "Buscar Email"
-
-msgid "Remote POP server Fetching Mail"
-msgstr "Buscando Email em servidor POP remoto"
-
-msgid "No POP3 servers configured yet."
-msgstr "Nenhum servidor POP3 especificado"
-
-msgid "Click here to go to the options page."
-msgstr "Clique aqui para ir para página de opções."
 
 msgid "Fetching from "
 msgstr "Buscando de "
@@ -3689,20 +3502,214 @@ msgstr "Relatório de erro de envio"
 msgid "Undelivered Message Headers"
 msgstr "Cabeçalho da mensagem não enviada"
 
+#~ msgid "Please enter something to search for"
+#~ msgstr "Por favor, entre com algo para procurar"
+
+#~ msgid "There must be at least one criteria to search for"
+#~ msgstr "Deve haver pelo menos um critério para a procura"
+
+#~ msgid "Error in criteria argument"
+#~ msgstr "Erro no argumentos dos critérios"
+
+#~ msgid "(Illegal date)"
+#~ msgstr "(Data ilegal)"
+
+#~ msgid "(Wrong date)"
+#~ msgstr "(Data errada)"
+
+#~ msgid "In"
+#~ msgstr "Em"
+
+#~ msgid "(Missing argument)"
+#~ msgstr "(Falta argumento)"
+
+#~ msgid "(Spurious argument)"
+#~ msgstr "(argumento demais)"
+
+#~ msgid "Saved Searches"
+#~ msgstr "Buscas guardadas"
+
+#~ msgid "Missing"
+#~ msgstr "Faltando"
+
+#~ msgid "Exclude Criteria:"
+#~ msgstr "Critério exclusivo:"
+
+#~ msgid "Search Criteria"
+#~ msgstr "Critério de procura"
+
+#~ msgid "Add New Criteria"
+#~ msgstr "Adicionar novo critério"
+
+#~ msgid "Remove Excluded Criteria"
+#~ msgstr "Remover o critério exclusivo"
+
+#~ msgid "Remove All Criteria"
+#~ msgstr "Remover todos os critérios"
+
+#~ msgid "Answered"
+#~ msgstr "Respondido"
+
+#~ msgid "Before"
+#~ msgstr "Antes de"
+
+#~ msgid "Message Body"
+#~ msgstr "Corpo da Mensagem"
+
+#~ msgid "Deleted"
+#~ msgstr "Apagado"
+
+#~ msgid "Draft"
+#~ msgstr "Rascunho"
+
+#~ msgid "Flagged"
+#~ msgstr "Marcadas"
+
+#~ msgid "Sent By"
+#~ msgstr "Enviado por"
+
+#~ msgid "Header Field"
+#~ msgstr "Campo do Cabeçalho"
+
+#~ msgid "Keyword"
+#~ msgstr "Palavra chave"
+
+#~ msgid "Larger Than"
+#~ msgstr "Maior que"
+
+#~ msgid "Old"
+#~ msgstr "Antigo"
+
+#~ msgid "On"
+#~ msgstr "Em"
+
+#~ msgid "Recent"
+#~ msgstr "Recente"
+
+#~ msgid "Seen"
+#~ msgstr "Visto"
+
+#~ msgid "Sent Before"
+#~ msgstr "Enviada antes de"
+
+#~ msgid "Sent On"
+#~ msgstr "Enviada em"
+
+#~ msgid "Sent Since"
+#~ msgstr "Enviado desde"
+
+#~ msgid "Since"
+#~ msgstr "Desde"
+
+#~ msgid "Smaller Than"
+#~ msgstr "Menor que"
+
+#~ msgid "Subject Contains"
+#~ msgstr "Assunto Contém"
+
+#~ msgid "Header and Body"
+#~ msgstr "Cabeçalho e Corpo"
+
+#~ msgid "Sent To"
+#~ msgstr "Enviada para"
+
+#~ msgid "Not"
+#~ msgstr "Não"
+
+#~ msgid "And In"
+#~ msgstr "E Em"
+
+#~ msgid "Or In"
+#~ msgstr "Ou Em"
+
+#~ msgid "And"
+#~ msgstr "E"
+
+#~ msgid "Or"
+#~ msgstr "Or"
+
+#~ msgid "Folder List"
+#~ msgstr "Lista de Pastas"
+
+#~ msgid "ERROR : Bad function call."
+#~ msgstr "ERRO: chamada errada de função."
+
+#~ msgid "Reason:"
+#~ msgstr "Razão:"
+
+#~ msgid "Click here to change the sorting of the message list"
+#~ msgstr "Clique aqui para alterar a ordenação da lista de mensagens"
+
+#~ msgid "Length of From/To Field (0 for full)"
+#~ msgstr "Tamanho do campo De/Para (0 para todo)"
+
+#~ msgid "Strip signature when replying"
+#~ msgstr "Deixar sem assinatura quando respondendo"
+
+#~ msgid ""
+#~ "FREE - Osirusoft Relays - Osirusofts list of verified open relays. Seems "
+#~ "to include servers used by abuse@uunet.net auto-replies too."
+#~ msgstr ""
+#~ "FREE - Osirusoft Relays - lista Osirusofts de relays abertos verificados. "
+#~ "Parece incluir servidores usados pelas respostas automáticas de "
+#~ "abuse@uunet.net"
+
+#~ msgid "FREE - Osirusoft Dialups - Osirusofts Dialup Spam Source list."
+#~ msgstr ""
+#~ "FREE - Osirusoft Dialups - Lista de acessos discados originadores de SPAM "
+#~ "da Osirusofts"
+
+#~ msgid ""
+#~ "FREE - Osirusoft Confirmed Spam Source - Sites that continually spam and "
+#~ "have been manually added after multiple nominations. Use with caution. "
+#~ "Seems to catch abuse auto-replies from some ISPs."
+#~ msgstr ""
+#~ "FREE - Fontes confrmadas da Osirusoft - Locais que continuamente enviam "
+#~ "SPAM e foram adcionados manualmente, após múiltiplas acusações. Use com "
+#~ "cautela. Parece travar respostas automáticas de alguns provedores."
+
+#~ msgid ""
+#~ "FREE - Osirusoft Smart Hosts - List of hosts that are secure but relay "
+#~ "for other mail servers that are not secure."
+#~ msgstr ""
+#~ "FREE - Osirusoft Smart Hosts - Lista de máquinas que são seguras, mas que "
+#~ "fazem relay para outras máquina não seguras."
+
+#~ msgid ""
+#~ "FREE - Osirusoft Spamware Developers - It is believed that these are IP "
+#~ "ranges of companies that are known to produce spam software. Seems to "
+#~ "catch abuse auto-replies from some ISPs."
+#~ msgstr ""
+#~ "FREE - Osirusoft Spamware Developers - Acredita-se que contém IPs de "
+#~ "companhias que produzem software para SPAM. Parece travar respostas "
+#~ "automáticas de alguns provedores."
+
+#~ msgid ""
+#~ "FREE - Osirusoft Unconfirmed OptIn Servers - List of listservers that opt "
+#~ "users in without confirmation."
+#~ msgstr ""
+#~ "FREE - Osirusoft Unconfirmed OptIn Servers - Lista de servidores de "
+#~ "listas de email que permitem a entrada de usuários sem confirmação."
+
+#~ msgid ""
+#~ "FREE - Osirusoft Insecure formmail.cgi scripts - List of insecure "
+#~ "formmail.cgi scripts. (planned)."
+#~ msgstr ""
+#~ "FREE - Osirusoft Insecure formmail.cgi scripts - Lista de servidores com "
+#~ "cgi de formulários considerados inseguros. (planejado)."
+
+#~ msgid "FREE - Osirusoft Open Proxy Servers - List of Open Proxy Servers."
+#~ msgstr ""
+#~ "FREE - Osirusoft Open Proxy Servers - Lista de servidores proxy abertos."
+
+#~ msgid "No POP3 servers configured yet."
+#~ msgstr "Nenhum servidor POP3 especificado"
+
+#~ msgid "Click here to go to the options page."
+#~ msgstr "Clique aqui para ir para página de opções."
+
 #~ msgid "Not available"
 #~ msgstr "Não disponível"
-
-#~ msgid "Current Search"
-#~ msgstr "Pesquisa Atual"
-
-#~ msgid "Body"
-#~ msgstr "Corpo"
-
-#~ msgid "Everywhere"
-#~ msgstr "qualquer lugar"
-
-#~ msgid "Click here to try again"
-#~ msgstr "Clique aqui para tentar novamente."
 
 #~ msgid "Unknown message number in reply from server: "
 #~ msgstr "Número de mensagem desconhecido na resposta do servidor: "
@@ -3712,9 +3719,6 @@ msgstr "Cabeçalho da mensagem não enviada"
 
 #~ msgid "35 min."
 #~ msgstr "35 min."
-
-#~ msgid "POP3 noop:"
-#~ msgstr "POP3 noop:"
 
 #~ msgid "Mofify a Server"
 #~ msgstr "Modificar um servidor"

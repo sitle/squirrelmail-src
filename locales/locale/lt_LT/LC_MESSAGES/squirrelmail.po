@@ -6,7 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: $Id: squirrelmail.po,v 1.5 2003/09/13 12:49:45 tokul Exp "
 "$\n"
-"POT-Creation-Date: 2003-09-13 15:43+0300\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2003-10-05 12:27+0300\n"
 "PO-Revision-Date: 2003-09-11 21:44+0300\n"
 "Last-Translator: Tomas Kuliavas <tokul@users.sourceforge.net>\n"
 "Language-Team: Lithuanian <squirrelmail-i18n@lists.sourceforge.net>\n"
@@ -154,7 +155,8 @@ msgstr "Neįmanoma perkelti/kopijuoti failo. Failas neprikabintas"
 msgid "Draft Saved"
 msgstr "Juodraštis išsaugotas"
 
-msgid "Your Message has been sent."
+#, fuzzy
+msgid "Your Message has been sent"
 msgstr "Jūsų žinutė išsiųsta."
 
 msgid "From:"
@@ -698,35 +700,8 @@ msgstr ""
 "Norint pasiekti šiuos puslapius, būtina žinoti teisingą vartotojo vardą ir "
 "slaptažodį!"
 
-msgid "All Folders"
-msgstr "Visuose aplankuose"
-
-msgid "Please enter something to search for"
-msgstr "Įveskite ko norite ieškoti"
-
-msgid "There must be at least one criteria to search for"
-msgstr "Turi būti nurodyta bent viena paieškos sąlyga"
-
-msgid "Error in criteria argument"
-msgstr "Klaida tarp paieškos salygos parametrų"
-
-msgid "M j, Y"
-msgstr "Y M j"
-
-msgid "(Illegal date)"
-msgstr "(Neteisinga data)"
-
-msgid "(Wrong date)"
-msgstr "(Klaidinga data)"
-
-msgid "In"
-msgstr "tarp"
-
-msgid "(Missing argument)"
-msgstr "(Trūksta parametro)"
-
-msgid "(Spurious argument)"
-msgstr "(Klaidingas parametras)"
+msgid "Folder:"
+msgstr "Aplankas:"
 
 msgid "edit"
 msgstr "taisyti"
@@ -737,8 +712,8 @@ msgstr "ieškoti"
 msgid "delete"
 msgstr "ištrinti"
 
-msgid "Saved Searches"
-msgstr "Išsaugotos paieškos"
+msgid "Recent Searches"
+msgstr "Paskutinės paieškos"
 
 msgid "save"
 msgstr "išsaugoti"
@@ -746,110 +721,19 @@ msgstr "išsaugoti"
 msgid "forget"
 msgstr "pamiršti"
 
-msgid "Recent Searches"
-msgstr "Paskutinės paieškos"
+#, fuzzy
+msgid "Current Search"
+msgstr "Dabartinis aplankas"
 
-msgid "Missing"
-msgstr "Trūksta"
+msgid "All Folders"
+msgstr "Visuose aplankuose"
 
-msgid "Exclude Criteria:"
-msgstr "Atmetimo sąlyga:"
+#, fuzzy
+msgid "Body"
+msgstr "Keisti"
 
-msgid "Search Criteria"
-msgstr "Paieškos sąlyga"
-
-msgid "Folder:"
-msgstr "Aplankas:"
-
-msgid "Add New Criteria"
-msgstr "Pridėti naują sąlygą"
-
-msgid "Remove Excluded Criteria"
-msgstr "Pašalinti atmetimo sąlygą"
-
-msgid "Remove All Criteria"
-msgstr "Pašalinti visas sąlygas"
-
-msgid "Answered"
-msgstr "Atsakyta"
-
-msgid "Before"
-msgstr "Prieš"
-
-msgid "Message Body"
-msgstr "Žinutės tekstas"
-
-msgid "Deleted"
-msgstr "Ištrinta"
-
-msgid "Draft"
-msgstr "Juodraštis"
-
-msgid "Flagged"
-msgstr "Pažymėta"
-
-msgid "Sent By"
-msgstr "Siųsta nuo"
-
-msgid "Header Field"
-msgstr "Antraštės laukas"
-
-msgid "Keyword"
-msgstr "Raktas"
-
-msgid "Larger Than"
-msgstr "Didesnė nei"
-
-msgid "Old"
-msgstr "Sena"
-
-msgid "On"
-msgstr "tarp"
-
-msgid "Recent"
-msgstr "Nauja"
-
-msgid "Seen"
-msgstr "Peržiūrėta"
-
-msgid "Sent Before"
-msgstr "Išsiųsta prieš"
-
-msgid "Sent On"
-msgstr "Išsiųsta"
-
-msgid "Sent Since"
-msgstr "Išsiųsta nuo"
-
-msgid "Since"
-msgstr "Nuo"
-
-msgid "Smaller Than"
-msgstr "Mažesnė nei"
-
-msgid "Subject Contains"
-msgstr "Tema turi"
-
-msgid "Header and Body"
-msgstr "Antraštės ir tekstas"
-
-msgid "Sent To"
-msgstr "Išsiųsta adresu"
-
-msgid "Not"
-msgstr "ne"
-
-msgid "And In"
-msgstr "ir tarp"
-
-msgid "Or In"
-msgstr "arba tarp"
-
-msgid "And"
-msgstr "ir"
-
-msgid "Or"
-msgstr "arba"
+msgid "Everywhere"
+msgstr ""
 
 msgid "Search Results"
 msgstr "Paieškos rezultatai:"
@@ -910,9 +794,6 @@ msgstr "Pilna antraščių peržiūra"
 
 msgid "Viewing a text attachment"
 msgstr "Peržiūrėti prikabintą tekstinį failą"
-
-msgid "Folder List"
-msgstr "Aplankų sąrašas"
 
 msgid "Personal address book"
 msgstr "Asmeninė adresų knyga"
@@ -1111,6 +992,9 @@ msgstr "Y F j, g:i a, D"
 msgid "D, F j, Y G:i"
 msgstr "Y F j, G:i, D"
 
+msgid "M j, Y"
+msgstr "Y M j"
+
 msgid "g:i a"
 msgstr "g:i a"
 
@@ -1126,6 +1010,13 @@ msgstr "G:i, D"
 #, c-format
 msgid "Preference database error (%s). Exiting abnormally"
 msgstr "Nustatymų failas %s nerastas. Programos klaida."
+
+msgid "Unknown user or password incorrect."
+msgstr "Nežinomas vartotojas arba klaidingas slaptažodis."
+
+#, fuzzy
+msgid "Click here to try again"
+msgstr "Spragtelėkite ant nuorodos norėdami vėl prisijungti"
 
 #, c-format
 msgid "Click here to return to %s"
@@ -1214,38 +1105,32 @@ msgstr ""
 "Jūs turite turėti php4 instaliaciją su įjungtomis multibyte funkcijomis "
 "(configure opcija --enable-mbstring)."
 
+msgid "ERROR : No available imapstream."
+msgstr "KLAIDA : imap srautas neprieinamas."
+
+msgid "ERROR : Connection dropped by imap-server."
+msgstr "KLAIDA : IMAP serveris nutraukė jungtį."
+
 msgid "ERROR : Could not complete request."
 msgstr "KLAIDA : Neįmanoma vykdyti užklausos."
 
+msgid "Query:"
+msgstr "Užklausa:"
+
+msgid "Reason Given: "
+msgstr "Priežastis: "
+
 msgid "ERROR : Bad or malformed request."
 msgstr "KLAIDA : Klaidingas užklausimas."
+
+msgid "Server responded: "
+msgstr "Serveris atsakė: "
 
 msgid "ERROR : Imap server closed the connection."
 msgstr "KLAIDA : IMAP serveris uždarė jungtį."
 
 msgid "ERROR : Unknown imap response."
 msgstr "KLAIDA : Nesuprantamas IMAP atsakymas."
-
-msgid "Reason Given: "
-msgstr "Priežastis: "
-
-msgid "Query:"
-msgstr "Užklausa:"
-
-msgid "ERROR : No available imapstream."
-msgstr "KLAIDA : imap srautas neprieinamas."
-
-msgid "ERROR : Bad function call."
-msgstr "KLAIDA : Neteisingai iškviesta funkcija"
-
-msgid "Reason:"
-msgstr "Priežastis:"
-
-msgid "ERROR : Connection dropped by imap-server."
-msgstr "KLAIDA : IMAP serveris nutraukė jungtį."
-
-msgid "Server responded: "
-msgstr "Serveris atsakė: "
 
 #, c-format
 msgid "Error connecting to IMAP server: %s."
@@ -1262,9 +1147,6 @@ msgstr "Neaiški klaida: %s"
 msgid "Read data:"
 msgstr "Skaitomi duomenys:"
 
-msgid "Unknown user or password incorrect."
-msgstr "Nežinomas vartotojas arba klaidingas slaptažodis."
-
 msgid "ERROR : Could not append message to"
 msgstr "KLAIDA : Neįmanoma prijungti žinutės prie"
 
@@ -1280,6 +1162,10 @@ msgstr ""
 
 msgid "(no subject)"
 msgstr "(tema nenurodyta)"
+
+#, fuzzy
+msgid "Unknown Sender"
+msgstr "Nežinomas siuntėjas"
 
 msgid "Unknown response from IMAP server: "
 msgstr "Nesuprantamas atsakymas iš IMAP serverio"
@@ -1344,12 +1230,6 @@ msgstr "Nerodyti sekų"
 
 msgid "Thread View"
 msgstr "Rodyti sekas"
-
-msgid "Bypass Trash"
-msgstr "Nesaugoti šiukšliadėžėje"
-
-msgid "Click here to change the sorting of the message list"
-msgstr "Paspauskite čia norėdami pakeisti žinučių sąrašo rūšiavimo tvarką"
 
 msgid "Toggle All"
 msgstr "Perjungti žymes"
@@ -1536,12 +1416,6 @@ msgstr "Vienu metu rodomų puslapių skaičius"
 msgid "Always Show Full Date"
 msgstr "Visada rodyti pilną datą"
 
-msgid "Length of From/To Field (0 for full)"
-msgstr "Didžiausias Nuo/Kam lauko ilgis (0 atitinka neribotą ilgį)"
-
-msgid "Length of Subject Field (0 for full)"
-msgstr "Didžiausias temos lauko ilgis (0 atitinka neribotą ilgį)"
-
 msgid "Message Display and Composition"
 msgstr "Žinučių rodymas ir rašymas"
 
@@ -1607,9 +1481,6 @@ msgstr "Žinutės kūrimo lango aukštis"
 
 msgid "Append Signature before Reply/Forward Text"
 msgstr "Dėti parašą prieš atsakymo/persiuntimo tekstą"
-
-msgid "Strip signature when replying"
-msgstr "Pašalinti parašą atsakant į laišką"
 
 msgid "Enable Sort by of Receive Date"
 msgstr "Įjungti rūšiavimą pagal gavimo datą"
@@ -1689,7 +1560,8 @@ msgstr "Tik naujos žinutės"
 msgid "Unseen and Total"
 msgstr "Naujos žinutės ir bendras skaičius"
 
-msgid "Enable Collapsable Folders"
+#, fuzzy
+msgid "Enable Collapsible Folders"
 msgstr "Aktyvuoti išsiskleidžiančius aplankus"
 
 msgid "Enable Cumulative Unread Message Notification"
@@ -1724,12 +1596,6 @@ msgstr "Pasirinkimo sąrašo stilius"
 
 msgid "Long: "
 msgstr "Ilgas: "
-
-msgid "Folder"
-msgstr "Aplankas"
-
-msgid "Subfolder"
-msgstr "Žemesnio lygio aplankas"
 
 msgid "Indented: "
 msgstr "Su paraštėmis: "
@@ -2268,63 +2134,6 @@ msgid "COMMERCIAL - RBL+ Dial-up entries."
 msgstr "KOMERCINIS - RBL+ Dial-up įrašai."
 
 msgid ""
-"FREE - Osirusoft Relays - Osirusofts list of verified open relays. Seems to "
-"include servers used by abuse@uunet.net auto-replies too."
-msgstr ""
-"NEMOKAMAS - Osirusoft Relays - Osirusoft saugo patikrintus atvirų pašto "
-"serverių sarašus. Panašu, kad įtraukia ir abuse@uunet.net pateikiamus "
-"adresus."
-
-msgid "FREE - Osirusoft Dialups - Osirusofts Dialup Spam Source list."
-msgstr ""
-"NEMOKAMAS - Osirusoft Dialups - Osirusoft dinaminių adresų, iš kurių "
-"siunčiami spam tipo laiškai, sąrašas"
-
-msgid ""
-"FREE - Osirusoft Confirmed Spam Source - Sites that continually spam and "
-"have been manually added after multiple nominations. Use with caution. Seems "
-"to catch abuse auto-replies from some ISPs."
-msgstr ""
-"NEMOKAMAS - Osirusoft Confirmed Spam Source - Adresai, kurie nuolat "
-"siuntinėja spamą ir kurie buvo įtraukti dėl pasikartojančių skundų. Reiktų "
-"naudoti atsargiai. Atrodo, kad pagauna ir dalies IPT antispaminius atsakymus."
-
-msgid ""
-"FREE - Osirusoft Smart Hosts - List of hosts that are secure but relay for "
-"other mail servers that are not secure."
-msgstr ""
-"NEMOKAMAS - Osirusoft Smart Hosts - Serveriai, kurie nėra atviri, tačiau "
-"priimantys paštą iš kitų neapsaugotų serverių."
-
-msgid ""
-"FREE - Osirusoft Spamware Developers - It is believed that these are IP "
-"ranges of companies that are known to produce spam software. Seems to catch "
-"abuse auto-replies from some ISPs."
-msgstr ""
-"NEMOKAMAS - Osirusoft Spamware Developers - Manoma, kad šie IP priklauso "
-"kompanijoms, kurios gamina programas, naudojamas spamui. Atrodo, kad pagauna "
-"ir dalies IPT automatinius antispamo atsakymus."
-
-msgid ""
-"FREE - Osirusoft Unconfirmed OptIn Servers - List of listservers that opt "
-"users in without confirmation."
-msgstr ""
-"NEMOKAMAS - Osirusoft Unconfirmed OptIn Servers - Grupinių žinučių (mailing "
-"lists) serverių, kurie įtraukia adresus negavę iš adresato patvirtinimo, "
-"sąrašai. "
-
-msgid ""
-"FREE - Osirusoft Insecure formmail.cgi scripts - List of insecure formmail."
-"cgi scripts. (planned)."
-msgstr ""
-"NEMOKAMAS - Osirusoft pažeidžiami formmail.cgi skriptai - Nesaugių frommail."
-"cgi skriptų sąrašai. (Planuojamas)"
-
-msgid "FREE - Osirusoft Open Proxy Servers - List of Open Proxy Servers."
-msgstr ""
-"NEMOKAMAS - Osirusoft atviri proxy serveriai - Atvirų proxy serverių sąrašai."
-
-msgid ""
 "FREE - ORDB was born when ORBS went off the air. It seems to have fewer "
 "false positives than ORBS did though."
 msgstr ""
@@ -2367,7 +2176,6 @@ msgstr ""
 msgid "FREE - SPAMhaus - A list of well-known SPAM sources."
 msgstr "NEMOKAMAS - SPAMhaus - Gerai žinomų spamerių sąrašas"
 
-#, c-format
 msgid ""
 "FREE, for now - SPAMCOP - An interesting solution that lists servers that "
 "have a very high spam to legit email ratio (85% or more)."
@@ -2649,6 +2457,13 @@ msgstr "Serveris nenurodytas"
 msgid "Error "
 msgstr "Klaida "
 
+#, fuzzy
+msgid "POP3 noop:"
+msgstr "POP3 top:"
+
+msgid "No connection to server"
+msgstr "Prisijungti prie serverio nepavyko"
+
 msgid "POP3 user:"
 msgstr "POP3 vartotojas:"
 
@@ -2669,9 +2484,6 @@ msgstr "autorizacija nepavyko "
 
 msgid "POP3 apop:"
 msgstr "POP3 apop:"
-
-msgid "No connection to server"
-msgstr "Prisijungti prie serverio nepavyko"
 
 msgid "No login ID submitted"
 msgstr "Nebuvo pateiktas vartotojo vardas"
@@ -2730,6 +2542,9 @@ msgstr "Nebuvo pateiktas žinučių skaičius"
 msgid "Command failed "
 msgstr "Komanda nepavyko"
 
+msgid "Remote POP server Fetching Mail"
+msgstr "Nutolęs POP serveris. Gauname žinutes"
+
 msgid "Select Server:"
 msgstr "Pasirinkti serverį:"
 
@@ -2738,15 +2553,6 @@ msgstr "Slaptažodis skirtas"
 
 msgid "Fetch Mail"
 msgstr "Atsiųsti paštą"
-
-msgid "Remote POP server Fetching Mail"
-msgstr "Nutolęs POP serveris. Gauname žinutes"
-
-msgid "No POP3 servers configured yet."
-msgstr "Nesukonfiguruotas nei vienas POP serveris"
-
-msgid "Click here to go to the options page."
-msgstr "Spragtelėkite ant nuorodos norėdami nueiti į nustatymų puslapį."
 
 msgid "Fetching from "
 msgstr "Atsiunčiame iš "
@@ -3668,3 +3474,224 @@ msgstr "Ataskaita apie pristatymo klaidą"
 
 msgid "Undelivered Message Headers"
 msgstr "Nepristatytos žinutės antraštės"
+
+#~ msgid "Please enter something to search for"
+#~ msgstr "Įveskite ko norite ieškoti"
+
+#~ msgid "There must be at least one criteria to search for"
+#~ msgstr "Turi būti nurodyta bent viena paieškos sąlyga"
+
+#~ msgid "Error in criteria argument"
+#~ msgstr "Klaida tarp paieškos salygos parametrų"
+
+#~ msgid "(Illegal date)"
+#~ msgstr "(Neteisinga data)"
+
+#~ msgid "(Wrong date)"
+#~ msgstr "(Klaidinga data)"
+
+#~ msgid "In"
+#~ msgstr "tarp"
+
+#~ msgid "(Missing argument)"
+#~ msgstr "(Trūksta parametro)"
+
+#~ msgid "(Spurious argument)"
+#~ msgstr "(Klaidingas parametras)"
+
+#~ msgid "Saved Searches"
+#~ msgstr "Išsaugotos paieškos"
+
+#~ msgid "Missing"
+#~ msgstr "Trūksta"
+
+#~ msgid "Exclude Criteria:"
+#~ msgstr "Atmetimo sąlyga:"
+
+#~ msgid "Search Criteria"
+#~ msgstr "Paieškos sąlyga"
+
+#~ msgid "Add New Criteria"
+#~ msgstr "Pridėti naują sąlygą"
+
+#~ msgid "Remove Excluded Criteria"
+#~ msgstr "Pašalinti atmetimo sąlygą"
+
+#~ msgid "Remove All Criteria"
+#~ msgstr "Pašalinti visas sąlygas"
+
+#~ msgid "Answered"
+#~ msgstr "Atsakyta"
+
+#~ msgid "Before"
+#~ msgstr "Prieš"
+
+#~ msgid "Message Body"
+#~ msgstr "Žinutės tekstas"
+
+#~ msgid "Deleted"
+#~ msgstr "Ištrinta"
+
+#~ msgid "Draft"
+#~ msgstr "Juodraštis"
+
+#~ msgid "Flagged"
+#~ msgstr "Pažymėta"
+
+#~ msgid "Sent By"
+#~ msgstr "Siųsta nuo"
+
+#~ msgid "Header Field"
+#~ msgstr "Antraštės laukas"
+
+#~ msgid "Keyword"
+#~ msgstr "Raktas"
+
+#~ msgid "Larger Than"
+#~ msgstr "Didesnė nei"
+
+#~ msgid "Old"
+#~ msgstr "Sena"
+
+#~ msgid "On"
+#~ msgstr "tarp"
+
+#~ msgid "Recent"
+#~ msgstr "Nauja"
+
+#~ msgid "Seen"
+#~ msgstr "Peržiūrėta"
+
+#~ msgid "Sent Before"
+#~ msgstr "Išsiųsta prieš"
+
+#~ msgid "Sent On"
+#~ msgstr "Išsiųsta"
+
+#~ msgid "Sent Since"
+#~ msgstr "Išsiųsta nuo"
+
+#~ msgid "Since"
+#~ msgstr "Nuo"
+
+#~ msgid "Smaller Than"
+#~ msgstr "Mažesnė nei"
+
+#~ msgid "Subject Contains"
+#~ msgstr "Tema turi"
+
+#~ msgid "Header and Body"
+#~ msgstr "Antraštės ir tekstas"
+
+#~ msgid "Sent To"
+#~ msgstr "Išsiųsta adresu"
+
+#~ msgid "Not"
+#~ msgstr "ne"
+
+#~ msgid "And In"
+#~ msgstr "ir tarp"
+
+#~ msgid "Or In"
+#~ msgstr "arba tarp"
+
+#~ msgid "And"
+#~ msgstr "ir"
+
+#~ msgid "Or"
+#~ msgstr "arba"
+
+#~ msgid "Folder List"
+#~ msgstr "Aplankų sąrašas"
+
+#~ msgid "ERROR : Bad function call."
+#~ msgstr "KLAIDA : Neteisingai iškviesta funkcija"
+
+#~ msgid "Reason:"
+#~ msgstr "Priežastis:"
+
+#~ msgid "Bypass Trash"
+#~ msgstr "Nesaugoti šiukšliadėžėje"
+
+#~ msgid "Click here to change the sorting of the message list"
+#~ msgstr "Paspauskite čia norėdami pakeisti žinučių sąrašo rūšiavimo tvarką"
+
+#~ msgid "Length of From/To Field (0 for full)"
+#~ msgstr "Didžiausias Nuo/Kam lauko ilgis (0 atitinka neribotą ilgį)"
+
+#~ msgid "Length of Subject Field (0 for full)"
+#~ msgstr "Didžiausias temos lauko ilgis (0 atitinka neribotą ilgį)"
+
+#~ msgid "Strip signature when replying"
+#~ msgstr "Pašalinti parašą atsakant į laišką"
+
+#~ msgid "Folder"
+#~ msgstr "Aplankas"
+
+#~ msgid "Subfolder"
+#~ msgstr "Žemesnio lygio aplankas"
+
+#~ msgid ""
+#~ "FREE - Osirusoft Relays - Osirusofts list of verified open relays. Seems "
+#~ "to include servers used by abuse@uunet.net auto-replies too."
+#~ msgstr ""
+#~ "NEMOKAMAS - Osirusoft Relays - Osirusoft saugo patikrintus atvirų pašto "
+#~ "serverių sarašus. Panašu, kad įtraukia ir abuse@uunet.net pateikiamus "
+#~ "adresus."
+
+#~ msgid "FREE - Osirusoft Dialups - Osirusofts Dialup Spam Source list."
+#~ msgstr ""
+#~ "NEMOKAMAS - Osirusoft Dialups - Osirusoft dinaminių adresų, iš kurių "
+#~ "siunčiami spam tipo laiškai, sąrašas"
+
+#~ msgid ""
+#~ "FREE - Osirusoft Confirmed Spam Source - Sites that continually spam and "
+#~ "have been manually added after multiple nominations. Use with caution. "
+#~ "Seems to catch abuse auto-replies from some ISPs."
+#~ msgstr ""
+#~ "NEMOKAMAS - Osirusoft Confirmed Spam Source - Adresai, kurie nuolat "
+#~ "siuntinėja spamą ir kurie buvo įtraukti dėl pasikartojančių skundų. "
+#~ "Reiktų naudoti atsargiai. Atrodo, kad pagauna ir dalies IPT antispaminius "
+#~ "atsakymus."
+
+#~ msgid ""
+#~ "FREE - Osirusoft Smart Hosts - List of hosts that are secure but relay "
+#~ "for other mail servers that are not secure."
+#~ msgstr ""
+#~ "NEMOKAMAS - Osirusoft Smart Hosts - Serveriai, kurie nėra atviri, tačiau "
+#~ "priimantys paštą iš kitų neapsaugotų serverių."
+
+#~ msgid ""
+#~ "FREE - Osirusoft Spamware Developers - It is believed that these are IP "
+#~ "ranges of companies that are known to produce spam software. Seems to "
+#~ "catch abuse auto-replies from some ISPs."
+#~ msgstr ""
+#~ "NEMOKAMAS - Osirusoft Spamware Developers - Manoma, kad šie IP priklauso "
+#~ "kompanijoms, kurios gamina programas, naudojamas spamui. Atrodo, kad "
+#~ "pagauna ir dalies IPT automatinius antispamo atsakymus."
+
+#~ msgid ""
+#~ "FREE - Osirusoft Unconfirmed OptIn Servers - List of listservers that opt "
+#~ "users in without confirmation."
+#~ msgstr ""
+#~ "NEMOKAMAS - Osirusoft Unconfirmed OptIn Servers - Grupinių žinučių "
+#~ "(mailing lists) serverių, kurie įtraukia adresus negavę iš adresato "
+#~ "patvirtinimo, sąrašai. "
+
+#~ msgid ""
+#~ "FREE - Osirusoft Insecure formmail.cgi scripts - List of insecure "
+#~ "formmail.cgi scripts. (planned)."
+#~ msgstr ""
+#~ "NEMOKAMAS - Osirusoft pažeidžiami formmail.cgi skriptai - Nesaugių "
+#~ "frommail.cgi skriptų sąrašai. (Planuojamas)"
+
+#~ msgid "FREE - Osirusoft Open Proxy Servers - List of Open Proxy Servers."
+#~ msgstr ""
+#~ "NEMOKAMAS - Osirusoft atviri proxy serveriai - Atvirų proxy serverių "
+#~ "sąrašai."
+
+#~ msgid "No POP3 servers configured yet."
+#~ msgstr "Nesukonfiguruotas nei vienas POP serveris"
+
+#~ msgid "Click here to go to the options page."
+#~ msgstr "Spragtelėkite ant nuorodos norėdami nueiti į nustatymų puslapį."

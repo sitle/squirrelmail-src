@@ -4,8 +4,10 @@
 # 
 msgid ""
 msgstr ""
-"Project-Id-Version: $Id$\n"
-"POT-Creation-Date: 2003-09-04 03:11+0200\n"
+"Project-Id-Version: $Id: squirrelmail.po,v 1.3 2003/09/29 09:12:55 tokul Exp "
+"$\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2003-10-05 12:27+0300\n"
 "PO-Revision-Date: 2001-12-27 15:58GMT+1\n"
 "Last-Translator: Alex Lemaresquier <alex@brainstorm.fr>\n"
 "Language-Team: French <squirrelmail-i18n@lists.sourceforge.net>\n"
@@ -157,7 +159,8 @@ msgstr ""
 msgid "Draft Saved"
 msgstr "Brouillon enregistr&#233;"
 
-msgid "Your Message has been sent."
+#, fuzzy
+msgid "Your Message has been sent"
 msgstr "Votre message est parti."
 
 msgid "From:"
@@ -383,6 +386,9 @@ msgstr "Vider"
 
 msgid "Last Refresh"
 msgstr "Mise &#224; jour&#160;"
+
+msgid "Save folder tree"
+msgstr "Enregistrer l'arborescence"
 
 msgid "Login"
 msgstr "Acc&#232;s Messagerie"
@@ -674,8 +680,8 @@ msgid ""
 "The message sender has requested a response to indicate that you have read "
 "this message. Would you like to send a receipt?"
 msgstr ""
-"L'expéditeur du message a demandé un accusé indiquant que "
-"vous avez lu ce message. Voulez-vous l'envoyer ?"
+"L'expéditeur du message a demandé un accusé indiquant que vous avez lu ce "
+"message. Voulez-vous l'envoyer ?"
 
 msgid "Send read receipt now"
 msgstr "Envoyer un avis de lecture maintenant."
@@ -716,35 +722,8 @@ msgstr "Pi&#232;ces jointes&#160;"
 msgid "You must be logged in to access this page."
 msgstr "Il faut &#234;tre connect&#233; pour acc&#233;der &#224; cette page"
 
-msgid "All Folders"
-msgstr "Tous les dossiers"
-
-msgid "Please enter something to search for"
-msgstr "Il faut choisir un crit&#232;re de recherche"
-
-msgid "There must be at least one criteria to search for"
-msgstr "Il faut au moins un crit&#232;re de recherche"
-
-msgid "Error in criteria argument"
-msgstr "Erreur dans l'argument d'un crit&#232;re"
-
-msgid "M j, Y"
-msgstr "j M Y"
-
-msgid "(Illegal date)"
-msgstr "(Date ill&#233;gale)"
-
-msgid "(Wrong date)"
-msgstr "(Date invalide)"
-
-msgid "In"
-msgstr "Dans"
-
-msgid "(Missing argument)"
-msgstr "(Argument manquant)"
-
-msgid "(Spurious argument)"
-msgstr "(Argument superflu)"
+msgid "Folder:"
+msgstr "Dossier&#160;:"
 
 msgid "edit"
 msgstr "&#201;diter"
@@ -755,8 +734,8 @@ msgstr "Rechercher"
 msgid "delete"
 msgstr "Supprimer"
 
-msgid "Saved Searches"
-msgstr "Recherches enregistr&#233;es"
+msgid "Recent Searches"
+msgstr "Derni&#232;res recherches"
 
 msgid "save"
 msgstr "Enregistrer"
@@ -764,118 +743,19 @@ msgstr "Enregistrer"
 msgid "forget"
 msgstr "Oublier"
 
-msgid "Recent Searches"
-msgstr "Derni&#232;res recherches"
+#, fuzzy
+msgid "Current Search"
+msgstr "Dossier courant&#160;"
 
-msgid "Missing"
-msgstr "Disparu"
+msgid "All Folders"
+msgstr "Tous les dossiers"
 
-msgid "Exclude Criteria:"
-msgstr "Exclure ce Crit&#232;re&#160;:"
+#, fuzzy
+msgid "Body"
+msgstr "Aujourd'hui"
 
-msgid "Search Criteria"
-msgstr "Crit&#232;res de Recherche"
-
-msgid "Folder:"
-msgstr "Dossier&#160;:"
-
-msgid "Add New Criteria"
-msgstr "Ajouter un Crit&#232;re"
-
-msgid "Remove Excluded Criteria"
-msgstr "Supprimer les Crit&#232;res Exclus"
-
-msgid "Remove All Criteria"
-msgstr "Supprimer tous les Crit&#232;res"
-
-msgid "Answered"
-msgstr "R&#233;pondu"
-
-msgid "Before"
-msgstr "Datant d'avant le"
-
-# BODY
-msgid "Message Body"
-msgstr "Corps du message"
-
-msgid "Deleted"
-msgstr "Supprim&#233;"
-
-msgid "Draft"
-msgstr "Brouillon"
-
-msgid "Flagged"
-msgstr "Marqu&#233;"
-
-# FROM
-msgid "Sent By"
-msgstr "Envoy&#233; par"
-
-# HEADER
-msgid "Header Field"
-msgstr "Champ d'en-t&#234;te"
-
-msgid "Keyword"
-msgstr "Mot-cl&#233;"
-
-# LARGER
-msgid "Larger Than"
-msgstr "Plus gros que"
-
-msgid "Old"
-msgstr "Ancien"
-
-msgid "On"
-msgstr "Datant du"
-
-msgid "Recent"
-msgstr "R&#233;cent"
-
-msgid "Seen"
-msgstr "Lu"
-
-msgid "Sent Before"
-msgstr "Envoy&#233; avant le"
-
-msgid "Sent On"
-msgstr "Envoy&#233; le"
-
-msgid "Sent Since"
-msgstr "Envoy&#233; apr&#232;s le"
-
-msgid "Since"
-msgstr "Datant d'apr&#232;s le"
-
-# SMALLER
-msgid "Smaller Than"
-msgstr "Plus petit que"
-
-# SUBJECT
-msgid "Subject Contains"
-msgstr "Objet contenant"
-
-# TEXT
-msgid "Header and Body"
-msgstr "En-t&#234;te et Corps"
-
-# TO
-msgid "Sent To"
-msgstr "Envoy&#233; &#224;"
-
-msgid "Not"
-msgstr "Pas"
-
-msgid "And In"
-msgstr "Et dans"
-
-msgid "Or In"
-msgstr "Ou dans"
-
-msgid "And"
-msgstr "Et"
-
-msgid "Or"
-msgstr "Ou"
+msgid "Everywhere"
+msgstr ""
 
 msgid "Search Results"
 msgstr "R&#233;sultat de la recherche"
@@ -936,9 +816,6 @@ msgstr "En-t&#234;te complet"
 
 msgid "Viewing a text attachment"
 msgstr "Voir un fichier texte joint"
-
-msgid "Folder List"
-msgstr "Liste des dossiers"
 
 msgid "Personal address book"
 msgstr "Carnet d'adresses personnel"
@@ -1140,6 +1017,9 @@ msgstr "D j F Y G:i"
 msgid "D, F j, Y G:i"
 msgstr "D j F Y G:i"
 
+msgid "M j, Y"
+msgstr "j M Y"
+
 msgid "g:i a"
 msgstr "G:i"
 
@@ -1155,6 +1035,13 @@ msgstr "D, G:i"
 #, c-format
 msgid "Preference database error (%s). Exiting abnormally"
 msgstr "Erreur du fichier de pr&#233;f&#233;rences (%s). Sortie inattendue."
+
+msgid "Unknown user or password incorrect."
+msgstr "Utilisateur inconnu ou mot de passe incorrect."
+
+#, fuzzy
+msgid "Click here to try again"
+msgstr "Cliquez ici pour vous reconnecter."
 
 #, c-format
 msgid "Click here to return to %s"
@@ -1248,38 +1135,32 @@ msgstr ""
 "Vous devez avoir install&#233; php4 avec la gestion des caract&#232;res "
 "multi-octets (option de configuration --with-mbstring)."
 
+msgid "ERROR : No available imapstream."
+msgstr "ERREUR&#160;: Pas de flux IMAP."
+
+msgid "ERROR : Connection dropped by imap-server."
+msgstr "ERREUR&#160;: Connexion interrompue par le serveur IMAP."
+
 msgid "ERROR : Could not complete request."
 msgstr "ERREUR&#160;: Impossible d'achever la requ&#234;te."
 
+msgid "Query:"
+msgstr "Requ&#234;te&#160;:"
+
+msgid "Reason Given: "
+msgstr "Raison invoqu&#233;e&#160;: "
+
 msgid "ERROR : Bad or malformed request."
 msgstr "Erreur&#160;: requ&#234;te invalide ou mal formul&#233;e."
+
+msgid "Server responded: "
+msgstr "Le serveur a r&#233;pondu&#160;: "
 
 msgid "ERROR : Imap server closed the connection."
 msgstr "ERREUR&#160;: Le serveur IMAP a rompu la connexion."
 
 msgid "ERROR : Unknown imap response."
 msgstr "ERREUR&#160;: R&#233;ponse IMAP inconnue."
-
-msgid "Reason Given: "
-msgstr "Raison invoqu&#233;e&#160;: "
-
-msgid "Query:"
-msgstr "Requ&#234;te&#160;:"
-
-msgid "ERROR : No available imapstream."
-msgstr "ERREUR&#160;: Pas de flux IMAP."
-
-msgid "ERROR : Bad function call."
-msgstr "ERREUR&#160;: Appel de fonction erron&#233;."
-
-msgid "Reason:"
-msgstr "Cause&#160;:"
-
-msgid "ERROR : Connection dropped by imap-server."
-msgstr "ERREUR&#160;: Connexion interrompue par le serveur IMAP."
-
-msgid "Server responded: "
-msgstr "Le serveur a r&#233;pondu&#160;: "
 
 #, c-format
 msgid "Error connecting to IMAP server: %s."
@@ -1296,9 +1177,6 @@ msgstr "Erreur inconnue&#160;: %s"
 msgid "Read data:"
 msgstr "Lecture des donn&#233;es&#160;:"
 
-msgid "Unknown user or password incorrect."
-msgstr "Utilisateur inconnu ou mot de passe incorrect."
-
 msgid "ERROR : Could not append message to"
 msgstr "ERREUR&#160;: Impossible d'ajouter le message dans"
 
@@ -1314,6 +1192,9 @@ msgstr ""
 
 msgid "(no subject)"
 msgstr "(pas d'objet)"
+
+msgid "Unknown Sender"
+msgstr "Exp&#233;diteur inconnu"
 
 msgid "Unknown response from IMAP server: "
 msgstr "R&#233;ponse du serveur IMAP inconnue&#160;: "
@@ -1381,12 +1262,6 @@ msgstr "Ne pas voir les fils de discussion"
 
 msgid "Thread View"
 msgstr "Voir les fils de discussion"
-
-msgid "Bypass Trash"
-msgstr "Sans mettre à la Corbeille"
-
-msgid "Click here to change the sorting of the message list"
-msgstr "Cliquer ici pour changer le classement des messages"
 
 msgid "Toggle All"
 msgstr "Inverser la s&#233;lection"
@@ -1575,16 +1450,6 @@ msgstr "Nombre maximum de pages &#224; afficher&#160;"
 msgid "Always Show Full Date"
 msgstr "Afficher la date compl&#232;te du message&#160;"
 
-msgid "Length of From/To Field (0 for full)"
-msgstr ""
-"Abbr&#233;ger le champ &#171;&#160;De&#160;&#187; / &#171;&#160;&#192;&#160;"
-"&#187; &#224; (0 pour ne pas abbr&#233;ger)&#160;"
-
-msgid "Length of Subject Field (0 for full)"
-msgstr ""
-"Abbr&#233;ger le champ &#171;&#160;Objet&#160;&#187; &#224; (0 pour ne pas "
-"abbr&#233;ger)&#160;"
-
 msgid "Message Display and Composition"
 msgstr "Affichage et composition des messages"
 
@@ -1652,9 +1517,6 @@ msgid "Append Signature before Reply/Forward Text"
 msgstr ""
 "Signature avant le texte cit&#233; dans les transferts et r&#233;ponses&#160;"
 
-msgid "Strip signature when replying"
-msgstr "Supprimer la signature du message cit&#233; en r&#233;ponse&#160;"
-
 msgid "Enable Sort by of Receive Date"
 msgstr "Classement des messages par date de r&#233;ception&#160;"
 
@@ -1689,9 +1551,6 @@ msgstr "Dossier Brouillons&#160;"
 
 msgid "Folder List Options"
 msgstr "Options de la liste des dossiers"
-
-msgid "Folder List Display Format"
-msgstr "Affichage de la liste des dossiers&#160;"
 
 msgid "Location of Folder List"
 msgstr "Emplacement de la liste des dossiers&#160;"
@@ -1738,7 +1597,8 @@ msgstr "Non lus"
 msgid "Unseen and Total"
 msgstr "Non lus / Total"
 
-msgid "Enable Collapsable Folders"
+#, fuzzy
+msgid "Enable Collapsible Folders"
 msgstr "Dossiers repliables&#160;"
 
 msgid "Enable Cumulative Unread Message Notification"
@@ -1773,12 +1633,6 @@ msgstr "Style de la liste de s&#233;lection&#160;"
 
 msgid "Long: "
 msgstr "Long&#160;: "
-
-msgid "Folder"
-msgstr "Dossier"
-
-msgid "Subfolder"
-msgstr "Sous-dossier"
 
 msgid "Indented: "
 msgstr "Indent&#233;&#160;: "
@@ -2334,65 +2188,6 @@ msgstr ""
 "phoniques."
 
 msgid ""
-"FREE - Osirusoft Relays - Osirusofts list of verified open relays. Seems to "
-"include servers used by abuse@uunet.net auto-replies too."
-msgstr ""
-"GRATUIT - <i>Osirusoft Relays</i> - Liste de relais ouverts confirm&#233;s. "
-"Semble inclure les serveurs utilis&#233;s par abuse@uunet.net pour les "
-"r&#233;ponses automatiques."
-
-msgid "FREE - Osirusoft Dialups - Osirusofts Dialup Spam Source list."
-msgstr ""
-"GRATUIT - <i>Osirusoft Dialups</i> - Liste des <i>spammers</i> utilisant un "
-"acc&#232;s t&#233;l&#233;phonique."
-
-msgid ""
-"FREE - Osirusoft Confirmed Spam Source - Sites that continually spam and "
-"have been manually added after multiple nominations. Use with caution. Seems "
-"to catch abuse auto-replies from some ISPs."
-msgstr ""
-"GRATUIT - <i>Osirusoft Confirmed Spam Source</i> - Sites envoyant "
-"continuellement des publicit&#233;s, ajout&#233;s manuellement apr&#232;s "
-"plusieurs nominations. &#192; utiliser avec pr&#233;cautions, cette liste "
-"semble contenir les automates de r&#233;ponses aux abus de certains FAI."
-
-msgid ""
-"FREE - Osirusoft Smart Hosts - List of hosts that are secure but relay for "
-"other mail servers that are not secure."
-msgstr ""
-"GRATUIT - <i>Osirusoft Smart Hosts</i> - Liste de serveurs s&#233;curis&#233;"
-"s mais qui relaient le courrier pour des serveurs non s&#233;curis&#233;s."
-
-msgid ""
-"FREE - Osirusoft Spamware Developers - It is believed that these are IP "
-"ranges of companies that are known to produce spam software. Seems to catch "
-"abuse auto-replies from some ISPs."
-msgstr ""
-"GRATUIT - <i>Osirusoft Spamware Developers</i> - Certains pensent qu'il "
-"s'agit de plages d'adresses IP allou&#233;es &#224; des entreprises connues "
-"pour d&#233;velopper des logiciels de diffusion publicitaire. Cette liste "
-"semble contenir les automates de r&#233;ponses aux abus de certains FAI."
-
-msgid ""
-"FREE - Osirusoft Unconfirmed OptIn Servers - List of listservers that opt "
-"users in without confirmation."
-msgstr ""
-"GRATUIT - <i>Osirusoft Unconfirmed OptIn Servers</i> - Liste de serveurs qui "
-"abonnent les utilisateurs sans demander de confirmation."
-
-msgid ""
-"FREE - Osirusoft Insecure formmail.cgi scripts - List of insecure formmail."
-"cgi scripts. (planned)."
-msgstr ""
-"GRATUIT - <i>Osirusoft Insecure formmail.cgi scripts</i> - Liste de scripts "
-"formmail.cgi non s&#251;rs (planifi&#233;)."
-
-msgid "FREE - Osirusoft Open Proxy Servers - List of Open Proxy Servers."
-msgstr ""
-"GRATUIT - <i>Osirusoft Open Proxy Servers</i> - Liste de serveurs "
-"mandataires ouverts."
-
-msgid ""
 "FREE - ORDB was born when ORBS went off the air. It seems to have fewer "
 "false positives than ORBS did though."
 msgstr ""
@@ -2739,6 +2534,13 @@ msgstr "Pas de serveur sp&#233;cifi&#233;"
 msgid "Error "
 msgstr "Erreur "
 
+#, fuzzy
+msgid "POP3 noop:"
+msgstr "POP3 top&#160;: "
+
+msgid "No connection to server"
+msgstr "pas de connexion au serveur."
+
 msgid "POP3 user:"
 msgstr "Utilisateur POP3&#160;: "
 
@@ -2759,9 +2561,6 @@ msgstr "l'authentification a &#233;chou&#233;e"
 
 msgid "POP3 apop:"
 msgstr "POP3 apop&#160;: "
-
-msgid "No connection to server"
-msgstr "pas de connexion au serveur."
 
 msgid "No login ID submitted"
 msgstr "Identifiant non renseign&#233;"
@@ -2820,6 +2619,10 @@ msgstr "n&#176;&#160;de message manquant"
 msgid "Command failed "
 msgstr "la commande a &#233;chou&#233;e "
 
+# A verifier
+msgid "Remote POP server Fetching Mail"
+msgstr "R&#233;cup&#233;ration de courrier sur serveur POP"
+
 msgid "Select Server:"
 msgstr "S&#233;lectionnez le serveur&#160;:"
 
@@ -2828,16 +2631,6 @@ msgstr "Mot de passe pour"
 
 msgid "Fetch Mail"
 msgstr "R&#233;cup&#233;rer"
-
-# A verifier
-msgid "Remote POP server Fetching Mail"
-msgstr "R&#233;cup&#233;ration de courrier sur serveur POP"
-
-msgid "No POP3 servers configured yet."
-msgstr "Aucun serveur POP3 configur&#233;."
-
-msgid "Click here to go to the options page."
-msgstr "Cliquez ici pour atteindre la page d'options."
 
 msgid "Fetching from "
 msgstr "R&#233;cup&#233;rer depuis "
@@ -3798,41 +3591,270 @@ msgstr "Rapport d'erreur de transmission"
 msgid "Undelivered Message Headers"
 msgstr "En-t&#234;tes du message non d&#233;livr&#233;"
 
-# Will be in Advanced Search
-msgid "Bcc To"
-msgstr "En Copie cach&#233;e &#224;"
+#~ msgid "Please enter something to search for"
+#~ msgstr "Il faut choisir un crit&#232;re de recherche"
 
-msgid "Cc To"
-msgstr "En Copie &#224;"
+#~ msgid "There must be at least one criteria to search for"
+#~ msgstr "Il faut au moins un crit&#232;re de recherche"
+
+#~ msgid "Error in criteria argument"
+#~ msgstr "Erreur dans l'argument d'un crit&#232;re"
+
+#~ msgid "(Illegal date)"
+#~ msgstr "(Date ill&#233;gale)"
+
+#~ msgid "(Wrong date)"
+#~ msgstr "(Date invalide)"
+
+#~ msgid "In"
+#~ msgstr "Dans"
+
+#~ msgid "(Missing argument)"
+#~ msgstr "(Argument manquant)"
+
+#~ msgid "(Spurious argument)"
+#~ msgstr "(Argument superflu)"
+
+#~ msgid "Saved Searches"
+#~ msgstr "Recherches enregistr&#233;es"
+
+#~ msgid "Missing"
+#~ msgstr "Disparu"
+
+#~ msgid "Exclude Criteria:"
+#~ msgstr "Exclure ce Crit&#232;re&#160;:"
+
+#~ msgid "Search Criteria"
+#~ msgstr "Crit&#232;res de Recherche"
+
+#~ msgid "Add New Criteria"
+#~ msgstr "Ajouter un Crit&#232;re"
+
+#~ msgid "Remove Excluded Criteria"
+#~ msgstr "Supprimer les Crit&#232;res Exclus"
+
+#~ msgid "Remove All Criteria"
+#~ msgstr "Supprimer tous les Crit&#232;res"
+
+#~ msgid "Answered"
+#~ msgstr "R&#233;pondu"
+
+#~ msgid "Before"
+#~ msgstr "Datant d'avant le"
+
+# BODY
+#~ msgid "Message Body"
+#~ msgstr "Corps du message"
+
+#~ msgid "Deleted"
+#~ msgstr "Supprim&#233;"
+
+#~ msgid "Draft"
+#~ msgstr "Brouillon"
+
+#~ msgid "Flagged"
+#~ msgstr "Marqu&#233;"
+
+# FROM
+#~ msgid "Sent By"
+#~ msgstr "Envoy&#233; par"
+
+# HEADER
+#~ msgid "Header Field"
+#~ msgstr "Champ d'en-t&#234;te"
+
+#~ msgid "Keyword"
+#~ msgstr "Mot-cl&#233;"
+
+# LARGER
+#~ msgid "Larger Than"
+#~ msgstr "Plus gros que"
+
+#~ msgid "Old"
+#~ msgstr "Ancien"
+
+#~ msgid "On"
+#~ msgstr "Datant du"
+
+#~ msgid "Recent"
+#~ msgstr "R&#233;cent"
+
+#~ msgid "Seen"
+#~ msgstr "Lu"
+
+#~ msgid "Sent Before"
+#~ msgstr "Envoy&#233; avant le"
+
+#~ msgid "Sent On"
+#~ msgstr "Envoy&#233; le"
+
+#~ msgid "Sent Since"
+#~ msgstr "Envoy&#233; apr&#232;s le"
+
+#~ msgid "Since"
+#~ msgstr "Datant d'apr&#232;s le"
+
+# SMALLER
+#~ msgid "Smaller Than"
+#~ msgstr "Plus petit que"
+
+# SUBJECT
+#~ msgid "Subject Contains"
+#~ msgstr "Objet contenant"
+
+# TEXT
+#~ msgid "Header and Body"
+#~ msgstr "En-t&#234;te et Corps"
+
+# TO
+#~ msgid "Sent To"
+#~ msgstr "Envoy&#233; &#224;"
+
+#~ msgid "Not"
+#~ msgstr "Pas"
+
+#~ msgid "And In"
+#~ msgstr "Et dans"
+
+#~ msgid "Or In"
+#~ msgstr "Ou dans"
+
+#~ msgid "And"
+#~ msgstr "Et"
+
+#~ msgid "Or"
+#~ msgstr "Ou"
+
+#~ msgid "Folder List"
+#~ msgstr "Liste des dossiers"
+
+#~ msgid "ERROR : Bad function call."
+#~ msgstr "ERREUR&#160;: Appel de fonction erron&#233;."
+
+#~ msgid "Reason:"
+#~ msgstr "Cause&#160;:"
+
+#~ msgid "Bypass Trash"
+#~ msgstr "Sans mettre à la Corbeille"
+
+#~ msgid "Click here to change the sorting of the message list"
+#~ msgstr "Cliquer ici pour changer le classement des messages"
+
+#~ msgid "Length of From/To Field (0 for full)"
+#~ msgstr ""
+#~ "Abbr&#233;ger le champ &#171;&#160;De&#160;&#187; / &#171;&#160;&#192;"
+#~ "&#160;&#187; &#224; (0 pour ne pas abbr&#233;ger)&#160;"
+
+#~ msgid "Length of Subject Field (0 for full)"
+#~ msgstr ""
+#~ "Abbr&#233;ger le champ &#171;&#160;Objet&#160;&#187; &#224; (0 pour ne "
+#~ "pas abbr&#233;ger)&#160;"
+
+#~ msgid "Strip signature when replying"
+#~ msgstr "Supprimer la signature du message cit&#233; en r&#233;ponse&#160;"
+
+#~ msgid "Folder List Display Format"
+#~ msgstr "Affichage de la liste des dossiers&#160;"
+
+#~ msgid "Folder"
+#~ msgstr "Dossier"
+
+#~ msgid "Subfolder"
+#~ msgstr "Sous-dossier"
+
+#~ msgid ""
+#~ "FREE - Osirusoft Relays - Osirusofts list of verified open relays. Seems "
+#~ "to include servers used by abuse@uunet.net auto-replies too."
+#~ msgstr ""
+#~ "GRATUIT - <i>Osirusoft Relays</i> - Liste de relais ouverts confirm&#233;"
+#~ "s. Semble inclure les serveurs utilis&#233;s par abuse@uunet.net pour les "
+#~ "r&#233;ponses automatiques."
+
+#~ msgid "FREE - Osirusoft Dialups - Osirusofts Dialup Spam Source list."
+#~ msgstr ""
+#~ "GRATUIT - <i>Osirusoft Dialups</i> - Liste des <i>spammers</i> utilisant "
+#~ "un acc&#232;s t&#233;l&#233;phonique."
+
+#~ msgid ""
+#~ "FREE - Osirusoft Confirmed Spam Source - Sites that continually spam and "
+#~ "have been manually added after multiple nominations. Use with caution. "
+#~ "Seems to catch abuse auto-replies from some ISPs."
+#~ msgstr ""
+#~ "GRATUIT - <i>Osirusoft Confirmed Spam Source</i> - Sites envoyant "
+#~ "continuellement des publicit&#233;s, ajout&#233;s manuellement apr&#232;s "
+#~ "plusieurs nominations. &#192; utiliser avec pr&#233;cautions, cette liste "
+#~ "semble contenir les automates de r&#233;ponses aux abus de certains FAI."
+
+#~ msgid ""
+#~ "FREE - Osirusoft Smart Hosts - List of hosts that are secure but relay "
+#~ "for other mail servers that are not secure."
+#~ msgstr ""
+#~ "GRATUIT - <i>Osirusoft Smart Hosts</i> - Liste de serveurs s&#233;"
+#~ "curis&#233;s mais qui relaient le courrier pour des serveurs non s&#233;"
+#~ "curis&#233;s."
+
+#~ msgid ""
+#~ "FREE - Osirusoft Spamware Developers - It is believed that these are IP "
+#~ "ranges of companies that are known to produce spam software. Seems to "
+#~ "catch abuse auto-replies from some ISPs."
+#~ msgstr ""
+#~ "GRATUIT - <i>Osirusoft Spamware Developers</i> - Certains pensent qu'il "
+#~ "s'agit de plages d'adresses IP allou&#233;es &#224; des entreprises "
+#~ "connues pour d&#233;velopper des logiciels de diffusion publicitaire. "
+#~ "Cette liste semble contenir les automates de r&#233;ponses aux abus de "
+#~ "certains FAI."
+
+#~ msgid ""
+#~ "FREE - Osirusoft Unconfirmed OptIn Servers - List of listservers that opt "
+#~ "users in without confirmation."
+#~ msgstr ""
+#~ "GRATUIT - <i>Osirusoft Unconfirmed OptIn Servers</i> - Liste de serveurs "
+#~ "qui abonnent les utilisateurs sans demander de confirmation."
+
+#~ msgid ""
+#~ "FREE - Osirusoft Insecure formmail.cgi scripts - List of insecure "
+#~ "formmail.cgi scripts. (planned)."
+#~ msgstr ""
+#~ "GRATUIT - <i>Osirusoft Insecure formmail.cgi scripts</i> - Liste de "
+#~ "scripts formmail.cgi non s&#251;rs (planifi&#233;)."
+
+#~ msgid "FREE - Osirusoft Open Proxy Servers - List of Open Proxy Servers."
+#~ msgstr ""
+#~ "GRATUIT - <i>Osirusoft Open Proxy Servers</i> - Liste de serveurs "
+#~ "mandataires ouverts."
+
+#~ msgid "No POP3 servers configured yet."
+#~ msgstr "Aucun serveur POP3 configur&#233;."
+
+#~ msgid "Click here to go to the options page."
+#~ msgstr "Cliquez ici pour atteindre la page d'options."
+
+# Will be in Advanced Search
+#~ msgid "Bcc To"
+#~ msgstr "En Copie cach&#233;e &#224;"
+
+#~ msgid "Cc To"
+#~ msgstr "En Copie &#224;"
 
 # Small Calendar plugin
-msgid "SMTWTFS"
-msgstr "DLMMJVS"
-
-msgid "Today"
-msgstr "Aujourd'hui"
+#~ msgid "SMTWTFS"
+#~ msgstr "DLMMJVS"
 
 # Spam plugins
-msgid "Spam"
-msgstr "Courrier non sollicit&#233;"
+#~ msgid "Spam"
+#~ msgstr "Courrier non sollicit&#233;"
 
-msgid "Whitelist From"
-msgstr "Exp&#233;diteur sur liste blanche"
+#~ msgid "Whitelist From"
+#~ msgstr "Exp&#233;diteur sur liste blanche"
 
-msgid "Don't Whitelist From"
-msgstr "Exp&#233;diteur hors liste blanche"
+#~ msgid "Don't Whitelist From"
+#~ msgstr "Exp&#233;diteur hors liste blanche"
 
-msgid "Blacklist From"
-msgstr "Exp&#233;diteur sur liste noire"
+#~ msgid "Blacklist From"
+#~ msgstr "Exp&#233;diteur sur liste noire"
 
-msgid "Don't Blacklist From"
-msgstr "Exp&#233;diteur hors liste noire"
+#~ msgid "Don't Blacklist From"
+#~ msgstr "Exp&#233;diteur hors liste noire"
 
-msgid "Whitelist To"
-msgstr "Destinataire sur liste blanche"
-
-msgid "Save folder tree"
-msgstr "Enregistrer l'arborescence"
-
-msgid "Unknown Sender"
-msgstr "Exp&#233;diteur inconnu"
+#~ msgid "Whitelist To"
+#~ msgstr "Destinataire sur liste blanche"
