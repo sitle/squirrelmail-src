@@ -8,12 +8,11 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: $Id: squirrelmail.po,v 1.5 2003/09/23 07:01:02 tokul Exp "
-"$\n"
+"Project-Id-Version: $Id$\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2003-10-05 12:27+0300\n"
-"PO-Revision-Date: 2003-09-17 01:54-0300\n"
-"Last-Translator: Marcos Tadeu <marcos@v2r.com.br>\n"
+"PO-Revision-Date: 2003-09-14 13:31-0300\n"
+"Last-Translator: Marcos Tadeu von Lutzow Vidal <marcos@v2r.com.br>\n"
 "Language-Team: Portuguese (Brazilian) <squirrelmail-i18n@lists.sourceforge."
 "net>\n"
 "MIME-Version: 1.0\n"
@@ -161,9 +160,8 @@ msgstr "Não posso mover/copiar arquivo. Arquivo não está anexado."
 msgid "Draft Saved"
 msgstr "Rascunho salvo"
 
-#, fuzzy
 msgid "Your Message has been sent"
-msgstr "Sua mensagem foi enviada."
+msgstr "Sua mensagem foi enviada"
 
 msgid "From:"
 msgstr "De:"
@@ -622,7 +620,7 @@ msgid "CC"
 msgstr "CC"
 
 msgid "Printer Friendly"
-msgstr "Imprimir Amigavelmente"
+msgstr "Versão para Impressão"
 
 msgid "Print"
 msgstr "Imprimir"
@@ -659,7 +657,7 @@ msgid "Read receipt"
 msgstr "Recibo de leitura"
 
 msgid "sent"
-msgstr "enviar"
+msgstr "enviado"
 
 msgid "requested"
 msgstr "pedida"
@@ -828,7 +826,7 @@ msgid "No such file or directory"
 msgstr "Arquivo ou diretório não encontrado"
 
 msgid "Open failed"
-msgstr "Falha na abertura do arquivou"
+msgstr "Falha na abertura do arquivo"
 
 msgid "Can not modify global address book"
 msgstr "Não é possível modificar o Livro de Endereços Global"
@@ -846,7 +844,7 @@ msgid "Could not lock datafile"
 msgstr "Não foi possível travar o arquivo de dados"
 
 msgid "Write to addressbook failed"
-msgstr "Falha para gravar no livro de endereçosu"
+msgstr "A escrita no Livro de Endereços falhou"
 
 msgid "Error initializing addressbook database."
 msgstr "Erro ao iniciar o banco de dados do Livro de Endereços"
@@ -1102,7 +1100,7 @@ msgid ""
 "Signature file, %s, could not be copied from temporary file, %s. Contact "
 "your system administrator to resolve this issue."
 msgstr ""
-"O arquivo de assinatura, %s, não pôde ser copiado do arquivo temporário, %s. "
+"Arquivo de assinatura, %s, não pôde ser copiado do arquivo temporário, %s. "
 "Entre em contato com seu administrador para ajuda."
 
 msgid ""
@@ -1134,7 +1132,7 @@ msgid "Server responded: "
 msgstr "Resposta do servidor: "
 
 msgid "ERROR : Imap server closed the connection."
-msgstr "ERRO: O servidor IMAp fechou a conexão."
+msgstr "ERRO: Servidor imap fechou a conexão."
 
 msgid "ERROR : Unknown imap response."
 msgstr "ERRO: Resposta imap desconhecida"
@@ -1177,7 +1175,7 @@ msgid "Unknown response from IMAP server: "
 msgstr "Resposta desconhecida do servidor IMAP: "
 
 msgid "The server couldn't find the message you requested."
-msgstr "O servidor não pode achar a mensagem que você requisitou."
+msgstr "O servidor não pôde achar a mensagem que você requisitou."
 
 msgid ""
 "Most probably your message list was out of date and the message has been "
@@ -1373,7 +1371,7 @@ msgid "Requested action not taken: mailbox name not allowed"
 msgstr "Ação requerida não foi feita: Nome de mailbox não permitida"
 
 msgid "Transaction failed"
-msgstr "falha na transação"
+msgstr "Falha na transação"
 
 msgid "Unknown response"
 msgstr "Resposta desconhecida"
@@ -1421,7 +1419,7 @@ msgid "Maximum Number of Pages to Show"
 msgstr "Número max. de páginas para mostrar"
 
 msgid "Always Show Full Date"
-msgstr "Sempre mostre a data completa"
+msgstr "Sempre mostrar data completa"
 
 msgid "Message Display and Composition"
 msgstr "Composição e disposição da mensagem"
@@ -1477,7 +1475,7 @@ msgstr ""
 "Impressão&quot;"
 
 msgid "Enable Mail Delivery Notification"
-msgstr "Ativar a notificação de entrega de mensagem"
+msgstr "Habilitar notificação de entrega de mensagem"
 
 msgid "Compose Messages in New Window"
 msgstr "Escrever mensagem em &quot;nova janela&quot;"
@@ -1492,7 +1490,7 @@ msgid "Append Signature before Reply/Forward Text"
 msgstr "Coloque a assinatura antes do texto da mensagem original"
 
 msgid "Enable Sort by of Receive Date"
-msgstr "Habilitar a classificação pela data de recepção"
+msgstr "Habilitar a ordenação pela data de recepção"
 
 msgid "Enable Thread Sort by References Header"
 msgstr "Habilitar agrupamento por assunto baseado nas referências do cabeçalho"
@@ -1569,7 +1567,6 @@ msgstr "Somente não lidas"
 msgid "Unseen and Total"
 msgstr "Não lidas e Total"
 
-#, fuzzy
 msgid "Enable Collapsible Folders"
 msgstr "Permitir pastas com sub-pastas"
 
@@ -1679,7 +1676,7 @@ msgid "Address Book Take:"
 msgstr "Livro de Endereços:"
 
 msgid "Try to verify addresses"
-msgstr "Tentar verificar endereços"
+msgstr "Tentar verrificar endereços"
 
 msgid "Config File Version"
 msgstr "Versão do arquivo de configuração"
@@ -1955,7 +1952,7 @@ msgid "Theme Path"
 msgstr "Caminho do Tema"
 
 msgid "Plugins"
-msgstr "Plug Ins"
+msgstr "Plugins"
 
 msgid "Change Settings"
 msgstr "Alterar configurações"
@@ -2056,7 +2053,7 @@ msgid "30 min."
 msgstr "30 min."
 
 msgid "45 min."
-msgstr "15 min."
+msgstr "45 min."
 
 msgid "1 hr."
 msgstr "1 h."
@@ -2870,7 +2867,7 @@ msgstr "%s mensagens novas"
 
 #, c-format
 msgid "%s New Message"
-msgstr "%s mensagem nova"
+msgstr "%s nova(s) mensagem(ens)"
 
 msgid "Test Sound"
 msgstr "Som de teste"
@@ -2911,7 +2908,7 @@ msgid ""
 "fast, really smart, and easy to use."
 msgstr ""
 "Ajude lutando na batalha contra emails não solicitados. O sistema SpamCople "
-"a mensagem e determina corretamente os endereços para onde enviar queixas.É "
+"a mensagem e determina corretamente os endereços para onde enviar queixas. É "
 "rápido, realmente esperto e fácil de usar."
 
 msgid "SpellChecker Options"
@@ -3319,7 +3316,7 @@ msgid "Number of supported language pairs: %s"
 msgstr "Número de pares de idiomas suportados: %s"
 
 msgid "No known limits, powered by Systran"
-msgstr "Sem limite, powered by Systran"
+msgstr "Sem limites, powered by Systran"
 
 msgid "No known limits, powered by Translation Experts's InterTran"
 msgstr "Sem limites, powered by Translation Experts's InterTran"
@@ -3332,10 +3329,10 @@ msgid "No known limits, powered by GPLTrans (free, open source)"
 msgstr "Sem limites, powered by GPLTrans (gratuito, fonte aberta)"
 
 msgid "Hellenic translations, no known limits, powered by Systran"
-msgstr "Traduções para \"Hellenic\", sem limites, powered by Systran"
+msgstr "Tradução do \"Hellenic\", sem limites, powered by Systran"
 
 msgid "Russian translations, maximum of 500 characters translated"
-msgstr "Traduções para russo, máximo de 500 caracteres"
+msgstr "Tradução do Russo, máximo de 500 caracteres, powered by Systran"
 
 msgid ""
 "You also decide if you want the translation box displayed, and where it will "
@@ -3485,7 +3482,7 @@ msgid "Latin"
 msgstr "Latin"
 
 msgid "to English"
-msgstr "para o Inglês"
+msgstr "Para o Inglês"
 
 msgid "from English"
 msgstr "do Inglês"
@@ -3494,7 +3491,7 @@ msgid "Interface language"
 msgstr "Idioma da interface"
 
 msgid "Translation direction"
-msgstr "Direção da Tradução"
+msgstr "Direção de Tradução"
 
 msgid "Delivery error report"
 msgstr "Relatório de erro de envio"
@@ -3502,149 +3499,8 @@ msgstr "Relatório de erro de envio"
 msgid "Undelivered Message Headers"
 msgstr "Cabeçalho da mensagem não enviada"
 
-#~ msgid "Please enter something to search for"
-#~ msgstr "Por favor, entre com algo para procurar"
-
-#~ msgid "There must be at least one criteria to search for"
-#~ msgstr "Deve haver pelo menos um critério para a procura"
-
-#~ msgid "Error in criteria argument"
-#~ msgstr "Erro no argumentos dos critérios"
-
-#~ msgid "(Illegal date)"
-#~ msgstr "(Data ilegal)"
-
-#~ msgid "(Wrong date)"
-#~ msgstr "(Data errada)"
-
-#~ msgid "In"
-#~ msgstr "Em"
-
-#~ msgid "(Missing argument)"
-#~ msgstr "(Falta argumento)"
-
-#~ msgid "(Spurious argument)"
-#~ msgstr "(argumento demais)"
-
-#~ msgid "Saved Searches"
-#~ msgstr "Buscas guardadas"
-
-#~ msgid "Missing"
-#~ msgstr "Faltando"
-
-#~ msgid "Exclude Criteria:"
-#~ msgstr "Critério exclusivo:"
-
-#~ msgid "Search Criteria"
-#~ msgstr "Critério de procura"
-
-#~ msgid "Add New Criteria"
-#~ msgstr "Adicionar novo critério"
-
-#~ msgid "Remove Excluded Criteria"
-#~ msgstr "Remover o critério exclusivo"
-
-#~ msgid "Remove All Criteria"
-#~ msgstr "Remover todos os critérios"
-
-#~ msgid "Answered"
-#~ msgstr "Respondido"
-
-#~ msgid "Before"
-#~ msgstr "Antes de"
-
-#~ msgid "Message Body"
-#~ msgstr "Corpo da Mensagem"
-
-#~ msgid "Deleted"
-#~ msgstr "Apagado"
-
-#~ msgid "Draft"
-#~ msgstr "Rascunho"
-
-#~ msgid "Flagged"
-#~ msgstr "Marcadas"
-
-#~ msgid "Sent By"
-#~ msgstr "Enviado por"
-
-#~ msgid "Header Field"
-#~ msgstr "Campo do Cabeçalho"
-
-#~ msgid "Keyword"
-#~ msgstr "Palavra chave"
-
-#~ msgid "Larger Than"
-#~ msgstr "Maior que"
-
-#~ msgid "Old"
-#~ msgstr "Antigo"
-
-#~ msgid "On"
-#~ msgstr "Em"
-
-#~ msgid "Recent"
-#~ msgstr "Recente"
-
-#~ msgid "Seen"
-#~ msgstr "Visto"
-
-#~ msgid "Sent Before"
-#~ msgstr "Enviada antes de"
-
-#~ msgid "Sent On"
-#~ msgstr "Enviada em"
-
-#~ msgid "Sent Since"
-#~ msgstr "Enviado desde"
-
-#~ msgid "Since"
-#~ msgstr "Desde"
-
-#~ msgid "Smaller Than"
-#~ msgstr "Menor que"
-
-#~ msgid "Subject Contains"
-#~ msgstr "Assunto Contém"
-
-#~ msgid "Header and Body"
-#~ msgstr "Cabeçalho e Corpo"
-
-#~ msgid "Sent To"
-#~ msgstr "Enviada para"
-
-#~ msgid "Not"
-#~ msgstr "Não"
-
-#~ msgid "And In"
-#~ msgstr "E Em"
-
-#~ msgid "Or In"
-#~ msgstr "Ou Em"
-
-#~ msgid "And"
-#~ msgstr "E"
-
-#~ msgid "Or"
-#~ msgstr "Or"
-
-#~ msgid "Folder List"
-#~ msgstr "Lista de Pastas"
-
-#~ msgid "ERROR : Bad function call."
-#~ msgstr "ERRO: chamada errada de função."
-
-#~ msgid "Reason:"
-#~ msgstr "Razão:"
-
-#~ msgid "Click here to change the sorting of the message list"
-#~ msgstr "Clique aqui para alterar a ordenação da lista de mensagens"
-
-#~ msgid "Length of From/To Field (0 for full)"
-#~ msgstr "Tamanho do campo De/Para (0 para todo)"
-
-#~ msgid "Strip signature when replying"
-#~ msgstr "Deixar sem assinatura quando respondendo"
+#~ msgid "refresh unseen/total info"
+#~ msgstr "Atualizar \"não lidas\"/total"
 
 #~ msgid ""
 #~ "FREE - Osirusoft Relays - Osirusofts list of verified open relays. Seems "
@@ -3702,12 +3558,6 @@ msgstr "Cabeçalho da mensagem não enviada"
 #~ msgstr ""
 #~ "FREE - Osirusoft Open Proxy Servers - Lista de servidores proxy abertos."
 
-#~ msgid "No POP3 servers configured yet."
-#~ msgstr "Nenhum servidor POP3 especificado"
-
-#~ msgid "Click here to go to the options page."
-#~ msgstr "Clique aqui para ir para página de opções."
-
 #~ msgid "Not available"
 #~ msgstr "Não disponível"
 
@@ -3753,6 +3603,9 @@ msgstr "Cabeçalho da mensagem não enviada"
 
 #~ msgid "Left aligned"
 #~ msgstr "Alinhado a esquerda"
+
+#~ msgid "Centered"
+#~ msgstr "Centralizado"
 
 #~ msgid "Right aligned"
 #~ msgstr "Alinhado a direita"

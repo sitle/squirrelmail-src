@@ -1,21 +1,23 @@
+# translation of squirrelmail.new.po to Nynorsk
 # Norwegian Nynorsk Squirrelmail Translation
 # Copyright (c) 1999-2002 The Squirrelmail Development Team
 # Magni Onsøien <magnio-squirrel@initio.no>, 2000.
 # Ola Ketil Siqveland <ola.k.siqveland@tn.his.no>, 2002.
+# Ola Ketil Siqveland <olaketil@hotmail.com>, 2003
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: $Id: squirrelmail.po,v 1.1 2003/07/13 10:01:44 tokul Exp "
-"$\n"
+"Project-Id-Version: squirrelmail.new\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2003-10-05 12:27+0300\n"
-"PO-Revision-Date: 2003-01-02 14:59+0100\n"
-"Last-Translator: Ola Ketil Siqveland <ola.k.siqveland@tn.his.no>\n"
-"Language-Team: Norwegian nynorsk\n"
+"PO-Revision-Date: 2003-09-18 07:57+0200\n"
+"Last-Translator: Ola Ketil Siqveland <olaketil@hotmail.com>\n"
+"Language-Team: Nynorsk <nn@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=ISO-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 0.9.6\n"
+"philippe_mingo Exp $\n"
+"X-Generator: KBabel 1.0.1\n"
 
 msgid "Address Book"
 msgstr "Adressebok"
@@ -223,9 +225,8 @@ msgstr "Du har ikkje fylt ut \"Til:\"-feltet"
 msgid "Draft folder"
 msgstr "Mappe til kladd"
 
-#, fuzzy
 msgid "Server replied: "
-msgstr "Serveren svarte: "
+msgstr "Serveren svarte:"
 
 msgid "Illegal folder name.  Please select a different name."
 msgstr "Ulovleg mappenamn. Ver venleg og velj eit anna namn."
@@ -895,30 +896,26 @@ msgstr "Fredag"
 msgid "Saturday"
 msgstr "Laurdag"
 
-#, fuzzy
 msgid "Sun"
 msgstr "Sundag"
 
-#, fuzzy
 msgid "Mon"
 msgstr "Måndag"
 
-#, fuzzy
 msgid "Tue"
 msgstr "Tysdag"
 
 msgid "Wed"
-msgstr ""
+msgstr "Onsdag"
 
 msgid "Thu"
-msgstr ""
+msgstr "Torsdag"
 
-#, fuzzy
 msgid "Fri"
 msgstr "Fredag"
 
 msgid "Sat"
-msgstr ""
+msgstr "Laurdag"
 
 msgid "January"
 msgstr "Januar"
@@ -956,49 +953,41 @@ msgstr "November"
 msgid "December"
 msgstr "Desember"
 
-#, fuzzy
 msgid "Jan"
-msgstr "Januar"
+msgstr "Jan"
 
 msgid "Feb"
-msgstr ""
+msgstr "Feb"
 
-#, fuzzy
 msgid "Mar"
-msgstr "Mars"
+msgstr "Mar"
 
-#, fuzzy
 msgid "Apr"
-msgstr "April"
+msgstr "Apr"
 
 msgid "Ma&#121;"
-msgstr ""
+msgstr "Mai"
 
-#, fuzzy
 msgid "Jun"
-msgstr "Juni"
+msgstr "Jun"
 
-#, fuzzy
 msgid "Jul"
-msgstr "Juli"
+msgstr "Jul"
 
-#, fuzzy
 msgid "Aug"
-msgstr "August"
+msgstr "Aug"
 
 msgid "Sep"
-msgstr ""
+msgstr "Sep"
 
-#, fuzzy
 msgid "Oct"
-msgstr "Oktober"
+msgstr "Okt"
 
-#, fuzzy
 msgid "Nov"
-msgstr "Nei"
+msgstr "Nov"
 
 msgid "Dec"
-msgstr ""
+msgstr "Des"
 
 msgid "D, F j, Y g:i a"
 msgstr "D, F j, Y g:i a"
@@ -1062,13 +1051,13 @@ msgstr ""
 "Innstillingsfila %s kunne ikkje skrivast. Ta kontakt med systemadministrator "
 "for hjelp"
 
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Preference file, %s, could not be copied from temporary file, %s. Contact "
 "your system administrator to resolve this issue."
 msgstr ""
-"Innstillingsfila %s kunne ikkje opnast. Ta kontakt med systemadministrator "
-"for hjelp"
+"Innstillingsfila %s kunne ikkje kopierast frå midlertidig fil %s. Ta kontakt "
+"med systemadministrator for hjelp"
 
 #, c-format
 msgid "Error opening %s"
@@ -1103,27 +1092,26 @@ msgstr ""
 "Signatur fila %s kan ikkje skrivast. Kontakt systemadministartor for å løysa "
 "problemet"
 
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Signature file, %s, could not be copied from temporary file, %s. Contact "
 "your system administrator to resolve this issue."
 msgstr ""
-"Signatur fila %s kan ikkje opnast. Kontakt systemadministartor for å løysa "
-"problemet"
+"Signatur fila %s kan ikkje kopierast frå midlertidig fil, %s. Kontakt "
+"systemadministartor for å løysa dette problemet"
 
-#, fuzzy
 msgid ""
 "You need to have php4 installed with the multibyte string function enabled "
 "(using configure option --enable-mbstring)."
 msgstr ""
 "Ein treng php4 installert med \"multibyte string function\" slått på (bruk "
-"konfigurasjonsvalet --with-mbstring)."
+"konfigurasjonsvalet --enable-mbstring)."
 
 msgid "ERROR : No available imapstream."
 msgstr "FEIL: inga tilgjengeleg imapstraum."
 
 msgid "ERROR : Connection dropped by imap-server."
-msgstr ""
+msgstr "FEIL : Samband avbrutt av imap tenar"
 
 msgid "ERROR : Could not complete request."
 msgstr "FEIL: Kunne ikkje fullføre førespurnaden."
@@ -1141,10 +1129,10 @@ msgid "Server responded: "
 msgstr "Serveren svarte: "
 
 msgid "ERROR : Imap server closed the connection."
-msgstr ""
+msgstr "FEIL : Imap tenar lukka sambandet"
 
 msgid "ERROR : Unknown imap response."
-msgstr ""
+msgstr "FEIL : Ukjent imap svar."
 
 #, c-format
 msgid "Error connecting to IMAP server: %s."
@@ -1182,13 +1170,15 @@ msgid "Unknown response from IMAP server: "
 msgstr "Ukjent respons frå IMAP tjenaren"
 
 msgid "The server couldn't find the message you requested."
-msgstr ""
+msgstr "Tenaren fant ikkje meldinga du ønska"
 
 msgid ""
 "Most probably your message list was out of date and the message has been "
 "moved away or deleted (perhaps by another program accessing the same "
 "mailbox)."
 msgstr ""
+"Truleg er lista med meldingar gamal og meldinga er flytta eller sletta "
+"(kanskje av eit anna anna program med tilgang til same postboks)."
 
 msgid "Unknown date"
 msgstr "Ukjend dato"
@@ -1317,73 +1307,67 @@ msgid "Could not create hashed directory structure!"
 msgstr "Klarte ikkje oppretta nøkkelkatalogstrukturen"
 
 msgid "Service not available, closing channel"
-msgstr ""
+msgstr "Teneste er ikkje tilgjengeleg, lukker kanalen"
 
 msgid "A password transition is needed"
-msgstr ""
+msgstr "Treng ein passord overgang"
 
 msgid "Requested mail action not taken: mailbox unavailable"
-msgstr ""
+msgstr "Ikkje utført ønska epost handling: postboksen ikkje tilgjengeleg"
 
 msgid "Requested action aborted: error in processing"
-msgstr ""
+msgstr "Avbrytt ønska handling: feil behandlaren"
 
 msgid "Requested action not taken: insufficient system storage"
-msgstr ""
+msgstr "Ikkje utført ønska handling: manglar lagerplass"
 
-#, fuzzy
 msgid "Temporary authentication failure"
-msgstr "apop autentifisering misslukkast."
+msgstr "Mellombels misslukka autentifisering."
 
 msgid "Syntax error; command not recognized"
-msgstr ""
+msgstr "Syntaksfeil ukjend kommando"
 
 msgid "Syntax error in parameters or arguments"
-msgstr ""
+msgstr "Syntaksfeil feil i parameter eller i argumenta"
 
-#, fuzzy
 msgid "Command not implemented"
-msgstr "Kommando feila"
+msgstr "Kommando ikkje implementert"
 
 msgid "Bad sequence of commands"
-msgstr ""
+msgstr "Feil rekkefølge av kommandoar"
 
 msgid "Command parameter not implemented"
-msgstr ""
+msgstr "Kommando parameter ikkje implementert"
 
-#, fuzzy
 msgid "Authentication required"
-msgstr "autentiseringa mislukkast."
+msgstr "Krev autentisering"
 
 msgid "Authentication mechanism is too weak"
-msgstr ""
+msgstr "Mekanismen for autentisering er for svak"
 
-#, fuzzy
 msgid "Authentication failed"
-msgstr "autentiseringa mislukkast."
+msgstr "Autentiseringa mislukkast."
 
 msgid "Encryption required for requested authentication mechanism"
-msgstr ""
+msgstr "Krev kryptering for ønska autentisering"
 
 msgid "Requested action not taken: mailbox unavailable"
-msgstr ""
+msgstr "Ønska handling ikkje utført: postboks ikkje tilgjengeleg"
 
 msgid "User not local; please try forwarding"
-msgstr ""
+msgstr "Ikkje lokal brukar; prøv vidaresending"
 
 msgid "Requested mail action aborted: exceeding storage allocation"
-msgstr ""
+msgstr "Ønska handling avbrutt: utenfor minnetildelinga"
 
 msgid "Requested action not taken: mailbox name not allowed"
-msgstr ""
+msgstr "Ønska handling ikkje utført: ikkje tillat postboks namn"
 
-#, fuzzy
 msgid "Transaction failed"
-msgstr "autentiseringa mislukkast."
+msgstr "Overføringa mislukkast."
 
-#, fuzzy
 msgid "Unknown response"
-msgstr "Ukjend avsendar"
+msgstr "Ukjend respons"
 
 msgid "General Display Options"
 msgstr "Generelle visingsval"
@@ -1574,7 +1558,6 @@ msgstr "Berre ulesne"
 msgid "Unseen and Total"
 msgstr "Ulesne og totalt tal"
 
-#, fuzzy
 msgid "Enable Collapsible Folders"
 msgstr "Slå på krymping av mapper"
 
@@ -1636,7 +1619,7 @@ msgid "Same as server"
 msgstr "Det same som tjenaren"
 
 msgid "Error opening timezone config, contact administrator."
-msgstr ""
+msgstr "Feil ved opning av tidssone oppsettet; kontakt administrator."
 
 msgid "Timezone Options"
 msgstr "Tidssone val"
@@ -1677,16 +1660,14 @@ msgstr "Bruk ein signatur"
 msgid "Prefix Signature with '-- ' Line"
 msgstr "Prefiks signaturen med '-- ' linje"
 
-#, fuzzy
 msgid "Take Address"
 msgstr "Adresse"
 
-#, fuzzy
 msgid "Address Book Take:"
 msgstr "Adressebok"
 
 msgid "Try to verify addresses"
-msgstr ""
+msgstr "Prøver verifiserer adressa"
 
 msgid "Config File Version"
 msgstr "Versjon av konfigurasjonsfil"
@@ -1719,9 +1700,8 @@ msgid "Signout Page"
 msgstr "Logg ut side"
 
 msgid "Provider Link URI"
-msgstr ""
+msgstr "Tenar Link URI"
 
-#, fuzzy
 msgid "Provider Name"
 msgstr "Tenarnamn:"
 
@@ -1768,16 +1748,14 @@ msgid "Use \"detect\" to auto-detect."
 msgstr "Bruk \"Oppdag\" for oppdag automatisk."
 
 msgid "Use TLS for IMAP Connections"
-msgstr ""
+msgstr "Bruk TLS for IMAP tilkoplingar"
 
 msgid "Requires PHP 4.3.x! Experimental."
-msgstr ""
+msgstr "Krev PHP 4.3.x! Eksperimentell."
 
-#, fuzzy
 msgid "IMAP Authentication Type"
-msgstr "autentiseringa mislukkast."
+msgstr "IMAP autentiseringstype"
 
-#, fuzzy
 msgid "Use Sendmail Binary"
 msgstr "Bruk Sendmail"
 
@@ -1791,14 +1769,13 @@ msgid "SMTP Server Port"
 msgstr "SMTP tenarport"
 
 msgid "Use TLS for SMTP Connections"
-msgstr ""
+msgstr "Bruk TLS for SMTP tilkoplingar"
 
-#, fuzzy
 msgid "SMTP Authentication Type"
-msgstr "autentiseringa mislukkast."
+msgstr "SMTP autentiseringstype"
 
 msgid "POP3 Before SMTP?"
-msgstr ""
+msgstr "POP3 før SMTP?"
 
 msgid "Invert Time"
 msgstr "Omvendt tid"
@@ -1854,9 +1831,8 @@ msgstr "Standard JavaScript adressebok"
 msgid "Auto delete folders"
 msgstr "Slett mapper automatisk"
 
-#, fuzzy
 msgid "Enable /NoSelect folder fix"
-msgstr "Slå på sideveljar"
+msgstr "Vel Ikkje faste mapper"
 
 msgid "General Options"
 msgstr "Generelle val"
@@ -1904,21 +1880,19 @@ msgid "Allow editing of full name"
 msgstr "Tillat redigering av heile namnet"
 
 msgid "Use server-side sorting"
-msgstr ""
+msgstr "Bruk sortering på server"
 
-#, fuzzy
 msgid "Use server-side thread sorting"
-msgstr "Bruk referansetopptekst til trådsortering"
+msgstr "Bruk server til trådsortering"
 
 msgid "Allow server charset search"
-msgstr ""
+msgstr "Tillet karater søk på server"
 
 msgid "UID support"
-msgstr ""
+msgstr "UID støtte"
 
-#, fuzzy
 msgid "PHP session name"
-msgstr "PHP versjon"
+msgstr "PHP økt namn"
 
 msgid "Message of the Day"
 msgstr "Dagens melding"
@@ -1953,12 +1927,11 @@ msgstr "Tema"
 msgid "Style Sheet URL (css)"
 msgstr "Stilark URL (css)"
 
-#, fuzzy
 msgid "Default theme"
-msgstr "Standard teiknsett"
+msgstr "Standard tema"
 
 msgid "Use index number of theme"
-msgstr ""
+msgstr "Bruk indekserte tema"
 
 msgid "Configuration Administrator"
 msgstr "Konfigurasjonsadministrator"
@@ -2203,6 +2176,7 @@ msgstr ""
 msgid "FREE - SPAMhaus - A list of well-known SPAM sources."
 msgstr "GRATIS - SPAMhaus - Ei liste over velkjendte søppelkjelder."
 
+#, fuzzy
 msgid ""
 "FREE, for now - SPAMCOP - An interesting solution that lists servers that "
 "have a very high spam to legit email ratio (85% or more)."
@@ -2413,29 +2387,29 @@ msgstr "PÅ"
 msgid "OFF"
 msgstr "AV"
 
-#, fuzzy
 msgid " not found."
-msgstr "Fant ingen feil"
+msgstr " ikkje funnen"
 
 msgid "Today's Fortune"
-msgstr ""
+msgstr "Dagens fru Fortuna"
 
-#, fuzzy
 msgid "Fortunes:"
-msgstr "Portugisisk"
+msgstr "Lykkelodd"
 
 msgid "Show fortunes at top of mailbox"
-msgstr ""
+msgstr "Vis Lodd på toppen av postboksen"
 
-#, fuzzy
 msgid "IMAP server information"
-msgstr "IMAP tenarport"
+msgstr "IMAP tenarinfromasjon"
 
 msgid ""
 "Run some test IMAP commands, displaying both the command and the result. "
 "These tests use the Squirrelmail IMAP commands and your current Squirrelmail "
 "configuration. Custom command strings can be used."
 msgstr ""
+"Test nokre IMAP kommandoar, vis både kommandoen og resultatet. Testane "
+"brukar Squirrelimail sine IMAP kommandoar og ditt nåverande Squirrelmail "
+"oppsett. Kan også bruka eigendefinerte kommandoar."
 
 msgid "Mailinglist"
 msgstr "E-postliste"
@@ -2763,20 +2737,17 @@ msgstr ""
 "Her konfigureres innstillinger for å hente e-post fra en pop3 konto til din "
 "konto på denne tenaren."
 
-#, fuzzy
 msgid "Message Details"
-msgstr "Meldingsliste"
+msgstr "Meldingsdetaljar"
 
 msgid "Close Window"
 msgstr "Lukk vindauge"
 
-#, fuzzy
 msgid "Save Message"
-msgstr "Vis melding"
+msgstr "Lagre melding"
 
-#, fuzzy
 msgid "View Message details"
-msgstr "Vis melding"
+msgstr "Vis meldingsdetaljar"
 
 msgid "New Mail Notification"
 msgstr "Varsling ved ny e-post"
@@ -2826,16 +2797,13 @@ msgstr ""
 "Opera). Dette vil altid vise når der er ulest e-post, også sjølvom du har "
 "valgt <b>kontroller kun nye</b>."
 
-#, fuzzy
 msgid ""
 "Select from the list of <b>server files</b> the media file to play when new "
 "mail arrives.  If no file is specified, \"(none)\", no sound will be used."
 msgstr ""
-"Vel mediefila fra lista <b>tenar filer</b> som skal spelast av når der kjem "
-"ny e-post. Viss du vel ei <b>lokal fil</b>, vil den brukast som er "
-"spesifiseret i boksen <b>lokal mediafil</b>, frå din eigen datamaskin. Viss "
-"det ikkje er spesifisert noko fil, vil systemet bruka ei standardfil fra "
-"tenaren."
+"Vel mediefila fra lista av <b>tenar filer</b> som skal spelast av når der "
+"kjem ny e-post.  Viss det ikkje er spesifisert noko fil, vil det ikkje verta "
+"noko lyd."
 
 msgid "Enable Media Playing"
 msgstr "Slå på mediespelaren"
@@ -2858,9 +2826,8 @@ msgstr "Vis oppsprettvindauge ved ny e-post"
 msgid "Select server file:"
 msgstr "Vel tenarfil."
 
-#, fuzzy
 msgid "(none)"
-msgstr "Inga"
+msgstr "(Inga)"
 
 msgid "Try"
 msgstr "Forsøk"
@@ -2901,9 +2868,8 @@ msgstr "%s ny melding"
 msgid "Test Sound"
 msgstr "Test lyd"
 
-#, fuzzy
 msgid "No sound specified"
-msgstr "Inga tenar spesifisert"
+msgstr "Inga lydfil spesifisert"
 
 msgid "Loading the sound..."
 msgstr "Startar lyden"
@@ -3034,9 +3000,8 @@ msgstr "Linje med ein feil"
 msgid "Error:"
 msgstr "Feil: "
 
-#, fuzzy
 msgid "Suggestions:"
-msgstr "Fleire forslag"
+msgstr "Forslag"
 
 msgid "Suggestions"
 msgstr "Fleire forslag"
@@ -3301,7 +3266,6 @@ msgstr "Instill internasjonale ordbøker"
 msgid "Encrypt or decrypt your personal dictionary"
 msgstr "Krypter eller dekrypter di personlege ordbok"
 
-#, fuzzy
 msgid "not available"
 msgstr "Ikkje tilgjengeleg"
 
@@ -3319,7 +3283,7 @@ msgstr "Tenarinstillingane er følgjande:"
 
 #, fuzzy
 msgid "Maximum of 1000 characters translated, powered by Systran"
-msgstr "13 sprogpar, maksimalt 1000 teikn oversatt, Drevet av Systran"
+msgstr "19 sprogpar, maksimalt 1000 teikn oversatt, Drevet av Systran"
 
 #, c-format
 msgid "Number of supported language pairs: %s"
@@ -3332,7 +3296,7 @@ msgstr "12 språkpar, inga kjent grense, Dreven av Systran"
 #, fuzzy
 msgid "No known limits, powered by Translation Experts's InterTran"
 msgstr ""
-"767 språkpar, inga kjent grense, Drevet av Translation Expert's InterTran"
+"784 språkpar, inga kjent grense, Drevet av Translation Expert's InterTran"
 
 #, c-format
 msgid "Number of supported languages: %s"
@@ -3349,7 +3313,7 @@ msgstr "12 språkpar, inga kjent grense, Dreven av Systran"
 
 #, fuzzy
 msgid "Russian translations, maximum of 500 characters translated"
-msgstr "13 sprogpar, maksimalt 1000 teikn oversatt, Drevet av Systran"
+msgstr "19 sprogpar, maksimalt 1000 teikn oversatt, Drevet av Systran"
 
 msgid ""
 "You also decide if you want the translation box displayed, and where it will "
@@ -3401,9 +3365,8 @@ msgstr " %s til %s"
 msgid "English"
 msgstr "Engelsk"
 
-#, fuzzy
 msgid "Chinese"
-msgstr "Endra"
+msgstr "Kinesisk"
 
 msgid "French"
 msgstr "Fransk"
@@ -3417,9 +3380,8 @@ msgstr "Italiensk"
 msgid "Japanese"
 msgstr "Japansk"
 
-#, fuzzy
 msgid "Korean"
-msgstr "Norsk"
+msgstr "Koreansk"
 
 msgid "Portuguese"
 msgstr "Portugisisk"
@@ -3488,7 +3450,7 @@ msgid "Swedish"
 msgstr "Svensk"
 
 msgid "Turkish"
-msgstr ""
+msgstr "Tyrkisk"
 
 msgid "Welsh"
 msgstr "Walisisk"
@@ -3499,13 +3461,11 @@ msgstr "Indonesisk"
 msgid "Latin"
 msgstr "Latin"
 
-#, fuzzy
 msgid "to English"
-msgstr "Engelsk"
+msgstr "til Engelsk"
 
-#, fuzzy
 msgid "from English"
-msgstr "Engelsk"
+msgstr "frå Engelsk"
 
 #, fuzzy
 msgid "Interface language"
@@ -3520,21 +3480,6 @@ msgstr "Lever feilrapport "
 
 msgid "Undelivered Message Headers"
 msgstr "Meldigshovud frå medlingar som ikkje vart levert"
-
-#~ msgid "Unknown message number in reply from server: "
-#~ msgstr "Tjerer svara med eit ukjent meldingsnummer"
-
-#~ msgid "(unknown sender)"
-#~ msgstr "(ukjend avsendar)"
-
-#~ msgid "Enable Subtle Printer Friendly Link"
-#~ msgstr "Slå på undertittel Skrivarvenleg lenkje"
-
-#~ msgid "Authenticated SMTP"
-#~ msgstr "Autentifiser SMTP"
-
-#~ msgid "35 min."
-#~ msgstr "35 min"
 
 #~ msgid ""
 #~ "FREE - Osirusoft Relays - Osirusofts list of verified open relays. Seems "
@@ -3590,6 +3535,24 @@ msgstr "Meldigshovud frå medlingar som ikkje vart levert"
 #~ msgid "FREE - Osirusoft Open Proxy Servers - List of Open Proxy Servers."
 #~ msgstr ""
 #~ "GRATIS - Osirusoft Open Proxy Servers - Liste over opne proxy-tjenarar."
+
+#~ msgid "4 language pairs for Hellenic, no known limits, powered by Systran"
+#~ msgstr "4 språkpar for Hellenic, inga kjent grense, Dreven av Systran"
+
+#~ msgid "Unknown message number in reply from server: "
+#~ msgstr "Tjerer svara med eit ukjent meldingsnummer"
+
+#~ msgid "(unknown sender)"
+#~ msgstr "(ukjend avsendar)"
+
+#~ msgid "Enable Subtle Printer Friendly Link"
+#~ msgstr "Slå på undertittel Skrivarvenleg lenkje"
+
+#~ msgid "Authenticated SMTP"
+#~ msgstr "Autentifiser SMTP"
+
+#~ msgid "35 min."
+#~ msgstr "35 min"
 
 #~ msgid "Mofify a Server"
 #~ msgstr "Modifiser ein tenar"
