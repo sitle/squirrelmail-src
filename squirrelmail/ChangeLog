@@ -4,8 +4,10 @@
 
 Version 1.2.11 -- CVS
 ----------------------------------
-  - Closed some cross site scripting (XXS) holes. The impact of these
-    holes was quite low.
+  - Closed some cross site scripting (XSS) bugs:
+     * Vulnerabilities in the mail_fetch plugin fixed.
+     * Vulnerabilities in the calendar plugin fixed.
+     * Vulnerabilities in the mailbox display fixed.
   - Fixed some small HTML validity issues here and there.
   - Fixed a bug that prevented login to multiple domain exchange servers.
   - Fixed a bug with IIS servers that caused some redirects to fail.
@@ -14,6 +16,8 @@ Version 1.2.11 -- CVS
   - Made sure subfolders of Sent are treated appropriately.
   - Fixed Attachment Common for Mozilla 1.x.
   - Bugfix to session handling once again.
+  - Fixes to character set iso-8859-9.
+  - Support for character set iso-8859-5.
 
 
 Version 1.2.10 -- 2 December 2002
