@@ -90,8 +90,8 @@ class SquirrelOption {
         }
 
         /* Check for a new value. */
-        if (isset($GLOBALS["new_$name"])) {
-            $this->new_value = $GLOBALS["new_$name"];
+        if (isset($_POST["new_$name"])) {
+            $this->new_value = $_POST["new_$name"];
         } else {
             $this->new_value = '';
         }
@@ -294,11 +294,12 @@ class SquirrelOption {
 }
 
 function save_option($option) {
-    global $data_dir, $username;
+    global $data_dir;
+    $username = $_SESSION['username'];
     setPref($data_dir, $username, $option->name, $option->new_value);
 
     /* I do not know if this next line does any good. */
-    $GLOBALS[$option->name] = $option->new_value;
+//    $GLOBALS[$option->name] = $option->new_value;
 }
 
 function save_option_noop($option) {

@@ -11,7 +11,6 @@
  * $Id$
  */
 
-global $prefs_are_cached, $prefs_cache;
 
 /**
  * Check the preferences into the session cache.
