@@ -40,8 +40,11 @@ function is_logged_in() {
         /*  First we store some information in the new session to prevent
          *  information-loss.
          */
-	 
-	$session_expired_post = $_POST;
+	if ( !check_php_version(4,1) ) {
+	    $session_expired_post = $HTTP_POST_VARS;
+	} else {
+    	    $session_expired_post = $_POST;
+	}
         $session_expired_location = $PHP_SELF;
         if (!sqsession_is_registered('session_expired_post')) {    
            sqsession_register($session_expired_post,'session_expired_post');
