@@ -228,6 +228,28 @@ fi
 
 %changelog
 * Thu Jun 20 2002 Konstantin Riabitsev <icon@duke.edu>
+  Fixes in the 1.2.7 release:
+  - fix for 'compose as new' link. bug #554886
+  - fix charset format in the admin plugin. bug #550725
+  - fix for errant '.' in default_folder_prefix. bug #551310
+  - fix for folder names with '?' and '*'. bug # 559257, #552180
+  - added the ability to search without the charset argument. #552288
+  - Made /noselect node display optional. bug #554988, patch #452178
+  - Improved support for macosx IMAP server thanks Brian Haun
+  - Added macosx friendly search, thanks Brian Haun bug #553038
+  - Fixed word wrap problems when sending mail. bug #552961, #556143
+  - Added possibility to use multiple compose windows without loss
+    of attachements.
+  - Fixed forward message/rfc822 attachments from a search 
+  - Fix SpamCop plugin.
+  - Fixed send MDN link.
+  - Fixed dealing with \r\n and \n in smtp.php. 
+  - Fixed to, cc, bcc arrays in message->header
+  - Speed optimizements in generating message-lists.    
+  - Fixed loss of attachment with html addressbook.
+  - Fixed saving drafts with attachments
+
+* Thu Jun 20 2002 Konstantin Riabitsev <icon@duke.edu>
   - Incorporating RPM-related files into the core.
 
 * Tue Apr 30 2002 Konstantin Riabitsev <icon@duke.edu>
