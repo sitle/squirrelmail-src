@@ -221,13 +221,20 @@ function isFoowdObject($className)
   if ($className == 'foowd_object')
     return TRUE;
 
+  global $cached_foowd_objects;
+  if ( is_array($cached_foowd_objects) &&
+       isset($cached_foowd_objects[$className]) )
+    return $cached_foowd_objects[$className];
+
   $parentName = get_parent_class($className);
   if ($parentName == 'foowd_object')
-    return TRUE;
-  if ($parentName != '')
-    return isFoowdObject($parentName);
+    $cached_foowd_objects[$className] = TRUE;
+  elseif ($parentName != '')
+    $cached_foowd_objects[$className] = isFoowdObject($parentName);
+  else
+    $cached_foowd_objects[$className] = FALSE;
 
-  return FALSE;
+  return $cached_foowd_objects[$className];
 }
 
 /**

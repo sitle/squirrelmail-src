@@ -16,17 +16,17 @@
  */
 
 /** METHOD PERMISSIONS **/
-setPermission('foowd_translation', 'class', 'create', 'Translator');
-setPermission('foowd_translation', 'object', 'enter', 'Everyone');
-setPermission('foowd_translation', 'object', 'fill', 'Translator');
-setPermission('foowd_translation', 'object', 'empty', 'Translator');
-setPermission('foowd_translation', 'object', 'export', 'Gods');
-setPermission('foowd_translation', 'object', 'import', 'Gods');
+setPermission('smdoc_translation', 'class', 'create', 'Translator');
+setPermission('smdoc_translation', 'object', 'enter', 'Everyone');
+setPermission('smdoc_translation', 'object', 'fill', 'Translator');
+setPermission('smdoc_translation', 'object', 'empty', 'Translator');
+setPermission('smdoc_translation', 'object', 'export', 'Gods');
+setPermission('smdoc_translation', 'object', 'import', 'Gods');
 
 /** CLASS DESCRIPTOR **/
-setClassMeta('foowd_translation', 'Site Translation');
+setClassMeta('smdoc_translation', 'Site Translation');
 
-setConst('TRANSLATION_CLASS_ID', META_FOOWD_TRANSLATION_CLASS_ID);
+setConst('TRANSLATION_CLASS_ID', META_SMDOC_TRANSLATION_CLASS_ID);
 setConst('TRANSLATION_DEFAULT_LANGUAGE', 'en_US');
 //setConst('TRANSLATION_DEFAULT_LANGUAGE_ICON', 'en_US');
 
@@ -94,7 +94,7 @@ class smdoc_translation extends foowd_workspace
     $links = array();
     $languages = array();
 
-    $url = getURI(array()). '?class=foowd_translation&method=enter&langid=';
+    $url = getURI(array()). '?class=smdoc_translation&method=enter&langid=';
 
     $the_url = '<a href="' . $url . '0">';
     if ( $default_icon != '' )
@@ -149,7 +149,7 @@ class smdoc_translation extends foowd_workspace
   {
     $session_links = new input_session('lang_links', NULL);
     if ( !isset($session_links->value) ) {
-      foowd_translation::initialize($foowd);
+      smdoc_translation::initialize($foowd);
       $session_links->refresh();
     }
 
@@ -176,7 +176,7 @@ class smdoc_translation extends foowd_workspace
     $session_langs = new input_session('languages', NULL);
     if ( !isset($session_langs->value) ) 
     {
-      foowd_translation::initialize($foowd);
+      smdoc_translation::initialize($foowd);
       $session_langs->refresh();
     }
 

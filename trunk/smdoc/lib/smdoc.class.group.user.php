@@ -7,7 +7,8 @@
  * Framework for Object Orientated Web Development (Foowd).
  */
 
-setPermission('smdoc_group_user','class','list','Everyone');
+setPermission('smdoc_group_user','class','list','Gods');
+setPermission('smdoc_group_user','class','edit','Gods');
 
 /** 
  * Singleton Group Manager.
@@ -29,6 +30,7 @@ setClassMeta('smdoc_group_user','Many-to-Many Mapping of users and groups');
 global $GROUP_USER_SOURCE;
 $GROUP_USER_SOURCE = array('table' => 'smdoc_group_user',
                            'table_create' => array('smdoc_group_user','makeTable'));
+
 /** 
  * Small group for managing user-group pairs in a special
  * associative table.
@@ -215,7 +217,7 @@ class smdoc_group_user extends smdoc_storage
     $index = array('*');
     $where = array('title' => $group);
 
-    // Fetch user's current groups, no order, no limit,
+    // Fetch all members of current group, no order, no limit,
     // get actual objects, and don't bother with workspaces.
     $user_list = $foowd->getObjList($index, $GROUP_USER_SOURCE,
                                     $where, NULL, NULL, TRUE, FALSE);
@@ -331,6 +333,108 @@ class smdoc_group_user extends smdoc_storage
     $foowd->template->assign_by_ref('addForm', $addForm);
     $foowd->template->assign_by_ref('deleteForm', $deleteForm);
     $foowd->template->assign('grouplist', $groupList);
+    $foowd->track();
+  }
+
+  /**
+   * Edit members of particular group
+   *
+   * Values set in template:
+   *  + memberlist      - below
+   *  + groupname       - name of group being modified
+   *  + deleteForm      - Form for deleting members
+   *
+   * Sample contents of $t['memberlist']:
+   * <pre>
+   * array (
+   *   0 => array ( 
+   *          'title' => 'Username'
+   *          'objectid' => 1287432
+   *          'member_delete' => checkbox for deletion from group
+   *        )
+   * )
+   * </pre>
+   *
+   * @static
+   * @global array Specifies table information for user persistance.
+   * @param smdoc foowd Reference to the foowd environment object.
+   * @param string className The name of the class.
+   */
+  function class_edit(&$foowd, $className)
+  {
+    $foowd->track('smdoc_group->class_edit');
+
+    include_once(INPUT_DIR.'input.querystring.php');
+    include_once(INPUT_DIR.'input.form.php');
+    include_once(INPUT_DIR.'input.checkbox.php');
+
+    $id_q = new input_querystring('id', REGEX_TITLE, NULL);
+    if ( empty($id_q->value) )
+    {
+      $_SESSION['error'] = OBJECT_NOT_FOUND;
+      $foowd->loc_forward(getURI(NULL, FALSE)); 
+      exit;      
+    }
+    $group = $id_q->value;
+
+    global $GROUP_USER_SOURCE;
+    global $USER_SOURCE;
+
+    /*
+     * Set up combined source for JOIN query
+     */ 
+    $source['table'] = $USER_SOURCE['table'] . ', '
+                     . $GROUP_USER_SOURCE['table'];
+    $source['table_create'] = NULL;
+
+    // Select objectid, title, and updated from the user table
+    $index[] = $USER_SOURCE['table'].'.objectid AS objectid';
+    $index[] = $USER_SOURCE['table'].'.title AS title';
+    
+    // Select only those records that match the current group
+    $where[$GROUP_USER_SOURCE['table'].'.title'] = $group;
+    // and that match object id's between the user table and the group table
+    $where['match']['index'] = $GROUP_USER_SOURCE['table'].'.objectid';
+    $where['match']['op'] = '=';
+    $where['match']['field'] = $USER_SOURCE['table'].'.objectid';
+
+    // order by user title
+    $order = $USER_SOURCE['table'].'.title';
+
+    // Fetch users belonging to specified group, order by user name, 
+    // no limit, only fetch array, and don't bother with workspaces.
+    $members =& $foowd->getObjList($index, $source, $where,
+                                   $order, NULL, FALSE, FALSE);
+
+    $deleteForm = new input_form('memberDeleteForm', NULL, SQ_POST, _("Delete Group Member"));
+    if ( !empty($members) )
+    {
+      foreach ( $members as $idx => $userArray )
+      {
+        $deleteBox = new input_checkbox($userArray['objectid'], FALSE, 'Delete');
+
+        if ( $deleteForm->submitted() && $deleteBox->checked )
+        {
+          $foowd->groups->removeUser($userArray['objectid'], $group);
+          $user =& $foowd->getObj(array('objectid' => $userArray['objectid'],
+                                       'classid'  => USER_CLASS_ID));
+          if ( $user )
+            $user->removeFromGroup($group);
+
+          unset($members[$idx]);
+        }
+        else
+        {
+          // Add box to form and array
+          $deleteForm->addObject($deleteBox);
+          $members[$idx]['member_delete'] =& $deleteForm->objects[$userArray['objectid']];
+        }
+      }
+    }
+
+    $foowd->template->assign_by_ref('memberlist', $members);
+    $foowd->template->assign_by_ref('deleteForm', $deleteForm);
+    $foowd->template->assign('groupname', $foowd->groups->getDisplayName($group));
     $foowd->track();
   }
 }

@@ -18,7 +18,6 @@
  */
 
 $t['title'] = _("Group Index");
-$t['method'] = 'list';
 $t['body_function'] = 'group_list_body';
 
 /** Include base template */
@@ -76,7 +75,7 @@ function group_list_body(&$foowd, $className, $method, $user, &$object, &$t)
         <td class="subtext">&nbsp;
 <?php   $methods = array();
         if ( $arr['group_count'] > 0 )
-          $methods[] = '<a href="'.getURI().'&class="smdoc_group_user&method=edit">Edit</a> ';
+          $methods[] = '<a href="'.getURI().'?class=smdoc_group_user&amp;method=edit&amp;id='.$id.'">Edit</a> ';
 
         if ( !empty($methods) )
         {

@@ -77,21 +77,21 @@ class smdoc_object_cache
         if ( empty($source) )
           continue;
 
-        foreach ( $source as $object )
+        foreach ( $source as $obj )
         {
-          if ( $object->objectid == 0 )
+          if ( $obj->objectid == 0 )
             continue;
 
-          if ( isset($object->foowd_changed) && 
-               $object->foowd_changed !== FALSE )
+          if ( isset($obj->foowd_changed) && 
+               $obj->foowd_changed !== FALSE )
           {
-            $this->foowd->debug('msg', 'Saving object '.$object->objectid);
-            $result = $object->save();
+            $this->foowd->debug('msg', 'Saving object '.$obj->objectid);
+            $result = $obj->save();
             if ( $result === FALSE )
-              $this->foowd->debug('msg','Could not save object '.$object->objectid);
+              $this->foowd->debug('msg','Could not save object '.$obj->objectid);
           }
           else
-            $this->foowd->debug('msg', 'Object '.$object->title.'['.$object->objectid.'] not changed');
+            $this->foowd->debug('msg', 'Object '.$obj->title.'['.$obj->objectid.'] not changed');
         }    
       }
     }
