@@ -5,27 +5,17 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: squirrelmail VERSION\n"
-"POT-Creation-Date: 2004-11-16 13:25+0200\n"
-"PO-Revision-Date: 2004-11-22 22:36+0100\n"
+"POT-Creation-Date: 2004-12-28 13:45+0200\n"
+"PO-Revision-Date: 2004-12-29 16:38+0100\n"
 "Last-Translator: M.J. Prinsen <translation@prinsenonline.com>\n"
 "Language-Team: Dutch <squirrelmail-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=iso-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"Report-Msgid-Bugs-To: \n"
 
 msgid "Address Book"
 msgstr "Adresboek"
-
-msgid "All"
-msgstr "Alle"
-
-msgid "To"
-msgstr "Aan"
-
-msgid "Cc"
-msgstr "CC"
 
 msgid "Name"
 msgstr "Naam"
@@ -39,14 +29,17 @@ msgstr "Informatie"
 msgid "Source"
 msgstr "Bron"
 
+msgid "To"
+msgstr "Aan"
+
+msgid "Cc"
+msgstr "CC"
+
 msgid "Bcc"
 msgstr "BCC"
 
-msgid "Use Addresses"
-msgstr "Gebruik adressen"
-
-msgid "Address Book Search"
-msgstr "Zoek in adresboek"
+msgid "No persons matching your search were found"
+msgstr "Geen personen gevonden die voldoen aan de zoekopdracht"
 
 msgid "Search for"
 msgstr "Zoek naar"
@@ -63,6 +56,9 @@ msgstr "Zoek"
 msgid "List all"
 msgstr "Toon alles"
 
+msgid "Close"
+msgstr "Sluit"
+
 #, c-format
 msgid "Unable to list addresses from %s"
 msgstr "Niet mogelijk om adressen te tonen van %s"
@@ -70,14 +66,17 @@ msgstr "Niet mogelijk om adressen te tonen van %s"
 msgid "Your search failed with the following error(s)"
 msgstr "Uw zoekopdracht is mislukt door de volgende fouten"
 
-msgid "No persons matching your search were found"
-msgstr "Geen personen gevonden die voldoen aan de zoekopdracht"
+msgid "All"
+msgstr "Alle"
+
+msgid "Use Addresses"
+msgstr "Gebruik adressen"
+
+msgid "Address Book Search"
+msgstr "Zoek in adresboek"
 
 msgid "Return"
 msgstr "Terug"
-
-msgid "Close"
-msgstr "Sluit"
 
 msgid "Nickname"
 msgstr "Bijnaam"
@@ -218,29 +217,6 @@ msgstr "Fout: Concepts map %s bestaat niet."
 msgid "Server replied: "
 msgstr "Server reageerde: "
 
-msgid "Illegal folder name. Please select a different name."
-msgstr "Deze mapnaam is niet toegestaan. Kies een andere naam a.u.b."
-
-msgid "Click here to go back"
-msgstr "Klik hier om terug te gaan"
-
-msgid "You have not selected a folder to delete. Please do so."
-msgstr ""
-"U heeft geen map geselecteerd om te verwijderen. Selecteer een map a.u.b."
-
-msgid "Delete Folder"
-msgstr "Verwijder map"
-
-#, c-format
-msgid "Are you sure you want to delete %s?"
-msgstr "Weet u zeker dat u %s wilt verwijderen?"
-
-msgid "Yes"
-msgstr "Ja"
-
-msgid "No"
-msgstr "Nee"
-
 msgid "Folders"
 msgstr "Mappen"
 
@@ -292,6 +268,9 @@ msgstr "Hernoem"
 msgid "No folders found"
 msgstr "Geen mappen gevonden"
 
+msgid "Delete Folder"
+msgstr "Verwijder map"
+
 msgid "Delete"
 msgstr "Verwijder"
 
@@ -309,6 +288,26 @@ msgstr "Geen mappen gevonden om bij aan te melden!"
 
 msgid "Subscribe to:"
 msgstr "Aanmelden bij:"
+
+msgid "Illegal folder name. Please select a different name."
+msgstr "Deze mapnaam is niet toegestaan. Kies een andere naam a.u.b."
+
+msgid "Click here to go back"
+msgstr "Klik hier om terug te gaan"
+
+msgid "You have not selected a folder to delete. Please do so."
+msgstr ""
+"U heeft geen map geselecteerd om te verwijderen. Selecteer een map a.u.b."
+
+#, c-format
+msgid "Are you sure you want to delete %s?"
+msgstr "Weet u zeker dat u %s wilt verwijderen?"
+
+msgid "Yes"
+msgstr "Ja"
+
+msgid "No"
+msgstr "Nee"
 
 msgid "You have not selected a folder to rename. Please do so."
 msgstr "U heeft geen map geselecteerd om te hernoemen."
@@ -402,11 +401,64 @@ msgstr "Wachtwoord:"
 msgid "No messages were selected."
 msgstr "Geen berichten geselecteerd."
 
-msgid "Options"
-msgstr "Opties"
+msgid "Personal Information"
+msgstr "Persoonlijke informatie"
+
+msgid "Display Preferences"
+msgstr "Weergavevoorkeuren"
 
 msgid "Message Highlighting"
 msgstr "Berichten weergave"
+
+msgid "Folder Preferences"
+msgstr "Mapvoorkeuren"
+
+msgid "Index Order"
+msgstr "Kolomvolgorde"
+
+msgid "Options"
+msgstr "Opties"
+
+msgid "Successfully Saved Options"
+msgstr "Persoonlijke informatie is opgeslagen!"
+
+msgid "Refresh Folder List"
+msgstr "Vernieuw mappenlijst"
+
+msgid "Refresh Page"
+msgstr "Vernieuw pagina"
+
+msgid ""
+"This contains personal information about yourself such as your name, your "
+"email address, etc."
+msgstr ""
+"Dit bevat persoonlijke informatie over uzelf, zoals uw naam, uw e-mailadres, "
+"etc."
+
+msgid ""
+"You can change the way that SquirrelMail looks and displays information to "
+"you, such as the colors, the language, and other settings."
+msgstr ""
+"U kunt hier zelf instellen hoe alles weergegeven moet worden. Hier kunnen "
+"onder andere kleuren en de taal ingesteld worden."
+
+msgid ""
+"Based upon given criteria, incoming messages can have different background "
+"colors in the message list. This helps to easily distinguish who the "
+"messages are from, especially for mailing lists."
+msgstr ""
+"Gebaseerd op de opgegeven criteria kunnen bepaalde binnengekomen berichten "
+"een andere achtergrondkleur in de berichtenlijst krijgen, zodat u berichten "
+"eenvoudig uit elkaar kunt houden."
+
+msgid ""
+"These settings change the way your folders are displayed and manipulated."
+msgstr "Deze opties bepalen hoe uw mappen worden gebruikt en weergegeven."
+
+msgid ""
+"The order of the message index can be rearranged and changed to contain the "
+"headers in any order you want."
+msgstr "De kolomvolgorde van het berichtenoverzicht kan hier worden veranderd."
 
 msgid "New"
 msgstr "Nieuw"
@@ -520,9 +572,6 @@ msgstr "Maak standaard"
 msgid "Move Up"
 msgstr "Verplaats omhoog"
 
-msgid "Index Order"
-msgstr "Kolomvolgorde"
-
 msgid "Checkbox"
 msgstr "Aankruisvak"
 
@@ -551,56 +600,6 @@ msgstr "verwijder"
 
 msgid "Return to options page"
 msgstr "Terug naar Opties"
-
-msgid "Personal Information"
-msgstr "Persoonlijke informatie"
-
-msgid "Display Preferences"
-msgstr "Weergavevoorkeuren"
-
-msgid "Folder Preferences"
-msgstr "Mapvoorkeuren"
-
-msgid "Successfully Saved Options"
-msgstr "Persoonlijke informatie is opgeslagen!"
-
-msgid "Refresh Folder List"
-msgstr "Vernieuw mappenlijst"
-
-msgid "Refresh Page"
-msgstr "Vernieuw pagina"
-
-msgid ""
-"This contains personal information about yourself such as your name, your "
-"email address, etc."
-msgstr ""
-"Dit bevat persoonlijke informatie over uzelf, zoals uw naam, uw e-mailadres, "
-"etc."
-
-msgid ""
-"You can change the way that SquirrelMail looks and displays information to "
-"you, such as the colors, the language, and other settings."
-msgstr ""
-"U kunt hier zelf instellen hoe alles weergegeven moet worden. Hier kunnen "
-"onder andere kleuren en de taal ingesteld worden."
-
-msgid ""
-"Based upon given criteria, incoming messages can have different background "
-"colors in the message list. This helps to easily distinguish who the "
-"messages are from, especially for mailing lists."
-msgstr ""
-"Gebaseerd op de opgegeven criteria kunnen bepaalde binnengekomen berichten "
-"een andere achtergrondkleur in de berichtenlijst krijgen, zodat u berichten "
-"eenvoudig uit elkaar kunt houden."
-
-msgid ""
-"These settings change the way your folders are displayed and manipulated."
-msgstr "Deze opties bepalen hoe uw mappen worden gebruikt en weergegeven."
-
-msgid ""
-"The order of the message index can be rearranged and changed to contain the "
-"headers in any order you want."
-msgstr "De kolomvolgorde van het berichtenoverzicht kan hier worden veranderd."
 
 msgid "Message not printable"
 msgstr "Bericht niet printbaar"
@@ -1815,6 +1814,12 @@ msgstr "Microsoft Exchange IMAP-server"
 msgid "Courier IMAP server"
 msgstr "Courier IMAP-server"
 
+msgid "Mac OS X Mailserver"
+msgstr "Mac OS X Mailserver"
+
+msgid "hMailServer IMAP server"
+msgstr "hMailServer IMAP-server"
+
 msgid "Not one of the above servers"
 msgstr "Geen van de bovenstaande servers"
 
@@ -2191,15 +2196,15 @@ msgstr "Fout rapportages:"
 msgid "Show button in toolbar"
 msgstr "Toon knop in menu"
 
-#, c-format
-msgid "Could not write calendar file %s"
-msgstr "Kan kalenderbestand %s niet wegschrijven"
-
 msgid "TODAY"
 msgstr "VANDAAG"
 
 msgid "Go"
 msgstr "Ga"
+
+#, c-format
+msgid "Could not write calendar file %s"
+msgstr "Kan kalenderbestand %s niet wegschrijven"
 
 msgid "l, F j Y"
 msgstr "l, j F Y"
@@ -2992,8 +2997,24 @@ msgstr "Bewaar bericht"
 msgid "View Message details"
 msgstr "Bekijk berichtdetails"
 
+msgid "New Mail"
+msgstr "Nieuw bericht"
+
+msgid "SquirrelMail Notice:"
+msgstr "SquirrelMail notificatie:"
+
+#, c-format
+msgid "You have %s new message"
+msgid_plural "You have %s new messages"
+msgstr[0] "U heeft %s nieuw bericht"
+msgstr[1] "U heeft %s nieuwe berichten"
+
+#, c-format
+msgid "You have %s new messages"
+msgstr "U heeft %s nieuwe berichten"
+
 msgid "New Mail Notification"
-msgstr "Geen notificatie nieuw bericht"
+msgstr "Notificatie nieuw bericht"
 
 #, c-format
 msgid ""
@@ -3084,22 +3105,6 @@ msgstr "Test"
 msgid "Current File:"
 msgstr "Huidig bestand:"
 
-msgid "New Mail"
-msgstr "Nieuw bericht"
-
-msgid "SquirrelMail Notice:"
-msgstr "SquirrelMail notificatie:"
-
-#, c-format
-msgid "You have %s new message"
-msgid_plural "You have %s new messages"
-msgstr[0] "U heeft %s nieuw bericht"
-msgstr[1] "U heeft %s nieuwe berichten"
-
-#, c-format
-msgid "You have %s new messages"
-msgstr "U heeft %s nieuwe berichten"
-
 msgid "NewMail Options"
 msgstr "Nieuw bericht opties"
 
@@ -3109,9 +3114,6 @@ msgid ""
 msgstr ""
 "Opties voor het afspelen van geluiden en/of het tonen van popupvensters "
 "wanneer u een nieuw bericht ontvangt."
-
-msgid "New Mail Notification options saved"
-msgstr "Nieuw bericht opties opgeslagen"
 
 #, c-format
 msgid "%s New Messages"
@@ -3517,6 +3519,22 @@ msgstr ""
 msgid "No errors found"
 msgstr "Geen fouten gevonden"
 
+msgid ""
+"Your personal dictionary has been encrypted and is now stored in an "
+"encrypted format."
+msgstr ""
+"Uw persoonlijke woordenboek is beveiligd en is nuopgeslagen in beveiligd "
+"formaat."
+
+msgid ""
+"Your personal dictionary has been decrypted and is now stored as plain text."
+msgstr ""
+"Uw persoonlijke woordenboek is ontcijferd en is nu opgeslagen als platte "
+"tekst."
+
+msgid "Personal Dictionary Crypto Settings"
+msgstr "Persoonlijk woordenboek beveiligingsinstellingen"
+
 msgid "Your personal dictionary was erased."
 msgstr "Uw persoonlijk woordenboek is verwijderd"
 
@@ -3553,22 +3571,6 @@ msgstr ""
 
 msgid "Dictionary re-encrypted"
 msgstr "Woordenboek beveiligd"
-
-msgid ""
-"Your personal dictionary has been encrypted and is now stored in an "
-"encrypted format."
-msgstr ""
-"Uw persoonlijke woordenboek is beveiligd en is nuopgeslagen in beveiligd "
-"formaat."
-
-msgid ""
-"Your personal dictionary has been decrypted and is now stored as plain text."
-msgstr ""
-"Uw persoonlijke woordenboek is ontcijferd en is nu opgeslagen als platte "
-"tekst."
-
-msgid "Personal Dictionary Crypto Settings"
-msgstr "Persoonlijk woordenboek beveiligingsinstellingen"
 
 msgid "Personal Dictionary"
 msgstr "Persoonlijk woordenboek"
@@ -3754,8 +3756,8 @@ msgstr "Vertaalopties opgeslagen"
 msgid "Your server options are as follows:"
 msgstr "Uw server opties zijn:"
 
-msgid "Maximum of 1000 characters translated, powered by Systran"
-msgstr "Maximum van 1000 tekens vertaald, powered by Systran"
+msgid "Maximum of 150 words translated, powered by Systran"
+msgstr "Maximum van 150 woorden vertaald, powered by Systran"
 
 #, c-format
 msgid "Number of supported language pairs: %s"
@@ -3770,9 +3772,6 @@ msgstr "Geen limieten bekend, powered by Translation Experts's InterTran"
 #, c-format
 msgid "Number of supported languages: %s"
 msgstr "Aantal ondersteunde talen: %s"
-
-msgid "No known limits, powered by GPLTrans (free, open source)"
-msgstr "Geen limieten bekend, powered by GPLTrans (free, open source)"
 
 msgid "Hellenic translations, no known limits, powered by Systran"
 msgstr "Griekse vertalingen, geen limieten bekend, powered by Systran "
@@ -3806,12 +3805,6 @@ msgstr "rechts"
 msgid "Translate inside the SquirrelMail frames"
 msgstr "Vertaal in de SquirrelMail frames"
 
-msgid "When composing:"
-msgstr "Tijdens schrijven:"
-
-msgid "Not yet functional, currently does nothing"
-msgstr "Nog niet functioneel, doet momenteel niets"
-
 msgid "Translation Options"
 msgstr "Vertaalopties"
 
@@ -3826,17 +3819,26 @@ msgstr ""
 msgid "%s to %s"
 msgstr "%s in %s"
 
+msgid "Chinese, Simplified"
+msgstr "Chinees, Simplified"
+
 msgid "English"
 msgstr "Engels"
 
-msgid "Chinese"
-msgstr "Chinees"
+msgid "Chinese, Traditional"
+msgstr "Chinees, Traditional"
+
+msgid "Dutch"
+msgstr "Nederlands"
 
 msgid "French"
 msgstr "Frans"
 
 msgid "German"
 msgstr "Duits"
+
+msgid "Greek"
+msgstr "Grieks"
 
 msgid "Italian"
 msgstr "Italiaans"
@@ -3850,11 +3852,11 @@ msgstr "Koreaans"
 msgid "Portuguese"
 msgstr "Portugees"
 
-msgid "Spanish"
-msgstr "Spaans"
-
 msgid "Russian"
 msgstr "Russisch"
+
+msgid "Spanish"
+msgstr "Spaans"
 
 msgid "Translate"
 msgstr "Vertaal"
@@ -3874,23 +3876,20 @@ msgstr "Tsjechisch"
 msgid "Danish"
 msgstr "Deens"
 
-msgid "Dutch"
-msgstr "Nederlands"
-
-msgid "European Spanish"
-msgstr "Europees Spaans"
+msgid "Filipino (Tagalog)"
+msgstr "Filipijns (Tagalog)"
 
 msgid "Finnish"
 msgstr "Fins"
-
-msgid "Greek"
-msgstr "Grieks"
 
 msgid "Hungarian"
 msgstr "Hongaars"
 
 msgid "Icelandic"
 msgstr "IJslands"
+
+msgid "Latin"
+msgstr "Latijns"
 
 msgid "Latin American Spanish"
 msgstr "Latijns Amerikaans Spaans"
@@ -3921,9 +3920,6 @@ msgstr "Wales"
 
 msgid "Indonesian"
 msgstr "Indonesisch"
-
-msgid "Latin"
-msgstr "Latijns"
 
 msgid "to English"
 msgstr "naar Engels"
@@ -4454,23 +4450,20 @@ msgstr ""
 msgid "Translation Preferences"
 msgstr "Vertaalopties"
 
-msgid "Maximum of 150 words translated, powered by Systran"
-msgstr "Maximum van 150 woorden vertaald, powered by Systran"
-
 msgid "Maximum of 25 kilobytes translated, powered by Systran"
 msgstr "Maximum van 25 kilobytes vertaald, powered by Systran "
 
-msgid "Chinese, Simplified"
-msgstr "Chinees, Simplified"
-
-msgid "Chinese, Traditional"
-msgstr "Chinees, Traditional"
-
-msgid "Filipino (Tagalog)"
-msgstr "Filipino (Tagalog)"
+msgid "No known limits, powered by GPLTrans (free, open source)"
+msgstr "Geen limieten, powered by GPLTrans (free, open source)"
 
 msgid "Transliterate unknown words:"
 msgstr "Onbekende woorden van vertaling:"
+
+msgid "When composing:"
+msgstr "Tijdens schrijven:"
+
+msgid "Not yet functional, currently does nothing"
+msgstr "Nog niet functioneel, doet momenteel niets"
 
 msgid "Delivery error report"
 msgstr "Bezorgingsfout rapportage"
@@ -4480,437 +4473,3 @@ msgstr "Berichtkoppen onbestelbaar bericht"
 
 msgid "This image has been removed for security reasons"
 msgstr "Deze afbeelding is om veiligheidsredenen verwijders"
-
-#~ msgid "Can not modify global address book"
-#~ msgstr "Kan het adresboek niet wijzigen"
-
-#~ msgid "Business Card"
-#~ msgstr "Visitekaartje"
-
-#~ msgid "Enable Sort by of Receive Date"
-#~ msgstr "Gebruik datum van ontvangst voor sorteren"
-
-#~ msgid "Simplified Chinese"
-#~ msgstr "Simplified Chinese"
-
-#~ msgid "Traditional Chinese"
-#~ msgstr "Traditional Chinese"
-
-#~ msgid "To:"
-#~ msgstr "Aan:"
-
-#~ msgid "CC:"
-#~ msgstr "CC:"
-
-#~ msgid "BCC:"
-#~ msgstr "BCC:"
-
-#~ msgid "Subject:"
-#~ msgstr "Onderwerp:"
-
-#~ msgid "CC"
-#~ msgstr "CC"
-
-#~ msgid "You have"
-#~ msgstr "U heeft"
-
-#~ msgid "Your Message has been sent"
-#~ msgstr "Uw bericht is verzonden"
-
-#~ msgid "Draft folder"
-#~ msgstr "Concept map"
-
-#~ msgid "Click here to try again"
-#~ msgstr "Klik hier om het nog eens te proberen"
-
-#~ msgid "Enable Collapsible Folders"
-#~ msgstr "Maak uitklapbare mappen mogelijk"
-
-#~ msgid "You are currently using version %s."
-#~ msgstr "U gebruikt momenteel versie %s."
-
-#~ msgid "All Messages"
-#~ msgstr "Alle berichten"
-
-#~ msgid "POP3 noop:"
-#~ msgstr "POP3 noop:"
-
-#~ msgid "] messages"
-#~ msgstr "] berichten"
-
-#~ msgid "Simple POP3 Fetch Mail"
-#~ msgstr "POP3-toegang externe e-mailaccounts"
-
-#~ msgid ""
-#~ "This configures settings for downloading email from a pop3 mailbox to "
-#~ "your account on this server."
-#~ msgstr ""
-#~ "Instellingen voor het downloaden van e-mail van een externe pop3-server "
-#~ "naar uw account op deze server."
-
-#~ msgid ""
-#~ "The SpamCop service will display information as it finds it, so scroll "
-#~ "down until you see a form button.  It might pause a little while it is "
-#~ "looking up information, so be a little patient.  Read what it says, and "
-#~ "submit the spam.  Close the browser window.  Press Cancel or click on the "
-#~ "appropriate mail folder to see messages and/or delete the spam."
-#~ msgstr ""
-#~ "De SpamCop service zal gevonden informatie tonen. Bekijk de pagina totdat "
-#~ "u een formulierknop ziet. Afhankelijk van de informatie, kan het wat "
-#~ "langer duren. Verzend de spamrapportage. Sluit het browser scherm. Klik "
-#~ "op Annuleren of klik op de map met e-mail om de berichten te zien en/of "
-#~ "de spam te verwijderen."
-
-#~ msgid ""
-#~ "<p>Your personal dictionary is <strong>currently encrypted</strong>. This "
-#~ "helps protect your privacy in case the web-mail system gets compromized "
-#~ "and your personal dictionary ends up stolen. It is currently encrypted "
-#~ "with the password you use to access your mailbox, making it hard for "
-#~ "anyone to see what is stored in your personal dictionary.</p> "
-#~ "<p><strong>ATTENTION:</strong> If you forget your password, your personal "
-#~ "dictionary will become unaccessible, since it can no longer be decrypted. "
-#~ "If you change your mailbox password, SquirrelSpell will recognize it and "
-#~ "prompt you for your old password in order to re-encrypt the dictionary "
-#~ "with a new key.</p>"
-#~ msgstr ""
-#~ "<p>Uw persoonlijk woordenboek is <strong>momenteel beveiligd</strong>. "
-#~ "Dit zorgt voor bescherming van uw privacy in het geval dat het webmail "
-#~ "systeem wordt gekraakt en uw persoonlijke woordenboek wordt gestolen. Het "
-#~ "is momenteel beveiligd met het wachtwoord dat u ook gebruik bij het "
-#~ "aanmelden, zodat niemand kan zien wat in uw persoonlijk woordenboek is "
-#~ "opgenomen.</p> <p><strong>LET OP:</strong> Als u uw wachtwoord vergeet "
-#~ "wordt uw persoonlijk woordenboek ontoegankelijk, omdat het dan niet meer "
-#~ "ontcijferd kan worden. Als u uw wachtwoord verandert zal SquirrelSpel dit "
-#~ "herkennen en u vragen naar uw oude wachtwoord om het woordenboek met het "
-#~ "nieuwe wachtwoord te beveiligen.</p>"
-
-#~ msgid "The imap server failed to handle threading."
-#~ msgstr "De IMAP-server kon de threading niet aan."
-
-#~ msgid "Click here to unset thread view for this mailbox and start again."
-#~ msgstr ""
-#~ "Klik hier om de weergave in threads voor deze mailbox te deactiveren en "
-#~ "start opnieuw."
-
-#~ msgid "Use Confirmation Flags"
-#~ msgstr "Gebruik bevestigings-flags"
-
-#~ msgid "refresh unseen/total info"
-#~ msgstr "vernieuw info ongelezen/totaal"
-
-#~ msgid ""
-#~ "FREE - Osirusoft Relays - Osirusofts list of verified open relays. Seems "
-#~ "to include servers used by abuse@uunet.net auto-replies too."
-#~ msgstr ""
-#~ "FREE - Osirusoft Relays - Osirusofts lijst van geverifieerde open relays. "
-#~ "Lijkt ook servers gebruikt door abuse@uunet.net auto-replies te bevatten."
-
-#~ msgid "FREE - Osirusoft Dialups - Osirusofts Dialup Spam Source list."
-#~ msgstr "FREE - Osirusoft Dialups - Osirusofts Dialup Spam Source list."
-
-#~ msgid ""
-#~ "FREE - Osirusoft Confirmed Spam Source - Sites that continually spam and "
-#~ "have been manually added after multiple nominations. Use with caution. "
-#~ "Seems to catch abuse auto-replies from some ISPs."
-#~ msgstr ""
-#~ "FREE - Osirusoft Confirmed Spam Source - Sites die continu spam versturen "
-#~ "en handmatig zijn toegevoegd na herhaaldelijke meldingen. Gebruik "
-#~ "voorzichtig. Lijkt abuse auto-replies van ISPs ook te weren."
-
-#~ msgid ""
-#~ "FREE - Osirusoft Smart Hosts - List of hosts that are secure but relay "
-#~ "for other mail servers that are not secure."
-#~ msgstr ""
-#~ "FREE - Osirusoft Smart Hosts - Lijst van hosts die beveiligd zijn, maar "
-#~ "relayen voor andere mailservers die niet beveiligd zijn."
-
-#~ msgid ""
-#~ "FREE - Osirusoft Spamware Developers - It is believed that these are IP "
-#~ "ranges of companies that are known to produce spam software. Seems to "
-#~ "catch abuse auto-replies from some ISPs."
-#~ msgstr ""
-#~ "FREE - Osirusoft Spamware Developers - Dit zijn IP ranges van bedrijven "
-#~ "die bekend staan om het maken van spam software. Lijkt abuse auto-replies "
-#~ "van sommige ISPs te weren."
-
-#~ msgid ""
-#~ "FREE - Osirusoft Unconfirmed OptIn Servers - List of listservers that opt "
-#~ "users in without confirmation."
-#~ msgstr ""
-#~ "FREE - Osirusoft Unconfirmed OptIn Servers - Lijst van listservers die "
-#~ "gebruikers accepteren zonder bevestiging."
-
-#~ msgid ""
-#~ "FREE - Osirusoft Insecure formmail.cgi scripts - List of insecure "
-#~ "formmail.cgi scripts. (planned)."
-#~ msgstr ""
-#~ "FREE - Osirusoft onveilige formmail.cgi scripts - Lijst van onveilige "
-#~ "formmail.cgi scripts. (geplanned)."
-
-#~ msgid "FREE - Osirusoft Open Proxy Servers - List of Open Proxy Servers."
-#~ msgstr "FREE - Osirusoft Open Proxy Servers - Lijst van Open Proxy Servers."
-
-#~ msgid "Not available"
-#~ msgstr "Niet beschikbaar"
-
-#~ msgid "Unknown message number in reply from server: "
-#~ msgstr "Onbekend berichtnummer in antwoord van server: "
-
-#~ msgid "(unknown sender)"
-#~ msgstr "(onbekende afzender)"
-
-#~ msgid "35 min."
-#~ msgstr "35 min."
-
-#~ msgid "Mofify a Server"
-#~ msgstr "Bewerk een server"
-
-#~ msgid "Message details"
-#~ msgstr "Berichtdetails"
-
-#~ msgid "(local media)"
-#~ msgstr "(lokaal geluid)"
-
-#~ msgid "Local Media File:"
-#~ msgstr "Lokaal geluidsbestand:"
-
-#~ msgid "Enable Subtle Printer Friendly Link"
-#~ msgstr "Activeer subtiele printervriendelijke link"
-
-#~ msgid "Authenticated SMTP"
-#~ msgstr "SMTP authorisatie"
-
-#~ msgid "Viewing a message attachment"
-#~ msgstr "Bekijk een tekst bijlage"
-
-#~ msgid "Cc:"
-#~ msgstr "CC:"
-
-#~ msgid "Bcc:"
-#~ msgstr "BCC:"
-
-#~ msgid "<No subject>"
-#~ msgstr "<geen onderwerp>"
-
-#~ msgid "Enable request/confirm reading"
-#~ msgstr "Activeer ontvangst-/leesbevestiging"
-
-#~ msgid "Use receive date for sort"
-#~ msgstr "Gebruik datum van ontvangst voor sorteren"
-
-#~ msgid "There was an error contacting the mail server."
-#~ msgstr "Er is een fout opgetreden bij het verbinden met de mailserver"
-
-#~ msgid "Contact your administrator for help."
-#~ msgstr "Neem contact op met uw systeembeheerder voor hulp."
-
-#~ msgid "No Messages found"
-#~ msgstr "Geen berichten gevonden"
-
-#~ msgid "No To Address"
-#~ msgstr "Geen AAN adres"
-
-#~ msgid "Found"
-#~ msgstr "Gevonden"
-
-#~ msgid "messages"
-#~ msgstr "berichten"
-
-#~ msgid "Error decoding mime structure.  Report this as a bug!"
-#~ msgstr "Fout decoderen mime structuur. Raporteer dit als een bug!"
-
-#~ msgid "Submit message"
-#~ msgstr "Voeg bericht toe"
-
-#~ msgid "POP3: premature NOOP OK, NOT an RFC 1939 Compliant server"
-#~ msgstr "POP3: voortijdig NOOP OK, Geen RFC 1939 vriendelijke server"
-
-#~ msgid "NOOP failed. Server not RFC 1939 compliant"
-#~ msgstr "NOOP mislukt. Server is niet RFC 1939 vriendelijk"
-
-#~ msgid "Notify:"
-#~ msgstr "Waarschuwing:"
-
-#~ msgid "l, F d Y"
-#~ msgstr "l, d F Y"
-
-#~ msgid "Don't Email Me"
-#~ msgstr "E-mail mij niet"
-
-#~ msgid "Email Me - 0m prior"
-#~ msgstr "E-mail mij 0 min. van tevoren"
-
-#~ msgid "Email Me - 5m prior"
-#~ msgstr "E-mail mij 5 min. van tevoren"
-
-#~ msgid "Email Me - 15m prior"
-#~ msgstr "E-mail mij 15 min. van tevoren"
-
-#~ msgid "Email Me - 30m prior"
-#~ msgstr "E-mail mij 30 min. van tevoren"
-
-#~ msgid "Email Me - 1h prior"
-#~ msgstr "E-mail mij 1 uur van tevoren"
-
-#~ msgid "Email Me - 4h prior"
-#~ msgstr "E-mail mij 4 uur van tevoren"
-
-#~ msgid "Email Me - 1d prior"
-#~ msgstr "E-mail mij 1 dag van tevoren"
-
-#~ msgid ""
-#~ "Please contact your system administrator and report the following error:"
-#~ msgstr ""
-#~ "Neem a.u.b. contact op met uw systeembeheerder en rapporteer de volgende "
-#~ "foutmelding:"
-
-#~ msgid "Extract"
-#~ msgstr "Uitpakken"
-
-#~ msgid "Left aligned"
-#~ msgstr "Links uitgelijnd"
-
-#~ msgid "Right aligned"
-#~ msgstr "Rechts uitgelijnd"
-
-#~ msgid "on the Read screen"
-#~ msgstr "op het berichtscherm"
-
-#~ msgid "Hide the box"
-#~ msgstr "Verberg de knop"
-
-#~ msgid "Unknown messagenumber in reply from server: "
-#~ msgstr "Onbekend berichtnummer in antwoord van server"
-
-#~ msgid "$thread_name"
-#~ msgstr "$thread_naam"
-
-#~ msgid "empty"
-#~ msgstr "legen"
-
-#~ msgid "Welcome to %s's WebMail system"
-#~ msgstr "Welkom on %s WebMail systeem"
-
-#~ msgid "Running SquirrelMail version %s (c) 1999-2001."
-#~ msgstr "SquirrelMail versie %s (c) 1999-2001."
-
-#~ msgid ""
-#~ "FREE - Another ORBS replacement (just the INPUTS database used here)."
-#~ msgstr ""
-#~ "FREE - Nog een ORBS vervanger (enkel de INPUTS database is hier gebruikt)."
-
-#~ msgid ""
-#~ "FREE - Another ORBS replacement (just the OUTPUTS database used here)."
-#~ msgstr ""
-#~ "FREE - Nog een ORBS vervanger (enkel de INPUTS database is hier gebruikt)."
-
-#~ msgid "delete_move_next:"
-#~ msgstr "verwijder_verplaats_volgende:"
-
-#~ msgid "Remove MDN flag"
-#~ msgstr "Verwijder MDN flag"
-
-#~ msgid "FREE - orbz.gst-group.co.uk - Inputs only."
-#~ msgstr "FREE - orbz.gst-group.co.uk - Alleen Inputs."
-
-#~ msgid "FREE - orbz.gst-group.co.uk - Outputs only."
-#~ msgstr "FREE - orbz.gst-group.co.uk - Aleen Outputs."
-
-#~ msgid ""
-#~ "FREE - orbz.gst-group.co.uk - mailservers that refuse or bounce email "
-#~ "addressed to postmaster@<theirdomain>."
-#~ msgstr ""
-#~ "FREE - orbz.gst-group.co.uk bevat niet alleen open relays, maar ook "
-#~ "mailservers die weigeren of die e-mail bouncen die geadresseerd is aan "
-#~ "postmaster@<theirdomain>."
-
-#~ msgid "Close window"
-#~ msgstr "Sluit venster"
-
-#~ msgid "SECURITY BREACH ON DECK 5! CMDR TUVOK AND SECURITY TEAM REQUESTED."
-#~ msgstr "SECURITY BREACH ON DECK 5! CMDR TUVOK AND SECURITY TEAM REQUESTED."
-
-#~ msgid "Mailinglist options:"
-#~ msgstr "Mailinglist opties"
-
-#~ msgid ""
-#~ "FREE - ORBL is another ORBS spinoff formed after ORBS shut down. May be "
-#~ "SLOOOOOOW!"
-#~ msgstr ""
-#~ "FREE - ORBL is nog een andere ORBS, gevormd nadat ORBS stopte. Kan "
-#~ "TRAAAAAG zijn!"
-
-#~ msgid "requires IE and JavaScript to work"
-#~ msgstr "IE (Internet Explorer) en Javascript nodig"
-
-#~ msgid "COMMERCIAL - RBL+ is a combination of RSS, DUL, and RBL."
-#~ msgstr "COMMERCIAL - RBL+ is een combinatie van RSS, DUL, en RBL."
-
-#~ msgid ""
-#~ "FREE - Osirusoft - Very thorough, but also rejects replies from many "
-#~ "ISP's abuse@domain.name email messages for some reason."
-#~ msgstr ""
-#~ "FREE - Osirusoft - Erg grondig, maar weigert antwoorden van veel ISP e-"
-#~ "mail berichten verzonden van abuse@domain.name."
-
-#~ msgid "Enable display of images with email, below attachment box"
-#~ msgstr "Activeer weergave van afbeeldingen in e-mail, onder bijlage-kader"
-
-#~ msgid "Successfully saved display preferences!"
-#~ msgstr "Weergavevoorkeuren zijn opgeslagen!"
-
-#~ msgid "Successfully saved folder preferences!"
-#~ msgstr "Mapvoorkeuren zijn opgeslagen!"
-
-#~ msgid "Yes, show me the HTML version of a mail message, if it is available."
-#~ msgstr ""
-#~ "Ja, toon de HTML versie van een e-mailbericht als HTML beschikbaar is."
-
-#~ msgid "Include Self"
-#~ msgstr "Voeg eigen e-mailadres toe"
-
-#~ msgid "Don't remove me from the CC addresses when I use \"Reply All\""
-#~ msgstr ""
-#~ "Verwijder mij niet uit de CC adressen als ik \"Allen beantwoorden\" "
-#~ "gebruik"
-
-#~ msgid "Show page selector"
-#~ msgstr "Toon pagina selectie"
-
-#~ msgid "Don't use Trash"
-#~ msgstr "Gebruik Verw. Items niet"
-
-#~ msgid "Don't use Sent"
-#~ msgstr "Gebruik Verz. Items niet"
-
-#~ msgid "Collapseable folders"
-#~ msgstr "Uitklapbare mappen"
-
-#~ msgid "Author's Name"
-#~ msgstr "Schrijvers naam"
-
-#~ msgid "Use a signature?"
-#~ msgstr "Voeg handtekening toe?"
-
-#~ msgid "(only Cc/Bcc)"
-#~ msgstr "(alleen CC/BCC)"
-
-#~ msgid "total"
-#~ msgstr "totaal"
-
-#~ msgid "Folders created successfully!"
-#~ msgstr "Mappen succesvol aangemaakt!"
-
-#~ msgid ""
-#~ "In order for SquirrelMail to provide the full set of options you need to "
-#~ "create the special folders listed below.  Just click the check box and "
-#~ "hit the create button."
-#~ msgstr ""
-#~ "Om SquirrelMail volledig te laten werken moet u speciale mappen aanmaken. "
-#~ "Klik op [Aanmaken] om verder te gaan."
-
-#~ msgid "Create Trash"
-#~ msgstr "Maak Verwijderde Items aan"
-
-#~ msgid "You must login first."
-#~ msgstr "U moet eerst aanmelden."
