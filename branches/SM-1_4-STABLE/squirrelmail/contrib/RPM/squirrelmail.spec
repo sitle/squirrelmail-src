@@ -10,27 +10,27 @@
 %{!?rhl7:%define rhl7 0}
 %if %{rhl7}
 	%define webserver apache
-    %define rpm_release %{spec_release}.7.x
+    %define rpm_release 0.%{spec_release}.7.x
 %else
 	%define webserver httpd
     %define rpm_release %{spec_release}
 %endif
 
-Summary: SquirrelMail webmail client
-Name: squirrelmail
-Version: 1.4.0
-Release: %{rpm_release}
-License: GPL
-URL: http://www.squirrelmail.org/
-Vendor: squirrelmail.org
-Group: Applications/Internet
-Source: %{name}-%{version}.tar.bz2
-BuildRoot: %{_tmppath}/%{name}-%{version}-root
-BuildArch: noarch
-Requires: %{webserver}, php >= 4.0.4, perl, tmpwatch >= 2.8, aspell
-Requires: /usr/sbin/sendmail
-Prereq: %{webserver}, perl
-BuildPrereq: perl
+#------------------------------------------------------------------------------
+
+Summary:        SquirrelMail webmail client
+Name:           squirrelmail
+Version:        1.4.1
+Release:        %{rpm_release}
+License:        GPL
+URL:            http://www.squirrelmail.org/
+Vendor:         squirrelmail.org
+Group:          Applications/Internet
+Source:         %{name}-%{version}.tar.bz2
+BuildRoot:      %{_tmppath}/%{name}-%{version}-root
+BuildArch:      noarch
+Requires:       %{webserver}, php >= 4.0.4, perl, tmpwatch >= 2.8, aspell
+Requires:       MTA
 
 %description
 SquirrelMail is a standards-based webmail package written in PHP4. It
@@ -40,6 +40,8 @@ compatibility across browsers.  It has very few requirements and is very
 easy to configure and install. SquirrelMail has all the functionality
 you would want from an email client, including strong MIME support,
 address books, and folder manipulation.
+
+#------------------------------------------------------------------------------
 
 %prep
 %setup -q
@@ -72,8 +74,10 @@ done
 %{__perl} -pi -e "s|^(\s*\\\$version\s*=\s*).*|\1'%{version}-%{release}';|g"\
     functions/strings.php
 
+#------------------------------------------------------------------------------
+
 %install
-rm -rf %{buildroot}
+%{__rm} -rf %{buildroot}
 %{__mkdir_p} -m 755 %{buildroot}%{_sysconfdir}/squirrelmail
 %{__mkdir_p} -m 755 %{buildroot}%{_localstatedir}/lib/squirrelmail/prefs
 %{__mkdir_p} -m 755 %{buildroot}%{_localstatedir}/spool/squirrelmail/attach
@@ -111,18 +115,22 @@ done
     %{buildroot}/%{_sysconfdir}/cron.daily/
 
 %if %{rhl7}
-# symlink from /var/www/html/webmail to /usr/share/squirrelmail
-%{__mkdir_p} -m 755 %{buildroot}/var/www/html
-%{__ln_s} %{_datadir}/squirrelmail %{buildroot}/var/www/html/webmail
+    # symlink from /var/www/html/webmail to /usr/share/squirrelmail
+    %{__mkdir_p} -m 755 %{buildroot}/var/www/html
+    %{__ln_s} %{_datadir}/squirrelmail %{buildroot}/var/www/html/webmail
 %else
-# install the config file
-%{__mkdir_p} %{buildroot}%{_sysconfdir}/httpd/conf.d
-%{__install} -m 644 contrib/RPM/squirrelmail.conf \
-	%{buildroot}%{_sysconfdir}/httpd/conf.d/
+    # install the config file
+    %{__mkdir_p} %{buildroot}%{_sysconfdir}/httpd/conf.d
+    %{__install} -m 644 contrib/RPM/squirrelmail.conf \
+	    %{buildroot}%{_sysconfdir}/httpd/conf.d/
 %endif
+
+#------------------------------------------------------------------------------
 
 %clean
 %{__rm} -rf %{buildroot}
+
+#------------------------------------------------------------------------------
 
 %files
 %defattr(-,root,root)
@@ -154,7 +162,14 @@ done
 %{_localstatedir}/lib/squirrelmail/prefs/default_pref
 %{_sysconfdir}/cron.daily/squirrelmail.cron
 
+#------------------------------------------------------------------------------
+
 %changelog
+* Thu Jul 03 2003 Konstantin Riabitsev <icon@duke.edu> 1.4.1-1
+- Build for 1.4.1
+- Prefixing the release with "0" so the RPM upgrades cleanly when going to
+  rhl > 7.x.
+
 * Tue Mar 26 2003 Konstantin Riabitsev <icon@duke.edu> 1.4.0-1
 - Build for 1.4.0
 
