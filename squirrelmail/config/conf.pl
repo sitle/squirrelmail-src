@@ -315,6 +315,9 @@ if ( !$allow_thread_sort ) {
 if ( !$allow_server_sort ) {
     $allow_server_sort = 'false';
 }
+if ( !$uid_support ) {
+    $uid_support = 'true';
+}
 if ( !$no_list_for_subscribe ) {
     $no_list_for_subscribe = 'false';
 }
@@ -515,7 +518,8 @@ while ( ( $command ne "q" ) && ( $command ne "Q" ) ) {
         print "11. Allow server thread sort    : $WHT$allow_thread_sort$NRM\n";
         print "12. Allow server-side sorting   : $WHT$allow_server_sort$NRM\n";
         print "13. Allow server charset search : $WHT$allow_charset_search$NRM\n";
-		print "14. PHP session name            : $WHT$session_name$NRM\n";
+        print "14. Enable UID support          : $WHT$uid_support$NRM\n";
+		print "15. PHP session name            : $WHT$session_name$NRM\n";
         print "\n";
         print "R   Return to Main Menu\n";
     } elsif ( $menu == 5 ) {
@@ -713,7 +717,8 @@ while ( ( $command ne "q" ) && ( $command ne "Q" ) ) {
             elsif ( $command == 11 ) { $allow_thread_sort        = command312(); }
             elsif ( $command == 12 ) { $allow_server_sort        = command313(); }
             elsif ( $command == 13 ) { $allow_charset_search     = command314(); }
-			elsif ( $command == 14 ) { $session_name             = command316(); }
+            elsif ( $command == 14 ) { $uid_support              = command315(); }
+			elsif ( $command == 15 ) { $session_name             = command316(); }
         } elsif ( $menu == 5 ) {
             if ( $command == 1 ) { command41(); }
             elsif ( $command == 2 ) { $theme_css = command42(); }
@@ -1128,17 +1133,17 @@ sub command111 {
     return $new_optional_delimiter;
 }
 # IMAP authentication type
-# Possible values: login, plain, cram-md5, digest-md5
+# Possible values: login, cram-md5, digest-md5
 # Now offers to detect supported mechs, assuming server & port are set correctly
 
 sub command112a {
     if ($use_imap_tls =~ /^true\b/i) {
         print "Auto-detection of login methods is unavailable when using TLS.\n";
     } else {
-    	print "If you have already set the hostname and port number, I can try to\n";
+	    print "If you have already set the hostname and port number, I can try to\n";
     	print "detect the mechanisms your IMAP server supports.\n";
     	print "I will try to detect CRAM-MD5 and DIGEST-MD5 support.  I can't test\n";
-    	print "for \"login\" or \"plain\" without knowing a username and password.\n";
+    	print "for \"login\" without knowing a username and password.\n";
     	print "Auto-detecting is optional - you can safely say \"n\" here.\n";
     	print "\nTry to detect supported mechanisms? [y/N]: ";
     	$inval=<STDIN>;
@@ -1162,28 +1167,27 @@ sub command112a {
     	  print "DIGEST-MD5:\t";
     	  $tmp = detect_auth_support('IMAP',$host,'DIGEST-MD5');
     	  if (defined($tmp)) {
-	      	if ($tmp eq 'YES') {
-		    	print "$WHT SUPPORTED$NRM\n";
+    	  	if ($tmp eq 'YES') {
+    			print "$WHT SUPPORTED$NRM\n";
     		} else {
-	    		print "$WHT NOT SUPPORTED$NRM\n";
+    			print "$WHT NOT SUPPORTED$NRM\n";
     		}
     	  } else {
     	    print $WHT . " ERROR DETECTING$NRM\n";
     	  }
-    	  
-    	}
-    } 
+	  
+    	} 
+    }
 	  print "\nWhat authentication mechanism do you want to use for IMAP connections?\n\n";
 	  print $WHT . "login" . $NRM . " - Plaintext. If you can do better, you probably should.\n";
-      print $WHT . "plain" . $NRM . " - SASL PLAIN. If you need this, you already know it.\n";
 	  print $WHT . "cram-md5" . $NRM . " - Slightly better than plaintext methods.\n";
 	  print $WHT . "digest-md5" . $NRM . " - Privacy protection - better than cram-md5.\n";
 	  print "\n*** YOUR IMAP SERVER MUST SUPPORT THE MECHANISM YOU CHOOSE HERE ***\n";
 	  print "If you don't understand or are unsure, you probably want \"login\"\n\n";
-	  print "login, plain, cram-md5, or digest-md5 [$WHT$imap_auth_mech$NRM]: $WHT";
+	  print "login, cram-md5, or digest-md5 [$WHT$imap_auth_mech$NRM]: $WHT";
       $inval=<STDIN>;
       chomp($inval);
-      if ( ($inval =~ /^cram-md5\b/i) || ($inval =~ /^digest-md5\b/i) || ($inval =~ /^login\b/i) || ($inval =~ /^plain\b/i)) {
+      if ( ($inval =~ /^cram-md5\b/i) || ($inval =~ /^digest-md5\b/i) || ($inval =~ /^login\b/i)) {
         return lc($inval);
       } else {
         # user entered garbage or default value so nothing needs to be set
@@ -1199,7 +1203,7 @@ sub command112b {
         print "Auto-detection of login methods is unavailable when using TLS.\n";
     } else {
         print "If you have already set the hostname and port number, I can try to\n";
-        print "automatically detect some of the mechanisms your SMTP server supports.\n";
+        print "automatically detect the mechanisms your SMTP server supports.\n";
     	print "Auto-detection is *optional* - you can safely say \"n\" here.\n";
         print "\nTry to detect auth mechanisms? [y/N]: ";
         $inval=<STDIN>;
@@ -1274,7 +1278,6 @@ sub command112b {
     print "\nWhat authentication mechanism do you want to use for SMTP connections?\n";
     print $WHT . "none" . $NRM . " - Your SMTP server does not require authorization.\n";
     print $WHT . "login" . $NRM . " - Plaintext. If you can do better, you probably should.\n";
-    print $WHT . "plain" . $NRM . " - SASL PLAIN.  You already know it if you need this.\n";
     print $WHT . "cram-md5" . $NRM . " - Slightly better than plaintext.\n";
     print $WHT . "digest-md5" . $NRM . " - Privacy protection - better than cram-md5.\n";
     print $WHT . "\n*** YOUR SMTP SERVER MUST SUPPORT THE MECHANISM YOU CHOOSE HERE ***\n" . $NRM;
@@ -1287,7 +1290,7 @@ sub command112b {
       return "none";
     }
     if ( ($inval =~ /^cram-md5\b/i) || ($inval =~ /^digest-md5\b/i) || 
-    ($inval =~ /^login\b/i) || ($inval =~/^plain\b/i)) {
+    ($inval =~ /^login\b/i)) {
       return lc($inval);
     } else {
       # user entered garbage, or default value so nothing needs to be set
@@ -1769,43 +1772,39 @@ sub command214 {
 
 # Automatically delete folders 
 sub command215 {
-    if ( $imap_server_type eq "uw" ) {
-        print "UW IMAP servers will not allow folders containing mail to also contain folders.\n";
-        print "Deleting folders will bypass the trash folder and be immediately deleted\n\n";
+    if ( $imap_server_type == "courier" ) {
+        print "Courier(or Courier-IMAP) IMAP servers do not support ";
+        print "subfolders of Trash. \n";
+        print "Deleting folders will bypass the trash folder and ";
+        print "be immediately deleted.\n\n";
+        print "If this is not the correct value for your server,\n";
+        print "please use option D on the Main Menu to configure your server correctly.\n\n";
+        print "Press any key to continue...\n";
+        $new_delete = <STDIN>;
+        $delete_folder = "true";
+    } elsif ( $imap_server_type == "uw" ) {
+        print "UW IMAP servers will not allow folders containing";
+        print "mail to also contain folders.\n";
+        print "Deleting folders will bypass the trash folder and";
+        print "be immediately deleted\n\n";
         print "If this is not the correct value for your server,\n";
         print "please use option D on the Main Menu to configure your server correctly.\n\n";
         print "Press any key to continue...\n";
         $new_delete = <STDIN>;
         $delete_folder = "true";
     } else { 
-        if ( $imap_server_type eq "courier" ) {
-            print "Courier (or Courier-IMAP) IMAP servers may not support ";
-            print "subfolders of Trash. \n";
-            print "Specifically, if Courier is set to always move messages to Trash, \n";
-            print "Trash will be treated by Courier as a special folder that does not \n";
-            print "allow subfolders. \n\n";
-            print "Please verify your Courier configuration, and test folder deletion \n";
-            print "when changing this setting.\n\n";                                                             
-        }
-
-        print "Are subfolders of the Trash supported by your IMAP server?\n";
-        print "If so, should deleted folders be sent to Trash?\n";
-        print "If not, say no (deleted folders should not be sent to Trash)\n\n";
-        # reversal of logic.
-        # question was: Should folders be automatically deleted instead of sent to trash..
-        # we've changed the question to make it more clear, 
-        # and are here handling that to avoid changing the answers.. 
+        print "Should folders selected for deletion bypass the Trash folder?\n\n";
         if ( lc($delete_folder) eq "true" ) {
-            $default_value = "n";
-        } else {
             $default_value = "y";
+        } else {
+            $default_value = "n";
         }
-        print "Send deleted folders to Trash? (y/n) [$WHT$default_value$NRM]: $WHT";
+        print "Auto delete folders? (y/n) [$WHT$default_value$NRM]: $WHT";
         $new_delete = <STDIN>;
         if ( ( $new_delete =~ /^y\n/i ) || ( ( $new_delete =~ /^\n/ ) && ( $default_value eq "y" ) ) ) {
-            $delete_folder = "false";
-        } else {
             $delete_folder = "true";
+        } else {
+            $delete_folder = "false";
         }
     }
     return $delete_folder;
@@ -2155,8 +2154,6 @@ sub command314 {
 }
 
 sub command315 {
-    ## OBSOLETE - UID support is now always enabled
-    return "true";
     print "This option allows you to enable unique identifier (UID) support.\n";
     print "\n";
 
@@ -2789,6 +2786,8 @@ sub save_data {
         print CF "\$allow_server_sort        = $allow_server_sort;\n";
         # boolean
         print CF "\$allow_charset_search     = $allow_charset_search;\n";
+        # boolean
+        print CF "\$uid_support              = $uid_support;\n";
         print CF "\n";
 	
 	# all plugins are strings
@@ -2917,7 +2916,6 @@ sub set_defaults {
         print "    exchange   = Microsoft Exchange IMAP server\n";
         print "    courier    = Courier IMAP server\n";
         print "    macosx     = Mac OS X Mailserver\n";
-        print "    mercury32  = Mercury/32\n";
         print "    quit       = Do not change anything\n";
         print "Command >> ";
         $server = <STDIN>;
@@ -2935,7 +2933,6 @@ sub set_defaults {
             $show_contain_subfolders_option = false;
             $optional_delimiter             = ".";
             $disp_default_folder_prefix     = "<none>";
-            $force_username_lowercase       = false;
 
             $continue = 1;
         } elsif ( $server eq "uw" ) {
@@ -2950,7 +2947,6 @@ sub set_defaults {
             $optional_delimiter             = "/";
             $disp_default_folder_prefix     = $default_folder_prefix;
             $delete_folder                  = true;
-            $force_username_lowercase       = true;
             
             $continue = 1;
         } elsif ( $server eq "exchange" ) {
@@ -2964,7 +2960,6 @@ sub set_defaults {
             $show_contain_subfolders_option = false;
             $optional_delimiter             = "detect";
             $disp_default_folder_prefix     = "<none>";
-            $force_username_lowercase       = true;
 
             $continue = 1;
         } elsif ( $server eq "courier" ) {
@@ -2979,7 +2974,6 @@ sub set_defaults {
             $optional_delimiter             = ".";
             $disp_default_folder_prefix     = $default_folder_prefix;
             $delete_folder                  = true;
-            $force_username_lowercase       = false;
             
             $continue = 1;
         } elsif ( $server eq "macosx" ) {
@@ -2994,20 +2988,6 @@ sub set_defaults {
             $optional_delimiter             = "detect";
             $allow_charset_search           = false;
             $disp_default_folder_prefix     = $default_folder_prefix;
-
-            $continue = 1;
-        } elsif ( $server eq "mercury32" ) {
-            $imap_server_type               = "mercury32";
-            $default_folder_prefix          = "";
-            $trash_folder                   = "INBOX.Trash";
-            $sent_folder                    = "INBOX.Sent";
-            $draft_folder                   = "INBOX.Drafts";
-            $show_prefix_option             = false;
-            $default_sub_of_inbox           = true;
-            $show_contain_subfolders_option = true;
-            $optional_delimiter             = "detect";
-            $delete_folder                  = true;
-            $force_username_lowercase       = true;
 
             $continue = 1;
         } elsif ( $server eq "quit" ) {
@@ -3028,9 +3008,8 @@ sub set_defaults {
         print "show_contain_subfolders_option = $show_contain_subfolders_option\n";
         print "            optional_delimiter = $optional_delimiter\n";
         print "                 delete_folder = $delete_folder\n";
-        print "      force_username_lowercase = $force_username_lowercase\n";
     }
-    print "\nPress enter to continue...";
+    print "\nPress any key to continue...";
     $tmp = <STDIN>;
 }
 

@@ -1,118 +1,888 @@
-# Romanian Squirrelmail Translation
-# Copyright (c) 1999-2002 The Squirrelmail Development Team
-# Mircea Ilie <mirceax@tep.ro>, 2001
+# Romanian translations for SquirrelMail package.
+# Copyright (C) 2003 Free Software Foundation, Inc.
+# Eugen Hoanca <eugenh@urban-grafx.ro>, 2003.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: $Id$\n"
-"POT-Creation-Date: 2003-01-01 18:33+0100\n"
-"PO-Revision-Date: 2002-05-22 16:57+0300\n"
-"Last-Translator: Manic Miner <helminthe@slayerized.com>\n"
+"Project-Id-Version: SquirrelMail 1.4.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2003-09-20 11:04+0300\n"
+"PO-Revision-Date: 2003-04-04 13:59+0300\n"
+"Last-Translator: Eugen Hoanca <eugenh@urban-grafx.ro>\n"
 "Language-Team: Romanian <squirrelmail-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=ISO-8859-2\n"
+"Content-Type: text/plain; charset=ISO-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 0.9.6\n"
 
-msgid "Delivery error report"
+msgid "Address Book"
+msgstr "Agenda"
+
+msgid "All"
+msgstr "Toate"
+
+msgid "Name"
+msgstr "Nume"
+
+msgid "E-mail"
+msgstr "E-mail"
+
+msgid "Info"
+msgstr "Info"
+
+msgid "Source"
+msgstr "Sursa"
+
+msgid "To"
+msgstr "Catre"
+
+msgid "Cc"
+msgstr "CC"
+
+msgid "Bcc"
+msgstr "Bcc"
+
+msgid "Use Addresses"
+msgstr "Utilizeaza adresele"
+
+msgid "Address Book Search"
+msgstr "Cautare agenda"
+
+msgid "Search for"
+msgstr "Cautare dupa"
+
+msgid "in"
+msgstr "in"
+
+msgid "All address books"
+msgstr "Toate agendele"
+
+msgid "Search"
+msgstr "Cautare"
+
+msgid "List all"
+msgstr "Listare toate"
+
+#, c-format
+msgid "Unable to list addresses from %s"
+msgstr "Nu se pot lista adresele din %s"
+
+msgid "Your search failed with the following error(s)"
+msgstr "Cautarea dumneavoastra a esuat cu urmatoarea(le) eroare/erori"
+
+msgid "No persons matching your search was found"
+msgstr "Nu s-a gasit nici o persoana potrivita cautarii"
+
+msgid "Return"
+msgstr "Intoarcere"
+
+msgid "Close"
+msgstr "Inchidere"
+
+msgid "Nickname"
+msgstr "Pseudonim"
+
+msgid "Must be unique"
+msgstr "Trebuie sa fie unic(a)"
+
+msgid "E-mail address"
+msgstr "Adresa e-mail"
+
+msgid "Last name"
+msgstr "Nume"
+
+msgid "First name"
+msgstr "Prenume"
+
+msgid "Additional info"
+msgstr "Informatii suplimentare"
+
+msgid "No personal address book is defined. Contact administrator."
+msgstr "Nu e definita nici o agenda. Contactati administratorul."
+
+msgid "You can only edit one address at the time"
+msgstr "Puteti edita doar o adresa deodata"
+
+msgid "Update address"
+msgstr "Improspatare adresa"
+
+msgid "ERROR"
+msgstr "EROARE"
+
+msgid "Unknown error"
+msgstr "Eroare necunoscuta"
+
+msgid "Add address"
+msgstr "Adaugare adresa"
+
+msgid "Edit selected"
+msgstr "Editare selectate"
+
+msgid "Delete selected"
+msgstr "Stergere selectate"
+
+#, c-format
+msgid "Add to %s"
+msgstr "Adaugare in %s"
+
+msgid "said"
+msgstr "a spus"
+
+msgid "quote"
+msgstr "a citat"
+
+msgid "who"
+msgstr "cine"
+
+msgid "Subject"
+msgstr "Subiect"
+
+msgid "From"
+msgstr "De la"
+
+msgid "Date"
+msgstr "Data"
+
+msgid "Original Message"
+msgstr "Mesaj original"
+
+msgid "Draft Email Saved"
+msgstr "Ciorna email salvata"
+
+msgid "Could not move/copy file. File not attached"
+msgstr "Nu s-a putut muta/copia fisier. Fisier neatasat."
+
+msgid "Draft Saved"
+msgstr "Ciorna salvata"
+
+msgid "Your Message has been sent"
+msgstr "Mesajul a fost trimis"
+
+msgid "From:"
+msgstr "De la:"
+
+msgid "To:"
+msgstr "Catre"
+
+msgid "CC:"
+msgstr "CC:"
+
+msgid "BCC:"
+msgstr "BCC:"
+
+msgid "Subject:"
+msgstr "Subiect:"
+
+msgid "Send"
+msgstr "Trimitere"
+
+msgid "Attach:"
+msgstr "Atasare:"
+
+msgid "Add"
+msgstr "Adaugare"
+
+msgid "Delete selected attachments"
+msgstr "Stergere atasamente selectate"
+
+msgid "Priority"
+msgstr "Prioritate"
+
+msgid "High"
+msgstr "Mare"
+
+msgid "Normal"
+msgstr "Normal"
+
+msgid "Low"
+msgstr "Mica"
+
+msgid "Receipt"
+msgstr "Primire"
+
+msgid "On Read"
+msgstr "In citire"
+
+msgid "On Delivery"
+msgstr "La livrare"
+
+msgid "Signature"
+msgstr "Semnatura"
+
+msgid "Addresses"
+msgstr "Adrese"
+
+msgid "Save Draft"
+msgstr "Salvare ciorna"
+
+msgid "You have not filled in the \"To:\" field."
+msgstr "Nu ati completat campul \"Catre:\"."
+
+msgid "Draft folder"
+msgstr "Dosar ciorne"
+
+#, fuzzy
+msgid "Server replied: "
+msgstr "Raspunsul serverului:"
+
+msgid "Illegal folder name.  Please select a different name."
+msgstr "Nume dosar invalid. Selectati un nume diferit."
+
+msgid "Click here to go back"
+msgstr "Clic aici pentru intoarcere"
+
+msgid "You have not selected a folder to delete. Please do so."
+msgstr "Nu ati selectat un dosar pentru stergere. Va rugam selectati."
+
+msgid "Delete Folder"
+msgstr "Stergere dosar"
+
+#, c-format
+msgid "Are you sure you want to delete %s?"
+msgstr "Sunteti sigur ca vreti sa stergeti %s?"
+
+msgid "Yes"
+msgstr "Da"
+
+msgid "No"
+msgstr "Nu"
+
+msgid "Folders"
+msgstr "Dosare"
+
+msgid "Subscribed successfully!"
+msgstr "Abonat cu succes!"
+
+msgid "Unsubscribed successfully!"
+msgstr "Dezabonat cu succes!"
+
+msgid "Deleted folder successfully!"
+msgstr "Dosar sters cu succes!"
+
+msgid "Created folder successfully!"
+msgstr "Dosar creat cu succes!"
+
+msgid "Renamed successfully!"
+msgstr "Redenumit cu succes!"
+
+msgid "Subscription Unsuccessful - Folder does not exist."
+msgstr "Abonare nereusita - dosar inexistent."
+
+msgid "refresh folder list"
+msgstr "improspatare lista dosare"
+
+msgid "Create Folder"
+msgstr "Creare dosar"
+
+msgid "as a subfolder of"
+msgstr "ca subdosar al"
+
+msgid "None"
+msgstr "Nici unul(una)"
+
+msgid "Let this folder contain subfolders"
+msgstr "Permite dosarului sa contina subdosare"
+
+msgid "Create"
+msgstr "Creare"
+
+msgid "Rename a Folder"
+msgstr "Redenumire dosar"
+
+msgid "Select a folder"
+msgstr "Selectare dosar"
+
+msgid "Rename"
+msgstr "Redenumire"
+
+msgid "No folders found"
+msgstr "Nici un dosar gasit"
+
+msgid "Delete"
+msgstr "Stergere"
+
+msgid "Unsubscribe"
+msgstr "Dezabonare"
+
+msgid "Subscribe"
+msgstr "Abonare"
+
+msgid "No folders were found to unsubscribe from!"
+msgstr "Nici un dosar gasit pentru dezabonare!"
+
+msgid "No folders were found to subscribe to!"
+msgstr "Nici un dosar gasit pentru abonare!"
+
+msgid "Subscribe to:"
+msgstr "Abonare la:"
+
+msgid "You have not selected a folder to rename. Please do so."
+msgstr "Nu ati selectat un dosar pentru redenumire. Va rugam selectati."
+
+msgid "Rename a folder"
+msgstr "Redenumire dosar"
+
+msgid "New name:"
+msgstr "Nume nou:"
+
+msgid "Submit"
+msgstr "Trimitere"
+
+msgid "ERROR: Help files are not in the right format!"
+msgstr "Eroare: fisierele de help nu sunt in format obisnuit!"
+
+msgid "Help"
+msgstr "Ajutor"
+
+#, c-format
+msgid ""
+"The help has not been translated to %s.  It will be displayed in English "
+"instead."
+msgstr ""
+"Acest help nu a fost tradus in %s. Va fi afisat in limba engleza in schimb."
+
+msgid "Some or all of the help documents are not present!"
+msgstr "Anumite sau toate documentele de help lipsesc!"
+
+msgid "Table of Contents"
+msgstr "Cuprins"
+
+msgid "Previous"
+msgstr "Anterior"
+
+msgid "Next"
+msgstr "Urmator"
+
+msgid "Top"
+msgstr "Cap de pagina"
+
+msgid "Viewing an image attachment"
+msgstr "Vizualizare atasament imagine"
+
+msgid "View message"
+msgstr "Vizualizare mesaj"
+
+msgid "Download this as a file"
+msgstr "Salveaza ca fisier"
+
+msgid "INBOX"
+msgstr "INBOX"
+
+msgid "purge"
+msgstr "curatare"
+
+msgid "Last Refresh"
+msgstr "Ultima improspatare"
+
+msgid "refresh unseen/total info"
 msgstr ""
 
-msgid "Undelivered Message Headers"
-msgstr ""
+msgid "Save folder tree"
+msgstr "Salvare structura dosare"
 
-msgid "(no subject)"
-msgstr "(fãrã subiect)"
+msgid "Login"
+msgstr "Intrare"
+
+#, c-format
+msgid "%s Logo"
+msgstr "Sigla %s"
+
+#, c-format
+msgid "SquirrelMail version %s"
+msgstr "SquirrelMail versiunea %s"
+
+msgid "By the SquirrelMail Development Team"
+msgstr "De catre echipa de dezvoltare SquirrelMail"
+
+#, c-format
+msgid "%s Login"
+msgstr "Intrare %s"
+
+msgid "Name:"
+msgstr "Nume:"
+
+msgid "Password:"
+msgstr "Parola:"
+
+msgid "No messages were selected."
+msgstr "Nici un mesaj selectat"
+
+msgid "Options"
+msgstr "Optiuni"
+
+msgid "Message Highlighting"
+msgstr "Evidentiere mesaj"
+
+msgid "New"
+msgstr "Nou"
+
+msgid "Done"
+msgstr "Finalizat"
+
+msgid "To or Cc"
+msgstr "Catre sau Cc"
+
+msgid "subject"
+msgstr "subiect"
+
+msgid "Edit"
+msgstr "Editare"
+
+msgid "Up"
+msgstr "Sus"
+
+msgid "Down"
+msgstr "Jos"
+
+msgid "No highlighting is defined"
+msgstr "Nici o evidentiere definita"
+
+msgid "Identifying name"
+msgstr "Identificare nume"
+
+msgid "Color"
+msgstr "Culoare"
+
+msgid "Dark Blue"
+msgstr "Albastru inchis"
+
+msgid "Dark Green"
+msgstr "Verde inchis"
+
+msgid "Dark Yellow"
+msgstr "Galben Inchis"
+
+msgid "Dark Cyan"
+msgstr "Bleu inchis"
+
+msgid "Dark Magenta"
+msgstr "Mov inchis"
+
+msgid "Light Blue"
+msgstr "Albastru deschis"
+
+msgid "Light Green"
+msgstr "Verde deschis"
+
+msgid "Light Yellow"
+msgstr "Galben deschis"
+
+msgid "Light Cyan"
+msgstr "Bleu deschis"
+
+msgid "Light Magenta"
+msgstr "Mov deschis"
+
+msgid "Dark Gray"
+msgstr "Cenusiu inschis"
+
+msgid "Medium Gray"
+msgstr "Cenusiu mediu"
+
+msgid "Light Gray"
+msgstr "Cenusiu deschis"
+
+msgid "White"
+msgstr "Alb"
+
+msgid "Other:"
+msgstr "Alta:"
+
+msgid "Ex: 63aa7f"
+msgstr "Ex: 63aa7f"
+
+msgid "Matches"
+msgstr "Potriviri"
+
+#, c-format
+msgid "Alternate Identity %d"
+msgstr "Identitate alternativa %d"
+
+msgid "Advanced Identities"
+msgstr "Identitati avansate"
+
+msgid "Default Identity"
+msgstr "Identitate implicita"
+
+msgid "Add a New Identity"
+msgstr "Adaugare identitate noua"
+
+msgid "Full Name"
+msgstr "Nume intreg"
+
+msgid "E-Mail Address"
+msgstr "Adresa e-mail"
+
+msgid "Reply To"
+msgstr "Raspunde catre"
+
+msgid "Save / Update"
+msgstr "Salvare/Improspatare"
+
+msgid "Make Default"
+msgstr "Fa implicit"
+
+msgid "Move Up"
+msgstr "Muta sus"
+
+msgid "Index Order"
+msgstr "Ordine index"
+
+msgid "Checkbox"
+msgstr "Casuta"
+
+msgid "Flags"
+msgstr "Marcaje"
+
+msgid "Size"
+msgstr "Marime"
+
+msgid ""
+"The index order is the order that the columns are arranged in the message "
+"index.  You can add, remove, and move columns around to customize them to "
+"fit your needs."
+msgstr ""
+"Ordine index este ordinea in care sunt arajnate coloanele in indexul de "
+"mesaje. Puteti adauga, sterge si muta coloane dupa preferinte in functie de "
+"nevoi."
+
+msgid "up"
+msgstr "sus"
+
+msgid "down"
+msgstr "jos"
+
+msgid "remove"
+msgstr "sterge"
+
+msgid "Return to options page"
+msgstr "Intoarcere la pagina de optiuni"
+
+msgid "Personal Information"
+msgstr "Informatii personale"
+
+msgid "Display Preferences"
+msgstr "Preferinte afisaj"
+
+msgid "Folder Preferences"
+msgstr "Preferinte dosar"
+
+msgid "Successfully Saved Options"
+msgstr "Optiuni salvate cu succes"
+
+msgid "Refresh Folder List"
+msgstr "Improspatare lista dosare"
+
+msgid "Refresh Page"
+msgstr "Improspatare pagina"
+
+msgid ""
+"This contains personal information about yourself such as your name, your "
+"email address, etc."
+msgstr ""
+"Aici sunt informatii personale despre dumneavoastra precum numele, adresa de "
+"email, etc."
+
+msgid ""
+"You can change the way that SquirrelMail looks and displays information to "
+"you, such as the colors, the language, and other settings."
+msgstr ""
+"Puteti schimba modul in care arata si va afiseaza informatii SquirrelMail "
+"precum culori, limbi sau alte setari."
+
+msgid ""
+"Based upon given criteria, incoming messages can have different background "
+"colors in the message list.  This helps to easily distinguish who the "
+"messages are from, especially for mailing lists."
+msgstr ""
+"Dupa criterii stabilite, mesajele care vin pot avea culori diferite de "
+"fundal in lista de mesaje. Aceasta ajuta la distingerea mai usoara a sursei "
+"mesajelor, in special din listele de mail."
+
+msgid ""
+"These settings change the way your folders are displayed and manipulated."
+msgstr "Aceste setari schimba modul de afisare si manipulare al dosarelor."
+
+msgid ""
+"The order of the message index can be rearranged and changed to contain the "
+"headers in any order you want."
+msgstr ""
+"Ordinea indexului de mesaje poate fi rearanjata si schimbata pentru a "
+"contine headerele in orice ordine dorita."
+
+msgid "Message not printable"
+msgstr "Mesaj netiparibil"
+
+msgid "CC"
+msgstr "CC"
+
+msgid "Printer Friendly"
+msgstr "Versiune pentru tiparire"
+
+msgid "Print"
+msgstr "Tiparire"
+
+msgid "View Printable Version"
+msgstr "Vizualizare versiune tiparibila"
+
+msgid "Read:"
+msgstr "Citire:"
+
+msgid "Your message"
+msgstr "Mesajul dumneavoastra"
+
+msgid "Sent:"
+msgstr "Trimis:"
+
+#, c-format
+msgid "Was displayed on %s"
+msgstr "A fost afisat in %s"
+
+msgid "less"
+msgstr "sumar"
+
+msgid "more"
+msgstr "detalii"
+
+msgid "Unknown sender"
+msgstr "Expeditor necunoscut"
+
+msgid "Mailer"
+msgstr "Mailer"
+
+msgid "Read receipt"
+msgstr "Confirmare de citire"
+
+#, fuzzy
+msgid "sent"
+msgstr "trimitere"
+
+msgid "requested"
+msgstr "solicitat(a)"
+
+msgid ""
+"The message sender has requested a response to indicate that you have read "
+"this message. Would you like to send a receipt?"
+msgstr ""
+"Expeditorul a solicitat un raspuns care sa indice ca ati citit acest mesaj. "
+"Doriti sa trimiteti o confirmare?"
+
+msgid "Send read receipt now"
+msgstr "Trimitere confirmare citire acum"
+
+msgid "Search results"
+msgstr "Rezultate cautare"
+
+msgid "Message List"
+msgstr "Lista mesaj"
+
+msgid "Resume Draft"
+msgstr "Continua ciorna"
+
+msgid "Edit Message as New"
+msgstr "Editare mesaj ca nou"
+
+msgid "View Message"
+msgstr "Vizualizare mesaj"
+
+msgid "Forward"
+msgstr "Inaintare"
+
+msgid "Forward as Attachment"
+msgstr "Inaintare ca atasament"
+
+msgid "Reply"
+msgstr "Raspunde"
+
+msgid "Reply All"
+msgstr "Raspunde la toate"
+
+msgid "View Full Header"
+msgstr "Vizualizare header"
+
+msgid "Attachments"
+msgstr "Atasamente"
+
+msgid "You must be logged in to access this page."
+msgstr "Trebuie sa fiti logati pentru a accesa aceasta pagina."
+
+msgid "Folder:"
+msgstr "Dosar:"
+
+msgid "edit"
+msgstr "editare"
+
+msgid "search"
+msgstr "cautare"
+
+msgid "delete"
+msgstr "stergere"
+
+msgid "Recent Searches"
+msgstr "Cautari recente"
+
+msgid "save"
+msgstr "salvare"
+
+msgid "forget"
+msgstr "omitere"
+
+msgid "Current Search"
+msgstr "Cautare curenta"
+
+msgid "All Folders"
+msgstr "Toate dosarele"
+
+msgid "Body"
+msgstr "Corp"
+
+msgid "Everywhere"
+msgstr "Peste tot"
+
+msgid "Search Results"
+msgstr "Rezultate cautare"
+
+msgid "No Messages Found"
+msgstr "Nici un mesaj gasit"
+
+msgid "Sign Out"
+msgstr "Iesire"
+
+msgid "You have been successfully signed out."
+msgstr "Ati iesit cu succes."
+
+msgid "Click here to log back in."
+msgstr "Clic aici pentru reintrare."
+
+msgid "Viewing a Business Card"
+msgstr "Vizualizare Business Card"
+
+msgid "Title"
+msgstr "Titlu"
+
+msgid "Email"
+msgstr "Email"
+
+msgid "Web Page"
+msgstr "Pagina web"
+
+msgid "Organization / Department"
+msgstr "Organizatie / Departament"
+
+msgid "Address"
+msgstr "Adresa"
+
+msgid "Work Phone"
+msgstr "Telefon birou"
+
+msgid "Home Phone"
+msgstr "Telefon acasa"
+
+msgid "Cellular Phone"
+msgstr "Telefon mobil"
+
+msgid "Fax"
+msgstr "Fax"
+
+msgid "Note"
+msgstr "Nota"
+
+msgid "Add to Addressbook"
+msgstr "Adaugare in agenda"
+
+msgid "Title & Org. / Dept."
+msgstr "Titlu & Org. / Dept."
+
+msgid "Viewing Full Header"
+msgstr "Vizualizare header"
+
+msgid "Viewing a text attachment"
+msgstr "Vizualizare atasament text"
 
 msgid "Personal address book"
-msgstr "Agenda personalã"
+msgstr "Agenda personala"
 
 #, c-format
 msgid "Database error: %s"
-msgstr "Eroare în baza de date: %s"
+msgstr "Eroare baza de date: %s"
 
 msgid "Addressbook is read-only"
-msgstr "Nu se poate scrie în agendã"
+msgstr "Agenda doar in citire"
 
 #, c-format
 msgid "User '%s' already exist"
-msgstr "Utilizatorul \"%s\" existã deja"
+msgstr "Userul '%s' exista deja"
 
 #, c-format
 msgid "User '%s' does not exist"
-msgstr "Utilizatorul \"%s\" nu existã"
+msgstr "Userul '%s' nu exista"
 
 msgid "Global address book"
-msgstr "Agenda globalã"
+msgstr "Agenda globala"
 
 msgid "No such file or directory"
-msgstr "Nu existã un astfel de fiºier sau director"
+msgstr "Nu exista fisierul sau directorul"
 
 msgid "Open failed"
-msgstr "Nu am putut deschide"
+msgstr "Deschidere esuata"
 
 msgid "Can not modify global address book"
-msgstr "Nu pot modifica agenda globalã"
+msgstr "Nu se poate modifica agenda globala"
 
 msgid "Not a file name"
-msgstr "Nu e un nume de fiºier"
+msgstr "Nu este nume de fisier"
 
-#, fuzzy
 msgid "Write failed"
-msgstr "Nu am putut deschide"
+msgstr "Scriere esuata"
 
-#, fuzzy
 msgid "Unable to update"
-msgstr "Salveazã / Modificã"
+msgstr "Reinnoire esuata"
 
 msgid "Could not lock datafile"
-msgstr "Nu am putut bloca fiºierul de date"
+msgstr "Nu se poate bloca fisierul de date"
 
 msgid "Write to addressbook failed"
-msgstr "Nu am putut scrie în agendã"
+msgstr "Scriere in agenda esuata"
 
 msgid "Error initializing addressbook database."
-msgstr "Eroare la iniþializarea bazei de date ce conþine agenda."
+msgstr "Eroare la initializarea bazei de date a agendei."
 
 #, c-format
 msgid "Error opening file %s"
-msgstr "Eroare la deschiderea fiºierului %s"
+msgstr "Eroare la deschiderea fisierului %s"
 
 msgid "Error initializing global addressbook."
-msgstr "Eroare la iniþializarea agendei globale."
+msgstr "Eroare la initializarea agendei globale."
 
 #, c-format
 msgid "Error initializing LDAP server %s:"
-msgstr "Eroare la iniþializarea serverului LDAP %s"
+msgstr "Eroare la initializarea serverului LDAP %s:"
 
 msgid "Invalid input data"
-msgstr "Date de intrare incorecte"
+msgstr "Date invalide introduse"
 
 msgid "Name is missing"
-msgstr "Lipseºte numele"
+msgstr "Numele lipseste"
 
 msgid "E-mail address is missing"
-msgstr "Lipseºte adresa de e-mail"
+msgstr "Adresa e-mail lipseste"
 
 msgid "Nickname contains illegal characters"
-msgstr "Pseudonimul conþine caractere nepermise"
+msgstr "Pseudonimul contine caractere ilegale"
 
 msgid "view"
 msgstr "vizualizare"
 
 msgid "Business Card"
-msgstr "Informaþii personale"
-
-msgid "You must be logged in to access this page."
-msgstr "Trebuie sã fiþi conectat pentru a avea acces la aceastã paginã."
+msgstr "Business Card"
 
 msgid "Sunday"
-msgstr "Duminicã"
+msgstr "Duminica"
 
 msgid "Monday"
 msgstr "Luni"
 
 msgid "Tuesday"
-msgstr "Marþi"
+msgstr "Marti"
 
 msgid "Wednesday"
 msgstr "Miercuri"
@@ -124,7 +894,28 @@ msgid "Friday"
 msgstr "Vineri"
 
 msgid "Saturday"
-msgstr "Sîmbãtã"
+msgstr "Sambata"
+
+msgid "Sun"
+msgstr "Dum"
+
+msgid "Mon"
+msgstr "Lun"
+
+msgid "Tue"
+msgstr "Mar"
+
+msgid "Wed"
+msgstr "Mie"
+
+msgid "Thu"
+msgstr "Joi"
+
+msgid "Fri"
+msgstr "Vin"
+
+msgid "Sat"
+msgstr "Sam"
 
 msgid "January"
 msgstr "Ianuarie"
@@ -162,529 +953,577 @@ msgstr "Noiembrie"
 msgid "December"
 msgstr "Decembrie"
 
+msgid "Jan"
+msgstr "Ian"
+
+msgid "Feb"
+msgstr "Feb"
+
+msgid "Mar"
+msgstr "Mar"
+
+msgid "Apr"
+msgstr "Apr"
+
+msgid "Ma&#121;"
+msgstr ""
+
+msgid "Jun"
+msgstr "Iun"
+
+msgid "Jul"
+msgstr "Iul"
+
+msgid "Aug"
+msgstr "Aug"
+
+msgid "Sep"
+msgstr "Sep"
+
+msgid "Oct"
+msgstr "Oct"
+
+msgid "Nov"
+msgstr "Nov"
+
+msgid "Dec"
+msgstr "Dec"
+
 msgid "D, F j, Y g:i a"
 msgstr "D, F j, Y g:i a"
 
-#, fuzzy
 msgid "D, F j, Y G:i"
-msgstr "D, F j, Y g:i a"
+msgstr "D, F j, Y G:i"
+
+msgid "M j, Y"
+msgstr "M j, Y"
 
 msgid "g:i a"
 msgstr "g:i a"
 
 msgid "G:i"
-msgstr ""
+msgstr "G:i"
 
 msgid "D, g:i a"
 msgstr "D, g:i a"
 
-#, fuzzy
 msgid "D, G:i"
-msgstr "D, g:i a"
-
-msgid "M j, Y"
-msgstr "M j, Y"
+msgstr "D, G:i"
 
 #, c-format
 msgid "Preference database error (%s). Exiting abnormally"
-msgstr "Eroare în baza de date de preferinþe (%s). Ies forþat."
+msgstr "Eroare baza de date preferinte (%s). Iesire anormala"
 
 msgid "Unknown user or password incorrect."
-msgstr "Utilizator necunoscut sau parolã incorectã."
+msgstr "User necunoscut sau parola incorecta."
 
 msgid "Click here to try again"
-msgstr "Apãsaþi aici pentru a încerca din nou"
+msgstr "Click aici pentru a incerca din nou"
 
 #, c-format
 msgid "Click here to return to %s"
-msgstr "Apãsaþi aici pentru a vã întoarce la %s"
-
-#, fuzzy, c-format
-msgid "%s Logo"
-msgstr "%s Login"
-
-#, c-format
-msgid "SquirrelMail version %s"
-msgstr "SquirrelMail versiunea %s"
-
-msgid "By the SquirrelMail Development Team"
-msgstr "realizat de SquirrelMail Development Team"
-
-msgid "ERROR"
-msgstr "EROARE"
+msgstr "Click aici pentru intoarcere la %s"
 
 msgid "Go to the login page"
-msgstr "Mergeþi la pagina de conectare"
+msgstr "Mergi la pagina de login"
 
 #, c-format
 msgid ""
 "Preference file, %s, does not exist. Log out, and log back in to create a "
 "default preference file."
 msgstr ""
-"Fiºierul de preferinþe %s nu existã. Deconectaþi-vã ºi conectaþi-vã din nou "
-"pentru a crea fiºierul de preferinþe implicit."
+"Fisierul de preferinte, %s, nu exista. Iesiti si reintrati pentru a crea un "
+"fisier implicit de preferinte."
 
 #, c-format
 msgid ""
 "Preference file, %s, could not be opened. Contact your system administrator "
 "to resolve this issue."
 msgstr ""
+"Fisierul de preferinte, %s, nu a putut fi deschis. Contactati "
+"administratorul pentru rezolvarea acestei probleme."
 
 #, c-format
 msgid ""
 "Preference file, %s, could not be written. Contact your system administrator "
 "to resolve this issue."
 msgstr ""
+"Fisierul de preferinte %s nu a putut fi scris. Contactati administratorul "
+"pentru rezolvarea acestei probleme."
 
 #, fuzzy, c-format
+msgid ""
+"Preference file, %s, could not be copied from temporary file, %s. Contact "
+"your system administrator to resolve this issue."
+msgstr ""
+"Fisierul de preferinte, %s, nu a putut fi deschis. Contactati "
+"administratorul pentru rezolvarea acestei probleme."
+
+#, c-format
 msgid "Error opening %s"
-msgstr "Eroare la deschiderea "
+msgstr "Eroare la deschiderea %s"
 
 msgid "Default preference file not found or not readable!"
-msgstr ""
+msgstr "Fisierul implicit de preferinte negasit sau necitibil!"
 
-#, fuzzy
 msgid "Please contact your system administrator and report this error."
-msgstr "Luaþi legãtura cu administratorul pentru ajutor."
+msgstr "Contactati administratorul de retea si raportati aceasta eroare."
 
 msgid "Could not create initial preference file!"
-msgstr ""
+msgstr "Nu s-a putut crea fisierul de preferinte initiale!"
 
 #, c-format
 msgid "%s should be writable by user %s"
-msgstr ""
+msgstr "%s ar trebui sa poata fi scrisa de userul %s"
 
 #, c-format
 msgid ""
 "Signature file, %s, could not be opened. Contact your system administrator "
 "to resolve this issue."
 msgstr ""
+"Fisierul de semnatura %s nu poate fi deschis. Contactati administratorul de "
+"retea."
 
 #, c-format
 msgid ""
 "Signature file, %s, could not be written. Contact your system administrator "
 "to resolve this issue."
 msgstr ""
+"Fisierul de semnatura %s nu a putut fi scris. Contactati administratorul de "
+"retea."
 
+#, fuzzy, c-format
+msgid ""
+"Signature file, %s, could not be copied from temporary file, %s. Contact "
+"your system administrator to resolve this issue."
+msgstr ""
+"Fisierul de semnatura %s nu poate fi deschis. Contactati administratorul de "
+"retea."
+
+#, fuzzy
 msgid ""
 "You need to have php4 installed with the multibyte string function enabled "
-"(using configure option --with-mbstring)."
+"(using configure option --enable-mbstring)."
 msgstr ""
+"Nu aveti php4 instalat cu functie sir multibyte activata (utilizand optiunea "
+"de configurare --with-mbstring)."
 
 msgid "ERROR : No available imapstream."
+msgstr "EROARE: Imap indisponibil"
+
+msgid "ERROR : Connection dropped by imap-server."
 msgstr ""
 
 msgid "ERROR : Could not complete request."
-msgstr "EROARE: nu am putut îndeplini cererea."
+msgstr "EROARE: nu s-a putut finaliza cererea."
 
 msgid "Query:"
-msgstr ""
+msgstr "Chestionare:"
 
 msgid "Reason Given: "
-msgstr "Motivul:"
+msgstr "Explicatie data:"
 
 msgid "ERROR : Bad or malformed request."
-msgstr "EROARE: cerere incorectã sau parametri greºiþi"
+msgstr "EROARE: Cerere gresita sau corupta."
 
 msgid "Server responded: "
-msgstr "Serverul a rãspuns:"
+msgstr "Raspunsul serverului:"
+
+msgid "ERROR : Imap server closed the connection."
+msgstr ""
+
+msgid "ERROR : Unknown imap response."
+msgstr ""
 
 #, c-format
 msgid "Error connecting to IMAP server: %s."
-msgstr "Eroare la conectarea la serverul IMAP: %s."
+msgstr "Eroare in conectarea la serverul IMAP: %s."
 
 #, c-format
 msgid "Bad request: %s"
-msgstr "Cerere incorectã: %s"
+msgstr "Cerere gresita: %s"
 
 #, c-format
 msgid "Unknown error: %s"
-msgstr "Eroare necunoscutã: %s"
+msgstr "Eroare necunoscuta: %s"
 
 msgid "Read data:"
-msgstr "Date citite:"
+msgstr "Citire date:"
 
-#, fuzzy
 msgid "ERROR : Could not append message to"
-msgstr "EROARE: nu am putut îndeplini cererea."
+msgstr "EROARE: Nu s-a putut adauga mesajul in"
 
-#, fuzzy
 msgid "Solution: "
-msgstr "Sugestii:"
+msgstr "Solutie: "
 
 msgid ""
 "Remove unneccessary messages from your folder and start with your Trash "
 "folder."
-msgstr ""
+msgstr "Stergere mesaje nenecesare din dosar si incepere cu dosarul Cos."
 
-#, fuzzy
-msgid "INBOX"
-msgstr "Numai în INBOX"
-
-msgid "Unknown response from IMAP server: "
-msgstr "Rãspuns necunoscut de la serverul IMAP:"
-
-msgid "Unknown message number in reply from server: "
-msgstr "Numãr de mesaj necunoscut în rãspunsul de la server:"
+msgid "(no subject)"
+msgstr "(nici un subiect)"
 
 msgid "Unknown Sender"
 msgstr "Expeditor necunoscut"
 
-msgid "(unknown sender)"
-msgstr "(expeditor necunoscut)"
+msgid "Unknown response from IMAP server: "
+msgstr "Raspuns necunoscut de la serverul IMAP: "
 
-#, fuzzy
+msgid "The server couldn't find the message you requested."
+msgstr ""
+
+msgid ""
+"Most probably your message list was out of date and the message has been "
+"moved away or deleted (perhaps by another program accessing the same "
+"mailbox)."
+msgstr ""
+
 msgid "Unknown date"
-msgstr "Expeditor necunoscut"
+msgstr "Data necunoscuta"
 
 msgid "A"
-msgstr ""
+msgstr "Un/o"
 
 msgid ""
 "Thread sorting is not supported by your IMAP server.<br>Please report this "
 "to the system administrator."
 msgstr ""
+"Sortarea fir nesuportata de serverul IMAP. <br>Raportati administratorului "
+"de retea."
 
 msgid ""
 "Server-side sorting is not supported by your IMAP server.<br>Please report "
 "this to the system administrator."
 msgstr ""
+"Sortarea server-side nesuportata de serverul IMAP.<br>Raportati "
+"administratorului de retea."
 
 msgid "THIS FOLDER IS EMPTY"
-msgstr "ACEST DIRECTOR E GOL"
+msgstr "ACEST DOSAR E GOL"
 
-#, fuzzy
 msgid "Move Selected To"
-msgstr "Mutã mesajele selectate în:"
+msgstr "Muta selectate in"
 
 msgid "Transform Selected Messages"
-msgstr "Transformã mesajele selectate"
+msgstr "Transforma mesaje selectate"
 
 msgid "Move"
-msgstr "Mutã"
-
-msgid "Forward"
-msgstr "Trimite mai departe"
+msgstr "Muta"
 
 msgid "Expunge"
-msgstr "ªterge de pe server"
+msgstr "Eliminare"
 
 msgid "mailbox"
-msgstr "cãsuþa poºtalã"
+msgstr "mailbox"
 
 msgid "Read"
-msgstr "Citite"
+msgstr "Citit(e)"
 
 msgid "Unread"
-msgstr "Necitite"
+msgstr "Necitit(e)"
 
-msgid "Delete"
-msgstr "ªterge"
-
-#, fuzzy
 msgid "Unthread View"
-msgstr "Necitite"
+msgstr "Vizualizare fara fir"
 
 msgid "Thread View"
-msgstr ""
-
-msgid "To"
-msgstr "Cãtre"
-
-msgid "From"
-msgstr "De la"
-
-msgid "Date"
-msgstr "Datã"
-
-msgid "Subject"
-msgstr "Subiect"
-
-msgid "Size"
-msgstr "Dimensiune"
+msgstr "Vizualizare fir"
 
 msgid "Toggle All"
-msgstr "Inverseazã-le pe toate"
+msgstr "Marcheaza toate"
 
 msgid "Unselect All"
-msgstr "Deselecteazã-le pe toate"
+msgstr "Deselecteaza toate"
 
 msgid "Select All"
-msgstr "Selecteazã-le pe toate"
+msgstr "Selecteaza toate"
 
 #, c-format
 msgid "Viewing Messages: <B>%s</B> to <B>%s</B> (%s total)"
-msgstr "Afiºez mesajele de la: <B>%s</B> la <B>%s</B> (%s total)"
+msgstr "Vizualizare mesaje <B>%s</B> - <B>%s</B> (total %s)"
 
 #, c-format
 msgid "Viewing Message: <B>%s</B> (1 total)"
-msgstr "Afiºez mesajul: <B>%s</B> (1 total)"
+msgstr "Vizualizare mesaje: <B>%s</B> (total 1)"
 
-msgid "Previous"
-msgstr "Înapoi"
-
-msgid "Next"
-msgstr "Înainte"
-
-#, fuzzy
 msgid "Paginate"
-msgstr "Tipãreºte"
+msgstr "Paginare"
 
 msgid "Show All"
-msgstr "Afiºeazã toate mesajele"
+msgstr "Afiseaza toate"
 
 msgid "SquirrelMail could not decode the bodystructure of the message"
-msgstr ""
+msgstr "SquirrelMail nu a putut decoda structura corpului mesajului"
 
 msgid "the provided bodystructure by your imap-server"
-msgstr ""
+msgstr "structura de corp furnizata de serverul imap"
 
 msgid ""
 "Body retrieval error. The reason for this is most probably that the message "
 "is malformed."
 msgstr ""
+"Eroare in aducere corp mesaj. Motivul cel mai probabil este ca mesajul este "
+"corupt."
 
-#, fuzzy
 msgid "Command:"
-msgstr "Comanda a eºuat"
+msgstr "Comanda:"
 
-#, fuzzy
 msgid "Response:"
-msgstr "Motivul:"
+msgstr "Raspuns:"
 
-#, fuzzy
 msgid "Message:"
-msgstr "Mesaj"
+msgstr "Mesaj:"
 
 msgid "FETCH line:"
-msgstr ""
-
-msgid "High"
-msgstr "Mare"
-
-msgid "Low"
-msgstr "Micã"
-
-msgid "Normal"
-msgstr "Normalã"
+msgstr "Linie aducere:"
 
 msgid "Hide Unsafe Images"
-msgstr ""
+msgstr "Ascunde imagini nesigure"
 
-#, fuzzy
 msgid "View Unsafe Images"
-msgstr "Afiºeazã mesajul"
+msgstr "Afiseaza imagini nesigure"
 
 msgid "download"
-msgstr "descarcã"
-
-#, fuzzy
-msgid "Unknown sender"
-msgstr "Expeditor necunoscut"
+msgstr "download"
 
 msgid "sec_remove_eng.png"
-msgstr ""
+msgstr "sec_remove_eng.png"
 
 #, c-format
 msgid "Option Type '%s' Not Found"
-msgstr "Opþiunea '%s' nu existã"
-
-msgid "Yes"
-msgstr "Da"
-
-msgid "No"
-msgstr "Nu"
-
-msgid "Submit"
-msgstr "Aplicã modificãrile"
+msgstr "Optiunea '%' negasita"
 
 msgid "Current Folder"
-msgstr "Directorul curent"
-
-msgid "Sign Out"
-msgstr "Deconecteazã-mã"
+msgstr "Dosar curent"
 
 msgid "Compose"
 msgstr "Compune"
 
-msgid "Addresses"
-msgstr "Adrese"
-
-msgid "Folders"
-msgstr "Directoare"
-
-msgid "Options"
-msgstr "Opþiuni"
-
-msgid "Search"
-msgstr "Cautã"
-
-msgid "Help"
-msgstr "Ajutor"
-
-#, fuzzy, c-format
+#, c-format
 msgid "Error creating directory %s."
-msgstr "Eroare la decriptarea dicþionarului"
+msgstr "Eroare la crearea directorului %s."
 
 msgid "Could not create hashed directory structure!"
+msgstr "Nu s-a putut crea structura de directoare!"
+
+msgid "Service not available, closing channel"
 msgstr ""
 
+msgid "A password transition is needed"
+msgstr ""
+
+msgid "Requested mail action not taken: mailbox unavailable"
+msgstr ""
+
+msgid "Requested action aborted: error in processing"
+msgstr ""
+
+msgid "Requested action not taken: insufficient system storage"
+msgstr ""
+
+#, fuzzy
+msgid "Temporary authentication failure"
+msgstr "autentificare apop esuata"
+
+msgid "Syntax error; command not recognized"
+msgstr ""
+
+msgid "Syntax error in parameters or arguments"
+msgstr ""
+
+#, fuzzy
+msgid "Command not implemented"
+msgstr "Comanda esuata "
+
+msgid "Bad sequence of commands"
+msgstr ""
+
+msgid "Command parameter not implemented"
+msgstr ""
+
+#, fuzzy
+msgid "Authentication required"
+msgstr "autentificare esuata"
+
+msgid "Authentication mechanism is too weak"
+msgstr ""
+
+#, fuzzy
+msgid "Authentication failed"
+msgstr "autentificare esuata"
+
+msgid "Encryption required for requested authentication mechanism"
+msgstr ""
+
+msgid "Requested action not taken: mailbox unavailable"
+msgstr ""
+
+msgid "User not local; please try forwarding"
+msgstr ""
+
+msgid "Requested mail action aborted: exceeding storage allocation"
+msgstr ""
+
+msgid "Requested action not taken: mailbox name not allowed"
+msgstr ""
+
+#, fuzzy
+msgid "Transaction failed"
+msgstr "autentificare esuata"
+
+#, fuzzy
+msgid "Unknown response"
+msgstr "Expeditor necunoscut"
+
 msgid "General Display Options"
-msgstr "Opþiuni generale de afiºare"
+msgstr "Optiuni generale de afisaj"
 
 msgid "Theme"
 msgstr "Tema"
 
-#, fuzzy
 msgid "Default"
-msgstr "Alege ca implicitã"
+msgstr "Implicit"
 
 msgid "Custom Stylesheet"
-msgstr ""
+msgstr "Schema culori personalizata"
 
 msgid "Language"
 msgstr "Limba"
 
 msgid "Use Javascript"
-msgstr "Utilizeaza JavaScript"
+msgstr "Folosire Javascript"
 
 msgid "Autodetect"
-msgstr "Autodetect"
+msgstr "Autodetectie"
 
 msgid "Always"
-msgstr "Întotdeauna"
+msgstr "Intotdeauna"
 
 msgid "Never"
-msgstr "Niciodatã"
+msgstr "Niciodata"
 
 msgid "Mailbox Display Options"
-msgstr "Opþiuni de afiºare a mesajelor"
+msgstr "Optiuni afisaj mailbox"
 
 msgid "Number of Messages to Index"
-msgstr "Numãrul de mesaje de indexat"
+msgstr "Numar de mesaje in index"
 
-#, fuzzy
 msgid "Enable Alternating Row Colors"
-msgstr "Sã folosesc alternanþa culorilor la afiºarea rîndurilor?"
+msgstr "Activare culori randuri alternante"
 
 msgid "Enable Page Selector"
-msgstr "Afiºeazã lista paginilor"
+msgstr "Activare selector pagini"
 
 msgid "Maximum Number of Pages to Show"
-msgstr "Numãrul de pagini de indexat"
+msgstr "Numar maxim de pagini de afisat"
+
+msgid "Always Show Full Date"
+msgstr ""
 
 msgid "Message Display and Composition"
-msgstr "Afiºarea ºi compunerea mesajelor"
+msgstr "Afisare si compunere mesaj"
 
 msgid "Wrap Incoming Text At"
-msgstr "Afiºeazã maxim (caractere) pe linie"
+msgstr "Fixare text sosit la"
 
 msgid "Size of Editor Window"
-msgstr "Dimensiunea ferestrei de editare (în caractere)"
+msgstr "Marime fereastra editor"
 
-#, fuzzy
 msgid "Location of Buttons when Composing"
-msgstr "Locul butoanelor la compunerea mesajelor"
+msgstr "Locatie butoane in compunere"
 
 msgid "Before headers"
-msgstr "Înaintea antetelor"
+msgstr "Inainte de headere"
 
 msgid "Between headers and message body"
-msgstr "Între antete ºi corpul mesajului"
+msgstr "Intre headere si corp mesaj"
 
 msgid "After message body"
-msgstr "Dupã corpul mesajului"
+msgstr "Dupa corp mesaj"
 
 msgid "Addressbook Display Format"
-msgstr "Formatul folosit pentru afiºarea agendei"
+msgstr "Format afisaj agenda"
 
-#, fuzzy
 msgid "Javascript"
-msgstr "JavaScript"
+msgstr "Javascript"
 
 msgid "HTML"
 msgstr "HTML"
 
 msgid "Show HTML Version by Default"
-msgstr "Sã afiºez implicit versiunea HTML a mesajelor?"
+msgstr "Afisare versiune HTML implicita"
 
 msgid "Enable Forward as Attachment"
-msgstr ""
+msgstr "Activare inaintare ca atasament"
 
 msgid "Include CCs when Forwarding Messages"
-msgstr ""
+msgstr "Includere CC in inaintare mesaje"
 
 msgid "Include Me in CC when I Reply All"
-msgstr "Include adresa proprie in cimpul CC dacã se rãspunde tuturor"
+msgstr "Includere in CC cand raspund la toate"
 
 msgid "Enable Mailer Display"
-msgstr "Afiºeazã clientul de mail folosit"
+msgstr "Activare afisaj mailer"
 
 msgid "Display Attached Images with Message"
-msgstr "Afiºeazã imaginile anexate mesajului"
-
-msgid "Enable Subtle Printer Friendly Link"
-msgstr "Afiºeazã link-ul pentru format imprimabil"
+msgstr "Afisare imagini atasate cu mesaj"
 
 msgid "Enable Printer Friendly Clean Display"
-msgstr "Afiºeazã mesajele intr-un format imprimabil"
+msgstr "Activare afisare versiune pentru tiparit"
 
-#, fuzzy
 msgid "Enable Mail Delivery Notification"
-msgstr "Notificare mesaje necitite"
+msgstr "Activare Notificare livrare mail"
 
 msgid "Compose Messages in New Window"
-msgstr ""
+msgstr "Compunere mesaje in fereastra noua"
 
-#, fuzzy
 msgid "Width of Compose Window"
-msgstr "Închide fereastra"
+msgstr "Latime fereastra compunere"
 
-#, fuzzy
 msgid "Height of Compose Window"
-msgstr "Închide fereastra"
+msgstr "Inaltime fereastra compunere"
 
 msgid "Append Signature before Reply/Forward Text"
-msgstr ""
+msgstr "Adaugare semnatura inainte de text raspuns/inaintare"
 
 msgid "Enable Sort by of Receive Date"
-msgstr ""
+msgstr "Activare sortare dupa data primirii"
 
 msgid "Enable Thread Sort by References Header"
-msgstr ""
+msgstr "Activare sortare fir dupa headerele referinte"
 
 msgid "Special Folder Options"
-msgstr "Opþiuni pentru directoarele sistem"
+msgstr "Optiuni dosar special"
 
 msgid "Folder Path"
-msgstr "Calea spre directoare"
+msgstr "Cale dosar"
 
 msgid "Do not use Trash"
-msgstr "Nu folosi directorul Trash"
+msgstr "Nu utiliza Cos"
 
 msgid "Trash Folder"
-msgstr "Directorul pt. mesaje ºterse"
+msgstr "Cos"
 
 msgid "Do not use Sent"
-msgstr "Nu salva mesajele trimise"
+msgstr "Nu utiliza Trimise"
 
 msgid "Sent Folder"
-msgstr "Director pentru mesajele trimise"
+msgstr "Trimise"
 
 msgid "Do not use Drafts"
-msgstr "Nu salva mesajele neexpediate"
+msgstr "Nu utiliza Ciorne"
 
 msgid "Draft Folder"
-msgstr "Director pentru mesaje neexpediate"
+msgstr "Ciorne"
 
 msgid "Folder List Options"
-msgstr "Opþiuni de afiºare a directoarelor"
+msgstr "Optiuni lista dosare"
 
 msgid "Location of Folder List"
-msgstr "Locaþia listei directoarelor"
+msgstr "Locatie lista dosare"
 
 msgid "Left"
-msgstr "Stînga"
+msgstr "Stanga"
 
 msgid "Right"
 msgstr "Dreapta"
@@ -693,775 +1532,724 @@ msgid "pixels"
 msgstr "pixeli"
 
 msgid "Width of Folder List"
-msgstr "Lãþimea listei directoarelor"
+msgstr "Latime lista dosare"
 
 msgid "Minutes"
-msgstr "minute"
+msgstr "Minute"
 
 msgid "Seconds"
-msgstr "secunde"
+msgstr "Secunde"
 
 msgid "Minute"
-msgstr "minut"
+msgstr "Minut"
 
 msgid "Auto Refresh Folder List"
-msgstr "Actualizeazã lista directoarelor"
+msgstr "Auto improspatare lista dosare"
 
 msgid "Enable Unread Message Notification"
-msgstr "Notificare mesaje necitite"
+msgstr "Activare notificare mesaje necitite"
 
 msgid "No Notification"
-msgstr "Fãrã notificare"
+msgstr "Nici o notificare"
 
 msgid "Only INBOX"
-msgstr "Numai în INBOX"
+msgstr "Doar INBOX"
 
-msgid "All Folders"
-msgstr "În toate subdirectoarele"
-
-#, fuzzy
 msgid "Unread Message Notification Type"
-msgstr "Tipul de înºtiinþare pentru mesaje necitite"
+msgstr "Tip notificare mesaj necitit"
 
-#, fuzzy
 msgid "Only Unseen"
-msgstr "Necitite"
+msgstr "Doar nevazutele"
 
 msgid "Unseen and Total"
-msgstr "Necitite ºi total"
-
-msgid "Enable Collapsable Folders"
-msgstr "Se poate comuta afiºarea subdirectoarelor"
+msgstr "Nevazute si total"
 
 #, fuzzy
+msgid "Enable Collapsible Folders"
+msgstr "Activare dosare cu restrangere"
+
 msgid "Enable Cumulative Unread Message Notification"
-msgstr "Notificare mesaje necitite"
+msgstr "Activare notificare cumulativa mesaje necitite"
 
 msgid "Show Clock on Folders Panel"
-msgstr "Afiºeazã ora in lista directoarelor"
+msgstr "Afisare ceas in panou dosare"
 
 msgid "No Clock"
-msgstr "Fãrã ceas"
+msgstr "Fara ceas"
 
 msgid "Hour Format"
-msgstr "Format orã"
+msgstr "Format ora"
 
 msgid "12-hour clock"
-msgstr "1:00 pm"
+msgstr "Ceas 12 ore"
 
 msgid "24-hour clock"
-msgstr "13:00"
+msgstr "Ceas 24 ore"
 
-#, fuzzy
 msgid "Memory Search"
-msgstr "Cautã"
+msgstr "Cautare memorie"
 
 msgid "Disabled"
-msgstr ""
+msgstr "Dezactivat"
 
-#, fuzzy
 msgid "Folder Selection Options"
-msgstr "Opþiuni de afiºare a directoarelor"
+msgstr "Optiuni selectare dosar"
 
-#, fuzzy
 msgid "Selection List Style"
-msgstr "Stil de citare la rãspuns"
+msgstr "Stil lista selectie"
 
 msgid "Long: "
-msgstr ""
+msgstr "Lung: "
 
 msgid "Indented: "
-msgstr ""
+msgstr "Spatiat: "
 
 msgid "Delimited: "
-msgstr ""
+msgstr "Delimitat: "
 
 msgid "Name and Address Options"
-msgstr "Opþiuni nume / adresã"
+msgstr "Optiuni nume si adresa"
 
-msgid "Full Name"
-msgstr "Numele complet"
-
-#, fuzzy
 msgid "Email Address"
-msgstr "Adresa de e-mail"
-
-msgid "Reply To"
-msgstr "Adresa de rãspuns"
-
-msgid "Signature"
-msgstr "Semnãtura"
+msgstr "Adresa email"
 
 msgid "Edit Advanced Identities"
-msgstr "Modificã identitãþile avansate"
+msgstr "Editare identitati avansate"
 
 msgid "(discards changes made on this form so far)"
-msgstr "(renunþã la modificãrile fãcute în acest formular pînã acum)"
+msgstr "(anulare modificari facute pana acum)"
 
 msgid "Multiple Identities"
-msgstr "Identitãþi multiple "
+msgstr "Identitati multiple"
 
 msgid "Same as server"
+msgstr "La fel ca serverul"
+
+msgid "Error opening timezone config, contact administrator."
 msgstr ""
 
-#, fuzzy
 msgid "Timezone Options"
-msgstr "Opþiuni translator"
+msgstr "Optiuni fus orar"
 
 msgid "Your current timezone"
-msgstr ""
+msgstr "Fus orar curent"
 
-#, fuzzy
 msgid "Reply Citation Options"
-msgstr "Stil de citare la rãspuns"
+msgstr "Optiuni citare raspuns"
 
 msgid "Reply Citation Style"
-msgstr "Stil de citare la rãspuns"
+msgstr "Stil citare raspuns"
 
 msgid "No Citation"
-msgstr "Fãrã citare"
+msgstr "Fara citare"
 
 msgid "AUTHOR Said"
-msgstr "AUTORUL a scris"
+msgstr "AUTORUL a afirmat"
 
 msgid "Quote Who XML"
-msgstr "Quote Who XML"
+msgstr "Citare cine XML"
 
 msgid "User-Defined"
-msgstr "Definitã de utilizator"
+msgstr "Definit de utilizator"
 
 msgid "User-Defined Citation Start"
-msgstr "Început citare definitã de utilizator"
+msgstr "Inceput citare definit de utilizator"
 
 msgid "User-Defined Citation End"
-msgstr "Sfîrºit citare definitã de utilizator"
+msgstr "Sfarsit citare definit de utilizator"
 
-#, fuzzy
 msgid "Signature Options"
-msgstr "Semnãtura"
+msgstr "Optiuni semnatura"
 
-#, fuzzy
 msgid "Use Signature"
-msgstr "Sã folosesc o semnãturã?"
+msgstr "Utilizare semnatura"
 
-#, fuzzy
 msgid "Prefix Signature with '-- ' Line"
-msgstr "Sã prefixez semnãtura cu '-- '?"
+msgstr "Prefixare semnatura cu linie '--'"
 
 #, fuzzy
+msgid "Take Address"
+msgstr "Adresa"
+
+#, fuzzy
+msgid "Address Book Take:"
+msgstr "Agenda"
+
+msgid "Try to verify addresses"
+msgstr ""
+
 msgid "Config File Version"
-msgstr "Afiºare în format tipãribil"
+msgstr "Versiune fisier configurare"
 
-#, fuzzy
 msgid "Squirrelmail Version"
-msgstr "SquirrelMail versiunea %s"
+msgstr "Versiune Squirrelmail"
 
 msgid "PHP Version"
+msgstr "Versiune PHP"
+
+msgid "Organization Preferences"
+msgstr "Preferinte organizatie"
+
+msgid "Organization Name"
+msgstr "Nume organizatie"
+
+msgid "Organization Logo"
+msgstr "Sigla organizatie"
+
+msgid "Organization Logo Width"
+msgstr "Latime sigla organizatie"
+
+msgid "Organization Logo Height"
+msgstr "Inaltime sigla organizatie"
+
+msgid "Organization Title"
+msgstr "Titlu organizatie"
+
+msgid "Signout Page"
+msgstr "Pagina iesire"
+
+msgid "Provider Link URI"
 msgstr ""
 
 #, fuzzy
-msgid "Organization Preferences"
-msgstr "Organizaþie / Departament"
+msgid "Provider Name"
+msgstr "Nume server:"
 
-#, fuzzy
-msgid "Organization Name"
-msgstr "Organizaþie / Departament"
-
-#, fuzzy
-msgid "Organization Logo"
-msgstr "Organizaþie / Departament"
-
-#, fuzzy
-msgid "Organization Logo Width"
-msgstr "Organizaþie / Departament"
-
-#, fuzzy
-msgid "Organization Logo Height"
-msgstr "Organizaþie / Departament"
-
-#, fuzzy
-msgid "Organization Title"
-msgstr "Organizaþie / Departament"
-
-#, fuzzy
-msgid "Signout Page"
-msgstr "Deconecteazã-mã"
-
-#, fuzzy
 msgid "Default Language"
-msgstr "Limba"
+msgstr "Limba implicita"
 
 msgid "Top Frame"
-msgstr ""
+msgstr "Cadrul de sus"
 
-#, fuzzy
 msgid "Server Settings"
-msgstr "Setãri server POP"
+msgstr "Setari server"
 
 msgid "Mail Domain"
-msgstr ""
+msgstr "Domeniu mail"
 
 msgid "IMAP Server Address"
-msgstr ""
+msgstr "Adresa server IMAP"
 
-#, fuzzy
 msgid "IMAP Server Port"
-msgstr "Adaugã server"
+msgstr "Port server IMAP"
 
-#, fuzzy
 msgid "IMAP Server Type"
-msgstr "Adaugã server"
+msgstr "Tip server IMAP"
 
-#, fuzzy
 msgid "Cyrus IMAP server"
-msgstr "Deschid serverul IMAP"
+msgstr "Server Cyrus IMAP"
 
 msgid "University of Washington's IMAP server"
-msgstr ""
+msgstr "Server IMAP-Universitatea Washington"
 
-#, fuzzy
 msgid "Microsoft Exchange IMAP server"
-msgstr "Deschid serverul IMAP"
+msgstr "Server IMAP Microsoft Exchange"
 
-#, fuzzy
 msgid "Courier IMAP server"
-msgstr "Deschid serverul IMAP"
+msgstr "Server Courier IMAP"
 
-#, fuzzy
 msgid "Not one of the above servers"
-msgstr "Nu mã pot conecta la server"
+msgstr "Nici unul din serverele de mai sus"
 
 msgid "IMAP Folder Delimiter"
-msgstr ""
+msgstr "Delimitator dosar IMAP"
 
 msgid "Use \"detect\" to auto-detect."
+msgstr "Utilizeaza \"detect\" pentru auto-detectie."
+
+msgid "Use TLS for IMAP Connections"
 msgstr ""
 
-msgid "Use Sendmail"
+msgid "Requires PHP 4.3.x! Experimental."
 msgstr ""
+
+#, fuzzy
+msgid "IMAP Authentication Type"
+msgstr "autentificare esuata"
+
+#, fuzzy
+msgid "Use Sendmail Binary"
+msgstr "Utilizeaza sendmail"
 
 msgid "Sendmail Path"
-msgstr ""
+msgstr "Cale sendmail"
 
 msgid "SMTP Server Address"
-msgstr ""
+msgstr "Adresa server SMTP"
 
 msgid "SMTP Server Port"
+msgstr "Port server SMTP"
+
+msgid "Use TLS for SMTP Connections"
 msgstr ""
 
 #, fuzzy
-msgid "Authenticated SMTP"
-msgstr "Autentificare eºuatã"
+msgid "SMTP Authentication Type"
+msgstr "autentificare esuata"
+
+msgid "POP3 Before SMTP?"
+msgstr ""
 
 msgid "Invert Time"
-msgstr ""
+msgstr "Timp inversat"
 
 msgid "Use Confirmation Flags"
-msgstr ""
+msgstr "Utilizare marcaje de confirmare"
 
-#, fuzzy
 msgid "Folders Defaults"
-msgstr "Calea spre directoare"
+msgstr "Setari implicite dosar"
 
-#, fuzzy
 msgid "Default Folder Prefix"
-msgstr "ªterge directorul"
+msgstr "Prefix implicit dosar"
 
-#, fuzzy
 msgid "Show Folder Prefix Option"
-msgstr "Opþiuni de afiºare a directoarelor"
+msgstr "Afisare optiuni prefix dosar"
 
 msgid "By default, move to trash"
-msgstr ""
+msgstr "Implicit muta in cos"
 
 msgid "By default, move to sent"
-msgstr ""
+msgstr "Implicit muta in trimise"
 
 msgid "By default, save as draft"
-msgstr ""
+msgstr "Implicit salveaza ca si ciorna"
 
-#, fuzzy
 msgid "List Special Folders First"
-msgstr "Opþiuni pentru directoarele sistem"
+msgstr "Listare dosare speciale primele"
 
-#, fuzzy
 msgid "Show Special Folders Color"
-msgstr "Opþiuni pentru directoarele sistem"
+msgstr "Afisare culoare dosare speciale"
 
-#, fuzzy
 msgid "Auto Expunge"
-msgstr "ªterge de pe server"
+msgstr "Auto eliminare"
 
 msgid "Default Sub. of INBOX"
-msgstr ""
+msgstr "Sub. implicit al INBOX"
 
 msgid "Show 'Contain Sub.' Option"
-msgstr ""
+msgstr "Afisare optiune 'Contine Sub.'"
 
-#, fuzzy
 msgid "Default Unseen Notify"
-msgstr "Identitate implicitã"
+msgstr "Notificare implicita nevazute"
 
-#, fuzzy
 msgid "Default Unseen Type"
-msgstr "Identitate implicitã"
+msgstr "Tip implicit nevazute"
 
-#, fuzzy
 msgid "Auto Create Special Folders"
-msgstr "Creeazã directorul"
+msgstr "Auto creare dosare speciale"
 
 msgid "Default Javascript Adrressbook"
-msgstr ""
+msgstr "Agenda Javascript implicita"
 
-#, fuzzy
 msgid "Auto delete folders"
-msgstr "ªterge directorul"
+msgstr "Auto stergere dosare"
 
 #, fuzzy
+msgid "Enable /NoSelect folder fix"
+msgstr "Activare selector pagini"
+
 msgid "General Options"
-msgstr "Opþiuni generale de afiºare"
+msgstr "Optiuni generale"
 
-#, fuzzy
 msgid "Default Charset"
-msgstr "Identitate implicitã"
+msgstr "Set caractere implicit"
 
 msgid "Data Directory"
-msgstr ""
+msgstr "Director date"
 
 msgid "Temp Directory"
-msgstr ""
+msgstr "Director temporar"
 
 msgid "Hash Level"
-msgstr ""
+msgstr "Nivel prezentare"
 
 msgid "Hash Disabled"
-msgstr ""
+msgstr "Prezentare dezactivata"
 
-#, fuzzy
 msgid "Moderate"
-msgstr "Calea spre directoare"
+msgstr "Moderata"
 
-#, fuzzy
 msgid "Medium"
-msgstr "gri"
+msgstr "Medie"
 
-#, fuzzy
 msgid "Default Left Size"
-msgstr "Identitate implicitã"
+msgstr "Marime implicita stanga"
 
 msgid "Usernames in Lowercase"
-msgstr ""
+msgstr "Nume utilizatori in litere mici"
 
 msgid "Allow use of priority"
-msgstr ""
+msgstr "Permite utilizarea prioritatii"
 
 msgid "Hide SM attributions"
-msgstr ""
+msgstr "Ascundere atribute SM"
 
 msgid "Enable use of delivery receipts"
-msgstr ""
+msgstr "Activeaza utilizarea confirmarilor de primire"
 
 msgid "Allow editing of identities"
-msgstr ""
+msgstr "Permite editarea identitatilor"
 
 msgid "Allow editing of full name"
+msgstr "Permite editarea numelui"
+
+msgid "Use server-side sorting"
 msgstr ""
 
 #, fuzzy
+msgid "Use server-side thread sorting"
+msgstr "Utilizare headere Referinta pentru sortare fir"
+
+msgid "Allow server charset search"
+msgstr ""
+
+msgid "UID support"
+msgstr ""
+
+#, fuzzy
+msgid "PHP session name"
+msgstr "Versiune PHP"
+
 msgid "Message of the Day"
-msgstr "Mesaj"
+msgstr "Mesajul zilei"
 
-#, fuzzy
 msgid "Database"
-msgstr "Datã"
+msgstr "Baza de date"
 
-#, fuzzy
 msgid "Address book DSN"
-msgstr "Agendã"
+msgstr "Agenda DSN"
 
-#, fuzzy
 msgid "Address book table"
-msgstr "Agendã"
+msgstr "Tabel agenda"
 
-#, fuzzy
 msgid "Preferences DSN"
-msgstr "Preferinþe referitoare la directoare"
+msgstr "Preferinte DSN"
 
-#, fuzzy
 msgid "Preferences table"
-msgstr "Preferinþe referitoare la directoare"
+msgstr "Tabel preferinte"
 
 msgid "Preferences username field"
-msgstr ""
+msgstr "Camp preferinte username"
 
 msgid "Preferences key field"
-msgstr ""
+msgstr "Camp preferinte cheie"
 
 msgid "Preferences value field"
-msgstr ""
+msgstr "Camp preferinte valoare"
 
-#, fuzzy
 msgid "Themes"
-msgstr "Tema"
+msgstr "Teme"
 
 msgid "Style Sheet URL (css)"
+msgstr "URL Style Sheet (css)"
+
+#, fuzzy
+msgid "Default theme"
+msgstr "Set caractere implicit"
+
+msgid "Use index number of theme"
 msgstr ""
 
-#, fuzzy
 msgid "Configuration Administrator"
-msgstr "Luaþi legãtura cu administratorul pentru ajutor."
+msgstr "Administrator configurare"
 
-#, fuzzy
 msgid "Theme Name"
-msgstr "Tema"
+msgstr "Nume tema"
 
-#, fuzzy
 msgid "Theme Path"
-msgstr "Tema"
+msgstr "Cale tema"
 
-#, fuzzy
 msgid "Plugins"
-msgstr "Polonezã"
+msgstr "Pluginuri"
 
-#, fuzzy
 msgid "Change Settings"
-msgstr "???"
+msgstr "Schimbare setari"
 
 msgid "Config file can't be opened. Please check config.php."
-msgstr ""
+msgstr "Fiserul de configurari nu a putut fi deschis. Verificati config.php."
 
 msgid "Administration"
-msgstr ""
+msgstr "Administrare"
 
 msgid ""
 "This module allows administrators to manage SquirrelMail main configuration "
 "remotely."
 msgstr ""
+"Acest modul permite administratorilor sa schimbe principala configuratie a "
+"SquirrelMail de la distanta."
 
 msgid "Bug Reports:"
-msgstr ""
+msgstr "Rapoarte Erori:"
 
 msgid "Show button in toolbar"
-msgstr ""
+msgstr "Afisare buton in toolbar"
 
 msgid "TODAY"
-msgstr ""
+msgstr "AZI"
 
 msgid "Go"
-msgstr "Start"
+msgstr "Du-te"
 
-#, fuzzy
 msgid "l, F j Y"
-msgstr "D, F j, Y g:i a"
+msgstr "l, F j Y"
 
 msgid "ADD"
-msgstr ""
+msgstr "ADAUGA"
 
 msgid "EDIT"
-msgstr ""
+msgstr "EDITEAZA"
 
 msgid "DEL"
-msgstr ""
+msgstr "STERGE"
 
 msgid "Start time:"
-msgstr ""
+msgstr "Moment inceput:"
 
 msgid "Length:"
-msgstr ""
+msgstr "Lungime:"
 
-#, fuzzy
 msgid "Priority:"
-msgstr "Prioritate"
+msgstr "Prioritate:"
 
 msgid "Title:"
 msgstr "Titlu:"
 
 msgid "Set Event"
-msgstr ""
+msgstr "Setare eveniment"
 
 msgid "Event Has been added!"
-msgstr ""
+msgstr "Eveniment adaugat!"
 
 msgid "Date:"
 msgstr "Data:"
 
-#, fuzzy
 msgid "Time:"
-msgstr "Titlu:"
+msgstr "Ora:"
 
 msgid "Day View"
-msgstr ""
+msgstr "Vizualizare zi"
 
 msgid "Do you really want to delete this event?"
-msgstr ""
+msgstr "Chiar vreti sa stergeti acest eveniment?"
 
-#, fuzzy
 msgid "Event deleted!"
-msgstr "Modificã adresa selectatã"
+msgstr "Eveniment sters!"
 
 msgid "Nothing to delete!"
-msgstr ""
+msgstr "Nimic de sters"
 
-#, fuzzy
 msgid "Update Event"
-msgstr "Modificã adresa"
+msgstr "Innoire eveniment"
 
 msgid "Do you really want to change this event from:"
-msgstr ""
+msgstr "Sigur vreti sa modificati acest eveniment din:"
 
-#, fuzzy
 msgid "to:"
-msgstr "Cãtre:"
+msgstr "catre:"
 
 msgid "Event updated!"
-msgstr ""
+msgstr "Eveniment innoit"
 
 msgid "Month View"
-msgstr ""
+msgstr "Vizualizare lunara"
 
 msgid "0 min."
-msgstr ""
+msgstr "0 min."
 
 msgid "15 min."
-msgstr ""
+msgstr "15 min."
 
-msgid "35 min."
-msgstr ""
+#, fuzzy
+msgid "30 min."
+msgstr "0 min."
 
 msgid "45 min."
-msgstr ""
+msgstr "45 min."
 
 msgid "1 hr."
-msgstr ""
+msgstr "1 ora"
 
 msgid "1.5 hr."
-msgstr ""
+msgstr "1,5 ore"
 
 msgid "2 hr."
-msgstr ""
+msgstr "2 ore"
 
 msgid "2.5 hr."
-msgstr ""
+msgstr "2,5 ore"
 
 msgid "3 hr."
-msgstr ""
+msgstr "3 ore"
 
 msgid "3.5 hr."
-msgstr ""
+msgstr "3,5 ore"
 
 msgid "4 hr."
-msgstr ""
+msgstr "4 ore"
 
 msgid "5 hr."
-msgstr ""
+msgstr "5 ore"
 
 msgid "6 hr."
-msgstr ""
+msgstr "6 ore"
 
 msgid "Calendar"
-msgstr ""
+msgstr "Calendar"
 
-#, fuzzy
 msgid "Delete & Prev"
-msgstr "ªterge"
+msgstr "Sterge & Anterior"
 
-#, fuzzy
 msgid "Delete & Next"
-msgstr "ªterge adresele selectate"
+msgstr "Sterge & Urmator"
 
-#, fuzzy
 msgid "Move to:"
-msgstr "Mutã"
+msgstr "Mutare in:"
 
 msgid "Delete/Move/Next Buttons:"
-msgstr ""
+msgstr "Butoane Stergere/Mutare/Urmator(are):"
 
 msgid "Display at top"
-msgstr ""
+msgstr "Afisare sus"
 
 msgid "with move option"
-msgstr ""
+msgstr "cu optiune de mutare"
 
 msgid "Display at bottom"
-msgstr ""
+msgstr "Afisare jos"
 
 msgid ""
 "COMMERCIAL - This list contains servers that are verified spam senders. It "
 "is a pretty reliable list to scan spam from."
 msgstr ""
-"COMERCIAL - Aceastã listã conþine servere care trimit mesaje comerciale "
-"nesolicitate. Este o listã destul de sigurã pentru filtrarea mesajelor."
+"COMERCIAL -Aceasta lista contine servere care trimit spam. Este o lista "
+"potrivita pentru a scana de spam."
 
 msgid ""
 "COMMERCIAL - Servers that are configured (or misconfigured) to allow spam to "
 "be relayed through their system will be banned with this.  Another good one "
 "to use."
 msgstr ""
-"COMERCIAL - Servere incorect configurate, care permit trimiterea de mailuri "
-"fãrã a verifica expeditorul. De asemenea, o lista recomandatã."
+"COMERCIAL - Serverele care sunt configurate (sau neconfigurate) sa permita "
+"spam relay prin sistemul lor vor primi interdictie prin aceasta. Inca o "
+"optiune de utilizat."
 
 msgid ""
 "COMMERCIAL - Dial-up users are often filtered out since they should use "
 "their ISP's mail servers to send mail.  Spammers typically get a dial-up "
 "account and send spam directly from there."
 msgstr ""
-"COMERCIAL - Utilizatorii care folosesc conexiuni dial-up sînt adesea "
-"filtraþi deoarece ar trebui sa foloseascã serverul furnizorului. "
+"COMERCIAL - Utilizatorii dial-up sunt deseori filtrati deoarece trebuie sa "
+"foloseasca mail serverele ISP-urilor pentru a trimite mail. Spammerii de "
+"obicei fac rost de un cont dial-up si trimit de acolo spam."
 
 msgid "COMMERCIAL - RBL+ Blackhole entries."
-msgstr "COMERCIAL - RBL + Blackhole"
+msgstr "COMERCIAL - intrari RBL+ Blackhole."
 
 msgid "COMMERCIAL - RBL+ OpenRelay entries."
-msgstr "COMERCIAL - RBL+OpenRelay"
+msgstr "COMERCIAL - intrari RBL+ OpenRelay."
 
 msgid "COMMERCIAL - RBL+ Dial-up entries."
-msgstr "COMERCIAL - RBL+Dial-up"
-
-msgid ""
-"FREE - Osirusoft Relays - Osirusofts list of verified open relays. Seems to "
-"include servers used by abuse@uunet.net auto-replies too."
-msgstr ""
-"GRATUIT - Lista Osirusoft de servere care permit transmiterea de mailuri. Se "
-"pare cã include ºi lista de auto-respondere a abuse@uunet.net."
-
-msgid "FREE - Osirusoft Dialups - Osirusofts Dialup Spam Source list."
-msgstr "GRATUIT - Lista de adrese dial-up furnizatã de Osirusoft"
-
-msgid ""
-"FREE - Osirusoft Confirmed Spam Source - Sites that continually spam and "
-"have been manually added after multiple nominations. Use with caution. Seems "
-"to catch abuse auto-replies from some ISPs."
-msgstr ""
-"GRATUIT - adrese confirmate cã ar permite trimiterea de mailuri nedorite "
-"furnizatã de Osirusoft. Include adrese adãugate manual, dupã ce au fost "
-"nominalizate de mai multe ori. A se folosi cu grijã - pare sã includã si "
-"rãspunsuri automate de la unii provideri. "
-
-msgid ""
-"FREE - Osirusoft Smart Hosts - List of hosts that are secure but relay for "
-"other mail servers that are not secure."
-msgstr ""
-"GRATUIT - Lista Osirusoft de servere securizate, dar care permit "
-"retransmiterea de mesaje provenind din servere nesigure."
-
-msgid ""
-"FREE - Osirusoft Spamware Developers - It is believed that these are IP "
-"ranges of companies that are known to produce spam software. Seems to catch "
-"abuse auto-replies from some ISPs."
-msgstr ""
-"GRATUIT - Lista Osirusoft de adrese ale unor producãtori de software folosit "
-"pentru trimiterea de SPAM. Pare sã includã si rãspunsuri automate de la unii "
-"provideri."
-
-msgid ""
-"FREE - Osirusoft Unconfirmed OptIn Servers - List of listservers that opt "
-"users in without confirmation."
-msgstr ""
-"GRATUIT - Lista Osirusoft de servere care includ adrese in liste de mail "
-"fãrã o confirmare prealabilã."
-
-msgid ""
-"FREE - Osirusoft Insecure formmail.cgi scripts - List of insecure formmail."
-"cgi scripts. (planned)."
-msgstr ""
-
-msgid "FREE - Osirusoft Open Proxy Servers - List of Open Proxy Servers."
-msgstr ""
+msgstr "COMERCIAL - intrari RBL+ Dial-up."
 
 msgid ""
 "FREE - ORDB was born when ORBS went off the air. It seems to have fewer "
 "false positives than ORBS did though."
 msgstr ""
-"GRATUIT - ORDB: înlocuitor al ORBS. Pare sã conþinã mai putine adrese "
-"incorecte."
+"Gratuit - ORDB s-a nascut cand ORBS a incetat activitatea. Se pare ca avem "
+"mai putine falsuri decat a avut ORBS."
 
 msgid "FREE - Five-Ten-sg.com - Direct SPAM sources."
-msgstr "GRATUIT - Five-Ten-sg.com: surse directe de SPAM."
+msgstr "GRATUIT - Five-Ten-sg.com - Surse directe de SPAM."
 
 msgid "FREE - Five-Ten-sg.com - Dial-up lists - includes some DSL IPs."
-msgstr ""
-"GRATUIT - Five-Ten-sg.com: Liste de adrese dial-up (include si conexiuni DSL)"
+msgstr "GRATUIT - Five-Ten-sg.com - Liste Dialup - include IP-uri DSL."
 
 msgid "FREE - Five-Ten-sg.com - Bulk mailers that do not use confirmed opt-in."
-msgstr ""
-"GRATUIT - Five-Ten-sg.com: Liste de mail care nu cer confirmare la înscriere"
+msgstr "GRATUIT - Five-Ten-sg.com - Mailere in masa care nu au confirmare."
 
 msgid "FREE - Five-Ten-sg.com - Other misc. servers."
-msgstr "GRATUIT - Five-Ten-sg.com: alte adrese"
+msgstr "GRATUIT - Five-Ten-sg.com - Diferite alte servere "
 
-#, fuzzy
 msgid "FREE - Five-Ten-sg.com - Single Stage servers."
-msgstr "GRATUIT - Five-Ten-sg.com: Single Stage servers "
+msgstr "GRATUIT - Five-Ten-sg.com - Servere stadiu singur"
 
 msgid "FREE - Five-Ten-sg.com - SPAM Support servers."
-msgstr "GRATUIT - Five-Ten-sg.com - servere care permit trimiterea de SPAM"
+msgstr "GRATUIT - Five-Ten-sg.com - Servere SPAM suport."
 
 msgid "FREE - Five-Ten-sg.com - Web Form IPs."
-msgstr ""
-"GRATUIT - Five-Ten-sg.com - Servere WEB care permit trimiterea de e-mailuri "
-"farã autentificare."
+msgstr "GRATUIT - Five-Ten-sg.com - IP-uri formulare web."
 
 msgid ""
 "FREE - Dorkslayers appears to include only really bad open relays outside "
 "the US to avoid being sued. Interestingly enough, their website recommends "
 "you NOT use their service."
 msgstr ""
-"GRATUIT -Dorkslayers: include numai servere aflate în afara SUA pentru a "
-"evita acþiunile legale. Interesant, pagina lor de web recomandã sã NU le "
-"folosiþi serviciul."
+"GRATUIT - Dorkslayer pare sa includa doar openrelayurile cu adevarat "
+"periculoase din afara SUA pentru a evita actionarea in judecata. Destul de "
+"interesanta, pagina de web recomanda sa NU folositi serviciile lor."
 
 msgid "FREE - SPAMhaus - A list of well-known SPAM sources."
-msgstr ""
+msgstr "GRATUIT -SPAMhaus - lista de binecunoscute surse de SPAM."
 
 #, c-format
 msgid ""
 "FREE, for now - SPAMCOP - An interesting solution that lists servers that "
 "have a very high spam to legit email ratio (85% or more)."
 msgstr ""
-"GRATUIT (deocamdatã) - SPAMCOP - O soluþie interesantã: listeazã serverele "
-"de la care mai mult de 85% din mesaje sînt SPAM."
+"GRATUIT, deocamdata - SPAMCOP - solutie interesanta care listeaza servere "
+"care trimit foarte mult spam ca si procentaj email (85% sau mai mult)."
 
 msgid "FREE - dev.null.dk - I don't have any detailed info on this list."
-msgstr ""
+msgstr "GRATUIT - dev.null.dk - Nu exista informatii detaliate despre lista."
 
 msgid "FREE - visi.com - Relay Stop List. Very conservative OpenRelay List."
-msgstr ""
+msgstr "GRATUIT - visi.com - Relay Stop List. Lista OpenRelay conservatoare."
 
 msgid "FREE - 2mbit.com Open Relays - Another list of Open Relays."
-msgstr ""
+msgstr "GRATUIT - 2mbit.com Open Relays - Inca o lista de OpenRelayuri."
 
-#, fuzzy
 msgid "FREE - 2mbit.com SPAM Source - List of Direct SPAM Sources."
-msgstr "GRATUIT - Five-Ten-sg.com: surse directe de SPAM."
+msgstr "GRATUIT - 2mbit.com SPAM Source - Lista surse directe de SPAM."
 
 msgid "FREE - 2mbit.com SPAM ISPs - List of SPAM-friendly ISPs."
-msgstr ""
+msgstr "GRATUIT - 2mbit.com SPAM ISPs - Lista de ISP-uri cu SPAM."
 
 msgid ""
 "FREE - Leadmon DUL - Another list of Dial-up or otherwise dynamically "
 "assigned IPs."
 msgstr ""
+"GRATUIT - Leadmon DUL - Inca o lista de Dialupuri sau alte IP-uri alocate "
+"dinamic."
 
 msgid ""
 "FREE - Leadmon SPAM Source - List of IPs Leadmon.net has received SPAM "
 "directly from."
 msgstr ""
+"GRATUIT - Leadmon SPAM Source - Lista de IP-uri Leadmon.net la care s-a "
+"primit in mod direct spam."
 
 msgid ""
 "FREE - Leadmon Bulk Mailers - Bulk mailers that do not require confirmed opt-"
 "in or that have allowed known spammers to become clients and abuse their "
 "services."
 msgstr ""
+"GRATUIT - Leadmon Bulk Mailers - Mailere in masa care nu au nevoie de "
+"confirmare sau permit spammeri cunoscuti sa le devina clienti si sa abuzeze "
+"de servicii."
 
 msgid ""
 "FREE - Leadmon Open Relays - Single Stage Open Relays that are not listed on "
 "other active RBLs."
 msgstr ""
+"GRATUIT - Leadmon Open Relays - Open Relayuri stagiu unic care nu sunt "
+"listate pe alte RBL-uri active."
 
 msgid ""
 "FREE - Leadmon Multi-stage - Multi-Stage Open Relays that are not listed on "
 "other active RBLs and that have sent SPAM to Leadmon.net."
 msgstr ""
+"GRATUIT - Leadmon Multi-stagiu - Open Relayuri Multi-Stage care nu sunt "
+"listate pe alte RBL-uri activesi au trimis spam la Leadmon.net."
 
 msgid ""
 "FREE - Leadmon SpamBlock - Sites on this listing have sent Leadmon.net "
@@ -1469,77 +2257,61 @@ msgid ""
 "mappings. It's a list of BLOCKS of IPs being used by people who have SPAMmed "
 "Leadmon.net."
 msgstr ""
+"GRATUIT - Leadmon SpamBlock - Site-uri de pe acest listing au trimis in mod "
+"direct SPAM catre Leadmon.net dinspre IP-uri in care intregul bloc nu are "
+"mapari DNS. E o lista ale IP-urilor BLOCATE utilizate de persoane care au "
+"trimis SPAM catre Leadmon.net."
 
 msgid ""
 "FREE, for now - Not Just Another Blacklist - Both Open Relays and Direct "
 "SPAM Sources."
 msgstr ""
+"GRATUIT, deocamdata - Not Just Another Blacklist - Surse direct SPAM si Open "
+"Relayuri."
 
 msgid "FREE, for now - Not Just Another Blacklist - Dial-up IPs."
-msgstr ""
+msgstr "GRATUIT, deocamdata - Not Just Another Blacklist - Ip-uri Dial-up."
 
 msgid "FREE - Distributed Sender Boycott List - Confirmed Relays"
-msgstr ""
+msgstr "GRATUIT - Distributed Sender Boycott List - Relayuri confirmate"
 
 msgid "FREE - Distributed Sender Boycott List - Confirmed Multi-stage Relays"
 msgstr ""
+"GRATUIT - Distributed Sender Boycott List - Relayuri M-stage confirmate"
 
 msgid "FREE - Distributed Sender Boycott List - UN-Confirmed Relays"
-msgstr ""
+msgstr "GRATUIT - Distributed Sender Boycott List - Relayuri confirmate UN"
 
 msgid "Saved Scan type"
-msgstr ""
+msgstr "Tip scanare salvat"
 
-#, fuzzy
 msgid "Message Filtering"
-msgstr "Evidenþierea unui mesaj"
+msgstr "Filtrare mesaje"
 
 msgid "What to Scan:"
-msgstr "Ce sã se scaneze:"
+msgstr "Ce sa scanati:"
 
 msgid "All messages"
 msgstr "Toate mesajele"
 
 msgid "Only unread messages"
-msgstr "Numai mesajele necitite"
+msgstr "Doar mesajele necitite"
 
 msgid "Save"
-msgstr "Salveazã"
-
-msgid "New"
-msgstr "Nou"
-
-msgid "Done"
-msgstr "Gata"
+msgstr "Salvare"
 
 msgid "Match:"
-msgstr "Unde:"
+msgstr "Potrivire:"
 
-msgid "Cc"
-msgstr "CC"
-
-msgid "To or Cc"
-msgstr "Cãtre sau CC"
-
-#, fuzzy
 msgid "Header"
-msgstr "Citite"
+msgstr "Header"
 
 msgid "Contains:"
-msgstr "Conþine:"
-
-msgid "Edit"
-msgstr "Modificã"
-
-msgid "Down"
-msgstr "Jos"
-
-msgid "Up"
-msgstr "Sus"
+msgstr "Contine:"
 
 #, c-format
 msgid "If <b>%s</b> contains <b>%s</b> then move to <b>%s</b>"
-msgstr "Dacã <b>%s</b> conþine <b>%s</b> atunci mutã în <b>%s</b>"
+msgstr "Daca <b>%s</b> contine <b>%s</b> atunci muta in <b>%s</b>"
 
 msgid "Message Filters"
 msgstr "Filtre mesaje"
@@ -1548,29 +2320,27 @@ msgid ""
 "Filtering enables messages with different criteria to be automatically "
 "filtered into different folders for easier organization."
 msgstr ""
-"Filtrarea permite organizarea mesajelor dupã diferite criterii in "
-"subdirectoare. "
+"Filtrarea face ca mesajele sa fie filtrate automat dupa mai multe criterii "
+"in diferite foldere pentru o mai usoara organizare."
 
 msgid "SPAM Filters"
-msgstr "Filtrare SPAM"
+msgstr "Filtre SPAM"
 
 msgid ""
 "SPAM filters allow you to select from various DNS based blacklists to detect "
 "junk email in your INBOX and move it to another folder (like Trash)."
 msgstr ""
-"Filtrele SPAM permit selectarea de diverse liste cu adrese de la care provin "
-"mesaje comerciale nesolicitate ºi mutarea acelor mesaje în alte "
-"subdirectoare (de ex. Gunoi)."
+"Filtrele SPAM va permit selectarea de liste negre din mai multe DNS-uri "
+"pentru detectarea de junk mail din INBOX si mutare in alt dosar (ex. cos)."
 
 msgid "Spam Filtering"
-msgstr "Filtrare SPAM"
+msgstr "Filtrare spam"
 
 msgid "WARNING! Tell your admin to set the SpamFilters_YourHop variable"
-msgstr ""
-"ATENÞIE: Administratorul trebuie sã seteze variabila SpamFilters_YourHop."
+msgstr "ATENTIE! Spuneti adminului sa seteze variabila SpamFilters_YourHop"
 
 msgid "Move spam to:"
-msgstr "Mutã mesajele nedorite în:"
+msgstr "Mutare spam in:"
 
 msgid ""
 "Moving spam directly to the trash may not be a good idea at first, since "
@@ -1579,10 +2349,10 @@ msgid ""
 "periodically, so that you don't have an excessively large mailbox hanging "
 "around."
 msgstr ""
-"Mutarea mesajelor direct în directorul Trash poate sã nu fie o idee bunã, "
-"deoarece astfel mesaje incorect identificate ca SPAM vor fi ºterse. "
-"Asiguraþi-vã totuºi cã directorul ales este golit periodic, pentru a nu "
-"depãºi spaþiul alocat pentru mesaje. "
+"Mutarea spamului direct in cos nu e o idee prea buna, atata timp cat "
+"mesajelede la anumiti prieteni sau liste de discutii pot fi accidental "
+"marcate ca spam. Orice alt dosar ati alege, asigurati-va ca se va goli "
+"periodic pentru a nu mari excesiv mailboxul."
 
 msgid ""
 "The more messages you scan, the longer it takes.  I would suggest that you "
@@ -1591,89 +2361,108 @@ msgid ""
 "scan only new messages.  That way, your new spam filters will be applied and "
 "you'll scan even the spam you read with the new filters."
 msgstr ""
-"Scanarea tuturor mesajelor poate lua mult timp - este recomandat sã nu "
-"filtraþi decît cele necitite."
+"Cu cat mai multe mesaje se scaneaza cu atat mai mult dureaza. Sugeram sa se "
+"scaneze doar mesajele noi. Daca schimbati filtrele, se va seta scanarea "
+"tuturor mesajelor, vizualizare INBOX, apoi intoarcere si setare doar mesaje "
+"noi. In acest fel, noile filtre de spam vor fi aplicate si veti scana chiar "
+"si spamul citit cu noile filtre."
 
 #, c-format
 msgid "Spam is sent to <b>%s</b>"
-msgstr "Mesajele filtrate vor fi mutate in <b>%s</b>"
+msgstr "Spamul e trimis in <b>%s</b>"
 
 msgid "[<i>not set yet</i>]"
-msgstr "[<i>nesetat</i>]"
+msgstr "[<i>nesetat inca</i>]"
 
 #, c-format
 msgid "Spam scan is limited to <b>%s</b>"
-msgstr "Scanarea este limitatã la <b>%s</b>"
+msgstr "Scanarea de spam e limitata la <b>%s</b>"
 
 msgid "New Messages Only"
-msgstr "Mesajele noi"
+msgstr "Doar mesajele noi"
 
 msgid "All Messages"
 msgstr "Toate mesajele"
 
 msgid "ON"
-msgstr "Activat"
+msgstr "Activ"
 
 msgid "OFF"
-msgstr "Dezactivat"
+msgstr "Inactiv"
+
+msgid " not found."
+msgstr ""
+
+msgid "Today's Fortune"
+msgstr ""
+
+#, fuzzy
+msgid "Fortunes:"
+msgstr "Portugheza"
+
+msgid "Show fortunes at top of mailbox"
+msgstr ""
+
+#, fuzzy
+msgid "IMAP server information"
+msgstr "Port server IMAP"
+
+msgid ""
+"Run some test IMAP commands, displaying both the command and the result. "
+"These tests use the Squirrelmail IMAP commands and your current Squirrelmail "
+"configuration. Custom command strings can be used."
+msgstr ""
 
 msgid "Mailinglist"
-msgstr ""
+msgstr "Lista discutii"
 
 #, c-format
 msgid ""
 "This will send a message to %s requesting help for this list. You will "
 "receive an emailed response at the address below."
 msgstr ""
+"Aceasta va trimite un mesaj catre %s cu cerere de ajutor pentru aceasta "
+"lista. Veti primi un raspuns la adresa de mai jos."
 
 #, c-format
 msgid ""
 "This will send a message to %s requesting that you will be subscribed to "
 "this list. You will be subscribed with the address below."
 msgstr ""
+"Aceasta va trimite un mesaj catre %s cu cerere de abonare la aceasta lista."
+"Veti fi abonat cu adresa de mai jos."
 
 #, c-format
 msgid ""
 "This will send a message to %s requesting that you will be unsubscribed from "
 "this list. It will try to unsubscribe the adress below."
 msgstr ""
+"Aceasta va trimite un mesaj catre %s cu cerere de dezabonare de la aceasta "
+"lista. Se va incerca dezabonarea adresei de mai jos."
 
-msgid "From:"
-msgstr "De la:"
-
-#, fuzzy
 msgid "Send Mail"
-msgstr "Mesaje noi"
+msgstr "Trimitere Mail"
 
-#, fuzzy
 msgid "Post to List"
-msgstr "%s la %s"
+msgstr "Postare catre lista"
 
-#, fuzzy
 msgid "Reply to List"
-msgstr "Adresa de rãspuns"
-
-msgid "Subscribe"
-msgstr "Adaugã"
-
-msgid "Unsubscribe"
-msgstr "Eliminã"
+msgstr "Raspuns catre lista"
 
 msgid "List Archives"
-msgstr ""
+msgstr "Arhive lista"
 
 msgid "Contact Listowner"
-msgstr ""
+msgstr "Contactare posesor lista"
 
-#, fuzzy
 msgid "Mailing List"
-msgstr "Lista mesajelor"
+msgstr "Lista discutii"
 
 msgid "POP3 connect:"
 msgstr "Conectare POP3:"
 
 msgid "No server specified"
-msgstr "Nu a fost specificat nici un server"
+msgstr "Nici un server specificat"
 
 msgid "Error "
 msgstr "Eroare"
@@ -1682,43 +2471,43 @@ msgid "POP3 noop:"
 msgstr "POP3 noop:"
 
 msgid "No connection to server"
-msgstr "Nu mã pot conecta la server"
+msgstr "Nici o conexiune la server"
 
 msgid "POP3 user:"
 msgstr "Utilizator POP3:"
 
 msgid "no login ID submitted"
-msgstr "nu a fost introdus un nume de utilizator"
+msgstr "nici un ID de intrare trimis"
 
 msgid "connection not established"
-msgstr "conexiunea nu a fost stabilitã"
+msgstr "conexiune nerealizata"
 
 msgid "POP3 pass:"
 msgstr "Parola POP3:"
 
 msgid "No password submitted"
-msgstr "Nu a fost introdusã parola"
+msgstr "Nici o parola trimisa"
 
 msgid "authentication failed "
-msgstr "Autentificare eºuatã"
+msgstr "autentificare esuata"
 
 msgid "POP3 apop:"
 msgstr "POP3 apop:"
 
 msgid "No login ID submitted"
-msgstr "Nu a fost introdus un nume de utilizator"
+msgstr "Nici un ID de intrare trimis"
 
 msgid "No server banner"
-msgstr "Nu existã eticheta serverului"
+msgstr "Nici un banner de server"
 
 msgid "abort"
-msgstr "abandoneazã"
+msgstr "esuare"
 
 msgid "apop authentication failed"
-msgstr "autentificarea apop a eºuat"
+msgstr "autentificare apop esuata"
 
 msgid "POP3 login:"
-msgstr "POP3 login:"
+msgstr "Login POP3:"
 
 msgid "POP3 top:"
 msgstr "POP3 top:"
@@ -1727,7 +2516,7 @@ msgid "POP3 pop_list:"
 msgstr "POP3 pop_list:"
 
 msgid "Premature end of list"
-msgstr "Sfîrºit de listã prematur"
+msgstr "Sfarsit de lista prematur"
 
 msgid "POP3 get:"
 msgstr "POP3 get:"
@@ -1742,120 +2531,115 @@ msgid "POP3 send_cmd:"
 msgstr "POP3 send_cmd:"
 
 msgid "Empty command string"
-msgstr "Comandã vidã"
+msgstr "Sir de comenzi vid"
 
 msgid "POP3 quit:"
 msgstr "POP3 quit:"
 
 msgid "connection does not exist"
-msgstr "Conexiune inexistentã"
+msgstr "conexiune inexistenta"
 
 msgid "POP3 uidl:"
 msgstr "POP3 uidl:"
 
 msgid "POP3 delete:"
-msgstr "POP3 delete:"
+msgstr "POP3 stergere:"
 
 msgid "No msg number submitted"
-msgstr "Nu s-a trimis numãrul mesajului"
+msgstr "Nici un numar de mesaj trimis"
 
 msgid "Command failed "
-msgstr "Comanda a eºuat"
+msgstr "Comanda esuata "
 
 msgid "Remote POP server Fetching Mail"
-msgstr "Aducere mesaje de pe alt server POP3"
+msgstr "Server POP pentru aducere mail remote"
 
 msgid "Select Server:"
-msgstr "Selectaþi serverul:"
+msgstr "Selectare server:"
 
-msgid "All"
-msgstr "Toate"
-
-#, fuzzy
 msgid "Password for"
-msgstr "Parolã:"
+msgstr "Parola pentru"
 
 msgid "Fetch Mail"
-msgstr "Descarcã mesajele"
+msgstr "Aducere Mail"
 
 msgid "Fetching from "
-msgstr "Descarc mesajele de la"
+msgstr "Aducere de la"
 
 msgid "Oops, "
-msgstr "Hopa,"
+msgstr "Oops, "
 
 msgid "Opening IMAP server"
-msgstr "Deschid serverul IMAP"
+msgstr "Deschidere server IMAP"
 
 msgid "Opening POP server"
-msgstr "Deschid serverul POP"
+msgstr "Deschidere server POP"
 
 msgid "Login Failed:"
-msgstr "Autentificare eºuatã:"
+msgstr "Intrare esuata:"
 
 msgid "Login OK: No new messages"
-msgstr "Login OK: Nu sînt mesaje noi"
+msgstr "Intrare OK: nici un mesaj nou"
 
 msgid "Login OK: Inbox EMPTY"
-msgstr "Login OK: Nu sînt mesaje în INBOX"
+msgstr "Intrare OK: Inbox VID"
 
 msgid "Login OK: Inbox contains ["
-msgstr "Login OK: ["
+msgstr "Intrare OK: Inbox contine ["
 
 msgid "] messages"
-msgstr "] mesaje în INBOX"
+msgstr "] mesaje"
 
 msgid "Fetching UIDL..."
-msgstr "Trimit UIDL"
+msgstr "Aducere UIDL..."
 
 msgid "Server does not support UIDL."
-msgstr "Serverul nu ºtie de UIDL."
+msgstr "Serverul nu permite UIDL."
 
 msgid "Leaving Mail on Server..."
-msgstr "Mesajele vor fi pãstrate ºi pe server"
+msgstr "Lasare mail pe server..."
 
 msgid "Deleting messages from server..."
-msgstr "ªtergere mesaje de pe server..."
+msgstr "Stergere mesaje de pe server..."
 
 msgid "Fetching message "
-msgstr "Aduc mesajul"
+msgstr "Aducere mesaj "
 
 msgid "Server error...Disconnect"
-msgstr ""
+msgstr "Eroare server...Deconectare"
 
 msgid "Reconnect from dead connection"
-msgstr ""
+msgstr "Reconectare din conexiune cazuta"
 
 msgid "Saving UIDL"
-msgstr "Salvez UIDL"
+msgstr "Salvare UIDL"
 
-#, fuzzy
 msgid "Refetching message "
-msgstr "Aduc mesajul"
+msgstr "Readucere mesaj"
 
 msgid "Error Appending Message!"
-msgstr "Eroare la copierea mesajului!"
+msgstr "Eroare la adaugare mesaj!"
 
 msgid "Closing POP"
-msgstr "Închid conexiunea POP"
+msgstr "Inchidere POP"
 
 msgid "Logging out from IMAP"
-msgstr "Închid conexiunea IMAP"
+msgstr "Iesire din IMAP"
 
 msgid "Message appended to mailbox"
-msgstr "Mesaj adaugat la INBOX"
+msgstr "Mesaj adaugat la mailbox"
 
 msgid "Message "
-msgstr "Mesaj"
+msgstr "Mesaj "
 
 msgid " deleted from Remote Server!"
-msgstr "ºters de pe server!"
+msgstr " sters de pe acest server!"
 
 msgid "Delete failed:"
-msgstr "ªtergerea a eºuat:"
+msgstr "Stergere esuata:"
 
 msgid "Remote POP server settings"
-msgstr "Setãri server POP"
+msgstr "Setari server POP remote"
 
 msgid ""
 "You should be aware that the encryption used to store your password is not "
@@ -1863,131 +2647,136 @@ msgid ""
 "encryption anyway. Additionally, the encryption that we do to save it on the "
 "server can be undone by a hacker reading the source to this file."
 msgstr ""
-"Trebuie sã ºtiþi cã metoda de folositã pentru criptarea parolei nu este "
-"sigurã. Dar, daca folosiþi un cont POP, parola nu este trimisã criptat cãtre "
-"server oricum. Mai mult, parola poate fi decriptatã de un hacker care "
-"citeºte sursa acestui program."
+"Trebuie sa fiti constienti ca encriptia utilizata pentru retinerea parolei "
+"nu este total sigura. Oricum, daca utilizati pop, nu exista nici o "
+"encriptie. In plus, encriptia pe care o folosim pentru salvare pe server "
+"poate fi sparta de un hacker care citeste sursele acelui fisier."
 
 msgid "If you leave password empty, it will be required when you fetch mail."
-msgstr "Dacã nu completaþi cîmpul parola, ea va fi cerutã la conectare."
+msgstr "Daca lasati parola goala, va fi ceruta cand aduceti mail."
 
 msgid "Encrypt passwords (informative only)"
-msgstr "Cripteazã parolele (doar cu titlu informativ)"
+msgstr "Encriptie parole (doar informativ)"
 
 msgid "Add Server"
-msgstr "Adaugã server"
+msgstr "Adaugare server"
 
 msgid "Server:"
 msgstr "Server:"
 
-#, fuzzy
 msgid "Port:"
-msgstr "Prioritate"
+msgstr "Port:"
 
 msgid "Alias:"
 msgstr "Alias:"
 
-#, fuzzy
 msgid "Username:"
-msgstr "Nume nou:"
-
-msgid "Password:"
-msgstr "Parolã:"
+msgstr "Nume utilizator:"
 
 msgid "Store in Folder:"
-msgstr "Salveazã mesajele aduse în directorul:"
+msgstr "Stocare in dosar:"
 
 msgid "Leave Mail on Server"
-msgstr "Pãstreazã o copie a mesajelor pe server"
+msgstr "Lasare mail pe server"
 
 msgid "Check mail during login"
-msgstr "Verificã mailurile externe la conectare"
+msgstr "Verificare mail la intrare"
 
 msgid "Check mail during folder refresh"
-msgstr ""
-"Verificã mailurile externe la fiecare actualizare a directoarelor locale"
+msgstr "Verificare mail la innoirea dosarului"
 
 msgid "Modify Server"
-msgstr "Modificã server"
+msgstr "Modificare server"
 
 msgid "Server Name:"
 msgstr "Nume server:"
 
 msgid "Modify"
-msgstr "Modificã"
+msgstr "Modificare"
 
 msgid "No-one server in use. Try to add."
-msgstr "Nu sînt servere configurate. Puteþi adãuga unul."
+msgstr "Nici un server utilizat. Incercati adaugare."
 
 msgid "Fetching Servers"
-msgstr "Actualizez lista serverelor"
+msgstr "Aducere servere"
 
 msgid "Confirm Deletion of a Server"
-msgstr "Confirmaþi ºtergerea serverului"
+msgstr "Confirmare stergere server"
 
 msgid "Selected Server:"
 msgstr "Server selectat:"
 
 msgid "Confirm delete of selected server?"
-msgstr "Sînteþi sigur?"
+msgstr "Confirmare stergere server selectat?"
 
-#, fuzzy
 msgid "Confirm Delete"
-msgstr "ªterge"
-
-msgid "Mofify a Server"
-msgstr "Modificã un server"
+msgstr "Confirmare stergere"
 
 msgid "Undefined Function"
-msgstr "Funcþie nedefinitã"
+msgstr "Functie nedefinita"
 
 msgid "Hey! Wath do You are looking for?"
-msgstr "Hey you! Yes you! What ARE you looking for?"
+msgstr "Hei! Dupa ce cautati?"
 
 msgid "Fetch"
-msgstr "Mesaje externe"
+msgstr "Aducere"
 
 msgid "Warning, "
-msgstr "Avertisment, "
+msgstr "Atentie, "
 
 msgid "Mail Fetch Result:"
-msgstr "Rezultat:"
+msgstr "Rezultate aducere mail:"
 
 msgid "Simple POP3 Fetch Mail"
-msgstr "Sincronizare servere POP3 externe"
+msgstr "Aducere mail pop3 simplu"
 
 msgid ""
 "This configures settings for downloading email from a pop3 mailbox to your "
 "account on this server."
 msgstr ""
-"Puteþi configura aducerea mesajelor de pe un alt server POP3 în contul de pe "
-"acest server."
+"Aceasta configureaza setarile pentru download email din mailbox pop3 in "
+"contul din acest server."
 
 #, fuzzy
+msgid "Message Details"
+msgstr "Lista mesaj"
+
+msgid "Close Window"
+msgstr "Inchidere fereastra"
+
+#, fuzzy
+msgid "Save Message"
+msgstr "Vizualizare mesaj"
+
+#, fuzzy
+msgid "View Message details"
+msgstr "Vizualizare mesaj"
+
 msgid "New Mail Notification"
-msgstr "Fãrã înºtiinþare"
+msgstr "Notificare mail nou"
 
 msgid ""
 "Select <b>Enable Media Playing</b> to turn on playing a media file when "
 "unseen mail is in your folders. When enabled, you can specify the media file "
 "to play in the provided file box."
 msgstr ""
-"Selectaþi <b>Fiºier audio</b> pentru a folosi notificarea sonorã la sosirea "
-"mesajelor."
+"Selectati <b>Activare Media</b> pentru a porni un fisier media cand exista "
+"mail necitit in dosare. Daca este activat, puteti specifica fisierul media "
+"rulabil in casuta de fisiere furnizata."
 
 msgid ""
 "The <b>Check all boxes, not just INBOX</b> option will check ALL of your "
 "folders for unseen mail, not just the inbox for notification."
 msgstr ""
-"Opþiunea <b>Verificã toate directoarele</b> va activa verificarea tuturor "
-"subdirectoarelor, nu numai pentru INBOX."
+"Optiunea <b>Selectare toate casutele, nu doar INBOX</b> va selecta TOATE "
+"dosarele pentru mail necitit pentru notificare, nu doar inbox-ul."
 
 msgid ""
 "Selecting the <b>Show popup</b> option will enable the showing of a popup "
 "window when unseen mail is in your folders (requires JavaScript)."
 msgstr ""
-"Opþiunea <b>Alertã vizualã</b> va deschide o fereastrã de notificare la "
-"sosirea mesajelor (numai dacã JavaScript este activat)."
+"Selectarea optiunii <b>Afisare popup</b> va activa afisarea ferestrei de "
+"popup cand aveti mail necitit in dosare (solicita JavaScript)."
 
 msgid ""
 "Use the <b>Check RECENT</b> to only check for messages that are recent. "
@@ -1995,8 +2784,10 @@ msgid ""
 "been \"viewed\" or checked yet.  This can prevent being continuously annoyed "
 "by sounds or popups for unseen mail."
 msgstr ""
-"Folosiþi <b>Numai mesajele recente</b> pentru a nu fi notificat decît dacã "
-"au apãrut mesaje noi de la ultima verificare."
+"Utilizati <b>Verificare RECENTE</b> doar pentru verificare mesaje recente. "
+"Mesajele recente sunt acelea care au aparut recent si care nu au fost "
+"\"vizualizate\" sau selectate inca. Aceasta previne notificarea de mail "
+"necitit prin sunete sau popup-uri care poate deveni plictisitoare."
 
 msgid ""
 "Selecting the <b>Change title</b> option will change the title in some "
@@ -2005,145 +2796,145 @@ msgid ""
 "always tell you if you have new mail, even if you have <b>Check RECENT</b> "
 "enabled."
 msgstr ""
-"Opþiunea <b> Schimbã titlul</b> va modifica titlul ferestrei dacã sînt "
-"mesaje necitite. Funcþioneazã numai în IE+JavaScript, dar nu genereazã erori "
-"în alte browsere. Titlul va rãmîne însã modificat chiar dacã aþi bifat "
-"opþiunea <b>Verificã mesajele recente</b>"
-
-msgid ""
-"Select from the list of <b>server files</b> the media file to play when new "
-"mail arrives.  Selecting <b>local media</b> will play the file specified in "
-"the <b>local media file</b> box to play from the local computer.  If no file "
-"is specified, the system will use a default from the server."
-msgstr ""
-"Selectaþi unul din fiºierele audio de pe server sau unul de pe hard-disk."
-
-msgid "Enable Media Playing"
-msgstr "Fiºier audio"
-
-msgid "Check all boxes, not just INBOX"
-msgstr "Verificã toate directoarele"
-
-msgid "Count only messages that are RECENT"
-msgstr "Numai mesajele recente"
-
-msgid "Change title on supported browsers."
-msgstr "Schimbã titlul"
-
-msgid "requires JavaScript to work"
-msgstr "necesitã JavaScript"
-
-msgid "Show popup window on new mail"
-msgstr "Alertã vizualã"
-
-msgid "Select server file:"
-msgstr "Selectaþi un fiºier de pe server:"
-
-msgid "(local media)"
-msgstr "(de pe hard-disk)"
-
-msgid "Try"
-msgstr "Încearcã"
-
-msgid "Local Media File:"
-msgstr "Fiºier local:"
-
-msgid "Current File:"
-msgstr "Fiºierul selectat:"
-
-msgid "New Mail"
-msgstr "Mesaje noi"
-
-msgid "SquirrelMail Notice:"
-msgstr "SquirrelMail:"
-
-msgid "You have new mail!"
-msgstr "Aveþi mesaje noi!"
+"Selectarea optiunii <b>Schimbare titlu</b> va schimba titlul in anumite "
+"browsere pentru a va anunta cand aveti mail nou (solicita JavaScript si "
+"functioneaza doar in IE dar nu se vor observa erori cu alte browsere). "
+"Aceasta va va anunta cand aveti mail nou, chiar si cu <b>Verificare recente</"
+"b> activat."
 
 #, fuzzy
-msgid "Close Window"
-msgstr "Închide fereastra"
+msgid ""
+"Select from the list of <b>server files</b> the media file to play when new "
+"mail arrives.  If no file is specified, \"(none)\", no sound will be used."
+msgstr ""
+"Selectare din lista <b>fisierele de pe server<b> fisierul media rulabil in "
+"momentul cand vine mail nou. Selectand <b>media local</b> va rula un fisier "
+"specificat in casuta <b>fisier media local</b> pentru a rula de pe "
+"computerul local. Daca nu e specificat nici un fisier, sistemul va utiliza "
+"unul implicit de pe server."
+
+msgid "Enable Media Playing"
+msgstr "Activare Media"
+
+msgid "Check all boxes, not just INBOX"
+msgstr "Selectare toate casutele, nu doar INBOX"
+
+msgid "Count only messages that are RECENT"
+msgstr "Contorizeaza doar mesajele RECENTE"
+
+msgid "Change title on supported browsers."
+msgstr "Schimba titlul in browserele suportate."
+
+msgid "requires JavaScript to work"
+msgstr "solicita JavaScript pentru functionare"
+
+msgid "Show popup window on new mail"
+msgstr "Afisare fereastra popul la mail nou"
+
+msgid "Select server file:"
+msgstr "Selectare fisier server:"
+
+#, fuzzy
+msgid "(none)"
+msgstr "Nici unul(una)"
+
+msgid "Try"
+msgstr "Incercare"
+
+msgid "Current File:"
+msgstr "Fisier curent:"
+
+msgid "New Mail"
+msgstr "Mail nou"
+
+msgid "SquirrelMail Notice:"
+msgstr "Notificare SquirrelMail"
+
+msgid "You have new mail!"
+msgstr "Aveti mail nou!"
 
 msgid "NewMail Options"
-msgstr "Opþiuni notificare"
+msgstr "Optiuni MailNou"
 
 msgid ""
 "This configures settings for playing sounds and/or showing popup windows "
 "when new mail arrives."
-msgstr "Aici puteþi configura opþiunile de notificare la sosirea de mesaje noi"
+msgstr ""
+"Aici se configureaza setari pentru sunete si/sau afisare ferestre popup cand "
+"vine mail nou."
 
 msgid "New Mail Notification options saved"
-msgstr "Opþiunile au fost salvate"
+msgstr "Notificari de mail nou salvate"
 
 #, c-format
 msgid "%s New Messages"
-msgstr "%s Mesaje noi"
+msgstr "%s mesaje noi"
 
 #, c-format
 msgid "%s New Message"
-msgstr "%s Mesaj nou"
+msgstr "%s mesaj nou"
 
 msgid "Test Sound"
-msgstr "Testeazã sunetul"
+msgstr "Test sunet"
+
+#, fuzzy
+msgid "No sound specified"
+msgstr "Nici un server specificat"
 
 msgid "Loading the sound..."
-msgstr "încarc sunetul..."
+msgstr "Incarcare sunet..."
 
-msgid "Close"
-msgstr "Închide"
-
-#, fuzzy
 msgid "Sent Subfolders Options"
-msgstr "Opþiuni pentru directoarele sistem"
+msgstr "Optiuni subdosare Trimise"
 
-#, fuzzy
 msgid "Use Sent Subfolders"
-msgstr "Director pentru mesajele trimise"
+msgstr "Utilizare Subdosare Trimise"
 
-#, fuzzy
 msgid "Monthly"
-msgstr "Luni"
+msgstr "Lunar"
 
 msgid "Quarterly"
-msgstr ""
+msgstr "Trimestrial"
 
 msgid "Yearly"
-msgstr ""
+msgstr "Anual"
 
-#, fuzzy
 msgid "Base Sent Folder"
-msgstr "Director pentru mesajele trimise"
+msgstr "Dosar de baza Trimise"
 
 msgid "Report as Spam"
-msgstr ""
+msgstr "Raporteaza ca Spam"
 
 msgid "SpamCop - Spam Reporting"
-msgstr ""
+msgstr "SpamCop - Raportare Spam"
 
 msgid ""
 "Help fight the battle against unsolicited email.  SpamCop reads the spam "
 "email and determines the correct addresses to send complaints to.  Quite "
 "fast, really smart, and easy to use."
 msgstr ""
+"Contribuiti la razboiul impotriva mailului nesolicitat. SpamCop citeste "
+"emailul spam si determina adresele corecte la care sa se trimita plangeri. "
+"Destul de rapid, inteligent si usor de folosit."
 
 msgid "SpellChecker Options"
-msgstr "Opþiuni pentru corectorul ortografic"
+msgstr "Optiuni Verificare Ortografie"
 
 msgid ""
 "Here you may set up how your personal dictionary is stored, edit it, or "
 "choose which languages should be available to you when spell-checking."
 msgstr ""
-"Aici puteþi configura dicþionarele disponibile pentru verificarea "
-"ortograficã, sau edita un dicþionar personal."
+"Aici puteti seta modul in care este stocat dictionarul personal, edita sau "
+"alege ce limbi vor fi disponibile pentru verificarea ortografiei."
 
 msgid "Check Spelling"
-msgstr "Verificã ortografia"
+msgstr "Verificare ortografie"
 
 msgid "Back to &quot;SpellChecker Options&quot; page"
-msgstr "Înapoi la pagina &quot;Opþiuni corector ortografic&quot;"
+msgstr "Inapoi la &quot;Optiuni VerificareOrtografie&quot; pagina"
 
 msgid "ATTENTION:"
-msgstr "ATENÞIE:"
+msgstr "ATENTIUNE:"
 
 msgid ""
 "SquirrelSpell was unable to decrypt your personal dictionary. This is most "
@@ -2154,1161 +2945,708 @@ msgid ""
 "got mangled and is no longer valid. You will have to delete it and start "
 "anew. This is also true if you don't remember your old password -- without "
 "it, the encrypted data is no longer accessible."
-msgstr "???"
+msgstr ""
+"SquirrelSpell nu a putut decripta dictionarul personal. Aceasta este de "
+"obicei din cauza faptului ca ati schimbat parola la mailbox. Pentru a "
+"continua, va trebui sa furinzati vechea parola pentru ca SquirrelSpell sa "
+"decripteze dictionarul personal. Va fi reincriptat cu noua parola dupa "
+"aceasta.<br>Daca nu ati incriptat dictionarul, atunci acesta este corupt si "
+"invalid. Va trebui sa il stergeti si sa porniti unul nou. De asemenea poate "
+"fi si din cauza ca nu va amititi vechea parola -- fara ea, datele incriptate "
+"nu mai sunt accesibile."
 
 msgid "Delete my dictionary and start a new one"
-msgstr "ªterge dicþionarul ºi deschide unul nou."
+msgstr "Sterge dictionarul si incepe cu unul nou"
 
 msgid "Decrypt my dictionary with my old password:"
-msgstr "???"
+msgstr "Decripteaza dictionarul cu vechea parola:"
 
 msgid "Proceed"
-msgstr "Continuã"
+msgstr "Continuare"
 
 msgid "You must make a choice"
-msgstr ""
+msgstr "Trebuie sa alegeti ceva"
 
 msgid ""
 "You can either delete your dictionary or type in the old password. Not both."
 msgstr ""
+"Puteti ori sa stergeti dictionarul ori sa introduceti vechea parola. Nu "
+"ambele."
 
-#, fuzzy
 msgid "This will delete your personal dictionary file. Proceed?"
-msgstr "Adaugã acest cuvînt la dicþionarul personal"
+msgstr "Aceasta va sterge dictionarul personal. Continuam?"
 
 msgid "Error Decrypting Dictionary"
-msgstr "Eroare la decriptarea dicþionarului"
+msgstr "Eroare in decriptarea dictionarului"
+
+msgid "Cute."
+msgstr "Dragut."
+
+#, c-format
+msgid "I tried to execute '%s', but it returned:"
+msgstr ""
+
+msgid "SquirrelSpell is misconfigured."
+msgstr ""
+
+msgid "SquirrelSpell Results"
+msgstr ""
+
+msgid "Spellcheck completed. Commit changes?"
+msgstr ""
 
 #, fuzzy
-msgid "Cute."
-msgstr "quote"
+msgid "No changes were made."
+msgstr "Nici un mesaj selectat"
+
+msgid "Now saving your personal dictionary... Please wait."
+msgstr ""
+
+#, c-format
+msgid "Found %s errors"
+msgstr ""
+
+msgid "Line with an error:"
+msgstr ""
+
+#, fuzzy
+msgid "Error:"
+msgstr "Eroare"
+
+#, fuzzy
+msgid "Suggestions:"
+msgstr "Solutie: "
+
+msgid "Suggestions"
+msgstr ""
+
+#, fuzzy
+msgid "Change to:"
+msgstr "Schimbare setari"
+
+msgid "Occurs times:"
+msgstr ""
+
+#, fuzzy
+msgid "Change this word"
+msgstr "Schimbare setari"
+
+msgid "Change"
+msgstr ""
+
+msgid "Change ALL occurances of this word"
+msgstr ""
+
+#, fuzzy
+msgid "Change All"
+msgstr "Marcheaza toate"
+
+msgid "Ignore this word"
+msgstr ""
+
+#, fuzzy
+msgid "Ignore"
+msgstr "detalii"
+
+msgid "Ignore ALL occurances this word"
+msgstr ""
+
+#, fuzzy
+msgid "Ignore All"
+msgstr "Marcheaza toate"
+
+#, fuzzy
+msgid "Add this word to your personal dictionary"
+msgstr "Aceasta va sterge dictionarul personal. Continuam?"
+
+#, fuzzy
+msgid "Add to Dic"
+msgstr "Adaugare in %s"
+
+#, fuzzy
+msgid "Close and Commit"
+msgstr "Inchidere fereastra"
+
+msgid "The spellcheck is not finished. Really close and commit changes?"
+msgstr ""
+
+msgid "Close and Cancel"
+msgstr ""
+
+msgid "The spellcheck is not finished. Really close and discard changes?"
+msgstr ""
+
+#, fuzzy
+msgid "No errors found"
+msgstr "Nici un dosar gasit"
+
+#, fuzzy
+msgid "Your personal dictionary was erased."
+msgstr "Aceasta va sterge dictionarul personal. Continuam?"
+
+msgid "Dictionary Erased"
+msgstr ""
+
+msgid ""
+"Your personal dictionary was erased. Please close this window and click "
+"\"Check Spelling\" button again to start your spellcheck over."
+msgstr ""
+
+#, fuzzy
+msgid "Close this Window"
+msgstr "Inchidere fereastra"
+
+msgid ""
+"Your personal dictionary was re-encrypted successfully. Now return to the "
+"&quot;SpellChecker options&quot; menu and make your selection again."
+msgstr ""
+
+#, fuzzy
+msgid "Successful Re-encryption"
+msgstr "Optiuni salvate cu succes"
+
+msgid ""
+"Your personal dictionary was re-encrypted successfully. Please close this "
+"window and click \"Check Spelling\" button again to start your spellcheck "
+"over."
+msgstr ""
+
+msgid "Dictionary re-encrypted"
+msgstr ""
+
+msgid ""
+"Your personal dictionary has been <strong>encrypted</strong> and is now "
+"stored in an <strong>encrypted format</strong>."
+msgstr ""
+
+msgid ""
+"Your personal dictionary has been <strong>decrypted</strong> and is now "
+"stored as <strong>clear text</strong>."
+msgstr ""
+
+msgid "Personal Dictionary Crypto Settings"
+msgstr ""
+
+#, fuzzy
+msgid "Personal Dictionary"
+msgstr "Informatii personale"
+
+#, fuzzy
+msgid "No words in your personal dictionary."
+msgstr "Aceasta va sterge dictionarul personal. Continuam?"
+
+msgid "Please check any words you wish to delete from your dictionary."
+msgstr ""
+
+#, c-format
+msgid "%s dictionary"
+msgstr ""
+
+#, fuzzy
+msgid "Delete checked words"
+msgstr "Stergere selectate"
+
+#, fuzzy
+msgid "Edit your Personal Dictionary"
+msgstr "Eroare in decriptarea dictionarului"
+
+msgid "Please make your selection first."
+msgstr ""
+
+#, fuzzy
+msgid ""
+"This will encrypt your personal dictionary and store it in an encrypted "
+"format. Proceed?"
+msgstr "Aceasta va sterge dictionarul personal. Continuam?"
+
+#, fuzzy
+msgid ""
+"This will decrypt your personal dictionary and store it in a clear-text "
+"format. Proceed?"
+msgstr "Aceasta va sterge dictionarul personal. Continuam?"
+
+msgid ""
+"<p>Your personal dictionary is <strong>currently encrypted</strong>. This "
+"helps protect your privacy in case the web-mail system gets compromized and "
+"your personal dictionary ends up stolen. It is currently encrypted with the "
+"password you use to access your mailbox, making it hard for anyone to see "
+"what is stored in your personal dictionary.</p> <p><strong>ATTENTION:</"
+"strong> If you forget your password, your personal dictionary will become "
+"unaccessible, since it can no longer be decrypted. If you change your "
+"mailbox password, SquirrelSpell will recognize it and prompt you for your "
+"old password in order to re-encrypt the dictionary with a new key.</p>"
+msgstr ""
+
+msgid ""
+"Please decrypt my personal dictionary and store it in a clear-text format."
+msgstr ""
+
+#, fuzzy
+msgid "Change crypto settings"
+msgstr "Schimbare setari"
+
+msgid ""
+"<p>Your personal dictionary is <strong>currently not encrypted</strong>. You "
+"may wish to encrypt your personal dictionary to protect your privacy in case "
+"the webmail system gets compromized and your personal dictionary file gets "
+"stolen. When encrypted, the file's contents look garbled and are hard to "
+"decrypt without knowing the correct key (which is your mailbox password).</"
+"p> <strong>ATTENTION:</strong> If you decide to encrypt your personal "
+"dictionary, you must remember that it gets &quot;hashed&quot; with your "
+"mailbox password. If you forget your mailbox password and the administrator "
+"changes it to a new value, your personal dictionary will become useless and "
+"will have to be created anew. However, if you or your system administrator "
+"change your mailbox password but you still have the old password at hand, "
+"you will be able to enter the old key to re-encrypt the dictionary with the "
+"new value.</p>"
+msgstr ""
+
+msgid ""
+"Please encrypt my personal dictionary and store it in an encrypted format."
+msgstr ""
+
+#, c-format
+msgid "Deleting the following entries from <strong>%s</strong> dictionary:"
+msgstr ""
+
+#, fuzzy
+msgid "All done!"
+msgstr "Toate dosarele"
+
+msgid "Personal Dictionary Updated"
+msgstr ""
+
+#, fuzzy
+msgid "No changes requested."
+msgstr "Nici un mesaj selectat"
+
+msgid "Please wait, communicating with the server..."
+msgstr ""
+
+msgid ""
+"Please choose which dictionary you would like to use to spellcheck this "
+"message:"
+msgstr ""
+
+msgid "SquirrelSpell Initiating"
+msgstr ""
+
+#, c-format
+msgid ""
+"Settings adjusted to: <strong>%s</strong> with <strong>%s</strong> as "
+"default dictionary."
+msgstr ""
+
+#, c-format
+msgid "Using <strong>%s</strong> dictionary (system default) for spellcheck."
+msgstr ""
+
+msgid "International Dictionaries Preferences Updated"
+msgstr ""
+
+msgid ""
+"Please check any available international dictionaries which you would like "
+"to use when spellchecking:"
+msgstr ""
+
+msgid "Make this dictionary my default selection:"
+msgstr ""
+
+msgid "Make these changes"
+msgstr ""
+
+msgid "Add International Dictionaries"
+msgstr ""
+
+msgid "Please choose which options you wish to set up:"
+msgstr ""
+
+#, fuzzy
+msgid "Edit your personal dictionary"
+msgstr "Aceasta va sterge dictionarul personal. Continuam?"
+
+msgid "Set up international dictionaries"
+msgstr ""
+
+#, fuzzy
+msgid "Encrypt or decrypt your personal dictionary"
+msgstr "Eroare in decriptarea dictionarului"
+
+#, fuzzy
+msgid "not available"
+msgstr "Indisponibil(a)"
+
+msgid "SquirrelSpell Options Menu"
+msgstr ""
 
 msgid "Translator"
-msgstr "Translator"
+msgstr "Translator."
 
-#, fuzzy
 msgid "Saved Translation Options"
-msgstr "Opþiuni translator"
+msgstr "Optiuni translatare salvate"
 
 msgid "Your server options are as follows:"
-msgstr "Opþiunile pentru servere sînt:"
+msgstr "Optiunile serverului dumneavoastra sunt:"
 
-msgid ""
-"13 language pairs, maximum of 1000 characters translated, powered by Systran"
-msgstr "13 perechi de limbi, maxim 100 de caractere, furnizat de Systran"
+#, fuzzy
+msgid "Maximum of 1000 characters translated, powered by Systran"
+msgstr "13 limbaje, maxim 1000 caractere traduse, powered by Systran"
 
-msgid ""
-"10 language pairs, maximum of 25 kilobytes translated, powered by Systran"
-msgstr "10 perechi de limbi, maxim 25k, furnizat de Systran"
+#, c-format
+msgid "Number of supported language pairs: %s"
+msgstr ""
 
-msgid "12 language pairs, no known limits, powered by Systran"
-msgstr "12 perechi de limbi, nelimitat, furnizat de Systran"
+#, fuzzy
+msgid "No known limits, powered by Systran"
+msgstr "12 limbaje, nici o limita cunoscuta, powered by Systran"
 
-msgid ""
-"767 language pairs, no known limits, powered by Translation Experts's "
+#, fuzzy
+msgid "No known limits, powered by Translation Experts's InterTran"
+msgstr ""
+"767 limbaje, nici o limita cunoscuta, powered by Translation Experts's "
 "InterTran"
-msgstr ""
-"767 perechi de limbi, nelimitat, furnizat de Translation Experts' InterTran"
 
-msgid ""
-"8 language pairs, no known limits, powered by GPLTrans (free, open source)"
+#, c-format
+msgid "Number of supported languages: %s"
 msgstr ""
-"8 perechi de limbi, nelimitat, furnizat de GPLTrans (gratuit, open source)"
+
+#, fuzzy
+msgid "No known limits, powered by GPLTrans (free, open source)"
+msgstr ""
+"8 limbaje, nici o limita cunoscuta, powered by GPLTrans (liber, sursa "
+"deschisa)"
+
+#, fuzzy
+msgid "Hellenic translations, no known limits, powered by Systran"
+msgstr "12 limbaje, nici o limita cunoscuta, powered by Systran"
+
+#, fuzzy
+msgid "Russian translations, maximum of 500 characters translated"
+msgstr "13 limbaje, maxim 1000 caractere traduse, powered by Systran"
 
 msgid ""
 "You also decide if you want the translation box displayed, and where it will "
 "be located."
-msgstr "Puteþi alege de asemenea locaþia casetei de traducere"
+msgstr ""
+"Hotarati de asemenea daca doriti afisare de casuta de traducere si "
+"localizarea acesteia."
 
 msgid "Select your translator:"
-msgstr "Selectaþi translatorul:"
+msgstr "Selectare translator:"
 
 msgid "When reading:"
-msgstr "La citirea mesajului:"
+msgstr "In citire:"
 
 msgid "Show translation box"
-msgstr "Afiºeazã caseta de traducere"
+msgstr "Afisare casuta traducere"
 
 msgid "to the left"
-msgstr "în stînga"
+msgstr "in stanga"
 
 msgid "in the center"
-msgstr "centrat"
+msgstr "in centru"
 
 msgid "to the right"
-msgstr "în dreapta"
+msgstr "in dreapta"
 
 msgid "Translate inside the SquirrelMail frames"
-msgstr "Traducerea in acelaºi cadru cu SquirrelMail"
+msgstr "Traducere in frame-urile SquirrelMail"
 
 msgid "When composing:"
-msgstr "La compunerea unui mesaj:"
+msgstr "In compunere:"
 
 msgid "Not yet functional, currently does nothing"
-msgstr "Nefuncþional deocamdatã"
-
-msgid "Download this as a file"
-msgstr "Descarcã sub formã de fiºier"
+msgstr "Nefunctional inca, in prezent nu face nimic"
 
 msgid "Translation Options"
-msgstr "Opþiuni translator"
+msgstr "Optiuni traducere"
 
 msgid ""
 "Which translator should be used when you get messages in a different "
 "language?"
 msgstr ""
-"Ce translator doriþi sã fie folosit la primirea de mesaje în alte limbi?"
+"Ce translator ar trebui utilizat cand se primes mesaje intr-o limba diferita?"
 
 #, c-format
 msgid "%s to %s"
-msgstr "%s la %s"
+msgstr "de la %s la %s"
 
 msgid "English"
-msgstr "Englezã"
+msgstr "Engleza"
+
+msgid "Chinese"
+msgstr ""
 
 msgid "French"
-msgstr "Francezã"
+msgstr "Franceza"
 
 msgid "German"
-msgstr "Germanã"
+msgstr "Germana"
 
 msgid "Italian"
-msgstr "Italianã"
-
-msgid "Portuguese"
-msgstr "Portughezã"
-
-msgid "Spanish"
-msgstr "Spaniolã"
-
-msgid "Russian"
-msgstr "Rusã"
-
-msgid "Translate"
-msgstr "Tradu"
-
-msgid "Brazilian Portuguese"
-msgstr "Portughezã Brazilianã"
-
-msgid "Bulgarian"
-msgstr "Bulgarã"
-
-msgid "Croatian"
-msgstr "Croatã"
-
-msgid "Czech"
-msgstr "Cehã"
-
-msgid "Danish"
-msgstr "Danezã"
-
-msgid "Dutch"
-msgstr "Olandezã"
-
-msgid "European Spanish"
-msgstr "Spaniolã europeanã"
-
-msgid "Finnish"
-msgstr "Finlandezã"
-
-msgid "Greek"
-msgstr "Greacã"
-
-msgid "Hungarian"
-msgstr "Ungarã"
-
-msgid "Icelandic"
-msgstr "Islandezã"
+msgstr "Italiana"
 
 msgid "Japanese"
-msgstr "Japonezã"
+msgstr "Japoneza"
+
+#, fuzzy
+msgid "Korean"
+msgstr "Norvegiana"
+
+msgid "Portuguese"
+msgstr "Portugheza"
+
+msgid "Spanish"
+msgstr "Spaniola"
+
+msgid "Russian"
+msgstr "Rusa"
+
+msgid "Translate"
+msgstr "Traducere"
+
+msgid "Brazilian Portuguese"
+msgstr "Portugheza braziliana"
+
+msgid "Bulgarian"
+msgstr "Bulgara"
+
+msgid "Croatian"
+msgstr "Croata"
+
+msgid "Czech"
+msgstr "Ceha"
+
+msgid "Danish"
+msgstr "Daneza"
+
+msgid "Dutch"
+msgstr "Olandeza"
+
+msgid "European Spanish"
+msgstr "Spaniola europeana"
+
+msgid "Finnish"
+msgstr "Finlandeza"
+
+msgid "Greek"
+msgstr "Greaca"
+
+msgid "Hungarian"
+msgstr "Maghiara"
+
+msgid "Icelandic"
+msgstr "Islandeza"
 
 msgid "Latin American Spanish"
-msgstr "Spaniolã Latino-Americanã"
+msgstr "Spaniola latin-americana"
 
 msgid "Norwegian"
-msgstr "Norvegianã"
+msgstr "Norvegiana"
 
 msgid "Polish"
-msgstr "Polonezã"
+msgstr "Poloneza"
 
 msgid "Romanian"
-msgstr "Românã"
+msgstr "Romana"
 
 msgid "Serbian"
-msgstr "Sîrbã"
+msgstr "Sarba"
 
 msgid "Slovenian"
-msgstr "Slovenã"
+msgstr "Slovena"
 
 msgid "Swedish"
-msgstr "Suedezã"
+msgstr "Suedeza"
+
+msgid "Turkish"
+msgstr ""
 
 msgid "Welsh"
-msgstr "Galezã"
+msgstr "Galeza"
 
 msgid "Indonesian"
-msgstr "Indnezianã"
+msgstr "Indoneziana"
 
 msgid "Latin"
-msgstr "Latinã"
-
-msgid "Address Book"
-msgstr "Agendã"
-
-msgid "Name"
-msgstr "Nume"
-
-msgid "E-mail"
-msgstr "E-mail"
-
-msgid "Info"
-msgstr "Informaþii"
-
-msgid "Source"
-msgstr "Sursã"
-
-msgid "Bcc"
-msgstr ""
-
-msgid "Use Addresses"
-msgstr "Foloseºte adresele"
-
-msgid "Address Book Search"
-msgstr "Cautã în agendã"
-
-msgid "Search for"
-msgstr "Cautã"
-
-msgid "in"
-msgstr "în"
-
-msgid "All address books"
-msgstr "toate agendele"
-
-msgid "List all"
-msgstr "Afiºeazã tot"
-
-#, c-format
-msgid "Unable to list addresses from %s"
-msgstr "Nu pot afiºa adresele începînd de la %s"
-
-msgid "Your search failed with the following error(s)"
-msgstr "Cãutarea a eºuat pentru cã:"
-
-msgid "No persons matching your search was found"
-msgstr "Nu am gãsit nici o persoanã"
-
-msgid "Return"
-msgstr "Întoarce-te"
-
-msgid "Nickname"
-msgstr "Pseudonim"
-
-msgid "Must be unique"
-msgstr "trebuie sã fie unic"
-
-msgid "E-mail address"
-msgstr "Adresã de e-mail"
-
-msgid "First name"
-msgstr "Prenume"
-
-msgid "Last name"
-msgstr "Nume"
-
-msgid "Additional info"
-msgstr "Informaþii suplimentare"
-
-msgid "No personal address book is defined. Contact administrator."
-msgstr "Nu e definitã nici o agendã. Luaþi legãtura cu administratorul."
-
-msgid "You can only edit one address at the time"
-msgstr "Nu puteþi modifica decît o adresã la un moment dat"
-
-msgid "Update address"
-msgstr "Modificã adresa"
-
-msgid "Unknown error"
-msgstr "Eroare necunoscutã"
-
-msgid "Add address"
-msgstr "Adaugã o adresã"
-
-msgid "Edit selected"
-msgstr "Modificã adresa selectatã"
-
-msgid "Delete selected"
-msgstr "ªterge adresele selectate"
-
-#, c-format
-msgid "Add to %s"
-msgstr "Adaugã la %s"
-
-msgid "Original Message"
-msgstr "Mesajul original"
-
-msgid "Draft Email Saved"
-msgstr "Mesaj salvat"
-
-msgid "Could not move/copy file. File not attached"
-msgstr "Nu pot muta/copia fiºierul. Fiºierul nu a fost anexat."
+msgstr "Latina"
 
 #, fuzzy
-msgid "Draft Saved"
-msgstr "Mesaj salvat"
+msgid "to English"
+msgstr "Engleza"
 
 #, fuzzy
-msgid "Your Message has been sent"
-msgstr "Nu aþi selectat nici un mesaj."
-
-msgid "To:"
-msgstr "Cãtre:"
-
-msgid "CC:"
-msgstr "CC:"
-
-msgid "BCC:"
-msgstr "BCC:"
-
-msgid "Subject:"
-msgstr "Subiect:"
-
-msgid "Send"
-msgstr "Trimite"
-
-msgid "Attach:"
-msgstr "Anexeazã:"
-
-msgid "Add"
-msgstr "Adaugã"
-
-msgid "Delete selected attachments"
-msgstr "ªterge anexele selectate"
-
-msgid "Priority"
-msgstr "Prioritate"
-
-msgid "Receipt"
-msgstr ""
+msgid "from English"
+msgstr "Engleza"
 
 #, fuzzy
-msgid "On Read"
-msgstr "Citite"
-
-msgid "On Delivery"
-msgstr ""
-
-msgid "Save Draft"
-msgstr "Salveazã ciorna"
-
-msgid "You have not filled in the \"To:\" field."
-msgstr "Nu aþi completat cîmpul \"Cãtre:\"."
-
-msgid "said"
-msgstr "a scris"
-
-msgid "quote"
-msgstr "quote"
-
-msgid "who"
-msgstr "who"
+msgid "Interface language"
+msgstr "Limba implicita"
 
 #, fuzzy
-msgid "Draft folder"
-msgstr "Director pentru mesaje neexpediate"
+msgid "Translation direction"
+msgstr "Optiuni traducere"
 
-msgid "Illegal folder name.  Please select a different name."
-msgstr "Nume de director nepermis. Alegeþi un alt nume."
+msgid "Delivery error report"
+msgstr "Raport erori livrare"
 
-msgid "Click here to go back"
-msgstr "Apãsaþi aici pentru a reveni"
+msgid "Undelivered Message Headers"
+msgstr "Headere mesaj nelivrat"
 
-msgid "You have not selected a folder to delete. Please do so."
-msgstr ""
-
-msgid "Delete Folder"
-msgstr "ªterge directorul"
-
-#, c-format
-msgid "Are you sure you want to delete %s?"
-msgstr ""
-
-msgid "Subscribed successfully!"
-msgstr "Selectare reuºitã!"
-
-msgid "Unsubscribed successfully!"
-msgstr "Deselectare reuºitã!"
-
-msgid "Deleted folder successfully!"
-msgstr "Directorul a fost ºters!"
-
-msgid "Created folder successfully!"
-msgstr "Directorul a fost creat!"
-
-msgid "Renamed successfully!"
-msgstr "Directorul a fost redenumit!"
-
-msgid "Subscription Unsuccessful - Folder does not exist."
-msgstr ""
-
-msgid "refresh folder list"
-msgstr "Actualizeazã lista directoarelor"
-
-msgid "Create Folder"
-msgstr "Creeazã directorul"
-
-msgid "as a subfolder of"
-msgstr "ca un subdirector al"
-
-msgid "None"
-msgstr "Nici unul"
-
-msgid "Let this folder contain subfolders"
-msgstr "Permite acestui director sã conþinã subdirectoare"
-
-msgid "Create"
-msgstr "Creeazã"
-
-msgid "Rename a Folder"
-msgstr "Redenumeºte un director"
-
-#, fuzzy
-msgid "Select a folder"
-msgstr "Redenumeºte un director"
-
-msgid "Rename"
-msgstr "Redenumeºte"
-
-msgid "No folders found"
-msgstr "Nu am gãsit nici un director"
-
-msgid "No folders were found to unsubscribe from!"
-msgstr "Nu am gãsit nici un director pentru eliminare!"
-
-msgid "No folders were found to subscribe to!"
-msgstr "Nu am gãsit nici un director pentru adãugare!"
-
-#, fuzzy
-msgid "Subscribe to:"
-msgstr "Adaugã"
-
-msgid "You have not selected a folder to rename. Please do so."
-msgstr ""
-
-msgid "Rename a folder"
-msgstr "Redenumeºte un director"
-
-msgid "New name:"
-msgstr "Nume nou:"
-
-msgid "ERROR: Help files are not in the right format!"
-msgstr ""
-
-#, c-format
-msgid ""
-"The help has not been translated to %s.  It will be displayed in English "
-"instead."
-msgstr "Acest ajutor nu a fost tradus în %s. Va fi afiºat în englezã."
-
-msgid "Some or all of the help documents are not present!"
-msgstr "Unele din documentele de ajutor nu existã!"
-
-msgid "Table of Contents"
-msgstr "Cuprins"
-
-msgid "Top"
-msgstr "Mergi în vîrful paginii"
-
-msgid "Viewing an image attachment"
-msgstr "Afiºez o anexa de tip imagine"
-
-msgid "View message"
-msgstr "Afiºeazã mesajul"
-
-#, fuzzy
-msgid "Not available"
-msgstr "(indisponibil)"
-
-#, fuzzy
-msgid "purge"
-msgstr "ªterge de pe server"
-
-msgid "Last Refresh"
-msgstr "Ultima actualizare"
-
-msgid "Save folder tree"
-msgstr ""
-
-msgid "Login"
-msgstr "Login"
-
-#, c-format
-msgid "%s Login"
-msgstr "%s Login"
-
-msgid "Name:"
-msgstr "Nume:"
-
-msgid "No messages were selected."
-msgstr "Nu aþi selectat nici un mesaj."
-
-msgid "Message Highlighting"
-msgstr "Evidenþierea unui mesaj"
-
-#, fuzzy
-msgid "subject"
-msgstr "Subiect"
-
-msgid "No highlighting is defined"
-msgstr "Nu e definitã nici o evidenþiere"
-
-msgid "Identifying name"
-msgstr "Numele de identificare"
-
-msgid "Color"
-msgstr "Culoarea"
-
-msgid "Dark Blue"
-msgstr "albastru închis"
-
-msgid "Dark Green"
-msgstr "verde închis"
-
-msgid "Dark Yellow"
-msgstr "galben închis"
-
-msgid "Dark Cyan"
-msgstr "turcoaz închis"
-
-msgid "Dark Magenta"
-msgstr "mov închis"
-
-msgid "Light Blue"
-msgstr "albastru deschis"
-
-msgid "Light Green"
-msgstr "verde deschis"
-
-msgid "Light Yellow"
-msgstr "galben deschis"
-
-msgid "Light Cyan"
-msgstr "turcoaz deschis"
-
-msgid "Light Magenta"
-msgstr "mov deschis"
-
-msgid "Dark Gray"
-msgstr "gri închis"
-
-msgid "Medium Gray"
-msgstr "gri"
-
-msgid "Light Gray"
-msgstr "gri deschis"
-
-msgid "White"
-msgstr "alb"
-
-msgid "Other:"
-msgstr "Alta:"
-
-msgid "Ex: 63aa7f"
-msgstr "Ex: 63aa7f"
-
-msgid "Matches"
-msgstr "include"
-
-#, c-format
-msgid "Alternate Identity %d"
-msgstr "Identitate alternativã %d"
-
-msgid "Advanced Identities"
-msgstr "Identitãþi avansate"
-
-msgid "Default Identity"
-msgstr "Identitate implicitã"
-
-msgid "Add a New Identity"
-msgstr "Adaugã o nouã identitate"
-
-msgid "E-Mail Address"
-msgstr "Adresa de e-mail"
-
-msgid "Save / Update"
-msgstr "Salveazã / Modificã"
-
-msgid "Make Default"
-msgstr "Alege ca implicitã"
-
-msgid "Move Up"
-msgstr "Urcã"
-
-msgid "Index Order"
-msgstr "Ordinea de indexare"
-
-msgid "Checkbox"
-msgstr "cãsuþa"
-
-msgid "Flags"
-msgstr "Atribute mesaj"
-
-msgid ""
-"The index order is the order that the columns are arranged in the message "
-"index.  You can add, remove, and move columns around to customize them to "
-"fit your needs."
-msgstr ""
-"Ordinea de indexare este ordinea în care sînt aranjate coloanele în lista de "
-"mesaje. Puteþi adãuga, ºterge sau muta coloane dupã dorinþã."
-
-msgid "up"
-msgstr "sus"
-
-msgid "down"
-msgstr "jos"
-
-msgid "remove"
-msgstr "ºterge"
-
-msgid "Return to options page"
-msgstr "Întoarce-te la pagina de opþiuni"
-
-msgid "Personal Information"
-msgstr "Informaþii personale"
-
-msgid "Display Preferences"
-msgstr "Preferinþe de afiºare"
-
-msgid "Folder Preferences"
-msgstr "Preferinþe referitoare la directoare"
-
-#, fuzzy
-msgid "Successfully Saved Options"
-msgstr "Am salvat informaþiile personale!"
-
-msgid "Refresh Folder List"
-msgstr "Actualizeazã lista directoarelor"
-
-msgid "Refresh Page"
-msgstr "Actualizeazã pagina"
-
-msgid ""
-"This contains personal information about yourself such as your name, your "
-"email address, etc."
-msgstr ""
-"Aici sînt informaþii personale despre dumneavoastrã, cum ar fi numele, "
-"adresa de e-mail etc"
-
-msgid ""
-"You can change the way that SquirrelMail looks and displays information to "
-"you, such as the colors, the language, and other settings."
-msgstr ""
-"Puteþi schimba felul în care SquirrelMail aratã ºi afiºeazã informaþia "
-"(culori, limbã ºi altele)"
-
-msgid ""
-"Based upon given criteria, incoming messages can have different background "
-"colors in the message list.  This helps to easily distinguish who the "
-"messages are from, especially for mailing lists."
-msgstr ""
-"În funcþie de criteriile date, mesajele sosite pot avea fundalul colorat "
-"diferit în listã. Aceasta ajutã la identificarea expeditorului, în special "
-"în cazul listelor de distribuþie."
-
-msgid ""
-"These settings change the way your folders are displayed and manipulated."
-msgstr ""
-"Aceste opþiuni schimbã felul în care sînt afiºate ºi manipulate directoarele"
-
-#, fuzzy
-msgid ""
-"The order of the message index can be rearranged and changed to contain the "
-"headers in any order you want."
-msgstr ""
-"Indexul poate fi modificat pentru a conþine cîmpurile în ordinea doritã."
-
-#, fuzzy
-msgid "Message not printable"
-msgstr "Evidenþierea unui mesaj"
-
-msgid "Printer Friendly"
-msgstr "Format tipãribil"
-
-#, fuzzy
-msgid "CC"
-msgstr "CC:"
-
-msgid "Print"
-msgstr "Tipãreºte"
-
-msgid "View Printable Version"
-msgstr "Afiºare în format tipãribil"
-
-#, fuzzy
-msgid "Read:"
-msgstr "Citite"
-
-#, fuzzy
-msgid "Your message"
-msgstr "] mesaje în INBOX"
-
-#, fuzzy
-msgid "Sent:"
-msgstr "Trimite"
-
-#, c-format
-msgid "Was displayed on %s"
-msgstr ""
-
-msgid "less"
-msgstr "mai puþin"
-
-msgid "more"
-msgstr "mai mult"
-
-msgid "Mailer"
-msgstr "Client de mail"
-
-msgid "Read receipt"
-msgstr ""
-
-#, fuzzy
-msgid "send"
-msgstr "Trimite"
-
-#, fuzzy
-msgid "requested"
-msgstr "Nu au fost necesare modificãri"
-
-msgid ""
-"The message sender has requested a response to indicate that you have read "
-"this message. Would you like to send a receipt?"
-msgstr ""
-
-msgid "Send read receipt now"
-msgstr ""
-
-#, fuzzy
-msgid "Search results"
-msgstr "Cautã"
-
-msgid "Message List"
-msgstr "Lista mesajelor"
-
-msgid "Resume Draft"
-msgstr "Editeazã mesajul"
-
-msgid "Edit Message as New"
-msgstr ""
-
-#, fuzzy
-msgid "View Message"
-msgstr "Afiºeazã mesajul"
-
-#, fuzzy
-msgid "Forward as Attachment"
-msgstr "Anexe"
-
-msgid "Reply"
-msgstr "Rãspunde"
-
-msgid "Reply All"
-msgstr "Rãspunde tuturor"
-
-#, fuzzy
-msgid "View Full Header"
-msgstr "Afiºeazã antetul în întregime"
-
-msgid "Attachments"
-msgstr "Anexe"
-
-#, fuzzy
-msgid "Folder:"
-msgstr "Directoare"
-
-#, fuzzy
-msgid "edit"
-msgstr "Modificã"
-
-#, fuzzy
-msgid "search"
-msgstr "Cautã"
-
-#, fuzzy
-msgid "delete"
-msgstr "ªterge"
-
-msgid "Recent Searches"
-msgstr ""
-
-#, fuzzy
-msgid "save"
-msgstr "Salveazã"
-
-#, fuzzy
-msgid "forget"
-msgstr "mai mult"
-
-#, fuzzy
-msgid "Current Search"
-msgstr "Directorul curent"
-
-msgid "Body"
-msgstr "Corp"
-
-msgid "Everywhere"
-msgstr "Peste tot"
-
-#, fuzzy
-msgid "Search Results"
-msgstr "Rezultat:"
-
-msgid "No Messages Found"
-msgstr "Nu sînt mesaje"
-
-msgid "You have been successfully signed out."
-msgstr "Aþi fost deconectat."
-
-msgid "Click here to log back in."
-msgstr "Faceþi clic aici ca sã vã reconectaþi"
-
-msgid "Viewing a Business Card"
-msgstr "Afiºez informaþiile personale ataºate"
-
-msgid "Title"
-msgstr "Titlu"
-
-#, fuzzy
-msgid "Email"
-msgstr "E-mail"
-
-msgid "Web Page"
-msgstr "Paginã web"
-
-msgid "Organization / Department"
-msgstr "Organizaþie / Departament"
-
-#, fuzzy
-msgid "Address"
-msgstr "Adrese"
-
-msgid "Work Phone"
-msgstr "Telefon firmã"
-
-msgid "Home Phone"
-msgstr "Telefon acasã"
-
-msgid "Cellular Phone"
-msgstr "Telefon mobil"
-
-msgid "Fax"
-msgstr "Fax"
-
-msgid "Note"
-msgstr "Note"
-
-msgid "Add to Addressbook"
-msgstr "Adaugã în agendã"
-
-msgid "Title & Org. / Dept."
-msgstr "Titlu & Org. / Dept."
-
-#, fuzzy
-msgid "Viewing Full Header"
-msgstr "Afiºez antetul în întregime"
-
-msgid "Viewing a text attachment"
-msgstr "Afiºez textul anexat"
-
-#~ msgid "Close window"
-#~ msgstr "Închide fereastra"
-
-#~ msgid "empty"
-#~ msgstr "Goleºte"
-
-#~ msgid "There was an error contacting the mail server."
-#~ msgstr "Eroare la conexiunea cu serverul de e-mail."
-
-#~ msgid "Welcome to %s's WebMail system"
-#~ msgstr "Bine aþi venit în sistemul WebMail al %s"
-
-#~ msgid "Running SquirrelMail version %s (c) 1999-2001."
-#~ msgstr "SquirrelMail versiunea %s (c) 1999-2002"
-
-#~ msgid "Unknown messagenumber in reply from server: "
-#~ msgstr "Numãr de mesaj necunoscut în rãspunsul de la server:"
+#~ msgid "Unknown message number in reply from server: "
+#~ msgstr "Numar mesaj necunoscut in raspunsul de la server: "
 
 #~ msgid "No To Address"
-#~ msgstr "Fãrã adresã destinatar"
+#~ msgstr "Nu exista Catre"
+
+#~ msgid "(unknown sender)"
+#~ msgstr "(expeditor necunoscut)"
 
 #~ msgid "Found"
-#~ msgstr "Am gãsit"
+#~ msgstr "Gasite"
 
 #~ msgid "messages"
 #~ msgstr "mesaje"
 
-#, fuzzy
 #~ msgid ""
-#~ "FREE - Another ORBS replacement (just the INPUTS database used here)."
-#~ msgstr "GRATUIT - alt înlocuitor al ORBS. Intrãri."
-
-#, fuzzy
-#~ msgid ""
-#~ "FREE - Another ORBS replacement (just the OUTPUTS database used here)."
-#~ msgstr "GRATUIT - alt înlocuitor al ORBS. Ieºiri."
-
-#~ msgid ""
-#~ "FREE - ORBL is another ORBS spinoff formed after ORBS shut down. May be "
-#~ "SLOOOOOOW!"
-#~ msgstr "GRATUIT - ORBL: încã un înlocuitor al ORBS. Poate fi LENT."
-
-#, fuzzy
-#~ msgid "FREE - orbz.gst-group.co.uk - Inputs only."
-#~ msgstr "GRATUIT - orbz.gst-group.co.uk Intrãri."
-
-#, fuzzy
-#~ msgid "FREE - orbz.gst-group.co.uk - Outputs only."
-#~ msgstr "GRATUIT - orbz.gst-group.co.uk Ieºiri."
-
-#~ msgid ""
-#~ "FREE - orbz.gst-group.co.uk - mailservers that refuse or bounce email "
-#~ "addressed to postmaster@<theirdomain>."
+#~ "Server-side sorting is not supported by your IMAP server.<br>Please "
+#~ "report this to the system administrator"
 #~ msgstr ""
-#~ "GRATUIT - orbz.gst-group.co.uk: servere care refuzã mesajele adresate "
-#~ "postmaster@<domeniu>"
+#~ "Sortare server-side nesuportata de serverul vostru IMAP.<br>Raportati "
+#~ "administratorului de retea."
 
-#~ msgid "SECURITY BREACH ON DECK 5! CMDR TUVOK AND SECURITY TEAM REQUESTED."
-#~ msgstr "???"
+#~ msgid "Move Selected To:"
+#~ msgstr "Muta selectate in:"
 
-#~ msgid "Your personal dictionary was erased."
-#~ msgstr "Dicþionarul personal a fost ºters."
+#~ msgid "Error decoding mime structure.  Report this as a bug!"
+#~ msgstr "Eroare in decodare structura mime. Raportati ca eroare!"
 
-#~ msgid "Dictionary Erased"
-#~ msgstr "Dicþionar ºters"
+#~ msgid "Authenticated SMTP"
+#~ msgstr "Autentificare SMTP"
 
-#, fuzzy
-#~ msgid "Close this Window"
-#~ msgstr "Închide fereastra"
+#~ msgid "l, F d Y"
+#~ msgstr "l, F d Y"
 
-#~ msgid ""
-#~ "Your personal dictionary was re-encrypted successfully. Now return to the "
-#~ "&quot;SpellChecker options&quot; menu and make your selection again."
-#~ msgstr "???"
-
-#~ msgid "Successful Re-encryption"
-#~ msgstr "???"
+#~ msgid "35 min."
+#~ msgstr "35 min."
 
 #~ msgid ""
-#~ "Your personal dictionary was re-encrypted successfully. Please close this "
-#~ "window and click \"Check Spelling\" button again to start your spellcheck "
-#~ "over."
-#~ msgstr "???"
-
-#~ msgid "Dictionary re-encrypted"
-#~ msgstr "???"
-
-#~ msgid ""
-#~ "Your personal dictionary has been <strong>encrypted</strong> and is now "
-#~ "stored in an <strong>encrypted format</strong>."
-#~ msgstr "???"
-
-#~ msgid ""
-#~ "Your personal dictionary has been <strong>decrypted</strong> and is now "
-#~ "stored as <strong>clear text</strong>."
-#~ msgstr "???"
-
-#~ msgid "Personal Dictionary Crypto Settings"
-#~ msgstr "???"
-
-#~ msgid "SquirrelSpell Results"
-#~ msgstr "Corector ortografic - rezultate"
-
-#~ msgid "Found %s errors"
-#~ msgstr "Am gãsit %s erori"
-
-#~ msgid "Line with an error:"
-#~ msgstr "Linia care conþine eroarea:"
-
-#~ msgid "Error:"
-#~ msgstr "Eroare:"
-
-#~ msgid "Suggestions"
-#~ msgstr "Sugestii"
-
-#~ msgid "Change to:"
-#~ msgstr "Înlocuieºte cu:"
-
-#~ msgid "Occurs times:"
-#~ msgstr "Numãr apariþii:"
-
-#~ msgid "Change this word"
-#~ msgstr "Schimbã acest cuvînt"
-
-#~ msgid "Change"
-#~ msgstr "Schimbã"
-
-#~ msgid "Change ALL occurances of this word"
-#~ msgstr "Schimbã TOATE apariþiile acestui cuvînt"
-
-#~ msgid "Change All"
-#~ msgstr "Înlocuieºte-le pe toate"
-
-#~ msgid "Ignore this word"
-#~ msgstr "Ignorã acest cuvînt"
-
-#~ msgid "Ignore"
-#~ msgstr "Ignorã"
-
-#~ msgid "Ignore ALL occurances this word"
-#~ msgstr "Ignorã toate apariþiile acestui cuvînt"
-
-#~ msgid "Ignore All"
-#~ msgstr "Ignorã-le pe toate"
-
-#~ msgid "Add to Dic"
-#~ msgstr "Adaugã la dicþionar"
-
-#~ msgid "Close and Commit"
-#~ msgstr "Salveazã ºi închide"
-
-#~ msgid "The spellcheck is not finished. Really close and commit changes?"
+#~ "FREE - Osirusoft Relays - Osirusofts list of verified open relays. Seems "
+#~ "to include servers used by abuse@uunet.net auto-replies too."
 #~ msgstr ""
-#~ "Verificarea nu este completã. Sigur doriþi sã aplicaþi modificãrile ºi sã "
-#~ "închideþi fereastra?"
+#~ "GRATUIT - Osirusoft Relays - lista Osirusoft de open relay-uri verificate."
+#~ "Pare sa includa si servere utilizate de autoraspunsurile abuse@uunet.net."
 
-#~ msgid "Close and Cancel"
-#~ msgstr "Anuleazã modificãrile"
-
-#~ msgid "The spellcheck is not finished. Really close and discard changes?"
+#~ msgid "FREE - Osirusoft Dialups - Osirusofts Dialup Spam Source list."
 #~ msgstr ""
-#~ "Verificarea nu este completã. Sigur doriþi sã anulaþi modificãrile ºi sã "
-#~ "închideþi fereastra?"
-
-#~ msgid "No errors found"
-#~ msgstr "Nu am gãsit nici o eroare"
-
-#~ msgid "Personal Dictionary"
-#~ msgstr "Dicþionar personal"
-
-#~ msgid "No words in your personal dictionary."
-#~ msgstr "Nu sînt cuvinte în dicþionarul personal."
-
-#~ msgid "Please check any words you wish to delete from your dictionary."
-#~ msgstr "Bifaþi cuvintele care trebuie ºterse din dicþionar."
-
-#~ msgid "%s dictionary"
-#~ msgstr "Dicþionar %s"
-
-#~ msgid "Delete checked words"
-#~ msgstr "ªterge cuvintele selectat"
-
-#~ msgid "Edit your Personal Dictionary"
-#~ msgstr "Editeazã dicþionarul personal"
+#~ "GRATUIT - Osirusoft Dialups - lista Osirusoft de surse dialup de spam."
 
 #~ msgid ""
-#~ "<p>Your personal dictionary is <strong>currently encrypted</strong>. This "
-#~ "helps protect your privacy in case the web-mail system gets compromized "
-#~ "and your personal dictionary ends up stolen. It is currently encrypted "
-#~ "with the password you use to access your mailbox, making it hard for "
-#~ "anyone to see what is stored in your personal dictionary.</p> "
-#~ "<p><strong>ATTENTION:</strong> If you forget your password, your personal "
-#~ "dictionary will become unaccessible, since it can no longer be decrypted. "
-#~ "If you change your mailbox password, SquirrelSpell will recognize it and "
-#~ "prompt you for your old password in order to re-encrypt the dictionary "
-#~ "with a new key.</p>"
-#~ msgstr "???"
-
-#~ msgid ""
-#~ "Please decrypt my personal dictionary and store it in a clear-text format."
-#~ msgstr "???"
-
-#~ msgid ""
-#~ "<p>Your personal dictionary is <strong>currently not encrypted</strong>. "
-#~ "You may wish to encrypt your personal dictionary to protect your privacy "
-#~ "in case the webmail system gets compromized and your personal dictionary "
-#~ "file gets stolen. When encrypted, the file's contents look garbled and "
-#~ "are hard to decrypt without knowing the correct key (which is your "
-#~ "mailbox password).</p> <strong>ATTENTION:</strong> If you decide to "
-#~ "encrypt your personal dictionary, you must remember that it gets &quot;"
-#~ "hashed&quot; with your mailbox password. If you forget your mailbox "
-#~ "password and the administrator changes it to a new value, your personal "
-#~ "dictionary will become useless and will have to be created anew. However, "
-#~ "if you or your system administrator change your mailbox password but you "
-#~ "still have the old password at hand, you will be able to enter the old "
-#~ "key to re-encrypt the dictionary with the new value.</p>"
-#~ msgstr "???"
-
-#~ msgid ""
-#~ "Please encrypt my personal dictionary and store it in an encrypted format."
-#~ msgstr "???"
-
-#~ msgid "Deleting the following entries from <strong>%s</strong> dictionary:"
-#~ msgstr "Urmãtoarele cuvinte vor fi ºterse din dicþionarul %s:"
-
-#~ msgid "All done!"
-#~ msgstr "Gata!"
-
-#~ msgid "Personal Dictionary Updated"
-#~ msgstr "Dicþionarul personal a fost actualizat"
-
-#~ msgid "Please wait, communicating with the server..."
-#~ msgstr "Aºteptaþi, comunic cu serverul..."
-
-#~ msgid ""
-#~ "Please choose which dictionary you would like to use to spellcheck this "
-#~ "message:"
-#~ msgstr "Selectaþi dicþionarul dorit pentru acest mesaj:"
-
-#~ msgid "SquirrelSpell Initiating"
-#~ msgstr "Se iniþializeazã corectorul"
-
-#~ msgid ""
-#~ "Settings adjusted to: <strong>%s</strong> with <strong>%s</strong> as "
-#~ "default dictionary."
+#~ "FREE - Osirusoft Confirmed Spam Source - Sites that continually spam and "
+#~ "have been manually added after multiple nominations. Use with caution. "
+#~ "Seems to catch abuse auto-replies from some ISPs."
 #~ msgstr ""
-#~ "Setãrile modificate pt <strong>%s</strong> cu <strong>%s</strong> ca "
-#~ "dicþionar implicit."
+#~ "GRATUIT - Osirusoft Confirmed Spam Source - site-uri care trimis spam "
+#~ "continuu si au fost adaugate manual dupa multiple nominalizari. Utilizati "
+#~ "cu atentie.Pare sa prinda auto-raspunsuri de abuz de la unele ISP-uri."
 
 #~ msgid ""
-#~ "Using <strong>%s</strong> dictionary (system default) for spellcheck."
-#~ msgstr "Folosesc <strong>%s</strong> ca dicþionar implicit"
-
-#~ msgid "International Dictionaries Preferences Updated"
-#~ msgstr "Preferinþele pentru dicþionar actualizate"
-
-#~ msgid ""
-#~ "Please check any available international dictionaries which you would "
-#~ "like to use when spellchecking:"
+#~ "FREE - Osirusoft Smart Hosts - List of hosts that are secure but relay "
+#~ "for other mail servers that are not secure."
 #~ msgstr ""
-#~ "Bifaþi oricare dicþionar pe care doriþi sã îl folosiþi pentru corectare"
+#~ "GRATUIT - Osirusoft Smart Hosts - Lista de hosturi care sunt sigure dar "
+#~ "relayuri pentru alte servere mail nesigure."
 
-#~ msgid "Make this dictionary my default selection:"
-#~ msgstr "Selecteazã acest dicþionar ca implicit"
+#~ msgid ""
+#~ "FREE - Osirusoft Spamware Developers - It is believed that these are IP "
+#~ "ranges of companies that are known to produce spam software. Seems to "
+#~ "catch abuse auto-replies from some ISPs."
+#~ msgstr ""
+#~ "GRATUIT - Osirusoft Spamware Developers - Se banuieste ca aceste "
+#~ "intervale IP ale companiilor cunoscute producatoare de software de spam. "
+#~ "Pare sa primeasca autoraspunsuri de abuz de la unele ISP-uri."
 
-#~ msgid "Make these changes"
-#~ msgstr "Aplicã modificãrile"
+#~ msgid ""
+#~ "FREE - Osirusoft Unconfirmed OptIn Servers - List of listservers that opt "
+#~ "users in without confirmation."
+#~ msgstr ""
+#~ "GRATUIT - Osirusoft Unconfirmed OptIn Servers - Lista de listservere care "
+#~ "primesc utilizatori fara confirmare."
 
-#~ msgid "Add International Dictionaries"
-#~ msgstr "Adaugã dicþionar"
+#~ msgid ""
+#~ "FREE - Osirusoft Insecure formmail.cgi scripts - List of insecure "
+#~ "formmail.cgi scripts. (planned)."
+#~ msgstr ""
+#~ "GRATUI - Osirusoft Insecure formmail.cg scripts - Lista de scripturi "
+#~ "nesigure formmail.cgi (planificat)."
 
-#~ msgid "Please choose which options you wish to set up:"
-#~ msgstr "Alegeþi opþiunile pe care doriþi sã le modificaþi:"
+#~ msgid "FREE - Osirusoft Open Proxy Servers - List of Open Proxy Servers."
+#~ msgstr ""
+#~ "GRATUIT - Osirusoft Open Proxy Servers - Lista de servere OpenProxy."
 
-#~ msgid "Edit your personal dictionary"
-#~ msgstr "Editare dicþionar personal"
+#~ msgid "Mailing List:"
+#~ msgstr "Lista discutii:"
 
-#~ msgid "Set up international dictionaries"
-#~ msgstr "Configurare dicþionare"
+#~ msgid "Mofify a Server"
+#~ msgstr "Modificare server"
 
-#~ msgid "Encrypt or decrypt your personal dictionary"
-#~ msgstr "Criptare / decriptare dicþionar personal"
+#~ msgid "(local media)"
+#~ msgstr "(media local)"
 
-#~ msgid "SquirrelSpell Options Menu"
-#~ msgstr "Opþiuni corector ortografic"
+#~ msgid "Local Media File:"
+#~ msgstr "Fisier media local:"
 
-#~ msgid "POP3: premature NOOP OK, NOT an RFC 1939 Compliant server"
-#~ msgstr "POP3: NOOP OK prematur, serverul NU e conform cu RFC 1939"
+#~ msgid ""
+#~ "10 language pairs, maximum of 25 kilobytes translated, powered by Systran"
+#~ msgstr "10 limbaje, maxim 25 kiloocteti tradusi, powered by Systran"
 
-#~ msgid "NOOP failed. Server not RFC 1939 compliant"
-#~ msgstr "NOOP a esuat, serverul NU e conform cu RFC 1939"
+#~ msgid "On read"
+#~ msgstr "La citire"
+
+#~ msgid "Viewing a message attachment"
+#~ msgstr "Vizualizare atasament mesaj"
+
+#~ msgid "Cc:"
+#~ msgstr "Cc:"
+
+#~ msgid "Bcc:"
+#~ msgstr "Bcc:"
+
+#~ msgid "<No subject>"
+#~ msgstr "<Fara subiect>"
+
+#~ msgid "Include CCs when forwarding messages"
+#~ msgstr "Includere CC la inaintare mesaje"
+
+#~ msgid "Enable Subtle Printer Friendly Link"
+#~ msgstr "Activare legatura versiune pentru tiparit"
+
+#~ msgid "Enable request/confirm reading"
+#~ msgstr "Activare citire cerere/confirmare"
+
+#~ msgid "Always compose in a new window"
+#~ msgstr "Compunere intotdeauna in fereastra noua"
+
+#~ msgid "Width of compose window"
+#~ msgstr "Latime fereastra compunere"
+
+#~ msgid "Height of compose window"
+#~ msgstr "Inaltime fereastra compunere"
+
+#~ msgid "Append signature before reply/forward text"
+#~ msgstr "Adaugare semnatura inainte de text raspuns/inaintare"
+
+#~ msgid "Use receive date for sort"
+#~ msgstr "Utilizare data primire pentru sortare"
+
+#~ msgid "There was an error contacting the mail server."
+#~ msgstr "S-a produs o eroare la contactarea serverului mail."
+
+#~ msgid "Contact your administrator for help."
+#~ msgstr "Contactati administratorul pentru ajutor."
+
+#~ msgid "No Messages found"
+#~ msgstr "Nici un mesaj gasit"
+
+#~ msgid "Note Field Contains"
+#~ msgstr "Campul nota contine"

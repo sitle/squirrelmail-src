@@ -5,9 +5,11 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: $Id$\n"
-"POT-Creation-Date: 2003-01-18 10:47+0200\n"
-"PO-Revision-Date: 2003-01-22 11:11+0100\n"
+"Project-Id-Version: $Id: squirrelmail.po,v 1.4.2.1 2003/07/29 18:08:39 tokul "
+"Exp $\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2003-09-20 11:04+0300\n"
+"PO-Revision-Date: 2003-07-28 15:06+0100\n"
 "Last-Translator: Nenad Peric <nesha@teleport.co.yu>\n"
 "Language-Team: Serbian <squirrelmail-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -87,11 +89,11 @@ msgstr "Mora biti jedinstven (unique)"
 msgid "E-mail address"
 msgstr "E-mail adresa"
 
-msgid "First name"
-msgstr "Ime"
-
 msgid "Last name"
 msgstr "Prezime"
+
+msgid "First name"
+msgstr "Ime"
 
 msgid "Additional info"
 msgstr "Dodatne informacije"
@@ -123,6 +125,15 @@ msgstr "Obri¹i izabrano"
 #, c-format
 msgid "Add to %s"
 msgstr "Dodaj u %s"
+
+msgid "said"
+msgstr "je rekao(la)"
+
+msgid "quote"
+msgstr "citat"
+
+msgid "who"
+msgstr "ko"
 
 msgid "Subject"
 msgstr "Naslov"
@@ -208,15 +219,6 @@ msgstr "Snimi zapoèeto"
 msgid "You have not filled in the \"To:\" field."
 msgstr "Niste popunili polje \"Prima:\""
 
-msgid "said"
-msgstr "je rekao(la)"
-
-msgid "quote"
-msgstr "citat"
-
-msgid "who"
-msgstr "ko"
-
 msgid "Draft folder"
 msgstr "Direktorijum zapoèetih poruka"
 
@@ -264,7 +266,7 @@ msgid "Renamed successfully!"
 msgstr "Preimenovanje uspe¹no!"
 
 msgid "Subscription Unsuccessful - Folder does not exist."
-msgstr "Prijava neuspe¹na ' Direktorijum ne postoji."
+msgstr "Prijava neuspe¹na - Direktorijum ne postoji."
 
 msgid "refresh folder list"
 msgstr "osve¾i listu direktorijuma"
@@ -306,7 +308,7 @@ msgid "Subscribe"
 msgstr "Prijavi"
 
 msgid "No folders were found to unsubscribe from!"
-msgstr "Nisam prona¹ao direktorijume koji bi se mogli odjaviti!"
+msgstr "Nisu pronaðeni direktorijumi koji bi se mogli odjaviti!"
 
 msgid "No folders were found to subscribe to!"
 msgstr "Nisu pronadjeni direktorijumi koje biste mogli prijaviti!"
@@ -337,7 +339,7 @@ msgstr "Pomoæ"
 msgid ""
 "The help has not been translated to %s.  It will be displayed in English "
 "instead."
-msgstr "Pomoæ nije prevedena na  %s., pa æe biti prikazana na engleskom!"
+msgstr "Pomoæ nije prevedena na  %s, pa æe biti prikazana na engleskom!"
 
 msgid "Some or all of the help documents are not present!"
 msgstr "Neki ili svi help dokumenti nisu pronaðeni!"
@@ -363,9 +365,6 @@ msgstr "Pregledaj poruku"
 msgid "Download this as a file"
 msgstr "Snimi kao fajl."
 
-msgid "Not available"
-msgstr "Nije dostupan"
-
 msgid "INBOX"
 msgstr "INBOX"
 
@@ -374,6 +373,9 @@ msgstr "isprazni"
 
 msgid "Last Refresh"
 msgstr "Poslednja provera"
+
+msgid "refresh unseen/total info"
+msgstr ""
 
 msgid "Save folder tree"
 msgstr "Snimi drvo direktorijuma"
@@ -426,6 +428,12 @@ msgstr "Naslov"
 msgid "Edit"
 msgstr "Promeni"
 
+msgid "Up"
+msgstr "Gore"
+
+msgid "Down"
+msgstr "Dole"
+
 msgid "No highlighting is defined"
 msgstr "Nije definisano markiranje"
 
@@ -463,7 +471,7 @@ msgid "Light Cyan"
 msgstr "Svetla Cyan"
 
 msgid "Light Magenta"
-msgstr "Svetla magenta"
+msgstr "Svetla Magenta"
 
 msgid "Dark Gray"
 msgstr "Tamno siva"
@@ -606,11 +614,11 @@ msgstr ""
 msgid "Message not printable"
 msgstr "Poruka ne mo¾e da se ¹tampa"
 
-msgid "Printer Friendly"
-msgstr "Sreðeno za ¹tampu"
-
 msgid "CC"
 msgstr "Kopija:"
+
+msgid "Printer Friendly"
+msgstr "Sreðeno za ¹tampu"
 
 msgid "Print"
 msgstr "©tampaj"
@@ -646,7 +654,8 @@ msgstr "Program za po¹tu (Mailer)"
 msgid "Read receipt"
 msgstr "Proèitaj potvrdu"
 
-msgid "send"
+#, fuzzy
+msgid "sent"
 msgstr "Po¹alji"
 
 msgid "requested"
@@ -657,7 +666,7 @@ msgid ""
 "this message. Would you like to send a receipt?"
 msgstr ""
 "Po¹iljalac poruke je tra¾io odgovor da bi znao da ste proèitali poruku. Da "
-"li ¾elite da se po¹alje potvrda?"
+"li ¾elite da se po¹alje potvrda o èitanju?"
 
 msgid "Send read receipt now"
 msgstr "Po¹alju potvrdu o èitanju"
@@ -676,9 +685,6 @@ msgstr "Sredi poruku kao da je Nova"
 
 msgid "View Message"
 msgstr "Pregledaj poruku"
-
-msgid "Up"
-msgstr "Gore"
 
 msgid "Forward"
 msgstr "Prosledi"
@@ -714,7 +720,7 @@ msgid "delete"
 msgstr "Obri¹i"
 
 msgid "Recent Searches"
-msgstr "Skora¹nja pretra¾ivanja"
+msgstr "Nedavna pretra¾ivanja"
 
 msgid "save"
 msgstr "Snimi"
@@ -840,14 +846,14 @@ msgid "Write to addressbook failed"
 msgstr "Upis u adresar nije uspeo"
 
 msgid "Error initializing addressbook database."
-msgstr "Gre¹ka pri inicializaciji baze adresara"
+msgstr "Gre¹ka pri inicijalizaciji baze adresara"
 
 #, c-format
 msgid "Error opening file %s"
 msgstr "Gre¹ka pri otvaranju datoteke %s"
 
 msgid "Error initializing global addressbook."
-msgstr "Gre¹ka pri inicializaciji globalnog adresara"
+msgstr "Gre¹ka pri inicijalizaciji globalnog adresara"
 
 #, c-format
 msgid "Error initializing LDAP server %s:"
@@ -860,7 +866,7 @@ msgid "Name is missing"
 msgstr "Nedostaje ime"
 
 msgid "E-mail address is missing"
-msgstr "Nedostzaje e-mail adresa"
+msgstr "Nedostaje e-mail adresa"
 
 msgid "Nickname contains illegal characters"
 msgstr "Nadimak sadr¾i ilegalne karaktere"
@@ -891,6 +897,27 @@ msgstr "Petak"
 
 msgid "Saturday"
 msgstr "Subota"
+
+msgid "Sun"
+msgstr "Ned"
+
+msgid "Mon"
+msgstr "Pon"
+
+msgid "Tue"
+msgstr "Uto"
+
+msgid "Wed"
+msgstr "Sre"
+
+msgid "Thu"
+msgstr "Èet"
+
+msgid "Fri"
+msgstr "Pet"
+
+msgid "Sat"
+msgstr "Sub"
 
 msgid "January"
 msgstr "Januar"
@@ -928,26 +955,62 @@ msgstr "Novembar"
 msgid "December"
 msgstr "Decembar"
 
+msgid "Jan"
+msgstr "Jan"
+
+msgid "Feb"
+msgstr "Feb"
+
+msgid "Mar"
+msgstr "Mar"
+
+msgid "Apr"
+msgstr "Apr"
+
+msgid "Ma&#121;"
+msgstr "Mar"
+
+msgid "Jun"
+msgstr "Jun"
+
+msgid "Jul"
+msgstr "Jul"
+
+msgid "Aug"
+msgstr "Avg"
+
+msgid "Sep"
+msgstr "Sep"
+
+msgid "Oct"
+msgstr "Okt"
+
+msgid "Nov"
+msgstr "Nov"
+
+msgid "Dec"
+msgstr "Dec"
+
 msgid "D, F j, Y g:i a"
 msgstr "D, j F, Y H:i "
 
 msgid "D, F j, Y G:i"
 msgstr "D, j F, Y H:i "
 
+msgid "M j, Y"
+msgstr "j M, Y"
+
 msgid "g:i a"
 msgstr "H:i "
 
 msgid "G:i"
-msgstr "H:i"
+msgstr "G:i"
 
 msgid "D, g:i a"
 msgstr "D, H:i "
 
 msgid "D, G:i"
 msgstr "D, G:i"
-
-msgid "M j, Y"
-msgstr "j M, Y"
 
 #, c-format
 msgid "Preference database error (%s). Exiting abnormally"
@@ -991,6 +1054,14 @@ msgstr ""
 "administratora i prijavite ovu gre¹ku."
 
 #, c-format
+msgid ""
+"Preference file, %s, could not be copied from temporary file, %s. Contact "
+"your system administrator to resolve this issue."
+msgstr ""
+"Fajl preferenci %s, nije mogao da se kopira iy privremenog fajla, %s . Molim "
+"kontaktirajte sistem administratora i prijavite ovu gre¹ku."
+
+#, c-format
 msgid "Error opening %s"
 msgstr "Gre¹ka pri otvaranju %s"
 
@@ -1003,7 +1074,7 @@ msgid "Please contact your system administrator and report this error."
 msgstr "Molim kontaktirajte sistem administratora i prijavite ovu gre¹ku."
 
 msgid "Could not create initial preference file!"
-msgstr "Ne mogu da kreiram po¹etne datoteke s pode¹avanjima!"
+msgstr "Ne mogu da kreiram poèetne datoteke s pode¹avanjima!"
 
 #, c-format
 msgid "%s should be writable by user %s"
@@ -1025,15 +1096,26 @@ msgstr ""
 "Nije bilo moguæe upisati u datoteku s potpisom, %s. Molim kontaktirajte "
 "sistem administratora i prijavite ovu gre¹ku."
 
+#, c-format
+msgid ""
+"Signature file, %s, could not be copied from temporary file, %s. Contact "
+"your system administrator to resolve this issue."
+msgstr ""
+"Datoteka s potpisom, %s, nije mogla da se kopira iy privremenog fajla, %s. "
+"Molim kontaktirajte sistem administratora i prijavite ovu gre¹ku."
+
 msgid ""
 "You need to have php4 installed with the multibyte string function enabled "
-"(using configure option --with-mbstring)."
+"(using configure option --enable-mbstring)."
 msgstr ""
-"Morate imati instaliran PHP sa ukjluèenom multibyte string funkcijom (opcija "
-"za configure --with-mbstring)"
+"Morate imati instaliran PHP4 sa ukjluèenom multibyte string funkcijom "
+"(opcija za configure --with-mbstring)"
 
 msgid "ERROR : No available imapstream."
 msgstr "GRE©KA: No available imapstream"
+
+msgid "ERROR : Connection dropped by imap-server."
+msgstr "GRE©KA: Konekcija prekinuta od strane imap servera."
 
 msgid "ERROR : Could not complete request."
 msgstr "GRE©KA: Ne mogu izvr¹iti zahtev."
@@ -1049,6 +1131,12 @@ msgstr "GRE©KA: Lo¹ ili pogre¹no formiran zahtev."
 
 msgid "Server responded: "
 msgstr "Odgovor servera:"
+
+msgid "ERROR : Imap server closed the connection."
+msgstr "GRE©KA: Imap server je zatvorio konekciju."
+
+msgid "ERROR : Unknown imap response."
+msgstr "GRE©KA: Nepoznat odgovor IMAP servera."
 
 #, c-format
 msgid "Error connecting to IMAP server: %s."
@@ -1078,20 +1166,25 @@ msgstr ""
 "Obri¹ite nepotrebne poruke iz va¹eg direktorijuma, i poènite s Trash "
 "direktorijumom (kanta)"
 
-msgid "Unknown response from IMAP server: "
-msgstr "Nepoznat odziv IMAP servera:"
-
-msgid "Unknown message number in reply from server: "
-msgstr "Nepoznat broj poruke u odgovoru od servera:"
-
 msgid "(no subject)"
 msgstr "(bez naslova)"
 
 msgid "Unknown Sender"
 msgstr "Nepoznat po¹iljalac"
 
-msgid "(unknown sender)"
-msgstr "(nepoznat po¹iljalac)"
+msgid "Unknown response from IMAP server: "
+msgstr "Nepoznat odziv IMAP servera:"
+
+msgid "The server couldn't find the message you requested."
+msgstr "Server ne mo¾e da pronaðe tra¾enu poruku."
+
+msgid ""
+"Most probably your message list was out of date and the message has been "
+"moved away or deleted (perhaps by another program accessing the same "
+"mailbox)."
+msgstr ""
+"Vrlo verovatno je va¹a lista poruka zastarela, i poruka je bila pomerena ili "
+"obrisana (mo¾da od strane drugog programa koji pristupa istom sanduèetu)"
 
 msgid "Unknown date"
 msgstr "Nepoznat datum"
@@ -1147,7 +1240,7 @@ msgid "Toggle All"
 msgstr "Promeni sve"
 
 msgid "Unselect All"
-msgstr "Deselektuj izbor"
+msgstr "Deselektuj sve"
 
 msgid "Select All"
 msgstr "Izaberi sve"
@@ -1176,9 +1269,8 @@ msgid ""
 "Body retrieval error. The reason for this is most probably that the message "
 "is malformed."
 msgstr ""
-"Body retrieval error. Uzrok za gre¹ku je lo¹e sastavljeno telo poruke. "
-"Molimo pomozite nam da buduæe verzije budu bolje slanjem ove porukerazvojnom "
-"timu web-maila!"
+"Body retrieval error. Uzrok za gre¹ku je najverovatnije lo¹e sastavljeno "
+"telo poruke. "
 
 msgid "Command:"
 msgstr "Komanda:"
@@ -1196,7 +1288,7 @@ msgid "Hide Unsafe Images"
 msgstr "Sakrij nesigurne slike"
 
 msgid "View Unsafe Images"
-msgstr "Prika¾i sve (nesigurne) slike"
+msgstr "Prika¾i sve slike"
 
 msgid "download"
 msgstr "preuzmi dodatak"
@@ -1238,7 +1330,7 @@ msgid "Requested action not taken: insufficient system storage"
 msgstr "Tra¾ena operacija nije izvr¹ena: nedovoljno prostora na sistemu"
 
 msgid "Temporary authentication failure"
-msgstr "Privremena gre¹ka u autentifikaciji"
+msgstr "Privremena gre¹ka u autentikaciji"
 
 msgid "Syntax error; command not recognized"
 msgstr "Sintaksna gre¹ka. Komanda nije prepoznata"
@@ -1256,22 +1348,22 @@ msgid "Command parameter not implemented"
 msgstr "Komandni parametar nije podr¾an"
 
 msgid "Authentication required"
-msgstr "Neophodna je autentifikacija"
+msgstr "Neophodna je autentikacija"
 
 msgid "Authentication mechanism is too weak"
-msgstr "Mehanizam za autentifikaciju je previ¹e slab"
+msgstr "Mehanizam za autentikaciju je previ¹e slab"
 
 msgid "Authentication failed"
-msgstr "Autentifikacija neuspe¹na"
+msgstr "Autentikacija neuspe¹na"
 
 msgid "Encryption required for requested authentication mechanism"
-msgstr "Enkripcija je neophodna za izabrani mehanizam autentifikacije"
+msgstr "Enkripcija je neophodna za izabrani mehanizam autentikacije"
 
 msgid "Requested action not taken: mailbox unavailable"
 msgstr "Tra¾ena operacija nije izvr¹ena: mailbox nedostupan"
 
 msgid "User not local; please try forwarding"
-msgstr "Korisnik nije lokalni; molim poku¹ajte s prosledjivanjem"
+msgstr "Korisnik nije lokalni; molim poku¹ajte s prosleðivanjem"
 
 msgid "Requested mail action aborted: exceeding storage allocation"
 msgstr "Tra¾ena mail operacija prekinuta: prekoraèuje dodeljen prostor"
@@ -1326,6 +1418,9 @@ msgstr "Ukljuèi izbor stranica"
 
 msgid "Maximum Number of Pages to Show"
 msgstr "Najveæi broj strana koji se prikazuje"
+
+msgid "Always Show Full Date"
+msgstr ""
 
 msgid "Message Display and Composition"
 msgstr "Prikazivanje poruka i kreiranje"
@@ -1471,7 +1566,7 @@ msgstr "Samo neproèitane"
 msgid "Unseen and Total"
 msgstr "Neproèitane i ukupno"
 
-msgid "Enable Collapsable Folders"
+msgid "Enable Collapsible Folders"
 msgstr "Ukljuèi prikazivanje direktorijuma u vi¹e nivoa"
 
 msgid "Enable Cumulative Unread Message Notification"
@@ -1543,7 +1638,7 @@ msgid "Your current timezone"
 msgstr "Va¹a trenutna vremenska zona"
 
 msgid "Reply Citation Options"
-msgstr "Stil citata pri odgovoru"
+msgstr "Opcije citata pri odgovoru"
 
 msgid "Reply Citation Style"
 msgstr "Stil citata pri odgovoru"
@@ -1633,7 +1728,7 @@ msgid "Mail Domain"
 msgstr "Mail domen"
 
 msgid "IMAP Server Address"
-msgstr "ime IMAP servera"
+msgstr "Adresa IMAP servera"
 
 msgid "IMAP Server Port"
 msgstr "Port IMAP servera"
@@ -1666,7 +1761,7 @@ msgid "Use TLS for IMAP Connections"
 msgstr "Koristi TLS za IMAP konekcije"
 
 msgid "Requires PHP 4.3.x! Experimental."
-msgstr "Zahteva PHP 4.3.x, Eksperimantalni."
+msgstr "Zahteva PHP 4.3.x, Eksperimantalno."
 
 msgid "IMAP Authentication Type"
 msgstr "Tip IMAP autentifikacije"
@@ -1702,10 +1797,10 @@ msgid "Folders Defaults"
 msgstr "Pode¹avanja direktorijuma"
 
 msgid "Default Folder Prefix"
-msgstr "Osnovni folder prefiks"
+msgstr "Osnovni prefiks direktorijuma"
 
 msgid "Show Folder Prefix Option"
-msgstr "Prika¾i prefiks opcije foldera"
+msgstr "Prika¾i prefiks opcije direktorijuma"
 
 msgid "By default, move to trash"
 msgstr "Standardno, premesti u trash"
@@ -1726,10 +1821,10 @@ msgid "Auto Expunge"
 msgstr "Automatsko pra¾njenje"
 
 msgid "Default Sub. of INBOX"
-msgstr "Standardno podfolder od INBOX"
+msgstr "Standardno poddirektorijum od INBOX-a"
 
 msgid "Show 'Contain Sub.' Option"
-msgstr "Prika¾i opciju 'sadr¾i podfoldere'"
+msgstr "Prika¾i opciju 'sadr¾i poddirektorijume'"
 
 msgid "Default Unseen Notify"
 msgstr "Osnovno najavljivanje nepro¹itanih poruka"
@@ -1747,7 +1842,7 @@ msgid "Auto delete folders"
 msgstr "Automatsko brisanje direktorijuma"
 
 msgid "Enable /NoSelect folder fix"
-msgstr "Uklju?i ispravku /NoSelect gre?ke kod direktorijuma ."
+msgstr "Ukljuèi ispravku /NoSelect gre¹ke kod direktorijuma ."
 
 msgid "General Options"
 msgstr "Osnovne opcije"
@@ -1872,7 +1967,8 @@ msgstr "Administracija"
 msgid ""
 "This module allows administrators to manage SquirrelMail main configuration "
 "remotely."
-msgstr "Ovaj modul omoguæava udaljeno upravaljane SquirrelMail konfiguracije.."
+msgstr ""
+"Ovaj modul omoguæava udaljeno upravaljanje SquirrelMail konfiguracijom.."
 
 msgid "Bug Reports:"
 msgstr "Izve¹taj o gre¹kama:"
@@ -1955,8 +2051,8 @@ msgstr "0 min."
 msgid "15 min."
 msgstr "15 min."
 
-msgid "35 min."
-msgstr "35 min."
+msgid "30 min."
+msgstr "30 min."
 
 msgid "45 min."
 msgstr "45 min."
@@ -1992,10 +2088,10 @@ msgid "Calendar"
 msgstr "Kalendar"
 
 msgid "Delete & Prev"
-msgstr "Obri¹i & prethodni"
+msgstr "Obri¹i & prethodna"
 
 msgid "Delete & Next"
-msgstr "Obri¹i & sledeæi"
+msgstr "Obri¹i & sledeæa"
 
 msgid "Move to:"
 msgstr "Pomeri u:"
@@ -2047,61 +2143,6 @@ msgid "COMMERCIAL - RBL+ Dial-up entries."
 msgstr "KOMERCIJALAN - RBL + Dial-up linije"
 
 msgid ""
-"FREE - Osirusoft Relays - Osirusofts list of verified open relays. Seems to "
-"include servers used by abuse@uunet.net auto-replies too."
-msgstr ""
-"BESPLATAN - Osirusoft Relays - Osirusoftova lista proverenih "
-"openrelayservera. Izgleda da ukljuèuje servere koje koristi automatske "
-"odgovore sa abuse@uunet.net "
-
-msgid "FREE - Osirusoft Dialups - Osirusofts Dialup Spam Source list."
-msgstr "BESPLATAN - Osirusoft Dial-up.- Osirusoftova Dial-up lista. "
-
-msgid ""
-"FREE - Osirusoft Confirmed Spam Source - Sites that continually spam and "
-"have been manually added after multiple nominations. Use with caution. Seems "
-"to catch abuse auto-replies from some ISPs."
-msgstr ""
-"BESPLATAN - Osirusoftova proverena lista ne¾eljene po¹te. Serveri koji "
-"kontinuirano¹alju SPAM i koji su dodati u listu ruèno posle vi¹e ¾albi. "
-"Upotrebljavajtesa oprezom. Izgleda da hvata i automatkse odogovore na "
-"prijave ¾albi sanekih Internet provajdera."
-
-msgid ""
-"FREE - Osirusoft Smart Hosts - List of hosts that are secure but relay for "
-"other mail servers that are not secure."
-msgstr ""
-"BESPLATAN - Osirusoft Pametni Serveri - Lista servera koji su sigurni ali "
-"prosleðuju po¹tu od drugih servera koji nisu."
-
-msgid ""
-"FREE - Osirusoft Spamware Developers - It is believed that these are IP "
-"ranges of companies that are known to produce spam software. Seems to catch "
-"abuse auto-replies from some ISPs."
-msgstr ""
-"BESPLATAN - Osirusoft Razvojni program - veruje se da je ovo raspon IP "
-"adresa kompanija za koje je poznato da prouzrokuju spam. Izgleda da hvata "
-"automatske poruke o zloupotrebi sa nekih ISP-a "
-
-msgid ""
-"FREE - Osirusoft Unconfirmed OptIn Servers - List of listservers that opt "
-"users in without confirmation."
-msgstr ""
-"FREE- Osirusoft nepotvrðeni list serveri - lista servera koja u sebi sadr¾i "
-"spisak mailing lista koje ukljuèuju korisnike bez njihovog odobrenja ili "
-"potvrde"
-
-msgid ""
-"FREE - Osirusoft Insecure formmail.cgi scripts - List of insecure formmail."
-"cgi scripts. (planned)."
-msgstr ""
-"FREE - Osirusoft Insecure formmail.cgi scripts - Lista nesigurnih formmail."
-"cgi scripti. (u planu)."
-
-msgid "FREE - Osirusoft Open Proxy Servers - List of Open Proxy Servers."
-msgstr "FREE - Osirusoft Open Proxy Servers - Lista otvorenih Proxy Servera."
-
-msgid ""
 "FREE - ORDB was born when ORBS went off the air. It seems to have fewer "
 "false positives than ORBS did though."
 msgstr ""
@@ -2144,6 +2185,7 @@ msgstr ""
 msgid "FREE - SPAMhaus - A list of well-known SPAM sources."
 msgstr "FREE - SPAMhaus - Lista dobro poznatih izvora SPAM-a."
 
+#, c-format
 msgid ""
 "FREE, for now - SPAMCOP - An interesting solution that lists servers that "
 "have a very high spam to legit email ratio (85% or more)."
@@ -2267,9 +2309,6 @@ msgstr "Zaglavlje"
 
 msgid "Contains:"
 msgstr "Sadr¾i:"
-
-msgid "Down"
-msgstr "Dole"
 
 #, c-format
 msgid "If <b>%s</b> contains <b>%s</b> then move to <b>%s</b>"
@@ -2411,7 +2450,7 @@ msgid "Send Mail"
 msgstr "Po¹alji po¹tu"
 
 msgid "Post to List"
-msgstr "Po¹ljai na Listu"
+msgstr "Po¹alji na Listu"
 
 msgid "Reply to List"
 msgstr "Odgovori na Listu"
@@ -2456,7 +2495,7 @@ msgid "No password submitted"
 msgstr "©ifra nije prosleðena:"
 
 msgid "authentication failed "
-msgstr "Autentifikacija neuspe¹na"
+msgstr "Autentikacija neuspe¹na"
 
 msgid "POP3 apop:"
 msgstr "POP3 apop:"
@@ -2465,7 +2504,7 @@ msgid "No login ID submitted"
 msgstr "Nije prosleðeno ime za prijavljivanje"
 
 msgid "No server banner"
-msgstr "No server banner"
+msgstr "Nema server banner-a"
 
 msgid "abort"
 msgstr "prekini"
@@ -2680,9 +2719,6 @@ msgstr "Potvrdite brisanje izabranog servera?"
 msgid "Confirm Delete"
 msgstr "Potvrdi brisanje"
 
-msgid "Mofify a Server"
-msgstr "Promeni server"
-
 msgid "Undefined Function"
 msgstr "Nedefinisana funkcija"
 
@@ -2709,9 +2745,6 @@ msgstr ""
 "serveru."
 
 msgid "Message Details"
-msgstr "Detalji poruke"
-
-msgid "Message details"
 msgstr "Detalji poruke"
 
 msgid "Close Window"
@@ -2776,15 +2809,11 @@ msgstr ""
 
 msgid ""
 "Select from the list of <b>server files</b> the media file to play when new "
-"mail arrives.  Selecting <b>local media</b> will play the file specified in "
-"the <b>local media file</b> box to play from the local computer.  If no file "
-"is specified, the system will use a default from the server."
+"mail arrives.  If no file is specified, \"(none)\", no sound will be used."
 msgstr ""
 "Iz liste datoteka <b>datoteke na serveru</b>, izaberite datoteku koja æe se "
-"pustiti pri prispeæu nove po¹te. Izborom <b>Lokalne media datoteke</b> æe "
-"pu¹tati datoteke sa <b>lokalnog medija </b> koji se nalazi na va¹em "
-"raèunaru. Ukoliko nijedan fajl nije izabran, sistem æe koristiti standardni "
-"sa servera. "
+"pustiti pri prispeæu nove po¹te. Ukoliko nijedan fajl nije izabran, neæe "
+"biti kori¹æen zvuk."
 
 msgid "Enable Media Playing"
 msgstr "Ukljuèi pu¹tanje media fajlova"
@@ -2807,14 +2836,11 @@ msgstr "Prika¾i novi prozor pri prispeæu nove po¹te"
 msgid "Select server file:"
 msgstr "Izberi datoteku na serveru:"
 
-msgid "(local media)"
-msgstr "(lokalni media fajl)"
+msgid "(none)"
+msgstr "(nijedan)"
 
 msgid "Try"
 msgstr "Isprobaj"
-
-msgid "Local Media File:"
-msgstr "Lokalna media datoteka:"
 
 msgid "Current File:"
 msgstr "Trenutna datoteka:"
@@ -2851,6 +2877,9 @@ msgstr "%s nova poruka"
 
 msgid "Test Sound"
 msgstr "Test zvuk"
+
+msgid "No sound specified"
+msgstr "Nije odreðen zvuk"
 
 msgid "Loading the sound..."
 msgstr "Uèitavam zvuk ..."
@@ -2999,7 +3028,7 @@ msgid "Change"
 msgstr "Promeni"
 
 msgid "Change ALL occurances of this word"
-msgstr "Promeni sva pojavljivanja ove reèi"
+msgstr "Promeni SVA pojavljivanja ove reèi"
 
 msgid "Change All"
 msgstr "Promeni Sve"
@@ -3011,7 +3040,7 @@ msgid "Ignore"
 msgstr "Ignori¹i"
 
 msgid "Ignore ALL occurances this word"
-msgstr "Ignori¹i sva pojavljivanja ove reèi"
+msgstr "Ignori¹i SVA pojavljivanja ove reèi"
 
 msgid "Ignore All"
 msgstr "Ignori¹i sve"
@@ -3106,7 +3135,7 @@ msgid "Delete checked words"
 msgstr "Obri¹i izabrane reèi"
 
 msgid "Edit your Personal Dictionary"
-msgstr "Promenite va? li?ni re?nik"
+msgstr "Promenite va¹ lièni reènik"
 
 msgid "Please make your selection first."
 msgstr "Molim, prvo izaberite."
@@ -3115,13 +3144,13 @@ msgid ""
 "This will encrypt your personal dictionary and store it in an encrypted "
 "format. Proceed?"
 msgstr ""
-"Ovo ?e kriptovati va? re?nik i snimiti ga u kriptovanom formatu. Nastavljam??"
+"Ovo æe kriptovati va¹ reènik i snimiti ga u kriptovanom formatu. Nastavljam?"
 
 msgid ""
 "This will decrypt your personal dictionary and store it in a clear-text "
 "format. Proceed?"
 msgstr ""
-"OOvo ?e dekriptovati va? re?nik i snimiti ga u tekstualnom formatu. "
+"Ovo æe dekriptovati va¹ reènik i snimiti ga u tekstualnom formatu. "
 "Nastavljam?"
 
 msgid ""
@@ -3204,7 +3233,7 @@ msgstr ""
 "Molim izaberite kojim reènikom æete proveravati pravopis u ovoj poruci:"
 
 msgid "SquirrelSpell Initiating"
-msgstr "Inicializacija provere pravopisa"
+msgstr "Inicijalizacija provere pravopisa"
 
 #, c-format
 msgid ""
@@ -3229,7 +3258,7 @@ msgstr ""
 "prilikom provere pravopisa:"
 
 msgid "Make this dictionary my default selection:"
-msgstr "Neka ovaj re?nik bude glavni:"
+msgstr "Neka ovaj reènik bude glavni:"
 
 msgid "Make these changes"
 msgstr "Napravi sledeæe promene"
@@ -3264,29 +3293,41 @@ msgstr "Snimljene opcije za prevoðenje"
 msgid "Your server options are as follows:"
 msgstr "Opcije va¹eg servera su sledeæe:"
 
-msgid ""
-"13 language pairs, maximum of 1000 characters translated, powered by Systran"
-msgstr "13 jezièkih parova, najvi¹e 1000 znakova prevedeno, prevodilac Systran"
+#, fuzzy
+msgid "Maximum of 1000 characters translated, powered by Systran"
+msgstr "19 jezièkih parova, najvi¹e 1000 znakova prevedeno, prevodilac Systran"
 
-msgid ""
-"10 language pairs, maximum of 25 kilobytes translated, powered by Systran"
-msgstr "10 jezièkih parova, najvi¹e 25kb prevoda, prevodilac Systran"
+#, c-format
+msgid "Number of supported language pairs: %s"
+msgstr ""
 
-msgid "12 language pairs, no known limits, powered by Systran"
+#, fuzzy
+msgid "No known limits, powered by Systran"
 msgstr "12 jezièkih parova, bez poznatih ogranièenja, prevodilac Systran"
 
-msgid ""
-"767 language pairs, no known limits, powered by Translation Experts's "
-"InterTran"
+#, fuzzy
+msgid "No known limits, powered by Translation Experts's InterTran"
 msgstr ""
-"767 jezièkih parova, bez poznatih ogranièenja, prevodilac Translation "
+"784 jezièkih parova, bez poznatih ogranièenja, prevodilac Translation "
 "Expert'sInterTran"
 
-msgid ""
-"8 language pairs, no known limits, powered by GPLTrans (free, open source)"
+#, c-format
+msgid "Number of supported languages: %s"
+msgstr ""
+
+#, fuzzy
+msgid "No known limits, powered by GPLTrans (free, open source)"
 msgstr ""
 "8 jezièkih parova, bez poznatih ogranièenja, prevodilac GPLTrans (besplatan, "
 "otvorenog koda)"
+
+#, fuzzy
+msgid "Hellenic translations, no known limits, powered by Systran"
+msgstr "12 jezièkih parova, bez poznatih ogranièenja, prevodilac Systran"
+
+#, fuzzy
+msgid "Russian translations, maximum of 500 characters translated"
+msgstr "19 jezièkih parova, najvi¹e 1000 znakova prevedeno, prevodilac Systran"
 
 msgid ""
 "You also decide if you want the translation box displayed, and where it will "
@@ -3338,6 +3379,9 @@ msgstr "%s u %s"
 msgid "English"
 msgstr "Engleski"
 
+msgid "Chinese"
+msgstr "Kineski"
+
 msgid "French"
 msgstr "Francuski"
 
@@ -3346,6 +3390,12 @@ msgstr "Nemaèki"
 
 msgid "Italian"
 msgstr "Italijanski"
+
+msgid "Japanese"
+msgstr "Japanski"
+
+msgid "Korean"
+msgstr "Korejski"
 
 msgid "Portuguese"
 msgstr "Portugalski"
@@ -3384,7 +3434,7 @@ msgid "Finnish"
 msgstr "Finski"
 
 msgid "Greek"
-msgstr "Gr¹ki"
+msgstr "Grèki"
 
 msgid "Hungarian"
 msgstr "Maðarski"
@@ -3392,11 +3442,8 @@ msgstr "Maðarski"
 msgid "Icelandic"
 msgstr "Islandski"
 
-msgid "Japanese"
-msgstr "Japanski"
-
 msgid "Latin American Spanish"
-msgstr "Latino ameri¹ki ¹panski"
+msgstr "Latino-ameri¹ki ¹panski"
 
 msgid "Norwegian"
 msgstr "Norve¹ki"
@@ -3428,8 +3475,81 @@ msgstr "Indone¾anski"
 msgid "Latin"
 msgstr "Latinski"
 
+msgid "to English"
+msgstr "na Engleski"
+
+msgid "from English"
+msgstr "sa Engleskog"
+
+#, fuzzy
+msgid "Interface language"
+msgstr "Osnovni jezik"
+
+#, fuzzy
+msgid "Translation direction"
+msgstr "Opcije za prevoðenje"
+
 msgid "Delivery error report"
 msgstr "Gre¹ka pri slanju po¹te"
 
 msgid "Undelivered Message Headers"
 msgstr "Zaglavlja neposlatih poruka"
+
+#~ msgid ""
+#~ "FREE - Osirusoft Relays - Osirusofts list of verified open relays. Seems "
+#~ "to include servers used by abuse@uunet.net auto-replies too."
+#~ msgstr ""
+#~ "BESPLATAN - Osirusoft Relays - Osirusoftova lista proverenih "
+#~ "openrelayservera. Izgleda da ukljuèuje servere koje koristi automatske "
+#~ "odgovore sa abuse@uunet.net "
+
+#~ msgid "FREE - Osirusoft Dialups - Osirusofts Dialup Spam Source list."
+#~ msgstr "BESPLATAN - Osirusoft Dial-up.- Osirusoftova Dial-up lista. "
+
+#~ msgid ""
+#~ "FREE - Osirusoft Confirmed Spam Source - Sites that continually spam and "
+#~ "have been manually added after multiple nominations. Use with caution. "
+#~ "Seems to catch abuse auto-replies from some ISPs."
+#~ msgstr ""
+#~ "BESPLATAN - Osirusoftova proverena lista ne¾eljene po¹te. Serveri koji "
+#~ "kontinuirano¹alju SPAM i koji su dodati u listu ruèno posle vi¹e ¾albi. "
+#~ "Upotrebljavajtesa oprezom. Izgleda da hvata i automatkse odogovore na "
+#~ "prijave ¾albi sanekih Internet provajdera."
+
+#~ msgid ""
+#~ "FREE - Osirusoft Smart Hosts - List of hosts that are secure but relay "
+#~ "for other mail servers that are not secure."
+#~ msgstr ""
+#~ "BESPLATAN - Osirusoft Pametni Serveri - Lista servera koji su sigurni ali "
+#~ "prosleðuju po¹tu od drugih servera koji nisu."
+
+#~ msgid ""
+#~ "FREE - Osirusoft Spamware Developers - It is believed that these are IP "
+#~ "ranges of companies that are known to produce spam software. Seems to "
+#~ "catch abuse auto-replies from some ISPs."
+#~ msgstr ""
+#~ "BESPLATAN - Osirusoft Razvojni program - veruje se da je ovo raspon IP "
+#~ "adresa kompanija za koje je poznato da prouzrokuju spam. Izgleda da hvata "
+#~ "automatske poruke o zloupotrebi sa nekih ISP-a "
+
+#~ msgid ""
+#~ "FREE - Osirusoft Unconfirmed OptIn Servers - List of listservers that opt "
+#~ "users in without confirmation."
+#~ msgstr ""
+#~ "FREE- Osirusoft nepotvrðeni list serveri - lista servera koja u sebi "
+#~ "sadr¾i spisak mailing lista koje ukljuèuju korisnike bez njihovog "
+#~ "odobrenja ili potvrde"
+
+#~ msgid ""
+#~ "FREE - Osirusoft Insecure formmail.cgi scripts - List of insecure "
+#~ "formmail.cgi scripts. (planned)."
+#~ msgstr ""
+#~ "FREE - Osirusoft Insecure formmail.cgi scripts - Lista nesigurnih "
+#~ "formmail.cgi scripti. (u planu)."
+
+#~ msgid "FREE - Osirusoft Open Proxy Servers - List of Open Proxy Servers."
+#~ msgstr ""
+#~ "FREE - Osirusoft Open Proxy Servers - Lista otvorenih Proxy Servera."
+
+#~ msgid "4 language pairs for Hellenic, no known limits, powered by Systran"
+#~ msgstr "4 jezièka para, bez poznatih ogranièenja, prevodilac Systran"

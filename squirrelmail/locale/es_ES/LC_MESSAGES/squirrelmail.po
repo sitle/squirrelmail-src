@@ -4,8 +4,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: $Id$\n"
-"POT-Creation-Date: 2003-09-20 12:22+0300\n"
+"Project-Id-Version: $Id: squirrelmail.po,v 1.42 2003/04/01 17:58:47 "
+"philippe_mingo Exp $\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2003-09-20 11:04+0300\n"
 "PO-Revision-Date: 2003-04-01 19:57+0100\n"
 "Last-Translator: Philippe Mingo <philippe@squirrelmail.org>\n"
 "Language-Team: spanish <squirrelmail-i18n@lists.sourceforge.net>\n"
@@ -153,8 +155,8 @@ msgstr "No se puede mover/copiar el archivo. Archivo no adjuntado"
 msgid "Draft Saved"
 msgstr "Borrador Guardado"
 
-msgid "Your Message has been sent."
-msgstr "Su mensaje ha sido enviado."
+msgid "Your Message has been sent"
+msgstr "Su mensaje ha sido enviado"
 
 msgid "From:"
 msgstr "De:"
@@ -371,6 +373,9 @@ msgstr "purgar"
 
 msgid "Last Refresh"
 msgstr "Última Actualización"
+
+msgid "refresh unseen/total info"
+msgstr ""
 
 msgid "Save folder tree"
 msgstr "Guardar arbol de carpetas"
@@ -703,35 +708,8 @@ msgstr "Ficheros adjuntos"
 msgid "You must be logged in to access this page."
 msgstr "¡Necesita un nombre de usuario y contraseña válidos para acceder!."
 
-msgid "All Folders"
-msgstr "Todas las carpetas"
-
-msgid "Please enter something to search for"
-msgstr "Introduzca algo que buscar por favor"
-
-msgid "There must be at least one criteria to search for"
-msgstr "Tiene que haber al menos un criterio para buscar"
-
-msgid "Error in criteria argument"
-msgstr "Error de criterio en argumentos"
-
-msgid "M j, Y"
-msgstr "j/m/Y"
-
-msgid "(Illegal date)"
-msgstr "(Fecha no válida)"
-
-msgid "(Wrong date)"
-msgstr "(Fecha errónea)"
-
-msgid "In"
-msgstr "En"
-
-msgid "(Missing argument)"
-msgstr "(Falta Argumento)"
-
-msgid "(Spurious argument)"
-msgstr ""
+msgid "Folder:"
+msgstr "Carpeta:"
 
 msgid "edit"
 msgstr "editar"
@@ -742,8 +720,8 @@ msgstr "buscar"
 msgid "delete"
 msgstr "borrar"
 
-msgid "Saved Searches"
-msgstr "Búsquedas almacenadas"
+msgid "Recent Searches"
+msgstr "Búsquedas Recientes"
 
 msgid "save"
 msgstr "guardar"
@@ -751,110 +729,17 @@ msgstr "guardar"
 msgid "forget"
 msgstr "olvidar"
 
-msgid "Recent Searches"
-msgstr "Búsquedas recientes"
+msgid "Current Search"
+msgstr "Búsqueda Actual"
 
-msgid "Missing"
-msgstr ""
+msgid "All Folders"
+msgstr "Todas las carpetas"
 
-msgid "Exclude Criteria:"
-msgstr ""
+msgid "Body"
+msgstr "Cuerpo"
 
-msgid "Search Criteria"
-msgstr "Criterio de búsqueda"
-
-msgid "Folder:"
-msgstr "Carpeta:"
-
-msgid "Add New Criteria"
-msgstr "Agregar criterio"
-
-msgid "Remove Excluded Criteria"
-msgstr "Eliminar criterios excluidos"
-
-msgid "Remove All Criteria"
-msgstr "Eliminar todos los criterios"
-
-msgid "Answered"
-msgstr ""
-
-msgid "Before"
-msgstr "Antes"
-
-msgid "Message Body"
-msgstr "Cuerpo de mensaje"
-
-msgid "Deleted"
-msgstr "Borrado"
-
-msgid "Draft"
-msgstr "Borrador"
-
-msgid "Flagged"
-msgstr "Marcado"
-
-msgid "Sent By"
-msgstr "Enviado por:"
-
-msgid "Header Field"
-msgstr "Campo de cabecera"
-
-msgid "Keyword"
-msgstr "Abreviado"
-
-msgid "Larger Than"
-msgstr "Mayor que"
-
-msgid "Old"
-msgstr "Vienjo"
-
-msgid "On"
-msgstr "En"
-
-msgid "Recent"
-msgstr "Confirmación"
-
-msgid "Seen"
-msgstr "Visto"
-
-msgid "Sent Before"
-msgstr "Enviado antes de"
-
-msgid "Sent On"
-msgstr "Enviado el"
-
-msgid "Sent Since"
-msgstr "Enviado desde"
-
-msgid "Since"
-msgstr "Desde"
-
-msgid "Smaller Than"
-msgstr "Inferior a"
-
-msgid "Subject Contains"
-msgstr "El tema contiene"
-
-msgid "Header and Body"
-msgstr ""
-
-msgid "Sent To"
-msgstr "Enviado a"
-
-msgid "Not"
-msgstr "No"
-
-msgid "And In"
-msgstr "Y en"
-
-msgid "Or In"
-msgstr "O en"
-
-msgid "And"
-msgstr "Y"
-
-msgid "Or"
-msgstr "O"
+msgid "Everywhere"
+msgstr "Todos lados"
 
 msgid "Search Results"
 msgstr "Resultado de la búsqueda"
@@ -915,10 +800,6 @@ msgstr "Ver Encabezados Completos"
 
 msgid "Viewing a text attachment"
 msgstr "Ver un texto adosado"
-
-#, fuzzy
-msgid "Folder List"
-msgstr "Carpetas"
 
 msgid "Personal address book"
 msgstr "Libreta personal de direcciones"
@@ -1018,26 +899,30 @@ msgstr "Viernes"
 msgid "Saturday"
 msgstr "Sábado"
 
+#, fuzzy
 msgid "Sun"
-msgstr "Dom"
+msgstr "Domingo"
 
+#, fuzzy
 msgid "Mon"
-msgstr "Lun"
+msgstr "Lunes"
 
+#, fuzzy
 msgid "Tue"
-msgstr "Mar"
+msgstr "Martes"
 
 msgid "Wed"
-msgstr "Mie"
+msgstr ""
 
 msgid "Thu"
-msgstr "Jue"
+msgstr ""
 
+#, fuzzy
 msgid "Fri"
-msgstr "Vie"
+msgstr "Viernes"
 
 msgid "Sat"
-msgstr "Sab"
+msgstr ""
 
 msgid "January"
 msgstr "Enero"
@@ -1075,47 +960,58 @@ msgstr "Noviembre"
 msgid "December"
 msgstr "Diciembre"
 
+#, fuzzy
 msgid "Jan"
-msgstr "Ene"
+msgstr "Enero"
 
 msgid "Feb"
-msgstr "Feb"
+msgstr ""
 
+#, fuzzy
 msgid "Mar"
-msgstr "Mar"
+msgstr "Marzo"
 
+#, fuzzy
 msgid "Apr"
-msgstr "Abr"
+msgstr "Abril"
 
 msgid "Ma&#121;"
-msgstr "May"
+msgstr ""
 
+#, fuzzy
 msgid "Jun"
-msgstr "Jun"
+msgstr "Junio"
 
+#, fuzzy
 msgid "Jul"
-msgstr "Jul"
+msgstr "Julio"
 
+#, fuzzy
 msgid "Aug"
-msgstr "Ago"
+msgstr "Agosto"
 
 msgid "Sep"
-msgstr "Sep"
+msgstr ""
 
+#, fuzzy
 msgid "Oct"
-msgstr "Oct"
+msgstr "Octubre"
 
+#, fuzzy
 msgid "Nov"
-msgstr "Nov"
+msgstr "No"
 
 msgid "Dec"
-msgstr "Dic"
+msgstr ""
 
 msgid "D, F j, Y g:i a"
 msgstr "D, j \\d\\e F \\d\\e Y, g:i a"
 
 msgid "D, F j, Y G:i"
 msgstr "D, j \\d\\e F \\d\\e Y, G:i"
+
+msgid "M j, Y"
+msgstr "j/m/Y"
 
 msgid "g:i a"
 msgstr "g:i a"
@@ -1132,6 +1028,12 @@ msgstr "D, G:i"
 #, c-format
 msgid "Preference database error (%s). Exiting abnormally"
 msgstr "Archivo de preferencias %s no encontrado. Saliendo anormalmente."
+
+msgid "Unknown user or password incorrect."
+msgstr "Usuario o contraseña incorrecto."
+
+msgid "Click here to try again"
+msgstr "Pulse aquí para intentarlo de nuevo"
 
 #, c-format
 msgid "Click here to return to %s"
@@ -1164,13 +1066,13 @@ msgstr ""
 "El fichero de preferencias %s no pudo abrirse para escritura. Contacte con "
 "su administrador y comuníquele este error."
 
-#, c-format
+#, fuzzy, c-format
 msgid ""
 "Preference file, %s, could not be copied from temporary file, %s. Contact "
 "your system administrator to resolve this issue."
 msgstr ""
-"El fichero de preferencias %s no pudo copiarse desde el fichero temporal. "
-"Contacte con su administrador y comuníquele este error para resolverlo."
+"El fichero de preferencias %s no pudo abrirse. Contacte con su administrador "
+"y comuníquele este error."
 
 #, c-format
 msgid "Error opening %s"
@@ -1205,7 +1107,7 @@ msgstr ""
 "El fichero de firmas %s no pudo abrirse para escritura. Contacte con su "
 "administrador y comuníquele este error."
 
-#, c-format
+#, fuzzy, c-format
 msgid ""
 "Signature file, %s, could not be copied from temporary file, %s. Contact "
 "your system administrator to resolve this issue."
@@ -1213,6 +1115,7 @@ msgstr ""
 "El fichero de firmas %s no pudo abrirse. Contacte con su administrador y "
 "comuníquele este error."
 
+#, fuzzy
 msgid ""
 "You need to have php4 installed with the multibyte string function enabled "
 "(using configure option --enable-mbstring)."
@@ -1220,38 +1123,33 @@ msgstr ""
 "Error de sistema. Avise al administrador que necesita una versión de php4 "
 "con la opción multibyte activada (--with-mbstring)."
 
+msgid "ERROR : No available imapstream."
+msgstr "ERROR : No hay ningún canal IMAP disponible."
+
+msgid "ERROR : Connection dropped by imap-server."
+msgstr ""
+
 msgid "ERROR : Could not complete request."
 msgstr "ERROR: No se pudo completar el pedido."
-
-msgid "ERROR : Bad or malformed request."
-msgstr "ERROR: pedido erroneo o con formato erroneo."
-
-msgid "ERROR : Imap server closed the connection."
-msgstr "ERROR: El servidor IMAP cerró la conexión."
-
-msgid "ERROR : Unknown imap response."
-msgstr "Error: Respuesta imap desconocida"
-
-msgid "Reason Given: "
-msgstr "Razón dada: "
 
 msgid "Query:"
 msgstr "Consulta:"
 
-msgid "ERROR : No available imapstream."
-msgstr "ERROR : No hay ningún canal IMAP disponible."
+msgid "Reason Given: "
+msgstr "Razón dada: "
 
-msgid "ERROR : Bad function call."
-msgstr "ERROR : Llamada errónea a función."
-
-msgid "Reason:"
-msgstr "Motivo:"
-
-msgid "ERROR : Connection dropped by imap-server."
-msgstr "ERROR : Conexión descartada por servidor Imap"
+msgid "ERROR : Bad or malformed request."
+msgstr "ERROR: pedido erroneo o con formato erroneo."
 
 msgid "Server responded: "
 msgstr "El servidor respondió: "
+
+msgid "ERROR : Imap server closed the connection."
+msgstr ""
+
+#, fuzzy
+msgid "ERROR : Unknown imap response."
+msgstr "Respuesta desconocida"
 
 #, c-format
 msgid "Error connecting to IMAP server: %s."
@@ -1268,9 +1166,6 @@ msgstr "Error desconocido: %s"
 msgid "Read data:"
 msgstr "Leer datos:"
 
-msgid "Unknown user or password incorrect."
-msgstr "Usuario o contraseña incorrecto."
-
 msgid "ERROR : Could not append message to"
 msgstr "ERROR: No se puede agregar el mensaje a"
 
@@ -1285,19 +1180,20 @@ msgstr "Elimine todos los mensajes innecesarios y empiece por la papelera"
 msgid "(no subject)"
 msgstr "(sin asunto)"
 
+msgid "Unknown Sender"
+msgstr "Remitente Desconocido"
+
 msgid "Unknown response from IMAP server: "
 msgstr "Contestación desconocida del servidor IMAP:"
 
 msgid "The server couldn't find the message you requested."
-msgstr "El servidor no ha podido encontrar el mensaje solicitado."
+msgstr ""
 
 msgid ""
 "Most probably your message list was out of date and the message has been "
 "moved away or deleted (perhaps by another program accessing the same "
 "mailbox)."
 msgstr ""
-"Seguramente su lista de mensajes estaba desfasada y su mensaje ha sido movio "
-"o eliminado (Quizás por otra conexión simultánea)."
 
 msgid "Unknown date"
 msgstr "Fecha desconocida"
@@ -1348,12 +1244,6 @@ msgstr "Quitar Orden Temático"
 
 msgid "Thread View"
 msgstr "Orden Temático"
-
-msgid "Bypass Trash"
-msgstr ""
-
-msgid "Click here to change the sorting of the message list"
-msgstr ""
 
 msgid "Toggle All"
 msgstr "Cambia Todos"
@@ -1538,16 +1428,7 @@ msgid "Maximum Number of Pages to Show"
 msgstr "Número Máximo de Páginas a Mostrar"
 
 msgid "Always Show Full Date"
-msgstr "Mostrar siempre fecha completa"
-
-msgid "Length of From/To Field (0 for full)"
-msgstr "Longitud de la columna de/para (0 completa)"
-
-msgid "Length of Subject Field (0 for full)"
-msgstr "Longitud de la columna del asunto (0 completa)"
-
-msgid "Show recipient name if the message is from your default identity"
-msgstr "Mostrar destinatario si el mensaje es de la identidad por omisión"
+msgstr ""
 
 msgid "Message Display and Composition"
 msgstr "Visualización y Composición de Mensajes"
@@ -1614,9 +1495,6 @@ msgstr "Alto de la Ventana de Composición"
 
 msgid "Append Signature before Reply/Forward Text"
 msgstr "Agregar Firma Antes del Bloque de Referencia"
-
-msgid "Strip signature when replying"
-msgstr "Eliminar firma de las contestaciones"
 
 msgid "Enable Sort by of Receive Date"
 msgstr "Activar la Ordenación por Fecha de Recepción"
@@ -1696,7 +1574,8 @@ msgstr "Solo Nuevos"
 msgid "Unseen and Total"
 msgstr "No leídos y total"
 
-msgid "Enable Collapsable Folders"
+#, fuzzy
+msgid "Enable Collapsible Folders"
 msgstr "Activar Carpetas en Cascada"
 
 msgid "Enable Cumulative Unread Message Notification"
@@ -1731,14 +1610,6 @@ msgstr "Estilo de lista de selección"
 
 msgid "Long: "
 msgstr "Largo:"
-
-#, fuzzy
-msgid "Folder"
-msgstr "Carpetas"
-
-#, fuzzy
-msgid "Subfolder"
-msgstr "Emplear Carpetas Subordinadas de Mensajes Enviados"
 
 msgid "Indented: "
 msgstr "Indentado:"
@@ -2191,8 +2062,9 @@ msgstr "0 min."
 msgid "15 min."
 msgstr "15 min."
 
+#, fuzzy
 msgid "30 min."
-msgstr "30 min."
+msgstr "0 min."
 
 msgid "45 min."
 msgstr "45 min."
@@ -2326,6 +2198,7 @@ msgstr ""
 msgid "FREE - SPAMhaus - A list of well-known SPAM sources."
 msgstr "GRATUITO - Lista de conocidos SPAMERS de SPAMHaus."
 
+#, c-format
 msgid ""
 "FREE, for now - SPAMCOP - An interesting solution that lists servers that "
 "have a very high spam to legit email ratio (85% or more)."
@@ -2605,6 +2478,12 @@ msgstr "No se ha especificado un servidor"
 msgid "Error "
 msgstr "Error "
 
+msgid "POP3 noop:"
+msgstr "POP3 noop:"
+
+msgid "No connection to server"
+msgstr "No hay conexión al servidor"
+
 msgid "POP3 user:"
 msgstr "POP3 usuario:"
 
@@ -2625,9 +2504,6 @@ msgstr "falló la identificación"
 
 msgid "POP3 apop:"
 msgstr "POP3 apop:"
-
-msgid "No connection to server"
-msgstr "No hay conexión al servidor"
 
 msgid "No login ID submitted"
 msgstr "No se ha facilitado identificador"
@@ -2686,6 +2562,9 @@ msgstr "No se ha comunicado el número del mensaje"
 msgid "Command failed "
 msgstr "El comando falló "
 
+msgid "Remote POP server Fetching Mail"
+msgstr "Recogida POP3 de Correo Remoto"
+
 msgid "Select Server:"
 msgstr "Seleccione Servidor:"
 
@@ -2694,17 +2573,6 @@ msgstr "Contraseña para"
 
 msgid "Fetch Mail"
 msgstr "Recoger Correo"
-
-msgid "Remote POP server Fetching Mail"
-msgstr "Recogida POP3 de Correo Remoto"
-
-#, fuzzy
-msgid "No POP3 servers configured yet."
-msgstr "No se ha especificado un servidor"
-
-#, fuzzy
-msgid "Click here to go to the options page."
-msgstr "Pulse aquí para volver a ingresar"
 
 msgid "Fetching from "
 msgstr "Recogiendo desde "
@@ -2939,6 +2807,7 @@ msgstr ""
 "el título de la ventana cambiará conforme lleguen mensajes nuevos (Necesita "
 "Javascript y en principio solo funciona con IE)"
 
+#, fuzzy
 msgid ""
 "Select from the list of <b>server files</b> the media file to play when new "
 "mail arrives.  If no file is specified, \"(none)\", no sound will be used."
@@ -2969,8 +2838,9 @@ msgstr "Mostrar Ventana Emergente"
 msgid "Select server file:"
 msgstr "Fichero Remoto:"
 
+#, fuzzy
 msgid "(none)"
-msgstr "(ninguno)"
+msgstr "Listo"
 
 msgid "Try"
 msgstr "Probar"
@@ -3009,8 +2879,9 @@ msgstr "%s Mensaje Nuevo"
 msgid "Test Sound"
 msgstr "Probar Sonido"
 
+#, fuzzy
 msgid "No sound specified"
-msgstr "No se ha especificado un sonido"
+msgstr "No se ha especificado un servidor"
 
 msgid "Loading the sound..."
 msgstr "Cargando el sonido ..."
@@ -3431,33 +3302,45 @@ msgstr "Opciones de Traducción Guardadas"
 msgid "Your server options are as follows:"
 msgstr "Estas son sus opciones de servidor:"
 
+#, fuzzy
 msgid "Maximum of 1000 characters translated, powered by Systran"
-msgstr "Un máximo de 1000 caracteres traducidos, motor de Systran"
+msgstr ""
+"13 pares de idiomas, un máximo de 1000 caracteres traducidos, motor de "
+"Systran"
 
 #, c-format
 msgid "Number of supported language pairs: %s"
 msgstr ""
 
+#, fuzzy
 msgid "No known limits, powered by Systran"
-msgstr "No hay límites conocidos, motor de Systran"
+msgstr "12 pares de idiomas, no hay límites conocidos, motor de Systran"
 
 #, fuzzy
 msgid "No known limits, powered by Translation Experts's InterTran"
-msgstr "No hay límites conocidos, motor InterTran de Translation Experts"
+msgstr ""
+"767 pares de idiomas, no hay límites conocidos, motor InterTran de "
+"Translation Experts"
 
 #, c-format
 msgid "Number of supported languages: %s"
 msgstr ""
 
+#, fuzzy
 msgid "No known limits, powered by GPLTrans (free, open source)"
-msgstr "No hay límites conocidos, motor GPLTrans (gratuito, open source)"
+msgstr ""
+"8 pares de idiomas, no hay límites conocidos, motor GPLTrans (gratuito, open "
+"source)"
 
+#, fuzzy
 msgid "Hellenic translations, no known limits, powered by Systran"
-msgstr "Traducciones Griegas, no hay límites conocidos, motor de Systran"
+msgstr "12 pares de idiomas, no hay límites conocidos, motor de Systran"
 
+#, fuzzy
 msgid "Russian translations, maximum of 500 characters translated"
 msgstr ""
-"Traducciones Rusas, un máximo de 1000 caracteres traducidos, motor de Systran"
+"13 pares de idiomas, un máximo de 1000 caracteres traducidos, motor de "
+"Systran"
 
 msgid ""
 "You also decide if you want the translation box displayed, and where it will "
@@ -3508,8 +3391,9 @@ msgstr "De %s a %s"
 msgid "English"
 msgstr "Inglés"
 
+#, fuzzy
 msgid "Chinese"
-msgstr "Chino"
+msgstr "Cambiar"
 
 msgid "French"
 msgstr "Francés"
@@ -3523,8 +3407,9 @@ msgstr "Italiano"
 msgid "Japanese"
 msgstr "Japonés"
 
+#, fuzzy
 msgid "Korean"
-msgstr "Koreano"
+msgstr "Noruego"
 
 msgid "Portuguese"
 msgstr "Portugués"
@@ -3604,15 +3489,19 @@ msgstr "Indonesio"
 msgid "Latin"
 msgstr "Latín"
 
+#, fuzzy
 msgid "to English"
-msgstr "al Inglés"
+msgstr "Inglés"
 
+#, fuzzy
 msgid "from English"
-msgstr "del Inglés"
+msgstr "Inglés"
 
+#, fuzzy
 msgid "Interface language"
-msgstr "Idioma de la interfaz"
+msgstr "Idioma por omisión"
 
+#, fuzzy
 msgid "Translation direction"
 msgstr "Opciones de Traducción"
 
@@ -3622,8 +3511,17 @@ msgstr "Informe de error en entrega"
 msgid "Undelivered Message Headers"
 msgstr "Cabecera de mensaje no entregado"
 
-#~ msgid "Unknown Sender"
-#~ msgstr "Remitente Desconocido"
+#~ msgid "Not available"
+#~ msgstr "No disponible"
+
+#~ msgid "Unknown message number in reply from server: "
+#~ msgstr "Número de mensaje desconocido en la contestación del servidor:"
+
+#~ msgid "(unknown sender)"
+#~ msgstr "(remitente desconocido)"
+
+#~ msgid "35 min."
+#~ msgstr "35 min."
 
 #~ msgid ""
 #~ "FREE - Osirusoft Relays - Osirusofts list of verified open relays. Seems "
@@ -3677,35 +3575,8 @@ msgstr "Cabecera de mensaje no entregado"
 #~ msgid "FREE - Osirusoft Open Proxy Servers - List of Open Proxy Servers."
 #~ msgstr "GRATUITO - Lista de servidores Proxy abiertos de Osirusoft."
 
-#~ msgid "Click here to try again"
-#~ msgstr "Pulse aquí para intentarlo de nuevo"
-
-#~ msgid "Current Search"
-#~ msgstr "Búsqueda Actual"
-
-#~ msgid "Body"
-#~ msgstr "Cuerpo"
-
-#~ msgid "Everywhere"
-#~ msgstr "Todos lados"
-
-#~ msgid "Unknown message number in reply from server: "
-#~ msgstr "Número de mensaje desconocido en la contestación del servidor:"
-
-#~ msgid "(unknown sender)"
-#~ msgstr "(remitente desconocido)"
-
-#~ msgid "POP3 noop:"
-#~ msgstr "POP3 noop:"
-
 #~ msgid "Mofify a Server"
 #~ msgstr "Modificar un Servidor"
-
-#~ msgid "Not available"
-#~ msgstr "No disponible"
-
-#~ msgid "35 min."
-#~ msgstr "35 min."
 
 #~ msgid "Message details"
 #~ msgstr "Detalles del mensaje"

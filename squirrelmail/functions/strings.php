@@ -16,14 +16,14 @@
  * SquirrelMail version number -- DO NOT CHANGE
  */
 global $version;
-$version = '1.5.0 [CVS]';
+$version = '1.4.2';
 
 /**
  * SquirrelMail internal version number -- DO NOT CHANGE
  * $sm_internal_version = array (release, major, minor)
  */
 global $SQM_INTERNAL_VERSION;
-$SQM_INTERNAL_VERSION = array(1,5,0);
+$SQM_INTERNAL_VERSION = array(1,4,2);
 
 /**
  * There can be a circular issue with includes, where the $version string is
@@ -413,6 +413,26 @@ function TrimArray(&$array) {
         }
 
         /* Re-assign back to array. */
+        $array[$k] = $$k;
+    }
+}
+
+/**
+ * Removes slashes from every element in the array
+ */
+function RemoveSlashes(&$array) {
+    foreach ($array as $k => $v) {
+        global $$k;
+        if (is_array($$k)) {
+            foreach ($$k as $k2 => $v2) {
+                $newArray[stripslashes($k2)] = stripslashes($v2);
+            }
+            $$k = $newArray;
+        } else {
+            $$k = stripslashes($v);
+        }
+
+        /* Re-assign back to the array. */
         $array[$k] = $$k;
     }
 }

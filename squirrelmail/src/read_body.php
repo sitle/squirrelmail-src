@@ -24,8 +24,6 @@ require_once(SM_PATH . 'functions/date.php');
 require_once(SM_PATH . 'functions/url_parser.php');
 require_once(SM_PATH . 'functions/html.php');
 require_once(SM_PATH . 'functions/global.php');
-require_once(SM_PATH . 'functions/identity.php');
-require_once(SM_PATH . 'functions/mailbox_display.php');
 
 /**
  * Given an IMAP message id number, this will look it up in the cached
@@ -169,28 +167,25 @@ function SendMDN ( $mailbox, $passed_id, $sender, $message, $imapConnection) {
     $rfc822_header->to[] = $header->dnt;
     $rfc822_header->subject = _("Read:") . ' ' . encodeHeader($header->subject);
 
-    // Patch #793504 Return Receipt Failing with <@> from Tim Craig (burny_md)
-    // This merely comes from compose.php and only happens when there is no
-    // email_addr specified in user's identity (which is the startup config)
-    if (ereg("^([^@%/]+)[@%/](.+)$", $username, $usernamedata)) {
-       $popuser = $usernamedata[1];
-       $domain  = $usernamedata[2];
-       unset($usernamedata);
-    } else {
-       $popuser = $username;
-    }
 
     $reply_to = '';
-    $ident = get_identities();
-    if(!isset($identity)) $identity = 0;
-    $full_name = $ident[$identity]['full_name'];
-    $from_mail = $ident[$identity]['email_address'];
-    $from_addr = '"'.$full_name.'" <'.$from_mail.'>';
-    $reply_to  = $ident[$identity]['reply_to'];
-
-    if (!$from_mail) {
-       $from_mail = "$popuser@$domain";
-       $from_addr = $from_mail;
+    if (isset($identity) && $identity != 'default') {
+        $from_mail = getPref($data_dir, $username, 
+                             'email_address' . $identity);
+        $full_name = getPref($data_dir, $username, 
+                             'full_name' . $identity);
+        $from_addr = '"'.$full_name.'" <'.$from_mail.'>';
+        $reply_to  = getPref($data_dir, $username, 
+                             'reply_to' . $identity);
+    } else {
+        $from_mail = getPref($data_dir, $username, 'email_address');
+        $full_name = getPref($data_dir, $username, 'full_name');
+        $from_addr = '"'.$full_name.'" <'.$from_mail.'>';
+        $reply_to  = getPref($data_dir, $username,'reply_to');
+    }
+    if (!$from_addr) {
+       $from_addr = "$popuser@$domain";
+       $from_mail = $from_addr;
     }
     $rfc822_header->from = $rfc822_header->parseAddress($from_addr,true);
     if ($reply_to) {
@@ -277,10 +272,10 @@ function SendMDN ( $mailbox, $passed_id, $sender, $message, $imapConnection) {
         require_once(SM_PATH . 'class/deliver/Deliver_SMTP.class.php');
         $deliver = new Deliver_SMTP();
         global $smtpServerAddress, $smtpPort, $smtp_auth_mech, $pop_before_smtp;
-        if ($smtp_auth_mech == 'none') {
-            $user = '';
-            $pass = '';
-        } else {
+		if ($smtp_auth_mech == 'none') {
+			$user = '';
+			$pass = '';
+		} else {
             global $key, $onetimepad;
             $user = $username;
             $pass = OneTimePadDecrypt($key, $onetimepad);
@@ -403,15 +398,15 @@ function formatEnvheader($mailbox, $passed_id, $passed_ent_id, $message,
 
     $header = $message->rfc822_header;
     $env = array();
-    $env[_("Subject")] = str_replace("&nbsp;"," ",decodeHeader($header->subject));
-
+    $env[_("Subject")] = decodeHeader($header->subject);
     $from_name = $header->getAddr_s('from');
-    if (!$from_name)
+    if (!$from_name) {
         $from_name = $header->getAddr_s('sender');
-    if (!$from_name)
-        $env[_("From")] = _("Unknown sender");
-    else
-        $env[_("From")] = decodeHeader($from_name);
+        if (!$from_name) {
+            $from_name = _("Unknown sender");
+        }
+    }
+    $env[_("From")] = decodeHeader($from_name);
     $env[_("Date")] = getLongDateString($header->date);
     $env[_("To")] = formatRecipientString($header->to, "to");
     $env[_("Cc")] = formatRecipientString($header->cc, "cc");
@@ -464,7 +459,7 @@ function formatEnvheader($mailbox, $passed_id, $passed_ent_id, $message,
         }
     }
     echo '<TABLE BGCOLOR="'.$color[9].'" WIDTH="100%" CELLPADDING="1"'.
-         ' CELLSPACING="0" BORDER="0" ALIGN="center">'."\n";
+         ' CELLSPACING="0" BORDER="0" ALIIGN="center">'."\n";
     echo '<TR><TD HEIGHT="5" COLSPAN="2" BGCOLOR="'.
           $color[4].'"></TD></TR><TR><TD align=center>'."\n";
     echo $s;
@@ -477,7 +472,7 @@ function formatEnvheader($mailbox, $passed_id, $passed_ent_id, $message,
 
 function formatMenubar($mailbox, $passed_id, $passed_ent_id, $message, $mbx_response) {
     global $base_uri, $draft_folder, $where, $what, $color, $sort,
-           $startMessage, $PHP_SELF, $save_as_draft,
+           $startMessage, $compose_new_win, $PHP_SELF, $save_as_draft,
            $enable_forward_as_attachment;
 
     $topbar_delimiter = '&nbsp;|&nbsp;';
@@ -511,11 +506,18 @@ function formatMenubar($mailbox, $passed_id, $passed_ent_id, $message, $mbx_resp
     }
 
     $comp_uri = 'src/compose.php' .
-                            '?passed_id=' . $passed_id .
-                            '&amp;mailbox=' . $urlMailbox .
-                            '&amp;startMessage=' . $startMessage .
-                            (isset($passed_ent_id)?'&amp;passed_ent_id='.$passed_ent_id:'');
+                '?passed_id=' . $passed_id .
+                '&amp;mailbox=' . $urlMailbox .
+                '&amp;startMessage=' . $startMessage .
+                (isset($passed_ent_id)?'&amp;passed_ent_id='.$passed_ent_id:'');
 
+    if ($compose_new_win == '1') {
+        $link_open  = '<a href="javascript:void(0)" onclick="comp_in_new(\'';
+        $link_close = '\')">';
+    } else {
+        $link_open  = '<a href="';
+        $link_close = '">';
+    }
     if (($mailbox == $draft_folder) && ($save_as_draft)) {
         $comp_alt_uri = $comp_uri . '&amp;smaction=draft';
         $comp_alt_string = _("Resume Draft");
@@ -525,7 +527,7 @@ function formatMenubar($mailbox, $passed_id, $passed_ent_id, $message, $mbx_resp
     }
     if (isset($comp_alt_uri)) {
         $s .= $topbar_delimiter;
-        $s .= makeComposeLink($comp_alt_uri, $comp_alt_string);
+	$s .= makeComposeLink($comp_alt_uri, $comp_alt_string);
     }
 
     $s .= '</small></td><td align="center" width="33%"><small>';
@@ -598,7 +600,7 @@ function formatMenubar($mailbox, $passed_id, $passed_ent_id, $message, $mbx_resp
     if ($enable_forward_as_attachment) {
         $comp_action_uri = $comp_uri . '&amp;smaction=forward_as_attachment';
         $s .= $topbar_delimiter;
-        $s .= makeComposeLink($comp_action_uri, _("Forward as Attachment"));
+	$s .= makeComposeLink($comp_action_uri, _("Forward as Attachment"));
     }
 
     $comp_action_uri = $comp_uri . '&amp;smaction=reply';
@@ -609,9 +611,9 @@ function formatMenubar($mailbox, $passed_id, $passed_ent_id, $message, $mbx_resp
     $s .= $topbar_delimiter;
     $s .= makeComposeLink($comp_action_uri, _("Reply All"));
     $s .= '</small></td></tr></table>';
-    do_hook('read_body_menu_top');
+    do_hook("read_body_menu_top");
     echo $s;
-    do_hook('read_body_menu_bottom');
+    do_hook("read_body_menu_bottom");
 }
 
 function formatToolbar($mailbox, $passed_id, $passed_ent_id, $message, $color) {
@@ -741,11 +743,16 @@ do_hook('html_top');
 
 if (isset($sendreceipt)) {
    if ( !$message->is_mdnsent ) {
-      $final_recipient = '';
-      if ((isset($identity)) && ($identity != 0))	//Main identity
-         $final_recipient = trim(getPref($data_dir, $username, 'email_address' . $identity, '' ));
-      if ($final_recipient == '' )
-         $final_recipient = trim(getPref($data_dir, $username, 'email_address', '' ));
+      if (isset($identity) ) {
+         $final_recipient = getPref($data_dir, $username, 'email_address' . '0', '' );
+      } else {
+         $final_recipient = getPref($data_dir, $username, 'email_address', '' );
+      }
+
+      $final_recipient = trim($final_recipient);
+      if ($final_recipient == '' ) {
+         $final_recipient = getPref($data_dir, $username, 'email_address', '' );
+      }
       $supportMDN = ServerMDNSupport($mbx_response["PERMANENTFLAGS"]);
       if ( SendMDN( $mailbox, $passed_id, $final_recipient, $message, $imapConnection ) > 0 && $supportMDN ) {
          ToggleMDNflag( true, $imapConnection, $mailbox, $passed_id, $uid_support);
@@ -800,10 +807,11 @@ echo '<TR><TD HEIGHT="5" COLSPAN="2" BGCOLOR="'.
 
 $attachmentsdisplay = formatAttachments($message,$ent_ar,$mailbox, $passed_id);
 if ($attachmentsdisplay) {
-   echo '  </table>';
+   echo '  <tr><td>';
    echo '    <table width="100%" cellpadding="1" cellspacing="0" align="center"'.' border="0" bgcolor="'.$color[9].'">';
    echo '     <tr><td>';
    echo '       <table width="100%" cellpadding="0" cellspacing="0" align="center" border="0" bgcolor="'.$color[4].'">';
+ //  echo '        <tr><td ALIGN="left" bgcolor="'.$color[9].'">';
    echo '        <tr>' . html_tag( 'td', '', 'left', $color[9] );              
    echo '           <b>' . _("Attachments") . ':</b>';
    echo '        </td></tr>';
@@ -812,6 +820,7 @@ if ($attachmentsdisplay) {
    echo              $attachmentsdisplay;
    echo '          </td></tr></table>';
    echo '       </td></tr></table>';
+   echo '    </td></tr></table>';
    echo '  </td></tr>';
    echo '<TR><TD HEIGHT="5" COLSPAN="2" BGCOLOR="'.
           $color[4].'"></TD></TR>';

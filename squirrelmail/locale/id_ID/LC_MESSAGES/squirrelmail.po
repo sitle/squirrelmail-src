@@ -4,8 +4,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: $Id$\n"
-"POT-Creation-Date: 2003-05-02 14:08+0300\n"
+"Project-Id-Version: $Id: squirrelmail.po,v 1.22.2.1 2003/05/26 18:02:16 "
+"tokul Exp $\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2003-09-20 11:04+0300\n"
 "PO-Revision-Date: 2003-05-26 13:35\n"
 "Last-Translator: Arief S Fitrianto <arief@gurame.fisika.ui.ac.id>\n"
 "Language-Team: Indonesia <squirrelmail-i18n@sourceforge.net>\n"
@@ -372,6 +374,9 @@ msgstr "kosongkan"
 msgid "Last Refresh"
 msgstr "Peninjauan Terakhir"
 
+msgid "refresh unseen/total info"
+msgstr ""
+
 msgid "Save folder tree"
 msgstr "Simpan Struktur Laci"
 
@@ -422,6 +427,12 @@ msgstr "subyek"
 
 msgid "Edit"
 msgstr "Ubah"
+
+msgid "Up"
+msgstr "Atas"
+
+msgid "Down"
+msgstr "Bawah"
 
 msgid "No highlighting is defined"
 msgstr "Tidak ada penyorotan yang didefinisikan"
@@ -600,11 +611,11 @@ msgstr ""
 msgid "Message not printable"
 msgstr "Pesan tidak dapat dicetak"
 
-msgid "Printer Friendly"
-msgstr "Layar Pencetakan"
-
 msgid "CC"
 msgstr "Tembusan"
+
+msgid "Printer Friendly"
+msgstr "Layar Pencetakan"
 
 msgid "Print"
 msgstr "Cetak"
@@ -640,7 +651,8 @@ msgstr "Sarana"
 msgid "Read receipt"
 msgstr "Tanggapan membaca"
 
-msgid "send"
+#, fuzzy
+msgid "sent"
 msgstr "kirim"
 
 msgid "requested"
@@ -670,9 +682,6 @@ msgstr "Ubah Pesan sebagai pesan baru"
 
 msgid "View Message"
 msgstr "Lihat Pesan"
-
-msgid "Up"
-msgstr "Atas"
 
 msgid "Forward"
 msgstr "Kirimkan ke"
@@ -985,6 +994,9 @@ msgstr "D, j F Y, g:i"
 msgid "D, F j, Y G:i"
 msgstr "D, j F Y, G:i"
 
+msgid "M j, Y"
+msgstr "j M Y"
+
 msgid "g:i a"
 msgstr "g:i"
 
@@ -996,9 +1008,6 @@ msgstr "D, g:i"
 
 msgid "D, G:i"
 msgstr "D, G:i"
-
-msgid "M j, Y"
-msgstr "j M Y"
 
 #, c-format
 msgid "Preference database error (%s). Exiting abnormally"
@@ -1046,8 +1055,8 @@ msgid ""
 "Preference file, %s, could not be copied from temporary file, %s. Contact "
 "your system administrator to resolve this issue."
 msgstr ""
-"File Acuan , %s , tidak dapat disalin dari file sementara, %s. "
-"Hubungi administrator Anda untuk mengatasi hal ini."
+"File Acuan , %s , tidak dapat disalin dari file sementara, %s. Hubungi "
+"administrator Anda untuk mengatasi hal ini."
 
 #, c-format
 msgid "Error opening %s"
@@ -1087,18 +1096,21 @@ msgid ""
 "Signature file, %s, could not be copied from temporary file, %s. Contact "
 "your system administrator to resolve this issue."
 msgstr ""
-"File Tanda tangan, %s, tidak dapat disalin dari file sementara, %s. "
-"Hubungi administrator Anda untuk mengatasi hal ini."
+"File Tanda tangan, %s, tidak dapat disalin dari file sementara, %s. Hubungi "
+"administrator Anda untuk mengatasi hal ini."
 
 msgid ""
 "You need to have php4 installed with the multibyte string function enabled "
 "(using configure option --enable-mbstring)."
 msgstr ""
-"Anda harus memasang PHP4 dengan fungsi string multibyte aktif "
-"(menggunakan pilihan konfigurasi --enable-mbstring)."
+"Anda harus memasang PHP4 dengan fungsi string multibyte aktif (menggunakan "
+"pilihan konfigurasi --enable-mbstring)."
 
 msgid "ERROR : No available imapstream."
 msgstr "SALAH: Tidak ada imapstream yang tersedia"
+
+msgid "ERROR : Connection dropped by imap-server."
+msgstr ""
 
 msgid "ERROR : Could not complete request."
 msgstr "SALAH: Tidak dapat melaksanakan perintah."
@@ -1114,6 +1126,13 @@ msgstr "SALAH : Perintah jelek atau salah."
 
 msgid "Server responded: "
 msgstr "Tanggapan server: "
+
+msgid "ERROR : Imap server closed the connection."
+msgstr ""
+
+#, fuzzy
+msgid "ERROR : Unknown imap response."
+msgstr "Tanggapan tak diketahui"
 
 #, c-format
 msgid "Error connecting to IMAP server: %s."
@@ -1143,20 +1162,23 @@ msgstr ""
 "Buanglah pesan yang tidak perlu dari laci Anda dan mulailah dengan laci "
 "Sampah (Trash)"
 
-msgid "Unknown response from IMAP server: "
-msgstr "Tanggapan misterius dari server IMAP: "
-
-msgid "Unknown message number in reply from server: "
-msgstr "Nomor pesan tidak dikenal dalam balasan dari server: "
-
 msgid "(no subject)"
 msgstr "(tidak ada subyek)"
 
 msgid "Unknown Sender"
 msgstr "Pengirim Misterius"
 
-msgid "(unknown sender)"
-msgstr "(pengirim misterius)"
+msgid "Unknown response from IMAP server: "
+msgstr "Tanggapan misterius dari server IMAP: "
+
+msgid "The server couldn't find the message you requested."
+msgstr ""
+
+msgid ""
+"Most probably your message list was out of date and the message has been "
+"moved away or deleted (perhaps by another program accessing the same "
+"mailbox)."
+msgstr ""
 
 msgid "Unknown date"
 msgstr "Tanggal tak diketahui"
@@ -1390,6 +1412,9 @@ msgstr "Aktifkan Pemilih Halaman"
 
 msgid "Maximum Number of Pages to Show"
 msgstr "Jumlah halaman maksimum yang ditampilkan"
+
+msgid "Always Show Full Date"
+msgstr ""
 
 msgid "Message Display and Composition"
 msgstr "Penulisan dan Penampilan Pesan"
@@ -2111,60 +2136,6 @@ msgid "COMMERCIAL - RBL+ Dial-up entries."
 msgstr "KOMERSIL - RBL+ Daftar spam dial-up"
 
 msgid ""
-"FREE - Osirusoft Relays - Osirusofts list of verified open relays. Seems to "
-"include servers used by abuse@uunet.net auto-replies too."
-msgstr ""
-"BEBAS - Relay Osurusoft - Osirusoft mendaftar relay terbuka yang sudak "
-"diperiksa. Tampaknya juga memasukkan server yang digunakan oleh pembalas "
-"otomasis dari abuse@uunet.net. "
-
-msgid "FREE - Osirusoft Dialups - Osirusofts Dialup Spam Source list."
-msgstr "BEBAS - Dialups Osirusoft - Daftar sumber spam dialup dari Osirusoft."
-
-msgid ""
-"FREE - Osirusoft Confirmed Spam Source - Sites that continually spam and "
-"have been manually added after multiple nominations. Use with caution. Seems "
-"to catch abuse auto-replies from some ISPs."
-msgstr ""
-"BEBAS - Sumber Spam yang dikonfirmasi Osirusoft - Situs yang terus-menerus "
-"mengirimkan spam dan telah ditambahkan secara manual setelah melalui "
-"beberapa penilaian. Gunakan secara bijak. Tampaknya juga memasukkan pembalas "
-"otomatis dari beberapa ISP."
-
-msgid ""
-"FREE - Osirusoft Smart Hosts - List of hosts that are secure but relay for "
-"other mail servers that are not secure."
-msgstr ""
-"BEBAS - Smart Host Osirusoft - Daftar host yang aman tetapi meneruskan "
-"server lainnya yang tidak aman."
-
-msgid ""
-"FREE - Osirusoft Spamware Developers - It is believed that these are IP "
-"ranges of companies that are known to produce spam software. Seems to catch "
-"abuse auto-replies from some ISPs."
-msgstr ""
-"BEBAS - Pengembang Perangkat Spam Osirusoft - Alamat IP yang ada di daftar "
-"ini dipercayai milik perusahaan yang suka membuat piranti lunak untuk spam. "
-"Tampaknya juga memasukkan pembalas otomatis dari beberapa ISP."
-
-msgid ""
-"FREE - Osirusoft Unconfirmed OptIn Servers - List of listservers that opt "
-"users in without confirmation."
-msgstr ""
-"BEBAS - Daftar server OptIn Osirusoft - Daftar beberapa server yang membuat "
-"user login otomatis tanpa pemberitahuan."
-
-msgid ""
-"FREE - Osirusoft Insecure formmail.cgi scripts - List of insecure formmail."
-"cgi scripts. (planned)."
-msgstr ""
-"GRATIS - script Formmail.cgi tak aman Osirusoft - Daftar script formmail.cgi "
-"tak aman. "
-
-msgid "FREE - Osirusoft Open Proxy Servers - List of Open Proxy Servers."
-msgstr "GRATIS - Server Proxy Terbuka Osirusoft - Daftar Server Proxy Terbuka"
-
-msgid ""
 "FREE - ORDB was born when ORBS went off the air. It seems to have fewer "
 "false positives than ORBS did though."
 msgstr ""
@@ -2207,6 +2178,7 @@ msgstr ""
 msgid "FREE - SPAMhaus - A list of well-known SPAM sources."
 msgstr "BEBAS - SPAMhaus - Sebuah daftar sumber SPAM yang terkenal"
 
+#, fuzzy, c-format
 msgid ""
 "FREE, for now - SPAMCOP - An interesting solution that lists servers that "
 "have a very high spam to legit email ratio (85% or more)."
@@ -2326,9 +2298,6 @@ msgstr "'Header' "
 
 msgid "Contains:"
 msgstr "Berisi:"
-
-msgid "Down"
-msgstr "Bawah"
 
 #, c-format
 msgid "If <b>%s</b> contains <b>%s</b> then move to <b>%s</b>"
@@ -2741,9 +2710,6 @@ msgstr "Pastikan menghapus server yang dipilih?"
 
 msgid "Confirm Delete"
 msgstr "Pastikan Menghapus"
-
-msgid "Mofify a Server"
-msgstr "Ubah suatu Server"
 
 msgid "Undefined Function"
 msgstr "Fungsi tidak didefinisikan"
@@ -3333,25 +3299,38 @@ msgstr "Simpan Pilihan Penerjemahan"
 msgid "Your server options are as follows:"
 msgstr "Pilihan server Anda sebagai berikut:"
 
-msgid ""
-"19 language pairs, maximum of 1000 characters translated, powered by Systran"
+#, fuzzy
+msgid "Maximum of 1000 characters translated, powered by Systran"
 msgstr "19 kombinasi bahasa, menerjemahkan maksimal 1000 huruf, oleh Systran."
 
-msgid "12 language pairs, no known limits, powered by Systran"
+#, c-format
+msgid "Number of supported language pairs: %s"
+msgstr ""
+
+#, fuzzy
+msgid "No known limits, powered by Systran"
 msgstr "12 kombinasi bahasa, tidak ada batasan, oleh Systran."
 
-msgid ""
-"784 language pairs, no known limits, powered by Translation Experts's "
-"InterTran"
+#, fuzzy
+msgid "No known limits, powered by Translation Experts's InterTran"
 msgstr ""
 "784 kombinasi bahasa, tidak ada batasan, oleh Translation Experts's InterTran"
 
-msgid ""
-"8 language pairs, no known limits, powered by GPLTrans (free, open source)"
+#, c-format
+msgid "Number of supported languages: %s"
+msgstr ""
+
+#, fuzzy
+msgid "No known limits, powered by GPLTrans (free, open source)"
 msgstr "8 kombinasi bahasa, tidak ada batasan, oleh GPLTrans (bebas, terbuka)"
 
-msgid "4 language pairs for Hellenic, no known limits, powered by Systran"
-msgstr "4 kombinasi bahasa unutk Hellenic, tidak ada batasan, oleh Systran."
+#, fuzzy
+msgid "Hellenic translations, no known limits, powered by Systran"
+msgstr "12 kombinasi bahasa, tidak ada batasan, oleh Systran."
+
+#, fuzzy
+msgid "Russian translations, maximum of 500 characters translated"
+msgstr "19 kombinasi bahasa, menerjemahkan maksimal 1000 huruf, oleh Systran."
 
 msgid ""
 "You also decide if you want the translation box displayed, and where it will "
@@ -3505,9 +3484,84 @@ msgstr "ke Inggris"
 msgid "from English"
 msgstr "dari Inggris"
 
+#, fuzzy
+msgid "Interface language"
+msgstr "Bahasa Utama"
+
+#, fuzzy
+msgid "Translation direction"
+msgstr "Pilihan Penerjemahan"
+
 msgid "Delivery error report"
 msgstr "Laporan kesalahan pengiriman"
 
 msgid "Undelivered Message Headers"
 msgstr "Header Pesan tidak bisa dikirimkan"
 
+#~ msgid "Unknown message number in reply from server: "
+#~ msgstr "Nomor pesan tidak dikenal dalam balasan dari server: "
+
+#~ msgid "(unknown sender)"
+#~ msgstr "(pengirim misterius)"
+
+#~ msgid ""
+#~ "FREE - Osirusoft Relays - Osirusofts list of verified open relays. Seems "
+#~ "to include servers used by abuse@uunet.net auto-replies too."
+#~ msgstr ""
+#~ "BEBAS - Relay Osurusoft - Osirusoft mendaftar relay terbuka yang sudak "
+#~ "diperiksa. Tampaknya juga memasukkan server yang digunakan oleh pembalas "
+#~ "otomasis dari abuse@uunet.net. "
+
+#~ msgid "FREE - Osirusoft Dialups - Osirusofts Dialup Spam Source list."
+#~ msgstr ""
+#~ "BEBAS - Dialups Osirusoft - Daftar sumber spam dialup dari Osirusoft."
+
+#~ msgid ""
+#~ "FREE - Osirusoft Confirmed Spam Source - Sites that continually spam and "
+#~ "have been manually added after multiple nominations. Use with caution. "
+#~ "Seems to catch abuse auto-replies from some ISPs."
+#~ msgstr ""
+#~ "BEBAS - Sumber Spam yang dikonfirmasi Osirusoft - Situs yang terus-"
+#~ "menerus mengirimkan spam dan telah ditambahkan secara manual setelah "
+#~ "melalui beberapa penilaian. Gunakan secara bijak. Tampaknya juga "
+#~ "memasukkan pembalas otomatis dari beberapa ISP."
+
+#~ msgid ""
+#~ "FREE - Osirusoft Smart Hosts - List of hosts that are secure but relay "
+#~ "for other mail servers that are not secure."
+#~ msgstr ""
+#~ "BEBAS - Smart Host Osirusoft - Daftar host yang aman tetapi meneruskan "
+#~ "server lainnya yang tidak aman."
+
+#~ msgid ""
+#~ "FREE - Osirusoft Spamware Developers - It is believed that these are IP "
+#~ "ranges of companies that are known to produce spam software. Seems to "
+#~ "catch abuse auto-replies from some ISPs."
+#~ msgstr ""
+#~ "BEBAS - Pengembang Perangkat Spam Osirusoft - Alamat IP yang ada di "
+#~ "daftar ini dipercayai milik perusahaan yang suka membuat piranti lunak "
+#~ "untuk spam. Tampaknya juga memasukkan pembalas otomatis dari beberapa ISP."
+
+#~ msgid ""
+#~ "FREE - Osirusoft Unconfirmed OptIn Servers - List of listservers that opt "
+#~ "users in without confirmation."
+#~ msgstr ""
+#~ "BEBAS - Daftar server OptIn Osirusoft - Daftar beberapa server yang "
+#~ "membuat user login otomatis tanpa pemberitahuan."
+
+#~ msgid ""
+#~ "FREE - Osirusoft Insecure formmail.cgi scripts - List of insecure "
+#~ "formmail.cgi scripts. (planned)."
+#~ msgstr ""
+#~ "GRATIS - script Formmail.cgi tak aman Osirusoft - Daftar script formmail."
+#~ "cgi tak aman. "
+
+#~ msgid "FREE - Osirusoft Open Proxy Servers - List of Open Proxy Servers."
+#~ msgstr ""
+#~ "GRATIS - Server Proxy Terbuka Osirusoft - Daftar Server Proxy Terbuka"
+
+#~ msgid "Mofify a Server"
+#~ msgstr "Ubah suatu Server"
+
+#~ msgid "4 language pairs for Hellenic, no known limits, powered by Systran"
+#~ msgstr "4 kombinasi bahasa unutk Hellenic, tidak ada batasan, oleh Systran."

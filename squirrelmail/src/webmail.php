@@ -42,9 +42,6 @@ sqgetGlobalVar('right_frame', $right_frame, SQ_GET);
 if ( isset($_SESSION['session_expired_post']) ) {
     sqsession_unregister('session_expired_post');
 }
-if(!sqgetGlobalVar('mailto', $mailto)) {
-    $mailto = '';
-}
 
 is_logged_in();
 
@@ -123,24 +120,19 @@ if ($right_frame == 'right_main.php') {
     $right_frame_url = 'options.php';
 } elseif ($right_frame == 'folders.php') {
     $right_frame_url = 'folders.php';
-} elseif ($right_frame == 'compose.php') {
-    $right_frame_url = 'compose.php?' . $mailto;
 } else if ($right_frame == '') {
     $right_frame_url = 'right_main.php';
 } else {
     $right_frame_url =  $right_frame;
 }
 
-$left_frame  = '<frame src="left_main.php" name="left" frameborder="1" title="'.
-               _("Folder List") ."\" />\n";
-$right_frame = '<frame src="'.$right_frame_url.'" name="right" frameborder="1" title="'.
-               _("Message List") ."\" />\n";
-
 if ($location_of_bar == 'right') {
-    echo $right_frame . $left_frame;
+    echo "<frame src=\"$right_frame_url\" name=\"right\" frameborder=\"1\" />\n" .
+         "<frame src=\"left_main.php\" name=\"left\" frameborder=\"1\" />\n";
 }
 else {
-    echo $left_frame . $right_frame;
+    echo "<frame src=\"left_main.php\" name=\"left\" frameborder=\"1\" />\n".
+         "<frame src=\"$right_frame_url\" name=\"right\" frameborder=\"1\" />\n";
 }
 do_hook('webmail_bottom');
 ?>

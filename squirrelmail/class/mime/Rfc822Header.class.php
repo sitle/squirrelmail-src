@@ -21,7 +21,6 @@ class Rfc822Header {
         $from = array(),
         $sender = '',
         $reply_to = array(),
-        $mail_followup_to = array(),
         $to = array(),
         $cc = array(),
         $bcc = array(),
@@ -125,9 +124,6 @@ class Rfc822Header {
                 break;
             case 'reply-to':
                 $this->reply_to = $this->parseAddress($value, true);
-                break;
-            case 'mail-followup-to':
-                $this->mail_followup_to = $this->parseAddress($value, true);
                 break;
             case 'to':
                 $this->to = $this->parseAddress($value, true);
@@ -234,7 +230,7 @@ class Rfc822Header {
                    $i = $iEnd;
                 }
                 $sToken = str_replace($aReplace, $aSpecials,$sToken);
-                if($sToken) $aTokens[] = $sToken;
+                if ($sToken) $aTokens[] = $sToken;
                 break;
             case '"':
                 $iEnd = strpos($address,$cChar,$i+1);
@@ -314,7 +310,7 @@ class Rfc822Header {
                     }
                 }
                 $sToken = str_replace($aReplace, $aSpecials,$sToken);
-                if($sToken) $aTokens[] = $sToken;
+                if ($sToken) $aTokens[] = $sToken;
                 break;
             case ',':
             case ':':

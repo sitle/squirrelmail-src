@@ -156,31 +156,6 @@ function load_optpage_data_display() {
         'refresh' => SMOPT_REFRESH_NONE
     );
 
-    $optvals[SMOPT_GRP_MAILBOX][] = array(
-        'name'    => 'truncate_sender',
-        'caption' => _("Length of From/To Field (0 for full)"),
-        'type'    => SMOPT_TYPE_INTEGER,
-        'refresh' => SMOPT_REFRESH_NONE,
-        'size'    => SMOPT_SIZE_TINY
-    );
-
-    $optvals[SMOPT_GRP_MAILBOX][] = array(
-        'name'    => 'truncate_subject',
-        'caption' => _("Length of Subject Field (0 for full)"),
-        'type'    => SMOPT_TYPE_INTEGER,
-        'refresh' => SMOPT_REFRESH_NONE,
-        'size'    => SMOPT_SIZE_TINY
-    );
-
-    $optvals[SMOPT_GRP_MAILBOX][] = array(
-        'name'    => 'show_recipient_instead',
-        'caption' => _("Show recipient name if the message is from your default identity"),
-        'type'    => SMOPT_TYPE_BOOLEAN,
-        'refresh' => SMOPT_REFRESH_NONE,
-        'size'    => SMOPT_SIZE_TINY
-    );
-
-
     /*** Load the General Options into the array ***/
     $optgrps[SMOPT_GRP_MESSAGE] = _("Message Display and Composition");
     $optvals[SMOPT_GRP_MESSAGE] = array();
@@ -305,13 +280,6 @@ function load_optpage_data_display() {
     $optvals[SMOPT_GRP_MESSAGE][] = array(
         'name'    => 'sig_first',
         'caption' => _("Append Signature before Reply/Forward Text"),
-        'type'    => SMOPT_TYPE_BOOLEAN,
-        'refresh' => SMOPT_REFRESH_NONE
-    );
-
-    $optvals[SMOPT_GRP_MESSAGE][] = array(
-        'name'    => 'strip_sigs',
-        'caption' => _("Strip signature when replying"),
         'type'    => SMOPT_TYPE_BOOLEAN,
         'refresh' => SMOPT_REFRESH_NONE
     );

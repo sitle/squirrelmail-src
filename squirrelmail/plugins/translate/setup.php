@@ -183,7 +183,6 @@ function translate_does_it_match_language($test) {
     return $false;
 }
 
-
 function translate_lang_opt($from, $to, $value, $text) {
     global $translate_dir;
 
@@ -201,7 +200,6 @@ function translate_lang_opt($from, $to, $value, $text) {
 
     return( $ret );
 }
-
 
 function translate_new_form($action) {
     global $translate_dir, $translate_new_window, $translate_location;

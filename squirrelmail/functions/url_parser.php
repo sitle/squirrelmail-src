@@ -35,7 +35,7 @@ $Email_RegExp_Match = '[0-9a-z]([-_.+]?[0-9a-z])*(%' . $Host_RegExp_Match .
     ')?@' . $Host_RegExp_Match;
 
 function parseEmail (&$body) {
-    global $color, $Email_RegExp_Match;
+    global $color, $Email_RegExp_Match, $compose_new_win;
     $sbody     = $body;
     $addresses = array();
 

@@ -386,11 +386,11 @@ if ($showaddrlist) {
             html_tag( 'td', '', 'left', '', 'valign="top" width="1%" nowrap' ) . '&nbsp;';
                 }
             $email = $abook->full_address($row);
-            echo makeComposeLink('src/compose.php?send_to='.rawurlencode($email),
-                 htmlspecialchars($row['email']) ) .
-            '&nbsp;</td>'."\n".
-            html_tag( 'td', '&nbsp;' . htmlspecialchars($row['label']) . '&nbsp;', 'left', '', 'valign="top" width="1%"' ) .
-            "</tr>\n";
+            echo makeComposeLink('src/compose.php?send_to=' . rawurlencode($email),
+		                 htmlspecialchars($row['email'])) .
+		 '&nbsp;</td>'."\n".
+                 html_tag( 'td', '&nbsp;' . htmlspecialchars($row['label']) . '&nbsp;', 'left', '', 'valign="top" width="1%"' ) .
+                "</tr>\n";
             $line++;
         }
     

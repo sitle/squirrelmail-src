@@ -24,27 +24,38 @@ require_once(SM_PATH . 'functions/html.php');
 global $compose_new_win;
 
 if ( !sqgetGlobalVar('composesession', $composesession, SQ_SESSION) ) {
-    $composesession = 0;
+  $composesession = 0;
 }
 
 function attachSelectedMessages($msg, $imapConnection) {
     global $username, $attachment_dir, $startMessage,
            $data_dir, $composesession, $uid_support,
-           $msgs, $show_num, $compose_messages;
+       $msgs, $thread_sort_messages, $allow_server_sort, $show_num,
+       $compose_messages;
 
     if (!isset($compose_messages)) {
         $compose_messages = array();
-        sqsession_register($compose_messages,'compose_messages');
+            sqsession_register($compose_messages,'compose_messages');
     }
 
     if (!$composesession) {
         $composesession = 1;
-        sqsession_register($composesession,'composesession');
+            sqsession_register($composesession,'composesession');
     } else {
         $composesession++;
         sqsession_register($composesession,'composesession');
     }
 
+    $hashed_attachment_dir = getHashedDir($username, $attachment_dir, $composesession);
+
+    if ($thread_sort_messages || $allow_server_sort) {
+       $start_index=0;
+    } else {
+       $start_index = ($startMessage-1) * $show_num;
+    }
+
+    $i = 0;
+    $j = 0;
     $hashed_attachment_dir = getHashedDir($username, $attachment_dir);
 
     $composeMessage = new Message();
@@ -52,36 +63,40 @@ function attachSelectedMessages($msg, $imapConnection) {
     $composeMessage->rfc822_header = $rfc822_header;
     $composeMessage->reply_rfc822_header = '';
 
-    foreach($msg as $id) {
-        $body_a = sqimap_run_command($imapConnection, "FETCH $id RFC822", true, $response, $readmessage, $uid_support);
+    while ($j < count($msg)) {
+        if (isset($msg[$i])) {
+            $id = $msg[$i];
+            $body_a = sqimap_run_command($imapConnection, "FETCH $id RFC822",true, $response, $readmessage, $uid_support);
 
-        if ($response == 'OK') {
+            if ($response == 'OK') {
 
-            // fetch the subject for the message with $id from msgs.
-            // is there a more efficient way to do this?
-            foreach($msgs as $k => $vals) {
-                if($vals['ID'] == $id) {
-                    $subject = $msgs[$k]['SUBJECT'];
-                    break;
+                // fetch the subject for the message with $id from msgs.
+                // is there a more efficient way to do this?
+                foreach($msgs as $k => $vals) {
+                    if($vals['ID'] == $id) {
+                        $subject = $msgs[$k]['SUBJECT'];
+                        break;
+                    }
                 }
+
+                array_shift($body_a);
+                array_pop($body_a);
+                $body = implode('', $body_a);
+                $body .= "\r\n";
+
+                $localfilename = GenerateRandomString(32, 'FILE', 7);
+                $full_localfilename = "$hashed_attachment_dir/$localfilename";
+
+                $fp = fopen( $full_localfilename, 'wb');
+                fwrite ($fp, $body);
+                fclose($fp);
+                $composeMessage->initAttachment('message/rfc822',$subject.'.eml',
+                     $full_localfilename);
             }
-
-            array_shift($body_a);
-            array_pop($body_a);
-            $body = implode('', $body_a);
-            $body .= "\r\n";
-
-            $localfilename = GenerateRandomString(32, 'FILE', 7);
-            $full_localfilename = "$hashed_attachment_dir/$localfilename";
-
-            $fp = fopen( $full_localfilename, 'wb');
-            fwrite ($fp, $body);
-            fclose($fp);
-            $composeMessage->initAttachment('message/rfc822',$subject.'.msg',
-                 $full_localfilename);
+            $j++;
         }
+        $i++;
     }
-
     $compose_messages[$composesession] = $composeMessage;
     sqsession_register($compose_messages,'compose_messages');
     session_write_close();
@@ -114,7 +129,6 @@ sqgetGlobalVar('markRead',        $markRead,        SQ_POST);
 sqgetGlobalVar('markUnread',      $markUnread,      SQ_POST);
 sqgetGlobalVar('attache',         $attache,         SQ_POST);
 sqgetGlobalVar('location',        $location,        SQ_POST);
-sqgetGlobalVar('bypass_trash',    $bypass_trash,    SQ_POST);
 
 /* end of get globals */
 
@@ -172,17 +186,14 @@ if(isset($expungeButton)) {
     if (count($id)) {
         $cnt = count($id);
         if (!isset($attache)) {
-            $button_action = concat_hook_function('move_messages_button_action');
             if (isset($markRead)) {
                 sqimap_toggle_flag($imapConnection, $id, '\\Seen',true,true);
             } else if (isset($markUnread)) {
                 sqimap_toggle_flag($imapConnection, $id, '\\Seen',false,true);
             } else  {
-                if (!$button_action) {
-                    sqimap_msgs_list_delete($imapConnection, $mailbox, $id,$bypass_trash);
-                    if ($auto_expunge) {
-                        $cnt = sqimap_mailbox_expunge($imapConnection, $mailbox, true);
-                    }
+                sqimap_msgs_list_delete($imapConnection, $mailbox, $id);
+                if ($auto_expunge) {
+                    $cnt = sqimap_mailbox_expunge($imapConnection, $mailbox, true);
                 }
             }
         }
@@ -210,7 +221,7 @@ if(isset($expungeButton)) {
 } else {    // Move messages
 
     if (count($id)) {
-        sqimap_msgs_list_move($imapConnection,$id,$targetMailbox);
+        sqimap_msgs_list_copy($imapConnection,$id,$targetMailbox);
         if ($auto_expunge) {
             $cnt = sqimap_mailbox_expunge($imapConnection, $mailbox, true);
         } else {

@@ -151,7 +151,7 @@ function load_optpage_data_folder() {
 
     $optvals[SMOPT_GRP_FOLDERLIST][] = array(
         'name'    => 'collapse_folders',
-        'caption' => _("Enable Collapsable Folders"),
+        'caption' => _("Enable Collapsible Folders"),
         'type'    => SMOPT_TYPE_BOOLEAN,
         'refresh' => SMOPT_REFRESH_FOLDERLIST
     );
@@ -214,9 +214,9 @@ function load_optpage_data_folder() {
         'caption' => _("Selection List Style"),
         'type'    => SMOPT_TYPE_STRLIST,
         'refresh' => SMOPT_REFRESH_NONE,
-        'posvals' => array( 0 => _("Long: ") . '"' . _("Folder") . $delim . _("Subfolder") . '"',
-                            1 => _("Indented: ") .  '"&nbsp;&nbsp;&nbsp;&nbsp;' . _("Subfolder") . '"',
-                            2 => _("Delimited: ") . '".&nbsp;' . _("Subfolder") . '"')
+        'posvals' => array( 0 => _("Long: ") . '"Folder' . $delim . 'Subfolder"',
+                            1 => _("Indented: ") .  '"&nbsp;&nbsp;&nbsp;&nbsp;' . 'Subfolder"',
+                            2 => _("Delimited: ") . '".&nbsp;' . 'Subfolder"')
     );
 
     /* Assemble all this together and return it as our result. */

@@ -217,8 +217,7 @@
                 echo "<SCRIPT LANGUAGE=\"JavaScript\">\n".
                     "<!--\n".
                     "function PopupScriptLoad() {\n".
-                        'window.open("'.sqm_baseuri().'plugins/newmail/newmail.php?numnew='.$totalNew.
-			             '", "SMPopup",'.
+                        'window.open("'.sqm_baseuri().'plugins/newmail/newmail.php", "SMPopup",'.
                                      "\"width=200,height=130,scrollbars=no\");\n".
                         "if (BeforePopupScript != null)\n".
                             "BeforePopupScript();\n".

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * global.php
+ * globals.php
  *
  * Copyright (c) 1999-2003 The SquirrelMail Project Team
  * Licensed under the GNU GPL. For full terms see the file COPYING.
@@ -24,26 +24,17 @@ if(isset($session_name) && $session_name) {
 
 /* If magic_quotes_runtime is on, SquirrelMail breaks in new and creative ways.
  * Force magic_quotes_runtime off.
- * tassium@squirrelmail.org - I put it here in the hopes that all SM code includes this.
+ * chilts@birdbrained.org - I put it here in the hopes that all SM code includes this.
  * If there's a better place, please let me know.
  */
 ini_set('magic_quotes_runtime','0');
-
-/* Since we decided all IMAP servers must implement the UID command as defined in
- * the IMAP RFC, we force $uid_support to be on.
- */
-
-global $uid_support;
-$uid_support = true;
-
-sqsession_is_active();
 
 /* convert old-style superglobals to current method
  * this is executed if you are running PHP 4.0.x.
  * it is run via a require_once directive in validate.php 
  * and redirect.php. Patch submitted by Ray Black.
  */ 
-
+sqsession_is_active();
 if ( !check_php_version(4,1) ) {
   global $_COOKIE, $_ENV, $_FILES, $_GET, $_POST, $_SERVER, $_SESSION;
   global $HTTP_COOKIE_VARS, $HTTP_ENV_VARS, $HTTP_POST_FILES, $HTTP_GET_VARS,
@@ -219,7 +210,7 @@ function sqgetGlobalVar($name, &$value, $search = SQ_INORDER) {
 	   so that if a valid value isn't specified, 
 	   all three arrays will be searched. */
       default:
-      case SQ_INORDER: // check session, post, get
+      case SQ_INORDER:   // check session, post, get
       case SQ_SESSION:
         if( isset($_SESSION[$name]) ) {
             $value = $_SESSION[$name];
@@ -227,7 +218,7 @@ function sqgetGlobalVar($name, &$value, $search = SQ_INORDER) {
         } elseif ( $search == SQ_SESSION ) {
             break;
         }
-      case SQ_FORM:   // check post, get
+      case SQ_FORM:      //  check post, get
       case SQ_POST:
         if( isset($_POST[$name]) ) {
             $value = $_POST[$name];

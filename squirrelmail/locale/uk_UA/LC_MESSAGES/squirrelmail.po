@@ -4,8 +4,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: $Id$\n"
-"POT-Creation-Date: 2003-01-01 18:33+0100\n"
+"Project-Id-Version: $Id: squirrelmail.po,v 1.2.2.1 2003/05/25 09:01:15 tokul "
+"Exp $\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2003-09-20 11:04+0300\n"
 "PO-Revision-Date: 2001-10-29 09:00+0200\n"
 "Last-Translator: Oleg Baranovsky <oleg@uazone.net>  \n"
 "Language-Team: Ukrainian <squirrelmail-i18n@lists.sourceforge.net>\n"
@@ -13,14 +15,793 @@ msgstr ""
 "Content-Type: text/plain; charset=koi8-r\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-msgid "Delivery error report"
-msgstr "Ошибка при доставке сообщения"
+msgid "Address Book"
+msgstr "Адресная книга"
 
-msgid "Undelivered Message Headers"
-msgstr "Хедеры сообщения"
+msgid "All"
+msgstr "Все"
 
-msgid "(no subject)"
-msgstr "(нет заголовка)"
+msgid "Name"
+msgstr "Имя"
+
+msgid "E-mail"
+msgstr "E-mail"
+
+msgid "Info"
+msgstr "Инфо"
+
+msgid "Source"
+msgstr "Исходный формат"
+
+msgid "To"
+msgstr "Кому"
+
+msgid "Cc"
+msgstr "Копия"
+
+msgid "Bcc"
+msgstr "Слепая копия"
+
+msgid "Use Addresses"
+msgstr "Использовать адреса"
+
+msgid "Address Book Search"
+msgstr "Поиск в адресной книге"
+
+msgid "Search for"
+msgstr "Искать"
+
+msgid "in"
+msgstr "во"
+
+msgid "All address books"
+msgstr "всех адресных книгах"
+
+msgid "Search"
+msgstr "Найти"
+
+msgid "List all"
+msgstr "Показать все"
+
+#, c-format
+msgid "Unable to list addresses from %s"
+msgstr "Ошибка доступа к адресам в %s"
+
+msgid "Your search failed with the following error(s)"
+msgstr "Поиск не завершен по следующим причинам"
+
+msgid "No persons matching your search was found"
+msgstr "По заданным параметрам ничего не найдено"
+
+msgid "Return"
+msgstr "Вернуться"
+
+msgid "Close"
+msgstr "Закрыть"
+
+msgid "Nickname"
+msgstr "Никнейм"
+
+msgid "Must be unique"
+msgstr "Должен быть уникальным"
+
+msgid "E-mail address"
+msgstr "Адрес эл. Почты:"
+
+msgid "Last name"
+msgstr "Фамилия"
+
+msgid "First name"
+msgstr "Имя"
+
+msgid "Additional info"
+msgstr "Дополнительная информация"
+
+msgid "No personal address book is defined. Contact administrator."
+msgstr "Персональная адресная книга не найдена. Свяжитесь с администратором."
+
+msgid "You can only edit one address at the time"
+msgstr "Вы можете редактировать только по одному адресу за раз"
+
+msgid "Update address"
+msgstr "Обновить адрес"
+
+msgid "ERROR"
+msgstr "ОШИБКА"
+
+msgid "Unknown error"
+msgstr "Неизвестная ошибка"
+
+msgid "Add address"
+msgstr "Добавить адрес"
+
+msgid "Edit selected"
+msgstr "Редактировать выделенные"
+
+msgid "Delete selected"
+msgstr "Удалить выделенные"
+
+#, c-format
+msgid "Add to %s"
+msgstr "Добавить в %s"
+
+msgid "said"
+msgstr "сообщил(а)"
+
+msgid "quote"
+msgstr "цитата"
+
+msgid "who"
+msgstr "от"
+
+msgid "Subject"
+msgstr "Тема"
+
+msgid "From"
+msgstr "От"
+
+msgid "Date"
+msgstr "Дата"
+
+msgid "Original Message"
+msgstr "Исходное сообщение"
+
+msgid "Draft Email Saved"
+msgstr "Черновик сохранен"
+
+msgid "Could not move/copy file. File not attached"
+msgstr "Ошибка при копировании файла. Файл не был вставлен"
+
+msgid "Draft Saved"
+msgstr "Черновик сохранен"
+
+msgid "Your Message has been sent"
+msgstr "Ваше сообщение было отправлено."
+
+msgid "From:"
+msgstr "От:"
+
+msgid "To:"
+msgstr "Кому:"
+
+msgid "CC:"
+msgstr "Копия:"
+
+msgid "BCC:"
+msgstr "Слепая копия:"
+
+msgid "Subject:"
+msgstr "Тема:"
+
+msgid "Send"
+msgstr "Послать"
+
+msgid "Attach:"
+msgstr "Вставить файл:"
+
+msgid "Add"
+msgstr "Добавить"
+
+msgid "Delete selected attachments"
+msgstr "Удалить выделенные вставки"
+
+msgid "Priority"
+msgstr "Приоритет"
+
+msgid "High"
+msgstr "Срочно"
+
+msgid "Normal"
+msgstr "Нормально"
+
+msgid "Low"
+msgstr "Не срочно"
+
+msgid "Receipt"
+msgstr "Нотификация"
+
+#, fuzzy
+msgid "On Read"
+msgstr "По прочтении"
+
+msgid "On Delivery"
+msgstr "По получении"
+
+msgid "Signature"
+msgstr "Подпись"
+
+msgid "Addresses"
+msgstr "Адреса"
+
+msgid "Save Draft"
+msgstr "Сохранить черновик"
+
+msgid "You have not filled in the \"To:\" field."
+msgstr "Вы не заполнили поле \"Кому:\"."
+
+#, fuzzy
+msgid "Draft folder"
+msgstr "Папка для черновиков (Drafts)"
+
+#, fuzzy
+msgid "Server replied: "
+msgstr "Сервер вернул: "
+
+msgid "Illegal folder name.  Please select a different name."
+msgstr "Ошибка в имени папки. Пожалуйста выберите другое имя."
+
+msgid "Click here to go back"
+msgstr "Кликните здесь чтобы вернуться назад"
+
+msgid "You have not selected a folder to delete. Please do so."
+msgstr "Пожалуйста сначала выберите папку."
+
+msgid "Delete Folder"
+msgstr "Удалить Папку"
+
+#, fuzzy, c-format
+msgid "Are you sure you want to delete %s?"
+msgstr "В самом деле удалить эту памятку?"
+
+msgid "Yes"
+msgstr "Да"
+
+msgid "No"
+msgstr "Нет"
+
+msgid "Folders"
+msgstr "Папки"
+
+msgid "Subscribed successfully!"
+msgstr "Вы подписаны!"
+
+msgid "Unsubscribed successfully!"
+msgstr "Вы больше не подписаны."
+
+msgid "Deleted folder successfully!"
+msgstr "Папка благополучно удалена!"
+
+msgid "Created folder successfully!"
+msgstr "Папка была благополучно создана!"
+
+msgid "Renamed successfully!"
+msgstr "Папка переименована."
+
+msgid "Subscription Unsuccessful - Folder does not exist."
+msgstr ""
+
+msgid "refresh folder list"
+msgstr "обновить"
+
+msgid "Create Folder"
+msgstr "Создать Папку"
+
+msgid "as a subfolder of"
+msgstr "в качестве под-папки для"
+
+msgid "None"
+msgstr "Нет"
+
+msgid "Let this folder contain subfolders"
+msgstr "Эта папка может содержать под-папки"
+
+msgid "Create"
+msgstr "Создать"
+
+msgid "Rename a Folder"
+msgstr "Переименовать папку"
+
+msgid "Select a folder"
+msgstr "Выбрать папку"
+
+msgid "Rename"
+msgstr "Переименовать"
+
+msgid "No folders found"
+msgstr "Папок не найдено"
+
+msgid "Delete"
+msgstr "Удалить"
+
+msgid "Unsubscribe"
+msgstr "Отписаться"
+
+msgid "Subscribe"
+msgstr "Подписаться"
+
+msgid "No folders were found to unsubscribe from!"
+msgstr "При попытке отписаться не найдено папок!"
+
+msgid "No folders were found to subscribe to!"
+msgstr "При попытке подписаться не найдено папок!"
+
+#, fuzzy
+msgid "Subscribe to:"
+msgstr "Подписаться"
+
+msgid "You have not selected a folder to rename. Please do so."
+msgstr "Пожалуйста сначала выберите папку для переименования."
+
+msgid "Rename a folder"
+msgstr "Переименовать папку"
+
+msgid "New name:"
+msgstr "Новое имя:"
+
+msgid "Submit"
+msgstr "Готово"
+
+msgid "ERROR: Help files are not in the right format!"
+msgstr ""
+
+msgid "Help"
+msgstr "Помощь"
+
+#, c-format
+msgid ""
+"The help has not been translated to %s.  It will be displayed in English "
+"instead."
+msgstr ""
+"Этот файл помощи не переведен на %s. Будет использована Английская версия."
+
+msgid "Some or all of the help documents are not present!"
+msgstr "Некоторые или все из требуемых файлов помощи не найдены!"
+
+msgid "Table of Contents"
+msgstr "Оглавление"
+
+msgid "Previous"
+msgstr "Назад"
+
+msgid "Next"
+msgstr "Дальше"
+
+msgid "Top"
+msgstr "Вверх"
+
+msgid "Viewing an image attachment"
+msgstr "Просмотр графической вставки"
+
+msgid "View message"
+msgstr "Просмотр сообщения"
+
+msgid "Download this as a file"
+msgstr "Загрузить это сообщение на диск"
+
+msgid "INBOX"
+msgstr "Входящие"
+
+msgid "purge"
+msgstr "очистить"
+
+msgid "Last Refresh"
+msgstr "Обновлено"
+
+msgid "refresh unseen/total info"
+msgstr ""
+
+msgid "Save folder tree"
+msgstr ""
+
+msgid "Login"
+msgstr "Логин"
+
+#, c-format
+msgid "%s Logo"
+msgstr "Лого %s"
+
+#, c-format
+msgid "SquirrelMail version %s"
+msgstr "SquirrelMail версия %s"
+
+msgid "By the SquirrelMail Development Team"
+msgstr "Группа разработчиков SquirrelMail"
+
+#, c-format
+msgid "%s Login"
+msgstr "Вход в %s"
+
+msgid "Name:"
+msgstr "Логин:"
+
+msgid "Password:"
+msgstr "Пароль:"
+
+msgid "No messages were selected."
+msgstr "Ни одного сообщения не было выбрано."
+
+msgid "Options"
+msgstr "Настройки"
+
+msgid "Message Highlighting"
+msgstr "Цветовое Выделение Сообщений"
+
+msgid "New"
+msgstr "Новое Правило"
+
+msgid "Done"
+msgstr "Закончить"
+
+msgid "To or Cc"
+msgstr "Кому или Копия"
+
+#, fuzzy
+msgid "subject"
+msgstr "Тема"
+
+msgid "Edit"
+msgstr "Редактировать"
+
+msgid "Up"
+msgstr "Выше"
+
+msgid "Down"
+msgstr "Ниже"
+
+msgid "No highlighting is defined"
+msgstr "Правил подсветки не задано"
+
+msgid "Identifying name"
+msgstr "Имя правила"
+
+msgid "Color"
+msgstr "Цвет"
+
+msgid "Dark Blue"
+msgstr "Темно-Синий"
+
+msgid "Dark Green"
+msgstr "Темно-Зеленый"
+
+msgid "Dark Yellow"
+msgstr "Темно-Желтый"
+
+msgid "Dark Cyan"
+msgstr "Голубой"
+
+msgid "Dark Magenta"
+msgstr "Темно-Малиновый"
+
+msgid "Light Blue"
+msgstr "Светло-Голубой"
+
+msgid "Light Green"
+msgstr "Светло-Зеленый"
+
+msgid "Light Yellow"
+msgstr "Желтый"
+
+msgid "Light Cyan"
+msgstr "Ярко-Голубой"
+
+msgid "Light Magenta"
+msgstr "Ярко-Малиновый"
+
+msgid "Dark Gray"
+msgstr "Темно-Серый"
+
+msgid "Medium Gray"
+msgstr "Серый"
+
+msgid "Light Gray"
+msgstr "Светло-Серый"
+
+msgid "White"
+msgstr "Белый"
+
+msgid "Other:"
+msgstr "Другой:"
+
+msgid "Ex: 63aa7f"
+msgstr "Напр: eeffff"
+
+msgid "Matches"
+msgstr "Искать совпадения в"
+
+#, c-format
+msgid "Alternate Identity %d"
+msgstr "Альтернативные Метрики %d"
+
+msgid "Advanced Identities"
+msgstr "Расширенные Метрики"
+
+msgid "Default Identity"
+msgstr "Метрики по умолчанию"
+
+msgid "Add a New Identity"
+msgstr "Добавить новые Метрики"
+
+msgid "Full Name"
+msgstr "Имя"
+
+msgid "E-Mail Address"
+msgstr "Адрес эл. Почты"
+
+msgid "Reply To"
+msgstr "Обратный адрес"
+
+msgid "Save / Update"
+msgstr "Сохранить / Обновить"
+
+msgid "Make Default"
+msgstr "Использовать по умолчанию"
+
+msgid "Move Up"
+msgstr "Переместить выше"
+
+msgid "Index Order"
+msgstr "Порядок индексации"
+
+msgid "Checkbox"
+msgstr "Чекбокс"
+
+msgid "Flags"
+msgstr "Флажки"
+
+msgid "Size"
+msgstr "Размер"
+
+msgid ""
+"The index order is the order that the columns are arranged in the message "
+"index.  You can add, remove, and move columns around to customize them to "
+"fit your needs."
+msgstr ""
+"Порядок индексации это порядок в котором сообщения отображаются в вашей "
+"папке.Вы можете добавить, удалить, или переместить колонки как вам угодно."
+
+msgid "up"
+msgstr "выше"
+
+msgid "down"
+msgstr "ниже"
+
+msgid "remove"
+msgstr "удалить"
+
+msgid "Return to options page"
+msgstr "Вернуться к настройкам"
+
+msgid "Personal Information"
+msgstr "Личная информация"
+
+msgid "Display Preferences"
+msgstr "Настройки вида"
+
+msgid "Folder Preferences"
+msgstr "Настройки Папок"
+
+msgid "Successfully Saved Options"
+msgstr "Настройки были сохранены"
+
+msgid "Refresh Folder List"
+msgstr "обновить список папок"
+
+msgid "Refresh Page"
+msgstr "Обновить страницу"
+
+msgid ""
+"This contains personal information about yourself such as your name, your "
+"email address, etc."
+msgstr ""
+"Здесь вы можете настроить личную информацию о себе: имя, фамилию, адрес "
+"электронной почты, итд."
+
+msgid ""
+"You can change the way that SquirrelMail looks and displays information to "
+"you, such as the colors, the language, and other settings."
+msgstr ""
+"Здесь вы можете настроить как SquirrelMail выглядит в вашем браузере -- вы "
+"можете изменить цвета, язык, и прочие настройки."
+
+msgid ""
+"Based upon given criteria, incoming messages can have different background "
+"colors in the message list.  This helps to easily distinguish who the "
+"messages are from, especially for mailing lists."
+msgstr ""
+"Сообщения в вашем ящике могут подсвечиваться разными цветами в зависимости "
+"от настроек. Это позволяет с легкостью отслеживать важные сообщения от "
+"прочих, особенно при использовании списков рассылки."
+
+msgid ""
+"These settings change the way your folders are displayed and manipulated."
+msgstr "Здесь вы можете настроить разные папки в вашем ящике."
+
+msgid ""
+"The order of the message index can be rearranged and changed to contain the "
+"headers in any order you want."
+msgstr "Вы можете поменять расположение заголовков в таблице сообщений."
+
+msgid "Message not printable"
+msgstr "Непечатное сообщение"
+
+msgid "CC"
+msgstr "Копия"
+
+msgid "Printer Friendly"
+msgstr "Версия для печати"
+
+msgid "Print"
+msgstr "Печатать"
+
+msgid "View Printable Version"
+msgstr "Версия для печати"
+
+msgid "Read:"
+msgstr "Прочитано:"
+
+msgid "Your message"
+msgstr "Ваше сообщение"
+
+msgid "Sent:"
+msgstr "Отослано:"
+
+#, c-format
+msgid "Was displayed on %s"
+msgstr "Было просмотрено %s"
+
+msgid "less"
+msgstr "меньше"
+
+msgid "more"
+msgstr "больше"
+
+#, fuzzy
+msgid "Unknown sender"
+msgstr "Инкогнито"
+
+msgid "Mailer"
+msgstr "Почтовый Агент"
+
+msgid "Read receipt"
+msgstr "Нотификация о прочтении"
+
+#, fuzzy
+msgid "sent"
+msgstr "послать"
+
+msgid "requested"
+msgstr "запрошена"
+
+msgid ""
+"The message sender has requested a response to indicate that you have read "
+"this message. Would you like to send a receipt?"
+msgstr ""
+"Автор этого сообщения запросил нотификацию о прочтении. Отослать нотификацию?"
+
+msgid "Send read receipt now"
+msgstr "Отослать нотификацию"
+
+#, fuzzy
+msgid "Search results"
+msgstr "Результаты поиска"
+
+msgid "Message List"
+msgstr "Список сообщений"
+
+msgid "Resume Draft"
+msgstr "Возобновить работу над черновиком"
+
+msgid "Edit Message as New"
+msgstr "Редактировать сообщение как новое"
+
+#, fuzzy
+msgid "View Message"
+msgstr "Просмотр сообщения"
+
+msgid "Forward"
+msgstr "Переслать"
+
+#, fuzzy
+msgid "Forward as Attachment"
+msgstr "Вставки"
+
+msgid "Reply"
+msgstr "Ответить"
+
+msgid "Reply All"
+msgstr "Ответить Всем"
+
+msgid "View Full Header"
+msgstr "Просмотреть все заголовки"
+
+msgid "Attachments"
+msgstr "Вставки"
+
+msgid "You must be logged in to access this page."
+msgstr "Пожалуйста введите логин и пароль чтобы получить доступ."
+
+msgid "Folder:"
+msgstr "Папка:"
+
+msgid "edit"
+msgstr "редактировать"
+
+msgid "search"
+msgstr "искать"
+
+msgid "delete"
+msgstr "удалить"
+
+msgid "Recent Searches"
+msgstr "Предыдущие поиски"
+
+msgid "save"
+msgstr "сохранить"
+
+msgid "forget"
+msgstr "забыть"
+
+msgid "Current Search"
+msgstr "Текущий поиск"
+
+msgid "All Folders"
+msgstr "Все Папки"
+
+msgid "Body"
+msgstr "Тело"
+
+msgid "Everywhere"
+msgstr "Везде"
+
+msgid "Search Results"
+msgstr "Результаты поиска"
+
+msgid "No Messages Found"
+msgstr "Сообщений не найдено"
+
+msgid "Sign Out"
+msgstr "Закончить сеанс"
+
+msgid "You have been successfully signed out."
+msgstr "Сеанс работы закончен."
+
+msgid "Click here to log back in."
+msgstr "Кликните здесь чтобы войти в систему снова."
+
+msgid "Viewing a Business Card"
+msgstr "Просмотр визитки"
+
+msgid "Title"
+msgstr "Служебный чин"
+
+msgid "Email"
+msgstr "E-mail"
+
+msgid "Web Page"
+msgstr "WWW-страница"
+
+msgid "Organization / Department"
+msgstr "Компания / Отдел"
+
+msgid "Address"
+msgstr "Адрес"
+
+msgid "Work Phone"
+msgstr "Рабочий телефон"
+
+msgid "Home Phone"
+msgstr "Домашний телефон"
+
+msgid "Cellular Phone"
+msgstr "Мобильный телефон"
+
+msgid "Fax"
+msgstr "Факс"
+
+msgid "Note"
+msgstr "Заметка"
+
+msgid "Add to Addressbook"
+msgstr "Добавить в адресную книгу"
+
+msgid "Title & Org. / Dept."
+msgstr "Чин и компания / Отдел"
+
+msgid "Viewing Full Header"
+msgstr "Просмотр всех заголовков сообщения"
+
+msgid "Viewing a text attachment"
+msgstr "Просмотр текстовой вставки"
 
 msgid "Personal address book"
 msgstr "Персональная адресная книга"
@@ -101,9 +882,6 @@ msgstr "просмотреть"
 msgid "Business Card"
 msgstr "Визитка"
 
-msgid "You must be logged in to access this page."
-msgstr "Пожалуйста введите логин и пароль чтобы получить доступ."
-
 msgid "Sunday"
 msgstr "Воскресенье"
 
@@ -124,6 +902,31 @@ msgstr "Пятница"
 
 msgid "Saturday"
 msgstr "Суббота"
+
+#, fuzzy
+msgid "Sun"
+msgstr "Воскресенье"
+
+#, fuzzy
+msgid "Mon"
+msgstr "Понедельник"
+
+#, fuzzy
+msgid "Tue"
+msgstr "Вторник"
+
+msgid "Wed"
+msgstr ""
+
+msgid "Thu"
+msgstr ""
+
+#, fuzzy
+msgid "Fri"
+msgstr "Пятница"
+
+msgid "Sat"
+msgstr ""
 
 msgid "January"
 msgstr "Январь"
@@ -161,11 +964,58 @@ msgstr "Ноябрь"
 msgid "December"
 msgstr "Декабрь"
 
+#, fuzzy
+msgid "Jan"
+msgstr "Январь"
+
+msgid "Feb"
+msgstr ""
+
+#, fuzzy
+msgid "Mar"
+msgstr "Март"
+
+#, fuzzy
+msgid "Apr"
+msgstr "Апрель"
+
+msgid "Ma&#121;"
+msgstr ""
+
+#, fuzzy
+msgid "Jun"
+msgstr "Июнь"
+
+#, fuzzy
+msgid "Jul"
+msgstr "Июль"
+
+#, fuzzy
+msgid "Aug"
+msgstr "Август"
+
+msgid "Sep"
+msgstr ""
+
+#, fuzzy
+msgid "Oct"
+msgstr "Октябрь"
+
+#, fuzzy
+msgid "Nov"
+msgstr "Нет"
+
+msgid "Dec"
+msgstr ""
+
 msgid "D, F j, Y g:i a"
 msgstr "D, j F Y G:i"
 
 msgid "D, F j, Y G:i"
 msgstr "D, j F Y G:i"
+
+msgid "M j, Y"
+msgstr "j M Y"
 
 msgid "g:i a"
 msgstr "G:i"
@@ -178,9 +1028,6 @@ msgstr "D, G:i"
 
 msgid "D, G:i"
 msgstr "D, G:i"
-
-msgid "M j, Y"
-msgstr "j M Y"
 
 #, c-format
 msgid "Preference database error (%s). Exiting abnormally"
@@ -195,20 +1042,6 @@ msgstr "Кликните здесь чтобы попробовать еще раз."
 #, c-format
 msgid "Click here to return to %s"
 msgstr "Нажмите здесь чтобы вернуться в %s"
-
-#, c-format
-msgid "%s Logo"
-msgstr "Лого %s"
-
-#, c-format
-msgid "SquirrelMail version %s"
-msgstr "SquirrelMail версия %s"
-
-msgid "By the SquirrelMail Development Team"
-msgstr "Группа разработчиков SquirrelMail"
-
-msgid "ERROR"
-msgstr "ОШИБКА"
 
 msgid "Go to the login page"
 msgstr "Перейти ко входной странице"
@@ -231,6 +1064,12 @@ msgstr "Свяжитесь с Вашим администратором."
 msgid ""
 "Preference file, %s, could not be written. Contact your system administrator "
 "to resolve this issue."
+msgstr "Свяжитесь с Вашим администратором."
+
+#, fuzzy, c-format
+msgid ""
+"Preference file, %s, could not be copied from temporary file, %s. Contact "
+"your system administrator to resolve this issue."
 msgstr "Свяжитесь с Вашим администратором."
 
 #, c-format
@@ -263,12 +1102,21 @@ msgid ""
 "to resolve this issue."
 msgstr "Свяжитесь с Вашим администратором."
 
+#, fuzzy, c-format
+msgid ""
+"Signature file, %s, could not be copied from temporary file, %s. Contact "
+"your system administrator to resolve this issue."
+msgstr "Свяжитесь с Вашим администратором."
+
 msgid ""
 "You need to have php4 installed with the multibyte string function enabled "
-"(using configure option --with-mbstring)."
+"(using configure option --enable-mbstring)."
 msgstr ""
 
 msgid "ERROR : No available imapstream."
+msgstr ""
+
+msgid "ERROR : Connection dropped by imap-server."
 msgstr ""
 
 msgid "ERROR : Could not complete request."
@@ -285,6 +1133,12 @@ msgstr "ОШИБКА: Неверно оформленный запрос."
 
 msgid "Server responded: "
 msgstr "Сервер вернул: "
+
+msgid "ERROR : Imap server closed the connection."
+msgstr ""
+
+msgid "ERROR : Unknown imap response."
+msgstr ""
 
 #, c-format
 msgid "Error connecting to IMAP server: %s."
@@ -314,20 +1168,23 @@ msgid ""
 "folder."
 msgstr ""
 
-msgid "INBOX"
-msgstr "Входящие"
-
-msgid "Unknown response from IMAP server: "
-msgstr "Странный ответ получен от IMAP-сервера: "
-
-msgid "Unknown message number in reply from server: "
-msgstr "Странный номер сообщения в ответе сервера: "
+msgid "(no subject)"
+msgstr "(нет заголовка)"
 
 msgid "Unknown Sender"
 msgstr "Инкогнито"
 
-msgid "(unknown sender)"
-msgstr "(инкогнито)"
+msgid "Unknown response from IMAP server: "
+msgstr "Странный ответ получен от IMAP-сервера: "
+
+msgid "The server couldn't find the message you requested."
+msgstr ""
+
+msgid ""
+"Most probably your message list was out of date and the message has been "
+"moved away or deleted (perhaps by another program accessing the same "
+"mailbox)."
+msgstr ""
 
 #, fuzzy
 msgid "Unknown date"
@@ -359,9 +1216,6 @@ msgstr "Пометить выделенные как"
 msgid "Move"
 msgstr "Переместить"
 
-msgid "Forward"
-msgstr "Переслать"
-
 msgid "Expunge"
 msgstr "Очистить"
 
@@ -374,29 +1228,11 @@ msgstr "Прочитанныe"
 msgid "Unread"
 msgstr "Непрочитанныe"
 
-msgid "Delete"
-msgstr "Удалить"
-
 msgid "Unthread View"
 msgstr "Убрать сортировку по темам"
 
 msgid "Thread View"
 msgstr "Сортировать по темам"
-
-msgid "To"
-msgstr "Кому"
-
-msgid "From"
-msgstr "От"
-
-msgid "Date"
-msgstr "Дата"
-
-msgid "Subject"
-msgstr "Тема"
-
-msgid "Size"
-msgstr "Размер"
 
 msgid "Toggle All"
 msgstr "Выделить все"
@@ -414,12 +1250,6 @@ msgstr "Просмотр сообщений: от <b>%s</b> до <b>%s</b> (%s всего)"
 #, c-format
 msgid "Viewing Message: <B>%s</B> (1 total)"
 msgstr "Просмотр сообщения: <b>%s</b> (1 всего)"
-
-msgid "Previous"
-msgstr "Назад"
-
-msgid "Next"
-msgstr "Дальше"
 
 msgid "Paginate"
 msgstr "Разбить на страницы"
@@ -454,15 +1284,6 @@ msgstr "Сообщение:"
 msgid "FETCH line:"
 msgstr "FETCH строка:"
 
-msgid "High"
-msgstr "Срочно"
-
-msgid "Low"
-msgstr "Не срочно"
-
-msgid "Normal"
-msgstr "Нормально"
-
 msgid "Hide Unsafe Images"
 msgstr ""
 
@@ -472,10 +1293,6 @@ msgstr "Загрузить не показанные картинки"
 msgid "download"
 msgstr "загрузить"
 
-#, fuzzy
-msgid "Unknown sender"
-msgstr "Инкогнито"
-
 msgid "sec_remove_eng.png"
 msgstr "sec_remove_ru.png"
 
@@ -483,38 +1300,11 @@ msgstr "sec_remove_ru.png"
 msgid "Option Type '%s' Not Found"
 msgstr "Опция '%s' не найдена"
 
-msgid "Yes"
-msgstr "Да"
-
-msgid "No"
-msgstr "Нет"
-
-msgid "Submit"
-msgstr "Готово"
-
 msgid "Current Folder"
 msgstr "Текущая папка"
 
-msgid "Sign Out"
-msgstr "Закончить сеанс"
-
 msgid "Compose"
 msgstr "Новое сообщение"
-
-msgid "Addresses"
-msgstr "Адреса"
-
-msgid "Folders"
-msgstr "Папки"
-
-msgid "Options"
-msgstr "Настройки"
-
-msgid "Search"
-msgstr "Найти"
-
-msgid "Help"
-msgstr "Помощь"
 
 #, c-format
 msgid "Error creating directory %s."
@@ -522,6 +1312,75 @@ msgstr "Ошибка при создании директории %s."
 
 msgid "Could not create hashed directory structure!"
 msgstr "Ошибка при попытке создания хэш-директории!"
+
+msgid "Service not available, closing channel"
+msgstr ""
+
+msgid "A password transition is needed"
+msgstr ""
+
+msgid "Requested mail action not taken: mailbox unavailable"
+msgstr ""
+
+msgid "Requested action aborted: error in processing"
+msgstr ""
+
+msgid "Requested action not taken: insufficient system storage"
+msgstr ""
+
+#, fuzzy
+msgid "Temporary authentication failure"
+msgstr "попытка авторизации при помощи apop не удалась"
+
+msgid "Syntax error; command not recognized"
+msgstr ""
+
+msgid "Syntax error in parameters or arguments"
+msgstr ""
+
+#, fuzzy
+msgid "Command not implemented"
+msgstr "Ошибка при выполнении команды"
+
+msgid "Bad sequence of commands"
+msgstr ""
+
+msgid "Command parameter not implemented"
+msgstr ""
+
+#, fuzzy
+msgid "Authentication required"
+msgstr "ошибка при авторизации"
+
+msgid "Authentication mechanism is too weak"
+msgstr ""
+
+#, fuzzy
+msgid "Authentication failed"
+msgstr "ошибка при авторизации"
+
+msgid "Encryption required for requested authentication mechanism"
+msgstr ""
+
+msgid "Requested action not taken: mailbox unavailable"
+msgstr ""
+
+msgid "User not local; please try forwarding"
+msgstr ""
+
+msgid "Requested mail action aborted: exceeding storage allocation"
+msgstr ""
+
+msgid "Requested action not taken: mailbox name not allowed"
+msgstr ""
+
+#, fuzzy
+msgid "Transaction failed"
+msgstr "ошибка при авторизации"
+
+#, fuzzy
+msgid "Unknown response"
+msgstr "Инкогнито"
 
 msgid "General Display Options"
 msgstr "Общие настройки вида"
@@ -564,6 +1423,9 @@ msgstr "Показывать выбор страницы"
 
 msgid "Maximum Number of Pages to Show"
 msgstr "Максимальное количество страниц"
+
+msgid "Always Show Full Date"
+msgstr ""
 
 msgid "Message Display and Composition"
 msgstr "Настройка вида сообщений"
@@ -613,9 +1475,6 @@ msgstr "Показывать почтовый агент собеседника (X-Mailer)"
 
 msgid "Display Attached Images with Message"
 msgstr "Показывать полученные картинки вместе с письмом"
-
-msgid "Enable Subtle Printer Friendly Link"
-msgstr "Добавлять ссылку для перехода к \"версии для печати\""
 
 msgid "Enable Printer Friendly Clean Display"
 msgstr "Показывать версию пригодную для распечатки"
@@ -709,9 +1568,6 @@ msgstr "Не сообщать"
 msgid "Only INBOX"
 msgstr "Только поступающие в папку INBOX"
 
-msgid "All Folders"
-msgstr "Все Папки"
-
 msgid "Unread Message Notification Type"
 msgstr "Вид сообщения о непрочитанных письмах"
 
@@ -721,7 +1577,8 @@ msgstr "Только непрочитанные"
 msgid "Unseen and Total"
 msgstr "Непрочитанные и Всего"
 
-msgid "Enable Collapsable Folders"
+#, fuzzy
+msgid "Enable Collapsible Folders"
 msgstr "Использовать расширенный список папок"
 
 #, fuzzy
@@ -770,17 +1627,8 @@ msgstr ""
 msgid "Name and Address Options"
 msgstr "Настройка имени и адреса"
 
-msgid "Full Name"
-msgstr "Имя"
-
 msgid "Email Address"
 msgstr "Адрес эл. Почты"
-
-msgid "Reply To"
-msgstr "Обратный адрес"
-
-msgid "Signature"
-msgstr "Подпись"
 
 msgid "Edit Advanced Identities"
 msgstr "Редактировать расширенные метрики"
@@ -793,6 +1641,9 @@ msgstr "Несколько Метриков"
 
 msgid "Same as server"
 msgstr "Как на сервере"
+
+msgid "Error opening timezone config, contact administrator."
+msgstr ""
 
 msgid "Timezone Options"
 msgstr "Временные пояса"
@@ -833,6 +1684,17 @@ msgstr "Использовать подпись"
 msgid "Prefix Signature with '-- ' Line"
 msgstr "Предварять подпись чертой '-- '?"
 
+#, fuzzy
+msgid "Take Address"
+msgstr "Адрес"
+
+#, fuzzy
+msgid "Address Book Take:"
+msgstr "Адресная книга"
+
+msgid "Try to verify addresses"
+msgstr ""
+
 msgid "Config File Version"
 msgstr "Версия Файла Конфигурации"
 
@@ -863,6 +1725,13 @@ msgstr "Имя компании"
 
 msgid "Signout Page"
 msgstr "Выходная страница"
+
+msgid "Provider Link URI"
+msgstr ""
+
+#, fuzzy
+msgid "Provider Name"
+msgstr "Имя сервера:"
 
 msgid "Default Language"
 msgstr "Язык по умолчанию"
@@ -906,7 +1775,18 @@ msgstr "Делимитер IMAP-папок"
 msgid "Use \"detect\" to auto-detect."
 msgstr "Использовать \"detect\" для автоматического определения."
 
-msgid "Use Sendmail"
+msgid "Use TLS for IMAP Connections"
+msgstr ""
+
+msgid "Requires PHP 4.3.x! Experimental."
+msgstr ""
+
+#, fuzzy
+msgid "IMAP Authentication Type"
+msgstr "ошибка при авторизации"
+
+#, fuzzy
+msgid "Use Sendmail Binary"
 msgstr "Использовать Sendmail"
 
 msgid "Sendmail Path"
@@ -918,8 +1798,15 @@ msgstr "Адрес SMTP-сервера"
 msgid "SMTP Server Port"
 msgstr "Порт SMTP-сервера"
 
-msgid "Authenticated SMTP"
-msgstr "Использовать SMTP-аутентификацию"
+msgid "Use TLS for SMTP Connections"
+msgstr ""
+
+#, fuzzy
+msgid "SMTP Authentication Type"
+msgstr "ошибка при авторизации"
+
+msgid "POP3 Before SMTP?"
+msgstr ""
 
 msgid "Invert Time"
 msgstr "Использовать обратный формат для времени"
@@ -975,6 +1862,10 @@ msgstr "Использовать адресную книгу с Javascript по умолчанию"
 msgid "Auto delete folders"
 msgstr "Автоматически удалять папки"
 
+#, fuzzy
+msgid "Enable /NoSelect folder fix"
+msgstr "Показывать выбор страницы"
+
 msgid "General Options"
 msgstr "Общие настройки"
 
@@ -1020,6 +1911,23 @@ msgstr "Разрешить редактирование метриков"
 msgid "Allow editing of full name"
 msgstr "Разрешить редактирование полного имени"
 
+msgid "Use server-side sorting"
+msgstr ""
+
+#, fuzzy
+msgid "Use server-side thread sorting"
+msgstr "Использовать заголовок 'References' при сортировке по теме сообщения"
+
+msgid "Allow server charset search"
+msgstr ""
+
+msgid "UID support"
+msgstr ""
+
+#, fuzzy
+msgid "PHP session name"
+msgstr "Версия PHP"
+
 msgid "Message of the Day"
 msgstr "Сообщение Дня (МОТД)"
 
@@ -1052,6 +1960,13 @@ msgstr "Внешний Вид"
 
 msgid "Style Sheet URL (css)"
 msgstr "URL страницы с css-стилями"
+
+#, fuzzy
+msgid "Default theme"
+msgstr "Использовать чарсет"
+
+msgid "Use index number of theme"
+msgstr ""
 
 msgid "Configuration Administrator"
 msgstr "Администратор конфигуратора"
@@ -1163,8 +2078,9 @@ msgstr "0 минут"
 msgid "15 min."
 msgstr "15 минут"
 
-msgid "35 min."
-msgstr "35 минут"
+#, fuzzy
+msgid "30 min."
+msgstr "0 минут"
 
 msgid "45 min."
 msgstr "45 минут"
@@ -1254,60 +2170,6 @@ msgid "COMMERCIAL - RBL+ Dial-up entries."
 msgstr "ПЛАТНО - RBL+ список модемных спаммеров."
 
 msgid ""
-"FREE - Osirusoft Relays - Osirusofts list of verified open relays. Seems to "
-"include servers used by abuse@uunet.net auto-replies too."
-msgstr ""
-"БЕСПЛАТНО - Osirusoft Relays - список серверов пересылки от компании "
-"Osirusoft."
-
-msgid "FREE - Osirusoft Dialups - Osirusofts Dialup Spam Source list."
-msgstr "БЕСПЛАТНО - Osirusoft Dialups - Список модемных спаммеров от Osirusoft"
-
-msgid ""
-"FREE - Osirusoft Confirmed Spam Source - Sites that continually spam and "
-"have been manually added after multiple nominations. Use with caution. Seems "
-"to catch abuse auto-replies from some ISPs."
-msgstr ""
-"БЕСПЛАТНО - Osirusoft Confirmed Spam Source - Домены и провайдеры, которые "
-"занимаются рассылкой спама и были занесены в список вручную. Иногда неверно."
-
-msgid ""
-"FREE - Osirusoft Smart Hosts - List of hosts that are secure but relay for "
-"other mail servers that are not secure."
-msgstr ""
-"БЕСПЛАТНО - Osirusoft Smart Hosts - Список серверов которые сами по себе не "
-"пересылают спам-сообщения, но являются пересылочным пунктом для других "
-"серверов, которые отсылают спам."
-
-msgid ""
-"FREE - Osirusoft Spamware Developers - It is believed that these are IP "
-"ranges of companies that are known to produce spam software. Seems to catch "
-"abuse auto-replies from some ISPs."
-msgstr ""
-"БЕСПЛАТНО - Osirusoft Spamware Developers - Содержит список IP-адресов "
-"которые подозреваются в рассылке спама или принадлежат компаниям, которые "
-"производят обеспечение для отсылки спама. Иногда фильтрует легитимные "
-"сообщения."
-
-msgid ""
-"FREE - Osirusoft Unconfirmed OptIn Servers - List of listservers that opt "
-"users in without confirmation."
-msgstr ""
-"БЕСПЛАТНО - Osirusoft Unconfirmed OptIn Servers - Список серверов рассылки, "
-"которые добавляют адреса подписчиков без согласования с ними."
-
-msgid ""
-"FREE - Osirusoft Insecure formmail.cgi scripts - List of insecure formmail."
-"cgi scripts. (planned)."
-msgstr ""
-"БЕСПЛАТНО - Сервера с плохо настроенной системой cgi-скриптов, "
-"которыепозволяют отправлять почтовые сообщения через веб-интерфейс. От "
-"Osirusoft"
-
-msgid "FREE - Osirusoft Open Proxy Servers - List of Open Proxy Servers."
-msgstr "БЕСПЛАТНО - Список незащищенных Прокси-серверов от Osirusoft."
-
-msgid ""
 "FREE - ORDB was born when ORBS went off the air. It seems to have fewer "
 "false positives than ORBS did though."
 msgstr ""
@@ -1352,6 +2214,7 @@ msgstr ""
 msgid "FREE - SPAMhaus - A list of well-known SPAM sources."
 msgstr ""
 
+#, fuzzy, c-format
 msgid ""
 "FREE, for now - SPAMCOP - An interesting solution that lists servers that "
 "have a very high spam to legit email ratio (85% or more)."
@@ -1455,35 +2318,14 @@ msgstr "Только непрочитанные сообщения"
 msgid "Save"
 msgstr "Сохранить"
 
-msgid "New"
-msgstr "Новое Правило"
-
-msgid "Done"
-msgstr "Закончить"
-
 msgid "Match:"
 msgstr "Совпадения:"
-
-msgid "Cc"
-msgstr "Копия"
-
-msgid "To or Cc"
-msgstr "Кому или Копия"
 
 msgid "Header"
 msgstr "Заголовок"
 
 msgid "Contains:"
 msgstr "Содержит:"
-
-msgid "Edit"
-msgstr "Редактировать"
-
-msgid "Down"
-msgstr "Ниже"
-
-msgid "Up"
-msgstr "Выше"
 
 #, c-format
 msgid "If <b>%s</b> contains <b>%s</b> then move to <b>%s</b>"
@@ -1574,6 +2416,30 @@ msgstr "Вкл"
 msgid "OFF"
 msgstr "Выкл"
 
+#, fuzzy
+msgid " not found."
+msgstr "Ошибок не найдено"
+
+msgid "Today's Fortune"
+msgstr ""
+
+#, fuzzy
+msgid "Fortunes:"
+msgstr "Португальский"
+
+msgid "Show fortunes at top of mailbox"
+msgstr ""
+
+#, fuzzy
+msgid "IMAP server information"
+msgstr "Порт IMAP-сервера"
+
+msgid ""
+"Run some test IMAP commands, displaying both the command and the result. "
+"These tests use the Squirrelmail IMAP commands and your current Squirrelmail "
+"configuration. Custom command strings can be used."
+msgstr ""
+
 msgid "Mailinglist"
 msgstr "Список рассылки"
 
@@ -1602,9 +2468,6 @@ msgstr ""
 "Данная операция отправит сообщение %s с запросом удалить Ваш адрес из списка "
 "рассылки. Для этого будет использован адрес указанный ниже."
 
-msgid "From:"
-msgstr "От:"
-
 msgid "Send Mail"
 msgstr "Отправить сообщение"
 
@@ -1613,12 +2476,6 @@ msgstr "Отправить сообщение всем подписчикам списка"
 
 msgid "Reply to List"
 msgstr "Ответить всем подписчикам"
-
-msgid "Subscribe"
-msgstr "Подписаться"
-
-msgid "Unsubscribe"
-msgstr "Отписаться"
 
 msgid "List Archives"
 msgstr "Архив сообщений"
@@ -1728,9 +2585,6 @@ msgstr "Загрузка почты с удаленного POP-сервера"
 
 msgid "Select Server:"
 msgstr "Выберите сервер:"
-
-msgid "All"
-msgstr "Все"
 
 msgid "Password for"
 msgstr "Пароль для"
@@ -1852,9 +2706,6 @@ msgstr "Памятка:"
 msgid "Username:"
 msgstr "Логин:"
 
-msgid "Password:"
-msgstr "Пароль:"
-
 msgid "Store in Folder:"
 msgstr "Сохранять сообщения в папке:"
 
@@ -1894,9 +2745,6 @@ msgstr "Подтвердите удаление выбранного сервера."
 msgid "Confirm Delete"
 msgstr "Удалить"
 
-msgid "Mofify a Server"
-msgstr "Редактироваь сервер"
-
 msgid "Undefined Function"
 msgstr "Неопределенная функция"
 
@@ -1921,6 +2769,21 @@ msgid ""
 msgstr ""
 "Здесь вы можете настроить систему чтобы она загружала сообщения с удаленного "
 "pop3 почтового ящика на этот сервер."
+
+#, fuzzy
+msgid "Message Details"
+msgstr "Список сообщений"
+
+msgid "Close Window"
+msgstr "Закрыть окно"
+
+#, fuzzy
+msgid "Save Message"
+msgstr "Просмотр сообщения"
+
+#, fuzzy
+msgid "View Message details"
+msgstr "Просмотр сообщения"
 
 msgid "New Mail Notification"
 msgstr "Оповещение о новых сообщениях"
@@ -1970,11 +2833,10 @@ msgstr ""
 "только в Интернет Эксплорере). Эта опция будет показывать общее количество "
 "непрочитанных сообщений даже если вы выберете опцию <b>только НОВЫЕ</b>."
 
+#, fuzzy
 msgid ""
 "Select from the list of <b>server files</b> the media file to play when new "
-"mail arrives.  Selecting <b>local media</b> will play the file specified in "
-"the <b>local media file</b> box to play from the local computer.  If no file "
-"is specified, the system will use a default from the server."
+"mail arrives.  If no file is specified, \"(none)\", no sound will be used."
 msgstr ""
 "Выберите из данного списка каким звуком оповещать вас о новой почте. Файлы в "
 "списке <b>файлы на сервере</b> будут проигрываться с сервера. Чтобы "
@@ -2003,14 +2865,12 @@ msgstr "Показывать системное сообщение в отдельном окошке"
 msgid "Select server file:"
 msgstr "Выбрать файл с сервера:"
 
-msgid "(local media)"
-msgstr "(локальные файлы)"
+#, fuzzy
+msgid "(none)"
+msgstr "Нет"
 
 msgid "Try"
 msgstr "Играть"
-
-msgid "Local Media File:"
-msgstr "Файл с диска:"
 
 msgid "Current File:"
 msgstr "Выбран файл:"
@@ -2023,9 +2883,6 @@ msgstr "Сообщение от SquirrelMail:"
 
 msgid "You have new mail!"
 msgstr "Вам пришла новая почта!"
-
-msgid "Close Window"
-msgstr "Закрыть окно"
 
 msgid "NewMail Options"
 msgstr "Настройка Оповещений"
@@ -2051,11 +2908,12 @@ msgstr "%s новое сообщение"
 msgid "Test Sound"
 msgstr "Играть звук"
 
+#, fuzzy
+msgid "No sound specified"
+msgstr "Не выбрано ни одного сервера."
+
 msgid "Loading the sound..."
 msgstr "Загружаем звук..."
-
-msgid "Close"
-msgstr "Закрыть"
 
 msgid "Sent Subfolders Options"
 msgstr "Настройка под-папок папки 'Sent'"
@@ -2154,6 +3012,321 @@ msgstr "Ошибка при раскодировании словаря"
 msgid "Cute."
 msgstr "Молодец."
 
+#, c-format
+msgid "I tried to execute '%s', but it returned:"
+msgstr "При попытке выполнить '%s' команда вернула:"
+
+msgid "SquirrelSpell is misconfigured."
+msgstr "Система правописания не настроена"
+
+msgid "SquirrelSpell Results"
+msgstr "Результаты проверки"
+
+msgid "Spellcheck completed. Commit changes?"
+msgstr "Проверка правописания закончена. Сохранить изменения?"
+
+msgid "No changes were made."
+msgstr "Никаких изменений не произведено."
+
+msgid "Now saving your personal dictionary... Please wait."
+msgstr "Записываем ваш личный словарик на диск... Подождите."
+
+#, c-format
+msgid "Found %s errors"
+msgstr "Найдено %s ошибок"
+
+msgid "Line with an error:"
+msgstr "Строка с ошибкой:"
+
+msgid "Error:"
+msgstr "Ошибка:"
+
+#, fuzzy
+msgid "Suggestions:"
+msgstr "Подсказки"
+
+msgid "Suggestions"
+msgstr "Подсказки"
+
+msgid "Change to:"
+msgstr "Изменить на:"
+
+msgid "Occurs times:"
+msgstr "Найдено раз:"
+
+msgid "Change this word"
+msgstr "Изменить это слово"
+
+msgid "Change"
+msgstr "Изменить"
+
+msgid "Change ALL occurances of this word"
+msgstr "Изменить ВСЕ слова с этой ошибкой"
+
+msgid "Change All"
+msgstr "Изменить Все"
+
+msgid "Ignore this word"
+msgstr "Пропустить это слово"
+
+msgid "Ignore"
+msgstr "Пропустить"
+
+msgid "Ignore ALL occurances this word"
+msgstr "Пропустить ВСЕ слова с этой ошибкой"
+
+msgid "Ignore All"
+msgstr "Пропустить Все"
+
+msgid "Add this word to your personal dictionary"
+msgstr "Добавить это слово в ваш личный словарь"
+
+msgid "Add to Dic"
+msgstr "В словарь"
+
+msgid "Close and Commit"
+msgstr "Закрыть и сохранить"
+
+msgid "The spellcheck is not finished. Really close and commit changes?"
+msgstr ""
+"Проверка правописания не закончена. В самом деле закрыть и сохранить "
+"изменения?"
+
+msgid "Close and Cancel"
+msgstr "Закрыть и сбросить"
+
+msgid "The spellcheck is not finished. Really close and discard changes?"
+msgstr ""
+"Проверка правописания не закончена. В самом деле закрыть и сбросить все "
+"изменения?"
+
+msgid "No errors found"
+msgstr "Ошибок не найдено"
+
+msgid "Your personal dictionary was erased."
+msgstr "Ваш личный словарик был удален."
+
+msgid "Dictionary Erased"
+msgstr "Словарь удален"
+
+msgid ""
+"Your personal dictionary was erased. Please close this window and click "
+"\"Check Spelling\" button again to start your spellcheck over."
+msgstr ""
+"Ваш личный словарик был удален. Закройте это окно и нажмите \"Проверка "
+"Правописания\" снова, чтобы закончить проверку."
+
+msgid "Close this Window"
+msgstr "Закрыть окно"
+
+msgid ""
+"Your personal dictionary was re-encrypted successfully. Now return to the "
+"&quot;SpellChecker options&quot; menu and make your selection again."
+msgstr ""
+"Ваш личный словарь был закодирован новым паролем. Пожалуйста вернитесь на "
+"страничку с &quot;Опциями правописания&quot;."
+
+msgid "Successful Re-encryption"
+msgstr "Перекодировка прошла благополучно"
+
+msgid ""
+"Your personal dictionary was re-encrypted successfully. Please close this "
+"window and click \"Check Spelling\" button again to start your spellcheck "
+"over."
+msgstr ""
+"Ваш личный словарь был перекодирован новым паролем благополучно. Закройте "
+"это окно и нажмите кнопку \"Проверить правописание\" заново, чтобы "
+"возобновить проверку."
+
+msgid "Dictionary re-encrypted"
+msgstr "Словарь перекодирован"
+
+msgid ""
+"Your personal dictionary has been <strong>encrypted</strong> and is now "
+"stored in an <strong>encrypted format</strong>."
+msgstr ""
+"Ваш личный словарь был <strong>зашифрован</strong> и теперь хранится в "
+"<strong>закодированном формате</strong>."
+
+msgid ""
+"Your personal dictionary has been <strong>decrypted</strong> and is now "
+"stored as <strong>clear text</strong>."
+msgstr ""
+"Ваш личный словарь был <strong>расшифрован</strong> и теперь хранится в "
+"<strong>нешифрованном формате</strong>."
+
+msgid "Personal Dictionary Crypto Settings"
+msgstr "Настройки шифровки личного словаря"
+
+msgid "Personal Dictionary"
+msgstr "Личный словарик"
+
+msgid "No words in your personal dictionary."
+msgstr "В вашем личном словаре нет слов."
+
+msgid "Please check any words you wish to delete from your dictionary."
+msgstr "Пожалуйста отметьте те слова, которые вы хотите удалить из словаря."
+
+#, c-format
+msgid "%s dictionary"
+msgstr "%s словарь"
+
+msgid "Delete checked words"
+msgstr "Удалить выделенные слова"
+
+msgid "Edit your Personal Dictionary"
+msgstr "Редактировать ваш личный словарь"
+
+msgid "Please make your selection first."
+msgstr "Пожалуйста, сперва выберите опцию."
+
+msgid ""
+"This will encrypt your personal dictionary and store it in an encrypted "
+"format. Proceed?"
+msgstr ""
+"Эта акция закодирует ваш словарь и будет хранить его на диске в шифрованом "
+"формате. Продолжать?"
+
+msgid ""
+"This will decrypt your personal dictionary and store it in a clear-text "
+"format. Proceed?"
+msgstr ""
+"Эта акция раскодирует ваш словарь и сохранит его на диске в нешифрованном "
+"формате. Продолжать?"
+
+msgid ""
+"<p>Your personal dictionary is <strong>currently encrypted</strong>. This "
+"helps protect your privacy in case the web-mail system gets compromized and "
+"your personal dictionary ends up stolen. It is currently encrypted with the "
+"password you use to access your mailbox, making it hard for anyone to see "
+"what is stored in your personal dictionary.</p> <p><strong>ATTENTION:</"
+"strong> If you forget your password, your personal dictionary will become "
+"unaccessible, since it can no longer be decrypted. If you change your "
+"mailbox password, SquirrelSpell will recognize it and prompt you for your "
+"old password in order to re-encrypt the dictionary with a new key.</p>"
+msgstr ""
+"<p>Ваш личный словарь в данный момент сохранен в <strong>закодированном "
+"формате</strong>. Это делается для дополнительной защиты ваших данных: в "
+"случае если сервер будет взломан и данные с него похищены, содержимое вашего "
+"словаря будет похитителям недоступно.</p> <p><strong>ВНИМАНИЕ:</strong> Для "
+"шифровки используется тот же пароль, что используется для вашего почтового "
+"ящика. Если вы измените пароль на вашем ящике, система будет не в состоянии "
+"расшифровать ваш словарь. В этом случае система запросит ваш старый пароль и "
+"перекодирует словарь с вашим новым паролем.</p>"
+
+msgid ""
+"Please decrypt my personal dictionary and store it in a clear-text format."
+msgstr "Расшифровать мой личный словарь и хранить его в нешифрованном виде."
+
+msgid "Change crypto settings"
+msgstr "Изменить настройки шифрования"
+
+msgid ""
+"<p>Your personal dictionary is <strong>currently not encrypted</strong>. You "
+"may wish to encrypt your personal dictionary to protect your privacy in case "
+"the webmail system gets compromized and your personal dictionary file gets "
+"stolen. When encrypted, the file's contents look garbled and are hard to "
+"decrypt without knowing the correct key (which is your mailbox password).</"
+"p> <strong>ATTENTION:</strong> If you decide to encrypt your personal "
+"dictionary, you must remember that it gets &quot;hashed&quot; with your "
+"mailbox password. If you forget your mailbox password and the administrator "
+"changes it to a new value, your personal dictionary will become useless and "
+"will have to be created anew. However, if you or your system administrator "
+"change your mailbox password but you still have the old password at hand, "
+"you will be able to enter the old key to re-encrypt the dictionary with the "
+"new value.</p>"
+msgstr ""
+"<p>Ваш личный словарь хранится в <strong>нешифрованном виде</strong>. Если "
+"желаете, система может закодировать ваш словарь паролем, чтобы в случае "
+"взлома сервера и хищения данных ваш личный словарь был им недоступен. Если "
+"вы выберете опцию закодировать ваш словарь, он будет храниться в шифрованном "
+"бинарном варианте и его содержимое будет невозможно прочитать без пароля "
+"(который тот же, что и ваш почтовый пароль).</p> <strong>ВНИМАНИЕ:</strong> "
+"Если вы решите закодировать ваш словарь, вы должны помнить, что он "
+"кодируется тем же паролем, что и на вашем почтовом ящике.  Если вы забудете "
+"ваш почтовый пароль и ваш администратор сменит его на новый, ваш личный "
+"словарь будет утерян и вам придется начать новый. В случае если вы смените "
+"ваш пароль, но все еще будете помнить старый, то система позволит вам "
+"перекодировать словарь с новым паролем.</p>"
+
+msgid ""
+"Please encrypt my personal dictionary and store it in an encrypted format."
+msgstr "Закодировать мой словарь и хранить его в зашифрованном виде."
+
+#, c-format
+msgid "Deleting the following entries from <strong>%s</strong> dictionary:"
+msgstr "Удаление следующих слов из словаря \"%s\":"
+
+msgid "All done!"
+msgstr "Готово."
+
+msgid "Personal Dictionary Updated"
+msgstr "Личный словарь обновлен"
+
+msgid "No changes requested."
+msgstr "Никаких изменений не запрошено."
+
+msgid "Please wait, communicating with the server..."
+msgstr "Подождите, соединяюсь с сервером..."
+
+msgid ""
+"Please choose which dictionary you would like to use to spellcheck this "
+"message:"
+msgstr "Выберите который словарь использовать для проверки этого сообщения:"
+
+msgid "SquirrelSpell Initiating"
+msgstr "Инициализация системы проверки правописания"
+
+#, c-format
+msgid ""
+"Settings adjusted to: <strong>%s</strong> with <strong>%s</strong> as "
+"default dictionary."
+msgstr ""
+"Настройки изменены: будут использоваться словари <strong>%s</strong>, и "
+"<strong>%s</strong> по умолчанию."
+
+#, c-format
+msgid "Using <strong>%s</strong> dictionary (system default) for spellcheck."
+msgstr "Используется словарь \"<strong>%s</strong>\" (по умолчанию)."
+
+msgid "International Dictionaries Preferences Updated"
+msgstr "Настройки иностранных словарей обновлены"
+
+msgid ""
+"Please check any available international dictionaries which you would like "
+"to use when spellchecking:"
+msgstr ""
+"Пожалуйста выберите любые из доступных словарей, которые вы хотели бы "
+"использовать при проверке правописания:"
+
+msgid "Make this dictionary my default selection:"
+msgstr "Использовать этот словарь по умолчанию:"
+
+msgid "Make these changes"
+msgstr "Сохранить эти изменения"
+
+msgid "Add International Dictionaries"
+msgstr "Добавить иностранные словари"
+
+msgid "Please choose which options you wish to set up:"
+msgstr "Выберите что именно вы хотите настроить:"
+
+msgid "Edit your personal dictionary"
+msgstr "Редактировать ваш личный словарь"
+
+msgid "Set up international dictionaries"
+msgstr "Настроить иностранные словари"
+
+msgid "Encrypt or decrypt your personal dictionary"
+msgstr "Настройки шифрования вашего личного словаря"
+
+#, fuzzy
+msgid "not available"
+msgstr "отсутствует"
+
+msgid "SquirrelSpell Options Menu"
+msgstr "Настройка системы правописания"
+
 msgid "Translator"
 msgstr "Переводчик"
 
@@ -2164,26 +3337,38 @@ msgstr "Настройки переводчика"
 msgid "Your server options are as follows:"
 msgstr "Настройки серверов:"
 
-msgid ""
-"13 language pairs, maximum of 1000 characters translated, powered by Systran"
+#, fuzzy
+msgid "Maximum of 1000 characters translated, powered by Systran"
 msgstr "13 языковых пар, максимум 1000 символов, система Systran"
 
-msgid ""
-"10 language pairs, maximum of 25 kilobytes translated, powered by Systran"
-msgstr "10 языковых пар, максимум 25Кб текста, система Systran"
+#, c-format
+msgid "Number of supported language pairs: %s"
+msgstr ""
 
-msgid "12 language pairs, no known limits, powered by Systran"
+#, fuzzy
+msgid "No known limits, powered by Systran"
 msgstr "12 языковых пар, без ограничений, система Systran"
 
-msgid ""
-"767 language pairs, no known limits, powered by Translation Experts's "
-"InterTran"
+#, fuzzy
+msgid "No known limits, powered by Translation Experts's InterTran"
 msgstr ""
 "767 языковых пар, без ограничений, система Translation Experts's InterTran"
 
-msgid ""
-"8 language pairs, no known limits, powered by GPLTrans (free, open source)"
+#, c-format
+msgid "Number of supported languages: %s"
+msgstr ""
+
+#, fuzzy
+msgid "No known limits, powered by GPLTrans (free, open source)"
 msgstr "8 языковых пар, без ограничений, система GPLTrans (открытый код)"
+
+#, fuzzy
+msgid "Hellenic translations, no known limits, powered by Systran"
+msgstr "12 языковых пар, без ограничений, система Systran"
+
+#, fuzzy
+msgid "Russian translations, maximum of 500 characters translated"
+msgstr "13 языковых пар, максимум 1000 символов, система Systran"
 
 msgid ""
 "You also decide if you want the translation box displayed, and where it will "
@@ -2218,9 +3403,6 @@ msgstr "При написании:"
 msgid "Not yet functional, currently does nothing"
 msgstr "Еще не внедрено, в данный момент не работает."
 
-msgid "Download this as a file"
-msgstr "Загрузить это сообщение на диск"
-
 msgid "Translation Options"
 msgstr "Настройки переводчика"
 
@@ -2238,6 +3420,10 @@ msgstr "%s на %s"
 msgid "English"
 msgstr "Английский"
 
+#, fuzzy
+msgid "Chinese"
+msgstr "Изменить"
+
 msgid "French"
 msgstr "Французский"
 
@@ -2246,6 +3432,13 @@ msgstr "Немецкий"
 
 msgid "Italian"
 msgstr "Итальянский"
+
+msgid "Japanese"
+msgstr "Японский"
+
+#, fuzzy
+msgid "Korean"
+msgstr "Норвежский"
 
 msgid "Portuguese"
 msgstr "Португальский"
@@ -2292,9 +3485,6 @@ msgstr "Венгерский"
 msgid "Icelandic"
 msgstr "Исландский"
 
-msgid "Japanese"
-msgstr "Японский"
-
 msgid "Latin American Spanish"
 msgstr "Испанский (Лат. Амер.)"
 
@@ -2316,6 +3506,9 @@ msgstr "Словацкий"
 msgid "Swedish"
 msgstr "Шведский"
 
+msgid "Turkish"
+msgstr ""
+
 msgid "Welsh"
 msgstr "Уэльский"
 
@@ -2325,648 +3518,111 @@ msgstr "Индонезийский"
 msgid "Latin"
 msgstr "Латинский"
 
-msgid "Address Book"
-msgstr "Адресная книга"
-
-msgid "Name"
-msgstr "Имя"
-
-msgid "E-mail"
-msgstr "E-mail"
-
-msgid "Info"
-msgstr "Инфо"
-
-msgid "Source"
-msgstr "Исходный формат"
-
-msgid "Bcc"
-msgstr "Слепая копия"
-
-msgid "Use Addresses"
-msgstr "Использовать адреса"
-
-msgid "Address Book Search"
-msgstr "Поиск в адресной книге"
-
-msgid "Search for"
-msgstr "Искать"
-
-msgid "in"
-msgstr "во"
-
-msgid "All address books"
-msgstr "всех адресных книгах"
-
-msgid "List all"
-msgstr "Показать все"
-
-#, c-format
-msgid "Unable to list addresses from %s"
-msgstr "Ошибка доступа к адресам в %s"
-
-msgid "Your search failed with the following error(s)"
-msgstr "Поиск не завершен по следующим причинам"
-
-msgid "No persons matching your search was found"
-msgstr "По заданным параметрам ничего не найдено"
-
-msgid "Return"
-msgstr "Вернуться"
-
-msgid "Nickname"
-msgstr "Никнейм"
-
-msgid "Must be unique"
-msgstr "Должен быть уникальным"
-
-msgid "E-mail address"
-msgstr "Адрес эл. Почты:"
-
-msgid "First name"
-msgstr "Имя"
-
-msgid "Last name"
-msgstr "Фамилия"
-
-msgid "Additional info"
-msgstr "Дополнительная информация"
-
-msgid "No personal address book is defined. Contact administrator."
-msgstr "Персональная адресная книга не найдена. Свяжитесь с администратором."
-
-msgid "You can only edit one address at the time"
-msgstr "Вы можете редактировать только по одному адресу за раз"
-
-msgid "Update address"
-msgstr "Обновить адрес"
-
-msgid "Unknown error"
-msgstr "Неизвестная ошибка"
-
-msgid "Add address"
-msgstr "Добавить адрес"
-
-msgid "Edit selected"
-msgstr "Редактировать выделенные"
-
-msgid "Delete selected"
-msgstr "Удалить выделенные"
-
-#, c-format
-msgid "Add to %s"
-msgstr "Добавить в %s"
-
-msgid "Original Message"
-msgstr "Исходное сообщение"
-
-msgid "Draft Email Saved"
-msgstr "Черновик сохранен"
-
-msgid "Could not move/copy file. File not attached"
-msgstr "Ошибка при копировании файла. Файл не был вставлен"
-
-msgid "Draft Saved"
-msgstr "Черновик сохранен"
-
-msgid "Your Message has been sent"
-msgstr "Ваше сообщение было отправлено."
-
-msgid "To:"
-msgstr "Кому:"
-
-msgid "CC:"
-msgstr "Копия:"
-
-msgid "BCC:"
-msgstr "Слепая копия:"
-
-msgid "Subject:"
-msgstr "Тема:"
-
-msgid "Send"
-msgstr "Послать"
-
-msgid "Attach:"
-msgstr "Вставить файл:"
-
-msgid "Add"
-msgstr "Добавить"
-
-msgid "Delete selected attachments"
-msgstr "Удалить выделенные вставки"
-
-msgid "Priority"
-msgstr "Приоритет"
-
-msgid "Receipt"
-msgstr "Нотификация"
+#, fuzzy
+msgid "to English"
+msgstr "Английский"
 
 #, fuzzy
-msgid "On Read"
-msgstr "По прочтении"
-
-msgid "On Delivery"
-msgstr "По получении"
-
-msgid "Save Draft"
-msgstr "Сохранить черновик"
-
-msgid "You have not filled in the \"To:\" field."
-msgstr "Вы не заполнили поле \"Кому:\"."
-
-msgid "said"
-msgstr "сообщил(а)"
-
-msgid "quote"
-msgstr "цитата"
-
-msgid "who"
-msgstr "от"
+msgid "from English"
+msgstr "Английский"
 
 #, fuzzy
-msgid "Draft folder"
-msgstr "Папка для черновиков (Drafts)"
-
-msgid "Illegal folder name.  Please select a different name."
-msgstr "Ошибка в имени папки. Пожалуйста выберите другое имя."
-
-msgid "Click here to go back"
-msgstr "Кликните здесь чтобы вернуться назад"
-
-msgid "You have not selected a folder to delete. Please do so."
-msgstr "Пожалуйста сначала выберите папку."
-
-msgid "Delete Folder"
-msgstr "Удалить Папку"
-
-#, fuzzy, c-format
-msgid "Are you sure you want to delete %s?"
-msgstr "В самом деле удалить эту памятку?"
-
-msgid "Subscribed successfully!"
-msgstr "Вы подписаны!"
-
-msgid "Unsubscribed successfully!"
-msgstr "Вы больше не подписаны."
-
-msgid "Deleted folder successfully!"
-msgstr "Папка благополучно удалена!"
-
-msgid "Created folder successfully!"
-msgstr "Папка была благополучно создана!"
-
-msgid "Renamed successfully!"
-msgstr "Папка переименована."
-
-msgid "Subscription Unsuccessful - Folder does not exist."
-msgstr ""
-
-msgid "refresh folder list"
-msgstr "обновить"
-
-msgid "Create Folder"
-msgstr "Создать Папку"
-
-msgid "as a subfolder of"
-msgstr "в качестве под-папки для"
-
-msgid "None"
-msgstr "Нет"
-
-msgid "Let this folder contain subfolders"
-msgstr "Эта папка может содержать под-папки"
-
-msgid "Create"
-msgstr "Создать"
-
-msgid "Rename a Folder"
-msgstr "Переименовать папку"
-
-msgid "Select a folder"
-msgstr "Выбрать папку"
-
-msgid "Rename"
-msgstr "Переименовать"
-
-msgid "No folders found"
-msgstr "Папок не найдено"
-
-msgid "No folders were found to unsubscribe from!"
-msgstr "При попытке отписаться не найдено папок!"
-
-msgid "No folders were found to subscribe to!"
-msgstr "При попытке подписаться не найдено папок!"
+msgid "Interface language"
+msgstr "Язык по умолчанию"
 
 #, fuzzy
-msgid "Subscribe to:"
-msgstr "Подписаться"
-
-msgid "You have not selected a folder to rename. Please do so."
-msgstr "Пожалуйста сначала выберите папку для переименования."
-
-msgid "Rename a folder"
-msgstr "Переименовать папку"
-
-msgid "New name:"
-msgstr "Новое имя:"
-
-msgid "ERROR: Help files are not in the right format!"
-msgstr ""
-
-#, c-format
-msgid ""
-"The help has not been translated to %s.  It will be displayed in English "
-"instead."
-msgstr ""
-"Этот файл помощи не переведен на %s. Будет использована Английская версия."
-
-msgid "Some or all of the help documents are not present!"
-msgstr "Некоторые или все из требуемых файлов помощи не найдены!"
-
-msgid "Table of Contents"
-msgstr "Оглавление"
-
-msgid "Top"
-msgstr "Вверх"
-
-msgid "Viewing an image attachment"
-msgstr "Просмотр графической вставки"
-
-msgid "View message"
-msgstr "Просмотр сообщения"
-
-#, fuzzy
-msgid "Not available"
-msgstr "отсутствует"
-
-msgid "purge"
-msgstr "очистить"
-
-msgid "Last Refresh"
-msgstr "Обновлено"
-
-msgid "Save folder tree"
-msgstr ""
-
-msgid "Login"
-msgstr "Логин"
-
-#, c-format
-msgid "%s Login"
-msgstr "Вход в %s"
-
-msgid "Name:"
-msgstr "Логин:"
-
-msgid "No messages were selected."
-msgstr "Ни одного сообщения не было выбрано."
-
-msgid "Message Highlighting"
-msgstr "Цветовое Выделение Сообщений"
-
-#, fuzzy
-msgid "subject"
-msgstr "Тема"
-
-msgid "No highlighting is defined"
-msgstr "Правил подсветки не задано"
-
-msgid "Identifying name"
-msgstr "Имя правила"
-
-msgid "Color"
-msgstr "Цвет"
-
-msgid "Dark Blue"
-msgstr "Темно-Синий"
-
-msgid "Dark Green"
-msgstr "Темно-Зеленый"
-
-msgid "Dark Yellow"
-msgstr "Темно-Желтый"
-
-msgid "Dark Cyan"
-msgstr "Голубой"
-
-msgid "Dark Magenta"
-msgstr "Темно-Малиновый"
-
-msgid "Light Blue"
-msgstr "Светло-Голубой"
-
-msgid "Light Green"
-msgstr "Светло-Зеленый"
-
-msgid "Light Yellow"
-msgstr "Желтый"
-
-msgid "Light Cyan"
-msgstr "Ярко-Голубой"
-
-msgid "Light Magenta"
-msgstr "Ярко-Малиновый"
-
-msgid "Dark Gray"
-msgstr "Темно-Серый"
-
-msgid "Medium Gray"
-msgstr "Серый"
-
-msgid "Light Gray"
-msgstr "Светло-Серый"
-
-msgid "White"
-msgstr "Белый"
-
-msgid "Other:"
-msgstr "Другой:"
-
-msgid "Ex: 63aa7f"
-msgstr "Напр: eeffff"
-
-msgid "Matches"
-msgstr "Искать совпадения в"
-
-#, c-format
-msgid "Alternate Identity %d"
-msgstr "Альтернативные Метрики %d"
-
-msgid "Advanced Identities"
-msgstr "Расширенные Метрики"
-
-msgid "Default Identity"
-msgstr "Метрики по умолчанию"
-
-msgid "Add a New Identity"
-msgstr "Добавить новые Метрики"
-
-msgid "E-Mail Address"
-msgstr "Адрес эл. Почты"
-
-msgid "Save / Update"
-msgstr "Сохранить / Обновить"
-
-msgid "Make Default"
-msgstr "Использовать по умолчанию"
-
-msgid "Move Up"
-msgstr "Переместить выше"
-
-msgid "Index Order"
-msgstr "Порядок индексации"
-
-msgid "Checkbox"
-msgstr "Чекбокс"
-
-msgid "Flags"
-msgstr "Флажки"
-
-msgid ""
-"The index order is the order that the columns are arranged in the message "
-"index.  You can add, remove, and move columns around to customize them to "
-"fit your needs."
-msgstr ""
-"Порядок индексации это порядок в котором сообщения отображаются в вашей "
-"папке.Вы можете добавить, удалить, или переместить колонки как вам угодно."
-
-msgid "up"
-msgstr "выше"
-
-msgid "down"
-msgstr "ниже"
-
-msgid "remove"
-msgstr "удалить"
-
-msgid "Return to options page"
-msgstr "Вернуться к настройкам"
-
-msgid "Personal Information"
-msgstr "Личная информация"
-
-msgid "Display Preferences"
-msgstr "Настройки вида"
-
-msgid "Folder Preferences"
-msgstr "Настройки Папок"
-
-msgid "Successfully Saved Options"
-msgstr "Настройки были сохранены"
-
-msgid "Refresh Folder List"
-msgstr "обновить список папок"
-
-msgid "Refresh Page"
-msgstr "Обновить страницу"
-
-msgid ""
-"This contains personal information about yourself such as your name, your "
-"email address, etc."
-msgstr ""
-"Здесь вы можете настроить личную информацию о себе: имя, фамилию, адрес "
-"электронной почты, итд."
-
-msgid ""
-"You can change the way that SquirrelMail looks and displays information to "
-"you, such as the colors, the language, and other settings."
-msgstr ""
-"Здесь вы можете настроить как SquirrelMail выглядит в вашем браузере -- вы "
-"можете изменить цвета, язык, и прочие настройки."
-
-msgid ""
-"Based upon given criteria, incoming messages can have different background "
-"colors in the message list.  This helps to easily distinguish who the "
-"messages are from, especially for mailing lists."
-msgstr ""
-"Сообщения в вашем ящике могут подсвечиваться разными цветами в зависимости "
-"от настроек. Это позволяет с легкостью отслеживать важные сообщения от "
-"прочих, особенно при использовании списков рассылки."
-
-msgid ""
-"These settings change the way your folders are displayed and manipulated."
-msgstr "Здесь вы можете настроить разные папки в вашем ящике."
-
-msgid ""
-"The order of the message index can be rearranged and changed to contain the "
-"headers in any order you want."
-msgstr "Вы можете поменять расположение заголовков в таблице сообщений."
-
-msgid "Message not printable"
-msgstr "Непечатное сообщение"
-
-msgid "Printer Friendly"
-msgstr "Версия для печати"
-
-msgid "CC"
-msgstr "Копия"
-
-msgid "Print"
-msgstr "Печатать"
-
-msgid "View Printable Version"
-msgstr "Версия для печати"
-
-msgid "Read:"
-msgstr "Прочитано:"
-
-msgid "Your message"
-msgstr "Ваше сообщение"
-
-msgid "Sent:"
-msgstr "Отослано:"
-
-#, c-format
-msgid "Was displayed on %s"
-msgstr "Было просмотрено %s"
-
-msgid "less"
-msgstr "меньше"
-
-msgid "more"
-msgstr "больше"
-
-msgid "Mailer"
-msgstr "Почтовый Агент"
-
-msgid "Read receipt"
-msgstr "Нотификация о прочтении"
-
-msgid "send"
-msgstr "послать"
-
-msgid "requested"
-msgstr "запрошена"
-
-msgid ""
-"The message sender has requested a response to indicate that you have read "
-"this message. Would you like to send a receipt?"
-msgstr ""
-"Автор этого сообщения запросил нотификацию о прочтении. Отослать нотификацию?"
-
-msgid "Send read receipt now"
-msgstr "Отослать нотификацию"
-
-#, fuzzy
-msgid "Search results"
-msgstr "Результаты поиска"
-
-msgid "Message List"
-msgstr "Список сообщений"
-
-msgid "Resume Draft"
-msgstr "Возобновить работу над черновиком"
-
-msgid "Edit Message as New"
-msgstr "Редактировать сообщение как новое"
-
-#, fuzzy
-msgid "View Message"
-msgstr "Просмотр сообщения"
-
-#, fuzzy
-msgid "Forward as Attachment"
-msgstr "Вставки"
-
-msgid "Reply"
-msgstr "Ответить"
-
-msgid "Reply All"
-msgstr "Ответить Всем"
-
-msgid "View Full Header"
-msgstr "Просмотреть все заголовки"
-
-msgid "Attachments"
-msgstr "Вставки"
-
-msgid "Folder:"
-msgstr "Папка:"
-
-msgid "edit"
-msgstr "редактировать"
-
-msgid "search"
-msgstr "искать"
-
-msgid "delete"
-msgstr "удалить"
-
-msgid "Recent Searches"
-msgstr "Предыдущие поиски"
-
-msgid "save"
-msgstr "сохранить"
-
-msgid "forget"
-msgstr "забыть"
-
-msgid "Current Search"
-msgstr "Текущий поиск"
-
-msgid "Body"
-msgstr "Тело"
-
-msgid "Everywhere"
-msgstr "Везде"
-
-msgid "Search Results"
-msgstr "Результаты поиска"
-
-msgid "No Messages Found"
-msgstr "Сообщений не найдено"
-
-msgid "You have been successfully signed out."
-msgstr "Сеанс работы закончен."
-
-msgid "Click here to log back in."
-msgstr "Кликните здесь чтобы войти в систему снова."
-
-msgid "Viewing a Business Card"
-msgstr "Просмотр визитки"
-
-msgid "Title"
-msgstr "Служебный чин"
-
-msgid "Email"
-msgstr "E-mail"
-
-msgid "Web Page"
-msgstr "WWW-страница"
-
-msgid "Organization / Department"
-msgstr "Компания / Отдел"
-
-msgid "Address"
-msgstr "Адрес"
-
-msgid "Work Phone"
-msgstr "Рабочий телефон"
-
-msgid "Home Phone"
-msgstr "Домашний телефон"
-
-msgid "Cellular Phone"
-msgstr "Мобильный телефон"
-
-msgid "Fax"
-msgstr "Факс"
-
-msgid "Note"
-msgstr "Заметка"
-
-msgid "Add to Addressbook"
-msgstr "Добавить в адресную книгу"
-
-msgid "Title & Org. / Dept."
-msgstr "Чин и компания / Отдел"
-
-msgid "Viewing Full Header"
-msgstr "Просмотр всех заголовков сообщения"
-
-msgid "Viewing a text attachment"
-msgstr "Просмотр текстовой вставки"
+msgid "Translation direction"
+msgstr "Настройки переводчика"
+
+msgid "Delivery error report"
+msgstr "Ошибка при доставке сообщения"
+
+msgid "Undelivered Message Headers"
+msgstr "Хедеры сообщения"
+
+#~ msgid "Unknown message number in reply from server: "
+#~ msgstr "Странный номер сообщения в ответе сервера: "
+
+#~ msgid "(unknown sender)"
+#~ msgstr "(инкогнито)"
+
+#~ msgid "Enable Subtle Printer Friendly Link"
+#~ msgstr "Добавлять ссылку для перехода к \"версии для печати\""
+
+#~ msgid "Authenticated SMTP"
+#~ msgstr "Использовать SMTP-аутентификацию"
+
+#~ msgid "35 min."
+#~ msgstr "35 минут"
+
+#~ msgid ""
+#~ "FREE - Osirusoft Relays - Osirusofts list of verified open relays. Seems "
+#~ "to include servers used by abuse@uunet.net auto-replies too."
+#~ msgstr ""
+#~ "БЕСПЛАТНО - Osirusoft Relays - список серверов пересылки от компании "
+#~ "Osirusoft."
+
+#~ msgid "FREE - Osirusoft Dialups - Osirusofts Dialup Spam Source list."
+#~ msgstr ""
+#~ "БЕСПЛАТНО - Osirusoft Dialups - Список модемных спаммеров от Osirusoft"
+
+#~ msgid ""
+#~ "FREE - Osirusoft Confirmed Spam Source - Sites that continually spam and "
+#~ "have been manually added after multiple nominations. Use with caution. "
+#~ "Seems to catch abuse auto-replies from some ISPs."
+#~ msgstr ""
+#~ "БЕСПЛАТНО - Osirusoft Confirmed Spam Source - Домены и провайдеры, "
+#~ "которые занимаются рассылкой спама и были занесены в список вручную. "
+#~ "Иногда неверно."
+
+#~ msgid ""
+#~ "FREE - Osirusoft Smart Hosts - List of hosts that are secure but relay "
+#~ "for other mail servers that are not secure."
+#~ msgstr ""
+#~ "БЕСПЛАТНО - Osirusoft Smart Hosts - Список серверов которые сами по себе "
+#~ "не пересылают спам-сообщения, но являются пересылочным пунктом для других "
+#~ "серверов, которые отсылают спам."
+
+#~ msgid ""
+#~ "FREE - Osirusoft Spamware Developers - It is believed that these are IP "
+#~ "ranges of companies that are known to produce spam software. Seems to "
+#~ "catch abuse auto-replies from some ISPs."
+#~ msgstr ""
+#~ "БЕСПЛАТНО - Osirusoft Spamware Developers - Содержит список IP-адресов "
+#~ "которые подозреваются в рассылке спама или принадлежат компаниям, которые "
+#~ "производят обеспечение для отсылки спама. Иногда фильтрует легитимные "
+#~ "сообщения."
+
+#~ msgid ""
+#~ "FREE - Osirusoft Unconfirmed OptIn Servers - List of listservers that opt "
+#~ "users in without confirmation."
+#~ msgstr ""
+#~ "БЕСПЛАТНО - Osirusoft Unconfirmed OptIn Servers - Список серверов "
+#~ "рассылки, которые добавляют адреса подписчиков без согласования с ними."
+
+#~ msgid ""
+#~ "FREE - Osirusoft Insecure formmail.cgi scripts - List of insecure "
+#~ "formmail.cgi scripts. (planned)."
+#~ msgstr ""
+#~ "БЕСПЛАТНО - Сервера с плохо настроенной системой cgi-скриптов, "
+#~ "которыепозволяют отправлять почтовые сообщения через веб-интерфейс. От "
+#~ "Osirusoft"
+
+#~ msgid "FREE - Osirusoft Open Proxy Servers - List of Open Proxy Servers."
+#~ msgstr "БЕСПЛАТНО - Список незащищенных Прокси-серверов от Osirusoft."
+
+#~ msgid "Mofify a Server"
+#~ msgstr "Редактироваь сервер"
+
+#~ msgid "(local media)"
+#~ msgstr "(локальные файлы)"
+
+#~ msgid "Local Media File:"
+#~ msgstr "Файл с диска:"
+
+#~ msgid ""
+#~ "10 language pairs, maximum of 25 kilobytes translated, powered by Systran"
+#~ msgstr "10 языковых пар, максимум 25Кб текста, система Systran"
 
 #~ msgid "Viewing a message attachment"
 #~ msgstr "Просмотр вставки"
@@ -2985,10 +3641,6 @@ msgstr "Просмотр текстовой вставки"
 
 #~ msgid "Use receive date for sort"
 #~ msgstr "Сортировать сообщения по дате получения"
-
-#~ msgid "Use References header for thread sort"
-#~ msgstr ""
-#~ "Использовать заголовок 'References' при сортировке по теме сообщения"
 
 #~ msgid "There was an error contacting the mail server."
 #~ msgstr "Ошибка при попытке связи с почтовым сервером."
@@ -3021,311 +3673,6 @@ msgstr "Просмотр текстовой вставки"
 
 #~ msgid "Submit message"
 #~ msgstr "Отправить сообщение"
-
-#~ msgid "Your personal dictionary was erased."
-#~ msgstr "Ваш личный словарик был удален."
-
-#~ msgid "Dictionary Erased"
-#~ msgstr "Словарь удален"
-
-#~ msgid ""
-#~ "Your personal dictionary was erased. Please close this window and click "
-#~ "\"Check Spelling\" button again to start your spellcheck over."
-#~ msgstr ""
-#~ "Ваш личный словарик был удален. Закройте это окно и нажмите \"Проверка "
-#~ "Правописания\" снова, чтобы закончить проверку."
-
-#~ msgid "Close this Window"
-#~ msgstr "Закрыть окно"
-
-#~ msgid ""
-#~ "Your personal dictionary was re-encrypted successfully. Now return to the "
-#~ "&quot;SpellChecker options&quot; menu and make your selection again."
-#~ msgstr ""
-#~ "Ваш личный словарь был закодирован новым паролем. Пожалуйста вернитесь на "
-#~ "страничку с &quot;Опциями правописания&quot;."
-
-#~ msgid "Successful Re-encryption"
-#~ msgstr "Перекодировка прошла благополучно"
-
-#~ msgid ""
-#~ "Your personal dictionary was re-encrypted successfully. Please close this "
-#~ "window and click \"Check Spelling\" button again to start your spellcheck "
-#~ "over."
-#~ msgstr ""
-#~ "Ваш личный словарь был перекодирован новым паролем благополучно. Закройте "
-#~ "это окно и нажмите кнопку \"Проверить правописание\" заново, чтобы "
-#~ "возобновить проверку."
-
-#~ msgid "Dictionary re-encrypted"
-#~ msgstr "Словарь перекодирован"
-
-#~ msgid ""
-#~ "Your personal dictionary has been <strong>encrypted</strong> and is now "
-#~ "stored in an <strong>encrypted format</strong>."
-#~ msgstr ""
-#~ "Ваш личный словарь был <strong>зашифрован</strong> и теперь хранится в "
-#~ "<strong>закодированном формате</strong>."
-
-#~ msgid ""
-#~ "Your personal dictionary has been <strong>decrypted</strong> and is now "
-#~ "stored as <strong>clear text</strong>."
-#~ msgstr ""
-#~ "Ваш личный словарь был <strong>расшифрован</strong> и теперь хранится в "
-#~ "<strong>нешифрованном формате</strong>."
-
-#~ msgid "Personal Dictionary Crypto Settings"
-#~ msgstr "Настройки шифровки личного словаря"
-
-#~ msgid "I tried to execute '%s', but it returned:"
-#~ msgstr "При попытке выполнить '%s' команда вернула:"
-
-#~ msgid "SquirrelSpell is misconfigured."
-#~ msgstr "Система правописания не настроена"
-
-#~ msgid "SquirrelSpell Results"
-#~ msgstr "Результаты проверки"
-
-#~ msgid "Spellcheck completed. Commit changes?"
-#~ msgstr "Проверка правописания закончена. Сохранить изменения?"
-
-#~ msgid "No changes were made."
-#~ msgstr "Никаких изменений не произведено."
-
-#~ msgid "Now saving your personal dictionary... Please wait."
-#~ msgstr "Записываем ваш личный словарик на диск... Подождите."
-
-#~ msgid "Found %s errors"
-#~ msgstr "Найдено %s ошибок"
-
-#~ msgid "Line with an error:"
-#~ msgstr "Строка с ошибкой:"
-
-#~ msgid "Error:"
-#~ msgstr "Ошибка:"
-
-#~ msgid "Suggestions"
-#~ msgstr "Подсказки"
-
-#~ msgid "Change to:"
-#~ msgstr "Изменить на:"
-
-#~ msgid "Occurs times:"
-#~ msgstr "Найдено раз:"
-
-#~ msgid "Change this word"
-#~ msgstr "Изменить это слово"
-
-#~ msgid "Change"
-#~ msgstr "Изменить"
-
-#~ msgid "Change ALL occurances of this word"
-#~ msgstr "Изменить ВСЕ слова с этой ошибкой"
-
-#~ msgid "Change All"
-#~ msgstr "Изменить Все"
-
-#~ msgid "Ignore this word"
-#~ msgstr "Пропустить это слово"
-
-#~ msgid "Ignore"
-#~ msgstr "Пропустить"
-
-#~ msgid "Ignore ALL occurances this word"
-#~ msgstr "Пропустить ВСЕ слова с этой ошибкой"
-
-#~ msgid "Ignore All"
-#~ msgstr "Пропустить Все"
-
-#~ msgid "Add this word to your personal dictionary"
-#~ msgstr "Добавить это слово в ваш личный словарь"
-
-#~ msgid "Add to Dic"
-#~ msgstr "В словарь"
-
-#~ msgid "Close and Commit"
-#~ msgstr "Закрыть и сохранить"
-
-#~ msgid "The spellcheck is not finished. Really close and commit changes?"
-#~ msgstr ""
-#~ "Проверка правописания не закончена. В самом деле закрыть и сохранить "
-#~ "изменения?"
-
-#~ msgid "Close and Cancel"
-#~ msgstr "Закрыть и сбросить"
-
-#~ msgid "The spellcheck is not finished. Really close and discard changes?"
-#~ msgstr ""
-#~ "Проверка правописания не закончена. В самом деле закрыть и сбросить все "
-#~ "изменения?"
-
-#~ msgid "No errors found"
-#~ msgstr "Ошибок не найдено"
-
-#~ msgid "Personal Dictionary"
-#~ msgstr "Личный словарик"
-
-#~ msgid "No words in your personal dictionary."
-#~ msgstr "В вашем личном словаре нет слов."
-
-#~ msgid "Please check any words you wish to delete from your dictionary."
-#~ msgstr "Пожалуйста отметьте те слова, которые вы хотите удалить из словаря."
-
-#~ msgid "%s dictionary"
-#~ msgstr "%s словарь"
-
-#~ msgid "Delete checked words"
-#~ msgstr "Удалить выделенные слова"
-
-#~ msgid "Edit your Personal Dictionary"
-#~ msgstr "Редактировать ваш личный словарь"
-
-#~ msgid "Please make your selection first."
-#~ msgstr "Пожалуйста, сперва выберите опцию."
-
-#~ msgid ""
-#~ "This will encrypt your personal dictionary and store it in an encrypted "
-#~ "format. Proceed?"
-#~ msgstr ""
-#~ "Эта акция закодирует ваш словарь и будет хранить его на диске в "
-#~ "шифрованом формате. Продолжать?"
-
-#~ msgid ""
-#~ "This will decrypt your personal dictionary and store it in a clear-text "
-#~ "format. Proceed?"
-#~ msgstr ""
-#~ "Эта акция раскодирует ваш словарь и сохранит его на диске в нешифрованном "
-#~ "формате. Продолжать?"
-
-#~ msgid ""
-#~ "<p>Your personal dictionary is <strong>currently encrypted</strong>. This "
-#~ "helps protect your privacy in case the web-mail system gets compromized "
-#~ "and your personal dictionary ends up stolen. It is currently encrypted "
-#~ "with the password you use to access your mailbox, making it hard for "
-#~ "anyone to see what is stored in your personal dictionary.</p> "
-#~ "<p><strong>ATTENTION:</strong> If you forget your password, your personal "
-#~ "dictionary will become unaccessible, since it can no longer be decrypted. "
-#~ "If you change your mailbox password, SquirrelSpell will recognize it and "
-#~ "prompt you for your old password in order to re-encrypt the dictionary "
-#~ "with a new key.</p>"
-#~ msgstr ""
-#~ "<p>Ваш личный словарь в данный момент сохранен в <strong>закодированном "
-#~ "формате</strong>. Это делается для дополнительной защиты ваших данных: в "
-#~ "случае если сервер будет взломан и данные с него похищены, содержимое "
-#~ "вашего словаря будет похитителям недоступно.</p> <p><strong>ВНИМАНИЕ:</"
-#~ "strong> Для шифровки используется тот же пароль, что используется для "
-#~ "вашего почтового ящика. Если вы измените пароль на вашем ящике, система "
-#~ "будет не в состоянии расшифровать ваш словарь. В этом случае система "
-#~ "запросит ваш старый пароль и перекодирует словарь с вашим новым паролем.</"
-#~ "p>"
-
-#~ msgid ""
-#~ "Please decrypt my personal dictionary and store it in a clear-text format."
-#~ msgstr "Расшифровать мой личный словарь и хранить его в нешифрованном виде."
-
-#~ msgid "Change crypto settings"
-#~ msgstr "Изменить настройки шифрования"
-
-#~ msgid ""
-#~ "<p>Your personal dictionary is <strong>currently not encrypted</strong>. "
-#~ "You may wish to encrypt your personal dictionary to protect your privacy "
-#~ "in case the webmail system gets compromized and your personal dictionary "
-#~ "file gets stolen. When encrypted, the file's contents look garbled and "
-#~ "are hard to decrypt without knowing the correct key (which is your "
-#~ "mailbox password).</p> <strong>ATTENTION:</strong> If you decide to "
-#~ "encrypt your personal dictionary, you must remember that it gets &quot;"
-#~ "hashed&quot; with your mailbox password. If you forget your mailbox "
-#~ "password and the administrator changes it to a new value, your personal "
-#~ "dictionary will become useless and will have to be created anew. However, "
-#~ "if you or your system administrator change your mailbox password but you "
-#~ "still have the old password at hand, you will be able to enter the old "
-#~ "key to re-encrypt the dictionary with the new value.</p>"
-#~ msgstr ""
-#~ "<p>Ваш личный словарь хранится в <strong>нешифрованном виде</strong>. "
-#~ "Если желаете, система может закодировать ваш словарь паролем, чтобы в "
-#~ "случае взлома сервера и хищения данных ваш личный словарь был им "
-#~ "недоступен. Если вы выберете опцию закодировать ваш словарь, он будет "
-#~ "храниться в шифрованном бинарном варианте и его содержимое будет "
-#~ "невозможно прочитать без пароля (который тот же, что и ваш почтовый "
-#~ "пароль).</p> <strong>ВНИМАНИЕ:</strong> Если вы решите закодировать ваш "
-#~ "словарь, вы должны помнить, что он кодируется тем же паролем, что и на "
-#~ "вашем почтовом ящике.  Если вы забудете ваш почтовый пароль и ваш "
-#~ "администратор сменит его на новый, ваш личный словарь будет утерян и вам "
-#~ "придется начать новый. В случае если вы смените ваш пароль, но все еще "
-#~ "будете помнить старый, то система позволит вам перекодировать словарь с "
-#~ "новым паролем.</p>"
-
-#~ msgid ""
-#~ "Please encrypt my personal dictionary and store it in an encrypted format."
-#~ msgstr "Закодировать мой словарь и хранить его в зашифрованном виде."
-
-#~ msgid "Deleting the following entries from <strong>%s</strong> dictionary:"
-#~ msgstr "Удаление следующих слов из словаря \"%s\":"
-
-#~ msgid "All done!"
-#~ msgstr "Готово."
-
-#~ msgid "Personal Dictionary Updated"
-#~ msgstr "Личный словарь обновлен"
-
-#~ msgid "No changes requested."
-#~ msgstr "Никаких изменений не запрошено."
-
-#~ msgid "Please wait, communicating with the server..."
-#~ msgstr "Подождите, соединяюсь с сервером..."
-
-#~ msgid ""
-#~ "Please choose which dictionary you would like to use to spellcheck this "
-#~ "message:"
-#~ msgstr "Выберите который словарь использовать для проверки этого сообщения:"
-
-#~ msgid "SquirrelSpell Initiating"
-#~ msgstr "Инициализация системы проверки правописания"
-
-#~ msgid ""
-#~ "Settings adjusted to: <strong>%s</strong> with <strong>%s</strong> as "
-#~ "default dictionary."
-#~ msgstr ""
-#~ "Настройки изменены: будут использоваться словари <strong>%s</strong>, и "
-#~ "<strong>%s</strong> по умолчанию."
-
-#~ msgid ""
-#~ "Using <strong>%s</strong> dictionary (system default) for spellcheck."
-#~ msgstr "Используется словарь \"<strong>%s</strong>\" (по умолчанию)."
-
-#~ msgid "International Dictionaries Preferences Updated"
-#~ msgstr "Настройки иностранных словарей обновлены"
-
-#~ msgid ""
-#~ "Please check any available international dictionaries which you would "
-#~ "like to use when spellchecking:"
-#~ msgstr ""
-#~ "Пожалуйста выберите любые из доступных словарей, которые вы хотели бы "
-#~ "использовать при проверке правописания:"
-
-#~ msgid "Make this dictionary my default selection:"
-#~ msgstr "Использовать этот словарь по умолчанию:"
-
-#~ msgid "Make these changes"
-#~ msgstr "Сохранить эти изменения"
-
-#~ msgid "Add International Dictionaries"
-#~ msgstr "Добавить иностранные словари"
-
-#~ msgid "Please choose which options you wish to set up:"
-#~ msgstr "Выберите что именно вы хотите настроить:"
-
-#~ msgid "Edit your personal dictionary"
-#~ msgstr "Редактировать ваш личный словарь"
-
-#~ msgid "Set up international dictionaries"
-#~ msgstr "Настроить иностранные словари"
-
-#~ msgid "Encrypt or decrypt your personal dictionary"
-#~ msgstr "Настройки шифрования вашего личного словаря"
-
-#~ msgid "SquirrelSpell Options Menu"
-#~ msgstr "Настройка системы правописания"
 
 #~ msgid "POP3: premature NOOP OK, NOT an RFC 1939 Compliant server"
 #~ msgstr "POP3: ошибка сервера (premature NOOP OK, not RFC 1939 compliant)"
