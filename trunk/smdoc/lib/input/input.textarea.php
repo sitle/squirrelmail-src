@@ -3,15 +3,25 @@
  * Copyright (c) 1999-2003 The SquirrelMail Project Team
  * Licensed under the GNU GPL. For full terms see the file COPYING.
  *
- * This file is an addition to the Framework for Object Orientated Web Development (Foowd).
- *
- * It provides methods for managing groups and tracking permissions to 
- * consolidate operations using groups without using the groups class.
+ * This file is an addition/modification to the 
+ * Framework for Object Orientated Web Development (Foowd).
+ */
+
+/**
+ * Manage input from form text areas.
  *
  * $Id$
+ *
+ * @package smdoc
+ * @subpackage input
  */
+
+/** Include base input library functions and input base class */
 require_once(INPUT_DIR . 'input.lib.php');
 
+/** 
+ * Define maximum width and height parameters for text areas.
+ */
 if (!defined('INPUT_TEXTAREA_WIDTH_MIN')) define('INPUT_TEXTAREA_WIDTH_MIN', 20);
 if (!defined('INPUT_TEXTAREA_WIDTH_MAX')) define('INPUT_TEXTAREA_WIDTH_MAX', 80);
 if (!defined('INPUT_TEXTAREA_HEIGHT_MIN')) define('INPUT_TEXTAREA_HEIGHT_MIN', 4);
@@ -23,14 +33,15 @@ if (!defined('INPUT_TEXTAREA_HEIGHT_MAX')) define('INPUT_TEXTAREA_HEIGHT_MAX', 2
  * This class defines an input textarea, it handles input validation, value
  * persistancy, and displaying the object.
  *
- * @package smdoc/input
+ * @package smdoc
+ * @subpackage input
  */
 class input_textarea extends input_base 
 {
   /**
    * The textareas caption.
    *
-   * @type str
+   * @var string
    */
   var $caption;
 

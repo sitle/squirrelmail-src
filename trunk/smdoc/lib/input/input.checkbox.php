@@ -6,8 +6,19 @@
  * This file is an addition/modification to the 
  * Framework for Object Orientated Web Development (Foowd).
  *
- * $Id$
  */
+
+/**
+ * Manage Checkbox Form input
+ *
+ * Modified by SquirrelMail Development
+ * $Id$
+ *
+ * @package smdoc
+ * @subpackage input
+ */
+
+/** Include base input library functions and input base class */
 require_once(INPUT_DIR . 'input.lib.php');
 
 /**
@@ -16,21 +27,18 @@ require_once(INPUT_DIR . 'input.lib.php');
  * This class defines an input checkbox, it handles value persistancy, and
  * displaying the object.
  *
- * @package smdoc/input
+ * @package smdoc
+ * @subpackage input
  */
 class input_checkbox extends input_base 
 {
   /**
    * Whether the checkbox is checked.
-   *
-   * @type bool
    */
   var $checked;
   
   /**
    * The checkboxes caption.
-   *
-   * @type str
    */
   var $caption;
 

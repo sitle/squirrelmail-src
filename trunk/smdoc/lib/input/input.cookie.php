@@ -19,11 +19,17 @@ along with Foowd; if not, write to the Free Software
 Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 */
 
-/*
-input.cookie.php
-Cookie input object
-*/
+/**
+ * Manage Cookie Input
+ *
+ * Modified by SquirrelMail Development
+ * $Id$
+ *
+ * @package smdoc
+ * @subpackage input
+ */
 
+/** Define constants for managing cookie behavior */
 if (!defined('COOKIE_EXPIRE')) define('COOKIE_EXPIRE', 31536000);
 if (!defined('COOKIE_PATH')) define('COOKIE_PATH', '');
 if (!defined('COOKIE_DOMAIN')) define('COOKIE_DOMAIN', '');
@@ -35,58 +41,58 @@ if (!defined('COOKIE_SECURE')) define('COOKIE_SECURE', '');
  * This class defines an input cookie, it handles input validation, and setting
  * and retrieving the cookies value.
  *
- * @package Foowd/Input
- * @class input_cookie
+ * @package smdoc
+ * @subpackage input
  * @author Paul James
  */
-class input_cookie {
-
+class input_cookie 
+{
 	/**
 	 * The name of the cookie object.
 	 *
-	 * @type str
+	 * @var string
 	 */
 	var $name;
 	
 	/**
 	 * The value of the cookie.
 	 *
-	 * @type str
+	 * @var string
 	 */
 	var $value = NULL;
 
 	/**
 	 * The regular expression used to validate the cookies value.
 	 *
-	 * @type str
+	 * @var string
 	 */
 	var $regex = NULL;
 
 	/**
 	 * How long til the cookie expires in seconds.
 	 *
-	 * @type int
+	 * @var int
 	 */
 	var $expire;
 
 	/**
 	 * The path the cookie is valid for.
 	 *
-	 * @type str
+	 * @var string
 	 */
 	var $path;
 
 	/**
 	 * The domain the cookie is valid for.
 	 *
-	 * @type str
+	 * @var string
 	 */
 	var $domain;
 
 	/**
 	 * Whether the cookie should only be sent over secure HTTP.
 	 *
-	 * @type bool
+	 * @var bool
 	 */
 	var $secure;
 

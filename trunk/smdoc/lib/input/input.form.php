@@ -5,10 +5,19 @@
  *
  * This file is an addition/modification to the 
  * Framework for Object Orientated Web Development (Foowd).
- *
- * $Id$
  */
 
+/** 
+ * Manage grouping of input elements in a form
+ * that also manages form attributes (get/post, action, 
+ * submit/reset/preview button names, etc.).
+ *
+ * $Id$
+ * @package smdoc
+ * @subpackage input
+ */
+
+/** Include base input library functions and input base class */
 require_once(INPUT_DIR . 'input.lib.php');
 
 define('FORM_DEFAULT_SUBMIT', _("Submit"));
@@ -23,63 +32,64 @@ define('FORM_DEFAULT_CANCEL', _("Cancel"));
  * This class defines an input form and has methods for adding form objects to
  * the form, displaying the form, and requesting the forms state.
  *
- * @package smdoc/input
+ * @package smdoc
+ * @subpackage input
  */
 class input_form 
 {
   /**
    * The name of the form.
    *
-   * @type str
+   * @var string
    */
   var $name;
 
   /**
    * URI for form to submit to.
    *
-   * @type str
+   * @var string
    */
   var $location;
 
   /**
    * The submit method to use: SQ_POST or SQ_GET
    *
-   * @type int
+   * @var int
    */
   var $method;
 
   /**
    * Caption of the submit button.
    *
-   * @type str
+   * @var string
    */
   var $submit;
 
   /**
    * Cancel this action.
    *
-   * @type str
+   * @var string
    */
   var $cancel;
 
   /**
    * Caption of the reset button.
    *
-   * @type str
+   * @var string
    */
   var $reset;
 
   /**
    * Caption of the preview button.
    *
-   * @type str
+   * @var string
    */
   var $preview;
 
   /**
    * Form objects in this form.
    *
-   * @type array
+   * @var array
    */
   var $objects = array();
 
