@@ -60,27 +60,40 @@ if (! isset($message_highlight_list)) {
 }
 
 if ($action == 'delete' && isset($theid)) {
-    removePref($data_dir, $username, "highlight$theid");
+
+    $new_rules = array();
+    foreach($message_highlight_list as $rid => $rule) {
+         if($rid != $theid) {
+             $new_rules[] = $rule;
+         }
+    }
+    $message_highlight_list = $new_rules;    
+
+    setPref($data_dir, $username, 'hililist', serialize($message_highlight_list));
+
     header( "Location: $SCRIPT_NAME" );
     exit;
 } else if ($action == 'save') {
-    if (!$theid) $theid = 0;
-    $identname = str_replace(',', ' ', $identname);
     if ($color_type == 1) $newcolor = $newcolor_choose;
     elseif ($color_type == 2) $newcolor = $newcolor_input;
     else $newcolor = $color_type;
 
-    $newcolor = str_replace(',', '', $newcolor);
     $newcolor = str_replace('#', '', $newcolor);
     $newcolor = str_replace('"', '', $newcolor);
     $newcolor = str_replace('\'', '', $newcolor);
     $value = str_replace(',', ' ', $value);
 
-    setPref($data_dir, $username, "highlight$theid", $identname.','.$newcolor.','.$value.','.$match_type);
-    $message_highlight_list[$theid]['name'] = $identname;
-    $message_highlight_list[$theid]['color'] = $newcolor;
-    $message_highlight_list[$theid]['value'] = $value;
-    $message_highlight_list[$theid]['match_type'] = $match_type;
+    if(isset($theid)) {
+        $message_highlight_list[$theid] = 
+            array( 'name' => $identname, 'color' => $newcolor,
+                   'value' => $value, 'match_type' => $match_type );
+    } else {
+        $message_highlight_list[] = 
+            array( 'name' => $identname, 'color' => $newcolor,
+                   'value' => $value, 'match_type' => $match_type );
+    }
+
+    setPref($data_dir, $username, 'hililist', serialize($message_highlight_list));
 }
 displayPageHeader($color, 'None');
 ?>
@@ -115,11 +128,6 @@ if (count($message_highlight_list) >= 1) {
         "<br>\n";
 }
 if ($action == 'edit' || $action == 'add') {
-    if (!isset($theid))
-    {
-        $theid = count($message_highlight_list);
-        $message_highlight_list[$theid] = array();
-    }
 
     $color_list[0] = '4444aa';
     $color_list[1] = '44aa44';
@@ -263,7 +271,7 @@ if ($action == 'edit' || $action == 'add') {
     for ($i=0; $i < 14; $i++) {
         ${"selected".$i} = '';
     }
-    if (isset($message_highlight_list[$theid]['color'])) {
+    if ($action == 'edit' && isset($message_highlight_list[$theid]['color'])) {
         for ($i=0; $i < 14; $i++) {
             if ($color_list[$i] == $message_highlight_list[$theid]['color']) {
             $selected_choose = ' checked';
@@ -279,14 +287,15 @@ if ($action == 'edit' || $action == 'add') {
 
     echo '<form name="f" action="options_highlight.php">' . "\n";
     echo '<input type="hidden" value="save" name="action">' . "\n";
-    echo '<input type="hidden" value="'.$theid.'" name="theid">' . "\n";
+    if($action == 'edit')
+        echo '<input type="hidden" value="'.$theid.'" name="theid">' ."\n";
     echo '<table width="80%" align="center" cellpadding="3" cellspacing="0" border="0">' . "\n";
     echo "   <tr bgcolor=\"$color[0]\">\n";
     echo "      <td align=\"right\" nowrap><b>\n";
     echo _("Identifying name") . ":";
     echo '      </b></td>' . "\n";
     echo '      <td>' . "\n";
-    if (isset($message_highlight_list[$theid]['name']))
+    if ($action == 'edit' && isset($message_highlight_list[$theid]['name']))
         $disp = $message_highlight_list[$theid]['name'];
     else
         $disp = '';
@@ -325,7 +334,7 @@ if ($action == 'edit' || $action == 'add') {
     # Show grid of color choices
     echo "<tr bgcolor=\"$color[0]\"><td colspan='2'>\n";
     echo "<table border=0 cellpadding=\"2\" align=\"center\" cellspacing=\"1\">\n";
-    if (isset($message_highlight_list[$theid]['color'])) {
+    if ($action == 'edit' && isset($message_highlight_list[$theid]['color'])) {
         $current_color = $message_highlight_list[$theid]['color'];
     }
     else {
@@ -366,7 +375,7 @@ if ($action == 'edit' || $action == 'add') {
             _("Subject") );
     echo "         </select>\n";
     echo '<b>' . _("Matches") . ':</b> ';
-    if (isset($message_highlight_list[$theid]['value']))
+    if ($action == 'edit' && isset($message_highlight_list[$theid]['value']))
         $disp = $message_highlight_list[$theid]['value'];
     else
         $disp = '';
