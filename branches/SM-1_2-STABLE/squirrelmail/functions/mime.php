@@ -695,16 +695,16 @@ function translateText(&$body, $wrap_at, $charset) {
             }
         }
         
-        if ($Quotes > 1) {
-            if (! isset($color[14])) {
-                $color[14] = '#FF0000';
-            }
-            $line = '<FONT COLOR="' . $color[14] . '">' . $line . '</FONT>';
-        } elseif ($Quotes) {
+        if ($Quotes % 2) {
             if (! isset($color[13])) {
                 $color[13] = '#800000';
             }
             $line = '<FONT COLOR="' . $color[13] . '">' . $line . '</FONT>';
+        } elseif ($quotes) {
+            if (! isset($color[14])) {
+                $color[13] = '#FF0000';
+            }
+            $line = '<FONT COLOR="' . $color[14] . '">' . $line . '</FONT>';
         }
         
         $body_ary[$i] = $line;
