@@ -104,12 +104,12 @@ class ZkLoader {
         $code_loadmodule = "\$module = new $modclass(\$options);";
         eval($code_loadmodule);
         
-        echo "<tt>" .
+        echo '<tt>' .
              "svcname = $svcname<br>" .
              "modname = $modname<br>" .
              "modfile = $modfile<br>" .
              "modclass = $modclass<br>" .
-             "</tt>";
+             '</tt>';
         
         /* Load the newly created module into this service. */
         $service->loadModule($module, $options);
