@@ -19,7 +19,7 @@
 
 Summary: SquirrelMail webmail client
 Name: squirrelmail
-Version: 1.2.8
+Version: 1.2.9
 Release: %{rpm_release}
 License: GPL
 URL: http://www.squirrelmail.org/
@@ -168,6 +168,9 @@ install -m 644 contrib/RPM/squirrelmail.conf \
 %{_sysconfdir}/cron.daily/squirrelmail.cron
 
 %changelog
+* Tue Oct 29 2002 Konstantin Riabitsev <icon@duke.edu> 1.2.9-1
+- Upping version number.
+
 * Sat Sep 14 2002 Konstantin Riabitsev <icon@duke.edu> 1.2.8-1
 - adopted RH's spec file so we don't duplicate effort. 
 - Removed rh'ized splash screen.
