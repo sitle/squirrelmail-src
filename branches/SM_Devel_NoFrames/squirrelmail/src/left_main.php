@@ -609,7 +609,7 @@ sqgetGlobalVar('unfold', $unfold, SQ_GET);
 // open a connection on the imap port (143)
 
 
-if (!$imapConnection)
+if (! isset($imapConnection))
 $imapConnection = sqimap_login($username, $key, $imapServerAddress, $imapPort, 10); // the 10 is to hide the output
 
 /**
@@ -1115,7 +1115,7 @@ for ($i = 0; $i < count($boxes); $i++) {
 } /* if ($oldway) else ... */
 if ($use_frames)
     do_hook('left_main_after');
-if ($location_of_bar == right && !$use_frames)
+if ($location_of_bar == 'right' && !$use_frames)
     sqimap_logout($imapConnection);
 
 echo '<br></td></tr></table>' . "\n";
