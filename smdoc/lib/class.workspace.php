@@ -31,6 +31,7 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
 
 /** Method permissions */
+setPermission('foowd_workspace', 'class', 'create', 'Gods');
 setPermission('foowd_workspace', 'object', 'enter', 'Gods');
 setPermission('foowd_workspace', 'object', 'fill', 'Gods');
 setPermission('foowd_workspace', 'object', 'empty', 'Gods');
@@ -80,29 +81,27 @@ class foowd_workspace extends foowd_object {
    * @param string $exportGroup The user group for exporting the workspace.
    * @param string $importGroup The user group for importing the workspace.
    */
-  function foowd_workspace(
-    &$foowd,
-    $title = NULL,
-    $description = NULL,
-    $viewGroup = NULL,
-    $adminGroup = NULL,
-    $deleteGroup = NULL,
-    $enterGroup = NULL,
-    $fillGroup = NULL,
-    $emptyGroup = NULL,
-    $exportGroup = NULL,
-    $importGroup = NULL
-  ) 
+  function foowd_workspace( &$foowd,
+                            $title = NULL,
+                            $description = NULL,
+                            $viewGroup = NULL,
+                            $adminGroup = NULL,
+                            $deleteGroup = NULL,
+                            $enterGroup = NULL,
+                            $fillGroup = NULL,
+                            $emptyGroup = NULL,
+                            $exportGroup = NULL,
+                            $importGroup = NULL  ) 
   {
     $foowd->track('foowd_workspace->constructor');
 
-// base object constructor
+    // base object constructor
     parent::foowd_object($foowd, $title, $viewGroup, $adminGroup, $deleteGroup);
 
-/* set object vars */
+    /* set object vars */
     $this->description = $description;
 
-/* set method permissions */
+    /* set method permissions */
     if ($enterGroup != NULL) $this->permissions['enter'] = $enterGroup;
     if ($fillGroup != NULL) $this->permissions['fill'] = $fillGroup;
     if ($emptyGroup != NULL) $this->permissions['empty'] = $emptyGroup;
@@ -150,19 +149,18 @@ class foowd_workspace extends foowd_object {
    */
   function enterWorkspace() 
   {
-    if ($this->foowd->user->workspaceid == $this->objectid) { // leave workspace
-      if ($this->foowd->user->set('workspaceid', 0)) {
+    // Leave workspace if we're already in it.
+    if ($this->foowd->user->workspaceid == $this->objectid) 
+    { 
+      if ($this->foowd->user->set('workspaceid', 0))
         return TRUE;
-      } else {
-        trigger_error('Could not update user.');
-      }
-    } else { // enter workspace
-      if ($this->foowd->user->set('workspaceid', $this->objectid)) {
+    } 
+    else // Otherwise, enter a new workspace 
+    { 
+      if ($this->foowd->user->set('workspaceid', $this->objectid))
         return TRUE;
-      } else {
-        trigger_error('Could not update user.');
-      }
     }
+
     return FALSE;
   }
 
@@ -180,44 +178,64 @@ class foowd_workspace extends foowd_object {
    */
   function &getFillObjects($classTypes, $d1, $m1, $y1, $d2, $m2, $y2) 
   {
+    // Set up where clause based on parameters
     $whereClause = array();
-    if (is_array($classTypes)) {
+
+    // Start with classTypes
+    if (is_array($classTypes)) 
+    {
       $classArray = array('OR');
-      foreach ($classTypes as $classid) {
-        $classArray[] = array('index' => 'classid', 'op' => '=', 'value' => $classid);
+      foreach ($classTypes as $classid) 
+      {
+        if ( $classid != META_SMDOC_NAME_LOOKUP_CLASS_ID &&
+             $classid != META_SMDOC_GROUP_APPEXT_CLASS_ID )
+          $classArray[] = array('index' => 'classid', 'op' => '=', 'value' => $classid);
       }
       $whereClause[] = $classArray;
     }
-    if (checkdate($m1, $d1, $y1)) {
+
+    $whereClause['notshort'] = array('index' => 'classid', 'op' => '!=', 'value' => META_SMDOC_NAME_LOOKUP_CLASS_ID);
+    $whereClause['notgroup'] = array('index' => 'classid', 'op' => '!=', 'value' => META_SMDOC_GROUP_APPEXT_CLASS_ID);
+
+    // Then go for dates - after m/d/y
+    if (checkdate($m1, $d1, $y1)) 
       $whereClause[] = array('index' => 'updated', 'op' => '>', 'value' => date($this->foowd->database->dateTimeFormat, mktime(0, 0, 0, $m1, $d1, $y1)));
-    }
-    if (checkdate($m2, $d2, $y2)) {
+
+    // dates - before m/d/y
+    if (checkdate($m2, $d2, $y2))
       $whereClause[] = array('index' => 'updated', 'op' => '<', 'value' => date($this->foowd->database->dateTimeFormat, mktime(0, 0, 0, $m2, $d2, $y2)));
-    }
-    if (count($whereClause) > 0) {
+
+    // If we have conditions specified, also specify AND 
+    if (count($whereClause) > 0)
       array_unshift($whereClause, 'AND');
-    }
 
-    $objects =& $this->foowd->getObjList(
-      $whereClause,
-      NULL,
-      array('title', 'classid'),
-      NULL,
-      NULL,
-      NULL,
-      TRUE
-    );
+    // Get object list - no order, no limit,
+    // get actual objects, and set to user's current workspace.
+    $objects =& $this->foowd->getObjList( 
+                        array('title', 'classid'),    // indexes to return
+                        NULL,                         // source
+                        $whereClause,                 // conditions
+                        NULL,                         // order
+                        NULL,                         // limit
+                        TRUE,                         // return actual object
+                        TRUE );                       // set to user's current workspace
 
-    if ($objects) {
-      foreach ($objects as $key => $object) {
-        if ((isset($object->permissions['clone']) && !$this->foowd->user->inGroup($object->permissions['clone'])) || ($object->classid == $this->classid && $object->objectid == $this->objectid)) {
-          unset($objects[$key]); // drop the reference to objects which we don't have permission to clone
-        }
-      }
-      return $objects;
-    } else {
+    // If no objects returned, return null
+    if ( empty($objects) )
       return NULL;
+
+    // For objects returned from query, 
+    // only give back those we're allowed to clone
+    foreach ($objects as $key => $object) 
+    {
+      // Don't clone ourselves
+      if ( $object->classid == $this->classid && $object->objectid == $this->objectid )
+        unset($objects[$key]);
+      elseif ( !$this->foowd->hasPermission(get_class($object), 'clone', 'object', $object) )
+        unset($objects[$key]); 
     }
+
+    return $objects;
   }
   
   /**
@@ -229,9 +247,20 @@ class foowd_workspace extends foowd_object {
   function getFillSelectionItems(&$objects) 
   {
     $items = array();
-    if (is_array($objects)) {
-      foreach ($objects as $object) {
-        $items[$object->objectid.'_'.$object->classid.'_'.$object->version] = $object->getTitle().' ('.getClassName($object->classid).' v'.$object->version.')';
+    if (is_array($objects)) 
+    {
+      foreach ($objects as $object)
+      {
+        $key = $object->objectid.'_'.$object->classid;
+        if ( isset($object->version) )
+          $key .= '_'.$object->version;
+
+        $value = $object->getTitle().' ('.getClassName($object->classid);
+        if ( isset($object->version) )
+          $value .= ' v'.$object->version;
+        $value .= ')';
+
+        $items[$key] = $value;
       }
     }
     return $items;
@@ -244,48 +273,51 @@ class foowd_workspace extends foowd_object {
    * @param array selection Array of selected objects to place in workspace.
    * @param bool clone Clone objects into workspace.
    * @param bool move Move objects into workspace.
-   * @return int 0 = cloned successfully<br />
-   *             1 = moved successfully<br />
+   * @return int 0 = successful<br />
+   *             1 = could not save changes<br />
    *             2 = nothing selected<br />
-   *             3 = display object list form<br />
    */
-  function fillWorkspace(&$objects, $selection, $clone = FALSE, $move = FALSE) 
+  function fillWorkspace(&$objects, $selection, $clone = FALSE, $move = FALSE ) 
   {
     $error = FALSE;
-    if ($clone || $move) {
-      if (is_array($selection)) {
-        foreach ($objects as $object) {
-          if (in_array(intval($object->objectid).'_'.intval($object->classid).'_'.intval($object->version), $selection)) {
-            if ($object->set('workspaceid', $this->objectid)) {
-              if ($clone) { // adjust original workspace so as to create new object rather than overwrite old one.
-                $object->foowd_original_access_vars['objectid'] = $object->objectid;
-                $object->foowd_original_access_vars['workspaceid'] = $object->workspaceid;
-              }
-            } else {
-              $error = TRUE;
-              trigger_error('Could not clone/move object "', $object->getTitle(), '".');
-            }
+    if ( !is_array($selection) ) 
+      return 2; // nothing selected.
+ 
+
+    if ($clone || $move) 
+    {
+      foreach ($objects as $object) 
+      {
+        $key = intval($object->objectid).'_'.intval($object->classid);
+        if ( isset($object->version) )
+          $key .= '_'.intval($object->version);
+
+        // If object is in selection
+        if ( in_array($key, $selection) ) 
+        {
+          // set new workspace into object
+          if ( $object->set('workspaceid', $this->objectid) ) 
+          {
+            // original_access_vars monitor for changes.
+            // If we're cloning, adjust original workspace so
+            // we create a new object when we save, instead of just overwriting
+            // the original (i.e. move it).
+            if ($clone) 
+            { 
+              $object->foowd_original_access_vars['objectid'] = $object->objectid;
+              $object->foowd_original_access_vars['workspaceid'] = $object->workspaceid;
+            }          
           }
+          else
+            $error = TRUE; // error saving changes
         }
-      } else {
-        return 2; // nothing selected
       }
     }
-    if ($clone) {
-      if (!$error) {
-        return 0; // cloned successfully
-      } else {
-        trigger_error('Not all the objects could be cloned correctly.');
-      }
-    } elseif ($move) {
-      if (!$error) {
-        return 1; // moved successfully
-      } else {
-        trigger_error('Not all the objects could be moved correctly.');
-      }
-    } else {
-      return 3; // display object list form
-    }
+
+    if ( $error )
+      return 1; // error saving changes
+    
+    return 0; // successful
   }
 
   /**
@@ -295,35 +327,41 @@ class foowd_workspace extends foowd_object {
    */
   function getEmptyObjects() 
   {
-    $objects =& $this->foowd->getObjList(
-      array(
-        array('index' => 'workspaceid', 'op' => '=', 'value' => $this->objectid),
-        array('index' => 'classid', 'op' => '!=', 'value' => crc32(strtolower($this->foowd->user_class)))
-      ),
-      NULL,
-      array('title', 'classid'),
-      NULL,
-      NULL,
-      NULL,
-      TRUE
-    );
+    // Get objects in this workspace that are NOT system elements, or... 
+    $whereClause['workspace'] = array('index' => 'workspaceid', 'op' => '=', 'value' => $this->objectid);
+    $whereClause['notshort'] = array('index' => 'classid', 'op' => '!=', 'value' => META_SMDOC_NAME_LOOKUP_CLASS_ID);
+    $whereClause['notgroup'] = array('index' => 'classid', 'op' => '!=', 'value' => META_SMDOC_GROUP_APPEXT_CLASS_ID);
 
-    if ($objects) {
-      $items = NULL;
-      foreach ($objects as $object) {
-        if ((isset($object->permissions['clone']) && !$this->foowd->user->inGroup($object->permissions['clone'])) || ($object->classid == $this->classid && $object->objectid == $this->objectid)) {
-          unset($objects[$key]); // drop the reference to objects which we don't have permission to clone
-        } else {
-          $items[$object->objectid.'_'.$object->classid.'_'.$object->version] = $object->getTitle().' ('.getClassName($object->classid).' v'.$object->version.')';
-        }
-      }
-      return array(
-        'objects' => &$objects,
-        'items' => $items
-      );
-    } else {
+    // Get object list - no order, no limit, get actual objects
+    $objects =& $this->foowd->getObjList( 
+                        array('title', 'classid'),    // indexes to return
+                        NULL,                         // source
+                        $whereClause,                 // conditions
+                        NULL,                         // order
+                        NULL,                         // limit
+                        TRUE,                         // return actual object
+                        FALSE );                      // workspace in where clause
+
+    if ( empty($objects) )
       return NULL;
+
+    // For objects returned from query, 
+    // only give back those we're allowed to clean
+    foreach ($objects as $key => $object) 
+    {
+      // Don't empty ourselves
+      if ( $object->classid == $this->classid && $object->objectid == $this->objectid )
+        unset($objects[$key]);
+      elseif ( !$this->foowd->hasPermission(get_class($object), 'clone', 'object', $object) )
+        unset($objects[$key]);
     }
+
+    $items = $this->getFillSelectionItems($objects);    
+
+    return array(
+      'objects' => &$objects,
+      'items' => $items
+    );
   }
 
   /**
@@ -333,50 +371,44 @@ class foowd_workspace extends foowd_object {
    * @param array selection Array of selected objects to remove from the workspace.
    * @param bool move Move objects out of the workspace back into the base workspace.
    * @param bool delete Delete the objects.
-   * @return int 0 = moved successfully<br />
-   *             1 = deleted successfully<br />
+   * @return int 0 = successful<br />
+   *             1 = unsuccessful<br />
    *             2 = nothing selected<br />
-   *             3 = display object list form<br />
    */
   function emptyWorkspace(&$objects, $selection, $move = FALSE, $delete = FALSE) 
   {
     $error = FALSE;
-    if ($move || $delete) {
-      if (is_array($selection)) {
-        foreach ($objects as $object) {
-          if (in_array(intval($object->objectid).'_'.intval($object->classid).'_'.intval($object->version), $selection)) {
-            if ($move) {
-              if (!$object->set('workspaceid', 0)) {
-                $error = TRUE;
-                trigger_error('Could not move object "'.$object->getTitle().'".');
-              }
-            } elseif ($delete) {
-              if (!$object->delete()) {
-                $error = TRUE;
-                trigger_error('Could not delete object "'.$object->getTitle().'".');
-              }
-            }
+    if ( !is_array($selection) ) 
+      return 2; // nothing selected.
+ 
+    if ($move || $delete) 
+    {
+      foreach ($objects as $object) 
+      {
+        $key = intval($object->objectid).'_'.intval($object->classid);
+        if ( isset($object->version) )
+          $key .= '_'.intval($object->version);
+
+        if (in_array($key, $selection)) 
+        {
+          if ($move) 
+          {
+            if (!$object->set('workspaceid', 0)) 
+              $error = TRUE;
+          } 
+          elseif ($delete) 
+          {
+            if (!$object->delete())
+              $error = TRUE;
           }
         }
-      } else {
-        return 2; // nothing selected
       }
     }
-    if ($move) {
-      if (!$error) {
-        return 0; // moved successfully
-      } else {
-        trigger_error('Not all the objects could be moved correctly.');
-      }
-    } elseif ($delete) {
-      if (!$error) {
-        return 1; // deleted successfully
-      } else {
-        trigger_error('Not all the objects could be deleted.');
-      }
-    } else {
-      return 3; // display object list form
-    }
+
+    if ( $error )
+      return 1; // unsuccessful
+
+    return 0; //successful
   }
 
   /**
@@ -386,23 +418,35 @@ class foowd_workspace extends foowd_object {
    */
   function export() 
   {
-    $objects =& $this->foowd->getObjList(array('workspaceid' => $this->objectid), NULL, NULL, NULL, NULL, NULL, TRUE);
-    if ($objects) {
-      ob_start();
-      echo '<?xml version="1.0"?>', "\n";
-      echo '<foowd version="', $this->foowd->version, '" generated="', time(), '">', "\n";
-      foreach ($objects as $object) {
-        echo "\t", '<', get_class($object), '>', "\n";
-        $object->vars2XML(get_object_vars($object), $object->__sleep());
-        echo "\t", '</', get_class($object), ">\n";
-      }
-      echo "</foowd>\n";
-      $data = ob_get_contents();
-      ob_end_clean();
-      return $data;
-    } else {
+    // Get object list - no order, no limit, get actual objects
+    $objects =& $this->foowd->getObjList( 
+                        array('title', 'classid'),               // indexes to return
+                        NULL,                                    // source
+                        array('workspaceid' => $this->objectid), // conditions
+                        NULL,                                    // order
+                        NULL,                                    // limit
+                        TRUE,                                    // return actual object
+                        FALSE );                                 // workspace in where clause
+
+    if ( empty($objects) )
       return FALSE;
+
+    ob_start();
+    
+    echo '<?xml version="1.0"?>', "\n";
+    echo '<foowd version="', $this->foowd->version, '" generated="', time(), '">', "\n";
+    foreach ($objects as $object) 
+    {
+      echo "\t", '<', get_class($object), '>', "\n";
+      $object->vars2XML(get_object_vars($object), $object->__sleep());
+      echo "\t", '</', get_class($object), ">\n";
     }
+    echo "</foowd>\n";
+    
+    $data = ob_get_contents();
+    ob_end_clean();
+
+    return $data;
   }
 
   /**
@@ -413,43 +457,43 @@ class foowd_workspace extends foowd_object {
    */
   function import(&$importFile) 
   {
-    if ($importFile->isUploaded()) {
-      if ($importFile->file['type'] == 'text/xml' || $importFile->file['type'] == 'application/x-gzip-compressed') {
-        if ($importFile->file['type'] == 'text/xml') {
-          $filename = $importFile->file['tmp_name'];
-        } else {
-          $filename = 'compress.zlib://'.$importFile->file['tmp_name'];
-        }
-        $fp = fopen($filename, 'r');
-        if ($fp) {
-
-          //set_time_limit(0);
-
-          $xml = fread($fp, filesize($importFile->file['tmp_name']));
-
-          fclose($fp); // all read
-
-          $this->object = array(); // our fetch array where we stick all our read in values
-
-          $p = xml_parser_create();
-          xml_parser_set_option($p, XML_OPTION_CASE_FOLDING, FALSE); // no thanks
-          xml_set_element_handler($p, array(&$this, 'importXMLStart'), array(&$this, 'importXMLEnd'));
-          xml_set_character_data_handler ($p, array(&$this, 'importXMLChar'));
-          if (!xml_parse($p, $xml)) { // do XML parse, if bad XML tell them so
-            return xml_error_string(xml_get_error_code($p));
-          } else {
-            return TRUE;
-          }
-          xml_parser_free($p);
-        } else {
-          return 2;
-        }
-      } else {
-        return 1;
-      }
-    } else {
+    if ( !$importFile->isUploaded() )
       return $importFile->getError();
+
+    if ( $importFile->file['type'] == 'text/xml' || 
+         $importFile->file['type'] == 'application/x-gzip-compressed' ) 
+    {
+      if ($importFile->file['type'] == 'text/xml')
+        $filename = $importFile->file['tmp_name'];
+      else 
+        $filename = 'compress.zlib://'.$importFile->file['tmp_name'];
+
+      $fp = fopen($filename, 'r');
+      if ($fp) 
+      {
+        //set_time_limit(0);
+        $xml = fread($fp, filesize($importFile->file['tmp_name']));
+        fclose($fp); // all read
+
+        $this->object = array(); // our fetch array where we stick all our read in values
+
+        $p = xml_parser_create();
+        xml_parser_set_option($p, XML_OPTION_CASE_FOLDING, FALSE); // no thanks
+        xml_set_element_handler($p, array(&$this, 'importXMLStart'), array(&$this, 'importXMLEnd'));
+        xml_set_character_data_handler ($p, array(&$this, 'importXMLChar'));
+
+        // do XML parse; if bad XML, get error string.
+        if ( xml_parse($p, $xml) )
+          $result = TRUE;
+        else
+          $result = xml_error_string(xml_get_error_code($p));
+
+        xml_parser_free($p);
+        return $result;
+      }
+      return 2; // could not open file
     }
+    return 1; // bad file type 
   }
   
   /**
@@ -461,9 +505,12 @@ class foowd_workspace extends foowd_object {
    */
   function importXMLStart($p, $name, $attributes) 
   {
-    $this->level++; // increase the depth level
-    if (substr($name, 0, 1) == ':') $name = substr($name, 1); // remove colon from front of numeric tags
-    $this->varName[$this->level] = $name; // remember our tags name
+    $this->level++;                         // increase the depth level
+
+    if (substr($name, 0, 1) == ':') 
+      $name = substr($name, 1);             // remove colon from front of numeric tags
+
+    $this->varName[$this->level] = $name;   // remember our tags name
   }
 
   /**
@@ -475,36 +522,44 @@ class foowd_workspace extends foowd_object {
   function importXMLEnd($p, $name) 
   {
     $this->level--; // decrease our depth level
-    if ($this->level == 1) { // if we're back at level one, then we have an object, lets save it
+    if ($this->level == 1) 
+    { // if we're back at level one, then we have an object, lets save it
       $class = $this->varName[$this->level + 1]; // get class name
-      if (class_exists($class)) { // make sure class exists within the system
+
+      if ( !class_exists($class) )
+        trigger_error('Can not create object of unknown class "'.$class.'".');
+      else
+      {
         $title = $this->object['title']; // hopefully we have a title element
         $obj = &new $class($this->foowd, $title); // create new object
         $objectVars = get_object_vars($obj); // get member vars the object has
-        if (is_object($obj)) {
-          foreach ($objectVars as $field => $default) { // set member vars
-            if (isset($this->object[$field])) {
-              if (is_array($this->object[$field])) {
+
+        if ( !is_object($obj) )
+          trigger_error('Can not create object of class "'.$class.'".');
+        else 
+        {
+          foreach ($objectVars as $field => $default) 
+          { // set member vars
+            if (isset($this->object[$field])) 
+            {
+              if (is_array($this->object[$field])) 
                 $obj->$field = $this->object[$field];
-              } elseif (is_int($this->object[$field])) {
+              elseif (is_int($this->object[$field]))
                 $obj->$field = (int)$this->object[$field];
-              } else {
+              else
                 $obj->$field = $this->object[$field];
-              }
             }
           }
+
           $obj->__wakeup(); // wakeup object (load object meta data)
           $obj->workspaceid = $this->objectid;
           $obj->foowd_original_access_vars['workspaceid'] = $this->objectid;
           $obj->foowd_changed = TRUE;
           printf(_("Object \"%s\" imported into workspace.<br />"), $obj->getTitle());
           flush();
-        } else {
-          trigger_error('Can not create object of class "'.$class.'".');
-        }
-      } else {
-        trigger_error('Can not create object of unknown class "'.$class.'".');
-      }
+        } 
+      } 
+
       $this->object = array(); // we'll be off for more, so make sure we have a fresh object array to start with
     }
   }
@@ -517,25 +572,26 @@ class foowd_workspace extends foowd_object {
    */
   function importXMLChar($p, $data) 
   {
-    if ($this->level > 2) { // if we're in deep enough, we have some attributes to find
-      for ($foo = $this->level; $foo > 3; $foo--) { // loop until our data is nested in arrays to it's correct depth
-        if ((is_array($data) || trim($data) != '') && isset($this->varName[$foo])) { // make sure the data is ok to deal with
+    // if we're in deep enough, we have some attributes to find
+    if ($this->level > 2) 
+    {
+      // loop until our data is nested in arrays to it's correct depth
+      for ($foo = $this->level; $foo > 3; $foo--) 
+      {
+        if ( (is_array($data) || trim($data) != '') && isset($this->varName[$foo]) ) 
           $data = array($this->varName[$foo] => $data);
-        }
       }
-      if (isset($this->object[$this->varName[3]])) { // there's already data for this attribute so append
-        if (is_array($this->object[$this->varName[3]]) || is_array($data)) {
-          if (is_array($data)) {
-            $this->object = array_merge_recursive($this->object, array($this->varName[3] => $data));
-          }
-        } else {
+
+      // If there's already data for this attribute, append
+      if (isset($this->object[$this->varName[3]])) 
+      {
+        if ( is_array($this->object[$this->varName[3]]) || is_array($data) ) 
+          $this->object = array_merge_recursive($this->object, array($this->varName[3] => $data));
+        else
           $this->object[$this->varName[3]] = $this->object[$this->varName[3]].$data;
-        }
-      } else { // new attribute
-        if (is_array($data) || trim($data) != '') { // don't save white space from between tags, it's pointless
-          $this->object[$this->varName[3]] = $data;
-        }
-      }
+      } 
+      else if (is_array($data) || trim($data) != '')
+        $this->object[$this->varName[3]] = $data;
     }
   }
 
@@ -558,26 +614,52 @@ class foowd_workspace extends foowd_object {
     
     $queryTitle = new input_querystring('title', REGEX_TITLE, NULL);
     $createForm = new input_form('createForm', NULL, SQ_POST, _("Create"), NULL);
-    $createTitle = new input_textbox('createTitle', REGEX_TITLE, $queryTitle->value, _("Title").':');
-    $createDescription = new input_textbox('createDescription', '/^.{1,1024}$/', NULL, _("Description").':', NULL, NULL, NULL, FALSE);
-    if (!$createForm->submitted() || $createTitle->value == '') {
-      $createForm->addObject($createTitle);
-      $createForm->addObject($createDescription);
-      $foowd->template->assign_by_ref('form', $createForm);
-    } else {
-      $object = &new $className(
-        $foowd,
-        $createTitle->value,
-        $createDescription->value
-      );
-      if ($object->objectid != 0) {
-        $foowd->template->assign('success', TRUE);
-        $foowd->template->assign('objectid', $object->objectid);
-        $foowd->template->assign('classid', $object->classid);
-      } else {
-        $foowd->template->assign('success', FALSE);
+    $createTitle = new input_textbox('createTitle', REGEX_TITLE, $queryTitle->value, 'Title');
+    $createDescription = new input_textbox('createDescription', '/^.{1,1024}$/', NULL, 'Description', FALSE);
+
+    if ($createForm->submitted() && 
+        $createTitle->wasSet && $createTitle->wasValid && $createTitle->value != '') 
+    {
+     // Ensure unique title
+      $oid = NULL;
+      if ( !$foowd->database->isTitleUnique($createTitle->value, $foowd->user->workspaceid, $oid, NULL, FALSE) )
+        $result = 1; // duplicate title;
+      else
+      {
+        $object = &new $className($foowd, 
+                                  $createTitle->value,
+                                  $createDescription->value);
+        if ( $object->objectid != 0 && $object->save($foowd) ) 
+          $result = 0; // created ok
+        else
+          $result = 2; // error
       }
+    } 
+    else
+      $result = -1;
+
+    switch ( $result )
+    {
+      case 0:
+        $_SESSION['ok'] = OBJECT_CREATE_OK;
+        $uri_arr['classid'] = $object->classid;
+        $uri_arr['objectid'] = $object->objectid;
+        $foowd->loc_forward(getURI($uri_arr, FALSE));
+        exit;
+      case 1:
+        $foowd->template->assign('failure', OBJECT_DUPLICATE_TITLE);
+        $createTitle->wasValid = FALSE;
+        break;
+      case 2:
+        $foowd->template->assign('failure', OBJECT_CREATE_FAILED);
+        break;
+      default:
+        $foowd->template->assign('failure', FORM_FILL_FIELDS);
     }
+      
+    $createForm->addObject($createTitle);
+    $createForm->addObject($createDescription);
+    $foowd->template->assign_by_ref('form', $createForm);
 
     $foowd->track();
   }
@@ -587,12 +669,12 @@ class foowd_workspace extends foowd_object {
   /**
    * Output the object.
    */
-  function method_view() {
+  function method_view() 
+  {
     $this->foowd->track('foowd_workspace->method_view');
 
-    $this->foowd->template->assign('title', $this->getTitle());
-    $this->foowd->template->assign('created', date($this->foowd->datetime_format, $this->created));
     $this->foowd->template->assign('author', $this->creatorName);
+    $this->foowd->template->assign('created', date(DATETIME_FORMAT, $this->created));
     $this->foowd->template->assign('access', getPermission(get_class($this), 'enter', 'object'));
     $this->foowd->template->assign('description', htmlspecialchars($this->description));
 
@@ -601,23 +683,19 @@ class foowd_workspace extends foowd_object {
     } else {
       $this->foowd->template->assign('enter', TRUE);
     }
-    $this->foowd->template->assign('objectid', $this->objectid);
-    $this->foowd->template->assign('classid', $this->classid);
 
-    $objects = $this->foowd->getObjList(array('workspaceid' => $this->objectid), NULL, 'title', NULL, NULL, NULL, TRUE);
-
-    if ($objects) {
-      foreach ($objects as $object) {
-        $this->foowd->template->append('objects', array(
-          'title' => $object->getTitle(),
-          'objectid' => $object->objectid,
-          'classid' => $object->classid,
-          'created' => date($this->foowd->datetime_format, $object->created),
-          'author' => htmlspecialchars($object->creatorName),
-          'class' => getClassDescription($object->classid)
-        )); 
-      }
-    }
+    // Get objects within this workspace
+    // Get object list - no order, no limit, get actual objects
+    $whereClause['this'] = array('workspaceid' => $this->objectid);
+    $objects =& $this->foowd->getObjList( 
+                        NULL,            // indexes to return (default set)
+                        NULL,            // source
+                        $whereClause,    // conditions
+                        NULL,            // order
+                        NULL,            // limit
+                        FALSE,           // return actual object
+                        FALSE );         // workspace in where clause
+    $this->foowd->template->assign_by_ref('objectList', $objects);
     
     $this->foowd->track();
   }
@@ -631,15 +709,50 @@ class foowd_workspace extends foowd_object {
   function method_delete() 
   {
     $this->foowd->track('foowd_workspace->method_delete');
-    
-    $objects = $this->foowd->getObjList(array('workspaceid' => $this->objectid), NULL, 'title', NULL, NULL, NULL, TRUE);
-    if (!$objects) {
-      parent::method_delete();
-    } else {
-      $this->foowd->template->assign('success', FALSE);
+
+    include_once(INPUT_DIR.'input.form.php');
+    $deleteForm = new input_form('deleteForm', NULL, SQ_POST, _("OK"), NULL);
+
+    // If the form has been submitted, try to delete the workspace.
+    if ($deleteForm->submitted() ) 
+    {
+      if ( $this->delete()) 
+      {
+        $_SESSION['ok'] = OBJECT_DELETE_OK;
+        $uri = getURI(NULL, FALSE);
+      }  
+      else
+      {
+        $_SESSION['error'] = OBJECT_DELETE_FAILED;
+        $uri_arr['objectid'] = $this->objectid;
+        $uri_arr['classid'] = $this->classid;
+        $uri = getURI($uri_arr, FALSE);
+      }
+
+      $this->foowd->loc_forward( $uri );
+      exit;
     }
-    
-    $this->foowd->track(); return $return;
+    else 
+    {
+      // Get objects within this workspace
+      // Get object list - no order, no limit, get actual objects
+      $whereClause['this'] = array('workspaceid' => $this->objectid);
+      $objects =& $this->foowd->getObjList( 
+                          NULL,            // indexes to return (default set)
+                          NULL,            // source
+                          $whereClause,    // conditions
+                          array('title', 'classid', 'version'), // order
+                          NULL,            // limit
+                          FALSE,           // return actual object
+                          FALSE );         // workspace in where clause
+
+      if ( empty($objects) )
+        $this->foowd->template->assign_by_ref('form', $deleteForm);
+      else
+        $foowd->template->assign_by_ref('objectList', $objects);
+    }
+   
+    $this->foowd->track();
   }
 
   /**
@@ -649,10 +762,18 @@ class foowd_workspace extends foowd_object {
   function method_enter() 
   {
     $this->foowd->track('foowd_workspace->method_enter');
-    if ($this->enterWorkspace($this->foowd)) {
-      header('Location: ?objectid='.$this->objectid.'&classid='.$this->classid.'&version='.$this->version);
-    }
+
+    if ($this->enterWorkspace($this->foowd)) 
+      $_SESSION['ok'] = WORKSPACE_CHANGE_SUCCEEDED;
+    else
+      $_SESSION['error'] = WORKSPACE_CHANGE_FAILED;
+
+    $uri_arr['objectid'] = $this->objectid;
+    $uri_arr['classid'] = $this->classid;
+ 
     $this->foowd->track();
+    $this->foowd->loc_forward( getURI($uri_arr, FALSE) );
+    exit;
   }
 
   /**

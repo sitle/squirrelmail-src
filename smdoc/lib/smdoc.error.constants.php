@@ -98,8 +98,13 @@ define('28_MSG', _("Object could not be found."));
 
 
 define('USER_DEFAULT_TRANSLATION', 40);
-define('40_MSG', _("User switched to default translation"));
+define('40_MSG', _("User switched to default translation."));
 
 define('USER_NEW_TRANSLATION', 41);
 define('41_MSG', _("Selected translation updated."));
 
+define('WORKSPACE_CHANGE_SUCCEEDED', 42);
+define('50_MSG', _("User changed to selected workspace."));
+
+define('WORKSPACE_CHANGE_FAILED', 43);
+define('51_MSG', _("Unable to change to selected workspace/translation."));
