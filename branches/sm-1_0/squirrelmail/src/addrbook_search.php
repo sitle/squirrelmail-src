@@ -13,6 +13,7 @@
     **
     **  $Id$
     **/
+   include ("../src/validate.php");
 
    // Function to include JavaScript code
    function insert_javascript() {

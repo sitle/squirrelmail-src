@@ -12,6 +12,7 @@
     **
     **  $Id$
     **/
+   include ("../src/validate.php");
 
    if (!isset($strings_php))
       include ('../functions/strings.php');

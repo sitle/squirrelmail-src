@@ -14,7 +14,8 @@
     **
     ** $Id$
     **/
-    
+   include ("../src/validate.php");
+
    session_start();
 
    if (!isset($strings_php))

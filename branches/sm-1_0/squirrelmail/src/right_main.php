@@ -10,6 +10,7 @@
     **
     **  $Id$
     **/
+   include ("../src/validate.php");
 
    if (!isset($i18n_php))
       include('../functions/i18n.php');

@@ -15,6 +15,7 @@
     **
     **  $Id$
     **/
+   include ("../src/validate.php");
 
    session_start();
 
