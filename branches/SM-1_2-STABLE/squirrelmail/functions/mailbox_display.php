@@ -252,7 +252,8 @@ function showMessagesForMailbox($imapConnection, $mailbox, $num_msgs,
     $id = get_thread_sort($imapConnection);
   if ($id == 'no') {
       echo '<b><small><center><font color=red>Thread sorting is not'.
-             ' supported by your IMAP server.<br>Please report this'.
+             ' supported by your IMAP server<br>or there may be a problem'.
+             ' with your configuration.<br>Please report this'.
              ' to the system administrator.</center></small></b>';
      $thread_sort_messages = 0; 
     $id = array();
