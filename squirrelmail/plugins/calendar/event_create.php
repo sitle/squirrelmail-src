@@ -166,9 +166,9 @@ if(!isset($event_text)){
          "    <TR><TD ALIGN=RIGHT BGCOLOR=\"$color[4]\">" . _("Time:") . "</TD>\n".
          "    <TD ALIGN=LEFT BGCOLOR=\"$color[4]\">$event_hour:$event_minute</TD></TR>\n".
          "    <TR><TD ALIGN=RIGHT BGCOLOR=\"$color[4]\">" . _("Title:") . "</TD>\n".
-         "    <TD ALIGN=LEFT BGCOLOR=\"$color[4]\">" . htmlentites($event_title) . "</TD></TR>\n".
+         "    <TD ALIGN=LEFT BGCOLOR=\"$color[4]\">" . htmlentities($event_title) . "</TD></TR>\n".
          "    <TR><TD ALIGN=RIGHT BGCOLOR=\"$color[4]\">" . _("Message:") . "</TD>\n".
-         "    <TD ALIGN=LEFT BGCOLOR=\"$color[4]\">" . htmlentites($event_text) . "</TD></TR>\n".
+         "    <TD ALIGN=LEFT BGCOLOR=\"$color[4]\">" . htmlentities($event_text) . "</TD></TR>\n".
          "    <TR><TD COLSPAN=2 BGCOLOR=\"$color[4]\">\n".
          "<A HREF=\"day.php?year=$year&month=$month&day=$day\">" . _("Day View") . "</A>\n".
          "    </TD></TR>\n".
