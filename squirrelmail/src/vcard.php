@@ -88,9 +88,9 @@ if ($vcard_nice['version'] == '2.1') {
        $vcard_nice['email;internet'] = $vcard_nice['email;pref;internet'];
     }
 } else {
-    echo '<tr><td align=center>vCard Version ' . $vcard_nice['version'] .
-        ' is not supported.  Some information might not be converted ' .
-    "correctly.</td></tr>\n";
+    echo '<tr><td align="center">' .
+    sprintf(_("vCard Version %s is not supported. Some information might not be converted correctly."),$vcard_nice['version']) .
+    "</td></tr>\n";
 }
 
 foreach ($vcard_nice as $k => $v) {
@@ -144,11 +144,11 @@ echo '</table>' .
         '<tr><td align=center>' .
         '<FORM ACTION="../src/addressbook.php" METHOD="POST" NAME=f_add>' .
         '<table border=0 cellpadding=2 cellspacing=0 align=center>' .
-        '<tr><td align=right><b>Nickname:</b></td>' .
+        '<tr><td align=right><b>' . _("Nickname:") . '</b></td>' .
         '<td><input type=text name="addaddr[nickname]" size=20 value="' .
         $vcard_safe['firstname'] . '-' . $vcard_safe['lastname'] .
         '"></td></tr>' .
-        '<tr><td align=right><b>Note Field Contains:</b></td><td>' .
+        '<tr><td align=right><b>' . _("Note Field Contains:") . '</b></td><td>' .
         '<select name="addaddr[label]">';
 
 if (isset($vcard_nice['url'])) {
