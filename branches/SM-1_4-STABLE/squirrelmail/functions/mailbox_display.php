@@ -94,6 +94,8 @@ function printMessageInfo($imapConnection, $t, $not_last=true, $key, $mailbox,
             }
         }
     }
+    // this will make the sendername wrappeble 
+    $senderName = str_replace('&nbsp;',' ',$senderName);
 
     $msg['SUBJECT'] = decodeHeader($msg['SUBJECT']);
     $subject = processSubject($msg['SUBJECT'], $indent_array[$msg['ID']]);
