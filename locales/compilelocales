@@ -1,7 +1,9 @@
 #!/bin/sh
 for trans in `ls locale/`; do
-    if [ -f locale/${trans}/LC_MESSAGES/squirrelmail.po ]; then
-	msgfmt locale/${trans}/LC_MESSAGES/squirrelmail.po \
-	    -o locale/${trans}/LC_MESSAGES/squirrelmail.mo
-    fi
+    for string in `ls po/*.pot | sed 's/^po\///' | sed 's/.pot$//'` ; do
+	if [ -f locale/${trans}/LC_MESSAGES/${string}.po ]; then
+    	    msgfmt locale/${trans}/LC_MESSAGES/${string}.po \
+		-o locale/${trans}/LC_MESSAGES/${string}.mo
+	fi
+    done
 done
