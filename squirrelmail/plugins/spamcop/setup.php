@@ -44,16 +44,16 @@ function spamcop_load() {
 
 // Show the link on the read-a-message screen
 function spamcop_show_link() {
-   global $passed_id, $mailbox, $ent_num, $spamcop_enabled, $startMessage,
-      $spamcop_method;
-
-   // This was stolen from printer_friendly
-   // Do I really need/want it?
-   if (!trim($mailbox))
-      $mailbox = 'INBOX';
+   global $spamcop_enabled, $spamcop_method;
 
    if (! $spamcop_enabled)
       return;
+
+   /* GLOBALS */
+   $passed_id = $_GET['passed_id'];
+   $mailbox = $_GET['mailbox'];
+   $startMessage = $_GET['startMessage'];
+   /* END GLOBALS */
 
    echo "<br>\n";
    

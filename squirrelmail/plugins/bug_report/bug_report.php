@@ -59,7 +59,7 @@ $body_top .= "I subscribe to the squirrelmail-users mailing list.\n" .
                 "(Optional) I got really bored and here's a fix:\n\n\n" .
                 "----------------------------------------------\n" .
             "\nMy browser information:\n" .
-            "  $HTTP_USER_AGENT\n" .
+            "  ".$_SERVER['HTTP_USER_AGENT'] ."\n" .
             "  get_browser() information (List)\n" .
             Show_Array((array) $browser) .
             "\nMy web server information:\n" .

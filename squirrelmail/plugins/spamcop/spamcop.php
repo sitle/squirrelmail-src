@@ -4,6 +4,18 @@
     include_once ('../src/validate.php');
     include_once ('../functions/imap.php');
     
+    /* GLOBALS */
+
+    $username = $_SESSION['username'];
+    $key  = $_COOKIE['key'];
+    $onetimepad = $_SESSION['onetimepad'];
+
+    $mailbox = $_GET['mailbox'];
+    $passed_id = $_GET['passed_id'];
+    $startMessage = $_GET['startMessage'];
+
+    /* END GLOBALS */
+
     displayPageHeader($color, $mailbox);
 
     $imap_stream = sqimap_login($username, $key, $imapServerAddress, 
