@@ -68,7 +68,6 @@
       if (!$in_ary) {
          $chosentheme = "";
       }
-      if (in_array ($chosentheme, $theme
       setPref($data_dir, $username, 'chosen_theme', $chosentheme);
       setPref($data_dir, $username, 'show_num', $shownum);
       setPref($data_dir, $username, 'wrap_at', $wrapat);
