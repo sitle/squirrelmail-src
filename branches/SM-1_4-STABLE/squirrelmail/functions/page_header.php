@@ -128,7 +128,7 @@ function displayPageHeader($color, $mailbox, $xtra='', $session=false) {
                      '    var newwin = window.open(comp_uri' .
                      ', "_blank",'.
                      '"width='.$compose_width. ',height='.$compose_height.
-                     ',scrollbars=yes,resizable=yes");'."\n".
+                     ',scrollbars=yes,resizable=yes,status=yes");'."\n".
                      "}\n\n";
             }
 
@@ -231,7 +231,7 @@ function displayPageHeader($color, $mailbox, $xtra='', $session=false) {
                      '    var newwin = window.open(comp_uri' .
                      ', "_blank",'.
                      '"width='.$compose_width. ',height='.$compose_height.
-                     ',scrollbars=yes,resizable=yes");'."\n".
+                     ',scrollbars=yes,resizable=yes,status=yes");'."\n".
                      "}\n\n";
 
             }
