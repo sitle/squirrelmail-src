@@ -806,7 +806,7 @@ function calculate_references($refs, $inreplyto, $old_reply_to) {
     $refer = '';
     foreach ($refer_a as $ref) {
        $ref = trim($ref);
-       if ($ref{0} == '<' && $ref{(strlen($ref)-1)} == '>') {
+       if (strlen($ref) > 0 && $ref{0} == '<' && $ref{(strlen($ref)-1)} == '>') {
           $refer .= $ref . ' ';
        }
     }
