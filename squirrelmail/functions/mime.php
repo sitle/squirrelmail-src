@@ -720,7 +720,13 @@ function encodeHeader ($string) {
             $k = ord($string{$i});
             if ($k > 126) {
                 if ($iEncStart === false) {
-                    $iEncStart = $i;
+                    // do not start encoding in the middle of a string, also take the rest of the word.
+                    $sLeadString = substr($string,0,$i);
+                    $aLeadString = explode(' ',$sLeadString);
+                    $sToBeEncoded = array_pop($aLeadString);                  
+                    $iEncStart = $i - strlen($sToBeEncoded);
+                    $ret .= $sToBeEncoded;
+                    $cur_l += strlen($sToBeEncoded);
                 }
                 $cur_l += 3;
                 /* first we add the encoded string that reached it's max size */
