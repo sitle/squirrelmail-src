@@ -10,7 +10,11 @@ Version 1.4.1 -- CVS
   - Added lowsrc to the list of untrusted attributes in HTML email.
   - Fixed message highlighting for To, CC and From and
     for RFC1522 headers (bug #719564)
+  - Fix for Folders being listed in create/remove/rename operations
+    (#725443, #722823, #729225)
   - Fixed incorrect folding inside message-id's
+  - Fix for bad attachment view link (#697381, #729295)
+
 
 Version 1.4.0 -- 3 April 2003
 -----------------------------
