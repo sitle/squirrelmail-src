@@ -119,7 +119,7 @@ function savePrefValues($data_dir, $username) {
     }
     foreach ($prefs_cache as $Key => $Value) {
         if (isset($Value)) {
-            if ( @fwrite($file, $Key . '=' . $Value . "\n") === FALSE ) {
+            if ( sq_fwrite($file, $Key . '=' . $Value . "\n") === FALSE ) {
                logout_error( sprintf( _("Preference file, %s, could not be written. Contact your system administrator to resolve this issue.") , $filename . '.tmp') );
                exit;
             }
@@ -226,7 +226,7 @@ function setSig($data_dir, $username, $number, $value) {
         logout_error( sprintf( _("Signature file, %s, could not be opened. Contact your system administrator to resolve this issue."), $filename . '.tmp') );
         exit;
     }
-    if ( @fwrite($file, $value) === FALSE ) {
+    if ( sq_fwrite($file, $value) === FALSE ) {
        logout_error( sprintf( _("Signature file, %s, could not be written. Contact your system administrator to resolve this issue.") , $filename . '.tmp'));
        exit;
     }
