@@ -60,9 +60,6 @@ function sqmNavMenu(&$thing) {
     echo '<a href="', THINGURI, 'search">Search</a> | ';
     echo '<a href="', THINGURI. 'sqmuseradmin">Users</a> | ';
     echo '<a href="', THINGURI. 'sqmindex">Index</a> ';
-    if ( $wtf->user->inGroup(EDITORS) ) {
-        echo '| <a href="', THINGURI, 'fullindex">Admin</a> ';
-    }
     echo '</searchmenu>';
  	
 	track();
