@@ -1,21 +1,23 @@
 <?php
-
-/** Message Source  
+/**
+ * Message Details plugin - top frame with buttons
  *
  * Plugin to view the RFC822 raw message output and the bodystructure of a message
  *
- * Copyright (c) 2002 Marc Groot Koerkamp, The Netherlands
- * Licensed under the GNU GPL. For full terms see the file COPYING.
- * 
- * $Id$
+ * @author Marc Groot Koerkamp
+ * @copyright Copyright &copy; 2002 Marc Groot Koerkamp, The Netherlands
+ * @copyright Copyright &copy; 2004 The SquirrelMail Project Team
+ * @license http://opensource.org/licenses/gpl-license.php GNU Public License
+ * @version $Id$
+ * @package plugins
+ * @subpackage message_details
  */
 
+/** @ignore */
 define('SM_PATH','../../');
 
 /* SquirrelMail required files. */
 require_once(SM_PATH . 'include/validate.php');
-require_once(SM_PATH . 'functions/strings.php');
-require_once(SM_PATH . 'config/config.php');
 
 displayHtmlHeader( _("Message Details"),
              "<script language=\"javascript\">\n".
