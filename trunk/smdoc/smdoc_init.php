@@ -28,6 +28,8 @@ else {
     exit;
 }
 
+if ( isset($foowd_parameters) && !isset($smdoc_parameters) )
+    $smdoc_parameters =& $foowd_parameters;
 
 /**
  * Session initialization
