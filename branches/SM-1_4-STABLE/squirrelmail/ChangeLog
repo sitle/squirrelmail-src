@@ -20,9 +20,11 @@ Version 1.4.4 - CVS
     insecure file inclusions. [CAN-2005-0075]
   - Set up language before outputing errors in auth.php and signout.php
     to make them appear in the correct language.
-  - Fix potential file inclusion issues in src/webmail.php [CAN-2005-0075].
+  - Fix potential file inclusion issues in src/webmail.php
   - Fixed minor bug in DMN plugin that caused it to not correctly set
     lastTargetMailbox.
+  - Fix possible XSS issues in src/webmail.php.
+  - Correct undefined variable usage in src/webmail.php
 
 Version 1.4.4 RC1 - 31 December 2004
 ------------------------------------
