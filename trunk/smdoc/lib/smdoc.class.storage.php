@@ -154,7 +154,7 @@ class smdoc_storage extends foowd_object
   /**
    * Get object content.
    *
-   * @return str The objects text contents processed for outputting.
+   * @return string The objects text contents processed for outputting.
    */
   function view() 
   {

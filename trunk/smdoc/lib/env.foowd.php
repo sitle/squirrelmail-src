@@ -108,7 +108,7 @@ class foowd
    *
    * Wrapper function to <code>foowd_debug::track</code>
    *
-   * @param str functionName Name of the function execution is
+   * @param string functionName Name of the function execution is
    * entering.
    */
   function track($functionName = NULL) 
@@ -131,7 +131,7 @@ class foowd
    *
    * Wrapper function to <code>foowd_debug::debug</code>
    *
-   * @param str function Name of the debugging function in <code>foowd_debug</code> to call.
+   * @param string function Name of the debugging function in <code>foowd_debug</code> to call.
    */
   function debug($function) 
   { 
@@ -155,8 +155,8 @@ class foowd
    * the classes parent class until we either find a template or reach the base
    * class. In which case we use load default template "default.tpl".
    *
-   * @param str className Name of the class.
-   * @param str methodName Name of the method.
+   * @param string className Name of the class.
+   * @param string methodName Name of the method.
    */
   function getTemplateName($className, $methodName) 
   {
@@ -186,7 +186,7 @@ class foowd
    * Get all versions of an object.
    *
    * @param array indexes Array of indexes and values to match
-   * @param str source Source to get object from
+   * @param string source Source to get object from
    * @return array The array of selected objects or NULL on failure.
    * @see foowd::getObjHistory
    */
@@ -215,7 +215,7 @@ class foowd
    * name or an object
    *
    * @param mixed classNameOrObject The name of the class or object to call the method upon.
-   * @param str methodName The method to call upon the object.
+   * @param string methodName The method to call upon the object.
    * @return mixed The array results of the method call or an error string.
    */
   function method(&$classNameOrObject, $methodName = NULL) 
@@ -254,7 +254,7 @@ class foowd
    *
    * Unserialise a serialised object loading any classes that are required.
    *
-   * @param str serializedObj Serialised object to unserialise.
+   * @param string serializedObj Serialised object to unserialise.
    * @param int classid Classid of the object to be unserialised.
    * @return object The unserialised object.
    */
@@ -275,7 +275,7 @@ ini_set('unserialize_callback_func', 'unserializeCallback');
  * class before unserialisation, but if that fails then we load a
  * default class definition based upon foowd_object.
  *
- * @param str className Name of the class trying to be unserialised
+ * @param string className Name of the class trying to be unserialised
  */
 function unserializeCallback($className) { foowd::loadDefaultClass($className); }
 

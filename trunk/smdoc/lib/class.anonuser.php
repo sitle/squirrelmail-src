@@ -51,7 +51,7 @@ class foowd_anonuser extends foowd_object
   /**
    * Whether the anonymous user is in a user group.
    *
-   * @param str groupName Name of the group to check.
+   * @param string groupName Name of the group to check.
    * @return bool TRUE or FALSE.
    */
   function inGroup($groupName, $creatorid = NULL) { // *SQM
@@ -70,7 +70,7 @@ class foowd_anonuser extends foowd_object
   /**
    * Check the string is the users password.
    *
-   * @param str password The password to check.
+   * @param string password The password to check.
    * @param bool plainText The password is in plain text rather than an md5 hash.
    * @return bool Always returns TRUE.
    */

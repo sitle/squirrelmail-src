@@ -197,10 +197,10 @@ class foowd_object
    * Constructs a new Foowd objcct.
    *
    * @param smdoc foowd Reference to the foowd environment object.
-   * @param str title The objects title.
-   * @param str viewGroup The user group for viewing the object.
-   * @param str adminGroup The user group for administrating the object.
-   * @param str deleteGroup The user group for deleting the object.
+   * @param string title The objects title.
+   * @param string viewGroup The user group for viewing the object.
+   * @param string adminGroup The user group for administrating the object.
+   * @param string deleteGroup The user group for deleting the object.
    * @param bool allowDuplicateTitle Allow object to have the same title as another object.
    */
   function foowd_object( &$foowd,
@@ -335,7 +335,7 @@ class foowd_object
   /**
    * Call an object method.
    *
-   * @param str methodName Name of the method to call.
+   * @param string methodName Name of the method to call.
    * @return bool Success or failure
    */
   function method($methodName = NULL) 
@@ -384,8 +384,8 @@ class foowd_object
    * Call a class method.
    *
    * @param smdoc foowd Reference to the foowd environment object.
-   * @param str className Name of the class to call the method upon.
-   * @param str methodName Name of the method to call.
+   * @param string className Name of the class to call the method upon.
+   * @param string methodName Name of the method to call.
    * @return bool Success or failure
    */
   function classMethod(&$foowd, $className, $methodName = NULL ) 
@@ -422,7 +422,7 @@ class foowd_object
   /**
    * Get object title ready for outputting.
    *
-   * @return str String containing the objects title.
+   * @return string String containing the objects title.
    */
   function getTitle() 
   {
@@ -441,7 +441,7 @@ class foowd_object
   /**
    * Get a member variable from this object.
    *
-   * @param str member The name of the member variable to get.
+   * @param string member The name of the member variable to get.
    * @return mixed The variable or FALSE on failure.
    */
   function get($member) 
@@ -462,7 +462,7 @@ class foowd_object
    * Checks the new value against the regular expression stored in
    * foowd_vars_meta to make sure the new value is valid.
    *
-   * @param str member The name of the member variable to set.
+   * @param string member The name of the member variable to set.
    * @param mixed value The value to set the member variable to.
    * @return mixed Returns TRUE on success.
    */
@@ -677,7 +677,7 @@ class foowd_object
   /**
    * Get object content.
    *
-   * @return str The objects text contents processed for outputting.
+   * @return string The objects text contents processed for outputting.
    */
   function view() 
   {
@@ -691,8 +691,8 @@ class foowd_object
   /**
    * Clone the object.
    *
-   * @param str title The title of the new object clone.
-   * @param str workspaceid The workspace to place the object clone in.
+   * @param string title The title of the new object clone.
+   * @param string workspaceid The workspace to place the object clone in.
    * @return int 1 = success
    *            -1 = title already in use
    *            -2 = object could not be created
@@ -861,7 +861,7 @@ class foowd_object
    * @static
    * @access protected
    * @param smdoc foowd Reference to the foowd environment object.
-   * @param str className The name of the class.
+   * @param string className The name of the class.
    */
   function class_create(&$foowd, $className) 
   {

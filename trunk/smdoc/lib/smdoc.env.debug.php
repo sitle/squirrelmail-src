@@ -99,7 +99,7 @@ class smdoc_debug
   /**
    * Function execution tracking.
    *
-   * @param str function The name of the function execution is entering.
+   * @param string function The name of the function execution is entering.
    * @param array args List of arguments passed to the function.
    */
   function track($function, &$args) 
@@ -135,7 +135,7 @@ class smdoc_debug
   /**
    * Add message to debugging output.
    *
-   * @param str string The message to add.
+   * @param string string The message to add.
    */
   function msg($string) 
   {
@@ -147,7 +147,7 @@ class smdoc_debug
   /**
    * Add SQL string to debugging output and increment database access count.
    *
-   * @param str SQLString The SQL string to add.
+   * @param string SQLString The SQL string to add.
    */
   function sql($SQLString) 
   { 
@@ -160,7 +160,7 @@ class smdoc_debug
    *
    * @access private
    * @param mixed arg The variable to output.
-   * @return str Converted variable.
+   * @return string Converted variable.
    */
   function makeVarViewable($arg) 
   {
@@ -183,7 +183,7 @@ class smdoc_debug
    *
    * @access private
    * @param array array The array to convert.
-   * @return str Converted array.
+   * @return string Converted array.
    */
   function flattenArray($array) 
   {

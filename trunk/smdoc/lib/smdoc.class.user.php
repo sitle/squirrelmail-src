@@ -42,8 +42,9 @@ class smdoc_user extends base_user
    * method is envoked to create the missing table and execute the SQL
    * statement again.
    *
+   * @global array Specifies table information for user persistance.
    * @param smdoc foowd Reference to the foowd environment object.
-   * @param str SQLString The original SQL string that failed to execute due to missing database table.
+   * @param string SQLString The original SQL string that failed to execute due to missing database table.
    * @return mixed The resulting database query resource or FALSE on failure.
    */
   function makeTable(&$foowd)
@@ -73,6 +74,7 @@ class smdoc_user extends base_user
    * Translate constants for SquirrelMail version to string,
    * or return list of choices.
    *
+   * @global array Specifies known SquirrelMail versions
    * @param optional boolean getAll Ignore value and return array containing all strings.
    * @return either string for integer, or array containing all strings.
    */
@@ -97,6 +99,7 @@ class smdoc_user extends base_user
    * Translate constants for IMAP server to string,
    * or return list of choices.
    *
+   * @global array Specifies known IMAP Servers
    * @param optional boolean getAll Ignore value and return array containing all strings.
    * @return either string for integer, or array containing all strings.
    */
@@ -122,6 +125,7 @@ class smdoc_user extends base_user
    * Translate constants for SMTP server to string,
    * or return list of choices.
    *
+   * @global array Specifies known SMTP servers
    * @param optional boolean getAll Ignore value and return array containing all strings.
    * @return either string for integer, or array containing all strings.
    */
@@ -187,12 +191,13 @@ class smdoc_user extends base_user
   /**
    * Constructs a new user.
    *
+   * @global array Specifies table information for user persistance.
    * @param smdoc foowd Reference to the foowd environment object.
-   * @param optional str username The users name.
-   * @param optional str password An MD5 hash of the users password.
-   * @param optional str email The users e-mail address.
+   * @param optional string username The users name.
+   * @param optional string password An MD5 hash of the users password.
+   * @param optional string email The users e-mail address.
    * @param optional array groups The user groups the user belongs to.
-   * @param optional str hostmask The users hostmask.
+   * @param optional string hostmask The users hostmask.
    */
   function smdoc_user( &$foowd,
                    $username = NULL,
@@ -218,6 +223,7 @@ class smdoc_user extends base_user
 
   /**
    * Serialisation wakeup method.
+   * @global array Specifies table information for user persistance.
    */
   function __wakeup()
   {
@@ -329,6 +335,64 @@ class smdoc_user extends base_user
     $form->addToGroup('stat',$smtpServer);
     $form->addToGroup('stat',$imapServer);
     $form->addToGroup('stat',$smVersion);
+  }
+
+
+// ----------------------------- class methods --------------
+
+  /**
+   * Adds smdoc specific user statistics to User List
+   *
+   * Values set in template:
+   *  + user_smver    - array containing stats for each SM Version
+   *  + user_smtp     - array containing stats for each SMTP Server
+   *  + user_imap     - array containing stats for each IMAP Server
+   *  + in addition to whatever is added by parent
+   * 
+   * @static
+   * @global array Specifies table information for user persistance.
+   * @param smdoc foowd Reference to the foowd environment object.
+   * @param string className The name of the class.
+   * @see base_user::class_list()
+   */
+  function class_list(&$foowd, $className)
+  {
+    $foowd->track('smdoc_user->class_list');
+    
+    global $USER_SOURCE;
+    parent::class_list($foowd, $className);
+
+    $smver[] = $foowd->database->count($USER_SOURCE, array('SM_version' => 0));
+    $smver[] = $foowd->database->count($USER_SOURCE, array('SM_version' => 1));
+    $smver[] = $foowd->database->count($USER_SOURCE, array('SM_version' => 2));
+    $smver[] = $foowd->database->count($USER_SOURCE, array('SM_version' => 3));
+    $smver[] = $foowd->database->count($USER_SOURCE, array('SM_version' => 4));
+    $smver[] = $foowd->database->count($USER_SOURCE, array('SM_version' => 5));
+    $smver[] = $foowd->database->count($USER_SOURCE, array('SM_version' => 6));
+    $foowd->template->assign_by_ref('user_smver', $smver);
+
+    $imap[] = $foowd->database->count($USER_SOURCE, array('IMAP_server' => 0));
+    $imap[] = $foowd->database->count($USER_SOURCE, array('IMAP_server' => 1));
+    $imap[] = $foowd->database->count($USER_SOURCE, array('IMAP_server' => 2));
+    $imap[] = $foowd->database->count($USER_SOURCE, array('IMAP_server' => 3));
+    $imap[] = $foowd->database->count($USER_SOURCE, array('IMAP_server' => 4));
+    $imap[] = $foowd->database->count($USER_SOURCE, array('IMAP_server' => 5));
+    $imap[] = $foowd->database->count($USER_SOURCE, array('IMAP_server' => 6));
+    $imap[] = $foowd->database->count($USER_SOURCE, array('IMAP_server' => 7));
+    $foowd->template->assign_by_ref('user_imap', $imap);
+
+    $smtp[] = $foowd->database->count($USER_SOURCE, array('SMTP_server' => 0));
+    $smtp[] = $foowd->database->count($USER_SOURCE, array('SMTP_server' => 1));
+    $smtp[] = $foowd->database->count($USER_SOURCE, array('SMTP_server' => 2));
+    $smtp[] = $foowd->database->count($USER_SOURCE, array('SMTP_server' => 3));
+    $smtp[] = $foowd->database->count($USER_SOURCE, array('SMTP_server' => 4));
+    $smtp[] = $foowd->database->count($USER_SOURCE, array('SMTP_server' => 5));
+    $smtp[] = $foowd->database->count($USER_SOURCE, array('SMTP_server' => 6));
+    $smtp[] = $foowd->database->count($USER_SOURCE, array('SMTP_server' => 7));
+    $smtp[] = $foowd->database->count($USER_SOURCE, array('SMTP_server' => 8));
+    $foowd->template->assign_by_ref('user_smtp', $smtp);  
+    
+    $foowd->track();
   }
 
 // -----------------------------object methods --------------
