@@ -103,13 +103,18 @@ function delete_move_expunge_from_all($id) {
 
 function delete_move_next_action() {
 
-    global $PHP_SELF,
-           $delete_id, $move_id;
+    global $PHP_SELF;
 
-    if ($delete_id) {
+    if (isset($_GET['delete_id'])) {
+        $delete_id = $_GET['delete_id'];
+    }
+    if (isset($_POST['move_id'])) {
+        $move_id = $_POST['move_id'];
+    }
+    if (isset($delete_id)) {
         delete_move_next_delete();
         fix_sort_array();
-    } elseif ($move_id) {
+    } elseif (isset($move_id)) {
         delete_move_next_move();
         fix_sort_array();
     }
@@ -208,7 +213,6 @@ function delete_move_next_read($currloc) {
 
 function get_move_target_list() {
     global $imapConnection;
-    
     $boxes = sqimap_mailbox_list($imapConnection);
     for ($i = 0; $i < count($boxes); $i++) {  
         if (!in_array('noselect', $boxes[$i]['flags'])) {
@@ -227,7 +231,6 @@ function delete_move_next_moveNextForm($next) {
     global $color, $where, $what, $currentArrayIndex, $passed_id,
            $urlMailbox, $sort, $startMessage, $delete_id, $move_id,
            $imapConnection;
-
     echo '<tr>'.
          "<td bgcolor=\"$color[9]\" width=\"100%\" align=\"center\">".
            '<form action="read_body.php" method="post"><small>'.
@@ -275,8 +278,9 @@ function delete_move_next_moveRightMainForm() {
 
 
 function delete_move_next_delete() {
-    global $imapConnection, $delete_id, $mailbox, $auto_expunge;
-    
+    global $imapConnection, $auto_expunge;
+    $delete_id = $_GET['delete_id'];
+    $mailbox = $_GET['mailbox'];
     sqimap_messages_delete($imapConnection, $delete_id, $delete_id, $mailbox);
     if ($auto_expunge){
         delete_move_expunge_from_all($delete_id);
@@ -285,8 +289,10 @@ function delete_move_next_delete() {
 }
 
 function delete_move_next_move() {
-    global $imapConnection, $move_id, $targetMailbox, $auto_expunge, $mailbox;
-    
+    global $imapConnection, $auto_expunge;
+    $move_id = $_POST['move_id'];
+    $mailbox = $_POST['mailbox'];
+    $targetMailbox = $_POST['targetMailbox'];
     // Move message
     sqimap_messages_copy($imapConnection, $move_id, $move_id, $targetMailbox);
     sqimap_messages_flag($imapConnection, $move_id, $move_id, 'Deleted');
@@ -332,10 +338,12 @@ function delete_move_next_display_inside() {
 
 function delete_move_next_display_save() {
 
-    global $username,$data_dir,
-           $delete_move_next_ti, $delete_move_next_formATtopi,
-           $delete_move_next_bi, $delete_move_next_formATbottomi;
-    
+    global $username, $data_dir;
+    $delete_move_next_ti = $_POST['delete_move_next_ti'];
+    $delete_move_next_bi = $_POST['delete_move_next_bi'];
+    $delete_move_next_formATtopi = $_POST['delete_move_next_formATtopi'];
+    $delete_move_next_formATbottomi = $_POST['delete_move_next_formATbottomi'];
+ 
     if (isset($delete_move_next_ti)) {
         setPref($data_dir, $username, 'delete_move_next_t', 'on');
     } else {
