@@ -16,19 +16,32 @@
  */
 
 /** Path for smdoc includes */
-define('SM_DIR',    './lib/');
+if ( !defined('SM_DIR') )
+    define('SM_DIR',    './lib/');
+
 /** Path for input classes */
-define('INPUT_DIR', './lib/input/');
+if ( !defined('INPUT_DIR') )
+    define('INPUT_DIR', './lib/input/');
+
 /** Path for template files */
-define('TEMPLATE_PATH','./templates/');
+if ( !defined('TEMPLATE_PATH') )
+    define('TEMPLATE_PATH','./templates/');
+
 /** Preferred Date display format */
-define('DATETIME_FORMAT', 'Y/m/d h:ia');
+if ( !defined('DATETIME_FORMAT') )
+    define('DATETIME_FORMAT', 'Y/m/d h:ia');
+
 /** Location of tmp directory for diff */
-define('DIFF_TMPDIR', '/tmp/');
+if ( !defined('DIFF_TMPDIR') )
+    define('DIFF_TMPDIR', '/tmp/');
+
 /** Base filename/primary entrypoint */
-define('FILENAME', 'index.php');
+if ( !defined('FILENAME') )
+    define('FILENAME', 'index.php');
+    
 /** URL that gets you to the above file */
-define('BASE_URL', 'http://'.$_SERVER['HTTP_HOST'].'/smdoc/');
+if ( !defined('BASE_URL') )
+    define('BASE_URL', 'http://'.$_SERVER['HTTP_HOST'].'/smdoc/');
 
 
 /**

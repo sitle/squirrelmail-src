@@ -9,12 +9,13 @@
  * $Id$
  */
 
+/** Global parameter/settings list */
+global $smdoc_parameters;
+
 /**
  * Include config.php, or issue message.
  */
-if ( file_exists('config.php') )
-    require_once('config.php');
-else {
+if ( !file_exists('config.php') ) {
 ?>
     <p>The file 'config.php' does not exist. Please create one
     using one of the following mechanisms:</p>
@@ -27,6 +28,8 @@ else {
 <?php
     exit;
 }
+
+require_once('config.php');
 
 if ( isset($foowd_parameters) && !isset($smdoc_parameters) )
     $smdoc_parameters =& $foowd_parameters;
