@@ -1,64 +1,77 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR Free Software Foundation, Inc.
+# $Id$
+# LANGUAGE change_pass plugin translation.
+# Copyright (C) 2003 The Squirrelmail Development Team.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2003-09-12 07:12+0100\n"
+"POT-Creation-Date: 2003-09-12 12:12-0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=CHARSET\n"
-"Content-Transfer-Encoding: 8bit\n"
+"Content-Transfer-Encoding: ENCODING\n"
 
-#: options.php:38 setup.php:17
+#: options.php:36 setup.php:18
 msgid "Change Password"
 msgstr ""
 
-#: options.php:54
-msgid "Old Password"
+#: options.php:77
+msgid "Closing Connection"
 msgstr ""
 
-#: options.php:55
+#: options.php:137
+msgid "Connecting to Password Server"
+msgstr ""
+
+#: options.php:141
+msgid "ERROR:"
+msgstr ""
+
+#: options.php:52
 msgid "New Password"
 msgstr ""
 
-#: options.php:56
-msgid "Verify New Password"
+#: options.php:51
+msgid "Old Password"
+msgstr ""
+
+#: options.php:173 setup.php:35
+msgid "Password changed successfully."
 msgstr ""
 
 #: options.php:64
 msgid "Submit"
 msgstr ""
 
-#: options.php:110
-msgid "You must type in your old password."
+#: setup.php:20
+msgid ""
+"This connects to your local Password Server to change your email password."
 msgstr ""
 
-#: options.php:113
-msgid "You must type in a new password."
+#: options.php:53
+msgid "Verify New Password"
 msgstr ""
 
-#: options.php:116
+#: options.php:112
 msgid "You must also type in your new password in the verify box."
 msgstr ""
 
-#: options.php:119
+#: options.php:109
+msgid "You must type in a new password."
+msgstr ""
+
+#: options.php:106
+msgid "You must type in your old password."
+msgstr ""
+
+#: options.php:115
 msgid "Your new password doesn't match the verify password."
 msgstr ""
 
-#: options.php:122
+#: options.php:118
 msgid "Your old password is not correct."
-msgstr ""
-
-#: options.php:130 setup.php:34
-msgid "Password changed successfully."
-msgstr ""
-
-#: setup.php:19
-msgid ""
-"This connects to your local Password Server to change your email password."
 msgstr ""
