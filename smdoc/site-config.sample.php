@@ -23,4 +23,6 @@ define('DEBUG_EXT',   FALSE); // include external resource debug information
 /* Diff processing */
 define('DIFF_TMPDIR', $_ENV['TEMP']);
 
+/* Cache file location */
+define('CACHE_DIR', $_ENV['TEMP']);
 ?>
