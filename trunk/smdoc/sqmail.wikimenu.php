@@ -32,19 +32,23 @@ function sqmNavMenu(&$thing) {
     echo '</usermenu>';      
   	
 // PageTitle/Workspace of page (not shown if Main)
-    if ( $thing->classid != HARDTHINGCLASSID ) {
-        echo '<a href="'.THINGURI.$thing->title.'&amp;class='.$wtf->class.'">'.$thing->title.'</a>';
+    if ( getValue('op', FALSE) == 'delete' && getValue('confirm', FALSE) == 'true' ) {
+        echo $thing->title;
     } else {
-        // Hardthings require slightly different links
-        echo '<a href="'.THINGURI.$wtf->thingtitle.'">'.$thing->title.'</a>';
-    }
-    if ( $thing->workspaceid != 0 ) {
-      if ( $thing->workspaceid != $wtf->user->workspaceid ) {
-        $workspace = &wtf::loadObject($wtf->user->workspaceid, 0, 'workspace');
-      }
-      echo '<workspaceid>';
-      echo ' ( ' . $workspace->title . ' ) ';
-      echo '</workspaceid>';    
+        if ( $thing->classid != HARDTHINGCLASSID ) {
+            echo '<a href="'.THINGURI.$thing->title.'&amp;class='.$wtf->class.'">'.$thing->title.'</a>';
+        } else {
+            // Hardthings require slightly different links
+            echo '<a href="'.THINGURI.$wtf->thingtitle.'">'.$thing->title.'</a>';
+        }
+        if ( $thing->workspaceid != 0 ) {
+            if ( $thing->workspaceid != $wtf->user->workspaceid ) {
+                $workspace = &wtf::loadObject($wtf->user->workspaceid, 0, 'workspace');
+            }
+            echo '<workspaceid>';
+            echo ' ( ' . $workspace->title . ' ) ';
+            echo '</workspaceid>';    
+        }
     }
     echo '</pagetitle>';
 
@@ -68,8 +72,13 @@ function sqmEditMenu(&$thing) {
 	track('sqmEditMenu');
 	
 	echo '<editmenu>';
-    
-    if ( $thing->classid != HARDTHINGCLASSID ) {
+
+    if ( getValue('op', FALSE) == 'delete' && getValue('confirm', FALSE) == 'true' ) {
+        // Here is the much stripped down footer for Hard Things
+        echo '<a href="', THINGURI, 'recentchanges">Recent Changes</a>';
+        echo '<br/>';           
+        echo 'This page has been deleted.';
+    } elseif ( $thing->classid != HARDTHINGCLASSID ) {
         // None of these functions (including History) are available for Hard Things
 
         if ( $thing->classid != WORKSPACECLASSID ) {
@@ -93,13 +102,13 @@ function sqmEditMenu(&$thing) {
         echo '<br/>';
 
         // page updator information
-        echo 'This Page ';
+        echo 'This page ';
         $updatorDetails = $thing->getUpdator();
 	    if ($updatorDetails) {
-		    echo ' last edited by <a href="'. THINGIDURI, $updatorDetails['homeid'], '&amp;class=home">', $updatorDetails['username'], '</a> on '.dbdate2string($updatorDetails['datetime'], SHORTDATEFORMAT);
+		    echo ' last edited by <a href="'. THINGIDURI, $updatorDetails['homeid'], '&amp;class=home">', $updatorDetails['username'], '</a> on '.dbdate2string($updatorDetails['datetime'], SHORTDATEFORMAT), '.';
 	    } else {
 		    $creatorDetails = $thing->getCreator();
-		    echo ' created by <a href="', THINGIDURI.$creatorDetails['homeid'].'&amp;class=home">', $creatorDetails['username'], '</a> on ', dbdate2string($creatorDetails['datetime'], SHORTDATEFORMAT);
+		    echo ' created by <a href="', THINGIDURI.$creatorDetails['homeid'].'&amp;class=home">', $creatorDetails['username'], '</a> on ', dbdate2string($creatorDetails['datetime'], SHORTDATEFORMAT), '.';
         }
     } else {
         // Here is the much stripped down footer for Hard Things
