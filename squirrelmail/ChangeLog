@@ -32,16 +32,18 @@ Version 1.4.5 - CVS
   - Added blank.png for missing image support.
   - Fixed cid handling from Outlook Express client when it doesn't create a
     valid content-id to go with CID tag.  This resolves #855320, and should
-	be considered a workaround.  The real issues needs resolving by MS.
+    be considered a workaround.  The real issues needs resolving by MS.
   - Strip <outbind://> tags out. This is a Microsoft only protocol and
     references files local to the sending machine.  This causes issues
     with Internet Explorer.
   - Replace <img src="outbind://"> links with clean images to stop
     issues with Internet Explorer not being able to track down the
-	image.
+    image.
   - Empty src attribute on img tags causes logouts (IE only), replacing
     string with blank.png.
-  - Added configurable reply prefix to display options
+  - Added configurable reply prefix to display options.
+  - Give an error to the user when SquirrelMail is not configured yet
+    (instead of "failed to include config.php").
 
 Version 1.4.4 - 21 January 2005
 -------------------------------
