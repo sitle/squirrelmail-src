@@ -2,6 +2,13 @@
 *** SquirrelMail Stable Series 1.2 ***
 **************************************
 
+Version 1.2.10 [cvs]
+---------------------------------
+  - Fixed version checking to ignore patch levels
+  - Fixed sqsession_register to register the session correctly in
+    verions of PHP below 4.1.0
+
+
 Version 1.2.9 -- October 30, 2002
 ---------------------------------
   - Do not lose user prefs/sigs/abooks when trying to save to a full disk
