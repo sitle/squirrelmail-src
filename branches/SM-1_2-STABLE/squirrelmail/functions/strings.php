@@ -206,16 +206,16 @@ function get_location () {
     
     /* Get the hostname from the Host header or server config. */
     $host = '';
-    if (isset($_SEVER['HTTP_HOST']) && !empty($_SERVER['HTTP_HOST'])) {
+    if (isset($_SERVER['HTTP_HOST']) && !empty($_SERVER['HTTP_HOST'])) {
         $host = $_SERVER['HTTP_HOST'];
     } else if (isset($_SERVER['SERVER_NAME']) &&
                !empty($_SERVER['SERVER_NAME'])) {
+        $host = $_SERVER['SERVER_NAME'];
     }
 
-    
     $port = '';
     if (! strstr($host, ':')) {
-        if (isset($_SEVER['SERVER_PORT'])) {
+        if (isset($_SERVER['SERVER_PORT'])) {
             if (($_SERVER['SERVER_PORT'] != 80 && $proto == 'http://')
                 || ($_SERVER['SERVER_PORT'] != 443 && $proto == 'https://')) {
                 $port = sprintf(':%d', $_SERVER['SERVER_PORT']);
