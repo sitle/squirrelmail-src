@@ -2,7 +2,6 @@
 /*
  *  event_create.php
  *
- *
  * Copyright (c) 2002 The SquirrelMail Project Team
  * Licensed under the GNU GPL. For full terms see the file COPYING.
  *
@@ -15,7 +14,6 @@
 
 require_once('calendar_data.php');
 require_once('functions.php');
-require_once('config.php');
 chdir('..');
 require_once('../src/validate.php');
 require_once('../functions/strings.php');
@@ -70,7 +68,7 @@ if (isset($_POST['send'])) {
 
 //main form to gather event info
 function show_event_form() {
-    global $color, $editor_size, $year, $day, $month, $hour, $defaultNotification;
+    global $color, $editor_size, $year, $day, $month, $hour;
 
     echo "\n<FORM name=eventscreate action=\"event_create.php\" METHOD=POST >\n".
          "      <INPUT TYPE=hidden NAME=\"year\" VALUE=\"$year\">\n".
@@ -91,22 +89,14 @@ function show_event_form() {
          "      <SELECT NAME=\"event_length\">\n";
     select_option_length("0");
     echo "      </SELECT>\n".
-         "      </TD></TR>\n";
-    if ($enableNotification==1){
-      echo "      <TR><TD BGCOLOR=\"$color[4]\" ALIGN=RIGHT>" . _("Priority:") . "</TD>\n".
-           "      <TD BGCOLOR=\"$color[4]\" ALIGN=LEFT>\n".
-           "      <SELECT NAME=\"event_priority\">\n";
-      select_option_priority("0");
-      echo "      </SELECT>\n".
-           "      </TD></TR>\n";
-    };
-    echo "      <TR><TD BGCOLOR=\"$color[4]\" ALIGN=RIGHT>" . _("Notify:") . "</TD>\n".
+         "      </TD></TR>\n".
+         "      <TR><TD BGCOLOR=\"$color[4]\" ALIGN=RIGHT>" . _("Priority:") . "</TD>\n".
          "      <TD BGCOLOR=\"$color[4]\" ALIGN=LEFT>\n".
-         "      <SELECT NAME=\"event_notification\">\n";
-    select_option_notification($defaultNotification);
+         "      <SELECT NAME=\"event_priority\">\n";
+    select_option_priority("0");
     echo "      </SELECT>\n".
-         "      </TD></TR>\n";
-    echo "      <TR><TD BGCOLOR=\"$color[4]\" ALIGN=RIGHT>" . _("Title:") . "</TD>\n".
+         "      </TD></TR>\n".
+         "      <TR><TD BGCOLOR=\"$color[4]\" ALIGN=RIGHT>" . _("Title:") . "</TD>\n".
          "      <TD BGCOLOR=\"$color[4]\" ALIGN=LEFT>\n".
          "      <INPUT TYPE=text NAME=\"event_title\" VALUE=\"\" SIZE=30 MAXLENGTH=50><BR>\n".
          "      </TD></TR>\n".
@@ -129,7 +119,7 @@ if (!isset($day) || $day <= 0){
     $day = date( 'd' );
 }
 if (!isset($hour) || $hour <= 0){
-    $hour = date( 'H' );
+    $hour = '08';
 }
 
 $calself=basename($PHP_SELF);
@@ -138,6 +128,7 @@ $calself=basename($PHP_SELF);
 displayPageHeader($color, 'None');
 //load calendar menu
 calendar_header();
+
 
 echo "<TR BGCOLOR=\"$color[0]\"><TD>" .
      "<TABLE WIDTH=100% BORDER=0 CELLPADDING=2 CELLSPACING=1 BGCOLOR=\"$color[0]\">" .
@@ -153,7 +144,6 @@ if(!isset($event_text)){
     $event_text=nl2br($event_text);
     $event_text=ereg_replace ("\n", "", $event_text);
     $event_text=ereg_replace ("\r", "", $event_text);
-    $event_priority = $event_priority + $event_notification;
     $calendardata["$month$day$year"]["$event_hour$event_minute"] =
     array( 'length' => $event_length,
            'priority' => $event_priority,

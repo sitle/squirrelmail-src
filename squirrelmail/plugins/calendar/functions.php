@@ -2,7 +2,6 @@
 /*
  *  functions.php
  *
- *
  * Copyright (c) 2002 The SquirrelMail Project Team
  * Licensed under the GNU GPL. For full terms see the file COPYING.
  *
@@ -36,7 +35,7 @@ function select_option_length($selected) {
     $eventlength = array(
         "0" => _("0 min."),
         "15" => _("15 min."),
-        "30" => _("30 min."),
+        "30" => _("35 min."),
         "45" => _("45 min."),
         "60" => _("1 hr."),
         "90" => _("1.5 hr."),
@@ -96,14 +95,13 @@ function select_option_hour($selected) {
 }
 
 function select_option_priority($selected) {
-    $temp = isOdd($selected);
     $eventpriority = array(
         "0" => _("Normal"),
         "1" => _("High"),
     );
 
     while( $bar = each($eventpriority)) {
-        if($temp==$bar[key]){
+        if($selected==$bar[key]){
                 echo "        <OPTION VALUE=\"".$bar[key]."\" SELECTED>".$bar[value]."</OPTION>\n";
         } else {
                 echo "        <OPTION VALUE=\"".$bar[key]."\">".$bar[value]."</OPTION>\n";
@@ -146,69 +144,5 @@ function select_option_day($selected) {
         }
     }
 }
-function calcNotifyTime($eventTime,$Priority){
-/*
- * Caclulate and return the reminder time based on event time and priority
- *  input:
- *    $eventTime  - in the format: YYYYMMDDHHMM
- *    $Priority   - integer range(0:8)
- *
- *  output:
- *    notifyTime  - in the format: YYYYMMDDHHMM
- *
- */  
-
-  // break the event time in to pieces for mktime
-  $oY = substr($eventTime,0,4);
-  $om = substr($eventTime,4,2);
-  $od = substr($eventTime,6,2);
-  $oH = substr($eventTime,8,2);
-  $oi = substr($eventTime,10,2);
-
-  // initialize the delta variables
-  $days=0;
-  $mins=0;
-  $notify = $Priority - isOdd($Priority);
-  if ($notify==2){ $mins=0;  };
-  if ($notify==4){ $mins=5;  };
-  if ($notify==6){ $mins=15; };
-  if ($notify==8){ $mins=30; };
-  if ($notify==10){ $mins=60; };
-  if ($notify==12){ $mins=240;};
-  if ($notify==14){ $days=1;  };
-
-  return date("YmdHi",mktime($oH,$oi-$mins,0,$om,$od-$days,$oY));
-
-};
-
-function select_option_notification($priority) {
-  $selected = $priority - isOdd($priority);
-  $eventNotification = array(
-    "0" =>  _("Don't Email Me"),
-    "2" =>  _("Email Me - 0m prior"),
-    "4" =>  _("Email Me - 5m prior"),
-    "6" =>  _("Email Me - 15m prior"),
-    "8" =>  _("Email Me - 30m prior"),
-    "10" => _("Email Me - 1h prior"),
-    "12" => _("Email Me - 4h prior"),
-    "14" => _("Email Me - 1d prior"),
-  );
-
-  while( $bar = each($eventNotification)) {
-    if($selected==$bar[key]){
-      echo "        <OPTION VALUE=\"".$bar[key]."\" SELECTED>".$bar[value]."</OPTION>\n";
-    } else {
-      echo "        <OPTION VALUE=\"".$bar[key]."\">".$bar[value]."</OPTION>\n";
-    }
-  }
-};
-
-function isOdd($i){
-  if ($i%2) { 
-    return 1;	//Number is Odd 
-  } else { 
-    return 0;	//Number is Even
-  };
-};
 
 ?>

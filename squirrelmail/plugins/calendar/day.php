@@ -2,7 +2,6 @@
 /*
  *  day.php
  *
- *
  * Copyright (c) 2002 The SquirrelMail Project Team
  * Licensed under the GNU GPL. For full terms see the file COPYING.
  *
@@ -111,7 +110,7 @@ function display_events() {
             }
             echo "         <TR BGCOLOR=\"$color[$eo]\"><TD>$ehour:$eminute$elength</TD>\n" .
                  "              <TD>[";
-            echo (isOdd($calbar['priority'])) ? "<FONT COLOR=\"$color[1]\">$calbar[title]</FONT>" : "$calbar[title]";
+            echo ($calbar['priority']==1) ? "<FONT COLOR=\"$color[1]\">$calbar[title]</FONT>" : "$calbar[title]";
             echo"] $calbar[message]&nbsp;</TD>\n" .
                  "              <TD ALIGN=CENTER><FONT SIZE=-1><nobr>\n" .
                  "<A HREF=\"event_edit.php?year=$year&month=$month&day=$day&hour=".substr($calfoo['key'],0,2)."&minute=".substr($calfoo['key'],2,2)."\">".

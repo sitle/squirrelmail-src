@@ -7,7 +7,7 @@
  *
  * Originally contrubuted by Michal Szczotka <michal@tuxy.org>
  *
- * functions to operate on calendar data files.
+ *  functions to operate on calendar data files.
  *
  * $Id$
  */
@@ -46,45 +46,24 @@ function readcalendardata() {
 //makes events persistant
 function writecalendardata() {
     global $calendardata, $username, $data_dir, $year;
-    // 20020828 - JLH : Added the following 3 lines to set the current date
-    //                  and open the sister reminder files *.rem
-    $now = date('Ymd');
-    $remfiletmp = getHashedFile($username, $data_dir, "$username.$year.rem.tmp");
-    $remfilename = getHashedFile($username, $data_dir, "$username.$year.rem");
 
     $filetmp = getHashedFile($username, $data_dir, "$username.$year.cal.tmp");
     $filename = getHashedFile($username, $data_dir, "$username.$year.cal");
     $fp = fopen ($filetmp,"w");
-	$remfp = fopen ($remfiletmp,"w");
     if ($fp) {
         while ( $calfoo = each ($calendardata)) {
             while ( $calbar = each ($calfoo['value'])) {
                 $calfoobar = $calendardata[$calfoo['key']][$calbar['key']];
-                if (!isset($calfoobar['reminder'])) {
-                  $calfoobar['reminder'] = "";
-                }
+    if (!isset($calfoobar['reminder'])) {
+        $calfoobar['reminder'] = "";
+    }
                 $calstr = "$calfoo[key]|$calbar[key]|$calfoobar[length]|$calfoobar[priority]|$calfoobar[title]|$calfoobar[message]|$calfoobar[reminder]\n";
                 fwrite($fp, $calstr, 4096);
-                // 20020828 - JLH : format eventTime in YYMMDDHHMM format for function
-                $eventTime = substr($calfoo[key],4,4) .substr($calfoo[key],0,4) .$calbar[key];
-
-                // 20020828 - JLH : Calculate when to notify based on delta
-                $notifyTime = calcNotifyTime($eventTime,$calfoobar[priority]);
-
-                // 20020828 - JLH : if notifyTime has not passed and priority is an email me priority (>1)
-                if ((substr($notifyTime,0,8)>=$now) && ($calfoobar[priority]>1)){
-                  // 20020828 - JLH : create the string and write it out.
-                  $remstr = "$notifyTime|$eventTime|$calfoobar[length]|$calfoobar[priority]|$calfoobar[title]|$calfoobar[message]|$calfoobar[reminder]\n";
-                  fwrite($remfp, $remstr, 4096);
-                };
-
             }
 
         }
         fclose ($fp);
-        fclose ($remfp);
         rename($filetmp,$filename);
-        rename($remfiletmp,$remfilename);
     }
 }
 
