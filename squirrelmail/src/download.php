@@ -334,7 +334,7 @@ if (strlen($filename) < 1) {
         $suffix = $type1;
     }
 
-    $filename = 'untitled' . strip_tags($passed_ent_id) .$suffix);
+    $filename = 'untitled' . strip_tags($passed_ent_id) .$suffix;
 }
 
 
