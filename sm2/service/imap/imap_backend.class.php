@@ -93,7 +93,7 @@ class imap_backend extends parser {
      * @return    arr        $aCaps          capabilities overided by smcapability
      * @access    public
      * @author    Marc Groot Koerkamp
-     */          
+     */
     function capability($aSmCapability = array()) {
          $sTag = $this->sqimap_run_command('CAPABILITY');
          $aResult = $this->sqimap_process_stream($sTag);
@@ -160,7 +160,7 @@ class imap_backend extends parser {
             if ($aResult['RESPONSE'] == 'OK') {
                 break;
             }
-        case $aAuth['PLAIN']:
+        //case $aAuth['PLAIN']:
         default:
             if (isset($aCaps['LOGINDISABLED']) && $aCaps['LOGINDISABLED']) {
                 /* we need to do a STARTTLS which isn't supported on a normal socket */
@@ -194,7 +194,7 @@ class imap_backend extends parser {
                 $errno = 0; /* TODO */
             } else {
                 /* something went terrible wrong, notify the user */
-            
+
                 /* TODO */
             
                /* optionally try to initiate a tls connection if PHP version > 4.3 */
@@ -208,46 +208,55 @@ class imap_backend extends parser {
     function logout() {
         return $this->sqimap_process_stream($this->sqimap_run_command('LOGOUT'));
     }
-    
+
     /**
      * @func      getMailboxList
      * @desc      Retrieve an array with mailboxes catagorised per namespace 
      * @param     str        $type         LSUB or LIST
      * @param     arr        $aNamespace   array with namespaces, normally we have the following 
-     *                                     namespaces: Personal, Other Users and Shared. The keys 
+     *                                     namespaces: Personal, Other Users and Shared. The keys
      *                                     I use are 'personal', 'otherusers' and 'shared'. Each 
      *                                     namespace can contain muliple definitions. A definition is
      *                                     in the form  
      *                                     array('namespace' => folderprefix, 
      *                                           'delimiter' => hierarchieseparator).
-     *                                     By providing your own namespace, the system namespace is overrided.    
+     *                                     By providing your own namespace, the system namespace is overrided.
      * @param     arr        $aProperties  array with params to manipulate default behaviour.
      *                                     expand => retrieve the whole list instead of 1 level deep
      *                                     haschildren => retrieve children information
-     *                                     verifyflags => in case of LSUB retrieve the flags with 
+     *                                     verifyflags => in case of LSUB retrieve the flags with
      *                                     a LIST call
-     *                                     
+     *
      * @return    arr        $aResults     array with namespaces and their mailboxes.
      * @access    public
      * @author    Marc Groot Koerkamp
-     */    
-    
-            
-    // $aNamespace: array with prefixes;    
-    function getMailboxList($type,&$aNamespace,$aProperties = 
-             array('expand' => false, 'haschildren' => true, 'verifyflags' => true)) {
-        $type = strtoupper ($type);     
+     */
+
+
+    // $aNamespace: array with prefixes;
+    function getMailboxList($type,&$aNamespace,$aProps =
+             array('expand' => false, 'haschildren' => true, 'verifyflags' => true,'prefix' => '')) {
+        $type = strtoupper ($type);
+        if (isset($aProps['prefix'])) {
+            $sPrefix = $aProps['prefix'];
+        } else {
+            $sPrefix = '';
+        }
+        if (!isset($aProps['haschildren'])) {
+            $aProps['haschildren'] = false;
+        }
+
         if (!count($aNamespace)) {
            /* no namespace suplied, try to get one */
            if ($this->capability['NAMESPACE']) {
                $aNamespace = $this->_namespace();
            } else {
                $aNamespace = array(array('namespace' => ''), false, false); /* we do not use the delimiter */
-           }    
+           }
         }
-        print_r($aNamespace);
-        $aTags = array();   
-        if (!$aProperties['expand']) {
+        //print_r($aNamespace);
+        $aTags = array();
+        if (!$aProps['expand']) {
            $sSearch = '%%';
         } else {
            $sSearch = '*%';
@@ -274,20 +283,22 @@ class imap_backend extends parser {
         }
         /* retrieve the results */
         foreach ($aResults as $key => $value) {
+            $i = 0;
             foreach($value as $sReference => $sTag) {
                 $aRes = $this->sqimap_process_stream($sTag);
-                if ($aRes['RESPONSE'] == 'OK') {
-                    $aResults[$key][$sReference] = $aRes[strtoupper($type)];
+                if ($aRes['RESPONSE'] == 'OK' && isset($aRes[$type])) {
+                    $aResults[$key][$sReference] = $aRes[$type];
                     if ($sReference == 'INBOX.') {
-                         $aResults[$key][$sReference]['INBOX'] = 
-                            array('flags' => array(),'delimiter' => $aNamespace[$key][$sReference]['delimiter']);
-                    }   
+                         $aResults[$key][$sReference]['INBOX'] =
+                            array('flags' => array(),'delimiter' => $aNamespace[$key][$i]['delimiter']);
+                    }
                 } else {
                    $aResults[$key][$sReference] = false;
                 }
+                ++$i;
             }
         }
-        if ($aProperties['verifyflags'] && $type = 'LSUB') {
+        if ($aProps['verifyflags'] && $type = 'LSUB') {
             foreach ($aResults as $key => $value) {
                 foreach($value as $sReference => $aList) {
                     if ($aList) {
@@ -312,14 +323,14 @@ class imap_backend extends parser {
                             } else {
                                 $aResults[$key][$sReference][$sMbx]['flags'][] = '\\nonexistent';
                             }
-                            unset($aResults[$key][$sReference][$sMbx]['TAG']);                            
+                            unset($aResults[$key][$sReference][$sMbx]['TAG']);
                         }
                     }
                 }
-            }    
+            }
         }
-        
-        if ($aProperties['haschildren'] && !$this->capability['CHILDREN']) {
+        print_r($aProps);
+        if ($aProps['haschildren'] && !$this->capability['CHILDREN']) {
             foreach ($aResults as $key => $value) {
                 foreach($value as $sReference => $aList) {
                     if ($aList) {
@@ -344,22 +355,22 @@ class imap_backend extends parser {
                             if ($aRes['RESPONSE'] == 'OK') {
                                 if (count($aRes[strtoupper($type)])) {
                                     $aResults[$key][$sReference][$sMbx]['flags'][] = '\\HasChildren';
-                                } 
+                                }
                             }
-                            unset($aResults[$key][$sReference][$sMbx]['TAG']);                            
+                            unset($aResults[$key][$sReference][$sMbx]['TAG']);
                         }
                     }
                 }
             }
         }
-        echo 'RESULT:<br>';
-        print_r($aResults);
+        //echo 'RESULT:<br>';
+        //print_r($aResults);
         return $aResults;
     }
-    
+
     /**
      * @func      _parseLiteral
-     * @desc      retrieve literal string 
+     * @desc      retrieve literal string
      * @param     str        $sRead          imap response string
      * @return    int        $i              offset inside $sRead
      * @access    private
@@ -385,6 +396,7 @@ class imap_backend extends parser {
      * @author    Marc Groot Koerkamp
      */          
     function _getString($string) {
+    // alex ["\\\\\r\n\x80-\xff]
         if (preg_match('/[\\\\\r\n"0x00-0x7f]/', $string)) { /* check for literal string */
             $iLitLength = strlen($string);
             $sLitString = "\{$iLitLength";
@@ -414,7 +426,7 @@ class imap_backend extends parser {
              return $aResult['NAMESPACE'];
          }
          return false;
-    }     
+    }
     
     function getValidCommandArguments($sCommand) {
         switch ($sCommand)
@@ -594,7 +606,7 @@ class imap_backend extends parser {
             }
             $results .= $read;
         }
-        echo $results;
+        //echo $results;
         return $results;
     }
     // check how sm 1.5 fread can be used here
@@ -721,11 +733,13 @@ class imap_backend extends parser {
 	 */
 	function _parseUnTagged($sRead, &$i, &$sCommand, &$key) {
 		$sCommand = $this->parseString($sRead,array(' ',"\n"),$i);
-		if (is_numeric($sFirstToken)) {
-			$iValue = $sFirstToken;
+		if (is_numeric($sCommand)) {
+			$iValue = $sCommand;
 			++$i;
 			$sCommand = $this->parseString($sRead,array(' ',"\n"),$i);
-		}
+		} else {
+            $iValue = false;
+        }
 		switch ($sCommand)
 		{
 		case 'RECENT':
@@ -761,7 +775,7 @@ class imap_backend extends parser {
 			++$i;
 			return $this->_parseUidList($sRead,$i);
 		case 'FLAGS':
-			++$i; 
+			++$i;
 			return $this->_parseFlags($sRead,$i);
 		case 'FETCH':
 			++$i;
@@ -860,10 +874,11 @@ class imap_backend extends parser {
         //          ex2 (("INBOX." ".")) NIL NIL
                     
     function _parseNameSpace($sRead,&$i) {
-	$aResults = array(false,false,false);
+        $aResults = array(false,false,false);
         $j = 0;
-	while (isset($sRead{$i})) {
-	    $cChar = $sRead{$i}; /* set cChar otherwise the switch statement can handle a changed $i */
+        $iLen = strlen($sRead);
+        while ($i<$iLen) {
+            $cChar = $sRead{$i}; /* set cChar otherwise the switch statement can handle a changed $i */
             switch ($cChar)
             {
             case '(': // we reach a namespace

@@ -24,26 +24,27 @@ public methods:
   expandNode
   collapseNode
   
-  node properties:
-  SM_NODE_EXPANDED 1
-  SM_NODE_VISIBLE  2
-  
-  
+ 
+
 */
 
 /* node properties definitions */
-define('SM_NODE_EXPANDED',1);
-define('SM_NODE_VISIBLE',2);
+define('SM_NODE_VISIBLE',1);
+define('SM_NODE_EXPANDED',2);
+define('SM_NODE_INSERT',4);
+define('SM_NODE_DELETE',8);
+define('SM_NODE_EXCECUTE',16);
 
 /* sort constants */
-define('SM_SORT_DEFAULT',0); // normal sort 
+define('SM_SORT_DEFAULT',0); // normal sort
 define('SM_SORT_NAT',1);     // natural sort
 define('SM_SORT_NAT_CASE',2);// natural case sensitive sort
 define('SM_SORT_CASE',3);    // case sensitive sort
-define('SM_SORT_NUMERIC',4); // numeric sort 
-define('SM_SORT_STRING',5);  // string sort 
+define('SM_SORT_NUMERIC',4); // numeric sort
+define('SM_SORT_STRING',5);  // string sort
 
-
+/* error codes */
+define('SM_NODE_ACCESS_DENIED',1);
 
 
 class tree extends object{
@@ -62,9 +63,9 @@ class tree extends object{
             );
     /**
      * @func      tree
-     * @desc      constructor 
+     * @desc      constructor
      * @param     str        $id           unique identifier
-     * @param     arr        $credentials  Experimental Testing     
+     * @param     arr        $credentials  Experimental Testing
      * @return    bool                     success
      * @access    public
      * @author    Marc Groot Koerkamp
@@ -82,13 +83,13 @@ class tree extends object{
         $this->nodes[] =& $rootnode;
         /* set the sleep notifyer */
         //$this->listen['sleep'] = array(&$this, '_sleep');
-        
+
         return true;
     }
 
     /**
      * @func      __sleep
-     * @desc      see the php manual 
+     * @desc      see the php manual
      * @access    private
      * @author    Marc Groot Koerkamp
      */
@@ -104,19 +105,42 @@ class tree extends object{
      * @desc      Add a node to parent node
      * @param     obj        $node         The node object
      * @param     obj        $parent       parent node
-     * @param     arr        $properties   optional node properties     
+     * @param     arr        $aProps       optional node properties
      * @return    bool                     success
      * @access     public
      * @author     Marc Groot Koerkamp
      */
-    
-    function addNode(&$node, $parent=false, $properties=array() ) {//(&$node, $parent = $this->nodes[0], $properties=array() ) {
+
+    function addNode(&$node, $parent=false,
+               $aProps=array('mask' => false,
+                             'expand_parent' => true,
+                             'enable_acl' =>true,
+                             'acl_add' => array('o',array(),0) )) {
         if (!$parent) {
-            $parent = $this->nodes[0];
+            $parent = $this->nodes[0][0];
         }
-        if ($node->id) {
+        // setting default mask
+        if ($aProps['mask'] === false) {
+            $aProps['mask'] = SM_NODE_VISIBLE + SM_NODE_EXPANDED;
+        }
+        $iParentMask = $this->nodes[$parent->id][1];
+        // check access
+        $bAllowAdd = true;
+        if ($aProps['enable_acl']) { //acl overrides mask
+            $aAcl = $aProps['acl_add'];
+            $bAllowAdd = acl::checkaccess($parent->acl,$aAcl[0],$aAcl[1],$aAcl[2]);
+        } else {
+            $bAllowAdd = $iParentMask & SM_NODE_INSERT;
+        }
+        if (!$bAllowAdd) {
+            //ERROR
+            $this->error = SM_NODE_ACCESS_DENIED;
+            return false;
+        }
+
+        if (isset($node->id) && $node->id) {
             /* check unique */
-            if (isset($this->nodes[$id])) {
+            if (isset($this->nodes[$node->id])) {
                 $this->error = SMNODE_ID_NOT_UNIQUE;
                 return false;
             }
@@ -126,14 +150,21 @@ class tree extends object{
             $node->id = $id;
         }
         ++$this->nextnodeid;
-        $this->nodes[$id] =&$node;
+        $this->nodes[$id] = array(&$node,$aProps['mask']);
         /* assign the parent id to the node in order to speed up dependency checks */
         $node->parent_id = $parent->id;
         /* add the node_id to the p_c_rel array */
         $this->p_c_rel[$parent->id][] = $id;
+        if ($aProps['expand_parent']) {
+            $iParentMask = ($iParentMask & SM_NODE_EXPANDED) ? $iParentMask : $iParentMask + SM_NODE_EXPANDED;
+        } else {
+            $iParentMask = ($iParentMask & SM_NODE_EXPANDED) ? $iParentMask - SM_NODE_EXPANDED : $iParentMask;
+        }
+        $this->nodes[$parent->id][1] = $iParentMask;
+        return true;
     }
 
-    
+
     /* obsolete */
     function setNodeProperties($properties) {
         $node_visible = $node_expanded = 0;
@@ -179,11 +210,11 @@ class tree extends object{
         if ($this->nodeHasChildren($node)) {
             if (!$node) {
                 foreach ($this->p_c_rel[0] as $child_id) {
-                    $children[$child_id] =& $this->nodes[$child_id];
+                    $children[$child_id] =& $this->nodes[$child_id][0];
                 }
             } else {
                 foreach ($this->p_c_rel[$node->id] as $child_id) {
-                    $children[$child_id] =& $this->nodes[$child_id];
+                    $children[$child_id] =& $this->nodes[$child_id][0];
                 }
             }
             return $children;
@@ -504,70 +535,6 @@ define('SM_ACL_RO',3);
 define('SM_ACL_RW',7);
 define('SM_ACL_FULL',63);
 define('SM_ACL_ALL',127);
-
-class acl {
-    var $entries = array();
-
-    function acl($init_acl = false) {
-        if ($ini_acl) {
-            $this->entries = $init_acl;
-        }
-    }
-
-    function setPerm($acllist,$member_of) {
-        /* check for admin */
-        $perm = $this->requestPerm($member_of);
-        if (($perm & SM_ACL_ADM) != SM_ACL_ADM) {
-            return false;
-        }
-        foreach ($acllist as $member => $acl) {
-            $this->entries[$member] = $acl;
-        }
-    }
-
-    function hasPerm($perm, $request_perm) {
-        if (($perm & $request_perm) == $request_perm) {
-            return true;
-        }
-        return false;
-    }
-
-    function requestPerm($member_of) {
-        $permissions = false;
-        foreach($member_of as $member) {
-            if (array_key_exists($member,$this->entries)) {
-                $permissions[]= $this->entries[$member];
-            }
-        }
-        $acl_lookup = $acl_read = $acl_write = $acl_insert = $acl_create = $acl_del = $acl_adm = 0;
-        foreach ($permissions as $perm) {
-            if (!$acl_lookup && ($perm & SM_ACL_LOOKUP) == SM_ACL_LOOKUP) {
-                $acl_lookup = 1;
-            }
-            if (!$acl_read && ($perm & SM_ACL_READ) == SM_ACL_READ) {
-                $acl_read = 2;
-            }
-            if (!$acl_write && ($perm & SM_ACL_WRITE) == SM_ACL_WRITE) {
-                $acl_write = 4;
-            }
-            if (!$acl_insert && ($perm & SM_ACL_INSERT) == SM_ACL_INSERT) {
-                $acl_insert = 8;
-            }
-            if (!$acl_create && ($perm & SM_ACL_CREATE) == SM_ACL_CREATE) {
-                $acl_create = 16;
-            }
-            if (!$acl_del && ($perm & SM_ACL_DEL) == SM_ACL_DEL) {
-                $acl_del = 32;
-            }
-            if (!$acl_adm && ($perm & SM_ACL_ADM) == SM_ACL_ADM) {
-                $acl_adm = 64;
-            }
-        }
-        $perm = $acl_lookup + $acl_read + $acl_write + $acl_insert + $acl_create + $acl_del + $acl_adm;
-        return $perm;
-    }
-}
-
 
 
 ?>
