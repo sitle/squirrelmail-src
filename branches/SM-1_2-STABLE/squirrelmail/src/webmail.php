@@ -103,14 +103,17 @@ if (!isset($right_frame)) {
 
 if ($right_frame == 'right_main.php') {
     $urlMailbox = urlencode($mailbox);
+    $urlSort    = urlencode($sort);
+    $urlStartMessage = urlencode($startMessage);
+    
     $right_frame_url =
-        "right_main.php?mailbox=$urlMailbox&amp;sort=$sort&amp;startMessage=$startMessage";
+        "right_main.php?mailbox=$urlMailbox&amp;sort=$urlSort&amp;startMessage=$urlStartMessage";
 } elseif ($right_frame == 'options.php') {
     $right_frame_url = 'options.php';
 } elseif ($right_frame == 'folders.php') {
     $right_frame_url = 'folders.php';
 } elseif ($right_frame == 'compose.php') {
-    $right_frame_url = "compose.php?send_to=$rcptaddress";
+    $right_frame_url = "compose.php?send_to=" . urlencode($rcptaddress);
 } else {
     $right_frame_url = 'right_main.php';
 }

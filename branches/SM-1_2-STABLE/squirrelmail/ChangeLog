@@ -4,7 +4,7 @@
 
 Version 1.2.12 [cvs]
 --------------------
-  - Fixed preferences not being save on PHP 4.3.x.
+  - Fixed preferences not being saved on PHP 4.3.x.
   - Stopped PHP 4.3.x warning about PHP 4.2.3's session bug appearing
     on the mailbox view.
   - Fixed mailbox names so + is really a possible character in the
@@ -14,6 +14,7 @@ Version 1.2.12 [cvs]
   - Fixed issue with \ in password.
   - Disabled Ukrainian translation (it is not in Ukrainian)
   - Replaced obsolate 2mbit.com RBL with ahbl.org RBL. Bug.No.829887
+  - Security: Fix possible XSS issues in src/webmail.php. [CAN-2005-0104]
 
 Version 1.2.11 -- 9 February 2003
 ----------------------------------
