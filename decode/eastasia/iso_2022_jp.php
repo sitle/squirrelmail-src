@@ -4,12 +4,15 @@
  *
  * This script provides iso-2022-jp (rfc1468) decoding functions.
  *
- * @copyright Copyright &copy; 2004 The SquirrelMail Project Team
+ * @copyright Copyright &copy; 2004-2005 The SquirrelMail Project Team
  * @license http://opensource.org/licenses/gpl-license.php GNU Public License
  * @version $Id$
  * @package decode
  * @subpackage eastasia
  */
+
+/** @ignore */
+if (! defined('SM_PATH')) define('SM_PATH','../../');
 
 /**
  * Include common iso-2022-xx functions
@@ -31,6 +34,14 @@ function charset_decode_iso_2022_jp ($string) {
     if (function_exists('recode_string')) {
         $string=str_replace(array('&amp;','&quot;','&lt;','&gt;'),array('&','"','<','>'),$string);
         return recode_string("iso-2022-jp..html",$string);
+    }
+
+    // try mbstring
+    // TODO: check sanitizing of html special chars.
+    if (function_exists('mbstring_convert_encoding') && 
+        check_php_version(4,3,0) &&
+        in_array('iso-2022-jp',sq_mb_list_encodings()) {
+        return mbstring_convert_encoding($string,'HTML-ENTITIES','ISO-2022-JP');
     }
 
     // aggressive decoding disabled

@@ -1,10 +1,6 @@
 <?php
 /**
- * decode/gb2312.php
- * $Id$
- *
- * Copyright (c) 2003-2004 The SquirrelMail Project Team
- * Licensed under the GNU GPL. For full terms see the file COPYING.
+ * functions/decode/gb2312.php
  *
  * This file contains gb2312-euk decoding function that is needed to read
  * gb2313 encoded mails in non-gb2312 locale.
@@ -33,6 +29,10 @@
  * Unicode Standard, and to make copies of this file in any form for
  * internal or external distribution as long as this notice remains
  * attached.
+ *
+ * @copyright (c) 2003-2005 The SquirrelMail Project Team
+ * @license http://opensource.org/licenses/gpl-license.php GNU Public License
+ * @version $Id$
  * @package decode
  * @subpackage eastasia
  */
@@ -44,6 +44,20 @@
  */
 function charset_decode_gb2312 ($string) {
     global $aggressive_decoding;
+
+    // this is CPU intensive task. Use recode functions if they are available. 
+    if (function_exists('recode_string')) {
+        $string=str_replace(array('&amp;','&quot;','&lt;','&gt;'),array('&','"','<','>'),$string);
+        return recode_string("gb2312..html",$string);
+    }
+
+    // try mbstring
+    // TODO: check sanitizing of html special chars.
+    if (function_exists('mbstring_convert_encoding') && 
+        check_php_version(4,3,0) &&
+        in_array('gb2312',sq_mb_list_encodings()) {
+        return mbstring_convert_encoding($string,'HTML-ENTITIES','GB2312');
+    }
 
     if (!$aggressive_decoding) return $string;
 

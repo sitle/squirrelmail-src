@@ -1,10 +1,6 @@
 <?php
 /**
- * decode/big5.php
- * $Id$
- *
- * Copyright (c) 2003-2004 The SquirrelMail Project Team
- * Licensed under the GNU GPL. For full terms see the file COPYING.
+ * functions/decode/big5.php
  *
  * This file contains big5 decoding function that is needed to read
  * big5 encoded mails in non-big5 locale.
@@ -33,6 +29,10 @@
  * in the creation of products supporting Unicode.  Unicode, Inc.
  * specifically excludes the right to re-distribute this file directly
  * to third parties or other organizations whether for profit or not.
+ *
+ * @copyright (c) 2003-2005 The SquirrelMail Project Team
+ * @license http://opensource.org/licenses/gpl-license.php GNU Public License
+ * @version $Id$
  * @package decode
  * @subpackage eastasia
  */
@@ -44,6 +44,20 @@
  */
 function charset_decode_big5 ($string) {
     global $aggressive_decoding;
+
+    // this is CPU intensive task. Use recode functions if they are available. 
+    if (function_exists('recode_string')) {
+        $string=str_replace(array('&amp;','&quot;','&lt;','&gt;'),array('&','"','<','>'),$string);
+        return recode_string("big5..html",$string);
+    }
+
+    // try mbstring
+    // TODO: check sanitizing of html special chars.
+    if (function_exists('mbstring_convert_encoding') && 
+        check_php_version(4,3,0) &&
+        in_array('big5',sq_mb_list_encodings()) {
+        return mbstring_convert_encoding($string,'HTML-ENTITIES','BIG5');
+    }
 
     if (!$aggressive_decoding) return $string;
 

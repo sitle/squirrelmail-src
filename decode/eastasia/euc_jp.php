@@ -2,9 +2,6 @@
 /**
  * Euc-jp decoding functions
  *
- * Copyright (c) 2004 The SquirrelMail Project Team
- * Licensed under the GNU GPL. For full terms see the file COPYING.
- *
  * This file contains euc-jp decoding function that is needed to read
  * euc-jp encoded mails in non-euc-jp locale.
  *
@@ -33,7 +30,7 @@
  * internal or external distribution as long as this notice remains
  * attached.
  *
- * @copyright (c) 2004 The SquirrelMail Project Team
+ * @copyright (c) 2004-2005 The SquirrelMail Project Team
  * @license http://opensource.org/licenses/gpl-license.php GNU Public License
  * @version $Id$
  * @package decode
@@ -46,7 +43,25 @@
  * @return string $string Decoded string
 */
 function charset_decode_euc_jp($string) {
-    global $aggressive_decoding;
+    global $aggressive_decoding, $squirrelmail_language;
+
+    // ja_JP uses own functions
+    if ($squirrelmail_language=='ja_JP')
+        return $string;
+
+    // this is CPU intensive task. Use recode functions if they are available. 
+    if (function_exists('recode_string')) {
+        $string=str_replace(array('&amp;','&quot;','&lt;','&gt;'),array('&','"','<','>'),$string);
+        return recode_string("euc-jp..html",$string);
+    }
+
+    // try mbstring
+    // TODO: check sanitizing of html special chars.
+    if (function_exists('mbstring_convert_encoding') && 
+        check_php_version(4,3,0) &&
+        in_array('euc-jp',sq_mb_list_encodings()) {
+        return mbstring_convert_encoding($string,'HTML-ENTITIES','EUC-JP');
+    }
 
     if (!$aggressive_decoding) return $string;
 
