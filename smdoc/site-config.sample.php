@@ -5,7 +5,8 @@
  * $Id$
  */
 
-define('PATH','/path/to/wtfw/');       // '/' terminated absolute path
+define('PATH','/path/to/wtfw/');          // '/' terminated absolute path
+define('WTFW_DIFF_TEMP','/path/to/tmp/'); // '/' terminated absolute path
 define('URI_PATH','/wtfw/');
 define('FILENAME', URI_PATH . 'index.php'); // filename used as base document
                                             // -- ABSOLUTE page reference as seen by webserver
