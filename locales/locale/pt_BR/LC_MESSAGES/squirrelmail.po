@@ -9,9 +9,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: $Id$\n"
-"POT-Creation-Date: 2003-07-20 13:43+0300\n"
-"PO-Revision-Date: 2003-07-22 16:55-0300\n"
-"Last-Translator: Marcos Tadeu von Lutzow Vidal <marcos@v2r.com.br>\n"
+"POT-Creation-Date: 2003-08-20 12:38+0200\n"
+"PO-Revision-Date: 2003-08-22 16:54-0300\n"
+"Last-Translator: Marcos Tadeu <marcos@v2r.com.br>\n"
 "Language-Team: Portuguese (Brazilian) <squirrelmail-i18n@lists.sourceforge."
 "net>\n"
 "MIME-Version: 1.0\n"
@@ -159,8 +159,8 @@ msgstr "Não posso mover/copiar arquivo. Arquivo não está anexado."
 msgid "Draft Saved"
 msgstr "Rascunho salvo"
 
-msgid "Your Message has been sent"
-msgstr "Sua mensagem foi enviada"
+msgid "Your Message has been sent."
+msgstr "Sua mensagem foi enviada."
 
 msgid "From:"
 msgstr "De:"
@@ -615,11 +615,11 @@ msgstr ""
 msgid "Message not printable"
 msgstr "A mensagem não pode ser impressa"
 
-msgid "Printer Friendly"
-msgstr "Versão para Impressão"
-
 msgid "CC"
 msgstr "CC"
+
+msgid "Printer Friendly"
+msgstr "Imprimir Amigavelmente"
 
 msgid "Print"
 msgstr "Imprimir"
@@ -655,7 +655,7 @@ msgstr "Programa"
 msgid "Read receipt"
 msgstr "Recibo de leitura"
 
-msgid "send"
+msgid "sent"
 msgstr "enviar"
 
 msgid "requested"
@@ -707,8 +707,35 @@ msgstr "Anexados"
 msgid "You must be logged in to access this page."
 msgstr "Você necessita de um usuário e senha válidos para acessar esta página!"
 
-msgid "Folder:"
-msgstr "Pasta:"
+msgid "All Folders"
+msgstr "Todas as Pastas"
+
+msgid "Please enter something to search for"
+msgstr "Por favor, entre com algo para procurar"
+
+msgid "There must be at least one criteria to search for"
+msgstr "Deve haver pelo menos um critério para a procura"
+
+msgid "Error in criteria argument"
+msgstr "Erro no argumentos dos critérios"
+
+msgid "M j, Y"
+msgstr "M j, Y"
+
+msgid "(Illegal date)"
+msgstr "(Data ilegal)"
+
+msgid "(Wrong date)"
+msgstr "(Data errada)"
+
+msgid "In"
+msgstr "Em"
+
+msgid "(Missing argument)"
+msgstr "(Falta argumento)"
+
+msgid "(Spurious argument)"
+msgstr "(argumento demais)"
 
 msgid "edit"
 msgstr "editar"
@@ -719,8 +746,8 @@ msgstr "pesquisar"
 msgid "delete"
 msgstr "apagar"
 
-msgid "Recent Searches"
-msgstr "Procurar nos recentes"
+msgid "Saved Searches"
+msgstr "Buscas guardadas"
 
 msgid "save"
 msgstr "salvar"
@@ -728,17 +755,110 @@ msgstr "salvar"
 msgid "forget"
 msgstr "esquecer"
 
-msgid "Current Search"
-msgstr "Pesquisa Atual"
+msgid "Recent Searches"
+msgstr "Procurar nos recentes"
 
-msgid "All Folders"
-msgstr "Todas as Pastas"
+msgid "Missing"
+msgstr "Faltando"
 
-msgid "Body"
-msgstr "Corpo"
+msgid "Exclude Criteria:"
+msgstr "Critério exclusivo:"
 
-msgid "Everywhere"
-msgstr "qualquer lugar"
+msgid "Search Criteria"
+msgstr "Critério de procura"
+
+msgid "Folder:"
+msgstr "Pasta:"
+
+msgid "Add New Criteria"
+msgstr "Adicionar novo critério"
+
+msgid "Remove Excluded Criteria"
+msgstr "Remover o critério exclusivo"
+
+msgid "Remove All Criteria"
+msgstr "Remover todos os critérios"
+
+msgid "Answered"
+msgstr "Respondido"
+
+msgid "Before"
+msgstr "Antes de"
+
+msgid "Message Body"
+msgstr "Corpo da Mensagem"
+
+msgid "Deleted"
+msgstr "Apagado"
+
+msgid "Draft"
+msgstr "Rascunho"
+
+msgid "Flagged"
+msgstr "Marcadas"
+
+msgid "Sent By"
+msgstr "Enviado por"
+
+msgid "Header Field"
+msgstr "Campo do Cabeçalho"
+
+msgid "Keyword"
+msgstr "Palavra chave"
+
+msgid "Larger Than"
+msgstr "Maior que"
+
+msgid "Old"
+msgstr "Antigo"
+
+msgid "On"
+msgstr "Em"
+
+msgid "Recent"
+msgstr "Recente"
+
+msgid "Seen"
+msgstr "Visto"
+
+msgid "Sent Before"
+msgstr "Enviada antes de"
+
+msgid "Sent On"
+msgstr "Enviada em"
+
+msgid "Sent Since"
+msgstr "Enviado desde"
+
+msgid "Since"
+msgstr "Desde"
+
+msgid "Smaller Than"
+msgstr "Menor que"
+
+msgid "Subject Contains"
+msgstr "Assunto Contém"
+
+msgid "Header and Body"
+msgstr "Cabeçalho e Corpo"
+
+msgid "Sent To"
+msgstr "Enviada para"
+
+msgid "Not"
+msgstr "Não"
+
+msgid "And In"
+msgstr "E Em"
+
+msgid "Or In"
+msgstr "Ou Em"
+
+msgid "And"
+msgstr "E"
+
+msgid "Or"
+msgstr "Or"
 
 msgid "Search Results"
 msgstr "Resultados da busca"
@@ -800,6 +920,9 @@ msgstr "Vendo cabeçalho completo"
 msgid "Viewing a text attachment"
 msgstr "Visualizando texto anexado"
 
+msgid "Folder List"
+msgstr "Lista de Pastas"
+
 msgid "Personal address book"
 msgstr "Livro de Endereços pessoal"
 
@@ -825,7 +948,7 @@ msgid "No such file or directory"
 msgstr "Arquivo ou diretório não encontrado"
 
 msgid "Open failed"
-msgstr "Falha na abertura do arquivo"
+msgstr "Falha na abertura do arquivou"
 
 msgid "Can not modify global address book"
 msgstr "Não é possível modificar o Livro de Endereços Global"
@@ -843,7 +966,7 @@ msgid "Could not lock datafile"
 msgstr "Não foi possível travar o arquivo de dados"
 
 msgid "Write to addressbook failed"
-msgstr "A escrita no Livro de Endereços falhou"
+msgstr "Falha para gravar no livro de endereçosu"
 
 msgid "Error initializing addressbook database."
 msgstr "Erro ao iniciar o banco de dados do Livro de Endereços"
@@ -997,9 +1120,6 @@ msgstr "D, F j, Y g:i a"
 msgid "D, F j, Y G:i"
 msgstr "D, F j, Y G:i"
 
-msgid "M j, Y"
-msgstr "M j, Y"
-
 msgid "g:i a"
 msgstr "g:i a"
 
@@ -1015,12 +1135,6 @@ msgstr "D, G:i"
 #, c-format
 msgid "Preference database error (%s). Exiting abnormally"
 msgstr "Erro na base de Preferências (%s). Terminando"
-
-msgid "Unknown user or password incorrect."
-msgstr "Usuário desconhecido ou senha incorreta."
-
-msgid "Click here to try again"
-msgstr "Clique aqui para tentar novamente."
 
 #, c-format
 msgid "Click here to return to %s"
@@ -1099,7 +1213,7 @@ msgid ""
 "Signature file, %s, could not be copied from temporary file, %s. Contact "
 "your system administrator to resolve this issue."
 msgstr ""
-"Arquivo de assinatura %s não pôde ser copiado do arquivo temporário. Entre em contato com seu "
+"O arquivo de assinatura %s não pôde ser copiado do arquivo temporário. Entre em contato com seu "
 "administrador para ajuda."
 
 msgid ""
@@ -1109,32 +1223,38 @@ msgstr ""
 "Você precisa ter php4 instalado com a função \"multibyte string\" habilitada "
 "(use a opção de configuração --with-mbstring na compilação)."
 
-msgid "ERROR : No available imapstream."
-msgstr "ERRO: \"stream\" imap não disponível"
-
-msgid "ERROR : Connection dropped by imap-server."
-msgstr "ERRO: Conexão derrubada pelo servidor imap."
-
-msgid "Query:"
-msgstr "Requisição:"
-
 msgid "ERROR : Could not complete request."
 msgstr "Erro: pedido não pode ser completado."
-
-msgid "Reason Given: "
-msgstr "Razão alegada: "
 
 msgid "ERROR : Bad or malformed request."
 msgstr "Erro: Pedido errado ou mal formado."
 
-msgid "Server responded: "
-msgstr "Resposta do servidor: "
-
 msgid "ERROR : Imap server closed the connection."
-msgstr "ERRO: Servidor imap fechou a conexão."
+msgstr "ERRO: O servidor IMAp fechou a conexão."
 
 msgid "ERROR : Unknown imap response."
 msgstr "ERRO: Resposta imap desconhecida"
+
+msgid "Reason Given: "
+msgstr "Razão alegada: "
+
+msgid "Query:"
+msgstr "Requisição:"
+
+msgid "ERROR : No available imapstream."
+msgstr "ERRO: \"stream\" imap não disponível"
+
+msgid "ERROR : Bad function call."
+msgstr "ERRO: chamada errada de função."
+
+msgid "Reason:"
+msgstr "Razão:"
+
+msgid "ERROR : Connection dropped by imap-server."
+msgstr "ERRO: Conexão derrubada pelo servidor imap."
+
+msgid "Server responded: "
+msgstr "Resposta do servidor: "
 
 #, c-format
 msgid "Error connecting to IMAP server: %s."
@@ -1150,6 +1270,9 @@ msgstr "Erro desconhecido: %s"
 
 msgid "Read data:"
 msgstr "Dados lidos:"
+
+msgid "Unknown user or password incorrect."
+msgstr "Usuário desconhecido ou senha incorreta."
 
 msgid "ERROR : Could not append message to"
 msgstr "Erro: não pôde adicionar a messagem para"
@@ -1174,7 +1297,7 @@ msgid "Unknown response from IMAP server: "
 msgstr "Resposta desconhecida do servidor IMAP: "
 
 msgid "The server couldn't find the message you requested."
-msgstr "O servidor não pôde achar a mensagem que você requisitou."
+msgstr "O servidor não pode achar a mensagem que você requisitou."
 
 msgid ""
 "Most probably your message list was out of date and the message has been "
@@ -1232,6 +1355,9 @@ msgstr "Visão normal"
 
 msgid "Thread View"
 msgstr "Agrupar por assunto"
+
+msgid "Click here to change the sorting of the message list"
+msgstr "Clique aqui para alterar a ordenação da lista de mensagens"
 
 msgid "Toggle All"
 msgstr "Inverter Todas"
@@ -1369,7 +1495,7 @@ msgid "Requested action not taken: mailbox name not allowed"
 msgstr "Ação requerida não foi feita: Nome de mailbox não permitida"
 
 msgid "Transaction failed"
-msgstr "Falha na transação"
+msgstr "falha na transação"
 
 msgid "Unknown response"
 msgstr "Resposta desconhecida"
@@ -1417,7 +1543,7 @@ msgid "Maximum Number of Pages to Show"
 msgstr "Número max. de páginas para mostrar"
 
 msgid "Always Show Full Date"
-msgstr "Sempre mostrar data completa"
+msgstr "Sempre mostre a data completa"
 
 msgid "Message Display and Composition"
 msgstr "Composição e disposição da mensagem"
@@ -1473,7 +1599,7 @@ msgstr ""
 "Impressão&quot;"
 
 msgid "Enable Mail Delivery Notification"
-msgstr "Habilitar notificação de entrega de mensagem"
+msgstr "Ativar a notificação de entrega de mensagem"
 
 msgid "Compose Messages in New Window"
 msgstr "Escrever mensagem em &quot;nova janela&quot;"
@@ -1487,8 +1613,11 @@ msgstr "Altura da janela de edição"
 msgid "Append Signature before Reply/Forward Text"
 msgstr "Coloque a assinatura antes do texto da mensagem original"
 
+msgid "Strip signature when replying"
+msgstr "Não coloque assinatura quando respondendo"
+
 msgid "Enable Sort by of Receive Date"
-msgstr "Habilitar a ordenação pela data de recepção"
+msgstr "Habilitar a classificação pela data de recepção"
 
 msgid "Enable Thread Sort by References Header"
 msgstr "Habilitar agrupamento por assunto baseado nas referências do cabeçalho"
@@ -1565,7 +1694,7 @@ msgstr "Somente não lidas"
 msgid "Unseen and Total"
 msgstr "Não lidas e Total"
 
-msgid "Enable Collapsible Folders"
+msgid "Enable Collapsable Folders"
 msgstr "Permitir pastas com sub-pastas"
 
 msgid "Enable Cumulative Unread Message Notification"
@@ -1950,7 +2079,7 @@ msgid "Theme Path"
 msgstr "Caminho do Tema"
 
 msgid "Plugins"
-msgstr "Plugins"
+msgstr "Plug Ins"
 
 msgid "Change Settings"
 msgstr "Alterar configurações"
@@ -2051,7 +2180,7 @@ msgid "30 min."
 msgstr "30 min."
 
 msgid "45 min."
-msgstr "45 min."
+msgstr "15 min."
 
 msgid "1 hr."
 msgstr "1 h."
@@ -2236,6 +2365,7 @@ msgstr ""
 msgid "FREE - SPAMhaus - A list of well-known SPAM sources."
 msgstr "FREE - SPAMhaus - Lista com fontes bem conhecidas de SPAM."
 
+#, c-format
 msgid ""
 "FREE, for now - SPAMCOP - An interesting solution that lists servers that "
 "have a very high spam to legit email ratio (85% or more)."
@@ -2520,12 +2650,6 @@ msgstr "Nenhum servidor especificado"
 msgid "Error "
 msgstr "Erro "
 
-msgid "POP3 noop:"
-msgstr "POP3 noop:"
-
-msgid "No connection to server"
-msgstr "Sem conexão com o servidor"
-
 msgid "POP3 user:"
 msgstr "usuário POP3:"
 
@@ -2546,6 +2670,9 @@ msgstr "falha na autenticação"
 
 msgid "POP3 apop:"
 msgstr "POP3 apop:"
+
+msgid "No connection to server"
+msgstr "Sem conexão com o servidor"
 
 msgid "No login ID submitted"
 msgstr "Nenhuma identificação de login submetida"
@@ -2604,9 +2731,6 @@ msgstr "Nenhum número de mensagem submetido"
 msgid "Command failed "
 msgstr "Comando falhou "
 
-msgid "Remote POP server Fetching Mail"
-msgstr "Buscando Email em servidor POP remoto"
-
 msgid "Select Server:"
 msgstr "Selecionar o Servidor:"
 
@@ -2615,6 +2739,15 @@ msgstr "Senha para "
 
 msgid "Fetch Mail"
 msgstr "Buscar Email"
+
+msgid "Remote POP server Fetching Mail"
+msgstr "Buscando Email em servidor POP remoto"
+
+msgid "No POP3 servers configured yet."
+msgstr "Nenhum servidor POP3 especificado"
+
+msgid "Click here to go to the options page."
+msgstr "Clique aqui para ir para página de opções."
 
 msgid "Fetching from "
 msgstr "Buscando de "
@@ -2921,7 +3054,7 @@ msgstr "%s mensagens novas"
 
 #, c-format
 msgid "%s New Message"
-msgstr "%s nova(s) mensagem(ens)"
+msgstr "%s mensagem nova"
 
 msgid "Test Sound"
 msgstr "Som de teste"
@@ -2962,7 +3095,7 @@ msgid ""
 "fast, really smart, and easy to use."
 msgstr ""
 "Ajude lutando na batalha contra emails não solicitados. O sistema SpamCople "
-"a mensagem e determina corretamente os endereços para onde enviar queixas. É "
+"a mensagem e determina corretamente os endereços para onde enviar queixas.É "
 "rápido, realmente esperto e fácil de usar."
 
 msgid "SpellChecker Options"
@@ -3370,7 +3503,7 @@ msgid "Number of supported language pairs: %s"
 msgstr "Número de pares de idiomas suportados: %s"
 
 msgid "No known limits, powered by Systran"
-msgstr "Sem limites, powered by Systran"
+msgstr "Sem limite, powered by Systran"
 
 msgid "No known limits, powered by Translation Experts's InterTran"
 msgstr "Sem limites, powered by Translation Experts's InterTran"
@@ -3383,10 +3516,10 @@ msgid "No known limits, powered by GPLTrans (free, open source)"
 msgstr "Sem limites, powered by GPLTrans (gratuito, fonte aberta)"
 
 msgid "Hellenic translations, no known limits, powered by Systran"
-msgstr "Tradução do \"Hellenic\", sem limites, powered by Systran"
+msgstr "Traduções para \"Hellenic\", sem limites, powered by Systran"
 
 msgid "Russian translations, maximum of 500 characters translated"
-msgstr "Tradução do Russo, máximo de 500 caracteres, powered by Systran"
+msgstr "Traduções para russo, máximo de 500 caracteres"
 
 msgid ""
 "You also decide if you want the translation box displayed, and where it will "
@@ -3536,7 +3669,7 @@ msgid "Latin"
 msgstr "Latin"
 
 msgid "to English"
-msgstr "Para o Inglês"
+msgstr "para o Inglês"
 
 msgid "from English"
 msgstr "do Inglês"
@@ -3545,7 +3678,7 @@ msgid "Interface language"
 msgstr "Idioma da interface"
 
 msgid "Translation direction"
-msgstr "Direção de Tradução"
+msgstr "Direção da Tradução"
 
 msgid "Delivery error report"
 msgstr "Relatório de erro de envio"
@@ -3556,6 +3689,18 @@ msgstr "Cabeçalho da mensagem não enviada"
 #~ msgid "Not available"
 #~ msgstr "Não disponível"
 
+#~ msgid "Current Search"
+#~ msgstr "Pesquisa Atual"
+
+#~ msgid "Body"
+#~ msgstr "Corpo"
+
+#~ msgid "Everywhere"
+#~ msgstr "qualquer lugar"
+
+#~ msgid "Click here to try again"
+#~ msgstr "Clique aqui para tentar novamente."
+
 #~ msgid "Unknown message number in reply from server: "
 #~ msgstr "Número de mensagem desconhecido na resposta do servidor: "
 
@@ -3564,6 +3709,9 @@ msgstr "Cabeçalho da mensagem não enviada"
 
 #~ msgid "35 min."
 #~ msgstr "35 min."
+
+#~ msgid "POP3 noop:"
+#~ msgstr "POP3 noop:"
 
 #~ msgid "Mofify a Server"
 #~ msgstr "Modificar um servidor"
@@ -3598,9 +3746,6 @@ msgstr "Cabeçalho da mensagem não enviada"
 
 #~ msgid "Left aligned"
 #~ msgstr "Alinhado a esquerda"
-
-#~ msgid "Centered"
-#~ msgstr "Centralizado"
 
 #~ msgid "Right aligned"
 #~ msgstr "Alinhado a direita"
