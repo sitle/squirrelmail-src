@@ -145,7 +145,7 @@ you include the file include/validate.php, since it will set up the
 SquirrelMail environment automatically.  It will ensure the the user 
 has been authenticated and is currently logged in, load all user 
 preferences, include internationalization support, call stripslashes()
-on all incoming data (if gpc_magic_quotes() is on), and initialize and 
+on all incoming data (if magic_quotes_gpc is on), and initialize and 
 include all other basic SquirrelMail resources and functions.  You may 
 see other plugins that directly include other SquirrelMail files, but 
 that is no longer necessary and is a hold-over from older SquirrelMail 
@@ -1173,7 +1173,7 @@ you are using such a file, you should NOT include a file called "config.php"
 in your plugin distribution, but instead a copy of that file called 
 "config.php.sample".  This helps systems administrators avoid overwriting
 the "config.php" files and losing all of their setup information when they
-upgrade your pluign.
+upgrade your plugin.
 
 
 Session Variables
@@ -1241,7 +1241,9 @@ your final plugin distribution:
       in such a directory, you could even include a .htaccess file with the
       contents "Deny From All" that will disallow access to that directory 
       entirely (when the target system is running the Apache web server).
-      However, make sure not to put such a file in your main plugin directory!
+      Keep in mind that not all web servers will honor an .htaccess file, so
+      don't depend on it for security. Make sure not to put such a file in
+      your main plugin directory!
 
   2.  A file that describes your plugin and offers detailed instructions for 
       configuration or help with troubleshooting, etc.  This file is usually 
@@ -1314,7 +1316,7 @@ COMPATIBILITY WITH OLDER VERSIONS OF SQUIRRELMAIL
 Whenever new versions of SquirrelMail are released, there is always a
 considerable lag time before it is widely adopted.  During that transitional
 time, especially when the new SquirrelMail version contains any architectural
-and/or functional changes, plugin developers a put in a unique and very
+and/or functional changes, plugin developers are put in a unique and very
 difficult position.  That is, there will be people running both the old and
 new versions of SquirrelMail who want to use your plugin, and you will 
 probably want to accomodate them both.
@@ -1357,7 +1359,7 @@ HOW TO RELEASE YOUR PLUGIN
 ==========================
 
 As long as you've consulted the list of plugin standards and done your
-best to follow them, there's little standing the way of great fame as an
+best to follow them, there's little standing in the way of great fame as an
 official SquirrelMail plugin developer.
 
   1.  Make a distribution file.  There is a convenient Perl script in
