@@ -149,7 +149,7 @@ $body = htmlspecialchars($body_top . $body);
    echo "<ul>";
    echo "<li>";
    echo _("Make sure that you are running the most recent copy of <a href=\"http://www.squirrelmail.org/\">SquirrelMail</a>.");
-   echo sprintf(_("You are currently using version %s."),$version);
+   echo ' ' . sprintf(_("You are currently using version %s."),$version);
    echo "</li>\n";
 
    echo "<li>";
