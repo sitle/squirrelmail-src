@@ -55,6 +55,7 @@ sqextractGlobalVar('mailprio');
 sqextractGlobalVar('request_mdn');
 sqextractGlobalVar('request_dr');
 sqextractGlobalVar('html_addr_search');
+sqextractGlobalVar('mail_sent');
 
 if ( isset($_POST['sigappend']) ) {
     $sigappend = $_POST['sigappend'];
