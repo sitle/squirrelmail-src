@@ -25,6 +25,10 @@ Version 1.4.5 - CVS
     (#1100789).
   - Fixed adding addresses to global address books.
   - Fix typos in Deliver.class.php which caused an error with PHP 5.
+  - 'Priority' and 'Importance' headers are now also recognised, next to the
+    'X-Priority' header that we've supported since a long time. From devel.
+  - Fix administrator plugin that was too picky about newlines in the
+    "admins" file.
 
 Version 1.4.4 - 21 January 2005
 -------------------------------

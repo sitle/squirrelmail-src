@@ -465,6 +465,30 @@ function parseArray($read,&$i) {
     }
 }
 
+/**
+ * Normalise the different Priority headers into a uniform value,
+ * namely that of the X-Priority header (1, 3, 5). Supports:
+ * Prioirty, X-Priority, Importance.
+ * X-MS-Mail-Priority is not parsed because it always coincides
+ * with one of the other headers.
+ *
+ * DUPLICATE CODE ALERT:
+ * NOTE: this is actually a duplicate from the function in
+ * class/mime/Rfc822Header.php.
+ */
+function parsePriority($value) {
+    $value = strtolower(array_shift(split('/\w/',trim($value))));
+    if ( is_numeric($value) ) {
+        return $value;
+    }
+    if ( $value == 'urgent' || $value == 'high' ) {
+        return 1;
+    } elseif ( $value == 'non-urgent' || $value == 'low' ) {
+        return 5;
+    }
+    return 3;
+}
+
 
 /**
  * Retrieves a list with headers, flags, size or internaldate from the imap server
@@ -493,9 +517,9 @@ function sqimap_get_small_header_list($imap_stream, $msg_list, $show_num=false) 
 
     $internaldate = getPref($data_dir, $username, 'internal_date_sort');
     if ($internaldate) {
-        $query = "FETCH $msgs_str (FLAGS UID RFC822.SIZE INTERNALDATE BODY.PEEK[HEADER.FIELDS (Date To Cc From Subject X-Priority Content-Type)])";
+        $query = "FETCH $msgs_str (FLAGS UID RFC822.SIZE INTERNALDATE BODY.PEEK[HEADER.FIELDS (Date To Cc From Subject X-Priority Importance Priority Content-Type)])";
     } else {
-        $query = "FETCH $msgs_str (FLAGS UID RFC822.SIZE BODY.PEEK[HEADER.FIELDS (Date To Cc From Subject X-Priority Content-Type)])";
+        $query = "FETCH $msgs_str (FLAGS UID RFC822.SIZE BODY.PEEK[HEADER.FIELDS (Date To Cc From Subject X-Priority Importance Priority Content-Type)])";
     }
     $read_list = sqimap_run_command_list ($imap_stream, $query, true, $response, $message, $uid_support);
     $i = 0;
@@ -615,7 +639,10 @@ function sqimap_get_small_header_list($imap_stream, $msg_list, $show_num=false) 
                             case 'cc': $cc = $value; break;
                             case 'from': $from = $value; break;
                             case 'date': $date = $value; break;
-                            case 'x-priority': $priority = $value; break;
+                            case 'x-priority':
+                            case 'importance':
+                            case 'priority':
+                                $priority = parsePriority($value); break;
                             case 'subject':
                                 $subject = $value;
                                 if ($subject == "") {
