@@ -63,40 +63,41 @@ $encoding = strtolower($header->encoding);
 
 $msg_url   = 'read_body.php?' . $QUERY_STRING;
 $msg_url   = set_url_var($msg_url, 'ent_id', 0);
+$dwnld_url = '../src/download.php?' . $QUERY_STRING . '&amp;absolute_dl=true';
 
 $body = mime_fetch_body($imapConnection, $passed_id, $ent_id);
 $body = decodeBody($body, $encoding);
 
-displayPageHeader($color, 'None');
-
-echo '<br /><table width="100%" border="0" cellspacing="0" cellpadding="2" align="center"><tr><td bgcolor="'.$color[0].'">'.
-     "<b><center>".
-     _("Viewing a text attachment") . " - ";
-echo '<a href="'.$msg_url.'">'. _("View message") . '</a>';
-
-$dwnld_url = '../src/download.php?'. $QUERY_STRING.'&amp;absolute_dl=true';
-echo '</b></td><tr><tr><td><center><a href="'.$dwnld_url. '">'.
-     _("Download this as a file").
-     '</a></center><br />'.
-     '</center></b>'.
-     '</td></tr></table>'.
-     '<table width="98%" border="0" cellspacing="0" cellpadding="2" align="center"><tr><td bgcolor="'.$color[0].'">'.
-     '<tr><td bgcolor="'.$color[4].'"><tt>';
-
-    if (isset($languages[$squirrelmail_language]['XTRA_CODE']) &&
-        function_exists($languages[$squirrelmail_language]['XTRA_CODE'])) {
-        if (mb_detect_encoding($body) != 'ASCII') {
-            $body = $languages[$squirrelmail_language]['XTRA_CODE']('decode', $body);
-        }
+if (isset($languages[$squirrelmail_language]['XTRA_CODE']) &&
+    function_exists($languages[$squirrelmail_language]['XTRA_CODE'])) {
+    if (mb_detect_encoding($body) != 'ASCII') {
+        $body = $languages[$squirrelmail_language]['XTRA_CODE']('decode', $body);
     }
+}
 
 if ($type1 == 'html' || (isset($override_type1) &&  $override_type1 == 'html')) {
     $body = MagicHTML( $body, $passed_id, $message, $mailbox);
 } else {
     translateText($body, $wrap_at, $charset);
 }
-echo $body;
 
+displayPageHeader($color, 'None');
 ?>
+<br /><table width="100%" border="0" cellspacing="0" cellpadding="2" align="center"><tr><td bgcolor="<?php echo $color[0]; ?>">
+<b><center>
+<?php
+echo _("Viewing a text attachment") . ' - ' .
+    '<a href="'.$msg_url.'">' . _("View message") . '</a>';
+?>
+</b></td><tr><tr><td><center>
+<?php
+echo '<a href="' . $dwnld_url . '">' . _("Download this as a file") . '</a>';
+?>
+</center><br />
+</center></b>
+</td></tr></table>
+<table width="98%" border="0" cellspacing="0" cellpadding="2" align="center"><tr><td bgcolor="<?php echo $color[0]; ?>">
+<tr><td bgcolor="<?php echo $color[4]; ?>"><tt>
+<?php echo $body; ?>
 </tt></td></tr></table>
 </body></html>
