@@ -82,6 +82,20 @@ class smdoc_error extends smdoc_storage
 
     $this->foowd->track();
   }
+
+  /**
+   * The original object requested does not exist in this workspace.
+   * List other instances in other workspaces, and offer choice.
+   */
+  function method_bad_workspace() 
+  {
+    $this->foowd->track('smdoc_error->method_bad_workspace');
+    $this->foowd->template->assign('title', $this->title);
+    $this->foowd->template->assign('failure', OBJECT_NOT_FOUND);
+    $this->foowd->template->assign_by_ref('workspaceList', $this->getWorkspaceList());
+    $this->foowd->track();
+  }
+
 }
 
 set_error_handler('smdocErrorCatch');

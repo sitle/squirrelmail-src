@@ -154,11 +154,24 @@ elseif ( $objectMethod )  // fetch object and call object method
   }
   else 
   {
-    if ( empty($className) )
-      $className = 'unknown';
-
-    trigger_error('Object not found: ' 
-                  . $objectid . ' (' . $className . ')', E_USER_ERROR);
+    // Try finding object in a different workspace:
+    $objects = &$foowd->getObjList(array('objectid','title','workspaceid','updated'),
+                                  NULL,$where, NULL, NULL, FALSE, FALSE);
+    if ( empty($objects) )
+    {
+      if ( empty($className) )
+        $className = 'unknown';
+      trigger_error('Object not found: ' 
+                    . $objectid . ' (' . $className . ')', E_USER_ERROR);
+    }
+    else
+    {
+      $object = new smdoc_error($foowd, ERROR_TITLE);
+      $foowd->template->assign_by_ref('objectList', $objects);
+      $result = $foowd->method($object, 'bad_workspace');
+      $methodName = 'object_bad_workspace';
+      $className = 'smdoc_error';
+    }
   }
 } 
 else  // call class method
