@@ -3,7 +3,7 @@
 /**
  * gettext.php
  *
- * Copyright (c) 1999-2003 The SquirrelMail Project Team
+ * Copyright (c) 1999-2002 The SquirrelMail Project Team
  * Licensed under the GNU GPL. For full terms see the file COPYING.
  *
  * Alternate to the system's built-in gettext.
@@ -14,9 +14,7 @@
  *
  * $Id$
  */
-
-require_once(SM_PATH . 'functions/global.php');
-
+require_once('../src/global.php');
 global $gettext_php_domain, $gettext_php_dir, $gettext_php_loaded,
  $gettext_php_translateStrings, $gettext_php_loaded_language,
  $gettext_php_short_circuit;

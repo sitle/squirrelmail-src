@@ -1,16 +1,14 @@
 <?php
 
 /* setup file for the IMAP server info plugin
- * Copyright (c) 1999-2003 The SquirrelMail Project Team
+ * Copyright (c) 1999-2002 The SquirrelMail Project Team
  * Licensed under the GNU GPL. For full terms see the file COPYING.
  *   
  * by: Jason Munro jason@stdbev.com
- * 
- * $Id$
- * 
+ *
  */
 
-require_once (SM_PATH . 'plugins/info/functions.php');
+require_once ('../plugins/info/functions.php');
 
 function squirrelmail_plugin_init_info() {
     global $squirrelmail_plugin_hooks;

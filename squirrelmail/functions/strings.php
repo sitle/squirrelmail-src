@@ -3,7 +3,7 @@
 /** 
  * strings.php
  *
- * Copyright (c) 1999-2003 The SquirrelMail Project Team
+ * Copyright (c) 1999-2002 The SquirrelMail Project Team
  * Licensed under the GNU GPL. For full terms see the file COPYING.
  *
  * This code provides various string manipulation functions that are
@@ -16,15 +16,7 @@
  * SquirrelMail version number -- DO NOT CHANGE
  */
 global $version;
-$version = '1.4.0 [CVS-DEVEL]';
-
-/** 
- * SquirrelMail internal version number -- DO NOT CHANGE
- * $sm_internal_version = array (release, major, minor)
- */
-global $SQM_INTERNAL_VERSION;
-$SQM_INTERNAL_VERSION = array(1,4,0);
-
+$version = '1.2.11';
 
 /**
  * Wraps text at $wrap characters
@@ -84,16 +76,15 @@ function sqUnWordWrap(&$body) {
     $lines = explode("\n", $body);
     $body = '';
     $PreviousSpaces = '';
-    $cnt = count($lines);
-    for ($i = 0; $i < $cnt; $i ++) {
-        preg_match("/^([\t >]*)([^\t >].*)?$/", $lines[$i], $regs);
+    for ($i = 0; $i < count($lines); $i ++) {
+        ereg("^([\t >]*)([^\t >].*)?$", $lines[$i], $regs);
         $CurrentSpaces = $regs[1];
         if (isset($regs[2])) {
             $CurrentRest = $regs[2];
-        } else {
-	    $CurrentRest = '';
-	}
-        
+        }
+        else {
+            $CurrentRest = '';
+        }
         if ($i == 0) {
             $PreviousSpaces = $CurrentSpaces;
             $body = $lines[$i];
@@ -139,11 +130,16 @@ function parseAddrs($text) {
     $text = ereg_replace('\\([^\\)]*\\)', '', $text);
     $text = str_replace(',', ';', $text);
     $array = explode(';', $text);
-    for ($i = 0; $i < count ($array); $i++) {
-        $array[$i] = eregi_replace ('^.*[<]', '', $array[$i]);
-        $array[$i] = eregi_replace ('[>].*$', '', $array[$i]);
+
+    foreach($array as $part) {
+        $part = eregi_replace ('^.*[<]', '', $part);
+        $part = eregi_replace ('[>].*$', '', $part);
+
+        if($part != '')
+            $new_array[] = $part;
     }
-    return $array;
+
+    return $new_array;
 }
 
 /**
@@ -193,7 +189,7 @@ function php_self () {
 function get_location () {
     
     global $_SERVER, $imap_server_type;
-    
+
     /* Get the path, handle virtual directories */
     $path = substr(php_self(), 0, strrpos(php_self(), '/'));
     
@@ -219,10 +215,10 @@ function get_location () {
     if (isset($_SERVER['HTTP_HOST']) && !empty($_SERVER['HTTP_HOST'])) {
         $host = $_SERVER['HTTP_HOST'];
     } else if (isset($_SERVER['SERVER_NAME']) &&
-        !empty($_SERVER['SERVER_NAME'])) {
+               !empty($_SERVER['SERVER_NAME'])) {
+        $host = $_SERVER['SERVER_NAME'];
     }
 
-    
     $port = '';
     if (! strstr($host, ':')) {
         if (isset($_SERVER['SERVER_PORT'])) {
@@ -232,18 +228,20 @@ function get_location () {
             }
         }
     }
-    
-   /* this is a workaround for the weird macosx caching that
-      causes Apache to return 16080 as the port number, which causes
-      SM to bail */
-      
-   if ($imap_server_type == 'macosx' && $port == ':16080') {
+
+    /* this is a workaround for the weird macosx caching that
+       causes Apache to return 16080 as the port number, which causes
+       SM to bail */
+           
+    if ($imap_server_type == 'macosx' && $port == ':16080') {
         $port = '';
-   }
-   
+    }
+    
+    
     /* Fallback is to omit the server name and use a relative */
     /* URI, although this is not RFC 2616 compliant.          */
     return ($host ? $proto . $host . $port . $path : $path);
+   
 }
 
 
@@ -284,7 +282,24 @@ function sq_mt_seed($Val) {
     $Max = mt_getrandmax();
     
     if (! is_int($Val)) {
+        if (function_exists('crc32')) {
             $Val = crc32($Val);
+        } else {
+            $Str = $Val;
+            $Pos = 0;
+            $Val = 0;
+            $Mask = $Max / 2;
+            $HighBit = $Max ^ $Mask;
+            while ($Pos < strlen($Str)) {
+                if ($Val & $HighBit) {
+                    $Val = (($Val & $Mask) << 1) + 1;
+                } else {
+                    $Val = ($Val & $Mask) << 1;
+                }
+                $Val ^= $Str[$Pos];
+                $Pos ++;
+            }
+        }
     }
     
     if ($Val < 0) {
@@ -314,8 +329,9 @@ function sq_mt_randomize() {
     
     /* Global. */
     sq_mt_seed((int)((double) microtime() * 1000000));
-    sq_mt_seed(md5($_SERVER['REMOTE_PORT'] . $_SERVER['REMOTE_ADDR'] . getmypid()));
-    
+    if (isset($_SERVER['REMOTE_PORT']) && isset($_SERVER['REMOTE_ADDR'])) {
+        sq_mt_seed(md5($_SERVER['REMOTE_PORT'] . $_SERVER['REMOTE_ADDR'] . getmypid()));
+    }
     /* getrusage */
     if (function_exists('getrusage')) {
         /* Avoid warnings with Win32 */
@@ -330,10 +346,11 @@ function sq_mt_randomize() {
         }
     }
     
+    /* Apache-specific */
     if(isset($_SERVER['UNIQUE_ID'])) {
         sq_mt_seed(md5($_SERVER['UNIQUE_ID']));
     }
-    
+
     $randomized = 1;
 }
 
@@ -349,11 +366,53 @@ function OneTimePadCreate ($length=100) {
 }
 
 /**
- * Duplicate function: obsoleted. Use check_php_version.
+ * Check if we have a required PHP-version. Return TRUE if we do,
+ * or FALSE if we don't.
+ *
+ *     To check for 4.0.1, use sqCheckPHPVersion(4,0,1)
+ *     To check for 4.0b3, use sqCheckPHPVersion(4,0,-3)
+ *
+ * Does not handle betas like 4.0.1b1 or development versions
  */
 function sqCheckPHPVersion($major, $minor, $release) {
-
-    return check_php_version($major, $minor, $release);
+    
+    $ver = phpversion();
+    eregi('^([0-9]+)\\.([0-9]+)(.*)', $ver, $regs);
+    
+    /* Parse the version string. */
+    $vmajor  = strval($regs[1]);
+    $vminor  = strval($regs[2]);
+    $vrel    = $regs[3];
+    if($vrel[0] == '.') {
+        $vrel = strval(substr($vrel, 1));
+    }
+    if($vrel[0] == 'b' || $vrel[0] == 'B') {
+        $vrel = - strval(substr($vrel, 1));
+    }
+    if($vrel[0] == 'r' || $vrel[0] == 'R') {
+        $vrel = - strval(substr($vrel, 2))/10;
+    }
+    
+    /* Compare major version. */
+    if ($vmajor < $major) { return false; }
+    if ($vmajor > $major) { return true; }
+    
+    /* Major is the same. Compare minor. */
+    if ($vminor < $minor) { return false; }
+    if ($vminor > $minor) { return true; }
+    
+    /* Major and minor is the same as the required one. Compare release */
+    if ($vrel >= 0 && $release >= 0) {       /* Neither are beta */
+        if($vrel < $release) return false;
+    } else if($vrel >= 0 && $release < 0) {  /* This is not beta, required is beta */
+        return true;
+    } else if($vrel < 0 && $release >= 0){   /* This is beta, require not beta */
+        return false;
+    } else {                                 /* Both are beta */
+        if($vrel > $release) return false;
+    }
+    
+    return true;
 }
 
 /**

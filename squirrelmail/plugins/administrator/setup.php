@@ -3,7 +3,7 @@
 /**
  * setup.php
  *
- * Copyright (c) 1999-2003 The SquirrelMail Project Team
+ * Copyright (c) 1999-2002 The SquirrelMail Project Team
  * Licensed under the GNU GPL. For full terms see the file COPYING.
  *
  *  Administrator plugin. Allows remote administration.  Philippe Mingo
@@ -11,7 +11,7 @@
  * $Id$
  */
 
-require_once(SM_PATH . 'plugins/administrator/auth.php');
+require_once('../plugins/administrator/auth.php');
 
 function squirrelmail_plugin_init_administrator() {
     global $squirrelmail_plugin_hooks, $username;

@@ -1,14 +1,4 @@
 <?php
-   /** 
-    **  setup.php -- SpamCop plugin           
-    **
-    **  Copyright (c) 1999-2003 The SquirrelMail development team
-    **  Licensed under the GNU GPL. For full terms see the file COPYING.
-    **  
-    **  $Id$                                                         
-    **/
-
-require_once(SM_PATH . 'functions/global.php');
 
 
 /* Initialize the plugin */
@@ -22,8 +12,8 @@ function squirrelmail_plugin_init_spamcop() {
       'spamcop_load';
    $squirrelmail_plugin_hooks['read_body_header_right']['spamcop'] =
       'spamcop_show_link';
-
-    sqgetGlobalVar('spamcop_is_composing' , $spamcop_is_composing);
+      
+   sqextractGlobalVar('spamcop_is_composing');
       
    if (isset($spamcop_is_composing)) {
       $squirrelmail_plugin_hooks['compose_send']['spamcop'] =
@@ -72,21 +62,21 @@ function spamcop_show_link() {
    if ($spamcop_method == 'web_form') {
 ?><script language=javascript>
 document.write('<a href="../plugins/spamcop/spamcop.php?passed_id=<?PHP
-echo urlencode($passed_id); ?>&amp;js_web=1&amp;mailbox=<?PHP
+echo urlencode($passed_id); ?>&js_web=1&mailbox=<?PHP
 echo urlencode($mailbox); ?>" target="_blank">');
 document.write("<?PHP echo _("Report as Spam"); ?>");
 document.write("</a>");
 </script><noscript>
 <a href="../plugins/spamcop/spamcop.php?passed_id=<?PHP
-echo urlencode($passed_id); ?>&amp;mailbox=<?PHP
-echo urlencode($mailbox); ?>&amp;startMessage=<?PHP
+echo urlencode($passed_id); ?>&mailbox=<?PHP
+echo urlencode($mailbox); ?>&startMessage=<?PHP
 echo urlencode($startMessage); ?>"><?PHP
 echo _("Report as Spam"); ?></a>
 </noscript><?PHP
    } else {
 ?><a href="../plugins/spamcop/spamcop.php?passed_id=<?PHP
-echo urlencode($passed_id); ?>&amp;mailbox=<?PHP
-echo urlencode($mailbox); ?>&amp;startMessage=<?PHP
+echo urlencode($passed_id); ?>&mailbox=<?PHP
+echo urlencode($mailbox); ?>&startMessage=<?PHP
 echo urlencode($startMessage); ?>"><?PHP
 echo _("Report as Spam"); ?></a><?PHP
    }

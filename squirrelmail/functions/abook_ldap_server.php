@@ -3,7 +3,7 @@
 /**
  * abook_ldap_server.php
  *
- * Copyright (c) 1999-2003 The SquirrelMail Project Team
+ * Copyright (c) 1999-2002 The Squirrelmail Project Team
  * Licensed under the GNU GPL. For full terms see the file COPYING.
  *
  * Address book backend for LDAP server
@@ -157,10 +157,18 @@ class abook_ldap_server extends addressbook_backend {
             return false;
         }
   
-        $sret = @ldap_search($this->linkid, $this->basedn, $expression,
-            array('dn', 'o', 'ou', 'sn', 'givenname', 
-            'cn', 'mail', 'telephonenumber'),
-            0, $this->maxrows, $this->timeout);
+        /* Do the search. Use improved ldap_search() if PHP version is
+         * 4.0.2 or newer. */
+        if(sqCheckPHPVersion(4, 0, 2)) {
+            $sret = @ldap_search($this->linkid, $this->basedn, $expression,
+                array('dn', 'o', 'ou', 'sn', 'givenname', 
+                'cn', 'mail', 'telephonenumber'),
+                0, $this->maxrows, $this->timeout);
+        } else {
+            $sret = @ldap_search($this->linkid, $this->basedn, $expression,
+                array('dn', 'o', 'ou', 'sn', 'givenname', 
+                'cn', 'mail', 'telephonenumber'));
+        }
   
         /* Should get error from server using the ldap_error() function,
          * but it only exist in the PHP LDAP documentation. */

@@ -3,7 +3,7 @@
 /**
  * addrbook_search.php
  *
- * Copyright (c) 1999-2003 The SquirrelMail Project Team
+ * Copyright (c) 1999-2002 The SquirrelMail Project Team
  * Licensed under the GNU GPL. For full terms see the file COPYING.
  *
  * Handle addressbook searching in the popup window.
@@ -15,13 +15,8 @@
  * $Id$
  */
 
-/* Path for SquirrelMail required files. */
-define('SM_PATH','../');
-
-/* SquirrelMail required files. */
-require_once(SM_PATH . 'include/validate.php');
-require_once(SM_PATH . 'functions/strings.php');
-require_once(SM_PATH . 'functions/html.php');
+require_once('../src/validate.php');
+require_once('../functions/strings.php');
 
 /* lets get the global vars we may need */
 $key  = $_COOKIE['key'];
@@ -29,7 +24,7 @@ $username = $_SESSION['username'];
 $onetimepad = $_SESSION['onetimepad'];
 $base_uri = $_SESSION['base_uri'];
 
-sqgetGlobalVar('show' , $show);
+sqextractGlobalVar('show');
 if ( isset($_POST['query']) ) {
     $query = $_POST['query'];
 }
@@ -39,6 +34,7 @@ if ( isset($_POST['listall']) ) {
 if ( isset($_POST['backend'] ) ) {
     $backend = $_POST['backend'];
 }
+
 
 /* Function to include JavaScript code */
 function insert_javascript() {
@@ -115,49 +111,45 @@ function display_result($res, $includesource = true) {
     insert_javascript();
         
     $line = 0;
-    echo html_tag( 'table', '', 'center', '', 'border="0" width="98%"' ) .
-    html_tag( 'tr', '', '', $color[9] ) .
-    html_tag( 'th', '&nbsp;', 'left' ) .
-    html_tag( 'th', '&nbsp;' . _("Name"), 'left' ) .
-    html_tag( 'th', '&nbsp;' . _("E-mail"), 'left' ) .
-    html_tag( 'th', '&nbsp;' . _("Info"), 'left' );
+    echo '<TABLE BORDER="0" WIDTH="98%" ALIGN=center>' .
+         '<TR BGCOLOR="' . $color[9] . '"><TH ALIGN=left>&nbsp;' .
+         '<TH ALIGN=left>&nbsp;' . _("Name") .
+         '<TH ALIGN=left>&nbsp;' . _("E-mail") .
+         '<TH ALIGN=left>&nbsp;' . _("Info");
 
     if ($includesource) {
-        echo html_tag( 'th', '&nbsp;' . _("Source"), 'left', 'width="10%"' );
+        echo '<TH ALIGN=left WIDTH="10%">&nbsp;' . _("Source");
     }    
-    echo "</tr>\n";
+    echo "</TR>\n";
     
     while (list($undef, $row) = each($res)) {
-        $tr_bgcolor = '';
-        $email = htmlspecialchars(addcslashes(AddressBook::full_address($row), "'"), ENT_QUOTES);
-        if ($line % 2) { $tr_bgcolor = $color[0]; }
-        echo html_tag( 'tr', '', '', $tr_bgcolor, 'nowrap' ) .
-        html_tag( 'td',
+        echo '<tr';
+        if ($line % 2) { echo ' bgcolor="' . $color[0] . '"'; }
+        echo ' nowrap><td valign=top nowrap align=center width="5%">' .
              '<small><a href="javascript:to_address(' . 
-                                       "'" . $email . "');\">To</A> | " .
+                                       "'" . $row['email'] . "');\">To</A> | " .
              '<a href="javascript:cc_address(' . 
-                                       "'" . $email . "');\">Cc</A> | " .
+                                       "'" . $row['email'] . "');\">Cc</A> | " .
              '<a href="javascript:bcc_address(' . 
-                                 "'" . $email . "');\">Bcc</A></small>",
-        'center', '', 'valign="top" width="5%" nowrap' ) .
-        html_tag( 'td', '&nbsp;' . htmlspecialchars($row['name']), 'left', '', 'valign="top" nowrap' ) .
-        html_tag( 'td', '&nbsp;' .
+                                 "'" . $row['email'] . "');\">Bcc</A></small>" .
+             '<td nowrap valign=top>&nbsp;' .
+                                 $row['name'] . '<td valign=top>' .
              '<a href="javascript:to_and_close(' .
-                 "'" . $email . "');\">" . htmlspecialchars($row['email']) . '</A>'
-        , 'left', '', 'valign="top"' ) .
-        html_tag( 'td', htmlspecialchars($row['label']), 'left', '', 'valign="top" nowrap' );
+                 "'" . $row['email'] . "');\">" . $row['email'] . '</A>' .
+             '<td valign=top nowrap>' . $row['label'];
         if ($includesource) {
-            echo html_tag( 'td', '&nbsp;' . $row['source'], 'left', '', 'valign="top" nowrap' );
+            echo '<td nowrap valign=top>&nbsp;' . $row['source'];
         }
 
-        echo "</tr>\n";
+        echo "</TR>\n";
         $line++;
     }
-    echo '</table>';
+    echo '</TABLE>';
 }
 
 /* ================= End of functions ================= */
     
+require_once('../functions/array.php');
 require_once('../functions/strings.php');
 require_once('../functions/addressbook.php');
     
@@ -182,10 +174,9 @@ if ($show == 'form' && !isset($listall)) {
 
 /* Empty search */
 if (empty($query) && empty($show) && empty($listall)) {
-    echo html_tag( 'p', '<br>' .
-                      _("No persons matching your search was found"),
-            'center' ) .
-          "\n</BODY></HTML>\n",
+    echo '<P ALIGN=center><BR>' .
+          _("No persons matching your search was found") .
+          "</P>\n</BODY></HTML>\n",
     exit;
 }
 
@@ -196,12 +187,11 @@ $abook = addressbook_init();
 if ($show == 'form' && empty($listall)) {
     echo '<FORM NAME=sform TARGET=abookres ACTION="addrbook_search.php'. 
          '" METHOD="POST">' . "\n" .
-         html_tag( 'table', '', '', '', 'border="0" width="100%" height="100%"' ) .
-         html_tag( 'tr' ) .
-         html_tag( 'td', '  <strong>' . _("Search for") . "</strong>\n", 'left', '', 'nowrap valign="middle" width="10%"' ) .
-         html_tag( 'td', '', 'left', '', '' ) .
-                 '<INPUT TYPE=text NAME=query VALUE="' . htmlspecialchars($query) .
-                 "\" SIZE=28>\n";
+         '<TABLE BORDER="0" WIDTH="100%" HEIGHT="100%">' .
+         '<TR><TD NOWRAP VALIGN=middle align=left width=10%>' . "\n" .
+         '  <STRONG>' . _("Search for") . "</STRONG>\n" .
+         '  </TD><TD align=left><INPUT TYPE=text NAME=query VALUE="' . htmlspecialchars($query) .
+         "\" SIZE=28>\n";
 
     /* List all backends to allow the user to choose where to search */
     if ($abook->numbackends > 1) {
@@ -216,18 +206,13 @@ if ($show == 'form' && empty($listall)) {
         echo '<INPUT TYPE=hidden NAME=backend VALUE=-1>' . "\n";
     }
         
-    echo '</td></tr>' .
-    html_tag( 'tr',
-                    html_tag( 'td', '', 'left' ) .
-                    html_tag( 'td',
-                            '<INPUT TYPE=submit VALUE="' . _("Search") . '" NAME=show>' .
-                            '&nbsp;|&nbsp;<INPUT TYPE=submit VALUE="' . _("List all") .
-                            '" NAME=listall>' . "\n" .
-                            '&nbsp;|&nbsp;<INPUT TYPE=button VALUE="' . _("Close") .
-                            '" onclick="parent.close();">' . "\n" ,
-                    'left' )
-            ) .
-         '</table></form>' . "\n";
+    echo '</TD></TR><TR><TD></TD><TD align=left>'.
+         '<INPUT TYPE=submit VALUE="' . _("Search") . '" NAME=show>' .
+         '&nbsp;|&nbsp;<INPUT TYPE=submit VALUE="' . _("List all") .
+         '" NAME=listall>' . "\n" .
+         '&nbsp;|&nbsp;<INPUT TYPE=button VALUE="' . _("Close") .
+         '" onclick="parent.close();">' . "\n" .
+         '</TD></TR></TABLE></FORM>' . "\n";
 } else {
 
     /* Show personal addressbook */
@@ -243,10 +228,10 @@ if ($show == 'form' && empty($listall)) {
                 usort($res,'alistcmp');
                 display_result($res, false);
             } else {
-                echo html_tag( 'p', '<strong>' .
-                                 sprintf(_("Unable to list addresses from %s"),
-                                     $abook->backends[$backend]->sname) . '</strong>' ,
-                       'center' ) . "\n";
+                echo '<P ALIGN=center><STRONG>' .
+                     sprintf(_("Unable to list addresses from %s"),
+                         $abook->backends[$backend]->sname) .
+                     '</STRONG></P>' . "\n";
             }
         } else {
             $res = $abook->list_addr();
@@ -269,19 +254,16 @@ if ($show == 'form' && empty($listall)) {
             }
         
             if (!is_array($res)) {
-                echo html_tag( 'p', '<b><br>' .
-                                 _("Your search failed with the following error(s)") .
-                                 ':<br>' . $abook->error . "</b>\n" ,
-                       'center' ) .
-                "\n</BODY></HTML>\n";
+                echo '<P ALIGN=center><B><BR>' .
+                     _("Your search failed with the following error(s)") .
+                     ':<br>' . $abook->error . "</B></P>\n</BODY></HTML>\n";
                 exit;
             }
         
             if (sizeof($res) == 0) {
-                echo html_tag( 'p', '<br><b>' .
-                                 _("No persons matching your search was found") . "</b>\n" ,
-                       'center' ) .
-                "\n</BODY></HTML>\n";
+                echo '<P ALIGN=center><BR><B>' .
+                     _("No persons matching your search was found") .
+                     ".</B></P>\n</BODY></HTML>\n";
                 exit;
             }
         

@@ -3,7 +3,7 @@
 /**
  * prefs.php
  *
- * Copyright (c) 1999-2003 The SquirrelMail Project Team
+ * Copyright (c) 1999-2002 The SquirrelMail Project Team
  * Licensed under the GNU GPL. For full terms see the file COPYING.
  *
  * This contains functions for manipulating user preferences
@@ -11,28 +11,29 @@
  * $Id$
  */
 
-require_once(SM_PATH . 'functions/global.php');
+require_once('../src/global.php');
 
-sqgetGlobalVar('prefs_cache', $prefs_cache, SQ_SESSION );
-sqgetGlobalVar('prefs_are_cached', $prefs_are_cached, SQ_SESSION );
+if (isset($_SESSION['prefs_cache'])) {
+    $prefs_cache = $_SESSION['prefs_cache'];
+}
+if (isset($_SESSION['prefs_are_cached'])) {
+    $prefs_are_cached = $_SESSION['prefs_are_cached'];
+}
 
 $rg = ini_get('register_globals');
-
-/* if php version >= 4.1 OR (4.0 AND $rg = off) */
 if ( !sqsession_is_registered('prefs_are_cached') ||
      !isset( $prefs_cache) ||
      !is_array( $prefs_cache) ||
-     check_php_version(4,1) ||
-     empty($rg)
-   ) {
+     substr( phpversion(), 0, 3 ) == '4.1' ||
+     substr( phpversion(), 0, 3 ) == '4.2' ||
+     (substr( phpversion(), 0, 3 ) == '4.0' && empty($rg))) {
     $prefs_are_cached = false;
     $prefs_cache = array();
 }
-
 if (isset($prefs_dsn) && !empty($prefs_dsn)) {
-    require_once(SM_PATH . 'functions/db_prefs.php');
+    require_once('../functions/db_prefs.php');
 } else {
-    require_once(SM_PATH . 'functions/file_prefs.php');
+    require_once('../functions/file_prefs.php');
 }
 
 /* Hashing functions */

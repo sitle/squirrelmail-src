@@ -3,7 +3,7 @@
 /**
  * constants.php
  *
- * Copyright (c) 1999-2003 The SquirrelMail Project Team
+ * Copyright (c) 1999-2002 The SquirrelMail Project Team
  * Licensed under the GNU GPL. For full terms see the file COPYING.
  *
  * Loads constants used by the rest of the Squirrelmail source.
@@ -13,7 +13,7 @@
  * $Id$
  */
 
-require_once(SM_PATH . 'functions/plugin.php');  /* Required for the hook */
+require_once('../functions/plugin.php');      // Required for the hook
 
 /**************************************************************/
 /* Set values for constants used by Squirrelmail preferences. */

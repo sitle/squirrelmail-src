@@ -3,7 +3,7 @@
 /*
  * db_prefs.php
  *
- * Copyright (c) 1999-2003 The SquirrelMail Project Team
+ * Copyright (c) 1999-2002 The SquirrelMail Project Team
  * Licensed under the GNU GPL. For full terms see the file COPYING.
  *
  * This contains functions for manipulating user preferences
@@ -33,7 +33,7 @@ define('SMDB_MYSQL', 1);
 define('SMDB_PGSQL', 2);
 
 require_once('DB.php');
-require_once(SM_PATH . 'config/config.php');
+require_once('../config/config.php');
 
 global $prefs_are_cached, $prefs_cache;
 
@@ -77,7 +77,7 @@ class dbPrefs {
     var $error = NULL;
     var $db_type = SMDB_UNKNOWN;
 
-    var $default = Array('theme_default' => 0,
+    var $default = Array('chosen_theme' => '../themes/default_theme.php',
                          'show_html_default' => '0');
 
     function open() {
@@ -298,7 +298,7 @@ function setPref($data_dir, $username, $string, $set_to) {
     global $prefs_cache;
 
     if (isset($prefs_cache[$string]) && ($prefs_cache[$string] == $set_to)) {
-	return;
+        return;
     }
 
     if ($set_to === '') {

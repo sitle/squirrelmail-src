@@ -3,7 +3,7 @@
 /**
  * folders_rename_do.php
  *
- * Copyright (c) 1999-2003 The SquirrelMail Project Team
+ * Copyright (c) 1999-2002 The SquirrelMail Project Team
  * Licensed under the GNU GPL. For full terms see the file COPYING.
  *
  * Does the actual renaming of files on the IMAP server.
@@ -12,19 +12,15 @@
  * $Id$
  */
 
-/* Path for SquirrelMail required files. */
-define('SM_PATH','../');
-
-/* SquirrelMail required files. */
-require_once(SM_PATH . 'include/validate.php');
-require_once(SM_PATH . 'functions/imap.php');
-require_once(SM_PATH . 'functions/display_messages.php');
+require_once('../src/validate.php');
+require_once('../functions/imap.php');
 
 /* globals */
 $username = $_SESSION['username'];
 $key = $_COOKIE['key'];
 $delimiter = $_SESSION['delimiter'];
 $onetimepad = $_SESSION['onetimepad'];
+$base_uri = $_SESSION['base_uri'];
 
 $orig = $_POST['orig'];
 $old_name = $_POST['old_name'];
@@ -33,16 +29,6 @@ $new_name = $_POST['new_name'];
 /* end globals */
 
 $new_name = trim($new_name);
-
-if (substr_count($new_name, '"') || substr_count($new_name, "\\") ||
-    substr_count($new_name, $delimiter) || ($new_name == '')) {
-    displayPageHeader($color, 'None');
-
-    plain_error_message(_("Illegal folder name.  Please select a different name.").
-        '<BR><A HREF="../src/folders.php">'._("Click here to go back").'</A>.', $color);
-
-    exit;
-}
 
 $orig = imap_utf7_encode_local($orig);
 $old_name = imap_utf7_encode_local($old_name);
@@ -64,7 +50,7 @@ if ($old_name <> $new_name) {
         $newone = $new_name;
     }
 
-    // Renaming a folder doesn't rename the folder but leaves you unsubscribed
+    // Renaming a folder doesn't renames the folder but leaves you unsubscribed
     //    at least on Cyrus IMAP servers.
     if (isset($isfolder)) {
         $newone = $newone.$delimiter;
@@ -76,7 +62,5 @@ if ($old_name <> $new_name) {
     sqimap_logout($imapConnection);
 
 }
-
-header ('Location: ' . get_location() . '/folders.php?success=rename');
-
+header ('Location: ' . $base_uri . 'src/folders.php?success=rename');
 ?>

@@ -3,7 +3,7 @@
 /**
  * attachment_common.php
  *
- * Copyright (c) 1999-2003 The SquirrelMail Project Team
+ * Copyright (c) 1999-2002 The SquirrelMail Project Team
  * Licensed under the GNU GPL. For full terms see the file COPYING.
  *
  * This file provides the handling of often-used attachment types.
@@ -28,7 +28,9 @@ $FileExtensionToMimeType = array('bmp'  => 'image/x-bitmap',
                                  'vcf'  => 'text/x-vcard');
 
 /* Register browser-supported image types */
-sqgetGlobalVar('attachment_common_types', $attachment_common_types);
+if (isset($_SESSION['attachment_common_types'])) {
+    $attachment_common_types = $_SESSION['attachment_common_types'];
+}
 if (isset($attachment_common_types)) {
     /* Don't run this before being logged in. That may happen
        when plugins include mime.php */
@@ -50,7 +52,6 @@ if (isset($attachment_common_types)) {
 }
 
 /* Register text-type attachments */
-//register_attachment_common('message/rfc822', 'link_text');
 register_attachment_common('message/rfc822', 'link_message');
 register_attachment_common('text/plain',     'link_text');
 register_attachment_common('text/richtext',  'link_text');
@@ -94,12 +95,14 @@ function attachment_common_link_text(&$Args)
        $Args[1]['attachment_common']['href'] = Where it links to
       
        This sets the 'href' of this plugin for a new link. */
-    $QUERY_STRING = $_SERVER['QUERY_STRING'];;   
-
-    $Args[1]['attachment_common']['href'] = '../src/view_text.php?'. $QUERY_STRING;
-    $Args[1]['attachment_common']['href'] =
-          set_url_var($Args[1]['attachment_common']['href'], 
-	  'ent_id',$Args[5]);
+    $Args[1]['attachment_common']['href'] = '../src/download.php?startMessage=' .
+        $Args[2] . '&amp;passed_id=' . $Args[3] . '&amp;mailbox=' . $Args[4] .
+        '&amp;passed_ent_id=' . $Args[5] . '&amp;override_type0=text&amp;override_type1=plain';
+    
+    /* If we got here from a search, we should preserve these variables */
+    if ($Args[8] && $Args[9])
+        $Args[1]['attachment_common']['href'] .= '&amp;where=' . 
+        urlencode($Args[8]) . '&amp;what=' . urlencode($Args[9]);
   
     /* The link that we created needs a name.  "view" will be displayed for
        all text attachments handled by this plugin. */
@@ -116,40 +119,38 @@ function attachment_common_link_text(&$Args)
     $Args[6] = $Args[1]['attachment_common']['href'];
 }
 
+
 function attachment_common_link_message(&$Args)
 {
-    $Args[1]['attachment_common']['href'] = '../src/read_body.php?startMessage=' .
+    $Args[1]['attachment_common']['href'] = '../src/download.php?startMessage=' .
         $Args[2] . '&amp;passed_id=' . $Args[3] . '&amp;mailbox=' . $Args[4] .
         '&amp;passed_ent_id=' . $Args[5] . '&amp;override_type0=message&amp;override_type1=rfc822';
     /* The link that we created needs a name.  "view" will be displayed for
        all text attachments handled by this plugin. */
     $Args[1]['attachment_common']['text'] = _("view");
-
-    $Args[6] = $Args[1]['attachment_common']['href'];    
 }
 
 
-function attachment_common_link_html(&$Args) 
+function attachment_common_link_html(&$Args)
 {
-    $QUERY_STRING = $_SERVER['QUERY_STRING'];;   
-
-    $Args[1]['attachment_common']['href'] = '../src/view_text.php?'. $QUERY_STRING.
-       /* why use the overridetype? can this be removed */
-       '&amp;override_type0=text&amp;override_type1=html';
-    $Args[1]['attachment_common']['href'] =
-          set_url_var($Args[1]['attachment_common']['href'], 
-	  'ent_id',$Args[5]);
+    $Args[1]['attachment_common']['href'] = '../src/download.php?startMessage=' . 
+        $Args[2] . '&amp;passed_id=' . $Args[3] . '&amp;mailbox=' . $Args[4] .
+       '&amp;passed_ent_id=' . $Args[5] . '&amp;override_type0=text&amp;override_type1=html';
+    
+    if ($Args[8] && $Args[9]) {
+        $Args[1]['attachment_common']['href'] .= '&amp;where=' . 
+        urlencode($Args[8]) . '&amp;what=' . urlencode($Args[9]);
+    }
 
     $Args[1]['attachment_common']['text'] = _("view");
 
     $Args[6] = $Args[1]['attachment_common']['href'];
 }
 
+
 function attachment_common_link_image(&$Args)
 {
-    $QUERY_STRING = $_SERVER['QUERY_STRING'];;   
     global $attachment_common_show_images, $attachment_common_show_images_list;
-
     
     $info['passed_id'] = $Args[3];
     $info['mailbox'] = $Args[4];
@@ -157,26 +158,31 @@ function attachment_common_link_image(&$Args)
     
     $attachment_common_show_images_list[] = $info;
     
-    $Args[1]['attachment_common']['href'] = '../src/image.php?'. $QUERY_STRING;
-    $Args[1]['attachment_common']['href'] =
-          set_url_var($Args[1]['attachment_common']['href'], 
-	  'ent_id',$Args[5]);
+    $Args[1]['attachment_common']['href'] = '../src/image.php?startMessage=' .
+        $Args[2] . '&amp;passed_id=' . $Args[3] . '&amp;mailbox=' . $Args[4] .
+        '&amp;passed_ent_id=' . $Args[5];
+    
+    if ($Args[8] && $Args[9]) {
+        $Args[1]['attachment_common']['href'] .= '&amp;where=' . 
+        urlencode($Args[8]) . '&amp;what=' . urlencode($Args[9]);
+    }
   
     $Args[1]['attachment_common']['text'] = _("view");
     
     $Args[6] = $Args[1]['attachment_common']['href'];
-
+    
 }
 
 
 function attachment_common_link_vcard(&$Args)
 {
-    $QUERY_STRING = $_SERVER['QUERY_STRING'];;   
-
-    $Args[1]['attachment_common']['href'] = '../src/vcard.php?'. $QUERY_STRING;
-    $Args[1]['attachment_common']['href'] =
-          set_url_var($Args[1]['attachment_common']['href'], 
-	  'ent_id',$Args[5]);
+    $Args[1]['attachment_common']['href'] = '../src/vcard.php?startMessage=' .
+        $Args[2] . '&amp;passed_id=' . $Args[3] . '&amp;mailbox=' . $Args[4] .
+        '&amp;passed_ent_id=' . $Args[5];
+  
+    if (isset($where) && isset($what))
+        $Args[1]['attachment_common']['href'] .= '&amp;where=' . 
+        urlencode($Args[8]) . '&amp;what=' . urlencode($Args[9]);
   
     $Args[1]['attachment_common']['text'] = _("Business Card");
   

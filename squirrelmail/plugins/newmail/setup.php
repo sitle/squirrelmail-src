@@ -25,15 +25,14 @@
     * $Id$
     */
 
-    function CheckNewMailboxSound($imapConnection, $mailbox, $real_box, $delimeter, $unseen, &$total_new) {
-    
-        global $folder_prefix, $trash_folder, $sent_folder,
-               $color, $move_to_sent, $move_to_trash,
-               $unseen_notify, $unseen_type, $newmail_allbox, 
-               $newmail_recent, $newmail_changetitle;
+    function CheckNewMailboxSound($imapConnection, $mailbox, $real_box, $delimeter, $unseen, &$total_unseen) {
+        global $folder_prefix, $trash_folder, $sent_folder;
+        global $color, $move_to_sent, $move_to_trash;
+        global $unseen_notify, $unseen_type, $newmail_allbox, $newmail_recent;
+        global $newmail_changetitle;
 
         $mailboxURL = urlencode($real_box);
-        $unseen = $recent = 0;
+        $unseen_found = 0;
 
         // Skip folders for Sent and Trash
 
@@ -45,18 +44,18 @@
         if (($unseen_notify == 2 && $real_box == 'INBOX') ||
             ($unseen_notify == 3 && ($newmail_allbox == 'on' ||
                                      $real_box == 'INBOX'))) {
-            $status = sqimap_status_messages( $imapConnection, $real_box);
+            $unseen = sqimap_unseen_messages($imapConnection, $real_box);
+            $total_unseen += $unseen;
+
             if($newmail_recent == 'on') {
-                $total_new += $status['RECENT'];
-            } else {
-                $total_new += $status['UNSEEN'];
+                $unseen = sqimap_mailbox_select( $imapConnection, $real_box, TRUE, TRUE);
             }
-            if ($total_new) {
-                    return 1;
+
+            if ($unseen > 0) {
+                $unseen_found = 1;
             }
-            
         }
-        return 0;
+        return( $unseen_found );
     }
 
     function squirrelmail_plugin_init_newmail() {
@@ -89,7 +88,7 @@
         global $data_dir, $username, $_POST;
      
         if ( isset($_POST['submit_newmail']) ) {
-
+         
             if(isset($_POST['media_enable'])) {
                 setPref($data_dir,$username,'newmail_enable',$_POST['media_enable']);
             } else {
@@ -124,7 +123,7 @@
             } else {
                 setPref($data_dir,$username,'newmail_media','');
             }
-            echo html_tag( 'p', _("New Mail Notification options saved"), 'center' );
+            echo '<center> ' . _("New Mail Notification options saved") . '</center>';
         }
     }
 
@@ -145,12 +144,10 @@
 
     function newmail_plugin() {
 
-        global $username, $key, $imapServerAddress, $imapPort,
-               $newmail_media, $newmail_enable, $newmail_popup,
-               $newmail_recent, $newmail_changetitle, $imapConnection, $PHP_SELF;
+        global $newmail_media,$newmail_enable,$newmail_popup,$newmail_recent;
+        global $newmail_changetitle;
+        global $imapConnection;
 
-        /* temp hack to locate the sounds correct from the src dir */
-        $newmail_media = SM_PATH . 'plugins/newmail/' . $newmail_media;
         if ($newmail_enable == 'on' ||
             $newmail_popup == 'on' ||
             $newmail_changetitle) {
@@ -168,31 +165,22 @@
                 $line = '';
                 $mailbox = $boxes[$i]['formatted'];
 
-                if (! isset($boxes[$i]['unseen'])) {
+                if (! isset($boxes[$i]['unseen']))
                     $boxes[$i]['unseen'] = '';
-                }
                 if ($boxes[$i]['flags']) {
                     $noselect = false;
                     for ($h = 0; $h < count($boxes[$i]['flags']); $h++) {
-                        if (strtolower($boxes[$i]["flags"][$h]) == 'noselect') {
+                        if (strtolower($boxes[$i]["flags"][$h]) == 'noselect')
                             $noselect = TRUE;
-                        }
                     }
                     if (! $noselect) {
-                        $status += CheckNewMailboxSound($imapConnection, 
-                                                        $mailbox,
-                                                        $boxes[$i]['unformatted'], 
-                                                        $delimeter, 
-                                                        $boxes[$i]['unseen'],
-                                                        $totalNew);
+                        $status = $status + CheckNewMailboxSound($imapConnection, $mailbox,
+                        $boxes[$i]['unformatted'], $delimeter, $boxes[$i]['unseen'],
+                        $totalNew);
                     }
                 } else {
-                    $status += CheckNewMailboxSound($imapConnection, 
-                                                    $mailbox, 
-                                                    $boxes[$i]['unformatted'],
-                                                    $delimeter, 
-                                                    $boxes[$i]['unseen'], 
-                                                    $totalNew);
+                    $status = $status + CheckNewMailboxSound($imapConnection, $mailbox, $boxes[$i]['unformatted'],
+                        $delimeter, $boxes[$i]['unseen'], $totalNew);
                 }
 
             }
@@ -207,11 +195,11 @@
                     "function ChangeTitleLoad() {\n";
                 if( $totalNew > 1 || $totalNew == 0 ) {
                     echo 'window.parent.document.title = "' .
-                        sprintf(_("%s New Messages"), $totalNew ) . 
+                        sprintf(_("%s New Messages"), $totalNew ) .
                         "\";\n";
                 } else {
                     echo 'window.parent.document.title = "' .
-                        sprintf(_("%s New Message"), $totalNew ) . 
+                        sprintf(_("%s New Message"), $totalNew ) .
                         "\";\n";
                 }
                 echo    "if (BeforeChangeTitle != null)\n".
@@ -222,18 +210,17 @@
                     "</script>\n";
             }
 
-            if ($totalNew > 0 && $newmail_enable == 'on') {
+            if ($status > 0 && $newmail_enable == 'on') {
                 echo "<EMBED SRC=\"$newmail_media\" HIDDEN=TRUE AUTOSTART=TRUE>\n";
-                echo "JAAAAAAAA";
             }
-            if ($totalNew > 0 && $newmail_popup == 'on') {
+            if ($status >0 && $newmail_popup == 'on') {
                 echo "<SCRIPT LANGUAGE=\"JavaScript\">\n".
                     "<!--\n".
                     "function PopupScriptLoad() {\n".
-                        'window.open("../plugins/newmail/newmail.php", "SMPopup",'.
-                                     "\"width=200,height=130,scrollbars=no\");\n".
-                        "if (BeforePopupScript != null)\n".
-                            "BeforePopupScript();\n".
+                    'window.open("../plugins/newmail/newmail.php", "SMPopup",'.
+                                "\"width=200,height=130,scrollbars=no\");\n".
+                    "if (BeforePopupScript != null)\n".
+                    "BeforePopupScript();\n".
                     "}\n".
                     "BeforePopupScript = window.onload;\n".
                     "window.onload = PopupScriptLoad;\n".

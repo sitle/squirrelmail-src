@@ -4,7 +4,7 @@
  * -------------
  * Squirrelspell module
  *
- * Copyright (c) 1999-2003 The SquirrelMail development team
+ * Copyright (c) 1999-2002 The SquirrelMail development team
  * Licensed under the GNU GPL. For full terms see the file COPYING.
  *
  * This module lets the user edit his/her personal dictionary.
@@ -51,7 +51,7 @@ if (!$words){
        * language we're processing, prepend the output with the
        * "header" message.
        */
-      if (!isset($msg) || !$msg) {
+      if (!$msg) {
 	$msg = $pre_msg;
       }
       $msg .= "<tr bgcolor=\"$color[0]\" align=\"center\"><th>"

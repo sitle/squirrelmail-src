@@ -3,7 +3,7 @@
    /**
     * mail_fetch/setup.php
     *
-    * Copyright (c) 1999-2003 The SquirrelMail Project Team
+    * Copyright (c) 1999-2002 The SquirrelMail Project Team
     *
     * Copyright (c) 1999 CDI (cdi@thewebmasters.net) All Rights Reserved
     * Modified by Philippe Mingo 2001 mingo@rotedic.com
@@ -71,8 +71,7 @@ class POP3 {
         //  port defaults to 110. Returns true on success, false on fail
 
         // If MAILSERVER is set, override $server with it's value
-	
-	if (!isset($port) || !$port) {$port = 110;}
+
         if(!empty($this->MAILSERVER))
             $server = $this->MAILSERVER;
 
@@ -81,6 +80,7 @@ class POP3 {
             unset($this->FP);
             return false;
         }
+        if (!(isset($port)) || !$port) {$port = 110;}
 
         $fp = fsockopen("$server", $port, $errno, $errstr);
 
@@ -103,7 +103,7 @@ class POP3 {
         }
         $this->FP = $fp;
         $this->BANNER = $this->parse_banner($reply);
-        return true;
+            return true;
     }
 
     function noop () {
@@ -157,7 +157,7 @@ class POP3 {
                 //  Auth successful.
                 $count = $this->last("count");
                 $this->COUNT = $count;
-                return $count;
+                    return $count;
             }
         }
     }
@@ -200,7 +200,7 @@ class POP3 {
                     //  Auth successful.
                     $count = $this->last("count");
                     $this->COUNT = $count;
-                    return $count;
+                        return $count;
                 }
             }
         }

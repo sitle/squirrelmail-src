@@ -2,7 +2,7 @@
 /**
  * Message and Spam Filter Plugin
  *
- * Copyright (c) 1999-2003 The SquirrelMail Project Team
+ * Copyright (c) 1999-2002 The SquirrelMail Project Team
  * Licensed under the GNU GPL. For full terms see the file COPYING.
  *
  * This plugin filters your inbox into different folders based upon given
@@ -23,9 +23,6 @@
  *
  * $Id$
  */
-
-/* SquirrelMail required files. */
-require_once(SM_PATH . 'plugins/filters/filters.php');
 
 /*
  * Set this to true if you have problems -- check the README file
@@ -83,7 +80,7 @@ global $SpamFilters_DNScache;
  * in the bulkquery directory for more information on using bulkquery.
  */
 global $SpamFilters_BulkQuery;
-$SpamFilters_BulkQuery = '';
+$SpamFilters_BulkQuery = "";
 
 /*
  * Do you want to use a shared file for the DNS cache or a session variable?
@@ -99,6 +96,8 @@ $SpamFilters_SharedCache = true;
  */
 global $SpamFilters_CacheTTL;
 $SpamFilters_CacheTTL = 7200;
+
+require_once ('../plugins/filters/filters.php');
 
 function squirrelmail_plugin_init_filters() {
     global $squirrelmail_plugin_hooks;

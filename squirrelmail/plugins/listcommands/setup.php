@@ -3,7 +3,7 @@
 /**
  * setup.php
  *
- * Copyright (c) 1999-2003 The SquirrelMail Project Team
+ * Copyright (c) 1999-2002 The SquirrelMail Project Team
  * Licensed under the GNU GPL. For full terms see the file COPYING.
  *
  * Implementation of RFC 2369 for SquirrelMail.
@@ -21,76 +21,100 @@ function squirrelmail_plugin_init_listcommands () {
 }
 
 function plugin_listcommands_menu() {
-    global $passed_id, $passed_ent_id, $color, $mailbox,
-           $message, $compose_new_win;
+    global $imapConnection, $passed_id, $color, $mailbox,
+           $subject, $ent_num, $priority_level, $compose_new_win;
 
     /**
      * Array of commands we can deal with from the header. The Reply option
      * is added later because we generate it using the Post information.
      */
-    $fieldsdescr = array('post'        => _("Post to List"),
-                         'reply'       => _("Reply to List"),
-                         'subscribe'   => _("Subscribe"),
-                         'unsubscribe' => _("Unsubscribe"),
-                         'archive'     => _("List Archives"),
-                         'owner'       => _("Contact Listowner"),
-                         'help'        => _("Help"));
+    $fieldsdescr = array('Post'        => _("Post to List"),
+                         'Reply'       => _("Reply to List"),
+                         'Subscribe'   => _("Subscribe"),
+                         'Unsubscribe' => _("Unsubscribe"),
+                         'Archive'     => _("List Archives"),
+                         'Owner'       => _("Contact Listowner"),
+                         'Help'        => _("Help"));
+    $fields = array_keys($fieldsdescr);
+
+    $sorted_cmds = array();
+    $unsorted_cmds = array();
     $output = array();
 
-    foreach ($message->rfc822_header->mlist as $cmd => $actions) {
+    $lfields = 'List-' . implode (' List-', $fields);
 
-	/* I don't know this action... skip it */
-        /* grrr PHP keeps changing their syntax... */
-        if( function_exists('array_key_exists') ) {
-            if(!array_key_exists($cmd, $fieldsdescr)) {
-                continue;
+    $sid = sqimap_session_id();
+    fputs ($imapConnection, "$sid FETCH $passed_id BODY.PEEK[HEADER.FIELDS ($lfields)]\r\n");
+    $read = sqimap_read_data($imapConnection, $sid, true, $response, $emessage);
+
+    for ($i = 1; $i < count($read); $i++) {
+        foreach ($fields as $field) {
+            if ( preg_match("/^List-$field: *<(.+?)>/i", $read[$i], $match) ) {
+                $unsorted_cmds[$field] = $match[1];
             }
-        } elseif ( !key_exists($cmd, $fieldsdescr) ) {
-            continue;
         }
+    }
 
-        /* proto = {mailto,href} */
-	$proto = array_shift(array_keys($actions));
-	$act   = array_shift($actions);
+    if (count($unsorted_cmds) == 0) {
+        return;
+    }
 
-        if ($proto == 'mailto') {
+    foreach ($fields as $field) {
+        foreach ($unsorted_cmds as $cmd => $url) {
+            if ($field == $cmd) {
+                $cmds[$cmd] = $url;
+            }
+        }
+    }
 
-            if (($cmd == 'post') || ($cmd == 'owner')) {
+    foreach ($cmds as $cmd => $url) {
+        if (eregi('mailto:(.+)', $url, $regs)) {
+            $purl = parse_url($url);
+
+            if (($cmd == 'Post') || ($cmd == 'Owner')) {
                 $url = 'compose.php?';
             } else {
                 $url = "../plugins/listcommands/mailout.php?action=$cmd&amp;";
             }
-            $url .= 'send_to=' . strtr($act,'?','&');
 
+            $url .= 'mailbox=' . urlencode($mailbox)
+                  . '&amp;send_to=' . $purl['path'];
+
+            if (isset($purl['query'])) {
+                $url .= '&amp;' . $purl['query'];
+            }
             if ($compose_new_win == '1') {
-                $output[] = "<a href=\"javascript:void(0)\" onclick=\"comp_in_new('$url')\">" . $fieldsdescr[$cmd] . '</a>';
+                $output[] = "<a href=\"javascript:void(0)\" onclick=\"comp_in_new(false,'$url')\">" . $fieldsdescr[$cmd] . '</A>';
             }
             else {
-                $output[] = '<a href="' . $url . '">' . $fieldsdescr[$cmd] . '</a>';
+                $output[] = '<A HREF="' . $url . '">' . $fieldsdescr[$cmd] . '</A>';
             }
-            if ($cmd == 'post') {
-	        $url .= '&amp;passed_id='.$passed_id.
-		        '&amp;mailbox='.urlencode($mailbox).
-		        (isset($passed_ent_id)?'&amp;passed_ent_id='.$passed_ent_id:'');
-                $url .= '&amp;action=reply';
+            if ($cmd == 'Post') {
+                $url .= '&amp;reply_subj=' . urlencode($subject)
+                      . '&amp;reply_id=' . $passed_id
+                      . '&amp;ent_num=' . $ent_num
+                      . '&amp;mailprio=' . $priority_level;
                 if ($compose_new_win == '1') {
-                    $output[] = "<a href=\"javascript:void(0)\" onclick=\"comp_in_new('$url')\">" . $fieldsdescr['reply'] . '</a>';
-                } else {
-                    $output[] = '<a href="' . $url . '">' . $fieldsdescr['reply'] . '</a>';
+                    $output[] = "<A HREF=\"javascript:void(0)\" onClick=\"comp_in_new(false,'$url')\">" . $fieldsdescr['Reply'] . '</A>';
+                }
+                else {
+                    $output[] = '<A HREF="' . $url . '">' . $fieldsdescr['Reply'] . '</A>';
                 }
             }
-        } else if ($proto == 'href') {
-            $output[] = '<a href="' . $act . '" target="_blank">'
-                      . $fieldsdescr[$cmd] . '</a>';
+        } else if (eregi('^(http|ftp)', $url)) {
+            $output[] = '<A HREF="' . $url . '" TARGET="_blank">'
+                      . $fieldsdescr[$cmd] . '</A>';
         }
     }
 
     if (count($output) > 0) {
-        echo '<tr>';
-        echo html_tag('td', '<b>' . _("Mailing List") . ':&nbsp;&nbsp;</b>',
-                      'right', '', 'valign="middle" width="20%"') . "\n";
-        echo html_tag('td', '<small>' . implode('&nbsp;|&nbsp;', $output) . '</small>',
-                      'left', $color[0], 'valign="middle" width="80%"') . "\n";
+        echo "<tr>";
+        echo "<td ALIGN=RIGHT BGCOLOR=\"$color[0]\">"
+           .   str_replace(' ', '&nbsp;', _("Mailing List:"))
+           . '</td>';
+        echo "<td BGCOLOR=\"$color[0]\" WIDTH=\"100%\" colspan=\"2\">"
+           .   '<SMALL>' . implode('&nbsp;|&nbsp;', $output) . '</SMALL>'
+           . '</td>';
         echo '</tr>';
     }
 }

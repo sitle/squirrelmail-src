@@ -3,7 +3,7 @@
 /**
  * url_parser.php
  *
- * Copyright (c) 1999-2003 The SquirrelMail Project Team
+ * Copyright (c) 1999-2002 The SquirrelMail Project Team
  * Licensed under the GNU GPL. For full terms see the file COPYING.
  *
  * This code provides various string manipulation functions that are
@@ -49,7 +49,7 @@ function parseEmail (&$body) {
     foreach ($addresses as $email) {
         $comp_uri = '../src/compose.php?send_to='.urlencode($email);
         if ($compose_new_win == '1') {
-            $comp_uri  = 'javascript:void(0)" onClick="comp_in_new('
+            $comp_uri  = 'javascript:void(0)" onClick="comp_in_new(false,'
                        . "'$comp_uri'" . ')';
         }
         $comp_uri = '<a href="'.$comp_uri.'">'.$email.'</a>';

@@ -5,12 +5,12 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: $Id$\n"
-"POT-Creation-Date: 2003-01-25 09:07+0100\n"
-"PO-Revision-Date: 2003-01-30 13:39+0200\n"
+"POT-Creation-Date: 2002-12-07 18:05+0100\n"
+"PO-Revision-Date: 2002-12-08 14:28+0200\n"
 "Last-Translator: Tomas Kuliavas <tokul@users.sourceforge.net>\n"
 "Language-Team: Lithuanian <squirrelmail-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=CP1257\n"
+"Content-Type: text/plain; charset=windows-1257\n"
 "Content-Transfer-Encoding: 8bit\n"
 
 msgid "Address Book"
@@ -123,6 +123,15 @@ msgstr "Iðtrinti pasirinktà(us)"
 msgid "Add to %s"
 msgstr "Átraukti á adresø knygà (%s)"
 
+msgid "Draft Email Saved"
+msgstr "Juodraðtis iðsaugotas"
+
+msgid "Could not move/copy file. File not attached"
+msgstr "Neámanoma perkelti/kopijuoti failo. Failas neprikabintas"
+
+msgid "Original Message"
+msgstr "Originali þinutë"
+
 msgid "Subject"
 msgstr "Tema"
 
@@ -131,15 +140,6 @@ msgstr "Nuo"
 
 msgid "Date"
 msgstr "Data"
-
-msgid "Original Message"
-msgstr "Originali þinutë"
-
-msgid "Draft Email Saved"
-msgstr "Juodraðtis iðsaugotas"
-
-msgid "Could not move/copy file. File not attached"
-msgstr "Neámanoma perkelti/kopijuoti failo. Failas neprikabintas"
 
 msgid "Draft Saved"
 msgstr "Juodraðtis iðsaugotas"
@@ -189,7 +189,7 @@ msgstr "Þemas"
 msgid "Receipt"
 msgstr "Patvirtinimas"
 
-msgid "On Read"
+msgid "On read"
 msgstr "Skaitymo metu"
 
 msgid "On Delivery"
@@ -216,11 +216,32 @@ msgstr "citata"
 msgid "who"
 msgstr "kas"
 
-msgid "Draft folder"
-msgstr "Juodraðèiø aplankas"
+msgid "Viewing a text attachment"
+msgstr "Perþiûrëti prikabintà tekstiná failà"
 
-msgid "Server replied: "
-msgstr "Serveris atsakë: "
+msgid "View message"
+msgstr "Perþiûrëti þinutæ"
+
+msgid "Download this as a file"
+msgstr "Parsisiøsti kaip failà"
+
+msgid "Viewing a message attachment"
+msgstr "Prikabinto priedo perþiûra"
+
+msgid "Date:"
+msgstr "Data:"
+
+msgid "Cc:"
+msgstr "Cc:"
+
+msgid "Bcc:"
+msgstr "Bcc:"
+
+msgid "more"
+msgstr "daugiau"
+
+msgid "less"
+msgstr "maþiau"
 
 msgid "Illegal folder name.  Please select a different name."
 msgstr "Neteisingas aplanko vardas. Pasirinkite kità vardà."
@@ -230,19 +251,6 @@ msgstr "Spragtelëkite èia, kad gráþti atgal"
 
 msgid "You have not selected a folder to delete. Please do so."
 msgstr "Bandant trinti buvo nepasirinktas joks aplankas."
-
-msgid "Delete Folder"
-msgstr "Iðtrinti aplankà"
-
-#, c-format
-msgid "Are you sure you want to delete %s?"
-msgstr "Ar tikrai norite iðtrinti %s?"
-
-msgid "Yes"
-msgstr "Taip"
-
-msgid "No"
-msgstr "Ne"
 
 msgid "Folders"
 msgstr "Aplankai"
@@ -261,9 +269,6 @@ msgstr "Aplankas sukurtas!"
 
 msgid "Renamed successfully!"
 msgstr "Pervadinta!"
-
-msgid "Subscription Unsuccessful - Folder does not exist."
-msgstr "Atðaukti prenumeratos nepavyko - aplankas neegzistuoja."
 
 msgid "refresh folder list"
 msgstr "atnaujinti"
@@ -295,6 +300,9 @@ msgstr "Pervardinti"
 msgid "No folders found"
 msgstr "Nerasta jokiø aplankø"
 
+msgid "Delete Folder"
+msgstr "Iðtrinti aplankà"
+
 msgid "Delete"
 msgstr "Iðtrinti"
 
@@ -310,9 +318,6 @@ msgstr "Nerasta aplankø, kuriuose galima bûti atðaukti prenumeratà!"
 msgid "No folders were found to subscribe to!"
 msgstr "Nerasti prenumeratos aplankai!"
 
-msgid "Subscribe to:"
-msgstr "Uþsiprenumeruoti:"
-
 msgid "You have not selected a folder to rename. Please do so."
 msgstr "Bandant pervadinti buvo nepasirinktas joks aplankas."
 
@@ -326,7 +331,7 @@ msgid "Submit"
 msgstr "Vykdyti"
 
 msgid "ERROR: Help files are not in the right format!"
-msgstr "KLAIDA: Pagalbos sistemos formatas yra netinkamas!"
+msgstr "KLAIDA: Pagalbos sistema yra netinkamame formate!"
 
 msgid "Help"
 msgstr "Pagalba"
@@ -355,15 +360,6 @@ msgstr "Virðus"
 msgid "Viewing an image attachment"
 msgstr "Perþiûrëti prikabintà pieðiná"
 
-msgid "View message"
-msgstr "Perþiûrëti þinutæ"
-
-msgid "Download this as a file"
-msgstr "Parsisiøsti kaip failà"
-
-msgid "Not available"
-msgstr "Neprieinamas"
-
 msgid "INBOX"
 msgstr "INBOX"
 
@@ -372,9 +368,6 @@ msgstr "iðvalyti"
 
 msgid "Last Refresh"
 msgstr "Paskutinis atnaujinimas"
-
-msgid "Save folder tree"
-msgstr "Iðsaugoti aplankø struktûrà"
 
 msgid "Login"
 msgstr "Prisijungti"
@@ -400,8 +393,224 @@ msgstr "Vardas:"
 msgid "Password:"
 msgstr "Slaptaþodis:"
 
+msgid "<No subject>"
+msgstr "<tema nenurodyta>"
+
 msgid "No messages were selected."
 msgstr "Nepasirinkta nei viena þinutë."
+
+msgid "General Display Options"
+msgstr "Bendriniai grafiniai nustatymai"
+
+msgid "Theme"
+msgstr "Tema"
+
+msgid "Default"
+msgstr "Standartinë"
+
+msgid "Custom Stylesheet"
+msgstr "Specialus stiliaus apraðymas"
+
+msgid "Language"
+msgstr "Kalba"
+
+msgid "Use Javascript"
+msgstr "Naudoti JavaScript"
+
+msgid "Autodetect"
+msgstr "Atpaþinti automatiðkai"
+
+msgid "Always"
+msgstr "Visada"
+
+msgid "Never"
+msgstr "Niekada"
+
+msgid "Mailbox Display Options"
+msgstr "Paðto dëþës grafiniai nustatymai"
+
+msgid "Number of Messages to Index"
+msgstr "Vienu metu rodomø þinuèiø skaièius"
+
+msgid "Enable Alternating Row Colors"
+msgstr "Naudoti skirtingas spalvas eilutëms"
+
+msgid "Enable Page Selector"
+msgstr "Naudoti skaidymà á puslapius"
+
+msgid "Maximum Number of Pages to Show"
+msgstr "Vienu metu rodomø puslapiø skaièius"
+
+msgid "Message Display and Composition"
+msgstr "Þinuèiø rodymas ir raðymas"
+
+msgid "Wrap Incoming Text At"
+msgstr "Simboliø skaièius, iki kurio apriboti atëjusias þinutes"
+
+msgid "Size of Editor Window"
+msgstr "Redaktoriaus lango dydis"
+
+msgid "Location of Buttons when Composing"
+msgstr "Mygtukø vieta raðant laiðkus"
+
+msgid "Before headers"
+msgstr "Prieð antraðtæ"
+
+msgid "Between headers and message body"
+msgstr "Tarp antraðtës ir þinutës teksto"
+
+msgid "After message body"
+msgstr "Po þinutës teksto"
+
+msgid "Addressbook Display Format"
+msgstr "Adresø knygos formatas"
+
+msgid "Javascript"
+msgstr "Javascript"
+
+msgid "HTML"
+msgstr "HTML"
+
+msgid "Show HTML Version by Default"
+msgstr "Ar automatiðkai rodyti þinutës HTML variantà?"
+
+msgid "Include Me in CC when I Reply All"
+msgstr "Átrauk mane á CC kai atsakau visiems"
+
+msgid "Include CCs when forwarding messages"
+msgstr "Átraukti CC adresus persiunèiant laiðkus"
+
+msgid "Enable Mailer Display"
+msgstr "Rodyti paðto kliento informacijà"
+
+msgid "Display Attached Images with Message"
+msgstr "Rodyti prikabintus pieðinius kartu su þinute"
+
+msgid "Enable Subtle Printer Friendly Link"
+msgstr "Rodyti puslapiø, skirtø spausdinimui, nuorodas"
+
+msgid "Enable Printer Friendly Clean Display"
+msgstr "Ájungti ðvarø spausdinimui skirtà þinuèiø rodymà"
+
+msgid "Enable request/confirm reading"
+msgstr "Ájungti patvirtinimus apie gavimà"
+
+msgid "Always compose in a new window"
+msgstr "Visada kurti naujame lange"
+
+msgid "Width of compose window"
+msgstr "Þinutës kûrimo lango plotis"
+
+msgid "Height of compose window"
+msgstr "Þinutës kûrimo lango aukðtis"
+
+msgid "Append signature before reply/forward text"
+msgstr "Dëti paraðà prieð atsakymo/persiuntimo tekstà"
+
+msgid "Use receive date for sort"
+msgstr "Rûðiuoti pagal gavimo datà"
+
+msgid "Use References header for thread sort"
+msgstr "Naudoti nuorodø antraðtes rûðiuojant pagal sekas"
+
+msgid "Special Folder Options"
+msgstr "Specialûs aplankø nustatymai"
+
+msgid "Folder Path"
+msgstr "Kelias iki aplanko"
+
+msgid "Do not use Trash"
+msgstr "Nenaudoti ðiukðliø aplanko"
+
+msgid "Trash Folder"
+msgstr "Ðiukðliø aplankas"
+
+msgid "Do not use Sent"
+msgstr "Nenaudoti Iðsiøstø laiðkø aplanko"
+
+msgid "Sent Folder"
+msgstr "Iðsiøstø laiðkø aplankas"
+
+msgid "Do not use Drafts"
+msgstr "Nenaudoti juodraðèiø aplanko"
+
+msgid "Draft Folder"
+msgstr "Juodraðèiø aplankas"
+
+msgid "Folder List Options"
+msgstr "Aplankø sàraðo nustatymai"
+
+msgid "Location of Folder List"
+msgstr "Aplankø sàraðo vieta"
+
+msgid "Left"
+msgstr "Kairëje"
+
+msgid "Right"
+msgstr "Deðinëje"
+
+msgid "pixels"
+msgstr "pikseliai"
+
+msgid "Width of Folder List"
+msgstr "Aplankø sàraðo plotis"
+
+msgid "Minutes"
+msgstr "minutës"
+
+msgid "Seconds"
+msgstr "sekundës"
+
+msgid "Minute"
+msgstr "minutë"
+
+msgid "Auto Refresh Folder List"
+msgstr "Atnaujinti aplankø sàraðà automatiðkai"
+
+msgid "Enable Unread Message Notification"
+msgstr "Ájungti perspëjimus apie naujas þinutes"
+
+msgid "No Notification"
+msgstr "Jokiø perspëjimø"
+
+msgid "Only INBOX"
+msgstr "Tik INBOX"
+
+msgid "All Folders"
+msgstr "Visuose aplankuose"
+
+msgid "Unread Message Notification Type"
+msgstr "Perspëjimø apie naujas þinutes tipas"
+
+msgid "Only Unseen"
+msgstr "Tik naujos þinutës"
+
+msgid "Unseen and Total"
+msgstr "Naujos þinutës ir bendras skaièius"
+
+msgid "Enable Collapsable Folders"
+msgstr "Aktyvuoti iðsiskleidþianèius aplankus"
+
+msgid "Show Clock on Folders Panel"
+msgstr "Rodyti laikrodá aplankø skyriuje"
+
+msgid "No Clock"
+msgstr "Jokio laikrodþio"
+
+msgid "Hour Format"
+msgstr "Laiko formatas"
+
+msgid "12-hour clock"
+msgstr "12 valandø laikrodis"
+
+msgid "24-hour clock"
+msgstr "24 valandø laikrodis"
+
+msgid "Memory Search"
+msgstr "Paieðka atmintyje"
+
+msgid "Disabled"
+msgstr "Atjungta"
 
 msgid "Options"
 msgstr "Nustatymai"
@@ -414,12 +623,6 @@ msgstr "Nauja"
 
 msgid "Done"
 msgstr "Baigti"
-
-msgid "To or Cc"
-msgstr "Kam arba Cc"
-
-msgid "subject"
-msgstr "tema"
 
 msgid "Edit"
 msgstr "Taisyti"
@@ -481,18 +684,21 @@ msgstr "Kita:"
 msgid "Ex: 63aa7f"
 msgstr "Pvz: 63aa7f"
 
+msgid "To or Cc"
+msgstr "Kam arba Cc"
+
 msgid "Matches"
 msgstr "Atitinka"
-
-#, c-format
-msgid "Alternate Identity %d"
-msgstr "Specialus ID %d"
 
 msgid "Advanced Identities"
 msgstr "Specialûs ID"
 
 msgid "Default Identity"
 msgstr "Standartinis ID"
+
+#, c-format
+msgid "Alternate Identity %d"
+msgstr "Specialus ID %d"
 
 msgid "Add a New Identity"
 msgstr "Sukurti naujà ID"
@@ -547,6 +753,63 @@ msgstr "iðmesti"
 
 msgid "Return to options page"
 msgstr "Gráþti á nustatymø puslapá"
+
+msgid "Name and Address Options"
+msgstr "Vardo ir adreso nustatymai"
+
+msgid "Email Address"
+msgstr "E-paðto adresas"
+
+msgid "Edit Advanced Identities"
+msgstr "Taisyti specialius ID"
+
+msgid "(discards changes made on this form so far)"
+msgstr " "
+
+msgid "Multiple Identities"
+msgstr "Skirtingi ID"
+
+msgid "Same as server"
+msgstr "Atitinka serverio laiko juostà"
+
+msgid "Timezone Options"
+msgstr "Laiko juostos nustatymai"
+
+msgid "Your current timezone"
+msgstr "Jûsø laiko juosta"
+
+msgid "Reply Citation Options"
+msgstr "Atsakymo citatø nustatymai"
+
+msgid "Reply Citation Style"
+msgstr "Atsakymo citatø stilius"
+
+msgid "No Citation"
+msgstr "Nieko necituoti"
+
+msgid "AUTHOR Said"
+msgstr "AUTORIUS pasakë"
+
+msgid "Quote Who XML"
+msgstr "Quote Who XML"
+
+msgid "User-Defined"
+msgstr "Nustato vartotojas"
+
+msgid "User-Defined Citation Start"
+msgstr "Vartotojo nustatyta atsakymo citatø pradþia"
+
+msgid "User-Defined Citation End"
+msgstr "Vartotojo nustatyta atsakymo citatø pabaiga"
+
+msgid "Signature Options"
+msgstr "Paraðo nustatymai"
+
+msgid "Use Signature"
+msgstr "Naudoti paraðà"
+
+msgid "Prefix Signature with '-- ' Line"
+msgstr "Prieð paraðà raðyti '-- ' eilutæ"
 
 msgid "Personal Information"
 msgstr "Asmeninë informacija"
@@ -609,11 +872,11 @@ msgstr "CC"
 msgid "Print"
 msgstr "Spausdinti"
 
+msgid "Close Window"
+msgstr "Uþdaryti langà"
+
 msgid "View Printable Version"
 msgstr "Rodyti spausdinamà versijà"
-
-msgid "Read:"
-msgstr "Perskaityta:"
 
 msgid "Your message"
 msgstr "Jûsø þinutë"
@@ -623,16 +886,34 @@ msgstr "Iðsiusta:"
 
 #, c-format
 msgid "Was displayed on %s"
-msgstr "Buvo perskaityta %s"
+msgstr "Buvo perskaitytas %s"
 
-msgid "less"
-msgstr "maþiau"
+msgid "Read:"
+msgstr "Perskaityta:"
 
-msgid "more"
-msgstr "daugiau"
+msgid "Viewing Full Header"
+msgstr "Pilna antraðèiø perþiûra"
 
-msgid "Unknown sender"
-msgstr "Neþinomas siuntëjas"
+msgid "Message List"
+msgstr "Þinuèiø sàraðas"
+
+msgid "Resume Draft"
+msgstr "Tæsti juodraðèio redagavimà"
+
+msgid "Edit Message as New"
+msgstr "Taisyti þinutæ kaip naujà"
+
+msgid "Forward"
+msgstr "Persiøsti"
+
+msgid "Reply"
+msgstr "Atsakyti"
+
+msgid "Reply All"
+msgstr "Atsakyti visiems"
+
+msgid "View Full Header"
+msgstr "Perþiûrëti visas antraðtes"
 
 msgid "Mailer"
 msgstr "Paðto klientas"
@@ -646,6 +927,9 @@ msgstr "siøsti"
 msgid "requested"
 msgstr "praðë"
 
+msgid "Send read receipt now"
+msgstr "Iðsiøsti patvirtinimà apie perskaitymà"
+
 msgid ""
 "The message sender has requested a response to indicate that you have read "
 "this message. Would you like to send a receipt?"
@@ -653,52 +937,16 @@ msgstr ""
 "Þinutës siuntëjas papraðë patvirtinti, kad jûs jà perskaitëte. Ar norite "
 "iðsiøsti patvirtinimà?"
 
-msgid "Send read receipt now"
-msgstr "Iðsiøsti patvirtinimà apie perskaitymà"
-
-msgid "Search results"
-msgstr "Paieðkos rezultatai"
-
-msgid "Message List"
-msgstr "Þinuèiø sàraðas"
-
-msgid "Resume Draft"
-msgstr "Tæsti juodraðèio redagavimà"
-
-msgid "Edit Message as New"
-msgstr "Taisyti þinutæ kaip naujà"
-
-msgid "View Message"
-msgstr "Perþiûrëti þinutæ"
-
-msgid "Up"
-msgstr "Aukðtyn"
-
-msgid "Forward"
-msgstr "Persiøsti"
-
-msgid "Forward as Attachment"
-msgstr "Persiøsti kaip priedà"
-
-msgid "Reply"
-msgstr "Atsakyti"
-
-msgid "Reply All"
-msgstr "Atsakyti visiems"
-
-msgid "View Full Header"
-msgstr "Perþiûrëti visas antraðtes"
-
-msgid "Attachments"
-msgstr "Prikabinti:"
-
 msgid "You must be logged in to access this page."
 msgstr ""
 "Norint pasiekti ðiuos puslapius, bûtina þinoti teisingà vartotojo vardà ir "
 "slaptaþodá!"
 
-msgid "Folder:"
-msgstr "Aplankas:"
+msgid "There was an error contacting the mail server."
+msgstr "Ávyko klaida bandant susisiekti su paðto serveriu."
+
+msgid "Contact your administrator for help."
+msgstr "Susisiekite su administratoriumi, jei reikia pagalbos."
 
 msgid "edit"
 msgstr "taisyti"
@@ -721,9 +969,6 @@ msgstr "pamirðti"
 msgid "Current Search"
 msgstr "Dabartinë paieðka"
 
-msgid "All Folders"
-msgstr "Visuose aplankuose"
-
 msgid "Body"
 msgstr "Tekstas"
 
@@ -733,8 +978,8 @@ msgstr "Bet kur"
 msgid "Search Results"
 msgstr "Paieðkos rezultatai:"
 
-msgid "No Messages Found"
-msgstr "Naujø þinuèiø nerasta"
+msgid "No Messages found"
+msgstr "Nerasta jokiø þinuèiø"
 
 msgid "Sign Out"
 msgstr "Atsijungti"
@@ -781,14 +1026,11 @@ msgstr "Pastabos"
 msgid "Add to Addressbook"
 msgstr "Átraukti á adresø knygà"
 
+msgid "Note Field Contains"
+msgstr "Pastabø lauke yra"
+
 msgid "Title & Org. / Dept."
 msgstr "Pareigos ir organizacija / padalinys"
-
-msgid "Viewing Full Header"
-msgstr "Pilna antraðèiø perþiûra"
-
-msgid "Viewing a text attachment"
-msgstr "Perþiûrëti prikabintà tekstiná failà"
 
 msgid "Personal address book"
 msgstr "Asmeninë adresø knyga"
@@ -888,6 +1130,27 @@ msgstr "Penktadienis"
 msgid "Saturday"
 msgstr "Ðeðtadienis"
 
+msgid "Sun"
+msgstr "Sek"
+
+msgid "Mon"
+msgstr "Pir"
+
+msgid "Tue"
+msgstr "Ant"
+
+msgid "Wed"
+msgstr "Tre"
+
+msgid "Thu"
+msgstr "Ket"
+
+msgid "Fri"
+msgstr "Pen"
+
+msgid "Sat"
+msgstr "Ðeð"
+
 msgid "January"
 msgstr "Sausis"
 
@@ -923,6 +1186,39 @@ msgstr "Lapkritis"
 
 msgid "December"
 msgstr "Gruodis"
+
+msgid "Jan"
+msgstr "Sau"
+
+msgid "Feb"
+msgstr "Vas"
+
+msgid "Mar"
+msgstr "Kov"
+
+msgid "Apr"
+msgstr "Bal"
+
+msgid "Jun"
+msgstr "Bir"
+
+msgid "Jul"
+msgstr "Lie"
+
+msgid "Aug"
+msgstr "Rugp"
+
+msgid "Sep"
+msgstr "Rugs"
+
+msgid "Oct"
+msgstr "Spa"
+
+msgid "Nov"
+msgstr "Lap"
+
+msgid "Dec"
+msgstr "Gruo"
 
 msgid "D, F j, Y g:i a"
 msgstr "Y F j, g:i a, D"
@@ -991,7 +1287,7 @@ msgid "Error opening %s"
 msgstr "Klaida atidarant %s"
 
 msgid "Default preference file not found or not readable!"
-msgstr "Standartinis nustatymø failas nerastas arba neperskaitomas!"
+msgstr "Standartinis nustatymø failas nerastas arba nepasiekiamas!"
 
 msgid "Please contact your system administrator and report this error."
 msgstr "Susisiekite su administratoriumi ir praneðkite apie ðià klaidà."
@@ -1018,16 +1314,6 @@ msgid ""
 msgstr ""
 "Nepavyko raðyti á paraðo failà %s. Susisiekite su administratoriumi ir "
 "praneðkite apie ðià klaidà."
-
-msgid ""
-"You need to have php4 installed with the multibyte string function enabled "
-"(using configure option --with-mbstring)."
-msgstr ""
-"Jûs turite turëti php4 instaliacijà su ájungtomis multibyte funkcijomis "
-"(configure opcija --with-mbstring)."
-
-msgid "ERROR : No available imapstream."
-msgstr "KLAIDA : imap srautas neprieinamas."
 
 msgid "ERROR : Could not complete request."
 msgstr "KLAIDA : Neámanoma vykdyti uþklausos."
@@ -1059,19 +1345,6 @@ msgstr "Neaiðki klaida: %s"
 msgid "Read data:"
 msgstr "Skaitomi duomenys:"
 
-msgid "ERROR : Could not append message to"
-msgstr "KLAIDA : Neámanoma prijungti þinutës prie"
-
-msgid "Solution: "
-msgstr "Sprendimas:"
-
-msgid ""
-"Remove unneccessary messages from your folder and start with your Trash "
-"folder."
-msgstr ""
-"Paðalinkite nereikalingas þinutes ið savo aplankø. Pradëti valymà reiktø nuo "
-"ðiukðlyno (Trash aplankas)."
-
 msgid "Unknown response from IMAP server: "
 msgstr "Nesuprantamas atsakymas ið IMAP serverio"
 
@@ -1084,25 +1357,30 @@ msgstr "(tema nenurodyta)"
 msgid "Unknown Sender"
 msgstr "Neþinomas siuntëjas"
 
+msgid "No To Address"
+msgstr "Nenurodytas Kam: adresas"
+
 msgid "(unknown sender)"
 msgstr "(neþinomas siuntëjas)"
 
-msgid "Unknown date"
-msgstr "Neþinoma data"
+msgid "No Messages Found"
+msgstr "Naujø þinuèiø nerasta"
+
+msgid "Folder:"
+msgstr "Aplankas:"
+
+msgid "Found"
+msgstr "Rasta"
+
+msgid "messages"
+msgstr "þinuèiø"
 
 msgid "A"
 msgstr "A"
 
 msgid ""
-"Thread sorting is not supported by your IMAP server.<br>Please report this "
-"to the system administrator."
-msgstr ""
-"Naudojamas IMAP serveris nepalaiko rûðiavimo serverio pusëje.<br>Praneðkite "
-"apie klaidà administratoriui."
-
-msgid ""
 "Server-side sorting is not supported by your IMAP server.<br>Please report "
-"this to the system administrator."
+"this to the system administrator"
 msgstr ""
 "Naudojamas IMAP serveris nepalaiko rûðiavimo serverio pusëje.<br>Praneðkite "
 "apie klaidà administratoriui."
@@ -1110,8 +1388,8 @@ msgstr ""
 msgid "THIS FOLDER IS EMPTY"
 msgstr "APLANKAS TUÐÈIAS"
 
-msgid "Move Selected To"
-msgstr "Perkelti paþymëtus á"
+msgid "Move Selected To:"
+msgstr "Perkelti paþymëtus á:"
 
 msgid "Transform Selected Messages"
 msgstr "Apdoroti pasirinktas þinutes"
@@ -1160,11 +1438,10 @@ msgstr "Skaidyti á puslapius"
 msgid "Show All"
 msgstr "Rodyti viskà"
 
-msgid "SquirrelMail could not decode the bodystructure of the message"
-msgstr "SquirrelMail nepavyko atkoduoti þinutës struktûros."
-
-msgid "the provided bodystructure by your imap-server"
-msgstr "imap serverio pateikta þinutës struktûra"
+msgid "Error decoding mime structure.  Report this as a bug!"
+msgstr ""
+"Ávyko klaida dekoduojant prikabintà priedà. Praneðkite apie ðià klaidà "
+"administratoriui!"
 
 msgid ""
 "Body retrieval error. The reason for this is most probably that the message "
@@ -1191,6 +1468,9 @@ msgstr "Paslëpti nesaugius pieðinius"
 msgid "View Unsafe Images"
 msgstr "Perþiûrëti nesaugius pieðinius"
 
+msgid "Attachments"
+msgstr "Prikabinti:"
+
 msgid "download"
 msgstr "parsisiøsti"
 
@@ -1200,6 +1480,12 @@ msgstr "sec_remove_lt_LT.png"
 #, c-format
 msgid "Option Type '%s' Not Found"
 msgstr "Nustatymo tipas '%s' nerastas"
+
+msgid "Yes"
+msgstr "Taip"
+
+msgid "No"
+msgstr "Ne"
 
 msgid "Current Folder"
 msgstr "Dabartinis aplankas"
@@ -1213,795 +1499,6 @@ msgstr "Ávyko klaida kuriant katalogà %s."
 
 msgid "Could not create hashed directory structure!"
 msgstr "Nepavyko sukurti koduotø katalogø struktûros!"
-
-msgid "Service not available, closing channel"
-msgstr "Paslauga nepasiekiama, uþdaromas kanalas"
-
-msgid "A password transition is needed"
-msgstr "Bûtinas slaptaþodþio ávedimas"
-
-msgid "Requested mail action not taken: mailbox unavailable"
-msgstr "Nurodytas veiksmas neávykdytas: paðto dëþë nepasiekiama"
-
-msgid "Requested action aborted: error in processing"
-msgstr "Nurodytas veiksmas nutrauktas: ávyko klaida apdorojant"
-
-msgid "Requested action not taken: insufficient system storage"
-msgstr "Nurodytas veiksmas neávykdytas: nepakanka vietos saugojimui"
-
-msgid "Temporary authentication failure"
-msgstr "Laikina autorizavimo klaida"
-
-msgid "Syntax error; command not recognized"
-msgstr "Sintaksës klaida. Nesuprantama komanda"
-
-msgid "Syntax error in parameters or arguments"
-msgstr "Sintaksës klaida komandos parametruose"
-
-msgid "Command not implemented"
-msgstr "Komanda nenaudojama"
-
-msgid "Bad sequence of commands"
-msgstr "Netinkama komandø seka"
-
-msgid "Command parameter not implemented"
-msgstr "Komandos opcija neágyvendinta"
-
-msgid "Authentication required"
-msgstr "Bûtina autorizacija"
-
-msgid "Authentication mechanism is too weak"
-msgstr "Per silpnas autorizavimo tipas"
-
-msgid "Authentication failed"
-msgstr "Autorizacija nepavyko"
-
-msgid "Encryption required for requested authentication mechanism"
-msgstr "Nurodytas autorizavimo mechanizmas reikalauja kodavimo"
-
-msgid "Requested action not taken: mailbox unavailable"
-msgstr "Nurodytas veiksmas neávykdytas: paðto dëþë nepasiekiama"
-
-msgid "User not local; please try forwarding"
-msgstr "Vartotojas nevietinis. Patikrinkite persiuntimo galimybes"
-
-msgid "Requested mail action aborted: exceeding storage allocation"
-msgstr "Nurodytas veiksmas nutrauktas: nepakanka vietos informacijai saugoti"
-
-msgid "Requested action not taken: mailbox name not allowed"
-msgstr "Nurodytas veiksmas neávykdytas: netinkamas paðto dëþës vardas"
-
-msgid "Transaction failed"
-msgstr "Transakcija nepavyko"
-
-msgid "Unknown response"
-msgstr "Nesuprantamas atsakymas"
-
-msgid "General Display Options"
-msgstr "Bendriniai grafiniai nustatymai"
-
-msgid "Theme"
-msgstr "Tema"
-
-msgid "Default"
-msgstr "Standartinë"
-
-msgid "Custom Stylesheet"
-msgstr "Specialus stiliaus apraðymas"
-
-msgid "Language"
-msgstr "Kalba"
-
-msgid "Use Javascript"
-msgstr "Naudoti JavaScript"
-
-msgid "Autodetect"
-msgstr "Atpaþinti automatiðkai"
-
-msgid "Always"
-msgstr "Visada"
-
-msgid "Never"
-msgstr "Niekada"
-
-msgid "Mailbox Display Options"
-msgstr "Paðto dëþës grafiniai nustatymai"
-
-msgid "Number of Messages to Index"
-msgstr "Vienu metu rodomø þinuèiø skaièius"
-
-msgid "Enable Alternating Row Colors"
-msgstr "Naudoti skirtingas spalvas eilutëms"
-
-msgid "Enable Page Selector"
-msgstr "Naudoti skaidymà á puslapius"
-
-msgid "Maximum Number of Pages to Show"
-msgstr "Vienu metu rodomø puslapiø skaièius"
-
-msgid "Message Display and Composition"
-msgstr "Þinuèiø rodymas ir raðymas"
-
-msgid "Wrap Incoming Text At"
-msgstr "Simboliø skaièius, iki kurio apriboti atëjusias þinutes"
-
-msgid "Size of Editor Window"
-msgstr "Redaktoriaus lango dydis"
-
-msgid "Location of Buttons when Composing"
-msgstr "Mygtukø vieta raðant laiðkus"
-
-msgid "Before headers"
-msgstr "Prieð antraðtæ"
-
-msgid "Between headers and message body"
-msgstr "Tarp antraðtës ir þinutës teksto"
-
-msgid "After message body"
-msgstr "Po þinutës teksto"
-
-msgid "Addressbook Display Format"
-msgstr "Adresø knygos formatas"
-
-msgid "Javascript"
-msgstr "Javascript"
-
-msgid "HTML"
-msgstr "HTML"
-
-msgid "Show HTML Version by Default"
-msgstr "Ar automatiðkai rodyti þinutës HTML variantà?"
-
-msgid "Enable Forward as Attachment"
-msgstr "Ájungti persiuntimà kaip priedà"
-
-msgid "Include CCs when Forwarding Messages"
-msgstr "Átraukti CC adresus persiunèiant laiðkus"
-
-msgid "Include Me in CC when I Reply All"
-msgstr "Átrauk mane á CC kai atsakau visiems"
-
-msgid "Enable Mailer Display"
-msgstr "Rodyti paðto kliento informacijà"
-
-msgid "Display Attached Images with Message"
-msgstr "Rodyti prikabintus pieðinius kartu su þinute"
-
-msgid "Enable Printer Friendly Clean Display"
-msgstr "Ájungti ðvarø spausdinimui skirtà þinuèiø rodymà"
-
-msgid "Enable Mail Delivery Notification"
-msgstr "Ájungti informavimà apie pristatymà"
-
-msgid "Compose Messages in New Window"
-msgstr "Kurti þinutes naujame lange"
-
-msgid "Width of Compose Window"
-msgstr "Þinutës kûrimo lango plotis"
-
-msgid "Height of Compose Window"
-msgstr "Þinutës kûrimo lango aukðtis"
-
-msgid "Append Signature before Reply/Forward Text"
-msgstr "Dëti paraðà prieð atsakymo/persiuntimo tekstà"
-
-msgid "Enable Sort by of Receive Date"
-msgstr "Ájungti rûðiavimà pagal gavimo datà"
-
-msgid "Enable Thread Sort by References Header"
-msgstr "Ájungti sekø rûðiavimà pagal laiðkø antraðtes"
-
-msgid "Special Folder Options"
-msgstr "Specialûs aplankø nustatymai"
-
-msgid "Folder Path"
-msgstr "Kelias iki aplanko"
-
-msgid "Do not use Trash"
-msgstr "Nenaudoti ðiukðliø aplanko"
-
-msgid "Trash Folder"
-msgstr "Ðiukðliø aplankas"
-
-msgid "Do not use Sent"
-msgstr "Nenaudoti Iðsiøstø laiðkø aplanko"
-
-msgid "Sent Folder"
-msgstr "Iðsiøstø laiðkø aplankas"
-
-msgid "Do not use Drafts"
-msgstr "Nenaudoti juodraðèiø aplanko"
-
-msgid "Draft Folder"
-msgstr "Juodraðèiø aplankas"
-
-msgid "Folder List Options"
-msgstr "Aplankø sàraðo nustatymai"
-
-msgid "Location of Folder List"
-msgstr "Aplankø sàraðo vieta"
-
-msgid "Left"
-msgstr "Kairëje"
-
-msgid "Right"
-msgstr "Deðinëje"
-
-msgid "pixels"
-msgstr "pikseliai"
-
-msgid "Width of Folder List"
-msgstr "Aplankø sàraðo plotis"
-
-msgid "Minutes"
-msgstr "minutës"
-
-msgid "Seconds"
-msgstr "sekundës"
-
-msgid "Minute"
-msgstr "minutë"
-
-msgid "Auto Refresh Folder List"
-msgstr "Atnaujinti aplankø sàraðà automatiðkai"
-
-msgid "Enable Unread Message Notification"
-msgstr "Ájungti perspëjimus apie naujas þinutes"
-
-msgid "No Notification"
-msgstr "Jokiø perspëjimø"
-
-msgid "Only INBOX"
-msgstr "Tik INBOX"
-
-msgid "Unread Message Notification Type"
-msgstr "Perspëjimø apie naujas þinutes tipas"
-
-msgid "Only Unseen"
-msgstr "Tik naujos þinutës"
-
-msgid "Unseen and Total"
-msgstr "Naujos þinutës ir bendras skaièius"
-
-msgid "Enable Collapsable Folders"
-msgstr "Aktyvuoti iðsiskleidþianèius aplankus"
-
-msgid "Enable Cumulative Unread Message Notification"
-msgstr "Ájungti bendrus perspëjimus apie naujas þinutes"
-
-msgid "Show Clock on Folders Panel"
-msgstr "Rodyti laikrodá aplankø skyriuje"
-
-msgid "No Clock"
-msgstr "Jokio laikrodþio"
-
-msgid "Hour Format"
-msgstr "Laiko formatas"
-
-msgid "12-hour clock"
-msgstr "12 valandø laikrodis"
-
-msgid "24-hour clock"
-msgstr "24 valandø laikrodis"
-
-msgid "Memory Search"
-msgstr "Paieðka atmintyje"
-
-msgid "Disabled"
-msgstr "Atjungta"
-
-msgid "Folder Selection Options"
-msgstr "Aplankø pasirinkimo nustatymai"
-
-msgid "Selection List Style"
-msgstr "Pasirinkimo sàraðo stilius"
-
-msgid "Long: "
-msgstr "Ilgas: "
-
-msgid "Indented: "
-msgstr "Su paraðtëmis: "
-
-msgid "Delimited: "
-msgstr "Su skirtukais: "
-
-msgid "Name and Address Options"
-msgstr "Vardo ir adreso nustatymai"
-
-msgid "Email Address"
-msgstr "E-paðto adresas"
-
-msgid "Edit Advanced Identities"
-msgstr "Taisyti specialius ID"
-
-msgid "(discards changes made on this form so far)"
-msgstr " "
-
-msgid "Multiple Identities"
-msgstr "Skirtingi ID"
-
-msgid "Same as server"
-msgstr "Atitinka serverio laiko juostà"
-
-msgid "Error opening timezone config, contact administrator."
-msgstr ""
-"Ávyko klaida atidarant laiko juostø failà, susisiekite su administratoriumi."
-
-msgid "Timezone Options"
-msgstr "Laiko juostos nustatymai"
-
-msgid "Your current timezone"
-msgstr "Jûsø laiko juosta"
-
-msgid "Reply Citation Options"
-msgstr "Atsakymo citatø nustatymai"
-
-msgid "Reply Citation Style"
-msgstr "Atsakymo citatø stilius"
-
-msgid "No Citation"
-msgstr "Nieko necituoti"
-
-msgid "AUTHOR Said"
-msgstr "AUTORIUS pasakë"
-
-msgid "Quote Who XML"
-msgstr "Quote Who XML"
-
-msgid "User-Defined"
-msgstr "Nustato vartotojas"
-
-msgid "User-Defined Citation Start"
-msgstr "Vartotojo nustatyta atsakymo citatø pradþia"
-
-msgid "User-Defined Citation End"
-msgstr "Vartotojo nustatyta atsakymo citatø pabaiga"
-
-msgid "Signature Options"
-msgstr "Paraðo nustatymai"
-
-msgid "Use Signature"
-msgstr "Naudoti paraðà"
-
-msgid "Prefix Signature with '-- ' Line"
-msgstr "Prieð paraðà raðyti '-- ' eilutæ"
-
-msgid "Take Address"
-msgstr "Iðsaugoti adresà"
-
-msgid "Address Book Take:"
-msgstr "Iðsaugojimas á adresø knygà:"
-
-msgid "Try to verify addresses"
-msgstr "Bandyti patikrinti adresus"
-
-msgid "Config File Version"
-msgstr "Konfiguracinio failo versija"
-
-msgid "Squirrelmail Version"
-msgstr "SquirrelMail versija"
-
-msgid "PHP Version"
-msgstr "PHP versija"
-
-msgid "Organization Preferences"
-msgstr "Organizacijos nustatymai"
-
-msgid "Organization Name"
-msgstr "Organizacijos pavadinimas"
-
-msgid "Organization Logo"
-msgstr "Organizacijos logo"
-
-msgid "Organization Logo Width"
-msgstr "Organizacijos logo plotis"
-
-msgid "Organization Logo Height"
-msgstr "Organizacijos logo aukðtis"
-
-msgid "Organization Title"
-msgstr "Organizacijos pavadinimas"
-
-msgid "Signout Page"
-msgstr "Atsijungimo puslapis"
-
-msgid "Provider Link URI"
-msgstr "Tiekëjo nuoroda"
-
-msgid "Provider Name"
-msgstr "Tiekëjo pavadinimas"
-
-msgid "Default Language"
-msgstr "Standartinë kalba"
-
-msgid "Top Frame"
-msgstr "Virðutinis rëmelis"
-
-msgid "Server Settings"
-msgstr "Serverio nustatymai"
-
-msgid "Mail Domain"
-msgstr "Paðto domenas"
-
-msgid "IMAP Server Address"
-msgstr "IMAP serverio adresas"
-
-msgid "IMAP Server Port"
-msgstr "IMAP serverio jungtis"
-
-msgid "IMAP Server Type"
-msgstr "IMAP serverio tipas"
-
-msgid "Cyrus IMAP server"
-msgstr "Cyrus IMAP serveris"
-
-msgid "University of Washington's IMAP server"
-msgstr "UW-IMAP serveris"
-
-msgid "Microsoft Exchange IMAP server"
-msgstr "MS Exchange IMAP serveris"
-
-msgid "Courier IMAP server"
-msgstr "Courier IMAP serveris"
-
-msgid "Not one of the above servers"
-msgstr "Kitas (neþinomas) IMAP serveris"
-
-msgid "IMAP Folder Delimiter"
-msgstr "IMAP katalogø skirtukas"
-
-msgid "Use \"detect\" to auto-detect."
-msgstr "Naudokite \"detect\", kad atpaþinti automatiðkai."
-
-msgid "Use TLS for IMAP Connections"
-msgstr "Naudoti TLS su IMAP jungtimis"
-
-msgid "Requires PHP 4.3.x! Experimental."
-msgstr "Reikalauja PHP 4.3.x! Eksperimentinis."
-
-msgid "IMAP Authentication Type"
-msgstr "IMAP autorizacijos tipas"
-
-msgid "Use Sendmail Binary"
-msgstr "Naudoti serverio sendmail programà"
-
-msgid "Sendmail Path"
-msgstr "Kelias iki sendmail"
-
-msgid "SMTP Server Address"
-msgstr "SMTP serverio adresas"
-
-msgid "SMTP Server Port"
-msgstr "SMTP serverio jungtis"
-
-msgid "Use TLS for SMTP Connections"
-msgstr "Naudoti TLS su SMTP jungtimis"
-
-msgid "SMTP Authentication Type"
-msgstr "SMTP autorizacijos tipas"
-
-msgid "POP3 Before SMTP?"
-msgstr "Vykdyti POP3 prieð SMTP?"
-
-msgid "Invert Time"
-msgstr "Keisti laikà"
-
-msgid "Use Confirmation Flags"
-msgstr "Naudoti patvirtinimo nustatymus"
-
-msgid "Folders Defaults"
-msgstr "Aplankø nustatymai"
-
-msgid "Default Folder Prefix"
-msgstr "Standartinis aplanko priedëlis"
-
-msgid "Show Folder Prefix Option"
-msgstr "Rodyti aplankø priedëlio opcijas"
-
-msgid "By default, move to trash"
-msgstr "Standartinis ðiukðlyno aplankas"
-
-msgid "By default, move to sent"
-msgstr "Standartinis iðsiøstø laiðkø aplankas"
-
-msgid "By default, save as draft"
-msgstr "Standartinis juodraðèiø aplankas"
-
-msgid "List Special Folders First"
-msgstr "Rodyti specialius aplankus pirmiau"
-
-msgid "Show Special Folders Color"
-msgstr "Pakeisti specialiø aplankø spalvà"
-
-msgid "Auto Expunge"
-msgstr "Valyti automatiðkai"
-
-msgid "Default Sub. of INBOX"
-msgstr "Visi katalogai kuriami tik tarp INBOX"
-
-msgid "Show 'Contain Sub.' Option"
-msgstr "Rodyti 'Yra Sub.' opcijà"
-
-msgid "Default Unseen Notify"
-msgstr "Standartinis naujø laiðkø praneðimas"
-
-msgid "Default Unseen Type"
-msgstr "Standartinis naujø laiðkø tipas"
-
-msgid "Auto Create Special Folders"
-msgstr "Sukurti specialius aplankus automatiðkai"
-
-msgid "Default Javascript Adrressbook"
-msgstr "Standartinë Javascript adresø knyga"
-
-msgid "Auto delete folders"
-msgstr "Automatiðkai iðtrinti aplankus"
-
-msgid "Enable /NoSelect folder fix"
-msgstr "Naudoti /NoSelect aplanko pataisas"
-
-msgid "General Options"
-msgstr "Bendriniai nustatymai"
-
-msgid "Default Charset"
-msgstr "Standartinë simboliø koduotë (charset)"
-
-msgid "Data Directory"
-msgstr "Duomenø saugojimo katalogas"
-
-msgid "Temp Directory"
-msgstr "Laikinas katalogas"
-
-msgid "Hash Level"
-msgstr "Kodavimo (hash) lygis"
-
-msgid "Hash Disabled"
-msgstr "Kodavimas (hash) atjungtas"
-
-msgid "Moderate"
-msgstr "Patenkinamas"
-
-msgid "Medium"
-msgstr "Vidutiniðkas"
-
-msgid "Default Left Size"
-msgstr "Standartinis kairio rëmelio dydis"
-
-msgid "Usernames in Lowercase"
-msgstr "Vartotojø vardai maþosiomis raidëmis"
-
-msgid "Allow use of priority"
-msgstr "Leisti naudoti prioritetus"
-
-msgid "Hide SM attributions"
-msgstr "Paslëpti SquirrelMail atributus"
-
-msgid "Enable use of delivery receipts"
-msgstr "Ájungti pristatymo patvirtinimø naudojimà"
-
-msgid "Allow editing of identities"
-msgstr "Leisti keisti ID"
-
-msgid "Allow editing of full name"
-msgstr "Leisti keisti vardà"
-
-msgid "Use server-side sorting"
-msgstr "Naudoti rûðiavimà serverio pusëje"
-
-msgid "Use server-side thread sorting"
-msgstr "Naudoti sekø rûðiavimà serverio pusëje"
-
-msgid "Allow server charset search"
-msgstr "Leisti paieðkà pagal koduotæ serveryje"
-
-msgid "UID support"
-msgstr "UID palaikymas"
-
-msgid "PHP session name"
-msgstr "PHP sesijos vardas"
-
-msgid "Message of the Day"
-msgstr "Standartinis praneðimas"
-
-msgid "Database"
-msgstr "Duomenø bazë"
-
-msgid "Address book DSN"
-msgstr "Adresø knygos DSN"
-
-msgid "Address book table"
-msgstr "Adresø knygos lentelë"
-
-msgid "Preferences DSN"
-msgstr "Nustatymø DSN"
-
-msgid "Preferences table"
-msgstr "Nustatymø lentelë"
-
-msgid "Preferences username field"
-msgstr "Nustatymø vartotojo vardo laukas"
-
-msgid "Preferences key field"
-msgstr "Nustatymø rakto laukas"
-
-msgid "Preferences value field"
-msgstr "Nustatymø reikðmës laukas"
-
-msgid "Themes"
-msgstr "Temos"
-
-msgid "Style Sheet URL (css)"
-msgstr "Stiliaus lentelës adresas (CSS)"
-
-msgid "Default theme"
-msgstr "Standartinë tema"
-
-msgid "Use index number of theme"
-msgstr "Naudoti temà nurodytu numeriu"
-
-msgid "Configuration Administrator"
-msgstr "Konfiguracijos valdymas"
-
-msgid "Theme Name"
-msgstr "Temos vardas"
-
-msgid "Theme Path"
-msgstr "Kelias iki temos"
-
-msgid "Plugins"
-msgstr "Priedai"
-
-msgid "Change Settings"
-msgstr "Pakeisti nustatymus"
-
-msgid "Config file can't be opened. Please check config.php."
-msgstr "Nepavyko atidaryti konfiguracinio failo. Patikrinkite config.php"
-
-msgid "Administration"
-msgstr "Administravimas"
-
-msgid ""
-"This module allows administrators to manage SquirrelMail main configuration "
-"remotely."
-msgstr "Ðis priedas leidþia keisti SquirrelMail konfiguracijà."
-
-msgid "Bug Reports:"
-msgstr "Klaidø praneðimai:"
-
-msgid "Show button in toolbar"
-msgstr "Rodyti mygtukà árankiø juostoje"
-
-msgid "TODAY"
-msgstr "ÐIANDIEN"
-
-msgid "Go"
-msgstr "Pirmyn"
-
-msgid "l, F j Y"
-msgstr "Y F j, l"
-
-msgid "ADD"
-msgstr "PRIDËTI"
-
-msgid "EDIT"
-msgstr "TAISYTI"
-
-msgid "DEL"
-msgstr "TRINTI"
-
-msgid "Start time:"
-msgstr "Pradþia:"
-
-msgid "Length:"
-msgstr "Trukmë:"
-
-msgid "Priority:"
-msgstr "Prioritetas:"
-
-msgid "Title:"
-msgstr "Antraðtë:"
-
-msgid "Set Event"
-msgstr "Ávesti ávyká"
-
-msgid "Event Has been added!"
-msgstr "Ávykis buvo átrauktas!"
-
-msgid "Date:"
-msgstr "Data:"
-
-msgid "Time:"
-msgstr "Laikas:"
-
-msgid "Day View"
-msgstr "Dienos perþiûra"
-
-msgid "Do you really want to delete this event?"
-msgstr "Ar tikrai norite iðtrinti ðá ávyká?"
-
-msgid "Event deleted!"
-msgstr "Ávykis iðtrintas!"
-
-msgid "Nothing to delete!"
-msgstr "Nëra ko trinti!"
-
-msgid "Update Event"
-msgstr "Atnaujinti áraðà"
-
-msgid "Do you really want to change this event from:"
-msgstr "Ar tikrai jûs norite pakeisti ávyká ið"
-
-msgid "to:"
-msgstr "á:"
-
-msgid "Event updated!"
-msgstr "Áraðas atnaujintas!"
-
-msgid "Month View"
-msgstr "Mënesio perþiûra"
-
-msgid "0 min."
-msgstr "0 min."
-
-msgid "15 min."
-msgstr "15 min."
-
-msgid "35 min."
-msgstr "35 min."
-
-msgid "45 min."
-msgstr "45 min."
-
-msgid "1 hr."
-msgstr "1 val."
-
-msgid "1.5 hr."
-msgstr "1,5 val."
-
-msgid "2 hr."
-msgstr "2 val."
-
-msgid "2.5 hr."
-msgstr "2,5 val."
-
-msgid "3 hr."
-msgstr "3 val."
-
-msgid "3.5 hr."
-msgstr "3,5 val."
-
-msgid "4 hr."
-msgstr "4 val."
-
-msgid "5 hr."
-msgstr "5 val."
-
-msgid "6 hr."
-msgstr "6 val."
-
-msgid "Calendar"
-msgstr "Kalendorius"
-
-msgid "Delete & Prev"
-msgstr "Trinti ir gráþti"
-
-msgid "Delete & Next"
-msgstr "Trinti ir eiti toliau"
-
-msgid "Move to:"
-msgstr "Perkelti:"
-
-msgid "Delete/Move/Next Buttons:"
-msgstr "Trynimo/Perkëlimo/Judëjimo mygtukai:"
-
-msgid "Display at top"
-msgstr "Rodyti virðuje"
-
-msgid "with move option"
-msgstr "rodyti ir permetimo opcijà"
-
-msgid "Display at bottom"
-msgstr "Rodyti apachioje"
 
 msgid ""
 "COMMERCIAL - This list contains servers that are verified spam senders. It "
@@ -2216,19 +1713,6 @@ msgstr ""
 msgid "FREE, for now - Not Just Another Blacklist - Dial-up IPs."
 msgstr "NEMOKAMAS, kol kas - Not Just Another Blacklist - Dial-up adresai"
 
-msgid "FREE - Distributed Sender Boycott List - Confirmed Relays"
-msgstr ""
-"NEMOKAMAS - Distributed Sender Boycott List - patvirtinti atviri serveriai"
-
-msgid "FREE - Distributed Sender Boycott List - Confirmed Multi-stage Relays"
-msgstr ""
-"NEMOKAMAS - Distributed Sender Boycott List - patvirtinti aukðtesnio lygio "
-"serveriai"
-
-msgid "FREE - Distributed Sender Boycott List - UN-Confirmed Relays"
-msgstr ""
-"NEMOKAMAS - Distributed Sender Boycott List - nepatvirtinti atviri serveriai"
-
 msgid "Saved Scan type"
 msgstr "Iðsaugotas paieðkos tipas"
 
@@ -2256,8 +1740,14 @@ msgstr "Antraðtë"
 msgid "Contains:"
 msgstr "Turi:"
 
+msgid "Move to:"
+msgstr "Perkelti:"
+
 msgid "Down"
 msgstr "Þemyn"
+
+msgid "Up"
+msgstr "Aukðtyn"
 
 #, c-format
 msgid "If <b>%s</b> contains <b>%s</b> then move to <b>%s</b>"
@@ -2341,539 +1831,6 @@ msgstr "Ájungta"
 
 msgid "OFF"
 msgstr "Iðjungta"
-
-msgid " not found."
-msgstr " nerasta."
-
-msgid "Today's Fortune"
-msgstr "Eilinë citata"
-
-msgid "Fortunes:"
-msgstr "Citatos:"
-
-msgid "Show fortunes at top of mailbox"
-msgstr "Rodyti citatas virð þinuèiø sàraðo"
-
-msgid "IMAP server information"
-msgstr "IMAP serverio informacija"
-
-msgid ""
-"Run some test IMAP commands, displaying both the command and the result. "
-"These tests use the Squirrelmail IMAP commands and your current Squirrelmail "
-"configuration. Custom command strings can be used."
-msgstr ""
-"Galima paleisti bandomàsias IMAP komandas ir patikrinti serverio reakcijas. "
-"Paprastai testai naudoja IMAP komandas atitinkanèias dabartinæ SquirrelMail "
-"konfiguracijà. Galima naudoti ir kitas komandas."
-
-msgid "Mailinglist"
-msgstr "Susiraðinëjimo sàraðas"
-
-#, c-format
-msgid ""
-"This will send a message to %s requesting help for this list. You will "
-"receive an emailed response at the address below."
-msgstr ""
-"Ði komanda nusiøs þinutæ á %s, praðydama pagalbos. Atsakymai turëtø gráþti á "
-"þemiau esantá adresà"
-
-#, c-format
-msgid ""
-"This will send a message to %s requesting that you will be subscribed to "
-"this list. You will be subscribed with the address below."
-msgstr ""
-"Ði komanda nusiøs þinutæ á %s, praðydama jus átraukti á ðá susiraðinëjimo "
-"sàraðà. Bandoma bus átraukti þemiau esantá adresà."
-
-#, c-format
-msgid ""
-"This will send a message to %s requesting that you will be unsubscribed from "
-"this list. It will try to unsubscribe the adress below."
-msgstr ""
-"Ði komanda nusiøs þinutæ á %s, praðydama jus paðalinti ið ðio susiraðinëjimo "
-"sàraðo. Bandoma bus nuraðyti þemiau esantá adresà."
-
-msgid "Send Mail"
-msgstr "Iðsiøsti þinutæ"
-
-msgid "Post to List"
-msgstr "Iðsiøsti þinutæ sàraðan"
-
-msgid "Reply to List"
-msgstr "Atsakyti á sàraðà"
-
-msgid "List Archives"
-msgstr "Susiraðinëjimo archyvai"
-
-msgid "Contact Listowner"
-msgstr "Susisiekti su sàraðo priþiûrëtoju"
-
-msgid "Mailing List"
-msgstr "Susiraðinëjimo sàraðas"
-
-msgid "POP3 connect:"
-msgstr "POP3 susijungimo komanda:"
-
-msgid "No server specified"
-msgstr "Serveris nenurodytas"
-
-msgid "Error "
-msgstr "Klaida "
-
-msgid "POP3 noop:"
-msgstr "POP3 noop:"
-
-msgid "No connection to server"
-msgstr "Prisijungti prie serverio nepavyko"
-
-msgid "POP3 user:"
-msgstr "POP3 vartotojas:"
-
-msgid "no login ID submitted"
-msgstr "nepateiktas joks prisijungimo ID"
-
-msgid "connection not established"
-msgstr "nëra susijungimo"
-
-msgid "POP3 pass:"
-msgstr "POP3 slaptaþodis:"
-
-msgid "No password submitted"
-msgstr "Nebuvo pateiktas slaptaþodis"
-
-msgid "authentication failed "
-msgstr "autorizacija nepavyko "
-
-msgid "POP3 apop:"
-msgstr "POP3 apop:"
-
-msgid "No login ID submitted"
-msgstr "Nebuvo pateiktas vartotojo vardas"
-
-msgid "No server banner"
-msgstr "Serveris neprisistatë"
-
-msgid "abort"
-msgstr "nutraukti"
-
-msgid "apop authentication failed"
-msgstr "apop autorizacija nepavyko"
-
-msgid "POP3 login:"
-msgstr "POP3 prisijungimas:"
-
-msgid "POP3 top:"
-msgstr "POP3 top:"
-
-msgid "POP3 pop_list:"
-msgstr "POP3 pop_list:"
-
-msgid "Premature end of list"
-msgstr "Netvarkinga sàraðo pabaiga"
-
-msgid "POP3 get:"
-msgstr "POP3 þinuèiø gavimo komanda:"
-
-msgid "POP3 last:"
-msgstr "POP3 paskutinës þinutës komanda:"
-
-msgid "POP3 reset:"
-msgstr "POP3 reset:"
-
-msgid "POP3 send_cmd:"
-msgstr "POP3 send_cmd:"
-
-msgid "Empty command string"
-msgstr "Tuðèia komandos eilutë"
-
-msgid "POP3 quit:"
-msgstr "POP3 quit:"
-
-msgid "connection does not exist"
-msgstr "susijungimas neegzistuoja"
-
-msgid "POP3 uidl:"
-msgstr "POP3 uidl:"
-
-msgid "POP3 delete:"
-msgstr "POP3 trynimo komanda:"
-
-msgid "No msg number submitted"
-msgstr "Nebuvo pateiktas þinuèiø skaièius"
-
-msgid "Command failed "
-msgstr "Komanda nepavyko"
-
-msgid "Remote POP server Fetching Mail"
-msgstr "Nutolæs POP serveris. Gauname þinutes"
-
-msgid "Select Server:"
-msgstr "Pasirinkti serverá:"
-
-msgid "Password for"
-msgstr "Slaptaþodis skirtas"
-
-msgid "Fetch Mail"
-msgstr "Atsiøsti paðtà"
-
-msgid "Fetching from "
-msgstr "Atsiunèiame ið "
-
-msgid "Oops, "
-msgstr "Vai, vai, vai, "
-
-msgid "Opening IMAP server"
-msgstr "Atidaromas IMAP serveris"
-
-msgid "Opening POP server"
-msgstr "Atidaromas POP serveris"
-
-msgid "Login Failed:"
-msgstr "Prisijungti nepavyko:"
-
-msgid "Login OK: No new messages"
-msgstr "Prisijungti pavyko: Nëra naujø þinuèiø"
-
-msgid "Login OK: Inbox EMPTY"
-msgstr "Prisijungti pavyko. Dëþë tuðèia"
-
-msgid "Login OK: Inbox contains ["
-msgstr "Prisijungti pavyko: Dëþëje yra ["
-
-msgid "] messages"
-msgstr "] þinuèiø"
-
-msgid "Fetching UIDL..."
-msgstr "Siunèiame UIDL..."
-
-msgid "Server does not support UIDL."
-msgstr "Serveris nepalaiko UIDL."
-
-msgid "Leaving Mail on Server..."
-msgstr "Þinutës paliekamos serveryje..."
-
-msgid "Deleting messages from server..."
-msgstr "Trinamos þinutës serveryje..."
-
-msgid "Fetching message "
-msgstr "Atsiunèiame þinutæ "
-
-msgid "Server error...Disconnect"
-msgstr "Serverio klaida...Atsijungiam"
-
-msgid "Reconnect from dead connection"
-msgstr "Prisijungiam ið naujo po ryðio sutrikimo"
-
-msgid "Saving UIDL"
-msgstr "Iðsaugomas UIDL"
-
-msgid "Refetching message "
-msgstr "Persiunèiame þinutæ "
-
-msgid "Error Appending Message!"
-msgstr "Ávyko klaida bandant prijungti þinutæ!"
-
-msgid "Closing POP"
-msgstr "Uþdaromas POP susijungimas"
-
-msgid "Logging out from IMAP"
-msgstr "Atsijungiam nuo IMAP serverio"
-
-msgid "Message appended to mailbox"
-msgstr "Þinutë padëta á esamà paðto dëþæ"
-
-msgid "Message "
-msgstr "Þinutë "
-
-msgid " deleted from Remote Server!"
-msgstr " iðtrinta nutolusiame serveryje!"
-
-msgid "Delete failed:"
-msgstr "Nepavyko iðtrinti:"
-
-msgid "Remote POP server settings"
-msgstr "Nutolusio POP serverio nustatymai"
-
-msgid ""
-"You should be aware that the encryption used to store your password is not "
-"perfectly secure.  However, if you are using pop, there is inherently no "
-"encryption anyway. Additionally, the encryption that we do to save it on the "
-"server can be undone by a hacker reading the source to this file."
-msgstr ""
-"Jûs turite suprasti, kad kodavimas, kuriuo saugomas jûsø slaptaþodis nëra "
-"visiðkai saugus. Taèiau jei jûs naudojate paprastà POP tipo paðtà, jame "
-"taipogi nëra jokio kodavimo ir jûsø neuþkoduotas slaptaþodis jau daug kartø "
-"lankësi :) tinkle. Be to èia naudojamas kodavimas gali bûti atkoduotas "
-"kiekvieno ásilauþëlio, kuris mokës skaityti slaptaþodá uþkodavusios "
-"programos tekstus."
-
-msgid "If you leave password empty, it will be required when you fetch mail."
-msgstr ""
-"Jei nenurodysite slaptaþodþio, jo jûsø paklaus, kai bandysite atsisiøsti "
-"laiðkus."
-
-msgid "Encrypt passwords (informative only)"
-msgstr "Uþkoduoti slaptaþodþius (tik informacijai)"
-
-msgid "Add Server"
-msgstr "Pridëti serverá"
-
-msgid "Server:"
-msgstr "Serveris:"
-
-msgid "Port:"
-msgstr "Jungtis:"
-
-msgid "Alias:"
-msgstr "Trumpas vardas:"
-
-msgid "Username:"
-msgstr "Vartotojo vardas:"
-
-msgid "Store in Folder:"
-msgstr "Iðsaugoti aplanke:"
-
-msgid "Leave Mail on Server"
-msgstr "Palikti þinutes serveryje"
-
-msgid "Check mail during login"
-msgstr "Patikrinti paðtà prisijungiant"
-
-msgid "Check mail during folder refresh"
-msgstr "Patikrinti paðtà perkraunant puslapius"
-
-msgid "Modify Server"
-msgstr "Keisti serverá"
-
-msgid "Server Name:"
-msgstr "Serverio vardas:"
-
-msgid "Modify"
-msgstr "Keisti"
-
-msgid "No-one server in use. Try to add."
-msgstr "Nesukurta jokiø serveriø apraðymø. Pabandykite pridëti nors vienà."
-
-msgid "Fetching Servers"
-msgstr "Siunèiame ið serveriø"
-
-msgid "Confirm Deletion of a Server"
-msgstr "Patvirtinkite, kad norite iðtrinti pasirinktà serverá"
-
-msgid "Selected Server:"
-msgstr "Pasirinktas serveris:"
-
-msgid "Confirm delete of selected server?"
-msgstr "Ar tikrai norite iðtrinti pasirinktà serverá?"
-
-msgid "Confirm Delete"
-msgstr "Patvirtinkite, kad tikrai norite iðtrinti"
-
-msgid "Mofify a Server"
-msgstr "Keisti serverá"
-
-msgid "Undefined Function"
-msgstr "Neapraðyta funkcija"
-
-msgid "Hey! Wath do You are looking for?"
-msgstr "Ei! Ko jûs ieðkote?"
-
-msgid "Fetch"
-msgstr "Atsiøsti ið kitur"
-
-msgid "Warning, "
-msgstr "Perspëjimas, "
-
-msgid "Mail Fetch Result:"
-msgstr "Þinuèiø persiuntimo rezultatai:"
-
-msgid "Simple POP3 Fetch Mail"
-msgstr "Þinuèiø paëmimas ið kito serverio"
-
-msgid ""
-"This configures settings for downloading email from a pop3 mailbox to your "
-"account on this server."
-msgstr ""
-"Èia apraðomi paðto paëmimo ið kito pop3 serverio ir jo patalpinimo á jûsø "
-"esamà paðto dëþæ parametrai."
-
-msgid "Message Details"
-msgstr "Þinutës detalës"
-
-msgid "Message details"
-msgstr "Þinuèiø detalës"
-
-msgid "Close Window"
-msgstr "Uþdaryti langà"
-
-msgid "Save Message"
-msgstr "Iðsaugoti þinutæ"
-
-msgid "View Message details"
-msgstr "Perþiûrëti þinutës detales"
-
-msgid "New Mail Notification"
-msgstr "Perspëjimai apie naujas þinutes"
-
-msgid ""
-"Select <b>Enable Media Playing</b> to turn on playing a media file when "
-"unseen mail is in your folders. When enabled, you can specify the media file "
-"to play in the provided file box."
-msgstr ""
-"Pasirinkite <b>Groti garsus</b> norëdami, kad narðyklë praneðtø apie "
-"pasirodþiusias naujas þinutes iðleisdama kokius nors garsus. Jums teks "
-"nurodyti, kà bûtent turës groti narðyklë."
-
-msgid ""
-"The <b>Check all boxes, not just INBOX</b> option will check ALL of your "
-"folders for unseen mail, not just the inbox for notification."
-msgstr ""
-"<b>Tikrinti visus aplankus, ne tik INBOX</b> nustatymas leidþia tikrinti, ar "
-"naujos þinutës pasirodo ne tik INBOX aplanke, net ir kituose aplankuose."
-
-msgid ""
-"Selecting the <b>Show popup</b> option will enable the showing of a popup "
-"window when unseen mail is in your folders (requires JavaScript)."
-msgstr ""
-"Pasirinkdami <b>Iðkviesti naujà langà</b> nustatymà, ájungsite naujo "
-"narðyklës lango iððokimà pasirodþius naujoms þinutëms (reikalauja JavaScript "
-"palaikymo narðyklëje)."
-
-msgid ""
-"Use the <b>Check RECENT</b> to only check for messages that are recent. "
-"Recent messages are those that have just recently showed up and have not "
-"been \"viewed\" or checked yet.  This can prevent being continuously annoyed "
-"by sounds or popups for unseen mail."
-msgstr ""
-"Pasirinkdami <b>Ávertinti tik paskutines þinutes</b> nustatote, kad naujø "
-"þinuèiø informacimo posistemë turi tikrinti tik tas þinutes, kurios nebuvo "
-"perþiûrëtos arba nebuvo patikrintos anksèiau. Tai leidþia iðvengti pastoviai "
-"lendanèiø langø ar garsø apie tas paèias þinutes."
-
-msgid ""
-"Selecting the <b>Change title</b> option will change the title in some "
-"browsers to let you know when you have new mail (requires JavaScript, and "
-"only works in IE but you won't see errors with other browsers).  This will "
-"always tell you if you have new mail, even if you have <b>Check RECENT</b> "
-"enabled."
-msgstr ""
-"Pasirinkdami <b>Pakeisti antraðtæ</b> nustatote, kad naujø þinuèiø posistemë "
-"turi pakeisti narðyklës antraðtæ pasirodþius naujoms þinutëms (reikia "
-"JavaScript, garantuotai veikia tik IE, kitos narðyklës gali neveikti arba "
-"visai nereaguoti). Galioja nepriklausomai nuo <b>Ávertinti tik paskutines "
-"þinutes</b> nustatymo."
-
-msgid ""
-"Select from the list of <b>server files</b> the media file to play when new "
-"mail arrives.  Selecting <b>local media</b> will play the file specified in "
-"the <b>local media file</b> box to play from the local computer.  If no file "
-"is specified, the system will use a default from the server."
-msgstr ""
-"Garsus galima pasirinkti ið <b>serverio failø</b> arba <b>lokaliø failø</b> "
-"esanèiø jûsø kompiuteryje. Nenurodþius nieko, sistema naudos standartiná "
-"serverio failà."
-
-msgid "Enable Media Playing"
-msgstr "Groti garsus"
-
-msgid "Check all boxes, not just INBOX"
-msgstr "Tikrinti visus aplankus, ne tik INBOX"
-
-msgid "Count only messages that are RECENT"
-msgstr "Ávertinti tik paskutines þinutes"
-
-msgid "Change title on supported browsers."
-msgstr "Pakeisti antraðtæ, jei narðyklë tai palaiko."
-
-msgid "requires JavaScript to work"
-msgstr "reikalauja JavaScript"
-
-msgid "Show popup window on new mail"
-msgstr "Iðkviesti naujà langà pasirodþius naujoms þinutëms"
-
-msgid "Select server file:"
-msgstr "Pasirinkti failà serveryje:"
-
-msgid "(local media)"
-msgstr "(lokalus failas)"
-
-msgid "Try"
-msgstr "Patikrinti"
-
-msgid "Local Media File:"
-msgstr "Lokalus audio failas:"
-
-msgid "Current File:"
-msgstr "Dabar nustatytas failas:"
-
-msgid "New Mail"
-msgstr "Naujas paðtas"
-
-msgid "SquirrelMail Notice:"
-msgstr "SquirrelMail informacija:"
-
-msgid "You have new mail!"
-msgstr "Jûs gavote naujø paðto þinuèiø!"
-
-msgid "NewMail Options"
-msgstr "Naujø þinuèiø nustatymai"
-
-msgid ""
-"This configures settings for playing sounds and/or showing popup windows "
-"when new mail arrives."
-msgstr ""
-"Èia jûs nustatote, kaip jus reikia informuoti (iðleisti koká nors garsà ar "
-"atidaryti iððokantá langà) apie atëjusius naujus laiðkus."
-
-msgid "New Mail Notification options saved"
-msgstr "Nauji informavimo apie atëjusius laiðkus nustatymai iðsaugoti"
-
-#, c-format
-msgid "%s New Messages"
-msgstr "%s naujø þinuèiø"
-
-#, c-format
-msgid "%s New Message"
-msgstr "%s nauja þinutë"
-
-msgid "Test Sound"
-msgstr "Patikrinti garsà"
-
-msgid "Loading the sound..."
-msgstr "Kraunasi audio..."
-
-msgid "Sent Subfolders Options"
-msgstr "Iðsiøstø laiðkø aplankø nustatymai"
-
-msgid "Use Sent Subfolders"
-msgstr "Naudoti iðsiøstø laiðkø aplankus"
-
-msgid "Monthly"
-msgstr "Mënesiniai"
-
-msgid "Quarterly"
-msgstr "Ketvirtiniai"
-
-msgid "Yearly"
-msgstr "Metiniai"
-
-msgid "Base Sent Folder"
-msgstr "Pagrindinis iðsiøstø laiðkø aplankas"
-
-msgid "Report as Spam"
-msgstr "Praneðti apie spamà"
-
-msgid "SpamCop - Spam Reporting"
-msgstr "SpamCop - spamo registras"
-
-msgid ""
-"Help fight the battle against unsolicited email.  SpamCop reads the spam "
-"email and determines the correct addresses to send complaints to.  Quite "
-"fast, really smart, and easy to use."
-msgstr ""
-"Padëkite kovoti prieð nepriimtinus masinius laiðkus. SpamCop priedas "
-"ávertina nepriimtino laiðko antraðtes ir nustato adresus, kuriems reiktø "
-"skøstis. Tai yra gana greitas, protingas ir lengvai naudojamas árankis."
 
 msgid "SpellChecker Options"
 msgstr "Raðybos tikrinimo nustatymai"
@@ -3194,6 +2151,9 @@ msgid ""
 "message:"
 msgstr "Pasirinkite þodynà, kurá naudosite þinutës tikrinimui:"
 
+msgid "Go"
+msgstr "Pirmyn"
+
 msgid "SquirrelSpell Initiating"
 msgstr "Pasileidþia raðybos tikrinimas"
 
@@ -3409,9 +2369,6 @@ msgstr "slovënø"
 msgid "Swedish"
 msgstr "ðvedø"
 
-msgid "Turkish"
-msgstr "turkø"
-
 msgid "Welsh"
 msgstr "velsieèiø"
 
@@ -3421,35 +2378,855 @@ msgstr "indonezieèiø"
 msgid "Latin"
 msgstr "lotynø"
 
+msgid "New Mail Notification"
+msgstr "Perspëjimai apie naujas þinutes"
+
+msgid ""
+"Select <b>Enable Media Playing</b> to turn on playing a media file when "
+"unseen mail is in your folders. When enabled, you can specify the media file "
+"to play in the provided file box."
+msgstr ""
+"Pasirinkite <b>Groti garsus</b> norëdami, kad narðyklë praneðtø apie "
+"pasirodþiusias naujas þinutes iðleisdama kokius nors garsus. Jums teks "
+"nurodyti, kà bûtent turës groti narðyklë."
+
+msgid ""
+"The <b>Check all boxes, not just INBOX</b> option will check ALL of your "
+"folders for unseen mail, not just the inbox for notification."
+msgstr ""
+"<b>Tikrinti visus aplankus, ne tik INBOX</b> nustatymas leidþia tikrinti, ar "
+"naujos þinutës pasirodo ne tik INBOX aplanke, net ir kituose aplankuose."
+
+msgid ""
+"Selecting the <b>Show popup</b> option will enable the showing of a popup "
+"window when unseen mail is in your folders (requires JavaScript)."
+msgstr ""
+"Pasirinkdami <b>Iðkviesti naujà langà</b> nustatymà, ájungsite naujo "
+"narðyklës lango iððokimà pasirodþius naujoms þinutëms (reikalauja JavaScript "
+"palaikymo narðyklëje)."
+
+msgid ""
+"Use the <b>Check RECENT</b> to only check for messages that are recent. "
+"Recent messages are those that have just recently showed up and have not "
+"been \"viewed\" or checked yet.  This can prevent being continuously annoyed "
+"by sounds or popups for unseen mail."
+msgstr ""
+"Pasirinkdami <b>Ávertinti tik paskutines þinutes</b> nustatote, kad naujø "
+"þinuèiø informacimo posistemë turi tikrinti tik tas þinutes, kurios nebuvo "
+"perþiûrëtos arba nebuvo patikrintos anksèiau. Tai leidþia iðvengti pastoviai "
+"lendanèiø langø ar garsø apie tas paèias þinutes."
+
+msgid ""
+"Selecting the <b>Change title</b> option will change the title in some "
+"browsers to let you know when you have new mail (requires JavaScript, and "
+"only works in IE but you won't see errors with other browsers).  This will "
+"always tell you if you have new mail, even if you have <b>Check RECENT</b> "
+"enabled."
+msgstr ""
+"Pasirinkdami <b>Pakeisti antraðtæ</b> nustatote, kad naujø þinuèiø posistemë "
+"turi pakeisti narðyklës antraðtæ pasirodþius naujoms þinutëms (reikia "
+"JavaScript, garantuotai veikia tik IE, kitos narðyklës gali neveikti arba "
+"visai nereaguoti). Galioja nepriklausomai nuo <b>Ávertinti tik paskutines "
+"þinutes</b> nustatymo."
+
+msgid ""
+"Select from the list of <b>server files</b> the media file to play when new "
+"mail arrives.  Selecting <b>local media</b> will play the file specified in "
+"the <b>local media file</b> box to play from the local computer.  If no file "
+"is specified, the system will use a default from the server."
+msgstr ""
+"Garsus galima pasirinkti ið <b>serverio failø</b> arba <b>lokaliø failø</b> "
+"esanèiø jûsø kompiuteryje. Nenurodþius nieko, sistema naudos standartiná "
+"serverio failà."
+
+msgid "Enable Media Playing"
+msgstr "Groti garsus"
+
+msgid "Check all boxes, not just INBOX"
+msgstr "Tikrinti visus aplankus, ne tik INBOX"
+
+msgid "Count only messages that are RECENT"
+msgstr "Ávertinti tik paskutines þinutes"
+
+msgid "Change title on supported browsers."
+msgstr "Pakeisti antraðtæ, jei narðyklë tai palaiko."
+
+msgid "requires JavaScript to work"
+msgstr "reikalauja JavaScript"
+
+msgid "Show popup window on new mail"
+msgstr "Iðkviesti naujà langà pasirodþius naujoms þinutëms"
+
+msgid "Select server file:"
+msgstr "Pasirinkti failà serveryje:"
+
+msgid "(local media)"
+msgstr "(lokalus failas)"
+
+msgid "Try"
+msgstr "Patikrinti"
+
+msgid "Local Media File:"
+msgstr "Lokalus audio failas:"
+
+msgid "Current File:"
+msgstr "Dabar nustatytas failas:"
+
+msgid "New Mail"
+msgstr "Naujas paðtas"
+
+msgid "SquirrelMail Notice:"
+msgstr "SquirrelMail informacija:"
+
+msgid "You have new mail!"
+msgstr "Jûs gavote naujø paðto þinuèiø!"
+
+msgid "NewMail Options"
+msgstr "Naujø þinuèiø nustatymai"
+
+msgid ""
+"This configures settings for playing sounds and/or showing popup windows "
+"when new mail arrives."
+msgstr ""
+"Èia jûs nustatote, kaip jus reikia informuoti (iðleisti koká nors garsà ar "
+"atidaryti iððokantá langà) apie atëjusius naujus laiðkus."
+
+msgid "New Mail Notification options saved"
+msgstr "Nauji informavimo apie atëjusius laiðkus nustatymai iðsaugoti"
+
+#, c-format
+msgid "%s New Messages"
+msgstr "%s naujø þinuèiø"
+
+#, c-format
+msgid "%s New Message"
+msgstr "%s nauja þinutë"
+
+msgid "Test Sound"
+msgstr "Patikrinti garsà"
+
+msgid "Loading the sound..."
+msgstr "Kraunasi audio..."
+
+msgid "POP3 connect:"
+msgstr "POP3 susijungimo komanda:"
+
+msgid "No server specified"
+msgstr "Serveris nenurodytas"
+
+msgid "Error "
+msgstr "Klaida "
+
+msgid "POP3 noop:"
+msgstr "POP3 noop:"
+
+msgid "No connection to server"
+msgstr "Prisijungti prie serverio nepavyko"
+
+msgid "POP3 user:"
+msgstr "POP3 vartotojas:"
+
+msgid "no login ID submitted"
+msgstr "nepateiktas joks prisijungimo ID"
+
+msgid "connection not established"
+msgstr "nëra susijungimo"
+
+msgid "POP3 pass:"
+msgstr "POP3 slaptaþodis:"
+
+msgid "No password submitted"
+msgstr "Nebuvo pateiktas slaptaþodis"
+
+msgid "authentication failed "
+msgstr "autorizacija nepavyko "
+
+msgid "POP3 apop:"
+msgstr "POP3 apop:"
+
+msgid "No login ID submitted"
+msgstr "Nebuvo pateiktas vartotojo vardas"
+
+msgid "No server banner"
+msgstr "Serveris neprisistatë"
+
+msgid "abort"
+msgstr "nutraukti"
+
+msgid "apop authentication failed"
+msgstr "apop autorizacija nepavyko"
+
+msgid "POP3 login:"
+msgstr "POP3 prisijungimas:"
+
+msgid "POP3 top:"
+msgstr "POP3 top:"
+
+msgid "POP3 pop_list:"
+msgstr "POP3 pop_list:"
+
+msgid "Premature end of list"
+msgstr "Netvarkinga sàraðo pabaiga"
+
+msgid "POP3 get:"
+msgstr "POP3 þinuèiø gavimo komanda:"
+
+msgid "POP3 last:"
+msgstr "POP3 paskutinës þinutës komanda:"
+
+msgid "POP3 reset:"
+msgstr "POP3 reset:"
+
+msgid "POP3 send_cmd:"
+msgstr "POP3 send_cmd:"
+
+msgid "Empty command string"
+msgstr "Tuðèia komandos eilutë"
+
+msgid "POP3 quit:"
+msgstr "POP3 quit:"
+
+msgid "connection does not exist"
+msgstr "susijungimas neegzistuoja"
+
+msgid "POP3 uidl:"
+msgstr "POP3 uidl:"
+
+msgid "POP3 delete:"
+msgstr "POP3 trynimo komanda:"
+
+msgid "No msg number submitted"
+msgstr "Nebuvo pateiktas þinuèiø skaièius"
+
+msgid "Command failed "
+msgstr "Komanda nepavyko"
+
+msgid "Remote POP server Fetching Mail"
+msgstr "Nutolæs POP serveris. Gauname þinutes"
+
+msgid "Select Server:"
+msgstr "Pasirinkti serverá:"
+
+msgid "Password for"
+msgstr "Slaptaþodis skirtas"
+
+msgid "Fetch Mail"
+msgstr "Atsiøsti paðtà"
+
+msgid "Fetching from "
+msgstr "Atsiunèiame ið "
+
+msgid "Oops, "
+msgstr "Vai, vai, vai, "
+
+msgid "Opening IMAP server"
+msgstr "Atidaromas IMAP serveris"
+
+msgid "Opening POP server"
+msgstr "Atidaromas POP serveris"
+
+msgid "Login Failed:"
+msgstr "Prisijungti nepavyko:"
+
+msgid "Login OK: No new messages"
+msgstr "Prisijungti pavyko: Nëra naujø þinuèiø"
+
+msgid "Login OK: Inbox EMPTY"
+msgstr "Prisijungti pavyko. Dëþë tuðèia"
+
+msgid "Login OK: Inbox contains ["
+msgstr "Prisijungti pavyko: Dëþëje yra ["
+
+msgid "] messages"
+msgstr "] þinuèiø"
+
+msgid "Fetching UIDL..."
+msgstr "Siunèiame UIDL..."
+
+msgid "Server does not support UIDL."
+msgstr "Serveris nepalaiko UIDL."
+
+msgid "Leaving Mail on Server..."
+msgstr "Þinutës paliekamos serveryje..."
+
+msgid "Deleting messages from server..."
+msgstr "Trinamos þinutës serveryje..."
+
+msgid "Fetching message "
+msgstr "Atsiunèiame þinutæ "
+
+msgid "Message appended to mailbox"
+msgstr "Þinutë padëta á esamà paðto dëþæ"
+
+msgid "Message "
+msgstr "Þinutë "
+
+msgid " deleted from Remote Server!"
+msgstr " iðtrinta nutolusiame serveryje!"
+
+msgid "Delete failed:"
+msgstr "Nepavyko iðtrinti:"
+
+msgid "Error Appending Message!"
+msgstr "Ávyko klaida bandant prijungti þinutæ!"
+
+msgid "Closing POP"
+msgstr "Uþdaromas POP susijungimas"
+
+msgid "Logging out from IMAP"
+msgstr "Atsijungiam nuo IMAP serverio"
+
+msgid "Saving UIDL"
+msgstr "Iðsaugomas UIDL"
+
+msgid "Remote POP server settings"
+msgstr "Nutolusio POP serverio nustatymai"
+
+msgid ""
+"You should be aware that the encryption used to store your password is not "
+"perfectly secure.  However, if you are using pop, there is inherently no "
+"encryption anyway. Additionally, the encryption that we do to save it on the "
+"server can be undone by a hacker reading the source to this file."
+msgstr ""
+"Jûs turite suprasti, kad kodavimas, kuriuo saugomas jûsø slaptaþodis nëra "
+"visiðkai saugus. Taèiau jei jûs naudojate paprastà POP tipo paðtà, jame "
+"taipogi nëra jokio kodavimo ir jûsø neuþkoduotas slaptaþodis jau daug kartø "
+"lankësi :) tinkle. Be to èia naudojamas kodavimas gali bûti atkoduotas "
+"kiekvieno ásilauþëlio, kuris mokës skaityti slaptaþodá uþkodavusios "
+"programos tekstus."
+
+msgid "If you leave password empty, it will be required when you fetch mail."
+msgstr ""
+"Jei nenurodysite slaptaþodþio, jo jûsø paklaus, kai bandysite atsisiøsti "
+"laiðkus."
+
+msgid "Encrypt passwords (informative only)"
+msgstr "Uþkoduoti slaptaþodþius (tik informacijai)"
+
+msgid "Add Server"
+msgstr "Pridëti serverá"
+
+msgid "Server:"
+msgstr "Serveris:"
+
+msgid "Port:"
+msgstr "Jungtis:"
+
+msgid "Alias:"
+msgstr "Trumpas vardas:"
+
+msgid "Username:"
+msgstr "Vartotojo vardas:"
+
+msgid "Store in Folder:"
+msgstr "Iðsaugoti aplanke:"
+
+msgid "Leave Mail on Server"
+msgstr "Palikti þinutes serveryje"
+
+msgid "Check mail during login"
+msgstr "Patikrinti paðtà prisijungiant"
+
+msgid "Check mail during folder refresh"
+msgstr "Patikrinti paðtà perkraunant puslapius"
+
+msgid "Modify Server"
+msgstr "Keisti serverá"
+
+msgid "Server Name:"
+msgstr "Serverio vardas:"
+
+msgid "Modify"
+msgstr "Keisti"
+
+msgid "No-one server in use. Try to add."
+msgstr "Nesukurta jokiø serveriø apraðymø. Pabandykite pridëti nors vienà."
+
+msgid "Fetching Servers"
+msgstr "Siunèiame ið serveriø"
+
+msgid "Confirm Deletion of a Server"
+msgstr "Patvirtinkite, kad norite iðtrinti pasirinktà serverá"
+
+msgid "Selected Server:"
+msgstr "Pasirinktas serveris:"
+
+msgid "Confirm delete of selected server?"
+msgstr "Ar tikrai norite iðtrinti pasirinktà serverá?"
+
+msgid "Confirm Delete"
+msgstr "Patvirtinkite, kad tikrai norite iðtrinti"
+
+msgid "Mofify a Server"
+msgstr "Keisti serverá"
+
+msgid "Undefined Function"
+msgstr "Neapraðyta funkcija"
+
+msgid "Hey! Wath do You are looking for?"
+msgstr "Ei! Ko jûs ieðkote?"
+
+msgid "Fetch"
+msgstr "Atsiøsti ið kitur"
+
+msgid "Warning, "
+msgstr "Perspëjimas, "
+
+msgid "Mail Fetch Result:"
+msgstr "Þinuèiø persiuntimo rezultatai:"
+
+msgid "Simple POP3 Fetch Mail"
+msgstr "Þinuèiø paëmimas ið kito serverio"
+
+msgid ""
+"This configures settings for downloading email from a pop3 mailbox to your "
+"account on this server."
+msgstr ""
+"Èia apraðomi paðto paëmimo ið kito pop3 serverio ir jo patalpinimo á jûsø "
+"esamà paðto dëþæ parametrai."
+
+msgid "Bug Reports:"
+msgstr "Klaidø praneðimai:"
+
+msgid "Show button in toolbar"
+msgstr "Rodyti mygtukà árankiø juostoje"
+
+msgid "Sent Subfolders Options"
+msgstr "Iðsiøstø laiðkø aplankø nustatymai"
+
+msgid "Use Sent Subfolders"
+msgstr "Naudoti iðsiøstø laiðkø aplankus"
+
+msgid "Monthly"
+msgstr "Mënesiniai"
+
+msgid "Quarterly"
+msgstr "Ketvirtiniai"
+
+msgid "Yearly"
+msgstr "Metiniai"
+
+msgid "Base Sent Folder"
+msgstr "Pagrindinis iðsiøstø laiðkø aplankas"
+
+msgid "TODAY"
+msgstr "ÐIANDIEN"
+
+msgid "l, F j Y"
+msgstr "Y F j, l"
+
+msgid "ADD"
+msgstr "PRIDËTI"
+
+msgid "EDIT"
+msgstr "TAISYTI"
+
+msgid "DEL"
+msgstr "TRINTI"
+
+msgid "Start time:"
+msgstr "Pradþia:"
+
+msgid "Length:"
+msgstr "Trukmë:"
+
+msgid "Priority:"
+msgstr "Prioritetas:"
+
+msgid "Title:"
+msgstr "Antraðtë:"
+
+msgid "Set Event"
+msgstr "Ávesti ávyká"
+
+msgid "Event Has been added!"
+msgstr "Ávykis buvo átrauktas!"
+
+msgid "Time:"
+msgstr "Laikas:"
+
+msgid "Day View"
+msgstr "Dienos perþiûra"
+
+msgid "Do you really want to delete this event?"
+msgstr "Ar tikrai norite iðtrinti ðá ávyká?"
+
+msgid "Event deleted!"
+msgstr "Ávykis iðtrintas!"
+
+msgid "Nothing to delete!"
+msgstr "Nëra ko trinti!"
+
+msgid "Update Event"
+msgstr "Atnaujinti áraðà"
+
+msgid "Do you really want to change this event from:"
+msgstr "Ar tikrai jûs norite pakeisti ávyká ið"
+
+msgid "to:"
+msgstr "á:"
+
+msgid "l, F d Y"
+msgstr "Y F d, l"
+
+msgid "Event updated!"
+msgstr "Áraðas atnaujintas!"
+
+msgid "Month View"
+msgstr "Mënesio perþiûra"
+
+msgid "0 min."
+msgstr "0 min."
+
+msgid "15 min."
+msgstr "15 min."
+
+msgid "35 min."
+msgstr "35 min."
+
+msgid "45 min."
+msgstr "45 min."
+
+msgid "1 hr."
+msgstr "1 val."
+
+msgid "1.5 hr."
+msgstr "1,5 val."
+
+msgid "2 hr."
+msgstr "2 val."
+
+msgid "2.5 hr."
+msgstr "2,5 val."
+
+msgid "3 hr."
+msgstr "3 val."
+
+msgid "3.5 hr."
+msgstr "3,5 val."
+
+msgid "4 hr."
+msgstr "4 val."
+
+msgid "5 hr."
+msgstr "5 val."
+
+msgid "6 hr."
+msgstr "6 val."
+
+msgid "Calendar"
+msgstr "Kalendorius"
+
+msgid "Mailinglist"
+msgstr "Susiraðinëjimo sàraðas"
+
+#, c-format
+msgid ""
+"This will send a message to %s requesting help for this list. You will "
+"receive an emailed response at the address below."
+msgstr ""
+"Ði komanda nusiøs þinutæ á %s, praðydama pagalbos. Atsakymai turëtø gráþti á "
+"þemiau esantá adresà"
+
+#, c-format
+msgid ""
+"This will send a message to %s requesting that you will be subscribed to "
+"this list. You will be subscribed with the address below."
+msgstr ""
+"Ði komanda nusiøs þinutæ á %s, praðydama jus átraukti á ðá susiraðinëjimo "
+"sàraðà. Bandoma bus átraukti þemiau esantá adresà."
+
+#, c-format
+msgid ""
+"This will send a message to %s requesting that you will be unsubscribed from "
+"this list. It will try to unsubscribe the adress below."
+msgstr ""
+"Ði komanda nusiøs þinutæ á %s, praðydama jus paðalinti ið ðio susiraðinëjimo "
+"sàraðo. Bandoma bus nuraðyti þemiau esantá adresà."
+
+msgid "Send Mail"
+msgstr "Iðsiøsti þinutæ"
+
+msgid "Post to List"
+msgstr "Iðsiøsti þinutæ sàraðan"
+
+msgid "Reply to List"
+msgstr "Atsakyti á sàraðà"
+
+msgid "List Archives"
+msgstr "Susiraðinëjimo archyvai"
+
+msgid "Contact Listowner"
+msgstr "Susisiekti su sàraðo priþiûrëtoju"
+
+msgid "Mailing List:"
+msgstr "Susiraðinëjimo sàraðas:"
+
+msgid "Delete & Prev"
+msgstr "Trinti ir gráþti"
+
+msgid "Delete & Next"
+msgstr "Trinti ir eiti toliau"
+
+msgid "Delete/Move/Next Buttons:"
+msgstr "Trynimo/Perkëlimo/Judëjimo mygtukai:"
+
+msgid "Display at top"
+msgstr "Rodyti virðuje"
+
+msgid "with move option"
+msgstr "rodyti ir permetimo opcijà"
+
+msgid "Display at bottom"
+msgstr "Rodyti apachioje"
+
+msgid "Config File Version"
+msgstr "Konfiguracinio failo versija"
+
+msgid "Squirrelmail Version"
+msgstr "SquirrelMail versija"
+
+msgid "PHP Version"
+msgstr "PHP versija"
+
+msgid "Organization Preferences"
+msgstr "Organizacijos nustatymai"
+
+msgid "Organization Name"
+msgstr "Organizacijos pavadinimas"
+
+msgid "Organization Logo"
+msgstr "Organizacijos logo"
+
+msgid "Organization Logo Width"
+msgstr "Organizacijos logo plotis"
+
+msgid "Organization Logo Height"
+msgstr "Organizacijos logo aukðtis"
+
+msgid "Organization Title"
+msgstr "Organizacijos pavadinimas"
+
+msgid "Signout Page"
+msgstr "Atsijungimo puslapis"
+
+msgid "Default Language"
+msgstr "Standartinë kalba"
+
+msgid "Top Frame"
+msgstr "Virðutinis rëmelis"
+
+msgid "Server Settings"
+msgstr "Serverio nustatymai"
+
+msgid "Mail Domain"
+msgstr "Paðto domenas"
+
+msgid "IMAP Server Address"
+msgstr "IMAP serverio adresas"
+
+msgid "IMAP Server Port"
+msgstr "IMAP serverio jungtis"
+
+msgid "IMAP Server Type"
+msgstr "IMAP serverio tipas"
+
+msgid "Cyrus IMAP server"
+msgstr "Cyrus IMAP serveris"
+
+msgid "University of Washington's IMAP server"
+msgstr "UW-IMAP serveris"
+
+msgid "Microsoft Exchange IMAP server"
+msgstr "MS Exchange IMAP serveris"
+
+msgid "Courier IMAP server"
+msgstr "Courier IMAP serveris"
+
+msgid "Not one of the above servers"
+msgstr "Kitas (neþinomas) IMAP serveris"
+
+msgid "IMAP Folder Delimiter"
+msgstr "IMAP katalogø skirtukas"
+
+msgid "Use \"detect\" to auto-detect."
+msgstr "Naudokite \"detect\", kad atpaþinti automatiðkai."
+
+msgid "Use Sendmail"
+msgstr "Naudoti serverio sendmail programà"
+
+msgid "Sendmail Path"
+msgstr "Kelias iki sendmail"
+
+msgid "SMTP Server Address"
+msgstr "SMTP serverio adresas"
+
+msgid "SMTP Server Port"
+msgstr "SMTP serverio jungtis"
+
+msgid "Authenticated SMTP"
+msgstr "SMTP autorizavimas"
+
+msgid "Invert Time"
+msgstr "Keisti laikà"
+
+msgid "Use Confirmation Flags"
+msgstr "Naudoti patvirtinimo nustatymus"
+
+msgid "Folders Defaults"
+msgstr "Aplankø nustatymai"
+
+msgid "Default Folder Prefix"
+msgstr "Standartinis aplanko priedëlis"
+
+msgid "Show Folder Prefix Option"
+msgstr "Rodyti aplankø priedëlio opcijas"
+
+msgid "By default, move to trash"
+msgstr "Standartinis ðiukðlyno aplankas"
+
+msgid "By default, move to sent"
+msgstr "Standartinis iðsiøstø laiðkø aplankas"
+
+msgid "By default, save as draft"
+msgstr "Standartinis juodraðèiø aplankas"
+
+msgid "List Special Folders First"
+msgstr "Rodyti specialius aplankus pirmiau"
+
+msgid "Show Special Folders Color"
+msgstr "Pakeisti specialiø aplankø spalvà"
+
+msgid "Auto Expunge"
+msgstr "Valyti automatiðkai"
+
+msgid "Default Sub. of INBOX"
+msgstr "Visi katalogai kuriami tik tarp INBOX"
+
+msgid "Show 'Contain Sub.' Option"
+msgstr "Rodyti 'Yra Sub.' opcijà"
+
+msgid "Default Unseen Notify"
+msgstr "Standartinis naujø laiðkø praneðimas"
+
+msgid "Default Unseen Type"
+msgstr "Standartinis naujø laiðkø tipas"
+
+msgid "Auto Create Special Folders"
+msgstr "Sukurti specialius aplankus automatiðkai"
+
+msgid "Default Javascript Adrressbook"
+msgstr "Standartinë Javascript adresø knyga"
+
+msgid "Auto delete folders"
+msgstr "Automatiðkai iðtrinti aplankus"
+
+msgid "General Options"
+msgstr "Bendriniai nustatymai"
+
+msgid "Default Charset"
+msgstr "Standartinë simboliø koduotë (charset)"
+
+msgid "Data Directory"
+msgstr "Duomenø saugojimo katalogas"
+
+msgid "Temp Directory"
+msgstr "Laikinas katalogas"
+
+msgid "Hash Level"
+msgstr "Kodavimo (hash) lygis"
+
+msgid "Hash Disabled"
+msgstr "Kodavimas (hash) atjungtas"
+
+msgid "Moderate"
+msgstr "Patenkinamas"
+
+msgid "Medium"
+msgstr "Vidutiniðkas"
+
+msgid "Default Left Size"
+msgstr "Standartinis kairio rëmelio dydis"
+
+msgid "Usernames in Lowercase"
+msgstr "Vartotojø vardai maþosiomis raidëmis"
+
+msgid "Allow use of priority"
+msgstr "Leisti naudoti prioritetus"
+
+msgid "Hide SM attributions"
+msgstr "Paslëpti SquirrelMail atributus"
+
+msgid "Enable use of delivery receipts"
+msgstr "Ájungti pristatymo patvirtinimø naudojimà"
+
+msgid "Allow editing of identities"
+msgstr "Leisti keisti ID"
+
+msgid "Allow editing of full name"
+msgstr "Leisti keisti vardà"
+
+msgid "Message of the Day"
+msgstr "Standartinis praneðimas"
+
+msgid "Database"
+msgstr "Duomenø bazë"
+
+msgid "Address book DSN"
+msgstr "Adresø knygos DSN"
+
+msgid "Address book table"
+msgstr "Adresø knygos lentelë"
+
+msgid "Preferences DSN"
+msgstr "Nustatymø DSN"
+
+msgid "Preferences table"
+msgstr "Nustatymø lentelë"
+
+msgid "Preferences username field"
+msgstr "Nustatymø vartotojo vardo laukas"
+
+msgid "Preferences key field"
+msgstr "Nustatymø rakto laukas"
+
+msgid "Preferences value field"
+msgstr "Nustatymø reikðmës laukas"
+
+msgid "Themes"
+msgstr "Temos"
+
+msgid "Style Sheet URL (css)"
+msgstr "Stiliaus lentelës adresas (CSS)"
+
+msgid "Configuration Administrator"
+msgstr "Konfiguracijos valdymas"
+
+msgid "Theme Name"
+msgstr "Temos vardas"
+
+msgid "Theme Path"
+msgstr "Kelias iki temos"
+
+msgid "Plugins"
+msgstr "Priedai"
+
+msgid "Change Settings"
+msgstr "Pakeisti nustatymus"
+
+msgid "Config file can't be opened. Please check config.php."
+msgstr "Nepavyko atidaryti konfiguracinio failo. Patikrinkite config.php"
+
+msgid "Administration"
+msgstr "Administravimas"
+
+msgid ""
+"This module allows administrators to manage SquirrelMail main configuration "
+"remotely."
+msgstr "Ðis priedas leidþia keisti SquirrelMail konfiguracijà."
+
 msgid "Delivery error report"
 msgstr "Ataskaita apie pristatymo klaidà"
 
 msgid "Undelivered Message Headers"
 msgstr "Nepristatytos þinutës antraðtës"
-
-#~ msgid "Enable Subtle Printer Friendly Link"
-#~ msgstr "Rodyti puslapiø, skirtø spausdinimui, nuorodas"
-
-#~ msgid "Authenticated SMTP"
-#~ msgstr "SMTP autorizavimas"
-
-#~ msgid "There was an error contacting the mail server."
-#~ msgstr "Ávyko klaida bandant susisiekti su paðto serveriu."
-
-#~ msgid "Contact your administrator for help."
-#~ msgstr "Susisiekite su administratoriumi, jei reikia pagalbos."
-
-#~ msgid "Left aligned"
-#~ msgstr "Iðlyginta pagal kairá kraðtà"
-
-#~ msgid "Centered"
-#~ msgstr "Centruota"
-
-#~ msgid "Right aligned"
-#~ msgstr "Iðlyginta pagal deðiná kraðtà"
-
-#~ msgid "on the Read screen"
-#~ msgstr "skaitymo lange"
-
-#~ msgid "Hide the box"
-#~ msgstr "paslëpti mygtukà"

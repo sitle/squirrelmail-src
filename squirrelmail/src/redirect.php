@@ -4,7 +4,7 @@
 * redirect.php
 * Derived from webmail.php by Ralf Kraudelt <kraude@wiwi.uni-rostock.de>
 *
-* Copyright (c) 1999-2003 The SquirrelMail Project Team
+* Copyright (c) 1999-2002 The SquirrelMail Project Team
 * Licensed under the GNU GPL. For full terms see the file COPYING.
 *
 * Prevents users from reposting their form data after a successful logout.
@@ -12,21 +12,18 @@
 * $Id$
 */
 
-/* Path for SquirrelMail required files. */
-define('SM_PATH','../');
-
-/* SquirrelMail required files. */
-require_once(SM_PATH . 'functions/i18n.php');
-require_once(SM_PATH . 'functions/strings.php');
-require_once(SM_PATH . 'config/config.php');
-require_once(SM_PATH . 'functions/prefs.php');
-require_once(SM_PATH . 'functions/imap.php');
-require_once(SM_PATH . 'functions/plugin.php');
-require_once(SM_PATH . 'functions/constants.php');
-require_once(SM_PATH . 'functions/page_header.php');
-require_once(SM_PATH . 'functions/global.php');
+require_once('../functions/i18n.php');
+require_once('../functions/strings.php');
+require_once('../config/config.php');
+require_once('../functions/prefs.php');
+require_once('../functions/imap.php');
+require_once('../functions/plugin.php');
+require_once('../functions/constants.php');
+require_once('../functions/page_header.php');
+require_once('../src/global.php');
 
 // Remove slashes if PHP added them
+
 $REQUEST_METHOD = $_SERVER['REQUEST_METHOD'];
 if (get_magic_quotes_gpc()) {
     if ($REQUEST_METHOD == 'POST') {
@@ -39,7 +36,7 @@ if (get_magic_quotes_gpc()) {
 /* Before starting the session, the base URI must be known. Assuming */
 /* that this file is in the src/ subdirectory (or something).        */
 if (!function_exists('sqm_baseuri')){
-    require_once(SM_PATH . 'functions/display_messages.php');
+    require_once('../functions/display_messages.php');
 }
 $base_uri = sqm_baseuri();
 
@@ -52,7 +49,9 @@ session_start();
 sqsession_unregister ('user_is_logged_in');
 sqsession_register ($base_uri, 'base_uri');
 
+
 /* get globals we me need */
+
 if (isset($_POST['login_username'])) {
     $login_username = $_POST['login_username'];
 }
@@ -92,17 +91,23 @@ if (!sqsession_is_registered('user_is_logged_in')) {
     /* remove redundant spaces */
     $login_username = trim($login_username);
 
-    /* Verify that username and password are correct. */
     if ($force_username_lowercase) {
         $login_username = strtolower($login_username);
     }
 
+    /* Verify that username and password are correct. */
+
     $imapConnection = sqimap_login($login_username, $key, $imapServerAddress, $imapPort, 0);
-
-    $sqimap_capabilities = sqimap_capability($imapConnection);
-    sqsession_register($sqimap_capabilities, 'sqimap_capabilities');
-    $delimiter = sqimap_get_delimiter ($imapConnection);
-
+    if (!$imapConnection) {
+        $errTitle = _("There was an error contacting the mail server.");
+        $errString = $errTitle . "<br>\n".
+                     _("Contact your administrator for help.");
+        include_once( '../functions/display_messages.php' );
+        logout_error( $errString, $errTitle );            
+        exit;
+    } else {
+        $delimiter = sqimap_get_delimiter ($imapConnection);
+    }
     sqimap_logout($imapConnection);
     sqsession_register($delimiter, 'delimiter');
 
@@ -154,17 +159,11 @@ if ($javascript_setting != SMPREF_JS_ON){
 setPref($data_dir, $username, 'javascript_on', $js_pref);
 
 /* Compute the URL to forward the user to. */
-$redirect_url = 'webmail.php';
-
-if ( sqgetGlobalVar('session_expired_location', $session_expired_location, SQ_SESSION) ) {
-    sqsession_unregister('session_expired_location');
-    $compose_new_win = getPref($data_dir, $username, 'compose_new_win', 0);
-    if ($compose_new_win) {
-        $redirect_url = $session_expired_location;
-    } elseif ( strpos($session_expired_location, 'webmail.php') === FALSE ) {
-        $redirect_url = 'webmail.php?right_frame='.urldecode($session_expired_location);
-    }
-    unset($session_expired_location);
+if(isset($rcptemail)) {
+    $redirect_url = 'webmail.php?right_frame=compose.php&rcptaddress=';
+    $redirect_url .= $rcptemail;
+} else {
+    $redirect_url = 'webmail.php';
 }
 
 /* Write session data and send them off to the appropriate page. */
@@ -177,13 +176,13 @@ function attachment_common_parse($str, $debug) {
     global $attachment_common_types, $attachment_common_types_parsed;
 
     $attachment_common_types_parsed[$str] = true;
-    
-    /* 
-     * Replace ", " with "," and explode on that as Mozilla 1.x seems to  
+
+    /*
+     * Replace ", " with "," and explode on that as Mozilla 1.x seems to
      * use "," to seperate whilst IE, and earlier versions of Mozilla use
      * ", " to seperate
      */
-    
+
     $str = str_replace( ', ' , ',' , $str );
     $types = explode(',', $str);
 

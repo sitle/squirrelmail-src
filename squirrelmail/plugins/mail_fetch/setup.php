@@ -3,7 +3,7 @@
    /**
     **  mail_fetch/setup.php
     **
-    **  Copyright (c) 1999-2003 The SquirrelMail Project Team
+    **  Copyright (c) 1999-2002 The SquirrelMail Project Team
     **  Licensed under the GNU GPL. For full terms see the file COPYING.
     **
     **  Setup of the mailfetch plugin.
@@ -11,7 +11,7 @@
     **  $Id$
     **/
 
-    require_once(SM_PATH . 'plugins/mail_fetch/functions.php' );
+    require_once( '../plugins/mail_fetch/functions.php' );
 
     function squirrelmail_plugin_init_mail_fetch() {
         global $squirrelmail_plugin_hooks;
@@ -36,7 +36,7 @@
         global $data_dir;
         global $mailfetch_server_number;
         global $mailfetch_cypher;
-        global $mailfetch_server_,$mailfetch_alias_,$mailfetch_user_,$mailfetch_pass_;
+        global $mailfetch_server_,$mailfetch_pop_,$mailfetch_alias_,$mailfetch_user_,$mailfetch_pass_;
         global $mailfetch_lmos_, $mailfetch_uidl_, $mailfetch_login_, $mailfetch_fref_;
         global $PHP_SELF;
         if ( !check_php_version(4,1) ) {
@@ -50,7 +50,7 @@
             if ($mailfetch_server_number<1) $mailfetch_server_number=0;
             for ($i=0;$i<$mailfetch_server_number;$i++) {
                 $mailfetch_server_[$i] = getPref($data_dir, $username, "mailfetch_server_$i");
-                $mailfetch_port_[$i] = getPref($data_dir, $username, "mailfetch_port_$i");
+				$mailfetch_port_[$i] = getPref($data_dir,$username,"mailfetch_pop_$i");
                 $mailfetch_alias_[$i]  = getPref($data_dir, $username, "mailfetch_alias_$i");
                 $mailfetch_user_[$i]   = getPref($data_dir, $username, "mailfetch_user_$i");
                 $mailfetch_pass_[$i]   = getPref($data_dir, $username, "mailfetch_pass_$i");
@@ -65,12 +65,13 @@
 
     function mail_fetch_login() {
 
-        require_once (SM_PATH . 'include/validate.php');
-        require_once (SM_PATH . 'functions/imap.php');
-        require_once (SM_PATH . 'plugins/mail_fetch/class.POP3.php');
-        require_once (SM_PATH . 'plugins/mail_fetch/functions.php');
+        require_once ('../src/validate.php');
+        require_once ('../functions/imap.php');
+        require_once ('../plugins/mail_fetch/class.POP3.php');
+        require_once ('../plugins/mail_fetch/functions.php');
+        require_once('../functions/i18n.php');
 
-        global $data_dir, $imapServerAddress, $imapPort;
+        global $data_dir, $imapServerAddress,$imapPort;
         if ( !check_php_version(4,1) ) {
             global $_SESSION, $_COOKIE;
         }
@@ -98,7 +99,7 @@
                 ( ( $mailfetch_login_[$i_loop] == 'on' &&  $mailfetch_newlog == 'on' ) || $mailfetch_fref_[$i_loop] == 'on' ) ) {
 
                 $mailfetch_server_[$i_loop] = getPref($data_dir, $username, "mailfetch_server_$i_loop");
-                $mailfetch_port_[$i_loop] = getPref($data_dir, $username , "mailfetch_port_$i_loop");
+				$mailfetch_port_[$i_loop] = getPref($data_dir,$username, "mailfetch_port_$i_loop");
                 $mailfetch_alias_[$i_loop] = getPref($data_dir, $username, "mailfetch_alias_$i_loop");
                 $mailfetch_user_[$i_loop] = getPref($data_dir, $username, "mailfetch_user_$i_loop");
                 $mailfetch_lmos_[$i_loop] = getPref($data_dir, $username, "mailfetch_lmos_$i_loop");
@@ -106,7 +107,7 @@
                 $mailfetch_subfolder_[$i_loop] = getPref($data_dir, $username, "mailfetch_subfolder_$i_loop");
 
                 $mailfetch_server=$mailfetch_server_[$i_loop];
-                $mailfetch_port=$mailfetch_port_[$i_loop];
+				$mailfetch_port=$mailfetch_port_[$i_loop];
                 $mailfetch_user=$mailfetch_user_[$i_loop];
                 $mailfetch_alias=$mailfetch_alias_[$i_loop];
                 $mailfetch_pass=$mailfetch_pass_[$i_loop];
@@ -121,7 +122,7 @@
 
                 $pop3 = new POP3($mailfetch_server, 60);
 
-                if (!$pop3->connect($mailfetch_server,$mailfetch_port)) {
+                if (!$pop3->connect($mailfetch_server , $mailfetch_port)) {
                     $outMsg .= _("Warning, ") . $pop3->ERROR;
                     continue;
                 }
@@ -215,14 +216,13 @@
     function mail_fetch_setnew()    {
 
         global $data_dir;
-        require_once(SM_PATH . 'functions/prefs.php');
-
+        require_once('../functions/prefs.php');
         if (isset($_SESSION['username'])) {
             $username = $_SESSION['username'];
-        } else {
-           $username = '';
         }
-
+        else {
+            $username = '';
+        }
         if( $username <> '' ) {
             // Creates the pref file if it does not exist.
             setPref( $data_dir, $username, 'mailfetch_newlog', 'on' );

@@ -7,19 +7,18 @@
  *    Date:    December 24, 2001
  *    Comment: Guess what this does!
  *
- * Copyright (c) 2000-2003 The SquirrelMail Project Team
+ * Copyright (c) 2000-2002 The SquirrelMail Project Team
  * Licensed under the GNU GPL. For full terms see the file COPYING.
  *
  * $Id$
  */
 
 sq_mt_randomize();
-
-require_once(SM_PATH . 'functions/global.php');
-   
+  
+require_once('../src/global.php'); 
 global $theme, $random_theme_good_themes;
    
-if (!sqsession_is_registered('random_theme_good_theme')) {
+if (!session_is_registered('random_theme_good_theme')) {
     $good_themes = array();
     foreach ($theme as $data) {
         if (substr($data['PATH'], -18) != '/themes/random.php') {

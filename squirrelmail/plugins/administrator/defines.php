@@ -3,7 +3,7 @@
 /**
  * defines.php
  *
- * Copyright (c) 1999-2003 The SquirrelMail Project Team
+ * Copyright (c) 1999-2002 The SquirrelMail Project Team
  * Licensed under the GNU GPL. For full terms see the file COPYING.
  *
  * Philippe Mingo
@@ -11,7 +11,7 @@
  * $Id$
  */
 
-require_once( SM_PATH . 'functions/constants.php' );
+require_once( '../functions/constants.php' );
 
 /* Define constants for the various option types. */
 define('SMOPT_TYPE_UNDEFINED', -1);
@@ -29,7 +29,6 @@ define('SMOPT_TYPE_THEME', 10);
 define('SMOPT_TYPE_PLUGINS', 11);
 define('SMOPT_TYPE_LDAP', 12);
 define('SMOPT_TYPE_EXTERNAL', 32);
-define('SMOPT_TYPE_PATH',33);
 
 global $languages;
 
@@ -62,9 +61,8 @@ $defcfg = array( '$config_version' => array( 'name' => _("Config File Version"),
                                        'type' => SMOPT_TYPE_STRING,
                                        'size' => 40 ),
                  '$org_logo' => array( 'name' => _("Organization Logo"),
-                                       'type' => SMOPT_TYPE_PATH,
-                                       'size' => 40,
-				       'default' => '../images/sm_logo.png'),
+                                       'type' => SMOPT_TYPE_STRING,
+                                       'size' => 40 ),
                  '$org_logo_width' => array( 'name'    => _("Organization Logo Width"),
                                              'type'    => SMOPT_TYPE_INTEGER,
                                              'size'    => 5,
@@ -77,12 +75,8 @@ $defcfg = array( '$config_version' => array( 'name' => _("Config File Version"),
                                         'type' => SMOPT_TYPE_STRING,
                                         'size' => 40 ),
                  '$signout_page' => array( 'name' => _("Signout Page"),
-                                           'type' => SMOPT_TYPE_PATH,
+                                           'type' => SMOPT_TYPE_STRING,
                                            'size' => 40 ),
-				 '$provider_uri' => array( 'name' => _("Provider Link URI"),
-				 						   'type' => SMOPT_TYPE_STRING ),
-				 '$provider_name' => array( 'name' => _("Provider Name"),
-				 						    'type' => SMOPT_TYPE_STRING ),
                  '$squirrelmail_default_language' => array( 'name' => _("Default Language"),
                                                             'type' => SMOPT_TYPE_STRLIST,
                                                             'size' => 7,
@@ -114,19 +108,8 @@ $defcfg = array( '$config_version' => array( 'name' => _("Config File Version"),
                                                  'comment' => _("Use \"detect\" to auto-detect."),
                                                  'size' => 10,
                                                  'default' => 'detect' ),
-				 '$use_imap_tls' => array( 'name' => _("Use TLS for IMAP Connections"),
-				 						   'type' => SMOPT_TYPE_BOOLEAN,
-										   'comment' => _("Requires PHP 4.3.x! Experimental."),
-										   'default' => false ),
-				 '$imap_auth_mech' => array( 'name' => _("IMAP Authentication Type"),
-				 							 'type' => SMOPT_TYPE_STRLIST,
-											 'posvals' => array('login' => 'IMAP LOGIN',
-											 				    'cram-md5' => 'CRAM-MD5',
-																'digest-md5' => 'DIGEST-MD5'),
-											 'default' => 'login' ),
-                 '$useSendmail' => array( 'name' => _("Use Sendmail Binary"),
-                                          'type' => SMOPT_TYPE_BOOLEAN,
-										  'comment' => "Say 'no' for SMTP" ),
+                 '$useSendmail' => array( 'name' => _("Use Sendmail"),
+                                          'type' => SMOPT_TYPE_BOOLEAN ),
                  '$sendmail_path' => array( 'name' => _("Sendmail Path"),
                                             'type' => SMOPT_TYPE_STRING,
                                             'size' => 40 ),
@@ -135,20 +118,8 @@ $defcfg = array( '$config_version' => array( 'name' => _("Config File Version"),
                                                 'size' => 40 ),
                  '$smtpPort' => array( 'name' => _("SMTP Server Port"),
                                        'type' => SMOPT_TYPE_INTEGER ),
-				 '$use_smtp_tls' => array( 'name' => _("Use TLS for SMTP Connections"),
-				 						   'type' => SMOPT_TYPE_BOOLEAN,
-										   'comment' => _("Requires PHP 4.3.x! Experimental."),
-										   'default' => false ),
-				 '$smtp_auth_mech' => array( 'name' => _("SMTP Authentication Type"),
-				 							 'type' => SMOPT_TYPE_STRLIST,
-											 'posvals' => array('none' => 'No SMTP auth',
-											 					'login' => 'Login (Plaintext)',
-																'cram-md5' => 'CRAM-MD5',
-																'digest-md5' => 'DIGEST-MD5'),
-											 'default' => 'none'),
-				 '$pop_before_smtp' => array( 'name' => _("POP3 Before SMTP?"),
-				 							  'type' => SMOPT_TYPE_BOOLEAN,
-											  'default' => false ),
+                 '$use_authenticated_smtp' => array( 'name' => _("Authenticated SMTP"),
+                                                     'type' => SMOPT_TYPE_BOOLEAN ),
                  '$invert_time' => array( 'name' => _("Invert Time"),
                                           'type' => SMOPT_TYPE_BOOLEAN ),
                  '$default_use_mdn' => array( 'name' => _("Use Confirmation Flags"),
@@ -201,9 +172,6 @@ $defcfg = array( '$config_version' => array( 'name' => _("Config File Version"),
                                                   'type' => SMOPT_TYPE_BOOLEAN ),
                  '$delete_folder' => array( 'name' => _("Auto delete folders"),
                                             'type' => SMOPT_TYPE_BOOLEAN ),
-				 '$noselect_fix_enable' => array( 'name' => _("Enable /NoSelect folder fix"),
-				 								  'type' => SMOPT_TYPE_BOOLEAN,
-												  'default' => false),
                  /* --------------------------------------------------------*/
                  'Group4' => array( 'name' => _("General Options"),
                                     'type' => SMOPT_TYPE_TITLE ),
@@ -217,13 +185,14 @@ $defcfg = array( '$config_version' => array( 'name' => _("Config File Version"),
                                                                   'ns_4551_1' => 'ns_4551_1',
                                                                   'koi8-r' => 'koi8-r',
                                                                   'euc-KR' => 'euc-KR',
-                                                                  'windows-1251' => 'windows-1251',
-                                                                  'ISO-2022-JP' => 'ISO-2022-JP' ) ),
+                                                                  'big5' => 'big5',
+                                                                  'gb2312' => 'gb2312',
+                                                                  'windows-1251' => 'windows-1251' ) ),
                  '$data_dir' => array( 'name' => _("Data Directory"),
-                                       'type' => SMOPT_TYPE_PATH,
+                                       'type' => SMOPT_TYPE_STRING,
                                        'size' => 40 ),
                  '$attachment_dir' => array( 'name' => _("Temp Directory"),
-                                             'type' => SMOPT_TYPE_PATH,
+                                             'type' => SMOPT_TYPE_STRING,
                                              'size' => 40 ),
                  '$dir_hash_level' => array( 'name' => _("Hash Level"),
                                              'type' => SMOPT_TYPE_NUMLIST,
@@ -247,20 +216,6 @@ $defcfg = array( '$config_version' => array( 'name' => _("Config File Version"),
                                             'type' => SMOPT_TYPE_BOOLEAN ),
                  '$edit_name' => array( 'name' => _("Allow editing of full name"),
                                         'type' => SMOPT_TYPE_BOOLEAN ),
-				 '$allow_server_sort' => array( 'name' => _("Use server-side sorting"),
-				 							    'type' => SMOPT_TYPE_BOOLEAN,
-												'default' => false ),
-				 '$allow_thread_sort' => array( 'name' => _("Use server-side thread sorting"),
-				 								'type' => SMOPT_TYPE_BOOLEAN,
-												'default' => false ),
-				 '$allow_charset_search' => array( 'name' => _("Allow server charset search"),
-				 								   'type' => SMOPT_TYPE_BOOLEAN,
-												   'default' => false ),
-				 '$uid_support' => array( 'name' => _("UID support"),
-				 						  'type' => SMOPT_TYPE_BOOLEAN,
-										  'default' => false ),
-				 '$session_name' => array( 'name' => _("PHP session name"),
-				 						   'type' => SMOPT_TYPE_HIDDEN ),
                  /* --------------------------------------------------------*/
                  'Group5' => array( 'name' => _("Message of the Day"),
                                     'type' => SMOPT_TYPE_TITLE ),
@@ -300,17 +255,11 @@ $defcfg = array( '$config_version' => array( 'name' => _("Config File Version"),
                  'Group7' => array( 'name' => _("Themes"),
                                     'type' => SMOPT_TYPE_TITLE ),
                  '$theme_css' => array( 'name' => _("Style Sheet URL (css)"),
-                                        'type' => SMOPT_TYPE_PATH,
+                                        'type' => SMOPT_TYPE_STRING,
                                         'size' => 40 ),
-				 '$theme_default' => array( 'name' => _("Default theme"),
-				 							'type' => SMOPT_TYPE_INTEGER,
-											'default' => 0,
-											'comment' => _("Use index number of theme") ),
                  /* --------------------------------------------------------*/
                  '$config_use_color' => array(  'name' => '',
-                                                'type' => SMOPT_TYPE_HIDDEN ),
-				 '$no_list_for_subscribe' => array( 'name' => '',
-				 									'type' => SMOPT_TYPE_HIDDEN ),
+                                                'type' => SMOPT_TYPE_HIDDEN )
                  /* --------------------------------------------------------*/
 
                );

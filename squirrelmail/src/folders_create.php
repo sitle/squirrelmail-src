@@ -3,7 +3,7 @@
 /**
  * folders_create.php
  *
- * Copyright (c) 1999-2003 The SquirrelMail Project Team
+ * Copyright (c) 1999-2002 The SquirrelMail Project Team
  * Licensed under the GNU GPL. For full terms see the file COPYING.
  *
  * Creates folders on the IMAP server.
@@ -12,13 +12,9 @@
  * $Id$
  */
 
-/* Path for SquirrelMail required files. */
-define('SM_PATH','../');
-
-/* SquirrelMail required files. */
-require_once(SM_PATH . 'include/validate.php');
-require_once(SM_PATH . 'functions/imap.php');
-require_once(SM_PATH . 'functions/display_messages.php');
+require_once('../src/validate.php');
+require_once('../functions/imap.php');
+require_once('../functions/display_messages.php');
 
 /* get globals we may need */
 
@@ -33,15 +29,14 @@ if (isset($_POST['contain_subs'])) {
 }
 
 /* end of get globals */
-
+ 
 $folder_name = trim($folder_name);
 
 if (substr_count($folder_name, '"') || substr_count($folder_name, "\\") ||
     substr_count($folder_name, $delimiter) || ($folder_name == '')) {
     displayPageHeader($color, 'None');
 
-    plain_error_message(_("Illegal folder name.  Please select a different name.").
-        '<BR><A HREF="../src/folders.php">'._("Click here to go back").'</A>.', $color);
+    plain_error_message(_("Illegal folder name.  Please select a different name.")."<BR><A HREF=\"../src/folders.php\">"._("Click here to go back")."</A>.", $color);
 
     exit;
 }
@@ -49,7 +44,7 @@ if (substr_count($folder_name, '"') || substr_count($folder_name, "\\") ||
 $folder_name = imap_utf7_encode_local($folder_name);
 
 if (isset($contain_subs) && $contain_subs ) {
-    $folder_name = $folder_name . $delimiter;
+    $folder_name = $folder_name.$delimiter;
 }
 
 if ($folder_prefix && (substr($folder_prefix, -1) != $delimiter)) {

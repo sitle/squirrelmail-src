@@ -3,7 +3,7 @@
 /**
  * plugin.php
  *
- * Copyright (c) 1999-2003 The SquirrelMail Project Team
+ * Copyright (c) 1999-2002 The SquirrelMail Project Team
  * Licensed under the GNU GPL. For full terms see the file COPYING.
  *
  * This file provides the framework for a plugin architecture.
@@ -18,8 +18,8 @@ $squirrelmail_plugin_hooks = array();
 
 /* This function adds a plugin. */
 function use_plugin ($name) {
-    if (file_exists(SM_PATH . "plugins/$name/setup.php")) {
-        include_once(SM_PATH . "plugins/$name/setup.php");
+    if (file_exists("../plugins/$name/setup.php")) {
+        include_once("../plugins/$name/setup.php");
         $function = "squirrelmail_plugin_init_$name";
         if (function_exists($function)) {
             $function();
@@ -69,23 +69,6 @@ function do_hook_function($name,$parm=NULL) {
 }
 
 
-
-/**
- * This function checks whether the user's USER_AGENT is known to
- * be broken. If so, returns true and the plugin is invisible to the
- * offending browser.
- */
-function soupNazi(){
-
-    $soup_menu = array('Mozilla/3','Mozilla/2','Mozilla/1', 'Opera 4',
-                       'Opera/4', 'OmniWeb', 'Lynx');
-    foreach($soup_menu as $browser) {
-        if(stristr($_SERVER['HTTP_USER_AGENT'], $browser)) {
-            return 1;
-        }
-    }
-    return 0;
-}
 /*************************************/
 /*** MAIN PLUGIN LOADING CODE HERE ***/
 /*************************************/
@@ -96,5 +79,20 @@ if (isset($plugins) && is_array($plugins)) {
         use_plugin($name);
     }
 }
+
+    /**
+     * This function checks whether the user's USER_AGENT is known to
+     * be broken. If so, returns true and the plugin is invisible to the
+     * offending browser.
+     */
+    function soupNazi(){
+
+        global $SQSPELL_SOUP_NAZI, $_SERVER;
+        
+        require_once('../plugins/squirrelspell/sqspell_config.php');
+
+        $soup_menu = explode( ',', $SQSPELL_SOUP_NAZI );
+        return( in_array( trim( $_SERVER['HTTP_USER_AGENT'] ), $soup_menu ) );
+    }
 
 ?>

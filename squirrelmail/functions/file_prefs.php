@@ -3,7 +3,7 @@
 /**
  * file_prefs.php
  *
- * Copyright (c) 1999-2003 The SquirrelMail Project Team
+ * Copyright (c) 1999-2002 The SquirrelMail Project Team
  * Licensed under the GNU GPL. For full terms see the file COPYING.
  *
  * This contains functions for manipulating user preferences in files
@@ -11,37 +11,37 @@
  * $Id$
  */
 
+
 /**
  * Check the preferences into the session cache.
  */
 function cachePrefValues($data_dir, $username) {
     global $prefs_are_cached, $prefs_cache;
-       
     if ( isset($prefs_are_cached) && $prefs_are_cached) {
         return;
     }
     
     sqsession_unregister('prefs_cache');
     sqsession_unregister('prefs_are_cached');
-    
+ 
+    /* Just in case we've got a slash into the user name */
+    $username = str_replace( '/', '.', $username );
+ 
     /* Calculate the filename for the user's preference file */
     $filename = getHashedFile($username, $data_dir, "$username.pref");
 
-    /* A call to checkForPrefs here should take eliminate the need for */
     /* this to be called throughout the rest of the SquirrelMail code. */
     checkForPrefs($data_dir, $username, $filename);
 
     /* Make sure that the preference file now DOES exist. */
     if (!file_exists($filename)) {
-        include_once(SM_PATH . 'functions/display_messages.php');
+        include_once( '../functions/display_messages.php' );
         logout_error( sprintf( _("Preference file, %s, does not exist. Log out, and log back in to create a default preference file."), $filename)  );
         exit;
     }
-
     /* Open the file, or else display an error to the user. */
-    if(!$file = @fopen($filename, 'r'))
-    {
-        include_once(SM_PATH . 'functions/display_messages.php');
+    if(!$file = @fopen($filename, 'r')) {
+        include_once( '../functions/display_messages.php' );
         logout_error( sprintf( _("Preference file, %s, could not be opened. Contact your system administrator to resolve this issue."), $filename) );
         exit;
     }
@@ -49,14 +49,14 @@ function cachePrefValues($data_dir, $username) {
     /* Read in the preferences. */
     $highlight_num = 0;
     while (! feof($file)) {
-        $pref = '';
-        /* keep reading a pref until we reach an eol (\n (or \r for macs)) */
-        while($read = fgets($file, 1024))
-        {
-                $pref .= $read;
-                if(strpos($read,"\n") || strpos($read,"\r"))
-                        break;
-        }
+	$pref = '';
+	/* keep reading a pref until we reach an eol (\n (or \r for macs)) */
+	while($read = fgets($file, 1024))
+	{
+		$pref .= $read;
+		if(strpos($read,"\n") || strpos($read,"\r"))
+			break;
+	}
         $pref = trim($pref);
         $equalsAt = strpos($pref, '=');
         if ($equalsAt > 0) {
@@ -86,19 +86,16 @@ function cachePrefValues($data_dir, $username) {
  */
 function getPref($data_dir, $username, $string, $default = '') {
     global $prefs_cache;
+    $result = '';
 
-    $result = do_hook_function('get_pref_override',array($username,$string));
-    if (!$result) {
-	cachePrefValues($data_dir, $username);
-	if (isset($prefs_cache[$string])) {
-    	    $result = $prefs_cache[$string];
-	} else {
-	    $result = do_hook_function('get_pref', array($username,$string));
-	    if (!$result) {	    
-    		$result = $default;
-	    }
-	}
+    cachePrefValues($data_dir, $username);
+
+    if (isset($prefs_cache[$string])) {
+        $result = $prefs_cache[$string];
+    } else {
+        $result = $default;
     }
+
     return ($result);
 }
 
@@ -107,16 +104,19 @@ function getPref($data_dir, $username, $string, $default = '') {
  */
 function savePrefValues($data_dir, $username) {
     global $prefs_cache;
-   
+
+    /* Just in case we've got a slash into the user name */
+    $username = str_replace( '/', '.', $username );
+
     $filename = getHashedFile($username, $data_dir, "$username.pref");
 
     /* Open the file for writing, or else display an error to the user. */
-    if(!$file = @fopen($filename.'.tmp', 'w'))
-    {
-        include_once(SM_PATH . 'functions/display_messages.php');
-        logout_error( sprintf( _("Preference file, %s, could not be opened. Contact your system administrator to resolve this issue."), $filename.'.tmp') );
+    if(!$file = @fopen($filename. '.tmp', 'w')) {
+        include_once( '../functions/display_messages.php' );
+        logout_error( sprintf( _("Preference file, %s, could not be opened. Contact your system administrator to resolve this issue."), "$filename.tmp") );
         exit;
     }
+
     foreach ($prefs_cache as $Key => $Value) {
         if (isset($Value)) {
             $tmpwrite = @fwrite($file, $Key . '=' . $Value . "\n");
@@ -143,7 +143,7 @@ function removePref($data_dir, $username, $string) {
     if (isset($prefs_cache[$string])) {
         unset($prefs_cache[$string]);
     }
- 
+
     savePrefValues($data_dir, $username);
 }
 
@@ -171,6 +171,10 @@ function setPref($data_dir, $username, $string, $value) {
  * Check for a preferences file. If one can not be found, create it.
  */
 function checkForPrefs($data_dir, $username, $filename = '') {
+
+    /* Just in case we've got a slash into the user name */
+    $username = str_replace( '/', '.', $username );
+	
     /* First, make sure we have the filename. */
     if ($filename == '') {
         $filename = getHashedFile($username, $data_dir, "$username.pref");
@@ -183,7 +187,7 @@ function checkForPrefs($data_dir, $username, $filename = '') {
 
         /* If it is not there, check the internal data directory. */
         if (!@file_exists($default_pref)) {
-            $default_pref = SM_PATH . 'data/default_pref';
+            $default_pref = '../data/default_pref';
         }
 
         /* Otherwise, report an error. */
@@ -192,7 +196,7 @@ function checkForPrefs($data_dir, $username, $filename = '') {
             $errString = $errTitle . "<br>\n" .
                          _("Default preference file not found or not readable!") . "<br>\n" .
                          _("Please contact your system administrator and report this error.") . "<br>\n";
-            include_once(SM_PATH . 'functions/display_messages.php' );
+            include_once( '../functions/display_messages.php' );
             logout_error( $errString, $errTitle );
             exit;
         } else if (!@copy($default_pref, $filename)) {
@@ -205,7 +209,7 @@ function checkForPrefs($data_dir, $username, $filename = '') {
                        _("Could not create initial preference file!") . "<br>\n" .
                        sprintf( _("%s should be writable by user %s"), $data_dir, $uid ) .
                        "<br>\n" . _("Please contact your system administrator and report this error.") . "<br>\n";
-            include_once(SM_PATH . 'functions/display_messages.php' );
+            include_once( '../functions/display_messages.php' );
             logout_error( $errString, $errTitle );
             exit;
         }
@@ -216,11 +220,15 @@ function checkForPrefs($data_dir, $username, $filename = '') {
  * Write the User Signature.
  */
 function setSig($data_dir, $username, $number, $value) {
+
+    /* Just in case we've got a slash into the user name */
+    $username = str_replace( '/', '.', $username );
+
     $filename = getHashedFile($username, $data_dir, "$username.si$number");
     /* Open the file for writing, or else display an error to the user. */
     if(!$file = @fopen("$filename.tmp", 'w')) {
         include_once( '../functions/display_messages.php' );
-        logout_error( sprintf( _("Signature file, %s, could not be opened. Contact your system administrator to resolve this issue."), $filename . '.tmp') );
+        logout_error( sprintf( _("Signature file, %s, could not be opened. Contact your system administrator to resolve this issue."), "$filename.tmp") );
         exit;
     }
     $tmpwrite = @fwrite($file, $value);
@@ -230,23 +238,25 @@ function setSig($data_dir, $username, $number, $value) {
        exit;
     }
     fclose($file);
-    @copy($filename . '.tmp',$filename);
-    @unlink($filename . '.tmp');
-    chmod($filename, 0600);
-
+    copy("$filename.tmp","$filename");
+    unlink("$filename.tmp");
 }
 
 /**
  * Get the signature.
  */
 function getSig($data_dir, $username, $number) {
+
+    /* Just in case we've got a slash into the user name */
+    $username = str_replace( '/', '.', $username );
+    
     $filename = getHashedFile($username, $data_dir, "$username.si$number");
     $sig = '';
     if (file_exists($filename)) {
+        $file = fopen($filename, 'r');
         /* Open the file, or else display an error to the user. */
-        if(!$file = @fopen($filename, 'r'))
-        {
-            include_once(SM_PATH . 'functions/display_messages.php');
+        if(!$file = @fopen($filename, 'r')) {
+            include_once( '../functions/display_messages.php' );
             logout_error( sprintf( _("Signature file, %s, could not be opened. Contact your system administrator to resolve this issue."), $filename) );
             exit;
         }

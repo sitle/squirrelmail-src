@@ -1,7 +1,7 @@
 <?PHP
 
 /* functions for info plugin
- * Copyright (c) 1999-2003 The SquirrelMail Project Team
+ * Copyright (c) 1999-2002 The SquirrelMail Project Team
  * Licensed under the GNU GPL. For full terms see the file COPYING.
  *
  * Here are two functions for the info plugin
@@ -10,9 +10,6 @@
  * The third prints the results of the IMAP command
  * to options.php.
  * by: Jason Munro jason@stdbev.com
- *
- * $Id$ 
- *
  */
 
 function get_caps($imap_stream) {

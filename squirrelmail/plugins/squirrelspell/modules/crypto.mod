@@ -4,7 +4,7 @@
  * --------------- 
  * Squirrelspell module
  *
- * Copyright (c) 1999-2003 The SquirrelMail development team
+ * Copyright (c) 1999-2002 The SquirrelMail development team
  * Licensed under the GNU GPL. For full terms see the file COPYING.
  *
  * This module handles the encryption/decryption of the user dictionary
@@ -21,7 +21,9 @@
  */
 global $SQSPELL_CRYPTO;
 
-switch ($_POST['action']){
+$action = $_POST['action'];
+
+switch ($action){
   case 'encrypt':
     /**
      * Let's encrypt the file and save it in an encrypted format.

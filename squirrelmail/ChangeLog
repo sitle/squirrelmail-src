@@ -1,149 +1,101 @@
 **************************************
-*** SquirrelMail Stable Series 1.4 ***
+*** SquirrelMail Stable Series 1.2 ***
 **************************************
 
-Version 1.4.0 CVS
--------------------
-  - Fixed the newmail plugin.
-  - Added RECENT response to sqimap_get_status.
-  - Fixed attachment filename resolving.
-  - Added check for X-Confirm-Reading-To to make MDN work messages send by Pine.
-  - sqextractGlobalVar removed (use sqgetGlobalVar instead).
-  - Subfolders of Sent and Drafts show To field instead of From
-  - Updates in conf.pl to infamous delete_folder setting, including
-    addition of appropriate default value for courier and UW.
-  
-Version 1.4.0 RC 2a
--------------------
-  - Fix broken themes box in display options.
-  - Massive overhaul of administrator plugin.
-  - Added new function sqgetGlobalVar to global.php to provide direct access
-    to variables in $_GET, $_POST, $_SESSION, $_COOKIE and $_SERVER.
-  - Patch from O'Shaughnessy Evans <shaug-sqm@wumpus.org> to allow disabled $org_logo
-  - Lots of language/internationalization updates
-  - conf.pl fixes for certain uses of SM_PATH, esp. $signout_page.
-  - SMTP & IMAP auth method "plain" was a misnomer - now corrected to 
-    the more accurate name "login" (Plain to be implemented soon).
-  - Fix for compose after search bug.  (Closes #662346)
-  - Improved error reporting when sending mail with SMTP.
-  - Changed SquirrelMail identification to use User-Agent instead of X-Mailer.
-  - Prevent endless loop when timezone config is not found. Thanks Joshua Colson.
-  - Fix IMAP error when returning to message from viewing image attachment.
-  - Do more trimming to indented subjects in threadview so they don't wrap.
-  - Trash folder now displays purge link in all cases. (Closes #655943)
-  - Fix typo in delete_move_next plugin which caused php file-handle errors.
-  - Make vCard more liberal in what it accepts (thanks Kurt Pires).
-  - Fix problem with subject encoding when using Japanse.
-  - Move login_form hook to be actually in the login form.
-  - Fix message_details plugin ability to save a raw message.
-  - Try better to get the filename of an attachment.
-  - Deliver_SMTP class now uses HTTP_HOST in SMTP HELO.  Should fix DNS
-    issues some people have reported. (Closes #560524)
-  - Obsolete sqm_topdir(), which caused login trouble with installs that
-    have open_basedir restrictions. Thanks Jimmy Connor.
-  - Fix broken abook_take plugin.
-  - Fix HTML errors that caused display problems in NS4.
-  - Correctly fold encoded header lines.
-  - Fix prefs caching not working correctly in PHP 4.3 caused by a stupid
-    version checking mechanism.
-  - Fix XXS hole that allowed JavaScript execution by sending someone
-    an email with specially crafted headers. Thanks Jason Munro, and
-    Masato Higashiyama.
+Version 1.2.11 -- 9 February 2003
+----------------------------------
+  - Closed some cross site scripting (XSS) bugs:
+     * Vulnerabilities in the mail_fetch plugin fixed.
+     * Vulnerabilities in the calendar plugin fixed.
+     * Vulnerabilities in the mailbox display fixed.
+     * Vulnerabilities in the mailer headers.
+  - Fixed some small HTML validity issues here and there.
+  - Fixed a bug that prevented login to multiple domain exchange servers.
+  - Fixed a bug with IIS servers that caused some redirects to fail.
+  - Fix sqmtopdir that would give an error in rare occasions.
+  - New language: Ukrainian.
+  - Made sure subfolders of Sent are treated appropriately.
+  - Fixed Attachment Common for Mozilla 1.x.
+  - Bugfix to session handling once again.
+  - Fixes to character set iso-8859-9.
+  - Support for character set iso-8859-5.
 
 
-Version 1.4.0 RC 1
-------------------
-  - Change the way highlighting rules are stored to make them more reliable and
-    easier to manage.
-  - Reorganization of conf.pl, menu #2
-  - Added CRAM-MD5 and DIGEST-MD5 authentication support for IMAP and SMTP
-  - Experimental TLS support for IMAP and SMTP (requires PHP 4.3.x)
-  - Override settings with config_local.php
-  - Compose form no longer shows attachment options if php file_uploads
-    disabled
-  - Improved bodystructure parsing.
-  - Support for windows-1257 charset.
-  - Optimizations to the number of IMAP calls.
-  - Fix problem with IE6 + iso-8859-13.
-  - Allow Mail Fetch to use a different POP3 server port number.
-  - Force magic_quotes_runtime to be off to avoid problems with this setting.
-  - Introduce check_sm_version function for plugins wanting to know
-    which version of SquirrelMail this is.
-  - Configurable session name to avoid conflicts with other PHP applications.
-  - Miscellaneous fixes for systems with error_reporting set to E_ALL.
-  - Many many other bugfixes and tweaks!
+Version 1.2.10 -- 2 December 2002
+---------------------------------
+  - Fixed version checking to ignore patch levels.
+  - Fixed bugs / worked around PHP problems in sqsession_register.
+    This should fix a small range of session-related problems.
+  - Introduce session naming to avoid session collision with other apps.
+  - Fixed that long preferences lines where not being read correctly.
+  - Raised requirements to PHP 4.0.4 (was 4.0.2).
+  - Support for charactersets 8859-4, 8859-13 and windows-1257.
+  - Fixed problem with IE6 and iso-8859-13.
+  - Various E_ALL messages eliminated.
+  - Many updated translations.
+  - Allow POP3-server port number to be set in mail_fetch.
+  - Fixed sqm_topdir starting at the root.
 
 
-*************************************
-*** SquirrelMail Devel Series 1.3 ***
-*************************************
+Version 1.2.9 -- October 30, 2002
+---------------------------------
+  - Do not lose user prefs/sigs/abooks when trying to save to a full disk
+  - Reply now checks for multiple identities, bug #562303
+  - Fix for user prefs getting overwritten bugs #587860, 572502
+  - Fix adding events to calendar on Windows systems
+  - Improved session management system. 
+  - Fix src directory being moved on Windows systems, bugs #586518 
+    #605256 #610676.
+  - Bugfixes for using SquirrelMail with register_globals = off
+  - Write/close session before redirecting after login; this should (partially)
+    solve the "You must be logged in"-trouble.
+  - Enable TZ in safe_mode if safe_mode_allowed_env_vars permits this bug
+    #612148.
+  - Fix some bugs in the folder management system.
+  - Work around an Opera bug which caused SquirrelMail to be unusable with
+    that browser.
+  - Change the way highlighting rules are stored; this should lead to a
+    more reliable highlighting rules system.
+  - Various minor fixes and enhancements.
 
 
-Version 1.3.2
--------------
-  - Rewrite of message delivery related functions.
-  - User interface modifications.
-  - Added Japanese support thanks to Masato HIGASHIYAMA <masato@yamaai-tech.com>
-  - Remove NOOP checks in the POP3 client of mail_fetch to make things more
-    compatible and not break things which don't need to be broken.
-  - Fix src directory being moved on Windows systems, bugs #586518 #605256 #610676.
-  - This release is compatible with installations that have register_globals set to off.
-  - Do not lose user prefs/sigs/abooks when trying to save to a full disk.
-  - Make the SquirrelMail link on the right top configurable so a provider can point
-    to their own FAQ for example.
-  - Enable TZ in safe_mode if safe_mode_allowed_env_vars permits this bug #612148.
-  - Fix some bugs in folder management (create, delete,...) and add enhancements.
+Version 1.2.8 -- September 14, 2002
+-----------------------------------
+  - Merging contrib/RPM/* files with RH's version of RPM, since
+    I'd rather let them do all the hard work. :)
+  - HTML cleanup on search and addressbook pages
+  - Fixes for multiple XXS exploits on the addressbook,
+    search, help, and options pages
+  - more accurate error messages on failed login
+  - HTML table cleanup when viewing attachments
+  - fix for X-MSMail-Priority conflict bug #600369
+  - fix for multiple email addresses on the same message line
+  - fix for "." on a single line in a text attachment bug #598750
+  - Core code and plugins converted to work with register_globals Off
+  - fix for reply quoting on resumed drafts
+  - fix for fgets errors in file_prefs bug #578834
+  - fix for date format on calendar day view bug #582919
+  - fix for org. logo width/height values bug #572807
+  - fix for reading/writing ldap prefs with conf.pl bug #57595
+  - fix for 'fixed' font style in css bug #571463
+  - fix for attachments in safe mode bug #585340
+  - fix for forward attachment bug #585836
+  - fix for php warning when saving drafts bug #585012
+  - returned generic_header hook to page_header.php bug #554278
+  - fix for syntax error in darkness theme bug #576066
+  - fix for some attachments not being displayed bug #577052
+  - fix for matching uppercase headers on mailbox display bug #584082
+  - fix for folder names containing regex characters bug #574889, #578156
+  - fix for endless loop on raw binary data in email bug #547662
 
-Version 1.3.1
--------------
-  - lots of fixes by Marc, including #596781 and #596930
-
-Version 1.3.0
--------------
-  - allow_call_time_by_reference=off fixes.
-  - Added forward as attachment in read_body.
-  - Better clean-up of left attachments at login.
-  - Restore compose sessions in case of a expired session.
-  - Added "Display Message" / "Up" links in read_body to navigate in messages with
-    attached messages (message/rfc822).
-  - Don't activate the Send Receipt link when the folder is the Sent folder.
-  - Moved view_header code out of read_body.php and put it in view_header.php.
-  - Open message/rfc822 attachments in read_body what makes it possible to
-    reply to attached messages.
-  - Rewrite of the newMail function in compose.php. This simplifies the 
-    interface between read_body.php and compose.php.
-  - Moved compose related code from read_body to compose.
-  - Rewrite of mailbox-display to make it more modular (we use it in search.php).
-  - Added support for displaying multiple entities.
-  - Changed finding display entities.
-  - Extract disposition and xmailer header information in the headerparser 
-    instead of request them individualy by an imap-call.
-  - Store message objects in the current session. This saves a lot of imap-calls.
-  - Added UID support.
-  - Store addresses in an object instead of a string.
-  - Rewrite of the bodystructureparser function. Now the message object contains 
-    all described parameters in RFC2060.
-  - Introduction of the mime class where all mime related functions are situated
-  - Fixed removing MDN attachments.
-  - Fixed MDN problems with js confirmbox.
-  - Speedimprovements in case we download mime-entities.
-  - Added possibility to extract message/rfc822 attachments and store them as
-    the original message in a folder. 
-  - Right to left languages implementation initiated
-  - Enable people with file_uploads = off to still send mail. Patch from Seth
-    E. Randall.
-  - Moved the generic_header hook back to page_header.php. bug #554278
-  - Make default theme work. Bug #557313, thanks Tyler Bannister.
-
-  
-Version 1.2.7 -- June 21 2002
------------------------------
+Version 1.2.7 -- June 21, 2002
+------------------------------
   - fix for 'compose as new' link. bug #554886
   - fix charset format in the admin plugin. bug #550725
   - fix for errant '.' in default_folder_prefix. bug #551310
   - fix for folder names with '?' and '*'. bug # 559257, #552180
   - added the ability to search without the charset argument. #552288
-  - Made /noselect node display optional. bug #554988, patch #452178 
+  - Made /noselect node display optional. bug #554988, patch #452178
   - Improved support for macosx IMAP server thanks Brian Haun
   - Added macosx friendly search, thanks Brian Haun bug #553038
   - Fixed word wrap problems when sending mail. bug #552961, #556143

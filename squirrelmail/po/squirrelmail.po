@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2003-01-25 09:07+0100\n"
+"POT-Creation-Date: 2002-12-07 18:05+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -124,6 +124,15 @@ msgstr ""
 msgid "Add to %s"
 msgstr ""
 
+msgid "Draft Email Saved"
+msgstr ""
+
+msgid "Could not move/copy file. File not attached"
+msgstr ""
+
+msgid "Original Message"
+msgstr ""
+
 msgid "Subject"
 msgstr ""
 
@@ -131,15 +140,6 @@ msgid "From"
 msgstr ""
 
 msgid "Date"
-msgstr ""
-
-msgid "Original Message"
-msgstr ""
-
-msgid "Draft Email Saved"
-msgstr ""
-
-msgid "Could not move/copy file. File not attached"
 msgstr ""
 
 msgid "Draft Saved"
@@ -190,7 +190,7 @@ msgstr ""
 msgid "Receipt"
 msgstr ""
 
-msgid "On Read"
+msgid "On read"
 msgstr ""
 
 msgid "On Delivery"
@@ -217,10 +217,31 @@ msgstr ""
 msgid "who"
 msgstr ""
 
-msgid "Draft folder"
+msgid "Viewing a text attachment"
 msgstr ""
 
-msgid "Server replied: "
+msgid "View message"
+msgstr ""
+
+msgid "Download this as a file"
+msgstr ""
+
+msgid "Viewing a message attachment"
+msgstr ""
+
+msgid "Date:"
+msgstr ""
+
+msgid "Cc:"
+msgstr ""
+
+msgid "Bcc:"
+msgstr ""
+
+msgid "more"
+msgstr ""
+
+msgid "less"
 msgstr ""
 
 msgid "Illegal folder name.  Please select a different name."
@@ -230,19 +251,6 @@ msgid "Click here to go back"
 msgstr ""
 
 msgid "You have not selected a folder to delete. Please do so."
-msgstr ""
-
-msgid "Delete Folder"
-msgstr ""
-
-#, c-format
-msgid "Are you sure you want to delete %s?"
-msgstr ""
-
-msgid "Yes"
-msgstr ""
-
-msgid "No"
 msgstr ""
 
 msgid "Folders"
@@ -261,9 +269,6 @@ msgid "Created folder successfully!"
 msgstr ""
 
 msgid "Renamed successfully!"
-msgstr ""
-
-msgid "Subscription Unsuccessful - Folder does not exist."
 msgstr ""
 
 msgid "refresh folder list"
@@ -296,6 +301,9 @@ msgstr ""
 msgid "No folders found"
 msgstr ""
 
+msgid "Delete Folder"
+msgstr ""
+
 msgid "Delete"
 msgstr ""
 
@@ -309,9 +317,6 @@ msgid "No folders were found to unsubscribe from!"
 msgstr ""
 
 msgid "No folders were found to subscribe to!"
-msgstr ""
-
-msgid "Subscribe to:"
 msgstr ""
 
 msgid "You have not selected a folder to rename. Please do so."
@@ -356,15 +361,6 @@ msgstr ""
 msgid "Viewing an image attachment"
 msgstr ""
 
-msgid "View message"
-msgstr ""
-
-msgid "Download this as a file"
-msgstr ""
-
-msgid "Not available"
-msgstr ""
-
 msgid "INBOX"
 msgstr ""
 
@@ -372,9 +368,6 @@ msgid "purge"
 msgstr ""
 
 msgid "Last Refresh"
-msgstr ""
-
-msgid "Save folder tree"
 msgstr ""
 
 msgid "Login"
@@ -401,7 +394,223 @@ msgstr ""
 msgid "Password:"
 msgstr ""
 
+msgid "<No subject>"
+msgstr ""
+
 msgid "No messages were selected."
+msgstr ""
+
+msgid "General Display Options"
+msgstr ""
+
+msgid "Theme"
+msgstr ""
+
+msgid "Default"
+msgstr ""
+
+msgid "Custom Stylesheet"
+msgstr ""
+
+msgid "Language"
+msgstr ""
+
+msgid "Use Javascript"
+msgstr ""
+
+msgid "Autodetect"
+msgstr ""
+
+msgid "Always"
+msgstr ""
+
+msgid "Never"
+msgstr ""
+
+msgid "Mailbox Display Options"
+msgstr ""
+
+msgid "Number of Messages to Index"
+msgstr ""
+
+msgid "Enable Alternating Row Colors"
+msgstr ""
+
+msgid "Enable Page Selector"
+msgstr ""
+
+msgid "Maximum Number of Pages to Show"
+msgstr ""
+
+msgid "Message Display and Composition"
+msgstr ""
+
+msgid "Wrap Incoming Text At"
+msgstr ""
+
+msgid "Size of Editor Window"
+msgstr ""
+
+msgid "Location of Buttons when Composing"
+msgstr ""
+
+msgid "Before headers"
+msgstr ""
+
+msgid "Between headers and message body"
+msgstr ""
+
+msgid "After message body"
+msgstr ""
+
+msgid "Addressbook Display Format"
+msgstr ""
+
+msgid "Javascript"
+msgstr ""
+
+msgid "HTML"
+msgstr ""
+
+msgid "Show HTML Version by Default"
+msgstr ""
+
+msgid "Include Me in CC when I Reply All"
+msgstr ""
+
+msgid "Include CCs when forwarding messages"
+msgstr ""
+
+msgid "Enable Mailer Display"
+msgstr ""
+
+msgid "Display Attached Images with Message"
+msgstr ""
+
+msgid "Enable Subtle Printer Friendly Link"
+msgstr ""
+
+msgid "Enable Printer Friendly Clean Display"
+msgstr ""
+
+msgid "Enable request/confirm reading"
+msgstr ""
+
+msgid "Always compose in a new window"
+msgstr ""
+
+msgid "Width of compose window"
+msgstr ""
+
+msgid "Height of compose window"
+msgstr ""
+
+msgid "Append signature before reply/forward text"
+msgstr ""
+
+msgid "Use receive date for sort"
+msgstr ""
+
+msgid "Use References header for thread sort"
+msgstr ""
+
+msgid "Special Folder Options"
+msgstr ""
+
+msgid "Folder Path"
+msgstr ""
+
+msgid "Do not use Trash"
+msgstr ""
+
+msgid "Trash Folder"
+msgstr ""
+
+msgid "Do not use Sent"
+msgstr ""
+
+msgid "Sent Folder"
+msgstr ""
+
+msgid "Do not use Drafts"
+msgstr ""
+
+msgid "Draft Folder"
+msgstr ""
+
+msgid "Folder List Options"
+msgstr ""
+
+msgid "Location of Folder List"
+msgstr ""
+
+msgid "Left"
+msgstr ""
+
+msgid "Right"
+msgstr ""
+
+msgid "pixels"
+msgstr ""
+
+msgid "Width of Folder List"
+msgstr ""
+
+msgid "Minutes"
+msgstr ""
+
+msgid "Seconds"
+msgstr ""
+
+msgid "Minute"
+msgstr ""
+
+msgid "Auto Refresh Folder List"
+msgstr ""
+
+msgid "Enable Unread Message Notification"
+msgstr ""
+
+msgid "No Notification"
+msgstr ""
+
+msgid "Only INBOX"
+msgstr ""
+
+msgid "All Folders"
+msgstr ""
+
+msgid "Unread Message Notification Type"
+msgstr ""
+
+msgid "Only Unseen"
+msgstr ""
+
+msgid "Unseen and Total"
+msgstr ""
+
+msgid "Enable Collapsable Folders"
+msgstr ""
+
+msgid "Show Clock on Folders Panel"
+msgstr ""
+
+msgid "No Clock"
+msgstr ""
+
+msgid "Hour Format"
+msgstr ""
+
+msgid "12-hour clock"
+msgstr ""
+
+msgid "24-hour clock"
+msgstr ""
+
+msgid "Memory Search"
+msgstr ""
+
+msgid "Disabled"
 msgstr ""
 
 msgid "Options"
@@ -414,12 +623,6 @@ msgid "New"
 msgstr ""
 
 msgid "Done"
-msgstr ""
-
-msgid "To or Cc"
-msgstr ""
-
-msgid "subject"
 msgstr ""
 
 msgid "Edit"
@@ -482,17 +685,20 @@ msgstr ""
 msgid "Ex: 63aa7f"
 msgstr ""
 
-msgid "Matches"
+msgid "To or Cc"
 msgstr ""
 
-#, c-format
-msgid "Alternate Identity %d"
+msgid "Matches"
 msgstr ""
 
 msgid "Advanced Identities"
 msgstr ""
 
 msgid "Default Identity"
+msgstr ""
+
+#, c-format
+msgid "Alternate Identity %d"
 msgstr ""
 
 msgid "Add a New Identity"
@@ -544,6 +750,63 @@ msgid "remove"
 msgstr ""
 
 msgid "Return to options page"
+msgstr ""
+
+msgid "Name and Address Options"
+msgstr ""
+
+msgid "Email Address"
+msgstr ""
+
+msgid "Edit Advanced Identities"
+msgstr ""
+
+msgid "(discards changes made on this form so far)"
+msgstr ""
+
+msgid "Multiple Identities"
+msgstr ""
+
+msgid "Same as server"
+msgstr ""
+
+msgid "Timezone Options"
+msgstr ""
+
+msgid "Your current timezone"
+msgstr ""
+
+msgid "Reply Citation Options"
+msgstr ""
+
+msgid "Reply Citation Style"
+msgstr ""
+
+msgid "No Citation"
+msgstr ""
+
+msgid "AUTHOR Said"
+msgstr ""
+
+msgid "Quote Who XML"
+msgstr ""
+
+msgid "User-Defined"
+msgstr ""
+
+msgid "User-Defined Citation Start"
+msgstr ""
+
+msgid "User-Defined Citation End"
+msgstr ""
+
+msgid "Signature Options"
+msgstr ""
+
+msgid "Use Signature"
+msgstr ""
+
+msgid "Prefix Signature with '-- ' Line"
 msgstr ""
 
 msgid "Personal Information"
@@ -601,10 +864,10 @@ msgstr ""
 msgid "Print"
 msgstr ""
 
-msgid "View Printable Version"
+msgid "Close Window"
 msgstr ""
 
-msgid "Read:"
+msgid "View Printable Version"
 msgstr ""
 
 msgid "Your message"
@@ -617,13 +880,31 @@ msgstr ""
 msgid "Was displayed on %s"
 msgstr ""
 
-msgid "less"
+msgid "Read:"
 msgstr ""
 
-msgid "more"
+msgid "Viewing Full Header"
 msgstr ""
 
-msgid "Unknown sender"
+msgid "Message List"
+msgstr ""
+
+msgid "Resume Draft"
+msgstr ""
+
+msgid "Edit Message as New"
+msgstr ""
+
+msgid "Forward"
+msgstr ""
+
+msgid "Reply"
+msgstr ""
+
+msgid "Reply All"
+msgstr ""
+
+msgid "View Full Header"
 msgstr ""
 
 msgid "Mailer"
@@ -638,54 +919,21 @@ msgstr ""
 msgid "requested"
 msgstr ""
 
+msgid "Send read receipt now"
+msgstr ""
+
 msgid ""
 "The message sender has requested a response to indicate that you have read "
 "this message. Would you like to send a receipt?"
 msgstr ""
 
-msgid "Send read receipt now"
-msgstr ""
-
-msgid "Search results"
-msgstr ""
-
-msgid "Message List"
-msgstr ""
-
-msgid "Resume Draft"
-msgstr ""
-
-msgid "Edit Message as New"
-msgstr ""
-
-msgid "View Message"
-msgstr ""
-
-msgid "Up"
-msgstr ""
-
-msgid "Forward"
-msgstr ""
-
-msgid "Forward as Attachment"
-msgstr ""
-
-msgid "Reply"
-msgstr ""
-
-msgid "Reply All"
-msgstr ""
-
-msgid "View Full Header"
-msgstr ""
-
-msgid "Attachments"
-msgstr ""
-
 msgid "You must be logged in to access this page."
 msgstr ""
 
-msgid "Folder:"
+msgid "There was an error contacting the mail server."
+msgstr ""
+
+msgid "Contact your administrator for help."
 msgstr ""
 
 msgid "edit"
@@ -709,9 +957,6 @@ msgstr ""
 msgid "Current Search"
 msgstr ""
 
-msgid "All Folders"
-msgstr ""
-
 msgid "Body"
 msgstr ""
 
@@ -721,7 +966,7 @@ msgstr ""
 msgid "Search Results"
 msgstr ""
 
-msgid "No Messages Found"
+msgid "No Messages found"
 msgstr ""
 
 msgid "Sign Out"
@@ -769,13 +1014,10 @@ msgstr ""
 msgid "Add to Addressbook"
 msgstr ""
 
+msgid "Note Field Contains"
+msgstr ""
+
 msgid "Title & Org. / Dept."
-msgstr ""
-
-msgid "Viewing Full Header"
-msgstr ""
-
-msgid "Viewing a text attachment"
 msgstr ""
 
 msgid "Personal address book"
@@ -876,6 +1118,27 @@ msgstr ""
 msgid "Saturday"
 msgstr ""
 
+msgid "Sun"
+msgstr ""
+
+msgid "Mon"
+msgstr ""
+
+msgid "Tue"
+msgstr ""
+
+msgid "Wed"
+msgstr ""
+
+msgid "Thu"
+msgstr ""
+
+msgid "Fri"
+msgstr ""
+
+msgid "Sat"
+msgstr ""
+
 msgid "January"
 msgstr ""
 
@@ -910,6 +1173,39 @@ msgid "November"
 msgstr ""
 
 msgid "December"
+msgstr ""
+
+msgid "Jan"
+msgstr ""
+
+msgid "Feb"
+msgstr ""
+
+msgid "Mar"
+msgstr ""
+
+msgid "Apr"
+msgstr ""
+
+msgid "Jun"
+msgstr ""
+
+msgid "Jul"
+msgstr ""
+
+msgid "Aug"
+msgstr ""
+
+msgid "Sep"
+msgstr ""
+
+msgid "Oct"
+msgstr ""
+
+msgid "Nov"
+msgstr ""
+
+msgid "Dec"
 msgstr ""
 
 msgid "D, F j, Y g:i a"
@@ -997,14 +1293,6 @@ msgid ""
 "to resolve this issue."
 msgstr ""
 
-msgid ""
-"You need to have php4 installed with the multibyte string function enabled "
-"(using configure option --with-mbstring)."
-msgstr ""
-
-msgid "ERROR : No available imapstream."
-msgstr ""
-
 msgid "ERROR : Could not complete request."
 msgstr ""
 
@@ -1035,17 +1323,6 @@ msgstr ""
 msgid "Read data:"
 msgstr ""
 
-msgid "ERROR : Could not append message to"
-msgstr ""
-
-msgid "Solution: "
-msgstr ""
-
-msgid ""
-"Remove unneccessary messages from your folder and start with your Trash "
-"folder."
-msgstr ""
-
 msgid "Unknown response from IMAP server: "
 msgstr ""
 
@@ -1058,29 +1335,36 @@ msgstr ""
 msgid "Unknown Sender"
 msgstr ""
 
+msgid "No To Address"
+msgstr ""
+
 msgid "(unknown sender)"
 msgstr ""
 
-msgid "Unknown date"
+msgid "No Messages Found"
+msgstr ""
+
+msgid "Folder:"
+msgstr ""
+
+msgid "Found"
+msgstr ""
+
+msgid "messages"
 msgstr ""
 
 msgid "A"
 msgstr ""
 
 msgid ""
-"Thread sorting is not supported by your IMAP server.<br>Please report this "
-"to the system administrator."
-msgstr ""
-
-msgid ""
 "Server-side sorting is not supported by your IMAP server.<br>Please report "
-"this to the system administrator."
+"this to the system administrator"
 msgstr ""
 
 msgid "THIS FOLDER IS EMPTY"
 msgstr ""
 
-msgid "Move Selected To"
+msgid "Move Selected To:"
 msgstr ""
 
 msgid "Transform Selected Messages"
@@ -1130,10 +1414,7 @@ msgstr ""
 msgid "Show All"
 msgstr ""
 
-msgid "SquirrelMail could not decode the bodystructure of the message"
-msgstr ""
-
-msgid "the provided bodystructure by your imap-server"
+msgid "Error decoding mime structure.  Report this as a bug!"
 msgstr ""
 
 msgid ""
@@ -1159,6 +1440,9 @@ msgstr ""
 msgid "View Unsafe Images"
 msgstr ""
 
+msgid "Attachments"
+msgstr ""
+
 msgid "download"
 msgstr ""
 
@@ -1167,6 +1451,12 @@ msgstr ""
 
 #, c-format
 msgid "Option Type '%s' Not Found"
+msgstr ""
+
+msgid "Yes"
+msgstr ""
+
+msgid "No"
 msgstr ""
 
 msgid "Current Folder"
@@ -1180,794 +1470,6 @@ msgid "Error creating directory %s."
 msgstr ""
 
 msgid "Could not create hashed directory structure!"
-msgstr ""
-
-msgid "Service not available, closing channel"
-msgstr ""
-
-msgid "A password transition is needed"
-msgstr ""
-
-msgid "Requested mail action not taken: mailbox unavailable"
-msgstr ""
-
-msgid "Requested action aborted: error in processing"
-msgstr ""
-
-msgid "Requested action not taken: insufficient system storage"
-msgstr ""
-
-msgid "Temporary authentication failure"
-msgstr ""
-
-msgid "Syntax error; command not recognized"
-msgstr ""
-
-msgid "Syntax error in parameters or arguments"
-msgstr ""
-
-msgid "Command not implemented"
-msgstr ""
-
-msgid "Bad sequence of commands"
-msgstr ""
-
-msgid "Command parameter not implemented"
-msgstr ""
-
-msgid "Authentication required"
-msgstr ""
-
-msgid "Authentication mechanism is too weak"
-msgstr ""
-
-msgid "Authentication failed"
-msgstr ""
-
-msgid "Encryption required for requested authentication mechanism"
-msgstr ""
-
-msgid "Requested action not taken: mailbox unavailable"
-msgstr ""
-
-msgid "User not local; please try forwarding"
-msgstr ""
-
-msgid "Requested mail action aborted: exceeding storage allocation"
-msgstr ""
-
-msgid "Requested action not taken: mailbox name not allowed"
-msgstr ""
-
-msgid "Transaction failed"
-msgstr ""
-
-msgid "Unknown response"
-msgstr ""
-
-msgid "General Display Options"
-msgstr ""
-
-msgid "Theme"
-msgstr ""
-
-msgid "Default"
-msgstr ""
-
-msgid "Custom Stylesheet"
-msgstr ""
-
-msgid "Language"
-msgstr ""
-
-msgid "Use Javascript"
-msgstr ""
-
-msgid "Autodetect"
-msgstr ""
-
-msgid "Always"
-msgstr ""
-
-msgid "Never"
-msgstr ""
-
-msgid "Mailbox Display Options"
-msgstr ""
-
-msgid "Number of Messages to Index"
-msgstr ""
-
-msgid "Enable Alternating Row Colors"
-msgstr ""
-
-msgid "Enable Page Selector"
-msgstr ""
-
-msgid "Maximum Number of Pages to Show"
-msgstr ""
-
-msgid "Message Display and Composition"
-msgstr ""
-
-msgid "Wrap Incoming Text At"
-msgstr ""
-
-msgid "Size of Editor Window"
-msgstr ""
-
-msgid "Location of Buttons when Composing"
-msgstr ""
-
-msgid "Before headers"
-msgstr ""
-
-msgid "Between headers and message body"
-msgstr ""
-
-msgid "After message body"
-msgstr ""
-
-msgid "Addressbook Display Format"
-msgstr ""
-
-msgid "Javascript"
-msgstr ""
-
-msgid "HTML"
-msgstr ""
-
-msgid "Show HTML Version by Default"
-msgstr ""
-
-msgid "Enable Forward as Attachment"
-msgstr ""
-
-msgid "Include CCs when Forwarding Messages"
-msgstr ""
-
-msgid "Include Me in CC when I Reply All"
-msgstr ""
-
-msgid "Enable Mailer Display"
-msgstr ""
-
-msgid "Display Attached Images with Message"
-msgstr ""
-
-msgid "Enable Printer Friendly Clean Display"
-msgstr ""
-
-msgid "Enable Mail Delivery Notification"
-msgstr ""
-
-msgid "Compose Messages in New Window"
-msgstr ""
-
-msgid "Width of Compose Window"
-msgstr ""
-
-msgid "Height of Compose Window"
-msgstr ""
-
-msgid "Append Signature before Reply/Forward Text"
-msgstr ""
-
-msgid "Enable Sort by of Receive Date"
-msgstr ""
-
-msgid "Enable Thread Sort by References Header"
-msgstr ""
-
-msgid "Special Folder Options"
-msgstr ""
-
-msgid "Folder Path"
-msgstr ""
-
-msgid "Do not use Trash"
-msgstr ""
-
-msgid "Trash Folder"
-msgstr ""
-
-msgid "Do not use Sent"
-msgstr ""
-
-msgid "Sent Folder"
-msgstr ""
-
-msgid "Do not use Drafts"
-msgstr ""
-
-msgid "Draft Folder"
-msgstr ""
-
-msgid "Folder List Options"
-msgstr ""
-
-msgid "Location of Folder List"
-msgstr ""
-
-msgid "Left"
-msgstr ""
-
-msgid "Right"
-msgstr ""
-
-msgid "pixels"
-msgstr ""
-
-msgid "Width of Folder List"
-msgstr ""
-
-msgid "Minutes"
-msgstr ""
-
-msgid "Seconds"
-msgstr ""
-
-msgid "Minute"
-msgstr ""
-
-msgid "Auto Refresh Folder List"
-msgstr ""
-
-msgid "Enable Unread Message Notification"
-msgstr ""
-
-msgid "No Notification"
-msgstr ""
-
-msgid "Only INBOX"
-msgstr ""
-
-msgid "Unread Message Notification Type"
-msgstr ""
-
-msgid "Only Unseen"
-msgstr ""
-
-msgid "Unseen and Total"
-msgstr ""
-
-msgid "Enable Collapsable Folders"
-msgstr ""
-
-msgid "Enable Cumulative Unread Message Notification"
-msgstr ""
-
-msgid "Show Clock on Folders Panel"
-msgstr ""
-
-msgid "No Clock"
-msgstr ""
-
-msgid "Hour Format"
-msgstr ""
-
-msgid "12-hour clock"
-msgstr ""
-
-msgid "24-hour clock"
-msgstr ""
-
-msgid "Memory Search"
-msgstr ""
-
-msgid "Disabled"
-msgstr ""
-
-msgid "Folder Selection Options"
-msgstr ""
-
-msgid "Selection List Style"
-msgstr ""
-
-msgid "Long: "
-msgstr ""
-
-msgid "Indented: "
-msgstr ""
-
-msgid "Delimited: "
-msgstr ""
-
-msgid "Name and Address Options"
-msgstr ""
-
-msgid "Email Address"
-msgstr ""
-
-msgid "Edit Advanced Identities"
-msgstr ""
-
-msgid "(discards changes made on this form so far)"
-msgstr ""
-
-msgid "Multiple Identities"
-msgstr ""
-
-msgid "Same as server"
-msgstr ""
-
-msgid "Error opening timezone config, contact administrator."
-msgstr ""
-
-msgid "Timezone Options"
-msgstr ""
-
-msgid "Your current timezone"
-msgstr ""
-
-msgid "Reply Citation Options"
-msgstr ""
-
-msgid "Reply Citation Style"
-msgstr ""
-
-msgid "No Citation"
-msgstr ""
-
-msgid "AUTHOR Said"
-msgstr ""
-
-msgid "Quote Who XML"
-msgstr ""
-
-msgid "User-Defined"
-msgstr ""
-
-msgid "User-Defined Citation Start"
-msgstr ""
-
-msgid "User-Defined Citation End"
-msgstr ""
-
-msgid "Signature Options"
-msgstr ""
-
-msgid "Use Signature"
-msgstr ""
-
-msgid "Prefix Signature with '-- ' Line"
-msgstr ""
-
-msgid "Take Address"
-msgstr ""
-
-msgid "Address Book Take:"
-msgstr ""
-
-msgid "Try to verify addresses"
-msgstr ""
-
-msgid "Config File Version"
-msgstr ""
-
-msgid "Squirrelmail Version"
-msgstr ""
-
-msgid "PHP Version"
-msgstr ""
-
-msgid "Organization Preferences"
-msgstr ""
-
-msgid "Organization Name"
-msgstr ""
-
-msgid "Organization Logo"
-msgstr ""
-
-msgid "Organization Logo Width"
-msgstr ""
-
-msgid "Organization Logo Height"
-msgstr ""
-
-msgid "Organization Title"
-msgstr ""
-
-msgid "Signout Page"
-msgstr ""
-
-msgid "Provider Link URI"
-msgstr ""
-
-msgid "Provider Name"
-msgstr ""
-
-msgid "Default Language"
-msgstr ""
-
-msgid "Top Frame"
-msgstr ""
-
-msgid "Server Settings"
-msgstr ""
-
-msgid "Mail Domain"
-msgstr ""
-
-msgid "IMAP Server Address"
-msgstr ""
-
-msgid "IMAP Server Port"
-msgstr ""
-
-msgid "IMAP Server Type"
-msgstr ""
-
-msgid "Cyrus IMAP server"
-msgstr ""
-
-msgid "University of Washington's IMAP server"
-msgstr ""
-
-msgid "Microsoft Exchange IMAP server"
-msgstr ""
-
-msgid "Courier IMAP server"
-msgstr ""
-
-msgid "Not one of the above servers"
-msgstr ""
-
-msgid "IMAP Folder Delimiter"
-msgstr ""
-
-msgid "Use \"detect\" to auto-detect."
-msgstr ""
-
-msgid "Use TLS for IMAP Connections"
-msgstr ""
-
-msgid "Requires PHP 4.3.x! Experimental."
-msgstr ""
-
-msgid "IMAP Authentication Type"
-msgstr ""
-
-msgid "Use Sendmail Binary"
-msgstr ""
-
-msgid "Sendmail Path"
-msgstr ""
-
-msgid "SMTP Server Address"
-msgstr ""
-
-msgid "SMTP Server Port"
-msgstr ""
-
-msgid "Use TLS for SMTP Connections"
-msgstr ""
-
-msgid "SMTP Authentication Type"
-msgstr ""
-
-msgid "POP3 Before SMTP?"
-msgstr ""
-
-msgid "Invert Time"
-msgstr ""
-
-msgid "Use Confirmation Flags"
-msgstr ""
-
-msgid "Folders Defaults"
-msgstr ""
-
-msgid "Default Folder Prefix"
-msgstr ""
-
-msgid "Show Folder Prefix Option"
-msgstr ""
-
-msgid "By default, move to trash"
-msgstr ""
-
-msgid "By default, move to sent"
-msgstr ""
-
-msgid "By default, save as draft"
-msgstr ""
-
-msgid "List Special Folders First"
-msgstr ""
-
-msgid "Show Special Folders Color"
-msgstr ""
-
-msgid "Auto Expunge"
-msgstr ""
-
-msgid "Default Sub. of INBOX"
-msgstr ""
-
-msgid "Show 'Contain Sub.' Option"
-msgstr ""
-
-msgid "Default Unseen Notify"
-msgstr ""
-
-msgid "Default Unseen Type"
-msgstr ""
-
-msgid "Auto Create Special Folders"
-msgstr ""
-
-msgid "Default Javascript Adrressbook"
-msgstr ""
-
-msgid "Auto delete folders"
-msgstr ""
-
-msgid "Enable /NoSelect folder fix"
-msgstr ""
-
-msgid "General Options"
-msgstr ""
-
-msgid "Default Charset"
-msgstr ""
-
-msgid "Data Directory"
-msgstr ""
-
-msgid "Temp Directory"
-msgstr ""
-
-msgid "Hash Level"
-msgstr ""
-
-msgid "Hash Disabled"
-msgstr ""
-
-msgid "Moderate"
-msgstr ""
-
-msgid "Medium"
-msgstr ""
-
-msgid "Default Left Size"
-msgstr ""
-
-msgid "Usernames in Lowercase"
-msgstr ""
-
-msgid "Allow use of priority"
-msgstr ""
-
-msgid "Hide SM attributions"
-msgstr ""
-
-msgid "Enable use of delivery receipts"
-msgstr ""
-
-msgid "Allow editing of identities"
-msgstr ""
-
-msgid "Allow editing of full name"
-msgstr ""
-
-msgid "Use server-side sorting"
-msgstr ""
-
-msgid "Use server-side thread sorting"
-msgstr ""
-
-msgid "Allow server charset search"
-msgstr ""
-
-msgid "UID support"
-msgstr ""
-
-msgid "PHP session name"
-msgstr ""
-
-msgid "Message of the Day"
-msgstr ""
-
-msgid "Database"
-msgstr ""
-
-msgid "Address book DSN"
-msgstr ""
-
-msgid "Address book table"
-msgstr ""
-
-msgid "Preferences DSN"
-msgstr ""
-
-msgid "Preferences table"
-msgstr ""
-
-msgid "Preferences username field"
-msgstr ""
-
-msgid "Preferences key field"
-msgstr ""
-
-msgid "Preferences value field"
-msgstr ""
-
-msgid "Themes"
-msgstr ""
-
-msgid "Style Sheet URL (css)"
-msgstr ""
-
-msgid "Default theme"
-msgstr ""
-
-msgid "Use index number of theme"
-msgstr ""
-
-msgid "Configuration Administrator"
-msgstr ""
-
-msgid "Theme Name"
-msgstr ""
-
-msgid "Theme Path"
-msgstr ""
-
-msgid "Plugins"
-msgstr ""
-
-msgid "Change Settings"
-msgstr ""
-
-msgid "Config file can't be opened. Please check config.php."
-msgstr ""
-
-msgid "Administration"
-msgstr ""
-
-msgid ""
-"This module allows administrators to manage SquirrelMail main configuration "
-"remotely."
-msgstr ""
-
-msgid "Bug Reports:"
-msgstr ""
-
-msgid "Show button in toolbar"
-msgstr ""
-
-msgid "TODAY"
-msgstr ""
-
-msgid "Go"
-msgstr ""
-
-msgid "l, F j Y"
-msgstr ""
-
-msgid "ADD"
-msgstr ""
-
-msgid "EDIT"
-msgstr ""
-
-msgid "DEL"
-msgstr ""
-
-msgid "Start time:"
-msgstr ""
-
-msgid "Length:"
-msgstr ""
-
-msgid "Priority:"
-msgstr ""
-
-msgid "Title:"
-msgstr ""
-
-msgid "Set Event"
-msgstr ""
-
-msgid "Event Has been added!"
-msgstr ""
-
-msgid "Date:"
-msgstr ""
-
-msgid "Time:"
-msgstr ""
-
-msgid "Day View"
-msgstr ""
-
-msgid "Do you really want to delete this event?"
-msgstr ""
-
-msgid "Event deleted!"
-msgstr ""
-
-msgid "Nothing to delete!"
-msgstr ""
-
-msgid "Update Event"
-msgstr ""
-
-msgid "Do you really want to change this event from:"
-msgstr ""
-
-msgid "to:"
-msgstr ""
-
-msgid "Event updated!"
-msgstr ""
-
-msgid "Month View"
-msgstr ""
-
-msgid "0 min."
-msgstr ""
-
-msgid "15 min."
-msgstr ""
-
-msgid "35 min."
-msgstr ""
-
-msgid "45 min."
-msgstr ""
-
-msgid "1 hr."
-msgstr ""
-
-msgid "1.5 hr."
-msgstr ""
-
-msgid "2 hr."
-msgstr ""
-
-msgid "2.5 hr."
-msgstr ""
-
-msgid "3 hr."
-msgstr ""
-
-msgid "3.5 hr."
-msgstr ""
-
-msgid "4 hr."
-msgstr ""
-
-msgid "5 hr."
-msgstr ""
-
-msgid "6 hr."
-msgstr ""
-
-msgid "Calendar"
-msgstr ""
-
-msgid "Delete & Prev"
-msgstr ""
-
-msgid "Delete & Next"
-msgstr ""
-
-msgid "Move to:"
-msgstr ""
-
-msgid "Delete/Move/Next Buttons:"
-msgstr ""
-
-msgid "Display at top"
-msgstr ""
-
-msgid "with move option"
-msgstr ""
-
-msgid "Display at bottom"
 msgstr ""
 
 msgid ""
@@ -2131,15 +1633,6 @@ msgstr ""
 msgid "FREE, for now - Not Just Another Blacklist - Dial-up IPs."
 msgstr ""
 
-msgid "FREE - Distributed Sender Boycott List - Confirmed Relays"
-msgstr ""
-
-msgid "FREE - Distributed Sender Boycott List - Confirmed Multi-stage Relays"
-msgstr ""
-
-msgid "FREE - Distributed Sender Boycott List - UN-Confirmed Relays"
-msgstr ""
-
 msgid "Saved Scan type"
 msgstr ""
 
@@ -2167,7 +1660,13 @@ msgstr ""
 msgid "Contains:"
 msgstr ""
 
+msgid "Move to:"
+msgstr ""
+
 msgid "Down"
+msgstr ""
+
+msgid "Up"
 msgstr ""
 
 #, c-format
@@ -2236,495 +1735,6 @@ msgid "ON"
 msgstr ""
 
 msgid "OFF"
-msgstr ""
-
-msgid " not found."
-msgstr ""
-
-msgid "Today's Fortune"
-msgstr ""
-
-msgid "Fortunes:"
-msgstr ""
-
-msgid "Show fortunes at top of mailbox"
-msgstr ""
-
-msgid "IMAP server information"
-msgstr ""
-
-msgid ""
-"Run some test IMAP commands, displaying both the command and the result. "
-"These tests use the Squirrelmail IMAP commands and your current Squirrelmail "
-"configuration. Custom command strings can be used."
-msgstr ""
-
-msgid "Mailinglist"
-msgstr ""
-
-#, c-format
-msgid ""
-"This will send a message to %s requesting help for this list. You will "
-"receive an emailed response at the address below."
-msgstr ""
-
-#, c-format
-msgid ""
-"This will send a message to %s requesting that you will be subscribed to "
-"this list. You will be subscribed with the address below."
-msgstr ""
-
-#, c-format
-msgid ""
-"This will send a message to %s requesting that you will be unsubscribed from "
-"this list. It will try to unsubscribe the adress below."
-msgstr ""
-
-msgid "Send Mail"
-msgstr ""
-
-msgid "Post to List"
-msgstr ""
-
-msgid "Reply to List"
-msgstr ""
-
-msgid "List Archives"
-msgstr ""
-
-msgid "Contact Listowner"
-msgstr ""
-
-msgid "Mailing List"
-msgstr ""
-
-msgid "POP3 connect:"
-msgstr ""
-
-msgid "No server specified"
-msgstr ""
-
-msgid "Error "
-msgstr ""
-
-msgid "POP3 noop:"
-msgstr ""
-
-msgid "No connection to server"
-msgstr ""
-
-msgid "POP3 user:"
-msgstr ""
-
-msgid "no login ID submitted"
-msgstr ""
-
-msgid "connection not established"
-msgstr ""
-
-msgid "POP3 pass:"
-msgstr ""
-
-msgid "No password submitted"
-msgstr ""
-
-msgid "authentication failed "
-msgstr ""
-
-msgid "POP3 apop:"
-msgstr ""
-
-msgid "No login ID submitted"
-msgstr ""
-
-msgid "No server banner"
-msgstr ""
-
-msgid "abort"
-msgstr ""
-
-msgid "apop authentication failed"
-msgstr ""
-
-msgid "POP3 login:"
-msgstr ""
-
-msgid "POP3 top:"
-msgstr ""
-
-msgid "POP3 pop_list:"
-msgstr ""
-
-msgid "Premature end of list"
-msgstr ""
-
-msgid "POP3 get:"
-msgstr ""
-
-msgid "POP3 last:"
-msgstr ""
-
-msgid "POP3 reset:"
-msgstr ""
-
-msgid "POP3 send_cmd:"
-msgstr ""
-
-msgid "Empty command string"
-msgstr ""
-
-msgid "POP3 quit:"
-msgstr ""
-
-msgid "connection does not exist"
-msgstr ""
-
-msgid "POP3 uidl:"
-msgstr ""
-
-msgid "POP3 delete:"
-msgstr ""
-
-msgid "No msg number submitted"
-msgstr ""
-
-msgid "Command failed "
-msgstr ""
-
-msgid "Remote POP server Fetching Mail"
-msgstr ""
-
-msgid "Select Server:"
-msgstr ""
-
-msgid "Password for"
-msgstr ""
-
-msgid "Fetch Mail"
-msgstr ""
-
-msgid "Fetching from "
-msgstr ""
-
-msgid "Oops, "
-msgstr ""
-
-msgid "Opening IMAP server"
-msgstr ""
-
-msgid "Opening POP server"
-msgstr ""
-
-msgid "Login Failed:"
-msgstr ""
-
-msgid "Login OK: No new messages"
-msgstr ""
-
-msgid "Login OK: Inbox EMPTY"
-msgstr ""
-
-msgid "Login OK: Inbox contains ["
-msgstr ""
-
-msgid "] messages"
-msgstr ""
-
-msgid "Fetching UIDL..."
-msgstr ""
-
-msgid "Server does not support UIDL."
-msgstr ""
-
-msgid "Leaving Mail on Server..."
-msgstr ""
-
-msgid "Deleting messages from server..."
-msgstr ""
-
-msgid "Fetching message "
-msgstr ""
-
-msgid "Server error...Disconnect"
-msgstr ""
-
-msgid "Reconnect from dead connection"
-msgstr ""
-
-msgid "Saving UIDL"
-msgstr ""
-
-msgid "Refetching message "
-msgstr ""
-
-msgid "Error Appending Message!"
-msgstr ""
-
-msgid "Closing POP"
-msgstr ""
-
-msgid "Logging out from IMAP"
-msgstr ""
-
-msgid "Message appended to mailbox"
-msgstr ""
-
-msgid "Message "
-msgstr ""
-
-msgid " deleted from Remote Server!"
-msgstr ""
-
-msgid "Delete failed:"
-msgstr ""
-
-msgid "Remote POP server settings"
-msgstr ""
-
-msgid ""
-"You should be aware that the encryption used to store your password is not "
-"perfectly secure.  However, if you are using pop, there is inherently no "
-"encryption anyway. Additionally, the encryption that we do to save it on the "
-"server can be undone by a hacker reading the source to this file."
-msgstr ""
-
-msgid "If you leave password empty, it will be required when you fetch mail."
-msgstr ""
-
-msgid "Encrypt passwords (informative only)"
-msgstr ""
-
-msgid "Add Server"
-msgstr ""
-
-msgid "Server:"
-msgstr ""
-
-msgid "Port:"
-msgstr ""
-
-msgid "Alias:"
-msgstr ""
-
-msgid "Username:"
-msgstr ""
-
-msgid "Store in Folder:"
-msgstr ""
-
-msgid "Leave Mail on Server"
-msgstr ""
-
-msgid "Check mail during login"
-msgstr ""
-
-msgid "Check mail during folder refresh"
-msgstr ""
-
-msgid "Modify Server"
-msgstr ""
-
-msgid "Server Name:"
-msgstr ""
-
-msgid "Modify"
-msgstr ""
-
-msgid "No-one server in use. Try to add."
-msgstr ""
-
-msgid "Fetching Servers"
-msgstr ""
-
-msgid "Confirm Deletion of a Server"
-msgstr ""
-
-msgid "Selected Server:"
-msgstr ""
-
-msgid "Confirm delete of selected server?"
-msgstr ""
-
-msgid "Confirm Delete"
-msgstr ""
-
-msgid "Mofify a Server"
-msgstr ""
-
-msgid "Undefined Function"
-msgstr ""
-
-msgid "Hey! Wath do You are looking for?"
-msgstr ""
-
-msgid "Fetch"
-msgstr ""
-
-msgid "Warning, "
-msgstr ""
-
-msgid "Mail Fetch Result:"
-msgstr ""
-
-msgid "Simple POP3 Fetch Mail"
-msgstr ""
-
-msgid ""
-"This configures settings for downloading email from a pop3 mailbox to your "
-"account on this server."
-msgstr ""
-
-msgid "Message Details"
-msgstr ""
-
-msgid "Message details"
-msgstr ""
-
-msgid "Close Window"
-msgstr ""
-
-msgid "Save Message"
-msgstr ""
-
-msgid "View Message details"
-msgstr ""
-
-msgid "New Mail Notification"
-msgstr ""
-
-msgid ""
-"Select <b>Enable Media Playing</b> to turn on playing a media file when "
-"unseen mail is in your folders. When enabled, you can specify the media file "
-"to play in the provided file box."
-msgstr ""
-
-msgid ""
-"The <b>Check all boxes, not just INBOX</b> option will check ALL of your "
-"folders for unseen mail, not just the inbox for notification."
-msgstr ""
-
-msgid ""
-"Selecting the <b>Show popup</b> option will enable the showing of a popup "
-"window when unseen mail is in your folders (requires JavaScript)."
-msgstr ""
-
-msgid ""
-"Use the <b>Check RECENT</b> to only check for messages that are recent. "
-"Recent messages are those that have just recently showed up and have not "
-"been \"viewed\" or checked yet.  This can prevent being continuously annoyed "
-"by sounds or popups for unseen mail."
-msgstr ""
-
-msgid ""
-"Selecting the <b>Change title</b> option will change the title in some "
-"browsers to let you know when you have new mail (requires JavaScript, and "
-"only works in IE but you won't see errors with other browsers).  This will "
-"always tell you if you have new mail, even if you have <b>Check RECENT</b> "
-"enabled."
-msgstr ""
-
-msgid ""
-"Select from the list of <b>server files</b> the media file to play when new "
-"mail arrives.  Selecting <b>local media</b> will play the file specified in "
-"the <b>local media file</b> box to play from the local computer.  If no file "
-"is specified, the system will use a default from the server."
-msgstr ""
-
-msgid "Enable Media Playing"
-msgstr ""
-
-msgid "Check all boxes, not just INBOX"
-msgstr ""
-
-msgid "Count only messages that are RECENT"
-msgstr ""
-
-msgid "Change title on supported browsers."
-msgstr ""
-
-msgid "requires JavaScript to work"
-msgstr ""
-
-msgid "Show popup window on new mail"
-msgstr ""
-
-msgid "Select server file:"
-msgstr ""
-
-msgid "(local media)"
-msgstr ""
-
-msgid "Try"
-msgstr ""
-
-msgid "Local Media File:"
-msgstr ""
-
-msgid "Current File:"
-msgstr ""
-
-msgid "New Mail"
-msgstr ""
-
-msgid "SquirrelMail Notice:"
-msgstr ""
-
-msgid "You have new mail!"
-msgstr ""
-
-msgid "NewMail Options"
-msgstr ""
-
-msgid ""
-"This configures settings for playing sounds and/or showing popup windows "
-"when new mail arrives."
-msgstr ""
-
-msgid "New Mail Notification options saved"
-msgstr ""
-
-#, c-format
-msgid "%s New Messages"
-msgstr ""
-
-#, c-format
-msgid "%s New Message"
-msgstr ""
-
-msgid "Test Sound"
-msgstr ""
-
-msgid "Loading the sound..."
-msgstr ""
-
-msgid "Sent Subfolders Options"
-msgstr ""
-
-msgid "Use Sent Subfolders"
-msgstr ""
-
-msgid "Monthly"
-msgstr ""
-
-msgid "Quarterly"
-msgstr ""
-
-msgid "Yearly"
-msgstr ""
-
-msgid "Base Sent Folder"
-msgstr ""
-
-msgid "Report as Spam"
-msgstr ""
-
-msgid "SpamCop - Spam Reporting"
-msgstr ""
-
-msgid ""
-"Help fight the battle against unsolicited email.  SpamCop reads the spam "
-"email and determines the correct addresses to send complaints to.  Quite "
-"fast, really smart, and easy to use."
 msgstr ""
 
 msgid "SpellChecker Options"
@@ -3002,6 +2012,9 @@ msgid ""
 "message:"
 msgstr ""
 
+msgid "Go"
+msgstr ""
+
 msgid "SquirrelSpell Initiating"
 msgstr ""
 
@@ -3204,9 +2217,6 @@ msgstr ""
 msgid "Swedish"
 msgstr ""
 
-msgid "Turkish"
-msgstr ""
-
 msgid "Welsh"
 msgstr ""
 
@@ -3214,6 +2224,815 @@ msgid "Indonesian"
 msgstr ""
 
 msgid "Latin"
+msgstr ""
+
+msgid "New Mail Notification"
+msgstr ""
+
+msgid ""
+"Select <b>Enable Media Playing</b> to turn on playing a media file when "
+"unseen mail is in your folders. When enabled, you can specify the media file "
+"to play in the provided file box."
+msgstr ""
+
+msgid ""
+"The <b>Check all boxes, not just INBOX</b> option will check ALL of your "
+"folders for unseen mail, not just the inbox for notification."
+msgstr ""
+
+msgid ""
+"Selecting the <b>Show popup</b> option will enable the showing of a popup "
+"window when unseen mail is in your folders (requires JavaScript)."
+msgstr ""
+
+msgid ""
+"Use the <b>Check RECENT</b> to only check for messages that are recent. "
+"Recent messages are those that have just recently showed up and have not "
+"been \"viewed\" or checked yet.  This can prevent being continuously annoyed "
+"by sounds or popups for unseen mail."
+msgstr ""
+
+msgid ""
+"Selecting the <b>Change title</b> option will change the title in some "
+"browsers to let you know when you have new mail (requires JavaScript, and "
+"only works in IE but you won't see errors with other browsers).  This will "
+"always tell you if you have new mail, even if you have <b>Check RECENT</b> "
+"enabled."
+msgstr ""
+
+msgid ""
+"Select from the list of <b>server files</b> the media file to play when new "
+"mail arrives.  Selecting <b>local media</b> will play the file specified in "
+"the <b>local media file</b> box to play from the local computer.  If no file "
+"is specified, the system will use a default from the server."
+msgstr ""
+
+msgid "Enable Media Playing"
+msgstr ""
+
+msgid "Check all boxes, not just INBOX"
+msgstr ""
+
+msgid "Count only messages that are RECENT"
+msgstr ""
+
+msgid "Change title on supported browsers."
+msgstr ""
+
+msgid "requires JavaScript to work"
+msgstr ""
+
+msgid "Show popup window on new mail"
+msgstr ""
+
+msgid "Select server file:"
+msgstr ""
+
+msgid "(local media)"
+msgstr ""
+
+msgid "Try"
+msgstr ""
+
+msgid "Local Media File:"
+msgstr ""
+
+msgid "Current File:"
+msgstr ""
+
+msgid "New Mail"
+msgstr ""
+
+msgid "SquirrelMail Notice:"
+msgstr ""
+
+msgid "You have new mail!"
+msgstr ""
+
+msgid "NewMail Options"
+msgstr ""
+
+msgid ""
+"This configures settings for playing sounds and/or showing popup windows "
+"when new mail arrives."
+msgstr ""
+
+msgid "New Mail Notification options saved"
+msgstr ""
+
+#, c-format
+msgid "%s New Messages"
+msgstr ""
+
+#, c-format
+msgid "%s New Message"
+msgstr ""
+
+msgid "Test Sound"
+msgstr ""
+
+msgid "Loading the sound..."
+msgstr ""
+
+msgid "POP3 connect:"
+msgstr ""
+
+msgid "No server specified"
+msgstr ""
+
+msgid "Error "
+msgstr ""
+
+msgid "POP3 noop:"
+msgstr ""
+
+msgid "No connection to server"
+msgstr ""
+
+msgid "POP3 user:"
+msgstr ""
+
+msgid "no login ID submitted"
+msgstr ""
+
+msgid "connection not established"
+msgstr ""
+
+msgid "POP3 pass:"
+msgstr ""
+
+msgid "No password submitted"
+msgstr ""
+
+msgid "authentication failed "
+msgstr ""
+
+msgid "POP3 apop:"
+msgstr ""
+
+msgid "No login ID submitted"
+msgstr ""
+
+msgid "No server banner"
+msgstr ""
+
+msgid "abort"
+msgstr ""
+
+msgid "apop authentication failed"
+msgstr ""
+
+msgid "POP3 login:"
+msgstr ""
+
+msgid "POP3 top:"
+msgstr ""
+
+msgid "POP3 pop_list:"
+msgstr ""
+
+msgid "Premature end of list"
+msgstr ""
+
+msgid "POP3 get:"
+msgstr ""
+
+msgid "POP3 last:"
+msgstr ""
+
+msgid "POP3 reset:"
+msgstr ""
+
+msgid "POP3 send_cmd:"
+msgstr ""
+
+msgid "Empty command string"
+msgstr ""
+
+msgid "POP3 quit:"
+msgstr ""
+
+msgid "connection does not exist"
+msgstr ""
+
+msgid "POP3 uidl:"
+msgstr ""
+
+msgid "POP3 delete:"
+msgstr ""
+
+msgid "No msg number submitted"
+msgstr ""
+
+msgid "Command failed "
+msgstr ""
+
+msgid "Remote POP server Fetching Mail"
+msgstr ""
+
+msgid "Select Server:"
+msgstr ""
+
+msgid "Password for"
+msgstr ""
+
+msgid "Fetch Mail"
+msgstr ""
+
+msgid "Fetching from "
+msgstr ""
+
+msgid "Oops, "
+msgstr ""
+
+msgid "Opening IMAP server"
+msgstr ""
+
+msgid "Opening POP server"
+msgstr ""
+
+msgid "Login Failed:"
+msgstr ""
+
+msgid "Login OK: No new messages"
+msgstr ""
+
+msgid "Login OK: Inbox EMPTY"
+msgstr ""
+
+msgid "Login OK: Inbox contains ["
+msgstr ""
+
+msgid "] messages"
+msgstr ""
+
+msgid "Fetching UIDL..."
+msgstr ""
+
+msgid "Server does not support UIDL."
+msgstr ""
+
+msgid "Leaving Mail on Server..."
+msgstr ""
+
+msgid "Deleting messages from server..."
+msgstr ""
+
+msgid "Fetching message "
+msgstr ""
+
+msgid "Message appended to mailbox"
+msgstr ""
+
+msgid "Message "
+msgstr ""
+
+msgid " deleted from Remote Server!"
+msgstr ""
+
+msgid "Delete failed:"
+msgstr ""
+
+msgid "Error Appending Message!"
+msgstr ""
+
+msgid "Closing POP"
+msgstr ""
+
+msgid "Logging out from IMAP"
+msgstr ""
+
+msgid "Saving UIDL"
+msgstr ""
+
+msgid "Remote POP server settings"
+msgstr ""
+
+msgid ""
+"You should be aware that the encryption used to store your password is not "
+"perfectly secure.  However, if you are using pop, there is inherently no "
+"encryption anyway. Additionally, the encryption that we do to save it on the "
+"server can be undone by a hacker reading the source to this file."
+msgstr ""
+
+msgid "If you leave password empty, it will be required when you fetch mail."
+msgstr ""
+
+msgid "Encrypt passwords (informative only)"
+msgstr ""
+
+msgid "Add Server"
+msgstr ""
+
+msgid "Server:"
+msgstr ""
+
+msgid "Port:"
+msgstr ""
+
+msgid "Alias:"
+msgstr ""
+
+msgid "Username:"
+msgstr ""
+
+msgid "Store in Folder:"
+msgstr ""
+
+msgid "Leave Mail on Server"
+msgstr ""
+
+msgid "Check mail during login"
+msgstr ""
+
+msgid "Check mail during folder refresh"
+msgstr ""
+
+msgid "Modify Server"
+msgstr ""
+
+msgid "Server Name:"
+msgstr ""
+
+msgid "Modify"
+msgstr ""
+
+msgid "No-one server in use. Try to add."
+msgstr ""
+
+msgid "Fetching Servers"
+msgstr ""
+
+msgid "Confirm Deletion of a Server"
+msgstr ""
+
+msgid "Selected Server:"
+msgstr ""
+
+msgid "Confirm delete of selected server?"
+msgstr ""
+
+msgid "Confirm Delete"
+msgstr ""
+
+msgid "Mofify a Server"
+msgstr ""
+
+msgid "Undefined Function"
+msgstr ""
+
+msgid "Hey! Wath do You are looking for?"
+msgstr ""
+
+msgid "Fetch"
+msgstr ""
+
+msgid "Warning, "
+msgstr ""
+
+msgid "Mail Fetch Result:"
+msgstr ""
+
+msgid "Simple POP3 Fetch Mail"
+msgstr ""
+
+msgid ""
+"This configures settings for downloading email from a pop3 mailbox to your "
+"account on this server."
+msgstr ""
+
+msgid "Bug Reports:"
+msgstr ""
+
+msgid "Show button in toolbar"
+msgstr ""
+
+msgid "Sent Subfolders Options"
+msgstr ""
+
+msgid "Use Sent Subfolders"
+msgstr ""
+
+msgid "Monthly"
+msgstr ""
+
+msgid "Quarterly"
+msgstr ""
+
+msgid "Yearly"
+msgstr ""
+
+msgid "Base Sent Folder"
+msgstr ""
+
+msgid "TODAY"
+msgstr ""
+
+msgid "l, F j Y"
+msgstr ""
+
+msgid "ADD"
+msgstr ""
+
+msgid "EDIT"
+msgstr ""
+
+msgid "DEL"
+msgstr ""
+
+msgid "Start time:"
+msgstr ""
+
+msgid "Length:"
+msgstr ""
+
+msgid "Priority:"
+msgstr ""
+
+msgid "Title:"
+msgstr ""
+
+msgid "Set Event"
+msgstr ""
+
+msgid "Event Has been added!"
+msgstr ""
+
+msgid "Time:"
+msgstr ""
+
+msgid "Day View"
+msgstr ""
+
+msgid "Do you really want to delete this event?"
+msgstr ""
+
+msgid "Event deleted!"
+msgstr ""
+
+msgid "Nothing to delete!"
+msgstr ""
+
+msgid "Update Event"
+msgstr ""
+
+msgid "Do you really want to change this event from:"
+msgstr ""
+
+msgid "to:"
+msgstr ""
+
+msgid "l, F d Y"
+msgstr ""
+
+msgid "Event updated!"
+msgstr ""
+
+msgid "Month View"
+msgstr ""
+
+msgid "0 min."
+msgstr ""
+
+msgid "15 min."
+msgstr ""
+
+msgid "35 min."
+msgstr ""
+
+msgid "45 min."
+msgstr ""
+
+msgid "1 hr."
+msgstr ""
+
+msgid "1.5 hr."
+msgstr ""
+
+msgid "2 hr."
+msgstr ""
+
+msgid "2.5 hr."
+msgstr ""
+
+msgid "3 hr."
+msgstr ""
+
+msgid "3.5 hr."
+msgstr ""
+
+msgid "4 hr."
+msgstr ""
+
+msgid "5 hr."
+msgstr ""
+
+msgid "6 hr."
+msgstr ""
+
+msgid "Calendar"
+msgstr ""
+
+msgid "Mailinglist"
+msgstr ""
+
+#, c-format
+msgid ""
+"This will send a message to %s requesting help for this list. You will "
+"receive an emailed response at the address below."
+msgstr ""
+
+#, c-format
+msgid ""
+"This will send a message to %s requesting that you will be subscribed to "
+"this list. You will be subscribed with the address below."
+msgstr ""
+
+#, c-format
+msgid ""
+"This will send a message to %s requesting that you will be unsubscribed from "
+"this list. It will try to unsubscribe the adress below."
+msgstr ""
+
+msgid "Send Mail"
+msgstr ""
+
+msgid "Post to List"
+msgstr ""
+
+msgid "Reply to List"
+msgstr ""
+
+msgid "List Archives"
+msgstr ""
+
+msgid "Contact Listowner"
+msgstr ""
+
+msgid "Mailing List:"
+msgstr ""
+
+msgid "Delete & Prev"
+msgstr ""
+
+msgid "Delete & Next"
+msgstr ""
+
+msgid "Delete/Move/Next Buttons:"
+msgstr ""
+
+msgid "Display at top"
+msgstr ""
+
+msgid "with move option"
+msgstr ""
+
+msgid "Display at bottom"
+msgstr ""
+
+msgid "Config File Version"
+msgstr ""
+
+msgid "Squirrelmail Version"
+msgstr ""
+
+msgid "PHP Version"
+msgstr ""
+
+msgid "Organization Preferences"
+msgstr ""
+
+msgid "Organization Name"
+msgstr ""
+
+msgid "Organization Logo"
+msgstr ""
+
+msgid "Organization Logo Width"
+msgstr ""
+
+msgid "Organization Logo Height"
+msgstr ""
+
+msgid "Organization Title"
+msgstr ""
+
+msgid "Signout Page"
+msgstr ""
+
+msgid "Default Language"
+msgstr ""
+
+msgid "Top Frame"
+msgstr ""
+
+msgid "Server Settings"
+msgstr ""
+
+msgid "Mail Domain"
+msgstr ""
+
+msgid "IMAP Server Address"
+msgstr ""
+
+msgid "IMAP Server Port"
+msgstr ""
+
+msgid "IMAP Server Type"
+msgstr ""
+
+msgid "Cyrus IMAP server"
+msgstr ""
+
+msgid "University of Washington's IMAP server"
+msgstr ""
+
+msgid "Microsoft Exchange IMAP server"
+msgstr ""
+
+msgid "Courier IMAP server"
+msgstr ""
+
+msgid "Not one of the above servers"
+msgstr ""
+
+msgid "IMAP Folder Delimiter"
+msgstr ""
+
+msgid "Use \"detect\" to auto-detect."
+msgstr ""
+
+msgid "Use Sendmail"
+msgstr ""
+
+msgid "Sendmail Path"
+msgstr ""
+
+msgid "SMTP Server Address"
+msgstr ""
+
+msgid "SMTP Server Port"
+msgstr ""
+
+msgid "Authenticated SMTP"
+msgstr ""
+
+msgid "Invert Time"
+msgstr ""
+
+msgid "Use Confirmation Flags"
+msgstr ""
+
+msgid "Folders Defaults"
+msgstr ""
+
+msgid "Default Folder Prefix"
+msgstr ""
+
+msgid "Show Folder Prefix Option"
+msgstr ""
+
+msgid "By default, move to trash"
+msgstr ""
+
+msgid "By default, move to sent"
+msgstr ""
+
+msgid "By default, save as draft"
+msgstr ""
+
+msgid "List Special Folders First"
+msgstr ""
+
+msgid "Show Special Folders Color"
+msgstr ""
+
+msgid "Auto Expunge"
+msgstr ""
+
+msgid "Default Sub. of INBOX"
+msgstr ""
+
+msgid "Show 'Contain Sub.' Option"
+msgstr ""
+
+msgid "Default Unseen Notify"
+msgstr ""
+
+msgid "Default Unseen Type"
+msgstr ""
+
+msgid "Auto Create Special Folders"
+msgstr ""
+
+msgid "Default Javascript Adrressbook"
+msgstr ""
+
+msgid "Auto delete folders"
+msgstr ""
+
+msgid "General Options"
+msgstr ""
+
+msgid "Default Charset"
+msgstr ""
+
+msgid "Data Directory"
+msgstr ""
+
+msgid "Temp Directory"
+msgstr ""
+
+msgid "Hash Level"
+msgstr ""
+
+msgid "Hash Disabled"
+msgstr ""
+
+msgid "Moderate"
+msgstr ""
+
+msgid "Medium"
+msgstr ""
+
+msgid "Default Left Size"
+msgstr ""
+
+msgid "Usernames in Lowercase"
+msgstr ""
+
+msgid "Allow use of priority"
+msgstr ""
+
+msgid "Hide SM attributions"
+msgstr ""
+
+msgid "Enable use of delivery receipts"
+msgstr ""
+
+msgid "Allow editing of identities"
+msgstr ""
+
+msgid "Allow editing of full name"
+msgstr ""
+
+msgid "Message of the Day"
+msgstr ""
+
+msgid "Database"
+msgstr ""
+
+msgid "Address book DSN"
+msgstr ""
+
+msgid "Address book table"
+msgstr ""
+
+msgid "Preferences DSN"
+msgstr ""
+
+msgid "Preferences table"
+msgstr ""
+
+msgid "Preferences username field"
+msgstr ""
+
+msgid "Preferences key field"
+msgstr ""
+
+msgid "Preferences value field"
+msgstr ""
+
+msgid "Themes"
+msgstr ""
+
+msgid "Style Sheet URL (css)"
+msgstr ""
+
+msgid "Configuration Administrator"
+msgstr ""
+
+msgid "Theme Name"
+msgstr ""
+
+msgid "Theme Path"
+msgstr ""
+
+msgid "Plugins"
+msgstr ""
+
+msgid "Change Settings"
+msgstr ""
+
+msgid "Config file can't be opened. Please check config.php."
+msgstr ""
+
+msgid "Administration"
+msgstr ""
+
+msgid ""
+"This module allows administrators to manage SquirrelMail main configuration "
+"remotely."
 msgstr ""
 
 msgid "Delivery error report"

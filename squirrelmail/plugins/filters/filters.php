@@ -3,7 +3,7 @@
 /**
  * Message and Spam Filter Plugin
  *
- * Copyright (c) 1999-2003 The SquirrelMail Project Team
+ * Copyright (c) 1999-2002 The SquirrelMail Project Team
  * Licensed under the GNU GPL. For full terms see the file COPYING.
  *
  * This plugin filters your inbox into different folders based upon given
@@ -28,20 +28,20 @@
 function filters_SaveCache () {
     global $data_dir, $SpamFilters_DNScache;
 
-    if (file_exists($data_dir . '/dnscache')) {
-        $fp = fopen($data_dir . '/dnscache', 'r');
+    if (file_exists($data_dir . "/dnscache")) {
+        $fp = fopen($data_dir . "/dnscache", "r");
     } else {
         $fp = false;
     }
     if ($fp) {
         flock($fp,LOCK_EX);
     } else {
-       $fp = fopen($data_dir . '/dnscache', 'w+');
+       $fp = fopen($data_dir . "/dnscache", "w+");
        fclose($fp);
-       $fp = fopen($data_dir . '/dnscache', 'r');
+       $fp = fopen($data_dir . "/dnscache", "r");
        flock($fp,LOCK_EX);
     }
-    $fp1=fopen($data_dir . '/dnscache', 'w+');
+    $fp1=fopen($data_dir . "/dnscache", "w+");
 
     foreach ($SpamFilters_DNScache as $Key=> $Value) {
        $tstr = $Key . ',' . $Value['L'] . ',' . $Value['T'] . "\n";
@@ -52,12 +52,13 @@ function filters_SaveCache () {
     fclose($fp);
 }
 
+
 function filters_LoadCache () {
     global $data_dir, $SpamFilters_DNScache;
 
-    if (file_exists($data_dir . '/dnscache')) {
+    if (file_exists($data_dir . "/dnscache")) {
         $SpamFilters_DNScache = array();
-        if ($fp = fopen ($data_dir . '/dnscache', 'r')) {
+        if ($fp = fopen ($data_dir . "/dnscache", "r")) {
             flock($fp,LOCK_SH);
             while ($data=fgetcsv($fp,1024)) {
                if ($data[2] > time()) {
@@ -139,11 +140,11 @@ function filters_bulkquery($filters_spam_scan, $filters, $read) {
             }
         }
 
-        $bqfil = $attachment_dir . $username . '-bq.in';
-        $fp = fopen($bqfil, 'w');
+        $bqfil = $attachment_dir . $username . "-bq.in";
+        $fp = fopen($bqfil, "w");
         fputs ($fp, $SpamFilters_CacheTTL . "\n");
         foreach ($rbls as $key => $value) {
-            fputs ($fp, '.' . $key . "\n");
+            fputs ($fp, "." . $key . "\n");
         }
         fputs ($fp, "----------\n");
         foreach ($IPs as $key => $value) {
@@ -151,7 +152,7 @@ function filters_bulkquery($filters_spam_scan, $filters, $read) {
         }
         fclose ($fp);
         $bqout = array();
-        exec ($SpamFilters_BulkQuery . ' < ' . $bqfil, $bqout);
+        exec ($SpamFilters_BulkQuery . " < " . $bqfil, $bqout);
         foreach ($bqout as $value) {
             $Chunks = explode(',', $value);
             $SpamFilters_DNScache[$Chunks[0]]['L'] = $Chunks[1];
@@ -161,10 +162,92 @@ function filters_bulkquery($filters_spam_scan, $filters, $read) {
     }
 }
 
+
+function filters_sqimap_read_data ($imap_stream, $pre, $handle_errors, &$response, &$message) {
+    global $color, $squirrelmail_language, $imap_general_debug;
+
+    $data = array();
+    $size = 0;
+
+    do {
+        $read = fgets($imap_stream, 9096);
+        if (ereg("^$pre (OK|BAD|NO)(.*)$", $read, $regs)) {
+            break;  // found end of reply
+        }
+
+        // Continue if needed for this single line
+        while (strpos($read, "\n") === false) {
+            $read .= fgets($imap_stream, 9096);
+        }
+
+        $data[] = $read;
+
+        if (ereg("^\\* [0-9]+ FETCH.*\\{([0-9]+)\\}", $read, $regs)) {
+            $size = $regs[1];
+            if ($imap_general_debug) {
+                echo "<small><tt><font color=\"#CC0000\">Size is $size</font></tt></small><br>\n";
+            }
+
+            $total_size = 0;
+            do {
+                $read = fgets($imap_stream, 9096);
+                if ($imap_general_debug) {
+                    echo "<small><tt><font color=\"#CC0000\">$read</font></tt></small><br>\n";
+                    flush();
+                }
+                $data[] = $read;
+                $total_size += strlen($read);
+            } while ($total_size < $size);
+
+            $size = 0;
+        }
+        // For debugging purposes
+        if ($imap_general_debug) {
+            echo "<small><tt><font color=\"#CC0000\">$read</font></tt></small><br>\n";
+            flush();
+        }
+    } while (true);
+
+    $response = $regs[1];
+    $message = trim($regs[2]);
+
+    if ($imap_general_debug) {
+        echo '--<br>';
+    }
+
+    if (!$handle_errors) {
+        return $data;
+    }
+
+    if ($response == 'NO') {
+        // ignore this error from m$ exchange, it is not fatal (aka bug)
+        if (strstr($message, 'command resulted in') === false) {
+            set_up_language($squirrelmail_language);
+            echo "<br><b><font color=$color[2]>\n" .
+                 _("ERROR : Could not complete request.") .
+                 "</b><br>\n" .
+                 _("Reason Given: ") .
+                 $message . "</font><br>\n";
+            exit;
+        }
+    } else if ($response == 'BAD') {
+        set_up_language($squirrelmail_language);
+        echo "<br><b><font color=$color[2]>\n" .
+             _("ERROR : Bad or malformed request.") .
+             "</b><br>\n" .
+             _("Server responded: ") .
+             $message . "</font><br>\n";
+        exit;
+    }
+
+    return $data;
+}
+
+
 function start_filters() {
     global $mailbox, $imapServerAddress, $imapPort, $imap,
-           $imap_general, $filters, $imap_stream, $imapConnection,
-           $UseSeparateImapConnection, $AllowSpamFilters, $_SESSION, $_COOKIE;
+        $imap_general, $filters, $imap_stream, $imapConnection,
+    $UseSeparateImapConnection, $AllowSpamFilters, $_SESSION, $_COOKIE;
 
     $username = $_SESSION['username'];
     $key = $_COOKIE['key'];
@@ -201,6 +284,7 @@ function start_filters() {
 #    }
 }
 
+
 function user_filters($imap_stream) {
     global $data_dir, $username;
     $filters = load_filters();
@@ -208,91 +292,84 @@ function user_filters($imap_stream) {
     $filters_user_scan = getPref($data_dir, $username, 'filters_user_scan');
 
     sqimap_mailbox_select($imap_stream, 'INBOX');
-    $id = array();
+
     // For every rule
-    for ($i=0, $num = count($filters); $i < $num; $i++) {
+    for ($i=0; $i < count($filters); $i++) {
         // If it is the "combo" rule
         if ($filters[$i]['where'] == 'To or Cc') {
             /*
             *  If it's "TO OR CC", we have to do two searches, one for TO
             *  and the other for CC.
             */
-            $id = filter_search_and_delete($imap_stream, 'TO',
-                  $filters[$i]['what'], $filters[$i]['folder'], $filters_user_scan, $id);
-            $id = filter_search_and_delete($imap_stream, 'CC',
-                  $filters[$i]['what'], $filters[$i]['folder'], $filters_user_scan, $id);
+            filter_search_and_delete($imap_stream, 'TO',
+            $filters[$i]['what'], $filters[$i]['folder'], $filters_user_scan);
+            filter_search_and_delete($imap_stream, 'CC',
+            $filters[$i]['what'], $filters[$i]['folder'], $filters_user_scan);
         } else {
             /*
             *  If it's a normal TO, CC, SUBJECT, or FROM, then handle it
             *  normally.
             */
-            $id = filter_search_and_delete($imap_stream, $filters[$i]['where'],
-                 $filters[$i]['what'], $filters[$i]['folder'], $filters_user_scan, $id);
+            filter_search_and_delete($imap_stream, $filters[$i]['where'],
+            $filters[$i]['what'], $filters[$i]['folder'], $filters_user_scan);
         }
     }
     // Clean out the mailbox whether or not auto_expunge is on
     // That way it looks like it was redirected properly
-    if (count($id)) {
-        sqimap_mailbox_expunge($imap_stream, 'INBOX');
-    }
+    sqimap_mailbox_expunge($imap_stream, 'INBOX');
 }
 
-function filter_search_and_delete($imap, $where, $what, $where_to, $user_scan, 
-                                  $del_id) {
-    global $languages, $squirrelmail_language, $allow_charset_search, 
-           $uid_support, $imap_server_type;
+function filter_search_and_delete($imap, $where, $what, $where_to, $user_scan) {
+    global $languages, $squirrelmail_language, $allow_charset_search;
     if ($user_scan == 'new') {
         $category = 'UNSEEN';
     } else {
         $category = 'ALL';
     }
 
-    if ($allow_charset_search &&
-        isset($languages[$squirrelmail_language]['CHARSET']) &&
+    if ($allow_charset_search && isset($languages[$squirrelmail_language]['CHARSET']) &&
         $languages[$squirrelmail_language]['CHARSET']) {
-        $search_str = 'SEARCH CHARSET '
-                    . strtoupper($languages[$squirrelmail_language]['CHARSET'])
-                    . ' ' . $category;
+        $search_str = "SEARCH CHARSET "
+            . strtoupper($languages[$squirrelmail_language]['CHARSET']) 
+            . ' ' . $category . ' ';
     } else {
-        $search_str = 'SEARCH CHARSET US-ASCII ' . $category;
+        $search_str = 'SEARCH CHARSET US-ASCII ' . $category . ' ';
     }
-    if ($where == 'Header') {
-        $what  = explode(':', $what);
-        $where = trim($where . ' ' . $what[0]);
-        $what  = addslashes(trim($what[1]));
+    
+    if ($where == "Header") {
+       $what = explode(':', $what);
+       if (isset($what[1])) {
+          $where = trim($where . ' ' . $what[0]);
+       } else {
+          $where = 'TEXT';
+       }
+//       $where = trim($where . ' ' . (isset($what[1])?$what[0]:'*'));
+       $what = addslashes(trim( (isset($what[1])?$what[1]:$what[0]) ));
     }
-
-    if ($imap_server_type == 'macosx') {    
-	$search_str .= ' ' . $where . ' ' . $what;
-    } else {
-	$search_str .= ' ' . $where . ' {' . strlen($what) . "}\r\n"
-                    . $what . "\r\n";
-    }
-
-    /* read data back from IMAP */
-    $read = sqimap_run_command($imap, $search_str, true, $response, $message, $uid_support);
+    $search_str .= $where . ' {' . strlen($what) . "}\r\n" . $what . "\r\n";
+    
+    fputs ($imap, "a001 $search_str");
+    $read = filters_sqimap_read_data ($imap, 'a001', true, $response, $message);
 
     // This may have problems with EIMS due to it being goofy
 
-    for ($r=0, $num = count($read); $r < $num &&
+    for ($r=0; $r < count($read) &&
                 substr($read[$r], 0, 8) != '* SEARCH'; $r++) {}
     if ($response == 'OK') {
         $ids = explode(' ', $read[$r]);
         if (sqimap_mailbox_exists($imap, $where_to)) {
-            for ($j=2, $num = count($ids); $j < $num; $j++) {
+            for ($j=2; $j < count($ids); $j++) {
                 $id = trim($ids[$j]);
-                $del_id[] = $id;
                 sqimap_messages_copy ($imap, $id, $id, $where_to);
-                sqimap_messages_flag ($imap, $id, $id, 'Deleted',false);
+                sqimap_messages_flag ($imap, $id, $id, 'Deleted');
             }
         }
     }
-    return $del_id;
 }
 
 // These are the spam filters
 function spam_filters($imap_stream) {
-    global $data_dir, $username, $uid_support;
+    global $data_dir, $username;
     global $SpamFilters_YourHop;
     global $SpamFilters_DNScache;
     global $SpamFilters_SharedCache;
@@ -323,16 +400,23 @@ function spam_filters($imap_stream) {
 
     // Ask for a big list of all "Received" headers in the inbox with
     // flags for each message.  Kinda big.
+    //fputs($imap_stream, 'A3999 FETCH 1:* (FLAGS BODY.PEEK[HEADER.FIELDS ' .
+    //    "(RECEIVED)])\r\n");
+    $sid = sqimap_session_id();
     if ($filters_spam_scan != 'new') {
-        $read = sqimap_run_command($imap_stream, 'FETCH 1:* (FLAGS BODY.PEEK[HEADER.FIELDS ' .
-            '(RECEIVED)])', true, $reponse, $message, $uid_support);
+        fputs($imap_stream, $sid.' FETCH 1:* (FLAGS BODY.PEEK[HEADER.FIELDS ' .
+            "(RECEIVED)])\r\n");
     } else {
-        $read = sqimap_run_command($imap_stream, 'SEARCH UNSEEN', true, $reponse, $message, $uid_support);
+        fputs ($imap_stream, $sid.' SEARCH UNSEEN' . "\r\n");
+        $read = filters_sqimap_read_data ($imap_stream, $sid, true,
+                                          $response, $message);
+        $sid = sqimap_session_id();
         if ($response != 'OK' || trim($read[0]) == '* SEARCH') {
-    	    $read = sqimap_run_command($imap_stream, 'FETCH 1:* (FLAGS BODY.PEEK[HEADER.FIELDS ' .
-            '(RECEIVED)])', true, $reponse, $message, $uid_support);
+            fputs($imap_stream,
+                  $sid.' FETCH 1:* (FLAGS BODY.PEEK[HEADER.FIELDS ' .
+                     "(RECEIVED)])\r\n");
         } else {
-	    $read[0] = trim($read[0]);
+        $read[0] = trim($read[0]);
             $i = 0;
             $imap_query = $sid.' FETCH ';
             $Chunks = explode(' ', $read[0]);
@@ -341,12 +425,14 @@ function spam_filters($imap_stream) {
             }
             $imap_query .= $Chunks[count($Chunks)-1];
             $imap_query .= ' (FLAGS BODY.PEEK[HEADER.FIELDS ';
-            $imap_query .= '(RECEIVED)])';//\r\n";
-	    $read = sqimap_run_command($imap_stream,$imap_query, true, $reponse, $message, $uid_support);
+            $imap_query .= "(RECEIVED)])\r\n";
+            fputs($imap_stream, $imap_query);
         }
     }
     
-    if (isset($response) && $response != 'OK') {
+    $read = filters_sqimap_read_data ($imap_stream, $sid, true,
+                                    $response, $message);
+    if ($response != 'OK') {
         return;
     }
 
@@ -410,7 +496,7 @@ function spam_filters($imap_stream) {
                 sqimap_messages_copy ($imap_stream, $MsgNum, $MsgNum,
                                     $filters_spam_folder);
                 sqimap_messages_flag ($imap_stream, $MsgNum, $MsgNum,
-                                    'Deleted', false);
+                                    'Deleted');
             }
         } else {
         }
@@ -423,8 +509,8 @@ function spam_filters($imap_stream) {
     } else {
        sqsession_register($SpamFilters_DNScache, 'SpamFilters_DNScache');
     }
-
 }
+
 
 // Does the loop through each enabled filter for the specified IP address.
 // IP format:  $a.$b.$c.$d
@@ -435,13 +521,6 @@ function filters_spam_check_site($a, $b, $c, $d, &$filters) {
             if ($filters[$key]['dns']) {
                 $filter_revip = $d . '.' . $c . '.' . $b . '.' . $a . '.' .
                                 $filters[$key]['dns'];
-
-                if(!isset($SpamFilters_DNScache[$filter_revip]['L']))
-                        $SpamFilters_DNScache[$filter_revip]['L'] = '';
-
-                if(!isset($SpamFilters_DNScache[$filter_revip]['T']))
-                        $SpamFilters_DNScache[$filter_revip]['T'] = '';
-
                 if (strlen($SpamFilters_DNScache[$filter_revip]['L']) == 0) {
                     $SpamFilters_DNScache[$filter_revip]['L'] =
                                     gethostbyname($filter_revip);
@@ -779,30 +858,6 @@ function load_spam_filters() {
     $filters['NJABL DUL']['result'] = '127.0.0.3';
     $filters['NJABL DUL']['comment'] =
         _("FREE, for now - Not Just Another Blacklist - Dial-up IPs.");
-
-    $filters['Conf DSBL.ORG Relay']['prefname'] = 'filters_spam_dsbl_conf_ss';
-    $filters['Conf DSBL.ORG Relay']['name'] = 'DSBL.org Confirmed Relay List';
-    $filters['Conf DSBL.ORG Relay']['link'] = 'http://www.dsbl.org/';
-    $filters['Conf DSBL.ORG Relay']['dns'] = 'list.dsbl.org';
-    $filters['Conf DSBL.ORG Relay']['result'] = '127.0.0.2';
-    $filters['Conf DSBL.ORG Relay']['comment'] =
-        _("FREE - Distributed Sender Boycott List - Confirmed Relays");
-
-    $filters['Conf DSBL.ORG Multi-Stage']['prefname'] = 'filters_spam_dsbl_conf_ms';
-    $filters['Conf DSBL.ORG Multi-Stage']['name'] = 'DSBL.org Confirmed Multi-Stage Relay List';
-    $filters['Conf DSBL.ORG Multi-Stage']['link'] = 'http://www.dsbl.org/';
-    $filters['Conf DSBL.ORG Multi-Stage']['dns'] = 'multihop.dsbl.org';
-    $filters['Conf DSBL.ORG Multi-Stage']['result'] = '127.0.0.2';
-    $filters['Conf DSBL.ORG Multi-Stage']['comment'] =
-        _("FREE - Distributed Sender Boycott List - Confirmed Multi-stage Relays");
-
-    $filters['UN-Conf DSBL.ORG']['prefname'] = 'filters_spam_dsbl_unc';
-    $filters['UN-Conf DSBL.ORG']['name'] = 'DSBL.org UN-Confirmed Relay List';
-    $filters['UN-Conf DSBL.ORG']['link'] = 'http://www.dsbl.org/';
-    $filters['UN-Conf DSBL.ORG']['dns'] = 'unconfirmed.dsbl.org';
-    $filters['UN-Conf DSBL.ORG']['result'] = '127.0.0.2';
-    $filters['UN-Conf DSBL.ORG']['comment'] =
-        _("FREE - Distributed Sender Boycott List - UN-Confirmed Relays");
 
     foreach ($filters as $Key => $Value) {
         $filters[$Key]['enabled'] = getPref($data_dir, $username,

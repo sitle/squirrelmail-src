@@ -3,7 +3,7 @@
 /**
  * webmail.php -- Displays the main frameset
  *
- * Copyright (c) 1999-2003 The SquirrelMail development team
+ * Copyright (c) 1999-2002 The SquirrelMail development team
  * Licensed under the GNU GPL. For full terms see the file COPYING.
  *
  * This file generates the main frameset. The files that are
@@ -13,24 +13,19 @@
  * $Id$
  */
 
-/* Path for SquirrelMail required files. */
-define('SM_PATH','../');
-
-/* SquirrelMail required files. */
-require_once(SM_PATH . 'functions/strings.php');
-require_once(SM_PATH . 'config/config.php');
-require_once(SM_PATH . 'functions/prefs.php');
-require_once(SM_PATH . 'functions/imap.php');
-require_once(SM_PATH . 'functions/plugin.php');
-require_once(SM_PATH . 'functions/i18n.php');
-require_once(SM_PATH . 'functions/auth.php');
-require_once(SM_PATH . 'functions/global.php');
+require_once('../functions/strings.php');
+require_once('../config/config.php');
+require_once('../functions/prefs.php');
+require_once('../functions/imap.php');
+require_once('../functions/plugin.php');
+require_once('../functions/i18n.php');
+require_once('../functions/auth.php');
+require_once('../src/global.php');
 
 if (!function_exists('sqm_baseuri')){
-    require_once(SM_PATH . 'functions/display_messages.php');
+    require_once('../functions/display_messages.php');
 }
 $base_uri = sqm_baseuri();
-
 session_start();
 
 if (isset($_SESSION['username'])) {
@@ -44,9 +39,6 @@ if (isset($_SESSION['onetimepad'])) {
 }
 if (isset($_GET['right_frame'])) {
     $right_frame = $_GET['right_frame'];
-}
-if ( isset($_SESSION['session_expired_post']) ) {
-    sqsession_unregister('session_expired_post');
 }
 
 is_logged_in();
@@ -67,27 +59,17 @@ if ($my_language != $squirrelmail_language) {
 
 set_up_language(getPref($data_dir, $username, 'language'));
 
-echo "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Frameset//EN\">\n".
+echo "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Frameset//EN\">\n" .
      "<html><head>\n" .
      "<title>$org_title</title>\n".
-     "</head>";
+     "</head>\n";
 
 $left_size = getPref($data_dir, $username, 'left_size');
 $location_of_bar = getPref($data_dir, $username, 'location_of_bar');
-
-if (isset($languages[$squirrelmail_language]['DIR']) &&
-    strtolower($languages[$squirrelmail_language]['DIR']) == 'rtl') {
-    $temp_location_of_bar = 'right';
-} else {
-    $temp_location_of_bar = 'left';
-}
-
 if ($location_of_bar == '') {
-    $location_of_bar = $temp_location_of_bar;
+    $location_of_bar = 'left';
 }
-$temp_location_of_bar = '';
-
-if ($left_size == "") {
+if ($left_size == '') {
     if (isset($default_left_size)) {
          $left_size = $default_left_size;
     }
@@ -97,10 +79,10 @@ if ($left_size == "") {
 }
 
 if ($location_of_bar == 'right') {
-    echo "<frameset cols=\"*, $left_size\" id=\"fs1\">\n";
+    echo "<FRAMESET COLS=\"*, $left_size\" BORDER=0 ID=fs1>\n";
 }
 else {
-    echo "<frameset cols=\"$left_size, *\" id=\"fs1\">\n";
+    echo "<FRAMESET COLS=\"$left_size, *\" BORDER=0 ID=fs1>\n";
 }
 
 /*
@@ -117,7 +99,8 @@ else {
  */
 if (!isset($right_frame)) {
     $right_frame = '';
-} 
+}
+
 if ($right_frame == 'right_main.php') {
     $urlMailbox = urlencode($mailbox);
     $right_frame_url =
@@ -126,21 +109,21 @@ if ($right_frame == 'right_main.php') {
     $right_frame_url = 'options.php';
 } elseif ($right_frame == 'folders.php') {
     $right_frame_url = 'folders.php';
-} else if ($right_frame == '') {
-    $right_frame_url = 'right_main.php';
+} elseif ($right_frame == 'compose.php') {
+    $right_frame_url = "compose.php?send_to=$rcptaddress";
 } else {
-    $right_frame_url =  urldecode($right_frame);
+    $right_frame_url = 'right_main.php';
 }
 
 if ($location_of_bar == 'right') {
-    echo "<frame src=\"$right_frame_url\" name=\"right\" frameborder=\"1\" />\n" .
-         "<frame src=\"left_main.php\" name=\"left\" frameborder=\"1\" />\n";
+    echo "<FRAME SRC=\"$right_frame_url\" NORESIZE NAME=\"right\">\n" .
+         "<FRAME SRC=\"left_main.php\" NORESIZE NAME=\"left\">\n";
 }
 else {
-    echo "<frame src=\"left_main.php\" name=\"left\" frameborder=\"1\" />\n".
-         "<frame src=\"$right_frame_url\" name=\"right\" frameborder=\"1\" />\n";
+    echo "<FRAME SRC=\"left_main.php\" NORESIZE NAME=\"left\">\n".
+         "<FRAME SRC=\"$right_frame_url\" NORESIZE NAME=\"right\">\n";
 }
 do_hook('webmail_bottom');
 ?>
-</frameset>
-</html>
+</FRAMESET>
+</HTML>

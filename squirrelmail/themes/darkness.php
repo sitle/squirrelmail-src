@@ -7,7 +7,7 @@
    **/
 
 
-require_once(SM_PATH . 'functions/strings.php');
+require_once('../functions/strings.php');
 
    // Note:  The text distance is actually pre-squared
    // Background range is from 24-64, all three colors are the same
@@ -39,7 +39,7 @@ function Darkness_HeaderPlugin() {
    
    if (substr($PHP_SELF, -18) == '/src/left_main.php') {
       echo '<meta http-equiv="Page-Enter" content="' .
-         'blendTrans(Duration=2.0)">' . '\n';
+         'blendTrans(Duration=2.0)">' . "\n";
    }
 	 
 ?><script language=javascript>

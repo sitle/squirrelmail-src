@@ -3,7 +3,7 @@
 /**
  * setup.php
  *
- * Copyright (c) 1999-2003 The SquirrelMail development team
+ * Copyright (c) 1999-2002 The SquirrelMail development team
  * Licensed under the GNU GPL. For full terms see the file COPYING.
  *
  * This is a standard Squirrelmail-1.2 API for plugins.
@@ -41,7 +41,6 @@ function bug_report_button() {
 
 function bug_report_save() {
     global $username,$data_dir;
-
     if ( !check_php_version(4,1) ) {
         global $_POST;
     }
