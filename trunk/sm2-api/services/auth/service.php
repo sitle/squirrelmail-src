@@ -63,13 +63,14 @@ class ZkSvc_auth {
         else
             $this->maxidle = $options['maxidle'];
 
-        if( $options['connector'] == '' )
+        if( !isset($options['connector']) )
             $this->connector = array( );
         else
             $this->connector = $options['connector'];
 
         // Check of registered variables
-        if( is_array( $zkld->bag_reg[$this->bag_name] ) ) {
+        if( isset( $zkld->bag_reg[$this->bag_name] ) &&
+            is_array( $zkld->bag_reg[$this->bag_name] ) ) {
             // There are properties to be loaded, second time constructing
             $this->username = $zkld->bag_reg[$this->bag_name]['username'];
             $this->password = $zkld->bag_reg[$this->bag_name]['password'];
