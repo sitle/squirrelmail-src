@@ -54,6 +54,9 @@ if (isset($where) && isset($what)) {
            '&what=' . urlencode($what) . '&mailbox=' . urlencode($mailbox));
 } else {
     if (isset($saved_draft) || isset($mail_sent)) {
+    if (!isset($mail_sent)) {
+        $mail_sent = '';
+    }
         if (!empty($saved_draft) || !empty($mail_sent)) {
             header("Location: $location/compose.php?mail_sent=$mail_sent&saved_draft=$saved_draft");
         }

@@ -162,7 +162,7 @@ if ($help_exists == true) {
         $chapter = 3;
     } else if ($context == 'search'){
         $chapter = 8;
-    } else {
+    } else if (isset($_GET['chapter'])) {
         $chapter = $_GET['chapter'];
     }
 

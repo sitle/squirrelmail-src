@@ -190,7 +190,9 @@ if (isset($_GET['where'])) {
 if (isset($_GET['checkall'])) {
     $checkall = $_GET['checkall'];
 }
-
+if (isset($_GET['count'])) {
+    $count = $_GET['count'];
+}
 /* end of get globals */
 
 /*  get mailbox names  */
@@ -225,7 +227,7 @@ if ( !isset( $submit ) ) {
     }
 }
 elseif ($submit == 'forget') {
-    forget_recent($count, $username, $data_dir);
+    forget_recent(($count-1), $username, $data_dir);
 }
 elseif ($submit == 'save') {
     save_recent($count, $username, $data_dir);
