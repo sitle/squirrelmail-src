@@ -80,27 +80,52 @@ class imap_backend extends parser {
         $this->resource =& $resource;
     }
     
-    function login($username, $password, $host, $caps=false, &$errno, &$errmsg) {
-        if (!$caps && !isset($this->capability)) {
-                $sTag = $this->sqimap_run_command('CAPABILITY');
-                $aResult = $this->sqimap_process_stream($sTag);
-                if ($aResult['RESPONSE'] == 'OK') {
-                        $this->capability = $aResult['CAPABILITY'];
-                }
-        }
-        $caps = $this->capability;
+    function capability($aSmCapability = array()) {
+         $sTag = $this->sqimap_run_command('CAPABILITY');
+         $aResult = $this->sqimap_process_stream($sTag);
+         $aCaps = array('LITERAL+' => false, 'CHILDREN' => false, 'NAMESPACE' => false);
+         if ($aResult['RESPONSE'] == 'OK') {
+             foreach($aResult['CAPABILITY'] as $value) {
+                 $aCaps[$value] = true;
+             }
+         }
+         // override capability and add internal capabilities
+         foreach($aSmCapability as $key => $value) {
+             $aCaps[$key] = $value;
+         }
+         $this->capability = $aCaps;
+         return $aCaps;
+    }
+
+    function namespace() {
+         $sTag = $this->sqimap_run_command('NAMESPACE');
+         $aResult = $this->sqimap_process_stream($sTag);
+         if ($aResult['RESPONSE'] == 'OK') {
+             return $aResult['NAMESPACE'];
+         }
+         return false;
+    }    
         
+    function login($username, $password, $host, $sm_caps=array(), &$errno, &$errmsg) {
+        if (!isset($this->capability)) {
+             $aCaps = $this->capability($sm_caps);
+        } else {
+             $aCaps = $this->capability;
+        }
         /* supported authentication methods */
         $aAuth = array('CRAM-MD5' =>false,'DIGEST-MD5'=>false); //,'PLAIN'=>false);
         $aResult = false;
         /* get the authentication methods */
-        foreach ($caps as $key => $value) {
+        foreach ($aCaps as $key => $value) {
             if (substr($key,0,5) == 'AUTH=') {
                 $aAuth[substr($key,5)] = true;
             }
         }
         /* start with the save authentication methods */
-        if ($aAuth['DIGEST-MD5']) {
+        switch ($aAuth)
+        {
+        case $aAuth['DIGEST-MD5']:
+            $query = "AUTHENTICATE DIGEST-MD5";
             $sTag = $this->sqimap_run_command($query);
             /* we expect a command continuation request with challenge*/
             $aRes = explode(' ',$this->sqimap_process_stream($sTag));  
@@ -113,10 +138,9 @@ class imap_backend extends parser {
             /* need testing !! probably just check for the OK response */
             $aresult = $this->sqimap_process_stream($sTag);
             if ($aResult['RESPONSE'] == 'OK') {
-                return $aResult;
-            }
-        }
-        if ($aAuth['CRAM-MD5']) {
+                break;
+            } 
+        case $aAuth['CRAM-MD5']:
             $query = "AUTHENTICATE CRAM-MD5";
             $sTag = $this->sqimap_run_command($query);
             /* we expect a command continuation request with challenge*/
@@ -128,45 +152,48 @@ class imap_backend extends parser {
             /* need testing !! probably just check for the OK response */
             $aResult = $this->sqimap_process_stream($sTag);
             if ($aResult['RESPONSE'] == 'OK') {
-                return $aResult;
+                break;
             }
-        } // else if ($aAuth['PLAIN']) {}  
-        
-        if (isset($caps['LOGINDISABLED']) && $caps['LOGINDISABLED']) {
-            /* we need to do a STARTTLS which isn't supported on a normal socket */
+        case $aAuth['PLAIN']:
+        default:
+            if (isset($aCaps['LOGINDISABLED']) && $aCaps['LOGINDISABLED']) {
+                /* we need to do a STARTTLS which isn't supported on a normal socket */
             
-            /* error handling */
+                /* error handling */
             
-            $errmsg = _("Notify your system administrator, no authentication mechanism found");
-            $errno = 0; /* TODO fatal error */
+                $errmsg = _("Notify your system administrator, no authentication mechanism found");
+                $errno = 0; /* TODO fatal error */
             
-            return false;
-        } else {
-            /* use normal login */
+                return false;
+            } else {
+                /* use normal login */
             
-            /* escaping  ??? */
-	    $user = ereg_replace('(["\\])', '\\\\1', $username);
-	    $pass = ereg_replace('(["\\])', '\\\\1', $password);
+                /* escaping  ??? */
+	        $user = ereg_replace('(["\\])', '\\\\1', $username);
+	        $pass = ereg_replace('(["\\])', '\\\\1', $password);
 
-	    $query = 'LOGIN "' . $user .  '" "' . $pass . '"';
-	    $sTag = $this->sqimap_run_command($query);
-	    $aResult = $this->sqimap_process_stream($sTag);
-            if ($aResult['RESPONSE'] == 'OK') {
-                return $aResult;
-            }
-	}  
-        /* error handling */
-        if ($aResult) {
-            $errmsg = $aResult['MESSAGE'];
-            /* optional, check response for NO, BAD or BYE */
-            $errno = 0; /* TODO */
+	        $query = 'LOGIN "' . $user .  '" "' . $pass . '"';
+	        $sTag = $this->sqimap_run_command($query);
+	        $aResult = $this->sqimap_process_stream($sTag);
+	    }          
+            break;
+        }
+        if ($aResult['RESPONSE'] == 'OK') {
+            return $aResult;
         } else {
-            /* something went terrible wrong, notify the user */
+            /* error handling */
+            if ($aResult) {
+                $errmsg = $aResult['MESSAGE'];
+                /* optional, check response for NO, BAD or BYE */
+                $errno = 0; /* TODO */
+            } else {
+                /* something went terrible wrong, notify the user */
             
-            /* TODO */
+                /* TODO */
             
-            /* optionally try to initiate a tls connection if PHP version > 4.3 */
-            /* reconnect and call $this->login again from here and return the result */
+               /* optionally try to initiate a tls connection if PHP version > 4.3 */
+               /* reconnect and call $this->login again from here and return the result */
+            }
         }
         return false;
     }
@@ -174,10 +201,170 @@ class imap_backend extends parser {
 
     function logout() {
         return $this->sqimap_process_stream($this->sqimap_run_command('LOGOUT'));
-    }        
+    }
+    
+    /**
+     * @func      getMailboxList
+     * @desc      Retrieve an array with mailboxes catagorised per namespace 
+     * @param     str        $type         LSUB or LIST
+     * @param     arr        $aNamespace   array with namespaces, normally we have the following 
+     *                                     namespaces: Personal, Other Users and Shared. The keys 
+     *                                     I use are 'personal', 'otherusers' and 'shared'. Each 
+     *                                     namespace can contain muliple definitions. A definition is
+     *                                     in the form  
+     *                                     array('namespace' => folderprefix, 
+     *                                           'delimiter' => hierarchieseparator).
+     *                                     By providing your own namespace, the system namespace is overrided.    
+     * @param     arr        $aProperties  array with params to manipulate default behaviour.
+     *                                     expand => retrieve the whole list instead of 1 level deep
+     *                                     haschildren => retrieve children information
+     *                                     verifyflags => in case of LSUB retrieve the flags with 
+     *                                     a LIST call
+     *                                     
+     * @return    arr        $aResults     array with namespaces and their mailboxes.
+     * @access    public
+     * @author    Marc Groot Koerkamp
+     */    
+    
+            
+    // $aNamespace: array with prefixes;    
+    function getMailboxList($type,$aNamespace=array(),$aProperties = 
+             array('expand' => false, 'haschildren' => true, 'verifyflags' => true)) {
+        $type = strtoupper ($type);     
+        if (!count($aNamespace)) {
+           /* no namespace suplied, try to get one */
+           if ($this->capability['NAMESPACE']) {
+               $aNamespace = $this->namespace();
+           } else {
+               $aNamespace = array(array('namespace' => ''), false, false); /* we do not use the delimiter */
+           }    
+        }
+        print_r($aNamespace);
+        $aTags = array();   
+        if (!$aProperties['expand']) {
+           $sSearch = '%%';
+        } else {
+           $sSearch = '*%';
+        }
+        $aResults = array();
+        /* pipelined server requests for LSUB OR LIST */
+        foreach ($aNamespace as $key => $aSubNamespace) {
+            if ($aSubNamespace) {
+                foreach ($aSubNamespace as $aReference) {
+                    $query = strtoupper($type).' ' . $this->getString($aReference['namespace']) . " \"$sSearch\"";
+                    /* store the tags temporarely in the result */
+                    $aResults[$key][$aReference['namespace']] = $this->sqimap_run_command($query);
+                }
+            }
+        }
+        /* retrieve the results */
+        foreach ($aResults as $key => $value) {
+            foreach($value as $sReference => $sTag) {
+                $aRes = $this->sqimap_process_stream($sTag);
+                if ($aRes['RESPONSE'] == 'OK') {
+                    $aResults[$key][$sReference] = $aRes[strtoupper($type)];
+                } else {
+                   $aResults[$key][$sReference] = false;
+                }
+            }
+        }
+        if ($aProperties['verifyflags'] && $type = 'LSUB') {
+            foreach ($aResults as $key => $value) {
+                foreach($value as $sReference => $aList) {
+                    if ($aList) {
+                        foreach($aList as $sMbx => $aProperties) {
+                            $query = 'LIST ' . $this->getString($sPrefix) . " \"$sMbx\"";
+                            $aResults[$key][$sReference][$sMbx]['TAG'] = $this->sqimap_run_command($query);
+                        }
+                    }
+                }
+            }
+            foreach ($aResults as $key => $value) {
+                foreach($value as $sReference => $aList) {
+                    if ($aList) {
+                        foreach($aList as $sMbx => $aProperties ) {
+                            $aRes = $this->sqimap_process_stream($aProperties['TAG']);
+                            if ($aRes['RESPONSE'] == 'OK') {
+                                if (isset($aRes['LIST'][$sMbx])) {
+                                    $aResults[$key][$sReference][$sMbx]['flags'] = $aRes['LIST'][$sMbx];
+                                } else {
+                                    $aResults[$key][$sReference][$sMbx]['flags'][] = '\\NonExistent';
+                                }
+                            } else {
+                                $aResults[$key][$sReference][$sMbx]['flags'][] = '\\NonExistent';
+                            }
+                            unset($aResults[$key][$sReference][$sMbx]['TAG']);                            
+                        }
+                    }
+                }
+            }    
+        }
         
-        
-        
+        if ($aProperties['haschildren'] && !$this->capability['CHILDREN']) {
+            foreach ($aResults as $key => $value) {
+                foreach($value as $sReference => $aList) {
+                    if ($aList) {
+                        foreach($aList as $sMbx => $aProperties) {
+                            $sDelimiter = $aProperties['delimiter'];
+                            if (substr($sMbx,-1) != $sDelimiter) {
+                               $sPrefix = $sMbx . $sDelimiter;
+                            } else {
+                               $sPrefix = $sMbx;
+                            }
+                            $query = strtoupper($type).' ' . $this->getString($sPrefix) . ' "%"';
+                            $aResults[$key][$sReference][$sMbx]['TAG'] = $this->sqimap_run_command($query);
+                        }
+                    }
+                }
+            }
+            foreach ($aResults as $key => $value) {
+                foreach($value as $sReference => $aList) {
+                    if ($aList) {
+                        foreach($aList as $sMbx => $aProperties ) {
+                            $aRes = $this->sqimap_process_stream($aProperties['TAG']);
+                            if ($aRes['RESPONSE'] == 'OK') {
+                                if (count($aRes[strtoupper($type)])) {
+                                    $aResults[$key][$sReference][$sMbx]['flags'][] = '\\HasChildren';
+                                } 
+                            }
+                            unset($aResults[$key][$sReference][$sMbx]['TAG']);                            
+                        }
+                    }
+                }
+            }
+        }
+        echo 'RESULT:<br>';
+        print_r($aResults);
+        return $aResults;
+    }
+    
+    //* imap specific => not in parser class
+    function parseLiteral(&$sRead, &$i) {
+        ++$i;
+        $iLiteral = (int) substr($sRead,$i,strpos($sRead,'}',$i) - $i);
+        $sRead = '';
+        $s = ($lit_cnt ? $this->sqimap_fread($iLiteral) : '');
+        $i = 0;
+        $this->sqimap_fgets();
+        return $s;
+    }
+
+    function getString($string) {
+        if (preg_match('/[\\\\\r\n"0x00-0x7f]/', $string)) { /* check for literal string */
+            $iLitLength = strlen($string);
+            $sLitString = "\{$iLitLength";
+            if ($this->capability['LITERAL+']) {
+               $sLitString .= "+}\r\n";
+            } else {
+               $sLitString .="}\r\n";
+            }
+            $string = $sLitString . $string;
+        } else {
+            $string = '"' . $string . '"';
+        }
+        return $string;
+    }
+    
     function getValidCommandArguments($sCommand) {
         switch ($sCommand)
         {
@@ -288,7 +475,7 @@ class imap_backend extends parser {
 		$this->stack[$sTag]['OK'] = false;
 		$this->stack[$sTag]['NO'] = false;
 		$this->stack[$sTag]['BAD'] = false;
-		$this->print_var($query);
+		//$this->print_var($query);
 		if (!is_array($query)) {
 			fputs ($this->resource, $sTag . ' ' . $query . "\r\n");
 		} else {
@@ -336,8 +523,57 @@ class imap_backend extends parser {
                 list($usec, $sec) = explode(" ",microtime());
                 return ((float)$usec + (float)$sec);
         } 
+
         
-	function sqimap_fgets() {
+    function sqimap_fgets() {
+        $resource = $this->resource;
+        $read = '';
+        $buffer = 4096;
+        $results = '';
+        $offset = 0;
+        while (strrpos($results, "\n") === false) {
+            if (!($read = fgets($resource, $buffer))) {
+	        /* this happens in case of an error */
+	        /* reset $results because it's useless */
+	        $results = false;
+                break;
+            }
+            if ( $results != '' ) {
+                $offset = strlen($results) - 1;
+            }
+            $results .= $read;
+        }
+        echo $results;
+        return $results;
+    }
+    
+    function sqimap_fread($iCnt) {
+        $buffer = 4096;
+        $s = '';
+        $resource = $this->resource;
+        $i = 0;
+        while ($iRet < ($iCnt - ($i * $buffer))) {
+            $sRead = fread($resource,$buffer);
+            if (!$sRead) {
+               return false;
+            }
+            ++$i;
+            if (isset($this->streamfilter)) {
+                 $this->streamfilter($sRead); // not tested.
+            }
+            $s .= $read;
+        }
+        $buffer = $iCnt - ($i * $buffer);
+        $sRead = fread($resource,$buffer);
+        ++$i;
+        if (isset($this->streamfilter)) {
+             call_user_func_array($this->streamfilter,&$sRead); // not tested
+        }
+        $s .= $sRead;
+        return $read;
+    }
+                
+	function sqimap_fgets_experiment() {
                 set_time_limit(5);
                 if (!function_exists("tick")) {
                         function tick($starttime,$stop) {
@@ -374,39 +610,12 @@ class imap_backend extends parser {
                 }
                 unregister_tick_function('tick');        
                 if (!strrpos($s,"\n")) {
-                   echo "KUT ERROR";
+                   echo "ERROR";
                 }
 		return $s;
                 
 	}
- /* 
-        function tick() {
-                $elapsedtime = $this->getmicrotime() - $this->starttime;
-                if ($elapsedtime > 0.0020) {
-                    $this->stop = true;
-                }
-                echo "<BR>$elapsedtime tick<BR>";
-        }
-*/
-/*
-	function sqimap_fgets($iSize=0, &$iLineLength) {
-		$buffer = 4096;
-		$iLineLength = 0;
-		if ($iSize) {
-			$buffer = $iSize;
-			$s = fread($this->imap_stream,$buffer);
-			$iLineLength = $iSize;
-		} else {
-			$s = fgets($this->imap_stream,$buffer);
-			$iLineLength = strlen($s);
-			if 
-		}
-		$this->iTot_cnt += $iLineLength;
-//		 echo htmlspecialchars($s) . "<BR>";
-		// $this->print_var($this->stack);
-		return $s;
-	}
-*/
+
 	/* needs persistor class */
 	/* currently for testing only*/
 	function dumpResult($sTag, &$aResult) {
@@ -442,33 +651,36 @@ class imap_backend extends parser {
 		do {
 			$sRead = $this->sqimap_fgets();
                         $i = 0;
-                        echo $sRead;
+                        //echo $sRead;
 			$cChar = $sRead{$i};
-                        echo "char = $cChar, $i <BR>";
+                        //echo "char = $cChar, $i <BR>";
 			switch (true)
 			{
 			case $cChar == '+':
 				return substr($sRead,2);
 			case $cChar == '*':
                                 $i+=2;
-				$res = $this->_parseUnTagged($sRead, $i, $sCommand);
-				$aResult[$sCommand][] = $res;
+				$res = $this->_parseUnTagged($sRead, $i, $sCommand, $key);
+                                if ($key) {
+                                    $aResult[$sCommand][$key] = $res;
+                                } else {
+				    $aResult[$sCommand] = $res;
+                                }
                                 if (isset($res['BYE'])) {
                                     break 2;
                                 }
 				break;
 			default:
 				$sArg = $this->parseString($sRead,array(' '),$i);
-                                echo "<BR>$sArg<BR>";
+                                //echo "<BR>$sArg<BR>";
 				if (in_array($sArg,array_keys($this->stack))) {
 					++$i;
-                                        echo "?????????" . substr($sRead,$i);
 					if ($this->_parseTagged($sRead,$i,$sTag,$sResponse,$vMessage)) {
   						$this->stack[$sTag] = $aResult;
-                                                print_r($aResult);
+                                                //print_r($aResult);
 						$this->stack[$sTag]['MESSAGE'] = $vMessage;
 						$this->stack[$sTag]['RESPONSE'] = $sResponse;
-                                                echo $this->stack[$sTag]['RESPONSE'];
+                                                //echo $this->stack[$sTag]['RESPONSE'];
 //						$this->stack[$sTag]['SERVER'] = $this->stack['SERVER'];
 						$this->stack['OK'] = 
 						$this->stack['NO'] = 
@@ -489,7 +701,7 @@ class imap_backend extends parser {
 			}
 		} while (!$this->stack[$sTag]['RESPONSE']);
 		$result = $this->stack[$sTag];
-                print_r($result);
+                //print_r($result);
 		unset($this->stack[$sTag]);
 		return $result;
 	}
@@ -499,7 +711,7 @@ class imap_backend extends parser {
 	 * Returns the found argument and in case of an preleading integer it
 	 * returns the integer by reference.
 	 */
-	function _parseUnTagged($sRead, &$i, &$sCommand) {
+	function _parseUnTagged($sRead, &$i, &$sCommand, &$key) {
 		$sCommand = $this->parseString($sRead,array(' ',"\n"),$i);
 		if (is_numeric($sFirstToken)) {
 			$iValue = $sFirstToken;
@@ -533,7 +745,7 @@ class imap_backend extends parser {
 		case 'LIST':
 		case 'LSUB':
 			++$i;
-			return $this->_parseList($sRead,$i);
+			return $this->_parseList($sRead,$i,$key);
 		case 'STATUS':
 			++$i;
 			return $this->_parseStatus($sRead,$i);
@@ -546,6 +758,9 @@ class imap_backend extends parser {
 		case 'FETCH':
 			++$i;
 			return $this->_parseFetch($sRead,$i, $iValue);
+                case 'NAMESPACE':
+                        ++$i;
+                        return $this->_parseNamespace($sRead,$i, $iValue);
 		default:
 			if ($this->installedExtensions[$sCommand]) {
 				return $this->installedExtensions[$sCommand]($sRead,$i);
@@ -620,16 +835,94 @@ class imap_backend extends parser {
 	}
 
 	function parseFlags(&$sRead, &$i, &$iCnt) {
-		return explode($this->parseEnclosed($sRead,$i,'(',')'));
+            return explode($this->parseEnclosed($sRead,$i,'(',')'));
 	}
 
 	function parseUidList(&$sRead, &$i, &$iCnt) {
-		return explode(' ',substr($sRead,$i,-1)); /* strip \n */
+            return explode(' ',substr($sRead,$i,-1)); /* strip \n */
 	}
 	
 	function _parseCapability($sRead,&$i) {
-		return explode(' ',substr($sRead,$i,-1)); /* strip \n */
+            return explode(' ',substr($sRead,$i,-1)); /* strip \n */
 	}
+
+        
+        
+        //namespace ex1 (("INBOX." ".")) (("user." " ")) (("#shared/" "/") ("#news." "."))
+        //          ex2 (("INBOX." ".")) NIL NIL
+                    
+    function _parseNameSpace($sRead,&$i) {
+	$aResults = array(false,false,false);
+        $j = 0;
+	while (isset($sRead{$i})) {
+	    $cChar = $sRead{$i}; /* set cChar otherwise the switch statement can handle a changed $i */
+            switch ($cChar)
+            {
+            case '(': // we reach a namespace
+                ++$i;
+                $aNamespace = array();
+                while ($sRead{$i} != ')') { // get the defined namespaces
+                    $cChar = $sRead{$i};
+                    switch ($cChar)
+                    {
+                    case '(':
+                         ++$i;
+                         $iEndNamespace = strpos($sRead,')',$i);
+                         $sNamespace = substr($sRead,$i,$iEndNamespace-$i);
+                         if (preg_match('/^\"(.+)\"\s\"(.{1})\"$/',$sNamespace,$aMatch)) {
+                             $aNamespace[] = array('namespace' => $aMatch[1], 'delimiter' => $aMatch[2]);
+                         }
+                         $i = $iEndNamespace+1;
+                         break;
+                    default:
+                         ++$i;
+                         break;
+                    }
+                }
+                $i = strpos($sRead,')',$i)+1;
+                if (count($aNamespace)) {
+                    $aResults[$j] = $aNamespace;
+                }
+                ++$j;
+                break;     
+            case 'n':
+            case 'N':
+                $aResults[] = false; // no namespace defined
+                $i+=3;
+                ++$j;
+            default:
+                ++$i;
+            }
+        }
+        return array('personal' => $aResults[0], 'otherusers' => $aResults[1], 'shared' =>$aResults[2]);
+    }
+    
+    function _parseList($sRead, &$i, &$sMbx) {
+       $aResult = array();
+       /* get the flags */
+       $aFlags = explode(' ',$this->parseEnclosed(&$sRead, &$i, '(', ')'));
+       ++$i;
+       //get the delimiter (NIL or "char")
+       $sDelimiter = substr($sRead,$i,3);
+       if (strtoupper($sDelimiter) === 'NIL') {
+          $delimiter = false;
+       } else {
+          $delimiter = $sDelimiter{1};
+       }
+       $i +=4;
+       $sMbx = false;
+       while (!$sMbx) {
+           switch($sRead{$i})
+           {
+           case '"': $sMbx = $this->parseQuote($sRead,$i); break;
+           case '{': $sMbx = $this->parseLiteral($sRead,$i); break;
+           case ' ': ++$i; break;
+           default: $sMbx = substr($sRead,$i,-2); break;// strip off \r\n
+           }
+       }
+       $i = strlen($sRead);
+       return array('flags' => $aFlags, 'delimiter' => $delimiter);
+    }
 
 	function processStatus($s, &$aResult) {
 		if ($iPos=$strpos($s,' ')) {
