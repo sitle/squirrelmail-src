@@ -83,7 +83,8 @@
     if ( isset($t['title']) )
     echo ' - ', htmlentities($t['title']);
 ?></title>
-<link rel="stylesheet" type="text/css" href="templates/style.css" />
+<link rel="stylesheet" type="text/css" href="templates/style.css" media="all" />
+<link rel="stylesheet" type="text/css" href="templates/printer.css" media="print" />
 </head>
 <body>
 <!-- begin page title -->

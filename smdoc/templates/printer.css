@@ -1,0 +1,25 @@
+/*
+ * Printer Friendly stylesheet; contains some overrides for the
+ * regular stylesheet. Is used automatically when printing a page.
+ *
+ * Modified by SquirrelMail Development Team
+ * $Id$
+ */
+body, #content {
+	margin: 0;
+	padding: 0;
+	width: 100%;
+}
+#pagetitle {
+	background: none;
+}
+#pagetitle .skip, #pagetitle .usermenu, #pagetitle .locationmenu, #editmenu {
+	display: none;
+}
+#pagetitle .titleblock:before {
+	content: "SquirrelMail: ";
+}
+#copyright {
+	background: white;
+	color: #666;
+}
