@@ -1,14 +1,24 @@
 <?php
-
-/*
- *  This function tell other modules what users have access
- *  to the plugin.
- *  
- *  Philippe Mingo
- *  
- *  $Id$
+/**
+ * Administrator plugin - Authentication routines
+ *
+ * This function tell other modules what users have access
+ * to the plugin.
+ *
+ * @version $Id$
+ * @author Philippe Mingo
+ * @copyright (c) 1999-2004 The SquirrelMail Project Team
+ * @license http://opensource.org/licenses/gpl-license.php GNU Public License
+ * @package plugins
+ * @subpackage administrator
  */
 
+/**
+ * Check if user has access to administrative functions
+ *
+ * @return boolean
+ * @access private
+ */
 function adm_check_user() {
     global $PHP_SELF;
     require_once(SM_PATH . 'functions/global.php');
