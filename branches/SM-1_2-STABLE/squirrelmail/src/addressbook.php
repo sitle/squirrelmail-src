@@ -54,7 +54,7 @@ function adressbook_inp_field($label, $field, $name, $size, $values, $add) {
          '<TD BGCOLOR="' . $color[4] . '" ALIGN=left>' .
          '<INPUT NAME="' . $name . '[' . $field . ']" SIZE="' . $size . '" VALUE="';
     if (isset($values[$field])) {
-        echo htmlspecialchars($values[$field]);
+        echo htmlspecialchars(strip_tags($values[$field]));
     }
     echo '">' . $add . '</TD></TR>' . "\n";
 }
@@ -105,7 +105,10 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
     /**************************************************
      * Add new address                                *
      **************************************************/
-    if (!empty($addaddr['nickname'])) {
+
+        foreach( $addaddr as $k => $adr ) {
+            $addaddr[$k] = strip_tags( $adr );
+        }
 
         $r = $abook->add($addaddr, $abook->localbackend);
 
@@ -118,7 +121,6 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
             $formerror = $errstr;
             $showaddrlist = false;
             $defdata = $addaddr;
-        }
 
     } else {
 
