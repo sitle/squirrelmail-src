@@ -4,10 +4,12 @@
 
 Version 1.4.2 -- CVS
 --------------------
+  - Fix message highlighting for text containing spaces.
   - Added feature to allow user to switch on full date display in mailboxes instead
     of just partial date/time based on time of email, and current date.
   - Fixed bug that would cause e-mails dated in the future to be displayed with only
     the time.
+  - Custom CSS option now works properly.
   - Fix SquirrelSpell JS incompatibility with other plugins that use forms like
     Link Buttons (#774454).
   - Fix when forwarding messages as attachment from message list, the displayed
@@ -15,13 +17,21 @@ Version 1.4.2 -- CVS
     Closes #772371.
   - Fix that when user has no theme preference set, Alien Glow would be selected under
     display preferences instead of Default.
+  - Remove chosen_theme from default_pref because this (wrongly) overrides the default
+    theme defined in config.php.
+  - Define defaults for missing colors in incomplete themes.
   - Updated 'action' to be 'smaction' so that plugins can modify the submit/action of
     forms.  This was suggested for the gpg plugin, but might be useful elsewhere.
+  - Fix bug that after sending reply user was returned to the first page of the
+    message list, which should be te last-active page (use startMessage).
   - Fix forwarded emails as attachment from appended ) to the email.
   - Prevent username and password from being sent in error message if IMAP
     drops connection during login.
   - Workaround for Mozilla bug #200412 in order to show multipart/related html mail.
   - Fix for disapearing '0' from decoded strings (bug #784193).
+  - Add Minimal BW theme: a colorless environment for browsers that don't support colors.
+  - Replace all session_start() calls with sqsession_is_active() to be compatible
+    with upcoming PHP 4.3.3.
 
 Version 1.4.1 -- 7 July 2003
 ----------------------------
