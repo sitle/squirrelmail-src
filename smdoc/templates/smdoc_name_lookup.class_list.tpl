@@ -17,8 +17,8 @@
  * @subpackage template
  */
 
-$t['title'] = _("Group Membership") .': '.$t['groupname'];
-$t['body_function'] = 'group_edit_body';
+$t['title'] = _("Short Name");
+$t['body_function'] = 'shortname_list_body';
 
 /** Include base template */
 include(TEMPLATE_PATH.'index.tpl');
@@ -33,33 +33,31 @@ include(TEMPLATE_PATH.'index.tpl');
  * @param object $object Reference to object being invoked.
  * @param mixed $t Reference to array filled with template parameters.
  */
-function group_edit_body(&$foowd, $className, $method, &$user, &$object, &$t)
+function shortname_list_body(&$foowd, $className, $method, &$user, &$object, &$t)
 {
-  // Display Group membership, and checkboxes for delete
+  // Display All groups, with member count, and checkboxes for delete
   $t['deleteForm']->display_start('smdoc_form');
 ?>
     <table class="smdoc_table">
-      <tr><td colspan="5"><div class="separator"><?php echo _("Current Members"); ?></div></td></tr>
-      </tr>
+      <tr><td colspan="5"><div class="separator"><?php echo _("Current Short Names"); ?></div></td></tr>
       <tr>
-        <th><?php echo _("User") ?></th>
+        <th><?php echo _("Name") ?></th>
+        <th><?php echo _("Object") ?></th>
         <th></th>
         <th><?php echo _("Delete") ?></th>
       </tr>
 <?php 
       $row = 0;
-      foreach ( $t['memberlist'] as $id => $arr )
+      foreach ( $t['shortList'] as $idx => $arr )
       {
-        $uri_arr['objectid'] = $arr['objectid'];
-        $uri_arr['classid']  = USER_CLASS_ID;
-        $url = getURI($uri_arr);
+        $uri['objectid'] = $arr['objectid'];
+        $uri['classid']  = $arr['classid'];
 ?>
       <tr class="<?php echo ($row ? 'row_odd' : 'row_even'); ?>">
-        <td class="value"><a href="<?php echo $url; ?>"><?php echo $arr['title']; ?></a></td>
+        <td><?php echo $idx; ?></td>
+        <td class="value"><a href="<?php echo getURI($uri); ?>"><?php echo $arr['title']; ?></a></td>
         <td class="subtext">&nbsp;[<?php echo $arr['objectid']; ?>]&nbsp;</td>
-        <td>&nbsp;<?php echo empty($arr['member_delete']) ? 
-                                   $arr['member_delete'] : 
-                                   $arr['member_delete']->display(); ?>&nbsp;</td>
+        <td>&nbsp;<?php echo $arr['name_delete']->display(); ?>&nbsp;</td>
       </tr>
 <?php    $row = !$row;
       } // end foreach user in list
@@ -71,4 +69,4 @@ function group_edit_body(&$foowd, $className, $method, &$user, &$object, &$t)
   echo '</div>'."\n";
   
   $t['deleteForm']->display_end();
-} // end user_list_body
+} // end shortname_list_body

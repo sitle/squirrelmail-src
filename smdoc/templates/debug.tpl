@@ -16,6 +16,15 @@
  * @package smdoc
  * @subpackage template
  */
+
+/**
+ * Template invoked by debug object display function.
+ *
+ * @param int $accessNumber Number of DB accesses.
+ * @param int $execTime Execution time for the page.
+ * @param string $trackString String containing accumulated debug information.
+ * @param bool $debugVar TRUE if additional var information be displayed (_SESSION, _GET, etc.).
+ */
 function debug_display($accessNumber, $execTime, &$trackString, $debugVar)
 {
 ?>
