@@ -258,10 +258,6 @@ $xtra = <<<ECHO
 
 .entheader {
   display:inline;
-  margin-bottom:1em;
-  padding-bottom:1em;
-  border-style: solid none solid none;
-  border-width:0.1em;
   width:99%;
 }
 //-->
@@ -272,9 +268,19 @@ ECHO;
 
 displayHtmlHeader( _("Message Details"), $xtra, FALSE );
 /* body */
-echo '<body><code>'."\n";
+echo "<body text=\"$color[8]\" bgcolor=\"$color[4]\" link=\"$color[7]\" vlink=\"$color[7]\" alink=\"$color[7]\">\n";
+echo '<code>'."\n";
 echo '<font face = "monospace">'."\n";
 echo '<BR>'."\n";
+
+
+//  margin-bottom:0.1em;
+//  padding-bottom:0.1em;
+//  border-style: solid none none none;
+//  border-width:0.1em;
+
+
+
 //session_register("entities");
 //$keys = array_keys($entities);
 //$start = gettimeofday();
