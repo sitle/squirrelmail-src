@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: $Id$\n"
 "POT-Creation-Date: 2003-07-20 13:43+0300\n"
-"PO-Revision-Date: 2003-07-22 11:20+0300\n"
+"PO-Revision-Date: 2003-07-22 22:00+0200\n"
 "Last-Translator: M.J. Prinsen <translation@prinsenonline.com>\n"
 "Language-Team: Dutch <squirrelmail-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -612,7 +612,7 @@ msgid "Printer Friendly"
 msgstr "Printer vriendelijk"
 
 msgid "CC"
-msgstr "CC:"
+msgstr "CC"
 
 msgid "Print"
 msgstr "Print"
@@ -911,7 +911,7 @@ msgid "Fri"
 msgstr "Vr"
 
 msgid "Sat"
-msgstr "Zo"
+msgstr "Za"
 
 msgid "January"
 msgstr "januari"
@@ -1052,8 +1052,8 @@ msgid ""
 "Preference file, %s, could not be copied from temporary file, %s. Contact "
 "your system administrator to resolve this issue."
 msgstr ""
-"Bestand met voorkeuren, %s, kan niet worden gekopieerd van het tijdelijke "
-"bestand, %s. Neem contact op met uw systeembeheerder."
+"Bestand met voorkeuren, %s, kan niet worden gekopieerd van het tijdelijke bestand, %s. "
+"Neem contact op met uw systeembeheerder."
 
 #, c-format
 msgid "Error opening %s"
@@ -1093,8 +1093,8 @@ msgid ""
 "Signature file, %s, could not be copied from temporary file, %s. Contact "
 "your system administrator to resolve this issue."
 msgstr ""
-"Bestand met handtekeningen, %s, kan niet worden gekopieerd van het "
-"tijdelijke bestand, %s. Neem contact op met uw systeembeheerder."
+"Bestand met handtekeningen, %s, kan niet worden gekopieerd van het tijdelijke bestand, %s. "
+"Neem contact op met uw systeembeheerder."
 
 msgid ""
 "You need to have php4 installed with the multibyte string function enabled "
@@ -1107,7 +1107,7 @@ msgid "ERROR : No available imapstream."
 msgstr "FOUT : Imapstream niet beschikbaar."
 
 msgid "ERROR : Connection dropped by imap-server."
-msgstr "FOUT : Verbinding verbroken door imap-server."
+msgstr "FOUT : Verbinding verbroken door IMAP server"
 
 msgid "Query:"
 msgstr "Verzoek:"
@@ -1119,7 +1119,7 @@ msgid "Reason Given: "
 msgstr "Reden: "
 
 msgid "ERROR : Bad or malformed request."
-msgstr "FOUT : Foute of corrupte aanvraag."
+msgstr "FOUT: Foute of corrupte aanvraag."
 
 msgid "Server responded: "
 msgstr "Server reageerde: "
@@ -1128,11 +1128,11 @@ msgid "ERROR : Imap server closed the connection."
 msgstr "FOUT : IMAP server heeft de verbinding verbroken."
 
 msgid "ERROR : Unknown imap response."
-msgstr "FOUt : Onbekend IMAP antwoord"
+msgstr "FOUT : Onbekend IMAP antwoord."
 
 #, c-format
 msgid "Error connecting to IMAP server: %s."
-msgstr "FOUT: kan IMAP server %s niet initialiseren."
+msgstr "FOUT : kan IMAP server %s niet initialiseren."
 
 #, c-format
 msgid "Bad request: %s"
@@ -1168,13 +1168,15 @@ msgid "Unknown response from IMAP server: "
 msgstr "Onbekend antwoord van IMAP server: "
 
 msgid "The server couldn't find the message you requested."
-msgstr ""
+msgstr "De server kan het bericht dat u opvroeg niet vinden."
 
 msgid ""
 "Most probably your message list was out of date and the message has been "
 "moved away or deleted (perhaps by another program accessing the same "
 "mailbox)."
 msgstr ""
+"Uw berichtenlijst is waarschijnlijk verouderd en het bericht is verplaatst "
+"of verwijderd (misschien doordat een ander programma dezelfde mailbox heeft gebruikt)."
 
 msgid "Unknown date"
 msgstr "Onbekende datum"
@@ -1307,7 +1309,7 @@ msgid "Service not available, closing channel"
 msgstr "Service niet beschikbaar, kanaal wordt afgesloten"
 
 msgid "A password transition is needed"
-msgstr "Een wachtwoord is nodig"
+msgstr "Er is een wachtwoord nodig"
 
 msgid "Requested mail action not taken: mailbox unavailable"
 msgstr "Gevraagde mail actie niet uitgevoerd: mailbox niet beschikbaar"
@@ -1353,7 +1355,7 @@ msgid "Requested action not taken: mailbox unavailable"
 msgstr "Gevraagde actie niet uitgevoerd: maibox niet beschikbaar"
 
 msgid "User not local; please try forwarding"
-msgstr "Gebruiker niet locaal; probeer doorsturen"
+msgstr "Gebruiker niet lokaal; probeer doorsturen"
 
 msgid "Requested mail action aborted: exceeding storage allocation"
 msgstr ""
@@ -1411,7 +1413,7 @@ msgid "Maximum Number of Pages to Show"
 msgstr "Maximum aantal te tonen pagina's"
 
 msgid "Always Show Full Date"
-msgstr ""
+msgstr "Toon altijd de volledige datum"
 
 msgid "Message Display and Composition"
 msgstr "Bericht weergave en compositie"
@@ -1993,7 +1995,7 @@ msgid "Length:"
 msgstr "Duur:"
 
 msgid "Priority:"
-msgstr "Prioriteit"
+msgstr "Prioriteit:"
 
 msgid "Title:"
 msgstr "Titel:"
@@ -2549,7 +2551,7 @@ msgid "apop authentication failed"
 msgstr "apop authorisatie mislukt"
 
 msgid "POP3 login:"
-msgstr "POP3 gebruikersnaam:"
+msgstr "POP3 login:"
 
 msgid "POP3 top:"
 msgstr "POP3 top:"
@@ -2561,10 +2563,10 @@ msgid "Premature end of list"
 msgstr "Voortijdig einde van de lijst"
 
 msgid "POP3 get:"
-msgstr "POP3 ophalen:"
+msgstr "POP3 get:"
 
 msgid "POP3 last:"
-msgstr "POP3 laatste:"
+msgstr "POP3 last:"
 
 msgid "POP3 reset:"
 msgstr "POP3 reset:"
@@ -2576,7 +2578,7 @@ msgid "Empty command string"
 msgstr "Leeg commando"
 
 msgid "POP3 quit:"
-msgstr "POP3 afsluiten:"
+msgstr "POP3 quit:"
 
 msgid "connection does not exist"
 msgstr "verbinding bestaat niet"
@@ -2585,7 +2587,7 @@ msgid "POP3 uidl:"
 msgstr "POP3 uidl:"
 
 msgid "POP3 delete:"
-msgstr "POP3 verwijderen:"
+msgstr "POP3 delete:"
 
 msgid "No msg number submitted"
 msgstr "Geen berichtnummer opgegeven"
@@ -2851,8 +2853,8 @@ msgid ""
 "Select from the list of <b>server files</b> the media file to play when new "
 "mail arrives.  If no file is specified, \"(none)\", no sound will be used."
 msgstr ""
-"Selecteer het geluid dat u wilt afspelen bij een nieuw bericht van de lijst "
-"met <b>server bestanden</b>. Indien er geen bestand wordt gespecificeerd, "
+"Selecteer het bestand dat u wilt afspelen bij een nieuw bericht van de lijst "
+"met <b>server bestanden</b>. Indien er geen bestand wordt gespecificeerd, " 
 "\"(geen)\", zal geen geluid worden gebruikt."
 
 msgid "Enable Media Playing"
@@ -3356,20 +3358,22 @@ msgid "Number of supported language pairs: %s"
 msgstr "Aantal ondersteunde talenparen: %s"
 
 msgid "No known limits, powered by Systran"
-msgstr "Geen limieten bekend, powered by Systran"
+msgstr "Geen limieten bekend, powered by Systran "
 
 msgid "No known limits, powered by Translation Experts's InterTran"
-msgstr "Geen limieten bekend, powered by Translation Experts's InterTran"
+msgstr ""
+"Geen limieten bekend, powered by Translation Experts's InterTran"
 
 #, c-format
 msgid "Number of supported languages: %s"
-msgstr "Aantal ondersteunde talenparen: %s"
+msgstr "Aantal ondersteunde talen: %s"
 
 msgid "No known limits, powered by GPLTrans (free, open source)"
-msgstr "Geen limieten bekend, powered by GPLTrans (free, open source)"
+msgstr ""
+"Geen limieten bekend, powered by GPLTrans (free, open source)"
 
 msgid "Hellenic translations, no known limits, powered by Systran"
-msgstr "Hellenic vertalingen, geen limieten bekend, powered by Systran"
+msgstr "Griekse vertalingen, geen limieten bekend, powered by Systran "
 
 msgid "Russian translations, maximum of 500 characters translated"
 msgstr "Russische vertalingen, maximum van 500 tekens vertaald"
@@ -3536,3 +3540,282 @@ msgstr "Bezorgingsfout rapportage"
 
 msgid "Undelivered Message Headers"
 msgstr "Berichtkoppen onbestelbaar bericht"
+
+#~ msgid "Not available"
+#~ msgstr "Niet beschikbaar"
+
+#~ msgid "Unknown message number in reply from server: "
+#~ msgstr "Onbekend berichtnummer in antwoord van server: "
+
+#~ msgid "(unknown sender)"
+#~ msgstr "(onbekende afzender)"
+
+#~ msgid "35 min."
+#~ msgstr "35 min."
+
+#~ msgid "Mofify a Server"
+#~ msgstr "Bewerk een server"
+
+#~ msgid "Message details"
+#~ msgstr "Berichtdetails"
+
+#~ msgid "(local media)"
+#~ msgstr "(lokaal geluid)"
+
+#~ msgid "Local Media File:"
+#~ msgstr "Lokaal geluidsbestand:"
+
+#~ msgid ""
+#~ "10 language pairs, maximum of 25 kilobytes translated, powered by Systran"
+#~ msgstr ""
+#~ "10 talen paren, maximum van 25 kilobytes vertaald, powered by Systran "
+
+#~ msgid "Enable Subtle Printer Friendly Link"
+#~ msgstr "Activeer subtiele printervriendelijke link"
+
+#~ msgid "Authenticated SMTP"
+#~ msgstr "SMTP authorisatie"
+
+#~ msgid "Viewing a message attachment"
+#~ msgstr "Bekijk een tekst bijlage"
+
+#~ msgid "Cc:"
+#~ msgstr "CC:"
+
+#~ msgid "Bcc:"
+#~ msgstr "BCC:"
+
+#~ msgid "<No subject>"
+#~ msgstr "<geen onderwerp>"
+
+#~ msgid "Enable request/confirm reading"
+#~ msgstr "Activeer ontvangst-/leesbevestiging"
+
+#~ msgid "Use receive date for sort"
+#~ msgstr "Gebruik datum van ontvangst voor sorteren"
+
+#~ msgid "There was an error contacting the mail server."
+#~ msgstr "Er is een fout opgetreden bij het verbinden met de mailserver"
+
+#~ msgid "Contact your administrator for help."
+#~ msgstr "Neem contact op met uw systeembeheerder voor hulp."
+
+#~ msgid "No Messages found"
+#~ msgstr "Geen berichten gevonden"
+
+#~ msgid "Note Field Contains"
+#~ msgstr "Aantekeningveld bevat"
+
+#~ msgid "No To Address"
+#~ msgstr "Geen AAN adres"
+
+#~ msgid "Found"
+#~ msgstr "Gevonden"
+
+#~ msgid "messages"
+#~ msgstr "berichten"
+
+#~ msgid "Error decoding mime structure.  Report this as a bug!"
+#~ msgstr "Fout decoderen mime structuur. Raporteer dit als een bug!"
+
+#~ msgid "Submit message"
+#~ msgstr "Voeg bericht toe"
+
+#~ msgid "POP3: premature NOOP OK, NOT an RFC 1939 Compliant server"
+#~ msgstr "POP3: voortijdig NOOP OK, Geen RFC 1939 vriendelijke server"
+
+#~ msgid "NOOP failed. Server not RFC 1939 compliant"
+#~ msgstr "NOOP mislukt. Server is niet RFC 1939 vriendelijk"
+
+#~ msgid "Notify:"
+#~ msgstr "Waarschuwing:"
+
+#~ msgid "l, F d Y"
+#~ msgstr "l, d F Y"
+
+#~ msgid "Don't Email Me"
+#~ msgstr "E-mail mij niet"
+
+#~ msgid "Email Me - 0m prior"
+#~ msgstr "E-mail mij 0 min. van tevoren"
+
+#~ msgid "Email Me - 5m prior"
+#~ msgstr "E-mail mij 5 min. van tevoren"
+
+#~ msgid "Email Me - 15m prior"
+#~ msgstr "E-mail mij 15 min. van tevoren"
+
+#~ msgid "Email Me - 30m prior"
+#~ msgstr "E-mail mij 30 min. van tevoren"
+
+#~ msgid "Email Me - 1h prior"
+#~ msgstr "E-mail mij 1 uur van tevoren"
+
+#~ msgid "Email Me - 4h prior"
+#~ msgstr "E-mail mij 4 uur van tevoren"
+
+#~ msgid "Email Me - 1d prior"
+#~ msgstr "E-mail mij 1 dag van tevoren"
+
+#~ msgid ""
+#~ "Please contact your system administrator and report the following error:"
+#~ msgstr ""
+#~ "Neem a.u.b. contact op met uw systeembeheerder en rapporteer de volgende "
+#~ "foutmelding:"
+
+#~ msgid "Save to:"
+#~ msgstr "Bewaar in:"
+
+#~ msgid "Extract"
+#~ msgstr "Uitpakken"
+
+#~ msgid "Left aligned"
+#~ msgstr "Links uitgelijnd"
+
+#~ msgid "Centered"
+#~ msgstr "Gecentreerd"
+
+#~ msgid "Right aligned"
+#~ msgstr "Rechts uitgelijnd"
+
+#~ msgid "on the Read screen"
+#~ msgstr "op het berichtscherm"
+
+#~ msgid "Hide the box"
+#~ msgstr "Verberg de knop"
+
+#~ msgid "Unknown messagenumber in reply from server: "
+#~ msgstr "Onbekend berichtnummer in antwoord van server"
+
+#~ msgid "$thread_name"
+#~ msgstr "$thread_naam"
+
+#~ msgid "empty"
+#~ msgstr "legen"
+
+#~ msgid "Welcome to %s's WebMail system"
+#~ msgstr "Welkom on %s WebMail systeem"
+
+#~ msgid "Running SquirrelMail version %s (c) 1999-2001."
+#~ msgstr "SquirrelMail versie %s (c) 1999-2001."
+
+#~ msgid ""
+#~ "FREE - Another ORBS replacement (just the INPUTS database used here)."
+#~ msgstr ""
+#~ "FREE - Nog een ORBS vervanger (enkel de INPUTS database is hier gebruikt)."
+
+#~ msgid ""
+#~ "FREE - Another ORBS replacement (just the OUTPUTS database used here)."
+#~ msgstr ""
+#~ "FREE - Nog een ORBS vervanger (enkel de INPUTS database is hier gebruikt)."
+
+#~ msgid "delete_move_next:"
+#~ msgstr "verwijder_verplaats_volgende:"
+
+#~ msgid "Remove MDN flag"
+#~ msgstr "Verwijder MDN flag"
+
+#~ msgid "FREE - orbz.gst-group.co.uk - Inputs only."
+#~ msgstr "FREE - orbz.gst-group.co.uk - Alleen Inputs."
+
+#~ msgid "FREE - orbz.gst-group.co.uk - Outputs only."
+#~ msgstr "FREE - orbz.gst-group.co.uk - Aleen Outputs."
+
+#~ msgid ""
+#~ "FREE - orbz.gst-group.co.uk - mailservers that refuse or bounce email "
+#~ "addressed to postmaster@<theirdomain>."
+#~ msgstr ""
+#~ "FREE - orbz.gst-group.co.uk bevat niet alleen open relays, maar ook "
+#~ "mailservers die weigeren of die e-mail bouncen die geadresseerd is aan "
+#~ "postmaster@<theirdomain>."
+
+#~ msgid "Close window"
+#~ msgstr "Sluit venster"
+
+#~ msgid "SECURITY BREACH ON DECK 5! CMDR TUVOK AND SECURITY TEAM REQUESTED."
+#~ msgstr "SECURITY BREACH ON DECK 5! CMDR TUVOK AND SECURITY TEAM REQUESTED."
+
+#~ msgid "Mailinglist options:"
+#~ msgstr "Mailinglist opties"
+
+#~ msgid ""
+#~ "FREE - ORBL is another ORBS spinoff formed after ORBS shut down. May be "
+#~ "SLOOOOOOW!"
+#~ msgstr ""
+#~ "FREE - ORBL is nog een andere ORBS, gevormd nadat ORBS stopte. Kan "
+#~ "TRAAAAAG zijn!"
+
+#~ msgid "requires IE and JavaScript to work"
+#~ msgstr "IE (Internet Explorer) en Javascript nodig"
+
+#~ msgid "COMMERCIAL - RBL+ is a combination of RSS, DUL, and RBL."
+#~ msgstr "COMMERCIAL - RBL+ is een combinatie van RSS, DUL, en RBL."
+
+#~ msgid ""
+#~ "FREE - Osirusoft - Very thorough, but also rejects replies from many "
+#~ "ISP's abuse@domain.name email messages for some reason."
+#~ msgstr ""
+#~ "FREE - Osirusoft - Erg grondig, maar weigert antwoorden van veel ISP e-"
+#~ "mail berichten verzonden van abuse@domain.name."
+
+#~ msgid "Enable display of images with email, below attachment box"
+#~ msgstr "Activeer weergave van afbeeldingen in e-mail, onder bijlage-kader"
+
+#~ msgid "Successfully saved display preferences!"
+#~ msgstr "Weergavevoorkeuren zijn opgeslagen!"
+
+#~ msgid "Successfully saved folder preferences!"
+#~ msgstr "Mapvoorkeuren zijn opgeslagen!"
+
+#~ msgid "Yes, show me the HTML version of a mail message, if it is available."
+#~ msgstr ""
+#~ "Ja, toon de HTML versie van een e-mailbericht als HTML beschikbaar is."
+
+#~ msgid "Include Self"
+#~ msgstr "Voeg eigen e-mailadres toe"
+
+#~ msgid "Don't remove me from the CC addresses when I use \"Reply All\""
+#~ msgstr ""
+#~ "Verwijder mij niet uit de CC adressen als ik \"Allen beantwoorden\" "
+#~ "gebruik"
+
+#~ msgid "Show page selector"
+#~ msgstr "Toon pagina selectie"
+
+#~ msgid "Don't use Trash"
+#~ msgstr "Gebruik Verw. Items niet"
+
+#~ msgid "Don't use Sent"
+#~ msgstr "Gebruik Verz. Items niet"
+
+#~ msgid "Collapseable folders"
+#~ msgstr "Uitklapbare mappen"
+
+#~ msgid "Author's Name"
+#~ msgstr "Schrijvers naam"
+
+#~ msgid "Use a signature?"
+#~ msgstr "Voeg handtekening toe?"
+
+#~ msgid "(only Cc/Bcc)"
+#~ msgstr "(alleen CC/BCC)"
+
+#~ msgid "total"
+#~ msgstr "totaal"
+
+#~ msgid "Folders created successfully!"
+#~ msgstr "Mappen succesvol aangemaakt!"
+
+#~ msgid ""
+#~ "In order for SquirrelMail to provide the full set of options you need to "
+#~ "create the special folders listed below.  Just click the check box and "
+#~ "hit the create button."
+#~ msgstr ""
+#~ "Om SquirrelMail volledig te laten werken moet u speciale mappen aanmaken. "
+#~ "Klik op [Aanmaken] om verder te gaan."
+
+#~ msgid "Create Trash"
+#~ msgstr "Maak Verwijderde Items aan"
+
+#~ msgid "You must login first."
+#~ msgstr "U moet eerst aanmelden."
