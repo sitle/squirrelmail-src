@@ -45,9 +45,7 @@ if (isset($_GET['success'])) {
 
 <?php
 
-if ((isset($success) && $success) ||
-    (isset($sent_create) && $sent_create == 'true') ||
-    (isset($trash_create) && $trash_create == 'true')) {
+if ( isset($success) && $success ) {
     echo "<table width=\"100%\" align=center cellpadding=4 cellspacing=0 border=0>\n" .
          "   <tr><td align=center>\n";
     if ($success == "subscribe") {
@@ -271,7 +269,6 @@ for ($i = 0, $q = 0; $i < count($boxes_all); $i++) {
         $q++;
     }
 }
-sqimap_logout($imap_stream);
 
 if ($box && $box2) {
     echo "<FORM ACTION=\"folders_subscribe.php?method=sub\" METHOD=\"POST\">\n";
