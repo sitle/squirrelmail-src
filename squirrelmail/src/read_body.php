@@ -634,14 +634,22 @@ function formatMenubar($mailbox, $passed_id, $passed_ent_id, $message, $mbx_resp
 }
 
 function formatToolbar($mailbox, $passed_id, $passed_ent_id, $message, $color) {
-    global $base_uri;
+    global $base_uri, $where, $what;
 
     $urlMailbox = urlencode($mailbox);
     $urlPassed_id = urlencode($passed_id);
     $urlPassed_ent_id = urlencode($passed_ent_id);
-    //@@@//
+                                                                                                     
 
     $query_string = 'mailbox=' . $urlMailbox . '&amp;passed_id=' . $urlPassed_id . '&amp;passed_ent_id=' . $urlPassed_ent_id;
+
+    if (!empty($where)) {
+        $query_string .= '&amp;where=' . urlencode($where);
+    }
+
+    if (!empty($what)) {
+        $query_string .= '&amp;what=' . $urlencode($what);
+    }
 
     $url = $base_uri.'src/view_header.php?'.$query_string;
 
