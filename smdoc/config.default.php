@@ -56,7 +56,6 @@ $foowd_parameters = array(
           'email_webmaster' => 'webmaster@example.org',
             'email_noreply' => 'noreply@example.org',
                 'site_name' => 'Default Foowd site',
-         'default_objectid' => 936075699,
            'default_method' => 'view',
      'default_class_method' => 'create'
                    ),
