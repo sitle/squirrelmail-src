@@ -131,6 +131,7 @@ function parseAddrs($text) {
     $text = str_replace(',', ';', $text);
     $array = explode(';', $text);
 
+    $new_array = array();
     foreach($array as $part) {
         $part = eregi_replace ('^.*[<]', '', $part);
         $part = eregi_replace ('[>].*$', '', $part);
