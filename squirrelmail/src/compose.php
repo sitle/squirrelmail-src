@@ -154,6 +154,8 @@ function replyAllString($header) {
 
 function getReplyCitation($orig_from, $orig_date) {
     global $reply_citation_style, $reply_citation_start, $reply_citation_end;
+
+    // FIXME: why object is rewritten with string.
     $orig_from = decodeHeader($orig_from->getAddress(false),false,false,true);
 
     /* First, return an empty string when no citation style selected. */
@@ -168,29 +170,41 @@ function getReplyCitation($orig_from, $orig_date) {
 
     /* Otherwise, try to select the desired citation style. */
     switch ($reply_citation_style) {
-        case 'author_said':
-            $start = '';
-            $end   = ' ' . _("said") . ':';
-            break;
-        case 'quote_who':
-            $start = '<' . _("quote") . ' ' . _("who") . '="';
-            $end   = '">';
-            break;
-        case 'date_time_author':
-            $start = 'On ' . getLongDateString($orig_date) . ', ';
-            $end = ' ' . _("said") . ':';
-            break;
-        case 'user-defined':
-            $start = $reply_citation_start .
-                ($reply_citation_start == '' ? '' : ' ');
-            $end   = $reply_citation_end;
-            break;
-        default:
-            return '';
+    case 'author_said':
+        /**
+         * To translators: %s is for author's name
+         */
+        $full_reply_citation = sprintf(_("%s said:"),$orig_from);
+        break;
+    case 'quote_who':
+        $start = '<' . _("quote") . ' ' . _("who") . '="';
+        $end   = '">';
+        $full_reply_citation = $start . $orig_from . $end;
+        break;
+    case 'date_time_author':
+        /**
+         * To translators:
+         *  first %s is for date string, second %s is for author's name. Date uses 
+         *  formating from "D, F j, Y g:i a" and "D, F j, Y H:i" translations.
+         * Example string:
+         *  "On Sat, December 24, 2004 23:59, Santa said:"
+         * If you have to put author's name in front of date string, check comments about
+         * argument swapping at http://www.php.net/sprintf
+         */
+        $full_reply_citation = sprintf(_("On %s, %s said:"), getLongDateString($orig_date), $orig_from);
+        break;
+    case 'user-defined':
+        $start = $reply_citation_start .
+            ($reply_citation_start == '' ? '' : ' ');
+        $end   = $reply_citation_end;
+        $full_reply_citation = $start . $orig_from . $end;
+        break;
+    default:
+        return '';
     }
 
-    /* Build and return the citation string. */
-    return ($start . $orig_from . $end . "\n");
+    /* Add line feed and return the citation string. */
+    return ($full_reply_citation . "\n");
 }
 
 function getforwardHeader($orig_header) {
