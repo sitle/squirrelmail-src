@@ -253,7 +253,7 @@ if ($count_special_folders < count($boxes)) {
             ($boxes[$i]["unformatted"] != $sent_folder) &&
             ($boxes[$i]["unformatted"] != $draft_folder)) {
             $box = $boxes[$i]["unformatted-dm"];
-            $box2 = str_replace(' ', '&nbsp;',
+            $box2 = str_replace(array(' ','<','>'), array('&nbsp;','&lt;','&gt;'),
                                 imap_utf7_decode_local($boxes[$i]["unformatted-disp"]));
             echo "         <OPTION VALUE=\"$box\">$box2\n";
         }
@@ -296,7 +296,7 @@ if(!$no_list_for_subscribe) {
        . '<tt><select name="mailbox[]" multiple size=8>';
 
     for ($q = 0; $q < count($box); $q++) {      
-       echo "         <OPTION VALUE=\"$box[$q]\">".$box2[$q]."\n";
+       echo "         <OPTION VALUE=\"$box[$q]\">".str_replace(array(' ','<','>'),array('&nbsp;','&lt;','&gt;'),$box2[$q])."\n";
     }      
     echo '</select></tt><br><br>'
        . '<input type=SUBMIT VALUE="'. _("Subscribe") . "\">\n"
