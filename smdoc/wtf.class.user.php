@@ -255,11 +255,10 @@ class user extends thing { // a user
 			echo '<logout_already/>';
 		} else {
 			if (USECOOKIE) {
-				unset($_COOKIE['userid']);
-				unset($_COOKIE['password']);
+				setcookie('userid', '', time() - COOKIELIFE, COOKIEPATH, COOKIEDOMAIN);
+				setcookie('password', '', time() - COOKIELIFE, COOKIEPATH, COOKIEDOMAIN);
 			}
             header("Location: " .THINGIDURI.ANONYMOUSUSERID.'&class=user&op=login&show_msg=logout');
-			$wtf->user = &wtf::loadUser();
 		}
 		track();
 	}
