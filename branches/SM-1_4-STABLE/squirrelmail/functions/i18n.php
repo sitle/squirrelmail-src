@@ -1808,18 +1808,19 @@ $languages['th']['ALIAS'] = 'th_TH';
 $languages['bg_BG']['NAME']    = 'Bulgarian';
 $languages['bg_BG']['CHARSET'] = 'windows-1251';
 $languages['bg']['ALIAS'] = 'bg_BG';
-
+/*
 $languages['uk_UA']['NAME']    = 'Ukrainian';
 $languages['uk_UA']['CHARSET'] = 'koi8-u';
 $languages['uk']['ALIAS'] = 'uk_UA';
-
+*/
 $languages['cy_GB']['NAME']    = 'Welsh';
 $languages['cy_GB']['CHARSET'] = 'iso-8859-1';
 $languages['cy']['ALIAS'] = 'cy_GB';
-
+/*
 $languages['vi_VN']['NAME']    = 'Vietnamese';
 $languages['vi_VN']['CHARSET'] = 'utf-8';
 $languages['vi']['ALIAS'] = 'vi_VN';
+*/
 
 // Right to left languages
 
