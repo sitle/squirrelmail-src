@@ -25,55 +25,72 @@ require_once('../functions/smtp.php');
 require_once('../functions/display_messages.php');
 require_once('../functions/plugin.php');
 
+
 /* lets get the global vars we may need */
-/* dirty solution for now */
-if( isset($_GET) ) {
-    extract($_GET);
-}
-if( isset($_POST) ) {
-   extract($_POST);
-}
-if( isset($_SESSION) ) {
-   extract($_SESSION);
-}
-if( isset($_COOKIE) ) {
-   extract($_COOKIE);
-}
+$key  = $_COOKIE['key'];
 
-/* --------------------- Specific Functions ------------------------------ */
+$username = $_SESSION['username'];
+$onetimepad = $_SESSION['onetimepad'];
+$base_uri = $_SESSION['base_uri'];
+$delimiter = $_SESSION['delimiter'];
 
-
-
-/**
- * Does the opposite of sqWordWrap()
- */
-function sqUnWordWrap(&$body) {
-    $lines = explode("\n", $body);
-    $body = '';
-    $PreviousSpaces = '';
-    for ($i = 0; $i < count($lines); $i ++) {
-        ereg("^([\t >]*)([^\t >].*)?$", $lines[$i], $regs);
-        $CurrentSpaces = $regs[1];
-        if (isset($regs[2])) {
-            $CurrentRest = $regs[2];
-        }
-        
-        if ($i == 0) {
-            $PreviousSpaces = $CurrentSpaces;
-            $body = $lines[$i];
-        } else if (($PreviousSpaces == $CurrentSpaces) /* Do the beginnings match */
-                   && (strlen($lines[$i - 1]) > 65)    /* Over 65 characters long */
-                   && strlen($CurrentRest)) {          /* and there's a line to continue with */
-            $body .= ' ' . $CurrentRest;
-        } else {
-            $body .= "\n" . $lines[$i];
-            $PreviousSpaces = $CurrentSpaces;
-        }
-    }
-    $body .= "\n";
+if ( isset($_SESSION['composesession']) ) {
+    $composesession = $_SESSION['composesession'];
+}
+if ( isset($_POST['session']) ) {
+    $session = $_POST['session'];
 }
 
-/* ----------------------------------------------------------------------- */
+sqextractGlobalVar('mailbox');
+sqextractGlobalVar('identity');
+sqextractGlobalVar('send_to');
+sqextractGlobalVar('send_to_cc');
+sqextractGlobalVar('send_to_bcc');
+sqextractGlobalVar('subject');
+sqextractGlobalVar('body');
+sqextractGlobalVar('mailprio');
+sqextractGlobalVar('request_mdn');
+sqextractGlobalVar('request_dr');
+sqextractGlobalVar('html_addr_search');
+if ( isset($_POST['sigappend']) ) {
+    $sigappend = $_POST['sigappend'];
+}
+
+/* From addressbook search */
+if ( isset($_POST['from_htmladdr_search']) ) {
+    $from_htmladdr_search = $_POST['from_htmladdr_search'];
+}
+if ( isset($_POST['addr_search_done']) ) {
+    $html_addr_search_done = $_POST['addr_search_done'];
+}
+if ( isset($_POST['send_to_search']) ) {
+    $send_to_search = &$_POST['send_to_search'];
+}
+
+/* From read_body.php */
+sqextractGlobalVar('reply_subj');
+sqextractGlobalVar('forward_subj');
+sqextractGlobalVar('reply_id');
+sqextractGlobalVar('forward_id');
+
+/* Attachments */
+sqextractGlobalVar('attach');
+if ( isset($_POST['do_delete']) ) {
+    $do_delete = $_POST['do_delete'];
+}
+if ( isset($_POST['delete']) ) {
+    $delete = &$_POST['delete'];
+}
+if ( isset($_POST['attachments']) ) {
+    $attachments = &$_SESSION['attachments'];
+}
+
+/* Drafts */
+sqextractGlobalVar('draft');
+sqextractGlobalVar('draft_id');
+sqextractGlobalVar('ent_num');
+sqextractGlobalVar('saved_draft');
+sqextractGlobalVar('delete_draft');
 
 if (!isset($attachments)) {
     $attachments = array();

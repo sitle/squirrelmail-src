@@ -25,6 +25,16 @@ require_once('../functions/addressbook.php');
 require_once('../functions/plugin.php');
 require_once('../functions/strings.php');
 
+if ( isset($_POST['addrquery']) ) {
+    $addrquery = $_POST['addrquery'];
+}
+if ( isset($_POST['listall']) ) {
+    $listall = $_POST['listall'];
+}
+if ( isset($_POST['backend'] ) ) {
+    $backend = $_POST['backend'];
+}
+
 /* Insert hidden data */
 function addr_insert_hidden() {
     global $body, $subject, $send_to, $send_to_cc, $send_to_bcc, $mailbox,
