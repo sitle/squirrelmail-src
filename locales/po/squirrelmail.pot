@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2004-12-28 13:45+0200\n"
+"POT-Creation-Date: 2005-01-01 10:16+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -15,6 +15,15 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 msgid "Address Book"
+msgstr ""
+
+msgid "All"
+msgstr ""
+
+msgid "To"
+msgstr ""
+
+msgid "Cc"
 msgstr ""
 
 msgid "Name"
@@ -29,16 +38,13 @@ msgstr ""
 msgid "Source"
 msgstr ""
 
-msgid "To"
-msgstr ""
-
-msgid "Cc"
-msgstr ""
-
 msgid "Bcc"
 msgstr ""
 
-msgid "No persons matching your search were found"
+msgid "Use Addresses"
+msgstr ""
+
+msgid "Address Book Search"
 msgstr ""
 
 msgid "Search for"
@@ -56,9 +62,6 @@ msgstr ""
 msgid "List all"
 msgstr ""
 
-msgid "Close"
-msgstr ""
-
 #, c-format
 msgid "Unable to list addresses from %s"
 msgstr ""
@@ -66,16 +69,13 @@ msgstr ""
 msgid "Your search failed with the following error(s)"
 msgstr ""
 
-msgid "All"
-msgstr ""
-
-msgid "Use Addresses"
-msgstr ""
-
-msgid "Address Book Search"
+msgid "No persons matching your search were found"
 msgstr ""
 
 msgid "Return"
+msgstr ""
+
+msgid "Close"
 msgstr ""
 
 msgid "Nickname"
@@ -215,6 +215,28 @@ msgstr ""
 msgid "Server replied: "
 msgstr ""
 
+msgid "Illegal folder name. Please select a different name."
+msgstr ""
+
+msgid "Click here to go back"
+msgstr ""
+
+msgid "You have not selected a folder to delete. Please do so."
+msgstr ""
+
+msgid "Delete Folder"
+msgstr ""
+
+#, c-format
+msgid "Are you sure you want to delete %s?"
+msgstr ""
+
+msgid "Yes"
+msgstr ""
+
+msgid "No"
+msgstr ""
+
 msgid "Folders"
 msgstr ""
 
@@ -266,9 +288,6 @@ msgstr ""
 msgid "No folders found"
 msgstr ""
 
-msgid "Delete Folder"
-msgstr ""
-
 msgid "Delete"
 msgstr ""
 
@@ -285,25 +304,6 @@ msgid "No folders were found to subscribe to!"
 msgstr ""
 
 msgid "Subscribe to:"
-msgstr ""
-
-msgid "Illegal folder name. Please select a different name."
-msgstr ""
-
-msgid "Click here to go back"
-msgstr ""
-
-msgid "You have not selected a folder to delete. Please do so."
-msgstr ""
-
-#, c-format
-msgid "Are you sure you want to delete %s?"
-msgstr ""
-
-msgid "Yes"
-msgstr ""
-
-msgid "No"
 msgstr ""
 
 msgid "You have not selected a folder to rename. Please do so."
@@ -357,7 +357,7 @@ msgstr ""
 msgid "INBOX"
 msgstr ""
 
-msgid "purge"
+msgid "Purge"
 msgstr ""
 
 msgid "Last Refresh"
@@ -396,56 +396,10 @@ msgstr ""
 msgid "No messages were selected."
 msgstr ""
 
-msgid "Personal Information"
-msgstr ""
-
-msgid "Display Preferences"
-msgstr ""
-
-msgid "Message Highlighting"
-msgstr ""
-
-msgid "Folder Preferences"
-msgstr ""
-
-msgid "Index Order"
-msgstr ""
-
 msgid "Options"
 msgstr ""
 
-msgid "Successfully Saved Options"
-msgstr ""
-
-msgid "Refresh Folder List"
-msgstr ""
-
-msgid "Refresh Page"
-msgstr ""
-
-msgid ""
-"This contains personal information about yourself such as your name, your "
-"email address, etc."
-msgstr ""
-
-msgid ""
-"You can change the way that SquirrelMail looks and displays information to "
-"you, such as the colors, the language, and other settings."
-msgstr ""
-
-msgid ""
-"Based upon given criteria, incoming messages can have different background "
-"colors in the message list. This helps to easily distinguish who the "
-"messages are from, especially for mailing lists."
-msgstr ""
-
-msgid ""
-"These settings change the way your folders are displayed and manipulated."
-msgstr ""
-
-msgid ""
-"The order of the message index can be rearranged and changed to contain the "
-"headers in any order you want."
+msgid "Message Highlighting"
 msgstr ""
 
 msgid "New"
@@ -560,6 +514,9 @@ msgstr ""
 msgid "Move Up"
 msgstr ""
 
+msgid "Index Order"
+msgstr ""
+
 msgid "Checkbox"
 msgstr ""
 
@@ -585,6 +542,49 @@ msgid "remove"
 msgstr ""
 
 msgid "Return to options page"
+msgstr ""
+
+msgid "Personal Information"
+msgstr ""
+
+msgid "Display Preferences"
+msgstr ""
+
+msgid "Folder Preferences"
+msgstr ""
+
+msgid "Successfully Saved Options"
+msgstr ""
+
+msgid "Refresh Folder List"
+msgstr ""
+
+msgid "Refresh Page"
+msgstr ""
+
+msgid ""
+"This contains personal information about yourself such as your name, your "
+"email address, etc."
+msgstr ""
+
+msgid ""
+"You can change the way that SquirrelMail looks and displays information to "
+"you, such as the colors, the language, and other settings."
+msgstr ""
+
+msgid ""
+"Based upon given criteria, incoming messages can have different background "
+"colors in the message list. This helps to easily distinguish who the "
+"messages are from, especially for mailing lists."
+msgstr ""
+
+msgid ""
+"These settings change the way your folders are displayed and manipulated."
+msgstr ""
+
+msgid ""
+"The order of the message index can be rearranged and changed to contain the "
+"headers in any order you want."
 msgstr ""
 
 msgid "Message not printable"
@@ -768,12 +768,6 @@ msgid "Note"
 msgstr ""
 
 msgid "Add to Addressbook"
-msgstr ""
-
-msgid "Nickname:"
-msgstr ""
-
-msgid "Note Field Contains:"
 msgstr ""
 
 msgid "Title & Org. / Dept."
@@ -1173,9 +1167,6 @@ msgid "A"
 msgstr ""
 
 msgid "Thread sorting is not supported by your IMAP server."
-msgstr ""
-
-msgid "Please report this to the system administrator."
 msgstr ""
 
 msgid "Server-side sorting is not supported by your IMAP server."
@@ -2116,14 +2107,14 @@ msgstr ""
 msgid "Show button in toolbar"
 msgstr ""
 
+#, c-format
+msgid "Could not write calendar file %s"
+msgstr ""
+
 msgid "TODAY"
 msgstr ""
 
 msgid "Go"
-msgstr ""
-
-#, c-format
-msgid "Could not write calendar file %s"
 msgstr ""
 
 msgid "l, F j Y"
@@ -2487,7 +2478,8 @@ msgstr ""
 msgid "OFF"
 msgstr ""
 
-msgid " not found."
+#, c-format
+msgid "%s is not found."
 msgstr ""
 
 msgid "Today's Fortune"
@@ -2845,22 +2837,6 @@ msgstr ""
 msgid "View Message details"
 msgstr ""
 
-msgid "New Mail"
-msgstr ""
-
-msgid "SquirrelMail Notice:"
-msgstr ""
-
-#, c-format
-msgid "You have %s new message"
-msgid_plural "You have %s new messages"
-msgstr[0] ""
-msgstr[1] ""
-
-#, c-format
-msgid "You have %s new messages"
-msgstr ""
-
 msgid "New Mail Notification"
 msgstr ""
 
@@ -2935,6 +2911,20 @@ msgstr ""
 msgid "Current File:"
 msgstr ""
 
+msgid "New Mail"
+msgstr ""
+
+msgid "SquirrelMail Notice:"
+msgstr ""
+
+#, c-format
+msgid "You have %s new message"
+msgstr ""
+
+#, c-format
+msgid "You have %s new messages"
+msgstr ""
+
 msgid "NewMail Options"
 msgstr ""
 
@@ -2949,9 +2939,7 @@ msgstr ""
 
 #, c-format
 msgid "%s New Message"
-msgid_plural "%s New Messages"
-msgstr[0] ""
-msgstr[1] ""
+msgstr ""
 
 msgid "Test Sound"
 msgstr ""
@@ -3282,18 +3270,6 @@ msgstr ""
 msgid "No errors found"
 msgstr ""
 
-msgid ""
-"Your personal dictionary has been encrypted and is now stored in an "
-"encrypted format."
-msgstr ""
-
-msgid ""
-"Your personal dictionary has been decrypted and is now stored as plain text."
-msgstr ""
-
-msgid "Personal Dictionary Crypto Settings"
-msgstr ""
-
 msgid "Your personal dictionary was erased."
 msgstr ""
 
@@ -3323,6 +3299,18 @@ msgid ""
 msgstr ""
 
 msgid "Dictionary re-encrypted"
+msgstr ""
+
+msgid ""
+"Your personal dictionary has been encrypted and is now stored in an "
+"encrypted format."
+msgstr ""
+
+msgid ""
+"Your personal dictionary has been decrypted and is now stored as plain text."
+msgstr ""
+
+msgid "Personal Dictionary Crypto Settings"
 msgstr ""
 
 msgid "Personal Dictionary"
@@ -3654,520 +3642,6 @@ msgid "Interface language"
 msgstr ""
 
 msgid "Translation direction"
-msgstr ""
-
-msgid "sort by nickname"
-msgstr ""
-
-msgid "sort by name"
-msgstr ""
-
-msgid "sort by email"
-msgstr ""
-
-msgid "sort by info"
-msgstr ""
-
-msgid "Add to address book"
-msgstr ""
-
-msgid "Purge"
-msgstr ""
-
-msgid "Error(s) happened while saving your options"
-msgstr ""
-
-msgid "Some of your preference changes are not applied."
-msgstr ""
-
-msgid "As Attachment"
-msgstr ""
-
-msgid "Bypass Trash"
-msgstr ""
-
-msgid "Please enter something to search for"
-msgstr ""
-
-msgid "There must be at least one criteria to search for"
-msgstr ""
-
-msgid "Error in criteria argument"
-msgstr ""
-
-msgid "(Illegal date)"
-msgstr ""
-
-msgid "(Wrong date)"
-msgstr ""
-
-msgid "In"
-msgstr ""
-
-msgid "(Missing argument)"
-msgstr ""
-
-msgid "(Spurious argument)"
-msgstr ""
-
-msgid "Fold"
-msgstr ""
-
-msgid "Unfold"
-msgstr ""
-
-msgid "Saved Searches"
-msgstr ""
-
-msgid "Missing"
-msgstr ""
-
-msgid "and&nbsp;subfolders:"
-msgstr ""
-
-msgid "Exclude Criteria:"
-msgstr ""
-
-msgid "Search Criteria"
-msgstr ""
-
-msgid "Add New Criteria"
-msgstr ""
-
-msgid "Remove Excluded Criteria"
-msgstr ""
-
-msgid "Remove All Criteria"
-msgstr ""
-
-msgid "Not"
-msgstr ""
-
-msgid "Answered"
-msgstr ""
-
-msgid "Before"
-msgstr ""
-
-msgid "Message Body"
-msgstr ""
-
-msgid "Deleted"
-msgstr ""
-
-msgid "Draft"
-msgstr ""
-
-msgid "Flagged"
-msgstr ""
-
-msgid "Sent By"
-msgstr ""
-
-msgid "Header Field"
-msgstr ""
-
-msgid "Keyword"
-msgstr ""
-
-msgid "Larger Than"
-msgstr ""
-
-msgid "Old"
-msgstr ""
-
-msgid "On"
-msgstr ""
-
-msgid "Recent"
-msgstr ""
-
-msgid "Seen"
-msgstr ""
-
-msgid "Sent Before"
-msgstr ""
-
-msgid "Sent On"
-msgstr ""
-
-msgid "Sent Since"
-msgstr ""
-
-msgid "Since"
-msgstr ""
-
-msgid "Smaller Than"
-msgstr ""
-
-msgid "Subject Contains"
-msgstr ""
-
-msgid "Header and Body"
-msgstr ""
-
-msgid "Sent To"
-msgstr ""
-
-msgid "And In"
-msgstr ""
-
-msgid "Or In"
-msgstr ""
-
-msgid "And"
-msgstr ""
-
-msgid "Or"
-msgstr ""
-
-msgid "Standard search"
-msgstr ""
-
-msgid "Advanced search"
-msgstr ""
-
-msgid "Folder List"
-msgstr ""
-
-msgid "Click here to change the sorting of the address list"
-msgstr ""
-
-msgid "Possible reason : "
-msgstr ""
-
-msgid "ERROR : Bad function call."
-msgstr ""
-
-msgid "Reason:"
-msgstr ""
-
-msgid "Server responded:"
-msgstr ""
-
-msgid ""
-"TLS is enabled, but this version of PHP does not support TLS sockets, or is "
-"missing the openssl extension."
-msgstr ""
-
-msgid "Unknown recipient"
-msgstr ""
-
-msgid "Unflag"
-msgstr ""
-
-msgid "Flag"
-msgstr ""
-
-msgid "Click here to change the sorting of the message list"
-msgstr ""
-
-msgid "Message Flags Icon Theme"
-msgstr ""
-
-msgid "Show Flag / Unflag Buttons"
-msgstr ""
-
-msgid "Use Compact Page Selector"
-msgstr ""
-
-msgid "Length of From/To Field (0 for full)"
-msgstr ""
-
-msgid "Length of Subject Field (0 for full)"
-msgstr ""
-
-msgid "Show recipient name if the message is from your default identity"
-msgstr ""
-
-msgid "Prefix for Original Message when Replying"
-msgstr ""
-
-msgid "Strip signature when replying"
-msgstr ""
-
-msgid "Show 'Delete & Prev/Next' Links"
-msgstr ""
-
-msgid "Save Replies with Original Message"
-msgstr ""
-
-msgid "XP"
-msgstr ""
-
-msgid "Hide SquirrelMail Header"
-msgstr ""
-
-msgid "Search functions"
-msgstr ""
-
-msgid "Only basic search"
-msgstr ""
-
-msgid "Only advanced search"
-msgstr ""
-
-msgid "Both search functions"
-msgstr ""
-
-msgid "Show alternative language names"
-msgstr ""
-
-msgid "Available languages"
-msgstr ""
-
-msgid "Enable aggressive decoding"
-msgstr ""
-
-msgid "Tweaks"
-msgstr ""
-
-msgid "Use advanced tree folder listing"
-msgstr ""
-
-msgid "Use old folder listing functions"
-msgstr ""
-
-msgid "Use icons"
-msgstr ""
-
-msgid "Use php recode functions"
-msgstr ""
-
-msgid "Use php iconv functions"
-msgstr ""
-
-msgid "Search Mailing List Archives"
-msgstr ""
-
-msgid "Search SourceForge Bugtracker"
-msgstr ""
-
-msgid "Search for words:"
-msgstr ""
-
-msgid "Written by:"
-msgstr ""
-
-msgid "Email addresses only"
-msgstr ""
-
-msgid "Mailing list:"
-msgstr ""
-
-msgid "SquirrelMail users list"
-msgstr ""
-
-msgid "SquirrelMail plugins list"
-msgstr ""
-
-msgid "SquirrelMail developers list"
-msgstr ""
-
-msgid "SquirrelMail internationalization list"
-msgstr ""
-
-msgid "Sort by:"
-msgstr ""
-
-msgid "Relevance"
-msgstr ""
-
-msgid "Search Archives"
-msgstr ""
-
-msgid "Reset Form"
-msgstr ""
-
-msgid "Summary keyword:"
-msgstr ""
-
-msgid "Sort By:"
-msgstr ""
-
-msgid "ID"
-msgstr ""
-
-msgid "Summary"
-msgstr ""
-
-msgid "Open Date"
-msgstr ""
-
-msgid "Close Date"
-msgstr ""
-
-msgid "Submitter"
-msgstr ""
-
-msgid "Assignee"
-msgstr ""
-
-msgid "Order:"
-msgstr ""
-
-msgid "Ascending"
-msgstr ""
-
-msgid "Descending"
-msgstr ""
-
-msgid "Search Bugtracker"
-msgstr ""
-
-msgid "Show system specs"
-msgstr ""
-
-msgid "You must type in a new password."
-msgstr ""
-
-msgid "You must also type in your new password in the verify box."
-msgstr ""
-
-msgid "Your new password does not match the verify password."
-msgstr ""
-
-msgid "You must type in your current password."
-msgstr ""
-
-msgid "Your current password is not correct."
-msgstr ""
-
-#, c-format
-msgid "Your new password should be %s to %s characters long."
-msgstr ""
-
-msgid "Your new password contains invalid characters."
-msgstr ""
-
-msgid "Change Password"
-msgstr ""
-
-msgid "Current Password:"
-msgstr ""
-
-msgid "New Password:"
-msgstr ""
-
-msgid "Verify New Password:"
-msgstr ""
-
-msgid "Use this to change your email password."
-msgstr ""
-
-msgid "Curl module NOT available! Unable to change password!"
-msgstr ""
-
-msgid "Cannot change password! (Is user 'Self Configurable User' ?) (401)"
-msgstr ""
-
-msgid "Cannot change password!"
-msgstr ""
-
-msgid "Cannot connect to Database Server, please try later!"
-msgstr ""
-
-msgid "Database not found on server"
-msgstr ""
-
-msgid "SQL call failed, try again later."
-msgstr ""
-
-msgid "Duplicate login entries detected, cannot change password!"
-msgstr ""
-
-msgid "Password change was not successful!"
-msgstr ""
-
-msgid "Closing Connection"
-msgstr ""
-
-msgid "Connecting to Password Server"
-msgstr ""
-
-#, c-format
-msgid "%s is not found."
-msgstr ""
-
-msgid "Server Capability response:"
-msgstr ""
-
-msgid ""
-"Select the IMAP commands you would like to run. Most commands require a "
-"selected mailbox so the select command is already setup. You can clear all "
-"the commands and test your own IMAP command strings. The commands are "
-"executed in order. The default values are simple IMAP commands using your "
-"default_charset and folder_prefix from SquirrelMail when needed."
-msgstr ""
-
-msgid ""
-"NOTE: These commands are live, any changes made will effect your current "
-"email account."
-msgstr ""
-
-msgid "Select"
-msgstr ""
-
-msgid "Test Name"
-msgstr ""
-
-msgid "IMAP command string"
-msgstr ""
-
-msgid "Request:"
-msgstr ""
-
-msgid "No POP3 servers configured yet."
-msgstr ""
-
-msgid "Click here to go to the options page."
-msgstr ""
-
-#, c-format
-msgid "Login OK: Inbox contains %s message"
-msgid_plural "Login OK: Inbox contains %s messages"
-msgstr[0] ""
-msgstr[1] ""
-
-msgid "Spam Service Type:"
-msgstr ""
-
-msgid "Free reporting"
-msgstr ""
-
-msgid "Member services"
-msgstr ""
-
-msgid "Save Service Type"
-msgstr ""
-
-msgid "SpamCop reporting"
-msgstr ""
-
-msgid "Translation Theme:"
-msgstr ""
-
-msgid ""
-"Selected translation engine is disabled. Please update your translation "
-"preferences."
-msgstr ""
-
-msgid "Translation Preferences"
-msgstr ""
-
-msgid "Maximum of 25 kilobytes translated, powered by Systran"
-msgstr ""
-
-msgid "No known limits, powered by GPLTrans (free, open source)"
-msgstr ""
-
-msgid "Transliterate unknown words:"
-msgstr ""
-
-msgid "When composing:"
-msgstr ""
-
-msgid "Not yet functional, currently does nothing"
 msgstr ""
 
 msgid "Delivery error report"
