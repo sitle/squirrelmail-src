@@ -547,6 +547,7 @@ function prepareMessageList(&$aMailbox, $aProps) {
 
             foreach ($aCol as $k => $v) {
                 $link = $target = $title = '';
+                $aColumns[$k] = array();
                 $value = (isset($aMsg[$v]))  ? $aMsg[$v]  : '';
                 $sUnknown = _("Unknown recipient");
                 switch ($k) {
