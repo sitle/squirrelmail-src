@@ -53,7 +53,7 @@ function attachSelectedMessages($msg, $imapConnection) {
 
     if (!isset($composesession)) {
 	    $composesession = 1;
-	    session_register('$composesession');
+	    session_register('composesession');
     } else {
 	    $composesession++;
     }
