@@ -283,7 +283,8 @@ function is_parent_box($curbox_name, $parbox_name) {
 
 function listBoxes ($boxes, $j=0 ) {
     global $data_dir, $username, $startmessage, $color, $unseen_notify, $unseen_type,
-    $move_to_trash, $trash_folder, $collapse_folders;
+        $move_to_trash, $trash_folder, $collapse_folders, $use_special_folder_color;
+	
     $pre = '';
     $end = '';
     $collapse = false;
@@ -357,7 +358,7 @@ function listBoxes ($boxes, $j=0 ) {
 
 	$font = '';
 	$fontend = '';
-	if ($boxes->is_special) {
+	if ($use_special_folder_color && $boxes->is_special) {
     	    $font = "<font color=\"$color[11]\">";
 	    $fontend = "</font>";    
 	}
@@ -377,7 +378,7 @@ function listBoxes ($boxes, $j=0 ) {
 
 function ListAdvancedBoxes ($boxes, $mbx, $j='ID.0000' ) {
     global $data_dir, $username, $startmessage, $color, $unseen_notify, $unseen_type,
-    $move_to_trash, $trash_folder, $collapse_folders;
+        $move_to_trash, $trash_folder, $collapse_folders, $use_special_folder_color;
 
     /* use_folder_images only works if the images exist in ../images */
     $use_folder_images = true;
@@ -405,7 +406,7 @@ function ListAdvancedBoxes ($boxes, $mbx, $j='ID.0000' ) {
 	if ($unseen > 0) { $pre .= '<b>'; }
 
 	/* color special boxes */
-	if ($boxes->is_special) {
+	if ($use_special_folder_color && $boxes->is_special) {
     	    $pre .= "<font color=\"$color[11]\">";
 	    $end .= '</font>';    
 	}
