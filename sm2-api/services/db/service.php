@@ -15,34 +15,37 @@
  */
 class ZkSvc_db {
 
+    /* Constants */
     var $name = 'db';
     var $ver = '$Id$';
 
-    var $serial;
-    var $bagname;
+    /* Properties */
+    var $serial;     /* what does this variable do? */
+    var $bagname;    /* what does this variable do? */
 
-    var $zkld;
-    var $mod;
+    var $zkld;       /* what does this variable do? */
+    var $mod;        /* what does this variable do? */
 
-    var $host;
-    var $port;
-    var $socket;
-    var $db;
-    var $username;
-    var $password;
+    var $host;       /* string - hostname of the database backend */
+    var $port;       /* int    - port number that the database backend is listening on */
+    var $socket;     /* what does this variable do? */
+    var $db;         /* what does this variable do? */
+    var $username;   /* string - username used to authenitcate with the database backend */
+    var $password;   /* string - password used to authenitcate with the database backend */
 
-    var $lk;
+    var $lk;         /* what does this variable do? */
 
-    var $info;
-    var $connected;
+    var $info;       /* what does this variable do? */
+    var $connected;  /* bool   - does a connection to the database backend exist? */
 
-    /** CONSTRUCTOR
+    /**
      * Create a new ZkSvc_db with the given module.
      *
-     * @param object $module module to use for db handler
      * @param array  $options options to pass 
+     * @param ?      $zkld ?
+     * @param ?      $serial ?
      */
-    function ZkSvc_db( $options, &$zkld, $serial ) {
+    function ZkSvc_db($options, &$zkld, $serial) {
 
         $this->serial = $serial;
         $this->zkld = &$zkld;
@@ -68,71 +71,73 @@ class ZkSvc_db {
      * @return string the name of this service
      */
     function getServiceName() {
-        return( $this->name );
+        return($this->name);
     }
 
     /**
      * Replace the Zookeeper authentication module loaded for this service.
      *
-     * @param object $module module to load for this authentication service
+     * @param object $mod module to load for this authentication service
+     * @param array  $options array of options for the module
      */
-    function loadModule( &$mod, $options ) {
+    function loadModule(&$mod, $options) {
         $this->mod =&$mod;
     }
     
+    /**
+     * Close existing connection to database backend
+     */
     function close() {
-        if( $this->connected ) {
+        if ($this->connected) {
             $this->mod->close();
             $this->connected = FALSE;
         }
     }
-    
+
+    /**
+     * Attempt to connect to database backend if not already connected
+     */
     function connect() {
-         
-        if( !$this->connected ) {
-         
+        if (!$this->connected) {
             $host = $this->host;
-            
-            if( $this->port <> '' )
+            if ($this->port != '')
                 $host .= ':' . $this->port;
-    
-            if( $this->socket <> '' )
+            if ($this->socket != '')
                 $host .= ':' . $this->socket;
-        
-            if ( $ret = $this->mod->connect( $host, $this->username, $this->password ) && 
-                 $this->db <> '' ) {
-                $this->mod->select_db( $this->db );
+            if ($result = $this->mod->connect($host, $this->username, $this->password) && $this->db != '') {
+                $this->mod->select_db($this->db);
             }
-            
-            if( $ret )
-                $this->connected = TRUE;
-            else 
-                $this->connected = FALSE;
+            $this->connected = $result;
         }
-        
-        return( $this->connected );
+        return($this->connected);
     }
     
-    function select_db( $db ) {
-        $this->mod->select_db( $db );
+    /**
+     * Select a specific database
+     */
+    function select_db($db) {
+        $this->mod->select_db($db);
     }
 
-    function query( $sql ){
-   
-        return( $this->mod->query( $sql ) );
-    
+    /**
+     * Execute a query
+     */
+    function query($sql){
+        return($this->mod->query($sql));
     }
 
-    function html_table( $rs, $tt ) {
-
-        return( $this->mod->html_table( $rs, $tt ) );
-    
+    /**
+     * ?
+     */
+    function html_table($rs, $tt) {
+        return($this->mod->html_table($rs, $tt));
     }
 
-    function getRow( $rs ) {
-    
-        return( $this->mod->getRow( $rs ) );
-        
+    /**
+     * Returns a row from the given result set
+     */
+    function getRow($rs) {
+        return($this->mod->getRow($rs));
     }
 
 }
