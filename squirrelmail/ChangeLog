@@ -17,6 +17,8 @@ Version 1.4.5 - CVS
   - Added required code to display error message that might occur when options 
     are saved.
   - Fixed translations of "On DATE, AUTHOR said" and "AUTHOR said" replies.
+  - In sqgetGlobalVar(), reset $value if the var is not found in the
+    specified location.
 
 Version 1.4.4 - 21 January 2005
 -------------------------------
