@@ -41,7 +41,7 @@ class imap_fetch extends imap {
 	return false;	
     }
     
-    function parseFetch($raw = false) {
+    function parseFetch($arguments) {
         $sArg = $aVal = '';
 	$result = array();
 	$this->iTot_Cnt = 0;
@@ -92,15 +92,27 @@ class imap_fetch extends imap {
 			    $result['RFC822'] = $this->checkForLiteral($read,$i,$iCnt);
 			    $read = function sqimap_fgets_next($i, $iCnt);
 			    break;
+			 case 'BODY[TEXT]':/* not supported as argument */			    
 			 case 'RFC822.TEXT':
-			 case 'BODY[TEXT]':
+			    if ($arguments[$sArg]) {
+			       $result['RFC822.TEXT'] = 
+			          $this->redirectStream($read, 
+				      $i, $iCnt,$arguments['RFC822.TEXT']);
+			       break;
+			    }
 			    $result['RFC822.TEXT'] = 
 			       $this->checkForLiteral($read,$i,$iCnt);
 			    $read = function sqimap_fgets_next($i, $iCnt);
 			    break;
-			 case 'BODY[0]':    
+			 case 'BODY[0]': /* not supported as argument */
 			 case 'BODY[HEADER]':
-			 /* todo BODY[ENT.HEADER] */
+			 case preg_match('/^BODY\[([0-9.]+)\.HEADER\]$/',$sArg, $reg):
+			    if ($arguments[$sArg]) {
+			       $result[$sArg] = 
+			              $this->redirectStream($read, $i, $iCnt, 
+				                       $arguments[$sArg]);
+			       break;
+			    }
 			    require_once(SM_LIB_PATH . 'message/Rfc822Header.inc');
 			    $res = $this->checkForLiteral($read,$i,$iCnt);
 			    if (!$raw) {
@@ -110,9 +122,19 @@ class imap_fetch extends imap {
 			    }
 			    $read = function sqimap_fgets_next($i, $iCnt);
 			    break;
+			 case preg_match('/^BODY\[([0-9.]+)\]$/',$sArg, $reg):
+			    if ($arguments[$sArg]) {
+			       $result[$sArg] = 
+			              $this->redirectStream($read, $i, $iCnt, 
+				                       $arguments[$sArg]);
+			       break;
+			    }
+			    $result[$sArg] = 
+			       $this->checkForLiteral($read,$i,$iCnt);
+			    $read = function sqimap_fgets_next($i, $iCnt);
+			    break;
 			 /* todo */			 
 /*
-			 case 'BODY[':
 			 case 'BODY[HEADER.FIELDS 
 */
 			 default: ++$i; break;
@@ -147,6 +169,17 @@ class imap_fetch extends imap {
         }
 	
     }         	   
+    /* 
+     * with this function we can override the normal processing and feed 
+     * the imapstream with the number found in the literal to a supplied
+     * function. Note: The function may not get more characters from 
+     * the stream then the given literalvalue.
+     */
+    function redirectStream(&$read, &$i, &$iCnt, $func) {
+        $result = $func($this->imap_stream, $this->requestLiteralValue);
+	$read = function sqimap_fgets_next($i, $iCnt);
+	return $result;
+    }
 
     function parseFlags(&$read, &$i, &$iCnt) {
         $aFlags = array();
