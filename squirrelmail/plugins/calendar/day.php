@@ -20,6 +20,28 @@ require_once('../config/config.php');
 require_once('../functions/page_header.php');
 require_once('../src/load_prefs.php');
 
+/* get globals */
+if (isset($_GET['year'])) {
+    $year = $_GET['year'];
+}
+elseif (isset($_POST['year'])) {
+    $year = $_POST['year'];
+}
+if (isset($_GET['month'])) {
+    $month = $_GET['month'];
+}
+elseif (isset($_POST['month'])) {
+    $month = $_POST['month'];
+}
+if (isset($_GET['day'])) {
+    $day = $_GET['day'];
+}
+elseif (isset($_POST['day'])) {
+    $day = $_POST['day'];
+}
+
+/* got 'em */
+
 //displays head of day calendar view
 function day_header() {
     global $color, $month, $day, $year, $prev_year, $prev_month, $prev_day,

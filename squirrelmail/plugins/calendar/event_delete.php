@@ -20,6 +20,61 @@ require_once('../config/config.php');
 require_once('../functions/page_header.php');
 require_once('../src/load_prefs.php');
 
+
+/* get globals */
+if (isset($_GET['month'])) {
+    $month = $_GET['month'];
+}
+elseif (isset($_POST['month'])) {
+    $month = $_POST['month'];
+}
+if (isset($_GET['year'])) {
+    $year = $_GET['year'];
+}
+elseif (isset($_POST['year'])) {
+    $year = $_POST['year'];
+}
+if (isset($_GET['day'])) {
+    $day = $_GET['day'];
+}
+elseif (isset($_POST['day'])) {
+    $day = $_POST['day'];
+}
+if (isset($_GET['dyear'])) {
+    $dyear = $_GET['dyear'];
+}
+elseif (isset($_POST['dyear'])) {
+    $dyear = $_POST['dyear'];
+}
+if (isset($_GET['dmonth'])) {
+    $dmonth = $_GET['dmonth'];
+}
+elseif (isset($_POST['dmonth'])) {
+    $dmonth = $_POST['dmonth'];
+}
+if (isset($_GET['dday'])) {
+    $dday = $_GET['dday'];
+}
+elseif (isset($_POST['dday'])) {
+    $dday = $_POST['dday'];
+}
+if (isset($_GET['dhour'])) {
+    $dhour = $_GET['dhour'];
+}
+elseif (isset($_POST['dhour'])) {
+    $dhour = $_POST['dhour'];
+}
+if (isset($_GET['dminute'])) {
+    $dminute = $_GET['dminute'];
+}
+elseif (isset($_POST['dminute'])) {
+    $dminute = $_POST['dminute'];
+}
+if (isset($_POST['confirmed'])) {
+    $confirmed = $_POST['confirmed'];
+}
+/* got 'em */
+
 function confirm_deletion()
 {
     global $calself, $dyear, $dmonth, $dday, $dhour, $dminute, $calendardata, $color, $year, $month, $day;
