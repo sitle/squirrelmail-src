@@ -754,7 +754,6 @@ function newMail ($mailbox='', $passed_id='', $passed_ent_id='', $action='', $se
                     $subject = '[Fwd: ' . $subject . ']';
                 }
                 $body = getforwardHeader($orig_header) . $body;
-                sqUnWordWrap($body);
                 $composeMessage = getAttachments($message, $composeMessage, $passed_id, $entities, $imapConnection);
                 $body = "\n" . $body;
                 break;
