@@ -43,6 +43,12 @@ if (isset($_POST['day'])) {
 elseif (isset($_GET['day'])) {
     $day = $_GET['day'];
 }
+if (isset($_POST['hour'])) {
+    $hour = $_POST['hour'];
+}
+elseif (isset($_GET['hour'])) {
+    $hour = $_GET['hour'];
+}
 if (isset($_POST['event_hour'])) {
     $event_hour = $_POST['event_hour'];
 }
