@@ -1507,7 +1507,7 @@ function deliverMessage($composeMessage, $draft=false) {
            unset ($imap_deliver);
            return $length;
         } else {
-           $msg  = '<br>Error: '._("Draft folder")." $draft_folder" . ' does not exist.';
+           $msg  = '<br />'.sprintf(_("Error: Draft folder %s does not exist."), $draft_folder);
            plain_error_message($msg, $color);
            return false;
         }
@@ -1518,7 +1518,7 @@ function deliverMessage($composeMessage, $draft=false) {
         $succes = $deliver->finalizeStream($stream);
     }
     if (!$succes) {
-        $msg  = $deliver->dlv_msg . '<br>' .
+        $msg  = $deliver->dlv_msg . '<br />' .
                 _("Server replied: ") . $deliver->dlv_ret_nr . ' '.
                 $deliver->dlv_server_msg;
         plain_error_message($msg, $color);
