@@ -4,6 +4,9 @@
 
 Version 1.2.8 -- cvs
 --------------------
+  - HTML cleanup on search and addressbook pages
+  - Fixes for multiple XXS exploits on the addressbook,
+    search, help, and options pages
   - more accurate error messages on failed login
   - HTML table cleanup when viewing attachments
   - fix for X-MSMail-Priority conflict bug #600369
@@ -17,14 +20,14 @@ Version 1.2.8 -- cvs
   - fix for reading/writing ldap prefs with conf.pl bug #57595
   - fix for 'fixed' font style in css bug #571463
   - fix for attachments in safe mode bug #585340
-  - fixed forward attachment bug #585836
+  - fix for forward attachment bug #585836
   - fix for php warning when saving drafts bug #585012
-  - returned generic_header hook to page_header.php. bug #554278
-  - fixed syntax error in darkness theme. bug #576066
-  - fixed some attachments not being displayed. bug #577052
-  - fixed matching uppercase headers on mailbox display. bug #584082
-  - fixed folder names containing regex characters. bug #574889, #578156
-  - fixed endless loop on raw binary data in email. bug #547662
+  - returned generic_header hook to page_header.php bug #554278
+  - fix for syntax error in darkness theme bug #576066
+  - fix for some attachments not being displayed bug #577052
+  - fix for matching uppercase headers on mailbox display bug #584082
+  - fix for folder names containing regex characters bug #574889, #578156
+  - fix for endless loop on raw binary data in email bug #547662
 
 Version 1.2.7 -- June 21, 2002
 ------------------------------
