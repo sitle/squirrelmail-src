@@ -201,7 +201,7 @@ function newmail_plugin() {
         // will play the sound as follows:
 
         if ($newmail_changetitle) {
-            echo "<script language=\"javascript\">\n" .
+            echo "<script language=\"javascript\" type=\"text/javascript\">\n" .
                 "function ChangeTitleLoad() {\n";
             if( $totalNew > 1 || $totalNew == 0 ) {
                 echo 'window.parent.document.title = "' .
