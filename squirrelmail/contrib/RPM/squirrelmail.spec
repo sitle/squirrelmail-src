@@ -1,6 +1,6 @@
 ##
 # $Id$
-%define spec_release 2
+%define spec_release 1
 
 ##
 # Rebuild with:
@@ -20,7 +20,7 @@
 
 Summary:        SquirrelMail webmail client
 Name:           squirrelmail
-Version:        1.4.1
+Version:        1.4.3
 Release:        %{rpm_release}
 License:        GPL
 URL:            http://www.squirrelmail.org/
@@ -83,9 +83,11 @@ done
 %{__mkdir_p} -m 755 %{buildroot}%{_localstatedir}/spool/squirrelmail/attach
 %{__mkdir_p} -m 755 %{buildroot}%{_datadir}/squirrelmail
 
-# install default_pref
+# install default_pref into /etc/squirrelmail and symlink to it from data
 %{__install} -m 644 data/default_pref \
-    %{buildroot}%{_localstatedir}/lib/squirrelmail/prefs/
+    %{buildroot}%{_sysconfdir}/squirrelmail/
+%{__ln_s} %{_sysconfdir}/squirrelmail/default_pref \
+    %{buildroot}%{_localstatedir}/lib/squirrelmail/prefs/default_pref
 
 # install the config files
 %{__mkdir_p} -m 755 %{buildroot}%{_datadir}/squirrelmail/config
@@ -165,6 +167,13 @@ done
 #------------------------------------------------------------------------------
 
 %changelog
+* Wed Apr 07 2004 Konstantin Ryabitsev <icon@duke.edu> 1.4.3-1
+- Skipped 1.4.2 because it was built outside of CVS.
+- Prepping for 1.4.3
+- default_pref is now in /etc/squirrelmail/default_pref with a symlink in
+  place
+- Probably the last release for 7.x.
+
 * Thu Jul 03 2003 Konstantin Riabitsev <icon@duke.edu> 1.4.1-1
 - Build for 1.4.1
 - Prefixing the release with "0" so the RPM upgrades cleanly when going to
