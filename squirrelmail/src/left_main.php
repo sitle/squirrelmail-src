@@ -813,6 +813,17 @@ if ($auto_create_special && !isset($auto_create_done)) {
     /* Let the world know that autocreation is complete! Hurrah! */
     $auto_create_done = TRUE;
     sqsession_register($auto_create_done, 'auto_create_done');
+    /* retrieve the mailboxlist. We do this at a later stage again but if
+       the right_frame loads faster then the second call retrieves a cached
+       version of the mailboxlist without the newly created folders.
+       The second parameter forces a non cached mailboxlist return.
+     */
+    if ($advanced_tree) {
+        // do nothing, caching not seported yet.
+        //$boxes = sqimap_mailbox_tree($imapConnection);
+    } else {
+        $boxes = sqimap_mailbox_list($imapConnection,true);
+    }
 }
 
 echo "\n<body bgcolor=\"$color[3]\" text=\"$color[6]\" link=\"$color[6]\" vlink=\"$color[6]\" alink=\"$color[6]\">\n";
@@ -889,7 +900,9 @@ if ( $collapse_folders ) {
 if ($oldway) {  /* normal behaviour SM */
  
 sqgetGlobalVar('force_refresh',$force_refresh,SQ_GET);
-$boxes = sqimap_mailbox_list($imapConnection,$force_refresh);
+if (!isset($boxes)) { // auto_create_done
+    $boxes = sqimap_mailbox_list($imapConnection,$force_refresh);
+}
 /* Prepare do do out collapsedness and visibility computation. */
 $curbox = 0;
 $boxcount = count($boxes);
