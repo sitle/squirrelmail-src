@@ -7,7 +7,12 @@
     **  $Id$
     **/
 
-   $prefs_php = true;
+   if (defined ('prefs_php')) { 
+      return; 
+   } else { 
+      define ('prefs_php', true); 
+   } 
+
 
    /** returns the value for $string **/
    function getPref($data_dir, $username, $string) {

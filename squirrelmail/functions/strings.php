@@ -2,7 +2,12 @@
    
    /* $Id$ */
 
-   $strings_php = true;
+   if (defined ('strings_php')) { 
+      return; 
+   } else { 
+      define ('strings_php', true); 
+   } 
+
    $fix_form_endlines = false;
    
    // Remove all slashes for form values
@@ -241,11 +246,8 @@
 
    function translateText(&$body, $wrap_at, $charset) {
       global $where, $what; // from searching
-                  global $url_parser_php;
 
-      if (!isset($url_parser_php)) {
-         include '../functions/url_parser.php';
-      }
+      include '../functions/url_parser.php';
       
       $body_ary = explode("\n", $body);
       $PriorQuotes = 0;

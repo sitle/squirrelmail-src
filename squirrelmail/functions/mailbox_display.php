@@ -9,7 +9,11 @@
     **  $Id$
     **/
 
-   $mailbox_display_php = true;
+    if (defined ('mailbox_display_php')) { 
+       return; 
+    } else { 
+       define ('mailbox_display_php', true); 
+    } 
 
    function printMessageInfo($imapConnection, $t, $i, $key, $mailbox, $sort, $startMessage, $where, $what) {
       global $checkall;

@@ -32,16 +32,12 @@
       exit;
    }
 
-   if (!isset($strings_php))
-      include ('../functions/strings.php');
+   include ('../functions/strings.php');
    include ('../config/config.php');
    include ('../functions/prefs.php');
    include ('../functions/imap.php');
-   if (!isset($plugin_php))
-      include ('../functions/plugin.php');
-   if (!isset($auth_php))
-      include ('../functions/auth.php');
-
+   include ('../functions/plugin.php');
+   include ('../functions/auth.php');
    include ('../src/load_prefs.php');
 
    // We'll need this to later have a noframes version

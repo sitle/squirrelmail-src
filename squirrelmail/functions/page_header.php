@@ -9,14 +9,15 @@
 
    session_start();
 
-   $page_header_php = true;
+   if (defined ('page_header_php')) { 
+      return; 
+   } else { 
+      define ('page_header_php', true); 
+   } 
 
-   if (!isset($prefs_php))
-      include ("../functions/prefs.php");
-   if (!isset($i18n_php))
-      include ("../functions/i18n.php");
-   if (!isset($plugin_php))
-      include ("../functions/plugin.php");
+   include ("../functions/prefs.php");
+   include ("../functions/i18n.php");
+   include ("../functions/plugin.php");
 
    // Check to see if gettext is installed
    $headers_sent=set_up_language(getPref($data_dir, $username, "language"));

@@ -8,7 +8,12 @@
     **/
 
    $debug_mime = false;
-   $mime_php = true;
+   if (defined ('mime_php')) { 
+      return; 
+   } else { 
+      define ('mime_php', true); 
+   } 
+
 
    if (!isset($i18n_php))
       include "../functions/i18n.php";

@@ -7,7 +7,11 @@
     ** $Id$
     **/
 
-   $smtp_php = true;
+   if (defined ('smtp_php')) { 
+      return; 
+   } else { 
+      define ('smtp_php', true); 
+   } 
 
    // This should most probably go to some initialization...
    if (ereg("^([^@%/]+)[@%/](.+)$", $username, $usernamedata)) {
@@ -379,9 +383,7 @@
    function errorCheck($line, $smtpConnection) {
       global $page_header_php;
       global $color;
-      if (!isset($page_header_php)) {
-         include '../functions/page_header.php';
-      }
+      include '../functions/page_header.php';
       
       // Read new lines on a multiline response
       $lines = $line;

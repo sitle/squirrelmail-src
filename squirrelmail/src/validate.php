@@ -8,7 +8,12 @@
     **  $Id$
     **/
 
-   $validate_php = true;
+   if (defined ('validate_php')) { 
+      return; 
+   } else { 
+      define ('validate_php', true); 
+   }
+
    function data_validate (&$item, $key) {
       // This prevents overriding vars like $config_php
 

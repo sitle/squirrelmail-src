@@ -11,9 +11,7 @@
     **  $Id$
     **/
    include ("../src/validate.php");
-
-   if (!isset($i18n_php))
-      include('../functions/i18n.php');
+   include('../functions/i18n.php');
 
    session_start();
 
@@ -29,24 +27,15 @@
       exit;
    }
 
-   if (!isset($strings_php))
-      include('../functions/strings.php');
-   if (!isset($config_php))
-      include('../config/config.php');
-   if (!isset($imap_php))
-      include('../functions/imap.php');
-   if (!isset($date_php))
-      include('../functions/date.php');
-   if (!isset($page_header_php))
-      include('../functions/page_header.php');
-   if (!isset($array_php))
-      include('../functions/array.php');
-   if (!isset($mime_php))
-      include('../functions/mime.php');
-   if (!isset($mailbox_display_php))
-      include('../functions/mailbox_display.php');
-   if (!isset($display_messages_php))
-      include('../functions/display_messages.php');
+   include('../functions/strings.php');
+   include('../config/config.php');
+   include('../functions/imap.php');
+   include('../functions/date.php');
+   include('../functions/page_header.php');
+   include('../functions/array.php');
+   include('../functions/mime.php');
+   include('../functions/mailbox_display.php');
+   include('../functions/display_messages.php');
 ?>
 <?php
    /////////////////////////////////////////////////////////////////////////////////

@@ -2,7 +2,11 @@
    /* URL Passing code to allow links from with in emails */
    /* $Id$ */
 
-   $url_parser_php = true;
+   if (defined ('url_parser_php')) { 
+      return; 
+   } else { 
+      define ('url_parser_php', true); 
+   } 
 
    function replaceBlock ($in, $replace, $start, $end) {
       $begin = substr($in,0,$start);
