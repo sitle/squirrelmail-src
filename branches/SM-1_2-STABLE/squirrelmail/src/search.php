@@ -357,7 +357,7 @@ for ($i = 0; $i < count($boxes); $i++) {
         if ($mailbox == "All Folders") {
             echo "SELECTED";
         }
-        echo ">All folders</OPTION>\n";
+        echo '>' . _("All folders") . "</OPTION>\n";
 echo '         </SELECT>'.
      "       </TD>\n".
      "        <TD ALIGN=\"CENTER\">\n";
