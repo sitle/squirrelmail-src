@@ -622,10 +622,10 @@ foreach ($url_replytoall_avoid_addrs as $addr) {
  * 6) Remove our identities from the CC list (they still can be in the
  * TO list) only if $include_self_reply_all is turned off
  */
+$idents = getPref($data_dir, $username, 'identities');
 if (!$include_self_reply_all) {
     RemoveAddress($url_replytoall_extra_addrs,
                   getPref($data_dir, $username, 'email_address'));
-    $idents = getPref($data_dir, $username, 'identities');
     if ($idents != '' && $idents > 1) {
         for ($i = 1; $i < $idents; $i ++) {
             $cur_email_address = getPref($data_dir, $username, 
@@ -712,7 +712,6 @@ if ($default_use_priority) {
 $from_name = decodeHeader(htmlspecialchars($message->header->from));
 $subject = decodeHeader(htmlspecialchars($message->header->subject));
 $identity = '';
-$idents = getPref($data_dir, $username, 'identities');
 if (!empty($idents) && $idents > 1) {
     for ($i = 1; $i < $idents; $i++) {
         $enc_from_name = '"'. 
@@ -831,7 +830,6 @@ $addr_arr = array_merge($to_arr , $cc_arr);
 $addr_arr = array_unique($addr_arr);
 
 $identity = '';
-$idents = getPref($data_dir, $username, 'identities');
 if (!empty($idents) && $idents > 1) {
     for ($i = 1; $i < $idents; $i++) {
         $ident_addr = getPref($data_dir , $username , 'email_address' . $i);
