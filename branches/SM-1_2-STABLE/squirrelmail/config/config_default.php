@@ -378,6 +378,8 @@ $theme[33]['NAME'] = 'Dark Green';
 $theme[33]['PATH'] = '../themes/penguin.php';
 $theme[33]['NAME'] = 'Penguin';
 
+$theme[33]['PATH'] = '../themes/saloon.php';
+$theme[33]['NAME'] = 'Saloon';
 /**
  * LDAP server(s)
  *   Array of arrays with LDAP server parameters. See
