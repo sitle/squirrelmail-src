@@ -4,6 +4,12 @@
 
 Version 1.2.8 -- cvs
 --------------------
+  - fix for org. logo width/height values bug #572807
+  - fix for reading/writing ldap prefs with conf.pl bug #57595
+  - fix for 'fixed' font style in css bug #571463
+  - fix for attachments in safe mode bug #585340
+  - fixed forward attachment bug #585836
+  - fix for php warning when saving drafts bug #585012
   - returned generic_header hook to page_header.php. bug #554278
   - fixed syntax error in darkness theme. bug #576066
   - fixed some attachments not being displayed. bug #577052
