@@ -32,8 +32,9 @@ $foowd = new smdoc($foowd_parameters);
 $foowd->template->assign('title', 'Site Framework');
 
 $string = 'Packages: ' . 
+          '<a href="sqmdocs/li_Foowd.html" target="left_bottom">Foowd</a> | ' .
           '<a href="sqmdocs/li_smdoc.html" target="left_bottom">smdoc</a> | ' .
-          '<a href="sqmdocs/li_Foowd.html" target="left_bottom">Foowd</a>';
+          '<a href="sqmdocs/li_textism.html" target="left_bottom">textism</a>';
 
 $foowd->template->assign('method', $string);
 $foowd->template->assign('body_template','smdoc_external.docs.tpl');
