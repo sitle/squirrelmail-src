@@ -152,7 +152,8 @@ $optpage_loader = '';
 
 /* Set the load information for each page. */
 switch ($optpage) {
-    case SMOPT_PAGE_MAIN: break;
+    case SMOPT_PAGE_MAIN:
+        break;
     case SMOPT_PAGE_PERSONAL:
         $optpage_name     = _("Personal Information");
         $optpage_file     = '../src/options_personal.php';
@@ -190,7 +191,7 @@ switch ($optpage) {
 /*** Second, load the option information for this page. ***/
 /**********************************************************/
 
-if ( !is_file( $optpage_file ) ) {
+if ( !@is_file( $optpage_file ) ) {
     $optpage = SMOPT_PAGE_MAIN;
 } 
 elseif ($optpage != SMOPT_PAGE_MAIN ) {
