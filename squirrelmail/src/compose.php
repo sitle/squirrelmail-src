@@ -14,38 +14,25 @@
     **
     ** $Id$
     **/
-    
+   include ("../src/validate.php");
+
    session_start();
 
-   if (!isset($strings_php))
-      include("../functions/strings.php");
-   if (!isset($config_php))
-      include("../config/config.php");
-   if (!isset($page_header_php))
-      include("../functions/page_header.php");
-   if (!isset($imap_php))
-      include("../functions/imap.php");
-   if (!isset($date_php))
-      include("../functions/date.php");
-   if (!isset($mime_php))
-      include("../functions/mime.php");
-   if (!isset($smtp_php))
-      include("../functions/smtp.php");
-   if (!isset($display_messages_php))
-      include("../functions/display_messages.php");
-   if (!isset($auth_php))
-      include ("../functions/auth.php");
-   if (!isset($plugin_php))
-      include ("../functions/plugin.php");
+   include("../functions/strings.php");
+   include("../config/config.php");
+   include("../functions/page_header.php");
+   include("../functions/imap.php");
+   include("../functions/date.php");
+   include("../functions/mime.php");
+   include("../functions/smtp.php");
+   include("../functions/display_messages.php");
+   include ("../functions/auth.php");
+   include ("../functions/plugin.php");
 
    include("../src/load_prefs.php");
 
    if (!isset($attachments))
-   {
        $attachments = array();
-       session_register('attachments');
-   }
-
 
    // This function is used when not sending or adding attachments
    function newMail () {
@@ -159,7 +146,7 @@
    function getAttachments($message) {
       global $mailbox, $attachments, $attachment_dir, $imapConnection,
              $ent_num, $forward_id;
-
+      
       if (!$message) {
            sqimap_mailbox_select($imapConnection, $mailbox);
            $message = sqimap_get_message($imapConnection, $forward_id, 
@@ -174,22 +161,23 @@
                   $filename = "untitled-".$message->header->entity_id;
       
               $localfilename = GenerateRandomString(32, '', 7);
-	      while (file_exists($attachment_dir . $localfilename))
+	      while (isset($attachments[$localfilename]))
 	          $localfilename = GenerateRandomString(32, '', 7);
-
-              $newAttachment['localfilename'] = $localfilename;
-	      $newAttachment['remotefilename'] = $filename;
-	      $newAttachment['type'] = strtolower($message->header->type0 .
-	         '/' . $message->header->type1);
+      
+              // Write File Info
+              $fp = fopen ($attachment_dir.$localfilename.".info", "w");
+              fputs ($fp, strtolower($message->header->type0)."/".
+	          strtolower($message->header->type1)."\n".$filename."\n");
+              fclose ($fp);
 
               // Write Attachment to file
-              $fp = fopen ($attachment_dir.$localfilename, 'w');
+              $fp = fopen ($attachment_dir.$localfilename, "w");
               fputs ($fp, decodeBody(mime_fetch_body($imapConnection, 
 	          $forward_id, $message->header->entity_id), 
 		  $message->header->encoding));
               fclose ($fp);
       
-              $attachments[] = $newAttachment;
+              $attachments[$localfilename] = $filename;
           }
       } else {
           for ($i = 0; $i < count($message->entities); $i++) {
@@ -204,7 +192,7 @@
          $passed_body, $color, $use_signature, $signature, $prefix_sig, 
          $editor_size, $attachments, $subject, $newmail, 
          $use_javascript_addr_book, $send_to_bcc, $reply_id, $mailbox, 
-         $from_htmladdr_search, $location_of_buttons, $attachment_dir;
+         $from_htmladdr_search, $location_of_buttons;
 
       $subject = decodeHeader($subject);
       $reply_subj = decodeHeader($reply_subj);
@@ -268,10 +256,11 @@
          printf("         <INPUT TYPE=text NAME=subject SIZE=60 VALUE=\"%s\">",
                 htmlspecialchars($reply_subj));
       } else if ($forward_subj) {
+         $forward_subj = str_replace("\"", "'", $forward_subj);
          $forward_subj = trim($forward_subj);
-         if ((substr(strtolower($forward_subj), 0, 4) != 'fwd:') &&
-             (substr(strtolower($forward_subj), 0, 5) != '[fwd:') &&
-             (substr(strtolower($forward_subj), 0, 6) != '[ fwd:'))
+         if ((substr(strtolower($forward_subj), 0, 4) != "fwd:") &&
+             (substr(strtolower($forward_subj), 0, 5) != "[fwd:") &&
+             (substr(strtolower($forward_subj), 0, 6) != "[ fwd:"))
             $forward_subj = "[Fwd: $forward_subj]";
          printf("         <INPUT TYPE=text NAME=subject SIZE=60 VALUE=\"%s\">",
                 htmlspecialchars($forward_subj));
@@ -313,16 +302,13 @@
       echo " value=\"" . _("Add") ."\">\n";
       echo "     </td>\n";
       echo "   </tr>\n";
-      if (count($attachments))
-      {
+      if (count($attachments) > 0) {
          echo "<tr><td bgcolor=\"$color[0]\" align=right>\n";
          echo "&nbsp;";
          echo "</td><td align=left bgcolor=\"$color[0]\">";
-	 foreach ($attachments as $key => $info) {
-            echo "<input type=\"checkbox\" name=\"delete[]\" value=\"$key\">\n";
-	    echo $info['remotefilename'] . " - " . $info['type'] . " (";
-	    echo show_readable_size(filesize($attachment_dir . 
-	        $info['localfilename'])) . ")<br>\n";
+         while (list($localname, $remotename) = each($attachments)) {
+            echo "<input type=\"checkbox\" name=\"delete[]\" value=\"$localname\">\n";
+            echo "$remotename <input type=\"hidden\" name=\"attachments[$localname]\" value=\"$remotename\"><br>\n";
          }
          
          echo "<input type=\"submit\" name=\"do_delete\" value=\""._("Delete selected attachments")."\">\n";
@@ -337,7 +323,6 @@
    
    function showComposeButtonRow() {
       global $use_javascript_addr_book;
-      
       echo "   <TR><td>\n   </td><td>\n";
       if ($use_javascript_addr_book) {
          echo "      <SCRIPT LANGUAGE=JavaScript><!--\n document.write(\"";
@@ -354,6 +339,12 @@
 
       echo "   </TD>\n";
       echo "   </TR>\n\n";
+   }
+
+   function showSentForm () {
+      echo "<BR><BR><BR><CENTER><B>Message Sent!</B><BR><BR>";
+      echo "You will be automatically forwarded.<BR>If not, <A HREF=\"right_main.php\">click here</A>";
+      echo "</CENTER>";
    }
 
    function checkInput ($show) {
@@ -378,21 +369,23 @@
       
       is_logged_in();
       $localfilename = GenerateRandomString(32, '', 7);
-      while (file_exists($attachment_dir . $localfilename))
+      while (isset($attachments[$localfilename]))
           $localfilename = GenerateRandomString(32, '', 7);
-
+      
       if (!@rename($HTTP_POST_FILES['attachfile']['tmp_name'], $attachment_dir.$localfilename)) {
          if (!@copy($HTTP_POST_FILES['attachfile']['tmp_name'], $attachment_dir.$localfilename)) {
             return true;
          }
       }
-   
-      $newAttachment['localfilename'] = $localfilename;
-      $newAttachment['remotefilename'] = $HTTP_POST_FILES['attachfile']['name'];
-      $newAttachment['type'] = 
-         strtolower($HTTP_POST_FILES['attachfile']['type']);
       
-      $attachments[] = $newAttachment;
+      if (!isset($failed) || !$failed) {
+         // Write information about the file
+         $fp = fopen ($attachment_dir.$localfilename.".info", "w");
+         fputs ($fp, $HTTP_POST_FILES['attachfile']['type']."\n".$HTTP_POST_FILES['attachfile']['name']."\n");
+         fclose ($fp);
+
+         $attachments[$localfilename] = $HTTP_POST_FILES['attachfile']['name'];
+      }
     }
   
    function SqConvertRussianCharsets(){
@@ -426,7 +419,7 @@
    if (!isset($mailbox) || $mailbox == "" || ($mailbox == "None"))
       $mailbox = "INBOX";
 
-   if (isset($send)) {
+   if(isset($send)) {
       if (isset($HTTP_POST_FILES['attachfile']) &&
           $HTTP_POST_FILES['attachfile']['tmp_name'] &&
           $HTTP_POST_FILES['attachfile']['tmp_name'] != 'none')
@@ -456,31 +449,22 @@
       is_logged_in();
       displayPageHeader($color, $mailbox);
 
-      if (isset($send_to_search) && is_array($send_to_search))
-      {
-         for ($i=0; $i < count($send_to_search); $i++) {
-            if ($send_to)
-               $send_to .= ", ";
-            $send_to .= $send_to_search[$i];   
-         }
+      for ($i=0; $i < count($send_to_search); $i++) {
+         if ($send_to)
+            $send_to .= ", ";
+         $send_to .= $send_to_search[$i];   
       }
       
-      if (isset($send_to_cc_search) && is_array($send_to_cc_search))
-      {
-         for ($i=0; $i < count($send_to_cc_search); $i++) {
-            if ($send_to_cc)
-               $send_to_cc .= ", ";
-            $send_to_cc .= $send_to_cc_search[$i];   
-         }
+      for ($i=0; $i < count($send_to_cc_search); $i++) {
+         if ($send_to_cc)
+            $send_to_cc .= ", ";
+         $send_to_cc .= $send_to_cc_search[$i];   
       }
       
-      if (isset($send_to_bcc_search) && is_array($send_to_bcc_search))
-      {
-         for ($i=0; $i < count($send_to_bcc_search); $i++) {
-            if ($send_to_bcc)
-               $send_to_bcc .= ", ";
-            $send_to_bcc .= $send_to_bcc_search[$i];   
-         }
+      for ($i=0; $i < count($send_to_bcc_search); $i++) {
+         if ($send_to_bcc)
+            $send_to_bcc .= ", ";
+         $send_to_bcc .= $send_to_bcc_search[$i];   
       }
       
       showInputForm();
@@ -497,13 +481,10 @@
       is_logged_in();
       displayPageHeader($color, $mailbox);
 
-      if (isset($delete) && is_array($delete))
-      {
-         foreach($delete as $index)
-         {
-            unlink ($attachment_dir.$attachments[$index]['localfilename']);
-            unset ($attachments[$index]);
-	 }
+      while (list($lkey, $localname) = each($delete)) {
+         unset ($attachments[$localname]);
+         unlink ($attachment_dir.$localname);
+         unlink ($attachment_dir.$localname.".info");
       }
 
       showInputForm();
@@ -515,9 +496,6 @@
       displayPageHeader($color, $mailbox);
 
       $newmail = true;
-
-      ClearAttachments();
-
       if (isset($forward_id) && $forward_id && isset($ent_num) && $ent_num)
           getAttachments(0);
               
@@ -525,23 +503,4 @@
       showInputForm();
       sqimap_logout($imapConnection);
    }
-   
-   
-   
-   
-   function ClearAttachments()
-   {
-       global $attachments, $attachment_dir;
-       
-       foreach ($attachments as $info)
-       {
-           if (file_exists($attachment_dir . $info['localfilename']))
-	   {
-               unlink($attachment_dir . $info['localfilename']);
-	   }
-       }
-       
-       $attachments = array();
-   }
-   
 ?>

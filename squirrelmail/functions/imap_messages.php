@@ -7,7 +7,11 @@
     **  $Id$
     **/
 
-   if (!isset($mime_php)) include "../functions/mime.php";
+    if (defined ('imap_messages_php')) { 
+       return; 
+    } else { 
+       define ('imap_messages_php', true); 
+    } 
 
    /******************************************************************************
     **  Copies specified messages to specified folder
@@ -97,8 +101,6 @@
             if ($pos = strpos($type, ";"))
                $type = substr($type, 0, $pos);
             $type = explode("/", $type);
-	    if (! isset($type[1]))
-	        $type[1] = '';
          }
          
       }

@@ -1,16 +1,13 @@
-Version 1.1.0 -- DEVELOPMENT
+Version 1.0.6 -- DEVELOPMENT
 ----------------------------
-- Added ability to read HTML messages by default instead of plain text (Display Options)
-- Added authenticated SMTP server support (configure in conf.pl)
-- Rewrote attachment handling code in compose.php
-- If aliases are typed in To, Cc, or Bcc, they are automatically lookedup in
-  in the addressbook and converted to the associated addresses.
-- Added collapseable folder listing (an option that can be turned on in Folder Options)
-- Added alternating row colors to improve interface (Display Options)
-- Added Croatian translation by Albert Novak <anovak@pu.carnet.hr>
 
-Version 1.0.5 -- DEVELOPMENT
-----------------------------
+Version 1.0.5 -- April 17, 2001 
+-------------------------------
+- MAJOR security issues addressed.  Please upgrade as soon as possible.
+- Downloading attachments should work better due to a tip by Ray Black III.
+- Fixed bug with drop-down folder list not containing INBOX
+- Added Sweedish help files Teemu Junnila <teejun@vallcom.com>
+- Added Italian help files Antonetti Roberto <antonr@piceniaweb.com>
 
 Version 1.0.4 -- April 9, 2001 
 ------------------------------
@@ -22,10 +19,13 @@ Version 1.0.4 -- April 9, 2001
 
 Version 1.0.3 -- March 9, 2001 
 ------------------------------
+- Many i18n enhancements/fixes
+- Fixed bug with default theme path being set incorrectly
+- Fixed problem when sending/forwarding multiple attachments
 - Made folder drop-down list consistant in look to the other drop-downs
 - Fixed problem where some attachment filenames would not be displayed
 - Added Finnish help files by Teemu Junnila <teejun@vallcom.com>
-- Removed some regular expressions to help speed folder listings up
+- Updated Norwegian translation
 - Updated Brazillian Portuguise translation
 
 Version 1.0.2 -- February 8, 2001 
@@ -35,8 +35,8 @@ Version 1.0.2 -- February 8, 2001
 - Select All works through the search
 - Better escaped string handling from POST variables
 - Many more code cleanups and optimizations
-- Added Hungarian translation by István-Attila András <bergkatten@netscape.net> 
-- Added Icelandic translation by Karl Heiðar <karlh@macho.is>
+- Added Hungarian translation by Teemu Junnila <teejun@vallcom.com>
+- Added Icelandic translation by Karl Heiðar" <karlh@macho.is>
 - Updated Taiwan translation
 - Updated Sweedish translation
 - Updated Finnish translation

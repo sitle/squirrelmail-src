@@ -2,7 +2,12 @@
    
    /* $Id$ */
 
-   $strings_php = true;
+   if (defined ('strings_php')) { 
+      return; 
+   } else { 
+      define ('strings_php', true); 
+   } 
+
    $fix_form_endlines = false;
    
    // Remove all slashes for form values
@@ -24,42 +29,31 @@
    // Auto-detection
    //
    // if $send (the form button's name) contains "\n" as the first char
-   // or "\r\n" as the first two (compensating for RedHat's flawed package
-   // and Konqueror, respectively), and the script is compose.php, then
-   // trim everything.  Otherwise, we don't have to worry.
-   //
-   // If RedHat ever gets PHP officially upgraded past package php-4.0.4pl1-3
-   // or if Konqueror and PHP start working together, modify/remove this hack
+   // and the script is compose.php, then trim everything.  Otherwise,
+   // we don't have to worry.
    global $send, $PHP_SELF;
-   $trimChars = 0;
-   if (isset($send) && substr($PHP_SELF, -12) == "/compose.php")
-   {
-       if (substr($send, 0, 1) == "\n")
-           $trimChars = 1;
-       if (substr($send, 0, 2) == "\r\n")
-           $trimChars = 2;
-   }
-   if ($trimChars)
+   if (isset($send) && substr($send, 0, 1) == "\n" &&
+       substr($PHP_SELF, -12) == "/compose.php")
    {
       if ($REQUEST_METHOD == "POST") {
-         TrimArray($HTTP_POST_VARS, $trimChars);
+         TrimArray($HTTP_POST_VARS);
       } else {
-         TrimArray($HTTP_GET_VARS, $trimChars);
+         TrimArray($HTTP_GET_VARS);
       }
    }
 
    //**************************************************************************
    // Trims every element in the array
    //**************************************************************************
-   function TrimArray(&$array, $trimChars) {
+   function TrimArray(&$array) {
       foreach ($array as $k => $v) {
          global $$k;
          if (is_array($$k)) {
             foreach ($$k as $k2 => $v2) {
-	       $$k[$k2] = substr($v2, $trimChars);
+	       $$k[$k2] = substr($v2, 1);
             }
          } else {
-            $$k = substr($v, $trimChars);
+            $$k = substr($v, 1);
          }
       }
    }
@@ -252,11 +246,8 @@
 
    function translateText(&$body, $wrap_at, $charset) {
       global $where, $what; // from searching
-                  global $url_parser_php;
 
-      if (!isset($url_parser_php)) {
-         include '../functions/url_parser.php';
-      }
+      include '../functions/url_parser.php';
       
       $body_ary = explode("\n", $body);
       $PriorQuotes = 0;
@@ -300,7 +291,7 @@
    }
 
    /* SquirrelMail version number -- DO NOT CHANGE */
-   $version = '1.1.0 [cvs]';
+   $version = '1.0.6 [cvs]';
 
 
    function find_mailbox_name ($mailbox) {
@@ -580,6 +571,7 @@
       
       return $String;
    }
+   
    
    function quoteIMAP($str)
    {

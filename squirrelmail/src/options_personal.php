@@ -9,25 +9,18 @@
     **
     **  $Id$
     **/
+   include ("../src/validate.php");
 
    session_start();
 
-   if (!isset($strings_php))
-      include('../functions/strings.php');
-   if (!isset($config_php))
-      include('../config/config.php');
-   if (!isset($page_header_php))
-      include('../functions/page_header.php');
-   if (!isset($display_messages_php))
-      include('../functions/display_messages.php');
-   if (!isset($imap_php))
-      include('../functions/imap.php');
-   if (!isset($array_php))
-      include('../functions/array.php');
-   if (!isset($i18n_php))
-      include('../functions/i18n.php');
-   if (!isset($plugin_php))
-      include('../functions/plugin.php');
+   include('../functions/strings.php');
+   include('../config/config.php');
+   include('../functions/page_header.php');
+   include('../functions/display_messages.php');
+   include('../functions/imap.php');
+   include('../functions/array.php');
+   include('../functions/i18n.php');
+   include('../functions/plugin.php');
 
    include('../src/load_prefs.php');
    displayPageHeader($color, 'None');
@@ -70,12 +63,10 @@
       echo '<input type=checkbox value="1" name=usesignature checked>&nbsp;&nbsp;' . _("Use a signature?") . '&nbsp;&nbsp;';
    else
       echo '<input type=checkbox value="1" name=usesignature>&nbsp;&nbsp;' . _("Use a signature?") . '&nbsp;&nbsp;';
-  if ( $prefix_sig == true )
-    echo '<input type="checkbox" value="1" name="prefixsig" checked>&nbsp;&nbsp;
-' . _( "Prefix signature with '--' ?" ) . '<BR>';
+  if ( $prefix_sig == true || !isset ($prefix_sig))
+    echo '<input type="checkbox" value="1" name="prefixsig" checked>&nbsp;&nbsp;' . _( "Prefix signature with '--' ?" ) . '<BR>';
   else
-    echo '<input type="checkbox" value="1" name="prefixsig">&nbsp;&nbsp;' . _( "
-Prefix signature with '--' ?" ) . '<BR>';
+    echo '<input type="checkbox" value="1" name="prefixsig">&nbsp;&nbsp;' . _( "Prefix signature with '--' ?" ) . '<BR>';
    echo "\n<textarea name=\"signature_edit\" rows=\"5\" cols=\"50\">$signature_abs</textarea><br>";
 ?>
             </td>

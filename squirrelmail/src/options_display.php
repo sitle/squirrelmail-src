@@ -9,25 +9,18 @@
     **
     **  $Id$
     **/
+   include ("../src/validate.php");
 
    session_start();
 
-   if (!isset($strings_php))
-      include('../functions/strings.php');
-   if (!isset($config_php))
-      include('../config/config.php');
-   if (!isset($page_header_php))
-      include('../functions/page_header.php');
-   if (!isset($display_messages_php))
-      include('../functions/display_messages.php');
-   if (!isset($imap_php))
-      include('../functions/imap.php');
-   if (!isset($array_php))
-      include('../functions/array.php');
-   if (!isset($i18n_php))
-      include('../functions/i18n.php');
-   if (!isset($plugin_php))
-      include('../functins/plugin.php');
+   include('../functions/strings.php');
+   include('../config/config.php');
+   include('../functions/page_header.php');
+   include('../functions/display_messages.php');
+   include('../functions/imap.php');
+   include('../functions/array.php');
+   include('../functions/i18n.php');
+   include('../functions/plugin.php');
 
    include('../src/load_prefs.php');
    displayPageHeader($color, 'None');
@@ -291,19 +284,6 @@
  
       echo '               </SELECT>'; 
 ?>
-            </td>
-         </tr>
-         <tr>
-            <td valign=top align=right>
-               <?php echo _("Show HTML version by default"); ?>:
-            </td>
-            <td>
-               <input type=checkbox name=showhtmldefault <?php 
-	       if (isset($show_html_default) && $show_html_default) 
-	       echo " checked"; ?>>
-	         <?php 
-echo _("Yes, show me the HTML version of a mail message, if it is available."); 
-                 ?>
             </td>
          </tr>
          <?php do_hook('options_display_inside'); ?>

@@ -11,16 +11,21 @@
     **  $Id$
     **/
 
-   if (!isset($config_php))
-      include("../config/config.php");
-   if (!isset($prefs_php))
-      include("../functions/prefs.php");
-   if (!isset($plugin_php))
-      include("../functions/plugin.php");
+   if (defined ('load_prefs_php')) { 
+      return; 
+   } else { 
+      define ('load_prefs_php', true); 
+   }
+
+   $theme = array();
+   include("../src/validate.php");
+   include("../config/config.php");
+   include("../functions/prefs.php");
+   include("../functions/plugin.php");
+   include("../functions/auth.php");
       
-   $load_prefs_php = true;
-   if (!isset($username))
-       $username = '';
+   is_logged_in();
+      
    checkForPrefs($data_dir, $username);
 
    $chosen_theme = getPref($data_dir, $username, "chosen_theme");
@@ -31,9 +36,12 @@
 		 break;
 	  }
    }
+   if (!$in_ary) {
+   		$chosen_theme = "";
+   }
 
-   if ($in_ary && (file_exists($chosen_theme))) {
-      $loaded=@include($chosen_theme);
+   if ((isset($chosen_theme)) && (file_exists($chosen_theme))) {
+      require("$chosen_theme");
    } else {
       if (file_exists($theme[0]["PATH"])) {
          require($theme[0]["PATH"]);
@@ -58,10 +66,8 @@
           $color[11]  = "#770000"; // (dark red)       Special Folders color
       }
    }
-    if (!isset($loaded)) 
-      echo _("Unable to load chosen theme file:") . ' "' .
-	$chosen_theme . '"';
-    if (!isset($download_php)) session_register("theme_css");
+
+    if (!defined ("download_php")) session_register("theme_css");
 
    $use_javascript_addr_book = getPref($data_dir, $username, "use_javascript_addr_book");
    if ($use_javascript_addr_book == "")
@@ -138,7 +144,7 @@
 
    $prefix_sig = getPref($data_dir, $username, "prefix_sig");
    if ($prefix_sig == "")
-      $prefix_sig = false;
+      $prefix_sig = true;
 
    $left_refresh = getPref($data_dir, $username, "left_refresh");
    if ($left_refresh == "")
@@ -185,10 +191,6 @@
    $location_of_buttons = getPref($data_dir, $username, 'location_of_buttons');
    if ($location_of_buttons == '')
        $location_of_buttons = 'between';
-       
-   $collapse_folders = getPref($data_dir, $username, 'collapse_folders');
-   
-   $show_html_default = getPref($data_dir, $username, 'show_html_default');
 
    do_hook("loading_prefs");
 

@@ -8,7 +8,11 @@
    **  $Id$
    **/
     
-   $addressbook_php = true;
+   if (defined ('addressbook_php')) { 
+      return; 
+   } else { 
+      define ('addressbook_php', true); 
+   }
 
    // Include backends here.
    include('../functions/abook_local_file.php');

@@ -12,9 +12,9 @@
     **
     **  $Id$
     **/
+   include ("../src/validate.php");
 
-   if (!isset($strings_php))
-      include ('../functions/strings.php');
+   include ('../functions/strings.php');
    include('../config/config.php');
 
    // Before starting the session, the base URI must be known.
@@ -44,12 +44,9 @@
    include ('../config/config.php');
    include ('../functions/prefs.php');
    include ('../functions/imap.php');
-   if (!isset($plugin_php))
-      include ('../functions/plugin.php');
-   if (!isset($auth_php))
-      include ('../functions/auth.php');
-   if (!isset($strings_php))
-      include ('../functions/strings.php');
+   include ('../functions/plugin.php');
+   include ('../functions/auth.php');
+   include ('../functions/strings.php');
 
    if (!session_is_registered('user_is_logged_in') || $logged_in != 1) {
       do_hook ('login_before');
@@ -72,8 +69,8 @@
       do_hook ('login_verified');
    }
 
-   session_register ('user_is_logged_in');
    $user_is_logged_in = true;
+   session_register ('user_is_logged_in');
 
    header("Location: $location/webmail.php");
 ?>

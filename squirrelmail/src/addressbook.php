@@ -9,23 +9,17 @@
     **
     **  $Id$
     **/
+   include ("../src/validate.php");
 
    session_start();
 
-   if (!isset($strings_php))
-      include('../functions/strings.php');
-   if (!isset($config_php))
-      include('../config/config.php');
-   if (!isset($array_php))
-      include('../functions/array.php');
-   if (!isset($auth_php))
-      include('../functions/auth.php');
-   if (!isset($page_header_php))
-      include('../functions/page_header.php');
-   if (!isset($display_messages_php))
-      include('../functions/display_messages.php');
-   if (!isset($addressbook_php))
-      include('../functions/addressbook.php');
+   include('../functions/strings.php');
+   include('../config/config.php');
+   include('../functions/array.php');
+   include('../functions/auth.php');
+   include('../functions/page_header.php');
+   include('../functions/display_messages.php');
+   include('../functions/addressbook.php');
 
    is_logged_in();
 
@@ -148,7 +142,7 @@
 	 $delfailed = false;
 
 	 for($i = 0 ; (($i < sizeof($sel)) && !$delfailed) ; $i++) {
-	    list($sbackend, $snick) = explode(':', $sel[$i]);
+	    list($sbackend, $snick) = split(':', $sel[$i]);
 
 	    // When we get to a new backend, process addresses in
 	    // previous one.
@@ -197,7 +191,7 @@
 	       $defselected = $sel;
 	    } else {
 	       $abortform = true;
-	       list($ebackend, $enick) = explode(':', $sel[0]);
+	       list($ebackend, $enick) = split(":", $sel[0]);
 	       $olddata = $abook->lookup($enick, $ebackend);
 
 	       // Display the "new address" form

@@ -7,9 +7,11 @@
     ** $Id$
     **/
 
-   $smtp_php = true;
-   if (!isset($addressbook_php))
-      include('../functions/addressbook.php');
+   if (defined ('smtp_php')) { 
+      return; 
+   } else { 
+      define ('smtp_php', true); 
+   } 
 
    // This should most probably go to some initialization...
    if (ereg("^([^@%/]+)[@%/](.+)$", $username, $usernamedata)) {
@@ -33,28 +35,6 @@
          return false;
    }
 
-   // looks up aliases in the addressbook and expands them to
-   // the full address.
-   function expandAddrs ($array) {
-      $abook = addressbook_init();
-      for ($i=0; $i < count($array); $i++) {
-         $result = $abook->lookup($array[$i]);
-         $ret = "";
-         if (isset($result['email'])) {
-            if (isset($result['name'])) {
-               $ret = '"'.$result['name'].'" ';
-            }
-            $ret .= '<'.$result['email'].'>';
-            $array[$i] = $ret;
-         }
-	 else
-	 {
-	    $array[$i] = '<' . $array[$i] . '>';
-	 }
-      }
-      return $array;
-   }
-
    // Attach the files that are due to be attached
    function attachFiles ($fp) {
       global $attachments, $attachment_dir;
@@ -62,23 +42,27 @@
       $length = 0;
 
       if (isMultipart()) {
-         foreach ($attachments as $info)
-	 {
-	    if (isset($info['type']))
- 	       $filetype = $info['type'];
-            else
+         reset($attachments);
+         while (list($localname, $remotename) = each($attachments)) {
+            // This is to make sure noone is giving a filename in another
+            // directory
+            $localname = ereg_replace ("\\/", '', $localname);
+            
+            $fileinfo = fopen ($attachment_dir.$localname.'.info', 'r');
+            $filetype = fgets ($fileinfo, 8192);
+            fclose ($fileinfo);
+            $filetype = trim ($filetype);
+            if ($filetype=='')
                $filetype = 'application/octet-stream';
             
             $header = '--'.mimeBoundary()."\r\n";
-            $header .= "Content-Type: $filetype; name=\"" .
-	        $info['remotefilename'] . "\"\r\n";
-            $header .= "Content-Disposition: attachment; filename=\"" .
-	        $info['remotefilename'] . "\"\r\n";
+            $header .= "Content-Type: $filetype;name=\"$remotename\"\r\n";
+            $header .= "Content-Disposition: attachment; filename=\"$remotename\"\r\n";
             $header .= "Content-Transfer-Encoding: base64\r\n\r\n";
             fputs ($fp, $header);
             $length += strlen($header);
             
-            $file = fopen ($attachment_dir . $info['localfilename'], 'r');
+            $file = fopen ($attachment_dir.$localname, 'r');
             while ($tmp = fread($file, 570)) {
                $encoded = chunk_split(base64_encode($tmp));
                $length += strlen($encoded);
@@ -111,7 +95,7 @@
       static $mimeBoundaryString;
 
       if ($mimeBoundaryString == "") {
-         $mimeBoundaryString = "----=_" . 
+         $mimeBoundaryString = "----=_" .
 	     GenerateRandomString(60, '\'()+,-./:=?_', 7);
       }
 
@@ -152,9 +136,9 @@
       static $header, $headerlength;
 
       if ($header == '') {
-         $to = expandAddrs(parseAddrs($t));
-         $cc = expandAddrs(parseAddrs($c));
-         $bcc = expandAddrs(parseAddrs($b));
+         $to = parseAddrs($t);
+         $cc = parseAddrs($c);
+         $bcc = parseAddrs($b);
          $reply_to = getPref($data_dir, $username, 'reply_to');
          $from = getPref($data_dir, $username, 'full_name');
          $from_addr = getPref($data_dir, $username, 'email_address');
@@ -202,7 +186,7 @@
          $header .= "Date: $date\r\n";
          $header .= "Subject: $subject\r\n";
          $header .= "From: $from\r\n";
-         $header .= "To: $to_list\r\n";    // Who it's TO
+         $header .= "To: $to_list \r\n";    // Who it's TO
 
 	 /* Insert headers from the $more_headers array */
 	 if(is_array($more_headers)) {
@@ -322,11 +306,11 @@
 
    function sendSMTP($t, $c, $b, $subject, $body, $more_headers) {
       global $username, $popuser, $domain, $version, $smtpServerAddress, $smtpPort,
-         $data_dir, $color, $use_authenticated_smtp;
+         $data_dir, $color;
 
-      $to = expandAddrs(parseAddrs($t));
-      $cc = expandAddrs(parseAddrs($c));
-      $bcc = expandAddrs(parseAddrs($b));
+      $to = parseAddrs($t);
+      $cc = parseAddrs($c);
+      $bcc = parseAddrs($b);
       $from_addr = getPref($data_dir, $username, 'email_address');
 
       if (!$from_addr)
@@ -345,46 +329,28 @@
       $cc_list = getLineOfAddrs($cc);
 
       /** Lets introduce ourselves */
-      if (! isset ($use_authenticated_smtp) || $use_authenticated_smtp == false) {
-         fputs($smtpConnection, "HELO $domain\r\n");
-         $tmp = fgets($smtpConnection, 1024);
-         errorCheck($tmp, $smtpConnection);
-      } else {
-         fputs($smtpConnection, "EHLO $domain\r\n");
-         $tmp = fgets($smtpConnection, 1024);
-         errorCheck($tmp, $smtpConnection);
-
-         fputs($smtpConnection, "AUTH LOGIN\r\n");
-         $tmp = fgets($smtpConnection, 1024);
-         errorCheck($tmp, $smtpConnection);
-
-         fputs($smtpConnection, base64_encode ($username) . "\r\n");
-         $tmp = fgets($smtpConnection, 1024);
-         errorCheck($tmp, $smtpConnection);
-
-         fputs($smtpConnection, base64_encode ($OneTimePadDecrypt($key, $onetimepad)) . "\r\n");
-         $tmp = fgets($smtpConnection, 1024);
-         errorCheck($tmp, $smtpConnection);
-      }
+      fputs($smtpConnection, "HELO $domain\r\n");
+      $tmp = fgets($smtpConnection, 1024);
+      errorCheck($tmp, $smtpConnection);
 
       /** Ok, who is sending the message? */
-      fputs($smtpConnection, "MAIL FROM: <$from_addr>\r\n");
+      fputs($smtpConnection, "MAIL FROM:<$from_addr>\r\n");
       $tmp = fgets($smtpConnection, 1024);
       errorCheck($tmp, $smtpConnection);
 
       /** send who the recipients are */
       for ($i = 0; $i < count($to); $i++) {
-         fputs($smtpConnection, "RCPT TO: $to[$i]\r\n");
+         fputs($smtpConnection, "RCPT TO:<$to[$i]>\r\n");
          $tmp = fgets($smtpConnection, 1024);
          errorCheck($tmp, $smtpConnection);
       }
       for ($i = 0; $i < count($cc); $i++) {
-         fputs($smtpConnection, "RCPT TO: $cc[$i]\r\n");
+         fputs($smtpConnection, "RCPT TO:<$cc[$i]>\r\n");
          $tmp = fgets($smtpConnection, 1024);
          errorCheck($tmp, $smtpConnection);
       }
       for ($i = 0; $i < count($bcc); $i++) {
-         fputs($smtpConnection, "RCPT TO: $bcc[$i]\r\n");
+         fputs($smtpConnection, "RCPT TO:<$bcc[$i]>\r\n");
          $tmp = fgets($smtpConnection, 1024);
          errorCheck($tmp, $smtpConnection);
       }
@@ -417,9 +383,7 @@
    function errorCheck($line, $smtpConnection) {
       global $page_header_php;
       global $color;
-      if (!isset($page_header_php)) {
-         include '../functions/page_header.php';
-      }
+      include '../functions/page_header.php';
       
       // Read new lines on a multiline response
       $lines = $line;
@@ -468,14 +432,13 @@
                      $status = 0;
                      break;
 
-         case 235:   return; break;
+
          case 250:   $message = 'Requested mail action okay, completed';
                      $status = 5;
                      break;
          case 251:   $message = 'User not local; will forward';
                      $status = 5;
                      break;
-         case 334:   return; break;
          case 450:   $message = 'Requested mail action not taken:  mailbox unavailable';
                      $status = 0;
                      break;
@@ -525,7 +488,7 @@
    }
 
    function sendMessage($t, $c, $b, $subject, $body, $reply_id) {
-      global $useSendmail, $msg_id, $is_reply, $mailbox, $onetimepad;
+      global $useSendmail, $msg_id, $is_reply, $mailbox;
       global $data_dir, $username, $domain, $key, $version, $sent_folder, $imapServerAddress, $imapPort;
       $more_headers = Array();
 
@@ -571,7 +534,7 @@
       }
       sqimap_logout($imap_stream);
       // Delete the files uploaded for attaching (if any).
-      ClearAttachments();
+      deleteAttachments();
    }
 
 ?>

@@ -12,6 +12,7 @@
     **
     **  $Id$
     **/
+   include ("../src/validate.php");
 
    session_start();
 
@@ -31,16 +32,12 @@
       exit;
    }
 
-   if (!isset($strings_php))
-      include ('../functions/strings.php');
+   include ('../functions/strings.php');
    include ('../config/config.php');
    include ('../functions/prefs.php');
    include ('../functions/imap.php');
-   if (!isset($plugin_php))
-      include ('../functions/plugin.php');
-   if (!isset($auth_php))
-      include ('../functions/auth.php');
-
+   include ('../functions/plugin.php');
+   include ('../functions/auth.php');
    include ('../src/load_prefs.php');
 
    // We'll need this to later have a noframes version
@@ -90,7 +87,7 @@
    } else if ($right_frame == 'folders.php') {
       $right_frame_url = 'folders.php';
    } else {
-      if (!isset($just_logged_in)) $just_logged_in = 1;
+      if (!isset($just_logged_in)) $just_logged_in = 0;
       $right_frame_url = "right_main.php?just_logged_in=$just_logged_in";
    }
 
