@@ -20,7 +20,6 @@
    include('../functions/imap.php');
    include('../functions/array.php');
    include('../functions/i18n.php');
-   include ('../functions/auth.php'); 
 
    if (isset($language)) {
       setcookie('squirrelmail_language', $language, time()+2592000);

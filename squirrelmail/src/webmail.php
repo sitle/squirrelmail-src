@@ -20,7 +20,6 @@
    include ('../functions/prefs.php');
    include ('../functions/imap.php');
    include ('../functions/plugin.php');
-   include ('../functions/auth.php');
 
    // We'll need this to later have a noframes version
    //

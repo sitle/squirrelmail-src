@@ -131,7 +131,6 @@ function bcc_address($addr) {
    include('../functions/i18n.php');
    include('../config/config.php');
    include('../functions/array.php');
-   include('../functions/auth.php');
    include('../functions/strings.php');
    include('../functions/page_header.php');
    include('../functions/addressbook.php');

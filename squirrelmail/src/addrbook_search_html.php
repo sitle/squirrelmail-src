@@ -19,7 +19,6 @@
 
    include('../functions/strings.php');
    include('../config/config.php');
-   include('../functions/auth.php');
    include('../functions/page_header.php');
    include('../functions/date.php');
    include('../functions/smtp.php');
