@@ -505,7 +505,9 @@ function formatAttachments($message, $exclude_id, $mailbox, $id) {
                         '<A HREF="'.$defaultlink.'">'.decodeHeader($display_filename).'</A>&nbsp;</TD>' .
                         '<TD><SMALL><b>' . show_readable_size($header->size) .
                         '</b>&nbsp;&nbsp;</small></TD>' .
-                        "<TD><SMALL>[ $type0/$type1 ]&nbsp;</SMALL></TD>" .
+                        '<TD><SMALL>[ '. 
+                         htmlspecialchars($type0).'/'.htmlspecialchars($type1).
+                        ' ]&nbsp;</SMALL></TD>'.
                         '<TD><SMALL>';
         $attachments .= '<b>' . $description . '</b>';
         $attachments .= '</SMALL></TD><TD><SMALL>&nbsp;';
