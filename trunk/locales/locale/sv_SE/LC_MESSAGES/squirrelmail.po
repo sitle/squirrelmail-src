@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: squirrelmail HEAD\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-04-07 22:41+0300\n"
-"PO-Revision-Date: 2004-04-08 18:38+0200\n"
+"POT-Creation-Date: 2004-04-10 08:34+0300\n"
+"PO-Revision-Date: 2004-04-10 17:28+0200\n"
 "Last-Translator: Fredrik Jervfors <sqm_admin@fimbul.net>\n"
 "Language-Team: Swedish <squirrelmail-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -218,8 +218,8 @@ msgstr "Spara utkast"
 msgid "You have not filled in the \"To:\" field."
 msgstr "Du måste ange en mottagare."
 
-msgid "Draft folder"
-msgstr "Mapp för sparade utkast"
+msgid "Error: Draft folder %s does not exist."
+msgstr "Fel: Katalogen \"%s\" för sparade utkast finns inte"
 
 msgid "Server replied: "
 msgstr "Servern svarade: "
@@ -1856,7 +1856,7 @@ msgstr "Förvald typ för olästa brev"
 msgid "Auto Create Special Folders"
 msgstr "Skapa särskilda mappar automatiskt"
 
-msgid "Default Javascript Adrressbook"
+msgid "Default Javascript Addressbook"
 msgstr "Förvald javascriptadressbok"
 
 msgid "Auto delete folders"
@@ -2014,7 +2014,7 @@ msgid "You are currently using version %s."
 msgstr "Nu använder du version %s."
 
 msgid ""
-"Check to see if you bug is already listed in the <a href=\"http://"
+"Check to see if your bug is already listed in the <a href=\"http://"
 "sourceforge.net/bugs/?group_id=311\">Bug List</a> on SourceForge. If it is, "
 "we already know about it and are trying to fix it."
 msgstr ""
@@ -3202,6 +3202,12 @@ msgstr ""
 "instanser. Denna tjänst är gratis. Genom att klicka på knappen \"Skicka "
 "skräppostrapport\" går du med på SpamCops regler, villkor för tjänsten o.s.v."
 
+msgid "Cancel / Done"
+msgstr "Avbryt/Klar"
+
+msgid "Send Spam Report"
+msgstr "Skicka skräppostrapport"
+
 msgid "SpellChecker Options"
 msgstr "Inställningar för rättstavning"
 
@@ -4028,6 +4034,10 @@ msgid ""
 msgstr ""
 "Om du stöter på problem med konfigurationen, kör eller konsultera conf.pl."
 
+#, c-format
+msgid "Plugin directory could not be found: %s"
+msgstr "Kunde inte hitta katalogen för insticksmoduler: %s"
+
 msgid "Test Configuration"
 msgstr "Testa konfigurering"
 
@@ -4087,12 +4097,6 @@ msgstr ""
 
 msgid "SpamCop reporting"
 msgstr "Skräppostrapportering till SpamCop"
-
-msgid "Cancel / Done"
-msgstr "Avbryt/Klar"
-
-msgid "Send Spam Report"
-msgstr "Skicka skräppostrapport"
 
 msgid "Filipino (Tagalog)"
 msgstr "Filippinska (Tagalog)"
