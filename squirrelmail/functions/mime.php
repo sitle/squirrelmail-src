@@ -1556,13 +1556,13 @@ function sq_deent($attvalue){
      */
     if (strpos($attvalue, "#") !== false){
         $omit = Array(34, 39);
-        for ($asc=1; $asc<256; $asc++){
+        for ($asc=256; $asc>=0; $asc--){
             if (!in_array($asc, $omit)){
                 $chr = chr($asc);
-                $attvalue = preg_replace("/\&#0*$asc;*(\D)/si", "$chr\\1", 
-                                         $attvalue);
-                $attvalue = preg_replace("/\&#x0*".dechex($asc).";*(\W)/si",
-                                         "$chr\\1", $attvalue);
+                $octrule = '/\&#0*' . $asc . ';*/si';
+                $hexrule = '/\&#x0*' . dechex($asc) . ';*/si';
+                $attvalue = preg_replace($octrule, $chr, $attvalue);
+                $attvalue = preg_replace($hexrule, $chr, $attvalue);
             }
         }
     }
@@ -1962,8 +1962,8 @@ function magicHTML($body, $id){
                       "head",
                       "base",
                       "link",
-		      "frame",
-		      "iframe"
+                      "frame",
+                      "iframe"
                       );
 
     $rm_tags_with_content = Array(
@@ -1971,7 +1971,7 @@ function magicHTML($body, $id){
                                   "applet",
                                   "embed",
                                   "title",
-				  "frameset"
+                                  "frameset"
                                   );
 
     $self_closing_tags =  Array(
@@ -1988,8 +1988,8 @@ function magicHTML($body, $id){
                          Array(
                                "/target/si",
                                "/^on.*/si",
-			       "/^dynsrc/si",
-			       "/^data.*/si"
+                               "/^dynsrc/si",
+                               "/^data.*/si"
                                )
                          );
 
@@ -2001,51 +2001,51 @@ function magicHTML($body, $id){
                     Array(
                           Array(
                                 "|^([\'\"])\s*\.\./.*([\'\"])|si",
-                                "/^([\'\"])\s*\S+script\s*:.*([\'\"])/si",
-				"/^([\'\"])\s*mocha\s*:*.*([\'\"])/si",
-				"/^([\'\"])\s*about\s*:.*([\'\"])/si"
+                                "/^([\'\"])\s*\S+\s*script\s*:.*([\'\"])/si",
+                                "/^([\'\"])\s*mocha\s*:*.*([\'\"])/si",
+                                "/^([\'\"])\s*about\s*:.*([\'\"])/si"
                                 ),
                           Array(
                                 "\\1$secremoveimg\\2",
                                 "\\1$secremoveimg\\2",
-				"\\1$secremoveimg\\2",
-				"\\1$secremoveimg\\2"
+                                "\\1$secremoveimg\\2",
+                                "\\1$secremoveimg\\2"
                                 )
                         ),
                 "/^href|action/i" =>
                     Array(
                           Array(
                                 "|^([\'\"])\s*\.\./.*([\'\"])|si",
-                                "/^([\'\"])\s*\S+script\s*:.*([\'\"])/si",
-				"/^([\'\"])\s*mocha\s*:*.*([\'\"])/si",
-				"/^([\'\"])\s*about\s*:.*([\'\"])/si"
+                                "/^([\'\"])\s*\S+\s*script\s*:.*([\'\"])/si",
+                                "/^([\'\"])\s*mocha\s*:*.*([\'\"])/si",
+                                "/^([\'\"])\s*about\s*:.*([\'\"])/si"
                                 ),
                           Array(
                                 "\\1#\\2",
                                 "\\1#\\2",
-				"\\1#\\2",
-				"\\1#\\2"
+                                "\\1#\\2",
+                                "\\1#\\2"
                                 )
                         ),
                 "/^style/si" =>
                     Array(
                           Array(
                                 "/expression/si",
-				"/binding/si",
-				"/behaviou*r/si",
+                                "/binding/si",
+                                "/behaviou*r/si",
                                 "|url\(([\'\"])\s*\.\./.*([\'\"])\)|si",
-                                "/url\(([\'\"])\s*\S+script\s*:.*([\'\"])\)/si",
-				"/url\(([\'\"])\s*mocha\s*:.*([\'\"])\)/si",
-				"/url\(([\'\"])\s*about\s*:.*([\'\"])\)/si"
+                                "/url\(([\'\"])\s*\S+\s*script\s*:.*([\'\"])\)/si",
+                                "/url\(([\'\"])\s*mocha\s*:.*([\'\"])\)/si",
+                                "/url\(([\'\"])\s*about\s*:.*([\'\"])\)/si"
                                ),
                           Array(
                                 "idiocy",
-				"idiocy",
-				"idiocy",
+                                "idiocy",
+                                "idiocy",
                                 "url(\\1#\\2)",
                                 "url(\\1#\\2)",
-				"url(\\1#\\2)",
-				"url(\\1#\\2)"
+                                "url(\\1#\\2)",
+                                "url(\\1#\\2)"
                                )
                           )
                 )
