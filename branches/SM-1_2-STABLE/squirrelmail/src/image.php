@@ -12,11 +12,27 @@
  */
 
 require_once('../src/validate.php');
-require_once('../functions/date.php');
 require_once('../functions/page_header.php');
 require_once('../src/load_prefs.php');
 
 displayPageHeader($color, 'None');
+
+/* globals */
+
+$mailbox = $_GET['mailbox'];
+$passed_id = $_GET['passed_id'];
+$passed_ent_id = $_GET['passed_ent_id'];
+$startMessage = $_GET['startMessage'];
+
+if(isset($_GET['where'])) {
+    $where = $_GET['where'];
+}
+if(isset($_GET['what'])) {
+    $what = $_GET['what'];
+}
+
+/* end globals */
+
 
 echo '<BR>' . 
     '<TABLE WIDTH="100%" BORDER=0 CELLSPACING=0 CELLPADDING=2 ALIGN=CENTER>' .

@@ -20,9 +20,34 @@ require_once('../functions/date.php');
 header('Pragma: ');
 header('Cache-Control: cache');
 
+/* globals */
+
+$key = $_COOKIE['key'];
+$username = $_SESSION['username'];
+$onetimepad = $_SESSION['onetimepad'];
+
+$mailbox = $_GET['mailbox'];
+$passed_id = $_GET['passed_id'];
+$passed_ent_id = $_GET['passed_ent_id'];
+$startMessage = $_GET['startMessage'];
+
+if(isset($_GET['where'])) {
+    $where = $_GET['where'];
+}
+if(isset($_GET['what'])) {
+    $what = $_GET['what'];
+}
+if(isset($_GET['showHeaders'])) {
+    $showHeaders = $_GET['showHeaders'];
+}
+if(isset($_GET['absolute_dl'])) {
+    $absolute_dl = $_GET['absolute_dl'];
+}
+
+/* end globals */
+
 function viewText($color, $body, $id, $entid, $mailbox, $type1, $wrap_at) {
-    global $where, $what, $charset;
-    global $startMessage;
+    global $charset;
 
     displayPageHeader($color, 'None');
 
@@ -57,7 +82,6 @@ function viewText($color, $body, $id, $entid, $mailbox, $type1, $wrap_at) {
 }
 
 function viewMessage($imapConnection, $id, $mailbox, $ent_id, $msg, $color, $wrap_at) {
-    global $startMessage;
     $header = sqimap_get_ent_header($imapConnection,$id,$mailbox,$ent_id);
     $msg->header = $header;
     $msg->header->id = $id;
@@ -142,8 +166,21 @@ function makeTableEntry($str, $str_name, $color) {
 }
 
 function formatRecipientString($recipients, $item ) {
-    global $base_uri, $passed_id, $startMessage, $show_more_cc, $show_more, $show_more_bcc, $passed_ent_id;
-    global $where, $what, $mailbox, $sort;
+
+    if(isset($_GET['show_more'])) {
+        $show_more = $_GET['show_more'];
+    }
+    if (isset($_GET['show_more_cc'])) {
+        $show_more = $_GET['show_more_cc'];
+    }
+    if(isset($_GET['show_more_bcc'])) {
+        $show_more = $_GET['show_more_bcc'];
+    }
+    if(isset($_GET['sort'])) {
+        $sort = $_GET['sort'];
+    }
+
+    $base_uri = $base_uri = $_SESSION['base_uri'];
 
     /** TEXT STRINGS DEFINITIONS **/
     $echo_more = _("more");
@@ -365,7 +402,8 @@ if (isset($absolute_dl) && $absolute_dl == 'true') {
  * version of IE.  I don't know if it works with Opera, but it should now.
  */
 function DumpHeaders($type0, $type1, $filename, $force) {
-    global $HTTP_USER_AGENT;
+
+    $HTTP_USER_AGENT = $_SERVER['HTTP_USER_AGENT'];
 
     $isIE = 0;
 
