@@ -7,16 +7,17 @@
  *
  * Configuration settings for Calendar plugin
  * 
+ * $Id$
  */
 
 // You MUST configure the following 4 Variables  (xName <xAcct@domain.com>)
 $fromName  = "Reminder";	//Who the reminder is from
-$fromAcct  = "unknown"; 	//the info to the left of the @ sybmol in fromAcct@domain.com
-$replyName = "Requests";	//Where replies must go 
-$replyAcct = "request"; 	//the info to the left of the @ sybmol in replyAcct@domain.com
+$fromAcct  = "reminder"; 	//the info to the left of the @ sybmol in fromAcct@domain.com
+$replyName = "Reminder";	//Where replies must go 
+$replyAcct = "reminder"; 	//the info to the left of the @ sybmol in replyAcct@domain.com
 
 // Security Settings (1=Yes, 0=No)
-$localDebug  = 1;		//script debug output when run from this machine
-$remoteDebug = 1;		//script debug output when run from a remote machine
-$allowRemote = 1;		//Allow script to be run remotely
+$localDebug  = 0;		//script debug output when run from this machine
+$remoteDebug = 0;		//script debug output when run from a remote machine
+$allowRemote = 0;		//Allow script to be run remotely
 ?>
