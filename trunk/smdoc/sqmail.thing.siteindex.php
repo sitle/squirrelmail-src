@@ -12,6 +12,7 @@
 define('SQMINDEXTHINGID',-2548195);
 $HARDTHING[SQMINDEXTHINGID]['func'] = 'sqmindex';
 $HARDTHING[SQMINDEXTHINGID]['title'] = 'Site Index';
+$HARDTHING[SQMINDEXTHINGID]['lastmodified'] = filemtime(__FILE__);
 
 $FORMAT = array_merge($FORMAT, array(
 	'indexhead' => '<h3>',
@@ -24,8 +25,6 @@ function sqmindex() {
     global $HARDTHING, $HARDCLASS;
 	global $conn, $wtf;
     track('sqmindex');
-
-    $fields = array('DISTINCT objectid','title','classid','workspaceid');
 
     /* first, set up arrays for queries that take workspaceid into account */
     if ($wtf->user->workspaceid == 0) {
@@ -40,13 +39,13 @@ function sqmindex() {
      */
     if ( $wtf->user->inGroup(WORKSPACECREATE) || $wtf->user->inGroup(WORKSPACEVIEW) ) {
 
-        $lastClass = FALSE;
         printHeading('Available Workspaces');            
 
         if ( $wtf->user->inGroup(WORKSPACEVIEW) ) {
             /* select only workspaces */
             $where = array('classid = ' . WORKSPACECLASSID, 'AND',  $wherespace);
             $orderby = array('title');
+            $fields = array('DISTINCT objectid','title','workspaceid');
 
             /* select:     connection, table,       joins, fields,  conditions, groups, orders,   limit) */
             $query = DBSelect(  $conn, OBJECTTABLE, NULL,  $fields, $where,     NULL,   $orderby, NULL);
@@ -55,13 +54,13 @@ function sqmindex() {
                 for ($foo = 1; $foo <= $recordNum; $foo++) {
                     $record = getRecord($query);
                     printLineBegin();
-                    echo '<a href="', THINGIDURI.$record['objectid'], '">', $record['title'], '</a> (', $HARDCLASS[WORKSPACECLASSID], ")";
+                    echo '<a href="', THINGIDURI.$record['objectid'], '">', $record['title'], '</a> (', $HARDCLASS[WORKSPACECLASSID], ')';
                     printLineEnd($record['workspaceid'], $record['objectid']);
                 }
             } else {
                 printLineBegin();
                 echo 'No Workspaces have been created.';
-                printLineEnd($record['workspaceid']);
+                printLineEnd();
             }     
         }
 
@@ -69,7 +68,7 @@ function sqmindex() {
             echo '<br />';
             printLineBegin();
             echo '<a href="', THINGURI, 'workspace">Create New Workspace</a>';
-            printLineEnd(0);
+            printLineEnd();
         } 
     }
 
@@ -81,10 +80,12 @@ function sqmindex() {
     /* general index won't include users (not viewable), homes, or workspaces */
     $where = array('classid != ' . USERCLASSID, 'AND',
                    'classid != ' . HOMECLASSID, 'AND',
+                   'classid != ' . SECTIONCLASSID, 'AND',
+                   'classid != ' . DEFINITIONCLASSID, 'AND',
                    'classid != ' . WORKSPACECLASSID, 'AND',
                    $wherespace);
-    $fields = array('DISTINCT objectid','title','classid','workspaceid','sectionid');
-    $orderby = array('sectionid', 'classid', 'title');
+    $fields = array('DISTINCT objectid','title','classid','workspaceid');
+    $orderby = array('classid', 'title');
 
     /* select:     connection, table,       joins, fields,  conditions, groups, orders,   limit) */
     $query = DBSelect(  $conn, OBJECTTABLE, NULL,  $fields, $where,     NULL,   $orderby, NULL);
@@ -105,23 +106,96 @@ function sqmindex() {
             }
             printLineEnd($record['workspaceid']);
         }
+    } else {
+        printLineBegin();
+        echo 'No content has been created.';
+        printLineEnd();
     }
 
     if ( $wtf->user->inGroup(CREATORS) ) {
         echo '<br />';
-        foreach($HARDTHING as $thingid => $hardThing) {
-            if ( $hardThing['func'] != 'workspace' && 
-                 $hardThing['func'] != 'search' &&
-                 $hardThing['func'] != 'sqmuseradmin' &&
-                 $hardThing['func'] != 'sqmindex' ) {
-                
-                printLineBegin();
-	            echo '<a href="', THINGIDURI.$thingid, '">', $hardThing['title'], '</a>';
-                printLineEnd(0);
-            }
+        printLineBegin();
+        echo '<a href="', THINGURI, 'wikipage">Create A New WikiPage</a>';
+        printLineEnd();
+        printLineBegin();
+        echo '<a href="', THINGURI, 'content">Create Page</a>';
+        printLineEnd();
+
+        if ( $wtf->user->inGroup(FILECREATE) ) {
+            printLineBegin();
+            echo '<a href="', THINGURI, 'createfile">Create A New File</a>';
+            printLineEnd();
         }
-    } 
- 
+    }
+    
+    /**
+     * Print index of available content sections 
+     */
+    printHeading('Section Index');
+
+    /* general index won't include users (not viewable), homes, or workspaces */
+    $where = array('classid = '. SECTIONCLASSID, 'AND',
+                   $wherespace);
+    $fields = array('DISTINCT objectid','title','workspaceid');
+    $orderby = array('title');
+
+    /* select:     connection, table,       joins, fields,  conditions, groups, orders,   limit) */
+    $query = DBSelect(  $conn, OBJECTTABLE, NULL,  $fields, $where,     NULL,   $orderby, NULL);
+
+    $lastClass = FALSE;
+    $recordNum = getAffectedRows();
+
+    if ($recordNum > 0) {
+        for ($foo = 1; $foo <= $recordNum; $foo++) {
+            $record = getRecord($query);
+            printLineBegin();
+            echo '<a href="', THINGIDURI.$record['objectid'], '">', $record['title'], '</a> (', $HARDCLASS[SECTIONCLASSID], ')';
+            printLineEnd($record['workspaceid']);
+        }
+    } else {
+        printLineBegin();
+        echo 'No Sections have been created.';
+        printLineEnd();
+    }
+    
+    if ( $wtf->user->inGroup(SECTIONCREATE) ) {
+        echo '<br />';
+        printLineBegin();
+        echo '<a href="', THINGURI, 'createsqmsection">Create New Section</a>';
+        printLineEnd();
+    }
+
+
+    if ( $wtf->user->inGroup(DEFINITIONCREATE) ) {
+        printHeading('Soft Class Definitions');
+
+        /* select only definitions */
+        $where = array('classid = ' . DEFINITIONCLASSID, 'AND',  $wherespace);
+        $orderby = array('title');
+        $fields = array('DISTINCT objectid','title','workspaceid');
+
+        /* select:     connection, table,       joins, fields,  conditions, groups, orders,   limit) */
+        $query = DBSelect(  $conn, OBJECTTABLE, NULL,  $fields, $where,     NULL,   $orderby, NULL);
+        $recordNum = getAffectedRows();
+        if ($recordNum > 0) {
+            for ($foo = 1; $foo <= $recordNum; $foo++) {
+                $record = getRecord($query);
+                printLineBegin();
+                echo '<a href="', THINGIDURI.$record['objectid'], '">', $record['title'], '</a> (', $HARDCLASS[DEFINITIONCLASSID], ')';
+                printLineEnd($record['workspaceid']);
+            }
+        } else {
+            printLineBegin();
+            echo 'No Soft Classes have been created.';
+            printLineEnd();
+        }
+
+        echo '<br />';
+        printLineBegin();
+        echo '<a href="', THINGURI, 'wikipage">Create A New Definition</a>';
+        printLineEnd();
+    }
+
     track();
 }
 
@@ -133,7 +207,7 @@ function printLineBegin($lastClass = FALSE) {
     echo '<indexitem>';
 }
 
-function printLineEnd( $workspaceid, $objectid = 1 ) {
+function printLineEnd( $workspaceid = 0, $objectid = 1 ) {
     global $wtf;
 
     /* Append flag for workspace copy if the copy exists in the current (not main) workspace */
