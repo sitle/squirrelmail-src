@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-03-29 21:19+0300\n"
+"POT-Creation-Date: 2004-10-19 18:25+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,27 +21,18 @@ msgid "dspam Settings"
 msgstr ""
 
 #: dspam.inc.php:89
-msgid ""
-"dspam is a learning system that filters spam based on what <i>you</i> tell "
-"it is spam and what isn't. Messages are analyzed as they are delivered and "
-"are assigned a spam probability between 0 and 1. The more messages you "
-"receive, both spam and innocent, the better dspam learns what <i>you</i> "
-"think is spam and what is not."
-msgstr ""
-
-#: dspam.inc.php:95
 msgid "Warning"
 msgstr ""
 
-#: dspam.inc.php:97
+#: dspam.inc.php:91
 msgid "Enabling dspam will disable SpamAssassin scanning of your email."
 msgstr ""
 
-#: dspam.inc.php:100
+#: dspam.inc.php:94
 msgid "SpamAssassin settings and white/blacklists will not be used by dspam."
 msgstr ""
 
-#: dspam.inc.php:105
+#: dspam.inc.php:99
 msgid ""
 "This <a href='http://www.nuclearelephant.com/projects/dspam/faq.html#1.7' "
 "target='_blank'>FAQ</a> from the dspam web site explains the differences "
@@ -50,10 +41,19 @@ msgid ""
 msgstr ""
 
 #: dspam.inc.php:110
+msgid ""
+"dspam is a learning system that filters spam based on what <i>you</i> tell "
+"it is spam and what isn't. Messages are analyzed as they are delivered and "
+"are assigned a spam probability between 0 and 1. The more messages you "
+"receive, both spam and innocent, the better dspam learns what <i>you</i> "
+"think is spam and what is not."
+msgstr ""
+
+#: dspam.inc.php:114
 msgid "Reporting Spam"
 msgstr ""
 
-#: dspam.inc.php:113
+#: dspam.inc.php:117
 msgid ""
 "If you receive a spam message in your Inbox, forward the message to "
 "<nobr>username-spam@domain</nobr> and it will be learned as spam. For "
@@ -61,7 +61,7 @@ msgid ""
 "to <nobr>joe-spam@example.com</nobr>."
 msgstr ""
 
-#: dspam.inc.php:119
+#: dspam.inc.php:123
 #, c-format
 msgid ""
 "You can also move your spam messages to the <i>%s</i> folder. This folder is "
@@ -70,11 +70,11 @@ msgid ""
 "they have already been learned as spam."
 msgstr ""
 
-#: dspam.inc.php:124
+#: dspam.inc.php:128
 msgid "Reporting False Positives"
 msgstr ""
 
-#: dspam.inc.php:127
+#: dspam.inc.php:131
 msgid ""
 "From time to time, dspam will catch an innocent messages as spam. These "
 "messages are called \"false positives\". There is no way to prevent false "
@@ -84,7 +84,7 @@ msgid ""
 "forward the message to <nobr>joe-fp@example.com</nobr>."
 msgstr ""
 
-#: dspam.inc.php:133
+#: dspam.inc.php:137
 #, c-format
 msgid ""
 "You can also move your false positives to the <i>%s</i> folder from the %s "
@@ -92,11 +92,11 @@ msgid ""
 "learned as false positives and deleted."
 msgstr ""
 
-#: dspam.inc.php:138
+#: dspam.inc.php:142
 msgid "Disclaimer"
 msgstr ""
 
-#: dspam.inc.php:141
+#: dspam.inc.php:145
 msgid ""
 "dspam is a learning system. It only knows what is spam based on what you "
 "teach it is spam and what is not. Due to dspam's nature, you are more likely "
@@ -106,13 +106,24 @@ msgid ""
 "spam."
 msgstr ""
 
-#: dspam.inc.php:159
+#: dspam.inc.php:173
 msgid "Use dspam"
 msgstr ""
 
-#: dspam.inc.php:169
+#: dspam.inc.php:183
 #, c-format
 msgid "Clean out your %s folder on opt-in?"
+msgstr ""
+
+#: dspam.inc.php:184 purge.inc.php:37
+msgid "Note"
+msgstr ""
+
+#: dspam.inc.php:185 purge.inc.php:38
+#, c-format
+msgid ""
+"Your %s folder may be unavailable during the purge. It will become available "
+"again when the purge is complete."
 msgstr ""
 
 #: purge.inc.php:22
@@ -126,17 +137,6 @@ msgstr ""
 #: purge.inc.php:33
 #, c-format
 msgid "Delete all messages from your %s folder."
-msgstr ""
-
-#: purge.inc.php:37
-msgid "Note"
-msgstr ""
-
-#: purge.inc.php:38
-#, c-format
-msgid ""
-"Your %s folder may be unavailable during the purge. It will become available "
-"again when the purge is complete."
 msgstr ""
 
 #: sa_abooksync.inc.php:20
@@ -202,19 +202,19 @@ msgstr ""
 msgid "Here you may configure the behavior of the spam filtering software."
 msgstr ""
 
-#: sasql_hooks.php:183
+#: sasql_hooks.php:197
 msgid "Allow Sender"
 msgstr ""
 
-#: sasql_hooks.php:185
+#: sasql_hooks.php:199 sasql_hooks.php:201
 msgid "remove"
 msgstr ""
 
-#: sasql_hooks.php:197
+#: sasql_hooks.php:215 sasql_hooks.php:223
 msgid "Whitelisted"
 msgstr ""
 
-#: sasql_hooks.php:208
+#: sasql_hooks.php:236 sasql_hooks.php:244
 msgid "Blacklisted"
 msgstr ""
 
@@ -242,70 +242,70 @@ msgstr ""
 msgid "Global Allow / Deny Address List"
 msgstr ""
 
-#: sa_whitelist.inc.php:82 sa_whitelist.inc.php:130
+#: sa_whitelist.inc.php:82 sa_whitelist.inc.php:134
 msgid "Address"
 msgstr ""
 
-#: sa_whitelist.inc.php:83 sa_whitelist.inc.php:131
+#: sa_whitelist.inc.php:83 sa_whitelist.inc.php:135
 msgid "Type"
 msgstr ""
 
-#: sa_whitelist.inc.php:102 sa_whitelist.inc.php:159
+#: sa_whitelist.inc.php:106 sa_whitelist.inc.php:167
 msgid "Whitelist From"
 msgstr ""
 
-#: sa_whitelist.inc.php:104 sa_whitelist.inc.php:161
+#: sa_whitelist.inc.php:108 sa_whitelist.inc.php:169
 msgid "Don't Whitelist From"
 msgstr ""
 
-#: sa_whitelist.inc.php:106 sa_whitelist.inc.php:163
+#: sa_whitelist.inc.php:110 sa_whitelist.inc.php:171
 msgid "Blacklist From"
 msgstr ""
 
-#: sa_whitelist.inc.php:108 sa_whitelist.inc.php:165
+#: sa_whitelist.inc.php:112 sa_whitelist.inc.php:173
 msgid "Don't Blacklist From"
 msgstr ""
 
-#: sa_whitelist.inc.php:110 sa_whitelist.inc.php:167
+#: sa_whitelist.inc.php:114 sa_whitelist.inc.php:175
 msgid "Whitelist To"
 msgstr ""
 
-#: sa_whitelist.inc.php:123
+#: sa_whitelist.inc.php:127
 msgid "Personal Allow / Deny Address List"
 msgstr ""
 
-#: sa_whitelist.inc.php:132
+#: sa_whitelist.inc.php:136
 msgid "Action"
 msgstr ""
 
-#: sa_whitelist.inc.php:139
+#: sa_whitelist.inc.php:143
 msgid "Address Removed"
 msgstr ""
 
-#: sa_whitelist.inc.php:175
+#: sa_whitelist.inc.php:183
 msgid "Delete"
 msgstr ""
 
-#: sa_whitelist.inc.php:181
+#: sa_whitelist.inc.php:189
 msgid "Edit"
 msgstr ""
 
-#: sa_whitelist.inc.php:195
+#: sa_whitelist.inc.php:203
 msgid "Edit Address"
 msgstr ""
 
-#: sa_whitelist.inc.php:201
+#: sa_whitelist.inc.php:209
 msgid "Add New Address"
 msgstr ""
 
-#: sa_whitelist.inc.php:227
+#: sa_whitelist.inc.php:235
 msgid "Address:"
 msgstr ""
 
-#: sa_whitelist.inc.php:231
+#: sa_whitelist.inc.php:239
 msgid "Type:"
 msgstr ""
 
-#: sa_whitelist.inc.php:252
+#: sa_whitelist.inc.php:260
 msgid "Description"
 msgstr ""
