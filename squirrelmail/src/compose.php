@@ -749,16 +749,22 @@ function newMail ($mailbox='', $passed_id='', $passed_ent_id='', $action='', $se
                 $body = '';
                 break;
             case ('reply_all'):
-                $send_to_cc = replyAllString($orig_header);
-                $send_to_cc = decodeHeader($send_to_cc,false,false,true);
-            case ('reply'):
-                $send_to = $orig_header->reply_to;
-                if (is_array($send_to) && count($send_to)) {
-                    $send_to = $orig_header->getAddr_s('reply_to');
-                } else if (is_object($send_to)) { /* unnessecarry, just for falesafe purpose */
-                    $send_to = $orig_header->getAddr_s('reply_to');
+                if(isset($orig_header->mail_followup_to) && $orig_header->mail_followup_to) {
+                    $send_to = $orig_header->getAddr_s('mail_followup_to');
                 } else {
-                    $send_to = $orig_header->getAddr_s('from');
+                    $send_to_cc = replyAllString($orig_header);
+                    $send_to_cc = decodeHeader($send_to_cc,false,false,true);
+                }
+            case ('reply'):
+                if (!$send_to) {
+                    $send_to = $orig_header->reply_to;
+                    if (is_array($send_to) && count($send_to)) {
+                        $send_to = $orig_header->getAddr_s('reply_to');
+                    } else if (is_object($send_to)) { /* unneccesarry, just for failsafe purpose */
+                        $send_to = $orig_header->getAddr_s('reply_to');
+                    } else {
+                        $send_to = $orig_header->getAddr_s('from');
+                    }
                 }
                 $send_to = decodeHeader($send_to,false,false,true);
                 $subject = decodeHeader($orig_header->subject,false,false,true);
