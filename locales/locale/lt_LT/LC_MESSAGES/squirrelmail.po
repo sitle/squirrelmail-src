@@ -4,9 +4,9 @@
 # $Id$
 msgid ""
 msgstr ""
-"Project-Id-Version: squirrelmail HEAD\n"
+"Project-Id-Version: squirrelmail 1.4.3\n"
 "POT-Creation-Date: 2004-09-01 22:46+0200\n"
-"PO-Revision-Date: 2004-09-02 21:20+0200\n"
+"PO-Revision-Date: 2004-09-03 13:03+0200\n"
 "Last-Translator: Tomas Kuliavas <tokul@users.sourceforge.net>\n"
 "Language-Team: Lithuanian <squirrelmail-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -349,7 +349,7 @@ msgid "Download this as a file"
 msgstr "Parsisiųsti kaip bylą"
 
 msgid "INBOX"
-msgstr "Gauti laiškai"
+msgstr "Gautos žinutės"
 
 msgid "purge"
 msgstr "išvalyti"
@@ -1363,7 +1363,7 @@ msgid "Height of Editor Window"
 msgstr "Redaktoriaus Lango Aukštis"
 
 msgid "Location of Buttons when Composing"
-msgstr "Mygtukų vieta rašant laiškus"
+msgstr "Mygtukų vieta rašant žinutes"
 
 msgid "Before headers"
 msgstr "Prieš antraštę"
@@ -1390,7 +1390,7 @@ msgid "Enable Forward as Attachment"
 msgstr "Įjungti persiuntimą kaip priedą"
 
 msgid "Include CCs when Forwarding Messages"
-msgstr "Įtraukti CC adresus persiunčiant laiškus"
+msgstr "Įtraukti CC adresus persiunčiant žinutes"
 
 msgid "Include Me in CC when I Reply All"
 msgstr "Įtrauk mane į CC kai atsakau visiems"
@@ -1438,7 +1438,7 @@ msgid "Enable Sort by of Receive Date"
 msgstr "Įjungti rūšiavimą pagal gavimo datą"
 
 msgid "Enable Thread Sort by References Header"
-msgstr "Įjungti sekų rūšiavimą pagal laiškų antraštes"
+msgstr "Įjungti sekų rūšiavimą pagal žinučių antraštes"
 
 msgid "Special Folder Options"
 msgstr "Specialūs aplankų nustatymai"
@@ -1453,10 +1453,10 @@ msgid "Trash Folder"
 msgstr "Šiukšlių aplankas"
 
 msgid "Do not use Sent"
-msgstr "Nenaudoti Išsiųstų laiškų aplanko"
+msgstr "Nenaudoti Išsiųstų žinučių aplanko"
 
 msgid "Sent Folder"
-msgstr "Išsiųstų laiškų aplankas"
+msgstr "Išsiųstų žinučių aplankas"
 
 msgid "Do not use Drafts"
 msgstr "Nenaudoti juodraščių aplanko"
@@ -1501,7 +1501,7 @@ msgid "No Notification"
 msgstr "Jokių perspėjimų"
 
 msgid "Only INBOX"
-msgstr "Tik gautų laiškų aplanke"
+msgstr "Tik gautų žinučių aplanke"
 
 msgid "Unread Message Notification Type"
 msgstr "Perspėjimų apie naujas žinutes tipas"
@@ -1780,7 +1780,7 @@ msgid "By default, move to trash"
 msgstr "Standartinis šiukšlyno aplankas"
 
 msgid "By default, move to sent"
-msgstr "Standartinis išsiųstų laiškų aplankas"
+msgstr "Standartinis išsiųstų žinučių aplankas"
 
 msgid "By default, save as draft"
 msgstr "Standartinis juodraščių aplankas"
@@ -1801,10 +1801,10 @@ msgid "Show 'Contain Sub.' Option"
 msgstr "Rodyti 'Yra Sub.' opciją"
 
 msgid "Default Unseen Notify"
-msgstr "Standartinis naujų laiškų pranešimas"
+msgstr "Standartinis naujų žinučių pranešimas"
 
 msgid "Default Unseen Type"
-msgstr "Standartinis naujų laiškų tipas"
+msgstr "Standartinis naujų žinučių tipas"
 
 msgid "Auto Create Special Folders"
 msgstr "Sukurti specialius aplankus automatiškai"
@@ -2269,7 +2269,7 @@ msgstr "Turi:"
 
 #, c-format
 msgid "If %s contains %s then move to %s"
-msgstr "Jei %s turi %s, tada perkelti laišką į %s"
+msgstr "Jei %s turi %s, tada perkelti žinutę į %s"
 
 msgid "Message Filters"
 msgstr "Žinučių filtrai"
@@ -2306,7 +2306,7 @@ msgid "Unread messages only"
 msgstr "Tik naujas žinutes"
 
 msgid "The more messages scanned, the longer it takes. It's recommended to scan unread messages only. If a change to the filters is made, it's recommended to set it to scan all messages, then go view the INBOX, then come back and set it to scan unread messages only. That way, the new spam filters will be applied and even the spam you didn't catch with the old filters will be scanned."
-msgstr "Kuo daugiau žinučių skanuojate, tuo ilgiau tai užtrunka. Rekomenduotina skanuoti tik naujas žinutes. Jei padarėte kokius nors pakitimus filtruose - laikinai nustatykite visų žinučių skanavimą, apsilankykite gautų laiškų aplanke ir vėl grąžinkite tik naujų žinučių skanavimą. Taip Jūsų nauji spamo filtrai bus pritaikyti seniesiems laiškams."
+msgstr "Kuo daugiau žinučių skanuojate, tuo ilgiau tai užtrunka. Rekomenduotina skanuoti tik naujas žinutes. Jei padarėte kokius nors pakitimus filtruose - laikinai nustatykite visų žinučių skanavimą, apsilankykite gautų žinučių aplanke ir vėl grąžinkite tik naujų žinučių skanavimą. Taip Jūsų nauji spamo filtrai bus pritaikyti senosioms žinutėms."
 
 #, c-format
 msgid "Spam is sent to %s."
@@ -2558,7 +2558,7 @@ msgid "You should be aware that the encryption used to store your password is no
 msgstr "Jūs turite suprasti, kad kodavimas, kuriuo saugomas jūsų slaptažodis nėra visiškai saugus. Tačiau jei Jūs naudojate paprastą POP tipo paštą, jame taipogi nėra jokio kodavimo ir Jūsų neužkoduotas slaptažodis jau daug kartų lankėsi :) tinkle. Be to čia naudojamas kodavimas gali būti atkoduotas kiekvieno įsilaužėlio, kuris mokės skaityti slaptažodį užkodavusios programos tekstus."
 
 msgid "If you leave password empty, it will be required when you fetch mail."
-msgstr "Jei nenurodysite slaptažodžio, jo Jūsų paklaus, kai bandysite atsisiųsti laiškus."
+msgstr "Jei nenurodysite slaptažodžio, jo Jūsų paklaus, kai bandysite atsisiųsti žinutes."
 
 msgid "Encrypt passwords (informative only)"
 msgstr "Užkoduoti slaptažodžius (tik informacijai)"
@@ -2672,10 +2672,10 @@ msgstr "Perspėjimai apie naujas žinutes"
 
 #, c-format
 msgid "The %s option will check ALL of your folders for unseen mail, not just the inbox for notification."
-msgstr "Nustatymas \"%s\" leidžia tikrinti, ar naujos žinutės pasirodo ne tik Gautų laiškų aplanke, bet ir kituose aplankuose."
+msgstr "Nustatymas \"%s\" leidžia tikrinti, ar naujos žinutės pasirodo ne tik Gautų žinučių aplanke, bet ir kituose aplankuose."
 
 msgid "Check all boxes, not just INBOX"
-msgstr "Tikrinti visus aplankus, ne tik gautus laiškus"
+msgstr "Tikrinti visus aplankus, ne tik gautas žinutes"
 
 #, c-format
 msgid "Selecting the %s option will enable the showing of a popup window when unseen mail is in your folders (requires JavaScript)."
@@ -2871,7 +2871,7 @@ msgid "SpamCop - Spam Reporting"
 msgstr "SpamCop - spamo registras"
 
 msgid "Help fight the battle against unsolicited email. SpamCop reads the spam email and determines the correct addresses to send complaints to. Quite fast, really smart, and easy to use."
-msgstr "Padėkite kovoti prieš nepriimtinus masinius laiškus. SpamCop priedas įvertina nepriimtinos žinutės antraštes ir nustato adresus, kuriems reiktų skųstis. Tai yra gana greitas, protingas ir lengvai naudojamas įrankis."
+msgstr "Padėkite kovoti prieš nepriimtinas masines žinutes. SpamCop priedas įvertina nepriimtinos žinutės antraštes ir nustato adresus, kuriems reiktų skųstis. Tai yra gana greitas, protingas ir lengvai naudojamas įrankis."
 
 msgid "Sending this spam report will give you back a reply with URLs that you can click on to properly report this spam message to the proper authorities. This is a free service. By pressing the \"Send Spam Report\" button, you agree to follow SpamCop's rules/terms of service/etc."
 msgstr "Nusiuntę pranešimą apie spamą, Jūs sulauksite atsakymo su adresu, kuriuo Jūs galite tvarkingai informuoti apie gautą spamą atsakingus asmenis. Tai yra nemokama tarnyba. Siųsdami pranešimus apie spamą, Jūs turite laikytis SpamCop nustatytų naudojimosi taisyklių."
@@ -3230,7 +3230,7 @@ msgid "Translation Options"
 msgstr "Vertimo nustatymai"
 
 msgid "Which translator should be used when you get messages in a different language?"
-msgstr "Kurį vertėją naudoti gavus laiškus kita kalba?"
+msgstr "Kurį vertėją naudoti gavus žinutes kita kalba?"
 
 #, c-format
 msgid "%s to %s"
