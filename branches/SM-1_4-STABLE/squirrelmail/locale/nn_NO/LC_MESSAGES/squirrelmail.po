@@ -1,28 +1,798 @@
+# translation of squirrelmail.new.po to Nynorsk
 # Norwegian Nynorsk Squirrelmail Translation
 # Copyright (c) 1999-2002 The Squirrelmail Development Team
 # Magni Onsøien <magnio-squirrel@initio.no>, 2000.
 # Ola Ketil Siqveland <ola.k.siqveland@tn.his.no>, 2002.
+# Ola Ketil Siqveland <olaketil@hotmail.com>, 2003
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: $Id$\n"
-"POT-Creation-Date: 2003-01-01 18:33+0100\n"
-"PO-Revision-Date: 2003-01-02 14:59+0100\n"
-"Last-Translator: Ola Ketil Siqveland <ola.k.siqveland@tn.his.no>\n"
-"Language-Team: Norwegian nynorsk\n"
+"Project-Id-Version: squirrelmail.new\n"
+"philippe_mingo Exp $\n"
+"POT-Creation-Date: 2003-07-06 14:37+0300\n"
+"PO-Revision-Date: 2003-09-18 07:57+0200\n"
+"Last-Translator: Ola Ketil Siqveland <olaketil@hotmail.com>\n"
+"Language-Team: Nynorsk <nn@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=ISO-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 0.9.6\n"
+"X-Generator: KBabel 1.0.1\n"
 
-msgid "Delivery error report"
-msgstr "Lever feilrapport "
+msgid "Address Book"
+msgstr "Adressebok"
 
-msgid "Undelivered Message Headers"
-msgstr "Meldigshovud frå medlingar som ikkje vart levert"
+msgid "All"
+msgstr "All"
 
-msgid "(no subject)"
-msgstr "(utan emne)"
+msgid "Name"
+msgstr "Namn"
+
+msgid "E-mail"
+msgstr "E-postadresse"
+
+msgid "Info"
+msgstr "Informasjon"
+
+msgid "Source"
+msgstr "Kjelde"
+
+msgid "To"
+msgstr "Til"
+
+msgid "Cc"
+msgstr "Kopi til"
+
+msgid "Bcc"
+msgstr "Blind Kopi til"
+
+msgid "Use Addresses"
+msgstr "Bruk adresser"
+
+msgid "Address Book Search"
+msgstr "Søk i adressebok"
+
+msgid "Search for"
+msgstr "Søk etter"
+
+msgid "in"
+msgstr "i"
+
+msgid "All address books"
+msgstr "Alle adressebøker"
+
+msgid "Search"
+msgstr "Søk"
+
+msgid "List all"
+msgstr "List alle"
+
+#, c-format
+msgid "Unable to list addresses from %s"
+msgstr "Klarte ikkje å liste adresser frå %s"
+
+msgid "Your search failed with the following error(s)"
+msgstr "Søket ditt feila med fylgjande feilmelding(ar)"
+
+msgid "No persons matching your search was found"
+msgstr "Ingen personar som samsvarer med søket ditt vart funne"
+
+msgid "Return"
+msgstr "Tilbake"
+
+msgid "Close"
+msgstr "Lukk"
+
+msgid "Nickname"
+msgstr "Kortnamn"
+
+msgid "Must be unique"
+msgstr "Må vere unikt"
+
+msgid "E-mail address"
+msgstr "E-postadresse"
+
+msgid "Last name"
+msgstr "Etternamn"
+
+msgid "First name"
+msgstr "Fornamn"
+
+msgid "Additional info"
+msgstr "Tilleggsinformasjon"
+
+msgid "No personal address book is defined. Contact administrator."
+msgstr "Inga personleg adressebok er definert. Ta kontakt med administrator."
+
+msgid "You can only edit one address at the time"
+msgstr "Du kan berre editere ei adresse om gongen."
+
+msgid "Update address"
+msgstr "Oppdater adresse"
+
+msgid "ERROR"
+msgstr "FEIL"
+
+msgid "Unknown error"
+msgstr "Ukjend feil"
+
+msgid "Add address"
+msgstr "Legg til adresse"
+
+msgid "Edit selected"
+msgstr "Endre valde"
+
+msgid "Delete selected"
+msgstr "Slett valde"
+
+#, c-format
+msgid "Add to %s"
+msgstr "Legg til %s"
+
+msgid "said"
+msgstr "sa"
+
+msgid "quote"
+msgstr "sitat"
+
+msgid "who"
+msgstr "kven"
+
+msgid "Subject"
+msgstr "Emne"
+
+msgid "From"
+msgstr "Frå"
+
+msgid "Date"
+msgstr "Dato"
+
+msgid "Original Message"
+msgstr "Opphavleg melding"
+
+msgid "Draft Email Saved"
+msgstr "E-post kladd lagra"
+
+msgid "Could not move/copy file. File not attached"
+msgstr "Kunne ikkje flytte/kopiere fila. Fila er ikkje lagt ved"
+
+msgid "Draft Saved"
+msgstr "Kladd lagra"
+
+msgid "Your Message has been sent"
+msgstr "Meldinga er sent"
+
+msgid "From:"
+msgstr "Frå:"
+
+msgid "To:"
+msgstr "Til:"
+
+msgid "CC:"
+msgstr "Kopi til:"
+
+msgid "BCC:"
+msgstr "Blindkopi til:"
+
+msgid "Subject:"
+msgstr "Emne:"
+
+msgid "Send"
+msgstr "Send"
+
+msgid "Attach:"
+msgstr "Legg ved:"
+
+msgid "Add"
+msgstr "Legg til:"
+
+msgid "Delete selected attachments"
+msgstr "Slett valde vedlegg"
+
+msgid "Priority"
+msgstr "Prioritet"
+
+msgid "High"
+msgstr "Høg"
+
+msgid "Normal"
+msgstr "Normal"
+
+msgid "Low"
+msgstr "Låg"
+
+msgid "Receipt"
+msgstr "Kvittering:"
+
+msgid "On Read"
+msgstr "Ved lest"
+
+msgid "On Delivery"
+msgstr "Ved levering"
+
+msgid "Signature"
+msgstr "Signatur"
+
+msgid "Addresses"
+msgstr "Adresser"
+
+msgid "Save Draft"
+msgstr "Lagre kladd"
+
+msgid "You have not filled in the \"To:\" field."
+msgstr "Du har ikkje fylt ut \"Til:\"-feltet"
+
+msgid "Draft folder"
+msgstr "Mappe til kladd"
+
+msgid "Server replied: "
+msgstr "Serveren svarte:"
+
+msgid "Illegal folder name.  Please select a different name."
+msgstr "Ulovleg mappenamn. Ver venleg og velj eit anna namn."
+
+msgid "Click here to go back"
+msgstr "Klikk her for å gå tilbake"
+
+msgid "You have not selected a folder to delete. Please do so."
+msgstr "Vel mappe som skal slettast."
+
+msgid "Delete Folder"
+msgstr "Slett mappe"
+
+#, c-format
+msgid "Are you sure you want to delete %s?"
+msgstr "Vil du verkeleg sletta %s?"
+
+msgid "Yes"
+msgstr "Ja"
+
+msgid "No"
+msgstr "Nei"
+
+msgid "Folders"
+msgstr "Mapper"
+
+msgid "Subscribed successfully!"
+msgstr "La til mappa til lista over aktive mapper."
+
+msgid "Unsubscribed successfully!"
+msgstr "Fjerna mappa frå lista over aktive mapper."
+
+msgid "Deleted folder successfully!"
+msgstr "Mappa er sletta."
+
+msgid "Created folder successfully!"
+msgstr "Mappa er oppretta."
+
+msgid "Renamed successfully!"
+msgstr "Mappa er omnamna."
+
+msgid "Subscription Unsuccessful - Folder does not exist."
+msgstr "Abonnement feila - Mappa eksisterer ikkje."
+
+msgid "refresh folder list"
+msgstr "oppdater mappeliste"
+
+msgid "Create Folder"
+msgstr "Lag mappe"
+
+msgid "as a subfolder of"
+msgstr "som undermappe til"
+
+msgid "None"
+msgstr "Inga"
+
+msgid "Let this folder contain subfolders"
+msgstr "La denne mappa innehalde undermapper"
+
+msgid "Create"
+msgstr "Lag mappe"
+
+msgid "Rename a Folder"
+msgstr "Bytt namn på mappa"
+
+msgid "Select a folder"
+msgstr "Vel ei mappe"
+
+msgid "Rename"
+msgstr "Bytt namn"
+
+msgid "No folders found"
+msgstr "Fann ingen mapper"
+
+msgid "Delete"
+msgstr "Slett"
+
+msgid "Unsubscribe"
+msgstr "Fjern"
+
+msgid "Subscribe"
+msgstr "Legg til"
+
+msgid "No folders were found to unsubscribe from!"
+msgstr "Fann ingen mapper å fjerne!"
+
+msgid "No folders were found to subscribe to!"
+msgstr "Fann ingen mappe å legge til!"
+
+msgid "Subscribe to:"
+msgstr "Abonner:"
+
+msgid "You have not selected a folder to rename. Please do so."
+msgstr "Vel mappe som skal endra namn."
+
+msgid "Rename a folder"
+msgstr "Bytt namn på ei mappe"
+
+msgid "New name:"
+msgstr "Nytt namn:"
+
+msgid "Submit"
+msgstr "OK"
+
+msgid "ERROR: Help files are not in the right format!"
+msgstr "FEIL: Hjelpefilene er ikkje på rett format!"
+
+msgid "Help"
+msgstr "Hjelp"
+
+#, c-format
+msgid ""
+"The help has not been translated to %s.  It will be displayed in English "
+"instead."
+msgstr "Hjelpa er enno ikkje omsett til %s. Den vil difor bli vist på engelsk."
+
+msgid "Some or all of the help documents are not present!"
+msgstr "Nokre eller alle hjelpefilene mangler."
+
+msgid "Table of Contents"
+msgstr "Innhaldsliste"
+
+msgid "Previous"
+msgstr "Forrige"
+
+msgid "Next"
+msgstr "Neste"
+
+msgid "Top"
+msgstr "Topp"
+
+msgid "Viewing an image attachment"
+msgstr "Viser eit biletvedlegg"
+
+msgid "View message"
+msgstr "Vis melding"
+
+msgid "Download this as a file"
+msgstr "Last ned dette som ei fil"
+
+msgid "INBOX"
+msgstr "Innboks"
+
+msgid "purge"
+msgstr "tøm"
+
+msgid "Last Refresh"
+msgstr "Sist oppfriska"
+
+msgid "Save folder tree"
+msgstr "Lagre mappetre"
+
+msgid "Login"
+msgstr "Logg inn"
+
+#, c-format
+msgid "%s Logo"
+msgstr "%s Logo"
+
+#, c-format
+msgid "SquirrelMail version %s"
+msgstr "SquirrelMail versjon %s"
+
+msgid "By the SquirrelMail Development Team"
+msgstr "Av SquirrelMail-utviklingsgruppa"
+
+#, c-format
+msgid "%s Login"
+msgstr "%s innlogging"
+
+msgid "Name:"
+msgstr "Namn:"
+
+msgid "Password:"
+msgstr "Passord:"
+
+msgid "No messages were selected."
+msgstr "Ingen valde meldingar."
+
+msgid "Options"
+msgstr "Alternativ"
+
+msgid "Message Highlighting"
+msgstr "Utheving av meldingar"
+
+msgid "New"
+msgstr "Ny"
+
+msgid "Done"
+msgstr "Ferdig"
+
+msgid "To or Cc"
+msgstr "Til eller Kopi til"
+
+msgid "subject"
+msgstr "Emne"
+
+msgid "Edit"
+msgstr "Editer"
+
+msgid "Up"
+msgstr "Opp"
+
+msgid "Down"
+msgstr "Ned"
+
+msgid "No highlighting is defined"
+msgstr "Inga utheving er definert"
+
+msgid "Identifying name"
+msgstr "Identifisernamn"
+
+msgid "Color"
+msgstr "Farge"
+
+msgid "Dark Blue"
+msgstr "Mørk blå"
+
+msgid "Dark Green"
+msgstr "Mørk grøn"
+
+msgid "Dark Yellow"
+msgstr "Mørk gul"
+
+msgid "Dark Cyan"
+msgstr "Mørk cyan"
+
+msgid "Dark Magenta"
+msgstr "Mørk lilla"
+
+msgid "Light Blue"
+msgstr "Lys blå"
+
+msgid "Light Green"
+msgstr "Lys grøn"
+
+msgid "Light Yellow"
+msgstr "Lys gul"
+
+msgid "Light Cyan"
+msgstr "Lys cyan"
+
+msgid "Light Magenta"
+msgstr "Lys magenta"
+
+msgid "Dark Gray"
+msgstr "Lys grå"
+
+msgid "Medium Gray"
+msgstr "Medium grå"
+
+msgid "Light Gray"
+msgstr "Lys grå"
+
+msgid "White"
+msgstr "Kvit"
+
+msgid "Other:"
+msgstr "Annan:"
+
+msgid "Ex: 63aa7f"
+msgstr "Døme: 63aa7f"
+
+msgid "Matches"
+msgstr "Treff"
+
+#, c-format
+msgid "Alternate Identity %d"
+msgstr "Alternativ identitet %d"
+
+msgid "Advanced Identities"
+msgstr "Avanserte identitetar"
+
+msgid "Default Identity"
+msgstr "Standard identitet"
+
+msgid "Add a New Identity"
+msgstr "Legg til ny identitet"
+
+msgid "Full Name"
+msgstr "Fullt namn"
+
+msgid "E-Mail Address"
+msgstr "E-postadresse"
+
+msgid "Reply To"
+msgstr "Svar-til-adresse"
+
+msgid "Save / Update"
+msgstr "Lagre / oppdater"
+
+msgid "Make Default"
+msgstr "Gjer til standard"
+
+msgid "Move Up"
+msgstr "Flytt opp"
+
+msgid "Index Order"
+msgstr "Indeksrekkjefølgje"
+
+msgid "Checkbox"
+msgstr "Avkryssingsboks"
+
+msgid "Flags"
+msgstr "Flagg"
+
+msgid "Size"
+msgstr "Storleik"
+
+msgid ""
+"The index order is the order that the columns are arranged in the message "
+"index.  You can add, remove, and move columns around to customize them to "
+"fit your needs."
+msgstr ""
+"Indeksrekkjefølgjen følgjer arrangeringa av kolonnene. Ein kan leggja til, "
+"sletta og flytta rundt kolonnene etter eige ønskje."
+
+msgid "up"
+msgstr "opp"
+
+msgid "down"
+msgstr "ned"
+
+msgid "remove"
+msgstr "fjern"
+
+msgid "Return to options page"
+msgstr "Tilbake til alternativ val"
+
+msgid "Personal Information"
+msgstr "Personleg informasjon"
+
+msgid "Display Preferences"
+msgstr "Framsyningsval"
+
+msgid "Folder Preferences"
+msgstr "Val for mapper"
+
+msgid "Successfully Saved Options"
+msgstr "Vellukka lagra vala"
+
+msgid "Refresh Folder List"
+msgstr "Oppdater mappelista"
+
+msgid "Refresh Page"
+msgstr "Last sida på nytt"
+
+msgid ""
+"This contains personal information about yourself such as your name, your "
+"email address, etc."
+msgstr ""
+"Dette inneheld personleg informasjon om deg sjølv, slik som namn, e-"
+"postadresse og liknande."
+
+msgid ""
+"You can change the way that SquirrelMail looks and displays information to "
+"you, such as the colors, the language, and other settings."
+msgstr ""
+"Du kan endre måten SquirrelMail ser ut og viser informasjon på, slik som "
+"fargar, språk og andre val."
+
+msgid ""
+"Based upon given criteria, incoming messages can have different background "
+"colors in the message list.  This helps to easily distinguish who the "
+"messages are from, especially for mailing lists."
+msgstr ""
+"Basert på gjevne kriterium kan innkomande meldingar ha ulik bakgrunnsfagre i "
+"meldingslista. Dette er til hjelp for å sjå kven meldinga er frå, særleg i "
+"samband med mailinglister."
+
+msgid "These settings change the way your folders are displayed and manipulated."
+msgstr "Dette er val for korleis mapper vert viste og kan endrast."
+
+msgid ""
+"The order of the message index can be rearranged and changed to contain the "
+"headers in any order you want."
+msgstr ""
+"Her kan ein endra på rekkjefølgjen på elementa i meldingsvindauga.til å "
+"innehalda dei elementa ein sjølv vil."
+
+msgid "Message not printable"
+msgstr "Ikkje skrivbar melding"
+
+msgid "Printer Friendly"
+msgstr "Utskriftbar"
+
+msgid "CC"
+msgstr "Kopi til:"
+
+msgid "Print"
+msgstr "Skriv ut"
+
+msgid "View Printable Version"
+msgstr "Vis utskriftbar versjon"
+
+msgid "Read:"
+msgstr "Les"
+
+msgid "Your message"
+msgstr "Meldingar"
+
+msgid "Sent:"
+msgstr "Send"
+
+#, c-format
+msgid "Was displayed on %s"
+msgstr "Vist på %s"
+
+msgid "less"
+msgstr "mindre"
+
+msgid "more"
+msgstr "meir"
+
+msgid "Unknown sender"
+msgstr "Ukjend avsendar"
+
+msgid "Mailer"
+msgstr "Postar"
+
+msgid "Read receipt"
+msgstr "Les kvittering"
+
+msgid "send"
+msgstr "send"
+
+msgid "requested"
+msgstr "ønska"
+
+msgid ""
+"The message sender has requested a response to indicate that you have read "
+"this message. Would you like to send a receipt?"
+msgstr ""
+"Avsendar ønsker ei tilbakemelding på at du har lest meldinga. Ønsker du å "
+"senda ei kvittering?"
+
+msgid "Send read receipt now"
+msgstr "Send kvittering på lest"
+
+msgid "Search results"
+msgstr "Søkjeresultat"
+
+msgid "Message List"
+msgstr "Meldingsliste"
+
+msgid "Resume Draft"
+msgstr "Fortsett med kladd"
+
+msgid "Edit Message as New"
+msgstr "Rediger melding som om den var ny"
+
+msgid "View Message"
+msgstr "Vis melding"
+
+msgid "Forward"
+msgstr "Vidaresend"
+
+msgid "Forward as Attachment"
+msgstr "Vidaresend som vedlegg"
+
+msgid "Reply"
+msgstr "Svar"
+
+msgid "Reply All"
+msgstr "Svar til alle"
+
+msgid "View Full Header"
+msgstr "Vis fulle meldingshovud"
+
+msgid "Attachments"
+msgstr "Vedlegg"
+
+msgid "You must be logged in to access this page."
+msgstr "Du må ha eit gyldig brukarnamn og passord for å få tilgang til denne sida!"
+
+msgid "Folder:"
+msgstr "Mapper"
+
+msgid "edit"
+msgstr "editer"
+
+msgid "search"
+msgstr "Søk"
+
+msgid "delete"
+msgstr "slett"
+
+msgid "Recent Searches"
+msgstr "Nyleg søkte"
+
+msgid "save"
+msgstr "lagra"
+
+msgid "forget"
+msgstr "Forkast"
+
+msgid "Current Search"
+msgstr "Dette søket"
+
+msgid "All Folders"
+msgstr "Alle mapper"
+
+msgid "Body"
+msgstr "Meldingskropp"
+
+msgid "Everywhere"
+msgstr "Overalt"
+
+msgid "Search Results"
+msgstr "Søkjeresultat"
+
+msgid "No Messages Found"
+msgstr "Fann inga melding"
+
+msgid "Sign Out"
+msgstr "Logg ut"
+
+msgid "You have been successfully signed out."
+msgstr "Du er no logga ut"
+
+msgid "Click here to log back in."
+msgstr "Klikk her for å prøve på nytt."
+
+msgid "Viewing a Business Card"
+msgstr "Viser visittkort"
+
+msgid "Title"
+msgstr "Tittel"
+
+msgid "Email"
+msgstr "E-post"
+
+msgid "Web Page"
+msgstr "Nettstad"
+
+msgid "Organization / Department"
+msgstr "Organisasjon / Avdeling"
+
+msgid "Address"
+msgstr "Adresse"
+
+msgid "Work Phone"
+msgstr "Telefon arbeid"
+
+msgid "Home Phone"
+msgstr "Heimetelefon"
+
+msgid "Cellular Phone"
+msgstr "Mobil"
+
+msgid "Fax"
+msgstr "Faks"
+
+msgid "Note"
+msgstr "Notat"
+
+msgid "Add to Addressbook"
+msgstr "Legg til adresse"
+
+msgid "Title & Org. / Dept."
+msgstr "Tittel & Org. / Avd."
+
+msgid "Viewing Full Header"
+msgstr "Viser fulle meldingshovud"
+
+msgid "Viewing a text attachment"
+msgstr "Viser eit tekstvedlegg"
 
 msgid "Personal address book"
 msgstr "Personleg adressebok"
@@ -77,7 +847,8 @@ msgid "Error opening file %s"
 msgstr "Feila ved opning av %s"
 
 msgid "Error initializing global addressbook."
-msgstr "Feil ved initialiseringa av global adressebok"
+msgstr 
+"Feil ved initialiseringa av global adressebok"
 
 #, c-format
 msgid "Error initializing LDAP server %s:"
@@ -101,10 +872,6 @@ msgstr "vis"
 msgid "Business Card"
 msgstr "Visitkort"
 
-msgid "You must be logged in to access this page."
-msgstr ""
-"Du må ha eit gyldig brukarnamn og passord for å få tilgang til denne sida!"
-
 msgid "Sunday"
 msgstr "Sundag"
 
@@ -124,6 +891,27 @@ msgid "Friday"
 msgstr "Fredag"
 
 msgid "Saturday"
+msgstr "Laurdag"
+
+msgid "Sun"
+msgstr "Sundag"
+
+msgid "Mon"
+msgstr "Måndag"
+
+msgid "Tue"
+msgstr "Tysdag"
+
+msgid "Wed"
+msgstr "Onsdag"
+
+msgid "Thu"
+msgstr "Torsdag"
+
+msgid "Fri"
+msgstr "Fredag"
+
+msgid "Sat"
 msgstr "Laurdag"
 
 msgid "January"
@@ -162,6 +950,42 @@ msgstr "November"
 msgid "December"
 msgstr "Desember"
 
+msgid "Jan"
+msgstr "Jan"
+
+msgid "Feb"
+msgstr "Feb"
+
+msgid "Mar"
+msgstr "Mar"
+
+msgid "Apr"
+msgstr "Apr"
+
+msgid "Ma&#121;"
+msgstr "Mai"
+
+msgid "Jun"
+msgstr "Jun"
+
+msgid "Jul"
+msgstr "Jul"
+
+msgid "Aug"
+msgstr "Aug"
+
+msgid "Sep"
+msgstr "Sep"
+
+msgid "Oct"
+msgstr "Okt"
+
+msgid "Nov"
+msgstr "Nov"
+
+msgid "Dec"
+msgstr "Des"
+
 msgid "D, F j, Y g:i a"
 msgstr "D, F j, Y g:i a"
 
@@ -197,20 +1021,6 @@ msgstr "Klikk her for å prøve på nytt"
 msgid "Click here to return to %s"
 msgstr "Klikk her for å gå tilbake til %s"
 
-#, c-format
-msgid "%s Logo"
-msgstr "%s Logo"
-
-#, c-format
-msgid "SquirrelMail version %s"
-msgstr "SquirrelMail versjon %s"
-
-msgid "By the SquirrelMail Development Team"
-msgstr "Av SquirrelMail-utviklingsgruppa"
-
-msgid "ERROR"
-msgstr "FEIL"
-
 msgid "Go to the login page"
 msgstr "Til innloggingssida"
 
@@ -237,6 +1047,14 @@ msgid ""
 msgstr ""
 "Innstillingsfila %s kunne ikkje skrivast. Ta kontakt med systemadministrator "
 "for hjelp"
+
+#, c-format
+msgid ""
+"Preference file, %s, could not be copied from temporary file, %s. Contact "
+"your system administrator to resolve this issue."
+msgstr ""
+"Innstillingsfila %s kunne ikkje kopierast frå midlertidig fil %s. "
+"Ta kontakt med systemadministrator for hjelp"
 
 #, c-format
 msgid "Error opening %s"
@@ -271,21 +1089,32 @@ msgstr ""
 "Signatur fila %s kan ikkje skrivast. Kontakt systemadministartor for å løysa "
 "problemet"
 
+#, c-format
+msgid ""
+"Signature file, %s, could not be copied from temporary file, %s. Contact "
+"your system administrator to resolve this issue."
+msgstr ""
+"Signatur fila %s kan ikkje kopierast frå midlertidig fil, %s. "
+"Kontakt systemadministartor for å løysa dette problemet"
+
 msgid ""
 "You need to have php4 installed with the multibyte string function enabled "
-"(using configure option --with-mbstring)."
+"(using configure option --enable-mbstring)."
 msgstr ""
 "Ein treng php4 installert med \"multibyte string function\" slått på (bruk "
-"konfigurasjonsvalet --with-mbstring)."
+"konfigurasjonsvalet --enable-mbstring)."
 
 msgid "ERROR : No available imapstream."
 msgstr "FEIL: inga tilgjengeleg imapstraum."
 
-msgid "ERROR : Could not complete request."
-msgstr "FEIL: Kunne ikkje fullføre førespurnaden."
+msgid "ERROR : Connection dropped by imap-server."
+msgstr "FEIL : Samband avbrutt av imap tenar"
 
 msgid "Query:"
 msgstr "Spørjing:"
+
+msgid "ERROR : Could not complete request."
+msgstr "FEIL: Kunne ikkje fullføre førespurnaden."
 
 msgid "Reason Given: "
 msgstr "Oppgjeven grunn: "
@@ -295,6 +1124,12 @@ msgstr "FEIL: Feil eller misforma førespurnad."
 
 msgid "Server responded: "
 msgstr "Serveren svarte: "
+
+msgid "ERROR : Imap server closed the connection."
+msgstr "FEIL : Imap tenar lukka sambandet"
+
+msgid "ERROR : Unknown imap response."
+msgstr "FEIL : Ukjent imap svar."
 
 #, c-format
 msgid "Error connecting to IMAP server: %s."
@@ -322,20 +1157,25 @@ msgid ""
 "folder."
 msgstr "Fjern uønska meldingar og start med søppelbøtta."
 
-msgid "INBOX"
-msgstr "Innboks"
-
-msgid "Unknown response from IMAP server: "
-msgstr "Ukjent respons frå IMAP tjenaren"
-
-msgid "Unknown message number in reply from server: "
-msgstr "Tjerer svara med eit ukjent meldingsnummer"
+msgid "(no subject)"
+msgstr "(utan emne)"
 
 msgid "Unknown Sender"
 msgstr "Ukjend avsendar"
 
-msgid "(unknown sender)"
-msgstr "(ukjend avsendar)"
+msgid "Unknown response from IMAP server: "
+msgstr "Ukjent respons frå IMAP tjenaren"
+
+msgid "The server couldn't find the message you requested."
+msgstr "Tenaren fant ikkje meldinga du ønska"
+
+msgid ""
+"Most probably your message list was out of date and the message has been "
+"moved away or deleted (perhaps by another program accessing the same "
+"mailbox)."
+msgstr ""
+"Truleg er lista med meldingar gamal og meldinga er flytta eller sletta (kanskje av "
+"eit anna anna program med tilgang til same postboks)."
 
 msgid "Unknown date"
 msgstr "Ukjend dato"
@@ -369,9 +1209,6 @@ msgstr "Omdann merka melding"
 msgid "Move"
 msgstr "Flytt"
 
-msgid "Forward"
-msgstr "Vidaresend"
-
 msgid "Expunge"
 msgstr "Tøm"
 
@@ -384,29 +1221,11 @@ msgstr "Les"
 msgid "Unread"
 msgstr "Ulesen"
 
-msgid "Delete"
-msgstr "Slett"
-
 msgid "Unthread View"
 msgstr "Vis trådlaus"
 
 msgid "Thread View"
 msgstr "Tråd vising "
-
-msgid "To"
-msgstr "Til"
-
-msgid "From"
-msgstr "Frå"
-
-msgid "Date"
-msgstr "Dato"
-
-msgid "Subject"
-msgstr "Emne"
-
-msgid "Size"
-msgstr "Storleik"
 
 msgid "Toggle All"
 msgstr "Slå av/på alt"
@@ -425,12 +1244,6 @@ msgstr "Viser melding <B>%s</B> til <B>%s</B> (av totalt %s)"
 msgid "Viewing Message: <B>%s</B> (1 total)"
 msgstr "Viser melding <B>%s</B> (1 totalt)"
 
-msgid "Previous"
-msgstr "Forrige"
-
-msgid "Next"
-msgstr "Neste"
-
 msgid "Paginate"
 msgstr "Sideinndeling"
 
@@ -446,8 +1259,7 @@ msgstr "format på meldinga gitt av imap tjenaren"
 msgid ""
 "Body retrieval error. The reason for this is most probably that the message "
 "is malformed."
-msgstr ""
-"Feil i mottak av brødtekst. Dette skuldast truleg ei misforma melding. "
+msgstr "Feil i mottak av brødtekst. Dette skuldast truleg ei misforma melding. "
 
 msgid "Command:"
 msgstr "Kommando:"
@@ -461,15 +1273,6 @@ msgstr "Melding:"
 msgid "FETCH line:"
 msgstr "HENT linje"
 
-msgid "High"
-msgstr "Høg"
-
-msgid "Low"
-msgstr "Låg"
-
-msgid "Normal"
-msgstr "Normal"
-
 msgid "Hide Unsafe Images"
 msgstr "Gjøym utryge bilete"
 
@@ -479,9 +1282,6 @@ msgstr "Vis utryge bilete"
 msgid "download"
 msgstr "last ned"
 
-msgid "Unknown sender"
-msgstr "Ukjend avsendar"
-
 msgid "sec_remove_eng.png"
 msgstr "sec_remove_eng.png"
 
@@ -489,38 +1289,11 @@ msgstr "sec_remove_eng.png"
 msgid "Option Type '%s' Not Found"
 msgstr "Valt type '%s' ikkje funnen"
 
-msgid "Yes"
-msgstr "Ja"
-
-msgid "No"
-msgstr "Nei"
-
-msgid "Submit"
-msgstr "OK"
-
 msgid "Current Folder"
 msgstr "Vald mappe"
 
-msgid "Sign Out"
-msgstr "Logg ut"
-
 msgid "Compose"
 msgstr "Ny melding"
-
-msgid "Addresses"
-msgstr "Adresser"
-
-msgid "Folders"
-msgstr "Mapper"
-
-msgid "Options"
-msgstr "Alternativ"
-
-msgid "Search"
-msgstr "Søk"
-
-msgid "Help"
-msgstr "Hjelp"
 
 #, c-format
 msgid "Error creating directory %s."
@@ -528,6 +1301,69 @@ msgstr "Feila ved laging av katalog %s"
 
 msgid "Could not create hashed directory structure!"
 msgstr "Klarte ikkje oppretta nøkkelkatalogstrukturen"
+
+msgid "Service not available, closing channel"
+msgstr "Teneste er ikkje tilgjengeleg, lukker kanalen"
+
+msgid "A password transition is needed"
+msgstr "Treng ein passord overgang"
+
+msgid "Requested mail action not taken: mailbox unavailable"
+msgstr "Ikkje utført ønska epost handling: postboksen ikkje tilgjengeleg"
+
+msgid "Requested action aborted: error in processing"
+msgstr "Avbrytt ønska handling: feil behandlaren"
+
+msgid "Requested action not taken: insufficient system storage"
+msgstr "Ikkje utført ønska handling: manglar lagerplass"
+
+msgid "Temporary authentication failure"
+msgstr "Mellombels misslukka autentifisering."
+
+msgid "Syntax error; command not recognized"
+msgstr "Syntaksfeil ukjend kommando"
+
+msgid "Syntax error in parameters or arguments"
+msgstr "Syntaksfeil feil i parameter eller i argumenta"
+
+msgid "Command not implemented"
+msgstr "Kommando ikkje implementert"
+
+msgid "Bad sequence of commands"
+msgstr "Feil rekkefølge av kommandoar"
+
+msgid "Command parameter not implemented"
+msgstr "Kommando parameter ikkje implementert"
+
+msgid "Authentication required"
+msgstr "Krev autentisering"
+
+msgid "Authentication mechanism is too weak"
+msgstr "Mekanismen for autentisering er for svak"
+
+msgid "Authentication failed"
+msgstr "Autentiseringa mislukkast."
+
+msgid "Encryption required for requested authentication mechanism"
+msgstr "Krev kryptering for ønska autentisering"
+
+msgid "Requested action not taken: mailbox unavailable"
+msgstr "Ønska handling ikkje utført: postboks ikkje tilgjengeleg"
+
+msgid "User not local; please try forwarding"
+msgstr "Ikkje lokal brukar; prøv vidaresending"
+
+msgid "Requested mail action aborted: exceeding storage allocation"
+msgstr "Ønska handling avbrutt: utenfor minnetildelinga"
+
+msgid "Requested action not taken: mailbox name not allowed"
+msgstr "Ønska handling ikkje utført: ikkje tillat postboks namn"
+
+msgid "Transaction failed"
+msgstr "Overføringa mislukkast."
+
+msgid "Unknown response"
+msgstr "Ukjend respons"
 
 msgid "General Display Options"
 msgstr "Generelle visingsval"
@@ -619,9 +1455,6 @@ msgstr "Slå på vising av eposttjenar"
 msgid "Display Attached Images with Message"
 msgstr "Vis vedlagte bliete i meldinga"
 
-msgid "Enable Subtle Printer Friendly Link"
-msgstr "Slå på undertittel Skrivarvenleg lenkje"
-
 msgid "Enable Printer Friendly Clean Display"
 msgstr "Slå på skrivarvenleg rein vising"
 
@@ -709,9 +1542,6 @@ msgstr "Inga varsling"
 msgid "Only INBOX"
 msgstr "Berre INBOX"
 
-msgid "All Folders"
-msgstr "Alle mapper"
-
 msgid "Unread Message Notification Type"
 msgstr "Korleis"
 
@@ -721,7 +1551,7 @@ msgstr "Berre ulesne"
 msgid "Unseen and Total"
 msgstr "Ulesne og totalt tal"
 
-msgid "Enable Collapsable Folders"
+msgid "Enable Collapsible Folders"
 msgstr "Slå på krymping av mapper"
 
 msgid "Enable Cumulative Unread Message Notification"
@@ -766,17 +1596,8 @@ msgstr "Avgrensa:"
 msgid "Name and Address Options"
 msgstr "Namn og adresse val"
 
-msgid "Full Name"
-msgstr "Fullt namn"
-
 msgid "Email Address"
 msgstr "E-postadresse"
-
-msgid "Reply To"
-msgstr "Svar-til-adresse"
-
-msgid "Signature"
-msgstr "Signatur"
 
 msgid "Edit Advanced Identities"
 msgstr "Rediger avanserte identiter"
@@ -789,6 +1610,9 @@ msgstr "Fleire identitetar"
 
 msgid "Same as server"
 msgstr "Det same som tjenaren"
+
+msgid "Error opening timezone config, contact administrator."
+msgstr "Feil ved opning av tidssone oppsettet; kontakt administrator."
 
 msgid "Timezone Options"
 msgstr "Tidssone val"
@@ -829,6 +1653,15 @@ msgstr "Bruk ein signatur"
 msgid "Prefix Signature with '-- ' Line"
 msgstr "Prefiks signaturen med '-- ' linje"
 
+msgid "Take Address"
+msgstr "Adresse"
+
+msgid "Address Book Take:"
+msgstr "Adressebok"
+
+msgid "Try to verify addresses"
+msgstr "Prøver verifiserer adressa"
+
 msgid "Config File Version"
 msgstr "Versjon av konfigurasjonsfil"
 
@@ -858,6 +1691,12 @@ msgstr "Tittel på organisasjon"
 
 msgid "Signout Page"
 msgstr "Logg ut side"
+
+msgid "Provider Link URI"
+msgstr "Tenar Link URI"
+
+msgid "Provider Name"
+msgstr "Tenarnamn:"
 
 msgid "Default Language"
 msgstr "Standard språk"
@@ -901,7 +1740,16 @@ msgstr "IMAP Mappe skilleteikn"
 msgid "Use \"detect\" to auto-detect."
 msgstr "Bruk \"Oppdag\" for oppdag automatisk."
 
-msgid "Use Sendmail"
+msgid "Use TLS for IMAP Connections"
+msgstr "Bruk TLS for IMAP tilkoplingar"
+
+msgid "Requires PHP 4.3.x! Experimental."
+msgstr "Krev PHP 4.3.x! Eksperimentell."
+
+msgid "IMAP Authentication Type"
+msgstr "IMAP autentiseringstype"
+
+msgid "Use Sendmail Binary"
 msgstr "Bruk Sendmail"
 
 msgid "Sendmail Path"
@@ -913,8 +1761,14 @@ msgstr "SMTP tenaradresse"
 msgid "SMTP Server Port"
 msgstr "SMTP tenarport"
 
-msgid "Authenticated SMTP"
-msgstr "Autentifiser SMTP"
+msgid "Use TLS for SMTP Connections"
+msgstr "Bruk TLS for SMTP tilkoplingar"
+
+msgid "SMTP Authentication Type"
+msgstr "SMTP autentiseringstype"
+
+msgid "POP3 Before SMTP?"
+msgstr "POP3 før SMTP?"
 
 msgid "Invert Time"
 msgstr "Omvendt tid"
@@ -970,6 +1824,9 @@ msgstr "Standard JavaScript adressebok"
 msgid "Auto delete folders"
 msgstr "Slett mapper automatisk"
 
+msgid "Enable /NoSelect folder fix"
+msgstr "Vel Ikkje faste mapper"
+
 msgid "General Options"
 msgstr "Generelle val"
 
@@ -1015,6 +1872,21 @@ msgstr "Tillat redigering av identitetar"
 msgid "Allow editing of full name"
 msgstr "Tillat redigering av heile namnet"
 
+msgid "Use server-side sorting"
+msgstr "Bruk sortering på server"
+
+msgid "Use server-side thread sorting"
+msgstr "Bruk server til trådsortering"
+
+msgid "Allow server charset search"
+msgstr "Tillet karater søk på server"
+
+msgid "UID support"
+msgstr "UID støtte"
+
+msgid "PHP session name"
+msgstr "PHP økt namn"
+
 msgid "Message of the Day"
 msgstr "Dagens melding"
 
@@ -1048,6 +1920,12 @@ msgstr "Tema"
 msgid "Style Sheet URL (css)"
 msgstr "Stilark URL (css)"
 
+msgid "Default theme"
+msgstr "Standard tema"
+
+msgid "Use index number of theme"
+msgstr "Bruk indekserte tema"
+
 msgid "Configuration Administrator"
 msgstr "Konfigurasjonsadministrator"
 
@@ -1072,8 +1950,7 @@ msgstr "Administrasjon"
 msgid ""
 "This module allows administrators to manage SquirrelMail main configuration "
 "remotely."
-msgstr ""
-"Dene modulen tillet administrator å konfigurere SquirrelMail over nettet."
+msgstr "Dene modulen tillet administrator å konfigurere SquirrelMail over nettet."
 
 msgid "Bug Reports:"
 msgstr "Feilrapport"
@@ -1156,8 +2033,8 @@ msgstr "0 min"
 msgid "15 min."
 msgstr "15 min"
 
-msgid "35 min."
-msgstr "35 min"
+msgid "30 min."
+msgstr "30 min"
 
 msgid "45 min."
 msgstr "45 min"
@@ -1299,8 +2176,7 @@ msgstr ""
 "formmail.cgi skript (planlagt)."
 
 msgid "FREE - Osirusoft Open Proxy Servers - List of Open Proxy Servers."
-msgstr ""
-"GRATIS - Osirusoft Open Proxy Servers - Liste over opne proxy-tjenarar."
+msgstr "GRATIS - Osirusoft Open Proxy Servers - Liste over opne proxy-tjenarar."
 
 msgid ""
 "FREE - ORDB was born when ORBS went off the air. It seems to have fewer "
@@ -1346,7 +2222,6 @@ msgstr ""
 msgid "FREE - SPAMhaus - A list of well-known SPAM sources."
 msgstr "GRATIS - SPAMhaus - Ei liste over velkjendte søppelkjelder."
 
-#, c-format
 msgid ""
 "FREE, for now - SPAMCOP - An interesting solution that lists servers that "
 "have a very high spam to legit email ratio (85% or more)."
@@ -1366,8 +2241,7 @@ msgid "FREE - 2mbit.com Open Relays - Another list of Open Relays."
 msgstr "GRATIS - 2mbit.com Open Relays - Ennå ei liste over opne tjenarar."
 
 msgid "FREE - 2mbit.com SPAM Source - List of Direct SPAM Sources."
-msgstr ""
-"GRATIS - 2mbit.com SPAM Source - Ei liste over direkte søppelpost-kjelder."
+msgstr "GRATIS - 2mbit.com SPAM Source - Ei liste over direkte søppelpost-kjelder."
 
 msgid "FREE - 2mbit.com SPAM ISPs - List of SPAM-friendly ISPs."
 msgstr ""
@@ -1443,8 +2317,7 @@ msgstr ""
 "vidaresendar"
 
 msgid "FREE - Distributed Sender Boycott List - UN-Confirmed Relays"
-msgstr ""
-"GRATIS - Distribuert avsender boikott liste - Ikkje stadfesta vidaresendar"
+msgstr "GRATIS - Distribuert avsender boikott liste - Ikkje stadfesta vidaresendar"
 
 msgid "Saved Scan type"
 msgstr "Lagre skanningstype"
@@ -1464,35 +2337,14 @@ msgstr "Kun uleste meldingar"
 msgid "Save"
 msgstr "Lagra"
 
-msgid "New"
-msgstr "Ny"
-
-msgid "Done"
-msgstr "Ferdig"
-
 msgid "Match:"
 msgstr "Treff:"
-
-msgid "Cc"
-msgstr "Kopi til"
-
-msgid "To or Cc"
-msgstr "Til eller Kopi til"
 
 msgid "Header"
 msgstr "Topptekst"
 
 msgid "Contains:"
 msgstr "Inneheld:"
-
-msgid "Edit"
-msgstr "Editer"
-
-msgid "Down"
-msgstr "Ned"
-
-msgid "Up"
-msgstr "Opp"
 
 #, c-format
 msgid "If <b>%s</b> contains <b>%s</b> then move to <b>%s</b>"
@@ -1578,6 +2430,30 @@ msgstr "PÅ"
 msgid "OFF"
 msgstr "AV"
 
+msgid " not found."
+msgstr " ikkje funnen"
+
+msgid "Today's Fortune"
+msgstr "Dagens fru Fortuna"
+
+msgid "Fortunes:"
+msgstr "Lykkelodd"
+
+msgid "Show fortunes at top of mailbox"
+msgstr "Vis Lodd på toppen av postboksen"
+
+msgid "IMAP server information"
+msgstr "IMAP tenarinfromasjon"
+
+msgid ""
+"Run some test IMAP commands, displaying both the command and the result. "
+"These tests use the Squirrelmail IMAP commands and your current Squirrelmail "
+"configuration. Custom command strings can be used."
+msgstr ""
+"Test nokre IMAP kommandoar, vis både kommandoen og resultatet. "
+"Testane brukar Squirrelimail sine IMAP kommandoar og ditt nåverande Squirrelmail "
+"oppsett. Kan også bruka eigendefinerte kommandoar."
+
 msgid "Mailinglist"
 msgstr "E-postliste"
 
@@ -1605,9 +2481,6 @@ msgstr ""
 "Dette vil senda ei melding til %s om å sei opp abonnementet på denne lista. "
 "Det er adressa under som vert oppsagt."
 
-msgid "From:"
-msgstr "Frå:"
-
 msgid "Send Mail"
 msgstr "Send e-post"
 
@@ -1616,12 +2489,6 @@ msgstr "Skriv til lista"
 
 msgid "Reply to List"
 msgstr "Svar til liste"
-
-msgid "Subscribe"
-msgstr "Legg til"
-
-msgid "Unsubscribe"
-msgstr "Fjern"
 
 msgid "List Archives"
 msgstr "Liste av arkiver"
@@ -1730,9 +2597,6 @@ msgstr "Hentar e-post frå fjern POP-tenar"
 
 msgid "Select Server:"
 msgstr "Vel tenar"
-
-msgid "All"
-msgstr "All"
 
 msgid "Password for"
 msgstr "Passord for:"
@@ -1852,9 +2716,6 @@ msgstr "Alias:"
 msgid "Username:"
 msgstr "Brukarnamn:"
 
-msgid "Password:"
-msgstr "Passord:"
-
 msgid "Store in Folder:"
 msgstr "Lagra i mappe:"
 
@@ -1894,9 +2755,6 @@ msgstr "Stadfest sletting av valgt tenar"
 msgid "Confirm Delete"
 msgstr "Stadfest sletting"
 
-msgid "Mofify a Server"
-msgstr "Modifiser ein tenar"
-
 msgid "Undefined Function"
 msgstr "Udefinert funksjon"
 
@@ -1921,6 +2779,18 @@ msgid ""
 msgstr ""
 "Her konfigureres innstillinger for å hente e-post fra en pop3 konto til din "
 "konto på denne tenaren."
+
+msgid "Message Details"
+msgstr "Meldingsdetaljar"
+
+msgid "Close Window"
+msgstr "Lukk vindauge"
+
+msgid "Save Message"
+msgstr "Lagre melding"
+
+msgid "View Message details"
+msgstr "Vis meldingsdetaljar"
 
 msgid "New Mail Notification"
 msgstr "Varsling ved ny e-post"
@@ -1972,15 +2842,10 @@ msgstr ""
 
 msgid ""
 "Select from the list of <b>server files</b> the media file to play when new "
-"mail arrives.  Selecting <b>local media</b> will play the file specified in "
-"the <b>local media file</b> box to play from the local computer.  If no file "
-"is specified, the system will use a default from the server."
+"mail arrives.  If no file is specified, \"(none)\", no sound will be used."
 msgstr ""
-"Vel mediefila fra lista <b>tenar filer</b> som skal spelast av når der kjem "
-"ny e-post. Viss du vel ei <b>lokal fil</b>, vil den brukast som er "
-"spesifiseret i boksen <b>lokal mediafil</b>, frå din eigen datamaskin. Viss "
-"det ikkje er spesifisert noko fil, vil systemet bruka ei standardfil fra "
-"tenaren."
+"Vel mediefila fra lista av <b>tenar filer</b> som skal spelast av når der kjem "
+"ny e-post.  Viss det ikkje er spesifisert noko fil, vil det ikkje verta noko lyd."
 
 msgid "Enable Media Playing"
 msgstr "Slå på mediespelaren"
@@ -2003,14 +2868,11 @@ msgstr "Vis oppsprettvindauge ved ny e-post"
 msgid "Select server file:"
 msgstr "Vel tenarfil."
 
-msgid "(local media)"
-msgstr "(lokal media)"
+msgid "(none)"
+msgstr "(Inga)"
 
 msgid "Try"
 msgstr "Forsøk"
-
-msgid "Local Media File:"
-msgstr "Lokal mediefiler:"
 
 msgid "Current File:"
 msgstr "Aktuell fil:"
@@ -2023,9 +2885,6 @@ msgstr "SquirrelMail beskjed:"
 
 msgid "You have new mail!"
 msgstr "Du har ny e-post"
-
-msgid "Close Window"
-msgstr "Lukk vindauge"
 
 msgid "NewMail Options"
 msgstr "Ny e-postval"
@@ -2051,11 +2910,11 @@ msgstr "%s ny melding"
 msgid "Test Sound"
 msgstr "Test lyd"
 
+msgid "No sound specified"
+msgstr "Inga lydfil spesifisert"
+
 msgid "Loading the sound..."
 msgstr "Startar lyden"
-
-msgid "Close"
-msgstr "Lukk"
 
 msgid "Sent Subfolders Options"
 msgstr "Val for sent-mappe"
@@ -2139,8 +2998,7 @@ msgstr "Hald fram"
 msgid "You must make a choice"
 msgstr "Du må ta eit val"
 
-msgid ""
-"You can either delete your dictionary or type in the old password. Not both."
+msgid "You can either delete your dictionary or type in the old password. Not both."
 msgstr ""
 "Du kan enten slette ordboka eller gi inn det gamle passordet. Ikkje begge "
 "deler."
@@ -2154,6 +3012,305 @@ msgstr "Feil under dekryptering av ordbok"
 msgid "Cute."
 msgstr "Søt"
 
+#, c-format
+msgid "I tried to execute '%s', but it returned:"
+msgstr "Eg forsøkte programmet: '%s', men det returnerte:"
+
+msgid "SquirrelSpell is misconfigured."
+msgstr "SquirrelSpell er ikkje konfigurert korrekt"
+
+msgid "SquirrelSpell Results"
+msgstr "SquirrelSpell resultat"
+
+msgid "Spellcheck completed. Commit changes?"
+msgstr "Stavekontroll er fullført. Skal endringane lagrast?"
+
+msgid "No changes were made."
+msgstr "Inga endring vart gjordt"
+
+msgid "Now saving your personal dictionary... Please wait."
+msgstr "Personleg ordbok blir lagra... Vent litt."
+
+#, c-format
+msgid "Found %s errors"
+msgstr "Fant %s feil"
+
+msgid "Line with an error:"
+msgstr "Linje med ein feil"
+
+msgid "Error:"
+msgstr "Feil: "
+
+msgid "Suggestions:"
+msgstr "Forslag"
+
+msgid "Suggestions"
+msgstr "Fleire forslag"
+
+msgid "Change to:"
+msgstr "Endra til:"
+
+msgid "Occurs times:"
+msgstr "Mengde førekomstar"
+
+msgid "Change this word"
+msgstr "Endra dette ordet"
+
+msgid "Change"
+msgstr "Endra"
+
+msgid "Change ALL occurances of this word"
+msgstr "Endra ordet alle plassar"
+
+msgid "Change All"
+msgstr "Endra alt"
+
+msgid "Ignore this word"
+msgstr "Ignorer dette ordet"
+
+msgid "Ignore"
+msgstr "Ignorer"
+
+msgid "Ignore ALL occurances this word"
+msgstr "Ignorer dette ordet over alt"
+
+msgid "Ignore All"
+msgstr "Ignorer alt"
+
+msgid "Add this word to your personal dictionary"
+msgstr "Legg til dette ordet til personleg ordbok"
+
+msgid "Add to Dic"
+msgstr "Legg til Ordbok"
+
+msgid "Close and Commit"
+msgstr "Lagre og lukk"
+
+msgid "The spellcheck is not finished. Really close and commit changes?"
+msgstr ""
+"Stavekontrollen er ikkje ferdig. Er du sikker på at du vil lagre endringane "
+"og lukke?"
+
+msgid "Close and Cancel"
+msgstr "Avbryt og lukk"
+
+msgid "The spellcheck is not finished. Really close and discard changes?"
+msgstr ""
+"Stavekontrollen er ikkje ferdig. Er du sikker på at du vil forkasta "
+"endringane og lukke?"
+
+msgid "No errors found"
+msgstr "Fant ingen feil"
+
+msgid "Your personal dictionary was erased."
+msgstr "Personleg ordbok vart sletta."
+
+msgid "Dictionary Erased"
+msgstr "Ordbok sletta"
+
+msgid ""
+"Your personal dictionary was erased. Please close this window and click "
+"\"Check Spelling\" button again to start your spellcheck over."
+msgstr ""
+"Personleg ordbok vart sletta. Lukk dette vindauga og klikk på \"Stavekontroll"
+"\" for å kjøra stavakontroll på nytt."
+
+msgid "Close this Window"
+msgstr "Lukk dette vindauge"
+
+msgid ""
+"Your personal dictionary was re-encrypted successfully. Now return to the "
+"&quot;SpellChecker options&quot; menu and make your selection again."
+msgstr ""
+"Personleg ordbok vart kryptert korrekt. Returnet til &quote; Stavakontroll "
+"val&quote; menyen og vel på nytt."
+
+msgid "Successful Re-encryption"
+msgstr "Krypteret korrekt"
+
+msgid ""
+"Your personal dictionary was re-encrypted successfully. Please close this "
+"window and click \"Check Spelling\" button again to start your spellcheck "
+"over."
+msgstr ""
+"Personleg ordbok er krypteret korrekt. Lukk dette  vindauga og klikk på "
+"\"Stavekontrol\" for å kjøra stavekontrollen på nytt."
+
+msgid "Dictionary re-encrypted"
+msgstr "Ordbok krypteret"
+
+msgid ""
+"Your personal dictionary has been <strong>encrypted</strong> and is now "
+"stored in an <strong>encrypted format</strong>."
+msgstr "Personleg ordbok er krypteret og lagra."
+
+msgid ""
+"Your personal dictionary has been <strong>decrypted</strong> and is now "
+"stored as <strong>clear text</strong>."
+msgstr "Personleg ordbok er dekrypteret og lagra."
+
+msgid "Personal Dictionary Crypto Settings"
+msgstr "Personleg ordbok krypteringsval"
+
+msgid "Personal Dictionary"
+msgstr "Personleg ordbok"
+
+msgid "No words in your personal dictionary."
+msgstr "Der er ingen ord i personleg ordbok"
+
+msgid "Please check any words you wish to delete from your dictionary."
+msgstr "Marker dei orda du ønsker å sletta frå ordboka."
+
+#, c-format
+msgid "%s dictionary"
+msgstr "%s ordbok"
+
+msgid "Delete checked words"
+msgstr "Slett valde ord"
+
+msgid "Edit your Personal Dictionary"
+msgstr "Rediger personleg ordbok"
+
+msgid "Please make your selection first."
+msgstr "Ta eit val først"
+
+msgid ""
+"This will encrypt your personal dictionary and store it in an encrypted "
+"format. Proceed?"
+msgstr "Dette vil kryptere og lagra personleg ordbok. Fortsett?"
+
+msgid ""
+"This will decrypt your personal dictionary and store it in a clear-text "
+"format. Proceed?"
+msgstr "Dette vil lagre ordboka i klar tekst. Fortsett?"
+
+msgid ""
+"<p>Your personal dictionary is <strong>currently encrypted</strong>. This "
+"helps protect your privacy in case the web-mail system gets compromized and "
+"your personal dictionary ends up stolen. It is currently encrypted with the "
+"password you use to access your mailbox, making it hard for anyone to see "
+"what is stored in your personal dictionary.</p> <p><strong>ATTENTION:</"
+"strong> If you forget your password, your personal dictionary will become "
+"unaccessible, since it can no longer be decrypted. If you change your "
+"mailbox password, SquirrelSpell will recognize it and prompt you for your "
+"old password in order to re-encrypt the dictionary with a new key.</p>"
+msgstr ""
+"<p>Personleg ordbok er <strong>krypteret</strong>. Dette vernar dataane dine "
+"i tilfelle at vevpost-systemet vert kompromitteret, og hindrar at ordboka "
+"vert stjålet. Ordboka er krypteret med passordet til din e-postkonto.</p> "
+"<p><strong>NB:</strong> Viss du mister din passordet, kan du ikkje nytta den "
+"personlege ordboka, då den ikkje kan dekrypterast. Viss du endrar passordet, "
+"vil SquirrelSpell spørja etter det nye passordet, og kryptera ordboka med "
+"det.</p>"
+
+msgid "Please decrypt my personal dictionary and store it in a clear-text format."
+msgstr "Dekryptér personleg ordbok og lagre i klar tekst."
+
+msgid "Change crypto settings"
+msgstr "Skift krypteringsval"
+
+msgid ""
+"<p>Your personal dictionary is <strong>currently not encrypted</strong>. You "
+"may wish to encrypt your personal dictionary to protect your privacy in case "
+"the webmail system gets compromized and your personal dictionary file gets "
+"stolen. When encrypted, the file's contents look garbled and are hard to "
+"decrypt without knowing the correct key (which is your mailbox password).</"
+"p> <strong>ATTENTION:</strong> If you decide to encrypt your personal "
+"dictionary, you must remember that it gets &quot;hashed&quot; with your "
+"mailbox password. If you forget your mailbox password and the administrator "
+"changes it to a new value, your personal dictionary will become useless and "
+"will have to be created anew. However, if you or your system administrator "
+"change your mailbox password but you still have the old password at hand, "
+"you will be able to enter the old key to re-encrypt the dictionary with the "
+"new value.</p>"
+msgstr ""
+"<p>Personlege ordbok er <strong>ikkje krypteret</strong>. Du kan kryptera "
+"ordboka så dataane vert verna viss vevpost-systemet vert kompromitteret og "
+"ordboka vert stjålet. Viss ordboka er krypteret, vil innhaldet være uleseleg "
+"utan at ein kjennar nøkkelen (som er passordet til konto din).</p> "
+"<p><strong>NB:</strong> Viss du bestemmer deg for å kryptere ordboka, så "
+"skal du vere oppmerksom på at den  blir kryptert med ditt passord. Viss du "
+"glømmer passordet og administratoren må gi deg eit nytt, vil personleg "
+"ordbok vera uleseleg, og du må oppretta ei ny. Viss du sjølv, eller "
+"administratoren, endrar passordet, og du fortsatt veit den gamle koden, kan "
+"du bruka den til å kryptera ordboka med det nye passordet.</p>"
+
+msgid "Please encrypt my personal dictionary and store it in an encrypted format."
+msgstr "Krypter mi personlege ordbok, og lager den som krypteret tekst."
+
+#, c-format
+msgid "Deleting the following entries from <strong>%s</strong> dictionary:"
+msgstr "Slett følgjande postar fra <strong>%s</strong> ordboka:"
+
+msgid "All done!"
+msgstr "Ferdig!"
+
+msgid "Personal Dictionary Updated"
+msgstr "Personleg ordbok oppdatert"
+
+msgid "No changes requested."
+msgstr "Inga valde endringer."
+
+msgid "Please wait, communicating with the server..."
+msgstr "Vent, kommuniserer med tenar...."
+
+msgid ""
+"Please choose which dictionary you would like to use to spellcheck this "
+"message:"
+msgstr "Vel kvafor ei ordbok du ønsker å bruke til stavekontrollen:"
+
+msgid "SquirrelSpell Initiating"
+msgstr "SquirrelSpell starter"
+
+#, c-format
+msgid ""
+"Settings adjusted to: <strong>%s</strong> with <strong>%s</strong> as "
+"default dictionary."
+msgstr ""
+"Instillingane er endra til: <strong>%s</strong> med <strong>%s</strong> som "
+"standard ordbok."
+
+#, c-format
+msgid "Using <strong>%s</strong> dictionary (system default) for spellcheck."
+msgstr "Brukar <strong>%s</strong> ordbok (systemstandard) til stavekontroll."
+
+msgid "International Dictionaries Preferences Updated"
+msgstr "Internationale ordboksval er oppdateret"
+
+msgid ""
+"Please check any available international dictionaries which you would like "
+"to use when spellchecking:"
+msgstr ""
+"Marker dei internationale ordbøker som er tilgjengelege, og som du ønsker å "
+"bruka når du kjører stavekontrolleren:"
+
+msgid "Make this dictionary my default selection:"
+msgstr "Bruk denne ordboka som standard:"
+
+msgid "Make these changes"
+msgstr "Utfør desse endringane"
+
+msgid "Add International Dictionaries"
+msgstr "Legg til internasjonale ordbøker"
+
+msgid "Please choose which options you wish to set up:"
+msgstr "Vel dei instillingane du øsker å endra på:"
+
+msgid "Edit your personal dictionary"
+msgstr "Rediger di personlege ordbok"
+
+msgid "Set up international dictionaries"
+msgstr "Instill internasjonale ordbøker"
+
+msgid "Encrypt or decrypt your personal dictionary"
+msgstr "Krypter eller dekrypter di personlege ordbok"
+
+msgid "not available"
+msgstr "Ikkje tilgjengeleg"
+
+msgid "SquirrelSpell Options Menu"
+msgstr "SquirrelSpell innstillingsmeny"
+
 msgid "Translator"
 msgstr "Oversertjar"
 
@@ -2163,27 +3320,22 @@ msgstr "Lagra oversetjarvala"
 msgid "Your server options are as follows:"
 msgstr "Tenarinstillingane er følgjande:"
 
-msgid ""
-"13 language pairs, maximum of 1000 characters translated, powered by Systran"
-msgstr "13 sprogpar, maksimalt 1000 teikn oversatt, Drevet av Systran"
-
-msgid ""
-"10 language pairs, maximum of 25 kilobytes translated, powered by Systran"
-msgstr "10 språkpar, maksimalt 25 kilobyte oversatt, Drevet av Systran"
+msgid "19 language pairs, maximum of 1000 characters translated, powered by Systran"
+msgstr "19 sprogpar, maksimalt 1000 teikn oversatt, Drevet av Systran"
 
 msgid "12 language pairs, no known limits, powered by Systran"
 msgstr "12 språkpar, inga kjent grense, Dreven av Systran"
 
 msgid ""
-"767 language pairs, no known limits, powered by Translation Experts's "
+"784 language pairs, no known limits, powered by Translation Experts's "
 "InterTran"
-msgstr ""
-"767 språkpar, inga kjent grense, Drevet av Translation Expert's InterTran"
+msgstr "784 språkpar, inga kjent grense, Drevet av Translation Expert's InterTran"
 
-msgid ""
-"8 language pairs, no known limits, powered by GPLTrans (free, open source)"
-msgstr ""
-"8 språkpar, inga kjent grense,dreven av GPLTrans (gratis open kjeldekode)"
+msgid "8 language pairs, no known limits, powered by GPLTrans (free, open source)"
+msgstr "8 språkpar, inga kjent grense,dreven av GPLTrans (gratis open kjeldekode)"
+
+msgid "4 language pairs for Hellenic, no known limits, powered by Systran"
+msgstr "4 språkpar for Hellenic, inga kjent grense, Dreven av Systran"
 
 msgid ""
 "You also decide if you want the translation box displayed, and where it will "
@@ -2219,17 +3371,13 @@ msgstr "Ved skriving"
 msgid "Not yet functional, currently does nothing"
 msgstr "Ennå ikkje i bruk"
 
-msgid "Download this as a file"
-msgstr "Last ned dette som ei fil"
-
 msgid "Translation Options"
 msgstr "Omsetjingsval"
 
 msgid ""
 "Which translator should be used when you get messages in a different "
 "language?"
-msgstr ""
-"Kvafor ein oversetjar skal brukast når du mottar meldingar på eit anna språk?"
+msgstr "Kvafor ein oversetjar skal brukast når du mottar meldingar på eit anna språk?"
 
 #, c-format
 msgid "%s to %s"
@@ -2237,6 +3385,9 @@ msgstr " %s til %s"
 
 msgid "English"
 msgstr "Engelsk"
+
+msgid "Chinese"
+msgstr "Kinesisk"
 
 msgid "French"
 msgstr "Fransk"
@@ -2246,6 +3397,12 @@ msgstr "Tysk"
 
 msgid "Italian"
 msgstr "Italiensk"
+
+msgid "Japanese"
+msgstr "Japansk"
+
+msgid "Korean"
+msgstr "Koreansk"
 
 msgid "Portuguese"
 msgstr "Portugisisk"
@@ -2292,9 +3449,6 @@ msgstr "Ungarsk"
 msgid "Icelandic"
 msgstr "Islandsk"
 
-msgid "Japanese"
-msgstr "Japansk"
-
 msgid "Latin American Spanish"
 msgstr "Latin amerikansk spansk"
 
@@ -2316,6 +3470,9 @@ msgstr "Slovensk"
 msgid "Swedish"
 msgstr "Svensk"
 
+msgid "Turkish"
+msgstr "Tyrkisk"
+
 msgid "Welsh"
 msgstr "Walisisk"
 
@@ -2325,642 +3482,45 @@ msgstr "Indonesisk"
 msgid "Latin"
 msgstr "Latin"
 
-msgid "Address Book"
-msgstr "Adressebok"
+msgid "to English"
+msgstr "til Engelsk"
 
-msgid "Name"
-msgstr "Namn"
+msgid "from English"
+msgstr "frå Engelsk"
 
-msgid "E-mail"
-msgstr "E-postadresse"
+msgid "Delivery error report"
+msgstr "Lever feilrapport "
 
-msgid "Info"
-msgstr "Informasjon"
+msgid "Undelivered Message Headers"
+msgstr "Meldigshovud frå medlingar som ikkje vart levert"
 
-msgid "Source"
-msgstr "Kjelde"
+#~ msgid "Unknown message number in reply from server: "
+#~ msgstr "Tjerer svara med eit ukjent meldingsnummer"
 
-msgid "Bcc"
-msgstr "Blind Kopi til"
+#~ msgid "(unknown sender)"
+#~ msgstr "(ukjend avsendar)"
 
-msgid "Use Addresses"
-msgstr "Bruk adresser"
+#~ msgid "Enable Subtle Printer Friendly Link"
+#~ msgstr "Slå på undertittel Skrivarvenleg lenkje"
 
-msgid "Address Book Search"
-msgstr "Søk i adressebok"
+#~ msgid "Authenticated SMTP"
+#~ msgstr "Autentifiser SMTP"
 
-msgid "Search for"
-msgstr "Søk etter"
+#~ msgid "35 min."
+#~ msgstr "35 min"
 
-msgid "in"
-msgstr "i"
+#~ msgid "Mofify a Server"
+#~ msgstr "Modifiser ein tenar"
 
-msgid "All address books"
-msgstr "Alle adressebøker"
+#~ msgid "(local media)"
+#~ msgstr "(lokal media)"
 
-msgid "List all"
-msgstr "List alle"
+#~ msgid "Local Media File:"
+#~ msgstr "Lokal mediefiler:"
 
-#, c-format
-msgid "Unable to list addresses from %s"
-msgstr "Klarte ikkje å liste adresser frå %s"
-
-msgid "Your search failed with the following error(s)"
-msgstr "Søket ditt feila med fylgjande feilmelding(ar)"
-
-msgid "No persons matching your search was found"
-msgstr "Ingen personar som samsvarer med søket ditt vart funne"
-
-msgid "Return"
-msgstr "Tilbake"
-
-msgid "Nickname"
-msgstr "Kortnamn"
-
-msgid "Must be unique"
-msgstr "Må vere unikt"
-
-msgid "E-mail address"
-msgstr "E-postadresse"
-
-msgid "First name"
-msgstr "Fornamn"
-
-msgid "Last name"
-msgstr "Etternamn"
-
-msgid "Additional info"
-msgstr "Tilleggsinformasjon"
-
-msgid "No personal address book is defined. Contact administrator."
-msgstr "Inga personleg adressebok er definert. Ta kontakt med administrator."
-
-msgid "You can only edit one address at the time"
-msgstr "Du kan berre editere ei adresse om gongen."
-
-msgid "Update address"
-msgstr "Oppdater adresse"
-
-msgid "Unknown error"
-msgstr "Ukjend feil"
-
-msgid "Add address"
-msgstr "Legg til adresse"
-
-msgid "Edit selected"
-msgstr "Endre valde"
-
-msgid "Delete selected"
-msgstr "Slett valde"
-
-#, c-format
-msgid "Add to %s"
-msgstr "Legg til %s"
-
-msgid "Original Message"
-msgstr "Opphavleg melding"
-
-msgid "Draft Email Saved"
-msgstr "E-post kladd lagra"
-
-msgid "Could not move/copy file. File not attached"
-msgstr "Kunne ikkje flytte/kopiere fila. Fila er ikkje lagt ved"
-
-msgid "Draft Saved"
-msgstr "Kladd lagra"
-
-msgid "Your Message has been sent"
-msgstr "Meldinga er sent"
-
-msgid "To:"
-msgstr "Til:"
-
-msgid "CC:"
-msgstr "Kopi til:"
-
-msgid "BCC:"
-msgstr "Blindkopi til:"
-
-msgid "Subject:"
-msgstr "Emne:"
-
-msgid "Send"
-msgstr "Send"
-
-msgid "Attach:"
-msgstr "Legg ved:"
-
-msgid "Add"
-msgstr "Legg til:"
-
-msgid "Delete selected attachments"
-msgstr "Slett valde vedlegg"
-
-msgid "Priority"
-msgstr "Prioritet"
-
-msgid "Receipt"
-msgstr "Kvittering:"
-
-msgid "On Read"
-msgstr "Ved lest"
-
-msgid "On Delivery"
-msgstr "Ved levering"
-
-msgid "Save Draft"
-msgstr "Lagre kladd"
-
-msgid "You have not filled in the \"To:\" field."
-msgstr "Du har ikkje fylt ut \"Til:\"-feltet"
-
-msgid "said"
-msgstr "sa"
-
-msgid "quote"
-msgstr "sitat"
-
-msgid "who"
-msgstr "kven"
-
-msgid "Draft folder"
-msgstr "Mappe til kladd"
-
-msgid "Illegal folder name.  Please select a different name."
-msgstr "Ulovleg mappenamn. Ver venleg og velj eit anna namn."
-
-msgid "Click here to go back"
-msgstr "Klikk her for å gå tilbake"
-
-msgid "You have not selected a folder to delete. Please do so."
-msgstr "Vel mappe som skal slettast."
-
-msgid "Delete Folder"
-msgstr "Slett mappe"
-
-#, c-format
-msgid "Are you sure you want to delete %s?"
-msgstr "Vil du verkeleg sletta %s?"
-
-msgid "Subscribed successfully!"
-msgstr "La til mappa til lista over aktive mapper."
-
-msgid "Unsubscribed successfully!"
-msgstr "Fjerna mappa frå lista over aktive mapper."
-
-msgid "Deleted folder successfully!"
-msgstr "Mappa er sletta."
-
-msgid "Created folder successfully!"
-msgstr "Mappa er oppretta."
-
-msgid "Renamed successfully!"
-msgstr "Mappa er omnamna."
-
-msgid "Subscription Unsuccessful - Folder does not exist."
-msgstr "Abonnement feila - Mappa eksisterer ikkje."
-
-msgid "refresh folder list"
-msgstr "oppdater mappeliste"
-
-msgid "Create Folder"
-msgstr "Lag mappe"
-
-msgid "as a subfolder of"
-msgstr "som undermappe til"
-
-msgid "None"
-msgstr "Inga"
-
-msgid "Let this folder contain subfolders"
-msgstr "La denne mappa innehalde undermapper"
-
-msgid "Create"
-msgstr "Lag mappe"
-
-msgid "Rename a Folder"
-msgstr "Bytt namn på mappa"
-
-msgid "Select a folder"
-msgstr "Vel ei mappe"
-
-msgid "Rename"
-msgstr "Bytt namn"
-
-msgid "No folders found"
-msgstr "Fann ingen mapper"
-
-msgid "No folders were found to unsubscribe from!"
-msgstr "Fann ingen mapper å fjerne!"
-
-msgid "No folders were found to subscribe to!"
-msgstr "Fann ingen mappe å legge til!"
-
-msgid "Subscribe to:"
-msgstr "Abonner:"
-
-msgid "You have not selected a folder to rename. Please do so."
-msgstr "Vel mappe som skal endra namn."
-
-msgid "Rename a folder"
-msgstr "Bytt namn på ei mappe"
-
-msgid "New name:"
-msgstr "Nytt namn:"
-
-msgid "ERROR: Help files are not in the right format!"
-msgstr "FEIL: Hjelpefilene er ikkje på rett format!"
-
-#, c-format
-msgid ""
-"The help has not been translated to %s.  It will be displayed in English "
-"instead."
-msgstr "Hjelpa er enno ikkje omsett til %s. Den vil difor bli vist på engelsk."
-
-msgid "Some or all of the help documents are not present!"
-msgstr "Nokre eller alle hjelpefilene mangler."
-
-msgid "Table of Contents"
-msgstr "Innhaldsliste"
-
-msgid "Top"
-msgstr "Topp"
-
-msgid "Viewing an image attachment"
-msgstr "Viser eit biletvedlegg"
-
-msgid "View message"
-msgstr "Vis melding"
-
-msgid "Not available"
-msgstr "Ikkje tilgjengeleg"
-
-msgid "purge"
-msgstr "tøm"
-
-msgid "Last Refresh"
-msgstr "Sist oppfriska"
-
-msgid "Save folder tree"
-msgstr "Lagre mappetre"
-
-msgid "Login"
-msgstr "Logg inn"
-
-#, c-format
-msgid "%s Login"
-msgstr "%s innlogging"
-
-msgid "Name:"
-msgstr "Namn:"
-
-msgid "No messages were selected."
-msgstr "Ingen valde meldingar."
-
-msgid "Message Highlighting"
-msgstr "Utheving av meldingar"
-
-msgid "subject"
-msgstr "Emne"
-
-msgid "No highlighting is defined"
-msgstr "Inga utheving er definert"
-
-msgid "Identifying name"
-msgstr "Identifisernamn"
-
-msgid "Color"
-msgstr "Farge"
-
-msgid "Dark Blue"
-msgstr "Mørk blå"
-
-msgid "Dark Green"
-msgstr "Mørk grøn"
-
-msgid "Dark Yellow"
-msgstr "Mørk gul"
-
-msgid "Dark Cyan"
-msgstr "Mørk cyan"
-
-msgid "Dark Magenta"
-msgstr "Mørk lilla"
-
-msgid "Light Blue"
-msgstr "Lys blå"
-
-msgid "Light Green"
-msgstr "Lys grøn"
-
-msgid "Light Yellow"
-msgstr "Lys gul"
-
-msgid "Light Cyan"
-msgstr "Lys cyan"
-
-msgid "Light Magenta"
-msgstr "Lys magenta"
-
-msgid "Dark Gray"
-msgstr "Lys grå"
-
-msgid "Medium Gray"
-msgstr "Medium grå"
-
-msgid "Light Gray"
-msgstr "Lys grå"
-
-msgid "White"
-msgstr "Kvit"
-
-msgid "Other:"
-msgstr "Annan:"
-
-msgid "Ex: 63aa7f"
-msgstr "Døme: 63aa7f"
-
-msgid "Matches"
-msgstr "Treff"
-
-#, c-format
-msgid "Alternate Identity %d"
-msgstr "Alternativ identitet %d"
-
-msgid "Advanced Identities"
-msgstr "Avanserte identitetar"
-
-msgid "Default Identity"
-msgstr "Standard identitet"
-
-msgid "Add a New Identity"
-msgstr "Legg til ny identitet"
-
-msgid "E-Mail Address"
-msgstr "E-postadresse"
-
-msgid "Save / Update"
-msgstr "Lagre / oppdater"
-
-msgid "Make Default"
-msgstr "Gjer til standard"
-
-msgid "Move Up"
-msgstr "Flytt opp"
-
-msgid "Index Order"
-msgstr "Indeksrekkjefølgje"
-
-msgid "Checkbox"
-msgstr "Avkryssingsboks"
-
-msgid "Flags"
-msgstr "Flagg"
-
-msgid ""
-"The index order is the order that the columns are arranged in the message "
-"index.  You can add, remove, and move columns around to customize them to "
-"fit your needs."
-msgstr ""
-"Indeksrekkjefølgjen følgjer arrangeringa av kolonnene. Ein kan leggja til, "
-"sletta og flytta rundt kolonnene etter eige ønskje."
-
-msgid "up"
-msgstr "opp"
-
-msgid "down"
-msgstr "ned"
-
-msgid "remove"
-msgstr "fjern"
-
-msgid "Return to options page"
-msgstr "Tilbake til alternativ val"
-
-msgid "Personal Information"
-msgstr "Personleg informasjon"
-
-msgid "Display Preferences"
-msgstr "Framsyningsval"
-
-msgid "Folder Preferences"
-msgstr "Val for mapper"
-
-msgid "Successfully Saved Options"
-msgstr "Vellukka lagra vala"
-
-msgid "Refresh Folder List"
-msgstr "Oppdater mappelista"
-
-msgid "Refresh Page"
-msgstr "Last sida på nytt"
-
-msgid ""
-"This contains personal information about yourself such as your name, your "
-"email address, etc."
-msgstr ""
-"Dette inneheld personleg informasjon om deg sjølv, slik som namn, e-"
-"postadresse og liknande."
-
-msgid ""
-"You can change the way that SquirrelMail looks and displays information to "
-"you, such as the colors, the language, and other settings."
-msgstr ""
-"Du kan endre måten SquirrelMail ser ut og viser informasjon på, slik som "
-"fargar, språk og andre val."
-
-msgid ""
-"Based upon given criteria, incoming messages can have different background "
-"colors in the message list.  This helps to easily distinguish who the "
-"messages are from, especially for mailing lists."
-msgstr ""
-"Basert på gjevne kriterium kan innkomande meldingar ha ulik bakgrunnsfagre i "
-"meldingslista. Dette er til hjelp for å sjå kven meldinga er frå, særleg i "
-"samband med mailinglister."
-
-msgid ""
-"These settings change the way your folders are displayed and manipulated."
-msgstr "Dette er val for korleis mapper vert viste og kan endrast."
-
-msgid ""
-"The order of the message index can be rearranged and changed to contain the "
-"headers in any order you want."
-msgstr ""
-"Her kan ein endra på rekkjefølgjen på elementa i meldingsvindauga.til å "
-"innehalda dei elementa ein sjølv vil."
-
-msgid "Message not printable"
-msgstr "Ikkje skrivbar melding"
-
-msgid "Printer Friendly"
-msgstr "Utskriftbar"
-
-msgid "CC"
-msgstr "Kopi til:"
-
-msgid "Print"
-msgstr "Skriv ut"
-
-msgid "View Printable Version"
-msgstr "Vis utskriftbar versjon"
-
-msgid "Read:"
-msgstr "Les"
-
-msgid "Your message"
-msgstr "Meldingar"
-
-msgid "Sent:"
-msgstr "Send"
-
-#, c-format
-msgid "Was displayed on %s"
-msgstr "Vist på %s"
-
-msgid "less"
-msgstr "mindre"
-
-msgid "more"
-msgstr "meir"
-
-msgid "Mailer"
-msgstr "Postar"
-
-msgid "Read receipt"
-msgstr "Les kvittering"
-
-msgid "send"
-msgstr "send"
-
-msgid "requested"
-msgstr "ønska"
-
-msgid ""
-"The message sender has requested a response to indicate that you have read "
-"this message. Would you like to send a receipt?"
-msgstr ""
-"Avsendar ønsker ei tilbakemelding på at du har lest meldinga. Ønsker du å "
-"senda ei kvittering?"
-
-msgid "Send read receipt now"
-msgstr "Send kvittering på lest"
-
-msgid "Search results"
-msgstr "Søkjeresultat"
-
-msgid "Message List"
-msgstr "Meldingsliste"
-
-msgid "Resume Draft"
-msgstr "Fortsett med kladd"
-
-msgid "Edit Message as New"
-msgstr "Rediger melding som om den var ny"
-
-msgid "View Message"
-msgstr "Vis melding"
-
-msgid "Forward as Attachment"
-msgstr "Vidaresend som vedlegg"
-
-msgid "Reply"
-msgstr "Svar"
-
-msgid "Reply All"
-msgstr "Svar til alle"
-
-msgid "View Full Header"
-msgstr "Vis fulle meldingshovud"
-
-msgid "Attachments"
-msgstr "Vedlegg"
-
-msgid "Folder:"
-msgstr "Mapper"
-
-msgid "edit"
-msgstr "editer"
-
-msgid "search"
-msgstr "Søk"
-
-msgid "delete"
-msgstr "slett"
-
-msgid "Recent Searches"
-msgstr "Nyleg søkte"
-
-msgid "save"
-msgstr "lagra"
-
-msgid "forget"
-msgstr "Forkast"
-
-msgid "Current Search"
-msgstr "Dette søket"
-
-msgid "Body"
-msgstr "Meldingskropp"
-
-msgid "Everywhere"
-msgstr "Overalt"
-
-msgid "Search Results"
-msgstr "Søkjeresultat"
-
-msgid "No Messages Found"
-msgstr "Fann inga melding"
-
-msgid "You have been successfully signed out."
-msgstr "Du er no logga ut"
-
-msgid "Click here to log back in."
-msgstr "Klikk her for å prøve på nytt."
-
-msgid "Viewing a Business Card"
-msgstr "Viser visittkort"
-
-msgid "Title"
-msgstr "Tittel"
-
-msgid "Email"
-msgstr "E-post"
-
-msgid "Web Page"
-msgstr "Nettstad"
-
-msgid "Organization / Department"
-msgstr "Organisasjon / Avdeling"
-
-msgid "Address"
-msgstr "Adresse"
-
-msgid "Work Phone"
-msgstr "Telefon arbeid"
-
-msgid "Home Phone"
-msgstr "Heimetelefon"
-
-msgid "Cellular Phone"
-msgstr "Mobil"
-
-msgid "Fax"
-msgstr "Faks"
-
-msgid "Note"
-msgstr "Notat"
-
-msgid "Add to Addressbook"
-msgstr "Legg til adresse"
-
-msgid "Title & Org. / Dept."
-msgstr "Tittel & Org. / Avd."
-
-msgid "Viewing Full Header"
-msgstr "Viser fulle meldingshovud"
-
-msgid "Viewing a text attachment"
-msgstr "Viser eit tekstvedlegg"
+#~ msgid ""
+#~ "10 language pairs, maximum of 25 kilobytes translated, powered by Systran"
+#~ msgstr "10 språkpar, maksimalt 25 kilobyte oversatt, Drevet av Systran"
 
 #~ msgid "Close window"
 #~ msgstr "Lukk vindauge"
@@ -2982,30 +3542,6 @@ msgstr "Viser eit tekstvedlegg"
 
 #~ msgid "messages"
 #~ msgstr "meldingar"
-
-#~ msgid "Close this Window"
-#~ msgstr "Lukk dette vindauge"
-
-#~ msgid "Ignore"
-#~ msgstr "Ignorer"
-
-#~ msgid "Add to Dic"
-#~ msgstr "Legg til Ordbok"
-
-#~ msgid "Close and Commit"
-#~ msgstr "Lagre og lukk"
-
-#~ msgid "No errors found"
-#~ msgstr "Fant ingen feil"
-
-#~ msgid "Personal Dictionary"
-#~ msgstr "Personleg ordbok"
-
-#~ msgid "Delete checked words"
-#~ msgstr "Slett valde ord"
-
-#~ msgid "All done!"
-#~ msgstr "Ferdig!"
 
 #~ msgid "You must login first."
 #~ msgstr "Du må logge inn fyrst."
@@ -3064,9 +3600,6 @@ msgstr "Viser eit tekstvedlegg"
 #~ msgid "Use receive date for sort"
 #~ msgstr "Bruk mottaksdato til sortering"
 
-#~ msgid "Use References header for thread sort"
-#~ msgstr "Bruk referansetopptekst til trådsortering"
-
 #~ msgid "There was an error contacting the mail server."
 #~ msgstr "Feil ved kontakten til eposttjenaren"
 
@@ -3085,274 +3618,6 @@ msgstr "Viser eit tekstvedlegg"
 #~ msgid "Submit message"
 #~ msgstr "Send melding"
 
-#~ msgid "I tried to execute '%s', but it returned:"
-#~ msgstr "Eg forsøkte programmet: '%s', men det returnerte:"
-
-#~ msgid "SquirrelSpell is misconfigured."
-#~ msgstr "SquirrelSpell er ikkje konfigurert korrekt"
-
-#~ msgid "SquirrelSpell Results"
-#~ msgstr "SquirrelSpell resultat"
-
-#~ msgid "Spellcheck completed. Commit changes?"
-#~ msgstr "Stavekontroll er fullført. Skal endringane lagrast?"
-
-#~ msgid "No changes were made."
-#~ msgstr "Inga endring vart gjordt"
-
-#~ msgid "Now saving your personal dictionary... Please wait."
-#~ msgstr "Personleg ordbok blir lagra... Vent litt."
-
-#~ msgid "Found %s errors"
-#~ msgstr "Fant %s feil"
-
-#~ msgid "Line with an error:"
-#~ msgstr "Linje med ein feil"
-
-#~ msgid "Error:"
-#~ msgstr "Feil: "
-
-#~ msgid "Suggestions"
-#~ msgstr "Fleire forslag"
-
-#~ msgid "Change to:"
-#~ msgstr "Endra til:"
-
-#~ msgid "Occurs times:"
-#~ msgstr "Mengde førekomstar"
-
-#~ msgid "Change this word"
-#~ msgstr "Endra dette ordet"
-
-#~ msgid "Change"
-#~ msgstr "Endra"
-
-#~ msgid "Change ALL occurances of this word"
-#~ msgstr "Endra ordet alle plassar"
-
-#~ msgid "Change All"
-#~ msgstr "Endra alt"
-
-#~ msgid "Ignore this word"
-#~ msgstr "Ignorer dette ordet"
-
-#~ msgid "Ignore ALL occurances this word"
-#~ msgstr "Ignorer dette ordet over alt"
-
-#~ msgid "Ignore All"
-#~ msgstr "Ignorer alt"
-
-#~ msgid "Add this word to your personal dictionary"
-#~ msgstr "Legg til dette ordet til personleg ordbok"
-
-#~ msgid "The spellcheck is not finished. Really close and commit changes?"
-#~ msgstr ""
-#~ "Stavekontrollen er ikkje ferdig. Er du sikker på at du vil lagre "
-#~ "endringane og lukke?"
-
-#~ msgid "Close and Cancel"
-#~ msgstr "Avbryt og lukk"
-
-#~ msgid "The spellcheck is not finished. Really close and discard changes?"
-#~ msgstr ""
-#~ "Stavekontrollen er ikkje ferdig. Er du sikker på at du vil forkasta "
-#~ "endringane og lukke?"
-
-#~ msgid "Your personal dictionary was erased."
-#~ msgstr "Personleg ordbok vart sletta."
-
-#~ msgid "Dictionary Erased"
-#~ msgstr "Ordbok sletta"
-
-#~ msgid ""
-#~ "Your personal dictionary was erased. Please close this window and click "
-#~ "\"Check Spelling\" button again to start your spellcheck over."
-#~ msgstr ""
-#~ "Personleg ordbok vart sletta. Lukk dette vindauga og klikk på "
-#~ "\"Stavekontroll\" for å kjøra stavakontroll på nytt."
-
-#~ msgid ""
-#~ "Your personal dictionary was re-encrypted successfully. Now return to the "
-#~ "&quot;SpellChecker options&quot; menu and make your selection again."
-#~ msgstr ""
-#~ "Personleg ordbok vart kryptert korrekt. Returnet til &quote; "
-#~ "Stavakontroll val&quote; menyen og vel på nytt."
-
-#~ msgid "Successful Re-encryption"
-#~ msgstr "Krypteret korrekt"
-
-#~ msgid ""
-#~ "Your personal dictionary was re-encrypted successfully. Please close this "
-#~ "window and click \"Check Spelling\" button again to start your spellcheck "
-#~ "over."
-#~ msgstr ""
-#~ "Personleg ordbok er krypteret korrekt. Lukk dette  vindauga og klikk på "
-#~ "\"Stavekontrol\" for å kjøra stavekontrollen på nytt."
-
-#~ msgid "Dictionary re-encrypted"
-#~ msgstr "Ordbok krypteret"
-
-#~ msgid ""
-#~ "Your personal dictionary has been <strong>encrypted</strong> and is now "
-#~ "stored in an <strong>encrypted format</strong>."
-#~ msgstr "Personleg ordbok er krypteret og lagra."
-
-#~ msgid ""
-#~ "Your personal dictionary has been <strong>decrypted</strong> and is now "
-#~ "stored as <strong>clear text</strong>."
-#~ msgstr "Personleg ordbok er dekrypteret og lagra."
-
-#~ msgid "Personal Dictionary Crypto Settings"
-#~ msgstr "Personleg ordbok krypteringsval"
-
-#~ msgid "No words in your personal dictionary."
-#~ msgstr "Der er ingen ord i personleg ordbok"
-
-#~ msgid "Please check any words you wish to delete from your dictionary."
-#~ msgstr "Marker dei orda du ønsker å sletta frå ordboka."
-
-#~ msgid "%s dictionary"
-#~ msgstr "%s ordbok"
-
-#~ msgid "Edit your Personal Dictionary"
-#~ msgstr "Rediger personleg ordbok"
-
-#~ msgid "Please make your selection first."
-#~ msgstr "Ta eit val først"
-
-#~ msgid ""
-#~ "This will encrypt your personal dictionary and store it in an encrypted "
-#~ "format. Proceed?"
-#~ msgstr "Dette vil kryptere og lagra personleg ordbok. Fortsett?"
-
-#~ msgid ""
-#~ "This will decrypt your personal dictionary and store it in a clear-text "
-#~ "format. Proceed?"
-#~ msgstr "Dette vil lagre ordboka i klar tekst. Fortsett?"
-
-#~ msgid ""
-#~ "<p>Your personal dictionary is <strong>currently encrypted</strong>. This "
-#~ "helps protect your privacy in case the web-mail system gets compromized "
-#~ "and your personal dictionary ends up stolen. It is currently encrypted "
-#~ "with the password you use to access your mailbox, making it hard for "
-#~ "anyone to see what is stored in your personal dictionary.</p> "
-#~ "<p><strong>ATTENTION:</strong> If you forget your password, your personal "
-#~ "dictionary will become unaccessible, since it can no longer be decrypted. "
-#~ "If you change your mailbox password, SquirrelSpell will recognize it and "
-#~ "prompt you for your old password in order to re-encrypt the dictionary "
-#~ "with a new key.</p>"
-#~ msgstr ""
-#~ "<p>Personleg ordbok er <strong>krypteret</strong>. Dette vernar dataane "
-#~ "dine i tilfelle at vevpost-systemet vert kompromitteret, og hindrar at "
-#~ "ordboka vert stjålet. Ordboka er krypteret med passordet til din e-"
-#~ "postkonto.</p> <p><strong>NB:</strong> Viss du mister din passordet, kan "
-#~ "du ikkje nytta den personlege ordboka, då den ikkje kan dekrypterast. "
-#~ "Viss du endrar passordet, vil SquirrelSpell spørja etter det nye "
-#~ "passordet, og kryptera ordboka med det.</p>"
-
-#~ msgid ""
-#~ "Please decrypt my personal dictionary and store it in a clear-text format."
-#~ msgstr "Dekryptér personleg ordbok og lagre i klar tekst."
-
-#~ msgid "Change crypto settings"
-#~ msgstr "Skift krypteringsval"
-
-#~ msgid ""
-#~ "<p>Your personal dictionary is <strong>currently not encrypted</strong>. "
-#~ "You may wish to encrypt your personal dictionary to protect your privacy "
-#~ "in case the webmail system gets compromized and your personal dictionary "
-#~ "file gets stolen. When encrypted, the file's contents look garbled and "
-#~ "are hard to decrypt without knowing the correct key (which is your "
-#~ "mailbox password).</p> <strong>ATTENTION:</strong> If you decide to "
-#~ "encrypt your personal dictionary, you must remember that it gets &quot;"
-#~ "hashed&quot; with your mailbox password. If you forget your mailbox "
-#~ "password and the administrator changes it to a new value, your personal "
-#~ "dictionary will become useless and will have to be created anew. However, "
-#~ "if you or your system administrator change your mailbox password but you "
-#~ "still have the old password at hand, you will be able to enter the old "
-#~ "key to re-encrypt the dictionary with the new value.</p>"
-#~ msgstr ""
-#~ "<p>Personlege ordbok er <strong>ikkje krypteret</strong>. Du kan kryptera "
-#~ "ordboka så dataane vert verna viss vevpost-systemet vert kompromitteret "
-#~ "og ordboka vert stjålet. Viss ordboka er krypteret, vil innhaldet være "
-#~ "uleseleg utan at ein kjennar nøkkelen (som er passordet til konto din).</"
-#~ "p> <p><strong>NB:</strong> Viss du bestemmer deg for å kryptere ordboka, "
-#~ "så skal du vere oppmerksom på at den  blir kryptert med ditt passord. "
-#~ "Viss du glømmer passordet og administratoren må gi deg eit nytt, vil "
-#~ "personleg ordbok vera uleseleg, og du må oppretta ei ny. Viss du sjølv, "
-#~ "eller administratoren, endrar passordet, og du fortsatt veit den gamle "
-#~ "koden, kan du bruka den til å kryptera ordboka med det nye passordet.</p>"
-
-#~ msgid ""
-#~ "Please encrypt my personal dictionary and store it in an encrypted format."
-#~ msgstr "Krypter mi personlege ordbok, og lager den som krypteret tekst."
-
-#~ msgid "Deleting the following entries from <strong>%s</strong> dictionary:"
-#~ msgstr "Slett følgjande postar fra <strong>%s</strong> ordboka:"
-
-#~ msgid "Personal Dictionary Updated"
-#~ msgstr "Personleg ordbok oppdatert"
-
-#~ msgid "No changes requested."
-#~ msgstr "Inga valde endringer."
-
-#~ msgid "Please wait, communicating with the server..."
-#~ msgstr "Vent, kommuniserer med tenar...."
-
-#~ msgid ""
-#~ "Please choose which dictionary you would like to use to spellcheck this "
-#~ "message:"
-#~ msgstr "Vel kvafor ei ordbok du ønsker å bruke til stavekontrollen:"
-
-#~ msgid "SquirrelSpell Initiating"
-#~ msgstr "SquirrelSpell starter"
-
-#~ msgid ""
-#~ "Settings adjusted to: <strong>%s</strong> with <strong>%s</strong> as "
-#~ "default dictionary."
-#~ msgstr ""
-#~ "Instillingane er endra til: <strong>%s</strong> med <strong>%s</strong> "
-#~ "som standard ordbok."
-
-#~ msgid ""
-#~ "Using <strong>%s</strong> dictionary (system default) for spellcheck."
-#~ msgstr ""
-#~ "Brukar <strong>%s</strong> ordbok (systemstandard) til stavekontroll."
-
-#~ msgid "International Dictionaries Preferences Updated"
-#~ msgstr "Internationale ordboksval er oppdateret"
-
-#~ msgid ""
-#~ "Please check any available international dictionaries which you would "
-#~ "like to use when spellchecking:"
-#~ msgstr ""
-#~ "Marker dei internationale ordbøker som er tilgjengelege, og som du ønsker "
-#~ "å bruka når du kjører stavekontrolleren:"
-
-#~ msgid "Make this dictionary my default selection:"
-#~ msgstr "Bruk denne ordboka som standard:"
-
-#~ msgid "Make these changes"
-#~ msgstr "Utfør desse endringane"
-
-#~ msgid "Add International Dictionaries"
-#~ msgstr "Legg til internasjonale ordbøker"
-
-#~ msgid "Please choose which options you wish to set up:"
-#~ msgstr "Vel dei instillingane du øsker å endra på:"
-
-#~ msgid "Edit your personal dictionary"
-#~ msgstr "Rediger di personlege ordbok"
-
-#~ msgid "Set up international dictionaries"
-#~ msgstr "Instill internasjonale ordbøker"
-
-#~ msgid "Encrypt or decrypt your personal dictionary"
-#~ msgstr "Krypter eller dekrypter di personlege ordbok"
-
-#~ msgid "SquirrelSpell Options Menu"
-#~ msgstr "SquirrelSpell innstillingsmeny"
-
 #~ msgid "POP3: premature NOOP OK, NOT an RFC 1939 Compliant server"
 #~ msgstr "POP3 fortidleg NOOP OK, Ikkje ein RFC 1939 standard tenar"
 
@@ -3364,9 +3629,6 @@ msgstr "Viser eit tekstvedlegg"
 
 #~ msgid "l, F d Y"
 #~ msgstr "l, F d Y"
-
-#~ msgid "30 min."
-#~ msgstr "30 min"
 
 #~ msgid "Don't Email Me"
 #~ msgstr "Ikkje e-post til meg"
@@ -3391,3 +3653,4 @@ msgstr "Viser eit tekstvedlegg"
 
 #~ msgid "Email Me - 1d prior"
 #~ msgstr "E-post til meg - 1 d. førre"
+
