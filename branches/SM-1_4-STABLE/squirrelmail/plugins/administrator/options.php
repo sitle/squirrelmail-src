@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Administrator Plugin - Options Page
  *
@@ -219,9 +218,6 @@ define('SM_PATH','../../');
 
 /* SquirrelMail required files. */
 require_once(SM_PATH . 'include/validate.php');
-require_once(SM_PATH . 'functions/page_header.php');
-require_once(SM_PATH . 'functions/imap.php');
-require_once(SM_PATH . 'include/load_prefs.php');
 require_once(SM_PATH . 'plugins/administrator/defines.php');
 require_once(SM_PATH . 'plugins/administrator/auth.php');
 
@@ -252,7 +248,8 @@ $colapse = array( 'Titles' => 'off',
                   'Group5' => getPref($data_dir, $username, 'adm_Group5', 'on' ),
                   'Group6' => getPref($data_dir, $username, 'adm_Group6', 'on' ),
                   'Group7' => getPref($data_dir, $username, 'adm_Group7', 'on' ),
-                  'Group8' => getPref($data_dir, $username, 'adm_Group8', 'on' ) );
+                  'Group8' => getPref($data_dir, $username, 'adm_Group8', 'on' ),
+                  'Group9' => getPref($data_dir, $username, 'adm_Group9', 'on' ) );
 
 /* look in $_GET array for 'switch' */
 if ( sqgetGlobalVar('switch', $switch, SQ_GET) ) {

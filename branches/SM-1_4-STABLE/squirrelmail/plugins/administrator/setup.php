@@ -12,6 +12,11 @@
  * @subpackage administrator
  */
 
+/** add SM_PATH */
+if (!defined('SM_PATH'))  {
+    define('SM_PATH','../../');
+}
+
 /** @ignore */
 require_once(SM_PATH . 'plugins/administrator/auth.php');
 
