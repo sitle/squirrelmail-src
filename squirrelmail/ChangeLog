@@ -48,6 +48,8 @@ Version 1.4.5 - CVS
   - Fixed bug #1032366, remove NUL characters in text attachments on sent.
   - Re-introduced mailto: handling.
   - Removed INBOX as a mailbox option in filters plugin.  Fixes bug #801060.
+  - Disable rewrapping of a forwarded message: this messes up reply-texts
+    and a forwarded message should not be altered unneccessary (#1151047).
 
 Version 1.4.4 - 21 January 2005
 -------------------------------
