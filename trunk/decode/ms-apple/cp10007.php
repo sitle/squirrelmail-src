@@ -20,7 +20,7 @@
  *   Authors:       Lori Brownell <loribr@microsoft.com>
  *          K.D. Chang    <a-kchang@microsoft.com>
  * @package squirrelmail
- * @subpackage decode
+ * @subpackage decode_extra
  */
 
 /**

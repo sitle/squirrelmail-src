@@ -37,7 +37,7 @@
  * <http://www.unicode.org/Public/MAPPINGS/VENDORS/APPLE/>
  *
  * @package squirrelmail
- * @subpackage decode
+ * @subpackage decode_extra
  */
 
 /**
