@@ -141,11 +141,13 @@ function sqimap_get_sort_order ($imap_stream, $sSortField, $reverse, $search='AL
             $sSortField = 'REVERSE '.$sSortField;
         }
         $query = "SORT ($sSortField) ".strtoupper($default_charset)." $search";
+        sm_print_r($query);
         // FIX ME sqimap_run_command should return the parsed data accessible by $aDATA['SORT']
         $aData = sqimap_run_command ($imap_stream, $query, false, $response, $message, TRUE);
         /* fallback to default charset */
         if ($response == 'NO' && strpos($message,'[BADCHARSET]') !== false) {
             $query = "SORT ($sSortField) US-ASCII $search";
+
             $aData = sqimap_run_command ($imap_stream, $query, true, $response, $message, TRUE);
         }
     }
@@ -390,7 +392,7 @@ function get_parent_level ($thread_new) {
 /**
  * Returns an array with each element as a string representing one
  * message-thread as returned by the IMAP server.
- * @link http://www.ietf.org/internet-drafts/draft-ietf-imapext-sort-13.txt
+ * @link http://www.ietf.org/internet-drafts/draft-ietf-imapext-sort-17.txt
  */
 function get_thread_sort ($imap_stream, $search='ALL') {
     global $thread_new, $sort_by_ref, $default_charset, $server_sort_array, $indent_array;
@@ -614,22 +616,23 @@ function sqimap_get_small_header_list ($imap_stream, $msg_list,
  * @author Marc Groot Koerkamp
  */
 function parseFetch($aResponse,$aMessageList = array()) {
-    foreach ($aResponse as $r) {
-        $msg = array();
-        // use unset because we do isset below
-        $read = implode('',$r);
+    for ($j=0,$iCnt=count($aResponse);$j<$iCnt;++$j) {
+        $aMsg = array();
 
+        $read = implode('',$aResponse[$j]);
+        // free up memmory
+        unset($aResponse[$j]); /* unset does not reindex the array. the for loop is safe */
         /*
             * #id<space>FETCH<space>(
         */
 
         /* extract the message id */
-        $i_space = strpos($read,' ',2);
-        $id = substr($read,2,$i_space-2);
-        $msg['ID'] = $id;
+        $i_space = strpos($read,' ',2);/* position 2ed <space> */
+        $id = substr($read,2/* skip "*<space>" */,$i_space -2);
+        $aMsg['ID'] = $id;
         $fetch = substr($read,$i_space+1,5);
         if (!is_numeric($id) && $fetch !== 'FETCH') {
-            $msg['ERROR'] = $read; // htmlspecialchars should be done just before display. this is backend code
+            $aMsg['ERROR'] = $read; // htmlspecialchars should be done just before display. this is backend code
             break;
         }
         $i = strpos($read,'(',$i_space+5);
@@ -643,6 +646,9 @@ function parseFetch($aResponse,$aMessageList = array()) {
             $i = strpos($read,' ');
             $arg = substr($read,0,$i);
             ++$i;
+            /*
+             * use allcaps for imap items and lowcaps for headers as key for the $aMsg array
+             */
             switch ($arg)
             {
             case 'UID':
@@ -665,7 +671,7 @@ function parseFetch($aResponse,$aMessageList = array()) {
                     $flag = strtolower($flag);
                     $aFlags[$flag] = true;
                 }
-                $msg['FLAGS'] = $aFlags;
+                $aMsg['FLAGS'] = $aFlags;
                 break;
             case 'RFC822.SIZE':
                 $i_pos = strpos($read,' ',$i);
@@ -673,73 +679,63 @@ function parseFetch($aResponse,$aMessageList = array()) {
                     $i_pos = strpos($read,')',$i);
                 }
                 if ($i_pos) {
-                    $msg['SIZE'] = substr($read,$i,$i_pos-$i);
+                    $aMsg['SIZE'] = substr($read,$i,$i_pos-$i);
                     $i = $i_pos+1;
                 } else {
                     break 3;
                 }
-
                 break;
             case 'ENVELOPE':
-                break; // to be implemented, moving imap code out of the nessages class
-                sqimap_parse_address($read,$i,$msg);
-                break; // to be implemented, moving imap code out of the nessages class
+                // sqimap_parse_address($read,$i,$aMsg);
+                break; // to be implemented, moving imap code out of the Message class
             case 'BODYSTRUCTURE':
-                break;
+                break; // to be implemented, moving imap code out of the Message class
             case 'INTERNALDATE':
-                $msg['INTERNALDATE'] = str_replace('  ', ' ',parseString($read,$i));
+                $aMsg['INTERNALDATE'] = trim(str_replace('  ', ' ',parseString($read,$i)));
                 break;
             case 'BODY.PEEK[HEADER.FIELDS':
             case 'BODY[HEADER.FIELDS':
-                $i = strpos($read,'{',$i);
+                $i = strpos($read,'{',$i); // header is always returned as literal because it contain \n characters
                 $header = parseString($read,$i);
                 if ($header === false) break 2;
                 /* First we replace all \r\n by \n, and unfold the header */
                 $hdr = trim(str_replace(array("\r\n", "\n\t", "\n "),array("\n", ' ', ' '), $header));
-                /* Now we can make a new header array with */
-                /* each element representing a headerline  */
-                $hdr = explode("\n" , $hdr);
+                /* Now we can make a new header array with
+                   each element representing a headerline  */
+                $aHdr = explode("\n" , $hdr);
                 $aReceived = array();
-                foreach ($hdr as $line) {
+                foreach ($aHdr as $line) {
                     $pos = strpos($line, ':');
                     if ($pos > 0) {
                         $field = strtolower(substr($line, 0, $pos));
                         if (!strstr($field,' ')) { /* valid field */
                             $value = trim(substr($line, $pos+1));
-                            switch($field)
-                            {
-                            case 'to': $msg['TO'] = $value; break;
-                            case 'cc': $msg['CC'] = $value; break;
-                            case 'from': $msg['FROM'] = $value; break;
-                            case 'date':
-                                $msg['DATE'] = str_replace('  ', ' ', $value);
-                                break;
-                            case 'x-priority': $msg['PRIORITY'] = $value; break;
-                            case 'subject': $msg['SUBJECT'] = $value; break;
-                            case 'content-type':
-                                $type = $value;
-                                if ($pos = strpos($type, ";")) {
-                                    $type = substr($type, 0, $pos);
-                                }
-                                $type = explode("/", $type);
-                                if(!is_array($type) || count($type) < 2) {
-                                    $msg['TYPE0'] = 'text';
-                                    $msg['TYPE1'] = 'plain';
-                                } else {
-                                    $msg['TYPE0'] = strtolower($type[0]);
-                                    $msg['TYPE1'] = strtolower($type[1]);
-                                }
-                                break;
-                            case 'received':
-                                $aReceived[] = $value;
-                                break;
-                            default: break;
+                            switch($field) {
+                                case 'date':
+                                    $aMsg['date'] = trim(str_replace('  ', ' ', $value));
+                                    break;
+                                case 'x-priority': $aMsg['x-priority'] = ($value) ? $value{0} : 3 ; break;
+                                case 'content-type':
+                                    $type = $value;
+                                    if ($pos = strpos($type, ";")) {
+                                        $type = substr($type, 0, $pos);
+                                    }
+                                    $type = explode("/", $type);
+                                    if(!is_array($type) || count($type) < 2) {
+                                        $aMsg['content-type'] = array('text','plain');
+                                    } else {
+                                        $aMsg['content-type'] = array(strtolower($type[0]),strtolower($type[1]));
+                                    }
+                                    break;
+                                case 'received':
+                                    $aMsg['received'][] = $value;
+                                    break;
+                                default:
+                                    $aMsg[$field] = $value;
+                                    break;
                             }
                         }
                     }
-                }
-                if (count($aReceived)) {
-                    $msg['RECEIVED'] = $aReceived;
                 }
                 break;
             default:
@@ -749,9 +745,7 @@ function parseFetch($aResponse,$aMessageList = array()) {
         }
         $msgi ="$unique_id";
         $msg['UID'] = $unique_id;
-
-        $aMessageList[$msgi] = $msg;
-        ++$msgi;
+        $aMessageList[$msgi] = $aMsg;
     }
     return $aMessageList;
 }

@@ -596,11 +596,11 @@ function sqimap_login ($username, $password, $imap_server_address, $imap_port, $
 
     $host = $imap_server_address;
     $imap_server_address = sqimap_get_user_server($imap_server_address, $username);
-
     $imap_stream = sqimap_create_stream($imap_server_address,$imap_port,$use_imap_tls);
 
     /* Decrypt the password */
     $password = OneTimePadDecrypt($password, $onetimepad);
+
 
     if (($imap_auth_mech == 'cram-md5') OR ($imap_auth_mech == 'digest-md5')) {
     // We're using some sort of authentication OTHER than plain or login
@@ -641,9 +641,9 @@ function sqimap_login ($username, $password, $imap_server_address, $imap_port, $
             $message .= '  Please contact your system administrator.';
         }
     } elseif ($imap_auth_mech == 'login') {
-    // Original IMAP login code
+        // Original IMAP login code
         $query = 'LOGIN "' . quoteimap($username) .  '" "' . quoteimap($password) . '"';
-        $read = sqimap_run_command ($imap_stream, $query, false, $response, $message);
+        $read = sqimap_run_command ($imap_stream, $query, true, $response, $message);
     } elseif ($imap_auth_mech == 'plain') {
         /***
          * SASL PLAIN
@@ -744,22 +744,23 @@ function sqimap_logout ($imap_stream) {
 }
 
 /**
- * Retreive the CAPABILITY string from the IMAP server.
+ * Retrieve the CAPABILITY string from the IMAP server.
  * If capability is set, returns only that specific capability,
  * else returns array of all capabilities.
+ *
+ * @param resource $imap_stream imap connection
+ * @param string $capability capability to check
+ * @return mixed $sqimap_capabilties capabilty array or capability element
  */
 function sqimap_capability($imap_stream, $capability='') {
     global $sqimap_capabilities;
     if (!is_array($sqimap_capabilities)) {
         $read = sqimap_run_command($imap_stream, 'CAPABILITY', true, $a, $b);
-
         $c = explode(' ', $read[0]);
-        for ($i=2; $i < count($c); $i++) {
+        for ($i=2,$iCnt=count($c); $i < $iCnt; $i++) {
             $cap_list = explode('=', $c[$i]);
             if (isset($cap_list[1])) {
-                // FIX ME. capabilities can occure multiple times.
-                // THREAD=REFERENCES THREAD=ORDEREDSUBJECT
-                $sqimap_capabilities[$cap_list[0]] = $cap_list[1];
+                $sqimap_capabilities[$cap_list[0]][$cap_list[1]] = TRUE;
             } else {
                 $sqimap_capabilities[$cap_list[0]] = TRUE;
             }

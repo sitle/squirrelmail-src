@@ -26,6 +26,7 @@ define('SMOPT_TYPE_BOOLEAN', 5);
 define('SMOPT_TYPE_HIDDEN', 6);
 define('SMOPT_TYPE_COMMENT', 7);
 define('SMOPT_TYPE_FLDRLIST', 8);
+define('SMOPT_TYPE_HDRLIST', 9);
 
 /* Define constants for the options refresh levels. */
 define('SMOPT_REFRESH_NONE', 0);
@@ -42,7 +43,7 @@ define('SMOPT_SIZE_NORMAL', 5);
 
 define('SMOPT_SAVE_DEFAULT', 'save_option');
 define('SMOPT_SAVE_NOOP', 'save_option_noop');
-
+define('SMOPT_SAVE_GROUP', 'save_group');
 /**
  * SquirrelOption: An option for Squirrelmail.
  *
@@ -97,7 +98,7 @@ class SquirrelOption {
         }
 
         /* Check for a new value. */
-	if ( !sqgetGlobalVar("new_$name", $this->new_value, SQ_POST ) ) {
+        if ( !sqgetGlobalVar("new_$name", $this->new_value, SQ_POST ) ) {
             $this->new_value = '';
         }
 
@@ -176,6 +177,9 @@ class SquirrelOption {
             case SMOPT_TYPE_FLDRLIST:
                 $result = $this->createWidget_FolderList();
                 break;
+            case SMOPT_TYPE_HDRLIST:
+                $result = $this->createWidget_HeaderList();
+                break;
             default:
                $result = '<font color="' . $color[2] . '">'
                        . sprintf(_("Option Type '%s' Not Found"), $this->type)
@@ -184,7 +188,7 @@ class SquirrelOption {
 
         /* Add the "post script" for this option. */
         $result .= $this->post_script;
-        
+
         /* Now, return the created widget. */
         return ($result);
     }
@@ -246,29 +250,101 @@ class SquirrelOption {
 
         /* Add each possible value to the select list. */
         foreach ($this->possible_values as $real_value => $disp_value) {
-            if ( is_array($disp_value) ) { 
+            if ( is_array($disp_value) ) {
               /* For folder list, we passed in the array of boxes.. */
               $new_option = sqimap_mailbox_option_list(0, $selected, 0, $disp_value);
             } else {
               /* Start the next new option string. */
               $new_option = "<option value=\"$real_value\"";
-  
+
               /* If this value is the current value, select it. */
               if ($real_value == $this->value) {
                  $new_option .= ' selected';
               }
-  
+
               /* Add the display value to our option string. */
               $new_option .= ">$disp_value</option>";
             }
             /* And add the new option string to our select tag. */
             $result .= $new_option;
-        }        
+        }
         /* Close the select tag and return our happy result. */
         $result .= '</select>';
         return ($result);
     }
 
+    function createWidget_HeaderList() {
+        /* extract the value from the possible value list */
+        $aTarget = $aSource = array();
+        foreach ($this->possible_values as $real_value => $disp_value) {
+            if (isset($this->value[$real_value])) {
+                 $aTarget[$real_value] = $disp_value;
+            } else {
+                 $aSource[$real_value] = $disp_value;
+            }
+        }
+        /* Begin the select tag. */
+        $sTargetResult = "<select name=\"$this->name"."[]\" $this->script multiple size=\"$this->size\">";
+
+        /* Add each possible value to the select list. */
+        foreach ($aTarget as $real_value => $disp_value) {
+            /* Start the next new option string. */
+            $new_option = "<option value=new_\"$real_value\"";
+            if (isset($this->reqvals) && in_array($real_value,$this->reqvals)) {
+                $new_option .= ' disabled';
+            }
+            /* Add the display value to our option string. */
+            $new_option .= ">$disp_value</option>";
+            /* And add the new option string to our select tag. */
+            $sTargetResult .= $new_option;
+        }
+        /* Close the select tag and return our happy result. */
+        $sTargetResult .= '</select>';
+
+        /* Begin the select tag. */
+        $sSourceResult = "<select name=\"src_$this->name"."[]\" $this->script multiple size=\"$this->size\">";
+
+        /* Add each possible value to the select list. */
+        foreach ($aSource as $real_value => $disp_value) {
+            /* Start the next new option string. */
+            $new_option = "<option value=\"$real_value\"";
+
+            /* Add the display value to our option string. */
+            $new_option .= ">$disp_value</option>";
+            /* And add the new option string to our select tag. */
+            $sSourceResult .= $new_option;
+        }
+        $sSourceResult .= '</select>';
+
+        ob_start();
+?>
+        <table>
+          <tr>
+            <td colspan="2">Source</td><td colspan="2">Target</td>
+          </tr>
+          <tr>
+            <td rowspan="4"><?php echo $sSourceResult; ?></td>
+            <td rowspan="2" valign="center"><input type="submit" name="add_<?php echo $this->name;?>" value=">"></td>
+            <td rowspan="4"><?php echo $sTargetResult; ?></td>
+            <td><input type="submit" name="moveBottom_<?php echo $this->name;?>" value="<?php echo _("Move To Bottom");?>"></td>
+          </tr>
+          <tr>
+            <td><input type="submit" name="moveDown_<?php echo $this->name;?>" value="<?php echo _("Move Down");?>"></td>
+          </tr>
+          <tr>
+            <td rowspan="2" valign="center"><input type="submit" name="remove_<?php echo $this->name;?>" value="<"></td>
+            <td><input type="submit" name="moveUp_<?php echo $this->name;?>" value="<?php echo _("Move Up");?>"></td>
+          </tr>
+          <tr>
+            <td><input type="submit" name="moveTop_<?php echo $this->name;?>" value="<?php echo _("Move To Top");?>"></td>
+          </tr>
+        </table>
+<?php
+        $result = ob_get_contents();
+        ob_end_clean();
+        /* Close the select tag and return our happy result. */
+        return ($result);
+    }
 
     function createWidget_TextArea() {
         switch ($this->size) {
@@ -300,11 +376,11 @@ class SquirrelOption {
     }
 
     function createWidget_Float() {
-        
+
         global $javascript_on;
 
         // add onChange javascript handler to a regular string widget
-        // which will strip out all non-numeric (period also OK) chars 
+        // which will strip out all non-numeric (period also OK) chars
         if ($javascript_on)
            return preg_replace('/>/', ' onChange="origVal=this.value; newVal=\'\'; '
                     . 'for (i=0;i<origVal.length;i++) { if ((origVal.charAt(i)>=\'0\' '
@@ -360,6 +436,125 @@ class SquirrelOption {
 
     function changed() {
         return ($this->value != $this->new_value);
+    }
+}
+
+class SquirrelOptionGroup {
+
+    function SquirrelOptionGroup($aGroup) {
+        $this->name = $aGroup['name'];
+        /**
+         * Group contains settings which are stored in a serialized array
+         */
+        $this->varname = (isset($aGroup['varname'])) ? $aGroup['varname'] : false;
+        /**
+         * Caption
+         */
+        $this->caption = (isset($aGroup['caption'])) ? $aGroup['caption'] : '';
+
+
+        /* Set the default save function. */
+        if (($type != SMOPT_TYPE_HIDDEN) && ($type != SMOPT_TYPE_COMMENT)) {
+            $this->save_function = SMOPT_SAVE_GROUP;
+        } else {
+            $this->save_function = SMOPT_SAVE_NOOP;
+        }
+
+
+    }
+
+    function addOption($oOption) {
+        $this->options[$oOption->name] = $oOption;
+    }
+
+    /* Set the comment for this optiongroup. */
+    function setComment($comment) {
+        $this->comment = $comment;
+    }
+
+    /* Set the script for this optiongroup. */
+    function setScript($script) {
+        $this->script = $script;
+    }
+
+    /* Set the "post script" for this optiongroup. */
+    function setPostScript($post_script) {
+        $this->post_script = $post_script;
+    }
+
+    /* Set the save function for this optiongroup. */
+    function setSaveFunction($save_function) {
+        $this->save_function = $save_function;
+    }
+
+    function save() {
+        if ($this->save_function) {
+            $this->save_function($this);
+        }
+    }
+
+    function render() {
+    }
+
+}
+
+class SquirrelOptionForm {
+
+    function SquirrelOptionForm() {
+        $this->submit = '';
+    }
+
+    function addOptionGroup($sPage,$aGroup) {
+        $key = $sPage.'_'.$aGroup['name'];
+        if (!isset($this->nodes[$key])) {
+            $this->nodes[$key] = $aGroup;
+            $this->p_c[$sPage][] = $key;
+        } else {
+            return false;
+        }
+    }
+
+    function addOption($sGroup,$oOption) {
+        $this->tree[
+    }
+
+    function addOptionPage($aPage) {
+
+    }
+
+    function handleForm() {
+        foreach ($this->groups as $oGroup) {
+            // retrieve value from global scope
+            if (isset($oGroup->varName) && $oGroup->varName) {
+                $aGroupValue =& $_GLOBAL[$oGroup->varName];
+            } else {
+                $aGroupValue = false;
+            }
+            foreach ($this->options as $oOption) {
+                $mySubmitName = $oOption->submit;
+                if (!$this->submitName) {
+                    if (sqgetGlobalVar($mySubmitName,$submitName,SQ_POST)) {
+                        $this->submitName = $submitName;
+                    } else {
+                        continue;
+                    }
+                } else if ($this->submitName != $mySubmitName) {
+                    continue;
+                }
+                sqgetGlobalVar($oOption->name,$newOptionValue,SQ_POST);
+                if ($aGroupValue) {
+                    if ($newOptionValue != $aGroupValue[$oOption->name]) {
+                        $aGroupValue[$oOption->name] = $newOptionValue;
+                        $this->changed[$oOption->name] = $newOptionValue;
+                    }
+                } else {
+                    $myOptionValue =& $_GLOBAL[$oOption->name];
+                    if ($oOption->changed()) {
+                        $this->changed[$oOption->name] = $newOptionValue;
+                    }
+                }
+            }
+        }
     }
 }
 
@@ -450,6 +645,17 @@ function create_option_groups($optgrps, $optvals) {
             if (isset($optset['post_script'])) {
                 $next_option->setPostScript($optset['post_script']);
             }
+
+            /* If provided, add required values for this option */
+            if (isset($optset['reqvals'])) {
+                $next_option->reqvals = $optset['reqvals'];
+            }
+
+            /* If provided, add extra values for this option */
+            if (isset($optset['other'])) {
+                $next_option->other = $optset['other'];
+            }
+
 
             /* Add this option to the option array. */
             $result[$grpkey]['options'][] = $next_option;
