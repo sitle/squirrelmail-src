@@ -89,20 +89,20 @@ function sqsession_destroy() {
 		global $HTTP_SESSION_VARS;
 		$HTTP_SESSION_VARS = array();
 	}
-	else {
-		session_unregister( session_name() );
+	else {		
+		$_SESSION = array();
 	}
 	
 	/*
 	 * now reset cookies to 5 seconds ago to delete from browser
 	 */
-	 
-	$cookie_params = session_get_cookie_params();
 	
+	session_destroy();
+	$cookie_params = session_get_cookie_params();	
 	setcookie(session_name(), '', time() - 5, $cookie_params['path'], 
 			  $cookie_params['domain']);
-    setcookie('username', '', time() - 5, $base_uri);
-    setcookie('key', '', time() - 5 , $base_uri);
+	setcookie('username', '', time() - 5, $base_uri);
+	setcookie('key', '', time() - 5 , $base_uri);
 	
 }
 	
