@@ -47,5 +47,18 @@ function print_response($response) {
         }
     }
 }
-                                                                                        
+
+/**
+ * Check if plugin is enabled
+ * @param string $plugin_name plugin name
+ * @return boolean
+ */
+function is_plugin_enabled($plugin_name) {
+    global $plugins;
+    if ( in_array($plugin_name,$plugins) ) {
+        return true;
+    } else {
+        return false;
+    }
+}
 ?>
