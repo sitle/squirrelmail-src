@@ -156,7 +156,7 @@ function sqimap_mailbox_create ($imap_stream, $mailbox, $type) {
     if (strtolower($type) == 'noselect') {
         $mailbox .= $delimiter;
     }
-    $mailbox = imap_utf7_encode_local($mailbox);
+
     $read_ary = sqimap_run_command($imap_stream, "CREATE \"$mailbox\"",
                                    true, $response, $message);
     sqimap_subscribe ($imap_stream, $mailbox);
@@ -208,7 +208,7 @@ function sqimap_mailbox_rename( $imap_stream, $old_name, $new_name ) {
             $postfix = '';
         }
         $boxesall = sqimap_mailbox_list($imap_stream);
-        $cmd = 'RENAME "' . quoteIMAP($old_name) . '" "' .  quoteIMAP($new_name) . '"';
+        $cmd = 'RENAME "' . $old_name . '" "' .  $new_name . '"';
         $data = sqimap_run_command($imap_stream, $cmd, true, $response, $message);
         sqimap_unsubscribe($imap_stream, $old_name.$postfix);
         $oldpref = getPref($data_dir, $username, "thread_".$old_name.$postfix);
@@ -222,7 +222,7 @@ function sqimap_mailbox_rename( $imap_stream, $old_name, $new_name ) {
             if ( substr( $box[$p], 0, $l ) == $old_name . $delimiter ) {
                 $new_sub = $new_name . $delimiter . substr($box[$p], $l);
                 if ($imap_server_type == 'cyrus') {
-                    $cmd = 'RENAME "' . quoteIMAP($box[$p]) . '" "' .  quoteIMAP($new_sub) . '"';
+                    $cmd = 'RENAME "' . $box[$p] . '" "' .  $new_sub . '"';
                     $data = sqimap_run_command($imap_stream, $cmd, true,
                                                $response, $message);
                 }

@@ -188,7 +188,7 @@ function php_self () {
  */
 function get_location () {
     
-     global   $_SERVER, $imap_server_type;
+    global $_SERVER, $imap_server_type;
 
     /* Get the path, handle virtual directories */
     $path = substr(php_self(), 0, strrpos(php_self(), '/'));
