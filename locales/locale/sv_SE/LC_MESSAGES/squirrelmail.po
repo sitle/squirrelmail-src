@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: SquirrelMail HEAD\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-11-07 18:57+0200\n"
-"PO-Revision-Date: 2004-11-13 20:41+0100\n"
+"POT-Creation-Date: 2004-11-22 12:42+0100\n"
+"PO-Revision-Date: 2004-11-22 12:51+0100\n"
 "Last-Translator: Fredrik Jervfors <sqm_admin@fimbul.net>\n"
 "Language-Team: Swedish <squirrelmail-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -97,6 +97,9 @@ msgstr "Förnamn"
 
 msgid "Additional info"
 msgstr "Extra information"
+
+msgid "Add to:"
+msgstr "Lägg till:"
 
 msgid "No personal address book is defined. Contact administrator."
 msgstr "Ingen personlig adressbok är angiven. Kontakta administratören."
@@ -529,7 +532,7 @@ msgid "Ex: 63aa7f"
 msgstr "T.ex. 63aa7f"
 
 msgid "Matches"
-msgstr "Överrensstämmer med"
+msgstr "Överensstämmer med"
 
 #, c-format
 msgid "Alternate Identity %d"
@@ -825,20 +828,14 @@ msgstr "Användaren '%s' finns redan"
 msgid "User '%s' does not exist"
 msgstr "Användaren '%s' finns inte"
 
-msgid "Global address book"
-msgstr "Global adressbok"
+msgid "Not a file name"
+msgstr "Ogiltigt filnamn"
 
 msgid "No such file or directory"
 msgstr "Det finns ingen katalog eller fil med det namnet"
 
 msgid "Open failed"
 msgstr "Kunde inte öppna"
-
-msgid "Can not modify global address book"
-msgstr "Kan inte ändra i den globala adressboken"
-
-msgid "Not a file name"
-msgstr "Ogiltigt filnamn"
 
 msgid "Write failed"
 msgstr "Skrivning misslyckades"
@@ -858,6 +855,9 @@ msgstr "Fel vid initiering av adressboksdatabasen."
 #, c-format
 msgid "Error opening file %s"
 msgstr "Fel vid öppnandet av filen %s"
+
+msgid "Global address book"
+msgstr "Global adressbok"
 
 msgid "Error initializing global addressbook."
 msgstr "Fel vid initiering av den globala adressboken"
@@ -1769,9 +1769,6 @@ msgstr "URI för leverantörslänken"
 msgid "Provider Name"
 msgstr "Leverantörsnamn"
 
-msgid "Default Language"
-msgstr "Förvalt språk"
-
 msgid "Top Frame"
 msgstr "Övre ram"
 
@@ -1898,9 +1895,6 @@ msgstr "Förvald typ för olästa brev"
 msgid "Auto Create Special Folders"
 msgstr "Skapa särskilda mappar automatiskt"
 
-msgid "Default Javascript Addressbook"
-msgstr "Förvald javascriptadressbok"
-
 msgid "Auto delete folders"
 msgstr "Kasta mappar automatiskt"
 
@@ -1909,9 +1903,6 @@ msgstr "Aktivera /NoSelect fix för mappar"
 
 msgid "General Options"
 msgstr "Allmänna inställningar"
-
-msgid "Default Charset"
-msgstr "Förvald teckenuppsättning"
 
 msgid "Data Directory"
 msgstr "Datamapp"
@@ -1993,6 +1984,42 @@ msgstr "Fält för nyckel"
 
 msgid "Preferences value field"
 msgstr "Fält för värde"
+
+msgid "Global address book DSN"
+msgstr "Global adressboks-DSN"
+
+msgid "Global address book table"
+msgstr "Global adressbokstabell"
+
+msgid "Allow writing into global address book"
+msgstr "Tillåt att skriva i den globala adressboken"
+
+msgid "Allow listing of global address book"
+msgstr "Tillåt att lista den globala adressboken"
+
+msgid "Language settings"
+msgstr "Språkinställningar"
+
+msgid "Default Language"
+msgstr "Förvalt språk"
+
+msgid "Default Charset"
+msgstr "Förvald teckenuppsättning"
+
+msgid "Enable lossy encoding"
+msgstr "Använd förstörande kodning"
+
+msgid "Address Books"
+msgstr "Adressböcker"
+
+msgid "Default Javascript Addressbook"
+msgstr "Förvald javascriptadressbok"
+
+msgid "Global address book file"
+msgstr "Global adressboksfil"
+
+msgid "Allow writing into global address book file"
+msgstr "Tillåt att skriva i den globala adressboken"
 
 msgid "Themes"
 msgstr "Teman"
@@ -4050,9 +4077,6 @@ msgstr "Avancerad sökning"
 msgid "Folder List"
 msgstr "Lista över mappar"
 
-msgid "Add to:"
-msgstr "Lägg till:"
-
 msgid "Click here to change the sorting of the address list"
 msgstr "Ändra sorteringen av adresslistan"
 
@@ -4135,21 +4159,6 @@ msgstr "Endast avancerad sökning"
 msgid "Both search functions"
 msgstr "Båda sökfunktionerna"
 
-msgid "Global address book DSN"
-msgstr "Global adressboks-DSN"
-
-msgid "Global address book table"
-msgstr "Global adressbokstabell"
-
-msgid "Allow writing into global address book"
-msgstr "Tillåt att skriva i den globala adressboken"
-
-msgid "Allow listing of global address book"
-msgstr "Tillåt att lista den globala adressboken"
-
-msgid "Language settings"
-msgstr "Språkinställningar"
-
 msgid "Show alternative language names"
 msgstr "Visa alternativa språknamn"
 
@@ -4158,9 +4167,6 @@ msgstr "Tillgängliga språk"
 
 msgid "Enable aggressive decoding"
 msgstr "Använd aggressiv avkodning"
-
-msgid "Enable lossy encoding"
-msgstr "Använd förstörande kodning"
 
 msgid "Tweaks"
 msgstr "Finjusteringar"
@@ -4179,15 +4185,6 @@ msgstr "Använd PHP-omkodningsfunktioner"
 
 msgid "Use php iconv functions"
 msgstr "Använd PHP:s iconv-funktioner"
-
-msgid "Address Books"
-msgstr "Adressböcker"
-
-msgid "Global address book file"
-msgstr "Global adressboksfil"
-
-msgid "Allow writing into global address book file"
-msgstr "Tillåt att skriva i den globala adressboken"
 
 msgid "Search Mailing List Archives"
 msgstr "Sök i e-postlistornas arkiv (på engelska)"
