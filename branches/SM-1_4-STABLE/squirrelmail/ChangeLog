@@ -13,11 +13,11 @@ Version 1.4.4 - CVS
   - Send 8-bit username or password as literals (#1081259).
   - configtest.php now checks whether default language is actually
     present.
-  - Fix 'plus instead of space in downloaded file name' issue. Bug
-    is specific to 1.4.4rc1 and 1.5.1cvs (#1076733).
+  - Fix 'plus instead of space in downloaded file name' issue,
+    which was introduced in 1.4.4-RC1 (#1076733).
   - Disabled unmaintained Thai translation.
   - Security: Added hook for Preferences Backend to resolve potential
-    file inclusions
+    insecure file inclusions.
 
 Version 1.4.4 RC1 - 31 December 2004
 ------------------------------------
