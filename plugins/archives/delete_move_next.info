@@ -12,6 +12,10 @@
         next email. It helps me keep up with my constantly overflowing inbox.  
     ';
     $plugin_ary[$name]['changes']  = array(
+        array('version' => '2.0.1',
+              'date'    => mktime(0,0,0,2,14,2001),
+              'desc'    => 'A few bugfixes, and documentation changes.'
+        ),
         array('version' => '2.0',
               'date'    => mktime(0,0,0,2,7,2001),
               'desc'    => 'Made work with 1.0.x, added preferences, added del & prev'
