@@ -1558,7 +1558,7 @@ function sq_deent($attvalue){
     $trans = array_flip($trans);
     unset($trans{"&quot;"});
     while (list($ent, $val) = each($trans)){
-        $attvalue = preg_replace("/$ent*(\W)/si", "$val\\1", $attvalue);
+        $attvalue = preg_replace("/$ent*(\W)/i", "$val\\1", $attvalue);
     }
     /**
      * Now translate numbered entities from 1 to 255 if needed.
@@ -1568,8 +1568,8 @@ function sq_deent($attvalue){
         for ($asc=256; $asc>=0; $asc--){
             if (!in_array($asc, $omit)){
                 $chr = chr($asc);
-                $octrule = '/\&#0*' . $asc . ';*/si';
-                $hexrule = '/\&#x0*' . dechex($asc) . ';*/si';
+                $octrule = '/\&#0*' . $asc . ';*/i';
+                $hexrule = '/\&#x0*' . dechex($asc) . ';*/i';
                 $attvalue = preg_replace($octrule, $chr, $attvalue);
                 $attvalue = preg_replace($hexrule, $chr, $attvalue);
             }
@@ -1710,9 +1710,9 @@ function sq_fixstyle($message, $id, $content){
      * Fix stupid css declarations which lead to vulnerabilities
      * in IE.
      */
-    $match   = Array('/expression/si',
-		     '/behaviou*r/si',
-		     '/binding/si');
+    $match   = Array('/expression/i',
+		     '/behaviou*r/i',
+		     '/binding/i');
     $replace = Array('idiocy', 'idiocy', 'idiocy');
     $content = preg_replace($match, $replace, $content);
     return $content;
@@ -2010,10 +2010,10 @@ function magicHTML($body, $id){
                 "/^src|background/i" =>
                     Array(
                           Array(
-                                "|^([\'\"])\s*\.\./.*([\'\"])|i",
-                                "/^([\'\"])\s*\S+\s*script\s*:.*([\'\"])/i",
-                                "/^([\'\"])\s*mocha\s*:*.*([\'\"])/i",
-                                "/^([\'\"])\s*about\s*:.*([\'\"])/i"
+                                "|^([\'\"])\s*\.\./.*([\'\"])|si",
+                                "/^([\'\"])\s*\S+\s*script\s*:.*([\'\"])/si",
+                                "/^([\'\"])\s*mocha\s*:*.*([\'\"])/si",
+                                "/^([\'\"])\s*about\s*:.*([\'\"])/si"
                                 ),
                           Array(
                                 "\\1$secremoveimg\\2",
@@ -2025,10 +2025,10 @@ function magicHTML($body, $id){
                 "/^href|action/i" =>
                     Array(
                           Array(
-                                "|^([\'\"])\s*\.\./.*([\'\"])|i",
-                                "/^([\'\"])\s*\S+\s*script\s*:.*([\'\"])/i",
-                                "/^([\'\"])\s*mocha\s*:*.*([\'\"])/i",
-                                "/^([\'\"])\s*about\s*:.*([\'\"])/i"
+                                "|^([\'\"])\s*\.\./.*([\'\"])|si",
+                                "/^([\'\"])\s*\S+\s*script\s*:.*([\'\"])/si",
+                                "/^([\'\"])\s*mocha\s*:*.*([\'\"])/si",
+                                "/^([\'\"])\s*about\s*:.*([\'\"])/si"
                                 ),
                           Array(
                                 "\\1#\\2",
@@ -2037,16 +2037,16 @@ function magicHTML($body, $id){
                                 "\\1#\\2"
                                 )
                         ),
-                "/^style/si" =>
+                "/^style/i" =>
                     Array(
                           Array(
                                 "/expression/i",
                                 "/binding/i",
                                 "/behaviou*r/i",
-                                "|url\(([\'\"])\s*\.\./.*([\'\"])\)|i",
-                                "/url\(([\'\"])\s*\S+\s*script\s*:.*([\'\"])\)/i",
-                                "/url\(([\'\"])\s*mocha\s*:.*([\'\"])\)/i",
-                                "/url\(([\'\"])\s*about\s*:.*([\'\"])\)/i"
+                                "|url\(([\'\"])\s*\.\./.*([\'\"])\)|si",
+                                "/url\(([\'\"])\s*\S+\s*script\s*:.*([\'\"])\)/si",
+                                "/url\(([\'\"])\s*mocha\s*:.*([\'\"])\)/si",
+                                "/url\(([\'\"])\s*about\s*:.*([\'\"])\)/si"
                                ),
                           Array(
                                 "idiocy",
@@ -2066,7 +2066,7 @@ function magicHTML($body, $id){
          * to false.
          */
          array_push($bad_attvals{'/.*/'}{'/^src|background/i'}[0],
-                    '/^([\'\"])\s*https*:.*([\'\"])/i');
+                    '/^([\'\"])\s*https*:.*([\'\"])/si');
          array_push($bad_attvals{'/.*/'}{'/^src|background/i'}[1],
                     "\\1$secremoveimg\\2");
          array_push($bad_attvals{'/.*/'}{'/^style/i'}[0],
@@ -2076,7 +2076,7 @@ function magicHTML($body, $id){
     }
 
     $add_attr_to_tag = Array(
-                             "/^a$/si" => Array('target'=>'"_new"')
+                             "/^a$/i" => Array('target'=>'"_new"')
                              );
     $trusted = sq_sanitize($body, 
                            $tag_list, 
@@ -2089,7 +2089,7 @@ function magicHTML($body, $id){
                            $message,
                            $id
                            );
-    if (preg_match("|$secremoveimg|si", $trusted)){
+    if (preg_match("|$secremoveimg|i", $trusted)){
         $has_unsafe_images = true;
     }
     return $trusted;
