@@ -50,7 +50,7 @@ class input_textbox extends input_base
    */
   function input_textbox($name, $regex = NULL, $value = NULL, $caption = NULL, $required = TRUE) 
   {
-    $this->type = 'textbox';
+    $this->type = 'text';
     $this->caption = $caption;
     parent::input_base($name, $regex, $value, $required);
   }
@@ -69,19 +69,20 @@ class input_textbox extends input_base
     elseif ( $size < INPUT_TEXTBOX_SIZE_MIN )
       $size = INPUT_TEXTBOX_SIZE_MIN;
 
-    if ( $this->form->submitted() && $this->required && 
-         ( !$this->wasSet || !$this->wasValid ) ) 
+    if ( $this->form->submitted() && 
+         ( ( $this->required && !$this->wasSet ) || 
+           ( $this->wasSet && !$this->wasValid ) ) )
       $class = 'error';
 
-    $type  = 'type='.$this->type.'" ';
-    $name  = 'name="'.$this->name.'" ';
-    $value = 'value="'.htmlentities($this->value).'" ';
-    $size  = 'size='.$size.'" ';
-    $class = ( $class == NULL ) ? ''  : 'class="'.$class.'" ';
-    $maxlength = ( $maxlength == 0 )  ? ''   : 'maxlength="'.$maxlength.'" ';
+    $type  = ' type="'.$this->type.'"';
+    $name  = ' name="'.$this->name.'"';
+    $value = ' value="'.htmlentities($this->value).'"';
+    $size  = ' size="'.$size.'"';
+    $class = ( $class == NULL ) ? ''  : ' class="'.$class.'"';
+    $maxlength = ( $maxlength == 0 )  ? ''   : ' maxlength="'.$maxlength.'"';
     $required  = ( $this->required )  ? ' *' : '';
 
-    echo '<input '.$type.$name.$value.$size.$maxlength.$class.'" />'.$required;
+    echo '<input'.$type.$name.$value.$size.$maxlength.$class.' />'.$required;
   }
 }
 
@@ -112,32 +113,12 @@ class input_passwordbox extends input_textbox
    * @param str value The initial contents value.
    * @param str caption The caption to display by the textbox.
    * @param bool required Whether the texbox is allowed to contain no value.
-   * @param object optional Textbox to verify contents against - value of this box
-   *                        must match value of other box (e.g. password verify)
    */
-  function input_passwordbox($name, $regex = NULL, $value = NULL, $caption = NULL, 
-                             $verify = NULL, $required = TRUE) 
+  function input_passwordbox($name, $regex = NULL, $value = NULL, $caption = NULL, $required = TRUE) 
   {
-    $this->verify = $verify;
     parent::input_textbox($name, $regex, $value, $caption, $required);
     $this->type='password';
   }
-
-  /**
-   * Sets the value of the object.
-   *
-   * @method set
-   * @param str value The value to set.
-   * @return bool TRUE on success.
-   */
-  function set($value)
-  {
-    if ( $this->verify && $value == $this->verify->value )
-      return parent::set($value);
-
-    return FALSE;
-  }
-
 }
 
 //------------ input_hiddenbox --------------------------------------------------
