@@ -38,7 +38,7 @@ function charset_decode ($charset, $string) {
     set_my_charset() ;
 
     /* controls cpu and memory intensive decoding cycles */
-    $agresive_decoding = false;
+    $aggressive_decoding = false;
 
     $decode=fixcharset($charset);
     $decodefile=SM_PATH . 'functions/decode/' . $decode . '.php';
