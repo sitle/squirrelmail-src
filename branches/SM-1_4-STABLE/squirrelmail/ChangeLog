@@ -50,6 +50,10 @@ Version 1.4.4 - CVS
   - Corrected poor English in a string (#775978).
   - Corrected bug in SquirrelSpell that'd put the corrected spelling on the wrong
     line if quoting inline, or below the original email (#906217).
+  - LC_NUMERIC locale is set to C. Some plugins might use decimal delimiters 
+    incorrectly (#1027130).
+  - Turkish translation uses C character case conversion rules. Fixes php and
+    squirrelmail functions are assume English conversion rules.
 
 Version 1.4.3a - 2 June 2004
 ----------------------------
