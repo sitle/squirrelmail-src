@@ -184,7 +184,7 @@ if (! isset($_GET['action']) || $_GET['action'] != 'spam') {
     echo html_tag( 'p', '', 'center' ) .
          '[<a href="spamoptions.php?action=spam">' . _("Edit") . '</a>]' .
          ' - [<a href="../../src/options.php">' . _("Done") . '</a>]</center><br><br>';
-    printf( _("Spam is sent to <b>%s</b>"), ($filters_spam_folder?$filters_spam_folder:_("[<i>not set yet</i>]") ) );
+    printf( _("Spam is sent to <b>%s</b>"), ($filters_spam_folder?htmlspecialchars($filters_spam_folder):_("[<i>not set yet</i>]") ) );
     echo '<br>';
     printf( _("Spam scan is limited to <b>%s</b>"), (($filters_spam_scan == 'new')?_("New Messages Only"):_("All Messages") ) );
     echo '</p>'.
