@@ -189,7 +189,6 @@ $imapPort = 143;
  *   exchange
  *   uw
  *   macosx
- *   mercury32
  *   other
  *
  * Please note that this changes only some of server settings.
