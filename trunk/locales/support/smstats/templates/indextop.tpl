@@ -1,6 +1,6 @@
 <?php
 ob_start("ob_gzhandler");
-$title="KDE's GUI messages translation statistics";
+$title="Translation statistics";
 $location="/ KDE Internationalization Home / GUI Statistics";
 include("header.php");
 ?>
@@ -34,7 +34,7 @@ include("header.php");
 </td></tr></table>
 </td></tr></table>
 
-<img src="../img/px.gif" height="5" width="1"><br>
+<img src="../img/px.png" height="5" width="1"><br>
           
 <table cellspacing="0" cellpadding="0" border="0" bgcolor="#8b898b" width="100%"><tr><td>
 <table cellspacing="1" cellpadding="2" border="0" width="100%">
@@ -64,23 +64,23 @@ sorted by team code.<br>
 
 <br>
 <b>Legend:</b><br>
-&nbsp;&nbsp;<img src="../img/bar0.gif" height="15" width="30"> - translated messages<br>
-&nbsp;&nbsp;<img src="../img/bar4.gif" height="15" width="30"> - fuzzy messages<br>
-&nbsp;&nbsp;<img src="../img/bar1.gif" height="15" width="30"> - untranslated messages<br>
-&nbsp;&nbsp;<img src="../img/bar6.gif" height="15" width="30"> - info not available<br>
+&nbsp;&nbsp;<img src="../img/bar0.png" height="15" width="30"> - translated messages<br>
+&nbsp;&nbsp;<img src="../img/bar4.png" height="15" width="30"> - fuzzy messages<br>
+&nbsp;&nbsp;<img src="../img/bar1.png" height="15" width="30"> - untranslated messages<br>
+&nbsp;&nbsp;<img src="../img/bar6.png" height="15" width="30"> - info not available<br>
 <br>
 </font>
 
 
-<img src="../img/px.gif" height="5" width="1"><br>
+<img src="../img/px.png" height="5" width="1"><br>
 <table cellpadding="1" cellspacing="0" border="0" width="100%" bgcolor="#8b898b">
 <tr><td>
 <table cellpadding="2" cellspacing="0" border="0" width="100%" bgcolor="#ececec">
 <tr align="center"><td><font size="2">
 
 <a href="../index.php">index</a> |
-<a href="../about.html">about</a> |
-<a href="../help.html">help</a>
+<a href="../about.php">about</a> |
+<a href="../help.php">help</a>
 
 </font></td></tr></table>
 </td></tr></table>

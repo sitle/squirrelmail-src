@@ -10,8 +10,8 @@
 
 
 
-include("jpgraph.php");
-include("jpgraph_line.php");
+include("includes/jpgraph.php");
+include("includes/jpgraph_line.php");
 include("history-functions.php");
 include("history-config.php");
 

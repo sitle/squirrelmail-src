@@ -13,12 +13,12 @@ $debug=100;
 
 
 $prog="cleanup-guistats";
-$adminemail="admin@i18n.kde.org";
+$adminemail="tomas@topolis.lt";
 
 // MySQL connection data
-$sql_user   = "gui_editor";
+$sql_user   = "smstats";
 $sql_pass   = "";
-$sql_host   = "127.0.0.1";
-$sql_db     = "guistats";
+$sql_host   = "localhost";
+$sql_db     = "smstats";
 
 ?>

@@ -24,7 +24,7 @@ DEFINE("CACHE_DIR","/tmp/jpgraph_cache/");
 // Directory for jpGraph TTF fonts. Must end with '/'
 // Note: The fonts must follow the naming conventions as
 // used by the supplied TTF fonts in JpGraph.
-DEFINE("TTF_DIR","/home/httpd/php/");
+DEFINE("TTF_DIR","/home/www/smstats.topolis.inet/stats/fonts/");
 
 // Cache directory specification for use with CSIM graphs that are
 // using the cache.

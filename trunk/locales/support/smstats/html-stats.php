@@ -9,8 +9,8 @@
 ////////////////////////////////////////////////////////////////////////////
 
 
-
-include("fasttemplate.php");
+dl('mysql.so');
+include("includes/fasttemplate.php");
 include("html-functions.php");
 include("html-config.php");
 
@@ -28,7 +28,7 @@ if ($argv[1]=="") {
 $outbyteam     = "$outdir/$rev/index.php";
 $outbypackage  = "$outdir/$rev/packages.php";
 $outfullinfo   = "$outdir/$rev/fullinfo.php";
-$outtop10      = "$outdir/$rev/top10.php";
+$outtop        = "$outdir/$rev/top.php";
 $outessential  = "$outdir/$rev/essential.php";
 $outgeneral    = "$outdir/$rev/general.php";
 $outpartial    = "$outdir/$rev/partial/index.php";
@@ -54,11 +54,11 @@ $row=mysql_fetch_row($result);
 $currdate=$row[0];
 
 
-$tplt2 = new FastTemplate("./");
-$tplt3 = new FastTemplate("./");
-$tplp2 = new FastTemplate("./");
-$tplp3 = new FastTemplate("./");
-$tplp4 = new FastTemplate("./");
+$tplt2 = new FastTemplate("./templates/");
+$tplt3 = new FastTemplate("./templates/");
+$tplp2 = new FastTemplate("./templates/");
+$tplp3 = new FastTemplate("./templates/");
+$tplp4 = new FastTemplate("./templates/");
 
 $tplt2->define(array("level2byteam"    => "level2byteam.tpl"));
 $tplt3->define(array("level3byteam"    => "level3byteam.tpl"));
@@ -128,7 +128,7 @@ if (!is_dir("$outdir/$rev/partial")) {
 make_infobyteam($outbyteam);
 make_infobypackage($outbypackage);
 make_fullinfo($outfullinfo);
-make_top10($outtop10);
+make_top($outtop);
 make_essential($outessential);
 make_generalinfo($outgeneral);
 make_partial($outpartial);
