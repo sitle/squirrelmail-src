@@ -30,7 +30,7 @@ function day_header() {
          "         <TR><TH WIDTH=\"5%\" ALIGN=LEFT><A HREF=\"day.php?year=$prev_year&month=$prev_month&day=$prev_day\">&lt;&nbsp;".
          date_intl('D',$prev_date)."</A></TH>\n" .
          "         <TH WIDTH=\"75%\">" .
-         date_intl( 'l, F d Y', mktime(0, 0, 0, $month, $day, $year)) . "</TH>\n" .
+         date_intl( _("l, F j Y"), mktime(0, 0, 0, $month, $day, $year)) . "</TH>\n" .
          "         <TH ALIGN=RIGHT><A HREF=\"day.php?year=$next_year&month=$next_month&day=$next_day\">".
          date_intl('D',$next_date)."&nbsp;&gt;</A></TH></TR>\n";
 }
