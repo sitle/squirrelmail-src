@@ -68,6 +68,8 @@ Version 1.4.4 - CVS
     enabled.
   - Removed command line option unsupported by qmail-inject in
     class/deliver/Deliver_SendMail.class.php. Thanks to Ken Brush.
+  - Ported charset encoding patches from devel. Closes bug #806698 and
+    patch #550843.
 
 Version 1.4.3a - 2 June 2004
 ----------------------------
