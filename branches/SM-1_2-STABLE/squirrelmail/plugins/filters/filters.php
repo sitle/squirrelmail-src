@@ -335,10 +335,16 @@ function filter_search_and_delete($imap, $where, $what, $where_to, $user_scan) {
     } else {
         $search_str = 'SEARCH CHARSET US-ASCII ' . $category . ' ';
     }
+    
     if ($where == "Header") {
        $what = explode(':', $what);
-       $where = trim($where . ' ' . $what[0]);
-       $what = addslashes(trim($what[1]));
+       if (isset($what[1])) {
+          $where = trim($where . ' ' . $what[0]);
+       } else {
+          $where = 'TEXT';
+       }
+//       $where = trim($where . ' ' . (isset($what[1])?$what[0]:'*'));
+       $what = addslashes(trim( (isset($what[1])?$what[1]:$what[0]) ));
     }
     $search_str .= $where . ' {' . strlen($what) . "}\r\n" . $what . "\r\n";
     
@@ -410,7 +416,7 @@ function spam_filters($imap_stream) {
                   $sid.' FETCH 1:* (FLAGS BODY.PEEK[HEADER.FIELDS ' .
                      "(RECEIVED)])\r\n");
         } else {
-	    $read[0] = trim($read[0]);
+        $read[0] = trim($read[0]);
             $i = 0;
             $imap_query = $sid.' FETCH ';
             $Chunks = explode(' ', $read[0]);
