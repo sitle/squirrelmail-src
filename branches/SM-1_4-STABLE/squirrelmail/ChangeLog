@@ -10,6 +10,9 @@ Version 1.4.2 -- CVS
     the time.
   - Fix SquirrelSpell JS incompatibility with other plugins that use forms like
     Link Buttons (#774454).
+  - Fix when forwarding messages as attachment from message list, the displayed
+    subject was wrong (appearing to the user that the wrong messages were attached).
+    Closes #772371.
 
 Version 1.4.1 -- 7 July 2003
 ----------------------------
