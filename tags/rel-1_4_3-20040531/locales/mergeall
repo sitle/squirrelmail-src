@@ -1,0 +1,15 @@
+#!/bin/sh
+STRINGS=`ls po/*.pot | sed 's/^po\///' | sed 's/.pot$//'`
+for trans in `ls locale/`; do
+    echo ${trans}
+    for string in $STRINGS ; do
+	if [ -f locale/${trans}/LC_MESSAGES/${string}.po ] ; then
+	    echo ${string}
+            mv locale/${trans}/LC_MESSAGES/${string}.po \
+    		locale/${trans}/LC_MESSAGES/${string}.po.bak
+	    msgmerge --no-location locale/${trans}/LC_MESSAGES/${string}.po.bak \
+		po/${string}.pot > locale/${trans}/LC_MESSAGES/${string}.po
+#            rm locale/${trans}/LC_MESSAGES/${string}.po.bak
+	fi
+    done
+done
