@@ -430,6 +430,7 @@ function getTimeStamp($dateParts) {
         } else {
             $obs_zone = $dateParts[0];
         }
+
         return getGMTSeconds($stamp, $obs_zone);
     } else {
         return getGMTSeconds($stamp, $dateParts[0]);
