@@ -94,6 +94,8 @@ class smdoc extends foowd
   {
     if ( $this->database )
       $this->database->destroy(); // close DB
+    if ( $this->debug )
+      $this->debug->display();  // dump debug output
     unset($this);               // unset object
   }
 
@@ -185,17 +187,14 @@ class smdoc extends foowd
    *
    * @param  array where Array of values to find object by
    * @param  mixed in_source Source to get object from
-   * @param  array indexes Array of indexes to fetch
    * @param  bool  setWorkspace get specific workspace id (or any workspace ok)
    * @return mixed The retrieved object or an array containing the retrieved object and the joined objects.
    */
-  function &getObj($where = NULL, $in_source = NULL, $indexes = NULL, 
-                   $setWorkspace = TRUE)
+  function &getObj($where = NULL, $in_source = NULL, $setWorkspace = TRUE)
   {
-    $this->track('smdoc->getObj', $where, $in_source);
+    $this->track('smdoc->getObj', $where, $in_source, $setWorkspace);
 
     $new_obj = NULL;
-
     if ( $in_source == NULL && isset($where['classid']) )
     {
       switch($where['classid'])
@@ -205,22 +204,19 @@ class smdoc extends foowd
           break;
         case EXTERNAL_CLASS_ID:
           if ( isset($where['objectid']) )
-            $oid = $where['objectid'];
-          else
-            $oid = $this->config_settings['site']['default_objectid'];
-            $new_obj =& smdoc_external::factory($this, $oid);
+            $new_obj =& smdoc_external::factory($this, $where['objectid']);
           break;
       }
     }
 
     if ( $new_obj == NULL )
     {
-      $new_obj = &$this->database->getObj($where, $in_source, $indexes, $setWorkspace);
+      $new_obj = &$this->database->getObj($where, $in_source, $setWorkspace);
       if ( $new_obj == NULL && $setWorkspace &&
            isset($where['workspaceid']) && $where['workspaceid'] != 0 )
       {
         $where['workspaceid'] = 0;
-        $new_obj = &$this->database->getObj($where, $in_source, $indexes, $setWorkspace);
+        $new_obj = &$this->database->getObj($where, $in_source, $setWorkspace);
       }
     }
 

@@ -135,7 +135,7 @@ class smdoc_db
     $this->conn->setFetchMode(DB_FETCHMODE_ASSOC);
  
     $this->foowd = &$foowd;
-    $this->objects = new smdoc_obj_cache();
+    $this->objects =& new smdoc_object_cache($foowd, $this);
     $this->table = $db['db_table'];
 
     if ( isset($foowd->config_settings['archive']) )
@@ -501,6 +501,14 @@ class smdoc_db
     $object = FALSE;
 
     $query = $this->query($select);
+    if ( $query === FALSE )
+    {
+      // Query failed, check for correct fields (possibly create Table)
+      $fields = $this->getFields($in_source);
+      if ( $fields !== FALSE )
+        $query = $this->query($select);
+    }
+
     if ( $query )
     {
       $result = $this->fetch($query);
@@ -509,7 +517,7 @@ class smdoc_db
         $object = unserialize($result['object']);
         $object->foowd = &$this->foowd; // create Foowd reference
         $object->foowd_source = $in_source; // set source for object
-        $this->addToLoadedReference($object, $in_source);
+        $this->addToLoadedReference($object);
       }
     }
 
@@ -552,7 +560,7 @@ class smdoc_db
       $return[$record['version']] = unserialize($record['object']);
       $return[$record['version']]->foowd = &$this->foowd; // create Foowd reference
       $return[$record['version']]->foowd_source = $in_source;
-      $this->addToLoadedReference($return[$record['version']], $in_source);
+      $this->addToLoadedReference($return[$record['version']]);
       if ($record['version'] > $latest) {
         $latest = $record['version'];
       }
@@ -650,7 +658,7 @@ class smdoc_db
           $return[$id] = unserialize($record['object']);
           $return[$id]->foowd = &$this->foowd; // create Foowd reference
           $return[$id]->source = $in_source;
-          $this->addToLoadedReference($return[$id], $in_source);
+          $this->addToLoadedReference($return[$id]);
         } 
         else 
           $return[$id] = $record;
@@ -910,22 +918,22 @@ class smdoc_db
       if ( $makeTable )
         $result = call_user_func($makeTable, $this->foowd);
       else
-        $result = $this->query('CREATE TABLE '.$table.' (
-				\'objectid\' int(11) NOT NULL default \'0\',
-				\'version\' int(10) unsigned NOT NULL default \'1\',
-				\'classid\' int(11) NOT NULL default \'0\',
-				\'workspaceid\' int(11) NOT NULL default \'0\',
-				\'object\' longblob,
-				\'title\' varchar(255) NOT NULL default \'\',
-				\'updated\' datetime NOT NULL default \'0000-00-00 00:00:00\',
-				PRIMARY KEY (\'objectid\',\'version\',\'classid\',\'workspaceid\'),
-				KEY \'idxtblObjectTitle\'(\'title\'),
-				KEY \'idxtblObjectupdated\'(\'updated\'),
-				KEY \'idxtblObjectObjectid\'(\'objectid\'),
-				KEY \'idxtblObjectClassid\'(\'classid\'),
-				KEY \'idxtblObjectVersion\'(\'version\'),
-			  KEY \'idxtblObjectWorkspaceid\'(\'workspaceid\')
-			)');
+        $result = $this->query('CREATE TABLE `'.$table.'` (
+	`objectid`    int(11) NOT NULL default \'0\',
+	`version`     int(10) unsigned NOT NULL default \'1\',
+	`classid`     int(11) NOT NULL default \'0\',
+	`workspaceid` int(11) NOT NULL default \'0\',
+	`title`       varchar(32) NOT NULL default \'\',
+	`updated`     datetime NOT NULL default \'0000-00-00 00:00:00\',
+	`object`      longblob,
+	PRIMARY KEY (`objectid`,`version`,`classid`,`workspaceid`),
+	KEY `idxtblObjectTitle`       (`title`),
+	KEY `idxtblObjectupdated`     (`updated`),
+	KEY `idxtblObjectObjectid`    (`objectid`),
+	KEY `idxtblObjectClassid`     (`classid`),
+	KEY `idxtblObjectVersion`     (`version`),
+	KEY `idxtblObjectWorkspaceid` (`workspaceid`)
+	);');
       
       // create table worked, try getFields again.
       if ( $result !== FALSE )

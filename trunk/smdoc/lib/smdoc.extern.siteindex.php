@@ -45,8 +45,9 @@ function sqmindex(&$foowd)
   $foowd->track('sqmindex');
 
   /*
-   * Print site content, leave out groups, workspaces
+   * Print site content, leave out groups, workspaces, name_lookup
    */
+  $where['notshort'] = array('index' => 'classid', 'op' => '!=', 'value' => META_SMDOC_NAME_LOOKUP_CLASS_ID);
   $orderby = array('title', 'classid', 'version');
   $indices = array('DISTINCT objectid','classid','title','workspaceid','updated');
  
@@ -55,7 +56,7 @@ function sqmindex(&$foowd)
    * where and orderby clauses from above, no limit (all), want only array, not 
    * actual objects, and yes, set the workspaceid appropriately.
    */
-  $objects =& $foowd->getObjList($indices, NULL, NULL,
+  $objects =& $foowd->getObjList($indices, NULL, $where,
                                  $orderby, NULL, 
                                  FALSE, TRUE);
   $list_objects = array();
