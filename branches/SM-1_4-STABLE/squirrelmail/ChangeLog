@@ -45,6 +45,8 @@ Version 1.4.2 -- CVS
   - Fix reply all address string in case the personal name contained a comma 
     (address separator).
   - Added Malay translation.
+  - conf.pl will no longer offer to detect login methods if TLS is being used,
+    as the detection code does not support it.
 
 Version 1.4.1 -- 7 July 2003
 ----------------------------
