@@ -67,7 +67,7 @@ require_once(SM_PATH . 'include/load_prefs.php');
     $translate_show_read = getPref($data_dir, $username, 'translate_show_read');
     $translate_show_send = getPref($data_dir, $username, 'translate_show_send');
     $translate_same_window = getPref($data_dir, $username, 'translate_same_window');
-  
+
 
    function ShowOption($Var, $value, $Desc)
    {
@@ -105,32 +105,33 @@ require_once(SM_PATH . 'include/load_prefs.php');
    <ul>
 <?php
     ShowTrad( 'Babelfish',
-              _("Maximum of 1000 characters translated, powered by Systran").
-	      "<br>".sprintf(_("Number of supported language pairs: %s"),"19")." " ,
+              _("Maximum of 150 words translated, powered by Systran").
+              '<br />'.sprintf(_("Number of supported language pairs: %s"),'36').' ' ,
               'http://babelfish.altavista.com/' );
 //    ShowTrad( 'Translator.Go.com',
-//              _("10 language pairs, maximum of 25 kilobytes translated, powered by Systran"),
+//              _("Maximum of 25 kilobytes translated, powered by Systran").
+//              '<br />'.sprintf(_("Number of supported language pairs: %s"),'10').' ' ,
 //              'http://translator.go.com/' );
     ShowTrad( 'Dictionary.com',
               _("No known limits, powered by Systran").
-	      "<br>".sprintf(_("Number of supported language pairs: %s"),"12")." " ,
+              '<br />'.sprintf(_("Number of supported language pairs: %s"),'24').' ' ,
               'http://www.dictionary.com/translate' );
     ShowTrad( 'InterTran',
               _("No known limits, powered by Translation Experts' InterTran").
-	      "<br>".sprintf(_("Number of supported languages: %s"),"28")." " ,
+              '<br />'.sprintf(_("Number of supported languages: %s"),'29').' ' ,
               'http://www.tranexp.com/' );
     ShowTrad( 'GPLTrans',
               _("No known limits, powered by GPLTrans (free, open source)").
-	      "<br>".sprintf(_("Number of supported language pairs: %s"),"8")." " ,
+              '<br />'.sprintf(_("Number of supported language pairs: %s"),'8').' ' ,
               'http://www.translator.cx/' );
     ShowTrad( 'OTEnet',
               _("Hellenic translations, no known limits, powered by Systran").
-	      "<br>".sprintf(_("Number of supported language pairs: %s"),"4")." " ,
+              '<br />'.sprintf(_("Number of supported language pairs: %s"),'20').' ' ,
               'http://systran.otenet.gr/' );
     ShowTrad( 'PROMT',
               _("Russian translations, maximum of 500 characters translated").
-	      "<br>".sprintf(_("Number of supported language pairs: %s"),"12")." " ,
-              'http://www.translate.ru/' );
+              '<br />'.sprintf(_("Number of supported language pairs: %s"),'16').' ' ,
+              'http://www.online-translator.com/' );
 ?>
    </ul>
    <p>
