@@ -152,7 +152,7 @@ if ($allowsound == "true") {
             "window.open('testsound.php?sound='+media_sel.options[media_sel.selectedIndex].value, 'TestSound'," .
             "'width=150,height=30,scrollbars=no');" .
             'return false;' .
-            ' /"></td></tr>' .
+            '" /></td></tr>' .
             html_tag( 'tr', "\n" .
                 html_tag( 'td', _("Current File:"), 'right', '', 'nowrap' ) .
                     html_tag( 'td', '<input type="hidden" value="' .
