@@ -131,6 +131,11 @@ includes.
 
 <p>end ebullient 12/4/2002</p>
 </div>
+<div class="tassium">
+tassium 12/12/2002<br />
+<p><b>Version Checking II</b></p>
+<p>Plugins should have a standardized interface for reporting their version. I'd like to suggest that all plugins be required to implement plugin_name_version(), which should return a version string.</p>
+</div>
 
 </body>
 </html>
