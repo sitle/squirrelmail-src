@@ -36,7 +36,8 @@ Version 1.4.2 -- CVS
     to iso-8859-4. Fix allows to use national letters in folder names correctly.
   - Reintroduced mailbox-tree caching in order to limit the number of IMAP calls.
   - Fix for delete_move_next plugin when using server threading.
-
+  - Calendar plugin: in month view, display events on the same day sorted by time,
+    and include the time of the event in its tooltip.
 
 Version 1.4.1 -- 7 July 2003
 ----------------------------
