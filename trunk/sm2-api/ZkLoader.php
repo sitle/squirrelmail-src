@@ -1,8 +1,8 @@
 <?php
 
 /*
- * Zookeeper
- * Copyright (c) 2001 Paul Joseph Thompson
+ * Zookeeper: ZkLoader.php
+ * Copyright (c) 2001-2002 The Zookeeper Project Team
  * Licensed under the GNU GPL. For full terms see the file COPYING.
  *
  * $Id$
@@ -11,99 +11,31 @@
 /**
  * ZkLoader
  *
- * The ZkLoader class allows the resources provides by Zookeeper to be
- * loaded by an external application.
+ * The ZkLoader class allows the services provides by Zookeeper to
+ * be loaded by an application. It, in essence, serves as a dynamic
+ * library loader for the Zookeeper libraries.
  */
 class ZkLoader {
-
-    var $name = 'zkLoader';
-    var $ver = '$Id$';
-
-    var $bag_reg;   // Sessionized properties from all the services
-
     var $appname;
     var $zkhome;
-    var $libhome;
+    var $svchome;
     var $modhome;
 
-    /** CONSTRUCTOR
+    /**
      * Create a new ZkLoader object.
      *
      * @param string $appname name of the calling application
      * @param string $zookeeper_home home directory for zookeeper
      */
     function ZkLoader($appname, $zkhome) {
-
-        global $bag_reg;
-
-        session_start();
-        session_register( 'bag_reg' );
-
-        if( !is_array( $bag_reg ) ) {
-            $bag_reg = array( 'zkLoader' => array( 'foo' => 'one' ) );
-        }
-
-        $this->bag_reg = $bag_reg;
-
         $this->appname = $appname;
         $this->zkhome = $zkhome;
-        $this->libhome = "$zkhome/services";
+        $this->svchome = "$zkhome/services";
         $this->modhome = "$zkhome/modules";
 
         /* Load the core Zookeeper constants and functions files. */
         require_once("$zkhome/ZkConstants.php");
         require_once("$zkhome/ZkFunctions.php");
-    }
-
-    /**
-     * Fills the session bag.
-     *
-     */
-    function Register() {
-
-        global $bag_reg;
-
-        $bag_reg = $this->bag_reg;
-
-    }
-
-    function RequireCode( $svcname, $options = array(), $modname = '' ) {
-
-        $svcfile    = "$this->libhome/$svcname/load.php";
-        $srvfile    = "$this->libhome/$svcname/service.php";
-        $svcfunc    = "zkload_$svcname";
-        $svclocator = 'zkload_'.$svcname.'_module_locator';
-        $modfile    = "$this->modhome/$svcname/$modname.php";
-
-        if ( zkCheckName( $svcname ) ) {
-            if ( file_exists( $svcfile ) ) {
-                // There is a preload code
-                require_once( $svcfile );
-                $code_preload = "\$ret = $svcfunc( &\$this, '$svcname' );";
-                /* Run the preload code string. */
-                eval( $code_preload );
-            } elseif ( file_exists( $srvfile ) ) {
-                // This is a service without preloading
-                require_once( $srvfile );
-                $ret = TRUE;
-            } else {
-                $ret = FALSE;
-            }
-            if( $ret ) {
-                if ( function_exists( $svclocator ) ) {
-                    $code_locator = "\$modfile .= $svclocator( $modname );";
-                    eval( $code_locator );
-                }
-                if ( zkCheckName($modname) && file_exists($modfile) ) {
-                    require_once($modfile);
-                }
-            }
-        } else {
-            $ret = FALSE;
-        }
-
-        return( $ret );
-
     }
 
     /**
@@ -115,51 +47,73 @@ class ZkLoader {
      *
      * @return bool/string
      */
-    function &loadService($svcname, $options = array(), $modname = '', $serial = '' ) {
-
-        if( $serial == '' ) {
-            $serial = zkSS();
-        }
-
+    function &loadService($svcname, $options = array(), $modname = '') {
         $svcclass = "ZkSvc_$svcname";
-        if( $this->RequireCode($svcname, $options, $modname ) ) {
-            /* Run the service load code string. */
-            $code_loadservice = "\$service = new $svcclass( \$options, \$this, \$serial );";
-            eval($code_loadservice);
+        $svcfile  = "$this->svchome/$svcname/service.php";
+        $result   = true;
 
-            /* Check if we need to load a module for this service. */
-            if ($modname != '') {
-                $this->loadModule($service, $options, $modname);
-            }
-            $ret = $service;
+        /**
+         * Check the service name, and then load it.
+         * For now, keep these two checks seperate because later we want
+         * to do a nicer job of error handling here then just "false".
+         */
+        if (!zkCheckName($svcname)) {
+            $result = false;
+        } else if (!file_exists($svcfile)) {
+            $result = false;
         } else {
-            $ret = FALSE;
+            require_once($svcfile);
+
+            /* Make a new service object for the given service. */
+            $code_mksvc = "\$svc = new $svcclass(\$options);";
+            eval($code_mksvc);
+
+            /* If required, load a module for this service. */
+            if ($modname != '') {
+                $result = $this->loadModule($svc, $options, $modname);
+            }
         }
-        /* Return the newly created Zookeeper service. */
-        return ($ret);
+
+        /* Check our result and return false or the new service. */
+        return ($result ? $svc : false);
     }
 
     /**
      * Load a new module for a service.
      *
-     * @param object $service service to which to add the new module
+     * @param object $svc     service to which to add the new module
      * @param array  $options array of options for the module
      * @param string $modname module name
      *
      * @return bool TRUE if succesfully loaded or FALSE if not
      */
     function loadModule(&$service, $options, $modname) {
+        $modclass = "ZkMod_$svcname_$modname";
+        $modfile  = "$this->modhome/$svcname/$modname.php";
+        $result   = true;
 
-        $svcname = $service->getServiceName();
-        $modclass = "ZkMod_$svcname" . "_$modname";
+        /**
+         * Check the module name, and then load it.
+         * For now, keep these two checks seperate because later we want
+         * to do a nicer job of error handling here then just "false".
+         */
+        if (!zkCheckName($modname)) {
+            $result = false;
+        } else if (!file_exists($modfile)) {
+            $result = false;
+        } else {
+            require_once($modfile);
 
-        /* Run the module load code string. */
-        $code_loadmodule = "\$module = new $modclass(\$options,\$service);";
-        eval($code_loadmodule);
-        /* Load the newly created module into this service. */
-        $service->loadModule($module, $options);
+            /* Make a new module object for the given module. */
+            $code_mkmod = "\$mod = new $modclass(\$options);";
+            eval($code_mkmod);
 
-        return( TRUE );
+            /* Load the newly created module into this service. */
+            $svc->loadModule($mod, $options);
+        }
+
+        /* Return our result. */
+        return ($result);
     }
 }
 
