@@ -402,7 +402,7 @@ function GenerateRandomString($size, $chars, $flags = 0) {
 }
 
 function quoteimap($str) {
-    return ereg_replace('(["\\])', '\\\\1', $str);
+    return preg_replace("/([\"\\\\])/", "\\\\$1", $str);
 }
 
 /**
