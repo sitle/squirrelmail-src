@@ -446,6 +446,44 @@ function user_strcasecmp($a, $b) {
     return $result;
 }
 
+/*
+ * Returns list of options (to be echoed into select statement
+ * based on available mailboxes and separators
+ * Caller should surround options with <SELECT..> </SELECT> and
+ * any formatting.
+ *   $imap_stream - $imapConnection to query for mailboxes
+ *   $show_selected - array containing list of mailboxes to pre-select (0 if none)
+ *   $folder_skip - array of folders to keep out of option list (compared in lower)
+ *   $boxes - list of already fetched boxes (for places like folder panel, where
+ *            you know these options will be shown 3 times in a row.. (most often unset).
+ */
+function sqimap_mailbox_option_list($imap_stream, $show_selected = 0, $folder_skip = 0, $boxes = 0 ) {
+    $mbox_options = '';
+    $delimiter = sqimap_get_delimiter ($imap_stream) . '&nbsp;';
+    if ( $boxes == 0 ) {
+        $boxes = sqimap_mailbox_list($imap_stream);
+    }   
+    foreach ($boxes as $boxes_part) {
+        if (!in_array('noselect', $boxes_part['flags'])) {
+            $box = $boxes_part['unformatted'];
+	    $lowerbox = strtolower($box);
+            if ( $folder_skip != 0 && in_array($lowerbox, $folder_skip) ) {
+	      continue;
+	    }
+	    
+            $box2 = str_replace('&nbsp;&nbsp;', $delimiter, $boxes_part['formatted']);
+            if($box2 == 'INBOX') {
+                $box2 = _("INBOX");
+            }
+            if ($show_selected != 0 && in_array($lowerbox, $show_selected) ) {
+                $mbox_options .= '<OPTION VALUE="'.$box.'" SELECTED>'.$box2.'</OPTION>' . "\n";
+            } else {
+                $mbox_options .= '<OPTION VALUE="'.$box.'">'.$box2.'</OPTION>' . "\n";
+            }
+        }
+    }
+    return $mbox_options;
+}
 
 /*
  * Returns sorted mailbox lists in several different ways. 
