@@ -1,118 +1,135 @@
-# ############################################################
+# Turkish Disk Quota Plugin Translation.
+# Copyright (C) YEAR Free Software Foundation, Inc.
+# Kerem Erkan <akerem@hacettepe.edu.tr>, 2002.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2002-09-26 15:37-0600\n"
+"PO-Revision-Date: 2002-10-24+0200\n"
+"Last-Translator: Kerem Erkan <akerem@hacettepe.edu.tr>\n"
+"Language-Team: Turkish <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=ISO-8859-9\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#############################################################
 # ATTENTION: When localising the following 4 msgstr's use   #
 # "_" instead of spaces. Also avoid ".,%&'" etc. Just use   #
 # alphabetical characters or numbers. If you don't do this, #
 # your plugin will be broken.                               #
-# ############################################################
+#############################################################
+
 msgid "Your_Disk_Usage"
-msgstr ""
+msgstr "Espacio_de_Disco_en_Uso"
 
 msgid "Details"
-msgstr ""
+msgstr "Detalles"
 
 msgid "You_have_no_quota_limit"
-msgstr ""
+msgstr "Cuota_ilimitada"
 
 msgid "Please_ignore_the_following_information"
-msgstr ""
+msgstr "No_en_cuenta_la_siguiente_informacion"
 
-# ############################################################
+#############################################################
 # You can localise the following without restrictions.      #
-# ############################################################
+#############################################################
+
 msgid "Check Quota"
-msgstr ""
+msgstr "Revisar Cuota"
 
 msgid "Connects to the Server and checks your diskquota usage."
-msgstr ""
+msgstr "Conexión con el servidor para revisar el consumo de su cuota"
 
 msgid "This is your diskquota usage."
-msgstr ""
+msgstr "Este es el consumo de su cuota"
 
 msgid "Filesystem"
-msgstr ""
+msgstr "Sitema de archivos"
 
 msgid "This is the physical device your data resides on"
-msgstr ""
+msgstr "Este es el dispositivo físico donde está guardada su información
 
 msgid "Used"
-msgstr ""
+msgstr "Usado"
 
 msgid "Quota"
-msgstr ""
+msgstr "Cuota"
 
 msgid "Limit"
-msgstr ""
+msgstr "Límite"
 
 msgid "Grace-Time"
-msgstr ""
+msgstr "Tiempo de Gracia"
 
 msgid "Status"
-msgstr ""
+msgstr "Estado"
 
 msgid "Ok, but what does it mean?"
-msgstr ""
+msgstr "¿Qué significa?"
 
 msgid "This is your actual amount of data on the physical device"
-msgstr ""
+msgstr "Cantidad actual ocupada en el dispositivo físico"
 
 msgid "This is the amount of disk-space that you can use"
-msgstr ""
+msgstr "Este es el espacio disponible para su uso"
 
 msgid "This is the absolute disk-space you cannot exceed"
-msgstr ""
+msgstr "Este tope de uso no puede excederse"
 
-msgid ""
-"This shows the time left in which you can delete messages once you have "
-"exceeded your quota limit"
-msgstr ""
+msgid "This shows the time left in which you can delete messages once 
+you have exceeded your quota limit"
+msgstr "Tiempo disponible para restaurar espacio una vez ha excedido la cuota"
 
 msgid "This is your current status"
-msgstr ""
+msgstr "Estado actual"
 
 msgid "What's the difference between Quota and Limit?"
-msgstr ""
+msgstr "¿Cuál es la diferencia entre cuota y límite?"
 
 msgid "Well, you have a limited amount of disk-space available for your data. "
-msgstr ""
+msgstr "El espacio en disco disponible para sus datos está linitado. "
 
-msgid ""
-"You have two kind of limits. Between the first one (called Quota) and the "
-"second one "
-msgstr ""
+msgid "You have two kind of limits. Between the first one (called 
+Quota) and the second one "
+msgstr "Existen dos límites. Entre el prinero, o cuota, y el segundo, 
+o límite, "
 
 msgid "(called Limit) the system will still let you work for some more time "
-msgstr ""
+msgstr "podrá guardar información por tiempo limitado "
 
-msgid ""
-"(the so colled Grace-Time) but if you exceed \"Limit\", the system will "
-msgstr ""
+msgid "(the so colled Grace-Time) but if you exceed \"Limit\", the 
+system will "
+msgstr "(Tiempo de Gracia) pero si excede el \"Límite\" el sistema "
 
-msgid ""
-"prevent you from creating new files. Please notice that once your Grace-Time "
-msgstr ""
+msgid "prevent you from creating new files. Please notice that once 
+your Grace-Time "
+msgstr "le impedirá guardar más archivos. Tenga en cuenta que 
+expirado el tiempo de "
 
 msgid "is expired, you won't be able do anything than delete files!"
-msgstr ""
+msgstr "gracia, lo único que puede hacer es borrar archivos"
 
 msgid "I see an"
-msgstr ""
+msgstr "Veo un "
 
 msgid "in the status-field. What's that?"
-msgstr ""
+msgstr "en el campo de estado ¿Qué significa?"
 
-msgid ""
-"It's bad news. It means that you will not be able to work anymore on the "
-"system "
-msgstr ""
+msgid "It's bad news. It means that you will not be able to work 
+anymore on the system "
+msgstr "Que su cuenta en el sistema está bloqueada, "
 
-msgid ""
-"unless you immediately trash & purge some of your data. Please consider the "
-msgstr ""
+msgid "unless you immediately trash & purge some of your data. Please 
+consider the "
+msgstr "a menos que elimine y purgue algunos mensajes. Considere la "
 
-msgid ""
-"possibility of moving some data on your local computer rather than leave it "
-"all "
-msgstr ""
+msgid "possibility of moving some data on your local computer rather 
+than leave it all "
+msgstr "posibilidad de copiar algunos archivos a su máquina local 
+versus dejarlos "
 
 msgid "on the server."
-msgstr ""
+msgstr "indefinidamente en el servidor."
