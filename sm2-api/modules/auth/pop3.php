@@ -39,16 +39,16 @@ class ZkMod_auth_pop3 {
      * @return bool indicates correct or incorrect password
      */
     function checkPassword( $username, $password ) {
-	
+
         if( is_array( $this->srv->connector ) ) {
-            
-            $sp = fsockopen( $this->srv->connector['host'], 
+
+            $sp = fsockopen( $this->srv->connector['host'],
                              $this->srv->connector['port'],
-                             $error_number, $error_string, 
+                             $error_number, $error_string,
                              $this->srv->connector['timeout'] );
-            
+
             $this->info = '<b>POP3 Session</b><br>';
-            if( $sp ) {        
+            if( $sp ) {
                 socket_set_timeout( $sp, $this->srv->connector['timeout'] );
                 $ret = TRUE;
                 $this->banner = fgets( $sp, 1024 );
@@ -56,33 +56,33 @@ class ZkMod_auth_pop3 {
                 // Identifies the user
                 if ( $ret = $this->query( $sp, 'USER ' . $username ) ) {
                     $ret = $this->query( $sp, 'PASS ' . $password );
-		}
-		$this->query( $sp, 'QUIT' );
+                }
+                $this->query( $sp, 'QUIT' );
             } else {
                 $ret = FALSE;
             }
-            
+
         } else {
             $ret = FALSE;
         }
-	
+
         return( $ret );
     }
-    
+
     function query( $sp, $cmd ) {
 
         $buffer = '?';
         $a = array( 'AAA', 'NOPE' );
-        
-	$this->info .= '<p><i>' . $cmd . '</i> ==> ';
-        
+
+        $this->info .= '<p><i>' . $cmd . '</i> ==> ';
+
         fputs( $sp, $cmd . "\r\n" );
-	$buffer = fgets( $sp, 1024 );
-	$this->info .= $buffer;
-         
+        $buffer = fgets( $sp, 1024 );
+        $this->info .= $buffer;
+
         return( $buffer{0} == '+' );
-    }    
-    
+    }
+
 }
 
 ?>

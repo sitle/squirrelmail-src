@@ -55,13 +55,28 @@ class ZkSvc_html {
         $this->indentation = 0;
         
         /* To know if a tag exists we check that it has got a place in the following array */
-        $this->tag_options = array( 'table' => array( 'tag_name' => 'table' ),
-                                    'tr' => array( 'tag_name' => 'tr' ),
-                                    'th' => array( 'tag_name' => 'th' ),
-                                    'td' => array( 'tag_name' => 'td' ),
-                                    'li' => array( 'tag_name' => 'li' ),
-                                    'p' => array( 'tag_name' => 'p' ),
-                                    'blockquote' => array( 'tag_name' => 'blockquote' )
+        $this->tag_options = array( 'table' => array( 'tag_name' => 'table',
+                                                      'tag_closed' => TRUE ),
+                                    'tr' => array( 'tag_name' => 'tr',
+                                                   'tag_closed' => TRUE  ),
+                                    'th' => array( 'tag_name' => 'th',
+                                                   'tag_closed' => TRUE ),
+                                    'td' => array( 'tag_name' => 'td',
+                                                   'tag_closed' => TRUE ),
+                                    'li' => array( 'tag_name' => 'li',
+                                                   'tag_closed' => TRUE ),
+                                    'ol' => array( 'tag_name' => 'ol',
+                                                   'tag_closed' => TRUE ),
+                                    'form' => array( 'tag_name' => 'form',
+                                                     'tag_closed' => TRUE ),
+                                    'input' => array( 'tag_name' => 'input',
+                                                      'tag_closed' => FALSE ),
+                                    'textarea' => array( 'tag_name' => 'textarea',
+                                                         'tag_closed' => TRUE ),
+                                    'p' => array( 'tag_name' => 'p',
+                                                  'tag_closed' => TRUE ),
+                                    'blockquote' => array( 'tag_name' => 'blockquote',
+                                                           'tag_closed' => TRUE )
                                     );
     }
 
@@ -133,10 +148,10 @@ class ZkSvc_html {
             if( $options == '' )
                 $options = $this->tag_options[$tag];
                
-           $ret = zkTag_html( $tag, $string, $options );
+           $ret = zkTag_html( $tag, $string, $options, $this->tag_options[$tag]['tag_closed'] );
         }
         return( $ret );
-        
+
     }
 
     /**
@@ -167,7 +182,7 @@ function zkGetParms_html( $parms ) {
     
     $buffer = '';
     foreach( $parms as $key => $opt ) {
-        if( $opt <> '' && $key <> 'tag_name' )
+        if( $opt <> '' && substr( $key, 0, 3 ) <> 'tag' )
             $buffer .= " $key=\"$opt\"";
     }
     return( $buffer );
@@ -177,13 +192,17 @@ function zkGetParms_html( $parms ) {
  * Composes a tag string with all its parameters.
  *
  */
-function zkTag_html( $tag, $string, $options ) {
+function zkTag_html( $tag, $string, $options, $closed ) {
 
-    return( "<$tag" .
+    $ret = "<$tag" .
             zkGetParms_html( $options ) .
             '>' .
-            $string .
-            "</$tag>" );
+            $string;
+
+    if ( $closed )
+        $ret .= "</$tag>";
+
+    return( $ret );
 }
 
 ?>

@@ -44,15 +44,6 @@ class ZkLoader {
 
         $this->bag_reg = $bag_reg;
 
-/* DEBUG INFO
-foreach( $bag_reg as $key => $reg ) {
-    echo "$key:<br>";
-    foreach( $reg as $k => $s ) {
-        echo "$k => $s<br>";
-    }
-}
-*/
-
         $this->appname = $appname;
         $this->zkhome = $zkhome;
         $this->libhome = "$zkhome/services";
@@ -92,7 +83,7 @@ foreach( $bag_reg as $key => $reg ) {
             } elseif ( file_exists( $srvfile ) ) {
                 // This is a service without preloading
                 require_once( $srvfile );
-		$ret = TRUE;
+                $ret = TRUE;
             } else {
                 $ret = FALSE;
             }

@@ -11,16 +11,19 @@
      *                                                                  *
      * Of course, all of this will be documented better, later.... :)   *
      ********************************************************************/
-     
+
     $time_ini = time();     // Let's do some performance test
 
     $authtest_version = '$Id$';
     $zkhome = '../../../sm2-api';
 
     /* Set the test username and password. */
-    $test_user = 'captbunzo';
-    $test_pass = 'bunz-r-us';
-    $test_timeout = 10;
+    if ( !isset( $test_user ) )
+        $test_user = 'captbunzo';
+    if ( !isset( $test_pass ) )
+        $test_pass = 'bunz-r-us';
+    if ( !isset( $test_timeout ) )
+        $test_timeout = 10;
 
     require_once( $zkhome . '/ZkLoader.php' );
 
@@ -29,12 +32,12 @@
     $authoptions = array('maxlogin' => 300,
                          'maxidle' => 10 );
     $authority['test'] = $zkld->loadService( 'auth', $authoptions, 'test', zkSS() );
-    
+
     $imap_opt = array( 'maxlogin' => 300,
                        'maxidle' => 10,
                        'connector' => array( 'host' => localhost,
                                              'port' => 143,
-                                             'timeout' => $test_timeout ) );    
+                                             'timeout' => $test_timeout ) );
     $authority['imap'] = $zkld->loadService( 'auth', $imap_opt, 'imap', zkSS() );
 
     $pop3_opt = array( 'maxlogin' => 300,
@@ -43,7 +46,7 @@
                                              'port' => 110,
                                              'timeout' => $test_timeout ) );
     $authority['pop3'] = $zkld->loadService( 'auth', $pop3_opt, 'pop3', zkSS() );
-    
+
     $ftp_opt = array( 'maxlogin' => 300,
                        'maxidle' => 10,
                        'connector' => array( 'host' => localhost,
@@ -60,8 +63,42 @@
     $html->head_extras = '<LINK REL="stylesheet" TYPE="text/css" HREF="authtest.css">';
     $html->header();
     $html->flush( $html->h( $html->title ) . $html->tag( 'p', 'Test Version: ' . $authtest_version ) );
-    $html->tag_options['table']['bgcolor']= '#e0e0e0';
 
+    $html->tag_options['form']['action'] = 'authtest.php';
+    $html->tag_options['form']['method'] = 'POST';
+
+    $html->flush(
+        $html->tag( 'form',
+            $html->tag( 'table',
+                $html->tag( 'tr',
+                    $html->tag( 'td', 'Name' ) .
+                    $html->tag( 'td',
+                        $html->tag( 'input', '', array( 'type' => 'text',
+                                                        'name' => 'test_user',
+                                                        'value' => $test_user,
+                                                        'size' => 15 ) )
+                        )
+                    ) .
+                $html->tag( 'tr',
+                    $html->tag( 'td', 'Password' ) .
+                    $html->tag( 'td',
+                        $html->tag( 'input', '', array( 'type' => 'password',
+                                                        'name' => 'test_pass',
+                                                        'value' => $test_pass,
+                                                        'size' => 15 ) )
+                        )
+                    ) .
+                $html->tag( 'tr',
+                    $html->tag( 'td',
+                        $html->tag( 'input','', array( 'type' => 'submit' )  ) .
+                        $html->tag( 'input','', array( 'type' => 'reset' ) )
+                        , array( 'colspan' => 2 ) )
+                    )
+                )
+            )
+        );
+
+    $html->tag_options['table']['bgcolor']= '#e0e0e0';
 
     foreach( $authority as $auth ) {
 
@@ -69,7 +106,7 @@
         $html->flush( $html->h( 'Service: ' . $auth->ver, 6 ) );
         $html->flush( $html->h( 'Module: ' . $auth->mod->ver, 6 ) );
 
-        if ( $auth->checkLogin() ) {
+        if ( $auth->checkLogin( $test_user, $test_pass ) ) {
             $html->flush (
                 $html->tag( 'li', 'You are logged in.' ) .
                 $html->tag( 'table', $html->tag( 'tr', $html->tag( 'td',
@@ -119,8 +156,8 @@
         }
 
         $html->buffer .= $html->tag( 'li', 'Time: ' . time() ).
-                     $html->tag( 'li', 'Idles: ' . $auth->idles ).
-    		 $html->tag( 'li', 'Expires: ' . $auth->expires );
+                         $html->tag( 'li', 'Idles: ' . $auth->idles ).
+                         $html->tag( 'li', 'Expires: ' . $auth->expires );
 
         /* Play around with the authentication service, doing some general testing. */
         if ($auth->loginExpired()) {

@@ -55,36 +55,36 @@ class ZkMod_auth_ftp {
                 // Check compatibilities in here
                 // Identifies the user
                 if ( $ret = $this->query( $sp, 'USER ' . $username, '331' ) ) {
-		    $ret = $this->query( $sp, 'PASS ' . $password, '230' );
-		};
-		$this->query( $sp, 'quit', '221' );
+                    $ret = $this->query( $sp, 'PASS ' . $password, '230' );
+                };
+                $this->query( $sp, 'quit', '221' );
             } else {
                 $ret = FALSE;
             }
-            
+
         } else {
             $ret = FALSE;
         }
-        
+
         return( $ret );
     }
-    
+
     function query( $sp, $cmd, $ok_string ) {
 
         $buffer = '?';
         $a = array( 'AAA', 'NOPE' );
-        
+
         $this->info .= '<p><i>' . $cmd . '</i> ';
-        
+
         fputs( $sp, $cmd . "\r\n" );
-        
+
         $buffer = fgets( $sp, 1024 );
         $a = explode( ' ', $buffer );
         $this->info .= $buffer . '<br></p>';
-        
+
         return( substr( $buffer,  0, 3 ) == $ok_string );
-    }    
-    
+    }
+
 }
 
 ?>
