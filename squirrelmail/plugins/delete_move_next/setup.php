@@ -104,7 +104,9 @@ function delete_move_expunge_from_all($id) {
 function delete_move_next_action() {
 
     global $PHP_SELF;
-
+    if ( (float)substr(PHP_VERSION,0,3) < 4.1 ) {
+        global $_GET, $_POST;
+    }
     if (isset($_GET['delete_id'])) {
         $delete_id = $_GET['delete_id'];
     }
@@ -236,6 +238,10 @@ function delete_move_next_moveNextForm($next) {
     global $color, $where, $what, $currentArrayIndex, $passed_id,
            $urlMailbox, $sort, $startMessage, $delete_id, $move_id,
            $imapConnection, $lastTargetMailbox;
+
+if ( (float)substr(PHP_VERSION,0,3) < 4.1 ) {
+        global $_POST;
+    }
             
     if (isset($_POST['targetMailbox'])) {
             $lastTargetMailbox = $_POST['targetMailbox'];
@@ -290,6 +296,9 @@ function delete_move_next_moveRightMainForm() {
 
 function delete_move_next_delete() {
     global $imapConnection, $auto_expunge;
+    if ( (float)substr(PHP_VERSION,0,3) < 4.1 ) {
+        global $_GET;
+    }
     $delete_id = $_GET['delete_id'];
     $mailbox = $_GET['mailbox'];
     sqimap_messages_delete($imapConnection, $delete_id, $delete_id, $mailbox);
@@ -301,6 +310,9 @@ function delete_move_next_delete() {
 
 function delete_move_next_move() {
     global $imapConnection, $auto_expunge;
+    if ( (float)substr(PHP_VERSION,0,3) < 4.1 ) {
+        global $_POST;
+    }
     $move_id = $_POST['move_id'];
     $mailbox = $_POST['mailbox'];
     $targetMailbox = $_POST['targetMailbox'];
