@@ -16,7 +16,7 @@
  * input: header_string or array
  */
 class Rfc822Header {
-    var $date = '',
+    var $date = -1,
         $subject = '',
         $from = array(),
         $sender = '',
