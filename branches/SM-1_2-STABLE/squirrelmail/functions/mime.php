@@ -753,7 +753,7 @@ function formatBody($imap_stream, $message, $color, $wrap_at) {
     // primary message. To add more of them, just put them in the
     // order that is their priority.
     global $startMessage, $username, $key, $imapServerAddress, $imapPort, $body,
-           $show_html_default, $has_unsafe_images, $view_unsafe_images, $sort;
+           $show_html_default, $has_unsafe_images, $sort;
 
     if ( (float)substr(PHP_VERSION,0,3) < 4.1 ) {
         global $_GET;
