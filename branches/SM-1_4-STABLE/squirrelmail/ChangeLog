@@ -2,8 +2,8 @@
 *** SquirrelMail Stable Series 1.4 ***
 **************************************
 
-Version 1.4.1 -- CVS
---------------------
+Version 1.4.1 -- 7 July 2003
+----------------------------
   - Fixes to conf.pl for handling relative dirs outside the SM tree (bug715119) and 
     the default delete_folder values for Courier-IMAP and UW-IMAP (bug715550)
   - Fixed problem with \ in passwords/usernames on login, fixes bug #718116.
@@ -31,6 +31,7 @@ Version 1.4.1 -- CVS
   - New function: sm_print_r() intended for debugging.  See
     functions/strings.php
   - Update config_default to use SM_PATH. (#766577)
+  - Minor misc. performance enhancements
 
 Version 1.4.0 -- 3 April 2003
 -----------------------------
