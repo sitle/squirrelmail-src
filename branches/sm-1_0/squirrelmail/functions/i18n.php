@@ -12,7 +12,11 @@
  ** $Id$
  **/
 
-   $i18n_php = true;
+   if (defined ('i18n_php')) { 
+      return; 
+   } else { 
+      define ('i18n_php', true); 
+   }
    if (! isset($squirrelmail_language)) { $squirrelmail_language = ''; }
 
    // This array specifies the available languages.

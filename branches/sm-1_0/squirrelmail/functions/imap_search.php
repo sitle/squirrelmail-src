@@ -3,18 +3,18 @@
  ** IMAP SEARCH ROUTIES
  ** $Id$
  *****************************************************************/
-   if (!isset($imap_php))
-      include("../functions/imap.php");
-   if (!isset($date_php))
-      include("../functions/date.php");
-   if (!isset($array_php))
-      include("../functions/array.php");
-   if (!isset($mailbox_display_php))
-      include("../functions/mailbox_display.php");
-   if (!isset($mime_php))
-      include("../functions/mime.php");
 
-   $imap_search_php = true;
+   if (defined ('imap_search_php')) { 
+      return; 
+   } else { 
+      define ('imap_search_php', true); 
+   } 
+
+   include("../functions/imap.php");
+   include("../functions/date.php");
+   include("../functions/array.php");
+   include("../functions/mailbox_display.php");
+   include("../functions/mime.php");
 
 function sqimap_search($imapConnection,$search_where,$search_what,$mailbox,$color) {
    global $msgs, $message_highlight_list, $squirrelmail_language, $languages, $index_order;

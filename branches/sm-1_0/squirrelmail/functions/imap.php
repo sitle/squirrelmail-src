@@ -5,7 +5,11 @@
     **  $Id$
     **/
 
-   $imap_php = true;
+   if (defined ('imap_php')) { 
+      return; 
+   } else { 
+      define ('imap_php', true); 
+   }
 
    $imap_backend = 'imap';
    

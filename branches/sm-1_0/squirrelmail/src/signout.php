@@ -14,19 +14,12 @@
 
    session_start();
 
-   if (!isset($strings_php))
-      include('../functions/strings.php');
-
+   include ('../functions/strings.php');
    include ('../src/load_prefs.php');
-
-   if (!isset($config_php))
-      include('../config/config.php');
-   if (!isset($i18n_php))
-      include('../functions/i18n.php');
-   if (!isset($prefs_php))
-      include ('../functions/prefs.php');
-   if (!isset($plugin_php))
-      include ('../functions/plugin.php');
+   include ('../config/config.php');
+   include ('../functions/i18n.php');
+   include ('../functions/prefs.php');
+   include ('../functions/plugin.php');
 
    set_up_language(getPref($data_dir, $username, 'language'));
 

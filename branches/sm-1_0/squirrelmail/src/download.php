@@ -10,26 +10,20 @@
     **
     **  $Id$
     **/
-   include ("../src/validate.php");
+   include_once ("../src/validate.php");
 
-   if (!isset($strings_php))
-      include("../functions/strings.php");
-   if (!isset($config_php))
-      include("../config/config.php");
-   if (!isset($imap_php))
-      include("../functions/imap.php");
-   if (!isset($mime_php))
-      include("../functions/mime.php");
-   if (!isset($date_php))
-      include("../functions/date.php");
-   if (!isset($i18n_php))
-      include("../functions/i18n.php");
+   include_once("../functions/strings.php");
+   include_once("../config/config.php");
+   include_once("../functions/imap.php");
+   include_once("../functions/mime.php");
+   include_once("../functions/date.php");
+   include_once("../functions/i18n.php");
 
    session_start();
    header("Pragma: ");
    header("Cache-Control: cache");
 
-   include("../src/load_prefs.php");
+   include_once("../src/load_prefs.php");
 
    function viewText($color, $body, $id, $entid, $mailbox, $type1, $wrap_at) {
       global $where, $what, $charset;
@@ -144,7 +138,7 @@
             if ($type1 == "plain" || $type1 == "html") {
                 $body = mime_fetch_body($imapConnection, $passed_id, $passed_ent_id);
                 $body = decodeBody($body, $header->encoding);
-                include("../functions/page_header.php");
+                include_once("../functions/page_header.php");
                 viewText($color, $body, $passed_id, $passed_ent_id, $mailbox, $type1, $wrap_at);
             } else {
                 $body = mime_fetch_body($imapConnection, $passed_id, $passed_ent_id);
@@ -157,7 +151,7 @@
          case "message":
             $body = mime_fetch_body($imapConnection, $passed_id, $passed_ent_id);
             $body = decodeBody($body, $header->encoding);
-            include("../functions/page_header.php");
+            include_once("../functions/page_header.php");
             viewText($color, $body, $passed_id, $passed_ent_id, $mailbox, $type1, $wrap_at);
             break;
          default:

@@ -11,21 +11,20 @@
     **  $Id$
     **/
 
-   if (!isset($validate_php))
-      include("../src/validate.php");
-   if (!isset($config_php))
-      include("../config/config.php");
-   if (!isset($prefs_php))
-      include("../functions/prefs.php");
-   if (!isset($plugin_php))
-      include("../functions/plugin.php");
-   if (!isset($auth_php))
-      include("../functions/auth.php");
+   if (defined ('load_prefs_php')) { 
+      return; 
+   } else { 
+      define ('load_prefs_php', true); 
+   }
+
+   include("../src/validate.php");
+   include("../config/config.php");
+   include("../functions/prefs.php");
+   include("../functions/plugin.php");
+   include("../functions/auth.php");
       
    is_logged_in();
       
-   $load_prefs_php = true;
-
    checkForPrefs($data_dir, $username);
 
    $chosen_theme = getPref($data_dir, $username, "chosen_theme");

@@ -8,7 +8,11 @@
  ** $Id$
  **/
 
-   $auth_php = true;
+   if (defined ('auth_php')) { 
+      return; 
+   } else { 
+      define ('auth_php', true); 
+   }
 
    function is_logged_in () {
       if (!session_is_registered('user_is_logged_in')) {
