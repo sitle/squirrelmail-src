@@ -127,9 +127,17 @@ function removePref($data_dir, $username, $string) {
     cachePrefValues($data_dir, $username);
  
     if (isset($prefs_cache[$string])) {
-        unset($prefs_cache[$string]);
+        if (ereg("^highlight([0-9]+)$", $string, $regs)) {
+            for ($i = ($regs[0] + 1); isset($prefs_cache["highlight$i"]); $i++) {
+		$j = $i - 1;
+                $prefs_cache["highlight$j"] = $prefs_cache["highlight$i"];
+                unset($prefs_cache["highlight$i"]);
+            }
+        }
+        else
+            unset($prefs_cache[$string]);
     }
- 
+
     savePrefValues($data_dir, $username);
 }
 
