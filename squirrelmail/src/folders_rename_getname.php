@@ -64,8 +64,8 @@ echo "<br><TABLE align=center border=0 WIDTH=\"95%\" COLS=1>".
 if ( $isfolder ) {
     echo "<INPUT TYPE=HIDDEN NAME=isfolder VALUE=\"true\">";
 }
-printf("<INPUT TYPE=HIDDEN NAME=orig VALUE=\"%s\">\n", urlencode($old));
-printf("<INPUT TYPE=HIDDEN NAME=old_name VALUE=\"%s\">\n", urlencode($old_name));
+printf("<INPUT TYPE=HIDDEN NAME=orig VALUE=\"%s\">\n", $old);
+printf("<INPUT TYPE=HIDDEN NAME=old_name VALUE=\"%s\">\n", $old_name);
 echo "<INPUT TYPE=SUBMIT VALUE=\""._("Submit")."\">\n".
      "</FORM><BR></TD></TR>".
      "</TABLE>";
