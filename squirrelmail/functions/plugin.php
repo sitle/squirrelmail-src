@@ -87,12 +87,12 @@ if (isset($plugins) && is_array($plugins)) {
      */
     function soupNazi(){
 
-        global $HTTP_USER_AGENT, $SQSPELL_SOUP_NAZI;
+        global $SQSPELL_SOUP_NAZI;
         
         require_once('../plugins/squirrelspell/sqspell_config.php');
 
         $soup_menu = explode( ',', $SQSPELL_SOUP_NAZI );
-        return( in_array( trim( $HTTP_USER_AGENT ), $soup_menu ) );
+        return( in_array( trim( $_SERVER['HTTP_USER_AGENT'] ), $soup_menu ) );
     }
 
 ?>

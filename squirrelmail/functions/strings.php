@@ -315,7 +315,6 @@ function sq_mt_seed($Val) {
  * the same 'random' numbers twice in one session.
  */
 function sq_mt_randomize() {
-    global $REMOTE_PORT, $REMOTE_ADDR, $UNIQUE_ID;
     static $randomized;
     
     if ($randomized) {
@@ -324,7 +323,7 @@ function sq_mt_randomize() {
     
     /* Global. */
     sq_mt_seed((int)((double) microtime() * 1000000));
-    sq_mt_seed(md5($REMOTE_PORT . $REMOTE_ADDR . getmypid()));
+    sq_mt_seed(md5($_SERVER['REMOTE_PORT'] . $_SERVER['REMOTE_ADDR'] . getmypid()));
     
     /* getrusage */
     if (function_exists('getrusage')) {
@@ -341,7 +340,7 @@ function sq_mt_randomize() {
     }
     
     /* Apache-specific */
-    sq_mt_seed(md5($UNIQUE_ID));
+    sq_mt_seed(md5($_SERVER['UNIQUE_ID']));
     
     $randomized = 1;
 }
