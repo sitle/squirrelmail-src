@@ -302,55 +302,60 @@ class wikipage extends content { // a wikipage
 		global $conn, $wtf;
 		track('wikipage::method::create');
 
-		if (isset($this)) {
-			$url = THINGIDURI.$this->objectid.'&amp;class='.get_class($this).'&amp;op=create';
-			$objectName = get_class($this);
-		} else {
-			$url = THINGURI.$thingName.'&amp;class=hardclass';
-		}
+        if ($wtf->user->inGroup(CREATORS)) { // check permission
+ 
+		    if (isset($this)) {
+			    $url = THINGIDURI.$this->objectid.'&amp;class='.get_class($this).'&amp;op=create';
+			    $objectName = get_class($this);
+    		} else {
+	    		$url = THINGURI.$thingName.'&amp;class=hardclass';
+	    	}
 
-		$create = getValue('submit', FALSE);
-		$preview = getValue('preview', FALSE);
+		    $create = getValue('submit', FALSE);
+		    $preview = getValue('preview', FALSE);
 
-		$title = getValue('title', FALSE);
-		$content = getValue('content', FALSE);
+		    $title = getValue('title', FALSE);
+		    $content = getValue('content', FALSE);
 
-		if ($create || $preview) { // is action to do
-// create object
-			$thing = new $objectName(
-				$wtf->user,
-				$title,
-				''
-			);
-			if ($thing && $thing->objectid != 0) { // action to do
-				if ($create) { // create thing
-					$result = $thing->update($content, FALSE, FALSE);
-					if ($result['success']) {
-						$thing->save();
-						header('Location: '.THINGIDURI.$thing->objectid.'&class='.get_class($thing));
-						exit;
-					} else {
-						echo '<content_create_failed message="', $result['error'], '"/>';
-						echo '<syntax>', $result['syntaxCheck'], '</syntax>';
-					}
-				} elseif ($preview) { // show preview
-					$result = $thing->preview($content);
-					if (!$result['error']) {
-						echo '<wikipage_preview>', $result['content'], '</wikipage_preview>';
-					} else {
-						echo '<content_create_failed message="', $result['error'], '"/>';
-						echo '<syntax>', $result['syntaxCheck'], '</syntax>';
-					}
-				}
-				$title = $thing->title;
-				$content = htmlspecialchars($content);
-				wikipage::drawForm($url, $title, TRUE, $content, FALSE, NULL);
-			} else {
-				echo '<content_create_failed message="Could not create object ', htmlspecialchars($title), '"/>';
-			}
-		} else { // display empty form
-			wikipage::drawForm($url, $title, TRUE, $content, FALSE, NULL);
-		}
+		    if ($create || $preview) { // is action to do
+            // create object
+			    $thing = new $objectName(
+				    $wtf->user,
+				    $title,
+				    ''
+			    );
+			    if ($thing && $thing->objectid != 0) { // action to do
+				    if ($create) { // create thing
+					    $result = $thing->update($content, FALSE, FALSE);
+    					if ($result['success']) {
+	    					$thing->save();
+		    				header('Location: '.THINGIDURI.$thing->objectid.'&class='.get_class($thing));
+			    			exit;
+				    	} else {
+    						echo '<content_create_failed message="', $result['error'], '"/>';
+	    					echo '<syntax>', $result['syntaxCheck'], '</syntax>';
+		    			}
+			    	} elseif ($preview) { // show preview
+    					$result = $thing->preview($content);
+	    				if (!$result['error']) {
+		    				echo '<wikipage_preview>', $result['content'], '</wikipage_preview>';
+			    		} else {
+				    		echo '<content_create_failed message="', $result['error'], '"/>';
+					    	echo '<syntax>', $result['syntaxCheck'], '</syntax>';
+    					}
+	    			}
+		    		$title = $thing->title;
+			    	$content = htmlspecialchars($content);
+				    wikipage::drawForm($url, $title, TRUE, $content, FALSE, NULL);
+    			} else {
+	    			echo '<content_create_failed message="Could not create object ', htmlspecialchars($title), '"/>';
+		    	}
+    		} else { // display empty form
+	    		wikipage::drawForm($url, $title, TRUE, $content, FALSE, NULL);
+		    }
+        } else {
+            echo '<content_create_permission/>';
+        }
 		track();
 	}
 
