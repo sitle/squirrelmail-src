@@ -186,8 +186,8 @@
 <?php } elseif( $error != NULL ) { ?>
   <div id="status"><span class="error"><?php echo $error; ?></span></div>
 <?php } ?>
-<!-- begin content -->
 <div class="nothere"><a id="start_content" name="start_content"><img src="templates/images/empty.gif" alt="------------- begin content ----------------------------------------" /></a></div>
+<!-- begin content -->
 <div id="content">
 <?php
   if ( isset($t['body']) )
@@ -202,10 +202,13 @@
   else
     echo '<p>This object did not provide a BODY to the template.</p>';
 ?>
-<a id="end_content" name="end_content"><img src="templates/images/empty.gif" alt="------------- end content ------------------------------------------" /></a>
+
 </div>
+<!-- end content -->
+<div class="nothere"><a id="end_content" name="end_content"><img src="templates/images/empty.gif" alt="------------- end content ------------------------------------------" /></a></div>
+<!-- begin editmenu -->
 <div id="editmenu">
-  <?php
+ <?php
     if ( isset($t['classid']) &&                 // classid is defined
          $t['classid'] != ERROR_CLASS_ID )         // is not error page
     {
@@ -226,7 +229,8 @@
 
                 if ($foowd->hasPermission($className,$methodName,'object',$object))
                 {
-                    if ( $notfirst ) echo ' | ';
+                    if ( $notfirst ) 
+                      echo " |\n ";
                     $notfirst = 1;
                     $uri_arr['objectid'] = $t['objectid'];
                     $uri_arr['classid'] = $t['classid'];
@@ -238,13 +242,15 @@
             }
         }
         if ( $notfirst )
-            echo ' | ';
+            echo " |\n ";
     } 
     
     // Last command (always displayed) - link to recent changes    
     echo '<a href="sqmchanges.php">',_("Recent Changes"),"</a><br />\n";
   ?>
-</div><!-- end editmenu -->
+</div>
+<!-- end editmenu -->
+<!-- begin footer -->
 <div id="copyright">
   This site is copyright &copy; 1999-2003 by the SquirrelMail Project Team.
 </div>
@@ -253,6 +259,7 @@
   Framework for Object Oriented Web Development</a>
   (v <?php echo $foowd->version ?>).
 </div>
+<!-- end footer -->
 <?php
 if ($foowd->debug)
   return;
