@@ -1,3 +1,24 @@
+BODY {
+	margin-top: 0px;
+	margin-left: 0px;
+}
+.right-pad {
+	padding-right: 10px;
+}
+.link-bar {
+    text-align: center;
+	border: 1px solid #CCCCCC;
+}
+.thinbox        { border-width:1pt; border-style:solid; border-color:#666666; }
+.thinbox-yellow { border-width:1pt; border-style:solid; border-color:#FFCC00; }
+.thinbox-green  { border-width:1pt; border-style:solid; border-color:#00FF00; }
+.thinbox-blue   { border-width:1pt; border-style:solid; border-color:#0000FF; }
+.thinbox-red    { border-width:1pt; border-style:solid; border-color:#FF0000; }
+
+PRE {
+	margin: 10px;
+}
+
 A, B, P, 
 TABLE, TD, 
 SMALL, 
@@ -7,11 +28,12 @@ MENU,
 BLOCKQUOTE, 
 DIV {
 	font-family: Helvetica,Arial,sans-serif;
-        color:#000;
+	color:#000;
 	background: #FFF;
 }
 
-PRE, TT, INPUT, TEXTAREA {
+PRE, TT, 
+INPUT, TEXTAREA {
 	font-family: Courier,fixed;
 }
 
