@@ -233,9 +233,11 @@ function delete_move_next_moveNextForm($next) {
            $mailbox, $sort, $startMessage, $delete_id, $move_id,
            $imapConnection;
 
+    $urlMailbox = urlencode($mailbox);
+
     echo '<tr>'.
          "<td bgcolor=\"$color[9]\" width=\"100%\" align=\"center\">".
-           "<form action=\"read_body.php?mailbox=$mailbox&sort=$sort&startMessage=$startMessage&passed_id=$next\" method=\"post\"><small>".
+           "<form action=\"read_body.php?mailbox=$urlMailbox&amp;sort=$sort&amp;startMessage=$startMessage&amp;passed_id=$next\" method=\"post\"><small>".
             "<input type=\"hidden\" name=\"show_more\" value=\"0\">".
             "<input type=\"hidden\" name=\"move_id\" value=\"$passed_id\">".
             _("Move to:") .
@@ -255,9 +257,11 @@ function delete_move_next_moveRightMainForm() {
            $mailbox, $sort, $startMessage, $delete_id, $move_id,
            $imapConnection;
 
+    $urlMailbox = urlencode($mailbox);
+
     echo '<tr>' .
             "<td bgcolor=\"$color[9]\" width=\"100%\" align=\"center\">".
-            "<form action=\"right_main.php?mailbox=$mailbox&sort=$sort&startMessage=$startMessage\" method=\"post\"><small>" .
+            "<form action=\"right_main.php?mailbox=$urlMailbox&amp;sort=$sort&amp;startMessage=$startMessage\" method=\"post\"><small>" .
             "<input type=\"hidden\" name=\"move_id\" value=\"$passed_id\">".
             _("Move to:") .
             ' <select name="targetMailbox">';
