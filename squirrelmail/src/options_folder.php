@@ -19,8 +19,13 @@ define('SMOPT_GRP_FOLDERLIST', 1);
 
 /* Define the optpage load function for the folder options page. */
 function load_optpage_data_folder() {
-    global $username, $key, $imapServerAddress, $imapPort;
+    global $imapServerAddress, $imapPort;
     global $folder_prefix, $default_folder_prefix, $show_prefix_option;
+    
+    $username = $_SESSION['username'];
+    $key = $_COOKIE['key'];
+    $onetimepad = $_SESSION['onetimepad'];
+    $delimiter = $_SESSION['delimiter'];
 
     /* Get some imap data we need later. */
     $imapConnection =
@@ -214,7 +219,8 @@ function load_optpage_data_folder() {
 /** Define any specialized save functions for this option page. ***/
 /******************************************************************/
 function save_option_trash_folder($option) {
-    global $data_dir, $username;
+    global $data_dir;
+    $username = $_SESSION['username'];
 
     /* Set move to trash on or off. */
     $trash_on = ($option->new_value == SMPREF_NONE ? SMPREF_OFF : SMPREF_ON);
@@ -225,7 +231,8 @@ function save_option_trash_folder($option) {
 }
 
 function save_option_sent_folder($option) {
-    global $data_dir, $username;
+    global $data_dir;
+    $username = $_SESSION['username'];
 
     /* Set move to sent on or off. */
     $sent_on = ($option->new_value == SMPREF_NONE ? SMPREF_OFF : SMPREF_ON);
@@ -236,7 +243,8 @@ function save_option_sent_folder($option) {
 }
 
 function save_option_draft_folder($option) {
-    global $data_dir, $username;
+    global $data_dir;
+    $username = $_SESSION['username'];
 
     /* Set move to draft on or off. */
     $draft_on = ($option->new_value == SMPREF_NONE ? SMPREF_OFF : SMPREF_ON);

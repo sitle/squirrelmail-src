@@ -11,7 +11,15 @@
  * $Id$
  */
 
-global $prefs_are_cached, $prefs_cache;
+require_once('../src/global.php');
+
+
+if (isset($_SESSION['prefs_cache'])) {
+    $prefs_cache = $_SESSION['prefs_cache'];
+}
+if (isset($_SESSION['prefs_are_cached'])) {
+    $prefs_are_cached = $_SESSION['prefs_are_cached'];
+}
 
 if ( !session_is_registered('prefs_are_cached') ||
      !isset( $prefs_cache) ||
@@ -21,7 +29,6 @@ if ( !session_is_registered('prefs_are_cached') ||
     $prefs_are_cached = false;
     $prefs_cache = array();
 }
-
 if (isset($prefs_dsn) && !empty($prefs_dsn)) {
     require_once('../functions/db_prefs.php');
 } else {
