@@ -1,9 +1,10 @@
 # Copyright (c) 1999-2004 The Squirrelmail Development Team
 # Kurt Yoder <freespirit74@yahoo.com>, 2003
+# $Id$
 msgid ""
 msgstr ""
-"Project-Id-Version: $Id$\n"
-"POT-Creation-Date: 2004-02-10 18:28+0900\n"
+"Project-Id-Version: select_range 2.8\n"
+"POT-Creation-Date: 2004-03-25 13:27-0500\n"
 "PO-Revision-Date: 2004-02-12 14:37+0600\n"
 "Last-Translator: Ísak Ben. <isak@isak.is>\n"
 "Language-Team: Icelandic <squirrelmail-i18n@lists.squirrelmail.net>\n"
@@ -11,30 +12,62 @@ msgstr ""
 "Content-Type: text/plain; charset=ISO-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: functions.php:20
-msgid "Number of messages before showing select range link"
-msgstr "Fjöldi skilaboða til að sýna \"Velja Svið\" rofann"
+msgid "Toggle All"
+msgstr "Velja allt"
 
-#: functions.php:21
-msgid "Set to 0 to always show the link"
-msgstr "Stillið á \"0\" fyrir alltaf"
+#, fuzzy
+msgid "Select Range Options"
+msgstr "Velja Svið stillingar"
 
-#: functions.php:22
-msgid "Set to -1 to never show the link"
-msgstr "Stillið á \"-1\" fyrir aldrei"
+#, fuzzy
+msgid "Number of list items before showing link"
+msgstr "Lágmarksfjöldi til að sýna rofann"
 
-#: functions.php:23
-msgid "Display select range errors"
-msgstr "Sýna villur frá \"Velja Svið\" rofanum"
+msgid "Show link never or always?"
+msgstr "Sýna rofann aldrei eða alltaf?"
 
-#: functions.php:146
-msgid "Please leave at least one un-selected message between the first and last selected messages"
-msgstr "Vinsamlegast skiljið eftir eitt óvalið skilaboð á milli fyrstu og síðustu völdu skilaboða"
+msgid "Obey previous configuration option"
+msgstr "Fara eftir lágmarksfjöldastillingu"
 
-#: functions.php:147
+msgid "Always"
+msgstr "Alltaf"
+
+msgid "Never"
+msgstr "Aldrei"
+
+msgid "If errors, show popup window"
+msgstr "Sýna skilaboðaglugga ef villur koma fram"
+
+#, fuzzy
+msgid ""
+"Please leave at least one un-selected address between the first and last "
+"selected addresses"
+msgstr ""
+"Vinsamlegast skiljið eftir eitt óvalið skilaboð á milli fyrstu og síðustu "
+"völdu heimilisfanga"
+
+#, fuzzy
+msgid "Please select at least two addresses"
+msgstr "Vinsamlegast veljið allavega tvö heimilisföng"
+
+msgid ""
+"Please leave at least one un-selected message between the first and last "
+"selected messages"
+msgstr ""
+"Vinsamlegast skiljið eftir eitt óvalið skilaboð á milli fyrstu og síðustu "
+"völdu skilaboða"
+
 msgid "Please select at least two messages"
 msgstr "Vinsamlegast veljið allavega tvö skeyti"
 
-#: functions.php:214
 msgid "Select Range"
 msgstr "Velja Svið"
+
+#~ msgid "Set to 0 to always show the link"
+#~ msgstr "Stillið á \"0\" fyrir alltaf"
+
+#~ msgid "Set to -1 to never show the link"
+#~ msgstr "Stillið á \"-1\" fyrir aldrei"
+
+#~ msgid "Display select range errors"
+#~ msgstr "Sýna villur frá \"Velja Svið\" rofanum"
