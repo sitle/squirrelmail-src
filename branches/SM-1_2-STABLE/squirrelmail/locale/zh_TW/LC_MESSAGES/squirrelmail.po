@@ -6,14 +6,13 @@ msgid ""
 msgstr ""
 "Project-Id-Version: $Id: squirrelmail.po,v 1.3 2002/05/21 15:24:12 "
 "philippe_mingo Exp $\n"
-"POT-Creation-Date: 2002-11-04 14:57+0100\n"
+"POT-Creation-Date: 2002-11-16 09:28+0100\n"
 "PO-Revision-Date: 2002-10-21 09:43CST\n"
 "Last-Translator: Ray Liao <ray6@mail2000.com.tw>\n"
 "Language-Team: Chinese-Traditional\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=BIG5\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 0.9.5\n"
 
 #: squirrelmail/src/addrbook_popup.php:22
 msgid "Address Book"
@@ -214,7 +213,7 @@ msgstr "已存成草稿"
 #: squirrelmail/src/compose.php:244 squirrelmail/src/compose.php:288
 #: squirrelmail/src/compose.php:298
 msgid "Could not move/copy file. File not attached"
-msgstr "無法移動或複製檔案。附檔未完成。"
+msgstr "無法移動或複製檔案。未加入附加檔案"
 
 #: squirrelmail/src/compose.php:496
 msgid "Original Message"
@@ -258,12 +257,12 @@ msgid "Your Message has been sent"
 msgstr "尚未選擇郵件"
 
 #: squirrelmail/plugins/listcommands/mailout.php:57
-#: squirrelmail/src/compose.php:683 squirrelmail/src/read_body.php:908
+#: squirrelmail/src/compose.php:683 squirrelmail/src/read_body.php:915
 msgid "From:"
 msgstr "寄件者："
 
 #: squirrelmail/src/compose.php:711 squirrelmail/src/download.php:162
-#: squirrelmail/src/read_body.php:222 squirrelmail/src/read_body.php:927
+#: squirrelmail/src/read_body.php:222 squirrelmail/src/read_body.php:934
 msgid "To:"
 msgstr "收件者："
 
@@ -276,7 +275,7 @@ msgid "BCC:"
 msgstr "密副："
 
 #: squirrelmail/src/compose.php:734 squirrelmail/src/download.php:155
-#: squirrelmail/src/read_body.php:223 squirrelmail/src/read_body.php:879
+#: squirrelmail/src/read_body.php:223 squirrelmail/src/read_body.php:886
 msgid "Subject:"
 msgstr "主旨："
 
@@ -296,23 +295,23 @@ msgstr "新增"
 msgid "Delete selected attachments"
 msgstr "刪除選擇之附檔"
 
-#: squirrelmail/src/compose.php:857 squirrelmail/src/read_body.php:956
+#: squirrelmail/src/compose.php:857 squirrelmail/src/read_body.php:963
 msgid "Priority"
 msgstr "重要性"
 
 #: squirrelmail/plugins/administrator/defines.php:201
 #: squirrelmail/plugins/calendar/functions.php:100
-#: squirrelmail/src/compose.php:858 squirrelmail/src/read_body.php:696
+#: squirrelmail/src/compose.php:858 squirrelmail/src/read_body.php:695
 msgid "High"
 msgstr "高"
 
 #: squirrelmail/plugins/calendar/functions.php:99
-#: squirrelmail/src/compose.php:859 squirrelmail/src/read_body.php:709
+#: squirrelmail/src/compose.php:859 squirrelmail/src/read_body.php:708
 msgid "Normal"
 msgstr "普通"
 
 #: squirrelmail/plugins/administrator/defines.php:198
-#: squirrelmail/src/compose.php:860 squirrelmail/src/read_body.php:702
+#: squirrelmail/src/compose.php:860 squirrelmail/src/read_body.php:701
 msgid "Low"
 msgstr "低"
 
@@ -365,7 +364,7 @@ msgstr "讀取純文字附加檔"
 
 #: squirrelmail/src/download.php:79 squirrelmail/src/download.php:84
 #: squirrelmail/src/download.php:128 squirrelmail/src/image.php:47
-#: squirrelmail/src/image.php:51 squirrelmail/src/read_body.php:508
+#: squirrelmail/src/image.php:51 squirrelmail/src/read_body.php:507
 #: squirrelmail/src/vcard.php:52 squirrelmail/src/vcard.php:56
 msgid "View message"
 msgstr "讀取郵件"
@@ -384,7 +383,7 @@ msgstr "開啟圖片附加檔"
 #: squirrelmail/plugins/calendar/event_edit.php:108
 #: squirrelmail/plugins/calendar/event_edit.php:166
 #: squirrelmail/plugins/calendar/event_edit.php:179
-#: squirrelmail/src/download.php:168 squirrelmail/src/read_body.php:918
+#: squirrelmail/src/download.php:168 squirrelmail/src/read_body.php:925
 msgid "Date:"
 msgstr "日期："
 
@@ -396,11 +395,11 @@ msgstr "副本"
 msgid "Bcc:"
 msgstr "密副"
 
-#: squirrelmail/src/download.php:201 squirrelmail/src/read_body.php:660
+#: squirrelmail/src/download.php:201 squirrelmail/src/read_body.php:659
 msgid "more"
 msgstr "較多"
 
-#: squirrelmail/src/download.php:202 squirrelmail/src/read_body.php:661
+#: squirrelmail/src/download.php:202 squirrelmail/src/read_body.php:660
 msgid "less"
 msgstr "較少"
 
@@ -493,7 +492,7 @@ msgstr "刪除資料夾"
 #: squirrelmail/plugins/mail_fetch/options.php:214
 #: squirrelmail/src/folders.php:209 squirrelmail/src/options_highlight.php:116
 #: squirrelmail/src/options_identities.php:350
-#: squirrelmail/src/read_body.php:761
+#: squirrelmail/src/read_body.php:760
 msgid "Delete"
 msgstr "刪除"
 
@@ -538,12 +537,12 @@ msgstr "送出"
 
 #: squirrelmail/src/help.php:70 squirrelmail/src/help.php:77
 msgid "ERROR: Help files are not in the right format!"
-msgstr ""
+msgstr "錯誤：說明檔格式不正確"
 
 #: squirrelmail/functions/page_header.php:247
 #: squirrelmail/plugins/listcommands/setup.php:37 squirrelmail/src/help.php:91
 msgid "Help"
-msgstr "求助"
+msgstr "線上說明"
 
 # c-format
 #: squirrelmail/src/help.php:131
@@ -551,7 +550,7 @@ msgstr "求助"
 msgid ""
 "The help has not been translated to %s.  It will be displayed in English "
 "instead."
-msgstr "線上求助尚未翻譯成 %s。將會以英文顯示。"
+msgstr "線上說明尚未翻譯成 %s。將會以英文顯示。"
 
 #: squirrelmail/src/help.php:137
 msgid "Some or all of the help documents are not present!"
@@ -567,7 +566,8 @@ msgstr "目錄"
 #: squirrelmail/plugins/delete_move_next/setup.php:173
 #: squirrelmail/plugins/delete_move_next/setup.php:175
 #: squirrelmail/src/help.php:190 squirrelmail/src/help.php:194
-#: squirrelmail/src/read_body.php:806 squirrelmail/src/read_body.php:808
+#: squirrelmail/src/read_body.php:799 squirrelmail/src/read_body.php:805
+#: squirrelmail/src/read_body.php:807
 msgid "Previous"
 msgstr "前一個項目"
 
@@ -577,7 +577,8 @@ msgstr "前一個項目"
 #: squirrelmail/plugins/delete_move_next/setup.php:178
 #: squirrelmail/plugins/delete_move_next/setup.php:180
 #: squirrelmail/src/help.php:198 squirrelmail/src/help.php:201
-#: squirrelmail/src/read_body.php:812 squirrelmail/src/read_body.php:814
+#: squirrelmail/src/read_body.php:799 squirrelmail/src/read_body.php:811
+#: squirrelmail/src/read_body.php:813
 msgid "Next"
 msgstr "下一個項目"
 
@@ -602,7 +603,7 @@ msgstr "收件夾"
 
 #: squirrelmail/src/left_main.php:97
 msgid "purge"
-msgstr "刪去"
+msgstr "清除"
 
 #: squirrelmail/src/left_main.php:283
 msgid "Last Refresh"
@@ -639,7 +640,7 @@ msgstr "%s 登入"
 
 #: squirrelmail/src/login.php:142
 msgid "Name:"
-msgstr "姓名："
+msgstr "帳號："
 
 #: squirrelmail/plugins/mail_fetch/options.php:170
 #: squirrelmail/plugins/mail_fetch/options.php:246
@@ -1173,7 +1174,7 @@ msgstr "編輯進階身分設定"
 
 #: squirrelmail/src/options_personal.php:113
 msgid "(discards changes made on this form so far)"
-msgstr "（放棄目前所做變更）"
+msgstr "（將放棄目前所做變更）"
 
 #: squirrelmail/src/options_personal.php:116
 msgid "Multiple Identities"
@@ -1334,64 +1335,64 @@ msgstr "顯示於"
 msgid "Read:"
 msgstr "已讀取"
 
-#: squirrelmail/src/read_body.php:497
+#: squirrelmail/src/read_body.php:496
 msgid "Viewing Full Header"
 msgstr "顯示完整標頭"
 
-#: squirrelmail/src/read_body.php:753
+#: squirrelmail/src/read_body.php:752
 msgid "Message List"
 msgstr "郵件清單"
 
-#: squirrelmail/src/read_body.php:780
+#: squirrelmail/src/read_body.php:779
 msgid "Resume Draft"
 msgstr "繼續完成草稿"
 
-#: squirrelmail/src/read_body.php:789
+#: squirrelmail/src/read_body.php:788
 msgid "Edit Message as New"
 msgstr "重新編輯郵件"
 
 #: squirrelmail/functions/mailbox_display.php:686
-#: squirrelmail/src/read_body.php:863
+#: squirrelmail/src/read_body.php:870
 msgid "Forward"
 msgstr "轉寄"
 
-#: squirrelmail/src/read_body.php:865
+#: squirrelmail/src/read_body.php:872
 msgid "Reply"
 msgstr "回覆"
 
-#: squirrelmail/src/read_body.php:867
+#: squirrelmail/src/read_body.php:874
 msgid "Reply All"
 msgstr "全部回覆"
 
-#: squirrelmail/src/read_body.php:890 squirrelmail/src/read_body.php:893
+#: squirrelmail/src/read_body.php:897 squirrelmail/src/read_body.php:900
 msgid "View Full Header"
 msgstr "顯示完整標頭"
 
-#: squirrelmail/src/read_body.php:970
+#: squirrelmail/src/read_body.php:977
 msgid "Mailer"
 msgstr "Mailer"
 
-#: squirrelmail/src/read_body.php:1019 squirrelmail/src/read_body.php:1032
-#: squirrelmail/src/read_body.php:1044 squirrelmail/src/read_body.php:1068
-#: squirrelmail/src/read_body.php:1113 squirrelmail/src/read_body.php:1129
+#: squirrelmail/src/read_body.php:1026 squirrelmail/src/read_body.php:1039
+#: squirrelmail/src/read_body.php:1051 squirrelmail/src/read_body.php:1075
+#: squirrelmail/src/read_body.php:1120 squirrelmail/src/read_body.php:1136
 msgid "Read receipt"
 msgstr "「已讀取」回條"
 
-#: squirrelmail/src/read_body.php:1021 squirrelmail/src/read_body.php:1115
+#: squirrelmail/src/read_body.php:1028 squirrelmail/src/read_body.php:1122
 msgid "send"
 msgstr "傳送"
 
-#: squirrelmail/src/read_body.php:1034 squirrelmail/src/read_body.php:1046
-#: squirrelmail/src/read_body.php:1070 squirrelmail/src/read_body.php:1131
+#: squirrelmail/src/read_body.php:1041 squirrelmail/src/read_body.php:1053
+#: squirrelmail/src/read_body.php:1077 squirrelmail/src/read_body.php:1138
 msgid "requested"
 msgstr "要求"
 
-#: squirrelmail/src/read_body.php:1047 squirrelmail/src/read_body.php:1071
-#: squirrelmail/src/read_body.php:1132
+#: squirrelmail/src/read_body.php:1054 squirrelmail/src/read_body.php:1078
+#: squirrelmail/src/read_body.php:1139
 msgid "Send read receipt now"
 msgstr "立即傳送「已讀取」回條"
 
-#: squirrelmail/src/read_body.php:1059
+#: squirrelmail/src/read_body.php:1066
 msgid ""
 "The message sender has requested a response to indicate that you have read "
 "this message. Would you like to send a receipt?"
@@ -1663,7 +1664,7 @@ msgstr "名片檔"
 #: squirrelmail/functions/date.php:91
 #: squirrelmail/plugins/calendar/calendar.php:67
 msgid "Sunday"
-msgstr ""
+msgstr "星期日"
 
 #: squirrelmail/functions/date.php:94
 #: squirrelmail/plugins/calendar/calendar.php:68
@@ -1881,53 +1882,58 @@ msgstr "設定檔 %s 不存在。請重新登入以產生一個新的預設檔案。"
 
 # c-format
 #: squirrelmail/functions/file_prefs.php:43
-#: squirrelmail/functions/file_prefs.php:103
+#: squirrelmail/functions/file_prefs.php:111
+#, c-format
 msgid ""
 "Preference file, %s, could not be opened. Contact your system administrator "
 "to resolve this issue."
 msgstr "設定檔 %s 開啟失敗，請與系統管理員聯絡"
 
 # c-format
-#: squirrelmail/functions/file_prefs.php:111
+#: squirrelmail/functions/file_prefs.php:119
+#, c-format
 msgid ""
 "Preference file, %s, could not be written. Contact your system administrator "
 "to resolve this issue."
 msgstr "無法寫入設定檔 %s，請與系統管理員聯絡"
 
 # c-format
-#: squirrelmail/functions/file_prefs.php:177
+#: squirrelmail/functions/file_prefs.php:185
+#, c-format
 msgid "Error opening %s"
 msgstr "無法開啟 %s"
 
-#: squirrelmail/functions/file_prefs.php:180
+#: squirrelmail/functions/file_prefs.php:188
 msgid "Default preference file not found or not readable!"
 msgstr "找不到或無法讀取預設的設定檔"
 
-#: squirrelmail/functions/file_prefs.php:181
-#: squirrelmail/functions/file_prefs.php:194
+#: squirrelmail/functions/file_prefs.php:189
+#: squirrelmail/functions/file_prefs.php:202
 #: squirrelmail/functions/prefs.php:102
 msgid "Please contact your system administrator and report this error."
 msgstr "請與系統管理員聯絡，並回報錯誤訊息"
 
-#: squirrelmail/functions/file_prefs.php:192
+#: squirrelmail/functions/file_prefs.php:200
 msgid "Could not create initial preference file!"
 msgstr "無法建立啟始設定檔"
 
-#: squirrelmail/functions/file_prefs.php:193
+#: squirrelmail/functions/file_prefs.php:201
 #, c-format
 msgid "%s should be writable by user %s"
 msgstr "%s 檔案必需可由使用者 %s 寫入"
 
 # c-format
-#: squirrelmail/functions/file_prefs.php:210
-#: squirrelmail/functions/file_prefs.php:235
+#: squirrelmail/functions/file_prefs.php:218
+#: squirrelmail/functions/file_prefs.php:243
+#, c-format
 msgid ""
 "Signature file, %s, could not be opened. Contact your system administrator "
 "to resolve this issue."
 msgstr "無法開啟簽名檔 %s，請與系統管理員聯絡，並回報錯誤訊息"
 
 # c-format
-#: squirrelmail/functions/file_prefs.php:216
+#: squirrelmail/functions/file_prefs.php:224
+#, c-format
 msgid ""
 "Signature file, %s, could not be written. Contact your system administrator "
 "to resolve this issue."
@@ -2835,13 +2841,13 @@ msgstr "請先作選擇"
 msgid ""
 "This will encrypt your personal dictionary and store it in an encrypted "
 "format. Proceed?"
-msgstr "這將會把您的詞典加密，並儲存以加密模式。要執行嗎？"
+msgstr "這將會把您的字典加密，並儲存以加密模式。要執行嗎？"
 
 #: squirrelmail/plugins/squirrelspell/modules/enc_setup.mod:30
 msgid ""
 "This will decrypt your personal dictionary and store it in a clear-text "
 "format. Proceed?"
-msgstr "這將會把您的詞典解密，並儲存以不加密的模式。要執行嗎？"
+msgstr "這將會把您的字典解密，並儲存以不加密的模式。要執行嗎？"
 
 #: squirrelmail/plugins/squirrelspell/modules/enc_setup.mod:47
 msgid ""
@@ -3482,7 +3488,7 @@ msgstr "%s 新郵件"
 #: squirrelmail/plugins/newmail/setup.php:202
 #, c-format
 msgid "%s New Message"
-msgstr "%s 新郵郵"
+msgstr "%s 新郵件"
 
 #: squirrelmail/plugins/newmail/testsound.php:26
 msgid "Test Sound"
@@ -4291,7 +4297,7 @@ msgstr "SMTP Server Port"
 
 #: squirrelmail/plugins/administrator/defines.php:121
 msgid "Authenticated SMTP"
-msgstr "認証的 SMTP"
+msgstr "SMTP 需要認証"
 
 #: squirrelmail/plugins/administrator/defines.php:123
 msgid "Invert Time"
