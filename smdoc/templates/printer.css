@@ -5,21 +5,23 @@
  * Modified by SquirrelMail Development Team
  * $Id$
  */
-body, #content {
-	margin: 0;
-	padding: 0;
-	width: 100%;
+body {
+    background: none;
 }
-#pagetitle {
-	background: none;
-}
-#pagetitle .skip, #pagetitle .usermenu, #pagetitle .locationmenu, #editmenu {
+#usermenu,
+#editmenu,
+#titleblock,
+#flagline,
+#usermenu,
+#locationmenu {
 	display: none;
 }
-#pagetitle .titleblock:before {
-	content: "SquirrelMail: ";
-}
-#copyright {
-	background: white;
-	color: #666;
+#copyright,
+#debug_output,
+#contentupdate,
+#content {
+    border: none;
+	margin: 0px;
+	padding: 0px;
+	width: 100%;
 }
