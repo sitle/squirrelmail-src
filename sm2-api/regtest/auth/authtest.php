@@ -128,7 +128,8 @@
         }
 
 
-        $html->flush( $html->tag( 'li', 'Extra info: ' . $auth->mod->info ) );
+        $html->flush( $html->tag( 'li', 'Banner: ' . $auth->banner ) );
+        $html->flush( $html->tag( 'li', 'Extra info: ' . $auth->info ) );
     }
 
     echo '<br>Time Elapsed ' . ( time() - $time_ini );

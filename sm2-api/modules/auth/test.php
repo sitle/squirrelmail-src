@@ -19,7 +19,9 @@ class ZkMod_auth_test {
     var $name = 'auth/test';
     var $ver = '$Id$';
 
+    var $srv;
     var $info;
+    var $banner = 'Simple Test Authentication Module';
 
     /**
      * Create a new ZkMod_auth_test with the given options.
@@ -27,9 +29,10 @@ class ZkMod_auth_test {
      * @param array $options an associative array that can pass options
      *                       to the authentication module
      */
-    function ZkMod_auth_test($options) {
+    function ZkMod_auth_test($options, &$srv) {
         /* Instantiate the Authentication Module Here! */
         $this->info = 'Foo check.';
+	$this->srv = &$srv;
     }
 
     /**
