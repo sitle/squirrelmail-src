@@ -183,10 +183,28 @@ function mime_print_body_lines ($imap_stream, $id, $ent_id=1, $encoding) {
 }
 
 function sqimap_base64_decode(&$string) {
-//    $string = str_replace("\r\n", "\n", $string);
-    $string = base64_decode($string);
-}
 
+    // base64 enoded data goes in pairs of 4 bytes. To achieve on the
+    // fly decoding (to reduce memory usage) you have to check if the
+    // data has incomplete pairs
+
+    // remove the noise in order to check if the 4 bytes pairs are complete
+    $string = str_replace(array("\r\n","\n", "\r", " "),array('','','',''),$string);
+
+    $sStringRem = '';    
+    $iMod = strlen($string) % 4;
+    if ($iMod) {
+        $sStringRem = substr($string,-$iMod);
+        // check if $sStringRem contains padding characters
+        if (substr($sStringRem,-1) != '=') {
+            $string = substr($string,0,-$iMod);
+        } else {
+            $sStringRem = '';
+        }
+    }
+    $string = base64_decode($string);
+    return $sStringRem;
+}
 
 /* -[ END MIME DECODING ]----------------------------------------------------------- */
 

@@ -110,10 +110,11 @@ function sqimap_fread($imap_stream,$iSize,$filter=false,
     if ($iSize < $iBufferSize) {
         $iBufferSize = $iSize;
     }
+
     $iRetrieved = 0;
     $results = '';
     $sRead = $sReadRem = '';
-    // NB: fread can also stop at end of packet on sockets. 
+    // NB: fread can also stop at end of a packet on sockets. 
     while ($iRetrieved < $iSize) {
         $sRead = fread($imap_stream,$iBufferSize);
         $iLength = strlen($sRead);
@@ -130,19 +131,10 @@ function sqimap_fread($imap_stream,$iSize,$filter=false,
             $sRead = $sReadRem . $sRead;
             $sReadRem = '';
         }
-        if (substr($sRead,-1) !== "\n") {  
-            $i = strrpos($sRead,"\n");
-            if ($i !== false && $iRetrieved<$iSize) {
-                ++$i;
-                $sReadRem = substr($sRead,$i);
-                $sRead = substr($sRead,0,$i);
-            } else if ($iLength && $iRetrieved<$iSize) { // linelength > received buffer
-                $sReadRem = $sRead;
-                $sRead = '';
-            }
-        } 
+
         if ($filter && $sRead) {
-           $filter($sRead);
+           // in case the filter is base64 decoding we return a remainder 
+           $sReadRem = $filter($sRead);
         }
         if ($outputstream && $sRead) {
            if (is_resource($outputstream)) {
@@ -159,7 +151,6 @@ function sqimap_fread($imap_stream,$iSize,$filter=false,
     }
     return $results;       
 }        
-
 
 /*
  * Reads the output from the IMAP stream.  If handle_errors is set to true,
@@ -568,7 +559,7 @@ function sqimap_login ($username, $password, $imap_server_address, $imap_port, $
     return $imap_stream;
 }
 
-/* Simply logs out the IMAP session */
+H/* Simply logs out the IMAP session */
 function sqimap_logout ($imap_stream) {
     /* Logout is not valid until the server returns 'BYE'
      * If we don't have an imap_ stream we're already logged out */
