@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2003-07-02 17:23+0300\n"
+"POT-Creation-Date: 2003-07-06 14:41+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -694,6 +694,9 @@ msgstr ""
 msgid "There must be at least one criteria to search for"
 msgstr ""
 
+msgid "Error in criteria argument"
+msgstr ""
+
 msgid "M j, Y"
 msgstr ""
 
@@ -706,7 +709,10 @@ msgstr ""
 msgid "In"
 msgstr ""
 
-msgid "(Empty string)"
+msgid "(Missing argument)"
+msgstr ""
+
+msgid "(Spurious argument)"
 msgstr ""
 
 msgid "edit"
@@ -733,7 +739,7 @@ msgstr ""
 msgid "Exclude Criteria:"
 msgstr ""
 
-msgid "Search Criterias"
+msgid "Search Criteria"
 msgstr ""
 
 msgid "Folder:"
@@ -742,10 +748,10 @@ msgstr ""
 msgid "Add New Criteria"
 msgstr ""
 
-msgid "Remove Excluded Criteria(s)"
+msgid "Remove Excluded Criteria"
 msgstr ""
 
-msgid "Remove All Criteria(s)"
+msgid "Remove All Criteria"
 msgstr ""
 
 msgid "Answered"
@@ -827,9 +833,6 @@ msgid "And"
 msgstr ""
 
 msgid "Or"
-msgstr ""
-
-msgid "Advanced Search"
 msgstr ""
 
 msgid "Search Results"
@@ -1183,6 +1186,12 @@ msgid ""
 msgstr ""
 
 msgid "ERROR : No available imapstream."
+msgstr ""
+
+msgid "ERROR : Bad function call."
+msgstr ""
+
+msgid "Reason:"
 msgstr ""
 
 msgid "ERROR : Connection dropped by imap-server."
@@ -2261,6 +2270,7 @@ msgstr ""
 msgid "FREE - SPAMhaus - A list of well-known SPAM sources."
 msgstr ""
 
+#, c-format
 msgid ""
 "FREE, for now - SPAMCOP - An interesting solution that lists servers that "
 "have a very high spam to legit email ratio (85% or more)."
@@ -2731,9 +2741,6 @@ msgid "Confirm delete of selected server?"
 msgstr ""
 
 msgid "Confirm Delete"
-msgstr ""
-
-msgid "Modify a Server"
 msgstr ""
 
 msgid "Undefined Function"
