@@ -17,9 +17,9 @@
 ?>
 <body>
 <!-- begin page title -->
-<table class="pagetitle" width="100%">
+<table id="pagetitle" width="100%" cellspacing="0" cellpadding="0">
   <tr>
-    <td rowspan="2" width="275">&nbsp;</td>
+    <td rowspan="2" width="304" class="logo">&nbsp;</td>
     <td class="usermenu" valign="top">
       <!-- Start with array of translation flags -->
         <?php echo implode(' ', $flag_links); ?>
@@ -27,13 +27,13 @@
       <!-- User Login/Language/Workspace information -->
         <?php
           $lang_url = NULL;
-          if ( $user->workspaceid != 0 ) 
+          if ( $user->workspaceid != 0 )
           {
             $lang_url = foowd_translation::getLink($user->workspaceid);
             if ( $lang_url != NULL )
               $lang_url .=  ' | ';
           }
-          if ( isset($user->objectid) ) 
+          if ( isset($user->objectid) )
           {
             // If an objectid is set, we're logged in.
             $url = getURI(array('objectid' => $user->objectid, 'classid' => USER_CLASS_ID));
@@ -52,18 +52,18 @@
   <tr>
     <td class="titleblock" valign="bottom">
       <?php
-          if ( isset($user->objectid) ) 
+          if ( isset($user->objectid) )
             echo $template['PAGE_TITLE_URL'];
-          else          
+          else
             echo $template['PAGE_TITLE'];
       ?>
     </td>
   </tr>
 </table>
-<!-- end pagetitle -->
-
+<!-- end page title -->
+<!-- begin location menu -->
 <div id="locationmenu">
-  <table border="0" cellspan="0" cellspacing="0" width="100%">
+  <table width="100%" cellspacing="0" cellpadding="0" border="0">
     <tr>
       <td align="left" class="subtext">
         <nobr><?php $loc_url = getURI(array());
@@ -80,16 +80,27 @@
         <nobr><?php
           echo '<a href="', $loc_url, '?object=search">',   _("Search"),'</a> | ';
           echo '<a href="', $loc_url, '?object=sqmtools">', _("Tools"),'</a> | ';
-          echo '<a href="', $loc_url, '?object=sqmindex=">',_("Index"),'</a> ';
+          echo '<a href="', $loc_url, '?object=sqmindex">',_("Index"),'</a> ';
         ?></nobr>
       </td>
     </tr>
   </table>
-</div><!-- end locationmenu -->
-
+</div>
+<!-- end location menu -->
+<?php if( isset($template['STATUS_OK']) ) { ?>
+  <div id="status">
+    <span class="ok"><?php echo $template['STATUS_OK']; ?></span>
+  </div>
+<?php } elseif( isset($template['STATUS_ERROR']) ) { ?>
+  <div id="status">
+    <span class="error"><?php echo $template['STATUS_ERROR']; ?></span>
+  </div>
+<?php } ?>
+<!-- begin content -->
 <div id="content">
-  <?php echo $template['BODY'];  ?>
-</div><!-- end content -->
+<?php echo $template['BODY'];  ?>
+</div>
+<!-- end content -->
 <div id="editmenu">
   <?php
     if ( isset($object) &&                               // is object
@@ -98,62 +109,56 @@
     {
         $className = get_class($object);
         $methods = get_class_methods($className);
-        
+
         $notfirst = 0;
-        foreach ($methods as $methodName) 
+        foreach ($methods as $methodName)
         {
-            if (substr($methodName, 0, 7) == 'method_' ) 
+            if (substr($methodName, 0, 7) == 'method_' )
             {
                 $methodName = substr($methodName, 7);
-                if ( $methodName == 'diff' || 
+                if ( $methodName == 'diff' ||
                      $methodName == 'xml' ||
                      $methodName == 'permissions' ||
-                     $methodName == 'raw' ) 
+                     $methodName == 'raw' )
                     continue;
-                    
-                if (isset($object->permissions[$methodName])) 
+
+                if (isset($object->permissions[$methodName]))
                     $methodPermission = $object->permissions[$methodName];
-                else 
+                else
                     $methodPermission = getPermission($className, $methodName, 'object');
 
-                if ($foowd->user->inGroup($methodPermission, $object->creatorid)) 
-                { 
-                    if ( $notfirst ) 
+                if ($foowd->user->inGroup($methodPermission, $object->creatorid))
+                {
+                    if ( $notfirst )
                       echo ' | ';
                     $notfirst = 1;
-                    echo '<a href="', getURI(array('objectid' => $object->objectid, 
-                                                     'classid' => $object->classid, 
-                                                     'version' => $object->version, 
+                    echo '<a href="', getURI(array('objectid' => $object->objectid,
+                                                     'classid' => $object->classid,
+                                                     'version' => $object->version,
                                                      'method' => $methodName)), '">', ucfirst($methodName), '</a>';
                 }
             }
         }
         if ( $notfirst )
             echo ' | ';
-        echo '<a href="', $loc_url, '?object=sqmchanges=">',_("Recent Changes"),"</a><br />\n";
+        echo '<a href="', $loc_url, '?object=sqmchanges">',_("Recent Changes"),"</a><br />\n";
         echo _("Last Update");
-        if ( $object->workspaceid != 0 ) 
+        if ( $object->workspaceid != 0 )
             echo ' (', getLink($foowd, $object->workspaceid), ')';
 
         echo  ': ', date('Y/m/d, H:i T', $object->updated);
     } else { // object not set OR external object
-        echo '<a href="', $loc_url, '?object=sqmchanges=">',_("Recent Changes"),"</a><br />\n";
+        echo '<a href="', $loc_url, '?object=sqmchanges">',_("Recent Changes"),"</a><br />\n";
     }
-  ?> 
-  
-  <?php echo $recentchanges; ?><br />
-
+  ?>
 </div><!-- end editmenu -->
 <div id="copyright">
   This site is copyright &copy; 1999-2003 by the SquirrelMail Project Team.
 </div>
 <div id="footer">
   Powered by <a href="http://foowd.peej.co.uk/">
-  Framework for Object Oriented Web Development</a> 
+  Framework for Object Oriented Web Development</a>
   (v <?php echo VERSION ?>).
-</div>
-
-<?php echo $template['DEBUG'];  ?>
-
+</div><?php if ( isset($template['DEBUG']) ) { echo $template['DEBUG']; }  ?>
 </body>
 </html>
