@@ -21,6 +21,7 @@
  * @return string utf-8 encoded text
  */
 function charset_encode_utf_8 ($string) {
+
    // don't run encoding function, if there is no encoded characters
    if (! preg_match("'&#[0-9]+;'",$string) ) return $string;
 
