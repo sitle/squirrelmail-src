@@ -398,6 +398,11 @@ if (isset($_GET['passed_id'])) {
 elseif (isset($_POST['passed_id'])) {
     $passed_id = $_POST['passed_id'];
 }
+
+if (isset($_GET['sendreceipt'])) {
+    $sendreceipt = $_GET['sendreceipt'];
+}
+
 if (isset($_GET['sort'])) {
     $sort = $_GET['sort'];
 }
