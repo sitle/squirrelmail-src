@@ -116,7 +116,7 @@ require_once(SM_PATH . 'include/load_prefs.php');
 	      "<br>".sprintf(_("Number of supported language pairs: %s"),"12")." " ,
               'http://www.dictionary.com/translate' );
     ShowTrad( 'InterTran',
-              _("No known limits, powered by Translation Experts's InterTran").
+              _("No known limits, powered by Translation Experts' InterTran").
 	      "<br>".sprintf(_("Number of supported languages: %s"),"28")." " ,
               'http://www.tranexp.com/' );
     ShowTrad( 'GPLTrans',
