@@ -1354,6 +1354,10 @@ $languages['uk_UA']['NAME']    = 'Ukrainian';
 $languages['uk_UA']['CHARSET'] = 'koi8-u';
 $languages['uk']['ALIAS'] = 'uk_UA';
 
+$languages['cy_GB']['NAME']    = 'Welsh';
+$languages['cy_GB']['CHARSET'] = 'iso-8859-1';
+$languages['cy']['ALIAS'] = 'cy_GB';
+
 // Right to left languages
 
 $languages['ar']['NAME']    = 'Arabic';
