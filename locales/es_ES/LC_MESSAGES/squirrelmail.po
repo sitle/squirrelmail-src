@@ -5,10 +5,10 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: $Id$\n"
-"POT-Creation-Date: 2002-12-08 10:58+0100\n"
-"PO-Revision-Date: 2002-12-06 18:52+0100\n"
+"POT-Creation-Date: 2002-12-08 11:18+0100\n"
+"PO-Revision-Date: 2002-12-07 21:29+0100\n"
 "Last-Translator: Philippe Mingo <philippe@squirrelmail.org>\n"
-"Language-Team: spanish <squirrelmail-i18n@lists.sourceforge.net>\n"
+"Language-Team: Spanish <squirrelmail-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=ISO-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -52,13 +52,11 @@ msgstr "La libreta global de direcciones no puede modificarse"
 msgid "Not a file name"
 msgstr "No es un nombre de archivo"
 
-#, fuzzy
 msgid "Write failed"
-msgstr "Error al abrir"
+msgstr "Falló la escritura"
 
-#, fuzzy
 msgid "Unable to update"
-msgstr "Guardar / Actualizar"
+msgstr "No puedo actualizar"
 
 msgid "Could not lock datafile"
 msgstr "No se pudo bloquear el archivo de datos"
@@ -122,30 +120,26 @@ msgstr "Viernes"
 msgid "Saturday"
 msgstr "Sábado"
 
-#, fuzzy
 msgid "Sun"
-msgstr "Domingo"
+msgstr "Dom"
 
-#, fuzzy
 msgid "Mon"
-msgstr "Lunes"
+msgstr "Lun"
 
-#, fuzzy
 msgid "Tue"
-msgstr "Martes"
+msgstr "Mar"
 
 msgid "Wed"
-msgstr ""
+msgstr "Mie"
 
 msgid "Thu"
-msgstr ""
+msgstr "Jue"
 
-#, fuzzy
 msgid "Fri"
-msgstr "Viernes"
+msgstr "Vie"
 
 msgid "Sat"
-msgstr ""
+msgstr "Sab"
 
 msgid "January"
 msgstr "Enero"
@@ -183,46 +177,38 @@ msgstr "Noviembre"
 msgid "December"
 msgstr "Diciembre"
 
-#, fuzzy
 msgid "Jan"
-msgstr "Enero"
+msgstr "Ene"
 
 msgid "Feb"
-msgstr ""
+msgstr "Feb"
 
-#, fuzzy
 msgid "Mar"
-msgstr "Marzo"
+msgstr "Mar"
 
-#, fuzzy
 msgid "Apr"
-msgstr "Abril"
+msgstr "Abr"
 
-#, fuzzy
 msgid "Jun"
-msgstr "Junio"
+msgstr "Jun"
 
-#, fuzzy
 msgid "Jul"
-msgstr "Julio"
+msgstr "Jul"
 
-#, fuzzy
 msgid "Aug"
-msgstr "Agosto"
+msgstr "Ago"
 
 msgid "Sep"
-msgstr ""
+msgstr "Sep"
 
-#, fuzzy
 msgid "Oct"
-msgstr "Octubre"
+msgstr "Oct"
 
-#, fuzzy
 msgid "Nov"
-msgstr "No"
+msgstr "Nov"
 
 msgid "Dec"
-msgstr ""
+msgstr "Dic"
 
 msgid "D, F j, Y g:i a"
 msgstr "D, j \\d\\e F \\d\\e Y, g:i a"
@@ -289,24 +275,23 @@ msgid ""
 "Preference file, %s, could not be opened. Contact your system administrator "
 "to resolve this issue."
 msgstr ""
-"El fichero de preferencias %s no pudo abrirse. Contacte con su administrador "
-"y comuníquele este error."
+"El fichero %s de configuración no ha podido abrirse. Contacte con su "
+"administrador y comuníquele este error."
 
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Preference file, %s, could not be written. Contact your system administrator "
 "to resolve this issue."
 msgstr ""
-"El fichero de preferencias %s no pudo abrirse. Contacte con su administrador "
-"y comuníquele este error."
+"El fichero %s de configuración no ha podido abrirse. Contacte con su "
+"administrador y comuníquele este error."
 
 #, c-format
 msgid "Error opening %s"
 msgstr "Error abriendo %s"
 
-#, fuzzy
 msgid "Default preference file not found or not readable!"
-msgstr "¡No se encuentra el fichero de preferencias por omisión!"
+msgstr "¡No se encuentra el fichero de preferencias por omisión."
 
 msgid "Please contact your system administrator and report this error."
 msgstr "Contacte con su administrador y comuníquele este error."
@@ -323,15 +308,15 @@ msgid ""
 "Signature file, %s, could not be opened. Contact your system administrator "
 "to resolve this issue."
 msgstr ""
-"El fichero de firmas %s no pudo abrirse. Contacte con su administrador y "
+"El fichero %s de firma no puede abrirse. Contacte con su administrador y "
 "comuníquele este error."
 
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Signature file, %s, could not be written. Contact your system administrator "
 "to resolve this issue."
 msgstr ""
-"El fichero de firmas %s no pudo abrirse. Contacte con su administrador y "
+"El fichero %s de firma no puede abrirse. Contacte con su administrador y "
 "comuníquele este error."
 
 msgid "ERROR : Could not complete request."
@@ -376,9 +361,8 @@ msgstr "(sin asunto)"
 msgid "Unknown Sender"
 msgstr "Remitente Desconocido"
 
-#, fuzzy
 msgid "No To Address"
-msgstr "Tomar dirección"
+msgstr "Sin destinatario"
 
 msgid "(unknown sender)"
 msgstr "(remitente desconocido)"
@@ -393,27 +377,23 @@ msgid "INBOX"
 msgstr "ENTRADA"
 
 msgid "Found"
-msgstr ""
+msgstr "Encontrado"
 
-#, fuzzy
 msgid "messages"
-msgstr "] mensajes"
+msgstr "mensajes"
 
 msgid "A"
 msgstr "C"
 
-#, fuzzy
 msgid ""
 "Server-side sorting is not supported by your IMAP server.<br>Please report "
 "this to the system administrator"
 msgstr ""
-"Avise al administrador que su servidor IMAP no permite ordenaciones de "
-"servidor."
+"El servidor IMAP empleado en esta instalación no puede ordenar los mensajes."
 
 msgid "THIS FOLDER IS EMPTY"
 msgstr "Esta Carpeta esta Vacía"
 
-#, fuzzy
 msgid "Move Selected To:"
 msgstr "Mover seleccionados a:"
 
@@ -493,15 +473,15 @@ msgstr "Todos"
 
 msgid "Error decoding mime structure.  Report this as a bug!"
 msgstr ""
+"Se produjo un error al descodificar la estructura MIME. ¡Notifíquelo como un "
+"error del programa!"
 
-#, fuzzy
 msgid ""
 "Body retrieval error. The reason for this is most probably that the message "
 "is malformed."
 msgstr ""
 "Error de recuperación: El motivo de este error se debe probablemente a que "
-"el mensaje está mal formado. Por favor, ayúdenos a depurar versiones futuras "
-"enviando este mensaje al centro de desarrollo."
+"el mensaje está mal formado. "
 
 msgid "Command:"
 msgstr "Comando:"
@@ -875,7 +855,7 @@ msgid "Go"
 msgstr "Adelante"
 
 msgid "l, F j Y"
-msgstr "D, j \\d\\e F \\d\\e Y, G:i"
+msgstr "l, F j Y"
 
 msgid "ADD"
 msgstr "Agregar"
@@ -931,9 +911,8 @@ msgstr "Confirme el cambio de esta cita de:"
 msgid "to:"
 msgstr "a:"
 
-#, fuzzy
 msgid "l, F d Y"
-msgstr "D, j \\d\\e F \\d\\e Y, G:i"
+msgstr "l, F d Y"
 
 msgid "Event updated!"
 msgstr "¡Cita Actualizada!"
@@ -1146,32 +1125,34 @@ msgstr ""
 "servidores que tienen un ratio muy elevado de SPAM (85% o superior)."
 
 msgid "FREE - dev.null.dk - I don't have any detailed info on this list."
-msgstr "GRATUITO - dev.null.dk - No disponemos de información detallada."
+msgstr "GRATUITO - dev.null.dk - No existe información detallada."
 
 msgid "FREE - visi.com - Relay Stop List. Very conservative OpenRelay List."
 msgstr ""
-"GRATUITO - visi.com - Relay stop list. Lista de OpenRelay conservadora."
+"GRATUITO - visi.com - Relay Stop List. Very conservative OpenRelay List."
 
 msgid "FREE - 2mbit.com Open Relays - Another list of Open Relays."
-msgstr "GRATUITO - 2mbit.com Open Relay - Otra lista de relays abiertos."
+msgstr "GRATUITO - 2mbit.com Open Relays - Another list of Open Relays."
 
 msgid "FREE - 2mbit.com SPAM Source - List of Direct SPAM Sources."
-msgstr "GRATUITO - 2mbit.com SPAM Source - Lista de fuentes Direct SPAM."
+msgstr "GRATUITO - 2mbit.com SPAM Source - List of Direct SPAM Sources."
 
 msgid "FREE - 2mbit.com SPAM ISPs - List of SPAM-friendly ISPs."
-msgstr "GRATUITO - 2mbit.com SPAM ISPs - Lista de ISPs que consienten el SPAM."
+msgstr "GRATUITO - 2mbit.com SPAM ISPs - List of SPAM-friendly ISPs."
 
 msgid ""
 "FREE - Leadmon DUL - Another list of Dial-up or otherwise dynamically "
 "assigned IPs."
-msgstr "GRATUITO - Leadmon DUL - Otra lista de IPs dinámicas."
+msgstr ""
+"GRATUITO - Leadmon DUL - Another list of Dial-up or otherwise dynamically "
+"assigned IPs."
 
 msgid ""
 "FREE - Leadmon SPAM Source - List of IPs Leadmon.net has received SPAM "
 "directly from."
 msgstr ""
-"GRATUITO - Leadmon SPAM Source - Lista de IPs de la que Leadmon.net ha "
-"recibido SPAM directamente."
+"GRATUITO - Leadmon SPAM Source - List of IPs Leadmon.net has received SPAM "
+"directly from."
 
 msgid ""
 "FREE - Leadmon Bulk Mailers - Bulk mailers that do not require confirmed opt-"
@@ -1218,7 +1199,7 @@ msgid "FREE, for now - Not Just Another Blacklist - Dial-up IPs."
 msgstr "GRATUITO, de momento - Not Just Another Blacklist - Dial-up IPs."
 
 msgid "Saved Scan type"
-msgstr "Tipo de escaneo almacenado"
+msgstr "Tipo de escaneado guardado"
 
 msgid "Message Filtering"
 msgstr "Filtrado de Mensajes"
@@ -1401,7 +1382,6 @@ msgstr "Archivos"
 msgid "Contact Listowner"
 msgstr "Contactar Adm."
 
-#, fuzzy
 msgid "Mailing List:"
 msgstr "Lista de Correo:"
 
@@ -1605,9 +1585,8 @@ msgstr "Añadir Servidor"
 msgid "Server:"
 msgstr "Servidor:"
 
-#, fuzzy
 msgid "Port:"
-msgstr "Prioridad:"
+msgstr "Puerto:"
 
 msgid "Alias:"
 msgstr "Descripción:"
@@ -1916,7 +1895,7 @@ msgid "Translator"
 msgstr "Traductor"
 
 msgid "Saved Translation Options"
-msgstr "Opciones de Traducción Guardadas"
+msgstr "Opciones de Traducción almacenadas"
 
 msgid "Your server options are as follows:"
 msgstr "Estas son sus opciones de servidor:"
@@ -2084,7 +2063,7 @@ msgid "Latin"
 msgstr "Latín"
 
 msgid "Address Book"
-msgstr "Libreta de Direcciones"
+msgstr "Agenda"
 
 msgid "Name"
 msgstr "Nombre"
@@ -2220,7 +2199,6 @@ msgstr "Prioridad"
 msgid "Receipt"
 msgstr "Confirmación"
 
-#, fuzzy
 msgid "On read"
 msgstr "De lectura"
 
@@ -2251,17 +2229,14 @@ msgstr "Ver un texto adosado"
 msgid "View message"
 msgstr "Ver el mensaje"
 
-#, fuzzy
 msgid "Viewing a message attachment"
-msgstr "Viendo una imagen adjunta"
+msgstr "Mostrando un fichero adjunto"
 
-#, fuzzy
 msgid "Cc:"
-msgstr "Cc"
+msgstr "Cc:"
 
-#, fuzzy
 msgid "Bcc:"
-msgstr "Bcc"
+msgstr "Bcc:"
 
 msgid "more"
 msgstr "mas"
@@ -2342,7 +2317,7 @@ msgid "New name:"
 msgstr "Nuevo nombre:"
 
 msgid "ERROR: Help files are not in the right format!"
-msgstr "ERROR - ¡Los ficheros de la ayuda no están en el formato correcto!"
+msgstr "ERROR: Los ficheros de la ayuda no están en el formato correcto."
 
 #, c-format
 msgid ""
@@ -2380,9 +2355,8 @@ msgstr "Ingreso a %s"
 msgid "Name:"
 msgstr "Nombre:"
 
-#, fuzzy
 msgid "<No subject>"
-msgstr "(sin asunto)"
+msgstr "<sin asunto>"
 
 msgid "No messages were selected."
 msgstr "No hay mensajes seleccionados."
@@ -2394,7 +2368,7 @@ msgid "Theme"
 msgstr "Tema"
 
 msgid "Custom Stylesheet"
-msgstr "Hoja de estilos propia"
+msgstr "Personalizar Estilo"
 
 msgid "Language"
 msgstr "Idioma"
@@ -2403,7 +2377,7 @@ msgid "Use Javascript"
 msgstr "Usar Javascript"
 
 msgid "Autodetect"
-msgstr "Auto-detectar"
+msgstr "Autodetección"
 
 msgid "Always"
 msgstr "Siempre"
@@ -2415,114 +2389,109 @@ msgid "Mailbox Display Options"
 msgstr "Opciones de Visualización del Buzón"
 
 msgid "Number of Messages to Index"
-msgstr "Número de Mensajes para Paginar"
+msgstr "Número de Mensajes a Indexar"
 
 msgid "Enable Alternating Row Colors"
-msgstr "Activar Colores Alternos"
+msgstr "Alternar Colores en Listas"
 
 msgid "Enable Page Selector"
-msgstr "Activar Paginador"
+msgstr "Selector de Páginas"
 
 msgid "Maximum Number of Pages to Show"
-msgstr "Número Máximo de Páginas a Mostrar"
+msgstr "Nº de Páginas en el Selector"
 
 msgid "Message Display and Composition"
-msgstr "Visualización y Composición de Mensajes"
+msgstr "Visualización y Redacción de Mensajes"
 
 msgid "Wrap Incoming Text At"
-msgstr "Ajustar Texto Entrante A"
+msgstr "Acomodar Textos Entrantes a"
 
 msgid "Size of Editor Window"
-msgstr "Tamaño de la Venta de Edición"
+msgstr "Tamaño de la Ventana del Editor"
 
 msgid "Location of Buttons when Composing"
-msgstr "Ubicación de Botonoes al Componer"
+msgstr "Ubicación de Botones en Redacción"
 
 msgid "Before headers"
-msgstr "Antes de las cabeceras"
+msgstr "Antes de los títulos"
 
 msgid "Between headers and message body"
-msgstr "Entre las cabeceras y el cuerpo"
+msgstr "Entre los títulos y el mensaje"
 
 msgid "After message body"
-msgstr "Después del Cuerpo"
+msgstr "Después del mensaje"
 
 msgid "Addressbook Display Format"
-msgstr "Formato de Visualización de la Agenda"
+msgstr "Visualización de la Libreta de Direcciones"
 
 msgid "Javascript"
-msgstr "JavaScript"
+msgstr "Javascript"
 
 msgid "HTML"
 msgstr "HTML"
 
 msgid "Show HTML Version by Default"
-msgstr "Mostrar Versión HTML por Omisión"
+msgstr "Mostrar versión HTML por omisión"
 
 msgid "Include Me in CC when I Reply All"
-msgstr "Inlcuirme en CC al Contestar a Todos"
+msgstr "Incluirme en CC al Contestar a Todos"
 
-#, fuzzy
 msgid "Include CCs when forwarding messages"
-msgstr "Incluir CCs en Reenvíos"
+msgstr "Incluir CCs en el reenvio de mensajes"
 
 msgid "Enable Mailer Display"
-msgstr "Mostrar Versión de Cliente"
+msgstr "Ver Cliente de Origen"
 
 msgid "Display Attached Images with Message"
-msgstr "Mostrar Imágenes Adjuntas"
+msgstr "Mostrar Imágenes Adjuntas con el Mensaje"
 
 msgid "Enable Subtle Printer Friendly Link"
-msgstr "Activar Vista Preliminar"
+msgstr "Activar Enlace discreto en Vista Preliminar"
 
 msgid "Enable Printer Friendly Clean Display"
-msgstr "Activar Vista Preliminar \"Limpia\""
+msgstr "Limpiar Visualización en Vista Preliminar"
 
 msgid "Enable request/confirm reading"
-msgstr ""
+msgstr "¿Activar confirmación de lectura?"
 
-#, fuzzy
 msgid "Always compose in a new window"
-msgstr "Componer Mensajes en una Ventana Nueva"
+msgstr "Siempre escribir en una ventana nueva"
 
-#, fuzzy
 msgid "Width of compose window"
-msgstr "Ancho de la Venta de Composición"
+msgstr "Ancho de edición de mensajes"
 
-#, fuzzy
 msgid "Height of compose window"
-msgstr "Alto de la Ventana de Composición"
+msgstr "Alto de edición de mensajes"
 
-#, fuzzy
 msgid "Append signature before reply/forward text"
-msgstr "Agregar Firma Antes del Bloque de Referencia"
+msgstr "Incluir firma antes de los bloques de respuesta"
 
 msgid "Use receive date for sort"
-msgstr ""
+msgstr "Ordenar por fecha de llegada"
 
 msgid "Use References header for thread sort"
-msgstr ""
+msgstr "Ordenar por referencia de cabecera"
 
 msgid "Special Folder Options"
-msgstr "Opciones Especiales de Carpetas"
+msgstr "Opciones de Carpetas Especiales"
 
 msgid "Folder Path"
-msgstr "Ruta de las Carpetas"
+msgstr "Ubicación de Carpetas"
 
 msgid "Do not use Trash"
-msgstr "No usar la Papelera"
+msgstr "No usar papelera"
 
 msgid "Do not use Sent"
-msgstr "No usar Elementos Enviados"
+msgstr "No usar Elementos enviados"
 
 msgid "Do not use Drafts"
-msgstr "No usar Borradores"
+msgstr "No usar borrador"
 
 msgid "Folder List Options"
-msgstr "Opciones de Lista de Carpetas"
+msgstr "Opciones de Carpetas"
 
 msgid "Location of Folder List"
-msgstr "Ubicación de la Lista de Carpetas"
+msgstr "Ubicación de las Carpetas"
 
 msgid "Left"
 msgstr "Izquierda"
@@ -2543,25 +2512,25 @@ msgid "Minute"
 msgstr "Minuto"
 
 msgid "Auto Refresh Folder List"
-msgstr "Actualizar Carpetas Automáticamente"
+msgstr "Actualizar Carpetas"
 
 msgid "Enable Unread Message Notification"
-msgstr "Activar Notificación de Mensajes Sin Leer"
+msgstr "Activar Notificación de Nuevos Mensajes"
 
 msgid "Unread Message Notification Type"
-msgstr "Tipo de Notificación de Mensajes Sin Leer"
+msgstr "Tipo de Notificación de Nuevos Mensajes"
 
 msgid "Enable Collapsable Folders"
 msgstr "Activar Carpetas en Cascada"
 
 msgid "Show Clock on Folders Panel"
-msgstr "Mostrar Reloj en el Panel de Carpetas"
+msgstr "Mostrar reloj en panel de carpetas"
 
 msgid "No Clock"
 msgstr "Sin Reloj"
 
 msgid "Hour Format"
-msgstr "Formato Horario"
+msgstr "Formato de Hora"
 
 msgid "12-hour clock"
 msgstr "12 horas"
@@ -2696,7 +2665,7 @@ msgid "Return to options page"
 msgstr "Volver a la pagina de opciones"
 
 msgid "Name and Address Options"
-msgstr "Opciones de Nombre y Dirección"
+msgstr "Opciones de Nombres y Direcciones"
 
 msgid "Email Address"
 msgstr "Dirección de Correo Electrónico"
@@ -2705,7 +2674,7 @@ msgid "Edit Advanced Identities"
 msgstr "Editar Identidades Avanzadas"
 
 msgid "(discards changes made on this form so far)"
-msgstr "(deshacer los cambios hechos hasta ahora)"
+msgstr "(anula los cambios hechos hasta ahora)"
 
 msgid "Multiple Identities"
 msgstr "Múltiples Identidades"
@@ -2720,37 +2689,37 @@ msgid "Your current timezone"
 msgstr "Su zona horaria"
 
 msgid "Reply Citation Options"
-msgstr "Opciones de Citación para la Respuesta"
+msgstr "Encabezado de Respuestas"
 
 msgid "Reply Citation Style"
-msgstr "Estilo de la Citación"
+msgstr "Encabezado de Respuestas"
 
 msgid "No Citation"
-msgstr "Sin Citación"
+msgstr "Sin Encabezado"
 
 msgid "AUTHOR Said"
-msgstr "El Autor Dijo"
+msgstr "El AUTOR dijo"
 
 msgid "Quote Who XML"
-msgstr "Quién XML"
+msgstr "Encabezado XML"
 
 msgid "User-Defined"
-msgstr "Definido por el Usuario"
+msgstr "Personalizado"
 
 msgid "User-Defined Citation Start"
-msgstr "Inicio"
+msgstr "Inicio de Encabezado Personalizado"
 
 msgid "User-Defined Citation End"
-msgstr "Fin"
+msgstr "Final de Encabezado Personalizado"
 
 msgid "Signature Options"
-msgstr "Opciones de Firma"
+msgstr "Opciones de Firmas"
 
 msgid "Use Signature"
-msgstr "Usar Firma"
+msgstr "Usar una firma"
 
 msgid "Prefix Signature with '-- ' Line"
-msgstr "Preceder la firma con '--'"
+msgstr "Preceder firma con '-- '"
 
 msgid "Personal Information"
 msgstr "Información Personal"
@@ -2848,7 +2817,7 @@ msgid "Resume Draft"
 msgstr "Recuperar Borrador"
 
 msgid "Edit Message as New"
-msgstr "Editar como nuevo mensaje"
+msgstr "Editar Msg. como nuevo"
 
 msgid "Reply"
 msgstr "Responder"
@@ -2917,9 +2886,8 @@ msgstr "Todos lados"
 msgid "Search Results"
 msgstr "Resultado de la búsqueda"
 
-#, fuzzy
 msgid "No Messages found"
-msgstr "No se Encontraron Mensajes"
+msgstr "No se encontraron mensajes"
 
 msgid "You have been successfully signed out."
 msgstr "Se ha desconectado correctamente."
@@ -2964,7 +2932,7 @@ msgid "Add to Addressbook"
 msgstr "Agregar al Listín"
 
 msgid "Note Field Contains"
-msgstr ""
+msgstr "Campo de notas contiene "
 
 msgid "Title & Org. / Dept."
 msgstr "Puesto, Empr. / Dpto."
@@ -2973,8 +2941,6 @@ msgid ""
 "You need to have php4 installed with the multibyte string function enabled "
 "(using configure option --with-mbstring)."
 msgstr ""
-"Error de sistema. Avise al administrador que necesita una versión de php4 "
-"con la opción multibyte activada (--with-mbstring)."
 
 msgid "ERROR : No available imapstream."
 msgstr ""
@@ -2996,71 +2962,78 @@ msgstr ""
 msgid "Unknown date"
 msgstr "Remitente Desconocido"
 
+#, fuzzy
 msgid ""
 "Thread sorting is not supported by your IMAP server.<br>Please report this "
 "to the system administrator."
 msgstr ""
-"Avise al administrador del sistema que Su servidor IMAP no soporta la "
-"ordenación temática."
+"El servidor IMAP empleado en esta instalación no puede ordenar los mensajes."
 
+#, fuzzy
 msgid ""
 "Server-side sorting is not supported by your IMAP server.<br>Please report "
 "this to the system administrator."
 msgstr ""
-"Avise al administrador que su servidor IMAP no permite ordenaciones de "
-"servidor."
+"El servidor IMAP empleado en esta instalación no puede ordenar los mensajes."
 
+#, fuzzy
 msgid "Move Selected To"
 msgstr "Mover seleccionados a:"
 
-#, fuzzy
 msgid "SquirrelMail could not decode the bodystructure of the message"
-msgstr "Squirrelmail no pudo descodificar la estructura del cuerpo del mensaje"
+msgstr ""
 
 msgid "the provided bodystructure by your imap-server"
-msgstr "la estructura del cuerpo suministrada por su servidor imap"
+msgstr ""
 
+#, fuzzy
 msgid "Unknown sender"
 msgstr "Remitente Desconocido"
 
 msgid "Enable Forward as Attachment"
-msgstr "Permitir Reenvíos Adjuntos"
+msgstr ""
 
+#, fuzzy
 msgid "Include CCs when Forwarding Messages"
-msgstr "Incluir CCs en Reenvíos"
+msgstr "Incluir CCs en el reenvio de mensajes"
 
+#, fuzzy
 msgid "Enable Mail Delivery Notification"
-msgstr "Activar Confirmación de Entrega"
+msgstr "Activar Notificación de Nuevos Mensajes"
 
+#, fuzzy
 msgid "Compose Messages in New Window"
-msgstr "Componer Mensajes en una Ventana Nueva"
+msgstr "Siempre escribir en una ventana nueva"
 
+#, fuzzy
 msgid "Width of Compose Window"
-msgstr "Ancho de la Venta de Composición"
+msgstr "Ancho de edición de mensajes"
 
+#, fuzzy
 msgid "Height of Compose Window"
-msgstr "Alto de la Ventana de Composición"
+msgstr "Alto de edición de mensajes"
 
+#, fuzzy
 msgid "Append Signature before Reply/Forward Text"
-msgstr "Agregar Firma Antes del Bloque de Referencia"
+msgstr "Incluir firma antes de los bloques de respuesta"
 
 msgid "Enable Sort by of Receive Date"
-msgstr "Activar la Ordenación por Fecha de Recepción"
+msgstr ""
 
 msgid "Enable Thread Sort by References Header"
-msgstr "Activar Ordenación Temática"
+msgstr ""
 
 #, fuzzy
 msgid "Enable Cumulative Unread Message Notification"
-msgstr "Activar Notificación de Mensajes Sin Leer"
+msgstr "Activar Notificación de Nuevos Mensajes"
 
 #, fuzzy
 msgid "Folder Selection Options"
-msgstr "Opciones de Lista de Carpetas"
+msgstr "Opciones de Carpetas"
 
 #, fuzzy
 msgid "Selection List Style"
-msgstr "Estilo de la Citación"
+msgstr "Encabezado de Respuestas"
 
 #, fuzzy
 msgid "Long: "
@@ -3073,30 +3046,33 @@ msgid "Delimited: "
 msgstr ""
 
 msgid "FREE - Distributed Sender Boycott List - Confirmed Relays"
-msgstr "GRATUITO - Distributed Sender Boycott List - Confirmed Relays"
+msgstr ""
 
 msgid "FREE - Distributed Sender Boycott List - Confirmed Multi-stage Relays"
 msgstr ""
-"GRATUITO - Distributed Sender Boycott List - Confirmed Multi-stage Relays"
 
 msgid "FREE - Distributed Sender Boycott List - UN-Confirmed Relays"
-msgstr "GRATUITO - Distributed Sender Boycott List - UN-Confirmed Relays"
+msgstr ""
 
+#, fuzzy
 msgid "Mailing List"
 msgstr "Lista de Correo:"
 
 msgid "Server error...Disconnect"
-msgstr "Error de servidor ... Desconexión"
+msgstr ""
 
 msgid "Reconnect from dead connection"
-msgstr "Reconectar de una conexión muerta"
+msgstr ""
 
+#, fuzzy
 msgid "Refetching message "
-msgstr "Recogiendo de nuevo mensaje "
+msgstr "Recogiendo mensaje "
 
+#, fuzzy
 msgid "On Read"
 msgstr "De lectura"
 
+#, fuzzy
 msgid "Draft folder"
 msgstr "Borradores"
 
@@ -3105,32 +3081,34 @@ msgid "Are you sure you want to delete %s?"
 msgstr "¿Confirma el borrado de esta cita?"
 
 msgid "Subscription Unsuccessful - Folder does not exist."
-msgstr "La carpeta no se ha suscrito ya que no existe."
+msgstr ""
 
+#, fuzzy
 msgid "Subscribe to:"
-msgstr "Suscribirse a:"
+msgstr "Suscribirse"
 
 #, fuzzy
 msgid "Not available"
 msgstr "no disponible"
 
 msgid "Save folder tree"
-msgstr "Guardar arbol de carpetas"
+msgstr ""
 
+#, fuzzy
 msgid "subject"
-msgstr "asunto"
+msgstr "Asunto"
 
+#, fuzzy
 msgid "Search results"
 msgstr "Resultado de la búsqueda"
 
+#, fuzzy
 msgid "View Message"
 msgstr "Ver el mensaje"
 
+#, fuzzy
 msgid "Forward as Attachment"
-msgstr "Reenviar como adjunto"
-
-#~ msgid "Submit message"
-#~ msgstr "Enviar mensaje"
+msgstr "Ficheros adjuntos"
 
 #~ msgid "I tried to execute '%s', but it returned:"
 #~ msgstr "Se ha intentado ejecutar '%s', pero ha devuelto:"
@@ -3431,24 +3409,3 @@ msgstr "Reenviar como adjunto"
 
 #~ msgid "SquirrelSpell Options Menu"
 #~ msgstr "Menú de Opciones de SquirrelSpell"
-
-#~ msgid "Address Book Take"
-#~ msgstr "Tomar Direcciones"
-
-#~ msgid "Left aligned"
-#~ msgstr "Alineado a la izquierda"
-
-#~ msgid "Centered"
-#~ msgstr "Centrado"
-
-#~ msgid "Right aligned"
-#~ msgstr "Alineado a la Dcha."
-
-#~ msgid "on the Read screen"
-#~ msgstr "en la pantalla de lectura"
-
-#~ msgid "Hide the box"
-#~ msgstr "Ocultar la caja"
-
-#~ msgid "Try to verify addresses"
-#~ msgstr "Intentar comprobar direcciones"
