@@ -25,7 +25,9 @@ $mailbox = $_GET['mailbox'];
 if (isset($_GET['saved_draft'])) {
     $saved_draft = $_GET['saved_draft'];
 }
-$mail_sent = $_GET['mail_sent'];
+if (isset($_GET['mail_sent'])) {
+    $mail_sent = $_GET['mail_sent'];
+}
 $sort = $_GET['sort'];
 $startMessage = $_GET['startMessage'];
 
@@ -51,14 +53,14 @@ if (isset($where) && isset($what)) {
     header("Location: $location/search.php?where=" . urlencode($where) .
            '&what=' . urlencode($what) . '&mailbox=' . urlencode($mailbox));
 } else {
-    if (isset($saved_draft)) {
+    if (isset($saved_draft) || isset($mail_sent)) {
         if (!empty($saved_draft) || !empty($mail_sent)) {
             header("Location: $location/compose.php?mail_sent=$mail_sent&saved_draft=$saved_draft");
         }
-        else {
-            header("Location: $location/right_main.php?sort=$sort&startMessage=$startMessage&mailbox=" .
+    }
+    else {
+        header("Location: $location/right_main.php?sort=$sort&startMessage=$startMessage&mailbox=" .
                 urlencode($mailbox));
-        }
     }
 }
 
