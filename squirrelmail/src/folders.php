@@ -63,7 +63,7 @@ if ((isset($success) && $success) ||
     }
     unset($success);
     echo "   <a href=\"../src/webmail.php?right_frame=folders.php\" target=_top>" . _("refresh folder list") . "</a>".
-         "   </td></tr>\n";
+         "   </td></tr>\n".
          "</table><br>\n";
 } else {
     echo "<br>";
