@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: avelsieve\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2003-09-01 19:37+0300\n"
+"POT-Creation-Date: 2003-10-09 17:00+0300\n"
 "PO-Revision-Date: 2003-06-13 15:20+0200\n"
 "Last-Translator: Karsten Behrens <mail@karsten-behrens.de>\n"
 "Language-Team: Deutsch <de@li.org>\n"
@@ -29,6 +29,9 @@ msgstr "Bitte erneut versuchen."
 
 msgid "Illegal folder name.  Please select a different name"
 msgstr "Ung&uuml;ltiger Ordnername. Bitte w&auml;hlen Sie einen anderen aus."
+
+msgid "Add New Rule"
+msgstr "Neue Regel hinzuf&uuml;gen"
 
 msgid "New Rule Wizard - Step"
 msgstr "Neue Regeln erstellen - Schritt"
@@ -73,6 +76,10 @@ msgstr "Neu starten"
 
 msgid "Cancel"
 msgstr "Abbruch"
+
+#, fuzzy
+msgid "Add SPAM Rule"
+msgstr "Neue Regel hinzuf&uuml;gen"
 
 msgid "Move back to step"
 msgstr "Gehe zur&uuml;ck zu Schritt"
@@ -149,7 +156,7 @@ msgstr ""
 "zutrifft:"
 
 msgid "Keep (Default action)"
-msgstr "Behalten (Standarteinstellung)"
+msgstr "Behalten (Standardeinstellung)"
 
 msgid "Discard Silently"
 msgstr "Ohne Benachrichtigung verwerfen"
@@ -193,7 +200,10 @@ msgstr ""
 "geschickt"
 
 msgid "Addresses: Only reply if sent to these addresses:"
-msgstr "Adressen: Nur diesen Adressen antworten: "
+msgstr ""
+"Adressen: Tragen Sie hier die Zieladressen (<B>Ihre</B> Adressen, durch "
+"Kommata getrennt) ein, auf die die Regel reagieren soll. Dieses Feld darf "
+"nicht leer bleiben!"
 
 msgid "Days: Reply message will be resent after"
 msgstr "Tage: Antwort wird erneut gesendet nach"
@@ -230,8 +240,8 @@ msgstr "Benachrichtige mich durch:"
 msgid "Notification ID"
 msgstr "Benachrichtigungs-ID"
 
-msgid "Parameters"
-msgstr "Parameter"
+msgid "Destination"
+msgstr ""
 
 msgid "Message"
 msgstr "Nachricht"
@@ -249,11 +259,70 @@ msgstr ""
 "Wenn Sie mit Ihren Einstellungen fertig sind, w&auml;hlen Sie &quot;"
 "Fertig&quot aus."
 
+msgid "Configure Anti-SPAM Protection"
+msgstr ""
+
+msgid ""
+"All incoming mail is checked for unsolicited commercial content (SPAM) and "
+"marked accordingly. This special rule allows you to configure what to do "
+"with such messages once they arrive to your Inbox."
+msgstr ""
+
+#, php-format
+msgid ""
+"Select %s to add the predefined rule, or select the advanced SPAM filter to "
+"customize the rule."
+msgstr ""
+
+#, fuzzy
+msgid "Add Spam Rule"
+msgstr "Neue Regel hinzuf&uuml;gen"
+
+msgid "Advanced Spam Filter..."
+msgstr ""
+
+msgid "Target Score"
+msgstr ""
+
+#, php-format
+msgid ""
+"Messages with SPAM-Score higher than the target value, the maximum value "
+"being %s, will be considered SPAM."
+msgstr ""
+
+msgid "SPAM Lists to check against"
+msgstr ""
+
 msgid "Error Encountered"
 msgstr "Fehler aufgetreten"
 
 msgid "For <strong>ALL</strong> incoming messages; "
 msgstr "F&uuml;r <strong>alle</strong> eingehenden Nachrichten; "
+
+msgid ""
+"All messages considered as <strong>SPAM</strong> (unsolicited commercial "
+"messages)"
+msgstr ""
+
+msgid "matching the Spam List(s):"
+msgstr ""
+
+#, fuzzy, php-format
+msgid "and with score greater than %s"
+msgstr "ist gr&ouml;&szlig;er als"
+
+msgid "will be"
+msgstr ""
+
+msgid "stored in the Junk Folder."
+msgstr ""
+
+msgid "stored in the Trash Folder."
+msgstr ""
+
+#, fuzzy
+msgid "discarded."
+msgstr "<em>ignorieren</em>."
 
 msgid "If"
 msgstr "Wenn"
@@ -348,9 +417,6 @@ msgstr "antworten mit dieser Urlaubsnachricht: "
 msgid " Also keep a copy in INBOX, marked as deleted."
 msgstr " Auch im Posteingang behalten (als gel&ouml;scht)."
 
-msgid " Then <strong>STOP</strong> processing rules."
-msgstr " Dann Regelverarbeitung beenden."
-
 msgid " Also notify using the method"
 msgstr " Benachrichtigung durch"
 
@@ -359,6 +425,9 @@ msgstr "mit"
 
 msgid "priority and the message"
 msgstr "Priorit&auml;t und Nachricht"
+
+msgid " Then <strong>STOP</strong> processing rules."
+msgstr " Dann Regelverarbeitung beenden."
 
 msgid "Address Match"
 msgstr "Adressen&uuml;bereinstimmung"
@@ -396,14 +465,11 @@ msgstr "&Uuml;berpr&uuml;fung des Mail-Inhalts"
 msgid "Perform an action on messages depending on their content (body text)."
 msgstr "Mails aufgrund ihres Inhalts behandeln."
 
-msgid "matches wildcard"
-msgstr "entspricht Platzhalter"
+msgid "wildcard"
+msgstr "Platzhalter"
 
-msgid "does not match wildcard"
-msgstr "entspricht nicht Platzhalter"
-
-msgid "matches regexp"
-msgstr "entspricht regul&auml;rem Ausdruck"
+msgid "regexp"
+msgstr "regul&auml;rem Ausdruck"
 
 msgid "verbose"
 msgstr "ausf&uuml;hrlich"
@@ -444,22 +510,43 @@ msgstr "Duplizieren"
 msgid "Move Up"
 msgstr "Nach oben"
 
-#, fuzzy
 msgid "Move to Top"
-msgstr "Gehe zu Schritt"
+msgstr "An den Anfang"
 
 msgid "Move Down"
 msgstr "Nach unten"
 
-#, fuzzy
 msgid "Move to Bottom"
-msgstr "Gehe zu Schritt"
+msgstr "Ans Ende"
+
+msgid "Junk Folder"
+msgstr ""
+
+#, php-format
+msgid ""
+"Store SPAM message in your Junk Folder. Messages older than %s days will be "
+"deleted automatically."
+msgstr ""
+
+msgid "Trash Folder"
+msgstr ""
+
+msgid ""
+"Store SPAM message in your Trash Folder. You will have to purge the folder "
+"yourself."
+msgstr ""
+
+#, fuzzy
+msgid "Discard"
+msgstr "Platzhalter"
+
+msgid ""
+"Discard SPAM message. You will get no indication that the message ever "
+"arrived."
+msgstr ""
 
 msgid "Editing Mail Filtering Rule"
 msgstr "Bearbeite Filterregel"
-
-msgid "Add New Rule"
-msgstr "Neue Regel hinzuf&uuml;gen"
 
 msgid "Apply Changes"
 msgstr "&Auml;nderungen speichern"
@@ -478,11 +565,17 @@ msgstr ""
 msgid "Filters"
 msgstr "Filter"
 
-msgid "Could not log on to timsieved daemon on your IMAP server"
-msgstr "Konnte den timsieved-Prozess auf Ihrem IMAP-Server nicht erreichen"
+msgid "Unable to load script to server."
+msgstr "Konnte Skript nicht hochladen"
+
+msgid "Server responded with:"
+msgstr "Serverantwort:"
 
 msgid "Please contact your administrator."
 msgstr "Bitte kontaktieren Sie Ihren Administrator."
+
+msgid "Could not log on to timsieved daemon on your IMAP server"
+msgstr "Konnte den timsieved-Prozess auf Ihrem IMAP-Server nicht erreichen"
 
 msgid "Current Mail Filtering Rules"
 msgstr "Zur Zeit definierte Regeln"
@@ -576,11 +669,11 @@ msgstr ""
 msgid "Save Changes"
 msgstr "&Auml;nderungen speichern"
 
-#~ msgid "Size Match"
-#~ msgstr "Gr&ouml;ssenvergleich"
+msgid "Created:"
+msgstr "Erstellt:"
 
-#~ msgid "Action to Take"
-#~ msgstr "Aktion beim Zutreffen der Regel"
+msgid "Last modified:"
+msgstr "Letzte &Auml;nderung:"
 
-#~ msgid "Here is your script."
-#~ msgstr "Hier ist Ihr Script."
+#~ msgid "Parameters"
+#~ msgstr "Parameter"
