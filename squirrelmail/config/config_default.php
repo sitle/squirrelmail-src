@@ -11,7 +11,7 @@
 
 /* Do not change this value. */
 global $config_version;
-$config_version = '1.2.0';
+$config_version = '1.2.1';
 
 /* Organization's logo picture (blank if none) */
 global $org_logo;
@@ -510,6 +510,22 @@ $noselect_fix_enable = false;
  * displayed allowing users to enter a specific folder name to subscribe to */
 global $no_list_for_subscribe;
 $no_list_for_subscribe = false;
+
+/**
+ * Advanced authentication options
+ * CRAM-MD5, DIGEST-MD5, Plain, and TLS
+ * Set reasonable defaults - you'd never know this was there unless you ask for it
+ */
+global $use_crammd5_imap,$use_digestmd5_imap,$use_plain_imap,$use_tls_imap;
+global $use_crammd5_smtp,$use_digestmd5_smtp,$use_plain_smtp;
+$use_crammd5_imap = false;
+$use_digestmd5_imap = false;
+$use_crammd5_smtp= false;
+$use_digestmd5_smtp = false;
+$use_plain_imap = true;
+$use_plain_smtp = true;
+$use_tls_imap = false;
+$use_tls_smtp = false;
 
 /**
  * Make sure there are no characters after the PHP closing
