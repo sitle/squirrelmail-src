@@ -55,150 +55,115 @@ sqgetGlobalVar('base_uri',  $base_uri,      SQ_SESSION);
 
 sqgetGlobalVar('mailbox',   $mailbox);
 sqgetGlobalVar('lastTargetMailbox', $lastTargetMailbox, SQ_SESSION);
-sqgetGlobalVar('targetMailbox', $lastTargetMailbox, SQ_POST);
+sqgetGlobalVar('numMessages'      , $numMessages,       SQ_SESSION);
+sqgetGlobalVar('session',           $session,           SQ_GET);
 sqgetGlobalVar('note',              $note,              SQ_GET);
-sqgetGlobalVar('mail_sent',         $mail_sent,         SQ_GET);
-
+sqgetGlobalVar('use_mailbox_cache', $use_mailbox_cache, SQ_GET);
 
 if ( sqgetGlobalVar('startMessage', $temp) ) {
     $startMessage = (int) $temp;
-} else {
-    $startMessage = 1;
 }
-// sort => srt because of the changed behaviour which can break new behaviour
-if ( sqgetGlobalVar('srt', $temp, SQ_GET) ) {
-    $srt = (int) $temp;
+if ( sqgetGlobalVar('PG_SHOWNUM', $temp) ) {
+  $PG_SHOWNUM = (int) $temp;
 }
-
-if ( sqgetGlobalVar('showall', $temp, SQ_GET) ) {
-    $showall = (int) $temp;
+if ( sqgetGlobalVar('PG_SHOWALL', $temp, SQ_GET) ) {
+  $PG_SHOWALL = (int) $temp;
 }
-
+if ( sqgetGlobalVar('newsort', $temp, SQ_GET) ) {
+  $newsort = (int) $temp;
+}
 if ( sqgetGlobalVar('checkall', $temp, SQ_GET) ) {
   $checkall = (int) $temp;
 }
+if ( sqgetGlobalVar('set_thread', $temp, SQ_GET) ) {
+  $set_thread = (int) $temp;
+}
+if ( !sqgetGlobalVar('composenew', $composenew, SQ_GET) ) {
+    $composenew = false;
+}
 /* end of get globals */
 
-
-/* Open an imap connection */
+/* Open a connection on the imap port (143) */
 
 $imapConnection = sqimap_login($username, $key, $imapServerAddress, $imapPort, 0);
 
-$mailbox = (isset($mailbox) && $mailbox) ? $mailbox : 'INBOX';
+if (isset($PG_SHOWALL)) {
+    if ($PG_SHOWALL) {
+       $PG_SHOWNUM=999999;
+       $show_num=$PG_SHOWNUM;
+       sqsession_register($PG_SHOWNUM, 'PG_SHOWNUM');
+    }
+    else {
+       sqsession_unregister('PG_SHOWNUM');
+       unset($PG_SHOWNUM);
+    }
+}
+else if( isset( $PG_SHOWNUM ) ) {
+    $show_num = $PG_SHOWNUM;
+}
+
+if (!isset($show_num) || empty($show_num) || ($show_num == 0)) {
+    setPref($data_dir, $username, 'show_num' , 15);
+    $show_num = 15;
+}
+
+if (isset($newsort) && $newsort != $sort) {
+    setPref($data_dir, $username, 'sort', $newsort);
+}
+
+
+
+/* If the page has been loaded without a specific mailbox, */
+/* send them to the inbox                                  */
+if (!isset($mailbox)) {
+    $mailbox = 'INBOX';
+    $startMessage = 1;
+}
+
+
+if (!isset($startMessage) || ($startMessage == '')) {
+    $startMessage = 1;
+}
 
 /* compensate for the UW vulnerability. */
 if ($imap_server_type == 'uw' && (strstr($mailbox, '../') ||
                                   substr($mailbox, 0, 1) == '/')) {
    $mailbox = 'INBOX';
 }
-/**
- * Set the global settings for a mailbox and merge them with the usersettings
- * for the mailbox. In the future we can add more mailbox specific preferences
- * preferences.
- */
 
+/* decide if we are thread sorting or not */
+if ($allow_thread_sort == TRUE) {
+    if (isset($set_thread)) {
+        if ($set_thread == 1) {
+            setPref($data_dir, $username, "thread_$mailbox", 1);
+            $thread_sort_messages = '1';
+        }
+        elseif ($set_thread == 2)  {
+            setPref($data_dir, $username, "thread_$mailbox", 0);
+            $thread_sort_messages = '0';
+        }
+    }
+    else {
+        $thread_sort_messages = getPref($data_dir, $username, "thread_$mailbox");
+    }
+}
+else {
+    $thread_sort_messages = 0;
+}
 
-$aMailboxGlobalPref = array(
-                       MBX_PREF_SORT         => 0,
-                       MBX_PREF_LIMIT        => (int)  $show_num,
-                       MBX_PREF_AUTO_EXPUNGE => (bool) $auto_expunge,
-                       MBX_PREF_INTERNALDATE => (bool) getPref($data_dir, $username, 'internal_date_sort')
-                    // MBX_PREF_FUTURE       => (var)  $future
-                     );
-
-/* not sure if this hook should be capable to alter the global pref array */
 do_hook ('generic_header');
 
-$aMailboxPrefSer=getPref($data_dir, $username, "pref_$mailbox");
-if ($aMailboxPrefSer) {
-    $aMailboxPref = unserialize($aMailboxPrefSer);
-} else {
-    setUserPref($username,"pref_$mailbox",serialize($aMailboxGlobalPref));
-    $aMailboxPref = $aMailboxGlobalPref;
-}
-if (isset($srt)) {
-    $aMailboxPref[MBX_PREF_SORT] = (int) $srt;
-}
+sqimap_mailbox_select($imapConnection, $mailbox);
 
-
-/**
- * until there is no per mailbox option screen to set prefs we override
- * the mailboxprefs by the default ones
- */
-$aMailboxPref[MBX_PREF_LIMIT] = (int)  $show_num;
-$aMailboxPref[MBX_PREF_AUTO_EXPUNGE] = (bool) $auto_expunge;
-$aMailboxPref[MBX_PREF_INTERNALDATE] = (bool) getPref($data_dir, $username, 'internal_date_sort');
-
-
-/**
- * system wide admin settings and incoming vars.
- */
-$aConfig = array(
-                'allow_thread_sort' => $allow_thread_sort,
-                'allow_server_sort' => $allow_server_sort,
-                'user'              => $username,
-                // incoming vars
-                'offset' => $startMessage
-                );
-/**
- * The showall functionality is for the moment added to the config array
- * to avoid storage of the showall link in the mailbox pref. We could change
- * this behaviour later and add it to $aMailboxPref instead
- */
-if (isset($showall)) {
-   $aConfig['showall'] = $showall;
-}
-
-/**
- * Retrieve the mailbox cache from the session.
- */
-sqgetGlobalVar('mailbox_cache',$mailbox_cache,SQ_SESSION);
-
-
-$aMailbox = sqm_api_mailbox_select($imapConnection,$mailbox,$aConfig,$aMailboxPref);
-
-
-/*
- * After initialisation of the mailbox array it's time to handle the FORM data
- */
-$sError = handleMessageListForm($imapConnection,$aMailbox);
-if ($sError) {
-   $note = $sError;
-}
-
-/*
- * If we try to forward messages as attachment we have to open a new window
- * in case of compose in new window or redirect to compose.php
- */
-if (isset($aMailbox['FORWARD_SESSION'])) {
-    if ($compose_new_win) {
-        // write the session in order to make sure that the compose window has
-        // access to the composemessages array which is stored in the session
-        session_write_close();
-        sqsession_is_active();
-        $comp_uri = SM_PATH . 'src/compose.php?mailbox='. urlencode($mailbox).
-                    '&amp;session='.$aMailbox['FORWARD_SESSION'];
-        displayPageHeader($color, $mailbox, "comp_in_new('$comp_uri');", false);
-    } else {
-        // save mailboxstate
-        sqsession_register($aMailbox,'aLastSelectedMailbox');
-        session_write_close();
-        // we have to redirect to the compose page
-        $location = SM_PATH . 'src/compose.php?mailbox='. urlencode($mailbox).
-                    '&amp;session='.$aMailbox['FORWARD_SESSION'];
-        header("Location: $location");
-        exit;
-    }
+if ($composenew) {
+    $comp_uri = SM_PATH . 'src/compose.php?mailbox='. urlencode($mailbox).
+        "&session=$session";
+    displayPageHeader($color, $mailbox, "comp_in_new('$comp_uri');", false);
 } else {
     displayPageHeader($color, $mailbox);
 }
 
 do_hook('right_main_after_header');
-
-/* display a message to the user that their mail has been sent */
-if (isset($mail_sent) && $mail_sent == 'yes') {
-    $note = _("Your Message has been sent.");
-}
 if (isset($note)) {
     echo html_tag( 'div', '<b>' . $note .'</b>', 'center' ) . "<br />\n";
 }
@@ -223,29 +188,57 @@ if ( sqgetGlobalVar('just_logged_in', $just_logged_in, SQ_SESSION) ) {
         }
     }
 }
-if ($aMailbox['EXISTS'] > 0) {
-    showMessagesForMailbox($imapConnection,$aMailbox);
-} else {
-    $string = '<b>' . _("THIS FOLDER IS EMPTY") . '</b>';
-    echo '    <table width="100%" cellpadding="1" cellspacing="0" align="center" border="0" bgcolor="'.$color[9].'">';
-    echo '     <tr><td>';
-    echo '       <table width="100%" cellpadding="0" cellspacing="0" align="center" border="0" bgcolor="'.$color[4].'">';
-    echo '        <tr><td><br />';
-    echo '            <table cellpadding="1" cellspacing="5" align="center" border="0">';
-    echo '              <tr>' . html_tag( 'td', $string."\n", 'left')
-                        . '</tr>';
-    echo '            </table>';
-    echo '        <br /></td></tr>';
-    echo '       </table></td></tr>';
-    echo '    </table>';
+
+if (isset($newsort)) {
+    $sort = $newsort;
+    sqsession_register($sort, 'sort');
 }
 
+/*********************************************************************
+ * Check to see if we can use cache or not. Currently the only time  *
+ * when you will not use it is when a link on the left hand frame is *
+ * used. Also check to make sure we actually have the array in the   *
+ * registered session data.  :)                                      *
+ *********************************************************************/
+if (! isset($use_mailbox_cache)) {
+    $use_mailbox_cache = 0;
+}
+
+
+if ($use_mailbox_cache && sqsession_is_registered('msgs')) {
+    showMessagesForMailbox($imapConnection, $mailbox, $numMessages, $startMessage, $sort, $color, $show_num, $use_mailbox_cache);
+} else {
+    if (sqsession_is_registered('msgs')) {
+        unset($msgs);
+    }
+
+    if (sqsession_is_registered('msort')) {
+        unset($msort);
+    }
+
+    if (sqsession_is_registered('numMessages')) {
+        unset($numMessages);
+    }
+
+    $numMessages = sqimap_get_num_messages ($imapConnection, $mailbox);
+
+    showMessagesForMailbox($imapConnection, $mailbox, $numMessages,
+                           $startMessage, $sort, $color, $show_num,
+                           $use_mailbox_cache);
+
+    if (sqsession_is_registered('msgs') && isset($msgs)) {
+        sqsession_register($msgs, 'msgs');
+    }
+
+    if (sqsession_is_registered('msort') && isset($msort)) {
+        sqsession_register($msort, 'msort');
+    }
+
+    sqsession_register($numMessages, 'numMessages');
+}
 do_hook('right_main_bottom');
 sqimap_logout ($imapConnection);
-echo '</body></html>';
 
-/* add the mailbox to the cache */
-$mailbox_cache[$aMailbox['NAME']] = $aMailbox;
-sqsession_register($mailbox_cache,'mailbox_cache');
+echo '</body></html>';
 
 ?>

@@ -17,6 +17,7 @@
 require_once(SM_PATH . 'include/validate.php');
 require_once(SM_PATH . 'functions/plugin.php');
 require_once(SM_PATH . 'functions/constants.php');
+require_once(SM_PATH . 'functions/prefs.php');
 
 if( ! sqgetGlobalVar('username', $username, SQ_SESSION) ) {
     $username = '';
@@ -76,11 +77,6 @@ if (!defined('download_php')) {
     sqsession_register($theme_css, 'theme_css');
 }
 
-// user's icon theme, if using icons
-$icon_theme = getPref($data_dir, $username, 'icon_theme', 'none' );
-
-// show (or not) flag and unflag buttons on mailbox list screen
-$show_flag_buttons = getPref($data_dir, $username, 'show_flag_buttons', SMPREF_OFF );
 
 /* Load the user's special folder preferences */
 $move_to_sent =
@@ -160,9 +156,6 @@ $reply_citation_style =
 $reply_citation_start = getPref($data_dir, $username, 'reply_citation_start');
 $reply_citation_end = getPref($data_dir, $username, 'reply_citation_end');
 
-$body_quote = getPref($data_dir, $username, 'body_quote', '>');
-if ($body_quote == 'NONE') $body_quote = '';
-
 // who is using those darn block comments?  poo!
 
 // Load preference for cursor behavior for replies
@@ -172,6 +165,8 @@ $reply_focus = getPref($data_dir, $username, 'reply_focus', '');
 /* left refresh rate, strtolower makes 1.0.6 prefs compatible */
 $left_refresh = getPref($data_dir, $username, 'left_refresh', SMPREF_NONE );
 $left_refresh = strtolower($left_refresh);
+
+$sort = getPref($data_dir, $username, 'sort', 6 );
 
 /* Load up the Signature file */
 $signature_abs = $signature = getSig($data_dir, $username, 'g');
@@ -231,6 +226,7 @@ $enable_forward_as_attachment =
 $show_xmailer_default =
     getPref($data_dir, $username, 'show_xmailer_default', SMPREF_OFF );
 $attachment_common_show_images = getPref($data_dir, $username, 'attachment_common_show_images', SMPREF_OFF );
+$pf_cleandisplay = getPref($data_dir, $username, 'pf_cleandisplay', SMPREF_OFF);
 
 /* message disposition notification support setting */
 $mdn_user_support = getPref($data_dir, $username, 'mdn_user_support', SMPREF_ON);
@@ -238,9 +234,7 @@ $mdn_user_support = getPref($data_dir, $username, 'mdn_user_support', SMPREF_ON)
 $include_self_reply_all =
     getPref($data_dir, $username, 'include_self_reply_all', SMPREF_ON);
 
-/* Page selector options */
 $page_selector = getPref($data_dir, $username, 'page_selector', SMPREF_ON);
-$compact_paginator = getPref($data_dir, $username, 'compact_paginator', SMPREF_OFF);
 $page_selector_max = getPref($data_dir, $username, 'page_selector_max', 10);
 
 /* SqClock now in the core */
@@ -256,9 +250,6 @@ $compose_width = getPref($data_dir, $username, 'compose_width', 640);
 /* signature placement settings */
 $sig_first = getPref($data_dir, $username, 'sig_first', 0);
 
-/* Strip signature when replying */
-$strip_sigs = getPref($data_dir, $username, 'strip_sigs', 0);
-
 /* use the internal date of the message for sorting instead of the supplied header date */
 $internal_date_sort = getPref($data_dir, $username, 'internal_date_sort', SMPREF_ON);
 
@@ -267,14 +258,8 @@ $sort_by_ref = getPref($data_dir, $username, 'sort_by_ref', 1);
 
 /* Load the javascript settings. */
 $javascript_setting = getPref($data_dir, $username, 'javascript_setting', SMPREF_JS_AUTODETECT);
-if ( checkForJavascript() )
-{
-  $use_javascript_folder_list = getPref($data_dir, $username, 'use_javascript_folder_list');
-  $use_javascript_addr_book = getPref($data_dir, $username, 'use_javascript_addr_book', $default_use_javascript_addr_book);
-} else {
-  $use_javascript_folder_list = false;
-  $use_javascript_addr_book = false;
-}
+$javascript_on = getPref($data_dir, $username, 'javascript_on', SMPREF_ON);
+$use_javascript_addr_book = getPref($data_dir, $username, 'use_javascript_addr_book', $default_use_javascript_addr_book);
 
 $search_memory = getPref($data_dir, $username, 'search_memory', 0);
 
@@ -285,15 +270,6 @@ $mailbox_select_style = getPref($data_dir, $username, 'mailbox_select_style', 0)
 /* Allow user to customize, and display the full date, instead of day, or time based
    on time distance from date of message */
 $show_full_date = getPref($data_dir, $username, 'show_full_date', 0);
-
-/* Allow user to customize length of from field */
-$truncate_sender = getPref($data_dir, $username, 'truncate_sender', 0);
-/* Allow user to customize length of subject field */
-$truncate_subject = getPref($data_dir, $username, 'truncate_subject', 50);
-/* Allow user to show recipient name if the message is from default identity */
-$show_recipient_instead = getPref($data_dir, $username, 'show_recipient_instead', 0);
-
-$delete_prev_next_display = getPref($data_dir, $username, 'delete_prev_next_display', 1);
 
 do_hook('loading_prefs');
 

@@ -54,20 +54,20 @@ displayPageHeader($color, 'None');
 if (sqgetGlobalVar('spam_submit',$spam_submit,SQ_POST)) {
     $spam_filters = load_spam_filters();
 
-    // setting spam folder
+    // setting spam folder    
     sqgetGlobalVar('filters_spam_folder_set',$filters_spam_folder_set,SQ_POST);
     if (isset($filters_spam_folder_set)) {
         setPref($data_dir, $username, 'filters_spam_folder', $filters_spam_folder_set);
     } else {
-        echo _("You must select a spam folder.");
+	echo _("You must select a spam folder.");
     }
 
     // setting scan type
     sqgetGlobalVar('filters_spam_scan_set',$filters_spam_scan_set,SQ_POST);
     if (isset($filters_spam_scan_set)) {
-        setPref($data_dir, $username, 'filters_spam_scan', $filters_spam_scan_set);
+	setPref($data_dir, $username, 'filters_spam_scan', $filters_spam_scan_set);
     } else {
-        echo _("You must select a scan type.");
+	echo _("You must select a scan type.");
     }
 
     foreach ($spam_filters as $Key => $Value) {
@@ -118,7 +118,7 @@ if (isset($action) && $action == 'spam') {
         '<center>'.
         html_tag( 'table', '', '', '', 'width="85%" border="0" cellpadding="2" cellspacing="0"' ) .
             html_tag( 'tr' ) .
-                html_tag( 'th', _("Move spam to:"), 'right', '', 'style="white-space: nowrap;"' ) .
+                html_tag( 'th', _("Move spam to:"), 'right', '', 'nowrap' ) .
                 html_tag( 'td', '', 'left' ) .
                     '<select name="filters_spam_folder_set">';
 
@@ -136,7 +136,7 @@ if (isset($action) && $action == 'spam') {
             'left' )
         ) .
         html_tag( 'tr' ) .
-            html_tag( 'th', _("What to Scan:"), 'right', '', 'style="white-space: nowrap;"' ) .
+            html_tag( 'th', _("What to Scan:"), 'right', '', 'nowrap' ) .
             html_tag( 'td' ) .
             '<select name="filters_spam_scan_set">'.
             '<option value=""';
@@ -163,7 +163,7 @@ if (isset($action) && $action == 'spam') {
 
     foreach ($spam_filters as $Key => $Value) {
         echo html_tag( 'tr' ) .
-                   html_tag( 'th', $Key, 'right', '', 'style="white-space: nowrap;"' ) ."\n" .
+                   html_tag( 'th', $Key, 'right', '', 'nowrap' ) ."\n" .
                    html_tag( 'td' ) .
             '<input type="checkbox" name="' .
             $spam_filters[$Key]['prefname'] .
@@ -217,7 +217,7 @@ if (isset($action) && $action == 'spam') {
             echo _("OFF");
         }
 
-        echo '</th>' .
+        echo '</th>' . 
                html_tag( 'td', '&nbsp;-&nbsp;', 'left' ) .
                html_tag( 'td', '', 'left' );
 

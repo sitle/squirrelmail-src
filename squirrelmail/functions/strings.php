@@ -7,7 +7,7 @@
  * Licensed under the GNU GPL. For full terms see the file COPYING.
  *
  * This code provides various string manipulation functions that are
- * used by the rest of the SquirrelMail code.
+ * used by the rest of the Squirrelmail code.
  *
  * @version $Id$
  * @package squirrelmail
@@ -17,14 +17,14 @@
  * SquirrelMail version number -- DO NOT CHANGE
  */
 global $version;
-$version = '1.5.1 [CVS]';
+$version = '1.4.4';
 
 /**
  * SquirrelMail internal version number -- DO NOT CHANGE
  * $sm_internal_version = array (release, major, minor)
  */
 global $SQM_INTERNAL_VERSION;
-$SQM_INTERNAL_VERSION = array(1,5,1);
+$SQM_INTERNAL_VERSION = array(1,4,4);
 
 /**
  * There can be a circular issue with includes, where the $version string is
@@ -34,337 +34,21 @@ $SQM_INTERNAL_VERSION = array(1,5,1);
 require_once(SM_PATH . 'functions/global.php');
 
 /**
- * Appends citation markers to the string.
- * Also appends a trailing space.
- *
- * @author Justus Pendleton
- *
- * @param string str The string to append to
- * @param int citeLevel the number of markers to append
- * @return null
- */
-function sqMakeCite (&$str, $citeLevel) {
-    for ($i = 0; $i < $citeLevel; $i++) {
-        $str .= '>';
-    }
-    if ($citeLevel != 0) {
-        $str .= ' ';
-    }
-}
-
-/**
- * Create a newline in the string, adding citation
- * markers to the newline as necessary.
- *
- * @author Justus Pendleton
- *
- * @param string str the string to make a newline in
- * @param int citeLevel the citation level the newline is at
- * @param int column starting column of the newline
- * @return null
- */
-function sqMakeNewLine (&$str, $citeLevel, &$column) {
-    $str .= "\n";
-    $column = 0;
-    if ($citeLevel > 0) {
-        sqMakeCite ($str, $citeLevel);
-        $column = $citeLevel + 1;
-    } else {
-        $column = 0;
-    }
-}
-
-/**
- * Checks for spaces in strings - only used if PHP doesn't have native ctype support
- *
- * @author Tomas Kuliavas
- *
- * You might be able to rewrite the function by adding short evaluation form.
- *
- * possible problems:
- *  - iso-2022-xx charsets  - hex 20 might be part of other symbol. I might
- * be wrong. 0x20 is not used in iso-2022-jp. I haven't checked iso-2022-kr
- * and iso-2022-cn mappings.
- *
- *  - no-break space (&nbsp;) - it is 8bit symbol, that depends on charset.
- * there are at least three different charset groups that have nbsp in
- * different places.
- *
- * I don't see any charset/nbsp options in php ctype either.
- *
- * @param string $string tested string
- * @return bool true when only whitespace symbols are present in test string
- */
-function sm_ctype_space($string) {
-    if ( preg_match('/^[\x09-\x0D]|^\x20/', $string) || $string=='') {
-        return true;
-    } else {
-        return false;
-    }
-}
-
-/**
- * Wraps text at $wrap characters.  While sqWordWrap takes
- * a single line of text and wraps it, this function works
- * on the entire corpus at once, this allows it to be a little
- * bit smarter and when and how to wrap.
- *
- * @author Justus Pendleton
- *
- * @param string body the entire body of text
- * @param int wrap the maximum line length
- * @return string the wrapped text
- */
-function &sqBodyWrap (&$body, $wrap) {
-    //check for ctype support, and fake it if it doesn't exist
-    if (!function_exists('ctype_space')) {
-        function ctype_space ($string) {
-            return sm_ctype_space($string);
-        }
-    }
-
-    // the newly wrapped text
-    $outString = '';
-    // current column since the last newline in the outstring
-    $outStringCol = 0;
-    $length = strlen($body);
-    // where we are in the original string
-    $pos = 0;
-    // the number of >>> citation markers we are currently at
-    $citeLevel = 0;
-
-    // the main loop, whenever we start a newline of input text
-    // we start from here
-    while ($pos < $length) {
-       // we're at the beginning of a line, get the new cite level
-       $newCiteLevel = 0;
-
-       while (($pos < $length) && ($body{$pos} == '>')) {
-           $newCiteLevel++;
-           $pos++;
-
-           // skip over any spaces interleaved among the cite markers
-           while (($pos < $length) && ($body{$pos} == ' ')) {
-
-               $pos++;
-
-           }
-           if ($pos >= $length) {
-               break;
-           }
-       }
-
-       // special case: if this is a blank line then maintain it
-       // (i.e. try to preserve original paragraph breaks)
-       // unless they occur at the very beginning of the text
-       if (($body{$pos} == "\n" ) && (strlen($outString) != 0)) {
-           $outStringLast = $outString{strlen($outString) - 1};
-           if ($outStringLast != "\n") {
-               $outString .= "\n";
-           }
-           sqMakeCite ($outString, $newCiteLevel);
-           $outString .= "\n";
-           $pos++;
-           $outStringCol = 0;
-           continue;
-       }
-
-       // if the cite level has changed, then start a new line
-       // with the new cite level.
-       if (($citeLevel != $newCiteLevel) && ($pos > ($newCiteLevel + 1)) && ($outStringCol != 0)) {
-           sqMakeNewLine ($outString, 0, $outStringCol);
-       }
-
-       $citeLevel = $newCiteLevel;
-
-       // prepend the quote level if necessary
-       if ($outStringCol == 0) {
-           sqMakeCite ($outString, $citeLevel);
-           // if we added a citation then move the column
-           // out by citelevel + 1 (the cite markers + the space)
-           $outStringCol = $citeLevel + ($citeLevel ? 1 : 0);
-       } else if ($outStringCol > $citeLevel) {
-           // not a cite and we're not at the beginning of a line
-           // in the output.  add a space to separate the new text
-           // from previous text.
-           $outString .= ' ';
-           $outStringCol++;
-       }
-
-       // find the next newline -- we don't want to go further than that
-       $nextNewline = strpos ($body, "\n", $pos);
-       if ($nextNewline === FALSE) {
-           $nextNewline = $length;
-       }
-
-       // Don't wrap unquoted lines at all.  For now the textarea
-       // will work fine for this.  Maybe revisit this later though
-       // (for completeness more than anything else, I think)
-       if ($citeLevel == 0) {
-           $outString .= substr ($body, $pos, ($nextNewline - $pos));
-           $outStringCol = $nextNewline - $pos;
-           if ($nextNewline != $length) {
-               sqMakeNewLine ($outString, 0, $outStringCol);
-           }
-           $pos = $nextNewline + 1;
-           continue;
-       }
-       /**
-        * Set this to false to stop appending short strings to previous lines
-        */
-       $smartwrap = true;
-       // inner loop, (obviously) handles wrapping up to
-       // the next newline
-       while ($pos < $nextNewline) {
-           // skip over initial spaces
-           while (($pos < $nextNewline) && (ctype_space ($body{$pos}))) {
-               $pos++;
-           }
-           // if this is a short line then just append it and continue outer loop
-           if (($outStringCol + $nextNewline - $pos) <= ($wrap - $citeLevel - 1) ) {
-               // if this is the final line in the input string then include
-               // any trailing newlines
-               //      echo substr($body,$pos,$wrap). "<br />";
-               if (($nextNewline + 1 == $length) && ($body{$nextNewline} == "\n")) {
-                   $nextNewline++;
-               }
-
-               // trim trailing spaces
-               $lastRealChar = $nextNewline;
-               while (($lastRealChar > $pos && $lastRealChar < $length) && (ctype_space ($body{$lastRealChar}))) {
-                   $lastRealChar--;
-               }
-               // decide if appending the short string is what we want
-               if (($nextNewline < $length && $body{$nextNewline} == "\n") &&
-                     isset($lastRealChar)) {
-                   $mypos = $pos;
-                   //check the first word:
-                   while (($mypos < $length) && ($body{$mypos} == '>')) {
-                       $mypos++;
-                       // skip over any spaces interleaved among the cite markers
-                       while (($mypos < $length) && ($body{$mypos} == ' ')) {
-                           $mypos++;
-                       }
-                   }
-/*
-                     $ldnspacecnt = 0;
-                     if ($mypos == $nextNewline+1) {
-                        while (($mypos < $length) && ($body{$mypos} == ' ')) {
-                         $ldnspacecnt++;
-                        }
-                     }
-*/
-
-                   $firstword = substr($body,$mypos,strpos($body,' ',$mypos) - $mypos);
-                   //if ($dowrap || $ldnspacecnt > 1 || ($firstword && (
-                   if (!$smartwrap || $firstword && (
-                                        $firstword{0} == '-' ||
-                                        $firstword{0} == '+' ||
-                                        $firstword{0} == '*' ||
-                                        $firstword{0} == strtoupper($firstword{0}) ||
-                                        strpos($firstword,':'))) {
-                        $outString .= substr($body,$pos,($lastRealChar - $pos+1));
-                        $outStringCol += ($lastRealChar - $pos);
-                        sqMakeNewLine($outString,$citeLevel,$outStringCol);
-                        $nextNewline++;
-                        $pos = $nextNewline;
-                        $outStringCol--;
-                        continue;
-                   }
-
-               }
-
-               $outString .= substr ($body, $pos, ($lastRealChar - $pos + 1));
-               $outStringCol += ($lastRealChar - $pos);
-               $pos = $nextNewline + 1;
-               continue;
-           }
-
-           $eol = $pos + $wrap - $citeLevel - $outStringCol;
-           // eol is the tentative end of line.
-           // look backwards for there for a whitespace to break at.
-           // if it's already less than our current position then
-           // our current line is already too long, break immediately
-           // and restart outer loop
-           if ($eol <= $pos) {
-               sqMakeNewLine ($outString, $citeLevel, $outStringCol);
-               continue;
-           }
-
-           // start looking backwards for whitespace to break at.
-           $breakPoint = $eol;
-           while (($breakPoint > $pos) && (! ctype_space ($body{$breakPoint}))) {
-               $breakPoint--;
-           }
-
-           // if we didn't find a breakpoint by looking backward then we
-           // need to figure out what to do about that
-           if ($breakPoint == $pos) {
-               // if we are not at the beginning then end this line
-               // and start a new loop
-               if ($outStringCol > ($citeLevel + 1)) {
-                   sqMakeNewLine ($outString, $citeLevel, $outStringCol);
-                   continue;
-               } else {
-                   // just hard break here.  most likely we are breaking
-                   // a really long URL.  could also try searching
-                   // forward for a break point, which is what Mozilla
-                   // does.  don't bother for now.
-                   $breakPoint = $eol;
-               }
-           }
-
-           // special case: maybe we should have wrapped last
-           // time.  if the first breakpoint here makes the
-           // current line too long and there is already text on
-           // the current line, break and loop again if at
-           // beginning of current line, don't force break
-           $SLOP = 6;
-           if ((($outStringCol + ($breakPoint - $pos)) > ($wrap + $SLOP)) && ($outStringCol > ($citeLevel + 1))) {
-               sqMakeNewLine ($outString, $citeLevel, $outStringCol);
-               continue;
-           }
-
-           // skip newlines or whitespace at the beginning of the string
-           $substring = substr ($body, $pos, ($breakPoint - $pos));
-           $substring = rtrim ($substring); // do rtrim and ctype_space have the same ideas about whitespace?
-           $outString .= $substring;
-           $outStringCol += strlen ($substring);
-           // advance past the whitespace which caused the wrap
-           $pos = $breakPoint;
-           while (($pos < $length) && (ctype_space ($body{$pos}))) {
-               $pos++;
-           }
-           if ($pos < $length) {
-               sqMakeNewLine ($outString, $citeLevel, $outStringCol);
-           }
-       }
-    }
-
-    return $outString;
-}
-
-/**
  * Wraps text at $wrap characters
  *
  * Has a problem with special HTML characters, so call this before
  * you do character translation.
  *
- * Specifically, &#039; comes up as 5 characters instead of 1.
+ * Specifically, &#039 comes up as 5 characters instead of 1.
  * This should not add newlines to the end of lines.
- *
- * @param string line the line of text to wrap, by ref
- * @param int wrap the maximum line lenth
- * @param string charset name of charset used in $line string. Available since v.1.5.1.
- * @return void
  */
-function sqWordWrap(&$line, $wrap, $charset='') {
+function sqWordWrap(&$line, $wrap) {
     global $languages, $squirrelmail_language;
 
     if (isset($languages[$squirrelmail_language]['XTRA_CODE']) &&
-        function_exists($languages[$squirrelmail_language]['XTRA_CODE'] . '_wordwrap')) {
+        function_exists($languages[$squirrelmail_language]['XTRA_CODE'])) {
         if (mb_detect_encoding($line) != 'ASCII') {
-            $line = call_user_func($languages[$squirrelmail_language]['XTRA_CODE'] . '_wordwrap', $line, $wrap);
+            $line = $languages[$squirrelmail_language]['XTRA_CODE']('wordwrap', $line, $wrap);
             return;
         }
     }
@@ -383,9 +67,9 @@ function sqWordWrap(&$line, $wrap, $charset='') {
     while ($i < count($words)) {
         /* Force one word to be on a line (minimum) */
         $line .= $words[$i];
-        $line_len = strlen($beginning_spaces) + sq_strlen($words[$i],$charset) + 2;
+        $line_len = strlen($beginning_spaces) + strlen($words[$i]) + 2;
         if (isset($words[$i + 1]))
-            $line_len += sq_strlen($words[$i + 1],$charset);
+            $line_len += strlen($words[$i + 1]);
         $i ++;
 
         /* Add more words (as long as they fit) */
@@ -393,7 +77,7 @@ function sqWordWrap(&$line, $wrap, $charset='') {
             $line .= ' ' . $words[$i];
             $i++;
             if (isset($words[$i]))
-                $line_len += sq_strlen($words[$i],$charset) + 1;
+                $line_len += strlen($words[$i]) + 1;
             else
                 $line_len += 1;
         }
@@ -740,7 +424,7 @@ function show_readable_size($bytes) {
 }
 
 /**
- * Generates a random string from the character set you pass in
+ * Generates a random string from the caracter set you pass in
  *
  * @param int size the size of the string to generate
  * @param string chars a string containing the characters to use
@@ -810,6 +494,26 @@ function TrimArray(&$array) {
 }
 
 /**
+ * Removes slashes from every element in the array
+ */
+function RemoveSlashes(&$array) {
+    foreach ($array as $k => $v) {
+        global $$k;
+        if (is_array($$k)) {
+            foreach ($$k as $k2 => $v2) {
+                $newArray[stripslashes($k2)] = stripslashes($v2);
+            }
+            $$k = $newArray;
+        } else {
+            $$k = stripslashes($v);
+        }
+
+        /* Re-assign back to the array. */
+        $array[$k] = $$k;
+    }
+}
+
+/**
  * Create compose link
  *
  * Returns a link to the compose-page, taking in consideration
@@ -837,7 +541,7 @@ function makeComposeLink($url, $text = null, $target='')
     // build the compose in new window link...
 
 
-    // if javascript is on, use onclick event to handle it
+    // if javascript is on, use onClick event to handle it
     if($javascript_on) {
         sqgetGlobalVar('base_uri', $base_uri, SQ_SESSION);
         return '<a href="javascript:void(0)" onclick="comp_in_new(\''.$base_uri.$url.'\')">'. $text.'</a>';
@@ -887,93 +591,6 @@ function sq_fwrite($fp, $string) {
 
         return $count;
 }
-
-/**
- * sq_get_html_translation_table
- *
- * Returns the translation table used by sq_htmlentities()
- *
- * @param integer $table html translation table. Possible values (without quotes):
- *             <ul>
- *                <li>HTML_ENTITIES - full html entities table defined by charset</li>
- *                <li>HTML_SPECIALCHARS - html special characters table</li>
- *             </ul>
- * @param integer $quote_style quote encoding style. Possible values (without quotes):
- *              <ul>
- *                <li>ENT_COMPAT - (default) encode double quotes</li>
- *                <li>ENT_NOQUOTES -  don't encode double or single quotes</li>
- *                <li>ENT_QUOTES - encode double and single quotes</li>
- *              </ul>
- * @param string $charset charset used for encoding. default to us-ascii, 'auto' uses $default_charset global value.
- * @return array html translation array
- */
-function sq_get_html_translation_table($table,$quote_style=ENT_COMPAT,$charset='us-ascii') {
-  global $default_charset;
-
-  if ($table == HTML_SPECIALCHARS) $charset='us-ascii';
-
-  // Start array with ampersand
-  $sq_html_ent_table = array( "&" => '&amp;' );
-
-  // < and >
-  $sq_html_ent_table = array_merge($sq_html_ent_table,
-                        array("<" => '&lt;',
-                              ">" => '&gt;')
-                        );
-  // double quotes
-  if ($quote_style == ENT_COMPAT)
-     $sq_html_ent_table = array_merge($sq_html_ent_table,
-                            array("\"" => '&quot;')
-                            );
-
-  // double and single quotes
-  if ($quote_style == ENT_QUOTES)
-     $sq_html_ent_table = array_merge($sq_html_ent_table,
-                            array("\"" => '&quot;',
-                              "'" => '&#39;')
-                            );
-
-  if ($charset=='auto') $charset=$default_charset;
-
-  // add entities that depend on charset
-  switch($charset){
-  case 'iso-8859-1':
-    include_once(SM_PATH . 'functions/htmlentities/iso-8859-1.php');
-    break;
-  case 'utf-8':
-    include_once(SM_PATH . 'functions/htmlentities/utf-8.php');
-    break;
-  case 'us-ascii':
-  default:
-    break;
-  }
-  // return table
-  return $sq_html_ent_table;
-}
-
-/**
- * sq_htmlentities
- *
- * Convert all applicable characters to HTML entities.
- * Minimal php requirement - v.4.0.5
- *
- * @param string $string string that has to be sanitized
- * @param integer $quote_style quote encoding style. Possible values (without quotes):
- *              <ul>
- *                <li>ENT_COMPAT - (default) encode double quotes</li>
- *                <li>ENT_NOQUOTES - don't encode double or single quotes</li>
- *                <li>ENT_QUOTES - encode double and single quotes</li>
- *              </ul>
- * @param string $charset charset used for encoding. defaults to 'us-ascii', 'auto' uses $default_charset global value.
- * @return string sanitized string
- */
-function sq_htmlentities($string,$quote_style=ENT_COMPAT,$charset='us-ascii') {
-  // get translation table
-  $sq_html_ent_table=sq_get_html_translation_table(HTML_ENTITIES,$quote_style,$charset);
-  // convert characters
-  return str_replace(array_keys($sq_html_ent_table),array_values($sq_html_ent_table),$string);
-}
-
 /**
  * Tests if string contains 8bit symbols.
  *
@@ -983,7 +600,7 @@ function sq_htmlentities($string,$quote_style=ENT_COMPAT,$charset='us-ascii') {
  * @param string $string tested string
  * @param string $charset charset used in a string
  * @return bool true if 8bit symbols are detected
- * @since 1.5.1
+ * @since 1.4.4
  */
 function sq_is8bit($string,$charset='') {
     global $default_charset;
@@ -1003,181 +620,6 @@ function sq_is8bit($string,$charset='') {
         $needle='/[\200-\237]|\240|[\241-\377]/';
     }
     return preg_match("$needle",$string);
-}
-
-/**
- * Replacement of mb_list_encodings function
- *
- * This function provides replacement for function that is available only
- * in php 5.x. Function does not test all mbstring encodings. Only the ones
- * that might be used in SM translations.
- *
- * Supported arrays are stored in session in order to reduce number of
- * mb_internal_encoding function calls.
- *
- * If you want to test all mbstring encodings - fill $list_of_encodings
- * array.
- * @return array list of encodings supported by mbstring
- * @since 1.5.1
- */
-function sq_mb_list_encodings() {
-    if (! function_exists('mb_internal_encoding'))
-        return array();
-
-    // don't try to test encodings, if they are already stored in session
-    if (sqgetGlobalVar('mb_supported_encodings',$mb_supported_encodings,SQ_SESSION))
-        return $mb_supported_encodings;
-
-    // save original encoding
-    $orig_encoding=mb_internal_encoding();
-
-    $list_of_encoding=array(
-        'pass',
-        'auto',
-        'ascii',
-        'jis',
-        'utf-8',
-        'sjis',
-        'euc-jp',
-        'iso-8859-1',
-        'iso-8859-2',
-        'iso-8859-7',
-        'iso-8859-9',
-        'iso-8859-15',
-        'koi8-r',
-        'koi8-u',
-        'big5',
-        'gb2312',
-        'windows-1251',
-        'windows-1255',
-        'windows-1256',
-        'tis-620',
-        'iso-2022-jp',
-        'euc-kr',
-        'utf7-imap');
-
-    $supported_encodings=array();
-
-    foreach ($list_of_encoding as $encoding) {
-        // try setting encodings. suppress warning messages
-        if (@mb_internal_encoding($encoding))
-            $supported_encodings[]=$encoding;
-    }
-
-    // restore original encoding
-    mb_internal_encoding($orig_encoding);
-
-    // register list in session
-    sqsession_register($supported_encodings,'mb_supported_encodings');
-
-    return $supported_encodings;
-}
-
-/**
- * Function returns number of characters in string.
- *
- * Returned number might be different from number of bytes in string,
- * if $charset is multibyte charset. Currently only utf-8 charset is 
- * supported.
- * @param string $str string
- * @param string $charset charset
- * @since 1.5.1
- * @return integer number of characters in string 
- */
-function sq_strlen($str, $charset=''){
-    // default option
-    if ($charset=='') return strlen($str);
-
-    // use automatic charset detection, if function call asks for it
-    if ($charset=='auto') {
-        global $default_charset;
-        set_my_charset();
-        $charset=$default_charset;
-    }
-
-    // lowercase charset name
-    $charset=strtolower($charset);
-
-    // set initial returned length number
-    $real_length=0;
-
-    // calculate string length according to charset
-    // function can be modulized same way we modulize decode/encode/htmlentities
-    if ($charset=='utf-8') {
-        if (function_exists('mb_strlen')) {
-            $real_length = mb_strlen($str,'utf-8');
-        } else {
-            // function needs length of string in bytes.
-            // mbstring overloading might break it
-            $str_length=strlen($str);
-            $str_index=0;
-            while ($str_index < $str_length) {
-                // start of utf-8 multibyte character detection
-                if (preg_match("/[\xC0-\xDF]/",$str[$str_index]) &&
-                    isset($str[$str_index+1]) && 
-                    preg_match("/[\x80-\xBF]/",$str[$str_index+1])) {
-                    // two byte utf-8
-                    $str_index=$str_index+2;
-                    $real_length++;
-                } elseif (preg_match("/[\xE0-\xEF]/",$str[$str_index]) &&
-                    isset($str[$str_index+2]) && 
-                    preg_match("/[\x80-\xBF][\x80-\xBF]/",$str[$str_index+1].$str[$str_index+2])) {
-                    // three byte utf-8
-                    $str_index=$str_index+3;
-                    $real_length++;
-                } elseif (preg_match("/[\xF0-\xF7]/",$str[$str_index]) &&
-                    isset($str[$str_index+3]) && 
-                    preg_match("/[\x80-\xBF][\x80-\xBF][\x80-\xBF]/",$str[$str_index+1].$str[$str_index+2].$str[$str_index+3])) {
-                    // four byte utf-8
-                    $str_index=$str_index+4;
-                    $real_length++;
-                } elseif (preg_match("/[\xF8-\xFB]/",$str[$str_index]) &&
-                    isset($str[$str_index+4]) && 
-                    preg_match("/[\x80-\xBF][\x80-\xBF][\x80-\xBF][\x80-\xBF]/",
-                               $str[$str_index+1].$str[$str_index+2].$str[$str_index+3].$str[$str_index+4])) {
-                    // five byte utf-8
-                    $str_index=$str_index+5;
-                    $real_length++;
-                } elseif (preg_match("/[\xFC-\xFD]/",$str[$str_index]) &&
-                    isset($str[$str_index+5]) && 
-                    preg_match("/[\x80-\xBF][\x80-\xBF][\x80-\xBF][\x80-\xBF]/",
-                               $str[$str_index+1].$str[$str_index+2].$str[$str_index+3].$str[$str_index+4].$str[$str_index+5])) {
-                    // six byte utf-8
-                    $str_index=$str_index+6;
-                    $real_length++;
-                } else {
-                    $str_index++;
-                    $real_length++;
-                }
-                // end of utf-8 multibyte character detection
-            }
-        }
-        // end of utf-8 length detection
-    } elseif ($charset=='big5') {
-        // TODO: add big5 string length detection
-        $real_length=strlen($str);
-    } elseif ($charset=='gb2312') {
-        // TODO: add gb2312 string length detection
-        $real_length=strlen($str);
-    } elseif ($charset=='gb18030') {
-        // TODO: add gb18030 string length detection
-        $real_length=strlen($str);
-    } elseif ($charset=='euc-jp') {
-        // TODO: add euc-jp string length detection
-        $real_length=strlen($str);
-    } elseif ($charset=='euc-cn') {
-        // TODO: add euc-cn string length detection
-        $real_length=strlen($str);
-    } elseif ($charset=='euc-tw') {
-        // TODO: add euc-tw string length detection
-        $real_length=strlen($str);
-    } elseif ($charset=='euc-kr') {
-        // TODO: add euc-kr string length detection
-        $real_length=strlen($str);
-    } else {
-        $real_length=strlen($str);
-    }
-    return $real_length;
 }
 
 $PHP_SELF = php_self();

@@ -8,10 +8,12 @@
  * This contains all the functions needed to send messages through
  * a delivery backend.
  *
- * @version $Id$
+ * $Id$
+ *
  * @author  Marc Groot Koerkamp
  * @package squirrelmail
  */
+
 
 /**
  * Deliver Class - called to actually deliver the message
@@ -163,6 +165,7 @@ class Deliver {
             } elseif ($message->att_local_name) {
                 $filename = $message->att_local_name;
                 $file = fopen ($filename, 'rb');
+                $encoded = '';
                 while ($tmp = fread($file, 570)) {
                    $body_part = chunk_split(base64_encode($tmp));
                     $length += $this->clean_crlf($body_part);
@@ -307,6 +310,7 @@ class Deliver {
             $header[] .= 'Content-Description: ' . $mime_header->description . $rn;
         }
         if ($mime_header->encoding) {
+            $encoding = $mime_header->encoding;
             $header[] .= 'Content-Transfer-Encoding: ' . $mime_header->encoding . $rn;
         } else {
             if ($mime_header->type0 == 'text' || $mime_header->type0 == 'message') {
@@ -358,7 +362,7 @@ class Deliver {
      * @return string $header
      */
     function prepareRFC822_Header($rfc822_header, $reply_rfc822_header, &$raw_length) {
-        global $domain, $version, $username, $skip_SM_header;
+        global $domain, $version, $username;
 
         /* if server var SERVER_NAME not available, use $domain */
         if(!sqGetGlobalVar('SERVER_NAME', $SERVER_NAME, SQ_SERVER)) {
@@ -391,13 +395,10 @@ class Deliver {
             $received_from .= " (proxying for $HTTP_X_FORWARDED_FOR)";
         }
         $header = array();
-        if ( !isset($skip_SM_header) || !$skip_SM_header )
-        {
-          $header[] = "Received: from $received_from" . $rn;
-          $header[] = "        (SquirrelMail authenticated user $username)" . $rn;
-          $header[] = "        by $SERVER_NAME with HTTP;" . $rn;
-          $header[] = "        $date" . $rn;
-        }
+        $header[] = "Received: from $received_from" . $rn;
+        $header[] = "        (SquirrelMail authenticated user $username)" . $rn;
+        $header[] = "        by $SERVER_NAME with HTTP;" . $rn;
+        $header[] = "        $date" . $rn;
         /* Insert the rest of the header fields */
         $header[] = 'Message-ID: '. $message_id . $rn;
         if ($reply_rfc822_header->message_id) {
@@ -409,12 +410,14 @@ class Deliver {
         }
         $header[] = "Date: $date" . $rn;
         $header[] = 'Subject: '.encodeHeader($rfc822_header->subject) . $rn;
-        $header[] = 'From: '. $rfc822_header->getAddr_s('from',",$rn ",true) . $rn;
 
-        // folding address list [From|To|Cc|Bcc] happens by using ",$rn<space>" as delimiter
+        // folding address list [From|To|Cc|Bcc] happens by using ",$rn<space>" 
+        // as delimiter
         // Do not use foldLine for that.
-
-        // RFC2822 if from contains more then 1 address
+ 
+        $header[] = 'From: '. $rfc822_header->getAddr_s('from',",$rn ",true) . $rn;
+ 
+        /* RFC2822 if from contains more then 1 address */
         if (count($rfc822_header->from) > 1) {
             $header[] = 'Sender: '. $rfc822_header->getAddr_s('sender',',',true) . $rn;
         }
@@ -465,14 +468,14 @@ class Deliver {
             switch($rfc822_header->priority)
             {
             case 1:
-                $header[] = 'X-Priority: 1 (Highest)'.$rn;
-                $header[] = 'Importance: High'. $rn; break;
+	    	$header[] = 'X-Priority: 1 (Highest)'.$rn;
+	    	$header[] = 'Importance: High'. $rn; break;
             case 3:
-                $header[] = 'X-Priority: 3 (Normal)'.$rn;
-                $header[] = 'Importance: Normal'. $rn; break;
+	    	$header[] = 'X-Priority: 3 (Normal)'.$rn;
+	    	$header[] = 'Importance: Normal'. $rn; break;
             case 5:
-                $header[] = 'X-Priority: 5 (Lowest)'.$rn;
-                $header[] = 'Importance: Low'. $rn; break;
+	    	$header[] = 'X-Priority: 5 (Lowest)'.$rn;
+	    	$header[] = 'Importance: Low'. $rn; break;
             default: break;
             }
         }
@@ -686,4 +689,6 @@ class Deliver {
         return $refer;
     }
 }
+
+// vim: et ts=4
 ?>

@@ -1,13 +1,14 @@
 <?php
+
 /**
- * newmails_opt.php - options page
+ * newmails_opt.php
  *
  * Copyright (c) 1999-2005 The SquirrelMail Project Team
  * Licensed under the GNU GPL. For full terms see the file COPYING.
  *
  * Displays all options relating to new mail sounds
  *
- * @version $Id$
+ * $Id$
  * @package plugins
  * @subpackage newmail
  */
@@ -17,8 +18,10 @@ define('SM_PATH','../../');
 
 /* SquirrelMail required files. */
 require_once(SM_PATH . 'include/validate.php');
-/* sqm_baseuri function */
+require_once(SM_PATH . 'functions/page_header.php');
 require_once(SM_PATH . 'functions/display_messages.php');
+require_once(SM_PATH . 'functions/imap.php');
+require_once(SM_PATH . 'include/load_prefs.php');
 
 displayPageHeader($color, 'None');
 
@@ -70,7 +73,7 @@ echo '<form action="'.sqm_baseuri().'src/options.php" method="post">' . "\n" .
 
 // Option: media_allbox
 echo html_tag( 'tr' ) .
-        html_tag( 'td', _("Check all boxes, not just INBOX").':', 'right', '', 'style="white-space: nowrap;"' ) .
+        html_tag( 'td', _("Check all boxes, not just INBOX").':', 'right', '', 'nowrap' ) .
             html_tag( 'td', '', 'left' ) .
                 '<input type="checkbox" ';
 if ($media_allbox == 'on') {
@@ -80,7 +83,7 @@ echo 'name="media_allbox" /></td></tr>' . "\n";
 
 // Option: media_recent
 echo html_tag( 'tr' ) .
-        html_tag( 'td', _("Count only messages that are RECENT").':', 'right', '', 'style="white-space: nowrap;"' ) .
+        html_tag( 'td', _("Count only messages that are RECENT").':', 'right', '', 'nowrap' ) .
             html_tag( 'td', '', 'left' ) .
                 '<input type="checkbox" ';
 if ($media_recent == 'on') {
@@ -90,7 +93,7 @@ echo 'name="media_recent" /></td></tr>' . "\n";
 
 // Option: media_changetitle
 echo html_tag( 'tr' ) .
-        html_tag( 'td', _("Change title on supported browsers").':', 'right', '', 'style="white-space: nowrap;"' ) .
+        html_tag( 'td', _("Change title on supported browsers").':', 'right', '', 'nowrap' ) .
             html_tag( 'td', '', 'left' ) .
                 '<input type="checkbox" ';
 if ($media_changetitle == 'on') {
@@ -100,7 +103,7 @@ echo 'name="media_changetitle" />&nbsp;('._("requires JavaScript to work").')</t
 
 // Option: media_popup
 echo html_tag( 'tr' ) .
-        html_tag( 'td', _("Show popup window on new mail").':', 'right', '', 'style="white-space: nowrap;"' ) .
+        html_tag( 'td', _("Show popup window on new mail").':', 'right', '', 'nowrap' ) .
             html_tag( 'td', '', 'left' ) .
                 '<input type="checkbox" ';
 if($media_popup == 'on') {
@@ -111,7 +114,7 @@ echo 'name="media_popup" />&nbsp;('._("requires JavaScript to work").')</td></tr
 if ($allowsound == "true") {
 // Option: media_enable
     echo html_tag( 'tr' ) .
-            html_tag( 'td', _("Enable Media Playing").':', 'right', '', 'style="white-space: nowrap;"' ) .
+            html_tag( 'td', _("Enable Media Playing").':', 'right', '', 'nowrap' ) .
                 html_tag( 'td', '', 'left' ) .
                     '<input type="checkbox" ';
     if ($media_enable == 'on') {
@@ -121,7 +124,7 @@ if ($allowsound == "true") {
 
 // Option: media_sel
     echo html_tag( 'tr' ) .
-        html_tag( 'td', _("Select server file").':', 'right', '', 'style="white-space: nowrap;"' ) .
+        html_tag( 'td', _("Select server file").':', 'right', '', 'nowrap' ) .
             html_tag( 'td', '', 'left' ) .
                 '<select name="media_sel">' . "\n" .
                     '<option value="(none)"';
@@ -145,15 +148,15 @@ if ($allowsound == "true") {
     $d->close();
     $media_output = ($media == '(none)') ? _("(none)") : substr($media, strrpos($media, '/')+1);
     echo '</select>'.
-        '<input type="submit" value="' . _("Try") . '" name="test" onclick="' .
+        '<input type="submit" value="' . _("Try") . '" name="test" onClick="' .
             "window.open('testsound.php?sound='+media_sel.options[media_sel.selectedIndex].value, 'TestSound'," .
             "'width=150,height=30,scrollbars=no');" .
             'return false;' .
             '" /></td></tr>' .
             html_tag( 'tr', "\n" .
-                html_tag( 'td', _("Current File:"), 'right', '', 'style="white-space: nowrap;"' ) .
+                html_tag( 'td', _("Current File:"), 'right', '', 'nowrap' ) .
                     html_tag( 'td', '<input type="hidden" value="' .
-                        htmlspecialchars($media) . '" name="media_default" />' .
+                        htmlspecialchars($media) . '" name="media_default">' .
                         htmlspecialchars($media_output) . '', 'left' )
              ) . "\n";
 }

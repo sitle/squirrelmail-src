@@ -8,14 +8,9 @@
  *
  * This contains functions needed to handle mime messages.
  *
- * @version $Id$
- * @package squirrelmail
+ * $Id$
  */
 
-/**
- * Undocumented class
- * @package squirrelmail
- */
 class AddressStructure {
     var $personal = '',
         $adl      = '',
@@ -47,7 +42,7 @@ class AddressStructure {
                     }
                 }
                 $addr = ($email ? $personal . ' <' .$email.'>'
-                        : $this->personal);
+                        : $this->personal);                                    
                 $best_dpl = $this->personal;
             } else {
                 $addr = $email;
@@ -57,7 +52,7 @@ class AddressStructure {
         }
         return $result;
     }
-
+    
     function getEncodedAddress() {
         return $this->getAddress(true, true);
     }

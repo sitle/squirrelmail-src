@@ -24,10 +24,13 @@ require_once(SM_PATH . 'functions/mime.php');
 function sqimap_search($imapConnection, $search_where, $search_what, $mailbox,
                        $color, $search_position = '', $search_all, $count_all) {
 
-    global $squirrelmail_language, $languages, $pos, $allow_charset_search,
-           $imap_server_type;
+    global $message_highlight_list, $squirrelmail_language, $languages,
+           $index_order, $pos, $allow_charset_search, $uid_support,
+	   $imap_server_type;
 
     $pos = $search_position;
+
+    $urlMailbox = urlencode($mailbox);
 
     /* construct the search query, taking multiple search terms into account */
     $multi_search = array();
@@ -75,7 +78,7 @@ function sqimap_search($imapConnection, $search_where, $search_what, $mailbox,
     }
 
     /* read data back from IMAP */
-    $readin = sqimap_run_command($imapConnection, $ss, false, $result, $message, TRUE);
+    $readin = sqimap_run_command($imapConnection, $ss, false, $result, $message, $uid_support);
 
     /* try US-ASCII charset if search fails */
     if (isset($languages[$squirrelmail_language]['CHARSET'])
@@ -114,10 +117,13 @@ function sqimap_search($imapConnection, $search_where, $search_what, $mailbox,
     for ($q = 0; $q < $cnt; $q++) {
         $id[$q] = trim($messagelist[$q]);
     }
+    $issent = ($mailbox == $sent_folder);
 
     $msgs = fillMessageArray($imapConnection,$id,$cnt);
 
     return $msgs;
 }
+
+
 
 ?>

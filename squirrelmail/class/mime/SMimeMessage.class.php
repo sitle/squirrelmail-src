@@ -8,14 +8,9 @@
  *
  * This contains functions needed to handle mime messages.
  *
- * @version $Id$
- * @package squirrelmail
+ * $Id$
  */
 
-/**
- * Incomplete class, undocumented.
- * @package squirrelmail
- */
 class SMimeMessage {
 
 }

@@ -1,8 +1,9 @@
 <?php
+
 /**
  * newmail.php
  *
- * Copyright (c) 1999-2005 The SquirrelMail Project Team
+ * Copyright (c) 1999-2002 The SquirrelMail Project Team
  * Copyright (c) 2000 by Michael Huttinger
  * Licensed under the GNU GPL. For full terms see the file COPYING.
  *
@@ -23,32 +24,22 @@
  *
  * @version $Id$
  * @package plugins
- * @subpackage newmail
+ * @subpackage new_mail
  */
 
-/**
- */
 include_once(SM_PATH . 'functions/display_messages.php');
 
-/**
- * Checks if mailbox contains new messages.
- *
- * @param object $imapConnection
- * @param mixed $mailbox FIXME: option is not used
- * @param string $real_box unformated mailbox name
- * @param mixed $delimeter FIXME: option is not used
- * @param string $unseen FIXME: option is not used
- * @param integer $total_new number of new messages
- * @return bool true, if there are new messages
- */
 function CheckNewMailboxSound($imapConnection, $mailbox, $real_box, $delimeter, $unseen, &$total_new) {
-    global $trash_folder, $sent_folder,
-        $unseen_notify, $newmail_allbox,
-        $newmail_recent;
+    global $folder_prefix, $trash_folder, $sent_folder,
+        $color, $move_to_sent, $move_to_trash,
+        $unseen_notify, $unseen_type, $newmail_allbox, 
+        $newmail_recent, $newmail_changetitle;
 
     $mailboxURL = urlencode($real_box);
+    $unseen = $recent = 0;
 
     // Skip folders for Sent and Trash
+
     if ($real_box == $sent_folder ||
         $real_box == $trash_folder) {
         return 0;
@@ -70,9 +61,6 @@ function CheckNewMailboxSound($imapConnection, $mailbox, $real_box, $delimeter, 
     return 0;
 }
 
-/**
- * Init newmail plugin
- */
 function squirrelmail_plugin_init_newmail() {
     global $squirrelmail_plugin_hooks;
 
@@ -83,14 +71,12 @@ function squirrelmail_plugin_init_newmail() {
     $squirrelmail_plugin_hooks['optpage_set_loadinfo']['newmail'] = 'newmail_set_loadinfo';
 }
 
-/**
- * Register newmail option block
- */
 function newmail_optpage_register_block() {
     // Gets added to the user's OPTIONS page.
     global $optpage_blocks;
 
-    if ( checkForJavascript() ) {
+    if ( !soupNazi() ) {
+
         /* Register Squirrelspell with the $optionpages array. */
         $optpage_blocks[] = array(
             'name' => _("NewMail Options"),
@@ -101,9 +87,6 @@ function newmail_optpage_register_block() {
     }
 }
 
-/**
- * Save newmail plugin settings
- */
 function newmail_sav() {
     global $data_dir, $username;
 
@@ -126,7 +109,7 @@ function newmail_sav() {
         setPref($data_dir,$username,'newmail_allbox',$media_allbox);
         setPref($data_dir,$username,'newmail_recent',$media_recent);
         setPref($data_dir,$username,'newmail_changetitle',$media_changetitle);
-
+            
         if( sqgetGlobalVar('media_sel', $media_sel, SQ_POST) &&
             ($media_sel == '(none)' || $media_sel == '(local media)') ) {
             removePref($data_dir,$username,'newmail_media');
@@ -136,9 +119,6 @@ function newmail_sav() {
     }
 }
 
-/**
- * Load newmail plugin settings
- */
 function newmail_pref() {
     global $username,$data_dir;
     global $newmail_media,$newmail_enable,$newmail_popup,$newmail_allbox;
@@ -150,6 +130,7 @@ function newmail_pref() {
     $newmail_popup = getPref($data_dir, $username, 'newmail_popup');
     $newmail_allbox = getPref($data_dir, $username, 'newmail_allbox');
     $newmail_changetitle = getPref($data_dir, $username, 'newmail_changetitle');
+
 }
 
 /**
@@ -164,11 +145,9 @@ function newmail_set_loadinfo() {
     }
 }
 
-/**
- * Insert needed data in left_main
- */
 function newmail_plugin() {
-    global $username, $newmail_media, $newmail_enable, $newmail_popup,
+    global $username, $key, $imapServerAddress, $imapPort,
+        $newmail_media, $newmail_enable, $newmail_popup,
         $newmail_recent, $newmail_changetitle, $imapConnection, $PHP_SELF;
 
     if ($newmail_enable == 'on' ||
@@ -176,7 +155,6 @@ function newmail_plugin() {
         $newmail_changetitle) {
 
         // open a connection on the imap port (143)
-
         $boxes = sqimap_mailbox_list($imapConnection);
         $delimeter = sqimap_get_delimiter($imapConnection);
 
@@ -185,6 +163,7 @@ function newmail_plugin() {
 
         for ($i = 0;$i < count($boxes); $i++) {
 
+            $line = '';
             $mailbox = $boxes[$i]['formatted'];
 
             if (! isset($boxes[$i]['unseen'])) {
@@ -198,21 +177,22 @@ function newmail_plugin() {
                     }
                 }
                 if (! $noselect) {
-                    $status += CheckNewMailboxSound($imapConnection,
+                    $status += CheckNewMailboxSound($imapConnection, 
                                                     $mailbox,
-                                                    $boxes[$i]['unformatted'],
-                                                    $delimeter,
+                                                    $boxes[$i]['unformatted'], 
+                                                    $delimeter, 
                                                     $boxes[$i]['unseen'],
                                                     $totalNew);
                 }
             } else {
-                $status += CheckNewMailboxSound($imapConnection,
-                                                $mailbox,
+                $status += CheckNewMailboxSound($imapConnection, 
+                                                $mailbox, 
                                                 $boxes[$i]['unformatted'],
-                                                $delimeter,
-                                                $boxes[$i]['unseen'],
+                                                $delimeter, 
+                                                $boxes[$i]['unseen'], 
                                                 $totalNew);
             }
+
         }
 
         // sqimap_logout($imapConnection);
@@ -223,9 +203,15 @@ function newmail_plugin() {
         if ($newmail_changetitle) {
             echo "<script language=\"javascript\">\n" .
                 "function ChangeTitleLoad() {\n";
-            echo 'window.parent.document.title = "' .
-                sprintf(ngettext("%s New Message","%s New Messages",$totalNew), $totalNew) .
-                "\";\n";
+            if( $totalNew > 1 || $totalNew == 0 ) {
+                echo 'window.parent.document.title = "' .
+                    sprintf(_("%s New Messages"), $totalNew ) . 
+                    "\";\n";
+            } else {
+                echo 'window.parent.document.title = "' .
+                    sprintf(_("%s New Message"), $totalNew ) . 
+                    "\";\n";
+            }
             echo    "if (BeforeChangeTitle != null)\n".
                 "BeforeChangeTitle();\n".
                 "}\n".
@@ -235,12 +221,8 @@ function newmail_plugin() {
         }
 
         if ($totalNew > 0 && $newmail_enable == 'on' && $newmail_media != '' ) {
-            /**
-             * docs about embed
-             * Apple: http://www.apple.com/quicktime/authoring/embed.html
-             */
-            echo '<embed src="'.htmlspecialchars($newmail_media) .
-                "\" hidden=\"true\" autostart=\"true\" width=\"2\" height=\"2\">\n";
+            echo '<embed src="'.htmlspecialchars($newmail_media)
+                ."\" hidden=\"true\" autostart=\"true\" width=\"2\" height=\"2\">\n";
         }
         if ($totalNew > 0 && $newmail_popup == 'on') {
             echo "<script language=\"JavaScript\">\n".

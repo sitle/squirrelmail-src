@@ -202,9 +202,9 @@ class abook_ldap_server extends addressbook_backend {
     }
 
     /**
-     * Encode string to the charset used by this LDAP server
-     * @param string string that has to be encoded
-     * @return string encoded string
+     * Converts string to the charset used by LDAP server
+     * @param string string that has to be converted
+     * @return string converted string
      */
     function charset_encode($str) {
         global $default_charset;
@@ -216,11 +216,11 @@ class abook_ldap_server extends addressbook_backend {
     }
 
     /**
-     * Decode from charset used by this LDAP server to charset used by translation
+     * Convert from charset used by LDAP server to charset used by translation
      *
-     * Uses SquirrelMail charset_decode functions
-     * @param string string that has to be decoded
-     * @return string decoded string
+     * Output must be sanitized.
+     * @param string string that has to be converted
+     * @return string converted string
      */
     function charset_decode($str) {
         global $default_charset;

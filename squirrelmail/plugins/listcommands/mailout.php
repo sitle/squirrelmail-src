@@ -6,11 +6,8 @@
  * Licensed under the GNU GPL. For full terms see the file COPYING.
  *
  * $Id$
- * @package plugins
- * @subpackage listcommands
  */
 
-/** @ignore */
 define('SM_PATH','../../');
 
 /* SquirrelMail required files. */
@@ -18,8 +15,6 @@ require_once(SM_PATH . 'include/validate.php');
 include_once(SM_PATH . 'functions/page_header.php');
 include_once(SM_PATH . 'include/load_prefs.php');
 include_once(SM_PATH . 'functions/html.php');
-require_once(SM_PATH . 'functions/identity.php');
-require_once(SM_PATH . 'functions/forms.php');
 
 displayPageHeader($color, $mailbox);
 
@@ -51,32 +46,49 @@ case 'unsubscribe':
 
 printf( $out_string, htmlspecialchars($send_to) );
 
-echo addForm('../../src/compose.php', 'post');
+echo '<form method="post" action="../../src/compose.php">';
 
+/*
+ * Identity support (RFC 2369 sect. B.1.)
+ *
+ * I had to copy this from compose.php because there doesn't
+ * seem to exist a function to get the identities.
+ */
 
-$idents = get_identities();
-
+$defaultmail = htmlspecialchars(getPref($data_dir, $username, 'full_name'));
+$em = getPref($data_dir, $username, 'email_address');
+if ($em != '') {
+    $defaultmail .= htmlspecialchars(' <' . $em . '>') . "\n";
+}
 echo html_tag('p', '', 'center' ) . _("From:") . ' ';
 
-if (count($idents) > 1) {
-    echo '<select name="identity">';
-    foreach($idents as $nr=>$data) {
-        echo '<option value="' . $nr . '">' .
-            htmlspecialchars(
-                $data['full_name'].' <'.
-                $data['email_address'] . ">\n");
+$idents = getPref($data_dir, $username, 'identities');
+if ($idents != '' && $idents > 1) {
+    echo ' <select name="identity">' . "\n" .
+         '<option value="default">' . $defaultmail;
+    for ($i = 1; $i < $idents; $i ++) {
+        echo '<option value="' . $i . '"';
+        if (isset($identity) && $identity == $i) {
+            echo ' selected';
+        }
+        echo '>' . htmlspecialchars(getPref($data_dir, $username,
+                                                'full_name' . $i));
+        $em = getPref($data_dir, $username, 'email_address' . $i);
+        if ($em != '') {
+            echo htmlspecialchars(' <' . $em . '>') . "\n";
+        }
     }
     echo '</select>' . "\n" ;
+
 } else {
-    echo htmlspecialchars('"'.$idents[0]['full_name'].'" <'.$idents[0]['email_address'].'>');
+    echo $defaultmail;
 }
 
 echo '<br />'
-. addHidden('send_to', $send_to)
-. addHidden('subject', $subject)
-. addHidden('body', $body)
-. addHidden('mailbox', $mailbox)
-. addSubmit(_("Send Mail"), 'send')
-. '<br /><br /></center>'
+. '<input type="hidden" name="send_to" value="' . htmlspecialchars($send_to) . '">'
+. '<input type="hidden" name="subject" value="' . htmlspecialchars($subject) . '">'
+. '<input type="hidden" name="body" value="' . htmlspecialchars($body) . '">'
+. '<input type="hidden" name="mailbox" value="' . htmlspecialchars($mailbox) . '">'
+. '<input type="submit" name="send" value="' . _("Send Mail") . '"><br /><br /></center>'
 . '</form></td></tr></table></p></body></html>';
 ?>

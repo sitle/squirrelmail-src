@@ -32,14 +32,27 @@ if(isset($session_name) && $session_name) {
  */
 ini_set('magic_quotes_runtime','0');
 
-/* Since we decided all IMAP servers must implement the UID command as defined in
- * the IMAP RFC, we force $uid_support to be on.
+/* convert old-style superglobals to current method
+ * this is executed if you are running PHP 4.0.x.
+ * it is run via a require_once directive in validate.php
+ * and redirect.php. Patch submitted by Ray Black.
  */
-
-global $uid_support;
-$uid_support = true;
-
 sqsession_is_active();
+if ( !check_php_version(4,1) ) {
+  global $_COOKIE, $_ENV, $_FILES, $_GET, $_POST, $_SERVER, $_SESSION;
+  global $HTTP_COOKIE_VARS, $HTTP_ENV_VARS, $HTTP_POST_FILES, $HTTP_GET_VARS,
+         $HTTP_POST_VARS, $HTTP_SERVER_VARS, $HTTP_SESSION_VARS, $PHP_SELF;
+  $_COOKIE  =& $HTTP_COOKIE_VARS;
+  $_ENV     =& $HTTP_ENV_VARS;
+  $_FILES   =& $HTTP_POST_FILES;
+  $_GET     =& $HTTP_GET_VARS;
+  $_POST    =& $HTTP_POST_VARS;
+  $_SERVER  =& $HTTP_SERVER_VARS;
+  $_SESSION =& $HTTP_SESSION_VARS;
+  if (!isset($PHP_SELF) || empty($PHP_SELF)) {
+     $PHP_SELF =  $HTTP_SERVER_VARS['PHP_SELF'];
+  }
+}
 
 /* if running with magic_quotes_gpc then strip the slashes
    from POST and GET global arrays */
@@ -66,7 +79,12 @@ $_SERVER['PHP_SELF'] = strip_tags($_SERVER['PHP_SELF']);
  */
 function check_php_version ($a = '0', $b = '0', $c = '0')
 {
-    return version_compare ( PHP_VERSION, "$a.$b.$c", 'ge' );
+    global $SQ_PHP_VERSION;
+
+    if(!isset($SQ_PHP_VERSION))
+        $SQ_PHP_VERSION = substr( str_pad( preg_replace('/\D/','', PHP_VERSION), 3, '0'), 0, 3);
+
+    return $SQ_PHP_VERSION >= ($a.$b.$c);
 }
 
 /**
@@ -124,8 +142,12 @@ function sqsession_register ($var, $name) {
 
     sqsession_is_active();
 
-    $_SESSION["$name"] = $var;
-
+    if ( !check_php_version(4,1) ) {
+        global $HTTP_SESSION_VARS;
+        $HTTP_SESSION_VARS[$name] = $var;
+    } else {
+        $_SESSION["$name"] = $var;
+    }
     session_register("$name");
 }
 
@@ -138,8 +160,12 @@ function sqsession_unregister ($name) {
 
     sqsession_is_active();
 
-    unset($_SESSION[$name]);
-
+    if ( !check_php_version(4,1) ) {
+        global $HTTP_SESSION_VARS;
+        unset($HTTP_SESSION_VARS[$name]);
+    } else {
+        unset($_SESSION[$name]);
+    }
     session_unregister("$name");
 }
 
@@ -152,9 +178,15 @@ function sqsession_unregister ($name) {
 function sqsession_is_registered ($name) {
     $test_name = &$name;
     $result = false;
-
-    if (isset($_SESSION[$test_name])) {
-        $result = true;
+    if ( !check_php_version(4,1) ) {
+        global $HTTP_SESSION_VARS;
+        if (isset($HTTP_SESSION_VARS[$test_name])) {
+            $result = true;
+        }
+    } else {
+        if (isset($_SESSION[$test_name])) {
+            $result = true;
+        }
     }
 
     return $result;
@@ -191,6 +223,17 @@ define('SQ_FORM',6);
  * @return bool whether variable is found.
  */
 function sqgetGlobalVar($name, &$value, $search = SQ_INORDER) {
+
+    if ( !check_php_version(4,1) ) {
+        global $HTTP_COOKIE_VARS, $HTTP_GET_VARS, $HTTP_POST_VARS,
+               $HTTP_SERVER_VARS, $HTTP_SESSION_VARS;
+
+        $_COOKIE  =& $HTTP_COOKIE_VARS;
+        $_GET     =& $HTTP_GET_VARS;
+        $_POST    =& $HTTP_POST_VARS;
+        $_SERVER  =& $HTTP_SERVER_VARS;
+        $_SESSION =& $HTTP_SESSION_VARS;
+    }
 
     /* NOTE: DO NOT enclose the constants in the switch
        statement with quotes. They are constant values,
@@ -265,7 +308,12 @@ function sqsession_destroy() {
 
     $sessid = session_id();
     if (!empty( $sessid )) {
-        $_SESSION = array();
+        if ( !check_php_version(4,1) ) {
+            global $HTTP_SESSION_VARS;
+            $HTTP_SESSION_VARS = array();
+        } else {
+            $_SESSION = array();
+        }
         @session_destroy();
     }
 

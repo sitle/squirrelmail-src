@@ -1,4 +1,4 @@
-<?php
+<?php 
 
    /**
     * mail_fetch/setup.php
@@ -14,14 +14,8 @@
     * pop3 class
     *
     * $Id$
-    * @package plugins
-    * @subpackage mail_fetch
     */
 
-/**
- * This is the pop3 class - DOCUMENT ME
- * @package squirrelmail
- */
 class POP3 {
     var $ERROR      = '';       //  Error string.
 
@@ -79,8 +73,8 @@ class POP3 {
         //  port defaults to 110. Returns true on success, false on fail
 
         // If MAILSERVER is set, override $server with it's value
-
-        if (!isset($port) || !$port) {$port = 110;}
+	
+	if (!isset($port) || !$port) {$port = 110;}
         if(!empty($this->MAILSERVER))
             $server = $this->MAILSERVER;
 

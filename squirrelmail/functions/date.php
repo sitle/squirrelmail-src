@@ -290,9 +290,9 @@ function date_intl( $date_format, $stamp ) {
     $aParts = explode('#',$ret);
     $ret = str_replace(array('$1','$4','$2','$3',), array(getDayAbrv($aParts[0]),
                                                           getMonthAbrv($aParts[1]),
-                                                          getMonthName($aParts[1]),
-                                                          getDayName($aParts[0])),
-                                                          $aParts[2]);
+                   				          getMonthName($aParts[1]),
+						          getDayName($aParts[0])),
+						          $aParts[2]);
     return( $ret );
 }
 
@@ -411,15 +411,6 @@ function getTimeStamp($dateParts) {
      */
      if (count($dateParts) <2) {
         return -1;
-     } else if (count($dateParts) ==3) {
-        if (substr_count($dateParts[0],'-') == 2 &&
-            substr_count($dateParts[1],':') == 2) {
-            //  dd-Month-yyyy 23:19:05 +0200
-            //  redefine the date
-            $aDate = explode('-',$dateParts[0]);
-            $newDate = array($aDate[0],$aDate[1],$aDate[2],$dateParts[1],$dateParts[2]);
-            $dateParts = $newDate;
-        }
      }
 
     /* remove day of week */
@@ -446,7 +437,7 @@ function getTimeStamp($dateParts) {
 }
 
 /* I use this function for profiling. Should never be called in
-   actual versions of SquirrelMail released to public. */
+   actual versions of squirrelmail released to public. */
 /*
    function getmicrotime() {
       $mtime = microtime();

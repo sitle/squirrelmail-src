@@ -1,19 +1,18 @@
-<?php
+<?php 
 /**
- * forget_me_not.mod
+ * forget_me_not.mod 
  * ------------------
  * Squirrelspell module
  *
- * Copyright (c) 1999-2005 The SquirrelMail development team
+ * Copyright (c) 1999-2003 The SquirrelMail development team
  * Licensed under the GNU GPL. For full terms see the file COPYING.
  *
  * This module saves the added words into the user dictionary. Called
- * after CHECK_ME module.
+ * after CHECK_ME module.                                            
  *
- * @author Konstantin Riabitsev <icon@duke.edu>
- * @version $Id$
- * @package plugins
- * @subpackage squirrelspell
+ * $Id$
+ *
+ * @author Konstantin Riabitsev <icon@duke.edu> ($Author$)
  */
 
 global $SQSPELL_VERSION, $SQSPELL_APP_DEFAULT;
@@ -37,7 +36,7 @@ if (!$words){
    * First time.
    */
   $words_dic="# SquirrelSpell User Dictionary $SQSPELL_VERSION\n# Last "
-     . "Revision: " . date("Y-m-d")
+     . "Revision: " . date("Y-m-d") 
      . "\n# LANG: $SQSPELL_APP_DEFAULT\n# $SQSPELL_APP_DEFAULT\n";
   $words_dic .= $new_words . "# End\n";
 } else {
@@ -47,13 +46,13 @@ if (!$words){
    */
   $langs=sqspell_getSettings($words);
   $words_dic = "# SquirrelSpell User Dictionary $SQSPELL_VERSION\n# "
-     . "Last Revision: " . date("Y-m-d") . "\n# LANG: " . join(", ", $langs)
+     . "Last Revision: " . date("Y-m-d") . "\n# LANG: " . join(", ", $langs) 
      . "\n";
   for ($i=0; $i<sizeof($langs); $i++){
     $lang_words=sqspell_getLang($words, $langs[$i]);
     if ($langs[$i]==$sqspell_use_app){
       if (!$lang_words) {
-          $lang_words="# $langs[$i]\n";
+	$lang_words="# $langs[$i]\n";
       }
       $lang_words .= $new_words;
     }
@@ -61,7 +60,7 @@ if (!$words){
   }
   $words_dic .= "# End\n";
 }
-
+    
 /**
  * Write out the file
  */
@@ -72,7 +71,7 @@ sqspell_writeWords($words_dic);
 $onload = "setTimeout('self.close()', 2000)";
 $msg = '<form onsubmit="return false"><div align="center">'
    . '<input type="submit" value="  '
-   . _("Close") . '  " onclick="self.close()" /></div></form>';
+   . _("Close") . '  " onclick="self.close()"></div></form>';
 sqspell_makeWindow($onload, _("Personal Dictionary Updated"), null, $msg);
 
 /**

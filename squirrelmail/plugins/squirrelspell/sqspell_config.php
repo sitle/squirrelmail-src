@@ -8,11 +8,8 @@
  *
  *
  * $Id$
- * @package plugins
- * @subpackage squirrelspell
  */
 
-/** */
 require_once(SM_PATH . 'functions/prefs.php');
 
 /* Just for poor wretched souls with E_ALL. :) */
@@ -27,9 +24,9 @@ sqgetGlobalVar('username', $username, SQ_SESSION);
  *                     'Spanish' => 'ispell -d spanish -a' );
  */
 $SQSPELL_APP = array('English' => 'ispell -a',
-                        'Spanish' => 'ispell -d spanish -a');
+			'Spanish' => 'ispell -d spanish -a');
 $SQSPELL_APP_DEFAULT = 'English';
-$SQSPELL_WORDS_FILE =
+$SQSPELL_WORDS_FILE = 
    getHashedFile($username, $data_dir, "$username.words");
 
 $SQSPELL_EREG = 'ereg';

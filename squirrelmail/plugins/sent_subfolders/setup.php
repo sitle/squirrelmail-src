@@ -6,15 +6,15 @@
  * Copyright (c) 1999-2005 The SquirrelMail Project Team
  * Licensed under the GNU GPL. For full terms see the file COPYING.
  *
- * This is a standard SquirrelMail 1.2 API for plugins.
+ * This is a standard Squirrelmail-1.2 API for plugins.
  *
  * $Id$
  * @package plugins
  * @subpackage sent_subfolders
  */
 
-/**
- *
+/** 
+ * 
  */
 define('SMPREF_SENT_SUBFOLDERS_DISABLED',  0);
 define('SMPREF_SENT_SUBFOLDERS_YEARLY',    1);
@@ -23,7 +23,7 @@ define('SMPREF_SENT_SUBFOLDERS_MONTHLY',   3);
 define('SMOPT_GRP_SENT_SUBFOLDERS','SENT_SUBFOLDERS');
 
 /**
- * Adds plugin to SquirrelMail's hooks
+ * Adds plugin to squirrelmail hooks
  */
 function squirrelmail_plugin_init_sent_subfolders() {
     /* Standard initialization API. */
@@ -55,8 +55,8 @@ function squirrelmail_plugin_init_sent_subfolders() {
 
     /* mark base sent folder as special mailbox */
     $squirrelmail_plugin_hooks
-    ['special_mailbox']['sent_subfolders'] =
-        'sent_subfolders_special_mailbox';
+    ['special_mailbox']['sent_subfolders'] = 
+	'sent_subfolders_special_mailbox';
 }
 
 function sent_subfolders_check_handleAsSent() {
@@ -152,7 +152,7 @@ function sent_subfolders_optpage_loadhook_folders() {
  * Callback function that should exclude some folders from folder listing.
  * @param array $fldr list of folders. See sqimap_mailbox_list
  * @return boolean returns true, if folder has to included in folder listing
- * @access private
+ * @access private 
  */
 function filter_folders($fldr) {
     return strtolower($fldr['unformatted'])!='inbox';
@@ -179,19 +179,19 @@ function save_option_sent_subfolders_setting($option) {
 /**
  * Update sent_subfolders settings
  *
- * function updates default sent folder value and
+ * function updates default sent folder value and 
  * creates required imap folders
  */
 function sent_subfolders_update_sentfolder() {
-    global $sent_folder;
+    global $sent_folder, $auto_create_special, $auto_create_done;
     global $sent_subfolders_base, $sent_subfolders_setting;
     global $data_dir, $imapServerAddress, $imapPort;
-    global $use_sent_subfolders, $move_to_sent;
+    global $use_sent_subfolders, $move_to_sent, $imap_server_type;
 
     sqgetGlobalVar('username', $username, SQ_SESSION);
     sqgetGlobalVar('key', $key, SQ_COOKIE);
     sqgetGlobalVar('delimiter', $delimiter, SQ_SESSION);
-
+    
     if ($use_sent_subfolders || $move_to_sent) {
         $year = date('Y');
         $month = date('m');
@@ -209,9 +209,9 @@ function sent_subfolders_update_sentfolder() {
         } else {
             $cnd_delimiter = $delimiter;
         }
-*/
+*/        
         $cnd_delimiter = $delimiter;
-
+                                        
         switch ($sent_subfolders_setting) {
         case SMPREF_SENT_SUBFOLDERS_YEARLY:
             $level = 1;
@@ -220,7 +220,7 @@ function sent_subfolders_update_sentfolder() {
             break;
         case SMPREF_SENT_SUBFOLDERS_QUARTERLY:
             $level = 2;
-            $sent_subfolder = $sent_subfolders_base . $cnd_delimiter
+            $sent_subfolder = $sent_subfolders_base . $cnd_delimiter 
                             . $year
                             . $delimiter . $quarter;
             $year_folder = $sent_subfolders_base
@@ -325,9 +325,9 @@ function sent_subfolders_special_mailbox($mb) {
         ($data_dir, $username, 'use_sent_subfolders', SMPREF_OFF);
     $sent_subfolders_base = getPref($data_dir, $username, 'sent_subfolders_base', 'na');
 
-    if ($use_sent_subfolders == SMPREF_ON &&
+    if ($use_sent_subfolders == SMPREF_ON && 
     ($mb == $sent_subfolders_base || stristr($mb,$sent_subfolders_base) ) ) {
-        return 1;
+	return 1;
     }
     return 0;
 }
