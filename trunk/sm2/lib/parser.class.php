@@ -2,14 +2,11 @@
 /**
  * parser.class.inc
  *
- * Copyright (c) 2003 Marc Groot Koerkamp 
  * Copyright (c) 2003 The SquirrelMail Project Team
  * Licensed under the GNU GPL. For full terms see the file COPYING.
  *
  * Generic parser functions.
  * Also allows displaying of attachments when possible.
- *
- * Author: Marc Groot Koerkamp (Sourceforce username: stekkel) 2003
  *
  * $Id$
  */
@@ -30,7 +27,6 @@ class Parser {
 	 * @return  bool	$ret		failure
 	 *
 	 * @access 	public
-	 * @author	Marc Groot Koerkamp
 	 */
 	function parseString($s, $aEndChars, &$iOffset) {
 		$ret = false;
@@ -60,7 +56,6 @@ class Parser {
 	 * @return	bool		$ret		failure
 	 *
 	 * @access 	public
-	 * @author	Marc Groot Koerkamp
 	 */
 	function parseInteger($s, $aEndChars, &$iOffset) {
 		$ret = false;
@@ -93,7 +88,6 @@ class Parser {
 	 * @return	bool		$ret		failure
 	 *
 	 * @access 	public
-	 * @author	Marc Groot Koerkamp
 	 */
 	function parseBracket(&$s, &$iOffset) {
 		$ret = false;
@@ -123,7 +117,6 @@ class Parser {
 	 * @return	bool		$ret		failure
 	 *
 	 * @access 	public
-	 * @author	Marc Groot Koerkamp
 	 */
 	function parseEnclosed(&$s, &$iOffset, $sStartchar, $sEndchar) {
 		$ret = false;

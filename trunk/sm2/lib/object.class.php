@@ -3,13 +3,10 @@
 /**
  * object.class.inc
  *
- * Copyright (c) 2003 Marc Groot Koerkamp 
  * Copyright (c) 2003 The SquirrelMail Project Team
  * Licensed under the GNU GPL. For full terms see the file COPYING.
  *
  * The base of all objects
- *
- * Author: Marc Groot Koerkamp (Sourceforce username: stekkel) 2003
  *
  * $Id$
  */
