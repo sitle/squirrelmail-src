@@ -208,7 +208,8 @@ class foowd_object
                          $title = NULL,
                          $viewGroup = NULL,
                          $adminGroup = NULL,
-                         $deleteGroup = NULL) 
+                         $deleteGroup = NULL,
+                         $uniqueTitle = TRUE) 
   {
     $foowd->track('foowd_object->constructor');
 
@@ -224,7 +225,7 @@ class foowd_object
     else 
       $this->workspaceid = 0;
 
-    if ( !$this->isTitleUnique($this->title, $this->workspaceid, $objectid) )
+    if ( $uniqueTitle && !$this->isTitleUnique($this->title, $this->workspaceid, $objectid) )
     {
       $this->objectid = 0;
       return FALSE;

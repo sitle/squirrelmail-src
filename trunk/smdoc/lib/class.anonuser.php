@@ -58,7 +58,7 @@ class foowd_anonuser extends foowd_object
    * @return bool TRUE or FALSE.
    */
   function inGroup($groupName, $creatorid = NULL) { // *SQM
-    if ($groupName == 'Everyone')
+    if ($groupName == 'Everybody')
       return TRUE;
     elseif ($groupName == 'Nobody')
       return FALSE;

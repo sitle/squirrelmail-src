@@ -329,7 +329,7 @@ Applying Attributes:
     {
         global $s,$a,$c;
         $tatts = pba($matches[1],'table');
-
+show($matches, $tatts);
            foreach(preg_split("/\|$/m",$matches[2],-1,PREG_SPLIT_NO_EMPTY) as $row){
             if (preg_match("/^($a$c\. )(.*)/m",$row,$rmtch)) {
                 $ratts = pba($rmtch[1],'tr');

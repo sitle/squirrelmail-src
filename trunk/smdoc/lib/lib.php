@@ -182,7 +182,7 @@ function getPermission($className, $methodName, $type = '')
     return constant($constName);
 
   if ($className == 'foowd_object') // none found
-    return 'Everyone';
+    return 'Everybody';
 
   // Recurse to look at permissions of parent    
   return getPermission(get_parent_class($className), $methodName, $type);
@@ -196,7 +196,7 @@ function getPermission($className, $methodName, $type = '')
  * @param string $methodName Name of the method.
  * @param string $value User group string to set the permission to.
  */
-function setPermission($className, $type, $methodName, $value = 'Everyone') 
+function setPermission($className, $type, $methodName, $value = 'Everybody') 
 {
   $type = strtoupper($type);
   if ( $type != 'CLASS' )

@@ -65,9 +65,9 @@ class smdoc_group
 
     /*
      * Set Available User Groups:
-     *  - start with basic four (Everyone, Author, Gods, Nobody)
+     *  - start with basic four (Everybody, Author, Gods, Nobody)
      */
-    $allgroups['Everyone']  = isset($cfg['Everyone'])  ? $cfg['Everyone']  : 'Everybody';
+    $allgroups['Everybody']  = isset($cfg['Everybody'])  ? $cfg['Everybody']  : 'Everybody';
     $allgroups['Author']    = isset($cfg['Author'])    ? $cfg['Author']    : 'Author';
     $allgroups['Gods']      = isset($cfg['Gods'])      ? $cfg['Gods']      : 'Admin';
     $allgroups['Nobody']    = isset($cfg['Nobody'])    ? $cfg['Nobody']    : 'Nobody';
@@ -206,7 +206,7 @@ class smdoc_group
    * of user groups as 'internal name/objectid' => 'external name'.
    *
    * If userAssignOnly is TRUE, then only groups users can be assigned
-   * to will be returned - meaning that groups like Everyone, Nobody, and
+   * to will be returned - meaning that groups like Everybody, Nobody, and
    * Author, which are useful for defining permissions but are not assignable
    * to users, will be left out.
    * 
@@ -219,7 +219,7 @@ class smdoc_group
 
     if ( $userAssignOnly )
     {
-      unset($session_groups->value['Everyone']);
+      unset($session_groups->value['Everybody']);
       unset($session_groups->value['Author']);
       unset($session_groups->value['Nobody']);
       unset($session_groups->value['Registered']);
@@ -260,7 +260,7 @@ class smdoc_group
     {
       case 'Author':
       case 'Nobody':
-      case 'Everyone':
+      case 'Everybody':
       case 'Registered':
       case 'System':
         return TRUE;  // group is a system group
