@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2004-05-04 15:37+0300\n"
+"POT-Creation-Date: 2004-05-07 19:52+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -3529,13 +3529,43 @@ msgstr ""
 msgid "Add to:"
 msgstr ""
 
-msgid "Click here to change the sorting of the address list"
+msgid "sort by nickname"
+msgstr ""
+
+msgid "sort by name"
+msgstr ""
+
+msgid "sort by email"
+msgstr ""
+
+msgid "sort by info"
 msgstr ""
 
 msgid "Add to address book"
 msgstr ""
 
 msgid "Your Message has been sent."
+msgstr ""
+
+msgid "Illegal folder name. Please select a different name."
+msgstr ""
+
+#, c-format
+msgid ""
+"The help has not been translated to %s. It will be displayed in English "
+"instead."
+msgstr ""
+
+msgid ""
+"The index order is the order that the columns are arranged in the message "
+"index. You can add, remove, and move columns around to customize them to fit "
+"your needs."
+msgstr ""
+
+msgid ""
+"Based upon given criteria, incoming messages can have different background "
+"colors in the message list. This helps to easily distinguish who the "
+"messages are from, especially for mailing lists."
 msgstr ""
 
 msgid "As Attachment"
@@ -3694,6 +3724,9 @@ msgstr ""
 msgid "Folder List"
 msgstr ""
 
+msgid "Click here to change the sorting of the address list"
+msgstr ""
+
 msgid "Possible reason : "
 msgstr ""
 
@@ -3847,6 +3880,21 @@ msgstr ""
 msgid "Test Configuration"
 msgstr ""
 
+msgid "Show system specs"
+msgstr ""
+
+msgid ""
+"COMMERCIAL - Servers that are configured (or misconfigured) to allow spam to "
+"be relayed through their system will be banned with this. Another good one "
+"to use."
+msgstr ""
+
+msgid ""
+"COMMERCIAL - Dial-up users are often filtered out since they should use "
+"their ISP's mail servers to send mail. Spammers typically get a dial-up "
+"account and send spam directly from there."
+msgstr ""
+
 msgid "WARNING! Header filters should be of the format \"Header: value\""
 msgstr ""
 
@@ -3866,8 +3914,8 @@ msgstr ""
 
 msgid ""
 "The more messages you scan, the longer it takes. I would suggest that you "
-"scan only new messages.  If you make a change to your filters, I would set "
-"it to scan all messages, then go view my INBOX, then come back and set it to "
+"scan only new messages. If you make a change to your filters, I would set it "
+"to scan all messages, then go view my INBOX, then come back and set it to "
 "scan only new messages. That way, your new spam filters will be applied and "
 "you'll scan even the spam you read with the new filters."
 msgstr ""
@@ -3916,12 +3964,39 @@ msgstr ""
 msgid "Click here to go to the options page."
 msgstr ""
 
+msgid ""
+"You should be aware that the encryption used to store your password is not "
+"perfectly secure. However, if you are using pop, there is inherently no "
+"encryption anyway. Additionally, the encryption that we do to save it on the "
+"server can be undone by a hacker reading the source to this file."
+msgstr ""
+
 msgid "POP3 Fetch Mail"
 msgstr ""
 
 msgid ""
 "This configures settings for downloading email from a POP3 mailbox to your "
 "account on this server."
+msgstr ""
+
+msgid ""
+"Use the <b>Check RECENT</b> to only check for messages that are recent. "
+"Recent messages are those that have just recently showed up and have not "
+"been \"viewed\" or checked yet. This can prevent being continuously annoyed "
+"by sounds or popups for unseen mail."
+msgstr ""
+
+msgid ""
+"Selecting the <b>Change title</b> option will change the title in some "
+"browsers to let you know when you have new mail (requires JavaScript, and "
+"only works in IE but you won't see errors with other browsers). This will "
+"always tell you if you have new mail, even if you have <b>Check RECENT</b> "
+"enabled."
+msgstr ""
+
+msgid ""
+"Select from the list of <b>server files</b> the media file to play when new "
+"mail arrives. If no file is specified, \"(none)\", no sound will be used."
 msgstr ""
 
 msgid "Spam Service Type:"
@@ -3945,7 +4020,20 @@ msgid ""
 "You can purchase these services, if you want to support SpamCop."
 msgstr ""
 
+msgid ""
+"Help fight the battle against unsolicited email. SpamCop reads the spam "
+"email and determines the correct addresses to send complaints to. Quite "
+"fast, really smart, and easy to use."
+msgstr ""
+
 msgid "SpamCop reporting"
+msgstr ""
+
+msgid ""
+"Sending this spam report will give you back a reply with URLs that you can "
+"click on to properly report this spam message to the proper authorities. "
+"This is a free service. By pressing the \"Send Spam Report\" button, you "
+"agree to follow SpamCop's rules/terms of service/etc."
 msgstr ""
 
 msgid "Filipino (Tagalog)"
