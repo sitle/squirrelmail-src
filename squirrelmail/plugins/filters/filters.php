@@ -265,6 +265,11 @@ function filter_search_and_delete($imap, $where, $what, $where_to, $user_scan,
                                   $del_id) {
     global $languages, $squirrelmail_language, $allow_charset_search, 
            $uid_support, $imap_server_type;
+
+    if (strtolower($where_to) == 'inbox') {
+        return array();
+    }
+
     if ($user_scan == 'new') {
         $category = 'UNSEEN';
     } else {
