@@ -42,7 +42,7 @@ if ( DEBUG ) {
 }
 $startTime = getTime();
 
-function writeDebug(&$foowd) {
+function writeDebug(&$foowd, &$object) {
     global $DEBUGSTRING, $DBTRACKNUM, $startTime, $EXTERNAL_RESOURCES;
 
     // If no debugging enabled or nothing to print, return early.
@@ -86,11 +86,20 @@ function writeDebug(&$foowd) {
             $foowd->dbuser = $dbuser;
             $foowd->dbpass = $dbpass;
 
-            echo '<div class="debug_output_heading">Request</div>';
-            show($_REQUEST);
+            if ( isset($object) ) {
+                echo '<div class="debug_output_heading">Object</div>';
+                show($object);
+            }
 
-            echo '<div class="debug_output_heading">Request</div>';
-            show($_SESSION);
+            if ( isset($_REQUEST) && !empty($_REQUEST) ) {
+                echo '<div class="debug_output_heading">Request</div>';
+                show($_REQUEST);
+            }
+
+            if ( isset($_SESSION) && !empty($_SESSION) ) {
+                echo '<div class="debug_output_heading">$_SESSION</div>';
+                show($_SESSION);
+            }
         }        
         echo '</div><br />';
     }
