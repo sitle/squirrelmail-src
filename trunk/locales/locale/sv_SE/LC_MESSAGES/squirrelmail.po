@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: SquirrelMail HEAD\n"
-"POT-Creation-Date: 2004-05-09 13:26+0200\n"
-"PO-Revision-Date: 2004-05-09 13:39+0200\n"
+"POT-Creation-Date: 2004-05-10 21:26+0300\n"
+"PO-Revision-Date: 2004-05-16 16:23+0200\n"
 "Last-Translator: Fredrik Jervfors <sqm_admin@fimbul.net>\n"
 "Language-Team: Swedish <squirrelmail-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -17,6 +17,9 @@ msgstr ""
 
 msgid "Address Book"
 msgstr "Adressbok"
+
+msgid "All"
+msgstr "Alla"
 
 msgid "Name"
 msgstr "Namn"
@@ -29,37 +32,6 @@ msgstr "Information"
 
 msgid "Source"
 msgstr "Källa"
-
-msgid "No persons matching your search were found"
-msgstr "Hittade inga personer överensstämmande med din sökning"
-
-msgid "Search for"
-msgstr "Sök efter"
-
-msgid "in"
-msgstr "i"
-
-msgid "All address books"
-msgstr "Alla adressböcker"
-
-msgid "Search"
-msgstr "Sök"
-
-msgid "List all"
-msgstr "Visa alla"
-
-msgid "Close"
-msgstr "Stäng"
-
-#, c-format
-msgid "Unable to list addresses from %s"
-msgstr "Det går inte att visa adresser från %s"
-
-msgid "Your search failed with the following error(s)"
-msgstr "Sökningen misslyckades med följande fel"
-
-msgid "All"
-msgstr "Alla"
 
 msgid "To"
 msgstr "Till"
@@ -76,8 +48,36 @@ msgstr "Använd adresser"
 msgid "Address Book Search"
 msgstr "Sök i adressbok"
 
+msgid "Search for"
+msgstr "Sök efter"
+
+msgid "in"
+msgstr "i"
+
+msgid "All address books"
+msgstr "Alla adressböcker"
+
+msgid "Search"
+msgstr "Sök"
+
+msgid "List all"
+msgstr "Visa alla"
+
+#, c-format
+msgid "Unable to list addresses from %s"
+msgstr "Det går inte att visa adresser från %s"
+
+msgid "Your search failed with the following error(s)"
+msgstr "Sökningen misslyckades med följande fel"
+
+msgid "No persons matching your search were found"
+msgstr "Hittade inga personer överensstämmande med din sökning"
+
 msgid "Return"
 msgstr "Tillbaka"
+
+msgid "Close"
+msgstr "Stäng"
 
 msgid "Nickname"
 msgstr "Kortnamn"
@@ -225,6 +225,28 @@ msgstr "Fel: Katalogen &quot;%s&quot; för sparade utkast finns inte"
 msgid "Server replied: "
 msgstr "Servern svarade: "
 
+msgid "Illegal folder name.  Please select a different name."
+msgstr "Otillåtet mappnamn. Välj ett annat namn."
+
+msgid "Click here to go back"
+msgstr "Klicka här för att gå tillbaka"
+
+msgid "You have not selected a folder to delete. Please do so."
+msgstr "Du har inte valt vilken mapp som ska tas bort."
+
+msgid "Delete Folder"
+msgstr "Kasta mapp"
+
+#, c-format
+msgid "Are you sure you want to delete %s?"
+msgstr "Är du säker på att du vill kasta %s?"
+
+msgid "Yes"
+msgstr "Ja"
+
+msgid "No"
+msgstr "Nej"
+
 msgid "Folders"
 msgstr "Mappar"
 
@@ -276,9 +298,6 @@ msgstr "Byt namn"
 msgid "No folders found"
 msgstr "Inga mappar hittades"
 
-msgid "Delete Folder"
-msgstr "Kasta mapp"
-
 msgid "Delete"
 msgstr "Kasta"
 
@@ -296,25 +315,6 @@ msgstr "Inga mappar att aktivera"
 
 msgid "Subscribe to:"
 msgstr "Aktivera:"
-
-msgid "Illegal folder name.  Please select a different name."
-msgstr "Otillåtet mappnamn. Välj ett annat namn."
-
-msgid "Click here to go back"
-msgstr "Klicka här för att gå tillbaka"
-
-msgid "You have not selected a folder to delete. Please do so."
-msgstr "Du har inte valt vilken mapp som ska tas bort."
-
-#, c-format
-msgid "Are you sure you want to delete %s?"
-msgstr "Är du säker på att du vill kasta %s?"
-
-msgid "Yes"
-msgstr "Ja"
-
-msgid "No"
-msgstr "Nej"
 
 msgid "You have not selected a folder to rename. Please do so."
 msgstr "Du har inte valt vilken mapp du vill byta namn på."
@@ -403,60 +403,11 @@ msgstr "Lösenord:"
 msgid "No messages were selected."
 msgstr "Inga brev var valda."
 
-msgid "Personal Information"
-msgstr "Personlig profil"
-
-msgid "Display Preferences"
-msgstr "Utseende"
-
-msgid "Message Highlighting"
-msgstr "Färgmarkering av brev"
-
-msgid "Folder Preferences"
-msgstr "Mappar"
-
-msgid "Index Order"
-msgstr "Indexeringsordning"
-
 msgid "Options"
 msgstr "Inställningar"
 
-msgid "Successfully Saved Options"
-msgstr "Inställningarna sparades"
-
-msgid "Refresh Folder List"
-msgstr "Uppdatera mapplistan"
-
-msgid "Refresh Page"
-msgstr "Ladda om sidan"
-
-msgid ""
-"This contains personal information about yourself such as your name, your "
-"email address, etc."
-msgstr "Personlig information, t.ex. namn och e-postadress."
-
-msgid ""
-"You can change the way that SquirrelMail looks and displays information to "
-"you, such as the colors, the language, and other settings."
-msgstr "Omfattar bl.a. färger, språk och hur brev visas."
-
-msgid ""
-"Based upon given criteria, incoming messages can have different background "
-"colors in the message list.  This helps to easily distinguish who the "
-"messages are from, especially for mailing lists."
-msgstr ""
-"Brev kan markeras med färger baserat på t.ex. avsändarnamn, ärende eller "
-"liknande. Detta gör det enkelt att utskilja brev från t.ex. e-postlistor, "
-"eller brev som innehåller en särskild ärenderad."
-
-msgid ""
-"These settings change the way your folders are displayed and manipulated."
-msgstr "Hur mappar visas och hanteras."
-
-msgid ""
-"The order of the message index can be rearranged and changed to contain the "
-"headers in any order you want."
-msgstr "Vilka kolumner som visas i indexet och ordningen på dessa."
+msgid "Message Highlighting"
+msgstr "Färgmarkering av brev"
 
 msgid "New"
 msgstr "Ny"
@@ -570,6 +521,9 @@ msgstr "Använd som förval"
 msgid "Move Up"
 msgstr "Flytta upp"
 
+msgid "Index Order"
+msgstr "Indexeringsordning"
+
 msgid "Checkbox"
 msgstr "Ruta för val"
 
@@ -598,6 +552,52 @@ msgstr "Dölj"
 
 msgid "Return to options page"
 msgstr "Tillbaka"
+
+msgid "Personal Information"
+msgstr "Personlig profil"
+
+msgid "Display Preferences"
+msgstr "Utseende"
+
+msgid "Folder Preferences"
+msgstr "Mappar"
+
+msgid "Successfully Saved Options"
+msgstr "Inställningarna sparades"
+
+msgid "Refresh Folder List"
+msgstr "Uppdatera mapplistan"
+
+msgid "Refresh Page"
+msgstr "Ladda om sidan"
+
+msgid ""
+"This contains personal information about yourself such as your name, your "
+"email address, etc."
+msgstr "Personlig information, t.ex. namn och e-postadress."
+
+msgid ""
+"You can change the way that SquirrelMail looks and displays information to "
+"you, such as the colors, the language, and other settings."
+msgstr "Omfattar bl.a. färger, språk och hur brev visas."
+
+msgid ""
+"Based upon given criteria, incoming messages can have different background "
+"colors in the message list.  This helps to easily distinguish who the "
+"messages are from, especially for mailing lists."
+msgstr ""
+"Brev kan markeras med färger baserat på t.ex. avsändarnamn, ärende eller "
+"liknande. Detta gör det enkelt att utskilja brev från t.ex. e-postlistor, "
+"eller brev som innehåller en särskild ärenderad."
+
+msgid ""
+"These settings change the way your folders are displayed and manipulated."
+msgstr "Hur mappar visas och hanteras."
+
+msgid ""
+"The order of the message index can be rearranged and changed to contain the "
+"headers in any order you want."
+msgstr "Vilka kolumner som visas i indexet och ordningen på dessa."
 
 msgid "Message not printable"
 msgstr "Brevet går ej att skriva ut"
@@ -1250,7 +1250,7 @@ msgid "SquirrelMail could not decode the bodystructure of the message"
 msgstr "Brevet har en struktur okänd för SquirrelMail."
 
 msgid "the provided bodystructure by your imap-server"
-msgstr "den struktur som stöds av din IMAP-server"
+msgstr "den struktur som stödjs av din IMAP-server"
 
 msgid ""
 "Body retrieval error. The reason for this is most probably that the message "
@@ -2004,7 +2004,7 @@ msgid ""
 "Before you send your bug report, please make sure to check this checklist "
 "for any common problems."
 msgstr ""
-"Vänligen gå igenom denna lista över vanliga problem innan du skickar in din "
+"Gå igenom denna lista över vanliga problem innan du skickar in din "
 "felrapport."
 
 msgid ""
@@ -2032,7 +2032,7 @@ msgid ""
 "try to document what you did when it happened. If it always occurs when you "
 "view a specific message, keep that message around so maybe we can see it."
 msgstr ""
-"Försök säkerställ att du kan få felet att inträffa igen. Om felet uppstår "
+"Försök säkerställa att du kan få felet att inträffa igen. Om felet uppstår "
 "sporadiskt, försök dokumentera vad du gjorde när det inträffade. Om det "
 "alltid uppstår när du läser ett specifikt brev, spara det brevet så att "
 "felsökarna kan få se det vid behov."
@@ -2090,15 +2090,15 @@ msgstr "Felrapporter:"
 msgid "Show button in toolbar"
 msgstr "Visa knappen i knappraden"
 
+#, c-format
+msgid "Could not write calendar file %s"
+msgstr "Kunde inte spara kalenderfilen %s"
+
 msgid "TODAY"
 msgstr "IDAG"
 
 msgid "Go"
 msgstr "Kör"
-
-#, c-format
-msgid "Could not write calendar file %s"
-msgstr "Kunde inte spara kalenderfilen %s"
 
 msgid "l, F j Y"
 msgstr "l, F j Y"
@@ -2284,7 +2284,7 @@ msgid "FREE - Five-Ten-sg.com - Single Stage servers."
 msgstr "FRI - Five-Ten-sg.com - Single Stage servrar."
 
 msgid "FREE - Five-Ten-sg.com - SPAM Support servers."
-msgstr "FRI - Five-Ten-sg.com - Servrar som stöder skräppost."
+msgstr "FRI - Five-Ten-sg.com - Servrar som stödjer skräppost."
 
 msgid "FREE - Five-Ten-sg.com - Web Form IPs."
 msgstr "FRI - Five-Ten-sg.com - Web Form-adresser."
@@ -2711,7 +2711,7 @@ msgid "Fetching UIDL..."
 msgstr "Hämtar UIDL..."
 
 msgid "Server does not support UIDL."
-msgstr "Servern stöder inte UIDL."
+msgstr "Servern stödjer inte UIDL."
 
 msgid "Leaving Mail on Server..."
 msgstr "Lämnar brev på servern..."
@@ -2866,23 +2866,6 @@ msgstr "Spara brev"
 msgid "View Message details"
 msgstr "Visa brevets detaljer"
 
-msgid "New Mail"
-msgstr "Nytt brev"
-
-msgid "SquirrelMail Notice:"
-msgstr "Avisering från SquirrelMail:"
-
-msgid "You have"
-msgstr "Du har"
-
-#, c-format
-msgid "%s new message"
-msgstr "%s nytt brev"
-
-#, c-format
-msgid "%s new messages"
-msgstr "%s nya brev"
-
 msgid "New Mail Notification"
 msgstr "Avisering vid nya brev"
 
@@ -2949,7 +2932,7 @@ msgid "Count only messages that are RECENT"
 msgstr "Kontrollera bara de nyaste breven"
 
 msgid "Change title on supported browsers."
-msgstr "Byt rubriken på webbläsare som stöder detta."
+msgstr "Byt rubriken på webbläsare som stödjer detta."
 
 msgid "requires JavaScript to work"
 msgstr "kräver JavaScript"
@@ -2968,6 +2951,23 @@ msgstr "Spela"
 
 msgid "Current File:"
 msgstr "Aktiv fil:"
+
+msgid "New Mail"
+msgstr "Nytt brev"
+
+msgid "SquirrelMail Notice:"
+msgstr "Avisering från SquirrelMail:"
+
+msgid "You have"
+msgstr "Du har"
+
+#, c-format
+msgid "%s new message"
+msgstr "%s nytt brev"
+
+#, c-format
+msgid "%s new messages"
+msgstr "%s nya brev"
 
 msgid "NewMail Options"
 msgstr "Avisering vid nyinkomna brev"
@@ -3366,23 +3366,6 @@ msgstr "Stavningskontrollen är inte färdig. Stäng och hoppa över ändringarna?"
 msgid "No errors found"
 msgstr "Inga fel funna"
 
-msgid ""
-"Your personal dictionary has been <strong>encrypted</strong> and is now "
-"stored in an <strong>encrypted format</strong>."
-msgstr ""
-"Din personliga ordlista har <strong>krypterats</strong> och har sparats i "
-"<strong>krypterat format</strong>."
-
-msgid ""
-"Your personal dictionary has been <strong>decrypted</strong> and is now "
-"stored as <strong>clear text</strong>."
-msgstr ""
-"Din personliga ordlista har <strong>dekrypterats</strong> och har sparats i "
-"<strong>klartext</strong>."
-
-msgid "Personal Dictionary Crypto Settings"
-msgstr "Krypteringsinställningar för personlig ordlista"
-
 msgid "Your personal dictionary was erased."
 msgstr "Din personliga ordlista har kastats."
 
@@ -3419,6 +3402,23 @@ msgstr ""
 
 msgid "Dictionary re-encrypted"
 msgstr "Ordlistan har krypterats"
+
+msgid ""
+"Your personal dictionary has been <strong>encrypted</strong> and is now "
+"stored in an <strong>encrypted format</strong>."
+msgstr ""
+"Din personliga ordlista har <strong>krypterats</strong> och har sparats i "
+"<strong>krypterat format</strong>."
+
+msgid ""
+"Your personal dictionary has been <strong>decrypted</strong> and is now "
+"stored as <strong>clear text</strong>."
+msgstr ""
+"Din personliga ordlista har <strong>dekrypterats</strong> och har sparats i "
+"<strong>klartext</strong>."
+
+msgid "Personal Dictionary Crypto Settings"
+msgstr "Krypteringsinställningar för personlig ordlista"
 
 msgid "Personal Dictionary"
 msgstr "Personlig ordlista"
@@ -3595,7 +3595,7 @@ msgstr "Maximalt 1000 översatta tecken (använder Systran)"
 
 #, c-format
 msgid "Number of supported language pairs: %s"
-msgstr "Antal språkpar som stöds: %s"
+msgstr "Antal språkpar som stödjs: %s"
 
 msgid "No known limits, powered by Systran"
 msgstr "Inga kända begränsningar (använder Systran)"
@@ -3605,7 +3605,7 @@ msgstr "Inga kända begränsningar (använder Translation Experts' InterTran)"
 
 #, c-format
 msgid "Number of supported languages: %s"
-msgstr "Antal språk som stöds: %s"
+msgstr "Antal språk som stödjs: %s"
 
 msgid "No known limits, powered by GPLTrans (free, open source)"
 msgstr "Inga kända begränsningar (använder GPLTrans (fri, öppen källkod)"
@@ -3804,6 +3804,14 @@ msgid ""
 msgstr "Hjälp finns tyvärr inte på %s. Använder engelska istället."
 
 msgid ""
+"The index order is the order that the columns are arranged in the message "
+"index. You can add, remove, and move columns around to customize them to fit "
+"your needs."
+msgstr ""
+"Indexeringsordning är ordningen på kolumnerna i indexet. Visa, dölj och "
+"flytta kolumnerna efter behov."
+
+msgid ""
 "Based upon given criteria, incoming messages can have different background "
 "colors in the message list. This helps to easily distinguish who the "
 "messages are from, especially for mailing lists."
@@ -3811,14 +3819,6 @@ msgstr ""
 "Brev kan markeras med färger baserat på t.ex. avsändarnamn, ärende eller "
 "liknande. Detta gör det enkelt att utskilja brev från t.ex. e-postlistor, "
 "eller brev som innehåller en särskild ärenderad."
-
-msgid ""
-"The index order is the order that the columns are arranged in the message "
-"index. You can add, remove, and move columns around to customize them to fit "
-"your needs."
-msgstr ""
-"Indexeringsordning är ordningen på kolumnerna i indexet. Visa, dölj och "
-"flytta kolumnerna efter behov."
 
 msgid "As Attachment"
 msgstr "som bilaga"
@@ -3842,7 +3842,7 @@ msgid "(Wrong date)"
 msgstr "(Fel datum)"
 
 msgid "In"
-msgstr "In"
+msgstr "Sök i"
 
 msgid "(Missing argument)"
 msgstr "(Saknat argument)"
@@ -3850,16 +3850,10 @@ msgstr "(Saknat argument)"
 msgid "(Spurious argument)"
 msgstr "(Falskt argument)"
 
-msgid "-"
-msgstr "-"
-
-msgid "+"
-msgstr "+"
-
-msgid "Hide"
+msgid "Fold"
 msgstr "Dölj"
 
-msgid "Show"
+msgid "Unfold"
 msgstr "Visa"
 
 msgid "Saved Searches"
@@ -3872,7 +3866,7 @@ msgid "and&nbsp;subfolders:"
 msgstr "och&nbsp;undermappar:"
 
 msgid "Exclude Criteria:"
-msgstr "Uteslutningskriterier:"
+msgstr "Uteslut kriterium:"
 
 msgid "Search Criteria"
 msgstr "Sökkriterier"
@@ -3881,7 +3875,7 @@ msgid "Add New Criteria"
 msgstr "Lägg till nya kriterier"
 
 msgid "Remove Excluded Criteria"
-msgstr "Ta bort uteslutningskriterier"
+msgstr "Ta bort uteslutna kriterier"
 
 msgid "Remove All Criteria"
 msgstr "Ta bort alla kriterier"
@@ -3972,6 +3966,14 @@ msgstr "Standardsökning"
 
 msgid "Advanced search"
 msgstr "Avancerad sökning"
+
+#, c-format
+msgid ""
+"vCard Version %s is not supported. Some information might not be converted "
+"correctly."
+msgstr ""
+"vCard version %s stödjs inte. Viss information kanske inte konverteras "
+"korrekt."
 
 msgid "Folder List"
 msgstr "Lista över mappar"
@@ -4161,6 +4163,84 @@ msgid ""
 msgstr ""
 "Om det visades varningar, försök att själv åtgärda dem. Läs guiden i "
 "SquirrelMail-installationens mapp %s."
+
+msgid "Search Mailing List Archives"
+msgstr "Sök i e-postlistornas arkiv (på engelska)"
+
+msgid "Search SourceForge Bugtracker"
+msgstr "Sök i SourceForges Bugtracker (på engelska)"
+
+msgid "Search for words:"
+msgstr "Sök efter orden:"
+
+msgid "Written by:"
+msgstr "Skrivet av:"
+
+msgid "Email addresses only"
+msgstr "Endast e-postadresser"
+
+msgid "Mailing list:"
+msgstr "E-postlista:"
+
+msgid "SquirrelMail users list"
+msgstr "SquirrelMail users list"
+
+msgid "SquirrelMail plugins list"
+msgstr "SquirrelMail plugins list"
+
+msgid "SquirrelMail developers list"
+msgstr "SquirrelMail developers list"
+
+msgid "SquirrelMail internationalization list"
+msgstr "SquirrelMail internationalization list"
+
+msgid "Sort by:"
+msgstr "Sortera efter:"
+
+msgid "Relevance"
+msgstr "Relevans"
+
+msgid "Search Archives"
+msgstr "Sök i arkivet"
+
+msgid "Reset Form"
+msgstr "Återställ formuläret"
+
+msgid "Summary keyword:"
+msgstr "Ord i sammanfattningen:"
+
+msgid "Sort By:"
+msgstr "Sortera efter:"
+
+msgid "ID"
+msgstr "ID"
+
+msgid "Summary"
+msgstr "Sammanfattning"
+
+msgid "Open Date"
+msgstr "Öppningsdatum"
+
+msgid "Close Date"
+msgstr "Stängningsdatum"
+
+msgid "Submitter"
+msgstr "Insändare"
+
+msgid "Assignee"
+msgstr "Uppdragsinnehavare"
+
+msgid "Order:"
+msgstr "Ordning:"
+
+msgid "Ascending"
+msgstr "Stigande"
+
+msgid "Descending"
+msgstr "Fallande"
+
+msgid "Search Bugtracker"
+msgstr "Sök i Bugtracker"
 
 msgid "Show system specs"
 msgstr "Visa systemspecifikationerna"
