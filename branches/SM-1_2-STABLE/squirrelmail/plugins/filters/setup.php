@@ -54,7 +54,7 @@ $AllowSpamFilters = true;
  * the header (lots of false alarms here tho).
  */
 global $SpamFilters_YourHop;
-$SpamFilters_YourHop = ' ';
+$SpamFilters_YourHop = '127.0.0.1';
 
 /*
  * Some of the SPAM filters are COMMERCIAL and require a fee. If your users
@@ -101,10 +101,9 @@ require_once ('../plugins/filters/filters.php');
 
 function squirrelmail_plugin_init_filters() {
     global $squirrelmail_plugin_hooks;
-    global $mailbox, $imap_stream, $imapConnection;
-
+    sqextractGlobalVar('mailbox');
     $squirrelmail_plugin_hooks['left_main_before']['filters'] = 'start_filters';
-    if ($mailbox == 'INBOX') {
+    if (isset($mailbox) && $mailbox == 'INBOX') {
         $squirrelmail_plugin_hooks['right_main_after_header']['filters'] = 'start_filters';
     }
     $squirrelmail_plugin_hooks['optpage_register_block']['filters'] = 'filters_optpage_register_block';

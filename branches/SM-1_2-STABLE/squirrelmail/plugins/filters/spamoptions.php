@@ -32,6 +32,15 @@ require_once('../src/load_prefs.php');
 
 global $AllowSpamFilters;
 
+$username = $_SESSION['username'];
+$key = $_COOKIE['key'];
+$onetimepad = $_SESSION['onetimepad'];
+$delimiter = $_SESSION['delimiter'];
+
+if (isset($_GET['action'])) {
+    $action = $_GET['action'];
+}
+
 displayPageHeader($color, 'None');
 
 if (isset($_POST['spam_submit'])) {
@@ -70,9 +79,9 @@ if (isset($action) && $action == 'spam') {
     sqimap_logout($imapConnection);
     for ($i = 0; $i < count($boxes) && $filters_spam_folder == ''; $i++) {
 
-        if ($boxes[$i]['flags'][0] != 'noselect' &&
-            $boxes[$i]['flags'][1] != 'noselect' &&
-            $boxes[$i]['flags'][2] != 'noselect') {
+        if ((isset($boxes[$i]['flags'][0]) && $boxes[$i]['flags'][0] != 'noselect') &&
+            (isset($boxes[$i]['flags'][1]) && $boxes[$i]['flags'][1] != 'noselect') &&
+            (isset($boxes[$i]['flags'][2]) && $boxes[$i]['flags'][2] != 'noselect')) {
             $filters_spam_folder = $boxes[$i]['unformatted'];
         }
     }
