@@ -33,15 +33,14 @@ class Rfc822Header {
         $xmailer = '',
         $priority = 3,
         $dnt = '',
-        $mlist = array(),
         $encoding = '',
+        $mlist = array(),
         $more_headers = array(); /* only needed for constructing headers
                                     in smtp.php */
     function parseHeader($hdr) {
         if (is_array($hdr)) {
             $hdr = implode('', $hdr);
         }
-
         /* First we unfold the header */
         $hdr = trim(str_replace(array("\r\n\t", "\r\n "),array('', ''), $hdr));
 
@@ -268,6 +267,7 @@ class Rfc822Header {
                 $is_encoded = true;
                 break;
             case '"': /* get the personal name */
+                //$name .= parseString($address,$pos);
                 $start_encoded = $pos;
                 ++$pos;
                 if ($address{$pos} == '"') {
@@ -304,17 +304,27 @@ class Rfc822Header {
                 }
                 break;
             case '(':  /* rip off comments */
-                $addr_start = $pos;
+                $comment_start = $pos;
                 $pos = strpos($address,')');
                 if ($pos !== false) {
-                    $comment = substr($address, $addr_start+1,($pos-$addr_start-1));
-                    $address_start = substr($address, 0, $addr_start);
+                    $comment = substr($address, $comment_start+1,($pos-$comment_start-1));
+                    $address_start = substr($address, 0, $comment_start);
                     $address_end   = substr($address, $pos + 1);
                     $address       = $address_start . $address_end;
                 }
                 $j = strlen($address);
-                $pos = $addr_start + 1;
+                if ($comment_start) {
+                    $pos = $comment_start-1;
+                } else {
+                    $pos = 0;
+                }
                 break;
+            case ';':
+                if ($group) {
+                    $address = substr($address, 0, $pos - 1);
+                    ++$pos;
+                    break;
+                }
             case ',':  /* we reached a delimiter */
                 if (!$name && !$addr) {
                     $addr = substr($address, 0, $pos);
@@ -346,16 +356,16 @@ class Rfc822Header {
                                 $grouplookup = true;
                                 $addr_ar = $this->parseAddress($aAddr['email'], $ar, $addr_ar, $group, $host,$lookup);
                             } else {
-                            $at = strpos($aAddr['email'], '@');
-                            $addr_structure->mailbox = substr($aAddr['email'], 0, $at);
-                            $addr_structure->host = substr($aAddr['email'], $at+1);
-                            if (isset($aAddr['name'])) {
-                                $addr_structure->personal = $aAddr['name'];
-                            } else {
-                                $addr_structure->personal = encodeHeader($addr);
+                                $at = strpos($aAddr['email'], '@');
+                                $addr_structure->mailbox = substr($aAddr['email'], 0, $at);
+                                $addr_structure->host = substr($aAddr['email'], $at+1);
+                                if (isset($aAddr['name'])) {
+                                    $addr_structure->personal = $aAddr['name'];
+                                } else {
+                                    $addr_structure->personal = encodeHeader($addr);
+                                }
                             }
                         }
-                    }
                     }
                     if (!$grouplookup && !$addr_structure->mailbox) {
                         $addr_structure->mailbox = trim($addr);
@@ -370,7 +380,7 @@ class Rfc822Header {
                 $name = '';
                 $addr = '';
                 if (!$grouplookup) {
-                $addr_ar[] = $addr_structure;
+                    $addr_ar[] = $addr_structure;
                 }
                 break;
             case ':':  /* process the group addresses */
@@ -383,12 +393,6 @@ class Rfc822Header {
                 $address = substr($address, $pos++);
                 $j = strlen($address);
                 $group = '';
-                break;
-            case ';':
-                if ($group) {
-                    $address = substr($address, 0, $pos - 1);
-                }
-                ++$pos;
                 break;
             case ' ':
                 ++$pos;
@@ -429,6 +433,9 @@ class Rfc822Header {
                                 if ($i_del) {
                                     $addr = substr($address,$pos,$i_del-$pos);
                                     $pos = $i_del;
+                                } else if ($i_space) {
+                                    $addr = substr($address,$pos,$i_space-$pos);
+                                    $pos = $i_space+1;
                                 } else {
                                     $addr = substr($address,$pos);
                                     $pos = $j;
@@ -436,7 +443,7 @@ class Rfc822Header {
                             }
                         } else {
                             if ($i_space) {
-                                $name .= substr($address,$pos,$i_space-$pos) .  ' ';
+                                $name .= substr($address,$pos,$i_space-$pos) . ' ';
                                 $addr_start = $i_space+1;
                                 $pos = $i_space+1;
                             } else {
@@ -489,13 +496,13 @@ class Rfc822Header {
                     if (strpos($aAddr['email'],',')) {
                         return $this->parseAddress($aAddr['email'], $ar, $addr_ar, $group, $host,$lookup);
                     } else {
-                    $at = strpos($aAddr['email'], '@');
-                    $addr_structure->mailbox = substr($aAddr['email'], 0, $at);
-                    $addr_structure->host = substr($aAddr['email'], $at+1);
-                    if (isset($aAddr['name']) && $aAddr['name']) {
-                        $name = $aAddr['name'];
-                    } else {
-                        $name = $addr;
+                        $at = strpos($aAddr['email'], '@');
+                        $addr_structure->mailbox = substr($aAddr['email'], 0, $at);
+                        $addr_structure->host = substr($aAddr['email'], $at+1);
+                        if (isset($aAddr['name']) && $aAddr['name']) {
+                            $name = $aAddr['name'];
+                        } else {
+                            $name = $addr;
                         }
                     }
                 }
