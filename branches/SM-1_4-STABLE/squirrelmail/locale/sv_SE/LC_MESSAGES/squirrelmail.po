@@ -1,5 +1,5 @@
 # Swedish SquirrelMail Translation
-# Copyright (c) 1999-2002 The Squirrelmail Development Team
+# Copyright (c) 1999-2004 The Squirrelmail Development Team
 # Johan Fernberger <johan@fernberger.com> 2002
 # Fredrik Jervfors <sqm_admin@fimbul.net> 2004
 # $Id$
@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: squirrelmail SM-1_4-STABLE\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-03-22 11:43+0200\n"
-"PO-Revision-Date: 2004-03-30 03:21+0200\n"
+"POT-Creation-Date: 2004-04-07 22:35+0300\n"
+"PO-Revision-Date: 2004-04-09 01:07+0200\n"
 "Last-Translator: Fredrik Jervfors <sqm_admin@fimbul.net>\n"
 "Language-Team: Swedish <squirrelmail-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -116,7 +116,7 @@ msgid "Add address"
 msgstr "Lägg till adress"
 
 msgid "Edit selected"
-msgstr "Ändra valt"
+msgstr "Ändra vald"
 
 msgid "Delete selected"
 msgstr "Kasta valda"
@@ -219,7 +219,7 @@ msgid "You have not filled in the \"To:\" field."
 msgstr "Du måste ange en mottagare."
 
 msgid "Draft folder"
-msgstr "Mapp för utkast"
+msgstr "Mapp för sparade utkast"
 
 msgid "Server replied: "
 msgstr "Servern svarade: "
@@ -1580,6 +1580,15 @@ msgstr "Aktivera avisering vid ökande antal olästa brev"
 msgid "Show Clock on Folders Panel"
 msgstr "Visa klockan i mapplistan"
 
+msgid "International date and time"
+msgstr "Internationellt datum- och tidsformat"
+
+msgid "American date and time"
+msgstr "Amerikanskt datum- och tidsformat"
+
+msgid "European date and time"
+msgstr "Europeiskt datum- och tidsformat"
+
 msgid "Show weekday and time"
 msgstr "Visa veckodag och klockslag"
 
@@ -2056,13 +2065,16 @@ msgstr ""
 "men någon som tar emot det kanske lägger till det åt dig."
 
 msgid "This bug involves"
-msgstr "Detta fel involverar"
+msgstr "Detta fel avser"
 
 msgid "the general program"
-msgstr "programmet i sig"
+msgstr "SquirrelMail i allmänhet"
 
 msgid "a specific plugin"
 msgstr "en specifik insticksmodul"
+
+msgid "Start Bug Report Form"
+msgstr "Förbered felrapportsformuläret"
 
 msgid "Bug Reports:"
 msgstr "Felrapporter:"
@@ -2744,9 +2756,9 @@ msgid ""
 "encryption anyway. Additionally, the encryption that we do to save it on the "
 "server can be undone by a hacker reading the source to this file."
 msgstr ""
-"Du bör vara medveten om att den kryptering som används för att spara ditt lösenord inte är "
-"helt säker. Dessutom används den inte när lösenordet överförs till POP-servern. "
-"Krypteringen kan knäckas av en hacker som kommer "
+"Du bör vara medveten om att den kryptering som används för att spara ditt "
+"lösenord inte är helt säker. Dessutom används den inte när lösenordet "
+"överförs till POP-servern. Krypteringen kan knäckas av en hacker som kommer "
 "åt källkoden till den här filen."
 
 msgid "If you leave password empty, it will be required when you fetch mail."
@@ -3031,11 +3043,17 @@ msgstr "Grundlig e-postbaserad rapportering"
 msgid "Web-based form"
 msgstr "Webbaserat formulär"
 
+msgid "Save Method"
+msgstr "Spara metod"
+
 msgid "Your SpamCop authorization code:"
 msgstr "Din behörighetskod till SpamCop:"
 
 msgid "see below"
 msgstr "se nedan"
+
+msgid "Save ID"
+msgstr "Spara ID"
 
 msgid ""
 "SpamCop is a free service that greatly assists in finding the true source of "
@@ -3630,43 +3648,33 @@ msgstr "Vilken översättare skall användas om du får brev i ett annat språk?"
 msgid "%s to %s"
 msgstr "%s till %s"
 
-#, c-format
 msgid "English"
 msgstr "Engelska"
 
-#, c-format
 msgid "Chinese"
 msgstr "Kinesiska"
 
-#, c-format
 msgid "French"
 msgstr "Franska"
 
-#, c-format
 msgid "German"
 msgstr "Tyska"
 
-#, c-format
 msgid "Italian"
 msgstr "Italienska"
 
-#, c-format
 msgid "Japanese"
 msgstr "Japanska"
 
-#, c-format
 msgid "Korean"
 msgstr "Koreanska"
 
-#, c-format
 msgid "Portuguese"
 msgstr "Portugisiska"
 
-#, c-format
 msgid "Spanish"
 msgstr "Spanska"
 
-#, c-format
 msgid "Russian"
 msgstr "Ryska"
 
@@ -3697,7 +3705,6 @@ msgstr "Europeisk spanska"
 msgid "Finnish"
 msgstr "Finska"
 
-#, c-format
 msgid "Greek"
 msgstr "Grekiska"
 
