@@ -236,7 +236,7 @@ function printMessageInfo($imapConnection, $t, $not_last=true, $key, $mailbox,
                 if ($subject != $msg['SUBJECT']) {
                     $title = get_html_translation_table(HTML_SPECIALCHARS);
                     $title = array_flip($title);
-                    $title = strtr($msg['SUBJECT'],_full, $title);
+                    $title = strtr($msg['SUBJECT'], $title);
                     $title = str_replace('"', "''", $title);
                     $td_str .= " title=\"$title\"";
                 }
