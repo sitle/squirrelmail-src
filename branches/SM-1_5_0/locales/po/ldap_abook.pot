@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-03-18 02:18+0100\n"
+"POT-Creation-Date: 2004-03-22 01:12+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,7 +20,7 @@ msgstr ""
 msgid "AND"
 msgstr ""
 
-#: ldap_abook_class.php:107 ldap_abook_class.php:158
+#: ldap_abook_class.php:129 ldap_abook_class.php:180
 msgid "Add new Contact"
 msgstr ""
 
@@ -57,7 +57,7 @@ msgid "Configure preferences for your personal LDAP address book"
 msgstr ""
 
 #: ldap_abook.php:68 ldap_abook.php:105 ldap_abook.php:155 ldap_abook.php:205
-#: ldap_gui.php:80
+#: ldap_gui.php:89
 #, php-format
 msgid "Connect Error"
 msgstr ""
@@ -66,31 +66,31 @@ msgstr ""
 msgid "DN"
 msgstr ""
 
-#: ldap_abook_class.php:151
+#: ldap_abook_class.php:173
 msgid "Del"
 msgstr ""
 
-#: ldap_gui.php:62 options.php:59
+#: ldap_gui.php:71 options.php:59
 msgid "Delete"
 msgstr ""
 
-#: ldap_abook_class.php:112 ldap_gui.php:33 ldap_gui.php:122
+#: ldap_abook_class.php:134 ldap_gui.php:33 ldap_gui.php:131
 msgid "Email"
 msgstr ""
 
-#: ldap_gui.php:104
+#: ldap_gui.php:113
 msgid "Entry"
 msgstr ""
 
-#: ldap_gui.php:30 ldap_gui.php:116
+#: ldap_gui.php:30 ldap_gui.php:125
 msgid "Family Name"
 msgstr ""
 
-#: ldap_gui.php:26 ldap_gui.php:109
+#: ldap_gui.php:26 ldap_gui.php:118
 msgid "Given Name"
 msgstr ""
 
-#: ldap_abook_class.php:114 ldap_gui.php:36 ldap_gui.php:128
+#: ldap_abook_class.php:136 ldap_gui.php:36 ldap_gui.php:137
 msgid "Home Phone"
 msgstr ""
 
@@ -102,19 +102,19 @@ msgstr ""
 msgid "I will use these preferences"
 msgstr ""
 
-#: ldap_abook_class.php:116 ldap_gui.php:39 ldap_gui.php:133
+#: ldap_abook_class.php:138 ldap_gui.php:39 ldap_gui.php:142
 msgid "Mobile Phone"
 msgstr ""
 
-#: ldap_abook_class.php:153
+#: ldap_abook_class.php:175
 msgid "Mod"
 msgstr ""
 
-#: ldap_gui.php:68
+#: ldap_gui.php:77
 msgid "Modify"
 msgstr ""
 
-#: ldap_abook_class.php:110
+#: ldap_abook_class.php:132
 msgid "Name"
 msgstr ""
 
@@ -122,7 +122,7 @@ msgstr ""
 msgid "Name of address book"
 msgstr ""
 
-#: ldap_gui.php:65
+#: ldap_gui.php:74
 msgid "New"
 msgstr ""
 
@@ -134,7 +134,11 @@ msgstr ""
 msgid "No LDAP preferences defined"
 msgstr ""
 
-#: ldap_abook_class.php:102
+#: ldap_gui.php:52
+msgid "None"
+msgstr ""
+
+#: ldap_abook_class.php:124
 msgid "Number of entries found"
 msgstr ""
 
@@ -146,7 +150,7 @@ msgstr ""
 msgid "Option"
 msgstr ""
 
-#: ldap_abook.php:245
+#: ldap_abook.php:245 ldap_abook.php:251 ldap_abook.php:257
 #, php-format
 msgid "Output Error"
 msgstr ""
@@ -168,11 +172,11 @@ msgstr ""
 msgid "Return"
 msgstr ""
 
-#: ldap_gui.php:50
+#: ldap_gui.php:59
 msgid "Search"
 msgstr ""
 
-#: ldap_abook.php:239 ldap_gui.php:91
+#: ldap_abook.php:239 ldap_gui.php:100
 #, php-format
 msgid "Search Error"
 msgstr ""
@@ -183,6 +187,10 @@ msgstr ""
 
 #: ldap_abook.php:43
 msgid "Set preferences"
+msgstr ""
+
+#: ldap_gui.php:50
+msgid "Sort order"
 msgstr ""
 
 #: options.php:130
@@ -208,6 +216,14 @@ msgstr ""
 
 #: options.php:120
 msgid "Your password"
+msgstr ""
+
+#: ldap_gui.php:55
+msgid "Z..a"
+msgstr ""
+
+#: ldap_gui.php:54
+msgid "a..Z"
 msgstr ""
 
 #: options.php:124
