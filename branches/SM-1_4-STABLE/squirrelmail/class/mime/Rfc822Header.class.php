@@ -602,7 +602,7 @@ class Rfc822Header {
         if (is_array($arr)) {
             foreach($arr as $arg) {
                 if ($this->getAddr_s($arg, $separator, $encoded)) {
-                    $s .= $separator . $result;
+                    $s .= $separator;
                 }
             }
             $s = ($s ? substr($s, 2) : $s);
