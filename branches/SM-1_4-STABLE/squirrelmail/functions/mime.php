@@ -1403,6 +1403,17 @@ function sq_fixatts($tagname,
         if (preg_match("/^[\'\"]\s*cid:/si", $attvalue)){
             $attary{$attname} = sq_cid2http($message, $id, $attvalue, $mailbox);
         }
+
+
+        /**
+         * "Hack" fix for Outlook using propriatary outbind:// protocol in img tags.
+         * One day MS might actually make it match something useful, for now, falling
+         * back to using cid2http, so we can grab the blank.png.
+         */
+        if (preg_match("/^[\'\"]\s*outbind:\/\//si", $attvalue)) {
+            $attary{$attname} = sq_cid2http($message, $id, $attvalue, $mailbox);
+        }
+
     }
     /**
      * See if we need to append any attributes to this tag.
@@ -1501,6 +1512,11 @@ function sq_cid2http($message, $id, $cidurl, $mailbox){
         $quotchar = '';
     }
     $cidurl = substr(trim($cidurl), 4);
+
+    $match_str = '/\{.*?\}\//';
+    $str_rep = '';
+    $cidurl = preg_replace($match_str, $str_rep, $cidurl);
+
     $linkurl = find_ent_id($cidurl, $message);
     /* in case of non-save cid links $httpurl should be replaced by a sort of
        unsave link image */
@@ -1796,7 +1812,8 @@ function magicHTML($body, $id, $message, $mailbox = 'INBOX') {
                                 "img",
                                 "br",
                                 "hr",
-                                "input"
+                                "input",
+                                "outbind"
                                 );
 
     $force_tag_closing = true;
