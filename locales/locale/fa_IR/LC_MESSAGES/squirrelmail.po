@@ -1,2274 +1,2326 @@
-# translation of SquirrelMail to Farsi
-# Copyright (c) 2004 The SquirrelMail Development Team
-# Reza Mohammadi <remohammadi@cs.sharif.edu>, 2003.
+# translation of squirrelmail.po to Farsi (Persian)
+# Reza Mohammadi <remohammadi@cs.sharif.edu>.
+# Hessam MirArmandehi <hessam@cs.sharif.edu>.
+# Azin Azadi <kavir@cs.sharif.edu>.
+# Niousha Bolandzadeh <bolandzadeh@cs.sharif.edu>
+# This file is distributed under the same license as the PACKAGE package.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER, 2005.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: squirrelmail\n"
-"POT-Creation-Date: 2002-09-05 09:11+0200\n"
-"PO-Revision-Date: 2003-12-28 00:29+0330\n"
-"Last-Translator: Reza Mohammadi <remohammadi@cs.sharif.edu>\n"
-"Language-Team:  <en@li.org>\n"
+"Report-Msgid-Bugs-To: remohammadi@cs.sharif.edu\n"
+"POT-Creation-Date: 2004-05-24 18:21+0300\n"
+"PO-Revision-Date: 2005-01-14 16:46+0330\n"
+"Last-Translator: Reza Mohammadi\n"
+"Language-Team: Farsi (Persian) <farsi@ims.ir>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.0.2\n"
+"X-Generator: KBabel 1.9\n"
 
-#: smail/src/addrbook_popup.php:22
 msgid "Address Book"
-msgstr "دفترچه‌آدرس‌ها"
+msgstr "دفترچه‌آدرس"
 
-#: smail/plugins/mail_fetch/fetch.php:79
-#: smail/src/addrbook_search_html.php:94
-#: smail/src/addrbook_search_html.php:96
-#: smail/src/addrbook_search_html.php:98
 msgid "All"
 msgstr "همه"
 
-#: smail/src/addrbook_search.php:116
-#: smail/src/addrbook_search_html.php:105
-#: smail/src/addressbook.php:314 smail/src/vcard.php:101
 msgid "Name"
 msgstr "نام"
 
-#: smail/src/addrbook_search.php:117
-#: smail/src/addrbook_search_html.php:106
-#: smail/src/addressbook.php:315
 msgid "E-mail"
-msgstr "پست الکترونيکي"
+msgstr "پست الکترونیکی"
 
-#: smail/src/addrbook_search.php:118
-#: smail/src/addrbook_search_html.php:107
-#: smail/src/addressbook.php:316
 msgid "Info"
 msgstr "اطلاعات"
 
-#: smail/src/addrbook_search.php:121
-#: smail/src/addrbook_search_html.php:112
 msgid "Source"
 msgstr "منبع"
 
-#: smail/functions/mailbox_display.php:752
-#: smail/plugins/filters/options.php:147
-#: smail/src/addrbook_search_html.php:122
-#: smail/src/compose.php:500 smail/src/download.php:363
-#: smail/src/download.php:370
-#: smail/src/options_highlight.php:357
-#: smail/src/printer_friendly_bottom.php:106
-#: smail/src/search.php:385
 msgid "To"
 msgstr "به"
 
-#: smail/plugins/filters/options.php:150
-#: smail/src/addrbook_search_html.php:124
-#: smail/src/compose.php:507 smail/src/options_highlight.php:360
-#: smail/src/search.php:384
 msgid "Cc"
-msgstr "کپي"
+msgstr "رونوشت"
 
-#: smail/src/addrbook_search_html.php:126
 msgid "Bcc"
-msgstr "م.کپي"
+msgstr "رونوشت پنهان"
 
-#: smail/src/addrbook_search_html.php:139
 msgid "Use Addresses"
-msgstr "استفاده از آدرس‌ها"
+msgstr "از آدرس‌ها استفاده کن"
 
-#: smail/src/addrbook_search_html.php:161
 msgid "Address Book Search"
-msgstr "جستجو در دفترچه‌آدرس‌ها"
+msgstr "جستجوی دفترچه‌آدرس‌ها"
 
-#: smail/src/addrbook_search.php:192
-#: smail/src/addrbook_search_html.php:170
 msgid "Search for"
-msgstr "جستجو براي"
+msgstr "جستجو برای"
 
-#: smail/src/addrbook_search.php:198
-#: smail/src/addrbook_search_html.php:180
 msgid "in"
 msgstr "در"
 
-#: smail/src/addrbook_search.php:199
-#: smail/src/addrbook_search_html.php:183
 msgid "All address books"
-msgstr "همه دفترچه‌آدرس‌ها"
+msgstr "تمامی دفترچه‌آدرس‌ها"
 
-#: smail/functions/page_header.php:239
-#: smail/src/addrbook_search.php:210
-#: smail/src/addrbook_search_html.php:198
-#: smail/src/search.php:220 smail/src/search.php:224
-#: smail/src/search.php:244 smail/src/search.php:389
-#: smail/src/search.php:420 smail/src/search.php:441
-#: smail/src/search.php:451
 msgid "Search"
 msgstr "جستجو"
 
-#: smail/src/addrbook_search.php:211
-#: smail/src/addrbook_search_html.php:199
 msgid "List all"
-msgstr "ليست همه"
+msgstr "همه را لیست کن"
 
-#: smail/src/addrbook_search.php:232
-#: smail/src/addrbook_search_html.php:229
 #, c-format
 msgid "Unable to list addresses from %s"
-msgstr "خطا در ليست کردن آدرس‌ها از %s"
+msgstr "ناتوان در لیست همه آدرس‌ها از %s"
 
-#: smail/src/addrbook_search.php:258
-#: smail/src/addrbook_search_html.php:254
 msgid "Your search failed with the following error(s)"
-msgstr "جستجو با توجه به خطا(هاي) زير شکست خورد."
+msgstr "جستجوی شما با خطا روبرو شد"
 
-#: smail/src/addrbook_search.php:178
-#: smail/src/addrbook_search.php:265
-#: smail/src/addrbook_search_html.php:259
-msgid "No persons matching your search was found"
-msgstr "شخص مورد نظر يافت نشد"
+msgid "No persons matching your search were found"
+msgstr "شخص موردنظر پیدا نشد"
 
-#: smail/src/addrbook_search_html.php:272
 msgid "Return"
 msgstr "بازگشت"
 
-#: smail/plugins/newmail/testsound.php:35
-#: smail/plugins/squirrelspell/modules/check_me.mod:121
-#: smail/plugins/squirrelspell/modules/check_me.mod:429
-#: smail/plugins/squirrelspell/modules/forget_me_not.mod:74
-#: smail/src/addrbook_search.php:213 smail/src/compose.php:671
 msgid "Close"
-msgstr "خروج"
+msgstr "بستن"
 
-#: smail/src/addressbook.php:68 smail/src/addressbook.php:314
-#: smail/src/vcard.php:145
 msgid "Nickname"
-msgstr "عنوان"
+msgstr "نام مستعار"
 
-#: smail/src/addressbook.php:69
 msgid "Must be unique"
-msgstr " بايد بي همتا باشد"
+msgstr "باید یکتا باشد"
 
-#: smail/src/addressbook.php:70
 msgid "E-mail address"
-msgstr "پست الکترونيکي"
+msgstr "آدرس پست الکترونیکی"
 
-#: smail/src/addressbook.php:71
+msgid "Last name"
+msgstr "نام خانوادگی"
+
 msgid "First name"
 msgstr "نام"
 
-#: smail/src/addressbook.php:72
-msgid "Last name"
-msgstr "نام خانوادگي"
-
-#: smail/src/addressbook.php:73
 msgid "Additional info"
-msgstr "توضيحات"
+msgstr "اطلاعات بیشتر"
 
-#: smail/src/addressbook.php:87
 msgid "No personal address book is defined. Contact administrator."
-msgstr "دفترچه‌آدرس‌ها يافت نشد."
+msgstr "دفترچه‌آدرس شخصی تعریف نشده است. به مدیر مراجعه کنید."
 
-#: smail/src/addressbook.php:183
 msgid "You can only edit one address at the time"
-msgstr "شما در هر بار فقط مي توانيد يک آدرس وارد کنيد"
+msgstr "شما فقط یک آدرس را در یک زمان می‌توانید ویرایش کنید."
 
-#: smail/src/addressbook.php:197 smail/src/addressbook.php:199
-#: smail/src/addressbook.php:229 smail/src/addressbook.php:231
 msgid "Update address"
-msgstr "به روز رساني آدرس"
+msgstr "به‌روزسازی آدرس"
 
-#: smail/functions/display_messages.php:70
-#: smail/functions/display_messages.php:89
-#: smail/functions/display_messages.php:106
-#: smail/functions/display_messages.php:172
-#: smail/src/addressbook.php:220 smail/src/addressbook.php:268
 msgid "ERROR"
 msgstr "خطا"
 
-#: smail/src/addressbook.php:243
 msgid "Unknown error"
-msgstr "خطا - از منبع نامشخص"
+msgstr "خطای نامشخص"
 
-#: smail/src/addressbook.php:287 smail/src/addressbook.php:375
 msgid "Add address"
-msgstr "آدرس را اضافه کن"
+msgstr "اضافه کردن آدرس"
 
-#: smail/src/addressbook.php:299 smail/src/addressbook.php:357
 msgid "Edit selected"
-msgstr "ويرايش مورد انتخاب شده"
+msgstr "ویرایش"
 
-#: smail/src/addressbook.php:301 smail/src/addressbook.php:359
 msgid "Delete selected"
-msgstr "حذف مورد انتخاب شده"
+msgstr "حذف"
 
-#: smail/src/addressbook.php:372
 #, c-format
 msgid "Add to %s"
 msgstr "اضافه کن به %s"
 
-#: smail/src/compose.php:140
-msgid "Draft Email Saved"
-msgstr "پيش‌نويس نامه ذخيره شد"
+msgid "said"
+msgstr "گفت"
 
-#: smail/src/compose.php:243 smail/src/compose.php:287
-#: smail/src/compose.php:297
-msgid "Could not move/copy file. File not attached"
-msgstr "فايل به دليل خطا در انتقال ضميمه نشد."
+msgid "quote"
+msgstr "نقل کرد"
 
-#: smail/src/compose.php:495
-msgid "Original Message"
-msgstr "اصل پيغام"
+msgid "who"
+msgstr "شخص"
 
-#: smail/functions/mailbox_display.php:769
-#: smail/plugins/filters/options.php:156
-#: smail/src/compose.php:496 smail/src/download.php:361
-#: smail/src/download.php:366
-#: smail/src/options_highlight.php:366
-#: smail/src/options_order.php:64
-#: smail/src/printer_friendly_bottom.php:111
-#: smail/src/search.php:382
 msgid "Subject"
 msgstr "موضوع"
 
-#: smail/functions/mailbox_display.php:754
-#: smail/plugins/filters/options.php:144
-#: smail/src/compose.php:497 smail/src/download.php:150
-#: smail/src/download.php:362 smail/src/download.php:368
-#: smail/src/options_highlight.php:354
-#: smail/src/options_order.php:62
-#: smail/src/printer_friendly_bottom.php:105
-#: smail/src/search.php:383
 msgid "From"
 msgstr "از"
 
-#: smail/functions/mailbox_display.php:762
-#: smail/src/compose.php:498 smail/src/download.php:364
-#: smail/src/download.php:372 smail/src/options_order.php:63
-#: smail/src/printer_friendly_bottom.php:110
 msgid "Date"
-msgstr "تاريخ"
+msgstr "تاریخ"
 
-#: smail/src/compose.php:663
+msgid "Original Message"
+msgstr "پیغام اصلی"
+
+msgid "Draft Email Saved"
+msgstr "پست الکترونیکی پیش‌نویس ذخیره شد"
+
+msgid "Could not move/copy file. File not attached"
+msgstr "نمی‌توان فایل را کپی و یا جابه‌جا کرد. فایل ضمیمه نشده است"
+
 msgid "Draft Saved"
-msgstr "پيش‌نويس ذخيره شد"
+msgstr "پیش‌نویس ذخیره شد"
 
-#: smail/src/compose.php:666
+#, fuzzy
 msgid "Your Message has been sent"
-msgstr "پيغام شما ارسال شد"
+msgstr "پیغام شما فرستاده شد"
 
-#: smail/plugins/listcommands/mailout.php:57
-#: smail/src/compose.php:682 smail/src/read_body.php:905
 msgid "From:"
-msgstr "از :"
+msgstr "از:"
 
-#: smail/src/compose.php:710 smail/src/download.php:162
-#: smail/src/read_body.php:222 smail/src/read_body.php:924
+#, fuzzy
 msgid "To:"
-msgstr "به :"
+msgstr "به"
 
-#: smail/src/compose.php:718
 msgid "CC:"
-msgstr "کپي :"
+msgstr ""
 
-#: smail/src/compose.php:726
 msgid "BCC:"
-msgstr "م.کپي :"
+msgstr ""
 
-#: smail/src/compose.php:733 smail/src/download.php:155
-#: smail/src/read_body.php:223 smail/src/read_body.php:876
+#, fuzzy
 msgid "Subject:"
-msgstr "موضوع :"
+msgstr "موضوع"
 
-#: smail/src/compose.php:795 smail/src/compose.php:887
 msgid "Send"
-msgstr "ارسال"
+msgstr "بفرست"
 
-#: smail/src/compose.php:801
 msgid "Attach:"
-msgstr "ضميمه:"
+msgstr "ضمیمه:"
 
-#: smail/src/compose.php:806 smail/src/options_order.php:150
 msgid "Add"
-msgstr "اضافه"
+msgstr "اضافه کن"
 
-#: smail/src/compose.php:826
 msgid "Delete selected attachments"
-msgstr "حذف ضميمه‌هاي انتخاب‌شده"
+msgstr "ضمایم مشخص شده را حذف کن"
 
-#: smail/src/compose.php:856 smail/src/read_body.php:953
 msgid "Priority"
-msgstr "حق تقدم"
+msgstr "اولویت"
 
-#: smail/plugins/administrator/defines.php:201
-#: smail/plugins/calendar/functions.php:102
-#: smail/src/compose.php:857 smail/src/read_body.php:693
 msgid "High"
-msgstr "فوري"
+msgstr "بالا"
 
-#: smail/plugins/calendar/functions.php:101
-#: smail/src/compose.php:858 smail/src/read_body.php:706
 msgid "Normal"
-msgstr "معمولي"
+msgstr "معمولی"
 
-#: smail/plugins/administrator/defines.php:198
-#: smail/src/compose.php:859 smail/src/read_body.php:699
 msgid "Low"
-msgstr "کم‌اهميت"
+msgstr "پایین"
 
-#: smail/src/compose.php:865
 msgid "Receipt"
-msgstr "رسيد"
+msgstr "رسید"
 
-#: smail/src/compose.php:867
-msgid "On read"
-msgstr "درحال خواندن"
+msgid "On Read"
+msgstr "هنگام خواندن"
 
-#: smail/src/compose.php:869
 msgid "On Delivery"
-msgstr "در حال تحويل"
+msgstr "هنگام جابه‌جایی"
 
-#: smail/src/compose.php:874
-#: smail/src/options_identities.php:338
-#: smail/src/options_personal.php:104
 msgid "Signature"
-msgstr "امضاء"
+msgstr "امضا"
 
-#: smail/functions/page_header.php:233 smail/src/compose.php:877
-#: smail/src/compose.php:881 smail/src/compose.php:885
 msgid "Addresses"
 msgstr "آدرس‌ها"
 
-#: smail/src/compose.php:890
 msgid "Save Draft"
-msgstr "ذخيره پيش‌نويس"
+msgstr "ذخیره پیش‌نویس"
 
-#: smail/src/compose.php:909
 msgid "You have not filled in the \"To:\" field."
-msgstr "گيرنده مشخص نشده است."
+msgstr "شما قسمت \"به:\" را وارد نکردید."
 
-#: smail/src/compose.php:1005
-msgid "said"
-msgstr "گفته شده"
+#, c-format
+msgid "Error: Draft folder %s does not exist."
+msgstr "خطا: پوشه پیش‌نویس %s وجود ندارد"
 
-#: smail/src/compose.php:1008
-msgid "quote"
-msgstr "نقل شده"
+msgid "Server replied: "
+msgstr "جواب میزبان"
 
-#: smail/src/compose.php:1008
-msgid "who"
-msgstr "کي"
-
-#: smail/src/download.php:73
-msgid "Viewing a text attachment"
-msgstr "نمايش يک ضميمه متني"
-
-#: smail/src/download.php:79 smail/src/download.php:84
-#: smail/src/download.php:128 smail/src/image.php:47
-#: smail/src/image.php:51 smail/src/read_body.php:505
-#: smail/src/vcard.php:51 smail/src/vcard.php:55
-msgid "View message"
-msgstr "نمايش پيغام"
-
-#: smail/functions/mime.php:793 smail/src/download.php:105
-#: smail/src/image.php:60 smail/src/vcard.php:212
-msgid "Download this as a file"
-msgstr "ذخيره فايل در سيستم"
-
-#: smail/src/download.php:125
-msgid "Viewing a message attachment"
-msgstr "ديدن ضميمه پيغام"
-
-#: smail/plugins/calendar/event_create.php:168
-#: smail/plugins/calendar/event_delete.php:90
-#: smail/plugins/calendar/event_edit.php:116
-#: smail/plugins/calendar/event_edit.php:182
-#: smail/plugins/calendar/event_edit.php:195
-#: smail/src/download.php:168 smail/src/read_body.php:915
-msgid "Date:"
-msgstr "تاريخ:"
-
-#: smail/src/download.php:176
-msgid "Cc:"
-msgstr "کپي:"
-
-#: smail/src/download.php:184
-msgid "Bcc:"
-msgstr "م.کپي:"
-
-#: smail/src/download.php:201 smail/src/read_body.php:657
-msgid "more"
-msgstr "بيشتر"
-
-#: smail/src/download.php:202 smail/src/read_body.php:658
-msgid "less"
-msgstr "کمتر"
-
-#: smail/src/folders_create.php:42
+#, fuzzy
 msgid "Illegal folder name.  Please select a different name."
-msgstr "نام پوشه غير قابل قبول است. لطفا نام ديگري را انتخاب کنيد."
+msgstr "نام پوشه نادرست است. لطفاً نام دیگری را انتخاب کنید."
 
-#: smail/src/folders_create.php:42
-#: smail/src/folders_delete.php:39
-#: smail/src/folders_rename_getname.php:32
 msgid "Click here to go back"
-msgstr "براي بازگشت اينجا را کليک کنيد"
+msgstr "اینجا را برای بازگشت کلیک کنید."
 
-#: smail/src/folders_delete.php:39
 msgid "You have not selected a folder to delete. Please do so."
-msgstr "شما پوشه‌اي براي حذف انتخاب نکرده‌ايد"
+msgstr "شما پوشه‌ای برای حذف انتخاب نکرده‌اید."
 
-#: smail/functions/page_header.php:235 smail/src/folders.php:41
-#: smail/src/left_main.php:250
-msgid "Folders"
-msgstr "پوشه‌ها"
-
-#: smail/src/folders.php:54
-msgid "Subscribed successfully!"
-msgstr ""
-
-#: smail/src/folders.php:56
-msgid "Unsubscribed successfully!"
-msgstr ""
-
-#: smail/src/folders.php:58
-msgid "Deleted folder successfully!"
-msgstr "حذف پوشه با موفقيت انجام شد"
-
-#: smail/src/folders.php:60
-msgid "Created folder successfully!"
-msgstr "ايجاد پوشه با موفقيت انجام شد"
-
-#: smail/src/folders.php:62
-msgid "Renamed successfully!"
-msgstr "تغيير نام با موفقيت انجام شد"
-
-#: smail/src/folders.php:65 smail/src/left_main.php:289
-msgid "refresh folder list"
-msgstr "به‌روزرساني ليست"
-
-#: smail/src/folders.php:77
-msgid "Create Folder"
-msgstr "ايجاد پوشه"
-
-#: smail/src/folders.php:82
-msgid "as a subfolder of"
-msgstr "به عنوان يک زيرپوشه"
-
-#: smail/src/folders.php:86 smail/src/folders.php:88
-msgid "None"
-msgstr "هيچکدام"
-
-#: smail/src/folders.php:113
-msgid "Let this folder contain subfolders"
-msgstr "اين پوشه اجازه داشتن زير پوشه را داشته باشد"
-
-#: smail/src/folders.php:116
-msgid "Create"
-msgstr "ايجاد"
-
-#: smail/src/folders.php:151
-msgid "Rename a Folder"
-msgstr "تغيير نام يک پوشه"
-
-#: smail/src/folders.php:157 smail/src/folders.php:194
-msgid "Select a folder"
-msgstr "يک پوشه را انتخاب کنيد"
-
-#: smail/src/folders.php:175
-msgid "Rename"
-msgstr "تغيير نام"
-
-#: smail/src/folders.php:179 smail/src/folders.php:216
-msgid "No folders found"
-msgstr "هيچ پوشه‌اي يافت نشد"
-
-#: smail/src/folders.php:187
 msgid "Delete Folder"
 msgstr "حذف پوشه"
 
-#: smail/functions/mailbox_display.php:703
-#: smail/plugins/filters/options.php:216
-#: smail/plugins/mail_fetch/options.php:207
-#: smail/plugins/mail_fetch/options.php:214
-#: smail/src/folders.php:212 smail/src/options_highlight.php:103
-#: smail/src/options_identities.php:350
-#: smail/src/read_body.php:758
+#, c-format
+msgid "Are you sure you want to delete %s?"
+msgstr "آیا مطمئنید که می‌خواهید پوشه %s را حذف کنید؟"
+
+msgid "Yes"
+msgstr "بله"
+
+msgid "No"
+msgstr "خیر"
+
+msgid "Folders"
+msgstr "پوشه‌ها"
+
+msgid "Subscribed successfully!"
+msgstr "با موفقیت مشترک شد!"
+
+msgid "Unsubscribed successfully!"
+msgstr "با موفقیت از اشتراک خارج شد!"
+
+msgid "Deleted folder successfully!"
+msgstr "پوشه با موفقیت حذف شد!"
+
+msgid "Created folder successfully!"
+msgstr "پوشه با موفقیت ایجاد شد!"
+
+msgid "Renamed successfully!"
+msgstr "تغییر نام با موفقیت انجام شد!"
+
+msgid "Subscription Unsuccessful - Folder does not exist."
+msgstr "اشتراک موفقیت‌آمیز نبود - پوشه وجود ندارد."
+
+msgid "refresh folder list"
+msgstr "به‌روز رسانی لیست"
+
+msgid "Create Folder"
+msgstr "ایجاد پوشه"
+
+msgid "as a subfolder of"
+msgstr "به‌عنوان یک زیرپوشه از"
+
+msgid "None"
+msgstr "هیچکدام"
+
+msgid "Let this folder contain subfolders"
+msgstr "به این پوشه اجازه داشتن زیرپوشه را بده"
+
+msgid "Create"
+msgstr "ایجاد"
+
+msgid "Rename a Folder"
+msgstr "تغییر نام پوشه"
+
+msgid "Select a folder"
+msgstr "یک پوشه را انتخاب کن"
+
+msgid "Rename"
+msgstr "تغییر نام"
+
+msgid "No folders found"
+msgstr "پوشه‌ای یافت نشد"
+
 msgid "Delete"
 msgstr "حذف"
 
-#: smail/plugins/listcommands/setup.php:34
-#: smail/src/folders.php:223 smail/src/folders.php:243
 msgid "Unsubscribe"
-msgstr ""
+msgstr "خروج از اشتراک"
 
-#: smail/plugins/listcommands/setup.php:33
-#: smail/src/folders.php:223 smail/src/folders.php:284
 msgid "Subscribe"
-msgstr ""
+msgstr "اشتراک"
 
-#: smail/src/folders.php:247
 msgid "No folders were found to unsubscribe from!"
-msgstr ""
+msgstr "پوشه‌ای برای خروج از اشتراک یافت نشد!"
 
-#: smail/src/folders.php:287
 msgid "No folders were found to subscribe to!"
-msgstr ""
+msgstr "پوشه‌ای برای اشتراک پیدا نشد!"
 
-#: smail/src/folders_rename_getname.php:32
+msgid "Subscribe to:"
+msgstr "اشتراک در:"
+
 msgid "You have not selected a folder to rename. Please do so."
-msgstr "شما پوشه‌اي را جهت تغيير نام انتخاب نکرده‌ايد"
+msgstr "شما پوشه‌ای را برای تغییر نام انتخاب نکرده‌اید"
 
-#: smail/src/folders_rename_getname.php:57
 msgid "Rename a folder"
-msgstr "تغيير نام يک پوشه"
+msgstr "تغییر نام پوشه"
 
-#: smail/src/folders_rename_getname.php:61
 msgid "New name:"
-msgstr "نام جديد"
+msgstr "نام جدید:"
 
-#: smail/functions/options.php:421
-#: smail/plugins/filters/options.php:200
-#: smail/plugins/newmail/newmail_opt.php:146
-#: smail/plugins/translate/options.php:164
-#: smail/src/folders_rename_getname.php:68
-#: smail/src/options_highlight.php:379
 msgid "Submit"
-msgstr "تاييد"
+msgstr "تایید"
 
-#: smail/functions/page_header.php:241
-#: smail/plugins/listcommands/setup.php:37 smail/src/help.php:91
+msgid "ERROR: Help files are not in the right format!"
+msgstr "خطا: فایل‌های راهنما مشکل دارند!"
+
 msgid "Help"
-msgstr "کمک"
+msgstr "راهنما"
 
-#: smail/src/help.php:131
-#, c-format
+#, fuzzy, c-format
 msgid ""
 "The help has not been translated to %s.  It will be displayed in English "
 "instead."
-msgstr "راهنمایی به زبان %s ترجمه نگشته است و لذا به زبان انگلیسی نمایش داده می‌شود."
+msgstr "راهنما به زبان %s ترجمه نشده است و به زبان انگلیسی نمایش داده می‌شود."
 
-#: smail/src/help.php:137
 msgid "Some or all of the help documents are not present!"
-msgstr "تمام يا قسمتي از راهنما حاضر نمي‌باشد!"
+msgstr "قسمتی از راهنما پیدا نمی‌شود!"
 
-#: smail/src/help.php:171 smail/src/help.php:193
 msgid "Table of Contents"
-msgstr "فهرست محتويات"
+msgstr "فهرست"
 
-#: smail/functions/mailbox_display.php:934
-#: smail/functions/mailbox_display.php:937
-#: smail/functions/mailbox_display.php:940
-#: smail/plugins/delete_move_next/setup.php:171
-#: smail/plugins/delete_move_next/setup.php:173
-#: smail/src/help.php:187 smail/src/help.php:191
-#: smail/src/read_body.php:804 smail/src/read_body.php:806
 msgid "Previous"
-msgstr "قبلي"
+msgstr "قبلی"
 
-#: smail/functions/mailbox_display.php:935
-#: smail/functions/mailbox_display.php:938
-#: smail/functions/mailbox_display.php:941
-#: smail/plugins/delete_move_next/setup.php:176
-#: smail/plugins/delete_move_next/setup.php:178
-#: smail/src/help.php:195 smail/src/help.php:198
-#: smail/src/read_body.php:810 smail/src/read_body.php:812
 msgid "Next"
-msgstr "بعدي"
+msgstr "بعدی"
 
-#: smail/src/help.php:221
 msgid "Top"
 msgstr "بالا"
 
-#: smail/src/image.php:42
 msgid "Viewing an image attachment"
-msgstr "نمايش يک ضميمه تصويري"
+msgstr "نمایش ضمیمه تصویری"
 
-#: smail/functions/imap_search.php:218
-#: smail/functions/mailbox_display.php:680
-#: smail/functions/page_header.php:207
-#: smail/plugins/delete_move_next/setup.php:222
-#: smail/plugins/mail_fetch/options.php:181
-#: smail/plugins/mail_fetch/options.php:258
-#: smail/src/left_main.php:73 smail/src/search.php:346
+msgid "View message"
+msgstr "نمایش پیغام"
+
+msgid "Download this as a file"
+msgstr "دریافت در قالب فایل"
+
 msgid "INBOX"
-msgstr "دريافتي"
+msgstr "رسیده‌ها"
 
-#: smail/src/left_main.php:97
+#, fuzzy
 msgid "purge"
-msgstr "تخليه"
+msgstr "تخلیه"
 
-#: smail/src/left_main.php:283
 msgid "Last Refresh"
-msgstr "آخرين به‌روزرساني"
+msgstr "آخرین بازخوانی"
 
-#: smail/src/login.php:106 smail/src/login.php:160
+msgid "Save folder tree"
+msgstr "ذخیره درخت پوشه‌ها"
+
 msgid "Login"
 msgstr "ورود"
 
-#: smail/functions/display_messages.php:164
-#: smail/src/login.php:128
 #, c-format
 msgid "%s Logo"
-msgstr "%s علامت"
+msgstr "آرم %s"
 
-#: smail/functions/display_messages.php:167
-#: smail/src/login.php:131
 #, c-format
-msgid "smail version %s"
-msgstr ""
+msgid "SquirrelMail version %s"
+msgstr "SquirrelMail نسخه %s"
 
-#: smail/functions/display_messages.php:168
-#: smail/src/login.php:132
-msgid "By the smail Development Team"
-msgstr "ترجمه و ترميم توسط دانشجويان علوم کامپيوتر دانشگاه شريف"
+msgid "By the SquirrelMail Development Team"
+msgstr "تهیه‌شده توسط تیم برنامه‌نویسی SquirrelMail"
 
-#: smail/src/login.php:138
 #, c-format
 msgid "%s Login"
-msgstr "%s ورود"
+msgstr "ورود به سیستم ایمیل %s"
 
-#: smail/src/login.php:142
 msgid "Name:"
 msgstr "نام:"
 
-#: smail/plugins/mail_fetch/options.php:170
-#: smail/plugins/mail_fetch/options.php:246
-#: smail/src/login.php:148
 msgid "Password:"
-msgstr "گذرواژه:"
+msgstr "کلمه عبور:"
 
-#: smail/src/move_messages.php:96
-msgid "<No subject>"
-msgstr "«بي عنوان»"
-
-#: smail/src/move_messages.php:236
-#: smail/src/move_messages.php:289
-#: smail/src/move_messages.php:317
 msgid "No messages were selected."
-msgstr "پيغامي انتخاب نشده بود."
+msgstr "پیغامی انتخاب نشده است."
 
-#: smail/src/options_display.php:33
-msgid "General Display Options"
-msgstr "تنظيمات کلي"
-
-#: smail/src/options_display.php:45
-msgid "Theme"
-msgstr ""
-
-#: smail/plugins/administrator/defines.php:42
-#: smail/src/options_display.php:52
-#: smail/src/options_display.php:81
-msgid "Default"
-msgstr "پیش‌فرض"
-
-#: smail/src/options_display.php:65
-msgid "Custom Stylesheet"
-msgstr "سبک صفحه‌آرايي"
-
-#: smail/src/options_display.php:85
-msgid "Language"
-msgstr "زبان"
-
-#: smail/src/options_display.php:94
-msgid "Use Javascript"
-msgstr "استفاده از Javascript"
-
-#: smail/src/options_display.php:97
-msgid "Autodetect"
-msgstr "خودکار"
-
-#: smail/src/options_display.php:98
-msgid "Always"
-msgstr "همیشه"
-
-#: smail/src/options_display.php:99
-#: smail/src/options_folder.php:132
-msgid "Never"
-msgstr "هرگز"
-
-#: smail/src/options_display.php:117
-msgid "Mailbox Display Options"
-msgstr "تنظیمات نمایش صندوق"
-
-#: smail/src/options_display.php:122
-msgid "Number of Messages to Index"
-msgstr "تعداد پیغام‌ها در فهرست"
-
-#: smail/src/options_display.php:130
-msgid "Enable Alternating Row Colors"
-msgstr "فعال‌سازی رنگ‌آمیزی متناوب سطرها"
-
-#: smail/src/options_display.php:137
-msgid "Enable Page Selector"
-msgstr "فعال‌سازی انتخابگر صفحه"
-
-#: smail/src/options_display.php:144
-msgid "Maximum Number of Pages to Show"
-msgstr "حداکثر پیغام قابل نمایش"
-
-#: smail/src/options_display.php:151
-msgid "Message Display and Composition"
-msgstr "نمایش و ترکیب پیغام‌ها"
-
-#: smail/src/options_display.php:156
-msgid "Wrap Incoming Text At"
-msgstr "انتهای طولی پیغام دریافتی"
-
-#: smail/src/options_display.php:164
-msgid "Size of Editor Window"
-msgstr "اندازه پنجره ویرایشگر"
-
-#: smail/src/options_display.php:172
-msgid "Location of Buttons when Composing"
-msgstr "مکان دکمه‌ها در ترکیب پیغام"
-
-#: smail/src/options_display.php:175
-msgid "Before headers"
-msgstr "قبل از سرآمد"
-
-#: smail/src/options_display.php:176
-msgid "Between headers and message body"
-msgstr "بین سرآمد و متن پیغام"
-
-#: smail/src/options_display.php:177
-msgid "After message body"
-msgstr "پس از متن پیغام"
-
-#: smail/src/options_display.php:183
-msgid "Addressbook Display Format"
-msgstr "نوع نمایش دفترچه‌آدرس"
-
-#: smail/src/options_display.php:186
-msgid "Javascript"
-msgstr ""
-
-#: smail/src/options_display.php:187
-msgid "HTML"
-msgstr ""
-
-#: smail/src/options_display.php:192
-msgid "Show HTML Version by Default"
-msgstr ""
-
-#: smail/src/options_display.php:199
-msgid "Include Me in CC when I Reply All"
-msgstr ""
-
-#: smail/src/options_display.php:206
-msgid "Include CCs when forwarding messages"
-msgstr ""
-
-#: smail/src/options_display.php:213
-msgid "Enable Mailer Display"
-msgstr "فعال‌سازی نمایش سیستم ارسالگر"
-
-#: smail/src/options_display.php:220
-msgid "Display Attached Images with Message"
-msgstr "نمایش تصاویر ضمیمه شده به پیغام"
-
-#: smail/src/options_display.php:227
-msgid "Enable Subtle Printer Friendly Link"
-msgstr ""
-
-#: smail/src/options_display.php:234
-msgid "Enable Printer Friendly Clean Display"
-msgstr ""
-
-#: smail/src/options_display.php:242
-msgid "Enable request/confirm reading"
-msgstr ""
-
-#: smail/src/options_display.php:250
-msgid "Always compose in a new window"
-msgstr "برای ارسال پیغام جدید از پنجره جدید استفاده کن"
-
-#: smail/src/options_display.php:257
-msgid "Width of compose window"
-msgstr "طول پنجره پیغام جدید"
-
-#: smail/src/options_display.php:265
-msgid "Height of compose window"
-msgstr "عرض پنجره پیغام جدید"
-
-#: smail/src/options_display.php:273
-msgid "Append signature before reply/forward text"
-msgstr "اضافه کردن امضا قبل از متن پاسخ/پیش‌ران"
-
-#: smail/src/options_display.php:280
-msgid "Use receive date for sort"
-msgstr ""
-
-#: smail/src/options_display.php:287
-msgid "Use References header for thread sort"
-msgstr ""
-
-#: smail/src/options_folder.php:50
-msgid "Special Folder Options"
-msgstr "تنظیمات خاص پوشه‌ها"
-
-#: smail/src/options_folder.php:57
-msgid "Folder Path"
-msgstr "مسیر پوشه‌ها"
-
-#: smail/src/options_folder.php:73
-msgid "Do not use Trash"
-msgstr "پیغام‌های حذفی را ذخیره نکن"
-
-#: smail/plugins/administrator/defines.php:135
-#: smail/src/options_folder.php:77
-msgid "Trash Folder"
-msgstr "پوشه حذفیات"
-
-#: smail/src/options_folder.php:84
-msgid "Do not use Sent"
-msgstr "پیغام‌های ارسالی را ذخیره نکن"
-
-#: smail/plugins/administrator/defines.php:138
-#: smail/src/options_folder.php:88
-msgid "Sent Folder"
-msgstr "پوشه ارسالی‌ها"
-
-#: smail/src/options_folder.php:95
-msgid "Do not use Drafts"
-msgstr "پیغام‌های پیش‌نویس را ذخیره نکن"
-
-#: smail/plugins/administrator/defines.php:141
-#: smail/src/options_folder.php:99
-msgid "Draft Folder"
-msgstr "پوشه پیش‌نویس‌ها"
-
-#: smail/src/options_folder.php:107
-msgid "Folder List Options"
-msgstr "تنظیمات لیست پوشه‌ها"
-
-#: smail/src/options_folder.php:112
-msgid "Location of Folder List"
-msgstr "مکان لیست پوشه‌ها"
-
-#: smail/src/options_folder.php:115
-msgid "Left"
-msgstr "چپ"
-
-#: smail/src/options_folder.php:116
-msgid "Right"
-msgstr "راست"
-
-#: smail/plugins/administrator/defines.php:45
-#: smail/src/options_folder.php:121
-msgid "pixels"
-msgstr "نقطه"
-
-#: smail/src/options_folder.php:125
-msgid "Width of Folder List"
-msgstr "طول لیست پوشه‌ها"
-
-#: smail/src/options_folder.php:131
-msgid "Minutes"
-msgstr "دقیقه"
-
-#: smail/src/options_folder.php:135
-msgid "Seconds"
-msgstr "ثانیه"
-
-#: smail/src/options_folder.php:137
-msgid "Minute"
-msgstr "دقیقه"
-
-#: smail/src/options_folder.php:144
-msgid "Auto Refresh Folder List"
-msgstr "به‌روزرسانی خودکار لیست پوشه‌ها"
-
-#: smail/src/options_folder.php:152
-msgid "Enable Unread Message Notification"
-msgstr "فعال‌سازی اطلاع‌رسانی پیغام‌های خوانده نشده"
-
-#: smail/plugins/administrator/defines.php:162
-#: smail/src/options_folder.php:155
-msgid "No Notification"
-msgstr "بدون اطلاع‌رسانی"
-
-#: smail/plugins/administrator/defines.php:163
-#: smail/src/options_folder.php:156
-msgid "Only INBOX"
-msgstr "فقط دریافتی"
-
-#: smail/plugins/administrator/defines.php:164
-#: smail/src/options_folder.php:157
-msgid "All Folders"
-msgstr "همه پوشه‌ها"
-
-#: smail/src/options_folder.php:162
-msgid "Unread Message Notification Type"
-msgstr "نوع اطلاع‌رسانی پیغام‌های خوانده‌نشده"
-
-#: smail/plugins/administrator/defines.php:167
-#: smail/src/options_folder.php:165
-msgid "Only Unseen"
-msgstr "فقط ندیده‌ها"
-
-#: smail/plugins/administrator/defines.php:168
-#: smail/src/options_folder.php:166
-msgid "Unseen and Total"
-msgstr "ندیده‌ها و همه"
-
-#: smail/src/options_folder.php:171
-msgid "Enable Collapsable Folders"
-msgstr "فعال‌سازی پوشه‌های جمع‌شو"
-
-#: smail/src/options_folder.php:178
-msgid "Show Clock on Folders Panel"
-msgstr "نمایش ساعت برروی صفحه پوشه‌ها"
-
-#: smail/src/options_folder.php:186
-msgid "No Clock"
-msgstr "بدون ساعت"
-
-#: smail/src/options_folder.php:191
-msgid "Hour Format"
-msgstr "نوع نمایش ساعت"
-
-#: smail/src/options_folder.php:194
-msgid "12-hour clock"
-msgstr "۱۲ ساعته"
-
-#: smail/src/options_folder.php:195
-msgid "24-hour clock"
-msgstr "۲۴ ساعته"
-
-#: smail/src/options_folder.php:200
-msgid "Memory Search"
-msgstr "جستجوی حافظه"
-
-#: smail/plugins/sent_subfolders/setup.php:116
-#: smail/src/options_folder.php:203
-msgid "Disabled"
-msgstr "غیرفعال"
-
-#: smail/functions/page_header.php:237
-#: smail/plugins/filters/options.php:94
-#: smail/plugins/newmail/newmail_opt.php:37
-#: smail/plugins/translate/options.php:94
-#: smail/src/options.php:218 smail/src/options_highlight.php:89
-#: smail/src/options_identities.php:53
-#: smail/src/options_order.php:55
 msgid "Options"
 msgstr "تنظیمات"
 
-#: smail/src/options.php:166 smail/src/options.php:317
-#: smail/src/options_highlight.php:89
 msgid "Message Highlighting"
-msgstr "علامتگذاری پیغام‌ها"
+msgstr "رنگ‌آمیزی پیغام‌ها"
 
-#: smail/plugins/filters/options.php:120
-#: smail/src/options_highlight.php:93
 msgid "New"
 msgstr "جدید"
 
-#: smail/plugins/filters/options.php:121
-#: smail/plugins/filters/spamoptions.php:168
-#: smail/plugins/mail_fetch/fetch.php:239
-#: smail/src/options_highlight.php:94
 msgid "Done"
-msgstr "اتمام"
+msgstr "انجام شد."
 
-#: smail/plugins/filters/options.php:214
-#: smail/plugins/filters/spamoptions.php:167
-#: smail/src/options_highlight.php:101
+msgid "To or Cc"
+msgstr "به یا رونوشت"
+
+msgid "subject"
+msgstr "موضوع"
+
 msgid "Edit"
 msgstr "ویرایش"
 
-#: smail/src/options_highlight.php:114
+msgid "Up"
+msgstr "بالا"
+
+msgid "Down"
+msgstr "پایین"
+
 msgid "No highlighting is defined"
-msgstr ""
+msgstr "رنگ‌آمیزی‌ای مشخص نشده است"
 
-#: smail/src/options_highlight.php:286
 msgid "Identifying name"
-msgstr ""
+msgstr "نام مشخص‌کننده"
 
-#: smail/src/options_highlight.php:300
 msgid "Color"
 msgstr "رنگ"
 
-#: smail/src/options_highlight.php:304
 msgid "Dark Blue"
-msgstr "آبی تیره"
+msgstr "آبی پررنگ"
 
-#: smail/src/options_highlight.php:305
 msgid "Dark Green"
-msgstr "سبز تیره"
+msgstr "سبز پررنگ"
 
-#: smail/src/options_highlight.php:306
 msgid "Dark Yellow"
-msgstr "زرد تیره"
+msgstr "زرد پررنگ"
 
-#: smail/src/options_highlight.php:307
 msgid "Dark Cyan"
-msgstr "فیروزه‌ای تیره"
+msgstr "فیروزه‌ای پررنگ"
 
-#: smail/src/options_highlight.php:308
 msgid "Dark Magenta"
-msgstr "بنفش تیره"
+msgstr "بنفش پررنگ"
 
-#: smail/src/options_highlight.php:309
 msgid "Light Blue"
 msgstr "آبی روشن"
 
-#: smail/src/options_highlight.php:310
 msgid "Light Green"
 msgstr "سبز روشن"
 
-#: smail/src/options_highlight.php:311
 msgid "Light Yellow"
-msgstr "زرد روشن"
+msgstr "زرد کم‌رنگ"
 
-#: smail/src/options_highlight.php:312
 msgid "Light Cyan"
 msgstr "فیروزه‌ای روشن"
 
-#: smail/src/options_highlight.php:313
 msgid "Light Magenta"
-msgstr "بنفش روشن"
+msgstr "صورتی"
 
-#: smail/src/options_highlight.php:314
 msgid "Dark Gray"
-msgstr "خاکستری تیره"
+msgstr "خاکستری پررنگ"
 
-#: smail/src/options_highlight.php:315
 msgid "Medium Gray"
-msgstr "خاکستری معمولی"
+msgstr "خاکستری"
 
-#: smail/src/options_highlight.php:316
 msgid "Light Gray"
-msgstr "خاکستری روشن"
+msgstr "خاکستری کم‌رنگ"
 
-#: smail/src/options_highlight.php:317
 msgid "White"
 msgstr "سفید"
 
-#: smail/src/options_highlight.php:319
 msgid "Other:"
-msgstr "دیگر:"
+msgstr "غیره:"
 
-#: smail/src/options_highlight.php:321
 msgid "Ex: 63aa7f"
-msgstr "مثال:63aa7f"
+msgstr "مثال: 63aa7f"
 
-#: smail/plugins/filters/options.php:153
-#: smail/src/options_highlight.php:363
-msgid "To or Cc"
-msgstr ""
-
-#: smail/src/options_highlight.php:368
 msgid "Matches"
-msgstr ""
+msgstr "مطابق باشه با"
 
-#: smail/src/options_identities.php:53
-msgid "Advanced Identities"
-msgstr ""
-
-#: smail/src/options_identities.php:64
-msgid "Default Identity"
-msgstr "مشخصه پیش‌فرض"
-
-#: smail/src/options_identities.php:75
 #, c-format
 msgid "Alternate Identity %d"
 msgstr ""
 
-#: smail/src/options_identities.php:85
+msgid "Advanced Identities"
+msgstr "مشخصات (پیشرفته)"
+
+msgid "Default Identity"
+msgstr "شناسه پیش‌فرض"
+
 msgid "Add a New Identity"
-msgstr "اضافه کردن یک مشخصه جدید"
+msgstr "اضافه کردن یک شناسه جدید"
 
-#: smail/src/options_identities.php:335
-#: smail/src/options_personal.php:61
-#: smail/src/options_personal.php:69
 msgid "Full Name"
-msgstr "نام کامل"
+msgstr "نام (کامل)"
 
-#: smail/src/options_identities.php:336
 msgid "E-Mail Address"
 msgstr "آدرس پست الکترونیکی"
 
-#: smail/src/options_identities.php:337
-#: smail/src/options_personal.php:96
 msgid "Reply To"
 msgstr "پاسخ به"
 
-#: smail/src/options_identities.php:345
 msgid "Save / Update"
-msgstr "ذخیره / به‌روزرسانی"
+msgstr "ذخیره"
 
-#: smail/src/options_identities.php:348
 msgid "Make Default"
-msgstr "به عنوان پیش‌فرض"
+msgstr "تبدیل به پیش‌فرض"
 
-#: smail/src/options_identities.php:354
 msgid "Move Up"
-msgstr ""
+msgstr "ببر بالا"
 
-#: smail/src/options.php:178 smail/src/options.php:333
-#: smail/src/options_order.php:55
 msgid "Index Order"
-msgstr "ترتیب نمایش پیغام‌ها"
+msgstr "ترتیب فهرست"
 
-#: smail/src/options_order.php:61
 msgid "Checkbox"
-msgstr "جعبه‌انتخاب"
+msgstr "گزینه"
 
-#: smail/src/options_order.php:65
 msgid "Flags"
 msgstr "پرچم‌ها"
 
-#: smail/functions/mailbox_display.php:776
-#: smail/src/options_order.php:66
 msgid "Size"
 msgstr "اندازه"
 
-#: smail/src/options_order.php:109
+#, fuzzy
 msgid ""
 "The index order is the order that the columns are arranged in the message "
 "index.  You can add, remove, and move columns around to customize them to "
 "fit your needs."
 msgstr ""
+"در این قسمت شما می‌توانید ترتیب نمایش پیغام‌هایتان را تغییر دهید و یا ستونی "
+"برای نمایش جزئیات پیغام‌ها اضافه و یا حذف نمایید."
 
-#: smail/src/options_order.php:118
 msgid "up"
-msgstr ""
+msgstr "بالا"
 
-#: smail/src/options_order.php:120
 msgid "down"
-msgstr ""
+msgstr "پایین"
 
-#: smail/src/options_order.php:125
 msgid "remove"
 msgstr "حذف"
 
-#: smail/src/options_order.php:154
 msgid "Return to options page"
 msgstr "برگشت به صفحه تنظیمات"
 
-#: smail/src/options_personal.php:48
-msgid "Name and Address Options"
-msgstr "تنظیمات نام و آدرس"
-
-#: smail/src/options_personal.php:79
-#: smail/src/options_personal.php:87
-msgid "Email Address"
-msgstr ""
-
-#: smail/src/options_personal.php:113
-msgid "Edit Advanced Identities"
-msgstr ""
-
-#: smail/src/options_personal.php:115
-msgid "(discards changes made on this form so far)"
-msgstr ""
-
-#: smail/src/options_personal.php:118
-msgid "Multiple Identities"
-msgstr ""
-
-#: smail/src/options_personal.php:126
-msgid "Same as server"
-msgstr ""
-
-#: smail/src/options_personal.php:137
-msgid "Timezone Options"
-msgstr "تنظیمات زمانی‌مکانی"
-
-#: smail/src/options_personal.php:142
-msgid "Your current timezone"
-msgstr ""
-
-#: smail/src/options_personal.php:150
-msgid "Reply Citation Options"
-msgstr ""
-
-#: smail/src/options_personal.php:155
-msgid "Reply Citation Style"
-msgstr ""
-
-#: smail/src/options_personal.php:158
-msgid "No Citation"
-msgstr ""
-
-#: smail/src/options_personal.php:159
-msgid "AUTHOR Said"
-msgstr ""
-
-#: smail/src/options_personal.php:160
-msgid "Quote Who XML"
-msgstr ""
-
-#: smail/src/options_personal.php:161
-msgid "User-Defined"
-msgstr ""
-
-#: smail/src/options_personal.php:166
-msgid "User-Defined Citation Start"
-msgstr ""
-
-#: smail/src/options_personal.php:174
-msgid "User-Defined Citation End"
-msgstr ""
-
-#: smail/src/options_personal.php:181
-msgid "Signature Options"
-msgstr "تنظیمات امضا"
-
-#: smail/src/options_personal.php:186
-msgid "Use Signature"
-msgstr "استفاده از امضا"
-
-#: smail/src/options_personal.php:193
-msgid "Prefix Signature with '-- ' Line"
-msgstr "شروع امضا با '--'"
-
-#: smail/src/options.php:154 smail/src/options.php:301
 msgid "Personal Information"
 msgstr "اطلاعات شخصی"
 
-#: smail/src/options.php:160 smail/src/options.php:309
 msgid "Display Preferences"
-msgstr "تنظیمات نمایش و زیبایی پیغام‌ها"
+msgstr "تنظیمات نما"
 
-#: smail/src/options.php:172 smail/src/options.php:325
 msgid "Folder Preferences"
 msgstr "تنظیمات پوشه‌ها"
 
-#: smail/src/options.php:284
 msgid "Successfully Saved Options"
-msgstr "تنظیمات با موفقیت ذخیره شد"
+msgstr "تنظیمات با موفقیت ذخیره شد."
 
-#: smail/src/options.php:289
 msgid "Refresh Folder List"
-msgstr "به‌روزرسانی لیست"
+msgstr "بازخوانی لیست"
 
-#: smail/src/options.php:291
 msgid "Refresh Page"
-msgstr "به‌روزرسانی صفحه"
+msgstr "بازخوانی صفحه"
 
-#: smail/src/options.php:303
 msgid ""
 "This contains personal information about yourself such as your name, your "
 "email address, etc."
 msgstr ""
+"در این قسمت اطلاعاتی مانند نام و آدرس پست الکترونیکی خود را می‌توانید مشخص "
+"کنید."
 
-#: smail/src/options.php:311
 msgid ""
-"You can change the way that smail looks and displays information to "
+"You can change the way that SquirrelMail looks and displays information to "
 "you, such as the colors, the language, and other settings."
 msgstr ""
+"شما می‌توانید نمای ظاهری این برنامه را عوض کنید. مثلاً تغییر رنگ یا زبان."
 
-#: smail/src/options.php:319
+#, fuzzy
 msgid ""
 "Based upon given criteria, incoming messages can have different background "
 "colors in the message list.  This helps to easily distinguish who the "
 "messages are from, especially for mailing lists."
 msgstr ""
+"برای راحت‌تر تمیز دادن پیغام‌هایتان می‌توانید تنظیماتی در این قسمت انجام دهید "
+"تا رنگ آنها بر اساس موضوعشان در لیست متفاوت باشد."
 
-#: smail/src/options.php:327
-msgid "These settings change the way your folders are displayed and manipulated."
-msgstr ""
+msgid ""
+"These settings change the way your folders are displayed and manipulated."
+msgstr "در این قسمت ساختار پوشه‌بندی خود را می‌توانید تغییر دهید."
 
-#: smail/src/options.php:335
 msgid ""
 "The order of the message index can be rearranged and changed to contain the "
 "headers in any order you want."
-msgstr ""
+msgstr "ترتیب نمایش نامه‌هایتان در لیست را می‌توانید از این قسمت تغییر دهید."
 
-#: smail/src/printer_friendly_bottom.php:71
 msgid "Message not printable"
-msgstr ""
+msgstr "پیغام غیر قابل چاپ"
 
-#: smail/src/printer_friendly_bottom.php:100
-#: smail/src/printer_friendly_main.php:15
-#: smail/src/printer_friendly_top.php:21
-msgid "Printer Friendly"
-msgstr ""
-
-#: smail/src/printer_friendly_bottom.php:108
 msgid "CC"
 msgstr ""
 
-#: smail/src/printer_friendly_top.php:36
+msgid "Printer Friendly"
+msgstr "نسخه مناسب چاپ"
+
 msgid "Print"
 msgstr "چاپ"
 
-#: smail/src/printer_friendly_top.php:37
-msgid "Close Window"
-msgstr "بستن پنجره"
-
-#: smail/src/read_body.php:156
 msgid "View Printable Version"
 msgstr "نمایش نسخه قابل چاپ"
 
-#: smail/src/read_body.php:221
+msgid "Read:"
+msgstr "خواندن:"
+
 msgid "Your message"
-msgstr "پیغام شما:"
+msgstr "پیغامتان"
 
-#: smail/src/read_body.php:224
+#, fuzzy
 msgid "Sent:"
-msgstr "ارسال‌شد:"
+msgstr "فرستاده شده"
 
-#: smail/src/read_body.php:226
 #, c-format
 msgid "Was displayed on %s"
-msgstr ""
+msgstr "در %s نمایش داده شده"
 
-#: smail/src/read_body.php:258
-msgid "Read:"
-msgstr "خوانده‌شده:"
+msgid "less"
+msgstr "کمتر"
 
-#: smail/src/read_body.php:494
-msgid "Viewing Full Header"
-msgstr "نمایش کامل سرآمد"
+msgid "more"
+msgstr "بیشتر"
 
-#: smail/src/read_body.php:750
-msgid "Message List"
-msgstr "لیست پیغام‌ها"
+msgid "Unknown sender"
+msgstr "فرستنده ناشناس"
 
-#: smail/src/read_body.php:772
-msgid "Resume Draft"
-msgstr ""
-
-#: smail/src/read_body.php:787
-msgid "Edit Message as New"
-msgstr ""
-
-#: smail/functions/mailbox_display.php:692
-#: smail/src/read_body.php:833
-msgid "Forward"
-msgstr "پیش‌راندن"
-
-#: smail/src/read_body.php:848
-msgid "Reply"
-msgstr ""
-
-#: smail/src/read_body.php:863
-msgid "Reply All"
-msgstr ""
-
-#: smail/src/read_body.php:887 smail/src/read_body.php:890
-msgid "View Full Header"
-msgstr "نمایش کامل سرآمد"
-
-#: smail/src/read_body.php:967
 msgid "Mailer"
-msgstr ""
+msgstr "نامه‌رسان"
 
-#: smail/src/read_body.php:1016 smail/src/read_body.php:1029
-#: smail/src/read_body.php:1041 smail/src/read_body.php:1065
-#: smail/src/read_body.php:1110 smail/src/read_body.php:1126
 msgid "Read receipt"
-msgstr ""
+msgstr "خواندن رسید"
 
-#: smail/src/read_body.php:1018 smail/src/read_body.php:1112
-msgid "send"
-msgstr ""
+msgid "sent"
+msgstr "فرستاده شد"
 
-#: smail/src/read_body.php:1031 smail/src/read_body.php:1043
-#: smail/src/read_body.php:1067 smail/src/read_body.php:1128
 msgid "requested"
-msgstr ""
+msgstr "درخواست شده"
 
-#: smail/src/read_body.php:1044 smail/src/read_body.php:1068
-#: smail/src/read_body.php:1129
-msgid "Send read receipt now"
-msgstr ""
-
-#: smail/src/read_body.php:1056
 msgid ""
 "The message sender has requested a response to indicate that you have read "
 "this message. Would you like to send a receipt?"
 msgstr ""
+"فرستنده پیغام می‌خواهد از خواندن پیغام مطمئن شود. آیا شما با فرستادن رسید "
+"موافقید؟"
 
-#: smail/functions/auth.php:20 smail/src/redirect.php:80
-#: smail/src/redirect.php:102
+msgid "Send read receipt now"
+msgstr "هم‌اکنون رسید را بفرست"
+
+#, fuzzy
+msgid "Search results"
+msgstr "نتایج جستجو"
+
+msgid "Message List"
+msgstr "لیست پیغام‌ها"
+
+msgid "Resume Draft"
+msgstr "بازیابی پیش‌نویس"
+
+msgid "Edit Message as New"
+msgstr "به‌عنوان پیغام جدید ویرایش کن"
+
+msgid "View Message"
+msgstr "نمایش پیغام"
+
+msgid "Forward"
+msgstr "فرستادن"
+
+msgid "Forward as Attachment"
+msgstr "فرستادن به عنوان ضمیمه"
+
+msgid "Reply"
+msgstr "پاسخ"
+
+msgid "Reply All"
+msgstr "پاسخ به همه"
+
+msgid "View Full Header"
+msgstr "نمایش کامل سرآمد"
+
+msgid "Attachments"
+msgstr "ضمائم"
+
 msgid "You must be logged in to access this page."
-msgstr ""
+msgstr "شما برای دسترسی به این صفحه ابتدا باید وارد سیستم شوید."
 
-#: smail/src/redirect.php:98
-msgid "There was an error contacting the mail server."
-msgstr ""
+msgid "Folder:"
+msgstr "پوشه:"
 
-#: smail/src/redirect.php:100
-msgid "Contact your administrator for help."
-msgstr ""
-
-#: smail/src/search.php:274
 msgid "edit"
-msgstr ""
+msgstr "ویرایش"
 
-#: smail/src/search.php:281 smail/src/search.php:323
 msgid "search"
-msgstr ""
+msgstr "جستجو"
 
-#: smail/src/search.php:284
 msgid "delete"
-msgstr ""
+msgstr "حذف"
 
-#: smail/src/search.php:295
 msgid "Recent Searches"
-msgstr ""
+msgstr "جستجوهای اخیر"
 
-#: smail/src/search.php:315
 msgid "save"
-msgstr ""
+msgstr "ذخیره کن"
 
-#: smail/src/search.php:326
 msgid "forget"
-msgstr ""
+msgstr "فراموش کن"
 
-#: smail/src/search.php:335
 msgid "Current Search"
 msgstr "جستجوی فعلی"
 
-#: smail/src/search.php:380
+msgid "All Folders"
+msgstr "تمامی پوشه‌ها"
+
 msgid "Body"
 msgstr "متن"
 
-#: smail/src/search.php:381
 msgid "Everywhere"
-msgstr "هرجا"
+msgstr "همه جا"
 
-#: smail/src/search.php:414 smail/src/search.php:443
 msgid "Search Results"
-msgstr ""
+msgstr "نتایج جستجو"
 
-#: smail/src/search.php:434
-msgid "No Messages found"
-msgstr ""
+msgid "No Messages Found"
+msgstr "پیغامی یافت نشد"
 
-#: smail/functions/page_header.php:220 smail/src/signout.php:76
 msgid "Sign Out"
 msgstr "خروج"
 
-#: smail/src/signout.php:82
 msgid "You have been successfully signed out."
-msgstr "شما با موفقیت خارج شدید."
+msgstr "شما با موفقیت از سیستم خارج شدید."
 
-#: smail/src/signout.php:84
 msgid "Click here to log back in."
-msgstr "برای ورود دوباره اینجا را کلیک کنید."
+msgstr "اینجا را برای ورود دوباره کلیک کنید."
 
-#: smail/src/vcard.php:46
 msgid "Viewing a Business Card"
-msgstr "نمایش یک کارت بازرگانی"
+msgstr "نمایش یک کارت کاری"
 
-#: smail/src/vcard.php:102 smail/src/vcard.php:162
 msgid "Title"
-msgstr ""
+msgstr "عنوان"
 
-#: smail/src/vcard.php:103
 msgid "Email"
-msgstr ""
+msgstr "پست الکترونیکی"
 
-#: smail/src/vcard.php:104 smail/src/vcard.php:154
 msgid "Web Page"
-msgstr ""
+msgstr "صفحه وب"
 
-#: smail/src/vcard.php:105 smail/src/vcard.php:166
 msgid "Organization / Department"
-msgstr ""
+msgstr "سازمان/دپارتمان"
 
-#: smail/src/vcard.php:106 smail/src/vcard.php:158
 msgid "Address"
-msgstr ""
+msgstr "آدرس"
 
-#: smail/src/vcard.php:107 smail/src/vcard.php:175
 msgid "Work Phone"
-msgstr ""
+msgstr "شماره تلفن محل کار"
 
-#: smail/src/vcard.php:108 smail/src/vcard.php:179
 msgid "Home Phone"
-msgstr ""
+msgstr "شماره تلفن منزل"
 
-#: smail/src/vcard.php:109 smail/src/vcard.php:183
 msgid "Cellular Phone"
-msgstr ""
+msgstr "تلفن همراه"
 
-#: smail/src/vcard.php:110 smail/src/vcard.php:187
 msgid "Fax"
-msgstr ""
+msgstr "دورنگار"
 
-#: smail/src/vcard.php:111 smail/src/vcard.php:191
 msgid "Note"
-msgstr ""
+msgstr "یادداشت"
 
-#: smail/src/vcard.php:140 smail/src/vcard.php:203
 msgid "Add to Addressbook"
-msgstr ""
+msgstr "به دفترچه‌آدرس اضافه کن"
 
-#: smail/src/vcard.php:149
-msgid "Note Field Contains"
-msgstr ""
-
-#: smail/src/vcard.php:171
 msgid "Title & Org. / Dept."
-msgstr ""
+msgstr "عنوان و سمت."
 
-#: smail/functions/abook_database.php:50
-#: smail/functions/abook_local_file.php:37
-#: smail/functions/addressbook.php:155
+msgid "Add to Address Book"
+msgstr "به دفترچه‌آدرس اضافه کن"
+
+msgid "Viewing Full Header"
+msgstr "نمایش کامل سرآمد"
+
+msgid "Viewing a text attachment"
+msgstr "نمایش ضمیمه متنی"
+
 msgid "Personal address book"
 msgstr "دفترچه‌آدرس شخصی"
 
-#: smail/functions/abook_database.php:96
-#: smail/functions/abook_database.php:136
-#: smail/functions/abook_database.php:171
-#: smail/functions/abook_database.php:201
-#: smail/functions/abook_database.php:253
-#: smail/functions/abook_database.php:286
-#: smail/functions/abook_database.php:327
 #, c-format
 msgid "Database error: %s"
-msgstr ""
+msgstr "خطای ساختار اطلاعاتی: %s"
 
-#: smail/functions/abook_database.php:221
-#: smail/functions/abook_database.php:260
-#: smail/functions/abook_database.php:293
-#: smail/functions/abook_local_file.php:243
-#: smail/functions/abook_local_file.php:267
-#: smail/functions/abook_local_file.php:292
-#: smail/functions/abook_local_file.php:324
-#: smail/functions/addressbook.php:351
-#: smail/functions/addressbook.php:386
-#: smail/functions/addressbook.php:439
 msgid "Addressbook is read-only"
-msgstr ""
+msgstr "دفترچه‌آدرس غیر قابل ویرایش است"
 
-#: smail/functions/abook_database.php:231
-#: smail/functions/abook_local_file.php:248
 #, c-format
 msgid "User '%s' already exist"
-msgstr ""
+msgstr "کاربر '%s' وجود دارد"
 
-#: smail/functions/abook_database.php:303
-#: smail/functions/abook_local_file.php:330
 #, c-format
 msgid "User '%s' does not exist"
-msgstr ""
+msgstr "کاربر '%s' وجود ندارد"
 
-#: smail/functions/abook_global_file.php:35
 msgid "Global address book"
-msgstr ""
+msgstr "دفترچه‌آدرس همگانی"
 
-#: smail/functions/abook_global_file.php:56
-#: smail/functions/abook_local_file.php:83
 msgid "No such file or directory"
-msgstr ""
+msgstr "چنین فایل و یا دایرکتوری‌ای یافت نشد"
 
-#: smail/functions/abook_global_file.php:69
-#: smail/functions/abook_local_file.php:104
-#: smail/functions/abook_local_file.php:140
 msgid "Open failed"
-msgstr ""
+msgstr "ناتوان در خواندن"
 
-#: smail/functions/abook_global_file.php:171
-#: smail/functions/abook_global_file.php:177
-#: smail/functions/abook_global_file.php:183
+#, fuzzy
 msgid "Can not modify global address book"
-msgstr ""
+msgstr "دفترچه‌آدرس همگانی"
 
-#: smail/functions/abook_local_file.php:46
 msgid "Not a file name"
-msgstr ""
+msgstr "نام فایل نمی‌باشد"
 
-#: smail/functions/abook_local_file.php:272
-#: smail/functions/abook_local_file.php:298
-#: smail/functions/abook_local_file.php:337
+msgid "Write failed"
+msgstr "ناتوان در نوشتن"
+
+msgid "Unable to update"
+msgstr "ناتوان در بازنویسی"
+
 msgid "Could not lock datafile"
-msgstr ""
+msgstr "نمی‌توان فایل اطلاعات را قفل کرد"
 
-#: smail/functions/abook_local_file.php:285
 msgid "Write to addressbook failed"
-msgstr ""
+msgstr "ناتوان در نوشتن دفترچه‌آدرس"
 
-#: smail/functions/addressbook.php:73
 msgid "Error initializing addressbook database."
-msgstr ""
+msgstr "آماده‌سازی ساختار اطلاعاتی دفترچه‌آدرس با خطا مواجه شد."
 
-#: smail/functions/addressbook.php:82
 #, c-format
 msgid "Error opening file %s"
-msgstr ""
+msgstr "ناتوان در خواندن فایل %s"
 
-#: smail/functions/addressbook.php:92
 msgid "Error initializing global addressbook."
-msgstr ""
+msgstr "آماده‌سازی دفترچه‌آدرس با خطا مواجه شد."
 
-#: smail/functions/addressbook.php:108
 #, c-format
 msgid "Error initializing LDAP server %s:"
-msgstr ""
+msgstr "خطا در آماده‌سازی میزبان LDAP: %s"
 
-#: smail/functions/addressbook.php:329
-#: smail/functions/addressbook.php:416
 msgid "Invalid input data"
-msgstr ""
+msgstr "اطلاعات ورودی نادرست"
 
-#: smail/functions/addressbook.php:333
-#: smail/functions/addressbook.php:420
 msgid "Name is missing"
-msgstr ""
+msgstr "نام وارد نشده"
 
-#: smail/functions/addressbook.php:337
-#: smail/functions/addressbook.php:424
 msgid "E-mail address is missing"
-msgstr ""
+msgstr "پست الکترونیکی وارد نشده"
 
-#: smail/functions/addressbook.php:345
-#: smail/functions/addressbook.php:429
 msgid "Nickname contains illegal characters"
-msgstr ""
+msgstr "اسم مستعار حاوی کاراکترهای غیرمجاز است"
 
-#: smail/functions/attachment_common.php:107
-#: smail/functions/attachment_common.php:128
-#: smail/functions/attachment_common.php:143
-#: smail/functions/attachment_common.php:168
+#, fuzzy
 msgid "view"
 msgstr "نمایش"
 
-#: smail/functions/attachment_common.php:185
+#, fuzzy
 msgid "Business Card"
-msgstr ""
+msgstr "نمایش کارت کاری"
 
-#: smail/functions/date.php:91
-#: smail/plugins/calendar/calendar.php:68
 msgid "Sunday"
-msgstr "یکشنبه"
+msgstr "یک‌شنبه"
 
-#: smail/functions/date.php:94
-#: smail/plugins/calendar/calendar.php:69
 msgid "Monday"
 msgstr "دوشنبه"
 
-#: smail/functions/date.php:97
-#: smail/plugins/calendar/calendar.php:70
 msgid "Tuesday"
 msgstr "سه‌شنبه"
 
-#: smail/functions/date.php:100
-#: smail/plugins/calendar/calendar.php:71
 msgid "Wednesday"
 msgstr "چهارشنبه"
 
-#: smail/functions/date.php:103
-#: smail/plugins/calendar/calendar.php:72
 msgid "Thursday"
 msgstr "پنج‌شنبه"
 
-#: smail/functions/date.php:106
-#: smail/plugins/calendar/calendar.php:73
 msgid "Friday"
 msgstr "جمعه"
 
-#: smail/functions/date.php:109
-#: smail/plugins/calendar/calendar.php:74
 msgid "Saturday"
 msgstr "شنبه"
 
-#: smail/functions/date.php:120
+msgid "Sun"
+msgstr "۱ش"
+
+msgid "Mon"
+msgstr "۲ش"
+
+msgid "Tue"
+msgstr "۳ش"
+
+msgid "Wed"
+msgstr "۴ش"
+
+msgid "Thu"
+msgstr "۵ش"
+
+msgid "Fri"
+msgstr "جمعه"
+
+msgid "Sat"
+msgstr "شنبه"
+
 msgid "January"
 msgstr "ژانویه"
 
-#: smail/functions/date.php:123
 msgid "February"
 msgstr "فوریه"
 
-#: smail/functions/date.php:126
 msgid "March"
 msgstr "مارس"
 
-#: smail/functions/date.php:129
 msgid "April"
 msgstr "آوریل"
 
-#: smail/functions/date.php:132
 msgid "May"
 msgstr "می"
 
-#: smail/functions/date.php:135
 msgid "June"
 msgstr "ژوئن"
 
-#: smail/functions/date.php:138
 msgid "July"
-msgstr "جولای"
+msgstr "ژوئیه"
 
-#: smail/functions/date.php:141
 msgid "August"
-msgstr "آگوست"
+msgstr "اوت"
 
-#: smail/functions/date.php:144
 msgid "September"
 msgstr "سپتامبر"
 
-#: smail/functions/date.php:147
 msgid "October"
 msgstr "اکتبر"
 
-#: smail/functions/date.php:150
 msgid "November"
 msgstr "نوامبر"
 
-#: smail/functions/date.php:153
 msgid "December"
 msgstr "دسامبر"
 
-#: smail/functions/date.php:182
+msgid "Jan"
+msgstr "ژانویه"
+
+msgid "Feb"
+msgstr "فوریه"
+
+msgid "Mar"
+msgstr "مارس"
+
+msgid "Apr"
+msgstr "آوریل"
+
+msgid "Ma&#121;"
+msgstr "می"
+
+msgid "Jun"
+msgstr "ژوئن"
+
+msgid "Jul"
+msgstr "ژوئیه"
+
+msgid "Aug"
+msgstr "اوت"
+
+msgid "Sep"
+msgstr "سپتامبر"
+
+msgid "Oct"
+msgstr "اکتبر"
+
+msgid "Nov"
+msgstr "نوامبر"
+
+msgid "Dec"
+msgstr "دسامبر"
+
 msgid "D, F j, Y g:i a"
 msgstr ""
 
-#: smail/functions/date.php:184
 msgid "D, F j, Y G:i"
 msgstr ""
 
-#: smail/functions/date.php:206
-msgid "g:i a"
-msgstr ""
-
-#: smail/functions/date.php:208
-msgid "G:i"
-msgstr ""
-
-#: smail/functions/date.php:213
-msgid "D, g:i a"
-msgstr ""
-
-#: smail/functions/date.php:215
-msgid "D, G:i"
-msgstr ""
-
-#: smail/functions/date.php:219
 msgid "M j, Y"
 msgstr ""
 
-#: smail/functions/db_prefs.php:52
-#: smail/functions/db_prefs.php:59
-#: smail/functions/db_prefs.php:122
-#: smail/functions/db_prefs.php:125
-#: smail/functions/db_prefs.php:340
+msgid "g:i a"
+msgstr ""
+
+msgid "G:i"
+msgstr ""
+
+msgid "D, g:i a"
+msgstr ""
+
+msgid "D, G:i"
+msgstr ""
+
 #, c-format
 msgid "Preference database error (%s). Exiting abnormally"
 msgstr ""
 
-#: smail/functions/display_messages.php:73
-#: smail/functions/imap_general.php:226
 msgid "Unknown user or password incorrect."
-msgstr ""
+msgstr "کاربر وجود ندارد و یا کلمه عبور نادرست وارد گشته است."
 
-#: smail/functions/display_messages.php:75
+#, fuzzy
 msgid "Click here to try again"
-msgstr "برای آزمایش دوباره اینجا را کلیک کنید"
+msgstr "اینجا را برای ورود دوباره کلیک کنید."
 
-#: smail/functions/display_messages.php:96
 #, c-format
 msgid "Click here to return to %s"
-msgstr ""
+msgstr "اینجا را برای بازگشت به %s کلیک کنید"
 
-#: smail/functions/display_messages.php:179
 msgid "Go to the login page"
-msgstr ""
+msgstr "برو به صفحه ورود"
 
-#: smail/functions/file_prefs.php:37
 #, c-format
 msgid ""
 "Preference file, %s, does not exist. Log out, and log back in to create a "
 "default preference file."
 msgstr ""
+"فایل تنظیمات نما، %s، موجود نمی‌باشد. از سیستم خارج شده و دوباره وارد شوید تا "
+"این فایل با استفاده از مقادیر پیش‌فرض ساخته شود."
 
-#: smail/functions/file_prefs.php:43
-#: smail/functions/file_prefs.php:102
 #, c-format
 msgid ""
 "Preference file, %s, could not be opened. Contact your system administrator "
 "to resolve this issue."
 msgstr ""
 
-#: smail/functions/file_prefs.php:170
+#, c-format
+msgid ""
+"Preference file, %s, could not be written. Contact your system administrator "
+"to resolve this issue."
+msgstr ""
+
+#, c-format
+msgid ""
+"Preference file, %s, could not be copied from temporary file, %s. Contact "
+"your system administrator to resolve this issue."
+msgstr ""
+
 #, c-format
 msgid "Error opening %s"
-msgstr ""
+msgstr "خطا در خواندن %s"
 
-#: smail/functions/file_prefs.php:173
-msgid "Default preference file not found!"
-msgstr ""
+msgid "Default preference file not found or not readable!"
+msgstr "فایل تنظیمات نمای پیش‌فرض وجود ندارد و یا قابل خواندن نیست!"
 
-#: smail/functions/file_prefs.php:174
-#: smail/functions/file_prefs.php:187
-#: smail/functions/prefs.php:102
 msgid "Please contact your system administrator and report this error."
-msgstr ""
+msgstr "لطفاً با مدیر سیستم تماس بگیرید و مشکل را گزارش کنید."
 
-#: smail/functions/file_prefs.php:185
 msgid "Could not create initial preference file!"
-msgstr ""
+msgstr "فایل اولیه تنظیمات نما را نمی‌توانم بسازم!"
 
-#: smail/functions/file_prefs.php:186
 #, c-format
 msgid "%s should be writable by user %s"
-msgstr ""
+msgstr "%s باید برای کاربر %s قابل نوشتن باشد."
 
-#: smail/functions/file_prefs.php:203
-#: smail/functions/file_prefs.php:221
 #, c-format
 msgid ""
 "Signature file, %s, could not be opened. Contact your system administrator "
 "to resolve this issue."
 msgstr ""
+"فایل امضا، %s، قابل خواندن نمی‌باشد. لطفاً جهت رفع مشکل با مدیر سیستم تماس "
+"بگیرید."
 
-#: smail/functions/imap_general.php:115
-#: smail/functions/imap_messages.php:367
-#: smail/functions/imap_messages.php:375
-#: smail/functions/imap_messages.php:573
-#: smail/plugins/filters/filters.php:227
+#, c-format
+msgid ""
+"Signature file, %s, could not be written. Contact your system administrator "
+"to resolve this issue."
+msgstr ""
+"فایل امضا، %s، قابل نوشتن نمی‌باشد. لطفاً جهت رفع مشکل با مدیر سیستم تماس "
+"بگیرید."
+
+#, c-format
+msgid ""
+"Signature file, %s, could not be copied from temporary file, %s. Contact "
+"your system administrator to resolve this issue."
+msgstr ""
+"فایل امضا، %s، قابل تهیه از نسخه موقت، %s، نمی‌باشد. لطفاً جهت رفع مشکل با "
+"مدیر سیستم تماس بگیرید."
+
+msgid ""
+"You need to have php4 installed with the multibyte string function enabled "
+"(using configure option --enable-mbstring)."
+msgstr ""
+"می‌بایست php4 را با قابلیت رشته‌های چندبایتی نصب می‌کردید)از --enable-mbstring "
+"استفاده کنید(."
+
+msgid "ERROR : No available imapstream."
+msgstr "خطا: imapstream وجود ندارد."
+
+msgid "ERROR : Connection dropped by imap-server."
+msgstr ""
+
 msgid "ERROR : Could not complete request."
 msgstr ""
 
-#: smail/functions/imap_general.php:117
-#: smail/functions/imap_general.php:129
 msgid "Query:"
 msgstr ""
 
-#: smail/functions/imap_general.php:119
-#: smail/plugins/filters/filters.php:229
 msgid "Reason Given: "
 msgstr ""
 
-#: smail/functions/imap_general.php:127
-#: smail/plugins/filters/filters.php:236
 msgid "ERROR : Bad or malformed request."
 msgstr ""
 
-#: smail/functions/imap_general.php:131
-#: smail/plugins/filters/filters.php:238
 msgid "Server responded: "
 msgstr ""
 
-#: smail/functions/imap_general.php:185
+msgid "ERROR : Imap server closed the connection."
+msgstr ""
+
+msgid "ERROR : Unknown imap response."
+msgstr ""
+
 #, c-format
 msgid "Error connecting to IMAP server: %s."
 msgstr ""
 
-#: smail/functions/imap_general.php:201
 #, c-format
 msgid "Bad request: %s"
 msgstr ""
 
-#: smail/functions/imap_general.php:203
 #, c-format
 msgid "Unknown error: %s"
 msgstr ""
 
-#: smail/functions/imap_general.php:205
 msgid "Read data:"
-msgstr ""
+msgstr "اطلاعات خوانده‌شده:"
 
-#: smail/functions/imap_messages.php:369
-#: smail/functions/imap_messages.php:575
-msgid "Unknown response from IMAP server: "
-msgstr ""
+msgid "ERROR : Could not append message to"
+msgstr "خطا: نمی‌توان پیغام را اضافه کرد به"
 
-#: smail/functions/imap_messages.php:377
-msgid "Unknown message number in reply from server: "
-msgstr ""
+msgid "Solution: "
+msgstr "راه حل:"
 
-#: smail/functions/imap_messages.php:397
-#: smail/functions/imap_messages.php:498
-#: smail/functions/imap_messages.php:766
-#: smail/functions/imap_messages.php:830
-#: smail/functions/mailbox_display.php:1097
+msgid ""
+"Remove unneccessary messages from your folder and start with your Trash "
+"folder."
+msgstr "پیغام‌های غیر ضروری را از پوشه حذف کنید. از سطل آشغال شروع کنید."
+
 msgid "(no subject)"
-msgstr "(بی موضوع)"
+msgstr ")بدون موضوع("
 
-#: smail/functions/imap_messages.php:398
 msgid "Unknown Sender"
+msgstr "فرستنده ناشناس"
+
+msgid "Unknown response from IMAP server: "
+msgstr "جواب ناشناخته از میزبان IMAP:"
+
+msgid "The server couldn't find the message you requested."
+msgstr "میزبان نتوانست پیغام مورد درخواست شما را بیابد."
+
+msgid ""
+"Most probably your message list was out of date and the message has been "
+"moved away or deleted (perhaps by another program accessing the same "
+"mailbox)."
 msgstr ""
 
-#: smail/functions/imap_messages.php:521
-msgid "No To Address"
-msgstr ""
+msgid "Unknown date"
+msgstr "تاریخ نامعلوم"
 
-#: smail/functions/imap_messages.php:833
-msgid "(unknown sender)"
-msgstr ""
-
-#: smail/functions/imap_search.php:99
-msgid "No Messages Found"
-msgstr ""
-
-#: smail/functions/imap_search.php:207
-#: smail/functions/imap_search.php:215
-msgid "Found"
-msgstr ""
-
-#: smail/functions/imap_search.php:207
-#: smail/functions/imap_search.php:215
-msgid "messages"
-msgstr ""
-
-#: smail/functions/imap_search.php:222
-msgid "Folder:"
-msgstr ""
-
-#: smail/functions/mailbox_display.php:186
 msgid "A"
 msgstr ""
 
-#: smail/functions/mailbox_display.php:278
+msgid ""
+"Thread sorting is not supported by your IMAP server.<br>Please report this "
+"to the system administrator."
+msgstr ""
+
 msgid ""
 "Server-side sorting is not supported by your IMAP server.<br>Please report "
-"this to the system administrator"
+"this to the system administrator."
 msgstr ""
 
-#: smail/functions/mailbox_display.php:570
 msgid "THIS FOLDER IS EMPTY"
-msgstr ""
+msgstr "این پوشه خالی می‌باشد!"
 
-#: smail/functions/mailbox_display.php:663
-msgid "Move Selected To:"
-msgstr "جابه‌جایی منتخب به:"
+msgid "Move Selected To"
+msgstr "منتقل کن به"
 
-#: smail/functions/mailbox_display.php:666
 msgid "Transform Selected Messages"
-msgstr "تبدیل پیغام‌های منتخب:"
+msgstr "تغییر وضعیت پیغام‌های انتخاب شده"
 
-#: smail/functions/mailbox_display.php:691
-#: smail/plugins/delete_move_next/setup.php:258
-#: smail/plugins/delete_move_next/setup.php:282
 msgid "Move"
-msgstr "جابه‌جایی"
+msgstr "انتقال"
 
-#: smail/functions/mailbox_display.php:698
 msgid "Expunge"
 msgstr ""
 
-#: smail/functions/mailbox_display.php:699
 msgid "mailbox"
-msgstr ""
+msgstr "فضای پست الکترونیکی"
 
-#: smail/functions/mailbox_display.php:701
 msgid "Read"
 msgstr "خوانده‌شده"
 
-#: smail/functions/mailbox_display.php:702
 msgid "Unread"
 msgstr "خوانده‌نشده"
 
-#: smail/functions/mailbox_display.php:711
 msgid "Unthread View"
-msgstr ""
+msgstr "نمایش غیرریسمانی"
 
-#: smail/functions/mailbox_display.php:715
 msgid "Thread View"
-msgstr ""
+msgstr "نمایش ریسمانی"
 
-#: smail/functions/mailbox_display.php:830
 msgid "Toggle All"
-msgstr "انتخاب همه"
+msgstr "همه گزینه‌ها را برعکس کن"
 
-#: smail/functions/mailbox_display.php:854
 msgid "Unselect All"
-msgstr ""
+msgstr "انتخاب هیچ گزینه"
 
-#: smail/functions/mailbox_display.php:856
 msgid "Select All"
-msgstr ""
+msgstr "انتخاب تمام گزینه‌ها"
 
-#: smail/functions/mailbox_display.php:873
-#, c-format
+#, fuzzy, c-format
 msgid "Viewing Messages: <B>%s</B> to <B>%s</B> (%s total)"
-msgstr "پیغام‌های درحال نمایش : <B>%s</B> تا <B>%s</B> (مجموعاْ %sتا)"
+msgstr "نمایش پیغام‌های %s تا %s (از مجموع %s پیغام)"
 
-#: smail/functions/mailbox_display.php:876
-#, c-format
+#, fuzzy, c-format
 msgid "Viewing Message: <B>%s</B> (1 total)"
-msgstr "پیغام درحال نمایش : <B>%s</B>(مجموعاْ یکی)"
+msgstr "نمایش پیغام %s (از مجموع %s پیغام)"
 
-#: smail/functions/mailbox_display.php:1060
 msgid "Paginate"
-msgstr ""
+msgstr "صفحه‌بندی"
 
-#: smail/functions/mailbox_display.php:1067
 msgid "Show All"
-msgstr ""
+msgstr "نمایش همه"
 
-#: smail/functions/mime.php:425
-msgid "Error decoding mime structure.  Report this as a bug!"
-msgstr ""
+msgid "SquirrelMail could not decode the bodystructure of the message"
+msgstr "برنامه نتوانست ساختار پیغام را تشخیص دهد"
 
-#: smail/functions/mime.php:499
+msgid "the provided bodystructure by your imap-server"
+msgstr "ساختار ارائه شده توسط میزبان imap"
+
 msgid ""
 "Body retrieval error. The reason for this is most probably that the message "
-"is malformed. Please help us making future versions better by submitting "
-"this message to the developers knowledgebase!"
+"is malformed."
 msgstr ""
 
-#: smail/functions/mime.php:501
-msgid "Submit message"
-msgstr ""
-
-#: smail/functions/mime.php:503
 msgid "Command:"
-msgstr ""
+msgstr "دستور:"
 
-#: smail/functions/mime.php:504
 msgid "Response:"
-msgstr ""
+msgstr "پاسخ:"
 
-#: smail/functions/mime.php:505
-#: smail/plugins/calendar/event_create.php:174
-#: smail/plugins/calendar/event_delete.php:96
-#: smail/plugins/calendar/event_edit.php:190
-#: smail/plugins/calendar/event_edit.php:203
 msgid "Message:"
-msgstr ""
+msgstr "پیغام:"
 
-#: smail/functions/mime.php:506
 msgid "FETCH line:"
-msgstr ""
+msgstr "خط دریافت:"
 
-#: smail/functions/mime.php:796
 msgid "Hide Unsafe Images"
-msgstr ""
+msgstr "پنهان‌سازی تصاویر نا اَمن"
 
-#: smail/functions/mime.php:798
 msgid "View Unsafe Images"
-msgstr "نمایش تصاویر نامطمپن"
+msgstr "نمایش تصاویر نا اَمن"
 
-#: smail/functions/mime.php:827
-msgid "Attachments"
-msgstr ""
-
-#: smail/functions/mime.php:863 smail/functions/mime.php:941
+#, fuzzy
 msgid "download"
-msgstr ""
+msgstr "دریافت"
 
-#: smail/functions/mime.php:1670 smail/functions/mime.php:1989
 msgid "sec_remove_eng.png"
 msgstr ""
 
-#: smail/functions/options.php:169
+msgid "This external link will open in a new window"
+msgstr "این لینک خارج از سیستم در پنجره دیگری باز می‌گردد"
+
 #, c-format
 msgid "Option Type '%s' Not Found"
 msgstr ""
 
-#: smail/functions/options.php:264
-#: smail/plugins/administrator/options.php:364
-#: smail/plugins/calendar/event_delete.php:109
-#: smail/plugins/calendar/event_edit.php:223
-msgid "Yes"
-msgstr ""
-
-#: smail/functions/options.php:269
-#: smail/plugins/administrator/options.php:365
-#: smail/plugins/calendar/event_delete.php:116
-#: smail/plugins/calendar/event_edit.php:230
-msgid "No"
-msgstr ""
-
-#: smail/functions/page_header.php:214
 msgid "Current Folder"
 msgstr "پوشه فعلی"
 
-#: smail/functions/page_header.php:227
-#: smail/functions/page_header.php:230
-#: smail/functions/page_header.php:272
-#: smail/functions/page_header.php:299
 msgid "Compose"
-msgstr "پیغام جدید"
+msgstr "نوشتن پیغام"
 
-#: smail/functions/prefs.php:100
 #, c-format
 msgid "Error creating directory %s."
-msgstr ""
+msgstr "خطایی در ساخت دایرکتوری %s بوجود آمد."
 
-#: smail/functions/prefs.php:101
 msgid "Could not create hashed directory structure!"
 msgstr ""
 
-#: smail/plugins/filters/filters.php:557
+msgid "Service not available, closing channel"
+msgstr ""
+
+msgid "A password transition is needed"
+msgstr ""
+
+msgid "Requested mail action not taken: mailbox unavailable"
+msgstr ""
+
+msgid "Requested action aborted: error in processing"
+msgstr ""
+
+msgid "Requested action not taken: insufficient system storage"
+msgstr ""
+
+msgid "Temporary authentication failure"
+msgstr ""
+
+msgid "Syntax error; command not recognized"
+msgstr ""
+
+msgid "Syntax error in parameters or arguments"
+msgstr ""
+
+msgid "Command not implemented"
+msgstr ""
+
+msgid "Bad sequence of commands"
+msgstr ""
+
+msgid "Command parameter not implemented"
+msgstr ""
+
+msgid "Authentication required"
+msgstr ""
+
+msgid "Authentication mechanism is too weak"
+msgstr ""
+
+msgid "Authentication failed"
+msgstr ""
+
+msgid "Encryption required for requested authentication mechanism"
+msgstr ""
+
+msgid "Requested action not taken: mailbox unavailable"
+msgstr ""
+
+msgid "User not local; please try forwarding"
+msgstr ""
+
+msgid "Requested mail action aborted: exceeding storage allocation"
+msgstr ""
+
+msgid "Requested action not taken: mailbox name not allowed"
+msgstr ""
+
+msgid "Transaction failed"
+msgstr ""
+
+msgid "Unknown response"
+msgstr ""
+
+msgid "General Display Options"
+msgstr "تنظیمات عمومی نما"
+
+msgid "Theme"
+msgstr "رنگ‌بندی"
+
+msgid "Default"
+msgstr "پیش‌فرض"
+
+msgid "Custom Stylesheet"
+msgstr "سبک نمایش دلخواه"
+
+msgid "Language"
+msgstr "زبان"
+
+msgid "Use Javascript"
+msgstr "استفاده از Javascript"
+
+msgid "Autodetect"
+msgstr "تشخیص خودکار"
+
+msgid "Always"
+msgstr "همیشه"
+
+msgid "Never"
+msgstr "هیچ‌وقت"
+
+msgid "Mailbox Display Options"
+msgstr "تنظیمات نمای فضای پیغام‌ها"
+
+msgid "Number of Messages to Index"
+msgstr "تعداد پیغام‌هایی که در فهرست می‌آیند"
+
+msgid "Enable Alternating Row Colors"
+msgstr "رنگ‌آمیزی یکی‌درمیان سطرها"
+
+msgid "Enable Page Selector"
+msgstr "اجازه انتخاب صفحه"
+
+msgid "Maximum Number of Pages to Show"
+msgstr "حداکثر تعداد صفحات برای نمایش"
+
+msgid "Always Show Full Date"
+msgstr "همیشه تاریخ را به‌طور کامل نمایش بده"
+
+msgid "Message Display and Composition"
+msgstr "تنظیمات نمایش پیغام"
+
+msgid "Wrap Incoming Text At"
+msgstr "برش متن رسیده در"
+
+msgid "Width of Editor Window"
+msgstr "طول پنجره ویرایشگر"
+
+msgid "Height of Editor Window"
+msgstr "عرض پنجره ویرایشگر"
+
+msgid "Location of Buttons when Composing"
+msgstr "مکان دکمه‌ها در ویرایش پیغام جدید"
+
+msgid "Before headers"
+msgstr "قبل از سرآمد"
+
+msgid "Between headers and message body"
+msgstr "بین سرآمد و متن پیغام"
+
+msgid "After message body"
+msgstr "پس از متن پیغام"
+
+msgid "Addressbook Display Format"
+msgstr "نحوه نمایش دفترچه‌آدرس"
+
+msgid "Javascript"
+msgstr ""
+
+msgid "HTML"
+msgstr ""
+
+msgid "Show HTML Version by Default"
+msgstr "نمایش نسخه HTML به طور پیش‌فرض"
+
+msgid "Enable Forward as Attachment"
+msgstr "امکان فرستادن پیغام رسیده به‌عنوان ضمیمه یک پیغام جدید"
+
+msgid "Include CCs when Forwarding Messages"
+msgstr "آوردن اسامی رونوشت‌ها در پیغام جدید"
+
+msgid "Include Me in CC when I Reply All"
+msgstr "آوردن من در لیست رونوشت‌ها در هنگام پاسخ به همه"
+
+msgid "Enable Mailer Display"
+msgstr "نمایش اسم نامه‌رسان پیغام"
+
+msgid "Display Attached Images with Message"
+msgstr "نمایش تصاویر ضمیمه‌شده به پیغام"
+
+msgid "Enable Printer Friendly Clean Display"
+msgstr "فعال‌سازی نمایش نسخه مناسب چاپ"
+
+msgid "Enable Mail Delivery Notification"
+msgstr "فعال‌سازی اعلام جابه‌جایی پیغام"
+
+msgid "Compose Messages in New Window"
+msgstr "نوشتن پیغام در پنجره جدید"
+
+msgid "Width of Compose Window"
+msgstr "طول پنجره پیغام جدید"
+
+msgid "Height of Compose Window"
+msgstr "عرض پنجره پیغام جدید"
+
+msgid "Append Signature before Reply/Forward Text"
+msgstr "اضافه کردن امضا قبل از متن جوابیه/قدیم"
+
+msgid "Cursor Position when Replying"
+msgstr "مکان کٍرسِر هنگام جواب دادن پیغام"
+
+msgid "To: field"
+msgstr "فیلد «به»"
+
+msgid "Focus in body"
+msgstr "متن پیغام"
+
+msgid "Select body"
+msgstr "انتخاب متن"
+
+#, fuzzy
+msgid "Enable Sort by of Receive Date"
+msgstr "ترتیب نامه‌های بر اساس زمان رسیدن باشد"
+
+msgid "Enable Thread Sort by References Header"
+msgstr "فعال‌سازی ترتیب ریسمانی با سرآمد منابع"
+
+msgid "Special Folder Options"
+msgstr "تنظیمات خاص پوشه"
+
+msgid "Folder Path"
+msgstr "مسیر پوشه"
+
+msgid "Do not use Trash"
+msgstr "از سطل آشغال استفاده نکن"
+
+msgid "Trash Folder"
+msgstr "پوشه سطل آشغال"
+
+msgid "Do not use Sent"
+msgstr "از فرستاده‌شده‌ها استفاده نکن"
+
+msgid "Sent Folder"
+msgstr "پوشه فرستاده‌شده‌ها "
+
+msgid "Do not use Drafts"
+msgstr "از پیش‌نویس استفاده نکن"
+
+msgid "Draft Folder"
+msgstr "پوشه پیش‌نویس"
+
+msgid "Folder List Options"
+msgstr "تنظیمات لیست پوشه‌ها"
+
+msgid "Location of Folder List"
+msgstr "مکان لیست پوشه‌ها"
+
+# Left & Right are translated in place of each other because of right to left special problems !
+msgid "Left"
+msgstr "راست"
+
+msgid "Right"
+msgstr "چپ"
+
+msgid "pixels"
+msgstr "پیکسل"
+
+msgid "Width of Folder List"
+msgstr "طول لیست پوشه‌ها"
+
+msgid "Minutes"
+msgstr "دقیقه"
+
+msgid "Seconds"
+msgstr "ثانیه"
+
+msgid "Minute"
+msgstr "دقیقه"
+
+msgid "Auto Refresh Folder List"
+msgstr "به‌روزرسانی خودکار لیست پوشه‌ها"
+
+msgid "Enable Unread Message Notification"
+msgstr "فعال‌سازی اعلام وجود پیغام نخوانده"
+
+msgid "No Notification"
+msgstr "اعلام نشود"
+
+msgid "Only INBOX"
+msgstr "فقط برای رسیده‌ها"
+
+msgid "Unread Message Notification Type"
+msgstr "نوع اعلام پیغام‌های نخوانده"
+
+msgid "Only Unseen"
+msgstr "فقط دیده‌نشده‌ها"
+
+msgid "Unseen and Total"
+msgstr "دیده‌نشده‌ها و مجموع"
+
+#, fuzzy
+msgid "Enable Collapsible Folders"
+msgstr "فعال‌سازیی پوشه‌های جمع‌شو"
+
+msgid "Enable Cumulative Unread Message Notification"
+msgstr "فعال‌سازی اعلام پیغام‌های نخوانده جمعی"
+
+msgid "Show Clock on Folders Panel"
+msgstr "نمایش ساعت در صفحه لیست پوشه‌ها"
+
+msgid "International date and time"
+msgstr "تاریخ و ساعت بین‌المللی"
+
+msgid "American date and time"
+msgstr "زمان و تاریخ آمریکایی"
+
+msgid "European date and time"
+msgstr "زمان و تاریخ اروپایی"
+
+msgid "Show weekday and time"
+msgstr "نمایش روز هفته و ساعت"
+
+msgid "Show time with seconds"
+msgstr "نمایش ساعت با ثانیه‌شمار"
+
+msgid "Show time"
+msgstr "نمایش ساعت"
+
+msgid "No Clock"
+msgstr "بدون ساعت"
+
+msgid "Hour Format"
+msgstr "فرمت ساعت"
+
+msgid "12-hour clock"
+msgstr "دوازده ساعته"
+
+msgid "24-hour clock"
+msgstr "بیست و چهار ساعته"
+
+msgid "Memory Search"
+msgstr "جستجوی حافظه"
+
+msgid "Disabled"
+msgstr "غیر فعال"
+
+msgid "Folder Selection Options"
+msgstr "تنظیمات انتخاب پوشه"
+
+msgid "Selection List Style"
+msgstr "سبک لیست انتخاب"
+
+msgid "Long: "
+msgstr "بلند:"
+
+msgid "Indented: "
+msgstr "تو در تو:"
+
+msgid "Delimited: "
+msgstr "محدود:"
+
+msgid "Name and Address Options"
+msgstr "تنظیمات نام و آدرس"
+
+msgid "Email Address"
+msgstr "آدرس پست الکترونیکی"
+
+msgid "Edit Advanced Identities"
+msgstr "ویرایش مشخصات (پیشرفته)"
+
+msgid "(discards changes made on this form so far)"
+msgstr "(چنانچه کلیک کنید، تغییراتی که هم‌اکنون انجام داده‌اید از بین می‌رود)"
+
+msgid "Multiple Identities"
+msgstr "چند شناسه‌ای"
+
+msgid "Same as server"
+msgstr "همانند میزبان"
+
+msgid "Error opening timezone config, contact administrator."
+msgstr "خطا در خواندن تنظیمات زمانی‌مکانی، با مدیر تماس بگیرید."
+
+msgid "Timezone Options"
+msgstr "تنظیمات زمانی‌مکانی"
+
+msgid "Your current timezone"
+msgstr "منطقه زمانی فعلی"
+
+msgid "Reply Citation Options"
+msgstr "تنظیمات نقل پیغام در جوابیه"
+
+msgid "Reply Citation Style"
+msgstr "سبک نقل پیغام در جوابیه"
+
+msgid "No Citation"
+msgstr "بدون نقل"
+
+msgid "AUTHOR Said"
+msgstr "«فرستنده» گفت"
+
+msgid "Quote Who XML"
+msgstr "نقل XMLای"
+
+msgid "On DATE, AUTHOR Said"
+msgstr "در «تاریخ»، «فرستنده» گفت"
+
+msgid "User-Defined"
+msgstr "تعریف کاربر"
+
+msgid "User-Defined Citation Start"
+msgstr "شروع&nbsp;نقل&nbsp;پیغام&nbsp;در&nbsp;تعریف&nbsp;کاربر"
+
+msgid "User-Defined Citation End"
+msgstr "پایان&nbsp;نقل&nbsp;پیغام&nbsp;در&nbsp;تعریف&nbsp;کاربر"
+
+msgid "Signature Options"
+msgstr "تنظیمات امضاء"
+
+msgid "Use Signature"
+msgstr "استفاده از امضاء"
+
+msgid "Prefix Signature with '-- ' Line"
+msgstr "خط قبل امضاء (--)"
+
+msgid "Take Address"
+msgstr ""
+
+msgid "Address Book Take:"
+msgstr ""
+
+msgid "Try to verify addresses"
+msgstr ""
+
+msgid "Config File Version"
+msgstr ""
+
+#, fuzzy
+msgid "Squirrelmail Version"
+msgstr "SquirrelMail نسخه %s"
+
+msgid "PHP Version"
+msgstr ""
+
+msgid "Organization Preferences"
+msgstr ""
+
+msgid "Organization Name"
+msgstr ""
+
+msgid "Organization Logo"
+msgstr ""
+
+msgid "Organization Logo Width"
+msgstr ""
+
+msgid "Organization Logo Height"
+msgstr ""
+
+msgid "Organization Title"
+msgstr ""
+
+msgid "Signout Page"
+msgstr ""
+
+msgid "Provider Link URI"
+msgstr ""
+
+msgid "Provider Name"
+msgstr ""
+
+msgid "Default Language"
+msgstr "زبان پیش‌فرض"
+
+msgid "Top Frame"
+msgstr ""
+
+msgid "Server Settings"
+msgstr ""
+
+msgid "Mail Domain"
+msgstr ""
+
+msgid "IMAP Server Address"
+msgstr ""
+
+msgid "IMAP Server Port"
+msgstr ""
+
+msgid "IMAP Server Type"
+msgstr ""
+
+msgid "Cyrus IMAP server"
+msgstr ""
+
+msgid "University of Washington's IMAP server"
+msgstr ""
+
+msgid "Microsoft Exchange IMAP server"
+msgstr ""
+
+msgid "Courier IMAP server"
+msgstr ""
+
+msgid "Not one of the above servers"
+msgstr ""
+
+msgid "IMAP Folder Delimiter"
+msgstr ""
+
+msgid "Use \"detect\" to auto-detect."
+msgstr ""
+
+msgid "Use TLS for IMAP Connections"
+msgstr ""
+
+msgid "Requires PHP 4.3.x! Experimental."
+msgstr ""
+
+msgid "IMAP Authentication Type"
+msgstr ""
+
+msgid "Use Sendmail Binary"
+msgstr ""
+
+msgid "Sendmail Path"
+msgstr ""
+
+msgid "SMTP Server Address"
+msgstr ""
+
+msgid "SMTP Server Port"
+msgstr ""
+
+msgid "Use TLS for SMTP Connections"
+msgstr ""
+
+msgid "SMTP Authentication Type"
+msgstr ""
+
+msgid "POP3 Before SMTP?"
+msgstr ""
+
+msgid "Invert Time"
+msgstr ""
+
+msgid "Folders Defaults"
+msgstr ""
+
+msgid "Default Folder Prefix"
+msgstr ""
+
+msgid "Show Folder Prefix Option"
+msgstr ""
+
+msgid "By default, move to trash"
+msgstr "به طور پیش‌فرض به سطل آشغال منتقل کن"
+
+msgid "By default, move to sent"
+msgstr "به طور پیش‌فرض به فرستاده‌شده‌ها منتقل کن"
+
+msgid "By default, save as draft"
+msgstr ""
+
+msgid "List Special Folders First"
+msgstr ""
+
+msgid "Show Special Folders Color"
+msgstr ""
+
+msgid "Auto Expunge"
+msgstr ""
+
+msgid "Default Sub. of INBOX"
+msgstr ""
+
+msgid "Show 'Contain Sub.' Option"
+msgstr ""
+
+msgid "Default Unseen Notify"
+msgstr ""
+
+msgid "Default Unseen Type"
+msgstr ""
+
+msgid "Auto Create Special Folders"
+msgstr ""
+
+msgid "Default Javascript Addressbook"
+msgstr ""
+
+msgid "Auto delete folders"
+msgstr ""
+
+msgid "Enable /NoSelect folder fix"
+msgstr ""
+
+msgid "General Options"
+msgstr ""
+
+msgid "Default Charset"
+msgstr ""
+
+msgid "Data Directory"
+msgstr ""
+
+msgid "Temp Directory"
+msgstr ""
+
+msgid "Hash Level"
+msgstr ""
+
+msgid "Hash Disabled"
+msgstr ""
+
+msgid "Moderate"
+msgstr ""
+
+msgid "Medium"
+msgstr ""
+
+msgid "Default Left Size"
+msgstr ""
+
+msgid "Usernames in Lowercase"
+msgstr ""
+
+msgid "Allow use of priority"
+msgstr ""
+
+msgid "Hide SM attributions"
+msgstr ""
+
+msgid "Enable use of delivery receipts"
+msgstr ""
+
+msgid "Allow editing of identities"
+msgstr ""
+
+msgid "Allow editing of full name"
+msgstr ""
+
+msgid "Use server-side sorting"
+msgstr ""
+
+msgid "Use server-side thread sorting"
+msgstr ""
+
+msgid "Allow server charset search"
+msgstr ""
+
+msgid "UID support"
+msgstr ""
+
+msgid "PHP session name"
+msgstr ""
+
+msgid "Message of the Day"
+msgstr ""
+
+msgid "Database"
+msgstr ""
+
+msgid "Address book DSN"
+msgstr ""
+
+msgid "Address book table"
+msgstr ""
+
+msgid "Preferences DSN"
+msgstr ""
+
+msgid "Preferences table"
+msgstr ""
+
+msgid "Preferences username field"
+msgstr ""
+
+msgid "Preferences key field"
+msgstr ""
+
+msgid "Preferences value field"
+msgstr ""
+
+msgid "Themes"
+msgstr "رنگ‌بندی‌ها"
+
+msgid "Style Sheet URL (css)"
+msgstr ""
+
+msgid "Default theme"
+msgstr "رنگ‌بندی پیش‌فرض"
+
+msgid "Use index number of theme"
+msgstr ""
+
+msgid "Configuration Administrator"
+msgstr ""
+
+msgid "Theme Name"
+msgstr ""
+
+msgid "Theme Path"
+msgstr ""
+
+msgid "Plugins"
+msgstr "متصل‌شونده‌ها"
+
+msgid "Change Settings"
+msgstr ""
+
+msgid "Config file can't be opened. Please check config.php."
+msgstr ""
+
+msgid "Administration"
+msgstr ""
+
+msgid ""
+"This module allows administrators to manage SquirrelMail main configuration "
+"remotely."
+msgstr ""
+
+msgid "Submit a Bug Report"
+msgstr ""
+
+msgid ""
+"Before you send your bug report, please make sure to check this checklist "
+"for any common problems."
+msgstr ""
+
+#, fuzzy
+msgid ""
+"Make sure that you are running the most recent copy of <a href=\"http://www."
+"squirrelmail.org/\">SquirrelMail</a>."
+msgstr ""
+"مطمئن شوید که از جدیدترین نسخه %s استفاده میکنید. شما دارید از نسخه %s "
+"استفاده می‌کنید."
+
+#, fuzzy, c-format
+msgid "You are currently using version %s."
+msgstr "منطقه زمانی فعلی"
+
+#, fuzzy
+msgid ""
+"Check to see if your bug is already listed in the <a href=\"http://"
+"sourceforge.net/bugs/?group_id=311\">Bug List</a> on SourceForge. If it is, "
+"we already know about it and are trying to fix it."
+msgstr ""
+" برای رفع مشکل خود %sلیست مشکلات%s را نگاه کنید. چنانچه در لیست موجود بود, "
+"ما از بروز این مشکل آگاهی داریم و در پی برطرف کردن آنیم."
+
+msgid ""
+"Try to make sure that you can repeat it. If the bug happens sporatically, "
+"try to document what you did when it happened. If it always occurs when you "
+"view a specific message, keep that message around so maybe we can see it."
+msgstr ""
+
+msgid ""
+"If there were warnings displayed above, try to resolve them yourself. Read "
+"the guides in the <tt>doc/</tt> directory where SquirrelMail was installed."
+msgstr ""
+
+msgid ""
+"Pressing the button below will start a mail message to the developers of "
+"SquirrelMail that will contain a lot of information about your system, your "
+"browser, how SquirrelMail is set up, and your IMAP server. It will also "
+"prompt you for information. Just fill out the sections at the top. If you "
+"like, you can scroll down in the message to see what else is being sent."
+msgstr ""
+
+msgid ""
+"Please make sure to fill out as much information as you possibly can to give "
+"everyone a good chance of finding and removing the bug. Submitting your bug "
+"like this will not have it automatically added to the bug list on "
+"SourceForge, but someone who gets your message may add it for you."
+msgstr ""
+"مطمئن شوید که هر اطلاعاتی را که داشته اید نوشته اید. در این صورت شما این "
+"شانس را به بقیه داده اید که مشکلاتشان را راحت‌تر پیدا و حل کنند. با فرستادن "
+"این مشکل، آن را در لیست مشکلات قرار نمی‌دهید. بلکه کسی که پیغام شما را دریافت "
+"می‌کند، ممکن است آن را برای شما اضافه کند."
+
+msgid "This bug involves"
+msgstr "این مشکل شامل"
+
+msgid "the general program"
+msgstr "کلیت برنامه"
+
+msgid "a specific plugin"
+msgstr "یکی از متصل‌شونده‌ها"
+
+msgid "Start Bug Report Form"
+msgstr "نمایش فرم گزارش مشکلات"
+
+msgid "Bug"
+msgstr "مشکل"
+
+msgid "Bug Reports:"
+msgstr "گزارش‌های مشکلات:"
+
+msgid "Show button in toolbar"
+msgstr "نمایش دکمه در نوار ابزار"
+
+#, c-format
+msgid "Could not write calendar file %s"
+msgstr ""
+
+msgid "TODAY"
+msgstr "امروز"
+
+msgid "Go"
+msgstr "برو"
+
+msgid "l, F j Y"
+msgstr ""
+
+msgid "ADD"
+msgstr "بیافزا"
+
+msgid "EDIT"
+msgstr "تغییر"
+
+msgid "DEL"
+msgstr "حذف"
+
+msgid "Start time:"
+msgstr "زمان شروع:"
+
+msgid "Length:"
+msgstr "طول:"
+
+msgid "Priority:"
+msgstr "اولویت:"
+
+msgid "Title:"
+msgstr "موضوع:"
+
+msgid "Set Event"
+msgstr "رویداد را تنظیم کن"
+
+msgid "Event Has been added!"
+msgstr "رویداد اضافه گشت!"
+
+msgid "Date:"
+msgstr "تاریخ:"
+
+msgid "Time:"
+msgstr "زمان:"
+
+msgid "Day View"
+msgstr "چشم‌انداز روز"
+
+msgid "Do you really want to delete this event?"
+msgstr "آیا واقعاً می خواهید این رویداد را پاک کنید؟"
+
+msgid "Event deleted!"
+msgstr "رویداد پاک شد!"
+
+msgid "Nothing to delete!"
+msgstr "چیزی برای پاک کردن وجود ندارد!"
+
+msgid "Update Event"
+msgstr "رویداد را به روز کن"
+
+msgid "Do you really want to change this event from:"
+msgstr "آیا شما واقعاٌ می خواهید رویداد را تغییر دهید؟"
+
+msgid "to:"
+msgstr "به:"
+
+msgid "Event updated!"
+msgstr "رویداد به روز شد"
+
+msgid "Month View"
+msgstr "چشم‌انداز ماه"
+
+msgid "0 min."
+msgstr "۰ دقیقه"
+
+msgid "15 min."
+msgstr "۱۵ دقیقه"
+
+msgid "30 min."
+msgstr "۳۰ دقیقه"
+
+msgid "45 min."
+msgstr "۴۵ دقیقه"
+
+msgid "1 hr."
+msgstr "۱ ساعت"
+
+msgid "1.5 hr."
+msgstr "۱.۵ ساعت"
+
+msgid "2 hr."
+msgstr "۲ ساعت"
+
+msgid "2.5 hr."
+msgstr "۲.۵ ساعت"
+
+msgid "3 hr."
+msgstr "۳ ساعت"
+
+msgid "3.5 hr."
+msgstr "۳.۵ ساعت"
+
+msgid "4 hr."
+msgstr "۴ ساعت"
+
+msgid "5 hr."
+msgstr "۵ ساعت"
+
+msgid "6 hr."
+msgstr "۶ ساعت"
+
+msgid "Calendar"
+msgstr "تقویم"
+
+msgid "Delete & Prev"
+msgstr "حذف و برگشت به قبلی"
+
+msgid "Delete & Next"
+msgstr "حذف و رفتن به بعدی"
+
+msgid "Move to:"
+msgstr "منتقل کن به:"
+
+msgid "Delete/Move/Next Buttons:"
+msgstr "دکمه‌های حذف/انتقال/بعدی:"
+
+msgid "Display at top"
+msgstr "بالا نمایششان بده"
+
+msgid "with move option"
+msgstr "با امکان جابه‌جایی"
+
+msgid "Display at bottom"
+msgstr "پایین نمایششان بده"
+
 msgid ""
 "COMMERCIAL - This list contains servers that are verified spam senders. It "
 "is a pretty reliable list to scan spam from."
 msgstr ""
 
-#: smail/plugins/filters/filters.php:565
 msgid ""
 "COMMERCIAL - Servers that are configured (or misconfigured) to allow spam to "
 "be relayed through their system will be banned with this.  Another good one "
 "to use."
 msgstr ""
 
-#: smail/plugins/filters/filters.php:573
 msgid ""
 "COMMERCIAL - Dial-up users are often filtered out since they should use "
 "their ISP's mail servers to send mail.  Spammers typically get a dial-up "
 "account and send spam directly from there."
 msgstr ""
 
-#: smail/plugins/filters/filters.php:581
 msgid "COMMERCIAL - RBL+ Blackhole entries."
 msgstr ""
 
-#: smail/plugins/filters/filters.php:589
 msgid "COMMERCIAL - RBL+ OpenRelay entries."
 msgstr ""
 
-#: smail/plugins/filters/filters.php:597
 msgid "COMMERCIAL - RBL+ Dial-up entries."
 msgstr ""
 
-#: smail/plugins/filters/filters.php:606
-msgid ""
-"FREE - Osirusoft Relays - Osirusofts list of verified open relays. Seems to "
-"include servers used by abuse@uunet.net auto-replies too."
-msgstr ""
-
-#: smail/plugins/filters/filters.php:614
-msgid "FREE - Osirusoft Dialups - Osirusofts Dialup Spam Source list."
-msgstr ""
-
-#: smail/plugins/filters/filters.php:622
-msgid ""
-"FREE - Osirusoft Confirmed Spam Source - Sites that continually spam and "
-"have been manually added after multiple nominations. Use with caution. Seems "
-"to catch abuse auto-replies from some ISPs."
-msgstr ""
-
-#: smail/plugins/filters/filters.php:630
-msgid ""
-"FREE - Osirusoft Smart Hosts - List of hosts that are secure but relay for "
-"other mail servers that are not secure."
-msgstr ""
-
-#: smail/plugins/filters/filters.php:638
-msgid ""
-"FREE - Osirusoft Spamware Developers - It is believed that these are IP "
-"ranges of companies that are known to produce spam software. Seems to catch "
-"abuse auto-replies from some ISPs."
-msgstr ""
-
-#: smail/plugins/filters/filters.php:646
-msgid ""
-"FREE - Osirusoft Unconfirmed OptIn Servers - List of listservers that opt "
-"users in without confirmation."
-msgstr ""
-
-#: smail/plugins/filters/filters.php:654
-msgid ""
-"FREE - Osirusoft Insecure formmail.cgi scripts - List of insecure formmail."
-"cgi scripts. (planned)."
-msgstr ""
-
-#: smail/plugins/filters/filters.php:662
-msgid "FREE - Osirusoft Open Proxy Servers - List of Open Proxy Servers."
-msgstr ""
-
-#: smail/plugins/filters/filters.php:670
 msgid ""
 "FREE - ORDB was born when ORBS went off the air. It seems to have fewer "
 "false positives than ORBS did though."
 msgstr ""
 
-#: smail/plugins/filters/filters.php:678
 msgid "FREE - Five-Ten-sg.com - Direct SPAM sources."
 msgstr ""
 
-#: smail/plugins/filters/filters.php:686
 msgid "FREE - Five-Ten-sg.com - Dial-up lists - includes some DSL IPs."
 msgstr ""
 
-#: smail/plugins/filters/filters.php:694
 msgid "FREE - Five-Ten-sg.com - Bulk mailers that do not use confirmed opt-in."
 msgstr ""
 
-#: smail/plugins/filters/filters.php:702
 msgid "FREE - Five-Ten-sg.com - Other misc. servers."
 msgstr ""
 
-#: smail/plugins/filters/filters.php:710
 msgid "FREE - Five-Ten-sg.com - Single Stage servers."
 msgstr ""
 
-#: smail/plugins/filters/filters.php:718
 msgid "FREE - Five-Ten-sg.com - SPAM Support servers."
 msgstr ""
 
-#: smail/plugins/filters/filters.php:726
 msgid "FREE - Five-Ten-sg.com - Web Form IPs."
 msgstr ""
 
-#: smail/plugins/filters/filters.php:734
 msgid ""
 "FREE - Dorkslayers appears to include only really bad open relays outside "
 "the US to avoid being sued. Interestingly enough, their website recommends "
 "you NOT use their service."
 msgstr ""
 
-#: smail/plugins/filters/filters.php:742
 msgid "FREE - SPAMhaus - A list of well-known SPAM sources."
 msgstr ""
 
-#: smail/plugins/filters/filters.php:750
-#, c-format
 msgid ""
 "FREE, for now - SPAMCOP - An interesting solution that lists servers that "
-"have a very high spam to legit email ratio (85% or more)."
+"have a very high spam to legit email ratio (85 percent or more)."
 msgstr ""
 
-#: smail/plugins/filters/filters.php:758
 msgid "FREE - dev.null.dk - I don't have any detailed info on this list."
 msgstr ""
 
-#: smail/plugins/filters/filters.php:766
 msgid "FREE - visi.com - Relay Stop List. Very conservative OpenRelay List."
 msgstr ""
 
-#: smail/plugins/filters/filters.php:774
-msgid "FREE - 2mbit.com Open Relays - Another list of Open Relays."
+msgid "FREE - ahbl.org Open Relays - Another list of Open Relays."
 msgstr ""
 
-#: smail/plugins/filters/filters.php:782
-msgid "FREE - 2mbit.com SPAM Source - List of Direct SPAM Sources."
+msgid "FREE - ahbl.org SPAM Source - List of Direct SPAM Sources."
 msgstr ""
 
-#: smail/plugins/filters/filters.php:790
-msgid "FREE - 2mbit.com SPAM ISPs - List of SPAM-friendly ISPs."
+msgid "FREE - ahbl.org SPAM ISPs - List of SPAM-friendly ISPs."
 msgstr ""
 
-#: smail/plugins/filters/filters.php:798
 msgid ""
 "FREE - Leadmon DUL - Another list of Dial-up or otherwise dynamically "
 "assigned IPs."
 msgstr ""
 
-#: smail/plugins/filters/filters.php:806
 msgid ""
 "FREE - Leadmon SPAM Source - List of IPs Leadmon.net has received SPAM "
 "directly from."
 msgstr ""
 
-#: smail/plugins/filters/filters.php:814
 msgid ""
 "FREE - Leadmon Bulk Mailers - Bulk mailers that do not require confirmed opt-"
 "in or that have allowed known spammers to become clients and abuse their "
 "services."
 msgstr ""
 
-#: smail/plugins/filters/filters.php:822
 msgid ""
 "FREE - Leadmon Open Relays - Single Stage Open Relays that are not listed on "
 "other active RBLs."
 msgstr ""
 
-#: smail/plugins/filters/filters.php:830
 msgid ""
 "FREE - Leadmon Multi-stage - Multi-Stage Open Relays that are not listed on "
 "other active RBLs and that have sent SPAM to Leadmon.net."
 msgstr ""
 
-#: smail/plugins/filters/filters.php:838
 msgid ""
 "FREE - Leadmon SpamBlock - Sites on this listing have sent Leadmon.net "
 "direct SPAM from IPs in netblocks where the entire block has no DNS "
@@ -2276,108 +2328,84 @@ msgid ""
 "Leadmon.net."
 msgstr ""
 
-#: smail/plugins/filters/filters.php:846
 msgid ""
 "FREE, for now - Not Just Another Blacklist - Both Open Relays and Direct "
 "SPAM Sources."
 msgstr ""
 
-#: smail/plugins/filters/filters.php:854
 msgid "FREE, for now - Not Just Another Blacklist - Dial-up IPs."
 msgstr ""
 
-#: smail/plugins/filters/options.php:85
+msgid "FREE - Distributed Sender Boycott List - Confirmed Relays"
+msgstr ""
+
+msgid "FREE - Distributed Sender Boycott List - Confirmed Multi-stage Relays"
+msgstr ""
+
+msgid "FREE - Distributed Sender Boycott List - UN-Confirmed Relays"
+msgstr ""
+
 msgid "Saved Scan type"
-msgstr ""
+msgstr "نوع پویش ذخیره گشت"
 
-#: smail/plugins/filters/options.php:94
 msgid "Message Filtering"
-msgstr ""
+msgstr "تنظیمات صافی پیغام‌ها"
 
-#: smail/plugins/filters/options.php:101
-#: smail/plugins/filters/spamoptions.php:114
 msgid "What to Scan:"
-msgstr ""
+msgstr "چه چیزهایی پویش شوند:"
 
-#: smail/plugins/filters/options.php:107
-#: smail/plugins/filters/spamoptions.php:120
 msgid "All messages"
-msgstr ""
+msgstr "همه پیغام‌ها"
 
-#: smail/plugins/filters/options.php:112
-#: smail/plugins/filters/spamoptions.php:125
 msgid "Only unread messages"
-msgstr ""
+msgstr "فقط نخوانده‌ها"
 
-#: smail/plugins/filters/options.php:115
-#: smail/plugins/filters/spamoptions.php:158
 msgid "Save"
-msgstr ""
+msgstr "ذخیره شود"
 
-#: smail/plugins/filters/options.php:137
 msgid "Match:"
-msgstr ""
+msgstr "مورد تطبیق:"
 
-#: smail/plugins/filters/options.php:159
 msgid "Header"
-msgstr ""
+msgstr "سرآمد"
 
-#: smail/plugins/filters/options.php:166
 msgid "Contains:"
-msgstr ""
+msgstr "شامل باشه:"
 
-#: smail/plugins/delete_move_next/setup.php:254
-#: smail/plugins/delete_move_next/setup.php:278
-#: smail/plugins/filters/options.php:178
-msgid "Move to:"
-msgstr "جابه‌جایی به:"
-
-#: smail/plugins/filters/options.php:220
-msgid "Down"
-msgstr ""
-
-#: smail/plugins/filters/options.php:226
-msgid "Up"
-msgstr ""
-
-#: smail/plugins/filters/options.php:229
-#, c-format
+#, fuzzy, c-format
 msgid "If <b>%s</b> contains <b>%s</b> then move to <b>%s</b>"
-msgstr ""
+msgstr "اگز %s شامل %s باشه، آنگاه به %s منتقلش کن"
 
-#: smail/plugins/filters/setup.php:137
 msgid "Message Filters"
-msgstr ""
+msgstr "صافی‌های پیغام‌ها"
 
-#: smail/plugins/filters/setup.php:139
 msgid ""
 "Filtering enables messages with different criteria to be automatically "
 "filtered into different folders for easier organization."
 msgstr ""
+"صافی پیغام‌ها این امکان را به شما می‌دهد تا پیغام‌هایتان را براساس معیار‌هایی به "
+"طور خودکار دسته‌بندی نمایید تا سازمان‌دهی آنها راحت‌تر باشد."
 
-#: smail/plugins/filters/setup.php:145
 msgid "SPAM Filters"
-msgstr ""
+msgstr "صافی‌های هرزنامه‌ها"
 
-#: smail/plugins/filters/setup.php:147
 msgid ""
 "SPAM filters allow you to select from various DNS based blacklists to detect "
 "junk email in your INBOX and move it to another folder (like Trash)."
 msgstr ""
+"شما می‌توانید در این قسمت با استفاده از لیست‌های سیاه نامه‌های تبلیغاتی و "
+"هرزنامه را به طور خودکار شناسایی کرده و به پوشه دیگری منتقل کنید."
 
-#: smail/plugins/filters/spamoptions.php:66
 msgid "Spam Filtering"
-msgstr ""
+msgstr "تنظیمات صافی هرزنامه‌ها"
 
-#: smail/plugins/filters/spamoptions.php:71
+#, fuzzy
 msgid "WARNING! Tell your admin to set the SpamFilters_YourHop variable"
-msgstr ""
+msgstr "هشدار! به مدیریت بگویید که متغیر %s را تنظیم کند"
 
-#: smail/plugins/filters/spamoptions.php:93
 msgid "Move spam to:"
-msgstr ""
+msgstr "هرزنامه را منتقل کن به:"
 
-#: smail/plugins/filters/spamoptions.php:111
 msgid ""
 "Moving spam directly to the trash may not be a good idea at first, since "
 "messages from friends and mailing lists might accidentally be marked as "
@@ -2386,7 +2414,6 @@ msgid ""
 "around."
 msgstr ""
 
-#: smail/plugins/filters/spamoptions.php:131
 msgid ""
 "The more messages you scan, the longer it takes.  I would suggest that you "
 "scan only new messages.  If you make a change to your filters, I would set "
@@ -2395,59 +2422,693 @@ msgid ""
 "you'll scan even the spam you read with the new filters."
 msgstr ""
 
-#: smail/plugins/filters/spamoptions.php:169
-#, c-format
+#, fuzzy, c-format
 msgid "Spam is sent to <b>%s</b>"
-msgstr ""
+msgstr "هرزنامه به %s ارسال شد"
 
-#: smail/plugins/filters/spamoptions.php:169
+#, fuzzy
 msgid "[<i>not set yet</i>]"
-msgstr ""
+msgstr "هنوز تنظیم نشده"
 
-#: smail/plugins/filters/spamoptions.php:171
-#, c-format
+#, fuzzy, c-format
 msgid "Spam scan is limited to <b>%s</b>"
-msgstr ""
+msgstr "پویش هرزنامه‌ها به %s محدود است."
 
-#: smail/plugins/filters/spamoptions.php:171
+#, fuzzy
 msgid "New Messages Only"
-msgstr ""
+msgstr "%s پیغام‌ جدید"
 
-#: smail/plugins/filters/spamoptions.php:171
+#, fuzzy
 msgid "All Messages"
-msgstr ""
+msgstr "همه پیغام‌ها"
 
-#: smail/plugins/filters/spamoptions.php:181
 msgid "ON"
-msgstr ""
+msgstr "روشن"
 
-#: smail/plugins/filters/spamoptions.php:183
 msgid "OFF"
+msgstr "خاموش"
+
+#, fuzzy
+msgid " not found."
+msgstr "%s پیدا نشد."
+
+msgid "Today's Fortune"
+msgstr "طالع امروز:"
+
+msgid "Fortunes:"
+msgstr "طالع‌ها:"
+
+msgid "Show fortunes at top of mailbox"
+msgstr "طالع روز را بالای فضای پیغام‌ها نمایش بده"
+
+msgid "IMAP server information"
+msgstr "اطلاعات میزبان IMAP"
+
+msgid ""
+"Run some test IMAP commands, displaying both the command and the result. "
+"These tests use the Squirrelmail IMAP commands and your current Squirrelmail "
+"configuration. Custom command strings can be used."
 msgstr ""
 
-#: smail/plugins/squirrelspell/setup.php:49
+msgid "Mailinglist"
+msgstr ""
+
+#, c-format
+msgid ""
+"This will send a message to %s requesting help for this list. You will "
+"receive an emailed response at the address below."
+msgstr ""
+
+#, c-format
+msgid ""
+"This will send a message to %s requesting that you will be subscribed to "
+"this list. You will be subscribed with the address below."
+msgstr ""
+
+#, c-format
+msgid ""
+"This will send a message to %s requesting that you will be unsubscribed from "
+"this list. It will try to unsubscribe the adress below."
+msgstr ""
+
+msgid "Send Mail"
+msgstr "ارسال پیغام"
+
+msgid "Post to List"
+msgstr "پست به لیست"
+
+msgid "Reply to List"
+msgstr "پاسخ به لیست"
+
+msgid "List Archives"
+msgstr "لیست آرشیوها"
+
+msgid "Contact Listowner"
+msgstr ""
+
+msgid "Mailing List"
+msgstr ""
+
+msgid "POP3 connect:"
+msgstr "اتصال POP3:"
+
+msgid "No server specified"
+msgstr "میزبانی مشخص نشده"
+
+msgid "Error "
+msgstr "خطا"
+
+#, fuzzy
+msgid "POP3 noop:"
+msgstr "POP3 ورود:"
+
+msgid "No connection to server"
+msgstr "اتصالی با میزبان برقرار نیست"
+
+msgid "POP3 user:"
+msgstr "POP3 کاربر:"
+
+msgid "no login ID submitted"
+msgstr "شناسه کاربری ارسال نشده"
+
+msgid "connection not established"
+msgstr "اتصال برقرار نشده"
+
+msgid "POP3 pass:"
+msgstr ""
+
+msgid "No password submitted"
+msgstr "اسم رمز ارسال نشده"
+
+msgid "authentication failed "
+msgstr "تائید هویت صورت نگرفت"
+
+msgid "POP3 apop:"
+msgstr ""
+
+msgid "No login ID submitted"
+msgstr "شناسه کاربری ارسال نشده"
+
+msgid "No server banner"
+msgstr ""
+
+msgid "abort"
+msgstr ""
+
+msgid "apop authentication failed"
+msgstr "apop تائید هویت انجام نشد"
+
+msgid "POP3 login:"
+msgstr "POP3 ورود:"
+
+msgid "POP3 top:"
+msgstr ""
+
+msgid "POP3 pop_list:"
+msgstr ""
+
+msgid "Premature end of list"
+msgstr ""
+
+msgid "POP3 get:"
+msgstr ""
+
+msgid "POP3 last:"
+msgstr ""
+
+msgid "POP3 reset:"
+msgstr ""
+
+msgid "POP3 send_cmd:"
+msgstr ""
+
+msgid "Empty command string"
+msgstr "رشته دستور خالی"
+
+msgid "POP3 quit:"
+msgstr ""
+
+msgid "connection does not exist"
+msgstr "اتصال وجود ندارد"
+
+msgid "POP3 uidl:"
+msgstr ""
+
+msgid "POP3 delete:"
+msgstr ""
+
+msgid "No msg number submitted"
+msgstr ""
+
+msgid "Command failed "
+msgstr "دستور اجرا نشد"
+
+msgid "Remote POP server Fetching Mail"
+msgstr ""
+
+msgid "Select Server:"
+msgstr "انتخاب میزبان:"
+
+msgid "Password for"
+msgstr "اسم رمز برای"
+
+msgid "Fetch Mail"
+msgstr "دریافت پیغام"
+
+msgid "Fetching from "
+msgstr "در حال دریافت از"
+
+msgid "Oops, "
+msgstr "اوخ،"
+
+msgid "Opening IMAP server"
+msgstr "در حال بازکردن میزبان IMAP"
+
+msgid "Opening POP server"
+msgstr "در حال بازکردن میزبان POP"
+
+msgid "Login Failed:"
+msgstr "خطا در ورود"
+
+msgid "Login OK: No new messages"
+msgstr "ورود موفق: پیغام جدیدی وجود ندارد"
+
+msgid "Login OK: Inbox EMPTY"
+msgstr "ورود موفق: Inbox خالی می‌باشد"
+
+#, fuzzy
+msgid "Login OK: Inbox contains ["
+msgstr "ورود موفق: Inbox شامل %s پیغام می‌باشده"
+
+#, fuzzy
+msgid "] messages"
+msgstr "همه پیغام‌ها"
+
+msgid "Fetching UIDL..."
+msgstr ""
+
+msgid "Server does not support UIDL."
+msgstr ""
+
+msgid "Leaving Mail on Server..."
+msgstr "باقی گذاشتن پیغام بر روی میزبان"
+
+msgid "Deleting messages from server..."
+msgstr "پاک کردن پیغام از میزبان"
+
+msgid "Fetching message "
+msgstr "در حال دریافت پیغام"
+
+msgid "Server error...Disconnect"
+msgstr "خطای میزبان...قطع اتصال"
+
+msgid "Reconnect from dead connection"
+msgstr "برقراری اتصال مجدد"
+
+msgid "Saving UIDL"
+msgstr ""
+
+msgid "Refetching message "
+msgstr ""
+
+msgid "Error Appending Message!"
+msgstr "خطا در الحاق پیغام"
+
+msgid "Closing POP"
+msgstr ""
+
+msgid "Logging out from IMAP"
+msgstr "در حال خروج از IMAP"
+
+msgid "Message appended to mailbox"
+msgstr "پیغام به فضای پیغام‌ها الحاق شد"
+
+msgid "Message "
+msgstr "پیغام"
+
+msgid " deleted from Remote Server!"
+msgstr ""
+
+msgid "Delete failed:"
+msgstr "پاک نشده‌ها:"
+
+msgid "Remote POP server settings"
+msgstr ""
+
+msgid ""
+"You should be aware that the encryption used to store your password is not "
+"perfectly secure.  However, if you are using pop, there is inherently no "
+"encryption anyway. Additionally, the encryption that we do to save it on the "
+"server can be undone by a hacker reading the source to this file."
+msgstr ""
+
+msgid "If you leave password empty, it will be required when you fetch mail."
+msgstr ""
+
+msgid "Encrypt passwords (informative only)"
+msgstr ""
+
+msgid "Add Server"
+msgstr "افزودن میزبان"
+
+msgid "Server:"
+msgstr "میزبان:"
+
+msgid "Port:"
+msgstr ""
+
+msgid "Alias:"
+msgstr ""
+
+msgid "Username:"
+msgstr "نام کاربری"
+
+msgid "Store in Folder:"
+msgstr "ذخیره سازی در پوشه :"
+
+msgid "Leave Mail on Server"
+msgstr "پست الکترونیکی را بر روی میزبان نگه دار"
+
+msgid "Check mail during login"
+msgstr ""
+
+msgid "Check mail during folder refresh"
+msgstr ""
+
+msgid "Modify Server"
+msgstr "تغییر میزبان"
+
+msgid "Server Name:"
+msgstr "نام میزبان"
+
+msgid "Modify"
+msgstr "تغییر دادن"
+
+msgid "No-one server in use. Try to add."
+msgstr ""
+
+msgid "Fetching Servers"
+msgstr "میزبانان دریافت"
+
+msgid "Confirm Deletion of a Server"
+msgstr "تائید پاک کردن از میزبان"
+
+msgid "Selected Server:"
+msgstr "میزبان انتخاب شده:"
+
+msgid "Confirm delete of selected server?"
+msgstr "تائید پاک کردن از میزبان انتخاب شده؟"
+
+msgid "Confirm Delete"
+msgstr "تائید پاک کردن"
+
+msgid "Undefined Function"
+msgstr "تابع تعریف نشده"
+
+msgid "Hey! Wath do You are looking for?"
+msgstr "آهای! دنبال چی میگردی؟"
+
+msgid "Fetch"
+msgstr "دریافت"
+
+msgid "Warning, "
+msgstr "هشدار،"
+
+msgid "Mail Fetch Result:"
+msgstr "نتیجه‌ی دریافت پست الکترونیکی"
+
+#, fuzzy
+msgid "Simple POP3 Fetch Mail"
+msgstr "دریافت پست الکترونیکی از روش POP3"
+
+#, fuzzy
+msgid ""
+"This configures settings for downloading email from a pop3 mailbox to your "
+"account on this server."
+msgstr ""
+"در این قسمت می‌توانید مشخص کنید که از چه میزبان‌های POP3 ای می‌خواهید "
+"پیغام‌هایتان دریافت شود."
+
+msgid "Message Details"
+msgstr "جزئیات پیغام"
+
+msgid "Close Window"
+msgstr "بستن پنجره"
+
+msgid "Save Message"
+msgstr "ذخیره سازی پیغام"
+
+msgid "View Message details"
+msgstr "نمایش جزئیات پیغام"
+
+msgid "New Mail Notification"
+msgstr "آگاه کننده دریافت پست الکترونیکی جدید"
+
+msgid ""
+"Select <b>Enable Media Playing</b> to turn on playing a media file when "
+"unseen mail is in your folders. When enabled, you can specify the media file "
+"to play in the provided file box."
+msgstr ""
+
+msgid ""
+"The <b>Check all boxes, not just INBOX</b> option will check ALL of your "
+"folders for unseen mail, not just the inbox for notification."
+msgstr ""
+
+msgid ""
+"Selecting the <b>Show popup</b> option will enable the showing of a popup "
+"window when unseen mail is in your folders (requires JavaScript)."
+msgstr ""
+
+msgid ""
+"Use the <b>Check RECENT</b> to only check for messages that are recent. "
+"Recent messages are those that have just recently showed up and have not "
+"been \"viewed\" or checked yet.  This can prevent being continuously annoyed "
+"by sounds or popups for unseen mail."
+msgstr ""
+
+msgid ""
+"Selecting the <b>Change title</b> option will change the title in some "
+"browsers to let you know when you have new mail (requires JavaScript, and "
+"only works in IE but you won't see errors with other browsers).  This will "
+"always tell you if you have new mail, even if you have <b>Check RECENT</b> "
+"enabled."
+msgstr ""
+
+msgid ""
+"Select from the list of <b>server files</b> the media file to play when new "
+"mail arrives.  If no file is specified, \"(none)\", no sound will be used."
+msgstr ""
+
+msgid "Enable Media Playing"
+msgstr "فعالسازی اجرای صوت "
+
+msgid "Check all boxes, not just INBOX"
+msgstr "تمام جعبه‌ها را چک کن، نه فقط INBOX را"
+
+msgid "Count only messages that are RECENT"
+msgstr "فقط پیغام‌هایی که اخیراً ارسال شده را بشمار"
+
+#, fuzzy
+msgid "Change title on supported browsers."
+msgstr "تغییرعنوان را در مرورگرهای پشتیبانی شده "
+
+msgid "requires JavaScript to work"
+msgstr "به JavaScript جهت کار احتیاج است"
+
+msgid "Show popup window on new mail"
+msgstr ""
+
+#, fuzzy
+msgid "Select server file:"
+msgstr "پرونده میزبان را انتخاب کن"
+
+msgid "(none)"
+msgstr "(خالی)"
+
+msgid "Try"
+msgstr "سعی کن"
+
+msgid "Current File:"
+msgstr "پرونده جاری"
+
+msgid "New Mail"
+msgstr "پیغام جدید"
+
+msgid "SquirrelMail Notice:"
+msgstr ""
+
+#, fuzzy
+msgid "You have"
+msgstr "پیغامتان"
+
+#, fuzzy, c-format
+msgid "%s new message"
+msgstr "%s پیغام جدید"
+
+#, fuzzy, c-format
+msgid "%s new messages"
+msgstr "%s پیغام‌ جدید"
+
+msgid "NewMail Options"
+msgstr "تنظیمات پست جدید"
+
+msgid ""
+"This configures settings for playing sounds and/or showing popup windows "
+"when new mail arrives."
+msgstr ""
+"وقتی پیغام جدیدی می‌رسد با توجه به تنظیمات این قسمت صدایی پخش می‌شود و یا یک "
+"پنجره کوچک باز می‌شود."
+
+#, fuzzy
+msgid "New Mail Notification options saved"
+msgstr "آگاه کننده دریافت پست الکترونیکی جدید"
+
+#, c-format
+msgid "%s New Messages"
+msgstr "%s پیغام‌ جدید"
+
+#, c-format
+msgid "%s New Message"
+msgstr "%s پیغام جدید"
+
+msgid "Test Sound"
+msgstr "آزمایش صدا"
+
+msgid "No sound specified"
+msgstr "هیچ صدایی مشخص نشده"
+
+msgid "Loading the sound..."
+msgstr "اجرا کردن صدا..."
+
+msgid "Sent Subfolders Options"
+msgstr "تنظیمات زیرپوشه ارسال‌شده‌ها"
+
+msgid "Use Sent Subfolders"
+msgstr "از زیرپوشه ارسال‌شده‌ها استفاده کن"
+
+msgid "Monthly"
+msgstr "ماهانه"
+
+msgid "Quarterly"
+msgstr "هر فصل"
+
+msgid "Yearly"
+msgstr "سالانه"
+
+msgid "Base Sent Folder"
+msgstr "پوشه اصلی ارسال‌شده‌ها"
+
+msgid "Enabled"
+msgstr "فعال شده"
+
+msgid "Disable it"
+msgstr "غیرفعالش کن"
+
+msgid "Enable it"
+msgstr "فعالش کن"
+
+msgid "Spam reporting"
+msgstr "گزارش هرزنامه"
+
+msgid "SpamCop link is:"
+msgstr ""
+
+msgid "Delete spam when reported:"
+msgstr "هرزنامه را پس از گزارش شدن پاک کن:"
+
+msgid "Only works with email-based reporting"
+msgstr ""
+
+msgid "Spam Reporting Method:"
+msgstr "روش گزارش هرزنامه:"
+
+msgid "Quick email-based reporting"
+msgstr ""
+
+msgid "Thorough email-based reporting"
+msgstr "از طریق گزارش پست الکترونیکی "
+
+msgid "Web-based form"
+msgstr "فرم تحت وب"
+
+msgid "Save Method"
+msgstr "روش ذخیره سازی"
+
+msgid "Your SpamCop authorization code:"
+msgstr ""
+
+msgid "see below"
+msgstr "به پایین مراجعه کنید"
+
+msgid "Save ID"
+msgstr "ذخیره شناسه"
+
+msgid ""
+"SpamCop is a free service that greatly assists in finding the true source of "
+"the spam and helps in letting the proper people know about the abuse."
+msgstr ""
+
+msgid ""
+"To use it, you must get a SpamCop authorization code. There is a free <a "
+"href=\"http://spamcop.net/anonsignup.shtml\">sign up page</a> so you can use "
+"SpamCop."
+msgstr ""
+
+msgid ""
+"<b>Before you sign up, be warned:</b> Some users have reported that the "
+"email addresses used with SpamCop find their way onto spam lists. To be "
+"safe, you can just create an email forwarding account and have all SpamCop "
+"reports get sent to there. Also, if it gets flooded with spam, you can then "
+"just delete that account with no worries about losing your real email "
+"address. Just go create an email forwarder somewhere (<a href=\"http://www."
+"yahoo.com/\">Yahoo!</a> has a <a href=\"http://dir.yahoo.com/"
+"Business_and_Economy/Business_to_Business/Communications_and_Networking/"
+"Internet_and_World_Wide_Web/Email_Providers/Forwarding_Services/"
+"Free_Forwarding/\">list of places</a>) so that messages from system "
+"administrators and whatnot can be sent to you."
+msgstr ""
+
+msgid ""
+"Once you have signed up with SpamCop and have received your SpamCop "
+"authorization code, you need to enable this plugin -- just click the link "
+"above. Once enabled, you go about your normal life. If you encounter a spam "
+"message in your mailbox, just view it. On the right-hand side, near the top "
+"of where the message is displayed, you will see a link to report this "
+"message as spam. Clicking on it brings you to a confirmation page. "
+"Confirming that you want the spam report sent will do different things with "
+"different reporting methods."
+msgstr ""
+
+#, fuzzy
+msgid "Email-based Reporting"
+msgstr "گزارش دهنده تحت پست الکترونیک "
+
+msgid ""
+"Pressing the button forwards the message to the SpamCop service and will "
+"optionally delete the message. From there, you just need to go to your INBOX "
+"and quite soon a message should appear from SpamCop. (It gets sent to the "
+"account you registered with, so make sure that your mail forwarder works!) "
+"Open it up, click on the appropriate link at the top, and a new browser "
+"window will open."
+msgstr ""
+
+msgid ""
+"Currently, the quick reporting just forwards the request to the thorough "
+"reporting. Also, it appears that this is for members (non-free) only. "
+"Hopefully this will change soon."
+msgstr ""
+
+#, fuzzy
+msgid "Web-based Reporting"
+msgstr "گزارش دهنده‌ی تحت وب"
+
+msgid ""
+"When you press the button on the confirmation page, this will pop open a new "
+"browser window and the SpamCop service should appear inside. The message "
+"will not be deleted (working on that part), but you won't need to wait for a "
+"response email to start the spam reporting."
+msgstr ""
+
+msgid ""
+"The SpamCop service will display information as it finds it, so scroll down "
+"until you see a form button. It might pause a little while it is looking up "
+"information, so be a little patient. Read what it says, and submit the spam. "
+"Close the browser window. Press Cancel or click on the appropriate mail "
+"folder to see messages and/or delete the spam."
+msgstr ""
+
+msgid ""
+"<b>For more information</b> about SpamCop, it's services, spam in general, "
+"and many related topics, try reading through SpamCop's <a href=\"http://"
+"spamcop.net/help.shtml\">Help and Feedback</a> section."
+msgstr ""
+
+msgid "Report as Spam"
+msgstr ""
+
+msgid "SpamCop - Spam Reporting"
+msgstr ""
+
+msgid ""
+"Help fight the battle against unsolicited email.  SpamCop reads the spam "
+"email and determines the correct addresses to send complaints to.  Quite "
+"fast, really smart, and easy to use."
+msgstr ""
+
+msgid ""
+"Sending this spam report will give you back a reply with URLs that you can "
+"click on to properly report this spam message to the proper authorities. "
+"This is a free service.  By pressing the \"Send Spam Report\" button, you "
+"agree to follow SpamCop's rules/terms of service/etc."
+msgstr ""
+
+msgid "Cancel / Done"
+msgstr "انصراف / انجام شد"
+
+msgid "Send Spam Report"
+msgstr "ارسال گزارش هرزنامه"
+
 msgid "SpellChecker Options"
-msgstr ""
+msgstr "تنظیمات غلط املایی یاب"
 
-#: smail/plugins/squirrelspell/setup.php:51
 msgid ""
 "Here you may set up how your personal dictionary is stored, edit it, or "
 "choose which languages should be available to you when spell-checking."
 msgstr ""
+"دراینجا شما می‌توانید تنظیم کنید که چگونه دیکشنری شخصی شما برپا گردد، چگونه "
+"آنرا ویرایش کنید، یا اینکه کدام زبان برای چک کردن املا شما مورد استفاده قرار "
+"گیرد."
 
-#: smail/plugins/squirrelspell/setup.php:77
 msgid "Check Spelling"
-msgstr "چک کردن دیکته"
+msgstr "چک کردن املا"
 
-#: smail/plugins/squirrelspell/sqspell_functions.php:67
 msgid "Back to &quot;SpellChecker Options&quot; page"
-msgstr ""
+msgstr "برگشت به صفحه غلط املایی یاب"
 
-#: smail/plugins/squirrelspell/sqspell_functions.php:373
 msgid "ATTENTION:"
-msgstr ""
+msgstr "توجه:"
 
-#: smail/plugins/squirrelspell/sqspell_functions.php:374
 msgid ""
 "SquirrelSpell was unable to decrypt your personal dictionary. This is most "
 "likely due to the fact that you have changed your mailbox password. In order "
@@ -2459,255 +3120,196 @@ msgid ""
 "it, the encrypted data is no longer accessible."
 msgstr ""
 
-#: smail/plugins/squirrelspell/sqspell_functions.php:380
 msgid "Delete my dictionary and start a new one"
-msgstr ""
+msgstr "دیکشنری من را پاک کن و یکی از نو شروع کن"
 
-#: smail/plugins/squirrelspell/sqspell_functions.php:381
 msgid "Decrypt my dictionary with my old password:"
 msgstr ""
 
-#: smail/plugins/squirrelspell/sqspell_functions.php:385
 msgid "Proceed"
-msgstr ""
+msgstr "ادامه بده"
 
-#: smail/plugins/squirrelspell/sqspell_functions.php:391
 msgid "You must make a choice"
-msgstr ""
+msgstr "شما باید گزینه ای را انتخاب کنید"
 
-#: smail/plugins/squirrelspell/sqspell_functions.php:392
-msgid "You can either delete your dictionary or type in the old password. Not both."
+msgid ""
+"You can either delete your dictionary or type in the old password. Not both."
 msgstr ""
+"شما می‌توانید دیکشنری خود را پاک کرده یا اینکه کلمه عبور قدیمی خود را وارد "
+"کنید. "
 
-#: smail/plugins/squirrelspell/sqspell_functions.php:393
 msgid "This will delete your personal dictionary file. Proceed?"
 msgstr ""
 
-#: smail/plugins/squirrelspell/sqspell_functions.php:402
-#: smail/plugins/squirrelspell/sqspell_functions.php:405
 msgid "Error Decrypting Dictionary"
 msgstr ""
 
-#: smail/plugins/squirrelspell/sqspell_functions.php:525
 msgid "Cute."
 msgstr ""
 
-#: smail/plugins/squirrelspell/modules/check_me.mod:117
 #, c-format
 msgid "I tried to execute '%s', but it returned:"
-msgstr ""
+msgstr "سعی کردم که '%s' را اجرا کنم ولی مقدار برگشتی برابر بود با:"
 
-#: smail/plugins/squirrelspell/modules/check_me.mod:123
 msgid "SquirrelSpell is misconfigured."
-msgstr ""
+msgstr "غلط املایی یاب تنظیم نشده است."
 
-#: smail/plugins/squirrelspell/modules/check_me.mod:213
 msgid "SquirrelSpell Results"
-msgstr ""
+msgstr "نتایج غلط املایی یاب"
 
-#: smail/plugins/squirrelspell/modules/check_me.mod:273
 msgid "Spellcheck completed. Commit changes?"
-msgstr ""
+msgstr "غلط املایی یاب کارش را به پایان رساند. تغییرات اعمال شود؟"
 
-#: smail/plugins/squirrelspell/modules/check_me.mod:275
 msgid "No changes were made."
-msgstr ""
+msgstr "تغییری ایجاد نشده است."
 
-#: smail/plugins/squirrelspell/modules/check_me.mod:277
 msgid "Now saving your personal dictionary... Please wait."
-msgstr ""
+msgstr "در حال ذخیره‌سازی دیکشنری شخصی شما... لطفاً صبر کنید."
 
-#: smail/plugins/squirrelspell/modules/check_me.mod:298
 #, c-format
 msgid "Found %s errors"
-msgstr ""
+msgstr "%s خطا پیدا شد"
 
-#: smail/plugins/squirrelspell/modules/check_me.mod:319
 msgid "Line with an error:"
-msgstr ""
+msgstr "خطا در خط:"
 
-#: smail/plugins/squirrelspell/modules/check_me.mod:329
 msgid "Error:"
-msgstr ""
+msgstr "خطا:"
 
-#: smail/plugins/squirrelspell/modules/check_me.mod:338
 msgid "Suggestions:"
-msgstr ""
+msgstr "پیشنهادات:"
 
-#: smail/plugins/squirrelspell/modules/check_me.mod:345
 msgid "Suggestions"
-msgstr ""
+msgstr "پیشنهادات"
 
-#: smail/plugins/squirrelspell/modules/check_me.mod:353
 msgid "Change to:"
-msgstr ""
+msgstr "تغییر به:"
 
-#: smail/plugins/squirrelspell/modules/check_me.mod:362
 msgid "Occurs times:"
-msgstr ""
+msgstr "تعداد تکرارها:"
 
-#: smail/plugins/squirrelspell/modules/check_me.mod:379
 msgid "Change this word"
-msgstr ""
+msgstr "تغییر این لغت"
 
-#: smail/plugins/squirrelspell/modules/check_me.mod:380
 msgid "Change"
-msgstr ""
+msgstr "تغییر"
 
-#: smail/plugins/squirrelspell/modules/check_me.mod:382
 msgid "Change ALL occurances of this word"
-msgstr ""
+msgstr "تغییر همه تکرارهای این لغت"
 
-#: smail/plugins/squirrelspell/modules/check_me.mod:383
 msgid "Change All"
-msgstr ""
+msgstr "تغییر همه"
 
-#: smail/plugins/squirrelspell/modules/check_me.mod:385
 msgid "Ignore this word"
-msgstr ""
+msgstr "این لغت را نادیده بگیر"
 
-#: smail/plugins/squirrelspell/modules/check_me.mod:386
 msgid "Ignore"
-msgstr ""
+msgstr "نادیده بگیر"
 
-#: smail/plugins/squirrelspell/modules/check_me.mod:388
 msgid "Ignore ALL occurances this word"
-msgstr ""
+msgstr "تمام تکرارهای این لغت را نادیده بگیر"
 
-#: smail/plugins/squirrelspell/modules/check_me.mod:389
 msgid "Ignore All"
-msgstr ""
+msgstr "همه را نادیده بگیر"
 
-#: smail/plugins/squirrelspell/modules/check_me.mod:391
 msgid "Add this word to your personal dictionary"
-msgstr ""
+msgstr "این کلمه را به دیکشنری شخصی اضافه کن"
 
-#: smail/plugins/squirrelspell/modules/check_me.mod:392
 msgid "Add to Dic"
-msgstr ""
+msgstr "بیافزا به دیکشنری"
 
-#: smail/plugins/squirrelspell/modules/check_me.mod:405
 msgid "Close and Commit"
-msgstr ""
+msgstr "تایید و بستن"
 
-#: smail/plugins/squirrelspell/modules/check_me.mod:407
 msgid "The spellcheck is not finished. Really close and commit changes?"
 msgstr ""
 
-#: smail/plugins/squirrelspell/modules/check_me.mod:410
 msgid "Close and Cancel"
-msgstr ""
+msgstr "انصراف و بستن"
 
-#: smail/plugins/squirrelspell/modules/check_me.mod:412
 msgid "The spellcheck is not finished. Really close and discard changes?"
 msgstr ""
 
-#: smail/plugins/squirrelspell/modules/check_me.mod:431
 msgid "No errors found"
-msgstr ""
+msgstr "خطایی یافت نشد"
 
-#: smail/plugins/squirrelspell/modules/crypto_badkey.mod:39
 msgid "Your personal dictionary was erased."
-msgstr ""
+msgstr "دیکشنری شخصی شما پاک شد."
 
-#: smail/plugins/squirrelspell/modules/crypto_badkey.mod:40
-#: smail/plugins/squirrelspell/modules/crypto_badkey.mod:53
 msgid "Dictionary Erased"
-msgstr ""
+msgstr "دیکشنری پاک شد"
 
-#: smail/plugins/squirrelspell/modules/crypto_badkey.mod:47
 msgid ""
 "Your personal dictionary was erased. Please close this window and click "
 "\"Check Spelling\" button again to start your spellcheck over."
 msgstr ""
 
-#: smail/plugins/squirrelspell/modules/crypto_badkey.mod:51
-#: smail/plugins/squirrelspell/modules/crypto_badkey.mod:83
 msgid "Close this Window"
-msgstr ""
+msgstr "بستن پنجره"
 
-#: smail/plugins/squirrelspell/modules/crypto_badkey.mod:76
 msgid ""
 "Your personal dictionary was re-encrypted successfully. Now return to the "
 "&quot;SpellChecker options&quot; menu and make your selection again."
 msgstr ""
 
-#: smail/plugins/squirrelspell/modules/crypto_badkey.mod:78
+#, fuzzy
 msgid "Successful Re-encryption"
-msgstr ""
+msgstr "تنظیمات با موفقیت ذخیره شد."
 
-#: smail/plugins/squirrelspell/modules/crypto_badkey.mod:81
 msgid ""
 "Your personal dictionary was re-encrypted successfully. Please close this "
 "window and click \"Check Spelling\" button again to start your spellcheck "
 "over."
 msgstr ""
 
-#: smail/plugins/squirrelspell/modules/crypto_badkey.mod:85
 msgid "Dictionary re-encrypted"
 msgstr ""
 
-#: smail/plugins/squirrelspell/modules/crypto.mod:42
 msgid ""
 "Your personal dictionary has been <strong>encrypted</strong> and is now "
 "stored in an <strong>encrypted format</strong>."
 msgstr ""
 
-#: smail/plugins/squirrelspell/modules/crypto.mod:57
 msgid ""
 "Your personal dictionary has been <strong>decrypted</strong> and is now "
 "stored as <strong>clear text</strong>."
 msgstr ""
 
-#: smail/plugins/squirrelspell/modules/crypto.mod:68
-#: smail/plugins/squirrelspell/modules/enc_setup.mod:76
 msgid "Personal Dictionary Crypto Settings"
 msgstr ""
 
-#: smail/plugins/squirrelspell/modules/edit_dic.mod:28
-#: smail/plugins/squirrelspell/modules/forget_me.mod:81
 msgid "Personal Dictionary"
-msgstr "لغتنامه شخصی"
+msgstr ""
 
-#: smail/plugins/squirrelspell/modules/edit_dic.mod:29
-#: smail/plugins/squirrelspell/modules/edit_dic.mod:99
 msgid "No words in your personal dictionary."
 msgstr ""
 
-#: smail/plugins/squirrelspell/modules/edit_dic.mod:36
 msgid "Please check any words you wish to delete from your dictionary."
 msgstr ""
 
-#: smail/plugins/squirrelspell/modules/edit_dic.mod:58
 #, c-format
 msgid "%s dictionary"
-msgstr ""
+msgstr "دیکشنری %s"
 
-#: smail/plugins/squirrelspell/modules/edit_dic.mod:89
 msgid "Delete checked words"
-msgstr ""
+msgstr "حذف لغات چک‌شده"
 
-#: smail/plugins/squirrelspell/modules/edit_dic.mod:103
 msgid "Edit your Personal Dictionary"
-msgstr ""
+msgstr "ویرایش دیکشنری شخصی"
 
-#: smail/plugins/squirrelspell/modules/enc_setup.mod:25
 msgid "Please make your selection first."
-msgstr ""
+msgstr "لطفاً ابتدا انتخاب کنید."
 
-#: smail/plugins/squirrelspell/modules/enc_setup.mod:27
 msgid ""
 "This will encrypt your personal dictionary and store it in an encrypted "
 "format. Proceed?"
 msgstr ""
 
-#: smail/plugins/squirrelspell/modules/enc_setup.mod:30
 msgid ""
 "This will decrypt your personal dictionary and store it in a clear-text "
 "format. Proceed?"
 msgstr ""
 
-#: smail/plugins/squirrelspell/modules/enc_setup.mod:47
 msgid ""
 "<p>Your personal dictionary is <strong>currently encrypted</strong>. This "
 "helps protect your privacy in case the web-mail system gets compromized and "
@@ -2720,16 +3322,13 @@ msgid ""
 "old password in order to re-encrypt the dictionary with a new key.</p>"
 msgstr ""
 
-#: smail/plugins/squirrelspell/modules/enc_setup.mod:52
-msgid "Please decrypt my personal dictionary and store it in a clear-text format."
+msgid ""
+"Please decrypt my personal dictionary and store it in a clear-text format."
 msgstr ""
 
-#: smail/plugins/squirrelspell/modules/enc_setup.mod:55
-#: smail/plugins/squirrelspell/modules/enc_setup.mod:73
 msgid "Change crypto settings"
 msgstr ""
 
-#: smail/plugins/squirrelspell/modules/enc_setup.mod:65
 msgid ""
 "<p>Your personal dictionary is <strong>currently not encrypted</strong>. You "
 "may wish to encrypt your personal dictionary to protect your privacy in case "
@@ -2746,1738 +3345,352 @@ msgid ""
 "new value.</p>"
 msgstr ""
 
-#: smail/plugins/squirrelspell/modules/enc_setup.mod:70
-msgid "Please encrypt my personal dictionary and store it in an encrypted format."
+msgid ""
+"Please encrypt my personal dictionary and store it in an encrypted format."
 msgstr ""
 
-#: smail/plugins/squirrelspell/modules/forget_me.mod:32
-#, c-format
+#, fuzzy, c-format
 msgid "Deleting the following entries from <strong>%s</strong> dictionary:"
-msgstr ""
+msgstr "پاک کردن ورودی ذیل از دایرکتوری %s : "
 
-#: smail/plugins/squirrelspell/modules/forget_me.mod:75
 msgid "All done!"
-msgstr ""
+msgstr "انجام شد!"
 
-#: smail/plugins/squirrelspell/modules/forget_me.mod:76
-#: smail/plugins/squirrelspell/modules/forget_me_not.mod:75
 msgid "Personal Dictionary Updated"
-msgstr ""
+msgstr "دیکشنری شخصی بروزرسانی شد"
 
-#: smail/plugins/squirrelspell/modules/forget_me.mod:82
 msgid "No changes requested."
-msgstr ""
+msgstr "تغییری درخواست نشده بود."
 
-#: smail/plugins/squirrelspell/modules/init.mod:33
 msgid "Please wait, communicating with the server..."
-msgstr ""
+msgstr "لطفا صبر کنید، در حال برقراری ارتباط با میزبان..."
 
-#: smail/plugins/squirrelspell/modules/init.mod:42
 msgid ""
 "Please choose which dictionary you would like to use to spellcheck this "
 "message:"
-msgstr ""
+msgstr "لطفاً دیکشنری مورد نظر خود را برای چک کردن نوشتار را انتخاب کنید:"
 
-#: smail/plugins/calendar/calendar.php:132
-#: smail/plugins/squirrelspell/modules/init.mod:53
-msgid "Go"
-msgstr ""
-
-#: smail/plugins/squirrelspell/modules/init.mod:57
 msgid "SquirrelSpell Initiating"
-msgstr ""
+msgstr "در حال اجرای SquirrelSpell"
 
-#: smail/plugins/squirrelspell/modules/lang_change.mod:76
-#, c-format
+#, fuzzy, c-format
 msgid ""
 "Settings adjusted to: <strong>%s</strong> with <strong>%s</strong> as "
 "default dictionary."
 msgstr ""
+"تنظیمات بر اساس %s با استفاده از %s به عنوان دیکشنری اصلی بر‌قرار گردید. "
 
-#: smail/plugins/squirrelspell/modules/lang_change.mod:83
-#, c-format
+#, fuzzy, c-format
 msgid "Using <strong>%s</strong> dictionary (system default) for spellcheck."
-msgstr ""
+msgstr "استفاده از دیکشنری %s به عنوان دیکشنری اصلی جهت چک کردن نوشتار."
 
-#: smail/plugins/squirrelspell/modules/lang_change.mod:94
 msgid "International Dictionaries Preferences Updated"
-msgstr ""
+msgstr "ترجیحات دیکشنری بین‌المللی بروز شد"
 
-#: smail/plugins/squirrelspell/modules/lang_setup.mod:22
 msgid ""
 "Please check any available international dictionaries which you would like "
 "to use when spellchecking:"
 msgstr ""
 
-#: smail/plugins/squirrelspell/modules/lang_setup.mod:32
 msgid "Make this dictionary my default selection:"
-msgstr ""
+msgstr "این دیکشنری را پیش‌فرض من کن:"
 
-#: smail/plugins/squirrelspell/modules/lang_setup.mod:49
 msgid "Make these changes"
-msgstr ""
+msgstr "تغییرات را اعمال کن"
 
-#: smail/plugins/squirrelspell/modules/lang_setup.mod:50
 msgid "Add International Dictionaries"
-msgstr ""
+msgstr "اضافه‌کردن دیکشنری‌های بین‌المللی"
 
-#: smail/plugins/squirrelspell/modules/options_main.mod:19
 msgid "Please choose which options you wish to set up:"
-msgstr ""
+msgstr "لطفاً تنظیماتی را که می‌خواهید اعمال شود را انتخاب کنید:"
 
-#: smail/plugins/squirrelspell/modules/options_main.mod:23
 msgid "Edit your personal dictionary"
-msgstr ""
+msgstr "ویرایش دیکشنری شخصی"
 
-#: smail/plugins/squirrelspell/modules/options_main.mod:30
 msgid "Set up international dictionaries"
-msgstr ""
+msgstr "تنظیم دیکشنری‌های بین‌المللی"
 
-#: smail/plugins/squirrelspell/modules/options_main.mod:40
-#: smail/plugins/squirrelspell/modules/options_main.mod:44
 msgid "Encrypt or decrypt your personal dictionary"
 msgstr ""
 
-#: smail/plugins/squirrelspell/modules/options_main.mod:45
 msgid "not available"
-msgstr ""
+msgstr "موجود نیست"
 
-#: smail/plugins/squirrelspell/modules/options_main.mod:48
 msgid "SquirrelSpell Options Menu"
-msgstr ""
+msgstr "تنظیمات منوی غلط املایی یاب"
 
-#: smail/plugins/translate/options.php:94
 msgid "Translator"
-msgstr ""
+msgstr "مترجم"
 
-#: smail/plugins/translate/options.php:98
 msgid "Saved Translation Options"
-msgstr ""
+msgstr "تنظیمات ذخیره شده ی ترجمه"
 
-#: smail/plugins/translate/options.php:101
 msgid "Your server options are as follows:"
+msgstr "تنظیمات میزبان شما بدین گونه می‌باشد:"
+
+msgid "Maximum of 1000 characters translated, powered by Systran"
 msgstr ""
 
-#: smail/plugins/translate/options.php:106
-msgid "13 language pairs, maximum of 1000 characters translated, powered by Systran"
+#, c-format
+msgid "Number of supported language pairs: %s"
+msgstr "تعداد  جفت زبان‌های پشتیبانی شده: %s"
+
+msgid "No known limits, powered by Systran"
 msgstr ""
 
-#: smail/plugins/translate/options.php:109
-msgid "10 language pairs, maximum of 25 kilobytes translated, powered by Systran"
+msgid "No known limits, powered by Translation Experts's InterTran"
 msgstr ""
 
-#: smail/plugins/translate/options.php:112
-msgid "12 language pairs, no known limits, powered by Systran"
+#, c-format
+msgid "Number of supported languages: %s"
+msgstr "تعداد زبان‌های پشتیبانی شده: %s"
+
+msgid "No known limits, powered by GPLTrans (free, open source)"
 msgstr ""
 
-#: smail/plugins/translate/options.php:115
-msgid ""
-"767 language pairs, no known limits, powered by Translation Experts's "
-"InterTran"
+msgid "Hellenic translations, no known limits, powered by Systran"
 msgstr ""
 
-#: smail/plugins/translate/options.php:118
-msgid "8 language pairs, no known limits, powered by GPLTrans (free, open source)"
+msgid "Russian translations, maximum of 500 characters translated"
 msgstr ""
 
-#: smail/plugins/translate/options.php:124
 msgid ""
 "You also decide if you want the translation box displayed, and where it will "
 "be located."
 msgstr ""
+"شما همچنین می‌توانید در مورد نمایش داده شدن فضای ترجمه و مکان آن تصمیم بگیرید."
 
-#: smail/plugins/translate/options.php:128
 msgid "Select your translator:"
-msgstr ""
+msgstr "مترجم خود را انتخاب کنید:"
 
-#: smail/plugins/translate/options.php:140
 msgid "When reading:"
-msgstr ""
+msgstr "هنگام خواندن:"
 
-#: smail/plugins/translate/options.php:145
 msgid "Show translation box"
-msgstr ""
+msgstr "نمایش فضای ترجمه"
 
-#: smail/plugins/translate/options.php:147
 msgid "to the left"
-msgstr ""
+msgstr "به سمت چپ"
 
-#: smail/plugins/translate/options.php:148
 msgid "in the center"
-msgstr ""
+msgstr "وسط"
 
-#: smail/plugins/translate/options.php:149
 msgid "to the right"
-msgstr ""
+msgstr "به سمت راست"
 
-#: smail/plugins/translate/options.php:154
-msgid "Translate inside the smail frames"
-msgstr ""
+msgid "Translate inside the SquirrelMail frames"
+msgstr "ترجمه در داخل فریم برنامه"
 
-#: smail/plugins/translate/options.php:157
+#, fuzzy
 msgid "When composing:"
-msgstr ""
+msgstr "هنگام خواندن:"
 
-#: smail/plugins/translate/options.php:161
 msgid "Not yet functional, currently does nothing"
 msgstr ""
 
-#: smail/plugins/translate/setup.php:104
 msgid "Translation Options"
-msgstr ""
+msgstr "تنظیمات ترجمه‌گر"
 
-#: smail/plugins/translate/setup.php:106
 msgid ""
 "Which translator should be used when you get messages in a different "
 "language?"
-msgstr ""
+msgstr "در صورت دریافت یک نامه به زبان خارجی از کدام مترجم باید استفاده شود؟"
 
-#: smail/plugins/translate/setup.php:230
-#: smail/plugins/translate/setup.php:234
-#: smail/plugins/translate/setup.php:238
-#: smail/plugins/translate/setup.php:242
-#: smail/plugins/translate/setup.php:246
-#: smail/plugins/translate/setup.php:250
-#: smail/plugins/translate/setup.php:254
-#: smail/plugins/translate/setup.php:258
-#: smail/plugins/translate/setup.php:262
-#: smail/plugins/translate/setup.php:266
-#: smail/plugins/translate/setup.php:270
-#: smail/plugins/translate/setup.php:274
-#: smail/plugins/translate/setup.php:278
-#: smail/plugins/translate/setup.php:293
-#: smail/plugins/translate/setup.php:297
-#: smail/plugins/translate/setup.php:301
-#: smail/plugins/translate/setup.php:305
-#: smail/plugins/translate/setup.php:309
-#: smail/plugins/translate/setup.php:313
-#: smail/plugins/translate/setup.php:317
-#: smail/plugins/translate/setup.php:321
-#: smail/plugins/translate/setup.php:325
-#: smail/plugins/translate/setup.php:329
-#: smail/plugins/translate/setup.php:404
-#: smail/plugins/translate/setup.php:437
-#: smail/plugins/translate/setup.php:441
-#: smail/plugins/translate/setup.php:445
-#: smail/plugins/translate/setup.php:449
-#: smail/plugins/translate/setup.php:453
-#: smail/plugins/translate/setup.php:457
-#: smail/plugins/translate/setup.php:461
-#: smail/plugins/translate/setup.php:465
-#: smail/plugins/translate/setup.php:469
-#: smail/plugins/translate/setup.php:473
-#: smail/plugins/translate/setup.php:477
-#: smail/plugins/translate/setup.php:481
 #, c-format
 msgid "%s to %s"
-msgstr ""
+msgstr "%s به %s"
 
-#: smail/plugins/translate/setup.php:231
-#: smail/plugins/translate/setup.php:235
-#: smail/plugins/translate/setup.php:239
-#: smail/plugins/translate/setup.php:243
-#: smail/plugins/translate/setup.php:247
-#: smail/plugins/translate/setup.php:252
-#: smail/plugins/translate/setup.php:256
-#: smail/plugins/translate/setup.php:260
-#: smail/plugins/translate/setup.php:264
-#: smail/plugins/translate/setup.php:268
-#: smail/plugins/translate/setup.php:280
-#: smail/plugins/translate/setup.php:294
-#: smail/plugins/translate/setup.php:298
-#: smail/plugins/translate/setup.php:302
-#: smail/plugins/translate/setup.php:306
-#: smail/plugins/translate/setup.php:310
-#: smail/plugins/translate/setup.php:315
-#: smail/plugins/translate/setup.php:319
-#: smail/plugins/translate/setup.php:323
-#: smail/plugins/translate/setup.php:327
-#: smail/plugins/translate/setup.php:331
-#: smail/plugins/translate/setup.php:352
-#: smail/plugins/translate/setup.php:382
-#: smail/plugins/translate/setup.php:438
-#: smail/plugins/translate/setup.php:442
-#: smail/plugins/translate/setup.php:446
-#: smail/plugins/translate/setup.php:450
-#: smail/plugins/translate/setup.php:454
-#: smail/plugins/translate/setup.php:459
-#: smail/plugins/translate/setup.php:471
-#: smail/plugins/translate/setup.php:475
-#: smail/plugins/translate/setup.php:479
-#: smail/plugins/translate/setup.php:483
 msgid "English"
-msgstr ""
+msgstr "انگلیسی"
 
-#: smail/plugins/translate/setup.php:232
-#: smail/plugins/translate/setup.php:251
-#: smail/plugins/translate/setup.php:272
-#: smail/plugins/translate/setup.php:275
-#: smail/plugins/translate/setup.php:299
-#: smail/plugins/translate/setup.php:318
-#: smail/plugins/translate/setup.php:355
-#: smail/plugins/translate/setup.php:385
-#: smail/plugins/translate/setup.php:417
-#: smail/plugins/translate/setup.php:439
-#: smail/plugins/translate/setup.php:458
-#: smail/plugins/translate/setup.php:462
-#: smail/plugins/translate/setup.php:467
+#, fuzzy
+msgid "Chinese"
+msgstr "تغییر"
+
 msgid "French"
-msgstr ""
+msgstr "فرانسوی"
 
-#: smail/plugins/translate/setup.php:236
-#: smail/plugins/translate/setup.php:255
-#: smail/plugins/translate/setup.php:271
-#: smail/plugins/translate/setup.php:276
-#: smail/plugins/translate/setup.php:303
-#: smail/plugins/translate/setup.php:322
-#: smail/plugins/translate/setup.php:356
-#: smail/plugins/translate/setup.php:386
-#: smail/plugins/translate/setup.php:418
-#: smail/plugins/translate/setup.php:443
-#: smail/plugins/translate/setup.php:463
-#: smail/plugins/translate/setup.php:466
-#: smail/plugins/translate/setup.php:470
 msgid "German"
-msgstr ""
+msgstr "آلمانی"
 
-#: smail/plugins/translate/setup.php:240
-#: smail/plugins/translate/setup.php:259
-#: smail/plugins/translate/setup.php:307
-#: smail/plugins/translate/setup.php:326
-#: smail/plugins/translate/setup.php:360
-#: smail/plugins/translate/setup.php:390
-#: smail/plugins/translate/setup.php:420
-#: smail/plugins/translate/setup.php:447
-#: smail/plugins/translate/setup.php:474
 msgid "Italian"
-msgstr ""
+msgstr "ایتالیایی"
 
-#: smail/plugins/translate/setup.php:244
-#: smail/plugins/translate/setup.php:263
-#: smail/plugins/translate/setup.php:311
-#: smail/plugins/translate/setup.php:330
-#: smail/plugins/translate/setup.php:365
-#: smail/plugins/translate/setup.php:395
-#: smail/plugins/translate/setup.php:422
-#: smail/plugins/translate/setup.php:451
-#: smail/plugins/translate/setup.php:478
-msgid "Portuguese"
-msgstr ""
-
-#: smail/plugins/translate/setup.php:248
-#: smail/plugins/translate/setup.php:267
-#: smail/plugins/translate/setup.php:295
-#: smail/plugins/translate/setup.php:314
-#: smail/plugins/translate/setup.php:370
-#: smail/plugins/translate/setup.php:400
-#: smail/plugins/translate/setup.php:423
-#: smail/plugins/translate/setup.php:455
-#: smail/plugins/translate/setup.php:482
-msgid "Spanish"
-msgstr ""
-
-#: smail/plugins/translate/setup.php:279
-#: smail/plugins/translate/setup.php:367
-#: smail/plugins/translate/setup.php:397
-msgid "Russian"
-msgstr ""
-
-#: smail/plugins/translate/setup.php:282
-#: smail/plugins/translate/setup.php:334
-#: smail/plugins/translate/setup.php:405
-#: smail/plugins/translate/setup.php:426
-#: smail/plugins/translate/setup.php:485
-msgid "Translate"
-msgstr ""
-
-#: smail/plugins/translate/setup.php:346
-#: smail/plugins/translate/setup.php:376
-msgid "Brazilian Portuguese"
-msgstr ""
-
-#: smail/plugins/translate/setup.php:347
-#: smail/plugins/translate/setup.php:377
-msgid "Bulgarian"
-msgstr ""
-
-#: smail/plugins/translate/setup.php:348
-#: smail/plugins/translate/setup.php:378
-msgid "Croatian"
-msgstr ""
-
-#: smail/plugins/translate/setup.php:349
-#: smail/plugins/translate/setup.php:379
-msgid "Czech"
-msgstr ""
-
-#: smail/plugins/translate/setup.php:350
-#: smail/plugins/translate/setup.php:380
-msgid "Danish"
-msgstr ""
-
-#: smail/plugins/translate/setup.php:351
-#: smail/plugins/translate/setup.php:381
-#: smail/plugins/translate/setup.php:416
-msgid "Dutch"
-msgstr ""
-
-#: smail/plugins/translate/setup.php:353
-#: smail/plugins/translate/setup.php:383
-msgid "European Spanish"
-msgstr ""
-
-#: smail/plugins/translate/setup.php:354
-#: smail/plugins/translate/setup.php:384
-msgid "Finnish"
-msgstr ""
-
-#: smail/plugins/translate/setup.php:357
-#: smail/plugins/translate/setup.php:387
-msgid "Greek"
-msgstr ""
-
-#: smail/plugins/translate/setup.php:358
-#: smail/plugins/translate/setup.php:388
-msgid "Hungarian"
-msgstr ""
-
-#: smail/plugins/translate/setup.php:359
-#: smail/plugins/translate/setup.php:389
-msgid "Icelandic"
-msgstr ""
-
-#: smail/plugins/translate/setup.php:361
-#: smail/plugins/translate/setup.php:391
 msgid "Japanese"
-msgstr ""
+msgstr "ژاپنی"
 
-#: smail/plugins/translate/setup.php:362
-#: smail/plugins/translate/setup.php:392
+msgid "Korean"
+msgstr "کره‌ای"
+
+msgid "Portuguese"
+msgstr "پرتغالی"
+
+msgid "Spanish"
+msgstr "اسپانیایی"
+
+msgid "Russian"
+msgstr "روسی"
+
+msgid "Translate"
+msgstr "ترجمه"
+
+msgid "Brazilian Portuguese"
+msgstr "پرتغالی برزیلی"
+
+msgid "Bulgarian"
+msgstr "بلغاری"
+
+msgid "Croatian"
+msgstr "کره‌ای"
+
+msgid "Czech"
+msgstr "چکی"
+
+msgid "Danish"
+msgstr "دانمارکی"
+
+msgid "Dutch"
+msgstr "هلندی"
+
+#, fuzzy
+msgid "European Spanish"
+msgstr "زمان و تاریخ اروپایی"
+
+msgid "Finnish"
+msgstr "فنلاندی"
+
+msgid "Greek"
+msgstr "یونانی"
+
+msgid "Hungarian"
+msgstr "مجاری"
+
+msgid "Icelandic"
+msgstr "ایسلند"
+
 msgid "Latin American Spanish"
-msgstr ""
+msgstr "لاتین اسپانیایی آمریکایی"
 
-#: smail/plugins/translate/setup.php:363
-#: smail/plugins/translate/setup.php:393
 msgid "Norwegian"
-msgstr ""
+msgstr "نروژی"
 
-#: smail/plugins/translate/setup.php:364
-#: smail/plugins/translate/setup.php:394
 msgid "Polish"
-msgstr ""
+msgstr "لهستانی"
 
-#: smail/plugins/translate/setup.php:366
-#: smail/plugins/translate/setup.php:396
 msgid "Romanian"
-msgstr ""
+msgstr "رمانی"
 
-#: smail/plugins/translate/setup.php:368
-#: smail/plugins/translate/setup.php:398
 msgid "Serbian"
-msgstr ""
+msgstr "صربی"
 
-#: smail/plugins/translate/setup.php:369
-#: smail/plugins/translate/setup.php:399
 msgid "Slovenian"
-msgstr ""
+msgstr "اسلوانیایی"
 
-#: smail/plugins/translate/setup.php:371
-#: smail/plugins/translate/setup.php:401
 msgid "Swedish"
-msgstr ""
+msgstr "سوئدی"
 
-#: smail/plugins/translate/setup.php:372
-#: smail/plugins/translate/setup.php:402
+msgid "Turkish"
+msgstr "ترکی"
+
 msgid "Welsh"
-msgstr ""
+msgstr "ولزی"
 
-#: smail/plugins/translate/setup.php:419
 msgid "Indonesian"
-msgstr ""
+msgstr "اندونزیایی"
 
-#: smail/plugins/translate/setup.php:421
 msgid "Latin"
-msgstr ""
+msgstr "لاتین"
 
-#: smail/plugins/newmail/newmail_opt.php:37
-msgid "New Mail Notification"
-msgstr ""
+msgid "to English"
+msgstr "به انگلیسی"
 
-#: smail/plugins/newmail/newmail_opt.php:41
-msgid ""
-"Select <b>Enable Media Playing</b> to turn on playing a media file when "
-"unseen mail is in your folders. When enabled, you can specify the media file "
-"to play in the provided file box."
-msgstr ""
+msgid "from English"
+msgstr "از انگلیسی"
 
-#: smail/plugins/newmail/newmail_opt.php:45
-msgid ""
-"The <b>Check all boxes, not just INBOX</b> option will check ALL of your "
-"folders for unseen mail, not just the inbox for notification."
-msgstr ""
+msgid "Interface language"
+msgstr "زبان ظاهر برنامه"
 
-#: smail/plugins/newmail/newmail_opt.php:47
-msgid ""
-"Selecting the <b>Show popup</b> option will enable the showing of a popup "
-"window when unseen mail is in your folders (requires JavaScript)."
-msgstr ""
+msgid "Translation direction"
+msgstr "جهت ترجمه"
 
-#: smail/plugins/newmail/newmail_opt.php:49
-msgid ""
-"Use the <b>Check RECENT</b> to only check for messages that are recent. "
-"Recent messages are those that have just recently showed up and have not "
-"been \"viewed\" or checked yet.  This can prevent being continuously annoyed "
-"by sounds or popups for unseen mail."
-msgstr ""
-
-#: smail/plugins/newmail/newmail_opt.php:51
-msgid ""
-"Selecting the <b>Change title</b> option will change the title in some "
-"browsers to let you know when you have new mail (requires JavaScript, and "
-"only works in IE but you won't see errors with other browsers).  This will "
-"always tell you if you have new mail, even if you have <b>Check RECENT</b> "
-"enabled."
-msgstr ""
-
-#: smail/plugins/newmail/newmail_opt.php:55
-msgid ""
-"Select from the list of <b>server files</b> the media file to play when new "
-"mail arrives.  Selecting <b>local media</b> will play the file specified in "
-"the <b>local media file</b> box to play from the local computer.  If no file "
-"is specified, the system will use a default from the server."
-msgstr ""
-
-#: smail/plugins/newmail/newmail_opt.php:67
-msgid "Enable Media Playing"
-msgstr ""
-
-#: smail/plugins/newmail/newmail_opt.php:76
-msgid "Check all boxes, not just INBOX"
-msgstr ""
-
-#: smail/plugins/newmail/newmail_opt.php:84
-msgid "Count only messages that are RECENT"
-msgstr ""
-
-#: smail/plugins/newmail/newmail_opt.php:92
-msgid "Change title on supported browsers."
-msgstr ""
-
-#: smail/plugins/newmail/newmail_opt.php:92
-#: smail/plugins/newmail/newmail_opt.php:100
-msgid "requires JavaScript to work"
-msgstr ""
-
-#: smail/plugins/newmail/newmail_opt.php:100
-msgid "Show popup window on new mail"
-msgstr ""
-
-#: smail/plugins/newmail/newmail_opt.php:104
-msgid "Select server file:"
-msgstr ""
-
-#: smail/plugins/newmail/newmail_opt.php:106
-msgid "(local media)"
-msgstr ""
-
-#: smail/plugins/newmail/newmail_opt.php:123
-msgid "Try"
-msgstr ""
-
-#: smail/plugins/newmail/newmail_opt.php:131
-msgid "Local Media File:"
-msgstr ""
-
-#: smail/plugins/newmail/newmail_opt.php:137
-msgid "Current File:"
-msgstr "فایل فعلی:"
-
-#: smail/plugins/newmail/newmail.php:20
-msgid "New Mail"
-msgstr ""
-
-#: smail/plugins/newmail/newmail.php:27
-msgid "smail Notice:"
-msgstr ""
-
-#: smail/plugins/newmail/newmail.php:31
-msgid "You have new mail!"
-msgstr ""
-
-#: smail/plugins/newmail/setup.php:78
-msgid "NewMail Options"
-msgstr ""
-
-#: smail/plugins/newmail/setup.php:80
-msgid ""
-"This configures settings for playing sounds and/or showing popup windows "
-"when new mail arrives."
-msgstr ""
-
-#: smail/plugins/newmail/setup.php:126
-msgid "New Mail Notification options saved"
-msgstr ""
-
-#: smail/plugins/newmail/setup.php:198
-#, c-format
-msgid "%s New Messages"
-msgstr ""
-
-#: smail/plugins/newmail/setup.php:202
-#, c-format
-msgid "%s New Message"
-msgstr ""
-
-#: smail/plugins/newmail/testsound.php:26
-msgid "Test Sound"
-msgstr ""
-
-#: smail/plugins/newmail/testsound.php:32
-msgid "Loading the sound..."
-msgstr ""
-
-#: smail/plugins/mail_fetch/class.POP3.php:82
-#: smail/plugins/mail_fetch/class.POP3.php:90
-#: smail/plugins/mail_fetch/class.POP3.php:102
-msgid "POP3 connect:"
-msgstr ""
-
-#: smail/plugins/mail_fetch/class.POP3.php:82
-msgid "No server specified"
-msgstr ""
-
-#: smail/plugins/mail_fetch/class.POP3.php:90
-#: smail/plugins/mail_fetch/class.POP3.php:102
-#: smail/plugins/mail_fetch/class.POP3.php:141
-#: smail/plugins/mail_fetch/class.POP3.php:276
-#: smail/plugins/mail_fetch/class.POP3.php:330
-#: smail/plugins/mail_fetch/class.POP3.php:341
-#: smail/plugins/mail_fetch/class.POP3.php:389
-#: smail/plugins/mail_fetch/class.POP3.php:422
-#: smail/plugins/mail_fetch/class.POP3.php:455
-#: smail/plugins/mail_fetch/class.POP3.php:554
-#: smail/plugins/mail_fetch/class.POP3.php:577
-msgid "Error "
-msgstr ""
-
-#: smail/plugins/mail_fetch/class.POP3.php:110
-msgid "POP3: premature NOOP OK, NOT an RFC 1939 Compliant server"
-msgstr ""
-
-#: smail/plugins/mail_fetch/class.POP3.php:120
-msgid "POP3 noop:"
-msgstr ""
-
-#: smail/plugins/mail_fetch/class.POP3.php:120
-#: smail/plugins/mail_fetch/class.POP3.php:186
-#: smail/plugins/mail_fetch/class.POP3.php:235
-#: smail/plugins/mail_fetch/class.POP3.php:260
-#: smail/plugins/mail_fetch/class.POP3.php:302
-#: smail/plugins/mail_fetch/class.POP3.php:376
-#: smail/plugins/mail_fetch/class.POP3.php:415
-#: smail/plugins/mail_fetch/class.POP3.php:445
-#: smail/plugins/mail_fetch/class.POP3.php:479
-#: smail/plugins/mail_fetch/class.POP3.php:542
-#: smail/plugins/mail_fetch/class.POP3.php:610
-msgid "No connection to server"
-msgstr ""
-
-#: smail/plugins/mail_fetch/class.POP3.php:133
-#: smail/plugins/mail_fetch/class.POP3.php:136
-#: smail/plugins/mail_fetch/class.POP3.php:141
-msgid "POP3 user:"
-msgstr ""
-
-#: smail/plugins/mail_fetch/class.POP3.php:133
-msgid "no login ID submitted"
-msgstr ""
-
-#: smail/plugins/mail_fetch/class.POP3.php:136
-#: smail/plugins/mail_fetch/class.POP3.php:156
-msgid "connection not established"
-msgstr ""
-
-#: smail/plugins/mail_fetch/class.POP3.php:153
-#: smail/plugins/mail_fetch/class.POP3.php:156
-#: smail/plugins/mail_fetch/class.POP3.php:161
-#: smail/plugins/mail_fetch/class.POP3.php:170
-msgid "POP3 pass:"
-msgstr ""
-
-#: smail/plugins/mail_fetch/class.POP3.php:153
-#: smail/plugins/mail_fetch/class.POP3.php:195
-msgid "No password submitted"
-msgstr ""
-
-#: smail/plugins/mail_fetch/class.POP3.php:161
-msgid "authentication failed "
-msgstr ""
-
-#: smail/plugins/mail_fetch/class.POP3.php:170
-#: smail/plugins/mail_fetch/class.POP3.php:219
-msgid "NOOP failed. Server not RFC 1939 compliant"
-msgstr ""
-
-#: smail/plugins/mail_fetch/class.POP3.php:186
-#: smail/plugins/mail_fetch/class.POP3.php:192
-#: smail/plugins/mail_fetch/class.POP3.php:195
-#: smail/plugins/mail_fetch/class.POP3.php:200
-#: smail/plugins/mail_fetch/class.POP3.php:210
-#: smail/plugins/mail_fetch/class.POP3.php:219
-msgid "POP3 apop:"
-msgstr ""
-
-#: smail/plugins/mail_fetch/class.POP3.php:192
-msgid "No login ID submitted"
-msgstr ""
-
-#: smail/plugins/mail_fetch/class.POP3.php:200
-msgid "No server banner"
-msgstr ""
-
-#: smail/plugins/mail_fetch/class.POP3.php:200
-#: smail/plugins/mail_fetch/class.POP3.php:210
-msgid "abort"
-msgstr ""
-
-#: smail/plugins/mail_fetch/class.POP3.php:210
-msgid "apop authentication failed"
-msgstr ""
-
-#: smail/plugins/mail_fetch/class.POP3.php:235
-msgid "POP3 login:"
-msgstr ""
-
-#: smail/plugins/mail_fetch/class.POP3.php:260
-#: smail/plugins/mail_fetch/class.POP3.php:276
-msgid "POP3 top:"
-msgstr ""
-
-#: smail/plugins/mail_fetch/class.POP3.php:302
-#: smail/plugins/mail_fetch/class.POP3.php:330
-#: smail/plugins/mail_fetch/class.POP3.php:341
-#: smail/plugins/mail_fetch/class.POP3.php:353
-msgid "POP3 pop_list:"
-msgstr ""
-
-#: smail/plugins/mail_fetch/class.POP3.php:353
-msgid "Premature end of list"
-msgstr ""
-
-#: smail/plugins/mail_fetch/class.POP3.php:376
-#: smail/plugins/mail_fetch/class.POP3.php:389
-msgid "POP3 get:"
-msgstr ""
-
-#: smail/plugins/mail_fetch/class.POP3.php:415
-#: smail/plugins/mail_fetch/class.POP3.php:422
-msgid "POP3 last:"
-msgstr ""
-
-#: smail/plugins/mail_fetch/class.POP3.php:445
-#: smail/plugins/mail_fetch/class.POP3.php:455
-msgid "POP3 reset:"
-msgstr ""
-
-#: smail/plugins/mail_fetch/class.POP3.php:479
-#: smail/plugins/mail_fetch/class.POP3.php:485
-msgid "POP3 send_cmd:"
-msgstr ""
-
-#: smail/plugins/mail_fetch/class.POP3.php:485
-msgid "Empty command string"
-msgstr ""
-
-#: smail/plugins/mail_fetch/class.POP3.php:505
-msgid "POP3 quit:"
-msgstr ""
-
-#: smail/plugins/mail_fetch/class.POP3.php:505
-msgid "connection does not exist"
-msgstr ""
-
-#: smail/plugins/mail_fetch/class.POP3.php:542
-#: smail/plugins/mail_fetch/class.POP3.php:554
-#: smail/plugins/mail_fetch/class.POP3.php:577
-msgid "POP3 uidl:"
-msgstr ""
-
-#: smail/plugins/mail_fetch/class.POP3.php:610
-#: smail/plugins/mail_fetch/class.POP3.php:615
-#: smail/plugins/mail_fetch/class.POP3.php:621
-msgid "POP3 delete:"
-msgstr ""
-
-#: smail/plugins/mail_fetch/class.POP3.php:615
-msgid "No msg number submitted"
-msgstr ""
-
-#: smail/plugins/mail_fetch/class.POP3.php:621
-msgid "Command failed "
-msgstr ""
-
-#: smail/plugins/mail_fetch/fetch.php:68
-msgid "Remote POP server Fetching Mail"
-msgstr ""
-
-#: smail/plugins/mail_fetch/fetch.php:77
-msgid "Select Server:"
-msgstr ""
-
-#: smail/plugins/mail_fetch/fetch.php:92
-msgid "Password for"
-msgstr ""
-
-#: smail/plugins/mail_fetch/fetch.php:99
-msgid "Fetch Mail"
-msgstr ""
-
-#: smail/plugins/mail_fetch/fetch.php:131
-msgid "Fetching from "
-msgstr ""
-
-#: smail/plugins/mail_fetch/fetch.php:138
-#: smail/plugins/mail_fetch/fetch.php:198
-msgid "Oops, "
-msgstr ""
-
-#: smail/plugins/mail_fetch/fetch.php:142
-msgid "Opening IMAP server"
-msgstr ""
-
-#: smail/plugins/mail_fetch/fetch.php:145
-msgid "Opening POP server"
-msgstr ""
-
-#: smail/plugins/mail_fetch/fetch.php:148
-#: smail/plugins/mail_fetch/setup.php:135
-msgid "Login Failed:"
-msgstr ""
-
-#: smail/plugins/mail_fetch/fetch.php:165
-msgid "Login OK: No new messages"
-msgstr ""
-
-#: smail/plugins/mail_fetch/fetch.php:170
-msgid "Login OK: Inbox EMPTY"
-msgstr ""
-
-#: smail/plugins/mail_fetch/fetch.php:175
-msgid "Login OK: Inbox contains ["
-msgstr ""
-
-#: smail/plugins/mail_fetch/fetch.php:175
-msgid "] messages"
-msgstr ""
-
-#: smail/plugins/mail_fetch/fetch.php:178
-msgid "Fetching UIDL..."
-msgstr ""
-
-#: smail/plugins/mail_fetch/fetch.php:183
-#: smail/plugins/mail_fetch/setup.php:166
-msgid "Server does not support UIDL."
-msgstr ""
-
-#: smail/plugins/mail_fetch/fetch.php:186
-msgid "Leaving Mail on Server..."
-msgstr ""
-
-#: smail/plugins/mail_fetch/fetch.php:188
-msgid "Deleting messages from server..."
-msgstr ""
-
-#: smail/plugins/mail_fetch/fetch.php:192
-msgid "Fetching message "
-msgstr ""
-
-#: smail/plugins/mail_fetch/fetch.php:215
-msgid "Message appended to mailbox"
-msgstr ""
-
-#: smail/plugins/mail_fetch/fetch.php:219
-msgid "Message "
-msgstr ""
-
-#: smail/plugins/mail_fetch/fetch.php:219
-msgid " deleted from Remote Server!"
-msgstr ""
-
-#: smail/plugins/mail_fetch/fetch.php:221
-msgid "Delete failed:"
-msgstr ""
-
-#: smail/plugins/mail_fetch/fetch.php:226
-#: smail/plugins/mail_fetch/setup.php:197
-msgid "Error Appending Message!"
-msgstr ""
-
-#: smail/plugins/mail_fetch/fetch.php:230
-msgid "Closing POP"
-msgstr ""
-
-#: smail/plugins/mail_fetch/fetch.php:232
-msgid "Logging out from IMAP"
-msgstr ""
-
-#: smail/plugins/mail_fetch/fetch.php:235
-msgid "Saving UIDL"
-msgstr ""
-
-#: smail/plugins/mail_fetch/options.php:149
-msgid "Remote POP server settings"
-msgstr ""
-
-#: smail/plugins/mail_fetch/options.php:151
-msgid ""
-"You should be aware that the encryption used to store your password is not "
-"perfectly secure.  However, if you are using pop, there is inherently no "
-"encryption anyway. Additionally, the encryption that we do to save it on the "
-"server can be undone by a hacker reading the source to this file."
-msgstr ""
-
-#: smail/plugins/mail_fetch/options.php:153
-msgid "If you leave password empty, it will be required when you fetch mail."
-msgstr ""
-
-#: smail/plugins/mail_fetch/options.php:157
-msgid "Encrypt passwords (informative only)"
-msgstr ""
-
-#: smail/plugins/mail_fetch/options.php:163
-#: smail/plugins/mail_fetch/options.php:190
-msgid "Add Server"
-msgstr ""
-
-#: smail/plugins/mail_fetch/options.php:167
-#: smail/plugins/mail_fetch/options.php:240
-msgid "Server:"
-msgstr ""
-
-#: smail/plugins/mail_fetch/options.php:168
-#: smail/plugins/mail_fetch/options.php:242
-msgid "Alias:"
-msgstr ""
-
-#: smail/plugins/mail_fetch/options.php:169
-#: smail/plugins/mail_fetch/options.php:244
-msgid "Username:"
-msgstr ""
-
-#: smail/plugins/mail_fetch/options.php:171
-#: smail/plugins/mail_fetch/options.php:248
-msgid "Store in Folder:"
-msgstr ""
-
-#: smail/plugins/mail_fetch/options.php:187
-#: smail/plugins/mail_fetch/options.php:268
-msgid "Leave Mail on Server"
-msgstr ""
-
-#: smail/plugins/mail_fetch/options.php:188
-#: smail/plugins/mail_fetch/options.php:270
-msgid "Check mail during login"
-msgstr ""
-
-#: smail/plugins/mail_fetch/options.php:189
-#: smail/plugins/mail_fetch/options.php:272
-msgid "Check mail during folder refresh"
-msgstr ""
-
-#: smail/plugins/mail_fetch/options.php:196
-#: smail/plugins/mail_fetch/options.php:273
-msgid "Modify Server"
-msgstr ""
-
-#: smail/plugins/mail_fetch/options.php:200
-msgid "Server Name:"
-msgstr ""
-
-#: smail/plugins/mail_fetch/options.php:206
-#: smail/plugins/mail_fetch/options.php:229
-msgid "Modify"
-msgstr ""
-
-#: smail/plugins/mail_fetch/options.php:210
-msgid "No-one server in use. Try to add."
-msgstr ""
-
-#: smail/plugins/mail_fetch/options.php:216
-#: smail/plugins/mail_fetch/options.php:231
-#: smail/plugins/mail_fetch/options.php:278
-msgid "Fetching Servers"
-msgstr ""
-
-#: smail/plugins/mail_fetch/options.php:220
-msgid "Confirm Deletion of a Server"
-msgstr ""
-
-#: smail/plugins/mail_fetch/options.php:224
-msgid "Selected Server:"
-msgstr ""
-
-#: smail/plugins/mail_fetch/options.php:225
-msgid "Confirm delete of selected server?"
-msgstr ""
-
-#: smail/plugins/mail_fetch/options.php:226
-msgid "Confirm Delete"
-msgstr ""
-
-#: smail/plugins/mail_fetch/options.php:235
-msgid "Mofify a Server"
-msgstr ""
-
-#: smail/plugins/mail_fetch/options.php:281
-msgid "Undefined Function"
-msgstr ""
-
-#: smail/plugins/mail_fetch/options.php:283
-msgid "Hey! Wath do You are looking for?"
-msgstr ""
-
-#: smail/plugins/mail_fetch/setup.php:29
-msgid "Fetch"
-msgstr ""
-
-#: smail/plugins/mail_fetch/setup.php:127
-#: smail/plugins/mail_fetch/setup.php:174
-msgid "Warning, "
-msgstr ""
-
-#: smail/plugins/mail_fetch/setup.php:210
-msgid "Mail Fetch Result:"
-msgstr ""
-
-#: smail/plugins/mail_fetch/setup.php:238
-msgid "Simple POP3 Fetch Mail"
-msgstr ""
-
-#: smail/plugins/mail_fetch/setup.php:240
-msgid ""
-"This configures settings for downloading email from a pop3 mailbox to your "
-"account on this server."
-msgstr ""
-
-#: smail/plugins/bug_report/setup.php:64
-msgid "Bug Reports:"
-msgstr ""
-
-#: smail/plugins/bug_report/setup.php:69
-msgid "Show button in toolbar"
-msgstr ""
-
-#: smail/plugins/sent_subfolders/setup.php:108
-msgid "Sent Subfolders Options"
-msgstr ""
-
-#: smail/plugins/sent_subfolders/setup.php:113
-msgid "Use Sent Subfolders"
-msgstr ""
-
-#: smail/plugins/sent_subfolders/setup.php:117
-msgid "Monthly"
-msgstr ""
-
-#: smail/plugins/sent_subfolders/setup.php:118
-msgid "Quarterly"
-msgstr ""
-
-#: smail/plugins/sent_subfolders/setup.php:119
-msgid "Yearly"
-msgstr ""
-
-#: smail/plugins/sent_subfolders/setup.php:134
-msgid "Base Sent Folder"
-msgstr ""
-
-#: smail/plugins/calendar/calendar.php:94
-msgid "TODAY"
-msgstr ""
-
-#: smail/plugins/calendar/day.php:58
-#: smail/plugins/calendar/event_create.php:145
-#: smail/plugins/calendar/event_delete.php:143
-msgid "l, F j Y"
-msgstr ""
-
-#: smail/plugins/calendar/day.php:104
-msgid "ADD"
-msgstr ""
-
-#: smail/plugins/calendar/day.php:118
-msgid "EDIT"
-msgstr ""
-
-#: smail/plugins/calendar/day.php:120
-msgid "DEL"
-msgstr ""
-
-#: smail/plugins/calendar/event_create.php:79
-msgid "Start time:"
-msgstr ""
-
-#: smail/plugins/calendar/event_create.php:89
-#: smail/plugins/calendar/event_edit.php:140
-msgid "Length:"
-msgstr ""
-
-#: smail/plugins/calendar/event_create.php:96
-#: smail/plugins/calendar/event_edit.php:146
-#: smail/plugins/calendar/event_edit.php:186
-#: smail/plugins/calendar/event_edit.php:199
-msgid "Priority:"
-msgstr ""
-
-#: smail/plugins/calendar/event_create.php:103
-#: smail/plugins/calendar/event_edit.php:153
-msgid "Notify:"
-msgstr ""
-
-#: smail/plugins/calendar/event_create.php:109
-#: smail/plugins/calendar/event_create.php:172
-#: smail/plugins/calendar/event_delete.php:94
-#: smail/plugins/calendar/event_edit.php:160
-#: smail/plugins/calendar/event_edit.php:188
-#: smail/plugins/calendar/event_edit.php:201
-msgid "Title:"
-msgstr ""
-
-#: smail/plugins/calendar/event_create.php:117
-msgid "Set Event"
-msgstr ""
-
-#: smail/plugins/calendar/event_create.php:167
-msgid "Event Has been added!"
-msgstr ""
-
-#: smail/plugins/calendar/event_create.php:170
-#: smail/plugins/calendar/event_delete.php:92
-#: smail/plugins/calendar/event_edit.php:130
-#: smail/plugins/calendar/event_edit.php:184
-msgid "Time:"
-msgstr ""
-
-#: smail/plugins/calendar/event_create.php:177
-#: smail/plugins/calendar/event_delete.php:149
-#: smail/plugins/calendar/event_edit.php:278
-#: smail/plugins/calendar/functions.php:26
-msgid "Day View"
-msgstr "نمایش روزانه"
-
-#: smail/plugins/calendar/event_delete.php:89
-msgid "Do you really want to delete this event?"
-msgstr ""
-
-#: smail/plugins/calendar/event_delete.php:147
-msgid "Event deleted!"
-msgstr ""
-
-#: smail/plugins/calendar/event_delete.php:155
-msgid "Nothing to delete!"
-msgstr ""
-
-#: smail/plugins/calendar/event_edit.php:168
-msgid "Update Event"
-msgstr ""
-
-#: smail/plugins/calendar/event_edit.php:180
-msgid "Do you really want to change this event from:"
-msgstr ""
-
-#: smail/plugins/calendar/event_edit.php:193
-msgid "to:"
-msgstr ""
-
-#: smail/plugins/calendar/event_edit.php:258
-msgid "l, F d Y"
-msgstr ""
-
-#: smail/plugins/calendar/event_edit.php:276
-msgid "Event updated!"
-msgstr ""
-
-#: smail/plugins/calendar/functions.php:24
-msgid "Month View"
-msgstr "نمایش ماهانه"
-
-#: smail/plugins/calendar/functions.php:37
-msgid "0 min."
-msgstr ""
-
-#: smail/plugins/calendar/functions.php:38
-msgid "15 min."
-msgstr ""
-
-#: smail/plugins/calendar/functions.php:39
-msgid "30 min."
-msgstr ""
-
-#: smail/plugins/calendar/functions.php:40
-msgid "45 min."
-msgstr ""
-
-#: smail/plugins/calendar/functions.php:41
-msgid "1 hr."
-msgstr ""
-
-#: smail/plugins/calendar/functions.php:42
-msgid "1.5 hr."
-msgstr ""
-
-#: smail/plugins/calendar/functions.php:43
-msgid "2 hr."
-msgstr ""
-
-#: smail/plugins/calendar/functions.php:44
-msgid "2.5 hr."
-msgstr ""
-
-#: smail/plugins/calendar/functions.php:45
-msgid "3 hr."
-msgstr ""
-
-#: smail/plugins/calendar/functions.php:46
-msgid "3.5 hr."
-msgstr ""
-
-#: smail/plugins/calendar/functions.php:47
-msgid "4 hr."
-msgstr ""
-
-#: smail/plugins/calendar/functions.php:48
-msgid "5 hr."
-msgstr ""
-
-#: smail/plugins/calendar/functions.php:49
-msgid "6 hr."
-msgstr ""
-
-#: smail/plugins/calendar/functions.php:187
-msgid "Don't Email Me"
-msgstr ""
-
-#: smail/plugins/calendar/functions.php:188
-msgid "Email Me - 0m prior"
-msgstr ""
-
-#: smail/plugins/calendar/functions.php:189
-msgid "Email Me - 5m prior"
-msgstr ""
-
-#: smail/plugins/calendar/functions.php:190
-msgid "Email Me - 15m prior"
-msgstr ""
-
-#: smail/plugins/calendar/functions.php:191
-msgid "Email Me - 30m prior"
-msgstr ""
-
-#: smail/plugins/calendar/functions.php:192
-msgid "Email Me - 1h prior"
-msgstr ""
-
-#: smail/plugins/calendar/functions.php:193
-msgid "Email Me - 4h prior"
-msgstr ""
-
-#: smail/plugins/calendar/functions.php:194
-msgid "Email Me - 1d prior"
-msgstr ""
-
-#: smail/plugins/calendar/setup.php:24
-msgid "Calendar"
-msgstr ""
-
-#: smail/plugins/listcommands/mailout.php:26
-msgid "Mailinglist"
-msgstr ""
-
-#: smail/plugins/listcommands/mailout.php:32
-#, c-format
-msgid ""
-"This will send a message to %s requesting help for this list. You will "
-"receive an emailed response at the address below."
-msgstr ""
-
-#: smail/plugins/listcommands/mailout.php:35
-#, c-format
-msgid ""
-"This will send a message to %s requesting that you will be subscribed to "
-"this list. You will be subscribed with the address below."
-msgstr ""
-
-#: smail/plugins/listcommands/mailout.php:38
-#, c-format
-msgid ""
-"This will send a message to %s requesting that you will be unsubscribed from "
-"this list. It will try to unsubscribe the adress below."
-msgstr ""
-
-#: smail/plugins/listcommands/mailout.php:86
-msgid "Send Mail"
-msgstr ""
-
-#: smail/plugins/listcommands/setup.php:31
-msgid "Post to List"
-msgstr ""
-
-#: smail/plugins/listcommands/setup.php:32
-msgid "Reply to List"
-msgstr ""
-
-#: smail/plugins/listcommands/setup.php:35
-msgid "List Archives"
-msgstr ""
-
-#: smail/plugins/listcommands/setup.php:36
-msgid "Contact Listowner"
-msgstr ""
-
-#: smail/plugins/listcommands/setup.php:113
-msgid "Mailing List:"
-msgstr ""
-
-#: smail/plugins/delete_move_next/setup.php:181
-#: smail/plugins/delete_move_next/setup.php:184
-msgid "Delete & Prev"
-msgstr ""
-
-#: smail/plugins/delete_move_next/setup.php:187
-#: smail/plugins/delete_move_next/setup.php:189
-msgid "Delete & Next"
-msgstr ""
-
-#: smail/plugins/delete_move_next/setup.php:322
-msgid "Delete/Move/Next Buttons:"
-msgstr ""
-
-#: smail/plugins/delete_move_next/setup.php:328
-msgid "Display at top"
-msgstr ""
-
-#: smail/plugins/delete_move_next/setup.php:334
-#: smail/plugins/delete_move_next/setup.php:346
-msgid "with move option"
-msgstr ""
-
-#: smail/plugins/delete_move_next/setup.php:340
-msgid "Display at bottom"
-msgstr ""
-
-#: smail/plugins/administrator/defines.php:48
-msgid "Config File Version"
-msgstr ""
-
-#: smail/plugins/administrator/defines.php:51
-msgid "smail Version"
-msgstr ""
-
-#: smail/plugins/administrator/defines.php:54
-msgid "PHP Version"
-msgstr ""
-
-#: smail/plugins/administrator/defines.php:58
-msgid "Organization Preferences"
-msgstr ""
-
-#: smail/plugins/administrator/defines.php:60
-msgid "Organization Name"
-msgstr ""
-
-#: smail/plugins/administrator/defines.php:63
-msgid "Organization Logo"
-msgstr ""
-
-#: smail/plugins/administrator/defines.php:66
-msgid "Organization Logo Width"
-msgstr ""
-
-#: smail/plugins/administrator/defines.php:70
-msgid "Organization Logo Height"
-msgstr ""
-
-#: smail/plugins/administrator/defines.php:74
-msgid "Organization Title"
-msgstr ""
-
-#: smail/plugins/administrator/defines.php:77
-msgid "Signout Page"
-msgstr "صفحه خروج"
-
-#: smail/plugins/administrator/defines.php:80
-msgid "Default Language"
-msgstr ""
-
-#: smail/plugins/administrator/defines.php:84
-msgid "Top Frame"
-msgstr ""
-
-#: smail/plugins/administrator/defines.php:89
-msgid "Server Settings"
-msgstr ""
-
-#: smail/plugins/administrator/defines.php:91
-msgid "Mail Domain"
-msgstr ""
-
-#: smail/plugins/administrator/defines.php:94
-msgid "IMAP Server Address"
-msgstr ""
-
-#: smail/plugins/administrator/defines.php:97
-msgid "IMAP Server Port"
-msgstr ""
-
-#: smail/plugins/administrator/defines.php:99
-msgid "IMAP Server Type"
-msgstr ""
-
-#: smail/plugins/administrator/defines.php:101
-msgid "Cyrus IMAP server"
-msgstr ""
-
-#: smail/plugins/administrator/defines.php:102
-msgid "University of Washington's IMAP server"
-msgstr ""
-
-#: smail/plugins/administrator/defines.php:103
-msgid "Microsoft Exchange IMAP server"
-msgstr ""
-
-#: smail/plugins/administrator/defines.php:104
-msgid "Courier IMAP server"
-msgstr ""
-
-#: smail/plugins/administrator/defines.php:105
-msgid "Not one of the above servers"
-msgstr ""
-
-#: smail/plugins/administrator/defines.php:106
-msgid "IMAP Folder Delimiter"
-msgstr ""
-
-#: smail/plugins/administrator/defines.php:108
-msgid "Use \"detect\" to auto-detect."
-msgstr ""
-
-#: smail/plugins/administrator/defines.php:111
-msgid "Use Sendmail"
-msgstr ""
-
-#: smail/plugins/administrator/defines.php:113
-msgid "Sendmail Path"
-msgstr ""
-
-#: smail/plugins/administrator/defines.php:116
-msgid "SMTP Server Address"
-msgstr ""
-
-#: smail/plugins/administrator/defines.php:119
-msgid "SMTP Server Port"
-msgstr ""
-
-#: smail/plugins/administrator/defines.php:121
-msgid "Authenticated SMTP"
-msgstr ""
-
-#: smail/plugins/administrator/defines.php:123
-msgid "Invert Time"
-msgstr ""
-
-#: smail/plugins/administrator/defines.php:125
-msgid "Use Confirmation Flags"
-msgstr ""
-
-#: smail/plugins/administrator/defines.php:128
-msgid "Folders Defaults"
-msgstr ""
-
-#: smail/plugins/administrator/defines.php:130
-msgid "Default Folder Prefix"
-msgstr ""
-
-#: smail/plugins/administrator/defines.php:133
-msgid "Show Folder Prefix Option"
-msgstr ""
-
-#: smail/plugins/administrator/defines.php:144
-msgid "By default, move to trash"
-msgstr ""
-
-#: smail/plugins/administrator/defines.php:146
-msgid "By default, move to sent"
-msgstr ""
-
-#: smail/plugins/administrator/defines.php:148
-msgid "By default, save as draft"
-msgstr ""
-
-#: smail/plugins/administrator/defines.php:150
-msgid "List Special Folders First"
-msgstr ""
-
-#: smail/plugins/administrator/defines.php:152
-msgid "Show Special Folders Color"
-msgstr ""
-
-#: smail/plugins/administrator/defines.php:154
-msgid "Auto Expunge"
-msgstr ""
-
-#: smail/plugins/administrator/defines.php:156
-msgid "Default Sub. of INBOX"
-msgstr ""
-
-#: smail/plugins/administrator/defines.php:158
-msgid "Show 'Contain Sub.' Option"
-msgstr ""
-
-#: smail/plugins/administrator/defines.php:160
-msgid "Default Unseen Notify"
-msgstr ""
-
-#: smail/plugins/administrator/defines.php:165
-msgid "Default Unseen Type"
-msgstr ""
-
-#: smail/plugins/administrator/defines.php:169
-msgid "Auto Create Special Folders"
-msgstr ""
-
-#: smail/plugins/administrator/defines.php:171
-msgid "Default Javascript Adrressbook"
-msgstr ""
-
-#: smail/plugins/administrator/defines.php:173
-msgid "Auto delete folders"
-msgstr ""
-
-#: smail/plugins/administrator/defines.php:176
-msgid "General Options"
-msgstr ""
-
-#: smail/plugins/administrator/defines.php:178
-msgid "Default Charset"
-msgstr ""
-
-#: smail/plugins/administrator/defines.php:189
-msgid "Data Directory"
-msgstr ""
-
-#: smail/plugins/administrator/defines.php:192
-msgid "Temp Directory"
-msgstr ""
-
-#: smail/plugins/administrator/defines.php:195
-msgid "Hash Level"
-msgstr ""
-
-#: smail/plugins/administrator/defines.php:197
-msgid "Hash Disabled"
-msgstr ""
-
-#: smail/plugins/administrator/defines.php:199
-msgid "Moderate"
-msgstr ""
-
-#: smail/plugins/administrator/defines.php:200
-msgid "Medium"
-msgstr ""
-
-#: smail/plugins/administrator/defines.php:202
-msgid "Default Left Size"
-msgstr ""
-
-#: smail/plugins/administrator/defines.php:205
-msgid "Usernames in Lowercase"
-msgstr ""
-
-#: smail/plugins/administrator/defines.php:207
-msgid "Allow use of priority"
-msgstr ""
-
-#: smail/plugins/administrator/defines.php:209
-msgid "Hide SM attributions"
-msgstr ""
-
-#: smail/plugins/administrator/defines.php:211
-msgid "Enable use of delivery receipts"
-msgstr ""
-
-#: smail/plugins/administrator/defines.php:213
-msgid "Allow editing of identities"
-msgstr ""
-
-#: smail/plugins/administrator/defines.php:215
-msgid "Allow editing of full name"
-msgstr ""
-
-#: smail/plugins/administrator/defines.php:218
-#: smail/plugins/administrator/defines.php:220
-msgid "Message of the Day"
-msgstr ""
-
-#: smail/plugins/administrator/defines.php:224
-msgid "Database"
-msgstr ""
-
-#: smail/plugins/administrator/defines.php:226
-msgid "Address book DSN"
-msgstr ""
-
-#: smail/plugins/administrator/defines.php:229
-msgid "Address book table"
-msgstr ""
-
-#: smail/plugins/administrator/defines.php:233
-msgid "Preferences DSN"
-msgstr ""
-
-#: smail/plugins/administrator/defines.php:236
-msgid "Preferences table"
-msgstr ""
-
-#: smail/plugins/administrator/defines.php:240
-msgid "Preferences username field"
-msgstr ""
-
-#: smail/plugins/administrator/defines.php:244
-msgid "Preferences key field"
-msgstr ""
-
-#: smail/plugins/administrator/defines.php:248
-msgid "Preferences value field"
-msgstr ""
-
-#: smail/plugins/administrator/defines.php:253
-msgid "Themes"
-msgstr ""
-
-#: smail/plugins/administrator/defines.php:255
-msgid "Style Sheet URL (css)"
-msgstr ""
-
-#: smail/plugins/administrator/options.php:193
-msgid "Configuration Administrator"
-msgstr ""
-
-#: smail/plugins/administrator/options.php:386
-msgid "Theme Name"
-msgstr ""
-
-#: smail/plugins/administrator/options.php:387
-msgid "Theme Path"
-msgstr ""
-
-#: smail/plugins/administrator/options.php:425
-msgid "Plugins"
-msgstr ""
-
-#: smail/plugins/administrator/options.php:487
-msgid "Change Settings"
-msgstr ""
-
-#: smail/plugins/administrator/options.php:538
-msgid "Config file can't be opened. Please check config.php."
-msgstr ""
-
-#: smail/plugins/administrator/setup.php:30
-msgid "Administration"
-msgstr ""
-
-#: smail/plugins/administrator/setup.php:32
-msgid ""
-"This module allows administrators to manage smail main configuration "
-"remotely."
-msgstr ""
-
-#: smail/po/independent_strings.txt:18
 msgid "Delivery error report"
-msgstr ""
+msgstr "گزارش خطا در ارسال"
 
-#: smail/po/independent_strings.txt:19
 msgid "Undelivered Message Headers"
-msgstr ""
+msgstr "سرآمدهای پیغام منتقل نشده"
 
-#~ msgid "Close window"
-#~ msgstr "Sulge aken"
+#~ msgid "Add to:"
+#~ msgstr "اضافه به:"
 
-#~ msgid "empty"
-#~ msgstr "thi"
+#~ msgid "Check mail"
+#~ msgstr "بازخوانی"
 
-#~ msgid "Welcome to %s's WebMail system"
-#~ msgstr "Tere tulemast %s postissteemi"
+#~ msgid "Invalid URL"
+#~ msgstr "URL نادرست"
 
-#~ msgid "Running smail version %s (c) 1999-2001."
-#~ msgstr "smail %s (c) 1999-2001."
-
-#~ msgid "Unknown messagenumber in reply from server: "
-#~ msgstr "Tundmatu kirja number serveri vastuses: "
+#~ msgid "Signout"
+#~ msgstr "خروج"
 
 #~ msgid ""
-#~ "FREE - Another ORBS replacement (just the INPUTS database used here)."
+#~ "vCard Version %s is not supported. Some information might not be "
+#~ "converted correctly."
 #~ msgstr ""
-#~ "FREE - Another ORBS replacement (just the INPUTS database used here)."
+#~ "vCard نسخه %s پشتیبانی نمی‌شود. بعضی از اطلاعات ممکن است به درستی تبدیل "
+#~ "نشوند."
 
-#~ msgid ""
-#~ "FREE - Another ORBS replacement (just the OUTPUTS database used here)."
-#~ msgstr ""
-#~ "FREE - Another ORBS replacement (just the OUTPUTS database used here)."
+#~ msgid "Signature is too big."
+#~ msgstr "امضا زیادی طولانی است."
 
-#~ msgid ""
-#~ "FREE - ORBL is another ORBS spinoff formed after ORBS shut down. May be "
-#~ "SLOOOOOOW!"
-#~ msgstr ""
-#~ "FREE - ORBL is another ORBS spinoff formed after ORBS shut down. May be "
-#~ "SLOOOOOOW!"
+#~ msgid "No focus"
+#~ msgstr "مرورگر"
 
-#~ msgid "FREE - orbz.gst-group.co.uk - Inputs only."
-#~ msgstr "FREE - orbz.gst-group.co.uk - Inputs only."
+#~ msgid "Folder"
+#~ msgstr "پوشه"
 
-#~ msgid "FREE - orbz.gst-group.co.uk - Outputs only."
-#~ msgstr "FREE - orbz.gst-group.co.uk - Outputs only."
+#~ msgid "Subfolder"
+#~ msgstr "زیرپوشه"
 
-#~ msgid ""
-#~ "FREE - orbz.gst-group.co.uk - mailservers that refuse or bounce email "
-#~ "addressed to postmaster@<theirdomain>."
-#~ msgstr ""
-#~ "FREE - orbz.gst-group.co.uk - mailservers that refuse or bounce email "
-#~ "addressed to postmaster@<theirdomain>."
+#~ msgid "Language settings"
+#~ msgstr "تنظیمات زبان"
 
-#~ msgid "SECURITY BREACH ON DECK 5! CMDR TUVOK AND SECURITY TEAM REQUESTED."
-#~ msgstr "SECURITY BREACH ON DECK 5! CMDR TUVOK AND SECURITY TEAM REQUESTED."
+#~ msgid "You must select a spam folder."
+#~ msgstr "شما باید یک پوشه برای هرزنامه‌ها انتخاب کنید."
 
-#~ msgid "Yes, show me the HTML version of a mail message, if it is available."
-#~ msgstr "Vimaluse korral n?datakse kirja HTML versiooni."
+#~ msgid "You must select a scan type."
+#~ msgstr "شما باید نوع پویش را مشخص کنید."
 
-#~ msgid "Include Self"
-#~ msgstr "Enese lisamine"
+#~ msgid "Unread messages only"
+#~ msgstr "فقط پیغام‌های خوانده نشده"
 
-#~ msgid "Don't remove me from the CC addresses when I use \"Reply All\""
-#~ msgstr "Vastates kigile lisatakse CC lahtrisse ka minu aadress."
+#~ msgid "Plugin is disabled."
+#~ msgstr "متصل‌شونده فعال نیست."
 
-#~ msgid "Show page selector"
-#~ msgstr "Leheklje valiku lubamine"
+#~ msgid "Bodystructure"
+#~ msgstr "ساختار بدنه"
 
-#~ msgid "pages max"
-#~ msgstr "leheklge maksimaalselt"
+#~ msgid "Content-Type"
+#~ msgstr "نوع محتویات"
 
-#~ msgid "Collapseable folders"
-#~ msgstr "Avanevate kaustade lubamine"
+#~ msgid "You have %s new message"
+#~ msgstr "شما %s پیغام جدید دارید"
 
-#~ msgid "Date format"
-#~ msgstr "Kellaaja vorming"
+#~ msgid "You have %s new messages"
+#~ msgstr "شما %s پیغام جدید دارید"
 
-#~ msgid "Author's Name"
-#~ msgstr "Autori nimi"
+#~ msgid "Before you sign up, be warned"
+#~ msgstr "قبل از ثبت نام، آگاه باشید"
 
-#~ msgid "Successfully saved display preferences!"
-#~ msgstr "V?imuse seadistuste salvestamine nnestus!"
+#~ msgid "More information"
+#~ msgstr "اطلاعات بیشتر"
 
-#~ msgid "Successfully saved folder preferences!"
-#~ msgstr "Kaustade seadistuste salvestamine nnestus!"
+#~ msgid "Chinese, Simplified"
+#~ msgstr "چینی ساده‌شده"
 
-#~ msgid "total"
-#~ msgstr "kokku"
+#~ msgid "Chinese, Traditional"
+#~ msgstr "چینی سنتی"
 
+#~ msgid "Filipino (Tagalog)"
+#~ msgstr "فلیپینی"
+
+#~ msgid "This image has been removed for security reasons"
+#~ msgstr "این تصویر به دلایل امنیتی حذف شده است"
