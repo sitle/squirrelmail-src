@@ -5,9 +5,9 @@
 # $Id$
 msgid ""
 msgstr ""
-"Project-Id-Version: SquirrelMail HEAD\n"
-"POT-Creation-Date: 2004-12-09 02:10+0100\n"
-"PO-Revision-Date: 2004-12-09 02:19+0100\n"
+"Project-Id-Version: SquirrelMail SM-1_4_4\n"
+"POT-Creation-Date: 2004-12-28 13:33+0200\n"
+"PO-Revision-Date: 2004-12-30 10:54+0100\n"
 "Last-Translator: Fredrik Jervfors <sqm_admin@fimbul.net>\n"
 "Language-Team: Swedish <squirrelmail-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -1798,6 +1798,12 @@ msgstr "Microsoft Exchange IMAP-server"
 msgid "Courier IMAP server"
 msgstr "Courier IMAP-server"
 
+msgid "Mac OS X Mailserver"
+msgstr "Mac OS X e-postserver"
+
+msgid "hMailServer IMAP server"
+msgstr "hMailServer IMAP-server"
+
 msgid "Not one of the above servers"
 msgstr "Ingen av ovanstående servrar"
 
@@ -2986,9 +2992,7 @@ msgstr "Avisering från SquirrelMail:"
 
 #, c-format
 msgid "You have %s new message"
-msgid_plural "You have %s new messages"
-msgstr[0] "Du har %s nytt brev"
-msgstr[1] "Du har %s nya brev"
+msgstr "Du har %s nytt brev"
 
 #, c-format
 msgid "You have %s new messages"
@@ -3092,18 +3096,13 @@ msgstr ""
 "Aviseringen består av ett ljud och/eller ett popup-fönster när nya brev "
 "inkommer."
 
-msgid "New Mail Notification options saved"
-msgstr "Inställningarna för avisering vid nyinkomna brev har sparats"
-
 #, c-format
 msgid "%s New Messages"
 msgstr "%s nya brev"
 
 #, c-format
 msgid "%s New Message"
-msgid_plural "%s New Messages"
-msgstr[0] "%s nytt brev"
-msgstr[1] "%s nya brev"
+msgstr "%s nytt brev"
 
 msgid "Test Sound"
 msgstr "Testa ljud"
@@ -3736,9 +3735,6 @@ msgstr "Inga kända begränsningar (använder Translation Experts' InterTran)"
 msgid "Number of supported languages: %s"
 msgstr "Antal språk som stödjs: %s"
 
-msgid "No known limits, powered by GPLTrans (free, open source)"
-msgstr "Inga kända begränsningar (använder GPLTrans (fri, öppen källkod)"
-
 msgid "Hellenic translations, no known limits, powered by Systran"
 msgstr "Helleniska översättningar, inga kända begränsningar (använder Systran)"
 
@@ -3773,12 +3769,6 @@ msgstr "till höger"
 msgid "Translate inside the SquirrelMail frames"
 msgstr "Översätt inom SquirrelMails ramar"
 
-msgid "When composing:"
-msgstr "Vid skrivning:"
-
-msgid "Not yet functional, currently does nothing"
-msgstr "Ej implementerat"
-
 msgid "Translation Options"
 msgstr "Översättningsinställningar"
 
@@ -3791,17 +3781,26 @@ msgstr "Vilken översättare skall användas om du får brev i ett annat språk?"
 msgid "%s to %s"
 msgstr "%s till %s"
 
+msgid "Chinese, Simplified"
+msgstr "Kinsiska, förenklad"
+
 msgid "English"
 msgstr "Engelska"
 
-msgid "Chinese"
-msgstr "Kinesiska"
+msgid "Chinese, Traditional"
+msgstr "Kinesiska, traditionell"
+
+msgid "Dutch"
+msgstr "Holländska"
 
 msgid "French"
 msgstr "Franska"
 
 msgid "German"
 msgstr "Tyska"
+
+msgid "Greek"
+msgstr "Grekiska"
 
 msgid "Italian"
 msgstr "Italienska"
@@ -3815,11 +3814,11 @@ msgstr "Koreanska"
 msgid "Portuguese"
 msgstr "Portugisiska"
 
-msgid "Spanish"
-msgstr "Spanska"
-
 msgid "Russian"
 msgstr "Ryska"
+
+msgid "Spanish"
+msgstr "Spanska"
 
 msgid "Translate"
 msgstr "Översätt"
@@ -3839,23 +3838,20 @@ msgstr "Tjeckiska"
 msgid "Danish"
 msgstr "Danska"
 
-msgid "Dutch"
-msgstr "Holländska"
-
-msgid "European Spanish"
-msgstr "Europeisk spanska"
+msgid "Filipino (Tagalog)"
+msgstr "Filippinska (Tagalog)"
 
 msgid "Finnish"
 msgstr "Finska"
-
-msgid "Greek"
-msgstr "Grekiska"
 
 msgid "Hungarian"
 msgstr "Ungerska"
 
 msgid "Icelandic"
 msgstr "Isländska"
+
+msgid "Latin"
+msgstr "Latin"
 
 msgid "Latin American Spanish"
 msgstr "Latinamerikansk spanska"
@@ -3887,9 +3883,6 @@ msgstr "Walesiska"
 msgid "Indonesian"
 msgstr "Indonesiska"
 
-msgid "Latin"
-msgstr "Latin"
-
 msgid "to English"
 msgstr "till Engelska"
 
@@ -3901,535 +3894,6 @@ msgstr "Språk för gränssnittet"
 
 msgid "Translation direction"
 msgstr "Översättningsriktning"
-
-msgid "sort by nickname"
-msgstr "Sortera efter kortnamn"
-
-msgid "sort by name"
-msgstr "Sortera efter namn"
-
-msgid "sort by email"
-msgstr "Sortera efter e-postadress"
-
-msgid "sort by info"
-msgstr "Sortera efter information"
-
-msgid "Add to address book"
-msgstr "Lägg till i adressboken"
-
-msgid "Purge"
-msgstr "Töm"
-
-msgid "Error(s) happened while saving your options"
-msgstr "Fel uppstod när inställningarna sparades"
-
-msgid "Some of your preference changes are not applied."
-msgstr "En del av ändringarna kommer inte att tillämpas."
-
-msgid "As Attachment"
-msgstr "som bilaga"
-
-msgid "Bypass Trash"
-msgstr "Kringgå papperskorgen"
-
-msgid "Please enter something to search for"
-msgstr "Ange något att söka efter"
-
-msgid "There must be at least one criteria to search for"
-msgstr "Det måste finnas minst ett sökkriterium"
-
-msgid "Error in criteria argument"
-msgstr "Fel i kriteriumet"
-
-msgid "(Illegal date)"
-msgstr "(Otillåtet datum)"
-
-msgid "(Wrong date)"
-msgstr "(Fel datum)"
-
-msgid "In"
-msgstr "Sök i"
-
-msgid "(Missing argument)"
-msgstr "(Saknat argument)"
-
-msgid "(Spurious argument)"
-msgstr "(Falskt argument)"
-
-msgid "Fold"
-msgstr "Dölj"
-
-msgid "Unfold"
-msgstr "Visa"
-
-msgid "Saved Searches"
-msgstr "Sparade sökningar"
-
-msgid "Missing"
-msgstr "Saknas"
-
-msgid "and&nbsp;subfolders:"
-msgstr "och&nbsp;undermappar:"
-
-msgid "Exclude Criteria:"
-msgstr "Uteslut kriterium:"
-
-msgid "Search Criteria"
-msgstr "Sökkriterier"
-
-msgid "Add New Criteria"
-msgstr "Lägg till nya kriterier"
-
-msgid "Remove Excluded Criteria"
-msgstr "Ta bort uteslutna kriterier"
-
-msgid "Remove All Criteria"
-msgstr "Ta bort alla kriterier"
-
-msgid "Not"
-msgstr "Inte"
-
-msgid "Answered"
-msgstr "Besvarad"
-
-msgid "Before"
-msgstr "Innan"
-
-msgid "Message Body"
-msgstr "Brevtext"
-
-msgid "Deleted"
-msgstr "Borttagen"
-
-msgid "Draft"
-msgstr "Utkast"
-
-msgid "Flagged"
-msgstr "Markerat"
-
-msgid "Sent By"
-msgstr "Skickad av"
-
-msgid "Header Field"
-msgstr "Fält i huvud"
-
-msgid "Keyword"
-msgstr "Nyckelord"
-
-msgid "Larger Than"
-msgstr "Större än"
-
-msgid "Old"
-msgstr "Gammal"
-
-msgid "On"
-msgstr "På"
-
-msgid "Recent"
-msgstr "Nyligen"
-
-msgid "Seen"
-msgstr "Läst"
-
-msgid "Sent Before"
-msgstr "Skickat innan"
-
-msgid "Sent On"
-msgstr "Skickat den"
-
-msgid "Sent Since"
-msgstr "Skickat sedan"
-
-msgid "Since"
-msgstr "Sedan"
-
-msgid "Smaller Than"
-msgstr "Mindre än"
-
-msgid "Subject Contains"
-msgstr "Ärendet innehåller"
-
-msgid "Header and Body"
-msgstr "Huvud och text"
-
-msgid "Sent To"
-msgstr "Skickat till"
-
-msgid "And In"
-msgstr "och i"
-
-msgid "Or In"
-msgstr "eller i"
-
-msgid "And"
-msgstr "och"
-
-msgid "Or"
-msgstr "eller"
-
-msgid "Standard search"
-msgstr "Standardsökning"
-
-msgid "Advanced search"
-msgstr "Avancerad sökning"
-
-msgid "Folder List"
-msgstr "Lista över mappar"
-
-msgid "Click here to change the sorting of the address list"
-msgstr "Ändra sorteringen av adresslistan"
-
-msgid "Possible reason : "
-msgstr "Trolig orsak : "
-
-msgid "ERROR : Bad function call."
-msgstr "FEL : Felaktigt funktionsanrop."
-
-msgid "Reason:"
-msgstr "Orsak:"
-
-msgid "Server responded:"
-msgstr "Servern svarade:"
-
-msgid ""
-"TLS is enabled, but this version of PHP does not support TLS sockets, or is "
-"missing the openssl extension."
-msgstr ""
-"TLS är aktiverat, men denna version av PHP stödjer inte TLS-uttag, eller "
-"saknar OpenSSL-utbyggnaden."
-
-msgid "Unknown recipient"
-msgstr "Okänd mottagare"
-
-msgid "Unflag"
-msgstr "Avmarkera"
-
-msgid "Flag"
-msgstr "Markera"
-
-msgid "Click here to change the sorting of the message list"
-msgstr "Ändrar sorteringen av brevlistan"
-
-msgid "Message Flags Icon Theme"
-msgstr "Tema för brevikoner"
-
-msgid "Show Flag / Unflag Buttons"
-msgstr "Visa knapparna &quot;Markera&quot; och &quot;Avmarkera&quot;"
-
-msgid "Use Compact Page Selector"
-msgstr "Använd kompakt sidväljare"
-
-msgid "Length of From/To Field (0 for full)"
-msgstr "Längd på från-/till-fältet (0 för full längd)"
-
-msgid "Length of Subject Field (0 for full)"
-msgstr "Längd på ärendefältet (0 för full längd)"
-
-msgid "Show recipient name if the message is from your default identity"
-msgstr "Visa mottagarnamn om brevet är från din egen huvudidentitet"
-
-msgid "Prefix for Original Message when Replying"
-msgstr "Tecken som inleder citerade rader när brev besvaras"
-
-msgid "Strip signature when replying"
-msgstr "Avlägsna brevfot vid svar"
-
-msgid "Show 'Delete & Prev/Next' Links"
-msgstr "Visa Kasta och visa föregående/nästa-länkar."
-
-msgid "Save Replies with Original Message"
-msgstr "Spara svar ihop med det ursprungliga brevet"
-
-msgid "XP"
-msgstr "XP"
-
-msgid "Hide SquirrelMail Header"
-msgstr "Dölj SquirrelMail-poster i brevhuvudet"
-
-msgid "Search functions"
-msgstr "Sökfunktioner"
-
-msgid "Only basic search"
-msgstr "Endast standardsökning"
-
-msgid "Only advanced search"
-msgstr "Endast avancerad sökning"
-
-msgid "Both search functions"
-msgstr "Båda sökfunktionerna"
-
-msgid "Show alternative language names"
-msgstr "Visa alternativa språknamn"
-
-msgid "Available languages"
-msgstr "Tillgängliga språk"
-
-msgid "Enable aggressive decoding"
-msgstr "Använd aggressiv avkodning"
-
-msgid "Tweaks"
-msgstr "Finjusteringar"
-
-msgid "Use advanced tree folder listing"
-msgstr "Använd avancerad mappträdlista"
-
-msgid "Use old folder listing functions"
-msgstr "Använd gamla mapplistefunktioner"
-
-msgid "Use icons"
-msgstr "Använd ikoner"
-
-msgid "Use php recode functions"
-msgstr "Använd PHP-omkodningsfunktioner"
-
-msgid "Use php iconv functions"
-msgstr "Använd PHP:s iconv-funktioner"
-
-msgid "Search Mailing List Archives"
-msgstr "Sök i e-postlistornas arkiv (på engelska)"
-
-msgid "Search SourceForge Bugtracker"
-msgstr "Sök i SourceForges Bugtracker (på engelska)"
-
-msgid "Search for words:"
-msgstr "Sök efter orden:"
-
-msgid "Written by:"
-msgstr "Skrivet av:"
-
-msgid "Email addresses only"
-msgstr "Endast e-postadresser"
-
-msgid "Mailing list:"
-msgstr "E-postlista:"
-
-msgid "SquirrelMail users list"
-msgstr "SquirrelMail users list"
-
-msgid "SquirrelMail plugins list"
-msgstr "SquirrelMail plugins list"
-
-msgid "SquirrelMail developers list"
-msgstr "SquirrelMail developers list"
-
-msgid "SquirrelMail internationalization list"
-msgstr "SquirrelMail internationalization list"
-
-msgid "Sort by:"
-msgstr "Sortera efter:"
-
-msgid "Relevance"
-msgstr "Relevans"
-
-msgid "Search Archives"
-msgstr "Sök i arkivet"
-
-msgid "Reset Form"
-msgstr "Återställ formuläret"
-
-msgid "Summary keyword:"
-msgstr "Ord i sammanfattningen:"
-
-msgid "Sort By:"
-msgstr "Sortera efter:"
-
-msgid "ID"
-msgstr "ID"
-
-msgid "Summary"
-msgstr "Sammanfattning"
-
-msgid "Open Date"
-msgstr "Öppningsdatum"
-
-msgid "Close Date"
-msgstr "Stängningsdatum"
-
-msgid "Submitter"
-msgstr "Insändare"
-
-msgid "Assignee"
-msgstr "Uppdragsinnehavare"
-
-msgid "Order:"
-msgstr "Ordning:"
-
-msgid "Ascending"
-msgstr "Stigande"
-
-msgid "Descending"
-msgstr "Fallande"
-
-msgid "Search Bugtracker"
-msgstr "Sök i Bugtracker"
-
-msgid "Show system specs"
-msgstr "Visa systemspecifikationerna"
-
-msgid "You must type in a new password."
-msgstr "Du måste ange ditt nya lösenord."
-
-msgid "You must also type in your new password in the verify box."
-msgstr "Du måste även ange ditt nya lösenord i verifikationsrutan."
-
-msgid "Your new password does not match the verify password."
-msgstr "Det nya lösenordet och verifikationen därav överensstämmer inte."
-
-msgid "You must type in your current password."
-msgstr "Du måste ange ditt nuvarande lösenord."
-
-msgid "Your current password is not correct."
-msgstr "Ditt nuvarade lösenord är inte korrekt angivet."
-
-#, c-format
-msgid "Your new password should be %s to %s characters long."
-msgstr "Ditt nya lösenord ska bestå av %s till %s tecken."
-
-msgid "Your new password contains invalid characters."
-msgstr "Ditt nya lösenord innehåller otillåtna tecken"
-
-msgid "Change Password"
-msgstr "Byt lösenord"
-
-msgid "Current Password:"
-msgstr "Ditt nuvarande lösenord:"
-
-msgid "New Password:"
-msgstr "Ditt nya lösenord:"
-
-msgid "Verify New Password:"
-msgstr "Verifiera det nya lösenordet:"
-
-msgid "Use this to change your email password."
-msgstr "Byt lösenordet till ditt e-postkonto."
-
-msgid "Curl module NOT available! Unable to change password!"
-msgstr "Curl-modulen är inte tillgänglig. Det gick inte att byta lösenordet!"
-
-msgid "Cannot change password! (Is user 'Self Configurable User' ?) (401)"
-msgstr ""
-"Det gick inte att byta lösenordet! (Har användaren "
-"administrationsrättigheter? Fel: 401)"
-
-msgid "Cannot change password!"
-msgstr "Det gick inte att byta lösenordet!"
-
-msgid "Cannot connect to Database Server, please try later!"
-msgstr "Kan inte ansluta till databasservern. Försök igen senare."
-
-msgid "Database not found on server"
-msgstr "Kan inte hitta databasen på servern"
-
-msgid "SQL call failed, try again later."
-msgstr "SQL-anropet misslyckades. Försök igen senare."
-
-msgid "Duplicate login entries detected, cannot change password!"
-msgstr ""
-"Flera samtidiga inloggningar detekterades. Det gick inte att byta lösenordet!"
-
-msgid "Password change was not successful!"
-msgstr "Det gick inte att byta lösenordet!"
-
-msgid "Closing Connection"
-msgstr "Stänger anslutningen"
-
-msgid "Connecting to Password Server"
-msgstr "Ansluter till lösenordsservern"
-
-#, c-format
-msgid "%s is not found."
-msgstr "Hittade inte %s."
-
-msgid "Server Capability response:"
-msgstr "Serverns kapabilitetssvar:"
-
-msgid ""
-"Select the IMAP commands you would like to run. Most commands require a "
-"selected mailbox so the select command is already setup. You can clear all "
-"the commands and test your own IMAP command strings. The commands are "
-"executed in order. The default values are simple IMAP commands using your "
-"default_charset and folder_prefix from SquirrelMail when needed."
-msgstr ""
-"Välj de IMAP-kommandon du vill testa. De flesta tester kräver en vald "
-"brevlåda, så kommandot &quot;SELECT&quot; är redan valt. Du kan byta ut alla "
-"kommandon mot egendefinierade sådana. De utförs i den ordning de står i "
-"listan. De förvalda kommandona är enkla IMAP-kommandon som använder "
-"SquirrelMails &quot;default_charset&quot; och &quot;folder_prefix&quot; när "
-"så behövs."
-
-msgid ""
-"NOTE: These commands are live, any changes made will effect your current "
-"email account."
-msgstr ""
-"OBS! Dessa kommondon simuleras inte, utan kommer att påverka det aktuella e-"
-"postkontot."
-
-msgid "Select"
-msgstr "Välj"
-
-msgid "Test Name"
-msgstr "Testets namn"
-
-msgid "IMAP command string"
-msgstr "IMAP-kommando"
-
-msgid "Request:"
-msgstr "Begäran:"
-
-msgid "No POP3 servers configured yet."
-msgstr "Inga POP3-servrar är konfigurerade."
-
-msgid "Click here to go to the options page."
-msgstr "Tillbaka till inställningar"
-
-#, c-format
-msgid "Login OK: Inbox contains %s message"
-msgid_plural "Login OK: Inbox contains %s messages"
-msgstr[0] "Inloggning OK: Inkorgen innehåller %s brev"
-msgstr[1] "Inloggning OK: Inkorgen innehåller %s brev"
-
-msgid "Spam Service Type:"
-msgstr "Typ av skräpposttjänst:"
-
-msgid "Free reporting"
-msgstr "Gratis rapportering"
-
-msgid "Member services"
-msgstr "Medlemstjänster"
-
-msgid "Save Service Type"
-msgstr "Spara tjänstetyp"
-
-msgid "SpamCop reporting"
-msgstr "Skräppostrapportering till SpamCop"
-
-msgid "Translation Theme:"
-msgstr "Översättningstema:"
-
-msgid ""
-"Selected translation engine is disabled. Please update your translation "
-"preferences."
-msgstr ""
-"Den valda översättningsmotorn är inaktiverad. Uppdatera dina "
-"översättningsinställningar."
-
-msgid "Translation Preferences"
-msgstr "Översättningsinställningar"
-
-msgid "Maximum of 25 kilobytes translated, powered by Systran"
-msgstr "Maximalt 25 000 översatta tecken (använder Systran)"
-
-msgid "Chinese, Simplified"
-msgstr "Kinsiska, förenklad"
-
-msgid "Chinese, Traditional"
-msgstr "Kinesiska, traditionell"
-
-msgid "Filipino (Tagalog)"
-msgstr "Filippinska (Tagalog)"
-
-msgid "Transliterate unknown words:"
-msgstr "Transkribera okända ord:"
 
 msgid "Delivery error report"
 msgstr "Rapport om leveransfel"
