@@ -17,11 +17,11 @@ for trans in `ls locale/`; do
 	tar -cf ../packages/${trans}-${STABLE_VERSION}-${date}.tar \
 	    locale/${trans}/LC_MESSAGES/*.po \
 	    locale/${trans}/LC_MESSAGES/*.mo \
-	    install version
+	    install version ReleaseNotes
 	zip -q ../packages/${trans}-${STABLE_VERSION}-${date}.zip \
 	    locale/${trans}/LC_MESSAGES/*.po \
 	    locale/${trans}/LC_MESSAGES/*.mo \
-	    install version
+	    install version ReleaseNotes
 	# sec_remove images
 	if [ -f images/sec_remove_${trans}.png ]; then
 	    tar -rf ../packages/${trans}-${STABLE_VERSION}-${date}.tar \
@@ -44,12 +44,12 @@ tar -cf ../packages/all_locales-${STABLE_VERSION}-${date}.tar \
     locale/*/LC_MESSAGES/*.po \
     locale/*/LC_MESSAGES/*.mo \
     images/sec_remove_*.png \
-    help/*/*.hlp install version
+    help/*/*.hlp install version ReleaseNotes
 zip -q ../packages/all_locales-${STABLE_VERSION}-${date}.zip \
     locale/*/LC_MESSAGES/*.po \
     locale/*/LC_MESSAGES/*.mo \
     images/sec_remove_*.png \
-    help/*/*.hlp install version
+    help/*/*.hlp install version ReleaseNotes
 
 # Pack them
 for package in `ls ../packages/*-${date}.tar`; do
