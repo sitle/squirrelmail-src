@@ -50,14 +50,16 @@ class Deliver_SMTP extends Deliver {
             return(0);
         }
 
-        /* If $_SERVER['HTTP_HOST'] is set, use that in our HELO to the SMTP
-         * server.  This should fix the DNS issues some people have had */
-	if (sqgetGlobalVar('HTTP_HOST', $HTTP_HOST, SQ_SERVER)) { // HTTP_HOST is set
-                // optionally trim off port number
-                if($p = strrpos($HTTP_HOST, ':')) {
-                    $HTTP_HOST = substr($HTTP_HOST, 0, $p);
-                }
-                $helohost = $HTTP_HOST;
+        /* 
+         * If $_SERVER['HTTP_HOST'] is set, use that in our HELO to the SMTP
+         * server.  This should fix the DNS issues some people have had 
+         */
+        if (sqgetGlobalVar('HTTP_HOST', $HTTP_HOST, SQ_SERVER)) { // HTTP_HOST is set
+            // optionally trim off port number
+            if($p = strrpos($HTTP_HOST, ':')) {
+                $HTTP_HOST = substr($HTTP_HOST, 0, $p);
+            }
+		    $helohost = $HTTP_HOST;
         } else { // For some reason, HTTP_HOST is not set - revert to old behavior
             $helohost = $domain;
         }
