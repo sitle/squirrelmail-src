@@ -4,8 +4,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: $Id$\n"
-"POT-Creation-Date: 2003-01-01 18:33+0100\n"
+"Project-Id-Version: $Id: squirrelmail.po,v 1.2.2.1 2003/05/25 08:59:03 tokul "
+"Exp $\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2003-09-20 11:04+0300\n"
 "PO-Revision-Date: 2001-12-24 15:02+0700\n"
 "Last-Translator: Nartpong Ampornaramveth <webmaster@pramool.com>\n"
 "Language-Team: Thai <squirrelmail-i18n@lists.sourceforge.net>\n"
@@ -13,14 +15,816 @@ msgstr ""
 "Content-Type: text/plain; charset=tis-620\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-msgid "Delivery error report"
+msgid "Address Book"
+msgstr "สมุดรายชื่อ"
+
+msgid "All"
 msgstr ""
 
-msgid "Undelivered Message Headers"
+msgid "Name"
+msgstr "ชื่อ-สกุล"
+
+msgid "E-mail"
+msgstr "อีเมล์"
+
+msgid "Info"
+msgstr "รายละเอียดเพิ่มเติม"
+
+msgid "Source"
+msgstr "จาก"
+
+msgid "To"
+msgstr "ถึง"
+
+msgid "Cc"
+msgstr "สำเนาถึง"
+
+msgid "Bcc"
 msgstr ""
 
-msgid "(no subject)"
-msgstr "(ไม่มีหัวข้อ)"
+msgid "Use Addresses"
+msgstr "ใช้สมุดรายชื่อ"
+
+msgid "Address Book Search"
+msgstr "ค้นหาจากสมุดรายชื่อ"
+
+msgid "Search for"
+msgstr "ค้นหา"
+
+msgid "in"
+msgstr "ใน"
+
+msgid "All address books"
+msgstr "สมุดรายชื่อทั้งหมด"
+
+msgid "Search"
+msgstr "ค้นหา"
+
+msgid "List all"
+msgstr "แสดงทั้งหมด"
+
+#, c-format
+msgid "Unable to list addresses from %s"
+msgstr "ไม่สามารถแสดงที่อยู่จาก %s"
+
+msgid "Your search failed with the following error(s)"
+msgstr "การค้นหามีข้อผิดพลาด ดังนี้"
+
+msgid "No persons matching your search was found"
+msgstr "ไม่พบรายชื่อที่คุณต้องการ"
+
+msgid "Return"
+msgstr "กลับไป"
+
+msgid "Close"
+msgstr "ปิด"
+
+msgid "Nickname"
+msgstr "ชื่อเล่น"
+
+msgid "Must be unique"
+msgstr "ต้องไม่ซ้ำกับที่มีอยู่แล้ว"
+
+msgid "E-mail address"
+msgstr "อีเมล์"
+
+msgid "Last name"
+msgstr "สกุล"
+
+msgid "First name"
+msgstr "ชื่อ"
+
+msgid "Additional info"
+msgstr "ข้อมูลเพิ่มเติม"
+
+msgid "No personal address book is defined. Contact administrator."
+msgstr "ไม่มีสมุดรายชื่อที่กำหนด กรุณาแจ้งผู้ดูแลระบบ"
+
+msgid "You can only edit one address at the time"
+msgstr "คุณสามารถแก้ไขได้ทีละ 1 ชื่อเท่านั้น"
+
+msgid "Update address"
+msgstr "ยืนยันการแก้ไข"
+
+msgid "ERROR"
+msgstr "ผิดพลาด"
+
+msgid "Unknown error"
+msgstr "เกิดข้อผิดพลาด"
+
+msgid "Add address"
+msgstr "เพิ่มรายชื่อ"
+
+msgid "Edit selected"
+msgstr "แก้ไขอันที่เลือก"
+
+msgid "Delete selected"
+msgstr "ลบอันที่เลือก"
+
+#, c-format
+msgid "Add to %s"
+msgstr "เพิ่มข้อมูลลงใน %s"
+
+msgid "said"
+msgstr "เขียนว่า"
+
+msgid "quote"
+msgstr "อ้างจากข้อความ"
+
+msgid "who"
+msgstr "ของ"
+
+msgid "Subject"
+msgstr "หัวข้อ"
+
+msgid "From"
+msgstr "จาก"
+
+msgid "Date"
+msgstr "วันที่"
+
+msgid "Original Message"
+msgstr "จดหมายดั้งเดิม"
+
+msgid "Draft Email Saved"
+msgstr "จดหมายที่ร่างไว้ ได้ถูกจัดเก็บแล้ว"
+
+msgid "Could not move/copy file. File not attached"
+msgstr "ไม่พบไฟล์แนบ กดที่ปุ่ม Browse เพื่อเลือกไฟล์ก่อน กดปุ่มเพิ่ม"
+
+#, fuzzy
+msgid "Draft Saved"
+msgstr "จดหมายที่ร่างไว้ ได้ถูกจัดเก็บแล้ว"
+
+#, fuzzy
+msgid "Your Message has been sent"
+msgstr "ยังไม่ได้เลือกจดหมาย (เลือกโดยการกดที่ช่องสี่เหลี่ยม หน้าจดหมาย)"
+
+msgid "From:"
+msgstr "จาก:"
+
+msgid "To:"
+msgstr "ส่งถึง:"
+
+msgid "CC:"
+msgstr "สำเนาถึง:"
+
+msgid "BCC:"
+msgstr "แอบสำเนาถึง:"
+
+msgid "Subject:"
+msgstr "หัวข้อ:"
+
+msgid "Send"
+msgstr "     ส่ง     "
+
+msgid "Attach:"
+msgstr "แนบไฟล์:"
+
+msgid "Add"
+msgstr "  เพิ่ม  "
+
+msgid "Delete selected attachments"
+msgstr "ลบไฟล์แนบที่เลือกไว้"
+
+msgid "Priority"
+msgstr "ระดับความสำคัญ"
+
+#, fuzzy
+msgid "High"
+msgstr "สูง"
+
+msgid "Normal"
+msgstr "ปานกลาง"
+
+msgid "Low"
+msgstr "ต่ำ"
+
+msgid "Receipt"
+msgstr ""
+
+#, fuzzy
+msgid "On Read"
+msgstr "อ่านแล้ว"
+
+msgid "On Delivery"
+msgstr ""
+
+msgid "Signature"
+msgstr "ลายเซ็น"
+
+msgid "Addresses"
+msgstr "สมุดรายชื่อ"
+
+#, fuzzy
+msgid "Save Draft"
+msgstr "เขียนต่อจดหมายที่ร่างทิ้งไว้"
+
+msgid "You have not filled in the \"To:\" field."
+msgstr "คุณยังไม่ได้กำหนดว่าจะส่งให้ใคร ในช่อง ส่งถึง:"
+
+#, fuzzy
+msgid "Draft folder"
+msgstr "กล่องเก็บจดหมายที่ถูกลบ:"
+
+#, fuzzy
+msgid "Server replied: "
+msgstr "เซิร์ฟเวอร์ตอบกลับ: "
+
+msgid "Illegal folder name.  Please select a different name."
+msgstr "ชื่อกล่องจดหมายไม่ถูกต้อง กรุณาเปลี่ยนชื่อ"
+
+msgid "Click here to go back"
+msgstr "กดที่นี่เพื่อกลับไป"
+
+msgid "You have not selected a folder to delete. Please do so."
+msgstr ""
+
+msgid "Delete Folder"
+msgstr "ลบกล่องจดหมาย"
+
+#, c-format
+msgid "Are you sure you want to delete %s?"
+msgstr ""
+
+msgid "Yes"
+msgstr "ใช่"
+
+msgid "No"
+msgstr "ไม่ใช่"
+
+msgid "Folders"
+msgstr "กล่องจดหมาย"
+
+msgid "Subscribed successfully!"
+msgstr "เพิ่มสำเร็จ"
+
+msgid "Unsubscribed successfully!"
+msgstr "นำออกสำเร็จ"
+
+msgid "Deleted folder successfully!"
+msgstr "ลบกล่องจดหมายสำเร็จ"
+
+msgid "Created folder successfully!"
+msgstr "สร้างกล่องจดหมายสำเร็จ"
+
+msgid "Renamed successfully!"
+msgstr "เปลี่ยนชื่อกล่องจดหมายสำเร็จ"
+
+msgid "Subscription Unsuccessful - Folder does not exist."
+msgstr ""
+
+msgid "refresh folder list"
+msgstr "รายชื่อกล่องจดหมายล่าสุด"
+
+msgid "Create Folder"
+msgstr "สร้างกล่องจดหมาย"
+
+msgid "as a subfolder of"
+msgstr "เป็นกล่องจดหมายย่อยของ"
+
+msgid "None"
+msgstr "ไม่มี"
+
+msgid "Let this folder contain subfolders"
+msgstr "อนุญาติให้กล่องจดหมายนี้มีกล่องจดหมายย่อย"
+
+msgid "Create"
+msgstr "สร้าง"
+
+msgid "Rename a Folder"
+msgstr "เปลี่ยนชื่อกล่องจดหมาย"
+
+#, fuzzy
+msgid "Select a folder"
+msgstr "เปลี่ยนชื่อกล่องจดหมาย"
+
+msgid "Rename"
+msgstr "เปลี่ยนชื่อ"
+
+msgid "No folders found"
+msgstr "ไม่พบกล่องจดหมาย"
+
+msgid "Delete"
+msgstr "     ลบ     "
+
+msgid "Unsubscribe"
+msgstr "เอาออก"
+
+msgid "Subscribe"
+msgstr "เพิ่ม"
+
+msgid "No folders were found to unsubscribe from!"
+msgstr "ไม่พบกล่องจดหมายที่จะเอาออก"
+
+msgid "No folders were found to subscribe to!"
+msgstr "ไม่พบกล่องจดหมายที่จะเพิ่ม"
+
+#, fuzzy
+msgid "Subscribe to:"
+msgstr "เพิ่ม"
+
+msgid "You have not selected a folder to rename. Please do so."
+msgstr ""
+
+msgid "Rename a folder"
+msgstr "เปลี่ยนชื่อกล่องจดหมาย"
+
+msgid "New name:"
+msgstr "ชื่อใหม่:"
+
+msgid "Submit"
+msgstr "ตกลง"
+
+msgid "ERROR: Help files are not in the right format!"
+msgstr ""
+
+msgid "Help"
+msgstr "ช่วยเหลือ"
+
+#, c-format
+msgid ""
+"The help has not been translated to %s.  It will be displayed in English "
+"instead."
+msgstr "หัวข้อช่วยเหลือนี้ ยังไม่ได้ถูกแปลเป็นภาษาไทย"
+
+msgid "Some or all of the help documents are not present!"
+msgstr "บางส่วนของหัวข้อช่วยเหลือ จะไม่ถูกแสดง"
+
+msgid "Table of Contents"
+msgstr "สารบาญ"
+
+msgid "Previous"
+msgstr "หน้าที่แล้ว"
+
+msgid "Next"
+msgstr "หน้าถัดไป"
+
+msgid "Top"
+msgstr "บนสุด"
+
+#, fuzzy
+msgid "Viewing an image attachment"
+msgstr "ดูรูปในไฟล์แนบ"
+
+msgid "View message"
+msgstr "ดูจดหมาย"
+
+msgid "Download this as a file"
+msgstr "ดาวน์โหลดจดหมายนี้"
+
+#, fuzzy
+msgid "INBOX"
+msgstr "เฉพาะในกล่องจดหมาย INBOX"
+
+msgid "purge"
+msgstr "ลบทิ้ง"
+
+msgid "Last Refresh"
+msgstr "ข้อมูลล่าสุด"
+
+msgid "refresh unseen/total info"
+msgstr ""
+
+msgid "Save folder tree"
+msgstr ""
+
+msgid "Login"
+msgstr "เข้าสู่ระบบ"
+
+#, fuzzy, c-format
+msgid "%s Logo"
+msgstr "เข้าสู่ระบบ %s"
+
+#, c-format
+msgid "SquirrelMail version %s"
+msgstr "SquirrelMail version %s"
+
+msgid "By the SquirrelMail Development Team"
+msgstr "By the SquirrelMail Development Team"
+
+#, c-format
+msgid "%s Login"
+msgstr "เข้าสู่ระบบ %s"
+
+msgid "Name:"
+msgstr "ชื่อ:"
+
+msgid "Password:"
+msgstr "รหัสผ่าน:"
+
+msgid "No messages were selected."
+msgstr "ยังไม่ได้เลือกจดหมาย (เลือกโดยการกดที่ช่องสี่เหลี่ยม หน้าจดหมาย)"
+
+msgid "Options"
+msgstr "ปรับแต่ง"
+
+msgid "Message Highlighting"
+msgstr "เน้นจดหมาย"
+
+msgid "New"
+msgstr "กำหนดเพิ่ม"
+
+msgid "Done"
+msgstr "เสร็จแล้ว"
+
+msgid "To or Cc"
+msgstr ""
+
+#, fuzzy
+msgid "subject"
+msgstr "หัวข้อ"
+
+msgid "Edit"
+msgstr "แก้ไข"
+
+msgid "Up"
+msgstr "เลื่อนขึ้น"
+
+#, fuzzy
+msgid "Down"
+msgstr "เลื่อนลง"
+
+msgid "No highlighting is defined"
+msgstr "ไม่มีการกำหนดการเน้นจดหมาย"
+
+msgid "Identifying name"
+msgstr "ชื่อที่ใช้แยกแยะ"
+
+msgid "Color"
+msgstr "สี"
+
+msgid "Dark Blue"
+msgstr "น้ำเงินเข้ม"
+
+msgid "Dark Green"
+msgstr "เขียวเข้ม"
+
+msgid "Dark Yellow"
+msgstr "เหลืองเข้ม"
+
+msgid "Dark Cyan"
+msgstr "ฟ้าเข้ม"
+
+msgid "Dark Magenta"
+msgstr "ม่วงเข้ม"
+
+msgid "Light Blue"
+msgstr "น้ำเงินอ่อน"
+
+msgid "Light Green"
+msgstr "เขียวอ่อน"
+
+msgid "Light Yellow"
+msgstr "เหลืองอ่อน"
+
+msgid "Light Cyan"
+msgstr "ฟ้าอ่อน"
+
+msgid "Light Magenta"
+msgstr "ม่วงอ่อน"
+
+msgid "Dark Gray"
+msgstr "เทาเข้ม"
+
+msgid "Medium Gray"
+msgstr "เทาปานกลาง"
+
+msgid "Light Gray"
+msgstr "เทาอ่อน"
+
+msgid "White"
+msgstr "ขาว"
+
+msgid "Other:"
+msgstr "อื่นๆ:"
+
+msgid "Ex: 63aa7f"
+msgstr "เช่น: 63aa7f"
+
+msgid "Matches"
+msgstr "ตรงกับ"
+
+#, c-format
+msgid "Alternate Identity %d"
+msgstr "รายละเอียดส่วนตัวเพิ่มเติม ที่ %s"
+
+msgid "Advanced Identities"
+msgstr "รายละเอียดส่วนตัวเพิ่มเติม"
+
+msgid "Default Identity"
+msgstr "รายละเอียดส่วนตัวแบบปกติ"
+
+msgid "Add a New Identity"
+msgstr "เพิ่มรายละเอียดส่วนตัวเพิ่มเติม"
+
+msgid "Full Name"
+msgstr "ชื่อเต็ม"
+
+msgid "E-Mail Address"
+msgstr "อีเมล์แอดเดรส"
+
+msgid "Reply To"
+msgstr "ให้ตอบกลับไปที่"
+
+msgid "Save / Update"
+msgstr "จัดเก็บ / เปลี่ยนแปลง"
+
+msgid "Make Default"
+msgstr "ใช้อันนี้เป็นแบบปกติ"
+
+msgid "Move Up"
+msgstr "เลื่อนขึ้น"
+
+msgid "Index Order"
+msgstr "เรียงลำดับคอลัมน์ในหน้าจอแสดงรายการจดหมาย"
+
+msgid "Checkbox"
+msgstr "กล่องให้ติ๊กเพื่อเลือก"
+
+msgid "Flags"
+msgstr "สถานะ"
+
+msgid "Size"
+msgstr "ขนาด"
+
+msgid ""
+"The index order is the order that the columns are arranged in the message "
+"index.  You can add, remove, and move columns around to customize them to "
+"fit your needs."
+msgstr "คุณสามารถเรียงลำดับ คอลัมน์ต่างๆ ในหน้ารายการจดหมายได้ตามต้องการ"
+
+msgid "up"
+msgstr "เลื่อนขึ้น"
+
+msgid "down"
+msgstr "เลื่อนลง"
+
+msgid "remove"
+msgstr "เอาออก"
+
+msgid "Return to options page"
+msgstr "กลับไปยังหน้าปรับแต่ง"
+
+msgid "Personal Information"
+msgstr "ข้อมูลส่วนบุคคล"
+
+msgid "Display Preferences"
+msgstr "รูปแบบการแสดงผล"
+
+msgid "Folder Preferences"
+msgstr "กำหนดรูปแบบกล่องจดหมาย"
+
+#, fuzzy
+msgid "Successfully Saved Options"
+msgstr "จัดเก็บข้อมูลส่วนตัวสำเร็จ"
+
+msgid "Refresh Folder List"
+msgstr "ดูรายชื่อกล่องจดหมายล่าสุด"
+
+msgid "Refresh Page"
+msgstr "ดูหน้านี้อันล่าสุด"
+
+msgid ""
+"This contains personal information about yourself such as your name, your "
+"email address, etc."
+msgstr "ข้อมูลส่วนบุคคลของคุณ เช่น ชื่อ, อีเมล์ และอื่นๆ"
+
+msgid ""
+"You can change the way that SquirrelMail looks and displays information to "
+"you, such as the colors, the language, and other settings."
+msgstr "คุณสามารถเปลี่ยนแปลงสิ่งต่างๆ เช่น  สี, ภาษา, และอื่นๆ"
+
+msgid ""
+"Based upon given criteria, incoming messages can have different background "
+"colors in the message list.  This helps to easily distinguish who the "
+"messages are from, especially for mailing lists."
+msgstr "กำหนดเงื่อนไข สำหรับสีพื้นของจดหมาย เช่น จดหมายจากแฟนให้เป็นสีชมพู"
+
+msgid ""
+"These settings change the way your folders are displayed and manipulated."
+msgstr "เปลี่ยนรูปแบบการแสดงกล่องจดหมาย ตามที่คุณต้องการ"
+
+#, fuzzy
+msgid ""
+"The order of the message index can be rearranged and changed to contain the "
+"headers in any order you want."
+msgstr "สามารถกำหนดให้เรียงลำดับตามที่คุณต้องการ"
+
+#, fuzzy
+msgid "Message not printable"
+msgstr "ตัวกรองจดหมาย"
+
+#, fuzzy
+msgid "CC"
+msgstr "สำเนาถึง:"
+
+msgid "Printer Friendly"
+msgstr "โหมดพิมพ์จดหมาย"
+
+msgid "Print"
+msgstr "พิมพ์"
+
+msgid "View Printable Version"
+msgstr "แสดงจดหมายในรูปแบบสำหรับพิมพ์"
+
+#, fuzzy
+msgid "Read:"
+msgstr "อ่านแล้ว"
+
+#, fuzzy
+msgid "Your message"
+msgstr "] ฉบับ"
+
+#, fuzzy
+msgid "Sent:"
+msgstr "     ส่ง     "
+
+#, c-format
+msgid "Was displayed on %s"
+msgstr ""
+
+msgid "less"
+msgstr "น้อย"
+
+msgid "more"
+msgstr "มาก"
+
+#, fuzzy
+msgid "Unknown sender"
+msgstr "ไม่รู้จักผู้ส่ง"
+
+msgid "Mailer"
+msgstr "ส่งจดหมาย โดยโปรแกรม"
+
+msgid "Read receipt"
+msgstr ""
+
+#, fuzzy
+msgid "sent"
+msgstr "     ส่ง     "
+
+#, fuzzy
+msgid "requested"
+msgstr "ไม่มีการเปลี่ยนแปลง"
+
+msgid ""
+"The message sender has requested a response to indicate that you have read "
+"this message. Would you like to send a receipt?"
+msgstr ""
+
+msgid "Send read receipt now"
+msgstr ""
+
+#, fuzzy
+msgid "Search results"
+msgstr "ค้นหา"
+
+msgid "Message List"
+msgstr "รายการจดหมาย"
+
+msgid "Resume Draft"
+msgstr "เขียนต่อจดหมายที่ร่างทิ้งไว้"
+
+msgid "Edit Message as New"
+msgstr ""
+
+#, fuzzy
+msgid "View Message"
+msgstr "ดูจดหมาย"
+
+msgid "Forward"
+msgstr "ส่งต่อ"
+
+#, fuzzy
+msgid "Forward as Attachment"
+msgstr "แนบไฟล์"
+
+msgid "Reply"
+msgstr "ตอบกลับ"
+
+msgid "Reply All"
+msgstr "ตอบกลับให้ทุกคน"
+
+#, fuzzy
+msgid "View Full Header"
+msgstr "ดูหัวจดหมายทั้งหมด"
+
+msgid "Attachments"
+msgstr "แนบไฟล์"
+
+msgid "You must be logged in to access this page."
+msgstr "คุณต้องเข้าสู่ระบบก่อน"
+
+#, fuzzy
+msgid "Folder:"
+msgstr "กล่องจดหมาย"
+
+#, fuzzy
+msgid "edit"
+msgstr "แก้ไข"
+
+#, fuzzy
+msgid "search"
+msgstr "ค้นหา"
+
+#, fuzzy
+msgid "delete"
+msgstr "     ลบ     "
+
+msgid "Recent Searches"
+msgstr ""
+
+#, fuzzy
+msgid "save"
+msgstr "จัดเก็บ"
+
+#, fuzzy
+msgid "forget"
+msgstr "มาก"
+
+#, fuzzy
+msgid "Current Search"
+msgstr "กล่องจดหมายในขณะนี้"
+
+msgid "All Folders"
+msgstr "ทุกๆ กล่องจดหมาย"
+
+msgid "Body"
+msgstr "เนื้อความ"
+
+msgid "Everywhere"
+msgstr "ทั้งหมด"
+
+#, fuzzy
+msgid "Search Results"
+msgstr "ค้นหา"
+
+#, fuzzy
+msgid "No Messages Found"
+msgstr "จำนวนจดหมายต่อหน้า"
+
+msgid "Sign Out"
+msgstr "ออกจากระบบ"
+
+msgid "You have been successfully signed out."
+msgstr "คุณได้ออกจากระบบแล้ว"
+
+msgid "Click here to log back in."
+msgstr "กดที่นี่ เพื่อเข้าสู่ระบบ"
+
+#, fuzzy
+msgid "Viewing a Business Card"
+msgstr "แสดงจดหมาย"
+
+#, fuzzy
+msgid "Title"
+msgstr "หัวข้อ:"
+
+#, fuzzy
+msgid "Email"
+msgstr "อีเมล์"
+
+#, fuzzy
+msgid "Web Page"
+msgstr "ดูหน้านี้อันล่าสุด"
+
+msgid "Organization / Department"
+msgstr "บริษัท / แผนก"
+
+#, fuzzy
+msgid "Address"
+msgstr "สมุดรายชื่อ"
+
+msgid "Work Phone"
+msgstr "โทรศัพท์ที่ทำงาน"
+
+msgid "Home Phone"
+msgstr "โทรศัพท์ที่บ้าน"
+
+msgid "Cellular Phone"
+msgstr "โทรศัพท์มือถือ"
+
+msgid "Fax"
+msgstr "แฟกซ์"
+
+#, fuzzy
+msgid "Note"
+msgstr "ไม่มี"
+
+#, fuzzy
+msgid "Add to Addressbook"
+msgstr "เพิ่มรายชื่อ"
+
+msgid "Title & Org. / Dept."
+msgstr "ตำแหน่ง, บริษัท, แผนก"
+
+#, fuzzy
+msgid "Viewing Full Header"
+msgstr "ดูรายละเอียดของหัวจดหมายทั้งหมด"
+
+msgid "Viewing a text attachment"
+msgstr "ดูข้อมูลในไฟล์แนบ"
 
 msgid "Personal address book"
 msgstr "สมุดรายชื่อ"
@@ -102,9 +906,6 @@ msgstr "เปิดดู"
 msgid "Business Card"
 msgstr "นามบัตร"
 
-msgid "You must be logged in to access this page."
-msgstr "คุณต้องเข้าสู่ระบบก่อน"
-
 msgid "Sunday"
 msgstr "อา."
 
@@ -125,6 +926,31 @@ msgstr "ศ."
 
 msgid "Saturday"
 msgstr "ส."
+
+#, fuzzy
+msgid "Sun"
+msgstr "อา."
+
+#, fuzzy
+msgid "Mon"
+msgstr "จ."
+
+#, fuzzy
+msgid "Tue"
+msgstr "อ."
+
+msgid "Wed"
+msgstr ""
+
+msgid "Thu"
+msgstr ""
+
+#, fuzzy
+msgid "Fri"
+msgstr "ศ."
+
+msgid "Sat"
+msgstr ""
 
 msgid "January"
 msgstr "มกราคม"
@@ -162,12 +988,60 @@ msgstr "พฤศจิกายน"
 msgid "December"
 msgstr "ธันวาคม"
 
+#, fuzzy
+msgid "Jan"
+msgstr "มกราคม"
+
+msgid "Feb"
+msgstr ""
+
+#, fuzzy
+msgid "Mar"
+msgstr "มีนาคม"
+
+#, fuzzy
+msgid "Apr"
+msgstr "เมษายน"
+
+msgid "Ma&#121;"
+msgstr ""
+
+#, fuzzy
+msgid "Jun"
+msgstr "มิถุนายน"
+
+#, fuzzy
+msgid "Jul"
+msgstr "กรกฏาคม"
+
+#, fuzzy
+msgid "Aug"
+msgstr "สิงหาคม"
+
+msgid "Sep"
+msgstr ""
+
+#, fuzzy
+msgid "Oct"
+msgstr "ตุลาคม"
+
+#, fuzzy
+msgid "Nov"
+msgstr "ไม่ใช่"
+
+msgid "Dec"
+msgstr ""
+
 msgid "D, F j, Y g:i a"
 msgstr "D, j F,Y g:i a"
 
 #, fuzzy
 msgid "D, F j, Y G:i"
 msgstr "D, j F,Y G:i"
+
+# "วัน, ชั่วโมง:นาที am/pm"
+msgid "M j, Y"
+msgstr "j M, Y"
 
 # "วัน, เดือน วันที่, ปี ชั่วโมง:นาที am/pm"
 msgid "g:i a"
@@ -185,10 +1059,6 @@ msgstr "D, g:i a"
 msgid "D, G:i"
 msgstr "D, G:i"
 
-# "วัน, ชั่วโมง:นาที am/pm"
-msgid "M j, Y"
-msgstr "j M, Y"
-
 # "เดือน วันที่, ปี"
 #, c-format
 msgid "Preference database error (%s). Exiting abnormally"
@@ -203,20 +1073,6 @@ msgstr "กดที่นี่เพื่อลองอีกครั้ง"
 #, c-format
 msgid "Click here to return to %s"
 msgstr "กดที่นี่เพื่อกลับไปยัง %s"
-
-#, fuzzy, c-format
-msgid "%s Logo"
-msgstr "เข้าสู่ระบบ %s"
-
-#, c-format
-msgid "SquirrelMail version %s"
-msgstr "SquirrelMail version %s"
-
-msgid "By the SquirrelMail Development Team"
-msgstr "By the SquirrelMail Development Team"
-
-msgid "ERROR"
-msgstr "ผิดพลาด"
 
 msgid "Go to the login page"
 msgstr "ไปยังหน้าจอ เข้าสู่ระบบ"
@@ -237,6 +1093,12 @@ msgstr ""
 msgid ""
 "Preference file, %s, could not be written. Contact your system administrator "
 "to resolve this issue."
+msgstr ""
+
+#, c-format
+msgid ""
+"Preference file, %s, could not be copied from temporary file, %s. Contact "
+"your system administrator to resolve this issue."
 msgstr ""
 
 #, fuzzy, c-format
@@ -269,12 +1131,21 @@ msgid ""
 "to resolve this issue."
 msgstr ""
 
+#, c-format
+msgid ""
+"Signature file, %s, could not be copied from temporary file, %s. Contact "
+"your system administrator to resolve this issue."
+msgstr ""
+
 msgid ""
 "You need to have php4 installed with the multibyte string function enabled "
-"(using configure option --with-mbstring)."
+"(using configure option --enable-mbstring)."
 msgstr ""
 
 msgid "ERROR : No available imapstream."
+msgstr ""
+
+msgid "ERROR : Connection dropped by imap-server."
 msgstr ""
 
 msgid "ERROR : Could not complete request."
@@ -291,6 +1162,12 @@ msgstr "ผิดพลาด: การร้องขอไม่ถูกต้อง"
 
 msgid "Server responded: "
 msgstr "เซิร์ฟเวอร์ตอบกลับ: "
+
+msgid "ERROR : Imap server closed the connection."
+msgstr ""
+
+msgid "ERROR : Unknown imap response."
+msgstr ""
 
 #, c-format
 msgid "Error connecting to IMAP server: %s."
@@ -320,21 +1197,23 @@ msgid ""
 "folder."
 msgstr ""
 
-#, fuzzy
-msgid "INBOX"
-msgstr "เฉพาะในกล่องจดหมาย INBOX"
-
-msgid "Unknown response from IMAP server: "
-msgstr "Unknown response from IMAP server: "
-
-msgid "Unknown message number in reply from server: "
-msgstr "Unknown message number in reply from server: "
+msgid "(no subject)"
+msgstr "(ไม่มีหัวข้อ)"
 
 msgid "Unknown Sender"
 msgstr "ไม่รู้จักผู้ส่ง"
 
-msgid "(unknown sender)"
-msgstr "(ไม่รู้จักผู้ส่ง)"
+msgid "Unknown response from IMAP server: "
+msgstr "Unknown response from IMAP server: "
+
+msgid "The server couldn't find the message you requested."
+msgstr ""
+
+msgid ""
+"Most probably your message list was out of date and the message has been "
+"moved away or deleted (perhaps by another program accessing the same "
+"mailbox)."
+msgstr ""
 
 #, fuzzy
 msgid "Unknown date"
@@ -366,9 +1245,6 @@ msgstr "แปลงจดหมายที่เลือก"
 msgid "Move"
 msgstr "    ย้าย    "
 
-msgid "Forward"
-msgstr "ส่งต่อ"
-
 msgid "Expunge"
 msgstr "     ลบ     "
 
@@ -381,30 +1257,12 @@ msgstr "อ่านแล้ว"
 msgid "Unread"
 msgstr "ยังไม่อ่าน"
 
-msgid "Delete"
-msgstr "     ลบ     "
-
 #, fuzzy
 msgid "Unthread View"
 msgstr "ยังไม่อ่าน"
 
 msgid "Thread View"
 msgstr ""
-
-msgid "To"
-msgstr "ถึง"
-
-msgid "From"
-msgstr "จาก"
-
-msgid "Date"
-msgstr "วันที่"
-
-msgid "Subject"
-msgstr "หัวข้อ"
-
-msgid "Size"
-msgstr "ขนาด"
 
 msgid "Toggle All"
 msgstr "เลือก/ไม่เลือก ทั้งหมด"
@@ -422,12 +1280,6 @@ msgstr "แสดงจดหมายฉบับที่: <B>%s</B> ถึง <B>%s</B> (%s ฉบับ)"
 #, c-format
 msgid "Viewing Message: <B>%s</B> (1 total)"
 msgstr "แสดงจดหมายฉบับที่: <B>%s</B> (1 ฉบับ)"
-
-msgid "Previous"
-msgstr "หน้าที่แล้ว"
-
-msgid "Next"
-msgstr "หน้าถัดไป"
 
 #, fuzzy
 msgid "Paginate"
@@ -461,16 +1313,6 @@ msgstr "จดหมาย"
 msgid "FETCH line:"
 msgstr ""
 
-#, fuzzy
-msgid "High"
-msgstr "สูง"
-
-msgid "Low"
-msgstr "ต่ำ"
-
-msgid "Normal"
-msgstr "ปานกลาง"
-
 msgid "Hide Unsafe Images"
 msgstr ""
 
@@ -481,10 +1323,6 @@ msgstr "จดหมายฉบับที่"
 msgid "download"
 msgstr "ดาวน์โหลด"
 
-#, fuzzy
-msgid "Unknown sender"
-msgstr "ไม่รู้จักผู้ส่ง"
-
 msgid "sec_remove_eng.png"
 msgstr ""
 
@@ -492,38 +1330,11 @@ msgstr ""
 msgid "Option Type '%s' Not Found"
 msgstr "ไม่พบตัวเลือก '%s'"
 
-msgid "Yes"
-msgstr "ใช่"
-
-msgid "No"
-msgstr "ไม่ใช่"
-
-msgid "Submit"
-msgstr "ตกลง"
-
 msgid "Current Folder"
 msgstr "กล่องจดหมายในขณะนี้"
 
-msgid "Sign Out"
-msgstr "ออกจากระบบ"
-
 msgid "Compose"
 msgstr "ส่งจดหมาย"
-
-msgid "Addresses"
-msgstr "สมุดรายชื่อ"
-
-msgid "Folders"
-msgstr "กล่องจดหมาย"
-
-msgid "Options"
-msgstr "ปรับแต่ง"
-
-msgid "Search"
-msgstr "ค้นหา"
-
-msgid "Help"
-msgstr "ช่วยเหลือ"
 
 #, fuzzy, c-format
 msgid "Error creating directory %s."
@@ -531,6 +1342,71 @@ msgstr "ลบพจนานุกรมที่ถูกเข้ารหัส"
 
 msgid "Could not create hashed directory structure!"
 msgstr ""
+
+msgid "Service not available, closing channel"
+msgstr ""
+
+msgid "A password transition is needed"
+msgstr ""
+
+msgid "Requested mail action not taken: mailbox unavailable"
+msgstr ""
+
+msgid "Requested action aborted: error in processing"
+msgstr ""
+
+msgid "Requested action not taken: insufficient system storage"
+msgstr ""
+
+msgid "Temporary authentication failure"
+msgstr ""
+
+msgid "Syntax error; command not recognized"
+msgstr ""
+
+msgid "Syntax error in parameters or arguments"
+msgstr ""
+
+msgid "Command not implemented"
+msgstr ""
+
+msgid "Bad sequence of commands"
+msgstr ""
+
+msgid "Command parameter not implemented"
+msgstr ""
+
+msgid "Authentication required"
+msgstr ""
+
+msgid "Authentication mechanism is too weak"
+msgstr ""
+
+msgid "Authentication failed"
+msgstr ""
+
+msgid "Encryption required for requested authentication mechanism"
+msgstr ""
+
+msgid "Requested action not taken: mailbox unavailable"
+msgstr ""
+
+msgid "User not local; please try forwarding"
+msgstr ""
+
+msgid "Requested mail action aborted: exceeding storage allocation"
+msgstr ""
+
+msgid "Requested action not taken: mailbox name not allowed"
+msgstr ""
+
+#, fuzzy
+msgid "Transaction failed"
+msgstr "บริษัท / แผนก"
+
+#, fuzzy
+msgid "Unknown response"
+msgstr "ไม่รู้จักผู้ส่ง"
 
 msgid "General Display Options"
 msgstr "ปรับแต่งการแสดงผล"
@@ -578,6 +1454,9 @@ msgstr "แสดงตัวเลือกหน้า"
 #, fuzzy
 msgid "Maximum Number of Pages to Show"
 msgstr "จำนวนจดหมายต่อหน้า"
+
+msgid "Always Show Full Date"
+msgstr ""
 
 msgid "Message Display and Composition"
 msgstr "การแสดงจดหมาย และการเขียนจดหมาย"
@@ -632,9 +1511,6 @@ msgstr "แสดงโปรแกรมที่ใช้ส่งจดหมาย"
 
 msgid "Display Attached Images with Message"
 msgstr "แสดงรูปที่แนบมากับจดหมาย พร้อมกับข้อความจดหมาย"
-
-msgid "Enable Subtle Printer Friendly Link"
-msgstr "แสดงลิงค์ สำหรับพิมพ์จดหมาย "
 
 msgid "Enable Printer Friendly Clean Display"
 msgstr "แสดงจดหมายแบบสะอาด ในโหมดพิมพ์จดหมาย"
@@ -735,9 +1611,6 @@ msgstr "ไม่ต้องแจ้งเตือน"
 msgid "Only INBOX"
 msgstr "เฉพาะในกล่องจดหมาย INBOX"
 
-msgid "All Folders"
-msgstr "ทุกๆ กล่องจดหมาย"
-
 #, fuzzy
 msgid "Unread Message Notification Type"
 msgstr "ชนิดของการแจ้งเตือน จดหมายที่ยังไม่เปิดดู"
@@ -750,7 +1623,7 @@ msgid "Unseen and Total"
 msgstr "ยังไม่เปิดดู /ทั้งหมด"
 
 #, fuzzy
-msgid "Enable Collapsable Folders"
+msgid "Enable Collapsible Folders"
 msgstr "อนุญาติให้ซ่อนกล่องจดหมายย่อย (จะมีเครื่องหมาย + หน้ากล่องจดหมายตัวแม่)"
 
 #, fuzzy
@@ -800,18 +1673,9 @@ msgstr ""
 msgid "Name and Address Options"
 msgstr "ปรับแต่ง ชื่อ และที่อยู่"
 
-msgid "Full Name"
-msgstr "ชื่อเต็ม"
-
 #, fuzzy
 msgid "Email Address"
 msgstr "อีเมล์แอดเดรส"
-
-msgid "Reply To"
-msgstr "ให้ตอบกลับไปที่"
-
-msgid "Signature"
-msgstr "ลายเซ็น"
 
 msgid "Edit Advanced Identities"
 msgstr "แก้ไขรายละเอียดส่วนตัวเพิ่มเติม"
@@ -823,6 +1687,9 @@ msgid "Multiple Identities"
 msgstr "รายละเอียดส่วนตัวเพิ่มเติม"
 
 msgid "Same as server"
+msgstr ""
+
+msgid "Error opening timezone config, contact administrator."
 msgstr ""
 
 #, fuzzy
@@ -872,6 +1739,17 @@ msgid "Prefix Signature with '-- ' Line"
 msgstr "นำหน้าลายเซ็นด้วย '-- ' ?"
 
 #, fuzzy
+msgid "Take Address"
+msgstr "สมุดรายชื่อ"
+
+#, fuzzy
+msgid "Address Book Take:"
+msgstr "สมุดรายชื่อ"
+
+msgid "Try to verify addresses"
+msgstr ""
+
+#, fuzzy
 msgid "Config File Version"
 msgstr "แสดงจดหมายในรูปแบบสำหรับพิมพ์"
 
@@ -909,6 +1787,12 @@ msgstr "บริษัท / แผนก"
 #, fuzzy
 msgid "Signout Page"
 msgstr "ออกจากระบบ"
+
+msgid "Provider Link URI"
+msgstr ""
+
+msgid "Provider Name"
+msgstr ""
 
 #, fuzzy
 msgid "Default Language"
@@ -954,7 +1838,16 @@ msgstr ""
 msgid "Use \"detect\" to auto-detect."
 msgstr ""
 
-msgid "Use Sendmail"
+msgid "Use TLS for IMAP Connections"
+msgstr ""
+
+msgid "Requires PHP 4.3.x! Experimental."
+msgstr ""
+
+msgid "IMAP Authentication Type"
+msgstr ""
+
+msgid "Use Sendmail Binary"
 msgstr ""
 
 msgid "Sendmail Path"
@@ -966,7 +1859,13 @@ msgstr ""
 msgid "SMTP Server Port"
 msgstr ""
 
-msgid "Authenticated SMTP"
+msgid "Use TLS for SMTP Connections"
+msgstr ""
+
+msgid "SMTP Authentication Type"
+msgstr ""
+
+msgid "POP3 Before SMTP?"
 msgstr ""
 
 msgid "Invert Time"
@@ -1035,6 +1934,10 @@ msgid "Auto delete folders"
 msgstr "ปรับรายการกล่องจดหมายให้ทันสมัยโดยอัตโนมัติ"
 
 #, fuzzy
+msgid "Enable /NoSelect folder fix"
+msgstr "แสดงตัวเลือกหน้า"
+
+#, fuzzy
 msgid "General Options"
 msgstr "ปรับแต่งการแสดงผล"
 
@@ -1084,6 +1987,21 @@ msgstr ""
 msgid "Allow editing of full name"
 msgstr ""
 
+msgid "Use server-side sorting"
+msgstr ""
+
+msgid "Use server-side thread sorting"
+msgstr ""
+
+msgid "Allow server charset search"
+msgstr ""
+
+msgid "UID support"
+msgstr ""
+
+msgid "PHP session name"
+msgstr ""
+
 #, fuzzy
 msgid "Message of the Day"
 msgstr "จดหมาย"
@@ -1122,6 +2040,13 @@ msgid "Themes"
 msgstr "ใช้รูปแบบ"
 
 msgid "Style Sheet URL (css)"
+msgstr ""
+
+#, fuzzy
+msgid "Default theme"
+msgstr "รายละเอียดส่วนตัวแบบปกติ"
+
+msgid "Use index number of theme"
 msgstr ""
 
 #, fuzzy
@@ -1241,7 +2166,7 @@ msgstr ""
 msgid "15 min."
 msgstr ""
 
-msgid "35 min."
+msgid "30 min."
 msgstr ""
 
 msgid "45 min."
@@ -1336,56 +2261,6 @@ msgid "COMMERCIAL - RBL+ Dial-up entries."
 msgstr "COMMERCIAL - RBL+ Dial-up entries."
 
 msgid ""
-"FREE - Osirusoft Relays - Osirusofts list of verified open relays. Seems to "
-"include servers used by abuse@uunet.net auto-replies too."
-msgstr ""
-"FREE - Osirusoft Relays - Osirusofts list of verified open relays. Seems to "
-"include servers used by abuse@uunet.net auto-replies too."
-
-msgid "FREE - Osirusoft Dialups - Osirusofts Dialup Spam Source list."
-msgstr "FREE - Osirusoft Dialups - Osirusofts Dialup Spam Source list."
-
-msgid ""
-"FREE - Osirusoft Confirmed Spam Source - Sites that continually spam and "
-"have been manually added after multiple nominations. Use with caution. Seems "
-"to catch abuse auto-replies from some ISPs."
-msgstr ""
-"FREE - Osirusoft Confirmed Spam Source - Sites that continually spam and "
-"have been manually added after multiple nominations. Use with caution. Seems "
-"to catch abuse auto-replies from some ISPs."
-
-msgid ""
-"FREE - Osirusoft Smart Hosts - List of hosts that are secure but relay for "
-"other mail servers that are not secure."
-msgstr ""
-"FREE - Osirusoft Smart Hosts - List of hosts that are secure but relay for "
-"other mail servers that are not secure."
-
-msgid ""
-"FREE - Osirusoft Spamware Developers - It is believed that these are IP "
-"ranges of companies that are known to produce spam software. Seems to catch "
-"abuse auto-replies from some ISPs."
-msgstr ""
-"FREE - Osirusoft Spamware Developers - It is believed that these are IP "
-"ranges of companies that are known to produce spam software. Seems to catch "
-"abuse auto-replies from some ISPs."
-
-msgid ""
-"FREE - Osirusoft Unconfirmed OptIn Servers - List of listservers that opt "
-"users in without confirmation."
-msgstr ""
-"FREE - Osirusoft Unconfirmed OptIn Servers - List of listservers that opt "
-"users in without confirmation."
-
-msgid ""
-"FREE - Osirusoft Insecure formmail.cgi scripts - List of insecure formmail."
-"cgi scripts. (planned)."
-msgstr ""
-
-msgid "FREE - Osirusoft Open Proxy Servers - List of Open Proxy Servers."
-msgstr ""
-
-msgid ""
 "FREE - ORDB was born when ORBS went off the air. It seems to have fewer "
 "false positives than ORBS did though."
 msgstr ""
@@ -1426,6 +2301,7 @@ msgstr ""
 msgid "FREE - SPAMhaus - A list of well-known SPAM sources."
 msgstr ""
 
+#, c-format
 msgid ""
 "FREE, for now - SPAMCOP - An interesting solution that lists servers that "
 "have a very high spam to legit email ratio (85% or more)."
@@ -1520,21 +2396,9 @@ msgstr "เฉพาะจดหมายที่ยังไม่เปิดอ่าน"
 msgid "Save"
 msgstr "จัดเก็บ"
 
-msgid "New"
-msgstr "กำหนดเพิ่ม"
-
-msgid "Done"
-msgstr "เสร็จแล้ว"
-
 #, fuzzy
 msgid "Match:"
 msgstr "ตรงกับ"
-
-msgid "Cc"
-msgstr "สำเนาถึง"
-
-msgid "To or Cc"
-msgstr ""
 
 #, fuzzy
 msgid "Header"
@@ -1542,16 +2406,6 @@ msgstr "อ่านแล้ว"
 
 msgid "Contains:"
 msgstr "ถ้ามีคำว่า:"
-
-msgid "Edit"
-msgstr "แก้ไข"
-
-#, fuzzy
-msgid "Down"
-msgstr "เลื่อนลง"
-
-msgid "Up"
-msgstr "เลื่อนขึ้น"
 
 #, c-format
 msgid "If <b>%s</b> contains <b>%s</b> then move to <b>%s</b>"
@@ -1638,6 +2492,29 @@ msgstr "เปิด"
 msgid "OFF"
 msgstr "ปิด"
 
+#, fuzzy
+msgid " not found."
+msgstr "ไม่พบข้อผิดพลาด"
+
+msgid "Today's Fortune"
+msgstr ""
+
+msgid "Fortunes:"
+msgstr ""
+
+msgid "Show fortunes at top of mailbox"
+msgstr ""
+
+#, fuzzy
+msgid "IMAP server information"
+msgstr "ข้อมูลส่วนบุคคล"
+
+msgid ""
+"Run some test IMAP commands, displaying both the command and the result. "
+"These tests use the Squirrelmail IMAP commands and your current Squirrelmail "
+"configuration. Custom command strings can be used."
+msgstr ""
+
 msgid "Mailinglist"
 msgstr ""
 
@@ -1659,9 +2536,6 @@ msgid ""
 "this list. It will try to unsubscribe the adress below."
 msgstr ""
 
-msgid "From:"
-msgstr "จาก:"
-
 #, fuzzy
 msgid "Send Mail"
 msgstr "     ส่ง     "
@@ -1673,12 +2547,6 @@ msgstr "%s เป็น %s"
 #, fuzzy
 msgid "Reply to List"
 msgstr "ให้ตอบกลับไปที่"
-
-msgid "Subscribe"
-msgstr "เพิ่ม"
-
-msgid "Unsubscribe"
-msgstr "เอาออก"
 
 msgid "List Archives"
 msgstr ""
@@ -1787,9 +2655,6 @@ msgid "Remote POP server Fetching Mail"
 msgstr ""
 
 msgid "Select Server:"
-msgstr ""
-
-msgid "All"
 msgstr ""
 
 msgid "Password for"
@@ -1907,9 +2772,6 @@ msgstr ""
 msgid "Username:"
 msgstr "ชื่อ:"
 
-msgid "Password:"
-msgstr "รหัสผ่าน:"
-
 msgid "Store in Folder:"
 msgstr ""
 
@@ -1949,9 +2811,6 @@ msgstr ""
 msgid "Confirm Delete"
 msgstr ""
 
-msgid "Mofify a Server"
-msgstr ""
-
 msgid "Undefined Function"
 msgstr ""
 
@@ -1974,6 +2833,22 @@ msgid ""
 "This configures settings for downloading email from a pop3 mailbox to your "
 "account on this server."
 msgstr ""
+
+#, fuzzy
+msgid "Message Details"
+msgstr "รายการจดหมาย"
+
+#, fuzzy
+msgid "Close Window"
+msgstr "ปิดหน้าต่างนี้"
+
+#, fuzzy
+msgid "Save Message"
+msgstr "ดูจดหมาย"
+
+#, fuzzy
+msgid "View Message details"
+msgstr "ดูจดหมาย"
 
 #, fuzzy
 msgid "New Mail Notification"
@@ -2012,9 +2887,7 @@ msgstr ""
 
 msgid ""
 "Select from the list of <b>server files</b> the media file to play when new "
-"mail arrives.  Selecting <b>local media</b> will play the file specified in "
-"the <b>local media file</b> box to play from the local computer.  If no file "
-"is specified, the system will use a default from the server."
+"mail arrives.  If no file is specified, \"(none)\", no sound will be used."
 msgstr ""
 
 msgid "Enable Media Playing"
@@ -2038,13 +2911,11 @@ msgstr ""
 msgid "Select server file:"
 msgstr ""
 
-msgid "(local media)"
-msgstr ""
+#, fuzzy
+msgid "(none)"
+msgstr "ไม่มี"
 
 msgid "Try"
-msgstr ""
-
-msgid "Local Media File:"
 msgstr ""
 
 msgid "Current File:"
@@ -2058,10 +2929,6 @@ msgstr ""
 
 msgid "You have new mail!"
 msgstr ""
-
-#, fuzzy
-msgid "Close Window"
-msgstr "ปิดหน้าต่างนี้"
 
 msgid "NewMail Options"
 msgstr ""
@@ -2085,11 +2952,11 @@ msgstr ""
 msgid "Test Sound"
 msgstr ""
 
-msgid "Loading the sound..."
+msgid "No sound specified"
 msgstr ""
 
-msgid "Close"
-msgstr "ปิด"
+msgid "Loading the sound..."
+msgstr ""
 
 #, fuzzy
 msgid "Sent Subfolders Options"
@@ -2190,6 +3057,307 @@ msgstr "ลบพจนานุกรมที่ถูกเข้ารหัส"
 msgid "Cute."
 msgstr "อ้างจากข้อความ"
 
+#, c-format
+msgid "I tried to execute '%s', but it returned:"
+msgstr ""
+
+#, fuzzy
+msgid "SquirrelSpell is misconfigured."
+msgstr "เริ่มการตรวจสะกด"
+
+msgid "SquirrelSpell Results"
+msgstr "ผลลัพท์ของการตรวจสอบการสะกด"
+
+msgid "Spellcheck completed. Commit changes?"
+msgstr ""
+
+#, fuzzy
+msgid "No changes were made."
+msgstr "ยังไม่ได้เลือกจดหมาย (เลือกโดยการกดที่ช่องสี่เหลี่ยม หน้าจดหมาย)"
+
+#, fuzzy
+msgid "Now saving your personal dictionary... Please wait."
+msgstr "ไม่มีคำศัพท์ในพจนานุกรมส่วนตัวของคุณ"
+
+#, c-format
+msgid "Found %s errors"
+msgstr "พบคำผิด %s แห่ง"
+
+msgid "Line with an error:"
+msgstr "บรรทัดที่ผิด:"
+
+msgid "Error:"
+msgstr "คำผิด:"
+
+#, fuzzy
+msgid "Suggestions:"
+msgstr "คำแนะนำ"
+
+msgid "Suggestions"
+msgstr "คำแนะนำ"
+
+msgid "Change to:"
+msgstr "เปลี่ยนเป็น:"
+
+msgid "Occurs times:"
+msgstr "จำนวนคำ:"
+
+msgid "Change this word"
+msgstr "เปลี่ยนศัพท์คำนี้"
+
+msgid "Change"
+msgstr "เปลี่ยน"
+
+msgid "Change ALL occurances of this word"
+msgstr "เปลี่ยนศัพท์คำนี้ทั้งหมด"
+
+msgid "Change All"
+msgstr "เปลี่ยนทั้งหมด"
+
+msgid "Ignore this word"
+msgstr "ไม่ต้องสนใจศัพท์คำนี้"
+
+msgid "Ignore"
+msgstr "ไม่สนใจ"
+
+msgid "Ignore ALL occurances this word"
+msgstr "ไม่สนใจศัพท์คำนี้"
+
+msgid "Ignore All"
+msgstr "ไม่สนใจทั้งหมด"
+
+#, fuzzy
+msgid "Add this word to your personal dictionary"
+msgstr "แก้ไขพจนานุกรมส่วนตัวของคุณ"
+
+msgid "Add to Dic"
+msgstr "เพิ่มลงในพจนานุกรม"
+
+msgid "Close and Commit"
+msgstr "ปิดหน้าต่างนี้"
+
+msgid "The spellcheck is not finished. Really close and commit changes?"
+msgstr "การตรวจสอบตัวสะกด ยังไม่เสร็จ ต้องการปิด และจัดเก็บการเปลี่ยนแปลง?"
+
+msgid "Close and Cancel"
+msgstr "ปิด และยกเลิก"
+
+msgid "The spellcheck is not finished. Really close and discard changes?"
+msgstr "การตรวจสอบตัวสะกด ยังไม่เสร็จ ต้องการปิด และยกเลิกการเปลี่ยนแปลง?"
+
+msgid "No errors found"
+msgstr "ไม่พบข้อผิดพลาด"
+
+msgid "Your personal dictionary was erased."
+msgstr "พจนานุกรมของคุณ ได้ถูกลบแล้ว"
+
+msgid "Dictionary Erased"
+msgstr "พจนานุกรมถูกลบแล้ว"
+
+#, fuzzy
+msgid ""
+"Your personal dictionary was erased. Please close this window and click "
+"\"Check Spelling\" button again to start your spellcheck over."
+msgstr ""
+"พจนานุกรมส่วนตัวของคุณ ถูกเข้ารหัสแล้ว กรุณาปิดหน้าต่างนี้ และเลือกที่ ปุ่ม \"ตรวจสอบการสะกด\" "
+"เพื่อเริ่มตรวจสอบการสะกดคำ"
+
+msgid "Close this Window"
+msgstr "ปิดหน้าต่างนี้"
+
+msgid ""
+"Your personal dictionary was re-encrypted successfully. Now return to the "
+"&quot;SpellChecker options&quot; menu and make your selection again."
+msgstr ""
+"พจนานุกรมส่วนตัวของคุณ ได้รับการเข้ารหัสแล้ว กำลังกลับสู่ &quot;ตัวเลือกการสะกดคำ&quot;"
+
+msgid "Successful Re-encryption"
+msgstr "เข้ารหัสเสร็จแล้ว"
+
+msgid ""
+"Your personal dictionary was re-encrypted successfully. Please close this "
+"window and click \"Check Spelling\" button again to start your spellcheck "
+"over."
+msgstr ""
+"พจนานุกรมส่วนตัวของคุณ ถูกเข้ารหัสแล้ว กรุณาปิดหน้าต่างนี้ และเลือกที่ ปุ่ม \"ตรวจสอบการสะกด\" "
+"เพื่อเริ่มตรวจสอบการสะกดคำ"
+
+msgid "Dictionary re-encrypted"
+msgstr "พจนานุกรม ถูกเข้ารหัสอีกครั้ง"
+
+msgid ""
+"Your personal dictionary has been <strong>encrypted</strong> and is now "
+"stored in an <strong>encrypted format</strong>."
+msgstr ""
+"พจนานุกรมส่วนตัวของคุณ ได้ถูก <strong>เข้ารหัส</strong> และจัดเก็บโดย <strong>เข้ารหัส</"
+"strong>เอาไว้"
+
+msgid ""
+"Your personal dictionary has been <strong>decrypted</strong> and is now "
+"stored as <strong>clear text</strong>."
+msgstr ""
+"พจนานุกรมส่วนตัวของคุณ ได้ถูก <strong>ถอดรหัส</strong> และจัดเก็บไว้ในรูปแบบที่ "
+"<strong>ไม่ได้เข้ารหัส</strong>"
+
+msgid "Personal Dictionary Crypto Settings"
+msgstr "ติดตั้งตัวเข้ารหัส พจนานุกรมส่วนตัว"
+
+msgid "Personal Dictionary"
+msgstr "พจนานุกรมส่วนตัว"
+
+msgid "No words in your personal dictionary."
+msgstr "ไม่มีคำศัพท์ในพจนานุกรมส่วนตัวของคุณ"
+
+msgid "Please check any words you wish to delete from your dictionary."
+msgstr "เลือกคำศัพท์ที่คุณต้องการลบออกจากพจนานุกรมของคุณ"
+
+#, c-format
+msgid "%s dictionary"
+msgstr "พจนานุกรมภาษา %s"
+
+msgid "Delete checked words"
+msgstr "ลบศัพท์ที่เลือก"
+
+msgid "Edit your Personal Dictionary"
+msgstr "แก้ไขพจนานุกรมส่วนตัว"
+
+msgid "Please make your selection first."
+msgstr ""
+
+#, fuzzy
+msgid ""
+"This will encrypt your personal dictionary and store it in an encrypted "
+"format. Proceed?"
+msgstr "เข้ารหัสพจนานุกรมส่วนตัว และเก็บไว้ในรูปแบบที่ถูกเข้ารหัสไว้"
+
+#, fuzzy
+msgid ""
+"This will decrypt your personal dictionary and store it in a clear-text "
+"format. Proceed?"
+msgstr "ถอดรหัสพจนานุกรมส่วน และเก็บไว้ในรูปแบบที่ไม่ได้เข้ารหัส"
+
+msgid ""
+"<p>Your personal dictionary is <strong>currently encrypted</strong>. This "
+"helps protect your privacy in case the web-mail system gets compromized and "
+"your personal dictionary ends up stolen. It is currently encrypted with the "
+"password you use to access your mailbox, making it hard for anyone to see "
+"what is stored in your personal dictionary.</p> <p><strong>ATTENTION:</"
+"strong> If you forget your password, your personal dictionary will become "
+"unaccessible, since it can no longer be decrypted. If you change your "
+"mailbox password, SquirrelSpell will recognize it and prompt you for your "
+"old password in order to re-encrypt the dictionary with a new key.</p>"
+msgstr ""
+"<p>พจนานุกรมส่วนตัวของคุณได้ถูก <strong>เข้ารหัส</strong> ไว้แล้ว ซึ่งรหัสสำหรับถอดรหัส "
+"คือรหัสผ่านของคุณ</p><p>ถ้าคุณลืมรหัสผ่าน พจนานุกรมส่วนตัวของคุณ จะไม่สามารถนำมาใช้ได้ "
+"เพราะไม่สามารถถอดรหัสออกมาได้ ในกรณีที่คุณเปลี่ยนรหัสผ่าน "
+"ระบบจะถามถึงรหัสผ่านก่อนหน้านั้นของคุณ และดำเนินการเข้ารหัส โดยใช้รหัสผ่านอันใหม่ของคุณ</p>"
+
+msgid ""
+"Please decrypt my personal dictionary and store it in a clear-text format."
+msgstr "ถอดรหัสพจนานุกรมส่วน และเก็บไว้ในรูปแบบที่ไม่ได้เข้ารหัส"
+
+#, fuzzy
+msgid "Change crypto settings"
+msgstr "เปลี่ยนแปลงการเข้ารหัส"
+
+msgid ""
+"<p>Your personal dictionary is <strong>currently not encrypted</strong>. You "
+"may wish to encrypt your personal dictionary to protect your privacy in case "
+"the webmail system gets compromized and your personal dictionary file gets "
+"stolen. When encrypted, the file's contents look garbled and are hard to "
+"decrypt without knowing the correct key (which is your mailbox password).</"
+"p> <strong>ATTENTION:</strong> If you decide to encrypt your personal "
+"dictionary, you must remember that it gets &quot;hashed&quot; with your "
+"mailbox password. If you forget your mailbox password and the administrator "
+"changes it to a new value, your personal dictionary will become useless and "
+"will have to be created anew. However, if you or your system administrator "
+"change your mailbox password but you still have the old password at hand, "
+"you will be able to enter the old key to re-encrypt the dictionary with the "
+"new value.</p>"
+msgstr ""
+"<p>พจนานุกรมส่วนตัวของคุณ <strong>ยังไม่ได้ถูกเข้ารหัสไว้</strong> "
+"คุณสามารถเข้ารหัสเอาไว้ได้ เพื่อป้องกันผู้อื่น แอบดูข้อมูล "
+"โดยรหัสผ่านของคุณจะถูกนำมาใช้ในการเข้ารหัส ในกรณีที่คุณเปลี่ยนรหัสผ่าน ข้อมูลที่ถูกเข้ารหัสไว้ "
+"ยังต้องใช้รหัสผ่านอันเก่า ในการถอดรหัส "
+"หลังจากนั้นข้อมูลจะถูกเข้ารหัสโดยรหัสผ่านอันใหม่ให้โดยอัตโนมัติ"
+
+msgid ""
+"Please encrypt my personal dictionary and store it in an encrypted format."
+msgstr "เข้ารหัสพจนานุกรมส่วนตัว และเก็บไว้ในรูปแบบที่ถูกเข้ารหัสไว้"
+
+#, c-format
+msgid "Deleting the following entries from <strong>%s</strong> dictionary:"
+msgstr "ลบศัพท์ต่อไปนี้ ออกจากพจนานุกรม <strong>%s</strong>"
+
+msgid "All done!"
+msgstr "เสร็จแล้ว"
+
+msgid "Personal Dictionary Updated"
+msgstr "พจนานุกรมส่วนตัว ปรับปรุงแล้ว"
+
+#, fuzzy
+msgid "No changes requested."
+msgstr "ยังไม่ได้เลือกจดหมาย (เลือกโดยการกดที่ช่องสี่เหลี่ยม หน้าจดหมาย)"
+
+msgid "Please wait, communicating with the server..."
+msgstr "กรุณารอสักครู่ กำลังติดต่อกับเซิร์ฟเวอร์"
+
+msgid ""
+"Please choose which dictionary you would like to use to spellcheck this "
+"message:"
+msgstr "กรุณาเลือกพจนานุกรม ที่คุณต้องการใช้การตรวจสะกด:"
+
+msgid "SquirrelSpell Initiating"
+msgstr "เริ่มการตรวจสะกด"
+
+#, fuzzy, c-format
+msgid ""
+"Settings adjusted to: <strong>%s</strong> with <strong>%s</strong> as "
+"default dictionary."
+msgstr "ลบศัพท์ต่อไปนี้ ออกจากพจนานุกรม <strong>%s</strong>"
+
+#, c-format
+msgid "Using <strong>%s</strong> dictionary (system default) for spellcheck."
+msgstr ""
+
+msgid "International Dictionaries Preferences Updated"
+msgstr "ตัวเลือกพจนานุกรมได้รับการปรับแล้ว"
+
+#, fuzzy
+msgid ""
+"Please check any available international dictionaries which you would like "
+"to use when spellchecking:"
+msgstr "กรุณาเลือกพจนานุกรม ที่คุณต้องการใช้การตรวจสะกด:"
+
+msgid "Make this dictionary my default selection:"
+msgstr "เลือกพจนานุกรมอันนี้ เป็นพจนานุกรมหลัก"
+
+msgid "Make these changes"
+msgstr ""
+
+msgid "Add International Dictionaries"
+msgstr "เพิ่มพจนานุกรมต่างประเทศ"
+
+msgid "Please choose which options you wish to set up:"
+msgstr "เลือกหัวข้อที่คุณต้องการแก้ไข"
+
+msgid "Edit your personal dictionary"
+msgstr "แก้ไขพจนานุกรมส่วนตัวของคุณ"
+
+msgid "Set up international dictionaries"
+msgstr "ติดตั้งพจนานุกรมต่างประเทศ"
+
+msgid "Encrypt or decrypt your personal dictionary"
+msgstr "เข้ารหัส หรือถอดรหัส พจนานุกรมส่วนตัวของคุณ"
+
+#, fuzzy
+msgid "not available"
+msgstr "ไม่มีอยู่"
+
+#, fuzzy
+msgid "SquirrelSpell Options Menu"
+msgstr "ผลลัพท์ของการตรวจสอบการสะกด"
+
 msgid "Translator"
 msgstr "ผู้แปล"
 
@@ -2200,24 +3368,30 @@ msgstr "การอ้างถึงจดหมายที่ส่งมา ประกอบการตอบกลับ"
 msgid "Your server options are as follows:"
 msgstr ""
 
-msgid ""
-"13 language pairs, maximum of 1000 characters translated, powered by Systran"
+msgid "Maximum of 1000 characters translated, powered by Systran"
 msgstr ""
 
-msgid ""
-"10 language pairs, maximum of 25 kilobytes translated, powered by Systran"
+#, c-format
+msgid "Number of supported language pairs: %s"
 msgstr ""
 
-msgid "12 language pairs, no known limits, powered by Systran"
+msgid "No known limits, powered by Systran"
 msgstr ""
 
-msgid ""
-"767 language pairs, no known limits, powered by Translation Experts's "
-"InterTran"
+msgid "No known limits, powered by Translation Experts's InterTran"
 msgstr ""
 
-msgid ""
-"8 language pairs, no known limits, powered by GPLTrans (free, open source)"
+#, c-format
+msgid "Number of supported languages: %s"
+msgstr ""
+
+msgid "No known limits, powered by GPLTrans (free, open source)"
+msgstr ""
+
+msgid "Hellenic translations, no known limits, powered by Systran"
+msgstr ""
+
+msgid "Russian translations, maximum of 500 characters translated"
 msgstr ""
 
 msgid ""
@@ -2252,9 +3426,6 @@ msgstr ""
 msgid "Not yet functional, currently does nothing"
 msgstr ""
 
-msgid "Download this as a file"
-msgstr "ดาวน์โหลดจดหมายนี้"
-
 msgid "Translation Options"
 msgstr ""
 
@@ -2270,6 +3441,10 @@ msgstr "%s เป็น %s"
 msgid "English"
 msgstr ""
 
+#, fuzzy
+msgid "Chinese"
+msgstr "เปลี่ยน"
+
 msgid "French"
 msgstr ""
 
@@ -2278,6 +3453,13 @@ msgstr ""
 
 msgid "Italian"
 msgstr ""
+
+msgid "Japanese"
+msgstr ""
+
+#, fuzzy
+msgid "Korean"
+msgstr "มาก"
 
 msgid "Portuguese"
 msgstr ""
@@ -2324,9 +3506,6 @@ msgstr ""
 msgid "Icelandic"
 msgstr ""
 
-msgid "Japanese"
-msgstr ""
-
 msgid "Latin American Spanish"
 msgstr ""
 
@@ -2348,6 +3527,9 @@ msgstr ""
 msgid "Swedish"
 msgstr ""
 
+msgid "Turkish"
+msgstr ""
+
 msgid "Welsh"
 msgstr ""
 
@@ -2357,669 +3539,76 @@ msgstr ""
 msgid "Latin"
 msgstr ""
 
-msgid "Address Book"
-msgstr "สมุดรายชื่อ"
-
-msgid "Name"
-msgstr "ชื่อ-สกุล"
-
-msgid "E-mail"
-msgstr "อีเมล์"
-
-msgid "Info"
-msgstr "รายละเอียดเพิ่มเติม"
-
-msgid "Source"
-msgstr "จาก"
-
-msgid "Bcc"
+msgid "to English"
 msgstr ""
 
-msgid "Use Addresses"
-msgstr "ใช้สมุดรายชื่อ"
-
-msgid "Address Book Search"
-msgstr "ค้นหาจากสมุดรายชื่อ"
-
-msgid "Search for"
-msgstr "ค้นหา"
-
-msgid "in"
-msgstr "ใน"
-
-msgid "All address books"
-msgstr "สมุดรายชื่อทั้งหมด"
-
-msgid "List all"
-msgstr "แสดงทั้งหมด"
-
-#, c-format
-msgid "Unable to list addresses from %s"
-msgstr "ไม่สามารถแสดงที่อยู่จาก %s"
-
-msgid "Your search failed with the following error(s)"
-msgstr "การค้นหามีข้อผิดพลาด ดังนี้"
-
-msgid "No persons matching your search was found"
-msgstr "ไม่พบรายชื่อที่คุณต้องการ"
-
-msgid "Return"
-msgstr "กลับไป"
-
-msgid "Nickname"
-msgstr "ชื่อเล่น"
-
-msgid "Must be unique"
-msgstr "ต้องไม่ซ้ำกับที่มีอยู่แล้ว"
-
-msgid "E-mail address"
-msgstr "อีเมล์"
-
-msgid "First name"
-msgstr "ชื่อ"
-
-msgid "Last name"
-msgstr "สกุล"
-
-msgid "Additional info"
-msgstr "ข้อมูลเพิ่มเติม"
-
-msgid "No personal address book is defined. Contact administrator."
-msgstr "ไม่มีสมุดรายชื่อที่กำหนด กรุณาแจ้งผู้ดูแลระบบ"
-
-msgid "You can only edit one address at the time"
-msgstr "คุณสามารถแก้ไขได้ทีละ 1 ชื่อเท่านั้น"
-
-msgid "Update address"
-msgstr "ยืนยันการแก้ไข"
-
-msgid "Unknown error"
-msgstr "เกิดข้อผิดพลาด"
-
-msgid "Add address"
-msgstr "เพิ่มรายชื่อ"
-
-msgid "Edit selected"
-msgstr "แก้ไขอันที่เลือก"
-
-msgid "Delete selected"
-msgstr "ลบอันที่เลือก"
-
-#, c-format
-msgid "Add to %s"
-msgstr "เพิ่มข้อมูลลงใน %s"
-
-msgid "Original Message"
-msgstr "จดหมายดั้งเดิม"
-
-msgid "Draft Email Saved"
-msgstr "จดหมายที่ร่างไว้ ได้ถูกจัดเก็บแล้ว"
-
-msgid "Could not move/copy file. File not attached"
-msgstr "ไม่พบไฟล์แนบ กดที่ปุ่ม Browse เพื่อเลือกไฟล์ก่อน กดปุ่มเพิ่ม"
-
-#, fuzzy
-msgid "Draft Saved"
-msgstr "จดหมายที่ร่างไว้ ได้ถูกจัดเก็บแล้ว"
-
-#, fuzzy
-msgid "Your Message has been sent"
-msgstr "ยังไม่ได้เลือกจดหมาย (เลือกโดยการกดที่ช่องสี่เหลี่ยม หน้าจดหมาย)"
-
-msgid "To:"
-msgstr "ส่งถึง:"
-
-msgid "CC:"
-msgstr "สำเนาถึง:"
-
-msgid "BCC:"
-msgstr "แอบสำเนาถึง:"
-
-msgid "Subject:"
-msgstr "หัวข้อ:"
-
-msgid "Send"
-msgstr "     ส่ง     "
-
-msgid "Attach:"
-msgstr "แนบไฟล์:"
-
-msgid "Add"
-msgstr "  เพิ่ม  "
-
-msgid "Delete selected attachments"
-msgstr "ลบไฟล์แนบที่เลือกไว้"
-
-msgid "Priority"
-msgstr "ระดับความสำคัญ"
-
-msgid "Receipt"
+msgid "from English"
 msgstr ""
 
 #, fuzzy
-msgid "On Read"
-msgstr "อ่านแล้ว"
+msgid "Interface language"
+msgstr "ภาษา"
 
-msgid "On Delivery"
+#, fuzzy
+msgid "Translation direction"
+msgstr "การอ้างถึงจดหมายที่ส่งมา ประกอบการตอบกลับ"
+
+msgid "Delivery error report"
 msgstr ""
 
-#, fuzzy
-msgid "Save Draft"
-msgstr "เขียนต่อจดหมายที่ร่างทิ้งไว้"
-
-msgid "You have not filled in the \"To:\" field."
-msgstr "คุณยังไม่ได้กำหนดว่าจะส่งให้ใคร ในช่อง ส่งถึง:"
-
-msgid "said"
-msgstr "เขียนว่า"
-
-msgid "quote"
-msgstr "อ้างจากข้อความ"
-
-msgid "who"
-msgstr "ของ"
-
-#, fuzzy
-msgid "Draft folder"
-msgstr "กล่องเก็บจดหมายที่ถูกลบ:"
-
-msgid "Illegal folder name.  Please select a different name."
-msgstr "ชื่อกล่องจดหมายไม่ถูกต้อง กรุณาเปลี่ยนชื่อ"
-
-msgid "Click here to go back"
-msgstr "กดที่นี่เพื่อกลับไป"
-
-msgid "You have not selected a folder to delete. Please do so."
+msgid "Undelivered Message Headers"
 msgstr ""
 
-msgid "Delete Folder"
-msgstr "ลบกล่องจดหมาย"
-
-#, c-format
-msgid "Are you sure you want to delete %s?"
-msgstr ""
-
-msgid "Subscribed successfully!"
-msgstr "เพิ่มสำเร็จ"
-
-msgid "Unsubscribed successfully!"
-msgstr "นำออกสำเร็จ"
-
-msgid "Deleted folder successfully!"
-msgstr "ลบกล่องจดหมายสำเร็จ"
-
-msgid "Created folder successfully!"
-msgstr "สร้างกล่องจดหมายสำเร็จ"
-
-msgid "Renamed successfully!"
-msgstr "เปลี่ยนชื่อกล่องจดหมายสำเร็จ"
-
-msgid "Subscription Unsuccessful - Folder does not exist."
-msgstr ""
-
-msgid "refresh folder list"
-msgstr "รายชื่อกล่องจดหมายล่าสุด"
-
-msgid "Create Folder"
-msgstr "สร้างกล่องจดหมาย"
-
-msgid "as a subfolder of"
-msgstr "เป็นกล่องจดหมายย่อยของ"
-
-msgid "None"
-msgstr "ไม่มี"
-
-msgid "Let this folder contain subfolders"
-msgstr "อนุญาติให้กล่องจดหมายนี้มีกล่องจดหมายย่อย"
-
-msgid "Create"
-msgstr "สร้าง"
-
-msgid "Rename a Folder"
-msgstr "เปลี่ยนชื่อกล่องจดหมาย"
-
-#, fuzzy
-msgid "Select a folder"
-msgstr "เปลี่ยนชื่อกล่องจดหมาย"
-
-msgid "Rename"
-msgstr "เปลี่ยนชื่อ"
-
-msgid "No folders found"
-msgstr "ไม่พบกล่องจดหมาย"
-
-msgid "No folders were found to unsubscribe from!"
-msgstr "ไม่พบกล่องจดหมายที่จะเอาออก"
-
-msgid "No folders were found to subscribe to!"
-msgstr "ไม่พบกล่องจดหมายที่จะเพิ่ม"
-
-#, fuzzy
-msgid "Subscribe to:"
-msgstr "เพิ่ม"
-
-msgid "You have not selected a folder to rename. Please do so."
-msgstr ""
-
-msgid "Rename a folder"
-msgstr "เปลี่ยนชื่อกล่องจดหมาย"
-
-msgid "New name:"
-msgstr "ชื่อใหม่:"
-
-msgid "ERROR: Help files are not in the right format!"
-msgstr ""
-
-#, c-format
-msgid ""
-"The help has not been translated to %s.  It will be displayed in English "
-"instead."
-msgstr "หัวข้อช่วยเหลือนี้ ยังไม่ได้ถูกแปลเป็นภาษาไทย"
-
-msgid "Some or all of the help documents are not present!"
-msgstr "บางส่วนของหัวข้อช่วยเหลือ จะไม่ถูกแสดง"
-
-msgid "Table of Contents"
-msgstr "สารบาญ"
-
-msgid "Top"
-msgstr "บนสุด"
-
-#, fuzzy
-msgid "Viewing an image attachment"
-msgstr "ดูรูปในไฟล์แนบ"
-
-msgid "View message"
-msgstr "ดูจดหมาย"
-
-#, fuzzy
-msgid "Not available"
-msgstr "ไม่มีอยู่"
-
-msgid "purge"
-msgstr "ลบทิ้ง"
-
-msgid "Last Refresh"
-msgstr "ข้อมูลล่าสุด"
-
-msgid "Save folder tree"
-msgstr ""
-
-msgid "Login"
-msgstr "เข้าสู่ระบบ"
-
-#, c-format
-msgid "%s Login"
-msgstr "เข้าสู่ระบบ %s"
-
-msgid "Name:"
-msgstr "ชื่อ:"
-
-msgid "No messages were selected."
-msgstr "ยังไม่ได้เลือกจดหมาย (เลือกโดยการกดที่ช่องสี่เหลี่ยม หน้าจดหมาย)"
-
-msgid "Message Highlighting"
-msgstr "เน้นจดหมาย"
-
-#, fuzzy
-msgid "subject"
-msgstr "หัวข้อ"
-
-msgid "No highlighting is defined"
-msgstr "ไม่มีการกำหนดการเน้นจดหมาย"
-
-msgid "Identifying name"
-msgstr "ชื่อที่ใช้แยกแยะ"
-
-msgid "Color"
-msgstr "สี"
-
-msgid "Dark Blue"
-msgstr "น้ำเงินเข้ม"
-
-msgid "Dark Green"
-msgstr "เขียวเข้ม"
-
-msgid "Dark Yellow"
-msgstr "เหลืองเข้ม"
-
-msgid "Dark Cyan"
-msgstr "ฟ้าเข้ม"
-
-msgid "Dark Magenta"
-msgstr "ม่วงเข้ม"
-
-msgid "Light Blue"
-msgstr "น้ำเงินอ่อน"
-
-msgid "Light Green"
-msgstr "เขียวอ่อน"
-
-msgid "Light Yellow"
-msgstr "เหลืองอ่อน"
-
-msgid "Light Cyan"
-msgstr "ฟ้าอ่อน"
-
-msgid "Light Magenta"
-msgstr "ม่วงอ่อน"
-
-msgid "Dark Gray"
-msgstr "เทาเข้ม"
-
-msgid "Medium Gray"
-msgstr "เทาปานกลาง"
-
-msgid "Light Gray"
-msgstr "เทาอ่อน"
-
-msgid "White"
-msgstr "ขาว"
-
-msgid "Other:"
-msgstr "อื่นๆ:"
-
-msgid "Ex: 63aa7f"
-msgstr "เช่น: 63aa7f"
-
-msgid "Matches"
-msgstr "ตรงกับ"
-
-#, c-format
-msgid "Alternate Identity %d"
-msgstr "รายละเอียดส่วนตัวเพิ่มเติม ที่ %s"
-
-msgid "Advanced Identities"
-msgstr "รายละเอียดส่วนตัวเพิ่มเติม"
-
-msgid "Default Identity"
-msgstr "รายละเอียดส่วนตัวแบบปกติ"
-
-msgid "Add a New Identity"
-msgstr "เพิ่มรายละเอียดส่วนตัวเพิ่มเติม"
-
-msgid "E-Mail Address"
-msgstr "อีเมล์แอดเดรส"
-
-msgid "Save / Update"
-msgstr "จัดเก็บ / เปลี่ยนแปลง"
-
-msgid "Make Default"
-msgstr "ใช้อันนี้เป็นแบบปกติ"
-
-msgid "Move Up"
-msgstr "เลื่อนขึ้น"
-
-msgid "Index Order"
-msgstr "เรียงลำดับคอลัมน์ในหน้าจอแสดงรายการจดหมาย"
-
-msgid "Checkbox"
-msgstr "กล่องให้ติ๊กเพื่อเลือก"
-
-msgid "Flags"
-msgstr "สถานะ"
-
-msgid ""
-"The index order is the order that the columns are arranged in the message "
-"index.  You can add, remove, and move columns around to customize them to "
-"fit your needs."
-msgstr "คุณสามารถเรียงลำดับ คอลัมน์ต่างๆ ในหน้ารายการจดหมายได้ตามต้องการ"
-
-msgid "up"
-msgstr "เลื่อนขึ้น"
-
-msgid "down"
-msgstr "เลื่อนลง"
-
-msgid "remove"
-msgstr "เอาออก"
-
-msgid "Return to options page"
-msgstr "กลับไปยังหน้าปรับแต่ง"
-
-msgid "Personal Information"
-msgstr "ข้อมูลส่วนบุคคล"
-
-msgid "Display Preferences"
-msgstr "รูปแบบการแสดงผล"
-
-msgid "Folder Preferences"
-msgstr "กำหนดรูปแบบกล่องจดหมาย"
-
-#, fuzzy
-msgid "Successfully Saved Options"
-msgstr "จัดเก็บข้อมูลส่วนตัวสำเร็จ"
-
-msgid "Refresh Folder List"
-msgstr "ดูรายชื่อกล่องจดหมายล่าสุด"
-
-msgid "Refresh Page"
-msgstr "ดูหน้านี้อันล่าสุด"
-
-msgid ""
-"This contains personal information about yourself such as your name, your "
-"email address, etc."
-msgstr "ข้อมูลส่วนบุคคลของคุณ เช่น ชื่อ, อีเมล์ และอื่นๆ"
-
-msgid ""
-"You can change the way that SquirrelMail looks and displays information to "
-"you, such as the colors, the language, and other settings."
-msgstr "คุณสามารถเปลี่ยนแปลงสิ่งต่างๆ เช่น  สี, ภาษา, และอื่นๆ"
-
-msgid ""
-"Based upon given criteria, incoming messages can have different background "
-"colors in the message list.  This helps to easily distinguish who the "
-"messages are from, especially for mailing lists."
-msgstr "กำหนดเงื่อนไข สำหรับสีพื้นของจดหมาย เช่น จดหมายจากแฟนให้เป็นสีชมพู"
-
-msgid ""
-"These settings change the way your folders are displayed and manipulated."
-msgstr "เปลี่ยนรูปแบบการแสดงกล่องจดหมาย ตามที่คุณต้องการ"
-
-#, fuzzy
-msgid ""
-"The order of the message index can be rearranged and changed to contain the "
-"headers in any order you want."
-msgstr "สามารถกำหนดให้เรียงลำดับตามที่คุณต้องการ"
-
-#, fuzzy
-msgid "Message not printable"
-msgstr "ตัวกรองจดหมาย"
-
-msgid "Printer Friendly"
-msgstr "โหมดพิมพ์จดหมาย"
-
-#, fuzzy
-msgid "CC"
-msgstr "สำเนาถึง:"
-
-msgid "Print"
-msgstr "พิมพ์"
-
-msgid "View Printable Version"
-msgstr "แสดงจดหมายในรูปแบบสำหรับพิมพ์"
-
-#, fuzzy
-msgid "Read:"
-msgstr "อ่านแล้ว"
-
-#, fuzzy
-msgid "Your message"
-msgstr "] ฉบับ"
-
-#, fuzzy
-msgid "Sent:"
-msgstr "     ส่ง     "
-
-#, c-format
-msgid "Was displayed on %s"
-msgstr ""
-
-msgid "less"
-msgstr "น้อย"
-
-msgid "more"
-msgstr "มาก"
-
-msgid "Mailer"
-msgstr "ส่งจดหมาย โดยโปรแกรม"
-
-msgid "Read receipt"
-msgstr ""
-
-#, fuzzy
-msgid "send"
-msgstr "     ส่ง     "
-
-#, fuzzy
-msgid "requested"
-msgstr "ไม่มีการเปลี่ยนแปลง"
-
-msgid ""
-"The message sender has requested a response to indicate that you have read "
-"this message. Would you like to send a receipt?"
-msgstr ""
-
-msgid "Send read receipt now"
-msgstr ""
-
-#, fuzzy
-msgid "Search results"
-msgstr "ค้นหา"
-
-msgid "Message List"
-msgstr "รายการจดหมาย"
-
-msgid "Resume Draft"
-msgstr "เขียนต่อจดหมายที่ร่างทิ้งไว้"
-
-msgid "Edit Message as New"
-msgstr ""
-
-#, fuzzy
-msgid "View Message"
-msgstr "ดูจดหมาย"
-
-#, fuzzy
-msgid "Forward as Attachment"
-msgstr "แนบไฟล์"
-
-msgid "Reply"
-msgstr "ตอบกลับ"
-
-msgid "Reply All"
-msgstr "ตอบกลับให้ทุกคน"
-
-#, fuzzy
-msgid "View Full Header"
-msgstr "ดูหัวจดหมายทั้งหมด"
-
-msgid "Attachments"
-msgstr "แนบไฟล์"
-
-#, fuzzy
-msgid "Folder:"
-msgstr "กล่องจดหมาย"
-
-#, fuzzy
-msgid "edit"
-msgstr "แก้ไข"
-
-#, fuzzy
-msgid "search"
-msgstr "ค้นหา"
-
-#, fuzzy
-msgid "delete"
-msgstr "     ลบ     "
-
-msgid "Recent Searches"
-msgstr ""
-
-#, fuzzy
-msgid "save"
-msgstr "จัดเก็บ"
-
-#, fuzzy
-msgid "forget"
-msgstr "มาก"
-
-#, fuzzy
-msgid "Current Search"
-msgstr "กล่องจดหมายในขณะนี้"
-
-msgid "Body"
-msgstr "เนื้อความ"
-
-msgid "Everywhere"
-msgstr "ทั้งหมด"
-
-#, fuzzy
-msgid "Search Results"
-msgstr "ค้นหา"
-
-#, fuzzy
-msgid "No Messages Found"
-msgstr "จำนวนจดหมายต่อหน้า"
-
-msgid "You have been successfully signed out."
-msgstr "คุณได้ออกจากระบบแล้ว"
-
-msgid "Click here to log back in."
-msgstr "กดที่นี่ เพื่อเข้าสู่ระบบ"
-
-#, fuzzy
-msgid "Viewing a Business Card"
-msgstr "แสดงจดหมาย"
-
-#, fuzzy
-msgid "Title"
-msgstr "หัวข้อ:"
-
-#, fuzzy
-msgid "Email"
-msgstr "อีเมล์"
-
-#, fuzzy
-msgid "Web Page"
-msgstr "ดูหน้านี้อันล่าสุด"
-
-msgid "Organization / Department"
-msgstr "บริษัท / แผนก"
-
-#, fuzzy
-msgid "Address"
-msgstr "สมุดรายชื่อ"
-
-msgid "Work Phone"
-msgstr "โทรศัพท์ที่ทำงาน"
-
-msgid "Home Phone"
-msgstr "โทรศัพท์ที่บ้าน"
-
-msgid "Cellular Phone"
-msgstr "โทรศัพท์มือถือ"
-
-msgid "Fax"
-msgstr "แฟกซ์"
-
-#, fuzzy
-msgid "Note"
-msgstr "ไม่มี"
-
-#, fuzzy
-msgid "Add to Addressbook"
-msgstr "เพิ่มรายชื่อ"
-
-msgid "Title & Org. / Dept."
-msgstr "ตำแหน่ง, บริษัท, แผนก"
-
-#, fuzzy
-msgid "Viewing Full Header"
-msgstr "ดูรายละเอียดของหัวจดหมายทั้งหมด"
-
-msgid "Viewing a text attachment"
-msgstr "ดูข้อมูลในไฟล์แนบ"
+#~ msgid "Unknown message number in reply from server: "
+#~ msgstr "Unknown message number in reply from server: "
+
+#~ msgid "(unknown sender)"
+#~ msgstr "(ไม่รู้จักผู้ส่ง)"
+
+#~ msgid "Enable Subtle Printer Friendly Link"
+#~ msgstr "แสดงลิงค์ สำหรับพิมพ์จดหมาย "
+
+#~ msgid ""
+#~ "FREE - Osirusoft Relays - Osirusofts list of verified open relays. Seems "
+#~ "to include servers used by abuse@uunet.net auto-replies too."
+#~ msgstr ""
+#~ "FREE - Osirusoft Relays - Osirusofts list of verified open relays. Seems "
+#~ "to include servers used by abuse@uunet.net auto-replies too."
+
+#~ msgid "FREE - Osirusoft Dialups - Osirusofts Dialup Spam Source list."
+#~ msgstr "FREE - Osirusoft Dialups - Osirusofts Dialup Spam Source list."
+
+#~ msgid ""
+#~ "FREE - Osirusoft Confirmed Spam Source - Sites that continually spam and "
+#~ "have been manually added after multiple nominations. Use with caution. "
+#~ "Seems to catch abuse auto-replies from some ISPs."
+#~ msgstr ""
+#~ "FREE - Osirusoft Confirmed Spam Source - Sites that continually spam and "
+#~ "have been manually added after multiple nominations. Use with caution. "
+#~ "Seems to catch abuse auto-replies from some ISPs."
+
+#~ msgid ""
+#~ "FREE - Osirusoft Smart Hosts - List of hosts that are secure but relay "
+#~ "for other mail servers that are not secure."
+#~ msgstr ""
+#~ "FREE - Osirusoft Smart Hosts - List of hosts that are secure but relay "
+#~ "for other mail servers that are not secure."
+
+#~ msgid ""
+#~ "FREE - Osirusoft Spamware Developers - It is believed that these are IP "
+#~ "ranges of companies that are known to produce spam software. Seems to "
+#~ "catch abuse auto-replies from some ISPs."
+#~ msgstr ""
+#~ "FREE - Osirusoft Spamware Developers - It is believed that these are IP "
+#~ "ranges of companies that are known to produce spam software. Seems to "
+#~ "catch abuse auto-replies from some ISPs."
+
+#~ msgid ""
+#~ "FREE - Osirusoft Unconfirmed OptIn Servers - List of listservers that opt "
+#~ "users in without confirmation."
+#~ msgstr ""
+#~ "FREE - Osirusoft Unconfirmed OptIn Servers - List of listservers that opt "
+#~ "users in without confirmation."
 
 #~ msgid "Close window"
 #~ msgstr "ปิดหน้าต่างนี้"
@@ -3083,220 +3672,6 @@ msgstr "ดูข้อมูลในไฟล์แนบ"
 
 #~ msgid "SECURITY BREACH ON DECK 5! CMDR TUVOK AND SECURITY TEAM REQUESTED."
 #~ msgstr "SECURITY BREACH ON DECK 5! CMDR TUVOK AND SECURITY TEAM REQUESTED."
-
-#~ msgid "Your personal dictionary was erased."
-#~ msgstr "พจนานุกรมของคุณ ได้ถูกลบแล้ว"
-
-#~ msgid "Dictionary Erased"
-#~ msgstr "พจนานุกรมถูกลบแล้ว"
-
-#~ msgid "Close this Window"
-#~ msgstr "ปิดหน้าต่างนี้"
-
-#~ msgid ""
-#~ "Your personal dictionary was re-encrypted successfully. Now return to the "
-#~ "&quot;SpellChecker options&quot; menu and make your selection again."
-#~ msgstr ""
-#~ "พจนานุกรมส่วนตัวของคุณ ได้รับการเข้ารหัสแล้ว กำลังกลับสู่ &quot;ตัวเลือกการสะกดคำ&quot;"
-
-#~ msgid "Successful Re-encryption"
-#~ msgstr "เข้ารหัสเสร็จแล้ว"
-
-#~ msgid ""
-#~ "Your personal dictionary was re-encrypted successfully. Please close this "
-#~ "window and click \"Check Spelling\" button again to start your spellcheck "
-#~ "over."
-#~ msgstr ""
-#~ "พจนานุกรมส่วนตัวของคุณ ถูกเข้ารหัสแล้ว กรุณาปิดหน้าต่างนี้ และเลือกที่ ปุ่ม \"ตรวจสอบการสะกด"
-#~ "\" เพื่อเริ่มตรวจสอบการสะกดคำ"
-
-#~ msgid "Dictionary re-encrypted"
-#~ msgstr "พจนานุกรม ถูกเข้ารหัสอีกครั้ง"
-
-#~ msgid ""
-#~ "Your personal dictionary has been <strong>encrypted</strong> and is now "
-#~ "stored in an <strong>encrypted format</strong>."
-#~ msgstr ""
-#~ "พจนานุกรมส่วนตัวของคุณ ได้ถูก <strong>เข้ารหัส</strong> และจัดเก็บโดย "
-#~ "<strong>เข้ารหัส</strong>เอาไว้"
-
-#~ msgid ""
-#~ "Your personal dictionary has been <strong>decrypted</strong> and is now "
-#~ "stored as <strong>clear text</strong>."
-#~ msgstr ""
-#~ "พจนานุกรมส่วนตัวของคุณ ได้ถูก <strong>ถอดรหัส</strong> และจัดเก็บไว้ในรูปแบบที่ "
-#~ "<strong>ไม่ได้เข้ารหัส</strong>"
-
-#~ msgid "Personal Dictionary Crypto Settings"
-#~ msgstr "ติดตั้งตัวเข้ารหัส พจนานุกรมส่วนตัว"
-
-#~ msgid "SquirrelSpell Results"
-#~ msgstr "ผลลัพท์ของการตรวจสอบการสะกด"
-
-#~ msgid "Found %s errors"
-#~ msgstr "พบคำผิด %s แห่ง"
-
-#~ msgid "Line with an error:"
-#~ msgstr "บรรทัดที่ผิด:"
-
-#~ msgid "Error:"
-#~ msgstr "คำผิด:"
-
-#~ msgid "Suggestions"
-#~ msgstr "คำแนะนำ"
-
-#~ msgid "Change to:"
-#~ msgstr "เปลี่ยนเป็น:"
-
-#~ msgid "Occurs times:"
-#~ msgstr "จำนวนคำ:"
-
-#~ msgid "Change this word"
-#~ msgstr "เปลี่ยนศัพท์คำนี้"
-
-#~ msgid "Change"
-#~ msgstr "เปลี่ยน"
-
-#~ msgid "Change ALL occurances of this word"
-#~ msgstr "เปลี่ยนศัพท์คำนี้ทั้งหมด"
-
-#~ msgid "Change All"
-#~ msgstr "เปลี่ยนทั้งหมด"
-
-#~ msgid "Ignore this word"
-#~ msgstr "ไม่ต้องสนใจศัพท์คำนี้"
-
-#~ msgid "Ignore"
-#~ msgstr "ไม่สนใจ"
-
-#~ msgid "Ignore ALL occurances this word"
-#~ msgstr "ไม่สนใจศัพท์คำนี้"
-
-#~ msgid "Ignore All"
-#~ msgstr "ไม่สนใจทั้งหมด"
-
-#~ msgid "Add to Dic"
-#~ msgstr "เพิ่มลงในพจนานุกรม"
-
-#~ msgid "Close and Commit"
-#~ msgstr "ปิดหน้าต่างนี้"
-
-#~ msgid "The spellcheck is not finished. Really close and commit changes?"
-#~ msgstr "การตรวจสอบตัวสะกด ยังไม่เสร็จ ต้องการปิด และจัดเก็บการเปลี่ยนแปลง?"
-
-#~ msgid "Close and Cancel"
-#~ msgstr "ปิด และยกเลิก"
-
-#~ msgid "The spellcheck is not finished. Really close and discard changes?"
-#~ msgstr "การตรวจสอบตัวสะกด ยังไม่เสร็จ ต้องการปิด และยกเลิกการเปลี่ยนแปลง?"
-
-#~ msgid "No errors found"
-#~ msgstr "ไม่พบข้อผิดพลาด"
-
-#~ msgid "Personal Dictionary"
-#~ msgstr "พจนานุกรมส่วนตัว"
-
-#~ msgid "No words in your personal dictionary."
-#~ msgstr "ไม่มีคำศัพท์ในพจนานุกรมส่วนตัวของคุณ"
-
-#~ msgid "Please check any words you wish to delete from your dictionary."
-#~ msgstr "เลือกคำศัพท์ที่คุณต้องการลบออกจากพจนานุกรมของคุณ"
-
-#~ msgid "%s dictionary"
-#~ msgstr "พจนานุกรมภาษา %s"
-
-#~ msgid "Delete checked words"
-#~ msgstr "ลบศัพท์ที่เลือก"
-
-#~ msgid "Edit your Personal Dictionary"
-#~ msgstr "แก้ไขพจนานุกรมส่วนตัว"
-
-#~ msgid ""
-#~ "<p>Your personal dictionary is <strong>currently encrypted</strong>. This "
-#~ "helps protect your privacy in case the web-mail system gets compromized "
-#~ "and your personal dictionary ends up stolen. It is currently encrypted "
-#~ "with the password you use to access your mailbox, making it hard for "
-#~ "anyone to see what is stored in your personal dictionary.</p> "
-#~ "<p><strong>ATTENTION:</strong> If you forget your password, your personal "
-#~ "dictionary will become unaccessible, since it can no longer be decrypted. "
-#~ "If you change your mailbox password, SquirrelSpell will recognize it and "
-#~ "prompt you for your old password in order to re-encrypt the dictionary "
-#~ "with a new key.</p>"
-#~ msgstr ""
-#~ "<p>พจนานุกรมส่วนตัวของคุณได้ถูก <strong>เข้ารหัส</strong> ไว้แล้ว ซึ่งรหัสสำหรับถอดรหัส "
-#~ "คือรหัสผ่านของคุณ</p><p>ถ้าคุณลืมรหัสผ่าน พจนานุกรมส่วนตัวของคุณ จะไม่สามารถนำมาใช้ได้ "
-#~ "เพราะไม่สามารถถอดรหัสออกมาได้ ในกรณีที่คุณเปลี่ยนรหัสผ่าน "
-#~ "ระบบจะถามถึงรหัสผ่านก่อนหน้านั้นของคุณ และดำเนินการเข้ารหัส โดยใช้รหัสผ่านอันใหม่ของคุณ</p>"
-
-#~ msgid ""
-#~ "Please decrypt my personal dictionary and store it in a clear-text format."
-#~ msgstr "ถอดรหัสพจนานุกรมส่วน และเก็บไว้ในรูปแบบที่ไม่ได้เข้ารหัส"
-
-#~ msgid ""
-#~ "<p>Your personal dictionary is <strong>currently not encrypted</strong>. "
-#~ "You may wish to encrypt your personal dictionary to protect your privacy "
-#~ "in case the webmail system gets compromized and your personal dictionary "
-#~ "file gets stolen. When encrypted, the file's contents look garbled and "
-#~ "are hard to decrypt without knowing the correct key (which is your "
-#~ "mailbox password).</p> <strong>ATTENTION:</strong> If you decide to "
-#~ "encrypt your personal dictionary, you must remember that it gets &quot;"
-#~ "hashed&quot; with your mailbox password. If you forget your mailbox "
-#~ "password and the administrator changes it to a new value, your personal "
-#~ "dictionary will become useless and will have to be created anew. However, "
-#~ "if you or your system administrator change your mailbox password but you "
-#~ "still have the old password at hand, you will be able to enter the old "
-#~ "key to re-encrypt the dictionary with the new value.</p>"
-#~ msgstr ""
-#~ "<p>พจนานุกรมส่วนตัวของคุณ <strong>ยังไม่ได้ถูกเข้ารหัสไว้</strong> "
-#~ "คุณสามารถเข้ารหัสเอาไว้ได้ เพื่อป้องกันผู้อื่น แอบดูข้อมูล "
-#~ "โดยรหัสผ่านของคุณจะถูกนำมาใช้ในการเข้ารหัส ในกรณีที่คุณเปลี่ยนรหัสผ่าน ข้อมูลที่ถูกเข้ารหัสไว้ "
-#~ "ยังต้องใช้รหัสผ่านอันเก่า ในการถอดรหัส "
-#~ "หลังจากนั้นข้อมูลจะถูกเข้ารหัสโดยรหัสผ่านอันใหม่ให้โดยอัตโนมัติ"
-
-#~ msgid ""
-#~ "Please encrypt my personal dictionary and store it in an encrypted format."
-#~ msgstr "เข้ารหัสพจนานุกรมส่วนตัว และเก็บไว้ในรูปแบบที่ถูกเข้ารหัสไว้"
-
-#~ msgid "Deleting the following entries from <strong>%s</strong> dictionary:"
-#~ msgstr "ลบศัพท์ต่อไปนี้ ออกจากพจนานุกรม <strong>%s</strong>"
-
-#~ msgid "All done!"
-#~ msgstr "เสร็จแล้ว"
-
-#~ msgid "Personal Dictionary Updated"
-#~ msgstr "พจนานุกรมส่วนตัว ปรับปรุงแล้ว"
-
-#~ msgid "Please wait, communicating with the server..."
-#~ msgstr "กรุณารอสักครู่ กำลังติดต่อกับเซิร์ฟเวอร์"
-
-#~ msgid ""
-#~ "Please choose which dictionary you would like to use to spellcheck this "
-#~ "message:"
-#~ msgstr "กรุณาเลือกพจนานุกรม ที่คุณต้องการใช้การตรวจสะกด:"
-
-#~ msgid "SquirrelSpell Initiating"
-#~ msgstr "เริ่มการตรวจสะกด"
-
-#~ msgid "International Dictionaries Preferences Updated"
-#~ msgstr "ตัวเลือกพจนานุกรมได้รับการปรับแล้ว"
-
-#~ msgid "Make this dictionary my default selection:"
-#~ msgstr "เลือกพจนานุกรมอันนี้ เป็นพจนานุกรมหลัก"
-
-#~ msgid "Add International Dictionaries"
-#~ msgstr "เพิ่มพจนานุกรมต่างประเทศ"
-
-#~ msgid "Please choose which options you wish to set up:"
-#~ msgstr "เลือกหัวข้อที่คุณต้องการแก้ไข"
-
-#~ msgid "Edit your personal dictionary"
-#~ msgstr "แก้ไขพจนานุกรมส่วนตัวของคุณ"
-
-#~ msgid "Set up international dictionaries"
-#~ msgstr "ติดตั้งพจนานุกรมต่างประเทศ"
-
-#~ msgid "Encrypt or decrypt your personal dictionary"
-#~ msgstr "เข้ารหัส หรือถอดรหัส พจนานุกรมส่วนตัวของคุณ"
 
 #~ msgid "Yes, show me the HTML version of a mail message, if it is available."
 #~ msgstr "แสดงจดหมายในรูปแบบ HTML ถ้าจดหมายนั้นมีการใช้ HTML"

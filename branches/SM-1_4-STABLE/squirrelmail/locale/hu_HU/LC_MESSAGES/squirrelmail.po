@@ -4,8 +4,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: $Id$\n"
-"POT-Creation-Date: 2003-01-01 18:33+0100\n"
+"Project-Id-Version: $Id: squirrelmail.po,v 1.2.2.1 2003/05/25 08:46:28 tokul "
+"Exp $\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2003-09-20 11:04+0300\n"
 "PO-Revision-Date: 2001-06-18 22:17+2\n"
 "Last-Translator: István-Attila András <bergkatten@netscape.net>\n"
 "Language-Team: Hungarian <squirrelmail-i18n@lists.sourceforge.net>\n"
@@ -13,14 +15,833 @@ msgstr ""
 "Content-Type: text/plain; charset=iso-8859-2\n"
 "Content-Transfer-Encoding: 8-bit\n"
 
-msgid "Delivery error report"
+msgid "Address Book"
+msgstr "Címjegyzék"
+
+msgid "All"
 msgstr ""
 
-msgid "Undelivered Message Headers"
+msgid "Name"
+msgstr "Név"
+
+msgid "E-mail"
+msgstr "E-mail"
+
+msgid "Info"
+msgstr "Megjegyzés"
+
+msgid "Source"
+msgstr "Forrás"
+
+msgid "To"
+msgstr "Címzett"
+
+msgid "Cc"
+msgstr "Másolat"
+
+msgid "Bcc"
 msgstr ""
 
-msgid "(no subject)"
-msgstr "(nincs téma)"
+msgid "Use Addresses"
+msgstr "Címek választása"
+
+msgid "Address Book Search"
+msgstr "Keresés a címjegyzékben"
+
+msgid "Search for"
+msgstr "Keresés"
+
+msgid "in"
+msgstr "ban"
+
+msgid "All address books"
+msgstr "Minden címjegyzék"
+
+msgid "Search"
+msgstr "Keresés"
+
+msgid "List all"
+msgstr "Mindent listáz"
+
+#, c-format
+msgid "Unable to list addresses from %s"
+msgstr "Ilyen cím nem található a %s-ben"
+
+msgid "Your search failed with the following error(s)"
+msgstr "A keresés eredménytelen. Hibakód: "
+
+msgid "No persons matching your search was found"
+msgstr "A keresett személy nem található"
+
+msgid "Return"
+msgstr "Vissza"
+
+#, fuzzy
+msgid "Close"
+msgstr "Új levél"
+
+msgid "Nickname"
+msgstr "Becenév"
+
+msgid "Must be unique"
+msgstr "Egyértelmü kell legyen"
+
+msgid "E-mail address"
+msgstr "E-mail cím"
+
+msgid "Last name"
+msgstr "Vezetéknév"
+
+msgid "First name"
+msgstr "Keresztnév"
+
+msgid "Additional info"
+msgstr "Kiegészítö információ"
+
+msgid "No personal address book is defined. Contact administrator."
+msgstr "A címjegyzék nincs definiálva. Értesitsd a rendszergazdát."
+
+msgid "You can only edit one address at the time"
+msgstr "Egyidejüleg csak egy cím szerkeszthetö"
+
+msgid "Update address"
+msgstr "Címet frissít"
+
+msgid "ERROR"
+msgstr "HIBA"
+
+msgid "Unknown error"
+msgstr "Ismeretlen hiba"
+
+msgid "Add address"
+msgstr "Új cím"
+
+msgid "Edit selected"
+msgstr "Kijelöltet szerkeszteni"
+
+msgid "Delete selected"
+msgstr "Töröl"
+
+#, c-format
+msgid "Add to %s"
+msgstr "Új %s"
+
+msgid "said"
+msgstr ""
+
+msgid "quote"
+msgstr ""
+
+msgid "who"
+msgstr ""
+
+msgid "Subject"
+msgstr "Témakör"
+
+msgid "From"
+msgstr "Feladó"
+
+msgid "Date"
+msgstr "Dátum"
+
+msgid "Original Message"
+msgstr "Eredeti üzenet"
+
+msgid "Draft Email Saved"
+msgstr ""
+
+msgid "Could not move/copy file. File not attached"
+msgstr "Az állomány hozzáférhetetlen. Mellélet nincs csatolva"
+
+#, fuzzy
+msgid "Draft Saved"
+msgstr "Könyvtár létrehozása"
+
+#, fuzzy
+msgid "Your Message has been sent"
+msgstr "Nincs üzenet kiválasztva."
+
+msgid "From:"
+msgstr "Feladó:"
+
+msgid "To:"
+msgstr "Címzett:"
+
+msgid "CC:"
+msgstr "Másolat:"
+
+msgid "BCC:"
+msgstr "B Másolat:"
+
+msgid "Subject:"
+msgstr "Témakör:"
+
+msgid "Send"
+msgstr "Elküld"
+
+msgid "Attach:"
+msgstr "Melléklet:"
+
+msgid "Add"
+msgstr "Hozzáad"
+
+msgid "Delete selected attachments"
+msgstr "Kijelölt mellékletek törlése"
+
+msgid "Priority"
+msgstr ""
+
+#, fuzzy
+msgid "High"
+msgstr "Jobboldal"
+
+msgid "Normal"
+msgstr ""
+
+msgid "Low"
+msgstr ""
+
+msgid "Receipt"
+msgstr ""
+
+#, fuzzy
+msgid "On Read"
+msgstr "Átkeresztelés"
+
+msgid "On Delivery"
+msgstr ""
+
+msgid "Signature"
+msgstr "Névjegykártya"
+
+msgid "Addresses"
+msgstr "Címek"
+
+msgid "Save Draft"
+msgstr ""
+
+msgid "You have not filled in the \"To:\" field."
+msgstr "Nem töltötted ki a \"Címzett:\" mezöt."
+
+#, fuzzy
+msgid "Draft folder"
+msgstr "Könyvtár létrehozása"
+
+#, fuzzy
+msgid "Server replied: "
+msgstr "A szerver válasza: "
+
+msgid "Illegal folder name.  Please select a different name."
+msgstr "Hibás könyvtárnév. Válassz más nevet."
+
+msgid "Click here to go back"
+msgstr "Vissza"
+
+msgid "You have not selected a folder to delete. Please do so."
+msgstr ""
+
+msgid "Delete Folder"
+msgstr "Könyvtárat töröl"
+
+#, c-format
+msgid "Are you sure you want to delete %s?"
+msgstr ""
+
+msgid "Yes"
+msgstr ""
+
+#, fuzzy
+msgid "No"
+msgstr "Nincs"
+
+msgid "Folders"
+msgstr "Könyvtárak"
+
+msgid "Subscribed successfully!"
+msgstr "Feliratkozás sikerrel járt!"
+
+msgid "Unsubscribed successfully!"
+msgstr "Feliratkozás sikeresen törölve!"
+
+msgid "Deleted folder successfully!"
+msgstr "Könyvtár sikeresen törölve!"
+
+msgid "Created folder successfully!"
+msgstr "Könyvtár sikeresen létrehozva!"
+
+msgid "Renamed successfully!"
+msgstr "Átnevezés sikerrel járt"
+
+msgid "Subscription Unsuccessful - Folder does not exist."
+msgstr ""
+
+msgid "refresh folder list"
+msgstr "listát frissíteni"
+
+msgid "Create Folder"
+msgstr "Könyvtár létrehozása"
+
+msgid "as a subfolder of"
+msgstr "mint alkönyvtár az alábbiban"
+
+msgid "None"
+msgstr "Nincs"
+
+msgid "Let this folder contain subfolders"
+msgstr "Az aktuális könyvtár tartalmazhat könyvtárakat"
+
+msgid "Create"
+msgstr "Létrehoz"
+
+msgid "Rename a Folder"
+msgstr "Könyvtár átkeresztelése"
+
+#, fuzzy
+msgid "Select a folder"
+msgstr "Könyvtár átkeresztelése"
+
+msgid "Rename"
+msgstr "Átkeresztelés"
+
+msgid "No folders found"
+msgstr "Nincsenek könyvtárak"
+
+msgid "Delete"
+msgstr "Töröl"
+
+msgid "Unsubscribe"
+msgstr "Feliratkozás törlése"
+
+msgid "Subscribe"
+msgstr "Feliratkozás"
+
+msgid "No folders were found to unsubscribe from!"
+msgstr "Nincsenek könyvtárak amelyekröl feliratkozást törölni lehetne"
+
+msgid "No folders were found to subscribe to!"
+msgstr "Nincsenek könyvtárak amelyekre fel lehetne iratkozni"
+
+#, fuzzy
+msgid "Subscribe to:"
+msgstr "Feliratkozás"
+
+msgid "You have not selected a folder to rename. Please do so."
+msgstr ""
+
+msgid "Rename a folder"
+msgstr "Könyvtár átkeresztelése"
+
+msgid "New name:"
+msgstr "Új név:"
+
+msgid "Submit"
+msgstr "Küld"
+
+msgid "ERROR: Help files are not in the right format!"
+msgstr ""
+
+msgid "Help"
+msgstr "Segítség"
+
+#, c-format
+msgid ""
+"The help has not been translated to %s.  It will be displayed in English "
+"instead."
+msgstr ""
+"A segítö dokumentáció nincs %s-ra fordítva, ezért csak angolul lapozható."
+
+msgid "Some or all of the help documents are not present!"
+msgstr "Részben vagy egészen hiányzik a dokumentáció!"
+
+msgid "Table of Contents"
+msgstr "Tartalom"
+
+msgid "Previous"
+msgstr "Elözö"
+
+msgid "Next"
+msgstr "Következö"
+
+msgid "Top"
+msgstr "Fel"
+
+#, fuzzy
+msgid "Viewing an image attachment"
+msgstr "Szöveges melléklet megtekintése"
+
+msgid "View message"
+msgstr "Üzenet megtekintése"
+
+msgid "Download this as a file"
+msgstr "Állományba menteni"
+
+#, fuzzy
+msgid "INBOX"
+msgstr "Csak INBOX"
+
+msgid "purge"
+msgstr "ürít"
+
+msgid "Last Refresh"
+msgstr ""
+
+msgid "refresh unseen/total info"
+msgstr ""
+
+msgid "Save folder tree"
+msgstr ""
+
+msgid "Login"
+msgstr "Belépés"
+
+#, fuzzy, c-format
+msgid "%s Logo"
+msgstr "%s Belépés"
+
+#, c-format
+msgid "SquirrelMail version %s"
+msgstr "SquirrelMail (MókusPosta) %s verzió"
+
+msgid "By the SquirrelMail Development Team"
+msgstr "A SquirrelMail Fejlesztöi Által"
+
+#, c-format
+msgid "%s Login"
+msgstr "%s Belépés"
+
+msgid "Name:"
+msgstr "Felhasználónév:"
+
+msgid "Password:"
+msgstr "Jelszó:"
+
+msgid "No messages were selected."
+msgstr "Nincs üzenet kiválasztva."
+
+msgid "Options"
+msgstr "Opciók"
+
+msgid "Message Highlighting"
+msgstr "Üzenet kijelölése"
+
+msgid "New"
+msgstr "Új"
+
+msgid "Done"
+msgstr "Kész"
+
+msgid "To or Cc"
+msgstr ""
+
+#, fuzzy
+msgid "subject"
+msgstr "Témakör"
+
+msgid "Edit"
+msgstr "Szerkeszt"
+
+msgid "Up"
+msgstr ""
+
+#, fuzzy
+msgid "Down"
+msgstr "Kész"
+
+msgid "No highlighting is defined"
+msgstr "Kiemelés nincs definiálva"
+
+msgid "Identifying name"
+msgstr "Azonosító név"
+
+msgid "Color"
+msgstr "Szín"
+
+msgid "Dark Blue"
+msgstr "Sötétkék"
+
+msgid "Dark Green"
+msgstr "Sötétzöld"
+
+msgid "Dark Yellow"
+msgstr "Sötétsárga"
+
+msgid "Dark Cyan"
+msgstr "Méregzöld"
+
+msgid "Dark Magenta"
+msgstr "Lila"
+
+msgid "Light Blue"
+msgstr "Világoskék"
+
+msgid "Light Green"
+msgstr "Világoszöld"
+
+msgid "Light Yellow"
+msgstr "Sárga"
+
+msgid "Light Cyan"
+msgstr "Világoscián"
+
+msgid "Light Magenta"
+msgstr "Világoslila"
+
+msgid "Dark Gray"
+msgstr "Sötétszürke"
+
+msgid "Medium Gray"
+msgstr "Szürke"
+
+msgid "Light Gray"
+msgstr "Világosszürke"
+
+msgid "White"
+msgstr "Fehér"
+
+msgid "Other:"
+msgstr "Más:"
+
+msgid "Ex: 63aa7f"
+msgstr "Például: 63aa7f"
+
+#, fuzzy
+msgid "Matches"
+msgstr "Minta"
+
+#, c-format
+msgid "Alternate Identity %d"
+msgstr ""
+
+msgid "Advanced Identities"
+msgstr ""
+
+msgid "Default Identity"
+msgstr ""
+
+msgid "Add a New Identity"
+msgstr ""
+
+msgid "Full Name"
+msgstr "Teljes név"
+
+msgid "E-Mail Address"
+msgstr "E-Mail cím"
+
+msgid "Reply To"
+msgstr "Válasz küldendö"
+
+msgid "Save / Update"
+msgstr ""
+
+msgid "Make Default"
+msgstr ""
+
+#, fuzzy
+msgid "Move Up"
+msgstr "Vidd"
+
+msgid "Index Order"
+msgstr "Index sorrend"
+
+msgid "Checkbox"
+msgstr "Checkbox"
+
+msgid "Flags"
+msgstr "Melléklet jelzö"
+
+msgid "Size"
+msgstr "Méret"
+
+msgid ""
+"The index order is the order that the columns are arranged in the message "
+"index.  You can add, remove, and move columns around to customize them to "
+"fit your needs."
+msgstr ""
+"Az index sorrend az oszlopok sorrendje az üzenetek listázásakor. Az "
+"oszlopokat lehet hozzáadni, vatoztatni és törölni."
+
+msgid "up"
+msgstr "fel"
+
+msgid "down"
+msgstr "le"
+
+msgid "remove"
+msgstr "töröl"
+
+msgid "Return to options page"
+msgstr "Visszatérni az opciók oldalra"
+
+msgid "Personal Information"
+msgstr "Személyes adatok"
+
+msgid "Display Preferences"
+msgstr "Általános beállítások"
+
+msgid "Folder Preferences"
+msgstr "Könyvtárak beállításai"
+
+#, fuzzy
+msgid "Successfully Saved Options"
+msgstr "Személyes adatok sikeresen mentve!"
+
+msgid "Refresh Folder List"
+msgstr "Könyvtárlistát frissít"
+
+msgid "Refresh Page"
+msgstr "Oldalt frissít"
+
+msgid ""
+"This contains personal information about yourself such as your name, your "
+"email address, etc."
+msgstr "Ez tartalmazza a személyes adatokat úgy mint név, e-mail cím stb..."
+
+msgid ""
+"You can change the way that SquirrelMail looks and displays information to "
+"you, such as the colors, the language, and other settings."
+msgstr ""
+"Itt lehet konfigurálni SquirrelMail (MókusPosta) általános beállításait "
+"például a színeket, a használt nyelvet stb..."
+
+msgid ""
+"Based upon given criteria, incoming messages can have different background "
+"colors in the message list.  This helps to easily distinguish who the "
+"messages are from, especially for mailing lists."
+msgstr ""
+"Az üzenetek a felhasználó által definiált feltételek szerint más és más "
+"háttér szinnel autómatikusan kijelölhetök. Ez segít azonosítani a például "
+"levelezö listákról érkezett üzeneteket."
+
+msgid ""
+"These settings change the way your folders are displayed and manipulated."
+msgstr ""
+"A könyvtárak általános beállításai és azok kezelése konfigurálható itt."
+
+#, fuzzy
+msgid ""
+"The order of the message index can be rearranged and changed to contain the "
+"headers in any order you want."
+msgstr ""
+"A sorrend amelyben az üzenetek jellemzöi megjelennek változtatható és "
+"tetszés szerint konfigurálható."
+
+#, fuzzy
+msgid "Message not printable"
+msgstr "Üzenet kijelölése"
+
+#, fuzzy
+msgid "CC"
+msgstr "Másolat:"
+
+msgid "Printer Friendly"
+msgstr ""
+
+msgid "Print"
+msgstr ""
+
+msgid "View Printable Version"
+msgstr ""
+
+#, fuzzy
+msgid "Read:"
+msgstr "Átkeresztelés"
+
+#, fuzzy
+msgid "Your message"
+msgstr "üzenet"
+
+#, fuzzy
+msgid "Sent:"
+msgstr "Elküld"
+
+#, c-format
+msgid "Was displayed on %s"
+msgstr ""
+
+msgid "less"
+msgstr "kevesebb"
+
+msgid "more"
+msgstr "még"
+
+#, fuzzy
+msgid "Unknown sender"
+msgstr "Ismeretlen Feladó"
+
+msgid "Mailer"
+msgstr ""
+
+msgid "Read receipt"
+msgstr ""
+
+#, fuzzy
+msgid "sent"
+msgstr "Elküld"
+
+#, fuzzy
+msgid "requested"
+msgstr "Nincs üzenet kiválasztva."
+
+msgid ""
+"The message sender has requested a response to indicate that you have read "
+"this message. Would you like to send a receipt?"
+msgstr ""
+
+msgid "Send read receipt now"
+msgstr ""
+
+#, fuzzy
+msgid "Search results"
+msgstr "Keresés"
+
+msgid "Message List"
+msgstr "Üzenetek listája"
+
+msgid "Resume Draft"
+msgstr ""
+
+msgid "Edit Message as New"
+msgstr ""
+
+#, fuzzy
+msgid "View Message"
+msgstr "Üzenet megtekintése"
+
+msgid "Forward"
+msgstr "Továbbít"
+
+#, fuzzy
+msgid "Forward as Attachment"
+msgstr "Melléklet:"
+
+msgid "Reply"
+msgstr "Válasz"
+
+msgid "Reply All"
+msgstr "Válasz mindenkinek"
+
+#, fuzzy
+msgid "View Full Header"
+msgstr "A teljes fejléc megmutatása"
+
+#, fuzzy
+msgid "Attachments"
+msgstr "Melléklet:"
+
+#, fuzzy
+msgid "You must be logged in to access this page."
+msgstr ""
+"Ennek az oldalnak a megtekintéséhez érvényes felhasználónév és jelszó "
+"szükséges!"
+
+#, fuzzy
+msgid "Folder:"
+msgstr "Könyvtárak"
+
+#, fuzzy
+msgid "edit"
+msgstr "Szerkeszt"
+
+#, fuzzy
+msgid "search"
+msgstr "Keresés"
+
+#, fuzzy
+msgid "delete"
+msgstr "Töröl"
+
+msgid "Recent Searches"
+msgstr ""
+
+msgid "save"
+msgstr ""
+
+#, fuzzy
+msgid "forget"
+msgstr "még"
+
+#, fuzzy
+msgid "Current Search"
+msgstr "Aktuális könyvtár"
+
+msgid "All Folders"
+msgstr "Minden könyvtár"
+
+msgid "Body"
+msgstr "Szövegben"
+
+msgid "Everywhere"
+msgstr "Bárhol"
+
+#, fuzzy
+msgid "Search Results"
+msgstr "Keresés"
+
+#, fuzzy
+msgid "No Messages Found"
+msgstr "Egyidejüleg mutatott üzenetek száma"
+
+msgid "Sign Out"
+msgstr "Kilépés"
+
+msgid "You have been successfully signed out."
+msgstr "Sikeresen kiléptél."
+
+msgid "Click here to log back in."
+msgstr "Újra belépni."
+
+#, fuzzy
+msgid "Viewing a Business Card"
+msgstr "Üzenet elolvasása"
+
+#, fuzzy
+msgid "Title"
+msgstr "Fehér"
+
+#, fuzzy
+msgid "Email"
+msgstr "E-mail"
+
+#, fuzzy
+msgid "Web Page"
+msgstr "Oldalt frissít"
+
+msgid "Organization / Department"
+msgstr ""
+
+#, fuzzy
+msgid "Address"
+msgstr "Címek"
+
+msgid "Work Phone"
+msgstr ""
+
+msgid "Home Phone"
+msgstr ""
+
+msgid "Cellular Phone"
+msgstr ""
+
+msgid "Fax"
+msgstr ""
+
+#, fuzzy
+msgid "Note"
+msgstr "Nincs"
+
+#, fuzzy
+msgid "Add to Addressbook"
+msgstr "Új cím"
+
+msgid "Title & Org. / Dept."
+msgstr ""
+
+#, fuzzy
+msgid "Viewing Full Header"
+msgstr "A teljes fejléc megmutatása"
+
+msgid "Viewing a text attachment"
+msgstr "Szöveges melléklet megtekintése"
 
 msgid "Personal address book"
 msgstr "Személyes címtár"
@@ -105,12 +926,6 @@ msgid "Business Card"
 msgstr ""
 
 #, fuzzy
-msgid "You must be logged in to access this page."
-msgstr ""
-"Ennek az oldalnak a megtekintéséhez érvényes felhasználónév és jelszó "
-"szükséges!"
-
-#, fuzzy
 msgid "Sunday"
 msgstr "Elküld"
 
@@ -131,6 +946,29 @@ msgid "Friday"
 msgstr ""
 
 msgid "Saturday"
+msgstr ""
+
+#, fuzzy
+msgid "Sun"
+msgstr "Elküld"
+
+#, fuzzy
+msgid "Mon"
+msgstr "Szövegben"
+
+msgid "Tue"
+msgstr ""
+
+msgid "Wed"
+msgstr ""
+
+msgid "Thu"
+msgstr ""
+
+msgid "Fri"
+msgstr ""
+
+msgid "Sat"
 msgstr ""
 
 msgid "January"
@@ -171,10 +1009,52 @@ msgstr ""
 msgid "December"
 msgstr ""
 
+msgid "Jan"
+msgstr ""
+
+msgid "Feb"
+msgstr ""
+
+#, fuzzy
+msgid "Mar"
+msgstr "Minta"
+
+msgid "Apr"
+msgstr ""
+
+msgid "Ma&#121;"
+msgstr ""
+
+msgid "Jun"
+msgstr ""
+
+msgid "Jul"
+msgstr ""
+
+msgid "Aug"
+msgstr ""
+
+msgid "Sep"
+msgstr ""
+
+#, fuzzy
+msgid "Oct"
+msgstr "Más:"
+
+#, fuzzy
+msgid "Nov"
+msgstr "Nincs"
+
+msgid "Dec"
+msgstr ""
+
 msgid "D, F j, Y g:i a"
 msgstr ""
 
 msgid "D, F j, Y G:i"
+msgstr ""
+
+msgid "M j, Y"
 msgstr ""
 
 msgid "g:i a"
@@ -187,9 +1067,6 @@ msgid "D, g:i a"
 msgstr ""
 
 msgid "D, G:i"
-msgstr ""
-
-msgid "M j, Y"
 msgstr ""
 
 #, fuzzy, c-format
@@ -206,20 +1083,6 @@ msgstr "Kattints ide, hogy újra megpróbáld"
 #, c-format
 msgid "Click here to return to %s"
 msgstr "Visszatérés %s"
-
-#, fuzzy, c-format
-msgid "%s Logo"
-msgstr "%s Belépés"
-
-#, c-format
-msgid "SquirrelMail version %s"
-msgstr "SquirrelMail (MókusPosta) %s verzió"
-
-msgid "By the SquirrelMail Development Team"
-msgstr "A SquirrelMail Fejlesztöi Által"
-
-msgid "ERROR"
-msgstr "HIBA"
 
 msgid "Go to the login page"
 msgstr ""
@@ -242,6 +1105,12 @@ msgstr ""
 msgid ""
 "Preference file, %s, could not be written. Contact your system administrator "
 "to resolve this issue."
+msgstr ""
+
+#, c-format
+msgid ""
+"Preference file, %s, could not be copied from temporary file, %s. Contact "
+"your system administrator to resolve this issue."
 msgstr ""
 
 #, fuzzy, c-format
@@ -273,12 +1142,21 @@ msgid ""
 "to resolve this issue."
 msgstr ""
 
+#, c-format
+msgid ""
+"Signature file, %s, could not be copied from temporary file, %s. Contact "
+"your system administrator to resolve this issue."
+msgstr ""
+
 msgid ""
 "You need to have php4 installed with the multibyte string function enabled "
-"(using configure option --with-mbstring)."
+"(using configure option --enable-mbstring)."
 msgstr ""
 
 msgid "ERROR : No available imapstream."
+msgstr ""
+
+msgid "ERROR : Connection dropped by imap-server."
 msgstr ""
 
 msgid "ERROR : Could not complete request."
@@ -295,6 +1173,12 @@ msgstr "HIBA: rossz fomrámtumú kérés."
 
 msgid "Server responded: "
 msgstr "A szerver válasza: "
+
+msgid "ERROR : Imap server closed the connection."
+msgstr ""
+
+msgid "ERROR : Unknown imap response."
+msgstr ""
 
 #, c-format
 msgid "Error connecting to IMAP server: %s."
@@ -323,21 +1207,23 @@ msgid ""
 "folder."
 msgstr ""
 
-#, fuzzy
-msgid "INBOX"
-msgstr "Csak INBOX"
-
-msgid "Unknown response from IMAP server: "
-msgstr ""
-
-msgid "Unknown message number in reply from server: "
-msgstr ""
+msgid "(no subject)"
+msgstr "(nincs téma)"
 
 msgid "Unknown Sender"
 msgstr "Ismeretlen Feladó"
 
-msgid "(unknown sender)"
-msgstr "(ismeretlen feladó)"
+msgid "Unknown response from IMAP server: "
+msgstr ""
+
+msgid "The server couldn't find the message you requested."
+msgstr ""
+
+msgid ""
+"Most probably your message list was out of date and the message has been "
+"moved away or deleted (perhaps by another program accessing the same "
+"mailbox)."
+msgstr ""
 
 #, fuzzy
 msgid "Unknown date"
@@ -369,9 +1255,6 @@ msgstr ""
 msgid "Move"
 msgstr "Vidd"
 
-msgid "Forward"
-msgstr "Továbbít"
-
 msgid "Expunge"
 msgstr "Kitöröl"
 
@@ -385,29 +1268,11 @@ msgstr "Átkeresztelés"
 msgid "Unread"
 msgstr ""
 
-msgid "Delete"
-msgstr "Töröl"
-
 msgid "Unthread View"
 msgstr ""
 
 msgid "Thread View"
 msgstr ""
-
-msgid "To"
-msgstr "Címzett"
-
-msgid "From"
-msgstr "Feladó"
-
-msgid "Date"
-msgstr "Dátum"
-
-msgid "Subject"
-msgstr "Témakör"
-
-msgid "Size"
-msgstr "Méret"
 
 #, fuzzy
 msgid "Toggle All"
@@ -426,12 +1291,6 @@ msgstr ""
 #, c-format
 msgid "Viewing Message: <B>%s</B> (1 total)"
 msgstr ""
-
-msgid "Previous"
-msgstr "Elözö"
-
-msgid "Next"
-msgstr "Következö"
 
 msgid "Paginate"
 msgstr ""
@@ -465,16 +1324,6 @@ msgstr "Üzenetek listája"
 msgid "FETCH line:"
 msgstr ""
 
-#, fuzzy
-msgid "High"
-msgstr "Jobboldal"
-
-msgid "Low"
-msgstr ""
-
-msgid "Normal"
-msgstr ""
-
 msgid "Hide Unsafe Images"
 msgstr ""
 
@@ -486,10 +1335,6 @@ msgstr "Üzenet elolvasása"
 msgid "download"
 msgstr "le"
 
-#, fuzzy
-msgid "Unknown sender"
-msgstr "Ismeretlen Feladó"
-
 msgid "sec_remove_eng.png"
 msgstr ""
 
@@ -497,39 +1342,11 @@ msgstr ""
 msgid "Option Type '%s' Not Found"
 msgstr ""
 
-msgid "Yes"
-msgstr ""
-
-#, fuzzy
-msgid "No"
-msgstr "Nincs"
-
-msgid "Submit"
-msgstr "Küld"
-
 msgid "Current Folder"
 msgstr "Aktuális könyvtár"
 
-msgid "Sign Out"
-msgstr "Kilépés"
-
 msgid "Compose"
 msgstr "Új levél"
-
-msgid "Addresses"
-msgstr "Címek"
-
-msgid "Folders"
-msgstr "Könyvtárak"
-
-msgid "Options"
-msgstr "Opciók"
-
-msgid "Search"
-msgstr "Keresés"
-
-msgid "Help"
-msgstr "Segítség"
 
 #, fuzzy, c-format
 msgid "Error creating directory %s."
@@ -537,6 +1354,72 @@ msgstr "Hiba a/az %s állomány megnyitásában"
 
 msgid "Could not create hashed directory structure!"
 msgstr ""
+
+msgid "Service not available, closing channel"
+msgstr ""
+
+msgid "A password transition is needed"
+msgstr ""
+
+msgid "Requested mail action not taken: mailbox unavailable"
+msgstr ""
+
+msgid "Requested action aborted: error in processing"
+msgstr ""
+
+msgid "Requested action not taken: insufficient system storage"
+msgstr ""
+
+msgid "Temporary authentication failure"
+msgstr ""
+
+msgid "Syntax error; command not recognized"
+msgstr ""
+
+msgid "Syntax error in parameters or arguments"
+msgstr ""
+
+#, fuzzy
+msgid "Command not implemented"
+msgstr "Megnyitás sikertelen"
+
+msgid "Bad sequence of commands"
+msgstr ""
+
+msgid "Command parameter not implemented"
+msgstr ""
+
+msgid "Authentication required"
+msgstr ""
+
+msgid "Authentication mechanism is too weak"
+msgstr ""
+
+msgid "Authentication failed"
+msgstr ""
+
+msgid "Encryption required for requested authentication mechanism"
+msgstr ""
+
+msgid "Requested action not taken: mailbox unavailable"
+msgstr ""
+
+msgid "User not local; please try forwarding"
+msgstr ""
+
+msgid "Requested mail action aborted: exceeding storage allocation"
+msgstr ""
+
+msgid "Requested action not taken: mailbox name not allowed"
+msgstr ""
+
+#, fuzzy
+msgid "Transaction failed"
+msgstr "Megnyitás sikertelen"
+
+#, fuzzy
+msgid "Unknown response"
+msgstr "Ismeretlen Feladó"
 
 msgid "General Display Options"
 msgstr ""
@@ -582,6 +1465,9 @@ msgstr ""
 #, fuzzy
 msgid "Maximum Number of Pages to Show"
 msgstr "Egyidejüleg mutatott üzenetek száma"
+
+msgid "Always Show Full Date"
+msgstr ""
 
 msgid "Message Display and Composition"
 msgstr ""
@@ -634,9 +1520,6 @@ msgid "Enable Mailer Display"
 msgstr ""
 
 msgid "Display Attached Images with Message"
-msgstr ""
-
-msgid "Enable Subtle Printer Friendly Link"
 msgstr ""
 
 msgid "Enable Printer Friendly Clean Display"
@@ -739,9 +1622,6 @@ msgstr "Nincs jelzés"
 msgid "Only INBOX"
 msgstr "Csak INBOX"
 
-msgid "All Folders"
-msgstr "Minden könyvtár"
-
 #, fuzzy
 msgid "Unread Message Notification Type"
 msgstr "Láthatatlan üzenet jelzéstípus"
@@ -753,7 +1633,7 @@ msgstr "Csak láthatatlan"
 msgid "Unseen and Total"
 msgstr "Láthatatlan és az összes"
 
-msgid "Enable Collapsable Folders"
+msgid "Enable Collapsible Folders"
 msgstr ""
 
 #, fuzzy
@@ -801,18 +1681,9 @@ msgstr ""
 msgid "Name and Address Options"
 msgstr ""
 
-msgid "Full Name"
-msgstr "Teljes név"
-
 #, fuzzy
 msgid "Email Address"
 msgstr "E-Mail cím"
-
-msgid "Reply To"
-msgstr "Válasz küldendö"
-
-msgid "Signature"
-msgstr "Névjegykártya"
 
 msgid "Edit Advanced Identities"
 msgstr ""
@@ -824,6 +1695,9 @@ msgid "Multiple Identities"
 msgstr ""
 
 msgid "Same as server"
+msgstr ""
+
+msgid "Error opening timezone config, contact administrator."
 msgstr ""
 
 #, fuzzy
@@ -869,6 +1743,17 @@ msgstr "Névjegykártya használata"
 msgid "Prefix Signature with '-- ' Line"
 msgstr ""
 
+#, fuzzy
+msgid "Take Address"
+msgstr "Címek"
+
+#, fuzzy
+msgid "Address Book Take:"
+msgstr "Címjegyzék"
+
+msgid "Try to verify addresses"
+msgstr ""
+
 msgid "Config File Version"
 msgstr ""
 
@@ -901,6 +1786,13 @@ msgstr ""
 #, fuzzy
 msgid "Signout Page"
 msgstr "Kilépés"
+
+msgid "Provider Link URI"
+msgstr ""
+
+#, fuzzy
+msgid "Provider Name"
+msgstr "A szerver válasza: "
 
 #, fuzzy
 msgid "Default Language"
@@ -946,7 +1838,16 @@ msgstr ""
 msgid "Use \"detect\" to auto-detect."
 msgstr ""
 
-msgid "Use Sendmail"
+msgid "Use TLS for IMAP Connections"
+msgstr ""
+
+msgid "Requires PHP 4.3.x! Experimental."
+msgstr ""
+
+msgid "IMAP Authentication Type"
+msgstr ""
+
+msgid "Use Sendmail Binary"
 msgstr ""
 
 msgid "Sendmail Path"
@@ -958,7 +1859,13 @@ msgstr ""
 msgid "SMTP Server Port"
 msgstr ""
 
-msgid "Authenticated SMTP"
+msgid "Use TLS for SMTP Connections"
+msgstr ""
+
+msgid "SMTP Authentication Type"
+msgstr ""
+
+msgid "POP3 Before SMTP?"
 msgstr ""
 
 msgid "Invert Time"
@@ -1025,6 +1932,10 @@ msgid "Auto delete folders"
 msgstr "Magától frissülö könyvtárlista"
 
 #, fuzzy
+msgid "Enable /NoSelect folder fix"
+msgstr "Könyvtár átkeresztelése"
+
+#, fuzzy
 msgid "General Options"
 msgstr "Opciók"
 
@@ -1072,6 +1983,21 @@ msgstr ""
 msgid "Allow editing of full name"
 msgstr ""
 
+msgid "Use server-side sorting"
+msgstr ""
+
+msgid "Use server-side thread sorting"
+msgstr ""
+
+msgid "Allow server charset search"
+msgstr ""
+
+msgid "UID support"
+msgstr ""
+
+msgid "PHP session name"
+msgstr ""
+
 #, fuzzy
 msgid "Message of the Day"
 msgstr "Üzenetek listája"
@@ -1110,6 +2036,13 @@ msgid "Themes"
 msgstr "Téma"
 
 msgid "Style Sheet URL (css)"
+msgstr ""
+
+#, fuzzy
+msgid "Default theme"
+msgstr "Töröl"
+
+msgid "Use index number of theme"
 msgstr ""
 
 msgid "Configuration Administrator"
@@ -1226,7 +2159,7 @@ msgstr ""
 msgid "15 min."
 msgstr ""
 
-msgid "35 min."
+msgid "30 min."
 msgstr ""
 
 msgid "45 min."
@@ -1313,44 +2246,6 @@ msgid "COMMERCIAL - RBL+ Dial-up entries."
 msgstr ""
 
 msgid ""
-"FREE - Osirusoft Relays - Osirusofts list of verified open relays. Seems to "
-"include servers used by abuse@uunet.net auto-replies too."
-msgstr ""
-
-msgid "FREE - Osirusoft Dialups - Osirusofts Dialup Spam Source list."
-msgstr ""
-
-msgid ""
-"FREE - Osirusoft Confirmed Spam Source - Sites that continually spam and "
-"have been manually added after multiple nominations. Use with caution. Seems "
-"to catch abuse auto-replies from some ISPs."
-msgstr ""
-
-msgid ""
-"FREE - Osirusoft Smart Hosts - List of hosts that are secure but relay for "
-"other mail servers that are not secure."
-msgstr ""
-
-msgid ""
-"FREE - Osirusoft Spamware Developers - It is believed that these are IP "
-"ranges of companies that are known to produce spam software. Seems to catch "
-"abuse auto-replies from some ISPs."
-msgstr ""
-
-msgid ""
-"FREE - Osirusoft Unconfirmed OptIn Servers - List of listservers that opt "
-"users in without confirmation."
-msgstr ""
-
-msgid ""
-"FREE - Osirusoft Insecure formmail.cgi scripts - List of insecure formmail."
-"cgi scripts. (planned)."
-msgstr ""
-
-msgid "FREE - Osirusoft Open Proxy Servers - List of Open Proxy Servers."
-msgstr ""
-
-msgid ""
 "FREE - ORDB was born when ORBS went off the air. It seems to have fewer "
 "false positives than ORBS did though."
 msgstr ""
@@ -1385,6 +2280,7 @@ msgstr ""
 msgid "FREE - SPAMhaus - A list of well-known SPAM sources."
 msgstr ""
 
+#, c-format
 msgid ""
 "FREE, for now - SPAMCOP - An interesting solution that lists servers that "
 "have a very high spam to legit email ratio (85% or more)."
@@ -1476,37 +2372,15 @@ msgstr "kijelölt üzenetek"
 msgid "Save"
 msgstr ""
 
-msgid "New"
-msgstr "Új"
-
-msgid "Done"
-msgstr "Kész"
-
 #, fuzzy
 msgid "Match:"
 msgstr "Minta"
-
-msgid "Cc"
-msgstr "Másolat"
-
-msgid "To or Cc"
-msgstr ""
 
 #, fuzzy
 msgid "Header"
 msgstr "Átkeresztelés"
 
 msgid "Contains:"
-msgstr ""
-
-msgid "Edit"
-msgstr "Szerkeszt"
-
-#, fuzzy
-msgid "Down"
-msgstr "Kész"
-
-msgid "Up"
 msgstr ""
 
 #, c-format
@@ -1582,6 +2456,29 @@ msgstr ""
 msgid "OFF"
 msgstr ""
 
+#, fuzzy
+msgid " not found."
+msgstr "Nincsenek könyvtárak"
+
+msgid "Today's Fortune"
+msgstr ""
+
+msgid "Fortunes:"
+msgstr ""
+
+msgid "Show fortunes at top of mailbox"
+msgstr ""
+
+#, fuzzy
+msgid "IMAP server information"
+msgstr "Személyes adatok"
+
+msgid ""
+"Run some test IMAP commands, displaying both the command and the result. "
+"These tests use the Squirrelmail IMAP commands and your current Squirrelmail "
+"configuration. Custom command strings can be used."
+msgstr ""
+
 msgid "Mailinglist"
 msgstr ""
 
@@ -1603,9 +2500,6 @@ msgid ""
 "this list. It will try to unsubscribe the adress below."
 msgstr ""
 
-msgid "From:"
-msgstr "Feladó:"
-
 #, fuzzy
 msgid "Send Mail"
 msgstr "Elküld"
@@ -1617,12 +2511,6 @@ msgstr "Új %s"
 #, fuzzy
 msgid "Reply to List"
 msgstr "Válasz küldendö"
-
-msgid "Subscribe"
-msgstr "Feliratkozás"
-
-msgid "Unsubscribe"
-msgstr "Feliratkozás törlése"
 
 msgid "List Archives"
 msgstr ""
@@ -1735,9 +2623,6 @@ msgid "Remote POP server Fetching Mail"
 msgstr ""
 
 msgid "Select Server:"
-msgstr ""
-
-msgid "All"
 msgstr ""
 
 #, fuzzy
@@ -1860,9 +2745,6 @@ msgstr ""
 msgid "Username:"
 msgstr "Új név:"
 
-msgid "Password:"
-msgstr "Jelszó:"
-
 #, fuzzy
 msgid "Store in Folder:"
 msgstr "Küldemények könytára"
@@ -1906,9 +2788,6 @@ msgstr ""
 msgid "Confirm Delete"
 msgstr "Töröl"
 
-msgid "Mofify a Server"
-msgstr ""
-
 msgid "Undefined Function"
 msgstr ""
 
@@ -1932,6 +2811,22 @@ msgid ""
 "This configures settings for downloading email from a pop3 mailbox to your "
 "account on this server."
 msgstr ""
+
+#, fuzzy
+msgid "Message Details"
+msgstr "Üzenetek listája"
+
+#, fuzzy
+msgid "Close Window"
+msgstr "Bezár"
+
+#, fuzzy
+msgid "Save Message"
+msgstr "Üzenet megtekintése"
+
+#, fuzzy
+msgid "View Message details"
+msgstr "Üzenet megtekintése"
 
 #, fuzzy
 msgid "New Mail Notification"
@@ -1970,9 +2865,7 @@ msgstr ""
 
 msgid ""
 "Select from the list of <b>server files</b> the media file to play when new "
-"mail arrives.  Selecting <b>local media</b> will play the file specified in "
-"the <b>local media file</b> box to play from the local computer.  If no file "
-"is specified, the system will use a default from the server."
+"mail arrives.  If no file is specified, \"(none)\", no sound will be used."
 msgstr ""
 
 msgid "Enable Media Playing"
@@ -1996,13 +2889,11 @@ msgstr ""
 msgid "Select server file:"
 msgstr ""
 
-msgid "(local media)"
-msgstr ""
+#, fuzzy
+msgid "(none)"
+msgstr "Nincs"
 
 msgid "Try"
-msgstr ""
-
-msgid "Local Media File:"
 msgstr ""
 
 #, fuzzy
@@ -2018,10 +2909,6 @@ msgstr "SquirrelMail (MókusPosta) %s verzió"
 
 msgid "You have new mail!"
 msgstr ""
-
-#, fuzzy
-msgid "Close Window"
-msgstr "Bezár"
 
 #, fuzzy
 msgid "NewMail Options"
@@ -2046,12 +2933,11 @@ msgstr "Üzenet megtekintése"
 msgid "Test Sound"
 msgstr ""
 
-msgid "Loading the sound..."
+msgid "No sound specified"
 msgstr ""
 
-#, fuzzy
-msgid "Close"
-msgstr "Új levél"
+msgid "Loading the sound..."
+msgstr ""
 
 #, fuzzy
 msgid "Sent Subfolders Options"
@@ -2141,6 +3027,299 @@ msgstr ""
 msgid "Cute."
 msgstr ""
 
+#, c-format
+msgid "I tried to execute '%s', but it returned:"
+msgstr ""
+
+msgid "SquirrelSpell is misconfigured."
+msgstr ""
+
+msgid "SquirrelSpell Results"
+msgstr ""
+
+msgid "Spellcheck completed. Commit changes?"
+msgstr ""
+
+#, fuzzy
+msgid "No changes were made."
+msgstr "Nincs üzenet kiválasztva."
+
+msgid "Now saving your personal dictionary... Please wait."
+msgstr ""
+
+#, c-format
+msgid "Found %s errors"
+msgstr ""
+
+msgid "Line with an error:"
+msgstr ""
+
+#, fuzzy
+msgid "Error:"
+msgstr "Hiba a megnyitásban "
+
+msgid "Suggestions:"
+msgstr ""
+
+msgid "Suggestions"
+msgstr ""
+
+msgid "Change to:"
+msgstr ""
+
+msgid "Occurs times:"
+msgstr ""
+
+msgid "Change this word"
+msgstr ""
+
+msgid "Change"
+msgstr ""
+
+msgid "Change ALL occurances of this word"
+msgstr ""
+
+#, fuzzy
+msgid "Change All"
+msgstr "Mindent kijelölni"
+
+msgid "Ignore this word"
+msgstr ""
+
+#, fuzzy
+msgid "Ignore"
+msgstr "még"
+
+msgid "Ignore ALL occurances this word"
+msgstr ""
+
+#, fuzzy
+msgid "Ignore All"
+msgstr "még"
+
+msgid "Add this word to your personal dictionary"
+msgstr ""
+
+#, fuzzy
+msgid "Add to Dic"
+msgstr "Új %s"
+
+#, fuzzy
+msgid "Close and Commit"
+msgstr "Bezár"
+
+msgid "The spellcheck is not finished. Really close and commit changes?"
+msgstr ""
+
+#, fuzzy
+msgid "Close and Cancel"
+msgstr "Bezár"
+
+msgid "The spellcheck is not finished. Really close and discard changes?"
+msgstr ""
+
+#, fuzzy
+msgid "No errors found"
+msgstr "Nincsenek könyvtárak"
+
+#, fuzzy
+msgid "Your personal dictionary was erased."
+msgstr "Személyes adatok"
+
+msgid "Dictionary Erased"
+msgstr ""
+
+msgid ""
+"Your personal dictionary was erased. Please close this window and click "
+"\"Check Spelling\" button again to start your spellcheck over."
+msgstr ""
+
+#, fuzzy
+msgid "Close this Window"
+msgstr "Bezár"
+
+msgid ""
+"Your personal dictionary was re-encrypted successfully. Now return to the "
+"&quot;SpellChecker options&quot; menu and make your selection again."
+msgstr ""
+
+#, fuzzy
+msgid "Successful Re-encryption"
+msgstr "Személyes adatok sikeresen mentve!"
+
+msgid ""
+"Your personal dictionary was re-encrypted successfully. Please close this "
+"window and click \"Check Spelling\" button again to start your spellcheck "
+"over."
+msgstr ""
+
+msgid "Dictionary re-encrypted"
+msgstr ""
+
+msgid ""
+"Your personal dictionary has been <strong>encrypted</strong> and is now "
+"stored in an <strong>encrypted format</strong>."
+msgstr ""
+
+msgid ""
+"Your personal dictionary has been <strong>decrypted</strong> and is now "
+"stored as <strong>clear text</strong>."
+msgstr ""
+
+#, fuzzy
+msgid "Personal Dictionary Crypto Settings"
+msgstr "Személyes adatok"
+
+#, fuzzy
+msgid "Personal Dictionary"
+msgstr "Személyes adatok"
+
+#, fuzzy
+msgid "No words in your personal dictionary."
+msgstr "Személyes adatok"
+
+msgid "Please check any words you wish to delete from your dictionary."
+msgstr ""
+
+#, fuzzy, c-format
+msgid "%s dictionary"
+msgstr "Személyes adatok"
+
+#, fuzzy
+msgid "Delete checked words"
+msgstr "Töröl"
+
+#, fuzzy
+msgid "Edit your Personal Dictionary"
+msgstr "Személyes adatok"
+
+msgid "Please make your selection first."
+msgstr ""
+
+msgid ""
+"This will encrypt your personal dictionary and store it in an encrypted "
+"format. Proceed?"
+msgstr ""
+
+msgid ""
+"This will decrypt your personal dictionary and store it in a clear-text "
+"format. Proceed?"
+msgstr ""
+
+msgid ""
+"<p>Your personal dictionary is <strong>currently encrypted</strong>. This "
+"helps protect your privacy in case the web-mail system gets compromized and "
+"your personal dictionary ends up stolen. It is currently encrypted with the "
+"password you use to access your mailbox, making it hard for anyone to see "
+"what is stored in your personal dictionary.</p> <p><strong>ATTENTION:</"
+"strong> If you forget your password, your personal dictionary will become "
+"unaccessible, since it can no longer be decrypted. If you change your "
+"mailbox password, SquirrelSpell will recognize it and prompt you for your "
+"old password in order to re-encrypt the dictionary with a new key.</p>"
+msgstr ""
+
+msgid ""
+"Please decrypt my personal dictionary and store it in a clear-text format."
+msgstr ""
+
+msgid "Change crypto settings"
+msgstr ""
+
+msgid ""
+"<p>Your personal dictionary is <strong>currently not encrypted</strong>. You "
+"may wish to encrypt your personal dictionary to protect your privacy in case "
+"the webmail system gets compromized and your personal dictionary file gets "
+"stolen. When encrypted, the file's contents look garbled and are hard to "
+"decrypt without knowing the correct key (which is your mailbox password).</"
+"p> <strong>ATTENTION:</strong> If you decide to encrypt your personal "
+"dictionary, you must remember that it gets &quot;hashed&quot; with your "
+"mailbox password. If you forget your mailbox password and the administrator "
+"changes it to a new value, your personal dictionary will become useless and "
+"will have to be created anew. However, if you or your system administrator "
+"change your mailbox password but you still have the old password at hand, "
+"you will be able to enter the old key to re-encrypt the dictionary with the "
+"new value.</p>"
+msgstr ""
+
+msgid ""
+"Please encrypt my personal dictionary and store it in an encrypted format."
+msgstr ""
+
+#, c-format
+msgid "Deleting the following entries from <strong>%s</strong> dictionary:"
+msgstr ""
+
+#, fuzzy
+msgid "All done!"
+msgstr "Minden könyvtár"
+
+#, fuzzy
+msgid "Personal Dictionary Updated"
+msgstr "Személyes adatok"
+
+#, fuzzy
+msgid "No changes requested."
+msgstr "Nincs üzenet kiválasztva."
+
+msgid "Please wait, communicating with the server..."
+msgstr ""
+
+msgid ""
+"Please choose which dictionary you would like to use to spellcheck this "
+"message:"
+msgstr ""
+
+msgid "SquirrelSpell Initiating"
+msgstr ""
+
+#, c-format
+msgid ""
+"Settings adjusted to: <strong>%s</strong> with <strong>%s</strong> as "
+"default dictionary."
+msgstr ""
+
+#, c-format
+msgid "Using <strong>%s</strong> dictionary (system default) for spellcheck."
+msgstr ""
+
+msgid "International Dictionaries Preferences Updated"
+msgstr ""
+
+msgid ""
+"Please check any available international dictionaries which you would like "
+"to use when spellchecking:"
+msgstr ""
+
+msgid "Make this dictionary my default selection:"
+msgstr ""
+
+msgid "Make these changes"
+msgstr ""
+
+#, fuzzy
+msgid "Add International Dictionaries"
+msgstr "Személyes adatok"
+
+msgid "Please choose which options you wish to set up:"
+msgstr ""
+
+#, fuzzy
+msgid "Edit your personal dictionary"
+msgstr "Személyes adatok"
+
+msgid "Set up international dictionaries"
+msgstr ""
+
+msgid "Encrypt or decrypt your personal dictionary"
+msgstr ""
+
+#, fuzzy
+msgid "not available"
+msgstr "Nincs ilyen nevü állomány"
+
+msgid "SquirrelSpell Options Menu"
+msgstr ""
+
 msgid "Translator"
 msgstr ""
 
@@ -2150,24 +3329,30 @@ msgstr ""
 msgid "Your server options are as follows:"
 msgstr ""
 
-msgid ""
-"13 language pairs, maximum of 1000 characters translated, powered by Systran"
+msgid "Maximum of 1000 characters translated, powered by Systran"
 msgstr ""
 
-msgid ""
-"10 language pairs, maximum of 25 kilobytes translated, powered by Systran"
+#, c-format
+msgid "Number of supported language pairs: %s"
 msgstr ""
 
-msgid "12 language pairs, no known limits, powered by Systran"
+msgid "No known limits, powered by Systran"
 msgstr ""
 
-msgid ""
-"767 language pairs, no known limits, powered by Translation Experts's "
-"InterTran"
+msgid "No known limits, powered by Translation Experts's InterTran"
 msgstr ""
 
-msgid ""
-"8 language pairs, no known limits, powered by GPLTrans (free, open source)"
+#, c-format
+msgid "Number of supported languages: %s"
+msgstr ""
+
+msgid "No known limits, powered by GPLTrans (free, open source)"
+msgstr ""
+
+msgid "Hellenic translations, no known limits, powered by Systran"
+msgstr ""
+
+msgid "Russian translations, maximum of 500 characters translated"
 msgstr ""
 
 msgid ""
@@ -2202,9 +3387,6 @@ msgstr ""
 msgid "Not yet functional, currently does nothing"
 msgstr ""
 
-msgid "Download this as a file"
-msgstr "Állományba menteni"
-
 msgid "Translation Options"
 msgstr ""
 
@@ -2220,6 +3402,9 @@ msgstr "Új %s"
 msgid "English"
 msgstr ""
 
+msgid "Chinese"
+msgstr ""
+
 msgid "French"
 msgstr ""
 
@@ -2228,6 +3413,13 @@ msgstr ""
 
 msgid "Italian"
 msgstr ""
+
+msgid "Japanese"
+msgstr ""
+
+#, fuzzy
+msgid "Korean"
+msgstr "még"
 
 msgid "Portuguese"
 msgstr ""
@@ -2275,9 +3467,6 @@ msgstr ""
 msgid "Icelandic"
 msgstr ""
 
-msgid "Japanese"
-msgstr ""
-
 msgid "Latin American Spanish"
 msgstr ""
 
@@ -2299,6 +3488,9 @@ msgstr ""
 msgid "Swedish"
 msgstr ""
 
+msgid "Turkish"
+msgstr ""
+
 msgid "Welsh"
 msgstr ""
 
@@ -2309,681 +3501,27 @@ msgstr ""
 msgid "Latin"
 msgstr "Belépés"
 
-msgid "Address Book"
-msgstr "Címjegyzék"
-
-msgid "Name"
-msgstr "Név"
-
-msgid "E-mail"
-msgstr "E-mail"
-
-msgid "Info"
-msgstr "Megjegyzés"
-
-msgid "Source"
-msgstr "Forrás"
-
-msgid "Bcc"
+msgid "to English"
 msgstr ""
 
-msgid "Use Addresses"
-msgstr "Címek választása"
-
-msgid "Address Book Search"
-msgstr "Keresés a címjegyzékben"
-
-msgid "Search for"
-msgstr "Keresés"
-
-msgid "in"
-msgstr "ban"
-
-msgid "All address books"
-msgstr "Minden címjegyzék"
-
-msgid "List all"
-msgstr "Mindent listáz"
-
-#, c-format
-msgid "Unable to list addresses from %s"
-msgstr "Ilyen cím nem található a %s-ben"
-
-msgid "Your search failed with the following error(s)"
-msgstr "A keresés eredménytelen. Hibakód: "
-
-msgid "No persons matching your search was found"
-msgstr "A keresett személy nem található"
-
-msgid "Return"
-msgstr "Vissza"
-
-msgid "Nickname"
-msgstr "Becenév"
-
-msgid "Must be unique"
-msgstr "Egyértelmü kell legyen"
-
-msgid "E-mail address"
-msgstr "E-mail cím"
-
-msgid "First name"
-msgstr "Keresztnév"
-
-msgid "Last name"
-msgstr "Vezetéknév"
-
-msgid "Additional info"
-msgstr "Kiegészítö információ"
-
-msgid "No personal address book is defined. Contact administrator."
-msgstr "A címjegyzék nincs definiálva. Értesitsd a rendszergazdát."
-
-msgid "You can only edit one address at the time"
-msgstr "Egyidejüleg csak egy cím szerkeszthetö"
-
-msgid "Update address"
-msgstr "Címet frissít"
-
-msgid "Unknown error"
-msgstr "Ismeretlen hiba"
-
-msgid "Add address"
-msgstr "Új cím"
-
-msgid "Edit selected"
-msgstr "Kijelöltet szerkeszteni"
-
-msgid "Delete selected"
-msgstr "Töröl"
-
-#, c-format
-msgid "Add to %s"
-msgstr "Új %s"
-
-msgid "Original Message"
-msgstr "Eredeti üzenet"
-
-msgid "Draft Email Saved"
-msgstr ""
-
-msgid "Could not move/copy file. File not attached"
-msgstr "Az állomány hozzáférhetetlen. Mellélet nincs csatolva"
-
-#, fuzzy
-msgid "Draft Saved"
-msgstr "Könyvtár létrehozása"
-
-#, fuzzy
-msgid "Your Message has been sent"
-msgstr "Nincs üzenet kiválasztva."
-
-msgid "To:"
-msgstr "Címzett:"
-
-msgid "CC:"
-msgstr "Másolat:"
-
-msgid "BCC:"
-msgstr "B Másolat:"
-
-msgid "Subject:"
-msgstr "Témakör:"
-
-msgid "Send"
-msgstr "Elküld"
-
-msgid "Attach:"
-msgstr "Melléklet:"
-
-msgid "Add"
-msgstr "Hozzáad"
-
-msgid "Delete selected attachments"
-msgstr "Kijelölt mellékletek törlése"
-
-msgid "Priority"
-msgstr ""
-
-msgid "Receipt"
+msgid "from English"
 msgstr ""
 
 #, fuzzy
-msgid "On Read"
-msgstr "Átkeresztelés"
+msgid "Interface language"
+msgstr "Nyelv"
 
-msgid "On Delivery"
+msgid "Translation direction"
 msgstr ""
 
-msgid "Save Draft"
+msgid "Delivery error report"
 msgstr ""
 
-msgid "You have not filled in the \"To:\" field."
-msgstr "Nem töltötted ki a \"Címzett:\" mezöt."
-
-msgid "said"
+msgid "Undelivered Message Headers"
 msgstr ""
 
-msgid "quote"
-msgstr ""
-
-msgid "who"
-msgstr ""
-
-#, fuzzy
-msgid "Draft folder"
-msgstr "Könyvtár létrehozása"
-
-msgid "Illegal folder name.  Please select a different name."
-msgstr "Hibás könyvtárnév. Válassz más nevet."
-
-msgid "Click here to go back"
-msgstr "Vissza"
-
-msgid "You have not selected a folder to delete. Please do so."
-msgstr ""
-
-msgid "Delete Folder"
-msgstr "Könyvtárat töröl"
-
-#, c-format
-msgid "Are you sure you want to delete %s?"
-msgstr ""
-
-msgid "Subscribed successfully!"
-msgstr "Feliratkozás sikerrel járt!"
-
-msgid "Unsubscribed successfully!"
-msgstr "Feliratkozás sikeresen törölve!"
-
-msgid "Deleted folder successfully!"
-msgstr "Könyvtár sikeresen törölve!"
-
-msgid "Created folder successfully!"
-msgstr "Könyvtár sikeresen létrehozva!"
-
-msgid "Renamed successfully!"
-msgstr "Átnevezés sikerrel járt"
-
-msgid "Subscription Unsuccessful - Folder does not exist."
-msgstr ""
-
-msgid "refresh folder list"
-msgstr "listát frissíteni"
-
-msgid "Create Folder"
-msgstr "Könyvtár létrehozása"
-
-msgid "as a subfolder of"
-msgstr "mint alkönyvtár az alábbiban"
-
-msgid "None"
-msgstr "Nincs"
-
-msgid "Let this folder contain subfolders"
-msgstr "Az aktuális könyvtár tartalmazhat könyvtárakat"
-
-msgid "Create"
-msgstr "Létrehoz"
-
-msgid "Rename a Folder"
-msgstr "Könyvtár átkeresztelése"
-
-#, fuzzy
-msgid "Select a folder"
-msgstr "Könyvtár átkeresztelése"
-
-msgid "Rename"
-msgstr "Átkeresztelés"
-
-msgid "No folders found"
-msgstr "Nincsenek könyvtárak"
-
-msgid "No folders were found to unsubscribe from!"
-msgstr "Nincsenek könyvtárak amelyekröl feliratkozást törölni lehetne"
-
-msgid "No folders were found to subscribe to!"
-msgstr "Nincsenek könyvtárak amelyekre fel lehetne iratkozni"
-
-#, fuzzy
-msgid "Subscribe to:"
-msgstr "Feliratkozás"
-
-msgid "You have not selected a folder to rename. Please do so."
-msgstr ""
-
-msgid "Rename a folder"
-msgstr "Könyvtár átkeresztelése"
-
-msgid "New name:"
-msgstr "Új név:"
-
-msgid "ERROR: Help files are not in the right format!"
-msgstr ""
-
-#, c-format
-msgid ""
-"The help has not been translated to %s.  It will be displayed in English "
-"instead."
-msgstr ""
-"A segítö dokumentáció nincs %s-ra fordítva, ezért csak angolul lapozható."
-
-msgid "Some or all of the help documents are not present!"
-msgstr "Részben vagy egészen hiányzik a dokumentáció!"
-
-msgid "Table of Contents"
-msgstr "Tartalom"
-
-msgid "Top"
-msgstr "Fel"
-
-#, fuzzy
-msgid "Viewing an image attachment"
-msgstr "Szöveges melléklet megtekintése"
-
-msgid "View message"
-msgstr "Üzenet megtekintése"
-
-#, fuzzy
-msgid "Not available"
-msgstr "Nincs ilyen nevü állomány"
-
-msgid "purge"
-msgstr "ürít"
-
-msgid "Last Refresh"
-msgstr ""
-
-msgid "Save folder tree"
-msgstr ""
-
-msgid "Login"
-msgstr "Belépés"
-
-#, c-format
-msgid "%s Login"
-msgstr "%s Belépés"
-
-msgid "Name:"
-msgstr "Felhasználónév:"
-
-msgid "No messages were selected."
-msgstr "Nincs üzenet kiválasztva."
-
-msgid "Message Highlighting"
-msgstr "Üzenet kijelölése"
-
-#, fuzzy
-msgid "subject"
-msgstr "Témakör"
-
-msgid "No highlighting is defined"
-msgstr "Kiemelés nincs definiálva"
-
-msgid "Identifying name"
-msgstr "Azonosító név"
-
-msgid "Color"
-msgstr "Szín"
-
-msgid "Dark Blue"
-msgstr "Sötétkék"
-
-msgid "Dark Green"
-msgstr "Sötétzöld"
-
-msgid "Dark Yellow"
-msgstr "Sötétsárga"
-
-msgid "Dark Cyan"
-msgstr "Méregzöld"
-
-msgid "Dark Magenta"
-msgstr "Lila"
-
-msgid "Light Blue"
-msgstr "Világoskék"
-
-msgid "Light Green"
-msgstr "Világoszöld"
-
-msgid "Light Yellow"
-msgstr "Sárga"
-
-msgid "Light Cyan"
-msgstr "Világoscián"
-
-msgid "Light Magenta"
-msgstr "Világoslila"
-
-msgid "Dark Gray"
-msgstr "Sötétszürke"
-
-msgid "Medium Gray"
-msgstr "Szürke"
-
-msgid "Light Gray"
-msgstr "Világosszürke"
-
-msgid "White"
-msgstr "Fehér"
-
-msgid "Other:"
-msgstr "Más:"
-
-msgid "Ex: 63aa7f"
-msgstr "Például: 63aa7f"
-
-#, fuzzy
-msgid "Matches"
-msgstr "Minta"
-
-#, c-format
-msgid "Alternate Identity %d"
-msgstr ""
-
-msgid "Advanced Identities"
-msgstr ""
-
-msgid "Default Identity"
-msgstr ""
-
-msgid "Add a New Identity"
-msgstr ""
-
-msgid "E-Mail Address"
-msgstr "E-Mail cím"
-
-msgid "Save / Update"
-msgstr ""
-
-msgid "Make Default"
-msgstr ""
-
-#, fuzzy
-msgid "Move Up"
-msgstr "Vidd"
-
-msgid "Index Order"
-msgstr "Index sorrend"
-
-msgid "Checkbox"
-msgstr "Checkbox"
-
-msgid "Flags"
-msgstr "Melléklet jelzö"
-
-msgid ""
-"The index order is the order that the columns are arranged in the message "
-"index.  You can add, remove, and move columns around to customize them to "
-"fit your needs."
-msgstr ""
-"Az index sorrend az oszlopok sorrendje az üzenetek listázásakor. Az "
-"oszlopokat lehet hozzáadni, vatoztatni és törölni."
-
-msgid "up"
-msgstr "fel"
-
-msgid "down"
-msgstr "le"
-
-msgid "remove"
-msgstr "töröl"
-
-msgid "Return to options page"
-msgstr "Visszatérni az opciók oldalra"
-
-msgid "Personal Information"
-msgstr "Személyes adatok"
-
-msgid "Display Preferences"
-msgstr "Általános beállítások"
-
-msgid "Folder Preferences"
-msgstr "Könyvtárak beállításai"
-
-#, fuzzy
-msgid "Successfully Saved Options"
-msgstr "Személyes adatok sikeresen mentve!"
-
-msgid "Refresh Folder List"
-msgstr "Könyvtárlistát frissít"
-
-msgid "Refresh Page"
-msgstr "Oldalt frissít"
-
-msgid ""
-"This contains personal information about yourself such as your name, your "
-"email address, etc."
-msgstr "Ez tartalmazza a személyes adatokat úgy mint név, e-mail cím stb..."
-
-msgid ""
-"You can change the way that SquirrelMail looks and displays information to "
-"you, such as the colors, the language, and other settings."
-msgstr ""
-"Itt lehet konfigurálni SquirrelMail (MókusPosta) általános beállításait "
-"például a színeket, a használt nyelvet stb..."
-
-msgid ""
-"Based upon given criteria, incoming messages can have different background "
-"colors in the message list.  This helps to easily distinguish who the "
-"messages are from, especially for mailing lists."
-msgstr ""
-"Az üzenetek a felhasználó által definiált feltételek szerint más és más "
-"háttér szinnel autómatikusan kijelölhetök. Ez segít azonosítani a például "
-"levelezö listákról érkezett üzeneteket."
-
-msgid ""
-"These settings change the way your folders are displayed and manipulated."
-msgstr ""
-"A könyvtárak általános beállításai és azok kezelése konfigurálható itt."
-
-#, fuzzy
-msgid ""
-"The order of the message index can be rearranged and changed to contain the "
-"headers in any order you want."
-msgstr ""
-"A sorrend amelyben az üzenetek jellemzöi megjelennek változtatható és "
-"tetszés szerint konfigurálható."
-
-#, fuzzy
-msgid "Message not printable"
-msgstr "Üzenet kijelölése"
-
-msgid "Printer Friendly"
-msgstr ""
-
-#, fuzzy
-msgid "CC"
-msgstr "Másolat:"
-
-msgid "Print"
-msgstr ""
-
-msgid "View Printable Version"
-msgstr ""
-
-#, fuzzy
-msgid "Read:"
-msgstr "Átkeresztelés"
-
-#, fuzzy
-msgid "Your message"
-msgstr "üzenet"
-
-#, fuzzy
-msgid "Sent:"
-msgstr "Elküld"
-
-#, c-format
-msgid "Was displayed on %s"
-msgstr ""
-
-msgid "less"
-msgstr "kevesebb"
-
-msgid "more"
-msgstr "még"
-
-msgid "Mailer"
-msgstr ""
-
-msgid "Read receipt"
-msgstr ""
-
-#, fuzzy
-msgid "send"
-msgstr "Elküld"
-
-#, fuzzy
-msgid "requested"
-msgstr "Nincs üzenet kiválasztva."
-
-msgid ""
-"The message sender has requested a response to indicate that you have read "
-"this message. Would you like to send a receipt?"
-msgstr ""
-
-msgid "Send read receipt now"
-msgstr ""
-
-#, fuzzy
-msgid "Search results"
-msgstr "Keresés"
-
-msgid "Message List"
-msgstr "Üzenetek listája"
-
-msgid "Resume Draft"
-msgstr ""
-
-msgid "Edit Message as New"
-msgstr ""
-
-#, fuzzy
-msgid "View Message"
-msgstr "Üzenet megtekintése"
-
-#, fuzzy
-msgid "Forward as Attachment"
-msgstr "Melléklet:"
-
-msgid "Reply"
-msgstr "Válasz"
-
-msgid "Reply All"
-msgstr "Válasz mindenkinek"
-
-#, fuzzy
-msgid "View Full Header"
-msgstr "A teljes fejléc megmutatása"
-
-#, fuzzy
-msgid "Attachments"
-msgstr "Melléklet:"
-
-#, fuzzy
-msgid "Folder:"
-msgstr "Könyvtárak"
-
-#, fuzzy
-msgid "edit"
-msgstr "Szerkeszt"
-
-#, fuzzy
-msgid "search"
-msgstr "Keresés"
-
-#, fuzzy
-msgid "delete"
-msgstr "Töröl"
-
-msgid "Recent Searches"
-msgstr ""
-
-msgid "save"
-msgstr ""
-
-#, fuzzy
-msgid "forget"
-msgstr "még"
-
-#, fuzzy
-msgid "Current Search"
-msgstr "Aktuális könyvtár"
-
-msgid "Body"
-msgstr "Szövegben"
-
-msgid "Everywhere"
-msgstr "Bárhol"
-
-#, fuzzy
-msgid "Search Results"
-msgstr "Keresés"
-
-#, fuzzy
-msgid "No Messages Found"
-msgstr "Egyidejüleg mutatott üzenetek száma"
-
-msgid "You have been successfully signed out."
-msgstr "Sikeresen kiléptél."
-
-msgid "Click here to log back in."
-msgstr "Újra belépni."
-
-#, fuzzy
-msgid "Viewing a Business Card"
-msgstr "Üzenet elolvasása"
-
-#, fuzzy
-msgid "Title"
-msgstr "Fehér"
-
-#, fuzzy
-msgid "Email"
-msgstr "E-mail"
-
-#, fuzzy
-msgid "Web Page"
-msgstr "Oldalt frissít"
-
-msgid "Organization / Department"
-msgstr ""
-
-#, fuzzy
-msgid "Address"
-msgstr "Címek"
-
-msgid "Work Phone"
-msgstr ""
-
-msgid "Home Phone"
-msgstr ""
-
-msgid "Cellular Phone"
-msgstr ""
-
-msgid "Fax"
-msgstr ""
-
-#, fuzzy
-msgid "Note"
-msgstr "Nincs"
-
-#, fuzzy
-msgid "Add to Addressbook"
-msgstr "Új cím"
-
-msgid "Title & Org. / Dept."
-msgstr ""
-
-#, fuzzy
-msgid "Viewing Full Header"
-msgstr "A teljes fejléc megmutatása"
-
-msgid "Viewing a text attachment"
-msgstr "Szöveges melléklet megtekintése"
+#~ msgid "(unknown sender)"
+#~ msgstr "(ismeretlen feladó)"
 
 #~ msgid "Close window"
 #~ msgstr "Bezár"
@@ -3008,38 +3546,6 @@ msgstr "Szöveges melléklet megtekintése"
 
 #~ msgid "messages"
 #~ msgstr "üzenet"
-
-#, fuzzy
-#~ msgid "Close this Window"
-#~ msgstr "Bezár"
-
-#, fuzzy
-#~ msgid "Ignore"
-#~ msgstr "még"
-
-#, fuzzy
-#~ msgid "Add to Dic"
-#~ msgstr "Új %s"
-
-#, fuzzy
-#~ msgid "Close and Commit"
-#~ msgstr "Bezár"
-
-#, fuzzy
-#~ msgid "No errors found"
-#~ msgstr "Nincsenek könyvtárak"
-
-#, fuzzy
-#~ msgid "Personal Dictionary"
-#~ msgstr "Személyes adatok"
-
-#, fuzzy
-#~ msgid "Delete checked words"
-#~ msgstr "Töröl"
-
-#, fuzzy
-#~ msgid "All done!"
-#~ msgstr "Minden könyvtár"
 
 #~ msgid "Folders created successfully!"
 #~ msgstr "Könyvtárak sikeresen létrehozva!"
