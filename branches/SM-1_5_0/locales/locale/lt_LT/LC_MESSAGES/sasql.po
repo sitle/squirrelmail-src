@@ -1,0 +1,314 @@
+# Lithuanian Translation of SquirrelMail sasql plugin
+# Copyright (c) 2004 The Squirrelmail Development Team
+# Tomas Kuliavas <tokul@users.sourceforge.net>, 2004.
+# $Id$
+msgid ""
+msgstr ""
+"Project-Id-Version: sasql\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2004-03-29 21:19+0300\n"
+"PO-Revision-Date: 2004-04-30 13:07+0300\n"
+"Last-Translator: Tomas Kuliavas <tokul@users.sourceforge.net>\n"
+"Language-Team: Lithuanian <squirrelmail-i18n@lists.sourceforge.net>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit"
+
+#: dspam.inc.php:82
+msgid "dspam Settings"
+msgstr "dspam nustatymai"
+
+#: dspam.inc.php:89
+msgid ""
+"dspam is a learning system that filters spam based on what <i>you</i> tell "
+"it is spam and what isn't. Messages are analyzed as they are delivered and "
+"are assigned a spam probability between 0 and 1. The more messages you "
+"receive, both spam and innocent, the better dspam learns what <i>you</i> "
+"think is spam and what is not."
+msgstr "dspam yra valdoma sistema, kuri filtruoja nesankcionuotas žinutes, remdamasi Jūsų pateikta informacija apie analogiškų žinučių prigimtį. Žinutės yra analizuojamas jų pristatymo metu ir joms yra suteikiamas įvertinimas nuo 0 iki 1. Kuo daugiau žinučių Jūs gaunate ir kuo daugiau pateikiate sistemai įvertinimų, tuo geriau sistema atskiria teisėtas žinutes nuo nesankcionuotų."
+
+#: dspam.inc.php:95
+msgid "Warning"
+msgstr "Perspėjimas"
+
+#: dspam.inc.php:97
+msgid "Enabling dspam will disable SpamAssassin scanning of your email."
+msgstr "Įjungdami dspam, Jūs atjungiate SpamAssassin skanavimo funkcijas."
+
+#: dspam.inc.php:100
+msgid "SpamAssassin settings and white/blacklists will not be used by dspam."
+msgstr "SpamAssassin nustatymai ir leidimų/draudimų sąrašai nėra naudojami tarp dspam."
+
+#: dspam.inc.php:105
+msgid ""
+"This <a href='http://www.nuclearelephant.com/projects/dspam/faq.html#1.7' "
+"target='_blank'>FAQ</a> from the dspam web site explains the differences "
+"between SpamAssassin and dspam and why you might want to use dspam instead "
+"of SpamAssassin."
+msgstr ""
+"Dspam svetainėje esantis <a href='http://www.nuclearelephant.com/projects/dspam/faq.html#1.7' "
+"target='_blank'>aprašymas</a> paaiškina skirtumus tarp SpamAssassin ir dspam, bei pateikia dspam sistemos privalumus prieš SpamAssassin."
+
+#: dspam.inc.php:110
+msgid "Reporting Spam"
+msgstr "Pranešti apie spamą"
+
+#: dspam.inc.php:113
+msgid ""
+"If you receive a spam message in your Inbox, forward the message to "
+"<nobr>username-spam@domain</nobr> and it will be learned as spam. For "
+"example, if your address is joe@example.com, you would forward the message "
+"to <nobr>joe-spam@example.com</nobr>."
+msgstr "Jei Jūsų pagrindinę dėžutę pasiekia nesankcionuota žinutė, persiųskite ją adresų <nobr>vartotojas-spam@domenas</nobr> ir sistema priskirs analogiškas žinutes prie spamo. Pavyzdžiui, jei Jūsų pašto adresas yra jonas@example.com,·Jūs turėtumėte žinutę persiųsti adresu·<nobr>jonas-spam@example.com</nobr>."
+
+#: dspam.inc.php:119
+#, c-format
+msgid ""
+"You can also move your spam messages to the <i>%s</i> folder. This folder is "
+"periodically checked for messages which are then learned as spam and "
+"deleted. You do not need to move messages from your %s folder here because "
+"they have already been learned as spam."
+msgstr ""
+"Jūs taip pat galite perkelti nesankcionuotas žinutes į aplanką <i>%s</i>. Šis aplankas yra periodiškai tikrinamas ir ten esančios žinutės atpažįstamos kaip spamas bei pašalinamos. Jums nereikia perkėlinėti žinučių iš aplanko %s, kadangi jos jau yra atpažįstamos kaip spamas."
+
+#: dspam.inc.php:124
+msgid "Reporting False Positives"
+msgstr "Pranešti apie klaidingą priskyrimą"
+
+#: dspam.inc.php:127
+msgid ""
+"From time to time, dspam will catch an innocent messages as spam. These "
+"messages are called \"false positives\". There is no way to prevent false "
+"positives entirely. If you find a false positive, forward the message to "
+"<nobr>username-fp@domain</nobr> and it will be learned as an innocent "
+"message. For example, if your email address is joe@example.com, you would "
+"forward the message to <nobr>joe-fp@example.com</nobr>."
+msgstr "Kartais dspam sistema gali klaidingai priskirti teisėtas žinutes prie nesankcionuotų. Šios žinutės yra vadinamos atpažinimo klaidomis. Jų negalima išvengti besimokančioje sistemoje. Jei Jūs aptinkate atpažinimo klaidą, persiųskite žinutę adresu <nobr>vartotojas-fp@domenas</nobr> ir sistema nebeturėtų priskirti analogiškų žinučių prie spamo. Pavyzdžiui, jei Jūsų pašto adresas yra·jonas@example.com,·Jūs·turėtumėte persiųsti žinutę adresu·<nobr>jonas-fp@example.com</nobr>."
+
+#: dspam.inc.php:133
+#, c-format
+msgid ""
+"You can also move your false positives to the <i>%s</i> folder from the %s "
+"folder. This folder is periodically checked for messages which are then "
+"learned as false positives and deleted."
+msgstr "Taip pat Jūs galite perkelti klaidingai atpažintas žinutes į aplanką <i>%s</i>·iš aplanko %s. Šis aplankas yra periodiškai tikrinamas ir sistema atpažįsta klaidingai priskirtas žinutes bei jas pašalina."
+
+#: dspam.inc.php:138
+msgid "Disclaimer"
+msgstr "Perspėjimas"
+
+#: dspam.inc.php:141
+msgid ""
+"dspam is a learning system. It only knows what is spam based on what you "
+"teach it is spam and what is not. Due to dspam's nature, you are more likely "
+"to see errors in spam detection until it is trained on your email. If you do "
+"not report a message as spam within ten days, the message will be "
+"permanently learned as innocent and you will be more likely to receive more "
+"spam."
+msgstr "dspam yra besimokanti sistema. Ji žino apie žinučių atpažinimą tik tai, ko Jūs ją išmokote. Dėl spamo siekimo pasiekti Jus visais įmanomais metodais, Jūs galite sutikti klaidas atpažinimo sistemoje ir spamas vis dar Jus pasieks. Jei Jūs neinformuosite sistemos apie spamą per dešimt dienų, nesankcionuotos žinutės gali būti priskirtos prie leistinų ir Jūs galite sulaukti daugiau panašaus tipo žinučių."
+
+#: dspam.inc.php:159
+msgid "Use dspam"
+msgstr "Naudoti dspam"
+
+#: dspam.inc.php:169
+#, c-format
+msgid "Clean out your %s folder on opt-in?"
+msgstr "Išvalyti %s aplanką išsiregistruojant?"
+
+#: purge.inc.php:22
+msgid "Purge $spam_folder Folder"
+msgstr "Išvalyti $spam_folder aplanką"
+
+#: purge.inc.php:30
+msgid "Purge"
+msgstr "Išvalyti"
+
+#: purge.inc.php:33
+#, c-format
+msgid "Delete all messages from your %s folder."
+msgstr "Pašalinti visas žinutės iš aplanko %s."
+
+#: purge.inc.php:37
+msgid "Note"
+msgstr "Pastabos"
+
+#: purge.inc.php:38
+#, c-format
+msgid ""
+"Your %s folder may be unavailable during the purge. It will become available "
+"again when the purge is complete."
+msgstr ""
+"Aplankas %s gali būti nepasiekiamas valymo metu. Jis vėl bus pasiekiamas pasibaigus valymui."
+
+#: sa_abooksync.inc.php:20
+msgid "Allow Senders from Address Book"
+msgstr "Praleisti siuntėjus iš adresų knygutės"
+
+#: sa_abooksync.inc.php:27
+msgid "Allow all address in the address book."
+msgstr "Praleisti visus adresus iš adresų knygutės."
+
+#: sa_settings.inc.php:105
+msgid "General Settings"
+msgstr "Bendriniai nustatymai"
+
+#: sasql_db.php:11
+#, c-format
+msgid "sasql_DBConnect Database error: %s"
+msgstr "sasql_DBConnect - Duomenų bazės klaida: %s"
+
+#: sasql_db.php:29
+msgid "sasql_ReadWBList Database error: $s"
+msgstr "sasql_ReadWBList - Duomenų bazės klaida: %s"
+
+#: sasql_db.php:109
+#, c-format
+msgid "sasql_ReadPrefs Database error: %s"
+msgstr "sasql_ReadPrefs - Duomenų bazės klaida: %s"
+
+#: sasql_db.php:148
+#, c-format
+msgid "sasql_UpdatePref Database error: %s"
+msgstr "sasql_UpdatePref - Duomenų bazės klaida: %s"
+
+#: sasql_db.php:167
+#, c-format
+msgid "sasql_UpdatePref_multiple Database error: %s"
+msgstr "sasql_UpdatePref_multiple - Duomenų bazės klaida: %s"
+
+#: sasql_db.php:181
+#, c-format
+msgid "sasql_AddPref Database error: %s"
+msgstr "sasql_AddPref - Duomenų bazės klaida: %s"
+
+#: sasql_db.php:201
+#, c-format
+msgid "sasql_AddPref_multiple Database error: %s"
+msgstr "sasql_AddPref_multiple - Duomenų bazės klaida: %s"
+
+#: sasql_db.php:217 sasql_db.php:230
+#, c-format
+msgid "sasql_DelPref Database error: %s"
+msgstr "sasql_DelPref - Duomenų bazės klaida: %s"
+
+#: sasql_db.php:242 sasql_db.php:268
+msgid "sasql_GetPref Database error: $s"
+msgstr "sasql_GetPref - Duomenų bazės klaida: %s"
+
+#: sasql_hooks.php:104 sasql_options.php:62
+msgid "Spam Filter Configuration"
+msgstr "Spamo filtrų konfiguracija"
+
+#: sasql_hooks.php:106
+msgid "Here you may configure the behavior of the spam filtering software."
+msgstr "Čia Jūs galite valdyti spamo filtravimo sistemos elgseną."
+
+#: sasql_hooks.php:183
+msgid "Allow Sender"
+msgstr "Praleisti Siuntėją"
+
+#: sasql_hooks.php:185
+msgid "remove"
+msgstr "išmesti"
+
+#: sasql_hooks.php:197
+msgid "Whitelisted"
+msgstr "Adresas praleidžiamas"
+
+#: sasql_hooks.php:208
+msgid "Blacklisted"
+msgstr "Įtraukta į draudžiamų sąrašą"
+
+#: sasql_options.php:62
+msgid "Options"
+msgstr "Nustatymai"
+
+#: sasql_wblist.php:41 sa_whitelist.inc.php:42
+msgid "Error: You must include an e-mail address."
+msgstr "Klaida: Jūs turite nurodyti el-pašto adresą."
+
+#: sasql_wblist.php:48 sa_whitelist.inc.php:48
+msgid "Error: You have entered an invalid e-mail address."
+msgstr "Klaida: Jūs nurodėte neteisingą el-pašto adresą."
+
+#: sasql_wblist.php:53
+msgid "Error: Missing option."
+msgstr "Klaida: Trūksta nustatymo."
+
+#: sa_whitelist.inc.php:52
+msgid "Error: You must select Allow or Deny."
+msgstr "Klaida: Jūs turite pasirinkti praleisti ar blokuoti."
+
+#: sa_whitelist.inc.php:75
+msgid "Global Allow / Deny Address List"
+msgstr "Bendrinis Leidimų/Draudimų sąrašas"
+
+#: sa_whitelist.inc.php:82 sa_whitelist.inc.php:130
+msgid "Address"
+msgstr "Adresas"
+
+#: sa_whitelist.inc.php:83 sa_whitelist.inc.php:131
+msgid "Type"
+msgstr "Tipas"
+
+#: sa_whitelist.inc.php:102 sa_whitelist.inc.php:159
+msgid "Whitelist From"
+msgstr "Praleisti nuo"
+
+#: sa_whitelist.inc.php:104 sa_whitelist.inc.php:161
+msgid "Don't Whitelist From"
+msgstr "Nepraleisti nuo"
+
+#: sa_whitelist.inc.php:106 sa_whitelist.inc.php:163
+msgid "Blacklist From"
+msgstr "Blokuoti nuo"
+
+#: sa_whitelist.inc.php:108 sa_whitelist.inc.php:165
+msgid "Don't Blacklist From"
+msgstr "Neblokuoti nuo"
+
+#: sa_whitelist.inc.php:110 sa_whitelist.inc.php:167
+msgid "Whitelist To"
+msgstr "Leisti į"
+
+#: sa_whitelist.inc.php:123
+msgid "Personal Allow / Deny Address List"
+msgstr "Asmeninis Leidimų/Draudimų Sąrašas"
+
+#: sa_whitelist.inc.php:132
+msgid "Action"
+msgstr "Veiksmas"
+
+#: sa_whitelist.inc.php:139
+msgid "Address Removed"
+msgstr "Adresas Pašalintas"
+
+#: sa_whitelist.inc.php:175
+msgid "Delete"
+msgstr "Ištrinti"
+
+#: sa_whitelist.inc.php:181
+msgid "Edit"
+msgstr "Taisyti"
+
+#: sa_whitelist.inc.php:195
+msgid "Edit Address"
+msgstr "Keisti adresą"
+
+#: sa_whitelist.inc.php:201
+msgid "Add New Address"
+msgstr "Įtraukti naują adresą"
+
+#: sa_whitelist.inc.php:227
+msgid "Address:"
+msgstr "Adresas:"
+
+#: sa_whitelist.inc.php:231
+msgid "Type:"
+msgstr "Tipas:"
+
+#: sa_whitelist.inc.php:252
+msgid "Description"
+msgstr "Aprašymas"
+
