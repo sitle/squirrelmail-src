@@ -92,12 +92,8 @@ class smdoc_debug
       echo '<div class="debug_output_heading">External Resources</div>'. "\n";
       global $EXTERNAL_RESOURCES;
       show($EXTERNAL_RESOURCES);       
-      echo '<div class="debug_output_heading">Internal Resources</div>'. "\n";
-      $obj =& smdoc_name_lookup::getInstance($this->foowd);
-      show($obj->shortNames);
     }    
-
-    echo '</div></body></html>';
+    echo '<br /></div></body></html>';
   }
 
   /**

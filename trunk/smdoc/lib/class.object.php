@@ -1102,15 +1102,6 @@ class foowd_object
   }
 
   /**
-   * Output the object permissions form and handle its input.
-   *
-   * @access protected
-   */
-//  function method_permissions() {
-//      METHOD DISABLED.
-//  }
-
-  /**
    * Output the object as XML.
    *
    * @access protected

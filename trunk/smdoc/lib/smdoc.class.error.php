@@ -9,6 +9,8 @@
  * $Id$
  */
 
+include_once(SM_DIR . 'smdoc.class.storage.php');
+
 /* Class descriptor */
 setClassMeta('smdoc_error', 'Error Display');
 setConst('ERROR_CLASS_ID', META_SMDOC_ERROR_CLASS_ID);
@@ -16,13 +18,7 @@ setConst('ERROR_TITLE', _("Page Error"));
 
 
 /** METHOD PERMISSIONS **/
-setPermission('smdoc_error', 'class',  'create', 'Nobody');
-setPermission('smdoc_error', 'object', 'admin', 'Nobody');
-setPermission('smdoc_error', 'object', 'revert', 'Nobody');
-setPermission('smdoc_error', 'object', 'delete', 'Nobody');
-setPermission('smdoc_error', 'object', 'clone', 'Nobody');
-setPermission('smdoc_error', 'object', 'history', 'Nobody');
-setPermission('smdoc_error', 'object', 'diff', 'Nobody');
+setPermission('smdoc_error', 'object', 'view', 'Everyone');
 
 /**
  * Error class.
@@ -33,8 +29,12 @@ setPermission('smdoc_error', 'object', 'diff', 'Nobody');
  * @class smdoc_error
  * @extends foowd_object
  */
-class smdoc_error extends foowd_object {
-
+class smdoc_error extends smdoc_storage
+{
+    /**
+     * String containing error message.
+     * @var string
+     */
     var $errorString;
 
     /**
@@ -42,25 +42,17 @@ class smdoc_error extends foowd_object {
 	 *
 	 * @constructor smdoc_error
 	 * @param object foowd The foowd environment object.
+     * @param string title The error title
+     * @param string errorString The error message.
 	 */
     function smdoc_error(&$foowd, 
                          $title = ERROR_TITLE, 
                          $errorString = '') {
         $foowd->track('smdoc_error->constructor');
-        $this->title = $title;
-        $this->errorString = $errorString;
 
-        $this->objectid = NULL;
-        $this->version = 1;
-        $this->classid = META_SMDOC_ERROR_CLASS_ID;   
-        $this->workspaceid = 0;
-		$this->created = time();
-		$this->creatorid = 0;
-		$this->creatorName = 'System';
-		$this->updated = time();
-		$this->updatorid = 0;
-		$this->updatorName = 'System';
-        $this->permissions = NULL;
+        parent::smdoc_storage($foowd, $title, NULL, FALSE);
+
+        $this->errorString = $errorString;
 
         $foowd->track();
     }
@@ -78,14 +70,6 @@ class smdoc_error extends foowd_object {
 	function save(&$foowd, $incrementVersion = TRUE, $doUpdate = TRUE) { 
 		return FALSE;
 	}
-
-    function set(&$foowd, $member, $value = NULL) {
-        return FALSE;
-    }
-
-    function delete(&$foowd) {
-        return FALSE;
-    }
 
 	/**
 	 * Output the object.

@@ -59,28 +59,34 @@ class smdoc_object_cache
   function destroy()
   {
     $this->foowd->track('foowd_db->destructor');
-    foreach ($this->objects as $source)
+
+    if ( !empty($this->objects) )
     {
-      foreach ( $source as $object )
+      foreach ($this->objects as $source)
       {
-        if ( isset($object->foowd_changed) && $object->foowd_changed )
+        if ( empty($source) )
+          continue;
+
+        foreach ( $source as $object )
         {
-          if ( $object->objectid == 0 )
+          if ( isset($object->foowd_changed) && $object->foowd_changed )
           {
-            show($object);
+            if ( $object->objectid == 0 )
+              show($object);
+            else
+            {
+              $this->foowd->debug('msg', 'Saving object '.$object->objectid);
+              $result = $object->save();
+              if ( !$result )
+                trigger_error('Could not save object '.$object->objectid);
+            }
           }
           else
-          {
-            $this->foowd->debug('msg', 'Saving object '.$object->objectid);
-            $result = $object->save();
-            if ( !$result )
-              trigger_error('Could not save object '.$object->objectid);
-          }
-        }
-        else
-          $this->foowd->debug('msg', 'Object '.$object->title.'['.$object->objectid.'] not changed');
-      }    
+            $this->foowd->debug('msg', 'Object '.$object->title.'['.$object->objectid.'] not changed');
+        }    
+      }
     }
+
     $this->foowd->track();
   }
 
@@ -103,7 +109,6 @@ class smdoc_object_cache
         $hash .= '_';
       $hash .= $object->foowd_original_access_vars[$key];
     }
-
     $this->foowd->debug('msg', 'ADD Hash: ' . $hash);
     $this->objects[$source][$hash] =& $object;
   }
@@ -118,7 +123,6 @@ class smdoc_object_cache
   function &checkLoadedReference($indexes, $source) 
   {
     $this->db->getSource($source, $source, $tmp);
-    
     $hash = '';
     ksort($indexes);    
     foreach ( $indexes as $key => $value )
