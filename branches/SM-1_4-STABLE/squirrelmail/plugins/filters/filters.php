@@ -1,10 +1,6 @@
 <?php
-
 /**
- * Message and Spam Filter Plugin
- *
- * Copyright (c) 1999-2004 The SquirrelMail Project Team
- * Licensed under the GNU GPL. For full terms see the file COPYING.
+ * Message and Spam Filter Plugin - Filtering Functions
  *
  * This plugin filters your inbox into different folders based upon given
  * criteria.  It is most useful for people who are subscibed to mailing lists
@@ -22,9 +18,17 @@
  *
  * Also view plugins/README.plugins for more information.
  *
- * $Id$
+ * @version $Id$
+ * @copyright (c) 1999-2004 The SquirrelMail Project Team
+ * @license http://opensource.org/licenses/gpl-license.php GNU Public License
+ * @package plugins
+ * @subpackage filters
  */
 
+/**
+ * FIXME: Undocumented function
+ * @access private
+ */
 function filters_SaveCache () {
     global $data_dir, $SpamFilters_DNScache;
 
@@ -52,6 +56,10 @@ function filters_SaveCache () {
     fclose($fp);
 }
 
+/**
+ * FIXME: Undocumented function
+ * @access private
+ */
 function filters_LoadCache () {
     global $data_dir, $SpamFilters_DNScache;
 
@@ -71,6 +79,10 @@ function filters_LoadCache () {
     }
 }
 
+/**
+ * FIXME: Undocumented function
+ * @access private
+ */
 function filters_bulkquery($filters_spam_scan, $filters, $read) {
     global $SpamFilters_YourHop, $attachment_dir, $username,
            $SpamFilters_DNScache, $SpamFilters_BulkQuery,
@@ -161,6 +173,10 @@ function filters_bulkquery($filters_spam_scan, $filters, $read) {
     }
 }
 
+/**
+ * FIXME: Undocumented function
+ * @access private
+ */
 function start_filters() {
     global $mailbox, $imapServerAddress, $imapPort, $imap,
            $imap_general, $filters, $imap_stream, $imapConnection,
@@ -169,38 +185,42 @@ function start_filters() {
     sqgetGlobalVar('username', $username, SQ_SESSION);
     sqgetGlobalVar('key',      $key,      SQ_COOKIE);
 
-#    if ($mailbox == 'INBOX') {
-        // Detect if we have already connected to IMAP or not.
-        // Also check if we are forced to use a separate IMAP connection
-        if ((!isset($imap_stream) && !isset($imapConnection)) ||
-            $UseSeparateImapConnection) {
-                $stream = sqimap_login($username, $key, $imapServerAddress,
-                                    $imapPort, 10);
-                $previously_connected = false;
-        } elseif (isset($imapConnection)) {
-            $stream = $imapConnection;
-            $previously_connected = true;
-        } else {
-            $previously_connected = true;
-            $stream = $imap_stream;
+    // Detect if we have already connected to IMAP or not.
+    // Also check if we are forced to use a separate IMAP connection
+    if ((!isset($imap_stream) && !isset($imapConnection)) ||
+        $UseSeparateImapConnection ) {
+            $stream = sqimap_login($username, $key, $imapServerAddress,
+                                $imapPort, 10);
+            $previously_connected = false;
+    } else if (isset($imapConnection)) {
+        $stream = $imapConnection;
+        $previously_connected = true;
+    } else {
+        $previously_connected = true;
+        $stream = $imap_stream;
+    }
+    $aStatus = sqimap_status_messages ($stream, 'INBOX', array('MESSAGES'));
+
+    if ($aStatus['MESSAGES']) {
+        sqimap_mailbox_select($stream, 'INBOX');
+        // Filter spam from inbox before we sort them into folders
+        if ($AllowSpamFilters) {
+            spam_filters($stream);
         }
 
-        if (sqimap_get_num_messages($stream, 'INBOX') > 0) {
-            // Filter spam from inbox before we sort them into folders
-            if ($AllowSpamFilters) {
-                spam_filters($stream);
-            }
+        // Sort into folders
+        user_filters($stream);
+    }
 
-            // Sort into folders
-            user_filters($stream);
-        }
-
-        if (!$previously_connected) {
-            sqimap_logout($stream);
-        }
-#    }
+    if (!$previously_connected) {
+        sqimap_logout($stream);
+    }
 }
 
+/**
+ * FIXME: Undocumented function
+ * @access private
+ */
 function user_filters($imap_stream) {
     global $data_dir, $username;
     $filters = load_filters();
@@ -237,6 +257,10 @@ function user_filters($imap_stream) {
     }
 }
 
+/**
+ * FIXME: Undocumented function
+ * @access private
+ */
 function filter_search_and_delete($imap, $where, $what, $where_to, $user_scan, 
                                   $del_id) {
     global $languages, $squirrelmail_language, $allow_charset_search, 
@@ -262,7 +286,7 @@ function filter_search_and_delete($imap, $where, $what, $where_to, $user_scan,
         $what  = addslashes(trim($what[1]));
     }
 
-    if ($imap_server_type == 'macosx') {    
+    if ($imap_server_type == 'macosx') {
 	$search_str .= ' ' . $where . ' ' . $what;
     } else {
 	$search_str .= ' ' . $where . ' {' . strlen($what) . "}\r\n"
@@ -290,7 +314,10 @@ function filter_search_and_delete($imap, $where, $what, $where_to, $user_scan,
     return $del_id;
 }
 
-// These are the spam filters
+/**
+ * FIXME: Undocumented function
+ * @access private
+ */
 function spam_filters($imap_stream) {
     global $data_dir, $username, $uid_support;
     global $SpamFilters_YourHop;
@@ -425,8 +452,12 @@ function spam_filters($imap_stream) {
 
 }
 
-// Does the loop through each enabled filter for the specified IP address.
-// IP format:  $a.$b.$c.$d
+/**
+ * FIXME: Undocumented function
+ * Does the loop through each enabled filter for the specified IP address.
+ * IP format:  $a.$b.$c.$d
+ * @access private
+ */
 function filters_spam_check_site($a, $b, $c, $d, &$filters) {
     global $SpamFilters_DNScache, $SpamFilters_CacheTTL;
     foreach ($filters as $key => $value) {
@@ -457,6 +488,10 @@ function filters_spam_check_site($a, $b, $c, $d, &$filters) {
     return 0;
 }
 
+/**
+ * FIXME: Undocumented function
+ * @access private
+ */
 function load_filters() {
     global $data_dir, $username;
 
@@ -470,6 +505,10 @@ function load_filters() {
     return $filters;
 }
 
+/**
+ * FIXME: Undocumented function
+ * @access private
+ */
 function load_spam_filters() {
     global $data_dir, $username, $SpamFilters_ShowCommercial;
 
@@ -747,6 +786,10 @@ function load_spam_filters() {
     return $filters;
 }
 
+/**
+ * FIXME: Undocumented function
+ * @access private
+ */
 function remove_filter ($id) {
     global $data_dir, $username;
 
@@ -759,6 +802,10 @@ function remove_filter ($id) {
     removePref($data_dir, $username, 'filter' . $id);
 }
 
+/**
+ * FIXME: Undocumented function
+ * @access private
+ */
 function filter_swap($id1, $id2) {
     global $data_dir, $username;
 
@@ -771,8 +818,11 @@ function filter_swap($id1, $id2) {
     }
 }
 
-/* This update the filter rules when
-   renaming or deleting folders */
+/**
+ * This update the filter rules when renaming or deleting folders
+ * @param array $args
+ * @access private
+ */
 function update_for_folder ($args) {
     $old_folder = $args[0];
         $new_folder = $args[2];
@@ -798,5 +848,18 @@ function update_for_folder ($args) {
         $p++;
         }
     }
+}
+
+/**
+ * Display formated error message
+ * @param string $string text message
+ * @return string html formated text message
+ * @access private
+ */
+function do_error($string) {
+    global $color;
+    echo "<p align=\"center\"><font color=\"$color[2]\">";
+    echo $string;
+    echo "</font></p>\n";
 }
 ?>
