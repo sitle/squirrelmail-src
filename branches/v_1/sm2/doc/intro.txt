@@ -1,0 +1,101 @@
+Introduction to SquirrelMail 2
+Luke Ehresman <luke@squirrelmail.org>
+=====================================
+
+This first posting of the SquirrelMail code is far from functional, and we
+were hoping to have had more in place before releasing.  However, currently
+there is a good base architecture in place for you to start working on, and
+extend and on which to add functionality.
+
+These documents explain where we were heading, and what has already been put
+in place.  These documents are not intended to stay around forever, but
+rather to just give an introduction to what we have done in this very PRE
+release to the developers.
+
+What is in place?  Really, just some very core functionality.  Right now,
+it's possible to log in, and view the messages in some folders.  The folder
+list appears on the left, and that is all.  There is only one front-end
+(classic) that has been developed to any extent.  Hardly anything of use is
+implemented.  However, the back-end APIs are in place and have base
+functionality.  Some of the base function libraries have been written as
+well.
+
+
+Front-Ends
+==========
+To start with, I'll explain a little about how we are handling the
+separation of logic and display.  We compromised a little bit, and have
+developed a method for doing this that is very powerful, but still
+effectively separates the core functionaltiy from all of the display.  These
+templates are called "front-ends" and are written in PHP.  This choice was
+made to make it very easy to integrate SquirrelMail into an existing web
+site that already has custom PHP functions that are used to make the display
+happen (or even to use an existing templating system).
+
+All of the necessary .php files are included in the root directory (/) such
+as 'compose.php' and 'folders.php'.  These files do all authentication and
+load up all the global preferences and session data.  They also load up
+configuration information and any other APIs that are needed.  It then
+passes control to its counterpart in the front-ends directory
+(/front-ends/classic/compose.php) which then does all the display necessary.
+[see figure 1]
+
+The file initially loaded in the root directory should handle as much of the
+processing as possible, and should get data ready for displaying by the
+front-end.  This prevents the front-end from needing to do any processing on
+its own, and also makes the displayed data the same across multiple
+front-ends.
+
+There is also a base file called /page.php that is to be used for any extra
+pages that are needed by the front-end, or possibly even plugins.  This file
+should be called with the extra query parameter called 'page'.  For
+instance,  "http://mail.mysite.com/page.php?page=option2" will authenticate
+the user, load config and prefs, and then pass control to
+/front-ends/classic/option2.php.  This allows for expanding the front-end as
+far as it wants to go beyond what SquirrelMail itself provides as base
+functionality.
+
+  [figure 1]
+      .-----------------------------------------.
+      |  /compose.php                           |
+      |   * Authenticates User                  |
+      |   * Loads Config File                   |
+      |   * Loads Preferences                   |
+      |   * etc.                                |
+      |                                         |
+      |  INCLUDES:                              |
+      |  .-----------------------------------.  |
+      |  |  /front-ends/classic/compose.php  |  |
+      |  |   * Handles ALL display           |  |
+      |  |   * Does any special processing   |  |
+      |  |   * etc.                          |  |
+      |  `-----------------------------------'  |
+      `-----------------------------------------'
+
+**** IMPORTANT ****
+************************************************
+** It is absolutely necessary to keep as much of the logic out of the
+** front-ends as possible.  In order to accomidate this, we have started
+** creating a utility library.  These functions will do any tedious operations
+** on data that could be used by more than one front-end.  By separating it
+** out like this, it removes duplication of code (which is very bad).  This
+** utility library is located in /lib and are the *.inc files.
+************************************************
+*******************
+
+     Reasoning:
+     ----------
+     We decided to use this method for several key reasons.  First and
+     foremost for speed.  This eliminates the need for extra processing
+     of template files before displaying.  Yes, we lose some cool
+     functionality that templating provides, but we gain a lot of
+     simplicity and speed.  It eliminates quite a bit of overhead.
+   
+     Second, using PHP in our front-ends allows for maximum
+     customizability.  The front-end designer is not constrained to using
+     frames, no-frames, or even displaying the same data on pages.  It
+     will be possible (and fairly simple) to create front-ends that mimic
+     the look-and-feel of such webmail clients as IMP, Exchange, WebMail,
+     Yahoo, Hotmail, etc.  Not that that mimicing those are our biggest
+     priority, but it's just an example of the power presented.
+
