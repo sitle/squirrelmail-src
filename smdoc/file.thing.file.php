@@ -31,7 +31,7 @@ File Upload Create
 
 $HARDTHING[FILECLASSID]['func'] = 'createfile';
 $HARDTHING[FILECLASSID]['title'] = 'Create A New File';
-$HARDTHING[FILECLASSD]['lastmodified'] ='$Date$';
+$HARDTHING[FILECLASSID]['lastmodified'] ='$Date$';
 
 function createfile() {
 	track('createfile');
