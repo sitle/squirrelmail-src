@@ -227,7 +227,7 @@ if (sqsession_is_registered('msort') && isset($msort)) {
 }
 
 if (sqsession_is_registered('numMessages') && isset($numMessages)) {
-  sqsession_register($nunMessages , 'numMessages');
+  sqsession_register($numMessages , 'numMessages');
 }
 
 do_hook('right_main_bottom');
