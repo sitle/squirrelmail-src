@@ -62,6 +62,7 @@ class thing { // static base class
 		$this->indexes['workspaceid'] = 'INT NOT NULL DEFAULT 0';
 		$this->indexes['title'] = 'VARCHAR('.MAXTITLELENGTH.') NOT NULL';
 		$this->indexes['updatorDatetime'] = 'DATETIME NOT NULL';
+        $this->indexes['sectionid'] = 'INT NOT NULL DEFAULT 0';
 
 // set initial values
 		if (
