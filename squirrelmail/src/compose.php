@@ -356,25 +356,39 @@ if ($send) {
         if (! isset($passed_id)) {
             $passed_id = 0;
         }
-        /**
+        /*
          * Set $default_charset to correspond with the user's selection
          * of language interface.
          */
         set_my_charset();
-        /**
+        /*
          * This is to change all newlines to \n
          * We'll change them to \r\n later (in the sendMessage function)
          */
         $body = str_replace("\r\n", "\n", $body);
         $body = str_replace("\r", "\n", $body);
 
-        /**
-         * If the browser doesn't support "VIRTUAL" as the wrap type.
-         * then the line length will be longer than $editor_size
-         * almost all browsers support VIRTUAL, so remove the line by line checking
-         * If this causes a problem, call sqBodyWrap
+        /*
+         * Rewrap $body so that no line is bigger than $editor_size
+         * This should only really kick in the sqWordWrap function
+         * if the browser doesn't support "VIRTUAL" as the wrap type.
          */
-        // sqBodyWrap($body, $editor_size);
+        $body = explode("\n", $body);
+        $newBody = '';
+        foreach ($body as $line) {
+            if( $line <> '-- ' ) {
+               $line = rtrim($line);
+            }
+            if (strlen($line) <= $editor_size + 1) {
+                $newBody .= $line . "\n";
+            } else {
+                sqWordWrap($line, $editor_size);
+                $newBody .= $line . "\n";
+
+            }
+
+        }
+        $body = $newBody;
 
         $composeMessage=$compose_messages[$session];
 
@@ -617,18 +631,16 @@ function newMail ($mailbox='', $passed_id='', $passed_ent_id='', $action='', $se
         $type0 = $message->type0;
         $type1 = $message->type1;
         foreach ($entities as $ent) {
-            $msg = $message->getEntity($ent);
-            $type0 = $msg->type0;
-            $type1 = $msg->type1;
             $unencoded_bodypart = mime_fetch_body($imapConnection, $passed_id, $ent);
             $body_part_entity = $message->getEntity($ent);
             $bodypart = decodeBody($unencoded_bodypart,
             $body_part_entity->header->encoding);
             if ($type1 == 'html') {
                 $bodypart = str_replace("\n", ' ', $bodypart);
-                $bodypart = preg_replace(array('/<\/?p>/i','/<div><\/div>/i','/<br\s*(\/)*>/i','/<\/?div>/i'), "\n", $bodypart);
+                $bodypart = preg_replace(array('/<p>/i','/<br\s*(\/)*>/i'), "\n", $bodypart);
                 $bodypart = str_replace(array('&nbsp;','&gt;','&lt;'),array(' ','>','<'),$bodypart);
                 $bodypart = strip_tags($bodypart);
+
             }
             if (isset($languages[$squirrelmail_language]['XTRA_CODE']) &&
                 function_exists($languages[$squirrelmail_language]['XTRA_CODE'])) {
@@ -644,7 +656,7 @@ function newMail ($mailbox='', $passed_id='', $passed_ent_id='', $action='', $se
         }
 
         if ( $actual && is_conversion_safe($actual) && $actual != $default_charset){
-          $bodypart = charset_convert($actual,$bodypart,$default_charset,false);
+          $bodypart = charset_convert($actual,$bodypart,$default_charset);
         }
 
             $body .= $bodypart;
@@ -710,11 +722,20 @@ function newMail ($mailbox='', $passed_id='', $passed_ent_id='', $action='', $se
                 }
             }
             $subject = decodeHeader($orig_header->subject,false,false,true);
-            ///* remember the references and in-reply-to headers in case of an reply */
+//            /* remember the references and in-reply-to headers in case of an reply */
             $composeMessage->rfc822_header->more_headers['References'] = $orig_header->references;
             $composeMessage->rfc822_header->more_headers['In-Reply-To'] = $orig_header->in_reply_to;
-            //rewrap the body to clean up quotations and line lengths
-            sqBodyWrap($body, $editor_size);
+            $body_ary = explode("\n", $body);
+            $cnt = count($body_ary) ;
+            $body = '';
+            for ($i=0; $i < $cnt; $i++) {
+                if (!ereg("^[>\\s]*$", $body_ary[$i])  || !$body_ary[$i]) {
+                    sqWordWrap($body_ary[$i], $editor_size );
+                    $body .= $body_ary[$i] . "\n";
+                }
+                unset($body_ary[$i]);
+            }
+            sqUnWordWrap($body);
             $composeMessage = getAttachments($message, $composeMessage, $passed_id, $entities, $imapConnection);
             break;
         case ('edit_as_new'):
@@ -725,18 +746,14 @@ function newMail ($mailbox='', $passed_id='', $passed_ent_id='', $action='', $se
             $mailprio = $orig_header->priority;
             $orig_from = '';
             $composeMessage = getAttachments($message, $composeMessage, $passed_id, $entities, $imapConnection);
-            //rewrap the body to clean up quotations and line lengths
-            sqBodyWrap($body, $editor_size);
+            sqUnWordWrap($body);
             break;
         case ('forward'):
             $send_to = '';
             $subject = getforwardSubject(decodeHeader($orig_header->subject,false,false,true));
             $body = getforwardHeader($orig_header) . $body;
-            // the logic for calling sqUnWordWrap here would be to allow the browser to wrap the lines
-            // forwarded message text should be as undisturbed as possible, so commenting out this call
-            // sqUnWordWrap($body);
+            sqUnWordWrap($body);
             $composeMessage = getAttachments($message, $composeMessage, $passed_id, $entities, $imapConnection);
-            //add a blank line after the forward headers
             $body = "\n" . $body;
             break;
         case ('forward_as_attachment'):
@@ -773,12 +790,14 @@ function newMail ($mailbox='', $passed_id='', $passed_ent_id='', $action='', $se
             /* this corrects some wrapping/quoting problems on replies */
             $rewrap_body = explode("\n", $body);
             $from =  (is_array($orig_header->from)) ? $orig_header->from[0] : $orig_header->from;
+            sqUnWordWrap($body);    // unwrap and then reset it?!
             $body = '';
             $strip_sigs = getPref($data_dir, $username, 'strip_sigs');
             foreach ($rewrap_body as $line) {
                 if ($strip_sigs && substr($line,0,3) == '-- ') {
             break;
                 }
+                sqWordWrap($line, ($editor_size));
                 if (preg_match("/^(>+)/", $line, $matches)) {
                     $gt = $matches[1];
                     $body .= $body_quote . str_replace("\n", "\n$body_quote$gt ", rtrim($line)) ."\n";
@@ -786,10 +805,6 @@ function newMail ($mailbox='', $passed_id='', $passed_ent_id='', $action='', $se
                     $body .= $body_quote . (!empty($body_quote) ? ' ' : '') . str_replace("\n", "\n$body_quote" . (!empty($body_quote) ? ' ' : ''), rtrim($line)) . "\n";
                 }
             }
-
-            //rewrap the body to clean up quotations and line lengths
-            $body = sqBodyWrap ($body, $editor_size);
-
             $body = getReplyCitation($from , $orig_header->date) . $body;
             $composeMessage->reply_rfc822_header = $orig_header;
 

@@ -136,12 +136,9 @@ function display_result($res, $includesource = true) {
     echo "</tr>\n";
     
     while (list($undef, $row) = each($res)) {
+        $tr_bgcolor = '';
         $email = htmlspecialchars(addcslashes(AddressBook::full_address($row), "'"), ENT_QUOTES);
-        if ($line % 2) { 
-            $tr_bgcolor = $color[12];
-        } else {
-            $tr_bgcolor = $color[4];
-        }
+        if ($line % 2) { $tr_bgcolor = $color[0]; }
         echo html_tag( 'tr', '', '', $tr_bgcolor, 'nowrap' ) .
         html_tag( 'td',
              '<small><a href="javascript:to_address(' . 

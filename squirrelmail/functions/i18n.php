@@ -111,16 +111,10 @@ function charset_decode ($charset, $string) {
  * Converts html string to given charset
  * @param string $string
  * @param string $charset
- * @param boolean $htmlencode keep htmlspecialchars encoding
  * @param string 
  */
-function charset_encode($string,$charset,$htmlencode=true) {
+function charset_encode($string,$charset) {
   global $default_charset;
-
-  // Undo html special chars
-  if (! $htmlencode ) {
-     $string = str_replace(array('&amp;','&gt;','&lt;','&quot;'),array('&','>','<','"'),$string);
-  }
 
   $encode=fixcharset($charset);
   $encodefile=SM_PATH . 'functions/encode/' . $encode . '.php';
@@ -141,12 +135,11 @@ function charset_encode($string,$charset,$htmlencode=true) {
  * @param string $in_charset initial charset
  * @param string $string string that has to be converted
  * @param string $out_charset final charset
- * @param boolean $htmlencode keep htmlspecialchars encoding
  * @return string converted string
  */
-function charset_convert($in_charset,$string,$out_charset,$htmlencode=true) {
+function charset_convert($in_charset,$string,$out_charset) {
   $string=charset_decode($in_charset,$string);
-  $string=charset_encode($string,$out_charset,$htmlencode);
+  $string=charset_encode($string,$out_charset);
   return $string;
 }
 
