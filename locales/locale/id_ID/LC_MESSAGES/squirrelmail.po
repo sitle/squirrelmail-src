@@ -1,14 +1,13 @@
 # Indonesian Squirrelmail Translation
 # Copyright (C) SquirrelMail Development Project , 1999-2002
 # Arief S Fitrianto <arief@gurame.fisika.ui.ac.id>, 2001-2003
-#
+# $Id$
 msgid ""
 msgstr ""
-"Project-Id-Version: $Id: squirrelmail.po,v 1.1 2003/07/13 09:46:49 tokul Exp "
-"$\n"
+"Project-Id-Version: squirrelmail 1.4.3cvs\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2003-09-20 11:04+0300\n"
-"PO-Revision-Date: 2004-03-09 23:46+0700\n"
+"POT-Creation-Date: 2004-04-21 09:34+0300\n"
+"PO-Revision-Date: 2004-04-28 14:24+0700\n"
 "Last-Translator: Arief S Fitrianto <arief@gurame.fisika.ui.ac.id>\n"
 "Language-Team: Indonesia <squirrelmail-i18n@sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -70,7 +69,7 @@ msgstr "Tidak dapat menampilkan alamat dari %s"
 msgid "Your search failed with the following error(s)"
 msgstr "Pencarian Anda gagal dengan kesalahan berikut:"
 
-msgid "No persons matching your search was found"
+msgid "No persons matching your search were found"
 msgstr "Tidak ada orang yang sesuai dengan yang Anda cari"
 
 msgid "Return"
@@ -218,8 +217,9 @@ msgstr "Simpan Konsep"
 msgid "You have not filled in the \"To:\" field."
 msgstr "Anda belum mengisi kolom \"Kepada:\" "
 
-msgid "Draft folder"
-msgstr "Folder Konsep (Draft)"
+#, c-format
+msgid "Error: Draft folder %s does not exist."
+msgstr "Ada Kesalahan: Folder Konsep, '%s', tidak ada"
 
 msgid "Server replied: "
 msgstr "Tanggapan server: "
@@ -373,9 +373,6 @@ msgstr "kosongkan"
 
 msgid "Last Refresh"
 msgstr "Peninjauan Terakhir"
-
-msgid "refresh unseen/total info"
-msgstr "Perbarui Info baru/total"
 
 msgid "Save folder tree"
 msgstr "Simpan Struktur Folder"
@@ -562,13 +559,13 @@ msgid "Personal Information"
 msgstr "Data Pribadi"
 
 msgid "Display Preferences"
-msgstr "Setingan Tampilan"
+msgstr "Seting Tampilan"
 
 msgid "Folder Preferences"
-msgstr "Setingan Folder"
+msgstr "Seting Folder"
 
 msgid "Successfully Saved Options"
-msgstr "Berhasil menyimpan Setingan"
+msgstr "Berhasil menyimpan Pilihan"
 
 msgid "Refresh Folder List"
 msgstr "Perbarui daftar folder"
@@ -594,7 +591,7 @@ msgid ""
 "messages are from, especially for mailing lists."
 msgstr ""
 "Dengan berdasarkan kriteria tertentu, pesan yang masuk dapat memiliki latar "
-"warna berbeda dalam daftar pesan. Setingan ini memudahkan Anda membedakan "
+"warna berbeda dalam daftar pesan. Hal ini memudahkan Anda membedakan "
 "asal suatu pesan, khususnya dari suatu milis."
 
 msgid ""
@@ -649,7 +646,7 @@ msgid "Mailer"
 msgstr "Sarana"
 
 msgid "Read receipt"
-msgstr "Tanggapan membaca"
+msgstr "Tanda telah dibaca"
 
 msgid "sent"
 msgstr "dikirim"
@@ -1121,7 +1118,7 @@ msgid "Reason Given: "
 msgstr "Alasan yang diberikan: "
 
 msgid "ERROR : Bad or malformed request."
-msgstr "ADA KESALAHAN: Perintah jelek atau salah."
+msgstr "ADA KESALAHAN: Perintah jelek atau salah bentuk."
 
 msgid "Server responded: "
 msgstr "Tanggapan server: "
@@ -1184,7 +1181,7 @@ msgid "Unknown date"
 msgstr "Tanggal tak diketahui"
 
 msgid "A"
-msgstr "A"
+msgstr "B"
 
 msgid ""
 "Thread sorting is not supported by your IMAP server.<br>Please report this "
@@ -1263,7 +1260,7 @@ msgid ""
 "Body retrieval error. The reason for this is most probably that the message "
 "is malformed."
 msgstr ""
-"Gagal membuka pesan. Alasan yang mungkin adalah karena pesan ini salah "
+"Gagal mengambil pesan. Alasan yang mungkin adalah karena pesan ini salah "
 "format."
 
 msgid "Command:"
@@ -1289,6 +1286,9 @@ msgstr "simpan"
 
 msgid "sec_remove_eng.png"
 msgstr "sec_remove_id_ID.png"
+
+msgid "This external link will open in a new window"
+msgstr "Link eksternal ini akan dibuka di jendela baru"
 
 #, c-format
 msgid "Option Type '%s' Not Found"
@@ -1422,8 +1422,11 @@ msgstr "Penulisan dan Penampilan Pesan"
 msgid "Wrap Incoming Text At"
 msgstr "Penggal tulisan pada kolom"
 
-msgid "Size of Editor Window"
-msgstr "Ukuran jendela editor"
+msgid "Width of Editor Window"
+msgstr "Lebar Jendela Editor"
+
+msgid "Height of Editor Window"
+msgstr "Tinggi Jendela Editor"
 
 msgid "Location of Buttons when Composing"
 msgstr "Tempat tombol saat menulis surat"
@@ -1481,6 +1484,18 @@ msgstr "Tinggi jendela penulisan"
 
 msgid "Append Signature before Reply/Forward Text"
 msgstr "Tambahkan tanda tangan sebelum naskah balasan/terusan"
+
+msgid "Cursor Position when Replying"
+msgstr "Letak kursor ketika membalas surat"
+
+msgid "To: field"
+msgstr "Ruas Kepada:"
+
+msgid "Focus in body"
+msgstr "Fokuskan dalam badan pesan"
+
+msgid "Select body"
+msgstr "Pilih Badan Pesan"
 
 msgid "Enable Sort by of Receive Date"
 msgstr "Urutkan pesan berdasarkan tanggal terima"
@@ -1569,6 +1584,24 @@ msgstr "Beritahukan secara kumulatif pesan yang belum terbaca"
 msgid "Show Clock on Folders Panel"
 msgstr "Tunjukkan Waktu pada Panel Folder"
 
+msgid "International date and time"
+msgstr "Tanggal dan waktu Internasional"
+
+msgid "American date and time"
+msgstr "Tanggal dan waktu Amerika"
+
+msgid "European date and time"
+msgstr "Tanggal dan waktu Eropa"
+
+msgid "Show weekday and time"
+msgstr "Tampilkan hari dan tanggal"
+
+msgid "Show time with seconds"
+msgstr "Tampilkan waktu dengan detik"
+
+msgid "Show time"
+msgstr "Tampilkan Waktu"
+
 msgid "No Clock"
 msgstr "Tidak ada jam"
 
@@ -1644,6 +1677,9 @@ msgstr "PENULIS Berkata"
 msgid "Quote Who XML"
 msgstr "Kutipan dari XML"
 
+msgid "On DATE, AUTHOR Said"
+msgstr "On TANGGAL, PENULIS Berkata"
+
 msgid "User-Defined"
 msgstr "Terserah Pengguna"
 
@@ -1681,7 +1717,7 @@ msgid "PHP Version"
 msgstr "Versi PHP"
 
 msgid "Organization Preferences"
-msgstr "Acuan Organisasi"
+msgstr "Seting Organisasi"
 
 msgid "Organization Name"
 msgstr "Nama Organisasi"
@@ -1762,7 +1798,7 @@ msgid "Use Sendmail Binary"
 msgstr "Gunakan Binary Sendmail"
 
 msgid "Sendmail Path"
-msgstr "Letak Sendmail"
+msgstr "Letak Path Sendmail"
 
 msgid "SMTP Server Address"
 msgstr "Alamat server SMTP"
@@ -1781,9 +1817,6 @@ msgstr "POP3 Sebelum SMTP?"
 
 msgid "Invert Time"
 msgstr "Ganti waktu"
-
-msgid "Use Confirmation Flags"
-msgstr "Gunakan 'Flag' konfirmasi"
 
 msgid "Folders Defaults"
 msgstr "Folder Utama"
@@ -1827,8 +1860,8 @@ msgstr "Jenis Pemberitahuan Pesan Baru"
 msgid "Auto Create Special Folders"
 msgstr "Buat Folder Khusus Otomatis"
 
-msgid "Default Javascript Adrressbook"
-msgstr "Buku alamat baku Javascript"
+msgid "Default Javascript Addressbook"
+msgstr "Buku Alamat Javascript bawaan"
 
 msgid "Auto delete folders"
 msgstr "Hapus Folder Otomatis"
@@ -1963,11 +1996,102 @@ msgstr ""
 "Modul ini memungkinkan admin untuk mengelola konfigurasi utama SquirrelMail "
 "dari jauh."
 
+msgid "Submit a Bug Report"
+msgstr "Laporkan suatu Masalah"
+
+msgid ""
+"Before you send your bug report, please make sure to check this checklist "
+"for any common problems."
+msgstr ""
+"Sebelum Anda menlaporkan masalah, mohon agar memastikan untuk memeriksa "
+"daftar berikut untuk suatu masalah yang umum." 
+
+msgid ""
+"Make sure that you are running the most recent copy of <a href=\"http://www."
+"squirrelmail.org/\">SquirrelMail</a>."
+msgstr ""
+"Pastikan pula bahwa Anda menjalankan <a href=\"http://www.squirrelmail."
+"org/\">SquirrelMail</a> versi terbaru."
+
+#, c-format
+msgid "You are currently using version %s."
+msgstr "Anda sedang menggunakan versi %s."
+
+msgid ""
+"Check to see if your bug is already listed in the <a href=\"http://"
+"sourceforge.net/bugs/?group_id=311\">Bug List</a> on SourceForge. If it is, "
+"we already know about it and are trying to fix it."
+msgstr ""
+"Periksalah seandainya masalah Anda sudah terdaftar pada <a href=\"http://"
+"sourceforge.net/bugs/?group_id=311\">Daftar Masalah</a> di SourceForge. "
+"Jika ada, berarti kami telah mengetahuinya dan sedang berusaha mengatasinya."
+
+msgid ""
+"Try to make sure that you can repeat it. If the bug happens sporatically, "
+"try to document what you did when it happened. If it always occurs when you "
+"view a specific message, keep that message around so maybe we can see it."
+msgstr ""
+"Cobalah memastikan bahwa Anda dapat mengulangi kesalahan tersebut. Jika "
+"masalah datang sewaktu-waktu, cobalah mencatat hal yang Anda lakukan sehingga "
+"masalah tersebut terjadi. Jika hal ini terjadi setiap kali Anda melihat "
+"suatu pesan tertentu, simpanlah pesan tersebut sehingga kami dapat melihatnya."
+
+msgid ""
+"If there were warnings displayed above, try to resolve them yourself. Read "
+"the guides in the <tt>doc/</tt> directory where SquirrelMail was installed."
+msgstr ""
+"Jika ada peringatan seperti di atas, cobalah untuk mengatasinya sendiri. "
+"Bacalah panduannya di direktori <tt>doc</tt> tempat SquirrelMail dipasang."
+
+msgid ""
+"Pressing the button below will start a mail message to the developers of "
+"SquirrelMail that will contain a lot of information about your system, your "
+"browser, how SquirrelMail is set up, and your IMAP server. It will also "
+"prompt you for information. Just fill out the sections at the top. If you "
+"like, you can scroll down in the message to see what else is being sent."
+msgstr ""
+"Dengan menekan tombol di bawah ini akan memulai sebuah pesan ke pengembang "
+"SquirrelMail yang akan berisi keterangan yang banyak tentang sistem Anda, "
+"browser, cara SquirrelMail diseting, dan server IMAP Anda. Anda juga akan "
+"memberi keterangan tersebut. Cukup isi bagian atas saja. Jika Anda mau, "
+"Anda dapat melihat  di bagian bawah pesan tentang apa saja yang akan dikirim."
+
+msgid ""
+"Please make sure to fill out as much information as you possibly can to give "
+"everyone a good chance of finding and removing the bug. Submitting your bug "
+"like this will not have it automatically added to the bug list on "
+"SourceForge, but someone who gets your message may add it for you."
+msgstr ""
+"Mohon pastikan untuk mengisi sebanyak mungkin keterangan yang dapat Anda "
+"berikan agar semua orang memiliki peluang yang baik untuk menemukan dan "
+"mengatasi masalah tersebut. Pengiriman masalah Anda dengan cara ini tidak akan "
+"membuat hal ini ditambahkan secara otomatis pada daftar masalah di SouceForge, "
+"tetapi seseorang yang menerima pesan Anda mungkin akan menambahkannya."
+
+msgid "This bug involves"
+msgstr "Masalah ini melibatkan"
+
+msgid "the general program"
+msgstr "Program secara umum"
+
+msgid "a specific plugin"
+msgstr "suatu plugin tertentu"
+
+msgid "Start Bug Report Form"
+msgstr "Memulai Format Laporan Masalah"
+
+msgid "Bug"
+msgstr "Masalah"
+
 msgid "Bug Reports:"
 msgstr "Lapor Masalah:"
 
 msgid "Show button in toolbar"
 msgstr "Tampilkan tombol di toolbar"
+
+#, c-format
+msgid "Could not write calendar file %s"
+msgstr "Tidak dapat menulis berkas kalender %s"
 
 msgid "TODAY"
 msgstr "HARI INI"
@@ -2180,11 +2304,11 @@ msgstr "BEBAS - SPAMhaus - Sebuah daftar sumber SPAM yang terkenal"
 
 msgid ""
 "FREE, for now - SPAMCOP - An interesting solution that lists servers that "
-"have a very high spam to legit email ratio (85% or more)."
-msgstr ""
-"BEBAS, saat ini - SPAMCOP - Sebuah pemechan menarik yang memuat daftar "
-"server yang memiliki rasio spam sangat banyak untuk merusak surate (85% atau "
-"lebih)."
+"have a very high spam to legit email ratio (85 percent or more)."
+msgstr ""	
+"BEBAS, saat ini - SPAMCOP - Sebuah pemecahan menarik yang memuat daftar "
+"server-server yang memiliki rasio spam terhadap email yang sah sangat "
+"tinggi (85 persen atau lebih)."
 
 msgid "FREE - dev.null.dk - I don't have any detailed info on this list."
 msgstr "BEBAS - dev.null.dk - Saya tidak tahu lebih jauh tentang hal ini."
@@ -2194,14 +2318,14 @@ msgstr ""
 "BEBAS - visi.com - Daftar Relay. Daftar Relayer terbuka yang sangat "
 "konservatif"
 
-msgid "FREE - 2mbit.com Open Relays - Another list of Open Relays."
-msgstr "BEBAS - Relay Terbuka 2mbut.com - Sebuah daftar Relay Terbuka lainnya."
+msgid "FREE - ahbl.org Open Relays - Another list of Open Relays."
+msgstr "BEBAS - Relay Terbuka ahbl.org - Sebuah daftar Relay Terbuka lainnya."
 
-msgid "FREE - 2mbit.com SPAM Source - List of Direct SPAM Sources."
-msgstr "BEBAS - Sumber SPAM 2mbit.com - Daftar server SPAM secara LANGSUNG"
+msgid "FREE - ahbl.org SPAM Source - List of Direct SPAM Sources."
+msgstr "BEBAS - Sumber SPAM ahbl.com - Daftar server SPAM secara LANGSUNG"
 
-msgid "FREE - 2mbit.com SPAM ISPs - List of SPAM-friendly ISPs."
-msgstr "BEBAS - ISP SPAM 2mbit.com - Daftar ISP pendukung SPAM"
+msgid "FREE - ahbl.org SPAM ISPs - List of SPAM-friendly ISPs."
+msgstr "BEBAS - ISP SPAM ahbl.org - Daftar ISP pendukung SPAM"
 
 msgid ""
 "FREE - Leadmon DUL - Another list of Dial-up or otherwise dynamically "
@@ -2253,14 +2377,14 @@ msgid ""
 "FREE, for now - Not Just Another Blacklist - Both Open Relays and Direct "
 "SPAM Sources."
 msgstr ""
-"BEBAS, saat ini - Bukan sekedar Daftra Hitam lainnya - Sumber SPAM Langsung "
+"BEBAS, saat ini - Bukan sekedar Daftar Hitam lainnya - Sumber SPAM Langsung "
 "dan Relay TErbuka"
 
 msgid "FREE, for now - Not Just Another Blacklist - Dial-up IPs."
-msgstr "BEBAS, saat ini - Bukan Daftar Hitam lainnya - IP Dial-up"
+msgstr "BEBAS, saat ini - Bukan sekedar Daftar Hitam lainnya - IP Dial-up"
 
 msgid "FREE - Distributed Sender Boycott List - Confirmed Relays"
-msgstr "BEBAS - Daftar Pengirim tersebar dari Boycott -- Relay terkonfirmasi"
+msgstr "BEBAS - Daftar Pengirim Tersebar dari Boycott -- Relay terkonfirmasi"
 
 msgid "FREE - Distributed Sender Boycott List - Confirmed Multi-stage Relays"
 msgstr ""
@@ -2320,8 +2444,8 @@ msgid ""
 "junk email in your INBOX and move it to another folder (like Trash)."
 msgstr ""
 "Pemilah SPAM memungkinkan Anda memilih berbagai daftar hitam berbasis DNS "
-"untuk mendeteksi surate sampah dalam INBOX Anda dan memindahkannya ke folder "
-"lain (seperti folder Sampah)."
+"untuk mendeteksi email sampah dalam KOTAK POS Anda dan memindahkannya ke "
+"folder lain (seperti folder Sampah)."
 
 msgid "Spam Filtering"
 msgstr "Pemilahan Spam"
@@ -2355,14 +2479,14 @@ msgid ""
 msgstr ""
 "Makin banyak pesan yang dipindai, makin lama waktu yang dibutuhkan. Saya "
 "sarankan Anda hanya memindai pesan baru. Jika Anda mengubah Pemilah Anda, "
-"saya akan membuatnya memindai semua pesan, lalu melihat kotak INBOX, "
+"saya akan membuatnya memindai semua pesan, lalu melihat kotak KOTAK POS, "
 "kemudian kembali lagi dan membuatnya hanya akan memindai pesan yang baru. "
 "Dengan cara ini, Pemilah spam baru Anda akan diberlakukan dan Anda akan "
 "memindai spam dengan pemilah baru."
 
 #, c-format
 msgid "Spam is sent to <b>%s</b>"
-msgstr "Spam dikirimkan ke <b>%s</b>"
+msgstr "Spam telah dikirimkan ke <b>%s</b>"
 
 msgid "[<i>not set yet</i>]"
 msgstr "[<i>belum ditentukan</i>]"
@@ -2792,9 +2916,9 @@ msgid ""
 "enabled."
 msgstr ""
 "Memilih <b> Ubah judul </b> akan mengubah judul dari beberapa browser untuk "
-"memudahkan Anda mengetahui bila ada pesan baru ( perlu JavaScript dan hanya "
+"memudahkan Anda mengetahui bila ada pesan baru (perlu JavaScript dan hanya "
 "bisa di IE , tetapi Anda tidak akan mendapat masalah dengan browser "
-"lainnya ) . Hal ini akan selalu memberitahukan Anda bila ada pesan baru, "
+"lainnya). Hal ini akan selalu memberitahukan Anda bila ada pesan baru, "
 "bahkan bila Anda juga memilih <b> Periksa Yang TERBARU </b>."
 
 msgid ""
@@ -2827,7 +2951,7 @@ msgid "Select server file:"
 msgstr "Pilih file server:"
 
 msgid "(none)"
-msgstr "(tiada)"
+msgstr "(tidak ada)"
 
 msgid "Try"
 msgstr "Coba dulu"
@@ -2841,8 +2965,16 @@ msgstr "Surat Baru"
 msgid "SquirrelMail Notice:"
 msgstr "Pesan dari SquirrelMail:"
 
-msgid "You have new mail!"
-msgstr "Anda mendapat surat baru!"
+msgid "You have"
+msgstr "Anda mendapat"
+
+#, c-format
+msgid "%s new message"
+msgstr "%s pesan baru"
+
+#, c-format
+msgid "%s new messages"
+msgstr "%s pesan-pesan baru"
 
 msgid "NewMail Options"
 msgstr "Pilihan Surat Baru"
@@ -2859,26 +2991,26 @@ msgstr "Seting Pemberitahuan Surat Baru telah disimpan"
 
 #, c-format
 msgid "%s New Messages"
-msgstr "Pesan Baru : %s buah"
+msgstr "%s Pesan-pesan Baru"
 
 #, c-format
 msgid "%s New Message"
-msgstr "Pesan Baru : %s buah"
+msgstr "%s Pesan Baru"
 
 msgid "Test Sound"
 msgstr "Coba Suara"
 
 msgid "No sound specified"
-msgstr "tiada suara yang dipilih"
+msgstr "Tidak ada suara yang dipilih"
 
 msgid "Loading the sound..."
 msgstr "Menyiapkan Suara ... "
 
 msgid "Sent Subfolders Options"
-msgstr "Pilihan Folder-kecil Kirim"
+msgstr "Pilihan Subfolder Kirim"
 
 msgid "Use Sent Subfolders"
-msgstr "Pakai Folder-kecil Kirim"
+msgstr "Pakai Subfolder Kirim"
 
 msgid "Monthly"
 msgstr "Bulanan"
@@ -2891,6 +3023,179 @@ msgstr "Tahunan"
 
 msgid "Base Sent Folder"
 msgstr "Folder Kirim Utama"
+
+msgid "Enabled"
+msgstr "Diaktifkan"
+
+msgid "Disable it"
+msgstr "Non-Aktifkan"
+
+msgid "Enable it"
+msgstr "Aktifkan"
+
+msgid "Spam reporting"
+msgstr "Pelaporan Spam"
+
+msgid "SpamCop link is:"
+msgstr "Link SpamCop-nya adalah:"
+
+msgid "Delete spam when reported:"
+msgstr "Hapus spam yang dilaporkan:"
+
+msgid "Only works with email-based reporting"
+msgstr "Hanya bisa dengan pelaporan berbasis email"
+
+msgid "Spam Reporting Method:"
+msgstr "Metode Pelaporan Spam:"
+
+msgid "Quick email-based reporting"
+msgstr "Pelaporan cepat berbasis email"
+
+msgid "Thorough email-based reporting"
+msgstr "Pelaporan menyeluruh berbasis email"
+
+msgid "Web-based form"
+msgstr "Format berbasis Web"
+
+msgid "Save Method"
+msgstr "Metode Penyimpanan"
+
+msgid "Your SpamCop authorization code:"
+msgstr "Kode Otorisasi SpamCop Anda:"
+
+msgid "see below"
+msgstr "lihat di bawah ini"
+
+msgid "Save ID"
+msgstr "Simpan ID (Identitas)"
+
+msgid ""
+"SpamCop is a free service that greatly assists in finding the true source of "
+"the spam and helps in letting the proper people know about the abuse."
+msgstr ""
+"SpamCop merupakan suatu layanan bebas yang sangat membantu menemukan sumber "
+"spam  sesungguhnya dan menolong Anda memberitahukan pihak berwenang tentang "
+"pelanggaran ini."
+
+msgid ""
+"To use it, you must get a SpamCop authorization code. There is a free <a "
+"href=\"http://spamcop.net/anonsignup.shtml\">sign up page</a> so you can use "
+"SpamCop."
+msgstr ""
+"Untuk menggunakannya, Anda harus mendapatkan kode otorisasi SpamCop. Ada "
+"<a href=\"http://spamcop.net/anonsignup.shtml\">situs pendaftaran</a> gratis, "
+"sehingga Anda dapat menggunakan SpamCop."
+
+msgid ""
+"<b>Before you sign up, be warned:</b> Some users have reported that the "
+"email addresses used with SpamCop find their way onto spam lists. To be "
+"safe, you can just create an email forwarding account and have all SpamCop "
+"reports get sent to there. Also, if it gets flooded with spam, you can then "
+"just delete that account with no worries about losing your real email "
+"address. Just go create an email forwarder somewhere (<a href=\"http://www."
+"yahoo.com/\">Yahoo!</a> has a <a href=\"http://dir.yahoo.com/"
+"Business_and_Economy/Business_to_Business/Communications_and_Networking/"
+"Internet_and_World_Wide_Web/Email_Providers/Forwarding_Services/"
+"Free_Forwarding/\">list of places</a>) so that messages from system "
+"administrators and whatnot can be sent to you."
+msgstr ""
+"<b>Sebelum Anda mendaftar, ingatlah:</b> Beberapa pengguna telah melaporkan "
+"alamat email yang digunakan untuk SpamCop telah pula menjadi sasaran daftar "
+"spam. Demi keamanan, Anda dapat membuat sebuah forwarder email dan membuat "
+"semua laporan SpamCop dikirimkan ke email tersebut. Jika email tersebut "
+"dibanjiri spam, Anda tinggal menghapus email tersebut tanpa perlu khawatir "
+"akan kehilangan alamat email Anda yang sesungguhnya. Cukup buat suatu "
+"forwarder email di suatu tempat. (<a href=\"http://www.yahoo.com/\">Yahoo!"
+"</a> memiliki suatu daftar <a href=\"http://dir.yahoo.com/"
+"Business_and_Economy/Business_to_Business/Communications_and_Networking/"
+"Internet_and_World_Wide_Web/Email_Providers/Forwarding_Services/"
+"Free_Forwarding/\">alamat forwarder</a>), sehingga pesan dari administrator "
+"sistem dan yang tidak dapat dikirimkan kepada Anda."
+
+msgid ""
+"Once you have signed up with SpamCop and have received your SpamCop "
+"authorization code, you need to enable this plugin -- just click the link "
+"above. Once enabled, you go about your normal life. If you encounter a spam "
+"message in your mailbox, just view it. On the right-hand side, near the top "
+"of where the message is displayed, you will see a link to report this "
+"message as spam. Clicking on it brings you to a confirmation page. "
+"Confirming that you want the spam report sent will do different things with "
+"different reporting methods."
+msgstr ""
+"Sekali Anda telah mendaftarkan diri ke SpamCop dan telah menerima kode "
+"Otorisasi SpamCop, Anda perlu mengaktifkan plugin ini -- cukup klik link "
+"di atas. Sekali diaktifkan, Anda dapat kembali ke kehidupan normal Anda. "
+"Jika Anda mendapat suatu pesan spam dalam kotak surat Anda, cukup dilihat "
+"saja. Di sisi kanan, dekat di sebelah atas tempat pesan ditampilkan, Anda "
+"akan melihat suatu link untuk melaporkan pesan ini sebagai spam. Dengan "
+"mengkliknya akan membawa Anda ke halaman konfirmasi. Dengan mengkonfirmasikan"
+" bahwa Anda ingin laporan spam dikirimkan akan memberikan suatu hasil "
+"yang berbeda tergantung metode pelaporan yang digunakan."
+
+msgid "Email-based Reporting"
+msgstr "Pelaporan berbasis email"
+
+msgid ""
+"Pressing the button forwards the message to the SpamCop service and will "
+"optionally delete the message. From there, you just need to go to your INBOX "
+"and quite soon a message should appear from SpamCop. (It gets sent to the "
+"account you registered with, so make sure that your mail forwarder works!) "
+"Open it up, click on the appropriate link at the top, and a new browser "
+"window will open."
+msgstr ""
+"Dengan menekan tombol akan mengirimkan pesan ke layanan SpamCop dan akan "
+"menghapus pesan bila diinginkan. Dari sini, Anda hanya perlu melihat "
+"KOTAK POS Anda dan pesan dari SpamCop akan segera muncul. (Pesan tersebut "
+"akan dikirimkan ke akun yang Anda gunakan untuk mendaftar. Jadi pastikan "
+"bahwa forwarder email Anda bekerja dengan baik!). Bukalah pesan tersebut, "
+"kliklah link yang ada di sebelah atas dan suatu jendela browser akan muncul."
+
+msgid ""
+"Currently, the quick reporting just forwards the request to the thorough "
+"reporting. Also, it appears that this is for members (non-free) only. "
+"Hopefully this will change soon."
+msgstr ""
+"Saat ini, pelaporan cepat hanya meneruskan permintaan kepada pelaporan "
+"menyeluruh (lengkap). Selain itu, hal ini juga hanya tersedia untuk anggota "
+"(tidak gratis). Semoga hal ini akan segera berubah."
+
+msgid "Web-based Reporting"
+msgstr "Pelaporan berbasis Web"
+
+
+msgid ""
+"When you press the button on the confirmation page, this will pop open a new "
+"browser window and the SpamCop service should appear inside. The message "
+"will not be deleted (working on that part), but you won't need to wait for a "
+"response email to start the spam reporting."
+msgstr ""
+"Ketika Anda menekan tombol pada halaman konfirmasi, ini akan membuka sebuah "
+"jendela browser dan layanan SpamCop akan muncul di dalamnya. Pesan tidak "
+"akan dihapus (sedang diusahakan), tetapi Anda tidak perlu menunggu suatu "
+"email tanggapan dari SpamCop untuk memulai pelaporan spam."
+
+msgid ""
+"The SpamCop service will display information as it finds it, so scroll down "
+"until you see a form button. It might pause a little while it is looking up "
+"information, so be a little patient. Read what it says, and submit the spam. "
+"Close the browser window. Press Cancel or click on the appropriate mail "
+"folder to see messages and/or delete the spam."
+msgstr ""
+"Layanan SpamCop akan menampilkan keterangan saat ia menemukannya, jadi "
+"gulunglah ke bawah hingga Anda menemukan suatu tombol format. Ini mungkin "
+"akan berhenti sejenak ketika sedang mencari keterangan, jadi harap bersabar. "
+"Bacalah apa yang ditampilkan, dan kirimkan spamnya. Tutup jendela browser. "
+"Tekan Batal atau klik folder email yang sesuai untuk melihat pesan dan/atau "
+"menghapus spam."
+
+msgid ""
+"<b>For more information</b> about SpamCop, it's services, spam in general, "
+"and many related topics, try reading through SpamCop's <a href=\"http://"
+"spamcop.net/help.shtml\">Help and Feedback</a> section."
+msgstr ""
+"<b>Untuk keterangan lengkap</b> tentang SpamCop, layanannya, spam secara "
+"umum, dan topik yang berkaitan, cobalah membaca bagian <a href=\"http://"
+"spamcop.net/help.shtml\">Help and Feedback</a> di situs SpamCop."
 
 msgid "Report as Spam"
 msgstr "Laporkan sebagai Spam"
@@ -2906,6 +3211,25 @@ msgstr ""
 "Bantulah perang melawan email tak perlu/sampah/mailbomb.  SpamCop membaca "
 "email spam dan menentukan alamat yang benar untuk mengirimkan protes.  Cukup "
 "cepat, sungguh pintar, dan mudah digunakan."
+
+msgid ""
+"Sending this spam report will give you back a reply with URLs that you can "
+"click on to properly report this spam message to the proper authorities. "
+"This is a free service.  By pressing the \"Send Spam Report\" button, you "
+"agree to follow SpamCop's rules/terms of service/etc."
+msgstr ""
+"Dengan mengirim laporan spam ini, Anda akan menerima balasan dengan URL yang "
+"dapat Anda klik untuk melaporkan pesan spam ini kepada pihak yang berwenang "
+"secara tepat. Ini adalah layanan cuma-cuma. Dengan menekan tombol \"Kirim "
+"Laporan Spam\", berarti Anda setuju untuk mengikuti aturan/persyaratan "
+"layanan SpamCop dll."
+
+msgid "Cancel / Done"
+msgstr ""
+"Batal / Selesai"
+
+msgid "Send Spam Report"
+msgstr "Kirim Laporan Spam"
 
 msgid "SpellChecker Options"
 msgstr "Pilihan Pemeriksa Ejaan"
@@ -2984,7 +3308,7 @@ msgid "SquirrelSpell Results"
 msgstr "Hasil dari SquirrelSpell"
 
 msgid "Spellcheck completed. Commit changes?"
-msgstr "PEmeriksaan Ejaan selesai. Terima Perbaikan?"
+msgstr "Pemeriksaan Ejaan selesai. Terima perbaikan?"
 
 msgid "No changes were made."
 msgstr "Tidak ada perubahan yang dibuat."
@@ -3000,7 +3324,7 @@ msgid "Line with an error:"
 msgstr "Baris yang salah:"
 
 msgid "Error:"
-msgstr "Salah:"
+msgstr "Ada Kesalahan:"
 
 msgid "Suggestions:"
 msgstr "Saran:"
@@ -3077,7 +3401,7 @@ msgstr ""
 "tombol \"Periksa Ejaan\" kembali untuk memulai pemeriksaan lagi."
 
 msgid "Close this Window"
-msgstr "Tutup Window ini"
+msgstr "Tutup jendela ini"
 
 msgid ""
 "Your personal dictionary was re-encrypted successfully. Now return to the "
@@ -3122,7 +3446,7 @@ msgid "Personal Dictionary"
 msgstr "Kamus Pribadi"
 
 msgid "No words in your personal dictionary."
-msgstr "Kamus probadi Anda kosong"
+msgstr "Kamus pribadi Anda kosong"
 
 msgid "Please check any words you wish to delete from your dictionary."
 msgstr ""
@@ -3182,7 +3506,7 @@ msgid ""
 msgstr "Mohon dekripsi kamus pribadiku dan simpan dalam bentuk teks murni."
 
 msgid "Change crypto settings"
-msgstr "Ubah Seting Kriptografi"
+msgstr "Ubah Setingan Kriptografi"
 
 msgid ""
 "<p>Your personal dictionary is <strong>currently not encrypted</strong>. You "
@@ -3488,70 +3812,3 @@ msgstr "Laporan kesalahan pengiriman"
 msgid "Undelivered Message Headers"
 msgstr "Header Pesan tidak bisa dikirimkan"
 
-#~ msgid "Unknown message number in reply from server: "
-#~ msgstr "Nomor pesan tidak dikenal dalam balasan dari server: "
-
-#~ msgid "(unknown sender)"
-#~ msgstr "(pengirim misterius)"
-
-#~ msgid ""
-#~ "FREE - Osirusoft Relays - Osirusofts list of verified open relays. Seems "
-#~ "to include servers used by abuse@uunet.net auto-replies too."
-#~ msgstr ""
-#~ "BEBAS - Relay Osurusoft - Osirusoft mendaftar relay terbuka yang sudak "
-#~ "diperiksa. Tampaknya juga memasukkan server yang digunakan oleh pembalas "
-#~ "otomasis dari abuse@uunet.net. "
-
-#~ msgid "FREE - Osirusoft Dialups - Osirusofts Dialup Spam Source list."
-#~ msgstr ""
-#~ "BEBAS - Dialups Osirusoft - Daftar sumber spam dialup dari Osirusoft."
-
-#~ msgid ""
-#~ "FREE - Osirusoft Confirmed Spam Source - Sites that continually spam and "
-#~ "have been manually added after multiple nominations. Use with caution. "
-#~ "Seems to catch abuse auto-replies from some ISPs."
-#~ msgstr ""
-#~ "BEBAS - Sumber Spam yang dikonfirmasi Osirusoft - Situs yang terus-"
-#~ "menerus mengirimkan spam dan telah ditambahkan secara manual setelah "
-#~ "melalui beberapa penilaian. Gunakan secara bijak. Tampaknya juga "
-#~ "memasukkan pembalas otomatis dari beberapa ISP."
-
-#~ msgid ""
-#~ "FREE - Osirusoft Smart Hosts - List of hosts that are secure but relay "
-#~ "for other mail servers that are not secure."
-#~ msgstr ""
-#~ "BEBAS - Smart Host Osirusoft - Daftar host yang aman tetapi meneruskan "
-#~ "server lainnya yang tidak aman."
-
-#~ msgid ""
-#~ "FREE - Osirusoft Spamware Developers - It is believed that these are IP "
-#~ "ranges of companies that are known to produce spam software. Seems to "
-#~ "catch abuse auto-replies from some ISPs."
-#~ msgstr ""
-#~ "BEBAS - Pengembang Perangkat Spam Osirusoft - Alamat IP yang ada di "
-#~ "daftar ini dipercayai milik perusahaan yang suka membuat piranti lunak "
-#~ "untuk spam. Tampaknya juga memasukkan pembalas otomatis dari beberapa ISP."
-
-#~ msgid ""
-#~ "FREE - Osirusoft Unconfirmed OptIn Servers - List of listservers that opt "
-#~ "users in without confirmation."
-#~ msgstr ""
-#~ "BEBAS - Daftar server OptIn Osirusoft - Daftar beberapa server yang "
-#~ "membuat user login otomatis tanpa pemberitahuan."
-
-#~ msgid ""
-#~ "FREE - Osirusoft Insecure formmail.cgi scripts - List of insecure "
-#~ "formmail.cgi scripts. (planned)."
-#~ msgstr ""
-#~ "GRATIS - script Formmail.cgi tak aman Osirusoft - Daftar script formmail."
-#~ "cgi tak aman. "
-
-#~ msgid "FREE - Osirusoft Open Proxy Servers - List of Open Proxy Servers."
-#~ msgstr ""
-#~ "GRATIS - Server Proxy Terbuka Osirusoft - Daftar Server Proxy Terbuka"
-
-#~ msgid "Mofify a Server"
-#~ msgstr "Ubah suatu Server"
-
-#~ msgid "4 language pairs for Hellenic, no known limits, powered by Systran"
-#~ msgstr "4 kombinasi bahasa unutk Hellenic, tidak ada batasan, oleh Systran."
