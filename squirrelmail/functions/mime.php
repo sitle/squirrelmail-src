@@ -525,7 +525,7 @@ function mime_print_body_lines ($imap_stream, $id, $ent_id, $encoding) {
     // Don't kill the connection if the browser is over a dialup
     // and it would take over 30 seconds to download it.
 
-    // don´t call set_time_limit in safe mode.
+    // don t call set_time_limit in safe mode.
     if (!ini_get("safe_mode")) {
         set_time_limit(0);
     }
@@ -1961,14 +1961,17 @@ function magicHTML($body, $id){
                       "html",
                       "head",
                       "base",
-                      "link"
+                      "link",
+		      "frame",
+		      "iframe"
                       );
 
     $rm_tags_with_content = Array(
                                   "script",
                                   "applet",
                                   "embed",
-                                  "title"
+                                  "title",
+				  "frameset"
                                   );
 
     $self_closing_tags =  Array(
