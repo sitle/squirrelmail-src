@@ -44,6 +44,26 @@ if (get_magic_quotes_gpc()) {
     }
 }
 
+/* lets strip tags from all user submitted data
+   in the $_GET and $_POST arrays shall we. This
+   fixes multiple XXS problems found in 1.2.7 */
+
+sqstriptags($_GET);
+sqstriptags($_POST);
+sqstriptags($_SERVER);
+
+
+function sqstriptags(&$array) {
+    foreach ($array as $index=>$value) {
+        if (is_array($array["$index"])) {
+            sqstriptags($array["$index"]);
+        }
+        else {
+            $array["$index"] = strip_tags($value);
+        }
+    }
+}
+
 function sqstripslashes(&$array) {
     foreach ($array as $index=>$value) {
         if (is_array($array["$index"])) {
