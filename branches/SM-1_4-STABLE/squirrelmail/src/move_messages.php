@@ -195,9 +195,15 @@ if(isset($expungeButton)) {
                 if ($auto_expunge) {
                     $cnt = sqimap_mailbox_expunge($imapConnection, $mailbox, true);
                 }
+                if (($startMessage+$cnt-1) >= $mbx_response['EXISTS']) {
+                    if ($startMessage > $show_num) {
+                        $location = set_url_var($location,'startMessage',$startMessage-$show_num, false);
+                    } else {
+                        $location = set_url_var($location,'startMessage',1, false);
+                    }
+                }
             }
-        }
-        if (isset($attache)) {
+        } else {
             $composesession = attachSelectedMessages($id, $imapConnection);
             $location = set_url_var($location, 'session', $composesession, false);
             if ($compose_new_win) {
@@ -205,14 +211,6 @@ if(isset($expungeButton)) {
             } else {
                 $location = str_replace('search.php','compose.php',$location);
                 $location = str_replace('right_main.php','compose.php',$location);
-            }
-        } else {
-            if (($startMessage+$cnt-1) >= $mbx_response['EXISTS']) {
-                if ($startMessage > $show_num) {
-                    $location = set_url_var($location,'startMessage',$startMessage-$show_num, false);
-                } else {
-                    $location = set_url_var($location,'startMessage',1, false);
-                }
             }
         }
     } else {
