@@ -300,7 +300,7 @@ function delete_move_next_move() {
 
     if ($targetMailbox != $lastTargetMailbox) {
         $lastTargetMailbox = $targetMailbox;
-        sqsession_register('lastTargetMailbox' , $lastTargetMailbox);
+        sqsession_register($lastTargetMailbox, 'lastTargetMailbox');
     }
 }
 
