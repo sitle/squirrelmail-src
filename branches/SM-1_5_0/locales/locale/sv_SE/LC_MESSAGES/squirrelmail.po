@@ -5,21 +5,18 @@
 # $Id$
 msgid ""
 msgstr ""
-"Project-Id-Version: SquirrelMail 1.5.0\n"
-"POT-Creation-Date: 2004-02-02 18:51+0200\n"
-"PO-Revision-Date: 2004-09-12 14:48+0200\n"
+"Project-Id-Version: SquirrelMail HEAD\n"
+"POT-Creation-Date: 2004-11-22 12:42+0100\n"
+"PO-Revision-Date: 2004-12-08 23:24+0100\n"
 "Last-Translator: Fredrik Jervfors <sqm_admin@fimbul.net>\n"
 "Language-Team: Swedish <squirrelmail-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=ISO-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Report-Msgid-Bugs-To: \n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
 
 msgid "Address Book"
 msgstr "Adressbok"
-
-msgid "All"
-msgstr "Alla"
 
 msgid "Name"
 msgstr "Namn"
@@ -42,11 +39,8 @@ msgstr "Kopia"
 msgid "Bcc"
 msgstr "Dold kopia"
 
-msgid "Use Addresses"
-msgstr "Använd adresser"
-
-msgid "Address Book Search"
-msgstr "Sök i adressbok"
+msgid "No persons matching your search were found"
+msgstr "Hittade inga personer överensstämmande med din sökning"
 
 msgid "Search for"
 msgstr "Sök efter"
@@ -63,6 +57,9 @@ msgstr "Sök"
 msgid "List all"
 msgstr "Visa alla"
 
+msgid "Close"
+msgstr "Stäng"
+
 #, c-format
 msgid "Unable to list addresses from %s"
 msgstr "Det går inte att visa adresser från %s"
@@ -70,14 +67,17 @@ msgstr "Det går inte att visa adresser från %s"
 msgid "Your search failed with the following error(s)"
 msgstr "Sökningen misslyckades med följande fel"
 
-msgid "No persons matching your search was found"
-msgstr "Hittade inga personer överensstämmande med din sökning"
+msgid "All"
+msgstr "Alla"
+
+msgid "Use Addresses"
+msgstr "Använd adresser"
+
+msgid "Address Book Search"
+msgstr "Sök i adressbok"
 
 msgid "Return"
 msgstr "Tillbaka"
-
-msgid "Close"
-msgstr "Stäng"
 
 msgid "Nickname"
 msgstr "Kortnamn"
@@ -124,8 +124,9 @@ msgstr "Ändra vald"
 msgid "Delete selected"
 msgstr "Kasta valda"
 
-msgid "Add to address book"
-msgstr "Lägg till i adressboken"
+#, c-format
+msgid "Add to %s"
+msgstr "Lägg till i %s"
 
 msgid "said"
 msgstr "skrev"
@@ -162,18 +163,6 @@ msgstr "Brevet har skickats."
 
 msgid "From:"
 msgstr "Från:"
-
-msgid "To:"
-msgstr "Till:"
-
-msgid "CC:"
-msgstr "Kopia:"
-
-msgid "BCC:"
-msgstr "Dold kopia:"
-
-msgid "Subject:"
-msgstr "Ärende:"
 
 msgid "Send"
 msgstr "Skicka"
@@ -220,33 +209,12 @@ msgstr "Spara utkast"
 msgid "You have not filled in the \"To:\" field."
 msgstr "Du måste ange en mottagare."
 
-msgid "Draft folder"
-msgstr "Mapp för sparade utkast"
+#, c-format
+msgid "Error: Draft folder %s does not exist."
+msgstr "Fel: Katalogen &quot;%s&quot; för sparade utkast finns inte"
 
 msgid "Server replied: "
 msgstr "Servern svarade: "
-
-msgid "Illegal folder name.  Please select a different name."
-msgstr "Otillåtet mappnamn. Välj ett annat namn."
-
-msgid "Click here to go back"
-msgstr "Klicka här för att gå tillbaka"
-
-msgid "You have not selected a folder to delete. Please do so."
-msgstr "Du har inte valt vilken mapp som ska tas bort."
-
-msgid "Delete Folder"
-msgstr "Kasta mapp"
-
-#, c-format
-msgid "Are you sure you want to delete %s?"
-msgstr "Är du säker på att du vill kasta %s?"
-
-msgid "Yes"
-msgstr "Ja"
-
-msgid "No"
-msgstr "Nej"
 
 msgid "Folders"
 msgstr "Mappar"
@@ -299,6 +267,9 @@ msgstr "Byt namn"
 msgid "No folders found"
 msgstr "Inga mappar hittades"
 
+msgid "Delete Folder"
+msgstr "Kasta mapp"
+
 msgid "Delete"
 msgstr "Kasta"
 
@@ -316,6 +287,25 @@ msgstr "Inga mappar att aktivera"
 
 msgid "Subscribe to:"
 msgstr "Aktivera:"
+
+msgid "Illegal folder name. Please select a different name."
+msgstr "Otillåtet mappnamn. Välj ett annat namn."
+
+msgid "Click here to go back"
+msgstr "Klicka här för att gå tillbaka"
+
+msgid "You have not selected a folder to delete. Please do so."
+msgstr "Du har inte valt vilken mapp som ska tas bort."
+
+#, c-format
+msgid "Are you sure you want to delete %s?"
+msgstr "Är du säker på att du vill kasta %s?"
+
+msgid "Yes"
+msgstr "Ja"
+
+msgid "No"
+msgstr "Nej"
 
 msgid "You have not selected a folder to rename. Please do so."
 msgstr "Du har inte valt vilken mapp du vill byta namn på."
@@ -337,7 +327,7 @@ msgstr "Hjälp"
 
 #, c-format
 msgid ""
-"The help has not been translated to %s.  It will be displayed in English "
+"The help has not been translated to %s. It will be displayed in English "
 "instead."
 msgstr "Hjälp finns tyvärr inte på %s. Använder engelska istället."
 
@@ -354,7 +344,7 @@ msgid "Next"
 msgstr "Nästa"
 
 msgid "Top"
-msgstr "Början"
+msgstr "Upp"
 
 msgid "Viewing an image attachment"
 msgstr "Visar en bifogad bild"
@@ -373,6 +363,9 @@ msgstr "töm"
 
 msgid "Last Refresh"
 msgstr "Senast uppdaterad"
+
+msgid "Check mail"
+msgstr "Uppdatera"
 
 msgid "Save folder tree"
 msgstr "Spara mappstruktur"
@@ -404,11 +397,60 @@ msgstr "Lösenord:"
 msgid "No messages were selected."
 msgstr "Inga brev var valda."
 
-msgid "Options"
-msgstr "Inställningar"
+msgid "Personal Information"
+msgstr "Personlig profil"
+
+msgid "Display Preferences"
+msgstr "Utseende"
 
 msgid "Message Highlighting"
 msgstr "Färgmarkering av brev"
+
+msgid "Folder Preferences"
+msgstr "Mappar"
+
+msgid "Index Order"
+msgstr "Indexeringsordning"
+
+msgid "Options"
+msgstr "Inställningar"
+
+msgid "Successfully Saved Options"
+msgstr "Inställningarna sparades"
+
+msgid "Refresh Folder List"
+msgstr "Uppdatera mapplistan"
+
+msgid "Refresh Page"
+msgstr "Ladda om sidan"
+
+msgid ""
+"This contains personal information about yourself such as your name, your "
+"email address, etc."
+msgstr "Personlig information, t.ex. namn och e-postadress."
+
+msgid ""
+"You can change the way that SquirrelMail looks and displays information to "
+"you, such as the colors, the language, and other settings."
+msgstr "Omfattar bl.a. färger, språk och hur brev visas."
+
+msgid ""
+"Based upon given criteria, incoming messages can have different background "
+"colors in the message list. This helps to easily distinguish who the "
+"messages are from, especially for mailing lists."
+msgstr ""
+"Brev kan markeras med färger baserat på t.ex. avsändarnamn, ärende eller "
+"liknande. Detta gör det enkelt att utskilja brev från t.ex. e-postlistor, "
+"eller brev som innehåller en särskild ärenderad."
+
+msgid ""
+"These settings change the way your folders are displayed and manipulated."
+msgstr "Hur mappar visas och hanteras."
+
+msgid ""
+"The order of the message index can be rearranged and changed to contain the "
+"headers in any order you want."
+msgstr "Vilka kolumner som visas i indexet och ordningen på dessa."
 
 msgid "New"
 msgstr "Ny"
@@ -489,7 +531,7 @@ msgid "Ex: 63aa7f"
 msgstr "T.ex. 63aa7f"
 
 msgid "Matches"
-msgstr "Överrensstämmer med"
+msgstr "Överensstämmer med"
 
 #, c-format
 msgid "Alternate Identity %d"
@@ -522,9 +564,6 @@ msgstr "Använd som förval"
 msgid "Move Up"
 msgstr "Flytta upp"
 
-msgid "Index Order"
-msgstr "Indexeringsordning"
-
 msgid "Checkbox"
 msgstr "Ruta för val"
 
@@ -536,8 +575,8 @@ msgstr "Storlek"
 
 msgid ""
 "The index order is the order that the columns are arranged in the message "
-"index.  You can add, remove, and move columns around to customize them to "
-"fit your needs."
+"index. You can add, remove, and move columns around to customize them to fit "
+"your needs."
 msgstr ""
 "Indexeringsordning är ordningen på kolumnerna i indexet. Visa, dölj och "
 "flytta kolumnerna efter behov."
@@ -554,57 +593,11 @@ msgstr "Dölj"
 msgid "Return to options page"
 msgstr "Tillbaka"
 
-msgid "Personal Information"
-msgstr "Personlig profil"
-
-msgid "Display Preferences"
-msgstr "Utseende"
-
-msgid "Folder Preferences"
-msgstr "Mappar"
-
-msgid "Successfully Saved Options"
-msgstr "Inställningarna sparades"
-
-msgid "Refresh Folder List"
-msgstr "Uppdatera mapplistan"
-
-msgid "Refresh Page"
-msgstr "Ladda om sidan"
-
-msgid ""
-"This contains personal information about yourself such as your name, your "
-"email address, etc."
-msgstr "Personlig information, t.ex. namn och e-postadress."
-
-msgid ""
-"You can change the way that SquirrelMail looks and displays information to "
-"you, such as the colors, the language, and other settings."
-msgstr "Omfattar bl.a. färger, språk och hur brev visas."
-
-msgid ""
-"Based upon given criteria, incoming messages can have different background "
-"colors in the message list.  This helps to easily distinguish who the "
-"messages are from, especially for mailing lists."
-msgstr ""
-"Brev kan markeras med färger baserat på t.ex. avsändarnamn, ärende eller "
-"liknande. Detta gör det enkelt att utskilja brev från t.ex. e-postlistor, "
-"eller brev som innehåller en särskild ärenderad."
-
-msgid ""
-"These settings change the way your folders are displayed and manipulated."
-msgstr "Hur mappar visas och hanteras."
-
-msgid ""
-"The order of the message index can be rearranged and changed to contain the "
-"headers in any order you want."
-msgstr "Vilka kolumner som visas i indexet och ordningen på dessa."
-
 msgid "Message not printable"
 msgstr "Brevet går ej att skriva ut"
 
-msgid "CC"
-msgstr "Kopia"
+msgid "Invalid URL"
+msgstr "Ogiltig URL"
 
 msgid "Printer Friendly"
 msgstr "Utskriftsvänligt"
@@ -621,24 +614,24 @@ msgstr "Läst:"
 msgid "Your message"
 msgstr "Ditt brev"
 
-msgid "Sent:"
-msgstr "Skickat:"
+msgid "Sent"
+msgstr "Skickat"
 
 #, c-format
 msgid "Was displayed on %s"
 msgstr "Visades %s"
 
 msgid "less"
-msgstr "mindre"
+msgstr "färre"
 
 msgid "more"
-msgstr "mer"
+msgstr "fler"
 
 msgid "Unknown sender"
 msgstr "Okänd avsändare"
 
 msgid "Mailer"
-msgstr "Avsändare"
+msgstr "Klient"
 
 msgid "Read receipt"
 msgstr "Mottagningsbevis"
@@ -659,15 +652,6 @@ msgstr ""
 msgid "Send read receipt now"
 msgstr "Skicka mottagningsbevis nu"
 
-msgid "View Message"
-msgstr "Visa brev"
-
-msgid "Delete & Prev"
-msgstr "Kasta och visa föregående"
-
-msgid "Delete & Next"
-msgstr "Kasta och visa nästa"
-
 msgid "Search Results"
 msgstr "Sökresultat"
 
@@ -680,11 +664,8 @@ msgstr "Redigera utkastet"
 msgid "Edit Message as New"
 msgstr "Redigera som nytt brev"
 
-msgid "Reply"
-msgstr "Svara"
-
-msgid "Reply All"
-msgstr "Svara Alla"
+msgid "View Message"
+msgstr "Visa brev"
 
 msgid "Forward"
 msgstr "Vidarebefordra"
@@ -692,14 +673,11 @@ msgstr "Vidarebefordra"
 msgid "Forward as Attachment"
 msgstr "Vidarebefordra som bilaga"
 
-msgid "Bypass Trash"
-msgstr "Kringgå papperskorgen"
+msgid "Reply"
+msgstr "Svara"
 
-msgid "Move to:"
-msgstr "Flytta till:"
-
-msgid "Move"
-msgstr "Flytta"
+msgid "Reply All"
+msgstr "Svara Alla"
 
 msgid "View Full Header"
 msgstr "Visa hela brevhuvudet"
@@ -710,35 +688,8 @@ msgstr "Bilagor"
 msgid "You must be logged in to access this page."
 msgstr "Du måste vara inloggad för att nå denna sida."
 
-msgid "All Folders"
-msgstr "Alla mappar"
-
-msgid "Please enter something to search for"
-msgstr "Ange något att söka efter"
-
-msgid "There must be at least one criteria to search for"
-msgstr "Det måste finnas minst ett sökkriterium"
-
-msgid "Error in criteria argument"
-msgstr "Fel i kriteriumet"
-
-msgid "M j, Y"
-msgstr "M j, Y"
-
-msgid "(Illegal date)"
-msgstr "(Otillåtet datum)"
-
-msgid "(Wrong date)"
-msgstr "(Fel datum)"
-
-msgid "In"
-msgstr "Sök i"
-
-msgid "(Missing argument)"
-msgstr "(Saknat argument)"
-
-msgid "(Spurious argument)"
-msgstr "(Falskt argument)"
+msgid "Folder:"
+msgstr "Mapp:"
 
 msgid "edit"
 msgstr "redigera"
@@ -749,8 +700,8 @@ msgstr "sök"
 msgid "delete"
 msgstr "ta bort"
 
-msgid "Saved Searches"
-msgstr "Sparade sökningar"
+msgid "Recent Searches"
+msgstr "Senaste sökningarna"
 
 msgid "save"
 msgstr "spara"
@@ -758,116 +709,23 @@ msgstr "spara"
 msgid "forget"
 msgstr "glöm"
 
-msgid "Recent Searches"
-msgstr "Senaste sökningarna"
+msgid "Current Search"
+msgstr "Aktuell sökning"
 
-msgid "Missing"
-msgstr "Saknas"
+msgid "All Folders"
+msgstr "Alla mappar"
 
-msgid "and&nbsp;subfolders:"
-msgstr "och&nbsp;undermappar:"
+msgid "Body"
+msgstr "Text"
 
-msgid "Exclude Criteria:"
-msgstr "Uteslut kriterium:"
-
-msgid "Search Criteria"
-msgstr "Sökkriterier"
-
-msgid "Folder:"
-msgstr "Mapp:"
-
-msgid "Add New Criteria"
-msgstr "Lägg till nya kriterier"
-
-msgid "Remove Excluded Criteria"
-msgstr "Ta bort uteslutna kriterier"
-
-msgid "Remove All Criteria"
-msgstr "Ta bort alla kriterier"
-
-msgid "Answered"
-msgstr "Besvarad"
-
-msgid "Before"
-msgstr "Innan"
-
-msgid "Message Body"
-msgstr "Brevtext"
-
-msgid "Deleted"
-msgstr "Borttagen"
-
-msgid "Draft"
-msgstr "Utkast"
-
-msgid "Flagged"
-msgstr "Markerat"
-
-msgid "Sent By"
-msgstr "Skickad av"
-
-msgid "Header Field"
-msgstr "Fält i huvud"
-
-msgid "Keyword"
-msgstr "Nyckelord"
-
-msgid "Larger Than"
-msgstr "Större än"
-
-msgid "Old"
-msgstr "Gammal"
-
-msgid "On"
-msgstr "På"
-
-msgid "Recent"
-msgstr "Nyligen"
-
-msgid "Seen"
-msgstr "Läst"
-
-msgid "Sent Before"
-msgstr "Skickat innan"
-
-msgid "Sent On"
-msgstr "Skickat den"
-
-msgid "Sent Since"
-msgstr "Skickat sedan"
-
-msgid "Since"
-msgstr "Sedan"
-
-msgid "Smaller Than"
-msgstr "Mindre än"
-
-msgid "Subject Contains"
-msgstr "Ärendet innehåller"
-
-msgid "Header and Body"
-msgstr "Huvud och text"
-
-msgid "Sent To"
-msgstr "Skickat till"
-
-msgid "Not"
-msgstr "Inte"
-
-msgid "And In"
-msgstr "och i"
-
-msgid "Or In"
-msgstr "eller i"
-
-msgid "And"
-msgstr "och"
-
-msgid "Or"
-msgstr "eller"
+msgid "Everywhere"
+msgstr "Överallt"
 
 msgid "No Messages Found"
 msgstr "Inga brev hittades"
+
+msgid "Signout"
+msgstr "Utloggning"
 
 msgid "Sign Out"
 msgstr "Logga ut"
@@ -880,6 +738,14 @@ msgstr "Logga in igen"
 
 msgid "Viewing a Business Card"
 msgstr "Visar ett visitkort"
+
+#, c-format
+msgid ""
+"vCard Version %s is not supported. Some information might not be converted "
+"correctly."
+msgstr ""
+"vCard version %s stödjs inte. Viss information kanske inte konverteras "
+"korrekt."
 
 msgid "Title"
 msgstr "Titel"
@@ -914,8 +780,17 @@ msgstr "Notering"
 msgid "Add to Addressbook"
 msgstr "Lägg till i adressboken"
 
+msgid "Nickname:"
+msgstr "Kortnamn:"
+
+msgid "Note Field Contains:"
+msgstr "Noteringsfältet innehåller:"
+
 msgid "Title & Org. / Dept."
 msgstr "Titel & org./avd."
+
+msgid "Add to Address Book"
+msgstr "Lägg till i adressboken"
 
 msgid "Viewing Full Header"
 msgstr "Visar alla rubriker"
@@ -923,8 +798,16 @@ msgstr "Visar alla rubriker"
 msgid "Viewing a text attachment"
 msgstr "Visar en bifogad text"
 
-msgid "Folder List"
-msgstr "Lista över mappar"
+msgid ""
+"Could not include PEAR database functions required for the database backend."
+msgstr "Det gick inte att använda nödvändiga PEAR databasfunktioner."
+
+#, c-format
+msgid "Is PEAR installed, and is the include path set correctly to find %s?"
+msgstr "Är PEAR installerat och korrekt sökväg angiven till %s?"
+
+msgid "Please contact your system administrator and report this error."
+msgstr "Vänligen rapportera detta fel till systemadministratören."
 
 msgid "Personal address book"
 msgstr "Personlig adressbok"
@@ -944,20 +827,14 @@ msgstr "Användaren '%s' finns redan"
 msgid "User '%s' does not exist"
 msgstr "Användaren '%s' finns inte"
 
-msgid "Global address book"
-msgstr "Global adressbok"
+msgid "Not a file name"
+msgstr "Ogiltigt filnamn"
 
 msgid "No such file or directory"
 msgstr "Det finns ingen katalog eller fil med det namnet"
 
 msgid "Open failed"
 msgstr "Kunde inte öppna"
-
-msgid "Can not modify global address book"
-msgstr "Kan inte ändra i den globala adressboken"
-
-msgid "Not a file name"
-msgstr "Ogiltigt filnamn"
 
 msgid "Write failed"
 msgstr "Skrivning misslyckades"
@@ -978,6 +855,9 @@ msgstr "Fel vid initiering av adressboksdatabasen."
 msgid "Error opening file %s"
 msgstr "Fel vid öppnandet av filen %s"
 
+msgid "Global address book"
+msgstr "Global adressbok"
+
 msgid "Error initializing global addressbook."
 msgstr "Fel vid initiering av den globala adressboken"
 
@@ -997,11 +877,11 @@ msgstr "E-postadress saknas"
 msgid "Nickname contains illegal characters"
 msgstr "Kortnamnet innehåller otillåtna tecken"
 
-msgid "view"
-msgstr "visa"
+msgid "View"
+msgstr "Visa"
 
-msgid "Business Card"
-msgstr "Visitkort"
+msgid "View Business Card"
+msgstr "Visa visitkort"
 
 msgid "Sunday"
 msgstr "Söndag"
@@ -1118,22 +998,25 @@ msgid "Dec"
 msgstr "Dec"
 
 msgid "D, F j, Y g:i a"
-msgstr "D, j F Y, g:i a"
+msgstr "D, Y-m-d, h:i a"
 
 msgid "D, F j, Y G:i"
-msgstr "D, j F Y, G:i"
+msgstr "D, Y-m-d, H:i"
+
+msgid "M j, Y"
+msgstr "Y-m-d"
 
 msgid "g:i a"
-msgstr "g:i a"
+msgstr "h:i a"
 
 msgid "G:i"
-msgstr "G:i"
+msgstr "H:i"
 
 msgid "D, g:i a"
-msgstr "D, g:i a"
+msgstr "D, h:i a"
 
 msgid "D, G:i"
-msgstr "D, G:i"
+msgstr "D, H:i"
 
 #, c-format
 msgid "Preference database error (%s). Exiting abnormally"
@@ -1186,15 +1069,15 @@ msgid "Default preference file not found or not readable!"
 msgstr ""
 "Filen med förvalda inställningar kunde inte hittas eller gick inte att läsa!"
 
-msgid "Please contact your system administrator and report this error."
-msgstr "Vänligen rapportera detta fel till systemadministratören."
-
 msgid "Could not create initial preference file!"
 msgstr "Kunde inte skapa inställningsfil!"
 
 #, c-format
 msgid "%s should be writable by user %s"
 msgstr "%s måste ha skrivrättigheter för användaren %s"
+
+msgid "Signature is too big."
+msgstr "Brevfoten är för stor."
 
 #, c-format
 msgid ""
@@ -1220,51 +1103,52 @@ msgstr ""
 "Det gick inte att kopiera brevfotsfilen %s från den temporära filen %s."
 "Vänligen rapportera detta fel till systemadministratören."
 
-msgid "ERROR : Could not complete request."
-msgstr "FEL : Operationen misslyckades."
-
-msgid "ERROR : Bad or malformed request."
-msgstr "FEL : Felaktig eller felskriven operation."
-
-msgid "ERROR : Imap server closed the connection."
-msgstr "FEL : IMAP-servern stängde förbindelsen."
-
-msgid "ERROR : Connection dropped by imap-server."
-msgstr "FEL : IMAP-servern har avbrutit anslutningen."
-
-msgid "ERROR : Unknown imap response."
-msgstr "FEL : Okänt svar från IMAP-servern."
-
-msgid "Reason Given: "
-msgstr "Orsak: "
-
-msgid "Possible reason : "
-msgstr "Trolig orsak : "
-
-msgid "Query:"
-msgstr "Fråga:"
-
-msgid "The imap server failed to handle threading."
-msgstr "IMAP-servern lyckades inte hantera korrespondensvyer."
-
-msgid "Click here to unset thread view for this mailbox and start again."
-msgstr "Ta bort korrespondansvyer för denna brevlåda och börja om."
+msgid ""
+"You need to have php4 installed with the multibyte string function enabled "
+"(using configure option --enable-mbstring)."
+msgstr ""
+"Du måste ha PHP4 installerat med Multi-Byte String-funktionerna aktiverade "
+"(använd --enable-mbstring i konfigureringsskriptet)."
 
 msgid "ERROR : No available imapstream."
 msgstr "FEL : Ingen IMAP-stream tillgänglig."
 
-msgid "ERROR : Bad function call."
-msgstr "FEL : Felaktigt funktionsanrop."
+msgid "ERROR : Connection dropped by imap-server."
+msgstr "FEL : IMAP-servern har avbrutit anslutningen."
 
-msgid "Reason:"
-msgstr "Orsak:"
+msgid "ERROR : Could not complete request."
+msgstr "FEL : Operationen misslyckades."
+
+msgid "Query:"
+msgstr "Fråga:"
+
+msgid "Reason Given: "
+msgstr "Orsak: "
+
+msgid "ERROR : Bad or malformed request."
+msgstr "FEL : Felaktig eller felskriven operation."
 
 msgid "Server responded: "
 msgstr "Servern svarade: "
 
+msgid "ERROR : Imap server closed the connection."
+msgstr "FEL : IMAP-servern stängde förbindelsen."
+
+msgid "ERROR : Unknown imap response."
+msgstr "FEL : Okänt svar från IMAP-servern."
+
 #, c-format
 msgid "Error connecting to IMAP server: %s."
 msgstr "Kunde inte kontakta IMAP-servern: %s."
+
+msgid "The IMAP server is reporting that plain text logins are disabled."
+msgstr "IMAP-servern tillåter inte klartextsinloggningar."
+
+msgid "Using CRAM-MD5 or DIGEST-MD5 authentication instead may work."
+msgstr "Det kan fungera att använda CRAM-MD5 eller DIGEST-MD5 istället."
+
+msgid "Also, the use of TLS may allow SquirrelMail to login."
+msgstr "Dessutom kan det eventuellt fungera att använda TLS."
 
 #, c-format
 msgid "Bad request: %s"
@@ -1294,6 +1178,9 @@ msgstr "Kasta onödiga brev fån mappen och börja med din papperskorg."
 msgid "(no subject)"
 msgstr "(ärende saknas)"
 
+msgid "Unknown Sender"
+msgstr "Okänd avsändare"
+
 msgid "Unknown response from IMAP server: "
 msgstr "Okänt svar från IMAP-servern: "
 
@@ -1314,28 +1201,26 @@ msgstr "Okänt datum"
 msgid "A"
 msgstr "B"
 
-msgid ""
-"Thread sorting is not supported by your IMAP server.<br>Please report this "
-"to the system administrator."
-msgstr ""
-"IMAP-servern stödjer inte korrespondensvyer.<br>Vänligen rapportera detta "
-"till administratören."
+msgid "Thread sorting is not supported by your IMAP server."
+msgstr "IMAP-servern stödjer inte korrespondensvyer."
 
-msgid ""
-"Server-side sorting is not supported by your IMAP server.<br>Please report "
-"this to the system administrator."
-msgstr ""
-"IMAP-servern stödjer inte sortering av brev.<br>Vänligen rapportera detta "
-"till administratören."
+msgid "Please report this to the system administrator."
+msgstr "Vänligen rapportera detta till administratören."
+
+msgid "Server-side sorting is not supported by your IMAP server."
+msgstr "IMAP-servern stödjer inte sortering av brev."
 
 msgid "THIS FOLDER IS EMPTY"
 msgstr "DENNA MAPP ÄR TOM"
 
-msgid "Read"
-msgstr "Läst"
+msgid "Move Selected To"
+msgstr "Flytta valda brev till"
 
-msgid "Unread"
-msgstr "Oläst"
+msgid "Transform Selected Messages"
+msgstr "Ändra status på valda brev"
+
+msgid "Move"
+msgstr "Flytta"
 
 msgid "Expunge"
 msgstr "Töm papperskorgen"
@@ -1343,14 +1228,17 @@ msgstr "Töm papperskorgen"
 msgid "mailbox"
 msgstr "brevlåda"
 
+msgid "Read"
+msgstr "Läst"
+
+msgid "Unread"
+msgstr "Oläst"
+
 msgid "Unthread View"
 msgstr "Normal vy"
 
 msgid "Thread View"
 msgstr "Korrespondensvy"
-
-msgid "Click here to change the sorting of the message list"
-msgstr "Ändrar sorteringen av brevlistan"
 
 msgid "Toggle All"
 msgstr "Växla val"
@@ -1362,12 +1250,12 @@ msgid "Select All"
 msgstr "Välj alla"
 
 #, c-format
-msgid "Viewing Messages: <B>%s</B> to <B>%s</B> (%s total)"
-msgstr "Visar brev: <B>%s</B> till <B>%s</B> (%s totalt)"
+msgid "Viewing Messages: %s to %s (%s total)"
+msgstr "Visar brev: %s till %s (%s totalt)"
 
 #, c-format
-msgid "Viewing Message: <B>%s</B> (1 total)"
-msgstr "Visar brev: <B>%s</B> (1 totalt)"
+msgid "Viewing Message: %s (%s total)"
+msgstr "Visar brev: %s (%s totalt)"
 
 msgid "Paginate"
 msgstr "Sidbryt"
@@ -1406,8 +1294,8 @@ msgstr "Dölj osäkra bilder"
 msgid "View Unsafe Images"
 msgstr "Visa osäkra bilder"
 
-msgid "download"
-msgstr "ladda ner"
+msgid "Download"
+msgstr "Ladda ner"
 
 msgid "sec_remove_eng.png"
 msgstr "sec_remove_sv_SE.png"
@@ -1544,23 +1432,17 @@ msgstr "Antal sidor att visa"
 msgid "Always Show Full Date"
 msgstr "Visa alltid hela datumet"
 
-msgid "Length of From/To Field (0 for full)"
-msgstr "Längd på från-/till-fältet (0 för full längd)"
-
-msgid "Length of Subject Field (0 for full)"
-msgstr "Längd på ärendefältet (0 för full längd)"
-
-msgid "Show recipient name if the message is from your default identity"
-msgstr "Visa mottagarnamn om brevet är från din egen huvudidentitet"
-
 msgid "Message Display and Composition"
 msgstr "Brevvisning och -skrivning"
 
 msgid "Wrap Incoming Text At"
 msgstr "Radbryt mottagen text vid"
 
-msgid "Size of Editor Window"
-msgstr "Textfönstrets storlek"
+msgid "Width of Editor Window"
+msgstr "Textfönstrets bredd"
+
+msgid "Height of Editor Window"
+msgstr "Textfönstrets höjd"
 
 msgid "Location of Buttons when Composing"
 msgstr "Knapparnas placering vid brevskrivning"
@@ -1623,25 +1505,22 @@ msgid "Cursor Position when Replying"
 msgstr "Markörens position vid svar"
 
 msgid "To: field"
-msgstr "Till-fältet"
+msgstr "Tillfältet"
 
 msgid "Focus in body"
-msgstr "Fokus på texten"
+msgstr "Textfältet"
 
 msgid "Select body"
-msgstr "Välj text"
+msgstr "Textfältet (markerat)"
 
-msgid "Strip signature when replying"
-msgstr "Avlägsna brevfot vid svar"
+msgid "No focus"
+msgstr "Ingen förvald"
 
-msgid "Enable Sort by of Receive Date"
+msgid "Sort by Received Date"
 msgstr "Aktivera sortering på ankomstdatum"
 
 msgid "Enable Thread Sort by References Header"
 msgstr "Aktivera korrespondensvy baserad på brevhuvud"
-
-msgid "Show 'Delete & Prev/Next' Links"
-msgstr "Visa Kasta och visa föregående/nästa-länkar."
 
 msgid "Special Folder Options"
 msgstr "Särskilda mappar"
@@ -1667,9 +1546,6 @@ msgstr "Ingen"
 msgid "Sent Folder"
 msgstr "Mapp för skickade brev"
 
-msgid "Save Replies with Original Message"
-msgstr "Spara svar ihop med det ursprungliga brevet"
-
 msgid "Folder List Options"
 msgstr "Mapplista"
 
@@ -1683,7 +1559,7 @@ msgid "Right"
 msgstr "Höger"
 
 msgid "pixels"
-msgstr "punkter"
+msgstr "pixlar"
 
 msgid "Width of Folder List"
 msgstr "Mapplistans bredd"
@@ -1726,6 +1602,15 @@ msgstr "Aktivera avisering vid ökande antal olästa brev"
 
 msgid "Show Clock on Folders Panel"
 msgstr "Visa klockan i mapplistan"
+
+msgid "International date and time"
+msgstr "Internationellt datum- och tidsformat"
+
+msgid "American date and time"
+msgstr "Amerikanskt datum- och tidsformat"
+
+msgid "European date and time"
+msgstr "Europeiskt datum- och tidsformat"
 
 msgid "Show weekday and time"
 msgstr "Visa veckodag och klockslag"
@@ -1814,6 +1699,9 @@ msgstr "Ingen citering"
 msgid "AUTHOR Said"
 msgstr "AVSÄNDAREN skrev"
 
+msgid "On DATE, AUTHOR Said"
+msgstr "DATUMET skrev AVSÄNDAREN"
+
 msgid "Quote Who XML"
 msgstr "XML-citat"
 
@@ -1844,14 +1732,10 @@ msgstr "Spara till adressboken:"
 msgid "Try to verify addresses"
 msgstr "Försök att verifiera adresser"
 
-#, c-format
-msgid "Add to %s"
-msgstr "Lägg till i %s"
-
 msgid "Config File Version"
 msgstr "Version av inställningsfil"
 
-msgid "Squirrelmail Version"
+msgid "SquirrelMail Version"
 msgstr "Version av SquirrelMail"
 
 msgid "PHP Version"
@@ -1920,7 +1804,7 @@ msgstr "Ingen av ovanstående servrar"
 msgid "IMAP Folder Delimiter"
 msgstr "Avgränsare för IMAP-mapp"
 
-msgid "Use \"detect\" to auto-detect."
+msgid "Use &quot;detect&quot; to auto-detect."
 msgstr "Använd &quot;detect&quot; för autodetektering."
 
 msgid "Use TLS for IMAP Connections"
@@ -1932,8 +1816,14 @@ msgstr "Kräver PHP 4.3.x! Experimentell."
 msgid "IMAP Authentication Type"
 msgstr "Valideringstyp för IMAP-servern"
 
+msgid "IMAP login"
+msgstr "IMAP-inloggning"
+
 msgid "Use Sendmail Binary"
 msgstr "Använd Sendmail-programmet"
+
+msgid "Choose &quot;no&quot; for SMTP"
+msgstr "Välj &quot;Nej&quot; för SMTP"
 
 msgid "Sendmail Path"
 msgstr "Sökväg till Sendmail"
@@ -1950,14 +1840,17 @@ msgstr "Använd TLS för SMTP-anslutningar"
 msgid "SMTP Authentication Type"
 msgstr "Valideringstyp för SMPT-servern"
 
+msgid "No SMTP auth"
+msgstr "Ingen SMTP-validering"
+
+msgid "Login (plain text)"
+msgstr "Inloggning (klartext)"
+
 msgid "POP3 Before SMTP?"
 msgstr "POP3 innan SMTP?"
 
 msgid "Invert Time"
 msgstr "Invertera tid"
-
-msgid "Use Confirmation Flags"
-msgstr "Aktivera användning av mottagningsbevis"
 
 msgid "Folders Defaults"
 msgstr "Förvalsinställningar för mappar"
@@ -2000,9 +1893,6 @@ msgstr "Förvald typ för olästa brev"
 
 msgid "Auto Create Special Folders"
 msgstr "Skapa särskilda mappar automatiskt"
-
-msgid "Default Javascript Adrressbook"
-msgstr "Förvald javascriptadressbok"
 
 msgid "Auto delete folders"
 msgstr "Kasta mappar automatiskt"
@@ -2061,6 +1951,9 @@ msgstr "Tillåt korrespondensvyer"
 msgid "Allow server charset search"
 msgstr "Tillåt servern att söka teckenuppsättningar"
 
+msgid "UID support"
+msgstr "Stöd för UID"
+
 msgid "PHP session name"
 msgstr "Sessionsnamn i PHP"
 
@@ -2112,29 +2005,20 @@ msgstr "Förvalt språk"
 msgid "Default Charset"
 msgstr "Förvald teckenuppsättning"
 
-msgid "Show alternative language names"
-msgstr "Visa alternativa språknamn"
+msgid "Enable lossy encoding"
+msgstr "Använd förstörande kodning"
 
-msgid "Available languages"
-msgstr "Tillgängliga språk"
+msgid "Address Books"
+msgstr "Adressböcker"
 
-msgid "Use agresive decoding"
-msgstr "Använd aggressiv avkodning"
+msgid "Default Javascript Addressbook"
+msgstr "Förvald javascriptadressbok"
 
-msgid "Tweaks"
-msgstr "Finjusteringar"
+msgid "Global address book file"
+msgstr "Global adressboksfil"
 
-msgid "Use advanced tree folder listing"
-msgstr "Använd avancerad mappträdlista"
-
-msgid "Use old folder listing functions"
-msgstr "Använd gamla mapplistefunktioner"
-
-msgid "Use php recode functions"
-msgstr "Använd PHP-omkodningsfunktioner"
-
-msgid "Use php iconv functions"
-msgstr "Använd PHP:s iconv-funktioner"
+msgid "Allow writing into global address book file"
+msgstr "Tillåt att skriva i den globala adressboken"
 
 msgid "Themes"
 msgstr "Teman"
@@ -2178,8 +2062,15 @@ msgstr "Sökväg till teman"
 msgid "Plugins"
 msgstr "Insticksmoduler"
 
+#, c-format
+msgid "Plugin directory could not be found: %s"
+msgstr "Kunde inte hitta katalogen för insticksmoduler: %s"
+
 msgid "Change Settings"
 msgstr "Ändra inställningar"
+
+msgid "Test Configuration"
+msgstr "Testa konfigurering"
 
 msgid "Config file can't be opened. Please check config.php."
 msgstr ""
@@ -2206,25 +2097,22 @@ msgstr ""
 "Gå igenom denna lista över vanliga problem innan du skickar in din "
 "felrapport."
 
+#, c-format
 msgid ""
-"Make sure that you are running the most recent copy of <a href=\"http://www."
-"squirrelmail.org/\">SquirrelMail</a>."
+"Make sure that you are running the most recent copy of %s. You are currently "
+"using version %s."
 msgstr ""
-"Säkerställ att du använder den senaste versionen av <a href=\"http://www."
-"squirrelmail.org/\">SquirrelMail</a>."
+"Säkerställ att du använder den senaste versionen av %s. Nu använder du "
+"version %s."
 
 #, c-format
-msgid "You are currently using version %s."
-msgstr "Nu använder du version %s."
-
 msgid ""
-"Check to see if you bug is already listed in the <a href=\"http://"
-"sourceforge.net/bugs/?group_id=311\">Bug List</a> on SourceForge. If it is, "
-"we already know about it and are trying to fix it."
+"Check to see if your bug is already listed in the %sBug List%s on "
+"SourceForge. If it is, we already know about it and are trying to fix it."
 msgstr ""
-"Kontrollera om felet redan är anmält till <a href=\"http://sourceforge.net/"
-"bugs/?group_id=311\">Felanmälningslistan</a> på SourceForge. Om felet är "
-"anmält känner vi redan till det och försöker åtgärda det."
+"Kontrollera om felet redan är anmält till %sFelanmälningslistan%s på "
+"SourceForge. Om felet är anmält känner vi redan till det och försöker "
+"åtgärda det."
 
 msgid ""
 "Try to make sure that you can repeat it. If the bug happens sporatically, "
@@ -2236,12 +2124,13 @@ msgstr ""
 "alltid uppstår när du läser ett specifikt brev, spara det brevet så att "
 "felsökarna kan få se det vid behov."
 
+#, c-format
 msgid ""
 "If there were warnings displayed above, try to resolve them yourself. Read "
-"the guides in the <tt>doc/</tt> directory where SquirrelMail was installed."
+"the guides in the %s directory where SquirrelMail was installed."
 msgstr ""
 "Om det visades varningar, försök att själv åtgärda dem. Läs guiden i "
-"SquirrelMail-installationens mapp <tt>doc/</tt>."
+"SquirrelMail-installationens mapp %s."
 
 msgid ""
 "Pressing the button below will start a mail message to the developers of "
@@ -2277,6 +2166,12 @@ msgstr "SquirrelMail i allmänhet"
 msgid "a specific plugin"
 msgstr "en specifik insticksmodul"
 
+msgid "Start Bug Report Form"
+msgstr "Förbered felrapportsformuläret"
+
+msgid "Bug"
+msgstr "Felrapportera"
+
 msgid "Bug Reports:"
 msgstr "Felrapporter:"
 
@@ -2289,8 +2184,12 @@ msgstr "IDAG"
 msgid "Go"
 msgstr "Kör"
 
+#, c-format
+msgid "Could not write calendar file %s"
+msgstr "Kunde inte spara kalenderfilen %s"
+
 msgid "l, F j Y"
-msgstr "l, F j Y"
+msgstr "D, Y-m-d"
 
 msgid "ADD"
 msgstr "LÄGG TILL"
@@ -2394,6 +2293,27 @@ msgstr "6 timmar"
 msgid "Calendar"
 msgstr "Kalender"
 
+msgid "Delete & Prev"
+msgstr "Kasta och visa föregående"
+
+msgid "Delete & Next"
+msgstr "Kasta och visa nästa"
+
+msgid "Move to:"
+msgstr "Flytta till:"
+
+msgid "Delete/Move/Next Buttons:"
+msgstr "Knappar för Kasta/Flytta/Nästa:"
+
+msgid "Display at top"
+msgstr "Visa högst upp"
+
+msgid "with move option"
+msgstr "vid flyttmöjligheten"
+
+msgid "Display at bottom"
+msgstr "Visa längst ned"
+
 msgid ""
 "COMMERCIAL - This list contains servers that are verified spam senders. It "
 "is a pretty reliable list to scan spam from."
@@ -2403,7 +2323,7 @@ msgstr ""
 
 msgid ""
 "COMMERCIAL - Servers that are configured (or misconfigured) to allow spam to "
-"be relayed through their system will be banned with this.  Another good one "
+"be relayed through their system will be banned with this. Another good one "
 "to use."
 msgstr ""
 "KOMMERSIELL - Servrar som är konfigurerade (eller felkonfigurerade) så att "
@@ -2411,7 +2331,7 @@ msgstr ""
 
 msgid ""
 "COMMERCIAL - Dial-up users are often filtered out since they should use "
-"their ISP's mail servers to send mail.  Spammers typically get a dial-up "
+"their ISP's mail servers to send mail. Spammers typically get a dial-up "
 "account and send spam directly from there."
 msgstr ""
 "KOMMERSIELL - Modemanvändare filtreras ofta bort för att de borde använda "
@@ -2470,10 +2390,10 @@ msgid "FREE - SPAMhaus - A list of well-known SPAM sources."
 msgstr "FRI - SPAMhaus - En lista med välkända skräppostkällor."
 
 msgid ""
-"FREE, for now - SPAMCOP - An interesting solution that lists servers that "
+"FREE, for now - SpamCop - An interesting solution that lists servers that "
 "have a very high spam to legit email ratio (85 percent or more)."
 msgstr ""
-"FRI, än så länge - SPAMCOP - Intressant lösning som listar servrar som har "
+"FRI, än så länge - SpamCop - Intressant lösning som listar servrar som har "
 "mycket hög andel skräppost (85 procent eller mer)."
 
 msgid "FREE - dev.null.dk - I don't have any detailed info on this list."
@@ -2563,6 +2483,12 @@ msgstr ""
 msgid "FREE - Distributed Sender Boycott List - UN-Confirmed Relays"
 msgstr "FRI - Distributed Sender Boycott List - Obekräftade vidarebefordrare."
 
+msgid ""
+"WARNING! Header filters should be of the format &quot;Header: value&quot;"
+msgstr ""
+"VARNING! Filter baserade på rubriker i brevhuvudet ska ha formatet &quot;"
+"Rubrik: värde&quot;"
+
 msgid "Saved Scan type"
 msgstr "Sparad skanningstyp"
 
@@ -2591,8 +2517,8 @@ msgid "Contains:"
 msgstr "Söksträng:"
 
 #, c-format
-msgid "If <b>%s</b> contains <b>%s</b> then move to <b>%s</b>"
-msgstr "Om <b>%s</b> innehåller <b>%s</b>, flytta till <b>%s</b>"
+msgid "If %s contains %s then move to %s"
+msgstr "Om %s innehåller %s, flytta till %s"
 
 msgid "Message Filters"
 msgstr "Brevfilter"
@@ -2614,11 +2540,18 @@ msgstr ""
 "Skräppostfilter tillåter dig att välja från olika DNS-baserade svartlistor "
 "så att du kan flytta skräppost till en annan mapp (t.ex. papperskorgen)."
 
+msgid "You must select a spam folder."
+msgstr "Välj en mapp för skräppost."
+
+msgid "You must select a scan type."
+msgstr "Välj typ av skanning."
+
 msgid "Spam Filtering"
 msgstr "Skräppostfiltrering"
 
-msgid "WARNING! Tell your admin to set the SpamFilters_YourHop variable"
-msgstr "VARNING! Be administratören att sätta variabeln SpamFilters_YourHop"
+#, c-format
+msgid "WARNING! Tell the administrator to set the %s variable."
+msgstr "VARNING! Be administratören att sätta variabeln %s."
 
 msgid "Move spam to:"
 msgstr "Flytta skräppost till:"
@@ -2635,12 +2568,16 @@ msgstr ""
 "skräppostmappen med jämna mellanrum och kasta oönskade brev, så att de inte "
 "tar plats i onödan."
 
+msgid "Unread messages only"
+msgstr "Bara olästa brev"
+
 msgid ""
-"The more messages you scan, the longer it takes.  I would suggest that you "
-"scan only new messages.  If you make a change to your filters, I would set "
-"it to scan all messages, then go view my INBOX, then come back and set it to "
-"scan only new messages.  That way, your new spam filters will be applied and "
-"you'll scan even the spam you read with the new filters."
+"The more messages scanned, the longer it takes. It's recommended to scan "
+"unread messages only. If a change to the filters is made, it's recommended "
+"to set it to scan all messages, then go view the INBOX, then come back and "
+"set it to scan unread messages only. That way, the new spam filters will be "
+"applied and even the spam you didn't catch with the old filters will be "
+"scanned."
 msgstr ""
 "Ju fler brev som kontrolleras, desto längre tid tar det. Det rekommenderas "
 "att bara kontrollera nyinkomna brev. Om du gör förändringar i filtren, byt "
@@ -2649,21 +2586,15 @@ msgstr ""
 "alla brev med de nya filterinställningarna."
 
 #, c-format
-msgid "Spam is sent to <b>%s</b>"
-msgstr "Skräppost skickas till <b>%s</b>"
+msgid "Spam is sent to %s."
+msgstr "Skräppost skickas till %s."
 
-msgid "[<i>not set yet</i>]"
-msgstr "[<i>odefinierad</i>]"
+msgid "not set yet"
+msgstr "odefinierad"
 
 #, c-format
-msgid "Spam scan is limited to <b>%s</b>"
-msgstr "Skräppostsökning begränsad till <b>%s</b>"
-
-msgid "New Messages Only"
-msgstr "Bara nya brev"
-
-msgid "All Messages"
-msgstr "Alla brev"
+msgid "Spam scan is limited to %s."
+msgstr "Skräppostsökning begränsad till %s."
 
 msgid "ON"
 msgstr "PÅ"
@@ -2683,12 +2614,15 @@ msgstr "Spådomar:"
 msgid "Show fortunes at top of mailbox"
 msgstr "Visa spådomar överst i brevlådan"
 
+msgid "Plugin is disabled."
+msgstr "Insticksmodulen är inaktiverad."
+
 msgid "IMAP server information"
 msgstr "Information om IMAP-servern"
 
 msgid ""
 "Run some test IMAP commands, displaying both the command and the result. "
-"These tests use the Squirrelmail IMAP commands and your current Squirrelmail "
+"These tests use the SquirrelMail IMAP commands and your current SquirrelMail "
 "configuration. Custom command strings can be used."
 msgstr ""
 "Exekverar några IMAP-kommandon som test, och visar både vilka kommandon som "
@@ -2833,6 +2767,9 @@ msgstr "Inget brevnummer angivet"
 msgid "Command failed "
 msgstr "Kommandot misslyckades "
 
+msgid "Remote POP server Fetching Mail"
+msgstr "POP-servern hämtar brev"
+
 msgid "Select Server:"
 msgstr "Välj server:"
 
@@ -2841,15 +2778,6 @@ msgstr "Lösenord för"
 
 msgid "Fetch Mail"
 msgstr "Hämta brev"
-
-msgid "Remote POP server Fetching Mail"
-msgstr "POP-servern hämtar brev"
-
-msgid "No POP3 servers configured yet."
-msgstr "Inga POP3-servrar är konfigurerade."
-
-msgid "Click here to go to the options page."
-msgstr "Tillbaka till inställningar"
 
 msgid "Fetching from "
 msgstr "Hämtar från "
@@ -2872,11 +2800,9 @@ msgstr "Inloggning OK: Inga nya brev"
 msgid "Login OK: Inbox EMPTY"
 msgstr "Inloggning OK: Inkorgen är tom"
 
-msgid "Login OK: Inbox contains ["
-msgstr "Inloggning OK: Inkorgen innehåller ["
-
-msgid "] messages"
-msgstr "] brev"
+#, c-format
+msgid "Login OK: Inbox contains %s messages"
+msgstr "Inloggning OK: Inkorgen innehåller %s brev"
 
 msgid "Fetching UIDL..."
 msgstr "Hämtar UIDL..."
@@ -2931,7 +2857,7 @@ msgstr "Inställningar för POP-server"
 
 msgid ""
 "You should be aware that the encryption used to store your password is not "
-"perfectly secure.  However, if you are using pop, there is inherently no "
+"perfectly secure. However, if you are using pop, there is inherently no "
 "encryption anyway. Additionally, the encryption that we do to save it on the "
 "server can be undone by a hacker reading the source to this file."
 msgstr ""
@@ -3016,17 +2942,32 @@ msgstr "Varning, "
 msgid "Mail Fetch Result:"
 msgstr "Resultat från hämtning av brev:"
 
-msgid "Simple POP3 Fetch Mail"
+msgid "POP3 Fetch Mail"
 msgstr "Hämta från POP3-brevlåda"
 
 msgid ""
-"This configures settings for downloading email from a pop3 mailbox to your "
+"This configures settings for downloading email from a POP3 mailbox to your "
 "account on this server."
 msgstr ""
 "Det går att hämta brev från en POP3-brevlåda och spara dem på denna server."
 
 msgid "Message Details"
 msgstr "Brevets detaljer"
+
+msgid "Bodystructure"
+msgstr "Struktur"
+
+msgid "Entity"
+msgstr "Enhet"
+
+msgid "Content-Type"
+msgstr "Typ av innehåll"
+
+msgid "Encoding"
+msgstr "Kodning"
+
+msgid "RFC822 Message body"
+msgstr "Källa (i RFC822-format)"
 
 msgid "Close Window"
 msgstr "Stäng fönstret"
@@ -3037,108 +2978,109 @@ msgstr "Spara brev"
 msgid "View Message details"
 msgstr "Visa brevets detaljer"
 
-msgid "New Mail Notification"
-msgstr "Avisering vid nya brev"
-
-msgid ""
-"Select <b>Enable Media Playing</b> to turn on playing a media file when "
-"unseen mail is in your folders. When enabled, you can specify the media file "
-"to play in the provided file box."
-msgstr ""
-"Välj <b>Slå på mediauppspelning</b> för att spela upp ett ljud då du får nya "
-"brev. Du kan välja vilken mediafil som skall spelas."
-
-msgid ""
-"The <b>Check all boxes, not just INBOX</b> option will check ALL of your "
-"folders for unseen mail, not just the inbox for notification."
-msgstr ""
-"Slå på <b>Kontrollera alla mappar, inte bara inkorgen</b> för att söka efter "
-"nya/olästa brev i ALLA mappar."
-
-msgid ""
-"Selecting the <b>Show popup</b> option will enable the showing of a popup "
-"window when unseen mail is in your folders (requires JavaScript)."
-msgstr ""
-"Slå på <b>Visa popup...</b> för att visa en dialogruta då du har olästa brev "
-"i dina mappar (kräver JavaScript)."
-
-msgid ""
-"Use the <b>Check RECENT</b> to only check for messages that are recent. "
-"Recent messages are those that have just recently showed up and have not "
-"been \"viewed\" or checked yet.  This can prevent being continuously annoyed "
-"by sounds or popups for unseen mail."
-msgstr ""
-"Använd <b>Kontrollera bara de nyaste...</b> för att endast kontrollera "
-"senast inkomna brev. Detta förhindrar kontinuerliga påminnelser om olästa "
-"brev."
-
-msgid ""
-"Selecting the <b>Change title</b> option will change the title in some "
-"browsers to let you know when you have new mail (requires JavaScript, and "
-"only works in IE but you won't see errors with other browsers).  This will "
-"always tell you if you have new mail, even if you have <b>Check RECENT</b> "
-"enabled."
-msgstr ""
-"Om du slår på <b>Byt rubriken</b> kommer titelraden i vissa webbläsare att "
-"ändras då du har nya brev (kräver JavaScript, och fungerar bara med Internet "
-"Explorer men visar inga fel med andra webbläsare).Detta kommer alltid att "
-"visa om du har nyinkomna brev, även om du har valt <b>Kontrollera bara de "
-"nyaste...</b>."
-
-msgid ""
-"Select from the list of <b>server files</b> the media file to play when new "
-"mail arrives.  If no file is specified, \"(none)\", no sound will be used."
-msgstr ""
-"Välj den fil som ska spelas när ny post anländer, från listan "
-"<b>serverfiler</b>. Om ingen fil väljs, &quot;(ingen)&quot;, kommer inget "
-"ljud att användas."
-
-msgid "Enable Media Playing"
-msgstr "Slå på mediauppspelning"
-
-msgid "Check all boxes, not just INBOX"
-msgstr "Kontrollera alla mappar, inte bara inkorgen"
-
-msgid "Count only messages that are RECENT"
-msgstr "Kontrollera bara de nyaste breven"
-
-msgid "Change title on supported browsers."
-msgstr "Byt rubriken på webbläsare som stödjer detta."
-
-msgid "requires JavaScript to work"
-msgstr "kräver JavaScript"
-
-msgid "Show popup window on new mail"
-msgstr "Visa popup vid nya brev"
-
-msgid "Select server file:"
-msgstr "Välj en fil från servern:"
-
-msgid "(none)"
-msgstr "(ingen)"
-
-msgid "Try"
-msgstr "Spela"
-
-msgid "Current File:"
-msgstr "Aktiv fil:"
-
 msgid "New Mail"
 msgstr "Nytt brev"
 
 msgid "SquirrelMail Notice:"
 msgstr "Avisering från SquirrelMail:"
 
-msgid "You have"
-msgstr "Du har"
+#, c-format
+msgid "You have %s new message"
+msgid_plural "You have %s new messages"
+msgstr[0] "Du har %s nytt brev"
+msgstr[1] "Du har %s nya brev"
 
 #, c-format
-msgid "%s new message"
-msgstr "%s nytt brev"
+msgid "You have %s new messages"
+msgstr "Du har %s nya brev"
+
+msgid "New Mail Notification"
+msgstr "Avisering vid nya brev"
 
 #, c-format
-msgid "%s new messages"
-msgstr "%s nya brev"
+msgid ""
+"The %s option will check ALL of your folders for unseen mail, not just the "
+"inbox for notification."
+msgstr ""
+"Slå på %s för att söka efter nya/olästa brev i ALLA mappar, inte bara "
+"inkorgen."
+
+msgid "Check all boxes, not just INBOX"
+msgstr "Kontrollera alla mappar, inte bara inkorgen"
+
+#, c-format
+msgid ""
+"Selecting the %s option will enable the showing of a popup window when "
+"unseen mail is in your folders (requires JavaScript)."
+msgstr ""
+"Slå på %s för att visa en dialogruta då du har olästa brev i dina mappar "
+"(kräver JavaScript)."
+
+msgid "Show popup window on new mail"
+msgstr "Visa popup vid nya brev"
+
+#, c-format
+msgid ""
+"Use the %s option to only check for messages that are recent. Recent "
+"messages are those that have just recently showed up and have not been "
+"\"viewed\" or checked yet. This can prevent being continuously annoyed by "
+"sounds or popups for unseen mail."
+msgstr ""
+"Använd %s för att endast kontrollera senast inkomna brev. Detta förhindrar "
+"kontinuerliga påminnelser om olästa brev."
+
+msgid "Count only messages that are RECENT"
+msgstr "Kontrollera bara de nyaste breven"
+
+#, c-format
+msgid ""
+"Selecting the %s option will change the title in some browsers to let you "
+"know when you have new mail (requires JavaScript, and only works in IE but "
+"you won't see errors with other browsers). This will always tell you if you "
+"have new mail, even if you have %s enabled."
+msgstr ""
+"Om du slår på %s kommer titelraden i vissa webbläsare att ändras då du har "
+"nya brev (kräver JavaScript, och fungerar bara med Internet Explorer men "
+"visar inga fel med andra webbläsare). Detta visar alltid om du har nyinkomna "
+"brev, även om du har valt %s."
+
+msgid "Change title on supported browsers"
+msgstr "Byt rubriken på webbläsare som stödjer detta"
+
+#, c-format
+msgid ""
+"Select %s to turn on playing a media file when unseen mail is in your "
+"folders. When enabled, you can specify the media file to play in the "
+"provided file box."
+msgstr ""
+"Välj %s för att spela upp ett ljud då du får nya brev. Du kan välja vilken "
+"mediafil som skall spelas."
+
+msgid "Enable Media Playing"
+msgstr "Slå på mediauppspelning"
+
+#, c-format
+msgid ""
+"Select from the list of %s the media file to play when new mail arrives. If "
+"no file is specified, %s, no sound will be used."
+msgstr ""
+"Välj den fil som ska spelas när ny post anländer, från listan %s. Om ingen "
+"fil väljs, %s, kommer inget ljud att användas."
+
+msgid "Select server file"
+msgstr "Vald fil"
+
+msgid "(none)"
+msgstr "(ingen)"
+
+msgid "requires JavaScript to work"
+msgstr "kräver JavaScript"
+
+msgid "Try"
+msgstr "Spela"
+
+msgid "Current File:"
+msgstr "Aktiv fil:"
 
 msgid "NewMail Options"
 msgstr "Avisering vid nyinkomna brev"
@@ -3159,7 +3101,9 @@ msgstr "%s nya brev"
 
 #, c-format
 msgid "%s New Message"
-msgstr "%s nytt brev"
+msgid_plural "%s New Messages"
+msgstr[0] "%s nytt brev"
+msgstr[1] "%s nya brev"
 
 msgid "Test Sound"
 msgstr "Testa ljud"
@@ -3221,20 +3165,20 @@ msgstr "Grundlig e-postbaserad rapportering"
 msgid "Web-based form"
 msgstr "Webbaserat formulär"
 
-msgid "Spam Service Type:"
-msgstr "Typ av skräpposttjänst:"
-
-msgid "Free reporting"
-msgstr "Gratis rapportering"
-
-msgid "Member services"
-msgstr "Medlemstjänster"
+msgid "Save Method"
+msgstr "Spara metod"
 
 msgid "Your SpamCop authorization code:"
 msgstr "Din behörighetskod till SpamCop:"
 
 msgid "see below"
 msgstr "se nedan"
+
+msgid "Save ID"
+msgstr "Spara ID"
+
+msgid "About SpamCop"
+msgstr "Om SpamCop"
 
 msgid ""
 "SpamCop is a free service that greatly assists in finding the true source of "
@@ -3243,47 +3187,42 @@ msgstr ""
 "SpamCop är en gratistjänst som är till stor hjälp när det gäller att hitta "
 "källan till skäppost och för att vidarebefordra detta till rätt instans."
 
+#, c-format
 msgid ""
-"To use it, you must get a SpamCop authorization code. There is a free <a "
-"href=\"http://spamcop.net/anonsignup.shtml\">sign up page</a> so you can use "
-"SpamCop."
+"To use it, you must get a SpamCop authorization code. There is a free %ssign "
+"up page%s so you can use SpamCop."
 msgstr ""
-"För att använda SpamCop måste du ha en behörighetskod. Det finns en <a href="
-"\"http://spamcop.net/anonsignup.shtml\">anmälningssida</a> så att du kan "
-"börja använda SpamCop."
+"För att använda SpamCop måste du ha en behörighetskod. Det finns en %"
+"sanmälningssida%s så att du kan börja använda SpamCop."
 
+msgid "Before you sign up, be warned"
+msgstr "Läs detta innan du anmäler dig"
+
+#, c-format
 msgid ""
-"<b>Before you sign up, be warned:</b> Some users have reported that the "
-"email addresses used with SpamCop find their way onto spam lists. To be "
-"safe, you can just create an email forwarding account and have all SpamCop "
-"reports get sent to there. Also, if it gets flooded with spam, you can then "
-"just delete that account with no worries about losing your real email "
-"address. Just go create an email forwarder somewhere (<a href=\"http://www."
-"yahoo.com/\">Yahoo!</a> has a <a href=\"http://dir.yahoo.com/"
-"Business_and_Economy/Business_to_Business/Communications_and_Networking/"
-"Internet_and_World_Wide_Web/Email_Providers/Forwarding_Services/"
-"Free_Forwarding/\">list of places</a>) so that messages from system "
-"administrators and whatnot can be sent to you."
+"Some users have reported that the email addresses used with SpamCop find "
+"their way onto spam lists. To be safe, you can just create an email "
+"forwarding account and have all SpamCop reports get sent to there. Also, if "
+"it gets flooded with spam, you can then just delete that account with no "
+"worries about losing your real email address. Just go create an email "
+"forwarder somewhere (%s has a %slist of places%s) so that messages from "
+"system administrators and what not can be sent to you."
 msgstr ""
-"<b>Läs detta innan du anmäler dig:</b> En del användare har rapporterat att "
-"de e-postadresser de använt med SpamCop har dykt upp på skräppostlistor. Om "
-"du vill vara säker bör du skapa en ny adress med vidarebefordring som du "
-"låter SpamCop skicka sina rapporter till. Ifall du får en massa skräppost "
-"till denna adress kan du säga upp den utan risk för att bli av med din "
-"egentliga e-postadress. Skapa alltså en vidarebefordringsadress någonstans "
-"(<a href=\"http://www.yahoo.com/\">Yahoo!</a> har en <a href=\"http://dir."
-"yahoo.com/Business_and_Economy/Business_to_Business/"
-"Communications_and_Networking/Internet_and_World_Wide_Web/Email_Providers/"
-"Forwarding_Services/Free_Forwarding/\">lista med ställen</a>) så att brev "
-"från systemadministratörer m.m. kan skickas till dig."
+"En del användare har rapporterat att de e-postadresser de använt med SpamCop "
+"har dykt upp på skräppostlistor. Om du vill vara säker bör du skapa en ny "
+"adress med vidarebefordring som du låter SpamCop skicka sina rapporter till. "
+"Ifall du får en massa skräppost till denna adress kan du säga upp den utan "
+"risk för att bli av med din egentliga e-postadress. Skapa alltså en "
+"vidarebefordringsadress någonstans (%s har en %slista med ställen%s) så att "
+"brev från systemadministratörer m.m. kan skickas till dig."
 
 msgid ""
 "Once you have signed up with SpamCop and have received your SpamCop "
-"authorization code, you need to enable this plugin -- just click the link "
-"above.  Once enabled, you go about your normal life.  If you encounter a "
-"spam message in your mailbox, just view it.  On the right-hand side, near "
-"the top of where the message is displayed, you will see a link to report "
-"this message as spam.  Clicking on it brings you to a confirmation page. "
+"authorization code, you need to enable this plugin by clicking the link "
+"above. Once enabled, you go about your normal life. If you encounter a spam "
+"message in your mailbox, just view it. On the right-hand side, near the top "
+"of where the message is displayed, you will see a link to report this "
+"message as spam. Clicking on it brings you to a confirmation page. "
 "Confirming that you want the spam report sent will do different things with "
 "different reporting methods."
 msgstr ""
@@ -3295,16 +3234,16 @@ msgstr ""
 "för bekräftelse. När du bekräftar att rapporten ska skickas sker ett antal "
 "olika saker med hjälp av olika rapportmetoder."
 
-msgid "Email-based Reporting"
+msgid "Email-based reporting"
 msgstr "E-postbaserad rapportering"
 
 msgid ""
 "Pressing the button forwards the message to the SpamCop service and will "
-"optionally delete the message.  From there, you just need to go to your "
-"INBOX and quite soon a message should appear from SpamCop.  (It gets sent to "
-"the account you registered with, so make sure that your mail forwarder "
-"works!) Open it up, click on the appropriate link at the top, and a new "
-"browser window will open."
+"optionally delete the message. From there, you just need to go to your INBOX "
+"and quite soon a message should appear from SpamCop. (It gets sent to the "
+"account you registered with, so make sure that your mail forwarder works!) "
+"Open it up, click on the appropriate link at the top, and a new browser "
+"window will open."
 msgstr ""
 "När du trycker på knappen skickas brevet till SpamCop och om så önskas "
 "kastas originalet. Relativt snart kommer ett brev från SpamCop till din "
@@ -3314,14 +3253,14 @@ msgstr ""
 
 msgid ""
 "Currently, the quick reporting just forwards the request to the thorough "
-"reporting.  Also, it appears that this is for members (non-free) only. "
+"reporting. Also, it appears that this is for members (non-free) only. "
 "Hopefully this will change soon."
 msgstr ""
 "För närvarande skickar snabbrapporteringen bara vidare till den grundliga "
 "rapporteringen. Dessutom verkar det som om detta endast är för medlemmar (ej "
 "gratis). Förhoppningsvis ändras detta snart."
 
-msgid "Web-based Reporting"
+msgid "Web-based reporting"
 msgstr "Webbaserad rapportering"
 
 msgid ""
@@ -3339,7 +3278,7 @@ msgid ""
 "The SpamCop service will display information as it finds it, so scroll down "
 "until you see a form button. It might pause a little while it is looking up "
 "information, so be a little patient. Read what it says, and submit the spam. "
-"Close the browser window.  Press Cancel or click on the appropriate mail "
+"Close the browser window. Press Cancel or click on the appropriate mail "
 "folder to see messages and/or delete the spam."
 msgstr ""
 "SpamCop-tjänsten visar informationen som den fått den, så bläddra nedåt till "
@@ -3348,27 +3287,29 @@ msgstr ""
 "Klicka på avbryt eller tillämpbar mapp för att se skräpposten och/eller "
 "kasta den."
 
-msgid "Spamcop Service Type"
+msgid "SpamCop service type"
 msgstr "Typ av SpamCop-tjänst"
 
 msgid ""
-"Service type option allows selecting which spamcop services you are using. "
-"Member services use different web reporting forms  and does not display "
-"nags. You can purchase these services, if you want to support SpamCop."
+"Service type option allows selecting which SpamCop services you are using. "
+"Member services use different web reporting forms and does not display nags. "
+"You can purchase these services, if you want to support SpamCop."
 msgstr ""
 "Tjänstetypen tillåter dig att välja vilken tjänst du använder. "
 "Medlemstjänster använder andra webbrapporteringsformulär och visar inte "
 "irriterande meddelanden. Du kan köpa dessa tjänster om du vill stödja "
 "SpamCop."
 
+msgid "More information"
+msgstr "Mer information"
+
+#, c-format
 msgid ""
-"<b>For more information</b> about SpamCop, it's services, spam in general, "
-"and many related topics, try reading through SpamCop's <a href=\"http://"
-"spamcop.net/help.shtml\">Help and Feedback</a> section."
+"For more information about SpamCop, it's services, spam in general, and many "
+"related topics, try reading through SpamCop's %sHelp and Feedback%s section."
 msgstr ""
-"<b>För mer information</b> om SpamCop, deras tjänster, skräppost i allmänhet "
-"och många relaterade ämnen, se SpamCops <a href=\"http://spamcop.net/help."
-"shtml\">Help and Feedback</a>-sektion."
+"För mer information om SpamCop, deras tjänster, skräppost i allmänhet och "
+"många relaterade ämnen, se SpamCops %sHelp and Feedback%s-sektion."
 
 msgid "Report as Spam"
 msgstr "Anmäl som skräppost"
@@ -3377,8 +3318,8 @@ msgid "SpamCop - Spam Reporting"
 msgstr "SpamCop - Skräppostrapportering"
 
 msgid ""
-"Help fight the battle against unsolicited email.  SpamCop reads the spam "
-"email and determines the correct addresses to send complaints to.  Quite "
+"Help fight the battle against unsolicited email. SpamCop reads the spam "
+"email and determines the correct addresses to send complaints to. Quite "
 "fast, really smart, and easy to use."
 msgstr ""
 "Hjälp till att bekämpa oönskad e-post. SpamCop läser igenom oönskad e-post "
@@ -3388,7 +3329,7 @@ msgstr ""
 msgid ""
 "Sending this spam report will give you back a reply with URLs that you can "
 "click on to properly report this spam message to the proper authorities. "
-"This is a free service.  By pressing the \"Send Spam Report\" button, you "
+"This is a free service. By pressing the \"Send Spam Report\" button, you "
 "agree to follow SpamCop's rules/terms of service/etc."
 msgstr ""
 "När du skickar in denna skräppostrapport kommer du att få tillbaka ett brev "
@@ -3396,6 +3337,12 @@ msgstr ""
 "instanser. Denna tjänst är gratis. Genom att klicka på knappen &quot;Skicka "
 "skräppostrapport&quot; går du med på SpamCops regler, villkor för tjänsten o."
 "s.v."
+
+msgid "Cancel / Done"
+msgstr "Avbryt/klar"
+
+msgid "Send Spam Report"
+msgstr "Skicka skräppostrapport"
 
 msgid "SpellChecker Options"
 msgstr "Inställningar för rättstavning"
@@ -3421,17 +3368,17 @@ msgid ""
 "likely due to the fact that you have changed your mailbox password. In order "
 "to proceed, you will have to supply your old password so that SquirrelSpell "
 "can decrypt your personal dictionary. It will be re-encrypted with your new "
-"password after this.<br>If you haven't encrypted your dictionary, then it "
-"got mangled and is no longer valid. You will have to delete it and start "
-"anew. This is also true if you don't remember your old password -- without "
-"it, the encrypted data is no longer accessible."
+"password after this. If you haven't encrypted your dictionary, then it got "
+"mangled and is no longer valid. You will have to delete it and start anew. "
+"This is also true if you don't remember your old password -- without it, the "
+"encrypted data is no longer accessible."
 msgstr ""
 "SquirrelSpell kunde inte dekryptera din personliga ordlista. Det beror "
 "troligen på det att du har bytt ditt lösenord. För att fortsätta, ange ditt "
 "gamla lösenord så att SquirrelSpell kan dekryptera din personliga ordlista. "
-"Ordlistan kommer sedan att krypteras med ditt nya lösenord.<br>Om du inte "
-"har bytt lösenordet så har din ordlista förmodligen blivit korrupt. I så "
-"fall måste du tyvärr kasta den och skapa en ny. Detta gäller också om du har "
+"Ordlistan kommer sedan att krypteras med ditt nya lösenord. Om du inte har "
+"bytt lösenordet så har din ordlista förmodligen blivit korrupt. I så fall "
+"måste du tyvärr kasta den och skapa en ny. Detta gäller också om du har "
 "glömt ditt gamla lösenord."
 
 msgid "Delete my dictionary and start a new one"
@@ -3468,9 +3415,6 @@ msgstr "Jag försökte exekvera '%s', men fick svaret:"
 msgid "SquirrelSpell is misconfigured."
 msgstr "SquirrelSpell är felkonfigurerat."
 
-msgid "SquirrelSpell Results"
-msgstr "SquirrelSpell-resultat"
-
 msgid "Spellcheck completed. Commit changes?"
 msgstr "Stavningskontrollen är avslutad. Vill du spara förändringarna?"
 
@@ -3479,6 +3423,9 @@ msgstr "Inga ändringar gjordes."
 
 msgid "Now saving your personal dictionary... Please wait."
 msgstr "Sparar din personliga ordlista... Vänligen vänta."
+
+msgid "SquirrelSpell Results"
+msgstr "SquirrelSpell-resultat"
 
 #, c-format
 msgid "Found %s errors"
@@ -3547,6 +3494,19 @@ msgstr "Stavningskontrollen är inte färdig. Stäng och hoppa över ändringarna?"
 msgid "No errors found"
 msgstr "Inga fel funna"
 
+msgid ""
+"Your personal dictionary has been encrypted and is now stored in an "
+"encrypted format."
+msgstr ""
+"Din personliga ordlista har krypterats och har sparats i krypterat format."
+
+msgid ""
+"Your personal dictionary has been decrypted and is now stored as plain text."
+msgstr "Din personliga ordlista har dekrypterats och har sparats i klartext."
+
+msgid "Personal Dictionary Crypto Settings"
+msgstr "Krypteringsinställningar för personlig ordlista"
+
 msgid "Your personal dictionary was erased."
 msgstr "Din personliga ordlista har kastats."
 
@@ -3570,7 +3530,7 @@ msgstr ""
 "Din personliga ordlista har krypterats. Gå tillbaka till &quot;Inställningar "
 "för rättstavning&quot; och bekräfta inställningarna."
 
-msgid "Successful Re-encryption"
+msgid "Successful re-encryption"
 msgstr "Kryptering lyckades"
 
 msgid ""
@@ -3583,23 +3543,6 @@ msgstr ""
 
 msgid "Dictionary re-encrypted"
 msgstr "Ordlistan har krypterats"
-
-msgid ""
-"Your personal dictionary has been <strong>encrypted</strong> and is now "
-"stored in an <strong>encrypted format</strong>."
-msgstr ""
-"Din personliga ordlista har <strong>krypterats</strong> och har sparats i "
-"<strong>krypterat format</strong>."
-
-msgid ""
-"Your personal dictionary has been <strong>decrypted</strong> and is now "
-"stored as <strong>clear text</strong>."
-msgstr ""
-"Din personliga ordlista har <strong>dekrypterats</strong> och har sparats i "
-"<strong>klartext</strong>."
-
-msgid "Personal Dictionary Crypto Settings"
-msgstr "Krypteringsinställningar för personlig ordlista"
 
 msgid "Personal Dictionary"
 msgstr "Personlig ordlista"
@@ -3630,28 +3573,33 @@ msgstr ""
 "Vill du kryptera din personliga ordlista och spara den i ett skyddat format?"
 
 msgid ""
-"This will decrypt your personal dictionary and store it in a clear-text "
+"This will decrypt your personal dictionary and store it in a plain text "
 "format. Proceed?"
 msgstr "Vill du dekryptera din personliga ordlista och spara den i klartext?"
 
+msgid "Your personal dictionary is currently encrypted."
+msgstr "Din personliga ordlista är för närvarande krypterad."
+
 msgid ""
-"<p>Your personal dictionary is <strong>currently encrypted</strong>. This "
-"helps protect your privacy in case the web-mail system gets compromized and "
-"your personal dictionary ends up stolen. It is currently encrypted with the "
-"password you use to access your mailbox, making it hard for anyone to see "
-"what is stored in your personal dictionary.</p> <p><strong>ATTENTION:</"
-"strong> If you forget your password, your personal dictionary will become "
+"This helps protect your privacy in case the web-mail system gets compromized "
+"and your personal dictionary ends up stolen. It is currently encrypted with "
+"the password you use to access your mailbox, making it hard for anyone to "
+"see what is stored in your personal dictionary."
+msgstr ""
+"Detta skyddar din personliga ordlista om webbpostsystemet utsätts för "
+"intrång och din ordlista blir stulen. Ordlistan är krypterad med ditt kontos "
+"lösenord. Detta gör det mycket svårt för andra att se vad som är sparat där."
+
+msgid ""
+"If you forget your password, your personal dictionary will become "
 "unaccessible, since it can no longer be decrypted. If you change your "
 "mailbox password, SquirrelSpell will recognize it and prompt you for your "
-"old password in order to re-encrypt the dictionary with a new key.</p>"
+"old password in order to re-encrypt the dictionary with a new key."
 msgstr ""
-"<p>Din personliga ordlista är <strong>krypterad</strong>. Detta skyddar den "
-"om webbpostsystemet utsätts för intrång och din ordlista blir stulen. "
-"Ordlistan är krypterad med ditt lösenord, detta gör det mycket svårt för "
-"andra att se vad som är sparat där.</p> <p><strong>OBS:</strong> Om du "
-"glömmer ditt lösenord kommer du inte att kunna använda din ordlista. Om du "
-"byter ditt lösenord, märker SquirrelSpell det och frågar efter ditt gamla "
-"lösenord för att sedan kryptera om ordlistan med det nya lösenordet.</p>"
+"Om du glömmer ditt lösenord kommer du inte att kunna använda din personliga "
+"ordlista. Om du byter ditt kontos lösenord, märker SquirrelSpell det och "
+"frågar efter ditt gamla lösenord för att sedan kryptera om ordlistan med det "
+"nya lösenordet."
 
 msgid ""
 "Please decrypt my personal dictionary and store it in a clear-text format."
@@ -3660,37 +3608,42 @@ msgstr "Dekryptera min personliga ordlista och spara den i klartext."
 msgid "Change crypto settings"
 msgstr "Ändra krypteringsinställningar"
 
+msgid "Your personal dictionary is currently not encrypted."
+msgstr "Din personliga ordlista är för närvarande okrypterad."
+
 msgid ""
-"<p>Your personal dictionary is <strong>currently not encrypted</strong>. You "
-"may wish to encrypt your personal dictionary to protect your privacy in case "
-"the webmail system gets compromized and your personal dictionary file gets "
-"stolen. When encrypted, the file's contents look garbled and are hard to "
-"decrypt without knowing the correct key (which is your mailbox password).</"
-"p> <strong>ATTENTION:</strong> If you decide to encrypt your personal "
-"dictionary, you must remember that it gets &quot;hashed&quot; with your "
-"mailbox password. If you forget your mailbox password and the administrator "
-"changes it to a new value, your personal dictionary will become useless and "
-"will have to be created anew. However, if you or your system administrator "
-"change your mailbox password but you still have the old password at hand, "
-"you will be able to enter the old key to re-encrypt the dictionary with the "
-"new value.</p>"
+"You may wish to encrypt your personal dictionary to protect your privacy in "
+"case the webmail system gets compromized and your personal dictionary file "
+"gets stolen. When encrypted, the file's contents look garbled and are hard "
+"to decrypt without knowing the correct key (which is your mailbox password)."
 msgstr ""
-"<p>Din personliga ordlista är <strong>inte krypterad</strong>. Du kanske "
-"vill kryptera den för att skydda den om webbpostsystemet blir utsatt för "
-"intrång och din ordlista blir stulen. I krypterad form är ordlistan oläsbar "
-"utan en giltig nyckel (ditt lösenord).</p> <p><strong>OBS:</strong> Om du "
-"väljer att kryptera din ordlista och glömmer ditt lösenord, du kan inte "
-"längre använda den utan måste skapa en ny. Om du eller systemadministratören "
-"byter ditt lösenord kan du ange ditt gamla lösenord för att dekryptera "
-"ordlistan och sedan kryptera om den igen med det nya lösenordet."
+"Du kanske vill kryptera din personliga ordlista för att skydda den om "
+"webbpostsystemet blir utsatt för intrång och din ordlista blir stulen. I "
+"krypterad form är ordlistan oläsbar och svårforcerad utan en giltig nyckel "
+"(ditt lösenord)."
+
+msgid ""
+"If you decide to encrypt your personal dictionary, you must remember that it "
+"gets &quot;hashed&quot; with your mailbox password. If you forget your "
+"mailbox password and the administrator changes it to a new value, your "
+"personal dictionary will become useless and will have to be created anew. "
+"However, if you or your system administrator change your mailbox password "
+"but you still have the old password at hand, you will be able to enter the "
+"old key to re-encrypt the dictionary with the new value."
+msgstr ""
+"Om du väljer att kryptera din ordlista och glömmer ditt lösenord, du kan "
+"inte längre använda den utan måste skapa en ny. Om du eller "
+"systemadministratören byter ditt kontos lösenord kan du ange ditt gamla "
+"lösenord för att dekryptera ordlistan och sedan kryptera om den igen med det "
+"nya lösenordet."
 
 msgid ""
 "Please encrypt my personal dictionary and store it in an encrypted format."
 msgstr "Kryptera min personliga ordlista och spara den i skyddat format."
 
 #, c-format
-msgid "Deleting the following entries from <strong>%s</strong> dictionary:"
-msgstr "Stryker följande ord från <strong>%s</strong> ordlista:"
+msgid "Deleting the following entries from %s dictionary:"
+msgstr "Stryker följande ord från %s ordlista:"
 
 msgid "All done!"
 msgstr "Färdig."
@@ -3714,17 +3667,12 @@ msgid "SquirrelSpell Initiating"
 msgstr "Startar SquirrelSpell"
 
 #, c-format
-msgid ""
-"Settings adjusted to: <strong>%s</strong> with <strong>%s</strong> as "
-"default dictionary."
-msgstr ""
-"Inställningarna justerade till: <strong>%s</strong> med <strong>%s</strong> "
-"som förvald ordlista"
+msgid "Settings adjusted to: %s with %s as default dictionary."
+msgstr "Inställningarna justerade till: %s med %s som förvald ordlista"
 
 #, c-format
-msgid "Using <strong>%s</strong> dictionary (system default) for spellcheck."
-msgstr ""
-"Använder <strong>%s</strong> ordlista (systemstandard) för stavningskontroll."
+msgid "Using %s dictionary (system default) for spellcheck."
+msgstr "Använder %s ordlista (systemstandard) för stavningskontroll."
 
 msgid "International Dictionaries Preferences Updated"
 msgstr "Inställningar för internationell ordlista har uppdaterats"
@@ -3781,15 +3729,15 @@ msgstr "Antal språkpar som stödjs: %s"
 msgid "No known limits, powered by Systran"
 msgstr "Inga kända begränsningar (använder Systran)"
 
-msgid "No known limits, powered by GPLTrans (free, open source)"
-msgstr "Inga kända begränsningar (använder GPLTrans (fri, öppen källkod)"
-
-msgid "No known limits, powered by Translation Experts's InterTran"
+msgid "No known limits, powered by Translation Experts' InterTran"
 msgstr "Inga kända begränsningar (använder Translation Experts' InterTran)"
 
 #, c-format
 msgid "Number of supported languages: %s"
 msgstr "Antal språk som stödjs: %s"
+
+msgid "No known limits, powered by GPLTrans (free, open source)"
+msgstr "Inga kända begränsningar (använder GPLTrans (fri, öppen källkod)"
 
 msgid "Hellenic translations, no known limits, powered by Systran"
 msgstr "Helleniska översättningar, inga kända begränsningar (använder Systran)"
@@ -3894,8 +3842,8 @@ msgstr "Danska"
 msgid "Dutch"
 msgstr "Holländska"
 
-msgid "Filipino (Tagalog)"
-msgstr "Filippinska (Tagalog)"
+msgid "European Spanish"
+msgstr "Europeisk spanska"
 
 msgid "Finnish"
 msgstr "Finska"
@@ -3908,9 +3856,6 @@ msgstr "Ungerska"
 
 msgid "Icelandic"
 msgstr "Isländska"
-
-msgid "Latin"
-msgstr "Latin"
 
 msgid "Latin American Spanish"
 msgstr "Latinamerikansk spanska"
@@ -3942,17 +3887,14 @@ msgstr "Walesiska"
 msgid "Indonesian"
 msgstr "Indonesiska"
 
+msgid "Latin"
+msgstr "Latin"
+
 msgid "to English"
 msgstr "till Engelska"
 
 msgid "from English"
 msgstr "från Engelska"
-
-msgid "Simplified Chinese"
-msgstr "Kinsiska, förenklad"
-
-msgid "Traditional Chinese"
-msgstr "Kinesiska, traditionel"
 
 msgid "Interface language"
 msgstr "Språk för gränssnittet"
@@ -3960,8 +3902,543 @@ msgstr "Språk för gränssnittet"
 msgid "Translation direction"
 msgstr "Översättningsriktning"
 
+msgid "sort by nickname"
+msgstr "Sortera efter kortnamn"
+
+msgid "sort by name"
+msgstr "Sortera efter namn"
+
+msgid "sort by email"
+msgstr "Sortera efter e-postadress"
+
+msgid "sort by info"
+msgstr "Sortera efter information"
+
+msgid "Add to address book"
+msgstr "Lägg till i adressboken"
+
+msgid "Purge"
+msgstr "Töm"
+
+msgid "Error(s) happened while saving your options"
+msgstr "Fel uppstod när inställningarna sparades"
+
+msgid "Some of your preference changes are not applied."
+msgstr "En del av ändringarna kommer inte att tillämpas."
+
+msgid "As Attachment"
+msgstr "som bilaga"
+
+msgid "Bypass Trash"
+msgstr "Kringgå papperskorgen"
+
+msgid "Please enter something to search for"
+msgstr "Ange något att söka efter"
+
+msgid "There must be at least one criteria to search for"
+msgstr "Det måste finnas minst ett sökkriterium"
+
+msgid "Error in criteria argument"
+msgstr "Fel i kriteriumet"
+
+msgid "(Illegal date)"
+msgstr "(Otillåtet datum)"
+
+msgid "(Wrong date)"
+msgstr "(Fel datum)"
+
+msgid "In"
+msgstr "Sök i"
+
+msgid "(Missing argument)"
+msgstr "(Saknat argument)"
+
+msgid "(Spurious argument)"
+msgstr "(Falskt argument)"
+
+msgid "Fold"
+msgstr "Dölj"
+
+msgid "Unfold"
+msgstr "Visa"
+
+msgid "Saved Searches"
+msgstr "Sparade sökningar"
+
+msgid "Missing"
+msgstr "Saknas"
+
+msgid "and&nbsp;subfolders:"
+msgstr "och&nbsp;undermappar:"
+
+msgid "Exclude Criteria:"
+msgstr "Uteslut kriterium:"
+
+msgid "Search Criteria"
+msgstr "Sökkriterier"
+
+msgid "Add New Criteria"
+msgstr "Lägg till nya kriterier"
+
+msgid "Remove Excluded Criteria"
+msgstr "Ta bort uteslutna kriterier"
+
+msgid "Remove All Criteria"
+msgstr "Ta bort alla kriterier"
+
+msgid "Not"
+msgstr "Inte"
+
+msgid "Answered"
+msgstr "Besvarad"
+
+msgid "Before"
+msgstr "Innan"
+
+msgid "Message Body"
+msgstr "Brevtext"
+
+msgid "Deleted"
+msgstr "Borttagen"
+
+msgid "Draft"
+msgstr "Utkast"
+
+msgid "Flagged"
+msgstr "Markerat"
+
+msgid "Sent By"
+msgstr "Skickad av"
+
+msgid "Header Field"
+msgstr "Fält i huvud"
+
+msgid "Keyword"
+msgstr "Nyckelord"
+
+msgid "Larger Than"
+msgstr "Större än"
+
+msgid "Old"
+msgstr "Gammal"
+
+msgid "On"
+msgstr "På"
+
+msgid "Recent"
+msgstr "Nyligen"
+
+msgid "Seen"
+msgstr "Läst"
+
+msgid "Sent Before"
+msgstr "Skickat innan"
+
+msgid "Sent On"
+msgstr "Skickat den"
+
+msgid "Sent Since"
+msgstr "Skickat sedan"
+
+msgid "Since"
+msgstr "Sedan"
+
+msgid "Smaller Than"
+msgstr "Mindre än"
+
+msgid "Subject Contains"
+msgstr "Ärendet innehåller"
+
+msgid "Header and Body"
+msgstr "Huvud och text"
+
+msgid "Sent To"
+msgstr "Skickat till"
+
+msgid "And In"
+msgstr "och i"
+
+msgid "Or In"
+msgstr "eller i"
+
+msgid "And"
+msgstr "och"
+
+msgid "Or"
+msgstr "eller"
+
+msgid "Standard search"
+msgstr "Standardsökning"
+
+msgid "Advanced search"
+msgstr "Avancerad sökning"
+
+msgid "Folder List"
+msgstr "Lista över mappar"
+
+msgid "Click here to change the sorting of the address list"
+msgstr "Ändra sorteringen av adresslistan"
+
+msgid "Possible reason : "
+msgstr "Trolig orsak : "
+
+msgid "ERROR : Bad function call."
+msgstr "FEL : Felaktigt funktionsanrop."
+
+msgid "Reason:"
+msgstr "Orsak:"
+
+msgid "Server responded:"
+msgstr "Servern svarade:"
+
+msgid ""
+"TLS is enabled, but this version of PHP does not support TLS sockets, or is "
+"missing the openssl extension."
+msgstr ""
+"TLS är aktiverat, men denna version av PHP stödjer inte TLS-uttag, eller "
+"saknar OpenSSL-utbyggnaden."
+
+msgid "Unknown recipient"
+msgstr "Okänd mottagare"
+
+msgid "Unflag"
+msgstr "Avmarkera"
+
+msgid "Flag"
+msgstr "Markera"
+
+msgid "Click here to change the sorting of the message list"
+msgstr "Ändrar sorteringen av brevlistan"
+
+msgid "Message Flags Icon Theme"
+msgstr "Tema för brevikoner"
+
+msgid "Show Flag / Unflag Buttons"
+msgstr "Visa knapparna &quot;Markera&quot; och &quot;Avmarkera&quot;"
+
+msgid "Use Compact Page Selector"
+msgstr "Använd kompakt sidväljare"
+
+msgid "Length of From/To Field (0 for full)"
+msgstr "Längd på från-/till-fältet (0 för full längd)"
+
+msgid "Length of Subject Field (0 for full)"
+msgstr "Längd på ärendefältet (0 för full längd)"
+
+msgid "Show recipient name if the message is from your default identity"
+msgstr "Visa mottagarnamn om brevet är från din egen huvudidentitet"
+
+msgid "Prefix for Original Message when Replying"
+msgstr "Tecken som inleder citerade rader när brev besvaras"
+
+msgid "Strip signature when replying"
+msgstr "Avlägsna brevfot vid svar"
+
+msgid "Show 'Delete & Prev/Next' Links"
+msgstr "Visa Kasta och visa föregående/nästa-länkar."
+
+msgid "Save Replies with Original Message"
+msgstr "Spara svar ihop med det ursprungliga brevet"
+
+msgid "XP"
+msgstr "XP"
+
+msgid "Hide SquirrelMail Header"
+msgstr "Dölj SquirrelMail-poster i brevhuvudet"
+
+msgid "Search functions"
+msgstr "Sökfunktioner"
+
+msgid "Only basic search"
+msgstr "Endast standardsökning"
+
+msgid "Only advanced search"
+msgstr "Endast avancerad sökning"
+
+msgid "Both search functions"
+msgstr "Båda sökfunktionerna"
+
+msgid "Show alternative language names"
+msgstr "Visa alternativa språknamn"
+
+msgid "Available languages"
+msgstr "Tillgängliga språk"
+
+msgid "Enable aggressive decoding"
+msgstr "Använd aggressiv avkodning"
+
+msgid "Tweaks"
+msgstr "Finjusteringar"
+
+msgid "Use advanced tree folder listing"
+msgstr "Använd avancerad mappträdlista"
+
+msgid "Use old folder listing functions"
+msgstr "Använd gamla mapplistefunktioner"
+
+msgid "Use icons"
+msgstr "Använd ikoner"
+
+msgid "Use php recode functions"
+msgstr "Använd PHP-omkodningsfunktioner"
+
+msgid "Use php iconv functions"
+msgstr "Använd PHP:s iconv-funktioner"
+
+msgid "Search Mailing List Archives"
+msgstr "Sök i e-postlistornas arkiv (på engelska)"
+
+msgid "Search SourceForge Bugtracker"
+msgstr "Sök i SourceForges Bugtracker (på engelska)"
+
+msgid "Search for words:"
+msgstr "Sök efter orden:"
+
+msgid "Written by:"
+msgstr "Skrivet av:"
+
+msgid "Email addresses only"
+msgstr "Endast e-postadresser"
+
+msgid "Mailing list:"
+msgstr "E-postlista:"
+
+msgid "SquirrelMail users list"
+msgstr "SquirrelMail users list"
+
+msgid "SquirrelMail plugins list"
+msgstr "SquirrelMail plugins list"
+
+msgid "SquirrelMail developers list"
+msgstr "SquirrelMail developers list"
+
+msgid "SquirrelMail internationalization list"
+msgstr "SquirrelMail internationalization list"
+
+msgid "Sort by:"
+msgstr "Sortera efter:"
+
+msgid "Relevance"
+msgstr "Relevans"
+
+msgid "Search Archives"
+msgstr "Sök i arkivet"
+
+msgid "Reset Form"
+msgstr "Återställ formuläret"
+
+msgid "Summary keyword:"
+msgstr "Ord i sammanfattningen:"
+
+msgid "Sort By:"
+msgstr "Sortera efter:"
+
+msgid "ID"
+msgstr "ID"
+
+msgid "Summary"
+msgstr "Sammanfattning"
+
+msgid "Open Date"
+msgstr "Öppningsdatum"
+
+msgid "Close Date"
+msgstr "Stängningsdatum"
+
+msgid "Submitter"
+msgstr "Insändare"
+
+msgid "Assignee"
+msgstr "Uppdragsinnehavare"
+
+msgid "Order:"
+msgstr "Ordning:"
+
+msgid "Ascending"
+msgstr "Stigande"
+
+msgid "Descending"
+msgstr "Fallande"
+
+msgid "Search Bugtracker"
+msgstr "Sök i Bugtracker"
+
+msgid "Show system specs"
+msgstr "Visa systemspecifikationerna"
+
+msgid "You must type in a new password."
+msgstr "Du måste ange ditt nya lösenord."
+
+msgid "You must also type in your new password in the verify box."
+msgstr "Du måste även ange ditt nya lösenord i verifikationsrutan."
+
+msgid "Your new password does not match the verify password."
+msgstr "Det nya lösenordet och verifikationen därav överensstämmer inte."
+
+msgid "You must type in your current password."
+msgstr "Du måste ange ditt nuvarande lösenord."
+
+msgid "Your current password is not correct."
+msgstr "Ditt nuvarade lösenord är inte korrekt angivet."
+
+#, c-format
+msgid "Your new password should be %s to %s characters long."
+msgstr "Ditt nya lösenord ska bestå av %s till %s tecken."
+
+msgid "Your new password contains invalid characters."
+msgstr "Ditt nya lösenord innehåller otillåtna tecken"
+
+msgid "Change Password"
+msgstr "Byt lösenord"
+
+msgid "Current Password:"
+msgstr "Ditt nuvarande lösenord:"
+
+msgid "New Password:"
+msgstr "Ditt nya lösenord:"
+
+msgid "Verify New Password:"
+msgstr "Verifiera det nya lösenordet:"
+
+msgid "Use this to change your email password."
+msgstr "Byt lösenordet till ditt e-postkonto."
+
+msgid "Curl module NOT available! Unable to change password!"
+msgstr "Curl-modulen är inte tillgänglig. Det gick inte att byta lösenordet!"
+
+msgid "Cannot change password! (Is user 'Self Configurable User' ?) (401)"
+msgstr ""
+"Det gick inte att byta lösenordet! (Har användaren "
+"administrationsrättigheter? Fel: 401)"
+
+msgid "Cannot change password!"
+msgstr "Det gick inte att byta lösenordet!"
+
+msgid "Cannot connect to Database Server, please try later!"
+msgstr "Kan inte ansluta till databasservern. Försök igen senare."
+
+msgid "Database not found on server"
+msgstr "Kan inte hitta databasen på servern"
+
+msgid "SQL call failed, try again later."
+msgstr "SQL-anropet misslyckades. Försök igen senare."
+
+msgid "Duplicate login entries detected, cannot change password!"
+msgstr ""
+"Flera samtidiga inloggningar detekterades. Det gick inte att byta lösenordet!"
+
+msgid "Password change was not successful!"
+msgstr "Det gick inte att byta lösenordet!"
+
+msgid "Closing Connection"
+msgstr "Stänger anslutningen"
+
+msgid "Connecting to Password Server"
+msgstr "Ansluter till lösenordsservern"
+
+#, c-format
+msgid "%s is not found."
+msgstr "Hittade inte %s."
+
+msgid "Server Capability response:"
+msgstr "Serverns kapabilitetssvar:"
+
+msgid ""
+"Select the IMAP commands you would like to run. Most commands require a "
+"selected mailbox so the select command is already setup. You can clear all "
+"the commands and test your own IMAP command strings. The commands are "
+"executed in order. The default values are simple IMAP commands using your "
+"default_charset and folder_prefix from SquirrelMail when needed."
+msgstr ""
+"Välj de IMAP-kommandon du vill testa. De flesta tester kräver en vald "
+"brevlåda, så kommandot &quot;SELECT&quot; är redan valt. Du kan byta ut alla "
+"kommandon mot egendefinierade sådana. De utförs i den ordning de står i "
+"listan. De förvalda kommandona är enkla IMAP-kommandon som använder "
+"SquirrelMails &quot;default_charset&quot; och &quot;folder_prefix&quot; när "
+"så behövs."
+
+msgid ""
+"NOTE: These commands are live, any changes made will effect your current "
+"email account."
+msgstr ""
+"OBS! Dessa kommondon simuleras inte, utan kommer att påverka det aktuella e-"
+"postkontot."
+
+msgid "Select"
+msgstr "Välj"
+
+msgid "Test Name"
+msgstr "Testets namn"
+
+msgid "IMAP command string"
+msgstr "IMAP-kommando"
+
+msgid "Request:"
+msgstr "Begäran:"
+
+msgid "No POP3 servers configured yet."
+msgstr "Inga POP3-servrar är konfigurerade."
+
+msgid "Click here to go to the options page."
+msgstr "Tillbaka till inställningar"
+
+#, c-format
+msgid "Login OK: Inbox contains %s message"
+msgid_plural "Login OK: Inbox contains %s messages"
+msgstr[0] "Inloggning OK: Inkorgen innehåller %s brev"
+msgstr[1] "Inloggning OK: Inkorgen innehåller %s brev"
+
+msgid "Spam Service Type:"
+msgstr "Typ av skräpposttjänst:"
+
+msgid "Free reporting"
+msgstr "Gratis rapportering"
+
+msgid "Member services"
+msgstr "Medlemstjänster"
+
+msgid "Save Service Type"
+msgstr "Spara tjänstetyp"
+
+msgid "SpamCop reporting"
+msgstr "Skräppostrapportering till SpamCop"
+
+msgid "Translation Theme:"
+msgstr "Översättningstema:"
+
+msgid ""
+"Selected translation engine is disabled. Please update your translation "
+"preferences."
+msgstr ""
+"Den valda översättningsmotorn är inaktiverad. Uppdatera dina "
+"översättningsinställningar."
+
+msgid "Translation Preferences"
+msgstr "Översättningsinställningar"
+
+msgid "Maximum of 150 words translated, powered by Systran"
+msgstr "Maximalt 150 översatta ord (använder Systran)"
+
+msgid "Maximum of 25 kilobytes translated, powered by Systran"
+msgstr "Maximalt 25 000 översatta tecken (använder Systran)"
+
+msgid "Chinese, Simplified"
+msgstr "Kinsiska, förenklad"
+
+msgid "Chinese, Traditional"
+msgstr "Kinesiska, traditionell"
+
+msgid "Filipino (Tagalog)"
+msgstr "Filippinska (Tagalog)"
+
+msgid "Transliterate unknown words:"
+msgstr "Transkribera okända ord:"
+
 msgid "Delivery error report"
 msgstr "Rapport om leveransfel"
 
 msgid "Undelivered Message Headers"
 msgstr "Brevhuvud för olevererade brev"
+
+msgid "This image has been removed for security reasons"
+msgstr "Av säkerhetsskäl är denna bild avlägsnad"
