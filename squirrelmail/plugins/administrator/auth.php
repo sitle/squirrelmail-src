@@ -9,8 +9,15 @@
  *  $Id$
  */
 function adm_check_user() {
+    global $_SESSION, $_SERVER;
 
-    GLOBAL $username, $PHP_SELF;
+    if (isset($_SESSION['username'])) {
+        $username = $_SESSION['username'];
+    }
+    else {
+        $username = "";
+    }
+    $PHP_SELF = $_SERVER['PHP_SELF'];
 
     if ( strpos( 'options.php', $PHP_SELF ) ) {
         $auth = FALSE;
