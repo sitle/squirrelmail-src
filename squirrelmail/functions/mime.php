@@ -1071,7 +1071,7 @@ function sq_getnxtag($body, $offset){
          * double quotes. Type 4 we convert into:
          * attrname="yes".
          */
-        $regary = sq_findnxreg($body, $pos, "[^\w\-_]");
+        $regary = sq_findnxreg($body, $pos, "[^:\w\-_]");
         if ($regary == false){
             /**
              * Looks like body ended before the end of tag.
