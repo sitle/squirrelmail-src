@@ -159,6 +159,12 @@ function displayPageHeader($color, $mailbox, $xtra='', $session=false) {
             {
                 if ($reply_focus == 'select') $js .= "document.forms['compose'].body.select();}\n";
                 else if ($reply_focus == 'focus') $js .= "document.forms['compose'].body.focus();}\n";
+                else if ($reply_focus == 'none') $js .= "}\n";
+            }
+            // no reply focus also applies to composing new messages
+            else if ($reply_focus == 'none')
+            {
+                $js .= "}\n";
             }
             else
                 $js .= "var f = document.forms.length;\n".
