@@ -16,7 +16,6 @@
 /** The standard includes.. */
 require_once(SM_PATH . 'functions/strings.php');
 require_once(SM_PATH . 'functions/html.php');
-require_once(SM_PATH . 'class/html.class.php');
 require_once(SM_PATH . 'functions/imap_mailbox.php');
 require_once(SM_PATH . 'functions/imap_messages.php');
 require_once(SM_PATH . 'functions/imap_asearch.php');
