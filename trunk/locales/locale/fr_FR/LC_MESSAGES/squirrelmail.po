@@ -1,12 +1,13 @@
 # French Squirrelmail Translation
-# Copyright (c) 1999-2002 The Squirrelmail Development Team
-# 2002-2003 Antoine Hulin <antoine@origan.fdn.org>
-# 
+# Copyright (c) 1999-2004 The Squirrelmail Development Team
+# Antoine Hulin <antoine@origan.fdn.org>, 2002-2003
+# Alex Lemaresquier <alex@brainstorm.fr>, 2003-2004
+# $Id$
 msgid ""
 msgstr ""
-"Project-Id-Version: $Id$\n"
-"POT-Creation-Date: 2003-12-26 17:29+0200\n"
-"PO-Revision-Date: 2004-02-01 00:18GMT+1\n"
+"Project-Id-Version: squirrelmail \n"
+"POT-Creation-Date: 2004-02-07 15:34+0200\n"
+"PO-Revision-Date: 2004-02-17 15:30GMT+1\n"
 "Last-Translator: Alex Lemaresquier <alex@brainstorm.fr>\n"
 "Language-Team: French <squirrelmail-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -95,9 +96,6 @@ msgstr "Pr&#233;nom&#160;"
 msgid "Additional info"
 msgstr "Informations compl&#233;mentaires&#160;"
 
-msgid "Add to:"
-msgstr "Ajouter &#224;&#160;: "
-
 msgid "No personal address book is defined. Contact administrator."
 msgstr "Aucun carnet d'adresses n'est d&#233;fini. Contactez l'administrateur."
 
@@ -122,12 +120,13 @@ msgstr "&#201;diter la s&#233;lection"
 msgid "Delete selected"
 msgstr "Supprimer la s&#233;lection"
 
-msgid "Add to address book"
-msgstr "Ajouter au carnet d'adresses"
+#, c-format
+msgid "Add to %s"
+msgstr "Ajouter &#224;&#160;: %s"
 
 # Attention, pas HTML
 msgid "said"
-msgstr "a dit "
+msgstr "a écrit "
 
 # Attention, pas HTML
 msgid "quote"
@@ -159,7 +158,7 @@ msgstr ""
 msgid "Draft Saved"
 msgstr "Brouillon enregistr&#233;"
 
-msgid "Your Message has been sent."
+msgid "Your Message has been sent"
 msgstr "Votre message a &#233;t&#233; envoy&#233;."
 
 msgid "From:"
@@ -721,35 +720,8 @@ msgstr "Pi&#232;ces jointes&#160;"
 msgid "You must be logged in to access this page."
 msgstr "Il faut &#234;tre connect&#233; pour acc&#233;der &#224; cette page"
 
-msgid "All Folders"
-msgstr "Tous les dossiers"
-
-msgid "Please enter something to search for"
-msgstr "Il faut choisir un crit&#232;re de recherche"
-
-msgid "There must be at least one criteria to search for"
-msgstr "Il faut au moins un crit&#232;re de recherche"
-
-msgid "Error in criteria argument"
-msgstr "Erreur dans l'argument d'un crit&#232;re"
-
-msgid "M j, Y"
-msgstr "j M Y"
-
-msgid "(Illegal date)"
-msgstr "(Date ill&#233;gale)"
-
-msgid "(Wrong date)"
-msgstr "(Date invalide)"
-
-msgid "In"
-msgstr "Dans"
-
-msgid "(Missing argument)"
-msgstr "(Argument manquant)"
-
-msgid "(Spurious argument)"
-msgstr "(Argument superflu)"
+msgid "Folder:"
+msgstr "Dossier&#160;:"
 
 msgid "edit"
 msgstr "&#201;diter"
@@ -760,8 +732,8 @@ msgstr "Rechercher"
 msgid "delete"
 msgstr "Supprimer"
 
-msgid "Saved Searches"
-msgstr "Recherches enregistr&#233;es"
+msgid "Recent Searches"
+msgstr "Derni&#232;res recherches"
 
 msgid "save"
 msgstr "Enregistrer"
@@ -769,121 +741,17 @@ msgstr "Enregistrer"
 msgid "forget"
 msgstr "Oublier"
 
-msgid "Recent Searches"
-msgstr "Derni&#232;res recherches"
+msgid "Current Search"
+msgstr "Recherche"
 
-msgid "Missing"
-msgstr "Disparu"
+msgid "All Folders"
+msgstr "Tous les dossiers"
 
-msgid "and&nbsp;subfolders:"
-msgstr "et&nbsp;sous-dossiers"
+msgid "Body"
+msgstr "Corps"
 
-msgid "Exclude Criteria:"
-msgstr "Exclure ce Crit&#232;re&#160;:"
-
-msgid "Search Criteria"
-msgstr "Crit&#232;res de Recherche"
-
-msgid "Folder:"
-msgstr "Dossier&#160;:"
-
-msgid "Add New Criteria"
-msgstr "Ajouter un Crit&#232;re"
-
-msgid "Remove Excluded Criteria"
-msgstr "Supprimer les Crit&#232;res Exclus"
-
-msgid "Remove All Criteria"
-msgstr "Supprimer tous les Crit&#232;res"
-
-msgid "Answered"
-msgstr "R&#233;pondu"
-
-msgid "Before"
-msgstr "Datant d'avant le"
-
-# BODY
-msgid "Message Body"
-msgstr "Corps du message"
-
-msgid "Deleted"
-msgstr "Supprim&#233;"
-
-msgid "Draft"
-msgstr "Brouillon"
-
-msgid "Flagged"
-msgstr "Marqu&#233;"
-
-# FROM
-msgid "Sent By"
-msgstr "Envoy&#233; par"
-
-# HEADER
-msgid "Header Field"
-msgstr "Champ d'en-t&#234;te"
-
-msgid "Keyword"
-msgstr "Mot-cl&#233;"
-
-# LARGER
-msgid "Larger Than"
-msgstr "Plus gros que"
-
-msgid "Old"
-msgstr "Ancien"
-
-msgid "On"
-msgstr "Datant du"
-
-msgid "Recent"
-msgstr "R&#233;cent"
-
-msgid "Seen"
-msgstr "Lu"
-
-msgid "Sent Before"
-msgstr "Envoy&#233; avant le"
-
-msgid "Sent On"
-msgstr "Envoy&#233; le"
-
-msgid "Sent Since"
-msgstr "Envoy&#233; apr&#232;s le"
-
-msgid "Since"
-msgstr "Datant d'apr&#232;s le"
-
-# SMALLER
-msgid "Smaller Than"
-msgstr "Plus petit que"
-
-# SUBJECT
-msgid "Subject Contains"
-msgstr "Objet contenant"
-
-# TEXT
-msgid "Header and Body"
-msgstr "En-t&#234;te et Corps"
-
-# TO
-msgid "Sent To"
-msgstr "Envoy&#233; &#224;"
-
-msgid "Not"
-msgstr "Pas"
-
-msgid "And In"
-msgstr "Et dans"
-
-msgid "Or In"
-msgstr "Ou dans"
-
-msgid "And"
-msgstr "Et"
-
-msgid "Or"
-msgstr "Ou"
+msgid "Everywhere"
+msgstr "Partout"
 
 msgid "Search Results"
 msgstr "R&#233;sultat de la recherche"
@@ -944,9 +812,6 @@ msgstr "En-t&#234;te complet"
 
 msgid "Viewing a text attachment"
 msgstr "Voir un fichier texte joint"
-
-msgid "Folder List"
-msgstr "Liste des dossiers"
 
 msgid "Personal address book"
 msgstr "Carnet d'adresses personnel"
@@ -1148,6 +1013,9 @@ msgstr "D j F Y G:i"
 msgid "D, F j, Y G:i"
 msgstr "D j F Y G:i"
 
+msgid "M j, Y"
+msgstr "j M Y"
+
 msgid "g:i a"
 msgstr "G:i"
 
@@ -1163,6 +1031,12 @@ msgstr "D, G:i"
 #, c-format
 msgid "Preference database error (%s). Exiting abnormally"
 msgstr "Erreur du fichier de pr&#233;f&#233;rences (%s). Sortie inattendue."
+
+msgid "Unknown user or password incorrect."
+msgstr "Utilisateur inconnu ou mot de passe incorrect."
+
+msgid "Click here to try again"
+msgstr "Cliquez ici pour réessayer"
 
 #, c-format
 msgid "Click here to return to %s"
@@ -1249,48 +1123,39 @@ msgstr ""
 "temporaire %s. Contactez votre administrateur pour la r&#233;solution de ce "
 "probl&#232;me."
 
-msgid "ERROR : Could not complete request."
-msgstr "ERREUR&#160;: Impossible d'achever la requ&#234;te."
-
-msgid "ERROR : Bad or malformed request."
-msgstr "Erreur&#160;: requ&#234;te invalide ou mal formul&#233;e."
-
-msgid "ERROR : Imap server closed the connection."
-msgstr "ERREUR&#160;: Le serveur IMAP a rompu la connexion."
-
-msgid "ERROR : Connection dropped by imap-server."
-msgstr "ERREUR&#160;: Connexion interrompue par le serveur IMAP."
-
-msgid "ERROR : Unknown imap response."
-msgstr "ERREUR&#160;: R&#233;ponse IMAP inconnue."
-
-msgid "Reason Given: "
-msgstr "Raison invoqu&#233;e&#160;: "
-
-msgid "Possible reason : "
-msgstr "Raison possible : "
-
-msgid "Query:"
-msgstr "Requ&#234;te&#160;:"
-
-msgid "The imap server failed to handle threading."
-msgstr "Le serveur imap n'a pas pu g&#233;rer les fils de discussion."
-
-msgid "Click here to unset thread view for this mailbox and start again."
+msgid ""
+"You need to have php4 installed with the multibyte string function enabled "
+"(using configure option --enable-mbstring)."
 msgstr ""
-"Cliquez ici pour recommencer sans la visualisation par fil de discussion."
+"Vous devez avoir install&#233; php4 avec la gestion des caract&#232;res "
+"multi-octets (option de configuration --with-mbstring)."
 
 msgid "ERROR : No available imapstream."
 msgstr "ERREUR&#160;: Pas de flux IMAP."
 
-msgid "ERROR : Bad function call."
-msgstr "ERREUR&#160;: Appel de fonction erron&#233;."
+msgid "ERROR : Connection dropped by imap-server."
+msgstr "ERREUR&#160;: Connexion interrompue par le serveur IMAP."
 
-msgid "Reason:"
-msgstr "Cause&#160;:"
+msgid "ERROR : Could not complete request."
+msgstr "ERREUR&#160;: Impossible d'achever la requ&#234;te."
+
+msgid "Query:"
+msgstr "Requ&#234;te&#160;:"
+
+msgid "Reason Given: "
+msgstr "Raison invoqu&#233;e&#160;: "
+
+msgid "ERROR : Bad or malformed request."
+msgstr "Erreur&#160;: requ&#234;te invalide ou mal formul&#233;e."
 
 msgid "Server responded: "
 msgstr "Le serveur a r&#233;pondu&#160;: "
+
+msgid "ERROR : Imap server closed the connection."
+msgstr "ERREUR&#160;: Le serveur IMAP a rompu la connexion."
+
+msgid "ERROR : Unknown imap response."
+msgstr "ERREUR&#160;: R&#233;ponse IMAP inconnue."
 
 #, c-format
 msgid "Error connecting to IMAP server: %s."
@@ -1307,9 +1172,6 @@ msgstr "Erreur inconnue&#160;: %s"
 msgid "Read data:"
 msgstr "Lecture des donn&#233;es&#160;:"
 
-msgid "Unknown user or password incorrect."
-msgstr "Utilisateur inconnu ou mot de passe incorrect."
-
 msgid "ERROR : Could not append message to"
 msgstr "ERREUR&#160;: Impossible d'ajouter le message dans"
 
@@ -1325,6 +1187,9 @@ msgstr ""
 
 msgid "(no subject)"
 msgstr "(pas d'objet)"
+
+msgid "Unknown Sender"
+msgstr "Exp&#233;diteur inconnu"
 
 msgid "Unknown response from IMAP server: "
 msgstr "R&#233;ponse du serveur IMAP inconnue&#160;: "
@@ -1353,7 +1218,7 @@ msgid ""
 "Thread sorting is not supported by your IMAP server.<br>Please report this "
 "to the system administrator."
 msgstr ""
-"Votre serveur IMAP ne g&#232;re pas le tri par sujet de discussion.<br>Merci "
+"Votre serveur IMAP ne g&#232;re pas le tri par fil de discussion.<br>Merci "
 "de l'indiquer &#224; votre administrateur."
 
 msgid ""
@@ -1388,25 +1253,19 @@ msgid "Unread"
 msgstr "Non Lu"
 
 msgid "Unthread View"
-msgstr "Ne pas voir les fils de discussion"
+msgstr "Ne pas voir par fil de discussion"
 
 msgid "Thread View"
-msgstr "Voir les fils de discussion"
-
-msgid "Bypass Trash"
-msgstr "Sans mettre à la Corbeille"
-
-msgid "Click here to change the sorting of the message list"
-msgstr "Cliquer ici pour changer le classement des messages"
+msgstr "Voir par fil de discussion"
 
 msgid "Toggle All"
 msgstr "Inverser la s&#233;lection"
 
 msgid "Unselect All"
-msgstr "Aucune s&#233;lection"
+msgstr "Enlever la s&#233;lection"
 
 msgid "Select All"
-msgstr "Tout s&#233;lectionner"
+msgstr "S&#233;lectionner tout"
 
 #, c-format
 msgid "Viewing Messages: <B>%s</B> to <B>%s</B> (%s total)"
@@ -1417,10 +1276,10 @@ msgid "Viewing Message: <B>%s</B> (1 total)"
 msgstr "Message <b>%s</b> (1 au total)"
 
 msgid "Paginate"
-msgstr "Par pages"
+msgstr "Page par page"
 
 msgid "Show All"
-msgstr "Tous les messages"
+msgstr "Tout afficher"
 
 msgid "SquirrelMail could not decode the bodystructure of the message"
 msgstr "Squirrelmail ne comprend pas la structure du message"
@@ -1448,10 +1307,10 @@ msgid "FETCH line:"
 msgstr "Ligne <i>FETCH</i>&#160;:"
 
 msgid "Hide Unsafe Images"
-msgstr "Masquer les images peu s&#251;res"
+msgstr "Masquer les images douteuses"
 
 msgid "View Unsafe Images"
-msgstr "Afficher les images peu s&#251;res"
+msgstr "Afficher les images douteuses"
 
 msgid "download"
 msgstr "t&#233;l&#233;charger"
@@ -1460,7 +1319,7 @@ msgid "sec_remove_eng.png"
 msgstr "sec_remove_fr_FR.png"
 
 msgid "This external link will open in a new window"
-msgstr "Ce lien externe s'ouvrira dans une nouvelle fen&#234;tre "
+msgstr "Ce lien vers un site externe s'ouvrira dans une nouvelle fen&#234;tre "
 
 #, c-format
 msgid "Option Type '%s' Not Found"
@@ -1589,21 +1448,6 @@ msgstr "Nombre maximum de pages &#224; afficher&#160;"
 msgid "Always Show Full Date"
 msgstr "Afficher la date compl&#232;te du message&#160;"
 
-msgid "Length of From/To Field (0 for full)"
-msgstr ""
-"Abbr&#233;ger le champ &#171;&#160;De&#160;&#187; / &#171;&#160;&#192;&#160;"
-"&#187; &#224; (0 pour ne pas abbr&#233;ger)&#160;"
-
-msgid "Length of Subject Field (0 for full)"
-msgstr ""
-"Abbr&#233;ger le champ &#171;&#160;Objet&#160;&#187; &#224; (0 pour ne pas "
-"abbr&#233;ger)&#160;"
-
-msgid "Show recipient name if the message is from your default identity"
-msgstr ""
-"Afficher le nom du destinataire si le message provient de votre identité par "
-"défaut"
-
 msgid "Message Display and Composition"
 msgstr "Affichage et composition des messages"
 
@@ -1682,9 +1526,6 @@ msgstr "le curseur au d&#233;but du texte de r&#233;ponse"
 
 msgid "Select body"
 msgstr "la s&#233;lection sur le texte de la r&#233;ponse"
-
-msgid "Strip signature when replying"
-msgstr "Supprimer la signature du message cit&#233; en r&#233;ponse&#160;"
 
 msgid "Enable Sort by of Receive Date"
 msgstr "Classement des messages par date de r&#233;ception&#160;"
@@ -1766,7 +1607,7 @@ msgstr "Non lus"
 msgid "Unseen and Total"
 msgstr "Non lus / Total"
 
-msgid "Enable Collapsable Folders"
+msgid "Enable Collapsible Folders"
 msgstr "Dossiers repliables&#160;"
 
 msgid "Enable Cumulative Unread Message Notification"
@@ -1810,12 +1651,6 @@ msgstr "Style de la liste de s&#233;lection&#160;"
 
 msgid "Long: "
 msgstr "Long&#160;: "
-
-msgid "Folder"
-msgstr "Dossier"
-
-msgid "Subfolder"
-msgstr "Sous-dossier"
 
 msgid "Indented: "
 msgstr "Indent&#233;&#160;: "
@@ -1862,10 +1697,13 @@ msgid "No Citation"
 msgstr "Pas de citation"
 
 msgid "AUTHOR Said"
-msgstr "L'AUTEUR a dit"
+msgstr "L'AUTEUR a écrit"
 
 msgid "Quote Who XML"
 msgstr "Citation XML"
+
+msgid "On DATE, AUTHOR Said"
+msgstr "Le DATE, l'AUTEUR a écrit"
 
 msgid "User-Defined"
 msgstr "Personnalis&#233;e"
@@ -1893,10 +1731,6 @@ msgstr "Ajouter au carnet d'adresses&#160;:"
 
 msgid "Try to verify addresses"
 msgstr "Essayer de v&#233;rifier les adresses"
-
-#, c-format
-msgid "Add to %s"
-msgstr "Ajouter &#224;&#160;: %s"
 
 msgid "Config File Version"
 msgstr "Version du fichier de configuration"
@@ -1933,6 +1767,9 @@ msgstr "Lien vers le fournisseur"
 
 msgid "Provider Name"
 msgstr "Nom du fournisseur de service"
+
+msgid "Default Language"
+msgstr "Langue par d&#233;faut"
 
 msgid "Top Frame"
 msgstr "Cadre du haut"
@@ -2067,6 +1904,9 @@ msgstr "Activer le contournement des dossiers /NoSelect"
 msgid "General Options"
 msgstr "Options g&#233;n&#233;rales"
 
+msgid "Default Charset"
+msgstr "Encodage par d&#233;faut"
+
 msgid "Data Directory"
 msgstr "R&#233;pertoire des donn&#233;es"
 
@@ -2115,6 +1955,9 @@ msgstr "Utiliser le tri par sujet de discussion du serveur"
 msgid "Allow server charset search"
 msgstr "Utiliser l'encodage local pour la recherche"
 
+msgid "UID support"
+msgstr "Utiliser les UIDs"
+
 msgid "PHP session name"
 msgstr "Nom de session PHP"
 
@@ -2145,51 +1988,6 @@ msgstr "Champ contenant le nom de l'option"
 msgid "Preferences value field"
 msgstr "Champ contenant la valeur de l'option"
 
-msgid "Global address book DSN"
-msgstr "DSN du carnet d'adresses g&#233;n&#233;ral"
-
-msgid "Global address book table"
-msgstr "Table du carnet d'adresses g&#233;n&#233;ral"
-
-msgid "Allow writing into global address book"
-msgstr "Permettre l'&#233;criture dans le carnet d'adresses g&#233;n&#233;ral"
-
-msgid "Allow listing of global address book"
-msgstr "Permettre la consultation du carnet d'adresses g&#233;n&#233;ral"
-
-msgid "Language settings"
-msgstr "Pr&#233;f&#233;rences de langues"
-
-msgid "Default Language"
-msgstr "Langue par d&#233;faut"
-
-msgid "Default Charset"
-msgstr "Encodage par d&#233;faut"
-
-msgid "Show alternative language names"
-msgstr "Montrer les noms de langues alternatifs"
-
-msgid "Available languages"
-msgstr "Langues disponibles"
-
-msgid "Use agresive decoding"
-msgstr "Utiliser un d&#233;codage 'lourd'"
-
-msgid "Tweaks"
-msgstr "Options exp&#233;rimentales"
-
-msgid "Use advanced tree folder listing"
-msgstr "Liste des dossiers avanc&#233;e"
-
-msgid "Use old folder listing functions"
-msgstr "Ancien mode d'affichage de la liste des dossiers"
-
-msgid "Use php recode functions"
-msgstr "Utiliser les fonctions recode de php"
-
-msgid "Use php iconv functions"
-msgstr "Utiliser les fonctions iconv de php"
-
 msgid "Themes"
 msgstr "Th&#232;mes"
 
@@ -2204,24 +2002,6 @@ msgstr "Utiliser le num&#233;ro d'index du th&#232;me"
 
 msgid "Configuration Administrator"
 msgstr "Administration de la configuration"
-
-msgid ""
-"Note: it is recommended that you configure your system using conf.pl, and "
-"not this plugin. conf.pl contains additional information regarding the "
-"purpose of variables and appropriate values, as well as additional "
-"verification steps."
-msgstr ""
-"Nota : il est recommend&#233; de configurer votre syst&#232;me avec conf.pl, "
-"et non pas avec ce plugin, car conf.pl contient des informations suppl&#233;"
-"mentaires concernant l'utilisation des variables et des valeurs appropriées, "
-"ainsi que des vérifications supplémentaires."
-
-msgid ""
-"Run or consult conf.pl should you run into difficulty with your "
-"configuration."
-msgstr ""
-"Lancez ou consultez conf.pl si vous rencontrez des difficult&#233;s pour "
-"&#233;tablir votre configuration"
 
 msgid "Theme Name"
 msgstr "Nom du th&#232;me"
@@ -2576,17 +2356,17 @@ msgstr ""
 "GRATUIT - <i>visi.com Relay Stop List</i> - Liste de relais ouverts tr&#232;"
 "s conservatrice."
 
-msgid "FREE - 2mbit.com Open Relays - Another list of Open Relays."
+msgid "FREE - ahbl.org Open Relays - Another list of Open Relays."
 msgstr ""
-"GRATUIT - <i>2mbit.com Open Relays</i> - Une autre liste de relais ouverts."
+"GRATUIT - <i>ahbl.org Open Relays</i> - Une autre liste de relais ouverts."
 
-msgid "FREE - 2mbit.com SPAM Source - List of Direct SPAM Sources."
+msgid "FREE - ahbl.org SPAM Source - List of Direct SPAM Sources."
 msgstr ""
-"GRATUIT - <i>2mbit.com SPAM Source</i> - Liste de sources de <i>spam</i>."
+"GRATUIT - <i>ahbl.org SPAM Source</i> - Liste de sources directes de <i>spam</i>."
 
-msgid "FREE - 2mbit.com SPAM ISPs - List of SPAM-friendly ISPs."
+msgid "FREE - ahbl.org SPAM ISPs - List of SPAM-friendly ISPs."
 msgstr ""
-"GRATUIT - <i>2mbit.com SPAM ISPs</i> - Liste de FAI appr&#233;ci&#233;s des "
+"GRATUIT - <i>ahbl.org SPAM ISPs</i> - Liste de FAI appr&#233;ci&#233;s des "
 "<i>spammers</i>."
 
 msgid ""
@@ -2859,6 +2639,12 @@ msgstr "Pas de serveur sp&#233;cifi&#233;"
 msgid "Error "
 msgstr "Erreur "
 
+msgid "POP3 noop:"
+msgstr "POP3 noop&#160;: "
+
+msgid "No connection to server"
+msgstr "pas de connexion au serveur."
+
 msgid "POP3 user:"
 msgstr "Utilisateur POP3&#160;: "
 
@@ -2879,9 +2665,6 @@ msgstr "l'authentification a &#233;chou&#233;e"
 
 msgid "POP3 apop:"
 msgstr "POP3 apop&#160;: "
-
-msgid "No connection to server"
-msgstr "pas de connexion au serveur."
 
 msgid "No login ID submitted"
 msgstr "Identifiant non renseign&#233;"
@@ -2940,6 +2723,10 @@ msgstr "n&#176;&#160;de message manquant"
 msgid "Command failed "
 msgstr "la commande a &#233;chou&#233;e "
 
+# A verifier
+msgid "Remote POP server Fetching Mail"
+msgstr "R&#233;cup&#233;ration de courrier sur serveur POP"
+
 msgid "Select Server:"
 msgstr "S&#233;lectionnez le serveur&#160;:"
 
@@ -2948,16 +2735,6 @@ msgstr "Mot de passe pour"
 
 msgid "Fetch Mail"
 msgstr "R&#233;cup&#233;rer"
-
-# A verifier
-msgid "Remote POP server Fetching Mail"
-msgstr "R&#233;cup&#233;ration de courrier sur serveur POP"
-
-msgid "No POP3 servers configured yet."
-msgstr "Aucun serveur POP3 configur&#233;."
-
-msgid "Click here to go to the options page."
-msgstr "Cliquez ici pour atteindre la page d'options."
 
 msgid "Fetching from "
 msgstr "R&#233;cup&#233;rer depuis "
@@ -3338,15 +3115,6 @@ msgstr "Signalement par email compliqu&#233;"
 msgid "Web-based form"
 msgstr "Formulaire Web"
 
-msgid "Spam Service Type:"
-msgstr "Type de service anti-Spam :"
-
-msgid "Free reporting"
-msgstr "Signalement libre"
-
-msgid "Member services"
-msgstr "Services pour membres"
-
 msgid "Your SpamCop authorization code:"
 msgstr "Votre code d'autorisation SpamCop :"
 
@@ -3457,10 +3225,10 @@ msgstr ""
 
 msgid ""
 "The SpamCop service will display information as it finds it, so scroll down "
-"until you see a form button. It might pause a little while it is looking up "
-"information, so be a little patient. Read what it says, and submit the spam. "
-"Close the browser window.  Press Cancel or click on the appropriate mail "
-"folder to see messages and/or delete the spam."
+"until you see a form button.  It might pause a little while it is looking up "
+"information, so be a little patient.  Read what it says, and submit the "
+"spam.  Close the browser window.  Press Cancel or click on the appropriate "
+"mail folder to see messages and/or delete the spam."
 msgstr ""
 "Le service SpamCop affichera l'information comme il la trouve, donc "
 "descendez jusqu'au bouton du formulaire. Il peut se produire une petite "
@@ -3468,19 +3236,6 @@ msgstr ""
 "ce qu'il contient, et soumettez le spam. Fermez la fenêtre du navigateur. "
 "Cliquez sur Annuler ou sur le dossier approprié pour voir les messages et/ou "
 "supprimer le Spam."
-
-msgid "Spamcop Service Type"
-msgstr "Type du service SpamCop"
-
-msgid ""
-"Service type option allows selecting which spamcop services you are using. "
-"Member services use different web reporting forms  and does not display "
-"nags. You can purchase these services, if you want to support SpamCop."
-msgstr ""
-"L'option Type de service permet de choisir quels services de SpamCop vous "
-"utilisez. Les services Membres utilisent des formulaires différents et "
-"n'affichent pas d'écrans de publicité. Vous pouvez acheter ces services, si "
-"vous souhaitez supporter SpamCop."
 
 msgid ""
 "<b>For more information</b> about SpamCop, it's services, spam in general, "
@@ -3941,10 +3696,6 @@ msgstr "Nombre de paires de langues&#160;: %s"
 msgid "No known limits, powered by Systran"
 msgstr "Pas de limitation connue, service fourni par Systran"
 
-msgid "No known limits, powered by GPLTrans (free, open source)"
-msgstr ""
-"Pas de limitation connue, service fourni par GPLTrans (libre, open source)"
-
 msgid "No known limits, powered by Translation Experts's InterTran"
 msgstr ""
 "Pas de limitation connue, service fourni par Translation Experts's InterTran"
@@ -3952,6 +3703,10 @@ msgstr ""
 #, c-format
 msgid "Number of supported languages: %s"
 msgstr "Nombre de langues support&#233;es&#160;: %s"
+
+msgid "No known limits, powered by GPLTrans (free, open source)"
+msgstr ""
+"Pas de limitation connue, service fourni par GPLTrans (libre, open source)"
 
 msgid "Hellenic translations, no known limits, powered by Systran"
 msgstr ""
@@ -4119,6 +3874,318 @@ msgstr "Langue de l'interface"
 msgid "Translation direction"
 msgstr "Sens de la traduction"
 
+msgid "Add to:"
+msgstr "Ajouter &#224;&#160;: "
+
+msgid "Add to address book"
+msgstr "Ajouter au carnet d'adresses"
+
+msgid "Your Message has been sent."
+msgstr "Votre message a &#233;t&#233; envoy&#233;."
+
+msgid "Bypass Trash"
+msgstr "Sans mettre à la Corbeille"
+
+msgid "Please enter something to search for"
+msgstr "Il faut choisir un crit&#232;re de recherche"
+
+msgid "There must be at least one criteria to search for"
+msgstr "Il faut au moins un crit&#232;re de recherche"
+
+msgid "Error in criteria argument"
+msgstr "Erreur dans l'argument d'un crit&#232;re"
+
+msgid "(Illegal date)"
+msgstr "(Date ill&#233;gale)"
+
+msgid "(Wrong date)"
+msgstr "(Date invalide)"
+
+msgid "In"
+msgstr "Dans"
+
+msgid "(Missing argument)"
+msgstr "(Argument manquant)"
+
+msgid "(Spurious argument)"
+msgstr "(Argument superflu)"
+
+msgid "Saved Searches"
+msgstr "Recherches enregistr&#233;es"
+
+msgid "Missing"
+msgstr "Disparu"
+
+msgid "and&nbsp;subfolders:"
+msgstr "et&nbsp;sous-dossiers&nbsp;:"
+
+msgid "Exclude Criteria:"
+msgstr "Exclure ce Crit&#232;re&#160;:"
+
+msgid "Search Criteria"
+msgstr "Crit&#232;res de Recherche"
+
+msgid "Add New Criteria"
+msgstr "Ajouter un Crit&#232;re"
+
+msgid "Remove Excluded Criteria"
+msgstr "Supprimer les Crit&#232;res Exclus"
+
+msgid "Remove All Criteria"
+msgstr "Supprimer tous les Crit&#232;res"
+
+msgid "Answered"
+msgstr "R&#233;pondu"
+
+msgid "Before"
+msgstr "Datant d'avant le"
+
+# BODY
+msgid "Message Body"
+msgstr "Corps du message"
+
+msgid "Deleted"
+msgstr "Supprim&#233;"
+
+msgid "Draft"
+msgstr "Brouillon"
+
+msgid "Flagged"
+msgstr "Marqu&#233;"
+
+# FROM
+msgid "Sent By"
+msgstr "Envoy&#233; par"
+
+# HEADER
+msgid "Header Field"
+msgstr "Champ d'en-t&#234;te"
+
+msgid "Keyword"
+msgstr "Mot-cl&#233;"
+
+# LARGER
+msgid "Larger Than"
+msgstr "Plus gros que"
+
+msgid "Old"
+msgstr "Ancien"
+
+msgid "On"
+msgstr "Datant du"
+
+msgid "Recent"
+msgstr "R&#233;cent"
+
+msgid "Seen"
+msgstr "Lu"
+
+msgid "Sent Before"
+msgstr "Envoy&#233; avant le"
+
+msgid "Sent On"
+msgstr "Envoy&#233; le"
+
+msgid "Sent Since"
+msgstr "Envoy&#233; apr&#232;s le"
+
+msgid "Since"
+msgstr "Datant d'apr&#232;s le"
+
+# SMALLER
+msgid "Smaller Than"
+msgstr "Plus petit que"
+
+# SUBJECT
+msgid "Subject Contains"
+msgstr "Objet contenant"
+
+# TEXT
+msgid "Header and Body"
+msgstr "En-t&#234;te et Corps"
+
+# TO
+msgid "Sent To"
+msgstr "Envoy&#233; &#224;"
+
+msgid "Not"
+msgstr "Pas"
+
+msgid "And In"
+msgstr "Et dans"
+
+msgid "Or In"
+msgstr "Ou dans"
+
+msgid "And"
+msgstr "Et"
+
+msgid "Or"
+msgstr "Ou"
+
+msgid "Folder List"
+msgstr "Liste des dossiers"
+
+msgid "Possible reason : "
+msgstr "Raison possible : "
+
+msgid "The imap server failed to handle threading."
+msgstr "Le serveur imap n'a pas pu g&#233;rer les fils de discussion."
+
+msgid "Click here to unset thread view for this mailbox and start again."
+msgstr ""
+"Cliquez ici pour recommencer sans la visualisation par fil de discussion."
+
+msgid "ERROR : Bad function call."
+msgstr "ERREUR&#160;: Appel de fonction erron&#233;."
+
+msgid "Reason:"
+msgstr "Cause&#160;:"
+
+msgid "Click here to change the sorting of the message list"
+msgstr "Cliquer ici pour changer le classement des messages"
+
+msgid "Length of From/To Field (0 for full)"
+msgstr ""
+"Abbr&#233;ger le champ &#171;&#160;De&#160;&#187; / &#171;&#160;&#192;&#160;"
+"&#187; &#224; (0 pour ne pas abbr&#233;ger)&#160;"
+
+msgid "Length of Subject Field (0 for full)"
+msgstr ""
+"Abbr&#233;ger le champ &#171;&#160;Objet&#160;&#187; &#224; (0 pour ne pas "
+"abbr&#233;ger)&#160;"
+
+msgid "Show recipient name if the message is from your default identity"
+msgstr ""
+"Afficher le nom du destinataire si le message provient de votre identité par "
+"défaut"
+
+msgid "Strip signature when replying"
+msgstr "Supprimer la signature du message cit&#233; en r&#233;ponse&#160;"
+
+msgid "Show 'Delete & Prev/Next' Links"
+msgstr "Afficher les liens 'Supprimer et précédent / suivant'"
+
+msgid "Save Replies with Original Message"
+msgstr "Enregistrer les réponses dans le dossier du message original&nbsp;"
+
+msgid "Enable Collapsable Folders"
+msgstr "Dossiers repliables&#160;"
+
+msgid "Folder"
+msgstr "Dossier"
+
+msgid "Subfolder"
+msgstr "Sous-dossier"
+
+msgid "Global address book DSN"
+msgstr "DSN du carnet d'adresses g&#233;n&#233;ral"
+
+msgid "Global address book table"
+msgstr "Table du carnet d'adresses g&#233;n&#233;ral"
+
+msgid "Allow writing into global address book"
+msgstr "Permettre l'&#233;criture dans le carnet d'adresses g&#233;n&#233;ral"
+
+msgid "Allow listing of global address book"
+msgstr "Permettre la consultation du carnet d'adresses g&#233;n&#233;ral"
+
+msgid "Language settings"
+msgstr "Pr&#233;f&#233;rences de langues"
+
+msgid "Show alternative language names"
+msgstr "Montrer les noms de langues alternatifs"
+
+msgid "Available languages"
+msgstr "Langues disponibles"
+
+msgid "Use agresive decoding"
+msgstr "Utiliser un d&#233;codage 'lourd'"
+
+msgid "Tweaks"
+msgstr "Options exp&#233;rimentales"
+
+msgid "Use advanced tree folder listing"
+msgstr "Liste des dossiers avanc&#233;e"
+
+msgid "Use old folder listing functions"
+msgstr "Ancien mode d'affichage de la liste des dossiers"
+
+msgid "Use php recode functions"
+msgstr "Utiliser les fonctions recode de php"
+
+msgid "Use php iconv functions"
+msgstr "Utiliser les fonctions iconv de php"
+
+msgid ""
+"Note: it is recommended that you configure your system using conf.pl, and "
+"not this plugin. conf.pl contains additional information regarding the "
+"purpose of variables and appropriate values, as well as additional "
+"verification steps."
+msgstr ""
+"Nota : il est recommend&#233; de configurer votre syst&#232;me avec conf.pl, "
+"et non pas avec ce plugin, car conf.pl contient des informations suppl&#233;"
+"mentaires concernant l'utilisation des variables et des valeurs appropriées, "
+"ainsi que des vérifications supplémentaires."
+
+msgid ""
+"Run or consult conf.pl should you run into difficulty with your "
+"configuration."
+msgstr ""
+"Lancez ou consultez conf.pl si vous rencontrez des difficult&#233;s pour "
+"&#233;tablir votre configuration"
+
+msgid "No POP3 servers configured yet."
+msgstr "Aucun serveur POP3 configur&#233;."
+
+msgid "Click here to go to the options page."
+msgstr "Cliquez ici pour atteindre la page d'options."
+
+msgid "Spam Service Type:"
+msgstr "Type de service anti-Spam :"
+
+msgid "Free reporting"
+msgstr "Signalement libre"
+
+msgid "Member services"
+msgstr "Services pour membres"
+
+msgid ""
+"The SpamCop service will display information as it finds it, so scroll down "
+"until you see a form button. It might pause a little while it is looking up "
+"information, so be a little patient. Read what it says, and submit the spam. "
+"Close the browser window.  Press Cancel or click on the appropriate mail "
+"folder to see messages and/or delete the spam."
+msgstr ""
+"Le service SpamCop affichera l'information comme il la trouve, donc "
+"descendez jusqu'au bouton du formulaire. Il peut se produire une petite "
+"attente pendant la récupération des informations, donc soyez patient. Lisez "
+"ce qu'il contient, et soumettez le spam. Fermez la fenêtre du navigateur. "
+"Cliquez sur Annuler ou sur le dossier approprié pour voir les messages et/ou "
+"supprimer le Spam."
+
+msgid "Spamcop Service Type"
+msgstr "Type du service SpamCop"
+
+msgid ""
+"Service type option allows selecting which spamcop services you are using. "
+"Member services use different web reporting forms  and does not display "
+"nags. You can purchase these services, if you want to support SpamCop."
+msgstr ""
+"L'option Type de service permet de choisir quels services de SpamCop vous "
+"utilisez. Les services Membres utilisent des formulaires différents et "
+"n'affichent pas d'écrans de publicité. Vous pouvez acheter ces services, si "
+"vous souhaitez supporter SpamCop."
+
+msgid "Filipino (Tagalog)"
+msgstr "Tagalog"
+
+msgid "Simplified Chinese"
+msgstr "Chinois simplifié"
+
+msgid "Traditional Chinese"
+msgstr "Chinois traditionnel"
+
 msgid "Delivery error report"
 msgstr "Rapport d'erreur de transmission"
 
@@ -4138,9 +4205,6 @@ msgstr "En Copie &#224;"
 # Small Calendar plugin
 msgid "SMTWTFS"
 msgstr "DLMMJVS"
-
-msgid "Today"
-msgstr "Aujourd'hui"
 
 # Spam plugins
 msgid "Whitelist From"
