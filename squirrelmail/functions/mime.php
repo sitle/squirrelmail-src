@@ -229,21 +229,6 @@ function mime_get_element (&$structure, $msg, $ent_id) {
            $pos++;
         }
         $structure = substr($structure, strlen($text) + 2);
-     } else if ($char == '{') {
-         /**
-          * loop through until we find the matching quote, 
-          * and return that as a string
-          */
-         $pos = 1;
-         $len = '';
-         while (($char = $structure{$pos}) != '}' 
-                && $pos < strlen($structure)) {
-             $len .= $char;
-             $pos++;
-         }
-         $structure = substr($structure, strlen($len) + 4);
-         $text = substr($structure, 0, $len);
-         $structure = substr($structure, $len + 1);
      } else if ($char == '(') {
         // comment me
         $end = mime_match_parenthesis (0, $structure);
@@ -1011,8 +996,7 @@ function decodeBody($body, $encoding) {
 
   global $show_html_default;
 
-  if ($encoding == 'quoted-printable' ||
-      $encoding == 'quoted_printable') {
+  if ($encoding == 'quoted-printable') {
      $body = quoted_printable_decode($body);
 
 

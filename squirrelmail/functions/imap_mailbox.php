@@ -567,7 +567,6 @@ function sqimap_mailbox_list($imap_stream) {
                     $used[$k] = true;
                 }
                 $spec_sub = str_replace('&nbsp;', '', $box['formatted']);
-                $spec_sub = str_replace('*', '', $box['formatted']);
 
                /* In case of problems with preg
                   here is a ereg version

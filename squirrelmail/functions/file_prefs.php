@@ -168,11 +168,8 @@ function checkForPrefs($data_dir, $username, $filename = '') {
             logout_error( $errString, $errTitle );
             exit;
         } else if (!@copy($default_pref, $filename)) {
-            $uid = 'httpd';
-            if (function_exists('posix_getuid')){
-                $user_data = posix_getpwuid(posix_getuid());
-                $uid = $user_data['name'];
-            }
+            $user_data = posix_getpwuid(posix_getuid());
+            $uid = $user_data['name'];
             $errString = $errTitle . '<br>' .
                        _("Could not create initial preference file!") . "<br>\n" .
                        sprintf( _("%s should be writable by user %s"), $data_dir, $uid ) .
