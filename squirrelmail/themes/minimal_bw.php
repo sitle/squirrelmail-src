@@ -6,6 +6,8 @@
     This theme uses black color for text and white for background.
     
     Problem: $color[9] is used for background and for disabled links.
+
+    $Id$
     **/
 
     global $color;
