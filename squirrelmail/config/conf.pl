@@ -412,36 +412,61 @@ while ( ( $command ne "q" ) && ( $command ne "Q" ) ) {
         print "R   Return to Main Menu\n";
     } elsif ( $menu == 2 ) {
         print $WHT. "Server Settings\n\n" . $NRM;
-		print $WHT . "General" . $NRM . "\n";
-		print "-------\n";
+        print $WHT . "General" . $NRM . "\n";
+        print "-------\n";
         print "1.  Domain                 : $WHT$domain$NRM\n";
-		print "2.  Invert Time            : $WHT$invert_time$NRM\n";
-		print "\n" . $WHT . "IMAP" . $NRM . "\n";
-		print "----\n";
-        print "3.  IMAP Server            : $WHT$imapServerAddress$NRM\n";
-        print "4.  IMAP Port              : $WHT$imapPort$NRM\n";
-		print "5.  Authentication type    : $WHT$imap_auth_mech$NRM\n";
-		print "6.  Secure IMAP (TLS)      : $WHT$use_imap_tls$NRM\n";
-		print "7.  Server software        : $WHT$imap_server_type$NRM\n";
-		print "8.  Delimiter              : $WHT$optional_delimiter$NRM\n";
-        print "\n" . $WHT . "SMTP" . $NRM . "\n";
-		print "----\n";
-		print "9.  Sendmail or SMTP       : $WHT";
+        print "2.  Invert Time            : $WHT$invert_time$NRM\n";
+        print "3.  Sendmail or SMTP       : $WHT";
         if ( lc($useSendmail) eq "true" ) {
             print "Sendmail";
         } else {
             print "SMTP";
         }
         print "$NRM\n";
-        if ( lc($useSendmail) eq "true" ) {
-            print "10.   Sendmail Path        : $WHT$sendmail_path$NRM\n";
-        } else {
-            print "11.   SMTP Server          : $WHT$smtpServerAddress$NRM\n";
-            print "12.   SMTP Port            : $WHT$smtpPort$NRM\n";
-			print "13.   POP before SMTP      : $WHT$pop_before_smtp$NRM\n";
-            print "14.   SMTP Authentication  : $WHT$smtp_auth_mech$NRM\n";
-			print "15.   Secure SMTP (TLS)    : $WHT$use_smtp_tls$NRM\n";
+        print "\n";
+        
+        if ( $show_imap_settings ) {
+          print "Update IMAP Server\n---------------------\n";
+          print "4.  IMAP Server            : $WHT$imapServerAddress$NRM\n";
+          print "5.  IMAP Port              : $WHT$imapPort$NRM\n";
+          print "6.  Authentication type    : $WHT$imap_auth_mech$NRM\n";
+          print "7.  Secure IMAP (TLS)      : $WHT$use_imap_tls$NRM\n";
+          print "8.  Server software        : $WHT$imap_server_type$NRM\n";
+          print "9.  Delimiter              : $WHT$optional_delimiter$NRM\n";
+          print "\n";
+        } elsif ( $show_smtp_settings ) {
+          if ( lc($useSendmail) eq "true" ) {
+            print "Update Sendmail\n---------------------\n";
+            print "4.   Sendmail Path        : $WHT$sendmail_path$NRM\n";
+            print "\n";
+          } else {
+            print "Update SMTP Server\n---------------------\n";
+            print "4.   SMTP Server           : $WHT$smtpServerAddress$NRM\n";
+            print "5.   SMTP Port             : $WHT$smtpPort$NRM\n";
+            print "6.   POP before SMTP       : $WHT$pop_before_smtp$NRM\n";
+            print "7.   SMTP Authentication   : $WHT$smtp_auth_mech$NRM\n";
+            print "8.   Secure SMTP (TLS)     : $WHT$use_smtp_tls$NRM\n";
+            print "\n";
+          }
         }
+
+        if ($show_imap_settings == 0) {
+          print "A.  Update IMAP Server     : ";
+          print "$WHT$imapServerAddress$NRM:";
+          print "$WHT$imapPort$NRM ";
+          print "($WHT$imap_server_type$NRM)\n";
+        } 
+        if ($show_smtp_settings == 0) {
+          if ( lc($useSendmail) eq "true" ) {
+            print "B.  Update Sendmail       : $WHT$sendmail_path$NRM\n";
+          } else {
+            print "B.  Update SMTP Server     : ";
+            print "$WHT$smtpServerAddress$NRM:";
+            print "$WHT$smtpPort$NRM\n";
+          }
+        }
+        print "H.  Hide Server Settings\n";
+        
         print "\n";
         print "R   Return to Main Menu\n";
     } elsif ( $menu == 3 ) {
@@ -622,21 +647,30 @@ while ( ( $command ne "q" ) && ( $command ne "Q" ) ) {
             elsif ( $command == 9 ) { $provider_name                 = command8(); }
 
         } elsif ( $menu == 2 ) {
-            if    ( $command == 1 )  { $domain                 = command11(); }
-			elsif ( $command == 2 )  { $invert_time            = command110(); }
-            elsif ( $command == 3 )  { $imapServerAddress      = command12(); }
-            elsif ( $command == 4 )  { $imapPort               = command13(); }
-			elsif ( $command == 5 )  { $imap_auth_mech     = command112("IMAP",$imap_auth_mech); }
-			elsif ( $command == 6 )  { $use_imap_tls       = command113("IMAP",$use_imap_tls); }
-			elsif ( $command == 7 )  { $imap_server_type       = command19(); }
-			elsif ( $command == 8 )  { $optional_delimiter     = command111(); }
-            elsif ( $command == 9 )  { $useSendmail            = command14(); }
-            elsif ( $command == 10 )  { $sendmail_path          = command15(); }
-            elsif ( $command == 11 )  { $smtpServerAddress      = command16(); }
-            elsif ( $command == 12 )  { $smtpPort               = command17(); }
-			elsif ( $command == 13 )  { $pop_before_smtp        = command18a(); }
-			elsif ( $command == 14 )  { $smtp_auth_mech    = command112("SMTP",$smtp_auth_mech); }
-			elsif ( $command == 15 )  { $use_smtp_tls      = command113("SMTP",$use_smtp_tls); }
+            if ( $command eq "a" )    { $show_imap_settings = 1; $show_smtp_settings = 0; }
+            elsif ( $command eq "b" ) { $show_imap_settings = 0; $show_smtp_settings = 1; }
+            elsif ( $command eq "h" ) { $show_imap_settings = 0; $show_smtp_settings = 0; }
+            elsif ( $command <= 3 ) {
+              if    ( $command == 1 )  { $domain                 = command11(); }
+              elsif ( $command == 2 )  { $invert_time            = command110(); }
+              elsif ( $command == 3 )  { $useSendmail            = command14(); }
+              $show_imap_settings = 0; $show_smtp_settings = 0;
+            } elsif ( $show_imap_settings ) {
+              if    ( $command == 4 )  { $imapServerAddress      = command12(); }
+              elsif ( $command == 5 )  { $imapPort               = command13(); }
+              elsif ( $command == 6 )  { $imap_auth_mech     = command112("IMAP",$imap_auth_mech); }
+              elsif ( $command == 7 )  { $use_imap_tls       = command113("IMAP",$use_imap_tls); }
+              elsif ( $command == 8 )  { $imap_server_type       = command19(); }
+              elsif ( $command == 9 )  { $optional_delimiter     = command111(); }
+            } elsif ( $show_smtp_settings && lc($useSendmail) eq "true" ) {
+              if ( $command == 4 )  { $sendmail_path          = command15(); }
+            } elsif ( $show_smtp_settings ) {
+              if    ( $command == 4 )  { $smtpServerAddress      = command16(); }
+              elsif ( $command == 5 )  { $smtpPort               = command17(); }
+              elsif ( $command == 6 )  { $pop_before_smtp        = command18a(); }
+              elsif ( $command == 7 )  { $smtp_auth_mech    = command112("SMTP",$smtp_auth_mech); }
+              elsif ( $command == 8 )  { $use_smtp_tls      = command113("SMTP",$use_smtp_tls); }
+            }
         } elsif ( $menu == 3 ) {
             if    ( $command == 1 )  { $default_folder_prefix          = command21(); }
             elsif ( $command == 2 )  { $show_prefix_option             = command22(); }
@@ -1078,33 +1112,33 @@ sub command111 {
 # SMTP also can be disabled with 'none'
 sub command112 {
     my($default_val,$service,$inval);
-	$service=$_[0];
-	$default_val=$_[1];
-	print "What authentication mechanism do you want to use for " . $service . " logins?\n";
-	if ($service eq "SMTP") {
-	  print $WHT . "none" . $NRM . " - Your SMTP server does not require authorization.\n";
-	}
-	print $WHT . "plain" . $NRM . " - Plaintext. If you can do better, you probably should.\n";
-	print $WHT . "cram-md5" . $NRM . " - Slightly better than plaintext. (Requires PHP mhash extension)\n";
-	print $WHT . "digest-md5" . $NRM . " - Privacy protection - better than cram-md5. (Requires PHP mhash extension)\n";
-	print "\n*** YOUR " . $service . " SERVER MUST SUPPORT THE MECHANISM YOU CHOOSE ***\n";
-	print "If you don't understand or are unsure, you probably want \"plain\"\n\n";
-	if ($service eq "SMTP") {
-	  print "none, ";
+    $service=$_[0];
+    $default_val=$_[1];
+    print "What authentication mechanism do you want to use for " . $service . " logins?\n";
+    if ($service eq "SMTP") {
+      print $WHT . "none" . $NRM . " - Your SMTP server does not require authorization.\n";
     }
-	print "plain, cram-md5, or digest-md5 [$WHT$default_val$NRM]: $WHT";
-	$inval=<STDIN>;
-	chomp($inval);
-	if ( ($service eq "SMTP") && ($inval =~ /^none\b/i) ) {
-	  # SMTP doesn't necessarily require logins
-	  return "none";
-	}
-	if ( ($inval =~ /^cram-md5\b/i) || ($inval =~ /^digest-md5\b/i) || 
-	($inval =~ /^plain\b/i)) {
-	  return lc($inval);
-	} else {
+    print $WHT . "plain" . $NRM . " - Plaintext. If you can do better, you probably should.\n";
+    print $WHT . "cram-md5" . $NRM . " - Slightly better than plaintext. (Requires PHP mhash extension)\n";
+    print $WHT . "digest-md5" . $NRM . " - Privacy protection - better than cram-md5. (Requires PHP mhash extension)\n";
+    print "\n*** YOUR " . $service . " SERVER MUST SUPPORT THE MECHANISM YOU CHOOSE ***\n";
+    print "If you don't understand or are unsure, you probably want \"plain\"\n\n";
+    if ($service eq "SMTP") {
+      print "none, ";
+    }
+    print "plain, cram-md5, or digest-md5 [$WHT$default_val$NRM]: $WHT";
+    $inval=<STDIN>;
+    chomp($inval);
+    if ( ($service eq "SMTP") && ($inval =~ /^none\b/i) ) {
+      # SMTP doesn't necessarily require logins
+      return "none";
+    }
+    if ( ($inval =~ /^cram-md5\b/i) || ($inval =~ /^digest-md5\b/i) || 
+    ($inval =~ /^plain\b/i)) {
+      return lc($inval);
+    } else {
       return $default_val;
-	}
+    }
 }
 
 # TLS
@@ -2783,6 +2817,7 @@ sub change_to_SM_path() {
     # If the path is absolute, don't bother.
     return "\'" . $old_path . "\'"  if ( $old_path eq '');
     return "\'" . $old_path . "\'"  if ( $old_path =~ /^\// );
+    return $old_path                if ( $old_path =~ /^\$/);
     return $old_path                if ( $old_path =~ /^SM_PATH/ );
 
     # For relative paths, split on '../'
@@ -2820,6 +2855,7 @@ sub change_to_rel_path() {
     my $new_path = '';
 
     return $old_path if ( $old_path eq '');
+    return $old_path if ( $old_path =~ /^\$/ );
     return $old_path if ( $old_path =~ /^\// );
     return $old_path if ( $old_path =~ /^\.\./ );
 
