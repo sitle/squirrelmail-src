@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2003-11-11 21:57+0200\n"
+"POT-Creation-Date: 2003-11-30 20:52+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,12 +16,15 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
+#: admin.php:73
 msgid "Administration"
 msgstr ""
 
+#: admin.php:73 options.php:180 setup.php:22
 msgid "Mail Filters"
 msgstr ""
 
+#: admin.php:77
 msgid ""
 "This form allows the administrator to set the domain passwords which will be "
 "stored encrypted.\n"
@@ -29,80 +32,109 @@ msgid ""
 "virtual domains are enabled."
 msgstr ""
 
+#: admin.php:79
 msgid "Leave the entry blank if you do not want to change the password."
 msgstr ""
 
+#: backend.php:409
 msgid "Could not find CRYPTO_HASH_LINE! "
 msgstr ""
 
+#: backend.php:412
 msgid "Could not find MCRYPT_ALGO! "
 msgstr ""
 
+#: backend.php:428
 msgid ""
 "An algorithm other than 'rc4_builtin' specified, but mcrypt support not "
 "found."
 msgstr ""
 
+#: options.php:180
 msgid "Options"
 msgstr ""
 
+#: options.php:191
 msgid "Passwords out of date"
 msgstr ""
 
+#: options.php:196
 msgid "Passwords are all up to date"
 msgstr ""
 
+#: options.php:206
 msgid "Your domain"
 msgstr ""
 
+#: options.php:206
 msgid ""
 "password is out of date.  Your administrator will need to correct this "
 "before you may setup your mailfilters."
 msgstr ""
 
+#: options.php:214
 msgid "Enter A New Filter:"
 msgstr ""
 
+#: options.php:218 recipie_functions.php:213
 msgid "If"
 msgstr ""
 
+#: options.php:218 recipie_functions.php:215
 msgid "contains"
 msgstr ""
 
+#: options.php:218 options.php:245 recipie_functions.php:211
+#: recipie_functions.php:215
 msgid "then"
 msgstr ""
 
+#: options.php:226 options.php:251 recipie_functions.php:227
 msgid "Folder"
 msgstr ""
 
+#: options.php:230 options.php:254 recipie_functions.php:230
 msgid "Email"
 msgstr ""
 
+#: options.php:245
 msgid "if message is marked as"
 msgstr ""
 
+#: options.php:245 recipie_functions.php:211
 msgid "SPAM"
 msgstr ""
 
+#: options.php:250 recipie_functions.php:224
 msgid "to"
 msgstr ""
 
+#: options.php:261
+msgid "Existing Filters:"
+msgstr ""
+
+#: options.php:266
 msgid "Notice:"
 msgstr ""
 
+#: options.php:266
 msgid ""
 "Use of these filters may prevent the reading of mail in non-IMAP mail "
 "clients."
 msgstr ""
 
+#: recipie_functions.php:211
 msgid "If message is marked as"
 msgstr ""
 
+#: recipie_functions.php:220 recipie_functions.php:222
 msgid "move"
 msgstr ""
 
+#: recipie_functions.php:220 recipie_functions.php:222
 msgid "copy"
 msgstr ""
 
+#: setup.php:24
 msgid "Here you may set up server-side filters on all of your incoming mail."
 msgstr ""
