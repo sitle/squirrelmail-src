@@ -17,14 +17,14 @@ admin_add               0.1       1   added (rtl ?)
 amavisnewsql            0.7.1     1   added
 archive_mail            1.2       1   added (rtl, date and string issues)
 askuserinfo             1.0       1   added
-attachment_doc          1.0       1   added
+attachment_doc          1.1       1   added
 attachment_tnef         0.7       0   partly translated (sm domain)
 auto_cc                 2.0       0   added (sm domain)
 autocomplete            2.0       0   added (sm domain)
 auto_prune_sent         1.1       -   untranslated
 autorespond             0.4       -   untranslated (rtl issues)
 avelsieve               0.9.11    1   added
-bayesspam               3.62      1   added (rtl issues)
+bayesspam               3.7.1     1   added (rtl issues, floating numbers issues)
 block_attach            0.6       1   added
 block_sender            2.02      0   added (sm domain)
 bookmarks               2.0.3     -   untranslated (cr and rtl issues)
@@ -46,6 +46,7 @@ compatibility           1.3       0   added (sm domain)
 compose_chars           0.1       -   untranslated
 compose_fix.tar.gz                -   untranslated (rtl issues)
 contactclean            2.01      1   added
+cookie_warning          1.0       2   added
 courier_vacation        1.1       0   added (sm domain)
 cpanel_pw_changer       1.3       1   added
 custom_from             1.1       0   added (sm domain)
@@ -79,7 +80,7 @@ htmlarea                5.5       -   untranslated
 html_mail               2.0       -   mixed gettext and variable based translation.
                                       Patches that move variable translations to gettext are available.
 http_auth               1.1       -   utility, no translated strings
-image_buttons           1.3       0   added (sm domain, rtl issues)
+image_buttons           1.31      0   added (sm domain, rtl issues)
 ip_users                1.1
 japanese_input          1.0       1   added
 jsclock                 0.7       -   untranslated (rtl issues)
@@ -87,7 +88,7 @@ jump_to_folder          0.3       -   untranslated (rtl issues)
 junkfolder              1.0       1   added
 ldap_abook              1.02      1   added (see ftp://datanom.net/pub/squirrelmail/)
                                       Author: Michael Rasmussen <mir at datanom.net>
-ldapquery               1.7       0   added (sm domain, strings in config, rtl
+ldapquery               1.7.1     0   added (sm domain, strings in config, rtl
                                       issues. Don't translate it unless you
                                       really need it. Strings will change.)
 ldapuserdata            0.4       -   untranslated
@@ -132,6 +133,7 @@ preview_pane            1.2       1   added
 procfilter              2.0       -   untranslated
 pupdate                 0.7       0   part translated (sm domain and cr issues)
 pushed_look             4.1       -   untranslated
+qmailadmin_login        1.0       2   added
 qotd_login              0.6       -   untranslated
 quicksave               2.3       1   added
 quota_usage             1.2       0   added (sm domain)
