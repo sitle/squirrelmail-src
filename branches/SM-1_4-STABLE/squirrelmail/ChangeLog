@@ -21,6 +21,7 @@ Version 1.4.2 -- CVS
   - Prevent username and password from being sent in error message if IMAP
     drops connection during login.
   - Workaround for Mozilla bug #200412 in order to show multipart/related html mail.
+  - Fix for disapearing '0' from decoded strings (bug #784193).
 
 Version 1.4.1 -- 7 July 2003
 ----------------------------
