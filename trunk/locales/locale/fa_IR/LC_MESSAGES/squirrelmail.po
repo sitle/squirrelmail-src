@@ -9,18 +9,28 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: squirrelmail\n"
-"Report-Msgid-Bugs-To: remohammadi@cs.sharif.edu\n"
-"POT-Creation-Date: 2004-12-29 20:14+0100\n"
-"PO-Revision-Date: 2005-01-14 16:46+0330\n"
-"Last-Translator: Reza Mohammadi\n"
+"POT-Creation-Date: 2005-01-07 19:50+0200\n"
+"PO-Revision-Date: 2005-03-08 16:42+0330\n"
+"Last-Translator: Reza Mohammadi <remohammadi@cs.sharif.edu>\n"
 "Language-Team: Farsi (Persian) <farsi@ims.ir>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Report-Msgid-Bugs-To: remohammadi@cs.sharif.edu\n"
 "X-Generator: KBabel 1.9\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
 
 msgid "Address Book"
 msgstr "دفترچه‌آدرس"
+
+msgid "All"
+msgstr "همه"
+
+msgid "To"
+msgstr "به"
+
+msgid "Cc"
+msgstr "رونوشت"
 
 msgid "Name"
 msgstr "نام"
@@ -34,17 +44,14 @@ msgstr "اطلاعات"
 msgid "Source"
 msgstr "منبع"
 
-msgid "To"
-msgstr "به"
-
-msgid "Cc"
-msgstr "رونوشت"
-
 msgid "Bcc"
 msgstr "رونوشت پنهان"
 
-msgid "No persons matching your search were found"
-msgstr "شخص موردنظر پیدا نشد"
+msgid "Use Addresses"
+msgstr "از آدرس‌ها استفاده کن"
+
+msgid "Address Book Search"
+msgstr "جستجوی دفترچه‌آدرس‌ها"
 
 msgid "Search for"
 msgstr "جستجو برای"
@@ -61,9 +68,6 @@ msgstr "جستجو"
 msgid "List all"
 msgstr "همه را لیست کن"
 
-msgid "Close"
-msgstr "بستن"
-
 #, c-format
 msgid "Unable to list addresses from %s"
 msgstr "ناتوان در لیست همه آدرس‌ها از %s"
@@ -71,17 +75,14 @@ msgstr "ناتوان در لیست همه آدرس‌ها از %s"
 msgid "Your search failed with the following error(s)"
 msgstr "جستجوی شما با خطا روبرو شد"
 
-msgid "All"
-msgstr "همه"
-
-msgid "Use Addresses"
-msgstr "از آدرس‌ها استفاده کن"
-
-msgid "Address Book Search"
-msgstr "جستجوی دفترچه‌آدرس‌ها"
+msgid "No persons matching your search were found"
+msgstr "شخص موردنظر پیدا نشد"
 
 msgid "Return"
 msgstr "بازگشت"
+
+msgid "Close"
+msgstr "بستن"
 
 msgid "Nickname"
 msgstr "نام مستعار"
@@ -108,7 +109,7 @@ msgid "No personal address book is defined. Contact administrator."
 msgstr "دفترچه‌آدرس شخصی تعریف نشده است. به مدیر مراجعه کنید."
 
 msgid "You can only edit one address at the time"
-msgstr "شما فقط یک آدرس را در یک زمان می‌توانید ویرایش کنید."
+msgstr "شما فقط یک آدرس را در یک زمان میتوانید ویرایش کنید."
 
 msgid "Update address"
 msgstr "به‌روزسازی آدرس"
@@ -157,7 +158,7 @@ msgid "Draft Email Saved"
 msgstr "پست الکترونیکی پیش‌نویس ذخیره شد"
 
 msgid "Could not move/copy file. File not attached"
-msgstr "نمی‌توان فایل را کپی و یا جابه‌جا کرد. فایل ضمیمه نشده است"
+msgstr "نمیتوان فایل را کپی و یا جابه‌جا کرد. فایل ضمیمه نشده است"
 
 msgid "Draft Saved"
 msgstr "پیش‌نویس ذخیره شد"
@@ -220,6 +221,28 @@ msgstr "خطا: پوشه پیش‌نویس %s وجود ندارد"
 msgid "Server replied: "
 msgstr "جواب میزبان"
 
+msgid "Illegal folder name. Please select a different name."
+msgstr "نام پوشه نادرست است. لطفاً نام دیگری را انتخاب کنید."
+
+msgid "Click here to go back"
+msgstr "اینجا را برای بازگشت کلیک کنید."
+
+msgid "You have not selected a folder to delete. Please do so."
+msgstr "شما پوشه‌ای برای حذف انتخاب نکرده‌اید."
+
+msgid "Delete Folder"
+msgstr "حذف پوشه"
+
+#, c-format
+msgid "Are you sure you want to delete %s?"
+msgstr "آیا مطمئنید که میخواهید پوشه %s را حذف کنید؟"
+
+msgid "Yes"
+msgstr "بله"
+
+msgid "No"
+msgstr "خیر"
+
 msgid "Folders"
 msgstr "پوشه‌ها"
 
@@ -271,9 +294,6 @@ msgstr "تغییر نام"
 msgid "No folders found"
 msgstr "پوشه‌ای یافت نشد"
 
-msgid "Delete Folder"
-msgstr "حذف پوشه"
-
 msgid "Delete"
 msgstr "حذف"
 
@@ -291,25 +311,6 @@ msgstr "پوشه‌ای برای اشتراک پیدا نشد!"
 
 msgid "Subscribe to:"
 msgstr "اشتراک در:"
-
-msgid "Illegal folder name. Please select a different name."
-msgstr "نام پوشه نادرست است. لطفاً نام دیگری را انتخاب کنید."
-
-msgid "Click here to go back"
-msgstr "اینجا را برای بازگشت کلیک کنید."
-
-msgid "You have not selected a folder to delete. Please do so."
-msgstr "شما پوشه‌ای برای حذف انتخاب نکرده‌اید."
-
-#, c-format
-msgid "Are you sure you want to delete %s?"
-msgstr "آیا مطمئنید که می‌خواهید پوشه %s را حذف کنید؟"
-
-msgid "Yes"
-msgstr "بله"
-
-msgid "No"
-msgstr "خیر"
 
 msgid "You have not selected a folder to rename. Please do so."
 msgstr "شما پوشه‌ای را برای تغییر نام انتخاب نکرده‌اید"
@@ -331,10 +332,10 @@ msgstr "راهنما"
 
 #, c-format
 msgid "The help has not been translated to %s. It will be displayed in English instead."
-msgstr "راهنما به زبان %s ترجمه نشده است و به زبان انگلیسی نمایش داده می‌شود."
+msgstr "راهنما به زبان %s ترجمه نشده است و به زبان انگلیسی نمایش داده میشود."
 
 msgid "Some or all of the help documents are not present!"
-msgstr "قسمتی از راهنما پیدا نمی‌شود!"
+msgstr "قسمتی از راهنما پیدا نمیشود!"
 
 msgid "Table of Contents"
 msgstr "فهرست"
@@ -394,52 +395,16 @@ msgid "Name:"
 msgstr "نام:"
 
 msgid "Password:"
-msgstr "کلمه عبور:"
+msgstr "گذرواژه:"
 
 msgid "No messages were selected."
 msgstr "پیغامی انتخاب نشده است."
 
-msgid "Personal Information"
-msgstr "اطلاعات شخصی"
-
-msgid "Display Preferences"
-msgstr "تنظیمات نما"
-
-msgid "Message Highlighting"
-msgstr "رنگ‌آمیزی پیغام‌ها"
-
-msgid "Folder Preferences"
-msgstr "تنظیمات پوشه‌ها"
-
-msgid "Index Order"
-msgstr "ترتیب فهرست"
-
 msgid "Options"
 msgstr "تنظیمات"
 
-msgid "Successfully Saved Options"
-msgstr "تنظیمات با موفقیت ذخیره شد."
-
-msgid "Refresh Folder List"
-msgstr "بازخوانی لیست"
-
-msgid "Refresh Page"
-msgstr "بازخوانی صفحه"
-
-msgid "This contains personal information about yourself such as your name, your email address, etc."
-msgstr "در این قسمت اطلاعاتی مانند نام و آدرس پست الکترونیکی خود را می‌توانید مشخص کنید."
-
-msgid "You can change the way that SquirrelMail looks and displays information to you, such as the colors, the language, and other settings."
-msgstr "شما می‌توانید نمای ظاهری این برنامه را عوض کنید. مثلاً تغییر رنگ یا زبان."
-
-msgid "Based upon given criteria, incoming messages can have different background colors in the message list. This helps to easily distinguish who the messages are from, especially for mailing lists."
-msgstr "برای راحت‌تر تمیز دادن پیغام‌هایتان می‌توانید تنظیماتی در این قسمت انجام دهید تا رنگ آنها بر اساس موضوعشان در لیست متفاوت باشد."
-
-msgid "These settings change the way your folders are displayed and manipulated."
-msgstr "در این قسمت ساختار پوشه‌بندی خود را می‌توانید تغییر دهید."
-
-msgid "The order of the message index can be rearranged and changed to contain the headers in any order you want."
-msgstr "ترتیب نمایش نامه‌هایتان در لیست را می‌توانید از این قسمت تغییر دهید."
+msgid "Message Highlighting"
+msgstr "رنگ‌آمیزی پیغام‌ها"
 
 msgid "New"
 msgstr "جدید"
@@ -553,6 +518,9 @@ msgstr "تبدیل به پیش‌فرض"
 msgid "Move Up"
 msgstr "ببر بالا"
 
+msgid "Index Order"
+msgstr "ترتیب فهرست"
+
 msgid "Checkbox"
 msgstr "گزینه"
 
@@ -563,7 +531,7 @@ msgid "Size"
 msgstr "اندازه"
 
 msgid "The index order is the order that the columns are arranged in the message index. You can add, remove, and move columns around to customize them to fit your needs."
-msgstr "در این قسمت شما می‌توانید ترتیب نمایش پیغام‌هایتان را تغییر دهید و یا ستونی برای نمایش جزئیات پیغام‌ها اضافه و یا حذف نمایید."
+msgstr "در این قسمت شما میتوانید ترتیب نمایش پیغام‌هایتان را تغییر دهید و یا ستونی برای نمایش جزئیات پیغام‌ها اضافه و یا حذف نمایید."
 
 msgid "up"
 msgstr "بالا"
@@ -576,6 +544,39 @@ msgstr "حذف"
 
 msgid "Return to options page"
 msgstr "برگشت به صفحه تنظیمات"
+
+msgid "Personal Information"
+msgstr "اطلاعات شخصی"
+
+msgid "Display Preferences"
+msgstr "تنظیمات نما"
+
+msgid "Folder Preferences"
+msgstr "تنظیمات پوشه‌ها"
+
+msgid "Successfully Saved Options"
+msgstr "تنظیمات با موفقیت ذخیره شد."
+
+msgid "Refresh Folder List"
+msgstr "بازخوانی لیست"
+
+msgid "Refresh Page"
+msgstr "بازخوانی صفحه"
+
+msgid "This contains personal information about yourself such as your name, your email address, etc."
+msgstr "در این قسمت اطلاعاتی مانند نام و آدرس پست الکترونیکی خود را میتوانید مشخص کنید."
+
+msgid "You can change the way that SquirrelMail looks and displays information to you, such as the colors, the language, and other settings."
+msgstr "شما میتوانید نمای ظاهری این برنامه را عوض کنید. مثلاً تغییر رنگ یا زبان."
+
+msgid "Based upon given criteria, incoming messages can have different background colors in the message list. This helps to easily distinguish who the messages are from, especially for mailing lists."
+msgstr "برای راحت‌تر تمیز دادن پیغام‌هایتان میتوانید تنظیماتی در این قسمت انجام دهید تا رنگ آنها بر اساس موضوعشان در لیست متفاوت باشد."
+
+msgid "These settings change the way your folders are displayed and manipulated."
+msgstr "در این قسمت ساختار پوشه‌بندی خود را میتوانید تغییر دهید."
+
+msgid "The order of the message index can be rearranged and changed to contain the headers in any order you want."
+msgstr "ترتیب نمایش نامه‌هایتان در لیست را میتوانید از این قسمت تغییر دهید."
 
 msgid "Message not printable"
 msgstr "پیغام غیر قابل چاپ"
@@ -627,7 +628,7 @@ msgid "requested"
 msgstr "درخواست شده"
 
 msgid "The message sender has requested a response to indicate that you have read this message. Would you like to send a receipt?"
-msgstr "فرستنده پیغام می‌خواهد از خواندن پیغام مطمئن شود. آیا شما با فرستادن رسید موافقید؟"
+msgstr "فرستنده پیغام میخواهد از خواندن پیغام مطمئن شود. آیا شما با فرستادن رسید موافقید؟"
 
 msgid "Send read receipt now"
 msgstr "هم‌اکنون رسید را بفرست"
@@ -721,7 +722,7 @@ msgstr "نمایش یک کارت کاری"
 
 #, c-format
 msgid "vCard Version %s is not supported. Some information might not be converted correctly."
-msgstr "vCard نسخه %s پشتیبانی نمی‌شود. بعضی از اطلاعات ممکن است به درستی تبدیل نشوند."
+msgstr "vCard نسخه %s پشتیبانی نمیشود. بعضی از اطلاعات ممکن است به درستی تبدیل نشوند."
 
 msgid "Title"
 msgstr "عنوان"
@@ -797,7 +798,7 @@ msgid "User '%s' does not exist"
 msgstr "کاربر '%s' وجود ندارد"
 
 msgid "Not a file name"
-msgstr "نام فایل نمی‌باشد"
+msgstr "نام فایل نمیباشد"
 
 msgid "No such file or directory"
 msgstr "چنین فایل و یا دایرکتوری‌ای یافت نشد"
@@ -812,7 +813,7 @@ msgid "Unable to update"
 msgstr "ناتوان در بازنویسی"
 
 msgid "Could not lock datafile"
-msgstr "نمی‌توان فایل اطلاعات را قفل کرد"
+msgstr "نمیتوان فایل اطلاعات را قفل کرد"
 
 msgid "Write to addressbook failed"
 msgstr "ناتوان در نوشتن دفترچه‌آدرس"
@@ -1000,7 +1001,7 @@ msgstr "برو به صفحه ورود"
 
 #, c-format
 msgid "Preference file, %s, does not exist. Log out, and log back in to create a default preference file."
-msgstr "فایل تنظیمات نما، %s، موجود نمی‌باشد. از سیستم خارج شده و دوباره وارد شوید تا این فایل با استفاده از مقادیر پیش‌فرض ساخته شود."
+msgstr "فایل تنظیمات نما، %s، موجود نمیباشد. از سیستم خارج شده و دوباره وارد شوید تا این فایل با استفاده از مقادیر پیش‌فرض ساخته شود."
 
 #, c-format
 msgid "Preference file, %s, could not be opened. Contact your system administrator to resolve this issue."
@@ -1022,7 +1023,7 @@ msgid "Default preference file not found or not readable!"
 msgstr "فایل تنظیمات نمای پیش‌فرض وجود ندارد و یا قابل خواندن نیست!"
 
 msgid "Could not create initial preference file!"
-msgstr "فایل اولیه تنظیمات نما را نمی‌توانم بسازم!"
+msgstr "فایل اولیه تنظیمات نما را نمیتوانم بسازم!"
 
 #, c-format
 msgid "%s should be writable by user %s"
@@ -1033,18 +1034,18 @@ msgstr "امضا زیادی طولانی است."
 
 #, c-format
 msgid "Signature file, %s, could not be opened. Contact your system administrator to resolve this issue."
-msgstr "فایل امضا، %s، قابل خواندن نمی‌باشد. لطفاً جهت رفع مشکل با مدیر سیستم تماس بگیرید."
+msgstr "فایل امضا، %s، قابل خواندن نمیباشد. لطفاً جهت رفع مشکل با مدیر سیستم تماس بگیرید."
 
 #, c-format
 msgid "Signature file, %s, could not be written. Contact your system administrator to resolve this issue."
-msgstr "فایل امضا، %s، قابل نوشتن نمی‌باشد. لطفاً جهت رفع مشکل با مدیر سیستم تماس بگیرید."
+msgstr "فایل امضا، %s، قابل نوشتن نمیباشد. لطفاً جهت رفع مشکل با مدیر سیستم تماس بگیرید."
 
 #, c-format
 msgid "Signature file, %s, could not be copied from temporary file, %s. Contact your system administrator to resolve this issue."
-msgstr "فایل امضا، %s، قابل تهیه از نسخه موقت، %s، نمی‌باشد. لطفاً جهت رفع مشکل با مدیر سیستم تماس بگیرید."
+msgstr "فایل امضا، %s، قابل تهیه از نسخه موقت، %s، نمیباشد. لطفاً جهت رفع مشکل با مدیر سیستم تماس بگیرید."
 
 msgid "You need to have php4 installed with the multibyte string function enabled (using configure option --enable-mbstring)."
-msgstr "می‌بایست php4 را با قابلیت رشته‌های چندبایتی نصب می‌کردید)از --enable-mbstring استفاده کنید(."
+msgstr "میبایست php4 را با قابلیت رشته‌های چندبایتی نصب میکردید)از --enable-mbstring استفاده کنید(."
 
 msgid "ERROR : No available imapstream."
 msgstr "خطا: imapstream وجود ندارد."
@@ -1098,10 +1099,10 @@ msgid "Read data:"
 msgstr "اطلاعات خوانده‌شده:"
 
 msgid "Unknown user or password incorrect."
-msgstr "کاربر وجود ندارد و یا کلمه عبور نادرست وارد گشته است."
+msgstr "کاربر وجود ندارد و یا گذرواژه نادرست وارد گشته است."
 
 msgid "ERROR : Could not append message to"
-msgstr "خطا: نمی‌توان پیغام را اضافه کرد به"
+msgstr "خطا: نمیتوان پیغام را اضافه کرد به"
 
 msgid "Solution: "
 msgstr "راه حل:"
@@ -1110,7 +1111,7 @@ msgid "Remove unneccessary messages from your folder and start with your Trash f
 msgstr "پیغام‌های غیر ضروری را از پوشه حذف کنید. از سطل آشغال شروع کنید."
 
 msgid "(no subject)"
-msgstr ")بدون موضوع("
+msgstr "(بدون موضوع)"
 
 msgid "Unknown Sender"
 msgstr "فرستنده ناشناس"
@@ -1137,7 +1138,7 @@ msgid "Server-side sorting is not supported by your IMAP server."
 msgstr ""
 
 msgid "THIS FOLDER IS EMPTY"
-msgstr "این پوشه خالی می‌باشد!"
+msgstr "این پوشه خالی میباشد!"
 
 msgid "Move Selected To"
 msgstr "منتقل کن به"
@@ -1223,7 +1224,7 @@ msgid "sec_remove_eng.png"
 msgstr ""
 
 msgid "This external link will open in a new window"
-msgstr "این لینک خارج از سیستم در پنجره دیگری باز می‌گردد"
+msgstr "این لینک خارج از سیستم در پنجره دیگری باز میگردد"
 
 #, c-format
 msgid "Option Type '%s' Not Found"
@@ -1336,7 +1337,7 @@ msgid "Mailbox Display Options"
 msgstr "تنظیمات نمای فضای پیغام‌ها"
 
 msgid "Number of Messages to Index"
-msgstr "تعداد پیغام‌هایی که در فهرست می‌آیند"
+msgstr "تعداد پیغام‌هایی که در فهرست میآیند"
 
 msgid "Enable Alternating Row Colors"
 msgstr "رنگ‌آمیزی یکی‌درمیان سطرها"
@@ -1589,7 +1590,7 @@ msgid "Edit Advanced Identities"
 msgstr "ویرایش مشخصات (پیشرفته)"
 
 msgid "(discards changes made on this form so far)"
-msgstr "(چنانچه کلیک کنید، تغییراتی که هم‌اکنون انجام داده‌اید از بین می‌رود)"
+msgstr "(چنانچه کلیک کنید، تغییراتی که هم‌اکنون انجام داده‌اید از بین میرود)"
 
 msgid "Multiple Identities"
 msgstr "چند شناسه‌ای"
@@ -2002,7 +2003,7 @@ msgstr ""
 
 #, c-format
 msgid "Make sure that you are running the most recent copy of %s. You are currently using version %s."
-msgstr "مطمئن شوید که از جدیدترین نسخه %s استفاده میکنید. شما دارید از نسخه %s استفاده می‌کنید."
+msgstr "مطمئن شوید که از جدیدترین نسخه %s استفاده میکنید. شما دارید از نسخه %s استفاده میکنید."
 
 #, c-format
 msgid "Check to see if your bug is already listed in the %sBug List%s on SourceForge. If it is, we already know about it and are trying to fix it."
@@ -2019,7 +2020,7 @@ msgid "Pressing the button below will start a mail message to the developers of 
 msgstr ""
 
 msgid "Please make sure to fill out as much information as you possibly can to give everyone a good chance of finding and removing the bug. Submitting your bug like this will not have it automatically added to the bug list on SourceForge, but someone who gets your message may add it for you."
-msgstr "مطمئن شوید که هر اطلاعاتی را که داشته اید نوشته اید. در این صورت شما این شانس را به بقیه داده اید که مشکلاتشان را راحت‌تر پیدا و حل کنند. با فرستادن این مشکل، آن را در لیست مشکلات قرار نمی‌دهید. بلکه کسی که پیغام شما را دریافت می‌کند، ممکن است آن را برای شما اضافه کند."
+msgstr "مطمئن شوید که هر اطلاعاتی را که داشته اید نوشته اید. در این صورت شما این شانس را به بقیه داده اید که مشکلاتشان را راحت‌تر پیدا و حل کنند. با فرستادن این مشکل، آن را در لیست مشکلات قرار نمیدهید. بلکه کسی که پیغام شما را دریافت میکند، ممکن است آن را برای شما اضافه کند."
 
 msgid "This bug involves"
 msgstr "این مشکل شامل"
@@ -2042,15 +2043,15 @@ msgstr "گزارش‌های مشکلات:"
 msgid "Show button in toolbar"
 msgstr "نمایش دکمه در نوار ابزار"
 
+#, c-format
+msgid "Could not write calendar file %s"
+msgstr ""
+
 msgid "TODAY"
 msgstr "امروز"
 
 msgid "Go"
 msgstr "برو"
-
-#, c-format
-msgid "Could not write calendar file %s"
-msgstr ""
 
 msgid "l, F j Y"
 msgstr ""
@@ -2315,13 +2316,13 @@ msgid "Message Filters"
 msgstr "صافی‌های پیغام‌ها"
 
 msgid "Filtering enables messages with different criteria to be automatically filtered into different folders for easier organization."
-msgstr "صافی پیغام‌ها این امکان را به شما می‌دهد تا پیغام‌هایتان را براساس معیار‌هایی به طور خودکار دسته‌بندی نمایید تا سازمان‌دهی آنها راحت‌تر باشد."
+msgstr "صافی پیغام‌ها این امکان را به شما میدهد تا پیغام‌هایتان را براساس معیار‌هایی به طور خودکار دسته‌بندی نمایید تا سازمان‌دهی آنها راحت‌تر باشد."
 
 msgid "SPAM Filters"
 msgstr "صافی‌های هرزنامه‌ها"
 
 msgid "SPAM filters allow you to select from various DNS based blacklists to detect junk email in your INBOX and move it to another folder (like Trash)."
-msgstr "شما می‌توانید در این قسمت با استفاده از لیست‌های سیاه نامه‌های تبلیغاتی و هرزنامه را به طور خودکار شناسایی کرده و به پوشه دیگری منتقل کنید."
+msgstr "شما میتوانید در این قسمت با استفاده از لیست‌های سیاه نامه‌های تبلیغاتی و هرزنامه را به طور خودکار شناسایی کرده و به پوشه دیگری منتقل کنید."
 
 msgid "You must select a spam folder."
 msgstr "شما باید یک پوشه برای هرزنامه‌ها انتخاب کنید."
@@ -2541,11 +2542,11 @@ msgid "Login OK: No new messages"
 msgstr "ورود موفق: پیغام جدیدی وجود ندارد"
 
 msgid "Login OK: Inbox EMPTY"
-msgstr "ورود موفق: Inbox خالی می‌باشد"
+msgstr "ورود موفق: Inbox خالی میباشد"
 
 #, c-format
 msgid "Login OK: Inbox contains %s messages"
-msgstr "ورود موفق: Inbox شامل %s پیغام می‌باشده"
+msgstr "ورود موفق: Inbox شامل %s پیغام میباشده"
 
 msgid "Fetching UIDL..."
 msgstr ""
@@ -2680,7 +2681,7 @@ msgid "POP3 Fetch Mail"
 msgstr "دریافت پست الکترونیکی از روش POP3"
 
 msgid "This configures settings for downloading email from a POP3 mailbox to your account on this server."
-msgstr "در این قسمت می‌توانید مشخص کنید که از چه میزبان‌های POP3 ای می‌خواهید پیغام‌هایتان دریافت شود."
+msgstr "در این قسمت میتوانید مشخص کنید که از چه میزبان‌های POP3 ای میخواهید پیغام‌هایتان دریافت شود."
 
 msgid "Message Details"
 msgstr "جزئیات پیغام"
@@ -2708,20 +2709,6 @@ msgstr "ذخیره سازی پیغام"
 
 msgid "View Message details"
 msgstr "نمایش جزئیات پیغام"
-
-msgid "New Mail"
-msgstr "پیغام جدید"
-
-msgid "SquirrelMail Notice:"
-msgstr ""
-
-#, c-format
-msgid "You have %s new message"
-msgstr "شما %s پیغام جدید دارید"
-
-#, c-format
-msgid "You have %s new messages"
-msgstr "شما %s پیغام جدید دارید"
 
 msgid "New Mail Notification"
 msgstr "آگاه کننده دریافت پست الکترونیکی جدید"
@@ -2780,11 +2767,26 @@ msgstr "سعی کن"
 msgid "Current File:"
 msgstr "پرونده جاری"
 
+msgid "New Mail"
+msgstr "پیغام جدید"
+
+msgid "SquirrelMail Notice:"
+msgstr ""
+
+#, c-format
+msgid "You have %s new message"
+msgid_plural "You have %s new messages"
+msgstr[0] "شما %s پیغام جدید دارید"
+
+#, c-format
+msgid "You have %s new messages"
+msgstr "شما %s پیغام جدید دارید"
+
 msgid "NewMail Options"
 msgstr "تنظیمات پست جدید"
 
 msgid "This configures settings for playing sounds and/or showing popup windows when new mail arrives."
-msgstr "وقتی پیغام جدیدی می‌رسد با توجه به تنظیمات این قسمت صدایی پخش می‌شود و یا یک پنجره کوچک باز می‌شود."
+msgstr "وقتی پیغام جدیدی میرسد با توجه به تنظیمات این قسمت صدایی پخش میشود و یا یک پنجره کوچک باز میشود."
 
 #, c-format
 msgid "%s New Messages"
@@ -2792,7 +2794,8 @@ msgstr "%s پیغام‌ جدید"
 
 #, c-format
 msgid "%s New Message"
-msgstr "%s پیغام جدید"
+msgid_plural "%s New Messages"
+msgstr[0] "%s پیغام جدید"
 
 msgid "Test Sound"
 msgstr "آزمایش صدا"
@@ -2939,7 +2942,7 @@ msgid "SpellChecker Options"
 msgstr "تنظیمات غلط املایی یاب"
 
 msgid "Here you may set up how your personal dictionary is stored, edit it, or choose which languages should be available to you when spell-checking."
-msgstr "دراینجا شما می‌توانید تنظیم کنید که چگونه دیکشنری شخصی شما برپا گردد، چگونه آنرا ویرایش کنید، یا اینکه کدام زبان برای چک کردن املا شما مورد استفاده قرار گیرد."
+msgstr "دراینجا شما میتوانید تنظیم کنید که چگونه دیکشنری شخصی شما برپا گردد، چگونه آنرا ویرایش کنید، یا اینکه کدام زبان برای چک کردن املا شما مورد استفاده قرار گیرد."
 
 msgid "Check Spelling"
 msgstr "چک کردن املا"
@@ -2966,7 +2969,7 @@ msgid "You must make a choice"
 msgstr "شما باید گزینه ای را انتخاب کنید"
 
 msgid "You can either delete your dictionary or type in the old password. Not both."
-msgstr "شما می‌توانید دیکشنری خود را پاک کرده یا اینکه کلمه عبور قدیمی خود را وارد کنید. "
+msgstr "شما میتوانید دیکشنری خود را پاک کرده یا اینکه گذرواژه قدیمی خود را وارد کنید. "
 
 msgid "This will delete your personal dictionary file. Proceed?"
 msgstr ""
@@ -3063,15 +3066,6 @@ msgstr ""
 msgid "No errors found"
 msgstr "خطایی یافت نشد"
 
-msgid "Your personal dictionary has been encrypted and is now stored in an encrypted format."
-msgstr ""
-
-msgid "Your personal dictionary has been decrypted and is now stored as plain text."
-msgstr ""
-
-msgid "Personal Dictionary Crypto Settings"
-msgstr ""
-
 msgid "Your personal dictionary was erased."
 msgstr "دیکشنری شخصی شما پاک شد."
 
@@ -3094,6 +3088,15 @@ msgid "Your personal dictionary was re-encrypted successfully. Please close this
 msgstr ""
 
 msgid "Dictionary re-encrypted"
+msgstr ""
+
+msgid "Your personal dictionary has been encrypted and is now stored in an encrypted format."
+msgstr ""
+
+msgid "Your personal dictionary has been decrypted and is now stored as plain text."
+msgstr ""
+
+msgid "Personal Dictionary Crypto Settings"
 msgstr ""
 
 msgid "Personal Dictionary"
@@ -3197,7 +3200,7 @@ msgid "Add International Dictionaries"
 msgstr "اضافه‌کردن دیکشنری‌های بین‌المللی"
 
 msgid "Please choose which options you wish to set up:"
-msgstr "لطفاً تنظیماتی را که می‌خواهید اعمال شود را انتخاب کنید:"
+msgstr "لطفاً تنظیماتی را که میخواهید اعمال شود را انتخاب کنید:"
 
 msgid "Edit your personal dictionary"
 msgstr "ویرایش دیکشنری شخصی"
@@ -3221,7 +3224,7 @@ msgid "Saved Translation Options"
 msgstr "تنظیمات ذخیره شده ی ترجمه"
 
 msgid "Your server options are as follows:"
-msgstr "تنظیمات میزبان شما بدین گونه می‌باشد:"
+msgstr "تنظیمات میزبان شما بدین گونه میباشد:"
 
 msgid "Maximum of 150 words translated, powered by Systran"
 msgstr ""
@@ -3247,7 +3250,7 @@ msgid "Russian translations, maximum of 500 characters translated"
 msgstr ""
 
 msgid "You also decide if you want the translation box displayed, and where it will be located."
-msgstr "شما همچنین می‌توانید در مورد نمایش داده شدن فضای ترجمه و مکان آن تصمیم بگیرید."
+msgstr "شما همچنین میتوانید در مورد نمایش داده شدن فضای ترجمه و مکان آن تصمیم بگیرید."
 
 msgid "Select your translator:"
 msgstr "مترجم خود را انتخاب کنید:"
@@ -3393,6 +3396,528 @@ msgstr "زبان ظاهر برنامه"
 
 msgid "Translation direction"
 msgstr "جهت ترجمه"
+
+msgid "sort by nickname"
+msgstr ""
+
+msgid "sort by name"
+msgstr "ترتیب براساس نام"
+
+msgid "sort by email"
+msgstr ""
+
+msgid "sort by info"
+msgstr ""
+
+msgid "Add to address book"
+msgstr "اضافه کن به دفترچه‌آدرس"
+
+msgid "Error(s) happened while saving your options"
+msgstr ""
+
+msgid "Some of your preference changes are not applied."
+msgstr ""
+
+msgid "As Attachment"
+msgstr "به عنوان ضمیمه"
+
+msgid "Bypass Trash"
+msgstr ""
+
+msgid "Please enter something to search for"
+msgstr ""
+
+msgid "There must be at least one criteria to search for"
+msgstr ""
+
+msgid "Error in criteria argument"
+msgstr ""
+
+msgid "(Illegal date)"
+msgstr ""
+
+msgid "(Wrong date)"
+msgstr ""
+
+msgid "In"
+msgstr "در"
+
+msgid "(Missing argument)"
+msgstr ""
+
+msgid "(Spurious argument)"
+msgstr ""
+
+msgid "Fold"
+msgstr "تا کن"
+
+msgid "Unfold"
+msgstr "باز کن"
+
+msgid "Saved Searches"
+msgstr "جستجوهای ذخیره‌شده"
+
+msgid "Missing"
+msgstr ""
+
+msgid "and&nbsp;subfolders:"
+msgstr ""
+
+msgid "Exclude Criteria:"
+msgstr ""
+
+msgid "Search Criteria"
+msgstr "معیارهای جستجو"
+
+msgid "Add New Criteria"
+msgstr "افزودن معیار جدید"
+
+msgid "Remove Excluded Criteria"
+msgstr ""
+
+msgid "Remove All Criteria"
+msgstr ""
+
+msgid "Not"
+msgstr "غیر"
+
+msgid "Answered"
+msgstr ""
+
+msgid "Before"
+msgstr "قبل از"
+
+msgid "Message Body"
+msgstr "متن پیغام"
+
+msgid "Deleted"
+msgstr "حذف‌شده"
+
+msgid "Draft"
+msgstr "پیش‌نویس"
+
+msgid "Flagged"
+msgstr "پرچم‌دار"
+
+msgid "Sent By"
+msgstr "فرستاده‌شده توسط"
+
+msgid "Header Field"
+msgstr "فیلد سرآمد"
+
+msgid "Keyword"
+msgstr ""
+
+msgid "Larger Than"
+msgstr ""
+
+msgid "Old"
+msgstr ""
+
+msgid "On"
+msgstr ""
+
+msgid "Recent"
+msgstr "اخیر"
+
+msgid "Seen"
+msgstr "دیده‌شده"
+
+msgid "Sent Before"
+msgstr "فرستاده‌شده قبل از"
+
+msgid "Sent On"
+msgstr "فرستاده شده در"
+
+msgid "Sent Since"
+msgstr ""
+
+msgid "Since"
+msgstr "از"
+
+msgid "Smaller Than"
+msgstr ""
+
+msgid "Subject Contains"
+msgstr "موضوع شامل باشه:"
+
+msgid "Header and Body"
+msgstr ""
+
+msgid "Sent To"
+msgstr "فرستاده شود به"
+
+msgid "And In"
+msgstr ""
+
+msgid "Or In"
+msgstr ""
+
+msgid "And"
+msgstr "و"
+
+msgid "Or"
+msgstr ""
+
+msgid "Standard search"
+msgstr ""
+
+msgid "Advanced search"
+msgstr ""
+
+msgid "Folder List"
+msgstr "لیست پوشه‌ها"
+
+msgid "Click here to change the sorting of the address list"
+msgstr ""
+
+msgid "Possible reason : "
+msgstr ""
+
+msgid "ERROR : Bad function call."
+msgstr ""
+
+msgid "Reason:"
+msgstr "علت:"
+
+msgid "Server responded:"
+msgstr "جواب میزبان:"
+
+msgid "TLS is enabled, but this version of PHP does not support TLS sockets, or is missing the openssl extension."
+msgstr ""
+
+msgid "Unknown recipient"
+msgstr ""
+
+msgid "Unflag"
+msgstr ""
+
+msgid "Flag"
+msgstr "پرچم"
+
+msgid "Click here to change the sorting of the message list"
+msgstr ""
+
+msgid "Message Flags Icon Theme"
+msgstr ""
+
+msgid "Show Flag / Unflag Buttons"
+msgstr ""
+
+#, fuzzy
+msgid "Use Compact Page Selector"
+msgstr "اجازه انتخاب صفحه"
+
+msgid "Length of From/To Field (0 for full)"
+msgstr ""
+
+msgid "Length of Subject Field (0 for full)"
+msgstr ""
+
+msgid "Show recipient name if the message is from your default identity"
+msgstr ""
+
+#, fuzzy
+msgid "Prefix for Original Message when Replying"
+msgstr "مکان کٍرسِر هنگام جواب دادن پیغام"
+
+#, fuzzy
+msgid "Strip signature when replying"
+msgstr "مکان کٍرسِر هنگام جواب دادن پیغام"
+
+msgid "Show 'Delete & Prev/Next' Links"
+msgstr ""
+
+#, fuzzy
+msgid "Save Replies with Original Message"
+msgstr "پیغام اصلی"
+
+msgid "XP"
+msgstr ""
+
+#, fuzzy
+msgid "Hide SquirrelMail Header"
+msgstr "نمایش کامل سرآمد"
+
+#, fuzzy
+msgid "Search functions"
+msgstr "جستجو برای"
+
+msgid "Only basic search"
+msgstr ""
+
+msgid "Only advanced search"
+msgstr ""
+
+msgid "Both search functions"
+msgstr ""
+
+msgid "Show alternative language names"
+msgstr ""
+
+msgid "Available languages"
+msgstr ""
+
+#, fuzzy
+msgid "Enable aggressive decoding"
+msgstr "اجازه انتخاب صفحه"
+
+msgid "Tweaks"
+msgstr ""
+
+msgid "Use advanced tree folder listing"
+msgstr ""
+
+msgid "Use old folder listing functions"
+msgstr ""
+
+#, fuzzy
+msgid "Use icons"
+msgstr "ثانیه"
+
+msgid "Use php recode functions"
+msgstr ""
+
+msgid "Use php iconv functions"
+msgstr ""
+
+#, fuzzy
+msgid "Search Mailing List Archives"
+msgstr "لیست آرشیوها"
+
+msgid "Search SourceForge Bugtracker"
+msgstr ""
+
+#, fuzzy
+msgid "Search for words:"
+msgstr "جستجو برای"
+
+msgid "Written by:"
+msgstr ""
+
+#, fuzzy
+msgid "Email addresses only"
+msgstr "آدرس پست الکترونیکی"
+
+msgid "Mailing list:"
+msgstr ""
+
+#, fuzzy
+msgid "SquirrelMail users list"
+msgstr "SquirrelMail نسخه %s"
+
+#, fuzzy
+msgid "SquirrelMail plugins list"
+msgstr "SquirrelMail نسخه %s"
+
+#, fuzzy
+msgid "SquirrelMail developers list"
+msgstr "SquirrelMail نسخه %s"
+
+#, fuzzy
+msgid "SquirrelMail internationalization list"
+msgstr "SquirrelMail نسخه %s"
+
+msgid "Sort by:"
+msgstr ""
+
+msgid "Relevance"
+msgstr ""
+
+#, fuzzy
+msgid "Search Archives"
+msgstr "لیست آرشیوها"
+
+#, fuzzy
+msgid "Reset Form"
+msgstr "حذف پوشه"
+
+msgid "Summary keyword:"
+msgstr ""
+
+msgid "Sort By:"
+msgstr ""
+
+msgid "ID"
+msgstr ""
+
+msgid "Summary"
+msgstr "جمع‌بندی"
+
+msgid "Open Date"
+msgstr "تاریخ باز کردن"
+
+msgid "Close Date"
+msgstr "تاریخ بستن"
+
+#, fuzzy
+msgid "Submitter"
+msgstr "تایید"
+
+msgid "Assignee"
+msgstr ""
+
+msgid "Order:"
+msgstr "ترتیب:"
+
+msgid "Ascending"
+msgstr ""
+
+msgid "Descending"
+msgstr ""
+
+msgid "Search Bugtracker"
+msgstr ""
+
+#, fuzzy
+msgid "Show system specs"
+msgstr "نمایش ساعت با ثانیه‌شمار"
+
+msgid "You must type in a new password."
+msgstr "شما بایستی یک گذرواژه جدید وارد کنید."
+
+msgid "You must also type in your new password in the verify box."
+msgstr "شما بایستی گذرواژه جدید را در جعبه تایید دوباره وارد نمایید."
+
+msgid "Your new password does not match the verify password."
+msgstr "گذرواژه جدید شما با گذرواژه جعبه تایید یکسان نمیباشد."
+
+msgid "You must type in your current password."
+msgstr "شما بایستی گذرواژه فعلی خود را وارد نمایید."
+
+msgid "Your current password is not correct."
+msgstr "کاربر وجود ندارد و یا گذرواژه نادرست وارد گشته است."
+
+#, c-format
+msgid "Your new password should be %s to %s characters long."
+msgstr ""
+
+#, fuzzy
+msgid "Your new password contains invalid characters."
+msgstr "اسم مستعار حاوی کاراکترهای غیرمجاز است"
+
+msgid "Change Password"
+msgstr "تغییر گذرواژه"
+
+msgid "Current Password:"
+msgstr "کلمه‌عبور فعلی:"
+
+msgid "New Password:"
+msgstr "کلمه‌عبور جدید:"
+
+msgid "Verify New Password:"
+msgstr "تکرار کلمه‌عبور جدید:"
+
+msgid "Use this to change your email password."
+msgstr ""
+
+msgid "Curl module NOT available! Unable to change password!"
+msgstr ""
+
+msgid "Cannot change password! (Is user 'Self Configurable User' ?) (401)"
+msgstr ""
+
+msgid "Cannot change password!"
+msgstr "نمیتوان گذرواژه را تغییر داد!"
+
+msgid "Cannot connect to Database Server, please try later!"
+msgstr ""
+
+msgid "Database not found on server"
+msgstr ""
+
+msgid "SQL call failed, try again later."
+msgstr ""
+
+msgid "Duplicate login entries detected, cannot change password!"
+msgstr ""
+
+msgid "Password change was not successful!"
+msgstr ""
+
+msgid "Closing Connection"
+msgstr ""
+
+#, fuzzy
+msgid "Connecting to Password Server"
+msgstr "اتصالی با میزبان برقرار نیست"
+
+msgid "Server Capability response:"
+msgstr ""
+
+msgid "Select the IMAP commands you would like to run. Most commands require a selected mailbox so the select command is already setup. You can clear all the commands and test your own IMAP command strings. The commands are executed in order. The default values are simple IMAP commands using your default_charset and folder_prefix from SquirrelMail when needed."
+msgstr ""
+
+msgid "NOTE: These commands are live, any changes made will effect your current email account."
+msgstr ""
+
+msgid "Select"
+msgstr "انتخاب"
+
+msgid "Test Name"
+msgstr ""
+
+msgid "IMAP command string"
+msgstr "رشته دستور IMAP"
+
+msgid "Request:"
+msgstr "درخواست:"
+
+#, fuzzy
+msgid "No POP3 servers configured yet."
+msgstr "میزبانی مشخص نشده"
+
+#, fuzzy
+msgid "Click here to go to the options page."
+msgstr "اینجا را برای ورود دوباره کلیک کنید."
+
+msgid "Login OK: Inbox contains %s message"
+msgid_plural "Login OK: Inbox contains %s messages"
+msgstr[0] ""
+
+msgid "Spam Service Type:"
+msgstr ""
+
+#, fuzzy
+msgid "Free reporting"
+msgstr "گزارش دهنده‌ی تحت وب"
+
+msgid "Member services"
+msgstr ""
+
+#, fuzzy
+msgid "Save Service Type"
+msgstr "نوع پویش ذخیره گشت"
+
+#, fuzzy
+msgid "SpamCop reporting"
+msgstr "گزارش هرزنامه"
+
+msgid "Translation Theme:"
+msgstr "نما ترجمه"
+
+msgid "Selected translation engine is disabled. Please update your translation preferences."
+msgstr ""
+
+#, fuzzy
+msgid "Translation Preferences"
+msgstr "تنظیمات نما"
+
+msgid "Maximum of 25 kilobytes translated, powered by Systran"
+msgstr ""
+
+msgid "No known limits, powered by GPLTrans (free, open source)"
+msgstr ""
+
+msgid "Transliterate unknown words:"
+msgstr ""
+
+#, fuzzy
+msgid "When composing:"
+msgstr "هنگام خواندن:"
+
+msgid "Not yet functional, currently does nothing"
+msgstr ""
 
 msgid "Delivery error report"
 msgstr "گزارش خطا در ارسال"
