@@ -13,25 +13,7 @@
  * @subpackage addressbook
  */
 
-/**
-   This is the path to the global site-wide addressbook.
-   It looks and feels just like a user's .abook file
-   If this is in the data directory, use "$data_dir/global.abook"
-   If not, specify the path as though it was accessed from the
-   src/ directory ("../global.abook" -> in main directory)
-
-   If you don't want a global site-wide addressbook, comment these
-   two lines out.  (They are disabled by default.)
-
-   The global addressbook is unmodifiable by anyone.  You must actually
-   use a shell script or whatnot to modify the contents.
-
-  global $data_dir, $address_book_global_filename;
-  $address_book_global_filename = "$data_dir/global.abook";
-
-*/
-
-global $addrbook_dsn;
+global $addrbook_dsn, $addrbook_global_dsn;
 
 /**
    Create and initialize an addressbook object.
@@ -40,6 +22,8 @@ global $addrbook_dsn;
 function addressbook_init($showerr = true, $onlylocal = false) {
     global $data_dir, $username, $ldap_server, $address_book_global_filename;
     global $addrbook_dsn, $addrbook_table;
+    global $abook_global_file, $abook_global_file_writeable;
+    global $addrbook_global_dsn, $addrbook_global_table, $addrbook_global_writeable, $addrbook_global_listing;
 
     /* Create a new addressbook object */
     $abook = new AddressBook;
@@ -74,12 +58,41 @@ function addressbook_init($showerr = true, $onlylocal = false) {
     }
 
     /* This would be for the global addressbook */
-    if (isset($address_book_global_filename)) {
-        $r = $abook->add_backend('global_file');
+    if (isset($abook_global_file) && isset($abook_global_file_writeable)
+        && trim($abook_global_file)!=''){
+        // Detect place of address book
+        if (! preg_match("/[\/\\\]/",$abook_global_file)) {
+            // no path chars
+            $abook_global_filename=$data_dir . $abook_global_file;
+        } elseif (preg_match("/^\/|\w:/",$abook_global_file)) {
+            // full path is set in options (starts with slash or x:)
+            $abook_global_filename=$abook_global_file;
+        } else {
+            $abook_global_filename=SM_PATH . $abook_global_file;
+        }
+        $r = $abook->add_backend('local_file',array('filename'=>$abook_global_filename,
+                                                    'name' => _("Global address book"),
+                                                    'detect_writeable' => false,
+                                                    'writeable'=> $abook_global_file_writeable));
         if (!$r && $showerr) {
             echo _("Error initializing global addressbook.");
             exit;
         }
+    }
+
+    /* Load global addressbook from SQL if configured */
+    if (isset($addrbook_global_dsn) && !empty($addrbook_global_dsn)) {
+        /* Database configured */
+        if (!isset($addrbook_global_table) || empty($addrbook_global_table)) {
+            $addrbook_global_table = 'global_abook';
+        }
+        $r = $abook->add_backend('database',
+                                 Array('dsn' => $addrbook_global_dsn,
+                                       'owner' => 'global',
+                                       'name' => _("Global address book"),
+                                       'writeable' => $addrbook_global_writeable,
+                                       'listing' => $addrbook_global_listing,
+                                       'table' => $addrbook_global_table));
     }
 
     if ($onlylocal) {
@@ -303,7 +316,7 @@ class AddressBook {
         $ret = array();
 
         if ($bnum == -1) {
-            $sel = $this->get_backend_list('local');
+            $sel = $this->get_backend_list('');
         } else {
             $sel = array(0 => &$this->backends[$bnum]);
         }
@@ -543,13 +556,9 @@ function alistcmp($a,$b) {
 require_once(SM_PATH . 'functions/abook_local_file.php');
 require_once(SM_PATH . 'functions/abook_ldap_server.php');
 
-/* Use this if you wanna have a global address book */
-if (isset($address_book_global_filename)) {
-    include_once(SM_PATH . 'functions/abook_global_file.php');
-}
-
 /* Only load database backend if database is configured */
-if(isset($addrbook_dsn) && !empty($addrbook_dsn)) {
+if((isset($addrbook_dsn) && !empty($addrbook_dsn)) ||
+ (isset($addrbook_global_dsn) && !empty($addrbook_global_dsn))) {
   include_once(SM_PATH . 'functions/abook_database.php');
 }
 
