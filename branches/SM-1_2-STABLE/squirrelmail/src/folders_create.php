@@ -16,8 +16,19 @@ require_once('../src/validate.php');
 require_once('../functions/imap.php');
 require_once('../functions/display_messages.php');
 
+/* get globals we may need */
+
+$username = $_SESSION['username'];
+$key = $_COOKIE['key'];
+$delimiter = $_SESSION['delimiter'];
+$onetimepad = $_SESSION['onetimepad'];
+
+$folder_name = $_POST['folder_name'];
+$subfolder = $_POST['subfolder'];
+
+/* end of get globals */
+ 
 $imapConnection = sqimap_login($username, $key, $imapServerAddress, $imapPort, 0);
-global $delimiter;
 
 $folder_name = trim($folder_name);
 

@@ -18,13 +18,21 @@ require_once('../functions/imap.php');
 require_once('../functions/array.php');
 require_once('../functions/tree.php');
 
+/* get those globals */
+
+$key = $_COOKIE['key'];
+$username = $_SESSION['username'];
+$onetimepad = $_SESSION['onetimepad'];
+$delimiter = $_SESSION['delimiter'];
+
+/* finished globals */
+
 $imap_stream = sqimap_login($username, $key, $imapServerAddress, $imapPort, 0);
 
 sqimap_mailbox_list($imap_stream);
 
 $mailbox = $trash_folder;
 $boxes = sqimap_mailbox_list($imap_stream);
-global $delimiter;
 
 /*
  * According to RFC2060, a DELETE command should NOT remove inferiors (sub folders)

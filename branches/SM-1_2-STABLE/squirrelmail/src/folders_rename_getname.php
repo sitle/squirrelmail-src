@@ -12,10 +12,19 @@
  * $Id$
  */
 
-global $delimiter;
-
 require_once('../src/validate.php');
 require_once('../functions/imap.php');
+
+/* get globals we may need */
+
+$username = $_SESSION['username'];
+$key = $_COOKIE['key'];
+$delimiter = $_SESSION['delimiter'];
+$onetimepad = $_SESSION['onetimepad'];
+
+$old = $_POST['old'];
+    
+/* end of get globals */
 
 if ($old == '') {
     displayPageHeader($color, 'None');

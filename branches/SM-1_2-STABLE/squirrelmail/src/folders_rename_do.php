@@ -12,10 +12,21 @@
  * $Id$
  */
 
-global $delimiter, $base_uri;
-
 require_once('../src/validate.php');
 require_once('../functions/imap.php');
+
+/* globals */
+$username = $_SESSION['username'];
+$key = $_COOKIE['key'];
+$delimiter = $_SESSION['delimiter'];
+$onetimepad = $_SESSION['onetimepad'];
+$base_uri = $_SESSION['base_uri'];
+
+$orig = $_POST['orig'];
+$old_name = $_POST['old_name'];
+$new_name = $_POST['new_name'];
+
+/* end globals */
 
 $new_name = trim($new_name);
 
@@ -47,5 +58,5 @@ if ($old_name <> $new_name) {
     sqimap_logout($imapConnection);
 
 }
-header ('Location: ' . $base_uri . 'src/folders.php');
+header ('Location: ' . $base_uri . 'src/folders.php?success=rename');
 ?>
