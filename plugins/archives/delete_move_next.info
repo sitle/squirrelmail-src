@@ -12,6 +12,10 @@
         next email. It helps me keep up with my constantly overflowing inbox.  
     ';
     $plugin_ary[$name]['changes']  = array(
+        array('version' => '2.1',
+              'date'    => mktime(0,0,0,2,27,2001),
+              'desc'    => 'Now works with SM 1.1.1'
+        ),
         array('version' => '2.0.2',
               'date'    => mktime(0,0,0,2,14,2001),
               'desc'    => 'A bugfix'
