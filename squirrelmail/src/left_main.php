@@ -870,7 +870,7 @@ if ($date_format != 6) {
 
 /* Next, display the refresh button. */
 echo '<small>(<a href="../src/left_main.php" target="left">'.
-     _("refresh folder list") . '</a>)</small></center><br />';
+     _("refresh unseen/total info") . '</a>)</small></center><br />';
 
 /* Lastly, display the folder list. */
 if ( $collapse_folders ) {
@@ -884,7 +884,8 @@ if ( $collapse_folders ) {
 
 if ($oldway) {  /* normal behaviour SM */
  
-$boxes = sqimap_mailbox_list($imapConnection);
+sqgetGlobalVar('force_refresh',$force_refresh,SQ_GET);
+$boxes = sqimap_mailbox_list($imapConnection,$force_refresh);
 /* Prepare do do out collapsedness and visibility computation. */
 $curbox = 0;
 $boxcount = count($boxes);
@@ -937,6 +938,9 @@ for ($i = 0; $i < count($boxes); $i++) {
 
         /* Output the line for this folder. */
         echo $line;
+
+
+
     }
 }
 } else {  /* expiremental code */ 
@@ -954,6 +958,13 @@ for ($i = 0; $i < count($boxes); $i++) {
 	ListBoxes($boxes);
     }
 } /* if ($oldway) else ... */
+
+       /* Next, display the refresh button. */
+       echo '<br><center><small>(<a href="../src/left_main.php?force_refresh=1" target="left">'.
+          _("refresh folder list") . '</a>)</small></center><br />';
+
+
+
 do_hook('left_main_after');
 sqimap_logout($imapConnection);
 
