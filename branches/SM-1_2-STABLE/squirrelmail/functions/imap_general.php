@@ -188,7 +188,7 @@ function sqimap_login ($username, $password, $imap_server_address, $imap_port, $
         exit;
     }
 
-    $query = 'LOGIN "' . quoteIMAP($username) .  '" "' . quoteIMAP($password) . '"';
+    $query = 'LOGIN "' . quoteimap($username) .  '" "' . quoteimap($password) . '"';
     $read = sqimap_run_command ($imap_stream, $query, false, $response, $message);
 
     /* If the connection was not successful, lets see why */
