@@ -2,77 +2,64 @@ NAME
 	Framework for Object Orientated Development - FOOWD
 
 VERSION
-	0.8.3
+	0.8.4
+
+AUTHOR:
+	Paul James <paul@peej.co.uk>
 
 DESCRIPTION
-	FOOWD is a framework for building object orientated (OO) web applications
-	in PHP. It is a collection of base classes ripe for extending that handle
-	object persistency, user authorisation, security, data administration,
-	input handling, all the things required to build OO web applications.
+	Foowd is a framework for building object orientated (OO) web
+	applications in PHP. It enables you to create and use persistent
+	objects within your code, automating the process of keeping object
+	state between code executions.
+	
+	As well as object persistency, Foowd acts as an object broker
+	incorporating mechanisms for user authorisation, object security,
+	input handling, making it quick and easy to build an OO web
+	application.
 
-DOCUMENTATION
-	The beginnings of a FOOWD manual can be found at http://foowd.peej.co.uk/
+INSTALLATION (quick):
+
+	* Copy the files under the lib/ directory to a directory that is in
+	  your PHP include_path, or set the FOOWD_DIR constant and put them in
+	  this directory.
+
+	* For each application using Foowd, create a MySQL database and use the
+	  mysql.sql script to create the database table.
+	  
+SYNOPSIS:
+
+	require("lib/env.foowd.php");
+
+	$configArray = array(
+		'db_type'=> 'mysql',
+		'db_host'=> 'my_hostname',
+		'db_database'=> 'my_database_name',
+		'db_user' => 'my_user',
+		'db_password' => 'my_password'
+	);
+
+	$foowd = new foowd($configArray);
+
+	$obj =& $foowd->getObj(
+		array('objectid' => 123456789)
+	);
+
+	$obj->set('title', 'A New Title');
+
+	$obj->method('myMethod');
+
+	$foowd->destroy();
 
 REQUIREMENTS
 	* PHP 4.2.0+ (tested with 4.3.1)
 	* MySQL 3+ (tested with 3.23.28)
 	* A web server with access to the above tools.
+	
+THANKS
+	Thanks go to Erin Schnabel for her tireless help with debugging and
+	feature enhancements.
 
-QUICK & DIRTY INSTALLATION
-	* Extract the archive somewhere into the web root of your web server keeping
-	the directory structure in tact, the archive will create a directory called
-	"foowd".
-	* Fire up a web browser and navigate to your new site.
-	* Enjoy.
-	
-	This installation leaves every user having full permission over your Foowd
-	system, to secure it follow steps 6 onwards below.
-	
-FULL INSTALLATION
-	1. Extract the archive somewhere into the web root of your web server keeping
-	the directory structure in tact, the archive will create a directory called
-	"foowd".
-	2. Make a copy of config.default.php and open it in your favourite PHP editor.
-	Set the database server hostname, etc. Foowd will try to create the database
-	and table if they do not already exist. Save the file.
-	3. Open the lead-in document, index.php. Change the second line to point to
-	your new config.
-	4. Fire up a web browser and navigate to your new site.
-	5. If you want all the default pages from the Foowd web site in your
-	copy or Foowd gave you a database error, connect to your MySQL server using
-	your favourite client with a user with the appropriate privileges and create
-	yourself a new database. Use the database creation script mysql.sql to create
-	the FOOWD table tlbObject and populate it with the initial data. Then go back
-	to your web browser and refresh the page.
-	6. Use the link to the left labelled User::Create to create yourself a user.
-	7. View that user and use the link labelled Admin to administrate the user.
-	8. In the Groups array at the foot of the form, add the index "0" to the left
-	hand textbox and the user group name "Gods" to the right hand box. Hit submit.
-	9. Now open your configuration file and set the constant "ANON_GOD" to "FALSE"
-	to disable giving full permissions to the anonymous user.
-	10. Go back to the site and user the link labelled User::Login to log in as
-	your new user.
-	11. Enjoy.
-	
-	More in depth installation instructions can be found at:
-		http://foowd.peej.co.uk/?object=installation
-	
-FLATFILE INSTALLATION
-	* Extract the archive somewhere into the web root of your web server keeping
-	the directory structure in tact, the archive will create a directory called
-	"foowd".
-	* Edit your config file and change the constant "DATABASE" to "flatfile".
-	* Fire up a web browser and navigate to your new site.
-	* Enjoy.
-	
-	The flat file layer is buggy and slow and is not recommended for anything over
-	trying out Foowd when a DB is not available. In no circumstances should it be
-	used for a live system
-	
-UPGRADING
-	If you already have an older FOOWD install you can upgrade by copying the
-	contents of foowd/lib/ from the archive into your existsing foowd/lib/ directory.
-	
 COPYRIGHT AND LICENSE
 	The information below applies to everything in this distribution, except
 	where noted.

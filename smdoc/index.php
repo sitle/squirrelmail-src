@@ -1,31 +1,30 @@
 <?php
 
-require('config/config.foowd.php');             // include config and Foowd functions
+require('config.php');             // include config and Foowd functions
 
 // init Foowd
-$foowd = new smdoc(NULL, NULL, $DEFAULT_GROUPS, NULL, 'lib');
+$foowd_parameters['debug']['debug_enabled'] = TRUE;
+$foowd = new smdoc($foowd_parameters);
 
 // get object details
-include_once($foowd->path.'/input.querystring.php');
-
 $objectName = new input_querystring('object', REGEX_TITLE);
 $objectid = new input_querystring('objectid', '/^[0-9-]*$/');
 $version    = new input_querystring('version', '/^[0-9]*$/');
 $className  = new input_querystring('class', REGEX_TITLE);
 $classid = new input_querystring('classid', '/^[0-9-]*$/', NULL);
-$method = new input_querystring('method', NULL);
+$method = new input_querystring('method', NULL, 'view');
 
 // convert object name into id (if name given rather than id)
-if (isset($objectName->value)) {
+if (!isset($objectid->value) && isset($objectName->value)) {
 	$objectid->set(crc32(strtolower($objectName->value)));
 }
 
 // convert class name into id (if name given rather than id)
-if (isset($className->value)) {
+if (!isset($classid->value) && isset($className->value)) {
     $className = $className->value;
-	$classid->set(crc32(strtolower($className)));
+    $classid->set(crc32(strtolower($className)));
 } elseif (!isset($objectid->value)) {
-	$objectid->set(DEFAULT_OBJECTID);
+    $objectid->set($foowd->config_settings['site']['default_objectid']);
 }
 
 $objectid = $objectid->value;
@@ -39,9 +38,12 @@ if (isset($objectid))  // fetch object and call object method
   $foowd->debug('msg', 'fetch and call object method');
 
   if ( !isset($method) )
-    $method = getConstOrDefault('DEFAULT_METHOD','view');
-
-  if ($object = $foowd->fetchObject($objectid, $classid, $version, $method)) 
+    $method = $foowd->config_settings['site']['default_method'];
+  $object = &$foowd->getObj(array(
+                        'objectid' => $objectid,
+                        'classid'  => $classid, 
+                        'version'  => $version));
+  if ( $object ) 
   {
     if (is_object($object)) 
       $className = getClassName($object->classid);
@@ -66,7 +68,7 @@ else  // call class method
     $className = getClassName($classid);
 
   if ( !isset($method) )
-    $method = getConstOrDefault('DEFAULT_CLASS_METHOD', 'create');
+    $method = $foowd->config_settings['site']['default_class_method'];
 
   $result = $foowd->method($className, $method);
   $methodName = 'class_'.$method;
@@ -74,8 +76,10 @@ else  // call class method
 
 $foowd->debug('msg', 'display result using template');
 
-if ( $result ) 
+if ( $result === TRUE )
+{
   $foowd->template->display($foowd->getTemplateName($className, $methodName));
+}
 else 
   trigger_error("Previous error, no defined result", E_USER_NOTICE);
 
