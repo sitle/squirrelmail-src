@@ -41,12 +41,12 @@ class Rfc822Header {
         if (is_array($hdr)) {
             $hdr = implode('', $hdr);
         }
-        /* First we unfold the header */
-        $hdr = trim(str_replace(array("\r\n\t", "\r\n "),array(' ', ' '), $hdr));
+        /* First we replace \r\n by \n and unfold the header */
+        $hdr = trim(str_replace(array("\r\n", "\n\t", "\n "),array("\n", ' ', ' '), $hdr));
 
         /* Now we can make a new header array with */
         /* each element representing a headerline  */
-        $hdr = explode("\r\n" , $hdr);
+        $hdr = explode("\n" , $hdr);
         foreach ($hdr as $line) {
             $pos = strpos($line, ':');
             if ($pos > 0) {
