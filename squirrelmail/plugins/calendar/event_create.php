@@ -15,6 +15,7 @@
 
 require_once('calendar_data.php');
 require_once('functions.php');
+require_once('config.php');
 chdir('..');
 require_once('../src/validate.php');
 require_once('../functions/strings.php');
@@ -69,7 +70,7 @@ if (isset($_POST['send'])) {
 
 //main form to gather event info
 function show_event_form() {
-    global $color, $editor_size, $year, $day, $month, $hour;
+    global $color, $editor_size, $year, $day, $month, $hour, $defaultNotification;
 
     echo "\n<FORM name=eventscreate action=\"event_create.php\" METHOD=POST >\n".
          "      <INPUT TYPE=hidden NAME=\"year\" VALUE=\"$year\">\n".
@@ -101,7 +102,7 @@ function show_event_form() {
     echo "      <TR><TD BGCOLOR=\"$color[4]\" ALIGN=RIGHT>" . _("Notify:") . "</TD>\n".
          "      <TD BGCOLOR=\"$color[4]\" ALIGN=LEFT>\n".
          "      <SELECT NAME=\"event_notification\">\n";
-    select_option_notification("2");
+    select_option_notification($defaultNotification);
     echo "      </SELECT>\n".
          "      </TD></TR>\n";
     echo "      <TR><TD BGCOLOR=\"$color[4]\" ALIGN=RIGHT>" . _("Title:") . "</TD>\n".
@@ -136,7 +137,6 @@ $calself=basename($PHP_SELF);
 displayPageHeader($color, 'None');
 //load calendar menu
 calendar_header();
-
 
 echo "<TR BGCOLOR=\"$color[0]\"><TD>" .
      "<TABLE WIDTH=100% BORDER=0 CELLPADDING=2 CELLSPACING=1 BGCOLOR=\"$color[0]\">" .
