@@ -199,8 +199,8 @@ class smdoc_db
     $records =& $this->conn->getAll($query);
     if (DB::isError($records)) 
     {
-      $this->foowd->debug('msg', $result->getMessage());
-      return FALSE;
+      $this->foowd->debug('msg', $records->getMessage());
+      $records = FALSE;
     }
     return $records;
   }
@@ -236,6 +236,27 @@ class smdoc_db
     }
     
     return $row;
+  }
+
+  /**
+   * Return result of count (*)
+   * 
+   * @param  mixed in_source Source to get object from
+   * @param  array where Array of values to find object by
+   */
+  function count($in_source, $where = '')
+  {
+    $this->getSource($in_source, $source, $makeTable);
+    if ( $where )
+      $where = ' WHERE ' . $this->buildWhere($where);
+
+    $select = 'SELECT count(*) FROM '.$source.$where;
+    $query = $this->query($select);
+    if ( $query === FALSE )
+      return 0;
+    
+    $row = $this->fetch($query);
+    return intval($row['count(*)']);
   }
 
   /**
@@ -292,6 +313,7 @@ class smdoc_db
    * @param str title The proposed title
    * @param int workspaceid The workspace to search in, FALSE to leave workspaceid out
    * @param int objectid The object id generated from the title
+   * @param  mixed in_source Source to get object from
    */
   function isTitleUnique($title, $workspace, &$objectid, 
                          $in_source = NULL, $uniqueObjectid = TRUE)

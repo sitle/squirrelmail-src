@@ -14,7 +14,7 @@ function user_view_body(&$foowd, $className, $method, $user, $object, &$t)
 <tr><td colspan="2"><div class="separator"><?php echo _("Public Profile Attributes"); ?></div></td></tr>
 <tr>
   <td class="heading"><?php echo _("Username"); ?>:</td>
-  <td class="value"><?php echo $t['username']; ?>
+  <td class="value"><?php echo $t['title']; ?>
      <span class="subtext">&nbsp;[<?php echo $t['objectid'] ?>]</span>
   </td>
 </tr>
@@ -27,7 +27,7 @@ function user_view_body(&$foowd, $className, $method, $user, $object, &$t)
   <td class="value"><span class="smalldate"><?php echo $t['lastvisit']; ?></span></td>
 </tr>
 <?php // DISPLAY IM ID's IF PRESENT
-      if ( is_array($t['nicks']) || !empty($t['nicks']) )
+      if ( isset($t['nicks']) && is_array($t['nicks']) || !empty($t['nicks']) )
       {
 ?>
 <tr><td colspan="2"><div class="separator"><?php echo _("Public Contact Information"); ?></div></td></tr>
@@ -42,7 +42,7 @@ function user_view_body(&$foowd, $className, $method, $user, $object, &$t)
               break;
             case 'IRC':
               $id = htmlspecialchars($id);
-              $id .= ' <span class="subtext">#squirrelmail (<a href="http://freenode.net">irc.freenode.net</a>)</span>';
+              $id .= ' - <span class="subtext">#squirrelmail (<a href="http://freenode.net">irc.freenode.net</a>)</span>';
               break;
             case 'ICQ':
               $id = '<a href="http://wwp.icq.com/'.$id.'">'.$id.'</a>';
@@ -72,6 +72,15 @@ function user_view_body(&$foowd, $className, $method, $user, $object, &$t)
     <?php echo _("Private Attributes"); ?>
     <span class="subtext">(<a href="#email">privacy</a>)</span>
     </div></td>
+</tr>
+<tr>
+  <td class="heading"><?php echo _("Group Membership"); ?>:</td>
+  <td class="value">Registered 
+<?php   if ( !empty($object->groups) ) 
+          foreach($object->groups as $group)
+            echo ', ' . smdoc_group::getDisplayName($group);
+?>
+  </td>
 </tr>
 <?php   if ( !$t['show_email'] )
         { ?>

@@ -141,6 +141,7 @@
           <td align="right" class="menu_subtext">
             <?php
           echo '<a href="', $loc_url, '?object=search">', _("Search"),'</a> | ';
+          echo '<a href="', $loc_url, '?object=sqmuser">', _("Users"),'</a> | ';
           echo '<a href="', $loc_url, '?object=sqmindex">',_("Index"),'</a> ';
             ?>
           </td>
