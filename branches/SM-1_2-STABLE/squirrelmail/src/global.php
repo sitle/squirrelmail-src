@@ -79,6 +79,7 @@ function sqsession_register ($var, $name) {
     if ( !check_php_version(4,1) ) {
         global $HTTP_SESSION_VARS;
         $HTTP_SESSION_VARS["$name"] = $var;
+        session_register("$name");
     }
     else {
        $_SESSION["$name"] = $var; 
@@ -89,6 +90,7 @@ function sqsession_unregister ($name) {
     if ( !check_php_version(4,1) ) {
         global $HTTP_SESSION_VARS;
         unset($HTTP_SESSION_VARS["$name"]);
+        session_unregister("$name");
     }
     else {
         unset($_SESSION["$name"]); 
