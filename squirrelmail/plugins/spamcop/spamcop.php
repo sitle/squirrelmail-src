@@ -101,11 +101,9 @@ agree to follow SpamCop's rules/terms of service/etc.</p>
 <?PHP if ($spamcop_method == 'thorough_email' ||
           $spamcop_method == 'quick_email') {
    if ($spamcop_method == 'thorough_email')
-      //$report_email = 'submit.' . $spamcop_id . '@spam.spamcop.net';
-      $report_email = "test2@localhost";
+      $report_email = 'submit.' . $spamcop_id . '@spam.spamcop.net';
    else
-    //  $report_email = 'quick.' . $spamcop_id . '@spam.spamcop.net';
-      $report_email = "test2@localhost";
+      $report_email = 'quick.' . $spamcop_id . '@spam.spamcop.net';
 ?>  <form method=post action="../../src/compose.php">
   <input type=hidden name="mailbox" value="<?PHP echo
      htmlspecialchars($mailbox) ?>">
