@@ -73,7 +73,7 @@ function sqstripslashes(&$array) {
 
 function sqsession_register ($var, $name) {
     $rg = ini_get('register_globals');
-    if ( !check_php_version(4,1) && empty($rg)) {
+    if ( !check_php_version(4,1) ) {
         global $HTTP_SESSION_VARS;
         $HTTP_SESSION_VARS["$name"] = $var;
     }
@@ -83,7 +83,7 @@ function sqsession_register ($var, $name) {
 }
 function sqsession_unregister ($name) {
     $rg = ini_get('register_globals');
-    if ( !check_php_version(4,1) && empty($rg)) {
+    if ( !check_php_version(4,1) ) {
     global $HTTP_SESSION_VARS;
         unset($HTTP_SESSION_VARS["$name"]);
     }
