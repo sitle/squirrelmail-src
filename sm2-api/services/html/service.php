@@ -79,7 +79,8 @@ class ZkSvc_html {
                                     'center' => array( 'name' => 'center',
                                                        'tag_closed' => TRUE ),
                                     'img' => array( 'name' => 'img',
-                                                    'tag_closed' => FALSE ),                                                       
+                                                    'tag_closed' => FALSE ),
+                                    'font' => array( 'tag_closed' => TRUE ),                                                    
                                     'blockquote' => array( 'tag_name' => 'blockquote',
                                                            'tag_closed' => TRUE )
                                     );
@@ -163,8 +164,7 @@ class ZkSvc_html {
         if( $this->tag_options[$tag] <> NULL ) {
             if( $options == '' )
                 $options = $this->tag_options[$tag];
-
-           $ret = zkTag_html( $tag, $string, $options, $this->tag_options[$tag]['tag_closed'] );
+            $ret = zkTag_html( $tag, $string, $options, $this->tag_options[$tag]['tag_closed'] );
         }
         return( $ret );
 
@@ -221,6 +221,22 @@ function zkTag_html( $tag, $string, $options, $closed ) {
     if ( $closed )
         $ret .= "</$tag>";
 
+    return( $ret );
+}
+
+function optionize( $name, $opts, $default ) {
+
+    $ret = "<select name=\"$name\">";
+
+    foreach( $opts as $key => $opt ) {
+        if( $opt == $default )
+            $chk = 'SELECTED';
+        else
+            $chk = '';
+        $ret .= "<option value=\"$opt\" $chk>$opt</option>";
+    }
+
+    $ret .= '</select>';
     return( $ret );
 }
 
