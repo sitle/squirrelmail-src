@@ -861,8 +861,8 @@ $languages['tr_TR']['CHARSET'] = 'iso-8859-9';
 $languages['tr']['ALIAS'] = 'tr_TR';
 
 $languages['zh_TW']['NAME']    = 'Chinese Trad';
-$languages['zh_TW']['CHARSET'] = 'gb2312';
-$languages['tw']['ALIAS'] = 'zh_CN';
+$languages['zh_TW']['CHARSET'] = 'big5';
+$languages['tw']['ALIAS'] = 'zh_TW';
 
 $languages['zh_CN']['NAME']    = 'Chinese Simp';
 $languages['zh_CN']['CHARSET'] = 'gb2312';
