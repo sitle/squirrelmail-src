@@ -13,7 +13,9 @@
 require_once('../functions/prefs.php');
 
 /* Just for poor wretched souls with E_ALL. :) */
-global $username, $data_dir;
+global $data_dir;
+
+$username = $_SESSION['username'];
 
 /**
  * Example:

@@ -36,7 +36,13 @@ require_once("$SQSPELL_DIR/sqspell_functions.php");
  * If $MOD is unspecified, assign "init" to it. Else check for
  * security breach attempts.
  */
-if (!isset($MOD) || !$MOD){
+if(isset($_POST['MOD'])) {
+  $MOD = $_POST['MOD'];
+} elseif (isset($_GET['MOD'])) {
+  $MOD = $_GET['MOD'];
+}
+
+if(!$MOD) {
   $MOD = 'options_main';
 } else {
   sqspell_ckMOD($MOD);

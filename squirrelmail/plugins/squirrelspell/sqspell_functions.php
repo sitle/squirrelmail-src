@@ -26,7 +26,10 @@
  * @return            void
  */
 function sqspell_makePage($title, $scriptsrc, $body){
-  global $color, $SQSPELL_VERSION, $MOD;
+  global $color, $SQSPELL_VERSION;
+
+  $MOD = $_GET['MOD'];
+
   displayPageHeader($color, 'None');  
   echo "&nbsp;<br>\n";
   /**
@@ -326,8 +329,12 @@ function sqspell_getWords(){
      * the user's old mailbox password. I admin, this is rather dirty,
      * but efficient. ;)
      */
-    global $key, $onetimepad, $old_key;
-    if ($old_key) {
+
+    $key = $_COOKIE['key'];
+    $onetimepad = $_SESSION['onetimepad'];
+    $old_key = $_POST['old_key'];
+
+    if ($old_key != '') {
       $clear_key=$old_key;
     } else {
       /**
@@ -434,7 +441,9 @@ function sqspell_writeWords($words){
      * User wants to encrypt the file. So be it.
      * Get the user's password to use as a key.
      */
-    global $key, $onetimepad;
+    $key = $_COOKIE['key'];
+    $onetimepad = $_SESSION['onetimepad'];
+
     $clear_key=OneTimePadDecrypt($key, $onetimepad);
     /**
      * Try encrypting it. If fails, scream bloody hell.

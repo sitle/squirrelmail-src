@@ -19,7 +19,10 @@
 /**
  * Declaring globals for E_ALL
  */
-global $action, $SQSPELL_CRYPTO;
+global $SQSPELL_CRYPTO;
+
+$action = $_POST['action'];
+
 switch ($action){
   case 'encrypt':
     /**
