@@ -141,22 +141,23 @@ function translate_does_it_match_language($test) {
     $false = 0;
     $index = 0;
     $smindex = 0;
-  
+    $test_size = strlen($test);
+
     if (! $test || ! $squirrelmail_language) {
         return $false;
     }
-      
+
     if ($test[$index] == '!') {
         $index ++;
         $true = 0;
         $false = 1;
     }
-    
+
     if (($index == 0) && ($test == $squirrelmail_language)) {
         return $true;
     }
-      
-    while ($test[$index]) {
+
+    while (($index < $test_size) && $test[$index]) {
         if ($test[$index] == '*') {
             return $true;
         }
@@ -166,7 +167,7 @@ function translate_does_it_match_language($test) {
         $index ++;
         $smindex ++;
     }
-      
+
     return $false;
 }
 
