@@ -80,6 +80,7 @@ class POP3 {
             unset($this->FP);
             return false;
         }
+        if (!(isset($port)) || !$port) {$port = 110;}
 
         $fp = fsockopen("$server", $port, $errno, $errstr);
 
