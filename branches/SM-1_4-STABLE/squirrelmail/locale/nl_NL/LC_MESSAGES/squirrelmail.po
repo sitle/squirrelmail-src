@@ -5,8 +5,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: $Id$\n"
-"POT-Creation-Date: 2003-07-06 14:37+0300\n"
-"PO-Revision-Date: 2003-07-21 00:00+0200\n"
+"POT-Creation-Date: 2003-07-20 13:43+0300\n"
+"PO-Revision-Date: 2003-07-22 00:00+0200\n"
 "Last-Translator: M.J. Prinsen <translation@prinsenonline.com>\n"
 "Language-Team: Dutch <squirrelmail-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -1502,6 +1502,10 @@ msgstr "D, j F, Y g:i a"
 msgid "D, F j, Y G:i"
 msgstr "D, j F, Y G:i"
 
+# squirrelmail/functions/date.php:219
+msgid "M j, Y"
+msgstr "j M, Y"
+
 # squirrelmail/functions/date.php:206
 msgid "g:i a"
 msgstr "g:i a"
@@ -1517,10 +1521,6 @@ msgstr "D, g:i a"
 # squirrelmail/functions/date.php:215
 msgid "D, G:i"
 msgstr "D, G:i"
-
-# squirrelmail/functions/date.php:219
-msgid "M j, Y"
-msgstr "j M, Y"
 
 # squirrelmail/functions/db_prefs.php:56
 # squirrelmail/functions/db_prefs.php:63
@@ -1588,8 +1588,8 @@ msgid ""
 "Preference file, %s, could not be copied from temporary file, %s. Contact "
 "your system administrator to resolve this issue."
 msgstr ""
-"Bestand met voorkeuren, %s, kan niet worden gekopieerd van het tijdelijke bestand, %s. "
-"Neem contact op met uw systeembeheerder."
+"Bestand met voorkeuren, %s, kan niet worden gekopieerd van het tijdelijke "
+"bestand, %s. Neem contact op met uw systeembeheerder."
 
 # squirrelmail/functions/file_prefs.php:162
 #, c-format
@@ -1645,8 +1645,8 @@ msgid ""
 "Signature file, %s, could not be copied from temporary file, %s. Contact "
 "your system administrator to resolve this issue."
 msgstr ""
-"Bestand met handtekeningen, %s, kan niet worden gekopieerd van het tijdelijke bestand, %s. "
-"Neem contact op met uw systeembeheerder."
+"Bestand met handtekeningen, %s, kan niet worden gekopieerd van het "
+"tijdelijke bestand, %s. Neem contact op met uw systeembeheerder."
 
 msgid ""
 "You need to have php4 installed with the multibyte string function enabled "
@@ -2058,6 +2058,9 @@ msgstr "Pagina selectie"
 # squirrelmail/src/options_display.php:144
 msgid "Maximum Number of Pages to Show"
 msgstr "Maximum aantal te tonen pagina's"
+
+msgid "Always Show Full Date"
+msgstr ""
 
 # squirrelmail/src/options_display.php:151
 msgid "Message Display and Composition"
@@ -4634,31 +4637,36 @@ msgid "Your server options are as follows:"
 msgstr "Uw server opties zijn:"
 
 # squirrelmail/plugins/translate/options.php:102
-msgid ""
-"19 language pairs, maximum of 1000 characters translated, powered by Systran"
-msgstr "19 talen paren, maximum van 1000 tekens vertaald, powered by Systran "
+msgid "Maximum of 1000 characters translated, powered by Systran"
+msgstr "Maximum van 1000 tekens vertaald, powered by Systran"
+
+#, c-format
+msgid "Number of supported language pairs: %s"
+msgstr "Aantal ondersteunde talenparen: %s"
 
 # squirrelmail/plugins/translate/options.php:108
-msgid "12 language pairs, no known limits, powered by Systran"
-msgstr "12 talen paren, geen limieten bekend, powered by Systran "
+msgid "No known limits, powered by Systran"
+msgstr "Geen limieten bekend, powered by Systran"
 
 # squirrelmail/plugins/translate/options.php:111
-msgid ""
-"784 language pairs, no known limits, powered by Translation Experts's "
-"InterTran"
-msgstr ""
-"784 talen paren, geen limieten bekend, powered by Translation Experts's "
-"InterTran "
+msgid "No known limits, powered by Translation Experts's InterTran"
+msgstr "Geen limieten bekend, powered by Translation Experts's InterTran"
+
+#, c-format
+msgid "Number of supported languages: %s"
+msgstr "Aantal ondersteunde talenparen: %s"
 
 # squirrelmail/plugins/translate/options.php:114
-msgid ""
-"8 language pairs, no known limits, powered by GPLTrans (free, open source)"
-msgstr ""
-"8 talen paren, geen limieten bekend, powered by GPLTrans (free, open source) "
+msgid "No known limits, powered by GPLTrans (free, open source)"
+msgstr "Geen limieten bekend, powered by GPLTrans (free, open source)"
 
 # squirrelmail/plugins/translate/options.php:108
-msgid "4 language pairs for Hellenic, no known limits, powered by Systran"
-msgstr "4 talen paren voor Hellenic, geen limieten bekend, powered by Systran "
+msgid "Hellenic translations, no known limits, powered by Systran"
+msgstr "Hellenic vertalingen, geen limieten bekend, powered by Systran"
+
+# squirrelmail/plugins/translate/options.php:102
+msgid "Russian translations, maximum of 500 characters translated"
+msgstr "Russische vertalingen, maximum van 500 tekens vertaald"
 
 # squirrelmail/plugins/translate/options.php:120
 msgid ""
@@ -4668,7 +4676,7 @@ msgstr "Waar en wanneer wilt u het vertaalkader weergegeven hebben?"
 
 # squirrelmail/plugins/translate/options.php:124
 msgid "Select your translator:"
-msgstr "Selecteer uw vertaler"
+msgstr "Selecteer uw vertaler:"
 
 # squirrelmail/plugins/translate/options.php:136
 msgid "When reading:"
@@ -5065,6 +5073,14 @@ msgstr "naar Engels"
 msgid "from English"
 msgstr "van Engels"
 
+# squirrelmail/plugins/administrator/defines.php:80
+msgid "Interface language"
+msgstr "Interface taal"
+
+# squirrelmail/plugins/translate/setup.php:104
+msgid "Translation direction"
+msgstr "Vertaalrichting"
+
 # squirrelmail/po/independent_strings.txt:18
 msgid "Delivery error report"
 msgstr "Bezorgingsfout rapportage"
@@ -5072,6 +5088,11 @@ msgstr "Bezorgingsfout rapportage"
 # squirrelmail/po/independent_strings.txt:19
 msgid "Undelivered Message Headers"
 msgstr "Berichtkoppen onbestelbaar bericht"
+
+# squirrelmail/plugins/translate/options.php:108
+#~ msgid "4 language pairs for Hellenic, no known limits, powered by Systran"
+#~ msgstr ""
+#~ "4 talen paren voor Hellenic, geen limieten bekend, powered by Systran "
 
 # squirrelmail/plugins/squirrelspell/modules/options_main.mod:45
 #~ msgid "Not available"
