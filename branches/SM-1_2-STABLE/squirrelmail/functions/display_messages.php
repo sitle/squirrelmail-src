@@ -47,7 +47,7 @@ function sqm_topdir(){
      * things are REALLY broken. Shouldn't really ever happen.
      */
     $levels = 0;
-    while (!(is_dir("$topdir/functions") && is_dir("$topdir/src"))
+    while (!(is_dir($topdir . 'functions') && is_dir($topdir. 'src'))
            && $levels < 10){
         $topdir .= '../';
         $levels++;
