@@ -314,6 +314,7 @@ elseif (isset($sigappend)) {
           $no = $identity;
        }
        $signature = getSig($data_dir, $username, $no);
+       $signature .= "\n\n" . 'Identity: ' . $identity;
     }
     $body .= "\n\n".($prefix_sig==true? "-- \n":'').$signature;
     if ($compose_new_win == '1') {
@@ -693,6 +694,7 @@ function showInputForm ($session) {
             echo '<option value="' . $i . '"';
             if (isset($identity) && $identity == $i) {
                 echo ' SELECTED';
+                $signature = getSig($data_dir, $username , $identity);
             }
             echo '>' . htmlspecialchars(getPref($data_dir, $username,
                                                 'full_name' . $i));
