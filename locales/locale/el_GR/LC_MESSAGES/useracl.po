@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: useracl 1.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-02-16 13:34+0200\n"
-"PO-Revision-Date: 2004-02-16 13:34+0200\n"
+"POT-Creation-Date: 2004-08-06 10:06+0300\n"
+"PO-Revision-Date: 2004-08-06 13:34+0200\n"
 "Last-Translator: Alexandros Vellis <avel@noc.uoa.gr>\n"
 "Language-Team: Greek <el@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -24,35 +24,40 @@ msgstr "Προσθήκη νέου Κοινού Φακέλου σε Χρήστη"
 msgid "Close"
 msgstr "Κλείσιμο"
 
+msgid "Read"
+msgstr "Ανάγνωση"
+
+msgid "Insert"
+msgstr "Εισαγωγή"
+
+msgid "Post"
+msgstr "Ταχυδρόμηση"
+
+msgid "Delete"
+msgstr "Διαγραφή"
+
+msgid "Admin"
+msgstr "Διαχείριση"
+
 msgid "Folder"
 msgstr "Φάκελος"
 
 msgid "User"
 msgstr "Χρήστης"
 
-msgid "None"
-msgstr "Κανένα"
-
-msgid "Read"
-msgstr "Ανάγνωση"
-
-msgid "Append"
-msgstr "Προσθήκη"
-
-msgid "Delete"
-msgstr "Διαγραφή"
-
-msgid "Add User"
-msgstr "Πρόσθεση Χρήστη"
-
-msgid "Update"
-msgstr "Ενημέρωση"
+msgid "Fill in a username, &quot;anyone&quot; or &quot;anonymous&quot;"
+msgstr ""
+"Εισάγετε ένα όνομα χρήστη, &quot;anyone&quot; (οποιοσδήποτε) "
+"ή &quot;anonymous&quot; (ανώνυμος)"
 
 msgid "Notify user(s) by email"
 msgstr "Ειδοποίηση χρηστών μέσω ηλ. ταχυδρομείου"
 
-msgid "Update All"
-msgstr "Ενημέρωση Όλων"
+msgid "Update"
+msgstr "Ενημέρωση"
+
+msgid "Add User"
+msgstr "Πρόσθεση Χρήστη"
 
 msgid "Search..."
 msgstr "Αναζήτηση..."
@@ -86,20 +91,25 @@ msgstr ""
 "πλήρη δικαιώματα στους φακέλους σας."
 
 #, php-format
-msgid "User %s already has %s permission for folder %s."
-msgstr "Ο χρήστης %s έχει ήδη δικαίωμα για %s στον φάκελο %s."
+msgid "No changes in permissions for user %s"
+msgstr "Δεν υπάρχουν αλλαγές στα δικαιώματα του χρήστη %s"
 
 #, php-format
-msgid "User %s has been given %s permisssion for folder %s."
-msgstr "Στον χρήστη %s δόθηκε δικαίωμα για %s στον φάκελο %s."
+msgid "Successfully changed permissions for user %s."
+msgstr "Τα δικαιώματα για τον χρήστη %s άλλαξαν επιτυχώς"
 
 #, php-format
-msgid "Failed to give user %s %s permission for folder %s."
-msgstr ""
-"Λάθος κατά την εισαγωγή στον χρήστη %s δικαιώματος για %s στον φάκελο %s."
+msgid "Failed to change permissions for user %s."
+msgstr "Αποτυχία στην αλλαγή δικαιωμάτων για τον χρήστη %s"
 
 msgid "Specified user does not exist."
 msgstr "Ο χρήστης που ζητήθηκε δεν υπάρχει."
+
+msgid "Anyone"
+msgstr "Οποιοσδήποτε"
+
+msgid "Anonymous"
+msgstr "Ανώνυμος"
 
 #, php-format
 msgid "Failed to send notification message to user %s"
@@ -123,3 +133,4 @@ msgstr "Δικαιώματα Χρηστών"
 #, php-format
 msgid "Current Permissions for Folder: %s"
 msgstr "Τρέχοντα Δικαιώματα για τον Φάκελο: %s"
+
