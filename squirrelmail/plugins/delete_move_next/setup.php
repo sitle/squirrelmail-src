@@ -236,6 +236,12 @@ function delete_move_next_moveNextForm($next) {
     global $color, $where, $what, $currentArrayIndex, $passed_id,
            $urlMailbox, $sort, $startMessage, $delete_id, $move_id,
            $imapConnection, $lastTargetMailbox;
+            
+    if (isset($_POST['targetMailbox'])) {
+            $lastTargetMailbox = $_POST['targetMailbox'];
+            sqsession_unregister('lastTargetMailbox');
+            sqsession_register($lastTargetMailbox, 'lastTargetMailbox');
+    }
     echo '<tr>'.
          "<td bgcolor=\"$color[9]\" width=\"100%\" align=\"center\">".
            '<form action="read_body.php" method="post"><small>'.

@@ -40,7 +40,6 @@ if ( isset($_SESSION['composesession']) ) {
     $composesession = $_SESSION['composesession'];
 }
 sqextractGlobalVar('session');
-
 sqextractGlobalVar('mailbox');
 sqextractGlobalVar('identity');
 sqextractGlobalVar('send_to');
@@ -53,6 +52,7 @@ sqextractGlobalVar('request_mdn');
 sqextractGlobalVar('request_dr');
 sqextractGlobalVar('html_addr_search');
 sqextractGlobalVar('mail_sent');
+sqextractGlobalVar('passed_id');
 
 if ( isset($_POST['sigappend']) ) {
     $sigappend = $_POST['sigappend'];
@@ -423,10 +423,7 @@ function newMail () {
         $id = $reply_id;
     } elseif ($passed_id) {
         $id = $passed_id;
-    }
-
-
-    if ($draft_id){
+    } elseif ($draft_id){
         $id = $draft_id;
         $use_signature = FALSE;
     }
