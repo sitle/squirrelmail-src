@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2003-10-09 14:49+0300\n"
+"POT-Creation-Date: 2003-10-09 17:00+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -214,7 +214,7 @@ msgstr ""
 msgid "Notification ID"
 msgstr ""
 
-msgid "Parameters"
+msgid "Destination"
 msgstr ""
 
 msgid "Message"
@@ -240,9 +240,13 @@ msgid ""
 "with such messages once they arrive to your Inbox."
 msgstr ""
 
+#, php-format
 msgid ""
-"Select Add SPAM Rule to add the predefined rule, or select the advanced SPAM "
-"filter to customize the rule."
+"Select %s to add the predefined rule, or select the advanced SPAM filter to "
+"customize the rule."
+msgstr ""
+
+msgid "Add Spam Rule"
 msgstr ""
 
 msgid "Advanced Spam Filter..."
@@ -281,10 +285,13 @@ msgstr ""
 msgid "will be"
 msgstr ""
 
-msgid "stored in the Junk Folder"
+msgid "stored in the Junk Folder."
 msgstr ""
 
-msgid "discarded"
+msgid "stored in the Trash Folder."
+msgstr ""
+
+msgid "discarded."
 msgstr ""
 
 msgid "If"
@@ -380,9 +387,6 @@ msgstr ""
 msgid " Also keep a copy in INBOX, marked as deleted."
 msgstr ""
 
-msgid " Then <strong>STOP</strong> processing rules."
-msgstr ""
-
 msgid " Also notify using the method"
 msgstr ""
 
@@ -390,6 +394,9 @@ msgid "with"
 msgstr ""
 
 msgid "priority and the message"
+msgstr ""
+
+msgid " Then <strong>STOP</strong> processing rules."
 msgstr ""
 
 msgid "Address Match"
