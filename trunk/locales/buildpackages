@@ -4,6 +4,9 @@ source version
 install -d ../packages
 # Make source
 tar -cf ../packages/locales-${STABLE_VERSION}-${date}-src.tar *
+gzip ../packages/locales-${DEVEL_VERSION}-${date}-src.tar -c \
+ > ../packages/locales-${DEVEL_VERSION}-${date}-src.tar.gz
+ bzip2 ../packages/locales-${DEVEL_VERSION}-${date}-src.tar
 zip -q -r ../packages/locales-${STABLE_VERSION}-${date}-src.zip *
 # Compile locales
 for trans in `ls locale/`; do
