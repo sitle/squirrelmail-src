@@ -287,7 +287,7 @@ function sqimap_read_data_list ($imap_stream, $tag_uid, $handle_errors,
                             break 3; /* while switch while */
                         }
                         $data[] = $sLiteral;
-                        $fetch_data[] = sqimap_fgets($imap_stream);
+                        $data[] = sqimap_fgets($imap_stream);
                     } else {
                          $data[] = $read;
                     }
