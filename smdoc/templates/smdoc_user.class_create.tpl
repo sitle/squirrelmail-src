@@ -33,18 +33,19 @@ function user_create_body(&$foowd, $className, $method, $user, &$object, &$t)
   $t['form']->display_buttons();
   echo '</div>'."\n";
 
-  $url = getURI(array('class' => $className));
-  echo '<p class="small"><a href="'.$url.'&method=login">' 
+  $uri_arr['class'] = $className;
+  $uri_arr['method'] = 'login';
+  echo '<p class="small"><a href="'.getURI($uri_arr).'">' 
        . _("Login with existing user.")
        . '</a></p>';
 
   $t['form']->display_end();
 ?>
 <p class="subtext_center"><a id="email" name="email"></a>
-Your password is not required, it is used for password recovery.
-It will not be shared without your consent.
+<?php echo _("Your email address is not required, it is used for password recovery."); ?><br />
+<?php echo sprintf(_("See our <a href=\"%s\">Privacy Policy</a>"),
+                   getURI(array('object' => 'privacy'))); ?>
 </p>
-
 <?php
 }
 ?>
