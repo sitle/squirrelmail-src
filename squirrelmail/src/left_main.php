@@ -287,7 +287,8 @@ function is_parent_box($curbox_name, $parbox_name) {
 
 function listBoxes ($boxes, $j=0 ) {
     global $data_dir, $username, $startmessage, $color, $unseen_notify, $unseen_type,
-        $move_to_trash, $trash_folder, $collapse_folders, $use_special_folder_color;
+        $move_to_trash, $trash_folder, $collapse_folders, $use_special_folder_color,
+        $imapConnection;
 
     $pre = '';
     $end = '';
