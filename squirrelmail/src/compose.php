@@ -757,9 +757,9 @@ function newMail ($mailbox='', $passed_id='', $passed_ent_id='', $action='', $se
               sqWordWrap($rewrap_body[$i], ($editor_size));
                 if (preg_match("/^(>+)/", $rewrap_body[$i], $matches)) {
                     $gt = $matches[1];
-                    $body .= $body .= '>' . str_replace("\n", "\n>$gt ", rtrim($rewrap_body[$i])) ."\n";
+                    $body .= '>' . str_replace("\n", "\n>$gt ", rtrim($rewrap_body[$i])) ."\n";
                 } else {
-                    $body .= $body .= '> ' . str_replace("\n", "\n> ", rtrim($rewrap_body[$i])) . "\n";
+                    $body .= '> ' . str_replace("\n", "\n> ", rtrim($rewrap_body[$i])) . "\n";
                 }
                 unset($rewrap_body[$i]);
             }
