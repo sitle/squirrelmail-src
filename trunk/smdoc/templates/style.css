@@ -221,10 +221,14 @@ tr.row_even {
 	background-color: #eee;
     font-family: monospace;
 }
+td.heading,
 td.label {
     padding: 0px 5px;
-    text-align: right;
     vertical-align: top;
+    font-weight: bold;
+}
+td.label {
+    text-align: right;
 }
 td.value {
     padding: 0px 5px;
