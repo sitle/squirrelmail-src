@@ -20,7 +20,7 @@ function sqmNavMenu(&$thing) {
 		echo '( <a href="', THINGIDURI, $wtf->user->objectid, '&amp;class=user&amp;op=login">Login</a> ';
 		echo '| <a href="', THINGIDURI, $wtf->user->objectid, '&amp;class=user&amp;op=create">Register</a> )';
 	} else {
-        echo '<a href="', THINGIDURI, $wtf->user->objectid, '&amp;class=user&amp;op=edit">', $wtf->user->title, '</a> ';
+        echo '<a href="', THINGIDURI, $wtf->user->objectid, '&amp;class=home">', $wtf->user->title, '</a> ';
 		echo '( <a href="', THINGIDURI, $wtf->user->objectid, '&amp;class=user&amp;op=logout">Logout</a> )';
 	}    
 // Current workspace for User
@@ -43,7 +43,7 @@ function sqmNavMenu(&$thing) {
         }
         if ( $thing->workspaceid != 0 ) {
             if ( $thing->workspaceid != $wtf->user->workspaceid ) {
-                $workspace = &wtf::loadObject($wtf->user->workspaceid, 0, 'workspace');
+                $workspace = &wtf::loadObject($thing->workspaceid, 0, 'workspace');
             }
             echo '<workspaceid>';
             echo ' ( ' . $workspace->title . ' ) ';
@@ -91,12 +91,17 @@ function sqmEditMenu(&$thing) {
 	            echo '<a href="', THINGIDURI, $wtf->thingid, '&amp;class=', $wtf->class, '&amp;version=', $wtf->thing->version, '&amp;op=edit">Edit</a> | ';
             }
         }
-        if ( $wtf->user->inGroup($thing->deleteGroup) ) {
+
+        if ( $thing->classid != HOMECLASSID && $wtf->user->inGroup($thing->deleteGroup) ) {
+           // let's not offer deletion of the home directly. 
+           // delete the home by deleting the user (for real).
   	       echo '<a href="', THINGIDURI, $wtf->thingid, '&amp;class=', $wtf->class, '&amp;version=', $wtf->thing->version, '&amp;op=delete">Delete</a> | ';
         }
+
         if ($wtf->user->inGroup($thing->adminGroup)) {
             echo '<a href="', THINGIDURI, $wtf->thingid, '&amp;class=', $wtf->class, '&amp;version=', $wtf->thing->version, '&amp;op=admin">Administrate</a> | ';
         }
+
 	    echo '<a href="', THINGIDURI, $wtf->thingid, '&amp;class=', $wtf->class, '&amp;version=', $wtf->thing->version, '&amp;op=history">History</a> | ';
         echo '<a href="', THINGURI, 'recentchanges">Recent Changes</a>';
         echo '<br/>';
