@@ -53,4 +53,22 @@ function sqsession_unregister ($name) {
         session_unregister("$name");
     }
 }
+
+/**
+ *  Search for the var $name in $_SESSION, $_POST, $_GET
+ *  (in that order) and register it as a global var.
+ */
+function sqextractGlobalVar ($name) {
+    global $_SESSION, $_GET, $_POST, $$name;
+
+    if( isset($_SESSION[$name]) ) {
+        $$name = $_SESSION[$name];
+    }
+    if( isset($_POST[$name]) ) {
+        $$name = $_POST[$name];
+    }
+    else if ( isset($_GET[$name]) ) {
+        $$name =  $_GET[$name];
+    }
+}
 ?>

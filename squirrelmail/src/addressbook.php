@@ -17,6 +17,30 @@ require_once('../functions/display_messages.php');
 require_once('../functions/addressbook.php');
 require_once('../functions/strings.php');
 
+/* lets get the global vars we may need */
+$key  = $_COOKIE['key'];
+
+$username = $_SESSION['username'];
+$onetimepad = $_SESSION['onetimepad'];
+$base_uri = $_SESSION['base_uri'];
+$delimiter = $_SESSION['delimiter'];
+
+/* From the address form */
+if ( isset($_POST['addaddr']) ) {
+    $addaddr = &$_POST['addaddr'];
+}
+if ( isset($_POST['editaddr']) ) {
+    $editaddr = &$_POST['editaddr'];
+}
+if ( isset($_POST['deladdr']) ) {
+    $deladdr = &$_POST['deladdr'];
+}
+$sel = &$_POST['sel'];
+
+$oldnick = $_POST['oldnick'];
+$backend = $_POST['backend'];
+$doedit = $_POST['doedit'];
+
 /* Make an input field */
 function adressbook_inp_field($label, $field, $name, $size, $values, $add) {
     global $color;
@@ -71,7 +95,7 @@ $defselected  = array();
 
 
 /* Handle user's actions */
-if($REQUEST_METHOD == 'POST') {
+if($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     /**************************************************
      * Add new address                                *
