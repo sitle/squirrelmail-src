@@ -202,6 +202,14 @@ $onetimepad = $_SESSION['onetimepad'];
 $username = $_SESSION['username'];
 $delimiter = $_SESSION['delimiter'];
 
+print_r($_GET);
+
+if (isset($_GET['fold'])) {
+    $fold = $_GET['fold'];
+}
+if (isset($_GET['unfold'])) {
+    $unfold = $_GET['unfold'];
+}
 /* end of getting globals */
 
 $imapConnection = sqimap_login($username, $key, $imapServerAddress, $imapPort, 10, $onetimepad); // the 10 is to hide the output

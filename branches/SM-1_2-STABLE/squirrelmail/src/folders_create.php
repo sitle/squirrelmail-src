@@ -22,9 +22,11 @@ $username = $_SESSION['username'];
 $key = $_COOKIE['key'];
 $delimiter = $_SESSION['delimiter'];
 $onetimepad = $_SESSION['onetimepad'];
-
 $folder_name = $_POST['folder_name'];
 $subfolder = $_POST['subfolder'];
+if (isset($_POST['contain_subs'])) {
+    $contain_subs = $_POST['contain_subs'];
+}
 
 /* end of get globals */
  
