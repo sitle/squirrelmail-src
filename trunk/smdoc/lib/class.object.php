@@ -225,7 +225,10 @@ class foowd_object
     else 
       $this->workspaceid = 0;
 
-    if ( $uniqueTitle && !$this->isTitleUnique($this->title, $this->workspaceid, $objectid) )
+    // Always check for unique title, because that assigns a value to $objectid.
+    // Then, check that against uniqueTitle - to make sure that the title is legal.
+    if ( !$this->isTitleUnique($this->title, $this->workspaceid, $objectid) &&
+         $uniqueTitle )
     {
       $this->objectid = 0;
       return FALSE;

@@ -8,7 +8,7 @@
  */
 
 /**
- * Template for administration of user groups
+ * Template for user list.
  *
  * Modified by SquirrelMail Development
  * $Id$
@@ -16,7 +16,9 @@
  * @package smdoc
  * @subpackage template
  */
-$t['body_function'] = 'user_groups_body';
+
+$t['title'] = _("Site News");
+$t['body_function'] = 'show_news_body';
 
 /** Include base template */
 include_once(TEMPLATE_PATH.'index.tpl');
@@ -31,30 +33,30 @@ include_once(TEMPLATE_PATH.'index.tpl');
  * @param object $object Reference to object being invoked.
  * @param mixed $t Reference to array filled with template parameters.
  */
-function user_groups_body(&$foowd, $className, $method, &$user, &$object, &$t)
+function show_news_body(&$foowd, $className, $method, &$user, &$object, &$t)
 {
-  echo '<h1>' . _("User Permissions") . '</h1>' . "\n";
-  $obj = $t['form']->objects;
-
-  // First, add some javaScript to toggle on/off other 
-  // elements if None is selected.
 ?>
-<script language="JavaScript" type="text/javascript" src="templates/toggleNone.js"></script>
-<?php
-  // Start form display
-  $t['form']->display_start('smdoc_form');
+<table class="smdoc_table" width="80%">
+<?php 
+      $row = 0;
+      foreach ( $t['newslist'] as $news )
+      {
+        $uri_arr['objectid'] = $news->objectid;
+        $uri_arr['classid']  = NEWS_CLASS_ID;
+        $url = getURI($uri_arr);
 ?>
-<table cellspacing="0" cellpadding="0" class="smdoc_table">
-<tr><td class="label"><b><?php echo _("Group Membership"); ?>:</b></td>
-    <td class="value"><?php echo $obj['groups']->display(NULL, 6, ' onChange="toggleNone();"'); ?></td></tr>
+      <tr class="row_odd">
+        <td class="heading"><a href="<?php echo $url; ?>"><?php echo $news['title']; ?></a></td>
+        <td class="smalldate newsdate"><?php echo date('Y/m/d H:i T',strtotime($news['updated'])); ?></td>
+      </tr>
+      <tr class="row_even">
+        <td class="newssummary" colspan="2"><?php echo $news['summary']; ?></td>
+      </tr>
+<?php    
+        $row = !$row;
+       } // end foreach user in list
+?>
 </table>
-
 <?php
-  echo "\n" . '<div class="form_submit">';
-  $t['form']->display_buttons();
-  echo '</div>'."\n";
+} // end user_list_body
 
-  $t['form']->display_end();
-}
-
-?>

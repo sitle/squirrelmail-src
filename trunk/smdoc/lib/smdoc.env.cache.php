@@ -109,7 +109,6 @@ class smdoc_object_cache
   function addToLoadedReference(&$object) 
   {
     $this->db->getSource($object->foowd_source, $source, $tmp);
-
     $hash = '';
     asort($object->foowd_primary_key);
     foreach ( $object->foowd_primary_key as $key )

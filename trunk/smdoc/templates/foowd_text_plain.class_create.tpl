@@ -44,8 +44,6 @@ function text_plain_create_body(&$foowd, $className, $method, &$user, &$object, 
 <span class="value"><?php echo $obj['createTitle']->display(); ?></span>
 </p>
 
-<div class="form_submit"><?php $t['form']->display_buttons(); ?></div>
-
 <p align="center"><?php echo $obj['createBody']->display('smdoc_textarea'); ?></p>
 
 <div class="form_submit"><?php $t['form']->display_buttons(); ?></div>

@@ -164,7 +164,7 @@
           <td align="left" class="menu_subtext">
             <?php
           echo '<a href="', $loc_url, '">',                 _("Home"), '</a> | ';
-          echo '<a href="', $loc_url, '?object=news">',     _("News"), '</a> | ';
+          echo '<a href="', $loc_url, '?class=smdoc_news&method=list">',  _("News"), '</a> | ';
           echo '<a href="', $loc_url, '?object=docs">',     _("Documentation"), '</a> | ';
           echo '<a href="', $loc_url, '?object=download">', _("Download"), '</a> | ';
           echo '<a href="', $loc_url, '?object=plugins">',  _("Plugins"), '</a> | ';

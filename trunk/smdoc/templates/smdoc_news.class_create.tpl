@@ -38,24 +38,39 @@ function text_textile_create_body(&$foowd, $className, $method, &$user, &$object
 {
   $obj = $t['form']->objects;
 ?>
-
+<script language="JavaScript" type="text/javascript" src="templates/toggleNone.js"></script>
 <table cellspacing="0" cellpadding="0" class="smdoc_table" style="width: 100%">
 <tr>
+<td class="col_top" align="center">
+  <p><?php $t['form']->display_start('smdoc_form'); ?></p>
+  <table cellspacing="0" cellpadding="0" class="smdoc_table">
+  <tr><td class="label"><b><?php echo _("Headline"); ?>:</b></td>
+      <td class="value"><?php echo $obj['createTitle']->display(); ?></td></tr>
+  <tr><td colspan="2">&nbsp;</td></tr>
+  <tr><td class="label"><b><?php echo _("Category"); ?>:</b></td>
+      <td class="value"><?php echo $obj['createCategory']->display(); ?></td></tr>
+  </table>
+</td>
+<td class="textile_howto" rowspan="2">
+  <?php include_once(TEMPLATE_PATH.'smdoc_text_textile.howto.tpl'); ?>
+</td>
+</tr>
+<tr>
   <td class="col_top" align="center">
-    <?php $t['form']->display_start('smdoc_form'); ?>
-    <p>
-      <span class="label"><?php echo _("Title"); ?>:</span>
-      <span class="value"><?php echo $obj['createTitle']->display(); ?></span>
-    </p>
+    <span class="label"><?php echo _("Short Summary"); ?>:</span><br />
+    <?php echo $obj['createSummary']->display('textile',NULL,5); ?><br />
+    <span class="smalldate">[<?php echo _("255 Characters"); ?>]</span>
 
-    <p><?php echo $obj['createBody']->display('textile'); ?></p>
+  <div class="form_submit"><?php echo $t['form']->display_buttons(); ?></div>
 
-    <div class="form_submit"><?php echo $t['form']->display_buttons(); ?></div>
+  <p>
+    <span class="label"><?php echo _("Extended News Entry"); ?>:</span><br />
+    <?php echo $obj['createBody']->display('textile', NULL,25); ?>
+  </p>
 
-    <?php $t['form']->display_end(); ?>
-  </td>
-  <td class="textile_howto">
-    <?php include_once(TEMPLATE_PATH.'smdoc_text_textile.howto.tpl'); ?>
+  <div class="form_submit"><?php echo $t['form']->display_buttons(); ?></div>
+
+  <?php $t['form']->display_end(); ?>
   </td>
 </tr>
 </table>

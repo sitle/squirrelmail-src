@@ -57,8 +57,8 @@ require_once(INPUT_DIR . 'input.querystring.php');
 $foowd = new smdoc($foowd_parameters);
 
 /*
- * Check for shorthand objectid using well-known object name:
- * e.g. object=sqmindex, object=privacy, etc.
+ * Make sure that if the full index is requested,
+ * the requestor has sufficient permission to view it.
  */
 $fullIndex_q = new input_querystring('p','/^[01]*$/');
 if ( $fullIndex_q->wasSet && $fullIndex_q->wasValid && $foowd->user->inGroup('Gods') )
@@ -103,6 +103,7 @@ if ( count($objects) > 0 )
 {
   foreach ($objects as $object) 
   {
+    // If viewer does not have permission to view this kind of object, skip it
     if ( !$foowd->hasPermission(getClassName($object['classid']), 'view', 'object', $object) )
       continue;
 

@@ -54,14 +54,14 @@ if ( $objectName_q->wasSet && $objectName_q->wasValid )
 }
 else
 {
-  $classid_q = new input_querystring('classid', '/^[0-9-]*$/', NULL);
+  $classid_q = new input_querystring('classid', REGEX_ID, NULL);
   $classid = $classid_q->value;
 
-  $objectid_q = new input_querystring('objectid', '/^[0-9-]*$/', NULL);
+  $objectid_q = new input_querystring('objectid', REGEX_ID, NULL);
   $objectid = $objectid_q->value;
 }
 
-$version_q = new input_querystring('version', '/^[0-9]*$/');
+$version_q = new input_querystring('version', REGEX_VERSION);
 $method_q = new input_querystring('method', NULL);
 $method = $method_q->value;
 
