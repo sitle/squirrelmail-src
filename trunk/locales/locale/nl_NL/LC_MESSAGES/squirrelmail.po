@@ -5,8 +5,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: squirrelmail VERSION\n"
-"POT-Creation-Date: 2004-09-28 08:53+0200\n"
-"PO-Revision-Date: 2004-09-28 23:35+0200\n"
+"POT-Creation-Date: 2004-11-16 13:25+0200\n"
+"PO-Revision-Date: 2004-11-21 23:15+0200\n"
 "Last-Translator: M.J. Prinsen <translation@prinsenonline.com>\n"
 "Language-Team: Dutch <squirrelmail-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -16,6 +16,15 @@ msgstr ""
 
 msgid "Address Book"
 msgstr "Adresboek"
+
+msgid "All"
+msgstr "Alle"
+
+msgid "To"
+msgstr "Aan"
+
+msgid "Cc"
+msgstr "CC"
 
 msgid "Name"
 msgstr "Naam"
@@ -29,17 +38,14 @@ msgstr "Informatie"
 msgid "Source"
 msgstr "Bron"
 
-msgid "To"
-msgstr "Aan"
-
-msgid "Cc"
-msgstr "CC"
-
 msgid "Bcc"
 msgstr "BCC"
 
-msgid "No persons matching your search were found"
-msgstr "Geen personen gevonden die voldoen aan de zoekopdracht"
+msgid "Use Addresses"
+msgstr "Gebruik adressen"
+
+msgid "Address Book Search"
+msgstr "Zoek in adresboek"
 
 msgid "Search for"
 msgstr "Zoek naar"
@@ -56,9 +62,6 @@ msgstr "Zoek"
 msgid "List all"
 msgstr "Toon alles"
 
-msgid "Close"
-msgstr "Sluit"
-
 #, c-format
 msgid "Unable to list addresses from %s"
 msgstr "Niet mogelijk om adressen te tonen van %s"
@@ -66,17 +69,14 @@ msgstr "Niet mogelijk om adressen te tonen van %s"
 msgid "Your search failed with the following error(s)"
 msgstr "Uw zoekopdracht is mislukt door de volgende fouten"
 
-msgid "All"
-msgstr "Alle"
-
-msgid "Use Addresses"
-msgstr "Gebruik adressen"
-
-msgid "Address Book Search"
-msgstr "Zoek in adresboek"
+msgid "No persons matching your search were found"
+msgstr "Geen personen gevonden die voldoen aan de zoekopdracht"
 
 msgid "Return"
 msgstr "Terug"
+
+msgid "Close"
+msgstr "Sluit"
 
 msgid "Nickname"
 msgstr "Bijnaam"
@@ -95,6 +95,9 @@ msgstr "Voornaam"
 
 msgid "Additional info"
 msgstr "Meer informatie"
+
+msgid "Add to:"
+msgstr "Voeg toe aan:"
 
 msgid "No personal address book is defined. Contact administrator."
 msgstr ""
@@ -214,6 +217,29 @@ msgstr "Fout: Concepts map %s bestaat niet."
 msgid "Server replied: "
 msgstr "Server reageerde: "
 
+msgid "Illegal folder name. Please select a different name."
+msgstr "Deze mapnaam is niet toegestaan. Kies een andere naam a.u.b."
+
+msgid "Click here to go back"
+msgstr "Klik hier om terug te gaan"
+
+msgid "You have not selected a folder to delete. Please do so."
+msgstr ""
+"U heeft geen map geselecteerd om te verwijderen. Selecteer een map a.u.b."
+
+msgid "Delete Folder"
+msgstr "Verwijder map"
+
+#, c-format
+msgid "Are you sure you want to delete %s?"
+msgstr "Weet u zeker dat u %s wilt verwijderen?"
+
+msgid "Yes"
+msgstr "Ja"
+
+msgid "No"
+msgstr "Nee"
+
 msgid "Folders"
 msgstr "Mappen"
 
@@ -265,9 +291,6 @@ msgstr "Hernoem"
 msgid "No folders found"
 msgstr "Geen mappen gevonden"
 
-msgid "Delete Folder"
-msgstr "Verwijder map"
-
 msgid "Delete"
 msgstr "Verwijder"
 
@@ -285,26 +308,6 @@ msgstr "Geen mappen gevonden om bij aan te melden!"
 
 msgid "Subscribe to:"
 msgstr "Aanmelden bij:"
-
-msgid "Illegal folder name. Please select a different name."
-msgstr "Deze mapnaam is niet toegestaan. Kies een andere naam a.u.b."
-
-msgid "Click here to go back"
-msgstr "Klik hier om terug te gaan"
-
-msgid "You have not selected a folder to delete. Please do so."
-msgstr ""
-"U heeft geen map geselecteerd om te verwijderen. Selecteer een map a.u.b."
-
-#, c-format
-msgid "Are you sure you want to delete %s?"
-msgstr "Weet u zeker dat u %s wilt verwijderen?"
-
-msgid "Yes"
-msgstr "Ja"
-
-msgid "No"
-msgstr "Nee"
 
 msgid "You have not selected a folder to rename. Please do so."
 msgstr "U heeft geen map geselecteerd om te hernoemen."
@@ -398,64 +401,11 @@ msgstr "Wachtwoord:"
 msgid "No messages were selected."
 msgstr "Geen berichten geselecteerd."
 
-msgid "Personal Information"
-msgstr "Persoonlijke informatie"
-
-msgid "Display Preferences"
-msgstr "Weergavevoorkeuren"
-
-msgid "Message Highlighting"
-msgstr "Berichten weergave"
-
-msgid "Folder Preferences"
-msgstr "Mapvoorkeuren"
-
-msgid "Index Order"
-msgstr "Kolomvolgorde"
-
 msgid "Options"
 msgstr "Opties"
 
-msgid "Successfully Saved Options"
-msgstr "Persoonlijke informatie is opgeslagen!"
-
-msgid "Refresh Folder List"
-msgstr "Vernieuw mappenlijst"
-
-msgid "Refresh Page"
-msgstr "Vernieuw pagina"
-
-msgid ""
-"This contains personal information about yourself such as your name, your "
-"email address, etc."
-msgstr ""
-"Dit bevat persoonlijke informatie over uzelf, zoals uw naam, uw e-mailadres, "
-"etc."
-
-msgid ""
-"You can change the way that SquirrelMail looks and displays information to "
-"you, such as the colors, the language, and other settings."
-msgstr ""
-"U kunt hier zelf instellen hoe alles weergegeven moet worden. Hier kunnen "
-"onder andere kleuren en de taal ingesteld worden."
-
-msgid ""
-"Based upon given criteria, incoming messages can have different background "
-"colors in the message list. This helps to easily distinguish who the "
-"messages are from, especially for mailing lists."
-msgstr ""
-"Gebaseerd op de opgegeven criteria kunnen bepaalde binnengekomen berichten "
-"een andere achtergrondkleur in de berichtenlijst krijgen, zodat u berichten "
-"eenvoudig uit elkaar kunt houden."
-
-msgid ""
-"These settings change the way your folders are displayed and manipulated."
-msgstr "Deze opties bepalen hoe uw mappen worden gebruikt en weergegeven."
-
-msgid ""
-"The order of the message index can be rearranged and changed to contain the "
-"headers in any order you want."
-msgstr "De kolomvolgorde van het berichtenoverzicht kan hier worden veranderd."
+msgid "Message Highlighting"
+msgstr "Berichten weergave"
 
 msgid "New"
 msgstr "Nieuw"
@@ -569,6 +519,9 @@ msgstr "Maak standaard"
 msgid "Move Up"
 msgstr "Verplaats omhoog"
 
+msgid "Index Order"
+msgstr "Kolomvolgorde"
+
 msgid "Checkbox"
 msgstr "Aankruisvak"
 
@@ -598,8 +551,61 @@ msgstr "verwijder"
 msgid "Return to options page"
 msgstr "Terug naar Opties"
 
+msgid "Personal Information"
+msgstr "Persoonlijke informatie"
+
+msgid "Display Preferences"
+msgstr "Weergavevoorkeuren"
+
+msgid "Folder Preferences"
+msgstr "Mapvoorkeuren"
+
+msgid "Successfully Saved Options"
+msgstr "Persoonlijke informatie is opgeslagen!"
+
+msgid "Refresh Folder List"
+msgstr "Vernieuw mappenlijst"
+
+msgid "Refresh Page"
+msgstr "Vernieuw pagina"
+
+msgid ""
+"This contains personal information about yourself such as your name, your "
+"email address, etc."
+msgstr ""
+"Dit bevat persoonlijke informatie over uzelf, zoals uw naam, uw e-mailadres, "
+"etc."
+
+msgid ""
+"You can change the way that SquirrelMail looks and displays information to "
+"you, such as the colors, the language, and other settings."
+msgstr ""
+"U kunt hier zelf instellen hoe alles weergegeven moet worden. Hier kunnen "
+"onder andere kleuren en de taal ingesteld worden."
+
+msgid ""
+"Based upon given criteria, incoming messages can have different background "
+"colors in the message list. This helps to easily distinguish who the "
+"messages are from, especially for mailing lists."
+msgstr ""
+"Gebaseerd op de opgegeven criteria kunnen bepaalde binnengekomen berichten "
+"een andere achtergrondkleur in de berichtenlijst krijgen, zodat u berichten "
+"eenvoudig uit elkaar kunt houden."
+
+msgid ""
+"These settings change the way your folders are displayed and manipulated."
+msgstr "Deze opties bepalen hoe uw mappen worden gebruikt en weergegeven."
+
+msgid ""
+"The order of the message index can be rearranged and changed to contain the "
+"headers in any order you want."
+msgstr "De kolomvolgorde van het berichtenoverzicht kan hier worden veranderd."
+
 msgid "Message not printable"
 msgstr "Bericht niet printbaar"
+
+msgid "Invalid URL"
+msgstr "Ongeldige URL"
 
 msgid "Printer Friendly"
 msgstr "Printer vriendelijk"
@@ -832,20 +838,14 @@ msgstr "Gebruiker '%s' bestaat al"
 msgid "User '%s' does not exist"
 msgstr "Gebruiker '%s' bestaat niet"
 
-msgid "Global address book"
-msgstr "Globaal adresboek"
+msgid "Not a file name"
+msgstr "Geen bestandsnaam"
 
 msgid "No such file or directory"
 msgstr "Geen bestand of map met deze naam"
 
 msgid "Open failed"
 msgstr "Openen mislukt"
-
-msgid "Can not modify global address book"
-msgstr "Kan het adresboek niet wijzigen"
-
-msgid "Not a file name"
-msgstr "Geen bestandsnaam"
 
 msgid "Write failed"
 msgstr "Schrijven mislukt"
@@ -866,6 +866,9 @@ msgstr "Fout: kan adresboek database %s niet initialiseren."
 msgid "Error opening file %s"
 msgstr "Fout: Kan bestand %s niet openen"
 
+msgid "Global address book"
+msgstr "Globaal adresboek"
+
 msgid "Error initializing global addressbook."
 msgstr "Fout: kan globale adresboek niet initialiseren."
 
@@ -885,11 +888,11 @@ msgstr "E-mailadres ontbreekt"
 msgid "Nickname contains illegal characters"
 msgstr "Bijnaam bevat illegale karakters"
 
-msgid "view"
-msgstr "bekijk"
+msgid "View"
+msgstr "Bekijk"
 
-msgid "Business Card"
-msgstr "Visitekaartje"
+msgid "View Business Card"
+msgstr "Bekijk visitekaartje"
 
 msgid "Sunday"
 msgstr "Zondag"
@@ -1149,13 +1152,16 @@ msgid "Error connecting to IMAP server: %s."
 msgstr "FOUT : kan IMAP server %s niet initialiseren."
 
 msgid "The IMAP server is reporting that plain text logins are disabled."
-msgstr "De IMAP server geeft aan dat aanmelden in platte tekst is uitgeschakeld."
+msgstr ""
+"De IMAP server geeft aan dat aanmelden in platte tekst is uitgeschakeld."
 
 msgid "Using CRAM-MD5 or DIGEST-MD5 authentication instead may work."
-msgstr "Het gebruik van CRAM-MD5 of DIGEST-MD5 authorisaties kan wellicht werken."
+msgstr ""
+"Het gebruik van CRAM-MD5 of DIGEST-MD5 authorisaties kan wellicht werken."
 
 msgid "Also, the use of TLS may allow SquirrelMail to login."
-msgstr "Met het gebruik van TLS kan u zich wellicht ook aanmelden bij SquirrelMail."
+msgstr ""
+"Met het gebruik van TLS kan u zich wellicht ook aanmelden bij SquirrelMail."
 
 #, c-format
 msgid "Bad request: %s"
@@ -1304,8 +1310,8 @@ msgstr "Verberg onveilige figuren"
 msgid "View Unsafe Images"
 msgstr "Bekijk onveilige figuren"
 
-msgid "download"
-msgstr "download"
+msgid "Download"
+msgstr "Download"
 
 msgid "sec_remove_eng.png"
 msgstr "sec_remove_nl.png"
@@ -1524,7 +1530,7 @@ msgstr "Selecteer berichttekst"
 msgid "No focus"
 msgstr "Geen focus"
 
-msgid "Enable Sort by of Receive Date"
+msgid "Sort by Received Date"
 msgstr "Gebruik datum van ontvangst voor sorteren"
 
 msgid "Enable Thread Sort by References Header"
@@ -1542,17 +1548,17 @@ msgstr "Gebruik Verwijderde Items niet"
 msgid "Trash Folder"
 msgstr "Verwijderde Items"
 
-msgid "Do not use Sent"
-msgstr "Gebruik Verzonden Items niet"
-
-msgid "Sent Folder"
-msgstr "Verzonden Items"
-
 msgid "Do not use Drafts"
 msgstr "Gebruik Concept map niet"
 
 msgid "Draft Folder"
 msgstr "Concept map"
+
+msgid "Do not use Sent"
+msgstr "Gebruik Verzonden Items niet"
+
+msgid "Sent Folder"
+msgstr "Verzonden Items"
 
 msgid "Folder List Options"
 msgstr "Speciale mapopties"
@@ -1656,6 +1662,12 @@ msgstr "Selectie mappenlijstweergave"
 msgid "Long: "
 msgstr "Lang: "
 
+msgid "Folder"
+msgstr "Map"
+
+msgid "Subfolder"
+msgstr "Submap"
+
 msgid "Indented: "
 msgstr "Ingesprongen: "
 
@@ -1703,11 +1715,11 @@ msgstr "Geen citering"
 msgid "AUTHOR Said"
 msgstr "Schrijver zei"
 
-msgid "Quote Who XML"
-msgstr "Citaat van XML"
-
 msgid "On DATE, AUTHOR Said"
 msgstr "Op DATUM, Schrijver zei"
+
+msgid "Quote Who XML"
+msgstr "Citaat van XML"
 
 msgid "User-Defined"
 msgstr "Gedefinieerd door gebruiker"
@@ -1771,9 +1783,6 @@ msgstr "Provider Link URI"
 
 msgid "Provider Name"
 msgstr "Providernaam"
-
-msgid "Default Language"
-msgstr "Standaard taal"
 
 msgid "Top Frame"
 msgstr "Top Frame"
@@ -1901,9 +1910,6 @@ msgstr "Standaard ongelezen type"
 msgid "Auto Create Special Folders"
 msgstr "Automatisch aanmaken speciale mappen"
 
-msgid "Default Javascript Addressbook"
-msgstr "Standaard Javascript adresboek"
-
 msgid "Auto delete folders"
 msgstr "Automatisch verwijderen mappen"
 
@@ -1912,9 +1918,6 @@ msgstr "Actieveer /Geenselectie map fix"
 
 msgid "General Options"
 msgstr "Algemene opties"
-
-msgid "Default Charset"
-msgstr "Standaard set van karakters"
 
 msgid "Data Directory"
 msgstr "Data directory"
@@ -1996,6 +1999,42 @@ msgstr "Voorkeuren veld sleutel"
 
 msgid "Preferences value field"
 msgstr "Voorkeuren veld waarde"
+
+msgid "Global address book DSN"
+msgstr "Globaal adresboek DSN"
+
+msgid "Global address book table"
+msgstr "Globaal adresboek tabel"
+
+msgid "Allow writing into global address book"
+msgstr "Sta schrijven in globale adresboek toe"
+
+msgid "Allow listing of global address book"
+msgstr "Sta het tonen van globaal adresboek toe"
+
+msgid "Language settings"
+msgstr "Taalinstellingen"
+
+msgid "Default Language"
+msgstr "Standaard taal"
+
+msgid "Default Charset"
+msgstr "Standaard set van karakters"
+
+msgid "Enable lossy encoding"
+msgstr "Gebruik eenvoudige codering"
+
+msgid "Address Books"
+msgstr "Adresboeken"
+
+msgid "Default Javascript Addressbook"
+msgstr "Standaard Javascript adresboek"
+
+msgid "Global address book file"
+msgstr "Globaal adresboek bestand"
+
+msgid "Allow writing into global address book file"
+msgstr "Sta schrijven in globale adresboek bestand toe"
 
 msgid "Themes"
 msgstr "Thema's"
@@ -2151,15 +2190,15 @@ msgstr "Fout rapportages:"
 msgid "Show button in toolbar"
 msgstr "Toon knop in menu"
 
+#, c-format
+msgid "Could not write calendar file %s"
+msgstr "Kan kalenderbestand %s niet wegschrijven"
+
 msgid "TODAY"
 msgstr "VANDAAG"
 
 msgid "Go"
 msgstr "Ga"
-
-#, c-format
-msgid "Could not write calendar file %s"
-msgstr "Kan kalenderbestand %s niet wegschrijven"
 
 msgid "l, F j Y"
 msgstr "l, j F Y"
@@ -2587,6 +2626,9 @@ msgstr "Uitspraken:"
 msgid "Show fortunes at top of mailbox"
 msgstr "Toon uitspraken bovenaan de mailbox"
 
+msgid "Plugin is disabled."
+msgstr "Plugin is uitgeschakeld"
+
 msgid "IMAP server information"
 msgstr "IMAP-server informatie"
 
@@ -2949,20 +2991,6 @@ msgstr "Bewaar bericht"
 msgid "View Message details"
 msgstr "Bekijk berichtdetails"
 
-msgid "New Mail"
-msgstr "Nieuw bericht"
-
-msgid "SquirrelMail Notice:"
-msgstr "SquirrelMail notificatie:"
-
-#, c-format
-msgid "You have %s new message"
-msgstr "U heeft %s nieuw bericht"
-
-#, c-format
-msgid "You have %s new messages"
-msgstr "U heeft %s nieuwe berichten"
-
 msgid "New Mail Notification"
 msgstr "Geen notificatie nieuw bericht"
 
@@ -3055,6 +3083,22 @@ msgstr "Test"
 msgid "Current File:"
 msgstr "Huidig bestand:"
 
+msgid "New Mail"
+msgstr "Nieuw bericht"
+
+msgid "SquirrelMail Notice:"
+msgstr "SquirrelMail notificatie:"
+
+#, c-format
+msgid "You have %s new message"
+msgid_plural "You have %s new messages"
+msgstr[0] "U heeft %s nieuw bericht"
+msgstr[1] "U heeft %s nieuwe berichten"
+
+#, c-format
+msgid "You have %s new messages"
+msgstr "U heeft %s nieuwe berichten"
+
 msgid "NewMail Options"
 msgstr "Nieuw bericht opties"
 
@@ -3074,7 +3118,8 @@ msgstr "%s Nieuwe berichten"
 
 #, c-format
 msgid "%s New Message"
-msgstr "%s nieuw bericht"
+msgid_plural "%s New Messages"
+msgstr[0] "%s nieuw bericht"
 
 msgid "Test Sound"
 msgstr "Test geluid"
@@ -3470,22 +3515,6 @@ msgstr ""
 msgid "No errors found"
 msgstr "Geen fouten gevonden"
 
-msgid ""
-"Your personal dictionary has been encrypted and is now stored in an "
-"encrypted format."
-msgstr ""
-"Uw persoonlijke woordenboek is beveiligd en is nuopgeslagen in beveiligd "
-"formaat."
-
-msgid ""
-"Your personal dictionary has been decrypted and is now stored as plain text."
-msgstr ""
-"Uw persoonlijke woordenboek is ontcijferd en is nu opgeslagen als platte "
-"tekst."
-
-msgid "Personal Dictionary Crypto Settings"
-msgstr "Persoonlijk woordenboek beveiligingsinstellingen"
-
 msgid "Your personal dictionary was erased."
 msgstr "Uw persoonlijk woordenboek is verwijderd"
 
@@ -3522,6 +3551,22 @@ msgstr ""
 
 msgid "Dictionary re-encrypted"
 msgstr "Woordenboek beveiligd"
+
+msgid ""
+"Your personal dictionary has been encrypted and is now stored in an "
+"encrypted format."
+msgstr ""
+"Uw persoonlijke woordenboek is beveiligd en is nuopgeslagen in beveiligd "
+"formaat."
+
+msgid ""
+"Your personal dictionary has been decrypted and is now stored as plain text."
+msgstr ""
+"Uw persoonlijke woordenboek is ontcijferd en is nu opgeslagen als platte "
+"tekst."
+
+msgid "Personal Dictionary Crypto Settings"
+msgstr "Persoonlijk woordenboek beveiligingsinstellingen"
 
 msgid "Personal Dictionary"
 msgstr "Persoonlijk woordenboek"
@@ -3890,9 +3935,6 @@ msgstr "Interface taal"
 msgid "Translation direction"
 msgstr "Vertaalrichting"
 
-msgid "Add to:"
-msgstr "Voeg toe aan:"
-
 msgid "sort by nickname"
 msgstr "sorteer op bijnaam"
 
@@ -3916,9 +3958,6 @@ msgstr "Fout(en) gevonden bij het opslaan van uw opties"
 
 msgid "Some of your preference changes are not applied."
 msgstr "Enkele van uw voorkeuren konden niet worden ingesteld."
-
-msgid "Invalid URL"
-msgstr "Ongeldige URL"
 
 msgid "As Attachment"
 msgstr "Als bijlage"
@@ -4090,8 +4129,8 @@ msgid ""
 "TLS is enabled, but this version of PHP does not support TLS sockets, or is "
 "missing the openssl extension."
 msgstr ""
-"TLS is geactiveerd, maar deze versie van PHP ondersteund geen TLS sockets of mist "
-"de openssl extensie."
+"TLS is geactiveerd, maar deze versie van PHP ondersteund geen TLS sockets of "
+"mist de openssl extensie."
 
 msgid "Unknown recipient"
 msgstr "Onbekende ontvanger"
@@ -4112,6 +4151,9 @@ msgstr "Message Flags Icon Theme"
 msgid "Show Flag / Unflag Buttons"
 msgstr "Toon vlag / ontvlag knoppen"
 
+msgid "Use Compact Page Selector"
+msgstr "Gebruik Compact Page Selector"
+
 msgid "Length of From/To Field (0 for full)"
 msgstr "Lengte van het Van/Aan veld (0 voor onbeperkt)"
 
@@ -4128,20 +4170,11 @@ msgstr "Prefix voor oorspronkelijk bericht bij beantwoorden"
 msgid "Strip signature when replying"
 msgstr "Verwijder handtekening bij beantwoorden"
 
-msgid "Sort by Received Date"
-msgstr "Gebruik datum van ontvangst voor sorteren"
-
 msgid "Show 'Delete & Prev/Next' Links"
 msgstr "Toon 'Verwijder & Vorige/Volgende' links"
 
 msgid "Save Replies with Original Message"
 msgstr "Bewaar antwoord bij oorspronkelijk bericht"
-
-msgid "Folder"
-msgstr "Map"
-
-msgid "Subfolder"
-msgstr "Submap"
 
 msgid "XP"
 msgstr "XP"
@@ -4161,21 +4194,6 @@ msgstr "Alleen geavanceerde zoekopdrachten"
 msgid "Both search functions"
 msgstr "Beide zoekfuncties"
 
-msgid "Global address book DSN"
-msgstr "Globaal adresboek DSN"
-
-msgid "Global address book table"
-msgstr "Globaal adresboek tabel"
-
-msgid "Allow writing into global address book"
-msgstr "Sta schrijven in globale adresboek toe"
-
-msgid "Allow listing of global address book"
-msgstr "Sta het tonen van globaal adresboek toe"
-
-msgid "Language settings"
-msgstr "Taalinstellingen"
-
 msgid "Show alternative language names"
 msgstr "Toon alternatieve taalnamen"
 
@@ -4184,9 +4202,6 @@ msgstr "Beschikbare talen"
 
 msgid "Enable aggressive decoding"
 msgstr "Gebruik agressieve codering"
-
-msgid "Enable lossy encoding"
-msgstr "Gebruik eenvoudige codering"
 
 msgid "Tweaks"
 msgstr "Tweaks"
@@ -4328,13 +4343,16 @@ msgid "Curl module NOT available! Unable to change password!"
 msgstr "Curl module NIET beschikbaar! Onmogelijk om wachtwoord te veranderen!"
 
 msgid "Cannot change password! (Is user 'Self Configurable User' ?) (401)"
-msgstr "Kan het wachtwoord niet veranderen! (Is de gebruiker 'Self Configurable User' ?) (401)"
+msgstr ""
+"Kan het wachtwoord niet veranderen! (Is de gebruiker 'Self Configurable "
+"User' ?) (401)"
 
 msgid "Cannot change password!"
 msgstr "Kan wachtwoord niet veranderen!"
 
 msgid "Cannot connect to Database Server, please try later!"
-msgstr "Kan geen verbinding maken met de Database Server, probeer het later nog eens!"
+msgstr ""
+"Kan geen verbinding maken met de Database Server, probeer het later nog eens!"
 
 msgid "Database not found on server"
 msgstr "Geen database gevonden op de server"
@@ -4354,8 +4372,9 @@ msgstr "Sluiten verbinding"
 msgid "Connecting to Password Server"
 msgstr "Verbinden met wachtwoordserver"
 
-msgid "Plugin is disabled."
-msgstr "Plugin is uitgeschakeld"
+#, c-format
+msgid "%s is not found."
+msgstr "%s is niet gevonden."
 
 msgid "Server Capability response:"
 msgstr "Server reageert: "
@@ -4399,6 +4418,12 @@ msgstr "Nog geen POP3-servers geconfigureerd."
 msgid "Click here to go to the options page."
 msgstr "Klik hier om naar de opties pagina te gaan."
 
+#, c-format
+msgid "Login OK: Inbox contains %s message"
+msgid_plural "Login OK: Inbox contains %s messages"
+msgstr[0] "Aanmelden OK: Inbox bevat %s bericht"
+msgstr[1] "Aanmelden OK: Inbox bevat %s berichten"
+
 msgid "Spam Service Type:"
 msgstr "Spam Service Type:"
 
@@ -4414,14 +4439,36 @@ msgstr "Sla Service Type op"
 msgid "SpamCop reporting"
 msgstr "SpamCop rapportage"
 
+msgid "Translation Theme:"
+msgstr "Vertaling thema:"
+
+msgid ""
+"Selected translation engine is disabled. Please update your translation "
+"preferences."
+msgstr ""
+"De geselecteerde vertalingsmogelijkheid is uitgeschakeld. Update uw "
+"vertaalopties"
+
+msgid "Translation Preferences"
+msgstr "Vertaalopties"
+
+msgid "Maximum of 150 words translated, powered by Systran"
+msgstr "Maximum van 150 woorden vertaald, powered by Systran"
+
+msgid "Maximum of 25 kilobytes translated, powered by Systran"
+msgstr "Maximum van 25 kilobytes vertaald, powered by Systran "
+
+msgid "Chinese, Simplified"
+msgstr "Chinees, Simplified"
+
+msgid "Chinese, Traditional"
+msgstr "Chinees, Traditional"
+
 msgid "Filipino (Tagalog)"
 msgstr "Filipino (Tagalog)"
 
-msgid "Simplified Chinese"
-msgstr "Simplified Chinese"
-
-msgid "Traditional Chinese"
-msgstr "Traditional Chinese"
+msgid "Transliterate unknown words:"
+msgstr "Onbekende woorden van vertaling:"
 
 msgid "Delivery error report"
 msgstr "Bezorgingsfout rapportage"
@@ -4431,6 +4478,21 @@ msgstr "Berichtkoppen onbestelbaar bericht"
 
 msgid "This image has been removed for security reasons"
 msgstr "Deze afbeelding is om veiligheidsredenen verwijders"
+
+#~ msgid "Can not modify global address book"
+#~ msgstr "Kan het adresboek niet wijzigen"
+
+#~ msgid "Business Card"
+#~ msgstr "Visitekaartje"
+
+#~ msgid "Enable Sort by of Receive Date"
+#~ msgstr "Gebruik datum van ontvangst voor sorteren"
+
+#~ msgid "Simplified Chinese"
+#~ msgstr "Simplified Chinese"
+
+#~ msgid "Traditional Chinese"
+#~ msgstr "Traditional Chinese"
 
 #~ msgid "To:"
 #~ msgstr "Aan:"
@@ -4609,11 +4671,6 @@ msgstr "Deze afbeelding is om veiligheidsredenen verwijders"
 
 #~ msgid "Local Media File:"
 #~ msgstr "Lokaal geluidsbestand:"
-
-#~ msgid ""
-#~ "10 language pairs, maximum of 25 kilobytes translated, powered by Systran"
-#~ msgstr ""
-#~ "10 talen paren, maximum van 25 kilobytes vertaald, powered by Systran "
 
 #~ msgid "Enable Subtle Printer Friendly Link"
 #~ msgstr "Activeer subtiele printervriendelijke link"
