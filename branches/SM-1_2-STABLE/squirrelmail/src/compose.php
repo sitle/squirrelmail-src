@@ -25,6 +25,21 @@ require_once('../functions/smtp.php');
 require_once('../functions/display_messages.php');
 require_once('../functions/plugin.php');
 
+/* lets get the global vars we may need */
+/* dirty solution for now */
+if( isset($_GET) ) {
+    extract($_GET);
+}
+if( isset($_POST) ) {
+   extract($_POST);
+}
+if( isset($_SESSION) ) {
+   extract($_SESSION);
+}
+if( isset($_COOKIE) ) {
+   extract($_COOKIE);
+}
+
 /* --------------------- Specific Functions ------------------------------ */
 
 
