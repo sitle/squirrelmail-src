@@ -366,7 +366,7 @@ if ($recent_count > 0) {
                . html_tag( 'td', htmlspecialchars($attributes['search_what'][$i]), 'left' )
                . html_tag( 'td', $attributes['search_where'][$i], 'center' )
                . html_tag( 'td', '', 'right' )
-               .   "<a \"href=search.php?count=$i&amp;submit=save\">"
+               .   "<a href=\"search.php?count=$i&amp;submit=save\">"
                .     _("save")
                .   '</a>'
                .   '&nbsp;|&nbsp;'
