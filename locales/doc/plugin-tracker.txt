@@ -39,7 +39,7 @@ change_mysqlpass        3.2       0   added (sm domain)
 change_pass             2.7       1   added
 change_passwd           4.1       1   added
 change_qldforward       1.00      -   untranslated (rtl issues)
-check_quota             1.2       1   added
+check_quota             1.4       1   added
 chg_sasl_passwd         1.4.1     1   added
 cleanup                 0.2       -   utility, no translatable strings
 click_menu                        -   untranslated
@@ -51,7 +51,7 @@ contactclean            2.01      1   added
 cookie_warning          1.0       2   added
 courier_vacation        1.1       0   added (sm domain)
 cpanel_pw_changer       1.3       1   added
-cpanel_vacation         0.1       1   added
+cpanel_vacation         0.2       1   added
 custom_charset          1.0       2   added
 custom_from             1.1       0   added (sm domain)
 debugger                1.0       -   untranslated
@@ -81,8 +81,7 @@ gpg                     2.0       1   added (30 Dec 2003 v2.0 contains strings f
 gzip                    2.02      1   added (rtl issues)
 hancock                 1.4       -   untranslated (rtl issues)
 htmlarea                5.5       -   untranslated
-html_mail               2.0       -   mixed gettext and variable based translation.
-                                      Patches that move variable translations to gettext are available.
+html_mail               2.1       2   added
 http_auth               1.1       -   utility, no translated strings
 image_buttons           1.32      0   added (sm domain, rtl issues)
 ip_users                1.1
@@ -157,6 +156,7 @@ shared_calendars        2.0       2   added (calendar domain)
 sharedtodolists         1.4       -   untranslated
 show_headers            1.2       0   added (sm domain, rtl issues)
 show_ssl_link           2.1       -   string is only in config
+show_thumb              1.04      -   no translatable strings
 show_user_and_ip        3.2       1   added
 signout                 2.0       -   patch
 sigtag                  1.1       -   untranslated
@@ -173,7 +173,7 @@ squirrelspell.tar.gz              0   part of core
 startup_folder          2.0       1   added
 subject_warn            1.0       -   untranslated
 taglines                0.4       1   added
-templates               1.0       0   added (sm domain)
+templates               1.1       2   added
 time                    2.1       -   untranslated
 timeout_user            1.1.1     0   added (sm domain)
 tmda                    0.2       0   added (sm domain)
