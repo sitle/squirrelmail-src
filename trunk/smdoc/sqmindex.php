@@ -104,8 +104,11 @@ if ( count($objects) > 0 )
 {
   foreach ($objects as $object) 
   {
+    if ( !empty($object['permissions']) )
+        $object['permissions'] = unserialize($object['permissions']);
+
     // If viewer does not have permission to view this kind of object, skip it
-    if ( !$foowd->hasPermission(getClassName($object['classid']), 'view', 'object', $object['permissions']) )
+    if ( !$foowd->hasPermission(getClassName($object['classid']), 'view', 'OBJECT', $object['permissions']) )
       continue;
 
     $list_objects[$i] = $object;

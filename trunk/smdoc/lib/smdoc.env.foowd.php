@@ -181,8 +181,8 @@ class smdoc extends foowd
    */
   function hasPermission($className, $methodName, $type, $objPerms = NULL, $creatorid = NULL)
   {
-    if ( isset($objectPerms) && is_array($objectPerms) && isset($objPerms[$methodName]) ) 
-      $methodPermission = $objectPerms[$methodName];
+    if ( $objPerms != NULL && isset($objPerms[$methodName]) ) 
+      $methodPermission = $objPerms[$methodName];
 
     if ( !isset($methodPermission) )
       $methodPermission = getPermission($className, $methodName, $type);
