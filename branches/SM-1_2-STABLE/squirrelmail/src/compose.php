@@ -320,6 +320,7 @@ elseif (isset($sigappend)) {
     }
     showInputForm($session);
 } elseif (isset($do_delete)) {
+        sqsession_unregister('attachments');
         if ($compose_new_win == '1') {
             compose_Header($color, $mailbox);
         }
@@ -334,6 +335,7 @@ elseif (isset($sigappend)) {
                            . $attachments[$index]['localfilename'];
     	    unlink ($attached_file);
     	    unset ($attachments[$index]);
+	    sqsession_register($attachments, 'attachments');
         }
     }
 
@@ -576,6 +578,7 @@ function getAttachments($message, $session) {
 
     $hashed_attachment_dir = getHashedDir($username, $attachment_dir);
     if (count($message->entities) == 0) {
+        sqsession_unregister('attachments');
         if ($message->header->entity_id != $ent_num) {
             $filename = decodeHeader($message->header->filename);
 
@@ -606,6 +609,7 @@ function getAttachments($message, $session) {
             fclose ($fp);
 
             $attachments[] = $newAttachment;
+	    sqsession_register($attachments, 'attachments');
         }
     } else {
         for ($i = 0; $i < count($message->entities); $i++) {
@@ -914,7 +918,7 @@ function checkInput ($show) {
 /* True if FAILURE */
 function saveAttachedFiles($session) {
     global $_FILES, $attachment_dir, $attachments, $username;
-    sqsession_unregister('attachments');
+
     $hashed_attachment_dir = getHashedDir($username, $attachment_dir);
     $localfilename = GenerateRandomString(32, '', 7);
     $full_localfilename = "$hashed_attachment_dir/$localfilename";
@@ -937,6 +941,7 @@ function saveAttachedFiles($session) {
     if ($newAttachment['type'] == "") {
          $newAttachment['type'] = 'application/octet-stream';
     }
+    sqsession_unregister('attachments');
     $attachments[] = $newAttachment;
     sqsession_register($attachments, 'attachments');
 }
@@ -945,6 +950,7 @@ function saveAttachedFiles($session) {
 function ClearAttachments($session)
 {
     global $username, $attachments, $attachment_dir;
+
     $hashed_attachment_dir = getHashedDir($username, $attachment_dir);
 
     $rem_attachments = array();
@@ -961,7 +967,9 @@ function ClearAttachments($session)
 	        }
         }
     }
+    sqsession_unregister('attachments');
     $attachments = $rem_attachments;
+    sqsession_register($attachments, 'attachments');
 }
 
 
