@@ -29,21 +29,8 @@ require_once(SM_PATH . 'functions/display_messages.php');
 require_once(SM_PATH . 'functions/html.php');
 require_once(SM_PATH . 'functions/plugin.php');
 
-/***********************************************************
- * incoming variables from URL:                            *
- *   $sort             Direction to sort by date           *
- *                        values:  0  -  descending order  *
- *                        values:  1  -  ascending order   *
- *   $startMessage     Message to start at                 *
- *    $mailbox          Full Mailbox name                  *
- *                                                         *
- * incoming from cookie:                                   *
- *    $key              pass                               *
- * incoming from session:                                  *
- *    $username         duh                                *
- *                                                         *
- ***********************************************************/
-
+include_once(SM_PATH . 'templates/default/message_list.tpl');
+include_once(SM_PATH . 'templates/default/message_row.tpl');
 
 /* lets get the global vars we may need */
 sqgetGlobalVar('key',       $key,           SQ_COOKIE);
@@ -76,6 +63,14 @@ if ( sqgetGlobalVar('showall', $temp, SQ_GET) ) {
 if ( sqgetGlobalVar('checkall', $temp, SQ_GET) ) {
   $checkall = (int) $temp;
 }
+
+/* future work */
+if ( sqgetGlobalVar('account', $account, SQ_GET) ) {
+  $account = (int) $account;
+} else {
+  $account = 0;
+}
+
 /* end of get globals */
 
 
@@ -97,44 +92,89 @@ if ($imap_server_type == 'uw' && (strstr($mailbox, '../') ||
  */
 
 
-$aMailboxGlobalPref = array(
-                       MBX_PREF_SORT         => 0,
-                       MBX_PREF_LIMIT        => (int)  $show_num,
-                       MBX_PREF_AUTO_EXPUNGE => (bool) $auto_expunge,
-                       MBX_PREF_INTERNALDATE => (bool) getPref($data_dir, $username, 'internal_date_sort')
-                    // MBX_PREF_FUTURE       => (var)  $future
-                     );
-
 /* not sure if this hook should be capable to alter the global pref array */
 do_hook ('generic_header');
 
-$aMailboxPrefSer=getPref($data_dir, $username, "pref_$mailbox");
+$aMailboxPrefSer=getPref($data_dir, $username,'pref_'.$account.'_'.$mailbox);
 if ($aMailboxPrefSer) {
     $aMailboxPref = unserialize($aMailboxPrefSer);
 } else {
-    setUserPref($username,"pref_$mailbox",serialize($aMailboxGlobalPref));
-    $aMailboxPref = $aMailboxGlobalPref;
+    setUserPref($username,'pref_'.$account.'_'.$mailbox,serialize($default_mailbox_pref));
+    $aMailboxPref = $default_mailbox_pref;
 }
 if (isset($srt)) {
     $aMailboxPref[MBX_PREF_SORT] = (int) $srt;
 }
 
+$trash_folder = (isset($trash_folder)) ? $trash_folder : false;
+$sent_folder = (isset($sent_folder)) ? $sent_folder : false;
+$draft_folder = (isset($draft_folder)) ? $draft_folder : false;
 
 /**
- * until there is no per mailbox option screen to set prefs we override
- * the mailboxprefs by the default ones
+ * Replace From => To  in case it concerns a draft or sent folder
  */
-$aMailboxPref[MBX_PREF_LIMIT] = (int)  $show_num;
-$aMailboxPref[MBX_PREF_AUTO_EXPUNGE] = (bool) $auto_expunge;
-$aMailboxPref[MBX_PREF_INTERNALDATE] = (bool) getPref($data_dir, $username, 'internal_date_sort');
+if ($mailbox == $sent_folder || $mailbox == $draft_folder &&
+    !in_array(SQM_COL_TO,$aMailboxPref[MBX_PREF_COLUMNS])) {
+    $aNewOrder = array(); // nice var name ;)
+    foreach($aMailboxPref[MBX_PREF_COLUMNS] as $iCol) {
+        if ($iCol == SQM_COL_FROM) {
+            $iCol = SQM_COL_TO;
+        }
+        $aNewOrder[] = $iCol;
+   }
+   $aMailboxPref[MBX_PREF_COLUMNS] = $aNewOrder;
+   setUserPref($username,'pref_'.$account.'_'.$mailbox,serialize($aMailboxPref));
+}
+
+
+/**
+ * Set the config options for the messages list
+ */
+$aColumns = array();
+foreach ($aMailboxPref[MBX_PREF_COLUMNS] as $iCol) {
+    $aColumns[$iCol] = array();
+    switch ($iCol) {
+        case SQM_COL_SUBJ:
+            if ($truncate_subject) {
+                $aColumns[$iCol]['truncate'] = $truncate_subject;
+            }
+            break;
+        case SQM_COL_FROM:
+        case SQM_COL_TO:
+        case SQM_COL_CC:
+        case SQM_COL_BCC:
+            if ($truncate_sender) {
+                $aColumns[$iCol]['truncate'] = $truncate_sender;
+            }
+            break;
+   }
+}
+
+
+    $aProps = array(
+       'columns' => $aColumns,
+       'config'  => array('alt_index_colors'  => $alt_index_colors,
+                          'highlight_list'    => $message_highlight_list,
+                          'icon_theme'        => (isset($icon_theme)) ? $icon_theme : false,
+                          'use_icons'         => (isset($use_icons)) ? $use_icons : false,
+                          'show_flag_buttons' => (isset($show_flag_buttons)) ? $show_flag_buttons : true,
+                          'lastTargetMailbox' => (isset($lastTargetMailbox)) ? $lastTargetMailbox : '',
+                          'trash_folder'      => $trash_folder,
+                          'sent_folder'       => $sent_folder,
+                          'draft_folder'      => $draft_folder,
+                          'javascript_on'     => $javascript_on,
+                          'enablesort'        => true
+                    ),
+       'mailbox' => $mailbox,
+       'account' => (isset($account)) ? $account : 0,
+       'module' => 'read_body',
+       'email'  => false);
 
 
 /**
  * system wide admin settings and incoming vars.
  */
 $aConfig = array(
-                'allow_thread_sort' => $allow_thread_sort,
-                'allow_server_sort' => $allow_server_sort,
                 'user'              => $username,
                 // incoming vars
                 'offset' => $startMessage
@@ -154,8 +194,7 @@ if (isset($showall)) {
 sqgetGlobalVar('mailbox_cache',$mailbox_cache,SQ_SESSION);
 
 
-$aMailbox = sqm_api_mailbox_select($imapConnection,$mailbox,$aConfig,$aMailboxPref);
-
+$aMailbox = sqm_api_mailbox_select($imapConnection,$account, $mailbox,$aConfig,$aMailboxPref);
 
 /*
  * After initialisation of the mailbox array it's time to handle the FORM data
@@ -228,7 +267,9 @@ if ( sqgetGlobalVar('just_logged_in', $just_logged_in, SQ_SESSION) ) {
     }
 }
 if ($aMailbox['EXISTS'] > 0) {
-    showMessagesForMailbox($imapConnection,$aMailbox);
+    $aTemplateVars = showMessagesForMailbox($imapConnection,$aMailbox,$aProps);
+//    sm_print_r($aTemplateVars);
+    message_list($aTemplateVars);
 } else {
     $string = '<b>' . _("THIS FOLDER IS EMPTY") . '</b>';
     echo '    <table width="100%" cellpadding="1" cellspacing="0" align="center"'.' border="0" bgcolor="'.$color[9].'">';
@@ -249,7 +290,7 @@ sqimap_logout ($imapConnection);
 echo '</body></html>';
 
 /* add the mailbox to the cache */
-$mailbox_cache[$aMailbox['NAME']] = $aMailbox;
+$mailbox_cache[$account.'_'.$aMailbox['NAME']] = $aMailbox;
 sqsession_register($mailbox_cache,'mailbox_cache');
 
 ?>

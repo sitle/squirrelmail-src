@@ -24,7 +24,6 @@ define('SM_PATH','../');
 require_once(SM_PATH . 'functions/strings.php');
 require_once(SM_PATH . 'config/config.php');
 require_once(SM_PATH . 'functions/prefs.php');
-require_once(SM_PATH . 'functions/imap.php');
 require_once(SM_PATH . 'functions/plugin.php');
 require_once(SM_PATH . 'functions/i18n.php');
 require_once(SM_PATH . 'functions/auth.php');
@@ -67,6 +66,8 @@ if ($my_language != $squirrelmail_language) {
 }
 
 $err=set_up_language(getPref($data_dir, $username, 'language'));
+
+require_once(SM_PATH . 'functions/imap.php');
 
 $output = "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Frameset//EN\">\n".
           "<html><head>\n" .
@@ -131,7 +132,7 @@ else {
  */
 if (!isset($right_frame)) {
     $right_frame = '';
-} 
+}
 if ($right_frame == 'right_main.php') {
     $urlMailbox = urlencode($mailbox);
     $right_frame_url =

@@ -29,6 +29,7 @@ require_once(SM_PATH . 'functions/html.php');
 require_once(SM_PATH . 'functions/global.php');
 require_once(SM_PATH . 'functions/identity.php');
 require_once(SM_PATH . 'functions/mailbox_display.php');
+include_once(SM_PATH . 'functions/arrays.php');
 
 /**
  * Given an IMAP message id number, this will look it up in the cached
@@ -44,18 +45,12 @@ function findNextMessage($uidset,$passed_id='backwards') {
     if ($passed_id=='backwards' || !is_array($uidset)) { // check for backwards compattibilty gpg plugin
         $passed_id = $uidset;
     }
-    $result = -1;
-    $count = count($uidset) - 1;
-    foreach($uidset as $key=>$value) {
-        if ($passed_id == $value) {
-            if ($key == $count) {
-                break;
-            }
-            $result = $uidset[$key + 1];
-            break;
-        }
+    $result = sqm_array_get_value_by_offset($uidset,$passed_id,1);
+    if ($result === false) {
+        return -1;
+    } else {
+        return $result;
     }
-    return $result;
 }
 
 /**
@@ -70,17 +65,12 @@ function findPreviousMessage($uidset, $passed_id) {
     if (!is_array($uidset)) {
         return -1;
     }
-    $result = -1;
-    foreach($uidset as $key=>$value) {
-        if ($passed_id == $value) {
-            if ($key != 0) {
-                $result = $uidset[$key - 1];
-            }
-            break;
-        }
+    $result = sqm_array_get_value_by_offset($uidset,$passed_id,-1);
+    if ($result === false) {
+        return -1;
+    } else {
+        return $result;
     }
-
-    return $result;
 }
 
 /**
@@ -471,7 +461,6 @@ function formatMenubar($aMailbox, $passed_id, $passed_ent_id, $message, $removed
     $urlMailbox = urlencode($mailbox);
 
     $msgs_url = $base_uri . 'src/';
-
     // BEGIN NAV ROW - PREV/NEXT, DEL PREV/NEXT, LINKS TO INDEX, etc.
     $nav_row = '<tr><td align="left" colspan="2" style="border: 1px solid '.$color[9].';"><small>';
 
@@ -535,6 +524,7 @@ function formatMenubar($aMailbox, $passed_id, $passed_ent_id, $message, $removed
 
         $prev_link = _("Previous");
         if ($prev >= 0) {
+
             $uri = $base_uri . 'src/read_body.php?passed_id='.$prev.
                    '&amp;mailbox='.$urlMailbox.'&amp;sort='.$sort.
                    "&amp;where=$where&amp;what=$what" .
@@ -731,6 +721,27 @@ function formatToolbar($mailbox, $passed_id, $passed_ent_id, $message, $color) {
 
 }
 
+/**
+* Creates button
+*
+* @deprecated see form functions available in 1.5.1 and 1.4.3.
+* @param string $type
+* @param string $name
+* @param string $value
+* @param string $js
+* @param bool $enabled
+*/
+function getButton($type, $name, $value, $js = '', $enabled = TRUE) {
+    $disabled = ( $enabled ? '' : 'disabled ' );
+    $js = ( $js ? $js.' ' : '' );
+    return '<input '.$disabled.$js.
+            'type="'.$type.
+            '" name="'.$name.
+            '" value="'.$value .
+            '" style="padding: 0px; margin: 0px" />';
+}
+
+
 /***************************/
 /*   Main of read_body.php */
 /***************************/
@@ -768,6 +779,13 @@ if ( sqgetGlobalVar('view_hdr', $temp,  SQ_GET) ) {
     $view_hdr = (int) $temp;
 }
 
+if ( sqgetGlobalVar('account', $temp,  SQ_GET) ) {
+    $iAccount = (int) $temp;
+} else {
+    $iAccount = 0;
+}
+
+
 /** GET/POST VARS */
 sqgetGlobalVar('passed_ent_id', $passed_ent_id);
 sqgetGlobalVar('mailbox',       $mailbox);
@@ -792,7 +810,7 @@ sqgetGlobalVar('mailbox_cache',$mailbox_cache,SQ_SESSION);
 global $sqimap_capabilities, $lastTargetMailbox;
 
 $imapConnection = sqimap_login($username, $key, $imapServerAddress, $imapPort, 0);
-$aMailbox = sqm_api_mailbox_select($imapConnection, $mailbox,array('setindex' => $what),array());
+$aMailbox = sqm_api_mailbox_select($imapConnection, $iAccount, $mailbox,array('setindex' => $what),array());
 
 /**
  * Update the seen state
@@ -953,8 +971,11 @@ do_hook('html_bottom');
 sqimap_logout($imapConnection);
 /* sessions are written at the end of the script. it's better to register
    them at the end so we avoid double session_register calls */
-/* add the mailbox to the cache */
-$mailbox_cache[$aMailbox['NAME']] = $aMailbox;
+
+/**
+ * Write mailbox with updated seen flag information back to cache.
+ */
+$mailbox_cache[$iAccount.'_'.$aMailbox['NAME']] = $aMailbox;
 sqsession_register($mailbox_cache,'mailbox_cache');
 ?>
 </body>
