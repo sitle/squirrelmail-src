@@ -18,6 +18,7 @@
 
 /** Class descriptor/Meta information */
 setClassMeta('smdoc_name_lookup', 'Singleton object lookup/name manager');
+setPermission('smdoc_name_lookup','class','list','Edit');
 setConst('SHORTNAMES_ID', 1063068242);
 
 /** Regex to validate shortname */

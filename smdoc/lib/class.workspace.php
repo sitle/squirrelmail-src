@@ -69,16 +69,16 @@ class foowd_workspace extends foowd_object {
    * Constructs a new workspace.
    *
    * @param smdoc $foowd Reference to the foowd environment object.
-   * @param string title The name of the workspace.
-   * @param string description A text description of the workspace.
-   * @param string viewGroup The user group for viewing the workspace.
-   * @param string adminGroup The user group for administrating the workspace.
-   * @param string deleteGroup The user group for deleting the workspace.
-   * @param string enterGroup The user group for entering the workspace.
-   * @param string fillGroup The user group for filling the workspace.
-   * @param string emptyGroup The user group for emptying the workspace.
-   * @param string exportGroup The user group for exporting the workspace.
-   * @param string importGroup The user group for importing the workspace.
+   * @param string $title The name of the workspace.
+   * @param string $description A text description of the workspace.
+   * @param string $viewGroup The user group for viewing the workspace.
+   * @param string $adminGroup The user group for administrating the workspace.
+   * @param string $deleteGroup The user group for deleting the workspace.
+   * @param string $enterGroup The user group for entering the workspace.
+   * @param string $fillGroup The user group for filling the workspace.
+   * @param string $emptyGroup The user group for emptying the workspace.
+   * @param string $exportGroup The user group for exporting the workspace.
+   * @param string $importGroup The user group for importing the workspace.
    */
   function foowd_workspace(
     &$foowd,

@@ -38,11 +38,15 @@ require_once(SM_DIR . 'class.workspace.php');
  * management of site and translations.
  *
  * @package smdoc
+ * @subpackage translation
  */
 class smdoc_translation extends foowd_workspace 
 {
-
-    var $language_icon;
+  /**
+   * filename of applicable language flag.. 
+   * @var string
+   */
+  var $language_icon;
 
   /**
    * Constructor
@@ -50,19 +54,38 @@ class smdoc_translation extends foowd_workspace
   function smdoc_translation( &$foowd,
                               $title = NULL,
                               $description = NULL,
-                              $viewGroup = NULL,
-                              $adminGroup = NULL,
-                              $deleteGroup = NULL,
-                              $enterGroup = NULL,
                               $icon = NULL )
   {
     $foowd->track('smdoc_translation->constructor');
 
+    parent::foowd_workspace($foowd, $title, $description);
+
     /* set object vars */
     $this->language_icon = $icon;
-    $this->initialize();
+    $this->initialize($foowd);
 
     $foowd->track();
+  }
+
+  /**
+   * Move the current user into or out of the workspace.
+   *
+   * @return bool Returns TRUE on success.
+   */
+  function enterWorkspace() 
+  {
+    if ($this->foowd->user->workspaceid == $this->objectid) 
+    {  // exit workspace
+      if ($this->foowd->user->set('workspaceid', 0))
+        return TRUE;
+    } 
+    else 
+    { // enter workspace
+      if ($this->foowd->user->set('workspaceid', $this->objectid)) 
+        return TRUE;
+    }
+
+    return FALSE;
   }
 
 /*** STATIC METHODS ***/
@@ -72,7 +95,7 @@ class smdoc_translation extends foowd_workspace
    * for each defined translation
    * @static
    * @param smdoc $foowd Reference to the foowd environment object.
-   * @param bool forceRefresh Force refresh of session cache.
+   * @param bool $forceRefresh Force refresh of session cache.
    */
   function initialize(&$foowd, $forceRefresh = FALSE)
   {
@@ -94,8 +117,13 @@ class smdoc_translation extends foowd_workspace
     $links = array();
     $languages = array();
 
-    $url = getURI(array()). '?class=smdoc_translation&method=enter&langid=';
+    $url_arr['class'] = 'smdoc_translation';
+    $url_arr['method'] = 'enter';
+    $url_arr['langid'] = '';
+    $url = getURI($url_arr);
 
+
+    // Add elements for the default translation
     $the_url = '<a href="' . $url . '0">';
     if ( $default_icon != '' )
     {
@@ -109,14 +137,20 @@ class smdoc_translation extends foowd_workspace
     $links[0] = $the_url;
     $languages[0] = $default_title;
 
-    $t_objects = $foowd->retrieveObjects(
-                         array('classid = '.TRANSLATION_CLASS_ID),
-                         NULL,
-                         array('title'));
 
-    while ($trans_obj = $foowd->retrieveObject($t_objects))
+    // Fetch available translations 
+    // no limit, retrieve objects, and don't bother with workspaces.
+    $index[] = 'object';
+    $where['classid'] = TRANSLATION_CLASS_ID;
+    $order = 'title';
+    $t_objects =& $foowd->getObjList($index, NULL, $where,
+                                     $order, NULL, TRUE, FALSE);
+
+    // Add each translation to the list
+    foreach ( $t_objects as $trans_obj )
     {
       $the_url = '<a href="' .$url. $trans_obj->objectid. '">';
+
       if ( isset($trans_obj->language_icon) )
       {
         $the_url .= '<img src="' . $trans_obj->language_icon . '" ';
@@ -124,12 +158,14 @@ class smdoc_translation extends foowd_workspace
       }
       else
         $the_url .= $trans_obj->title;
+
       $the_url .=  '</a>';
 
       $links[$trans_obj->objectid] = $the_url;
       $languages[$trans_obj->objectid] = $trans_obj->title;
       unset($trans_obj);
     }
+
     $session_links->set($links);
     $session_langs->set($languages);
 
@@ -142,13 +178,14 @@ class smdoc_translation extends foowd_workspace
    *
    * @static
    * @param smdoc $foowd Reference to the foowd environment object.
-   * @param int objectid Specific translation to retrieve.
+   * @param int $objectid Specific translation to retrieve.
    * @return URL for specified translation, or array of all translations.
    */
   function getLink(&$foowd, $objectid = FALSE)
   {
     $session_links = new input_session('lang_links', NULL);
-    if ( !isset($session_links->value) ) {
+    if ( !isset($session_links->value) ) 
+    {
       smdoc_translation::initialize($foowd);
       $session_links->refresh();
     }
@@ -168,7 +205,7 @@ class smdoc_translation extends foowd_workspace
    *
    * @static 
    * @param smdoc $foowd Reference to the foowd environment object.
-   * @param int objectid Specific translation to retrieve.
+   * @param int $objectid Specific translation to retrieve.
    * @return specified language string, or array of all languages.
    */
   function getLanguage(&$foowd, $objectid = FALSE)
@@ -191,31 +228,46 @@ class smdoc_translation extends foowd_workspace
 
 /*** CLASS METHODS ***/
 
-    /**
-     * enter - class method
-     * change to selected translation
-     * @static
-     * @param smdoc $foowd Reference to the foowd environment object. 
-     */
-    function class_enter(&$foowd) 
+  /**
+   * enter - class method
+   * change to selected translation
+   * @static
+   * @param smdoc $foowd Reference to the foowd environment object. 
+   */
+  function class_enter(&$foowd) 
+  {
+    $translation_id = new input_querystring('langid');
+
+    $foowd->track('foowd_workspace->class_enter', $translation_id->value);
+
+    if ( $translation_id->wasSet &&
+         $translation_id->wasValid )
     {
-        $foowd->track('foowd_workspace->class_enter');
-        $translation_id = new input_querystring('langid');
+      if ( $translation_id->value != $foowd->user->workspaceid )
+        $langid = $translation_id->value;  // enter workspace
+      else 
+        $langid = 0;  // leave workspace
 
-        $foowd->user->workspaceid = $translation_id;
+      $foowd->user->set('workspaceid', $langid);
 
-        if ( $foowd->user->save($foowd, FALSE) )
-        {
-          $this->foowd->loc_forward(getURI(array('objectid' => $translation_id,
-                                                 'classid' => TRANSLATION_CLASS_ID),
-                                           FALSE));
-        } 
-        else 
-          trigger_error('Could not update user with selected translation.');
+      $uri_arr = array();
+      if ( $foowd->user->save() )
+      {
+        if ( $langid == 0 )
+          $uri_arr['ok'] = USER_DEFAULT_TRANSLATION;
+        else
+        { 
+          $uri_arr['ok'] = USER_NEW_TRANSLATION;
+          $uri_arr['objectid'] = $translation_id;
+          $uri_arr['classid']  = TRANSLATION_CLASS_ID;
+        }
+        $foowd->loc_forward(getURI($uri_arr, FALSE));
+      } 
 
-        $foowd->track();
+      $foowd->loc_forward(getURI($uri_arr, FALSE));
     }
 
-/*** METHODS ***/
+    $foowd->track();
+  }
 
 }

@@ -204,14 +204,15 @@ class smdoc extends foowd
    *
    * @param  array $where Array of values to find object by
    * @param  mixed $in_source Source to get object from
-   * @param  bool  $setWorkspace If TRUE, restrict to a certain workspace, if FALSE, workspace does not apply or does not matter.
+   * @param  bool  $setWorkspace If TRUE, restrict to a certain workspace, if FALSE, workspace is not used.
+   * @param  bool  $useVersion   If TRUE, get most recent version, if FALSE, version is not used.
    * @return mixed The retrieved object.
    * @see    base_user::fetchUser()
    * @see    smdoc_db::getObj()
    */
-  function &getObj($where = NULL, $in_source = NULL, $setWorkspace = TRUE)
+  function &getObj($where = NULL, $in_source = NULL, $setWorkspace = TRUE, $useVersion = TRUE)
   {
-    $this->track('smdoc->getObj', $where, $in_source, $setWorkspace);
+    $this->track('smdoc->getObj', $where, $in_source, $setWorkspace, $useVersion);
 
     $new_obj = NULL;
     if ( $in_source == NULL && isset($where['classid']) )
@@ -226,12 +227,12 @@ class smdoc extends foowd
 
     if ( $new_obj == NULL )
     {
-      $new_obj = &$this->database->getObj($where, $in_source, $setWorkspace);
+      $new_obj =& $this->database->getObj($where, $in_source, $setWorkspace, $useVersion);
       if ( $new_obj == NULL && $setWorkspace &&
            isset($where['workspaceid']) && $where['workspaceid'] != 0 )
       {
         $where['workspaceid'] = 0;
-        $new_obj = &$this->database->getObj($where, $in_source, $setWorkspace);
+        $new_obj =& $this->database->getObj($where, $in_source, $setWorkspace, $useVersion);
       }
     }
 
