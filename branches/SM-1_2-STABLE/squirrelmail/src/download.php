@@ -27,7 +27,7 @@ $username = $_SESSION['username'];
 $onetimepad = $_SESSION['onetimepad'];
 $mailbox = $_GET['mailbox'];
 $passed_id = (int) $_GET['passed_id'];
-$passed_ent_id = (int) $_GET['passed_ent_id'];
+$passed_ent_id = $_GET['passed_ent_id'];
 $base_uri = $base_uri = $_SESSION['base_uri'];
 
 if (isset($_GET['startMessage'])) {
@@ -43,7 +43,7 @@ if(isset($_GET['showHeaders'])) {
     $showHeaders = (int) $_GET['showHeaders'];
 }
 if(isset($_GET['absolute_dl'])) {
-    $absolute_dl = (int) $_GET['absolute_dl'];
+    $absolute_dl = $_GET['absolute_dl'];
 }
 if (isset($_GET['show_more_cc'])) {
     $show_more = (int) $_GET['show_more_cc'];
@@ -65,6 +65,7 @@ function viewText($color, $body, $id, $entid, $mailbox, $type1, $wrap_at) {
     global $charset, $where, $what, $startMessage;
     displayPageHeader($color, 'None');
     $urlmailbox = urlencode($mailbox);
+    $entid = urlencode($entid);
 
     echo "<BR>\n".
          "<TABLE WIDTH=\"100%\" BORDER=0 CELLSPACING=0 CELLPADDING=2 ALIGN=CENTER>\n".
@@ -207,6 +208,7 @@ function formatRecipientString($recipients, $item ) {
     if (!isset($show_more_bcc)) {
 	$show_more_bcc = FALSE;
     }
+    $URLpassed_ent_id = urlencode($passed_ent_id);
 
 
     $urlMailbox = urlencode($mailbox);
@@ -253,9 +255,9 @@ function formatRecipientString($recipients, $item ) {
                 	$string .= '&nbsp;(<A HREF="' . $base_uri .
                                    "src/download.php?mailbox=$urlMailbox&amp;passed_id=$passed_id&amp;";
                 	if (isset($where) && isset($what)) {
-                    	    $string .= 'what=' . urlencode($what)."&amp;where=".urlencode($where)."&amp;passed_ent_id=$passed_ent_id$show\">$echo_more</A>)";
+                    	    $string .= 'what=' . urlencode($what)."&amp;where=".urlencode($where)."&amp;passed_ent_id=$URLpassed_ent_id$show\">$echo_more</A>)";
                 	} else {
-                    	    $string .= "sort=$sort&amp;startMessage=$startMessage"."&amp;passed_ent_id=$passed_ent_id$show\">$echo_more</A>)";
+                    	    $string .= "sort=$sort&amp;startMessage=$startMessage"."&amp;passed_ent_id=$URLpassed_ent_id$show\">$echo_more</A>)";
                 	}
                 	$i = count($ary);
             	    }
@@ -264,9 +266,9 @@ function formatRecipientString($recipients, $item ) {
             	    $string .= '&nbsp;(<A HREF="' . $base_uri .
                                "src/download.php?mailbox=$urlMailbox&amp;passed_id=$passed_id&amp;";
             	    if (isset($where) && isset($what)) {
-                	$string .= 'what=' . urlencode($what)."&amp;where=".urlencode($where)."&amp;passed_ent_id=$passed_ent_id$show_n\">$echo_less</A>)";
+                	$string .= 'what=' . urlencode($what)."&amp;where=".urlencode($where)."&amp;passed_ent_id=$URLpassed_ent_id$show_n\">$echo_less</A>)";
             	    } else {
-                	$string .= "sort=$sort&amp;startMessage=$startMessage"."&amp;passed_ent_id=$passed_ent_id$show_n\">$echo_less</A>)";
+                	$string .= "sort=$sort&amp;startMessage=$startMessage"."&amp;passed_ent_id=$URLpassed_ent_id$show_n\">$echo_less</A>)";
             	    }
         	}
     	    }
@@ -332,7 +334,7 @@ if (strlen($filename) < 1) {
         $suffix = $type1;
     }
 
-    $filename = "untitled$passed_ent_id.$suffix";
+    $filename = 'untitled' . strip_tags($passed_ent_id) .$suffix);
 }
 
 
