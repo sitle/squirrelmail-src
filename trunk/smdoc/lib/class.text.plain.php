@@ -163,13 +163,14 @@ class foowd_text_plain extends foowd_object
    *             -4 = other error
    *             +n = generation successful, returns the version number of the previous version
    */
-  function diff(&$diffResultArray) 
+  function diff(&$diffResultArray, $compareVersion) 
   {
     if (defined('DIFF_COMMAND')) 
     {
       $object = $this->foowd->getObj(array('objectid' => $this->objectid, 
                                            'classid' => $this->classid, 
-                                           'workspaceid' => $this->workspaceid));
+                                           'workspaceid' => $this->workspaceid,
+                                           'version' => $compareVersion));
       if ($this->version == $object->version) 
         return -1; // version is latest version, can not compare to self
       else 
@@ -382,6 +383,7 @@ class foowd_text_plain extends foowd_object
       $this->foowd->template->assign('detailsWorkspace', $this->workspaceid);
     
     $objArray = $this->foowd->getObjHistory(array('objectid' => $this->objectid, 'classid' => $this->classid));
+    $currentVersion = $this->version;
     $latestVersion = $objArray[0]->version;
     unset($objArray[0]);
     $versions = array();
@@ -394,10 +396,10 @@ class foowd_text_plain extends foowd_object
       $version['objectid'] = $object->objectid;
       $version['classid'] = $object->classid;
       if ($object->version != $latestVersion) 
-      {
         $version['revert'] = TRUE;
+      if ($object->version != $currentVersion)
         $version['diff'] = TRUE;
-      }
+
       $this->foowd->template->append('versions', $version);
     }
 

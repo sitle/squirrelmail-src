@@ -195,6 +195,15 @@ Applying Attributes:
         $c = "(?:$clas?$styl?$lnge?|$styl?$lnge?$clas?|$lnge?$styl?$clas?)";
         $pnct = '[\!"#\$%&\'()\*\+,\-\./:;<=>\?@\[\\\]\^_`{\|}\~]';
 
+
+    /** 
+     * Main entrypoint for textile processing.
+     * 
+     * @param string $text String containing text to be formatted.
+     * @param mixed  $lite If NOT empty, processing of lists, 
+     *                     tables, and block elements will be skipped.
+     * @return String containing formatted text.
+     */
     function textile($text,$lite='') {
        
         //if (get_magic_quotes_gpc()==1)
@@ -235,6 +244,9 @@ Applying Attributes:
     }
     
 // -------------------------------------------------------------
+    /**
+     * @access private
+     */
     function pba($in,$element="") // "parse block attributes"
     {
         global $hlgn,$vlgn,$clas,$styl,$cspn,$rspn,$a,$s,$c;
@@ -298,6 +310,9 @@ Applying Attributes:
     }
 
 // -------------------------------------------------------------
+    /**
+     * @access private
+     */
     function table($text) 
     {
         global $a,$c,$s;
@@ -307,6 +322,9 @@ Applying Attributes:
     }
 
 // -------------------------------------------------------------
+    /**
+     * @access private
+     */
     function fTable($matches)
     {
         global $s,$a,$c;
@@ -337,6 +355,9 @@ Applying Attributes:
     
 
 // -------------------------------------------------------------
+    /**
+     * @access private
+     */
     function lists($text) 
     {
         global $a,$c;
@@ -344,6 +365,9 @@ Applying Attributes:
     }
 
 // -------------------------------------------------------------
+    /**
+     * @access private
+     */
     function fList($m) 
     {
         global $a,$c;
@@ -380,12 +404,18 @@ Applying Attributes:
     }
 
 // -------------------------------------------------------------
+    /**
+     * @access private
+     */
     function lT($in) 
     {
         return preg_match("/^#+/",$in) ? 'o' : 'u';
     }
 
 // -------------------------------------------------------------
+    /**
+     * @access private
+     */
     function block($text) 
     {
         global $a,$c;
@@ -419,6 +449,9 @@ Applying Attributes:
     }
     
 // -------------------------------------------------------------
+    /**
+     * @access private
+     */
     function fBlock($m) 
     {
 #        dump($m);
@@ -447,6 +480,9 @@ Applying Attributes:
 
 
 // -------------------------------------------------------------
+    /**
+     * @access private
+     */
     function span($text) 
     {
         global $c,$pnct;
@@ -468,7 +504,10 @@ Applying Attributes:
     }
 
 // -------------------------------------------------------------
-    function fSpan($m) 
+    /**
+     * @access private
+     */
+     function fSpan($m) 
     {
 #        dump($m);
         global $c;
@@ -492,6 +531,9 @@ Applying Attributes:
     }
 
 // -------------------------------------------------------------
+    /**
+     * @access private
+     */
     function links($text) 
     {
         global $c;
@@ -511,7 +553,10 @@ Applying Attributes:
     }
 
 // -------------------------------------------------------------
-    function fLink($m) 
+    /**
+     * @access private
+     */
+     function fLink($m) 
     {
         list(,$pre,$atts,$text,$title,$url,$slash,$post) = $m;
 
@@ -527,6 +572,9 @@ Applying Attributes:
     }
 
 // -------------------------------------------------------------
+    /**
+     * @access private
+     */
     function getRefs($text) 
     {
         return preg_replace_callback("/(?<=^|\s)\[(.+)\]((?:http:\/\/|\/)\S+)(?=\s|$)/U",
@@ -534,6 +582,9 @@ Applying Attributes:
     }
     
 // -------------------------------------------------------------
+    /**
+     * @access private
+     */
     function refs($m) 
     {
         list(,$flag,$url) = $m;
@@ -542,6 +593,9 @@ Applying Attributes:
     }
     
 // -------------------------------------------------------------
+    /**
+     * @access private
+     */
     function checkRefs($text) 
     {
         global $urlrefs;
@@ -549,6 +603,9 @@ Applying Attributes:
     }
 
 // -------------------------------------------------------------
+    /**
+     * @access private
+     */
     function image($text) 
     {
         global $c;
@@ -567,6 +624,9 @@ Applying Attributes:
     }
 
 // -------------------------------------------------------------
+    /**
+     * @access private
+     */
     function fImage($m) 
     {
         list(,$algn,$atts,$url) = $m;
@@ -588,6 +648,9 @@ Applying Attributes:
     }
 
 // -------------------------------------------------------------
+    /**
+     * @access private
+     */
     function code($text) 
     {
         global $pnct;
@@ -604,6 +667,9 @@ Applying Attributes:
     }
 
 // -------------------------------------------------------------
+    /**
+     * @access private
+     */
     function fCode($m) 
     {
         list(,$before,$lang,$code,$after) = $m;
@@ -612,6 +678,9 @@ Applying Attributes:
     }
 
 // -------------------------------------------------------------
+    /**
+     * @access private
+     */
     function shelve($val) 
     {
         $GLOBALS['shelf'][] = $val;
@@ -619,6 +688,9 @@ Applying Attributes:
     }
     
 // -------------------------------------------------------------
+    /**
+     * @access private
+     */
     function retrieve($text) 
     {
         global $shelf;
@@ -633,6 +705,9 @@ Applying Attributes:
     }
 
 // -------------------------------------------------------------
+    /**
+     * @access private
+     */
     function incomingEntities($text) 
     {
         /*  turn any incoming ampersands into a dummy character for now.
@@ -643,6 +718,9 @@ Applying Attributes:
     }
 
 // -------------------------------------------------------------
+    /**
+     * @access private
+     */
     function encodeEntities($text) 
     {
         /*  Convert high and low ascii to entities. If multibyte string functions are
@@ -656,6 +734,9 @@ Applying Attributes:
     }
 
 // -------------------------------------------------------------
+    /**
+     * @access private
+     */
     function fixEntities($text)
     {
         /*  de-entify any remaining angle brackets or ampersands */
@@ -664,6 +745,9 @@ Applying Attributes:
     }
 
 // -------------------------------------------------------------
+    /**
+     * @access private
+     */
     function cleanWhiteSpace($text) 
     {
         $out = str_replace(array("\r\n","\t"), array("\n",''), $text);
@@ -674,6 +758,9 @@ Applying Attributes:
     }
 
 // -------------------------------------------------------------
+    /**
+     * @access private
+     */
     function noTextile($text) 
     {
         return preg_replace('/(^|\s)==(.*)==(\s|$)?/msU',
@@ -681,12 +768,18 @@ Applying Attributes:
     }
 
 // -------------------------------------------------------------
+    /**
+     * @access private
+     */
     function superscript($text) 
     {
         return preg_replace('/\^(.*)\^/mU','<sup>$1</sup>',$text);
     }
 
 // -------------------------------------------------------------
+    /**
+     * @access private
+     */
     function footnoteRef($text) 
     {
         return preg_replace('/\b\[([0-9]+)\](\s)?/U',
@@ -694,6 +787,9 @@ Applying Attributes:
     }
     
 // -------------------------------------------------------------
+    /**
+     * @access private
+     */
     function glyphs($text) 
     {
             // fix: hackish
@@ -761,6 +857,9 @@ Applying Attributes:
     }
 
 // -------------------------------------------------------------
+    /**
+     * @access private
+     */
     function iAlign($in) 
     {
         $vals = array(
@@ -771,6 +870,9 @@ Applying Attributes:
     }
 
 // -------------------------------------------------------------
+    /**
+     * @access private
+     */
     function hAlign($in) 
     {
         $vals = array(
@@ -782,6 +884,9 @@ Applying Attributes:
     }
 
 // -------------------------------------------------------------
+    /**
+     * @access private
+     */
     function vAlign($in) 
     {
         $vals = array(
@@ -792,6 +897,9 @@ Applying Attributes:
     }
 
 // -------------------------------------------------------------
+    /**
+     * @access private
+     */
     function encode_high($text,$charset="UTF-8") 
     {
         $cmap = cmap();
@@ -799,6 +907,9 @@ Applying Attributes:
     }
 
 // -------------------------------------------------------------
+    /**
+     * @access private
+     */
     function decode_high($text,$charset="UTF-8") 
     {
         $cmap = cmap();
@@ -806,6 +917,9 @@ Applying Attributes:
     }
 
 // -------------------------------------------------------------
+    /**
+     * @access private
+     */
     function cmap() 
     {
         $f = 0xffff;
@@ -881,6 +995,9 @@ Applying Attributes:
 
 
 // -------------------------------------------------------------
+    /**
+     * @access private
+     */
     function textile_popup_help($name,$helpvar,$windowW,$windowH) {
         return ' <a target="_blank" href="http://www.textpattern.com/help/?item='.$helpvar.'" onclick="window.open(this.href, \'popupwindow\', \'width='.$windowW.',height='.$windowH.',scrollbars,resizable\'); return false;">'.$name.'</a><br />';
     
@@ -888,6 +1005,9 @@ Applying Attributes:
     }
 
 // -------------------------------------------------------------
+    /**
+     * @access private
+     */
     function txtgps($thing) 
     {
         if (isset($_POST[$thing])){
@@ -908,6 +1028,9 @@ Applying Attributes:
 
 
 // -------------------------------------------------------------
+    /**
+     * @access private
+     */
     function detextile($text) {
     
     $text = preg_replace("/<br \/>\s*/","\n",$text);
@@ -972,6 +1095,9 @@ Applying Attributes:
 
 
 // -------------------------------------------------------------
+    /**
+     * @access private
+     */
     function processTag($matches) 
     {
         list($all,$tag,$atts,$content) = $matches;
@@ -1010,6 +1136,9 @@ Applying Attributes:
     }
 
 // -------------------------------------------------------------
+    /**
+     * @access private
+     */
     function filterAtts($atts,$ok) 
     {
         foreach($atts as $a) {
@@ -1024,6 +1153,9 @@ Applying Attributes:
     }
 
 // -------------------------------------------------------------
+    /**
+     * @access private
+     */
     function sci($a) 
     {
         $out = '';
@@ -1037,6 +1169,9 @@ Applying Attributes:
     }
 
 // -------------------------------------------------------------
+    /**
+     * @access private
+     */
     function splat($attr)  // returns attributes as an array
     {
         $arr = array();

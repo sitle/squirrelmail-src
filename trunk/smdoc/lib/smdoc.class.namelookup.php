@@ -55,9 +55,9 @@ class smdoc_name_lookup extends smdoc_storage
   /**
    * Map given objectName to objectid/classid pair.
    * 
-   * @param string objectName Name of object to locate.
-   * @param int objectid ID of located object
-   * @param int classid  ID of class for located object
+   * @param string $objectName Name of object to locate.
+   * @param int $objectid ID of located object
+   * @param int $classid  ID of class for located object
    * @return TRUE if found, false if not.
    */
   function findObject($objectName, &$objectid, &$classid)
@@ -79,28 +79,25 @@ class smdoc_name_lookup extends smdoc_storage
   /**
    * Clean up associated short name
    * 
-   * @param object obj  Object to remove shortname for
+   * @param object $obj  Object with shortname to be removed
    */
   function deleteShortName(&$obj)
   {
     $oid = intval($obj->objectid);
-
     if ( isset($this->shortNames[$oid]) )
     {
       $name = $this->shortNames[$oid];
       unset($this->shortNames[$oid]);
       unset($this->shortNames[$name]);
+      $this->save();
     }
-
-    $this->foowd_changed = TRUE;
-    return $this->save();
   }
 
   /**
-   * Clean up associated short name when object is deleted.
+   * Add short name to object
    * 
-   * @param object obj  Object to add shortname for
-   * @param string name Short name for object
+   * @param object $obj  Object to add shortname for
+   * @param string $name Short name for object
    */
   function addShortName(&$obj, $name)
   {
@@ -117,10 +114,10 @@ class smdoc_name_lookup extends smdoc_storage
 
     $this->shortNames[$name]['objectid'] = $oid;
     $this->shortNames[$name]['classid'] = intval($obj->classid);
+    $this->shortNames[$name]['title'] = $obj->title;
     $this->shortNames[$oid] = $name;
     
-    $this->foowd_changed = TRUE;
-    return $this->save();
+    $this->save();
   }
 
   /**
@@ -128,8 +125,8 @@ class smdoc_name_lookup extends smdoc_storage
    * with object.
    *
    * @static
-   * @param object     obj      Object to make shortname for
-   * @param input_form form     Form to add element to
+   * @param object     $obj      Object to make shortname for
+   * @param input_form $form     Form to add element to
    */
   function addShortNameToForm(&$obj, &$form, &$error)
   {
@@ -143,19 +140,21 @@ class smdoc_name_lookup extends smdoc_storage
       $name = '';
 
     $shortBox = new input_textbox('shortname', REGEX_SHORTNAME, $name, 'Short Name', FALSE);
+
     if ( $form->submitted() && $shortBox->wasValid && $shortBox->value != $name )
     {
-      if ( isset($this->shortNames[$shortBox->value])   )
+      if ( empty($shortBox->value) ) 
+        $this->deleteShortName($obj);
+      elseif ( isset($this->shortNames[$shortBox->value]) )
       {
         $error[] = _("Object ShortName is already in use.");
         $shortBox->wasValid = FALSE;
       }
-      elseif ( !$this->addShortName($obj, $shortBox->value) )
-        $error[] = _("Could not save ShortName.");
-    } 
-
+      else
+        $this->addShortName($obj, $shortBox->value);
+    }
+ 
     $form->addObject($shortBox);
-    return FALSE;
   }
 
   /**
@@ -171,6 +170,80 @@ class smdoc_name_lookup extends smdoc_storage
                                'smdoc_name_lookup',
                                 META_SMDOC_NAME_LOOKUP_CLASS_ID,
                                 SHORTNAMES_ID);
+  }
+
+// ----------------------------- class methods --------------
+
+  /**
+   * Output a list of all known short names
+   *
+   * Values set in template:
+   *  + shortlist       - below
+   *  + addForm         - Form for adding a new shortname
+   *  + deleteForm      - Form for deleting shortnames
+   *
+   * Sample contents of $t['shortlist']:
+   * <pre>
+   * array (
+   *   shortname => array ( 
+   *                 'objectid' => 8894324,
+   *                 'classid' => 9321833,
+   *                 'title' => 'Some page title',
+   *                 'name_delete' => checkbox for deletion of shortname
+   *                )
+   * )
+   * </pre>
+   *
+   * @static
+   * @param smdoc  $foowd Reference to the foowd environment object.
+   * @param string $className The name of the class.
+   */
+  function class_list(&$foowd, $className)
+  {
+    $foowd->track('smdoc_name_lookup->class_list');
+
+    include_once(INPUT_DIR.'input.textbox.php');
+    include_once(INPUT_DIR.'input.form.php');
+    include_once(INPUT_DIR.'input.checkbox.php');
+
+    $shortList = array();
+
+    $lookup =& smdoc_name_lookup::getInstance($foowd);
+
+    /*
+     * Create form for clearing short names
+     */ 
+    $deleteForm = new input_form('deleteForm', NULL, SQ_POST, _("Delete Short Names"));
+    if ( !empty($lookup->shortNames) )
+    {
+      foreach ( $lookup->shortNames as $idx => $value )
+      {
+        if ( is_string($idx) )
+        {
+          $elem = $value;
+          $deleteBox = new input_checkbox($idx, FALSE, 'Delete');
+
+          if ( $deleteForm->submitted() && $deleteBox->checked )
+          {
+            $lookup->deleteShortName($idx);
+            unset($elem);
+          }
+          else
+          {
+            // Add box to form and array
+            $deleteForm->addObject($deleteBox);
+            $elem['name_delete'] =& $deleteForm->objects[$idx];
+          }
+           
+          if ( isset($elem) )
+            $shortList[$idx] = $elem;
+        }
+      }
+    }
+
+    $foowd->template->assign_by_ref('deleteForm', $deleteForm);
+    $foowd->template->assign('shortList', $shortList);
+    $foowd->track();
   }
 
 }
