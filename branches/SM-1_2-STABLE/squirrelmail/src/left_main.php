@@ -202,8 +202,6 @@ $onetimepad = $_SESSION['onetimepad'];
 $username = $_SESSION['username'];
 $delimiter = $_SESSION['delimiter'];
 
-print_r($_GET);
-
 if (isset($_GET['fold'])) {
     $fold = $_GET['fold'];
 }
