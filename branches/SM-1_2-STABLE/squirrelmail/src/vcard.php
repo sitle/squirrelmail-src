@@ -17,9 +17,25 @@ require_once('../functions/page_header.php');
 require_once('../functions/mime.php');
 require_once('../src/load_prefs.php');
 
+/* globals */
+$key  = $_COOKIE['key'];
+$username = $_SESSION['username'];
+
+$mailbox = $_GET['mailbox'];
+$passed_id = $_GET['passed_id'];
+$passed_ent_id = $_GET['passed_ent_id'];
+$startMessage = $_GET['startMessage'];
+
+if(isset($_GET['where'])) {
+    $where = $_GET['where'];
+}
+if(isset($_GET['what'])) {
+    $where = $_GET['what'];
+}
+/* end globals */
+
 $imapConnection = sqimap_login($username, $key, $imapServerAddress, $imapPort, 0);
 sqimap_mailbox_select($imapConnection, $mailbox);
-
 
 displayPageHeader($color, 'None');
 
@@ -126,11 +142,11 @@ echo '</table>' .
         '<tr><td align=center>' .
         '<FORM ACTION="../src/addressbook.php" METHOD="POST" NAME=f_add>' .
         '<table border=0 cellpadding=2 cellspacing=0 align=center>' .
-        '<tr><td align=right><b>Nickname:</b></td>' .
+        '<tr><td align=right><b>'._("Nickname").':</b></td>' .
         '<td><input type=text name="addaddr[nickname]" size=20 value="' .
         $vcard_safe['firstname'] . '-' . $vcard_safe['lastname'] .
         '"></td></tr>' .
-        '<tr><td align=right><b>Note Field Contains:</b></td><td>' .
+        '<tr><td align=right><b>'._("Note Field Contains").':</b></td><td>' .
         '<select name="addaddr[label]">';
 
 if (isset($vcard_nice['url'])) {
@@ -184,7 +200,7 @@ echo '</select>' .
         '<INPUT NAME="addaddr[lastname]" type=hidden value="' .
         $vcard_safe['lastname'] . '">' .
         '<INPUT TYPE=submit NAME="addaddr[SUBMIT]" ' .
-        'VALUE="Add to Address Book">' .
+        'VALUE="'. _("Add to Addressbook") . '">' .
         '</td></tr>' .
         '</table>' .
         '</FORM>' .
