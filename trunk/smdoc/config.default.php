@@ -11,9 +11,11 @@
 
 define('SM_PATH', 'lib/');
 define('FOOWD_DIR', '../foowd/lib/');
-define('CFG_PATH','config/');
+define('INPUT_DIR', 'lib/input/');
 define('TEMPLATE_PATH','templates/');
+
 define('DATETIME_FORMAT', 'Y/m/d h:ia'); // formatting string to format dates
+define('DIFF_TMPDIR', '/tmp/');
 
 $foowd_parameters = array(
 
@@ -23,9 +25,10 @@ $foowd_parameters = array(
  */
     'debug' => array(
        'debug_class' => 'smdoc_debug',
-        'debug_path' => SM_PATH . 'smdoc.env.debug.php',
+        'debug_path' => SM_DIR . 'smdoc.env.debug.php',
      'debug_enabled' => FALSE,
-         'debug_var' => FALSE
+         'debug_var' => FALSE,
+         'debug_ext' => FALSE
                     ),
 
 /*
@@ -36,7 +39,9 @@ $foowd_parameters = array(
           'email_webmaster' => 'webmaster@example.org',
             'email_noreply' => 'noreply@example.org',
                 'site_name' => 'Default Foowd site',
-    'allow_duplicate_title' => FALSE,
+         'default_objectid' => 936075699,
+           'default_method' => 'view',
+     'default_class_method' => 'create'
                    ),
 
 /*
@@ -54,15 +59,15 @@ $foowd_parameters = array(
  * -------------------------------------------------------------
  */
     'database' => array(
-             'db_class' => 'smdoc_db_mysql',
-              'db_path' => SM_PATH . 'smdoc.env.database.php',
+             'db_class' => 'smdoc_db',
+              'db_path' => SM_DIR . 'smdoc.env.database.php',
 	          'db_type' => 'mysql',
 	          'db_host' => 'localhost',
-	      'db_database' => 'foowd',
-	          'db_user' => 'foowd',
+	      'db_database' => 'smdocs',
+	          'db_user' => 'smdocs',
 	      'db_password' => 'foowd',
         'db_persistent' => TRUE,
-             'db_table' => 'tblobject'
+             'db_table' => 'smdoc_object'
                        ),
 
 /*
@@ -71,10 +76,10 @@ $foowd_parameters = array(
  */
     'user' => array(
            'user_class' => 'smdoc_user',
-            'user_path' => SM_PATH . 'smdoc.class.user.php',
+            'user_path' => SM_DIR . 'smdoc.class.user.php',
        'user_auth_type' => 'session',
       'anon_user_class' => 'foowd_anonuser',
-       'anon_user_path' => SM_PATH . 'class.anonuser.php',
+       'anon_user_path' => SM_DIR . 'class.anonuser.php',
        'anon_user_name' => 'Anonymous',
         'anon_user_god' => FALSE,
         'password_salt' => '',
@@ -95,9 +100,9 @@ $foowd_parameters = array(
  * -------------------------------------------------------------
  */
     'workspace' => array(
-           'workspace_class' => 'foowd_workspace',
-            'workspace_path' => FOOWD_DIR . 'class.workspace.php',
-       'workspace_base_name' => 'Outside',
+           'workspace_class' => 'smdoc_translation',
+            'workspace_path' => SM_DIR . 'smdoc.class.translation.php',
+       'workspace_base_name' => 'en_US',
                         ),
 
 /*
@@ -105,8 +110,8 @@ $foowd_parameters = array(
  * -------------------------------------------------------------
  */
     'template' => array(
-           'template_class' => 'smdoc_display',
-            'template_path' => SM_PATH . 'smdoc.env.template.php',
+           'template_class' => 'foowd_template',
+            'template_path' => SM_DIR . 'env.template.php',
              'template_dir' => TEMPLATE_PATH,
                        ),
 

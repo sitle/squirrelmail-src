@@ -95,7 +95,13 @@
             echo '<a href="'.$loc_url.'?classid='.USER_CLASS_ID.'&objectid='.$user->objectid.'">' 
                  . $user->title . '</a> ';
             echo '( '. $lang_url
-                 . '<a href="', $user_url, '&method=logout">'. _("Logout") .'</a> )';
+                 . '<a href="', $user_url, '&method=logout">'. _("Logout") .'</a> )&nbsp;<br />';
+            if ( $user->inGroup('Gods') )
+            {
+              echo '<span class="subtext">'._("Admin") .': '
+                 . '<a href="'.$loc_url.'?object=sqmgroup">' 
+                 . _("Groups") . '</a></span>&nbsp;';
+            }
           } else {
             // Otherwise, we're anonymous
             echo _("Anonymous User"), ' [' . $user->title . '] ';
@@ -223,9 +229,8 @@
   (v <?php echo $foowd->version ?>).
 </div>
 <?php
-if ($foowd->debug) { // display debug data
-  $foowd->debug->display($foowd);
-}
+if ($foowd->debug) 
+  return;
 ?>
 </body>
 </html>
