@@ -442,7 +442,7 @@ function sqimap_login ($username, $password, $imap_server_address, $imap_port, $
           $imap_server_address = 'tls://' . $imap_server_address;
         }
     
-    $imap_stream = fsockopen ( $imap_server_address, $imap_port, $error_number, $error_string, 15);
+    $imap_stream = @fsockopen ( $imap_server_address, $imap_port, $error_number, $error_string, 15);
 
     /* Do some error correction */
     if (!$imap_stream) {
