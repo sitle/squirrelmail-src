@@ -438,7 +438,7 @@ function showMessagesForMailbox($imapConnection, $mailbox, $num_msgs,
     printHeader($mailbox, $srt, $color, !$thread_sort_messages);
 
     displayMessageArray($imapConnection, $num_msgs, $start_msg, 
-		      $msort, $mailbox, $sort, $color, $show_num,0,0);
+                        $msort, $mailbox, $sort, $color, $show_num,0,0);
     echo '</td></tr></table></td></tr></table>';
 
     mail_message_listing_end($num_msgs, $paginator_str, $msg_cnt_str, $color); 
@@ -654,12 +654,6 @@ function mail_message_listing_beginning ($imapConnection,
     }
     $urlMailbox = urlencode($mailbox);
 
-    if (preg_match('/^(.+)\?.+$/',$php_self,$regs)) {
-        $source_url = $regs[1];
-    } else {
-        $source_url = $php_self;
-    }
-
     if (!isset($msg)) {
         $msg = '';
     }
@@ -681,39 +675,34 @@ function mail_message_listing_beginning ($imapConnection,
                     , '', $color[4], 'border="0" width="100%" cellpadding="1"  cellspacing="0"' ) 
                 , 'left', '', '' )
             , '', $color[0] )
-	    , '', '', 'border="0" width="100%" cellpadding="1"  cellspacing="0"' );
-	/* line between header and button area */
+            , '', '', 'border="0" width="100%" cellpadding="1"  cellspacing="0"' );
+        /* line between header and button area */
         echo '<tr><td HEIGHT="5" BGCOLOR="'.$color[4].'"></td></tr>';
 
         echo '<tr><td>';
-        echo html_tag( 'tr' ) . "\n"
-        . html_tag( 'td' ,'' , 'left', '', '' )
-         . html_tag( 'table' ,'' , '', $color[9], 'border="0" width="100%" cellpadding="1"  cellspacing="0"' )
-	  . '<tr><td>'
-           . html_tag( 'table' ,'' , '', $color[0], 'border="0" width="100%" cellpadding="1"  cellspacing="0"' )
-            . html_tag( 'tr',
-	        getSmallStringCell(_("Move Selected To"), 'left', 'nowrap') .
-	        getSmallStringCell(_("Transform Selected Messages"), 'right')
-            )
-            . html_tag( 'tr' ) ."\n"
-            . html_tag( 'td', '', 'left', '', 'valign="middle" nowrap' );
-            getMbxList($imapConnection);  
-            echo getButton('SUBMIT', 'moveButton',_("Move")) . "\n";   
-            echo getButton('SUBMIT', 'attache',_("Forward")) . "\n";   
-
-  echo "      </TD>\n"
-         . html_tag( 'td', '', 'right', '', 'nowrap' );
-
-
+        echo '<tr>' . "\n";
+        echo '<td align="left">';
+        echo '<table BGCOLOR="'.$color[9].'" border="0" width="100%" cellpadding="1"  cellspacing="0">' . "\n";
+        echo '  <tr><td>';
+        echo '  <table BGCOLOR="'.$color[0].'" border="0" width="100%" cellpadding="1"  cellspacing="0">' . "\n";
+        echo '  <tr>' ."\n";
+        echo '    <td align="left" valign="middle" nowrap>';
+        echo getButton('SUBMIT', 'delete',_("Delete")) ."\n";
+        echo getButton('SUBMIT', 'attache',_("Forward")) . "\n";
+        echo '    </td>' . "\n";
+        echo '    <td align="center" valign="middle" nowrap>';
+        getMbxList($imapConnection);  
+        echo getButton('SUBMIT', 'moveButton',_("Move")) . "\n";   
+        echo '    </TD>' . "\n";
+        echo '    <td align="right" nowrap>';
 
     if (!$auto_expunge) {
         echo getButton('SUBMIT', 'expungeButton',_("Expunge"))
              .'&nbsp;' . _("mailbox") . "\n";
     }
 
-    echo getButton('SUBMIT', 'markRead',_("Read"));
-    echo getButton('SUBMIT', 'markUnread',_("Unread"));
-    echo getButton('SUBMIT', 'delete',_("Delete")) ."&nbsp\n";
+    echo getButton('SUBMIT', 'markRead',_("Read")) . '&nbsp;';
+    echo getButton('SUBMIT', 'markUnread',_("Unread")) . "\n";
     if (!strpos($php_self,'mailbox')) {
         $location = $php_self.'?mailbox=INBOX&amp;startMessage=1';
     } else {
@@ -722,26 +711,6 @@ function mail_message_listing_beginning ($imapConnection,
     echo '<INPUT TYPE="HIDDEN" NAME="location" VALUE="'.$location.'">';
     echo "</TD>\n"
          . "   </TR>\n";
-
-    /* draws thread sorting links */
-    if ($allow_thread_sort == TRUE) {
-        if ($thread_sort_messages == 1 ) {
-            $set_thread = 2;
-            $thread_name = _("Unthread View");
-        } elseif ($thread_sort_messages == 0) {
-            $set_thread = 1;
-            $thread_name = _("Thread View");
-        }
-        echo html_tag( 'tr' ,
-                    html_tag( 'td' ,
-                              '&nbsp;<a href=' . $source_url . '?sort='
-                              . "$sort" . '&start_messages=1&set_thread=' . "$set_thread"
-                              . '&mailbox=' . urlencode($mailbox) . '><small>' . $thread_name
-                              . '</a></small>&nbsp;'
-                     , '', '', '' )
-                 , '', '', '' );
-    }
-
     echo "</TABLE></td></tr></table></td></tr>\n";
 
     do_hook('mailbox_form_before');
@@ -783,13 +752,24 @@ function mail_message_listing_end($num_msgs, $paginator_str, $msg_cnt_str, $colo
 }
 
 function printHeader($mailbox, $sort, $color, $showsort=true) {
-    global $index_order;
+    global $index_order, $allow_thread_sort, $thread_sort_messages, $PHP_SELF;
+    
+    if (preg_match('/^(.+)\?.+$/',$PHP_SELF,$regs)) {
+        $source_url = $regs[1];
+    } else {
+        $source_url = $PHP_SELF;
+    }
+
     echo html_tag( 'tr' ,'' , 'center', $color[5] );
     for ($i = 1; $i <= count($index_order); $i++) {
         switch ($index_order[$i]) {
         case 1: /* checkbox */
-        case 5: /* flags */
             echo html_tag( 'td' ,'&nbsp;' , '', '', 'width="1%"' );
+            break;
+        case 5: /* flags */
+            echo html_tag( 'td' ,'', '', '', 'width="1%"' );
+            ShowThreadButton($source_url, $sort, $mailbox);
+            echo "</td>\n";
             break;
         case 2: /* from */
             if (handleAsSent($mailbox)) {
@@ -800,7 +780,7 @@ function printHeader($mailbox, $sort, $color, $showsort=true) {
                      . '<b>' . _("From") . '</b>';
             }
             if ($showsort) {
-                ShowSortButton($sort, $mailbox, 2, 3);
+                ShowSortButton($source_url, $sort, $mailbox, 2, 3);
             }
             echo "</td>\n";
             break;
@@ -808,7 +788,7 @@ function printHeader($mailbox, $sort, $color, $showsort=true) {
             echo html_tag( 'td' ,'' , 'left', '', 'width="5%" nowrap' )
                  . '<b>' . _("Date") . '</b>';
             if ($showsort) {
-                ShowSortButton($sort, $mailbox, 0, 1);
+                ShowSortButton($source_url, $sort, $mailbox, 0, 1);
             }
             echo "</td>\n";
             break;
@@ -816,7 +796,7 @@ function printHeader($mailbox, $sort, $color, $showsort=true) {
             echo html_tag( 'td' ,'' , 'left', '', '' )
                  . '<b>' . _("Subject") . '</b>';
             if ($showsort) {
-                ShowSortButton($sort, $mailbox, 4, 5);
+                ShowSortButton($source_url, $sort, $mailbox, 4, 5);
             }
             echo "</td>\n";
             break;
@@ -830,10 +810,34 @@ function printHeader($mailbox, $sort, $color, $showsort=true) {
 
 
 /*
+ * This function shows the thread/unthread button.
+ */
+function ShowThreadButton($source_url, $sort, $mailbox) {
+    global $allow_thread_sort, $thread_sort_messages;
+    /* draws thread sorting links */
+    if ($allow_thread_sort == TRUE) {
+        if ($thread_sort_messages == 1 ) {
+            $set_thread = 2;
+            $text = '[Unthread]';
+            $img = 'unthreaded.png';
+        } elseif ($thread_sort_messages == 0) {
+            $set_thread = 1;
+            $img = 'threaded.png';
+            $text = '[Thread]';
+        }
+        echo ' <a href=' . $source_url . '?sort='
+             . $sort . '&start_messages=1&set_thread=' . $set_thread
+             . '&mailbox=' . urlencode($mailbox) . '>' 
+             . '<IMG SRC="'. SM_PATH . 'images/' . $img
+             . '" BORDER=0 WIDTH=12 HEIGHT=10 ALT="'. $text . '"></a> ';
+    }
+}
+
+
+/*
  * This function shows the sort button. Isn't this a good comment?
  */
-function ShowSortButton($sort, $mailbox, $Up, $Down ) {
-    global $PHP_SELF;
+function ShowSortButton($source_url, $sort, $mailbox, $Up, $Down ) {
     /* Figure out which image we want to use. */
     if ($sort != $Up && $sort != $Down) {
         $img = 'sort_none.png';
@@ -844,12 +848,6 @@ function ShowSortButton($sort, $mailbox, $Up, $Down ) {
     } else {
         $img = 'down_pointer.png';
         $which = 6;
-    }
-
-    if (preg_match('/^(.+)\?.+$/',$PHP_SELF,$regs)) {
-        $source_url = $regs[1];
-    } else {
-        $source_url = $PHP_SELF;
     }
 
     /* Now that we have everything figured out, show the actual button. */
