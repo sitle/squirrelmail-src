@@ -4,9 +4,12 @@
 
 Version 1.2.10 [cvs]
 ---------------------------------
-  - Fixed version checking to ignore patch levels
+  - Fixed version checking to ignore patch levels.
   - Fixed sqsession_register to register the session correctly in
-    verions of PHP below 4.1.0
+    verions of PHP below 4.1.0.
+  - Fixed that long preferences lines where not being read correctly.
+  - Raise requirements to PHP 4.0.4 (was 4.0.2).
+  - Support for charactersets 8859-4, 8859-13 and windows-1257.
 
 
 Version 1.2.9 -- October 30, 2002
