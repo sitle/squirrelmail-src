@@ -17,10 +17,10 @@ class ZkMod_auth_mysql {
     var $ver = '$Id$';
     var $name = 'auth/mysql';
 
-    var $srv;	// backward pointer to the service
-    var $info;	// cargo
+    var $srv;    // backward pointer to the service
+    var $info;   // cargo
     var $banner; // Server banner
-    
+
     /**
      * Create a new ZkMod_auth_test with the given options.
      *
@@ -28,6 +28,7 @@ class ZkMod_auth_mysql {
      *                       to the authentication module
      */
     function ZkMod_auth_mysql( $options, &$srv ) {
+        $this->banner = '';
         $this->srv = &$srv;
     }
 
@@ -42,10 +43,11 @@ class ZkMod_auth_mysql {
 
         if( is_array( $this->srv->connector ) ) {
             $host = $this->srv->connector['host'];
-            if ( $this->srv->connector['port'] <> '' ) {
+            if ( ISSET($this->srv->connector['port']) && $this->srv->connector['port'] <> '' ) {
                 $host .= ':' . $this->srv->connector['port'];
             }
-            if ( $this->srv->connector['sql'] == '' ) {
+            if ( !isset($this->srv->connector['sql']) ||
+                 $this->srv->connector['sql'] == '' ) {
                 $sql = 'SELECT User FROM user WHERE User = \'$username\' and Password = password( \'$password\' )';
             } else {
                 // Default SQL strings checks against the default mysql auth db/table
@@ -53,17 +55,18 @@ class ZkMod_auth_mysql {
             }
             $sql = str_replace( '$username', $username, $sql );
             $sql = str_replace( '$password', $password, $sql );
-            if ( $this->srv->connector['db'] == '' ) {
+            if ( !isset($this->srv->connector['db']) ||
+                 $this->srv->connector['db'] == '' ) {
                 $db = 'mysql';
             }else {
                 $db = $this->srv->connector['db'];
             }
             $db = $this->srv->connector['db'];
-        	$lk = @mysql_connect( $host, 
-        	                      $this->srv->connector['user'], 
-        	                      $this->srv->connector['pass'] );
-            $this->info = "<b>MySQL Session</b><br>Host = " . $host . 
-                                              '<br>User = ' . $this->srv->connector['user'] . 
+            $lk = @mysql_connect( $host,
+                                  $this->srv->connector['user'],
+                                  $this->srv->connector['pass'] );
+            $this->info = "<b>MySQL Session</b><br>Host = " . $host .
+                                              '<br>User = ' . $this->srv->connector['user'] .
                                               '<br>Pass = ' . $this->srv->connector['pass'] . '<br>';
             if( $lk ) {
                 mysql_select_db( $db, $lk );

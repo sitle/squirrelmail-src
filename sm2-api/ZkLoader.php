@@ -39,8 +39,9 @@ class ZkLoader {
         session_start();
         session_register( 'bag_reg' );
 
-        if( !is_array( $bag_reg ) )
+        if( !is_array( $bag_reg ) ) {
             $bag_reg = array( 'zkLoader' => array( 'foo' => 'one' ) );
+        }
 
         $this->bag_reg = $bag_reg;
 
@@ -72,7 +73,7 @@ class ZkLoader {
         $srvfile    = "$this->libhome/$svcname/service.php";
         $svcfunc    = "zkload_$svcname";
         $svclocator = 'zkload_'.$svcname.'_module_locator';
-        $modfile    = "$this->modhome/$svcname/";
+        $modfile    = "$this->modhome/$svcname/$modname.php";
 
         if ( zkCheckName( $svcname ) ) {
             if ( file_exists( $svcfile ) ) {
@@ -89,14 +90,17 @@ class ZkLoader {
                 $ret = FALSE;
             }
             if( $ret ) {
-                $code_locator = "\$modfile .= $svclocator( $modname );";
-                eval( $code_locator );
+                if ( function_exists( $svclocator ) ) {
+                    $code_locator = "\$modfile .= $svclocator( $modname );";
+                    eval( $code_locator );
+                }
                 if ( zkCheckName($modname) && file_exists($modfile) ) {
                     require_once($modfile);
                 }
             }
-        } else
+        } else {
             $ret = FALSE;
+        }
 
         return( $ret );
 
@@ -113,8 +117,9 @@ class ZkLoader {
      */
     function &loadService($svcname, $options = array(), $modname = '', $serial = '' ) {
 
-        if( $serial == '' )
+        if( $serial == '' ) {
             $serial = zkSS();
+        }
 
         $svcclass = "ZkSvc_$svcname";
         if( $this->RequireCode($svcname, $options, $modname ) ) {
@@ -127,8 +132,9 @@ class ZkLoader {
                 $this->loadModule($service, $options, $modname);
             }
             $ret = $service;
-        } else
+        } else {
             $ret = FALSE;
+        }
         /* Return the newly created Zookeeper service. */
         return ($ret);
     }
