@@ -162,6 +162,10 @@ if ( isset($t['classid']) &&                   // classid is defined
 <link rel="stylesheet" type="text/css" href="templates/style.css" media="all" />
 <link title="allblue" rel="stylesheet" type="text/css" href="templates/bluestyle.css" media="all" />
 <link title="allblue" rel="stylesheet" type="text/css" href="templates/bluetables.css" media="all" />
+<!--[if IE]>
+<link rel="stylesheet" type="text/css" href="templates/layout-ie.css" />
+<link title="allblue"  rel="stylesheet" type="text/css" href="templates/bluestyle-ie.css" />
+<![endif]-->
 <link rel="stylesheet" type="text/css" href="templates/printer.css" media="print" />
 </head>
 <body>
