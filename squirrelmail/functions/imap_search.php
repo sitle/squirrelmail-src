@@ -22,6 +22,7 @@ function sqimap_search($imapConnection, $search_where, $search_what, $mailbox,
 
     global $msgs, $message_highlight_list, $squirrelmail_language, $languages,
            $index_order, $pos, $allow_charset_search, $imap_server_type;
+
     $pos = $search_position;
 
     $urlMailbox = urlencode($mailbox);
@@ -40,10 +41,10 @@ function sqimap_search($imapConnection, $search_where, $search_what, $mailbox,
        returns the messages that match each term. Could be fixed
        on the client side, but should be fixed on the server
        as per the RFC */
-       
+
     if ($imap_server_type == 'macosx') {
         foreach ($multi_search as $multi_search_part) {
-            $search_string .= $search_where . ' ' .$multi_search_part. ' ';
+            $search_string .= $search_where . ' ' .$multi_search_part . ' ';
         }
     }
     else {
@@ -52,7 +53,7 @@ function sqimap_search($imapConnection, $search_where, $search_what, $mailbox,
                 . "}\r\n" . $multi_search_part . ' ';
         }
     }
-    
+
     $search_string = trim($search_string);
 
     /* now use $search_string in the imap search */

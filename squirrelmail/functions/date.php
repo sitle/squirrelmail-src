@@ -58,7 +58,6 @@ function getGMTSeconds($stamp, $gmt) {
     } else {
         $neg = false;
     }
-     
     $difference = substr($gmt, 2, 2);
     $gmt = substr($gmt, 0, 2);
     $gmt = ($gmt + ($difference / 60)) * 3600;

@@ -16,7 +16,7 @@
  * SquirrelMail version number -- DO NOT CHANGE
  */
 global $version;
-$version = '1.3.0 [CVS-DEVEL]';
+$version = '1.2.7 [CVS]';
 
 /**
  * Wraps text at $wrap characters
@@ -195,15 +195,16 @@ function get_location () {
             }
         }
     }
-    
-   /* this is a workaround for the weird macosx caching that
-      causes Apache to return 16080 as the port number, which causes
-      SM to bail */
-      
-   if ($imap_server_type == 'macosx' && $port == ':16080') {
+
+    /* this is a workaround for the weird macosx caching that
+       causes Apache to return 16080 as the port number, which causes
+       SM to bail */
+           
+    if ($imap_server_type == 'macosx' && $port == ':16080') {
         $port = '';
-   }
-   
+    }
+    
+    
     /* Fallback is to omit the server name and use a relative */
     /* URI, although this is not RFC 2616 compliant.          */
     return ($host ? $proto . $host . $port . $path : $path);

@@ -39,9 +39,7 @@ $to = decodeHeader(getLineOfAddrs($message->header->to));
 
 /* and Body and Subject could easily stream off the page... */
 $id = $message->header->id;
-$ent_ar = findDisplayEntity ($message, 0);
-$ent_num = $ent_ar[0];
-  
+$ent_num = findDisplayEntity ($message, 0);  
 $body_message = getEntity($message, $ent_num);
 if (($body_message->header->type0 == 'text') ||
     ($body_message->header->type0 == 'rfc822')) {    
@@ -54,7 +52,7 @@ if (($body_message->header->type0 == 'text') ||
         $body = strip_tags( $body );
         translateText($body, $wrap_at, $body_message->header->charset);
     } else {
-        $body = MagicHTML( $body, $id, $message );
+        $body = MagicHTML( $body, $id );
     }
     } else {
         translateText($body, $wrap_at, $body_message->header->charset);
@@ -94,13 +92,13 @@ displayHtmlHeader( _("Printer Friendly"), '', FALSE );
 echo "<body text=\"$color[8]\" bgcolor=\"$color[4]\" link=\"$color[7]\" vlink=\"$color[7]\" alink=\"$color[7]\">\n" .
      /* headers (we use table because translations are not all the same width) */
      '<table>'.
-     '<tr><td>' . _("From") . ':</td><td>' . htmlentities($from) . "</td></tr>\n".
-     '<tr><td>' . _("To") . ':</td><td>' . htmlentities($to) . "</td></tr>\n";
+     '<tr><td>' . _("From") . ':</td><td>' . htmlspecialchars($from) . "</td></tr>\n".
+     '<tr><td>' . _("To") . ':</td><td>' . htmlspecialchars($to) . "</td></tr>\n";
 if ( strlen($cc) > 0 ) { /* only show CC: if it's there... */
-     echo '<tr><td>' . _("CC") . ':</td><td>' . htmlentities($cc) . "</td></tr>\n";
+     echo '<tr><td>' . _("CC") . ':</td><td>' . htmlspecialchars($cc) . "</td></tr>\n";
 }
-echo '<tr><td>' . _("Date") . ':</td><td>' . htmlentities($date) . "</td></tr>\n".
-     '<tr><td>' . _("Subject") . ':</td><td>' . htmlentities($subject) . "</td></tr>\n".
+echo '<tr><td>' . _("Date") . ':</td><td>' . htmlspecialchars($date) . "</td></tr>\n".
+     '<tr><td>' . _("Subject") . ':</td><td>' . htmlspecialchars($subject) . "</td></tr>\n".
      '</table>'.
      "\n";
 /* body */

@@ -363,7 +363,8 @@ exit();
 function newMail () {
     global $forward_id, $imapConnection, $msg, $ent_num, $body_ary, $body,
            $reply_id, $send_to, $send_to_cc, $mailbox, $send_to_bcc, $editor_size,
-           $draft_id, $use_signature, $composesession, $forward_cc, $passed_id;
+           $draft_id, $use_signature, $composesession, $forward_cc, $passed_id,
+           $edit_as_new;
 
     $send_to = decodeHeader($send_to, false);
     $send_to_cc = decodeHeader($send_to_cc, false);
@@ -390,37 +391,32 @@ function newMail () {
         sqimap_mailbox_select($imapConnection, $mailbox);
         $message = sqimap_get_message($imapConnection, $id, $mailbox);
         $orig_header = $message->header;
-	$body = '';
         if ($ent_num) {
-	    $ent_ar = preg_split('/_/',$ent_num);
-	    foreach($ent_ar as $ent_num) {
-        	$message = getEntity($message, $ent_num);
-    		if ($message->header->type0 == 'text' ||
-        	    $message->header->type1 == 'message') {
-            	    $bodypart = decodeBody(
-		        mime_fetch_body($imapConnection, $id, $ent_num),
-                	    $message->header->encoding);
-			if ($message->header->type1 == 'html') {
-        		    $bodypart = strip_tags($bodypart);
-    			}
-			$body .= $bodypart;
-		}
-	    }
-        } else if ($message->header->type0 == 'text' ||
-        	    $message->header->type1 == 'message') {
-                	$body .= decodeBody(
-                	mime_fetch_body($imapConnection, $id, 1),
-                	$message->header->encoding);
-    			if ($message->header->type1 == 'html') {
-        		    $body = strip_tags($body);
-    			}
-			
-        } 
+            $message = getEntity($message, $ent_num);
+        }
+        if ($message->header->type0 == 'text' ||
+            $message->header->type1 == 'message') {
+            if ($ent_num) {
+                $body = decodeBody(
+                    mime_fetch_body($imapConnection, $id, $ent_num),
+                    $message->header->encoding);
+            } else {
+                $body = decodeBody(
+                    mime_fetch_body($imapConnection, $id, 1),
+                    $message->header->encoding);
+            }
+        } else {
+            $body = '';
+        }
+
+        if ($message->header->type1 == 'html') {
+            $body = strip_tags($body);
+        }
 
         sqUnWordWrap($body);
         
         /* this corrects some wrapping/quoting problems on replies */
-        if ($reply_id) {
+        if ($reply_id || $edit_as_new || $forward_id) {
             $rewrap_body = explode("\n", $body);
             for ($i=0;$i<count($rewrap_body);$i++) {
                 sqWordWrap($rewrap_body[$i], ($editor_size - 2));
@@ -588,7 +584,6 @@ function showInputForm ($session) {
            $mailprio, $default_use_mdn, $mdn_user_support, $compose_new_win,
            $saved_draft, $mail_sent, $sig_first, $edit_as_new;
 
-    $file_uploads = ini_get('file_uploads');
     $subject = decodeHeader($subject, false);
     $reply_subj = decodeHeader($reply_subj, false);
     $forward_subj = decodeHeader($forward_subj, false);
@@ -604,10 +599,8 @@ function showInputForm ($session) {
              '// --></SCRIPT>' . "\n\n";
     }
 
-    echo "\n" . '<FORM name=compose action="compose.php" METHOD=POST ';
-    if ($file_uploads) {
-        echo 'ENCTYPE="multipart/form-data"';
-    }
+    echo "\n" . '<FORM name=compose action="compose.php" METHOD=POST ' .
+         'ENCTYPE="multipart/form-data"';
     do_hook("compose_form");
 
     
@@ -760,38 +753,36 @@ function showInputForm ($session) {
     }
 
     /* This code is for attachments */
-    if ($file_uploads) {
-        echo '   <TR>' . "\n" .
-             '     <TD VALIGN=MIDDLE ALIGN=RIGHT>' . "\n" .
-                    _("Attach:") .
-             '      </TD>' . "\n" .
-             '      <TD VALIGN=MIDDLE ALIGN=LEFT>' . "\n" .
-             '      <INPUT NAME="attachfile" SIZE=48 TYPE="file">' . "\n" .
-             '      &nbsp;&nbsp;<input type="submit" name="attach"' .
-             ' value="' . _("Add") .'">' . "\n" .
-             '     </TD>' . "\n" .
-             '   </TR>' . "\n";
+    echo '   <TR>' . "\n" .
+         '     <TD VALIGN=MIDDLE ALIGN=RIGHT>' . "\n" .
+                _("Attach:") .
+         '      </TD>' . "\n" .
+         '      <TD VALIGN=MIDDLE ALIGN=LEFT>' . "\n" .
+         '      <INPUT NAME="attachfile" SIZE=48 TYPE="file">' . "\n" .
+         '      &nbsp;&nbsp;<input type="submit" name="attach"' .
+         ' value="' . _("Add") .'">' . "\n" .
+         '     </TD>' . "\n" .
+         '   </TR>' . "\n";
 
-        if (count($attachments)) {
-            $hashed_attachment_dir = getHashedDir($username, $attachment_dir);
-            echo '<tr><td bgcolor="' . $color[0] . '" align=right>' . "\n" .
-                 '&nbsp;' .
-                 '</td><td align=left bgcolor="' . $color[0] . '">';
-            foreach ($attachments as $key => $info) {
-                if ($info['session'] == $session) {
-                    $attached_file = "$hashed_attachment_dir/$info[localfilename]";
-                    echo '<input type="checkbox" name="delete[]" value="' . $key . "\">\n" .
-                            $info['remotefilename'] . ' - ' . $info['type'] . ' (' .
-                            show_readable_size( filesize( $attached_file ) ) . ")<br>\n";
-                }
-            }
-
-            echo '<input type="submit" name="do_delete" value="' .
-                 _("Delete selected attachments") . "\">\n" .
-                 '</td></tr>';
+    if (count($attachments)) {
+        $hashed_attachment_dir = getHashedDir($username, $attachment_dir);
+        echo '<tr><td bgcolor="' . $color[0] . '" align=right>' . "\n" .
+             '&nbsp;' .
+             '</td><td align=left bgcolor="' . $color[0] . '">';
+        foreach ($attachments as $key => $info) {
+    	    if ($info['session'] == $session) { 
+            	$attached_file = "$hashed_attachment_dir/$info[localfilename]";
+            	echo '<input type="checkbox" name="delete[]" value="' . $key . "\">\n" .
+                        $info['remotefilename'] . ' - ' . $info['type'] . ' (' .
+                        show_readable_size( filesize( $attached_file ) ) . ")<br>\n";
+    	    }
         }
-        /* End of attachment code */
+
+        echo '<input type="submit" name="do_delete" value="' .
+             _("Delete selected attachments") . "\">\n" .
+             '</td></tr>';
     }
+    /* End of attachment code */
     if ($compose_new_win == '1') {
         echo '</TABLE>'."\n";
     }
@@ -835,7 +826,7 @@ function showComposeButtonRow() {
         }
     }
 
-    echo "   </td></tr>\n   <TR><td>\n   </td><td>\n";
+    echo "   <TR><td>\n   </td><td>\n";
     echo "\n    <INPUT TYPE=SUBMIT NAME=\"sigappend\" VALUE=\"". _("Signature") . "\">\n";
     if ($use_javascript_addr_book) {
         echo "      <SCRIPT LANGUAGE=JavaScript><!--\n document.write(\"".

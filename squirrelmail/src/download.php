@@ -20,7 +20,7 @@ require_once('../functions/date.php');
 header('Pragma: ');
 header('Cache-Control: cache');
 
-function viewText($color, $body, $id, $entid, $mailbox, $type1, $wrap_at, $imapConnection) {
+function viewText($color, $body, $id, $entid, $mailbox, $type1, $wrap_at) {
     global $where, $what, $charset;
     global $startMessage;
 
@@ -46,8 +46,7 @@ function viewText($color, $body, $id, $entid, $mailbox, $type1, $wrap_at, $imapC
          "<TR><TD BGCOLOR=\"$color[4]\"><TT>";
 
     if ($type1 == 'html') {
-        $msg  = sqimap_get_message($imapConnection, $id, $mailbox);    
-        $body = MagicHTML( $body, $id, $msg );
+        $body = MagicHTML( $body, $id );
     } else {
         translateText($body, $wrap_at, $charset);
     }
@@ -57,31 +56,17 @@ function viewText($color, $body, $id, $entid, $mailbox, $type1, $wrap_at, $imapC
          "</TT></TD></TR></TABLE>";
 }
 
-function viewMessage($imapConnection, $id, $mailbox, $ent_id, $color, $wrap_at, $extracted) {
+function viewMessage($imapConnection, $id, $mailbox, $ent_id, $msg, $color, $wrap_at) {
     global $startMessage;
-
-
-    $msg  = sqimap_get_message($imapConnection, $id, $mailbox);    
-    $msg = getEntity($msg, $ent_id);    
-
     $header = sqimap_get_ent_header($imapConnection,$id,$mailbox,$ent_id);
-    $header->id = $id;
     $msg->header = $header;
-
-    $ent_ar = findDisplayEntity($msg, 0);
-    $body = '';
-    for ($i = 0; $i < count($ent_ar); $i++) {
-	$body .= formatBody($imapConnection, $msg, $color, $wrap_at, $ent_ar[$i], false);
-    }
-    
+    $msg->header->id = $id;
+    $body = formatBody($imapConnection, $msg, $color, $wrap_at);
     $bodyheader = viewHeader($header, $color);
+
     displayPageHeader($color, 'None');
 
-    echo "<BR><TABLE WIDTH=\"100%\" BORDER=0 CELLSPACING=0 CELLPADDING=2 ALIGN=CENTER>";
-    if ($extracted) {
-       echo '<TR><TD width="100%"><center><h1>Message succesfully extracted</h1></center></TD></TR>';
-    }
-    echo "<TR><TD BGCOLOR=\"$color[0]\">".
+    echo "<BR><TABLE WIDTH=\"100%\" BORDER=0 CELLSPACING=0 CELLPADDING=2 ALIGN=CENTER><TR><TD BGCOLOR=\"$color[0]\">".
     	"<B><CENTER>". 	_("Viewing a message attachment") . " - ";
     
     echo "<a href=\"read_body.php?mailbox=".urlencode($mailbox)."&passed_id=$id&startMessage=$startMessage&show_more=0\">". _("View message") . "</a>";
@@ -98,40 +83,8 @@ function viewMessage($imapConnection, $id, $mailbox, $ent_id, $color, $wrap_at, 
     echo "$bodyheader </TD></TR></TABLE>";	     
     	
     echo "<TABLE WIDTH=\"98%\" BORDER=0 CELLSPACING=0 CELLPADDING=2 ALIGN=CENTER><TR><TD BGCOLOR=\"$color[0]\">".
-    	"<TR><TD BGCOLOR=\"$color[4]\"><TT><BR>";
-	echo "$body </TT></TD></TR><table><br>";	 
-    echo '<table width="100%"><tr>'.
-         "<td bgcolor=\"$color[9]\" width=\"100%\" align=\"center\">".
-           '<form action="download.php" method="post"><small>'.
-            "<input type=\"hidden\" name=\"passed_id\" value=\"$id\">".
-            "<input type=\"hidden\" name=\"mailbox\" value=\"".$mailbox."\">".
-            "<input type=\"hidden\" name=\"startMessage\" value=\"$startMessage\">".
-            "<input type=\"hidden\" name=\"passed_ent_id\" value=\"$ent_id\">".
-            "<input type=\"hidden\" name=\"extract_message\" value=\"1\">".
-            _("Save to:") .
-            ' <select name="targetMailbox">';
-    get_extract_to_target_list($imapConnection); 
-    echo    '</select> '.'&nbsp'.
-            '<input type="submit" value="' . _("Extract") . '">'.
-            '</small>'.
-           '</form>'.
-         '</td></table>';
-
-}
-
-function get_extract_to_target_list($imapConnection) {
-    
-    $boxes = sqimap_mailbox_list($imapConnection);
-    for ($i = 0; $i < count($boxes); $i++) {  
-        if (!in_array('noselect', $boxes[$i]['flags'])) {
-            $box = $boxes[$i]['unformatted'];
-            $box2 = str_replace(' ', '&nbsp;', $boxes[$i]['unformatted-disp']);
-            if ( $box2 == 'INBOX' ) {
-                $box2 = _("INBOX");
-            }
-            echo "<option value=\"$box\">$box2</option>\n";
-        }
-    }
+    	"<TR><TD BGCOLOR=\"$color[4]\"><TT>";
+	echo "$body </TT></TD></TR></TABLE>";	 
 }
 
 
@@ -283,37 +236,22 @@ function formatRecipientString($recipients, $item ) {
 $imapConnection = sqimap_login($username, $key, $imapServerAddress, $imapPort, 0);
 sqimap_mailbox_select($imapConnection, $mailbox);
 
-$extracted = false;
-if (isset($extract_message) && $extract_message) {
-  $cmd = "FETCH $passed_id BODY[$passed_ent_id]";
-  $read = sqimap_run_command ($imapConnection, $cmd, true, $response, $message);
-  $cnt = count($read);
-  $body = '';
-  $length = 0;
-  for ($i=1;$i<$cnt;$i++) {
-      $length = $length + strlen($read[$i]);
-      $body .= $read[$i];
-  }
-  if (isset($targetMailbox) && $length>0) {
-      sqimap_append ($imapConnection, $targetMailbox, $length);
-      fputs($imapConnection,$body);
-      sqimap_append_done ($imapConnection);
-      $extracted = true;
-  }
-}   
+/*
+ * $message contains all information about the message
+ * including header and body
+ */
+$message = sqimap_get_message($imapConnection, $passed_id, $mailbox);
 
-if (isset($showHeaders)) {
-  $top_header = sqimap_get_message_header ($imapConnection, $passed_id, $mailbox);
-}
+$top_header = $message->header;
+
 /*
  * lets redefine message as this particular entity that we wish to display.
  * it should hold only the header for this entity.  We need to fetch the body
  * yet before we can display anything.
  */
+$message = getEntity($message, $passed_ent_id);
 
-$header = sqimap_get_mime_ent_header ($imapConnection, $passed_id, $mailbox, $passed_ent_id);
-$header->entity_id = $passed_ent_id;
-$header->mailbox = $mailbox;
+$header = $message->header;
 
 $charset = $header->charset;
 $type0 = $header->type0;
@@ -397,7 +335,7 @@ if (isset($absolute_dl) && $absolute_dl == 'true') {
         if ($type1 == 'plain' || $type1 == 'html') {
             $body = mime_fetch_body($imapConnection, $passed_id, $passed_ent_id);
             $body = decodeBody($body, $header->encoding);
-            viewText($color, $body, $passed_id, $passed_ent_id, $mailbox, $type1, $wrap_at, $imapConnection);
+            viewText($color, $body, $passed_id, $passed_ent_id, $mailbox, $type1, $wrap_at);
         } else {
             DumpHeaders($type0, $type1, $filename, 0);
             $body = mime_fetch_body($imapConnection, $passed_id, $passed_ent_id);
@@ -407,11 +345,11 @@ if (isset($absolute_dl) && $absolute_dl == 'true') {
         break;
     case 'message':
 	if ($type1 == 'rfc822' ) {
-	    viewMessage($imapConnection, $passed_id, $mailbox, $passed_ent_id, $color, $wrap_at, $extracted);
+	    viewMessage($imapConnection, $passed_id, $mailbox, $passed_ent_id, $message, $color, $wrap_at);
 	} else {
     	    $body = mime_fetch_body($imapConnection, $passed_id, $passed_ent_id);
     	    $body = decodeBody($body, $msgheader->encoding);
-    	    viewText($color, $body, $passed_id, $passed_ent_id, $mailbox, $type1, $wrap_at, $imapConnection);
+    	    viewText($color, $body, $passed_id, $passed_ent_id, $mailbox, $type1, $wrap_at);
         }
         break;
     default:

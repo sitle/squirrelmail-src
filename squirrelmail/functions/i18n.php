@@ -864,9 +864,11 @@ $languages['zh_TW']['NAME']    = 'Taiwan';
 $languages['zh_TW']['CHARSET'] = 'big5';
 $languages['tw']['ALIAS'] = 'zh_TW';
 
+/*
 $languages['zh_TW']['NAME']    = 'Chinese';
 $languages['zh_TW']['CHARSET'] = 'gb2312';
 $languages['tw']['ALIAS'] = 'zh_CN';
+*/
 
 $languages['sk_SK']['NAME']     = 'Slovak';
 $languages['sk_SK']['CHARSET']  = 'iso-8859-2';
@@ -891,14 +893,6 @@ $languages['sl']['ALIAS'] = 'sl_SI';
 $languages['bg_BG']['NAME']    = 'Bulgarian';
 $languages['bg_BG']['CHARSET'] = 'windows-1251';
 $languages['bg']['ALIAS'] = 'bg_BG';
-
-// Right to left languages
-
-$languages['he_HE']['NAME']    = 'Hebrew';
-$languages['he_HE']['CHARSET'] = 'windows-1255';
-$languages['he_HE']['DIR']     = 'rtl';
-$languages['he']['ALIAS']      = 'he_HE';
-
 
 /* Detect whether gettext is installed. */
 $gettext_flags = 0;

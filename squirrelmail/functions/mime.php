@@ -128,11 +128,11 @@ function mime_parse_structure ($structure, $ent_id) {
 		$structure_end = substr($structure, $endprop+2);
 		$structure = trim(substr($structure,0,$startprop));
 	    }
+	    
 	    /* get type1 */
 	    $pos = strrpos($structure,' ');
-	    if ($structure{$pos+1} =='(') $pos++;
-	    
 	    $type1 = strtolower(substr($structure, $pos+2, (count($structure)-2)));
+
 	    /* cut off  type1 */
 	    if ($pos && $startprop) {
 		$structure = trim(substr($structure, 0, $pos));
@@ -229,21 +229,6 @@ function mime_get_element (&$structure, $msg, $ent_id) {
            $pos++;
         }
         $structure = substr($structure, strlen($text) + 2);
-     } else if ($char == '{') {
-         /**
-          * loop through until we find the matching quote, 
-          * and return that as a string
-          */
-         $pos = 1;
-         $len = '';
-         while (($char = $structure{$pos}) != '}' 
-                && $pos < strlen($structure)) {
-             $len .= $char;
-             $pos++;
-         }
-         $structure = substr($structure, strlen($len) + 4);
-         $text = substr($structure, 0, $len);
-         $structure = substr($structure, $len + 1);
      } else if ($char == '(') {
         // comment me
         $end = mime_match_parenthesis (0, $structure);
@@ -411,12 +396,9 @@ function mime_match_parenthesis ($pos, $structure) {
 
     $j = strlen( $structure );
     
-    /*
-     * ignore all extra characters
-     * If inside of a quoted string or literal, skip it -- Boundary IDs and other
-     * things can have ) in them.
-     */
-     
+    // ignore all extra characters
+    // If inside of a string, skip string -- Boundary IDs and other
+    // things can have ) in them.
     if ( $structure{$pos} != '(' ) {
         return( $j );
     }
@@ -425,7 +407,7 @@ function mime_match_parenthesis ($pos, $structure) {
         $pos++;
         if ($structure{$pos} == ')') {
             return $pos;
-        } elseif ($structure{$pos} == '"') { /* check for quoted string */
+        } elseif ($structure{$pos} == '"') {
             $pos++;
             while ( $structure{$pos} != '"' &&
                     $pos < $j ) {
@@ -436,12 +418,6 @@ function mime_match_parenthesis ($pos, $structure) {
                }
                $pos++;
             }
-	} elseif ($structure{$pos} == '{') { /* check for literal */ 
-	    $str = substr($structure, $pos);
-	    $pos++;
-	    if (preg_match("/^\{(\d+)\}.*/",$str,$reg)) {
-		$pos = $pos + strlen($reg[1]) + $reg[1] + 2;
-	    } 
         } elseif ( $structure{$pos} == '(' ) {
             $pos = mime_match_parenthesis ($pos, $structure);
         }
@@ -450,7 +426,7 @@ function mime_match_parenthesis ($pos, $structure) {
     return( $pos );
 }
 
-function mime_fetch_body($imap_stream, $id, $ent_id) {
+function mime_fetch_body($imap_stream, $id, $ent_id ) {
 
     /*
      * do a bit of error correction.  If we couldn't find the entity id, just guess
@@ -459,9 +435,10 @@ function mime_fetch_body($imap_stream, $id, $ent_id) {
     if (!$ent_id) {
         $ent_id = 1;
     }
-    $cmd = "FETCH $id BODY[$ent_id]";
 
+    $cmd = "FETCH $id BODY[$ent_id]";
     $data = sqimap_run_command ($imap_stream, $cmd, true, $response, $message);
+
     do {
         $topline = trim(array_shift( $data ));
     } while( $topline && $topline[0] == '*' && !preg_match( '/\* [0-9]+ FETCH.*/i', $topline )) ;
@@ -626,49 +603,36 @@ function getEntity ($message, $ent_id) {
  * figures out what entity to display and returns the $message object
  * for that entity.
  */
-function findDisplayEntity ($msg, $textOnly = true, $entity = array() )   {
+function findDisplayEntity ($msg, $textOnly = 1)   {
     global $show_html_default;
     
-    $found = false;    
+    $entity = 0;
+    
     if ($msg) {
-        $type = $msg->header->type0.'/'.$msg->header->type1;
-        if ( $type == 'multipart/alternative') {
-	    $msg = findAlternativeEntity($msg, $textOnly);
-	    if (count($msg->entities) == 0) {
-        	$entity[] = $msg->header->entity_id;
-	    } else {
-		$found = true;
-	         $entity =findDisplayEntity($msg,$textOnly, $entity);
-	    }
-	} else 	if ( $type == 'multipart/related') {
-            $msgs = findRelatedEntity($msg);
-	    for ($i = 0; $i < count($msgs); $i++) {
-	        $msg = $msgs[$i];
-		if (count($msg->entities) == 0) {
-        	    $entity[] = $msg->header->entity_id;
-		} else {
-		    $found = true;
-	    	     $entity =findDisplayEntity($msg,$textOnly, $entity);
-		}
-	    }
-	} else if ( count($entity) == 0 &&
+        if ( $msg->header->type0 == 'multipart' &&
+             ( $msg->header->type1 == 'alternative' ||
+               $msg->header->type1 == 'mixed' ||	       
+               $msg->header->type1 == 'related' ) &&
+             $show_html_default && ! $textOnly ) {
+            $entity = findDisplayEntityHTML($msg);
+        }
+
+        // Show text/plain or text/html -- the first one we find.
+        if ( $entity == 0 &&
              $msg->header->type0 == 'text' &&
              ( $msg->header->type1 == 'plain' ||
                $msg->header->type1 == 'html' ) &&
              isset($msg->header->entity_id) ) {
-	     if (count($msg->entities) == 0) {
-        	$entity[] = $msg->header->entity_id;
-	     } 
-        } 
-    	$i = 0;
-    	while ( isset($msg->entities[$i]) && count($entity) == 0 && !$found )  {
-    	    $entity = findDisplayEntity($msg->entities[$i], $textOnly, $entity);
-    	    $i++;
-    	}
+            $entity = $msg->header->entity_id;
+        }
+    
+        $i = 0;
+        while ($entity == 0 && isset($msg->entities[$i]) ) {
+            $entity = findDisplayEntity($msg->entities[$i], $textOnly);
+            $i++;
+        }
     }
-    if ( !isset($entity[0]) ) {
-        $entity[]="";
-    }
+    
     return( $entity );
 }
 
@@ -686,7 +650,6 @@ function findDisplayEntityHTML ($message) {
             isset($message->header->entity_id)) {
     	    return 0;
 	}
-	
         $entity = findDisplayEntityHTML($message->entities[$i]);
         if ($entity != 0) {
             return $entity;
@@ -695,46 +658,6 @@ function findDisplayEntityHTML ($message) {
 
     return 0;
 }
-
-function findAlternativeEntity ($message, $textOnly) {
-    global $show_html_default;
-    /* if we are dealing with alternative parts then we choose the best 
-     * viewable message supported by SM.
-     */
-    if ($show_html_default && !$textOnly) {     
-	$alt_order = array ('text/plain','text/html');
-    } else {
-	$alt_order = array ('text/plain');
-    }
-    $best_view = 0;
-    $ent_id = 0;
-    $k = 0; 
-    for ($i = 0; $i < count($message->entities); $i ++) {
-        $type = $message->entities[$i]->header->type0.'/'.$message->entities[$i]->header->type1;
-	if ($type == 'multipart/related') {
-	   $type = $message->entities[$i]->header->type;
-	}
-	for ($j = $k; $j < count($alt_order); $j++) {
-	    if ($alt_order[$j] == $type && $j > $best_view) {
-		$best_view = $j;
-		$ent_id = $i;
-		$k = $j;
-	    }
-	}
-    }
-    return $message->entities[$ent_id];
-}
-
-function findRelatedEntity ($message) {
-    $msgs = array(); 
-    for ($i = 0; $i < count($message->entities); $i ++) {
-        $type = $message->entities[$i]->header->type0.'/'.$message->entities[$i]->header->type1;
-        if ($message->header->type == $type) {
-	    $msgs[] = $message->entities[$i];
-	}
-    }
-    return $msgs;
-}    
 
 /*
  * translateText
@@ -827,11 +750,11 @@ be displayed as the actual message in the HTML. It contains
 everything needed, including HTML Tags, Attachments at the
 bottom, etc.
 */
-function formatBody($imap_stream, $message, $color, $wrap_at, $ent_num) {
+function formatBody($imap_stream, $message, $color, $wrap_at) {
     // this if statement checks for the entity to show as the
     // primary message. To add more of them, just put them in the
     // order that is their priority.
-    global $startMessage, $username, $key, $imapServerAddress, $imapPort,
+    global $startMessage, $username, $key, $imapServerAddress, $imapPort, $body,
            $show_html_default, $has_unsafe_images, $view_unsafe_images, $sort;
 
     $has_unsafe_images = 0;
@@ -839,12 +762,13 @@ function formatBody($imap_stream, $message, $color, $wrap_at, $ent_num) {
     $id = $message->header->id;
 
     $urlmailbox = urlencode($message->header->mailbox);
-
+    // Get the right entity and redefine message to be this entity
+    // Pass the 0 to mean that we want the 'best' viewable one
+    $ent_num = findDisplayEntity ($message, 0);
     $body_message = getEntity($message, $ent_num);
     if (($body_message->header->type0 == 'text') ||
         ($body_message->header->type0 == 'rfc822')) {
-	$body = mime_fetch_body ($imap_stream, $id, $ent_num);
-	
+        $body = mime_fetch_body ($imap_stream, $id, $ent_num);
         $body = decodeBody($body, $body_message->header->encoding);
         $hookResults = do_hook("message_body", $body);
         $body = $hookResults[1];
@@ -855,11 +779,12 @@ function formatBody($imap_stream, $message, $color, $wrap_at, $ent_num) {
                 $body = strip_tags( $body );
                 translateText($body, $wrap_at, $body_message->header->charset);
             } else {
-                $body = magicHTML( $body, $id, $message );
+                $body = MagicHTML( $body, $id );
             }
         } else {
             translateText($body, $wrap_at, $body_message->header->charset);
         }
+
         $body .= "<CENTER><SMALL><A HREF=\"../src/download.php?absolute_dl=true&amp;passed_id=$id&amp;passed_ent_id=$ent_num&amp;mailbox=$urlmailbox&amp;showHeaders=1\">". _("Download this as a file") ."</A></SMALL></CENTER><BR>";
         if ($has_unsafe_images) {
             if ($view_unsafe_images) {
@@ -871,13 +796,7 @@ function formatBody($imap_stream, $message, $color, $wrap_at, $ent_num) {
 
         /** Display the ATTACHMENTS: message if there's more than one part **/
         if (isset($message->entities[1])) {
-	    /* Header-type alternative means we choose the best one to display 
-	       so don't show the alternatives as attachment. Header-type related
-	       means that the attachments are already part of the related message.
-	    */   
-	    if ($message->header->type1 !='related' && $message->header->type1 !='alternative') {
-        	$body .= formatAttachments ($message, $ent_num, $message->header->mailbox, $id);
-	    }
+            $body .= formatAttachments ($message, $ent_num, $message->header->mailbox, $id);
         }
     } else {
         $body = formatAttachments ($message, -1, $message->header->mailbox, $id);
@@ -2019,9 +1938,9 @@ function sq_sanitize($body,
  * @param  $id    the id of the message
  * @return        a string with html safe to display in the browser.
  */
-function magicHTML($body, $id, $message){
+function magicHTML($body, $id){
     global $attachment_common_show_images, $view_unsafe_images,
-        $has_unsafe_images;
+        $has_unsafe_images, $message;
     /**
      * Don't display attached images in HTML mode.
      */

@@ -51,7 +51,7 @@ function attachSelectedMessages($msg, $imapConnection) {
 	    session_register('attachments');
     }
 
-    if (!isset($composesession) ) {
+    if (!isset($composesession)) {
 	    $composesession = 1;
 	    session_register('composesession');
     } else {
@@ -109,8 +109,8 @@ function attachSelectedMessages($msg, $imapConnection) {
         		$newAttachment = array();
         		$newAttachment['localfilename'] = $localfilename;
         		$newAttachment['type'] = "message/rfc822";
-            		$newAttachment['remotefilename'] = "$subject".".eml";
-            		$newAttachment['session'] = $composesession;
+            	$newAttachment['remotefilename'] = "$subject".".eml";
+            	$newAttachment['session'] = $composesession;
         		$attachments[] = $newAttachment;
         		flush();
     	    }
