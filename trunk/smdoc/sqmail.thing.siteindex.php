@@ -18,9 +18,17 @@ $FORMAT = array_merge($FORMAT, array(
 	'indexhead' => '<h3>',
 	'/indexhead' => '</h3>',
 	'indexitem' => '',
-	'/indexitem' => '<br />'
+	'/indexitem' => '<br />',
+    'subtext' => '',
+    '/subtext' => ''
 ));
 
+
+/**
+ * This prints the more generally used site index, which limits what is 
+ * shown based on the group, and includes categorized links for document
+ * creation closer to other documents of the same type.
+ */
 function sqmindex() {
     global $HARDTHING, $HARDCLASS;
 	global $conn, $wtf;
@@ -55,7 +63,7 @@ function sqmindex() {
                 for ($foo = 1; $foo <= $recordNum; $foo++) {
                     $record = getRecord($query);
                     printLineBegin();
-                    echo '<a href="', THINGIDURI.$record['objectid'], '">', $record['title'], '</a> (', $HARDCLASS[WORKSPACECLASSID], ')';
+                    echo '<a href="', THINGIDURI.$record['objectid'], '">', $record['title'], '</a>';
                     printLineEnd($record['workspaceid'], $record['objectid']);
                 }
             } else {
@@ -102,9 +110,10 @@ function sqmindex() {
 
             printLineBegin();
             if (isset($HARDCLASS[$classid])) {
-                echo "<a href=\"", THINGIDURI.$record['objectid'], "&amp;class=", $HARDCLASS[$classid], "\">", $record['title'], "</a> (", $HARDCLASS[$classid], ")";
+                echo '<a href="', THINGIDURI.$record['objectid'], '&amp;class=', $HARDCLASS[$classid], '">', 
+                     $record['title'], '</a> <subtext>(', $HARDCLASS[$classid], ')</subtext>';
             } else {
-                echo "<a href=\"", THINGIDURI.$record['objectid'], "\">", $record['title'], "</a>";
+                echo '<a href="', THINGIDURI.$record['objectid'], '">', $record['title'], '</a>';
             }
             printLineEnd($record['workspaceid']);
         }
@@ -152,7 +161,8 @@ function sqmindex() {
         for ($foo = 1; $foo <= $recordNum; $foo++) {
             $record = getRecord($query);
             printLineBegin();
-            echo '<a href="', THINGIDURI.$record['objectid'], '">', $record['title'], '</a> (', $HARDCLASS[SECTIONCLASSID], ')';
+            echo '<a href="', THINGIDURI.$record['objectid'], '">', 
+                 $record['title'], '</a>';
             printLineEnd($record['workspaceid']);
         }
     } else {
@@ -185,7 +195,7 @@ function sqmindex() {
             for ($foo = 1; $foo <= $recordNum; $foo++) {
                 $record = getRecord($query);
                 printLineBegin();
-                echo '<a href="', THINGIDURI.$record['objectid'], '">', $record['title'], '</a> (', $HARDCLASS[DEFINITIONCLASSID], ')';
+                echo '<a href="', THINGIDURI.$record['objectid'], '">', $record['title'], '</a>';
                 printLineEnd($record['workspaceid']);
             }
         } else {
@@ -207,7 +217,7 @@ function printHeading($heading) {
     echo '<indexhead>' . $heading . "</indexhead>\n";
 }
 
-function printLineBegin($lastClass = FALSE) {
+function printLineBegin() {
     echo '<indexitem>';
 }
 
@@ -229,5 +239,6 @@ function printLineEnd( $workspaceid = 0, $objectid = 1 ) {
     }
     echo "</indexitem>\n";
 }
+
 
 ?>
