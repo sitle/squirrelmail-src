@@ -568,7 +568,7 @@ function newMail ($mailbox='', $passed_id='', $passed_ent_id='', $action='', $se
     global $editor_size, $default_use_priority, $body,
            $use_signature, $composesession, $data_dir, $username,
            $username, $key, $imapServerAddress, $imapPort, $compose_messages,
-           $composeMessage, $body_quote;
+           $composeMessage;
     global $languages, $squirrelmail_language;
 
     $send_to = $send_to_cc = $send_to_bcc = $subject = $identity = '';
@@ -757,9 +757,9 @@ function newMail ($mailbox='', $passed_id='', $passed_ent_id='', $action='', $se
               sqWordWrap($rewrap_body[$i], ($editor_size));
                 if (preg_match("/^(>+)/", $rewrap_body[$i], $matches)) {
                     $gt = $matches[1];
-                    $body .= $body_quote . str_replace("\n", "\n$body_quote$gt ", rtrim($rewrap_body[$i])) ."\n";
+                    $body .= $body .= '>' . str_replace("\n", "\n>$gt ", rtrim($rewrap_body[$i])) ."\n";
                 } else {
-                    $body .= $body_quote . (!empty($body_quote) ? ' ' : '') . str_replace("\n", "\n" . $body_quote . (!empty($body_quote) ? ' ' : ''), rtrim($rewrap_body[$i])) . "\n";
+                    $body .= $body .= '> ' . str_replace("\n", "\n> ", rtrim($rewrap_body[$i])) . "\n";
                 }
                 unset($rewrap_body[$i]);
             }
