@@ -37,43 +37,36 @@ include_once(TEMPLATE_PATH.'index.tpl');
 function text_textile_create_body(&$foowd, $className, $method, &$user, &$object, &$t)
 {
   $obj = $t['form']->objects;
+  include_once(TEMPLATE_PATH.'smdoc_text_textile.howto.tpl'); 
 ?>
+<!-- begin create news form -->
+<div id="textileform">
 <script language="JavaScript" type="text/javascript" src="templates/toggleNone.js"></script>
-<table cellspacing="0" cellpadding="0" class="smdoc_table" style="width: 100%">
-<tr>
-<td class="col_top" align="center">
-  <p><?php $t['form']->display_start('smdoc_form'); ?></p>
-  <table cellspacing="0" cellpadding="0" class="smdoc_table">
-  <tr><td class="label"><b><?php echo _("Headline"); ?>:</b></td>
+<?php $t['form']->display_start('smdoc_form'); ?>
+
+<table cellspacing="2" cellpadding="0" class="smdoc_table">
+  <tr><th class="label"><b><?php echo _("Headline"); ?>:</th>
       <td class="value"><?php echo $obj['createTitle']->display(); ?></td></tr>
-  <tr><td colspan="2">&nbsp;</td></tr>
-  <tr><td class="label"><b><?php echo _("Category"); ?>:</b></td>
+  <tr><th class="label"><b><?php echo _("Category"); ?>:</th>
       <td class="value"><?php echo $obj['createCategory']->display(); ?></td></tr>
-  </table>
-</td>
-<td class="textile_howto" rowspan="2">
-  <?php include_once(TEMPLATE_PATH.'smdoc_text_textile.howto.tpl'); ?>
-</td>
-</tr>
-<tr>
-  <td class="col_top" align="center">
-    <span class="label"><?php echo _("Short Summary"); ?>:</span><br />
-    <?php echo $obj['createSummary']->display('textile',NULL,5); ?><br />
-    <span class="smalldate">[<?php echo _("255 Characters"); ?>]</span>
-
-  <div class="form_submit"><?php echo $t['form']->display_buttons(); ?></div>
-
-  <p>
-    <span class="label"><?php echo _("Extended News Entry"); ?>:</span><br />
-    <?php echo $obj['createBody']->display('textile', NULL,25); ?>
-  </p>
-
-  <div class="form_submit"><?php echo $t['form']->display_buttons(); ?></div>
-
-  <?php $t['form']->display_end(); ?>
-  </td>
-</tr>
+  <tr>
 </table>
+
+<h3><?php echo _("Short Summary"); ?></h3>
+<?php echo $obj['createSummary']->display('smdoc_textarea',NULL,5); ?>
+<div class="subtext">[<?php echo _("255 Characters"); ?>]</div>
+
+<div class="form_submit"><?php echo $t['form']->display_buttons(); ?></div>
+
+<h3><?php echo _("Extended News Entry"); ?>:</h3>
+<?php echo $obj['createBody']->display('smdoc_textarea', NULL,25); ?>
+
+<div class="form_submit"><?php echo $t['form']->display_buttons(); ?></div>
+
+<?php $t['form']->display_end(); ?>
+</div>
+<!-- end create form -->
+<div class="float-clear">&nbsp;</div>
 <?php
 }
 

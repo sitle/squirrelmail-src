@@ -18,8 +18,10 @@
  * @subpackage template
  */
 ?>
+<!-- begin textile instructions -->
+<div id="textile">
 <h3><a href="http://textpattern.com/help/?item=intro">Textile</a>
-    <span class="subtext" style="font-size: x-small; font-weight: normal">v. 2 beta</span>
+    <span class="subtext" style="font-size: x-small; font-weight: normal">v2 beta</span>
 </h3>
 
 <p class="subtext">Quick block modifiers:<br /> 
@@ -70,8 +72,7 @@
   &nbsp;<a target="_blank" href="http://www.textpattern.com/help/?item=footnote" onclick="window.open(this.href, 'popupwindow', 'width=500,height=400,scrollbars,resizable'); return false;">ref[<em>n</em>]</a><br />
 </p>
 
-<p class="small_center"><b><a target="_blank" href="http://textpattern.com/help/?item=intro" onclick="window.open(this.href, 'popupwindow', 'width=400,height=400,scrollbars,resizable'); return false;">More on Textile</a></b></p>
- 
-
+<p class="subtext"><b><a target="_blank" href="http://textpattern.com/help/?item=intro" onclick="window.open(this.href, 'popupwindow', 'width=400,height=400,scrollbars,resizable'); return false;">More on Textile</a></b></p>
+</div>
+<!-- end textile instructions -->
 <?php
-

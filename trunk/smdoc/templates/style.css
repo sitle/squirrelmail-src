@@ -7,6 +7,7 @@ h1 {
 }
 .index,
 .formlinks,
+.newsupdate,
 .subtext,
 #copyright,
 #status,
@@ -14,6 +15,14 @@ h1 {
 #flagline,
 #contentupdate {
     font-size: small;
+}
+
+dt,
+.index a {
+	font-weight: bold;
+}
+.newsupdate {
+	font-weight: normal;
 }
 
 /** text alignment */
@@ -54,8 +63,9 @@ h1,
     margin-bottom: 20px;
     clear: both;
 }
+#textile,
 #usermenu {
-    padding: 2px 2px;
+    padding: 2px;
 }
 .heading,
 .label {
@@ -64,6 +74,7 @@ h1,
 
 /** Classes for floating to one side or the other */
 .float-right,
+.newsupdate,
 #contentupdate,
 #flagline {
     float: right;
@@ -75,9 +86,6 @@ h1,
 /** Attributes for index characters used by siteindex */
 .index {
 	color: gray;
-}
-.index a {
-	font-weight: bold;
 }
 .indexitem {
 	margin: 0px 20px;
@@ -104,16 +112,8 @@ input {
     background-color: #F0F0F0;
 }
 .smdoc_textarea {
-	width: 80%;
+	width: 95%;
 }
-
-/** table attributes */
-th input,
-th.label {
-    vertical-align: top;
+.formlinks a {
+    display: block; 
 }
-tr.separator td,
-tr.separator th {
-    padding: 15px 0px 5px 0px;
-}
-
