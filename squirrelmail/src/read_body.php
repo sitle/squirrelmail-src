@@ -199,8 +199,6 @@
    $url_replytoallcc = urlencode($url_replytoallcc);
 
    $dateString = getLongDateString($message->header->date);
-   
-   // What do we reply to -- text only, if possible
    $ent_num = findDisplayEntity($message);
 
    /** TEXT STRINGS DEFINITIONS **/

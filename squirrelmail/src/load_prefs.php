@@ -31,9 +31,12 @@
 		 break;
 	  }
    }
+   if (!$in_ary) {
+   		$chosen_theme = "";
+   }
 
-   if ($in_ary && (file_exists($chosen_theme))) {
-      $loaded=@include($chosen_theme);
+   if ((isset($chosen_theme)) && (file_exists($chosen_theme))) {
+      require("$chosen_theme");
    } else {
       if (file_exists($theme[0]["PATH"])) {
          require($theme[0]["PATH"]);
@@ -58,9 +61,7 @@
           $color[11]  = "#770000"; // (dark red)       Special Folders color
       }
    }
-    if (!isset($loaded)) 
-      echo _("Unable to load chosen theme file:") . ' "' .
-	$chosen_theme . '"';
+
     if (!isset($download_php)) session_register("theme_css");
 
    $use_javascript_addr_book = getPref($data_dir, $username, "use_javascript_addr_book");
@@ -185,10 +186,6 @@
    $location_of_buttons = getPref($data_dir, $username, 'location_of_buttons');
    if ($location_of_buttons == '')
        $location_of_buttons = 'between';
-       
-   $collapse_folders = getPref($data_dir, $username, 'collapse_folders');
-   
-   $show_html_default = getPref($data_dir, $username, 'show_html_default');
 
    do_hook("loading_prefs");
 

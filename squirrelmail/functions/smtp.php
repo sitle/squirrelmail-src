@@ -8,8 +8,6 @@
     **/
 
    $smtp_php = true;
-   if (!isset($addressbook_php))
-      include('../functions/addressbook.php');
 
    // This should most probably go to some initialization...
    if (ereg("^([^@%/]+)[@%/](.+)$", $username, $usernamedata)) {
@@ -31,28 +29,6 @@
          return true;
       else
          return false;
-   }
-
-   // looks up aliases in the addressbook and expands them to
-   // the full address.
-   function expandAddrs ($array) {
-      $abook = addressbook_init();
-      for ($i=0; $i < count($array); $i++) {
-         $result = $abook->lookup($array[$i]);
-         $ret = "";
-         if (isset($result['email'])) {
-            if (isset($result['name'])) {
-               $ret = '"'.$result['name'].'" ';
-            }
-            $ret .= '<'.$result['email'].'>';
-            $array[$i] = $ret;
-         }
-	 else
-	 {
-	    $array[$i] = '<' . $array[$i] . '>';
-	 }
-      }
-      return $array;
    }
 
    // Attach the files that are due to be attached
@@ -115,7 +91,7 @@
       static $mimeBoundaryString;
 
       if ($mimeBoundaryString == "") {
-         $mimeBoundaryString = "----=_" . 
+         $mimeBoundaryString = "----=_" .
 	     GenerateRandomString(60, '\'()+,-./:=?_', 7);
       }
 
@@ -156,9 +132,9 @@
       static $header, $headerlength;
 
       if ($header == '') {
-         $to = expandAddrs(parseAddrs($t));
-         $cc = expandAddrs(parseAddrs($c));
-         $bcc = expandAddrs(parseAddrs($b));
+         $to = parseAddrs($t);
+         $cc = parseAddrs($c);
+         $bcc = parseAddrs($b);
          $reply_to = getPref($data_dir, $username, 'reply_to');
          $from = getPref($data_dir, $username, 'full_name');
          $from_addr = getPref($data_dir, $username, 'email_address');
@@ -206,7 +182,7 @@
          $header .= "Date: $date\r\n";
          $header .= "Subject: $subject\r\n";
          $header .= "From: $from\r\n";
-         $header .= "To: $to_list\r\n";    // Who it's TO
+         $header .= "To: $to_list \r\n";    // Who it's TO
 
 	 /* Insert headers from the $more_headers array */
 	 if(is_array($more_headers)) {
@@ -328,9 +304,9 @@
       global $username, $popuser, $domain, $version, $smtpServerAddress, $smtpPort,
          $data_dir, $color;
 
-      $to = expandAddrs(parseAddrs($t));
-      $cc = expandAddrs(parseAddrs($c));
-      $bcc = expandAddrs(parseAddrs($b));
+      $to = parseAddrs($t);
+      $cc = parseAddrs($c);
+      $bcc = parseAddrs($b);
       $from_addr = getPref($data_dir, $username, 'email_address');
 
       if (!$from_addr)
@@ -360,7 +336,7 @@
 
       /** send who the recipients are */
       for ($i = 0; $i < count($to); $i++) {
-         fputs($smtpConnection, "RCPT TO: $to[$i]\r\n");
+         fputs($smtpConnection, "RCPT TO:<$to[$i]>\r\n");
          $tmp = fgets($smtpConnection, 1024);
          errorCheck($tmp, $smtpConnection);
       }

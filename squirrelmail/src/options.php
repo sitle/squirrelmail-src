@@ -51,9 +51,9 @@
       # Save personal information
       if (isset($full_name)) setPref($data_dir, $username, 'full_name', $full_name);
       if (isset($email_address)) setPref($data_dir, $username, 'email_address', $email_address);
-      if (isset($reply_to)) setPref($data_dir, $username, 'reply_to', $reply_to);
-      if (isset($usesignature)) setPref($data_dir, $username, 'use_signature', $usesignature);  
-      if (isset($prefixsig)) setPref($data_dir, $username, 'prefix_sig', $prefixsig);
+      if (isset($reply_to)) setPref($data_dir, $username, 'reply_to', $reply_to);  
+      setPref($data_dir, $username, 'use_signature', $usesignature);  
+      setPref($data_dir, $username, 'prefix_sig', $prefixsig);
       if (isset($signature_edit)) setSig($data_dir, $username, $signature_edit);
       
       do_hook('options_personal_save');
@@ -71,10 +71,6 @@
       setPref($data_dir, $username, 'location_of_buttons', $button_new_location);
       setPref($data_dir, $username, 'left_size', $leftsize);
       setPref($data_dir, $username, 'use_javascript_addr_book', $javascript_abook);
-      if (isset($showhtmldefault))
-         setPref($data_dir, $username, 'show_html_default', 1);
-      else
-         removePref($data_dir, $username, 'show_html_default');
     
       do_hook('options_display_save');
 
@@ -96,14 +92,9 @@
          setPref($data_dir, $username, 'move_to_sent', '0');
          setPref($data_dir, $username, 'sent_folder', 'none');
       } 
-      if (isset($folderprefix))
-         setPref($data_dir, $username, 'folder_prefix', $folderprefix);
+      setPref($data_dir, $username, 'folder_prefix', $folderprefix);
       setPref($data_dir, $username, 'unseen_notify', $unseennotify);
       setPref($data_dir, $username, 'unseen_type', $unseentype);
-      if (isset($collapsefolders))
-          setPref($data_dir, $username, 'collapse_folders', $collapsefolders);
-      else
-          removePref($data_dir, $username, 'collapse_folders');
       do_hook('options_folders_save');
       echo '<br><center><b>'._("Successfully saved folder preferences!").'</b><br>';
       echo '<a href="../src/left_main.php" target=left>' . _("Refresh Folder List") . '</a></center><br>';

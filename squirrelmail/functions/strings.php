@@ -289,7 +289,7 @@
    }
 
    /* SquirrelMail version number -- DO NOT CHANGE */
-   $version = '1.1.0 [cvs]';
+   $version = '1.0.3 [cvs]';
 
 
    function find_mailbox_name ($mailbox) {
@@ -569,6 +569,7 @@
       
       return $String;
    }
+   
    
    function quoteIMAP($str)
    {
