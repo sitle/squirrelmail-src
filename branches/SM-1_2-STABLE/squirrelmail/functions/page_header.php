@@ -46,7 +46,13 @@ function displayHtmlHeader( $title = 'SquirrelMail', $xtra = '', $do_hook = TRUE
 }
 
 function displayInternalLink($path, $text, $target='') {
-    global $_SESSION;
+
+    if ( (float)substr(PHP_VERSION,0,3) < 4.1 ) {
+        if (ini_get('register_globals') == 0) { 
+            global $_SESSION;
+        }
+    }
+
     $base_uri = $_SESSION['base_uri'];    
     if ($target != '') {
         $target = " target=\"$target\"";
