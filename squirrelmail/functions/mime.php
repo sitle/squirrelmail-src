@@ -1855,9 +1855,10 @@ function magicHTML($body, $id, $message, $mailbox = 'INBOX') {
  * @param string $type1 second half of mime type
  * @param string $filename filename to tell the browser for downloaded file
  * @param boolean $force whether to force the download dialog to pop
+ * @param optional integer $filesize send the Content-Header and length to the browser
  * @return void
  */
- function SendDownloadHeaders($type0, $type1, $filename, $force, $filesize=0 ) {
+ function SendDownloadHeaders($type0, $type1, $filename, $force, $filesize=0) {
      global $languages, $squirrelmail_language;
      $isIE = $isIE6 = 0;
 
@@ -1876,54 +1877,78 @@ function magicHTML($body, $id, $message, $mailbox = 'INBOX') {
      if (isset($languages[$squirrelmail_language]['XTRA_CODE']) &&
          function_exists($languages[$squirrelmail_language]['XTRA_CODE'])) {
          $filename =
-             $languages[$squirrelmail_language]['XTRA_CODE']('downloadfilename', $filename, $HTTP_USER_AGENT);
+         $languages[$squirrelmail_language]['XTRA_CODE']('downloadfilename', $filename, $HTTP_USER_AGENT);
      } else {
-        $filename = ereg_replace('[\\/:\*\?"<>\|;]', '_', str_replace('&nbsp;', ' ', $filename));
+         $filename = ereg_replace('[\\/:\*\?"<>\|;]', '_', str_replace('&nbsp;', ' ', $filename));
      }
 
-     // A Pox on Microsoft and it's Office!
+     // A Pox on Microsoft and it's Internet Explorer!
+     //
+     // IE has lots of bugs with file downloads.
+     // It also has problems with SSL.  Both of these cause problems
+     // for us in this function.
+     //
+     // See this article on Cache Control headers and SSL
+     // http://support.microsoft.com/default.aspx?scid=kb;en-us;323308
+     //
+     // The best thing you can do for IE is to upgrade to the latest
+     // version
+     //set all the Cache Control Headers for IE
+     if ($isIE && !$isIE6) {
+         header ("Pragma: public");
+         header ("Cache-Control: no-store, max-age=0, no-cache, must-revalidate"); # HTTP/1.1
+         header ("Cache-Control: post-check=0, pre-check=0", false);
+         header ("Cache-control: private");
+
+         //set the inline header for IE, we'll add the attachment header later if we need it
+         header ("Content-Disposition: inline; filename=$filename");
+     }
+
      if (!$force) {
          // Try to show in browser window
-         header("Content-Disposition: inline; filename=\"$filename\"");
-         header("Content-Type: $type0/$type1; name=\"$filename\"");
+         header ("Content-Disposition: inline; filename=\"$filename\"");
+         header ("Content-Type: $type0/$type1; name=\"$filename\"");
      } else {
          // Try to pop up the "save as" box
+
          // IE makes this hard.  It pops up 2 save boxes, or none.
          // http://support.microsoft.com/support/kb/articles/Q238/5/88.ASP
-         // But, accordint to Microsoft, it is "RFC compliant but doesn't
+         // http://support.microsoft.com/default.aspx?scid=kb;EN-US;260519
+         // But, according to Microsoft, it is "RFC compliant but doesn't
          // take into account some deviations that allowed within the
          // specification."  Doesn't that mean RFC non-compliant?
          // http://support.microsoft.com/support/kb/articles/Q258/4/52.ASP
-         //
-         // The best thing you can do for IE is to upgrade to the latest
-         // version
+
+         // all browsers need the application/octet-stream header for this
+         header ("Content-Type: application/octet-stream; name=\"$filename\"");
+
+         // http://support.microsoft.com/support/kb/articles/Q182/3/15.asp
+         // Do not have quotes around filename, but that applied to
+         // "attachment"... does it apply to inline too?
+         header ("Content-Disposition: attachment; filename=\"$filename\"");
+
          if ($isIE && !$isIE6) {
-             // http://support.microsoft.com/support/kb/articles/Q182/3/15.asp
-             // Do not have quotes around filename, but that applied to
-             // "attachment"... does it apply to inline too?
-             //
              // This combination seems to work mostly.  IE 5.5 SP 1 has
              // known issues (see the Microsoft Knowledge Base)
-             header("Content-Disposition: inline; filename=$filename");
+
              // This works for most types, but doesn't work with Word files
-             header("Content-Type: application/download; name=\"$filename\"");
+             header ("Content-Type: application/download; name=\"$filename\"");
 
              // These are spares, just in case.  :-)
              //header("Content-Type: $type0/$type1; name=\"$filename\"");
              //header("Content-Type: application/x-msdownload; name=\"$filename\"");
              //header("Content-Type: application/octet-stream; name=\"$filename\"");
          } else {
-             header("Content-Disposition: attachment; filename=\"$filename\"");
-             // application/octet-stream forces download for Netscape
-             header("Content-Type: application/octet-stream; name=\"$filename\"");
+             // another application/octet-stream forces download for Netscape
+             header ("Content-Type: application/octet-stream; name=\"$filename\"");
          }
      }
 
      //send the content-length header if the calling function provides it
      if ($filesize > 0) {
-        header("Content-Length: $filesize");
+         header("Content-Length: $filesize");
      }
 
- }  // end fn SendDownlaodHeaders
+}  // end fn SendDownloadHeaders
 
 ?>
