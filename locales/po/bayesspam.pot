@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-10-24 15:39+0300\n"
+"POT-Creation-Date: 2004-12-07 17:06+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,63 +16,67 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: bayesspam_functions.php:60 bayesspam_functions.php:1176
+#: bayesspam_functions.php:27
+msgid "BayesSpam improperly configured. Check DB Information."
+msgstr ""
+
+#: bayesspam_functions.php:117 bayesspam_functions.php:1336
 msgid "Spam"
 msgstr ""
 
-#: bayesspam_functions.php:61 bayesspam_functions.php:1181
+#: bayesspam_functions.php:118 bayesspam_functions.php:1341
 msgid "NonSpam"
 msgstr ""
 
-#: bayesspam_functions.php:1072
+#: bayesspam_functions.php:1205
 msgid "Recalculate score to view interesting tokens."
 msgstr ""
 
-#: bayesspam_functions.php:1099
+#: bayesspam_functions.php:1245
 msgid "BayesSpam Probability"
 msgstr ""
 
-#: bayesspam_functions.php:1107 bayesspam_functions.php:1124
+#: bayesspam_functions.php:1255 bayesspam_functions.php:1276
 msgid "Cached"
 msgstr ""
 
-#: bayesspam_functions.php:1111 bayesspam_functions.php:1128
+#: bayesspam_functions.php:1261 bayesspam_functions.php:1282
 msgid "Calculated"
 msgstr ""
 
-#: bayesspam_functions.php:1146 bayesspam_functions.php:1149
+#: bayesspam_functions.php:1306 bayesspam_functions.php:1309
 msgid "BayesSpam Links"
 msgstr ""
 
-#: bayesspam_functions.php:1160
+#: bayesspam_functions.php:1320
 msgid "Known As Spam"
 msgstr ""
 
-#: bayesspam_functions.php:1164
+#: bayesspam_functions.php:1324
 msgid "Move to NonSpam"
 msgstr ""
 
-#: bayesspam_functions.php:1166
+#: bayesspam_functions.php:1326
 msgid "Known As NonSpam"
 msgstr ""
 
-#: bayesspam_functions.php:1170
+#: bayesspam_functions.php:1330
 msgid "Move to Spam"
 msgstr ""
 
-#: bayesspam_functions.php:1172
+#: bayesspam_functions.php:1332
 msgid "Not In DB"
 msgstr ""
 
-#: bayesspam_functions.php:1187
+#: bayesspam_functions.php:1347
 msgid "Recalculate Score"
 msgstr ""
 
-#: bayesspam_functions.php:1200
+#: bayesspam_functions.php:1366
 msgid "BayesSpam - Intelligent Spam Filtering"
 msgstr ""
 
-#: bayesspam_functions.php:1202
+#: bayesspam_functions.php:1368
 msgid ""
 "An intelligent mail filter that actually learns what you consider to be "
 "spam. Uses Bayesian filtering to very accurately filter out your spam."
