@@ -164,6 +164,7 @@ echo html_tag( 'tr', "\n" .
     html_tag( 'td', '&nbsp;' ) .
         html_tag( 'td',
             '<input type="hidden" name="optmode" value="submit" />' .
+            '<input type="hidden" name="optpage" value="newmail" />' .
             '<input type="submit" value="' . _("Submit") . '" name="submit_newmail" />',
         'left' )
      ) . "\n";
