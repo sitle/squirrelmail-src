@@ -175,7 +175,8 @@ if ( isset($t['classid']) &&                   // classid is defined
 <div id="sitetitle"><a href="<?php echo BASE_URL; ?>">SquirrelMail</a></div>
 <div id="subsitetitle">WebMail for Nuts</div>
 <div id="locationmenu">
-<?php foreach ($template_menu as $mi) { 
+<?php foreach ($template_menu as $mi) {
+        // If we have special user tools, use a 'special' class..  
         if ( isset($mi['class']) ) { ?>
   <span class="special">
 <?php   } ?>
@@ -203,9 +204,35 @@ if ( isset($t['classid']) &&                   // classid is defined
 
 <!-- begin content -->
 <div id="content">
-<div id="contentupdate"><?php echo $lastUpdate; ?></div>
+
+<!-- end edit menu with content update -->
+<div id="editmenu">
+  <div id="contentupdate"><?php echo $lastUpdate; ?></div>
+  &nbsp;
+<?php if ( !empty($edit_arr) ) { ?>
+<?php   foreach ($edit_arr as $mi) { ?>
+    <a href="<?php echo $mi['uri']; ?>"><?php echo $mi['name']; ?></a>
+<?php   } 
+      } ?>
+</div>
+<!-- end edit menu -->
+
+<!-- begin site status -->
+<div id="status">
+<?php if( $ok != NULL ) { ?>
+    <span class="ok"><?php echo $ok; ?></span>
+<?php } elseif( $error != NULL ) { ?>
+    <span class="error"><?php echo $error; ?></span>
+<?php } ?>
+    &nbsp;
+</div>
+<!-- end site status -->
+
+
 <h1><?php echo $page_title; ?></h1>
+
 <?php
+  // Fetch body
   if ( isset($t['body']) )
     echo $t['body'];
   elseif ( isset($t['body_template']) )
@@ -220,12 +247,8 @@ if ( isset($t['classid']) &&                   // classid is defined
 ?>
 </div>
 <!-- end content -->
-<div id="editmenu">
-<?php foreach ($edit_arr as $mi) { ?>
-  <a href="<?php echo $mi['uri']; ?>"><?php echo $mi['name']; ?></a>        
-<?php } ?>
-</div>
-<div id="copyright">This site is copyright &copy; 1999-2004 by the SquirrelMail Project Team.</div>
+
+<div id="copyright">&copy; 1999-2004 by the SquirrelMail Project Team.</div>
 
 <?php // If debugging is off, write the EOF now... otherwise, debug will
       // fill it in after writing debug info.

@@ -1,10 +1,15 @@
 #sitetitle,
-#copyright,
 #usermenu,
-#editmenu,
 #debug_output,
 #content {
     margin: 0px 0px 0px 140px;
+    padding: 0px 5px;
+}
+#content {
+    min-height: 350px;
+}
+#copyright {
+    margin: 10px 0px 10px 140px;
     padding: 0px 5px;
 }
 #subsitetitle {
@@ -26,4 +31,6 @@
     padding: 5px 10px; 
     border-width: 0; 
 }
-
+.formlinks a {
+    display: block; 
+}

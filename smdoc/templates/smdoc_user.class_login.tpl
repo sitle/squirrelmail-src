@@ -40,10 +40,10 @@ function user_login_body(&$foowd, $className, $method, &$user, &$object, &$t)
   $obj = $t['form']->objects;
 ?>
 
-<table cellspacing="0" cellpadding="0" class="smdoc_table">
-<tr><td class="label"><b><?php echo _("Login"); ?>:</b></td>
+<table cellspacing="1" cellpadding="0" class="smdoc_table">
+<tr><th class="label"><?php echo _("Login"); ?>:</td>
     <td class="value"><?php echo $obj['loginUsername']->display(); ?></td></tr>
-<tr><td class="label"><b><?php echo _("Password"); ?>:</b></td>
+<tr><th class="label"><?php echo _("Password"); ?>:</td>
     <td class="value"><?php echo $obj['loginPassword']->display(); ?></td></tr>
 </table>
 
@@ -53,13 +53,12 @@ function user_login_body(&$foowd, $className, $method, &$user, &$object, &$t)
   echo '</div>'."\n";
 
   $url = getURI(array('class' => $className));
-  echo '<p class="small_center"><a href="'.$url.'&method=create">'
-       . _("Create new account.")
-       . '</a><br />'
-       . '<a href="'.$url.'&method=lostpassword">'
-       . _("Forgot your password?")
-       . '</a></p>';
-
+?>
+<div class="formlinks">
+<a href="<?php echo $url; ?>&method=create"><?php echo _("Create new account"); ?></a>
+<a href="<?php echo $url; ?>&method=lostpassword"><?php echo _("Forgot your password?"); ?></a>
+</div>
+<?php
   $t['form']->display_end();
 }
 

@@ -40,26 +40,32 @@ function user_view_body(&$foowd, $className, $method, &$user, &$object, &$t)
 ?>
 
 <table cellspacing="0" cellpadding="0" class="smdoc_table">
-<tr><td colspan="2"><div class="separator"><?php echo _("Public Profile Attributes"); ?></div></td></tr>
-<tr>
-  <td class="heading"><?php echo _("Username"); ?>:</td>
-  <td class="value"><?php echo $t['title']; ?>
-     <span class="subtext">&nbsp;[<?php echo $t['objectid'] ?>]</span>
-  </td>
+<tr class="separator">
+    <th colspan="2">
+        <?php echo _("Public Profile Attributes"); ?>
+    </th>
 </tr>
 <tr>
-  <td class="heading"><?php echo _("Created"); ?>:</td>
+  <th class="heading"><?php echo _("Username"); ?>:</th>
+  <td class="value"><?php echo $t['title']; ?></td>
+</tr>
+<tr>
+  <th class="heading"><?php echo _("Created"); ?>:</th>
   <td class="value"><span class="smalldate"><?php echo $t['created']; ?></span></td>
 </tr>
 <tr>
-  <td class="heading"><?php echo _("Last Visit"); ?>:</td>
-  <td class="value"><span class="smalldate"><?php echo $t['lastvisit']; ?></span></td>
+  <th class="heading"><?php echo _("Last Visit"); ?>:</th>
+  <td class="datevalue"><?php echo $t['lastvisit']; ?></td>
 </tr>
 <?php // DISPLAY IM ID's IF PRESENT
       if ( isset($t['nicks']) && is_array($t['nicks']) || !empty($t['nicks']) )
       {
 ?>
-<tr><td colspan="2"><div class="separator"><?php echo _("Public Contact Information"); ?></div></td></tr>
+<tr class="separator">
+    <th colspan="2">
+        <?php echo _("Public Contact Information"); ?>
+    </th>
+</tr>
 <?php   ksort($t['nicks']);
         foreach ( $t['nicks'] as $prot => $id )
         {
@@ -86,7 +92,7 @@ function user_view_body(&$foowd, $className, $method, &$user, &$object, &$t)
           }
 ?>
 <tr>
-  <td class="heading"><?php echo htmlentities($prot); ?>:</td>
+  <th class="heading"><?php echo htmlentities($prot); ?>:</th>
   <td class="value"><?php echo $id; ?></td>
 </tr>
 <?php
@@ -97,61 +103,50 @@ function user_view_body(&$foowd, $className, $method, &$user, &$object, &$t)
       if ( $t['update'] )
       {
 ?>
-<tr><td colspan="2"><div class="separator">
-    <?php echo _("Private Attributes"); ?>
-    <span class="subtext">(<a href="#email">privacy</a>)</span>
-    </div></td>
+<tr class="separator">
+    <th colspan="2">
+        <?php echo _("Private Attributes"); ?>
+        <span class="subtext">(<a href="<?php echo getURI(array('object' => 'privacy')); ?>">privacy</a>)</span>
+    </th>
 </tr>
 <tr>
-  <td class="heading"><?php echo _("Group Membership"); ?>:</td>
-  <td class="value">Registered
-<?php   if ( !empty($object->groups) )
-          foreach($object->groups as $group)
+  <th class="heading"><?php echo _("Group Membership"); ?>:</th>
+  <td class="value">
+<?php 
+      echo _("Registered");
+      if ( !empty($object->groups) ) {
+          foreach($object->groups as $group) {
             echo ', ' . smdoc_group::getDisplayName($group);
+          }
+      }
 ?>
   </td>
 </tr>
+
 <?php   if ( !$t['show_email'] )
         { ?>
 <tr>
-  <td class="heading"><?php echo _("Email"); ?>:</td>
+  <th class="heading"><?php echo _("Email"); ?>:</th>
   <td class="value"><?php echo isset($t['email']) ? htmlentities($t['email']) : $none; ?></td>
 </tr>
 <?php   } ?>
-<tr>
-  <td class="heading" colspan="2"><?php echo _("Preferred Applications"); ?>:</td>
+<tr class="separator">
+  <th colspan="2"><?php echo _("Preferred Applications"); ?>:</th>
 </tr>
 <tr>
-  <td class="heading">&nbsp;&nbsp;<?php echo _("SMTP Server"); ?>:</th>
+  <th class="label"><?php echo _("SMTP Server"); ?>:</th>
   <td class="value"><?php echo ($t['SMTP_server'] == 'Unknown') ? $none : $t['SMTP_server']; ?></td>
 </tr>
 <tr>
-  <td class="heading">&nbsp;&nbsp;<?php echo _("IMAP Server"); ?>:</th>
+  <th class="label"><?php echo _("IMAP Server"); ?>:</th>
   <td class="value"><?php echo ($t['IMAP_server'] == 'Unknown') ? $none : $t['IMAP_server']; ?></td>
 </tr>
 <tr>
-  <td class="heading">&nbsp;&nbsp;<?php echo _("SquirrelMail Version"); ?>:</th>
+  <th class="label"><?php echo _("SquirrelMail Version"); ?>:</th>
   <td class="value"><?php echo ($t['SM_version'] == 'Unknown') ? $none : $t['SM_version']; ?></td>
 </tr>
 <?php } // END AUTHOR ONLY ELEMENTS  ?>
 </table>
 
-<?php if ( $t['update'] )
-      {
-        $uri_arr['objectid'] = $t['objectid'];
-        $uri_arr['classid'] = $t['classid'];
-        $uri_arr['method'] = 'update';
- ?>
-<p class="subtext_center"><a href="<?php echo getURI($uri_arr); ?>"><?php echo _("Update your profile"); ?></a></p>
-
-<div class="subtext_center"><a id="email" name="email"></a>
 <?php
-        echo _("Your email and other contact information is only shared with your consent.")
-            . '<br />'
-            . sprintf(_("See our <a href=\"%s\">Privacy Policy</a>"),
-                      getURI(array('object' => 'privacy')))
-            . '</div>';
-      }
 } // end display function
-
-

@@ -37,37 +37,31 @@ function user_update_body(&$foowd, $className, $method, &$user, &$object, &$t)
   $obj =& $t['form']->objects;
 ?>
 <table cellspacing="0" cellpadding="0" class="smdoc_table">
-<tr><td colspan="2"><div class="separator">
-        <?php echo _("Private Attributes"); ?>
-        <span class="subtext">(<a href="#email">privacy</a>)</span>
-        </div></td>
-</tr>
 
-<tr><td class="label"><?php echo _("User Name");?>:</td>
+<tr class="separator"><th colspan="2"><?php echo _("Private Attributes"); ?></th></tr>
+
+<tr><th class="label"><?php echo _("User Name");?>:</th>
     <td class="value"><?php echo $obj['title']->display(); ?></td></tr>
 <tr><td colspan="2">&nbsp;</td></tr>
-<tr><td class="label"><?php echo _("Change Password");?>:</td>
+<tr><th class="label"><?php echo _("Change Password");?>:</th>
     <td class="value"><?php echo $obj['password']->display(); ?></td></tr>
-<tr><td class="label"><?php echo _("Verify New Password");?>:</td>
+<tr><th class="label"><?php echo _("Verify New Password");?>:</th>
     <td class="value"><?php echo $obj['verify']->display(); ?></td></tr>
 <tr><td colspan="2">&nbsp;</td></tr>
 
-<tr><td class="label"><?php echo _("Email");?>:</td>
+<tr><th class="label"><?php echo _("Email");?>:</th>
     <td class="value"><?php echo $obj['email']->display(); ?><br />
     <span class="subtext">
        <?php echo $obj['show_email']->display()
                   . _("Share email with public contact information?"); ?>
-       (<a href="#email">privacy</a>)</span>
     </td></tr>
 
-<tr><td colspan="2"><div class="form_submit"><?php echo $t['form']->display_buttons(); ?></div></td></tr>
-
-<tr><td colspan="2"><div class="separator"><?php echo _("Public Contact Information"); ?></div></td></tr>
+<tr class="separator"><th colspan="2"><?php echo _("Public Contact Information"); ?></th></tr>
 
 <?php ksort($obj['nick']);
       foreach ( $obj['nick'] as $box )
       { ?>
-<tr><td class="label"><?php echo $box->caption; ?>:</td>
+<tr><th class="label"><?php echo $box->caption; ?>:</th>
     <td class="value">
 <?php   echo $box->display();
         if ( $box->name == 'IRC' )
@@ -77,61 +71,20 @@ function user_update_body(&$foowd, $className, $method, &$user, &$object, &$t)
     </td></tr>
 <?php } ?>
 
-<tr><td colspan="2"><div class="form_submit"><?php echo $t['form']->display_buttons(); ?></div></td></tr>
-<tr><td colspan="2"><div class="separator">
-    <?php echo _("Server/Version Statistics"); ?>
-    <span class="subtext">(<a href="#email">privacy</a>)</span>
-    </div></td>
-</tr>
+<tr class="separator"><th colspan="2"><?php echo _("Server/Version Statistics"); ?></th></tr>
 
 <?php foreach ( $obj['stat'] as $box )
       { ?>
-<tr><td class="label"><?php echo $box->caption; ?>:</td>
+<tr><th class="label"><?php echo $box->caption; ?>:</td>
     <td class="value"><?php echo $box->display(); ?></td></tr>
 <?php } ?>
 
-
-<?php
-/*
-  if ( isset($t['form']) )
-  {
-    show($t['form']->objects);
-
-
-    // add public header
-    $table->insertObject(0, _("Public Contact Information"), array('class' => 'separator', 'onecell' => true));
-    $table->insertSpace(1);
-    $table->insertObject(3, _("Nick used on irc.freenode.net #squirrelmail channel"), array('value_class' => 'subtext'));
-    $table->insertSpace(4);
-
-    // add private header
-    $table->insertObject(10, _("Private Attributes"), array('class' => 'separator', 'onecell' => true));
-    $string = sprintf(_("<a href=\"%s\">Private attributes</a> are not shared with third parties."),
-                      getURI(array('object' => 'privacy')));
-    $table->insertObject(11, $string, array('class' => 'subtext_center', 'onecell' => true));
-    $table->insertSpace(12);
-    $table->insertSpace(15);
-    $table->insertSpace(18);
-    $table->addSpace();
-*/
-?>
 </table>
 
-<div class="form_submit">
-<?php $t['form']->display_buttons(); ?>
-</div>
+<div class="form_submit"><?php $t['form']->display_buttons(); ?></div>
 
-<?php $t['form']->display_end(); ?>
-
-<div class="subtext_center"><a id="email" name="email"></a>
-<?php
-  echo _("Your email and other contact information is only shared with your consent.") . '<br />'
-       . _("Displayed emails are dynamically munged to discourage spam.") . '<br />'
-       . _("Server and version statistics are only viewed collectively.") . '<br />'
-       . sprintf(_("See our <a href=\"%s\">Privacy Policy</a>"),
-                 getURI(array('object' => 'privacy')))
-       . '</div>';
-
+<?php 
+    $t['form']->display_end();
 }
 
 

@@ -1,44 +1,79 @@
+/** SIZE */
 #sitetitle {
-    padding: 10px 5px;
     font-size: xx-large;
 }
+h1 {
+    font-size: x-large;
+}
+.index,
+.formlinks,
+.subtext,
+#copyright,
+#status,
+#editmenu,
+#flagline,
+#contentupdate {
+    font-size: small;
+}
+
+/** text alignment */
+
+.heading,
+.value {
+    text-align: left;
+}
+
+h1,
+.index,
+.form_submit,
+.formlinks,
+#status,
 #copyright,
 #subsitetitle {
     text-align: center;
 }
-#contentupdate {
+
+.label {
     text-align: right;
-    font-size: small;
 }
-#flagline {
-    font-size: small;
-    float: right;
+
+/** PADDING / MARGINS */
+#content {
+    padding-bottom: 10px;
 }
-#debug_output h1,
-#content h1,
+.formlinks,
+#sitetitle {
+    padding: 10px 5px;
+}
 #flagline {
     margin: 0px;
     padding: 0px;
 }
 #copyright {
     margin-top: 10px;
-    padding: 5px 0px 20px 0px;
-    font-size: small;
+    margin-bottom: 20px;
     clear: both;
 }
 #usermenu {
     padding: 2px 2px;
 }
+.heading,
+.label {
+    padding: 0px 5px;
+}
 
-h1 {
-    text-align: center;
-    font-size: x-large;
+/** Classes for floating to one side or the other */
+.float-right,
+#contentupdate,
+#flagline {
+    float: right;
+}
+.float-clear {
+    clear: both;
 }
 
 /** Attributes for index characters used by siteindex */
 .index {
-	font-size: small;
-	text-align: center;
 	color: gray;
 }
 .index a {
@@ -48,7 +83,37 @@ h1 {
 	margin: 0px 20px;
 }
 
-/** Classes for floating to one side or the other */
-.float-right {
-    float: right;
+/** Attributes for status */
+#status .error {
+	color: #933;	
 }
+#status .ok {
+	color: #063;
+}
+
+/** form attributes */
+form { 
+	white-space: nowrap; 
+	display: inline;
+	text-align: center;
+}
+select,
+textarea,
+input {
+	font-family: "Courier New", courier, monospace;
+    background-color: #F0F0F0;
+}
+.smdoc_textarea {
+	width: 80%;
+}
+
+/** table attributes */
+th input,
+th.label {
+    vertical-align: top;
+}
+tr.separator td,
+tr.separator th {
+    padding: 15px 0px 5px 0px;
+}
+
