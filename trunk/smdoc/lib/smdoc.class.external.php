@@ -19,28 +19,28 @@
 if ( !isset($EXTERNAL_RESOURCES) ) $EXTERNAL_RESOURCES = array();
 
 /** METHOD PERMISSIONS **/
-setPermission('foowd_external', 'class',  'create', 'Nobody');
-setPermission('foowd_external', 'object', 'admin', 'Nobody');
-setPermission('foowd_external', 'object', 'revert', 'Nobody');
-setPermission('foowd_external', 'object', 'delete', 'Nobody');
-setPermission('foowd_external', 'object', 'clone', 'Nobody');
-setPermission('foowd_external', 'object', 'permissions', 'Nobody');
+setPermission('smdoc_external', 'class',  'create', 'Nobody');
+setPermission('smdoc_external', 'object', 'admin', 'Nobody');
+setPermission('smdoc_external', 'object', 'revert', 'Nobody');
+setPermission('smdoc_external', 'object', 'delete', 'Nobody');
+setPermission('smdoc_external', 'object', 'clone', 'Nobody');
+setPermission('smdoc_external', 'object', 'permissions', 'Nobody');
 
 /** CLASS DESCRIPTOR **/
-setClassMeta('foowd_external', 'Externally Defined Objects');
+setClassMeta('smdoc_external', 'Externally Defined Objects');
 
-setConst('EXTERNAL_CLASS_ID', META_FOOWD_EXTERNAL_CLASS_ID);
+setConst('EXTERNAL_CLASS_ID', META_SMDOC_EXTERNAL_CLASS_ID);
 
-class foowd_external extends foowd_object {
+class smdoc_external extends foowd_object {
 
 /*** Constructor ***/
 
-	function foowd_external(
+	function smdoc_external(
 		&$foowd,
 		$objectid = NULL
 	) {
 		global $EXTERNAL_RESOURCES;
-        $foowd->track('foowd_external::foowd_external');
+        $foowd->track('smdoc_external->smdoc_external');
 		
         $this->__wakeup(); // init meta arrays
 
@@ -80,27 +80,88 @@ class foowd_external extends foowd_object {
            is_array($EXTERNAL_RESOURCES) &&
            array_key_exists(intval($objectid), $EXTERNAL_RESOURCES) ) 
       {
-        $ext_obj = new foowd_external($foowd, intval($objectid));
+        $ext_obj = new smdoc_external($foowd, intval($objectid));
       }
       return $ext_obj;
     }
 
+    function objectExists($objectid)
+    {
+      global $EXTERNAL_RESOURCES;
+      if ( isset($EXTERNAL_RESOURCES) &&
+           is_array($EXTERNAL_RESOURCES) &&
+           array_key_exists(intval($objectid), $EXTERNAL_RESOURCES) ) 
+        return TRUE;
+      return FALSE;
+    }
+
+	/**
+	 * Set a member variable.
+	 *
+	 * Checks the new value against the regular expression stored in
+	 * foowd_vars_meta to make sure the new value is valid.
+	 *
+	 * @class foowd_object
+	 * @method public set
+	 * @param object foowd The foowd environment object.
+	 * @param str member The name of the member variable to set.
+	 * @param optional mixed value The value to set the member variable to.
+	 * @return mixed always returns false
+	 */
     function set(&$foowd, $member, $value = NULL) {
         return FALSE;
     }
 
+	/**
+	 * Set a member variable to a complex array value.
+	 *
+	 * @class foowd_object
+	 * @method protected setArray
+	 * @param array array The array value to set the member variable to.
+	 * @param str regex The regular expression the values of the array must match for the assignment to be valid.
+	 * @return mixed Always returns false.
+	 */
+	function setArray($array, $regex) {
+        return FALSE;
+    }
+
+	/**
+	 * Save the object.
+	 *
+	 * @class foowd_object
+	 * @method public save
+	 * @param object foowd The foowd environment object.
+	 * @param optional bool incrementVersion Increment the object version.
+	 * @param optional bool doUpdate Update the objects details.
+	 * @return mixed Always returns false.
+	 */
     function save(&$foowd) {
         return FALSE;
     }
 
+	/**
+	 * Delete the object.
+	 *
+	 * @class foowd_object
+	 * @method protected delete
+	 * @param object foowd The foowd environment object.
+	 * @return bool Always returns false.
+	 */
     function delete(&$foowd) {
         return FALSE;
     }
 
-/** METHODS */    
+  
+	/**
+	 * Output the object.
+	 *
+	 * @class foowd_object
+	 * @method private method_view
+	 * @param object foowd The foowd environment object.
+	 */
     function method_view(&$foowd) {     
         global $EXTERNAL_RESOURCES;
-        $foowd->track('foowd_external::method_view');
+        $foowd->track('smdoc_external->method_view');
 
         $methodName = $EXTERNAL_RESOURCES[$this->objectid]['func'];
         $foowd->tpl->assign('PAGE_TITLE', $this->title);
