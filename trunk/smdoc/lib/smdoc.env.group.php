@@ -67,12 +67,11 @@ class smdoc_group
      * Set Available User Groups:
      *  - start with basic four (Everyone, Author, Gods, Nobody)
      */
-    $allgroups['Everyone']   = getVarOrDefault($cfg['Everyone'], 'Everybody');
-    $allgroups['Author']     = getVarOrDefault($cfg['Author'], 'Author');
-    $allgroups['Gods']       = getVarOrDefault($cfg['Gods'],   'Admin');
-    $allgroups['Nobody']     = getVarOrDefault($cfg['Nobody'], 'Nobody');
-    $allgroups['Registered'] = getVarOrDefault($cfg['registered'], 'Registered');
-
+    $allgroups['Everyone']  = isset($cfg['Everyone'])  ? $cfg['Everyone']  : 'Everybody';
+    $allgroups['Author']    = isset($cfg['Author'])    ? $cfg['Author']    : 'Author';
+    $allgroups['Gods']      = isset($cfg['Gods'])      ? $cfg['Gods']      : 'Admin';
+    $allgroups['Nobody']    = isset($cfg['Nobody'])    ? $cfg['Nobody']    : 'Nobody';
+    $allgroups['Registered']= isset($cfg['Registered'])? $cfg['Registered']: 'Registered';
 
     /*
      *  - add groups passed to foowd as parameter

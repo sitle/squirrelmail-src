@@ -28,7 +28,7 @@ setClassMeta('smdoc_translation', 'Site Translation');
 
 setConst('TRANSLATION_CLASS_ID', META_SMDOC_TRANSLATION_CLASS_ID);
 setConst('TRANSLATION_DEFAULT_LANGUAGE', 'en_US');
-//setConst('TRANSLATION_DEFAULT_LANGUAGE_ICON', 'en_US');
+setConst('TRANSLATION_DEFAULT_LANGUAGE_ICON', 'en_US');
 
 /** Base workspace implementation */
 require_once(SM_DIR . 'class.workspace.php');
@@ -50,6 +50,7 @@ class smdoc_translation extends foowd_workspace
 
   /**
    * Constructor
+   * @param smdoc $foowd Reference to the foowd environment object.
    */
   function smdoc_translation( &$foowd,
                               $title = NULL,
@@ -62,7 +63,7 @@ class smdoc_translation extends foowd_workspace
 
     /* set object vars */
     $this->language_icon = $icon;
-    $this->initialize($foowd);
+    smdoc_translation::initialize($foowd);
 
     $foowd->track();
   }
@@ -88,8 +89,6 @@ class smdoc_translation extends foowd_workspace
     return FALSE;
   }
 
-/*** STATIC METHODS ***/
-
   /**
    * Initializes array containing objectid, icon, and language code
    * for each defined translation
@@ -97,7 +96,7 @@ class smdoc_translation extends foowd_workspace
    * @param smdoc $foowd Reference to the foowd environment object.
    * @param bool $forceRefresh Force refresh of session cache.
    */
-  function initialize(&$foowd, $forceRefresh = FALSE)
+  function initialize($foowd, $forceRefresh = FALSE)
   {
     $foowd->track('smdoc_translation::initialize', $forceRefresh);
 
@@ -121,7 +120,6 @@ class smdoc_translation extends foowd_workspace
     $url_arr['method'] = 'enter';
     $url_arr['langid'] = '';
     $url = getURI($url_arr);
-
 
     // Add elements for the default translation
     $the_url = '<a href="' . $url . '0">';
@@ -171,6 +169,8 @@ class smdoc_translation extends foowd_workspace
 
     $foowd->track();
   }
+
+/*** static methods **/
 
   /** 
    * Retrieve url for given object id.
@@ -227,6 +227,79 @@ class smdoc_translation extends foowd_workspace
   }
 
 /*** CLASS METHODS ***/
+
+/* Class methods */
+
+  /**
+   * Output an object creation form and process its input.
+   *
+   * @static
+   * @param smdoc $foowd Reference to the foowd environment object.
+   * @param string className The name of the class.
+   */
+  function class_create(&$foowd, $className) 
+  {
+    $foowd->track('foowd_workspace->class_create');
+    
+    include_once(INPUT_DIR.'input.querystring.php');
+    include_once(INPUT_DIR.'input.form.php');
+    include_once(INPUT_DIR.'input.textbox.php');
+    
+    $queryTitle = new input_querystring('title', REGEX_TITLE, NULL);
+    $createForm = new input_form('createForm', NULL, SQ_POST, _("Create"), NULL);
+    $createTitle = new input_textbox('createTitle', REGEX_TITLE, $queryTitle->value, 'Object Title');
+    $createDescription = new input_textbox('createDescription', '/^.{1,1024}$/', NULL, 'Description', FALSE);
+    $createIcon = new input_textbox('createIcon');
+
+    if ($createForm->submitted() && 
+        $createTitle->wasSet && $createTitle->wasValid && $createTitle->value != '') 
+    {
+      // Ensure unique title
+      $oid = NULL;
+      if ( !$foowd->database->isTitleUnique($createTitle->value, $foowd->user->workspaceid, $oid, NULL, FALSE) )
+        $result = 1;
+      else
+      {
+        $object = &new $className($foowd, 
+                                  $createTitle->value,
+                                  $createDescription->value,
+                                  $createIcon->value);
+
+        if ( $object->objectid != 0 && $object->save($foowd) ) 
+          $result = 0; // created ok
+        else
+          $result = 2; // error
+      }
+    } 
+    else
+      $result = -1;
+
+    switch ( $result )
+    {
+      case 0:
+        $_SESSION['ok'] = OBJECT_CREATE_OK;
+        $uri_arr['classid'] = $object->classid;
+        $uri_arr['objectid'] = $object->objectid;
+        $foowd->loc_forward(getURI($uri_arr, FALSE));
+        exit;
+      case 1:
+        $foowd->template->assign('failure', OBJECT_DUPLICATE_TITLE);
+        $createTitle->wasValid = FALSE;
+        break;
+      case 2:
+        $foowd->template->assign('failure', OBJECT_CREATE_FAILED);
+        break;
+      default:
+        $foowd->template->assign('failure', FORM_FILL_FIELDS);
+    }
+      
+    $createForm->addObject($createTitle);
+    $createForm->addObject($createDescription);
+    $foowd->template->assign_by_ref('form', $createForm);
+
+    $foowd->track();
+  }
+
 
   /**
    * enter - class method

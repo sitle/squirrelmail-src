@@ -103,23 +103,6 @@ function getConstOrDefault($constant, $default)
 }
 
 /**
- * Return the value of a constant or a default value.
- *
- * @param string constant Name of a constant.
- * @param mixed default Default value.
- * @return mixed The value of the constant or the default value.
- */
-function getVarOrDefault($var, $default) 
-{
-  if (isset($var))
-    return $var;
-
-  return $default;
-}
-
-
-
-/**
  * Set a constant to a value if the constant is defined.
  *
  * @param string constName Name of a constant.
