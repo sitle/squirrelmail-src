@@ -715,7 +715,7 @@ function mail_message_listing_beginning ($imapConnection,
             echo getButton('SUBMIT', 'moveButton',_("Move")) . "\n";   
             echo getButton('SUBMIT', 'attache',_("Forward")) . "\n";   
 
-  echo "      </TD>\n"
+  echo "      </small></td>\n"
          . html_tag( 'td', '', 'right', '', 'nowrap' );
 
 
@@ -748,9 +748,9 @@ function mail_message_listing_beginning ($imapConnection,
         }
         echo html_tag( 'tr' ,
                     html_tag( 'td' ,
-                              '&nbsp;<a href=' . $source_url . '?sort='
-                              . "$sort" . '&start_messages=1&set_thread=' . "$set_thread"
-                              . '&mailbox=' . urlencode($mailbox) . '><small>' . $thread_name
+                              '&nbsp;<small><a href="' . $source_url . '?sort='
+                              . "$sort" . '&amp;start_messages=1&amp;set_thread=' . "$set_thread"
+                              . '&amp;mailbox=' . urlencode($mailbox) . '">' . $thread_name
                               . '</a></small>&nbsp;'
                      , '', '', '' )
                  , '', '', '' );
