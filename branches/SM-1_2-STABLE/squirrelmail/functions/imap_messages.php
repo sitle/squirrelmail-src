@@ -367,7 +367,7 @@ function sqimap_get_small_header_list ($imap_stream, $msg_list, $issent) {
                   _("ERROR : Could not complete request.") .
                   '</b><br>' .
                   _("Unknown response from IMAP server: ") . ' 1.' .
-                  $r[0] . "</font><br>\n";
+                  htmlspecialchars($r[0]) . "</font><br>\n";
          
 	} else 	if (! isset($id2index[$regs[1]]) || !count($id2index[$regs[1]])) {
              set_up_language($squirrelmail_language);
@@ -375,7 +375,7 @@ function sqimap_get_small_header_list ($imap_stream, $msg_list, $issent) {
                   _("ERROR : Could not complete request.") .
                   '</b><br>' .
                   _("Unknown message number in reply from server: ") .
-                  $regs[1] . "</font><br>\n";
+                  htmlspecialchars($regs[1]) . "</font><br>\n";
         } else {
     	    $read_list[$id2index[$regs[1]]] = $r;
         }
@@ -573,7 +573,7 @@ function sqimap_get_flags_list ($imap_stream, $msg_list) {
                  _("ERROR : Could not complete request.") .
                  "</b><br>\n" .
                  _("Unknown response from IMAP server: ") .
-                 $result_list[$i][0] . "</font><br>\n";
+                 htmlspecialchars($result_list[$i][0]) . "</font><br>\n";
             exit;
         }
     }

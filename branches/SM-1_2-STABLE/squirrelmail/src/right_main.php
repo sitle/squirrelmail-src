@@ -43,28 +43,28 @@ $base_uri = $_SESSION['base_uri'];
 $delimiter = $_SESSION['delimiter'];
 
 if (isset($_GET['startMessage'])) {
-    $startMessage = $_GET['startMessage'];
+    $startMessage = (int) $_GET['startMessage'];
 }
 if (isset($_GET['mailbox'])) {
     $mailbox = $_GET['mailbox'];
 }
 if (isset($_GET['PG_SHOWNUM'])) {
-    $PG_SHOWNUM = $_GET['PG_SHOWNUM'];
+    $PG_SHOWNUM = (int) $_GET['PG_SHOWNUM'];
 }
 elseif (isset($_SESSION['PG_SHOWNUM'])) {
-    $PG_SHOWNUM = $_SESSION['PG_SHOWNUM'];
+    $PG_SHOWNUM = (int) $_SESSION['PG_SHOWNUM'];
 }
 if (isset($_GET['PG_SHOWALL'])) {
-    $PG_SHOWALL = $_GET['PG_SHOWALL'];
+    $PG_SHOWALL = (int) $_GET['PG_SHOWALL'];
 }
 if (isset($_GET['newsort'])) {
-    $newsort = $_GET['newsort'];
+    $newsort = (int) $_GET['newsort'];
 }
 if (isset($_GET['checkall'])) {
-    $checkall = $_GET['checkall'];
+    $checkall = (int) $_GET['checkall'];
 }
 if (isset($_GET['set_thread'])) {
-    $set_thread = $_GET['set_thread'];
+    $set_thread = (int) $_GET['set_thread'];
 }
 if (isset($_SESSION['lastTargetMailbox'])) {
     $lastTargetMailbox =$_SESSION['lastTargetMailbox'];
