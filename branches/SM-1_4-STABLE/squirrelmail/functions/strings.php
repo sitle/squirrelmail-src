@@ -155,6 +155,13 @@ function php_self () {
     }
 
     if ( sqgetGlobalVar('PHP_SELF', $php_self, SQ_SERVER) && !empty($php_self) ) {
+
+      // need to add query string to end of PHP_SELF to match REQUEST_URI
+      //
+      if ( sqgetGlobalVar('QUERY_STRING', $query_string, SQ_SERVER) && !empty($query_string) ) {
+         $php_self .= '?' . $query_string;
+      }
+
       return $php_self;
     }
 
