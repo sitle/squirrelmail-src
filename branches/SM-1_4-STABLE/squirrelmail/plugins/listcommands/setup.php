@@ -12,6 +12,8 @@
  * commands such as (un)subscribe, help and list archives.
  *
  * $Id$
+ * @package plugins
+ * @subpackage listcommands
  */
 
 function squirrelmail_plugin_init_listcommands () {
@@ -58,7 +60,7 @@ function plugin_listcommands_menu() {
                 $url = 'src/compose.php?' .
                 (isset($startMessage)?'startMessage='.$startMessage.'&amp;':'');
             } else {
-                $url = "../plugins/listcommands/mailout.php?action=$cmd&amp;";
+                $url = "plugins/listcommands/mailout.php?action=$cmd&amp;";
             }
             $url .= 'send_to=' . strtr($act,'?','&');
 
