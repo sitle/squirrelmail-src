@@ -977,7 +977,7 @@ if ($show_xmailer_default) {
                      "<TD BGCOLOR=\"$color[0]\" ALIGN=RIGHT VALIGN=TOP>" .
                            _("Mailer") . ': '.
                      "</TD><TD BGCOLOR=\"$color[0]\" VALIGN=TOP colspan=2>" .
-                        "<B>$mailer</B>&nbsp;" .
+                        "<B>" . htmlentities($mailer) . "</B>&nbsp;" .
                      '</TD>' .
                   "</TR>" . "\n";
     }
