@@ -703,7 +703,7 @@ function sqimap_get_small_header_list($imap_stream, $msg_list, $show_num=false) 
  * Obsolete?
  */
 function sqimap_get_headerfield($imap_stream, $field) {
-    global $uid_support;
+    global $uid_support, $squirrelmail_language;
     $sid = sqimap_session_id(false);
 
     $results = array();
