@@ -355,7 +355,7 @@ if ($showaddrlist) {
                 {
             echo html_tag( 'tr', '', '', $tr_bgcolor);
             if ($abook->backends[$row['backend']]->writeable) {
-                html_tag( 'td',
+                echo html_tag( 'td',
                           '<small>' .
 			  addCheckBox('sel[]', $selected, $row['backend'].':'.$row['nickname']).
                           '</small>' ,
