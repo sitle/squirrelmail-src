@@ -1,7 +1,7 @@
 /*****************************************************************
- * Release Notes: SquirrelMail 1.2.8                             *
- * The "Roadkill Revenge" Release                                *
- * September 14 2002                                             *
+ * Release Notes: SquirrelMail 1.2.9                             *
+ * The "Huge Buffer" Release                                     *
+ * October 29 2002                                               *
  *****************************************************************/
 
 In this edition of SquirrelMail Release Notes:
@@ -13,24 +13,17 @@ In this edition of SquirrelMail Release Notes:
 All about this Release!!!
 =========================
 
-  The big news. The PHP community has decided to change
-the default configuration of PHP to not use the sometimes dangerous
-register_globals directive. Since SquirrelMail relied on that
-setting we decided to convert the SquirrelMail code to work
-without it. So starting with this release SquirrelMail will
-now work with register_globals set to on or off. All the plugins
-that come with SquirrelMail have been converted as well. However
-plugins that you can download from here:
+   This is mostly a maintenance release which fixes many bugs, from
+small to more prominent. This is another step to further stabilize
+the 1.2 stable series. Most notably are the fixes for the issues
+that were reported since register_globals = Off support was intro-
+duced with 1.2.8.
 
-http://www.squirrelmail.org/plugins.php
-
-may not be updated yet to work without register_globals. If your
-must have plugin has not been updated yet you can still run with
-register_globals enabled until it has.
-
-  What else is new with 1.2.8? Bug fixes. Lots and lots of bugfixes.
-From multipart message and attachment handling to HTML code cleanup
-many of the most prominent bugs from 1.2.7 or earlier have been fixed.
+   You'll not find nifty new features in this release because we're
+maintaining it only. Meanwhile, we are working on stabilizing the
+already quite stable development branch, which comes with loads
+of enhancements and improvements! We hope to present you with the
+shiny new 1.4 series Any Time Soon[tm].
 
 See the Changelog file for details of this release.
 
@@ -64,11 +57,6 @@ has to offer:
 I am sure there are plenty more features I have missed. You just have
 to try it for yourself!
 
-Having been involved with Squirrelmail for a while I can safely say
-that this stable release has the most bugfixes to date. The invaluable
-contributions of the Squirrelmail community, from developers and users
-alike have helped to make this release of Squirrelmail the best yet.
-
    Home Page:    http://www.squirrelmail.org/
    Download:     http://www.squirrelmail.org/download.php
    ScreenShots:  http://www.squirrelmail.org/screenshots.php
@@ -98,28 +86,26 @@ been fixed in CVS already.
 
 
 Important Note about PHP versions
-==============================
+=================================
 
 PHP Versions have changed in many ways from the 4.0.X series to the 
-current 4.2.2 release. While it is always recommended to be running
+current 4.2.3 release. While it is always recommended to be running
 the latest stable release of PHP we realize that may not be under
 your control. So while converting SquirrelMail to work without
 register_globals we were careful to test with a wide variety of
 PHP versions. The current recommended PHP versions for SquirrelMail
-are PHP 4.0.6 through 4.2.2. Versions earlier than 4.0.6 are known to
+are PHP 4.0.6 through 4.2.3. Versions earlier than 4.0.6 are known to
 work, as well as development PHP version but they are not considered
 the ideal versions for SquirrelMail. 
 
 
-About our Release Aliases - By Jason Munro
+About our Release Aliases - By Thijs Kinkhorst
 =========================
 
-  A spate of recently reported squirrel deaths has prompted the 
-SquirrelMail developers to ponder, "What can we do to protect our
-much loved mascot from this unfortunate demise?" Nothing really,
-except honor the squirrel name with the best SquirrelMail release
-to date and a release alias that strikes fear in the heart of
-reckless drivers everywhere, 'Roadkill Revenge'.
+Thijs Kinkhorst and Jonathan Angliss are the new heads of the
+SquirrelMail stable team. Therefore it seemed logical to name the
+release after the remarkably large size of Jonathan's IRC client buffer.
+
 
                   Happy SquirrelMailing!
                     - The SquirrelMail Project Team
