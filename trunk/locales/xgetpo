@@ -118,8 +118,6 @@ xgettext --keyword=_ -keyword=N_  --default-domain=squirrelmail -j \
 xgettext --keyword=_ -keyword=N_  --default-domain=squirrelmail -j \
     --no-location -C ${SM_DEVEL_PATH}/plugins/calendar/*.php --output=${SM_LOCALES_PATH}/po/squirrelmail.pot
 xgettext --keyword=_ -keyword=N_  --default-domain=squirrelmail -j \
-    --no-location -C ${SM_DEVEL_PATH}/plugins/delete_move_next/*.php --output=${SM_LOCALES_PATH}/po/squirrelmail.pot
-xgettext --keyword=_ -keyword=N_  --default-domain=squirrelmail -j \
     --no-location -C ${SM_DEVEL_PATH}/plugins/filters/*.php --output=${SM_LOCALES_PATH}/po/squirrelmail.pot
 xgettext --keyword=_ -keyword=N_  --default-domain=squirrelmail -j \
     --no-location -C ${SM_DEVEL_PATH}/plugins/fortune/*.php --output=${SM_LOCALES_PATH}/po/squirrelmail.pot
