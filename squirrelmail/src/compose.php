@@ -600,7 +600,7 @@ function getAttachments($message, $session) {
 	    $newAttachment['session'] = $session;
 
             /* Write Attachment to file */
-            $fp = fopen ("$hashed_attachment_dir/$localfilename", 'w');
+            $fp = fopen ("$hashed_attachment_dir/$localfilename", 'wb');
             fputs($fp, decodeBody(mime_fetch_body($imapConnection,
                 $id, $message->header->entity_id),
                 $message->header->encoding));
