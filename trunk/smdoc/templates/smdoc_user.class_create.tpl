@@ -41,19 +41,23 @@ function user_create_body(&$foowd, $className, $method, &$user, &$object, &$t)
 ?>
 
 <table cellspacing="0" cellpadding="0" class="smdoc_table">
-<tr><td class="label"><b><?php echo _("UserName"); ?>:</b></td>
+<tr><th class="label"><?php echo _("UserName"); ?>:</th>
     <td class="value"><?php echo $obj['createUsername']->display(); ?></td></tr>
 <tr><td colspan="2">&nbsp;</td></tr>
 
-<tr><td class="label"><b><?php echo _("Password"); ?>:</b></td>
+<tr><th class="label"><?php echo _("Password"); ?>:</th>
     <td class="value"><?php echo $obj['createPassword']->display(); ?></td></tr>
-<tr><td class="label"><b><?php echo _("Verify"); ?>:</b></td>
+<tr><th class="label"><?php echo _("Verify"); ?>:</th>
     <td class="value"><?php echo $obj['verifyPassword']->display(); ?></td></tr>
 <tr><td colspan="2">&nbsp;</td></tr>
 
-<tr><td class="label"><b><?php echo _("Email"); ?>:</b></td>
-    <td class="value"><?php echo $obj['createEmail']->display(); ?>
-                      <span class="subtext">(<a href="#email">privacy</a>)</span></td></tr>
+<tr><th class="label"><?php echo _("Email"); ?>:</th>
+    <td class="value"><?php echo $obj['createEmail']->display(); ?><br />
+    <span class="subtext">
+    <?php echo _("Used only for password recovery."); ?> 
+    <?php echo sprintf(_("See our <a href=\"%s\">Privacy Policy</a>."), getURI(array('object' => 'privacy'))); ?>
+    </span>
+    </td></tr>
 
 </table>
 
@@ -64,16 +68,14 @@ function user_create_body(&$foowd, $className, $method, &$user, &$object, &$t)
 
   $uri_arr['class'] = $className;
   $uri_arr['method'] = 'login';
-  echo '<p class="small"><a href="'.getURI($uri_arr).'">'
-       . _("Login with existing user.")
-       . '</a></p>';
+?>
+<div class="formlinks">
+  <a href="<?php echo getURI($uri_arr); ?>"><?php echo _("Login as an existing user."); ?></a>
+</div>
 
+<?php
   $t['form']->display_end();
 ?>
-<p class="subtext_center"><a id="email" name="email"></a>
-<?php echo _("Your email address is not required, it is used for password recovery."); ?><br />
-<?php echo sprintf(_("See our <a href=\"%s\">Privacy Policy</a>"),
-                   getURI(array('object' => 'privacy'))); ?>
 </p>
 <?php
 }

@@ -33,6 +33,9 @@ body {
     color: #36F;
     font-weight: bold;
 }
+tr.separator th a:hover,
+tr.separator td a:hover, 
+#editmenu a:hover,
 #sitetitle a:hover {
     text-decoration: underline;
 }
@@ -46,6 +49,14 @@ body {
     background-attachment: fixed;
     border: 1px #69F solid;
 }
+#editmenu {
+    border-bottom: 1px #69F solid;
+}
+tr.separator td,
+tr.separator th,
+tr.separator th a,
+tr.separator td a, 
+#editmenu a,
 #locationmenu a {
     text-decoration: none; 
     color: #36F;
@@ -58,18 +69,15 @@ body {
 #locationmenu .special a {
     background-color: #cce8ff;
 }
-#editmenu,
 #usermenu {
     background-color: #69F;
     margin-top: 0px;
 }
-#editmenu a,
 #usermenu a {
     padding: 2px;
     text-decoration: none; 
     color: #FFF;
 }
-#editmenu a:hover,
 #usermenu a:hover {
     background-color: #FFF;
     color: #36F;
