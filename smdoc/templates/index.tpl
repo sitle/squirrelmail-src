@@ -12,6 +12,12 @@
   $user =& $template['CURRENT_USER'];
   $object =& $template['CURRENT_OBJECT'];
 
+  $status = new smdoc_input_form('status', NULL, NULL, NULL);
+  if ( !$status->getFormValue('ok', $ok) && isset($template['STATUS_OK']) )
+    $ok = $template['STATUS_OK'];
+  if (  !$status->getFormValue('error', $error) && isset($template['STATUS_ERROR']) )
+    $error = $template['STATUS_ERROR'];
+
   foowd_translation::initialize($foowd, TRUE);
   $flag_links = foowd_translation::getLink($foowd);
   $loc_url = getURI(array());
@@ -34,19 +40,20 @@
             if ( $lang_url != NULL )
               $lang_url .=  ' | ';
           }
+          $user_url = $loc_url . '?class='.USER_CLASS_NAME;
           if ( isset($user->objectid) )
           {
             // If an objectid is set, we're logged in.
             $url = getURI(array('objectid' => $user->objectid, 'classid' => USER_CLASS_ID));
             echo '<a href="' . $url . '">' . $user->title . '</a> ';
             echo '( '. $lang_url
-                 . '<a href="', $loc_url, '?class=foowd_user&method=logout">'. _("Logout") .'</a> )';
+                 . '<a href="', $user_url, '&method=logout">'. _("Logout") .'</a> )';
           } else {
             // Otherwise, we're anonymous
             echo _("Anonymous User"), ' [' . $user->title . '] ';
             echo '( '. $lang_url  
-                 . '<a href="', $loc_url, '?class=foowd_user&method=login">'. _("Login") .'</a> ';
-            echo '| <a href="', $loc_url, '?class=foowd_user&method=create">'. _("Register") .'</a> )';
+                 . '<a href="', $user_url, '&method=login">'. _("Login") .'</a> ';
+            echo '| <a href="', $user_url, '&method=create">'. _("Register") .'</a> )';
           }
         ?>
     </td>
@@ -88,18 +95,28 @@
   </table>
 </div>
 <!-- end location menu -->
-<?php if( isset($template['STATUS_OK']) ) { ?>
-  <div id="status">
-    <span class="ok"><?php echo $template['STATUS_OK']; ?></span>
-  </div>
-<?php } elseif( isset($template['STATUS_ERROR']) ) { ?>
-  <div id="status">
-    <span class="error"><?php echo $template['STATUS_ERROR']; ?></span>
-  </div>
+<?php if( $ok != NULL ) { ?>
+  <div id="status"><span class="ok"><?php echo $ok; ?></span></div>
+<?php } elseif( $error != NULL ) { ?>
+  <div id="status"><span class="error"><?php echo $error; ?></span></div>
 <?php } ?>
 <!-- begin content -->
 <div id="content">
-<?php echo $template['BODY'];  ?>
+<?php
+  if ( isset($template['BODY']) )
+    echo $template['BODY'];
+  else
+  {
+?>
+<p>This object did not provide a BODY to the template.</p>
+<?php
+    if ( isset($template['CURRENT_OBJECT']) )
+    {
+      echo '<div class="debug_output_heading">', _("Contents of Current Object"), '</div>';
+      show($template['CURRENT_OBJECT']);
+    }
+  }
+?>
 </div>
 <!-- end content -->
 <div id="editmenu">
