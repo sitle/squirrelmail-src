@@ -214,10 +214,6 @@ class smdoc extends foowd
         case USER_CLASS_ID:
           $new_obj =& smdoc_user::fetchUser($this, $where);
           break;
-        case EXTERNAL_CLASS_ID:
-          if ( isset($where['objectid']) )
-            $new_obj =& smdoc_external::factory($this, $where['objectid']);
-          break;
       }
     }
 
