@@ -63,7 +63,7 @@ class ZkMod_db_mysql {
     
     function query( $sql ) {
  
-        $ret = mysql_query( $sql, $this->lk ) or die('Query error');
+        $ret = mysql_query( $sql, $this->lk ) or die( "Query error <!-- $sql -->" );
 
         return( $ret );
 
