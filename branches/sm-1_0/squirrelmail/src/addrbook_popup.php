@@ -15,7 +15,6 @@
    include('../functions/i18n.php');
    include('../config/config.php');
    include('../functions/page_header.php');
-   include('../functions/auth.php');
    include('../functions/addressbook.php');
 
    include('../src/load_prefs.php');

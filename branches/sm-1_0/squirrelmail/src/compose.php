@@ -24,7 +24,6 @@
    include("../functions/mime.php");
    include("../functions/smtp.php");
    include("../functions/display_messages.php");
-   include ("../functions/auth.php");
    include ("../functions/plugin.php");
 
    include("../src/load_prefs.php");

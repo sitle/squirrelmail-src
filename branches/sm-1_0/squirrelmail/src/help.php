@@ -18,7 +18,6 @@
    include("../functions/imap.php");
    include("../functions/array.php");
    include("../functions/i18n.php");
-   include ("../functions/auth.php"); 
 
    include("../src/load_prefs.php");
    displayPageHeader($color, "None");

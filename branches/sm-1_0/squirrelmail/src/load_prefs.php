@@ -22,7 +22,6 @@
    include("../config/config.php");
    include("../functions/prefs.php");
    include("../functions/plugin.php");
-   include("../functions/auth.php");
       
    checkForPrefs($data_dir, $username);
 
