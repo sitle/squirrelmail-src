@@ -45,7 +45,7 @@ if(isset($_POST['MOD'])) {
   $MOD = $_GET['MOD'];
 } 
 
-if (!$MOD){
+if (!isset($MOD) || !$MOD){
   $MOD='init';
 } else {
   sqspell_ckMOD($MOD);

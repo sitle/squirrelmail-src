@@ -28,7 +28,17 @@
 function sqspell_makePage($title, $scriptsrc, $body){
   global $color, $SQSPELL_VERSION;
 
-  $MOD = $_GET['MOD'];
+  if ( (float)substr(PHP_VERSION,0,3) < 4.1 ) {
+    if (ini_get('register_globals') == 0) {
+      global $_GET;
+    }
+  }
+  if (isset($_GET['MOD'])) {
+    $MOD = $_GET['MOD'];
+  }
+  else {
+    $MOD = "options_main";
+  }
 
   displayPageHeader($color, 'None');  
   echo "&nbsp;<br>\n";
