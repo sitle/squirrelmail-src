@@ -9,10 +9,14 @@
  * Deletes folders from the IMAP server. 
  * Called from the folders.php
  *
- * $Id$
+ * @version $Id$
+ * @package squirrelmail
  */
 
-/* Path for SquirrelMail required files. */
+/**
+ * Path for SquirrelMail required files.
+ * @ignore
+ */
 define('SM_PATH','../');
 
 /* SquirrelMail required files. */
@@ -41,7 +45,7 @@ if ($mailbox == '') {
     displayPageHeader($color, 'None');
 
     plain_error_message(_("You have not selected a folder to delete. Please do so.").
-	'<BR><A HREF="../src/folders.php">'._("Click here to go back").'</A>.', $color);
+        '<br /><a href="../src/folders.php">'._("Click here to go back").'</a>.', $color);
     exit;
 }
 
@@ -54,7 +58,7 @@ if ( sqgetGlobalVar('backingout', $tmp, SQ_POST) ) {
 if( !sqgetGlobalVar('confirmed', $tmp, SQ_POST) ) {
     displayPageHeader($color, 'None');
 
-    echo '<br>' .
+    echo '<br />' .
         html_tag( 'table', '', 'center', '', 'width="95%" border="0"' ) .
         html_tag( 'tr',
             html_tag( 'td', '<b>' . _("Delete Folder") . '</b>', 'center', $color[0] )
@@ -62,11 +66,11 @@ if( !sqgetGlobalVar('confirmed', $tmp, SQ_POST) ) {
         html_tag( 'tr' ) .
         html_tag( 'td', '', 'center', $color[4] ) .
         sprintf(_("Are you sure you want to delete %s?"), str_replace(array(' ','<','>'),array('&nbsp;','&lt;','&gt;'),imap_utf7_decode_local($mailbox))).
-	addForm('folders_delete.php', 'POST')."<p>\n".
-	addHidden('mailbox', $mailbox).
-	addSubmit(_("Yes"), 'confirmed').
-	addSubmit(_("No"), 'backingout').
-        '</p></form><br></td></tr></table>';
+        addForm('folders_delete.php', 'post')."<p>\n".
+        addHidden('mailbox', $mailbox).
+        addSubmit(_("Yes"), 'confirmed').
+        addSubmit(_("No"), 'backingout').
+        '</p></form><br /></td></tr></table>';
 
     exit;
 }

@@ -8,10 +8,14 @@
  *
  * Displays help for the user
  *
- * $Id$
+ * @version $Id$
+ * @package squirrelmail
  */
 
-/* Path for SquirrelMail required files. */
+/**
+ * Path for SquirrelMail required files.
+ * @ignore
+ */
 define('SM_PATH','../');
 
 /* SquirrelMail required files. */
@@ -78,13 +82,13 @@ function get_info($doc, $pos) {
                 $ary[1] = $ary[0];
                 $ary[2] = $ary[0];
             }
-	    return( $ary );
+            return( $ary );
         } else if (!trim(strtolower($doc[$n]))) {
-	     $ary[0] = '';
-	     $ary[1] = '';
-	     $ary[2] = '';
-	     $ary[3] = $n;
-	}
+            $ary[0] = '';
+            $ary[1] = '';
+            $ary[2] = '';
+            $ary[3] = $n;
+        }
     }
     $ary[0] = _("ERROR: Help files are not in the right format!");
     $ary[1] = $ary[0];
@@ -117,7 +121,7 @@ if (file_exists("../help/$squirrelmail_language")) {
 } else if (file_exists('../help/en_US')) {
     echo "<center><font color=\"$color[2]\">";
     printf (_("The help has not been translated to %s. It will be displayed in English instead."), $languages[$squirrelmail_language]['NAME']);
-    echo '</font></center><br>';
+    echo '</font></center><br />';
     $user_language = 'en_US';
 } else {
     error_box( _("Some or all of the help documents are not present!"), $color );
@@ -148,9 +152,9 @@ if ( sqgetGlobalVar('chapter', $temp, SQ_GET) ) {
 
 if ( $chapter == 0 || !isset( $helpdir[$chapter-1] ) ) {
     echo html_tag( 'table', '', 'center', '', 'cellpadding="0" cellspacing="0" border="0"' ) .
-	        html_tag( 'tr' ) .
-                    html_tag( 'td' ) .
-                         '<b><center>' . _("Table of Contents") . '</center></b><br>';
+         html_tag( 'tr' ) .
+         html_tag( 'td' ) .
+         '<b><center>' . _("Table of Contents") . '</center></b><br />';
     echo html_tag( 'ol' );
     for ($i=0, $cnt = count($helpdir); $i < $cnt; $i++) {
         $doc = file("../help/$user_language/$helpdir[$i]");
@@ -179,10 +183,10 @@ if ( $chapter == 0 || !isset( $helpdir[$chapter-1] ) ) {
         echo ' | <a href="../src/help.php?chapter=' . ($chapter+1)
              . '">' . _("Next") . '</a>';
     }
-    echo '</center></small><br>';
+    echo '</center></small><br />';
 
     echo '<font size="5"><b>' . $chapter . ' - ' . $help_info[0]
-         . '</b></font><br><br>';
+         . '</b></font><br /><br />';
 
     if (isset($help_info[1]) && $help_info[1]) {
         echo $help_info[1];
@@ -196,16 +200,16 @@ if ( $chapter == 0 || !isset( $helpdir[$chapter-1] ) ) {
         $help_info = get_info($doc, $n);
         echo "<b>$chapter.$section - $help_info[0]</b>" .
             html_tag( 'ul', $help_info[1] );
-    	$n = $help_info[3];
+        $n = $help_info[3];
     }
 
-    echo '<br><center><a href="#pagetop">' . _("Top") . '</a></center>';
+    echo '<br /><center><a href="#pagetop">' . _("Top") . '</a></center>';
 }
 
 do_hook('help_bottom');
 
 echo html_tag( 'tr',
             html_tag( 'td', '&nbsp;', 'left', $color[0] )
-        ).
-       '</table></body></html>';
+        );
 ?>
+</table></body></html>

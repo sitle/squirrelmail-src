@@ -8,10 +8,14 @@
  *
  * Deletes a meesage from the IMAP server
  *
- * $Id$
+ * @version $Id$
+ * @package squirrelmail
  */
 
-/* Path for SquirrelMail required files. */
+/**
+ * Path for SquirrelMail required files.
+ * @ignore
+ */
 define('SM_PATH','../');
 
 /* SquirrelMail required files. */
@@ -34,19 +38,17 @@ if (isset($_GET['saved_draft'])) {
 if (isset($_GET['mail_sent'])) {
     $mail_sent = urlencode($_GET['mail_sent']);
 }
-if (isset($_GET['sort'])) {
-	$sort = (int) $_GET['sort'];
-}
-
-if (isset($_GET['startMessage'])) {
-	$startMessage = (int) $_GET['startMessage'];
-}
-
-if(isset($_GET['where'])) {
+if (isset($_GET['where'])) {
     $where = urlencode($_GET['where']);
 }
-if(isset($_GET['what'])) {
+if (isset($_GET['what'])) {
     $what = urlencode($_GET['what']);
+}
+if (isset($_GET['sort'])) {
+    $sort = (int) $_GET['sort'];
+}
+if (isset($_GET['startMessage'])) {
+    $startMessage = (int) $_GET['startMessage'];
 }
 
 $imapConnection = sqimap_login($username, $key, $imapServerAddress, $imapPort, 0);

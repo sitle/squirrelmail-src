@@ -9,10 +9,14 @@
  * Subscribe and unsubcribe from folders. 
  * Called from folders.php
  *
- * $Id$
+ * @version $Id$
+ * @package squirrelmail
  */
 
-/* Path for SquirrelMail required files. */
+/**
+ * Path for SquirrelMail required files.
+ * @ignore
+ */
 define('SM_PATH','../');
 
 /* SquirrelMail required files. */
@@ -42,7 +46,7 @@ $imapConnection = sqimap_login($username, $key, $imapServerAddress, $imapPort, 0
 if ($method == 'sub') {
     if($no_list_for_subscribe && $imap_server_type == 'cyrus') {
        /* Cyrus, atleast, does not typically allow subscription to
-	* nonexistent folders (this is an optional part of IMAP),
+        * nonexistent folders (this is an optional part of IMAP),
         * lets catch it here and report back cleanly. */
        if(!sqimap_mailbox_exists($imapConnection, $mailbox[0])) {
           header("Location: $location/folders.php?success=subscribe-doesnotexist");
