@@ -66,6 +66,8 @@ Version 1.4.4 - CVS
   - Fixed PHP notice when header property value is blank.
   - Fixed decoding function problems when mbstring.func_override has MB_OVERLOAD_REGEX
     enabled.
+  - Removed command line option unsupported by qmail-inject in
+    class/deliver/Deliver_SendMail.class.php. Thanks to Ken Brush.
 
 Version 1.4.3a - 2 June 2004
 ----------------------------
