@@ -19,8 +19,20 @@ independent_strings.txt - extra strings that can't be extracted from squirrelmai
 Support scripts:
 compilepo      - script compiles locales. It uses locale name as first argument.
 mergepo        - script combines strings in main squirrelmail.po with translation
-                 strings. It uses translation name as first argument.
+                 strings. It uses translation name as first argument. Plugin name
+		 can be used as second argument.
+mergeall       - script combines strings in all translations.
 buildpackages  - script compiles and builds separate translation packages in 
                  packages/ directory.
 compilelocales - script compiles all squirrelmail.mo files
 status         - script generates html page with status of translations
+extract-plugin - script creates package with translations of plugin. Name of plugin
+                 is provided as first argument.
+		 
+Files used by guistats:
+essential_files
+essential_packages
+guistats_excludes
+guistats_packages
+teamnames      - list all available translation teams
+
