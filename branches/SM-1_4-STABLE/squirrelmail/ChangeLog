@@ -9,6 +9,11 @@ Version 1.4.4 - CVS
   - Trailing spaces are no longer trimmed from folder names (#818974).
   - Give proper error when PEAR DB not found.
   - Remove inappropriate strip_tags() from add-to-addressbook (#968475).
+  - Translations are no longer included by default but instead are
+    packaged separately. See locales/README.locales for details.
+  - Backport Charset Decoding functions from DEVEL branch. This vastly
+    increases the number of supported character sets and the performance
+    of decoding.
 
 Version 1.4.3a - 2 June 2004
 ----------------------------
