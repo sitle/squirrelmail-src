@@ -12,7 +12,7 @@
    **  $Id$
    **/
 
-$show_link_sample = 0;
-$show_both_sample = 0;
+$show_link_sample = 1;
+$show_both_sample = 1;
 
 ?>
