@@ -5,14 +5,23 @@
  *
  * This file is an addition/modification to the
  * Framework for Object Orientated Web Development (Foowd).
- *
- * $Id$
  */
 
+/**
+ * Specific user extensions for the SquirrelMail documentation site.
+ *
+ * $Id$
+ *
+ * @package smdoc
+ * @subpackage user
+ */
+
+/** Class Descriptor/Meta information */
 setClassMeta('smdoc_user', 'User');
 setConst('USER_CLASS_ID', META_SMDOC_USER_CLASS_ID);
 setConst('USER_CLASS_NAME', 'smdoc_user');
 
+/** Include the user base class */
 include_once(SM_DIR . 'class.user.php');
 
 /**
@@ -21,6 +30,8 @@ include_once(SM_DIR . 'class.user.php');
  * Class for holding information about a user and providing methods for
  * manipulating and getting information on a user.
  *
+ * @package smdoc
+ * @subpackage user
  */
 class smdoc_user extends base_user
 {
@@ -31,11 +42,11 @@ class smdoc_user extends base_user
    * method is envoked to create the missing table and execute the SQL
    * statement again.
    *
-   * @param object foowd The foowd environment object.
+   * @param smdoc foowd Reference to the foowd environment object.
    * @param str SQLString The original SQL string that failed to execute due to missing database table.
    * @return mixed The resulting database query resource or FALSE on failure.
    */
-  function makeTable(&$foowd) 
+  function makeTable(&$foowd)
   {
     global $USER_SOURCE;
 
@@ -61,7 +72,7 @@ class smdoc_user extends base_user
   /**
    * Translate constants for SquirrelMail version to string,
    * or return list of choices.
-   * 
+   *
    * @param optional boolean getAll Ignore value and return array containing all strings.
    * @return either string for integer, or array containing all strings.
    */
@@ -69,7 +80,7 @@ class smdoc_user extends base_user
   {
     global $smver_strings;
     if ( !isset($smver_strings) )
-      $smver_strings = array(_("Unknown"), 
+      $smver_strings = array(_("Unknown"),
                              _("Stable - backlevel"),
                              _("Stable - current"),
                              _("Stable - CVS"),
@@ -85,7 +96,7 @@ class smdoc_user extends base_user
   /**
    * Translate constants for IMAP server to string,
    * or return list of choices.
-   * 
+   *
    * @param optional boolean getAll Ignore value and return array containing all strings.
    * @return either string for integer, or array containing all strings.
    */
@@ -94,7 +105,7 @@ class smdoc_user extends base_user
     global $imap_strings;
     if ( !isset($imap_strings) )
       $imap_strings = array(_("Unknown"),
-                            'Binc', 
+                            'Binc',
                             'Courier-IMAP',
                             'Cyrus',
                             'Dovecot',
@@ -110,7 +121,7 @@ class smdoc_user extends base_user
   /**
    * Translate constants for SMTP server to string,
    * or return list of choices.
-   * 
+   *
    * @param optional boolean getAll Ignore value and return array containing all strings.
    * @return either string for integer, or array containing all strings.
    */
@@ -130,45 +141,45 @@ class smdoc_user extends base_user
 
     if ( $getAll )
         return ($smtp_strings);
-    
+
     return $smtp_strings[$this->SMTP_server];
   }
-    
+
 
 //-------------------------------------------------------------------------------------
 
-  /** 
+  /**
    * #squirrelmail IRC channel nick
    * @var string
    */
-  var $IRC;       
-  
-  /** 
-   * Array containing other IM nicks 
+  var $IRC;
+
+  /**
+   * Array containing other IM nicks
    * @var array
    */
-  var $IM_nicks;         
+  var $IM_nicks;
 
-  /** 
-   * Main supported IM version. @see smver_to_string 
+  /**
+   * Main supported IM version. @see smver_to_string
    * @var constant
    */
-  var $SM_version;       
+  var $SM_version;
 
-  /** 
-   * Preferred IMAP server. @see imap_to_string 
+  /**
+   * Preferred IMAP server. @see imap_to_string
    * @var constant
    */
-  var $IMAP_server;     
+  var $IMAP_server;
 
-  /** 
-   * Preferred SMTP server. @see smtp_to_string 
+  /**
+   * Preferred SMTP server. @see smtp_to_string
    * @var constant
    */
   var $SMTP_server;
 
-  /** 
-   * Show email in profile. 
+  /**
+   * Show email in profile.
    * @var boolean
    */
   var $show_email;
@@ -176,8 +187,7 @@ class smdoc_user extends base_user
   /**
    * Constructs a new user.
    *
-   * @constructor smdoc_user
-   * @param object foowd The foowd environment object.
+   * @param smdoc foowd Reference to the foowd environment object.
    * @param optional str username The users name.
    * @param optional str password An MD5 hash of the users password.
    * @param optional str email The users e-mail address.
@@ -209,7 +219,7 @@ class smdoc_user extends base_user
   /**
    * Serialisation wakeup method.
    */
-  function __wakeup() 
+  function __wakeup()
   {
     parent::__wakeup();
 
@@ -225,8 +235,8 @@ class smdoc_user extends base_user
     $this->foowd_vars_meta['WWW'] = '/^https?:\/\/[a-zA-Z0-9_\-\.]+\.[a-zA-Z]+[a-zA-Z0-9_\-\.\/~]*$/';
 
     // add indices
-    $this->foowd_indexes['IMAP_server'] = array('name' => 'imap', 'type' => 'INT', 'unsigned' => TRUE, 'notnull' => FALSE, 'default' => 0);   
-    $this->foowd_indexes['SMTP_server'] = array('name' => 'smtp', 'type' => 'INT', 'unsigned' => TRUE, 'notnull' => FALSE, 'default' => 0);   
+    $this->foowd_indexes['IMAP_server'] = array('name' => 'imap', 'type' => 'INT', 'unsigned' => TRUE, 'notnull' => FALSE, 'default' => 0);
+    $this->foowd_indexes['SMTP_server'] = array('name' => 'smtp', 'type' => 'INT', 'unsigned' => TRUE, 'notnull' => FALSE, 'default' => 0);
     $this->foowd_indexes['SM_version'] = array('name' => 'sm_ver', 'type' => 'INT', 'unsigned' => TRUE, 'notnull' => FALSE, 'default' => 0);
     $this->foowd_indexes['IRC'] = array('name' => 'irc', 'type' => 'VARCHAR', 'length' => 12, 'notnull' => FALSE, 'default' => '');
   }
@@ -237,7 +247,7 @@ class smdoc_user extends base_user
    * @param  object form The form to add the form items to.
    * @param  array  error If error is encountered, add message to this array
    */
-  function addUserItemsToForm(&$form, &$error) 
+  function addUserItemsToForm(&$form, &$error)
   {
     $this->addContactItemsToForm($form);
     $this->addStatItemsToForm($form);
@@ -247,16 +257,16 @@ class smdoc_user extends base_user
   /**
    * Create form elements for the update form from the objects member variables.
    *
-   * @param  object form  The form to add the form items to. 
+   * @param  object form  The form to add the form items to.
    * @param  array  error If error is encountered, add message to this array
    * @return mixed array of error codes or 0 for success
    */
-  function addContactItemsToForm(&$form) 
+  function addContactItemsToForm(&$form)
   {
     include_once(INPUT_DIR.'input.textbox.php');
 
     $nicks = $this->IM_nicks;   // get all nicks.
-    
+
     unset($nicks['Email']);     // remove Email
     $nicks['IRC'] = $this->IRC; // add IRC
 
@@ -271,13 +281,13 @@ class smdoc_user extends base_user
       $nickBox = new input_textbox($prot, $this->foowd_vars_meta[$prot], $nick, $prot, FALSE);
       $form->addToGroup('nick',$nickBox);
 
-      // If form wasn't submitted, or if the submitted value is the same, continue to next.     
-      if ( !$form->submitted() || 
+      // If form wasn't submitted, or if the submitted value is the same, continue to next.
+      if ( !$form->submitted() ||
            !$nickBox->wasValid ||
            $nickBox->value == $nicks[$prot] )
         continue;
 
-      // Otherwise, the value of the nick changed.. 
+      // Otherwise, the value of the nick changed..
       if ( $prot == 'IRC' )
       {
         $this->IRC = $nickBox->value;
@@ -294,11 +304,11 @@ class smdoc_user extends base_user
   /**
    * Create form elements for the update form from the objects member variables.
    *
-   * @param  object form  The form to add the form items to. 
+   * @param  object form  The form to add the form items to.
    * @param  array  error If error is encountered, add message to this array
    * @return mixed array of error codes or 0 for success
    */
-  function addStatItemsToForm(&$form) 
+  function addStatItemsToForm(&$form)
   {
     include_once(INPUT_DIR . 'input.dropdown.php');
 
@@ -315,7 +325,7 @@ class smdoc_user extends base_user
       if ( $smVersion->value != $this->SM_version )
         $this->set('SM_version', intval($smVersion->value));
     }
-    
+
     $form->addToGroup('stat',$smtpServer);
     $form->addToGroup('stat',$imapServer);
     $form->addToGroup('stat',$smVersion);
@@ -326,13 +336,13 @@ class smdoc_user extends base_user
   /**
    * Output the object.
    *
-   * @param object foowd The foowd environment object.
+   * @param smdoc foowd Reference to the foowd environment object.
    */
-  function method_view() 
+  function method_view()
   {
     $this->foowd->track('smdoc_user->method_view');
 
-    if ( $this->foowd->user->inGroup('Author', $this->creatorid) ) 
+    if ( $this->foowd->user->inGroup('Author', $this->creatorid) )
     {
       $this->foowd->template->assign('SM_version', $this->smver_to_string());
       $this->foowd->template->assign('IMAP_server', $this->imap_to_string());
@@ -349,7 +359,7 @@ class smdoc_user extends base_user
 
     parent::method_view();
 
-    $this->foowd->track(); 
+    $this->foowd->track();
   }
 
 }

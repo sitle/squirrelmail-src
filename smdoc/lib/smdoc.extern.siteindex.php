@@ -1,11 +1,20 @@
 <?php
 /*
- * Modified page index for SquirrelMail
  * Copyright (c) 1999-2003 The SquirrelMail Project Team
  * Licensed under the GNU GPL. For full terms see the file COPYING.
- * $Id$
+ * 
+ * This file is an addition to the
+ * Framework for Object Orientated Web Development (Foowd).
  */
 
+/**
+ * External Resource providing a site index.
+ *
+ * $Id$
+ * 
+ * @package smdoc
+ * @subpackage extern
+ */
 
 /** CLASS DESCRIPTOR **/
 define('SQMINDEX_ID',-2548195);
@@ -38,7 +47,7 @@ $EXTERNAL_RESOURCES[SQMINDEX_ID]['title'] = 'Site Index';
  * )
  * </pre>
  *
- * @param object foowd The foowd environment object.
+ * @param smdoc foowd Reference to the foowd environment object.
  */
 function sqmindex(&$foowd) 
 {

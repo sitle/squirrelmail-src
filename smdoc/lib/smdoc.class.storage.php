@@ -5,8 +5,15 @@
  *
  * This file is an addition/modification to the 
  * Framework for Object Orientated Web Development (Foowd).
+ */
+
+/** 
+ * Implementation of simple class used to store 
+ * data in the DB in the correct format.
+ * Permissions to common methods are denied (Nobody).
  *
  * $Id$
+ * @package smdoc
  */
 
 /** METHOD PERMISSIONS */
@@ -26,14 +33,15 @@ setClassMeta('smdoc_storage', 'Storage class with no permission');
 /**
  * Basic class that restricts certain operations,
  * and maintains no permissions for public access
+ * @package smdoc
  */
 class smdoc_storage extends foowd_object
 {
   /**
-   * Retrieve singleton instance of naming lookup object
-   * @access private static
-   * @param foowd foowd Reference to Foowd Environment
-   * @return Reference to singleton lookup object
+   * Retrieve singleton instance of storage object
+   * @static
+   * @param smdoc foowd Reference to the foowd environment object.
+   * @return Reference to singleton object
    */
   function &getInstance(&$foowd, $className, $classid, $objectid)
   {

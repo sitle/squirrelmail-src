@@ -5,8 +5,14 @@
  *
  * This file is an addition/modification to the
  * Framework for Object Orientated Web Development (Foowd).
+ */
+
+/**
+ * Debug implementation.
+ * Lightly modified from original Foowd implementation.
  *
  * $Id$
+ * @package smdoc
  */
 
 /**
@@ -21,7 +27,7 @@ class smdoc_debug
   /**
    * Function execution tracking data string.
    *
-   * @var str
+   * @var string
    */
   var $trackString = '';
 

@@ -1,13 +1,25 @@
 <?php
 /*
- * Modified page index for SquirrelMail
  * Copyright (c) 1999-2003 The SquirrelMail Project Team
  * Licensed under the GNU GPL. For full terms see the file COPYING.
- * $Id$
+ * 
+ * This file is an addition to the
+ * Framework for Object Orientated Web Development (Foowd).
  */
 
+/**
+ * External Resource providing list of recent changes.
+ *
+ * $Id$
+ * 
+ * @package smdoc
+ * @subpackage extern
+ */
+
+/** Object id for Recent Changes */
 define('SQMCHANGES_ID',-275885230);
 
+/** Add elements to list of external resources */
 $EXTERNAL_RESOURCES['sqmchanges'] = SQMCHANGES_ID;
 $EXTERNAL_RESOURCES[SQMCHANGES_ID]['func'] = 'sqmchanges';
 $EXTERNAL_RESOURCES[SQMCHANGES_ID]['title'] = 'Recent Changes';
@@ -33,7 +45,7 @@ $EXTERNAL_RESOURCES[SQMCHANGES_ID]['title'] = 'Recent Changes';
  *        )
  * )
  * </pre>
- * @param object foowd The foowd environment object.
+ * @param smdoc foowd Reference to the foowd environment object.
  */
 function sqmchanges(&$foowd) 
 {

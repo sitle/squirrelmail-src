@@ -5,20 +5,33 @@
  *
  * This file is an addition/modification to the 
  * Framework for Object Orientated Web Development (Foowd).
- *
- * $Id$
  */
 
+/**
+ * Name lookup implementation used to map easy object name like 'faq' to 
+ * an objectid/classid pair for retrieval.
+ *
+ * $Id$
+ *
+ * @package smdoc
+ */
+
+/** Class descriptor/Meta information */
 setClassMeta('smdoc_name_lookup', 'Singleton object lookup/name manager');
-setConst('REGEX_SHORTNAME', '/^[a-z_-]{0,11}$/');
 setConst('SHORTNAMES_ID', 1063068242);
 
+/** Regex to validate shortname */
+setConst('REGEX_SHORTNAME', '/^[a-z_-]{0,11}$/');
+
+/** Include base storage class */
 include_once(SM_DIR . 'smdoc.class.storage.php');
 
 /**
  * Singleton class provides a basic mapping for 
  * well-known simple names (faq, privacy..)
  * to objectid/className pairs.
+ * 
+ * @package smdoc
  */
 class smdoc_name_lookup extends smdoc_storage
 {
@@ -31,7 +44,7 @@ class smdoc_name_lookup extends smdoc_storage
   /**
    * Constructor
    * Initialize new instance of smdoc_internal_mapping.
-   * @param foowd foowd Reference to Foowd environment 
+   * @param smdoc foowd Reference to Foowd environment 
    */
   function smdoc_name_lookup(&$foowd) 
   {
@@ -121,8 +134,7 @@ class smdoc_name_lookup extends smdoc_storage
    * Add textbox to form for association of shortname
    * with object.
    *
-   * @access static
-   *
+   * @static
    * @param object     obj      Object to make shortname for
    * @param input_form form     Form to add element to
    */
@@ -155,12 +167,11 @@ class smdoc_name_lookup extends smdoc_storage
     return FALSE;
   }
 
-  //----------------- STATIC METHODS -------------------
-
   /**
    * Retrieve singleton instance of naming lookup object
-   * @access static
-   * @param foowd foowd Reference to Foowd Environment
+   *
+   * @static
+   * @param smdoc foowd Reference to the foowd environment object.
    * @return Reference to singleton lookup object
    */
   function &getInstance(&$foowd)

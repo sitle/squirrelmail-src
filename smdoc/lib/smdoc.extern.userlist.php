@@ -1,13 +1,25 @@
 <?php
 /*
- * Modified page index for SquirrelMail
  * Copyright (c) 1999-2003 The SquirrelMail Project Team
  * Licensed under the GNU GPL. For full terms see the file COPYING.
- * $Id$
+ * 
+ * This file is an addition to the
+ * Framework for Object Orientated Web Development (Foowd).
  */
 
+/**
+ * External Resource providing list of registered users.
+ *
+ * $Id$
+ * 
+ * @package smdoc
+ * @subpackage extern
+ */
+
+/** Objectid for smdoc user list. */
 define('SQMUSER_ID',1307013381);
 
+/** Additions to the list of external resources */
 $EXTERNAL_RESOURCES['sqmuser'] = SQMUSER_ID;
 $EXTERNAL_RESOURCES[SQMUSER_ID]['func'] = 'sqmuser';
 $EXTERNAL_RESOURCES[SQMUSER_ID]['title'] = 'Users';
@@ -34,7 +46,7 @@ $EXTERNAL_RESOURCES[SQMUSER_ID]['title'] = 'Users';
  *        )
  * )
  * </pre>
- * @param object foowd The foowd environment object.
+ * @param smdoc foowd Reference to the foowd environment object.
  */
 function sqmuser(&$foowd) 
 {

@@ -5,8 +5,14 @@
  *
  * This file is an addition/modification to the
  * Framework for Object Orientated Web Development (Foowd).
- *
+ */
+
+/** 
+ * Singleton Group Manager.
+ * 
  * $Id$
+ * @package smdoc
+ * @subpackage group
  */
 
 /** Helper classes that actually store group data in the DB. */
@@ -15,6 +21,9 @@ include_once(SM_DIR . 'smdoc.class.group.php');
 /**
  * Independent class that manages list of groups
  * cached in the session
+ * 
+ * @package smdoc
+ * @subpackage group
  */
 class smdoc_group
 {
@@ -28,7 +37,7 @@ class smdoc_group
   /**
    * smdoc_group Constructor
    * 
-   * @param object foowd The foowd environment object.
+   * @param smdoc foowd Reference to the foowd environment object.
    */
   function smdoc_group(&$foowd)
   {
@@ -40,8 +49,7 @@ class smdoc_group
    * initializeUserGroups initializes an array in the session containing a list
    * of user groups as 'internal name/objectid' => 'external name'.
    *
-   * @param array   $groups     - array of additional groups to include
-   *                              in group list (for foowd object use).
+   * @param optional bool forceRefresh If true, force refresh of list in session.
    */
   function initializeUserGroups($forceRefresh=FALSE)
   {
