@@ -46,7 +46,9 @@
  * @return string $string Decoded string
 */
 function charset_decode_euc_jp($string) {
-  if (!$agresive_decoding) return $string;
+  global $aggressive_decoding;
+
+  if (!$aggressive_decoding) return $string;
 
   $eucjp = array(
         "\xA1\xA1" => '&#12288;',

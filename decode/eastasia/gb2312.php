@@ -43,9 +43,9 @@
  * @return string $string Decoded string
  */
 function charset_decode_gb2312 ($string) {
-    global $default_charset,$agresive_decoding;
+    global $default_charset,$aggressive_decoding;
 
-    if (!$agresive_decoding) return $string;
+    if (!$aggressive_decoding) return $string;
 
     $gb2312 = array(
 	"\xA1\xA1" => '&#12288;',
