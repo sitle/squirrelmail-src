@@ -21,6 +21,22 @@ require_once('../config/config.php');
 require_once('../functions/page_header.php');
 require_once('../src/load_prefs.php');
 
+/* get globals */
+
+if (isset($_GET['month'])) {
+    $month = $_GET['month'];
+}
+if (isset($_GET['year'])) {
+    $year = $_GET['year'];
+}
+if (isset($_POST['year'])) {
+    $year = $_POST['year'];
+}
+if (isset($_POST['month'])) {
+    $month = $_POST['month'];
+}
+/* got 'em */
+
 //display upper part of month calendar view
 function startcalendar() {
     global $year, $month, $day, $color;
@@ -126,6 +142,7 @@ if( !isset($year) || $year <= 0){
 if( !isset($day) || $day <= 0){
     $day = date( 'd' );
 }
+
 
 $todayis = date( 'mdY' );
 $calself=basename($PHP_SELF);

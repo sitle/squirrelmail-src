@@ -52,6 +52,9 @@ function writecalendardata() {
         while ( $calfoo = each ($calendardata)) {
             while ( $calbar = each ($calfoo['value'])) {
                 $calfoobar = $calendardata[$calfoo['key']][$calbar['key']];
+    if (!isset($calfoobar['reminder'])) {
+        $calfoobar['reminder'] = "";
+    }
                 $calstr = "$calfoo[key]|$calbar[key]|$calfoobar[length]|$calfoobar[priority]|$calfoobar[title]|$calfoobar[message]|$calfoobar[reminder]\n";
                 fwrite($fp, $calstr, 4096);
             }
