@@ -403,7 +403,7 @@ if (isset($absolute_dl) && $absolute_dl == 'true') {
 	    viewMessage($imapConnection, $passed_id, $mailbox, $passed_ent_id, $message, $color, $wrap_at);
 	} else {
     	    $body = mime_fetch_body($imapConnection, $passed_id, $passed_ent_id);
-    	    $body = decodeBody($body, $msgheader->encoding);
+    	    $body = decodeBody($body, $header->encoding);
     	    viewText($color, $body, $passed_id, $passed_ent_id, $mailbox, $type1, $wrap_at);
         }
         break;

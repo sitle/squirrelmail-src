@@ -197,9 +197,10 @@ function ServerMDNSupport( $read ) {
 }
 
 function SendMDN ( $recipient , $sender) {
-    global $imapConnection, $mailbox, $username, $attachment_dir, $SERVER_NAME,
+    global $imapConnection, $mailbox, $username, $attachment_dir, $_SERVER,
            $version, $attachments, $identity, $data_dir, $passed_id;
 
+    $SERVER_NAME = $_SERVER['SERVER_NAME'];
     $header = sqimap_get_message_header($imapConnection, $passed_id, $mailbox);
     $hashed_attachment_dir = getHashedDir($username, $attachment_dir);
 
