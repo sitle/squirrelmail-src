@@ -12,8 +12,6 @@
  * $Id$
  */
 
-require_once(SM_PATH . 'functions/global.php');
-
 /**
  * SquirrelMail version number -- DO NOT CHANGE
  */
@@ -27,6 +25,7 @@ $version = '1.4.1 [CVS]';
 global $SQM_INTERNAL_VERSION;
 $SQM_INTERNAL_VERSION = array(1,4,1);
 
+require_once(SM_PATH . 'functions/global.php');
 
 /**
  * Wraps text at $wrap characters
