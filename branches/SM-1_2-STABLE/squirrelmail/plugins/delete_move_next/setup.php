@@ -350,6 +350,9 @@ function delete_move_next_display_inside() {
 function delete_move_next_display_save() {
 
     global $username, $data_dir;
+    if ( (float)substr(PHP_VERSION,0,3) < 4.1 ) {
+        global $_POST;
+    }
     if (isset($_POST['delete_move_next_ti'])) {
         $delete_move_next_ti = $_POST['delete_move_next_ti'];
     }
