@@ -72,6 +72,19 @@ class foowd_external extends foowd_object {
         $foowd->track();
     }
 
+    function &factory(&$foowd, $objectid)
+    {
+      global $EXTERNAL_RESOURCES;
+      $ext_obj = NULL;
+      if ( isset($EXTERNAL_RESOURCES) &&
+           is_array($EXTERNAL_RESOURCES) &&
+           array_key_exists(intval($objectid), $EXTERNAL_RESOURCES) ) 
+      {
+        $ext_obj = new foowd_external($foowd, intval($objectid));
+      }
+      return $ext_obj;
+    }
+
     function set(&$foowd, $member, $value = NULL) {
         return FALSE;
     }
