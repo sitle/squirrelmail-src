@@ -8,10 +8,12 @@
  *
  * Functions and classes for the addressbook system.
  *
- * $Id$
+ * @version $Id$
+ * @package squirrelmail
+ * @subpackage addressbook
  */
 
-/*
+/**
    This is the path to the global site-wide addressbook.
    It looks and feels just like a user's .abook file
    If this is in the data directory, use "$data_dir/global.abook"
@@ -31,7 +33,7 @@
 
 global $addrbook_dsn;
 
-/*
+/**
    Create and initialize an addressbook object.
    Returns the created object
 */
@@ -92,7 +94,7 @@ function addressbook_init($showerr = true, $onlylocal = false) {
                 $r = $abook->add_backend('ldap_server', $param);
                 if (!$r && $showerr) {
                     printf( '&nbsp;' . _("Error initializing LDAP server %s:") .
-                            "<BR>\n", $param['host']);
+                            "<br />\n", $param['host']);
                     echo '&nbsp;' . $abook->error;
                     exit;
                 }
@@ -108,7 +110,7 @@ function addressbook_init($showerr = true, $onlylocal = false) {
 /*
  *   Had to move this function outside of the Addressbook Class
  *   PHP 4.0.4 Seemed to be having problems with inline functions.
- */    
+ */
 function addressbook_cmp($a,$b) {
 
     if($a['backend'] > $b['backend']) {
@@ -116,16 +118,16 @@ function addressbook_cmp($a,$b) {
     } else if($a['backend'] < $b['backend']) {
         return -1;
     }
-    
+
     return (strtolower($a['name']) > strtolower($b['name'])) ? 1 : -1;
 
 }
 
 
-/*
+/**
  * This is the main address book class that connect all the
  * backends and provide services to the functions above.
- *
+ * @package squirrelmail
  */
 
 class AddressBook {
@@ -135,7 +137,7 @@ class AddressBook {
     var $error       = '';
     var $localbackend = 0;
     var $localbackendname = '';
-    
+
       // Constructor function.
     function AddressBook() {
         $localbackendname = _("Personal address book");
@@ -176,7 +178,7 @@ class AddressBook {
 
         $newback->bnum = $this->numbackends;
         $this->backends[$this->numbackends] = $newback;
-        
+
         /* Store ID of first local backend added */
         if ($this->localbackend == 0 && $newback->btype == 'local') {
             $this->localbackend = $this->numbackends;
@@ -188,7 +190,7 @@ class AddressBook {
 
 
     /*
-     * This function takes a $row array as returned by the addressbook 
+     * This function takes a $row array as returned by the addressbook
      * search and returns an e-mail address with the full name or
      * nickname optionally prepended.
      */
@@ -224,7 +226,7 @@ class AddressBook {
                 if (is_array($res)) {
                     $ret = array_merge($ret, $res);
                 } else {
-                    $this->error .= "<br>\n" . $backend->error;
+                    $this->error .= "<br />\n" . $backend->error;
                     $failed++;
                 }
             }
@@ -240,7 +242,7 @@ class AddressBook {
 
             $ret = $this->backends[$bnum]->search($expression);
             if (!is_array($ret)) {
-                $this->error .= "<br>\n" . $this->backends[$bnum]->error;
+                $this->error .= "<br />\n" . $this->backends[$bnum]->error;
                 $ret = FALSE;
             }
         }
@@ -251,11 +253,11 @@ class AddressBook {
 
     /* Return a sorted search */
     function s_search($expression, $bnum = -1) {
-    
+
         $ret = $this->search($expression, $bnum);
         if ( is_array( $ret ) ) {
             usort($ret, 'addressbook_cmp');
-        }    
+        }
         return $ret;
     }
 
@@ -265,9 +267,9 @@ class AddressBook {
      *  local backends.
      */
     function lookup($alias, $bnum = -1) {
-    
+
         $ret = array();
-    
+
         if ($bnum > -1) {
             $res = $this->backends[$bnum]->lookup($alias);
             if (is_array($res)) {
@@ -277,7 +279,7 @@ class AddressBook {
                return false;
             }
         }
-    
+
         $sel = $this->get_backend_list('local');
         for ($i = 0 ; $i < sizeof($sel) ; $i++) {
             $backend = &$sel[$i];
@@ -291,7 +293,7 @@ class AddressBook {
                return false;
             }
         }
-        
+
         return $ret;
     }
 
@@ -299,13 +301,13 @@ class AddressBook {
     /* Return all addresses */
     function list_addr($bnum = -1) {
         $ret = array();
-        
+
         if ($bnum == -1) {
             $sel = $this->get_backend_list('local');
         } else {
             $sel = array(0 => &$this->backends[$bnum]);
         }
-        
+
         for ($i = 0 ; $i < sizeof($sel) ; $i++) {
             $backend = &$sel[$i];
             $backend->error = '';
@@ -317,7 +319,7 @@ class AddressBook {
                return false;
             }
         }
-        
+
         return $ret;
     }
 
@@ -327,7 +329,7 @@ class AddressBook {
      * to, or false if it failed.
      */
     function add($userdata, $bnum) {
-    
+
         /* Validate data */
         if (!is_array($userdata)) {
             $this->error = _("Invalid input data");
@@ -344,18 +346,18 @@ class AddressBook {
         if (empty($userdata['nickname'])) {
             $userdata['nickname'] = $userdata['email'];
         }
-        
+
         if (eregi('[ \\:\\|\\#\\"\\!]', $userdata['nickname'])) {
             $this->error = _("Nickname contains illegal characters");
             return false;
         }
-        
+
         /* Check that specified backend accept new entries */
         if (!$this->backends[$bnum]->writeable) {
             $this->error = _("Addressbook is read-only");
             return false;
         }
-        
+
         /* Add address to backend */
         $res = $this->backends[$bnum]->add($userdata);
         if ($res) {
@@ -364,7 +366,7 @@ class AddressBook {
             $this->error = $this->backends[$bnum]->error;
             return false;
         }
-        
+
         return false;  // Not reached
     } /* end of add() */
 
@@ -374,23 +376,23 @@ class AddressBook {
      * If $alias is an array, all users in the array are removed.
      */
     function remove($alias, $bnum) {
-    
+
         /* Check input */
         if (empty($alias)) {
             return true;
         }
-        
+
         /* Convert string to single element array */
         if (!is_array($alias)) {
             $alias = array(0 => $alias);
         }
-        
+
         /* Check that specified backend is writable */
         if (!$this->backends[$bnum]->writeable) {
             $this->error = _("Addressbook is read-only");
             return false;
         }
-        
+
         /* Remove user from backend */
         $res = $this->backends[$bnum]->remove($alias);
         if ($res) {
@@ -399,7 +401,7 @@ class AddressBook {
             $this->error = $this->backends[$bnum]->error;
             return false;
         }
-        
+
         return FALSE;  /* Not reached */
     } /* end of remove() */
 
@@ -409,12 +411,12 @@ class AddressBook {
      * If $alias is an array, all users in the array are removed.
      */
     function modify($alias, $userdata, $bnum) {
-    
+
         /* Check input */
         if (empty($alias) || !is_string($alias)) {
             return true;
         }
-        
+
         /* Validate data */
         if(!is_array($userdata)) {
             $this->error = _("Invalid input data");
@@ -428,22 +430,22 @@ class AddressBook {
             $this->error = _("E-mail address is missing");
             return false;
         }
-        
+
         if (eregi('[\\: \\|\\#"\\!]', $userdata['nickname'])) {
             $this->error = _("Nickname contains illegal characters");
             return false;
         }
-        
+
         if (empty($userdata['nickname'])) {
             $userdata['nickname'] = $userdata['email'];
         }
-        
+
         /* Check that specified backend is writable */
         if (!$this->backends[$bnum]->writeable) {
             $this->error = _("Addressbook is read-only");;
             return false;
         }
-        
+
         /* Modify user in backend */
         $res = $this->backends[$bnum]->modify($alias, $userdata);
         if ($res) {
@@ -452,15 +454,16 @@ class AddressBook {
             $this->error = $this->backends[$bnum]->error;
             return false;
         }
-        
+
         return FALSE;  /* Not reached */
     } /* end of modify() */
-    
-    
+
+
 } /* End of class Addressbook */
 
-/*
+/**
  * Generic backend that all other backends extend
+ * @package squirrelmail
  */
 class addressbook_backend {
 
@@ -468,7 +471,7 @@ class addressbook_backend {
     var $btype      = 'dummy';
     var $bname      = 'dummy';
     var $sname      = 'Dummy backend';
-    
+
     /*
      * Variables common for all backends, but that
      * should not be changed by the backends.
@@ -476,40 +479,40 @@ class addressbook_backend {
     var $bnum       = -1;
     var $error      = '';
     var $writeable  = false;
-    
+
     function set_error($string) {
         $this->error = '[' . $this->sname . '] ' . $string;
         return false;
     }
-    
-    
+
+
     /* ========================== Public ======================== */
-    
+
     function search($expression) {
         $this->set_error('search not implemented');
         return false;
     }
-    
+
     function lookup($alias) {
         $this->set_error('lookup not implemented');
         return false;
     }
-    
+
     function list_addr() {
         $this->set_error('list_addr not implemented');
         return false;
     }
-    
+
     function add($userdata) {
         $this->set_error('add not implemented');
         return false;
     }
-    
+
     function remove($alias) {
         $this->set_error('delete not implemented');
         return false;
     }
-    
+
     function modify($alias, $newuserdata) {
         $this->set_error('modify not implemented');
         return false;
@@ -517,7 +520,9 @@ class addressbook_backend {
 
 }
 
-/* Sort array by the key "name" */
+/**
+ * Sort array by the key "name"
+ */
 function alistcmp($a,$b) {
     if ($a['backend'] > $b['backend']) {
         return 1;

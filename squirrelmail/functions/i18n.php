@@ -1,7 +1,7 @@
 <?php
 
 /**
- * i18n.php
+ * SquirrelMail internationalization functions
  *
  * Copyright (c) 1999-2004 The SquirrelMail Project Team
  * Licensed under the GNU GPL. For full terms see the file COPYING.
@@ -12,9 +12,12 @@
  * Internally the output character set is used. Other characters are
  * encoded using Unicode entities according to HTML 4.0.
  *
- * $Id$
+ * @version $Id$
+ * @package squirrelmail
+ * @subpackage i18n
  */
 
+/** Everything uses global.php... */
 require_once(SM_PATH . 'functions/global.php');
 
 /* Decodes a string to the internal encoding from the given charset */
@@ -27,7 +30,7 @@ function charset_decode ($charset, $string) {
     }
 
     /* All HTML special characters are 7 bit and can be replaced first */
-    
+
     $string = htmlspecialchars ($string);
 
     $charset = strtolower($charset);
@@ -468,7 +471,7 @@ function japanese_charset_xtra() {
                 $detect_encoding == 'EUC-JP' ||
                 $detect_encoding == 'SJIS' ||
                 $detect_encoding == 'UTF-8') {
-                
+
                 $ret = mb_convert_kana(mb_convert_encoding($ret, 'EUC-JP', 'AUTO'), "KV");
             }
             break;
@@ -478,13 +481,13 @@ function japanese_charset_xtra() {
                 $detect_encoding == 'EUC-JP' ||
                 $detect_encoding == 'SJIS' ||
                 $detect_encoding == 'UTF-8') {
-                
+
                 $ret = mb_convert_encoding(mb_convert_kana($ret, "KV"), 'JIS', 'AUTO');
             }
             break;
         case 'strimwidth':
             $width = func_get_arg(2);
-            $ret = mb_strimwidth($ret, 0, $width, '...'); 
+            $ret = mb_strimwidth($ret, 0, $width, '...');
             break;
         case 'encodeheader':
             $result = '';
@@ -499,7 +502,7 @@ function japanese_charset_xtra() {
                         if ($prevcsize == 1) {
                             $result .= $tmpstr;
                         } else {
-                            $result .= str_replace(' ', '', 
+                            $result .= str_replace(' ', '',
                                                    mb_encode_mimeheader($tmpstr,'iso-2022-jp','B',''));
                         }
                         $tmpstr = $tmp;
@@ -543,23 +546,23 @@ function japanese_charset_xtra() {
             $no_end = "\x5c\x24\x28\x5b\x7b\xa1\xf2\x5c\xa1\xc6\xa1\xc8\xa1\xd2\xa1" .
                 "\xd4\xa1\xd6\xa1\xd8\xa1\xda\xa1\xcc\xa1\xf0\xa1\xca\xa1\xce\xa1\xd0\xa1\xef";
             $wrap = func_get_arg(2);
-            
-            if (strlen($ret) >= $wrap && 
+
+            if (strlen($ret) >= $wrap &&
                 substr($ret, 0, 1) != '>' &&
                 strpos($ret, 'http://') === FALSE &&
                 strpos($ret, 'https://') === FALSE &&
                 strpos($ret, 'ftp://') === FALSE) {
-                
+
                 $ret = mb_convert_kana($ret, "KV");
 
                 $line_new = '';
                 $ptr = 0;
-                
+
                 while ($ptr < strlen($ret) - 1) {
                     $l = mb_strcut($ret, $ptr, $wrap);
                     $ptr += strlen($l);
                     $tmp = $l;
-                    
+
                     $l = mb_strcut($ret, $ptr, 2);
                     while (strlen($l) != 0 && mb_strpos($no_begin, $l) !== FALSE ) {
                         $tmp .= $l;
@@ -590,7 +593,7 @@ function japanese_charset_xtra() {
  * Hangul(Korean Character) Attached File Name Fix.
  */
 function korean_charset_xtra() {
-    
+
     $ret = func_get_arg(1);  /* default return value */
     if (func_get_arg(0) == 'downloadfilename') { /* action */
         $ret = str_replace("\x0D\x0A", '', $ret);  /* Hanmail's CR/LF Clear */

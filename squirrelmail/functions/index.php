@@ -10,9 +10,12 @@
  * people to the login screen. At this point no attempt is made to see if
  * the person is logged or not.
  *
- * $Id$
+ * @version $Id$
+ * @package squirrelmail
  */
 
+/** Redirect back to the login page
+ * @ignore */
 header("Location:../index.php");
 
 /* pretty impressive huh? */

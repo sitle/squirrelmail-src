@@ -9,9 +9,11 @@
  * This contains functions that display mailbox information, such as the
  * table row that has sender, date, subject, etc...
  *
- * $Id$
+ * @version $Id$
+ * @package squirrelmail
  */
 
+/** The standard includes.. */
 require_once(SM_PATH . 'functions/strings.php');
 require_once(SM_PATH . 'functions/html.php');
 require_once(SM_PATH . 'class/html.class.php');
@@ -41,7 +43,7 @@ function elapsed($start)
 function printMessageInfo($imapConnection, $t, $not_last=true, $key, $mailbox,
                           $start_msg, $where, $what) {
     global $checkall,
-           $color, $msgs, $msort, $td_str, $msg, 
+           $color, $msgs, $msort, $td_str, $msg,
            $default_use_priority,
            $message_highlight_list,
            $index_order,
@@ -78,7 +80,7 @@ function printMessageInfo($imapConnection, $t, $not_last=true, $key, $mailbox,
        $msg['FROM'] = $msg['TO'];
     }
     $msg['FROM'] = parseAddress($msg['FROM'],1);
-    
+
        /*
         * This is done in case you're looking into Sent folders,
         * because you can have multiple receivers.
@@ -135,7 +137,7 @@ function printMessageInfo($imapConnection, $t, $not_last=true, $key, $mailbox,
     } else {
         $searchstr = '';
     }
-    
+
     if (is_array($message_highlight_list) && count($message_highlight_list)) {
         $msg['TO'] = parseAddress($msg['TO']);
         $msg['CC'] = parseAddress($msg['CC']);
@@ -167,7 +169,7 @@ function printMessageInfo($imapConnection, $t, $not_last=true, $key, $mailbox,
                             $headertest = strtolower(decodeHeader($msg[$match_type], true, false));
                             if (strstr('^^' . $headertest, $high_val)) {
                                 $hlt_color = $message_highlight_list_part['color'];
-                                break 3; 
+                                break 3;
                             }
                             break;
                     }
@@ -183,7 +185,7 @@ function printMessageInfo($imapConnection, $t, $not_last=true, $key, $mailbox,
     $col = 0;
     $msg['SUBJECT'] = decodeHeader($msg['SUBJECT']);
     $subject = processSubject($msg['SUBJECT'], $indent_array[$msg['ID']]);
-    $subject = str_replace('&nbsp;',' ',$subject);    
+    $subject = str_replace('&nbsp;',' ',$subject);
     if (sizeof($index_order)) {
         foreach ($index_order as $index_order_part) {
             switch ($index_order_part) {
@@ -485,11 +487,11 @@ function showMessagesForMailbox($imapConnection, $mailbox, $num_msgs,
     echo '<table border="0" width="100%" cellpadding="0" cellspacing="0">';
     echo '<tr><td>';
 
-    mail_message_listing_beginning($imapConnection, $mailbox, $sort, 
+    mail_message_listing_beginning($imapConnection, $mailbox, $sort,
                                   $msg_cnt_str, $paginator_str, $start_msg);
     echo '</td></tr>';
     /* line between the button area and the list */
-    echo '<tr><td HEIGHT="5" BGCOLOR="'.$color[4].'"></td></tr>';  
+    echo '<tr><td HEIGHT="5" BGCOLOR="'.$color[4].'"></td></tr>';
 
     echo '<tr><td>';
     echo '    <table width="100%" cellpadding="1" cellspacing="0" align="center"'.' border="0" bgcolor="'.$color[9].'">';
@@ -498,11 +500,11 @@ function showMessagesForMailbox($imapConnection, $mailbox, $num_msgs,
     echo '<tr><td>';
     printHeader($mailbox, $srt, $color, !$thread_sort_messages);
 
-    displayMessageArray($imapConnection, $num_msgs, $start_msg, 
+    displayMessageArray($imapConnection, $num_msgs, $start_msg,
 		      $msort, $mailbox, $sort, $color, $show_num,0,0);
     echo '</td></tr></table></td></tr></table>';
 
-    mail_message_listing_end($num_msgs, $paginator_str, $msg_cnt_str, $color); 
+    mail_message_listing_end($num_msgs, $paginator_str, $msg_cnt_str, $color);
     echo '</td></tr></table>';
     //$t = elapsed($start);
     //echo("elapsed time = $t seconds\n");
@@ -692,9 +694,9 @@ function mail_message_listing_beginning ($imapConnection,
                     html_tag( 'table' ,
                         html_tag( 'tr',
                             html_tag( 'td', $paginator, 'left' ) .
-                            html_tag( 'td', $msg_cnt_str, 'right' ) 
+                            html_tag( 'td', $msg_cnt_str, 'right' )
                         )
-                    , '', $color[4], 'border="0" width="100%" cellpadding="1"  cellspacing="0"' ) 
+                    , '', $color[4], 'border="0" width="100%" cellpadding="1"  cellspacing="0"' )
                 , 'left', '', '' )
             , '', $color[0] )
 	    , '', '', 'border="0" width="100%" cellpadding="1"  cellspacing="0"' );
@@ -713,9 +715,9 @@ function mail_message_listing_beginning ($imapConnection,
             )
             . html_tag( 'tr' ) ."\n"
             . html_tag( 'td', '', 'left', '', 'valign="middle" nowrap' );
-            getMbxList($imapConnection);  
-            echo getButton('SUBMIT', 'moveButton',_("Move")) . "\n";   
-            echo getButton('SUBMIT', 'attache',_("Forward")) . "\n";   
+            getMbxList($imapConnection);
+            echo getButton('SUBMIT', 'moveButton',_("Move")) . "\n";
+            echo getButton('SUBMIT', 'attache',_("Forward")) . "\n";
 
   echo "      </small></td>\n"
          . html_tag( 'td', '', 'right', '', 'nowrap' );
@@ -778,7 +780,7 @@ function mail_message_listing_beginning ($imapConnection,
 function mail_message_listing_end($num_msgs, $paginator_str, $msg_cnt_str, $color) {
   if ($num_msgs) {
     /* space between list and footer */
-    echo '<tr><td HEIGHT="5" BGCOLOR="'.$color[4].'" COLSPAN="1">';  
+    echo '<tr><td HEIGHT="5" BGCOLOR="'.$color[4].'" COLSPAN="1">';
 
     echo '</td></tr><tr><td>';
     echo html_tag( 'table',
@@ -810,7 +812,7 @@ function printHeader($mailbox, $sort, $color, $showsort=true) {
     $widths = array(1=>1,2=>25,3=>5,4=>0,5=>1,6=>5);
     $subjectwidth = 100;
     foreach($index_order as $item) {
-        $subjectwidth -= $widths[$item]; 
+        $subjectwidth -= $widths[$item];
     }
 
     foreach ($index_order as $item) {
@@ -1105,7 +1107,7 @@ function get_paginator_str($box, $start_msg, $end_msg, $num_msgs,
 	 */
          // echo "qts =  $q1_pgs/$q2_pgs/$q3_pgs/$q4_pgs = "
          //     . ($q1_pgs + $q2_pgs + $q3_pgs + $q4_pgs) . '<br>';
-         
+
 
         /* Print out the page links from the compute page quarters. */
 
@@ -1211,7 +1213,7 @@ function processSubject($subject, $threadlevel = 0) {
      * see if this is entities-encoded string
      * If so, Iterate through the whole string, find out
      * the real number of characters, and if more
-     * than 55, substr with an updated trim value. 
+     * than 55, substr with an updated trim value.
      */
     $step = $ent_loc = 0;
     while ( $ent_loc < $trim_val && (($ent_loc = strpos($subject, '&', $ent_offset)) !== false) &&
@@ -1220,7 +1222,7 @@ function processSubject($subject, $threadlevel = 0) {
         $ent_offset  = $ent_loc_end+1;
         ++$step;
     }
-    
+
     if (($trim_val > 50) && (strlen($subject) > ($trim_val))&& (strpos($subject,';',$trim_val) < ($trim_val +6))) {
         $i = strpos($subject,';',$trim_val);
         if ($i) {
@@ -1247,7 +1249,7 @@ function processSubject($subject, $threadlevel = 0) {
 function getMbxList($imapConnection) {
     global $lastTargetMailbox;
     echo  '         <small>&nbsp;<tt><select name="targetMailbox">';
-    echo sqimap_mailbox_option_list($imapConnection, array(strtolower($lastTargetMailbox)) ); 
+    echo sqimap_mailbox_option_list($imapConnection, array(strtolower($lastTargetMailbox)) );
     echo '         </SELECT></TT>&nbsp;';
 }
 
@@ -1281,7 +1283,7 @@ function getEndMessage($start_msg, $show_num, $num_msgs) {
 
 function handleAsSent($mailbox) {
     global $handleAsSent_result;
- 
+
     /* First check if this is the sent or draft folder. */
     $handleAsSent_result = isSentMailbox($mailbox) || isDraftMailbox($mailbox);
 

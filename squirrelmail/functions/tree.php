@@ -143,7 +143,7 @@ function walkTreeInPostOrderCreatingFoldersUnderTrash($index, $imap_stream, $tre
 
     if ($tree[$index]['doIHaveChildren']) {
         sqimap_mailbox_create($imap_stream, $trash_folder . $delimiter . $subFolderName, "");
-        $mbx_response = sqimap_mailbox_select($imap_stream, $tree[$index]['value']);	    
+        $mbx_response = sqimap_mailbox_select($imap_stream, $tree[$index]['value']);
         $messageCount = $mbx_response['EXISTS'];
         if ($messageCount > 0) {
             sqimap_messages_copy($imap_stream, 1, '*', $trash_folder . $delimiter . $subFolderName);
@@ -175,9 +175,9 @@ function simpleWalkTreePre($index, $tree) {
         for ($j = 0; $j < count($tree[$index]['subNodes']); $j++) {
             simpleWalkTreePre($tree[$index]['subNodes'][$j], $tree);
         }
-        echo $tree[$index]['value'] . '<br>';
+        echo $tree[$index]['value'] . '<br />';
     } else {
-        echo $tree[$index]['value'] . '<br>';
+        echo $tree[$index]['value'] . '<br />';
     }
 }
 ?>

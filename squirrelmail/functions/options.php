@@ -8,7 +8,8 @@
  *
  * Functions needed to display the options pages.
  *
- * $Id$
+ * @version $Id$
+ * @package squirrelmail
  */
 
 /**********************************************/
@@ -52,6 +53,7 @@ define('SMOPT_SAVE_NOOP', 'save_option_noop');
  * Also, I'd like to ask that people leave this alone (mostly :) until
  * I get it a little further along. That should only be a day or two or
  * three. I will remove this message when it is ready for primetime usage.
+ * @package squirrelmail
  */
 class SquirrelOption {
     /* The basic stuff. */
@@ -95,7 +97,7 @@ class SquirrelOption {
         }
 
         /* Check for a new value. */
-	if ( !sqgetGlobalVar("new_$name", $this->new_value, SQ_POST ) ) {
+    if ( !sqgetGlobalVar("new_$name", $this->new_value, SQ_POST ) ) {
             $this->new_value = '';
         }
 
@@ -145,8 +147,8 @@ class SquirrelOption {
     function createHTMLWidget() {
         global $javascript_on;
 
-        // Use new value if available 
-        if (!empty($this->new_value)) { 
+        // Use new value if available
+        if (!empty($this->new_value)) {
             $tempValue = $this->value;
             $this->value = $this->new_value;
         }
@@ -188,7 +190,7 @@ class SquirrelOption {
 
         /* Add the "post script" for this option. */
         $result .= $this->post_script;
-        
+
         // put correct value back if need be
         if (!empty($this->new_value)) {
             $this->value = $tempValue;
@@ -218,7 +220,7 @@ class SquirrelOption {
         }
 
         $result = "<input type=\"text\" name=\"new_$this->name\" value=\"" .
-            htmlspecialchars($this->value) . 
+            htmlspecialchars($this->value) .
             "\" size=\"$width\" $this->script />\n";
         return ($result);
     }
@@ -230,7 +232,7 @@ class SquirrelOption {
         /* Add each possible value to the select list. */
         foreach ($this->possible_values as $real_value => $disp_value) {
             /* Start the next new option string. */
-            $new_option = '<option value="' . 
+            $new_option = '<option value="' .
                 htmlspecialchars($real_value) . '"';
 
             /* If this value is the current value, select it. */
@@ -258,24 +260,24 @@ class SquirrelOption {
 
         /* Add each possible value to the select list. */
         foreach ($this->possible_values as $real_value => $disp_value) {
-            if ( is_array($disp_value) ) { 
+            if ( is_array($disp_value) ) {
               /* For folder list, we passed in the array of boxes.. */
               $new_option = sqimap_mailbox_option_list(0, $selected, 0, $disp_value);
             } else {
               /* Start the next new option string. */
               $new_option = '<option value="' . htmlspecialchars($real_value) . '"';
-  
+
               /* If this value is the current value, select it. */
               if ($real_value == $this->value) {
                  $new_option .= ' selected="selected"';
               }
-  
+
               /* Add the display value to our option string. */
               $new_option .= '>' . htmlspecialchars($disp_value) . "</option>\n";
             }
             /* And add the new option string to our select tag. */
             $result .= $new_option;
-        }        
+        }
         /* Close the select tag and return our happy result. */
         $result .= "</select>\n";
         return ($result);
@@ -300,7 +302,7 @@ class SquirrelOption {
     function createWidget_Integer() {
 
         global $javascript_on;
- 
+
         // add onChange javascript handler to a regular string widget
         // which will strip out all non-numeric chars
         if ($javascript_on)
@@ -313,11 +315,11 @@ class SquirrelOption {
     }
 
     function createWidget_Float() {
-        
+
         global $javascript_on;
- 
+
         // add onChange javascript handler to a regular string widget
-        // which will strip out all non-numeric (period also OK) chars 
+        // which will strip out all non-numeric (period also OK) chars
         if ($javascript_on)
            return preg_replace('/\/>/', ' onChange="origVal=this.value; newVal=\'\'; '
                     . 'for (i=0;i<origVal.length;i++) { if ((origVal.charAt(i)>=\'0\' '
@@ -331,11 +333,11 @@ class SquirrelOption {
     function createWidget_Boolean() {
         /* Do the whole current value thing. */
         if ($this->value != SMPREF_NO) {
-            $yes_chk = ' checked';
+            $yes_chk = ' checked="checked"';
             $no_chk = '';
         } else {
             $yes_chk = '';
-            $no_chk = ' checked';
+            $no_chk = ' checked="checked"';
         }
 
         /* Build the yes choice. */
@@ -423,7 +425,7 @@ function create_option_groups($optgrps, $optvals) {
                     $optset['name'],
                     $optset['caption'],
                     $optset['type'],
-		    (isset($optset['refresh']) ? $optset['refresh'] : SMOPT_REFRESH_NONE),
+                    (isset($optset['refresh']) ? $optset['refresh'] : SMOPT_REFRESH_NONE),
                     (isset($optset['initial_value']) ? $optset['initial_value'] : ''),
                     $optset['posvals']
                 );
@@ -433,7 +435,7 @@ function create_option_groups($optgrps, $optvals) {
                     $optset['name'],
                     $optset['caption'],
                     $optset['type'],
-    	    	    (isset($optset['refresh']) ? $optset['refresh'] : SMOPT_REFRESH_NONE),
+                    (isset($optset['refresh']) ? $optset['refresh'] : SMOPT_REFRESH_NONE),
                     (isset($optset['initial_value']) ? $optset['initial_value'] : '')
                 );
             }
@@ -505,7 +507,7 @@ function print_option_groups($option_groups) {
 
 function OptionSubmit( $name ) {
         echo html_tag( 'tr',
-                   html_tag( 'td', '<input type="submit" value="' . _("Submit") . '" name="' . $name . '">&nbsp;&nbsp;&nbsp;&nbsp;', 'right', '', 'colspan="2"' )
+                   html_tag( 'td', '<input type="submit" value="' . _("Submit") . '" name="' . $name . '" />&nbsp;&nbsp;&nbsp;&nbsp;', 'right', '', 'colspan="2"' )
                 ) . "\n";
 }
 

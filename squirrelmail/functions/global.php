@@ -1,25 +1,27 @@
 <?php
 
 /**
- * globals.php
+ * global.php
  *
  * Copyright (c) 1999-2004 The SquirrelMail Project Team
  * Licensed under the GNU GPL. For full terms see the file COPYING.
  *
- * This includes code to update < 4.1.0 globals to the newer format 
+ * This includes code to update < 4.1.0 globals to the newer format
  * It also has some session register functions that work across various
- * php versions. 
+ * php versions.
  *
- * $Id$
+ * @version $Id$
+ * @package squirrelmail
  */
 
+/** Bring in the config file. */
 require_once(SM_PATH . 'config/config.php');
 
-/* set the name of the session cookie */
-if(isset($session_name) && $session_name) {  
-    ini_set('session.name' , $session_name);  
-} else {  
-    ini_set('session.name' , 'SQMSESSID');  
+/** set the name of the session cookie */
+if(isset($session_name) && $session_name) {
+    ini_set('session.name' , $session_name);
+} else {
+    ini_set('session.name' , 'SQMSESSID');
 }
 
 /* If magic_quotes_runtime is on, SquirrelMail breaks in new and creative ways.
@@ -31,9 +33,9 @@ ini_set('magic_quotes_runtime','0');
 
 /* convert old-style superglobals to current method
  * this is executed if you are running PHP 4.0.x.
- * it is run via a require_once directive in validate.php 
+ * it is run via a require_once directive in validate.php
  * and redirect.php. Patch submitted by Ray Black.
- */ 
+ */
 sqsession_is_active();
 if ( !check_php_version(4,1) ) {
   global $_COOKIE, $_ENV, $_FILES, $_GET, $_POST, $_SERVER, $_SESSION;
@@ -65,15 +67,15 @@ if (get_magic_quotes_gpc()) {
 
 $_SERVER['PHP_SELF'] = strip_tags($_SERVER['PHP_SELF']);
 
-/** 
- * returns true if current php version is at mimimum a.b.c 
- * 
+/**
+ * returns true if current php version is at mimimum a.b.c
+ *
  * Called: check_php_version(4,1)
  */
-function check_php_version ($a = '0', $b = '0', $c = '0')             
+function check_php_version ($a = '0', $b = '0', $c = '0')
 {
     global $SQ_PHP_VERSION;
- 
+
     if(!isset($SQ_PHP_VERSION))
         $SQ_PHP_VERSION = substr( str_pad( preg_replace('/\D/','', PHP_VERSION), 3, '0'), 0, 3);
 
@@ -81,8 +83,8 @@ function check_php_version ($a = '0', $b = '0', $c = '0')
 }
 
 /**
- * returns true if the current internal SM version is at minimum a.b.c 
- * These are plain integer comparisons, as our internal version is 
+ * returns true if the current internal SM version is at minimum a.b.c
+ * These are plain integer comparisons, as our internal version is
  * constructed by us, as an array of 3 ints.
  *
  * Called: check_sm_version(1,3,3)
@@ -98,8 +100,8 @@ function check_sm_version($a = 0, $b = 0, $c = 0)
            $SQM_INTERNAL_VERSION[1] == $b &&
            $SQM_INTERNAL_VERSION[2] < $c ) ) {
         return FALSE;
-    } 
-    return TRUE;  
+    }
+    return TRUE;
 }
 
 
@@ -126,7 +128,7 @@ function sqsession_register ($var, $name) {
         $HTTP_SESSION_VARS[$name] = $var;
     }
     else {
-        $_SESSION["$name"] = $var; 
+        $_SESSION["$name"] = $var;
     }
     session_register("$name");
 }
@@ -173,14 +175,14 @@ define('SQ_FORM',6);
 
 /**
  * Search for the var $name in $_SESSION, $_POST, $_GET,
- * $_COOKIE, or $_SERVER and set it in provided var. 
+ * $_COOKIE, or $_SERVER and set it in provided var.
  *
  * If $search is not provided,  or == SQ_INORDER, it will search
  * $_SESSION, then $_POST, then $_GET. Otherwise,
- * use one of the defined constants to look for 
+ * use one of the defined constants to look for
  * a var in one place specifically.
  *
- * Note: $search is an int value equal to one of the 
+ * Note: $search is an int value equal to one of the
  * constants defined above.
  *
  * example:
@@ -193,7 +195,7 @@ define('SQ_FORM',6);
 function sqgetGlobalVar($name, &$value, $search = SQ_INORDER) {
 
     if ( !check_php_version(4,1) ) {
-        global $HTTP_COOKIE_VARS, $HTTP_GET_VARS, $HTTP_POST_VARS, 
+        global $HTTP_COOKIE_VARS, $HTTP_GET_VARS, $HTTP_POST_VARS,
                $HTTP_SERVER_VARS, $HTTP_SESSION_VARS;
 
         $_COOKIE  =& $HTTP_COOKIE_VARS;
@@ -208,8 +210,8 @@ function sqgetGlobalVar($name, &$value, $search = SQ_INORDER) {
        enclosing them in quotes will cause them to evaluate
        as strings. */
     switch ($search) {
-        /* we want the default case to be first here,  
-	   so that if a valid value isn't specified, 
+        /* we want the default case to be first here,
+	   so that if a valid value isn't specified,
 	   all three arrays will be searched. */
       default:
       case SQ_INORDER:   // check session, post, get
@@ -232,13 +234,13 @@ function sqgetGlobalVar($name, &$value, $search = SQ_INORDER) {
         if ( isset($_GET[$name]) ) {
             $value = $_GET[$name];
             return TRUE;
-        } 
+        }
         /* NO IF HERE. FOR SQ_INORDER CASE, EXIT after GET */
         break;
       case SQ_COOKIE:
         if ( isset($_COOKIE[$name]) ) {
             $value = $_COOKIE[$name];
-            return TRUE; 
+            return TRUE;
         }
         break;
       case SQ_SERVER:

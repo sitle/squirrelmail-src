@@ -8,9 +8,11 @@
  *
  * Prints the page header (duh)
  *
- * $Id$
+ * @version $Id$
+ * @package squirrelmail
  */
 
+/** Include required files from SM */
 require_once(SM_PATH . 'functions/strings.php');
 require_once(SM_PATH . 'functions/html.php');
 require_once(SM_PATH . 'functions/imap_mailbox.php');
@@ -36,17 +38,17 @@ function displayHtmlHeader( $title = 'SquirrelMail', $xtra = '', $do_hook = TRUE
         echo '<link rel="stylesheet" type="text/css" href="' .
              $base_uri . 'themes/css/'.$custom_css.'" />';
     }
-    
+
     if ($squirrelmail_language == 'ja_JP') {
 	// why it is added here. header ('Content-Type:..) is used in i18n.php
         echo "<!-- \xfd\xfe -->\n";
         echo '<meta http-equiv="Content-type" content="text/html; charset=euc-jp">' . "\n";
     }
-    
+
     if ($do_hook) {
         do_hook('generic_header');
     }
-    
+
     echo "\n<title>$title</title>$xtra\n";
 
     /* work around IE6's scrollbar bug */
@@ -54,9 +56,9 @@ function displayHtmlHeader( $title = 'SquirrelMail', $xtra = '', $do_hook = TRUE
 <style type="text/css">
 <!--
   /* avoid stupid IE6 bug with frames and scrollbars */
-  body { 
-      voice-family: "\"}\""; 
-      voice-family: inherit; 
+  body {
+      voice-family: "\"}\"";
+      voice-family: inherit;
       width: expression(document.documentElement.clientWidth - 30);
   }
 -->
@@ -145,7 +147,7 @@ function displayPageHeader($color, $mailbox, $xtra='', $session=false) {
                 $js = "\n".'<script language="JavaScript" type="text/javascript">' .
                       "\n<!--\n" . $js . "// -->\n</script>\n";
             }
-	     
+
             displayHtmlHeader ('SquirrelMail', $js);
             $onload = $xtra;
           break;
@@ -185,12 +187,12 @@ function displayPageHeader($color, $mailbox, $xtra='', $session=false) {
                     "document.forms[i-1].elements[pos].focus();\n".
                 "}\n".
             "}\n";
-	    
+
             $js .= "// -->\n".
         	 "</script>\n";
             $onload = 'onload="checkForm();"';
             displayHtmlHeader ('SquirrelMail', $js);
-            break;   
+            break;
 
         default:
             $js = '<script language="JavaScript" type="text/javascript">' .
@@ -216,7 +218,7 @@ function displayPageHeader($color, $mailbox, $xtra='', $session=false) {
                 "}\n".
 		"$xtra\n".
             "}\n";
-	    
+
             if ($compose_new_win == '1') {
                 if (!preg_match("/^[0-9]{3,4}$/", $compose_width)) {
                     $compose_width = '640';
@@ -236,7 +238,7 @@ function displayPageHeader($color, $mailbox, $xtra='', $session=false) {
 
             }
         $js .= "// -->\n". "</script>\n";
-	
+
 
         $onload = 'onload="checkForm();"';
         displayHtmlHeader ('SquirrelMail', $js);
@@ -305,7 +307,7 @@ function displayPageHeader($color, $mailbox, $xtra='', $session=false) {
 /* blatently copied/truncated/modified from the above function */
 function compose_Header($color, $mailbox) {
 
-    global $delimiter, $hide_sm_attributions, $base_uri, $PHP_SELF, 
+    global $delimiter, $hide_sm_attributions, $base_uri, $PHP_SELF,
            $data_dir, $username, $frame_top, $compose_new_win;
 
 
@@ -363,7 +365,7 @@ function compose_Header($color, $mailbox) {
         	 "</script>\n";
         $onload = 'onload="checkForm();"';
         displayHtmlHeader (_("Compose"), $js);
-        break;   
+        break;
 
     }
 

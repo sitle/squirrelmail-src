@@ -1,4 +1,5 @@
 <?php
+
 /**
  * display_messages.php
  *
@@ -8,10 +9,13 @@
  * This contains all messages, including information, error, and just
  * about any other message you can think of.
  *
- * $Id$
+ * @version $Id$
+ * @package squirrelmail
  */
 
-//require plugin.php here to avois a do_hook error on session timeout
+/**
+ * including plugin functions
+ */
 require_once(SM_PATH . 'functions/plugin.php');
 
 /**
@@ -41,7 +45,7 @@ function error_message($message, $mailbox, $sort, $startMessage, $color) {
 
     $string = '<tr><td ALIGN="center">' . $message . '</td></tr>'."\n".
                '<tr><td ALIGN="center">'.
-                  '<A HREF="' . sqm_baseuri() 
+                  '<A HREF="' . sqm_baseuri()
                   . "src/right_main.php?sort=$sort&amp;startMessage=$startMessage"
                   . "&amp;mailbox=$urlMailbox\">" .
 	    sprintf (_("Click here to return to %s"), imap_utf7_decode_local($mailbox)) .
@@ -123,7 +127,7 @@ function logout_error( $errString, $errTitle = '' ) {
 
 function error_box($string, $color) {
     global $pageheader_sent;
-    
+
     if ( !isset( $color ) ) {
         $color = array();
         $color[0]  = '#DCDCDC';  /* light gray    TitleBar               */

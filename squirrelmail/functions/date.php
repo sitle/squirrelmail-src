@@ -11,8 +11,9 @@
  *       <Tue,> 29 Jun 1999 09:52:11 -0500 (EDT)
  * (as specified in RFC 822) -- 'Tue' is optional
  *
- * $Id$
+ * @version $Id$
  * @package squirrelmail
+ * @subpackage date
  */
 
 /** Load up some useful constants */
@@ -37,26 +38,26 @@ function getGMTSeconds($stamp, $tzc) {
         case 'PST':
             $tzc = '-0800';
             break;
-        case 'Mountain':   
-        case 'MST':   
-        case 'PDT':   
-            $tzc = '-0700';     
+        case 'Mountain':
+        case 'MST':
+        case 'PDT':
+            $tzc = '-0700';
             break;
         case 'Central':
         case 'CST':
-        case 'MDT':   
-            $tzc = '-0600';     
+        case 'MDT':
+            $tzc = '-0600';
             break;
         case 'Eastern':
         case 'EST':
-        case 'CDT':   
-            $tzc = '-0500';     
+        case 'CDT':
+            $tzc = '-0500';
             break;
         case 'EDT':
             $tzc = '-0400';
             break;
-        case 'GMT':   
-            $tzc = '+0000';     
+        case 'GMT':
+            $tzc = '+0000';
             break;
         case 'BST':
         case 'MET':
@@ -64,17 +65,17 @@ function getGMTSeconds($stamp, $tzc) {
             $tzc = '+0100';
             break;
         case 'EET':
-        case 'IST':   
-        case 'MET DST':   
-        case 'METDST':   
-            $tzc = '+0200';     
+        case 'IST':
+        case 'MET DST':
+        case 'METDST':
+            $tzc = '+0200';
             break;
-        case 'HKT':   
-            $tzc = '+0800';     
+        case 'HKT':
+            $tzc = '+0800';
             break;
-        case 'JST':   
+        case 'JST':
         case 'KST':
-            $tzc = '+0900';     
+            $tzc = '+0900';
             break;
     }
     $neg = false;
@@ -86,14 +87,14 @@ function getGMTSeconds($stamp, $tzc) {
     $hh = substr($tzc,1,2);
     $mm = substr($tzc,3,2);
     $iTzc = ($hh * 60 + $mm) * 60;
-    if ($neg) $iTzc = -1 * (int) $iTzc; 
+    if ($neg) $iTzc = -1 * (int) $iTzc;
     /* stamp in gmt */
     $stamp -= $iTzc;
     /** now find what the server is at **/
     $current = date('Z', time());
     /* stamp in local timezone */
     $stamp += $current;
-    
+
     return $stamp;
 }
 
@@ -176,7 +177,7 @@ function getDayAbrv( $day_number ) {
 /**
  * Returns the (localized) string for a given month number.
  *
- * @param string month_number the month number (01..12) 
+ * @param string month_number the month number (01..12)
  * @return string the month name in human readable form
  */
 function getMonthName( $month_number ) {
@@ -227,7 +228,7 @@ function getMonthName( $month_number ) {
  * Returns the (localized) string for a given month number,
  * short representation.
  *
- * @param string month_number the month number (01..12) 
+ * @param string month_number the month number (01..12)
  * @return string the shortened month in human readable form
  */
 function getMonthAbrv( $month_number ) {
@@ -286,7 +287,7 @@ function date_intl( $date_format, $stamp ) {
     // to reduce the date calls we retrieve m and w in the same call
     $ret = date('w#m#'. $ret, $stamp );
     // extract day and month in order to replace later by intl day and month
-    $aParts = explode('#',$ret);        
+    $aParts = explode('#',$ret);
     $ret = str_replace(array('$1','$4','$2','$3',), array(getDayAbrv($aParts[0]),
                                                           getMonthAbrv($aParts[1]),
                    				          getMonthName($aParts[1]),
@@ -306,7 +307,7 @@ function date_intl( $date_format, $stamp ) {
 function getLongDateString( $stamp ) {
 
     global $hour_format;
-    
+
     if ($stamp == -1) {
         return '';
     }
@@ -316,7 +317,7 @@ function getLongDateString( $stamp ) {
     } else {
         $date_format = _("D, F j, Y G:i");
     }
-    
+
     return( date_intl( $date_format, $stamp ) );
 
 }
@@ -338,19 +339,19 @@ function getDateString( $stamp ) {
     if ( $stamp == -1 ) {
        return '';
     }
-    
+
     $now = time();
-    
+
     $dateZ = date('Z', $now );
 
     // FIXME: isn't this obsolete and introduced as a terrible workaround
-    // for bugs at other places which are fixed a long time ago? 
+    // for bugs at other places which are fixed a long time ago?
     if ($invert_time) {
         $dateZ = - $dateZ;
     }
     $midnight = $now - ($now % 86400) - $dateZ;
     $nextmid = $midnight + 86400 - $dateZ;
-    
+
     if (($show_full_date == 1) || ($nextmid < $stamp)) {
         $date_format = _("M j, Y");
     } else if ($midnight < $stamp) {
@@ -371,7 +372,7 @@ function getDateString( $stamp ) {
         /* before this week */
         $date_format = _("M j, Y");
     }
-    
+
     return( date_intl( $date_format, $stamp ) );
 }
 
@@ -395,7 +396,7 @@ function getTimeStamp($dateParts) {
     **        and everything would be bumped up one.
     **/
 
-    /* 
+    /*
      * Simply check to see if the first element in the dateParts
      * array is an integer or not.
      * Since the day of week is optional, this check is needed.
