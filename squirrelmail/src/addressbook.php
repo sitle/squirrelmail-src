@@ -56,15 +56,15 @@ sqgetGlobalVar('doedit',    $doedit,    SQ_POST);
 function addressbook_inp_field($label, $field, $name, $size, $values, $add) {
     global $color;
     $value = ( isset($values[$field]) ? $values[$field] : '');
-    
+
     $td_str = addInput($name.'['.$field.']', $value, $size)
         . $add ;
 
     return html_tag( 'tr' ,
-        html_tag( 'td', $label . ':', 'right', $color[4]) .
-        html_tag( 'td', $td_str, 'left', $color[4])
-        )
-    . "\n";
+            html_tag( 'td', $label . ':', 'right', $color[4]) .
+            html_tag( 'td', $td_str, 'left', $color[4])
+            )
+        . "\n";
 }
 
 /**
@@ -72,37 +72,36 @@ function addressbook_inp_field($label, $field, $name, $size, $values, $add) {
  */
 function address_form($name, $submittext, $values = array()) {
     global $color, $squirrelmail_language;
-    
-    if ($squirrelmail_language == 'ja_JP')
-        {
-    echo html_tag( 'table',
-                       addressbook_inp_field(_("Nickname"),     'nickname', $name, 15, $values,
-                           ' <small>' . _("Must be unique") . '</small>') .
-                       addressbook_inp_field(_("E-mail address"),  'email', $name, 45, $values, '') .
-                       addressbook_inp_field(_("Last name"),    'lastname', $name, 45, $values, '') .
-                       addressbook_inp_field(_("First name"),  'firstname', $name, 45, $values, '') .
-                       addressbook_inp_field(_("Additional info"), 'label', $name, 45, $values, '') .
-                       html_tag( 'tr',
-                           html_tag( 'td',
-                                       addSubmit($submittext, $name.'[SUBMIT]'),
-                                   'center', $color[4], 'colspan="2"')
-                       )
-    , 'center', '', 'border="0" cellpadding="1" width="90%"') ."\n";
-        } else {
-    echo html_tag( 'table',
-                       addressbook_inp_field(_("Nickname"),     'nickname', $name, 15, $values,
-                           ' <small>' . _("Must be unique") . '</small>') .
-                       addressbook_inp_field(_("E-mail address"),  'email', $name, 45, $values, '') .
-                       addressbook_inp_field(_("First name"),  'firstname', $name, 45, $values, '') .
-                       addressbook_inp_field(_("Last name"),    'lastname', $name, 45, $values, '') .
-                       addressbook_inp_field(_("Additional info"), 'label', $name, 45, $values, '') .
-                       html_tag( 'tr',
-                           html_tag( 'td',
-			               addSubmit($submittext, $name.'[SUBMIT]') ,
-                                   'center', $color[4], 'colspan="2"')
-                       )
-    , 'center', '', 'border="0" cellpadding="1" width="90%"') ."\n";
-}
+
+    if ($squirrelmail_language == 'ja_JP') {
+        echo html_tag( 'table',
+                addressbook_inp_field(_("Nickname"),     'nickname', $name, 15, $values,
+                    ' <small>' . _("Must be unique") . '</small>') .
+                addressbook_inp_field(_("E-mail address"),  'email', $name, 45, $values, '') .
+                addressbook_inp_field(_("Last name"),    'lastname', $name, 45, $values, '') .
+                addressbook_inp_field(_("First name"),  'firstname', $name, 45, $values, '') .
+                addressbook_inp_field(_("Additional info"), 'label', $name, 45, $values, '') .
+                html_tag( 'tr',
+                    html_tag( 'td',
+                        addSubmit($submittext, $name.'[SUBMIT]'),
+                        'center', $color[4], 'colspan="2"')
+                    )
+                , 'center', '', 'border="0" cellpadding="1" width="90%"') ."\n";
+    } else {
+        echo html_tag( 'table',
+                addressbook_inp_field(_("Nickname"),     'nickname', $name, 15, $values,
+                    ' <small>' . _("Must be unique") . '</small>') .
+                addressbook_inp_field(_("E-mail address"),  'email', $name, 45, $values, '') .
+                addressbook_inp_field(_("First name"),  'firstname', $name, 45, $values, '') .
+                addressbook_inp_field(_("Last name"),    'lastname', $name, 45, $values, '') .
+                addressbook_inp_field(_("Additional info"), 'label', $name, 45, $values, '') .
+                html_tag( 'tr',
+                    html_tag( 'td',
+                        addSubmit($submittext, $name.'[SUBMIT]') ,
+                        'center', $color[4], 'colspan="2"')
+                    )
+                , 'center', '', 'border="0" cellpadding="1" width="90%"') ."\n";
+    }
 }
 
 /* Open addressbook, with error messages on but without LDAP (the *
@@ -110,8 +109,8 @@ function address_form($name, $submittext, $values = array()) {
 $abook = addressbook_init(true, true);
 if($abook->localbackend == 0) {
     plain_error_message(
-        _("No personal address book is defined. Contact administrator."),
-        $color);
+            _("No personal address book is defined. Contact administrator."),
+            $color);
     exit();
 }
 
@@ -214,18 +213,18 @@ if(sqgetGlobalVar('REQUEST_METHOD', $req_method, SQ_SERVER) && $req_method == 'P
 
                         /* Display the "new address" form */
                         echo addForm($form_url, 'post').
-                             html_tag( 'table',
-                                html_tag( 'tr',
-                                   html_tag( 'td',
-                                      "\n". '<strong>' . _("Update address") . '</strong>' ."\n",
-                                      'center', $color[0] )
-                                   ),
-                             'center', '', 'width="100%" ' );
+                            html_tag( 'table',
+                                    html_tag( 'tr',
+                                        html_tag( 'td',
+                                            "\n". '<strong>' . _("Update address") . '</strong>' ."\n",
+                                            'center', $color[0] )
+                                        ),
+                                    'center', '', 'width="100%" ' );
                         address_form("editaddr", _("Update address"), $olddata);
                         echo addHidden('oldnick', $olddata['nickname']).
-                             addHidden('backend', $olddata['backend']).
-                             addHidden('doedit', '1').
-                             '</form>';
+                            addHidden('backend', $olddata['backend']).
+                            addHidden('doedit', '1').
+                            '</form>';
                     }
                 } else {
 
@@ -237,30 +236,30 @@ if(sqgetGlobalVar('REQUEST_METHOD', $req_method, SQ_SERVER) && $req_method == 'P
                         /* Handle error messages */
                         if (!$r) {
                             /* Display error */
-                             echo html_tag( 'table',
-                                html_tag( 'tr',
-                                   html_tag( 'td',
-                                      "\n". '<strong><font color="' . $color[2] .
-                                      '">' . _("ERROR") . ': ' . $abook->error . '</font></strong>' ."\n",
-                                      'center' )
-                                   ),
-                             'center', '', 'width="100%"' );
+                            echo html_tag( 'table',
+                                    html_tag( 'tr',
+                                        html_tag( 'td',
+                                            "\n". '<strong><font color="' . $color[2] .
+                                            '">' . _("ERROR") . ': ' . $abook->error . '</font></strong>' ."\n",
+                                            'center' )
+                                        ),
+                                    'center', '', 'width="100%"' );
 
                             /* Display the "new address" form again */
                             echo addForm($form_url, 'post').
-                                 html_tag( 'table',
-                                     html_tag( 'tr',
-                                         html_tag( 'td',
-                                                    "\n". '<strong>' . _("Update address") . '</strong>' ."\n",
-                                         'center', $color[0] )
-                                     ),
-                                 'center', '', 'width="100%"' );
+                                html_tag( 'table',
+                                        html_tag( 'tr',
+                                            html_tag( 'td',
+                                                "\n". '<strong>' . _("Update address") . '</strong>' ."\n",
+                                                'center', $color[0] )
+                                            ),
+                                        'center', '', 'width="100%"' );
                             address_form("editaddr", _("Update address"), $newdata);
                             echo 
-                              addHidden('oldnick', $oldnick).
-                              addHidden('backend', $backend).
-                              addHidden('doedit',  '1').
-                                 "\n" . '</form>';
+                                addHidden('oldnick', $oldnick).
+                                addHidden('backend', $backend).
+                                addHidden('doedit',  '1').
+                                "\n" . '</form>';
                             $abortform = true;
                         }
                     } else {
@@ -276,8 +275,8 @@ if(sqgetGlobalVar('REQUEST_METHOD', $req_method, SQ_SERVER) && $req_method == 'P
 
     // Some times we end output before forms are printed
     if($abortform) {
-       echo "</body></html>\n";
-       exit();
+        echo "</body></html>\n";
+        exit();
     }
 }
 
@@ -290,13 +289,13 @@ if(sqgetGlobalVar('REQUEST_METHOD', $req_method, SQ_SERVER) && $req_method == 'P
 /* Display error messages */
 if (!empty($formerror)) {
     echo html_tag( 'table',
-        html_tag( 'tr',
-            html_tag( 'td',
-                   "\n". '<br /><strong><font color="' . $color[2] .
-                   '">' . _("ERROR") . ': ' . $formerror . '</font></strong>' ."\n",
-            'center' )
-        ),
-    'center', '', 'width="100%"' );
+            html_tag( 'tr',
+                html_tag( 'td',
+                    "\n". '<br /><strong><font color="' . $color[2] .
+                    '">' . _("ERROR") . ': ' . $formerror . '</font></strong>' ."\n",
+                    'center' )
+                ),
+            'center', '', 'width="100%"' );
 }
 
 
@@ -319,7 +318,7 @@ if ($showaddrlist) {
     if (count($alist) > 0) {
         echo addForm($form_url, 'post');
         while(list($undef,$row) = each($alist)) {
-    
+
             /* New table header for each backend */
             if($prevbackend != $row['backend']) {
                 if($prevbackend < 0) {
@@ -343,72 +342,70 @@ if ($showaddrlist) {
                         'center', '', 'width="95%"' ) ."\n".
                     html_tag( 'table', '', 'center', '', 'border="0" cellpadding="1" cellspacing="0" width="90%"' ) .
                     html_tag( 'tr', "\n" .
-                        html_tag( 'th', '&nbsp;', 'left', '', 'width="1%"' ) .
-                        html_tag( 'th', _("Nickname"), 'left', '', 'width="1%"' ) .
-                        html_tag( 'th', _("Name"), 'left', '', 'width="1%"' ) .
-                        html_tag( 'th', _("E-mail"), 'left', '', 'width="1%"' ) .
-                        html_tag( 'th', _("Info"), 'left', '', 'width="1%"' ),
-                        '', $color[9] ) . "\n";
-    
+                            html_tag( 'th', '&nbsp;', 'left', '', 'width="1%"' ) .
+                            html_tag( 'th', _("Nickname"), 'left', '', 'width="1%"' ) .
+                            html_tag( 'th', _("Name"), 'left', '', 'width="1%"' ) .
+                            html_tag( 'th', _("E-mail"), 'left', '', 'width="1%"' ) .
+                            html_tag( 'th', _("Info"), 'left', '', 'width="1%"' ),
+                            '', $color[9] ) . "\n";
+
                 $line = 0;
                 $headerprinted = true;
             } /* End of header */
 
             $prevbackend = $row['backend'];
-    
+
             /* Check if this user is selected */
             $selected = in_array($row['backend'] . ':' . $row['nickname'], $defselected);
-    
+
             /* Print one row, with alternating color */
             if ($line % 2) {
                 $tr_bgcolor = $color[12];
             } else {
                 $tr_bgcolor = $color[4];
             }
-            if ($squirrelmail_language == 'ja_JP')
-                {
-            echo html_tag( 'tr', '', '', $tr_bgcolor);
-            if ($abook->backends[$row['backend']]->writeable) {
-                echo html_tag( 'td',
-                          '<small>' .
-                          addCheckBox('sel[]', $selected, $row['backend'].':'.$row['nickname']).
-                          '</small>' ,
-                          'center', '', 'valign="top" width="1%"' );
-            } else {
-                echo html_tag( 'td',
-                        '&nbsp;' ,
-                        'center', '', 'valign="top" width="1%"' );
-            }
-            echo html_tag( 'td', '&nbsp;' . $row['nickname'] . '&nbsp;', 'left', '', 'valign="top" width="1%" nowrap' ) . 
-                html_tag( 'td', '&nbsp;' . $row['lastname'] . ' ' . $row['firstname'] . '&nbsp;', 'left', '', 'valign="top" width="1%" nowrap' ) .
-                html_tag( 'td', '', 'left', '', 'valign="top" width="1%" nowrap' ) . '&nbsp;';
+            if ($squirrelmail_language == 'ja_JP') {
+                echo html_tag( 'tr', '', '', $tr_bgcolor);
+                if ($abook->backends[$row['backend']]->writeable) {
+                    echo html_tag( 'td',
+                            '<small>' .
+                            addCheckBox('sel[]', $selected, $row['backend'].':'.$row['nickname']).
+                            '</small>' ,
+                            'center', '', 'valign="top" width="1%"' );
                 } else {
-            echo html_tag( 'tr', '', '', $tr_bgcolor);
-            if ($abook->backends[$row['backend']]->writeable) {
-                echo html_tag( 'td',
-                        '<small>' .
-                        addCheckBox('sel[]', $selected, $row['backend'] . ':' . $row['nickname']).
-                        '</small>' ,
-                        'center', '', 'valign="top" width="1%"' );
-            } else {
-                echo html_tag( 'td',
-                        '&nbsp;' ,
-                        'center', '', 'valign="top" width="1%"' );
-            }
-
-            echo html_tag( 'td', '&nbsp;' . $row['nickname'] . '&nbsp;', 'left', '', 'valign="top" width="1%" nowrap' ) .
-            html_tag( 'td', '&nbsp;' . $row['name'] . '&nbsp;', 'left', '', 'valign="top" width="1%" nowrap' ) .
-            html_tag( 'td', '', 'left', '', 'valign="top" width="1%" nowrap' ) . '&nbsp;';
+                    echo html_tag( 'td',
+                            '&nbsp;' ,
+                            'center', '', 'valign="top" width="1%"' );
                 }
+                echo html_tag( 'td', '&nbsp;' . $row['nickname'] . '&nbsp;', 'left', '', 'valign="top" width="1%" nowrap' ) . 
+                    html_tag( 'td', '&nbsp;' . $row['lastname'] . ' ' . $row['firstname'] . '&nbsp;', 'left', '', 'valign="top" width="1%" nowrap' ) .
+                    html_tag( 'td', '', 'left', '', 'valign="top" width="1%" nowrap' ) . '&nbsp;';
+            } else {
+                echo html_tag( 'tr', '', '', $tr_bgcolor);
+                if ($abook->backends[$row['backend']]->writeable) {
+                    echo html_tag( 'td',
+                            '<small>' .
+                            addCheckBox('sel[]', $selected, $row['backend'] . ':' . $row['nickname']).
+                            '</small>' ,
+                            'center', '', 'valign="top" width="1%"' );
+                } else {
+                    echo html_tag( 'td',
+                            '&nbsp;' ,
+                            'center', '', 'valign="top" width="1%"' );
+                }
+                echo html_tag( 'td', '&nbsp;' . $row['nickname'] . '&nbsp;', 'left', '', 'valign="top" width="1%" nowrap' ) .
+                    html_tag( 'td', '&nbsp;' . $row['name'] . '&nbsp;', 'left', '', 'valign="top" width="1%" nowrap' ) .
+                    html_tag( 'td', '', 'left', '', 'valign="top" width="1%" nowrap' ) . '&nbsp;';
+            }
             $email = $abook->full_address($row);
-            echo makeComposeLink('src/compose.php?send_to=' . rawurlencode($email),
-                    htmlspecialchars($row['email'])) .
+            echo makeComposeLink('src/compose.php?send_to='.rawurlencode($email),
+                    htmlspecialchars($row['email'])).
                 '&nbsp;</td>'."\n".
                 html_tag( 'td', '&nbsp;' . htmlspecialchars($row['label']) . '&nbsp;', 'left', '', 'valign="top" width="1%"' ) .
                 "</tr>\n";
             $line++;
         }
-    
+
         /* End of list. Close table. */
         if ($headerprinted) {
             echo html_tag( 'tr',
@@ -430,11 +427,11 @@ echo '<a name="AddAddress"></a>' . "\n" .
         html_tag( 'tr',
             html_tag( 'td', "\n". '<strong>' . sprintf(_("Add to %s"), $abook->localbackendname) . '</strong>' . "\n",
                 'center', $color[0]
+                )
             )
-        )
-    , 'center', '', 'width="100%"' ) ."\n";
+        , 'center', '', 'width="100%"' ) ."\n";
 address_form('addaddr', _("Add address"), $defdata);
-echo '</form>';
+echo "</form>\n";
 
 /* Add hook for anything that wants on the bottom */
 do_hook('addressbook_bottom');

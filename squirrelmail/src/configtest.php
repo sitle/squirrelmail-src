@@ -261,7 +261,6 @@ if($use_imap_tls && stristr($capline, 'STARTTLS') === FALSE) {
 fputs($stream, "A002 LOGOUT\r\n");
 fclose($stream);
 
-
 echo "Checking internationalization (i18n) settings...<br />\n";
 echo "$IND gettext - ";
 if (function_exists('gettext')) {
