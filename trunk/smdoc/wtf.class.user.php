@@ -301,7 +301,7 @@ class user extends thing { // a user
 					if ($wtf->user->objectid == ANONYMOUSUSERID) {
 						echo '<register_error username="', htmlspecialchars($username), '"/>';
 					} else {
-						echo '<register_success username="', htmlspecialchars($username), '"/>';
+                        header("Location: " .THINGIDURI.$wtf->user->homeid.'&class=home&show_msg=register');
 					}
 				} else {
 					echo '<register_error username="', htmlspecialchars($username), '"/>';
@@ -451,6 +451,8 @@ class home extends content { // a users home thing
                 $msg = getValue('show_msg', FALSE);
                 if ( $msg == 'login' ) {
                   echo '<login_success username="', $username, '"/>'; 
+                } elseif ( $msg == 'register' ) {
+                  echo '<register_success username="', $username, '"/>';
                 } 
 
 				echo 'Username: '.htmlspecialchars($user->title). $newLine;
