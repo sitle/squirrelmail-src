@@ -79,7 +79,7 @@ while (file_exists($full_localfilename)) {
 }
 
 /* Write Attachment to file */
-$fp = fopen ($full_localfilename, 'w');
+$fp = fopen ($full_localfilename, 'wb');
 fputs ($fp, $thebastard);
 fclose ($fp);
 
