@@ -1,10 +1,13 @@
 #!/bin/sh
+STRINGS="avelsieve change_ldappass change_merakpass change_mysqlpass chg_sasl_passwd contactclean disk_quota file_manager online_users show_user_and_ip squirrelmail view_as_html vpopmail"
 for trans in `ls locale/`; do
-    mv locale/${trans}/LC_MESSAGES/squirrelmail.po \
-	locale/${trans}/LC_MESSAGES/squirrelmail.po.bak
-    msgmerge --no-location locale/${trans}/LC_MESSAGES/squirrelmail.po.bak \
-	po/squirrelmail.pot > \
-	locale/${trans}/LC_MESSAGES/squirrelmail.po
-#    rm locale/${trans}/LC_MESSAGES/squirrelmail.po.bak
+    for string in $STRINGS ; do
+	if [ -f locale/${trans}/LC_MESSAGES/${string}.po ] ; then
+            mv locale/${trans}/LC_MESSAGES/${string}.po \
+    		locale/${trans}/LC_MESSAGES/${string}.po.bak
+	    msgmerge --no-location locale/${trans}/LC_MESSAGES/${string}.po.bak \
+		po/${string}.pot > locale/${trans}/LC_MESSAGES/${string}.po
+#            rm locale/${trans}/LC_MESSAGES/${string}.po.bak
+	fi
+    done
 done
-	  
