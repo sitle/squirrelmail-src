@@ -37,6 +37,8 @@ class ZkSvc_auth {
     var $logged;
 
     var $connector;
+    var $banner;
+    var $info;
 
     /** CONSTRUCTOR
      * Create a new ZkSvc_auth with the given module.
@@ -76,6 +78,8 @@ class ZkSvc_auth {
             $this->expired = $zkld->bag_reg[$this->bag_name]['expired'];
             $this->expires = $zkld->bag_reg[$this->bag_name]['expires'];
             $this->logged = $zkld->bag_reg[$this->bag_name]['logged'];
+	    $this->banner = $zkld->bag_reg[$this->bag_name]['banner'];
+	    $this->info = $zkld->bag_reg[$this->bag_name]['info'];
         } else {
             $zkld->bag_reg[$this->bag_name] = array();
             $this->expired = false;
@@ -86,7 +90,7 @@ class ZkSvc_auth {
             $this->logged = FALSE;
             
             $this->Register();
-	    }
+	}
     }
 
     /**
@@ -106,6 +110,21 @@ class ZkSvc_auth {
     function loadModule( &$mod, $options ) {
         $this->mod =&$mod;
     }
+    
+    function Register() {
+    
+        $this->zkld->bag_reg[$this->bag_name]['username'] = $this->username;
+        $this->zkld->bag_reg[$this->bag_name]['password'] = $this->password;
+        $this->zkld->bag_reg[$this->bag_name]['idled'] = $this->idled ;
+        $this->zkld->bag_reg[$this->bag_name]['idles'] = $this->idles;
+        $this->zkld->bag_reg[$this->bag_name]['expired'] = $this->expired ;
+        $this->zkld->bag_reg[$this->bag_name]['expires'] = $this->expires ;
+        $this->zkld->bag_reg[$this->bag_name]['logged'] = $this->logged ;
+        $this->zkld->bag_reg[$this->bag_name]['banner'] = $this->banner;
+	$this->zkld->bag_reg[$this->bag_name]['info'] = $this->info;
+        
+        $this->zkld->Register();
+    }
 
     /**
      * Attempt to login a user.
@@ -116,7 +135,8 @@ class ZkSvc_auth {
     function login($username, $password) {
 
         $ret = ( $this->mod->checkPassword($username, $password) );
-
+	$this->banner = $this->mod->banner;
+	$this->info = $this->mod->info;
         if ( $ret ) {
             /* Save the current login information. */
     	    $this->username = $username;
@@ -215,18 +235,6 @@ class ZkSvc_auth {
 
     }
 
-    function Register() {
-    
-        $this->zkld->bag_reg[$this->bag_name]['username'] = $this->username;
-        $this->zkld->bag_reg[$this->bag_name]['password'] = $this->password;
-        $this->zkld->bag_reg[$this->bag_name]['idled'] = $this->idled ;
-        $this->zkld->bag_reg[$this->bag_name]['idles'] = $this->idles;
-        $this->zkld->bag_reg[$this->bag_name]['expired'] = $this->expired ;
-        $this->zkld->bag_reg[$this->bag_name]['expires'] = $this->expires ;
-        $this->zkld->bag_reg[$this->bag_name]['logged'] = $this->logged ;
-        
-        $this->zkld->Register();
-    }
 
 }
 

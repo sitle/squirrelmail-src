@@ -17,8 +17,9 @@ class ZkMod_auth_pop3 {
     var $ver = '$Id$';
     var $name = 'auth/pop3';
 
-    var $srv;	// backward pointer to the service
-    var $info;	// cargo
+    var $srv;	  // backward pointer to the service
+    var $info;	  // cargo
+    var $banner;  // Server banner.
     
     /**
      * Create a new ZkMod_auth_test with the given options.
@@ -38,7 +39,7 @@ class ZkMod_auth_pop3 {
      * @return bool indicates correct or incorrect password
      */
     function checkPassword( $username, $password ) {
-
+	
         if( is_array( $this->srv->connector ) ) {
             
             $sp = fsockopen( $this->srv->connector['host'], 
@@ -50,7 +51,7 @@ class ZkMod_auth_pop3 {
             if( $sp ) {        
                 socket_set_timeout( $sp, $this->srv->connector['timeout'] );
                 $ret = TRUE;
-                $this->srv->banner = fgets( $sp, 1024 );
+                $this->banner = fgets( $sp, 1024 );
                 // Check compatibilities in here
                 // Identifies the user
                 if ( $ret = $this->query( $sp, 'USER ' . $username ) ) {
@@ -63,7 +64,7 @@ class ZkMod_auth_pop3 {
         } else {
             $ret = FALSE;
         }
-        
+	
         return( $ret );
     }
     

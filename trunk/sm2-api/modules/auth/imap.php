@@ -19,6 +19,7 @@ class ZkMod_auth_imap {
 
     var $srv;	// backward pointer to the service
     var $info;	// cargo
+    var $banner; // Server banner
     
     /**
      * Create a new ZkMod_auth_test with the given options.
@@ -50,7 +51,7 @@ class ZkMod_auth_imap {
             if( $sp ) {        
                 socket_set_timeout( $sp, $this->srv->connector['timeout'] );
                 $ret = TRUE;
-                $this->srv->banner = fgets( $sp, 1024 );
+                $this->banner = fgets( $sp, 1024 );
                 // Check compatibilities in here
                 // Identifies the user
                 $ret = $this->query( $sp, 'LOGIN "' . quoteIMAP($username) .
