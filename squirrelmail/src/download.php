@@ -75,13 +75,13 @@ function viewText($color, $body, $id, $entid, $mailbox, $type1, $wrap_at) {
     if (isset($where) && isset($what)) {
         /* from a search */
         echo "<a href=\"read_body.php?mailbox=".$urlmailbox.
-             "&passed_id=$id&where=".urlencode($where).
-             "&what=".urlencode($what)."\">". 
+             "&amp;passed_id=$id&amp;where=".urlencode($where).
+             "&amp;what=".urlencode($what)."\">". 
              _("View message") . "</a>\n";
     } 
     else {
         echo "<a href=\"read_body.php?mailbox=".$urlmailbox.
-             "&passed_id=$id&startMessage=$startMessage&show_more=0\">". 
+             "&amp;passed_id=$id&amp;startMessage=$startMessage&amp;show_more=0\">". 
              _("View message") . "</a>\n";
     }
     echo "</B></TD></TR>\n".
@@ -101,8 +101,8 @@ function viewText($color, $body, $id, $entid, $mailbox, $type1, $wrap_at) {
     flush();
     echo $body .
          "</TT></TD></TR><TR><TD><CENTER>\n".
-         "<SMALL><A HREF=\"../src/download.php?absolute_dl=true&passed_id=$id".
-         "&passed_ent_id=$entid&mailbox=$urlmailbox\">".
+         "<SMALL><A HREF=\"../src/download.php?absolute_dl=true&amp;passed_id=$id".
+         "&amp;passed_ent_id=$entid&amp;mailbox=$urlmailbox\">".
          _("Download this as a file").
          "</A></SMALL></CENTER>\n".
          "</TD></TR></TABLE></TD></TR></TABLE></CENTER>";
@@ -125,7 +125,7 @@ function viewMessage($imapConnection, $id, $mailbox, $ent_id, $msg, $color, $wra
     	 "<B><CENTER>\n".
          _("Viewing a message attachment") . " - ".
          "<a href=\"read_body.php?mailbox=".$urlmailbox.
-         "&passed_id=$id&startMessage=$startMessage&show_more=0\">".
+         "&amp;passed_id=$id&amp;startMessage=$startMessage&amp;show_more=0\">".
          _("View message") . "</a>\n".
          "</B></CENTER></TD></TR>\n".
     	 "</TABLE>\n".

@@ -36,7 +36,7 @@ function fix_sort_array () {
     if ($allow_server_sort == true) {
         $server_sort_array = sqimap_get_sort_order($imapConnection, $sort);
     }
-    $thread_sort_messages = getPref($username, $data_dir, "thread_$mailbox");
+    $thread_sort_messages = getPref($data_dir, $username, "thread_$mailbox");
     if ($allow_thread_sort == true && $thread_sort_messages == 1) {
         $server_sort_array = get_thread_sort($imapConnection);
     }
