@@ -115,7 +115,12 @@ else {
  */
 if (!isset($right_frame)) {
     $right_frame = '';
-} 
+}
+
+if (!empty($right_frame) && (strpos(urldecode($right_frame), '://'))) {
+    $right_frame = '';
+}
+ 
 if ($right_frame == 'right_main.php') {
     $urlMailbox = urlencode($mailbox);
     $right_frame_url =
