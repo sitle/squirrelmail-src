@@ -138,10 +138,10 @@ class smdoc extends foowd
    * getUserGroups returns an array containing a list of user groups
    * as 'internal name/objectid' => 'external name'.
    *
-   * @param optional boolean $includeSpecialGroups - whether or not to include all groups.
-   * @param optional boolean $memberOnly - whether or not to restrict to only groups user is a member of
+   * @param bool $includeSpecialGroups If TRUE, include all groups.
+   * @param bool $memberOnly If TRUE, include only those groups the current member belongs to.
    * @return array An array of user groups.
-   * @see smdoc::$groups
+   * @see foowd::$groups
    * @see smdoc_group::getUserGroups()
    * @see base_user::inGroup()
    */
@@ -173,8 +173,8 @@ class smdoc extends foowd
    *
    * @param string $className Name of the class the method belongs to.
    * @param string $methodName Name of the method.
-   * @param string $type class/object method
-   * @param object $objectReference to current object being checked (may be NULL)
+   * @param string $type  class/object method
+   * @param object $object Reference to current object being checked (may be NULL)
    * @return bool TRUE if user has access to method
    * @see base_user::inGroup()
    */

@@ -75,7 +75,7 @@ class smdoc_user extends base_user
    * or return list of choices.
    *
    * @global array Specifies known SquirrelMail versions
-   * @param optional boolean getAll Ignore value and return array containing all strings.
+   * @param bool getAll Ignore value and return array containing all strings.
    * @return either string for integer, or array containing all strings.
    */
   function smver_to_string($getAll = FALSE)
@@ -100,7 +100,7 @@ class smdoc_user extends base_user
    * or return list of choices.
    *
    * @global array Specifies known IMAP Servers
-   * @param optional boolean getAll Ignore value and return array containing all strings.
+   * @param bool getAll Ignore value and return array containing all strings.
    * @return either string for integer, or array containing all strings.
    */
   function imap_to_string($getAll = FALSE)
@@ -126,7 +126,7 @@ class smdoc_user extends base_user
    * or return list of choices.
    *
    * @global array Specifies known SMTP servers
-   * @param optional boolean getAll Ignore value and return array containing all strings.
+   * @param bool getAll Ignore value and return array containing all strings.
    * @return either string for integer, or array containing all strings.
    */
   function smtp_to_string($getAll = FALSE)
@@ -184,7 +184,7 @@ class smdoc_user extends base_user
 
   /**
    * Show email in profile.
-   * @var boolean
+   * @var bool
    */
   var $show_email;
 
@@ -193,11 +193,11 @@ class smdoc_user extends base_user
    *
    * @global array Specifies table information for user persistance.
    * @param smdoc foowd Reference to the foowd environment object.
-   * @param optional string username The users name.
-   * @param optional string password An MD5 hash of the users password.
-   * @param optional string email The users e-mail address.
-   * @param optional array groups The user groups the user belongs to.
-   * @param optional string hostmask The users hostmask.
+   * @param string username The users name.
+   * @param string password An MD5 hash of the users password.
+   * @param string email The users e-mail address.
+   * @param array groups The user groups the user belongs to.
+   * @param string hostmask The users hostmask.
    */
   function smdoc_user( &$foowd,
                    $username = NULL,

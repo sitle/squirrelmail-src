@@ -90,6 +90,15 @@ class foowd
   var $user;
 
   /**
+   * Group Manager for this Foowd environment.
+   *
+   * @var object
+   * @see smdoc_group
+   * @access public
+   */
+   var $groups;
+
+  /**
    * Instance of debug object loaded for this Foowd environment.
    * If left unset (FALSE), debugging is disabled.
    *
