@@ -84,7 +84,7 @@ function attachSelectedMessages($msg, $imapConnection) {
         if (isset($msg[$i])) {
     	    $id = $msg[$i];
     	    $body_a = sqimap_run_command($imapConnection, "FETCH $id RFC822",true, $response, $readmessage);
-    	    if ($response = 'OK') {
+    	    if ($response == 'OK') {
     		    // get subject so we can set the remotefilename
         		$read = sqimap_run_command ($imapConnection, "FETCH $id BODY.PEEK[HEADER.FIELDS (Subject)]", true, $response, $readmessage);
         		$subject = substr($read[1], strpos($read[1], ' '));
