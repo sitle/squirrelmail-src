@@ -420,13 +420,7 @@ function sqimap_read_data ($imap_stream, $tag_uid, $handle_errors,
 //        }
 //    }
 
-    // FIXME: test is always false in rg=off
-    if (isset($result)) {
-        return $result;
-    } else {
-        return $res[0];
-    }
-
+    return $res[0];
 }
 
 /**
