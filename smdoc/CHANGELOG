@@ -6,7 +6,42 @@ Version 0.8.3, ?? May 2003
 	* Fixed foowd_object::method_permissions() error of not picking up on user group if user group add permission is set to "Author".
 	* Made foowd_text_html include PI cope with object names with spaces in them by wraping object names in double quotes. 
 	+ Added foowd_text_html::method_raw() that outputs the HTML content without the header/footer, useful for includes where the header/footer is not wanted. 
-	* Changed the default method for foowd_text_html include PI to be method_raw(). 
+	* Changed the default method for foowd_text_html include PI to be method_raw().
+	+ Added call to user member function session_start() if it exists upoen session start after call to foowd_session_start(). 
+	+ Added Gods permission on foowd_user::method_xml() since this method exposes the users encrypted password. 
+	* Moved tracking of number of DB queries to be handled by the debug function foowd::debugDBTrack(). 
+	+ Added makeTable() function to MySQL DB layer, upon query failure FOOWD will now try to make the corrisponding database and/or DB table if it does not exist. 
+	* Changed default value of DEFAULT_OBJECTID to 936075699, aka the id of the "Welcome" HTML object.
+	* Reviewed installation procedures.
+	* Fixed bug in foowd_workspace fill and empty methods that caused objects to be blocked from the selection list is their clone method permission was not set. 
+	+ Added 8th parameter to input_textbox class constructor that indicates if field is required. If it is a star is displayed by the textbox and on submission if the value is incorrect the field is highlighted by changing its CSS class. 
+	+ Added getConst() to lib.php that retrieves a constant or throws an error if not set.
+	+ Added setConst() to lib.php that sets a constant first checking it does not already exist.
+	+ Added setPermission() to lib.php, wrapper for setting method permission constants. Uses setConst().
+	+ Added setClassMeta() to lib.php, wrapper for setting class meta descriptor constants. Uses setConst().
+	+ Added getTempDir() to lib.php, gets the system temp directory from the environment or on fail returns application dir /temp.
+	* Changed fetching of CACHE_DIR constant in readCache() to user getTempDir().
+	+ Added $groups member variable to foowd object, contains array of custom user groups.
+	* Changed foowd_object::method_permissions() to display user group choices as dropdown from default groups, foowd object $groups array, and foowd_group object instances.
+	+ Added foowd_user::method_groups() that allows changing the groups a user belongs to.
+	* Change to foowd_user::inGroup() to make every user appear to be in the Everyone group.
+	* Change to foowd_user::inGroup() to make users within Gods group appear to be in every group (other than the Nobody group).
+	* Change to foowd_user::inGroup() to add optional 2nd parameter of creatorid and to make user in Author group if creatorid equals users objectid.
+	* Changed Everyone group to not be the empty string but to be the string "Everyone" and made the empty string revert to the default value set using setPermission().
+	* Changed object constructors to not set permissions unless specifically asked to, new objects will have empty permissions arrays that will allow defaults to take effect.
+	+ Added USERGROUP<n> constants where <n> is a single digit from a sequence beginning at 1. These constants can be used for defining custom user groups instead of passing an array to the foowd constructor.
+	+ Added new constant OUTSIDE_WORKSPACE_NAME that can contain the name of the outside workspace.
+	* Adjusted foowd_object::method_clone() to work without the foowd_workspace class loaded.
+	* Made system independent of foowd_user() class, if class is not loaded user will be loaded as temp instance of the anonymous user class.
+	* Moved foowd_anonuser() from class.user.php to clas.object.php and changed it to inherit from foowd_object rather than foowd_user.
+	* Set foowd_object->$permissions to the default value of an empty array.
+	+ Added add() and remove() member functions to foowd_group.
+	+ Added class_add() and class_remove() class methods to foowd_group.
+	* Changed method_add() and method_remove() in foowd_group to use add() and remove() member functions.
+	* Changed getUsersInGroup() and getUsersNotInGroup() member functions in foowd_group to be able to be called statically.
+	+ Added new input class input_narrowselect that displays a textbox allowing you to enter an choice that is then matched to the nearest items in an array and displayed for selection in a dropdown box.
+	* Adjusted foowd_user to separate processing from class_login and class_logout into member functions foowd_user::login and logout.
+	+ Added gettext compatibility to base objects, most text changed to use gettext (error messages not changed) and to use printf where appropriate.
 
 Version 0.8.2, 17 May 2003 
 
