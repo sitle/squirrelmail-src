@@ -87,5 +87,5 @@ echo '<BR><TABLE WIDTH="100%" BORDER=0 CELLSPACING=0 CELLPADDING=2 ALIGN=CENTER>
      '<TABLE WIDTH="98%" BORDER=0 CELLSPACING=0 CELLPADDING=2 ALIGN=CENTER><TR><TD BGCOLOR="' . $color[0] . '">' .
      '<TR><TD BGCOLOR="' . $color[4] . '"><TT>' .
      $body . '</TT></TD></TR></TABLE>';
-     noframes_bottom();
+     displayPageFooter();
 ?>

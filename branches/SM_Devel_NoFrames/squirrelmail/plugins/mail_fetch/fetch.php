@@ -127,7 +127,7 @@ sqgetGlobalVar('delimiter',  $delimiter,  SQ_SESSION);
         echo '<p>' . _("No POP3 servers configured yet.") . '</p>';
         displayInternalLink('plugins/mail_fetch/options.php',
             _("Click here to go to the options page.") );
-        noframes_bottom();
+        displayPageFooter();
         exit();
     }
 
@@ -321,4 +321,4 @@ sqgetGlobalVar('delimiter',  $delimiter,  SQ_SESSION);
 
 ?>
 </center>
-<?php noframes_bottom(); ?>
+<?php displayPageFooter(); ?>

@@ -208,5 +208,5 @@ if(!isset($event_text)){
 
 ?>
 </table></td></tr></table>
-<? php noframes_bottom(); ?>
+<?php displayPageFooter(); ?>
 

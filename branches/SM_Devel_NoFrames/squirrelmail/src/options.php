@@ -456,7 +456,7 @@ echo        '</td></tr>' .
         '</td></tr>'.
      '</table>';
 
-noframes_bottom();
+displayPageFooter();
 
 
 ?>

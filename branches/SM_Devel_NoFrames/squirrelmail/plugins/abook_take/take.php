@@ -114,5 +114,5 @@ echo '<form action="../../src/addressbook.php" name="f_add" method="post">' ."\n
     }
 ?>
 </form>
-<?php noframes_bottom(); ?>
+<?php displayPageFooter(); ?>
 
