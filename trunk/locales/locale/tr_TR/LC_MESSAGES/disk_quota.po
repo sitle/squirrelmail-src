@@ -1,126 +1,168 @@
 # Turkish Disk Quota Plugin Translation.
-# Copyright (C) YEAR Free Software Foundation, Inc.
-# Kerem Erkan <akerem@hacettepe.edu.tr>, 2002.
+# Copyright (C) 2003 Free Software Foundation, Inc.
+# Kerem Erkan <akerem@hacettepe.edu.tr>, 2003.
 #
-#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2002-09-26 15:37-0600\n"
-"PO-Revision-Date: 2002-10-24+0200\n"
+"Project-Id-Version: 3.0\n"
+"POT-Creation-Date: 2003-10-16 12:37+0200\n"
+"PO-Revision-Date: 2003-10-16 13:50+0200\n"
 "Last-Translator: Kerem Erkan <akerem@hacettepe.edu.tr>\n"
-"Language-Team: Turkish <LL@li.org>\n"
+"Language-Team: Turkish <noteam@bogus.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=ISO-8859-9\n"
 "Content-Transfer-Encoding: 8bit\n"
 
 #############################################################
-# ATTENTION: When localising the following 4 msgstr's use   #
-# "_" instead of spaces. Also avoid ".,%&'" etc. Just use   #
-# alphabetical characters or numbers. If you don't do this, #
-# your plugin will be broken.                               #
+# ATTENTION: When localising the following msgstr's use "_" #
+# instead of spaces. Also avoid special characters and use  #
+# only alphabetical characters adn numbers.                 #
 #############################################################
 
 msgid "Your_Disk_Usage"
 msgstr "Disk_Kullanýmýnýz"
 
+msgid "Click_on_graph_for_details"
+msgstr "Detaylar_için_grafiðe_týklayýnýz"
+
+msgid "Click_on_one_of_the_graphs_for_details"
+msgstr "Detaylar_için_grafiklerden_birine_týklayýnýz"
+
+#############################################################
+# ATTENTION: When localising the following msgstr's use "+" #
+# instead of spaces. You can use special characters like    #
+# "." or "," etc.                                           #
+#############################################################
+
+msgid "Your+Disk+Usage+on+The+Server"
+msgstr "Sunucudaki+Disk+Kullanýmýnýz"
+
+msgid "Percent"
+msgstr "Yüzde"
+
 msgid "Details"
 msgstr "Detaylar"
 
-msgid "You_have_no_quota_limit"
-msgstr "Kota_limitiniz_yok"
+msgid "Filesystem"
+msgstr "Dosya+Sistemi"
 
-msgid "Please_ignore_the_following_information"
-msgstr "Aþaðýdaki_bilgileri_gözardý_edebilirsiniz"
+msgid "Data+Amount+You+Use+on+The+Server"
+msgstr "Sunucuda+Kullandýðýnýz+Veri+Miktarý"
+
+msgid "Your+Quota"
+msgstr "Kotanýz"
+
+msgid "Your+Limit"
+msgstr "Sýnýrýnýz"
+
+msgid "Grace+Time"
+msgstr "Kalan+Süre"
+
+msgid "*+Hover+your+mouse+on+the+texts+and+graph+to+get+more+information..."
+msgstr "*+Grafik+ve+yazýlarýn+üzerine+gelerek+daha+fazla+bilgi+edinebilirsiniz..."
+
+msgid "Days"
+msgstr "Gün"
+
+msgid "Day"
+msgstr "Gün"
+
+msgid "Hours"
+msgstr "Saat"
+
+msgid "Hour"
+msgstr "Saat"
+
+msgid "Minutes"
+msgstr "Dakika"
+
+msgid "Minute"
+msgstr "Dakika"
+
+msgid "Time+Expired!"
+msgstr "Süre Doldu!"
+
+msgid "This+is+the+bar+graph+of+your+status.The+green+bar+shows+the+amount+of+disk+space+you+use."
+msgstr "Bu,+durumunuzun+grafiðidir.+Yeþil+çubuk+kullandýðýnýz+disk+alanýný gösterir."
+
+msgid "+The+red+line+shows+your+quota+and+the+area+after+the+red+line+shows+your+limit,+which+you+cannot+exceed."
+msgstr "+Kýrmýzý+çizgi+kotanýzý,+kýrmýzý+çizgiden+sonraki+alan+da"
+"+geçemeyeceðiniz+sýnýrý gösterir."
+
+msgid "+At+this+time,+you+are+not+over+quota."
+msgstr "+Þu+anda+kotanýzýn+altýndasýnýz."
+
+msgid "+YOU+ARE+OVER+QUOTA+NOW!"
+msgstr "+ÞU+ANDA+KOTANIZIN+ÜSTÜNDESÝNÝZ!"
+
+msgid "This+shows+your+percent+usage+compared+to+your+limit."
+msgstr "Bu,+sýnýrýnýzla+karþýlaþtýrýlýnca+kullandýðýnýz+alan+yüzdesidir."
+
+msgid "This+is+the+name+of+the+filesystem+on+which+your+data+is+kept."
+msgstr "Bu,+verilerinizin+tutulduðu+dosya+sisteminin+ismidir."
+
+msgid "+Your+server+did+not+show+the+filesystem+name.+So+you+see+a+hyphen+for+the+name."
+msgstr "+Sunucunuz+dosya+sistemi+ismini+vermediði+için+bunun+yerine+bir+tire+görmektesiniz."
+
+msgid "This+is+the+total+amount+of+data+you+are+using+on+your+server."
+msgstr "Bu,+sunucuda+kullandýðýnýz+toplam+veri+miktarýdýr."
+
+msgid "This+is+the+maximum+amount+of+data+you+can+keep+on+your+server."
+msgstr "Bu,+sunucuda+saklayabileceðiniz+en+fazla+veri+miktarýdýr."
+
+msgid "This+is+the+maximum+amount+of+data+you+can+keep+on+the+server+when+you+are+over+quota+in+your+grace+time."
+msgstr "Bu,+kotanýzý+aþtýðýnýzda,+kalan+süre+boyunca+sunucuda+saklayabileceðiniz+en+fazla+veri+miktarýdýr."
+
+msgid "This+shows+the+time+left+in+which+you+must+delete+some+of+your+data+in+order+to+get+under+your+quota."
+msgstr "Bu,+kotanýzýn+altýna+inmek+için+bazý+dosyalarýnýzý+silmeniz+gereken+süreyi+gösterir."
+
+msgid "+You+are+not+over+quota+so+you+see+a+hyphen+for+the+grace+time."
+msgstr "Kotanýzý+aþmadýðýnýz+için+bu+süre+yerine+bir+tire+görmektesiniz."
+
+msgid "+After+this+time,if+you+are+still+over+quota,+you+will+not+be+able+to+get+any+e-mails."
+msgstr "+Bu+süre+sonunda+hala+kotanýzýn+üstündeyseniz+HÝÇ+e-posta+alamayacaksýnýz."
+
 
 #############################################################
 # You can localise the following without restrictions.      #
 #############################################################
 
-msgid "Check Quota"
-msgstr "Kota Kontrolü"
+msgid "Detailed Information"
+msgstr "Detaylý Bilgi"
 
-msgid "Connects to the Server and checks your diskquota usage."
-msgstr "Posta sunucunuza baðlanarak kota durumunuzu gösterir."
+msgid "There is no problem as you are now using "
+msgstr "Þu anda sunucuda "
 
-msgid "This is your diskquota usage."
-msgstr "Bu, kota durumunuz."
+msgid "KB on the server which is under your quota. Be sure to always keep the data you use under your "
+msgstr "KB'lýk veriniz var ve kotanýzýn altýndasýnýz. Sunucudaki veri miktarýnýzý her zaman "
 
-msgid "Filesystem"
-msgstr "Dosya sistemi"
+msgid "KB quota to ensure that you can always receive e-mails."
+msgstr "KB'lýk kotanýzýn altýnda tutarsanýz yeni e-posta alabileceðinizden emin olabilirsiniz."
 
-msgid "This is the physical device your data resides on"
-msgstr "Bu, verilerinizin bulunduðu fiziksel ortamýn adýdýr"
+msgid "WARNING:"
+msgstr "DÝKKAT:"
 
-msgid "Used"
-msgstr "Kullanýlan"
+msgid "You are using "
+msgstr "Þu anda sunucuda "
 
-msgid "Quota"
-msgstr "Kota"
+msgid "KB on the server which is over your quota. "
+msgstr "KB kullanýyorsunuz ve kotanýzý aþmýþ durumdasýnýz. "
 
-msgid "Limit"
-msgstr "Sýnýr"
+msgid "If you don't delete some e-mails from the server in "
+msgstr "Eðer sunucudan "
 
-msgid "Grace-Time"
-msgstr "Kalan Gün"
+msgid "and get your data under your "
+msgstr "içinde bazý e-postalarý silerek "
 
-msgid "Status"
-msgstr "Durum"
+msgid "KB quota, you WILL NOT be able to get any more e-mails."
+msgstr "KB'lýk kotanýzýn altýna inmezseniz yeni e-posta ALAMAYACAKSINIZ."
 
-msgid "Ok, but what does it mean?"
-msgstr "Tamam, peki bunlar ne anlama geliyor?"
+msgid "You CANNOT get any e-mails now and all e-mails sent to you are bouncing back to their senders. "
+msgstr "Ayrýca hiç e-posta ALAMIYORSUNUZ ve size gönderilen tüm e-postalar göndericilerine geri dönüyor."
 
-msgid "This is your actual amount of data on the physical device"
-msgstr "Bu, sunucuda kullandýðýnýz toplam veri miktarýdýr"
+msgid "You must delete some e-mails from the server and get your usage under your "
+msgstr "Yeni e-posta alabilmek için sunucudan bazý e-postalarýnýzý silerek disk kullanýmýnýzý "
 
-msgid "This is the amount of disk-space that you can use"
-msgstr "Bu, kullanabileceðiniz disk alaný miktarýdýr"
-
-msgid "This is the absolute disk-space you cannot exceed"
-msgstr "Bu, geçme imkanýnýz olmayan maksimum kullanabileceðiniz disk alanýdýr"
-
-msgid "This shows the time left in which you can delete messages once you have exceeded your quota limit"
-msgstr "Bu, kotanýzý aþtýðýnýzda mesaj silmekten baþka yapabileceðiniz birþey kalmayacak gün sayýsýdýr"
-
-msgid "This is your current status"
-msgstr "Bu, þu andaki durumunuzdur"
-
-msgid "What's the difference between Quota and Limit?"
-msgstr "Kota ve Sýnýr arasýndaki fark nedir?"
-
-msgid "Well, you have a limited amount of disk-space available for your data. "
-msgstr "Verileriniz için sunucunuzda sýnýrlý miktarda disk alaný kullanabilirsiniz. "
-
-msgid "You have two kind of limits. Between the first one (called Quota) and the second one "
-msgstr "Ýki tür sýnýr vardýr. Birincisi (Kota) ve ikincisi (Sýnýr) "
-
-msgid "(called Limit) the system will still let you work for some more time "
-msgstr "arasýnda sistem \"Kalan Gün\" kadar çalýþmanýza "
-
-msgid "(the so colled Grace-Time) but if you exceed \"Limit\", the system will "
-msgstr "olanak tanýr. Fakat \"Sýnýr\"ý geçecek boyutta mesajlar "
-
-msgid "prevent you from creating new files. Please notice that once your Grace-Time "
-msgstr "dizininize kaydedilmez. Kotanýzý aþtýysanýz ve \"Kalan Gün\" "
-
-msgid "is expired, you won't be able do anything than delete files!"
-msgstr "sýfýr olduðunda mesaj silmekten baþka birþey yapamazsýnýz!"
-
-msgid "I see an"
-msgstr "Durum alanýnda bir"
-
-msgid "in the status-field. What's that?"
-msgstr "görüyorum. O ne anlama geliyor?"
-
-msgid "It's bad news. It means that you will not be able to work anymore on the system "
-msgstr "\"Kalan Gün\" sýfýrlanýnca sistem e-posta almanýza izin vermeyecek, "
-
-msgid "unless you immediately trash & purge some of your data. Please consider the "
-msgstr "bu yüzden acilen eski mesajlarýnýzýn bazýlarýný silmeniz "
-
-msgid "possibility of moving some data on your local computer rather than leave it all "
-msgstr "veya kendi bilgisayarýnýza taþýmanýz gerekiyor. " 
-
-msgid "on the server."
-msgstr "Kullandýðýnýz alan kotanýzdan daha az olursa sorun yaþamazsýnýz."
+msgid "KB quota in order to be able to get new e-mails."
+msgstr "KB'lýk kotanýzýn altýna indirmeniz gereklidir."
 
