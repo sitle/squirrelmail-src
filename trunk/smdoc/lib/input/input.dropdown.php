@@ -113,16 +113,15 @@ class input_dropdown extends input_base
     return FALSE;
   }
 
-
   /**
    * Display the dropdown list.
    */
   function display($class = NULL, $visibleItems = 1, $javascript = NULL) 
   {
     $class = ( $class == NULL ) ? ''  : ' class="'.$class.'"';
-    $multiple = ( $this->multiple ) ? ' multiple' : '';
+    $multiple = ( $this->multiple ) ? ' multiple="multiple"' : '';
     $javascript = ( $javascript == NULL ) ? '' : ' '.$javascript;
-    $size = ' size="'.$visibleItems.'"';
+    $size = ( $visibleItems > 1 ) ? ' size="'.$visibleItems.'"' : '';
     $name  = ' name="'.$this->name.'[]"';
 
 
