@@ -359,7 +359,7 @@ function formatBody($imap_stream, $message, $color, $wrap_at, $ent_num, $id, $ma
         if (isset($passed_ent_id)) {
             $link .= '&amp;passed_ent_id='.$passed_ent_id;
         }
-        $body .= '<center><small><a href="download.php?absolute_dl=true&amp;' . 
+        $body .= '<center><small><a href="download.php?absolute_dl=true&amp;' .
                  $link . '">' . _("Download this as a file") .  '</a>';
         if ($view_unsafe_images) {
             $text = _("Hide Unsafe Images");
@@ -1240,13 +1240,13 @@ function sq_getnxtag($body, $offset){
  */
 function sq_deent($attvalue){
     $me = 'sq_deent';
-    /** 
+    /**
      * See if we have to run the checks first. All entities must start
      * with "&".
      */
     if (strpos($attvalue, '&') === false){
-        return $attvalue; 
-    }   
+        return $attvalue;
+    }
     /**
      * Check named entities first.
      */
@@ -1323,7 +1323,7 @@ function sq_fixatts($tagname,
         /**
          * Remove \r \n \t \0 " " "\\"
          */
-        $attvalue = str_replace(Array("\r", "\n", "\t", "\0", " ", "\\"), 
+        $attvalue = str_replace(Array("\r", "\n", "\t", "\0", " ", "\\"),
                         Array('', '','','','',''), $attvalue);
 
         /**
@@ -1891,7 +1891,7 @@ function magicHTML($body, $id, $message, $mailbox = 'INBOX') {
      // The best thing you can do for IE is to upgrade to the latest
      // version
      //set all the Cache Control Headers for IE
-     if ($isIE && !$isIE6) {
+     if ($isIE) {
          header ("Pragma: public");
          header ("Cache-Control: no-store, max-age=0, no-cache, must-revalidate"); # HTTP/1.1
          header ("Cache-Control: post-check=0, pre-check=0", false);
