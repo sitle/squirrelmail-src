@@ -339,7 +339,7 @@ function write822Header ($fp, $t, $c, $b, $subject, $more_headers, $session, $rn
         }
 
         if (isset($HTTP_VIA) || isset ($HTTP_X_FORWARDED_FOR)) {
-            if ($HTTP_X_FORWARDED_FOR == '') {
+            if (!isset($HTTP_X_FORWARDED_FOR) || $HTTP_X_FORWARDED_FOR == '') {
                 $HTTP_X_FORWARDED_FOR = 'unknown';
             }
             $received_from .= " (proxying for $HTTP_X_FORWARDED_FOR)";
