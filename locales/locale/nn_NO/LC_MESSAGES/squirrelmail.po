@@ -1,23 +1,24 @@
+# translation of squirrelmail.po to Nynorsk
 # translation of squirrelmail.new.po to Nynorsk
 # Norwegian Nynorsk Squirrelmail Translation
 # Copyright (c) 1999-2002 The Squirrelmail Development Team
 # Magni Onsøien <magnio-squirrel@initio.no>, 2000.
 # Ola Ketil Siqveland <ola.k.siqveland@tn.his.no>, 2002.
-# Ola Ketil Siqveland <olaketil@hotmail.com>, 2003
+# Ola Ketil Siqveland <olaketil@hotmail.com>, 2003, 2004.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: squirrelmail.new\n"
+"Project-Id-Version: squirrelmail\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2003-09-20 11:04+0300\n"
-"PO-Revision-Date: 2003-09-18 07:57+0200\n"
+"POT-Creation-Date: 2003-12-26 17:29+0200\n"
+"PO-Revision-Date: 2004-02-01 19:44+0100\n"
 "Last-Translator: Ola Ketil Siqveland <olaketil@hotmail.com>\n"
 "Language-Team: Nynorsk <nn@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=ISO-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
 "philippe_mingo Exp $\n"
-"X-Generator: KBabel 1.0.1\n"
+"X-Generator: KBabel 1.0.2\n"
 
 msgid "Address Book"
 msgstr "Adressebok"
@@ -101,6 +102,9 @@ msgstr "Fornamn"
 msgid "Additional info"
 msgstr "Tilleggsinformasjon"
 
+msgid "Add to:"
+msgstr "Legg til"
+
 msgid "No personal address book is defined. Contact administrator."
 msgstr "Inga personleg adressebok er definert. Ta kontakt med administrator."
 
@@ -125,9 +129,8 @@ msgstr "Endre valde"
 msgid "Delete selected"
 msgstr "Slett valde"
 
-#, c-format
-msgid "Add to %s"
-msgstr "Legg til %s"
+msgid "Add to address book"
+msgstr "Legg til i adresseboka"
 
 msgid "said"
 msgstr "sa"
@@ -159,7 +162,7 @@ msgstr "Kunne ikkje flytte/kopiere fila. Fila er ikkje lagt ved"
 msgid "Draft Saved"
 msgstr "Kladd lagra"
 
-msgid "Your Message has been sent"
+msgid "Your Message has been sent."
 msgstr "Meldinga er sent"
 
 msgid "From:"
@@ -375,9 +378,6 @@ msgstr "tøm"
 
 msgid "Last Refresh"
 msgstr "Sist oppfriska"
-
-msgid "refresh unseen/total info"
-msgstr ""
 
 msgid "Save folder tree"
 msgstr "Lagre mappetre"
@@ -600,8 +600,7 @@ msgstr ""
 "meldingslista. Dette er til hjelp for å sjå kven meldinga er frå, særleg i "
 "samband med mailinglister."
 
-msgid ""
-"These settings change the way your folders are displayed and manipulated."
+msgid "These settings change the way your folders are displayed and manipulated."
 msgstr "Dette er val for korleis mapper vert viste og kan endrast."
 
 msgid ""
@@ -654,9 +653,8 @@ msgstr "Postar"
 msgid "Read receipt"
 msgstr "Les kvittering"
 
-#, fuzzy
 msgid "sent"
-msgstr "send"
+msgstr "sende"
 
 msgid "requested"
 msgstr "ønska"
@@ -705,11 +703,37 @@ msgid "Attachments"
 msgstr "Vedlegg"
 
 msgid "You must be logged in to access this page."
-msgstr ""
-"Du må ha eit gyldig brukarnamn og passord for å få tilgang til denne sida!"
+msgstr "Du må ha eit gyldig brukarnamn og passord for å få tilgang til denne sida!"
 
-msgid "Folder:"
-msgstr "Mapper"
+msgid "All Folders"
+msgstr "Alle mapper"
+
+msgid "Please enter something to search for"
+msgstr "Skriv inn noko å søkje etter"
+
+msgid "There must be at least one criteria to search for"
+msgstr "Det må vere minst eit søkjevilkår"
+
+msgid "Error in criteria argument"
+msgstr "Syntaksfeil feil i parameter eller i argumenta"
+
+msgid "M j, Y"
+msgstr "M j, Y"
+
+msgid "(Illegal date)"
+msgstr "(ulovleg dato)"
+
+msgid "(Wrong date)"
+msgstr "(Feil dato)"
+
+msgid "In"
+msgstr "I"
+
+msgid "(Missing argument)"
+msgstr "(Manglar argument)"
+
+msgid "(Spurious argument)"
+msgstr "(Falskt argument)"
 
 msgid "edit"
 msgstr "editer"
@@ -720,8 +744,8 @@ msgstr "Søk"
 msgid "delete"
 msgstr "slett"
 
-msgid "Recent Searches"
-msgstr "Nyleg søkte"
+msgid "Saved Searches"
+msgstr "Lagra søk"
 
 msgid "save"
 msgstr "lagra"
@@ -729,17 +753,113 @@ msgstr "lagra"
 msgid "forget"
 msgstr "Forkast"
 
-msgid "Current Search"
-msgstr "Dette søket"
+msgid "Recent Searches"
+msgstr "Nyleg søkte"
 
-msgid "All Folders"
-msgstr "Alle mapper"
+msgid "Missing"
+msgstr "Manglar"
 
-msgid "Body"
-msgstr "Meldingskropp"
+msgid "and&nbsp;subfolders:"
+msgstr "og&nbsp;undermapper:"
 
-msgid "Everywhere"
-msgstr "Overalt"
+msgid "Exclude Criteria:"
+msgstr "Ikkje ta med kriteriet"
+
+msgid "Search Criteria"
+msgstr "Kriterium for søk"
+
+msgid "Folder:"
+msgstr "Mapper"
+
+msgid "Add New Criteria"
+msgstr "Legg til nytt kriterium"
+
+msgid "Remove Excluded Criteria"
+msgstr "Fjern ekskluder kriteriet"
+
+msgid "Remove All Criteria"
+msgstr "Fjern alle kriteria"
+
+msgid "Answered"
+msgstr "Svart"
+
+msgid "Before"
+msgstr "Før"
+
+msgid "Message Body"
+msgstr "Meldingkropp"
+
+msgid "Deleted"
+msgstr "Sletta"
+
+msgid "Draft"
+msgstr "Kladd"
+
+msgid "Flagged"
+msgstr "Flagg"
+
+msgid "Sent By"
+msgstr "Sent av"
+
+msgid "Header Field"
+msgstr "Topptekst felt"
+
+msgid "Keyword"
+msgstr "Nøkkelord"
+
+msgid "Larger Than"
+msgstr "Større enn"
+
+msgid "Old"
+msgstr "Gamal"
+
+msgid "On"
+msgstr "På"
+
+msgid "Recent"
+msgstr "Nyleg"
+
+msgid "Seen"
+msgstr "Sett"
+
+msgid "Sent Before"
+msgstr "Sendt før"
+
+msgid "Sent On"
+msgstr "Sendt På"
+
+msgid "Sent Since"
+msgstr "sendt sidan"
+
+msgid "Since"
+msgstr "Sidan"
+
+msgid "Smaller Than"
+msgstr "Mindre enn"
+
+msgid "Subject Contains"
+msgstr "Emne Inneheld"
+
+msgid "Header and Body"
+msgstr "Topptekst og kropp"
+
+msgid "Sent To"
+msgstr "Sendt til"
+
+msgid "Not"
+msgstr "Ikkje"
+
+msgid "And In"
+msgstr "Og i"
+
+msgid "Or In"
+msgstr "Eller i"
+
+msgid "And"
+msgstr "Og"
+
+msgid "Or"
+msgstr "Eller"
 
 msgid "Search Results"
 msgstr "Søkjeresultat"
@@ -800,6 +920,9 @@ msgstr "Viser fulle meldingshovud"
 
 msgid "Viewing a text attachment"
 msgstr "Viser eit tekstvedlegg"
+
+msgid "Folder List"
+msgstr "Mappeliste"
 
 msgid "Personal address book"
 msgstr "Personleg adressebok"
@@ -998,9 +1121,6 @@ msgstr "D, F j, Y g:i a"
 msgid "D, F j, Y G:i"
 msgstr "D, F j, Y G:i"
 
-msgid "M j, Y"
-msgstr "M j, Y"
-
 msgid "g:i a"
 msgstr "g:i a"
 
@@ -1016,12 +1136,6 @@ msgstr "D, G:i"
 #, c-format
 msgid "Preference database error (%s). Exiting abnormally"
 msgstr "Database instillingsfeil (%s) Avsluttar unormalt."
-
-msgid "Unknown user or password incorrect."
-msgstr "Ukjend brukar eller feil passord."
-
-msgid "Click here to try again"
-msgstr "Klikk her for å prøve på nytt"
 
 #, c-format
 msgid "Click here to return to %s"
@@ -1103,39 +1217,47 @@ msgstr ""
 "Signatur fila %s kan ikkje kopierast frå midlertidig fil, %s. Kontakt "
 "systemadministartor for å løysa dette problemet"
 
-msgid ""
-"You need to have php4 installed with the multibyte string function enabled "
-"(using configure option --enable-mbstring)."
-msgstr ""
-"Ein treng php4 installert med \"multibyte string function\" slått på (bruk "
-"konfigurasjonsvalet --enable-mbstring)."
-
-msgid "ERROR : No available imapstream."
-msgstr "FEIL: inga tilgjengeleg imapstraum."
-
-msgid "ERROR : Connection dropped by imap-server."
-msgstr "FEIL : Samband avbrutt av imap tenar"
-
 msgid "ERROR : Could not complete request."
 msgstr "FEIL: Kunne ikkje fullføre førespurnaden."
-
-msgid "Query:"
-msgstr "Spørjing:"
-
-msgid "Reason Given: "
-msgstr "Oppgjeven grunn: "
 
 msgid "ERROR : Bad or malformed request."
 msgstr "FEIL: Feil eller misforma førespurnad."
 
-msgid "Server responded: "
-msgstr "Serveren svarte: "
-
 msgid "ERROR : Imap server closed the connection."
 msgstr "FEIL : Imap tenar lukka sambandet"
 
+msgid "ERROR : Connection dropped by imap-server."
+msgstr "FEIL : Samband avbrutt av imap tenar"
+
 msgid "ERROR : Unknown imap response."
 msgstr "FEIL : Ukjent imap svar."
+
+msgid "Reason Given: "
+msgstr "Oppgjeven grunn: "
+
+msgid "Possible reason : "
+msgstr "Mogleg årsak"
+
+msgid "Query:"
+msgstr "Spørjing:"
+
+msgid "The imap server failed to handle threading."
+msgstr "Imap tenar "
+
+msgid "Click here to unset thread view for this mailbox and start again."
+msgstr "Klikk her for å fjerne trådvising for denne postboksen og start på nytt."
+
+msgid "ERROR : No available imapstream."
+msgstr "FEIL: inga tilgjengeleg imapstraum."
+
+msgid "ERROR : Bad function call."
+msgstr "FEIL : Feil funksjonskall"
+
+msgid "Reason:"
+msgstr "Grunn:"
+
+msgid "Server responded: "
+msgstr "Serveren svarte: "
 
 #, c-format
 msgid "Error connecting to IMAP server: %s."
@@ -1152,6 +1274,9 @@ msgstr "Ukjend feil: %s"
 msgid "Read data:"
 msgstr "Lese data"
 
+msgid "Unknown user or password incorrect."
+msgstr "Ukjend brukar eller feil passord."
+
 msgid "ERROR : Could not append message to"
 msgstr "FEIL: Kunne ikkje legge meldinga til"
 
@@ -1165,9 +1290,6 @@ msgstr "Fjern uønska meldingar og start med søppelbøtta."
 
 msgid "(no subject)"
 msgstr "(utan emne)"
-
-msgid "Unknown Sender"
-msgstr "Ukjend avsendar"
 
 msgid "Unknown response from IMAP server: "
 msgstr "Ukjent respons frå IMAP tjenaren"
@@ -1233,6 +1355,12 @@ msgstr "Vis trådlaus"
 msgid "Thread View"
 msgstr "Tråd vising "
 
+msgid "Bypass Trash"
+msgstr "Forbikople papirkorg"
+
+msgid "Click here to change the sorting of the message list"
+msgstr "Klikk her for å endra sorteringa av meldingslista"
+
 msgid "Toggle All"
 msgstr "Slå av/på alt"
 
@@ -1265,8 +1393,7 @@ msgstr "format på meldinga gitt av imap tjenaren"
 msgid ""
 "Body retrieval error. The reason for this is most probably that the message "
 "is malformed."
-msgstr ""
-"Feil i mottak av brødtekst. Dette skuldast truleg ei misforma melding. "
+msgstr "Feil i mottak av brødtekst. Dette skuldast truleg ei misforma melding. "
 
 msgid "Command:"
 msgstr "Kommando:"
@@ -1292,6 +1419,9 @@ msgstr "last ned"
 msgid "sec_remove_eng.png"
 msgstr "sec_remove_eng.png"
 
+msgid "This external link will open in a new window"
+msgstr "Opne ekstern link i eit nytt vindauge"
+
 #, c-format
 msgid "Option Type '%s' Not Found"
 msgstr "Valt type '%s' ikkje funnen"
@@ -1300,7 +1430,7 @@ msgid "Current Folder"
 msgstr "Vald mappe"
 
 msgid "Compose"
-msgstr "Ny melding"
+msgstr "Skriv ny"
 
 #, c-format
 msgid "Error creating directory %s."
@@ -1415,7 +1545,16 @@ msgid "Maximum Number of Pages to Show"
 msgstr "Høgast tal på viste sider"
 
 msgid "Always Show Full Date"
-msgstr ""
+msgstr "Vis alltid full dato"
+
+msgid "Length of From/To Field (0 for full)"
+msgstr "Lengde av Frå/Til feilt (0 er fult)"
+
+msgid "Length of Subject Field (0 for full)"
+msgstr "Lengde av emne felt (0 er fult)"
+
+msgid "Show recipient name if the message is from your default identity"
+msgstr "Vis mottakernamn viss meldinga er frå din standard identitet"
 
 msgid "Message Display and Composition"
 msgstr "Alternativ for meldingsvising og ny melding"
@@ -1482,6 +1621,21 @@ msgstr "Høgd på skriveområdet"
 
 msgid "Append Signature before Reply/Forward Text"
 msgstr "Legg til signatur før svar/vidaresend tekst"
+
+msgid "Cursor Position when Replying"
+msgstr "Skrivemerket ved svar"
+
+msgid "To: field"
+msgstr "Til felt"
+
+msgid "Focus in body"
+msgstr "Fokus i meldingskroppen"
+
+msgid "Select body"
+msgstr "Vel meldingskropp"
+
+msgid "Strip signature when replying"
+msgstr "Fjern signatur ved svar"
 
 msgid "Enable Sort by of Receive Date"
 msgstr "Slå på: Sorter på mottakdato"
@@ -1561,7 +1715,7 @@ msgstr "Berre ulesne"
 msgid "Unseen and Total"
 msgstr "Ulesne og totalt tal"
 
-msgid "Enable Collapsible Folders"
+msgid "Enable Collapsable Folders"
 msgstr "Slå på krymping av mapper"
 
 msgid "Enable Cumulative Unread Message Notification"
@@ -1569,6 +1723,15 @@ msgstr "Gje melding kumulativt om ulesne meldingar"
 
 msgid "Show Clock on Folders Panel"
 msgstr "Vis klokka i mappe panelet"
+
+msgid "Show weekday and time"
+msgstr "Vis vekeday og tid"
+
+msgid "Show time with seconds"
+msgstr "Vis tid med sekund"
+
+msgid "Show time"
+msgstr "Vis tid"
 
 msgid "No Clock"
 msgstr "Inga klokke"
@@ -1596,6 +1759,12 @@ msgstr "Val av listestil"
 
 msgid "Long: "
 msgstr "Lengd:"
+
+msgid "Folder"
+msgstr "Mapper"
+
+msgid "Subfolder"
+msgstr "Undermapper"
 
 msgid "Indented: "
 msgstr "Påtenkt:"
@@ -1672,6 +1841,10 @@ msgstr "Adressebok"
 msgid "Try to verify addresses"
 msgstr "Prøver verifiserer adressa"
 
+#, c-format
+msgid "Add to %s"
+msgstr "Legg til %s"
+
 msgid "Config File Version"
 msgstr "Versjon av konfigurasjonsfil"
 
@@ -1707,9 +1880,6 @@ msgstr "Tenar Link URI"
 
 msgid "Provider Name"
 msgstr "Tenarnamn:"
-
-msgid "Default Language"
-msgstr "Standard språk"
 
 msgid "Top Frame"
 msgstr "Topp ramme"
@@ -1840,9 +2010,6 @@ msgstr "Vel Ikkje faste mapper"
 msgid "General Options"
 msgstr "Generelle val"
 
-msgid "Default Charset"
-msgstr "Standard teiknsett"
-
 msgid "Data Directory"
 msgstr "Datakatalog:"
 
@@ -1891,9 +2058,6 @@ msgstr "Bruk server til trådsortering"
 msgid "Allow server charset search"
 msgstr "Tillet karater søk på server"
 
-msgid "UID support"
-msgstr "UID støtte"
-
 msgid "PHP session name"
 msgstr "PHP økt namn"
 
@@ -1924,6 +2088,51 @@ msgstr "Instillingar nøkkelfelt"
 msgid "Preferences value field"
 msgstr "Instillingar verdifelt"
 
+msgid "Global address book DSN"
+msgstr "Global adressebok DSN"
+
+msgid "Global address book table"
+msgstr "Global adresseboktabell"
+
+msgid "Allow writing into global address book"
+msgstr "Tillat å modifisera global adressebok"
+
+msgid "Allow listing of global address book"
+msgstr "Tillat opplisting av global adressebok"
+
+msgid "Language settings"
+msgstr "Språkinnstillingar"
+
+msgid "Default Language"
+msgstr "Standard språk"
+
+msgid "Default Charset"
+msgstr "Standard teiknsett"
+
+msgid "Show alternative language names"
+msgstr "Vis alternative språk namn"
+
+msgid "Available languages"
+msgstr "Tilgjengelege språk"
+
+msgid "Use agresive decoding"
+msgstr "Bruk agresiv dekoding"
+
+msgid "Tweaks"
+msgstr "Tilleggsval"
+
+msgid "Use advanced tree folder listing"
+msgstr "Bruk avansert tremappelister"
+
+msgid "Use old folder listing functions"
+msgstr "Bruk gamal mappeliste funksjonar"
+
+msgid "Use php recode functions"
+msgstr "Bruk php \"recode\" funksjonar"
+
+msgid "Use php iconv functions"
+msgstr "Bruk php \"iconv\" funksjonar"
+
 msgid "Themes"
 msgstr "Tema"
 
@@ -1938,6 +2147,21 @@ msgstr "Bruk indekserte tema"
 
 msgid "Configuration Administrator"
 msgstr "Konfigurasjonsadministrator"
+
+msgid ""
+"Note: it is recommended that you configure your system using conf.pl, and "
+"not this plugin. conf.pl contains additional information regarding the "
+"purpose of variables and appropriate values, as well as additional "
+"verification steps."
+msgstr ""
+"Merk: Det er tilrådd at du konfigurerer systemet ved å bruka conf.pl, og ikkje dette "
+"programtillegget. conf.pl inneheld tillegsinformasjon tilpassa variabler og egna verdiar, "
+"i tillegg til kontroll system."
+
+msgid ""
+"Run or consult conf.pl should you run into difficulty with your "
+"configuration."
+msgstr "Kjør eller slå opp i conf.pl viss du kjem oppi vanskar med konfigurasjonen."
 
 msgid "Theme Name"
 msgstr "Temanamn"
@@ -1960,8 +2184,84 @@ msgstr "Administrasjon"
 msgid ""
 "This module allows administrators to manage SquirrelMail main configuration "
 "remotely."
+msgstr "Dene modulen tillet administrator å konfigurere SquirrelMail over nettet."
+
+msgid "Submit a Bug Report"
+msgstr "Send ein feilrapport"
+
+msgid ""
+"Before you send your bug report, please make sure to check this checklist "
+"for any common problems."
+msgstr "Før du sender ein feilrapport, sjekk denne sjekklista for eventuelle vanlege problem."
+
+msgid ""
+"Make sure that you are running the most recent copy of <a href=\"http://www."
+"squirrelmail.org/\">SquirrelMail</a>."
 msgstr ""
-"Dene modulen tillet administrator å konfigurere SquirrelMail over nettet."
+"Sjekk at du kjøre siste versjon av <a href=\"http://www.squirrelmail.org/\"> "
+"SquirrelMail</a>."
+
+#, c-format
+msgid "You are currently using version %s."
+msgstr "Du bruka nå versjonen %s."
+
+msgid ""
+"Check to see if you bug is already listed in the <a href=\"http://"
+"sourceforge.net/bugs/?group_id=311\">Bug List</a> on SourceForge. If it is, "
+"we already know about it and are trying to fix it."
+msgstr ""
+"Sjekk om feilen allereie er i lista <a href=\"http://"
+"sourceforge.net/bugs/?group_id=311\">Feil Liset</a>  på SourceForge. "
+"Viss den finst, så veit vi om feilen og held på å fiksa den."
+
+msgid ""
+"Try to make sure that you can repeat it. If the bug happens sporatically, "
+"try to document what you did when it happened. If it always occurs when you "
+"view a specific message, keep that message around so maybe we can see it."
+msgstr ""
+"Prøv om du kan repeterar feilen fleire ganger. Viss feilen opptrer sporadisk, prøv å "
+"dokumenter kva du gjer når feilen kjem. Viss den alltid kjem når du ser på ei spesiell  "
+"melding, lagre meldinga slik at vi kanskje kan sjå den."
+
+msgid ""
+"If there were warnings displayed above, try to resolve them yourself. Read "
+"the guides in the <tt>doc/</tt> directory where SquirrelMail was installed."
+msgstr ""
+"Viss der er advarslar vist ovafor, prøv å løys desse sjølv. Les vegleiinga i <tt>doc</tt> "
+"katalogen kor Squirrelmail er insallert."
+
+msgid ""
+"Pressing the button below will start a mail message to the developers of "
+"SquirrelMail that will contain a lot of information about your system, your "
+"browser, how SquirrelMail is set up, and your IMAP server. It will also "
+"prompt you for information. Just fill out the sections at the top. If you "
+"like, you can scroll down in the message to see what else is being sent."
+msgstr ""
+"Ved å trykka knappen nedafor vil det verta sendt ein e-post til utviklarane av Squirrelmail som "
+"innehalda ei mengd med informasjon om ditt system, din vevlesar, korleis Squirrelmail "
+"er satt opp, og din IMAP tenar. Du får også leggja inn tillegsinformasjon. "
+"Bare fyll ut seksjone i toppen. Viss du vil kan du rulle ned i meldinga for å sjå "
+"kva anna som vert sendt."
+
+msgid ""
+"Please make sure to fill out as much information as you possibly can to give "
+"everyone a good chance of finding and removing the bug. Submitting your bug "
+"like this will not have it automatically added to the bug list on "
+"SourceForge, but someone who gets your message may add it for you."
+msgstr ""
+"Fyll ut så mykkje som mogleg av informasjonen slik at einkvar har ein god sjanse til å "
+"finna og fjerna feilen. Sending av feilen på denne måten vil ikkje automatisk leggja "
+"den til i feillista på SourceForge, men kanskje nokon som får meldinga vil leggja den "
+"inn for deg."
+
+msgid "This bug involves"
+msgstr "Denne feilen omfattar"
+
+msgid "the general program"
+msgstr "generelt program"
+
+msgid "a specific plugin"
+msgstr "eit særmerkt programtillegg"
 
 msgid "Bug Reports:"
 msgstr "Feilrapport"
@@ -2179,13 +2479,12 @@ msgstr ""
 msgid "FREE - SPAMhaus - A list of well-known SPAM sources."
 msgstr "GRATIS - SPAMhaus - Ei liste over velkjendte søppelkjelder."
 
-#, fuzzy, c-format
 msgid ""
 "FREE, for now - SPAMCOP - An interesting solution that lists servers that "
-"have a very high spam to legit email ratio (85% or more)."
+"have a very high spam to legit email ratio (85 percent or more)."
 msgstr ""
 "GRATIS, inntil vidare - SPAMCOP - Ei interessant løysing, som inneheld "
-"tjenarar som har eit svært høgt søppel/ikkje søppel forhold (85% eller meir)."
+"tenarar som har eit svært høgt søppel/ikkje søppel forhold (85% eller meir)."
 
 msgid "FREE - dev.null.dk - I don't have any detailed info on this list."
 msgstr "GRATIS - dev.null.dk - Eg har inga detaljopplysingar om denne lista."
@@ -2199,8 +2498,7 @@ msgid "FREE - 2mbit.com Open Relays - Another list of Open Relays."
 msgstr "GRATIS - 2mbit.com Open Relays - Ennå ei liste over opne tjenarar."
 
 msgid "FREE - 2mbit.com SPAM Source - List of Direct SPAM Sources."
-msgstr ""
-"GRATIS - 2mbit.com SPAM Source - Ei liste over direkte søppelpost-kjelder."
+msgstr "GRATIS - 2mbit.com SPAM Source - Ei liste over direkte søppelpost-kjelder."
 
 msgid "FREE - 2mbit.com SPAM ISPs - List of SPAM-friendly ISPs."
 msgstr ""
@@ -2276,8 +2574,7 @@ msgstr ""
 "vidaresendar"
 
 msgid "FREE - Distributed Sender Boycott List - UN-Confirmed Relays"
-msgstr ""
-"GRATIS - Distribuert avsender boikott liste - Ikkje stadfesta vidaresendar"
+msgstr "GRATIS - Distribuert avsender boikott liste - Ikkje stadfesta vidaresendar"
 
 msgid "Saved Scan type"
 msgstr "Lagre skanningstype"
@@ -2468,12 +2765,6 @@ msgstr "Inga tenar spesifisert"
 msgid "Error "
 msgstr "Feil "
 
-msgid "POP3 noop:"
-msgstr "POP3 noop:"
-
-msgid "No connection to server"
-msgstr "Kunne ikkje koble til tjenaren"
-
 msgid "POP3 user:"
 msgstr "POP3 brukar:"
 
@@ -2494,6 +2785,9 @@ msgstr "autentiseringa mislukkast."
 
 msgid "POP3 apop:"
 msgstr "POP3 apop:"
+
+msgid "No connection to server"
+msgstr "Kunne ikkje koble til tjenaren"
 
 msgid "No login ID submitted"
 msgstr "Inga innloggingsID gitt"
@@ -2552,9 +2846,6 @@ msgstr "Inga meldingsnummer sent"
 msgid "Command failed "
 msgstr "Kommando feila"
 
-msgid "Remote POP server Fetching Mail"
-msgstr "Hentar e-post frå fjern POP-tenar"
-
 msgid "Select Server:"
 msgstr "Vel tenar"
 
@@ -2563,6 +2854,15 @@ msgstr "Passord for:"
 
 msgid "Fetch Mail"
 msgstr "Hent e-post"
+
+msgid "Remote POP server Fetching Mail"
+msgstr "Hentar e-post frå fjern POP-tenar"
+
+msgid "No POP3 servers configured yet."
+msgstr "Inga POP3 tenar konfigurert ennå"
+
+msgid "Click here to go to the options page."
+msgstr "Klikk her for å gå til innstillings sida"
 
 msgid "Fetching from "
 msgstr "Hent frå"
@@ -2844,8 +3144,16 @@ msgstr "Ny e-post"
 msgid "SquirrelMail Notice:"
 msgstr "SquirrelMail beskjed:"
 
-msgid "You have new mail!"
-msgstr "Du har ny e-post"
+msgid "You have"
+msgstr "Du har"
+
+#, c-format
+msgid "%s new message"
+msgstr "%s ny melding"
+
+#, c-format
+msgid "%s new messages"
+msgstr "%s ny meldingar"
 
 msgid "NewMail Options"
 msgstr "Ny e-postval"
@@ -2895,6 +3203,185 @@ msgstr "Kvart år"
 msgid "Base Sent Folder"
 msgstr "Basisi sent mappe"
 
+msgid "Enabled"
+msgstr "På"
+
+msgid "Disable it"
+msgstr "Slå det av"
+
+msgid "Enable it"
+msgstr "Slå det på"
+
+msgid "Spam reporting"
+msgstr "Reklame raportering"
+
+msgid "SpamCop link is:"
+msgstr "SpamCop lenkje er>"
+
+msgid "Delete spam when reported:"
+msgstr "Slett raportert reklame"
+
+msgid "Only works with email-based reporting"
+msgstr "Virkar bare med raportering basert på e-post"
+
+msgid "Spam Reporting Method:"
+msgstr "Reklame raporteringsmetode:"
+
+msgid "Quick email-based reporting"
+msgstr "Rask raportering basert på e-post"
+
+msgid "Thorough email-based reporting"
+msgstr "Grundig raportering basert på e-post"
+
+msgid "Web-based form"
+msgstr "Vev-basert form"
+
+msgid "Spam Service Type:"
+msgstr "Reklame tjeneste type"
+
+msgid "Free reporting"
+msgstr "Fri raportering"
+
+msgid "Member services"
+msgstr "Medlemstenester"
+
+msgid "Your SpamCop authorization code:"
+msgstr "Din SpamCop autorisasjonskode:"
+
+msgid "see below"
+msgstr "sjå nedafor"
+
+msgid ""
+"SpamCop is a free service that greatly assists in finding the true source of "
+"the spam and helps in letting the proper people know about the abuse."
+msgstr ""
+"SpamCop er ein gratis teneste som sterkt medvirker til å finna den rette "
+"kjelda til reklamen og lar dei riktige personane kjenna til misbruket."
+
+msgid ""
+"To use it, you must get a SpamCop authorization code. There is a free <a "
+"href=\"http://spamcop.net/anonsignup.shtml\">sign up page</a> so you can use "
+"SpamCop."
+msgstr ""
+"For å bruka det må du få SpamCop autorisasjonskoden. Det finst ei gratis <a "
+"href=\"http://spamcop.net/anonsignup.shtml\">Registrer side</a>  slik "
+"at du kan bruka SpamCop."
+
+msgid ""
+"<b>Before you sign up, be warned:</b> Some users have reported that the "
+"email addresses used with SpamCop find their way onto spam lists. To be "
+"safe, you can just create an email forwarding account and have all SpamCop "
+"reports get sent to there. Also, if it gets flooded with spam, you can then "
+"just delete that account with no worries about losing your real email "
+"address. Just go create an email forwarder somewhere (<a href=\"http://www."
+"yahoo.com/\">Yahoo!</a> has a <a href=\"http://dir.yahoo.com/"
+"Business_and_Economy/Business_to_Business/Communications_and_Networking/"
+"Internet_and_World_Wide_Web/Email_Providers/Forwarding_Services/"
+"Free_Forwarding/\">list of places</a>) so that messages from system "
+"administrators and whatnot can be sent to you."
+msgstr ""
+"<b>Før du registrerer deg, advarsel</b> Nokre brukarar har rapotert at e-post adressa "
+"brukt mot SpamCop, finn vegen inni reklame lister. For å vere sikker, opprett ein "
+"e-postkonto med vidaresending og la all SpamCop raportar verta sendt til den kontoen. "
+"Viss den vert overfylt med reklame, så kan du bare sletta den utan vidare. "
+"Bare opprett ein e-postkonto med vidaresending ein eller anna stad "
+"(<a href=\"http://www."
+"yahoo.com/\">Yahoo!</a> har ein <a href=\"http://dir.yahoo.com/"
+"Business_and_Economy/Business_to_Business/Communications_and_Networking/"
+"Internet_and_World_Wide_Web/Email_Providers/Forwarding_Services/"
+"Free_Forwarding/\">liste av stader</a>) slik at meldingar frå system administrator og "
+"andre vert sendt til deg."
+
+msgid ""
+"Once you have signed up with SpamCop and have received your SpamCop "
+"authorization code, you need to enable this plugin -- just click the link "
+"above.  Once enabled, you go about your normal life.  If you encounter a "
+"spam message in your mailbox, just view it.  On the right-hand side, near "
+"the top of where the message is displayed, you will see a link to report "
+"this message as spam.  Clicking on it brings you to a confirmation page. "
+"Confirming that you want the spam report sent will do different things with "
+"different reporting methods."
+msgstr ""
+"Når du har registrert deg hjå SpamCop og mottatt autorisasjonskoden til SpamCop, "
+"må du slå på programtillegget-- bare klikk på lenkja over. Nå den er slått på fortsett "
+"som vanleg. Viss du får ein reklame melding, bare les den. På høgre side, nær toppen "
+"der meldinga er vist, finn du ei lenkje for å rapotera denne meldinga som reklame.  "
+"Ved klikking får du opp ei stadfesting side. Stadfest at du vil rapotera reklamen, og "
+"gjer det med forskjellege rapoteringsmetodar."
+
+msgid "Email-based Reporting"
+msgstr "Rapotering basert på e-post."
+
+msgid ""
+"Pressing the button forwards the message to the SpamCop service and will "
+"optionally delete the message.  From there, you just need to go to your "
+"INBOX and quite soon a message should appear from SpamCop.  (It gets sent to "
+"the account you registered with, so make sure that your mail forwarder "
+"works!) Open it up, click on the appropriate link at the top, and a new "
+"browser window will open."
+msgstr ""
+"Ved trykking på knappen vil meldinga vidaresendast til SpamCop tjenesten, og "
+"vil valgfritt sletta meldinga. Gå nå til INNBOKS og snart vil du motta ei melding "
+"frå SpamCop (den vert sendt til den kontoen du registrerte deg med, så ver "
+"sikker på at e-posten vert korrekt vidaresendt!) Opne opp, klikk på den passande "
+"lenkja i toppen, og eit nytt vevlesar vindauge vil opnast opp."
+
+msgid ""
+"Currently, the quick reporting just forwards the request to the thorough "
+"reporting.  Also, it appears that this is for members (non-free) only. "
+"Hopefully this will change soon."
+msgstr ""
+"Rask raportering bare vidaresender ordren til grundig raportering. Det virker som "
+"om dette er fkun or medlemmar (ikkje gratis). Håpar dette endrar seg snart."
+
+msgid "Web-based Reporting"
+msgstr "Vev basert raportering"
+
+msgid ""
+"When you press the button on the confirmation page, this will pop open a new "
+"browser window and the SpamCop service should appear inside. The message "
+"will not be deleted (working on that part), but you won't need to wait for a "
+"response email to start the spam reporting."
+msgstr ""
+"Når du trykkjer på knappen på stadfesting sida, ei ny sprettopp windauge kjem opp "
+"og SpamCop tjenesten vil koma fram inni. Meldinga vil ikkje verta sletta "
+"(arbeidar på den delen), men du treng ikkje venta på ein respons e-post for å "
+"starta reklame raporteringa."
+
+msgid ""
+"The SpamCop service will display information as it finds it, so scroll down "
+"until you see a form button. It might pause a little while it is looking up "
+"information, so be a little patient. Read what it says, and submit the spam. "
+"Close the browser window.  Press Cancel or click on the appropriate mail "
+"folder to see messages and/or delete the spam."
+msgstr ""
+"SpamCop tjenesten vil visa informasjonen etter som den finn den, så rull ned til du ser "
+"ein frå kanpp. Det tar kanskje ei lita tid medan den leitar opp informasjonen, så ver "
+"tålmodig. Les kva den seier, og avgi reklamen. Lukk vev-vindauget. Trykk Avbryt "
+"eller klikk på passande e-post mappe for å lesa meldingar og/eller slett reklame "
+"meldinga."
+
+msgid "Spamcop Service Type"
+msgstr "SpamCop tjeneste type"
+
+msgid ""
+"Service type option allows selecting which spamcop services you are using. "
+"Member services use different web reporting forms  and does not display "
+"nags. You can purchase these services, if you want to support SpamCop."
+msgstr ""
+"Tjeneste type val tillet å velja kvafor spamcop tjenseste du brukar. "
+"Medlemstenesten brukar forskjellege vev raporterings fromer og viser ikkje masemelding. "
+"Du kan kjøpa desse tenestane, viss du vil støtta SpamCop"
+
+msgid ""
+"<b>For more information</b> about SpamCop, it's services, spam in general, "
+"and many related topics, try reading through SpamCop's <a href=\"http://"
+"spamcop.net/help.shtml\">Help and Feedback</a> section."
+msgstr ""
+"<b> For meir informasjon</b> om SpamCop, tjenesten, spam/rekalme generelt, og "
+"mange beslekta emne, prøv å les gjennom SpamCop  <a href=\"http://"
+"spamcop.net/help.shtml\">Help and Feedback</a> seksjonen."
+
 msgid "Report as Spam"
 msgstr "Raporter som søppelpost"
 
@@ -2908,6 +3395,17 @@ msgid ""
 msgstr ""
 "Hjelp til i kampen mot søppelposten. SpamCop les søppelposten og finn den "
 "rette adressa å senda klage til. Ganske rask, lur og lett å bruka."
+
+msgid ""
+"Sending this spam report will give you back a reply with URLs that you can "
+"click on to properly report this spam message to the proper authorities. "
+"This is a free service.  By pressing the \"Send Spam Report\" button, you "
+"agree to follow SpamCop's rules/terms of service/etc."
+msgstr ""
+"Ved å senda denne reklame raporten vil du få tilbake eit svar med ein URL "
+"som du kan kilkke på for å riktig å raportera denne reklame meldinga til dei "
+"rette autoriserte. Dette er ei gratis teneste. Ved å trykkja \"Send reklame raport\" "
+"knappen, du er einig i SpamCop sine reglar/vilkår for tenesten/oog liknande."
 
 msgid "SpellChecker Options"
 msgstr "Stavekontroll val"
@@ -2959,8 +3457,7 @@ msgstr "Hald fram"
 msgid "You must make a choice"
 msgstr "Du må ta eit val"
 
-msgid ""
-"You can either delete your dictionary or type in the old password. Not both."
+msgid "You can either delete your dictionary or type in the old password. Not both."
 msgstr ""
 "Du kan enten slette ordboka eller gi inn det gamle passordet. Ikkje begge "
 "deler."
@@ -3165,8 +3662,7 @@ msgstr ""
 "vil SquirrelSpell spørja etter det nye passordet, og kryptera ordboka med "
 "det.</p>"
 
-msgid ""
-"Please decrypt my personal dictionary and store it in a clear-text format."
+msgid "Please decrypt my personal dictionary and store it in a clear-text format."
 msgstr "Dekryptér personleg ordbok og lagre i klar tekst."
 
 msgid "Change crypto settings"
@@ -3198,8 +3694,7 @@ msgstr ""
 "administratoren, endrar passordet, og du fortsatt veit den gamle koden, kan "
 "du bruka den til å kryptera ordboka med det nye passordet.</p>"
 
-msgid ""
-"Please encrypt my personal dictionary and store it in an encrypted format."
+msgid "Please encrypt my personal dictionary and store it in an encrypted format."
 msgstr "Krypter mi personlege ordbok, og lager den som krypteret tekst."
 
 #, c-format
@@ -3284,39 +3779,31 @@ msgstr "Lagra oversetjarvala"
 msgid "Your server options are as follows:"
 msgstr "Tenarinstillingane er følgjande:"
 
-#, fuzzy
 msgid "Maximum of 1000 characters translated, powered by Systran"
-msgstr "19 sprogpar, maksimalt 1000 teikn oversatt, Drevet av Systran"
+msgstr "Maksimalt 1000 karakterer oversatt, levert av Systran"
 
 #, c-format
 msgid "Number of supported language pairs: %s"
-msgstr ""
+msgstr "Tallet på støtta språk par: %s"
 
-#, fuzzy
 msgid "No known limits, powered by Systran"
-msgstr "12 språkpar, inga kjent grense, Dreven av Systran"
+msgstr "Inga kjent grense, Levert av Systran"
 
-#, fuzzy
+msgid "No known limits, powered by GPLTrans (free, open source)"
+msgstr "Inga kjent grense,dreven av GPLTrans (gratis open kjeldekode)"
+
 msgid "No known limits, powered by Translation Experts's InterTran"
-msgstr ""
-"784 språkpar, inga kjent grense, Drevet av Translation Expert's InterTran"
+msgstr "Inga kjent grense, Drevet av Translation Expert's InterTran"
 
 #, c-format
 msgid "Number of supported languages: %s"
-msgstr ""
+msgstr "Tallet på støtta språk: %s"
 
-#, fuzzy
-msgid "No known limits, powered by GPLTrans (free, open source)"
-msgstr ""
-"8 språkpar, inga kjent grense,dreven av GPLTrans (gratis open kjeldekode)"
-
-#, fuzzy
 msgid "Hellenic translations, no known limits, powered by Systran"
-msgstr "12 språkpar, inga kjent grense, Dreven av Systran"
+msgstr "Gresk omsetjing, inga kjent grense, Dreven av Systran"
 
-#, fuzzy
 msgid "Russian translations, maximum of 500 characters translated"
-msgstr "19 sprogpar, maksimalt 1000 teikn oversatt, Drevet av Systran"
+msgstr "Russisk omsetjing, maksimalt 500 teikn oversatt"
 
 msgid ""
 "You also decide if you want the translation box displayed, and where it will "
@@ -3358,8 +3845,7 @@ msgstr "Omsetjingsval"
 msgid ""
 "Which translator should be used when you get messages in a different "
 "language?"
-msgstr ""
-"Kvafor ein oversetjar skal brukast når du mottar meldingar på eit anna språk?"
+msgstr "Kvafor ein oversetjar skal brukast når du mottar meldingar på eit anna språk?"
 
 #, c-format
 msgid "%s to %s"
@@ -3470,19 +3956,45 @@ msgstr "til Engelsk"
 msgid "from English"
 msgstr "frå Engelsk"
 
-#, fuzzy
 msgid "Interface language"
-msgstr "Standard språk"
+msgstr "Grensesnitt språk"
 
-#, fuzzy
 msgid "Translation direction"
-msgstr "Omsetjingsval"
+msgstr "Omsetjingsretning"
 
 msgid "Delivery error report"
 msgstr "Lever feilrapport "
 
 msgid "Undelivered Message Headers"
 msgstr "Meldigshovud frå medlingar som ikkje vart levert"
+
+#~ msgid "Current Search"
+#~ msgstr "Dette søket"
+
+#~ msgid "Body"
+#~ msgstr "Meldingskropp"
+
+#~ msgid "Everywhere"
+#~ msgstr "Overalt"
+
+#~ msgid "Click here to try again"
+#~ msgstr "Klikk her for å prøve på nytt"
+
+#~ msgid ""
+#~ "You need to have php4 installed with the multibyte string function "
+#~ "enabled (using configure option --enable-mbstring)."
+#~ msgstr ""
+#~ "Ein treng php4 installert med \"multibyte string function\" slått på "
+#~ "(bruk konfigurasjonsvalet --enable-mbstring)."
+
+#~ msgid "Unknown Sender"
+#~ msgstr "Ukjend avsendar"
+
+#~ msgid "UID support"
+#~ msgstr "UID støtte"
+
+#~ msgid "POP3 noop:"
+#~ msgstr "POP3 noop:"
 
 #~ msgid ""
 #~ "FREE - Osirusoft Relays - Osirusofts list of verified open relays. Seems "
@@ -3701,3 +4213,4 @@ msgstr "Meldigshovud frå medlingar som ikkje vart levert"
 
 #~ msgid "Email Me - 1d prior"
 #~ msgstr "E-post til meg - 1 d. førre"
+
