@@ -22,7 +22,7 @@ $t['method'] = 'list';
 $t['body_function'] = 'user_list_body';
 
 /** Include base template */
-include(TEMPLATE_PATH.'index.tpl');
+include_once(TEMPLATE_PATH.'index.tpl');
 
 /**
  * Base template will call back to this function
@@ -39,8 +39,7 @@ function user_list_body(&$foowd, $className, $method, &$user, &$object, &$t)
   $smver_string = smdoc_user::smver_to_string(TRUE);
   $smtp_servers = smdoc_user::smtp_to_string(TRUE);
   $imap_servers = smdoc_user::imap_to_string(TRUE);
-
-  $isAdmin = $foowd->user->inGroup('Gods');
+  $dummy = NULL;
 ?>
 
 <table class="smdoc_table" width="100%">
@@ -126,10 +125,12 @@ function user_list_body(&$foowd, $className, $method, &$user, &$object, &$t)
         <td class="subtext">[<?php echo $arr['objectid']; ?>]&nbsp;</td>
         <td class="menu_subtext">&nbsp;
 <?php   $methods = array();
-        if ( $isAdmin )
+        if ( $foowd->hasPermission(USER_CLASS_NAME,'groups','OBJECT',$dummy) )
           $methods[] = '<a href="'.$url.'&method=groups">Groups</a> ';
         if ( $foowd->user->inGroup('Author',$arr['objectid']) )
           $methods[] = '<a href="'.$url.'&method=update">Update</a> ';
+        if ( $foowd->hasPermission(USER_CLASS_NAME,'delete','OBJECT',$dummy) )
+          $methods[] = '<a href="'.$url.'&method=delete">Delete</a> ';
 
         if ( !empty($methods) )
         {

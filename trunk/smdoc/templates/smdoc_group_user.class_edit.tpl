@@ -21,7 +21,7 @@ $t['title'] = _("Group Membership") .': '.$t['groupname'];
 $t['body_function'] = 'group_edit_body';
 
 /** Include base template */
-include(TEMPLATE_PATH.'index.tpl');
+include_once(TEMPLATE_PATH.'index.tpl');
 
 /**
  * Base template will call back to this function

@@ -19,7 +19,7 @@
 $t['body_function'] = 'user_groups_body';
 
 /** Include base template */
-include(TEMPLATE_PATH.'index.tpl');
+include_once(TEMPLATE_PATH.'index.tpl');
 
 /**
  * Base template will call back to this function

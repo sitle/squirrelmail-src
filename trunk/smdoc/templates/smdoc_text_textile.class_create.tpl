@@ -21,7 +21,7 @@ $t['method'] = 'create';
 $t['body_function'] = 'text_textile_create_body';
 
 /** Include base template */
-include(TEMPLATE_PATH.'index.tpl');
+include_once(TEMPLATE_PATH.'index.tpl');
 
 /**
  * Base template will call back to this function
@@ -57,7 +57,7 @@ function text_textile_create_body(&$foowd, $className, $method, &$user, &$object
     <?php $t['form']->display_end(); ?>
   </td>
   <td class="textile_howto">
-    <?php include(TEMPLATE_PATH.'smdoc_text_textile.howto.tpl'); ?>
+    <?php include_once(TEMPLATE_PATH.'smdoc_text_textile.howto.tpl'); ?>
   </td>
 </tr>
 </table>

@@ -22,7 +22,7 @@ $t['method'] = 'login';
 $t['body_function'] = 'user_login_body';
 
 /** Include base template */
-include(TEMPLATE_PATH.'index.tpl');
+include_once(TEMPLATE_PATH.'index.tpl');
 
 /**
  * Base template will call back to this function
