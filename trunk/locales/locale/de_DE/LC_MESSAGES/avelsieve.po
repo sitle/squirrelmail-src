@@ -1,21 +1,24 @@
+# translation of avelsieve.po to 
 # translation of avelsieve.po to Deutsch
 # translation of avelsieve.po to german.
 # AvelSieve German Strings
 # Copyright (c) 2002 Alexandros Vellis.
 # FIRST AUTHOR <westermann@linux-provider.net>, 2002.
-# Torsten Westermann <westermann@linux-provider.net>, 2002
+# Torsten Westermann <westermann@linux-provider.net>, 2002.
+# Ralf Hildebrandt <Ralf.Hildebrandt@charite.de>, 2005.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: avelsieve\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-05-17 17:20+0300\n"
-"PO-Revision-Date: 2004-08-07 21:42+0100\n"
-"Last-Translator: Karsten Behrens <mail@karsten-behrens.de>\n"
-"Language-Team: Deutsch <de@li.org>\n"
+"POT-Creation-Date: 2004-04-01 20:12+0300\n"
+"PO-Revision-Date: 2005-01-07 15:14+0100\n"
+"Last-Translator: Ralf Hildebrandt <Ralf.Hildebrandt@charite.de>\n"
+"Language-Team: German <squirrelmail-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=ISO-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Report-Msgid-Bugs-To: \n"
+"X-Generator: KBabel 1.9.1\n"
 
 msgid "You have to define at least one header match text."
 msgstr "Sie müssen mindestens einen Header-Match Text definieren."
@@ -154,8 +157,7 @@ msgstr ""
 "Nachrichtentext vorkommen. "
 
 msgid "Choose what to do when this rule triggers, from one of the following:"
-msgstr ""
-"Wählen Sie aus, was durchgeführt werden soll, wenn diese Regel zutrifft:"
+msgstr "Wählen Sie aus, was durchgeführt werden soll, wenn diese Regel zutrifft:"
 
 msgid "Keep (Default action)"
 msgstr "Behalten (Standardeinstellung)"
@@ -235,8 +237,7 @@ msgid "STOP"
 msgstr "STOP"
 
 msgid "If this rule matches, do not check any rules after it."
-msgstr ""
-"Beende das weitere Abarbeiten von Filterregeln, wenn diese Regel zutrifft."
+msgstr "Beende das weitere Abarbeiten von Filterregeln, wenn diese Regel zutrifft."
 
 msgid "Notify me, using the following method:"
 msgstr "Benachrichtige mich durch:"
@@ -276,11 +277,10 @@ msgstr ""
 "Regeln erlauben es ihnen, selbst zu entscheiden, was mit jenen Mails "
 "geschehen soll, wenn sie in ihrem Posteingang ankommen."
 
-#, php-format
 msgid ""
 "Select %s to add the predefined rule, or select the advanced SPAM filter to "
 "customize the rule."
-msgstr ""
+msgstr "Wählen Sie %s um die vordefinierte Regel hinzuzufügen oder wählen Sie den fortgeschrittenen Spamfilter um die Regel anzupassen."
 
 msgid "Add Spam Rule"
 msgstr "Neue Spam-Regel hinzufügen"
@@ -289,16 +289,15 @@ msgid "Advanced Spam Filter..."
 msgstr "Erweiterter Spam Filter..."
 
 msgid "Target Score"
-msgstr ""
+msgstr "Zielpunktzahl"
 
-#, php-format
 msgid ""
 "Messages with SPAM-Score higher than the target value, the maximum value "
 "being %s, will be considered SPAM."
-msgstr ""
+msgstr "Nachrichten mit einem Spamscore größerals der Zielwert - mit einem Maximum von %s - werden als Spam angesehen."
 
 msgid "SPAM Lists to check against"
-msgstr ""
+msgstr "Spamlisten gegen die geprüft werden soll"
 
 msgid "Whitelist"
 msgstr "Whitelist (Ausnahmeliste)"
@@ -306,7 +305,7 @@ msgstr "Whitelist (Ausnahmeliste)"
 msgid ""
 "Messages that match any of these header rules will never end up in Junk "
 "Folders or regarded as SPAM."
-msgstr ""
+msgstr "Nachrichten, auf die irgendeine dieser Regeln für Kopfzeilen passen, werden nie in Junk Ordner einsortiert oder als Spam angesehen."
 
 msgid "Apply Changes"
 msgstr "änderungen speichern"
@@ -368,24 +367,22 @@ msgstr "Für <strong>alle</strong> eingehenden Nachrichten; "
 msgid ""
 "All messages considered as <strong>SPAM</strong> (unsolicited commercial "
 "messages)"
-msgstr ""
+msgstr "Alle Nachrichten als <strong>Spam</strong> angesehen (unerwünschte kommerzielle Mails)"
 
-#, fuzzy
 msgid "unless"
-msgstr "bis"
+msgstr "außer"
 
 msgid "or"
 msgstr "oder"
 
 msgid "matching the Spam List(s):"
-msgstr ""
+msgstr "passen auf die Spam Liste(n)"
 
-#, fuzzy, php-format
 msgid "and with score greater than %s"
-msgstr "ist größer als"
+msgstr "und mit einer Punkzahl größer als %s"
 
 msgid "will be"
-msgstr ""
+msgstr "werden"
 
 msgid "stored in the Junk Folder."
 msgstr "gespeichert im Junk-Ordner."
@@ -459,16 +456,13 @@ msgstr " Dann Regelverarbeitung beenden."
 msgid "Address Match"
 msgstr "Adressenübereinstimmung"
 
-#, fuzzy
-msgid ""
-"Perform an action depending on email addresses appearing in message headers."
-msgstr "Mails aufgrund ihrer Headerinformationen behandeln."
+msgid "Perform an action depending on email addresses appearing in message headers."
+msgstr "Aktion in Abhängigkeit von Emailadressen in den Kopfzeilen der Nachricht ausführen."
 
 msgid "Header Match"
 msgstr "Überprüfung der Mail-Header"
 
-msgid ""
-"Perform an action on messages matching a specified header (From, To etc.)."
+msgid "Perform an action on messages matching a specified header (From, To etc.)."
 msgstr ""
 "Aufgrund eines angegebenen Mail-Headers eine bestimmte Handlung ausführen "
 "(From, To, usw.)"
@@ -548,7 +542,6 @@ msgstr "Ans Ende"
 msgid "Junk Folder"
 msgstr "Junk-Ordner"
 
-#, php-format
 msgid ""
 "Store SPAM message in your Junk Folder. Messages older than %s days will be "
 "deleted automatically."
@@ -565,7 +558,7 @@ msgstr "Papierkorb-Ordner"
 msgid ""
 "Store SPAM message in your Trash Folder. You will have to purge the folder "
 "yourself."
-msgstr ""
+msgstr "Ablegen von Spam im Papierkorb (Trash). Sie müssen diesen allerding selber leeren."
 
 msgid "Discard"
 msgstr "Verwerfen"
@@ -573,7 +566,7 @@ msgstr "Verwerfen"
 msgid ""
 "Discard SPAM message. You will get no indication that the message ever "
 "arrived."
-msgstr ""
+msgstr "Spam wegwerfen. Sie erfahren dabei nicht, ob die Nachricht angekommen ist."
 
 msgid "Editing Mail Filtering Rule"
 msgstr "Bearbeite Filterregel"
@@ -598,7 +591,7 @@ msgid "Please contact your administrator."
 msgstr "Bitte kontaktieren Sie Ihren Administrator."
 
 msgid "Could not set active script on your IMAP server"
-msgstr ""
+msgstr "Konnte das SIEVE Script nicht auf dem IMAP-Server aktivieren"
 
 msgid "Unable to load script to server."
 msgstr "Konnte Skript nicht hochladen"
@@ -607,7 +600,7 @@ msgid "Server responded with:"
 msgstr "Serverantwort:"
 
 msgid "Test for Forged Header"
-msgstr ""
+msgstr "Test auf gefälschte Kopfzeilen"
 
 msgid "Current Mail Filtering Rules"
 msgstr "Zur Zeit definierte Regeln"
@@ -616,7 +609,7 @@ msgid "No Filtering Rules Defined Yet"
 msgstr "Noch keine Filter definiert"
 
 msgid "Could not get SIEVE script from your IMAP server"
-msgstr ""
+msgstr "Konnte das SIEVE Script nicht vom IMAP-Server holen"
 
 msgid "(Probably the script is size null)."
 msgstr "(Eventuell ist das Script leer.)"
@@ -689,8 +682,7 @@ msgstr "Optionen"
 msgid "Add a New Rule"
 msgstr "Neue Regel hinzufügen"
 
-msgid ""
-"When you are done, please click the button below to return to your webmail."
+msgid "When you are done, please click the button below to return to your webmail."
 msgstr ""
 "Wenn Sie fertig sind, klicken Sie bitte auf \"Änderungen speichern\" um zur "
 "Optionsseite zurückzukehren."

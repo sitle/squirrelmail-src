@@ -1,31 +1,43 @@
+# translation of templates.po to 
 # Squirrelmail templates plugin
 # German translation
 # Copyright (C) 2004 The Squirrelmail Development Team.
 # This file is distributed under the same license as the plugin's package.
-# Ferdie Ferdsen <ferdie@despam.de>, 2004.
 # $Id$
+# Ferdie Ferdsen <ferdie@despam.de>, 2004.
+# Ralf Hildebrandt <Ralf.Hildebrandt@charite.de>, 2005.
 msgid ""
 msgstr ""
 "Project-Id-Version: templates\n"
 "POT-Creation-Date: 2003-11-12 14:28+0200\n"
-"PO-Revision-Date: 2004-08-07 18:53+0100\n"
-"Last-Translator: ferdie ferdsen <ferdie@despam.de>\n"
+"PO-Revision-Date: 2005-01-07 15:15+0100\n"
+"Last-Translator: Ralf Hildebrandt <Ralf.Hildebrandt@charite.de>\n"
 "Language-Team: German <squirrelmail-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=ISO-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.9.1\n"
 
-#, php-format
-msgid "Template file, %s, could not be opened. Contact your system administrator to resolve this issue."
-msgstr "Die Vorlagendatei %s konnte nicht geöffnet werden. Bitte wenden Sie sich an Ihren Administrator."
+msgid ""
+"Template file, %s, could not be opened. Contact your system administrator to "
+"resolve this issue."
+msgstr ""
+"Die Vorlagendatei %s konnte nicht geöffnet werden. Bitte wenden Sie sich an "
+"Ihren Administrator."
 
-#, php-format
-msgid "Template file, %s, could not be written. Contact your system administrator to resolve this issue."
-msgstr "Die Vorlagendatei %s konnte nicht geschrieben werden. Bitte wenden Sie sich an Ihren Administrator."
+msgid ""
+"Template file, %s, could not be written. Contact your system administrator "
+"to resolve this issue."
+msgstr ""
+"Die Vorlagendatei %s konnte nicht geschrieben werden. Bitte wenden Sie sich "
+"an Ihren Administrator."
 
-#, php-format
-msgid "Template file, %s, could not be copied from temporary file, %s. Contact your system administrator to resolve this issue."
-msgstr "Die Vorlagendatei %s konnte nicht auf der temporären Datei %s kopiert werden. Bitte wenden Sie sich an Ihren Administrator."
+msgid ""
+"Template file, %s, could not be copied from temporary file, %s. Contact your "
+"system administrator to resolve this issue."
+msgstr ""
+"Die Vorlagendatei %s konnte nicht auf der temporären Datei %s kopiert "
+"werden. Bitte wenden Sie sich an Ihren Administrator."
 
 msgid "Add Template"
 msgstr "Vorlage hinzufügen"
@@ -34,7 +46,9 @@ msgid "Templates"
 msgstr "Vorlagen"
 
 msgid "Create/Edit/Delete chunks of text that can be quickly added to messages."
-msgstr "Erstelle/Editiere/Lösche Textstücke die sich schnell in Nachrichten einfügen lassen."
+msgstr ""
+"Erstelle/Editiere/Lösche Textstücke die sich schnell in Nachrichten einfügen "
+"lassen."
 
 msgid "Append Templates before all existing text"
 msgstr "Füge Vorlage vor den existierenden Text"
@@ -46,12 +60,11 @@ msgid "No"
 msgstr "Nein"
 
 msgid "Add blank line before template text when appending"
-msgstr ""
+msgstr "Beim Anhängen eine Leerzeile vor dem Vorlagentext einfügen"
 
 msgid "Add blank line after template text when appending"
-msgstr ""
+msgstr "Beim Anhängen eine Leerzeile hinter dem Vorlagentext einfügen"
 
-#, php-format
 msgid "Template %d"
 msgstr "Vorlage %d"
 
@@ -75,4 +88,3 @@ msgstr "Löschen"
 
 msgid "Move Up"
 msgstr "Nach oben"
-
