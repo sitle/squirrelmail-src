@@ -59,20 +59,22 @@ function charset_decode ($charset, $string) {
  * @return string $charset Adjusted name of charset
  */
 function fixcharset($charset) {
-  // minus removed from function names
-  $charset=str_replace('-','_',$charset);
+    /* remove minus and characters that might be used in paths from charset
+     * name in order to be able to use it in function names and include calls.
+     */
+    $charset=preg_replace("/[-:.\/\\\]/",'_',$charset);
 
-  // windows-125x and cp125x charsets
-  $charset=str_replace('windows_','cp',$charset);
+    // windows-125x and cp125x charsets
+    $charset=str_replace('windows_','cp',$charset);
 
-  // ibm > cp
-  $charset=str_replace('ibm','cp',$charset);
+    // ibm > cp
+    $charset=str_replace('ibm','cp',$charset);
 
-  // iso-8859-8-i -> iso-8859-8
-  // use same cycle until I'll find differences
-  $charset=str_replace('iso_8859_8_i','iso_8859_8',$charset);
+    // iso-8859-8-i -> iso-8859-8
+    // use same cycle until I'll find differences
+    $charset=str_replace('iso_8859_8_i','iso_8859_8',$charset);
 
-  return $charset;
+    return $charset;
 }
 
 /*
@@ -112,18 +114,18 @@ function set_up_language($sm_language, $do_search = false, $default = false) {
          isset($languages[$sm_notAlias]['CHARSET']) ) {
         bindtextdomain( 'squirrelmail', SM_PATH . 'locale/' );
         textdomain( 'squirrelmail' );
-	if (function_exists('bind_textdomain_codeset')) {
+        if (function_exists('bind_textdomain_codeset')) {
             if ($sm_notAlias == 'ja_JP') {
-        	bind_textdomain_codeset ("squirrelmail", 'EUC-JP');
+                bind_textdomain_codeset ("squirrelmail", 'EUC-JP');
             } else {
-	        bind_textdomain_codeset ("squirrelmail", $languages[$sm_notAlias]['CHARSET'] );
-	    }
-	}
-	if (isset($languages[$sm_notAlias]['LOCALE'])){
-	  $longlocale=$languages[$sm_notAlias]['LOCALE'];
-	} else {
-	  $longlocale=$sm_notAlias;
-	}
+                bind_textdomain_codeset ("squirrelmail", $languages[$sm_notAlias]['CHARSET'] );
+            }
+        }
+        if (isset($languages[$sm_notAlias]['LOCALE'])){
+            $longlocale=$languages[$sm_notAlias]['LOCALE'];
+        } else {
+            $longlocale=$sm_notAlias;
+        }
         if ( !ini_get('safe_mode') &&
              getenv( 'LC_ALL' ) != $longlocale ) {
             putenv( "LC_ALL=$longlocale" );
@@ -146,9 +148,9 @@ function set_up_language($sm_language, $do_search = false, $default = false) {
             header ('Content-Type: text/html; charset=EUC-JP');
             if (!function_exists('mb_internal_encoding')) {
                 echo _("You need to have php4 installed with the multibyte string function enabled (using configure option --enable-mbstring).");
-		// Revert to English link has to be added.
-		// stop further execution in order not to get php errors on mb_internal_encoding().
-		return;
+                // Revert to English link has to be added.
+                // stop further execution in order not to get php errors on mb_internal_encoding().
+                return;
             }
             if (function_exists('mb_language')) {
                 mb_language('Japanese');
