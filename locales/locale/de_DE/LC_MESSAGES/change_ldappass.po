@@ -1,0 +1,127 @@
+# Squirrelmail change_ldappass plugin
+# German translation
+# Copyright (C) 2004 The Squirrelmail Development Team.
+# This file is distributed under the same license as the plugin's package.
+# Ferdie Ferdsen <ferdie@despam.de>, 2004.
+# $Id$
+msgid ""
+msgstr ""
+"Project-Id-Version: change_ldappass\n"
+"POT-Creation-Date: 2003-09-08 21:20+0300\n"
+"PO-Revision-Date: 2004-08-07 19:32+0100\n"
+"Last-Translator: ferdie ferdsen <ferdie@despam.de>\n"
+"Language-Team: German <squirrelmail-i18n@lists.sourceforge.net>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=ISO-8859-1\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: options.php:94
+#: setup.php:17
+msgid "Change Password"
+msgstr "Passwort ändern"
+
+#: options.php:109
+msgid "Old Password:"
+msgstr "Altes Passwort:"
+
+#: options.php:113
+msgid "New Password:"
+msgstr "Neues Passwort:"
+
+#: options.php:117
+msgid "Verify New Password:"
+msgstr "Neues Passwort wiederholen"
+
+#: options.php:139
+msgid "You must type in your old password."
+msgstr "Sie müssen Ihr altes Passwort eingeben."
+
+#: options.php:140
+msgid "You must type in a new password."
+msgstr "Sie müssen ein neues Passwort eingeben."
+
+#: options.php:141
+msgid "You must also type in your new password in the verify box."
+msgstr "Bitte das neue Passwort zur Sicherheit wiederholen."
+
+#: options.php:142
+msgid "Your new password doesn't match the verify password."
+msgstr "Das neue Passwort stimmt nicht mit der Bestätigungseingabe überein."
+
+#: options.php:159
+msgid "Connecting to LDAP Server"
+msgstr "LDAP-Server-Verbindung wird hergestellt..."
+
+#: options.php:163
+msgid "Can't connect to Directory Server, please try later!"
+msgstr "Verbindung zum Directory Server ist nicht möglich, bitte versuchen sie es später erneut."
+
+#: options.php:170
+msgid "Duplicate login entries detected, cannot change password!"
+msgstr "Es wurden doppelte Login-Einträge gefunden, Passwort kann nicht geändert werden."
+
+#: options.php:174
+msgid "Your login account was not found in the LDAP database, cannot change password!"
+msgstr "Ihr Loginaccount wurde in der LDAP Datenbank nicht gefunden, kann das Passwort nicht ändern!"
+
+#: options.php:184
+#: options.php:247
+msgid "Your old password is not correct."
+msgstr "Das alte Passwort ist nicht korrekt."
+
+#: options.php:187
+msgid "Bind to database as $dn successful."
+msgstr ""
+
+#: options.php:191
+msgid "Could not bind to the LDAP server as $ldap_manager_dn. Is the password correct?"
+msgstr ""
+
+#: options.php:194
+msgid "Bind to database as $ldap_manager_dn successful."
+msgstr ""
+
+#: options.php:223
+msgid "Password type is {crypt}, sub-type $stype"
+msgstr "Passwort Typ ist {crypt}, Sub-Typ $stype"
+
+#: options.php:227
+msgid "Password type is {MD5}"
+msgstr "Passwort Typ ist {MD5}"
+
+#: options.php:231
+msgid "Password type is {SHA}"
+msgstr "Passwort Typ ist {SHA}"
+
+#: options.php:235
+msgid "Password type is {SMD5}"
+msgstr "Passwort Typ ist {SMD5}"
+
+#: options.php:248
+msgid "Stored Password: $lpass  Old Password: $cpass"
+msgstr "Gespeichertes Passwort: $lpass  Altes Passwort: $cpass"
+
+#: options.php:271
+msgid "New Password: $newpass"
+msgstr "Neues Passwort: $newpass"
+
+#: options.php:280
+msgid "Password changed for user $username"
+msgstr "Das Passwort wurde für den Benutzer $username geändert"
+
+#: options.php:294
+msgid "Password changed successfully"
+msgstr "Das Paßwort wurde erfolgreich geändert"
+
+#: options.php:302
+msgid "SMB Password change was not successful, so LDAP not changed!"
+msgstr "SMB Passwortänderung war nicht erfolgreich, LDAP wurde nicht geändert!"
+
+#: options.php:306
+msgid "LDAP Password change was not successful!"
+msgstr "LDAP Passwortänderung war nicht erfolgreich!"
+
+#: setup.php:19
+msgid "This connects to your local Password Server to change your login password for all services."
+msgstr ""
+
