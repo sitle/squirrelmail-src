@@ -1,18 +1,19 @@
 # translation of squirrelmail.po to Bahasa Indonesia
 # Copyright (C) SquirrelMail Development Project , 1999-2002
 # $Id$
-# Arief S Fitrianto <arief@gurame.fisika.ui.ac.id>, 2001-2004.
+# Arief S Fitrianto <arief@gurame.fisika.ui.ac.id>, 2001-2005.
 msgid ""
 msgstr ""
-"Project-Id-Version: squirrelmail\n"
+"Project-Id-Version: squirrelmail.po\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2004-12-28 13:45+0200\n"
-"PO-Revision-Date: 2004-12-31 17:17+0700\n"
+"PO-Revision-Date: 2005-01-11 16:55+0700\n"
 "Last-Translator: Arief S Fitrianto <arief@gurame.fisika.ui.ac.id>\n"
-"Language-Team: Indonesian <squirrelmail-i18n@lists.sourceforge.net>\n"
+"Language-Team: Bahasa Indonesia <squirrelmail-i18n@lists.sourceforge.net\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;"
 
 msgid "Address Book"
 msgstr "Buku Alamat"
@@ -307,7 +308,7 @@ msgid "No"
 msgstr "Tidak"
 
 msgid "You have not selected a folder to rename. Please do so."
-msgstr "Anda belum memilih folder untuk diubah namanya. Silahkan pilih!"
+msgstr "Anda belum memilih folder untuk diubah namanya. Silakan pilih!"
 
 msgid "Rename a folder"
 msgstr "Ganti nama folder"
@@ -328,9 +329,7 @@ msgstr "Panduan"
 msgid ""
 "The help has not been translated to %s. It will be displayed in English "
 "instead."
-msgstr ""
-"Panduan ini belum diterjemahkan ke bahasa %s. Bahasa Inggris akan "
-"ditampilkan."
+msgstr "Panduan ini belum diterjemahkan ke bahasa %s. Bahasa Inggris akan ditampilkan."
 
 msgid "Some or all of the help documents are not present!"
 msgstr "Beberapa atau semua dokumen panduan tidak ada!"
@@ -360,7 +359,7 @@ msgid "INBOX"
 msgstr "KOTAK POS"
 
 msgid "purge"
-msgstr "kosongkan"
+msgstr "buang"
 
 msgid "Last Refresh"
 msgstr "Peninjauan Terakhir"
@@ -446,10 +445,8 @@ msgstr ""
 "berbeda dalam daftar pesan. Hal ini memudahkan Anda membedakan asal suatu "
 "pesan, khususnya dari suatu milis."
 
-msgid ""
-"These settings change the way your folders are displayed and manipulated."
-msgstr ""
-"Konfigurasi ini mengubah cara folder Anda ditampilkan dan dimanipulasi."
+msgid "These settings change the way your folders are displayed and manipulated."
+msgstr "Konfigurasi ini mengubah cara folder Anda ditampilkan dan dimanipulasi."
 
 msgid ""
 "The order of the message index can be rearranged and changed to contain the "
@@ -805,8 +802,7 @@ msgstr "Menampilkan 'header' lengkap"
 msgid "Viewing a text attachment"
 msgstr "Melihat lampiran naskah"
 
-msgid ""
-"Could not include PEAR database functions required for the database backend."
+msgid "Could not include PEAR database functions required for the database backend."
 msgstr ""
 "Tidak dapat memasukkan fungsi basis data PEAR yang dibutuhkan untuk dukungan "
 "basis data."
@@ -1080,7 +1076,7 @@ msgid "Default preference file not found or not readable!"
 msgstr "Berkas konfigurasi bawaan tidak ditemukan atau tidak dapat dibaca!"
 
 msgid "Could not create initial preference file!"
-msgstr "Tidak dapat membuat berkas setingan awal!"
+msgstr "Tidak dapat membuat berkas konfigurasi awal!"
 
 #, c-format
 msgid "%s should be writable by user %s"
@@ -1217,7 +1213,7 @@ msgid "Thread sorting is not supported by your IMAP server."
 msgstr "Pengurutan terstruktur tidak didukung oleh server IMAP Anda."
 
 msgid "Please report this to the system administrator."
-msgstr "Silahkan laporkan hal ini kepada administrator sistem Anda."
+msgstr "Silakan laporkan hal ini kepada administrator sistem Anda."
 
 msgid "Server-side sorting is not supported by your IMAP server."
 msgstr "Pengurutan pada-server tidak didukung oleh server IMAP Anda."
@@ -1247,23 +1243,23 @@ msgid "Unread"
 msgstr "Belum Dibaca"
 
 msgid "Unthread View"
-msgstr "Tampilan biasa"
+msgstr "Tampilan Biasa"
 
 msgid "Thread View"
-msgstr "Tampilan terstruktur"
+msgstr "Tampilan Terstruktur"
 
 msgid "Toggle All"
-msgstr "Pilih semua"
+msgstr "Pilih Semua"
 
 msgid "Unselect All"
-msgstr "Batal pilih semua"
+msgstr "Batal Pilih Semua"
 
 msgid "Select All"
-msgstr "Pilih semua"
+msgstr "Pilih Semua"
 
 #, c-format
 msgid "Viewing Messages: %s to %s (%s total)"
-msgstr "Menampilkan Pesan: <B>%s</B> sampai <B>%s</B> (seluruhnya %s)."
+msgstr "Menampilkan Pesan: %s sampai %s (seluruhnya %s)."
 
 #, c-format
 msgid "Viewing Message: %s (%s total)"
@@ -1709,7 +1705,7 @@ msgid "AUTHOR Said"
 msgstr "PENULIS Berkata"
 
 msgid "On DATE, AUTHOR Said"
-msgstr "On TANGGAL, PENULIS Berkata"
+msgstr "Pada TANGGAL, PENULIS Berkata"
 
 msgid "Quote Who XML"
 msgstr "Kutipan dari XML"
@@ -1751,7 +1747,7 @@ msgid "PHP Version"
 msgstr "Versi PHP"
 
 msgid "Organization Preferences"
-msgstr "Seting Organisasi"
+msgstr "Konfigurasi Organisasi"
 
 msgid "Organization Name"
 msgstr "Nama Organisasi"
@@ -1964,13 +1960,13 @@ msgid "Use server-side thread sorting"
 msgstr "Pakai pengurutan terstruktur oleh-server"
 
 msgid "Allow server charset search"
-msgstr "Bolehkan pencarian set karakter oleh-server"
+msgstr "Izinkan pencarian gugus karakter oleh-server"
 
 msgid "UID support"
 msgstr "Dukungan UID"
 
 msgid "PHP session name"
-msgstr "Nama sessi PHP"
+msgstr "Nama sesi PHP"
 
 msgid "Message of the Day"
 msgstr "Pesan Hari Ini"
@@ -1985,19 +1981,19 @@ msgid "Address book table"
 msgstr "Tabel Buku Alamat"
 
 msgid "Preferences DSN"
-msgstr "DSN Seting"
+msgstr "DSN Konfigurasi"
 
 msgid "Preferences table"
-msgstr "Tabel Seting"
+msgstr "Tabel Konfigurasi"
 
 msgid "Preferences username field"
-msgstr "Kolom seting nama pengguna"
+msgstr "Kolom konfigurasi nama pengguna"
 
 msgid "Preferences key field"
-msgstr "Kolom seting kunci"
+msgstr "Kolom konfigurasi kunci(key)"
 
 msgid "Preferences value field"
-msgstr "Kolom setingan nilai"
+msgstr "Kolom konfigurasi nilai(value)"
 
 msgid "Global address book DSN"
 msgstr "DSN Buku Alamat Umum"
@@ -2012,13 +2008,13 @@ msgid "Allow listing of global address book"
 msgstr "Izinkan melihat daftar Buku Alamat Umum"
 
 msgid "Language settings"
-msgstr "Setting Bahasa"
+msgstr "Konfigurasi Bahasa"
 
 msgid "Default Language"
 msgstr "Bahasa Utama"
 
 msgid "Default Charset"
-msgstr "Karakter Set Bawaan(Default)"
+msgstr "Gugus Karakter Bawaan(Default)"
 
 msgid "Enable lossy encoding"
 msgstr "Aktifkan encoding 'lossy'"
@@ -2374,8 +2370,7 @@ msgid "FREE - Five-Ten-sg.com - Direct SPAM sources."
 msgstr "BEBAS - Five-Ten-sg.com - Daftar server SPAM secara LANGSUNG"
 
 msgid "FREE - Five-Ten-sg.com - Dial-up lists - includes some DSL IPs."
-msgstr ""
-"BEBAS - Five-Ten-sg.com - Daftar Spam Dialup - memasukkan beberapa ISP DSL."
+msgstr "BEBAS - Five-Ten-sg.com - Daftar Spam Dialup - memasukkan beberapa ISP DSL."
 
 msgid "FREE - Five-Ten-sg.com - Bulk mailers that do not use confirmed opt-in."
 msgstr ""
@@ -2434,8 +2429,7 @@ msgstr "BEBAS - ISP SPAM ahbl.org - Daftar ISP pendukung SPAM"
 msgid ""
 "FREE - Leadmon DUL - Another list of Dial-up or otherwise dynamically "
 "assigned IPs."
-msgstr ""
-"BEBAS - DUL Leadmon - Sebuah daftar SPAM Dial-up atau IP dinamik lainnya."
+msgstr "BEBAS - DUL Leadmon - Sebuah daftar SPAM Dial-up atau IP dinamik lainnya."
 
 msgid ""
 "FREE - Leadmon SPAM Source - List of IPs Leadmon.net has received SPAM "
@@ -2496,13 +2490,10 @@ msgstr ""
 "terkonfirmasi"
 
 msgid "FREE - Distributed Sender Boycott List - UN-Confirmed Relays"
-msgstr ""
-"BEBAS - Daftar Pengirim tersebar dari Boycott -- Relay tak terkonfirmasi"
+msgstr "BEBAS - Daftar Pengirim tersebar dari Boycott -- Relay tak terkonfirmasi"
 
-msgid ""
-"WARNING! Header filters should be of the format &quot;Header: value&quot;"
-msgstr ""
-"PERINGATAN! Pemilah Header harus dalam bentuk &quot;Header: isi header&quot;"
+msgid "WARNING! Header filters should be of the format &quot;Header: value&quot;"
+msgstr "PERINGATAN! Pemilah Header harus dalam bentuk &quot;Header: isi header&quot;"
 
 msgid "Saved Scan type"
 msgstr "Simpan jenis pindai"
@@ -2523,7 +2514,7 @@ msgid "Save"
 msgstr "Simpan"
 
 msgid "Match:"
-msgstr "Cocokan:"
+msgstr "Cocokkan:"
 
 msgid "Header"
 msgstr "'Header' "
@@ -2579,7 +2570,7 @@ msgid ""
 "periodically, so that you don't have an excessively large mailbox hanging "
 "around."
 msgstr ""
-"Memindahkan spam langsung ke folder sampah mungkin bukan ide yang bagus, "
+"Memindahkan spam langsung ke folder sampah mungkin bukan ide yang baik, "
 "sebab pesan dari teman atau milis bisa saja tak disengaja ditandai sebagai "
 "spam. Folder apapun yang Anda pilih, pastikan folder tersebut selalu "
 "dikosongkan secara teratur. Jadi Anda tidak akan memiliki kotak surat yang "
@@ -3419,8 +3410,7 @@ msgstr "Kerjakan"
 msgid "You must make a choice"
 msgstr "Anda harus memilih"
 
-msgid ""
-"You can either delete your dictionary or type in the old password. Not both."
+msgid "You can either delete your dictionary or type in the old password. Not both."
 msgstr ""
 "Anda hanya bisa menghapus kamus Anda atau memasukkan sandi lama. Tidak "
 "keduanya"
@@ -3531,8 +3521,7 @@ msgstr ""
 "Kamus pribadi Anda telah dienkripsi dan sekarang tersimpan dalam bentuk "
 "terenkripsi."
 
-msgid ""
-"Your personal dictionary has been decrypted and is now stored as plain text."
+msgid "Your personal dictionary has been decrypted and is now stored as plain text."
 msgstr ""
 "Kamus pribadi Anda telah didekripsi dan sekarang tersimpan dalam bentuk teks "
 "murni."
@@ -3585,8 +3574,7 @@ msgid "No words in your personal dictionary."
 msgstr "Kamus pribadi Anda kosong"
 
 msgid "Please check any words you wish to delete from your dictionary."
-msgstr ""
-"Silahkan periksa sembarang kata yang akan Anda hilangkan dari kamus Anda"
+msgstr "Silahkan periksa sembarang kata yang akan Anda hilangkan dari kamus Anda"
 
 #, c-format
 msgid "%s dictionary"
@@ -3640,8 +3628,7 @@ msgstr ""
 "akan mengetahuinya dan akan meminta sandi lama Anda supaya dapat "
 "mengenkripsi ulang kamus Anda dengan sandi baru."
 
-msgid ""
-"Please decrypt my personal dictionary and store it in a clear-text format."
+msgid "Please decrypt my personal dictionary and store it in a clear-text format."
 msgstr "Mohon dekripsi kamus pribadiku dan simpan dalam bentuk teks murni."
 
 msgid "Change crypto settings"
@@ -3678,8 +3665,7 @@ msgstr ""
 "masih ingat yang lama, Anda dapat memasukkan sandi lama untuk mengenkripsi "
 "ulang kamus dengan sandi baru"
 
-msgid ""
-"Please encrypt my personal dictionary and store it in an encrypted format."
+msgid "Please encrypt my personal dictionary and store it in an encrypted format."
 msgstr "Mohon enkripsi kamus pribadiku dan simpan dalam bentuk terenkripsi."
 
 #, c-format
@@ -3786,8 +3772,7 @@ msgstr "Terjemahan Rusia, maksimal 1000 huruf diterjemahkan"
 msgid ""
 "You also decide if you want the translation box displayed, and where it will "
 "be located."
-msgstr ""
-"Jika kotak terjemahan ingin ditampilkan, Anda juga dapat menentukan letaknya."
+msgstr "Jika kotak terjemahan ingin ditampilkan, Anda juga dapat menentukan letaknya."
 
 msgid "Select your translator:"
 msgstr "Pilih penerjemah Anda:"
@@ -4442,7 +4427,7 @@ msgid "No known limits, powered by GPLTrans (free, open source)"
 msgstr "Jumlah tidak diketahui, didukung oleh GPLTrans (bebas, terbuka)"
 
 msgid "Transliterate unknown words:"
-msgstr "Transliterarikan kata-kata tak asing:"
+msgstr "Transliterarikan kata-kata asing:"
 
 msgid "When composing:"
 msgstr "Saat menulis surat:"
@@ -4458,3 +4443,4 @@ msgstr "Header Pesan tidak bisa dikirimkan"
 
 msgid "This image has been removed for security reasons"
 msgstr "Gambar ini telah dihapus dengan alasan keamanan."
+
