@@ -6,8 +6,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: SquirrelMail HEAD\n"
-"POT-Creation-Date: 2005-01-31 16:24+0200\n"
-"PO-Revision-Date: 2005-02-01 10:48+0100\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2005-02-17 16:24+0200\n"
+"PO-Revision-Date: 2005-02-20 00:09+0100\n"
 "Last-Translator: Fredrik Jervfors <sqm_admin@fimbul.net>\n"
 "Language-Team: Swedish <squirrelmail-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -552,10 +553,10 @@ msgstr "Utseende"
 msgid "Folder Preferences"
 msgstr "Mappar"
 
-msgid "Error(s) happened while saving your options"
+msgid "Error(s) occurred while saving your options"
 msgstr "Fel uppstod när inställningarna sparades"
 
-msgid "Some of your preference changes are not applied."
+msgid "Some of your preference changes were not applied."
 msgstr "En del av ändringarna kommer inte att tillämpas."
 
 msgid "Successfully Saved Options"
@@ -1493,6 +1494,9 @@ msgstr "Höjd på redigeringsfönstret"
 
 msgid "Append Signature before Reply/Forward Text"
 msgstr "Lägg till en brevfot innan innehållet besvaras eller vidarebefordras"
+
+msgid "Prefix for Original Message when Replying"
+msgstr "Tecken som inleder citerade rader när brev besvaras"
 
 msgid "Cursor Position when Replying"
 msgstr "Markörens position vid svar"
@@ -4132,11 +4136,11 @@ msgstr "Markera"
 msgid "Click here to change the sorting of the message list"
 msgstr "Ändrar sorteringen av brevlistan"
 
-msgid "Message Composition"
-msgstr "Brevskrivning"
+msgid "General Message Composition"
+msgstr "Allmänt"
 
-msgid "Prefix for Original Message when Replying"
-msgstr "Tecken som inleder citerade rader när brev besvaras"
+msgid "Replying and Forwarding Messages"
+msgstr "Besvara och vidarebefordra brev"
 
 msgid "Strip signature when replying"
 msgstr "Avlägsna brevfot vid svar"
@@ -4170,6 +4174,9 @@ msgstr "Visa Kasta och visa föregående/nästa-länkar."
 
 msgid "Save Replies with Original Message"
 msgstr "Spara svar ihop med det ursprungliga brevet"
+
+msgid "Show only subscribed folders"
+msgstr "Visa endast aktiverade mappar"
 
 msgid "XP"
 msgstr "XP"
@@ -4367,6 +4374,15 @@ msgstr "Stänger anslutningen"
 msgid "Connecting to Password Server"
 msgstr "Ansluter till lösenordsservern"
 
+msgid "Incorrent path to vmail.inc file."
+msgstr "Felaktig sökväg till \"vmail.inc\"."
+
+msgid "Invalid or corrupted vmail.inc file."
+msgstr "Ogiltig eller korrupt \"vmail.inc\"."
+
+msgid "Invalid user."
+msgstr "Ogiltig användare."
+
 msgid "Server Capability response:"
 msgstr "Serverns kapabilitetssvar:"
 
@@ -4414,6 +4430,25 @@ msgid "Login OK: Inbox contains %s message"
 msgid_plural "Login OK: Inbox contains %s messages"
 msgstr[0] "Inloggning OK: Inkorgen innehåller %s brev"
 msgstr[1] "Inloggning OK: Inkorgen innehåller %s brev"
+
+msgid "uploaded media file"
+msgstr "uppladdad mediafil"
+
+msgid "none"
+msgstr "ingen"
+
+msgid "Upload Media File:"
+msgstr "Ladda upp mediafil:"
+
+msgid "Uploaded Media File:"
+msgstr "Uppladdad mediafil:"
+
+msgid "unavailable"
+msgstr "inte tillgänglig"
+
+#, php-format
+msgid "Media file %s will be removed, if you upload other media file."
+msgstr "Mediafilen %s kommer att tas bort om en annan mediafil laddas upp."
 
 msgid "Spam Service Type:"
 msgstr "Typ av skräpposttjänst:"
