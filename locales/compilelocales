@@ -1,0 +1,7 @@
+#!/bin/sh
+for trans in `ls locale/`; do
+    if [ -f locale/${trans}/LC_MESSAGES/squirrelmail.po ]; then
+	msgfmt locale/${trans}/LC_MESSAGES/squirrelmail.po \
+	    -o locale/${trans}/LC_MESSAGES/squirrelmail.mo
+    fi
+done

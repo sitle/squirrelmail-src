@@ -1,0 +1,9 @@
+#!/bin/sh
+
+echo -n "Please enter path to your squirrelmail installation:"
+read smpath
+
+cp -r -i locale ${smpath}
+if [ -d help ]; then
+    cp -r -i help ${smpath}
+fi
