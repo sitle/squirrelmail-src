@@ -34,7 +34,7 @@ ini_set('magic_quotes_runtime','0');
  * it is run via a require_once directive in validate.php 
  * and redirect.php. Patch submitted by Ray Black.
  */ 
-
+sqsession_is_active();
 if ( !check_php_version(4,1) ) {
   global $_COOKIE, $_ENV, $_FILES, $_GET, $_POST, $_SERVER, $_SESSION;
   global $HTTP_COOKIE_VARS, $HTTP_ENV_VARS, $HTTP_POST_FILES, $HTTP_GET_VARS,
