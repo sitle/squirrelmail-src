@@ -76,25 +76,28 @@ function sqstripslashes(&$array) {
 }
 
 function sqsession_register ($var, $name) {
+
+    sqsession_unregister($name);
+	
     if ( !check_php_version(4,1) ) {
         global $HTTP_SESSION_VARS;
         $HTTP_SESSION_VARS["$name"] = $var;
-        session_register("$name");
     }
     else {
        $_SESSION["$name"] = $var; 
     }
+	session_register("$name");
 }
 
 function sqsession_unregister ($name) {
     if ( !check_php_version(4,1) ) {
         global $HTTP_SESSION_VARS;
         unset($HTTP_SESSION_VARS["$name"]);
-        session_unregister("$name");
     }
     else {
         unset($_SESSION["$name"]); 
     }
+	session_unregister("$name");
 }
 
 function sqsession_is_registered ($name) {
