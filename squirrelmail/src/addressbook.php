@@ -37,10 +37,15 @@ if ( isset($_POST['deladdr']) ) {
 }
 $sel = &$_POST['sel'];
 
-$oldnick = $_POST['oldnick'];
-$backend = $_POST['backend'];
-$doedit = $_POST['doedit'];
-
+if (isset($_POST['oldnick'])) {
+    $oldnick = $_POST['oldnick'];
+}
+if (isset($_POST['backend'])) {
+    $backend = $_POST['backend'];
+}
+if (isset($_POST['doedit'])) {
+    $doedit = $_POST['doedit'];
+}
 /* Make an input field */
 function adressbook_inp_field($label, $field, $name, $size, $values, $add) {
     global $color;
