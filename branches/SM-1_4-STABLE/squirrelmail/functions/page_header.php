@@ -38,8 +38,9 @@ function displayHtmlHeader( $title = 'SquirrelMail', $xtra = '', $do_hook = TRUE
     }
     
     if ($squirrelmail_language == 'ja_JP') {
+	// why it is added here. header ('Content-Type:..) is used in i18n.php
         echo "<!-- \xfd\xfe -->\n";
-        echo '<meta http-equuiv="Content-type" content="text/html; charset=euc-jp">' . "\n";
+        echo '<meta http-equiv="Content-type" content="text/html; charset=euc-jp">' . "\n";
     }
     
     if ($do_hook) {
