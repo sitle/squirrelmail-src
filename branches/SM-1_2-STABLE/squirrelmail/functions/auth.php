@@ -13,7 +13,7 @@
 
 function is_logged_in() {
 
-    if ( session_is_registered('user_is_logged_in') ) {
+    if ( sqsession_is_registered('user_is_logged_in') ) {
         return;
     } else {
         include_once( '../functions/display_messages.php' );

@@ -35,15 +35,12 @@ if ( (float)substr(PHP_VERSION,0,3) < 4.1 ) {
   $PHP_SELF =  $HTTP_SERVER_VARS['PHP_SELF'];
 }
 
-/* if running with register_globals = 0 and 
-   magic_quotes_gpc then strip the slashes
+/* if running with magic_quotes_gpc then strip the slashes
    from POST and GET global arrays */
 
 if (get_magic_quotes_gpc()) {
-    if (ini_get('register_globals') == 0) {
-        sqstripslashes($_GET);
-        sqstripslashes($_POST);
-    }
+    sqstripslashes($_GET);
+    sqstripslashes($_POST);
 }
 
 /* strip any tags added to the url from PHP_SELF.
@@ -70,7 +67,7 @@ function sqsession_register ($var, $name) {
         $HTTP_SESSION_VARS["$name"] = $var;
     }
     else {
-        session_register("$name");
+       $_SESSION["$name"] = $var; 
     }
 }
 function sqsession_unregister ($name) {
@@ -80,8 +77,25 @@ function sqsession_unregister ($name) {
         unset($HTTP_SESSION_VARS["$name"]);
     }
     else {
-        session_unregister("$name");
+        unset($_SESSION["$name"]); 
     }
+}
+
+function sqsession_is_registered ($name) {
+    $test_name = &$name;
+    $result = false;
+    if ( (float)substr(PHP_VERSION,0,3) < 4.1 ) {
+        global $HTTP_SESSION_VARS;
+        if (isset($HTTP_SESSION_VARS[$test_name])) {
+            $result = true;
+        }
+    }
+    else {
+        if (isset($_SESSION[$test_name])) {
+            $result = true;
+        }
+    }
+    return $result;
 }
 
 function sqsession_destroy() {
