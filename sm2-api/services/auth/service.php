@@ -177,7 +177,7 @@ class ZkSvc_auth {
      */
     function checkLogin( $usr = '', $pass = '') {
 
-        if ( ( $usr <> '' && $user <> $this->username ) ||
+        if ( ( $usr <> '' && $usr <> $this->username ) ||
              ( $pass <> '' && $pass <> $this->password ) ) {
             $this->logout();
         }
