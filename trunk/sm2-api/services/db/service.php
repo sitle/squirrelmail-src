@@ -34,6 +34,7 @@ class ZkSvc_db {
     var $lk;
 
     var $info;
+    var $connected;
 
     /** CONSTRUCTOR
      * Create a new ZkSvc_db with the given module.
@@ -58,6 +59,7 @@ class ZkSvc_db {
         $this->port = $options['port'];
         $this->socket = $options['socket'];
         $this->db = $options['db'];
+        $this->connected = FALSE;
     }
 
     /**
@@ -78,22 +80,37 @@ class ZkSvc_db {
         $this->mod =&$mod;
     }
     
+    function close() {
+        if( $this->connected ) {
+            $this->mod->close();
+            $this->connected = FALSE;
+        }
+    }
+    
     function connect() {
          
-        $host = $this->host;
-        
-        if( $this->port <> '' )
-            $host .= ':' . $this->port;
-
-        if( $this->socket <> '' )
-            $host .= ':' . $this->socket;
+        if( !$this->connected ) {
+         
+            $host = $this->host;
+            
+            if( $this->port <> '' )
+                $host .= ':' . $this->port;
     
-        if ( $ret = $this->mod->connect( $host, $this->username, $this->password ) && 
-             $this->db <> '' ) {
-            $this->mod->select_db( $this->db );
+            if( $this->socket <> '' )
+                $host .= ':' . $this->socket;
+        
+            if ( $ret = $this->mod->connect( $host, $this->username, $this->password ) && 
+                 $this->db <> '' ) {
+                $this->mod->select_db( $this->db );
+            }
+            
+            if( $ret )
+                $this->connected = TRUE;
+            else 
+                $this->connected = FALSE;
         }
         
-        return( $ret );
+        return( $this->connected );
     }
     
     function select_db( $db ) {
@@ -106,10 +123,16 @@ class ZkSvc_db {
     
     }
 
-    function html_table( $rs ) {
+    function html_table( $rs, $tt ) {
+
+        return( $this->mod->html_table( $rs, $tt ) );
     
-        return( $this->mod->html_table( $rs ) );
+    }
+
+    function getRow( $rs ) {
     
+        return( $this->mod->getRow( $rs ) );
+        
     }
 
 }
