@@ -5,6 +5,9 @@
 
 Version 1.4.5 - CVS
 -------------------
+  - Make SquirrelSpell work with safe_mode enabled, if using PHP >=4.3.0.
+    Patch by Ray Ferguson, backported from devel.
+  - Add support for Mail-Followup-To header, from devel.
 
 Version 1.4.4 - 21 January 2005
 -------------------------------
@@ -241,6 +244,7 @@ Version 1.4.2 - 1 October 2003
   - conf.pl will no longer offer to detect login methods if TLS is being used,
     as the detection code does not support it.
   - Fix somewhat uncommon bug in paginator (bug #767289)
+  - Support MS Exchange "DOMAIN/username/mailbox"-style usernames (#745814).
 
 Version 1.4.1 -- 7 July 2003
 ----------------------------
