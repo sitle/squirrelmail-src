@@ -6,7 +6,7 @@
 #
 # $Id$
 ############################################################              
-$conf_pl_version = "1.2.0";
+$conf_pl_version = "1.3.0";
 
 ############################################################
 # Check what directory we're supposed to be running in, and
