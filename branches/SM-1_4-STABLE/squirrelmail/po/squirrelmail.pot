@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2005-03-09 13:47+0200\n"
+"POT-Creation-Date: 2005-04-04 17:04+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -245,19 +245,19 @@ msgstr ""
 msgid "Folders"
 msgstr ""
 
-msgid "Subscribed successfully!"
+msgid "Subscribed successfully."
 msgstr ""
 
-msgid "Unsubscribed successfully!"
+msgid "Unsubscribed successfully."
 msgstr ""
 
-msgid "Deleted folder successfully!"
+msgid "Deleted folder successfully."
 msgstr ""
 
-msgid "Created folder successfully!"
+msgid "Created folder successfully."
 msgstr ""
 
-msgid "Renamed successfully!"
+msgid "Renamed successfully."
 msgstr ""
 
 msgid "Subscription Unsuccessful - Folder does not exist."
@@ -385,7 +385,7 @@ msgstr ""
 msgid "SquirrelMail version %s"
 msgstr ""
 
-msgid "By the SquirrelMail Development Team"
+msgid "By the SquirrelMail Project Team"
 msgstr ""
 
 #, c-format
@@ -2692,7 +2692,7 @@ msgstr ""
 msgid "Server does not support UIDL."
 msgstr ""
 
-msgid "Leaving Mail on Server..."
+msgid "Leaving mail on server..."
 msgstr ""
 
 msgid "Deleting messages from server..."
@@ -2701,7 +2701,7 @@ msgstr ""
 msgid "Fetching message "
 msgstr ""
 
-msgid "Server error...Disconnect"
+msgid "Server error. Disconnect"
 msgstr ""
 
 msgid "Reconnect from dead connection"
@@ -2725,10 +2725,8 @@ msgstr ""
 msgid "Message appended to mailbox"
 msgstr ""
 
-msgid "Message "
-msgstr ""
-
-msgid " deleted from Remote Server!"
+#, c-format
+msgid "Message %d deleted from remote server!"
 msgstr ""
 
 msgid "Delete failed:"
@@ -2744,7 +2742,7 @@ msgid ""
 "server can be undone by a hacker reading the source to this file."
 msgstr ""
 
-msgid "If you leave password empty, it will be required when you fetch mail."
+msgid "If you leave password empty, it will be asked when you fetch mail."
 msgstr ""
 
 msgid "Encrypt passwords (informative only)"
@@ -2768,13 +2766,13 @@ msgstr ""
 msgid "Store in Folder:"
 msgstr ""
 
-msgid "Leave Mail on Server"
+msgid "Leave mail on server"
 msgstr ""
 
-msgid "Check mail during login"
+msgid "Check mail at login"
 msgstr ""
 
-msgid "Check mail during folder refresh"
+msgid "Check mail at folder refresh"
 msgstr ""
 
 msgid "Modify Server"
@@ -2786,7 +2784,7 @@ msgstr ""
 msgid "Modify"
 msgstr ""
 
-msgid "No-one server in use. Try to add."
+msgid "No servers known."
 msgstr ""
 
 msgid "Fetching Servers"
@@ -2804,10 +2802,13 @@ msgstr ""
 msgid "Confirm Delete"
 msgstr ""
 
+msgid "Leave Mail on Server"
+msgstr ""
+
 msgid "Undefined Function"
 msgstr ""
 
-msgid "Hey! Wath do You are looking for?"
+msgid "The function you requested is unknown."
 msgstr ""
 
 msgid "Fetch"
