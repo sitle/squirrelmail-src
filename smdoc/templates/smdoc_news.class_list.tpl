@@ -55,7 +55,7 @@ function show_news_body(&$foowd, $className, $method, &$user, &$object, &$t)
       $row = 0;
       foreach ( $t['newslist'] as $news )
       {
-        $uri_arr['objectid'] = $news->objectid;
+        $uri_arr['objectid'] = $news['objectid'];
         $uri_arr['classid']  = NEWS_CLASS_ID;
         $url = getURI($uri_arr);
 ?>
