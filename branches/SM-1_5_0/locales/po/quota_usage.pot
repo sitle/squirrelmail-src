@@ -1,6 +1,6 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
+# <your language> SquirrelMail Quota Usage Plugin Translation File
+# Copyright (c) 2004 The Squirrelmail Development Team
+# This file is distributed under the same license as the SquirrelMail package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #, fuzzy
@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2003-12-24 10:27+0200\n"
+"POT-Creation-Date: 2004-11-09 18:47-0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,10 +16,22 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: functions.php:60
-msgid "of"
+msgid "current usage:"
 msgstr ""
 
-#: functions.php:69
+#, c-format
+msgid "%s%% of %sM"
+msgstr ""
+
 msgid "Over Quota!"
+msgstr ""
+
+#, c-format
+msgid "%s%% of %s messages"
+msgstr ""
+
+msgid "<strong>Warning:</strong> Your quota usage is currently ###PERCENT_USED###.  To avoid losing any email, you should immediately empty out your Trash and Sent folders and delete any emails with large attachments."
+msgstr ""
+
+msgid "<strong>Warning:</strong> Your quota usage is currently ###PERCENT_USED###.  You may want to make sure you empty out your Trash and clean your Sent folder."
 msgstr ""
