@@ -8,7 +8,7 @@
  */
 
 /** 
- * Template for basic object view
+ * Template for user object view
  *
  * Modified by SquirrelMail Development
  * $Id$
