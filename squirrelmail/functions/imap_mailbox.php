@@ -156,7 +156,7 @@
          $boxes[$g]['unformatted'] = $mailbox;
          //$boxes[$g]['unformatted-disp'] = ereg_replace('^' . $folder_prefix, '', $mailbox);
          if (substr($mailbox,0,strlen($folder_prefix))==$folder_prefix) { 
-            $boxes[$g]['unformatted-disp'] = substr($mailbox, strlen($folder_prefix)+1); 
+            $boxes[$g]['unformatted-disp'] = substr($mailbox, strlen($folder_prefix));
          }
          $boxes[$g]['id'] = $g;
 
@@ -245,7 +245,7 @@
          if (isset($read[0]))
          $sorted_list_ary[$i] = $read[0];
          else
-         $sorget_list_ary[$i] = "";
+         $sorted_list_ary[$i] = "";
          if (isset($sorted_list_ary[$i]) && find_mailbox_name($sorted_list_ary[$i]) == "INBOX")
             $inbox_in_list = true;
       }
