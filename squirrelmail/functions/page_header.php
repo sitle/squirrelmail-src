@@ -40,9 +40,9 @@ function displayHtmlHeader( $title = 'SquirrelMail', $xtra = '', $do_hook = TRUE
     }
 
     if ($squirrelmail_language == 'ja_JP') {
-	// why it is added here. header ('Content-Type:..) is used in i18n.php
+        // Why is it added here? Header ('Content-Type:..) is used in i18n.php
         echo "<!-- \xfd\xfe -->\n";
-        echo '<meta http-equiv="Content-type" content="text/html; charset=euc-jp">' . "\n";
+        echo '<meta http-equiv="Content-type" content="text/html; charset=euc-jp" />' . "\n";
     }
 
     if ($do_hook) {
@@ -103,10 +103,10 @@ function displayPageHeader($color, $mailbox, $xtra='', $session=false) {
     }
 
     if ($session) {
-	$compose_uri = $base_uri.'src/compose.php?mailbox='.urlencode($mailbox).'&amp;attachedmessages=true&amp;session='."$session";
+        $compose_uri = $base_uri.'src/compose.php?mailbox='.urlencode($mailbox).'&amp;attachedmessages=true&amp;session='."$session";
     } else {
         $compose_uri = $base_uri.'src/compose.php?newmessage=1';
-	$session = 0;
+        $session = 0;
     }
 
     // only output JavaScript if actually turned on
@@ -124,8 +124,8 @@ function displayPageHeader($color, $mailbox, $xtra='', $session=false) {
                     $compose_height = '550';
                 }
                 $js .= "function comp_in_new(comp_uri) {\n".
-		     "       if (!comp_uri) {\n".
-		     '           comp_uri = "'.$compose_uri."\";\n".
+                     "       if (!comp_uri) {\n".
+                     '           comp_uri = "'.$compose_uri."\";\n".
                      '       }'. "\n".
                      '    var newwin = window.open(comp_uri' .
                      ', "_blank",'.
@@ -139,7 +139,7 @@ function displayPageHeader($color, $mailbox, $xtra='', $session=false) {
                 $js .= 'function sendMDN() {'."\n".
                        "    mdnuri=window.location+'&sendreceipt=1'; ".
                        "var newwin = window.open(mdnuri,'right');".
-	               "\n}\n\n";
+                       "\n}\n\n";
             }
 
             // if any of the above passes, add the JS tags too.
@@ -189,7 +189,7 @@ function displayPageHeader($color, $mailbox, $xtra='', $session=false) {
             "}\n";
 
             $js .= "// -->\n".
-        	 "</script>\n";
+                 "</script>\n";
             $onload = 'onload="checkForm();"';
             displayHtmlHeader ('SquirrelMail', $js);
             break;
@@ -216,7 +216,7 @@ function displayPageHeader($color, $mailbox, $xtra='', $session=false) {
                 "if( pos >= 0 ) {\n".
                     "document.forms[i-1].elements[pos].focus();\n".
                 "}\n".
-		"$xtra\n".
+                "$xtra\n".
             "}\n";
 
             if ($compose_new_win == '1') {
@@ -227,9 +227,9 @@ function displayPageHeader($color, $mailbox, $xtra='', $session=false) {
                     $compose_height = '550';
                 }
                 $js .= "function comp_in_new(comp_uri) {\n".
-		     "       if (!comp_uri) {\n".
-		     '           comp_uri = "'.$compose_uri."\";\n".
-		     '       }'. "\n".
+                     "       if (!comp_uri) {\n".
+                     '           comp_uri = "'.$compose_uri."\";\n".
+                     '       }'. "\n".
                      '    var newwin = window.open(comp_uri' .
                      ', "_blank",'.
                      '"width='.$compose_width. ',height='.$compose_height.
@@ -252,7 +252,7 @@ function displayPageHeader($color, $mailbox, $xtra='', $session=false) {
     echo "<body text=\"$color[8]\" bgcolor=\"$color[4]\" link=\"$color[7]\" vlink=\"$color[7]\" alink=\"$color[7]\" $onload>\n\n";
     /** Here is the header and wrapping table **/
     $shortBoxName = htmlspecialchars(imap_utf7_decode_local(
-		      readShortMailboxName($mailbox, $delimiter)));
+                      readShortMailboxName($mailbox, $delimiter)));
     if ( $shortBoxName == 'INBOX' ) {
         $shortBoxName = _("INBOX");
     }
@@ -362,7 +362,7 @@ function compose_Header($color, $mailbox) {
                 "}\n".
             "}\n";
         $js .= "// -->\n".
-        	 "</script>\n";
+                 "</script>\n";
         $onload = 'onload="checkForm();"';
         displayHtmlHeader (_("Compose"), $js);
         break;
