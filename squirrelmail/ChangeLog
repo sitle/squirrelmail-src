@@ -15,6 +15,8 @@ Version 1.4.3 - CVS
   - Fix SquirrelMail to work with PHP5.
   - Reintroduce alternating row colors in addressbook, which has
     accidentally disappeared somewhere in the dark past.
+  - Disabled Quick-email-reporting feature in spamcop plugin. Bug.809452. Admin
+    can enable it by setting variable in plugins/spamcop/setup.php
 
 Version 1.4.2 - 1 October 2003
 ------------------------------
