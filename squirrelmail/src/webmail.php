@@ -23,6 +23,7 @@
 
    session_start();
    is_logged_in();
+   checkForPrefs($data_dir, $username);
 
    // We'll need this to later have a noframes version
    //
@@ -42,6 +43,15 @@
    
    $left_size = getPref($data_dir, $username, "left_size");
    $location_of_bar = getPref($data_dir, $username, "location_of_bar");
+   if ($location_of_bar == '')
+       $location_of_bar = 'left';
+   if ($left_size == "") {
+      if (isset($default_left_size))
+         $left_size = $default_left_size;
+      else  
+         $left_size = 200;
+   }      
+
    $bar_size = $left_size;
    
    if ($location_of_bar == 'right')
