@@ -1,5 +1,5 @@
 **************************************
-*** Squirrelmail Stable Series 1.2 ***
+*** SquirrelMail Stable Series 1.2 ***
 **************************************
 
 Version 1.2.9 -- CVS
@@ -9,7 +9,6 @@ Version 1.2.9 -- CVS
   - Fix for user prefs getting overwritten bugs #587860, 572502
   - Fix adding events to calendar on Windows systems
   - Improved session management system. 
-  - Various minor fixes.
   - Fix src directory being moved on Windows systems, bugs #586518 
     #605256 #610676.
   - Bugfixes for using SquirrelMail with register_globals = off
@@ -17,6 +16,9 @@ Version 1.2.9 -- CVS
     solve the "You must be logged in"-trouble.
   - Enable TZ in safe_mode if safe_mode_allowed_env_vars permits this bug
     #612148.
+  - Fix some bugs in the folder management system.
+  - Various minor fixes and enhancements.
+
 
 Version 1.2.8 -- September 14, 2002
 -----------------------------------
