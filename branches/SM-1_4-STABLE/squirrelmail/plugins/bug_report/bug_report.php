@@ -137,7 +137,7 @@ $body = htmlspecialchars($body_top . $body);
 
    <?PHP echo $warning_html; 
 
-   echo "<p><big>";
+   echo '<p><big>';
    echo _("Before you send your bug report, please make sure to check this checklist for any common problems.");
    echo "</big></p>\n";
 
