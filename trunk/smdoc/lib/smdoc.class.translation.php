@@ -189,7 +189,8 @@ class smdoc_translation extends foowd_workspace {
         if ( $foowd->user->save($foowd, FALSE) )
         {
           header('Location: '.getURI(array('objectid' => $translation_id,
-                                           'classid' => TRANSLATION_CLASS_ID)));
+                                           'classid' => TRANSLATION_CLASS_ID),
+                                     FALSE));
         } else {
           trigger_error('Could not update user with selected translation.');
         }

@@ -21,7 +21,6 @@ setPermission('smdoc_error', 'object', 'admin', 'Nobody');
 setPermission('smdoc_error', 'object', 'revert', 'Nobody');
 setPermission('smdoc_error', 'object', 'delete', 'Nobody');
 setPermission('smdoc_error', 'object', 'clone', 'Nobody');
-setPermission('smdoc_error', 'object', 'permissions', 'Nobody');
 setPermission('smdoc_error', 'object', 'history', 'Nobody');
 setPermission('smdoc_error', 'object', 'diff', 'Nobody');
 
@@ -150,36 +149,34 @@ function smdocErrorCatch($errorNumber, $errorString, $filename, $lineNumber, $co
   elseif (isset($context['this']))
     $foowd = $context['this'];
 
-  if (headers_sent())
-  {
-    echo '<h1>', ERROR_TITLE,'</h1>';
-    echo '<p>', $errorString, '</p>';
-    if ( isset($foowd) && is_object($foowd) && get_class($foowd) == FOOWD_CLASS_NAME )
-    {
-      if ( $foowd->debug )
-        $foowd->debug->display();
-      $foowd->destroy();
-    }
-  }
-  else
-  {
-    if ( isset($foowd) && is_object($foowd) && 
-         get_class($foowd) == FOOWD_CLASS_NAME && 
-         $foowd->template ) // make sure $foowd->template is not false for correct display
-    {
+  // If headers have not already been sent,
+  // And we have something called foowd that is a FOOWD object,
+  // and the foowd object has it's template member defined:
+  if ( !headers_sent() && 
+       isset($foowd) && is_object($foowd) && 
+       get_class($foowd) == FOOWD_CLASS_NAME  &&  $foowd->template ) 
+  { 
       $object = new smdoc_error($foowd, ERROR_TITLE, $errorString);
       $t = $object->method_view($foowd);
       $foowd->template->display($foowd->getTemplateName('smdoc_error', 'object_view'));
-      $foowd->destroy();
-    }
-    else
-    {
-      echo '<h1>', ERROR_TITLE,'</h1>';
-      echo '<p>', $errorString, '</p>';
-    }
+      $printed = TRUE;
   }
+  else
+    smdocErrorPrint($foowd, $errorString);
 
   if ( $errorNumber == E_USER_ERROR ) { // fatal error, halt
     exit(); // self contained error, halt
+  }
+}
+
+function smdocErrorPrint(&$foowd, &$errorString)
+{
+  echo '<h1>', ERROR_TITLE,'</h1>';
+  echo '<p>', $errorString, '</p>';
+  if ( isset($foowd) && is_object($foowd) && get_class($foowd) == FOOWD_CLASS_NAME )
+  {
+    if ( $foowd->debug )
+      $foowd->debug->display();
+    $foowd->destroy();
   }
 }
