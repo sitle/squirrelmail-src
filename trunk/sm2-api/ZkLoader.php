@@ -63,27 +63,40 @@ foreach( $bag_reg as $key => $reg ) {
         require_once("$zkhome/ZkFunctions.php");
     }
 
+    /**
+     * Fills the session bag.
+     *
+     */
     function Register() {
-    
+
         global $bag_reg;
-        
+
         $bag_reg = $this->bag_reg;
-        
+
     }
 
     function RequireCode( $svcname, $options = array(), $modname = '' ) {
 
         $svcfile  = "$this->libhome/$svcname/load.php";
+        $srvfile  = "$this->libhome/$svcname/service.php";
         $svcfunc  = "zkload_$svcname";
         $modfile  = "$this->modhome/$svcname/$modname.php";
-        
-        if( zkCheckName( $svcname ) &&
-            file_exists( $svcfile ) ) {            
-            require_once( $svcfile );
-            $code_preload = "\$ret = $svcfunc('$this->zkhome');";
-            /* Run the preload code string. */
-            eval( $code_preload );
-            if( zkCheckName($modname) && file_exists($modfile) ) {
+
+        if ( zkCheckName( $svcname ) ) {
+            if ( file_exists( $svcfile ) ) {
+                // There is a preload code
+                require_once( $svcfile );
+                $code_preload = "\$ret = $svcfunc( &\$this, '$svcname' );";
+                /* Run the preload code string. */
+                eval( $code_preload );
+            } elseif ( file_exists( $srvfile ) ) {
+                // This is a service without preloading
+                require_once( $srvfile );
+		$ret = TRUE;
+            } else {
+                $ret = FALSE;
+            }
+            if( $ret && zkCheckName($modname) && file_exists($modfile) ) {
                 require_once($modfile);
             }
         } else

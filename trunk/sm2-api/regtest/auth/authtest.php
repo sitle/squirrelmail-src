@@ -20,6 +20,7 @@
     /* Set the test username and password. */
     $test_user = 'captbunzo';
     $test_pass = 'bunz-r-us';
+    $test_timeout = 10;
 
     require_once( $zkhome . '/ZkLoader.php' );
 
@@ -33,16 +34,23 @@
                        'maxidle' => 10,
                        'connector' => array( 'host' => localhost,
                                              'port' => 143,
-                                             'timeout' => 2 ) );    
+                                             'timeout' => $test_timeout ) );    
     $authority['imap'] = $zkld->loadService( 'auth', $imap_opt, 'imap', zkSS() );
 
     $pop3_opt = array( 'maxlogin' => 300,
                        'maxidle' => 10,
                        'connector' => array( 'host' => localhost,
                                              'port' => 110,
-                                             'timeout' => 2 ) );    
+                                             'timeout' => $test_timeout ) );
     $authority['pop3'] = $zkld->loadService( 'auth', $pop3_opt, 'pop3', zkSS() );
     
+    $ftp_opt = array( 'maxlogin' => 300,
+                       'maxidle' => 10,
+                       'connector' => array( 'host' => localhost,
+                                             'port' => 21,
+                                             'timeout' => $test_timeout ) );
+    $authority['ftp'] = $zkld->loadService( 'auth', $ftp_opt, 'ftp', zkSS() );
+
 
     $html = $zkld->loadService( 'html', NULL, 'html40', zkSS() );
 
