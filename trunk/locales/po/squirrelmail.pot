@@ -1,20 +1,32 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR Free Software Foundation, Inc.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2004-10-03 05:26+0200\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2004-10-04 20:50+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 
 msgid "Address Book"
+msgstr ""
+
+msgid "All"
+msgstr ""
+
+msgid "To"
+msgstr ""
+
+msgid "Cc"
 msgstr ""
 
 msgid "Name"
@@ -29,16 +41,13 @@ msgstr ""
 msgid "Source"
 msgstr ""
 
-msgid "To"
-msgstr ""
-
-msgid "Cc"
-msgstr ""
-
 msgid "Bcc"
 msgstr ""
 
-msgid "No persons matching your search were found"
+msgid "Use Addresses"
+msgstr ""
+
+msgid "Address Book Search"
 msgstr ""
 
 msgid "Search for"
@@ -56,9 +65,6 @@ msgstr ""
 msgid "List all"
 msgstr ""
 
-msgid "Close"
-msgstr ""
-
 #, c-format
 msgid "Unable to list addresses from %s"
 msgstr ""
@@ -66,16 +72,13 @@ msgstr ""
 msgid "Your search failed with the following error(s)"
 msgstr ""
 
-msgid "All"
-msgstr ""
-
-msgid "Use Addresses"
-msgstr ""
-
-msgid "Address Book Search"
+msgid "No persons matching your search were found"
 msgstr ""
 
 msgid "Return"
+msgstr ""
+
+msgid "Close"
 msgstr ""
 
 msgid "Nickname"
@@ -212,6 +215,28 @@ msgstr ""
 msgid "Server replied: "
 msgstr ""
 
+msgid "Illegal folder name. Please select a different name."
+msgstr ""
+
+msgid "Click here to go back"
+msgstr ""
+
+msgid "You have not selected a folder to delete. Please do so."
+msgstr ""
+
+msgid "Delete Folder"
+msgstr ""
+
+#, c-format
+msgid "Are you sure you want to delete %s?"
+msgstr ""
+
+msgid "Yes"
+msgstr ""
+
+msgid "No"
+msgstr ""
+
 msgid "Folders"
 msgstr ""
 
@@ -263,9 +288,6 @@ msgstr ""
 msgid "No folders found"
 msgstr ""
 
-msgid "Delete Folder"
-msgstr ""
-
 msgid "Delete"
 msgstr ""
 
@@ -282,25 +304,6 @@ msgid "No folders were found to subscribe to!"
 msgstr ""
 
 msgid "Subscribe to:"
-msgstr ""
-
-msgid "Illegal folder name. Please select a different name."
-msgstr ""
-
-msgid "Click here to go back"
-msgstr ""
-
-msgid "You have not selected a folder to delete. Please do so."
-msgstr ""
-
-#, c-format
-msgid "Are you sure you want to delete %s?"
-msgstr ""
-
-msgid "Yes"
-msgstr ""
-
-msgid "No"
 msgstr ""
 
 msgid "You have not selected a folder to rename. Please do so."
@@ -351,6 +354,7 @@ msgstr ""
 msgid "Download this as a file"
 msgstr ""
 
+#, c-format
 msgid "INBOX"
 msgstr ""
 
@@ -393,56 +397,10 @@ msgstr ""
 msgid "No messages were selected."
 msgstr ""
 
-msgid "Personal Information"
-msgstr ""
-
-msgid "Display Preferences"
-msgstr ""
-
-msgid "Message Highlighting"
-msgstr ""
-
-msgid "Folder Preferences"
-msgstr ""
-
-msgid "Index Order"
-msgstr ""
-
 msgid "Options"
 msgstr ""
 
-msgid "Successfully Saved Options"
-msgstr ""
-
-msgid "Refresh Folder List"
-msgstr ""
-
-msgid "Refresh Page"
-msgstr ""
-
-msgid ""
-"This contains personal information about yourself such as your name, your "
-"email address, etc."
-msgstr ""
-
-msgid ""
-"You can change the way that SquirrelMail looks and displays information to "
-"you, such as the colors, the language, and other settings."
-msgstr ""
-
-msgid ""
-"Based upon given criteria, incoming messages can have different background "
-"colors in the message list. This helps to easily distinguish who the "
-"messages are from, especially for mailing lists."
-msgstr ""
-
-msgid ""
-"These settings change the way your folders are displayed and manipulated."
-msgstr ""
-
-msgid ""
-"The order of the message index can be rearranged and changed to contain the "
-"headers in any order you want."
+msgid "Message Highlighting"
 msgstr ""
 
 msgid "New"
@@ -557,6 +515,9 @@ msgstr ""
 msgid "Move Up"
 msgstr ""
 
+msgid "Index Order"
+msgstr ""
+
 msgid "Checkbox"
 msgstr ""
 
@@ -582,6 +543,49 @@ msgid "remove"
 msgstr ""
 
 msgid "Return to options page"
+msgstr ""
+
+msgid "Personal Information"
+msgstr ""
+
+msgid "Display Preferences"
+msgstr ""
+
+msgid "Folder Preferences"
+msgstr ""
+
+msgid "Successfully Saved Options"
+msgstr ""
+
+msgid "Refresh Folder List"
+msgstr ""
+
+msgid "Refresh Page"
+msgstr ""
+
+msgid ""
+"This contains personal information about yourself such as your name, your "
+"email address, etc."
+msgstr ""
+
+msgid ""
+"You can change the way that SquirrelMail looks and displays information to "
+"you, such as the colors, the language, and other settings."
+msgstr ""
+
+msgid ""
+"Based upon given criteria, incoming messages can have different background "
+"colors in the message list. This helps to easily distinguish who the "
+"messages are from, especially for mailing lists."
+msgstr ""
+
+msgid ""
+"These settings change the way your folders are displayed and manipulated."
+msgstr ""
+
+msgid ""
+"The order of the message index can be rearranged and changed to contain the "
+"headers in any order you want."
 msgstr ""
 
 msgid "Message not printable"
@@ -2083,14 +2087,14 @@ msgstr ""
 msgid "Show button in toolbar"
 msgstr ""
 
+#, c-format
+msgid "Could not write calendar file %s"
+msgstr ""
+
 msgid "TODAY"
 msgstr ""
 
 msgid "Go"
-msgstr ""
-
-#, c-format
-msgid "Could not write calendar file %s"
 msgstr ""
 
 msgid "l, F j Y"
@@ -2809,20 +2813,6 @@ msgstr ""
 msgid "View Message details"
 msgstr ""
 
-msgid "New Mail"
-msgstr ""
-
-msgid "SquirrelMail Notice:"
-msgstr ""
-
-#, c-format
-msgid "You have %s new message"
-msgstr ""
-
-#, c-format
-msgid "You have %s new messages"
-msgstr ""
-
 msgid "New Mail Notification"
 msgstr ""
 
@@ -2832,6 +2822,7 @@ msgid ""
 "inbox for notification."
 msgstr ""
 
+#, c-format
 msgid "Check all boxes, not just INBOX"
 msgstr ""
 
@@ -2841,6 +2832,7 @@ msgid ""
 "unseen mail is in your folders (requires JavaScript)."
 msgstr ""
 
+#, c-format
 msgid "Show popup window on new mail"
 msgstr ""
 
@@ -2852,6 +2844,7 @@ msgid ""
 "sounds or popups for unseen mail."
 msgstr ""
 
+#, c-format
 msgid "Count only messages that are RECENT"
 msgstr ""
 
@@ -2863,6 +2856,7 @@ msgid ""
 "have new mail, even if you have %s enabled."
 msgstr ""
 
+#, c-format
 msgid "Change title on supported browsers"
 msgstr ""
 
@@ -2873,6 +2867,7 @@ msgid ""
 "provided file box."
 msgstr ""
 
+#, c-format
 msgid "Enable Media Playing"
 msgstr ""
 
@@ -2882,6 +2877,7 @@ msgid ""
 "no file is specified, %s, no sound will be used."
 msgstr ""
 
+#, c-format
 msgid "Select server file"
 msgstr ""
 
@@ -2895,6 +2891,22 @@ msgid "Try"
 msgstr ""
 
 msgid "Current File:"
+msgstr ""
+
+msgid "New Mail"
+msgstr ""
+
+msgid "SquirrelMail Notice:"
+msgstr ""
+
+#, c-format
+msgid "You have %s new message"
+msgid_plural "You have %s new messages"
+msgstr[0] ""
+msgstr[1] ""
+
+#, c-format
+msgid "You have %s new messages"
 msgstr ""
 
 msgid "NewMail Options"
@@ -2914,7 +2926,9 @@ msgstr ""
 
 #, c-format
 msgid "%s New Message"
-msgstr ""
+msgid_plural "%s New Messages"
+msgstr[0] ""
+msgstr[1] ""
 
 msgid "Test Sound"
 msgstr ""
@@ -3245,18 +3259,6 @@ msgstr ""
 msgid "No errors found"
 msgstr ""
 
-msgid ""
-"Your personal dictionary has been encrypted and is now stored in an "
-"encrypted format."
-msgstr ""
-
-msgid ""
-"Your personal dictionary has been decrypted and is now stored as plain text."
-msgstr ""
-
-msgid "Personal Dictionary Crypto Settings"
-msgstr ""
-
 msgid "Your personal dictionary was erased."
 msgstr ""
 
@@ -3286,6 +3288,18 @@ msgid ""
 msgstr ""
 
 msgid "Dictionary re-encrypted"
+msgstr ""
+
+msgid ""
+"Your personal dictionary has been encrypted and is now stored in an "
+"encrypted format."
+msgstr ""
+
+msgid ""
+"Your personal dictionary has been decrypted and is now stored as plain text."
+msgstr ""
+
+msgid "Personal Dictionary Crypto Settings"
 msgstr ""
 
 msgid "Personal Dictionary"
@@ -3514,33 +3528,43 @@ msgstr ""
 msgid "%s to %s"
 msgstr ""
 
+#, c-format
 msgid "English"
 msgstr ""
 
+#, c-format
 msgid "Chinese"
 msgstr ""
 
+#, c-format
 msgid "French"
 msgstr ""
 
+#, c-format
 msgid "German"
 msgstr ""
 
+#, c-format
 msgid "Italian"
 msgstr ""
 
+#, c-format
 msgid "Japanese"
 msgstr ""
 
+#, c-format
 msgid "Korean"
 msgstr ""
 
+#, c-format
 msgid "Portuguese"
 msgstr ""
 
+#, c-format
 msgid "Spanish"
 msgstr ""
 
+#, c-format
 msgid "Russian"
 msgstr ""
 
@@ -3562,6 +3586,7 @@ msgstr ""
 msgid "Danish"
 msgstr ""
 
+#, c-format
 msgid "Dutch"
 msgstr ""
 
@@ -3571,6 +3596,7 @@ msgstr ""
 msgid "Finnish"
 msgstr ""
 
+#, c-format
 msgid "Greek"
 msgstr ""
 
@@ -4113,6 +4139,12 @@ msgstr ""
 msgid "Click here to go to the options page."
 msgstr ""
 
+#, c-format
+msgid "Login OK: Inbox contains %s message"
+msgid_plural "Login OK: Inbox contains %s messages"
+msgstr[0] ""
+msgstr[1] ""
+
 msgid "Spam Service Type:"
 msgstr ""
 
@@ -4131,9 +4163,11 @@ msgstr ""
 msgid "Filipino (Tagalog)"
 msgstr ""
 
+#, c-format
 msgid "Simplified Chinese"
 msgstr ""
 
+#, c-format
 msgid "Traditional Chinese"
 msgstr ""
 
