@@ -212,7 +212,7 @@ function delete_move_next_read($currloc) {
 }
 
 function get_move_target_list() {
-    global $imapConnection;
+    global $imapConnection, $lastTargetMailbox;
     $boxes = sqimap_mailbox_list($imapConnection);
     for ($i = 0; $i < count($boxes); $i++) {  
         if (!in_array('noselect', $boxes[$i]['flags'])) {
@@ -221,7 +221,12 @@ function get_move_target_list() {
             if ( $box2 == 'INBOX' ) {
                 $box2 = _("INBOX");
             }
-            echo "<option value=\"$box\">$box2</option>\n";
+            if ($box == $lastTargetMailbox) {
+                echo "<option value=\"$box\" SELECTED>$box2</option>\n";
+            }
+            else {
+                echo "<option value=\"$box\">$box2</option>\n";
+            }
         }
     }
 }
@@ -230,7 +235,7 @@ function delete_move_next_moveNextForm($next) {
 
     global $color, $where, $what, $currentArrayIndex, $passed_id,
            $urlMailbox, $sort, $startMessage, $delete_id, $move_id,
-           $imapConnection;
+           $imapConnection, $lastTargetMailbox;
     echo '<tr>'.
          "<td bgcolor=\"$color[9]\" width=\"100%\" align=\"center\">".
            '<form action="read_body.php" method="post"><small>'.
