@@ -68,10 +68,11 @@ class ZkLoader {
 
     function RequireCode( $svcname, $options = array(), $modname = '' ) {
 
-        $svcfile  = "$this->libhome/$svcname/load.php";
-        $srvfile  = "$this->libhome/$svcname/service.php";
-        $svcfunc  = "zkload_$svcname";
-        $modfile  = "$this->modhome/$svcname/$modname.php";
+        $svcfile    = "$this->libhome/$svcname/load.php";
+        $srvfile    = "$this->libhome/$svcname/service.php";
+        $svcfunc    = "zkload_$svcname";
+        $svclocator = 'zkload_'.$svcname.'_module_locator';
+        $modfile    = "$this->modhome/$svcname/";
 
         if ( zkCheckName( $svcname ) ) {
             if ( file_exists( $svcfile ) ) {
@@ -87,8 +88,12 @@ class ZkLoader {
             } else {
                 $ret = FALSE;
             }
-            if( $ret && zkCheckName($modname) && file_exists($modfile) ) {
-                require_once($modfile);
+            if( $ret ) {
+                $code_locator = "\$modfile .= $svclocator( $modname );";
+                eval( $code_locator );
+                if ( zkCheckName($modname) && file_exists($modfile) ) {
+                    require_once($modfile);
+                }
             }
         } else
             $ret = FALSE;
