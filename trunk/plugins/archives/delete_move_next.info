@@ -2,9 +2,9 @@
 
     $name = 'delete_move_next';
 
-    $plugin_ary[$name]['name']     = 'Delete, Move, Next';
-    $plugin_ary[$name]['author']   = 'Bryan Stalcup';
-    $plugin_ary[$name]['email']    = 'bryan@stalcup.net';
+    $plugin_ary[$name]['name']     = 'delete_move_next';
+    $plugin_ary[$name]['author']   = 'Ben Brillat';
+    $plugin_ary[$name]['email']    = 'brillat-sqplugin@mainsheet.org';
     $plugin_ary[$name]['desc']     = '
         The links include "Previous", "Next", "Delete & Previous", and "Delete & Next", which
         deletes the current email and displays the next email. Also included is
@@ -12,6 +12,10 @@
         next email. It helps me keep up with my constantly overflowing inbox.  
     ';
     $plugin_ary[$name]['changes']  = array(
+        array('version' => '2.0.2',
+              'date'    => mktime(0,0,0,2,14,2001),
+              'desc'    => 'A bugfix'
+        ),
         array('version' => '2.0.1',
               'date'    => mktime(0,0,0,2,14,2001),
               'desc'    => 'A few bugfixes, and documentation changes.'
