@@ -49,6 +49,6 @@ if ($method == 'sub') {
 }
 
 sqimap_logout($imapConnection);
-header("Location: $location/folders.php?success=$subscribe");
+header("Location: $location/folders.php?success=$success");
 
 ?>
