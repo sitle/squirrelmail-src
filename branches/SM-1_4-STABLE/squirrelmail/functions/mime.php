@@ -622,14 +622,12 @@ function decodeHeader ($string, $utfencode=true,$htmlsave=true) {
             {
             case 'B':
                 $replace = base64_decode($res[4]);
-		if ($utfencode) {
-                    $ret .= charset_decode($res[2],$replace);
-		} else {
-		    if ($htmlsave) {
-		        $replace = htmlspecialchars($replace);
-		    }
-		    $ret.= $replace;
-		}
+                if ($utfencode) {
+                    $replace = charset_decode($res[2],$replace);
+                } elseif ($htmlsave) {
+                    $replace = htmlspecialchars($replace);
+                }
+                $ret.= $replace;
                 break;
             case 'Q':
                 $replace = str_replace('_', ' ', $res[4]);
@@ -640,10 +638,8 @@ function decodeHeader ($string, $utfencode=true,$htmlsave=true) {
                  */
                 if ($utfencode) {
                     $replace = charset_decode($res[2], $replace);
-                } else {
-                    if ($htmlsave) {
-                        $replace = htmlspecialchars($replace);
-                    }
+                } elseif ($htmlsave) {
+                    $replace = htmlspecialchars($replace);
                 }
                 $ret .= $replace;
                 break;
