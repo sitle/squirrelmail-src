@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: squirrelmail HEADPOT-Creation-Date: 2003-09-20 11:04"
 "+0300\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-02-24 20:39+0200\n"
-"PO-Revision-Date: 2004-03-03 15:26+0100\n"
+"POT-Creation-Date: 2004-03-22 11:54+0200\n"
+"PO-Revision-Date: 2004-03-27 03:10+0100\n"
 "Last-Translator: Fredrik Jervfors <sqm_admin@fimbul.net>\n"
 "Language-Team: Swedish <squirrelmail-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -117,10 +117,10 @@ msgid "Add address"
 msgstr "Lägg till adress"
 
 msgid "Edit selected"
-msgstr "Ändra markerade"
+msgstr "Ändra valt"
 
 msgid "Delete selected"
-msgstr "Kasta markerade"
+msgstr "Kasta valda"
 
 #, c-format
 msgid "Add to %s"
@@ -184,7 +184,7 @@ msgid "Add"
 msgstr "Lägg till"
 
 msgid "Delete selected attachments"
-msgstr "Kasta markerade bilagor"
+msgstr "Kasta valda bilagor"
 
 msgid "Priority"
 msgstr "Prioritet"
@@ -364,6 +364,7 @@ msgstr "Visa brev"
 msgid "Download this as a file"
 msgstr "Ladda ner detta brev som en fil"
 
+#, c-format
 msgid "INBOX"
 msgstr "Inkorg"
 
@@ -401,7 +402,7 @@ msgid "Password:"
 msgstr "Lösenord:"
 
 msgid "No messages were selected."
-msgstr "Inga brev markerades."
+msgstr "Inga brev var valda."
 
 msgid "Options"
 msgstr "Inställningar"
@@ -525,10 +526,10 @@ msgid "Index Order"
 msgstr "Indexeringsordning"
 
 msgid "Checkbox"
-msgstr "Markeringsruta"
+msgstr "Ruta för val"
 
 msgid "Flags"
-msgstr "Flaggor"
+msgstr "Ikoner"
 
 msgid "Size"
 msgstr "Storlek"
@@ -616,7 +617,7 @@ msgid "View Printable Version"
 msgstr "Visa utskriftsvänlig version"
 
 msgid "Read:"
-msgstr "Läs:"
+msgstr "Läst:"
 
 msgid "Your message"
 msgstr "Ditt brev"
@@ -644,10 +645,10 @@ msgid "Read receipt"
 msgstr "Mottagningsbevis"
 
 msgid "sent"
-msgstr "skickat"
+msgstr "Skickat"
 
 msgid "requested"
-msgstr "begärdes"
+msgstr "Begärt"
 
 msgid ""
 "The message sender has requested a response to indicate that you have read "
@@ -1195,10 +1196,10 @@ msgid "THIS FOLDER IS EMPTY"
 msgstr "DENNA MAPP ÄR TOM"
 
 msgid "Move Selected To"
-msgstr "Flytta markerade brev till"
+msgstr "Flytta valda brev till"
 
 msgid "Transform Selected Messages"
-msgstr "Ändra status på markerade brev"
+msgstr "Ändra status på valda brev"
 
 msgid "Move"
 msgstr "Flytta"
@@ -1222,13 +1223,13 @@ msgid "Thread View"
 msgstr "Korrespondensvy"
 
 msgid "Toggle All"
-msgstr "Skifta markeringar"
+msgstr "Växla val"
 
 msgid "Unselect All"
-msgstr "Avmarkera alla"
+msgstr "Välj inga"
 
 msgid "Select All"
-msgstr "Markera alla"
+msgstr "Välj alla"
 
 #, c-format
 msgid "Viewing Messages: <B>%s</B> to <B>%s</B> (%s total)"
@@ -1786,7 +1787,7 @@ msgid "Use Sendmail Binary"
 msgstr "Använd Sendmail-programmet"
 
 msgid "Sendmail Path"
-msgstr "Sendmail Path"
+msgstr "Sökväg till Sendmail"
 
 msgid "SMTP Server Address"
 msgstr "Adress till SMTP-server"
@@ -1805,9 +1806,6 @@ msgstr "POP3 innan SMTP?"
 
 msgid "Invert Time"
 msgstr "Invertera tid"
-
-msgid "Use Confirmation Flags"
-msgstr "Använd flaggor för bekräftelser"
 
 msgid "Folders Defaults"
 msgstr "Förvalsinställningar för mappar"
@@ -1828,10 +1826,10 @@ msgid "By default, save as draft"
 msgstr "Flytta till utkast som standard"
 
 msgid "List Special Folders First"
-msgstr "Lista specialmappar först"
+msgstr "Lista särskilda mappar först"
 
 msgid "Show Special Folders Color"
-msgstr "Visa specialmapparnas färg"
+msgstr "Visa de särskilda mapparnas färg"
 
 msgid "Auto Expunge"
 msgstr "Kasta breven automatiskt"
@@ -1849,7 +1847,7 @@ msgid "Default Unseen Type"
 msgstr "Förvald typ för olästa brev"
 
 msgid "Auto Create Special Folders"
-msgstr "Skapa specialfoldrar automatiskt"
+msgstr "Skapa särskilda mappar automatiskt"
 
 msgid "Default Javascript Adrressbook"
 msgstr "Förvald javascriptadressbok"
@@ -2073,6 +2071,9 @@ msgstr "Felrapporter:"
 
 msgid "Show button in toolbar"
 msgstr "Visa knappen i knappraden"
+
+msgid "Could not write calendar file %s"
+msgstr "Kunde inte spara kalenderfilen %s"
 
 msgid "TODAY"
 msgstr "IDAG"
@@ -2826,7 +2827,7 @@ msgid "Mail Fetch Result:"
 msgstr "Resultat från hämtning av brev:"
 
 msgid "Simple POP3 Fetch Mail"
-msgstr "Enkel POP3-hämtning"
+msgstr "Hämta från POP3-brevlåda"
 
 msgid ""
 "This configures settings for downloading email from a pop3 mailbox to your "
@@ -3402,7 +3403,7 @@ msgid "%s dictionary"
 msgstr "%s ordlista"
 
 msgid "Delete checked words"
-msgstr "Stryk markerade ord"
+msgstr "Stryk valda ord"
 
 msgid "Edit your Personal Dictionary"
 msgstr "Redigera din personliga ordlista"
@@ -3829,7 +3830,7 @@ msgid "Draft"
 msgstr "Utkast"
 
 msgid "Flagged"
-msgstr "Flaggad"
+msgstr "Markerat"
 
 msgid "Sent By"
 msgstr "Skickad av"
@@ -3912,11 +3913,20 @@ msgstr "FEL : Felaktigt funktionsanrop."
 msgid "Reason:"
 msgstr "Orsak:"
 
+msgid "Flag"
+msgstr "Markera"
+
+msgid "Unflag"
+msgstr "Avmarkera"
+
 msgid "Click here to change the sorting of the message list"
 msgstr "Klicka här för att ändra sorteringen av brevlistan"
 
 msgid "Message Flags Icon Theme"
 msgstr "Tema för brevikoner"
+
+msgid "Show Flag / Unflag Buttons"
+msgstr "Visa knapparna \"Markera\" och \"Avmarkera\""
 
 msgid "Length of From/To Field (0 for full)"
 msgstr "Längd på från-/till-fältet (0 för full längd)"
@@ -3978,6 +3988,9 @@ msgstr "Använd avancerad mappträdlista"
 msgid "Use old folder listing functions"
 msgstr "Använd gamla mapplistefunktioner"
 
+msgid "Use icons"
+msgstr "Använd ikoner"
+
 msgid "Use php recode functions"
 msgstr "Använd PHP-omkodningsfunktioner"
 
@@ -4001,11 +4014,24 @@ msgid ""
 msgstr ""
 "Om du stöter på problem med konfigurationen, kör eller konsultera conf.pl."
 
+msgid "Test Configuration"
+msgstr "Testa konfigurering"
+
 msgid "No POP3 servers configured yet."
 msgstr "Inga POP3-servrar är konfigurerade."
 
 msgid "Click here to go to the options page."
 msgstr "Tillbaka till inställningar"
+
+msgid "POP3 Fetch Mail"
+msgstr "Hämta från POP3-brevlåda"
+
+msgid ""
+"This configures settings for downloading email from a POP3 mailbox to your "
+"account on this server."
+msgstr ""
+"Här konfigurerar du inställningar för hämtning av brev från en POP3-brevlåda "
+"till denna server."
 
 msgid "Spam Service Type:"
 msgstr "Typ av skräpposttjänst:"
