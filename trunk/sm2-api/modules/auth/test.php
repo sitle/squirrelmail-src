@@ -16,7 +16,8 @@
  */
 class ZkMod_auth_test {
 
-    var $name = 'test';
+    var $name = 'auth/test';
+    var $ver = '$Id$';
 
     var $info;
 
@@ -40,11 +41,8 @@ class ZkMod_auth_test {
      */
     function checkPassword($username, $password) {
         /* Code to check for success... */
-        if (($username == 'captbunzo') && ($password == 'bunz-r-us')) {
-            return (true);
-        }
-        /* Otherwise, fail authentication. */
-        return (false);
+        return( ($username == 'captbunzo') && 
+	        ($password == 'bunz-r-us') );
     }
 }
 
