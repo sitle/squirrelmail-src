@@ -110,7 +110,7 @@ function displayPageHeader($color, $mailbox, $xtra='', $session=false) {
     }
 
     // only output JavaScript if actually turned on
-    if($javascript_on) {
+    if($javascript_on || strpos($xtra, 'new_js_autodetect_results.value') ) {
         switch ( $module ) {
         case 'src/read_body.php':
             $js ='';
