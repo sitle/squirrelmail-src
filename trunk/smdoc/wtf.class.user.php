@@ -24,6 +24,11 @@ wtf.class.user.php
 User Class
 */
 
+/*
+ * Modified by SquirrelMail Development Team
+ * $Id$
+ */
+
 $HARDCLASS[-1919691191] = 'user';
 
 class user extends thing { // a user
@@ -219,7 +224,7 @@ class user extends thing { // a user
 						echo '<login_error username="', htmlspecialchars($username), '"/>';
 					}
 				} else {
-					echo '<login_success username="', htmlspecialchars($username), '"/>';
+                    header("Location: " .THINGIDURI.$wtf->user->homeid.'&class=home&show_msg=login');
 				}
 
 			} else {
@@ -230,6 +235,10 @@ class user extends thing { // a user
 			header('HTTP/1.0 401 Unauthorized');
 			echo '<login_httpautherror />';
 		} elseif ($wtf->user->objectid == ANONYMOUSUSERID) {
+            $msg = getValue('show_msg', FALSE);
+            if ( $msg == 'logout' ) {
+                echo '<logout_success/>'; 
+            } 
 			echo '<login_box url="', $url, '" usernamefield="username" passwordfield="password"/>';
 		} else {
 			echo '<login_already/>';
@@ -248,8 +257,8 @@ class user extends thing { // a user
 				unset($_COOKIE['userid']);
 				unset($_COOKIE['password']);
 			}
+            header("Location: " .THINGIDURI.ANONYMOUSUSERID.'&class=user&op=login&show_msg=logout');
 			$wtf->user = &wtf::loadUser();
-			echo '<logout_success/>';
 		}
 		track();
 	}
@@ -437,6 +446,13 @@ class home extends content { // a users home thing
 				} else {
 					$newLine = "\n";
 				}
+                
+                $username =  htmlspecialchars($user->title);
+                $msg = getValue('show_msg', FALSE);
+                if ( $msg == 'login' ) {
+                  echo '<login_success username="', $username, '"/>'; 
+                } 
+
 				echo 'Username: '.htmlspecialchars($user->title). $newLine;
 	//			echo 'E-mail: '.htmlspecialchars(encodeEmail($user->email)), $newLine;
 				echo 'Registered: '.date(DATEFORMAT, dbdate2unixtime($user->creatorDatetime)), $newLine;
