@@ -222,9 +222,9 @@ function sqimap_login ($username, $password, $imap_server_address, $imap_port, $
                  */
                 
                 set_up_language($squirrelmail_language, true);
+                sqsession_destroy();
                 include_once( '../functions/display_messages.php' );
                 logout_error( _("Unknown user or password incorrect.") );                
-                session_destroy();
                 exit;
             }
         } else {
