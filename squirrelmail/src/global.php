@@ -13,14 +13,6 @@
  * $Id$
  */
 
-
-/* convert old-style superglobals to current method
- * this is executed if you are running PHP 4.0.x.
- * it is run via a require_once directive in validate.php 
- * and redirect.php. Patch submitted by Ray Black.
- */ 
-
-
 /*
  * Set a different session name to stop session conflicts on same server
  * with software such as Gallery.  This *must* be set above all the rest
@@ -29,6 +21,11 @@
 
 ini_set('session.name' , 'SQMSESSID');
 
+/* convert old-style superglobals to current method
+ * this is executed if you are running PHP 4.0.x.
+ * it is run via a require_once directive in validate.php 
+ * and redirect.php. Patch submitted by Ray Black.
+ */ 
 
 if ( !check_php_version(4,1) ) {
   global $_COOKIE, $_ENV, $_FILES, $_GET, $_POST, $_SERVER, $_SESSION;
@@ -57,7 +54,7 @@ if (get_magic_quotes_gpc()) {
    This fixes hand crafted url XXS expoits for any
    page that uses PHP_SELF as the FORM action */
 
-strip_tags($_SERVER['PHP_SELF']);
+$_SERVER['PHP_SELF'] = strip_tags($_SERVER['PHP_SELF']);
 
 /* returns true if current php version is at mimimum a.b.c */
 function check_php_version ($a = '0', $b = '0', $c = '0')             
