@@ -36,8 +36,9 @@ class input_textbox {
 	var $size; // size of textbox
 	var $maxlength; // maxlength of text allowed
 	var $class; // css class
+	var $required; // is value required
 	
-	function input_textbox($name, $regex = NULL, $value = NULL, $caption = NULL, $size = NULL, $maxlength = NULL, $class = NULL) {
+	function input_textbox($name, $regex = NULL, $value = NULL, $caption = NULL, $size = NULL, $maxlength = NULL, $class = NULL, $required = TRUE) {
 		$this->name = $name;
 		$this->regex = $regex;
 		if (isset($_POST[$name])) {
@@ -66,6 +67,7 @@ class input_textbox {
 			if ($this->size > INPUT_TEXTBOX_SIZE_MAX) $this->size = INPUT_TEXTBOX_SIZE_MAX;
 		}
 		$this->class = $class;
+		$this->required = $required;
 	}
 	
 	function set($value) {
@@ -79,7 +81,13 @@ class input_textbox {
 	}
 	
 	function display() {
+		if ($this->required && !preg_match($this->regex, $this->value) && (isset($_POST[$this->name]) || isset($_GET[$this->name]))) {
+			$this->class .= 'error';
+		}
 		echo $this->caption, ' <input name="', $this->name, '" type="text" value="', htmlentities($this->value), '" size="', $this->size, '" maxlength="', $this->maxlength, '" class="', $this->class, '" />';
+		if ($this->required) {
+			echo ' *';
+		}
 	}
 
 }
@@ -87,7 +95,13 @@ class input_textbox {
 class input_passwordbox extends input_textbox {
 
 	function display() {
-		echo $this->caption, ' <input name="', $this->name, '" type="password" value="', htmlentities($this->value), '" size="', (int)($this->size / 1.5), '" maxlength="', $this->maxlength, '" class="', $this->class, '" />';
+		if ($this->required && !preg_match($this->regex, $this->value) && (isset($_POST[$this->name]) || isset($_GET[$this->name]))) {
+			$this->class .= 'error';
+		}
+		echo $this->caption, ' <input name="', $this->name, '" type="password" value="" size="', (int)($this->size / 1.5), '" maxlength="', $this->maxlength, '" class="', $this->class, '" />';
+		if ($this->required) {
+			echo ' *';
+		}
 	}
 
 }
