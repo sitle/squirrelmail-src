@@ -71,7 +71,7 @@ if ($action == 'delete' && isset($theid)) {
 
     setPref($data_dir, $username, 'hililist', serialize($message_highlight_list));
 
-    header( "Location: $SCRIPT_NAME" );
+    header( 'Location: options_highlight.php' );
     exit;
 } else if ($action == 'save') {
     if ($color_type == 1) $newcolor = $newcolor_choose;
