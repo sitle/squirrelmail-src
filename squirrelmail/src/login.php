@@ -29,8 +29,8 @@ if (isset($emailaddress)) {
         $rcptaddress = substr($rcptaddress, 0, $pos);
         $a = explode('=', $a, 2);
         if (isset($a[1])) {
-            $name = urldecode($a[0]);
-            $val = urldecode($a[1]);
+            $name = $a[0];
+            $val = $a[1];
             global $$name;
             $$name = $val;
         }
