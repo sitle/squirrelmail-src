@@ -15,6 +15,7 @@
 
 require_once('calendar_data.php');
 require_once('functions.php');
+require_once('config.php');
 chdir('..');
 require_once('../src/validate.php');
 require_once('../functions/strings.php');
@@ -59,6 +60,9 @@ if (isset($_POST['send'])) {
 if (isset($_POST['event_priority'])) {
     $event_priority = $_POST['event_priority'];
 }
+if (isset($_POST['event_notification'])) {
+    $event_notification = $_POST['event_notification'];
+}
 if (isset($_POST['confirmed'])) {
     $confirmed = $_POST['confirmed'];
 }
@@ -96,7 +100,7 @@ elseif (isset($_GET['minute'])) {
 
 // update event info
 function show_event_form() {
-    global $color, $editor_size, $year, $day, $month, $hour, $minute, $calendardata;
+    global $color, $editor_size, $year, $day, $month, $hour, $minute, $calendardata, $enableNotification;
 
     $tmparray = $calendardata["$month$day$year"]["$hour$minute"];
     // 20020831 - JLH : Added warningMessage if notifyTime or eventTime has passed
@@ -145,12 +149,14 @@ function show_event_form() {
     select_option_priority($tmparray[priority]);
     echo "      </SELECT>\n".
          "      </TD></TR>\n";
-    echo "      <TR><TD BGCOLOR=\"$color[4]\" ALIGN=RIGHT>" . _("Notify:") . "</TD>\n".
-         "      <TD BGCOLOR=\"$color[4]\" ALIGN=LEFT>\n".
-         "      <SELECT NAME=\"event_notification\">\n";
-    select_option_notification($tmparray[priority]);
-    echo "      </SELECT>\n".
-         "      </TD></TR>\n";
+    if ($enableNotification==1){
+      echo "      <TR><TD BGCOLOR=\"$color[4]\" ALIGN=RIGHT>" . _("Notify:") . "</TD>\n".
+           "      <TD BGCOLOR=\"$color[4]\" ALIGN=LEFT>\n".
+           "      <SELECT NAME=\"event_notification\">\n";
+      select_option_notification($tmparray[priority]);
+      echo "      </SELECT>\n".
+           "      </TD></TR>\n";
+    };
     echo "      <TR><TD BGCOLOR=\"$color[4]\" ALIGN=RIGHT>" . _("Title:") . "</TD>\n".
          "      <TD BGCOLOR=\"$color[4]\" ALIGN=LEFT>\n".
          "      <INPUT TYPE=text NAME=\"event_title\" VALUE=\"$tmparray[title]\" SIZE=30 MAXLENGTH=50><BR>\n".
@@ -246,7 +252,6 @@ $calself=basename($PHP_SELF);
 displayPageHeader($color, 'None');
 //load calendar menu
 calendar_header();
-
 echo "<TR BGCOLOR=\"$color[0]\"><TD>" .
      "<TABLE WIDTH=100% BORDER=0 CELLPADDING=2 CELLSPACING=1 BGCOLOR=\"$color[0]\">" .
      '<tr><td COLSPAN=2>' .

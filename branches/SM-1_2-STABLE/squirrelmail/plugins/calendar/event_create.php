@@ -92,13 +92,14 @@ function show_event_form() {
     select_option_length("0");
     echo "      </SELECT>\n".
          "      </TD></TR>\n";
-    echo "      <TR><TD BGCOLOR=\"$color[4]\" ALIGN=RIGHT>" . _("Priority:") . "</TD>\n".
-         "      <TD BGCOLOR=\"$color[4]\" ALIGN=LEFT>\n".
-         "      <SELECT NAME=\"event_priority\">\n";
-    select_option_priority("0");
-    echo "      </SELECT>\n".
-         "      </TD></TR>\n";
-
+    if ($enableNotification==1){
+      echo "      <TR><TD BGCOLOR=\"$color[4]\" ALIGN=RIGHT>" . _("Priority:") . "</TD>\n".
+           "      <TD BGCOLOR=\"$color[4]\" ALIGN=LEFT>\n".
+           "      <SELECT NAME=\"event_priority\">\n";
+      select_option_priority("0");
+      echo "      </SELECT>\n".
+           "      </TD></TR>\n";
+    };
     echo "      <TR><TD BGCOLOR=\"$color[4]\" ALIGN=RIGHT>" . _("Notify:") . "</TD>\n".
          "      <TD BGCOLOR=\"$color[4]\" ALIGN=LEFT>\n".
          "      <SELECT NAME=\"event_notification\">\n";

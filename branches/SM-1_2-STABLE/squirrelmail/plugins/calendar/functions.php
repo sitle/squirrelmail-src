@@ -183,7 +183,6 @@ function calcNotifyTime($eventTime,$Priority){
 
 function select_option_notification($priority) {
   $selected = $priority - isOdd($priority);
-  print "[selected::$selected|priotity::$priority]";
   $eventNotification = array(
     "0" =>  _("Don't Email Me"),
     "2" =>  _("Email Me - 0m prior"),
