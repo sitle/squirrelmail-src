@@ -131,10 +131,33 @@ includes.
 
 <p>end ebullient 12/4/2002</p>
 </div>
+
 <div class="tassium">
 tassium 12/12/2002<br />
 <p><b>Version Checking II</b></p>
 <p>Plugins should have a standardized interface for reporting their version. I'd like to suggest that all plugins be required to implement plugin_name_version(), which should return a version string.</p>
+</div>
+
+<div class="pdontthink">
+pdontthink 4/20/2003<br />
+<p><b>Re: Version Checking II</b></p>
+<p>Several plugins are already implementing tassium's suggestion, so I think this should be considered a final decision. Note that the value returned should be treated as a string, since some plugin versions contain more than one period in them (eg., "1.1.2"). If it would help reduce confusion, we could talk about standardizing versioning for plugins.</p>
+<p><b>Re: Plugin Init Efficiency (ebullient's comments from 11/20/2002)</b></p>
+<p>To reiterate and draw out ebullient's notes, it should be clear that since we will have the ability to build the hooks array at compile time, we can remove these lines from the bottom of plugin.php:</p>
+<pre>
+/*************************************/
+/*** MAIN PLUGIN LOADING CODE HERE ***/
+/*************************************/
+
+/* On startup, register all plugins configured for use. */
+if (isset($plugins) && is_array($plugins)) {
+    foreach ($plugins as $name) {
+        use_plugin($name);
+    }
+}
+</pre>
+<p>Doing so means that we won't be loading ALL plugin setup files with every page request.  Instead, the do_hook, do_hook_function, and concat_hook_function functions should include each plugin's setup file as it it being used, cutting down on lots of useless overhead.</p>
+<p>It may also be worthy to note that Jimmy Conner came up with a fairly nifty way to build the hooks array on the fly and get most of these same ideas working in SquirrelMail 1.4.  He posted a message with the relevant files to the SM-DEVEL list on February 26, 2003</p>
 </div>
 
 </body>
