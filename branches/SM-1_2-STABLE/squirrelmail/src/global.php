@@ -84,8 +84,9 @@ function sqstripslashes(&$array) {
 
 function sqsession_register ($var, $name) {
 
+    sqsession_is_active();
     sqsession_unregister($name);
-	
+    
     if ( !check_php_version(4,1) ) {
         global $HTTP_SESSION_VARS;
         $HTTP_SESSION_VARS["$name"] = $var;
@@ -93,10 +94,13 @@ function sqsession_register ($var, $name) {
     else {
        $_SESSION["$name"] = $var; 
     }
-	session_register("$name");
+    session_register("$name");
 }
 
 function sqsession_unregister ($name) {
+
+    sqsession_is_active();
+    
     if ( !check_php_version(4,1) ) {
         global $HTTP_SESSION_VARS;
         unset($HTTP_SESSION_VARS["$name"]);
@@ -104,7 +108,7 @@ function sqsession_unregister ($name) {
     else {
         unset($_SESSION["$name"]); 
     }
-	session_unregister("$name");
+    session_unregister("$name");
 }
 
 function sqsession_is_registered ($name) {
@@ -125,31 +129,34 @@ function sqsession_is_registered ($name) {
 }
 
 function sqsession_destroy() {
-    global $base_uri;
 
-    /* start session to be able to destroy it later */
-    session_start();
-
-    if ( !check_php_version(4,1) ) {
-        global $HTTP_SESSION_VARS;
-        $HTTP_SESSION_VARS = array();
-    }
-    else {		
-        $_SESSION = array();
-    }
-	
     /*
-     * now reset cookies to 5 seconds ago to delete from browser
+     * php.net says we can kill the cookie by setting just the name:
+     * http://www.php.net/manual/en/function.setcookie.php
+     * maybe this will help fix the session merging again.
+     *
+     * Changed the theory on this to kill the cookies first starting
+     * a new session will provide a new session for all instances of
+     * the browser, we don't want that, as that is what is causing the
+     * merging of sessions.
      */
-	
-    @session_destroy();
-    $cookie_params = session_get_cookie_params();	
-    setcookie(session_name(), '', time() - 5, $cookie_params['path'], 
-        $cookie_params['domain']);
-    setcookie('username', '', time() - 5, $base_uri);
-    setcookie('key', '', time() - 5 , $base_uri);
+
+    setcookie(session_name());
+    setcookie('username');
+    setcookie('key');
+
+    $sessid = session_id();
+    if (!empty( $sessid )) {
+        if ( !check_php_version(4,1) ) {
+            global $HTTP_SESSION_VARS;
+            $HTTP_SESSION_VARS = array();
+        } else {
+            $_SESSION = array();
+        }
+        @session_destroy;
+    }
 }
-	
+    
 
 /**
  *  Search for the var $name in $_SESSION, $_POST, $_GET
@@ -170,4 +177,20 @@ function sqextractGlobalVar ($name) {
         $$name =  $_GET[$name];
     }
 }
+
+/*
+ * Function to verify a session has been started.  If it hasn't
+ * start a session up.  php.net doesn't tell you that $_SESSION
+ * (even though autoglobal), is not created unless a session is
+ * started, unlike $_POST, $_GET and such
+ */
+
+function sqsession_is_active() {
+
+    $sessid = session_id();
+    if ( empty( $sessid ) ) {
+        session_start();
+    }
+}
+
 ?>
