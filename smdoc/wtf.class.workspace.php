@@ -112,7 +112,7 @@ class workspace extends thing {
             echo 'You are now in workspace "'.$this->title.'".';
         } elseif ($wtf->user->objectid != ANONYMOUSUSERID &&
                   hasPermission($this, $wtf->user, 'viewGroup')) { // check permission
-            $wtf->user->delete(false); // remove obj in old workspace from DB, will create a new DB entry upon save.
+            $wtf->user->delete(); // remove obj in old workspace from DB, will create a new DB entry upon save.
             if ( $wtf->user->workspaceid == $this->objectid ) {
                 $wtf->user->workspaceid = 0;
                 $msg = 'toMain';
