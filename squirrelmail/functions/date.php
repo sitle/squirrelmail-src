@@ -40,6 +40,8 @@
          $gmt = '+0200';
       else if ($gmt == 'JST')
          $gmt = '+0900';
+      else if ($gmt == 'KST')
+         $gmt = "+0900";
       else if ($gmt == 'MET')
          $gmt = '+0100';
       else if ($gmt == 'MET DST' || $gmt == 'METDST')

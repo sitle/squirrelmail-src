@@ -14,6 +14,7 @@
 
    session_start();
 
+   $theme = array();
    include('../functions/strings.php');
    include('../config/config.php');
    include('../functions/page_header.php');
@@ -55,6 +56,19 @@
       echo '<br><center><b>'._("Successfully saved personal information!").'</b></center><br>';
    } else if (isset($submit_display)) {  
       # Save display preferences
+
+      // Do checking to make sure the chosentheme is in the theme array.
+      $in_ary = false;
+      for ($i=0; $i < count($theme); $i++){
+         if ($theme[$i]["PATH"] == $chosentheme) {
+     	    $in_ary = true;
+   	        break;
+         }
+      }
+      if (!$in_ary) {
+         $chosentheme = "";
+      }
+      if (in_array ($chosentheme, $theme
       setPref($data_dir, $username, 'chosen_theme', $chosentheme);
       setPref($data_dir, $username, 'show_num', $shownum);
       setPref($data_dir, $username, 'wrap_at', $wrapat);
