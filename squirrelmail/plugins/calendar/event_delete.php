@@ -91,9 +91,9 @@ function confirm_deletion()
          "    <TR><TD ALIGN=RIGHT BGCOLOR=\"$color[4]\">" . _("Time:") . "</TD>\n".
          "    <TD ALIGN=LEFT BGCOLOR=\"$color[4]\">$dhour:$dminute</TD></TR>\n".
          "    <TR><TD ALIGN=RIGHT BGCOLOR=\"$color[4]\">" . _("Title:") . "</TD>\n".
-         "    <TD ALIGN=LEFT BGCOLOR=\"$color[4]\">$tmparray[title]</TD></TR>\n".
+         "    <TD ALIGN=LEFT BGCOLOR=\"$color[4]\">$tmparray['title']</TD></TR>\n".
          "    <TR><TD ALIGN=RIGHT BGCOLOR=\"$color[4]\">" . _("Message:") . "</TD>\n".
-         "    <TD ALIGN=LEFT BGCOLOR=\"$color[4]\">$tmparray[message]</TD></TR>\n".
+         "    <TD ALIGN=LEFT BGCOLOR=\"$color[4]\">$tmparray['message']</TD></TR>\n".
          "    <TR><TD ALIGN=RIGHT BGCOLOR=\"$color[4]\">\n".
          "    <FORM NAME=\"delevent\" METHOD=POST ACTION=\"$calself\">\n".
          "       <INPUT TYPE=HIDDEN NAME=\"dyear\" VALUE=\"$dyear\">\n".
