@@ -27,6 +27,8 @@ sqgetGlobalVar('username', $username, SQ_SESSION);
 sqgetGlobalVar('key', $key, SQ_COOKIE);
 sqgetGlobalVar('delimiter', $delimiter, SQ_SESSION);
 sqgetGlobalVar('onetimepad', $onetimepad, SQ_SESSION);
+sqgetGlobalVar('composenew' , $composenew, SQ_FORM);
+sqgetGlobalVar('composesession' , $composesession , SQ_SESSION);
 
 if (isset($_GET['mailbox'])) {
     $mailbox = strip_tags($_GET['mailbox']);
@@ -253,7 +255,7 @@ if ($mailbox == 'All Folders') {
 
 if (isset($composenew) && $composenew) {
     $comp_uri = "../src/compose.php?mailbox=". urlencode($mailbox).
-		"&amp;session=$composesession&amp;attachedmessages=true&amp";
+		"&session=$composesession&attachedmessages=true&amp";
     displayPageHeader($color, $mailbox, "comp_in_new('$comp_uri');", false);
 } else {
     displayPageHeader($color, $mailbox);
