@@ -138,7 +138,7 @@ function load_optpage_data_display() {
 
     $optvals[SMOPT_GRP_MAILBOX][] = array(
         'name'    => 'show_num',
-        'caption' => _("Number of Messages to Index"),
+        'caption' => _("Number of Messages per Page"),
         'type'    => SMOPT_TYPE_INTEGER,
         'refresh' => SMOPT_REFRESH_NONE,
         'size'    => SMOPT_SIZE_TINY
@@ -359,7 +359,7 @@ function load_optpage_data_display() {
 function save_option_theme($option) {
     global $theme;
 
-    // Do checking to make sure $new_theme is in the array. 
+    // Do checking to make sure $new_theme is in the array.
     $theme_in_array = false;
     for ($i = 0; $i < count($theme); ++$i) {
         if ($theme[$i]['PATH'] == $option->new_value) {
@@ -372,7 +372,7 @@ function save_option_theme($option) {
         $option->new_value = '';
     }
 
-    // Save the option like normal. 
+    // Save the option like normal.
     save_option($option);
 }
 
@@ -384,7 +384,7 @@ function save_option_javascript_autodetect($option) {
 
     sqGetGlobalVar('new_javascript_setting', $new_javascript_setting);
 
-    // Set javascript either on or off. 
+    // Set javascript either on or off.
     if ($new_javascript_setting == SMPREF_JS_AUTODETECT) {
         if ($option->new_value == SMPREF_JS_ON) {
             setPref($data_dir, $username, 'javascript_on', SMPREF_JS_ON);
