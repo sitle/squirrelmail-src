@@ -149,10 +149,13 @@ b. Setting up directories
 
 c. Setting up SquirrelMail
 
-  There are two ways to configure SquirrelMail.  In the config/ directory,
+  There are three ways to configure SquirrelMail.  In the config/ directory,
   there is a perl script called conf.pl that will aid you in the
   configuration process.  This is the recommended way of handling
   the config.
+
+  There's also a plugin called 'administrator' for the webinterface but you'll
+  have to be able to at least log in to SquirrelMail first.
 
   You can also copy the config/config_default.php file to config/config.php
   and edit that manually.
@@ -168,7 +171,7 @@ c. Setting up SquirrelMail
 
   Point your browser at the URL at which SquirrelMail is installed.  A
   possible example of this is: 
-     http://www.yourdomain.com/squirrelmail
+     http://www.example.com/squirrelmail
      
   It should be pretty straight forward to use. Some more documentation
   might show up one day or another.
@@ -185,19 +188,19 @@ c. Setting up SquirrelMail
 
   In order to use translated versions of SquirrelMail, you need
   to download and install locale packages that contain translations
-  that you want to use with squirrelmail.
+  that you want to use with SquirrelMail.
 
   Locale packages can be downloaded from SquirrelMail SourceForge
   project page.
 
      http://sourceforge.net/project/showfiles.php?group_id=311&package_id=110388
 
-  Each translation contains install script that copies required files
-  into appropriate locations. If you can't run that script, you can extract
-  contents of translation packages into your squirrelmail directory.
+  Each translation contains an install script that copies the required files
+  into their appropriate locations. If you can't run that script, you can extract
+  the contents of a translation package into your SquirrelMail directory.
 
-  NOTE No.1: *-src.tar.gz, *-src.tar.bz2 and *-src.zip archives does not contain
-  compiled translation files. You will need to run compilelocales script
+  NOTE No.1: *-src.tar.gz, *-src.tar.bz2 and *-src.zip archives do not contain
+  compiled translation files. You will need to run the `compilelocales` script
   in order to get all gettext binary translations.
 
   NOTE No.2: You might need to restart your webserver before using translations.
