@@ -42,6 +42,7 @@ $username = $_SESSION['username'];
 $key  = $_COOKIE['key'];
 $onetimepad = $_SESSION['onetimepad'];
 $base_uri = $_SESSION['base_uri'];
+$delimiter = $_SESSION['delimiter'];
 
 if (isset($_GET['startMessage'])) {
     $startMessage = $_GET['startMessage'];
