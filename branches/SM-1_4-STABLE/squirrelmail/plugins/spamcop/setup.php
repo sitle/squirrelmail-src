@@ -72,9 +72,15 @@ function spamcop_show_link() {
 
    /* GLOBALS */
    sqgetGlobalVar('passed_id',    $passed_id,    SQ_FORM);
+   sqgetGlobalVar('passed_ent_id',$passed_ent_id,SQ_FORM);
    sqgetGlobalVar('mailbox',      $mailbox,      SQ_FORM);
    sqgetGlobalVar('startMessage', $startMessage, SQ_FORM);
    /* END GLOBALS */
+
+   // catch unset passed_ent_id
+   if (! sqgetGlobalVar('passed_ent_id', $passed_ent_id, SQ_FORM) ) {
+    $passed_ent_id = 0;
+   }
 
    echo "<br>\n";
 
@@ -89,15 +95,15 @@ function spamcop_show_link() {
    
    if ($spamcop_method == 'web_form') {
 ?><script language="javascript" type="text/javascript">
-document.write('<a href="../plugins/spamcop/spamcop.php?passed_id=<?PHP echo urlencode($passed_id); ?>&amp;js_web=1&amp;mailbox=<?PHP echo urlencode($mailbox); ?>" target="_blank">');
+document.write('<a href="../plugins/spamcop/spamcop.php?passed_id=<?PHP echo urlencode($passed_id); ?>&amp;js_web=1&amp;mailbox=<?PHP echo urlencode($mailbox); ?>&amp;passed_ent_id=<?PHP echo urlencode($passed_ent_id); ?>" target="_blank">');
 document.write("<?PHP echo _("Report as Spam"); ?>");
 document.write("</a>");
 </script><noscript>
-<a href="../plugins/spamcop/spamcop.php?passed_id=<?PHP echo urlencode($passed_id); ?>&amp;mailbox=<?PHP echo urlencode($mailbox); ?>&amp;startMessage=<?PHP echo urlencode($startMessage); ?>">
+<a href="../plugins/spamcop/spamcop.php?passed_id=<?PHP echo urlencode($passed_id); ?>&amp;mailbox=<?PHP echo urlencode($mailbox); ?>&amp;startMessage=<?PHP echo urlencode($startMessage); ?>&amp;passed_ent_id=<?PHP echo urlencode($passed_ent_id); ?>">
 <?PHP echo _("Report as Spam"); ?></a>
 </noscript><?PHP
    } else {
-?><a href="../plugins/spamcop/spamcop.php?passed_id=<?PHP echo urlencode($passed_id); ?>&amp;mailbox=<?PHP echo urlencode($mailbox); ?>&amp;startMessage=<?PHP echo urlencode($startMessage); ?>">
+?><a href="../plugins/spamcop/spamcop.php?passed_id=<?PHP echo urlencode($passed_id); ?>&amp;mailbox=<?PHP echo urlencode($mailbox); ?>&amp;startMessage=<?PHP echo urlencode($startMessage); ?>&amp;passed_ent_id=<?PHP echo urlencode($passed_ent_id); ?>">
 <?PHP echo _("Report as Spam"); ?></a>
 <?PHP
    }
