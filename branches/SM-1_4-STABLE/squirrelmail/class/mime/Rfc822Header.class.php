@@ -332,6 +332,7 @@ class Rfc822Header {
                 }
                 $is_encoded = false;
                 $addr_structure->group = $group;
+                $grouplookup = false;
                 if ($at) {
                     $addr_structure->mailbox = substr($addr, 0, $at);
                     $addr_structure->host = substr($addr, $at+1);
@@ -340,6 +341,10 @@ class Rfc822Header {
                     if ($lookup) {
                         $aAddr = call_user_func_array($lookup,array($addr));
                         if (isset($aAddr['email'])) {
+                            if (strpos($aAddr['email'],',')) {
+                                $grouplookup = true;
+                                $addr_ar = $this->parseAddress($aAddr['email'], $ar, $addr_ar, $group, $host,$lookup);
+                            } else {
                             $at = strpos($aAddr['email'], '@');
                             $addr_structure->mailbox = substr($aAddr['email'], 0, $at);
                             $addr_structure->host = substr($aAddr['email'], $at+1);
@@ -350,7 +355,8 @@ class Rfc822Header {
                             }
                         }
                     }
-                    if (!$addr_structure->mailbox) {
+                    }
+                    if (!$grouplookup && !$addr_structure->mailbox) {
                         $addr_structure->mailbox = trim($addr);
                         if ($host) {
                             $addr_structure->host = $host;
@@ -362,13 +368,15 @@ class Rfc822Header {
                 $pos = 0;
                 $name = '';
                 $addr = '';
+                if (!$grouplookup) {
                 $addr_ar[] = $addr_structure;
+                }
                 break;
             case ':':  /* process the group addresses */
                 /* group marker */
                 $group = substr($address, 0, $pos);
                 $address = substr($address, $pos+1);
-                $result = $this->parseAddress($address, $ar, $addr_ar, $group);
+                $result = $this->parseAddress($address, $ar, $addr_ar, $group, $lookup);
                 $addr_ar = $result[0];
                 $pos = $result[1];
                 $address = substr($address, $pos++);
@@ -477,6 +485,9 @@ class Rfc822Header {
             if ($lookup) {
                 $aAddr = call_user_func_array($lookup,array($addr));
                 if (isset($aAddr['email'])) {
+                    if (strpos($aAddr['email'],',')) {
+                        return $this->parseAddress($aAddr['email'], $ar, $addr_ar, $group, $host,$lookup);
+                    } else {
                     $at = strpos($aAddr['email'], '@');
                     $addr_structure->mailbox = substr($aAddr['email'], 0, $at);
                     $addr_structure->host = substr($aAddr['email'], $at+1);
@@ -484,6 +495,7 @@ class Rfc822Header {
                         $name = $aAddr['name'];
                     } else {
                         $name = $addr;
+                        }
                     }
                 }
             }
