@@ -1,0 +1,66 @@
+$Id$
+$Author$
+$Date$
+--
+
+sm2-planning README
+Author: Paul Joseph Thompson <thomppj@squirrelmail.org>
+==========================================================
+
+Purpose: To explain the purpose of the sm2-planning cvs module.
+
+
+Purpose of this Module
+======================
+The purpose of the sm2-planning module is to serve as a melting pot for
+the ideas that will some day become SquirrelMail 2. You see, for a while 
+a number of us have been writing up various of our ideas for SM2. 
+However, we have all done so in our own little ways, scattered here and 
+there between web sites, the mailing list, irc chats, and tgz files.
+
+The sm2-planning module was created to standardize this effort. 
+Furthermore along this concept of standardization, all documentation in 
+this module should conform to a common standard for how it is  written.
+The details of this standard are given in the file ::template.txt::, in 
+the same directory as this README. These two efforts of standardation 
+will:
+
+  a. Make it easier for us to share and exchange ideas
+     (hence the usage of cvs)
+  b. Make it easier to follow each others thoughts
+     (hence the "documentation standard" established)
+
+
+Directory Structure
+===================
+In this repository, each developer has their own working directory. These 
+are located in the directory "developers". And then there is a common 
+directory for the ideas which have, more or less, been accepted. This 
+directory is named "docs".
+
+
+The Ultimate Goal
+=================
+The intention of the archive is that documentation will eventually 
+migrate out of the developer directories and into the doc directory. And 
+then, in the long run, this process will continue as the documentation in 
+the doc directory migrates out of this module completely and into 
+some kind of sm2-doc, sm2-devdoc, or sm2 module.
+
+
+A Final Thought
+===============
+Note that it is intended for this archive to get a LITTLE messy. That 
+means that many of us may eventually have all kinds of little ideas and 
+thoughts in our directories. Some of them may never come to fuition. 
+However, that is the goal as we want to find the best plans we can. I 
+believe strongly that through this effort, we can produce something worth 
+writing home about.
+
+
+And, when in doubt, think "melting pot".
+
+Here are some links which explain the concept of a melting pot:
+  http://members.edventures.com/terms/m/melting_pot/definition.html
+  http://www.dictionary.com/cgi-bin/dict.pl?term=melting+pot
+  http://www.m-w.com/cgi-bin/dictionary?book=Dictionary&va=melting+pot
