@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: SquirrelMail HEAD\n"
-"POT-Creation-Date: 2004-05-10 21:26+0300\n"
-"PO-Revision-Date: 2004-05-16 16:23+0200\n"
+"POT-Creation-Date: 2004-05-17 23:17+0200\n"
+"PO-Revision-Date: 2004-05-21 08:41+0200\n"
 "Last-Translator: Fredrik Jervfors <sqm_admin@fimbul.net>\n"
 "Language-Team: Swedish <squirrelmail-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -17,9 +17,6 @@ msgstr ""
 
 msgid "Address Book"
 msgstr "Adressbok"
-
-msgid "All"
-msgstr "Alla"
 
 msgid "Name"
 msgstr "Namn"
@@ -33,20 +30,8 @@ msgstr "Information"
 msgid "Source"
 msgstr "Källa"
 
-msgid "To"
-msgstr "Till"
-
-msgid "Cc"
-msgstr "Kopia"
-
-msgid "Bcc"
-msgstr "Dold kopia"
-
-msgid "Use Addresses"
-msgstr "Använd adresser"
-
-msgid "Address Book Search"
-msgstr "Sök i adressbok"
+msgid "No persons matching your search were found"
+msgstr "Hittade inga personer överensstämmande med din sökning"
 
 msgid "Search for"
 msgstr "Sök efter"
@@ -63,6 +48,9 @@ msgstr "Sök"
 msgid "List all"
 msgstr "Visa alla"
 
+msgid "Close"
+msgstr "Stäng"
+
 #, c-format
 msgid "Unable to list addresses from %s"
 msgstr "Det går inte att visa adresser från %s"
@@ -70,14 +58,26 @@ msgstr "Det går inte att visa adresser från %s"
 msgid "Your search failed with the following error(s)"
 msgstr "Sökningen misslyckades med följande fel"
 
-msgid "No persons matching your search were found"
-msgstr "Hittade inga personer överensstämmande med din sökning"
+msgid "All"
+msgstr "Alla"
+
+msgid "To"
+msgstr "Till"
+
+msgid "Cc"
+msgstr "Kopia"
+
+msgid "Bcc"
+msgstr "Dold kopia"
+
+msgid "Use Addresses"
+msgstr "Använd adresser"
+
+msgid "Address Book Search"
+msgstr "Sök i adressbok"
 
 msgid "Return"
 msgstr "Tillbaka"
-
-msgid "Close"
-msgstr "Stäng"
 
 msgid "Nickname"
 msgstr "Kortnamn"
@@ -225,28 +225,6 @@ msgstr "Fel: Katalogen &quot;%s&quot; för sparade utkast finns inte"
 msgid "Server replied: "
 msgstr "Servern svarade: "
 
-msgid "Illegal folder name.  Please select a different name."
-msgstr "Otillåtet mappnamn. Välj ett annat namn."
-
-msgid "Click here to go back"
-msgstr "Klicka här för att gå tillbaka"
-
-msgid "You have not selected a folder to delete. Please do so."
-msgstr "Du har inte valt vilken mapp som ska tas bort."
-
-msgid "Delete Folder"
-msgstr "Kasta mapp"
-
-#, c-format
-msgid "Are you sure you want to delete %s?"
-msgstr "Är du säker på att du vill kasta %s?"
-
-msgid "Yes"
-msgstr "Ja"
-
-msgid "No"
-msgstr "Nej"
-
 msgid "Folders"
 msgstr "Mappar"
 
@@ -298,6 +276,9 @@ msgstr "Byt namn"
 msgid "No folders found"
 msgstr "Inga mappar hittades"
 
+msgid "Delete Folder"
+msgstr "Kasta mapp"
+
 msgid "Delete"
 msgstr "Kasta"
 
@@ -315,6 +296,25 @@ msgstr "Inga mappar att aktivera"
 
 msgid "Subscribe to:"
 msgstr "Aktivera:"
+
+msgid "Illegal folder name.  Please select a different name."
+msgstr "Otillåtet mappnamn. Välj ett annat namn."
+
+msgid "Click here to go back"
+msgstr "Klicka här för att gå tillbaka"
+
+msgid "You have not selected a folder to delete. Please do so."
+msgstr "Du har inte valt vilken mapp som ska tas bort."
+
+#, c-format
+msgid "Are you sure you want to delete %s?"
+msgstr "Är du säker på att du vill kasta %s?"
+
+msgid "Yes"
+msgstr "Ja"
+
+msgid "No"
+msgstr "Nej"
 
 msgid "You have not selected a folder to rename. Please do so."
 msgstr "Du har inte valt vilken mapp du vill byta namn på."
@@ -403,11 +403,60 @@ msgstr "Lösenord:"
 msgid "No messages were selected."
 msgstr "Inga brev var valda."
 
-msgid "Options"
-msgstr "Inställningar"
+msgid "Personal Information"
+msgstr "Personlig profil"
+
+msgid "Display Preferences"
+msgstr "Utseende"
 
 msgid "Message Highlighting"
 msgstr "Färgmarkering av brev"
+
+msgid "Folder Preferences"
+msgstr "Mappar"
+
+msgid "Index Order"
+msgstr "Indexeringsordning"
+
+msgid "Options"
+msgstr "Inställningar"
+
+msgid "Successfully Saved Options"
+msgstr "Inställningarna sparades"
+
+msgid "Refresh Folder List"
+msgstr "Uppdatera mapplistan"
+
+msgid "Refresh Page"
+msgstr "Ladda om sidan"
+
+msgid ""
+"This contains personal information about yourself such as your name, your "
+"email address, etc."
+msgstr "Personlig information, t.ex. namn och e-postadress."
+
+msgid ""
+"You can change the way that SquirrelMail looks and displays information to "
+"you, such as the colors, the language, and other settings."
+msgstr "Omfattar bl.a. färger, språk och hur brev visas."
+
+msgid ""
+"Based upon given criteria, incoming messages can have different background "
+"colors in the message list.  This helps to easily distinguish who the "
+"messages are from, especially for mailing lists."
+msgstr ""
+"Brev kan markeras med färger baserat på t.ex. avsändarnamn, ärende eller "
+"liknande. Detta gör det enkelt att utskilja brev från t.ex. e-postlistor, "
+"eller brev som innehåller en särskild ärenderad."
+
+msgid ""
+"These settings change the way your folders are displayed and manipulated."
+msgstr "Hur mappar visas och hanteras."
+
+msgid ""
+"The order of the message index can be rearranged and changed to contain the "
+"headers in any order you want."
+msgstr "Vilka kolumner som visas i indexet och ordningen på dessa."
 
 msgid "New"
 msgstr "Ny"
@@ -521,9 +570,6 @@ msgstr "Använd som förval"
 msgid "Move Up"
 msgstr "Flytta upp"
 
-msgid "Index Order"
-msgstr "Indexeringsordning"
-
 msgid "Checkbox"
 msgstr "Ruta för val"
 
@@ -552,52 +598,6 @@ msgstr "Dölj"
 
 msgid "Return to options page"
 msgstr "Tillbaka"
-
-msgid "Personal Information"
-msgstr "Personlig profil"
-
-msgid "Display Preferences"
-msgstr "Utseende"
-
-msgid "Folder Preferences"
-msgstr "Mappar"
-
-msgid "Successfully Saved Options"
-msgstr "Inställningarna sparades"
-
-msgid "Refresh Folder List"
-msgstr "Uppdatera mapplistan"
-
-msgid "Refresh Page"
-msgstr "Ladda om sidan"
-
-msgid ""
-"This contains personal information about yourself such as your name, your "
-"email address, etc."
-msgstr "Personlig information, t.ex. namn och e-postadress."
-
-msgid ""
-"You can change the way that SquirrelMail looks and displays information to "
-"you, such as the colors, the language, and other settings."
-msgstr "Omfattar bl.a. färger, språk och hur brev visas."
-
-msgid ""
-"Based upon given criteria, incoming messages can have different background "
-"colors in the message list.  This helps to easily distinguish who the "
-"messages are from, especially for mailing lists."
-msgstr ""
-"Brev kan markeras med färger baserat på t.ex. avsändarnamn, ärende eller "
-"liknande. Detta gör det enkelt att utskilja brev från t.ex. e-postlistor, "
-"eller brev som innehåller en särskild ärenderad."
-
-msgid ""
-"These settings change the way your folders are displayed and manipulated."
-msgstr "Hur mappar visas och hanteras."
-
-msgid ""
-"The order of the message index can be rearranged and changed to contain the "
-"headers in any order you want."
-msgstr "Vilka kolumner som visas i indexet och ordningen på dessa."
 
 msgid "Message not printable"
 msgstr "Brevet går ej att skriva ut"
@@ -2090,15 +2090,15 @@ msgstr "Felrapporter:"
 msgid "Show button in toolbar"
 msgstr "Visa knappen i knappraden"
 
-#, c-format
-msgid "Could not write calendar file %s"
-msgstr "Kunde inte spara kalenderfilen %s"
-
 msgid "TODAY"
 msgstr "IDAG"
 
 msgid "Go"
 msgstr "Kör"
+
+#, c-format
+msgid "Could not write calendar file %s"
+msgstr "Kunde inte spara kalenderfilen %s"
 
 msgid "l, F j Y"
 msgstr "l, F j Y"
@@ -2866,6 +2866,23 @@ msgstr "Spara brev"
 msgid "View Message details"
 msgstr "Visa brevets detaljer"
 
+msgid "New Mail"
+msgstr "Nytt brev"
+
+msgid "SquirrelMail Notice:"
+msgstr "Avisering från SquirrelMail:"
+
+msgid "You have"
+msgstr "Du har"
+
+#, c-format
+msgid "%s new message"
+msgstr "%s nytt brev"
+
+#, c-format
+msgid "%s new messages"
+msgstr "%s nya brev"
+
 msgid "New Mail Notification"
 msgstr "Avisering vid nya brev"
 
@@ -2951,23 +2968,6 @@ msgstr "Spela"
 
 msgid "Current File:"
 msgstr "Aktiv fil:"
-
-msgid "New Mail"
-msgstr "Nytt brev"
-
-msgid "SquirrelMail Notice:"
-msgstr "Avisering från SquirrelMail:"
-
-msgid "You have"
-msgstr "Du har"
-
-#, c-format
-msgid "%s new message"
-msgstr "%s nytt brev"
-
-#, c-format
-msgid "%s new messages"
-msgstr "%s nya brev"
 
 msgid "NewMail Options"
 msgstr "Avisering vid nyinkomna brev"
@@ -3366,6 +3366,23 @@ msgstr "Stavningskontrollen är inte färdig. Stäng och hoppa över ändringarna?"
 msgid "No errors found"
 msgstr "Inga fel funna"
 
+msgid ""
+"Your personal dictionary has been <strong>encrypted</strong> and is now "
+"stored in an <strong>encrypted format</strong>."
+msgstr ""
+"Din personliga ordlista har <strong>krypterats</strong> och har sparats i "
+"<strong>krypterat format</strong>."
+
+msgid ""
+"Your personal dictionary has been <strong>decrypted</strong> and is now "
+"stored as <strong>clear text</strong>."
+msgstr ""
+"Din personliga ordlista har <strong>dekrypterats</strong> och har sparats i "
+"<strong>klartext</strong>."
+
+msgid "Personal Dictionary Crypto Settings"
+msgstr "Krypteringsinställningar för personlig ordlista"
+
 msgid "Your personal dictionary was erased."
 msgstr "Din personliga ordlista har kastats."
 
@@ -3402,23 +3419,6 @@ msgstr ""
 
 msgid "Dictionary re-encrypted"
 msgstr "Ordlistan har krypterats"
-
-msgid ""
-"Your personal dictionary has been <strong>encrypted</strong> and is now "
-"stored in an <strong>encrypted format</strong>."
-msgstr ""
-"Din personliga ordlista har <strong>krypterats</strong> och har sparats i "
-"<strong>krypterat format</strong>."
-
-msgid ""
-"Your personal dictionary has been <strong>decrypted</strong> and is now "
-"stored as <strong>clear text</strong>."
-msgstr ""
-"Din personliga ordlista har <strong>dekrypterats</strong> och har sparats i "
-"<strong>klartext</strong>."
-
-msgid "Personal Dictionary Crypto Settings"
-msgstr "Krypteringsinställningar för personlig ordlista"
 
 msgid "Personal Dictionary"
 msgstr "Personlig ordlista"
@@ -3804,14 +3804,6 @@ msgid ""
 msgstr "Hjälp finns tyvärr inte på %s. Använder engelska istället."
 
 msgid ""
-"The index order is the order that the columns are arranged in the message "
-"index. You can add, remove, and move columns around to customize them to fit "
-"your needs."
-msgstr ""
-"Indexeringsordning är ordningen på kolumnerna i indexet. Visa, dölj och "
-"flytta kolumnerna efter behov."
-
-msgid ""
 "Based upon given criteria, incoming messages can have different background "
 "colors in the message list. This helps to easily distinguish who the "
 "messages are from, especially for mailing lists."
@@ -3819,6 +3811,14 @@ msgstr ""
 "Brev kan markeras med färger baserat på t.ex. avsändarnamn, ärende eller "
 "liknande. Detta gör det enkelt att utskilja brev från t.ex. e-postlistor, "
 "eller brev som innehåller en särskild ärenderad."
+
+msgid ""
+"The index order is the order that the columns are arranged in the message "
+"index. You can add, remove, and move columns around to customize them to fit "
+"your needs."
+msgstr ""
+"Indexeringsordning är ordningen på kolumnerna i indexet. Visa, dölj och "
+"flytta kolumnerna efter behov."
 
 msgid "As Attachment"
 msgstr "som bilaga"
@@ -3967,6 +3967,9 @@ msgstr "Standardsökning"
 msgid "Advanced search"
 msgstr "Avancerad sökning"
 
+msgid "Signout"
+msgstr "Utloggning"
+
 #, c-format
 msgid ""
 "vCard Version %s is not supported. Some information might not be converted "
@@ -3995,6 +3998,9 @@ msgstr "FEL : Felaktigt funktionsanrop."
 
 msgid "Reason:"
 msgstr "Orsak:"
+
+msgid "Server responded:"
+msgstr "Servern svarade:"
 
 msgid "Thread sorting is not supported by your IMAP server."
 msgstr "IMAP-servern stödjer inte korrespondensvyer."
@@ -4144,8 +4150,10 @@ msgid "Test Configuration"
 msgstr "Testa konfigurering"
 
 #, c-format
-msgid "Make sure that you are running the most recent copy of %s."
-msgstr "Säkerställ att du använder den senaste versionen av %s."
+msgid ""
+"Make sure that you are running the most recent copy of %s. You are currently "
+"using version %s."
+msgstr "Säkerställ att du använder den senaste versionen av %s. Nu använder du version %s."
 
 #, c-format
 msgid ""
@@ -4389,36 +4397,66 @@ msgid ""
 msgstr ""
 "Det går att hämta brev från en POP3-brevlåda och spara dem på denna server."
 
+#, c-format
 msgid ""
-"Use the <b>Check RECENT</b> to only check for messages that are recent. "
-"Recent messages are those that have just recently showed up and have not "
-"been \"viewed\" or checked yet. This can prevent being continuously annoyed "
-"by sounds or popups for unseen mail."
+"The %s option will check ALL of your folders for unseen mail, not just the "
+"inbox for notification."
 msgstr ""
-"Använd <b>Kontrollera bara de nyaste...</b> för att endast kontrollera "
+"Slå på %s för att söka efter nya/olästa brev i ALLA mappar, inte bara inkorgen."
+
+#, c-format
+msgid ""
+"Selecting the %s option will enable the showing of a popup window when "
+"unseen mail is in your folders (requires JavaScript)."
+msgstr ""
+"Slå på %s för att visa en dialogruta då du har olästa brev "
+"i dina mappar (kräver JavaScript)."
+
+#, c-format
+msgid ""
+"Use the %s option to only check for messages that are recent. Recent "
+"messages are those that have just recently showed up and have not been "
+"\"viewed\" or checked yet. This can prevent being continuously annoyed by "
+"sounds or popups for unseen mail."
+msgstr ""
+"Använd %s för att endast kontrollera "
 "senast inkomna brev. Detta förhindrar kontinuerliga påminnelser om olästa "
 "brev."
 
+#, c-format
 msgid ""
-"Selecting the <b>Change title</b> option will change the title in some "
-"browsers to let you know when you have new mail (requires JavaScript, and "
-"only works in IE but you won't see errors with other browsers). This will "
-"always tell you if you have new mail, even if you have <b>Check RECENT</b> "
-"enabled."
+"Selecting the %s option will change the title in some browsers to let you "
+"know when you have new mail (requires JavaScript, and only works in IE but "
+"you won't see errors with other browsers). This will always tell you if you "
+"have new mail, even if you have %s enabled."
 msgstr ""
-"Om du slår på <b>Byt rubriken</b> kommer titelraden i vissa webbläsare att "
+"Om du slår på %s kommer titelraden i vissa webbläsare att "
 "ändras då du har nya brev (kräver JavaScript, och fungerar bara med Internet "
-"Explorer men visar inga fel med andra webbläsare).Detta kommer alltid att "
-"visa om du har nyinkomna brev, även om du har valt <b>Kontrollera bara de "
-"nyaste...</b>."
+"Explorer men visar inga fel med andra webbläsare). Detta visar alltid "
+"om du har nyinkomna brev, även om du har valt %s."
 
+msgid "Change title on supported browsers"
+msgstr "Byt rubriken på webbläsare som stödjer detta"
+
+#, c-format
 msgid ""
-"Select from the list of <b>server files</b> the media file to play when new "
-"mail arrives. If no file is specified, \"(none)\", no sound will be used."
+"Select %s to turn on playing a media file when unseen mail is in your "
+"folders. When enabled, you can specify the media file to play in the "
+"provided file box."
+msgstr ""
+"Välj %s för att spela upp ett ljud då du får nya "
+"brev. Du kan välja vilken mediafil som skall spelas."
+
+#, c-format
+msgid ""
+"Select from the list of %s the media file to play when new mail arrives. If "
+"no file is specified, %s, no sound will be used."
 msgstr ""
 "Välj den fil som ska spelas när ny post anländer, från listan "
-"<b>serverfiler</b>. Om ingen fil väljs, &quot;(ingen)&quot;, kommer inget "
-"ljud att användas."
+"%s. Om ingen fil väljs, %s, kommer inget ljud att användas."
+
+msgid "Select server file"
+msgstr "Vald fil"
 
 msgid "Spam Service Type:"
 msgstr "Typ av skräpposttjänst:"
