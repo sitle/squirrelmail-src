@@ -53,5 +53,4 @@ class smdoc_text_textile extends foowd_text_plain
 
     return textile($text);
   }
-
 }

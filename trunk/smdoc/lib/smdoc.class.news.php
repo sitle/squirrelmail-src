@@ -257,6 +257,17 @@ class smdoc_news extends smdoc_text_textile
     }
   }
 
+  /**
+   * Get object content.
+   *
+   * @return string The objects text contents processed for outputting.
+   */
+  function view() 
+  {
+    return  $this->processContent($this->summary) . 
+            $this->processContent($this->body);
+  }
+
 // ----------------------------- class methods --------------
 
   /**
@@ -373,6 +384,9 @@ class smdoc_news extends smdoc_text_textile
 
     $editForm = new input_form('editForm', NULL, 'POST', 
                                FORM_DEFAULT_SUBMIT, NULL, FORM_DEFAULT_PREVIEW);
+
+    $editTitle = new input_textbox('editTitle', REGEX_TITLE, $this->title, 'Title', TRUE);
+    $editForm->addObject($editTitle);
 
     $editCollision = new input_hiddenbox('editCollision', REGEX_DATETIME, time());
     $editForm->addObject($editCollision);
