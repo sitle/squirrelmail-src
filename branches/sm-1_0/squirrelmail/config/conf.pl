@@ -1579,6 +1579,7 @@ sub save_data {
    print FILE "\n";
 
    print FILE "\t\$theme_css = \"$theme_css\";\n";
+   print FILE "\t\$theme = array();\n";
    for ($count=0; $count <= $#theme_name; $count++) {
       print FILE "\t\$theme[$count][\"PATH\"] = \"$theme_path[$count]\";\n";
       print FILE "\t\$theme[$count][\"NAME\"] = \"$theme_name[$count]\";\n";
