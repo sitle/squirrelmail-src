@@ -147,6 +147,13 @@ function load_optpage_data_display() {
         'size'    => SMOPT_SIZE_TINY
     );
 
+    $optvals[SMOPT_GRP_MAILBOX][] = array(
+        'name'    => 'indent_mailbox_selection',
+        'caption' => _("Use Short Mailbox Name in Selection Lists"),
+        'type'    => SMOPT_TYPE_BOOLEAN,
+        'refresh' => SMOPT_REFRESH_NONE
+    );
+
     /*** Load the General Options into the array ***/
     $optgrps[SMOPT_GRP_MESSAGE] = _("Message Display and Composition");
     $optvals[SMOPT_GRP_MESSAGE] = array();
