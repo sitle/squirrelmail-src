@@ -31,7 +31,7 @@ if(isset($_GET['where'])) {
     $where = $_GET['where'];
 }
 if(isset($_GET['what'])) {
-    $where = $_GET['what'];
+    $what = $_GET['what'];
 }
 /* end globals */
 

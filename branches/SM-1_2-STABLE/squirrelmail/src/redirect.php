@@ -88,10 +88,14 @@ if (!session_is_registered('user_is_logged_in')) {
     $key = OneTimePadEncrypt($secretkey, $onetimepad);
     sqsession_register($onetimepad, 'onetimepad');
 
-    /* Verify that username and password are correct. */
+    /* remove redundant spaces */
+    $login_username = trim($login_username);
+
     if ($force_username_lowercase) {
         $login_username = strtolower($login_username);
     }
+
+    /* Verify that username and password are correct. */
 
     $imapConnection = sqimap_login($login_username, $key, $imapServerAddress, $imapPort, 0);
     if (!$imapConnection) {
