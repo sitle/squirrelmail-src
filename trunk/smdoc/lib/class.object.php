@@ -577,7 +577,7 @@ class foowd_object
     $this->foowd->track('foowd_object->save');
     $result = $this->foowd->database->save($this);
 
-    if ($result) 
+    if ($result !== FALSE) 
       $this->foowd_changed = FALSE;
     
     $this->foowd->track(); 

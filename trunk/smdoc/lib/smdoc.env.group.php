@@ -105,17 +105,19 @@ class smdoc_group
     $this->foowd->track('smdoc_group->addGroup', $group_arg);
     $session_groups = new input_session('user_groups',REGEX_GROUP);
 
-    $changed = _addGroup($session_groups->value, $group_arg);
+    $groups = $session_groups->value;
+    $changed = $this->_addGroup($groups, $group_arg);
 
     /*
      * Sort list of groups by display name (value), and add to session
      */
     if ( $changed )
     {
-      asort($session_groups);
-      $session_groups->set($session_groups);
+      asort($groups);
+      $session_groups->set($groups);
     }
     $this->foowd->track();
+    return $changed;
   }
 
   /**
@@ -129,18 +131,20 @@ class smdoc_group
     $this->foowd->track('smdoc_group->deleteGroup', $group_arg);
     $session_groups = new input_session('user_groups',REGEX_GROUP);
 
-    $changed = _deleteGroup($session_groups->value, $group_arg);
+    $changed = $this->_deleteGroup($session_groups->value, $group_arg);
     if ( $changed )
       $session_groups->set($session_groups->value);
 
     $this->foowd->track();
+    return $changed;
   }
 
   /**
-   * Adds User to group (or list of groups)
+   * Adds single User to group (or list of groups)
    *
    * @param int userid Objectid of user
    * @param mixed groups array of group ids (strings)
+   * @see base_user::addGroupsToForm
    */
   function addUser($userid, $groups)
   { 
@@ -152,11 +156,11 @@ class smdoc_group
     if ( is_array($groups) && !empty($groups) )
     {
       foreach ($groups as $grp)
-        if ( !smdoc_group::_checkGroup($grp, FALSE) )
+        if ( !smdoc_group::checkGroup($this->foowd, $grp, FALSE) )
           $add_groups[] = $grp;
     }
     elseif ( is_string($groups) && 
-             !smdoc_group::_checkGroup($groups, FALSE) )
+             !smdoc_group::checkGroup($this->foowd, $groups, FALSE) )
       $add_groups[] = $groups;
 
     if ( empty($add_groups) )
@@ -166,11 +170,12 @@ class smdoc_group
   }
 
   /**
-   * Removes User from Group (or list of groups)
+   * Removes single User from Group (or list of groups)
    *
    * @global array Specifies table information for smdoc_group_user objects.
    * @param int userid Objectid of user
    * @param mixed groups array of group ids (strings)
+   * @see base_user::addGroupsToForm
    */
   function removeUser($userid, $groups)
   {
@@ -182,11 +187,11 @@ class smdoc_group
     if ( is_array($groups) && !empty($groups) )
     {
       foreach ($groups as $grp)
-        if ( !smdoc_group::_checkGroup($grp, FALSE) )
+        if ( !smdoc_group::checkGroup($this->foowd, $grp, FALSE) )
           $rem_groups[] = $grp;
     }
     elseif ( is_string($groups) && 
-             !smdoc_group::_checkGroup($groups, FALSE) )
+             !smdoc_group::checkGroup($this->foowd, $groups, FALSE) )
       $rem_groups[] = $groups;
 
     if ( empty($rem_groups) )
@@ -241,14 +246,14 @@ class smdoc_group
   /**
    * Check to see if given id specifies a system group.
    * 
-   * @access private
    * @static
+   * @param smdoc foowd Reference to the foowd environment object.
    * @param string group String containing group id
    * @param bool   sysOthers   TRUE if should treat groups specified in
    *                           initial config files as system groups
    * @return TRUE if group is a system group, FALSE otherwise
    */
-  function _checkGroup($groupId, $sysOthers = TRUE)
+  function checkGroup(&$foowd, $groupId, $sysOthers = TRUE)
   {
     switch ($groupId)
     {
@@ -266,9 +271,13 @@ class smdoc_group
       case 'Gods':    
         return $sysOthers;
       default:
+        if ( !isset($foowd->config_settings['group']['more_groups']) ||
+             !$sysOthers )
+          break;
+
+        $otherGroups = $foowd->config_settings['group']['more_groups'];
         // Make sure group id is not in supplemental system groups
-        if ( isset($this->foowd->config_settings['group']['more_groups']) &&
-             in_array($groupId, $this->foowd->config_settings['group']['more_groups']) )
+        if ( isset($otherGroups[$groupId]) )
           return TRUE;
     }
 
@@ -287,21 +296,26 @@ class smdoc_group
    */
   function _addGroup(&$groupList, $group_arg)
   {
-    if ( is_string($group_arg) ) 
-      $group[$group_arg] = $group_arg;
+    if ( is_string($group_arg) )
+    {
+      $group = $group_arg;
+      $group_arg = array();
+      $group_arg[$group] = $group;
+    }
     elseif ( !is_array($group_arg) )
       return FALSE; // we don't know what this thing is, don't muck up the list.
 
-    $app_defined = smdoc_group_appext::getInstance($this->foowd);
+    $app_defined =& smdoc_group_appext::getInstance($this->foowd);
 
     foreach ( $group_arg as $id => $name )
     { 
-      if ( _checkGroup($id) )
+      if ( smdoc_group::checkGroup($this->foowd, $id) )
         continue; // can't reset/change system groups
 
-      $app_defined->groups[$id] = $name; 
-      $groupList[$id] = $name;
+      $app_defined->groups[$id] = $name;
       $app_defined->foowd_changed = TRUE;
+
+      $groupList[$id] = $name;
     }
 
     return $app_defined->foowd_changed;
@@ -315,24 +329,31 @@ class smdoc_group
    * @param mixed groupList List of groups (id => displayName) stored in session
    * @param mixed group_arg Array or string containing id of group to remove
    * @return TRUE if group successfully deleted
+   * @see smdoc_group_user::deleteAll
+   * @see smdoc_group_appext::getInstance
    */
   function _deleteGroup(&$groupList, $group_arg)
   {
-    if ( is_string($group_arg) ) 
-      $group[] = $group_arg;
+    if ( is_string($group_arg) )
+    {
+      $group = $group_arg;
+      $group_arg = array();
+      $group_arg[$group] = $group;
+    }
     elseif ( !is_array($group_arg) )
       return FALSE; // we don't know what this thing is, don't muck up the list.
 
-    $app_defined = smdoc_group_appext::getInstance($this->foowd);
+    $app_defined =& smdoc_group_appext::getInstance($this->foowd);
 
-    foreach ( $group as $id )
+    foreach ( $group_arg as $id )
     {
-      if ( _checkGroup($id) )
+      if ( smdoc_group::checkGroup($this->foowd, $id) )
         continue; // can't reset system groups
 
-      unset($groupList[$groupId]);
+      unset($groupList[$id]);
       if ( isset($app_defined->groups[$id]) )
       {
+        smdoc_group_user::deleteAll($this->foowd, $id);
         unset($app_defined->groups[$id]); 
         $app_defined->foowd_changed = TRUE;
       }

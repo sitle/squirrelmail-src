@@ -113,20 +113,21 @@
             echo '<a href="'.$loc_url.'?classid='.USER_CLASS_ID.'&objectid='.$user->objectid.'">'
                  . $user->title . '</a> ';
             echo '( '. $lang_url
-                 . '<a href="', $user_url, '&method=logout">'. _("Logout") .'</a> )&nbsp;<br />';
+                 . '<a href="', $user_url, '&method=logout">'. _("Logout") .'</a> )';
             if ( $user->inGroup('Gods') )
             {
-              echo '<span class="subtext">'._("Admin") .': '
-                 . '<a href="sqmgroup.php">'
-                 . _("Groups") . '</a></span>&nbsp;';
+              echo '&nbsp;<br /><span class="subtext">'._("Admin") .': '
+                 . '<a href="'.$loc_url.'?class=smdoc_group_user&method=list">' . _("Groups") . '</a>'
+                 . '</span>';
             }
           } else {
             // Otherwise, we're anonymous
-            echo _("Anonymous User"), ' [' . $user->title . '] ';
-            echo '( '. $lang_url
+            echo _("Anonymous");
+            echo ' ( '. $lang_url
                  . '<a href="', $user_url, '&method=login">'. _("Login") .'</a> ';
             echo '| <a href="', $user_url, '&method=create">'. _("Register") .'</a> )';
           }
+          echo '&nbsp;<br /><a href="', $user_url, '&method=list">', _("Users"),'</a>&nbsp;';
         ?>
     </td>
   </tr>
@@ -153,19 +154,18 @@
         <tr>
           <td align="left" class="menu_subtext">
             <?php
-          echo '<a href="', $loc_url, '">',            _("Home"), '</a> | ';
-          echo '<a href="', $loc_url, '?object=faq">', _("Docs"), '</a> | ';
-          echo '<a href="', $loc_url, '?object=faq">', _("Plugins"), '</a> | ';
-          echo '<a href="', $loc_url, '?object=faq">', _("Support"), '</a> | ';
-          echo '<a href="', $loc_url, '?object=faq">', _("Download"), '</a> | ';
-          echo '<a href="', $loc_url, '?object=faq">', _("FAQ"),'</a>';
+          echo '<a href="', $loc_url, '">',                 _("Home"), '</a> | ';
+          echo '<a href="', $loc_url, '?object=news">',     _("News"), '</a> | ';
+          echo '<a href="', $loc_url, '?object=docs">',     _("Documentation"), '</a> | ';
+          echo '<a href="', $loc_url, '?object=download">', _("Download"), '</a> | ';
+          echo '<a href="', $loc_url, '?object=plugins">',  _("Plugins"), '</a>';
             ?>
           </td>
           <td class="subtext">&nbsp;</td>
           <td align="right" class="menu_subtext">
             <?php
-          echo '<a href="', $loc_url, '?object=search">', _("Search"),'</a> | ';
-          echo '<a href="sqmuser.php">', _("Users"),'</a> | ';
+          echo '<a href="', $loc_url, '?object=faq">',      _("Help"), '</a> | ';
+          echo '<a href="sqmsearch.php">', _("Search"),'</a> | ';
           echo '<a href="sqmindex.php">',_("Index"),'</a> ';
             ?>
           </td>

@@ -59,7 +59,7 @@ $foowd = new smdoc($foowd_parameters);
  * return the full objects, and don't restrict to certain workspace
  */
 $where['notshort'] = array('index' => 'classid', 'op' => '!=', 'value' => META_SMDOC_NAME_LOOKUP_CLASS_ID);
-$where['notgroup'] = array('index' => 'classid', 'op' => '!=', 'value' => META_SMDOC_APP_GROUPS_CLASS_ID);
+$where['notgroup'] = array('index' => 'classid', 'op' => '!=', 'value' => META_SMDOC_GROUP_APPEXT_CLASS_ID);
  
 $objects =& $foowd->getObjList(NULL, NULL, $where,
                                array('updated DESC'), 20, 

@@ -196,13 +196,53 @@ class smdoc_group_user extends smdoc_storage
     }
   }
 
+  /**
+   * Delete All User/Group pairs matching given group id.
+   *
+   * @static
+   * @global array Specifies table information for smdoc_group_user objects.
+   * @param smdoc  foowd  Reference to the foowd environment object.
+   * @param mixed groups array of group ids (strings)
+   * @see smdoc_group::_deleteGroup
+   * @see base_user::removeFromGroup
+   */
+  function deleteAll(&$foowd, $group)
+  {
+    if ( empty($group) )
+      return;
+
+    global $GROUP_USER_SOURCE;
+    $index = array('*');
+    $where = array('title' => $group);
+
+    // Fetch user's current groups, no order, no limit,
+    // get actual objects, and don't bother with workspaces.
+    $user_list = $foowd->getObjList($index, $GROUP_USER_SOURCE,
+                                    $where, NULL, NULL, TRUE, FALSE);
+
+    if ( empty($user_list) )
+      return;
+
+    foreach ( $user_list as $pair )
+    {
+      $user = $foowd->getObj(array('objectid' => $pair->objectid,
+                                   'classid'  => USER_CLASS_ID));
+      if ( $user )
+        $user->removeFromGroup($group);
+
+      $pair->delete();
+    }
+  }
+
 // ----------------------------- class methods --------------
 
   /**
    * Output a list of all known groups.
    *
    * Values set in template:
-   *  + grouplist     - below
+   *  + grouplist       - below
+   *  + addForm         - Form for adding a new group
+   *  + deleteForm      - Form for deleting groups
    *
    * Sample contents of $t['grouplist']:
    * <pre>
@@ -210,6 +250,7 @@ class smdoc_group_user extends smdoc_storage
    *   'GroupId' => array ( 
    *                 'group_name' => 'GroupName',
    *                 'group_count' => 8,
+   *                 'group_delete' => checkbox for deletion
    *                )
    * )
    * </pre>
@@ -223,14 +264,36 @@ class smdoc_group_user extends smdoc_storage
   {
     $foowd->track('smdoc_group->class_list');
 
+    include_once(INPUT_DIR.'input.textbox.php');
+    include_once(INPUT_DIR.'input.form.php');
+    include_once(INPUT_DIR.'input.checkbox.php');
+
     global $GROUP_USER_SOURCE;
     $groupList = array();
+
+    /*
+     * Create form for adding new group
+     */
+    $addForm = new input_form('addForm', NULL, SQ_POST, _("Add Group"));
+    $newGroup = new input_textbox('newGroup', REGEX_TITLE, NULL, 'New Group', FALSE); 
+
+    if ( $addForm->submitted() && !empty($newGroup->value) && $newGroup->wasValid )
+    {
+      if ( $foowd->groups->addGroup($newGroup->value) )
+        $newGroup->value = '';
+    }
+    $addForm->addObject($newGroup);
 
     /*
      * Get list of groups that includes only those
      * that users can be assigned to
      */
     $groups = $foowd->getUserGroups(FALSE);
+
+    /*
+     * Create form for deleting groups
+     */ 
+    $deleteForm = new input_form('deleteForm', NULL, SQ_POST, _("Delete Groups"));
     if ( !empty($groups) )
     {
       foreach ( $groups as $id => $name )
@@ -239,10 +302,34 @@ class smdoc_group_user extends smdoc_storage
         $elem['group_name'] = $name;
         $elem['group_count'] = $foowd->database->count($GROUP_USER_SOURCE, 
                                                        array('title' => $id));
-        $groupList[$id] = $elem; 
+        // Create checkbox for delete form 
+        // only add checkboxes for groups that can be deleted
+        if ( !smdoc_group::checkGroup($foowd, $id) )
+        {
+          $deleteBox = new input_checkbox($id, FALSE, 'Delete');
+          if ( $deleteForm->submitted() && $deleteBox->checked )
+          {
+            $foowd->groups->deleteGroup($id);
+            unset($elem);
+          }
+          else
+          {
+            // Add box to form and array
+            $deleteForm->addObject($deleteBox);
+            $elem['group_delete'] =& $deleteForm->objects[$id];
+          }
+        }
+        else 
+          $elem['group_delete'] = NULL;
+
+        // Add array to group list
+        if ( isset($elem) )
+          $groupList[$id] = $elem; 
       }
     }
 
+    $foowd->template->assign_by_ref('addForm', $addForm);
+    $foowd->template->assign_by_ref('deleteForm', $deleteForm);
     $foowd->template->assign('grouplist', $groupList);
     $foowd->track();
   }
