@@ -163,7 +163,7 @@ if ($help_exists == true) {
     } else if ($context == 'search'){
         $chapter = 8;
     } else if (isset($_GET['chapter'])) {
-        $chapter = $_GET['chapter'];
+        $chapter = strip_tags($_GET['chapter']);
     }
 
     if (!isset($chapter)) {
