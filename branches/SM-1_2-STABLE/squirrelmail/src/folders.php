@@ -61,7 +61,7 @@ if ((isset($success) && $success) ||
     } else if ($success == "rename") {
         echo "<b>" . _("Renamed successfully!") . "</b><br>";
     }
-    unset($seccess);
+    unset($success);
     echo "   <a href=\"../src/webmail.php?right_frame=folders.php\" target=_top>" . _("refresh folder list") . "</a>".
          "   </td></tr>\n";
          "</table><br>\n";
