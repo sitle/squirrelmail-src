@@ -125,7 +125,7 @@ if ($javascript_on) {
              '<input type=checkbox name="send_to_search[B' . $line . ']" value = "' .
              htmlspecialchars($row['email']) . '">&nbsp;' . _("Bcc") . '&nbsp;' . 
              '</td><td nowrap>&nbsp;' . $row['name'] . '&nbsp;</td>' .
-             '<td nowrap>&nbsp;' . $row['email'] . '&nbsp;</td>' .
+             '<td >' . $row['email'] . '&nbsp;</td>' .
              '<td nowrap>&nbsp;' . $row['label'] . '&nbsp;</td>';
          if ($includesource) {
              echo '<td nowrap>&nbsp;' . $row['source'] . '&nbsp;</td>';
