@@ -15,7 +15,7 @@ function zkload_conf($zookeeper_home) {
     }
 
     /* Load the zookeeper configuration classes. */
-    require_once("$zookeeper_home/lib/conf/service.php");
+    require_once("$zookeeper_home/services/conf/service.php");
     return (true);
 }
 

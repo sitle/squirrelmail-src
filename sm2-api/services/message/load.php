@@ -10,7 +10,7 @@
      
     function zkload_messages($zookeeper_home) {
         /* Load the zookeeper message classes. */
-        require_once("$zookeeper_home/lib/messages/service.php");
+        require_once("$zookeeper_home/services/messages/service.php");
         return (true);
     }
 

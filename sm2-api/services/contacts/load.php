@@ -15,7 +15,7 @@ function zkload_contacts($zookeeper_home) {
     }
 
     /* Load the zookeeper contacts classes. */
-    require_once("$zookeeper_home/lib/contacts/service.php");
+    require_once("$zookeeper_home/services/contacts/service.php");
     return (true);
 }
 
