@@ -315,20 +315,20 @@ if ($saved_count > 0) {
         } else {
             echo html_tag( 'tr', '', '', $color[4] );
         }
-        echo html_tag( 'td', imap_utf7_decode_local($saved_attributes['saved_folder'][$i]), 'left', '', 'width="35%"' )
-        . html_tag( 'td', $saved_attributes['saved_what'][$i], 'left' )
-        . html_tag( 'td', $saved_attributes['saved_where'][$i], 'center' )
+        echo html_tag( 'td', imap_utf7_decode_local($saved_attributes['saved_folder'][$i + 1]), 'left', '', 'width="35%"' )
+        . html_tag( 'td', $saved_attributes['saved_what'][$i + 1], 'left' )
+        . html_tag( 'td', $saved_attributes['saved_where'][$i + 1], 'center' )
         . html_tag( 'td', '', 'right' )
         .   '<a href="search.php'
-        .     '?mailbox=' . htmlspecialchars($saved_attributes['saved_folder'][$i])
-        .     '&amp;what=' . htmlspecialchars($saved_attributes['saved_what'][$i])
-        .     '&amp;where=' . htmlspecialchars($saved_attributes['saved_where'][$i])
+        .     '?mailbox=' . htmlspecialchars($saved_attributes['saved_folder'][$i + 1])
+        .     '&amp;what=' . htmlspecialchars($saved_attributes['saved_what'][$i + 1])
+        .     '&amp;where=' . htmlspecialchars($saved_attributes['saved_where'][$i + 1])
         .   '">' . _("edit") . '</a>'
         .   '&nbsp;|&nbsp;'
         .   '<a href="search.php'
-        .     '?mailbox=' . urlencode($saved_attributes['saved_folder'][$i])
-        .     '&amp;what=' . urlencode($saved_attributes['saved_what'][$i])
-        .     '&amp;where=' . urlencode($saved_attributes['saved_where'][$i])
+        .     '?mailbox=' . urlencode($saved_attributes['saved_folder'][$i + 1])
+        .     '&amp;what=' . urlencode($saved_attributes['saved_what'][$i + 1])
+        .     '&amp;where=' . urlencode($saved_attributes['saved_where'][$i + 1])
         .     '&amp;submit=Search_no_update'
         .   '">' . _("search") . '</a>'
         .   '&nbsp;|&nbsp;'
