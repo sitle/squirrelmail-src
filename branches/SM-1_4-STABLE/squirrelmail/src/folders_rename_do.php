@@ -9,10 +9,14 @@
  * Does the actual renaming of files on the IMAP server.
  * Called from the folders.php
  *
- * $Id$
+ * @version $Id$
+ * @package squirrelmail
  */
 
-/* Path for SquirrelMail required files. */
+/**
+ * Path for SquirrelMail required files.
+ * @ignore
+ */
 define('SM_PATH','../');
 
 /* SquirrelMail required files. */
@@ -38,7 +42,7 @@ if (substr_count($new_name, '"') || substr_count($new_name, "\\") ||
     displayPageHeader($color, 'None');
 
     plain_error_message(_("Illegal folder name. Please select a different name.").
-        '<BR><A HREF="../src/folders.php">'._("Click here to go back").'</A>.', $color);
+        '<br /><a href="../src/folders.php">'._("Click here to go back").'</a>.', $color);
 
     exit;
 }
