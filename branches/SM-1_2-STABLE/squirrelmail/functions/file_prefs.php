@@ -130,6 +130,7 @@ function savePrefValues($data_dir, $username) {
     @copy($filename . '.tmp',$filename);
     @unlink($filename . '.tmp');
     chmod($filename, 0600);
+    sqsession_register($prefs_cache , 'prefs_cache');
 }
 
 /**
