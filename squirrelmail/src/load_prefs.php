@@ -11,6 +11,8 @@
     **  $Id$
     **/
 
+   if (!isset($validate_php))
+      include("../src/validate.php");
    if (!isset($config_php))
       include("../config/config.php");
    if (!isset($prefs_php))
@@ -21,7 +23,7 @@
       include("../functions/auth.php");
       
    is_logged_in();
-
+      
    $load_prefs_php = true;
 
    checkForPrefs($data_dir, $username);
