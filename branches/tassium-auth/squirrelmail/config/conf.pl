@@ -465,7 +465,12 @@ while ( ( $command ne "q" ) && ( $command ne "Q" ) ) {
             print "$WHT$smtpPort$NRM\n";
           }
         }
-        print "H.  Hide Server Settings\n";
+        if ( $show_smtp_settings || $show_imap_settings )
+        {
+          print "H.  Hide " . 
+                ($show_imap_settings ? "IMAP Server" : 
+                  (lc($useSendmail) eq "true") ? "Sendmail" : "SMTP") . " Settings\n";
+        }
         
         print "\n";
         print "R   Return to Main Menu\n";
