@@ -6,8 +6,11 @@ Total DB Executions: <?php echo $template['DB_ACCESS_COUNT']; ?> &nbsp;
 Total Execution Time: <?php echo $template['EXECUTION_TIME']; ?> seconds
 </pre>
 
+
 <div class="debug_output_heading">Execution History</div>
-<?php show($template['DEBUG_TRACK_STRING']); ?>
+<pre>
+<?php echo $template['DEBUG_TRACK_STRING']; ?>
+</pre>
 
 <?php 
   $show_var = getConstOrDefault('DEBUG_VAR', FALSE);
@@ -23,4 +26,4 @@ Total Execution Time: <?php echo $template['EXECUTION_TIME']; ?> seconds
 <?php 
   }
 ?>
-</div><br />
+</div>
