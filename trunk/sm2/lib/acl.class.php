@@ -523,7 +523,7 @@ class acl {
      * @author    Marc Groot Koerkamp
      */
 
-    function alterMyPerm(&$aAclList,$iRights,$sUid,$aGid,$bSet = true)
+    function alterMyPerm(&$aAclList,$iRights,$sUid,$aGid,$bSet = true) {
         $bResult = false;
         if (! $this->alter('U',$sUid,$iWhat,$bSet,$vPermissions)) {
             // try user with sUid

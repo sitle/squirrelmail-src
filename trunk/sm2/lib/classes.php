@@ -41,7 +41,7 @@ $locations = array(
         'mailboxtree' => SM_LIB .'mailbox/MailboxTree.class.php',
         'imap_backend' => SM_SRV. 'imap/imap_backend.class.php',
         'parser' => SM_LIB.'parser.class.php',
-        'auth' => SM_FNC. 'auth.php',
+        'auth' => SM_LIB. 'auth.php',
         'acl' => SM_LIB . 'acl.class.php',
         // temp location for testing purposes
         'config' => SM_LIB .'config.php'
@@ -71,10 +71,10 @@ function sm_include($classname) {
                 }
             }
         }
+        //echo "{$locations[$classname]}<BR>";
+        include($locations[$classname]);  // dependencies are included now include the file
+        $include_once[$classname] = true; // keep track of included files
     }
-    echo "{$locations[$classname]}<BR>";
-    include($locations[$classname]);  // dependencies are included now include the file
-    $include_once[$classname] = true; // keep track of included files
     return true;
 }
 

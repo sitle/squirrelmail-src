@@ -68,14 +68,14 @@
 		unset ($this->resource);
 		return $ret;
 	}
-	
+/*
 	function __sleep() {
 		if (isset($this->properties['password'])) {
 			unset($this->properties['password']);
 		}
 		unset($this->resource);
 	}
-	
+
 	function __wakeup() {
 		if (isset($this->properties['enc_password'])) {
 			$password = $this->properties['decrypt']($this->properties['enc_password']);
@@ -83,7 +83,8 @@
 				$this->properties['password'] = $password;
 			}
 		}
-	}	
+	}
+*/    	
  }
  
 ?>
