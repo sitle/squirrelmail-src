@@ -59,6 +59,32 @@ function show($var, $comment = NULL)
   echo '</pre>';
 }
 
+/**
+ * Function for printing an array of strings as:
+ *  $use_parens = TRUE:  ( one | two | three )
+ *  $use_parens = FALSE:   one | two | three
+ * @param array $arr Array of strings to print
+ * @param bool  $use_parens If TRUE will surround list with parenthesis.
+ */
+function print_arr($arr, $use_parens = TRUE)
+{  
+  if ( empty($arr) )
+    return;
+
+  if ( $use_parens )
+    echo '( ';
+  foreach ( $arr as $i => $element )
+  {
+    if ( $i != 0 )
+      echo ' | ';
+    echo $element;
+  }
+
+  if ( $use_parens )
+   echo ' )';
+}
+
+
 /* System functions */
 
 /**

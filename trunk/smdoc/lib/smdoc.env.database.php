@@ -84,8 +84,8 @@ class smdoc_db
    * layer class if it has not already been loaded.
    *
    * @static
-   * @param smdoc $foowd Reference to the foowd environment object.
-   * @param string type The type of database object to load.
+   * @param smdoc  $foowd Reference to the foowd environment object.
+   * @param string $type The type of database object to load.
    * @return mixed The new database object or FALSE on failure.
    */
   function factory(&$foowd)
@@ -185,7 +185,7 @@ class smdoc_db
    *
    * @abstract
    * @access protected
-   * @param string query The query to execute
+   * @param string $query The query to execute
    * @return resource The resulting query resource
    */
   function &query($query) 
@@ -208,7 +208,7 @@ class smdoc_db
    *
    * @abstract
    * @access protected
-   * @param string query The query to execute
+   * @param string $query The query to execute
    * @return array The array of all resulting records
    */
   function &queryAll($query)
@@ -237,7 +237,7 @@ class smdoc_db
   /**
    * Return an array of results given a query resource
    *
-   * @param resource result Result set to get results from
+   * @param resource $result Result set to get results from
    * @return array The results as an associative array
    */
   function fetch($result) 
@@ -259,8 +259,8 @@ class smdoc_db
   /**
    * Return result of count (*)
    * 
-   * @param  mixed in_source Source to get object from
-   * @param  array where Array of values to find object by
+   * @param  mixed $in_source Source to get object from
+   * @param  array $where Array of values to find object by
    */
   function count($in_source, $where = '')
   {
@@ -290,7 +290,7 @@ class smdoc_db
   /**
    * Return the number of rows in a result set
    *
-   * @param resource result Result set to get results from
+   * @param resource $result Result set to get results from
    * @return int The number of rows in the result set
    */
   function num_rows($result) 
@@ -303,7 +303,7 @@ class smdoc_db
   /**
    * See if a query was successful
    *
-   * @param resource result The query result to check
+   * @param resource $result The query result to check
    * @return bool If the query affected any rows
    */
   function query_success($result) 
@@ -315,8 +315,8 @@ class smdoc_db
    * Add an object reference to the loaded objects array.
    *
    * @access protected
-   * @param array indexes Array of indexes and values to find object by
-   * @param object object Reference of the object to add
+   * @param array $indexes Array of indexes and values to find object by
+   * @param object $object Reference of the object to add
    */
   function addToLoadedReference(&$object) 
   {
@@ -327,8 +327,8 @@ class smdoc_db
    * Check if an object is referenced in the object reference array.
    *
    * @access protected
-   * @param array indexes Array of indexes and values to find object by
-   * @param string source The source to fetch the object from
+   * @param array $indexes Array of indexes and values to find object by
+   * @param string $source The source to fetch the object from
    */
   function &checkLoadedReference($indexes, $source) 
   {
@@ -393,8 +393,8 @@ class smdoc_db
    * Build where clause from indexes array.
    *
    * @access protected
-   * @param array indexes Array of indexes and values to find object by
-   * @param string conjuction Operand to use to join the elements of the clause
+   * @param array $indexes Array of indexes and values to find object by
+   * @param string $conjuction Operand to use to join the elements of the clause
    * @return string The generated where clause.
    */
   function buildWhere($indexes, $conjunction = 'AND')  
@@ -481,7 +481,7 @@ class smdoc_db
    * Add workspaceid index to index array if one does not exist at the top level.
    *
    * @access protected
-   * @param array indexes Array of indexes and values to find object by
+   * @param array $indexes Array of indexes and values to find object by
    */
   function setWorkspace(&$indexes)
   {
@@ -510,13 +510,14 @@ class smdoc_db
   /**
    * Get lastest version of an object.
    *
-   * @param  array where Array of values to find object by
-   * @param  mixed in_source Source to get object from
-   * @param  array indexes Array of indexes to fetch
-   * @param  bool  setWorkspace get specific workspace id (or any workspace ok)
+   * @param  array $where Array of values to find object by
+   * @param  mixed $in_source Source to get object from
+   * @param  array $indexes Array of indexes to fetch
+   * @param  bool  $setWorkspace get specific workspace id (or any workspace ok)
+   * @param  bool  $useVersion If TRUE, get most recent version (ORDER BY and LIMIT).
    * @return mixed The retrieved object or an array containing the retrieved object and the joined objects.
    */
-  function &getObj($where = NULL, $in_source = NULL, $setWorkspace = TRUE)
+  function &getObj($where = NULL, $in_source = NULL, $setWorkspace = TRUE, $useVersion = TRUE)
   {
     if ($object = &$this->checkLoadedReference($where, $in_source)) 
       return $object;
@@ -527,13 +528,10 @@ class smdoc_db
     if ( $setWorkspace )
       $this->setWorkspace($where);
 
-    if ( $where == NULL )
-      $where = '';
-    else
-      $where = ' WHERE' . $this->buildWhere($where);
+    $version = $useVersion ? ' ORDER BY version DESC LIMIT 1'     : '';
+    $where   = $where      ? ' WHERE' . $this->buildWhere($where) : '';
    
-    $select = 'SELECT '.$source.'.object AS object';
-    $select .= ' FROM '.$source.$where;
+    $select = 'SELECT '.$source.'.object AS object FROM '.$source.$where.$version;
     $object = FALSE;
 
     $query = $this->query($select);

@@ -227,7 +227,7 @@ class smdoc_group_user extends smdoc_storage
 
     foreach ( $user_list as $pair )
     {
-      $user = $foowd->getObj(array('objectid' => $pair->objectid,
+      $user =& $foowd->getObj(array('objectid' => $pair->objectid,
                                    'classid'  => USER_CLASS_ID));
       if ( $user )
         $user->removeFromGroup($group);
@@ -387,7 +387,7 @@ class smdoc_group_user extends smdoc_storage
                      . $GROUP_USER_SOURCE['table'];
     $source['table_create'] = NULL;
 
-    // Select objectid, title, and updated from the user table
+    // Select objectid, and title from the user table
     $index[] = $USER_SOURCE['table'].'.objectid AS objectid';
     $index[] = $USER_SOURCE['table'].'.title AS title';
     

@@ -95,3 +95,11 @@ define('27_MSG', _("Object could not be deleted."));
 
 define('OBJECT_NOT_FOUND', 28);
 define('28_MSG', _("Object could not be found."));
+
+
+define('USER_DEFAULT_TRANSLATION', 40);
+define('40_MSG', _("User switched to default translation"));
+
+define('USER_NEW_TRANSLATION', 41);
+define('41_MSG', _("Selected translation updated."));
+

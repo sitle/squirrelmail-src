@@ -124,7 +124,7 @@ class base_user extends foowd_object
     else
       return FALSE;
 
-    $user =& $foowd->getObj($where, $USER_SOURCE, NULL, FALSE);
+    $user =& $foowd->getObj($where, $USER_SOURCE, NULL, FALSE, FALSE);
     $foowd->track();
     return $user;
   }
@@ -470,7 +470,7 @@ class base_user extends foowd_object
 
     $class = USER_CLASS_NAME;
     $object = new $class($foowd, $username, $password, $email, $objectid);
-    if ( $object->objectid != 0 && $object->save($foowd) ) 
+    if ( $object->objectid != 0 && $object->save() ) 
       return 0; // created ok
 
     return 3; // eek, error creating user.

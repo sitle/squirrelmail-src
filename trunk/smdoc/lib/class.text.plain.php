@@ -41,7 +41,7 @@ setPermission('foowd_text_plain', 'object','clone', 'Edit');
 setClassMeta('foowd_text_plain', 'Plain Text Document');
 
 /* Class settings */
-setConst('DIFF_COMMAND', 'diff -u5');
+setConst('DIFF_COMMAND', 'diff -Bb -u5');
 setConst('DIFF_ADD_REGEX', '/^\+([^+].*)/');
 setConst('DIFF_MINUS_REGEX', '/^\-([^-].*)/');
 setConst('DIFF_SAME_REGEX', '/^ (.*)/');
@@ -160,84 +160,77 @@ class foowd_text_plain extends foowd_object
   /**
    * Generate differences between this version and a previous version.
    *
-   * @param array diffResultArray Results of difference engine.
+   * @param array $diffResultArray Results of difference engine.
+   * @param int $compareVersion    Version to compare with
    * @return int -1 = version is latest version, can not compare to self
    *             -2 = diffs disabled
    *             -3 = versions are the same
    *             -4 = other error
    *             +n = generation successful, returns the version number of the previous version
    */
-  function diff(&$diffResultArray, $compareVersion) 
+  function diff(&$diffResultArray) 
   {
-    if (defined('DIFF_COMMAND')) 
+    if ( !defined('DIFF_COMMAND') )
+      return -2; // diffs disabled
+
+    $object = $this->foowd->getObj(array('objectid' => $this->objectid, 
+                                         'classid' => $this->classid, 
+                                         'workspaceid' => $this->workspaceid));
+
+    if ($this->version == $object->version) 
+      return -1; // can not compare to self
+
+    $fileid = time();
+    $temp_dir = getConstOrDefault('DIFF_TMPDIR', getTempDir());
+    
+    $oldFile = $temp_dir.'foowd_diff_'.$fileid.'-1';
+    $newFile = $temp_dir.'foowd_diff_'.$fileid.'-2';
+
+    $oldPage = $this->body;
+    $newPage = $object->body;
+
+    ignore_user_abort(TRUE); // don't halt if aborted during diff
+
+    if ( !($fp1 = fopen($oldFile, 'w')) || !($fp2 = fopen($newFile, 'w'))) 
     {
-      $object = $this->foowd->getObj(array('objectid' => $this->objectid, 
-                                           'classid' => $this->classid, 
-                                           'workspaceid' => $this->workspaceid,
-                                           'version' => $compareVersion));
-      if ($this->version == $object->version) 
-        return -1; // version is latest version, can not compare to self
-      else 
-      {
-        $fileid = time();
-        
-        $temp_dir = getConstOrDefault('DIFF_TMPDIR', getTempDir());
-        
-        $oldFile = $temp_dir.'foowd_diff_'.$fileid.'-1';
-        $newFile = $temp_dir.'foowd_diff_'.$fileid.'-2';
-
-        $oldPage = $this->body;
-        $newPage = $object->body;
-
-        ignore_user_abort(TRUE); // don't halt if aborted during diff
-
-        if (!($fp1 = fopen($oldFile, 'w')) || !($fp2 = fopen($newFile, 'w'))) 
-        {
-          $this->foowd->track('msg','Could not create temp files in "'.$temp_dir.'" required for diff engine.');
-          $returnValue = -4; // other error
-        } 
-        else 
-        {
-          if (fwrite($fp1, $oldPage) < 0 || fwrite($fp2, $newPage) < 0) 
-          {
-            $this->foowd->track('msg','Could not write to temp files in "'.$temp_dir.'" required for diff engine.');
-            $returnValue = -4; // other error
-          } 
-          else 
-          {
-            fclose($fp1);
-            fclose($fp2);
-
-            $this->foowd->track('msg','executing external diff engine', '"'.DIFF_COMMAND.'"');
-            $diffResult = shell_exec(DIFF_COMMAND.' '.$oldFile.' '.$newFile);
-            $this->foowd->track();
-
-            if ($diffResult === FALSE) 
-            {
-              $this->foowd->track('msg','Error occured running diff engine "', DIFF_COMMAND, '".');
-              $returnValue = -4;                // other error
-            } 
-            elseif ($diffResult == FALSE) 
-              $returnValue = -3;                // versions are the same
-            else                                // parse output to be nice
-            {
-              $diffResultArray = explode("\n", $diffResult);
-              $returnValue = $object->version;
-            }
-          }
-
-          unlink($oldFile);
-          unlink($newFile);
-        }
-
-        ignore_user_abort(FALSE); // all done, it's ok to abort now
-        
-        return $returnValue;
-      }
+      $this->foowd->track('msg','Could not create temp files in "'.$temp_dir.'" required for diff engine.');
+      $returnValue = -4; // other error
+    } 
+    elseif ( fwrite($fp1, $oldPage) < 0 || fwrite($fp2, $newPage) < 0 ) 
+    {
+      $this->foowd->track('msg','Could not write to temp files in "'.$temp_dir.'" required for diff engine.');
+      $returnValue = -4; // other error
     } 
     else 
-      return -2;                // diffs disabled
+    {
+      fclose($fp1);
+      fclose($fp2);
+
+      $this->foowd->track('msg','executing external diff engine', '"'.DIFF_COMMAND.'"');
+      $diffResult = shell_exec(DIFF_COMMAND.' '.$oldFile.' '.$newFile);
+
+      if ($diffResult === FALSE) 
+      {
+        $this->foowd->track('msg','Error occured running diff engine "', DIFF_COMMAND, '".');
+        $returnValue = -4;                // other error
+      } 
+      elseif ($diffResult == FALSE) 
+        $returnValue = -3;                // versions are the same
+      else                                // parse output to be nice
+      {
+        $diffResultArray = explode("\n", $diffResult);
+        $returnValue = $object->version;
+      }
+    }
+
+    unlink($oldFile);
+    unlink($newFile);
+
+    ignore_user_abort(FALSE); // all done, it's ok to abort now    
+    $this->foowd->track();
+    return $returnValue;
   }
+
 
 /* Class methods */
 
@@ -400,10 +393,10 @@ class foowd_text_plain extends foowd_object
       $version['objectid'] = $object->objectid;
       $version['classid'] = $object->classid;
       if ($object->version != $latestVersion) 
+      {
         $version['revert'] = TRUE;
-      if ($object->version != $currentVersion)
         $version['diff'] = TRUE;
-
+      }
       $this->foowd->template->append('versions', $version);
     }
 

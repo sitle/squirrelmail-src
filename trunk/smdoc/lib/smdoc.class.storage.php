@@ -52,8 +52,8 @@ class smdoc_storage extends foowd_object
     $where['version']  = 0;
     $where['workspaceid'] = 0; 
 
-    // get Object - use where clause, no special source, skip workspace check
-    $obj =& $foowd->getObj($where, NULL, FALSE);
+    // get Object - use where clause, no special source, skip workspace check, skip version stuff
+    $obj =& $foowd->getObj($where, NULL, FALSE, FALSE);
     // If object couldn't be found, build a new one
     if ( $obj == NULL )
     {
@@ -62,7 +62,7 @@ class smdoc_storage extends foowd_object
       // If save failed, try retrieve again (maybe someone beat you to it..)
       if ( !$obj->save() )
       {
-        $obj =& $foowd->getObj($where, NULL, FALSE);
+        $obj =& $foowd->getObj($where, NULL, FALSE, FALSE);
         if ( $obj == NULL )
           trigger_error('Unable to retrieve object from database: ' . $where['objectid'], E_USER_ERROR);
       }
