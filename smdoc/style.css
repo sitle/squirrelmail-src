@@ -96,19 +96,17 @@ form {
 }
 h1 {
     font-size: large;
-    margin: 15px 0px 5px 0px;
+    margin: 10px 0px 5px 0px;
     color: #666; 
     font-weight: bold; 
     text-decoration: none;
-    background: #eee;
-    border-top: 1px solid gray;
-    border-bottom: 1px solid gray;
+    text-align: center;
 }
 h2 {
     font-size: large;
-    margin: 15px 0px 5px 0px;
+    margin: 10px 0px 5px 0px;
     color: #afad97; 
-    font-weight: normal; 
+    font-weight: bold; 
     text-decoration: none;
     text-align: left;
     border-bottom: 1px solid #afad97;
@@ -116,12 +114,13 @@ h2 {
 h3,
 .debug_output_heading,
 .indexhead {
-    margin: 15px 5px 5px 5px;
+    margin: 10px 5px 5px 5px;
     padding-right: 5px;
     color: #afad97; 
     font-weight: bold; 
     text-decoration: none;
     text-align: right;
+    font-size: large;
     border-bottom: 1px solid #afad97;
 }
 li { 
