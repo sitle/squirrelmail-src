@@ -7,8 +7,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: GPG Plugin v 2.0\n"
-"POT-Creation-Date: 2003-12-28 10:37-0600\n"
-"PO-Revision-Date: 2003-12-28 HO:MI+ZONE\n"
+"POT-Creation-Date: 2003-12-30 13:50-0600\n"
+"PO-Revision-Date: 2004-01-05 HO:MI+ZONE\n"
 "Last-Translator: Roland Fritz <roland.fritz@fritz-internet.de>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -225,6 +225,10 @@ msgstr "Entschlüsselte Nachricht"
 msgid "Default Keyserver set to:"
 msgstr "Bevorzugter Schlüsselserver:"
 
+#: modules/keyserver.mod:96
+msgid "Default Keyserver: "
+msgstr "Bevorzugter Schlüsselserver:"
+
 #: modules/gpgdecrypt.mod:238 modules/keyview.php:180 modules/keyview.php:184
 msgid "Delete"
 msgstr "Löschen"
@@ -232,6 +236,14 @@ msgstr "Löschen"
 #: modules/keyview.php:178 modules/keyview.php:185
 msgid "Delete Keypair"
 msgstr "Schlüsselpaar löschen"
+
+#: gpg_key_functions.php:575
+msgid "Did not receive valid export_type in gpg_export_key function."
+msgstr "Kein gültiger export_type in Funktion gpg_export_key."
+
+#: gpg_key_functions.php:120
+msgid "Did not receive valid keyring_type in gpg_list_keys function."
+msgstr "Keingültiger keyring_type in Funktion gpg_list_keys."
 
 #: modules/getstart.php:87
 msgid "Did you import a personal Keypair in Step 1?"
@@ -274,6 +286,7 @@ msgid ""
 "administrator?"
 msgstr "Wollen Sie dem systemweiten ADK, den Ihr Administrator definiert hat, vertrauen?"
 
+#: gpg_help.php:79 modules/gpg_recipientlist.php:84
 #: modules/keyring_main.php:84
 msgid "Done"
 msgstr "Fertig"
@@ -447,6 +460,15 @@ msgstr "GPG Plugin Hilfe"
 msgid "GPG Plugin Options"
 msgstr "GPG Plugin Optionen"
 
+#: gpg_encrypt_functions.php:104
+msgid ""
+"GPG Plugin: Check your preferences from the Trusted Key Screen in Options."
+msgstr "GPG Plugin: Bitte Einstellung - vertraute Schlüssel prüfen."
+
+#: gpg_encrypt_functions.php:103
+msgid "GPG Plugin: No Trusted Key Selected, but Use Trusted Key Feature Set."
+msgstr "GPG Plugin: Kein vertrauter Schlüssel gewählt, aber Option aktiviert."
+
 #: gpg_encrypt_functions.php:279
 msgid "GPG Plugin: No cyphertext was generated."
 msgstr "GPG Plugin: kein verschlüsselter Text erzeugt."
@@ -462,9 +484,19 @@ msgid ""
 "messages."
 msgstr "GPG Plugin: Signatur-Schlüssel fehlt in den Optionen."
 
+#: gpg_encrypt_functions.php:137
+msgid ""
+"GPG Plugin: Your recipient list is empty. After parsing, there are no valid "
+"recipients."
+msgstr "GPG Plugin: Empfängerliste ist leer bzw. enthält keine gültigen Empfänger."
+
 #: gpg_encrypt_functions.php:285
 msgid "GPG Plugin: gpg returned a non-clean return value of: "
 msgstr "GPG Plugin: gpg gab Fehler zurück: "
+
+#: modules/gpg_recipientlist.php:61
+msgid "GPG Recipient List"
+msgstr "GPG Empfängerliste"
 
 #: modules/passpop.mod:45
 msgid "GPG Signing Initiating"
@@ -526,6 +558,10 @@ msgstr "Wie sollte die Passphrase aussehen?"
 #: modules/keyview.php:65
 msgid "ID"
 msgstr "ID"
+
+#: help/disc_keystore.php:11
+msgid "If it is not secure, your identity can be stolen!"
+msgstr "Ohne SSL kann ihre Identität missbraucht werden!"
 
 #: modules/getstart.php:79
 msgid "If not, skip this step."
@@ -723,6 +759,10 @@ msgstr "Externe Schlüssel importieren"
 msgid "Import keys to your personal keyring via: "
 msgstr "Schlüssel zu persönlichen Schlüsselring hinzufügen:"
 
+#: modules/keyserver.mod:157
+msgid "Importing key with KeyID: "
+msgstr "Importiere Schlüssel mit der ID: "
+
 #: help/what_trusted.php:12
 msgid ""
 "In fact, most security experts recommend that web servers be presumed to be "
@@ -781,6 +821,10 @@ msgstr "Schlüssel Suche"
 msgid "Key Strength"
 msgstr "Verschlüsselungsstärke"
 
+#: gpg_key_functions.php:878
+msgid "Key generated on public webmail server"
+msgstr "Schlüssel auf öffentlichem Webmail-Server generiert"
+
 #: help/what_keystrength.php:9
 msgid ""
 "Key strength is a measure of how difficult it is for an eavesdropper to "
@@ -810,6 +854,10 @@ msgstr "Letzter"
 #: modules/getstart.php:143 modules/keyring_main.php:675
 msgid "Look up keys on a public keyserver"
 msgstr "Schlüssel an öffentlichem Schlüsselserver nachschlagen"
+
+#: modules/keyserver.mod:64
+msgid "Make this my default keyserver"
+msgstr "Setzen als Standard Schlüssel-Server"
 
 #: modules/gpgdecrypt.mod:224
 msgid "Message List"
@@ -896,6 +944,10 @@ msgstr "Ein oder mehrere ASCII-armored Keys unten einfügen:"
 msgid "Please"
 msgstr "Bitte"
 
+#: gpg_key_functions.php:121 gpg_key_functions.php:576
+msgid "Please Notify GPG Plugin Developers"
+msgstr "Bitte GPG Entwickler informieren"
+
 #: modules/import_key_file.php:62
 msgid "Please choose a file containing one or more ASCII-armored key blocks"
 msgstr "Bitte Datei mit ein oder mehreren ASCII-armored Keys wählen"
@@ -943,6 +995,10 @@ msgstr "Problem mit der Ausgabe des verschlüsselten Textes:"
 #: help/disc_keystore.php:4
 msgid "Public web servers are not always secure!"
 msgstr "Öffentliche Webserver sind nicht sicher!"
+
+#: gpg_key_functions.php:121 gpg_key_functions.php:576
+msgid "Received"
+msgstr "Empfangen"
 
 #: modules/keyview.php:91
 msgid "Remove this key from your keyring?  This action cannot be undone!"
@@ -1317,6 +1373,10 @@ msgstr "Fehlererkennung"
 msgid "Unable to connect to the keyserver you specified."
 msgstr "Kann nicht zu Keyserver verbinden."
 
+#: gpg_key_functions.php:894
+msgid "Unable to open command pipe."
+msgstr "Befehl kann nicht ausgeführt werden."
+
 #: gpg_encrypt.php:324
 msgid "Unable to rename encrypted file"
 msgstr "Kann verschlüsselte Datei nicht umbenennen"
@@ -1349,7 +1409,11 @@ msgstr "Unbekannter Absender"
 msgid "Unsigned"
 msgstr "Unsigniert"
 
-#: gpg_key_functions.php:340
+#: modules/keyserver.mod:90 modules/keyserver.mod:99 modules/keyserver.mod:155
+msgid "Using Keyserver: "
+msgstr "Bevorzugter Schlüsselserver:"
+
+#: gpg_key_functions.php:342
 msgid "Using signing key:"
 msgstr "Verwende Signatur-Schlüssel:"
 
