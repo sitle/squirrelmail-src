@@ -24,13 +24,10 @@ require_once(SM_PATH . 'functions/mime.php');
 function sqimap_search($imapConnection, $search_where, $search_what, $mailbox,
                        $color, $search_position = '', $search_all, $count_all) {
 
-    global $message_highlight_list, $squirrelmail_language, $languages,
-           $index_order, $pos, $allow_charset_search, 
-	   $imap_server_type;
+    global $squirrelmail_language, $languages, $pos, $allow_charset_search,
+           $imap_server_type;
 
     $pos = $search_position;
-
-    $urlMailbox = urlencode($mailbox);
 
     /* construct the search query, taking multiple search terms into account */
     $multi_search = array();
@@ -39,7 +36,7 @@ function sqimap_search($imapConnection, $search_where, $search_what, $mailbox,
     $multi_search = explode(' ', $search_what);
     $search_string = '';
 
-    /* it seems macosx does not support the prefered search 
+    /* it seems macosx does not support the prefered search
        syntax so we fall back to the older style. This IMAP
        server has a problem with multiple search terms. Instead
        of returning the messages that match all the terms it
@@ -71,7 +68,7 @@ function sqimap_search($imapConnection, $search_where, $search_what, $mailbox,
     if ($allow_charset_search && isset($languages[$squirrelmail_language]['CHARSET']) &&
         $languages[$squirrelmail_language]['CHARSET']) {
         $ss = "SEARCH CHARSET "
-            . strtoupper($languages[$squirrelmail_language]['CHARSET']) 
+            . strtoupper($languages[$squirrelmail_language]['CHARSET'])
             . " ALL $search_string";
     } else {
         $ss = "SEARCH ALL $search_string";
@@ -81,10 +78,10 @@ function sqimap_search($imapConnection, $search_where, $search_what, $mailbox,
     $readin = sqimap_run_command($imapConnection, $ss, false, $result, $message, TRUE);
 
     /* try US-ASCII charset if search fails */
-    if (isset($languages[$squirrelmail_language]['CHARSET']) 
+    if (isset($languages[$squirrelmail_language]['CHARSET'])
         && strtolower($result) == 'no') {
         $ss = "SEARCH CHARSET \"US-ASCII\" ALL $search_string";
-        $readin = sqimap_run_command ($imapConnection, $ss, true, 
+        $readin = sqimap_run_command ($imapConnection, $ss, true,
                                       $result, $message);
     }
 
@@ -117,7 +114,6 @@ function sqimap_search($imapConnection, $search_where, $search_what, $mailbox,
     for ($q = 0; $q < $cnt; $q++) {
         $id[$q] = trim($messagelist[$q]);
     }
-    $issent = ($mailbox == $sent_folder);
 
     $msgs = fillMessageArray($imapConnection,$id,$cnt);
 

@@ -6,7 +6,7 @@
  * Copyright (c) 1999-2004 The SquirrelMail Project Team
  * Licensed under the GNU GPL. For full terms see the file COPYING.
  *
- * Deletes folders from the IMAP server. 
+ * Deletes folders from the IMAP server.
  * Called from the folders.php
  *
  * @version $Id$
@@ -45,7 +45,7 @@ if ($mailbox == '') {
     displayPageHeader($color, 'None');
 
     plain_error_message(_("You have not selected a folder to delete. Please do so.").
-	'<BR><A HREF="../src/folders.php">'._("Click here to go back").'</A>.', $color);
+        '<br /><a href="../src/folders.php">'._("Click here to go back").'</a>.', $color);
     exit;
 }
 
@@ -58,7 +58,7 @@ if ( sqgetGlobalVar('backingout', $tmp, SQ_POST) ) {
 if( !sqgetGlobalVar('confirmed', $tmp, SQ_POST) ) {
     displayPageHeader($color, 'None');
 
-    echo '<br>' .
+    echo '<br />' .
         html_tag( 'table', '', 'center', '', 'width="95%" border="0"' ) .
         html_tag( 'tr',
             html_tag( 'td', '<b>' . _("Delete Folder") . '</b>', 'center', $color[0] )
@@ -66,11 +66,11 @@ if( !sqgetGlobalVar('confirmed', $tmp, SQ_POST) ) {
         html_tag( 'tr' ) .
         html_tag( 'td', '', 'center', $color[4] ) .
         sprintf(_("Are you sure you want to delete %s?"), str_replace(array(' ','<','>'),array('&nbsp;','&lt;','&gt;'),imap_utf7_decode_local($mailbox))).
-	addForm('folders_delete.php', 'POST').
-	addHidden('mailbox', $mailbox).
-        '<INPUT TYPE=SUBMIT NAME="confirmed" VALUE="'._("Yes")."\">\n".
-        '<INPUT TYPE=SUBMIT NAME="backingout" VALUE="'._("No")."\">\n".
-        '</p></FORM><BR></td></tr></table>';
+        addForm('folders_delete.php', 'post')."<p>\n".
+        addHidden('mailbox', $mailbox).
+        addSubmit(_("Yes"), 'confirmed').
+        addSubmit(_("No"), 'backingout').
+        '</p></form><br /></td></tr></table>';
 
     exit;
 }
@@ -93,7 +93,7 @@ else
 /* Courier IMAP doesn't like subfolders of Trash
  * If global options say we can't move it into Trash
  * If it's already a subfolder of trash, we'll have to delete it */
-if (strtolower($imap_server_type) == 'courier' || 
+if (strtolower($imap_server_type) == 'courier' ||
     (isset($delete_folder) && $delete_folder) ||
     eregi('^'.$trash_folder.'.+', $mailbox) )
 {

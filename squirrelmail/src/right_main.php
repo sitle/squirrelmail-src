@@ -30,7 +30,7 @@ require_once(SM_PATH . 'functions/html.php');
 require_once(SM_PATH . 'functions/plugin.php');
 
 include_once(SM_PATH . 'templates/default/message_list.tpl');
-include_once(SM_PATH . 'templates/default/message_row.tpl');
+
 
 /* lets get the global vars we may need */
 sqgetGlobalVar('key',       $key,           SQ_COOKIE);
@@ -155,14 +155,11 @@ foreach ($aMailboxPref[MBX_PREF_COLUMNS] as $iCol) {
        'columns' => $aColumns,
        'config'  => array('alt_index_colors'  => $alt_index_colors,
                           'highlight_list'    => $message_highlight_list,
-                          'icon_theme'        => (isset($icon_theme)) ? $icon_theme : false,
-                          'use_icons'         => (isset($use_icons)) ? $use_icons : false,
                           'show_flag_buttons' => (isset($show_flag_buttons)) ? $show_flag_buttons : true,
                           'lastTargetMailbox' => (isset($lastTargetMailbox)) ? $lastTargetMailbox : '',
                           'trash_folder'      => $trash_folder,
                           'sent_folder'       => $sent_folder,
                           'draft_folder'      => $draft_folder,
-                          'javascript_on'     => $javascript_on,
                           'enablesort'        => true
                     ),
        'mailbox' => $mailbox,
@@ -185,7 +182,9 @@ $aConfig = array(
  * this behaviour later and add it to $aMailboxPref instead
  */
 if (isset($showall)) {
-   $aConfig['showall'] = $showall;
+    $aConfig['showall'] = $showall;
+} else {
+    $showall = false;
 }
 
 /**
@@ -195,6 +194,13 @@ sqgetGlobalVar('mailbox_cache',$mailbox_cache,SQ_SESSION);
 
 
 $aMailbox = sqm_api_mailbox_select($imapConnection,$account, $mailbox,$aConfig,$aMailboxPref);
+
+
+//if (!sqgetGlobalVar('align',$align,SQ_SESSION)) {
+    $align = array('left' => 'left', 'right' => 'right');
+//}
+//sm_print_r($align);
+
 
 /*
  * After initialisation of the mailbox array it's time to handle the FORM data
@@ -222,13 +228,8 @@ if (isset($aMailbox['FORWARD_SESSION'])) {
         sqsession_register($aMailbox,'aLastSelectedMailbox');
         session_write_close();
         // we have to redirect to the compose page
-        global $PHP_SELF;
-        if (!strpos($PHP_SELF,'?')) {
-            $location = $PHP_SELF.'?mailbox=INBOX&amp;startMessage=1';
-        } else {
-            $location = $PHP_SELF;
-        }
-        $location = set_url_var($location, 'session',$aMailbox['FORWARD_SESSION'], false);
+        $location = SM_PATH . 'src/compose.php?mailbox='. urlencode($mailbox).
+                    '&session='.$aMailbox['FORWARD_SESSION'];
         header("Location: $location");
         exit;
     }
@@ -266,8 +267,23 @@ if ( sqgetGlobalVar('just_logged_in', $just_logged_in, SQ_SESSION) ) {
         }
     }
 }
+$compact_paginator = true;
 if ($aMailbox['EXISTS'] > 0) {
     $aTemplateVars = showMessagesForMailbox($imapConnection,$aMailbox,$aProps);
+
+    $aTemplateVars['page_selector']     = $page_selector;
+    $aTemplateVars['page_selector_max'] = $page_selector_max;
+    $aTemplateVars['compact_paginator'] = $compact_paginator;
+    $aTemplateVars['javascript_on'] = $javascript_on;
+    $aTemplateVars['enablesort'] = (isset($aProps['config']['enablesort'])) ? $aProps['config']['enablesort'] : false;
+    $aTemplateVars['icon_theme'] = (isset($icon_theme)) ? $icon_theme : false;
+    $aTemplateVars['use_icons'] = (isset($use_icons)) ? $use_icons : false;
+    $aTemplateVars['aOrder'] = array_keys($aColumns);
+    $aTemplateVars['alt_index_colors'] = isset($alt_index_colors) ? $alt_index_colors: false;
+    $aTemplateVars['color']     = $color;
+    $aTemplateVars['align'] = $align;
+    $aTemplateVars['showall'] = $showall;
+
 //    sm_print_r($aTemplateVars);
     message_list($aTemplateVars);
 } else {

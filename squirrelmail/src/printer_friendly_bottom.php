@@ -23,12 +23,7 @@ define('SM_PATH','../');
 
 /* SquirrelMail required files. */
 require_once(SM_PATH . 'include/validate.php');
-require_once(SM_PATH . 'functions/strings.php');
-require_once(SM_PATH . 'config/config.php');
-require_once(SM_PATH . 'include/load_prefs.php');
 require_once(SM_PATH . 'functions/imap.php');
-require_once(SM_PATH . 'functions/page_header.php');
-require_once(SM_PATH . 'functions/html.php');
 
 /* get some of these globals */
 sqgetGlobalVar('username', $username, SQ_SESSION);
@@ -40,10 +35,10 @@ sqgetGlobalVar('mailbox', $mailbox, SQ_GET);
 
 if (! sqgetGlobalVar('passed_ent_id', $passed_ent_id, SQ_GET) ) {
     $passed_ent_id = '';
-} 
+}
 /* end globals */
 
-$pf_cleandisplay = getPref($data_dir, $username, 'pf_cleandisplay');
+$pf_cleandisplay = getPref($data_dir, $username, 'pf_cleandisplay', false);
 $imapConnection = sqimap_login($username, $key, $imapServerAddress, $imapPort, 0);
 $mbx_response = sqimap_mailbox_select($imapConnection, $mailbox);
 if (isset($messages[$mbx_response['UIDVALIDITY']][$passed_id])) {
@@ -57,7 +52,7 @@ if ($passed_ent_id) {
 
 /* --start display setup-- */
 
-$rfc822_header = $message->rfc822_header; 
+$rfc822_header = $message->rfc822_header;
 /* From and Date are usually fine as they are... */
 $from = $rfc822_header->getAddr_s('from');
 $date = getLongDateString($rfc822_header->date);
@@ -76,7 +71,7 @@ $body = '';
 if ($ent_ar[0] != '') {
   for ($i = 0; $i < count($ent_ar); $i++) {
      $body .= formatBody($imapConnection, $message, $color, $wrap_at, $ent_ar[$i], $passed_id, $mailbox);
-     $body .= '<hr noshade size="1" />';
+     $body .= '<hr style="height: 1px;" />';
   }
   $hookResults = do_hook('message_body', $body);
   $body = $hookResults[1];
@@ -85,8 +80,8 @@ if ($ent_ar[0] != '') {
 }
 
  /* now, if they choose to, we clean up the display a bit... */
- 
-if ( empty($pf_cleandisplay) || $pf_cleandisplay != 'no' ) {
+
+if ($pf_cleandisplay) {
 
     $num_leading_spaces = 9; // nine leading spaces for indentation
 
@@ -136,15 +131,15 @@ echo '<body text="#000000" bgcolor="#FFFFFF" link="#000000" vlink="#000000" alin
          html_tag( 'td', _("To").'&nbsp;', 'left','','valign="top"' ) .
          html_tag( 'td', $to, 'left' )
     ) . "\n";
-    if ( strlen($cc) > 0 ) { /* only show CC: if it's there... */
+    if ( strlen($cc) > 0 ) { /* only show Cc: if it's there... */
          echo html_tag( 'tr',
-             html_tag( 'td', _("CC").'&nbsp;', 'left','','valign="top"' ) .
+             html_tag( 'td', _("Cc").'&nbsp;', 'left','','valign="top"' ) .
              html_tag( 'td', $cc, 'left' )
          );
      }
      /* body */
      echo html_tag( 'tr',
-         html_tag( 'td', '<hr noshade size="1" /><br>' . "\n" . $body, 'left', '', 'colspan="2"' )
+         html_tag( 'td', '<hr style="height: 1px;" /><br />' . "\n" . $body, 'left', '', 'colspan="2"' )
      ) . "\n" .
 
      '</table>' . "\n" .
@@ -155,7 +150,16 @@ echo '<body text="#000000" bgcolor="#FFFFFF" link="#000000" vlink="#000000" alin
 
 /* --start pf-specific functions-- */
 
-/* $string = pf_clean_string($string, 9); */
+/**
+ * Function should clean layout of printed messages when user
+ * enables "Printer Friendly Clean Display" option.
+ * For example: $string = pf_clean_string($string, 9);
+ *
+ * @param string unclean_string
+ * @param integer num_leading_spaces
+ * @return string
+ * @access private
+ */
 function pf_clean_string ( $unclean_string, $num_leading_spaces ) {
     global $data_dir, $username;
     $unclean_string = str_replace('&nbsp;',' ',$unclean_string);
@@ -178,11 +182,11 @@ function pf_clean_string ( $unclean_string, $num_leading_spaces ) {
         }
         else
         {
-	    $i = strrpos( $this_line, ' ');
-    	    $clean_string .= substr( $this_line, 0, $i);
-    	    $clean_string .= "\n" . $leading_spaces;
-    	    $unclean_string = substr($unclean_string, 1+$i);
-	}
+            $i = strrpos( $this_line, ' ');
+            $clean_string .= substr( $this_line, 0, $i);
+            $clean_string .= "\n" . $leading_spaces;
+            $unclean_string = substr($unclean_string, 1+$i);
+        }
     }
     $clean_string .= $unclean_string;
 
@@ -190,5 +194,4 @@ function pf_clean_string ( $unclean_string, $num_leading_spaces ) {
 } /* end pf_clean_string() function */
 
 /* --end pf-specific functions */
-
 ?>

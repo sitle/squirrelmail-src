@@ -1,4 +1,5 @@
 <?php
+
 /**
  * SquirrelMail configtest script
  *
@@ -14,6 +15,9 @@
  * NOTE: you do not need to change this script!             *
  * If it throws errors you need to adjust your config.      *
  ************************************************************/
+
+// This script could really use some restructuring as it has grown quite rapidly
+// but is not very 'clean'. Feel free to get some structure into this thing.
 
 function do_err($str, $exit = TRUE) {
     global $IND;
@@ -31,9 +35,9 @@ ob_implicit_flush();
 define('SM_PATH', '../');
 
 /*
- * Load config before output begins. functions/strings.php depends on 
+ * Load config before output begins. functions/strings.php depends on
  * functions/globals.php. functions/global.php needs to be run before
- * any html output starts. If config.php is missing, error will be displayed 
+ * any html output starts. If config.php is missing, error will be displayed
  * later.
  */
 if (file_exists(SM_PATH . 'config/config.php')) {
@@ -70,9 +74,11 @@ if(!in_array('strings.php', $included)) {
 
 /* checking PHP specs */
 
-echo '<p>SquirrelMail version: '.$version.'<br />'.
-     'Config file version: '.$config_version . '<br />'.
-     'Config file last modified: '.date ('d F Y H:i:s', filemtime(SM_PATH . 'config/config.php')).'</p>';
+echo "<p><table>\n<tr><td>SquirrelMail version:</td><td><b>" . $version . "</b></td></tr>\n" .
+     '<tr><td>Config file version:</td><td><b>' . $config_version . "</b></td></tr>\n" .
+     '<tr><td>Config file last modified:</td><td><b>' .
+         date ('d F Y H:i:s', filemtime(SM_PATH . 'config/config.php')) .
+         "</b></td></tr>\n</table>\n</p>\n\n";
 
 echo "Checking PHP configuration...<br />\n";
 
@@ -80,7 +86,7 @@ if(!check_php_version(4,1,0)) {
     do_err('Insufficient PHP version: '. PHP_VERSION . '! Minimum required: 4.1.0');
 }
 
-echo $IND . 'PHP version '.PHP_VERSION.' OK.<br />';
+echo $IND . 'PHP version ' . PHP_VERSION . " OK.<br />\n";
 
 $php_exts = array('session','pcre');
 $diff = array_diff($php_exts, get_loaded_extensions());
@@ -88,7 +94,7 @@ if(count($diff)) {
     do_err('Required PHP extensions missing: '.implode(', ',$diff) );
 }
 
-echo $IND . 'PHP extensions OK.<br />';
+echo $IND . "PHP extensions OK.<br />\n";
 
 
 /* checking paths */
@@ -97,13 +103,13 @@ echo "Checking paths...<br />\n";
 
 if(!file_exists($data_dir)) {
     do_err("Data dir ($data_dir) does not exist!");
-} 
+}
 if(!is_dir($data_dir)) {
     do_err("Data dir ($data_dir) is not a directory!");
-} 
+}
 if(!is_readable($data_dir)) {
     do_err("I cannot read from data dir ($data_dir)!");
-} 
+}
 if(!is_writable($data_dir)) {
     do_err("I cannot write to data dir ($data_dir)!");
 }
@@ -117,10 +123,10 @@ if($data_dir == $attachment_dir) {
 } else {
     if(!file_exists($attachment_dir)) {
         do_err("Attachment dir ($attachment_dir) does not exist!");
-    } 
+    }
     if (!is_dir($attachment_dir)) {
         do_err("Attachment dir ($attachment_dir) is not a directory!");
-    } 
+    }
     if (!is_writable($attachment_dir)) {
         do_err("I cannot write to attachment dir ($attachment_dir)!");
     }
@@ -169,7 +175,7 @@ if($useSendmail) {
     // is_executable also checks for existance, but we want to be as precise as possible with the errors
     if(!file_exists($sendmail_path)) {
         do_err("Location of sendmail program incorrect ($sendmail_path)!");
-    } 
+    }
     if(!is_executable($sendmail_path)) {
         do_err("I cannot execute the sendmail program ($sendmail_path)!");
     }
@@ -187,7 +193,7 @@ if($useSendmail) {
     $smtpline = fgets($stream, 1024);
     if(((int) $smtpline{0}) > 3) {
         do_err("Error connecting to SMTP server. Server error: ".
-	    htmlspecialchars($smtpline));
+        htmlspecialchars($smtpline));
     }
 
     fputs($stream, 'QUIT');
@@ -214,29 +220,51 @@ if($useSendmail) {
     }
 }
 
+/**
+ * Check the IMAP server
+ */
 echo "Checking IMAP service....<br />\n";
 
+/** Can we open a connection? */
 $stream = fsockopen( ($use_imap_tls?'tls://':'').$imapServerAddress, $imapPort,
                        $errorNumber, $errorString);
 if(!$stream) {
     do_err("Error connecting to IMAP server \"$imapServerAddress:$imapPort\".".
         "Server error: ($errorNumber) ".
-	htmlspecialchars($errorString));
+    htmlspecialchars($errorString));
 }
 
+/** Is the first response 'OK'? */
 $imapline = fgets($stream, 1024);
 if(substr($imapline, 0,4) != '* OK') {
    do_err('Error connecting to IMAP server. Server error: '.
        htmlspecialchars($imapline));
 }
 
-fputs($stream, '001 LOGOUT');
-fclose($stream);
-
-echo $IND . 'IMAP server OK (<tt><small>'.
+echo $IND . 'IMAP server ready (<tt><small>'.
     htmlspecialchars(trim($imapline))."</small></tt>)<br />\n";
 
-echo "Checking internationalization (i18n) settings:<br />\n";
+/** Check capabilities */
+fputs($stream, "A001 CAPABILITY\r\n");
+$capline = fgets($stream, 1024);
+
+echo $IND . 'Capabilities: <tt>'.htmlspecialchars($capline)."</tt><br />\n";
+
+if($imap_auth_mech == 'login' && stristr($capline, 'LOGINDISABLED') !== FALSE) {
+    do_err('Your server doesn\'t allow plaintext logins. '.
+        'Try enabling another authentication mechanism like CRAM-MD5, DIGEST-MD5 or TLS-encryption '.
+        'in the SquirrelMail configuration.', FALSE);
+}
+if($use_imap_tls && stristr($capline, 'STARTTLS') === FALSE) {
+    do_err('You have enabled TLS encryption in the config, but the server does not '.
+        'report STARTTLS capability. TLS is probably not supported.', FALSE);
+}
+
+/** OK, close connection */
+fputs($stream, "A002 LOGOUT\r\n");
+fclose($stream);
+
+echo "Checking internationalization (i18n) settings...<br />\n";
 echo "$IND gettext - ";
 if (function_exists('gettext')) {
     echo "Gettext functions are available. You must have appropriate system locales compiled.<br />\n";
@@ -272,7 +300,7 @@ echo "$IND timezone - ";
 if ( (!ini_get('safe_mode')) ||
     !strcmp(ini_get('safe_mode_allowed_env_vars'),'') ||
     preg_match('/^([\w_]+,)*TZ/', ini_get('safe_mode_allowed_env_vars')) ) {
-	echo "Webmail users can change their time zone settings.<br />\n";
+        echo "Webmail users can change their time zone settings.<br />\n";
 } else {
     echo "Webmail users can't change their time zone settings.<br />\n";
 }
@@ -281,54 +309,103 @@ if ( (!ini_get('safe_mode')) ||
 // Pear DB tests
 echo "Checking database functions...<br />\n";
 if($addrbook_dsn || $prefs_dsn || $addrbook_global_dsn) {
-	@include_once('DB.php');
-	if (class_exists('DB')) {
-	    echo "$IND PHP Pear DB support is present.<br />\n";
-	    $db_functions=array(
-		'dbase' => 'dbase_open', 
-		'fbsql' => 'fbsql_connect', 
-		'interbase' => 'ibase_connect', 
-		'informix' => 'ifx_connect',
-		'msql' => 'msql_connect',
-		'mssql' => 'mssql_connect',
-		'mysql' => 'mysql_connect',
-		'mysqli' => 'mysqli_connect',
-		'oci8' => 'ocilogon',
-		'odbc' => 'odbc_connect',
-		'pgsql' => 'pgsql_connect',
-		'sqlite' => 'sqlite_open',
-		'sybase' => 'sybase_connect'
-	    );
+    @include_once('DB.php');
+    if (class_exists('DB')) {
+        echo "$IND PHP Pear DB support is present.<br />\n";
+        $db_functions=array(
+            'dbase' => 'dbase_open',
+            'fbsql' => 'fbsql_connect',
+            'interbase' => 'ibase_connect',
+            'informix' => 'ifx_connect',
+            'msql' => 'msql_connect',
+            'mssql' => 'mssql_connect',
+            'mysql' => 'mysql_connect',
+            'mysqli' => 'mysqli_connect',
+            'oci8' => 'ocilogon',
+            'odbc' => 'odbc_connect',
+            'pgsql' => 'pgsql_connect',
+            'sqlite' => 'sqlite_open',
+            'sybase' => 'sybase_connect'
+            );
 
-	    $dsns = array();
-	    if($prefs_dsn) $dsns['preferences'] = $prefs_dsn;
-	    if($addrbook_dsn) $dsns['addressbook'] = $addrbook_dsn;
-	    if($addrbook_global_dsn) $dsns['global addressbook'] = $addrbook_global_dsn;
-	    
-            foreach($dsns as $type => $dsn) {
-	        $dbtype = array_shift(explode(':', $dsn));
-	        if(isset($db_functions[$dbtype]) && function_exists($db_functions[$dbtype])) {
-		    echo "$IND$dbtype database support present.<br />\n";
+        $dsns = array();
+        if($prefs_dsn) {
+            $dsns['preferences'] = $prefs_dsn;
+        }
+        if($addrbook_dsn) {
+            $dsns['addressbook'] = $addrbook_dsn;
+        }
+        if($addrbook_global_dsn) {
+            $dsns['global addressbook'] = $addrbook_global_dsn;
+        }
 
-		    // now, test this interface:
+        foreach($dsns as $type => $dsn) {
+            $dbtype = array_shift(explode(':', $dsn));
+            if(isset($db_functions[$dbtype]) && function_exists($db_functions[$dbtype])) {
+                echo "$IND$dbtype database support present.<br />\n";
 
-		    $dbh = DB::connect($dsn, true);
-                    if (DB::isError($dbh)) {
-                        do_err('Database error: '. htmlspecialchars(DB::errorMessage($dbh)) .
-			    ' in ' .$type .' DSN.');
-                    }
-		    $dbh->disconnect();
-		    echo "$IND$type database connect successful.<br />\n";
-		    
-		} else {
-		    do_err($db.' database support not present!');
-		}
+                // now, test this interface:
+
+                $dbh = DB::connect($dsn, true);
+                if (DB::isError($dbh)) {
+                    do_err('Database error: '. htmlspecialchars(DB::errorMessage($dbh)) .
+                        ' in ' .$type .' DSN.');
+                }
+                $dbh->disconnect();
+                echo "$IND$type database connect successful.<br />\n";
+
+            } else {
+                do_err($db.' database support not present!');
             }
-	} else {
-	    do_err('Required PHP Pear DB support is not available.');;
-	}
+        }
+    } else {
+        do_err('Required PHP PEAR DB support is not available. Is PEAR installed and is the
+            include path set correctly to find <tt>DB.php</tt>? The include path is now:
+            "<tt>' . ini_get('include_path') . '</tt>".');
+    }
 } else {
     echo $IND."not using database functionality.<br />\n";
+}
+
+// LDAP DB tests
+echo "Checking LDAP functions...<br />\n";
+if( empty($ldap_server) ) {
+    echo $IND."not using LDAP functionality.<br />\n";
+} else {
+    if ( !function_exists(ldap_connect) ) {
+        do_err('Required LDAP support is not available.');
+    } else {
+        echo "$IND LDAP support present.<br />\n";
+        foreach ( $ldap_server as $param ) {
+
+            $linkid = ldap_connect($param['host'], (empty($param['port']) ? 389 : $param['port']) );
+
+            if ( $linkid ) {
+               echo "$IND LDAP connect to ".$param['host']." successful: ".$linkid."<br />\n";
+
+                if ( !empty($param['protocol']) &&
+                     !ldap_set_option($linkid, LDAP_OPT_PROTOCOL_VERSION, $param['protocol']) ) {
+                    do_err('Unable to set LDAP protocol');
+                }
+
+                if ( empty($param['binddn']) ) {
+                    $bind = ldap_bind($linkid);
+                } else {
+                    $bind = ldap_bind($param['binddn'], $param['bindpw']);
+                }
+
+                if ( $bind ) {
+                    echo "$IND LDAP Bind Successful <br />";
+                } else {
+                    do_err('Unable to Bind to LDAP Server');
+                }
+
+                ldap_close($linkid);
+            } else {
+                do_err('Connection to LDAP failed');
+            }
+        }
+    }
 }
 ?>
 
@@ -338,3 +415,6 @@ if($addrbook_dsn || $prefs_dsn || $addrbook_global_dsn) {
 
 </body>
 </html>
+<?php
+// vim: et ts=4
+?>

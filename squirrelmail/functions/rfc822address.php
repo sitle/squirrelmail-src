@@ -13,7 +13,6 @@
  */
 
 
-
 /**
  * parseRFC822Address: function for parsing RFC822 email address strings and store
  *               them in an address array
@@ -24,7 +23,6 @@
  * @author Marc Groot Koerkamp
  *
  **/
-
 function parseRFC822Address($sAddress,$iLimit = 0) {
 
     $aTokens = _getAddressTokens($sAddress);
@@ -79,6 +77,7 @@ function parseRFC822Address($sAddress,$iLimit = 0) {
     return $aAddress;
 }
 
+
 /**
  * Do the address array to string translation
  *
@@ -94,7 +93,7 @@ function getAddressString($aAddressList,$aProps) {
     $aPropsDefault = array (
                             'separator' => ',',     // address separator
                             'limit'  => 0,          // limits returned addresses
-                            'personal' => true,     // show personal part
+                            'personal' => true,     // show persnal part
                             'email'    => true,     // show email part
                             'best'     => false,    // show personal if available
                             'encode'   => false,    // encode the personal part
@@ -154,7 +153,7 @@ function getAddressString($aAddressList,$aProps) {
 /**
  * Do after address parsing handling. This is used by compose.php and should
  * be moved to compose.php.
- * The AddressStructure object is now obsolete and dependent parts of that will
+ * The AddressStructure objetc is now obsolete and dependent parts of that will
  * be adapted so that it can make use of this function
  * After that we can remove the parseAddress method from the Rfc822Header class completely
  * so we achieved 1 single instance of parseAddress instead of two like we have now.
@@ -167,7 +166,7 @@ function getAddressString($aAddressList,$aProps) {
  * @see Rfc822Header
  * @author Marc Groot Koerkamp
  *
- */
+ **/
 function processAddressArray($aAddresses,$aProps) {
     $aPropsDefault = array (
                             'domain' => '',
@@ -204,14 +203,14 @@ function processAddressArray($aAddresses,$aProps) {
                         if (isset($aAddr['name'])) {
                             $aEntry[SQM_ADDR_PERSONAL] = $aAddr['name'];
                         } else {
-
-                            $aEntry[SQM_ADDR_PERSONAL] = encodeHeader($sPersonal,true,false);
+                            $aEntry[SQM_ADDR_PERSONAL] = encodeHeader($sPersonal);
                         }
                     }
                 }
             }
             /*
              * append the domain
+             *
              */
             if (!$aEntry[SQM_ADDR_MAILBOX]) {
                 $aEntry[SQM_ADDR_MAILBOX] = trim($sEmail);
@@ -233,14 +232,13 @@ function processAddressArray($aAddresses,$aProps) {
  * @param array $aStack
  * @param array $aComment
  * @param string $sEmail
- * @param bool $bDecode decode the personal name. Default we decode it.
  * @return array $aAddr array with personal (0), adl(1), mailbox(2) and host(3) info
  * @private
  * @author Marc Groot Koerkamp
  *
- */
+ **/
 
-function _createAddressElement(&$aStack,&$aComment,&$sEmail,$bDecode=true) {
+function _createAddressElement(&$aStack,&$aComment,&$sEmail) {
     if (!$sEmail) {
         while (count($aStack) && !$sEmail) {
             $sEmail = trim(array_pop($aStack));
@@ -259,7 +257,7 @@ function _createAddressElement(&$aStack,&$aComment,&$sEmail,$bDecode=true) {
 //        if ($sPersonal && substr($sPersonal,0,2) == '=?') {
 //            $aAddr[SQM_ADDR_PERSONAL] = encodeHeader($sPersonal);
 //        } else {
-        $aAddr[SQM_ADDR_PERSONAL] = ($bDecode) ? decodeHeader($sPersonal,true,false) : $sPersonal;
+        $aAddr[SQM_ADDR_PERSONAL] = $sPersonal;
 //        }
 
     $iPosAt = strpos($sEmail,'@');
@@ -287,7 +285,6 @@ function _createAddressElement(&$aStack,&$aComment,&$sEmail,$bDecode=true) {
 
 function _getAddressTokens($address) {
     $aTokens = array();
-    $aAddress = array();
     $aSpecials = array('(' ,'<' ,',' ,';' ,':');
     $aReplace =  array(' (',' <',' ,',' ;',' :');
     $address = str_replace($aSpecials,$aReplace,$address);

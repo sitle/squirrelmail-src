@@ -42,9 +42,9 @@ function use_plugin ($name) {
  * @return mixed $data
  */
 function do_hook ($name) {
-    global $squirrelmail_plugin_hooks;
+    global $squirrelmail_plugin_hooks, $currentHookName;
     $data = func_get_args();
-    $ret = '';
+    $currentHookName = $name;
 
     if (isset($squirrelmail_plugin_hooks[$name])
           && is_array($squirrelmail_plugin_hooks[$name])) {
@@ -55,6 +55,8 @@ function do_hook ($name) {
             }
         }
     }
+
+    $currentHookName = '';
 
     /* Variable-length argument lists have a slight problem when */
     /* passing values by reference. Pity. This is a workaround.  */
@@ -69,8 +71,9 @@ function do_hook ($name) {
  * @return mixed the return value of the hook function
  */
 function do_hook_function($name,$parm=NULL) {
-    global $squirrelmail_plugin_hooks;
+    global $squirrelmail_plugin_hooks, $currentHookName;
     $ret = '';
+    $currentHookName = $name;
 
     if (isset($squirrelmail_plugin_hooks[$name])
           && is_array($squirrelmail_plugin_hooks[$name])) {
@@ -81,6 +84,8 @@ function do_hook_function($name,$parm=NULL) {
             }
         }
     }
+
+    $currentHookName = '';
 
     /* Variable-length argument lists have a slight problem when */
     /* passing values by reference. Pity. This is a workaround.  */
@@ -96,8 +101,9 @@ function do_hook_function($name,$parm=NULL) {
  * @return string a concatenation of the results of each plugin function
  */
 function concat_hook_function($name,$parm=NULL) {
-    global $squirrelmail_plugin_hooks;
+    global $squirrelmail_plugin_hooks, $currentHookName;
     $ret = '';
+    $currentHookName = $name;
 
     if (isset($squirrelmail_plugin_hooks[$name])
           && is_array($squirrelmail_plugin_hooks[$name])) {
@@ -108,6 +114,8 @@ function concat_hook_function($name,$parm=NULL) {
             }
         }
     }
+
+    $currentHookName = '';
 
     /* Variable-length argument lists have a slight problem when */
     /* passing values by reference. Pity. This is a workaround.  */
@@ -128,7 +136,7 @@ function concat_hook_function($name,$parm=NULL) {
  * @return bool the result of the function
  */
 function boolean_hook_function($name,$parm=NULL,$priority=0,$tie=false) {
-    global $squirrelmail_plugin_hooks;
+    global $squirrelmail_plugin_hooks, $currentHookName;
     $yea = 0;
     $nay = 0;
     $ret = $tie;
@@ -137,6 +145,7 @@ function boolean_hook_function($name,$parm=NULL,$priority=0,$tie=false) {
         is_array($squirrelmail_plugin_hooks[$name])) {
 
         /* Loop over the plugins that registered the hook */
+        $currentHookName = $name;
         foreach ($squirrelmail_plugin_hooks[$name] as $function) {
             if (function_exists($function)) {
                 $ret = $function($parm);
@@ -147,6 +156,7 @@ function boolean_hook_function($name,$parm=NULL,$priority=0,$tie=false) {
                 }
             }
         }
+        $currentHookName = '';
 
         /* Examine the aftermath and assign the return value appropriately */
         if (($priority > 0) && ($yea)) {
@@ -171,7 +181,7 @@ function boolean_hook_function($name,$parm=NULL,$priority=0,$tie=false) {
  * be broken. If so, returns true and the plugin is invisible to the
  * offending browser.
  * *** THIS IS A TEST FOR JAVASCRIPT SUPPORT ***
- * This function needs to have its name changed!
+ * FIXME: This function needs to have its name changed!
  *
  * @return bool whether this browser properly supports JavaScript
  */

@@ -18,6 +18,7 @@
  * @ignore
  */
 define('SM_PATH','../');
+
 /* SquirrelMail required files. */
 require_once(SM_PATH . 'include/validate.php');
 require_once(SM_PATH . 'functions/imap.php');
@@ -34,11 +35,8 @@ define('SM_BOX_COLLAPSED',   1);
 
 function formatMailboxName($imapConnection, $box_array) {
 
-    global $folder_prefix, $trash_folder, $sent_folder,
-           $color, $move_to_sent, $move_to_trash,
-           $unseen_notify, $unseen_type, $collapse_folders,
-           $draft_folder, $save_as_draft,
-           $use_special_folder_color;
+    global $trash_folder, $color, $move_to_trash,
+           $unseen_notify, $unseen_type, $use_special_folder_color;
     $real_box = $box_array['unformatted'];
     $mailbox = str_replace('&nbsp;','',$box_array['formatted']);
     $mailboxURL = urlencode($real_box);
@@ -51,10 +49,10 @@ function formatMailboxName($imapConnection, $box_array) {
     $status = array('','');
     if (($unseen_notify == 2 && $real_box == 'INBOX') ||
         $unseen_notify == 3) {
-    $tmp_status = create_unseen_string($real_box, $box_array, $imapConnection, $unseen_type );
-    if ($status !== false) {
-        $status = $tmp_status;
-    }
+            $tmp_status = create_unseen_string($real_box, $box_array, $imapConnection, $unseen_type );
+            if ($status !== false) {
+                $status = $tmp_status;
+            }
     }
     list($unseen_string, $unseen) = $status;
     $special_color = ($use_special_folder_color && isSpecialMailbox($real_box));
@@ -63,12 +61,12 @@ function formatMailboxName($imapConnection, $box_array) {
     $line = '';
 
     /* If there are unseen message, bold the line. */
-    if ($unseen > 0) { $line .= '<B>'; }
+    if ($unseen > 0) { $line .= '<b>'; }
 
     /* Create the link for this folder. */
     if ($status !== false) {
-    $line .= '<a href="right_main.php?PG_SHOWALL=0&amp;startMessage=1&amp;mailbox='.
-                $mailboxURL.'" TARGET="right" STYLE="text-decoration:none">';
+        $line .= '<a href="right_main.php?PG_SHOWALL=0&amp;startMessage=1&amp;mailbox='.
+                 $mailboxURL.'" target="right" style="text-decoration:none">';
     }
     if ($special_color) {
         $line .= "<font color=\"$color[11]\">";
@@ -81,15 +79,15 @@ function formatMailboxName($imapConnection, $box_array) {
     if ($special_color == TRUE)
         $line .= '</font>';
     if ($status !== false) {
-    $line .= '</a>';
+        $line .= '</a>';
     }
 
     /* If there are unseen message, close bolding. */
-    if ($unseen > 0) { $line .= "</B>"; }
+    if ($unseen > 0) { $line .= "</b>"; }
 
     /* Print unseen information. */
     if ($unseen_string != '') {
-        $line .= "&nbsp;<SMALL>$unseen_string</SMALL>";
+        $line .= "&nbsp;<small>$unseen_string</small>";
     }
 
     /* If it's the trash folder, show a purge link when needed */
@@ -101,8 +99,8 @@ function formatMailboxName($imapConnection, $box_array) {
         if (($numMessages > 0) or ($box_array['parent'] == 1)) {
             $urlMailbox = urlencode($real_box);
             $line .= "\n<small>\n" .
-                    "&nbsp;&nbsp;(<A HREF=\"empty_trash.php\" style=\"text-decoration:none\">"._("purge")."</A>)" .
-                    "</small>";
+                    '&nbsp;&nbsp;[<a href="empty_trash.php">'._("Purge").'</a>]' .
+                    '</small>';
         }
     }
 
@@ -172,7 +170,7 @@ function compute_folder_children(&$parbox, $boxcount) {
  * currently appropriate.
  */
 function create_collapse_link($boxnum) {
-    global $boxes, $imapConnection, $unseen_notify, $color, $use_icons, $icon_theme;
+    global $boxes, $unseen_notify, $color, $use_icons, $icon_theme;
     $mailbox = urlencode($boxes[$boxnum]['unformatted']);
 
     /* Create the link for this collapse link. */
@@ -180,13 +178,13 @@ function create_collapse_link($boxnum) {
             'href="left_main.php?';
     if ($boxes[$boxnum]['collapse'] == SM_BOX_COLLAPSED) {
         if ($use_icons && $icon_theme != 'none') {
-            $link .= "unfold=$mailbox\"><IMG src=\"" . SM_PATH . "images/plus.png\" border=\"0\" height=\"7\" width=\"7\">";
+            $link .= "unfold=$mailbox\"><img src=\"" . SM_PATH . 'images/plus.png" border="0" height="7" width="7" />';
         } else {
             $link .= "unfold=$mailbox\">+";
         }
     } else {
         if ($use_icons && $icon_theme != 'none') {
-            $link .= "fold=$mailbox\"><IMG src=\"" . SM_PATH . "images/minus.png\" border=\"0\" height=\"7\" width=\"7\">";
+            $link .= "fold=$mailbox\"><img src=\"" . SM_PATH . 'images/minus.png" border="0" height="7" width="7" />';
         } else {
             $link .= "fold=$mailbox\">-";
         }
@@ -209,7 +207,7 @@ function create_collapse_link($boxnum) {
  * @return array unseen message string (for display), unseen message count
  */
 function create_unseen_string($boxName, $boxArray, $imapConnection, $unseen_type) {
-    global $boxes, $unseen_type, $color, $unseen_cum;
+    global $boxes, $color, $unseen_cum;
 
     /* Initialize the return value. */
     $result = array(0,0);
@@ -224,7 +222,7 @@ function create_unseen_string($boxName, $boxArray, $imapConnection, $unseen_type
     $status = sqimap_status_messages($imapConnection, $boxName);
     $boxUnseenCount = $status['UNSEEN'];
     if ($boxUnseenCount === false) {
-    return false;
+        return false;
     }
     if ($unseen_type == 2) {
         $boxMessageCount = $status['MESSAGES'];
@@ -244,10 +242,10 @@ function create_unseen_string($boxName, $boxArray, $imapConnection, $unseen_type
 
             /* Collect the counts for this subfolder. */
             if (($boxName != $boxes[$i]['unformatted'])
-                   && (substr($boxes[$i]['unformatted'], 0, $curBoxLength) == $boxName)
-                   && !in_array('noselect', $boxes[$i]['flags'])) {
-        $status = sqimap_status_messages($imapConnection, $boxes[$i]['unformatted']);
-        $subUnseenCount = $status['UNSEEN'];
+                    && (substr($boxes[$i]['unformatted'], 0, $curBoxLength) == $boxName)
+                    && !in_array('noselect', $boxes[$i]['flags'])) {
+                $status = sqimap_status_messages($imapConnection, $boxes[$i]['unformatted']);
+                $subUnseenCount = $status['UNSEEN'];
                 if ($unseen_type == 2) {
                     $subMessageCount = $status['MESSAGES'];;
                 }
@@ -295,7 +293,7 @@ function is_parent_box($curbox_name, $parbox_name) {
 }
 
 function ListBoxes ($boxes, $j=0 ) {
-    global $data_dir, $username, $startmessage, $color, $unseen_notify, $unseen_type,
+    global $data_dir, $username, $color, $unseen_notify, $unseen_type,
            $move_to_trash, $trash_folder, $collapse_folders, $imapConnection,
            $use_icons, $icon_theme, $use_special_folder_color;
 
@@ -354,13 +352,13 @@ function ListBoxes ($boxes, $j=0 ) {
         $link = '<a target="left" style="text-decoration:none" ' .'href="left_main.php?';
         if ($collapse) {
             if ($use_icons && $icon_theme != 'none') {
-                $link .= "unfold=$mailboxURL\">$leader<IMG src=\"" . SM_PATH . "images/plus.png\" border=\"0\" height=\"7\" width=\"7\">&nbsp;</tt>";
+                $link .= "unfold=$mailboxURL\">$leader<img src=\"" . SM_PATH . 'images/plus.png" border="0" height="7" width="7" />&nbsp;</tt>';
             } else {
                 $link .= "unfold=$mailboxURL\">$leader+&nbsp;</tt>";
             }
         } else {
             if ($use_icons && $icon_theme != 'none') {
-                $link .= "fold=$mailboxURL\">$leader<IMG src=\"" . SM_PATH . "images/minus.png\" border=\"0\" height=\"7\" width=\"7\">&nbsp;</tt>";
+                $link .= "fold=$mailboxURL\">$leader<img src=\"" . SM_PATH . 'images/minus.png" border="0" height="7" width="7" />&nbsp;</tt>';
             } else {
                 $link .= "fold=$mailboxURL\">$leader-&nbsp;</tt>";
             }
@@ -397,8 +395,8 @@ function ListBoxes ($boxes, $j=0 ) {
                 $end .= "&nbsp;<small>$unseen_string</small>";
             }
             $end .= "\n<small>\n" .
-                    "&nbsp;&nbsp;(<a href=\"empty_trash.php\" style=\"text-decoration:none\">"._("purge")."</a>)" .
-                    "</small>";
+                    '&nbsp;&nbsp;[<a href="empty_trash.php">'._("Purge").'</a>]'.
+                    '</small>';
         }
     } else {
         if (!$boxes->is_noselect) {
@@ -445,8 +443,8 @@ function ListBoxes ($boxes, $j=0 ) {
 }
 
 function ListAdvancedBoxes ($boxes, $mbx, $j='ID.0000' ) {
-    global $data_dir, $username, $startmessage, $color, $unseen_notify, $unseen_type,
-           $move_to_trash, $trash_folder, $collapse_folders, $use_special_folder_color;
+    global $data_dir, $username, $color, $unseen_notify, $unseen_type,
+        $move_to_trash, $trash_folder, $collapse_folders, $use_special_folder_color;
 
     if (!isset($boxes) || empty($boxes))
         return;
@@ -521,10 +519,9 @@ function ListAdvancedBoxes ($boxes, $mbx, $j='ID.0000' ) {
         $pre = "<a class=\"mbx_link\" href=\"right_main.php?PG_SHOWALL=0&amp;startMessage=1&amp;mailbox=$mailboxURL\" target=\"right\">" . $pre;
         $end .= '</a>';
         if ($numMessages > 0) {
-            $urlMailbox = urlencode($mailbox);
             $end .= "\n<small>\n" .
-                    "&nbsp;&nbsp;(<a class=\"mbx_link\" href=\"empty_trash.php\">"._("purge")."</a>)" .
-                    "</small>";
+                    '&nbsp;&nbsp;[<a class="mbx_link" href="empty_trash.php">'._("Purge").'</a>]'.
+                    '</small>';
         }
     } else {
         if (!$boxes->is_noselect) { /* \Noselect boxes can't be selected */
@@ -662,7 +659,7 @@ if (! isset($oldway) || $oldway=="" ) {
 
 if ($advanced_tree) {
 $xtra .= <<<ECHO
-<script language="Javascript" TYPE="text/javascript">
+<script language="Javascript" type="text/javascript">
 
 <!--
 
@@ -691,7 +688,7 @@ var vTreeSrc;
     function hidechilds(img) {
       id = img.id + ".0000";
       form_id = "mbx[" + img.id +"F]";
-      if (document.all) {	//IE, Opera7
+      if (document.all) { //IE, Opera7
         div = document.all[id];
         if (div) {
            if (div.style.display == "none") {
@@ -706,15 +703,15 @@ var vTreeSrc;
            }
            vTreeImg = img;
            vTreeDiv = div;
-           if (typeof vTreeDiv.readyState != "undefined")	//IE
+           if (typeof vTreeDiv.readyState != "undefined") //IE
               setTimeout("fTreeTimeout()",100);
-           else	//Non IE
+           else //Non IE
               vTreeImg.src = vTreeSrc;
            div.style.display = style;
            document.all[form_id].value = value;
         }
       }
-      else if (document.getElementById) {	//Gecko
+      else if (document.getElementById) { //Gecko
         div = document.getElementById(id);
         if (div) {
            if (div.style.display == "none") {
@@ -756,29 +753,29 @@ $xtra .= "      left_size = \"$left_size\";\n";
 $xtra .= <<<ECHO
       if (document.all) {
         masterf = window.parent.document.all["fs1"];
-    leftf = window.parent.document.all["left"];
-    leftcontent = document.all["leftframe"];
-    leftbutton = document.all["showf"];
+        leftf = window.parent.document.all["left"];
+        leftcontent = document.all["leftframe"];
+        leftbutton = document.all["showf"];
       } else if (document.getElementById) {
-    masterf = window.parent.document.getElementById("fs1");
-    leftf = window.parent.document.getElementById("left");
-    leftcontent = document.getElementById("leftframe");
-    leftbutton = document.getElementById("showf");
+        masterf = window.parent.document.getElementById("fs1");
+        leftf = window.parent.document.getElementById("left");
+        leftcontent = document.getElementById("leftframe");
+        leftbutton = document.getElementById("showf");
       } else {
         return false;
       }
       if(hide) {
          new_col = calc_col("20");
          masterf.cols = new_col;
-     document.body.scrollLeft=0;
-     document.body.style.overflow='hidden';
-     leftcontent.style.display = 'none';
-     leftbutton.style.display='block';
+         document.body.scrollLeft=0;
+         document.body.style.overflow='hidden';
+         leftcontent.style.display = 'none';
+         leftbutton.style.display='block';
       } else {
          masterf.cols = calc_col(left_size);
-     document.body.style.overflow='';
-     leftbutton.style.display='none';
-     leftcontent.style.display='block';
+         document.body.style.overflow='';
+         leftbutton.style.display='none';
+         leftcontent.style.display='block';
 
       }
    }
@@ -805,7 +802,7 @@ $xtra .= <<<ECHO
      if (document.all) {
         masterf = window.parent.document.all["fs1"];
      } else if (document.getElementById) {
-    window.parent.document.getElementById("fs1");
+        window.parent.document.getElementById("fs1");
      } else {
         return false;
      }
@@ -945,28 +942,32 @@ if ($auto_create_special && !isset($auto_create_done)) {
     sqsession_register($auto_create_done, 'auto_create_done');
 }
 
-if ($advanced_tree)
-  echo "\n<body" .
-	' onload="preload(\'../images/minus.png\',\'../images/plus.png\')"' .
-  " bgcolor=\"$color[3]\" text=\"$color[6]\" link=\"$color[6]\" vlink=\"$color[6]\" alink=\"$color[6]\">\n";
-else
-  echo "\n<body bgcolor=\"$color[3]\" text=\"$color[6]\" link=\"$color[6]\" vlink=\"$color[6]\" alink=\"$color[6]\">\n";
+if ($advanced_tree) {
+    echo "\n<body" .
+            ' onload="preload(\'../images/minus.png\',\'../images/plus.png\')"' .
+            " bgcolor=\"$color[3]\" text=\"$color[6]\" link=\"$color[6]\" vlink=\"$color[6]\" alink=\"$color[6]\">\n";
+} else {
+    echo "\n<body bgcolor=\"$color[3]\" text=\"$color[6]\" link=\"$color[6]\" vlink=\"$color[6]\" alink=\"$color[6]\">\n";
+}
 
 do_hook('left_main_before');
 if ($advanced_tree) {
    /* nice future feature, needs layout !! volunteers?   */
    $right_pos = $left_size - 20;
-/*   echo '<div style="position:absolute;top:0;border=solid;border-width:0.1em;border-color:blue;"><div ID="hidef" style="width=20;font-size:12"><A HREF="javascript:hideframe(true)"><b><<</b></a></div>';
-   echo '<div ID="showf" style="width=20;font-size:12;display:none;"><a href="javascript:hideframe(false)"><b>>></b></a></div>';
-   echo '<div ID="incrf" style="width=20;font-size:12"><a href="javascript:resizeframe(true)"><b>></b></a></div>';
-   echo '<div ID="decrf" style="width=20;font-size:12"><a href="javascript:resizeframe(false)"><b><</b></a></div></div>';
-   echo '<div ID="leftframe"><br /><br />';*/
+/*   echo '<div style="position:absolute;top:0;border=solid;border-width:0.1em;border-color:blue;"><div id="hidef" style="width=20;font-size:12"><a href="javascript:hideframe(true)"><b>&lt;&lt;</b></a></div>';
+   echo '<div id="showf" style="width=20;font-size:12;display:none;"><a href="javascript:hideframe(false)"><b>&gt;&gt;</b></a></div>';
+   echo '<div id="incrf" style="width=20;font-size:12"><a href="javascript:resizeframe(true)"><b>&gt;</b></a></div>';
+   echo '<div id="decrf" style="width=20;font-size:12"><a href="javascript:resizeframe(false)"><b>&lt;</b></a></div></div>';
+   echo '<div id="leftframe"><br /><br />';*/
 }
 
 echo "\n\n" . html_tag( 'table', '', 'left', '', 'border="0" cellspacing="0" cellpadding="0" width="99%"' ) .
     html_tag( 'tr' ) .
     html_tag( 'td', '', 'left' ) .
-    '<center><font size="4"><b>'. _("Folders") . "</b><br /></font>\n\n";
+    html_tag( 'table', '', '', '', 'border="0" cellspacing="0" cellpadding="0" width="98%"' ) .
+    html_tag( 'tr' ) .
+    html_tag( 'td', '', 'center' ) .
+    '<font size="4"><b>'. _("Folders") . "</b><br /></font>\n\n";
 
 if ($date_format != 6) {
     /* First, display the clock. */
@@ -985,8 +986,8 @@ if ($date_format != 6) {
 
     switch( $date_format ) {
     case 0:
-	$clk = date('Y-m-d '.$hr. ' T', time());
-	break;
+        $clk = date('Y-m-d '.$hr. ' T', time());
+        break;
     case 1:
         $clk = date('m/d/y '.$hr, time());
         break;
@@ -1002,13 +1003,13 @@ if ($date_format != 6) {
     }
     $clk = str_replace(' ','&nbsp;',$clk);
 
-    echo '<center><small>' . str_replace(' ','&nbsp;',_("Last Refresh")) .
-         ": $clk</small></center>";
+    echo '<small>' . str_replace(' ','&nbsp;',_("Last Refresh")) .
+         ":<br />$clk</small><br />";
 }
 
 /* Next, display the refresh button. */
-echo '<small>(<a href="../src/left_main.php" target="left">'.
-     _("refresh folder list") . '</a>)</small></center><br />';
+echo '<div style="white-space:nowrap"><small>[<a href="../src/left_main.php" target="left">'.
+     _("Check mail") . '</a>]</small></div></td></tr></table><br />';
 
 /* Lastly, display the folder list. */
 if ( $collapse_folders ) {
@@ -1090,7 +1091,7 @@ for ($i = 0; $i < count($boxes); $i++) {
         }
 
         /* Put the final touches on our folder line. */
-        $line .= "</nobr><br>\n";
+        $line .= "</nobr><br />\n";
 
         /* Output the line for this folder. */
         echo $line;
@@ -1118,7 +1119,6 @@ for ($i = 0; $i < count($boxes); $i++) {
 do_hook('left_main_after');
 sqimap_logout($imapConnection);
 
-echo '</td></tr></table>' . "\n".
-    "</div></body></html>\n";
-
 ?>
+</td></tr></table>
+</div></body></html>

@@ -13,6 +13,7 @@
  *
  * @version $Id$
  * @package squirrelmail
+ * @subpackage date
  */
 
 /** Load up some useful constants */
@@ -289,9 +290,9 @@ function date_intl( $date_format, $stamp ) {
     $aParts = explode('#',$ret);
     $ret = str_replace(array('$1','$4','$2','$3',), array(getDayAbrv($aParts[0]),
                                                           getMonthAbrv($aParts[1]),
-                   				          getMonthName($aParts[1]),
-						          getDayName($aParts[0])),
-						          $aParts[2]);
+                                                          getMonthName($aParts[1]),
+                                                          getDayName($aParts[0])),
+                                                          $aParts[2]);
     return( $ret );
 }
 
@@ -430,7 +431,6 @@ function getTimeStamp($dateParts) {
         } else {
             $obs_zone = $dateParts[0];
         }
-
         return getGMTSeconds($stamp, $obs_zone);
     } else {
         return getGMTSeconds($stamp, $dateParts[0]);

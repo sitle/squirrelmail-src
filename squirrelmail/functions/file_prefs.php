@@ -21,7 +21,9 @@ include_once(SM_PATH . 'functions/display_messages.php');
 function cachePrefValues($data_dir, $username) {
     global $prefs_are_cached, $prefs_cache;
 
+    sqgetGlobalVar('prefs_are_cached', $prefs_are_cached, SQ_SESSION );
     if ( isset($prefs_are_cached) && $prefs_are_cached) {
+        sqgetGlobalVar('prefs_cache', $prefs_cache, SQ_SESSION );
         return;
     }
 
@@ -93,7 +95,7 @@ function getPref($data_dir, $username, $string, $default = '') {
     if (!$result) {
         cachePrefValues($data_dir, $username);
         if (isset($prefs_cache[$string])) {
-                $result = $prefs_cache[$string];
+            $result = $prefs_cache[$string];
         } else {
             $result = do_hook_function('get_pref', array($username,$string));
             if (!$result) {
@@ -196,9 +198,9 @@ function checkForPrefs($data_dir, $username, $filename = '') {
         /* Otherwise, report an error. */
         $errTitle = sprintf( _("Error opening %s"), $default_pref );
         if (!is_readable($default_pref)) {
-            $errString = $errTitle . "<br>\n" .
-                         _("Default preference file not found or not readable!") . "<br>\n" .
-                         _("Please contact your system administrator and report this error.") . "<br>\n";
+            $errString = $errTitle . "<br />\n" .
+                         _("Default preference file not found or not readable!") . "<br />\n" .
+                         _("Please contact your system administrator and report this error.") . "<br />\n";
             logout_error( $errString, $errTitle );
             exit;
         } else if (!@copy($default_pref, $filename)) {
@@ -207,10 +209,10 @@ function checkForPrefs($data_dir, $username, $filename = '') {
                 $user_data = posix_getpwuid(posix_getuid());
                 $uid = $user_data['name'];
             }
-            $errString = $errTitle . '<br>' .
-                       _("Could not create initial preference file!") . "<br>\n" .
+            $errString = $errTitle . '<br />' .
+                       _("Could not create initial preference file!") . "<br />\n" .
                        sprintf( _("%s should be writable by user %s"), $data_dir, $uid ) .
-                       "<br>\n" . _("Please contact your system administrator and report this error.") . "<br>\n";
+                       "<br />\n" . _("Please contact your system administrator and report this error.") . "<br />\n";
             logout_error( $errString, $errTitle );
             exit;
         }
@@ -221,6 +223,11 @@ function checkForPrefs($data_dir, $username, $filename = '') {
  * Write the User Signature.
  */
 function setSig($data_dir, $username, $number, $value) {
+    // Limit signature size to 64KB (database BLOB limit)
+    if (strlen($value)>65536) {
+        error_option_save(_("Signature is too big."));
+        return;
+    }
     $filename = getHashedFile($username, $data_dir, "$username.si$number");
     /* Open the file for writing, or else display an error to the user. */
     if(!$file = @fopen("$filename.tmp", 'w')) {
@@ -261,3 +268,6 @@ function getSig($data_dir, $username, $number) {
     }
     return $sig;
 }
+
+// vim: et ts=4
+?>

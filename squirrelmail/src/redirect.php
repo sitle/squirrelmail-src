@@ -50,7 +50,7 @@ sqsession_register ($base_uri, 'base_uri');
 sqGetGlobalVar('login_username', $login_username);
 sqGetGlobalVar('secretkey', $secretkey);
 if(!sqGetGlobalVar('squirrelmail_language', $squirrelmail_language) || $squirrelmail_language == '') {
-	$squirrelmail_language = $squirrelmail_default_language;
+    $squirrelmail_language = $squirrelmail_default_language;
 }
 if (!sqgetGlobalVar('mailto', $mailto)) {
     $mailto = '';
@@ -87,19 +87,6 @@ if (!sqsession_is_registered('user_is_logged_in')) {
     $imapConnection = sqimap_login($login_username, $key, $imapServerAddress, $imapPort, 0);
 
     $sqimap_capabilities = sqimap_capability($imapConnection);
-    if (!$allow_server_sort) {
-        $sqimap_capabilities['SORT'] = false;
-    }
-    if (!$allow_thread_sort) {
-        $sqimap_capabilities['THREAD'] = false;
-    }
-    /* setup alignment in case of right to left languages*/
-    $dir = (isset( $languages[$squirrelmail_language]['DIR'])) ? $languages[$squirrelmail_language]['DIR'] : 'lft';
-    $rgt = ($dir == 'ltr' ) ? 'right' : 'left';
-    $lft = ($dir == 'ltr' ) ? 'left'  : 'right';
-    $align = array('right' => $rgt,'left' => $lft);
-    sqsession_register($align, 'align');
-
     sqsession_register($sqimap_capabilities, 'sqimap_capabilities');
     $delimiter = sqimap_get_delimiter ($imapConnection);
 

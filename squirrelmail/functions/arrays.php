@@ -23,9 +23,9 @@
   */
  function sqm_array_swap_values(&$a,$v1,$v2) {
      $r = false;
-     if (in_array($v1,$ar) && in_array($v2,$a)) {
-        $k1 = array_search($v1,$a,true);
-        $k2 = array_search($v1,$a,true);
+     if (in_array($v1,$a) && in_array($v2,$a)) {
+        $k1 = array_search($v1,$a);
+        $k2 = array_search($v1,$a);
         $d = $a[$k1];
         $a[$k1] = $a[$k2];
         $a[$k2] = $d;
@@ -49,7 +49,7 @@ function sqm_array_kmove_value(&$a,$v,$p) {
     $a_v = array_values($a);
     $a_k = array_keys($a);
     if (in_array($v, $a_v)) {
-        $k = array_search($v, $a_v,true);
+        $k = array_search($v, $a_v);
         $p_n = $k + $p;
         if ($p_n > 0 && $p_n < count($a_v)) {
             $d = $a_v[$k];
@@ -81,7 +81,7 @@ function sqm_array_move_value(&$a,$v,$p) {
     $r = false;
     $a_v = array_values($a);
     if (in_array($v, $a_v)) {
-        $k = array_search($v, $a_v,true);
+        $k = array_search($v, $a_v);
         $p_n = $k + $p;
         if ($p_n >= 0 && $p_n < count($a_v)) {
             $d = $a_v[$k];
@@ -107,7 +107,7 @@ function sqm_array_get_value_by_offset($a,$v,$p) {
     $r = false;
     $a_v = array_values($a);
     if (in_array($v, $a_v)) {
-        $k = array_search($v, $a_v,true);
+        $k = array_search($v, $a_v);
         $p_n = $k + $p;
         if ($p_n >= 0 && $p_n < count($a_v)) {
             $r = $a_v[$p_n];
