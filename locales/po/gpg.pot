@@ -6,10 +6,10 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: GPG Plugin v 2.0rc1\n"
-"POT-Creation-Date: 2003-11-22 10:26-0600\n"
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2003-12-22 06:13-0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Brian G. Peterson <brian@braverock.com>\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=CHARSET\n"
@@ -59,7 +59,7 @@ msgstr ""
 msgid "Add Keys"
 msgstr ""
 
-#: modules/keyview.php:67
+#: modules/keyview.php:66
 msgid "Algorithm"
 msgstr ""
 
@@ -69,7 +69,7 @@ msgid ""
 "without generating errors."
 msgstr ""
 
-#: modules/gpgdecrypt.mod:619
+#: modules/gpgdecrypt.mod:636
 msgid "Attachments"
 msgstr ""
 
@@ -89,16 +89,16 @@ msgstr ""
 msgid "Back to Main Squirrelmail Options"
 msgstr ""
 
-#: modules/cachepass.mod:38 modules/keyring_main.php:105
-#: modules/keyring_main.php:132
+#: modules/cachepass.mod:38 modules/keyring_main.php:132
+#: modules/keyring_main.php:159
 msgid "Bad Passphrase."
 msgstr ""
 
-#: gpg_hook_functions.php:163
+#: gpg_hook_functions.php:164
 msgid "Bad Signature"
 msgstr ""
 
-#: modules/gpgdecrypt.mod:563
+#: modules/gpgdecrypt.mod:580
 msgid "Bcc"
 msgstr ""
 
@@ -123,15 +123,15 @@ msgstr ""
 
 #: modules/general.mod:334 modules/changepass.php:101 modules/genkey.php:284
 #: modules/import_key_file.php:78 modules/import_key_text.php:90
-#: modules/keyview.php:154
+#: modules/keyview.php:161
 msgid "Cancel"
 msgstr ""
 
-#: modules/keyring_main.php:75
+#: modules/keyring_main.php:102
 msgid "Cannot change passphrase on key: "
 msgstr ""
 
-#: modules/gpgdecrypt.mod:562
+#: modules/gpgdecrypt.mod:579
 msgid "Cc"
 msgstr ""
 
@@ -173,7 +173,7 @@ msgstr ""
 msgid "Confirm Delete Keypair"
 msgstr ""
 
-#: modules/gpgdecrypt.mod:442
+#: modules/gpgdecrypt.mod:459
 msgid "Connection to IMAP Server to retrieve message body failed."
 msgstr ""
 
@@ -181,7 +181,7 @@ msgstr ""
 msgid "Could not export your key.  Please contact gpg development."
 msgstr ""
 
-#: gpg_decrypt_attach.php:124 gpg_decrypt_attach.php:327
+#: gpg_decrypt_attach.php:141 gpg_decrypt_attach.php:332
 #: gpg_hook_functions.php:78
 msgid "Could not write to temporary file: "
 msgstr ""
@@ -190,11 +190,11 @@ msgstr ""
 msgid "Create New Personal Keypair"
 msgstr ""
 
-#: gpg_functions.php:149
+#: gpg_functions.php:152
 msgid "Cute."
 msgstr ""
 
-#: modules/gpgdecrypt.mod:560
+#: modules/gpgdecrypt.mod:577
 msgid "Date"
 msgstr ""
 
@@ -207,11 +207,11 @@ msgstr ""
 msgid "Decrypt Attachment"
 msgstr ""
 
-#: gpg_hook_functions.php:393
+#: gpg_hook_functions.php:405
 msgid "Decrypt Message Now"
 msgstr ""
 
-#: modules/gpgdecrypt.mod:583
+#: modules/gpgdecrypt.mod:600
 msgid "Decrypted Message"
 msgstr ""
 
@@ -219,11 +219,11 @@ msgstr ""
 msgid "Default Keyserver set to:"
 msgstr ""
 
-#: modules/gpgdecrypt.mod:238 modules/keyview.php:168 modules/keyview.php:172
+#: modules/gpgdecrypt.mod:238 modules/keyview.php:180 modules/keyview.php:184
 msgid "Delete"
 msgstr ""
 
-#: modules/keyview.php:166 modules/keyview.php:173
+#: modules/keyview.php:178 modules/keyview.php:185
 msgid "Delete Keypair"
 msgstr ""
 
@@ -268,7 +268,15 @@ msgid ""
 "administrator?"
 msgstr ""
 
-#: modules/keyring_main.php:445 modules/keyring_main.php:460
+#: modules/keyring_main.php:83
+msgid "Done"
+msgstr ""
+
+#: gpg_view_verify_text.php:57
+msgid "Download signed attachment"
+msgstr ""
+
+#: modules/keyring_main.php:471 modules/keyring_main.php:486
 msgid "Email"
 msgstr ""
 
@@ -277,15 +285,15 @@ msgstr ""
 msgid "Email Address"
 msgstr ""
 
-#: modules/keyview.php:159
+#: modules/keyview.php:167 modules/keyview.php:169
 msgid "Email Key"
 msgstr ""
 
-#: gpg_hook_functions.php:958
+#: gpg_hook_functions.php:1017
 msgid "Encrypt Now"
 msgstr ""
 
-#: gpg_hook_functions.php:1035
+#: gpg_hook_functions.php:1094
 msgid "Encrypt on Send"
 msgstr ""
 
@@ -297,11 +305,11 @@ msgstr ""
 msgid "Encrypt to Self"
 msgstr ""
 
-#: gpg_hook_functions.php:1019
+#: gpg_hook_functions.php:1078
 msgid "Encrypt&Sign Now"
 msgstr ""
 
-#: gpg_hook_functions.php:498
+#: gpg_hook_functions.php:535
 msgid "Encrypted"
 msgstr ""
 
@@ -313,7 +321,7 @@ msgstr ""
 msgid "Enter New Passphrase:"
 msgstr ""
 
-#: gpg_decrypt_attach.php:224 modules/passpop.mod:133 modules/genkey.php:260
+#: gpg_decrypt_attach.php:229 modules/passpop.mod:133 modules/genkey.php:260
 msgid "Enter Passphrase"
 msgstr ""
 
@@ -321,18 +329,18 @@ msgstr ""
 msgid "Enter Search text below to search for a key to import"
 msgstr ""
 
-#: gpg_key_functions.php:387
+#: gpg_key_functions.php:389
 msgid ""
 "Enter a search string for the key you would like to trust in the box below."
 msgstr ""
 
-#: modules/gpgdecrypt.mod:646 modules/changepass.php:28
-#: modules/genkey_keygen.php:209 modules/keyring_main.php:259
-#: modules/keyview.php:132
+#: modules/gpgdecrypt.mod:662 modules/changepass.php:28
+#: modules/genkey_keygen.php:209 modules/keyring_main.php:285
+#: modules/keyview.php:137
 msgid "Error: "
 msgstr ""
 
-#: gpg_decrypt_attach.php:306
+#: gpg_decrypt_attach.php:311
 msgid "Error: No filename found to save attachment"
 msgstr ""
 
@@ -340,7 +348,7 @@ msgstr ""
 msgid "Errors:"
 msgstr ""
 
-#: modules/keyview.php:64
+#: modules/keyview.php:63
 msgid "Expiration Date"
 msgstr ""
 
@@ -348,7 +356,7 @@ msgstr ""
 msgid "External Resources"
 msgstr ""
 
-#: modules/keyring_main.php:493
+#: modules/keyring_main.php:519
 msgid "Extras"
 msgstr ""
 
@@ -368,7 +376,7 @@ msgstr ""
 msgid "Forward as Attachment"
 msgstr ""
 
-#: modules/gpgdecrypt.mod:559
+#: modules/gpgdecrypt.mod:576
 msgid "From"
 msgstr ""
 
@@ -384,7 +392,7 @@ msgstr ""
 msgid "GPG Decryption Initiating"
 msgstr ""
 
-#: modules/gpgdecrypt.mod:428
+#: modules/gpgdecrypt.mod:445
 msgid "GPG Decryption Results"
 msgstr ""
 
@@ -400,11 +408,11 @@ msgstr ""
 msgid "GPG Options - Create a Personal Keypair"
 msgstr ""
 
-#: modules/keyview.php:124
+#: modules/keyring_main.php:66 modules/keyview.php:129
 msgid "GPG Options - Display Key"
 msgstr ""
 
-#: modules/keyring_main.php:231
+#: modules/keyring_main.php:258
 msgid "GPG Options - Keyring Management"
 msgstr ""
 
@@ -420,20 +428,20 @@ msgstr ""
 msgid "GPG Plugin - General Options"
 msgstr ""
 
-#: gpg_sign_functions.php:194
+#: gpg_sign_functions.php:220
 msgid "GPG Plugin Error:No body text received from Compose page"
 msgstr ""
 
-#: gpg_help_base.php:50 gpg_help_base.php:55 gpg_help.php:50
+#: gpg_help_base.php:57 gpg_help_base.php:62 gpg_help.php:56
 #: modules/options_main.mod:43
 msgid "GPG Plugin Help"
 msgstr ""
 
-#: gpg_hook_functions.php:852
+#: gpg_hook_functions.php:901
 msgid "GPG Plugin Options"
 msgstr ""
 
-#: gpg_encrypt_functions.php:276
+#: gpg_encrypt_functions.php:279
 msgid "GPG Plugin: No cyphertext was generated."
 msgstr ""
 
@@ -442,13 +450,13 @@ msgid ""
 "GPG Plugin: Plain-text Attachment file not deleted due to error in Encrypt."
 msgstr ""
 
-#: gpg_encrypt_functions.php:200
+#: gpg_encrypt_functions.php:203
 msgid ""
 "GPG Plugin: You must specify a signing key in the Options screen to sign "
 "messages."
 msgstr ""
 
-#: gpg_encrypt_functions.php:282
+#: gpg_encrypt_functions.php:285
 msgid "GPG Plugin: gpg returned a non-clean return value of: "
 msgstr ""
 
@@ -464,7 +472,7 @@ msgstr ""
 msgid "Generate New Keypair"
 msgstr ""
 
-#: modules/keyring_main.php:641
+#: modules/keyring_main.php:667
 msgid "Generate new personal key pair"
 msgstr ""
 
@@ -472,8 +480,8 @@ msgstr ""
 msgid "Generating Keypair based on:"
 msgstr ""
 
-#: modules/keyring_main.php:470 modules/keyring_main.php:485
-#: modules/keyview.php:63
+#: modules/keyring_main.php:496 modules/keyring_main.php:511
+#: modules/keyview.php:62
 msgid "Generation Date"
 msgstr ""
 
@@ -481,11 +489,11 @@ msgstr ""
 msgid "Getting Started with the GPG Plugin"
 msgstr ""
 
-#: modules/keyring_main.php:378
+#: modules/keyring_main.php:404
 msgid "Go"
 msgstr ""
 
-#: gpg_hook_functions.php:161
+#: gpg_hook_functions.php:162
 msgid "Good Signature"
 msgstr ""
 
@@ -508,7 +516,7 @@ msgstr ""
 msgid "How do I choose a passphrase?"
 msgstr ""
 
-#: modules/keyview.php:66
+#: modules/keyview.php:65
 msgid "ID"
 msgstr ""
 
@@ -553,7 +561,7 @@ msgid ""
 "remember your passphrase."
 msgstr ""
 
-#: gpg_key_functions.php:385
+#: gpg_key_functions.php:387
 msgid ""
 "If you do not see the key you want to trust in the list above, or if there "
 "is no list:"
@@ -676,7 +684,7 @@ msgstr ""
 msgid "Import Key File to Keyring"
 msgstr ""
 
-#: gpg_hook_functions.php:440
+#: gpg_hook_functions.php:454
 msgid "Import Key contained in this email now"
 msgstr ""
 
@@ -688,7 +696,7 @@ msgstr ""
 msgid "Import external keys"
 msgstr ""
 
-#: modules/genkey.php:91 modules/getstart.php:70 modules/keyring_main.php:629
+#: modules/genkey.php:91 modules/getstart.php:70 modules/keyring_main.php:655
 msgid "Import keys to your personal keyring via: "
 msgstr ""
 
@@ -702,7 +710,7 @@ msgstr ""
 msgid "Info:"
 msgstr ""
 
-#: modules/gpgdecrypt.mod:655
+#: modules/gpgdecrypt.mod:671
 msgid "Info: "
 msgstr ""
 
@@ -718,7 +726,7 @@ msgid ""
 "is secure."
 msgstr ""
 
-#: modules/keyring_main.php:420 modules/keyring_main.php:435
+#: modules/keyring_main.php:446 modules/keyring_main.php:461
 msgid "Key"
 msgstr ""
 
@@ -726,7 +734,7 @@ msgstr ""
 msgid "Key Date"
 msgstr ""
 
-#: gpg_key_functions.php:346 gpg_key_functions.php:359
+#: gpg_key_functions.php:348 gpg_key_functions.php:361
 msgid "Key Details:"
 msgstr ""
 
@@ -738,11 +746,11 @@ msgstr ""
 msgid "Key ID"
 msgstr ""
 
-#: modules/keyview.php:65
+#: modules/keyview.php:64
 msgid "Key Length"
 msgstr ""
 
-#: modules/keyring_main.php:613
+#: modules/keyring_main.php:639
 msgid "Key Search"
 msgstr ""
 
@@ -760,7 +768,7 @@ msgstr ""
 msgid "Keyring Management Functions"
 msgstr ""
 
-#: modules/keyring_main.php:656
+#: modules/keyring_main.php:682
 msgid "Keyring not editable, keyring functions disabled."
 msgstr ""
 
@@ -776,12 +784,20 @@ msgstr ""
 msgid "Last"
 msgstr ""
 
-#: modules/getstart.php:143 modules/keyring_main.php:648
+#: modules/getstart.php:143 modules/keyring_main.php:674
 msgid "Look up keys on a public keyserver"
 msgstr ""
 
 #: modules/gpgdecrypt.mod:224
 msgid "Message List"
+msgstr ""
+
+#: modules/gpgdecrypt.mod:345
+msgid "Move"
+msgstr ""
+
+#: modules/gpgdecrypt.mod:336
+msgid "Move to:"
 msgstr ""
 
 #: modules/keyserver.mod:117
@@ -792,11 +808,11 @@ msgstr ""
 msgid "Never"
 msgstr ""
 
-#: modules/keyring_main.php:395 modules/keyring_main.php:583
+#: modules/keyring_main.php:421 modules/keyring_main.php:609
 msgid "New Search"
 msgstr ""
 
-#: modules/keyring_main.php:349
+#: modules/keyring_main.php:375
 msgid "Newly Import Keys"
 msgstr ""
 
@@ -813,19 +829,19 @@ msgstr ""
 msgid "No"
 msgstr ""
 
-#: modules/keyring_main.php:183
+#: modules/keyring_main.php:210
 msgid "No file was uploaded."
 msgstr ""
 
-#: modules/keyring_main.php:90
+#: modules/keyring_main.php:117
 msgid "No old passphrase passed.  Possibly blank password?"
 msgstr ""
 
-#: modules/keyring_main.php:128
+#: modules/keyring_main.php:155
 msgid "No secret key found."
 msgstr ""
 
-#: modules/keyring_main.php:545
+#: modules/keyring_main.php:571
 msgid "None"
 msgstr ""
 
@@ -833,7 +849,11 @@ msgstr ""
 msgid "One Year"
 msgstr ""
 
-#: modules/keyview.php:62
+#: modules/genkey.php:74
+msgid "Only letters, APOSTROPHE, DASH and PERIOD are allowed. Please correct."
+msgstr ""
+
+#: modules/keyview.php:61
 msgid "Owner Email"
 msgstr ""
 
@@ -865,17 +885,17 @@ msgstr ""
 msgid "Please choose the GPG Encryption Plugin options you wish to set up:"
 msgstr ""
 
-#: modules/keyring_main.php:521
+#: modules/keyring_main.php:547
 msgid ""
 "Please import a keypair containing a secret key if you wish to continue."
 msgstr ""
 
-#: gpg_key_functions.php:464
+#: gpg_key_functions.php:466
 msgid "Please try a different keyserver or contact your system administrator."
 msgstr ""
 
 #: modules/genkey_keygen.php:39 modules/gpg_module_header.php:31
-#: modules/gpg_popup_header.php:32 modules/keyring_main.php:514
+#: modules/gpg_popup_header.php:32 modules/keyring_main.php:540
 msgid "Please try again."
 msgstr ""
 
@@ -889,15 +909,15 @@ msgstr ""
 msgid "Previous"
 msgstr ""
 
-#: modules/gpgdecrypt.mod:564
+#: modules/gpgdecrypt.mod:581
 msgid "Priority"
 msgstr ""
 
-#: gpg_functions.php:860 gpg_functions.php:953
+#: gpg_functions.php:923 gpg_functions.php:1025
 msgid "Problem with command syntax. Check Debug Output"
 msgstr ""
 
-#: gpg_hook_functions.php:796
+#: gpg_hook_functions.php:843
 msgid "Problems with the cyphertext output:"
 msgstr ""
 
@@ -905,7 +925,7 @@ msgstr ""
 msgid "Public web servers are not always secure!"
 msgstr ""
 
-#: modules/keyview.php:86
+#: modules/keyview.php:91
 msgid "Remove this key from your keyring?  This action cannot be undone!"
 msgstr ""
 
@@ -941,15 +961,15 @@ msgstr ""
 msgid "SSL connection required to generate keypair."
 msgstr ""
 
-#: gpg_encrypt_functions.php:380
+#: gpg_encrypt_functions.php:370
 msgid "SSL connection required to use passphrase functions."
 msgstr ""
 
-#: modules/general.mod:333 modules/keyview.php:153
+#: modules/general.mod:333 modules/keyview.php:160
 msgid "Save"
 msgstr ""
 
-#: gpg_key_functions.php:391
+#: gpg_key_functions.php:393
 msgid "Search String:"
 msgstr ""
 
@@ -957,7 +977,7 @@ msgstr ""
 msgid "Search for Key"
 msgstr ""
 
-#: gpg_key_functions.php:394
+#: gpg_key_functions.php:396
 msgid "Search my keyring for a new trusted key using the search string above:"
 msgstr ""
 
@@ -965,7 +985,7 @@ msgstr ""
 msgid "Search results"
 msgstr ""
 
-#: modules/keyring_main.php:389 modules/keyring_main.php:576
+#: modules/keyring_main.php:415 modules/keyring_main.php:602
 msgid "Search results for"
 msgstr ""
 
@@ -973,7 +993,7 @@ msgstr ""
 msgid "Search text may be an email address or an OpenPGP(PGP/GPG) Key ID"
 msgstr ""
 
-#: modules/keyview.php:180
+#: modules/keyview.php:192
 msgid "Secret Key: "
 msgstr ""
 
@@ -1001,7 +1021,7 @@ msgstr ""
 msgid "Setting a new trusted key will replace any previously chosen key."
 msgstr ""
 
-#: gpg_hook_functions.php:365
+#: gpg_hook_functions.php:377
 msgid "Setup the GPG Plugin with a secret key."
 msgstr ""
 
@@ -1017,11 +1037,11 @@ msgstr ""
 msgid "Showing"
 msgstr ""
 
-#: modules/keyring_main.php:338
+#: modules/keyring_main.php:364
 msgid "Showing keys in"
 msgstr ""
 
-#: gpg_hook_functions.php:1020
+#: gpg_hook_functions.php:1079
 msgid "Sign on Send"
 msgstr ""
 
@@ -1029,8 +1049,13 @@ msgstr ""
 msgid "Sign on Send by Default"
 msgstr ""
 
-#: modules/gpgdecrypt.mod:566 modules/gpgdecrypt.mod:568
+#: gpg_hook_functions.php:479 gpg_hook_functions.php:667
+#: modules/gpgdecrypt.mod:583 modules/gpgdecrypt.mod:585
 msgid "Signature"
+msgstr ""
+
+#: gpg_hook_functions.php:170
+msgid "Signature verification process failed."
 msgstr ""
 
 #: modules/passpop.mod:146
@@ -1049,11 +1074,11 @@ msgid ""
 "the host!"
 msgstr ""
 
-#: modules/gpgdecrypt.mod:558
+#: modules/gpgdecrypt.mod:575
 msgid "Subject"
 msgstr ""
 
-#: modules/keyview.php:235
+#: modules/keyview.php:252
 msgid "Subkey"
 msgstr ""
 
@@ -1065,26 +1090,26 @@ msgstr ""
 msgid "Success!"
 msgstr ""
 
-#: modules/keyring_main.php:361
+#: modules/keyring_main.php:387
 msgid "System Keyring"
 msgstr ""
 
-#: gpg_help_base.php:62
+#: gpg_help_base.php:69
 msgid "Table of Contents"
 msgstr ""
 
-#: gpg_hook_functions.php:854 setup.php:91 modules/options_main.mod:29
+#: gpg_hook_functions.php:903 setup.php:97 modules/options_main.mod:29
 msgid ""
 "The GPG Encryption Plugin will allow you to encrypt, sign, and decrypt "
 "messages in accordance with the OpenPGP standard for email security and "
 "authentication."
 msgstr ""
 
-#: gpg_hook_functions.php:352
+#: gpg_hook_functions.php:364
 msgid "The System Administrator has disabled private key functions."
 msgstr ""
 
-#: gpg_encrypt_functions.php:64
+#: gpg_encrypt_functions.php:67
 msgid "The attachment file was not found"
 msgstr ""
 
@@ -1122,11 +1147,11 @@ msgid ""
 "key."
 msgstr ""
 
-#: modules/keyring_main.php:510
+#: modules/keyring_main.php:536
 msgid "There are no keys containing the string "
 msgstr ""
 
-#: gpg_functions.php:1023 gpg_functions.php:1029
+#: gpg_functions.php:1096 gpg_functions.php:1103
 msgid "There is no indication that this key really belongs to the owner"
 msgstr ""
 
@@ -1144,35 +1169,31 @@ msgid ""
 "be more productive."
 msgstr ""
 
-#: modules/keyring_main.php:65
+#: modules/keyring_main.php:92
 msgid ""
 "This action can only be performed on a secure connection (https).  Please "
 "change the 'http' in your address bar to 'https', and try again."
 msgstr ""
 
-#: gpg_functions.php:1024 gpg_functions.php:1030
+#: gpg_functions.php:1097 gpg_functions.php:1104
 msgid ""
 "This error usually occurs because you have not set a trusted key, or because "
 "you have not signed the key you are trying to encrypt to."
 msgstr ""
 
-#: modules/keyring_main.php:177
+#: modules/keyring_main.php:204
 msgid "This file exceeds the maximum size allowed."
 msgstr ""
 
-#: modules/keyring_main.php:180
+#: modules/keyring_main.php:207
 msgid "This file was only partially uploaded."
 msgstr ""
 
-#: modules/genkey.php:74
-msgid "This is a required field, please fill it in."
-msgstr ""
-
-#: modules/keyview.php:188
+#: modules/keyview.php:200
 msgid "This is my SIGNING key"
 msgstr ""
 
-#: modules/keyview.php:201
+#: modules/keyview.php:213
 msgid "This is my TRUSTED key"
 msgstr ""
 
@@ -1180,7 +1201,7 @@ msgstr ""
 msgid "This key has the properties:"
 msgstr ""
 
-#: gpg_hook_functions.php:360
+#: gpg_hook_functions.php:372
 msgid "This message contains encrypted content."
 msgstr ""
 
@@ -1210,7 +1231,7 @@ msgid ""
 "using encryption. "
 msgstr ""
 
-#: gpg_key_functions.php:389
+#: gpg_key_functions.php:391
 msgid ""
 "This will usually be the email address of the account that you use as your "
 "primary signing key."
@@ -1220,7 +1241,7 @@ msgstr ""
 msgid "Tip: this is typically a '.asc' or '.pkr' file"
 msgstr ""
 
-#: modules/gpgdecrypt.mod:561
+#: modules/gpgdecrypt.mod:578
 msgid "To"
 msgstr ""
 
@@ -1231,7 +1252,7 @@ msgid ""
 "called 'Trusted Key ID'."
 msgstr ""
 
-#: gpg_hook_functions.php:362
+#: gpg_hook_functions.php:374
 msgid "To decrypt this message inside Squirrelmail:"
 msgstr ""
 
@@ -1239,7 +1260,7 @@ msgstr ""
 msgid "To disable the trusted key option, select no key as trusted."
 msgstr ""
 
-#: modules/keyring_main.php:530
+#: modules/keyring_main.php:556
 msgid "To locate a key or keys, please enter a search string below."
 msgstr ""
 
@@ -1264,7 +1285,7 @@ msgstr ""
 msgid "Troubleshooting"
 msgstr ""
 
-#: gpg_key_functions.php:462
+#: gpg_key_functions.php:464
 msgid "Unable to connect to the keyserver you specified."
 msgstr ""
 
@@ -1285,26 +1306,26 @@ msgstr ""
 msgid "Unassigned"
 msgstr ""
 
-#: gpg_key_functions.php:568
+#: gpg_key_functions.php:571
 msgid ""
 "Unexpected Error. Did not receive valid export_type in gpg_export_key "
 "function."
 msgstr ""
 
-#: modules/gpgdecrypt.mod:109 modules/gpgdecrypt.mod:460
+#: modules/gpgdecrypt.mod:109 modules/gpgdecrypt.mod:477
 msgid "Unknown sender"
 msgstr ""
 
-#: gpg_hook_functions.php:495 gpg_hook_functions.php:498
-#: modules/gpgdecrypt.mod:568
+#: gpg_hook_functions.php:532 gpg_hook_functions.php:535
+#: gpg_hook_functions.php:676 modules/gpgdecrypt.mod:585
 msgid "Unsigned"
 msgstr ""
 
-#: gpg_key_functions.php:338
+#: gpg_key_functions.php:340
 msgid "Using signing key:"
 msgstr ""
 
-#: gpg_key_functions.php:351
+#: gpg_key_functions.php:353
 msgid "Using trusted key:"
 msgstr ""
 
@@ -1324,7 +1345,7 @@ msgstr ""
 msgid "View INSTALL file"
 msgstr ""
 
-#: modules/genkey_keygen.php:258
+#: modules/genkey_keygen.php:258 modules/keyview.php:171
 msgid "View Key"
 msgstr ""
 
@@ -1332,7 +1353,15 @@ msgstr ""
 msgid "View README file - includes contact information"
 msgstr ""
 
-#: modules/gpgdecrypt.mod:638
+#: gpg_view_verify_text.php:53
+msgid "View message"
+msgstr ""
+
+#: gpg_view_verify_text.php:52
+msgid "Viewing signature verification output for attachment: "
+msgstr ""
+
+#: modules/gpgdecrypt.mod:654
 msgid "Warning: "
 msgstr ""
 
@@ -1380,7 +1409,7 @@ msgstr ""
 msgid "What is a good key strength?"
 msgstr ""
 
-#: modules/genkey.php:189 modules/keyview.php:193 modules/keyview.php:207
+#: modules/genkey.php:189 modules/keyview.php:205 modules/keyview.php:219
 msgid "What's this?"
 msgstr ""
 
@@ -1416,7 +1445,7 @@ msgstr ""
 msgid "You are not connected using a secure connection."
 msgstr ""
 
-#: gpg_encrypt_functions.php:380 modules/genkey_keygen.php:53
+#: gpg_encrypt_functions.php:370 modules/genkey_keygen.php:53
 #: modules/genkey.php:45
 msgid "You are not using a secure connection."
 msgstr ""
@@ -1445,15 +1474,15 @@ msgstr ""
 msgid "You can only have one trusted key at any given time."
 msgstr ""
 
-#: gpg_key_functions.php:355
+#: gpg_key_functions.php:357
 msgid "You currently trust key:"
 msgstr ""
 
-#: gpg_encrypt_functions.php:440
+#: gpg_encrypt_functions.php:454
 msgid "You did not provide a passphrase!"
 msgstr ""
 
-#: gpg_sign_functions.php:234
+#: gpg_sign_functions.php:260
 msgid ""
 "You did not provide a passphrase! Please right-click and select 'Back' and "
 "try again"
@@ -1465,7 +1494,7 @@ msgid ""
 "message will NOT be readable by these recipients."
 msgstr ""
 
-#: modules/keyring_main.php:519
+#: modules/keyring_main.php:545
 msgid "You have no secret keys in your ring"
 msgstr ""
 
@@ -1567,7 +1596,7 @@ msgstr ""
 msgid "Your Preference to use the system ADK has been saved."
 msgstr ""
 
-#: modules/keyring_main.php:343
+#: modules/keyring_main.php:369
 msgid "Your Public Keyring"
 msgstr ""
 
@@ -1575,7 +1604,7 @@ msgstr ""
 msgid "Your Request to Encrypt on Send encountered a problem, details below:"
 msgstr ""
 
-#: modules/keyring_main.php:372
+#: modules/keyring_main.php:398
 msgid "Your Secret Keyring"
 msgstr ""
 
@@ -1589,7 +1618,7 @@ msgstr ""
 msgid "Your cached passphrase has been securely erased."
 msgstr ""
 
-#: gpg_key_functions.php:342
+#: gpg_key_functions.php:344
 msgid "Your current signing key: "
 msgstr ""
 
@@ -1637,7 +1666,7 @@ msgid ""
 "for the system."
 msgstr ""
 
-#: modules/getstart.php:146 modules/keyring_main.php:651
+#: modules/getstart.php:146 modules/keyring_main.php:677
 msgid "and import them to your keyring."
 msgstr ""
 
@@ -1657,15 +1686,15 @@ msgstr ""
 msgid "disclaimer"
 msgstr ""
 
-#: gpg_hook_functions.php:822
+#: gpg_hook_functions.php:869
 msgid "evil_muppets killed your encryption"
 msgstr ""
 
-#: modules/genkey.php:93 modules/getstart.php:72 modules/keyring_main.php:631
+#: modules/genkey.php:93 modules/getstart.php:72 modules/keyring_main.php:657
 msgid "file"
 msgstr ""
 
-#: modules/keyring_main.php:170
+#: modules/keyring_main.php:197
 msgid "filename:"
 msgstr ""
 
@@ -1685,7 +1714,7 @@ msgstr ""
 msgid "of"
 msgstr ""
 
-#: modules/genkey.php:95 modules/getstart.php:74 modules/keyring_main.php:633
+#: modules/genkey.php:95 modules/getstart.php:74 modules/keyring_main.php:659
 msgid "or"
 msgstr ""
 
@@ -1693,19 +1722,19 @@ msgstr ""
 msgid "script file not found, exiting abnormally."
 msgstr ""
 
-#: modules/genkey.php:181 modules/genkey.php:207
+#: modules/genkey.php:207
 msgid "selected"
 msgstr ""
 
-#: modules/keyring_main.php:558
+#: modules/keyring_main.php:584
 msgid "signing key"
 msgstr ""
 
-#: modules/genkey.php:97 modules/getstart.php:76 modules/keyring_main.php:635
+#: modules/genkey.php:97 modules/getstart.php:76 modules/keyring_main.php:661
 msgid "text"
 msgstr ""
 
-#: modules/keyring_main.php:552
+#: modules/keyring_main.php:578
 msgid "trusted key"
 msgstr ""
 
@@ -1713,6 +1742,6 @@ msgstr ""
 msgid "try again"
 msgstr ""
 
-#: modules/gpgdecrypt.mod:681
+#: modules/gpgdecrypt.mod:697
 msgid "writes"
 msgstr ""
