@@ -3,7 +3,7 @@
  * decode/cp10081.php
  * $Id$
  *
- * Copyright (c) 2003 The SquirrelMail Project Team
+ * Copyright (c) 2003-2004 The SquirrelMail Project Team
  * Licensed under the GNU GPL. For full terms see the file COPYING.
  *
  * This file contains cp10081 (MacTurkish) decoding function that 
@@ -19,8 +19,8 @@
  *  Date:          04/24/96
  *  Authors:       Lori Brownell <loribr@microsoft.com>
  *                 K.D. Chang    <a-kchang@microsoft.com>
- * @package squirrelmail
- * @subpackage decode_extra
+ * @package decode
+ * @subpackage ms-apple
  */
 
 /**
@@ -29,14 +29,8 @@
  * @return string $string Decoded string
  */
 function charset_decode_cp10081 ($string) {
-    global $default_charset;
-
-    if (strtolower($default_charset) == 'x-mac-turkish')
-        return $string;
-
-    /* Only do the slow convert if there are 8-bit characters */
-    /* avoid using 0xA0 (\240) in ereg ranges. RH73 does not like that */
-    if (! ereg("[\200-\237]", $string) and ! ereg("[\241-\377]", $string) )
+    // don't do decoding when there are no 8bit symbols
+    if (! sq_is8bit($string,'cp10081'))
         return $string;
 
     $cp10081 = array(

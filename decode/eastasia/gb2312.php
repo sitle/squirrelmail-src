@@ -33,8 +33,8 @@
  * Unicode Standard, and to make copies of this file in any form for
  * internal or external distribution as long as this notice remains
  * attached.
- * @package squirrelmail
- * @subpackage decode_extra
+ * @package decode
+ * @subpackage eastasia
  */
 
 /**
@@ -43,9 +43,13 @@
  * @return string $string Decoded string
  */
 function charset_decode_gb2312 ($string) {
-    global $default_charset,$aggressive_decoding;
+    global $aggressive_decoding;
 
     if (!$aggressive_decoding) return $string;
+
+    // don't do decoding when there are no 8bit symbols
+    if (! sq_is8bit($string,'gb2312'))
+        return $string;
 
     $gb2312 = array(
 	"\xA1\xA1" => '&#12288;',
