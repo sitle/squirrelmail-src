@@ -83,6 +83,9 @@ function sqimap_fgets($imap_stream) {
     $offset = 0;
     while (strpos($results, "\r\n", $offset) === false) {
         if (!($read = fgets($imap_stream, $buffer))) {
+        /* this happens in case of an error */
+        /* reset $results because it's useless */
+        $results = false;
             break;
         }
         if ( $results != '' ) {
@@ -99,56 +102,180 @@ function sqimap_fgets($imap_stream) {
  * the errors will be sent back through $response and $message
  */
 
-function sqimap_read_data_list ($imap_stream, $pre, $handle_errors, &$response, &$message, $query = '') {
+function sqimap_read_data_list ($imap_stream, $tag_uid, $handle_errors, &$response, &$message, $query = '') {
     global $color, $squirrelmail_language;
     $read = '';
-    $pre_a = explode(' ',trim($pre));
-    $pre = $pre_a[0];
+    $tag_uid_a = explode(' ',trim($tag_uid));
+    $tag = $tag_uid_a[0];
     $resultlist = array();
     $data = array();
     $read = sqimap_fgets($imap_stream);
-    while (1) {
-        switch (true) { 
-            case preg_match("/^$pre (OK|BAD|NO)(.*)$/", $read, $regs):
-            case preg_match('/^\* (BYE \[ALERT\])(.*)$/', $read, $regs):
-                $response = $regs[1];
-                $message = trim($regs[2]);
-                break 2;
-            case preg_match("/^\* (OK \[PARSE\])(.*)$/", $read):
+    $i = 0;
+    while ($read) {
+        $char = $read{0};
+        switch ($char)
+        {
+          case '+':
+          default:
+            $read = sqimap_fgets($imap_stream);
+            break;
+
+          case $tag{0}:
+          {
+            /* get the command */
+            $arg = '';
+            $i = strlen($tag)+1;
+            $s = substr($read,$i);
+            if (($j = strpos($s,' ')) || ($j = strpos($s,"\n"))) {
+                $arg = substr($s,0,$j);
+            }
+            $found_tag = substr($read,0,$i-1);
+            if ($arg && $found_tag==$tag) {
+                switch ($arg)
+                {
+                  case 'OK':
+                  case 'BAD':
+                  case 'NO':
+                  case 'BYE':
+                  case 'PREAUTH':
+                    $response = $arg;
+                    $message = trim(substr($read,$i+strlen($arg)));
+                    break 3; /* switch switch while */
+                  default: 
+                    /* this shouldn't happen */
+                    $response = $arg;
+                    $message = trim(substr($read,$i+strlen($arg)));
+                    break 3; /* switch switch while */
+                }
+            } elseif($found_tag !== $tag) {
+                /* reset data array because we do not need this reponse */
+                $data = array();
                 $read = sqimap_fgets($imap_stream);
-                break 1;
-            case preg_match('/^\* ([0-9]+) FETCH.*/', $read, $regs):
+                break;
+            }
+          } // end case $tag{0}
+
+          case '*':
+          {
+            if (preg_match('/^\*\s\d+\sFETCH/',$read)) {
+                /* check for literal */
+                $s = substr($read,-3);
                 $fetch_data = array();
-                $fetch_data[] = $read;
-                $read = sqimap_fgets($imap_stream);
-                while (!preg_match('/^\* [0-9]+ FETCH.*/', $read) &&
-                       !preg_match("/^$pre (OK|BAD|NO)(.*)$/", $read)) {
-                    $fetch_data[] = $read;
-                    $last = $read;
-                    $read = sqimap_fgets($imap_stream);
-                }
-                if (isset($last) && preg_match('/^\)/', $last)) {
-                    array_pop($fetch_data);
-                }
+                do { /* outer loop, continue until next untagged fetch
+                        or tagged reponse */
+                    do { /* innerloop for fetching literals. with this loop
+                            we prohibid that literal responses appear in the
+                            outer loop so we can trust the untagged and
+                            tagged info provided by $read */
+                        if ($s === "}\r\n") {
+                            $j = strrpos($read,'{');
+                            $iLit = substr($read,$j+1,-3);
+                            $fetch_data[] = $read;
+                            $sLiteral = fread($imap_stream,$iLit);
+                            if ($sLiteral === false) { /* error */
+                                break 4; /* while while switch while */
+                            }
+                            /* backwards compattibility */
+                            $aLiteral = explode("\n", $sLiteral);
+                            /* release not neaded data */
+                            unset($sLiteral);
+                            foreach ($aLiteral as $line) {
+                                $fetch_data[] = $line ."\n";
+                            }
+                            /* release not neaded data */
+                            unset($aLiteral); 
+                            /* next fgets belongs to this fetch because
+                               we just got the exact literalsize and there
+                               must follow data to complete the response */
+                            $read = sqimap_fgets($imap_stream);
+                            if ($read === false) { /* error */
+                                break 4; /* while while switch while */
+                            }
+                            $fetch_data[] = $read;
+                        } else {
+                            $fetch_data[] = $read;
+                        }
+                        /* retrieve next line and check in the while
+                           statements if it belongs to this fetch response */
+                        $read = sqimap_fgets($imap_stream);
+                        if ($read === false) { /* error */
+                            break 4; /* while while switch while */
+                        }
+                        /* check for next untagged reponse and break */
+                        if ($read{0} == '*') break 2;
+                        $s = substr($read,-3);
+                    } while ($s === "}\r\n");
+                    $s = substr($read,-3);
+                } while ($read{0} !== '*' &&
+                         substr($read,0,strlen($tag)) !== $tag);
                 $resultlist[] = $fetch_data;
+                /* release not neaded data */
+                unset ($fetch_data);
+            } else {
+                $s = substr($read,-3);
+                do {
+                    if ($s === "}\r\n") {
+                        $j = strrpos($read,'{');
+                        $iLit = substr($read,$j+1,-3);
+                        $data[] = $read;
+                        $sLiteral = fread($imap_stream,$iLit);
+                        if ($sLiteral === false) { /* error */
+                            $read = false;
+                            break 3; /* while switch while */
+                        }
+                        $data[] = $sLiteral;
+                        $fetch_data[] = sqimap_fgets($imap_stream);
+                    } else {
+                         $data[] = $read;
+                    }
+                    $read = sqimap_fgets($imap_stream);
+                    if ($read === false) {
+                        break 3; /* while switch while */
+                    } else if ($read{0} == '*') {
+                        break;
+                    }
+                    $s = substr($read,-3);
+                } while ($s === "}\r\n");
                 break 1;
-            default:
-                $data[] = $read;
-                $read = sqimap_fgets($imap_stream);
-                break 1;
-        }
+            }
+            break;
+          } // end case '*'
+        }   // end switch
+    } // end while
+    
+    /* error processing in case $read is false */
+    if ($read === false) {
+        unset($data);
+        set_up_language($squirrelmail_language);
+        require_once(SM_PATH . 'functions/display_messages.php');
+        $string = "<b><font color=$color[2]>\n" .
+                  _("ERROR : Connection dropped by imap-server.") .
+                  "</b><br>\n" .
+                  _("Query:") . ' '.
+                  htmlspecialchars($query) . '<br>' . "</font><br>\n";
+        error_box($string,$color);    
+        exit;
     }
+    
+    /* Set $resultlist array */
     if (!empty($data)) {
         $resultlist[] = $data;
     }
     elseif (empty($resultlist)) {
         $resultlist[] = array(); 
     }
+
+    /* Return result or handle errors */
     if ($handle_errors == false) {
         return( $resultlist );
-    } 
-    elseif ($response == 'NO') {
-    /* ignore this error from M$ exchange, it is not fatal (aka bug) */
+    }
+    switch ($response)
+    {
+    case 'OK':
+        return $resultlist;
+        break;
+    case 'NO': 
+        /* ignore this error from M$ exchange, it is not fatal (aka bug) */
         if (strstr($message, 'command resulted in') === false) {
             set_up_language($squirrelmail_language);
             require_once(SM_PATH . 'functions/display_messages.php');
@@ -160,10 +287,11 @@ function sqimap_read_data_list ($imap_stream, $pre, $handle_errors, &$response, 
                 _("Reason Given: ") .
                 htmlspecialchars($message) . "</font><br>\n";
             error_box($string,$color);
+            echo '</body></html>';
             exit;
         }
-    } 
-    elseif ($response == 'BAD') {
+        break;
+    case 'BAD': 
         set_up_language($squirrelmail_language);
         require_once(SM_PATH . 'functions/display_messages.php');
         $string = "<b><font color=$color[2]>\n" .
@@ -173,30 +301,56 @@ function sqimap_read_data_list ($imap_stream, $pre, $handle_errors, &$response, 
             htmlspecialchars($query) . '<br>' .
             _("Server responded: ") .
             htmlspecialchars($message) . "</font><br>\n";
-        error_box($string,$color);    
+        error_box($string,$color);
+        echo '</body></html>';        
+        exit; 
+    case 'BYE': 
+        set_up_language($squirrelmail_language);
+        require_once(SM_PATH . 'functions/display_messages.php');
+        $string = "<b><font color=$color[2]>\n" .
+            _("ERROR : Imap server closed the connection.") .
+            "</b><br>\n" .
+            _("Query:") . ' '.
+            htmlspecialchars($query) . '<br>' .
+            _("Server responded: ") .
+            htmlspecialchars($message) . "</font><br>\n";
+        error_box($string,$color);
+        echo '</body></html>';        
         exit;
-    } 
-    else {
-        return $resultlist;
+    default: 
+        set_up_language($squirrelmail_language);
+        require_once(SM_PATH . 'functions/display_messages.php');
+        $string = "<b><font color=$color[2]>\n" .
+            _("ERROR : Unknown imap response.") .
+            "</b><br>\n" .
+            _("Query:") . ' '.
+            htmlspecialchars($query) . '<br>' .
+            _("Server responded: ") .
+            htmlspecialchars($message) . "</font><br>\n";
+        error_box($string,$color);
+       /* the error is displayed but because we don't know the reponse we
+          return the result anyway */
+       return $resultlist;    
+       break;
     }
 }
 
-function sqimap_read_data ($imap_stream, $pre, $handle_errors, &$response, &$message, $query = '') {
-    $res = sqimap_read_data_list($imap_stream, $pre, $handle_errors, $response, $message, $query);
-  
+function sqimap_read_data ($imap_stream, $tag_uid, $handle_errors, &$response, &$message, $query = '') {
+    $res = sqimap_read_data_list($imap_stream, $tag_uid, $handle_errors, $response, $message, $query);
+ 
     /* sqimap_read_data should be called for one response
        but since it just calls sqimap_read_data_list which 
        handles multiple responses we need to check for that
        and merge the $res array IF they are seperated and 
        IF it was a FETCH response. */
   
-    if (isset($res[1]) && is_array($res[1]) && isset($res[1][0]) 
-        && preg_match('/^\* \d+ FETCH/', $res[1][0])) {
-        $result = array();
-        foreach($res as $index=>$value) {
-            $result = array_merge($result, $res["$index"]);
-        }
-    }
+//    if (isset($res[1]) && is_array($res[1]) && isset($res[1][0]) 
+//        && preg_match('/^\* \d+ FETCH/', $res[1][0])) {
+//        $result = array();
+//        foreach($res as $index=>$value) {
+//            $result = array_merge($result, $res["$index"]);
+//        }
+//    }
     if (isset($result)) {
         return $result;
     }
