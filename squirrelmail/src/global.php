@@ -81,8 +81,12 @@ function sqsession_unregister ($name) {
  *  (in that order) and register it as a global var.
  */
 function sqextractGlobalVar ($name) {
-    global $_SESSION, $_GET, $_POST, $$name;
-
+    if ( (float)substr(PHP_VERSION,0,3) < 4.1 ) {
+        if (ini_get('register_globals') == 0) {
+            global $_SESSION, $_GET, $_POST;
+        }
+    }
+    global  $$name;
     if( isset($_SESSION[$name]) ) {
         $$name = $_SESSION[$name];
     }
