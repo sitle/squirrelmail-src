@@ -338,7 +338,7 @@ if(!empty($addrbook_dsn) || !empty($prefs_dsn) || !empty($addrbook_global_dsn)) 
             'mysqli' => 'mysqli_connect',
             'oci8' => 'ocilogon',
             'odbc' => 'odbc_connect',
-            'pgsql' => 'pgsql_connect',
+            'pgsql' => 'pg_connect',
             'sqlite' => 'sqlite_open',
             'sybase' => 'sybase_connect'
             );
