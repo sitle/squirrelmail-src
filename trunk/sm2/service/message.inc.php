@@ -178,8 +178,8 @@ class messages extends service {
             /* $aList array(mailboxname, flags, delimiter) */
             $aList =& $this->backend->getmailboxList($type,$aNamespace,$aProperties);
             $mbxtree =& new mailboxtree('test');
-            $mbxtree->loadfromstream('namespace',$aList);
-            
+            $ret =& $mbxtree->loadfromstream('namespace',$aList);
+
         }
         return $ret;
     }

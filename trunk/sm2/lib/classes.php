@@ -24,11 +24,11 @@ define('SM_FNC','../functions/');
 // static list where we store dependencies of each class
 // key: classname value: required files that need to be included first
 $dependencies = array(
-        'Messages'   => array('Service','mailboxtree'),
-        'Service'    => array('tree'),
-        'Services'   => array('Tree'),
-        'tree'       => array('Object'),
-        'mailboxtree'=> array('tree'),
+        'Messages'     => array('Service','mailboxtree'),
+        'Service'      => array('tree'),
+        'Services'     => array('Tree'),
+        'tree'         => array('Object', 'acl'),
+        'mailboxtree'  => array('tree'),
         'imap_backend' => array('auth','parser')
         );
 // static list locations so we can move around the files during devel stage very easy
@@ -41,12 +41,15 @@ $locations = array(
         'mailboxtree' => SM_LIB .'mailbox/MailboxTree.class.php',
         'imap_backend' => SM_SRV. 'imap/imap_backend.class.php',
         'parser' => SM_LIB.'parser.class.php',
-        'auth' => SM_FNC. 'auth.php'
+        'auth' => SM_FNC. 'auth.php',
+        'acl' => SM_LIB . 'acl.class.php',
+        // temp location for testing purposes
+        'config' => SM_LIB .'config.php'
         );
 
-// end dependecy.inc stuff        
-                        
-// array to keep track of already included files. Should be stored in the session        
+// end dependecy.inc stuff
+
+// array to keep track of already included files. Should be stored in the session
 $include_once = array();
 
 /**
@@ -69,6 +72,7 @@ function sm_include($classname) {
             }
         }
     }
+    echo "{$locations[$classname]}<BR>";
     include($locations[$classname]);  // dependencies are included now include the file
     $include_once[$classname] = true; // keep track of included files
     return true;

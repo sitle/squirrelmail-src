@@ -227,9 +227,10 @@ class acl {
                                    break 2;
                                }
                            }
-                       } else if ($entry[0] == 'm' {
-                          $bMask = true;
-                       } 
+                       }
+                   } else if ($entry[0] == 'm') {
+                       $bMask = true;
+
                    } else if ($entry[0] == 'm') {
                        $bMask = true;
                    }    
@@ -251,7 +252,7 @@ class acl {
         }
         return true;        
     }
-    
+
     /**
      * @func      remove
      * @desc      remove an acl entry from the provided acl list 
@@ -295,10 +296,10 @@ class acl {
                        for($j=$i;$j<$iCnt;++$j) {
                            if ($aAclList[$i][0] == $tag && $aAclList[$i][1] == $qualifier) {
                                // replace unique qualifier
-                               unset($aAclList[$j];
+                               unset($aAclList[$j]);
                                break 3;
                            }
-                       } 
+                       }
                    }
                }
                break;
@@ -319,7 +320,7 @@ class acl {
               // error, wrong tag
               return false;
         }
-        return true;        
+        return true;
     }
     
     /**
@@ -346,15 +347,15 @@ class acl {
                      return $aAclList[$i][2];
                  }
               case 'G':
-                 if (!in_array($aAclList[$i][1]),$aGid,true) {
+                 if (!in_array($aAclList[$i][1],$aGid,true)) {
                      break;
                  }
               case 'o':
-              case 'm': 
+              case 'm':
                   $aAcl_temp[$tag] = $aAclList[$i][2];
                   break;
               case 'g': // user can be part of multiple groups
-                  if (in_array($aAclList[$i][1]),$aGid,true) {
+                  if (in_array($aAclList[$i][1],$aGid,true)) {
                       if (isset($aAcl_temp['g'])) {
                           // do a or comparasion between the already retrieved rights
                           $aAcl_temp['g'] = $aAcl_temp['g'] | $aAclList[$i][2];
@@ -392,14 +393,14 @@ class acl {
 
     /**
      * @func      suffRights
-     * @desc      calculate if provided rights meets requested rights 
+     * @desc      calculate if provided rights meets requested rights
      * @param     int        $iMyRights    my rights
-     * @param     int        $sReqRights   rights to check with    
+     * @param     int        $sReqRights   rights to check with
      * @return    bool                     sufficient rights
      * @access    public
      * @author    Marc Groot Koerkamp
-     */ 
-    function suffRights($iMyRights,$iReqRights) {     
+     */
+    function suffRights($iMyRights,$iReqRights) {
         if (($iMyRights & $iReqRights) == $iReqRights) {
             return true;
         }
@@ -408,17 +409,17 @@ class acl {
 
     /**
      * @func      checkAccess
-     * @desc      calculate if provided uid/gid has sufficient rights 
+     * @desc      calculate if provided uid/gid has sufficient rights
      * @param     arr        $aAclList     array with individual acl entries
-     * @param     str        $sUid         username    
+     * @param     str        $sUid         username
      * @param     arr        $aGid         array with groups
      * @param     int        $iRights      rights to check
      * @return    bool                     sufficient rights
      * @access    public
      * @author    Marc Groot Koerkamp
-     */ 
-    function checkAccess($aAclList,$sUid='',$aGid=array(),$iRights) {  
-        $iMyRights = acl::effectiveRights($aAclList,$sUid,$aGid());
+     */
+    function checkAccess($aAclList,$sUid='',$aGid=array(),$iRights) {
+        $iMyRights = acl::effectiveRights($aAclList,$sUid,$aGid);
         return acl::suffRights($iMyRights,$iRights);
     }
 }
