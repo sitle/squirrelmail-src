@@ -1,14 +1,12 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
+# Copyright (C) YEAR Free Software Foundation, Inc.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2003-12-26 17:29+0200\n"
+"POT-Creation-Date: 2004-01-26 20:08+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -98,9 +96,6 @@ msgstr ""
 msgid "Additional info"
 msgstr ""
 
-msgid "Add to:"
-msgstr ""
-
 msgid "No personal address book is defined. Contact administrator."
 msgstr ""
 
@@ -125,7 +120,8 @@ msgstr ""
 msgid "Delete selected"
 msgstr ""
 
-msgid "Add to address book"
+#, c-format
+msgid "Add to %s"
 msgstr ""
 
 msgid "said"
@@ -158,7 +154,7 @@ msgstr ""
 msgid "Draft Saved"
 msgstr ""
 
-msgid "Your Message has been sent."
+msgid "Your Message has been sent"
 msgstr ""
 
 msgid "From:"
@@ -689,34 +685,7 @@ msgstr ""
 msgid "You must be logged in to access this page."
 msgstr ""
 
-msgid "All Folders"
-msgstr ""
-
-msgid "Please enter something to search for"
-msgstr ""
-
-msgid "There must be at least one criteria to search for"
-msgstr ""
-
-msgid "Error in criteria argument"
-msgstr ""
-
-msgid "M j, Y"
-msgstr ""
-
-msgid "(Illegal date)"
-msgstr ""
-
-msgid "(Wrong date)"
-msgstr ""
-
-msgid "In"
-msgstr ""
-
-msgid "(Missing argument)"
-msgstr ""
-
-msgid "(Spurious argument)"
+msgid "Folder:"
 msgstr ""
 
 msgid "edit"
@@ -728,7 +697,7 @@ msgstr ""
 msgid "delete"
 msgstr ""
 
-msgid "Saved Searches"
+msgid "Recent Searches"
 msgstr ""
 
 msgid "save"
@@ -737,112 +706,16 @@ msgstr ""
 msgid "forget"
 msgstr ""
 
-msgid "Recent Searches"
+msgid "Current Search"
 msgstr ""
 
-msgid "Missing"
+msgid "All Folders"
 msgstr ""
 
-msgid "and&nbsp;subfolders:"
+msgid "Body"
 msgstr ""
 
-msgid "Exclude Criteria:"
-msgstr ""
-
-msgid "Search Criteria"
-msgstr ""
-
-msgid "Folder:"
-msgstr ""
-
-msgid "Add New Criteria"
-msgstr ""
-
-msgid "Remove Excluded Criteria"
-msgstr ""
-
-msgid "Remove All Criteria"
-msgstr ""
-
-msgid "Answered"
-msgstr ""
-
-msgid "Before"
-msgstr ""
-
-msgid "Message Body"
-msgstr ""
-
-msgid "Deleted"
-msgstr ""
-
-msgid "Draft"
-msgstr ""
-
-msgid "Flagged"
-msgstr ""
-
-msgid "Sent By"
-msgstr ""
-
-msgid "Header Field"
-msgstr ""
-
-msgid "Keyword"
-msgstr ""
-
-msgid "Larger Than"
-msgstr ""
-
-msgid "Old"
-msgstr ""
-
-msgid "On"
-msgstr ""
-
-msgid "Recent"
-msgstr ""
-
-msgid "Seen"
-msgstr ""
-
-msgid "Sent Before"
-msgstr ""
-
-msgid "Sent On"
-msgstr ""
-
-msgid "Sent Since"
-msgstr ""
-
-msgid "Since"
-msgstr ""
-
-msgid "Smaller Than"
-msgstr ""
-
-msgid "Subject Contains"
-msgstr ""
-
-msgid "Header and Body"
-msgstr ""
-
-msgid "Sent To"
-msgstr ""
-
-msgid "Not"
-msgstr ""
-
-msgid "And In"
-msgstr ""
-
-msgid "Or In"
-msgstr ""
-
-msgid "And"
-msgstr ""
-
-msgid "Or"
+msgid "Everywhere"
 msgstr ""
 
 msgid "Search Results"
@@ -903,9 +776,6 @@ msgid "Viewing Full Header"
 msgstr ""
 
 msgid "Viewing a text attachment"
-msgstr ""
-
-msgid "Folder List"
 msgstr ""
 
 msgid "Personal address book"
@@ -1105,6 +975,9 @@ msgstr ""
 msgid "D, F j, Y G:i"
 msgstr ""
 
+msgid "M j, Y"
+msgstr ""
+
 msgid "g:i a"
 msgstr ""
 
@@ -1119,6 +992,12 @@ msgstr ""
 
 #, c-format
 msgid "Preference database error (%s). Exiting abnormally"
+msgstr ""
+
+msgid "Unknown user or password incorrect."
+msgstr ""
+
+msgid "Click here to try again"
 msgstr ""
 
 #, c-format
@@ -1187,46 +1066,36 @@ msgid ""
 "your system administrator to resolve this issue."
 msgstr ""
 
-msgid "ERROR : Could not complete request."
-msgstr ""
-
-msgid "ERROR : Bad or malformed request."
-msgstr ""
-
-msgid "ERROR : Imap server closed the connection."
-msgstr ""
-
-msgid "ERROR : Connection dropped by imap-server."
-msgstr ""
-
-msgid "ERROR : Unknown imap response."
-msgstr ""
-
-msgid "Reason Given: "
-msgstr ""
-
-msgid "Possible reason : "
-msgstr ""
-
-msgid "Query:"
-msgstr ""
-
-msgid "The imap server failed to handle threading."
-msgstr ""
-
-msgid "Click here to unset thread view for this mailbox and start again."
+msgid ""
+"You need to have php4 installed with the multibyte string function enabled "
+"(using configure option --enable-mbstring)."
 msgstr ""
 
 msgid "ERROR : No available imapstream."
 msgstr ""
 
-msgid "ERROR : Bad function call."
+msgid "ERROR : Connection dropped by imap-server."
 msgstr ""
 
-msgid "Reason:"
+msgid "ERROR : Could not complete request."
+msgstr ""
+
+msgid "Query:"
+msgstr ""
+
+msgid "Reason Given: "
+msgstr ""
+
+msgid "ERROR : Bad or malformed request."
 msgstr ""
 
 msgid "Server responded: "
+msgstr ""
+
+msgid "ERROR : Imap server closed the connection."
+msgstr ""
+
+msgid "ERROR : Unknown imap response."
 msgstr ""
 
 #, c-format
@@ -1244,9 +1113,6 @@ msgstr ""
 msgid "Read data:"
 msgstr ""
 
-msgid "Unknown user or password incorrect."
-msgstr ""
-
 msgid "ERROR : Could not append message to"
 msgstr ""
 
@@ -1259,6 +1125,9 @@ msgid ""
 msgstr ""
 
 msgid "(no subject)"
+msgstr ""
+
+msgid "Unknown Sender"
 msgstr ""
 
 msgid "Unknown response from IMAP server: "
@@ -1317,12 +1186,6 @@ msgid "Unthread View"
 msgstr ""
 
 msgid "Thread View"
-msgstr ""
-
-msgid "Bypass Trash"
-msgstr ""
-
-msgid "Click here to change the sorting of the message list"
 msgstr ""
 
 msgid "Toggle All"
@@ -1511,15 +1374,6 @@ msgstr ""
 msgid "Always Show Full Date"
 msgstr ""
 
-msgid "Length of From/To Field (0 for full)"
-msgstr ""
-
-msgid "Length of Subject Field (0 for full)"
-msgstr ""
-
-msgid "Show recipient name if the message is from your default identity"
-msgstr ""
-
 msgid "Message Display and Composition"
 msgstr ""
 
@@ -1596,9 +1450,6 @@ msgid "Focus in body"
 msgstr ""
 
 msgid "Select body"
-msgstr ""
-
-msgid "Strip signature when replying"
 msgstr ""
 
 msgid "Enable Sort by of Receive Date"
@@ -1679,7 +1530,7 @@ msgstr ""
 msgid "Unseen and Total"
 msgstr ""
 
-msgid "Enable Collapsable Folders"
+msgid "Enable Collapsible Folders"
 msgstr ""
 
 msgid "Enable Cumulative Unread Message Notification"
@@ -1722,12 +1573,6 @@ msgid "Selection List Style"
 msgstr ""
 
 msgid "Long: "
-msgstr ""
-
-msgid "Folder"
-msgstr ""
-
-msgid "Subfolder"
 msgstr ""
 
 msgid "Indented: "
@@ -1805,10 +1650,6 @@ msgstr ""
 msgid "Try to verify addresses"
 msgstr ""
 
-#, c-format
-msgid "Add to %s"
-msgstr ""
-
 msgid "Config File Version"
 msgstr ""
 
@@ -1843,6 +1684,9 @@ msgid "Provider Link URI"
 msgstr ""
 
 msgid "Provider Name"
+msgstr ""
+
+msgid "Default Language"
 msgstr ""
 
 msgid "Top Frame"
@@ -1974,6 +1818,9 @@ msgstr ""
 msgid "General Options"
 msgstr ""
 
+msgid "Default Charset"
+msgstr ""
+
 msgid "Data Directory"
 msgstr ""
 
@@ -2022,6 +1869,9 @@ msgstr ""
 msgid "Allow server charset search"
 msgstr ""
 
+msgid "UID support"
+msgstr ""
+
 msgid "PHP session name"
 msgstr ""
 
@@ -2052,51 +1902,6 @@ msgstr ""
 msgid "Preferences value field"
 msgstr ""
 
-msgid "Global address book DSN"
-msgstr ""
-
-msgid "Global address book table"
-msgstr ""
-
-msgid "Allow writing into global address book"
-msgstr ""
-
-msgid "Allow listing of global address book"
-msgstr ""
-
-msgid "Language settings"
-msgstr ""
-
-msgid "Default Language"
-msgstr ""
-
-msgid "Default Charset"
-msgstr ""
-
-msgid "Show alternative language names"
-msgstr ""
-
-msgid "Available languages"
-msgstr ""
-
-msgid "Use agresive decoding"
-msgstr ""
-
-msgid "Tweaks"
-msgstr ""
-
-msgid "Use advanced tree folder listing"
-msgstr ""
-
-msgid "Use old folder listing functions"
-msgstr ""
-
-msgid "Use php recode functions"
-msgstr ""
-
-msgid "Use php iconv functions"
-msgstr ""
-
 msgid "Themes"
 msgstr ""
 
@@ -2110,18 +1915,6 @@ msgid "Use index number of theme"
 msgstr ""
 
 msgid "Configuration Administrator"
-msgstr ""
-
-msgid ""
-"Note: it is recommended that you configure your system using conf.pl, and "
-"not this plugin. conf.pl contains additional information regarding the "
-"purpose of variables and appropriate values, as well as additional "
-"verification steps."
-msgstr ""
-
-msgid ""
-"Run or consult conf.pl should you run into difficulty with your "
-"configuration."
 msgstr ""
 
 msgid "Theme Name"
@@ -2415,13 +2208,13 @@ msgstr ""
 msgid "FREE - visi.com - Relay Stop List. Very conservative OpenRelay List."
 msgstr ""
 
-msgid "FREE - 2mbit.com Open Relays - Another list of Open Relays."
+msgid "FREE - ahbl.org Open Relays - Another list of Open Relays."
 msgstr ""
 
-msgid "FREE - 2mbit.com SPAM Source - List of Direct SPAM Sources."
+msgid "FREE - ahbl.org SPAM Source - List of Direct SPAM Sources."
 msgstr ""
 
-msgid "FREE - 2mbit.com SPAM ISPs - List of SPAM-friendly ISPs."
+msgid "FREE - ahbl.org SPAM ISPs - List of SPAM-friendly ISPs."
 msgstr ""
 
 msgid ""
@@ -2638,6 +2431,12 @@ msgstr ""
 msgid "Error "
 msgstr ""
 
+msgid "POP3 noop:"
+msgstr ""
+
+msgid "No connection to server"
+msgstr ""
+
 msgid "POP3 user:"
 msgstr ""
 
@@ -2657,9 +2456,6 @@ msgid "authentication failed "
 msgstr ""
 
 msgid "POP3 apop:"
-msgstr ""
-
-msgid "No connection to server"
 msgstr ""
 
 msgid "No login ID submitted"
@@ -2719,6 +2515,9 @@ msgstr ""
 msgid "Command failed "
 msgstr ""
 
+msgid "Remote POP server Fetching Mail"
+msgstr ""
+
 msgid "Select Server:"
 msgstr ""
 
@@ -2726,15 +2525,6 @@ msgid "Password for"
 msgstr ""
 
 msgid "Fetch Mail"
-msgstr ""
-
-msgid "Remote POP server Fetching Mail"
-msgstr ""
-
-msgid "No POP3 servers configured yet."
-msgstr ""
-
-msgid "Click here to go to the options page."
 msgstr ""
 
 msgid "Fetching from "
@@ -3082,15 +2872,6 @@ msgstr ""
 msgid "Web-based form"
 msgstr ""
 
-msgid "Spam Service Type:"
-msgstr ""
-
-msgid "Free reporting"
-msgstr ""
-
-msgid "Member services"
-msgstr ""
-
 msgid "Your SpamCop authorization code:"
 msgstr ""
 
@@ -3163,19 +2944,10 @@ msgstr ""
 
 msgid ""
 "The SpamCop service will display information as it finds it, so scroll down "
-"until you see a form button. It might pause a little while it is looking up "
-"information, so be a little patient. Read what it says, and submit the spam. "
-"Close the browser window.  Press Cancel or click on the appropriate mail "
-"folder to see messages and/or delete the spam."
-msgstr ""
-
-msgid "Spamcop Service Type"
-msgstr ""
-
-msgid ""
-"Service type option allows selecting which spamcop services you are using. "
-"Member services use different web reporting forms  and does not display "
-"nags. You can purchase these services, if you want to support SpamCop."
+"until you see a form button.  It might pause a little while it is looking up "
+"information, so be a little patient.  Read what it says, and submit the "
+"spam.  Close the browser window.  Press Cancel or click on the appropriate "
+"mail folder to see messages and/or delete the spam."
 msgstr ""
 
 msgid ""
@@ -3545,14 +3317,14 @@ msgstr ""
 msgid "No known limits, powered by Systran"
 msgstr ""
 
-msgid "No known limits, powered by GPLTrans (free, open source)"
-msgstr ""
-
 msgid "No known limits, powered by Translation Experts's InterTran"
 msgstr ""
 
 #, c-format
 msgid "Number of supported languages: %s"
+msgstr ""
+
+msgid "No known limits, powered by GPLTrans (free, open source)"
 msgstr ""
 
 msgid "Hellenic translations, no known limits, powered by Systran"
@@ -3714,6 +3486,281 @@ msgid "Interface language"
 msgstr ""
 
 msgid "Translation direction"
+msgstr ""
+
+msgid "Add to:"
+msgstr ""
+
+msgid "Add to address book"
+msgstr ""
+
+msgid "Your Message has been sent."
+msgstr ""
+
+msgid "Please enter something to search for"
+msgstr ""
+
+msgid "There must be at least one criteria to search for"
+msgstr ""
+
+msgid "Error in criteria argument"
+msgstr ""
+
+msgid "(Illegal date)"
+msgstr ""
+
+msgid "(Wrong date)"
+msgstr ""
+
+msgid "In"
+msgstr ""
+
+msgid "(Missing argument)"
+msgstr ""
+
+msgid "(Spurious argument)"
+msgstr ""
+
+msgid "Saved Searches"
+msgstr ""
+
+msgid "Missing"
+msgstr ""
+
+msgid "and&nbsp;subfolders:"
+msgstr ""
+
+msgid "Exclude Criteria:"
+msgstr ""
+
+msgid "Search Criteria"
+msgstr ""
+
+msgid "Add New Criteria"
+msgstr ""
+
+msgid "Remove Excluded Criteria"
+msgstr ""
+
+msgid "Remove All Criteria"
+msgstr ""
+
+msgid "Answered"
+msgstr ""
+
+msgid "Before"
+msgstr ""
+
+msgid "Message Body"
+msgstr ""
+
+msgid "Deleted"
+msgstr ""
+
+msgid "Draft"
+msgstr ""
+
+msgid "Flagged"
+msgstr ""
+
+msgid "Sent By"
+msgstr ""
+
+msgid "Header Field"
+msgstr ""
+
+msgid "Keyword"
+msgstr ""
+
+msgid "Larger Than"
+msgstr ""
+
+msgid "Old"
+msgstr ""
+
+msgid "On"
+msgstr ""
+
+msgid "Recent"
+msgstr ""
+
+msgid "Seen"
+msgstr ""
+
+msgid "Sent Before"
+msgstr ""
+
+msgid "Sent On"
+msgstr ""
+
+msgid "Sent Since"
+msgstr ""
+
+msgid "Since"
+msgstr ""
+
+msgid "Smaller Than"
+msgstr ""
+
+msgid "Subject Contains"
+msgstr ""
+
+msgid "Header and Body"
+msgstr ""
+
+msgid "Sent To"
+msgstr ""
+
+msgid "Not"
+msgstr ""
+
+msgid "And In"
+msgstr ""
+
+msgid "Or In"
+msgstr ""
+
+msgid "And"
+msgstr ""
+
+msgid "Or"
+msgstr ""
+
+msgid "Folder List"
+msgstr ""
+
+msgid "Possible reason : "
+msgstr ""
+
+msgid "The imap server failed to handle threading."
+msgstr ""
+
+msgid "Click here to unset thread view for this mailbox and start again."
+msgstr ""
+
+msgid "ERROR : Bad function call."
+msgstr ""
+
+msgid "Reason:"
+msgstr ""
+
+msgid "Bypass Trash"
+msgstr ""
+
+msgid "Click here to change the sorting of the message list"
+msgstr ""
+
+msgid "Length of From/To Field (0 for full)"
+msgstr ""
+
+msgid "Length of Subject Field (0 for full)"
+msgstr ""
+
+msgid "Show recipient name if the message is from your default identity"
+msgstr ""
+
+msgid "Strip signature when replying"
+msgstr ""
+
+msgid "Enable Collapsable Folders"
+msgstr ""
+
+msgid "Folder"
+msgstr ""
+
+msgid "Subfolder"
+msgstr ""
+
+msgid "Global address book DSN"
+msgstr ""
+
+msgid "Global address book table"
+msgstr ""
+
+msgid "Allow writing into global address book"
+msgstr ""
+
+msgid "Allow listing of global address book"
+msgstr ""
+
+msgid "Language settings"
+msgstr ""
+
+msgid "Show alternative language names"
+msgstr ""
+
+msgid "Available languages"
+msgstr ""
+
+msgid "Use agresive decoding"
+msgstr ""
+
+msgid "Tweaks"
+msgstr ""
+
+msgid "Use advanced tree folder listing"
+msgstr ""
+
+msgid "Use old folder listing functions"
+msgstr ""
+
+msgid "Use php recode functions"
+msgstr ""
+
+msgid "Use php iconv functions"
+msgstr ""
+
+msgid ""
+"Note: it is recommended that you configure your system using conf.pl, and "
+"not this plugin. conf.pl contains additional information regarding the "
+"purpose of variables and appropriate values, as well as additional "
+"verification steps."
+msgstr ""
+
+msgid ""
+"Run or consult conf.pl should you run into difficulty with your "
+"configuration."
+msgstr ""
+
+msgid "No POP3 servers configured yet."
+msgstr ""
+
+msgid "Click here to go to the options page."
+msgstr ""
+
+msgid "Spam Service Type:"
+msgstr ""
+
+msgid "Free reporting"
+msgstr ""
+
+msgid "Member services"
+msgstr ""
+
+msgid ""
+"The SpamCop service will display information as it finds it, so scroll down "
+"until you see a form button. It might pause a little while it is looking up "
+"information, so be a little patient. Read what it says, and submit the spam. "
+"Close the browser window.  Press Cancel or click on the appropriate mail "
+"folder to see messages and/or delete the spam."
+msgstr ""
+
+msgid "Spamcop Service Type"
+msgstr ""
+
+msgid ""
+"Service type option allows selecting which spamcop services you are using. "
+"Member services use different web reporting forms  and does not display "
+"nags. You can purchase these services, if you want to support SpamCop."
+msgstr ""
+
+msgid "Filipino (Tagalog)"
+msgstr ""
+
+msgid "Simplified Chinese"
+msgstr ""
+
+msgid "Traditional Chinese"
 msgstr ""
 
 msgid "Delivery error report"
