@@ -711,9 +711,7 @@ if ( sqgetGlobalVar('sort', $temp) ) {
     $sort = (int) $temp;
 }
 if ( sqgetGlobalVar('startMessage', $temp) ) {
-    sm_print_r($temp);
     $startMessage = (int) $temp;
-    sm_print_r($startMessage);
 }
 
 /* end of get globals */
