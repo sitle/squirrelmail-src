@@ -90,7 +90,7 @@ xgettext --keyword=_ -keyword=N_  --default-domain=squirrelmail -j \
 
 # ** Devel core strings
 
-xgettext --keyword=_ -keyword=N_  --default-domain=squirrelmail \
+xgettext --keyword=_ -keyword=N_  --default-domain=squirrelmail -j \
     --no-location -C ${SM_DEVEL_PATH}/src/*.php --output=${SM_LOCALES_PATH}/po/squirrelmail.pot
 xgettext --keyword=_ -keyword=N_  --default-domain=squirrelmail -j \
     --no-location -C ${SM_DEVEL_PATH}/functions/*.php --output=${SM_LOCALES_PATH}/po/squirrelmail.pot
