@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: SquirrelMail HEAD\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-03-17 01:40+0100\n"
-"PO-Revision-Date: 2005-03-17 01:53+0100\n"
+"POT-Creation-Date: 2005-03-20 16:40+0200\n"
+"PO-Revision-Date: 2005-03-21 09:06+0100\n"
 "Last-Translator: Fredrik Jervfors <sqm_admin@fimbul.net>\n"
 "Language-Team: Swedish <squirrelmail-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -18,6 +18,15 @@ msgstr ""
 
 msgid "Address Book"
 msgstr "Adressbok"
+
+msgid "All"
+msgstr "Alla"
+
+msgid "To"
+msgstr "Till"
+
+msgid "Cc"
+msgstr "Kopia"
 
 msgid "Name"
 msgstr "Namn"
@@ -31,17 +40,14 @@ msgstr "Information"
 msgid "Source"
 msgstr "Källa"
 
-msgid "To"
-msgstr "Till"
-
-msgid "Cc"
-msgstr "Kopia"
-
 msgid "Bcc"
 msgstr "Dold kopia"
 
-msgid "No persons matching your search were found"
-msgstr "Hittade inga personer överensstämmande med din sökning"
+msgid "Use Addresses"
+msgstr "Använd adresser"
+
+msgid "Address Book Search"
+msgstr "Sök i adressbok"
 
 msgid "Search for"
 msgstr "Sök efter"
@@ -58,9 +64,6 @@ msgstr "Sök"
 msgid "List all"
 msgstr "Visa alla"
 
-msgid "Close"
-msgstr "Stäng"
-
 #, php-format
 msgid "Unable to list addresses from %s"
 msgstr "Det går inte att visa adresser från %s"
@@ -68,17 +71,14 @@ msgstr "Det går inte att visa adresser från %s"
 msgid "Your search failed with the following error(s)"
 msgstr "Sökningen misslyckades med följande fel"
 
-msgid "All"
-msgstr "Alla"
-
-msgid "Use Addresses"
-msgstr "Använd adresser"
-
-msgid "Address Book Search"
-msgstr "Sök i adressbok"
+msgid "No persons matching your search were found"
+msgstr "Hittade inga personer överensstämmande med din sökning"
 
 msgid "Return"
 msgstr "Tillbaka"
+
+msgid "Close"
+msgstr "Stäng"
 
 msgid "Nickname"
 msgstr "Kortnamn"
@@ -222,6 +222,28 @@ msgstr "Fel: Katalogen &quot;%s&quot; för sparade utkast finns inte"
 msgid "Server replied: "
 msgstr "Servern svarade: "
 
+msgid "Illegal folder name. Please select a different name."
+msgstr "Otillåtet mappnamn. Välj ett annat namn."
+
+msgid "Click here to go back"
+msgstr "Klicka här för att gå tillbaka"
+
+msgid "You have not selected a folder to delete. Please do so."
+msgstr "Du har inte valt vilken mapp som ska tas bort."
+
+msgid "Delete Folder"
+msgstr "Kasta mapp"
+
+#, php-format
+msgid "Are you sure you want to delete %s?"
+msgstr "Är du säker på att du vill kasta %s?"
+
+msgid "Yes"
+msgstr "Ja"
+
+msgid "No"
+msgstr "Nej"
+
 msgid "Folders"
 msgstr "Mappar"
 
@@ -273,9 +295,6 @@ msgstr "Byt namn"
 msgid "No folders found"
 msgstr "Inga mappar hittades"
 
-msgid "Delete Folder"
-msgstr "Kasta mapp"
-
 msgid "Delete"
 msgstr "Kasta"
 
@@ -293,25 +312,6 @@ msgstr "Inga mappar att aktivera"
 
 msgid "Subscribe to:"
 msgstr "Aktivera:"
-
-msgid "Illegal folder name. Please select a different name."
-msgstr "Otillåtet mappnamn. Välj ett annat namn."
-
-msgid "Click here to go back"
-msgstr "Klicka här för att gå tillbaka"
-
-msgid "You have not selected a folder to delete. Please do so."
-msgstr "Du har inte valt vilken mapp som ska tas bort."
-
-#, php-format
-msgid "Are you sure you want to delete %s?"
-msgstr "Är du säker på att du vill kasta %s?"
-
-msgid "Yes"
-msgstr "Ja"
-
-msgid "No"
-msgstr "Nej"
 
 msgid "You have not selected a folder to rename. Please do so."
 msgstr "Du har inte valt vilken mapp du vill byta namn på."
@@ -394,66 +394,11 @@ msgstr "Lösenord:"
 msgid "No messages were selected."
 msgstr "Inga brev var valda."
 
-msgid "Personal Information"
-msgstr "Personlig profil"
-
-msgid "Display Preferences"
-msgstr "Utseende"
-
-msgid "Message Highlighting"
-msgstr "Färgmarkering av brev"
-
-msgid "Folder Preferences"
-msgstr "Mappar"
-
-msgid "Index Order"
-msgstr "Indexeringsordning"
-
 msgid "Options"
 msgstr "Inställningar"
 
-msgid "Error(s) occurred while saving your options"
-msgstr "Fel uppstod när inställningarna sparades"
-
-msgid "Some of your preference changes were not applied."
-msgstr "En del av ändringarna kommer inte att tillämpas."
-
-msgid "Successfully Saved Options"
-msgstr "Inställningarna sparades"
-
-msgid "Refresh Folder List"
-msgstr "Uppdatera mapplistan"
-
-msgid "Refresh Page"
-msgstr "Ladda om sidan"
-
-msgid ""
-"This contains personal information about yourself such as your name, your "
-"email address, etc."
-msgstr "Personlig information, t.ex. namn och e-postadress."
-
-msgid ""
-"You can change the way that SquirrelMail looks and displays information to "
-"you, such as the colors, the language, and other settings."
-msgstr "Omfattar bl.a. färger, språk och hur brev visas."
-
-msgid ""
-"Based upon given criteria, incoming messages can have different background "
-"colors in the message list. This helps to easily distinguish who the "
-"messages are from, especially for mailing lists."
-msgstr ""
-"Brev kan markeras med färger baserat på t.ex. avsändarnamn, ärende eller "
-"liknande. Detta gör det enkelt att utskilja brev från t.ex. e-postlistor, "
-"eller brev som innehåller en särskild ärenderad."
-
-msgid ""
-"These settings change the way your folders are displayed and manipulated."
-msgstr "Hur mappar visas och hanteras."
-
-msgid ""
-"The order of the message index can be rearranged and changed to contain the "
-"headers in any order you want."
-msgstr "Vilka kolumner som visas i indexet och ordningen på dessa."
+msgid "Message Highlighting"
+msgstr "Färgmarkering av brev"
 
 msgid "New"
 msgstr "Ny"
@@ -567,6 +512,9 @@ msgstr "Använd som förval"
 msgid "Move Up"
 msgstr "Flytta upp"
 
+msgid "Index Order"
+msgstr "Indexeringsordning"
+
 msgid "Checkbox"
 msgstr "Ruta för val"
 
@@ -595,6 +543,58 @@ msgstr "Dölj"
 
 msgid "Return to options page"
 msgstr "Tillbaka"
+
+msgid "Personal Information"
+msgstr "Personlig profil"
+
+msgid "Display Preferences"
+msgstr "Utseende"
+
+msgid "Folder Preferences"
+msgstr "Mappar"
+
+msgid "Error(s) occurred while saving your options"
+msgstr "Fel uppstod när inställningarna sparades"
+
+msgid "Some of your preference changes were not applied."
+msgstr "En del av ändringarna kommer inte att tillämpas."
+
+msgid "Successfully Saved Options"
+msgstr "Inställningarna sparades"
+
+msgid "Refresh Folder List"
+msgstr "Uppdatera mapplistan"
+
+msgid "Refresh Page"
+msgstr "Ladda om sidan"
+
+msgid ""
+"This contains personal information about yourself such as your name, your "
+"email address, etc."
+msgstr "Personlig information, t.ex. namn och e-postadress."
+
+msgid ""
+"You can change the way that SquirrelMail looks and displays information to "
+"you, such as the colors, the language, and other settings."
+msgstr "Omfattar bl.a. färger, språk och hur brev visas."
+
+msgid ""
+"Based upon given criteria, incoming messages can have different background "
+"colors in the message list. This helps to easily distinguish who the "
+"messages are from, especially for mailing lists."
+msgstr ""
+"Brev kan markeras med färger baserat på t.ex. avsändarnamn, ärende eller "
+"liknande. Detta gör det enkelt att utskilja brev från t.ex. e-postlistor, "
+"eller brev som innehåller en särskild ärenderad."
+
+msgid ""
+"These settings change the way your folders are displayed and manipulated."
+msgstr "Hur mappar visas och hanteras."
+
+msgid ""
+"The order of the message index can be rearranged and changed to contain the "
+"headers in any order you want."
+msgstr "Vilka kolumner som visas i indexet och ordningen på dessa."
 
 msgid "Message not printable"
 msgstr "Brevet går ej att skriva ut"
@@ -2181,15 +2181,15 @@ msgstr "Felrapporter:"
 msgid "Show button in toolbar"
 msgstr "Visa knappen i knappraden"
 
+#, php-format
+msgid "Could not write calendar file %s"
+msgstr "Kunde inte spara kalenderfilen %s"
+
 msgid "TODAY"
 msgstr "IDAG"
 
 msgid "Go"
 msgstr "Kör"
-
-#, php-format
-msgid "Could not write calendar file %s"
-msgstr "Kunde inte spara kalenderfilen %s"
 
 msgid "l, F j Y"
 msgstr "D, Y-m-d"
@@ -2985,22 +2985,6 @@ msgstr "Spara brev"
 msgid "View Message details"
 msgstr "Visa brevets detaljer"
 
-msgid "New Mail"
-msgstr "Nytt brev"
-
-msgid "SquirrelMail Notice:"
-msgstr "Avisering från SquirrelMail:"
-
-#, php-format
-msgid "You have %s new message"
-msgid_plural "You have %s new messages"
-msgstr[0] "Du har %s nytt brev"
-msgstr[1] "Du har %s nya brev"
-
-#, php-format
-msgid "You have %s new messages"
-msgstr "Du har %s nya brev"
-
 msgid "New Mail Notification"
 msgstr "Avisering vid nya brev"
 
@@ -3088,6 +3072,22 @@ msgstr "Spela"
 
 msgid "Current File:"
 msgstr "Aktiv fil:"
+
+msgid "New Mail"
+msgstr "Nytt brev"
+
+msgid "SquirrelMail Notice:"
+msgstr "Avisering från SquirrelMail:"
+
+#, php-format
+msgid "You have %s new message"
+msgid_plural "You have %s new messages"
+msgstr[0] "Du har %s nytt brev"
+msgstr[1] "Du har %s nya brev"
+
+#, php-format
+msgid "You have %s new messages"
+msgstr "Du har %s nya brev"
 
 msgid "NewMail Options"
 msgstr "Avisering vid nyinkomna brev"
@@ -3513,19 +3513,6 @@ msgstr "Stavningskontrollen är inte färdig. Stäng och hoppa över ändringarna?"
 msgid "No errors found"
 msgstr "Inga fel funna"
 
-msgid ""
-"Your personal dictionary has been encrypted and is now stored in an "
-"encrypted format."
-msgstr ""
-"Din personliga ordlista har krypterats och har sparats i krypterat format."
-
-msgid ""
-"Your personal dictionary has been decrypted and is now stored as plain text."
-msgstr "Din personliga ordlista har dekrypterats och har sparats i klartext."
-
-msgid "Personal Dictionary Crypto Settings"
-msgstr "Krypteringsinställningar för personlig ordlista"
-
 msgid "Your personal dictionary was erased."
 msgstr "Din personliga ordlista har kastats."
 
@@ -3562,6 +3549,19 @@ msgstr ""
 
 msgid "Dictionary re-encrypted"
 msgstr "Ordlistan har krypterats"
+
+msgid ""
+"Your personal dictionary has been encrypted and is now stored in an "
+"encrypted format."
+msgstr ""
+"Din personliga ordlista har krypterats och har sparats i krypterat format."
+
+msgid ""
+"Your personal dictionary has been decrypted and is now stored as plain text."
+msgstr "Din personliga ordlista har dekrypterats och har sparats i klartext."
+
+msgid "Personal Dictionary Crypto Settings"
+msgstr "Krypteringsinställningar för personlig ordlista"
 
 msgid "Personal Dictionary"
 msgstr "Personlig ordlista"
@@ -3915,6 +3915,70 @@ msgstr "Språk för gränssnittet"
 msgid "Translation direction"
 msgstr "Översättningsriktning"
 
+#, php-format
+msgid "About SquirrelMail %s"
+msgstr "Om SquirrelMail %s"
+
+msgid ""
+"SquirrelMail is the name of the program that provides access to your email "
+"via the web."
+msgstr ""
+"SquirrelMail är namnet på det program som ger dig tillgång till din e-post "
+"via webben."
+
+#, php-format
+msgid ""
+"If you have questions about or problems with your mail account, passwords, "
+"abuse etc, please refer to your system administrator or provider%s."
+msgstr ""
+"Om du har frågor kring eller problem med e-postkonton, lösenord missbruk av "
+"tjänsten eller liknande, kontakta systemadministratörerna eller -leverantör%"
+"s."
+
+#, php-format
+msgid ""
+"They can assist you adequately with these issues. The SquirrelMail Project "
+"Team cannot help you with that. The %shelp system%s provides answers to "
+"frequently asked questions."
+msgstr ""
+"De kan hjälpa dig med denna typ av problem. SquirrelMails utvecklingsteam "
+"kan inte hjälpa dig med detta. %sHjälpsidorna%s svarar på de vanligaste "
+"frågorna. Läs därför dessa sidor innan du kontaktar administratören."
+
+#, php-format
+msgid ""
+"SquirrelMail is a feature rich, standards compliant webmail application "
+"written in PHP. It was made by a group of volunteers united in the "
+"SquirrelMail Project Team and is released as open source, free software "
+"under the %sGNU General Public License%s."
+msgstr ""
+"SquirrelMail är en funktionsrik webbpostklient som följer de standarder som "
+"finns inom området. SquirrelMail är programmerad i PHP av en grupp "
+"frivilliga under namnet SquirrelMails utvecklingsteam och är tillgänglig som "
+"öppen källkod, d.v.s. gratis programvara med de licensregler som "
+"specificeras av %sGNU General Public License%s."
+
+#, php-format
+msgid ""
+"For more information about SquirrelMail and the SquirrelMail Project Team, "
+"see %sthe SquirrelMail website%s."
+msgstr ""
+"För mer information om SquirrelMail och SquirrelMails utvecklingsteam "
+"hänvisas till %sSquirrelMails webbsidor%s."
+
+msgid "System information"
+msgstr "Systeminformation"
+
+#, php-format
+msgid "You are using SquirrelMail version: %s"
+msgstr "Du använder SquirrelMail version: %s"
+
+msgid "The administrator installed the following plugins:"
+msgstr "Administratören har installerat följande insticksmoduler:"
+
+msgid "none installed"
+msgstr "inga installerade"
+
 msgid "sort by nickname"
 msgstr "Sortera efter kortnamn"
 
@@ -4235,6 +4299,9 @@ msgstr "Använd PHP-omkodningsfunktioner"
 msgid "Use PHP iconv functions"
 msgstr "Använd PHP:s iconv-funktioner"
 
+msgid "Allow remote configuration test"
+msgstr "Tillåt fjärrtest av konfigureringen"
+
 msgid "Show System Specifications"
 msgstr "Visa systemspecifikationerna"
 
@@ -4353,6 +4420,9 @@ msgstr "Verifiera det nya lösenordet:"
 msgid "Use this to change your email password."
 msgstr "Byt lösenordet till ditt e-postkonto."
 
+msgid "User's Password"
+msgstr "Användarens lösenord"
+
 msgid "Current configuration requires LDAP support in PHP."
 msgstr "Den nuvarande konfigurationen kräver LDAP-stöd i PHP."
 
@@ -4365,11 +4435,21 @@ msgstr ""
 "Det gick inte att sätta LDAP-anslutningens parameter %s till värdet %s."
 
 #, php-format
-msgid "Error: %s"
-msgstr "Fel: %s"
+msgid "Incorrect LDAP connection option: %s"
+msgstr "Felaktig anslutningsparameter för LDAP: %s"
+
+msgid ""
+"Current PHP LDAP extension does not allow use of ldap_set_option() function."
+msgstr ""
+"PHP:s nuvarande LDAP-stöd tillåter inte användning av funkionen "
+"ldap_set_option()."
 
 msgid "Unable to use TLS."
 msgstr "Kunde inte använda TLS."
+
+#, php-format
+msgid "Error: %s"
+msgstr "Fel: %s"
 
 msgid "Unable to use LDAP TLS in current setup."
 msgstr "Kan inte använda LDAP TLS i nuvarande installation."
@@ -4381,8 +4461,15 @@ msgstr "Kunde inte ansluta till LDAP-servern."
 msgid "Server replied: %s"
 msgstr "Servern svarade: %s"
 
+msgid "Unable to find user's password attribute."
+msgstr "Fältet för användarens lösenord hittades inte."
+
 msgid "Unable to rebind to LDAP server."
 msgstr "Kunde inte återansluta LDAP-servern."
+
+msgid "LDAP server uses different attribute to store user's password."
+msgstr ""
+"LDAP-servern använder ett annat fält för att spara användarens lösenord."
 
 msgid "Unable to connect to LDAP server."
 msgstr "Kunde inte kontakta LDAP-servern."
