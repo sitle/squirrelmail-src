@@ -51,11 +51,11 @@ $base_uri = sqm_baseuri();
  */
 
 sqsession_destroy();
- 
+
 header('Pragma: no-cache');
 
 /**
- * This detects if the IMAP server has logins disabled, and if so, 
+ * This detects if the IMAP server has logins disabled, and if so,
  * squelches the display of the login form and puts up a message
  * explaining the situation.
  */
@@ -64,11 +64,12 @@ if($imap_auth_mech == 'login') {
     $logindisabled = sqimap_capability($imap,'LOGINDISABLED');
     sqimap_logout($imap);
     if ($logindisabled) {
-        $string = "The IMAP server is reporting that logins are disabled.<br>";
+        $string = _("The IMAP server is reporting that plain text logins are disabled.").'<br />'.
+            _("Using CRAM-MD5 or DIGEST-MD5 authentication instead may work.").'<br />';
         if (!$use_imap_tls) {
-            $string .= "The use of TLS may allow SquirrelMail to login.<br>";
+            $string .= _("Also, the use of TLS may allow SquirrelMail to login.").'<br />';
         }
-        $string .= "Please contact your system administrator.";
+        $string .= _("Please contact your system administrator and report this error.");
         error_box($string,$color);
         exit;
     }
@@ -154,7 +155,7 @@ echo html_tag( 'table',
                                     _("Name:") ,
                                 'right', '', 'width="30%"' ) .
                                 html_tag( 'td',
-				    addInput($username_form_name, $loginname_value),
+                                    addInput($username_form_name, $loginname_value),
                                 'left', '', 'width="*"' )
                                 ) . "\n" .
                             html_tag( 'tr',
@@ -162,15 +163,15 @@ echo html_tag( 'table',
                                     _("Password:") ,
                                 'right', '', 'width="30%"' ) .
                                 html_tag( 'td',
-				    addPwField($password_form_name).
-				    addHidden('js_autodetect_results', SMPREF_JS_OFF).
+                                    addPwField($password_form_name).
+                                    addHidden('js_autodetect_results', SMPREF_JS_OFF).
                                     $rcptaddress .
-				    addHidden('just_logged_in', '1'),
+                                    addHidden('just_logged_in', '1'),
                                 'left', '', 'width="*"' )
                             ) ,
                         'center', $color[4], 'border="0" width="100%"' ) ,
                     'left', $color[4] )
-                ) . 
+                ) .
                 html_tag( 'tr',
                     html_tag( 'td',
                         '<center>'. addSubmit(_("Login")) .'</center>',
@@ -184,6 +185,5 @@ do_hook('login_form');
 echo '</form>' . "\n";
 
 do_hook('login_bottom');
-echo "</body>\n".
-     "</html>\n";
 ?>
+</body></html>

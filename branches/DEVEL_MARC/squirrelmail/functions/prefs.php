@@ -20,7 +20,7 @@ sqgetGlobalVar('prefs_are_cached', $prefs_are_cached, SQ_SESSION );
 
 if ( !sqsession_is_registered('prefs_are_cached') ||
      !isset( $prefs_cache) ||
-     !is_array( $prefs_cache) 
+     !is_array( $prefs_cache)
    ) {
     $prefs_are_cached = false;
     $prefs_cache = array();
@@ -47,13 +47,12 @@ if (isset($prefs_backend) && file_exists(SM_PATH . $prefs_backend)) {
  * @return string the hashed location of datafile
  */
 function getHashedFile($username, $dir, $datafile, $hash_search = true) {
-    global $dir_hash_level;
 
     /* Remove trailing slash from $dir if found */
     if (substr($dir, -1) == '/') {
         $dir = substr($dir, 0, strlen($dir) - 1);
     }
-    
+
     /* Compute the hash for this user and extract the hash directories. */
     $hash_dirs = computeHashDirs($username);
 
@@ -82,7 +81,7 @@ function getHashedFile($username, $dir, $datafile, $hash_search = true) {
             }
         }
     }
-     
+
     /* Return the full hashed datafile path. */
     return ($result);
 }
@@ -103,7 +102,7 @@ function getHashedDir($username, $dir, $hash_dirs = '') {
     if (substr($dir, -1) == '/') {
         $dir = substr($dir, 0, strlen($dir) - 1);
     }
-    
+
     /* If necessary, populate the hash dir variable. */
     if ($hash_dirs == '') {
         $hash_dirs = computeHashDirs($username);
@@ -115,9 +114,9 @@ function getHashedDir($username, $dir, $hash_dirs = '') {
         $real_hash_dir .= '/' . $hash_dirs[$h];
         if (!@is_dir($real_hash_dir)) {
             if (!@mkdir($real_hash_dir, 0770)) {
-                echo sprintf(_("Error creating directory %s."), $real_hash_dir) . '<br>' .
-                     _("Could not create hashed directory structure!") . "<br>\n" .
-                     _("Please contact your system administrator and report this error.") . "<br>\n";
+                echo sprintf(_("Error creating directory %s."), $real_hash_dir) . '<br />' .
+                     _("Could not create hashed directory structure!") . "<br />\n" .
+                     _("Please contact your system administrator and report this error.") . "<br />\n";
                 exit;
             }
         }
@@ -145,6 +144,9 @@ function computeHashDirs($username) {
     return ($hash_dirs);
 }
 
+/**
+ * FIXME: Undocumented function
+ */
 function checkForJavascript($reset = FALSE)
 {
   global $data_dir, $username, $javascript_on, $javascript_setting;

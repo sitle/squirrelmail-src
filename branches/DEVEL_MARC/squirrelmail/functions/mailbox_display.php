@@ -598,22 +598,21 @@ function prepareMessageList(&$aMailbox, $aProps) {
                     $value = getDateString(getTimeStamp(explode(' ',trim($value))));
                     break;
                 case SQM_COL_FLAGS:
-                    $bFlagged = $bAnswered = $bDeleted = $bSeen = $bDraft = false;
+                    $aFlagColumn = array('seen' => false,
+                                         'deleted'=>false,
+                                         'answered'=>false,
+                                         'flagged' => false,
+                                         'draft' => false);
                     foreach ($value as $sFlag => $value) {
                         switch ($sFlag) {
-                        case '\\flagged' : $bFlagged  = true;   break;
-                        case '\\answered': $bAnswered = _("A"); break;
-                        case '\\deleted' : $bDeleted  = _("D"); break;
-                        case '\\seen'    : $bSeen     = true;   break;
-                        case '\\draft'   : $bDraft    = true;   break;
-                        default:  break;
+                          case '\\seen'    : $aFlagColumn['seen']     = true; break;
+                          case '\\deleted' : $aFlagColumn['deleted']  = true; break;
+                          case '\\answered': $aFlagColumn['answered'] = true; break;
+                          case '\\flagged' : $aFlagColumn['flagged']  = true; break;
+                          case '\\draft'   : $aFlagColumn['draft']    = true; break;
+                          default:  break;
                         }
                     }
-                    $aFlagColumn['flagged']    = $bFlagged;
-                    $aFlagColumn['answered']   = $bAnswered;
-                    $aFlagColumn['deleted']    = $bDeleted;
-                    $aFlagColumn['seen']       = $bSeen;
-                    $aFlagColumn['draft']      = $bDraft;
                     $value = $aFlagColumn;
                     break;
                 case SQM_COL_PRIO:
@@ -796,8 +795,9 @@ function _getSortField($sort,$bServerSort) {
 * This function loops through a group of messages in the mailbox
 * and shows them to the user.
 *
-* @param mixed $imapConnection
-* @param array $aMailbox associative array with mailbox related vars
+* @param resource $imapConnection
+* @param array    $aMailbox associative array with mailbox related vars
+* @param array    $aProps
 */
 function showMessagesForMailbox($imapConnection, &$aMailbox,$aProps) {
     global $color, $PHP_SELF;
@@ -813,10 +813,13 @@ function showMessagesForMailbox($imapConnection, &$aMailbox,$aProps) {
     $aOrder = array_keys($aProps['columns']);
     $trash_folder      = (isset($aProps['config']['trash_folder']) && $aProps['config']['trash_folder'])
                           ? $aProps['config']['trash_folder'] : false;
-    $sent_folder      = (isset($aProps['config']['sent_folder']) && $aProps['config']['sent_folder'])
+    $sent_folder       = (isset($aProps['config']['sent_folder']) && $aProps['config']['sent_folder'])
                           ? $aProps['config']['sent_folder'] : false;
     $draft_folder      = (isset($aProps['config']['draft_folder']) && $aProps['config']['draft_folder'])
                           ? $aProps['config']['draft_folder'] : false;
+    $page_selector     = (isset($aProps['config']['page_selector'])) ? $aProps['config']['page_selector'] : false;
+    $page_selector_max = (isset($aProps['config']['page_selector_max'])) ? $aProps['config']['page_selector_max'] : 10;
+
 
     /*
      * Form ID
@@ -879,9 +882,6 @@ function showMessagesForMailbox($imapConnection, &$aMailbox,$aProps) {
     $iLimit = ($aMailbox['SHOWALL'][$iSetIndx]) ? $aMailbox['EXISTS'] : $aMailbox['LIMIT'];
     $iEnd = ($aMailbox['PAGEOFFSET'] + ($iLimit - 1) < $aMailbox['EXISTS']) ?
              $aMailbox['PAGEOFFSET'] + $iLimit - 1 : $aMailbox['EXISTS'];
-
-    $paginator_str = get_paginator_str($aMailbox['NAME'], $aMailbox['PAGEOFFSET'],
-                                    $aMailbox['EXISTS'], $aMailbox['LIMIT'], $aMailbox['SHOWALL'][$iSetIndx]);
 
     $iNumberOfMessages = $aMailbox['TOTAL'][$iSetIndx];
 
@@ -1035,8 +1035,10 @@ function showMessagesForMailbox($imapConnection, &$aMailbox,$aProps) {
     $aTemplate['color']     = $color;
     $aTemplate['form_name'] = "FormMsgs" . $safe_name;
     $aTemplate['form_id']   = 'mailbox_display_'.$iFormId;
-    $aTemplate['paginator'] = $paginator_str;
-    $aTemplate['start_msg'] = $aMailbox['PAGEOFFSET'];
+    $aTemplate['page_selector'] = $page_selector;
+    $aTemplate['page_selector_max'] = $page_selector_max;
+    $aTemplate['messagesPerPage'] = $aMailbox['LIMIT'];
+    $aTemplate['showall'] = $aMailbox['SHOWALL'][$iSetIndx];
     $aTemplate['end_msg'] = $iEnd;
     $aTemplate['align'] = $align;
     $aTemplate['iNumberOfMessages'] = $iNumberOfMessages;
@@ -1061,223 +1063,6 @@ function showMessagesForMailbox($imapConnection, &$aMailbox,$aProps) {
     return $aTemplate;
 }
 
-/**
-* Generate a paginator link.
-*
-* @param mixed $box Mailbox name
-* @param mixed $start_msg Message Offset
-* @param mixed $use
-* @param string $text text used for paginator link
-* @return string
-*/
-function get_paginator_link($box, $start_msg, $text) {
-    sqgetGlobalVar('PHP_SELF',$php_self,SQ_SERVER);
-    $result = "<a href=\"$php_self?startMessage=$start_msg&amp;mailbox=$box\" "
-            . ">$text</a>";
-
-    return ($result);
-}
-
-/**
-* This function computes the paginator string.
-*
-* @param string  $box      mailbox name
-* @param integer $iOffset  offset in total number of messages
-* @param integer $iTotal   total number of messages
-* @param integer $iLimit   maximum number of messages to show on a page
-* @param bool    $bShowAll show all messages at once (non paginate mode)
-* @return string $result   paginate string with links to pages
-*/
-function get_paginator_str($box, $iOffset, $iTotal, $iLimit, $bShowAll) {
-    global $username, $data_dir;
-    sqgetGlobalVar('PHP_SELF',$php_self,SQ_SERVER);
-
-    /* Initialize paginator string chunks. */
-    $prv_str = '';
-    $nxt_str = '';
-    $pg_str  = '';
-    $all_str = '';
-
-    $box = urlencode($box);
-
-    /* Create simple strings that will be creating the paginator. */
-    $spc = '&nbsp;';     /* This will be used as a space. */
-    $sep = '|';          /* This will be used as a seperator. */
-
-    /* Get some paginator preference values. */
-    $pg_sel = getPref($data_dir, $username, 'page_selector', SMPREF_ON);
-    $pg_max = getPref($data_dir, $username, 'page_selector_max', PG_SEL_MAX);
-
-    /* Make sure that our start message number is not too big. */
-    $iOffset = min($iOffset, $iTotal);
-
-    /* Compute the starting message of the previous and next page group. */
-    $next_grp = $iOffset + $iLimit;
-    $prev_grp = $iOffset - $iLimit;
-
-    if (!$bShowAll) {
-        /* Compute the basic previous and next strings. */
-        if (($next_grp <= $iTotal) && ($prev_grp >= 0)) {
-            $prv_str = get_paginator_link($box, $prev_grp, _("Previous"));
-            $nxt_str = get_paginator_link($box, $next_grp, _("Next"));
-        } else if (($next_grp > $iTotal) && ($prev_grp >= 0)) {
-            $prv_str = get_paginator_link($box, $prev_grp, _("Previous"));
-            $nxt_str = _("Next");
-        } else if (($next_grp <= $iTotal) && ($prev_grp < 0)) {
-            $prv_str = _("Previous");
-            $nxt_str = get_paginator_link($box, $next_grp, _("Next"));
-        }
-
-        /* Page selector block. Following code computes page links. */
-        if ($iLimit != 0 && $pg_sel && ($iTotal > $iLimit)) {
-            /* Most importantly, what is the current page!!! */
-            $cur_pg = intval($iOffset / $iLimit) + 1;
-
-            /* Compute total # of pages and # of paginator page links. */
-            $tot_pgs = ceil($iTotal / $iLimit);  /* Total number of Pages */
-            $vis_pgs = min($pg_max, $tot_pgs - 1);   /* Visible Pages    */
-
-            /* Compute the size of the four quarters of the page links. */
-
-            /* If we can, just show all the pages. */
-            if (($tot_pgs - 1) <= $pg_max) {
-                $q1_pgs = $cur_pg - 1;
-                $q2_pgs = $q3_pgs = 0;
-                $q4_pgs = $tot_pgs - $cur_pg;
-
-            /* Otherwise, compute some magic to choose the four quarters. */
-            } else {
-                /*
-                * Compute the magic base values. Added together,
-                * these values will always equal to the $pag_pgs.
-                * NOTE: These are DEFAULT values and do not take
-                * the current page into account. That is below.
-                */
-                $q1_pgs = floor($vis_pgs/4);
-                $q2_pgs = round($vis_pgs/4, 0);
-                $q3_pgs = ceil($vis_pgs/4);
-                $q4_pgs = round(($vis_pgs - $q2_pgs)/3, 0);
-
-                /* Adjust if the first quarter contains the current page. */
-                if (($cur_pg - $q1_pgs) < 1) {
-                    $extra_pgs = ($q1_pgs - ($cur_pg - 1)) + $q2_pgs;
-                    $q1_pgs = $cur_pg - 1;
-                    $q2_pgs = 0;
-                    $q3_pgs += ceil($extra_pgs / 2);
-                    $q4_pgs += floor($extra_pgs / 2);
-
-                /* Adjust if the first and second quarters intersect. */
-                } else if (($cur_pg - $q2_pgs - ceil($q2_pgs/3)) <= $q1_pgs) {
-                    $extra_pgs = $q2_pgs;
-                    $extra_pgs -= ceil(($cur_pg - $q1_pgs - 1) * 3/4);
-                    $q2_pgs = ceil(($cur_pg - $q1_pgs - 1) * 3/4);
-                    $q3_pgs += ceil($extra_pgs / 2);
-                    $q4_pgs += floor($extra_pgs / 2);
-
-                /* Adjust if the fourth quarter contains the current page. */
-                } else if (($cur_pg + $q4_pgs) >= $tot_pgs) {
-                    $extra_pgs = ($q4_pgs - ($tot_pgs - $cur_pg)) + $q3_pgs;
-                    $q3_pgs = 0;
-                    $q4_pgs = $tot_pgs - $cur_pg;
-                    $q1_pgs += floor($extra_pgs / 2);
-                    $q2_pgs += ceil($extra_pgs / 2);
-
-                /* Adjust if the third and fourth quarter intersect. */
-                } else if (($cur_pg + $q3_pgs + 1) >= ($tot_pgs - $q4_pgs + 1)) {
-                    $extra_pgs = $q3_pgs;
-                    $extra_pgs -= ceil(($tot_pgs - $cur_pg - $q4_pgs) * 3/4);
-                    $q3_pgs = ceil(($tot_pgs - $cur_pg - $q4_pgs) * 3/4);
-                    $q1_pgs += floor($extra_pgs / 2);
-                    $q2_pgs += ceil($extra_pgs / 2);
-                }
-            }
-
-            /*
-            * I am leaving this debug code here, commented out, because
-            * it is a really nice way to see what the above code is doing.
-            * echo "qts =  $q1_pgs/$q2_pgs/$q3_pgs/$q4_pgs = "
-            *    . ($q1_pgs + $q2_pgs + $q3_pgs + $q4_pgs) . '<br />';
-            */
-
-            /* Print out the page links from the compute page quarters. */
-
-            /* Start with the first quarter. */
-            if (($q1_pgs == 0) && ($cur_pg > 1)) {
-                $pg_str .= "...$spc";
-            } else {
-                for ($pg = 1; $pg <= $q1_pgs; ++$pg) {
-                    $start = (($pg-1) * $iLimit) + 1;
-                    $pg_str .= get_paginator_link($box, $start, $pg) . $spc;
-                }
-                if ($cur_pg - $q2_pgs - $q1_pgs > 1) {
-                    $pg_str .= "...$spc";
-                }
-            }
-
-            /* Continue with the second quarter. */
-            for ($pg = $cur_pg - $q2_pgs; $pg < $cur_pg; ++$pg) {
-                $start = (($pg-1) * $iLimit) + 1;
-                $pg_str .= get_paginator_link($box, $start, $pg) . $spc;
-            }
-
-            /* Now print the current page. */
-            $pg_str .= $cur_pg . $spc;
-
-            /* Next comes the third quarter. */
-            for ($pg = $cur_pg + 1; $pg <= $cur_pg + $q3_pgs; ++$pg) {
-                $start = (($pg-1) * $iLimit) + 1;
-                $pg_str .= get_paginator_link($box, $start, $pg) . $spc;
-            }
-
-            /* And last, print the forth quarter page links. */
-            if (($q4_pgs == 0) && ($cur_pg < $tot_pgs)) {
-                $pg_str .= "...$spc";
-            } else {
-                if (($tot_pgs - $q4_pgs) > ($cur_pg + $q3_pgs)) {
-                    $pg_str .= "...$spc";
-                }
-                for ($pg = $tot_pgs - $q4_pgs + 1; $pg <= $tot_pgs; ++$pg) {
-                    $start = (($pg-1) * $iLimit) + 1;
-                    $pg_str .= get_paginator_link($box, $start,$pg) . $spc;
-                }
-            }
-        }
-    } else {
-        $pg_str = "<a href=\"$php_self?showall=0"
-                . "&amp;startMessage=1&amp;mailbox=$box\" "
-                . ">" ._("Paginate") . '</a>';
-    }
-
-    /* Put all the pieces of the paginator string together. */
-    /**
-    * Hairy code... But let's leave it like it is since I am not certain
-    * a different approach would be any easier to read. ;)
-    */
-    $result = '';
-    if ( $prv_str || $nxt_str ) {
-
-        /* Compute the 'show all' string. */
-        $all_str = "<a href=\"$php_self?showall=1"
-                . "&amp;startMessage=1&amp;mailbox=$box\" "
-                . ">" . _("Show All") . '</a>';
-        $result .= '[';
-        $result .= ($prv_str != '' ? $prv_str . $spc . $sep . $spc : '');
-        $result .= ($nxt_str != '' ? $nxt_str : '');
-        $result .= ']' . $spc ;
-
-    }
-
-    $result .= ($pg_str  != '' ? $spc . '['.$spc.$pg_str.']' .  $spc : '');
-    $result .= ($all_str != '' ? $spc . '['.$all_str.']' . $spc . $spc : '');
-
-    /* If the resulting string is blank, return a non-breaking space. */
-    if ($result == '') {
-        $result = '&nbsp;';
-    }
-
-    /* Return our final magical paginator string. */
-    return ($result);
-}
 
 /**
 * FIXME: Undocumented function
@@ -1560,140 +1345,5 @@ function attachSelectedMessages($imapConnection,$aMsgHeaders) {
     sqsession_register($compose_messages,'compose_messages');
     return $composesession;
 }
-
-function printMessageInfo($aMsg) {
-    // FIX ME, remove these globals as well by adding an array as argument for the user settings
-    // specificly meant for header display
-    global $checkall,
-        $color,
-        $default_use_priority,
-        $message_highlight_list,
-        $index_order,
-        $truncate_sender,      /* number of characters for From/To field (<= 0 for unchanged) */
-        $email_address,
-        $show_recipient_instead,	/* show recipient name instead of default identity */
-        $use_icons,            /* indicates to use icons or text markers */
-        $icon_theme;           /* icons theming */
-
-
-    // FIXME, foldertype should be set in right_main.php
-    // in other words, handle as sent is obsoleted from now.
-    // We replace that by providing an array to aMailbox with the to shown headers
-    // that way we are free to show the user different layouts for different folders
-    $bSentFolder = handleAsSent($mailbox);
-    if ((!$bSentFolder) && ($show_recipient_instead)) {
-        // If the From address is the same as $email_address, then handle as Sent
-        $from_array = parseAddress($sFrom, 1);
-        if (!isset($email_address)) {
-            global $datadir, $username;
-            $email_address = getPref($datadir, $username, 'email_address');
-        }
-        $bHandleAsSent = ((isset($from_array[0][0])) && ($from_array[0][0] == $email_address));
-    } else {
-        $bHandleAsSent = $bSentFolder;
-    }
-    // If this is a Sent message, display To address instead of From
-    if ($bHandleAsSent) {
-        $sFrom = $sTo;
-    }
-    // Passing 1 below results in only 1 address being parsed, thus defeating the following code
-    $sFrom = parseAddress($sFrom/*,1*/);
-
-    /*
-     * This is done in case you're looking into Sent folders,
-     * because you can have multiple receivers.
-     */
-    $senderNames = $sFrom;
-    $senderName  = '';
-    $senderAddress = '';
-    if (sizeof($senderNames)){
-        foreach ($senderNames as $senderNames_part) {
-            if ($senderName != '') {
-                $senderName .= ', ';
-                $senderAddress .= ', ';
-            }
-            $sender_address_part = htmlspecialchars($senderNames_part[0]);
-            $sender_name_part = str_replace('&nbsp;',' ', decodeHeader($senderNames_part[1]));
-            if ($sender_name_part) {
-                $senderName .= $sender_name_part;
-                $senderAddress .= $sender_name_part . ' <' . $sender_address_part . '>';
-            } else {
-                $senderName .= $sender_address_part;
-                $senderAddress .= $sender_address_part;
-            }
-        }
-    }
-    // If Sent, prefix with To: but only if not Sent folder
-    if ($bHandleAsSent ^ $bSentFolder) {
-        $senderName = _("To:") . ' ' . $senderName;
-        $senderAddress = _("To:") . ' ' . $senderAddress;
-    }
-
-    // this is a column property which can apply to multiple columns. Do not use vars for one column
-    // only. instead we should use something like this:
-    // 1ed column $aMailbox['columns']['SUBJECT'] value: aray with properties ...
-    // 2ed column $aMailbox['columns']['FROM'] value: aray with properties ...
-    //            NB in case of the sentfolder this could be the TO field
-    // properties array example:
-    //      'truncate' => length (0 is no truncate)
-    //      'prefix    => if (x in b then do that )
-    if ($truncate_sender > 0) {
-        $senderName = truncateWithEntities($senderName, $truncate_sender);
-    }
-
-    if ($bHandleAsSent) {
-        $italic = '<i>';
-        $italic_end = '</i>';
-    }
-
-    if ($where && $what) {
-        $searchstr = '&amp;where='.$where.'&amp;what='.$what;
-    } else {
-        $searchstr = '';
-    }
-
-    if (!isset($hlt_color)) {
-        $hlt_color = $color_string;
-    }
-    $col = 0;
-    $sSubject = str_replace('&nbsp;', ' ', decodeHeader($sSubject));
-    $subject = processSubject($sSubject, $iIndent);
-
-    echo html_tag( 'tr','','','','VALIGN="top"') . "\n";
-
-    if (sizeof($index_order)) {
-        foreach ($index_order as $index_order_part) {
-            switch ($index_order_part) {
-            case 1: /* checkbox */
-                echo html_tag( 'td',
-                    addCheckBox("msg[$t]", $checkall, $iId),
-                            'center',
-                            $hlt_color );
-                break;
-            case 2: /* from */
-                if ($senderAddress != $senderName) {
-                    $senderAddress = strtr($senderAddress, array_flip(get_html_translation_table(HTML_SPECIALCHARS)));
-                    $title = ' title="' . str_replace('"', "''", $senderAddress) . '"';
-                } else {
-                    $title = '';
-                }
-                echo html_tag( 'td',
-                            $italic . $bold . $flag . $fontstr . $senderName .
-                            $fontstr_end . $flag_end . $bold_end . $italic_end,
-                            'left',
-                            $hlt_color, $title );
-                break;
-            }
-        }
-    }
-    /* html for separationlines between rows */
-    if ($last) {
-        echo '</tr>'."\n";
-    } else {
-        echo '</tr>' . "\n" . '<tr><td colspan="' . $col . '" bgcolor="' .
-            $color[0] . '" height="1"></td></tr>' . "\n";
-    }
-}
-
 
 ?>

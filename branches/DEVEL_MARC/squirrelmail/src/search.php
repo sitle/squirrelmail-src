@@ -1,39 +1,39 @@
 <?php
 
 /**
-* search.php
-*
-* Copyright (c) 1999-2004 The SquirrelMail Project Team
-* Licensed under the GNU GPL. For full terms see the file COPYING.
-*
-* IMAP search page
-*
-* Subfolder search idea from Patch #806075 by Thomas Pohl xraven at users.sourceforge.net. Thanks Thomas!
-*
-* @version $Id$
-* @package squirrelmail
-* @link http://www.ietf.org/rfc/rfc3501.txt
-* @author Alex Lemaresquier - Brainstorm - alex at brainstorm.fr
-*/
+ * search.php
+ *
+ * Copyright (c) 1999-2004 The SquirrelMail Project Team
+ * Licensed under the GNU GPL. For full terms see the file COPYING.
+ *
+ * IMAP search page
+ *
+ * Subfolder search idea from Patch #806075 by Thomas Pohl xraven at users.sourceforge.net. Thanks Thomas!
+ *
+ * @version $Id$
+ * @package squirrelmail
+ * @link http://www.ietf.org/rfc/rfc3501.txt
+ * @author Alex Lemaresquier - Brainstorm - alex at brainstorm.fr
+ */
 
 /**
-* Path for SquirrelMail required files.
-* @ignore
-*/
+ * Path for SquirrelMail required files.
+ * @ignore
+ */
 define('SM_PATH','../');
 
 /** SquirrelMail required files.
-*/
+ */
 require_once(SM_PATH . 'include/validate.php');
 require_once(SM_PATH . 'functions/strings.php');
 require_once(SM_PATH . 'functions/imap_asearch.php');
 require_once(SM_PATH . 'functions/imap_mailbox.php');
 require_once(SM_PATH . 'functions/imap_messages.php');
 require_once(SM_PATH . 'functions/mime.php');
-require_once(SM_PATH . 'functions/mailbox_display.php');	//getButton()...
+require_once(SM_PATH . 'functions/mailbox_display.php'); //getButton()...
 
 /** Prefs array ordinals. Must match $recent_prefkeys and $saved_prefkeys
-*/
+ */
 define('ASEARCH_WHERE', 0);
 define('ASEARCH_MAILBOX', 1);
 define('ASEARCH_WHAT', 2);
@@ -44,12 +44,12 @@ define('ASEARCH_SUB', 6);
 define('ASEARCH_MAX', 7);
 
 /** Name of session var
-*/
+ */
 define('ASEARCH_CRITERIA', 'criteria');
 
 /** Builds a href with params
-* @param string $params optional parameters to GET
-*/
+ * @param string $params optional parameters to GET
+ */
 function asearch_get_href($params = '')
 {
     $href = 'search.php';
@@ -59,10 +59,10 @@ function asearch_get_href($params = '')
 }
 
 /** Builds a [link]
-* @param string $href (reference)
-* @param string $text
-* @param string $title
-*/
+ * @param string $href (reference)
+ * @param string $text
+ * @param string $title
+ */
 function asearch_get_link(&$href, $text, $title = '')
 {
     if ($title != '')
@@ -71,30 +71,30 @@ function asearch_get_link(&$href, $text, $title = '')
 }
 
 /** Builds a toggle [link]
-* @param integer $value
-* @param string $action
-* @param array $text_array
-* @param array $title_array
-*/
+ * @param integer $value
+ * @param string $action
+ * @param array $text_array
+ * @param array $title_array
+ */
 function asearch_get_toggle_link($value, $action, $text_array, $title_array = array())
 {
     return asearch_get_link(asearch_get_href($action . '=' . (int)$value), $text_array[$value], asearch_nz($title_array[$value]));
 }
 
 /**
-* @param string $a
-* @param string $b
-* @return bool strcoll()-like result
-*/
+ * @param string $a
+ * @param string $b
+ * @return bool strcoll()-like result
+ */
 function asearch_unhtml_strcoll($a, $b)
 {
     return strcoll(asearch_unhtmlentities($a), asearch_unhtmlentities($b));
 }
 
 /**
-* @param string $mailbox mailbox name utf7 encoded inc. special case INBOX
-* @return string mailbox name ready to display (utf7 decoded or localized INBOX)
-*/
+ * @param string $mailbox mailbox name utf7 encoded inc. special case INBOX
+ * @return string mailbox name ready to display (utf7 decoded or localized INBOX)
+ */
 function imap_get_mailbox_display($mailbox)
 {
     if (strtoupper($mailbox) == 'INBOX')
@@ -103,9 +103,9 @@ function imap_get_mailbox_display($mailbox)
 }
 
 /**
-* @param string $mailbox mailbox name or special case 'All Folders'
-* @return string mailbox name ready to display (utf7 decoded or localized 'All Folders')
-*/
+ * @param string $mailbox mailbox name or special case 'All Folders'
+ * @return string mailbox name ready to display (utf7 decoded or localized 'All Folders')
+ */
 function asearch_get_mailbox_display($mailbox)
 {
     if ($mailbox == 'All Folders')
@@ -114,29 +114,29 @@ function asearch_get_mailbox_display($mailbox)
 }
 
 /**
-* @param array $color color array
-* @param string $txt text to display
-* @return string title ready to display
-*/
+ * @param array $color color array
+ * @param string $txt text to display
+ * @return string title ready to display
+ */
 function asearch_get_title_display(&$color, $txt)
 {
     return '<b><big>' . $txt . '</big></b>';
 }
 
 /**
-* @param array $color color array
-* @param string $txt text to display
-* @return string error text ready to display
-*/
+ * @param array $color color array
+ * @param string $txt text to display
+ * @return string error text ready to display
+ */
 function asearch_get_error_display(&$color, $txt)
 {
     return '<font color="' . $color[2] . '">' . '<b><big>' . $txt . '</big></b></font>';
 }
 
 /**
-* @param array $input_array array to serialize
-* @return string a string containing a byte-stream representation of value that can be stored anywhere
-*/
+ * @param array $input_array array to serialize
+ * @return string a string containing a byte-stream representation of value that can be stored anywhere
+ */
 function asearch_serialize(&$input_array)
 {
     global $search_advanced;
@@ -146,9 +146,9 @@ function asearch_serialize(&$input_array)
 }
 
 /**
-* @param string $input_string string to unserialize
-* @return array
-*/
+ * @param string $input_string string to unserialize
+ * @return array
+ */
 function asearch_unserialize($input_string)
 {
     global $search_advanced;
@@ -158,11 +158,11 @@ function asearch_unserialize($input_string)
 }
 
 /**
-* @param string $key the pref key
-* @param integer $index the pref key index
-* @param string $default default value
-* @return string pref value
-*/
+ * @param string $key the pref key
+ * @param integer $index the pref key index
+ * @param string $default default value
+ * @return string pref value
+ */
 function asearch_getPref(&$key, $index, $default = '')
 {
     global $data_dir, $username, $search_advanced;
@@ -170,11 +170,11 @@ function asearch_getPref(&$key, $index, $default = '')
 }
 
 /**
-* @param string $key the pref key
-* @param integer $index the pref key index
-* @param string $value pref value to set
-* @return bool status
-*/
+ * @param string $key the pref key
+ * @param integer $index the pref key index
+ * @param string $value pref value to set
+ * @return bool status
+ */
 function asearch_setPref(&$key, $index, $value)
 {
     global $data_dir, $username, $search_advanced;
@@ -182,10 +182,10 @@ function asearch_setPref(&$key, $index, $value)
 }
 
 /**
-* @param string $key the pref key
-* @param integer $index the pref key index
-* @return bool status
-*/
+ * @param string $key the pref key
+ * @param integer $index the pref key index
+ * @return bool status
+ */
 function asearch_removePref(&$key, $index)
 {
     global $data_dir, $username, $search_advanced;
@@ -193,7 +193,7 @@ function asearch_removePref(&$key, $index)
 }
 
 /** Sanity checks, done before running the imap command and before calling push_recent
-*/
+ */
 function asearch_check_query(&$where_array, &$what_array, &$exclude_array)
 {
     global $imap_asearch_opcodes;
@@ -212,7 +212,7 @@ function asearch_check_query(&$where_array, &$what_array, &$exclude_array)
 }
 
 /** Read the recent searches from the prefs
-*/
+ */
 function asearch_read_recent()
 {
     global $recent_prefkeys, $search_memory;
@@ -222,14 +222,14 @@ function asearch_read_recent()
     for ($pref_num = 0; $pref_num < $search_memory; $pref_num++) {
         foreach ($recent_prefkeys as $prefkey) {
             $pref = asearch_getPref($prefkey, $pref_num);
-/*			if (!empty($pref))*/
+/*            if (!empty($pref))*/
                 $recent_array[$prefkey][$recent_num] = $pref;
         }
         if (empty($recent_array[$recent_prefkeys[0]][$recent_num])) {
             foreach ($recent_prefkeys as $key) {
                 array_pop($recent_array[$key]);
             }
-//			break;	//Disabled to support old search code broken prefs
+//            break; //Disabled to support old search code broken prefs
         }
         else
             $recent_num++;
@@ -238,7 +238,7 @@ function asearch_read_recent()
 }
 
 /** Read the saved searches from the prefs
-*/
+ */
 function asearch_read_saved()
 {
     global $saved_prefkeys;
@@ -259,7 +259,7 @@ function asearch_read_saved()
 }
 
 /** Save a recent search to the prefs
-*/
+ */
 function asearch_save_recent($recent_index)
 {
     global $recent_prefkeys, $saved_prefkeys;
@@ -279,7 +279,7 @@ function asearch_save_recent($recent_index)
 }
 
 /** Write a recent search to prefs
-*/
+ */
 function asearch_write_recent(&$recent_array)
 {
     global $recent_prefkeys, $search_memory;
@@ -298,7 +298,7 @@ function asearch_write_recent(&$recent_array)
 }
 
 /** Remove a recent search from prefs
-*/
+ */
 function asearch_forget_recent($forget_index)
 {
     global $recent_prefkeys;
@@ -311,7 +311,7 @@ function asearch_forget_recent($forget_index)
 }
 
 /** Find a recent search in the prefs (used to avoid saving duplicates)
-*/
+ */
 function asearch_find_recent(&$recent_array, &$mailbox_array, &$biop_array, &$unop_array, &$where_array, &$what_array, &$exclude_array, &$sub_array)
 {
     global $recent_prefkeys, $search_advanced;
@@ -345,7 +345,7 @@ function asearch_find_recent(&$recent_array, &$mailbox_array, &$biop_array, &$un
 }
 
 /** Push a recent search into the prefs
-*/
+ */
 function asearch_push_recent(&$mailbox_array, &$biop_array, &$unop_array, &$where_array, &$what_array, &$exclude_array, &$sub_array)
 {
     global $recent_prefkeys, $search_memory;
@@ -360,7 +360,7 @@ function asearch_push_recent(&$mailbox_array, &$biop_array, &$unop_array, &$wher
     if ($search_memory > 0) {
         $recent_array = asearch_read_recent();
         $recent_found = asearch_find_recent($recent_array, $mailbox_array, $biop_array, $unop_array, $where_array, $what_array, $exclude_array, $sub_array);
-        if ($recent_found >= 0) {	// Remove identical recent
+        if ($recent_found >= 0) { // Remove identical recent
             foreach ($recent_prefkeys as $key) {
                 array_splice($recent_array[$key], $recent_found, 1);
             }
@@ -376,8 +376,8 @@ function asearch_push_recent(&$mailbox_array, &$biop_array, &$unop_array, &$wher
 }
 
 /** Edit a recent search
-* @global array mailbox_array searched mailboxes
-*/
+ * @global array mailbox_array searched mailboxes
+ */
 function asearch_edit_recent($index)
 {
     global $recent_prefkeys, $search_advanced;
@@ -396,8 +396,8 @@ function asearch_edit_recent($index)
 }
 
 /** Get last search criteria from session or prefs
-* FIX ME, try to avoid globals
-*/
+ * FIX ME, try to avoid globals
+ */
 function asearch_edit_last($index) {
     if (sqGetGlobalVar(ASEARCH_CRITERIA, $criteria, SQ_SESSION)) {
         global $where_array, $mailbox_array, $what_array, $unop_array;
@@ -420,7 +420,7 @@ function asearch_edit_last($index) {
 }
 
 /** Edit a saved search
-*/
+ */
 function asearch_edit_saved($index)
 {
     global $saved_prefkeys, $search_advanced;
@@ -439,7 +439,7 @@ function asearch_edit_saved($index)
 }
 
 /** Write a saved search to the prefs
-*/
+ */
 function asearch_write_saved(&$saved_array)
 {
     global $saved_prefkeys;
@@ -456,7 +456,7 @@ function asearch_write_saved(&$saved_array)
 }
 
 /** Delete a saved search from the prefs
-*/
+ */
 function asearch_delete_saved($saved_index)
 {
     global $saved_prefkeys;
@@ -470,9 +470,9 @@ function asearch_delete_saved($saved_index)
 }
 
 /** Translate the input date to imap date to local date display,
-* so the user can know if the date is wrong or illegal
-* @return string locally formatted date or error text
-*/
+ * so the user can know if the date is wrong or illegal
+ * @return string locally formatted date or error text
+ */
 function asearch_get_date_display(&$what)
 {
     $what_parts = sqimap_asearch_parse_date($what);
@@ -486,8 +486,8 @@ function asearch_get_date_display(&$what)
 }
 
 /** Translate the query to rough natural display
-* @return string rough natural query ready to display
-*/
+ * @return string rough natural query ready to display
+ */
 function asearch_get_query_display(&$color, &$mailbox_array, &$biop_array, &$unop_array, &$where_array, &$what_array, &$exclude_array, &$sub_array)
 {
     global $imap_asearch_biops_in, $imap_asearch_biops, $imap_asearch_unops, $imap_asearch_options;
@@ -523,7 +523,7 @@ function asearch_get_query_display(&$color, &$mailbox_array, &$biop_array, &$uno
             $where_display = $unop_display . asearch_nz($imap_asearch_options[$where], $where);
             $what_type = $imap_asearch_opcodes[$where];
             $what = $what_array[$crit_num];
-            if ($what_type) {	/* Check opcode parameter */
+            if ($what_type) { /* Check opcode parameter */
                 if ($what == '')
                     $what_display = ' ' . asearch_get_error_display($color, _("(Missing argument)"));
                 else {
@@ -550,8 +550,8 @@ function asearch_get_query_display(&$color, &$mailbox_array, &$biop_array, &$uno
 }
 
 /** Handle the alternate row colors
-* @return string color value
-*/
+ * @return string color value
+ */
 function asearch_get_row_color(&$color, $row_num)
 {
 /*$color_string = ($row_num%2 ? $color[0] : $color[4]);*/
@@ -567,7 +567,7 @@ function asearch_get_row_color(&$color, $row_num)
 }
 
 /** Print a whole query array, recent or saved
-*/
+ */
 function asearch_print_query_array(&$boxes, &$query_array, &$query_keys, &$action_array, $title, $show_pref)
 {
     global $color;
@@ -625,7 +625,7 @@ function asearch_print_query_array(&$boxes, &$query_array, &$query_keys, &$actio
 }
 
 /** Print the saved array
-*/
+ */
 function asearch_print_saved(&$boxes)
 {
     global $saved_prefkeys;
@@ -641,8 +641,8 @@ function asearch_print_saved(&$boxes)
 }
 
 /**
-* Print the recent array
-*/
+ * Print the recent array
+ */
 function asearch_print_recent(&$boxes)
 {
     global $recent_prefkeys, $search_memory;
@@ -658,14 +658,14 @@ function asearch_print_recent(&$boxes)
 }
 
 /** Build an <option> statement
-*/
+ */
 function asearch_opt($val, $sel, $tit)
 {
-    return '<option value="' . $val . '"' . ($sel == $val ? ' selected' : '') . '>' . $tit . '</option>' . "\n";
+    return '<option value="' . $val . '"' . ($sel == $val ? ' selected="selected"' : '') . '>' . $tit . '</option>' . "\n";
 }
 
 /** Build a <select> statement from an array
-*/
+ */
 function asearch_opt_array($var_name, $opt_array, $cur_val)
 {
     $output = '<select name="' . $var_name . '">' . "\n";
@@ -676,8 +676,8 @@ function asearch_opt_array($var_name, $opt_array, $cur_val)
 }
 
 /** Verify that a mailbox exists
-* @return bool mailbox exists
-*/
+ * @return bool mailbox exists
+ */
 function asearch_mailbox_exists($mailbox, &$boxes)
 {
     foreach ($boxes as $box) {
@@ -688,7 +688,7 @@ function asearch_mailbox_exists($mailbox, &$boxes)
 }
 
 /** Build the mailbox select
-*/
+ */
 function asearch_get_form_mailbox($imapConnection, &$boxes, $mailbox, $row_num = 0)
 {
     if (($mailbox != 'All Folders') && (!asearch_mailbox_exists($mailbox, $boxes))) {
@@ -704,7 +704,7 @@ function asearch_get_form_mailbox($imapConnection, &$boxes, $mailbox, $row_num =
 }
 
 /** Build the Include subfolders checkbox
-*/
+ */
 function asearch_get_form_sub($sub, $row_num = 0)
 {
     return function_exists('addCheckBox') ? addCheckBox('sub[' . $row_num .']', $sub)
@@ -712,7 +712,7 @@ function asearch_get_form_sub($sub, $row_num = 0)
 }
 
 /** Build the 2 unop and where selects
-*/
+ */
 function asearch_get_form_location($unop, $where, $row_num = 0)
 {
     global $imap_asearch_unops, $imap_asearch_options;
@@ -722,7 +722,7 @@ function asearch_get_form_location($unop, $where, $row_num = 0)
 }
 
 /** Build the what text input
-*/
+ */
 function asearch_get_form_what($what, $row_num = 0)
 {
     return function_exists('addInput') ? addInput('what[' . $row_num . ']', $what, '35')
@@ -730,7 +730,7 @@ function asearch_get_form_what($what, $row_num = 0)
 }
 
 /** Build the Exclude criteria checkbox
-*/
+ */
 function asearch_get_form_exclude($exclude, $row_num = 0)
 {
     return function_exists('addCheckBox') ? addCheckBox('exclude['.$row_num.']', $exclude)
@@ -738,7 +738,7 @@ function asearch_get_form_exclude($exclude, $row_num = 0)
 }
 
 /** Print one advanced form row
-*/
+ */
 function asearch_print_form_row($imapConnection, &$boxes, $mailbox, $biop, $unop, $where, $what, $exclude, $sub, $row_num)
 {
     global $imap_asearch_biops_in;
@@ -749,7 +749,7 @@ function asearch_print_form_row($imapConnection, &$boxes, $mailbox, $biop, $unop
 //Binary operator
     echo html_tag('td', $row_num ?
             asearch_opt_array('biop[' . $row_num . ']', $imap_asearch_biops_in, $biop)
-            : '<b>' . _("In") . '</b>', 'center')	. "\n";
+            : '<b>' . _("In") . '</b>', 'center') . "\n";
 
 //Mailbox list and Include Subfolders
     echo html_tag('td',
@@ -769,7 +769,7 @@ function asearch_print_form_row($imapConnection, &$boxes, $mailbox, $biop, $unop
 }
 
 /** Print the advanced search form
-*/
+ */
 function asearch_print_form($imapConnection, &$boxes, $mailbox_array, $biop_array, $unop_array, $where_array, $what_array, $exclude_array, $sub_array)
 {
     global $search_button_html, $add_criteria_button_html, $del_excluded_button_html, $del_all_button_html;
@@ -797,17 +797,17 @@ function asearch_print_form($imapConnection, &$boxes, $mailbox_array, $biop_arra
 //Submit buttons
     echo html_tag('table', '', 'center', $color[9], 'width="100%" cellpadding="1" cellspacing="0" border="0"');
     echo html_tag('tr',
-                html_tag('td', getButton('SUBMIT', 'submit', $search_button_html), 'center') . "\n"
-            . html_tag('td', getButton('SUBMIT', 'submit', $add_criteria_button_html), 'center') . "\n"
-            . html_tag('td', getButton('SUBMIT', 'submit', $del_all_button_html), 'center') . "\n"
-            . html_tag('td', getButton('SUBMIT', 'submit', $del_excluded_button_html), 'center') . "\n"
+                html_tag('td', getButton('submit', 'submit', $search_button_html), 'center') . "\n"
+            . html_tag('td', getButton('submit', 'submit', $add_criteria_button_html), 'center') . "\n"
+            . html_tag('td', getButton('submit', 'submit', $del_all_button_html), 'center') . "\n"
+            . html_tag('td', getButton('submit', 'submit', $del_excluded_button_html), 'center') . "\n"
             );
     echo '</table>' . "\n";
     echo '</form>' . "\n";
 }
 
 /** Print one basic form row
-*/
+ */
 function asearch_print_form_row_basic($imapConnection, &$boxes, $mailbox, $biop, $unop, $where, $what, $exclude, $sub, $row_num)
 {
     global $search_button_html;
@@ -825,13 +825,13 @@ function asearch_print_form_row_basic($imapConnection, &$boxes, $mailbox, $biop,
     echo html_tag('td', asearch_get_form_what($what), 'center') . "\n";
 
 //Submit button
-    echo html_tag('td', getButton('SUBMIT', 'submit', $search_button_html), 'center') . "\n";
+    echo html_tag('td', getButton('submit', 'submit', $search_button_html), 'center') . "\n";
 
     echo "</tr>\n";
 }
 
 /** Print the basic search form
-*/
+ */
 function asearch_print_form_basic($imapConnection, &$boxes, $mailbox_array, $biop_array, $unop_array, $where_array, $what_array, $exclude_array, $sub_array)
 {
     global $color;
@@ -858,68 +858,76 @@ function asearch_print_form_basic($imapConnection, &$boxes, $mailbox_array, $bio
 }
 
 /** Print the $msgs messages from $mailbox mailbox
-*/
+ */
 
-function asearch_print_mailbox_msgs($imapConnection, &$aMailbox, $color)
-{
-    if (fetchMessageHeaders($imapConnection, $aMailbox)) {
-        /**
-         * A mailbox can contain different sets with uid's. Default, for normal
-         * message list view we use '0' as setindex and for search a different
-         * setindex.
-         */
-        $iSetIndx = $aMailbox['SETINDEX'];
+function asearch_print_mailbox_msgs($imapConnection, &$aMailbox, $color) {
+    global $javascript_on, $compact_paginator;
+    /**
+     * A mailbox can contain different sets with uid's. Default, for normal
+     * message list view we use '0' as setindex and for search a different
+     * setindex.
+     */
+    $iSetIndx = $aMailbox['SETINDEX'];
 
-        $mailbox_display = asearch_get_mailbox_display($aMailbox['NAME']);
-        $mailbox_title = '<b><big>' . _("Folder:") . ' '. $mailbox_display . '&nbsp;</big></b>';
+    $mailbox_display = asearch_get_mailbox_display($aMailbox['NAME']);
+    $mailbox_title = '<b><big>' . _("Folder:") . ' '. $mailbox_display . '&nbsp;</big></b>';
 
-        /**
-         * UIDSET contains the array with uid's returned by a search
-         */
-        $cnt = count($aMailbox['UIDSET'][$iSetIndx]);
+    /**
+     * UIDSET contains the array with uid's returned by a search
+     */
+    $cnt = count($aMailbox['UIDSET'][$iSetIndx]);
 
-        $iLimit = ($aMailbox['SHOWALL'][$iSetIndx]) ? $cnt : $aMailbox['LIMIT'];
-        $iEnd = ($aMailbox['PAGEOFFSET'] + ($iLimit - 1) < $aMailbox['EXISTS']) ?
-                $aMailbox['PAGEOFFSET'] + $iLimit - 1 : $cnt;
+    $iLimit = ($aMailbox['SHOWALL'][$iSetIndx]) ? $cnt : $aMailbox['LIMIT'];
+    $iEnd = ($aMailbox['PAGEOFFSET'] + ($iLimit - 1) < $aMailbox['EXISTS']) ?
+            $aMailbox['PAGEOFFSET'] + $iLimit - 1 : $cnt;
 
-        $paginator_str = get_paginator_str($aMailbox['NAME'], $aMailbox['PAGEOFFSET'],
-                                        $cnt, $aMailbox['LIMIT'], $aMailbox['SHOWALL'][$iSetIndx]);
+    $paginator_str = get_paginator_str($aMailbox['NAME'], $aMailbox['PAGEOFFSET'],
+                                    $cnt, $aMailbox['LIMIT'], $aMailbox['SHOWALL'][$iSetIndx]);
 
-        $msg_cnt_str = get_msgcnt_str($aMailbox['PAGEOFFSET'], $iEnd,$cnt);
-
-        echo '<table border="0" width="100%" cellpadding="0" cellspacing="0">';
-
-        echo '<tr><td>';
-        mail_message_listing_beginning($imapConnection, $aMailbox, $msg_cnt_str, $mailbox_title . " $paginator_str");
-        echo '</td></tr>';
-
-        echo '<tr><td HEIGHT="5" BGCOLOR="'.$color[4].'"></td></tr>';
-
-        echo '<tr><td>';
-        echo '    <table width="100%" cellpadding="1" cellspacing="0" align="center"'.' border="0" bgcolor="'.$color[9].'">';
-        echo '     <tr><td>';
-
-        echo '       <table width="100%" cellpadding="1" cellspacing="0" align="center" border="0" bgcolor="'.$color[5].'">';
-        echo '        <tr><td>';
-        printHeader($aMailbox);
-        displayMessageArray($imapConnection, $aMailbox);
-        echo '        </td></tr>';
-        echo '       </table>';
-        echo '     </td></tr>';
-        echo '    </table>';
-        mail_message_listing_end($cnt, '', $msg_cnt_str);
-        echo '</td></tr>';
-
-        echo '</table>';
-    } else {
-        echo '<br />' . html_tag('div', asearch_get_error_display($color, _("No Messages Found")), 'center') . "\n";
+    if ($javascript_on && $compact_paginator) {
+    echo "\n<!-- start of compact paginator javascript -->\n"
+    . "<script language=\"JavaScript\">\n"
+    . "function SubmitOnSelect(select, URL)\n"
+    . "{\n"
+    . "   URL += select.options[select.selectedIndex].value;\n"
+    . "   window.location.href = URL;\n"
+    . "}\n"
+    . "</script>\n"
+    . "<!-- end of compact paginator javascript -->\n";
     }
+
+    $msg_cnt_str = get_msgcnt_str($aMailbox['PAGEOFFSET'], $iEnd,$cnt);
+
+    echo '<table border="0" width="100%" cellpadding="0" cellspacing="0">';
+
+    echo '<tr><td>';
+    mail_message_listing_beginning($imapConnection, $aMailbox, $msg_cnt_str, $mailbox_title . " $paginator_str");
+    echo '</td></tr>';
+
+    echo '<tr><td height="5" bgcolor="'.$color[4].'"></td></tr>';
+
+    echo '<tr><td>';
+    echo '    <table width="100%" cellpadding="1" cellspacing="0" align="center"'.' border="0" bgcolor="'.$color[9].'">';
+    echo '     <tr><td>';
+
+    echo '       <table width="100%" cellpadding="1" cellspacing="0" align="center" border="0" bgcolor="'.$color[5].'">';
+    echo '        <tr><td>';
+    printHeader($aMailbox);
+    displayMessageArray($imapConnection, $aMailbox);
+    echo '        </td></tr>';
+    echo '       </table>';
+    echo '     </td></tr>';
+    echo '    </table>';
+    mail_message_listing_end($cnt, '', $msg_cnt_str);
+    echo '</td></tr>';
+
+    echo '</table>';
 }
 
 /**
-* @param array $boxes mailboxes array (reference)
-* @return array selectable unformatted mailboxes names
-*/
+ * @param array $boxes mailboxes array (reference)
+ * @return array selectable unformatted mailboxes names
+ */
 function sqimap_asearch_get_selectable_unformatted_mailboxes(&$boxes)
 {
     $mboxes_array = array();
@@ -958,30 +966,29 @@ $del_all_button_html = _("Remove All Criteria");
 $del_all_button_text = asearch_unhtmlentities($del_all_button_html);
 
 /** Maximum number of recent searches to handle
-* Default 0
-* @global integer $search_memory
-*/
+ * Default 0
+ * @global integer $search_memory
+ */
 $search_memory = getPref($data_dir, $username, 'search_memory', 0);
 
 /** Advanced search control
-* - 0 => allow basic interface only
-* - 1 => allow advanced interface only
-* - 2 => allow both
-* Default 2
-* @global integer $allow_advanced_search
-*/
+ * - 0 => allow basic interface only
+ * - 1 => allow advanced interface only
+ * - 2 => allow both
+ * Default 2
+ */
 $allow_advanced_search = asearch_nz($allow_advanced_search, 2);
 
 /**
-* Toggle advanced/basic search
-*/
+ * Toggle advanced/basic search
+ */
 if (sqgetGlobalVar('advanced', $search_advanced, SQ_GET)) {
     setPref($data_dir, $username, 'search_advanced', $search_advanced & 1);
 }
 /** If 1, show advanced search interface
-* Default from allow_advanced_search pref
-* @global integer $search_advanced
-*/
+ * Default from allow_advanced_search pref
+ * @global integer $search_advanced
+ */
 if ($allow_advanced_search > 1) {
     $search_advanced = getPref($data_dir, $username, 'search_advanced', 0);
 } else {
@@ -989,13 +996,13 @@ if ($allow_advanced_search > 1) {
 }
 if ($search_advanced) {
 /** Set recent prefkeys according to $search_advanced
-* @global array $recent_prefkeys
-*/
+ * @global array $recent_prefkeys
+ */
     $recent_prefkeys = array('asearch_recent_where', 'asearch_recent_mailbox', 'asearch_recent_what', 'asearch_recent_unop', 'asearch_recent_biop', 'asearch_recent_exclude', 'asearch_recent_sub');
 
 /** Set saved prefkeys according to $search_advanced
-* @global array $saved_prefkeys
-*/
+ * @global array $saved_prefkeys
+ */
     $saved_prefkeys = array('asearch_saved_where', 'asearch_saved_mailbox', 'asearch_saved_what', 'asearch_saved_unop', 'asearch_saved_biop', 'asearch_saved_exclude', 'asearch_saved_sub');
 
 /*$asearch_prefkeys = array('where', 'mailbox', 'what', 'biop', 'unop', 'exclude', 'sub');*/
@@ -1005,28 +1012,28 @@ if ($search_advanced) {
 }
 
 /** How we did enter the form
-* - unset : Enter key, or called from outside (eg read_body)
-* - $search_button_text : Search button
-* - 'Search_no_update' : Search but don't update recent
-* - 'Search_last' : Same as no_update but reload and search last
-* - 'Search_silent' : Same as no_update but only display results
-* - $add_criteria_button_text : Add New Criteria button
-* - $del_excluded_button_text : Remove Excluded Criteria button
-* - $del_all_button_text : Remove All Criteria button
-* - 'save_recent'
-* - 'search_recent'
-* - 'forget_recent'
-* - 'edit_saved'
-* - 'search_saved'
-* - 'delete_saved'
-* @global string $submit
-*/
+ * - unset : Enter key, or called from outside (eg read_body)
+ * - $search_button_text : Search button
+ * - 'Search_no_update' : Search but don't update recent
+ * - 'Search_last' : Same as no_update but reload and search last
+ * - 'Search_silent' : Same as no_update but only display results
+ * - $add_criteria_button_text : Add New Criteria button
+ * - $del_excluded_button_text : Remove Excluded Criteria button
+ * - $del_all_button_text : Remove All Criteria button
+ * - 'save_recent'
+ * - 'search_recent'
+ * - 'forget_recent'
+ * - 'edit_saved'
+ * - 'search_saved'
+ * - 'delete_saved'
+ * @global string $submit
+ */
 if (isset($_GET['submit'])) {
     $submit = strip_tags($_GET['submit']);
 }
 /** Searched mailboxes
-* @global array $mailbox_array
-*/
+ * @global array $mailbox_array
+ */
 if (isset($_GET['mailbox'])) {
     $mailbox_array = $_GET['mailbox'];
     $targetmailbox = $_GET['mailbox'];
@@ -1035,6 +1042,7 @@ if (isset($_GET['mailbox'])) {
     }
 } else {
     $mailbox_array = array();
+    $targetmailbox = array();
 }
 $aMailboxGlobalPref = array(
                        MBX_PREF_SORT         => 0,
@@ -1055,8 +1063,8 @@ $aConfig = array(
                 );
 
 /** Binary operators
-* @global array $biop_array
-*/
+ * @global array $biop_array
+ */
 if (isset($_GET['biop'])) {
     $biop_array = $_GET['biop'];
     if (!is_array($biop_array))
@@ -1065,8 +1073,8 @@ if (isset($_GET['biop'])) {
     $biop_array = array();
 }
 /** Unary operators
-* @global array $unop_array
-*/
+ * @global array $unop_array
+ */
 if (isset($_GET['unop'])) {
     $unop_array = $_GET['unop'];
     if (!is_array($unop_array))
@@ -1075,8 +1083,8 @@ if (isset($_GET['unop'])) {
     $unop_array = array();
 }
 /** Where to search
-* @global array $where_array
-*/
+ * @global array $where_array
+ */
 if (isset($_GET['where'])) {
     $where_array = $_GET['where'];
     if (!is_array($where_array)) {
@@ -1086,8 +1094,8 @@ if (isset($_GET['where'])) {
     $where_array = array();
 }
 /** What to search
-* @global array $what_array
-*/
+ * @global array $what_array
+ */
 if (isset($_GET['what'])) {
     $what_array = $_GET['what'];
     if (!is_array($what_array)) {
@@ -1097,28 +1105,28 @@ if (isset($_GET['what'])) {
     $what_array = array();
 }
 /** Whether to exclude this criteria from search
-* @global array $exclude_array
-*/
+ * @global array $exclude_array
+ */
 if (isset($_GET['exclude'])) {
     $exclude_array = $_GET['exclude'];
 } else {
     $exclude_array = array();
 }
 /** Search within subfolders
-* @global array $sub_array
-*/
+ * @global array $sub_array
+ */
 if (isset($_GET['sub'])) {
     $sub_array = $_GET['sub'];
 } else {
     $sub_array = array();
 }
 /** Row number used by recent and saved stuff
-*/
+ */
 if (isset($_GET['rownum'])) {
     $submit_rownum = strip_tags($_GET['rownum']);
 }
 /** Change global sort
-*/
+ */
 if (sqgetGlobalVar('srt', $temp, SQ_GET)) {
     $srt = (int) $temp;
     asearch_edit_last(1);
@@ -1155,21 +1163,21 @@ if (sqgetGlobalVar('moveButton',      $moveButton,      SQ_POST) ||
 
 
 /** Toggle show/hide saved searches
-*/
+ */
 if (sqgetGlobalVar('search_show_saved', $search_show_saved, SQ_GET)) {
     setPref($data_dir, $username, 'search_show_saved', $search_show_saved & 1);
 }
 /** Toggle show/hide recent searches
-*/
+ */
 if (sqgetGlobalVar('search_show_recent', $search_show_recent, SQ_GET)) {
     setPref($data_dir, $username, 'search_show_recent', $search_show_recent & 1);
 }
 // end of get globals
 
 /** If TRUE, do not show search interface
-* Default FALSE
-* @global bool $search_silent
-*/
+ * Default FALSE
+ * @global bool $search_silent
+ */
 $search_silent = FALSE;
 
 /*  See how the page was called and fire off correct function  */
@@ -1214,7 +1222,7 @@ if (!isset($submit)) {
             array_splice($unop_array, $delrow, 1);
             array_splice($where_array, $delrow, 1);
             array_splice($what_array, $delrow, 1);
-            /* array_splice($exclude_array, $delrow, 1);*/	/* There is still some php magic that eludes me */
+            /* array_splice($exclude_array, $delrow, 1);*/ /* There is still some php magic that eludes me */
             array_splice($sub_array, $delrow, 1);
         }
         $exclude_array = array();
@@ -1236,7 +1244,7 @@ if (!isset($submit)) {
         asearch_edit_recent($submit_rownum);
         asearch_push_recent($mailbox_array, $biop_array, $unop_array, $where_array, $what_array, $exclude_array, $sub_array);
         break;
-      case 'edit_recent':	/* no link to do this, yet */
+      case 'edit_recent': /* no link to do this, yet */
         asearch_edit_recent($submit_rownum);
         break;
       case 'forget_recent':
@@ -1271,7 +1279,7 @@ if ($search_advanced) {
         'BCC' => _("Bcc"),
         'BEFORE' => _("Before"),
         'BODY' => _("Message Body"),
-        'CC' => _("CC"),
+        'CC' => _("Cc"),
         'DELETED' => _("Deleted"),
         'DRAFT' => _("Draft"),
         'FLAGGED' => _("Flagged"),
@@ -1295,7 +1303,7 @@ if ($search_advanced) {
         'TEXT' => _("Header and Body"),
         'TO' => _("Sent To"),
         //'UID' => 'anum',
-/*	'UNANSWERED' => '',
+/*        'UNANSWERED' => '',
         'UNDELETED' => '',
         'UNDRAFT' => '',
         'UNFLAGGED' => '',
@@ -1335,8 +1343,8 @@ $imapConnection = sqimap_login($username, $key, $imapServerAddress, $imapPort, 0
 $boxes = sqimap_mailbox_list($imapConnection);
 /* ensure we have a valid default mailbox name */
 $mailbox = asearch_nz($mailbox_array[0]);
-if (($mailbox == '') || ($mailbox == 'None'))	//Workaround for sm quirk IMHO (what if I really have a mailbox called None?)
-    $mailbox = $boxes[0]['unformatted'];	//Usually INBOX ;)
+if (($mailbox == '') || ($mailbox == 'None')) //Workaround for sm quirk IMHO (what if I really have a mailbox called None?)
+    $mailbox = $boxes[0]['unformatted']; //Usually INBOX ;)
 
 if (isset($composenew) && $composenew) {
     $comp_uri = "../src/compose.php?mailbox=" . urlencode($mailbox)
@@ -1399,6 +1407,7 @@ if (!$search_silent) {
 do_hook('search_after_form');
 
 if ($submit == $search_button_text) {
+    $msgsfound = false;
     echo html_tag('table', '', 'center', $color[9], 'width="100%" cellpadding="1" cellspacing="0" border="0"');
     echo html_tag('tr', html_tag('td', asearch_get_title_display($color, _("Search Results")), 'center', $color[5]));
     echo html_tag('tr', html_tag('td', asearch_get_query_display($color, $mailbox_array, $biop_array, $unop_array, $where_array, $what_array, $exclude_array, $sub_array), 'center', $color[4]));
@@ -1451,7 +1460,6 @@ if ($submit == $search_button_text) {
             $aMailboxPref[MBX_PREF_AUTO_EXPUNGE] = (bool) $auto_expunge;
             $aMailboxPref[MBX_PREF_INTERNALDATE] = (bool) getPref($data_dir, $username, 'internal_date_sort');
 
-            echo '<br />';
             $aConfig['search'] = $search['search'];
             $aConfig['charset'] = $search['charset'];
             $aConfig['setindex'] = 1; // $what $where = 'search'
@@ -1465,11 +1473,19 @@ if ($submit == $search_button_text) {
                     handleMessageListForm($imapConnection,$aMailbox);
                 }
             }
-            asearch_print_mailbox_msgs($imapConnection, $aMailbox, $color);
+            if (fetchMessageHeaders($imapConnection, $aMailbox)) {
+                $msgsfound = true;
+                echo '<br />';
+                asearch_print_mailbox_msgs($imapConnection, $aMailbox, $color);
+                flush();
+            }
             /* add the mailbox to the cache */
             $mailbox_cache[$aMailbox['NAME']] = $aMailbox;
 
         }
+    }
+    if(!$msgsfound) {
+        echo '<br />' . html_tag('div', asearch_get_error_display($color, _("No Messages Found")), 'center') . "\n";
     }
 }
 

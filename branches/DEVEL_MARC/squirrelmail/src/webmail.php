@@ -24,6 +24,7 @@ define('SM_PATH','../');
 require_once(SM_PATH . 'functions/strings.php');
 require_once(SM_PATH . 'config/config.php');
 require_once(SM_PATH . 'functions/prefs.php');
+require_once(SM_PATH . 'functions/imap.php');
 require_once(SM_PATH . 'functions/plugin.php');
 require_once(SM_PATH . 'functions/i18n.php');
 require_once(SM_PATH . 'functions/auth.php');
@@ -67,8 +68,6 @@ if ($my_language != $squirrelmail_language) {
 
 $err=set_up_language(getPref($data_dir, $username, 'language'));
 
-require_once(SM_PATH . 'functions/imap.php');
-
 $output = "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Frameset//EN\">\n".
           "<html><head>\n" .
           "<title>$org_title</title>\n".
@@ -78,12 +77,12 @@ $output = "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Frameset//EN\">\n".
 if ($err==2) {
     echo $output.
          "<body>\n".
-	 "<p>You need to have php4 installed with the multibyte string function \n".
-	 "enabled (using configure option --enable-mbstring).</p>\n".
-	 "<p>System assumed that you accidently switched to Japanese translation \n".
+         "<p>You need to have php4 installed with the multibyte string function \n".
+         "enabled (using configure option --enable-mbstring).</p>\n".
+         "<p>System assumed that you accidently switched to Japanese translation \n".
          "and reverted your language preference to English.</p>\n".
-	 "<p>Please refresh this page in order to use webmail.</p>\n".
-	 "</body></html>";
+         "<p>Please refresh this page in order to use webmail.</p>\n".
+         "</body></html>";
     return;
 }
 

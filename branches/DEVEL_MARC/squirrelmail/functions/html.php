@@ -51,7 +51,7 @@ function html_tag( $tag,                // Tag to output
         }
 
         if ( $bgcolor <> '' ) {
-            $bgc = " bgcolor=\"$bgcolor\""; 
+            $bgc = " bgcolor=\"$bgcolor\"";
         }
 
         switch ( $align ) {
@@ -84,7 +84,7 @@ function html_tag( $tag,                // Tag to output
             $ret .= ">$val</$tag>";
         } else {
             $ret .= '>';
-        } 
+        }
 
         return( $ret );
     }
@@ -93,14 +93,13 @@ function html_tag( $tag,                // Tag to output
     /* especially usefull when $url = $PHP_SELF */
     function set_url_var($url, $var, $val=0, $link=true) {
         $k = '';
-        $ret = '';
         $pat_a = array (
                        '/.+(\\&'.$var.')=(.*)\\&/AU',   /* in the middle */
                        '/.+\\?('.$var.')=(.*\\&).+/AU', /* at front, more follow */
                        '/.+(\\?'.$var.')=(.*)$/AU',     /* at front and only var */
                        '/.+(\\&'.$var.')=(.*)$/AU'      /* at the end */
                      );
-	preg_replace('/&amp;/','&',$url);	     
+        preg_replace('/&amp;/','&',$url);
         switch (true) {
             case (preg_match($pat_a[0],$url,$regs)):
                 $k = $regs[1];
@@ -132,9 +131,9 @@ function html_tag( $tag,                // Tag to output
         if ($k) {
             if ($val) {
                 $rpl = "$k=$val";
-		if ($link) {
-		    $rpl = preg_replace('/&/','&amp;',$rpl);
-		}
+                if ($link) {
+                    $rpl = preg_replace('/&/','&amp;',$rpl);
+                }
             } else {
                 $rpl = '';
             }
@@ -151,7 +150,7 @@ function html_tag( $tag,                // Tag to output
     function echo_template_var($var, $format_ar = array() ) {
         $frm_last = count($format_ar) -1;
 
-        if (isset($format_ar[0])) echo $format_ar[0]; 
+        if (isset($format_ar[0])) echo $format_ar[0];
             $i = 1;
 
         switch (true) {

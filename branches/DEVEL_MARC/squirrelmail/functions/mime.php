@@ -41,7 +41,7 @@ function mime_structure ($bodystructure, $flags=array()) {
         /* removed urldecode because $_GET is auto urldecoded ??? */
         displayPageHeader( $color, $mailbox );
         $errormessage  = _("SquirrelMail could not decode the bodystructure of the message");
-        $errormessage .= '<BR>'._("the provided bodystructure by your imap-server").':<BR><BR>';
+        $errormessage .= '<br />'._("the provided bodystructure by your imap-server").':<br /><br />';
         $errormessage .= '<pre>' . htmlspecialchars($read) . '</pre>';
         plain_error_message( $errormessage, $color );
         echo '</body></html>';
@@ -137,16 +137,16 @@ function mime_fetch_body($imap_stream, $id, $ent_id=1, $fetch_size=0) {
                 '&amp;message='  . urlencode($message)  .
                 '&amp;topline='  . urlencode($topline);
 
-        echo   '<tt><br>' .
+        echo   '<tt><br />' .
                '<table width="80%"><tr>' .
-               '<tr><td colspan=2>' .
+               '<tr><td colspan="2">' .
                _("Body retrieval error. The reason for this is most probably that the message is malformed.") .
                '</td></tr>' .
                '<tr><td><b>' . _("Command:") . "</td><td>$cmd</td></tr>" .
                '<tr><td><b>' . _("Response:") . "</td><td>$response</td></tr>" .
                '<tr><td><b>' . _("Message:") . "</td><td>$message</td></tr>" .
                '<tr><td><b>' . _("FETCH line:") . "</td><td>$topline</td></tr>" .
-               "</table><BR></tt></font><hr>";
+               "</table><br /></tt></font><hr />";
 
         $data = sqimap_run_command ($imap_stream, "FETCH $passed_id BODY[]", true, $response, $message, TRUE);
         array_shift($data);
@@ -161,7 +161,7 @@ function mime_print_body_lines ($imap_stream, $id, $ent_id=1, $encoding) {
 
     /* Don't kill the connection if the browser is over a dialup
      * and it would take over 30 seconds to download it.
-     * Dont call set_time_limit in safe mode.
+     * Don't call set_time_limit in safe mode.
      */
 
     if (!ini_get('safe_mode')) {
@@ -197,33 +197,6 @@ function mime_print_body_lines ($imap_stream, $id, $ent_id=1, $encoding) {
     */
 
     return;
-/*
-    fputs ($imap_stream, "$sid FETCH $id BODY[$ent_id]\r\n");
-    $cnt = 0;
-    $continue = true;
-    $read = fgets ($imap_stream,8192);
-
-
-    // This could be bad -- if the section has sqimap_session_id() . ' OK'
-    // or similar, it will kill the download.
-    while (!ereg("^".$sid_s." (OK|BAD|NO)(.*)$", $read, $regs)) {
-        if (trim($read) == ')==') {
-            $read1 = $read;
-            $read = fgets ($imap_stream,4096);
-            if (ereg("^".$sid." (OK|BAD|NO)(.*)$", $read, $regs)) {
-                return;
-            } else {
-                echo decodeBody($read1, $encoding) .
-                     decodeBody($read, $encoding);
-            }
-        } else if ($cnt) {
-            echo decodeBody($read, $encoding);
-        }
-        $read = fgets ($imap_stream,4096);
-        $cnt++;
-//      break;
-    }
-*/
 }
 
 /* -[ END MIME DECODING ]----------------------------------------------------------- */
@@ -233,7 +206,7 @@ function mime_print_body_lines ($imap_stream, $id, $ent_id=1, $encoding) {
  */
 function listEntities ($message) {
     if ($message) {
-        echo "<tt>" . $message->entity_id . ' : ' . $message->type0 . '/' . $message->type1 . ' parent = '. $message->parent->entity_id. '<br>';
+        echo "<tt>" . $message->entity_id . ' : ' . $message->type0 . '/' . $message->type1 . ' parent = '. $message->parent->entity_id. '<br />';
         for ($i = 0; isset($message->entities[$i]); $i++) {
             echo "$i : ";
             $msg = listEntities($message->entities[$i]);
@@ -341,9 +314,8 @@ function formatBody($imap_stream, $message, $color, $wrap_at, $ent_num, $id, $ma
      * primary message. To add more of them, just put them in the
      * order that is their priority.
      */
-    global $startMessage, $username, $key, $imapServerAddress, $imapPort,
+    global $startMessage, $languages, $squirrelmail_language,
            $show_html_default, $sort, $has_unsafe_images, $passed_ent_id;
-    global $languages, $squirrelmail_language;
 
     if( !sqgetGlobalVar('view_unsafe_images', $view_unsafe_images, SQ_GET) ) {
         $view_unsafe_images = false;
@@ -358,9 +330,9 @@ function formatBody($imap_stream, $message, $color, $wrap_at, $ent_num, $id, $ma
         $body = decodeBody($body, $body_message->header->encoding);
 
         if (isset($languages[$squirrelmail_language]['XTRA_CODE']) &&
-            function_exists($languages[$squirrelmail_language]['XTRA_CODE'])) {
+            function_exists($languages[$squirrelmail_language]['XTRA_CODE'] . '_decode')) {
             if (mb_detect_encoding($body) != 'ASCII') {
-                $body = $languages[$squirrelmail_language]['XTRA_CODE']('decode', $body);
+                $body = call_user_func($languages[$squirrelmail_language]['XTRA_CODE'] . '_decode',$body);
             }
         }
         $hookResults = do_hook("message_body", $body);
@@ -414,21 +386,20 @@ function formatBody($imap_stream, $message, $color, $wrap_at, $ent_num, $id, $ma
         if($text != '') {
             $body .= '&nbsp;|&nbsp;<a href="read_body.php?' . $link . '">' . $text . '</a>';
         }
-        $body .= '</small></center><br>' . "\n";
+        $body .= '</small></center><br />' . "\n";
     }
     return $body;
 }
 
 
 function formatAttachments($message, $exclude_id, $mailbox, $id) {
-    global $where, $what, $startMessage, $color;
-    static $ShownHTML = 0;
+    global $where, $what, $startMessage, $color, $passed_ent_id;
 
     $att_ar = $message->getAttachments($exclude_id);
 
-    if (!count($att_ar)) return '';
+    if (!count($att_ar)) return array();
 
-    $attachments = '';
+    $aAttachments = array();
 
     $urlMailbox = urlencode($mailbox);
 
@@ -438,10 +409,9 @@ function formatAttachments($message, $exclude_id, $mailbox, $id) {
         $type0 = strtolower($header->type0);
         $type1 = strtolower($header->type1);
         $name = '';
-        $links['download link']['text'] = _("download");
+        $links['download link']['text'] = _("Download");
         $links['download link']['href'] = SM_PATH .
                 "src/download.php?absolute_dl=true&amp;passed_id=$id&amp;mailbox=$urlMailbox&amp;ent_id=$ent";
-        $ImageURL = '';
         if ($type0 =='message' && $type1 == 'rfc822') {
             $default_page = SM_PATH . 'src/read_body.php';
             $rfc822_header = $att->rfc822_header;
@@ -506,6 +476,7 @@ function formatAttachments($message, $exclude_id, $mailbox, $id) {
         if ($where && $what) {
            $defaultlink .= '&amp;where='. urlencode($where).'&amp;what='.urlencode($what);
         }
+
         /* This executes the attachment hook with a specific MIME-type.
          * If that doesn't have results, it tries if there's a rule
          * for a more generic type.
@@ -521,48 +492,36 @@ function formatAttachments($message, $exclude_id, $mailbox, $id) {
 
         $links = $hookresults[1];
         $defaultlink = $hookresults[6];
-
-        $attachments .= '<TR><TD>' .
-                        '<A HREF="'.$defaultlink.'">'.decodeHeader($display_filename).'</A>&nbsp;</TD>' .
-                        '<TD><SMALL><b>' . show_readable_size($header->size) .
-                        '</b>&nbsp;&nbsp;</small></TD>' .
-                        '<TD><SMALL>[ '.htmlspecialchars($type0).'/'.htmlspecialchars($type1).' ]&nbsp;</SMALL></TD>' .
-                        '<TD><SMALL>';
-        $attachments .= '<b>' . $description . '</b>';
-        $attachments .= '</SMALL></TD><TD><SMALL>&nbsp;';
-
-        $skipspaces = 1;
-        foreach ($links as $val) {
-            if ($skipspaces) {
-                $skipspaces = 0;
-            } else {
-                $attachments .= '&nbsp;&nbsp;|&nbsp;&nbsp;';
-            }
-            $attachments .= '<a href="' . $val['href'] . '">' .  $val['text'] . '</a>';
-        }
-        unset($links);
-        $attachments .= "</TD></TR>\n";
+        $aAttachments[] = array(
+                             'name' => decodeHeader($display_filename),
+                             'defaultlink' => $defaultlink,
+                             'size' => show_readable_size($header->size),
+                             'type' => htmlspecialchars($type0),
+                             'subtype' => htmlspecialchars($type1),
+                             'description' => $description,
+                             'links' => $links);
     }
-    $attachmentadd = do_hook_function('attachments_bottom',$attachments);
-    if ($attachmentadd != '')
-        $attachments = $attachmentadd;
-    return $attachments;
+//    $attachmentadd = do_hook_function('attachments_bottom',$attachments);
+//    if ($attachmentadd != '')
+//        $attachments = $attachmentadd;
+//    return $attachments;
+    return $aAttachments;
 }
 
 function sqimap_base64_decode(&$string) {
 
-    // base64 enoded data goes in pairs of 4 bytes. To achieve on the
+    // Base64 encoded data goes in pairs of 4 bytes. To achieve on the
     // fly decoding (to reduce memory usage) you have to check if the
     // data has incomplete pairs
 
-    // remove the noise in order to check if the 4 bytes pairs are complete
+    // Remove the noise in order to check if the 4 bytes pairs are complete
     $string = str_replace(array("\r\n","\n", "\r", " "),array('','','',''),$string);
 
     $sStringRem = '';
     $iMod = strlen($string) % 4;
     if ($iMod) {
         $sStringRem = substr($string,-$iMod);
-        // check if $sStringRem contains padding characters
+        // Check if $sStringRem contains padding characters
         if (substr($sStringRem,-1) != '=') {
             $string = substr($string,0,-$iMod);
         } else {
@@ -625,8 +584,8 @@ function decodeHeader ($string, $utfencode=true,$htmlsave=true,$decide=false) {
     }
 
     if (isset($languages[$squirrelmail_language]['XTRA_CODE']) &&
-        function_exists($languages[$squirrelmail_language]['XTRA_CODE'])) {
-        $string = $languages[$squirrelmail_language]['XTRA_CODE']('decodeheader', $string);
+        function_exists($languages[$squirrelmail_language]['XTRA_CODE'] . '_decodeheader')) {
+        $string = call_user_func($languages[$squirrelmail_language]['XTRA_CODE'] . '_decodeheader', $string);
         // Do we need to return at this point?
         // return $string;
     }
@@ -658,7 +617,11 @@ function decodeHeader ($string, $utfencode=true,$htmlsave=true,$decide=false) {
             }
             $iLastMatch = $i;
             $j = $i;
-            $ret .= $res[1];
+            if ($htmlsave) {
+                $ret .= htmlspecialchars($res[1]);
+            } else {
+                $ret .= $res[1];
+            }
             $encoding = ucfirst($res[3]);
 
             /* decide about valid decoding */
@@ -672,14 +635,21 @@ function decodeHeader ($string, $utfencode=true,$htmlsave=true,$decide=false) {
             {
             case 'B':
                 $replace = base64_decode($res[4]);
-                if ($can_be_encoded) {
-                  /* convert string to different charset,
-                   * if functions asks for it (usually in compose)
-                   */
-                  $ret .= charset_convert($res[2],$replace,$default_charset);
+                if ($utfencode) {
+                    if ($can_be_encoded) {
+                        /* convert string to different charset,
+                         * if functions asks for it (usually in compose)
+                         */
+                        $ret .= charset_convert($res[2],$replace,$default_charset);
+                    } else {
+                        // convert string to html codes in order to display it
+                        $ret .= charset_decode($res[2],$replace);
+                    }
                 } else {
-                  // convert string to html codes in order to display it
-                  $ret .= charset_decode($res[2],$replace);
+                    if ($htmlsave) {
+                        $replace = htmlspecialchars($replace);
+                    }
+                    $ret.= $replace;
                 }
                 break;
             case 'Q':
@@ -750,8 +720,8 @@ function encodeHeader ($string) {
     global $default_charset, $languages, $squirrelmail_language;
 
     if (isset($languages[$squirrelmail_language]['XTRA_CODE']) &&
-        function_exists($languages[$squirrelmail_language]['XTRA_CODE'])) {
-        return  $languages[$squirrelmail_language]['XTRA_CODE']('encodeheader', $string);
+        function_exists($languages[$squirrelmail_language]['XTRA_CODE'] . '_encodeheader')) {
+        return  call_user_func($languages[$squirrelmail_language]['XTRA_CODE'] . '_encodeheader', $string);
     }
 
     // Encode only if the string contains 8-bit characters or =?
@@ -1081,7 +1051,7 @@ function sq_getnxtag($body, $offset){
      * 2. Closing tag, e.g.:
      *    </a>
      * 3. XHTML-style content-less tag, e.g.:
-     *    <img src="blah"/>
+     *    <img src="blah" />
      */
     $tagtype = false;
     switch (substr($body, $pos, 1)){
@@ -1115,7 +1085,6 @@ function sq_getnxtag($body, $offset){
             break;
     }
 
-    $tag_start = $pos;
     $tagname = '';
     /**
      * Look for next [\W-_], which will indicate the end of the tag name.
@@ -1139,7 +1108,7 @@ function sq_getnxtag($body, $offset){
         case '/':
             /**
              * This is an xhtml-style tag with a closing / at the
-             * end, like so: <img src="blah"/>. Check if it's followed
+             * end, like so: <img src="blah" />. Check if it's followed
              * by the closing bracket. If not, then this tag is invalid
              */
             if (substr($body, $pos, 2) == "/>"){
@@ -1175,7 +1144,6 @@ function sq_getnxtag($body, $offset){
      * At this point we loop in order to find all attributes.
      */
     $attname = '';
-    $atttype = false;
     $attary = Array();
 
     while ($pos <= strlen($body)){
@@ -1241,7 +1209,7 @@ function sq_getnxtag($body, $offset){
             case '/':
                 /**
                  * This is an xhtml-style tag with a closing / at the
-                 * end, like so: <img src="blah"/>. Check if it's followed
+                 * end, like so: <img src="blah" />. Check if it's followed
                  * by the closing bracket. If not, then this tag is invalid
                  */
                 if (substr($body, $pos, 2) == "/>"){
@@ -1584,7 +1552,6 @@ function sq_cid2http($message, $id, $cidurl, $mailbox){
 function sq_body2div($attary, $mailbox, $message, $id){
     $me = 'sq_body2div';
     $divattary = Array('class' => "'bodyclass'");
-    $bgcolor = '#ffffff';
     $text = '#000000';
     $has_bgc_stl = $has_txt_stl = false;
     $styledef = '';
@@ -1626,7 +1593,7 @@ function sq_body2div($attary, $mailbox, $message, $id){
  * special description.
  *
  * Since the description is quite lengthy, see it here:
- * http://www.mricon.com/html/phpfilter.html
+ * http://linux.duke.edu/projects/mini/htmlfilter/
  *
  * @param $body                 the string with HTML you wish to filter
  * @param $tag_list             see description above
@@ -1983,9 +1950,9 @@ function magicHTML($body, $id, $message, $mailbox = 'INBOX') {
      }
 
      if (isset($languages[$squirrelmail_language]['XTRA_CODE']) &&
-         function_exists($languages[$squirrelmail_language]['XTRA_CODE'])) {
+         function_exists($languages[$squirrelmail_language]['XTRA_CODE'] . '_downloadfilename')) {
          $filename =
-         $languages[$squirrelmail_language]['XTRA_CODE']('downloadfilename', $filename, $HTTP_USER_AGENT);
+         call_user_func($languages[$squirrelmail_language]['XTRA_CODE'] . '_downloadfilename', $filename, $HTTP_USER_AGENT);
      } else {
          $filename = ereg_replace('[\\/:\*\?"<>\|;]', '_', str_replace('&nbsp;', ' ', $filename));
      }
@@ -2003,6 +1970,7 @@ function magicHTML($body, $id, $message, $mailbox = 'INBOX') {
      // version
      //set all the Cache Control Headers for IE
      if ($isIE) {
+         $filename=urlencode($filename);
          header ("Pragma: public");
          header ("Cache-Control: no-store, max-age=0, no-cache, must-revalidate"); # HTTP/1.1
          header ("Cache-Control: post-check=0, pre-check=0", false);

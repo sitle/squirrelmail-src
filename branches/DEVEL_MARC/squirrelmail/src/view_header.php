@@ -27,42 +27,41 @@ require_once(SM_PATH . 'functions/url_parser.php');
 
 function parse_viewheader($imapConnection,$id, $passed_ent_id) {
 
-    $header_full = array();
     if (!$passed_ent_id) {
-        $read=sqimap_run_command ($imapConnection, "FETCH $id BODY[HEADER]", 
+        $read=sqimap_run_command ($imapConnection, "FETCH $id BODY[HEADER]",
                               true, $a, $b, TRUE);
     } else {
         $query = "FETCH $id BODY[".$passed_ent_id.'.HEADER]';
-        $read=sqimap_run_command ($imapConnection, $query, 
+        $read=sqimap_run_command ($imapConnection, $query,
                               true, $a, $b, TRUE);
-    }    
+    }
     $cnum = 0;
     for ($i=1; $i < count($read); $i++) {
         $line = htmlspecialchars($read[$i]);
-	switch (true) {
-	  case (eregi("^&gt;", $line)):
-            $second[$i] = $line;
-            $first[$i] = '&nbsp;';
-            $cnum++;
-	    break;
-	  case (eregi("^[ |\t]", $line)):
-            $second[$i] = $line;
-            $first[$i] = '';
-	    break;
-	  case (eregi("^([^:]+):(.+)", $line, $regs)):
-            $first[$i] = $regs[1] . ':';
-            $second[$i] = $regs[2];
-            $cnum++;
-	    break;
-	  default:
-            $second[$i] = trim($line);
-            $first[$i] = '';
-	    break;
+        switch (true) {
+            case (eregi("^&gt;", $line)):
+                $second[$i] = $line;
+                $first[$i] = '&nbsp;';
+                $cnum++;
+                break;
+            case (eregi("^[ |\t]", $line)):
+                $second[$i] = $line;
+                $first[$i] = '';
+                break;
+            case (eregi("^([^:]+):(.+)", $line, $regs)):
+                $first[$i] = $regs[1] . ':';
+                $second[$i] = $regs[2];
+                $cnum++;
+                break;
+            default:
+                $second[$i] = trim($line);
+                $first[$i] = '';
+                break;
         }
     }
     for ($i=0; $i < count($second); $i = $j) {
         $f = (isset($first[$i]) ? $first[$i] : '');
-        $s = (isset($second[$i]) ? nl2br($second[$i]) : ''); 
+        $s = (isset($second[$i]) ? nl2br($second[$i]) : '');
         $j = $i + 1;
         while (($first[$j] == '') && ($j < count($first))) {
             $s .= '&nbsp;&nbsp;&nbsp;&nbsp;' . nl2br($second[$j]);
@@ -87,24 +86,25 @@ function view_header($header, $mailbox, $color) {
 
     displayPageHeader($color, $mailbox);
 
-    echo '<BR>' .
-         '<TABLE WIDTH="100%" CELLPADDING="2" CELLSPACING="0" BORDER="0"'.
-         ' ALIGN="CENTER">' . "\n" .
-         "   <TR><TD BGCOLOR=\"$color[9]\" WIDTH=\"100%\" ALIGN=\"CENTER\"><B>".
-         _("Viewing Full Header") . '</B> - '.
-         '<a href="'; 
+    echo '<br />' .
+         '<table width="100%" cellpadding="2" cellspacing="0" border="0" '.
+            'align="center">' . "\n" .
+         '<tr><td bgcolor="'.$color[9].'" width="100%" align="center"><b>'.
+         _("Viewing Full Header") . '</b> - '.
+         '<a href="';
     echo_template_var($ret_addr);
     echo '">' ._("View message") . "</a></b></td></tr></table>\n";
 
-    echo_template_var($header, 
-         array(
-           "<table width='99%' cellpadding='2' cellspacing='0' border='0'".
-             "align=center>\n".'<tr><td>',
-           '<nobr><tt><b>',
-           '</b>',
-           '</tt></nobr>',
-           '</td></tr></table>'."\n" 
-         ) );
+    echo_template_var($header,
+        array(
+            '<table width="99%" cellpadding="2" cellspacing="0" border="0" '.
+                "align=center>\n".'<tr><td>',
+            '<nobr><tt><b>',
+            '</b>',
+            '</tt></nobr>',
+            '</td></tr></table>'."\n"
+         )
+    );
     echo '</body></html>';
 }
 
@@ -117,17 +117,17 @@ if ( sqgetGlobalVar('mailbox', $temp, SQ_GET) ) {
 }
 if ( !sqgetGlobalVar('passed_ent_id', $passed_ent_id, SQ_GET) ) {
   $passed_ent_id = '';
-} 
+}
 sqgetGlobalVar('key',        $key,          SQ_COOKIE);
 sqgetGlobalVar('username',   $username,     SQ_SESSION);
 sqgetGlobalVar('onetimepad', $onetimepad,   SQ_SESSION);
 sqgetGlobalVar('delimiter',  $delimiter,    SQ_SESSION);
 
-$imapConnection = sqimap_login($username, $key, $imapServerAddress, 
+$imapConnection = sqimap_login($username, $key, $imapServerAddress,
                                $imapPort, 0);
 $mbx_response = sqimap_mailbox_select($imapConnection, $mailbox, false, false, true);
 
-$header = parse_viewheader($imapConnection,$passed_id, $passed_ent_id); 
+$header = parse_viewheader($imapConnection,$passed_id, $passed_ent_id);
 view_header($header, $mailbox, $color);
 
 ?>

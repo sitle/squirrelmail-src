@@ -53,14 +53,16 @@ define('SMPREF_JS_OFF', 0);
 define('SMPREF_JS_ON', 1);
 define('SMPREF_JS_AUTODETECT', 2);
 
-/**
-* default value for page_selector_max
-*/
-define('PG_SEL_MAX', 10);
 
 /**
-* The number of pages to cache msg headers
-*/
+ * default value for page_selector_max
+ */
+define('PG_SEL_MAX', 10);
+
+
+/**
+ * The number of pages to cache msg headers
+ */
 define('SQM_MAX_PAGES_IN_CACHE',5);
 
 /**
@@ -128,6 +130,7 @@ define('SQM_COL_INT_DATE', 8);
 define('SQM_COL_TO', 9);
 define('SQM_COL_CC', 10);
 define('SQM_COL_BCC', 11);
+
 
 do_hook('loading_constants');
 

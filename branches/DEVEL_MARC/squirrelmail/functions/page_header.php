@@ -25,18 +25,23 @@ require_once(SM_PATH . 'functions/global.php');
  * @param string title the page title, default SquirrelMail.
  * @param string xtra extra HTML to insert into the header
  * @param bool do_hook whether to execute hooks, default true
+ * @param bool frames generate html frameset doctype (since 1.5.1)
  * @return void
  */
-function displayHtmlHeader( $title = 'SquirrelMail', $xtra = '', $do_hook = TRUE ) {
-    global $squirrelmail_language, $color;
+function displayHtmlHeader( $title = 'SquirrelMail', $xtra = '', $do_hook = true, $frames = false ) {
+    global $squirrelmail_language;
 
     if ( !sqgetGlobalVar('base_uri', $base_uri, SQ_SESSION) ) {
         global $base_uri;
     }
     global $theme_css, $custom_css, $pageheader_sent;
 
-    echo '<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">' .
-         "\n\n" . html_tag( 'html' ,'' , '', '', 'lang="'.$squirrelmail_language.'"' ) . "\n<head>\n";
+    if ($frames) {
+        echo '<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN">';
+    } else {
+        echo '<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">';
+    }
+    echo "\n\n" . html_tag( 'html' ,'' , '', '', 'lang="'.$squirrelmail_language.'"' ) . "\n<head>\n";
 
     if ( !isset( $custom_css ) || $custom_css == 'none' ) {
         if ($theme_css != '') {
@@ -49,7 +54,7 @@ function displayHtmlHeader( $title = 'SquirrelMail', $xtra = '', $do_hook = TRUE
 
     if ($squirrelmail_language == 'ja_JP') {
         echo "<!-- \xfd\xfe -->\n";
-        echo '<meta http-equiv="Content-type" content="text/html; charset=euc-jp">' . "\n";
+        echo '<meta http-equiv="Content-type" content="text/html; charset=euc-jp" />' . "\n";
     }
 
     if ($do_hook) {
@@ -70,29 +75,9 @@ function displayHtmlHeader( $title = 'SquirrelMail', $xtra = '', $do_hook = TRUE
   }
 -->
 </style>
-<script language="JavaScript" type="text/javascript">
-<!--
-    function toggle_all(formname) {
-        var form = document.getElementById(formname);
-        for (var i = 0; i < form.elements.length; i++) {
-            if(form.elements[i].type == 'checkbox' &&  form.elements[i].name.substring(0,3) == 'msg'){
-                form.elements[i].checked = !(form.elements[i].checked);
-            }
-        }
-    }
-//-->
-</script>
 
 ECHO;
-?>
-<style>
-  ._f {color: <?php echo $color[2];?>;}
-  ._s {font-weight: bold;}
-  ._d {color: <?php echo $color[9];?>}
-  ._fs {font-weight: bold;color: <?php echo $color[2];?>}
-</style>
 
-<?php
     echo "\n</head>\n\n";
 
     /* this is used to check elsewhere whether we should call this function */
@@ -139,9 +124,8 @@ function displayPageHeader($color, $mailbox, $xtra='', $session=false) {
 
     global $hide_sm_attributions, $PHP_SELF, $frame_top,
            $compose_new_win, $compose_width, $compose_height,
-           $attachemessages, $provider_name, $provider_uri,
-           $javascript_on, $default_use_mdn, $mdn_user_support,
-           $startMessage;
+           $provider_name, $provider_uri, $startMessage,
+           $javascript_on, $default_use_mdn, $mdn_user_support;
 
     sqgetGlobalVar('base_uri', $base_uri, SQ_SESSION );
     sqgetGlobalVar('delimiter', $delimiter, SQ_SESSION );
@@ -186,7 +170,7 @@ function displayPageHeader($color, $mailbox, $xtra='', $session=false) {
                            '   var newwin = window.open(comp_uri' .
                            ', "_blank",'.
                            '"width='.$compose_width. ',height='.$compose_height.
-                           ',scrollbars=yes,resizable=yes");'."\n".
+                           ',scrollbars=yes,resizable=yes,status=yes");'."\n".
                            "}\n\n";
                     $js .= "function comp_in_new(comp_uri) {\n".
                            "       if (!comp_uri) {\n".
@@ -195,7 +179,7 @@ function displayPageHeader($color, $mailbox, $xtra='', $session=false) {
                            '    var newwin = window.open(comp_uri' .
                            ', "_blank",'.
                            '"width='.$compose_width. ',height='.$compose_height.
-                           ',scrollbars=yes,resizable=yes");'."\n".
+                           ',scrollbars=yes,resizable=yes,status=yes");'."\n".
                            "}\n\n";
                 }
 
@@ -226,6 +210,12 @@ function displayPageHeader($color, $mailbox, $xtra='', $session=false) {
             {
                 if ($reply_focus == 'select') $js .= "document.forms['compose'].body.select();}\n";
                 else if ($reply_focus == 'focus') $js .= "document.forms['compose'].body.focus();}\n";
+                else if ($reply_focus == 'none') $js .= "}\n";
+            }
+            // no reply focus also applies to composing new messages
+            else if ($reply_focus == 'none')
+            {
+                $js .= "}\n";
             }
             else
                 $js .= "var f = document.forms.length;\n".
@@ -286,13 +276,13 @@ function displayPageHeader($color, $mailbox, $xtra='', $session=false) {
                         $compose_height = '550';
                     }
                     $js .= "function comp_in_new(comp_uri) {\n".
-                 "       if (!comp_uri) {\n".
-                 '           comp_uri = "'.$compose_uri."\";\n".
-                 '       }'. "\n".
+                         "       if (!comp_uri) {\n".
+                         '           comp_uri = "'.$compose_uri."\";\n".
+                         '       }'. "\n".
                          '    var newwin = window.open(comp_uri' .
                          ', "_blank",'.
                          '"width='.$compose_width. ',height='.$compose_height.
-                         ',scrollbars=yes,resizable=yes");'."\n".
+                         ',scrollbars=yes,resizable=yes,status=yes");'."\n".
                          "}\n\n";
 
                 }
@@ -312,7 +302,7 @@ function displayPageHeader($color, $mailbox, $xtra='', $session=false) {
     echo "<body text=\"$color[8]\" bgcolor=\"$color[4]\" link=\"$color[7]\" vlink=\"$color[7]\" alink=\"$color[7]\" $onload>\n\n";
     /** Here is the header and wrapping table **/
     $shortBoxName = htmlspecialchars(imap_utf7_decode_local(
-		      readShortMailboxName($mailbox, $delimiter)));
+                readShortMailboxName($mailbox, $delimiter)));
     if ( $shortBoxName == 'INBOX' ) {
         $shortBoxName = _("INBOX");
     }
@@ -361,7 +351,7 @@ function displayPageHeader($color, $mailbox, $xtra='', $session=false) {
         echo "</td>\n";
     }
     echo "   </tr>\n".
-        "</table><br>\n\n";
+        "</table><br />\n\n";
 }
 
 /**
@@ -380,7 +370,7 @@ function compose_Header($color, $mailbox) {
      * Locate the first displayable form element (only when JavaScript on)
      */
     if($javascript_on) {
-        global $delimiter, $base_uri, $PHP_SELF, $data_dir, $username;
+        global $base_uri, $PHP_SELF, $data_dir, $username;
 
         $module = substr( $PHP_SELF, ( strlen( $PHP_SELF ) - strlen( $base_uri ) ) * -1 );
 
@@ -400,6 +390,12 @@ function compose_Header($color, $mailbox) {
             {
                 if ($reply_focus == 'select') $js .= "document.forms['compose'].body.select();}\n";
                 else if ($reply_focus == 'focus') $js .= "document.forms['compose'].body.focus();}\n";
+                else if ($reply_focus == 'none') $js .= "}\n";
+            }
+            // no reply focus also applies to composing new messages
+            else if ($reply_focus == 'none')
+            {
+                $js .= "}\n";
             }
             else
                 $js .= "var f = document.forms.length;\n".

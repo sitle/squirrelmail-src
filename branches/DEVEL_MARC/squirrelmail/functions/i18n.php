@@ -1,5 +1,4 @@
 <?php
-
 /**
  * SquirrelMail internationalization functions
  *
@@ -21,13 +20,53 @@
 require_once(SM_PATH . 'functions/global.php');
 
 /**
+ * Gettext bindtextdomain wrapper.
+ *
+ * Wrapper solves differences between php versions in order to provide
+ * ngettext support. Should be used if translation uses ngettext
+ * functions.
+ * @since 1.5.1
+ * @param string $domain gettext domain name
+ * @param string $dir directory that contains all translations
+ * @return string path to translation directory
+ */
+function sq_bindtextdomain($domain,$dir) {
+    global $l10n, $gettext_flags, $sm_notAlias;
+
+    if ($gettext_flags==7) {
+        // gettext extension without ngettext
+        if (substr($dir, -1) != '/') $dir .= '/';
+        $mofile=$dir . $sm_notAlias . '/LC_MESSAGES/' . $domain . '.mo';
+        $input = new FileReader($mofile);
+        $l10n[$domain] = new gettext_reader($input);
+    }
+
+    $dir=bindtextdomain($domain,$dir);
+
+    return $dir;
+}
+
+/**
+ * Gettext textdomain wrapper.
+ * Makes sure that gettext_domain global is modified.
+ * @since 1.5.1
+ * @param string $name gettext domain name
+ * @return string gettext domain name
+ */
+function sq_textdomain($domain) {
+    global $gettext_domain;
+    $gettext_domain=textdomain($domain);
+    return $gettext_domain;
+}
+
+/**
  * Converts string from given charset to charset, that can be displayed by user translation.
  *
  * Function by default returns html encoded strings, if translation uses different encoding.
  * If Japanese translation is used - function returns string converted to euc-jp
  * If iconv or recode functions are enabled and translation uses utf-8 - function returns utf-8 encoded string.
  * If $charset is not supported - function returns unconverted string.
- * 
+ *
  * sanitizing of html tags is also done by this function.
  *
  * @param string $charset
@@ -36,11 +75,11 @@ require_once(SM_PATH . 'functions/global.php');
  */
 function charset_decode ($charset, $string) {
     global $languages, $squirrelmail_language, $default_charset;
-    global $use_php_recode, $use_php_iconv, $agresive_decoding;
+    global $use_php_recode, $use_php_iconv, $aggressive_decoding;
 
     if (isset($languages[$squirrelmail_language]['XTRA_CODE']) &&
-        function_exists($languages[$squirrelmail_language]['XTRA_CODE'])) {
-        $string = $languages[$squirrelmail_language]['XTRA_CODE']('decode', $string);
+        function_exists($languages[$squirrelmail_language]['XTRA_CODE'] . '_decode')) {
+        $string = call_user_func($languages[$squirrelmail_language]['XTRA_CODE'] . '_decode', $string);
     }
 
     $charset = strtolower($charset);
@@ -49,82 +88,90 @@ function charset_decode ($charset, $string) {
 
     // Variables that allow to use functions without function_exist() calls
     if (! isset($use_php_recode) || $use_php_recode=="" ) {
-      $use_php_recode=false; }
+        $use_php_recode=false; }
     if (! isset($use_php_iconv) || $use_php_iconv=="" ) {
-         $use_php_iconv=false; }
+        $use_php_iconv=false; }
 
     // Don't do conversion if charset is the same.
     if ( $charset == strtolower($default_charset) )
-          return htmlspecialchars($string);
+        return htmlspecialchars($string);
 
     // catch iso-8859-8-i thing
     if ( $charset == "iso-8859-8-i" )
-              $charset = "iso-8859-8";
+        $charset = "iso-8859-8";
 
     /*
-     * Recode converts html special characters automatically if you use 
-     * 'charset..html' decoding. There is no documented way to put -d option 
+     * Recode converts html special characters automatically if you use
+     * 'charset..html' decoding. There is no documented way to put -d option
      * into php recode function call.
      */
     if ( $use_php_recode ) {
-      if ( $default_charset == "utf-8" ) {
-        // other charsets can be converted to utf-8 without loss.
-        // and output string is smaller
-        $string = recode_string($charset . "..utf-8",$string);
-        return htmlspecialchars($string);
-      } else {
-        $string = recode_string($charset . "..html",$string);
-        // recode does not convert single quote, htmlspecialchars does.
-        $string = str_replace("'", '&#039;', $string);
-        return $string;
-      }
+        if ( $default_charset == "utf-8" ) {
+            // other charsets can be converted to utf-8 without loss.
+            // and output string is smaller
+            $string = recode_string($charset . "..utf-8",$string);
+            return htmlspecialchars($string);
+        } else {
+            $string = recode_string($charset . "..html",$string);
+            // recode does not convert single quote, htmlspecialchars does.
+            $string = str_replace("'", '&#039;', $string);
+            return $string;
+        }
     }
 
     // iconv functions does not have html target and can be used only with utf-8
     if ( $use_php_iconv && $default_charset=='utf-8') {
-      $string = iconv($charset,$default_charset,$string);
-      return htmlspecialchars($string);
+        $string = iconv($charset,$default_charset,$string);
+        return htmlspecialchars($string);
     }
 
     // If we don't use recode and iconv, we'll do it old way.
 
     /* All HTML special characters are 7 bit and can be replaced first */
-    
+
     $string = htmlspecialchars ($string);
 
     /* controls cpu and memory intensive decoding cycles */
-    if (! isset($agresive_decoding) || $agresive_decoding=="" ) {
-         $agresive_decoding=false; }
+    if (! isset($aggressive_decoding) || $aggressive_decoding=="" ) {
+        $aggressive_decoding=false; }
 
     $decode=fixcharset($charset);
     $decodefile=SM_PATH . 'functions/decode/' . $decode . '.php';
     if (file_exists($decodefile)) {
-      include_once($decodefile);
-      $ret = call_user_func('charset_decode_'.$decode, $string);
+        include_once($decodefile);
+        $ret = call_user_func('charset_decode_'.$decode, $string);
     } else {
-      $ret = $string;
+        $ret = $string;
     }
     return( $ret );
 }
 
 /**
  * Converts html string to given charset
+ * @since 1.5.1
  * @param string $string
  * @param string $charset
- * @param string 
+ * @param boolean $htmlencode keep htmlspecialchars encoding
+ * @param string
  */
-function charset_encode($string,$charset) {
-  global $default_charset;
+function charset_encode($string,$charset,$htmlencode=true) {
+    global $default_charset;
 
-  $encode=fixcharset($charset);
-  $encodefile=SM_PATH . 'functions/encode/' . $encode . '.php';
-  if (file_exists($encodefile)) {
-    include_once($encodefile);
-    $ret = call_user_func('charset_encode_'.$encode, $string);
-  } else {
-    $ret = $string;
-  }
-  return( $ret );
+    // Undo html special chars
+    if (! $htmlencode ) {
+        $string = str_replace(array('&amp;','&gt;','&lt;','&quot;'),array('&','>','<','"'),$string);
+    }
+
+    $encode=fixcharset($charset);
+    $encodefile=SM_PATH . 'functions/encode/' . $encode . '.php';
+    if (file_exists($encodefile)) {
+        include_once($encodefile);
+        $ret = call_user_func('charset_encode_'.$encode, $string);
+    } else {
+        include_once(SM_PATH . 'functions/encode/us_ascii.php');
+        $ret = charset_encode_us_ascii($string);
+    }
+    return( $ret );
 }
 
 /**
@@ -132,27 +179,32 @@ function charset_encode($string,$charset) {
  *
  * If conversion is done to charset different that utf-8, unsupported symbols
  * will be replaced with question marks.
+ * @since 1.5.1
  * @param string $in_charset initial charset
  * @param string $string string that has to be converted
  * @param string $out_charset final charset
+ * @param boolean $htmlencode keep htmlspecialchars encoding
  * @return string converted string
  */
-function charset_convert($in_charset,$string,$out_charset) {
-  $string=charset_decode($in_charset,$string);
-  $string=charset_encode($string,$out_charset);
-  return $string;
+function charset_convert($in_charset,$string,$out_charset,$htmlencode=true) {
+    $string=charset_decode($in_charset,$string);
+    $string=charset_encode($string,$out_charset,$htmlencode);
+    return $string;
 }
 
 /**
  * Makes charset name suitable for decoding cycles
  *
+ * @since 1.5.0
  * @param string $charset Name of charset
  * @return string $charset Adjusted name of charset
  */
 function fixcharset($charset) {
-    // minus removed from function names
-    $charset=str_replace('-','_',$charset);
-    
+    /* remove minus and characters that might be used in paths from charset
+     * name in order to be able to use it in function names and include calls.
+     */
+    $charset=preg_replace("/[-:.\/\\\]/",'_',$charset);
+
     // windows-125x and cp125x charsets
     $charset=str_replace('windows_','cp',$charset);
 
@@ -171,24 +223,24 @@ function fixcharset($charset) {
  * if $do_search is true, then scan the browser information
  * for a possible language that we know
  *
- * Function sets system locale environment (LC_ALL, LANG, LANGUAGE), 
+ * Function sets system locale environment (LC_ALL, LANG, LANGUAGE),
  * gettext translation bindings and html header information.
  *
  * Function returns error codes, if there is some fatal error.
- *  0 = no error, 
- *  1 = mbstring support is not present, 
+ *  0 = no error,
+ *  1 = mbstring support is not present,
  *  2 = mbstring support is not present, user's translation reverted to en_US.
  *
  * @param string $sm_language translation used by user's interface
  * @param bool $do_search use browser's preferred language detection functions. Defaults to false.
  * @param bool $default set $sm_language to $squirrelmail_default_language if language detection fails or language is not set. Defaults to false.
- * @return int function execution error codes. 
+ * @return int function execution error codes.
  */
 function set_up_language($sm_language, $do_search = false, $default = false) {
 
     static $SetupAlready = 0;
     global $use_gettext, $languages,
-           $squirrelmail_language, $squirrelmail_default_language,
+           $squirrelmail_language, $squirrelmail_default_language, $default_charset,
            $sm_notAlias, $username, $data_dir;
 
     if ($SetupAlready) {
@@ -201,18 +253,18 @@ function set_up_language($sm_language, $do_search = false, $default = false) {
     if ($do_search && ! $sm_language && isset($accept_lang)) {
         $sm_language = substr($accept_lang, 0, 2);
     }
-    
+
     if ((!$sm_language||$default) && isset($squirrelmail_default_language)) {
         $squirrelmail_language = $squirrelmail_default_language;
         $sm_language = $squirrelmail_default_language;
     }
     $sm_notAlias = $sm_language;
- 
+
     // Catching removed translation
     // System reverts to English translation if user prefs contain translation
     // that is not available in $languages array
     if (!isset($languages[$sm_notAlias])) {
-      $sm_notAlias="en_US";
+        $sm_notAlias="en_US";
     }
 
     while (isset($languages[$sm_notAlias]['ALIAS'])) {
@@ -223,75 +275,87 @@ function set_up_language($sm_language, $do_search = false, $default = false) {
          $use_gettext &&
          $sm_language != '' &&
          isset($languages[$sm_notAlias]['CHARSET']) ) {
-        bindtextdomain( 'squirrelmail', SM_PATH . 'locale/' );
-        textdomain( 'squirrelmail' );
+        sq_bindtextdomain( 'squirrelmail', SM_PATH . 'locale/' );
+        sq_textdomain( 'squirrelmail' );
         if (function_exists('bind_textdomain_codeset')) {
-          if ($sm_notAlias == 'ja_JP') {
-            bind_textdomain_codeset ("squirrelmail", 'EUC-JP');
+            if ($sm_notAlias == 'ja_JP') {
+                bind_textdomain_codeset ("squirrelmail", 'EUC-JP');
             } else {
-              bind_textdomain_codeset ("squirrelmail", $languages[$sm_notAlias]['CHARSET'] );
+                bind_textdomain_codeset ("squirrelmail", $languages[$sm_notAlias]['CHARSET'] );
             }
         }
         if (isset($languages[$sm_notAlias]['LOCALE'])){
-          $longlocale=$languages[$sm_notAlias]['LOCALE'];
+            $longlocale=$languages[$sm_notAlias]['LOCALE'];
         } else {
-          $longlocale=$sm_notAlias;
+            $longlocale=$sm_notAlias;
         }
         if ( !ini_get('safe_mode') &&
              getenv( 'LC_ALL' ) != $longlocale ) {
             putenv( "LC_ALL=$longlocale" );
             putenv( "LANG=$longlocale" );
             putenv( "LANGUAGE=$longlocale" );
+            putenv( "LC_NUMERIC=C" );
+            if ($sm_notAlias=='tr_TR') putenv( "LC_CTYPE=C" );
         }
         setlocale(LC_ALL, $longlocale);
+        // Workaround for plugins that use numbers with floating point
+        // It might be removed if plugins use correct decimal delimiters
+        // according to locale settings.
+        setlocale(LC_NUMERIC, 'C');
+        // Workaround for specific Turkish strtolower/strtoupper rules.
+        // Many functions expect English conversion rules.
+        if ($sm_notAlias=='tr_TR') setlocale(LC_CTYPE,'C');
 
         // Set text direction/alignment variables
-        if (isset($languages[$sm_notAlias]['DIR']) && 
+        // These don't appear to be used... are they safe to remove?
+        if (isset($languages[$sm_notAlias]['DIR']) &&
             $languages[$sm_notAlias]['DIR'] == 'rtl') {
-          /**
-           * Text direction
-           * @global string $text_direction
-           */
-          $text_direction='rtl';
-          /**
-           * Left alignment
-           * @global string $left_align
-           */
-          $left_align='right';
-          /**
-           * Right alignment
-           * @global string $right_align
-           */
-          $right_align='left';
+            /**
+             * Text direction
+             * @global string $text_direction
+             */
+            $text_direction='rtl';
+            /**
+             * Left alignment
+             * @global string $left_align
+             */
+            $left_align='right';
+            /**
+             * Right alignment
+             * @global string $right_align
+             */
+            $right_align='left';
         } else {
-          $text_direction='ltr';
-          $left_align='left';
-          $right_align='right';
+            $text_direction='ltr';
+            $left_align='left';
+            $right_align='right';
         }
 
         $squirrelmail_language = $sm_notAlias;
         if ($squirrelmail_language == 'ja_JP') {
             header ('Content-Type: text/html; charset=EUC-JP');
             if (!function_exists('mb_internal_encoding')) {
-              // Error messages can't be displayed here
-              $error = 1;
-              // Revert to English if possible.
-              if (function_exists('setPref')  && $username!='' && $data_dir!="") {
-                setPref($data_dir, $username, 'language', "en_US");
-                $error = 2;
-              }
-              // stop further execution in order not to get php errors on mb_internal_encoding().
-              return $error;
+                // Error messages can't be displayed here
+                $error = 1;
+                // Revert to English if possible.
+                if (function_exists('setPref')  && $username!='' && $data_dir!="") {
+                    setPref($data_dir, $username, 'language', "en_US");
+                    $error = 2;
+                }
+                // stop further execution in order not to get php errors on mb_internal_encoding().
+                return $error;
             }
             if (function_exists('mb_language')) {
                 mb_language('Japanese');
             }
             mb_internal_encoding('EUC-JP');
             mb_http_output('pass');
+        } elseif ($squirrelmail_language == 'en_US') {
+            header( 'Content-Type: text/html; charset=' . $default_charset );
         } else {
-        header( 'Content-Type: text/html; charset=' . $languages[$sm_notAlias]['CHARSET'] );
+            header( 'Content-Type: text/html; charset=' . $languages[$sm_notAlias]['CHARSET'] );
+        }
     }
-}
     return 0;
 }
 
@@ -319,16 +383,410 @@ function set_my_charset(){
     }
     // Catch removed translation
     if (!isset($languages[$my_language])) {
-      $my_language="en_US";
+        $my_language="en_US";
     }
     while (isset($languages[$my_language]['ALIAS'])) {
         $my_language = $languages[$my_language]['ALIAS'];
     }
     $my_charset = $languages[$my_language]['CHARSET'];
-    if ($my_charset) {
+    if ($my_language!='en_US') {
         $default_charset = $my_charset;
     }
 }
+
+/**************************
+ * Japanese extra functions
+ **************************/
+
+/**
+ * Japanese decoding function
+ *
+ * converts string to euc-jp, if string uses JIS, EUC-JP, ShiftJIS or UTF-8
+ * charset. Needs mbstring support in php.
+ * @param string $ret text, that has to be converted
+ * @return string converted string
+ * @since 1.5.1
+ */
+function japanese_xtra_decode($ret) {
+    if (function_exists('mb_detect_encoding')) {
+        $detect_encoding = @mb_detect_encoding($ret);
+        if ($detect_encoding == 'JIS' ||
+            $detect_encoding == 'EUC-JP' ||
+            $detect_encoding == 'SJIS' ||
+            $detect_encoding == 'UTF-8') {
+
+            $ret = mb_convert_kana(mb_convert_encoding($ret, 'EUC-JP', 'AUTO'), "KV");
+        }
+    }
+    return $ret;
+}
+
+/**
+ * Japanese encoding function
+ *
+ * converts string to jis, if string uses JIS, EUC-JP, ShiftJIS or UTF-8
+ * charset. Needs mbstring support in php.
+ * @param string $ret text, that has to be converted
+ * @return string converted text
+ * @since 1.5.1
+ */
+function japanese_xtra_encode($ret) {
+    if (function_exists('mb_detect_encoding')) {
+        $detect_encoding = @mb_detect_encoding($ret);
+        if ($detect_encoding == 'JIS' ||
+            $detect_encoding == 'EUC-JP' ||
+            $detect_encoding == 'SJIS' ||
+            $detect_encoding == 'UTF-8') {
+
+            $ret = mb_convert_encoding(mb_convert_kana($ret, "KV"), 'JIS', 'AUTO');
+        }
+    }
+    return $ret;
+}
+
+/**
+ * Japanese header encoding function
+ *
+ * creates base64 encoded header in iso-2022-jp charset
+ * @param string $ret text, that has to be converted
+ * @return string mime base64 encoded string
+ * @since 1.5.1
+ */
+function japanese_xtra_encodeheader($ret) {
+    if (function_exists('mb_detect_encoding')) {
+        $result = '';
+        if (strlen($ret) > 0) {
+            $tmpstr = mb_substr($ret, 0, 1);
+            $prevcsize = strlen($tmpstr);
+            for ($i = 1; $i < mb_strlen($ret); $i++) {
+                $tmp = mb_substr($ret, $i, 1);
+                if (strlen($tmp) == $prevcsize) {
+                    $tmpstr .= $tmp;
+                } else {
+                    if ($prevcsize == 1) {
+                        $result .= $tmpstr;
+                    } else {
+                        $result .= str_replace(' ', '',
+                                               mb_encode_mimeheader($tmpstr,'iso-2022-jp','B',''));
+                    }
+                    $tmpstr = $tmp;
+                    $prevcsize = strlen($tmp);
+                }
+            }
+            if (strlen($tmpstr)) {
+                if (strlen(mb_substr($tmpstr, 0, 1)) == 1)
+                    $result .= $tmpstr;
+                else
+                    $result .= str_replace(' ', '',
+                                           mb_encode_mimeheader($tmpstr,'iso-2022-jp','B',''));
+            }
+        }
+        $ret = $result;
+    }
+    return $ret;
+}
+
+/**
+ * Japanese header decoding function
+ *
+ * return human readable string from mime header. string is returned in euc-jp
+ * charset.
+ * @param string $ret header string
+ * @return string decoded header string
+ * @since 1.5.1
+ */
+function japanese_xtra_decodeheader($ret) {
+    if (function_exists('mb_detect_encoding')) {
+        $ret = str_replace("\t", "", $ret);
+        if (eregi('=\\?([^?]+)\\?(q|b)\\?([^?]+)\\?=', $ret))
+            $ret = @mb_decode_mimeheader($ret);
+        $ret = @mb_convert_encoding($ret, 'EUC-JP', 'AUTO');
+    }
+    return $ret;
+}
+
+/**
+ * Japanese downloaded filename processing function
+ *
+ * Returns shift-jis or euc-jp encoded file name
+ * @param string $ret string
+ * @param string $useragent browser
+ * @return string converted string
+ * @since 1.5.1
+ */
+function japanese_xtra_downloadfilename($ret,$useragent) {
+    if (function_exists('mb_detect_encoding')) {
+        if (strstr($useragent, 'Windows') !== false ||
+            strstr($useragent, 'Mac_') !== false) {
+            $ret = mb_convert_encoding($ret, 'SJIS', 'AUTO');
+        } else {
+            $ret = mb_convert_encoding($ret, 'EUC-JP', 'AUTO');
+        }
+    }
+    return $ret;
+}
+
+/**
+ * Japanese wordwrap function
+ *
+ * wraps text at set number of symbols
+ * @param string $ret text
+ * @param integer $wrap number of symbols per line
+ * @return string wrapped text
+ * @since 1.5.1
+ */
+function japanese_xtra_wordwrap($ret,$wrap) {
+    if (function_exists('mb_detect_encoding')) {
+        $no_begin = "\x21\x25\x29\x2c\x2e\x3a\x3b\x3f\x5d\x7d\xa1\xf1\xa1\xeb\xa1" .
+            "\xc7\xa1\xc9\xa2\xf3\xa1\xec\xa1\xed\xa1\xee\xa1\xa2\xa1\xa3\xa1\xb9" .
+            "\xa1\xd3\xa1\xd5\xa1\xd7\xa1\xd9\xa1\xdb\xa1\xcd\xa4\xa1\xa4\xa3\xa4" .
+            "\xa5\xa4\xa7\xa4\xa9\xa4\xc3\xa4\xe3\xa4\xe5\xa4\xe7\xa4\xee\xa1\xab" .
+            "\xa1\xac\xa1\xb5\xa1\xb6\xa5\xa1\xa5\xa3\xa5\xa5\xa5\xa7\xa5\xa9\xa5" .
+            "\xc3\xa5\xe3\xa5\xe5\xa5\xe7\xa5\xee\xa5\xf5\xa5\xf6\xa1\xa6\xa1\xbc" .
+            "\xa1\xb3\xa1\xb4\xa1\xaa\xa1\xf3\xa1\xcb\xa1\xa4\xa1\xa5\xa1\xa7\xa1" .
+            "\xa8\xa1\xa9\xa1\xcf\xa1\xd1";
+        // This don't appear to be used... is it safe to remove?
+        $no_end = "\x5c\x24\x28\x5b\x7b\xa1\xf2\x5c\xa1\xc6\xa1\xc8\xa1\xd2\xa1" .
+            "\xd4\xa1\xd6\xa1\xd8\xa1\xda\xa1\xcc\xa1\xf0\xa1\xca\xa1\xce\xa1\xd0\xa1\xef";
+
+        if (strlen($ret) >= $wrap &&
+            substr($ret, 0, 1) != '>' &&
+            strpos($ret, 'http://') === FALSE &&
+            strpos($ret, 'https://') === FALSE &&
+            strpos($ret, 'ftp://') === FALSE) {
+
+            $ret = mb_convert_kana($ret, "KV");
+
+            $line_new = '';
+            $ptr = 0;
+
+            while ($ptr < strlen($ret) - 1) {
+                $l = mb_strcut($ret, $ptr, $wrap);
+                $ptr += strlen($l);
+                $tmp = $l;
+
+                $l = mb_strcut($ret, $ptr, 2);
+                while (strlen($l) != 0 && mb_strpos($no_begin, $l) !== FALSE ) {
+                    $tmp .= $l;
+                    $ptr += strlen($l);
+                    $l = mb_strcut($ret, $ptr, 1);
+                }
+                $line_new .= $tmp;
+                if ($ptr < strlen($ret) - 1)
+                    $line_new .= "\n";
+            }
+            $ret = $line_new;
+        }
+    }
+    return $ret;
+}
+
+/**
+ * Japanese imap folder name encoding function
+ *
+ * converts folder name from euc-jp to utf7-imap
+ * @param string $ret folder name
+ * @return string converted folder name
+ * @since 1.5.1
+ */
+function japanese_xtra_utf7_imap_encode($ret){
+    if (function_exists('mb_detect_encoding')) {
+        $ret = mb_convert_encoding($ret, 'UTF7-IMAP', 'EUC-JP');
+    }
+    return $ret;
+}
+
+/**
+ * Japanese imap folder name decoding function
+ *
+ * converts folder name from utf7-imap to euc-jp.
+ * @param string $ret folder name in utf7-imap
+ * @return string converted folder name
+ * @since 1.5.1
+ */
+function japanese_xtra_utf7_imap_decode($ret) {
+    if (function_exists('mb_detect_encoding')) {
+        $ret = mb_convert_encoding($ret, 'EUC-JP', 'UTF7-IMAP');
+    }
+    return $ret;
+}
+
+/**
+ * Japanese string trimming function
+ *
+ * trims string to defined number of symbols
+ * @param string $ret string
+ * @param integer $width number of symbols
+ * @return string trimmed string
+ * @since 1.5.1
+ */
+function japanese_xtra_strimwidth($ret,$width) {
+    if (function_exists('mb_detect_encoding')) {
+        $ret = mb_strimwidth($ret, 0, $width, '...');
+    }
+    return $ret;
+}
+
+/********************************
+ * Korean charset extra functions
+ ********************************/
+
+/**
+ * Korean downloaded filename processing functions
+ *
+ * @param string default return value
+ * @return string
+ * @since 1.5.1
+ */
+function korean_xtra_downloadfilename($ret) {
+    $ret = str_replace("\x0D\x0A", '', $ret);  /* Hanmail's CR/LF Clear */
+    for ($i=0;$i<strlen($ret);$i++) {
+        if ($ret[$i] >= "\xA1" && $ret[$i] <= "\xFE") {   /* 0xA1 - 0XFE are Valid */
+            $i++;
+            continue;
+        } else if (($ret[$i] >= 'a' && $ret[$i] <= 'z') || /* From Original ereg_replace in download.php */
+                   ($ret[$i] >= 'A' && $ret[$i] <= 'Z') ||
+                   ($ret[$i] == '.') || ($ret[$i] == '-')) {
+            continue;
+        } else {
+            $ret[$i] = '_';
+        }
+    }
+    return $ret;
+}
+
+/**
+ * Replaces non-braking spaces inserted by some browsers with regular space
+ *
+ * This function can be used to replace non-braking space symbols
+ * that are inserted in forms by some browsers instead of normal
+ * space symbol.
+ *
+ * @param string $string Text that needs to be cleaned
+ * @param string $charset Charset used in text
+ * @return string Cleaned text
+ */
+function cleanup_nbsp($string,$charset) {
+
+  // reduce number of case statements
+  if (stristr('iso-8859-',substr($charset,0,9))){
+    $output_charset="iso-8859-x";
+  }
+  if (stristr('windows-125',substr($charset,0,11))){
+    $output_charset="cp125x";
+  }
+  if (stristr('koi8',substr($charset,0,4))){
+    $output_charset="koi8-x";
+  }
+  if (! isset($output_charset)){
+    $output_charset=strtolower($charset);
+  }
+
+// where is non-braking space symbol
+switch($output_charset):
+ case "iso-8859-x":
+ case "cp125x":
+ case "iso-2022-jp":
+  $nbsp="\xA0";
+  break;
+ case "koi8-x":
+   $nbsp="\x9A";
+   break;
+ case "utf-8":
+   $nbsp="\xC2\xA0";
+   break;
+ default:
+   // don't change string if charset is unmatched
+   return $string;
+endswitch;
+
+// return space instead of non-braking space.
+ return str_replace($nbsp,' ',$string);
+}
+
+/**
+ * Function informs if it is safe to convert given charset to the one that is used by user.
+ *
+ * It is safe to use conversion only if user uses utf-8 encoding and when
+ * converted charset is similar to the one that is used by user.
+ *
+ * @param string $input_charset Charset of text that needs to be converted
+ * @return bool is it possible to convert to user's charset
+ */
+function is_conversion_safe($input_charset) {
+  global $languages, $sm_notAlias, $default_charset, $lossy_encoding;
+
+    if (isset($lossy_encoding) && $lossy_encoding )
+        return true;
+
+ // convert to lower case
+ $input_charset = strtolower($input_charset);
+
+ // Is user's locale Unicode based ?
+ if ( $default_charset == "utf-8" ) {
+   return true;
+ }
+
+ // Charsets that are similar
+switch ($default_charset):
+case "windows-1251":
+      if ( $input_charset == "iso-8859-5" ||
+           $input_charset == "koi8-r" ||
+           $input_charset == "koi8-u" ) {
+        return true;
+     } else {
+        return false;
+     }
+case "windows-1257":
+  if ( $input_charset == "iso-8859-13" ||
+       $input_charset == "iso-8859-4" ) {
+    return true;
+  } else {
+    return false;
+  }
+case "iso-8859-4":
+  if ( $input_charset == "iso-8859-13" ||
+       $input_charset == "windows-1257" ) {
+     return true;
+  } else {
+     return false;
+  }
+case "iso-8859-5":
+  if ( $input_charset == "windows-1251" ||
+       $input_charset == "koi8-r" ||
+       $input_charset == "koi8-u" ) {
+     return true;
+  } else {
+     return false;
+  }
+case "iso-8859-13":
+  if ( $input_charset == "iso-8859-4" ||
+       $input_charset == "windows-1257" ) {
+     return true;
+  } else {
+     return false;
+  }
+case "koi8-r":
+  if ( $input_charset == "windows-1251" ||
+       $input_charset == "iso-8859-5" ||
+       $input_charset == "koi8-u" ) {
+     return true;
+  } else {
+     return false;
+  }
+case "koi8-u":
+  if ( $input_charset == "windows-1251" ||
+       $input_charset == "iso-8859-5" ||
+       $input_charset == "koi8-r" ) {
+     return true;
+  } else {
+     return false;
+  }
+default:
+   return false;
+endswitch;
+}
+
 
 /* ------------------------------ main --------------------------- */
 
@@ -343,7 +801,7 @@ if (! isset($squirrelmail_language)) {
  *
  * Structure of array:
  * $languages['language']['variable'] = 'value'
- * 
+ *
  * Possible 'variable' names:
  *  NAME      - Translation name in English
  *  CHARSET   - Encoding used by translation
@@ -351,8 +809,8 @@ if (! isset($squirrelmail_language)) {
  *  ALTNAME   - Native translation name. Any 8bit symbols must be html encoded.
  *  LOCALE    - Full locale name (in xx_XX.charset format)
  *  DIR       - Text direction. Used to define Right-to-Left languages. Possible values 'rtl' or 'ltr'. If undefined - defaults to 'ltr'
- *  XTRA_CODE - translation uses special functions. 'value' provides name of that extra function
- * 
+ *  XTRA_CODE - translation uses special functions. See doc/i18n.txt
+ *
  * Each 'language' definition requires NAME+CHARSET or ALIAS variables.
  *
  * @name $languages
@@ -363,6 +821,12 @@ $languages['bg_BG']['ALTNAME'] = '&#1041;&#1098;&#1083;&#1075;&#1072;&#1088;&#10
 $languages['bg_BG']['CHARSET'] = 'windows-1251';
 $languages['bg_BG']['LOCALE']  = 'bg_BG.CP1251';
 $languages['bg']['ALIAS'] = 'bg_BG';
+
+$languages['bn_IN']['NAME']    = 'Bengali';
+$languages['bn_IN']['CHARSET'] = 'utf-8';
+$languages['bn_IN']['LOCALE']  = 'bn_IN.UTF-8';
+$languages['bn_BD']['ALIAS'] = 'bn_IN';
+$languages['bn']['ALIAS'] = 'bn_IN';
 
 $languages['ca_ES']['NAME']    = 'Catalan';
 $languages['ca_ES']['CHARSET'] = 'iso-8859-1';
@@ -474,14 +938,13 @@ $languages['ja_JP']['NAME']    = 'Japanese';
 $languages['ja_JP']['ALTNAME'] = '&#26085;&#26412;&#35486;';
 $languages['ja_JP']['CHARSET'] = 'iso-2022-jp';
 $languages['ja_JP']['LOCALE'] = 'ja_JP.EUC-JP';
-$languages['ja_JP']['XTRA_CODE'] = 'japanese_charset_xtra';
+$languages['ja_JP']['XTRA_CODE'] = 'japanese_xtra';
 $languages['ja']['ALIAS'] = 'ja_JP';
 
 $languages['ko_KR']['NAME']    = 'Korean';
 $languages['ko_KR']['CHARSET'] = 'euc-KR';
 $languages['ko_KR']['LOCALE']  = 'ko_KR.EUC-KR';
-// Function does not provide all needed options
-// $languages['ko_KR']['XTRA_CODE'] = 'korean_charset_xtra';
+$languages['ko_KR']['XTRA_CODE'] = 'korean_xtra';
 $languages['ko']['ALIAS'] = 'ko_KR';
 
 $languages['lt_LT']['NAME']    = 'Lithuanian';
@@ -621,6 +1084,10 @@ $languages['he_IL']['LOCALE']  = 'he_IL.CP1255';
 $languages['he_IL']['DIR']     = 'rtl';
 $languages['he']['ALIAS']      = 'he_IL';
 
+$languages['ug']['NAME']    = 'Uighur';
+$languages['ug']['CHARSET'] = 'utf-8';
+$languages['ug']['DIR']     = 'rtl';
+
 /* Detect whether gettext is installed. */
 $gettext_flags = 0;
 if (function_exists('_')) {
@@ -632,11 +1099,23 @@ if (function_exists('bindtextdomain')) {
 if (function_exists('textdomain')) {
     $gettext_flags += 4;
 }
+if (function_exists('ngettext')) {
+    $gettext_flags += 8;
+}
 
 /* If gettext is fully loaded, cool */
-if ($gettext_flags == 7) {
+if ($gettext_flags == 15) {
     $use_gettext = true;
 }
+
+/* If ngettext support is missing, load it */
+elseif ($gettext_flags == 7) {
+    $use_gettext = true;
+    // load internal ngettext functions
+    include_once(SM_PATH . 'class/l10n.class.php');
+    include_once(SM_PATH . 'functions/ngettext.php');
+}
+
 /* If we can fake gettext, try that */
 elseif ($gettext_flags == 0) {
     $use_gettext = true;
@@ -670,315 +1149,18 @@ elseif ($gettext_flags == 0) {
             return;
         }
     }
-}
-
-
-/**
- * Japanese charset extra function
- *
- * Action performed by function is defined by first argument.
- * Default return value is defined by second argument.
- * Use of third argument depends on action.
- *
- * @param string $action action performed by this function.
- *    possible values:
- *  decode - convert returned string to euc-jp. third argument unused
- *  encode - convert returned string to jis. third argument unused
- *  strimwidth - third argument=$width. trims string to $width symbols.
- *  encodeheader - create base64 encoded header in iso-2022-jp. third argument unused
- *  decodeheader - return human readable string from mime header. string is returned in euc-jp. third argument unused
- *  downloadfilename - third argument $useragent. Arguments provide browser info. Returns shift-jis or euc-jp encoded file name
- *  wordwrap - third argument=$wrap. wraps text at $wrap symbols
- *  utf7-imap_encode - returns string converted from euc-jp to utf7-imap. third argument unused
- *  utf7-imap_decode - returns string converted from utf7-imap to euc-jp. third argument unused
- * @param string $ret default return value
- */
-function japanese_charset_xtra() {
-    $ret = func_get_arg(1);  /* default return value */
-    if (function_exists('mb_detect_encoding')) {
-        switch (func_get_arg(0)) { /* action */
-        case 'decode':
-            $detect_encoding = @mb_detect_encoding($ret);
-            if ($detect_encoding == 'JIS' ||
-                $detect_encoding == 'EUC-JP' ||
-                $detect_encoding == 'SJIS' ||
-                $detect_encoding == 'UTF-8') {
-                
-                $ret = mb_convert_kana(mb_convert_encoding($ret, 'EUC-JP', 'AUTO'), "KV");
-            }
-            break;
-        case 'encode':
-            $detect_encoding = @mb_detect_encoding($ret);
-            if ($detect_encoding == 'JIS' ||
-                $detect_encoding == 'EUC-JP' ||
-                $detect_encoding == 'SJIS' ||
-                $detect_encoding == 'UTF-8') {
-                
-                $ret = mb_convert_encoding(mb_convert_kana($ret, "KV"), 'JIS', 'AUTO');
-            }
-            break;
-        case 'strimwidth':
-            $width = func_get_arg(2);
-            $ret = mb_strimwidth($ret, 0, $width, '...'); 
-            break;
-        case 'encodeheader':
-            $result = '';
-            if (strlen($ret) > 0) {
-                $tmpstr = mb_substr($ret, 0, 1);
-                $prevcsize = strlen($tmpstr);
-                for ($i = 1; $i < mb_strlen($ret); $i++) {
-                    $tmp = mb_substr($ret, $i, 1);
-                    if (strlen($tmp) == $prevcsize) {
-                        $tmpstr .= $tmp;
-                    } else {
-                        if ($prevcsize == 1) {
-                            $result .= $tmpstr;
-                        } else {
-                            $result .= str_replace(' ', '', 
-                                                   mb_encode_mimeheader($tmpstr,'iso-2022-jp','B',''));
-                        }
-                        $tmpstr = $tmp;
-                        $prevcsize = strlen($tmp);
-                    }
-                }
-                if (strlen($tmpstr)) {
-                    if (strlen(mb_substr($tmpstr, 0, 1)) == 1)
-                        $result .= $tmpstr;
-                    else
-                        $result .= str_replace(' ', '',
-                                               mb_encode_mimeheader($tmpstr,'iso-2022-jp','B',''));
-                }
-            }
-            $ret = $result;
-            break;
-        case 'decodeheader':
-            $ret = str_replace("\t", "", $ret);
-            if (eregi('=\\?([^?]+)\\?(q|b)\\?([^?]+)\\?=', $ret))
-                $ret = @mb_decode_mimeheader($ret);
-            $ret = @mb_convert_encoding($ret, 'EUC-JP', 'AUTO');
-            break;
-        case 'downloadfilename':
-            $useragent = func_get_arg(2);
-            if (strstr($useragent, 'Windows') !== false ||
-                strstr($useragent, 'Mac_') !== false) {
-                $ret = mb_convert_encoding($ret, 'SJIS', 'AUTO');
+    if (! $gettext_flags & 8) {
+        /**
+         * Function is used as replacemet in broken installs
+         * @ignore
+         */
+        function ngettext($str,$str2,$number) {
+            if ($number>1) {
+                return $str2;
             } else {
-                $ret = mb_convert_encoding($ret, 'EUC-JP', 'AUTO');
-}
-            break;
-        case 'wordwrap':
-            $no_begin = "\x21\x25\x29\x2c\x2e\x3a\x3b\x3f\x5d\x7d\xa1\xf1\xa1\xeb\xa1" .
-                "\xc7\xa1\xc9\xa2\xf3\xa1\xec\xa1\xed\xa1\xee\xa1\xa2\xa1\xa3\xa1\xb9" .
-                "\xa1\xd3\xa1\xd5\xa1\xd7\xa1\xd9\xa1\xdb\xa1\xcd\xa4\xa1\xa4\xa3\xa4" .
-                "\xa5\xa4\xa7\xa4\xa9\xa4\xc3\xa4\xe3\xa4\xe5\xa4\xe7\xa4\xee\xa1\xab" .
-                "\xa1\xac\xa1\xb5\xa1\xb6\xa5\xa1\xa5\xa3\xa5\xa5\xa5\xa7\xa5\xa9\xa5" .
-                "\xc3\xa5\xe3\xa5\xe5\xa5\xe7\xa5\xee\xa5\xf5\xa5\xf6\xa1\xa6\xa1\xbc" .
-                "\xa1\xb3\xa1\xb4\xa1\xaa\xa1\xf3\xa1\xcb\xa1\xa4\xa1\xa5\xa1\xa7\xa1" .
-                "\xa8\xa1\xa9\xa1\xcf\xa1\xd1";
-            $no_end = "\x5c\x24\x28\x5b\x7b\xa1\xf2\x5c\xa1\xc6\xa1\xc8\xa1\xd2\xa1" .
-                "\xd4\xa1\xd6\xa1\xd8\xa1\xda\xa1\xcc\xa1\xf0\xa1\xca\xa1\xce\xa1\xd0\xa1\xef";
-            $wrap = func_get_arg(2);
-            
-            if (strlen($ret) >= $wrap && 
-                substr($ret, 0, 1) != '>' &&
-                strpos($ret, 'http://') === FALSE &&
-                strpos($ret, 'https://') === FALSE &&
-                strpos($ret, 'ftp://') === FALSE) {
-                
-                $ret = mb_convert_kana($ret, "KV");
-
-                $line_new = '';
-                $ptr = 0;
-                
-                while ($ptr < strlen($ret) - 1) {
-                    $l = mb_strcut($ret, $ptr, $wrap);
-                    $ptr += strlen($l);
-                    $tmp = $l;
-                    
-                    $l = mb_strcut($ret, $ptr, 2);
-                    while (strlen($l) != 0 && mb_strpos($no_begin, $l) !== FALSE ) {
-                        $tmp .= $l;
-                        $ptr += strlen($l);
-                        $l = mb_strcut($ret, $ptr, 1);
-                    }
-                    $line_new .= $tmp;
-                    if ($ptr < strlen($ret) - 1)
-                        $line_new .= "\n";
-                }
-                $ret = $line_new;
+                return $str;
             }
-            break;
-        case 'utf7-imap_encode':
-            $ret = mb_convert_encoding($ret, 'UTF7-IMAP', 'EUC-JP');
-            break;
-        case 'utf7-imap_decode':
-            $ret = mb_convert_encoding($ret, 'EUC-JP', 'UTF7-IMAP');
-            break;
         }
     }
-    return $ret;
-}
-
-
-/**
- * Korean charset extra functions
- *
- * Action performed by function is defined by first argument.
- * Default return value is defined by second argument.
- *
- * @param string action performed by this function. 
- *    possible values:
- * downloadfilename - Hangul(Korean Character) Attached File Name Fix.
- * @param string default return value
- */
-function korean_charset_xtra() {
-    
-    $ret = func_get_arg(1);  /* default return value */
-    if (func_get_arg(0) == 'downloadfilename') { /* action */
-        $ret = str_replace("\x0D\x0A", '', $ret);  /* Hanmail's CR/LF Clear */
-        for ($i=0;$i<strlen($ret);$i++) {
-            if ($ret[$i] >= "\xA1" && $ret[$i] <= "\xFE") {   /* 0xA1 - 0XFE are Valid */
-                $i++;
-                continue;
-            } else if (($ret[$i] >= 'a' && $ret[$i] <= 'z') || /* From Original ereg_replace in download.php */
-                       ($ret[$i] >= 'A' && $ret[$i] <= 'Z') ||
-                       ($ret[$i] == '.') || ($ret[$i] == '-')) {
-                continue;
-            } else {
-                $ret[$i] = '_';
-            }
-        }
-
-    }
-    return $ret;
-}
-
-/**
- * Replaces non-braking spaces inserted by some browsers with regular space
- * 
- * This function can be used to replace non-braking space symbols 
- * that are inserted in forms by some browsers instead of normal 
- * space symbol.
- *
- * @param string $string Text that needs to be cleaned
- * @param string $charset Charset used in text
- * @return string Cleaned text
- */
-function cleanup_nbsp($string,$charset) {
-
-  // reduce number of case statements
-  if (stristr('iso-8859-',substr($charset,0,9))){
-    $output_charset="iso-8859-x";
-  }
-  if (stristr('windows-125',substr($charset,0,11))){
-    $output_charset="cp125x";
-  }
-  if (stristr('koi8',substr($charset,0,4))){
-    $output_charset="koi8-x";
-  }
-  if (! isset($output_charset)){
-    $output_charset=strtolower($charset);
-  }
-
-// where is non-braking space symbol
-switch($output_charset):
- case "iso-8859-x":
- case "cp125x":
- case "iso-2022-jp":
-  $nbsp="\xA0";
-  break;
- case "koi8-x":
-   $nbsp="\x9A";
-   break;
- case "utf-8":
-   $nbsp="\xC2\xA0";
-   break;
- default:
-   // don't change string if charset is unmatched
-   return $string;
-endswitch;
-
-// return space instead of non-braking space. 
- return str_replace($nbsp,' ',$string);
-}
-
-/**
- * Function informs if it is safe to convert given charset to the one that is used by user.
- *
- * It is safe to use conversion only if user uses utf-8 encoding and when 
- * converted charset is similar to the one that is used by user.
- *
- * @param string $input_charset Charset of text that needs to be converted
- * @return bool is it possible to convert to user's charset
- */
-function is_conversion_safe($input_charset) {
-  global $languages, $sm_notAlias, $default_charset;
-
- // convert to lower case
- $input_charset = strtolower($input_charset);
-
- // Is user's locale Unicode based ?
- if ( $default_charset == "utf-8" ) {
-   return true;
- }
-
- // Charsets that are similar
-switch ($default_charset):
-case "windows-1251":
-      if ( $input_charset == "iso-8859-5" || 
-           $input_charset == "koi8-r" ||
-           $input_charset == "koi8-u" ) {
-        return true;
-     } else {
-        return false;
-     }
-case "windows-1257":
-  if ( $input_charset == "iso-8859-13" || 
-       $input_charset == "iso-8859-4" ) {
-    return true;
-  } else {
-    return false;
-  }
-case "iso-8859-4":
-  if ( $input_charset == "iso-8859-13" || 
-       $input_charset == "windows-1257" ) {
-     return true;
-  } else {
-     return false;
-  }
-case "iso-8859-5":
-  if ( $input_charset == "windows-1251" || 
-       $input_charset == "koi8-r" || 
-       $input_charset == "koi8-u" ) {
-     return true;
-  } else {
-     return false;
-  }
-case "iso-8859-13":
-  if ( $input_charset == "iso-8859-4" ||
-       $input_charset == "windows-1257" ) {
-     return true;
-  } else {
-     return false;
-  }
-case "koi8-r":
-  if ( $input_charset == "windows-1251" ||
-       $input_charset == "iso-8859-5" || 
-       $input_charset == "koi8-u" ) {
-     return true;
-  } else {
-     return false;
-  }
-case "koi8-u":
-  if ( $input_charset == "windows-1251" ||
-       $input_charset == "iso-8859-5" ||
-       $input_charset == "koi8-r" ) {
-     return true;
-  } else {
-     return false;
-  }
-default:
-   return false;
-endswitch;
 }
 ?>
