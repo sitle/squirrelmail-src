@@ -333,7 +333,12 @@ function getURI($parameters = NULL, $relative = TRUE)
          ( defined('BASE_URL') ? BASE_URL : 'http://'.$_SERVER['HTTP_HOST'].'/' );
  
   if ( defined('FILENAME') )
-    $uri .= FILENAME == '/' ? '' : FILENAME;
+  {
+    if ( $relative )
+      $uri .= FILENAME;
+    else
+      $uri .= ( FILENAME == '/' ? '' : FILENAME );
+  }
   else
     $uri .= $_SERVER['PHP_SELF'] ;
 
