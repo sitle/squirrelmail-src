@@ -371,7 +371,9 @@ function save_option_theme($option) {
  * This function saves the javascript detection option.
  */
 function save_option_javascript_autodetect($option) {
-    global $data_dir, $username, $new_javascript_setting;
+    global $data_dir, $username;
+
+    $new_javascript_setting = $_POST['new_javascript_setting'];
 
     /* Set javascript either on or off. */
     if ($new_javascript_setting == SMPREF_JS_AUTODETECT) {
