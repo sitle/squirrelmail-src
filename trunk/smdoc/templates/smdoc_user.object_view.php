@@ -26,32 +26,45 @@ function user_view_body(&$foowd, $className, $method, $user, $object, &$t)
   <td class="smalldate"><?php echo $t['lastvisit']; ?></td>
 </tr>
 <?php // DISPLAY IM ID's IF PRESENT
-  if ( isset($t['IM_nicks']) || isset($t['irc_nick']) )
+  if ( isset($t['IM_nicks']) || isset($t['IRC_nick']) )
   {
 ?>
 <tr>
-    <td colspan="3" class="separator"><br /><? echo _("Contact Information"); ?></td>
+    <td colspan="3" class="separator"><? echo _("Contact Information"); ?></td>
+</tr>
+<tr>
+  <td class="heading"><?php echo _("IRC nickname"); ?>:</td>
+  <td><?php echo isset($t['IRC_nick']) ? $t['IRC_nick'] : $none; ?><br />
+      <span class="subtext">IRC handle(s) used in #squirrelmail on irc.freenode.net</span></td>
 </tr>
 <?php
     if ( isset($t['IM_nicks']) && is_array($t['IM_nicks']) && !empty($t['IM_nicks']) )
     { 
-      foreach( $t['IM_nicks'] as $prot => $id )
-      { ?>
+      ksort($t['IM_nicks']);
+      while( list ($prot, $id) = each ($t['IM_nicks']) )
+      { 
+        switch ($prot)
+        {
+          case 'MSN':
+          case 'Email':  
+            $id =  htmlspecialchars(mungEmail($id));
+            break;
+          case 'WWW':    
+            $id = htmlspecialchars($id);
+            $id = '<a href="' . $id . '">' . $id . '</a>'; 
+            break;
+          default:
+            $id = htmlspecialchars($id);
+            break;
+        }
+?>
 <tr>
   <td class="heading"><?php echo htmlspecialchars($prot); ?>:</td>
-  <td><?php echo htmlspecialchars($id); ?></td>
+  <td><?php echo $id; ?></td>
 </tr>
 <?php
       }
     }
-?>
-<tr>
-  <td class="heading"><?php echo _("IRC nickname"); ?>:</td>
-  <td><?php echo ($t['irc_nick']) ? $t['irc_nick'] : $none; ?><br />
-      <span class="subtext">IRC handle(s) used in #squirrelmail on irc.freenode.net</span></td>
-</tr>
-
-<?php
   } // END DISPLAY IM IDs
 
   // begin AUTHOR only elements
@@ -59,10 +72,10 @@ function user_view_body(&$foowd, $className, $method, $user, $object, &$t)
   { 
 ?>
 <tr>
-    <td colspan="3" class="separator"><br /><? echo _("Private Attributes"); ?></td>
+    <td colspan="3" class="separator"><? echo _("Private Attributes"); ?></td>
 </tr>
 <tr>
-    <td colspan="3" align="center" class="subtext">
+    <td colspan="3" class="subtext_center">
     <?php 
         $string = _("<a href=\"%s\">Private attributes</a> are not shared with third parties.");
         printf($string, getURI(array('object' => 'privacy')));
@@ -90,7 +103,7 @@ function user_view_body(&$foowd, $className, $method, $user, $object, &$t)
   <td><?php echo ($t['SM_version'] == 'Unknown') ? $none : $t['SM_version']; ?></td>
 </tr>
 <tr>
-    <td colspan="3" align="center"><br /><a href="<?php echo $t['update']; ?>">Update your profile</a>.</td>
+    <td colspan="3" class="subtext_center"><br /><a href="<?php echo $t['update']; ?>">Update your profile</a>.</td>
 </tr>
 <?php 
   } // END AUTHOR ONLY ELEMENTS

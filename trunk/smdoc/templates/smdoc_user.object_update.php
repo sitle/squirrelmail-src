@@ -21,8 +21,8 @@ function user_update_body(&$foowd, $className, $method, $user, $object, &$t)
                       getURI(array('object' => 'privacy')));
     $table->insertObject(11, $string, array('class' => 'subtext_center', 'onecell' => true));
     $table->insertSpace(12);
-    $table->insertSpace(14);
-    $table->insertSpace(17);
+    $table->insertSpace(15);
+    $table->insertSpace(18);
     $table->addSpace();
 
     ?><center><?php
