@@ -286,10 +286,11 @@ function filter_search_and_delete($imap, $where, $what, $where_to, $user_scan,
         $what  = addslashes(trim($what[1]));
     }
 
-    if ($imap_server_type == 'macosx') {
-	$search_str .= ' ' . $where . ' ' . $what;
+    // see comments in squirrelmail sqimap_search function
+    if ($imap_server_type == 'macosx' || $imap_server_type == 'hmailserver') {
+        $search_str .= ' ' . $where . ' ' . $what;
     } else {
-	$search_str .= ' ' . $where . ' {' . strlen($what) . "}\r\n"
+        $search_str .= ' ' . $where . ' {' . strlen($what) . "}\r\n"
                     . $what . "\r\n";
     }
 
@@ -356,7 +357,7 @@ function spam_filters($imap_stream) {
     } else {
         $read = sqimap_run_command($imap_stream, 'SEARCH UNSEEN', true, $response, $message, $uid_support);
         if ($response != 'OK' || trim($read[0]) == '* SEARCH') {
-    	    $read = sqimap_run_command($imap_stream, 'FETCH 1:* (FLAGS BODY.PEEK[HEADER.FIELDS ' .
+            $read = sqimap_run_command($imap_stream, 'FETCH 1:* (FLAGS BODY.PEEK[HEADER.FIELDS ' .
             '(RECEIVED)])', true, $response, $message, $uid_support);
         } else {
             if (isset($read[0])) {
@@ -364,11 +365,11 @@ function spam_filters($imap_stream) {
                     $search_array = preg_split("/ /", trim($regs[1]));
                 }
             }
-	    $msgs_str = sqimap_message_list_squisher($search_array);
+            $msgs_str = sqimap_message_list_squisher($search_array);
             $imap_query = 'FETCH '.$msgs_str;
             $imap_query .= ' (FLAGS BODY.PEEK[HEADER.FIELDS ';
             $imap_query .= '(RECEIVED)])';
-	    $read = sqimap_run_command($imap_stream,$imap_query, true, $response, $message, $uid_support);
+            $read = sqimap_run_command($imap_stream,$imap_query, true, $response, $message, $uid_support);
         }
     }
     
