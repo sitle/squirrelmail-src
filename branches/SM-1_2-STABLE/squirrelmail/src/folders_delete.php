@@ -36,8 +36,9 @@ $mailbox = $_POST['mailbox'];
 
 if ($mailbox == '') {
     displayPageHeader($color, 'None');
-    echo "<html><body bgcolor=$color[4]>";
-    plain_error_message(_("You have not selected a folder to delete. Please do so.")."<BR><A HREF=\"../src/folders.php\">"._("Click here to go back")."</A>.", $color);
+
+    plain_error_message(_("You have not selected a folder to delete. Please do so.").
+        "<BR><A HREF=\"../src/folders.php\">"._("Click here to go back")."</A>.", $color);
     exit;
 }
 
@@ -91,7 +92,6 @@ for ($i = 0;$i < count($boxes);$i++) {
 /* Now create the nodes for subfolders of the parent folder
    You can tell that it is a subfolder by tacking the mailbox delimiter
    on the end of the $mailbox string, and compare to that.  */
-$j = 0;
 for ($i = 0;$i < count($boxes);$i++) {
     if (substr($boxes[$i]["unformatted"], 0, strlen($mailbox_no_dm . $delimiter)) == ($mailbox_no_dm . $delimiter)) {
         addChildNodeToTree($boxes[$i]["unformatted"], $boxes[$i]["unformatted-dm"], $foldersTree);
@@ -112,17 +112,5 @@ sqimap_logout($imap_stream);
 
 $location = get_location();
 header ("Location: $location/folders.php?success=delete");
-/*
-echo "<BR><BR><BR><CENTER><B>";
-echo _("Folder Deleted!");
-echo "</B><BR><BR>";
-echo _("The folder has been successfully deleted.");
-echo "<BR><A HREF=\"webmail.php?right_frame=folders.php\" TARGET=_top>";
-echo _("Click here");
-echo "</A> ";
-echo _("to continue.");
-echo "</CENTER>";
 
-echo "</BODY></HTML>";
-*/
 ?>
