@@ -25,7 +25,6 @@
 
 body {
 	color: #333; 
-	font-family: verdana, arial;
     background-color: #9CF;
     background-image: url(images/sqm-blue.png);
     background-repeat: no-repeat;
@@ -39,7 +38,6 @@ body {
 }
 .newsheadline a:hover,
 #textile a:hover,
-#editmenu a:hover,
 #sitetitle a:hover {
     text-decoration: underline;
 }
@@ -51,10 +49,12 @@ body {
     background-repeat: no-repeat;
     background-position: 0 0;
     background-attachment: fixed;
+}
+#debug_output,
+#content {
     border: 1px #69F solid;
 }
-.bottomline,
-#editmenu {
+.bottomline {
     border-bottom: 1px #69F solid;
 }
 .newsheadline a,
@@ -64,6 +64,7 @@ body {
     text-decoration: none; 
     color: #36F;
 }
+#editmenu a:hover,
 #locationmenu .special a:hover,
 #locationmenu a:hover {
     background-color: #69F;
@@ -83,9 +84,13 @@ body {
     text-decoration: none; 
     color: #FFF;
 }
+#status,
 #usermenu a:hover {
     background-color: #FFF;
     color: #36F;
+}
+#contentupdate {
+    color: gray;
 }
 #copyright {
     border-top: 1px #69F solid;
