@@ -137,7 +137,7 @@ class abook_local_file extends addressbook_backend {
         $this->unlock();
         $newfh = @fopen($this->filename . '.tmp', 'w');
         if(!$newfh) {
-            return $this->set_error($file->filename. '.tmp:' . _("Open failed"));
+            return $this->set_error($this->filename. '.tmp:' . _("Open failed"));
         }
         
         for($i = 0 ; $i < sizeof($rows) ; $i++) {
@@ -147,14 +147,14 @@ class abook_local_file extends addressbook_backend {
                 }
                 $tmpwrite = @fwrite($newfh, join('|', $rows[$i]) . "\n");
                 if ($tmpwrite == -1) {
-                    return $this->set_error($file->filename . '.tmp:' . _("Write failed"));
+                    return $this->set_error($this->filename . '.tmp:' . _("Write failed"));
                 }
             }
         }       
 
         fclose($newfh);
         if (!@copy($this->filename . '.tmp' , $this->filename)) {
-          return $this->set_error($file->filename.':' . _("Unable to update"));
+          return $this->set_error($this->filename.':' . _("Unable to update"));
         }
         @unlink($this->filename . '.tmp');
         $this->unlock();
