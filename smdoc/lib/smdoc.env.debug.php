@@ -78,7 +78,8 @@ class smdoc_debug
     debug_display($this->DBAccessNumber, 
                   $this->executionTime(), 
                   &$this->trackString, 
-                  $this->foowd->config_settings['debug']['debug_var']);
+                  $this->foowd->config_settings['debug']['debug_var'],
+                  $this->foowd->template->values);
   }
 
   /**

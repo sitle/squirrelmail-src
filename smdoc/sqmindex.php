@@ -58,6 +58,9 @@ $foowd = new smdoc($foowd_parameters);
  */
 $where['notshort'] = array('index' => 'classid', 'op' => '!=', 'value' => META_SMDOC_NAME_LOOKUP_CLASS_ID);
 $where['notgroup'] = array('index' => 'classid', 'op' => '!=', 'value' => META_SMDOC_GROUP_APPEXT_CLASS_ID);
+$where['notwkspce'] = array('index' => 'classid', 'op' => '!=', 'value' => WORKSPACE_CLASS_ID);
+$where['notlang'] = array('index' => 'classid', 'op' => '!=', 'value' => TRANSLATION_CLASS_ID);
+
 
 $orderby = array('title', 'classid', 'version');
 $indices = array('DISTINCT objectid','classid','title','workspaceid','updated');
