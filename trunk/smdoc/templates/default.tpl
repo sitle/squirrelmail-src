@@ -12,5 +12,5 @@ function default_body($foowd, $className, $method, $user, $object, $t)
 }
 
 $t['body_function'] = 'default_body';
-include($foowd->template.'/index.php');
+include(TEMPLATE_PATH.'/index.php');
 ?>

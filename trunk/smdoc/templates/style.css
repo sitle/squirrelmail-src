@@ -1,0 +1,246 @@
+/*
+ * Modified by SquirrelMail Development Team
+ * $Id$
+ */
+body {
+    color: #333333; 
+    margin: 0px;
+    padding: 0px;
+    font-family: verdana, "trebuchet ms", arial; 
+}
+#pagetitle {
+    background: #afad97;
+    height: 92px;
+    margin: 0px;
+    border-bottom: 1px solid gray;
+    color: #666666;
+    padding-right: 5px;
+}
+#pagetitle .logo {
+    background: #fff url(sm_logo.png) no-repeat top left;
+}
+#pagetitle .usermenu {
+    font-size: small;
+    text-align: right;
+    padding-top: 2px;
+}
+#pagetitle .titleblock {
+    font-size: x-large;
+    text-align: left;
+    padding-left: 5px;
+    padding-bottom: 2px;
+}
+#locationmenu {
+    background: #d3d1c2;
+    border-bottom: 1px solid gray;
+    padding: 1px 5px;
+    font-size: small; 
+    color: #666666;    
+    margin: 0px;
+}
+#status {
+    font-size: small;
+    text-align: center;
+    border-bottom: 1px dashed gray;
+    padding: 2px 5px;
+    margin: 0px;
+}
+#status .error {
+    color: #BB0000;    
+}
+#status .ok {
+    color: #00BB00;
+}
+#content {
+    background: white;
+    margin: 5px 0px;
+    padding: 5px;
+}
+#editmenu {
+    background: #d3d1c2;
+    border-top: 1px solid gray;
+    padding: 2px;
+    margin: 0px;
+    font-size: small; 
+    color: #666666;    
+    text-align: center;
+}
+#copyright {
+    background: #afad97;
+    padding: 2px;
+    border-top: 1px solid gray;
+    border-bottom: 1px solid gray;
+    color: #666666;
+    font-size: small;
+    text-align: center; 
+}
+#footer {
+    color: gray;
+    text-align: center;
+    font-size: x-small;
+}
+form { 
+    white-space: nowrap; 
+    display: inline; 
+}
+.separator {
+    border-bottom: 1px solid #afad97;
+    margin-bottom: 10px;
+}
+.debug_output {
+    font-size: small;
+    margin: 0px 5px;
+}
+.indexitem {
+    margin: 0px 20px;
+}
+h1 {
+    font-size: large;
+    margin: 10px 0px 5px 0px;
+    color: #666; 
+    font-weight: bold; 
+    text-decoration: none;
+    text-align: center;
+}
+h2 {
+    font-size: large;
+    margin: 10px 0px 5px 0px;
+    color: #afad97; 
+    font-weight: bold; 
+    text-decoration: none;
+    text-align: left;
+    border-bottom: 1px solid #afad97;
+}
+h3,
+.debug_output_heading,
+.indexhead {
+    margin: 10px 5px 5px 5px;
+    padding-right: 5px;
+    color: #afad97; 
+    font-weight: bold; 
+    text-decoration: none;
+    text-align: right;
+    font-size: large;
+    border-bottom: 1px solid #afad97;
+}
+li { 
+    padding-bottom: 5px; 
+    margin: 0px; 
+}
+dt { 
+    padding: 5px; 
+    margin: 0px; 
+    font-weight: bold; 
+}
+
+blockquote, pre {
+	font-family: "courier new", monospace;
+	background-color: #eeeeee;
+	margin: 0px;
+	padding: 5px;
+}
+a,
+a:link,
+a:visited,
+a:active {
+    text-decoration: none;
+    outline: none;
+    color: #BB0000;
+}
+a:hover {
+    text-decoration: underline;
+    color: gray;
+}
+.index {
+    font-size: small;
+    text-align: center;
+    color: gray;
+}
+.index a {
+    font-weight: bold;
+}
+hr { 
+    color: #666666; 
+    height: 1px; 
+}
+p.quote {
+	font-style: italic;
+	background-color: #eeeeee;
+	padding: 10px;
+}
+div.preview {
+	background-color: #eeeeee;
+	padding: 5px;
+}
+div.annotation {
+	background-color: #eeeeee;
+	padding: 5px;
+}
+pre.code {
+	background-color: #ffffff;
+	margin: 0px;
+	padding: 0px;
+}
+a.annotate, a.faq {
+	text-decoration: none;
+	color: #ff0000;
+	background-color: #ffff00;
+}
+tr.row_odd {
+	background-color: #f3f3f3;
+}
+tr.row_even {
+	background-color: #f9f9f9;
+}
+tr.diff_add {
+	background-color: #ccffcc;
+}
+tr.diff_minus {
+	background-color: #ffcccc;
+}
+tr.diff_same {
+	background-color: #eeeeee;
+}
+td.separator {
+    border-bottom: 1px solid #afad97;
+    padding: 10px 0px 0px 0px;
+    text-align: center;
+    font-weight: bold;
+    font-size: normal;
+    color: #afad97;
+}
+td.heading {
+    color: gray;
+    font-size: small;
+    font-weight: bold;
+    text-align: left;
+    vertical-align: top;
+}
+input.error {
+	background-color: #ffcccc;
+}
+.small { 
+    font-size: small; 
+}
+.smalldate { 
+    font-family: "courier new", monospace;
+    font-size: small; 
+}
+.xsmall { 
+    font-size: x-small; 
+}
+.subtext,
+.subtext_center {
+    color: #666666;
+    font-size: small;
+}
+.subtext_center {
+    text-align: center;
+}
+
+OL.upper_roman {
+    list-style-type: upper-roman
+}
+OL.decimal {
+    list-style-type: decimal
+}

@@ -11,22 +11,19 @@
  * $Id$
  */
 
-class input_session 
+class input_session extends input_base
 {
-  var $name;                                // session variable name
-  var $value;                               // value of session variable
-  var $regex;                               // regex value must match
   var $base64;                              // should/is value be base64 encoded
     
   function input_session($name, 
-                        $regex = NULL, 
-                        $value = NULL,
-                        $base64 = false) 
+                         $regex = NULL, 
+                         $value = NULL,
+                         $base64 = false) 
   {
-    $this->name = $name;
-    $this->regex = $regex;
     $this->base64 = $base64;
-    $this->value = NULL;
+    parent::input_base($name, $regex, $value, SQ_SESSION);
+
+    $this->base64 = $base64;
     
     $this->refresh();
 
