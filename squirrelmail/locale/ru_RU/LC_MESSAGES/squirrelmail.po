@@ -1,3 +1,4 @@
+# Translation of squirrelmail.po into Russian
 # Russian Squirrelmail Translation
 # Copyright (c) 1999-2002 The Squirrelmail Development Team
 # Konstantin Riabitsev <squirrelmail-i18n@mricon.com>, 2001.
@@ -6,16 +7,17 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: squirrelmail\n"
-"tokul Exp $\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2003-09-20 11:04+0300\n"
-"PO-Revision-Date: 2003-09-21 12:15+0400\n"
+"POT-Creation-Date: 2004-01-26 20:14+0200\n"
+"PO-Revision-Date: 2004-01-27 16:44+0200\n"
 "Last-Translator: Gregory Mokhin <mok@kde.ru>\n"
 "Language-Team: Russian <kde-russian@lists.kde.ru>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.0.1\n"
+"tokul Exp $\n"
+"X-Generator: KBabel 1.3\n"
+"Plural-Forms:  nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 msgid "Address Book"
 msgstr "Адресная книга"
@@ -373,9 +375,6 @@ msgstr "Очистить"
 
 msgid "Last Refresh"
 msgstr "Обновлено"
-
-msgid "refresh unseen/total info"
-msgstr "обновить сведения"
 
 msgid "Save folder tree"
 msgstr "Сохранить дерево папок"
@@ -1166,9 +1165,9 @@ msgid ""
 "moved away or deleted (perhaps by another program accessing the same "
 "mailbox)."
 msgstr ""
-"Возможно, список сообщений устарел, а само сообщение было перемещено "
-"или удалено (например, другой программой, имеющей доступ к данному "
-"почтовому ящику)."
+"Возможно, список сообщений устарел, а само сообщение было перемещено или "
+"удалено (например, другой программой, имеющей доступ к данному почтовому "
+"ящику)."
 
 msgid "Unknown date"
 msgstr "Неизвестная дата"
@@ -1279,6 +1278,9 @@ msgstr "загрузить"
 
 msgid "sec_remove_eng.png"
 msgstr "sec_remove_ru.png"
+
+msgid "This external link will open in a new window"
+msgstr "При нажатии на эту ссылку откроется новое окно"
 
 #, c-format
 msgid "Option Type '%s' Not Found"
@@ -1394,7 +1396,7 @@ msgid "Number of Messages to Index"
 msgstr "Количество индексированных сообщений"
 
 msgid "Enable Alternating Row Colors"
-msgstr "Подсвечивать каждое второе сообщение?"
+msgstr "Подсвечивать каждое второе сообщение"
 
 msgid "Enable Page Selector"
 msgstr "Показывать выбор страницы"
@@ -1471,6 +1473,18 @@ msgstr "Высота окна для написания сообщений"
 msgid "Append Signature before Reply/Forward Text"
 msgstr "Вставлять подпись перед цитированным текстом"
 
+msgid "Cursor Position when Replying"
+msgstr "Помещать курсор при ответе в"
+
+msgid "To: field"
+msgstr "Поле \"Кому\""
+
+msgid "Focus in body"
+msgstr "Тело письма"
+
+msgid "Select body"
+msgstr "Выделить всё"
+
 msgid "Enable Sort by of Receive Date"
 msgstr "Сортировка по дате получения"
 
@@ -1538,7 +1552,7 @@ msgid "No Notification"
 msgstr "Не сообщать"
 
 msgid "Only INBOX"
-msgstr "Только поступающие в папку INBOX"
+msgstr "Только в папке INBOX"
 
 msgid "Unread Message Notification Type"
 msgstr "Вид сообщения о непрочитанных письмах"
@@ -1556,13 +1570,22 @@ msgid "Enable Cumulative Unread Message Notification"
 msgstr "Включить уведомление о блоке непрочитанных сообщений"
 
 msgid "Show Clock on Folders Panel"
-msgstr "Показывать время в колонке с папками"
+msgstr "Показывать время в панели с папками"
+
+msgid "Show weekday and time"
+msgstr "Показывать день недели и время"
+
+msgid "Show time with seconds"
+msgstr "Показывать секунды"
+
+msgid "Show time"
+msgstr "Показывать время"
 
 msgid "No Clock"
 msgstr "Не показывать время"
 
 msgid "Hour Format"
-msgstr "Формат"
+msgstr "Формат времени"
 
 msgid "12-hour clock"
 msgstr "12-часовой"
@@ -1574,7 +1597,7 @@ msgid "Memory Search"
 msgstr "Искать в памяти"
 
 msgid "Disabled"
-msgstr "Выключено"
+msgstr "Отключено"
 
 msgid "Folder Selection Options"
 msgstr "Параметры выбора папок"
@@ -1601,7 +1624,7 @@ msgid "Edit Advanced Identities"
 msgstr "Редактировать дополнительные профили"
 
 msgid "(discards changes made on this form so far)"
-msgstr "(отклонить изменения и сбросить форму)"
+msgstr "(отклонить изменения и сбросить параметры)"
 
 msgid "Multiple Identities"
 msgstr "Несколько профилей"
@@ -1649,13 +1672,13 @@ msgid "Use Signature"
 msgstr "Использовать подпись"
 
 msgid "Prefix Signature with '-- ' Line"
-msgstr "Предварять подпись чертой '-- '?"
+msgstr "Предварять подпись чертой '--'"
 
 msgid "Take Address"
 msgstr "Запомнить адрес"
 
 msgid "Address Book Take:"
-msgstr "Запись в адресную книгу"
+msgstr "Запись в адресную книгу:"
 
 msgid "Try to verify addresses"
 msgstr "Проверить адреса"
@@ -1727,7 +1750,7 @@ msgid "Microsoft Exchange IMAP server"
 msgstr "IMAP-сервер Microsoft Exchange"
 
 msgid "Courier IMAP server"
-msgstr "IMAP-сервер Courier-IMAP"
+msgstr "IMAP-сервер Courier"
 
 msgid "Not one of the above servers"
 msgstr "Ни один из вышеуказанных серверов"
@@ -1952,6 +1975,88 @@ msgstr ""
 "Этот модуль позволяет администраторам редактировать настройки SquirrelMail в "
 "удаленном режиме."
 
+msgid "Submit a Bug Report"
+msgstr "Отправка сообщения об ошибке"
+
+msgid ""
+"Before you send your bug report, please make sure to check this checklist "
+"for any common problems."
+msgstr ""
+"Перед отправкой сообщения проверьте, нет ли его в списке "
+"уже известных ошибок."
+
+msgid ""
+"Make sure that you are running the most recent copy of <a href=\"http://www."
+"squirrelmail.org/\">SquirrelMail</a>."
+msgstr ""
+"Проверьте, установлена ли у вас самая свежия версия <a href=\"http://www."
+"squirrelmail.org/\">SquirrelMail</a>."
+
+#, c-format
+msgid "You are currently using version %s."
+msgstr "Текущая используемая версия - %s."
+
+msgid ""
+"Check to see if you bug is already listed in the <a href=\"http://"
+"sourceforge.net/bugs/?group_id=311\">Bug List</a> on SourceForge. If it is, "
+"we already know about it and are trying to fix it."
+msgstr ""
+"Проверьте, нет ли уже сообщения об этой ошибке на странице <a href=\"http://"
+"sourceforge.net/bugs/?group_id=311\">SourceForge</a>. В этом случае "
+"повторно сообщать об ошибке не имеет смысла, так как разработчики уже работают "
+"над её исправлением."
+
+msgid ""
+"Try to make sure that you can repeat it. If the bug happens sporatically, "
+"try to document what you did when it happened. If it always occurs when you "
+"view a specific message, keep that message around so maybe we can see it."
+msgstr ""
+"Убедитесь, что ошибка воспроизводима. Если она возникает время от времени, "
+"попробуйте найти условия, в которых её можно воспроизвести. Если она "
+"связана с каким-то определённым письмом, сохраните это письмо, чтобы "
+"разработчики могли при необходимости его получить для проверки."
+
+msgid ""
+"If there were warnings displayed above, try to resolve them yourself. Read "
+"the guides in the <tt>doc/</tt> directory where SquirrelMail was installed."
+msgstr ""
+"Вы можете попробовать сами устранить проблемы, о которых сообщает программа. "
+"Прочитайте инструкции в каталоге <tt>doc/</tt> установки SquirrelMail."
+
+msgid ""
+"Pressing the button below will start a mail message to the developers of "
+"SquirrelMail that will contain a lot of information about your system, your "
+"browser, how SquirrelMail is set up, and your IMAP server. It will also "
+"prompt you for information. Just fill out the sections at the top. If you "
+"like, you can scroll down in the message to see what else is being sent."
+msgstr ""
+"При нажатии кнопки откроется мастер отправки сообщения об ошибке, "
+"который должен собрать сведения "
+"о вашем браузере, сервере IMAP и параметрах SquirrelMail, требующиеся разработчикам "
+"SquirrelMail для устранения ошибки. Заполните поля и просмотрите информацию, "
+"которая будет включена в письмо."
+
+msgid ""
+"Please make sure to fill out as much information as you possibly can to give "
+"everyone a good chance of finding and removing the bug. Submitting your bug "
+"like this will not have it automatically added to the bug list on "
+"SourceForge, but someone who gets your message may add it for you."
+msgstr ""
+"Постарайтесь включить в письмо максимум подробностей, чтобы ошибку было "
+"легче найти и устранить. Отправка сообщения не приводит к автоматическому "
+"включению этой ошибки в список ошибок на сервере SourceForge, но ваше "
+"письмо будет прочитано и при необходимости добавлено в этот список самими "
+"разработчиками."
+
+msgid "This bug involves"
+msgstr "Ошибка в"
+
+msgid "the general program"
+msgstr "программе"
+
+msgid "a specific plugin"
+msgstr "модуле"
+
 msgid "Bug Reports:"
 msgstr "Отправка сообщения об ошибках:"
 
@@ -2088,7 +2193,7 @@ msgid "with move option"
 msgstr "с опцией перемещения сообщения в другую папку"
 
 msgid "Display at bottom"
-msgstr "показывать внизу"
+msgstr "Показывать внизу"
 
 msgid ""
 "COMMERCIAL - This list contains servers that are verified spam senders. It "
@@ -2171,10 +2276,10 @@ msgstr "FREE - SPAMhaus - список общеизвестных источни
 
 msgid ""
 "FREE, for now - SPAMCOP - An interesting solution that lists servers that "
-"have a very high spam to legit email ratio (85% or more)."
+"have a very high spam to legit email ratio (85 percent or more)."
 msgstr ""
-"БЕСПЛАТНО (на настоящий момент) - SPAMCOP - фильтруется большинство серверов, "
-"через которые спаммеры пытаются рассылать письма."
+"БЕСПЛАТНО (на настоящий момент) - SPAMCOP - фильтруется большинство "
+"серверов, через которые спаммеры пытаются рассылать письма."
 
 msgid "FREE - dev.null.dk - I don't have any detailed info on this list."
 msgstr "FREE - dev.null.dk - недостаточно информации."
@@ -2182,14 +2287,14 @@ msgstr "FREE - dev.null.dk - недостаточно информации."
 msgid "FREE - visi.com - Relay Stop List. Very conservative OpenRelay List."
 msgstr "FREE - visi.com - список пересыльщиков. Очень консервативен."
 
-msgid "FREE - 2mbit.com Open Relays - Another list of Open Relays."
-msgstr "FREE - 2mbit.com Open Relays - другой список пересыльщиков."
+msgid "FREE - ahbl.org Open Relays - Another list of Open Relays."
+msgstr "FREE - ahbl.org Open Relays - список пересыльщиков."
 
-msgid "FREE - 2mbit.com SPAM Source - List of Direct SPAM Sources."
-msgstr "FREE - 2mbit.com SPAM Source - список рассыльщиков спама."
+msgid "FREE - ahbl.org SPAM Source - List of Direct SPAM Sources."
+msgstr "FREE - ahbl.org SPAM Source - список рассыльщиков спама."
 
-msgid "FREE - 2mbit.com SPAM ISPs - List of SPAM-friendly ISPs."
-msgstr "БЕСПЛАТНО - 2mbit.com SPAM ISPs - список провайдеров, поддерживающих спам."
+msgid "FREE - ahbl.org SPAM ISPs - List of SPAM-friendly ISPs."
+msgstr "БЕСПЛАТНО - ahbl.org SPAM ISPs - список провайдеров, поддерживающих спам."
 
 msgid ""
 "FREE - Leadmon DUL - Another list of Dial-up or otherwise dynamically "
@@ -2747,14 +2852,14 @@ msgid ""
 "folders for unseen mail, not just the inbox for notification."
 msgstr ""
 "В режиме <b>Проверять все папки</b> вы будете узнавать о приходе новых "
-"сообщений в любую папку, а не только во Входящие."
+"сообщений в любую папку, а не только в папку Входящие."
 
 msgid ""
 "Selecting the <b>Show popup</b> option will enable the showing of a popup "
 "window when unseen mail is in your folders (requires JavaScript)."
 msgstr ""
-"Опция <b>Всплывающее окно</b> будет открывать новое окошко, "
-"если вам пришла новая почта (необходима поддержка JavaScript)."
+"Опция <b>Всплывающее окно</b> будет открывать новое окошко, если вам пришла "
+"новая почта (необходима поддержка JavaScript)."
 
 msgid ""
 "Use the <b>Check RECENT</b> to only check for messages that are recent. "
@@ -2773,16 +2878,16 @@ msgid ""
 "always tell you if you have new mail, even if you have <b>Check RECENT</b> "
 "enabled."
 msgstr ""
-"Опция <b>Изменять заголовок окна</b> будет менять заголовок браузера "
-"при получении вами новой почты (требует поддержки JavaScript и работает "
-"только в IE). Будет показываться общее количество непрочитанных сообщений, "
-"даже если вы выберете опцию <b>только НОВЫЕ</b>."
+"Опция <b>Изменять заголовок окна</b> будет менять заголовок браузера при "
+"получении вами новой почты (требует поддержки JavaScript и работает только в "
+"IE). Будет показываться общее количество непрочитанных сообщений, даже если "
+"вы выберете опцию <b>только НОВЫЕ</b>."
 
 msgid ""
 "Select from the list of <b>server files</b> the media file to play when new "
 "mail arrives.  If no file is specified, \"(none)\", no sound will be used."
 msgstr ""
-"Выберите из списка <b>файлов на сервере</b>, каким звуком оповещать о "
+"Выберите из списка <b>файлов на сервере</b>, каким звуком извещать о "
 "приходе новой почте. Если ни один файл не выбран, звук не будет "
 "проигрываться."
 
@@ -2820,31 +2925,37 @@ msgid "New Mail"
 msgstr "Новая почта"
 
 msgid "SquirrelMail Notice:"
-msgstr "Сообщение от SquirrelMail:"
+msgstr "Извещение SquirrelMail:"
 
-msgid "You have new mail!"
-msgstr "Вам пришла новая почта!"
+msgid "You have"
+msgstr "Новых сообщений:"
+
+#, c-format
+msgid "%s new message"
+msgstr "%s"
+
+#, c-format
+msgid "%s new messages"
+msgstr "%s"
 
 msgid "NewMail Options"
-msgstr "Настройка оповещений"
+msgstr "Настройка извещений"
 
 msgid ""
 "This configures settings for playing sounds and/or showing popup windows "
 "when new mail arrives."
-msgstr ""
-"Если вы хотите получать оповещение о приходе новых сообщений, вы можете это "
-"настроить здесь."
+msgstr "Здесь можно настроить извещения о приходе новых сообщений."
 
 msgid "New Mail Notification options saved"
-msgstr "Опции оповещений сохранены"
+msgstr "Параметры извещений сохранены"
 
 #, c-format
 msgid "%s New Messages"
-msgstr "%s новых сообщений"
+msgstr "Новых сообщений: %s"
 
 #, c-format
 msgid "%s New Message"
-msgstr "%s новое сообщение"
+msgstr "Новых сообщений: %s"
 
 msgid "Test Sound"
 msgstr "Проверить звук"
@@ -2862,7 +2973,7 @@ msgid "Use Sent Subfolders"
 msgstr "Использовать подпапки отправленных"
 
 msgid "Monthly"
-msgstr "Каждый месяц"
+msgstr "Ежемесячно"
 
 msgid "Quarterly"
 msgstr "Ежеквартально"
@@ -2873,11 +2984,167 @@ msgstr "Ежегодно"
 msgid "Base Sent Folder"
 msgstr "Папка с отправленными сообщениями (Sent)"
 
+msgid "Enabled"
+msgstr "Включенo"
+
+msgid "Disable it"
+msgstr "Выключить"
+
+msgid "Enable it"
+msgstr "Включить"
+
+msgid "Spam reporting"
+msgstr "Борьба со спамом"
+
+msgid "SpamCop link is:"
+msgstr "Ссылка SpamCop:"
+
+msgid "Delete spam when reported:"
+msgstr "Удалить спам после отправки отчёта:"
+
+msgid "Only works with email-based reporting"
+msgstr "Работает только с почтовыми сообщениями"
+
+msgid "Spam Reporting Method:"
+msgstr "Метод отправки сообщений и спаме:"
+
+msgid "Quick email-based reporting"
+msgstr "Краткие почтовые сообщения"
+
+msgid "Thorough email-based reporting"
+msgstr "Подробные почтовые сообщения"
+
+msgid "Web-based form"
+msgstr "Веб-форма"
+
+msgid "Your SpamCop authorization code:"
+msgstr "Код авторизации на SpamCop:"
+
+msgid "see below"
+msgstr "см. ниже"
+
+msgid ""
+"SpamCop is a free service that greatly assists in finding the true source of "
+"the spam and helps in letting the proper people know about the abuse."
+msgstr ""
+"SpamCop - это бесплатная служба для поиска настоящих источников "
+"спама и борьбы с рассыльщиками спама."
+
+msgid ""
+"To use it, you must get a SpamCop authorization code. There is a free <a "
+"href=\"http://spamcop.net/anonsignup.shtml\">sign up page</a> so you can use "
+"SpamCop."
+msgstr ""
+"Для использования сервиса SpamCop вам потребуется код авторизации. Его можно получить "
+"бесплатно на <a href=\"http://spamcop.net/anonsignup.shtml\">странице регистрации</a> "
+"SpamCop."
+
+msgid ""
+"<b>Before you sign up, be warned:</b> Some users have reported that the "
+"email addresses used with SpamCop find their way onto spam lists. To be "
+"safe, you can just create an email forwarding account and have all SpamCop "
+"reports get sent to there. Also, if it gets flooded with spam, you can then "
+"just delete that account with no worries about losing your real email "
+"address. Just go create an email forwarder somewhere (<a href=\"http://www."
+"yahoo.com/\">Yahoo!</a> has a <a href=\"http://dir.yahoo.com/"
+"Business_and_Economy/Business_to_Business/Communications_and_Networking/"
+"Internet_and_World_Wide_Web/Email_Providers/Forwarding_Services/"
+"Free_Forwarding/\">list of places</a>) so that messages from system "
+"administrators and whatnot can be sent to you."
+msgstr ""
+"<b>Внимание:</b> некоторые пользователи утверждают, что адреса, "
+"используемые для авторизации на SpamCop, становятся известными спаммерам. "
+"Чтобы полностью обезопасить себя, заведите отдельный адрес, на который "
+"будут приходить письма SpamCop. Если на него начнёт приходить спам, "
+"ящик можно будет удалить без риска потерять свой подлинный адрес. "
+"На <a href=\"http://www."
+"yahoo.com/\">Yahoo!</a> можно найти <a href=\"http://dir.yahoo.com/"
+"Business_and_Economy/Business_to_Business/Communications_and_Networking/"
+"Internet_and_World_Wide_Web/Email_Providers/Forwarding_Services/"
+"Free_Forwarding/\">списки почтовых провайдеров</a>, позволяющих "
+"пересылать почту на другие адреса."
+
+msgid ""
+"Once you have signed up with SpamCop and have received your SpamCop "
+"authorization code, you need to enable this plugin -- just click the link "
+"above.  Once enabled, you go about your normal life.  If you encounter a "
+"spam message in your mailbox, just view it.  On the right-hand side, near "
+"the top of where the message is displayed, you will see a link to report "
+"this message as spam.  Clicking on it brings you to a confirmation page. "
+"Confirming that you want the spam report sent will do different things with "
+"different reporting methods."
+msgstr ""
+"Зарегистрировавшись на SpamCop и получив код авторизации, можно будет "
+"включить этот модуль - нажмите ссылку выше. При приходе спама вы сможете "
+"сообщить об этом, нажав ссылку выше текста письма. Дальше нужно будет "
+"подвердить сообщение о спаме и отправить его, а сама обработка этого "
+"сообщения будет зависеть от используемого сервиса борьбы со спамом."
+
+msgid "Email-based Reporting"
+msgstr "Почтовые сообщения"
+
+msgid ""
+"Pressing the button forwards the message to the SpamCop service and will "
+"optionally delete the message.  From there, you just need to go to your "
+"INBOX and quite soon a message should appear from SpamCop.  (It gets sent to "
+"the account you registered with, so make sure that your mail forwarder "
+"works!) Open it up, click on the appropriate link at the top, and a new "
+"browser window will open."
+msgstr ""
+"Сообщение будет отправлено на SpamCop и (по выбору) удалено из списка писем. "
+"Очень скоро придёт письмо от SpamCop (если работает пересылка с адреса, с которым вы "
+"зарегистрировались), и в этом письме будет ссылка, при нажатии на которую "
+"откроется окно браузера."
+
+msgid ""
+"Currently, the quick reporting just forwards the request to the thorough "
+"reporting.  Also, it appears that this is for members (non-free) only. "
+"Hopefully this will change soon."
+msgstr ""
+"В настоящее время краткие сообщения приводят лишь к тому, "
+"что придёт запрос на отправку подробного сообщения. К тому же "
+"это доступно только как платный сервис. В будущем, возможно, "
+"это изменится."
+
+msgid "Web-based Reporting"
+msgstr "Веб-форма"
+
+msgid ""
+"When you press the button on the confirmation page, this will pop open a new "
+"browser window and the SpamCop service should appear inside. The message "
+"will not be deleted (working on that part), but you won't need to wait for a "
+"response email to start the spam reporting."
+msgstr ""
+"При нажатии кнопки на странице подтверждения откроется окно с "
+"сайтом SpamCop. Само сообщение при этом не будет удалено, но "
+"вы сможете сразу перейти к отправке отчёта о спаме."
+
+msgid ""
+"The SpamCop service will display information as it finds it, so scroll down "
+"until you see a form button.  It might pause a little while it is looking up "
+"information, so be a little patient.  Read what it says, and submit the "
+"spam.  Close the browser window.  Press Cancel or click on the appropriate "
+"mail folder to see messages and/or delete the spam."
+msgstr ""
+"Сведения о спаме будут показаны в том порядке, как обрабатываются "
+"заголовки письма. Иногда это занимает какое-то время. Прочитайте "
+"информацию и подтвердите отправку отчёта, если вас всё устраивает. "
+"Дальше перейдите в папку Входящие и удалите спам."
+
+msgid ""
+"<b>For more information</b> about SpamCop, it's services, spam in general, "
+"and many related topics, try reading through SpamCop's <a href=\"http://"
+"spamcop.net/help.shtml\">Help and Feedback</a> section."
+msgstr ""
+"Подробнее о SpamCop и доступных мерах по борьбе со спамом "
+"прочитайте на сайте SpamCop в разделе <a href=\"http://"
+"spamcop.net/help.shtml\">Help and Feedback</a>."
+
 msgid "Report as Spam"
 msgstr "Сообщить о спаме"
 
 msgid "SpamCop - Spam Reporting"
-msgstr "SpamCop - спамоловка"
+msgstr "SpamCop - борьба со спамом"
 
 msgid ""
 "Help fight the battle against unsolicited email.  SpamCop reads the spam "
@@ -2886,6 +3153,17 @@ msgid ""
 msgstr ""
 "Помощь в борьбе с мусорными письмами.  SpamCop читает заголовки спама и "
 "определяет, куда перенаправлять сообщения о них.  Быстро, удобно и правильно."
+
+msgid ""
+"Sending this spam report will give you back a reply with URLs that you can "
+"click on to properly report this spam message to the proper authorities. "
+"This is a free service.  By pressing the \"Send Spam Report\" button, you "
+"agree to follow SpamCop's rules/terms of service/etc."
+msgstr ""
+"При отправке сообщения об спаме вам придёт письмо со ссылкой, "
+"которая позволит отправить отчёт по надлежащим адресам. "
+"Отправляя этот отчёт, вы тем самым выражаете согласие с "
+"правилами и условиями сервиса SpamCop."
 
 msgid "SpellChecker Options"
 msgstr "Параметры проверки правописания"
@@ -3453,4 +3731,7 @@ msgstr "Сообщение об ошибке при доставке"
 
 msgid "Undelivered Message Headers"
 msgstr "Заголовки недоставленного сообщения"
+
+#~ msgid "refresh unseen/total info"
+#~ msgstr "обновить сведения"
 
