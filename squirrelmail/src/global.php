@@ -31,4 +31,25 @@ if ( (float)substr(PHP_VERSION,0,3) < 4.1 ) {
   $_SERVER  =& $HTTP_SERVER_VARS;
   $_SESSION =& $HTTP_SESSION_VARS;
 }
+
+function sqsession_register ($var, $name) {
+    $rg = ini_get('register_globals');
+    if ( (float)substr(PHP_VERSION,0,3) < 4.1 && empty($rg)) {
+        global $HTTP_SESSION_VARS;
+        $HTTP_SESSION_VARS["$name"] = $var;
+    }
+    else {
+        session_register("$name");
+    }
+}
+function sqsession_unregister ($name) {
+    $rg = ini_get('register_globals');
+    if ( (float)substr(PHP_VERSION,0,3) < 4.1 && empty($rg)) {
+    global $HTTP_SESSION_VARS;
+        unset($HTTP_SESSION_VARS["$name"]);
+    }
+    else {
+        session_unregister("$name");
+    }
+}
 ?>
