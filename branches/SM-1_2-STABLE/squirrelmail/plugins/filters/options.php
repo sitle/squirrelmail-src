@@ -35,8 +35,22 @@
 
    displayPageHeader($color, 'None');
 
-   if (isset($filter_submit)) {
-      if (!isset($theid)) $theid = 0;
+   if(isset($_GET['action'])) {
+       $action = $_GET['action'];
+   }
+
+   if (isset($_POST['filter_submit'])) {
+      if(isset($_GET['theid'])) {
+          $theid = $_GET['theid'];
+      } elseif (isset($_POST['theid'])) {
+          $theid = $_POST['theid'];
+      } else {
+          $theid = 0;
+      }
+      $filter_what   = $_POST['filter_what'];
+      $filter_where  = $_POST['filter_where'];
+      $filter_folder = $_POST['filter_folder'];
+
       $filter_what = ereg_replace(",", " ", $filter_what);
       $filter_what = str_replace("\\\\", "\\", $filter_what);
       $filter_what = str_replace("\\\"", "\"", $filter_what);
@@ -56,9 +70,9 @@
       filter_swap($theid, $theid - 1);
    } elseif (isset($action) && $action == 'move_down') {
       filter_swap($theid, $theid + 1);
-   } elseif (isset($user_submit)) {
+   } elseif (isset($_POST['user_submit'])) {
+       setPref($data_dir, $username, 'filters_user_scan', $_POST['filters_user_scan_set']);
        echo "<br><center><b>"._("Saved Scan type")."</b></center>\n";
-       setPref($data_dir, $username, 'filters_user_scan', $filters_user_scan_set);
    }
 
    $filters = load_filters();
@@ -97,6 +111,9 @@
         '</a>] - [<a href="../../src/options.php">' . _("Done") . '</a>]</center><br>';
 
     if (isset($action) && ($action == 'add' || $action == 'edit')) {
+        $username = $_SESSION['username'];
+        $key = $_COOKIE['key'];
+
         $imapConnection = sqimap_login($username, $key, $imapServerAddress, $imapPort, 0);
         $boxes = sqimap_mailbox_list($imapConnection);
         sqimap_logout($imapConnection);
