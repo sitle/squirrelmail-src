@@ -27,6 +27,18 @@ $default_charset = strtoupper($default_charset);
 displayPageHeader($color, 'None');
 $mailbox = 'INBOX';
 
+/**
+ * testing installation
+ *
+ * prevent use of plugin if it is not enabled
+ */
+if (! is_plugin_enabled('info')) {
+    echo '<p align="center"><big>'.
+        _("Plugin is disabled.").
+        '</big></p></body></html>';
+    exit;
+}
+
 /* GLOBALS */
 sqgetGlobalVar('username', $username, SQ_SESSION);     
 sqgetGlobalVar('key', $key, SQ_COOKIE);     
@@ -71,11 +83,11 @@ print "</TD></TR><TR><TD>\n";
 if (!isset($submit) || $submit == 'default') {
     print "<br><small><font color=".$color[6].">Select the IMAP commands you would like to run.
         Most commands require a selected mailbox so the SELECT-command is already setup.
-	You can clear all the commands and test your own IMAP command strings. The
-	commands are executed in order. The default values are simple IMAP commands using
-	your default_charset and folder_prefix from SquirrelMail when needed.<br><br>
-	<b><center>NOTE: These commands are live, any changes made will effect your current
-	email account.</b></center></font></small><br>\n";
+        You can clear all the commands and test your own IMAP command strings. The
+        commands are executed in order. The default values are simple IMAP commands using
+        your default_charset and folder_prefix from SquirrelMail when needed.<br><br>
+        <b><center>NOTE: These commands are live, any changes made will effect your current
+        email account.</b></center></font></small><br>\n";
     if (!isset($submit)) {
         $submit = '';
     }
@@ -135,10 +147,10 @@ foreach($type as $index=>$value) {
 
 print "</TD></TR></TABLE></CENTER><BR>\n";
 print "<center>".
-	addSubmit('submit','submit').
-	addSubmit('clear','submit').
-	addSubmit('default','submit').
-	"</center><br>\n";
+addSubmit('submit','submit').
+addSubmit('clear','submit').
+addSubmit('default','submit').
+"</center><br>\n";
 
 $tests = array();
 
