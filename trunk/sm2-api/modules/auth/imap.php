@@ -17,9 +17,9 @@ class ZkMod_auth_imap {
     var $ver = '$Id$';
     var $name = 'auth/imap';
 
-    var $srv;	// backward pointer to the service
-    var $info;	// cargo
-    var $banner; // Server banner
+    var $srv;	  // backward pointer to the service
+    var $info;	  // cargo
+    var $banner;  // Server banner
     
     /**
      * Create a new ZkMod_auth_test with the given options.
@@ -42,14 +42,20 @@ class ZkMod_auth_imap {
 
         if( is_array( $this->srv->connector ) ) {
             
+            if( $this->srv->connector['timeout'] == '' ) {
+                $timeout = 15;
+            } else {
+                $timeout = $this->srv->connector['timeout'];
+            }
+            
             $sp = fsockopen( $this->srv->connector['host'], 
                              $this->srv->connector['port'],
                              $error_number, $error_string, 
-                             $this->srv->connector['timeout'] );
+                             $timeout );
             
             $this->info = "<b>Imap Session</b><br>";
             if( $sp ) {        
-                socket_set_timeout( $sp, $this->srv->connector['timeout'] );
+                socket_set_timeout( $sp, $timeout );
                 $ret = TRUE;
                 $this->banner = fgets( $sp, 1024 );
                 // Check compatibilities in here
@@ -58,6 +64,7 @@ class ZkMod_auth_imap {
                                      '" "' . quoteIMAP($password) . '"' );
                 $this->query( $sp, 'LOGOUT' );
             } else {
+                $this->info = 'Could not connect.';
                 $ret = FALSE;
             }
             
@@ -82,14 +89,14 @@ class ZkMod_auth_imap {
         
         fputs( $sp, $isid . ' ' . $cmd . "\r\n" );
         
-        while( !eregi( ".*$a[1]-", 'OK-BAD-NO-' ) && $buffer <> '' ) {
+        while( !eregi( ".*$a[1]-", 'OK-BAD-NO-' ) && 
+               $buffer <> '' ) {
             $buffer = fgets( $sp, 1024 );
             $a = explode( ' ', $buffer );
             $this->info .= $buffer . '<br>';
         }
         
         $this->info .= '</p>';
-        
         return( $a[1] == 'OK' );
     }    
     
