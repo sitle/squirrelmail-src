@@ -12,7 +12,7 @@
 define('USERADMINTHINGID',2048373394);
 $HARDTHING[USERADMINTHINGID]['func'] = 'sqmuseradmin';
 $HARDTHING[USERADMINTHINGID]['title'] = 'Registered Users';
-$HARDTHING[USERADMINTHINGID]['lastmodified'] = filemtime(__FILE__);
+$HARDTHING[USERADMINTHINGID]['lastmodified'] = '$Date$';
 
 $FORMAT = array_merge($FORMAT, array(
     'user_list' => '<table border="0" cellspacing="3" cellpadding="0">' . "\n",
