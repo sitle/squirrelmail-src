@@ -143,7 +143,7 @@ function sqimap_read_data ($imap_stream, $pre, $handle_errors, &$response, &$mes
  * will be displayed.  This function returns the imap connection handle.
  */
 function sqimap_login ($username, $password, $imap_server_address, $imap_port, $hide) {
-    global $color, $squirrelmail_language, $HTTP_ACCEPT_LANGUAGE, $onetimepad;
+    global $color, $squirrelmail_language, $onetimepad;
 
     $imap_stream = fsockopen ( $imap_server_address, $imap_port, $error_number, $error_string, 15);
     if ( !$imap_stream ) {
