@@ -59,6 +59,8 @@ sqimap_messages_delete($imapConnection, $message, $message, $mailbox);
 if ($auto_expunge) {
     sqimap_mailbox_expunge($imapConnection, $mailbox, true);
 }
+sqimap_logout($imapConnection);
+
 if (!isset($saved_draft)) {
     $saved_draft = '';
 }
@@ -82,6 +84,5 @@ if (isset($where) && isset($what)) {
     }
 }
 
-sqimap_logout($imapConnection);
 
 ?>
