@@ -12,6 +12,10 @@
  * $Id$
  */
 
+if (isset($_GET['emailaddress'])) {
+    $emailaddress = $_GET['emailaddress'];
+}
+
 $rcptaddress = '';
 if (isset($emailaddress)) {
     if (stristr($emailaddress, 'mailto:')) {
