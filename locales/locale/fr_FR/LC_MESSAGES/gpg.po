@@ -101,7 +101,7 @@ msgstr "Retourner aux options principales de Squirrelmail"
 #: modules/cachepass.mod:38 modules/keyring_main.php:133
 #: modules/keyring_main.php:160
 msgid "Bad Passphrase."
-msgstr "Mauvaise phrase de passe"
+msgstr "Mauvais mot de passe étendu."
 
 #: gpg_hook_functions.php:164
 msgid "Bad Signature"
@@ -134,9 +134,9 @@ msgid ""
 "recommend against storing the passphrase on the server because it may be "
 "more susceptible to an attack."
 msgstr ""
-"Mémoriser la phrase de passe peut être pratique, cependant beaucoup "
-"d'experts en sécurité recommendent de ne pas conserver votre phrase de passe "
-"sur le serveur, car elle serait dès lors plus exposée à une attaque."
+"Mémoriser le mot de passe étendu peut être pratique, cependant beaucoup "
+"d'experts en sécurité recommendent de ne pas conserver votre mot de passe "
+"sur le serveur, car il serait dès lors plus exposé à une attaque."
 
 #: modules/changepass.php:101 modules/general.mod:334 modules/genkey.php:293
 #: modules/import_key_file.php:78 modules/import_key_text.php:90
@@ -146,7 +146,7 @@ msgstr "Annuler"
 
 #: modules/keyring_main.php:103
 msgid "Cannot change passphrase on key: "
-msgstr "Impossible de changer la phrase de passe de la clé : "
+msgstr "Impossible de changer le mot de passe étendu de la clé : "
 
 #: modules/gpgdecrypt.mod:579
 msgid "Cc"
@@ -154,7 +154,7 @@ msgstr "CC"
 
 #: modules/changepass.php:14 modules/changepass.php:100
 msgid "Change Passphrase"
-msgstr "Changer la phrase de passe"
+msgstr "Changer le mot de passe étendu"
 
 #: modules/keyserver.mod:81
 msgid "Choose a Key to Import"
@@ -173,7 +173,7 @@ msgid ""
 "Choosing a good passphrase is one of the most important tasks for secure "
 "communications."
 msgstr ""
-"Choisir une bonne phrase de passe est une des tâches les plus importantes "
+"Choisir un bon mot de passe étendu est une des tâches les plus importantes "
 "pour obtenir un communication sécurisée."
 
 #: modules/passpop.mod:148
@@ -294,7 +294,7 @@ msgstr ""
 
 #: modules/general.mod:314
 msgid "Do you want the system to cache your passphrase?"
-msgstr "Voulez-vous que le système mémorise votre phrase de passe ?"
+msgstr "Voulez-vous que le système mémorise votre mot de passe étendu ?"
 
 #: modules/general.mod:245
 msgid ""
@@ -362,11 +362,11 @@ msgstr "Options de cryptage - Comment démarrer"
 
 #: modules/changepass.php:67
 msgid "Enter New Passphrase:"
-msgstr "Entrer la nouvelle phrase de passe"
+msgstr "Entrer le nouveau mot de passe étendu :"
 
 #: gpg_decrypt_attach.php:229 modules/genkey.php:253 modules/passpop.mod:133
 msgid "Enter Passphrase"
-msgstr "Entrer la phrase de passe"
+msgstr "Entrer le mot de passe étendu"
 
 #: modules/keyserver.mod:66
 msgid "Enter Search text below to search for a key to import"
@@ -578,7 +578,7 @@ msgstr "Signature valide"
 
 #: help/what_passphrase.php:15
 msgid "Here are a few tips on choosing a good passphrase:"
-msgstr "Voici quelques astuces pour choisir une bonne phrase de passe :"
+msgstr "Voici quelques astuces pour choisir un bon mot de passe étendu :"
 
 #: gpg_encrypt.php:203
 msgid "Here are the keys which GPG reported as missing:"
@@ -596,7 +596,7 @@ msgstr ""
 
 #: help/base.php:19 help/what_passphrase.php:5
 msgid "How do I choose a passphrase?"
-msgstr "Comment choisir une phrase de passe?"
+msgstr "Comment choisir un mot de passe étendu ?"
 
 #: modules/keyview.php:65
 msgid "ID"
@@ -630,9 +630,9 @@ msgid ""
 "should consider writing it down until you are comfortable that you will not "
 "forget it."
 msgstr ""
-"Si vous créez une nouvelle phrase de passe que vous n'avez jamais utilisée "
-"auparavant, vous devriez l'écrire jusqu'à ce que vous soyez certain de ne "
-"pas l'oublier."
+"Si vous inventez un nouveau mot de passe étendu que vous n'avez jamais utilisé "
+"auparavant, vous devriez le noter quelque part jusqu'à ce que vous soyez "
+"certain de ne pas l'oublier."
 
 #: help/what_trusted.php:26
 msgid ""
@@ -648,8 +648,8 @@ msgid ""
 "If you choose to cache your passphrase, your passphrase will be stored on "
 "the Web Mail server in secure storage for use by you while you are logged in."
 msgstr ""
-"Si vous choisissez d'antémémoriser votre phrase de passe, celle-ci sera "
-"conservée sur le serveur web dans un endroit sécurisé et vous pourrez "
+"Si vous choisissez de mémoriser votre mot de passe étendu, celui-ci sera "
+"conservé sur le serveur web dans un endroit sécurisé et vous pourrez "
 "l'utiliser pendant toute la durée de votre connexion avec SquirrelMail."
 
 #: help/what_passphrase.php:28
@@ -658,9 +658,9 @@ msgid ""
 "store it, and destroy your paper copy as soon as you are sure that you will "
 "remember your passphrase."
 msgstr ""
-"Si vous choisissez d'écrire votre phrase de passe, assurez-vous de placer le "
-"document dans un endroit sûr et de le détruire dès que vous serez certain de "
-"ne pas l'oublier."
+"Si vous choisissez de noter votre mot de passe étendu, faites attention à "
+"l'endroit où vous le mettez, et détruisez sa copie papier dès que vous "
+"serez certain de ne plus l'oublier."
 
 #: gpg_key_functions.php:389
 msgid ""
@@ -694,7 +694,7 @@ msgid ""
 "If you forget your passphrase, you will not be able to decrypt messages "
 "encrypted with this public key."
 msgstr ""
-"Si vous oubliez votre phrase de passe, vous ne pourrez plus décrypter les "
+"Si vous oubliez votre mot de passe étendu, vous ne pourrez plus décrypter les "
 "messages qui auront été cryptés avec cette clé publique."
 
 #: modules/getstart.php:132
@@ -750,7 +750,7 @@ msgid ""
 "If you selected 'Yes', what is the email address you would like to encrypt "
 "to:"
 msgstr ""
-"Si vous choisissez 'Oui', quelle est l'adresse email vers qui vous voulez "
+"Si vous choisissez 'Oui', indiquez l'adresse email vers laquelle vous voulez "
 "crypter :"
 
 #: modules/general.mod:214
@@ -758,7 +758,7 @@ msgid ""
 "If you set one of these options below, you will have the opportunity on the "
 "Compose page to turn it off on a message by message basis."
 msgstr ""
-"Si vous cochez une des options ci-dessous, vous pourrez toujours choisir de "
+"Si vous cochez l'une des options ci-dessous, vous pourrez toujours choisir de "
 "ne pas l'appliquer dans la page de Composition de message."
 
 #: modules/general.mod:154
@@ -815,7 +815,7 @@ msgstr ""
 
 #: modules/import_key_file.php:41
 msgid "Import ASCII-Armored Key Text to Keyring"
-msgstr "Importer une clé ASCII dans le trousseau"
+msgstr "Importer une clé 'ASCII-Armored' dans le trousseau"
 
 #: modules/keyserver.mod:152
 msgid "Import Key"
@@ -996,7 +996,7 @@ msgstr "Aucun fichier envoyé."
 
 #: modules/keyring_main.php:118
 msgid "No old passphrase passed.  Possibly blank password?"
-msgstr "Pas d'ancienne phrase de passe. Peut-être un mot de passe vide ?"
+msgstr "Pas d'ancien mot de passe étendu. Peut-être un mot de passe vide ?"
 
 #: modules/keyring_main.php:156
 msgid "No secret key found."
@@ -1020,11 +1020,11 @@ msgstr "Option de cryptage partiel par récipient"
 
 #: modules/genkey_keygen.php:129
 msgid "Passphrase"
-msgstr "Phrase de passe"
+msgstr "Mot de passe étendu"
 
 #: modules/general.mod:301
 msgid "Passphrase Caching"
-msgstr "Mémorisation de la phrase de passe"
+msgstr "Mémorisation du mot de passe étendu"
 
 #: modules/import_key_text.php:79
 msgid "Paste one or more ASCII-armored keys below:"
@@ -1046,7 +1046,7 @@ msgstr ""
 #: modules/options_main.mod:31
 msgid "Please choose the GPG Encryption Plugin options you wish to set up:"
 msgstr ""
-"Merci de choisir les options du Plugin de cryptage GPG que vous souhaitez "
+"Veuillez choisir les options du Plugin de cryptage GPG que vous souhaitez "
 "régler :"
 
 #: modules/keyring_main.php:548
@@ -1069,7 +1069,7 @@ msgstr "Veuillez réessayer."
 
 #: modules/changepass.php:53
 msgid "Please type your old passphrase: "
-msgstr "Merci de saisir votre ancienne phrase de passe : "
+msgstr "Veuillez saisir votre ancien mot de passe étendu : "
 
 #: modules/gpgdecrypt.mod:266 modules/gpgdecrypt.mod:272
 #: modules/gpgdecrypt.mod:274 modules/keyring_main_chunk.php:38
@@ -1100,7 +1100,7 @@ msgstr "Reçu"
 #: modules/keyview.php:91
 msgid "Remove this key from your keyring?  This action cannot be undone!"
 msgstr ""
-"Enlever cette clé de votre trousseau ? Cette action ne peut être annulée!"
+"Enlever cette clé de votre trousseau ? Cette action ne peut être annulée !"
 
 #: modules/gpgdecrypt.mod:327
 msgid "Reply"
@@ -1124,11 +1124,11 @@ msgstr "Reprendre le brouillon"
 
 #: modules/changepass.php:84
 msgid "Retype New Passphrase:"
-msgstr "Retaper la nouvelle phrase de passe :"
+msgstr "Retapez le nouveau mot de passe étendu :"
 
 #: modules/genkey.php:271
 msgid "Retype Passphrase"
-msgstr "Retaper la phrase de passe"
+msgstr "Retapez le mot de passe étendu"
 
 #: gpg_key_functions.php:867 modules/genkey.php:47
 #: modules/genkey_keygen.php:53
@@ -1138,7 +1138,7 @@ msgstr "Une connexion SSL est requise pour générer une paire de clés."
 #: gpg_encrypt_functions.php:81 gpg_encrypt_functions.php:370
 msgid "SSL connection required to use passphrase functions."
 msgstr ""
-"Une connexion SSL est requise pour utiliser les fonctions de phrase de passe."
+"Vous devez être connecté en SSL pour pouvoir utiliser les fonctions de mot de passe étendu."
 
 #: modules/general.mod:333 modules/keyview.php:160
 msgid "Save"
@@ -1277,7 +1277,7 @@ msgstr "Envoyer"
 
 #: modules/genkey_keygen.php:249
 msgid "Success!"
-msgstr "Réussi!"
+msgstr "Réussi !"
 
 #: modules/keyring_main.php:388
 msgid "System Keyring"
@@ -1293,7 +1293,7 @@ msgid ""
 "messages in accordance with the OpenPGP standard for email security and "
 "authentication."
 msgstr ""
-"Le Plugin de cryptage GPG vous permettra de crypter, signer et décrypter vos "
+"Le Plugin de cryptage GPG permet de crypter, signer et décrypter vos "
 "messages suivant le standard OpenPGP pour la sécurité du courrier et "
 "l'authentification."
 
@@ -1346,7 +1346,7 @@ msgid ""
 "The system has the ability to cache (store) the passphrase for your secret "
 "key."
 msgstr ""
-"Le système peut mémoriser (conserver) la phrase de passe de votre clé "
+"Le système peut mémoriser (conserver) le mot de passe étendu de votre clé "
 "secrète."
 
 #: modules/keyring_main.php:537
@@ -1430,7 +1430,7 @@ msgid ""
 "This page provides links to external resources about the technologies used "
 "by the GPG Plugin."
 msgstr ""
-"Cette page contient des liens vers des resources externes en relation avec "
+"Cette page fournit des liens vers des ressources externes en relation avec "
 "les technologies utilisées par le Plugin GPG."
 
 #: modules/general.mod:216
@@ -1514,7 +1514,7 @@ msgstr ""
 
 #: help/base.php:39 help/troubleshooting.php:3
 msgid "Troubleshooting"
-msgstr "Dépannage"
+msgstr "En cas de problèmes (en anglais)"
 
 #: gpg_key_functions.php:466
 msgid "Unable to connect to the keyserver you specified."
@@ -1632,7 +1632,7 @@ msgstr "Bienvenue au Plugin de cryptage GPG pour Squirrelmail !"
 
 #: help/what_keystrength.php:5
 msgid "What is Key Strength?"
-msgstr "Qu'est-ce que la 'force d'une clé' ?"
+msgstr "Qu'est-ce que la 'force' d'une clé ?"
 
 # FIXME: should be merged with the same text below
 #: help/base.php:24
@@ -1654,7 +1654,7 @@ msgstr "Qu'est-ce qu'une 'clé de confiance' ?"
 
 #: help/base.php:14
 msgid "What is a good key strength?"
-msgstr "Quelle est la bonne 'force d'une clé' ?"
+msgstr "Quelle est la bonne 'force' d'une clé ?"
 
 #: modules/genkey.php:182 modules/keyview.php:205 modules/keyview.php:219
 msgid "What's this?"
@@ -1724,8 +1724,8 @@ msgid ""
 "You can change your passphrase from this screen.  More help will be "
 "available in the future."
 msgstr ""
-"Vous pouvez changer votre phrase de passe depuis cet écran.  Plus "
-"d'assistance seradisponible dans l'avenir."
+"Vous pouvez changer votre mot de passe étendu depuis cet écran.  Plus "
+"d'aide sera disponible dans l'avenir."
 
 #: help/what_signing.php:10 modules/getstart.php:121
 msgid "You can only have one signing key at any given time."
@@ -1741,14 +1741,14 @@ msgstr "En ce moment vous faites confiance à la clé :"
 
 #: gpg_encrypt_functions.php:454
 msgid "You did not provide a passphrase!"
-msgstr "Vous n'avez pas fourni de phrase de passe!"
+msgstr "Vous n'avez pas fourni de mot de passe étendu !"
 
 #: gpg_sign_functions.php:260
 msgid ""
 "You did not provide a passphrase! Please right-click and select 'Back' and "
 "try again"
 msgstr ""
-"Vous n'avez pas fourni de phrase de passe ! Cliquez avec le bouton droit, "
+"Vous n'avez pas fourni de mot de passe étendu ! Cliquez avec le bouton droit, "
 "selectionnez 'Précédent' puis réessayez"
 
 #: gpg_encrypt.php:202
@@ -1829,7 +1829,7 @@ msgstr ""
 #: modules/general.mod:431
 msgid "Your Preference to cache your passphrase has been saved."
 msgstr ""
-"Votre choix de mémoriser votre phrase de passe sur le serveur a été "
+"Votre choix de mémoriser votre mot de passe étendu sur le serveur a été "
 "sauvegardé."
 
 #: modules/general.mod:364
@@ -1851,7 +1851,7 @@ msgstr "Votre choix de ne pas permettre le cryptage partiel a été sauvegardé."
 #: modules/general.mod:434
 msgid "Your Preference to not cache your passphrase has been saved."
 msgstr ""
-"Votre choix de ne pas mémoriser votre phrase de passe sur le serveur a été "
+"Votre choix de ne pas mémoriser votre mot de passe étendu sur le serveur a été "
 "sauvegardé."
 
 #: modules/general.mod:367
@@ -1909,7 +1909,7 @@ msgstr ""
 #: modules/general.mod:437
 msgid "Your cached passphrase has been securely erased."
 msgstr ""
-"La phrase de passe conservée sur le serveur a été effacée de façon sécurisée."
+"Le mot de passe étendu stocké sur le serveur a été effacé de façon sécurisée."
 
 #: gpg_key_functions.php:346
 msgid "Your current signing key: "
@@ -1942,8 +1942,8 @@ msgid ""
 "Your secret passphrase should be as long as possible and easy for you to "
 "remember, but hard for someone else to guess."
 msgstr ""
-"Votre phrase de passe secrète devrait être aussi longue que possible et "
-"facile à se rappeler, mais difficile à deviner par quelqu'un d'autre."
+"Votre mot de passe étendu secret devrait être aussi long que possible, "
+"facile à se rappeler pour vous, mais difficile à deviner par quelqu'un d'autre."
 
 #: modules/getstart.php:119
 msgid ""
