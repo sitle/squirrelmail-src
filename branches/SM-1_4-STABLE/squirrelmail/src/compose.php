@@ -1331,7 +1331,7 @@ function deliverMessage($composeMessage, $draft=false) {
     global $send_to, $send_to_cc, $send_to_bcc, $mailprio, $subject, $body,
            $username, $popuser, $usernamedata, $identity, $data_dir,
            $request_mdn, $request_dr, $default_charset, $color, $useSendmail,
-           $domain, $action, $default_move_to_sent, $move_to_sent;
+           $domain, $action, $default_move_to_sent, $move_to_sent, $sent_folder;
     global $imapServerAddress, $imapPort, $sent_folder, $key;
 
     /* some browsers replace <space> by nonbreaking spaces &nbsp;
@@ -1496,13 +1496,34 @@ function deliverMessage($composeMessage, $draft=false) {
         unset ($deliver);
         $move_to_sent = getPref($data_dir,$username,'move_to_sent');
         $imap_stream = sqimap_login($username, $key, $imapServerAddress, $imapPort, 0);
-        if (sqimap_mailbox_exists ($imap_stream, $sent_folder) && ((isset($move_to_sent) && $move_to_sent) ||
-           (isset($default_move_to_sent) && $default_move_to_sent))) {
-                sqimap_append ($imap_stream, $sent_folder, $length);
+
+
+        /* Move to sent code */
+        if (isset($default_move_to_sent) && ($default_move_to_sent != 0)) {
+            $svr_allow_sent = true;
+        } else {
+            $svr_allow_sent = false;
+        }
+
+        if (isset($sent_folder) && (($sent_folder != '') || ($sent_folder != 'none')) 
+           && sqimap_mailbox_exists( $imap_stream, $sent_folder)) {
+            $fld_sent = true;
+        } else {
+            $fld_sent = false;
+        }
+
+        if ((isset($move_to_sent) && ($move_to_sent != 0)) || (!isset($move_to_sent))) {
+            $lcl_allow_sent = true;
+        } else {
+            $lcl_allow_sent = false;
+        }
+
+        if (($fld_sent && $svr_allow_sent && !$lcl_allow_sent) || ($fld_sent && $lcl_allow_sent)) {
+            sqimap_append ($imap_stream, $sent_folder, $length);
             require_once(SM_PATH . 'class/deliver/Deliver_IMAP.class.php');
             $imap_deliver = new Deliver_IMAP();
             $imap_deliver->mail($composeMessage, $imap_stream);
-                sqimap_append_done ($imap_stream, $sent_folder);
+            sqimap_append_done ($imap_stream, $sent_folder);
             unset ($imap_deliver);
         }
         global $passed_id, $mailbox, $action;
@@ -1511,7 +1532,7 @@ function deliverMessage($composeMessage, $draft=false) {
             sqimap_mailbox_select ($imap_stream, $mailbox);
             sqimap_messages_flag ($imap_stream, $passed_id, $passed_id, 'Answered', true);
         }
-            sqimap_logout($imap_stream);        
+        sqimap_logout($imap_stream);        
     }
     return $succes;
 }
