@@ -41,15 +41,16 @@ Version 1.4.5 - CVS
     image.
   - Empty src attribute on img tags causes logouts (IE only), replacing
     string with blank.png.
-  - Added configurable reply prefix to display options.
+  - Added configurable reply prefix (default: ">") to display options.
   - Give an error to the user when SquirrelMail is not configured yet
     (instead of "failed to include config.php").
-  - Fixed bug #1124764, view unsafe images inside printer friendly view.
-  - Fixed bug #1032366, remove NUL characters in text attachments on sent.
-  - Re-introduced mailto: handling.
-  - Removed INBOX as a mailbox option in filters plugin.  Fixes bug #801060.
+  - Fixed display of unsafe images in printer friendly view (#1124764).
+  - Remove NUL characters in text attachment on send (#1032366).
+  - Re-introduced "mailto:"-handling.
+  - Removed INBOX as a mailbox option in filters plugin. Fixes bug #801060.
   - Disable rewrapping of a forwarded message: this messes up reply-texts
     and a forwarded message should not be altered unneccessary (#1151047).
+  - Fix wrong path to mailout.php in listcommands plugin.
 
 Version 1.4.4 - 21 January 2005
 -------------------------------
