@@ -350,9 +350,13 @@ function sqimap_read_data_list ($imap_stream, $tag_uid, $handle_errors,
         require_once(SM_PATH . 'functions/display_messages.php');
         $string = "<b><font color=$color[2]>\n" .
                   _("ERROR : Connection dropped by imap-server.") .
-                  "</b><br>\n" .
-                  _("Query:") . ' '.
-                  htmlspecialchars($query) . '<br>' . "</font><br>\n";
+                  "</b><br>\n";
+        $cmd = explode(' ',$query);
+        $cmd = strtolower($cmd[0]);
+        if ($query != '' &&  $cmd != 'login') {
+            $string .= ("Query:") . ' '. htmlspecialchars($query)
+            . '<br>' . "</font><br>\n";
+        }
         error_box($string,$color);    
         exit;
     }
