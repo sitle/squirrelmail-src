@@ -91,17 +91,17 @@ class ZkLoader {
         $modfile  = "$this->modhome/$svcname/$modname.php";
         $modclass = "ZkMod_$svcname" . "_$modname";
         
-            /* Do some checks on the module name, then load the module file. */
-            if (!zkCheckName($modname)) {
-                return (false);
-            } else if (!file_exists($modfile)) {
-                return (false);
-            } else {
-                require_once($modfile);
-            }
+        /* Do some checks on the module name, then load the module file. */
+        if (!zkCheckName($modname)) {
+            return (false);
+        } else if (!file_exists($modfile)) {
+            return (false);
+        } else {
+            require_once($modfile);
+        }
 
         /* Run the module load code string. */
-            $code_loadmodule = "\$module = new $modclass(\$options);";
+        $code_loadmodule = "\$module = new $modclass(\$options);";
         eval($code_loadmodule);
         
         echo "<tt>";
