@@ -31,9 +31,11 @@ if ( !empty($t['create_list']) )
 ?>
 <h3><?php echo _("Create New Resource"); ?></h3>
 <table>
-<?php foreach ( $create_list as $name => $desc )
+<?php $glue = ( strpos($uri, '?') === FALSE ) ? '?' : '&amp;';
+
+      foreach ( $create_list as $name => $desc )
       { 
-        $url = $uri.'&amp;class='.$name;
+        $url = $uri.$glue.'class='.$name;
 ?>
   <tr>
     <td class="heading"><a href="<?php echo $url; ?>"><?php echo $name; ?></a></td>
