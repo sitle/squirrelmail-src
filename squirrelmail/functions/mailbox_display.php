@@ -94,12 +94,10 @@ function printMessageInfo($imapConnection, $t, $not_last=true, $key, $mailbox,
             }
         }
     }
-    // this will make the sendername wrappeble 
     $senderName = str_replace('&nbsp;',' ',$senderName);
-
     $msg['SUBJECT'] = decodeHeader($msg['SUBJECT']);
     $subject = processSubject($msg['SUBJECT'], $indent_array[$msg['ID']]);
-    
+    $subject = str_replace('&nbsp;',' ',$subject);    
     echo html_tag( 'tr','','','','VALIGN="top"') . "\n";
 
     if (isset($msg['FLAG_FLAGGED']) && ($msg['FLAG_FLAGGED'] == true)) {
@@ -322,6 +320,9 @@ function getSelfSortMessages($imapConnection, $start_msg, $show_num,
         if ($sort < 6 ) {
             $end = $num_msgs;
             $end_loop = $end;
+	    /* set shownum to 999999 to fool sqimap_get_small_header_list
+	       and rebuild the msgs_str to 1:* */
+	    $show_num = 999999;
         } else {
             /* if it's not sorted */
             if ($start_msg + ($show_num - 1) < $num_msgs) {
@@ -413,8 +414,13 @@ function showMessagesForMailbox($imapConnection, $mailbox, $num_msgs,
             $mode = '';
         }
 
-        sqsession_unregister('msort');
-        sqsession_unregister('msgs');
+	if ($use_cache) {
+	    sqgetGlobalVar('msgs', $msgs, SQ_SESSION);
+	    sqgetGlobalVar('msort', $msort, SQ_SESSION);
+	} else {
+    	    sqsession_unregister('msort');
+    	    sqsession_unregister('msgs');
+	}
         switch ($mode) {
             case 'thread':
                 $id   = get_thread_sort($imapConnection);
@@ -456,6 +462,7 @@ function showMessagesForMailbox($imapConnection, $mailbox, $num_msgs,
         } // switch
         sqsession_register($msort, 'msort');
         sqsession_register($msgs,  'msgs');
+
     } /* if exists > 0 */
 
     $res = getEndMessage($start_msg, $show_num, $num_msgs);
@@ -668,7 +675,9 @@ function mail_message_listing_beginning ($imapConnection,
      * This is the beginning of the message list table.
      * It wraps around all messages
      */
-    echo '<form name="messageList" method="post" action="move_messages.php">' ."\n"
+    $safe_name = preg_replace("/[^0-9A-Za-z_]/", '_', $mailbox);
+    $form_name = "FormMsgs" . $safe_name;
+    echo '<form name="' . $form_name . '" method="post" action="move_messages.php">' ."\n"
 	. $moveFields
         . html_tag( 'table' ,
             html_tag( 'tr',
@@ -874,18 +883,22 @@ function get_selectall_link($start_msg, $sort) {
 
     $result = '';
     if ($javascript_on) {
+        $safe_name = preg_replace("/[^0-9A-Za-z_]/", '_', $mailbox);
+        $func_name = "CheckAll" . $safe_name;
+        $form_name = "FormMsgs" . $safe_name;
         $result = '<script language="JavaScript" type="text/javascript">'
                 . "\n<!-- \n"
-                . "function CheckAll() {\n"
-                . "  for (var i = 0; i < document.messageList.elements.length; i++) {\n"
-                . "    if(document.messageList.elements[i].type == 'checkbox'){\n"
-                . "      document.messageList.elements[i].checked = "
-                . "        !(document.messageList.elements[i].checked);\n"
+                . "function " . $func_name . "() {\n"
+                . "  for (var i = 0; i < document." . $form_name . ".elements.length; i++) {\n"
+                . "    if(document." . $form_name . ".elements[i].type == 'checkbox'){\n"
+                . "      document." . $form_name . ".elements[i].checked = "
+                . "        !(document." . $form_name . ".elements[i].checked);\n"
                 . "    }\n"
                 . "  }\n"
                 . "}\n"
                 . "//-->\n"
-                . '</script><a href="#" onClick="CheckAll();">' . _("Toggle All")
+                . '</script><a href="javascript:void(0)" onClick="' . $func_name . '();">' . _("Toggle All")
+/*                . '</script><a href="javascript:' . $func_name . '()">' . _("Toggle All")*/
                 . "</a>\n";
     } else {
         if (strpos($PHP_SELF, "?")) {
