@@ -97,7 +97,7 @@ function savePrefValues($data_dir, $username) {
     $filename = getHashedFile($username, $data_dir, "$username.pref");
 
     /* Open the file for writing, or else display an error to the user. */
-    if(!$file = @fopen($filename, 'w')) {
+    if(!$file = @fopen("$filename.tmp", 'w')) {
         include_once( '../functions/display_messages.php' );
         logout_error( sprintf( _("Preference file, %s, could not be opened. Contact your system administrator to resolve this issue."), $filename) );
         exit;
@@ -109,6 +109,8 @@ function savePrefValues($data_dir, $username) {
         }
     }
     fclose($file);
+    copy("$filename.tmp","$filename");
+    unlink("$filename.tmp");
     chmod($filename, 0600);
 }
 
