@@ -1,20 +1,20 @@
+# translation of squirrelmail.po to sloven¹èina
 # SquirrelMail Slovenian Translation
 # Copyright (c) 1999-2002 The Squirrelmail Development Team
-# Tomaz Zupan <tomaz.zupan@orpo.si>, 2001.
+# Tomaz Zupan <tomaz.zupan@orpo.si>, 2001,2003.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: $Id: squirrelmail.po,v 1.1 2003/07/13 10:18:22 tokul Exp "
-"$\n"
+"Project-Id-Version: squirrelmail\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2003-10-05 12:27+0300\n"
-"PO-Revision-Date: 2002-02-07 12:46CET\n"
-"Last-Translator: Toma¾ Zupan <tomaz.zupan@orpo.si>\n"
-"Language-Team: Slven¹èina <squirrelmail-i18n@lists.sourceforge.net>\n"
+"PO-Revision-Date: 2003-09-18 23:41+0200\n"
+"Last-Translator: Tomaz Zupan <tomaz.zupan@orpo.si>\n"
+"Language-Team: sloven¹èina <C@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=ISO-8859-2\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 0.9.5\n"
+"X-Generator: KBabel 1.0.1\n"
 
 msgid "Address Book"
 msgstr "Adresar"
@@ -136,7 +136,7 @@ msgid "who"
 msgstr "kdo"
 
 msgid "Subject"
-msgstr "Naslov"
+msgstr "Zadeva"
 
 msgid "From"
 msgstr "Po¹iljatelj"
@@ -153,13 +153,11 @@ msgstr "Osnutek e-po¹te je shranjen"
 msgid "Could not move/copy file. File not attached"
 msgstr "Ne morem prestaviti/kopirati datoteke. Datoteka ni dodana"
 
-#, fuzzy
 msgid "Draft Saved"
-msgstr "Osnutek e-po¹te je shranjen"
+msgstr "Osnutek je shranjen"
 
-#, fuzzy
 msgid "Your Message has been sent"
-msgstr "Nobeno sporoèilo ni izbrano."
+msgstr "Va¹e sporoèilo je bilo poslano"
 
 msgid "From:"
 msgstr "Po¹iljatelj:"
@@ -174,7 +172,7 @@ msgid "BCC:"
 msgstr "Osebna kopija:"
 
 msgid "Subject:"
-msgstr "Naslov:"
+msgstr "Zadeva:"
 
 msgid "Send"
 msgstr "Po¹lji"
@@ -195,20 +193,19 @@ msgid "High"
 msgstr "Visoka"
 
 msgid "Normal"
-msgstr "Normalna"
+msgstr "Obièajen"
 
 msgid "Low"
 msgstr "Nizka"
 
 msgid "Receipt"
-msgstr ""
+msgstr "Potrdilo"
 
-#, fuzzy
 msgid "On Read"
-msgstr "Beri"
+msgstr "Pri branju"
 
 msgid "On Delivery"
-msgstr ""
+msgstr "Pri dostavi"
 
 msgid "Signature"
 msgstr "Podpis"
@@ -220,9 +217,8 @@ msgid "Save Draft"
 msgstr "Shrani osnutek"
 
 msgid "You have not filled in the \"To:\" field."
-msgstr "Niste izpolnili polja \"Prejemnik:\""
+msgstr "Niste izpolnili polja \"Prejemnik:\"."
 
-#, fuzzy
 msgid "Draft folder"
 msgstr "Mapa Osnutki"
 
@@ -237,14 +233,14 @@ msgid "Click here to go back"
 msgstr "Pritisnite za povratek"
 
 msgid "You have not selected a folder to delete. Please do so."
-msgstr ""
+msgstr "Niste izbrali mape za brisanje. Prosim izberite."
 
 msgid "Delete Folder"
 msgstr "Izbri¹i mapo"
 
-#, fuzzy, c-format
+#, c-format
 msgid "Are you sure you want to delete %s?"
-msgstr "Ali res ¾elite pobrisati ta dogodek?"
+msgstr "Ali res ¾elite pobrisati %s?"
 
 msgid "Yes"
 msgstr "Da"
@@ -271,7 +267,7 @@ msgid "Renamed successfully!"
 msgstr "Preimenovanje uspe¹no!"
 
 msgid "Subscription Unsuccessful - Folder does not exist."
-msgstr ""
+msgstr "Prijava neuspe¹na - Mapa ne obstaja."
 
 msgid "refresh folder list"
 msgstr "osve¾i seznam map"
@@ -283,7 +279,7 @@ msgid "as a subfolder of"
 msgstr "kot podmapa od"
 
 msgid "None"
-msgstr "Noben"
+msgstr "Brez"
 
 msgid "Let this folder contain subfolders"
 msgstr "V tej mapi dovoli podmape"
@@ -294,9 +290,8 @@ msgstr "Kreiraj"
 msgid "Rename a Folder"
 msgstr "Preimenuj mapo"
 
-#, fuzzy
 msgid "Select a folder"
-msgstr "Preimenovanje mape"
+msgstr "Izberite mapo"
 
 msgid "Rename"
 msgstr "Preimenuj"
@@ -319,12 +314,11 @@ msgstr "Ne najdem map, ki bi jih odjavil!"
 msgid "No folders were found to subscribe to!"
 msgstr "Ne najdem map, ki bi jih prijavil!"
 
-#, fuzzy
 msgid "Subscribe to:"
-msgstr "Prijavi"
+msgstr "Prijavi se na:"
 
 msgid "You have not selected a folder to rename. Please do so."
-msgstr ""
+msgstr "Niste izbrali mape za preimenovanje. Prosi izberite."
 
 msgid "Rename a folder"
 msgstr "Preimenovanje mape"
@@ -336,7 +330,7 @@ msgid "Submit"
 msgstr "Po¹lji"
 
 msgid "ERROR: Help files are not in the right format!"
-msgstr ""
+msgstr "NAPAKA: Datoteke za pomoè niso v pravi obliki!"
 
 msgid "Help"
 msgstr "Pomoè"
@@ -345,7 +339,7 @@ msgstr "Pomoè"
 msgid ""
 "The help has not been translated to %s.  It will be displayed in English "
 "instead."
-msgstr "Pomoè ¹e ni prevedena v  %s.,prikazana bo v angle¹èini!"
+msgstr "Pomoè ¹e ni prevedena v  %s.,prikazana bo v angle¹èini."
 
 msgid "Some or all of the help documents are not present!"
 msgstr "Nekateri ali vsi dokumenti pomoèi ne obstajajo!"
@@ -354,7 +348,7 @@ msgid "Table of Contents"
 msgstr "Vsebina"
 
 msgid "Previous"
-msgstr "Predhodno"
+msgstr "Prej¹nje"
 
 msgid "Next"
 msgstr "Naslednje"
@@ -374,7 +368,6 @@ msgstr "Prenesi to kot datoteko"
 msgid "INBOX"
 msgstr "PREJETO"
 
-#, fuzzy
 msgid "purge"
 msgstr "izprazni"
 
@@ -382,14 +375,14 @@ msgid "Last Refresh"
 msgstr "Zadnja posodobitev"
 
 msgid "Save folder tree"
-msgstr ""
+msgstr "Shrabi strukturo map"
 
 msgid "Login"
 msgstr "Prijava"
 
-#, fuzzy, c-format
+#, c-format
 msgid "%s Logo"
-msgstr "%s WEBmail prijava"
+msgstr "%s Logotip"
 
 #, c-format
 msgid "SquirrelMail version %s"
@@ -412,7 +405,7 @@ msgid "No messages were selected."
 msgstr "Nobeno sporoèilo ni izbrano."
 
 msgid "Options"
-msgstr "Opcije"
+msgstr "Mo¾nosti"
 
 msgid "Message Highlighting"
 msgstr "Povdarjanje sporoèila"
@@ -421,14 +414,13 @@ msgid "New"
 msgstr "Novo"
 
 msgid "Done"
-msgstr "Konèaj"
+msgstr "Opravljeno"
 
 msgid "To or Cc"
 msgstr "Za ali kopija"
 
-#, fuzzy
 msgid "subject"
-msgstr "Naslov"
+msgstr "zadeva"
 
 msgid "Edit"
 msgstr "Uredi"
@@ -491,7 +483,7 @@ msgid "White"
 msgstr "Bela"
 
 msgid "Other:"
-msgstr "Druga:"
+msgstr "Drugo:"
 
 msgid "Ex: 63aa7f"
 msgstr "npr.: 63aa7f"
@@ -528,7 +520,7 @@ msgid "Make Default"
 msgstr "Vzemi za privzeto"
 
 msgid "Move Up"
-msgstr "Premakni gor"
+msgstr "Premakni navzgor"
 
 msgid "Index Order"
 msgstr "Vrstni red"
@@ -573,7 +565,7 @@ msgid "Folder Preferences"
 msgstr "Lastnosti mape"
 
 msgid "Successfully Saved Options"
-msgstr "Opcije so uspe¹no shranjene!"
+msgstr "Mo¾nosti so uspe¹no shranjene"
 
 msgid "Refresh Folder List"
 msgstr "Osve¾i seznam map"
@@ -620,32 +612,29 @@ msgid "Message not printable"
 msgstr "Sporoèilo ni natisljivo"
 
 msgid "CC"
-msgstr "Kopija:"
+msgstr "Kopija"
 
 msgid "Printer Friendly"
 msgstr "Pripravljeno za tiskanje"
 
 msgid "Print"
-msgstr "Tiskaj"
+msgstr "Natisni"
 
 msgid "View Printable Version"
-msgstr "Pregled variante prirejene za tiskanje"
+msgstr "Pregled natisljive razlièice"
 
-#, fuzzy
 msgid "Read:"
-msgstr "Beri"
+msgstr "Beri:"
 
-#, fuzzy
 msgid "Your message"
-msgstr "] sporoèil"
+msgstr "Va¹e sporoèilo"
 
-#, fuzzy
 msgid "Sent:"
-msgstr "Dol¾ina:"
+msgstr "Poslano:"
 
 #, c-format
 msgid "Was displayed on %s"
-msgstr ""
+msgstr "Je bilo prikazano %s"
 
 msgid "less"
 msgstr "manj"
@@ -653,7 +642,6 @@ msgstr "manj"
 msgid "more"
 msgstr "dalje"
 
-#, fuzzy
 msgid "Unknown sender"
 msgstr "Neznan po¹iljatelj"
 
@@ -661,27 +649,27 @@ msgid "Mailer"
 msgstr "Program za po¹to"
 
 msgid "Read receipt"
-msgstr ""
+msgstr "Potrdi branje"
 
 #, fuzzy
 msgid "sent"
-msgstr "Po¹lji"
+msgstr "po¹lji"
 
-#, fuzzy
 msgid "requested"
-msgstr "Ni zahtevkov po spremembah."
+msgstr "zahtevano"
 
 msgid ""
 "The message sender has requested a response to indicate that you have read "
 "this message. Would you like to send a receipt?"
 msgstr ""
+"Po¹iljatelj sporoèila je zahteval potrdilo, da ste sporoèilo prebrali. Ali "
+"¾elite poslati potrdilo?"
 
 msgid "Send read receipt now"
-msgstr ""
+msgstr "Takoj po¹lji potrdilo o branju"
 
-#, fuzzy
 msgid "Search results"
-msgstr "I¹èi"
+msgstr "Rezultati iskanja"
 
 msgid "Message List"
 msgstr "Seznam sporoèil"
@@ -690,18 +678,16 @@ msgid "Resume Draft"
 msgstr "Nadaljuj osnutek"
 
 msgid "Edit Message as New"
-msgstr ""
+msgstr "Uredi sporoèilo kot novo"
 
-#, fuzzy
 msgid "View Message"
 msgstr "Poglej sporoèilo"
 
 msgid "Forward"
 msgstr "Posreduj"
 
-#, fuzzy
 msgid "Forward as Attachment"
-msgstr "Priponke:"
+msgstr "Posreduj kot prilogo"
 
 msgid "Reply"
 msgstr "Odgovori"
@@ -713,41 +699,34 @@ msgid "View Full Header"
 msgstr "Pregled celotnega zaglavja"
 
 msgid "Attachments"
-msgstr "Priponke:"
+msgstr "Priloge"
 
 msgid "You must be logged in to access this page."
 msgstr "Za dostop do te strani potrebujete veljavno uporabni¹ko ime in geslo."
 
-#, fuzzy
 msgid "Folder:"
-msgstr "Mape"
+msgstr "Mapa:"
 
-#, fuzzy
 msgid "edit"
-msgstr "Uredi"
+msgstr "uredi"
 
-#, fuzzy
 msgid "search"
-msgstr "Iskanje"
+msgstr "i¹èi"
 
-#, fuzzy
 msgid "delete"
 msgstr "Izbri¹i"
 
 msgid "Recent Searches"
-msgstr ""
+msgstr "Nedavna iskanja"
 
-#, fuzzy
 msgid "save"
-msgstr "Shrani"
+msgstr "shrani"
 
-#, fuzzy
 msgid "forget"
-msgstr "dalje"
+msgstr "pozabi"
 
-#, fuzzy
 msgid "Current Search"
-msgstr "Trenutna mapa"
+msgstr "Trenutno iskanje"
 
 msgid "All Folders"
 msgstr "Vse mape"
@@ -756,11 +735,10 @@ msgid "Body"
 msgstr "Vsebina sporoèila"
 
 msgid "Everywhere"
-msgstr "Vse"
+msgstr "Povsod"
 
-#, fuzzy
 msgid "Search Results"
-msgstr "Prezultat prenosa po¹te:"
+msgstr "Rezultati iskanja"
 
 msgid "No Messages Found"
 msgstr "Ni isporoèil"
@@ -778,7 +756,7 @@ msgid "Viewing a Business Card"
 msgstr "Pregled vizitke"
 
 msgid "Title"
-msgstr "Naslov"
+msgstr "Naziv"
 
 msgid "Email"
 msgstr "E-po¹ta"
@@ -852,13 +830,11 @@ msgstr "Ne morem spreminjati globalnega adresarja"
 msgid "Not a file name"
 msgstr "Ni ime datoteke"
 
-#, fuzzy
 msgid "Write failed"
-msgstr "Neuspe¹no odpiranje"
+msgstr "Zapisovanje neuspe¹no"
 
-#, fuzzy
 msgid "Unable to update"
-msgstr "Shrani / Posodobi"
+msgstr "Ne mogoèe posodobiti"
 
 msgid "Could not lock datafile"
 msgstr "Ne morem zakleniti datoteke s podatki"
@@ -874,7 +850,7 @@ msgid "Error opening file %s"
 msgstr "Napaka pri odpiranju datoteke %s"
 
 msgid "Error initializing global addressbook."
-msgstr "Napaka pri inicializaciji globalnega adresarja"
+msgstr "Napaka pri inicializaciji globalnega adresarja."
 
 #, c-format
 msgid "Error initializing LDAP server %s:"
@@ -1047,7 +1023,7 @@ msgstr "D, G:i"
 
 #, c-format
 msgid "Preference database error (%s). Exiting abnormally"
-msgstr "Napaka v bazi lastnosti (%s). Nenormalen izhod"
+msgstr "Napaka v bazi lastnosti (%s). Neobièajen izhod"
 
 msgid "Unknown user or password incorrect."
 msgstr "Naobstojeèi uporabnik ali napaèno geslo."
@@ -1070,31 +1046,37 @@ msgstr ""
 "Datoteka z nastavitvami, %s, ne obstaja. Odjavite se in se ponovno prijavite "
 "da se vam ustvari datoteka z zaèetnimi nastavitvami."
 
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Preference file, %s, could not be opened. Contact your system administrator "
 "to resolve this issue."
-msgstr "Prosim poklièite vzdr¾evalca sistema in javite to napako."
+msgstr ""
+"Datoteke z nastavitvami ,%s, ni mogoèe odpreti. Prosim poklièite vzdr¾evalca "
+"sistema za odpravo tega problema."
 
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Preference file, %s, could not be written. Contact your system administrator "
 "to resolve this issue."
-msgstr "Prosim poklièite vzdr¾evalca sistema in javite to napako."
+msgstr ""
+"Datoteke z nastavitvami ,%s, ni mogoèe zapisati. Prosim poklièite "
+"vzdr¾evalca sistema za odpravo tega problema."
 
 #, fuzzy, c-format
 msgid ""
 "Preference file, %s, could not be copied from temporary file, %s. Contact "
 "your system administrator to resolve this issue."
-msgstr "Prosim poklièite vzdr¾evalca sistema in javite to napako."
+msgstr ""
+"Datoteke z nastavitvami ,%s, ni mogoèe odpreti. Prosim poklièite vzdr¾evalca "
+"sistema za odpravo tega problema."
 
-#, fuzzy, c-format
+#, c-format
 msgid "Error opening %s"
-msgstr "Napaka pri odpiranju"
+msgstr "Napaka pri odpiranju %s"
 
-#, fuzzy
 msgid "Default preference file not found or not readable!"
-msgstr "Ne najdem privzete datoteke z lastnostmi!"
+msgstr ""
+"Ne najdem privzete datoteke z nastavitvami ali pa je ni mogoèe prebrati!"
 
 msgid "Please contact your system administrator and report this error."
 msgstr "Prosim poklièite vzdr¾evalca sistema in javite to napako."
@@ -1104,33 +1086,42 @@ msgstr "Ne morem ustvariti zaèetne datoteke z lastnostmi!"
 
 #, c-format
 msgid "%s should be writable by user %s"
-msgstr ""
+msgstr "%s bi moral biti pisljiv za %s"
 
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Signature file, %s, could not be opened. Contact your system administrator "
 "to resolve this issue."
-msgstr "Prosim poklièite vzdr¾evalca sistema in javite to napako."
+msgstr ""
+"Datoteke s podpisom ,%s, ni mogoèe odpreti. Prosim poklièite vzdr¾evalca "
+"sistema za odpravo tega problema."
 
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Signature file, %s, could not be written. Contact your system administrator "
 "to resolve this issue."
-msgstr "Prosim poklièite vzdr¾evalca sistema in javite to napako."
+msgstr ""
+"Datoteke s podpisom ,%s, ni mogoèe zapisati. Prosim poklièite vzdr¾evalca "
+"sistema za odpravo tega problema."
 
 #, fuzzy, c-format
 msgid ""
 "Signature file, %s, could not be copied from temporary file, %s. Contact "
 "your system administrator to resolve this issue."
-msgstr "Prosim poklièite vzdr¾evalca sistema in javite to napako."
+msgstr ""
+"Datoteke s podpisom ,%s, ni mogoèe odpreti. Prosim poklièite vzdr¾evalca "
+"sistema za odpravo tega problema."
 
+#, fuzzy
 msgid ""
 "You need to have php4 installed with the multibyte string function enabled "
 "(using configure option --enable-mbstring)."
 msgstr ""
+"Name¹èen morate imeti php4 z vkljuèeno opcijo multibyte (uporabite configure "
+"opcijo --with-mbstring)."
 
 msgid "ERROR : No available imapstream."
-msgstr ""
+msgstr "NAPAKA : Noben imapstream ni na voljo."
 
 msgid "ERROR : Connection dropped by imap-server."
 msgstr ""
@@ -1138,9 +1129,8 @@ msgstr ""
 msgid "ERROR : Could not complete request."
 msgstr "NAPAKA: Ne morem dokonèati zahteve."
 
-#, fuzzy
 msgid "Query:"
-msgstr "Èetrtletno"
+msgstr "Poizvedba: "
 
 msgid "Reason Given: "
 msgstr "Razlog:"
@@ -1172,21 +1162,19 @@ msgstr "Neznana napaka: %s"
 msgid "Read data:"
 msgstr "Preberi podatke:"
 
-#, fuzzy
 msgid "ERROR : Could not append message to"
-msgstr "NAPAKA: Ne morem dokonèati zahteve."
+msgstr "NAPAKA: Ne morem dodati sporoèila k "
 
-#, fuzzy
 msgid "Solution: "
-msgstr "Predlogi:"
+msgstr "Re¹itev:"
 
 msgid ""
 "Remove unneccessary messages from your folder and start with your Trash "
 "folder."
-msgstr ""
+msgstr "Odstranite nepotrebna sporoèila iz va¹e mape in zaènite z mapo Ko¹."
 
 msgid "(no subject)"
-msgstr "(brez naslova)"
+msgstr "(brez zadeve)"
 
 msgid "Unknown Sender"
 msgstr "Neznan po¹iljatelj"
@@ -1203,29 +1191,31 @@ msgid ""
 "mailbox)."
 msgstr ""
 
-#, fuzzy
 msgid "Unknown date"
-msgstr "Neznan po¹iljatelj"
+msgstr "Neznan datum"
 
 msgid "A"
-msgstr ""
+msgstr " "
 
 msgid ""
 "Thread sorting is not supported by your IMAP server.<br>Please report this "
 "to the system administrator."
 msgstr ""
+"Razvr¹èanje sporoèil po temah ni podprto na va¹em IMAP stre¾niku. <br>Prosim "
+"javite to va¹emu upravniku sistema."
 
 msgid ""
 "Server-side sorting is not supported by your IMAP server.<br>Please report "
 "this to the system administrator."
 msgstr ""
+"Razvr¹èanje sporoèil ni podprto na va¹em IMAP stre¾niku. <br>Prosim javite "
+"to va¹emu upravniku sistema."
 
 msgid "THIS FOLDER IS EMPTY"
 msgstr "TA MAPA JE PRAZNA"
 
-#, fuzzy
 msgid "Move Selected To"
-msgstr "Pomakni izbor v:"
+msgstr "Pomakni izbor v"
 
 msgid "Transform Selected Messages"
 msgstr "Pretvori izbrana sporoèila"
@@ -1245,13 +1235,11 @@ msgstr "Beri"
 msgid "Unread"
 msgstr "Neprebrano"
 
-#, fuzzy
 msgid "Unthread View"
-msgstr "Meseèni pogled"
+msgstr "Nerazvr¹èen pregled"
 
-#, fuzzy
 msgid "Thread View"
-msgstr "Dnevni pogled"
+msgstr "Pogled po temah"
 
 msgid "Toggle All"
 msgstr "Spremeni vse"
@@ -1277,23 +1265,20 @@ msgid "Show All"
 msgstr "Poka¾i vse"
 
 msgid "SquirrelMail could not decode the bodystructure of the message"
-msgstr ""
+msgstr "SquirrelMail ni mogel razbrati strukture sporoèila"
 
 msgid "the provided bodystructure by your imap-server"
-msgstr ""
+msgstr "struktura sporoèila, ki so je priskrbel va¹ IMAP stre¾nik"
 
-#, fuzzy
 msgid ""
 "Body retrieval error. The reason for this is most probably that the message "
 "is malformed."
 msgstr ""
 "Body retrieval error. Vzrok za to napako je najverjetneje slabo sestavljeno "
-"sporoèilo. Prosimo posredujte to sporoèilo razvijalcem aplikacije, da bomo "
-"lahko izbolj¹ali prihajajoèe razlièice!"
+"sporoèilo."
 
-#, fuzzy
 msgid "Command:"
-msgstr "Ukaz ni uspel"
+msgstr "Ukaz:"
 
 msgid "Response:"
 msgstr "Odgovor:"
@@ -1305,11 +1290,10 @@ msgid "FETCH line:"
 msgstr "PRENESI vrstico:"
 
 msgid "Hide Unsafe Images"
-msgstr ""
+msgstr "Skrij slike, ki niso varne"
 
-#, fuzzy
 msgid "View Unsafe Images"
-msgstr "Poglej sporoèilo"
+msgstr "Poka¾i slike, ki niso varne"
 
 msgid "download"
 msgstr "prenos k sebi"
@@ -1329,7 +1313,7 @@ msgstr "Novo sporoèilo"
 
 #, c-format
 msgid "Error creating directory %s."
-msgstr "Napaka pri ustvarjanju mape %s"
+msgstr "Napaka pri ustvarjanju mape %s."
 
 # TODO: najdi primeren prevod za hash
 msgid "Could not create hashed directory structure!"
@@ -1483,10 +1467,10 @@ msgid "Show HTML Version by Default"
 msgstr "Privczeto prika¾i HTML razlièico"
 
 msgid "Enable Forward as Attachment"
-msgstr ""
+msgstr "Omogoèi posredovanje kot prilogo"
 
 msgid "Include CCs when Forwarding Messages"
-msgstr ""
+msgstr "Vkljuèi vse prejemnike sporoèila pri posredovanju sporoèil"
 
 msgid "Include Me in CC when I Reply All"
 msgstr "Vkljuèi Mene v kopijo, ko odgovarjam vsem"
@@ -1500,29 +1484,26 @@ msgstr "Prika¾i prilo¾ene slike s sporoèilom"
 msgid "Enable Printer Friendly Clean Display"
 msgstr "Vkljuèi prikaz primeren za tiskanje"
 
-#, fuzzy
 msgid "Enable Mail Delivery Notification"
-msgstr "Vkljuèi opozorilo o nepregledanih sporoèilih"
+msgstr "Vljuèi obvestilo o dostavi po¹te"
 
 msgid "Compose Messages in New Window"
-msgstr ""
+msgstr "Napi¹i sporoèilo v novem oknu"
 
-#, fuzzy
 msgid "Width of Compose Window"
-msgstr "Zapri okno"
+msgstr "©irina okna za pisanje"
 
-#, fuzzy
 msgid "Height of Compose Window"
-msgstr "Zapri okno"
+msgstr "Vi¹ina okna za pisanje"
 
 msgid "Append Signature before Reply/Forward Text"
-msgstr ""
+msgstr "Dodaj podpis pred besedilo Odgovori/Posreduj"
 
 msgid "Enable Sort by of Receive Date"
-msgstr ""
+msgstr "Omogoèi Razvr¹èanje po datumu prejema"
 
 msgid "Enable Thread Sort by References Header"
-msgstr ""
+msgstr "Omogoèi nitno sortiranje po referenènih zaglavjih"
 
 msgid "Special Folder Options"
 msgstr "Posebne opcije mape"
@@ -1540,7 +1521,7 @@ msgid "Do not use Sent"
 msgstr "Ne uporabljajte mape Poslano"
 
 msgid "Sent Folder"
-msgstr "Mapa Poslano:"
+msgstr "Mapa Poslano"
 
 msgid "Do not use Drafts"
 msgstr "Ne uporabljajte Osnutkov"
@@ -1561,7 +1542,7 @@ msgid "Right"
 msgstr "Desno"
 
 msgid "pixels"
-msgstr "toèk (pikslov)"
+msgstr "pikslov"
 
 msgid "Width of Folder List"
 msgstr "©irina seznama map"
@@ -1600,9 +1581,8 @@ msgstr "Nepregledano in skupno"
 msgid "Enable Collapsible Folders"
 msgstr "Vkljuèi podirajoèe mape"
 
-#, fuzzy
 msgid "Enable Cumulative Unread Message Notification"
-msgstr "Vkljuèi opozorilo o nepregledanih sporoèilih"
+msgstr "Vkljuèi opozorilo o nakopièenih nepregledanih sporoèilih"
 
 msgid "Show Clock on Folders Panel"
 msgstr "Prika¾i uro pri seznamu map"
@@ -1625,23 +1605,20 @@ msgstr "Iskanje po spominu"
 msgid "Disabled"
 msgstr "Izkljuèeno"
 
-#, fuzzy
 msgid "Folder Selection Options"
-msgstr "Opcije seznama map"
+msgstr "Opcije za izbiro map"
 
-#, fuzzy
 msgid "Selection List Style"
-msgstr "Stil citata pri odgovoru"
+msgstr "Stil izbirnega seznama"
 
-#, fuzzy
 msgid "Long: "
-msgstr "Dol¾ina:"
+msgstr "Dolgo: "
 
 msgid "Indented: "
-msgstr ""
+msgstr "Zamaknjeno: "
 
 msgid "Delimited: "
-msgstr ""
+msgstr "Razmejeno: "
 
 msgid "Name and Address Options"
 msgstr "Opcije Imena in Naslova"
@@ -1659,17 +1636,16 @@ msgid "Multiple Identities"
 msgstr "Veèkratne identitete"
 
 msgid "Same as server"
-msgstr ""
+msgstr "Enako kot stre¾nik"
 
 msgid "Error opening timezone config, contact administrator."
 msgstr ""
 
-#, fuzzy
 msgid "Timezone Options"
-msgstr "Splo¹ne opcije"
+msgstr "Opcije èasovnega pasu"
 
 msgid "Your current timezone"
-msgstr ""
+msgstr "Va¹ trenutni èasovni pas"
 
 msgid "Reply Citation Options"
 msgstr "Stil citata pri odgovoru"
@@ -1718,12 +1694,11 @@ msgstr ""
 msgid "Config File Version"
 msgstr "Razlièica datoteke z nastavitvami"
 
-#, fuzzy
 msgid "Squirrelmail Version"
-msgstr "SquirrelMail verzija %s"
+msgstr "SquirrelMail razlièica"
 
 msgid "PHP Version"
-msgstr ""
+msgstr "PHP razlièica"
 
 msgid "Organization Preferences"
 msgstr "Nastavitve za organizacijo"
@@ -1734,13 +1709,11 @@ msgstr "Ime organizacije"
 msgid "Organization Logo"
 msgstr "Logotip organizacije"
 
-#, fuzzy
 msgid "Organization Logo Width"
-msgstr "Logotip organizacije"
+msgstr "©irina logotipa organizacije"
 
-#, fuzzy
 msgid "Organization Logo Height"
-msgstr "Logotip organizacije"
+msgstr "Vi¹ina logotipa organizacije"
 
 msgid "Organization Title"
 msgstr "Naziv organizacije"
@@ -1780,7 +1753,7 @@ msgid "Cyrus IMAP server"
 msgstr "Cyrus IMAP server"
 
 msgid "University of Washington's IMAP server"
-msgstr "University of Washington's IMAP server"
+msgstr "IMAP stre¾nik univerze v Washingtonu"
 
 msgid "Microsoft Exchange IMAP server"
 msgstr "Microsoft Exchange IMAP server"
@@ -1795,7 +1768,7 @@ msgid "IMAP Folder Delimiter"
 msgstr "Loèilo IMAP mape"
 
 msgid "Use \"detect\" to auto-detect."
-msgstr "Uporabi \"detect\" za samodejno zaznavo"
+msgstr "Uporabi \"detect\" za samodejno zaznavo."
 
 msgid "Use TLS for IMAP Connections"
 msgstr ""
@@ -1834,7 +1807,7 @@ msgid "Invert Time"
 msgstr "Obrni èas"
 
 msgid "Use Confirmation Flags"
-msgstr ""
+msgstr "Uporabljaj potrditvene zastavice"
 
 msgid "Folders Defaults"
 msgstr "Privzete vrednosti mape"
@@ -1881,9 +1854,8 @@ msgstr "Samodejno kreiraj posebne mape"
 msgid "Default Javascript Adrressbook"
 msgstr "Privzeti Javascript adresar"
 
-#, fuzzy
 msgid "Auto delete folders"
-msgstr "Izbri¹i mapo"
+msgstr "Samodejno pobri¹i mape"
 
 #, fuzzy
 msgid "Enable /NoSelect folder fix"
@@ -1926,13 +1898,13 @@ msgid "Hide SM attributions"
 msgstr "Skrij dodatke SM"
 
 msgid "Enable use of delivery receipts"
-msgstr ""
+msgstr "Omogoèi uporabo potrdil o prejemu"
 
 msgid "Allow editing of identities"
-msgstr ""
+msgstr "Doovoli urejanje identitet"
 
 msgid "Allow editing of full name"
-msgstr ""
+msgstr "Dovoli urejanje celotnega imena"
 
 msgid "Use server-side sorting"
 msgstr ""
@@ -1946,8 +1918,9 @@ msgstr ""
 msgid "UID support"
 msgstr ""
 
+#, fuzzy
 msgid "PHP session name"
-msgstr ""
+msgstr "PHP razlièica"
 
 msgid "Message of the Day"
 msgstr "Sporoèilo dneva"
@@ -1958,26 +1931,23 @@ msgstr "Baza podatkov"
 msgid "Address book DSN"
 msgstr "Adresarjev DSN"
 
-#, fuzzy
 msgid "Address book table"
-msgstr "Adresarjev DSN"
+msgstr "Tabela za adresar"
 
-#, fuzzy
 msgid "Preferences DSN"
-msgstr "Lastnosti mape"
+msgstr "Lastnosti DSN"
 
-#, fuzzy
 msgid "Preferences table"
-msgstr "Lastnosti mape"
+msgstr "Tabela za lastnosti"
 
 msgid "Preferences username field"
-msgstr ""
+msgstr "Polje uporabnik od lastnosti"
 
 msgid "Preferences key field"
-msgstr ""
+msgstr "Kljuèno polje od lastnosti"
 
 msgid "Preferences value field"
-msgstr ""
+msgstr "Polje vrednost od lastnosti"
 
 msgid "Themes"
 msgstr "Teme"
@@ -2008,7 +1978,7 @@ msgid "Change Settings"
 msgstr "Spremeni nastavitve"
 
 msgid "Config file can't be opened. Please check config.php."
-msgstr ""
+msgstr "Datoteke z nastavitvami ni mo¾no odpreti. Prosim preverite config.php."
 
 msgid "Administration"
 msgstr "Administracija"
@@ -2032,9 +2002,8 @@ msgstr "DANES"
 msgid "Go"
 msgstr "Pojdi"
 
-#, fuzzy
 msgid "l, F j Y"
-msgstr "D, F j, Y g:i a"
+msgstr "l, F j Y"
 
 msgid "ADD"
 msgstr "DODAJ"
@@ -2055,7 +2024,7 @@ msgid "Priority:"
 msgstr "Prioriteta:"
 
 msgid "Title:"
-msgstr "Naslov:"
+msgstr "Naziv:"
 
 msgid "Set Event"
 msgstr "Nastavi dogodek"
@@ -2149,26 +2118,23 @@ msgid "Move to:"
 msgstr "Premakni v:"
 
 msgid "Delete/Move/Next Buttons:"
-msgstr ""
+msgstr "Gumbi Bri¹i/Premakni/Naprej:"
 
-#, fuzzy
 msgid "Display at top"
 msgstr "Prika¾i na vrhu"
 
 msgid "with move option"
 msgstr "z opcijo premik"
 
-#, fuzzy
 msgid "Display at bottom"
-msgstr "prika¾i na dnu"
+msgstr "Prika¾i na dnu"
 
 msgid ""
 "COMMERCIAL - This list contains servers that are verified spam senders. It "
 "is a pretty reliable list to scan spam from."
 msgstr ""
 "KOMERCIALEN - Ta seznam vsebuje stre¾nike, ki so preverjeno po¹iljatelji "
-"ne¾eljene po¹te. Je precej zanesljiv seznam za preiskovanje neza¾eljene "
-"po¹te."
+"ne¾elene po¹te. Je precej zanesljiv seznam za preiskovanje neza¾eljene po¹te."
 
 msgid ""
 "COMMERCIAL - Servers that are configured (or misconfigured) to allow spam to "
@@ -2176,7 +2142,7 @@ msgid ""
 "to use."
 msgstr ""
 "KOMERCILAEN - Stre¾niki, ki so nastavljeni (ali \"razgla¹eni\") tako, da "
-"dopu¹èajo razpo¹iljanje ne¾eljene po¹te skozi njihov sistem bodo s tem "
+"dopu¹èajo razpo¹iljanje ne¾elene po¹te skozi njihov sistem bodo s tem "
 "prepovedani. Tudi ta je dober za uporabo."
 
 msgid ""
@@ -2186,7 +2152,7 @@ msgid ""
 msgstr ""
 "KOMERCIALEN .- Klicni uporabniki so pogosto odfiltrirani, ker bi morali "
 "uporabljati stre¾nike svojih ponudnikov inernetnih storitev za po¹iljanje "
-"po¹te. Po¹iljatelji ne¾eljene po¹te tipièno uporabijo klicni raèun in "
+"po¹te. Po¹iljatelji ne¾elene po¹te tipièno uporabijo klicni raèun in "
 "razpo¹iljajo po¹to direktno od tam."
 
 msgid "COMMERCIAL - RBL+ Blackhole entries."
@@ -2204,12 +2170,12 @@ msgid ""
 msgstr "PROSTO - ORDB je bil ustvarjen, ko je bil izkljuèen ORBS."
 
 msgid "FREE - Five-Ten-sg.com - Direct SPAM sources."
-msgstr "PROSTO - Five-Ten-sg.com - Direktni viri ne¾eljene po¹te."
+msgstr "PROSTO - Five-Ten-sg.com - Direktni viri ne¾elene po¹te."
 
 msgid "FREE - Five-Ten-sg.com - Dial-up lists - includes some DSL IPs."
 msgstr ""
-"PROSTO - Five-Ten-sg.com ima vire ne¾eljena po¹te, odprte ste¾nike, klicne "
-"IP nasove."
+"PROSTO - Five-Ten-sg.com ima vire ne¾elena po¹te, odprte ste¾nike, klicne IP "
+"nasove."
 
 msgid "FREE - Five-Ten-sg.com - Bulk mailers that do not use confirmed opt-in."
 msgstr ""
@@ -2224,7 +2190,7 @@ msgstr "PROSTO - Five-Ten-sg.com - Single Stage servers."
 
 msgid "FREE - Five-Ten-sg.com - SPAM Support servers."
 msgstr ""
-"PROSTO - Five-Ten-sg.com - Stre¾niki , ki podpirajo po¹iljanje ne¾eljene "
+"PROSTO - Five-Ten-sg.com - Stre¾niki , ki podpirajo po¹iljanje ne¾elene "
 "po¹te."
 
 msgid "FREE - Five-Ten-sg.com - Web Form IPs."
@@ -2239,8 +2205,9 @@ msgstr ""
 "izven ZDA, da bi se izognili to¾bam"
 
 msgid "FREE - SPAMhaus - A list of well-known SPAM sources."
-msgstr ""
+msgstr "PROSTO - SPAMhaus - Seznam dobpro poznanih izvorov ne¾elene po¹te."
 
+#, fuzzy
 msgid ""
 "FREE, for now - SPAMCOP - An interesting solution that lists servers that "
 "have a very high spam to legit email ratio (85% or more)."
@@ -2249,46 +2216,63 @@ msgstr ""
 "razmerje ne¾¾eljene proti legitimni po¹ti (85% ali veè)."
 
 msgid "FREE - dev.null.dk - I don't have any detailed info on this list."
-msgstr ""
+msgstr "PROSTO - dev-null.dk - Nimamo natanènih informacij o tej listi."
 
 msgid "FREE - visi.com - Relay Stop List. Very conservative OpenRelay List."
 msgstr ""
+"PROSTO - visi.com - Stop lista odprtih stre¾nikov. Zelo konzervativen seznam "
+"odprtih stre¾nikov."
 
 msgid "FREE - 2mbit.com Open Relays - Another list of Open Relays."
-msgstr ""
+msgstr "PROSTO - 2mbit.com Odprti stre¾niki. ©e en seznam odprtih stre¾nikov."
 
-#, fuzzy
 msgid "FREE - 2mbit.com SPAM Source - List of Direct SPAM Sources."
-msgstr "PROSTO - Five-Ten-sg.com - Direktni viri ne¾eljene po¹te."
+msgstr ""
+"PROSTO - 2mbit.com Vir ne¾elene po¹te - Seznam direktnih virov ne¾elene "
+"po¹te."
 
 msgid "FREE - 2mbit.com SPAM ISPs - List of SPAM-friendly ISPs."
 msgstr ""
+"PROSTO - 2mbit.com SPAM ISPs - Seznam ponudnikov intreneta, ki dopu¹èajo "
+"po¹iljanje ne¾elene po¹te."
 
 msgid ""
 "FREE - Leadmon DUL - Another list of Dial-up or otherwise dynamically "
 "assigned IPs."
 msgstr ""
+"PROSTO - Leadmon DUL - Seznam klisnih ali drugaèe dinamièno dodeljenih IP-"
+"jev."
 
 msgid ""
 "FREE - Leadmon SPAM Source - List of IPs Leadmon.net has received SPAM "
 "directly from."
 msgstr ""
+"PROSTO - Leadmon SPAM viri - Seznam IP naslovov od koder je Leadmon.net "
+"dobil ne¾eljeno po¹to."
 
 msgid ""
 "FREE - Leadmon Bulk Mailers - Bulk mailers that do not require confirmed opt-"
 "in or that have allowed known spammers to become clients and abuse their "
 "services."
 msgstr ""
+"PROSTO - Leadmon Masovni po¹iljatelji - Masovni razpo¹iljevalci, ki ne "
+"zahtevajo potrditve prijave ali pa so dovolili znanim razpeèevalcem "
+"ne¾eljene po¹te, da postanejo uporabniki in zlorabljajo njihove storitve."
 
 msgid ""
 "FREE - Leadmon Open Relays - Single Stage Open Relays that are not listed on "
 "other active RBLs."
 msgstr ""
+"PROSTO - Leadmon Odprti stre¾niki - Enostopenjski odprti stre¾niki, ki niso "
+"na drugih aktivnih èrnih seznamih."
 
 msgid ""
 "FREE - Leadmon Multi-stage - Multi-Stage Open Relays that are not listed on "
 "other active RBLs and that have sent SPAM to Leadmon.net."
 msgstr ""
+"PROSTO - Leadmon veèstopenjski seznam - Veèstopenjski odprti stre¾niki, ki "
+"niso na drugih aktivnih èrnih seznamih in so poslali ne¾eljeno po¹to na "
+"Leadmon.net."
 
 msgid ""
 "FREE - Leadmon SpamBlock - Sites on this listing have sent Leadmon.net "
@@ -2296,26 +2280,36 @@ msgid ""
 "mappings. It's a list of BLOCKS of IPs being used by people who have SPAMmed "
 "Leadmon.net."
 msgstr ""
+"PROSTO - Leadmon SpamBlock - Spletna mesta na tem seznamu so poslala "
+"ne¾eleno po¹to na Leadmon.net s skupin IP naslovovm kjer celotna skupina "
+"nima DNS mapiranja. To je seznam SKUPIN IP naslovov, ki jih uporabljajo "
+"ljudje, ki so poslali ne¾eleno po¹to na Leadmon.net."
 
 msgid ""
 "FREE, for now - Not Just Another Blacklist - Both Open Relays and Direct "
 "SPAM Sources."
 msgstr ""
+"PROSTO, za sedaj -  Not Just Another Blacklist - Odprti stre¾niki in "
+"ddirektni viri ne¾elene po¹te."
 
 msgid "FREE, for now - Not Just Another Blacklist - Dial-up IPs."
-msgstr ""
+msgstr "PROSTO, za sedaj -  Not Just Another Blacklist - Klicni IP naslovi."
 
 msgid "FREE - Distributed Sender Boycott List - Confirmed Relays"
-msgstr ""
+msgstr "PROSTO - Distributed Sender Boycott List  - Potrjeni odprti stre¾niki"
 
 msgid "FREE - Distributed Sender Boycott List - Confirmed Multi-stage Relays"
 msgstr ""
+"FREE - Distributed Sender Boycott List - Potrjeni veèstopenjski odprti "
+"stre¾niki"
 
 msgid "FREE - Distributed Sender Boycott List - UN-Confirmed Relays"
 msgstr ""
+"FREE - Distributed Sender Boycott List - S strani OZN potrjeni odprti "
+"stre¾niki"
 
 msgid "Saved Scan type"
-msgstr ""
+msgstr "Shranjen naèin pregleda"
 
 msgid "Message Filtering"
 msgstr "Filtriranje sporoèila"
@@ -2335,9 +2329,8 @@ msgstr "Shrani"
 msgid "Match:"
 msgstr "Ustrezno:"
 
-#, fuzzy
 msgid "Header"
-msgstr "Beri"
+msgstr "Zaglavje"
 
 msgid "Contains:"
 msgstr "Vsebuje:"
@@ -2357,18 +2350,18 @@ msgstr ""
 "razporedijo v razkliène mapo za pregledno organizacijo."
 
 msgid "SPAM Filters"
-msgstr "Filtri ne¾eljene po¹te"
+msgstr "Filtri ne¾elene po¹te"
 
 msgid ""
 "SPAM filters allow you to select from various DNS based blacklists to detect "
 "junk email in your INBOX and move it to another folder (like Trash)."
 msgstr ""
-"Filtri ne¾eljene po¹te vam omogoèajo zaznavanje ne¾eljene (reklamne...) "
-"po¹te na osnovi raznih 'èrnih list' v va¹em po¹tnem predalu in prestavljanje "
-"take po¹te v druge predale (npr: Ko¹)."
+"Filtri ne¾elene po¹te vam omogoèajo zaznavanje ne¾elene (reklamne...) po¹te "
+"na osnovi raznih 'èrnih list' v va¹em po¹tnem predalu in prestavljanje take "
+"po¹te v druge predale (npr: Ko¹)."
 
 msgid "Spam Filtering"
-msgstr "Filtriranje ne¾eljene po¹te."
+msgstr "Filtriranje ne¾elene po¹te"
 
 msgid "WARNING! Tell your admin to set the SpamFilters_YourHop variable"
 msgstr ""
@@ -2385,9 +2378,9 @@ msgid ""
 "periodically, so that you don't have an excessively large mailbox hanging "
 "around."
 msgstr ""
-"Premikanje ne¾eljene po¹te direktno v ko¹ verjetno ni najbolj¹a ideja, ker "
-"so lahko sporoèila od prijateljev ali z dopisnih seznamov po pomoto oznaèena "
-"kot ne¾eljena po¹ta. V katerokoli mapo to ¾e po¹iljate, poskrbite , da se bo "
+"Premikanje ne¾elene po¹te direktno v ko¹ verjetno ni najbolj¹a ideja, ker so "
+"lahko sporoèila od prijateljev ali z dopisnih seznamov po pomoto oznaèena "
+"kot ne¾elena po¹ta. V katerokoli mapo to ¾e po¹iljate, poskrbite , da se bo "
 "preiodièno poèistila, da se va¹ postni predal ne bo zapolnil. "
 
 msgid ""
@@ -2404,14 +2397,14 @@ msgstr ""
 
 #, c-format
 msgid "Spam is sent to <b>%s</b>"
-msgstr "Ne¾eljena po¹ta je poslana na <b>%s</b>"
+msgstr "Ne¾elena po¹ta je poslana na <b>%s</b>"
 
 msgid "[<i>not set yet</i>]"
 msgstr "[<i>¹e ni nastavljen</i>]"
 
 #, c-format
 msgid "Spam scan is limited to <b>%s</b>"
-msgstr "Skeniranje ne¾eljene po¹te je omejeno na <b>%s</b>"
+msgstr "Skeniranje ne¾elene po¹te je omejeno na <b>%s</b>"
 
 msgid "New Messages Only"
 msgstr "Samo nova sporoèila"
@@ -2491,9 +2484,8 @@ msgstr "Arhivi dopisnega seznama"
 msgid "Contact Listowner"
 msgstr "Kontaktirajte lastnika dopsinega seznama"
 
-#, fuzzy
 msgid "Mailing List"
-msgstr "Dopisni seznam:"
+msgstr "Dopisni seznam"
 
 msgid "POP3 connect:"
 msgstr "POP3 povezava:"
@@ -2640,20 +2632,19 @@ msgid "Deleting messages from server..."
 msgstr "Brisanje sporoèil s stre¾nika..."
 
 msgid "Fetching message "
-msgstr "Prena¹am sporoèilo"
+msgstr "Prena¹am sporoèilo "
 
 msgid "Server error...Disconnect"
-msgstr ""
+msgstr "Napaka stre¾nika...Prekininjeno"
 
 msgid "Reconnect from dead connection"
-msgstr ""
+msgstr "Ponovna vzpostavitev prekinjene zveze"
 
 msgid "Saving UIDL"
 msgstr "Shranjujem UIDL"
 
-#, fuzzy
 msgid "Refetching message "
-msgstr "Prena¹am sporoèilo"
+msgstr "Ponovno prena¹am sporoèilo "
 
 msgid "Error Appending Message!"
 msgstr "Napaka pri dodajanju sporoèila!"
@@ -2705,9 +2696,8 @@ msgstr "Dodaj stre¾nik"
 msgid "Server:"
 msgstr "Stre¾nik:"
 
-#, fuzzy
 msgid "Port:"
-msgstr "Prioriteta:"
+msgstr "Vrata:"
 
 msgid "Alias:"
 msgstr "Vzdevek:"
@@ -2719,10 +2709,10 @@ msgid "Store in Folder:"
 msgstr "Shrani v mapo:"
 
 msgid "Leave Mail on Server"
-msgstr "Pusti po¹to na stre¾niku:"
+msgstr "Pusti po¹to na stre¾niku"
 
 msgid "Check mail during login"
-msgstr "Preveri po¹to med prijavo:"
+msgstr "Preveri po¹to med prijavo"
 
 msgid "Check mail during folder refresh"
 msgstr "Preveri po¹to med osve¾evanjem map"
@@ -2737,10 +2727,10 @@ msgid "Modify"
 msgstr "Spremeni"
 
 msgid "No-one server in use. Try to add."
-msgstr "Noben stre¾nik ni v uporabi. Poizkusite dodati."
+msgstr "Noben stre¾nik ni v uporabi. Poskusite dodati."
 
 msgid "Fetching Servers"
-msgstr "Prenos s stre¾nikov."
+msgstr "Prenos s stre¾nikov"
 
 msgid "Confirm Deletion of a Server"
 msgstr "Potrdite brisanje s stre¾nika"
@@ -2877,10 +2867,10 @@ msgstr "Izberi datoeko na stre¾niku:"
 
 #, fuzzy
 msgid "(none)"
-msgstr "Noben"
+msgstr "Brez"
 
 msgid "Try"
-msgstr "Poizkusi"
+msgstr "Poskusite"
 
 msgid "Current File:"
 msgstr "Trenutna datoteka:"
@@ -2941,19 +2931,22 @@ msgid "Yearly"
 msgstr "Letno"
 
 msgid "Base Sent Folder"
-msgstr "Osnovna Mapa Poslano:"
+msgstr "Osnovna Mapa Poslano"
 
 msgid "Report as Spam"
-msgstr ""
+msgstr "Prijavi kot ne¾eleno po¹to"
 
 msgid "SpamCop - Spam Reporting"
-msgstr ""
+msgstr "SpamCop - Prijavljanje ne¾elene po¹te"
 
 msgid ""
 "Help fight the battle against unsolicited email.  SpamCop reads the spam "
 "email and determines the correct addresses to send complaints to.  Quite "
 "fast, really smart, and easy to use."
 msgstr ""
+"Pomagajte v boju proti ne¾eleni po¹ti.  SpamCop prebere ne¾eleno po¹to in "
+"ugotovi pravi naslov kamor  po¹lje prito¾bo. Precej hiter, prav prebrisan in "
+"enostaven za uporabo."
 
 msgid "SpellChecker Options"
 msgstr "Opcije èrkovalnika"
@@ -2993,7 +2986,7 @@ msgstr ""
 "zakodirani podatki niso veè doseglivi."
 
 msgid "Delete my dictionary and start a new one"
-msgstr "Pobri¹i moj slovar in naredi novega."
+msgstr "Pobri¹i moj slovar in naredi novega"
 
 msgid "Decrypt my dictionary with my old password:"
 msgstr "Odkodiraj moj slovar z mojim starim geslom:"
@@ -3326,7 +3319,7 @@ msgstr "Kriptiraj ali dekriptiraj va¹ osebni slovar"
 
 #, fuzzy
 msgid "not available"
-msgstr "ni na voljo"
+msgstr "Ni na voljo"
 
 msgid "SquirrelSpell Options Menu"
 msgstr "Meni Opcije èrkovalnika"
@@ -3334,9 +3327,8 @@ msgstr "Meni Opcije èrkovalnika"
 msgid "Translator"
 msgstr "Prevajalnik"
 
-#, fuzzy
 msgid "Saved Translation Options"
-msgstr "Opcije za prevajanje"
+msgstr "Shranjene opcije za prevajanje"
 
 msgid "Your server options are as follows:"
 msgstr "Opcije za va¹ stre¾nik:"
@@ -3356,7 +3348,7 @@ msgstr "12 jezikovnih parov, ni znanih omejitev, poganja Systran"
 #, fuzzy
 msgid "No known limits, powered by Translation Experts's InterTran"
 msgstr ""
-"767 jezikovnih parov, brez znanih omejitev, poganja Translation Experts's "
+"767 jezikovnih parov, brez znanih omejitev, poganja ga Translation Experts's "
 "InterTran"
 
 #, c-format
@@ -3540,10 +3532,10 @@ msgid "Translation direction"
 msgstr "Opcije za prevajanje"
 
 msgid "Delivery error report"
-msgstr ""
+msgstr "Poroèilo o napaki pri dostavi"
 
 msgid "Undelivered Message Headers"
-msgstr ""
+msgstr "Nedostavljena zaglavja sporoèil"
 
 #~ msgid "Unknown message number in reply from server: "
 #~ msgstr "Neznana ¹tevilka sporoèila od stre¾nika:"
@@ -3570,7 +3562,7 @@ msgstr ""
 
 #~ msgid "FREE - Osirusoft Dialups - Osirusofts Dialup Spam Source list."
 #~ msgstr ""
-#~ "PROSTO - Osirusoft klicni.- Osirusoftov seznam po¹iljateljev ne¾eljene "
+#~ "PROSTO - Osirusoft klicni.- Osirusoftov seznam po¹iljateljev ne¾elene "
 #~ "po¹te s klicnih linij."
 
 #~ msgid ""
@@ -3578,10 +3570,10 @@ msgstr ""
 #~ "have been manually added after multiple nominations. Use with caution. "
 #~ "Seems to catch abuse auto-replies from some ISPs."
 #~ msgstr ""
-#~ "PROSTO - Osirusoftov potrjen seznam izvorov ne¾eljene po¹te. Stre¾niki, "
-#~ "ki stalno smetijo in so bili roèno dodani, po veèkratnih predlogih. "
-#~ "Pazljivo pri uporabi. Kot ka¾e prestre¾e samodejne odgovore na prijavo "
-#~ "zlorabe z nekaterij ponudnikov Interneta."
+#~ "PROSTO - Osirusoftov potrjen seznam izvorov ne¾elene po¹te. Stre¾niki, ki "
+#~ "stalno smetijo in so bili roèno dodani, po veèkratnih predlogih. Pazljivo "
+#~ "pri uporabi. Kot ka¾e prestre¾e samodejne odgovore na prijavo zlorabe z "
+#~ "nekaterij ponudnikov Interneta."
 
 #~ msgid ""
 #~ "FREE - Osirusoft Smart Hosts - List of hosts that are secure but relay "
@@ -3595,9 +3587,9 @@ msgstr ""
 #~ "ranges of companies that are known to produce spam software. Seems to "
 #~ "catch abuse auto-replies from some ISPs."
 #~ msgstr ""
-#~ "PROSTO - Osirusoft Razvijalci progamov za ne¾eljeno po¹to - Predvidevamo, "
+#~ "PROSTO - Osirusoft Razvijalci progamov za ne¾eleno po¹to - Predvidevamo, "
 #~ "da so to IP naslovi podjetij, ki razvijajo programe za po¹iljanje "
-#~ "ne¾eljene po¹te. Kot ka¾e prestre¾e samodejne odgovore na prijavo zlorabe "
+#~ "ne¾elene po¹te. Kot ka¾e prestre¾e samodejne odgovore na prijavo zlorabe "
 #~ "z nekaterij ponudnikov Interneta."
 
 #~ msgid ""
