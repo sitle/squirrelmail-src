@@ -33,22 +33,21 @@ $HARDCLASS[USERCLASSID] = 'user';
 class user extends thing { // a user
 
 	var $password; // md5 hashed
-	var $homeid, $email;
+	var $homeid;
 	var $skin;
 	var $groups;
 	var $homeObject = 'home';
+    var $email;
 	
 /*** Constructor ***/
 
 	function user(
 		&$user,
 		$username = NULL,
-		$password = NULL,
 		$email = NULL
 	) {
-		track('user::user', $username, $password, $email);
+		track('user::user', $username, $email);
 		parent::thing($user, $username, USERVIEWGROUP, USEREDITGROUP, USERDELETEGROUP, USERADMINGROUP, FALSE);
-		$this->password = md5(PASSWORDSALT.$password);
 		$this->email = htmlspecialchars($email);
 		$this->skin = DEFAULTSKIN;
 		$this->groups[] = 'Everyone'; // all users are in the everyone group
@@ -159,7 +158,7 @@ class user extends thing { // a user
 		}
 		track(); return FALSE;
 	}
-	
+
 // delete
 	function delete($delete_home = false) {
         track('user::delete');
@@ -269,6 +268,7 @@ class user extends thing { // a user
 		track('user::method::create');
 		$username = getValue('username', FALSE);
 		$password = getValue('password', FALSE);
+        $verify = getValue('verify', FALSE);
 		
 		if (isset($this)) {
 			$url = THINGIDURI.$this->objectid.'&amp;class='.get_class($this).'&amp;op=create';
@@ -277,32 +277,46 @@ class user extends thing { // a user
 			$url = THINGURI.$thingName.'&amp;class=hardclass';
 		}
 		
-		if ($username && $password) {
+		if ($username && $password && $verify) {
 			if ($username != '' &&
 				strlen($username) < MAXTITLELENGTH &&
 				preg_match('/'.TITLEMATCHREGEX.'/', $username) &&
 				strlen($password) < MAXPASSWORDLENGTH &&
-				preg_match('/'.PASSWORDMATCHREGEX.'/', $password)
+				preg_match('/'.PASSWORDMATCHREGEX.'/', $password) &&
+                strlen($verify) < MAXPASSWORDLENGTH &&
+                preg_match('/'.PASSWORDMATCHREGEX.'/', $verify)
 			) {
 				$email = getValue('email', NULL);
-				$user = new $objectName($wtf->user, $username, $password, $email);
-				if ($user->objectid != 0) { // object created okay
- // set creator to self so user owns itself
-					$user->creatorid = $user->objectid;
-					$user->creatorName = $user->title;
-// create home
-					$home = new $user->homeObject($user, $user->title);
-					$user->setHomeid($home);
-					$home->save();
-					$user->save();
-					unset($home);
-					unset($user);
-					$wtf->user = &wtf::loadUser($username, $password);
-					if ($wtf->user->objectid == ANONYMOUSUSERID) {
-						echo '<register_error username="', htmlspecialchars($username), '"/>';
-					} else {
-                        header("Location: " .THINGIDURI.$wtf->user->homeid.'&class=home&show_msg=register');
-					}
+				$user = new $objectName($wtf->user, $username, $email);
+				if ($user->objectid != 0 ) { // object created okay
+                    if ( $user->setPassword($password, $verify) ) { // password verified
+    
+                        // set creator to self so user owns itself
+		    			$user->creatorid = $user->objectid;
+			    		$user->creatorName = $user->title;
+                        
+                        // create home
+		    			$home = new $user->homeObject($user, $user->title);
+			    		$user->setHomeid($home);
+					
+                        $home->save();
+    					$user->save();
+	    				unset($home);
+		    			unset($user);
+    					
+                        $wtf->user = &wtf::loadUser($username, $password);
+		    			if ($wtf->user->objectid == ANONYMOUSUSERID) {
+			    			echo '<register_error username="', htmlspecialchars($username), '"/>';
+				    	} else {
+                            header("Location: " .THINGIDURI.$wtf->user->homeid.'&class=home&show_msg=register');
+					    }
+                    } else { // note password error
+                        echo '<register_error username="', 
+                                              htmlspecialchars($username), '" message="Password fields must match"/>';
+                        echo '<register_box url="'.$url.'" usernamefield="username" passwordfield="password"' .
+                                                  ' verifyfield="verify" emailfield="email"' .
+                                                  ' email="'.$email.'" username="'.$username.'"/>';
+                    }
 				} else {
 					echo '<register_error username="', htmlspecialchars($username), '"/>';
 				}
@@ -310,7 +324,8 @@ class user extends thing { // a user
 				echo '<register_error username="', htmlspecialchars($username), '"/>';
 			}
 		} elseif ($wtf->user->objectid == ANONYMOUSUSERID) {
-			echo '<register_box url="'.$url.'" usernamefield="username" passwordfield="password" emailfield="email"/>';
+			echo '<register_box url="'.$url.'" usernamefield="username" passwordfield="password"' .
+                                             ' verifyfield="verify" emailfield="email"/>';
 		} else {
 			echo '<register_already />';
 		}
@@ -452,7 +467,7 @@ class home extends wikipage { // a users home thing
 		$username = NULL
 	) {
 		track('home::home', $username);
-		parent::content($user, $username, USERTHINGBODY, USERVIEWGROUP, USEREDITGROUP, USERDELETEGROUP, USERADMINGROUP);
+		parent::wikipage($user, $username, USERTHINGBODY, USERVIEWGROUP, USEREDITGROUP, USERDELETEGROUP, USERADMINGROUP);
 		track();
 	}
 
@@ -480,10 +495,7 @@ class home extends wikipage { // a users home thing
                     echo '<user_record_item key="E-mail" value="'.
                           htmlspecialchars(encodeEmail($user->email)).'" />';
                 }
-				echo '<user_record_item key="Registered" value="'.
-                     date(DATEFORMAT, dbdate2unixtime($user->creatorDatetime)).'" />';
-				echo '<user_record_item key="Last Visited" value="'.
-                     date(DATEFORMAT, dbdate2unixtime($user->updatorDatetime)).'" />';
+                
 				echo '<user_record_item key="User Groups" value="';
 				if (isset($user->groups) && is_array($user->groups)) {
 					foreach ($user->groups as $group) {
@@ -492,12 +504,17 @@ class home extends wikipage { // a users home thing
 				} else {
 					echo 'Unknown';
 				}
-                echo '" /></user_record>';
+                echo '" />';
 
-				if ($user->objectid == $wtf->user->objectid) {
-					echo '<a href="', THINGIDURI, $user->objectid, '&amp;class=user&amp;op=edit">Update your user information</a>.<br/>';
-                    echo '<a href="', THINGIDURI, $user->objectid, '&amp;class=home&amp;op=edit">Update your profile</a>.<br/>';
-				}
+                echo '<user_record_item key="Registered" value="'.
+                     date(DATEFORMAT, dbdate2unixtime($user->creatorDatetime)).'" />';
+                echo '<user_record_item key="Last Visited" value="'.
+                     date(DATEFORMAT, dbdate2unixtime($user->updatorDatetime)).'" />';
+
+                if ($user->objectid == $wtf->user->objectid) {
+                    echo '<user_record_update url="',THINGIDURI, $user->objectid,'" />';
+                }
+                echo '</user_record>';
 			}
 			unset($user);
 			parent::method_view(); // append home thing content
@@ -542,22 +559,28 @@ Password: <input type="password" name="{passwordfield}" maxlength="'.MAXPASSWORD
 // register
 	'register_box' => '
 <form method="post" action="{url}"><p>
-Username: <input type="text" name="{usernamefield}" maxlength="'.MAXTITLELENGTH.'" value="" /><br />
-Password: <input type="password" name="{passwordfield}" maxlength="'.MAXPASSWORDLENGTH.'" value="" /><br />
-E-mail: <input type="text" name="{emailfield}" value="" size="40" /><br />
+<p>Username: <input type="text" name="{usernamefield}" maxlength="'.MAXTITLELENGTH.'" value="{username}" /><br />
+<p>Password: <input type="password" name="{passwordfield}" maxlength="'.MAXPASSWORDLENGTH.'" value="" /><br />
+   Verify:   <input type="password" name="{verifyfield}" maxlength="'.MAXPASSWORDLENGTH.'" value="" /><br />
+<p>E-mail: <input type="text" name="{emailfield}" value="{email}" size="40" /><br />
 <input type="submit" name="register" value="Create Account" /><br />
+<p>The E-mail field is not required, and is not shared. If you are active in SquirrelMail 
+development via plugins, translations, or other contributions, it would be nice to have a valid email
+address for you. E-mail addresses will also be used to verify identity in order to reset passwords.
 </p></form>',
 	'/register_box' => '',
 	'register_success' => '<p class="success">You are now registered and logged in as "{username}".</p>',
 	'/register_success' => '',
 	'register_error' => '<p class="error">There was an error creating account "{username}".</p>',
-	'/register_error' => '',
+	'/register_error' => '<p class="error">{message}.</p>',
 	'register_already' => '<p class="error">You\'re logged in, you don\'t need to create an account, you already have one.</p>',
 	'/register_already' => '',
 
 // view
-    'user_record' => '<p>',
-    '/user_record' => '</p>',
+    'user_record' => '<div class="separator"><p>',
+    '/user_record' => '</p></div>',
+    'user_record_update' => '',
+    '/user_record_update' => '<p><a href="{url}&amp;class=user&amp;op=edit">Update your user information</a>.</p>',
     'user_record_item' => '',
     '/user_record_item' => "{key}: {value}<br />\n",
 
