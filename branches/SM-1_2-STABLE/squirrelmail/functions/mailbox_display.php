@@ -242,6 +242,10 @@ function showMessagesForMailbox($imapConnection, $mailbox, $num_msgs,
         $msort = array();
     }
 
+    if (!isset($msgs)) {
+        $msgs = array();
+    }    
+
     /* if $start_msg is lower than $num_msgs, we probably deleted all messages
      * in the last page. We need to re-adjust the start_msg
      */
