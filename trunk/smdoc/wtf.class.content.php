@@ -24,6 +24,7 @@ wtf.class.content.php
 Content Class
 */
 
+define('CONTENTCLASSID',-20631383);
 $HARDCLASS[-20631383] = 'content';
 
 class content extends thing { // a thing

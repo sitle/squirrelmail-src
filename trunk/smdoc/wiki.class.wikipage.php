@@ -24,7 +24,12 @@ wiki.class.wikipage.php
 Wikipage Class
 */
 
-$HARDCLASS[516345167] = 'wikipage';
+/*
+ * Modified by SquirrelMail Development Team
+ * $Id$
+ */
+define('WIKIPAGECLASSID',516345167);
+$HARDCLASS[WIKIPAGECLASSID] = 'wikipage';
 
 class wikipage extends content { // a wikipage
 

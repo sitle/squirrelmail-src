@@ -24,8 +24,13 @@ wtf.thing.content.php
 Content Create
 */
 
-$HARDTHING[516345167]['func'] = 'wikipage';
-$HARDTHING[516345167]['title'] = 'Create A New WikiPage';
+/*
+ * Modified by SquirrelMail Development Team
+ * $Id$
+ */
+$HARDTHING[WIKIPAGECLASSID]['func'] = 'wikipage';
+$HARDTHING[WIKIPAGECLASSID]['title'] = 'Create A New WikiPage';
+$HARDTHING[WIKIPAGECLASSID]['lastmodified'] = '$Date$';
 
 function wikipage() {
 	track('wikipage');
