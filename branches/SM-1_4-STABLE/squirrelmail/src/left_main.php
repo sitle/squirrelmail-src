@@ -870,7 +870,8 @@ if ($date_format != 6) {
 
 /* Next, display the refresh button. */
 echo '<small>(<a href="../src/left_main.php" target="left">'.
-     _("refresh unseen/total info") . '</a>)</small></center><br />';
+     _("refresh folder list") . '</a>)</small></center><br />';
+// for SM 1.4.3:  _("Check mail")
 
 /* Lastly, display the folder list. */
 if ( $collapse_folders ) {
@@ -960,8 +961,8 @@ for ($i = 0; $i < count($boxes); $i++) {
 } /* if ($oldway) else ... */
 
        /* Next, display the refresh button. */
-       echo '<br><center><small>(<a href="../src/left_main.php?force_refresh=1" target="left">'.
-          _("refresh folder list") . '</a>)</small></center><br />';
+//       echo '<br><center><small>(<a href="../src/left_main.php?force_refresh=1" target="left">'.
+//          _("refresh folder list") . '</a>)</small></center><br />';
 
 
 
