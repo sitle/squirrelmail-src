@@ -22,7 +22,7 @@ function zkCheckName($name) {
 }
 
 /**
- * zkGetLogLevel
+ * zkGetLogLevelConstant
  *
  * This function takes a log level string and returns the corresponding
  * log level contant value.
@@ -47,16 +47,16 @@ function zkGetLogLevelConstant($level_str) {
 }
 
 /**
- * zkGetLogLevel
+ * zkGetLogLevelString
  *
- * This function takes a log level string and returns the corresponding
- * log level contant value.
+ * This function takes a log level constant and returns the corresponding
+ * log level string value.
  *
- * @param string $level_str the log level string to translate
- * @return integer the log level constant for that string
+ * @param integer $level_const the log level constant to translate
+ * @return string the log level string for that constant
  */
-function zkGetLogLevelString($level_str) {
-    switch ($level_str) {
+function zkGetLogLevelString($level_const) {
+    switch ($level_const) {
         case ZKLOG_EMERG:   return ('EMERG');
         case ZKLOG_ALERT:   return ('ALERT');
         case ZKLOG_CRIT:    return ('CRIT');
@@ -67,7 +67,7 @@ function zkGetLogLevelString($level_str) {
         case ZKLOG_DEBUG:   return ('DEBUG');
         case ZKLOG_UNDEF:   return ('UNDEF');
         case ZKLOG_UNKNOWN:          
-        default:        return ('UNKNOWN');
+        default:            return ('UNKNOWN');
     }   
 }
 

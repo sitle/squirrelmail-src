@@ -1,6 +1,6 @@
 <?php
 
-/*
+/**
  * Zookeeper: ZkLoader.php
  * Copyright (c) 2001-2002 The Zookeeper Project Team
  * Licensed under the GNU GPL. For full terms see the file COPYING.
@@ -25,7 +25,7 @@ class ZkLoader {
      * Create a new ZkLoader object.
      *
      * @param string $appname name of the calling application
-     * @param string $zookeeper_home home directory for zookeeper
+     * @param string $zkhome home directory for zookeeper
      */
     function ZkLoader($appname, $zkhome) {
         $this->appname = $appname;
@@ -44,7 +44,6 @@ class ZkLoader {
      * @param string $svcname
      * @param string $options
      * @param string $modname
-     *
      * @return bool/string
      */
     function &loadService($svcname, $options = array(), $modname = '') {
@@ -81,10 +80,9 @@ class ZkLoader {
     /**
      * Load a new module for a service.
      *
-     * @param object $svc     service to which to add the new module
+     * @param object $service service to which to add the new module
      * @param array  $options array of options for the module
      * @param string $modname module name
-     *
      * @return bool TRUE if succesfully loaded or FALSE if not
      */
     function loadModule(&$service, $options, $modname) {
