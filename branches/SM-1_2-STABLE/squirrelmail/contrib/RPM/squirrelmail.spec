@@ -208,7 +208,7 @@ install -m 644 contrib/RPM/squirrelmail.conf \
 
 * Fri Jun 21 2002 Gary Benson <gbenson@redhat.com>
 - summarize the summary, fix deps, and remove some redundant stuff.
-- tidy up the %prep section.
+- tidy up the prep section.
 - replace directory definitions with standard RHL ones.
 
 * Fri Jun 21 2002 Tim Powers <timp@redhat.com> 1.2.6-3
