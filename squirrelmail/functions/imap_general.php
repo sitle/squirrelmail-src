@@ -432,30 +432,33 @@ function sqimap_get_num_messages ($imap_stream, $mailbox) {
 }
 
 
-function parseAddress($address, $max=0, $addr_ar = array(), $group = '', $host='') {
+function parseAddress($address, $max=0, $addr_ar = array(), $group = '', $host='', $limit=0) {
     $pos = 0;
     $j = strlen($address);
     $personal = '';
     $addr = '';
     $comment = '';
-    if ($max && $max = count($addr_ar)) {
+    if ($max && $max == count($addr_ar)) {
         return $addr_ar;
     }
     while ($pos < $j) {
-        if ($max && $max = count($addr_ar)) {
+        if ($max && $max == count($addr_ar)) {
             return $addr_ar;
         }
         $char = $address{$pos};
         switch ($char) {
             case '=':
+	        /* check if it is an encoded string */
                 if (preg_match('/^(=\?([^?]*)\?(Q|B)\?([^?]*)\?=)(.*)/Ui',substr($address,$pos),$reg)) {
+		    /* add stringpart before the encoded string to the personal var */
 		    if (!$personal) {
 			$personal = substr($address,0,$pos);
 		    }
                     $personal .= $reg[1];
-                    $pos += strlen($personal);
-                }
-                ++$pos;
+		    $pos += strlen($reg[1]);
+                } else {
+            	    ++$pos;
+		}
                 break;
             case '"': /* get the personal name */
                 ++$pos;
@@ -484,7 +487,7 @@ function parseAddress($address, $max=0, $addr_ar = array(), $group = '', $host='
                 $addr_start = $pos;
                 $addr_end = strpos($address,'>',$addr_start);
                 if($addr_end === FALSE) {
-                    // prevent loop when there is no closing ">" found
+                    // in case the address doesn't end, prevent loop
                     $pos++;
                 } else {
                     $addr = substr($address,$addr_start+1,$addr_end-$addr_start-1);
@@ -503,6 +506,12 @@ function parseAddress($address, $max=0, $addr_ar = array(), $group = '', $host='
                 $j = strlen($address);
                 $pos = $addr_start + 1;
                 break;
+            case ';': /* we reached a non rfc2822 compliant delimiter */
+                if ($group) {
+                    $address = substr($address, 0, $pos - 1);
+		    ++$pos;
+		    break;
+                }
             case ',':  /* we reached a delimiter */
                 if ($addr == '') {
                     $addr = substr($address, 0, $pos);
@@ -528,12 +537,6 @@ function parseAddress($address, $max=0, $addr_ar = array(), $group = '', $host='
                 $address = substr($address, $pos++);
                 $j = strlen($address);
                 $group = '';
-                break;
-            case ';':
-                if ($group) {
-                    $address = substr($address, 0, $pos - 1);
-                }
-                ++$pos;
                 break;
             default:
                 ++$pos;

@@ -100,9 +100,9 @@ function mime_fetch_body($imap_stream, $id, $ent_id=1) {
      * that it is the first one.  That is usually the case anyway.
      */
     if (!$ent_id) {
-	$cmd = "FETCH $id BODY[]";
+        $cmd = "FETCH $id BODY[]";
     } else {
-	$cmd = "FETCH $id BODY[$ent_id]";
+        $cmd = "FETCH $id BODY[$ent_id]";
     }
 
     $data = sqimap_run_command ($imap_stream, $cmd, true, $response, $message, $uid_support);
@@ -116,9 +116,9 @@ function mime_fetch_body($imap_stream, $id, $ent_id=1) {
         /* There is some information in the content info header that could be important
          * in order to parse html messages. Let's get them here.
          */
-        if ($ret{0} == '<') {
-            $data = sqimap_run_command ($imap_stream, "FETCH $id BODY[$ent_id.MIME]", true, $response, $message, $uid_support);
-        }
+//        if ($ret{0} == '<') {
+//            $data = sqimap_run_command ($imap_stream, "FETCH $id BODY[$ent_id.MIME]", true, $response, $message, $uid_support);
+//        }
     } else if (ereg('"([^"]*)"', $topline, $regs)) {
         $ret = $regs[1];
     } else {
@@ -320,7 +320,7 @@ function formatBody($imap_stream, $message, $color, $wrap_at, $ent_num, $id, $ma
      */
     global $startMessage, $username, $key, $imapServerAddress, $imapPort,
            $show_html_default, $sort, $has_unsafe_images, $passed_ent_id;
- 	global $languages, $squirrelmail_language;
+    global $languages, $squirrelmail_language;
 
     if( !sqgetGlobalVar('view_unsafe_images', $view_unsafe_images, SQ_GET) ) {
         $view_unsafe_images = false;
@@ -368,24 +368,24 @@ function formatBody($imap_stream, $message, $color, $wrap_at, $ent_num, $id, $ma
             translateText($body, $wrap_at,
                           $body_message->header->getParameter('charset'));
         }
-	$link = 'read_body.php?passed_id=' . $id . '&amp;ent_id='.$ent_num.
-                 '&amp;mailbox=' . $urlmailbox .'&amp;sort=' . $sort .
-		 '&amp;startMessage=' . $startMessage . '&amp;show_more=0'; 
-	if (isset($passed_ent_id)) {
-	    $link .= '&amp;passed_ent_id='.$passed_ent_id;
-	}
+        $link = 'read_body.php?passed_id=' . $id . '&amp;ent_id='.$ent_num.
+                '&amp;mailbox=' . $urlmailbox .'&amp;sort=' . $sort .
+                '&amp;startMessage=' . $startMessage . '&amp;show_more=0'; 
+        if (isset($passed_ent_id)) {
+            $link .= '&amp;passed_ent_id='.$passed_ent_id;
+        }
         if ($view_unsafe_images) {
             $text = _("Hide Unsafe Images");
         } else {
-	    if (isset($has_unsafe_images) && $has_unsafe_images) {
-        	$link .= '&amp;view_unsafe_images=1';
-		$text = _("View Unsafe Images");
-	    } else {
-		$text = '';
-	    }
+            if (isset($has_unsafe_images) && $has_unsafe_images) {
+                $link .= '&amp;view_unsafe_images=1';
+                $text = _("View Unsafe Images");
+            } else {
+                $text = '';
+            }
         }
         $body .= '<center><small><a href="'.$link.'">'.$text.
-	         '</a></small></center><br>' . "\n";
+                 '</a></small></center><br>' . "\n";
     }
     return $body;
 }
@@ -410,7 +410,7 @@ function formatAttachments($message, $exclude_id, $mailbox, $id) {
         $type1 = strtolower($header->type1);
         $name = '';
         $links['download link']['text'] = _("download");
-        $links['download link']['href'] = SM_PATH . 
+        $links['download link']['href'] = SM_PATH .
                 "src/download.php?absolute_dl=true&amp;passed_id=$id&amp;mailbox=$urlMailbox&amp;ent_id=$ent";
         $ImageURL = '';
         if ($type0 =='message' && $type1 == 'rfc822') {
@@ -419,7 +419,7 @@ function formatAttachments($message, $exclude_id, $mailbox, $id) {
             $filename = $rfc822_header->subject;
             if (trim( $filename ) == '') {
                 $filename = 'untitled-[' . $ent . ']' ;
-	    }		
+            }
             $from_o = $rfc822_header->from;
             if (is_object($from_o)) {
                 $from_name = $from_o->getAddress(false);
@@ -441,24 +441,24 @@ function formatAttachments($message, $exclude_id, $mailbox, $id) {
                                 $filename = 'untitled-[' . $ent . ']' ;
                             } else {
                                 $filename = 'cid: ' . $header->id;
-			    }
+                            }
                         } else {
-			    $filename = $name;
+                            $filename = $name;
                         }
                     } else {
                         $filename = $name;
                     }
                 }
             } else {
-		$filename = $header->getParameter('name');
-		if (!trim($filename)) {
-            	    if (trim( $header->id ) == '') {
-                	$filename = 'untitled-[' . $ent . ']' ;
-            	    } else {
-                	$filename = 'cid: ' . $header->id;
-            	    }
-        	}
-	    }
+                $filename = $header->getParameter('name');
+                if (!trim($filename)) {
+                    if (trim( $header->id ) == '') {
+                        $filename = 'untitled-[' . $ent . ']' ;
+                    } else {
+                        $filename = 'cid: ' . $header->id;
+                    }
+                }
+            }
             if ($header->description) {
                 $description = decodeHeader($header->description);
             } else {
@@ -555,23 +555,42 @@ function decodeHeader ($string, $utfencode=true,$htmlsave=true) {
     if (isset($languages[$squirrelmail_language]['XTRA_CODE']) &&
         function_exists($languages[$squirrelmail_language]['XTRA_CODE'])) {
         $string = $languages[$squirrelmail_language]['XTRA_CODE']('decodeheader', $string);
-	// Do we need to return at this point?
-	// return $string;
+        // Do we need to return at this point?
+        // return $string;
     }
     $i = 0;
+    $iLastMatch = -2;
+    $encoded = false;
     $aString = explode(' ',$string);
+    $ret = '';
     foreach ($aString as $chunk) {
+        if ($encoded && !$chunk) {
+            continue;
+        } elseif (!$chunk) {
+            $ret .= ' ';
+            continue;
+        }
         $encoded = false;
-        $aString[$i] = '';
-        while (preg_match('/^(.*)=\?([^?]*)\?(Q|B)\?([^?]*)\?=(.*)$/Ui',$chunk,$res)) {
-            $aString[$i] .= $res[1];
-	    //echo "$chunk match ". $res[5] . "<br>";
+        /* if encoded words are not separated by a linear-space-white we still catch them */
+        $j = $i-1;
+        while ($match = preg_match('/^(.*)=\?([^?]*)\?(Q|B)\?([^?]*)\?=(.*)$/Ui',$chunk,$res)) {
+            /* if the last chunk isn't an encoded string then put back the space, otherwise don't */
+            if ($iLastMatch !== $j) {
+                if ($htmlsave) {
+                    $ret .= '&nbsp;';
+                } else {
+                    $ret .= ' ';
+                }
+            }
+            $iLastMatch = $i;
+            $j = $i;
+            $ret .= $res[1];
             $encoding = ucfirst($res[3]);
             switch ($encoding)
             {
             case 'B':
                 $replace = base64_decode($res[4]);
-                $aString[$i] .= charset_decode($res[2],$replace);
+                $ret .= charset_decode($res[2],$replace);
                 break;
             case 'Q':
                 $replace = str_replace('_', ' ', $res[4]);
@@ -587,23 +606,30 @@ function decodeHeader ($string, $utfencode=true,$htmlsave=true) {
                         $replace = htmlspecialchars($replace);
                     }
                 }
-                $aString[$i] .= $replace;
+                $ret .= $replace;
                 break;
             default:
                 break;
             }
             $chunk = $res[5];
             $encoded = true;
-        } 
+        }
+        if (!$encoded) {
+            if ($htmlsave) {
+                $ret .= '&nbsp;';
+            } else {
+                $ret .= ' ';
+            }        
+        }
+
         if (!$encoded && $htmlsave) {
-            $aString[$i] = htmlspecialchars($chunk);
+            $ret .= htmlspecialchars($chunk);
         } else {
-            $aString[$i] .= $chunk;
+            $ret .= $chunk;
         }
         ++$i;
     }
-    return implode (' ',$aString);
-
+    return $ret;
 }
 
 /*
@@ -643,6 +669,7 @@ function encodeHeader ($string) {
             }
             $cur_l+=3;
             if ($cur_l > ($max_l-2)) {
+                /* if there is an stringpart that doesn't need encoding, add it */
                 $aRet[] = substr($string,$iOffset,$iEncStart-$iOffset);
                 $aRet[] = "=?$default_charset?Q?$ret?=";
                 $iOffset = $i;
@@ -656,7 +683,7 @@ function encodeHeader ($string) {
         case '(':
         case ')':
             if ($iEncStart !== false) {
-                $aRet[] = substr($string,$iOffset,$iEncStart-$iOffset);                        
+                $aRet[] = substr($string,$iOffset,$iEncStart-$iOffset);
                 $aRet[] = "=?$default_charset?Q?$ret?=";
                 $iOffset = $i;
                 $cur_l = 0;
@@ -668,13 +695,13 @@ function encodeHeader ($string) {
             if ($iEncStart !== false) {
                 $cur_l++;
                 if ($cur_l > $max_l) {
-                    $aRet[] = substr($string,$iOffset,$iEncStart-$iOffset);                        
+                    $aRet[] = substr($string,$iOffset,$iEncStart-$iOffset);
                     $aRet[] = "=?$default_charset?Q?$ret?=";
                     $iOffset = $i;
                     $cur_l = 0;
                     $ret = '';
                     $iEncStart = false;
-                } else {                
+                } else {
                     $ret .= '_';
                 }
             }
@@ -686,30 +713,28 @@ function encodeHeader ($string) {
                     $iEncStart = $i;
                 }
                 $cur_l += 3;
+                /* first we add the encoded string that reached it's max size */
                 if ($cur_l > ($max_l-2)) {
-                    if ($iEncStart !== false) {
-                        $aRet[] = substr($string,$iOffset,$iEncStart-$iOffset);                        
-                        $aRet[] = "=?$default_charset?Q?$ret?=";
-                    } else {
-                        $aRet[] = substr($string,$iOffset,$i-$iOffset);
-                    }
+                    $aRet[] = substr($string,$iOffset,$iEncStart-$iOffset);
+                    $aRet[] = "=?$default_charset?Q?$ret?= "; /* the next part is also encoded => separate by space */
                     $cur_l = 3;
                     $ret = '';
                     $iOffset = $i;
+                    $iEncStart = $i;
                 }
-                $enc_init = true;                    
+                $enc_init = true;
                 $ret .= sprintf("=%02X", $k);
             } else {
                 if ($iEncStart !== false) {
                     $cur_l++;
                     if ($cur_l > $max_l) {
-                        $aRet[] = substr($string,$iOffset,$iEncStart-$iOffset);  
+                        $aRet[] = substr($string,$iOffset,$iEncStart-$iOffset);
                         $aRet[] = "=?$default_charset?Q?$ret?=";
                         $iEncStart = false;
                         $iOffset = $i;
                         $cur_l = 0;
                         $ret = '';
-                    } else {                     
+                    } else {
                         $ret .= $string{$i};
                     }
                 }
@@ -1187,7 +1212,7 @@ function sq_deent($attvalue){
     $trans = array_flip($trans);
     unset($trans{"&quot;"});
     while (list($ent, $val) = each($trans)){
-        $attvalue = preg_replace("/$ent*(\W)/i", "$val\\1", $attvalue);
+        $attvalue = preg_replace("/$ent*(\W)/si", "$val\\1", $attvalue);
     }
     /**
      * Now translate numbered entities from 1 to 255 if needed.
@@ -1197,9 +1222,9 @@ function sq_deent($attvalue){
         for ($asc=1; $asc<256; $asc++){
             if (!in_array($asc, $omit)){
                 $chr = chr($asc);
-                $attvalue = preg_replace("/\&#0*$asc;*(\D)/i", "$chr\\1", 
+                $attvalue = preg_replace("/\&#0*$asc;*(\D)/si", "$chr\\1", 
                                          $attvalue);
-                $attvalue = preg_replace("/\&#x0*".dechex($asc).";*(\W)/i",
+                $attvalue = preg_replace("/\&#x0*".dechex($asc).";*(\W)/si",
                                          "$chr\\1", $attvalue);
             }
         }
@@ -1633,11 +1658,11 @@ function magicHTML($body, $id, $message, $mailbox = 'INBOX') {
                                "/^on.*/i",
                                "/^dynsrc/i",
                                "/^data.*/i",
-                               "/^lowsrc/i"
+                               "/^lowsrc.*/i"
                                )
                          );
 
-    $secremoveimg = '../images/' . _("sec_remove_eng.png");
+    $secremoveimg = "../images/" . _("sec_remove_eng.png");
     $bad_attvals = Array(
         "/.*/" =>
             Array(
