@@ -145,15 +145,18 @@ class abook_local_file extends addressbook_backend {
                 for($j = 0 ; $j < count($rows[$i]) ; $j++) {
                     $rows[$i][$j] = $this->quotevalue($rows[$i][$j]);
                 }
-                fwrite($newfh, join('|', $rows[$i]) . "\n");
+                $tmpwrite = @fwrite($newfh, join('|', $rows[$i]) . "\n");
+                if ($tmpwrite == -1) {
+                    return $this->set_error($file->filename . '.tmp:' . _("Write failed"));
+                }
             }
         }       
 
         fclose($newfh);
-	if (!@copy($this->filename . '.tmp' , $this->filename)) {
+        if (!@copy($this->filename . '.tmp' , $this->filename)) {
           return $this->set_error($file->filename.':' . _("Unable to update"));
         }
-	@unlink($this->filename . '.tmp');
+        @unlink($this->filename . '.tmp');
         $this->unlock();
         $this->open(true);
         return true;
