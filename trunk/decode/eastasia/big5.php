@@ -35,7 +35,7 @@
  * specifically excludes the right to re-distribute this file directly
  * to third parties or other organizations whether for profit or not.
  * @package squirrelmail
- * @subpackage decode
+ * @subpackage decode_extra
  */
 
 /**

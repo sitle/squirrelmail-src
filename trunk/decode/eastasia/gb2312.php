@@ -34,9 +34,8 @@
  * internal or external distribution as long as this notice remains
  * attached.
  * @package squirrelmail
- * @subpackage decode
+ * @subpackage decode_extra
  */
-
 
 /**
  * Decode gb2312-euk encoded string
