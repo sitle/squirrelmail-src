@@ -5,8 +5,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: $Id$\n"
-"POT-Creation-Date: 2003-07-24 16:48+0300\n"
-"PO-Revision-Date: 2003-07-24 16:53+0300\n"
+"POT-Creation-Date: 2003-08-24 15:03+0300\n"
+"PO-Revision-Date: 2003-09-11 21:49+0300\n"
 "Last-Translator: Tomas Kuliavas <tokul@users.sourceforge.net>\n"
 "Language-Team: Lithuanian <squirrelmail-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -603,11 +603,11 @@ msgstr ""
 msgid "Message not printable"
 msgstr "®inutì netinka spausdinimui"
 
-msgid "Printer Friendly"
-msgstr "Spausdinimui"
-
 msgid "CC"
 msgstr "CC"
+
+msgid "Printer Friendly"
+msgstr "Spausdinimui"
 
 msgid "Print"
 msgstr "Spausdinti"
@@ -697,35 +697,8 @@ msgstr ""
 "Norint pasiekti ¹iuos puslapius, bþtina ¾inoti teising± vartotojo vard± ir "
 "slapta¾odç!"
 
-msgid "All Folders"
-msgstr "Visuose aplankuose"
-
-msgid "Please enter something to search for"
-msgstr "Çveskite ko norite ie¹koti"
-
-msgid "There must be at least one criteria to search for"
-msgstr "Turi bþti nurodyta bent viena paie¹kos s±lyga"
-
-msgid "Error in criteria argument"
-msgstr "Klaida tarp paie¹kos salygos parametrù"
-
-msgid "M j, Y"
-msgstr "Y M j"
-
-msgid "(Illegal date)"
-msgstr "(Neteisinga data)"
-
-msgid "(Wrong date)"
-msgstr "(Klaidinga data)"
-
-msgid "In"
-msgstr "tarp"
-
-msgid "(Missing argument)"
-msgstr "(Trþksta parametro)"
-
-msgid "(Spurious argument)"
-msgstr "(Klaidingas parametras)"
+msgid "Folder:"
+msgstr "Aplankas:"
 
 msgid "edit"
 msgstr "taisyti"
@@ -736,8 +709,8 @@ msgstr "ie¹koti"
 msgid "delete"
 msgstr "i¹trinti"
 
-msgid "Saved Searches"
-msgstr "I¹saugotos paie¹kos"
+msgid "Recent Searches"
+msgstr "Paskutinìs paie¹kos"
 
 msgid "save"
 msgstr "i¹saugoti"
@@ -745,107 +718,17 @@ msgstr "i¹saugoti"
 msgid "forget"
 msgstr "pamir¹ti"
 
-msgid "Recent Searches"
-msgstr "Paskutinìs paie¹kos"
+msgid "Current Search"
+msgstr "Esama paie¹ka"
 
-msgid "Exclude Criteria:"
-msgstr "Atmetimo s±lyga:"
+msgid "All Folders"
+msgstr "Visuose aplankuose"
 
-msgid "Search Criteria"
-msgstr "Paie¹kos s±lyga"
+msgid "Body"
+msgstr "Tekstas"
 
-msgid "Folder:"
-msgstr "Aplankas:"
-
-msgid "Add New Criteria"
-msgstr "Pridìti nauj± s±lyg±"
-
-msgid "Remove Excluded Criteria"
-msgstr "Pa¹alinti atmetimo s±lyg±"
-
-msgid "Remove All Criteria"
-msgstr "Pa¹alinti visas s±lygas"
-
-msgid "Answered"
-msgstr "Atsakyta"
-
-msgid "Before"
-msgstr "Prie¹"
-
-msgid "Message Body"
-msgstr "®inutìs tekstas"
-
-msgid "Deleted"
-msgstr "I¹trinta"
-
-msgid "Draft"
-msgstr "Juodra¹tis"
-
-msgid "Flagged"
-msgstr "Pa¾ymìta"
-
-msgid "Sent By"
-msgstr "Siùsta nuo"
-
-msgid "Header Field"
-msgstr "Antra¹tìs laukas"
-
-msgid "Keyword"
-msgstr "Raktas"
-
-msgid "Larger Than"
-msgstr "Didesnì nei"
-
-msgid "Old"
-msgstr "Sena"
-
-msgid "On"
-msgstr "tarp"
-
-msgid "Recent"
-msgstr "Nauja"
-
-msgid "Seen"
-msgstr "Per¾iþrìta"
-
-msgid "Sent Before"
-msgstr "I¹siùsta prie¹"
-
-msgid "Sent On"
-msgstr "I¹siùsta"
-
-msgid "Sent Since"
-msgstr "I¹siùsta nuo"
-
-msgid "Since"
-msgstr "Nuo"
-
-msgid "Smaller Than"
-msgstr "Ma¾esnì nei"
-
-msgid "Subject Contains"
-msgstr "Tema turi"
-
-msgid "Header and Body"
-msgstr "Antra¹tìs ir tekstas"
-
-msgid "Sent To"
-msgstr "I¹siùsta adresu"
-
-msgid "Not"
-msgstr "ne"
-
-msgid "And In"
-msgstr "ir tarp"
-
-msgid "Or In"
-msgstr "arba tarp"
-
-msgid "And"
-msgstr "ir"
-
-msgid "Or"
-msgstr "arba"
+msgid "Everywhere"
+msgstr "Visur"
 
 msgid "Search Results"
 msgstr "Paie¹kos rezultatai:"
@@ -1104,6 +987,9 @@ msgstr "Y F j, g:i a, D"
 msgid "D, F j, Y G:i"
 msgstr "Y F j, G:i, D"
 
+msgid "M j, Y"
+msgstr "Y M j"
+
 msgid "g:i a"
 msgstr "g:i a"
 
@@ -1124,7 +1010,7 @@ msgid "Unknown user or password incorrect."
 msgstr "Ne¾inomas vartotojas arba klaidingas slapta¾odis."
 
 msgid "Click here to try again"
-msgstr "Spragtelìkite èia norìdami bandyti dar kart±"
+msgstr "Spragtelìkite ant nuorodos norìdami pabandyti dar kart±"
 
 #, c-format
 msgid "Click here to return to %s"
@@ -1216,20 +1102,14 @@ msgstr ""
 msgid "ERROR : No available imapstream."
 msgstr "KLAIDA : imap srautas neprieinamas."
 
-msgid "ERROR : Bad function call."
-msgstr "KLAIDA : Neteisingai i¹kviesta funkcija"
-
-msgid "Reason:"
-msgstr "Prie¾astis:"
-
 msgid "ERROR : Connection dropped by imap-server."
 msgstr "KLAIDA : IMAP serveris nutraukì jungtç."
 
-msgid "Query:"
-msgstr "U¾klausa:"
-
 msgid "ERROR : Could not complete request."
 msgstr "KLAIDA : Neçmanoma vykdyti u¾klausos."
+
+msgid "Query:"
+msgstr "U¾klausa:"
 
 msgid "Reason Given: "
 msgstr "Prie¾astis: "
@@ -1673,7 +1553,7 @@ msgstr "Tik naujos ¾inutìs"
 msgid "Unseen and Total"
 msgstr "Naujos ¾inutìs ir bendras skaièius"
 
-msgid "Enable Collapsable Folders"
+msgid "Enable Collapsible Folders"
 msgstr "Aktyvuoti i¹siskleid¾ianèius aplankus"
 
 msgid "Enable Cumulative Unread Message Notification"
@@ -2626,6 +2506,12 @@ msgstr "Serveris nenurodytas"
 msgid "Error "
 msgstr "Klaida "
 
+msgid "POP3 noop:"
+msgstr "POP3 noop:"
+
+msgid "No connection to server"
+msgstr "Prisijungti prie serverio nepavyko"
+
 msgid "POP3 user:"
 msgstr "POP3 vartotojas:"
 
@@ -2646,9 +2532,6 @@ msgstr "autorizacija nepavyko "
 
 msgid "POP3 apop:"
 msgstr "POP3 apop:"
-
-msgid "No connection to server"
-msgstr "Prisijungti prie serverio nepavyko"
 
 msgid "No login ID submitted"
 msgstr "Nebuvo pateiktas vartotojo vardas"
@@ -2707,6 +2590,9 @@ msgstr "Nebuvo pateiktas ¾inuèiù skaièius"
 msgid "Command failed "
 msgstr "Komanda nepavyko"
 
+msgid "Remote POP server Fetching Mail"
+msgstr "Nutolês POP serveris. Gauname ¾inutes"
+
 msgid "Select Server:"
 msgstr "Pasirinkti serverç:"
 
@@ -2715,9 +2601,6 @@ msgstr "Slapta¾odis skirtas"
 
 msgid "Fetch Mail"
 msgstr "Atsiùsti pa¹t±"
-
-msgid "Remote POP server Fetching Mail"
-msgstr "Nutolês POP serveris. Gauname ¾inutes"
 
 msgid "Fetching from "
 msgstr "Atsiunèiame i¹ "
@@ -3640,85 +3523,247 @@ msgstr "Ataskaita apie pristatymo klaid±"
 msgid "Undelivered Message Headers"
 msgstr "Nepristatytos ¾inutìs antra¹tìs"
 
-msgid ""
-"Here you can install an automatic reply message. Specify the subject, reply "
-"message, and if you want, a forwarding address.  This will copy all incoming "
-"mail to another address as well as keep it in your mailbox."
-msgstr ""
-"Èia jþs galite nustatyti automatinius atsakymus. Galima nustatyti ¾inutìs "
-"pavadinim±, tekst± ir adres±, kuriuo reikia persiùsti gautus lai¹kus. Tai "
-"leistù persiùsti ¾inutes kitam adresatui ir kartu i¹saugoti jas savo pa¹to "
-"dì¾ìje."
+#~ msgid "Please enter something to search for"
+#~ msgstr "Çveskite ko norite ie¹koti"
 
-msgid "Change Vacation Message"
-msgstr "Pakeisti atostogù prane¹im±"
+#~ msgid "There must be at least one criteria to search for"
+#~ msgstr "Turi bþti nurodyta bent viena paie¹kos s±lyga"
 
-msgid ""
-"You are not currently sending a reply message.<br>You can enter one by "
-"typing the subject and reply message and checking the box."
-msgstr ""
-"©iuo metu jþs nesiunèiate jokio prane¹imo.<br>Jþs galite jç nustatyti "
-"u¾pildydami temos ir ¾inutìs teksto laukus bei pa¾ymìdami ¹ç lauk±."
+#~ msgid "Error in criteria argument"
+#~ msgstr "Klaida tarp paie¹kos salygos parametrù"
 
-msgid "You are currently responding with the following:"
-msgstr "©iuo metu jþs siunèiate ¾emiau nurodyt± prane¹im±:"
+#~ msgid "(Illegal date)"
+#~ msgstr "(Neteisinga data)"
 
-msgid ""
-"You are not currently forwarding incoming messages.<br>This will copy all "
-"incoming mail to another address as well as keep it in your mailbox."
-msgstr ""
-"©iuo metu jþs nepersiunèiate lai¹kù.<br>Persiuntimas leid¾ia nusiùsti "
-"gaunamus lai¹kus kitam adresatui ir kartu i¹saugoti juos savo pa¹to dì¾ìje."
+#~ msgid "(Wrong date)"
+#~ msgstr "(Klaidinga data)"
 
-msgid "You are currently sending a copy of incoming message to:"
-msgstr "©iuo metu jþs persiunèiate lai¹ku kopijas ç"
+#~ msgid "In"
+#~ msgstr "tarp"
 
-msgid ""
-"To delete recipient and keep your vacation message, uncheck the checkbox and "
-"click "
-msgstr ""
-"Norìdami pa¹alinti gavìj± ir i¹saugoti atostogù prane¹im±, nuimkite varnikê "
-"ir paspauskite "
+#~ msgid "(Missing argument)"
+#~ msgstr "(Trþksta parametro)"
 
-msgid "Vacation Message"
-msgstr "Atostogù prane¹imas"
+#~ msgid "(Spurious argument)"
+#~ msgstr "(Klaidingas parametras)"
 
-msgid "Vacation settings set by system administrator."
-msgstr "Atostogù nustatymus gali keisti tik pa¹to administratorius."
+#~ msgid "Saved Searches"
+#~ msgstr "I¹saugotos paie¹kos"
 
-msgid "Send auto-reply to sender?"
-msgstr "Ar siùsti automatinç atsakym± siuntìjui?"
+#~ msgid "Missing"
+#~ msgstr "Trþksta"
 
-msgid "Forward incoming message to another email address?"
-msgstr "Ar persiùsti gautus lai¹kus kitam adresatui?"
+#~ msgid "Exclude Criteria:"
+#~ msgstr "Atmetimo s±lyga:"
 
-msgid "No local delivery -- Forward and/or Auto-reply only."
-msgstr "Nesaugoti lai¹kù -- Naudoti tik persiuntim± ir/arba autoatsakiklç."
+#~ msgid "Search Criteria"
+#~ msgstr "Paie¹kos s±lyga"
 
-msgid "Vacation Subject"
-msgstr "Atostogù prane¹imo tema"
+#~ msgid "Add New Criteria"
+#~ msgstr "Pridìti nauj± s±lyg±"
 
-msgid "Forwarding E-Mail Addresses (One Address Per Line)"
-msgstr "Persiuntimo adresai (po vien± adres± eilutìje)"
+#~ msgid "Remove Excluded Criteria"
+#~ msgstr "Pa¹alinti atmetimo s±lyg±"
 
-msgid "Could not connect to FTP server."
-msgstr "Nepavyko prisijungti prie FTP serverio."
+#~ msgid "Remove All Criteria"
+#~ msgstr "Pa¹alinti visas s±lygas"
 
-msgid "Failed to login to FTP server."
-msgstr "FTP serverio autorizacija nepavyko."
+#~ msgid "Answered"
+#~ msgstr "Atsakyta"
 
-msgid "Unable to switch to passive FTP mode."
-msgstr "Nepavyko persijungti ç pasyvù FTP re¾im±."
+#~ msgid "Before"
+#~ msgstr "Prie¹"
 
-msgid "An error occured uploading the file..."
-msgstr "Çvyko klaida bandant nusiùsti fail±..."
+#~ msgid "Message Body"
+#~ msgstr "®inutìs tekstas"
 
-msgid "An error occured downloading the file."
-msgstr "Çvyko klaida atsisiunèiant fail±."
+#~ msgid "Deleted"
+#~ msgstr "I¹trinta"
 
-msgid "An error occured deleting the file..."
-msgstr "Çvyko klaida trinant fail±..."
+#~ msgid "Draft"
+#~ msgstr "Juodra¹tis"
 
-#, c-format
-msgid "Unknown action %s in do_ftp."
-msgstr "Ne¾inomas veiksmas %s tarp do_ftp funkcijos."
+#~ msgid "Flagged"
+#~ msgstr "Pa¾ymìta"
+
+#~ msgid "Sent By"
+#~ msgstr "Siùsta nuo"
+
+#~ msgid "Header Field"
+#~ msgstr "Antra¹tìs laukas"
+
+#~ msgid "Keyword"
+#~ msgstr "Raktas"
+
+#~ msgid "Larger Than"
+#~ msgstr "Didesnì nei"
+
+#~ msgid "Old"
+#~ msgstr "Sena"
+
+#~ msgid "On"
+#~ msgstr "tarp"
+
+#~ msgid "Recent"
+#~ msgstr "Nauja"
+
+#~ msgid "Seen"
+#~ msgstr "Per¾iþrìta"
+
+#~ msgid "Sent Before"
+#~ msgstr "I¹siùsta prie¹"
+
+#~ msgid "Sent On"
+#~ msgstr "I¹siùsta"
+
+#~ msgid "Sent Since"
+#~ msgstr "I¹siùsta nuo"
+
+#~ msgid "Since"
+#~ msgstr "Nuo"
+
+#~ msgid "Smaller Than"
+#~ msgstr "Ma¾esnì nei"
+
+#~ msgid "Subject Contains"
+#~ msgstr "Tema turi"
+
+#~ msgid "Header and Body"
+#~ msgstr "Antra¹tìs ir tekstas"
+
+#~ msgid "Sent To"
+#~ msgstr "I¹siùsta adresu"
+
+#~ msgid "Not"
+#~ msgstr "ne"
+
+#~ msgid "And In"
+#~ msgstr "ir tarp"
+
+#~ msgid "Or In"
+#~ msgstr "arba tarp"
+
+#~ msgid "And"
+#~ msgstr "ir"
+
+#~ msgid "Or"
+#~ msgstr "arba"
+
+#~ msgid "Folder List"
+#~ msgstr "Aplankù s±ra¹as"
+
+#~ msgid "ERROR : Bad function call."
+#~ msgstr "KLAIDA : Neteisingai i¹kviesta funkcija"
+
+#~ msgid "Reason:"
+#~ msgstr "Prie¾astis:"
+
+#~ msgid "Bypass Trash"
+#~ msgstr "Nesaugoti ¹iuk¹liadì¾ìje"
+
+#~ msgid "Click here to change the sorting of the message list"
+#~ msgstr "Paspauskite èia norìdami pakeisti ¾inuèiù s±ra¹o rþ¹iavimo tvark±"
+
+#~ msgid "Length of From/To Field (0 for full)"
+#~ msgstr "Did¾iausias Nuo/Kam lauko ilgis (0 atitinka neribot± ilgç)"
+
+#~ msgid "Length of Subject Field (0 for full)"
+#~ msgstr "Did¾iausias temos lauko ilgis (0 atitinka neribot± ilgç)"
+
+#~ msgid "Strip signature when replying"
+#~ msgstr "Pa¹alinti para¹± atsakant ç lai¹k±"
+
+#~ msgid "Folder"
+#~ msgstr "Aplankas"
+
+#~ msgid "Subfolder"
+#~ msgstr "®emesnio lygio aplankas"
+
+#~ msgid "No POP3 servers configured yet."
+#~ msgstr "Nesukonfiguruotas nei vienas POP serveris"
+
+#~ msgid "Click here to go to the options page."
+#~ msgstr "Spragtelìkite ant nuorodos norìdami nueiti ç nustatymù puslapç."
+
+#~ msgid ""
+#~ "Here you can install an automatic reply message. Specify the subject, "
+#~ "reply message, and if you want, a forwarding address.  This will copy all "
+#~ "incoming mail to another address as well as keep it in your mailbox."
+#~ msgstr ""
+#~ "Èia jþs galite nustatyti automatinius atsakymus. Galima nustatyti ¾inutìs "
+#~ "pavadinim±, tekst± ir adres±, kuriuo reikia persiùsti gautus lai¹kus. Tai "
+#~ "leistù persiùsti ¾inutes kitam adresatui ir kartu i¹saugoti jas savo "
+#~ "pa¹to dì¾ìje."
+
+#~ msgid "Change Vacation Message"
+#~ msgstr "Pakeisti atostogù prane¹im±"
+
+#~ msgid ""
+#~ "You are not currently sending a reply message.<br>You can enter one by "
+#~ "typing the subject and reply message and checking the box."
+#~ msgstr ""
+#~ "©iuo metu jþs nesiunèiate jokio prane¹imo.<br>Jþs galite jç nustatyti "
+#~ "u¾pildydami temos ir ¾inutìs teksto laukus bei pa¾ymìdami ¹ç lauk±."
+
+#~ msgid "You are currently responding with the following:"
+#~ msgstr "©iuo metu jþs siunèiate ¾emiau nurodyt± prane¹im±:"
+
+#~ msgid ""
+#~ "You are not currently forwarding incoming messages.<br>This will copy all "
+#~ "incoming mail to another address as well as keep it in your mailbox."
+#~ msgstr ""
+#~ "©iuo metu jþs nepersiunèiate lai¹kù.<br>Persiuntimas leid¾ia nusiùsti "
+#~ "gaunamus lai¹kus kitam adresatui ir kartu i¹saugoti juos savo pa¹to "
+#~ "dì¾ìje."
+
+#~ msgid "You are currently sending a copy of incoming message to:"
+#~ msgstr "©iuo metu jþs persiunèiate lai¹ku kopijas ç"
+
+#~ msgid ""
+#~ "To delete recipient and keep your vacation message, uncheck the checkbox "
+#~ "and click "
+#~ msgstr ""
+#~ "Norìdami pa¹alinti gavìj± ir i¹saugoti atostogù prane¹im±, nuimkite "
+#~ "varnikê ir paspauskite "
+
+#~ msgid "Vacation Message"
+#~ msgstr "Atostogù prane¹imas"
+
+#~ msgid "Vacation settings set by system administrator."
+#~ msgstr "Atostogù nustatymus gali keisti tik pa¹to administratorius."
+
+#~ msgid "Send auto-reply to sender?"
+#~ msgstr "Ar siùsti automatinç atsakym± siuntìjui?"
+
+#~ msgid "Forward incoming message to another email address?"
+#~ msgstr "Ar persiùsti gautus lai¹kus kitam adresatui?"
+
+#~ msgid "No local delivery -- Forward and/or Auto-reply only."
+#~ msgstr "Nesaugoti lai¹kù -- Naudoti tik persiuntim± ir/arba autoatsakiklç."
+
+#~ msgid "Vacation Subject"
+#~ msgstr "Atostogù prane¹imo tema"
+
+#~ msgid "Forwarding E-Mail Addresses (One Address Per Line)"
+#~ msgstr "Persiuntimo adresai (po vien± adres± eilutìje)"
+
+#~ msgid "Could not connect to FTP server."
+#~ msgstr "Nepavyko prisijungti prie FTP serverio."
+
+#~ msgid "Failed to login to FTP server."
+#~ msgstr "FTP serverio autorizacija nepavyko."
+
+#~ msgid "Unable to switch to passive FTP mode."
+#~ msgstr "Nepavyko persijungti ç pasyvù FTP re¾im±."
+
+#~ msgid "An error occured uploading the file..."
+#~ msgstr "Çvyko klaida bandant nusiùsti fail±..."
+
+#~ msgid "An error occured downloading the file."
+#~ msgstr "Çvyko klaida atsisiunèiant fail±."
+
+#~ msgid "An error occured deleting the file..."
+#~ msgstr "Çvyko klaida trinant fail±..."
+
+#~ msgid "Unknown action %s in do_ftp."
+#~ msgstr "Ne¾inomas veiksmas %s tarp do_ftp funkcijos."
