@@ -38,7 +38,7 @@
                           acl_group && acl_mask,
                           acl_other,
    entry qualifier: username/groupname/empty                      
-                          
+
                
                
    IMAP ACL
@@ -139,9 +139,9 @@
 
    The interpretation of $acl should be implementation specific.      
   */
-  
+
 /* move to the specific implementation that make use of ACL's  The mapping make no sense anymore
-       
+
 // derived constants FS
 define('SM_ACL_FS_NONE',0);
 define('SM_ACL_FS_READ',3);
@@ -170,22 +170,22 @@ define('SM_ACL_MBX_DELETE',128);
 define('SM_ACL_MBX_ADMIN',1024);
 define('SM_ACL_MBX_FULL',1023);
 define('SM_ACL_MBX_ALL',2047);
-   
+
 */
 class acl {
 
     /**
      * @func      set
-     * @desc      set an acl entry in the provided acl list 
+     * @desc      set an acl entry in the provided acl list
      * @param     str        $tag          entry tag. possible values: U,G,u,g,m,o
-     * @param     str        $qualifier    username, groupname or empty    
-     * @param     int        $iRights      integer represents rights     
+     * @param     str        $qualifier    username, groupname or empty
+     * @param     int        $iRights      integer represents rights
      * @param     arr        $aAclList     array with individual acl entries
-     *                                     acl entry: array($tag,$qualifier,$acl)     
+     *                                     acl entry: array($tag,$qualifier,$acl)
      * @return    bool                     success
      * @access    public
      * @author    Marc Groot Koerkamp
-     */ 
+     */
     function set($tag,$qualifier,$iRights, &$aAclList) {
          switch ($tag)
          {
@@ -230,10 +230,7 @@ class acl {
                        }
                    } else if ($entry[0] == 'm') {
                        $bMask = true;
-
-                   } else if ($entry[0] == 'm') {
-                       $bMask = true;
-                   }    
+                   }
                }
                if ($bMask) {
                    if ($acl_entry_id !== false) {
@@ -250,20 +247,20 @@ class acl {
               // error, wrong tag
               return false;
         }
-        return true;        
+        return true;
     }
 
     /**
      * @func      remove
-     * @desc      remove an acl entry from the provided acl list 
+     * @desc      remove an acl entry from the provided acl list
      * @param     str        $tag          entry tag. possible values: U,G,u,g,m,o
-     * @param     str        $qualifier    username, groupname or empty    
+     * @param     str        $qualifier    username, groupname or empty
      * @param     arr        $aAclList     array with individual acl entries
-     *                                     acl entry: array($tag,$qualifier,$acl)     
+     *                                     acl entry: array($tag,$qualifier,$acl)
      * @return    bool                     success
      * @access    public
      * @author    Marc Groot Koerkamp
-     */ 
+     */
     function remove($tag,$qualifier,&$aAclList) {
          switch ($tag)
          {
@@ -315,24 +312,114 @@ class acl {
                }
                if (!$mask_del_forbidden && $acl_entry_id !== false) {
                    unset($aAclList[$acl_entry_id]);
-               } 
+               }
            default:
               // error, wrong tag
               return false;
         }
         return true;
     }
-    
+
+    /**
+     * @func      alter
+     * @desc      alter an acl entry from the provided acl list
+     * @param     str        $tag          entry tag. possible values: U,G,u,g,m,o
+     * @param     str        $qualifier    username, groupname or empty
+     * @param     int        $iRight       permissions to add/remove
+     * @param     bool       $bSet         false if provided $iRighs should be removed
+     * @param     arr        $aAclList     array with individual acl entries
+     *                                     acl entry: array($tag,$qualifier,$acl)
+     * @return    bool                     success
+     * @access    public
+     * @author    Marc Groot Koerkamp
+     */
+
+    // TODO acl admin bit and specify which bits can be altered without the admin bit
+
+    function alter($tag,$qualifier,$iRights,$bSet = true, &$aAclList) {
+
+        switch ($tag)
+        {
+          case 'U':
+          case 'G':
+              if (!$qualifier) {
+                  //error
+                  return false;
+              }
+          case 'o':
+              // unique entries
+              $i = 0;
+              foreach($aAclList as $entry) {
+                  if ($entry[0] == $tag) {
+                      // alter unique tag
+                      $iCurRights = $aAclList[$i][2];
+                      if ($bSet) {
+                          $iNewRights = ($iCurRights ^ $iRights) + ($iCurRights & $iRights);
+                      } else {
+                          $iNewRights = ($iCurRights | $iRights) - $iRights;
+                      }
+                      $aAclList[$i]=array($tag,$qualifier,$iNewRights);
+                      break 2;
+                  }
+                  ++$i;
+              }
+              break;
+          case 'u':
+          case 'g':
+              if (!$qualifier) {
+                  //error
+                  return false;
+              }
+              for($i=0,$iCnt=count($aAclList);$i<$iCnt;++$i) {
+                  if ($aAclList[$i][0] == $tag) {
+                      for($j=$i;$j<$iCnt;++$j) {
+                          if ($aAclList[$i][0] == $tag && $aAclList[$i][1] == $qualifier) {
+                              // alter unique qualifier
+                              $iCurRights = $aAclList[$i][2];
+                              if ($bSet) {
+                                  $iNewRights = ($iCurRights ^ $iRights) + ($iCurRights & $iRights);
+                              } else {
+                                  $iNewRights = ($iCurRights | $iRights) - $iRights;
+                              }
+                              $aAclList[$i]=array($tag,$qualifier,$iNewRights);
+                              break 3;
+                          }
+                      }
+                  }
+              }
+              break;
+          case 'm':
+              for($i=0,$iCnt=count($aAclList);$i<$iCnt;++$i) {
+                  if ($aAclList[$i][0] == 'm') {
+                      $iCurRights = $aAclList[$i][2];
+                      if ($bSet) {
+                          $iNewRights = ($iCurRights ^ $iRights) + ($iCurRights & $iRights);
+                      } else {
+                          $iNewRights = ($iCurRights | $iRights) - $iRights;
+                      }
+                      $aAclList[$i]=array($tag,$qualifier,$iNewRights);
+                      break 2;
+                  }
+              }
+              break;
+          default:
+              // error, wrong tag
+              return false;
+        }
+        return true;
+
+    }
+
     /**
      * @func      effectiveRights
-     * @desc      calculate the effective rights for user / groups 
+     * @desc      calculate the effective rights for user / groups
      * @param     arr        $aAclList     array with individual acl entries
-     * @param     str        $sUid         username    
+     * @param     str        $sUid         username
      * @param     arr        $aGid         array with groups
      * @return    int                      permission
      * @access    public
      * @author    Marc Groot Koerkamp
-     */ 
+     */
     function effectiveRights($aAclList,$sUid='',$aGid=array()) {
         $aAcl_temp = array();
         for($i=0,$iCnt=count($aAclList);$i<$iCnt;++$i) {
@@ -365,7 +452,7 @@ class acl {
                   }
                   break;
               default: break;
-            } 
+            }
         }
         /*
         order of acl checking: acl_user_obj (U),
@@ -421,6 +508,49 @@ class acl {
     function checkAccess($aAclList,$sUid='',$aGid=array(),$iRights) {
         $iMyRights = acl::effectiveRights($aAclList,$sUid,$aGid);
         return acl::suffRights($iMyRights,$iRights);
+    }
+
+    /**
+     * @func      alterMyPerm
+     * @desc      alter the first possible (best) acl entry from the provided acl list
+     * @param     arr        $aAclList     array with individual acl entries
+     * @param     int        $iRight       permissions to add/remove
+     * @param     str        $sUid         uid
+     * @param     arr        $aUid         gid where uid belongs to
+     * @param     bool       $bSet         set or remove the provided $iRighs
+     * @return    bool       $bResult      success
+     * @access    public
+     * @author    Marc Groot Koerkamp
+     */
+
+    function alterMyPerm(&$aAclList,$iRights,$sUid,$aGid,$bSet = true)
+        $bResult = false;
+        if (! $this->alter('U',$sUid,$iWhat,$bSet,$vPermissions)) {
+            // try user with sUid
+            if (! $this->alter('u',$sUid,$iWhat,$bSet,$vPermissions)) {
+                // try the default group
+                foreach($aGid as $sGid) {
+                    if ($this->alter('G',$sGid,$iWhat,$bSet,$vPermissions)) {
+                        return true;
+                    }
+                }
+                // try the groups
+                foreach($aGid as $sGid) {
+                    if ($this->alter('g',$sGid,$iWhat,$bSet,$vPermissions)) {
+                        return true;
+                    }
+                }
+                // try other
+                if ($this->alter('o','',$iWhat,$bSet,$vPermissions)) {
+                    return true;
+                }
+            } else {
+                 return true;
+            }
+        } else {
+            return true;
+        }
+        return $bResult;
     }
 }
 
