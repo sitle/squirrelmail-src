@@ -73,7 +73,7 @@ class Template
         foreach ($tpl_var as $key => $val) 
         {
           if ($key != '')
-              $this->vars[$key] &= $val;
+              $this->vars[$key] =& $val;
         }
       }
       elseif ( is_object($value) && get_class($value) == get_class($this) )
@@ -85,7 +85,7 @@ class Template
         if ( isset($this->vars['FOOWD_OBJECT']) )
           $value->assign_by_ref('FOOWD_OBJECT', $this->vars['FOOWD_OBJECT']);
 
-        $this->vars[$tpl_var] &= $value->fetch();
+        $this->vars[$tpl_var] =& $value->fetch();
       }
       elseif ($tpl_var != '')
         $this->vars[$tpl_var] =& $value;
