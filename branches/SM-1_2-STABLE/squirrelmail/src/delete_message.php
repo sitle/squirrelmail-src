@@ -23,19 +23,19 @@ $message = $_GET['message'];
 $mailbox = $_GET['mailbox'];
 
 if (isset($_GET['saved_draft'])) {
-    $saved_draft = (int) $_GET['saved_draft'];
+    $saved_draft = urlencode($_GET['saved_draft']);
 }
 if (isset($_GET['mail_sent'])) {
-    $mail_sent = (int) $_GET['mail_sent'];
+    $mail_sent = urlencode($_GET['mail_sent']);
 }
 $sort = (int) $_GET['sort'];
 $startMessage = (int) $_GET['startMessage'];
 
 if(isset($_GET['where'])) {
-    $where = $_GET['where'];
+    $where = urlencode($_GET['where']);
 }
 if(isset($_GET['what'])) {
-    $what = $_GET['what'];
+    $what = urlencode($_GET['what']);
 }
 
 $imapConnection = sqimap_login($username, $key, $imapServerAddress, $imapPort, 0);
@@ -50,8 +50,8 @@ if ($auto_expunge) {
 $location = get_location();
 
 if (isset($where) && isset($what)) {
-    header("Location: $location/search.php?where=" . urlencode($where) .
-           '&what=' . urlencode($what) . '&mailbox=' . urlencode($mailbox));
+    header("Location: $location/search.php?where=" . $where .
+           '&what=' . $what . '&mailbox=' . urlencode($mailbox));
 } else {
     if (isset($saved_draft) || isset($mail_sent)) {
     if (!isset($mail_sent)) {
