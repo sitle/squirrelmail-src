@@ -5,14 +5,14 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: $Id$\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2003-09-20 11:04+0300\n"
+"POT-Creation-Date: 2003-10-13 20:37+0300\n"
 "PO-Revision-Date: 2001-06-18 22:17+2\n"
 "Last-Translator: István-Attila András <bergkatten@netscape.net>\n"
 "Language-Team: Hungarian <squirrelmail-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=iso-8859-2\n"
 "Content-Transfer-Encoding: 8-bit\n"
+"Report-Msgid-Bugs-To: \n"
 
 msgid "Address Book"
 msgstr "Címjegyzék"
@@ -156,7 +156,7 @@ msgid "Draft Saved"
 msgstr "Könyvtár létrehozása"
 
 #, fuzzy
-msgid "Your Message has been sent"
+msgid "Your Message has been sent."
 msgstr "Nincs üzenet kiválasztva."
 
 msgid "From:"
@@ -377,9 +377,6 @@ msgstr "ürít"
 
 msgid "Last Refresh"
 msgstr "Utolsó frissítés"
-
-msgid "refresh unseen/total info"
-msgstr ""
 
 msgid "Save folder tree"
 msgstr "Mappalista elmentése"
@@ -708,8 +705,36 @@ msgstr "Melléklet(ek)"
 msgid "You must be logged in to access this page."
 msgstr "Ennek az oldalnak a megtekintéséhez be kell lépve lennie."
 
-msgid "Folder:"
-msgstr "Mappa:"
+msgid "All Folders"
+msgstr "Minden mappa"
+
+msgid "Please enter something to search for"
+msgstr ""
+
+msgid "There must be at least one criteria to search for"
+msgstr ""
+
+msgid "Error in criteria argument"
+msgstr ""
+
+msgid "M j, Y"
+msgstr ""
+
+msgid "(Illegal date)"
+msgstr ""
+
+msgid "(Wrong date)"
+msgstr ""
+
+#, fuzzy
+msgid "In"
+msgstr "Megjegyzés"
+
+msgid "(Missing argument)"
+msgstr ""
+
+msgid "(Spurious argument)"
+msgstr ""
 
 msgid "edit"
 msgstr "Szerkeszt"
@@ -720,7 +745,8 @@ msgstr "Keresés"
 msgid "delete"
 msgstr "Töröl"
 
-msgid "Recent Searches"
+#, fuzzy
+msgid "Saved Searches"
 msgstr "Utolsó keresések"
 
 msgid "save"
@@ -729,17 +755,128 @@ msgstr "ment"
 msgid "forget"
 msgstr "elfejelt"
 
-msgid "Current Search"
-msgstr "Aktuális keresés"
+msgid "Recent Searches"
+msgstr "Utolsó keresések"
 
-msgid "All Folders"
-msgstr "Minden mappa"
+msgid "Missing"
+msgstr ""
 
-msgid "Body"
-msgstr "Szövegben"
+msgid "Exclude Criteria:"
+msgstr ""
 
-msgid "Everywhere"
-msgstr "Bárhol"
+#, fuzzy
+msgid "Search Criteria"
+msgstr "Keresés"
+
+msgid "Folder:"
+msgstr "Mappa:"
+
+#, fuzzy
+msgid "Add New Criteria"
+msgstr "Szerver hozzáadása"
+
+msgid "Remove Excluded Criteria"
+msgstr ""
+
+msgid "Remove All Criteria"
+msgstr ""
+
+msgid "Answered"
+msgstr ""
+
+#, fuzzy
+msgid "Before"
+msgstr "elfejelt"
+
+#, fuzzy
+msgid "Message Body"
+msgstr "Üzenet "
+
+#, fuzzy
+msgid "Deleted"
+msgstr "Töröl"
+
+#, fuzzy
+msgid "Draft"
+msgstr "Piszkozatokba mentés"
+
+#, fuzzy
+msgid "Flagged"
+msgstr "Melléklet jelzö"
+
+#, fuzzy
+msgid "Sent By"
+msgstr "Elküldve:"
+
+#, fuzzy
+msgid "Header Field"
+msgstr "Fejléc"
+
+msgid "Keyword"
+msgstr ""
+
+msgid "Larger Than"
+msgstr ""
+
+msgid "Old"
+msgstr ""
+
+msgid "On"
+msgstr ""
+
+#, fuzzy
+msgid "Recent"
+msgstr "Értesítés"
+
+#, fuzzy
+msgid "Seen"
+msgstr "Elküld"
+
+#, fuzzy
+msgid "Sent Before"
+msgstr "Elküldött elemek mappája"
+
+#, fuzzy
+msgid "Sent On"
+msgstr "Elküldve:"
+
+msgid "Sent Since"
+msgstr ""
+
+#, fuzzy
+msgid "Since"
+msgstr "Méret"
+
+msgid "Smaller Than"
+msgstr ""
+
+#, fuzzy
+msgid "Subject Contains"
+msgstr "Tartalmaz:"
+
+msgid "Header and Body"
+msgstr ""
+
+#, fuzzy
+msgid "Sent To"
+msgstr "Elküldött elemek mappája"
+
+#, fuzzy
+msgid "Not"
+msgstr "Nincs"
+
+msgid "And In"
+msgstr ""
+
+msgid "Or In"
+msgstr ""
+
+#, fuzzy
+msgid "And"
+msgstr "Hozzáad"
+
+msgid "Or"
+msgstr ""
 
 msgid "Search Results"
 msgstr "Keresés eredménye"
@@ -805,6 +942,10 @@ msgstr "A teljes fejléc megmutatása"
 
 msgid "Viewing a text attachment"
 msgstr "Szöveges melléklet megtekintése"
+
+#, fuzzy
+msgid "Folder List"
+msgstr "Mappák"
 
 msgid "Personal address book"
 msgstr "Személyes címtár"
@@ -1008,9 +1149,6 @@ msgstr ""
 msgid "D, F j, Y G:i"
 msgstr ""
 
-msgid "M j, Y"
-msgstr ""
-
 msgid "g:i a"
 msgstr ""
 
@@ -1027,12 +1165,6 @@ msgstr ""
 msgid "Preference database error (%s). Exiting abnormally"
 msgstr ""
 "A beállításokat tartalmazó állomány: %s hiányzik. Ámokfutó módjára kilépek"
-
-msgid "Unknown user or password incorrect."
-msgstr "Istmeretlen felhasználó vagy jelszó."
-
-msgid "Click here to try again"
-msgstr "Kattintson ide, hogy újra megpróbálja"
 
 #, c-format
 msgid "Click here to return to %s"
@@ -1107,32 +1239,39 @@ msgid ""
 "(using configure option --enable-mbstring)."
 msgstr ""
 
-msgid "ERROR : No available imapstream."
-msgstr ""
-
-msgid "ERROR : Connection dropped by imap-server."
-msgstr ""
-
 msgid "ERROR : Could not complete request."
 msgstr "HIBA: A kérést nem sikerült teljesíteni."
 
-msgid "Query:"
-msgstr ""
-
-msgid "Reason Given: "
-msgstr "Az ok a következö: "
-
 msgid "ERROR : Bad or malformed request."
 msgstr "HIBA: rossz fomrámtumú kérés."
-
-msgid "Server responded: "
-msgstr "A szerver válasza: "
 
 msgid "ERROR : Imap server closed the connection."
 msgstr ""
 
 msgid "ERROR : Unknown imap response."
 msgstr ""
+
+msgid "Reason Given: "
+msgstr "Az ok a következö: "
+
+msgid "Query:"
+msgstr ""
+
+msgid "ERROR : No available imapstream."
+msgstr ""
+
+msgid "ERROR : Bad function call."
+msgstr ""
+
+#, fuzzy
+msgid "Reason:"
+msgstr "Az ok a következö: "
+
+msgid "ERROR : Connection dropped by imap-server."
+msgstr ""
+
+msgid "Server responded: "
+msgstr "A szerver válasza: "
 
 #, c-format
 msgid "Error connecting to IMAP server: %s."
@@ -1149,6 +1288,9 @@ msgstr "Ismeretlen hiba: %s"
 msgid "Read data:"
 msgstr "Adatolvasás: "
 
+msgid "Unknown user or password incorrect."
+msgstr "Istmeretlen felhasználó vagy jelszó."
+
 #, fuzzy
 msgid "ERROR : Could not append message to"
 msgstr "HIBA: A kérést nem sikerült teljesíteni."
@@ -1163,9 +1305,6 @@ msgstr ""
 
 msgid "(no subject)"
 msgstr "(nincs téma)"
-
-msgid "Unknown Sender"
-msgstr "Ismeretlen Feladó"
 
 msgid "Unknown response from IMAP server: "
 msgstr ""
@@ -1224,6 +1363,12 @@ msgstr "Normál rendezés"
 
 msgid "Thread View"
 msgstr "Téma szerinti rendezés"
+
+msgid "Bypass Trash"
+msgstr ""
+
+msgid "Click here to change the sorting of the message list"
+msgstr ""
 
 msgid "Toggle All"
 msgstr "Kijelölést megfordít"
@@ -1284,6 +1429,9 @@ msgid "download"
 msgstr "letöltés"
 
 msgid "sec_remove_eng.png"
+msgstr ""
+
+msgid "This external link will open in a new window"
 msgstr ""
 
 #, c-format
@@ -1414,6 +1562,15 @@ msgstr "Megjelenítendõ oldalsorszámok maximális száma"
 msgid "Always Show Full Date"
 msgstr ""
 
+msgid "Length of From/To Field (0 for full)"
+msgstr ""
+
+msgid "Length of Subject Field (0 for full)"
+msgstr ""
+
+msgid "Show recipient name if the message is from your default identity"
+msgstr ""
+
 msgid "Message Display and Composition"
 msgstr "Levél megjelenítés és szerkesztés"
 
@@ -1479,6 +1636,22 @@ msgstr "Szerkesztõ ablak magassága"
 
 msgid "Append Signature before Reply/Forward Text"
 msgstr "Aláírás a Válasz/Továbbítás szöveg elé kerüljön"
+
+msgid "Cursor Position when Replying"
+msgstr ""
+
+msgid "To: field"
+msgstr ""
+
+msgid "Focus in body"
+msgstr ""
+
+#, fuzzy
+msgid "Select body"
+msgstr "Válasszon mappát"
+
+msgid "Strip signature when replying"
+msgstr ""
 
 msgid "Enable Sort by of Receive Date"
 msgstr "Érkezési dátum alapjáni sorrendezés engedélyezése"
@@ -1558,8 +1731,9 @@ msgstr "Csak olvasatlan"
 msgid "Unseen and Total"
 msgstr "Olvasatlan és az összes"
 
-msgid "Enable Collapsible Folders"
-msgstr ""
+#, fuzzy
+msgid "Enable Collapsable Folders"
+msgstr "Oldal választó engedélyezése"
 
 #, fuzzy
 msgid "Enable Cumulative Unread Message Notification"
@@ -1594,6 +1768,14 @@ msgstr "Választó lista típusa"
 
 msgid "Long: "
 msgstr "Hosszú: "
+
+#, fuzzy
+msgid "Folder"
+msgstr "Mappák"
+
+#, fuzzy
+msgid "Subfolder"
+msgstr "Küldemények könytára"
 
 msgid "Indented: "
 msgstr "Beljebb kezdett: "
@@ -1708,9 +1890,6 @@ msgstr ""
 #, fuzzy
 msgid "Provider Name"
 msgstr "Szerver Neve:"
-
-msgid "Default Language"
-msgstr "Alapértelmezett nyelv"
 
 msgid "Top Frame"
 msgstr "Felsõ keret"
@@ -1844,9 +2023,6 @@ msgstr "Oldal választó engedélyezése"
 msgid "General Options"
 msgstr "Általános beállítások"
 
-msgid "Default Charset"
-msgstr "Alapértelmezett karakterkészlet"
-
 msgid "Data Directory"
 msgstr "Adat könyvtár"
 
@@ -1946,7 +2122,53 @@ msgstr "Alapértelmezett karakterkészlet"
 msgid "Use index number of theme"
 msgstr ""
 
+#, fuzzy
+msgid "Language settings"
+msgstr "Beállítások megváltoztatása"
+
+msgid "Default Language"
+msgstr "Alapértelmezett nyelv"
+
+msgid "Default Charset"
+msgstr "Alapértelmezett karakterkészlet"
+
+msgid "Show alternative language names"
+msgstr ""
+
+msgid "Available languages"
+msgstr ""
+
+msgid "Use agresive decoding"
+msgstr ""
+
+msgid "Tweaks"
+msgstr ""
+
+msgid "Use advanced tree folder listing"
+msgstr ""
+
+msgid "Use old folder listing functions"
+msgstr ""
+
+msgid "Use php recode functions"
+msgstr ""
+
+msgid "Use php iconv functions"
+msgstr ""
+
 msgid "Configuration Administrator"
+msgstr ""
+
+msgid ""
+"Note: it is recommended that you configure your system using conf.pl, and "
+"not this plugin. conf.pl contains additional information regarding the "
+"purpose of variables and appropriate values, as well as additional "
+"verification steps."
+msgstr ""
+
+msgid ""
+"Run or consult conf.pl should you run into difficulty with your "
+"configuration."
 msgstr ""
 
 msgid "Theme Name"
@@ -2178,7 +2400,7 @@ msgstr ""
 
 msgid ""
 "FREE, for now - SPAMCOP - An interesting solution that lists servers that "
-"have a very high spam to legit email ratio (85% or more)."
+"have a very high spam to legit email ratio (85 percent or more)."
 msgstr ""
 
 msgid "FREE - dev.null.dk - I don't have any detailed info on this list."
@@ -2421,13 +2643,6 @@ msgstr "Nem lett szerver kiválasztva"
 msgid "Error "
 msgstr "Hiba a megnyitásban "
 
-msgid "POP3 noop:"
-msgstr ""
-
-#, fuzzy
-msgid "No connection to server"
-msgstr "Hiba történt az IMAP szerver (%s) kapcsolatfelvételekor"
-
 msgid "POP3 user:"
 msgstr "POP3 felhasználó:"
 
@@ -2448,6 +2663,10 @@ msgstr ""
 
 msgid "POP3 apop:"
 msgstr ""
+
+#, fuzzy
+msgid "No connection to server"
+msgstr "Hiba történt az IMAP szerver (%s) kapcsolatfelvételekor"
 
 msgid "No login ID submitted"
 msgstr ""
@@ -2508,9 +2727,6 @@ msgstr ""
 msgid "Command failed "
 msgstr "Megnyitás sikertelen"
 
-msgid "Remote POP server Fetching Mail"
-msgstr ""
-
 msgid "Select Server:"
 msgstr ""
 
@@ -2520,6 +2736,17 @@ msgstr "Jelszó:"
 
 msgid "Fetch Mail"
 msgstr ""
+
+msgid "Remote POP server Fetching Mail"
+msgstr ""
+
+#, fuzzy
+msgid "No POP3 servers configured yet."
+msgstr "Nem lett szerver kiválasztva"
+
+#, fuzzy
+msgid "Click here to go to the options page."
+msgstr "Újra belépni."
 
 msgid "Fetching from "
 msgstr ""
@@ -2807,8 +3034,17 @@ msgstr ""
 msgid "SquirrelMail Notice:"
 msgstr "SquirrelMail (MókusPosta) %s verzió"
 
-msgid "You have new mail!"
-msgstr ""
+#, fuzzy
+msgid "You have"
+msgstr "Az üzenete"
+
+#, fuzzy, c-format
+msgid "%s new message"
+msgstr "Üzenet megtekintése"
+
+#, fuzzy, c-format
+msgid "%s new messages"
+msgstr "Üzenet megtekintése"
 
 msgid "NewMail Options"
 msgstr "Új levél opciók"
@@ -2862,6 +3098,84 @@ msgstr ""
 msgid "Base Sent Folder"
 msgstr "Elküldött elemek mappája"
 
+msgid ""
+"SpamCop is a free service that greatly assists in finding the true source of "
+"the spam and helps in letting the proper people know about the abuse."
+msgstr ""
+
+msgid ""
+"To use it, you must get a SpamCop authorization code. There is a free <a "
+"href=\"http://spamcop.net/anonsignup.shtml\">sign up page</a> so you can use "
+"SpamCop."
+msgstr ""
+
+msgid ""
+"<b>Before you sign up, be warned:</b> Some users have reported that the "
+"email addresses used with SpamCop find their way onto spam lists. To be "
+"safe, you can just create an email forwarding account and have all SpamCop "
+"reports get sent to there. Also, if it gets flooded with spam, you can then "
+"just delete that account with no worries about losing your real email "
+"address. Just go create an email forwarder somewhere (<a href=\"http://www."
+"yahoo.com/\">Yahoo!</a> has a <a href=\"http://dir.yahoo.com/"
+"Business_and_Economy/Business_to_Business/Communications_and_Networking/"
+"Internet_and_World_Wide_Web/Email_Providers/Forwarding_Services/"
+"Free_Forwarding/\">list of places</a>) so that messages from system "
+"administrators and whatnot can be sent to you."
+msgstr ""
+
+msgid ""
+"Once you have signed up with SpamCop and have received your SpamCop "
+"authorization code, you need to enable this plugin -- just click the link "
+"above.  Once enabled, you go about your normal life.  If you encounter a "
+"spam message in your mailbox, just view it.  On the right-hand side, near "
+"the top of where the message is displayed, you will see a link to report "
+"this message as spam.  Clicking on it brings you to a confirmation page. "
+"Confirming that you want the spam report sent will do different things with "
+"different reporting methods."
+msgstr ""
+
+msgid "Email-based Reporting"
+msgstr ""
+
+msgid ""
+"Pressing the button forwards the message to the SpamCop service and will "
+"optionally delete the message.  From there, you just need to go to your "
+"INBOX and quite soon a message should appear from SpamCop.  (It gets sent to "
+"the account you registered with, so make sure that your mail forwarder "
+"works!) Open it up, click on the appropriate link at the top, and a new "
+"browser window will open."
+msgstr ""
+
+msgid ""
+"Currently, the quick reporting just forwards the request to the thorough "
+"reporting.  Also, it appears that this is for members (non-free) only. "
+"Hopefully this will change soon."
+msgstr ""
+
+msgid "Web-based Reporting"
+msgstr ""
+
+msgid ""
+"When you press the button on the confirmation page, this will pop open a new "
+"browser window and the SpamCop service should appear inside. The message "
+"will not be deleted (working on that part), but you won't need to wait for a "
+"response email to start the spam reporting."
+msgstr ""
+
+msgid ""
+"The SpamCop service will display information as it finds it, so scroll down "
+"until you see a form button.  It might pause a little while it is looking up "
+"information, so be a little patient.  Read what it says, and submit the "
+"spam.  Close the browser window.  Press Cancel or click on the appropriate "
+"mail folder to see messages and/or delete the spam."
+msgstr ""
+
+msgid ""
+"<b>For more information</b> about SpamCop, it's services, spam in general, "
+"and many related topics, try reading through SpamCop's <a href=\"http://"
+"spamcop.net/help.shtml\">Help and Feedback</a> section."
+msgstr ""
+
 msgid "Report as Spam"
 msgstr ""
 
@@ -2872,6 +3186,13 @@ msgid ""
 "Help fight the battle against unsolicited email.  SpamCop reads the spam "
 "email and determines the correct addresses to send complaints to.  Quite "
 "fast, really smart, and easy to use."
+msgstr ""
+
+msgid ""
+"Sending this spam report will give you back a reply with URLs that you can "
+"click on to properly report this spam message to the proper authorities. "
+"This is a free service.  By pressing the \"Send Spam Report\" button, you "
+"agree to follow SpamCop's rules/terms of service/etc."
 msgstr ""
 
 msgid "SpellChecker Options"
@@ -3436,3 +3757,17 @@ msgstr ""
 msgid "Undelivered Message Headers"
 msgstr ""
 
+#~ msgid "Current Search"
+#~ msgstr "Aktuális keresés"
+
+#~ msgid "Body"
+#~ msgstr "Szövegben"
+
+#~ msgid "Everywhere"
+#~ msgstr "Bárhol"
+
+#~ msgid "Click here to try again"
+#~ msgstr "Kattintson ide, hogy újra megpróbálja"
+
+#~ msgid "Unknown Sender"
+#~ msgstr "Ismeretlen Feladó"
