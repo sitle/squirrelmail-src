@@ -1,13 +1,19 @@
 body {
     background-image: url(images/sqm-blue.gif);
     font-size: 10pt;
-}
-#locationmenu a,
-#locationmenu {
-    padding: 5px 2px;
+    font-weight: normal;
 }
 #locationmenu a,
 #debug_output,
 #content {
     background-image: none;
+}
+#locationmenu a,
+#locationmenu {
+    padding: 5px 2px;
+}
+#copyright,
+#contentupdate,
+#flagline {
+    font-size: x-small;
 }
