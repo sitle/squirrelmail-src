@@ -15,12 +15,13 @@ define('TEMPLATE_PATH','templates');
  */
 
 define('DB_LAYER', 'mysql');      // which Foowd storage layer to use (mysql|odbc|dbx)
-define('DB_HOST',  '');   // database IP address
-define('DB_NAME',  '');      // database name
-define('DB_USER',  '');      // database username
-define('DB_PASS',  '');      // database password
-define('DB_TABLE', 'tblobject');  // default database table
+define('DB_HOST', 'localhost');   // database IP address
+define('DB_NAME', '');      // database name
+define('DB_USER', '');      // database username
+define('DB_PASS', '');      // database password
+define('DB_TABLE','');      // default database table
 
+define('PASSWORD_SALT', crc32(''));
 /*
  * Pre-Class-Load Configuration
  * -------------------------------------------------------------
@@ -28,7 +29,7 @@ define('DB_TABLE', 'tblobject');  // default database table
  * -------------------------------------------------------------
  */
 require(CFG_PATH.'config.constants.php');     // Diff/History/REGEX/Object defaults
-
+require(SM_PATH.'smdoc.error.constants.php'); // error codes
 require(PATH.'lib.php');                      // FOOWD lib
 require(SM_PATH.'smdoc.env.foowd.php');       // environment class
 require(SM_PATH.'smdoc.env.debug.php');       // debug class
@@ -45,10 +46,11 @@ require(CFG_PATH.'config.groups.php');        // Group/Permission
  * definitions here.
  * -------------------------------------------------------------
  */
-require(PATH.'input.cookie.php');
-require(PATH.'input.querystring.php');
-require(SM_PATH.'smdoc.input.session.php');
-require(SM_PATH.'smdoc.input.form.php');
+require_once(PATH.'input.cookie.php');
+require_once(PATH.'input.querystring.php');
+require_once(SM_PATH.'smdoc.input.session.php');
+require_once(SM_PATH.'smdoc.input.form.php');
+include_once(SM_PATH.'smdoc.input.table.php');
 
 require(PATH.'class.object.php');
 require(SM_PATH.'smdoc.class.error.php');     // error handling 
