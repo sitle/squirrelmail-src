@@ -1,34 +1,34 @@
+body {
+    margin: 0px;
+}
 #sitetitle,
 #usermenu,
 #debug_output,
 #content {
-    margin: 0px 0px 0px 140px;
-    padding: 0px 5px;
+    margin: 0px 5px 5px 175px;
 }
 #content {
     min-height: 350px;
 }
 #copyright {
-    margin: 10px 0px 10px 140px;
+    margin: 10px 0px;
     padding: 0px 5px;
 }
 #subsitetitle {
-    position: absolute;
-    left: 0;
-    top: 130px;
     margin: 2px; 
 }
+#editmenu {
+    margin: 5px 0px;
+}
 #locationmenu {
-    position: absolute; 
-    top: 150px;
-    left: 0;
-    margin: 0px;
+    float: left;
+    min-width: 180px;
     padding: 0px;
 }
 #locationmenu a {
     display: block; 
-    margin: 5px 2px; 
-    padding: 5px 10px; 
+    padding: 5px; 
+    margin: 5px 0px;
     border-width: 0; 
 }
 #textile {

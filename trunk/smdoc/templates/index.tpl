@@ -55,7 +55,7 @@ else
 
 $method    = isset($t['method'])    ? $t['method'] : 'Unknown';
 $title     = isset($t['title'])     ? $t['title']: 'Unknown';
-$lastUpdate = '&nbsp;';
+$lastUpdate = NULL;
 
 if ( !sqGetGlobalVar('ok', $ok, SQ_SESSION) && isset($t['success']) )
   $ok = $t['success'];
@@ -172,23 +172,10 @@ if ( isset($t['classid']) &&                   // classid is defined
 </head>
 <body>
 
-<!-- begin left side -->
+<!-- begin top right -->
 <div id="flagline"><?php echo implode(' ', $flag_links); ?></div>
+
 <div id="sitetitle"><a href="<?php echo BASE_URL; ?>">SquirrelMail</a></div>
-<div id="subsitetitle">WebMail for Nuts</div>
-<div id="locationmenu">
-<?php foreach ($template_menu as $mi) {
-        // If we have special user tools, use a 'special' class..  
-        if ( isset($mi['class']) ) { ?>
-  <span class="special">
-<?php   } ?>
-    <a href="<?php echo $mi['uri']; ?>"><?php echo $mi['name']; ?></a> 
-<?php   if ( isset($mi['class']) ) { ?>
-  </span>
-<?php   }
-      } ?>
-</div>
-<!-- end left side -->
 
 <!-- begin user menu -->
 <div id="usermenu">
@@ -204,31 +191,49 @@ if ( isset($t['classid']) &&                   // classid is defined
 </div>
 <!-- end user menu -->
 
+<!-- begin left side -->
+<div id="locationmenu">
+<div id="subsitetitle">WebMail for Nuts</div>
+<?php foreach ($template_menu as $mi) {
+        // If we have special user tools, use a 'special' class..  
+        if ( isset($mi['class']) ) { ?>
+  <span class="special">
+<?php   } ?>
+    <a href="<?php echo $mi['uri']; ?>"><?php echo $mi['name']; ?></a> 
+<?php   if ( isset($mi['class']) ) { ?>
+  </span>
+<?php   }
+      } ?>
+</div>
+<!-- end left side -->
+
 <!-- begin content -->
 <div id="content">
 
-<!-- end edit menu with content update -->
+<?php if( $lastUpdate != NULL || !empty($edit_arr) ) { ?>
+<!-- begin edit menu -->
 <div id="editmenu">
   <div id="contentupdate"><?php echo $lastUpdate; ?></div>
-  &nbsp;
-<?php if ( !empty($edit_arr) ) { ?>
-<?php   foreach ($edit_arr as $mi) { ?>
+<?php   if ( !empty($edit_arr) ) { 
+            foreach ($edit_arr as $mi) {  ?>
     <a href="<?php echo $mi['uri']; ?>"><?php echo $mi['name']; ?></a>
-<?php   } 
-      } ?>
+<?php       } 
+        } ?>
 </div>
 <!-- end edit menu -->
-
-<!-- begin site status -->
-<div id="status">
-<?php if( $ok != NULL ) { ?>
-    <span class="ok"><?php echo $ok; ?></span>
-<?php } elseif( $error != NULL ) { ?>
-    <span class="error"><?php echo $error; ?></span>
 <?php } ?>
-    &nbsp;
-</div>
+
+<?php if( $ok != NULL || $error != NULL ) { ?>
+<!-- begin site status -->
+  <div id="status">
+<?php     if( $ok != NULL ) { ?>
+    <span class="ok"><?php echo $ok; ?></span>
+<?php     } elseif( $error != NULL ) { ?>
+    <span class="error"><?php echo $error; ?></span>
+<?php     } ?>
+  </div>
 <!-- end site status -->
+<?php } ?>
 
 
 <h1><?php echo $page_title; ?></h1>
