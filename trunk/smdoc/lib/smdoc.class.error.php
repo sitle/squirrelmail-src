@@ -152,6 +152,7 @@ function smdocErrorCatch($errorNumber, $errorString, $filename, $lineNumber, $co
 
   if (headers_sent())
   {
+    echo '<h1>', ERROR_TITLE,'</h1>';
     echo '<p>', $errorString, '</p>';
     if ( isset($foowd) && is_object($foowd) && get_class($foowd) == FOOWD_CLASS_NAME )
     {
@@ -162,7 +163,9 @@ function smdocErrorCatch($errorNumber, $errorString, $filename, $lineNumber, $co
   }
   else
   {
-    if ( isset($foowd) && is_object($foowd) && get_class($foowd) == FOOWD_CLASS_NAME )
+    if ( isset($foowd) && is_object($foowd) && 
+         get_class($foowd) == FOOWD_CLASS_NAME && 
+         $foowd->template ) // make sure $foowd->template is not false for correct display
     {
       $object = new smdoc_error($foowd, ERROR_TITLE, $errorString);
       $t = $object->method_view($foowd);

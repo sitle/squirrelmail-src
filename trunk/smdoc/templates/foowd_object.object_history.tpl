@@ -1,7 +1,7 @@
 <?php
 
 $t['body_function'] = 'object_history_body';
-include(TEMPLATE_PATH.'/index.tpl');
+include(TEMPLATE_PATH.'index.tpl');
 
 function object_history_body(&$foowd, $className, $method, $user, $object, &$t)
 {?>
@@ -37,10 +37,10 @@ function object_history_body(&$foowd, $className, $method, $user, $object, &$t)
     <td class="smalldate"><?php echo $version['updated']; ?></td>
     <td class="small" align="center"><?php echo $version['author']; ?></td>
     <td class="small" align="center"><a href="<?php echo $link; ?>"><?php echo $version['version']; ?></a></td>
-<?php   if (isset($version['revert']) && $foowd->user->hasPermission($className,'revert','object',$object) ) { ?>
+<?php   if (isset($version['revert']) && $foowd->hasPermission($className,'revert','object',$object) ) { ?>
     <td class="small"><a href="<?php echo $link.'&method=revert'; ?>">Revert</a></td>
 <?php   }
-        if ( isset($version['diff']) && $foowd->user->hasPermission($className,'diff','object',$object)) { ?>
+        if ( isset($version['diff']) && $foowd->hasPermission($className,'diff','object',$object)) { ?>
     <td class="small"><a href="<?php echo $link.'&method=diff'; ?>">Diff</a></td>
 <?php   }
       } ?>

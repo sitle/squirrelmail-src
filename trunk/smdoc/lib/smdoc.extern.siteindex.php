@@ -21,15 +21,21 @@ $EXTERNAL_RESOURCES[SQMINDEX_CLASS_ID]['title'] = 'Site Index';
 function sqmindex(&$foowd, &$result) {
     $foowd->track('sqmindex');
 
-    /**
-     * Print site content, leave out users, groups, workspaces
+    /*
+     * Print site content, leave out groups, workspaces
      */
-    $where['classid'] = array('index'=>'classid', 'op' => '!=', 'value' => USER_CLASS_ID);
-    $orderby = array('title', 'classid');
+    $orderby = array('title', 'classid', 'version');
+    $indices = array('DISTINCT objectid','classid','version','title','workspaceid','updated');
  
-    $objects =& $foowd->getObjList($where, NULL, 
+    /*
+     * standard doc information: additional indices, no special source table
+     * where and orderby clauses from above, no limit (all), want only array, not 
+     * actual objects, and yes, set the workspaceid appropriately.
+     */
+    $objects =& $foowd->getObjList($indices, NULL, NULL,
                                    $orderby, NULL, 
-                                   TRUE, TRUE);
+                                   FALSE, TRUE);
+show($objects);
 
     $list_objects = array();
 
@@ -38,34 +44,22 @@ function sqmindex(&$foowd, &$result) {
     {
       foreach ($objects as $object) 
       {
-        if (is_array($object->permissions) && isset($object->permissions['view'])) {
-          $methodPermission = $object->permissions['view'];
-        } else {
-          $methodPermission = getPermission(get_class($object), 'view', 'object');
-        }
-
-        if ( !$foowd->user->inGroup($methodPermission, $object->creatorid) )
+        if ( !$foowd->hasPermission(getClassName($object['classid']), 'view', 'object', $object) )
           continue;
-        $list_objects[$i]['url'] = getURI(array('objectid' => $object->objectid,
-                                              'classid' => $object->classid));
-        $list_objects[$i]['title']  = $object->title;
 
-        if ( $object->workspaceid != 0 )
-          $list_objects[$i]['langid'] = foowd_translation::getLink($foowd, $object->workspaceid);
+        $list_objects[$i] = $object;
+
+        $list_objects[$i]['url'] = getURI(array('objectid' => $object['objectid'],
+                                                'classid' => $object['classid']));
+
+        if ( $object['workspaceid'] != 0 )
+          $list_objects[$i]['langid'] = foowd_translation::getLink($foowd, $object['workspaceid']);
         else 
           $list_objects[$i]['langid'] = '&nbsp;';
 
-        if ( $methodPermission != 'Everyone' )
-          $list_objects[$i]['permission'] = $foowd->groups->getDisplayName($foowd, $methodPermission);
-        else 
-          $list_objects[$i]['permission'] = '&nbsp;';
+        $list_objects[$i]['updated'] = date(DATETIME_FORMAT, strtotime($object['updated']));
 
-        if (isset($object->updated)) {
-          $list_objects[$i]['updated'] = date(DATETIME_FORMAT, $object->updated);
-        } else {
-          $list_objects[$i]['updated'] = date(DATETIME_FORMAT, $object->created);
-        }
-        $list_objects[$i]['desc'] = getClassDescription($object->classid);
+        $list_objects[$i]['desc'] = getClassDescription($object['classid']);
         $i++;
       }
     }

@@ -61,7 +61,7 @@ class foowd_db {
    *
    * @var array
    */
-  var $objects = array();
+  var $objects;
 
   /**
    * Reference to the Foowd object.
@@ -81,101 +81,6 @@ class foowd_db {
   }
 
   /**
-   * Destructs the storage object.
-   */
-  function destroy() {
-    $this->foowd->track('foowd_db->destructor');
-    foreach ($this->objects as $object) {
-//show($object);
-      if (isset($object->foowd_changed) && $object->foowd_changed) {
-        if ($object->objectid == 0) {
-          $this->foowd->debug('msg', 'Deleting object '.$object->objectid);
-          $result = $object->delete();
-          if ($result == 0) {
-            trigger_error('Could not delete object '.$object->objectid);
-          }
-        } else {
-          $this->foowd->debug('msg', 'Saving object '.$object->objectid);
-          $result = $object->save();
-          if ($result == 0) {
-            trigger_error('Could not save object '.$object->objectid);
-          }
-        }
-      }
-    }
-    $this->foowd->track();
-  }
-
-  /**
-   * Execute query
-   *
-   * @abstract
-   * @access protected
-   * @param str query The query to execute
-   * @return resource The resulting query resource
-   */
-  function query($query) {
-    return FALSE;
-  }
-
-  /**
-   * Escape a string for use in SQL string
-   *
-   * @abstract
-   * @access protected
-   * @param str str String to escape
-   * @return str The escaped string
-   */
-  function escape($str) {
-    return FALSE;
-  }
-
-  /**
-   * Add an object reference to the loaded objects array.
-   *
-   * @access protected
-   * @param array indexes Array of indexes and values to find object by
-   * @param object object Reference of the object to add
-   */
-  function addToLoadedReference(&$object) {
-    $this->objects[$object->objectid.'_'.$object->classid.'_'.$object->version.'_'.$object->workspaceid] = &$object;
-  }
-
-  /**
-   * Check if an object is referenced in the object reference array.
-   *
-   * @access protected
-   * @param array indexes Array of indexes and values to find object by
-   */
-  function &checkLoadedReference($indexes) {
-    $hash = $this->createHashFromIndexes($indexes);
-    if (isset($this->objects[$hash])) {
-      $this->foowd->debug('msg', 'Using exising loaded reference');
-      return $this->objects[$hash];
-    } else {
-      return FALSE;
-    }
-  }
-
-  /**
-   * Create a unique hash to store the object reference under.
-   *
-   * @access protected
-   * @param array indexes Array of indexes and values to find object by
-   */
-  function createHashFromIndexes($indexes) {
-    if (
-      isset($indexes['objectid']) &&
-      isset($indexes['classid']) &&
-      isset($indexes['version']) &&
-      isset($indexes['workspaceid'])
-    ) {
-      return $indexes['objectid'].'_'.$indexes['classid'].'_'.$indexes['version'].'_'.$indexes['workspaceid'];
-      }
-    return FALSE;
-  }
-
-  /**
    * Build where clause from indexes array.
    *
    * @access protected
@@ -183,43 +88,55 @@ class foowd_db {
    * @param str conjuction Operand to use to join the elements of the clause
    * @return str The generated where clause.
    */
-  function buildWhere($indexes, $conjuction = 'AND') {
+  function buildWhere($indexes, $conjunction = 'AND') {
+    if ( isset($index['raw_where']) )
+        return $index['raw_where'];
+
     $where = '';
+ 
+    if ( $conjunction != 'AND' )
+      $conjunction = ' OR';
+
     foreach ($indexes as $key => $index) {
-      if ($conjuction === 'OR') {
-        $where .= ' OR';
-      } else {
-        $where .= 'AND';
-      }
+      if ( !isset($index) )  
+        continue;
+
+      $where .= $conjunction;
+       
+      // standard 'classid' => ERROR_CLASS_ID
       if (!is_array($index)) {
-        if (isset($index)) {
-          if (is_numeric($index)) {
-            $where .= ' '.$key.' = '.$index.' ';
-          } else {
-            $where .= ' '.$key.' = \''.$index.'\' ';
-          }
-        } else {
-          $where = substr($where, 0, -3);
-        }
-      } elseif (!isset($index['index'])) {
-        $where .= $this->buildWhere($index, $key);
+        $where .= ' '.$key.' = ';
+        $where .= is_numeric($index) ? $index : '\''.$index.'\'';
+        $where .= ' ';        
       } else {
-        if (!isset($index['op'])) {
-          $index['op'] = '=';
-        } elseif ($index['op'] == '!=') {
-          $index['op'] = '<>';
-        }
-        if (!isset($index['value'])) {
-          trigger_error('No value given for index "'.$index['index'].'".');
-          $index['value'] = '';
-        }
-        if (is_numeric($index['value'])) {
-          $where .= ' '.$index['index'].' '.$index['op'].' '.$index['value'].' ';
+        // dealing with an array as the $index
+        if ( !isset($index['index']) ) {
+          $where .= $this->buildWhere($index, $key);
         } else {
-          $where .= ' '.$index['index'].' '.$index['op'].' \''.$index['value'].'\' ';
+          if ( !isset($index['value']) ) {
+            trigger_error('No value given for index "'.$index['index'].'".');
+            $index['value'] = '';
+          }
+
+          if ( !isset($index['op']) )
+            $index['op'] = '=';
+          elseif ( $index['op'] == '!=' )
+            $index['op'] = '<>';
+
+          if ( !isset($index['value']) ) {
+            trigger_error('No value given for index "'.$index['index'].'".');
+            $value = '';
+          } else {
+            $value = $index['value'];
+          }
+
+          $where .= ' '.$index['index'].' '.$index['op'].' ';
+          $where .= is_numeric($value) ? $value : '\''.$value.'\'';
+          $where .= ' ';        
         }
       }
-    }
+    }    
+
     return ' ('.substr($where, 3).') ';
   }
 
@@ -267,7 +184,7 @@ class foowd_db {
     $this->setWorkspace($indexes);
 
 // check previously loaded object reference
-    if ($object = &$this->checkLoadedReference($indexes)) {
+    if ($object = &$this->checkLoadedReference($indexes, $source)) {
       return $object;
     }
 
@@ -601,11 +518,12 @@ class foowd_db {
       .' AND workspaceid = '.$object->foowd_original_access_vars['workspaceid'];
 
     if ($this->query($delete)) {
-      $this->foowd->track(); return TRUE;
+      $this->foowd->track(); 
+      return TRUE;
     } else {
-      $this->foowd->track(); return FALSE;
+      $this->foowd->track(); 
+      return FALSE;
     }
-
   }
 
   /**

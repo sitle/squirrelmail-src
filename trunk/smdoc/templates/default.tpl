@@ -1,7 +1,7 @@
 <?php
 
 $t['body_function'] = 'default_body';
-include(TEMPLATE_PATH.'/index.tpl');
+include(TEMPLATE_PATH.'index.tpl');
 
 function default_body(&$foowd, $className, $method, $user, &$object, &$t)
 {

@@ -56,29 +56,6 @@ class foowd_anonuser extends foowd_object {
       return FALSE;
     }
   }
-
-  /**
-   * Returns true if user has permission
-   *
-   * @param str className Name of the class the method belongs to.
-   * @param str methodName Name of the method.
-   * @param string type class/object method
-   * @param object objectReference to current object being checked (may be NULL)
-   * @return bool TRUE if user has access to method
-   */
-  function hasPermission($className,$methodName,$type,&$object)
-  {
-    $creatorid = NULL;
-    if ( isset($object) ) {
-      if ( isset($object->permissions[$methodName]) )
-        $methodPermission = $object->permissions[$methodName];
-    }
-
-    if ( !isset($methodPermission) )
-      $methodPermission = getPermission($className, $methodName, $type);
-
-    return $this->inGroup($methodPermission, $creatorid);
-  }
   
   /**
    * Check the string is the users password.
