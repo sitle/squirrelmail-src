@@ -3,7 +3,7 @@
 define('PATH','../foowd/lib/');
 define('SM_PATH', 'lib/');
 define('CFG_PATH','config/');
-define('TPL_DIR','templates/');
+define('TEMPLATE_PATH','templates');
 
 /*
  * Database Settings
@@ -14,12 +14,12 @@ define('TPL_DIR','templates/');
  * -------------------------------------------------------------
  */
 
-define('DB_LAYER','mysql');      // which Foowd storage layer to use (mysql|odbc|dbx)
-define('DB_HOST', '');   // database IP address
-define('DB_NAME', '');      // database name
-define('DB_USER', '');      // database username
-define('DB_PASS', '');      // database password
-define('DB_TABLE','tblobject');  // default database table
+define('DB_LAYER', 'mysql');      // which Foowd storage layer to use (mysql|odbc|dbx)
+define('DB_HOST',  '');   // database IP address
+define('DB_NAME',  '');      // database name
+define('DB_USER',  '');      // database username
+define('DB_PASS',  '');      // database password
+define('DB_TABLE', 'tblobject');  // default database table
 
 /*
  * Pre-Class-Load Configuration
@@ -45,22 +45,12 @@ require(CFG_PATH.'config.groups.php');        // Group/Permission
  * definitions here.
  * -------------------------------------------------------------
  */
-require(SM_PATH.'smdoc.class.template.php');  // Basic template class
-
 require(PATH.'input.cookie.php');
 require(PATH.'input.querystring.php');
 require(SM_PATH.'smdoc.input.session.php');
 require(SM_PATH.'smdoc.input.form.php');
 
-include(PATH.'input.checkbox.php');
-include(PATH.'input.dropdown.php');
-include(PATH.'input.radio.php');
-include(PATH.'input.textarea.php');
-include(PATH.'input.textarray.php');
-include(PATH.'input.textbox.php');
-
 require(PATH.'class.object.php');
-require(SM_PATH.'smdoc.class.object.php');
 require(SM_PATH.'smdoc.class.error.php');     // error handling 
 require(SM_PATH.'smdoc.class.user.php');      // modified user
 require(PATH.'class.workspace.php');
@@ -81,7 +71,6 @@ require(SM_PATH.'smdoc.extern.changes.php');
  * -------------------------------------------------------------
  */
 require(CFG_PATH.'config.cache.php');       // Object Cache settings
-require(CFG_PATH.'config.display.php');     // Template configuration
 /*
  * Session initialization
  * -------------------------------------------------------------
