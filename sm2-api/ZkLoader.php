@@ -31,7 +31,7 @@ class ZkLoader {
         $this->zkhome = $zkhome;
         $this->libhome = "$zkhome/lib";
         $this->modhome = "$zkhome/modules";
-        
+
         /* Load the core Zookeeper constants and functions files. */
         require_once("$zkhome/ZkConstants.php");
         require_once("$zkhome/ZkFunctions.php");
@@ -40,44 +40,42 @@ class ZkLoader {
     /**
      * Attempt to load the requested service.
      *
-     * @param string $username username with which to authenticate
-     * @param string $password password with which to authenticate
-     * @return bool indicates correct or incorrect password
+     * @param string $svcname
+     * @param string $options
+     * @param string $modname
+     *
+     * @return bool/string
      */
     function &loadService($svcname, $options, $modname = '') {
         $svcfile  = "$this->libhome/$svcname/load.php";
         $svcfunc  = "zkload_$svcname";
         $svcclass = "ZkSvc_$svcname";
-        
+        $ret = FALSE;
+
         /* Do some checks on the service name, then load the service file. */
-        if (!zkCheckName($svcname)) {
-            return (false);
-        } else if (!file_exists($svcfile)) {
-            return (false);
-        } else {
+        if( zkCheckName($svcname) && file_exists($svcfile) ) {
             require_once($svcfile);
             $code_preload = "\$svcfile_result = $svcfunc('$this->zkhome');";
             
             /* Run the preload code string. */
             eval($code_preload);
-            
+
             /* Evaluate the result. */
-            if (!$svcfile_result) {
-                return (false);
+            if ($svcfile_result) {
+                
+                /* Run the service load code string. */
+                $code_loadservice = "\$service = new $svcclass(\$options);";
+                eval($code_loadservice);
+                
+                /* Check if we need to load a module for this service. */
+                if ($modname != '') {
+                    $this->loadModule($service, $options, $modname);
+                }
+                $ret = $service;
             }
         }
-        
-        /* Run the service load code string. */
-        $code_loadservice = "\$service = new $svcclass(\$options);";
-        eval($code_loadservice);
-        
-        /* Check if we need to load a module for this service. */
-        if ($modname != '') {
-            $this->loadModule($service, $options, $modname);
-        }    
-        
         /* Return the newly created Zookeeper service. */
-        return ($service);
+        return ($ret);
     }
 
     /**
@@ -85,34 +83,36 @@ class ZkLoader {
      *
      * @param object $service service to which to add the new module
      * @param array  $options array of options for the module
+     * @param string $modname module name
+     *
+     * @return bool TRUE if succesfully loaded or FALSE if not
      */
     function loadModule(&$service, $options, $modname) {
+
         $svcname = $service->getServiceName();
         $modfile  = "$this->modhome/$svcname/$modname.php";
         $modclass = "ZkMod_$svcname" . "_$modname";
-        
-        /* Do some checks on the module name, then load the module file. */
-        if (!zkCheckName($modname)) {
-            return (false);
-        } else if (!file_exists($modfile)) {
-            return (false);
-        } else {
-            require_once($modfile);
-        }
+        $ret = FALSE;
 
-        /* Run the module load code string. */
-        $code_loadmodule = "\$module = new $modclass(\$options);";
-        eval($code_loadmodule);
-        
-        echo '<tt>' .
-             "svcname = $svcname<br>" .
-             "modname = $modname<br>" .
-             "modfile = $modfile<br>" .
-             "modclass = $modclass<br>" .
-             '</tt>';
-        
-        /* Load the newly created module into this service. */
-        $service->loadModule($module, $options);
+        /* Do some checks on the module name, then load the module file. */
+        if( zkCheckName($modname) && file_exists($modfile) ) {
+            require_once($modfile);
+            $ret = TRUE;
+            /* Run the module load code string. */
+            $code_loadmodule = "\$module = new $modclass(\$options);";
+            eval($code_loadmodule);
+
+            echo '<tt>' .
+                 "svcname = $svcname<br>" .
+                 "modname = $modname<br>" .
+                 "modfile = $modfile<br>" .
+                 "modclass = $modclass<br>" .
+                 '</tt>';
+
+            /* Load the newly created module into this service. */
+            $service->loadModule($module, $options);
+        }
+        return( $ret );
     }
 }
 

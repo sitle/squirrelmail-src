@@ -15,6 +15,7 @@
  * Adapted from apache log level values found on:
  * http://www.administeringapache.com/Figures/loglevel.php3
  */
+
 define('ZKLOG_DEBUG',   0);  /* Debug-level messages              */
 define('ZKLOG_INFO',    1);  /* Informational                     */
 define('ZKLOG_UNKNOWN', 2);  /* Error level unknown               */
