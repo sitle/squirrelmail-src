@@ -30,9 +30,9 @@
          if (substr($pref, 0, strpos($pref, "=")) == $string) {
             fclose($file);
             $tmp = trim(substr($pref, strpos($pref, "=")+1));
-            if (strstr($tmp, "<?") || strstr($tmp, "<%") || ereg('<.*script', $add)) {   
-                return '';                                                                
-            }
+            if (strstr($tmp, "<?") || strstr($tmp, "<%") || ereg('<.*script', $tmp)) {   
+               return '';
+	    }
             return $tmp;
          }
       }
@@ -83,6 +83,11 @@
    function setPref($data_dir, $username, $string, $set_to) {
       $filename = "$data_dir$username.pref";
       $found = false;
+
+      if (strstr($set_to, "<?") || strstr($set_to, "<%") || ereg('<.*script', $set_to)) {   
+         return (0);
+      }
+
       if (!file_exists($filename)) {
          printf (_("Preference file, %s, does not exist. Log out, and log back in to create a default preference file."), $filename);
          echo "\n<br>\n";
