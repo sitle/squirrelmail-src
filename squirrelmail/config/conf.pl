@@ -230,6 +230,21 @@ while ( $line = <FILE> ) {
                     $tmp =~ s/[\'|\"],?\s*$//;
                     $tmp =~ s/[\'|\"]\);\s*$//;
                     $name = $tmp;
+                } elsif ( $tmp =~ /^\s*[\'|\"]binddn[\'|\"]/i ) {
+                    $tmp =~ s/^\s*[\'|\"]binddn[\'|\"]\s*=>\s*[\'|\"]//i;
+                    $tmp =~ s/[\'|\"],?\s*$//;
+                    $tmp =~ s/[\'|\"]\);\s*$//;
+                    $binddn = $tmp;
+                } elsif ( $tmp =~ /^\s*[\'|\"]bindpw[\'|\"]/i ) {
+                    $tmp =~ s/^\s*[\'|\"]bindpw[\'|\"]\s*=>\s*[\'|\"]//i;
+                    $tmp =~ s/[\'|\"],?\s*$//;
+                    $tmp =~ s/[\'|\"]\);\s*$//;
+                    $bindpw = $tmp;
+                } elsif ( $tmp =~ /^\s*[\'|\"]protocol[\'|\"]/i ) {
+                    $tmp =~ s/^\s*[\'|\"]protocol[\'|\"]\s*=>\s*[\'|\"]?//i;
+                    $tmp =~ s/[\'|\"]?,?\s*$//;
+                    $tmp =~ s/[\'|\"]?\);\s*$//;
+                    $protocol = $tmp;
                 }
             }
             $ldap_host[$sub]    = $host;
@@ -238,6 +253,9 @@ while ( $line = <FILE> ) {
             $ldap_port[$sub]    = $port;
             $ldap_maxrows[$sub] = $maxrows;
             $ldap_charset[$sub] = $charset;
+            $ldap_binddn[$sub]  = $binddn;
+            $ldap_bindpw[$sub]  = $bindpw;
+            $ldap_protocol[$sub] = $protocol;
         } elsif ( $options[0] =~ /^(data_dir|attachment_dir|theme_css|org_logo|signout_page)$/ ) {
             ${ $options[0] } = &change_to_rel_path($options[1]);
         } else {
@@ -2382,6 +2400,16 @@ sub command61 {
                 if ( $ldap_maxrows[$count] ) {
                     print "     maxrows: $ldap_maxrows[$count]\n";
                 }
+                if ( $ldap_binddn[$count] ) {
+                    print "      binddn: $ldap_binddn[$count]\n";
+                    if ( $ldap_bindpw[$count] ) {
+                        print "      bindpw: $ldap_bindpw[$count]\n";
+                    }
+                }
+		if ( $ldap_protocol[$count] ) {
+                    print "    protocol: $ldap_protocol[$count]\n";
+                }
+
                 print "\n";
                 $count++;
             }
@@ -2443,6 +2471,36 @@ sub command61 {
 
             print "\n";
 
+            print "If your LDAP server does not like anonymous logins, you can specify bind DN.\n";
+            print "Default is none, anonymous bind.  Press ENTER for default.\n";
+            print "binddn: ";
+            $name = <STDIN>;
+            $name =~ s/[\r|\n]//g;
+            $ldap_binddn[$sub] = $name;
+
+            print "\n";
+
+            if ( $ldap_binddn[$sub] ne '' ) {
+
+                print "Now, please specify password for that DN.\n";
+                print "bindpw: ";
+                $name = <STDIN>;
+                $name =~ s/[\r|\n]//g;
+                $ldap_bindpw[$sub] = $name;
+
+                print "\n";
+            }
+
+	    print "You can specify bind protocol version here.\n";
+            print "Default protocol version depends on your php ldap settings.\n";
+	    print "Press ENTER for default.\n";
+            print "protocol: ";
+            $name = <STDIN>;
+            $name =~ s/[\r|\n]//g;
+            $ldap_protocol[$sub] = $name;
+
+            print "\n";
+
         } elsif ( $input =~ /^\s*-\s*[0-9]?/ ) {
             if ( $input =~ /[0-9]+\s*$/ ) {
                 $rem_num = $input;
@@ -2458,6 +2516,9 @@ sub command61 {
             @new_ldap_name    = ();
             @new_ldap_charset = ();
             @new_ldap_maxrows = ();
+            @new_ldap_bindpw  = ();
+            @new_ldap_binddn  = ();
+            @new_ldap_protocol = ();
 
             while ( $count <= $#ldap_host ) {
                 if ( $count != $rem_num ) {
@@ -2467,6 +2528,9 @@ sub command61 {
                     @new_ldap_name    = ( @new_ldap_name,    $ldap_name[$count] );
                     @new_ldap_charset = ( @new_ldap_charset, $ldap_charset[$count] );
                     @new_ldap_maxrows = ( @new_ldap_maxrows, $ldap_maxrows[$count] );
+                    @new_ldap_binddn  = ( @new_ldap_binddn,  $ldap_binddn[$count] );
+                    @new_ldap_bindpw  = ( @new_ldap_bindpw,  $ldap_bindpw[$count] );
+                    @new_ldap_protocol  = ( @new_ldap_protocol,  $ldap_protocol[$count] );
                 }
                 $count++;
             }
@@ -2476,6 +2540,9 @@ sub command61 {
             @ldap_name    = @new_ldap_name;
             @ldap_charset = @new_ldap_charset;
             @ldap_maxrows = @new_ldap_maxrows;
+            @ldap_binddn  = @new_ldap_binddn;
+            @ldap_bindpw  = @new_ldap_bindpw;
+            @ldap_protocol = @new_ldap_protocol;
         } elsif ( $input =~ /^\s*\?\s*/ ) {
             print ".-------------------------.\n";
             print "| +            (add host) |\n";
@@ -2838,6 +2905,21 @@ sub save_data {
                 print CF ",\n";
 		# integer
                 print CF "    'maxrows' => $ldap_maxrows[$count]";
+            }
+            if ( $ldap_binddn[$count] ) {
+                print CF ",\n";
+                # string
+                print CF "    'binddn' => '$ldap_binddn[$count]'";
+                if ( $ldap_bindpw[$count] ) {
+                    print CF ",\n";
+                    # string
+                    print CF "    'bindpw' => '$ldap_bindpw[$count]'";
+                }
+            }
+            if ( $ldap_protocol[$count] ) {
+                print CF ",\n";
+		# integer
+                print CF "    'protocol' => $ldap_protocol[$count]";
             }
             print CF "\n";
             print CF ");\n";
