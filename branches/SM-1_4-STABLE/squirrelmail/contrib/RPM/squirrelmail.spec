@@ -1,6 +1,6 @@
 ##
 # $Id$
-%define spec_release 1
+%define spec_release 2
 
 ##
 # Rebuild with:
@@ -30,7 +30,7 @@ Source:         %{name}-%{version}.tar.bz2
 BuildRoot:      %{_tmppath}/%{name}-%{version}-root
 BuildArch:      noarch
 Requires:       %{webserver}, php >= 4.0.4, perl, tmpwatch >= 2.8, aspell
-Requires:       MTA
+Requires:       /usr/sbin/sendmail
 
 %description
 SquirrelMail is a standards-based webmail package written in PHP4. It
