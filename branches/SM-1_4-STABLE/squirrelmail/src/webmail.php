@@ -61,10 +61,10 @@ if ($my_language != $squirrelmail_language) {
 
 set_up_language(getPref($data_dir, $username, 'language'));
 
-echo "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Frameset//EN\">\n".
-     "<html><head>\n" .
-     "<title>$org_title</title>\n".
-     "</head>";
+$output = "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Frameset//EN\">\n".
+          "<html><head>\n" .
+          "<title>$org_title</title>\n".
+          "</head>";
 
 $left_size = getPref($data_dir, $username, 'left_size');
 $location_of_bar = getPref($data_dir, $username, 'location_of_bar');
@@ -91,10 +91,10 @@ if ($left_size == "") {
 }
 
 if ($location_of_bar == 'right') {
-    echo "<frameset cols=\"*, $left_size\" id=\"fs1\">\n";
+    $output .= "<frameset cols=\"*, $left_size\" id=\"fs1\">\n";
 }
 else {
-    echo "<frameset cols=\"$left_size, *\" id=\"fs1\">\n";
+    $output .= "<frameset cols=\"$left_size, *\" id=\"fs1\">\n";
 }
 
 /*
@@ -127,14 +127,18 @@ if ($right_frame == 'right_main.php') {
 }
 
 if ($location_of_bar == 'right') {
-    echo "<frame src=\"$right_frame_url\" name=\"right\" frameborder=\"1\" />\n" .
-         "<frame src=\"left_main.php\" name=\"left\" frameborder=\"1\" />\n";
+    $output .= "<frame src=\"$right_frame_url\" name=\"right\" frameborder=\"1\" />\n" .
+               "<frame src=\"left_main.php\" name=\"left\" frameborder=\"1\" />\n";
 }
 else {
-    echo "<frame src=\"left_main.php\" name=\"left\" frameborder=\"1\" />\n".
-         "<frame src=\"$right_frame_url\" name=\"right\" frameborder=\"1\" />\n";
+    $output .= "<frame src=\"left_main.php\" name=\"left\" frameborder=\"1\" />\n".
+               "<frame src=\"$right_frame_url\" name=\"right\" frameborder=\"1\" />\n";
 }
-do_hook('webmail_bottom');
+$ret = concat_hook_function('webmail_bottom', $output);
+if($ret != '') {
+    $output = $ret;
+}
+echo $output;
 ?>
 </frameset>
 </html>
