@@ -23,12 +23,7 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 lib.php
 Foowd function library
 */
-
-define('VERSION', '1');
-
-function error($str) {
-	die('<p>'.$str.'</p>');
-}
+/*** Debugging functions ***/
 
 function show($var) {
 	echo '<pre>'; print_r($var); echo '</pre>';
@@ -36,8 +31,8 @@ function show($var) {
 
 /*** System functions ***/
 
-function setVarConstOrDefault(&$value, $constant, $default) { // set var to value, or constant, or default
-	if (isset($value) && $value != NULL) {
+function getVarConstOrDefault(&$value, $constant, $default) { // set var to value, or constant, or default
+	if (isset($value) && $value !== NULL && $value !== '') {
 		return $value;
 	} elseif (defined($constant)) {
 		return constant($constant);
@@ -46,9 +41,27 @@ function setVarConstOrDefault(&$value, $constant, $default) { // set var to valu
 	}
 }
 
-function setConstOrDefault($constant, $default) { // set var to constant, or default
+function getVarOrConst(&$value, $constant) { // set var to value, or constant, or throw error
+	if (isset($value) && $value !== NULL && $value !== '') {
+		return $value;
+	} elseif (defined($constant)) {
+		return constant($constant);
+	} else {
+		trigger_error('Constant "'.$constant.'" not defined.', E_USER_ERROR);
+	}
+}
+
+function getConstOrDefault($constant, $default) { // set var to constant, or default
 	if (defined($constant)) {
 		return constant($constant);
+	} else {
+		return $default;
+	}
+}
+
+function getVarOrDefault(&$value, $default) { // set var to value, or default value
+	if (isset($value) && $value !== NULL && $value !== '') {
+		return $value;
 	} else {
 		return $default;
 	}
@@ -61,8 +74,39 @@ function getRegexLength($regex, $default) { // find the max length of string all
 		return 0;
 	} elseif (preg_match('/\{[0-9,]*([0-9]+)\}/U', $regex, $results = array())) {
 		return $results[1];
+	} elseif (preg_match('/\?/', $regex)) {
+		return 1;
 	} else {
 		return $default;
+	}
+}
+
+function getPermission($className, $methodName, $type = 'object', $default = NULL) {
+	$constName = 'PERMISSION_'.strtoupper($className).'_'.strtoupper($type).'_'.strtoupper($methodName);
+	if (isset($default) && $default !== NULL && $default !== '') {
+		return $default;
+	} elseif (defined($constName)) {
+		return constant($constName);
+	} elseif ($className == 'foowd_object') { // none found
+		return NULL;
+	} else { // look at parent
+		return getPermission(get_parent_class($className), $methodName, $type);
+	}
+}
+
+function getClassName($classid) {
+	if (defined('META_'.$classid.'_CLASSNAME')) {
+		return constant('META_'.$classid.'_CLASSNAME');
+	} else {
+		trigger_error('Could not find class name from class ID '.$classid);
+	}
+}
+
+function getClassDescription($classid) {
+	if (defined('META_'.$classid.'_DESCRIPTION')) {
+		return constant('META_'.$classid.'_DESCRIPTION');
+	} else {
+		return 'Unknown';
 	}
 }
 
@@ -71,9 +115,9 @@ function getRegexLength($regex, $default) { // find the max length of string all
 function getCacheName($objectid, $classid = '-', $method = '-') {
 	global $foowd_cache;
 
-	$objectid = (int)setVarConstOrDefault($objectid, 'DEFAULT_OBJECTID', -633383736);
-	$classid = (int)setVarConstOrDefault($classid, 'DEFAULT_CLASSID', '');
-	$method = setVarConstOrDefault($method, 'DEFAULT_METHOD', 'view');
+	$objectid = (int)getVarOrConst($objectid, 'DEFAULT_OBJECTID');
+	$classid = (int)getVarConstOrDefault($classid, 'DEFAULT_CLASSID', '');
+	$method = getVarConstOrDefault($method, 'DEFAULT_METHOD', 'view');
 
 	$timeOut = 0;
 	$cacheName = FALSE;
@@ -105,7 +149,7 @@ function getCacheName($objectid, $classid = '-', $method = '-') {
 function readCache($cacheName) {
 	global $foowd_cache;
 
-	$cacheDir = setConstOrDefault('CACHE_DIR', stripslashes($_ENV['TMP']).'\\');
+	$cacheDir = getConstOrDefault('CACHE_DIR', stripslashes($_ENV['TMP']).'\\');
 	if (file_exists($cacheDir.$cacheName['cacheName'])) {
 		if (filemtime($cacheDir.$cacheName['cacheName']) > time() - $cacheName['timeOut']) {
 			if (@readfile($cacheDir.$cacheName['cacheName'])) {
@@ -118,7 +162,7 @@ function readCache($cacheName) {
 }
 
 function writeCache($cacheName, $text) {
-	$cacheDir = setConstOrDefault('CACHE_DIR', stripslashes($_ENV['TMP']).'\\');
+	$cacheDir = getConstOrDefault('CACHE_DIR', stripslashes($_ENV['TMP']).'\\');
 	if ($fp = fopen($cacheDir.$cacheName['cacheName'], 'w')) {
 		fwrite($fp, $text);
 		fclose($fp);
@@ -132,15 +176,19 @@ function writeCache($cacheName, $text) {
 /*** URI functions ***/
 
 function getURI($parameters) { // create a site URI given object details and a method
-	if (defined('FILENAME')) {
-		$uri = FILENAME.'?';
-	} else {
-		$uri = $_SERVER['PHP_SELF'].'?';
+	if (defined('GETURI') && function_exists(GETURI)) {
+		return call_user_func(GETURI, $parameters);
+	} else { // create querystring uri
+		if (defined('FILENAME')) {
+			$uri = FILENAME.'?';
+		} else {
+			$uri = $_SERVER['PHP_SELF'].'?';
+		}
+		foreach ($parameters as $name => $value) {
+			$uri .= $name.'='.$value.'&';
+		}
+		return substr($uri, 0, -1);
 	}
-	foreach ($parameters as $name => $value) {
-		$uri .= $name.'='.$value.'&';
-	}
-	return substr($uri, 0, -1);
 }
 
 function splitPath() { // slice up path and return sections as an array
@@ -165,6 +213,36 @@ function mungEmail($emailAddress) {
 	case 4:
 		return str_replace('@', 'NO@SPAM', $emailAddress);
 	}
+}
+
+function timeSince($time) {
+	$time = time() - $time;
+	if ($num = round($time / (3600 * 24 * 52), 1) AND $num > 1) {
+		return $num.' years';
+	} elseif ($num = round($time / (3600 * 24 * 30), 1) AND $num > 1) {
+		return $num.' months';
+	} elseif ($num = round($time / (3600 * 24 * 7), 1) AND $num > 1) {
+		return $num.' weeks';
+	} elseif ($num = round($time / (3600 * 24), 1) AND $num > 1) {
+		return $num.' days';
+	} elseif ($num = round($time / (3600), 1) AND $num > 1) {
+		return $num.' hours';
+	} elseif ($num = floor($time / 60) AND $num > 1) {
+		return $num.' minutes';
+	} else {
+		return $time.' seconds';
+	}
+}
+
+/*** Execution time ***/
+
+function getTime() {
+	$microtime = explode(' ', microtime());
+	return $microtime[0] + $microtime[1];
+}
+
+function executionTime($startTime) {
+	return getTime() - $startTime;
 }
 
 ?>

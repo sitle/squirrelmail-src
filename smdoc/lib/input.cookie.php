@@ -34,12 +34,16 @@ class input_cookie {
 	function input_cookie($name, $regex = NULL, $value = NULL, $expire = NULL, $path = NULL, $domain = NULL, $secure = NULL) {
 		$this->name = $name;
 		$this->regex = $regex;
-		$this->expire = setVarConstOrDefault($expire, 'COOKIE_EXPIRE', 31536000);
-		$this->path = setVarConstOrDefault($path, 'COOKIE_PATH', '');
-		$this->domain = setVarConstOrDefault($domain, 'COOKIE_DOMAIN', '');
-		$this->secure = setVarConstOrDefault($secure, 'COOKIE_SECURE', '');
-		if (isset($_COOKIE[$name])) {
-			$this->set($_COOKIE[$name]);
+		$this->expire = getVarConstOrDefault($expire, 'COOKIE_EXPIRE', 31536000);
+		$this->path = getVarConstOrDefault($path, 'COOKIE_PATH', '');
+		$this->domain = getVarConstOrDefault($domain, 'COOKIE_DOMAIN', '');
+		$this->secure = getVarConstOrDefault($secure, 'COOKIE_SECURE', '');
+		if (isset($_COOKIE[$name]) && ($this->regex == NULL || preg_match($this->regex, $_COOKIE[$name]))) {
+			if (get_magic_quotes_gpc()) {
+				$this->value = stripslashes($_COOKIE[$name]);
+			} else {
+				$this->value = $_COOKIE[$name];
+			}
 		}
 		if (!isset($this->value)) {
 			$this->value = $value;

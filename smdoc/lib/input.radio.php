@@ -29,8 +29,9 @@ class input_radio {
 	var $name; // radio name
 	var $value; // value of radio
 	var $buttons; // array of radio buttons
+	var $class; // css class
 	
-	function input_radio($name, $value = NULL, $buttons = NULL) {
+	function input_radio($name, $value = NULL, $buttons = NULL, $class = NULL) {
 		$this->name = $name;
 		$this->buttons = $buttons;
 		if (isset($_POST[$name])) {
@@ -41,6 +42,7 @@ class input_radio {
 		if (!isset($this->value)) {
 			$this->value = $value;
 		}
+		$this->class = $class;
 	}
 	
 	function set($value) {
@@ -59,7 +61,7 @@ class input_radio {
 		foreach ($this->buttons as $index => $button) {
 			echo '<input name="', $this->name, '" id="', $this->name, '_', $index, '" type="radio" value="', $index, '" ';
 			if ($index == $this->value) echo 'checked="checked" ';
-			echo 'title="', $button, '" /> <label for="', $this->name, '_', $index, '">', $button, '</label><br />';
+			echo 'title="', $button, '" class="', $this->class, '" /> <label for="', $this->name, '_', $index, '">', $button, '</label>';
 		}
 	}
 
