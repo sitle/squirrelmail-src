@@ -1,6 +1,7 @@
 <?php
   $foowd =& $t['foowd'];
   $user =& $foowd->user;
+
   if ( isset($t['object']) )
   {
     $object =& $t['object'];
@@ -14,6 +15,7 @@
 
   $method    = isset($t['method'])    ? $t['method'] : 'Unknown';
   $title     = isset($t['title'])     ? $t['title']: 'Unknown';
+  $lastUpdate = '&nbsp;';
 
   if ( !sqGetGlobalVar('ok', $ok, SQ_FORM) && isset($t['success']) )
     $ok = $t['success'];
@@ -21,14 +23,29 @@
     $error = $t['failure'];
  
   getStatusStrings($ok, $error); 
+
+  if ( isset($t['classid']) && $object != NULL &&
+       $t['classid'] != EXTERNAL_CLASS_ID && 
+       $t['classid'] != USER_CLASS_ID )
+  {
+    $version = isset($t['version']) ? 'v. ' . $t['version'] . ', ' : ''; 
+    $lastUpdate = ' [ '. $version . _("Last Update") . ': ' 
+                  . date('Y/m/d, H:i T', $object->updated) . ' ] ';
+    if ( isset($t['workspaceid']) && $t['workspaceid'] != 0 )
+      $lastUpdate .= ' (' . getLink($foowd, $t['workspaceid']) . ')';
+  }
+
+  if ( $method != 'view' )
+    $lastUpdate = $method . $lastUpdate;
   
 //  smdoc_translation::initialize($foowd);
 //  $flag_links = smdoc_translation::getLink($foowd);
-  $loc_url = getURI(array());
-  $user_url = $loc_url . '?class='.USER_CLASS_NAME;
+  $loc_url = getURI();
+  $user_url = $loc_url . '?class='.getClassName(USER_CLASS_ID);
 
 ?>
-<!--DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1;" />
@@ -43,10 +60,12 @@
 <body>
 <!-- begin page title -->
 <div id="pagetitle">
-<table width="100%" cellspacing="0" cellpadding="0" border="0">
+<table width="100%" cellspacing="0" cellpadding="0">
   <tr>
     <td rowspan="3" class="skip">
-      <a href="#content"><img src="templates/images/empty.png" alt="skip to content" /></a>
+      <a href="#start_content"><img src="templates/images/empty.png" alt="skip to content" /></a>
+      <img src="templates/images/empty.png" alt="|" />
+      <a href="#end_content"><img src="templates/images/empty.png" alt="skip to admin functions" /></a>
       <?php if ($foowd->debug) { ?>
           <img src="templates/images/empty.png" alt="|" />
           <a href="#debug"><img src="templates/images/empty.png" alt="skip to debug" /></a>
@@ -69,54 +88,56 @@
           if ( isset($user->objectid) )
           {
             // If an objectid is set, we're logged in.
-            $url = getURI(array('objectid' => $user->objectid, 'classid' => USER_CLASS_ID));
-            echo '<a href="' . $url . '">' . $user->title . '</a> ';
+            echo '<a href="' . $loc_url . '&amp;objectid=' . $user->objectid .'">' . $user->title . '</a> ';
             echo '( '. $lang_url
-                 . '<a href="', $user_url, '&method=logout">'. _("Logout") .'</a> )';
+                 . '<a href="', $user_url, '&amp;method=logout">'. _("Logout") .'</a> )';
           } else {
             // Otherwise, we're anonymous
             echo _("Anonymous User"), ' [' . $user->title . '] ';
             echo '( '. $lang_url  
-                 . '<a href="', $user_url, '&method=login">'. _("Login") .'</a> ';
-            echo '| <a href="', $user_url, '&method=create">'. _("Register") .'</a> )';
+                 . '<a href="', $user_url, '&amp;method=login">'. _("Login") .'</a> ';
+            echo '| <a href="', $user_url, '&amp;method=create">'. _("Register") .'</a> )';
           }
         ?>
     </td>
   </tr>
   <tr>
     <td valign="bottom">
-      <div class="titleblock">
+      <table width="100%" cellspacing="0" cellpadding="0">
+        <tr>
+          <td class="titleblock">
       <?php
           if ( isset($t['classid']) && $t['objectid'] )
           {
             if ( $t['classid'] == USER_CLASS_ID )
                 echo 'User Profile: ';
-            $obj_url = getURI( array('objectid' => $t['objectid'], 
-                                     'classid'  => $t['classid']) );
-            echo '<a href="', $obj_url.'">'. $title.'</a> ';
+            echo '<a href="' . $loc_url . '&amp;objectid=' . $t['objectid'] .'">'. $title.'</a> ';
           }
           else
             echo $title;
       ?>
-      </div>
+          </td>
+          <td class="titleupdate"><?php echo $lastUpdate; ?></td>
+        </tr> 
+      </table>
       <table width="100%" cellspacing="0" cellpadding="0" class="locationmenu">
         <tr>
-          <td align="left" class="subtext">
-            <nobr><?php
+          <td align="left" class="menu_subtext">
+            <?php
           echo '<a href="', $loc_url, '">',            _("Home"), '</a> | ';
           echo '<a href="', $loc_url, '?object=faq">', _("Docs"), '</a> | ';
           echo '<a href="', $loc_url, '?object=faq">', _("Plugins"), '</a> | ';
           echo '<a href="', $loc_url, '?object=faq">', _("Support"), '</a> | ';
           echo '<a href="', $loc_url, '?object=faq">', _("Download"), '</a> | ';
           echo '<a href="', $loc_url, '?object=faq">', _("FAQ"),'</a>';
-            ?></nobr>
+            ?>
           </td>
           <td class="subtext">&nbsp;</td>
-          <td align="right" class="subtext">
-            <nobr><?php
+          <td align="right" class="menu_subtext">
+            <?php
           echo '<a href="', $loc_url, '?object=search">', _("Search"),'</a> | ';
           echo '<a href="', $loc_url, '?object=sqmindex">',_("Index"),'</a> ';
-            ?></nobr>
+            ?>
           </td>
         </tr>
       </table>
@@ -131,9 +152,8 @@
   <div id="status"><span class="error"><?php echo $error; ?></span></div>
 <?php } ?>
 <!-- begin content -->
-<a name="content"><img src="templates/images/empty.png" alt="------------- begin content ----------------------------------------" border="0" /></a>
+<div class="nothere"><a id="start_content" name="start_content"><img src="templates/images/empty.png" alt="------------- begin content ----------------------------------------" /></a></div>
 <div id="content">
-<img src="templates/images/empty.png" alt="<?php echo $title; ?>" border="0" />
 <?php
   if ( isset($t['body']) )
     echo $t['body'];
@@ -144,20 +164,14 @@
   else
     echo '<p>This object did not provide a BODY to the template.</p>';
 ?>
+<a id="end_content" name="end_content"><img src="templates/images/empty.png" alt="------------- end content ------------------------------------------" /></a>
 </div>
-<a name="footer"><img src="templates/images/empty.png" alt="------------- end content ------------------------------------------" border="0" /></a>
 <div id="editmenu">
   <?php
     if ( isset($t['classid']) &&                 // classid is defined
          $t['classid'] != EXTERNAL_CLASS_ID &&   // is not external object
          $t['classid'] != ERROR_CLASS_ID )         // is not error page
     {
-        echo _("Last Update");
-        if ( $t['workspaceid'] != 0 )
-            echo ' (', getLink($foowd, $t['workspaceid']), ')';
-
-        echo  ': ', date('Y/m/d, H:i T', $object->updated) . "<br />\n";
-
         $methods = get_class_methods($className);
 
         $notfirst = 0;
@@ -178,7 +192,6 @@
                     if ( $notfirst ) echo ' | ';
                     $notfirst = 1;
                     echo '<a href="', getURI(array('objectid' => $t['objectid'],
-                                                    'classid' => $t['classid'],
                                                     'version' => $t['version'],
                                                      'method' => $methodName)), '">', 
                           ucfirst($methodName), '</a>';
@@ -203,8 +216,7 @@
 </div>
 <?php
 if ($foowd->debug) { // display debug data
-?><a name="debug"><img src="templates/images/empty.png" alt="------------- debug ------------------------------------------" border="0" /></a><?php
-    $foowd->debug->display($foowd);
+  $foowd->debug->display($foowd);
 }
 ?>
 </body>
