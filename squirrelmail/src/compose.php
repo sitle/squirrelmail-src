@@ -15,9 +15,7 @@
     ** $Id$
     **/
    include ("../src/validate.php");
-
-   session_start();
-
+    
    include("../functions/strings.php");
    include("../config/config.php");
    include("../functions/page_header.php");
@@ -367,7 +365,6 @@
    function saveAttachedFiles() {
       global $HTTP_POST_FILES, $attachment_dir, $attachments;
       
-      is_logged_in();
       $localfilename = GenerateRandomString(32, '', 7);
       while (isset($attachments[$localfilename]))
           $localfilename = GenerateRandomString(32, '', 7);
@@ -446,7 +443,6 @@
          //sqimap_logout($imapConnection);
       }
    } else if (isset($html_addr_search_done)) {
-      is_logged_in();
       displayPageHeader($color, $mailbox);
 
       for ($i=0; $i < count($send_to_search); $i++) {
@@ -478,7 +474,6 @@
       displayPageHeader($color, $mailbox);
       showInputForm();
    } else if (isset($do_delete)) {
-      is_logged_in();
       displayPageHeader($color, $mailbox);
 
       while (list($lkey, $localname) = each($delete)) {

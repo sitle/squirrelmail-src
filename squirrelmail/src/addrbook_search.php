@@ -127,31 +127,16 @@ function bcc_address($addr) {
 
    /* ================= End of functions ================= */
 
-   session_start();
-   
    include("../functions/strings.php");
    include('../functions/i18n.php');
+   include('../config/config.php');
+   include('../functions/array.php');
+   include('../functions/auth.php');
+   include('../functions/strings.php');
+   include('../functions/page_header.php');
+   include('../functions/addressbook.php');
 
-   if(!isset($logged_in) || !isset($username) || !isset($key)) {
-      include ('../themes/default_theme.php');
-      include ('../functions/display_messages.php');
-      printf('<html><BODY TEXT="%s" BGCOLOR="%s" LINK="%s" VLINK="%s" ALINK="%s">',
-              $color[8], $color[4], $color[7], $color[7], $color[7]);
-      plain_error_message(_("You need a valid user and password to access this page!")
-                          . '<br><a href="../src/login.php">'
-                          . _("Click here to log back in.") . "</a>.", $color);
-      echo '</body></html>';
-      exit;
-   }
-   include ('../config/config.php');
-   include ('../functions/array.php');
-   include ('../functions/auth.php');
-   include ('../functions/strings.php');
-   include ('../functions/page_header.php');
-   include ('../functions/addressbook.php');
-
-   is_logged_in();
-   include ('../src/load_prefs.php');
+   include('../src/load_prefs.php');
 
    displayHtmlHeader();
 

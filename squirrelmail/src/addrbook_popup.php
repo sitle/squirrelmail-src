@@ -11,16 +11,12 @@
     **/
    include ("../src/validate.php");
 
-   session_start();
-
    include("../functions/strings.php");
    include('../functions/i18n.php');
    include('../config/config.php');
    include('../functions/page_header.php');
    include('../functions/auth.php');
    include('../functions/addressbook.php');
-
-   is_logged_in();
 
    include('../src/load_prefs.php');
    

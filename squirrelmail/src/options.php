@@ -12,8 +12,6 @@
     **/
    include ("../src/validate.php");
 
-   session_start();
-
    $theme = array();
    include('../functions/strings.php');
    include('../config/config.php');
@@ -31,7 +29,6 @@
 
    include('../src/load_prefs.php');
    displayPageHeader($color, 'None');
-   is_logged_in(); 
 ?>
 
 <br>

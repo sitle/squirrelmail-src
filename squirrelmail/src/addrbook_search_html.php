@@ -17,10 +17,8 @@
     **/
    include ("../src/validate.php");
 
-   session_start();
-
-   include('../config/config.php');
    include('../functions/strings.php');
+   include('../config/config.php');
    include('../functions/auth.php');
    include('../functions/page_header.php');
    include('../functions/date.php');

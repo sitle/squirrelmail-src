@@ -11,7 +11,7 @@
     **  $Id$
     **/
 
-   session_start();
+   include("../src/validate.php");
 
    include("../functions/strings.php");
    include("../config/config.php");
