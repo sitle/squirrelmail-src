@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2003-12-28 10:37-0600\n"
+"POT-Creation-Date: 2003-12-29 17:58-0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -219,12 +219,24 @@ msgstr ""
 msgid "Default Keyserver set to:"
 msgstr ""
 
+#: modules/keyserver.mod:96
+msgid "Default Keyserver: "
+msgstr ""
+
 #: modules/gpgdecrypt.mod:238 modules/keyview.php:180 modules/keyview.php:184
 msgid "Delete"
 msgstr ""
 
 #: modules/keyview.php:178 modules/keyview.php:185
 msgid "Delete Keypair"
+msgstr ""
+
+#: gpg_key_functions.php:575
+msgid "Did not receive valid export_type in gpg_export_key function."
+msgstr ""
+
+#: gpg_key_functions.php:120
+msgid "Did not receive valid keyring_type in gpg_list_keys function."
 msgstr ""
 
 #: modules/getstart.php:87
@@ -280,7 +292,7 @@ msgstr ""
 msgid "Email"
 msgstr ""
 
-#: modules/keyserver.mod:118 modules/genkey_keygen.php:97
+#: modules/keyserver.mod:122 modules/genkey_keygen.php:97
 #: modules/genkey.php:146
 msgid "Email Address"
 msgstr ""
@@ -329,7 +341,7 @@ msgstr ""
 msgid "Enter Search text below to search for a key to import"
 msgstr ""
 
-#: gpg_key_functions.php:389
+#: gpg_key_functions.php:391
 msgid ""
 "Enter a search string for the key you would like to trust in the box below."
 msgstr ""
@@ -441,6 +453,15 @@ msgstr ""
 msgid "GPG Plugin Options"
 msgstr ""
 
+#: gpg_encrypt_functions.php:104
+msgid ""
+"GPG Plugin: Check your preferences from the Trusted Key Screen in Options."
+msgstr ""
+
+#: gpg_encrypt_functions.php:103
+msgid "GPG Plugin: No Trusted Key Selected, but Use Trusted Key Feature Set."
+msgstr ""
+
 #: gpg_encrypt_functions.php:279
 msgid "GPG Plugin: No cyphertext was generated."
 msgstr ""
@@ -454,6 +475,12 @@ msgstr ""
 msgid ""
 "GPG Plugin: You must specify a signing key in the Options screen to sign "
 "messages."
+msgstr ""
+
+#: gpg_encrypt_functions.php:137
+msgid ""
+"GPG Plugin: Your recipient list is empty. After parsing, there are no valid "
+"recipients."
 msgstr ""
 
 #: gpg_encrypt_functions.php:285
@@ -520,6 +547,10 @@ msgstr ""
 msgid "ID"
 msgstr ""
 
+#: help/disc_keystore.php:11
+msgid "If it is not secure, your identity can be stolen!"
+msgstr ""
+
 #: modules/getstart.php:79
 msgid "If not, skip this step."
 msgstr ""
@@ -561,13 +592,13 @@ msgid ""
 "remember your passphrase."
 msgstr ""
 
-#: gpg_key_functions.php:387
+#: gpg_key_functions.php:389
 msgid ""
 "If you do not see the key you want to trust in the list above, or if there "
 "is no list:"
 msgstr ""
 
-#: modules/keyserver.mod:111
+#: modules/keyserver.mod:115
 msgid ""
 "If you do not see the key you wish to import, you may go back and enter "
 "different search terms or select a different keyserver."
@@ -676,7 +707,7 @@ msgstr ""
 msgid "Import ASCII-Armored Key Text to Keyring"
 msgstr ""
 
-#: modules/keyserver.mod:148
+#: modules/keyserver.mod:152
 msgid "Import Key"
 msgstr ""
 
@@ -688,7 +719,7 @@ msgstr ""
 msgid "Import Key contained in this email now"
 msgstr ""
 
-#: modules/keyserver.mod:131
+#: modules/keyserver.mod:135
 msgid "Import Selected Key"
 msgstr ""
 
@@ -698,6 +729,10 @@ msgstr ""
 
 #: modules/genkey.php:88 modules/getstart.php:70 modules/keyring_main.php:656
 msgid "Import keys to your personal keyring via: "
+msgstr ""
+
+#: modules/keyserver.mod:157
+msgid "Importing key with KeyID: "
 msgstr ""
 
 #: help/what_trusted.php:12
@@ -730,11 +765,11 @@ msgstr ""
 msgid "Key"
 msgstr ""
 
-#: modules/keyserver.mod:119
+#: modules/keyserver.mod:123
 msgid "Key Date"
 msgstr ""
 
-#: gpg_key_functions.php:348 gpg_key_functions.php:361
+#: gpg_key_functions.php:350 gpg_key_functions.php:363
 msgid "Key Details:"
 msgstr ""
 
@@ -742,7 +777,7 @@ msgstr ""
 msgid "Key Expires"
 msgstr ""
 
-#: modules/keyserver.mod:116
+#: modules/keyserver.mod:120
 msgid "Key ID"
 msgstr ""
 
@@ -756,6 +791,10 @@ msgstr ""
 
 #: modules/genkey_keygen.php:143
 msgid "Key Strength"
+msgstr ""
+
+#: gpg_key_functions.php:878
+msgid "Key generated on public webmail server"
 msgstr ""
 
 #: help/what_keystrength.php:9
@@ -800,7 +839,7 @@ msgstr ""
 msgid "Move to:"
 msgstr ""
 
-#: modules/keyserver.mod:117
+#: modules/keyserver.mod:121
 msgid "Name"
 msgstr ""
 
@@ -873,6 +912,10 @@ msgstr ""
 msgid "Please"
 msgstr ""
 
+#: gpg_key_functions.php:121 gpg_key_functions.php:576
+msgid "Please Notify GPG Plugin Developers"
+msgstr ""
+
 #: modules/import_key_file.php:62
 msgid "Please choose a file containing one or more ASCII-armored key blocks"
 msgstr ""
@@ -886,7 +929,7 @@ msgid ""
 "Please import a keypair containing a secret key if you wish to continue."
 msgstr ""
 
-#: gpg_key_functions.php:466
+#: gpg_key_functions.php:468
 msgid "Please try a different keyserver or contact your system administrator."
 msgstr ""
 
@@ -921,6 +964,10 @@ msgstr ""
 msgid "Public web servers are not always secure!"
 msgstr ""
 
+#: gpg_key_functions.php:121 gpg_key_functions.php:576
+msgid "Received"
+msgstr ""
+
 #: modules/keyview.php:91
 msgid "Remove this key from your keyring?  This action cannot be undone!"
 msgstr ""
@@ -953,11 +1000,12 @@ msgstr ""
 msgid "Retype Passphrase"
 msgstr ""
 
-#: modules/genkey_keygen.php:53 modules/genkey.php:47
+#: gpg_key_functions.php:867 modules/genkey_keygen.php:53
+#: modules/genkey.php:47
 msgid "SSL connection required to generate keypair."
 msgstr ""
 
-#: gpg_encrypt_functions.php:370
+#: gpg_encrypt_functions.php:81 gpg_encrypt_functions.php:370
 msgid "SSL connection required to use passphrase functions."
 msgstr ""
 
@@ -965,7 +1013,7 @@ msgstr ""
 msgid "Save"
 msgstr ""
 
-#: gpg_key_functions.php:393
+#: gpg_key_functions.php:395
 msgid "Search String:"
 msgstr ""
 
@@ -973,7 +1021,7 @@ msgstr ""
 msgid "Search for Key"
 msgstr ""
 
-#: gpg_key_functions.php:396
+#: gpg_key_functions.php:398
 msgid "Search my keyring for a new trusted key using the search string above:"
 msgstr ""
 
@@ -997,7 +1045,7 @@ msgstr ""
 msgid "Select a Signing Key"
 msgstr ""
 
-#: modules/keyserver.mod:109
+#: modules/keyserver.mod:113
 msgid "Select a key to import from the list below."
 msgstr ""
 
@@ -1227,7 +1275,7 @@ msgid ""
 "using encryption. "
 msgstr ""
 
-#: gpg_key_functions.php:391
+#: gpg_key_functions.php:393
 msgid ""
 "This will usually be the email address of the account that you use as your "
 "primary signing key."
@@ -1281,8 +1329,12 @@ msgstr ""
 msgid "Troubleshooting"
 msgstr ""
 
-#: gpg_key_functions.php:464
+#: gpg_key_functions.php:466
 msgid "Unable to connect to the keyserver you specified."
+msgstr ""
+
+#: gpg_key_functions.php:894
+msgid "Unable to open command pipe."
 msgstr ""
 
 #: gpg_encrypt.php:324
@@ -1302,10 +1354,8 @@ msgstr ""
 msgid "Unassigned"
 msgstr ""
 
-#: gpg_key_functions.php:571
-msgid ""
-"Unexpected Error. Did not receive valid export_type in gpg_export_key "
-"function."
+#: gpg_key_functions.php:118 gpg_key_functions.php:573
+msgid "Unexpected Error."
 msgstr ""
 
 #: modules/gpgdecrypt.mod:109 modules/gpgdecrypt.mod:477
@@ -1317,11 +1367,15 @@ msgstr ""
 msgid "Unsigned"
 msgstr ""
 
-#: gpg_key_functions.php:340
+#: modules/keyserver.mod:90 modules/keyserver.mod:99 modules/keyserver.mod:155
+msgid "Using Keyserver: "
+msgstr ""
+
+#: gpg_key_functions.php:342
 msgid "Using signing key:"
 msgstr ""
 
-#: gpg_key_functions.php:353
+#: gpg_key_functions.php:355
 msgid "Using trusted key:"
 msgstr ""
 
@@ -1373,8 +1427,8 @@ msgstr ""
 
 #: help/disc_keystore.php:7
 msgid ""
-"Web-based email programs are very convenient, using your web email to send "
-"encrypted emails adds to that convenience."
+"Web-based email programs are very convenient, and using your web email to "
+"send encrypted emails adds to that convenience."
 msgstr ""
 
 #: modules/getstart.php:49
@@ -1441,7 +1495,8 @@ msgstr ""
 msgid "You are not connected using a secure connection."
 msgstr ""
 
-#: gpg_encrypt_functions.php:370 modules/genkey_keygen.php:53
+#: gpg_encrypt_functions.php:81 gpg_encrypt_functions.php:370
+#: gpg_key_functions.php:867 modules/genkey_keygen.php:53
 #: modules/genkey.php:45
 msgid "You are not using a secure connection."
 msgstr ""
@@ -1470,7 +1525,7 @@ msgstr ""
 msgid "You can only have one trusted key at any given time."
 msgstr ""
 
-#: gpg_key_functions.php:357
+#: gpg_key_functions.php:359
 msgid "You currently trust key:"
 msgstr ""
 
@@ -1614,7 +1669,7 @@ msgstr ""
 msgid "Your cached passphrase has been securely erased."
 msgstr ""
 
-#: gpg_key_functions.php:344
+#: gpg_key_functions.php:346
 msgid "Your current signing key: "
 msgstr ""
 
