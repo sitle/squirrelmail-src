@@ -7,7 +7,7 @@
  * Licensed under the GNU GPL. For full terms see the file COPYING.
  *
  * Base tree class.
- * 
+ *
  * $Id$
  */
 
@@ -40,7 +40,7 @@ class tree extends object{
     var $name,
         $expanded = array(),
         $nodes = array(false),
-        $listen = array(),
+//        $listen = array(),
         /* events */
         $events = array (
             'beforeDelete' => false,
@@ -57,12 +57,13 @@ class tree extends object{
      * @param     arr        $credentials  Experimental Testing     
      * @return    bool                     success
      * @access    public
+     * @author    Marc Groot Koerkamp
      */
     function tree($id,$credentials=array('self'=> SM_ACL_ALL)) {
         $this->id = $id;
         $this->p_c_rel = array(); /* parent -> child relations */
         $this->nodes = array(); /* array with nodes accessible by the id of the node */
-        $this->listeners = array(&$this->nodes);
+//        $this->listeners = array(&$this->nodes);
         /* create root node */
         $rootnode =& new node(0,array('self'=>SM_ACL_NONE));
         $rootnode->id = 0;
@@ -70,7 +71,7 @@ class tree extends object{
         $this->nextnodeid = 1;
         $this->nodes[] =& $rootnode;
         /* set the sleep notifyer */
-        $this->listen['sleep'] = array(&$this, '_sleep');
+        //$this->listen['sleep'] = array(&$this, '_sleep');
         
         return true;
     }
@@ -79,6 +80,7 @@ class tree extends object{
      * @func      __sleep
      * @desc      see the php manual 
      * @access    private
+     * @author    Marc Groot Koerkamp
      */
     function __sleep() {
         $this->notify('sleep','',true);
@@ -95,6 +97,7 @@ class tree extends object{
      * @param     arr        $properties   optional node properties     
      * @return    bool                     success
      * @access     public
+     * @author     Marc Groot Koerkamp
      */
     
     function addNode(&$node, $parent=false, $properties=array() ) {//(&$node, $parent = $this->nodes[0], $properties=array() ) {
@@ -107,14 +110,13 @@ class tree extends object{
                 $this->error = SMNODE_ID_NOT_UNIQUE;
                 return false;
             }
-            $id = $node-id;
+            $id = $node->id;
         } else {
             $id = $this->nextnodeid;
             $node->id = $id;
         }
         ++$this->nextnodeid;
-        
-        $this->nodes[$id] = array(&$node,$properties);
+        $this->nodes[$id] =&$node;
         /* assign the parent id to the node in order to speed up dependency checks */
         $node->parent_id = $parent->id;
         /* add the node_id to the p_c_rel array */
@@ -132,6 +134,7 @@ class tree extends object{
             if (!$acl_read && ($perm & SM_ACL_READ) == SM_ACL_READ) {
                 $acl_read = 2;
             }
+        }
     
     }
     /**
@@ -140,13 +143,14 @@ class tree extends object{
      * @param     obj        $node         The node object
      * @return    bool                     success
      * @access    public
+     * @author    Marc Groot Koerkamp
      */
     function nodeHasChildren($node) {
         if ($node && isset($this->p_c_rel[$node->id]) &&
             count($this->p_c_rel[$node->id])) {
             return true;
         } else if (!$node && isset($this->p_c_rel[0]) &&
-            count($this->p_c_rel[0])) /* root node */
+            count($this->p_c_rel[0])) { /* root node */
             return true;
         }
         return false;
@@ -158,6 +162,7 @@ class tree extends object{
      * @param     obj        $node         The node object
      * @return    bool                     success
      * @access    public
+     * @author    Marc Groot Koerkamp
      */
     function getChildren($node) {
         $children = array();
@@ -191,6 +196,7 @@ class tree extends object{
      * @param     obj        $target       target node
      * @return    bool                     success
      * @access    public
+     * @author    Marc Groot Koerkamp
      */
     function moveNode($node, $target) {    
         $parent_id = $node->parent_id;
@@ -209,6 +215,7 @@ class tree extends object{
      * @param     obj        $node         The node object
      * @return    bool                     success
      * @access    public
+     * @author    Marc Groot Koerkamp
      */
     function deleteNode($node) {
         if ($node->id !== 0 && $this->_sufficientPerm($node,SM_PERM_DEL,false)) {
@@ -256,6 +263,7 @@ class tree extends object{
      * @param      array    $nodes       array of node obj
      * @return     bool                  success
      * @access     private
+     * @author     Marc Groot Koerkamp
      */
     function _harvestNodes($node, &$nodes) {
         $children = $this->getChildren($node);
@@ -278,6 +286,8 @@ class tree extends object{
         $id = $node->id;
         /* get children */
         $children = $this->getChildren($node);
+        //echo '<b>children:</b><br>';
+        //print_r($children);
         if ($children && (!$maxdepth || $depth < $maxdepth)) {
             $res[$id] = array(&$node,  'HAS_CHILDREN' => true,
                                        'DEPTH' => $_depth,
@@ -287,12 +297,13 @@ class tree extends object{
             if ($sort) {
                 $this->sortNodes($children,$sort, $sortmethod, $reverse);
             }
+            ++$_depth;
             foreach($children as $child_id => $child) {
                 $visible = $this->c_p_rel[$child_id][$id];
                 if ($incl_invisible && $incl_collapsed) {
-                    $this->getNodeArray($res, $child, $incl_collapsed, $incl_invisible, $sort, $sortmethod, $reverse, ++$_depth, $_visible, $_parent);
+                    $this->getNodeArray($res, $child, $incl_collapsed, $incl_invisible, $sort, $sortmethod, $reverse, $maxdepth, $_depth, $_visible, $id);
                 } else if ($visible && $incl_collapsed) {
-                    $this->getNodeArray($res, $child, $incl_collapsed, $incl_invisible, $sort, $sortmethod, $reverse, ++$_depth, $_visible, $_parent);
+                    $this->getNodeArray($res, $child, $incl_collapsed, $incl_invisible, $sort, $sortmethod, $reverse, $maxdepth, $_depth, $_visible, $id);
                 }
             }
             $firstnode = reset($children);
@@ -325,9 +336,11 @@ class tree extends object{
      * @param      bool     $reverse     reverse sort
      * @return     bool                  success
      * @access     public
+     * @author     Marc Groot Koerkamp
      */
     function sortNodes(&$nodes, $sort, $sortmethod, $reverse) {
         foreach ($nodes as $node) {
+            $node = $node[0];
             $node->sort = $node->{$sort};
         }
         // FIX ME, sort method should be CONSTANTS like SM_SORT_NAT
@@ -354,6 +367,7 @@ class tree extends object{
      * @return     bool    $ret        success
      *
      * @access     private
+     * @author     Marc Groot Koerkamp
      */
     function _sufficientPerm($node,$perm, $recursive = false) {
                 $ret = true;
@@ -434,17 +448,18 @@ class node extends object{
      * @param    arr        $acl        Access Control List
      *
      * @access     public
+     * @author     Marc Groot Koerkamp
      */
     function node($id=0, $acl = false) {
-        if (!$acl) {
-           $acl =& new acl(array('self' => SM_ACL_ALL));
-        } 
+//        if (!$acl) {
+//           $acl =& new acl(array('self' => SM_ACL_ALL));
+//        } 
         $this->id = $id;
-        $this->acl = $acl;
-        $this->own = '';
-        $this->grp = '';
+//        $this->acl = $acl;
+//        $this->own = '';
+//        $this->grp = '';
         /* set the sleep notifyer */
-        $this->listen['sleep'] = array(&$this, '_sleep');
+        //$this->listen['sleep'] = array(&$this, '_sleep');
     }
 
     function _sleep() {
