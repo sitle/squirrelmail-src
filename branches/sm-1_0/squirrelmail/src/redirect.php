@@ -72,8 +72,8 @@
       do_hook ('login_verified');
    }
 
-   session_register ('user_is_logged_in');
    $user_is_logged_in = true;
+   session_register ('user_is_logged_in');
 
    header("Location: $location/webmail.php");
 ?>
