@@ -1582,7 +1582,7 @@ function cvsweburl($rev,$teamcode,$package,$file) {
   if (preg_match("/t$/",$file)) {
     $cvsurl=sprintf($cvswebformat,$rev,"po/$package_dir$file");
   } else {
-    $cvsurl=sprintf($cvswebformat,$rev,"$teamcode/LC_MESSAGES/$package_dir$file");
+    $cvsurl=sprintf($cvswebformat,$rev,"locale/$teamcode/LC_MESSAGES/$package_dir$file");
   }
   return $cvsurl;
 }
