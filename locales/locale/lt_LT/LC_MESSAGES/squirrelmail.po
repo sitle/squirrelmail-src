@@ -4,15 +4,14 @@
 # $Id$
 msgid ""
 msgstr ""
-"Project-Id-Version: squirrelmail\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-02-24 20:39+0200\n"
-"PO-Revision-Date: 2004-02-29 16:58+0200\n"
+"Project-Id-Version: squirrelmail 1.4.3cvs\n"
+"POT-Creation-Date: 2004-04-21 09:34+0300\n"
+"PO-Revision-Date: 2004-04-29 17:12+0200\n"
 "Last-Translator: Tomas Kuliavas <tokul@users.sourceforge.net>\n"
 "Language-Team: Lithuanian <squirrelmail-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit"
+"Content-Transfer-Encoding: 8bit\n"
 
 msgid "Address Book"
 msgstr "Adresų knyga"
@@ -69,7 +68,7 @@ msgstr "Nepavyko gauti adresų iš %s"
 msgid "Your search failed with the following error(s)"
 msgstr "Paieška nutrūko dėl žemiau nurodytų(os) klaidų(os)"
 
-msgid "No persons matching your search was found"
+msgid "No persons matching your search were found"
 msgstr "Nerastas nei vienas asmuo, atitinkantis paieškos kriterijus"
 
 msgid "Return"
@@ -149,7 +148,7 @@ msgid "Draft Email Saved"
 msgstr "Juodraštis išsaugotas"
 
 msgid "Could not move/copy file. File not attached"
-msgstr "Neįmanoma perkelti/kopijuoti failo. Failas neprikabintas"
+msgstr "Neįmanoma perkelti/kopijuoti bylos. Byla neprikabinta"
 
 msgid "Draft Saved"
 msgstr "Juodraštis išsaugotas"
@@ -182,7 +181,7 @@ msgid "Add"
 msgstr "Pridėti"
 
 msgid "Delete selected attachments"
-msgstr "Ištrinti pasirinktus failus"
+msgstr "Ištrinti pasirinktus priedus"
 
 msgid "Priority"
 msgstr "Prioritetas"
@@ -217,8 +216,9 @@ msgstr "Išsaugoti juodraštį"
 msgid "You have not filled in the \"To:\" field."
 msgstr "Jūs neužpildėte gavėjo lauko (Kam:)"
 
-msgid "Draft folder"
-msgstr "Juodraščių aplankas"
+#, c-format
+msgid "Error: Draft folder %s does not exist."
+msgstr "Klaida: Juodraščių aplankas %s neegzistuoja."
 
 msgid "Server replied: "
 msgstr "Serveris atsakė: "
@@ -360,7 +360,7 @@ msgid "View message"
 msgstr "Peržiūrėti žinutę"
 
 msgid "Download this as a file"
-msgstr "Parsisiųsti kaip failą"
+msgstr "Parsisiųsti kaip bylą"
 
 msgid "INBOX"
 msgstr "INBOX"
@@ -789,7 +789,7 @@ msgid "Viewing Full Header"
 msgstr "Pilna antraščių peržiūra"
 
 msgid "Viewing a text attachment"
-msgstr "Peržiūrėti prikabintą tekstinį failą"
+msgstr "Peržiūrėti prikabintą tekstinę bylą"
 
 msgid "Personal address book"
 msgstr "Asmeninė adresų knyga"
@@ -813,7 +813,7 @@ msgid "Global address book"
 msgstr "Bendra adresų knyga"
 
 msgid "No such file or directory"
-msgstr "Nėra tokio failo ar katalogo"
+msgstr "Nėra tokios bylos ar katalogo"
 
 msgid "Open failed"
 msgstr "Nepavyko atidaryti"
@@ -822,7 +822,7 @@ msgid "Can not modify global address book"
 msgstr "Negalima keisti bendros adresų knygos"
 
 msgid "Not a file name"
-msgstr "Tai ne failo vardas"
+msgstr "Tai ne bylos vardas"
 
 msgid "Write failed"
 msgstr "Nepavyko įrašyti"
@@ -831,7 +831,7 @@ msgid "Unable to update"
 msgstr "Nepavyko atnaujinti"
 
 msgid "Could not lock datafile"
-msgstr "Nepavyko rezervuoti duomenų failo"
+msgstr "Nepavyko rezervuoti duomenų bylos"
 
 msgid "Write to addressbook failed"
 msgstr "Nepavyko rašyti į adresų knygą"
@@ -841,7 +841,7 @@ msgstr "Nepavyko prisijunti prie LDAP serverio %s:"
 
 #, c-format
 msgid "Error opening file %s"
-msgstr "Atidarant failą %s gauta klaida"
+msgstr "Atidarant bylą %s gauta klaida"
 
 msgid "Error initializing global addressbook."
 msgstr "Nepavyko prisijunti prie LDAP serverio %s:"
@@ -1005,7 +1005,7 @@ msgstr "G:i, D"
 
 #, c-format
 msgid "Preference database error (%s). Exiting abnormally"
-msgstr "Nustatymų failas %s nerastas. Programos klaida."
+msgstr "Nustatymų bazės klaida (%s). Programos klaida."
 
 msgid "Unknown user or password incorrect."
 msgstr "Nežinomas vartotojas arba klaidingas slaptažodis."
@@ -1025,15 +1025,15 @@ msgid ""
 "Preference file, %s, does not exist. Log out, and log back in to create a "
 "default preference file."
 msgstr ""
-"Nustatymų failas %s neegzistuoja. Prisijunkite iš naujo, kad sukurti "
-"standartinį nustatymų failą"
+"Nustatymų byla %s neegzistuoja. Prisijunkite iš naujo, kad sukurti "
+"standartinę nustatymų bylą."
 
 #, c-format
 msgid ""
 "Preference file, %s, could not be opened. Contact your system administrator "
 "to resolve this issue."
 msgstr ""
-"Nepavyko atidaryti nustatymų failo %s. Susisiekite su administratoriumi ir "
+"Nepavyko atidaryti nustatymų bylos %s. Susisiekite su administratoriumi ir "
 "praneškite apie šią klaidą."
 
 #, c-format
@@ -1041,7 +1041,7 @@ msgid ""
 "Preference file, %s, could not be written. Contact your system administrator "
 "to resolve this issue."
 msgstr ""
-"Nepavyko rašyti į nustatymų failą %s. Susisiekite su administratoriumi ir "
+"Nepavyko įrašyti į nustatymų bylą %s. Susisiekite su administratoriumi ir "
 "praneškite apie šią klaidą."
 
 #, c-format
@@ -1049,7 +1049,7 @@ msgid ""
 "Preference file, %s, could not be copied from temporary file, %s. Contact "
 "your system administrator to resolve this issue."
 msgstr ""
-"Nepavyko nukopijuoti nustatymų failo %s iš laikino failo %s. Susisiekite su "
+"Nepavyko nukopijuoti nustatymų bylos %s iš laikinos bylos %s. Susisiekite su "
 "administratoriumi ir praneškite apie šią klaidą."
 
 #, c-format
@@ -1057,13 +1057,13 @@ msgid "Error opening %s"
 msgstr "Klaida atidarant %s"
 
 msgid "Default preference file not found or not readable!"
-msgstr "Standartinis nustatymų failas nerastas arba neperskaitomas!"
+msgstr "Standartinė nustatymų byla nerasta arba neperskaitoma!"
 
 msgid "Please contact your system administrator and report this error."
 msgstr "Susisiekite su administratoriumi ir praneškite apie šią klaidą."
 
 msgid "Could not create initial preference file!"
-msgstr "Nepavyko sukurti nustatymų failo!"
+msgstr "Nepavyko sukurti pradinės nustatymų bylos!"
 
 #, c-format
 msgid "%s should be writable by user %s"
@@ -1074,7 +1074,7 @@ msgid ""
 "Signature file, %s, could not be opened. Contact your system administrator "
 "to resolve this issue."
 msgstr ""
-"Nepavyko atidaryti parašo failo %s. Susisiekite su administratoriumi ir "
+"Nepavyko atidaryti parašo bylos %s. Susisiekite su administratoriumi ir "
 "praneškite apie šią klaidą."
 
 #, c-format
@@ -1082,7 +1082,7 @@ msgid ""
 "Signature file, %s, could not be written. Contact your system administrator "
 "to resolve this issue."
 msgstr ""
-"Nepavyko rašyti į parašo failą %s. Susisiekite su administratoriumi ir "
+"Nepavyko rašyti į parašo bylą %s. Susisiekite su administratoriumi ir "
 "praneškite apie šią klaidą."
 
 #, c-format
@@ -1090,7 +1090,7 @@ msgid ""
 "Signature file, %s, could not be copied from temporary file, %s. Contact "
 "your system administrator to resolve this issue."
 msgstr ""
-"Nepavyko nukopijuoti parašo failo %s iš laikino failo %s. Susisiekite su "
+"Nepavyko nukopijuoti parašo bylos %s iš laikinos bylos %s. Susisiekite su "
 "administratoriumi ir praneškite apie šią klaidą."
 
 msgid ""
@@ -1378,7 +1378,7 @@ msgid "Default"
 msgstr "Standartinė"
 
 msgid "Custom Stylesheet"
-msgstr "Specialus stiliaus aprašymas"
+msgstr "Specialus stilius"
 
 msgid "Language"
 msgstr "Kalba"
@@ -1486,7 +1486,7 @@ msgid "Cursor Position when Replying"
 msgstr "Žymeklio padėtis atsakant"
 
 msgid "To: field"
-msgstr "Kam: laikas"
+msgstr "Kam: lauke"
 
 msgid "Focus in body"
 msgstr "Fokusuoti tekste"
@@ -1581,6 +1581,15 @@ msgstr "Įjungti bendrus perspėjimus apie naujas žinutes"
 msgid "Show Clock on Folders Panel"
 msgstr "Rodyti laikrodį aplankų skyriuje"
 
+msgid "International date and time"
+msgstr "Tarptautinė data ir laikas"
+
+msgid "American date and time"
+msgstr "Amerikietiška data ir laikas"
+
+msgid "European date and time"
+msgstr "Europietiška data ir laikas"
+
 msgid "Show weekday and time"
 msgstr "Rodyti savaitės dieną ir laiką"
 
@@ -1633,7 +1642,7 @@ msgid "Edit Advanced Identities"
 msgstr "Taisyti specialius ID"
 
 msgid "(discards changes made on this form so far)"
-msgstr "(visi kiti pakeitimai padaryti šioje formoje dings)"
+msgstr "(neišsaugoti pakeitimai padaryti šioje formoje dings)"
 
 msgid "Multiple Identities"
 msgstr "Skirtingi ID"
@@ -1643,7 +1652,7 @@ msgstr "Atitinka serverio laiko juostą"
 
 msgid "Error opening timezone config, contact administrator."
 msgstr ""
-"Įvyko klaida atidarant laiko juostų failą, susisiekite su administratoriumi."
+"Įvyko klaida atidarant laiko juostų bylą, susisiekite su administratoriumi."
 
 msgid "Timezone Options"
 msgstr "Laiko juostos nustatymai"
@@ -1697,7 +1706,7 @@ msgid "Try to verify addresses"
 msgstr "Bandyti patikrinti adresus"
 
 msgid "Config File Version"
-msgstr "Konfiguracinio failo versija"
+msgstr "Konfiguracinės bylos versija"
 
 msgid "Squirrelmail Version"
 msgstr "SquirrelMail versija"
@@ -1807,9 +1816,6 @@ msgstr "Vykdyti POP3 prieš SMTP?"
 msgid "Invert Time"
 msgstr "Keisti laiką"
 
-msgid "Use Confirmation Flags"
-msgstr "Naudoti patvirtinimo nustatymus"
-
 msgid "Folders Defaults"
 msgstr "Aplankų nustatymai"
 
@@ -1852,8 +1858,8 @@ msgstr "Standartinis naujų laiškų tipas"
 msgid "Auto Create Special Folders"
 msgstr "Sukurti specialius aplankus automatiškai"
 
-msgid "Default Javascript Adrressbook"
-msgstr "Standartinė Javascript adresų knyga"
+msgid "Default Javascript Addressbook"
+msgstr "Įprasta Javascript adresų knyga"
 
 msgid "Auto delete folders"
 msgstr "Automatiškai ištrinti aplankus"
@@ -1976,7 +1982,7 @@ msgid "Change Settings"
 msgstr "Pakeisti nustatymus"
 
 msgid "Config file can't be opened. Please check config.php."
-msgstr "Nepavyko atidaryti konfiguracinio failo. Patikrinkite config.php"
+msgstr "Nepavyko atidaryti konfiguracinės bylos. Patikrinkite config.php"
 
 msgid "Administration"
 msgstr "Administravimas"
@@ -2008,7 +2014,7 @@ msgid "You are currently using version %s."
 msgstr "Jūsų šiuo metu naudojama versija yra %s."
 
 msgid ""
-"Check to see if you bug is already listed in the <a href=\"http://"
+"Check to see if your bug is already listed in the <a href=\"http://"
 "sourceforge.net/bugs/?group_id=311\">Bug List</a> on SourceForge. If it is, "
 "we already know about it and are trying to fix it."
 msgstr ""
@@ -2067,11 +2073,21 @@ msgstr "pačia programa"
 msgid "a specific plugin"
 msgstr "tam tikru priedu"
 
+msgid "Start Bug Report Form"
+msgstr "Rašyti pranešimą apie klaidą"
+
+msgid "Bug"
+msgstr "Klaidos"
+
 msgid "Bug Reports:"
 msgstr "Klaidų pranešimai:"
 
 msgid "Show button in toolbar"
 msgstr "Rodyti mygtuką įrankių juostoje"
+
+#, c-format
+msgid "Could not write calendar file %s"
+msgstr "Nepavyko įrašyti į kalendoriaus bylą %s!"
 
 msgid "TODAY"
 msgstr "ŠIANDIEN"
@@ -2902,7 +2918,7 @@ msgid ""
 "Select from the list of <b>server files</b> the media file to play when new "
 "mail arrives.  If no file is specified, \"(none)\", no sound will be used."
 msgstr ""
-"Garsus galima pasirinkti iš <b>serverio failų</b> arba <b>lokalių failų</b> "
+"Garsus galima pasirinkti iš <b>serverio bylų</b> arba <b>lokalių bylų</b> "
 "esančių jūsų kompiuteryje. Nenurodžius nieko, garsas nebus naudojamas."
 
 msgid "Enable Media Playing"
@@ -2924,7 +2940,7 @@ msgid "Show popup window on new mail"
 msgstr "Iškviesti naują langą pasirodžius naujoms žinutėms"
 
 msgid "Select server file:"
-msgstr "Pasirinkti failą serveryje:"
+msgstr "Pasirinkti bylą serveryje:"
 
 msgid "(none)"
 msgstr "(joks)"
@@ -2933,7 +2949,7 @@ msgid "Try"
 msgstr "Patikrinti"
 
 msgid "Current File:"
-msgstr "Dabar nustatytas failas:"
+msgstr "Dabar nustatytas byla:"
 
 msgid "New Mail"
 msgstr "Naujas paštas"
@@ -3033,11 +3049,17 @@ msgstr "Sudėtiniai el.pašto pranešimai"
 msgid "Web-based form"
 msgstr "Tinklinė pranešimų forma"
 
+msgid "Save Method"
+msgstr "Išsaugoti metodą"
+
 msgid "Your SpamCop authorization code:"
 msgstr "Jūsų SpamCop autorizavimo kodas:"
 
 msgid "see below"
 msgstr "žr. žemiau"
+
+msgid "Save ID"
+msgstr "Išsaugoti ID"
 
 msgid ""
 "SpamCop is a free service that greatly assists in finding the true source of "
@@ -3084,10 +3106,10 @@ msgstr ""
 msgid ""
 "Once you have signed up with SpamCop and have received your SpamCop "
 "authorization code, you need to enable this plugin -- just click the link "
-"above.  Once enabled, you go about your normal life.  If you encounter a "
-"spam message in your mailbox, just view it.  On the right-hand side, near "
-"the top of where the message is displayed, you will see a link to report "
-"this message as spam.  Clicking on it brings you to a confirmation page. "
+"above. Once enabled, you go about your normal life. If you encounter a spam "
+"message in your mailbox, just view it. On the right-hand side, near the top "
+"of where the message is displayed, you will see a link to report this "
+"message as spam. Clicking on it brings you to a confirmation page. "
 "Confirming that you want the spam report sent will do different things with "
 "different reporting methods."
 msgstr ""
@@ -3105,11 +3127,11 @@ msgstr "El.pašto pranešimai"
 
 msgid ""
 "Pressing the button forwards the message to the SpamCop service and will "
-"optionally delete the message.  From there, you just need to go to your "
-"INBOX and quite soon a message should appear from SpamCop.  (It gets sent to "
-"the account you registered with, so make sure that your mail forwarder "
-"works!) Open it up, click on the appropriate link at the top, and a new "
-"browser window will open."
+"optionally delete the message. From there, you just need to go to your INBOX "
+"and quite soon a message should appear from SpamCop. (It gets sent to the "
+"account you registered with, so make sure that your mail forwarder works!) "
+"Open it up, click on the appropriate link at the top, and a new browser "
+"window will open."
 msgstr ""
 "Paspaudę šį mygtuką, Jūs nusiųsite informaciją apie gautą spamą į SpamCop "
 "tarnybos serverius ir gal būt pašalinsite spamo žinutę iš savo pašto dėžės. "
@@ -3120,11 +3142,11 @@ msgstr ""
 
 msgid ""
 "Currently, the quick reporting just forwards the request to the thorough "
-"reporting.  Also, it appears that this is for members (non-free) only. "
+"reporting. Also, it appears that this is for members (non-free) only. "
 "Hopefully this will change soon."
 msgstr ""
 "Šiuo metu greitas persiuntimas tik persiunčia užklausą į standartinį el."
-"pašto pranešimų metodą. Be to panašu kad tai veikia tik su mokamais SpamCop "
+"pašto pranešimų metodą. Be to panašu, kad tai veikia tik su mokamais SpamCop "
 "dalyviais. Gal tai kada nors pasikeis."
 
 msgid "Web-based Reporting"
@@ -3143,17 +3165,17 @@ msgstr ""
 
 msgid ""
 "The SpamCop service will display information as it finds it, so scroll down "
-"until you see a form button.  It might pause a little while it is looking up "
-"information, so be a little patient.  Read what it says, and submit the "
-"spam.  Close the browser window.  Press Cancel or click on the appropriate "
-"mail folder to see messages and/or delete the spam."
+"until you see a form button. It might pause a little while it is looking up "
+"information, so be a little patient. Read what it says, and submit the spam. "
+"Close the browser window. Press Cancel or click on the appropriate mail "
+"folder to see messages and/or delete the spam."
 msgstr ""
 "SpamCop tarnyba išanalizuos Jūsų nusiųsta žinutės tekstą ir puslapio "
 "apačioje pateiks mygtuką, kuris nusiųs informaciją apie spamą atitinkamoms "
 "tarnyboms. Informacijos analizė gali šiek tiek užtrukti, būkite kantrūs. "
 "Perskaitykite ten pateiktą analizės informaciją ir nusiųskite pranešimą. "
 "Uždarykite naršyklės langą. Paspauskite „Atšaukti“ arba pereikite į "
-"atitinamą žinučių aplanką ir ištrinkite gautą spamą."
+"atitinkamą žinučių aplanką ir ištrinkite gautą spamą."
 
 msgid ""
 "<b>For more information</b> about SpamCop, it's services, spam in general, "
@@ -3189,6 +3211,12 @@ msgstr ""
 "galite tvarkingai informuoti apie gautą spamą atsakingus asmenis. Tai yra "
 "nemokama tarnyba. Siųsdami pranešimus apie spamą, Jūs turite laikytis "
 "SpamCop nustatytų naudojimosi taisyklių."
+
+msgid "Cancel / Done"
+msgstr "Atšaukti / Baigti"
+
+msgid "Send Spam Report"
+msgstr "Išsiųsti pranešimą apie spamą"
 
 msgid "SpellChecker Options"
 msgstr "Rašybos tikrinimo nustatymai"
@@ -3644,43 +3672,33 @@ msgstr "Kurį vertėją naudoti gavus laiškus kita kalba?"
 msgid "%s to %s"
 msgstr "iš %s į %s"
 
-#, c-format
 msgid "English"
 msgstr "anglų"
 
-#, c-format
 msgid "Chinese"
 msgstr "kinų"
 
-#, c-format
 msgid "French"
 msgstr "prancūzų"
 
-#, c-format
 msgid "German"
 msgstr "vokiečių"
 
-#, c-format
 msgid "Italian"
 msgstr "italų"
 
-#, c-format
 msgid "Japanese"
 msgstr "japonų"
 
-#, c-format
 msgid "Korean"
 msgstr "korėjiečių"
 
-#, c-format
 msgid "Portuguese"
 msgstr "portugalų"
 
-#, c-format
 msgid "Spanish"
 msgstr "ispanų"
 
-#, c-format
 msgid "Russian"
 msgstr "rusų"
 
@@ -3702,7 +3720,6 @@ msgstr "čekų"
 msgid "Danish"
 msgstr "danų"
 
-#, c-format
 msgid "Dutch"
 msgstr "olandų"
 
@@ -3712,7 +3729,6 @@ msgstr "ispanų (euro)"
 msgid "Finnish"
 msgstr "suomių"
 
-#, c-format
 msgid "Greek"
 msgstr "graikų"
 
@@ -3766,307 +3782,6 @@ msgstr "Interfeiso kalba"
 
 msgid "Translation direction"
 msgstr "Vertimo kryptis"
-
-msgid "Add to:"
-msgstr "Įtraukti į:"
-
-msgid "Add to address book"
-msgstr "Įtraukti į adresų knygą"
-
-msgid "Your Message has been sent."
-msgstr "Jūsų žinutė išsiųsta."
-
-msgid "Bypass Trash"
-msgstr "Nesaugoti šiukšliadėžėje"
-
-msgid "Please enter something to search for"
-msgstr "Įveskite ko norite ieškoti"
-
-msgid "There must be at least one criteria to search for"
-msgstr "Turi būti nurodyta bent viena paieškos sąlyga"
-
-msgid "Error in criteria argument"
-msgstr "Klaida tarp paieškos salygos parametrų"
-
-msgid "(Illegal date)"
-msgstr "(Neteisinga data)"
-
-msgid "(Wrong date)"
-msgstr "(Klaidinga data)"
-
-msgid "In"
-msgstr "tarp"
-
-msgid "(Missing argument)"
-msgstr "(Trūksta parametro)"
-
-msgid "(Spurious argument)"
-msgstr "(Klaidingas parametras)"
-
-msgid "Saved Searches"
-msgstr "Išsaugotos paieškos"
-
-msgid "Missing"
-msgstr "Trūksta"
-
-msgid "and&nbsp;subfolders:"
-msgstr "ir&nbsp;susijusiuose&nbsp;aplankuose:"
-
-msgid "Exclude Criteria:"
-msgstr "Atmetimo sąlyga:"
-
-msgid "Search Criteria"
-msgstr "Paieškos sąlyga"
-
-msgid "Add New Criteria"
-msgstr "Pridėti naują sąlygą"
-
-msgid "Remove Excluded Criteria"
-msgstr "Pašalinti atmetimo sąlygą"
-
-msgid "Remove All Criteria"
-msgstr "Pašalinti visas sąlygas"
-
-msgid "Answered"
-msgstr "Atsakyta"
-
-msgid "Before"
-msgstr "Prieš"
-
-msgid "Message Body"
-msgstr "Žinutės tekstas"
-
-msgid "Deleted"
-msgstr "Ištrinta"
-
-msgid "Draft"
-msgstr "Juodraštis"
-
-msgid "Flagged"
-msgstr "Pažymėta"
-
-msgid "Sent By"
-msgstr "Siųsta nuo"
-
-msgid "Header Field"
-msgstr "Antraštės laukas"
-
-msgid "Keyword"
-msgstr "Raktas"
-
-msgid "Larger Than"
-msgstr "Didesnė nei"
-
-msgid "Old"
-msgstr "Sena"
-
-msgid "On"
-msgstr "tarp"
-
-msgid "Recent"
-msgstr "Nauja"
-
-msgid "Seen"
-msgstr "Peržiūrėta"
-
-msgid "Sent Before"
-msgstr "Išsiųsta prieš"
-
-msgid "Sent On"
-msgstr "Išsiųsta"
-
-msgid "Sent Since"
-msgstr "Išsiųsta nuo"
-
-msgid "Since"
-msgstr "Nuo"
-
-msgid "Smaller Than"
-msgstr "Mažesnė nei"
-
-msgid "Subject Contains"
-msgstr "Tema turi"
-
-msgid "Header and Body"
-msgstr "Antraštės ir tekstas"
-
-msgid "Sent To"
-msgstr "Išsiųsta adresu"
-
-msgid "Not"
-msgstr "ne"
-
-msgid "And In"
-msgstr "ir tarp"
-
-msgid "Or In"
-msgstr "arba tarp"
-
-msgid "And"
-msgstr "ir"
-
-msgid "Or"
-msgstr "arba"
-
-msgid "Folder List"
-msgstr "Aplankų sąrašas"
-
-msgid "Possible reason : "
-msgstr "Galima priežastis : "
-
-msgid "The imap server failed to handle threading."
-msgstr "Imap serveris negali apdoroti sekų."
-
-msgid "Click here to unset thread view for this mailbox and start again."
-msgstr "Paspauskite čia norėdami atšaukti aplanko sekų peržiūros režimą ir tęsti darbą."
-
-msgid "ERROR : Bad function call."
-msgstr "KLAIDA : Neteisingai iškviesta funkcija"
-
-msgid "Reason:"
-msgstr "Priežastis:"
-
-msgid "Click here to change the sorting of the message list"
-msgstr "Paspauskite čia norėdami pakeisti žinučių sąrašo rūšiavimo tvarką"
-
-msgid "Message Flags Icon Theme"
-msgstr "Žinučių Požymių Ženklų Tema"
-
-msgid "Length of From/To Field (0 for full)"
-msgstr "Didžiausias Nuo/Kam lauko ilgis (0 atitinka neribotą ilgį)"
-
-msgid "Length of Subject Field (0 for full)"
-msgstr "Didžiausias temos lauko ilgis (0 atitinka neribotą ilgį)"
-
-msgid "Show recipient name if the message is from your default identity"
-msgstr "Rodyti gavėjo vardą, jei žinutė yra nuo Jūsų standartinio ID"
-
-msgid "Strip signature when replying"
-msgstr "Pašalinti parašą atsakant į laišką"
-
-msgid "Show 'Delete & Prev/Next' Links"
-msgstr "Rodyti 'Trinti ir eiti toliau' nuorodas"
-
-msgid "Save Replies with Original Message"
-msgstr "Išsaugoti atsakymus kartu su pradine žinute"
-
-msgid "Enable Collapsable Folders"
-msgstr "Aktyvuoti išsiskleidžiančius aplankus"
-
-msgid "Folder"
-msgstr "Aplankas"
-
-msgid "Subfolder"
-msgstr "Žemesnio lygio aplankas"
-
-msgid "Global address book DSN"
-msgstr "Bendros adresų knygos DSN"
-
-msgid "Global address book table"
-msgstr "Bendros adresų knygos lentelė"
-
-msgid "Allow writing into global address book"
-msgstr "Leisti rašyti į bendrą adresų knygą"
-
-msgid "Allow listing of global address book"
-msgstr "Rodyti bendros adresų knygos turinį"
-
-msgid "Language settings"
-msgstr "Kalbos nustatymai"
-
-msgid "Show alternative language names"
-msgstr "Rodyti alternatyvius kalbų pavadinimus"
-
-msgid "Available languages"
-msgstr "Naudojamos kalbos"
-
-msgid "Use agresive decoding"
-msgstr "Naudoti agresyvų dekodavimą"
-
-msgid "Tweaks"
-msgstr "Specialūs perjungimai"
-
-msgid "Use advanced tree folder listing"
-msgstr "Naudoti dhtml aplankų medį"
-
-msgid "Use old folder listing functions"
-msgstr "Naudoti senąsias aplankų sąrašo funkcijas"
-
-msgid "Use php recode functions"
-msgstr "Naudoti php recode funkcijas"
-
-msgid "Use php iconv functions"
-msgstr "Naudoti php iconv funkcijas"
-
-msgid ""
-"Note: it is recommended that you configure your system using conf.pl, and "
-"not this plugin. conf.pl contains additional information regarding the "
-"purpose of variables and appropriate values, as well as additional "
-"verification steps."
-msgstr ""
-"Pastaba: rekomenduojama SquirrelMail konfiguruoti naudojant conf.pl "
-"scenarijų, o ne šį priedą. conf.pl pateikia daugiau informacijos apie "
-"kintamųjų paskirtį ir galimas reikšmes, bei papildomus optimizavimo įrankius."
-
-msgid ""
-"Run or consult conf.pl should you run into difficulty with your "
-"configuration."
-msgstr ""
-"Paleiskite arba patikrinkite conf.pl, jei Jums kils kokios nors problemos su "
-"Jūsų nustatymais."
-
-msgid "No POP3 servers configured yet."
-msgstr "Nesukonfiguruotas nei vienas POP serveris"
-
-msgid "Click here to go to the options page."
-msgstr "Spragtelėkite ant nuorodos norėdami nueiti į nustatymų puslapį."
-
-msgid "Spam Service Type:"
-msgstr "Spamcop Tarnybos Tipas:"
-
-msgid "Free reporting"
-msgstr "Nemokama tarnyba"
-
-msgid "Member services"
-msgstr "Narių tarnyba"
-
-msgid ""
-"The SpamCop service will display information as it finds it, so scroll down "
-"until you see a form button. It might pause a little while it is looking up "
-"information, so be a little patient. Read what it says, and submit the spam. "
-"Close the browser window.  Press Cancel or click on the appropriate mail "
-"folder to see messages and/or delete the spam."
-msgstr ""
-"SpamCop tarnyba išanalizuos Jūsų nusiųsta žinutės tekstą ir puslapio "
-"apačioje pateiks mygtuką, kuris nusiųs informaciją apie spamą atitinkamoms "
-"tarnyboms. Informacijos analizė gali šiek tiek užtrukti, būkite kantrūs. "
-"Perskaitykite ten pateiktą analizės informaciją ir nusiųskite pranešimą. "
-"Uždarykite naršyklės langą. Paspauskite „Atšaukti“ arba pereikite į "
-"atitinkamą žinučių aplanką ir ištrinkite gautą spamą."
-
-msgid "Spamcop Service Type"
-msgstr "Spamcop Tarnybos Tipas"
-
-msgid ""
-"Service type option allows selecting which spamcop services you are using. "
-"Member services use different web reporting forms  and does not display "
-"nags. You can purchase these services, if you want to support SpamCop."
-msgstr ""
-"Tarnybos tipo nustatymas leidžia pasirinkti Jūsų naudojamą Spamcop tarnybos "
-"tipą. Narių tarnyba naudoja kitas tinklinių pranešimų formas ir nebesiūlo sumokėti už "
-"spamcop narystę. Jūs galite įsigyti šias Spamcop paslaugas, jei norite palaikyti "
-"SpamCop jų kovoje su spameriais."
-
-msgid "Filipino (Tagalog)"
-msgstr "Filipiniečių (Tagalogų)"
-
-#, c-format
-msgid "Simplified Chinese"
-msgstr "Supaprastina Kinų (KLR)"
-
-#, c-format
-msgid "Traditional Chinese"
-msgstr "Tradicinė Kinų (Taivanas)"
 
 msgid "Delivery error report"
 msgstr "Ataskaita apie pristatymo klaidą"
