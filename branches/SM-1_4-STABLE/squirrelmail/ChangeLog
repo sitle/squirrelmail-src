@@ -19,6 +19,8 @@ Version 1.4.5 - CVS
   - Fixed translations of "On DATE, AUTHOR said" and "AUTHOR said" replies.
   - In sqgetGlobalVar(), reset $value if the var is not found in the
     specified location.
+  - Added trailing slash for data directory used by global file based
+    address book (#1105760).
 
 Version 1.4.4 - 21 January 2005
 -------------------------------
