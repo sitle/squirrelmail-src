@@ -29,8 +29,7 @@ function sqmindex(&$foowd) {
     $where[] = 'AND';
     $where[] = 'classid != '.WORKSPACE_CLASS_ID;
     $where[] = 'classid != '.USER_CLASS_ID;
-    if ( defined('GROUP_CLASS_ID') )
-      $where[] = 'classid != '.GROUP_CLASS_ID;
+    $where[] = 'classid != '.TRANSLATION_CLASS_ID;
 
     $orderby = array('title', 'classid');
     $objects = $foowd->getObjects($where, NULL, $orderby);
@@ -38,37 +37,40 @@ function sqmindex(&$foowd) {
     $list_objects = array();
 
     $i = 0;
-    foreach ($objects as $object) 
+    if ( count($objects) > 0 )
     {
-      if (is_array($object->permissions) && isset($object->permissions['view'])) {
+      foreach ($objects as $object) 
+      {
+        if (is_array($object->permissions) && isset($object->permissions['view'])) {
           $methodPermission = $object->permissions['view'];
-      } else {
+        } else {
           $methodPermission = getPermission(get_class($object), 'view', 'object');
-      }
+        }
 
-      if ( !$foowd->user->inGroup($methodPermission, $object->creatorid) )
-         continue;
-      $list_objects[$i]['url'] = getURI(array('objectid' => $object->objectid,
+        if ( !$foowd->user->inGroup($methodPermission, $object->creatorid) )
+          continue;
+        $list_objects[$i]['url'] = getURI(array('objectid' => $object->objectid,
                                               'classid' => $object->classid));
-      $list_objects[$i]['title']  = $object->title;
+        $list_objects[$i]['title']  = $object->title;
 
-      if ( $object->workspaceid != 0 )
-        $list_objects[$i]['langid'] = foowd_translation::getLink($foowd, $object->workspaceid);
-      else 
-        $list_objects[$i]['langid'] = '&nbsp;';
+        if ( $object->workspaceid != 0 )
+          $list_objects[$i]['langid'] = foowd_translation::getLink($foowd, $object->workspaceid);
+        else 
+          $list_objects[$i]['langid'] = '&nbsp;';
 
-      if ( $methodPermission != 'Everyone' )
-        $list_objects[$i]['permission'] = $foowd->groups->getDisplayName($foowd, $methodPermission);
-      else 
-        $list_objects[$i]['permission'] = '&nbsp;';
+        if ( $methodPermission != 'Everyone' )
+          $list_objects[$i]['permission'] = $foowd->groups->getDisplayName($foowd, $methodPermission);
+        else 
+          $list_objects[$i]['permission'] = '&nbsp;';
 
-      if (isset($object->updated)) {
+        if (isset($object->updated)) {
           $list_objects[$i]['updated'] = date(DATETIME_FORMAT, $object->updated);
-      } else {
+        } else {
           $list_objects[$i]['updated'] = date(DATETIME_FORMAT, $object->created);
+        }
+        $list_objects[$i]['desc'] = getClassDescription($object->classid);
+        $i++;
       }
-      $list_objects[$i]['desc'] = getClassDescription($object->classid);
-      $i++;
     }
 
     $siteindex->assign_by_ref('OBJECT_LIST', $list_objects);

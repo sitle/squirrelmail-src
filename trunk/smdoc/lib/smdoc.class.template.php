@@ -19,9 +19,13 @@ class Template
     /**
      * Constructor
      */
-    function Template($file = null) 
+    function Template($file = NULL) 
     {
       $this->file = $file;
+    }
+
+    function &factory($file = NULL) {
+        return new Template($file);
     }
 
     /**
@@ -42,7 +46,16 @@ class Template
         }
       }
       elseif ( is_object($value) && get_class($value) == get_class($this) )
+      {
+        if ( isset($this->vars['CURRENT_OBJECT']) )
+          $value->assign_by_ref('CURRENT_OBJECT', $this->vars['CURRENT_OBJECT']);
+        if ( isset($this->vars['CURRENT_USER']) )
+          $value->assign_by_ref('CURRENT_USER', $this->vars['CURRENT_USER']);
+        if ( isset($this->vars['FOOWD_OBJECT']) )
+          $value->assign_by_ref('FOOWD_OBJECT', $this->vars['FOOWD_OBJECT']);
+
         $this->vars[$tpl_var] = $value->fetch();
+      }
       elseif ($tpl_var != '')
           $this->vars[$tpl_var] = $value;
     }
@@ -55,7 +68,26 @@ class Template
      */
     function assign_by_ref($tpl_var, &$value) 
     {
-      if ($tpl_var != '') 
+      if (is_array($tpl_var))
+      {
+        foreach ($tpl_var as $key => $val) 
+        {
+          if ($key != '')
+              $this->vars[$key] &= $val;
+        }
+      }
+      elseif ( is_object($value) && get_class($value) == get_class($this) )
+      {
+        if ( isset($this->vars['CURRENT_OBJECT']) )
+          $value->assign_by_ref('CURRENT_OBJECT', $this->vars['CURRENT_OBJECT']);
+        if ( isset($this->vars['CURRENT_USER']) )
+          $value->assign_by_ref('CURRENT_USER', $this->vars['CURRENT_USER']);
+        if ( isset($this->vars['FOOWD_OBJECT']) )
+          $value->assign_by_ref('FOOWD_OBJECT', $this->vars['FOOWD_OBJECT']);
+
+        $this->vars[$tpl_var] &= $value->fetch();
+      }
+      elseif ($tpl_var != '')
         $this->vars[$tpl_var] =& $value;
     }
 
@@ -64,9 +96,9 @@ class Template
      *
      * @param string $file  the template file name
      */
-    function display($file = null)
+    function display($file = NULL)
     {
-        $this->fetch($file, true);
+      $this->fetch($file, true);
     }
 
 
@@ -76,7 +108,7 @@ class Template
      * @param string  $file       the template file name
      * @param boolean $display    display or return the template
      */
-    function fetch($file = null, $display = false) 
+    function fetch($file = NULL, $display = false) 
     {
       $file = ($file == null) ? $this->file : $file;
       if ( $file == null )
