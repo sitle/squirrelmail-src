@@ -5,8 +5,15 @@
  *
  * This file is an addition/modification to the 
  * Framework for Object Orientated Web Development (Foowd).
- *
+ */
+
+/**
+ * Implementation of cache for objects retrieved from DB.
+ * 
  * $Id$
+ * 
+ * @package smdoc
+ * @subpackage db
  */
 
 /**
@@ -16,6 +23,9 @@
  * This cache is for objects fetched during page load..
  * it is not persisted throughout the user's session
  * at this time (concurrency/edit issues.. ).
+ * 
+ * @package smdoc
+ * @subpackage db
  */
 class smdoc_object_cache 
 {

@@ -3,12 +3,26 @@
  * Copyright (c) 1999-2003 The SquirrelMail Project Team
  * Licensed under the GNU GPL. For full terms see the file COPYING.
  *
- * This file is an addition/modification to the
+ * This file is an addition to the
  * Framework for Object Orientated Web Development (Foowd).
- *
- * $Id$
  */
 
+/**
+ * Constants for passing success/error status across a form submission.
+ *
+ * $Id$
+ * 
+ * @package smdoc
+ * @subpackage error
+ */
+
+/**
+ * Substitute numerical value passed in
+ * with corresponding status string.
+ * @param int ok       Single numerical value for success message
+ * @param mixed error  Single numerical value (or array of said values) 
+ *                     for error messages.
+ */
 function getStatusStrings(&$ok, &$error)
 {
   if ( is_array($error) )

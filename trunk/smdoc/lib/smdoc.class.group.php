@@ -9,29 +9,42 @@
  * $Id$
  */
 
-/*
+/**
  * Two classes are defined in this file:
- * smdoc_user_group is a class that manages user-group 
- * pairs in a special table for group queries.
- * smdoc_app_groups manages a singleton record in the main
- * table for tracking additional groups.
+ * <UL>
+ * <LI>smdoc_user_group is a class that manages user-group 
+ * pairs in a special table for group queries.</LI>
+ * <LI>smdoc_app_groups manages a singleton record in the main
+ * table for tracking additional groups.</LI>
+ * </UL>
+ * 
+ * @package smdoc
+ * @subpackage group
+ * @see smdoc_user_group
+ * @see smdoc_app_groups
  */
 
+/** Class descriptor/Meta information */
 setClassMeta('smdoc_user_group','Mapping of user to group');
-global $USER_GROUP_SOURCE;
+
+/** 
+ * @global array $USER_GROUP_SOURCE
+ */
 $USER_GROUP_SOURCE = array('table' => 'smdoc_user_group',
                            'table_create' => array('smdoc_user_group','makeTable'));
-
 
 /** 
  * Small group for managing user-group pairs in a special
  * associative table.
+ *
+ * @package smdoc
+ * @subpackage group
  */
 class smdoc_user_group extends smdoc_storage
 {
   /** 
    * Constructor
-   * @param foowd foowd Reference to Foowd Environment
+   * @param smdoc foowd Reference to the foowd environment object.
    */
   function smdoc_user_groups(&$foowd, $group, $userid)
   {
@@ -91,7 +104,7 @@ class smdoc_user_group extends smdoc_storage
    * method is envoked to create the missing table and execute the SQL
    * statement again.
    *
-   * @param object foowd The foowd environment object.
+   * @param smdoc foowd Reference to the foowd environment object.
    * @param str SQLString The original SQL string that failed to execute due to missing database table.
    * @return mixed The resulting database query resource or FALSE on failure.
    */
@@ -121,6 +134,9 @@ include_once(SM_DIR . 'smdoc.class.storage.php');
 /**
  * Small singleton class that stores additional groups in the DB
  * Managed by smdoc_group
+ *
+ * @package smdoc
+ * @subpackage group
  */
 class smdoc_app_groups extends smdoc_storage
 {
@@ -132,7 +148,7 @@ class smdoc_app_groups extends smdoc_storage
 
   /** 
    * Constructor
-   * @param foowd foowd Reference to Foowd Environment
+   * @param smdoc foowd Reference to the foowd environment object.
    */
   function smdoc_app_groups(&$foowd)
   {
@@ -142,8 +158,8 @@ class smdoc_app_groups extends smdoc_storage
 
   /**
    * Retrieve singleton instance of application group object
-   * @access static
-   * @param foowd foowd Reference to Foowd Environment
+   * @static
+   * @param smdoc foowd Reference to the foowd environment object.
    * @return Reference to singleton application group object
    */
   function &getInstance(&$foowd)

@@ -3,10 +3,17 @@
  * Copyright (c) 1999-2003 The SquirrelMail Project Team
  * Licensed under the GNU GPL. For full terms see the file COPYING.
  *
- * This file is an addition/modification to the 
+ * This file is an addition to the 
  * Framework for Object Orientated Web Development (Foowd).
- *
+ */
+
+/**
+ * Static/External Resource management.
+ * 
  * $Id$
+ * 
+ * @package smdoc
+ * @subpackage extern
  */
 
 /** 
@@ -15,6 +22,8 @@
  *   func - name of function to call to retrieve content
  *   title - title of external resource
  *   group - Group permitted to view external resource (Everyone by default)
+ *
+ * @global array $EXTERNAL_RESOURCES
  */
 if ( !isset($EXTERNAL_RESOURCES) ) 
   $EXTERNAL_RESOURCES = array();
@@ -29,19 +38,29 @@ setPermission('smdoc_external', 'object', 'permissions', 'Nobody');
 setPermission('smdoc_external', 'object', 'history','Nobody');
 setPermission('smdoc_external', 'object', 'diff',   'Nobody');
 
-/** CLASS DESCRIPTOR **/
+/** Class description, meta information */
 setClassMeta('smdoc_external', 'Externally Defined Objects');
 setConst('EXTERNAL_CLASS_ID', META_SMDOC_EXTERNAL_CLASS_ID);
 
 /**
  * Class allowing external tools to be rendered within the
  * SM_doc/FOOWD framework.
+ * 
+ * @package smdoc
+ * @subpackage extern
  */
 class smdoc_external extends foowd_object 
 {
   /**
    * Constructor
-   * Initialize new instance of smdoc_external. 
+   * Initialize new instance of smdoc_external.
+   * Do not call this function directly, use factory method instead.
+   * 
+   * @access protected 
+   * @param smdoc foowd Reference to the foowd environment object.
+   * @param int   objectid Numerical reference specifying external
+   *                       object to be retrieved.
+   * @see function smdoc_external::factory()
    */
   function smdoc_external(&$foowd, $objectid = NULL) 
   {
@@ -81,14 +100,13 @@ class smdoc_external extends foowd_object
   /**
    * Factory method
    *
-   * see if object id is present in list of external resources.
+   * See if object id is present in list of external resources.
    * If so, create and return new smdoc_external object.
    * 
-   * @access static
-   *
-   * @param smdoc Foowd environment object
-   * @param int objectid Id of object to search for
-   * @return new External object or NULL.
+   * @static
+   * @param smdoc foowd Reference to the foowd environment object.
+   * @param int   objectid Id of object to search for
+   * @return new  External object or NULL.
    */
   function &factory(&$foowd, $objectid)
   {
@@ -162,7 +180,7 @@ class smdoc_external extends foowd_object
   /**
    * Output the object.
    *
-   * @param object foowd The foowd environment object.
+   * @param smdoc foowd Reference to the foowd environment object.
    */
   function method_view() 
   {     

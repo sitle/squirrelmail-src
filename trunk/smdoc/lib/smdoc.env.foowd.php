@@ -5,22 +5,34 @@
  *
  * This file is an addition/modification to the
  * Framework for Object Orientated Web Development (Foowd).
- *
- * $Id$
  */
 
+/** 
+ * Modified Foowd Environment object.
+ * 
+ * $Id$
+ * 
+ * @package smdoc
+ * @author Erin Schnabel
+ * @author Paul James
+ */
+
+/** Define constant for FOOWD class name before including parent */
 define('FOOWD_CLASS_NAME', 'smdoc');
+
+/** Include base foowd object implementation */
 include_once(SM_DIR . 'env.foowd.php');
 
 /**
- * The SMDoc Foowd environment class.
+ * The smdoc Foowd environment class.
  *
  * Sets up the Foowd environment, including database connection, user group
  * management and user initialisation, and provides methods for accessing
  * objects within the system.
  *
  * @package smdoc
- * @version 0.8.4
+ * @author Erin Schnabel
+ * @author Paul James
  */
 class smdoc extends foowd
 {
@@ -34,7 +46,7 @@ class smdoc extends foowd
 
   /**
    * Constructs a new environment object.
-   * smdoc: Simplified for smdoc objects, different group implementation.
+   *
    * @param array $settings Array of settings for this Foowd environment.
    */
   function smdoc($settings)
@@ -87,7 +99,6 @@ class smdoc extends foowd
    *
    * Destroys the environment object outputting debugging information and
    * closing the database connection.
-   * smdoc: removed debug display, handled by template
    */
   function destroy()
   {
@@ -200,7 +211,7 @@ class smdoc extends foowd
     {
       switch($where['classid'])
       {
-        case USER_CLASS_ID: 
+        case USER_CLASS_ID:
           $new_obj =& smdoc_user::fetchUser($this, $where);
           break;
         case EXTERNAL_CLASS_ID:
@@ -237,14 +248,14 @@ class smdoc extends foowd
    * @param bool returnObjects Return the actual objects not just the object meta data
    * @param bool setWorkspace get specific workspace id (or any workspace ok)
    * @return array An array of object meta data or of objects.
-   */   
-  function &getObjList($indexes = NULL, $source = NULL, 
+   */
+  function &getObjList($indexes = NULL, $source = NULL,
                        $where = NULL, $order = NULL, $limit = NULL,
-                       $returnObjects = FALSE, $setWorkspace = TRUE) 
+                       $returnObjects = FALSE, $setWorkspace = TRUE)
   {
     $this->track('foowd->getObjList', $indexes);
     $objects = &$this->database->getObjList($indexes, $source,
-                                            $where, $order, $limit, 
+                                            $where, $order, $limit,
                                             $returnObjects, $setWorkspace);
     $this->track();
     return $objects;

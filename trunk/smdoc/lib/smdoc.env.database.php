@@ -9,13 +9,27 @@
  * $Id$
  */
 
+/** 
+ * Modified Database implementation that uses PEAR DB.
+ * 
+ * $Id$
+ * 
+ * @package smdoc
+ * @subpackage db
+ */
+
+/** Include PEAR DB library */
 require_once('DB.php');
+
+/** Include object cache */
 include_once(SM_DIR.'smdoc.env.cache.php');
 
 /**
  * SquirrelMail modification to foowd db.
- * Uses PEAR to manage backends,
- * provides some customized function
+ * Uses PEAR to manage backends, provides some customized function
+ * 
+ * @package smdoc
+ * @subpackage db
  */
 class smdoc_db  
 {
@@ -30,7 +44,7 @@ class smdoc_db
    * The date/time format used by this storage medium. This string should be
    * a PHP date function compatible date/time formatting string.
    *
-   * @var str
+   * @var string
    */
   var $dateTimeFormat = 'Y-m-d H:i:s';
 
@@ -44,7 +58,7 @@ class smdoc_db
   /**
    * The default table to use.
    * 
-   * @var str
+   * @var string
    */
   var $table;
 
@@ -70,7 +84,7 @@ class smdoc_db
    * layer class if it has not already been loaded.
    *
    * @static
-   * @param object foowd The foowd environment object.
+   * @param smdoc foowd Reference to the foowd environment object.
    * @param str type The type of database object to load.
    * @return mixed The new database object or FALSE on failure.
    */
@@ -96,7 +110,7 @@ class smdoc_db
   /**
    * Constructs a new database object.
    *
-   * @param object foowd The foowd environment object.
+   * @param smdoc foowd Reference to the foowd environment object.
    */
   function smdoc_db(&$foowd) 
   {

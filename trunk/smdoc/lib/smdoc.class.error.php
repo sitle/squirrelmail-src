@@ -3,15 +3,22 @@
  * Copyright (c) 1999-2003 The SquirrelMail Project Team
  * Licensed under the GNU GPL. For full terms see the file COPYING.
  *
- * This file is an addition/modification to the 
+ * This file is an addition to the 
  * Framework for Object Orientated Web Development (Foowd).
- *
- * $Id$
  */
 
+/**
+ * Error handling functions/class/constants.
+ *
+ * $Id$
+ * @package smdoc
+ * @subpackage error
+ */
+
+/** Include storage class */
 include_once(SM_DIR . 'smdoc.class.storage.php');
 
-/* Class descriptor */
+/** Set constants and meta data */
 setClassMeta('smdoc_error', 'Error Display');
 setConst('ERROR_CLASS_ID', META_SMDOC_ERROR_CLASS_ID);
 setConst('ERROR_TITLE', _("Page Error"));
@@ -25,9 +32,8 @@ setPermission('smdoc_error', 'object', 'view', 'Everyone');
  *
  * Used for rendering error messages
  *
- * @package foowd
- * @class smdoc_error
- * @extends foowd_object
+ * @package smdoc
+ * @subpackage error
  */
 class smdoc_error extends smdoc_storage
 {
@@ -40,8 +46,7 @@ class smdoc_error extends smdoc_storage
     /**
 	 * Constructs a new error object.
 	 *
-	 * @constructor smdoc_error
-	 * @param object foowd The foowd environment object.
+	 * @param smdoc foowd Reference to the foowd environment object.
      * @param string title The error title
      * @param string errorString The error message.
 	 */
@@ -60,9 +65,7 @@ class smdoc_error extends smdoc_storage
 	/**
 	 * Override {@link foowd_object::save} to stop this object from being saved.
 	 *
-	 * @class smdoc_error
-	 * @method public save
-	 * @param object foowd The foowd environment object.
+	 * @param smdoc foowd Reference to the foowd environment object.
 	 * @param optional bool incrementVersion Increment the object version.
 	 * @param optional bool doUpdate Update the objects details.
 	 * @return bool Always returns FALSE.
@@ -74,9 +77,7 @@ class smdoc_error extends smdoc_storage
 	/**
 	 * Output the object.
 	 *
-	 * @class foowd_object
-	 * @method private method_view
-	 * @param object foowd The foowd environment object.
+	 * @param smdoc foowd Reference to the foowd environment object.
 	 */
 	function method_view(&$foowd) {
 		$foowd->track('smdoc_error->method_view');
@@ -96,8 +97,6 @@ set_error_handler('smdocErrorCatch');
  * Upon an error being triggered, this function outputs a standard error
  * message and halts execution elegantly.
  *
- * @package foowd
- * @function foowdErrorCatch
  * @param int errorNumber The error code
  * @param str errorString Error description
  * @param str filename The filename in which the error occurred

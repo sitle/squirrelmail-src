@@ -5,8 +5,14 @@
  *
  * This file is an addition/modification to the
  * Framework for Object Orientated Web Development (Foowd).
+ */
+
+/**
+ * Implementation of Site Translations based on Workspaces
  *
  * $Id$
+ * @see foowd_workspace
+ * @package smdoc
  */
 
 /** METHOD PERMISSIONS **/
@@ -20,15 +26,18 @@ setPermission('foowd_translation', 'object', 'import', 'Gods');
 /** CLASS DESCRIPTOR **/
 setClassMeta('foowd_translation', 'Site Translation');
 
-setConst('WORKSPACE_CLASS_ID', META_FOOWD_TRANSLATION_CLASS_ID);
 setConst('TRANSLATION_CLASS_ID', META_FOOWD_TRANSLATION_CLASS_ID);
-
 setConst('TRANSLATION_DEFAULT_LANGUAGE', 'en_US');
 //setConst('TRANSLATION_DEFAULT_LANGUAGE_ICON', 'en_US');
 
-require_once(FOOWD_DIR . 'class.workspace.php');
+/** Include base workspace implementation */
+require_once(SM_DIR . 'class.workspace.php');
 
-/** CLASS DECLARATION **/
+/**
+ * Extension of workspaces to allow all-in-one-place
+ * management of site and translations.
+ * @package smdoc
+ */
 class smdoc_translation extends foowd_workspace 
 {
 
@@ -60,8 +69,8 @@ class smdoc_translation extends foowd_workspace
   /**
    * Initializes array containing objectid, icon, and language code
    * for each defined translation
-   *
-   * @param object foowd The foowd environment object.
+   * @static
+   * @param smdoc foowd Reference to the foowd environment object.
    * @param boolean forceRefresh Force refresh of session cache.
    */
   function initialize(&$foowd, $forceRefresh = FALSE)
@@ -129,8 +138,9 @@ class smdoc_translation extends foowd_workspace
   /** 
    * Retrieve url for given object id.
    * if objectid is NULL, return array containing all URLs
-   * 
-   * @param object foowd The foowd environment object.
+   *
+   * @static
+   * @param smdoc foowd Reference to the foowd environment object.
    * @param optional int objectid Specific translation to retrieve.
    * @return URL for specified translation, or array of all translations.
    */
@@ -154,8 +164,9 @@ class smdoc_translation extends foowd_workspace
   /** 
    * Retrieve given language.
    * if objectid is NULL, return array containing all languages
-   * 
-   * @param object foowd The foowd environment object.
+   *
+   * @static 
+   * @param smdoc foowd Reference to the foowd environment object.
    * @param optional int objectid Specific translation to retrieve.
    * @return specified language string, or array of all languages.
    */
@@ -182,8 +193,11 @@ class smdoc_translation extends foowd_workspace
     /**
      * enter - class method
      * change to selected translation
+     * @static
+     * @param smdoc foowd Reference to the foowd environment object. 
      */
-    function class_enter(&$foowd) {
+    function class_enter(&$foowd) 
+    {
         $foowd->track('foowd_workspace->class_enter');
         $translation_id = new input_querystring('langid');
 
@@ -194,9 +208,9 @@ class smdoc_translation extends foowd_workspace
           $this->foowd->loc_forward(getURI(array('objectid' => $translation_id,
                                                  'classid' => TRANSLATION_CLASS_ID),
                                            FALSE));
-        } else {
+        } 
+        else 
           trigger_error('Could not update user with selected translation.');
-        }
 
         $foowd->track();
     }
