@@ -31,7 +31,11 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
 /** Method permissions */
 setPermission('foowd_text_plain', 'class','create', 'Edit');
-setPermission('foowd_text_plain', 'object', 'edit', 'Edit');
+setPermission('foowd_text_plain', 'object','edit',  'Edit');
+setPermission('foowd_text_plain', 'object','revert','Edit');
+setPermission('foowd_text_plain', 'object','delete','Edit');
+setPermission('foowd_text_plain', 'object','clone', 'Edit');
+
 
 /** Class descriptor/Meta information */
 setClassMeta('foowd_text_plain', 'Plain Text Document');

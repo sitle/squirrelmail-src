@@ -17,6 +17,35 @@
  * @package smdoc
  * @subpackage template
  */
+
+/**
+ * Function for printing an array of strings as:
+ *  $use_parens = TRUE:  ( one | two | three )
+ *  $use_parens = FALSE:   one | two | three
+ * @param array $arr Array of strings to print
+ * @param bool  $use_parens If TRUE will surround list with parenthesis.
+ */
+function print_arr($arr, $use_parens = TRUE)
+{  
+  if ( empty($arr) )
+    return;
+
+  if ( $use_parens )
+    echo '( ';
+  foreach ( $arr as $i => $element )
+  {
+    if ( $i != 0 )
+      echo ' | ';
+    echo $element;
+  }
+
+  if ( $use_parens )
+   echo ' )';
+}
+
+/**
+ * Begin with definitions of common values
+ */
  
   $foowd =& $t['foowd'];
   $user =& $foowd->user;
@@ -53,8 +82,7 @@
     $version = isset($t['version']) ? 'v. ' . $t['version'] . ', ' : '';
     if ( $t['classid'] != ERROR_CLASS_ID )
     {
-      $lastUpdate = ' [ '. $version . _("Last Update") . ': '
-                    . date('Y/m/d, H:i T', $object->updated) . ' ] ';
+      $lastUpdate = ' [ '. $version . date('Y/m/d H:i T', $object->updated) . ' ] ';
       if ( isset($t['workspaceid']) && $t['workspaceid'] != 0 )
         $lastUpdate .= ' (' . getLink($foowd, $t['workspaceid']) . ')';
     }
@@ -103,35 +131,35 @@
       <!-- User Login/Language/Workspace information -->
         <?php
           $lang_url = NULL;
-          if ( $user->workspaceid != 0 )
-          {
-//            $lang_url = foowd_translation::getLink($user->workspaceid);
-            if ( $lang_url != NULL )
-              $lang_url .=  ' | ';
-          }
+          $links = array();
+          $user_link = NULL;
 
+          // Create list of links
+          // Start with current translation link
+//          if ( $user->workspaceid != 0 )
+//            $links[] = foowd_translation::getLink($user->workspaceid);
+
+          // Define link for user (or Anon), do we have login/register or logout links?
           if ( isset($user->objectid) )
           {
-            // If an objectid is set, we're logged in.
-            echo '<a href="'.$loc_url.'?classid='.USER_CLASS_ID.'&objectid='.$user->objectid.'">'
-                 . $user->title . '</a> ';
-            echo '( '. $lang_url
-                 . '<a href="', $user_url, '&method=logout">'. _("Logout") .'</a> )';
-            if ( $user->inGroup('Gods') )
-            {
-              echo '&nbsp;<br /><span class="subtext">'._("Admin") .': '
-                 . '<a href="sqmcreate.php">'._("Create").'</a> '
-                 . '| <a href="'.$loc_url.'?class=smdoc_group_user&method=list">' . _("Groups") . '</a>'
-                 . '</span>';
-            }
-          } else {
-            // Otherwise, we're anonymous
-            echo _("Anonymous");
-            echo ' ( '. $lang_url
-                 . '<a href="', $user_url, '&method=login">'. _("Login") .'</a> ';
-            echo '| <a href="', $user_url, '&method=create">'. _("Register") .'</a> )';
+            $user_link = '<a href="'.$loc_url.'?classid='.USER_CLASS_ID.'&objectid='.$user->objectid.'">'.$user->title.'</a> ';
+            $links[]  = '<a href="'.$user_url.'&method=logout">'. _("Logout") .'</a>';
           }
-          echo '&nbsp;<br /><a href="', $user_url, '&method=list">', _("Users"),'</a>&nbsp;';
+          else
+          {
+            $user_link = _("Anonymous");
+            $links[] = '<a href="'.$user_url.'&method=login">'. _("Login") .'</a>';
+            $links[] = '<a href="'.$user_url.'&method=create">'. _("Register") .'</a>';
+          }
+
+          // Print username ( methodlist ) based on above
+          echo $user_link . '&nbsp;';
+          print_arr($links);
+
+          // Miscellaneous links
+          echo '<br />'
+             . '<a href="'.$user_url.'&method=list">'._("Users").'</a> | '
+             . '<a href="sqmtools.php">'._("Tools").'</a>';
         ?>
     </td>
   </tr>
@@ -208,45 +236,42 @@
 <div class="nothere"><a id="end_content" name="end_content"><img src="templates/images/empty.png" alt="------------- end content ------------------------------------------" /></a></div>
 <!-- begin editmenu -->
 <div id="editmenu">
- <?php
-    if ( isset($t['classid']) &&                 // classid is defined
-         $t['classid'] != ERROR_CLASS_ID )         // is not error page
-    {
+<?php // Assemble links at bottom of page
+
+      $edit_arr = array();
+
+      if ( isset($t['classid']) &&                   // classid is defined
+           $t['classid'] != ERROR_CLASS_ID )         // is not error page
+      {
         $methods = get_class_methods($className);
 
-        $notfirst = 0;
+        // Base part of page URI
+        $uri_arr['objectid'] = $t['objectid'];
+        $uri_arr['classid'] = $t['classid'];
+        if ( isset($t['version']) )
+          $uri_arr['version'] = $t['version'];
+        $obj_uri = getURI($uri_arr);
+
+        // For each method the user has permission to invoke, add a link
         foreach ($methods as $methodName)
         {
-            if (substr($methodName, 0, 7) == 'method_' )
-            {
-                $methodName = substr($methodName, 7);
-                if ( $methodName == 'revert' ||
-                     $methodName == 'diff' ||
-                     $methodName == 'xml' ||
-                     $methodName == 'permissions' ||
-                     $methodName == 'raw' )
-                    continue;
+          if (substr($methodName, 0, 7) == 'method_' )
+          {
+            $methodName = substr($methodName, 7);
+            // There are certain methods we don't want to show 
+            if ( $methodName == 'revert' ||
+                 $methodName == 'diff' )
+              continue;
 
-                if ($foowd->hasPermission($className,$methodName,'object',$object))
-                {
-                    if ( $notfirst ) 
-                      echo " |\n ";
-                    $notfirst = 1;
-                    $uri_arr['objectid'] = $t['objectid'];
-                    $uri_arr['classid'] = $t['classid'];
-                    if ( isset($t['version']) )
-                      $uri_arr['version'] = $t['version'];
-                    $uri_arr['method']  = $methodName;
-                    echo '<a href="', getURI($uri_arr), '">', ucfirst($methodName), '</a>';
-                }
-            }
+            if ($foowd->hasPermission($className,$methodName,'OBJECT',$object))
+              $edit_arr[] = '<a href="'.$obj_uri.'&method='.$methodName.'">'.ucfirst($methodName).'</a>';
+          }
         }
-        if ( $notfirst )
-            echo " |\n ";
-    } 
+      } 
     
     // Last command (always displayed) - link to recent changes    
-    echo '<a href="sqmchanges.php">',_("Recent Changes"),"</a><br />\n";
+    $edit_arr[] = '<a href="sqmchanges.php">'._("Recent Changes")."</a>";
+    print_arr($edit_arr, FALSE);
   ?>
 </div>
 <!-- end editmenu -->

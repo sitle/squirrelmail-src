@@ -114,7 +114,7 @@ function getRegexLength($regex, $default)
  *
  * @param string className Name of the class the method belongs to.
  * @param string methodName Name of the method.
- * @param string type Type of method, 'class' or 'object'.
+ * @param string type Type of method, 'CLASS' or 'OBJECT'.
  * @return string The user group string the permission is set to.
  */
 function getPermission($className, $methodName, $type = '') 
