@@ -4,6 +4,9 @@
 
 Version 1.2.12 [cvs]
 --------------------
+  - Fixed preferences not being save on PHP 4.3.x.
+  - Stopped PHP 4.3.x warning about PHP 4.2.3's session bug appearing
+    on the mailbox view.
   - Fixed mailbox names so + is really a possible character in the
     mailbox.
   - Changed the reading of mail so that reply colours alternate
