@@ -452,19 +452,29 @@ function sqimap_mailbox_option_list($imap_stream, $show_selected = 0, $folder_sk
     foreach ($boxes as $boxes_part) {
         if ($flag == NULL || !in_array($flag, $boxes_part['flags'])) {
             $box = $boxes_part['unformatted'];
-            $lowerbox = strtolower($box);
 
-            if ($folder_skip != 0 && in_array($lowerbox, $folder_skip) ) {
+            if ($folder_skip != 0 && in_array($box, $folder_skip) ) {
                 continue;
             }
-            if ($lowerbox == 'inbox'){
+            $lowerbox = strtolower($box); 
+	    // mailboxes are casesensitive => inbox.sent != inbox.Sent
+	    // nevermind, to many dependencies this should be fixed!
+	    
+            if (strtolower($box) == 'inbox') { // inbox is special and not casesensitive
                 $box2 = _("INBOX");
-            } else if ( $shorten_box_names == 2 ) {  /* delimited, style = 2 */
-                $box2 = str_replace('&nbsp;&nbsp;', '.&nbsp;', $boxes_part['formatted']);
-            } else if ( $shorten_box_names == 1 ) {     /* indent, style = 1 */
-                $box2 = $boxes_part['formatted'];
-            } else  {                      /* default, long names, style = 0 */
-                $box2 = str_replace(' ', '&nbsp;', imap_utf7_decode_local($boxes_part['unformatted-disp']));
+            } else { 
+	        switch ($shorten_box_names)
+		{
+		  case 2:   /* delimited, style = 2 */
+                    $box2 = str_replace('&nbsp;&nbsp;', '.&nbsp;', $boxes_part['formatted']);
+		    break;
+                  case 1:   /* indent, style = 1 */
+                    $box2 = $boxes_part['formatted'];
+		    break;
+                  default:  /* default, long names, style = 0 */
+                    $box2 = str_replace(' ', '&nbsp;', imap_utf7_decode_local($boxes_part['unformatted-disp']));
+		    break;
+		}
             }
             $box2 = str_replace(array('<','>'), array('&lt;','&gt;') , $box2);
 
