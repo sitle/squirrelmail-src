@@ -459,7 +459,10 @@ function user_strcasecmp($a, $b) {
  */
 function sqimap_mailbox_option_list($imap_stream, $show_selected = 0, $folder_skip = 0, $boxes = 0 ) {
     $mbox_options = '';
-    $delimiter = sqimap_get_delimiter ($imap_stream) . '&nbsp;';
+
+    // The standard delimiter can look crappy (when /)
+    //$delimiter = sqimap_get_delimiter ($imap_stream) . '&nbsp;';
+    $delimiter = '.&nbsp;';
     if ( $boxes == 0 ) {
         $boxes = sqimap_mailbox_list($imap_stream);
     }   
