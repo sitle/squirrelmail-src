@@ -46,7 +46,7 @@ class ZkLoader {
      *
      * @return bool/string
      */
-    function &loadService($svcname, $options, $modname = '') {
+    function &loadService($svcname, $options = array(), $modname = '') {
         $svcfile  = "$this->libhome/$svcname/load.php";
         $svcfunc  = "zkload_$svcname";
         $svcclass = "ZkSvc_$svcname";
@@ -101,14 +101,14 @@ class ZkLoader {
             /* Run the module load code string. */
             $code_loadmodule = "\$module = new $modclass(\$options);";
             eval($code_loadmodule);
-
+            /*
             echo '<tt>' .
                  "svcname = $svcname<br>" .
                  "modname = $modname<br>" .
                  "modfile = $modfile<br>" .
                  "modclass = $modclass<br>" .
                  '</tt>';
-
+            */
             /* Load the newly created module into this service. */
             $service->loadModule($module, $options);
         }
