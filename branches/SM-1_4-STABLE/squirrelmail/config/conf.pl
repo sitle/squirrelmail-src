@@ -2725,7 +2725,8 @@ sub command98 {
 
 sub command99 {
     print "This is the name of the table you want to store the global address book\n";
-    print "data in, it defaults to 'global_address'\n";
+    print "data in. Default table name is 'global_abook'. Address book uses same\n";
+    print "database format as personal address book.\n";
     print "\n";
     print "[$WHT$addrbook_global_table$NRM]: $WHT";
     $new_table = <STDIN>;
