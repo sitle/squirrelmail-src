@@ -26,7 +26,22 @@ class imap_fetch extends imap {
 	return $s;
     }
     
-    function parseFetch() {
+    function checkForLiteral(&$read,&$i, &$iCnt) {
+	if ($read{$i} == '{') {
+	    ++$i;
+	    $iLit = '';
+	    while ($read{$i} != '}') $iLit .= $read{$i};
+	    if ($iLit) {
+		$read = sqimap_fgets($iLit);
+		$i = 0;
+		$iCnt = strlen($read);
+		return substr($read,0,$iLit);
+	    }
+	}
+	return false;	
+    }
+    
+    function parseFetch($raw = false) {
         $sArg = $aVal = '';
 	$result = array();
 	$this->iTot_Cnt = 0;
@@ -41,48 +56,65 @@ class imap_fetch extends imap {
 		    } else {
 		       switch ($sArg) {
 		         case 'INTERNALDATE':
-			    $result[$sArg] = $this->parseString($read,$i,$iCnt);
+			    $result[$sArg] = $this->parseQuote($read,$i,$iCnt);
 			    $sArg = '';
 			    break;
 			 case 'ENVELOPE':
-			    ++$i;
+			    $res = $this->checkForLiteral($read,$i,$iCnt);
 			    require_once(SM_LIB_PATH . 'message/Rfc822Header.inc');
 			    $hdr = new Rfc822Header();
-			    $hdr = $this->parseEnvelope($read,$i,$hdr);
+			    $hdr = $this->parseEnvelope($read,$i,$iCnt,$hdr);
 			    $result[$sArg] = $hdr;
 			    $sArg = '';			    
 			    break;
 			 case 'FLAGS':
-			    ++$i;
-			    $result[$sArg] = $this->parseFlags($read,$i);
+			    $this->checkForLiteral($read,$i,$iCnt);
+			    $result[$sArg] = $this->parseFlags($read,$i,$iCnt);
 			    $sArg = '';			    
 			    break;
 			 case 'UID':
 			    ++$i;
-			    $result[$sArg] = $this->parseInteger($read,$i);
+			    $result[$sArg] = $this->parseInteger($read,$i, $iCnt);
 			    $sArg = '';
 			 case 'RFC822.SIZE':
 			    ++$i;
-			    $result[$sArg] = $this->parseInteger($read,$i);
+			    $result[$sArg] = $this->parseInteger($read,$i, $iCnt);
 			    $sArg = '';
 			    break;
 			 case 'BODY':
-			    
 			 case 'BODYSTRUCTURE':
 			    ++$i;
-			    $msg = $this->parseStructure($read,$i);
+			    $msg = $this->parseStructure($read,$i, $msg);
 			    $result['BODYSTRUCTURE'] = $msg;
 			    break;
 			 case 'RFC822':
 			 case 'BODY[]':
-			    $result['RFC822'] = ..
+			    $result['RFC822'] = $this->checkForLiteral($read,$i,$iCnt);
+			    $read = function sqimap_fgets_next($i, $iCnt);
 			    break;
 			 case 'RFC822.TEXT':
 			 case 'BODY[TEXT]':
-			    $result['RFC822.TEXT'] = ..
-			    
+			    $result['RFC822.TEXT'] = 
+			       $this->checkForLiteral($read,$i,$iCnt);
+			    $read = function sqimap_fgets_next($i, $iCnt);
+			    break;
+			 case 'BODY[0]':    
+			 case 'BODY[HEADER]':
+			 /* todo BODY[ENT.HEADER] */
+			    require_once(SM_LIB_PATH . 'message/Rfc822Header.inc');
+			    $res = $this->checkForLiteral($read,$i,$iCnt);
+			    if (!$raw) {
+				$result[$sArg] = $this->parseHeader($res);
+			    } else {
+			        $result[$sArg] = $res;
+			    }
+			    $read = function sqimap_fgets_next($i, $iCnt);
+			    break;
+			 /* todo */			 
+/*
 			 case 'BODY[':
 			 case 'BODY[HEADER.FIELDS 
+*/
 			 default: ++$i; break;
 		    }
 		case '*':
@@ -119,7 +151,6 @@ class imap_fetch extends imap {
     function parseFlags(&$read, &$i, &$iCnt) {
         $aFlags = array();
 	$s = '';
-	
 	++$i; /* skip the first ( */
         for (++$i; $read{$i} != ')'; ++$i) {
              $s .= $read{$i};
@@ -149,7 +180,7 @@ class imap_fetch extends imap {
 		break;
 	    default:
                 $s .= $read{$i};
-     	        if ($i == $iCnt -1) $read = $this->sqimap_fgets_next($i, $iCnt);
+ 	        if ($i == $iCnt -1) $read = $this->sqimap_fgets_next($i, $iCnt);
 		break;
     	    }
 	}
@@ -160,11 +191,7 @@ class imap_fetch extends imap {
         $s = '';
         for (++$i; $read{$i} != ' '; ++$i) {
              $s .= $read{$i};
-     	     if ($i == $iCnt -1) {
-	        $read = $this->sqimap_fgets();
-	        $i = 0;
-	        $iCnt = strlen($read);
-	     } 
+             if ($i == $iCnt -1) $read = $this->sqimap_fgets_next($i, $iCnt);
         }
         return $s;
     }
@@ -288,6 +315,7 @@ class imap_fetch extends imap {
                     $arg_s = $this->parseLiteral($read, $i, $iCnt);
                     ++$arg_no;
                     break;
+		case '0':
                 case is_numeric($read{$i}):
                     /* process integers */
                     if ($read{$i} == ' ') { break; }
@@ -343,11 +371,7 @@ class imap_fetch extends imap {
                     return (array($msg, $i));
                 default: break;
             } /* switch */
-     	    if ($i == $iCnt -1) {
-	        $read = $this->sqimap_fgets();
-	        $i = 0;
-	        $iCnt = strlen($read);
-	    } 
+            if ($i == $iCnt -1) $read = $this->sqimap_fgets_next($i, $iCnt);
         } /* for */
     } /* parsestructure */
 
@@ -372,16 +396,13 @@ class imap_fetch extends imap {
                     $prop_name = '';
                 }
             }
-            if ($i == $iCnt -1) {
-	        $read = $this->sqimap_fgets();
-		$i = 0;
-		$iCnt = strlen($read);
-	    } 
+            if ($i == $iCnt -1) $read = $this->sqimap_fgets_next($i, $iCnt);
         }
         return $properties;
     }
 
-    function parseEnvelope(&$read, &$i, &$iCnt, $hdr) {
+    function parseEnvelope(&$read, &$i, &$iCnt) {
+        $hdr = new Rfc822Header();
         $arg_no = 0;
         $arg_a = array();
 
@@ -440,11 +461,7 @@ class imap_fetch extends imap {
                     $arg_a[] = $addr_a;
                     break;
                 default: break;
-		if ($i == $iCnt -1) {
-		    $read = $this->sqimap_fgets();
-		    $i = 0;
-		    $iCnt = strlen($read);
-		} 
+        	if ($i == $iCnt -1) $read = $this->sqimap_fgets_next($i, $iCnt);
             }
         }
 
@@ -467,11 +484,6 @@ class imap_fetch extends imap {
         return $hdr;
     }
     
-
-    
-    
-			
-
     function parseLiteral(&$read, &$i, &$iCnt) {
         $lit_cnt = '';
         for (++$i; $read{$i} != '}'; ++$i) {
@@ -491,16 +503,12 @@ class imap_fetch extends imap {
                 ++$i;
             }
             $s .= $read{$i};
-     	    if ($i == $iCnt -1) {
-	        $read = $this->sqimap_fgets();
-	        $i = 0;
-	        $iCnt = strlen($read);
-	    } 
+    	    if ($i == $iCnt -1) $read = $this->sqimap_fgets_next($i, $iCnt);
         }
         return $s;
     }
 
-    function parseAddress(&$read, &$i) {
+    function parseAddress(&$read, &$i, &$iCnt) {
         $arg_a = array();
 
         for (; $read{$i} != ')'; ++$i) {
@@ -519,11 +527,7 @@ class imap_fetch extends imap {
                     break;
                 default: break;
             }
-     	    if ($i == $iCnt -1) {
-	        $read = $this->sqimap_fgets();
-	        $i = 0;
-	        $iCnt = strlen($read);
-	    } 
+    	    if ($i == $iCnt -1) $read = $this->sqimap_fgets_next($i, $iCnt);
         }
 
         if (count($arg_a) == 4) {
@@ -538,20 +542,16 @@ class imap_fetch extends imap {
         return $adr;
     }
 
-    function parseDisposition(&$read, &$i) {
+    function parseDisposition(&$read, &$i, &$iCnt) {
         $arg_a = array();
         for (; $read{$i} != ')'; ++$i) {
             switch ($read{$i}) {
-                case '"': $arg_a[] = $this->parseQuote($read, $i); break;
-                case '{': $arg_a[] = $this->parseLiteral($read, $i); break;
-                case '(': $arg_a[] = $this->parseProperties($read, $i); break;
+                case '"': $arg_a[] = $this->parseQuote($read, $i, &$iCnt); break;
+                case '{': $arg_a[] = $this->parseLiteral($read, $i, &$iCnt); break;
+                case '(': $arg_a[] = $this->parseProperties($read, $i, &$iCnt); break;
                 default: break;
             }
-     	    if ($i == $iCnt -1) {
-	        $read = $this->sqimap_fgets();
-	        $i = 0;
-	        $iCnt = strlen($read);
-	    } 
+    	    if ($i == $iCnt -1) $read = $this->sqimap_fgets_next($i, $iCnt);
 	}
 
         if (isset($arg_a[0])) {
@@ -564,22 +564,18 @@ class imap_fetch extends imap {
         return (is_object($disp) ? $disp : '');
     }
 
-    function parseLanguage(&$read, &$i) {
+    function parseLanguage(&$read, &$i, &$iCnt) {
         /* no idea how to process this one without examples */
         $arg_a = array();
 
         for (; $read{$i} != ')'; ++$i) {
             switch ($read{$i}) {
-                case '"': $arg_a[] = $this->parseQuote($read, $i); break;
-                case '{': $arg_a[] = $this->parseLiteral($read, $i); break;
-                case '(': $arg_a[] = $this->parseProperties($read, $i); break;
+                case '"': $arg_a[] = $this->parseQuote($read, $i, &$iCnt); break;
+                case '{': $arg_a[] = $this->parseLiteral($read, $i, &$iCnt); break;
+                case '(': $arg_a[] = $this->parseProperties($read, $i, &$iCnt); break;
                 default: break;
             }
-     	    if ($i == $iCnt -1) {
-	        $read = $this->sqimap_fgets();
-	        $i = 0;
-	        $iCnt = strlen($read);
-	    } 
+    	    if ($i == $iCnt -1) $read = $this->sqimap_fgets_next($i, $iCnt);
         }
 
         if (isset($arg_a[0])) {
@@ -600,20 +596,16 @@ class imap_fetch extends imap {
                 case '(': $this->parseProperties($read, $i); break;
                 default: break;
             }
-     	    if ($i == $iCnt -1) {
-	        $read = $this->sqimap_fgets();
-	        $i = 0;
-	        $iCnt = strlen($read);
-	    } 
+    	    if ($i == $iCnt -1) $read = $this->sqimap_fgets_next($i, $iCnt);
         }
         return $i;
     }
 
-    function parseHeader($hdr) {
+    function parseHeader($read) {
+        $res = new Rfc822Header();
         if (is_array($hdr)) {
             $hdr = implode('', $hdr);
         }
-
         /* First we unfold the header */
         $hdr = trim(str_replace(array("\r\n\t", "\r\n "),array('', ''), $hdr));
 
@@ -630,13 +622,14 @@ class imap_fetch extends imap {
                        !preg_match('/^Subject/i', $field)) {
                        $value = $this->stripComments($value);
                     }
-            	    $this->parseField($field, $value);
+            	    $this->parseField($field, $value, $res);
 		}
             }
         }
-        if ($this->content_type == '') {
-            $this->parseContentType('text/plain; charset=us-ascii');
+        if ($res->content_type == '') {
+            //$this->parseContentType('text/plain; charset=us-ascii');
         }
+	return $res;
     }
 
     function stripComments($value) {
@@ -682,7 +675,7 @@ class imap_fetch extends imap {
         return $result;
     }
 
-    function parseField($field, $value) {
+    function parseField($field, $value, &$hdr) {
         $field = strtolower($field);
         switch($field) {
             case 'date':
@@ -691,78 +684,78 @@ class imap_fetch extends imap {
                 $this->date = getTimeStamp($d);
                 break;
             case 'subject':
-                $this->subject = $value;
+                $hdr->subject = $value;
                 break;
             case 'from':
-                $this->from = $this->parseAddress($value,true);
+                $hdr->from = $this->parseAddress($value,true);
                 break;
             case 'sender':
-                $this->sender = $this->parseAddress($value);
+                $hdr->sender = $this->parseAddress($value);
                 break;
             case 'reply-to':
-                $this->reply_to = $this->parseAddress($value, true);
+                $hdr->reply_to = $this->parseAddress($value, true);
                 break;
             case 'to':
-                $this->to = $this->parseAddress($value, true);
+                $hdr->to = $this->parseAddress($value, true);
                 break;
             case 'cc':
-                $this->cc = $this->parseAddress($value, true);
+                $hdr->cc = $this->parseAddress($value, true);
                 break;
             case 'bcc':
-                $this->bcc = $this->parseAddress($value, true);
+                $hdr->bcc = $this->parseAddress($value, true);
                 break;
             case 'in-reply-to':
-                $this->in_reply_to = $value;
+                $hdr->in_reply_to = $value;
                 break;
             case 'message-id':
-                $this->message_id = $value;
+                $hdr->message_id = $value;
                 break;
 	    case 'references':
-	        $this->references = $value;
+	        $hdr->references = $value;
 		break;
             case 'disposition-notification-to':
-                $this->dnt = $this->parseAddress($value);
+                $hdr->dnt = $this->parseAddress($value);
                 break;
             case 'mime-version':
                 $value = str_replace(' ', '', $value);
-                $this->mime = ($value == '1.0' ? true : $this->mime);
+                $hdr->mime = ($value == '1.0' ? true : $this->mime);
                 break;
             case 'content-type':
-                $this->parseContentType($value);
+//                $hdr->parseContentType($value);
                 break;
             case 'content-disposition':
-                $this->parseHeaderDisposition($value);
+//                $this->parseHeaderDisposition($value);
                 break;
             case 'user-agent':
             case 'x-mailer':
-                $this->xmailer = $value;
+                $hdr->xmailer = $value;
                 break;
             case 'x-priority':
-                $this->priority = $value;
+                $hdr->priority = $value;
                 break;
             case 'list-post':
-                $this->mlist('post', $value);
+//                $this->mlist('post', $value);
                 break;
             case 'list-reply':
-                $this->mlist('reply', $value);
+//                $this->mlist('reply', $value);
                 break;
             case 'list-subscribe':
-                $this->mlist('subscribe', $value);
+//                $this->mlist('subscribe', $value);
                 break;
             case 'list-unsubscribe':
-                $this->mlist('unsubscribe', $value);
+//                $this->mlist('unsubscribe', $value);
                 break;
             case 'list-archive':
-                $this->mlist('archive', $value);
+//                $this->mlist('archive', $value);
                 break;
             case 'list-owner':
-                $this->mlist('owner', $value);
+//                $this->mlist('owner', $value);
                 break;
             case 'list-help':
-                $this->mlist('help', $value);
+//                $this->mlist('help', $value);
                 break;
             case 'list-id':
-                $this->mlist('id', $value);
+//                $this->mlist('id', $value);
                 break;
             default:
                 break;
