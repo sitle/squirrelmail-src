@@ -24,7 +24,7 @@ INSTALLATION (quick):
 	  your PHP include_path, or set the FOOWD_DIR constant and put them in
 	  this directory.
 
-	* For each application using Foowd, create a MySQL database and use the
+	* For each application using Foowd, create a database and use the
 	  mysql.sql script to create the database table.
 	  
 SYNOPSIS:
@@ -32,11 +32,13 @@ SYNOPSIS:
 	require("lib/env.foowd.php");
 
 	$configArray = array(
-		'db_type'=> 'mysql',
-		'db_host'=> 'my_hostname',
-		'db_database'=> 'my_database_name',
-		'db_user' => 'my_user',
-		'db_password' => 'my_password'
+		'db' => array(
+			'type' => 'mysql',
+			'host'=> 'my_hostname',
+			'database'=> 'my_database_name',
+			'user' => 'my_user',
+			'password' => 'my_password'
+		)
 	);
 
 	$foowd = new foowd($configArray);

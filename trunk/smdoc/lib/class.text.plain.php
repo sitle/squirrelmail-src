@@ -92,9 +92,29 @@ class foowd_text_plain extends foowd_object {
    *
    * Re-create Foowd meta arrays not stored when object was serialized.
    */
-  function __wakeup() {
+  function __wakeup() 
+  {
     parent::__wakeup();
     $this->foowd_vars_meta['body'] = '';
+  }
+
+  /**
+   * Add permission selection dropdown lists for each object method to a form.
+   *
+   * @param object form The form to add the dropdown lists to.
+   * @param mixed optional Array containing compatible classes (for use by subclasses..)
+   */
+  function addClassDropdowns(&$form, $compatible_class = NULL) 
+  {
+    $classid = META_FOOWD_TEXT_PLAIN_CLASS_ID;
+    $compatible_class[$classid] = getClassName($classid) . ' - ' 
+                                . getClassDescription($classid);
+
+    $classid = META_FOOWD_TEXT_HTML_CLASS_ID;
+    $compatible_class[$classid] = getClassName($classid) . ' - ' 
+                                . getClassDescription($classid);
+
+    parent::addClassDropdowns($form, $compatible_class);
   }
 
   /**
@@ -102,7 +122,8 @@ class foowd_text_plain extends foowd_object {
    *
    * @return str The objects text contents processed for outputting.
    */
-  function view() {
+  function view() 
+  {
     return $this->processContent($this->body);
   }
 
@@ -113,7 +134,8 @@ class foowd_text_plain extends foowd_object {
    * @param str content The text to process.
    * @return str The processed content.
    */
-  function processContent($content) {
+  function processContent($content) 
+  {
     $content = htmlspecialchars($content);
     $content = str_replace("\n", "<br />\n", $content);
     return $content;
@@ -154,13 +176,17 @@ class foowd_text_plain extends foowd_object {
    *             -4 = other error
    *             +n = generation successful, returns the version number of the previous version
    */
-  function diff(&$diffResultArray) {
-    if (defined('DIFF_COMMAND')) {
-      $object = $this->foowd->getObj(array('objectid' => $this->objectid, 'classid' => $this->classid, 'workspaceid' => $this->workspaceid));
-      if ($this->version == $object->version) {
+  function diff(&$diffResultArray) 
+  {
+    if (defined('DIFF_COMMAND')) 
+    {
+      $object = $this->foowd->getObj(array('objectid' => $this->objectid, 
+                                           'classid' => $this->classid, 
+                                           'workspaceid' => $this->workspaceid));
+      if ($this->version == $object->version) 
         return -1; // version is latest version, can not compare to self
-      } else {
-
+      else 
+      {
         $fileid = time();
         
         $temp_dir = getConstOrDefault('DIFF_TMPDIR', getTempDir());
@@ -173,16 +199,20 @@ class foowd_text_plain extends foowd_object {
 
         ignore_user_abort(TRUE); // don't halt if aborted during diff
 
-        if (!($fp1 = fopen($oldFile, 'w')) || !($fp2 = fopen($newFile, 'w'))) {
+        if (!($fp1 = fopen($oldFile, 'w')) || !($fp2 = fopen($newFile, 'w'))) 
+        {
           trigger_error('Could not create temp files in "'.$temp_dir.'" required for diff engine.');
           $returnValue = -4; // other error
-        } else {
-
-          if (fwrite($fp1, $oldPage) < 0 || fwrite($fp2, $newPage) < 0) {
+        } 
+        else 
+        {
+          if (fwrite($fp1, $oldPage) < 0 || fwrite($fp2, $newPage) < 0) 
+          {
             trigger_error('Could not write to temp files in "'.$temp_dir.'" required for diff engine.');
             $returnValue = -4; // other error
-          } else {
-
+          } 
+          else 
+          {
             fclose($fp1);
             fclose($fp2);
 
@@ -190,12 +220,15 @@ class foowd_text_plain extends foowd_object {
             $diffResult = shell_exec(DIFF_COMMAND.' '.$oldFile.' '.$newFile);
             $this->foowd->track();
 
-            if ($diffResult === FALSE) {
+            if ($diffResult === FALSE) 
+            {
               trigger_error('Error occured running diff engine "', DIFF_COMMAND, '".');
-              $returnValue = -4; // other error
-            } elseif ($diffResult == FALSE) {
-              $returnValue = -3; // versions are the same
-            } else { // parse output to be nice
+              $returnValue = -4;                // other error
+            } 
+            elseif ($diffResult == FALSE) 
+              $returnValue = -3;                // versions are the same
+            else                                // parse output to be nice
+            {
               $diffResultArray = explode("\n", $diffResult);
               $returnValue = $object->version;
             }
@@ -209,9 +242,9 @@ class foowd_text_plain extends foowd_object {
         
         return $returnValue;
       }
-    } else {
-      return -2; // diffs disabled
-    }
+    } 
+    else 
+      return -2;                // diffs disabled
   }
 
 /* Class methods */
@@ -223,7 +256,8 @@ class foowd_text_plain extends foowd_object {
    * @param object foowd The foowd environment object.
    * @param str className The name of the class.
    */
-  function class_create(&$foowd, $className) {
+  function class_create(&$foowd, $className) 
+  {
     $foowd->track('foowd_text_plain->class_create');
     
     include_once(INPUT_DIR.'input.querystring.php');
@@ -235,20 +269,24 @@ class foowd_text_plain extends foowd_object {
     $createForm = new input_form('createForm', NULL, 'POST', _("Create"), NULL);
     $createTitle = new input_textbox('createTitle', REGEX_TITLE, $queryTitle->value, _("Object Title").':');
     $createBody = new input_textarea('createBody', '', NULL, NULL, 80, 20);
-    if ($createForm->submitted() && $createTitle->value != '') {
+    if ($createForm->submitted() && $createTitle->value != '') 
+    {
       $object = &new $className(
         $foowd,
         $createTitle->value,
         $createBody->value
       );
-      if ($object->objectid != 0) {
+      if ($object->objectid != 0) 
+      {
         $foowd->template->assign('success', TRUE);
         $foowd->template->assign('objectid', $object->objectid);
         $foowd->template->assign('classid', $object->classid);
-      } else {
+      } 
+      else 
         $foowd->template->assign('success', FALSE);
-      }
-    } else {
+    } 
+    else 
+    {
       $createForm->addObject($createTitle);
       $createForm->addObject($createBody);
       $foowd->template->assign_by_ref('form', $createForm);
@@ -301,7 +339,7 @@ class foowd_text_plain extends foowd_object {
                               'objectid' => $this->objectid,
                               'ok' => OBJECT_UPDATE_OK), FALSE);
           $this->save();
-          header('Location: ' . $url);
+          $this->foowd->loc_forward($url);
           break;
         case 2:
           $this->foowd->template->assign('failure', OBJECT_UPDATE_COLLISION);
@@ -317,38 +355,39 @@ class foowd_text_plain extends foowd_object {
     $this->foowd->track();
   }
 
-
   /**
    * Output the objects history.
    *
    * We override <code>{@link foowd_object::method_history}</code> so as to add links to the diff method.
    */
-  function method_history() {
+  function method_history() 
+  {
     $this->foowd->track('foowd_text_plain->method_history');
 
     $this->foowd->template->assign('detailsTitle', $this->getTitle());
     $this->foowd->template->assign('detailsCreated', date(DATETIME_FORMAT, $this->created).' ('.timeSince($this->created).' ago)');
     $this->foowd->template->assign('detailsAuthor', htmlspecialchars($this->creatorName));
     $this->foowd->template->assign('detailsType', getClassDescription($this->classid));
-    if ($this->workspaceid != 0) {
+    if ($this->workspaceid != 0) 
       $this->foowd->template->assign('detailsWorkspace', $this->workspaceid);
-    }
     
-    $foo = FALSE;
     $objArray = $this->foowd->getObjHistory(array('objectid' => $this->objectid, 'classid' => $this->classid));
+    $latestVersion = $objArray[0]->version;
     unset($objArray[0]);
     $versions = array();
-    foreach ($objArray as $object) {
+    foreach ($objArray as $object) 
+    {
+      $version = array();
       $version['updated'] = date(DATETIME_FORMAT, $object->updated).' ('.timeSince($object->updated).' ago)';
       $version['author'] = htmlspecialchars($object->updatorName);
       $version['version'] = $object->version;
       $version['objectid'] = $object->objectid;
       $version['classid'] = $object->classid;
-      if ($foo) {
+      if ($object->version != $latestVersion) 
+      {
         $version['revert'] = TRUE;
         $version['diff'] = TRUE;
       }
-      $foo = TRUE;
       $this->foowd->template->append('versions', $version);
     }
 
@@ -358,43 +397,44 @@ class foowd_text_plain extends foowd_object {
   /**
    * Output the generated diff.
    */
-  function method_diff() {
+  function method_diff() 
+  {
     $this->foowd->track('foowd_text_plain->method_diff');
 
     $diffResultArray = NULL;
+
     $result = $this->diff($diffResultArray);
-    switch($result) {
-    case -1:
-      $this->foowd->template->assign('success', FALSE);
-      $this->foowd->template->assign('error', 1);
-      break;
-    case -2:
-      $this->foowd->template->assign('success', FALSE);
-      $this->foowd->template->assign('error', 2);
-      break;
-    case -3:
-      $this->foowd->template->assign('success', FALSE);
-      $this->foowd->template->assign('error', 3);
-      break;
-    default:
-      $this->foowd->template->assign('success', TRUE);
-      $this->foowd->template->assign('version1', $this->version);
-      $this->foowd->template->assign('version2', $result);
-      $diffAddRegex = getConstOrDefault('DIFF_ADD_REGEX', '/^>(.*)$/');
-      $diffMinusRegex = getConstOrDefault('DIFF_MINUS_REGEX', '/^<(.*)$/');
-      $diffSameRegex = getConstOrDefault('DIFF_SAME_REGEX', '/^ (.*)$/');
-      foreach($diffResultArray as $diffLine) {
-        $diff = array();
-        if (preg_match($diffAddRegex, $diffLine, $lineResult)) {
-          $diff['add'] = htmlspecialchars($lineResult[1]);
-        } elseif (preg_match($diffMinusRegex, $diffLine, $lineResult)) {
-          $diff['minus'] = htmlspecialchars($lineResult[1]);
-        } elseif (preg_match($diffSameRegex, $diffLine, $lineResult)) {
-          $diff['same'] = htmlspecialchars($lineResult[1]);
+
+    switch($result) 
+    {
+      case -1:
+        $this->foowd->template->assign('failure', DIFF_FAILED_SAME);
+        break;
+      case -2:
+        $this->foowd->template->assign('failure', INVALID_METHOD);
+        break;
+      case -3:
+        $this->foowd->template->assign('failure', DIFF_OK_SAME);
+        break;
+      default:
+        $this->foowd->template->assign('version1', $this->version);
+        $this->foowd->template->assign('version2', $result);
+        $diffAddRegex = getConstOrDefault('DIFF_ADD_REGEX', '/^>(.*)$/');
+        $diffMinusRegex = getConstOrDefault('DIFF_MINUS_REGEX', '/^<(.*)$/');
+        $diffSameRegex = getConstOrDefault('DIFF_SAME_REGEX', '/^ (.*)$/');
+        foreach($diffResultArray as $diffLine) 
+        {
+          $diff = array();
+          if (preg_match($diffAddRegex, $diffLine, $lineResult)) 
+            $diff['add'] = htmlspecialchars($lineResult[1]);
+          elseif (preg_match($diffMinusRegex, $diffLine, $lineResult))
+            $diff['minus'] = htmlspecialchars($lineResult[1]);
+          elseif (preg_match($diffSameRegex, $diffLine, $lineResult)) 
+            $diff['same'] = htmlspecialchars($lineResult[1]);
+
+          $this->foowd->template->append('diff', $diff);
         }
-        $this->foowd->template->append('diff', $diff);
-      }
-      break;
+        break;
     }
 
     $this->foowd->track();

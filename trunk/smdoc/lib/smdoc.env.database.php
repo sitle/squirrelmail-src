@@ -101,7 +101,7 @@ class smdoc_db extends foowd_db
  
     $this->foowd = &$foowd;
     $this->objects = new smdoc_obj_cache();
-    $this->default_source = $db['db_table'];
+    $this->table = $db['db_table'];
 
     if ( isset($foowd->config_settings['archive']) )
     {
@@ -202,15 +202,6 @@ class smdoc_db extends foowd_db
   }
 
   /**
-   * release storage used by result set
-   * @param resource result The result set to free
-   * @return bool Returns TRUE on success, FALSE on failure.
-   */
-  function free_result($result) {
-    return $result->free();
-  }
-
-  /**
    * Add an object reference to the loaded objects array.
    *
    * @access protected
@@ -233,6 +224,118 @@ class smdoc_db extends foowd_db
   }
 
   /**
+   * Verify that title is unique. If it is, assign a unique objectid.
+   *
+   * @param str title The proposed title
+   * @param int workspaceid The workspace to search in
+   * @param int objectid The object id generated from the title
+   */
+  function isTitleUnique($title, $workspace, &$objectid, 
+                         $in_source = NULL, $uniqueObjectid = TRUE)
+  {
+    $this->getSource($in_source,$source,$makeTable);
+
+    $indexes['title'] = $title;
+    $indexes['workspaceid'] = $workspace;
+
+    $where = ' WHERE'.$this->buildWhere($indexes);
+    $select = 'SELECT title FROM '.$source.$where;
+
+    $query = $this->query($select);
+    if ( $this->num_rows($query) > 0 )
+      return FALSE;
+
+    if ( $uniqueObjectid )
+    {
+      $objectid = strtolower($title);
+      $select = 'SELECT objectid FROM '.$source.'WHERE objectid = ';
+      while ( $query = $this->query($select.$objectid) )
+        $objectid++;
+    }
+
+    return TRUE;
+  }
+
+  /**
+   * Get lastest version of an object.
+   *
+   * @param array indexes Array of indexes and values to find object by
+   * @param array joins Array of sources and indexes of objects to also fetch based upon indexes of first object
+   * @param str source The source to fetch the object from
+   * @return mixed The retrieved object or an array containing the retrieved object and the joined objects.
+   */
+//  function &getObj($indexes, $joins = NULL, $in_source = NULL)
+//  {
+//    if ($object = &$this->checkLoadedReference($indexes, $in_source)) 
+//      return $object;
+//
+//    $this->foowd->track('smdoc_db->getObj');
+//
+//    $this->getSource($in_source,$source,$makeTable);
+//    $this->setWorkspace($indexes);
+//
+//    $join = '';
+//    $fields = '';
+//    $orderby = '';
+//
+//
+//    if (isset($indexes['version']) && $indexes['version'] == 0)
+//      unset($indexes['version']);
+//
+//    $where = ' WHERE'.$this->buildWhere($indexes);
+//
+//
+//    $this->foowd->track();
+//  }
+
+
+  /**
+   * Get all versions of an object.
+   *
+   * @param array indexes Array of indexes and values to find object by
+   * @param str source The source to fetch the object from
+   * @return array An array of the retrieved object versions indexed by version number.
+   */
+  function &getObjHistory($indexes, $in_source = NULL)
+  {
+    $this->foowd->track('foowd_db->getObjHistory');
+
+    $this->getSource($in_source,$source,$makeTable);
+
+    $this->setWorkspace($indexes);
+
+    $where = ' WHERE'.$this->buildWhere($indexes);
+
+    $select = 'SELECT object, classid, version FROM '.$source
+              .$where.' ORDER BY version DESC';
+
+    $this->foowd->debug('sql', $select);
+    $records =& $this->conn->getAll($select);
+
+    if (DB::isError($records)) 
+    {
+      $this->foowd->track(); 
+      return FALSE;
+    }
+
+    $return = array();
+    $latest = 0;
+    foreach ($records as $record) 
+    {
+      $return[$record['version']] = $this->foowd->unserialize($record['object']. $record['classid']);
+      $return[$record['version']]->foowd = &$this->foowd; // create Foowd reference
+      $this->addToLoadedReference($return[$record['version']]);
+      if ($record['version'] > $latest) {
+        $latest = $record['version'];
+      }
+    }
+    $return[0] = &$return[$latest]; // set reference on index zero to latest version
+    $this->foowd->track();
+    return $return;
+  }
+
+
+  /**
    * Get a list of objects.
    *
    * @param array indexes Array of indexes to be returned
@@ -244,14 +347,13 @@ class smdoc_db extends foowd_db
    * @param bool setWorkspace get specific workspace id (or any workspace ok)
    * @return array An array of object meta data or of objects.
    */   
-  function &getObjList($indexes = NULL, $source = NULL, 
-                       $where = NULL, $order = NULL, $limit = NULL, 
+  function &getObjList($indexes = NULL, $in_source = NULL, 
+                       $where = NULL, $order = NULL, $limit = NULL,
                        $returnObjects = FALSE, $setWorkspace = TRUE) 
   {
     $this->foowd->track('smdoc_db->getObjList');
 
-    if ( $source == NULL )
-      $source = $this->default_source;
+    $this->getSource($in_source, $source, $makeTable);
 
     if ( $setWorkspace )
       $this->setWorkspace($where);
@@ -309,21 +411,23 @@ class smdoc_db extends foowd_db
     }
 
     $return = array();
-        
     foreach ($records as $record) 
     {
-      if ( !isset($return[$record['objectid']]) || 
-           $this->checkRecordVersion($record['version'], $return[$record['objectid']]['version']) ) 
+      $id = $record['objectid'];
+      if ( isset($record['version']) ) 
+        $id .= '.' . $record['version'];
+
+      if ( !isset($return[$id]) ) 
       {
         if ($returnObjects) 
         {
-          $return[$record['objectid']] = $this->unserializeObject($source, $record) ;
-          $return[$record['objectid']]->foowd = &$this->foowd; // create Foowd reference
-          $return[$record['objectid']]->source = $source;
-          $this->addToLoadedReference($return[$record['objectid']]);
+          $return[$id] = $this->unserializeObject($source, $record) ;
+          $return[$id]->foowd = &$this->foowd; // create Foowd reference
+          $return[$id]->source = $source;
+          $this->addToLoadedReference($return[$id]);
         } 
         else 
-          $return[$record['objectid']] = $record;
+          $return[$id] = $record;
       }
     }
     
@@ -367,6 +471,27 @@ class smdoc_db extends foowd_db
     return new foowd_object();
   }
 
+  /**
+   * Our own internal method for getting the source that
+   * should be used.
+   * @access private
+   * @param mixed in_source Source specified by the caller
+   * @param str source Name of table to query
+   * @param str makeTable name of function for table creation
+   */
+  function getSource($in_source, &$source, &$makeTable)
+  {
+    if (is_array($in_source)) 
+    {
+      $source = $in_source['table'];
+      $makeTable = $in_source['table_create'];
+    }
+    elseif ( isset($in_source) )
+      $source = $in_source;
+    else
+      $source = $this->table;
+  }
+
 
   /**
    * Save an object.
@@ -383,15 +508,7 @@ class smdoc_db extends foowd_db
 
     $serializedObj = serialize($object);
 
-    if (is_array($object->foowd_source)) 
-    {
-      $source = $object->foowd_source['table'];
-      $makeTable = $object->foowd_source['table_create'];
-    }
-    elseif ( isset($object->foowd_source) )
-      $source = $object->foowd_source;
-    else
-      $source = $this->default_source;
+    $this->getSource($object->foowd_source, $source, $makeTable);
 
     // Build array of DB indices from object meta data
     $fieldArray['object'] = $serializedObj;
@@ -409,7 +526,7 @@ class smdoc_db extends foowd_db
     // buildWhere
     foreach( $object->foowd_primary_key as $k => $index )
       $where[$index] = $object->foowd_original_access_vars[$index];
-    $where = 'WHERE ' . $this->buildWhere($where);
+    $where = ' WHERE ' . $this->buildWhere($where);
 
     $update = 'UPDATE '.$source.' SET ';
     $insert = 'INSERT INTO '.$source.' (';
@@ -451,6 +568,7 @@ class smdoc_db extends foowd_db
       }
     }
     $insert .= ') VALUES ('.$values.')';
+    $update .= $where;
 
     $saveResult = 0;
 
@@ -478,6 +596,32 @@ class smdoc_db extends foowd_db
 
     $this->foowd->track();
     return $saveResult;
+  }
+
+  /**
+   * Delete an object (and all archive versions).
+   *
+   * @param object object The object to delete
+   * @return bool Success or failure.
+   */
+  function delete(&$object) 
+  {
+    $this->foowd->track('foowd_db->delete');
+
+    $this->getSource($object->foowd_source, $source, $makeTable);
+
+    // buildWhere
+    foreach( $object->foowd_primary_key as $index )
+    {
+      if ( $index != 'version' )
+        $where[$index] = $object->foowd_original_access_vars[$index];
+    }
+
+    $delete = 'DELETE FROM '.$source.' WHERE ' . $this->buildWhere($where);
+
+    $result =& $this->query($delete);
+    $this->foowd->track();
+    return $this->query_success($result);
   }
 
 }

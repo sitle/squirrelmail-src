@@ -54,7 +54,14 @@ setClassMeta('foowd_object', 'Base Object');
  * @author Paul James
  * @package Foowd
  */
-class foowd_object {
+class foowd_object 
+{
+  /**
+   * Reference to the Foowd object.
+   *
+   * @var object
+   */
+  var $foowd;
 
   /**
    * Object member variable meta array.
@@ -138,7 +145,7 @@ class foowd_object {
    *
    * @var int
    */
-  var $workspaceid = 0;
+  var $workspaceid;
 
   /**
    * Unix timestamp the object was created.
@@ -187,7 +194,7 @@ class foowd_object {
    *
    * @var array
    */
-  var $permissions = array();
+  var $permissions;
 
   /**
    * Constructs a new Foowd objcct.
@@ -199,67 +206,41 @@ class foowd_object {
    * @param str deleteGroup The user group for deleting the object.
    * @param bool allowDuplicateTitle Allow object to have the same title as another object.
    */
-  function foowd_object(
-    &$foowd,
-    $title = NULL,
-    $viewGroup = NULL,
-    $adminGroup = NULL,
-    $deleteGroup = NULL,
-    $allowDuplicateTitle = NULL
-  ) {
+  function foowd_object( &$foowd,
+                         $title = NULL,
+                         $viewGroup = NULL,
+                         $adminGroup = NULL,
+                         $deleteGroup = NULL) 
+  {
     $foowd->track('foowd_object->constructor');
 
     $this->foowd = &$foowd; // create Foowd reference
 
     $this->__wakeup(); // init meta arrays
 
-    if (!isset($allowDuplicateTitle)) {
-      $allowDuplicateTitle = $foowd->allow_duplicate_title;
-    }
-
-// set object vars
-
-    $maxTitleLength = getRegexLength($this->foowd_vars_meta['title'], 32);
-    if (strlen($title) > 0 &&  strlen($title) < $maxTitleLength && preg_match($this->foowd_vars_meta['title'], $title)) {
-      $this->title = $title;
-    } else {
-      trigger_error('Could not create object "'.$title.'", title too long or does not match regular expression.');
-      $this->objectid = 0;
-      $foowd->track(); return FALSE;
-    }
-
-    if (isset($foowd->user)) {
-      $this->workspaceid = $foowd->user->workspaceid;
-    } else {
-      $this->workspaceid = 0;
-    }
-
+    $this->title = $title;
     $this->classid = crc32(strtolower(get_class($this)));
 
-// set objectid, loop incrementing id until unique id is found (just in case, crc32 is not collision proof)
-    $this->objectid = crc32(strtolower($title));
+    if ( isset($foowd->user) ) 
+      $this->workspaceid = $foowd->user->workspaceid;
+    else 
+      $this->workspaceid = 0;
 
-// check objectid
-    while ($object =& $foowd->getObj(array(
-      'objectid' => $this->objectid,
-      'classid' => $this->classid,
-      'workspaceid' => $this->workspaceid
-    ))) {
-      if (!$allowDuplicateTitle) {
-        trigger_error('Could not create object, duplicate title "'.htmlspecialchars($title).'".');
-        $this->objectid = 0;
-        $foowd->track(); return FALSE;
-      }
-      $this->objectid++;
+    if ( !$this->isTitleUnique($this->title, $this->workspaceid, $objectid) )
+    {
+      $this->objectid = 0;
+      return FALSE;
     }
 
-// set original access vars
+    $this->objectid = $objectid;
+
+    // set original access vars
     $this->foowd_original_access_vars['objectid'] = $this->objectid;
     $this->foowd_original_access_vars['version'] = $this->version;
     $this->foowd_original_access_vars['classid'] = $this->classid;
     $this->foowd_original_access_vars['workspaceid'] = $this->workspaceid;
 
-// set user vars
+    // set user vars
     $this->creatorid = $foowd->user->objectid;
     $this->creatorName = $foowd->user->title;
     $this->created = time();
@@ -267,18 +248,25 @@ class foowd_object {
     $this->updatorName = $foowd->user->title;
     $this->updated = time();
 
-// set method permissions
-    if ($viewGroup != NULL) $this->permissions['view'] = $viewGroup;
-    if ($adminGroup != NULL) {
+    // set method permissions
+    $this->permissions = array();
+
+    if ($viewGroup != NULL) 
+      $this->permissions['view'] = $viewGroup;
+
+    if ($adminGroup != NULL) 
+    {
       $this->permissions['admin'] = $adminGroup;
       $this->permissions['clone'] = $adminGroup;
     }
-    if ($deleteGroup != NULL) $this->permissions['admin'] = $deleteGroup;
 
-// add to loaded object reference list
+    if ($deleteGroup != NULL) 
+      $this->permissions['admin'] = $deleteGroup;
+
+    // add to loaded object reference list
     $foowd->database->addToLoadedReference($this);
 
-// object created successfuly, queue for saving
+    // object created successfuly, queue for saving
     $this->foowd_changed = TRUE;
 
     $foowd->track();
@@ -291,7 +279,8 @@ class foowd_object {
    * @access private
    * @return array Array of the names of the member variables to keep when serialising.
    */
-  function __sleep() {
+  function __sleep() 
+  {
     $returnArray = get_object_vars($this);
     unset($returnArray['foowd']); // Foowd object reference
     unset($returnArray['foowd_source']); // source object was loaded from
@@ -310,8 +299,11 @@ class foowd_object {
    *
    * @access private
    */
-  function __wakeup() {
-// Member var metadata
+  function __wakeup() 
+  {
+    $this->foowd_source = NULL;
+
+    // Member var metadata
     $this->foowd_vars_meta['title'] = REGEX_TITLE;
     $this->foowd_vars_meta['objectid'] = REGEX_ID;
     $this->foowd_vars_meta['version'] = '/^[0-9]*$/';
@@ -324,19 +316,22 @@ class foowd_object {
     $this->foowd_vars_meta['updatorid'] = REGEX_ID;
     $this->foowd_vars_meta['updatorName'] = REGEX_TITLE;
     $this->foowd_vars_meta['permissions'] = REGEX_GROUP;
-// Index metadata
+
+    // Index metadata
     $this->foowd_indexes['objectid'] = array('name' => 'objectid', 'type' => 'INT', 'notnull' => TRUE);
     $this->foowd_indexes['version'] = array('name' => 'version', 'type' => 'INT', 'unsigned' => TRUE, 'notnull' => TRUE, 'default' => 1);
     $this->foowd_indexes['classid'] = array('name' => 'classid', 'type' => 'INT', 'notnull' => TRUE, 'default' => 0);
     $this->foowd_indexes['workspaceid'] = array('name' => 'workspaceid', 'type' => 'INT', 'notnull' => TRUE, 'default' => 0);
     $this->foowd_indexes['title'] = array('name' => 'title', 'type' => 'VARCHAR', 'length' => getRegexLength($this->foowd_vars_meta['title'], 32), 'notnull' => TRUE);
     $this->foowd_indexes['updated'] = array('name' => 'updated', 'type' => 'DATETIME', 'notnull' => TRUE);
-// Original access vars
+
+    // Original access vars
     $this->foowd_original_access_vars['objectid'] = $this->objectid;
     $this->foowd_original_access_vars['version'] = $this->version;
     $this->foowd_original_access_vars['classid'] = $this->classid;
     $this->foowd_original_access_vars['workspaceid'] = $this->workspaceid;
-// Default primary key
+
+    // Default primary key
     $this->foowd_primary_key = array('objectid','version','classid','workspaceid');
   }
 
@@ -346,39 +341,43 @@ class foowd_object {
    * @param str methodName Name of the method to call.
    * @return bool Success or failure
    */
-  function method($methodName = NULL) {
+  function method($methodName = NULL) 
+  {
     $this->foowd->track('foowd_object->method', $methodName);
-    if (!isset($methodName)) {
-      trigger_error('Method name not given for method call');
-      $this->foowd->track(); return FALSE;
-    }
+  
     $method = 'method_'.$methodName;
-    if (method_exists($this, $method)) { // check method exiss
-      if (is_array($this->permissions) && isset($this->permissions[$methodName])) {
-        $methodPermission = $this->permissions[$methodName];
-      } else {
-        $methodPermission = getPermission(get_class($this), $methodName, 'object');
-      }
-      if ($this->foowd->user->inGroup($methodPermission, $this->creatorid)) { // check user permission
-        $this->$method(); // call method
-        if ($this->foowd->template) {
-          $this->foowd->template->assign('objectid', $this->objectid);
-          $this->foowd->template->assign('classid', $this->classid);
-          $this->foowd->template->assign('version', $this->version);
-          $this->foowd->template->assign('workspaceid', $this->workspaceid);
-          $this->foowd->template->assign('title', $this->getTitle());
-          $this->foowd->template->assign('method', $methodName);
-          $this->foowd->template->assign_by_ref('object', $this);
-        }
-        $this->foowd->track(); return TRUE;
-      } else {
-        trigger_error('Permission denied to access method "'.$methodName.'" for object "'.$this->getTitle().'"');
-        $this->foowd->track(); return FALSE;
-      }
-    } else {
-      trigger_error('Unknown method "'.$methodName.'" for object "'.$this->getTitle().'"');
-      $this->foowd->track(); return FALSE;
+
+    // Check that method exists
+    if ( $methodName == NULL || !method_exists($this, $method) )  
+    {
+      $this->foowd->loc_forward(getURI(array('objectid' => $this->objectid,
+                                             'error' => INVALID_METHOD), FALSE)); 
+      exit;
     }
+
+    // Ensure that user has Permission to invoke method
+    $permission = $this->foowd->hasPermission(get_class($this), $method, 'object', $this);
+    if ( !$permission )
+    {
+      $this->foowd->loc_forward(getURI(array('error' => USER_NO_PERMISSION), FALSE)); 
+      exit;
+    }
+
+    $this->$method(); // call method
+
+    if ($this->foowd->template) 
+    {
+      $this->foowd->template->assign('objectid', $this->objectid);
+      $this->foowd->template->assign('classid', $this->classid);
+      $this->foowd->template->assign('version', $this->version);
+      $this->foowd->template->assign('workspaceid', $this->workspaceid);
+      $this->foowd->template->assign('title', $this->getTitle());
+      $this->foowd->template->assign('method', $methodName);
+      $this->foowd->template->assign_by_ref('object', $this);
+    }
+
+    $this->foowd->track(); 
+    return TRUE;
   }
 
   /**
@@ -389,25 +388,32 @@ class foowd_object {
    * @param str methodName Name of the method to call.
    * @return bool Success or failure
    */
-  function classMethod(&$foowd, $className, $methodName = NULL) {
+  function classMethod(&$foowd, $className, $methodName = NULL ) 
+  {
     $foowd->track('foowd_object->classMethod', $className, $methodName);
-    if (!isset($methodName)) {
-      trigger_error('Method name not given for method call');
-      $foowd->track(); return FALSE;
+
+    // make sure method exists
+    $classMethods = get_class_methods($className);
+    $classMethodName = 'class_'.$methodName;
+
+    if ( $methodName == NULL || !in_array($classMethodName, $classMethods) ) 
+    {
+      $foowd->loc_forward(getURI(array('error' => INVALID_METHOD), FALSE)); 
+      exit;
     }
-    if (in_array('class_'.$methodName, get_class_methods($className))) { // check method exists
-      $methodPermission = getPermission($className, $methodName, 'class');
-      if ($foowd->user->inGroup($methodPermission)) { // check user permission
-        call_user_func(array($className, 'class_'.$methodName), &$foowd, $className); // call method
-        $foowd->track(); return TRUE;
-      } else {
-        trigger_error('Permission denied to call class method "'.$methodName.'" of class "'.$className.'"');
-        $foowd->track(); return FALSE;
-      }
-    } else {
-      trigger_error('Unknown class method "'.$methodName.'" for class "'.$className.'"');
-      $foowd->track(); return FALSE;
+
+    $object = NULL;
+    $permission = $foowd->hasPermission($className, $methodName, 'class', $object);
+    if ( !$permission )
+    {
+      $this->foowd->loc_forward(getURI(array('error' => USER_NO_PERMISSION), FALSE)); 
+      exit;
     }
+
+    call_user_func(array($className, $classMethodName), &$foowd, $className); // call method
+
+    $foowd->track(); 
+    return TRUE;
   }
 
   /**
@@ -415,8 +421,27 @@ class foowd_object {
    *
    * @return str String containing the objects title.
    */
-  function getTitle() {
+  function getTitle() 
+  {
     return htmlspecialchars($this->title);
+  }
+
+  /** 
+   * Return TRUE if title is Unique
+   *
+   * @param str String containing new title
+   * @param int ID of target workspace
+   * @param int Generated objectid (filled in)
+   * @param bool optional TRUE to generate unique object id (default)
+   * @return TRUE if title is unique in system
+   */
+  function isTitleUnique($title, $workspaceid, &$objectid, $uniqueObjectid = TRUE)
+  {
+    return $this->foowd->database->isTitleUnique($title, 
+                                                 $workspaceid, 
+                                                 $objectid, 
+                                                 $this->foowd_source,
+                                                 $uniqueObjectid);
   }
 
   /**
@@ -425,16 +450,16 @@ class foowd_object {
    * @param str member The name of the member variable to get.
    * @return mixed The variable or FALSE on failure.
    */
-  function get($member) {
-    if (isset($this->$member)) {
-      if (is_string($this->$member)) {
+  function get($member) 
+  {
+    if (isset($this->$member)) 
+    {
+      if ( is_string($this->$member) ) 
         return htmlspecialchars($this->$member);
-      } else {
+      else 
         return $this->$member;
-      }
-    } else {
-      return FALSE;
-    }
+    } 
+    return FALSE;
   }
 
   /**
@@ -447,66 +472,63 @@ class foowd_object {
    * @param mixed value The value to set the member variable to.
    * @return mixed Returns TRUE on success.
    */
-  function set($member, $value = NULL) {
+  function set($member, $value = NULL) 
+  {
     $this->foowd->track('foowd_object->set', $member, $value);
-    $okay = FALSE;
-    if (isset($this->$member) || $this->$member == NULL) {
-      if (isset($this->foowd_vars_meta[$member])) {
-        if (is_array($this->foowd_vars_meta[$member])) { // multi-depth array
-          $okay = TRUE;
-          foreach ($value as $val) {
-            if (is_array($val)) {
-              if (!$this->setArray($val, $this->foowd_vars_meta[$member])) {
-                $okay = FALSE;
-              }
-            }
-          }
-          if ($okay) $this->$member = $value;
-        } elseif (is_array($value)) { // single depth array
-          $okay = TRUE;
-          foreach ($value as $val) {
-            if ($this->foowd_vars_meta[$member] == NULL || !preg_match($this->foowd_vars_meta[$member], $val)) {
-              $okay = FALSE;
-            }
-          }
-          if ($okay) $this->$member = $value;
-        } elseif ($this->foowd_vars_meta[$member] == 'binary') { // binary data
-          $this->$member = $value;
-          $okay = TRUE;
-        } else { // non-complex type
-          if ($this->foowd_vars_meta[$member] == '' || $this->foowd_vars_meta[$member] == NULL || preg_match($this->foowd_vars_meta[$member], $value)) {
-            $this->$member = $value;
-            $okay = TRUE;
-          }
-        }
-      }
+
+    $object_vars = get_object_vars($this);
+    if ( !isset($object_vars[$member]) )   // if member variable doesn't exist, return early
+    {
+      $this->foowd->track();
+      return FALSE;
     }
-    if ($okay) {
+
+    $okay = FALSE;
+    $regex = $this->foowd_vars_meta[$member];
+
+    if ( !isset($regex) || $regex == NULL || $regex == '' || $regex == 'binary' )
+      $okay = TRUE;
+    elseif ( is_array($value) )                           
+      $okay = $this->setArray($value, $regex);
+    elseif ( preg_match($regex, $value) )  // data passes verification
+        $okay = TRUE;
+
+    if ($okay)
+    { 
+      $this->$member = $value;
       $this->foowd_changed = TRUE; // changed
     }
-    $this->foowd->track(); return $okay;
+
+    $this->foowd->track(); 
+    return $okay;
   }
 
   /**
    * Set a member variable to a complex array value.
    *
    * @param array array The array value to set the member variable to.
-   * @param str regex The regular expression the values of the array must match for the assignment to be valid.
-   * @return mixed Returns TRUE on success.
+   * @param mixed regex The regular expression the values of the array must match for the assignment to be valid.
+   * @return bool Returns TRUE on success.
    */
-  function setArray($array, $regex) {
-    $okay = TRUE;
-    foreach ($array as $index => $val) {
-      if (is_array($val)) {
-        $okay = $this->setArray($index, $val, $regex[$index]);
-      } elseif (
-        $regex == NULL ||
-        !preg_match($regex[$index], $val)
-      ) {
-        $okay = FALSE;
+  function setArray($array, $regex = NULL ) 
+  {
+    if ( $regex == NULL || $regex == '' )
+      return TRUE;
+
+    foreach ($array as $index => $val) 
+    {
+      $cur_regex = is_array($regex) ? $regex[$index] : $regex;
+
+      if (is_array($val)) 
+      {
+        if ( !$this->setArray($val, $cur_regex) )
+          return FALSE;
       }
+      elseif ( !preg_match($cur_regex, $val) )
+        return FALSE;
     }
-    return $okay;
+
+    return TRUE;
   }
 
   /**
@@ -515,21 +537,26 @@ class foowd_object {
    * have the effect of creating a new object entry since the objects version
    * number has changed.
    */
-  function newVersion() {
+  function newVersion() 
+  {
     $this->foowd->track('foowd_object->newVersion');
 
     $object =& $this->foowd->getObj(array(
-      'objectid' => $this->foowd_original_access_vars['objectid'],
-      'classid' => $this->foowd_original_access_vars['classid'],
-      'workspaceid' => $this->foowd_original_access_vars['workspaceid']
-    ));
-    if ($object) {
-      $this->version = ++$object->version;
-    }
+                 'objectid'    => $this->foowd_original_access_vars['objectid'],
+                 'classid'     => $this->foowd_original_access_vars['classid'],
+                 'workspaceid' => $this->foowd_original_access_vars['workspaceid']
+                 ));
+
+    if ($object) 
+      $this->version = $object->version + 1;
+    else
+      return FALSE;
+
     $this->foowd_original_access_vars['version'] = $this->version;
     $this->foowd_changed = TRUE;
 
     $this->foowd->track();
+    return TRUE;
   }
 
   /**
@@ -537,7 +564,8 @@ class foowd_object {
    * current time, set the objects updator to the current user, and queue the
    * object for saving.
    */
-  function update() {
+  function update() 
+  {
     $this->foowd->track('foowd_object->update');
     $this->updated = time();
     $this->updatorid = $this->foowd->user->objectid;
@@ -551,12 +579,14 @@ class foowd_object {
    *
    * @return mixed Returns an exit value on success or FALSE on failure.
    */
-  function save() { // write object to database
+  function save()  
+  {
     $this->foowd->track('foowd_object->save');
     $result = $this->foowd->database->save($this);
-    if ($result) {
+
+    if ($result) 
       $this->foowd_changed = FALSE;
-    }
+    
     $this->foowd->track(); 
     return $result;
   }
@@ -566,15 +596,14 @@ class foowd_object {
    *
    * @return bool Returns TRUE on success.
    */
-  function delete() { // remove all versions of an object from the database
+  function delete()
+  {
     $this->foowd->track('foowd_object->delete');
-    if ($this->foowd->database->delete($this)) {
-      $this->foowd->track(); 
-      return TRUE;
-    } else {
-      $this->foowd->track(); 
-      return FALSE;
-    }
+
+    $result = $this->foowd->database->delete($this);
+ 
+    $this->foowd->track(); 
+    return $result ? TRUE : FALSE;
   }
 
   /**
@@ -582,59 +611,71 @@ class foowd_object {
    *
    * @return bool Returns TRUE on success.
    */
-  function tidyArchive() { // clean up old archived versions
+  function tidyArchive()
+  {
     $this->foowd->track('foowd_object->tidyArchive');
-    if ($this->foowd->database->tidy($this)) {
-      $this->foowd->track(); return TRUE;
-    } else {
-      $this->foowd->track(); return FALSE;
-    }
+    
+    $result = $this->foowd->database->tidy($this);
+    
+    $this->foowd->track(); 
+    return $result ? TRUE : FALSE;
   }
+
 
   /**
    * Create form elements for the admin form from the objects member variables.
    *
-   * @param object adminForm The form to add the form items.to.
+   * @param  object adminForm The form to add the form items to.
+   * @return mixed array of error codes or 0 for success
    */
-  function addFormItemsToAdminForm(&$adminForm) {
-    $obj = get_object_vars($this);
-    unset($obj['foowd_vars_meta']);
-    unset($obj['foowd_indexes']);
-    unset($obj['foowd_original_access_vars']);
-
-    include_once(INPUT_DIR.'input.textarray.php');
-    include_once(INPUT_DIR.'input.textarea.php');
+  function addFormItemsToAdminForm(&$adminForm ) 
+  {
+    // Add regular elements to form
     include_once(INPUT_DIR.'input.textbox.php');
+    include_once(INPUT_DIR.'input.dropdown.php');
 
-    foreach ($obj as $memberName => $memberVar) {
-      if (isset($this->foowd_vars_meta[$memberName])) {
-        if (is_array($memberVar)) {
-          $textarray = new input_textarray($memberName, $this->foowd_vars_meta[$memberName], $memberVar, ucwords($memberName).':');
-          if ($adminForm->submitted()) { // form submitted, update object with new values
-            if (!$this->set($memberName, $textarray->items)) {
-              $textarray->items = $this->$memberName;
-            }
-          }
-          $adminForm->addObject($textarray);
-        } else {
-          if (isset($this->foowd_vars_meta[$memberName])) {
-            $reg = $this->foowd_vars_meta[$memberName];
-          } else {
-            $reg = '';
-          }
-          if ($reg == '') { // display textarea
-            $adminForm->addObject($textbox = new input_textarea($memberName, NULL, $memberVar, ucwords($memberName).':'));
-          } elseif ($reg == 'binary') { // display nothing
-            $bin = ucwords($memberName).': Binary data';
-            $adminForm->addObject($bin);
-          } else { // display textbox
-            $adminForm->addObject($textbox = new input_textbox($memberName, $reg, $memberVar, ucwords($memberName).':'));
-          }
-          if ($adminForm->submitted()) { // form submitted, update object with new values
-            $this->set($memberName, $textbox->value);
-          }
+    $reg = isset($this->foowd_vars_meta['title']) ?
+                 $this->foowd_vars_meta['title'] : NULL;
+    $titleBox = new input_textbox('title', $reg, $this->title, 'Title', FALSE);
+
+    $reg = isset($this->foowd_vars_meta['version']) ?
+                 $this->foowd_vars_meta['version'] : NULL;
+    $versionBox = new input_textbox('version', $reg, $this->version, 'Version', FALSE);
+
+    $workspaceBox = new input_dropdown('workspaceid', $this->workspaceid, 
+                                       $this->getWorkspaceList(), 'Workspace');
+    $error = NULL;
+    if ( $adminForm->submitted() )
+    {
+      if ( $workspaceBox->value != $this->workspaceid ) 
+        $this->set('workspaceid', $workspaceBox->value);
+ 
+      if ( $titleBox->value != $this->title )
+      {
+        $unique = $this->isTitleUnique($titleBox->value, $this->workspaceid, $objectid, FALSE);
+        if ( $unique )
+          $this->set('title', $titleBox->value);
+        else
+        {
+          $error[] = OBJECT_DUPLICATE_TITLE;
+          $titleBox->wasValid = 0;
         }
       }
+      if ( $versionBox->value != $this->version )
+        $this->set('version', $versionBox->value);
+    }
+
+    $adminForm->addObject($titleBox);
+    $adminForm->addObject($versionBox);    
+    $adminForm->addObject($workspaceBox);
+
+    $this->addPermissionDropdowns($adminForm);
+    $this->addClassDropdowns($adminForm);
+
+    if ( $error != 0 )
+    {
+      $this->foowd_changed = FALSE;
+      $this->foowd->template->assign('failure', $error);
     }
   }
 
@@ -643,7 +684,8 @@ class foowd_object {
    *
    * @return str The objects text contents processed for outputting.
    */
-  function view() {
+  function view() 
+  {
     ob_start();
     show($this);
     $obj = ob_get_contents();
@@ -656,64 +698,94 @@ class foowd_object {
    *
    * @param str title The title of the new object clone.
    * @param str workspaceid The workspace to place the object clone in.
-   * @return bool Returns TRUE on success.
+   * @return int 1 = success
+   *            -1 = title already in use
+   *            -2 = object could not be created
    */
-  function clone($title, $workspaceid) {
-    if ($this->workspaceid == $workspaceid && $this->title == $title) {
-      trigger_error('Can not clone object to the same title within the same workspace.');
-    } else {
-      $this->set('title', $title);
-      $this->set('objectid', crc32(strtolower($title)));
-      $this->set('workspaceid', $workspaceid);
-       // adjust original workspace so as to create new object rather than overwrite old one.
-      $this->foowd_original_access_vars['objectid'] = $this->objectid;
-      $this->foowd_original_access_vars['workspaceid'] = $this->workspaceid;
-      return TRUE;
-    }
-    return FALSE;
+  function clone($title, $workspaceid) 
+  {
+    if ( ($this->workspaceid == $workspaceid && $this->title == $title) ||
+         !$this->isTitleUnique($title, $workspaceid, $objectid) )
+      return -1;
+
+    $this->set('title', $title);
+    $this->set('objectid', $objectid);
+    $this->set('workspaceid', $workspaceid);
+    $this->set('version', 1);
+
+    // adjust original variables so as to create new object rather than overwrite old one.
+    $this->foowd_original_access_vars['objectid'] = $this->objectid;
+    $this->foowd_original_access_vars['workspaceid'] = $this->workspaceid;
+
+    if ( $this->save() )
+      return 1;
+
+    return -2;
   }
 
   /**
    * Add permission selection dropdown lists for each object method to a form.
    *
    * @param object form The form to add the dropdown lists to.
-   * @return bool Returns TRUE if the dropdown values have changed.
    */
-  function addPermissionDropdowns(&$form) {
+  function addPermissionDropdowns(&$form) 
+  {
     $groups = $this->foowd->getUserGroups();
-    $changed = FALSE;
+    $methods = get_class_methods($this);
 
     include_once(INPUT_DIR.'input.dropdown.php');
 
-    foreach (get_class_methods($this) as $methodName) {
-      if (substr($methodName, 0, 7) == 'method_') {
-        $methodName = substr($methodName, 7);
-        if (isset($this->permissions[$methodName])) {
-          $currentPermission = $this->permissions[$methodName];
-        } else {
-          $currentPermission = '';
-        }
-        $defaultPermission = getPermission(get_class($this), $methodName, 'object');
-        if (isset($groups[$defaultPermission])) {
-          $groups[''] = _("Default").' ('.htmlspecialchars($defaultPermission).')';
-        } else {
-          unset($groups['']);
-        }
-        if (isset($groups[$currentPermission])) { // display dropdown, user is allowed to change permission
-          $permissionBox = new input_dropdown($methodName, $currentPermission, $groups, ucwords($methodName).':');
-          $form->addObject($permissionBox);
-          if ($form->submitted()) {
-            $changed = TRUE;
-            if ($permissionBox->value == '') {
-              unset($this->permissions[$methodName]);
-            } else {
-              $this->permissions[$methodName] = $permissionBox->value;
-            }
-          }
-        }
+    foreach ($methods as $methodName) 
+    {
+      if ( substr($methodName, 0, 7) != 'method_' )
+        continue;
+  
+      $methodName = substr($methodName, 7);
+
+      // Get the default permission (Gods, Author, etc.)
+      // If the DEFAULT permission is not a valid group, skip it.
+      $defaultPermission = getPermission(get_class($this), $methodName, 'object');
+      if ( !isset($groups[$defaultPermission]) )
+        $defaultPermission = 'Nobody';
+
+      // Get the currently set permission.
+      // If the current group doesn't exist, revert to the default.
+      $currentPermission = isset($this->permissions[$methodName]) ?
+                                 $this->permissions[$methodName] : $defaultPermission;
+      if ( !isset($groups[$currentPermission]) )
+        $currentPermission = $defaultPermission;
+
+      // Create the dropdown for this method, append text to the default
+      $permissionBox = new input_dropdown($methodName, $currentPermission, $groups, $methodName);
+      $permissionBox->items[$defaultPermission] .= ' ('._("Default").')';
+
+      $form->addToGroup('permissions', $permissionBox);
+      if ( $form->submitted() && $permissionBox->value != $currentPermission) 
+      {
+        $this->foowd_changed = TRUE;
+        $this->permissions[$methodName] = $permissionBox->value;
       }
     }
-    return $changed;
+  }
+
+  /**
+   * Add permission selection dropdown lists for each object method to a form.
+   *
+   * @param object form The form to add the dropdown lists to.
+   * @param mixed optional Array containing compatible classes (for use by subclasses..)
+   */
+  function addClassDropdowns(&$form, $compatible_class = NULL) 
+  {
+    include_once(INPUT_DIR.'input.dropdown.php');
+
+    $classid = META_FOOWD_OBJECT_CLASS_ID;
+    $compatible_class[$classid] = getClassname($classid) . ' - ' 
+                                . getClassDescription($classid);
+
+    $classBox = new input_dropdown('classid', $this->classid, $compatible_class, 'Class');
+    $form->addObject($classBox);
+    if ( $form->submitted() && $classBox->value != $this->classid ) 
+      $this->set('classid', $classBox->value);
   }
 
   /**
@@ -721,16 +793,15 @@ class foowd_object {
    *
    * @return array Returns an array of workspaces indexed by workspaceid.
    */
-  function getWorkspaceList() {
-    $workspace_classid = crc32(strtolower($this->foowd->workspace_class));
-    $workspaceArray = array(0 => $this->foowd->outside_workspace_name);
-    if ($workspaces = $this->foowd->getObjList(array('classid' => $workspace_classid), NULL, 'title', NULL, NULL, NULL, TRUE)) {
-      foreach ($workspaces as $workspace) {
-        if ($this->foowd->user->inGroup(getPermission(get_class($workspace), 'fill', 'object')) && ($this->classid != $workspace_classid || $this->objectid != $workspace->objectid)) {
-          $workspaceArray[$workspace->objectid] = htmlspecialchars($workspace->title);
-        }
-      }
-    }
+  function getWorkspaceList() 
+  {
+    $workspace_name = getClassName(WORKSPACE_CLASS_ID);
+    $workspaceArray = array(0 => $this->foowd->config_settings['workspace']['workspace_base_name']);
+    $workspaces = $this->foowd->getObjList(NULL, NULL, array('classid' => WORKSPACE_CLASS_ID),
+                                           'title', NULL, NULL, FALSE, FALSE);
+    foreach ($workspaces as $workspace) 
+      $workspaceArray[$workspace['objectid']] = htmlspecialchars($workspace['title']);
+
     return $workspaceArray;
   }
 
@@ -798,7 +869,8 @@ class foowd_object {
    * @param object foowd The foowd environment object.
    * @param str className The name of the class.
    */
-  function class_create(&$foowd, $className) {
+  function class_create(&$foowd, $className) 
+  {
     $foowd->track('foowd_object->class_create');
 
     include_once(INPUT_DIR.'input.querystring.php');
@@ -806,21 +878,24 @@ class foowd_object {
     include_once(INPUT_DIR.'input.textbox.php');
 
     $queryTitle = new input_querystring('title', REGEX_TITLE, NULL);
-    $createForm = new input_form('createForm', NULL, 'POST', _("Create"), NULL);
+    $createForm = new input_form('createForm', NULL, SQ_POST, _("Create"), NULL);
     $createTitle = new input_textbox('createTitle', REGEX_TITLE, $queryTitle->value, _("Object Title").':');
-    if ($createForm->submitted() && $createTitle->value != '') {
-      $object = &new $className(
-        $foowd,
-        $createTitle->value
-      );
-      if ($object->objectid != 0) {
+
+    if ($createForm->submitted() && $createTitle->value != '') 
+    {
+      $object = &new $className($foowd, $createTitle->value);
+
+      if ($object->objectid != 0) 
+      {
         $foowd->template->assign('success', TRUE);
         $foowd->template->assign('objectid', $object->objectid);
         $foowd->template->assign('classid', $object->classid);
-      } else {
+      } 
+      else
         $foowd->template->assign('success', FALSE);
-      }
-    } else {
+    } 
+    else
+    {
       $createForm->addObject($createTitle);
       $foowd->template->assign_by_ref('form', $createForm);
     }
@@ -835,7 +910,8 @@ class foowd_object {
    *
    * @access protected
    */
-  function method_view() {
+  function method_view() 
+  {
     $this->foowd->template->assign('heading', $this->getTitle());
     $this->foowd->template->assign('body', $this->view());
   }
@@ -845,31 +921,32 @@ class foowd_object {
    *
    * @access protected
    */
-  function method_history() {
+  function method_history() 
+  {
     $this->foowd->track('foowd_object->method_history');
 
     $this->foowd->template->assign('detailsTitle', $this->getTitle());
     $this->foowd->template->assign('detailsCreated', date(DATETIME_FORMAT, $this->created).' ('.timeSince($this->created).' ago)');
     $this->foowd->template->assign('detailsAuthor', htmlspecialchars($this->creatorName));
     $this->foowd->template->assign('detailsType', getClassDescription($this->classid));
-    if ($this->workspaceid != 0) {
+    if ($this->workspaceid != 0) 
       $this->foowd->template->assign('detailsWorkspace', $this->workspaceid);
-    }
 
-    $foo = FALSE;
     $objArray = $this->foowd->getObjHistory(array('objectid' => $this->objectid, 'classid' => $this->classid));
+    $latestVersion = $objArray[0]->version;
     unset($objArray[0]);
     $versions = array();
-    foreach ($objArray as $key => $object) {
+    foreach ($objArray as $object) 
+    {
+      $version = array();
       $version['updated'] = date(DATETIME_FORMAT, $object->updated).' ('.timeSince($object->updated).' ago)';
       $version['author'] = htmlspecialchars($object->updatorName);
       $version['version'] = $object->version;
       $version['objectid'] = $object->objectid;
       $version['classid'] = $object->classid;
-      if ($foo) {
+      if ($object->version != $latestVersion)
         $version['revert'] = TRUE;
-      }
-      $foo = TRUE;
+
       $this->foowd->template->append('versions', $version);
     }
 
@@ -881,16 +958,23 @@ class foowd_object {
    *
    * @access protected
    */
-  function method_admin() {
+  function method_admin() 
+  {
     $this->foowd->track('foowd_object->method_admin');
 
     include_once(INPUT_DIR.'input.form.php');
+    $adminForm = new input_form('adminForm');
 
-    $adminForm = new input_form('adminForm', NULL, 'POST');
     $this->addFormItemsToAdminForm($adminForm);
+    if ( $adminForm->submitted() && $this->foowd_changed )
+    {
+      if ( $this->save() )
+        $this->foowd->template->assign('success', OBJECT_UPDATE_OK);
+      else
+        $this->foowd->template->assign('failure', OBJECT_UPDATE_FAILED);
+    }
 
     $this->foowd->template->assign_by_ref('form', $adminForm);
-
     $this->foowd->track();
   }
 
@@ -899,23 +983,32 @@ class foowd_object {
    *
    * @access protected
    */
-  function method_revert() {
+  function method_revert() 
+  {
     $this->foowd->track('foowd_object->method_revert');
 
+    include_once(INPUT_DIR.'input.form.php');
     include_once(INPUT_DIR.'input.querystring.php');
 
-    $confirm = new input_querystring('confirm', '/^[y]$/', FALSE);
-    if ($confirm->value) {
+    $revertForm = new input_form('revertForm', NULL, SQ_POST, _("OK"), NULL);
+
+    if ($revertForm->submitted() ) 
+    {
       $this->newVersion();
       $this->update();
-      $this->foowd->template->assign('success', TRUE);
-    } else {
-      $this->foowd->template->assign('confirm', TRUE);
-      $this->foowd->template->assign('objectid', $this->objectid);
-      $this->foowd->template->assign('version', $this->version);
-      $this->foowd->template->assign('classid', $this->classid);
+      $this->save();
+      $url_arr['objectid'] = $this->objectid;
+      $url_arr['ok']       = OBJECT_UPDATE_OK;  
+      $this->foowd->loc_forward(getURI($url_arr, FALSE));
+      exit;
     }
 
+    $this->foowd->template->assign_by_ref('form', $revertForm);
+
+    $this->foowd->template->assign('objectid', $this->objectid);
+    $this->foowd->template->assign('version', $this->version);
+    $this->foowd->template->assign('classid', $this->classid);
+    
     $this->foowd->track();
   }
 
@@ -924,24 +1017,28 @@ class foowd_object {
    *
    * @access protected
    */
-  function method_delete() {
+  function method_delete() 
+  {
     $this->foowd->track('foowd_object->method_delete');
 
-    include_once(INPUT_DIR.'input.querystring.php');
+    include_once(INPUT_DIR.'input.form.php');
+    $deleteForm = new input_form('deleteForm', NULL, SQ_POST, _("OK"), NULL);
 
-    $confirm = new input_querystring('confirm', '/^[y]$/', FALSE);
-    if ($confirm->value) {
-      if ($this->delete()) {
-        $this->foowd->template->assign('success', TRUE);
-      } else {
-        $this->foowd->template->assign('success', FALSE);
+    if ($deleteForm->submitted() ) 
+    {
+      if ($this->delete()) 
+      {
+        $this->foowd->loc_forward( getURI(array('ok' => OBJECT_DELETE_OK), FALSE) );
+        exit;
       }
-    } else {
-      $this->foowd->template->assign('confirm', FALSE);
-      $this->foowd->template->assign('objectid', $this->objectid);
-      $this->foowd->template->assign('version', $this->version);
-      $this->foowd->template->assign('classid', $this->classid);
+
+      $this->foowd->template->assign('failure', OBJECT_DELETE_FAILED);
     }
+
+    $this->foowd->template->assign_by_ref('form', $deleteForm);
+
+    $this->foowd->template->assign('objectid', $this->objectid);
+    $this->foowd->template->assign('version', $this->version);
 
     $this->foowd->track();
   }
@@ -951,32 +1048,43 @@ class foowd_object {
    *
    * @access protected
    */
-  function method_clone() {
+  function method_clone() 
+  {
     $this->foowd->track('foowd_object->method_clone');
 
     include_once(INPUT_DIR.'input.form.php');
     include_once(INPUT_DIR.'input.textbox.php');
     include_once(INPUT_DIR.'input.dropdown.php');
 
-    $cloneForm = new input_form('cloneForm', NULL, 'POST', 'Clone Object', NULL);
-    $cloneTitle = new input_textbox('cloneTitle', REGEX_TITLE, $this->getTitle(), 'Clone Title');
-    if (isset($this->foowd->template_class)) {
-      $cloneWorkspace = new input_dropdown('workspaceDropdown', NULL, $this->getWorkspaceList(), 'Workspace: ');
-      $newWorkspace = $cloneWorkspace->value;
-    } else {
-      $newWorkspace = 0;
-    }
-    if ($cloneForm->submitted()) {
-      if ($this->clone($cloneTitle->value, $newWorkspace)) {
-        $this->foowd->template->assign('success', TRUE);
-      } else {
-        $this->foowd->template->assign('success', FALSE);
+    $cloneForm = new input_form('cloneForm', NULL, SQ_POST);
+    $cloneTitle = new input_textbox('cloneTitle', REGEX_TITLE, '', 'Clone Title');
+    $cloneWorkspace = new input_dropdown('workspaceDropdown', NULL, $this->getWorkspaceList());
+    $newWorkspace = $cloneWorkspace->value;
+
+    if ($cloneForm->submitted()) 
+    {
+      $rc = $this->clone($cloneTitle->value, $newWorkspace);
+      switch($rc)
+      {
+        case 1: 
+          $uri_arr['objectid'] = $this->objectid;
+          $uri_arr['ok'] = OBJECT_CREATE_OK;
+          $this->foowd->loc_forward( getURI($uri_arr, FALSE) );
+          exit;
+        case -1:
+          $this->foowd->template->assign('failure', OBJECT_DUPLICATE_TITLE);
+          $cloneTitle->wasValid = 0;
+          break;
+        default:
+        case -2:
+          $this->foowd->template->assign('failure', OBJECT_CREATE_FAILED);
+          break;
       }
-    } else {
-      $cloneForm->addObject($cloneTitle);
-      $cloneForm->addObject($cloneWorkspace);
-      $this->foowd->template->assign_by_ref('form', $cloneForm);
     }
+
+    $cloneForm->addObject($cloneTitle);
+    $cloneForm->addObject($cloneWorkspace);
+    $this->foowd->template->assign_by_ref('form', $cloneForm);
 
     $this->foowd->track();
   }
@@ -986,18 +1094,9 @@ class foowd_object {
    *
    * @access protected
    */
-  function method_permissions() {
-    $this->foowd->track('foowd_object->method_permissions');
-
-    include_once(INPUT_DIR.'input.form.php');
-
-    $permissionForm = new input_form('permissionForm', NULL, 'POST');
-    $changed = $this->addPermissionDropdowns($permissionForm);
-
-    $this->foowd->template->assign_by_ref('form', $permissionForm);
-
-    $this->foowd->track();
-  }
+//  function method_permissions() {
+//      METHOD DISABLED.
+//  }
 
   /**
    * Output the object as XML.
@@ -1015,21 +1114,6 @@ class foowd_object {
     echo "</foowd>\n";
   }
 
-/*
-  function method_wddx() {
-    $this->foowd->debug = FALSE;
-    header("Content-type: text/xml");
-    $goodVars = $this->__sleep();
-    $packet_id = wddx_packet_start($this->getTitle().' - FOOWD v'.VERSION);
-    foreach (get_object_vars($this) as $key => $var) {
-      if (in_array($key, $goodVars)) {
-        $$key = $var;
-        wddx_add_vars($packet_id, $key);
-      }
-    }
-    echo wddx_packet_end($packet_id);
-  }
-*/
 }
 
 ?>

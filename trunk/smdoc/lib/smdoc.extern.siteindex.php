@@ -18,14 +18,14 @@ $EXTERNAL_RESOURCES[SQMINDEX_CLASS_ID]['title'] = 'Site Index';
  * shown based on the group, and includes categorized links for document
  * creation closer to other documents of the same type.
  */
-function sqmindex(&$foowd, &$result) {
+function sqmindex(&$foowd) {
     $foowd->track('sqmindex');
 
     /*
      * Print site content, leave out groups, workspaces
      */
     $orderby = array('title', 'classid', 'version');
-    $indices = array('DISTINCT objectid','classid','version','title','workspaceid','updated');
+    $indices = array('DISTINCT objectid','classid','title','workspaceid','updated');
  
     /*
      * standard doc information: additional indices, no special source table
@@ -47,8 +47,7 @@ function sqmindex(&$foowd, &$result) {
 
         $list_objects[$i] = $object;
 
-        $list_objects[$i]['url'] = getURI(array('objectid' => $object['objectid'],
-                                                'classid' => $object['classid']));
+        $list_objects[$i]['url'] = getURI() . '?objectid='.$object['objectid'];
 
         if ( $object['workspaceid'] != 0 )
           $list_objects[$i]['langid'] = foowd_translation::getLink($foowd, $object['workspaceid']);

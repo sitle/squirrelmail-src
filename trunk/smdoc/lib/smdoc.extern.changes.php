@@ -26,10 +26,8 @@ function sqmchanges(&$foowd, &$result) {
     // return the full objects, and don't restrict to certain workspace
     $objects =& $foowd->getObjList(NULL, NULL, NULL,
                                    array('updated DESC'), 20, 
-                                   TRUE, FALSE);
-
+                                   TRUE, FALSE );
     $list_objects = array();
-
     $i = 0;
     foreach ($objects as $object) 
     {
@@ -38,7 +36,6 @@ function sqmchanges(&$foowd, &$result) {
          continue;
     
       $list_objects[$i]['url'] = getURI(array('objectid' => $object->objectid,
-                                              'classid' => $object->classid,
                                               'version' => $object->version));
       $list_objects[$i]['title']  = $object->title;
       
@@ -56,6 +53,7 @@ function sqmchanges(&$foowd, &$result) {
       }
       $list_objects[$i]['ver'] = $object->version;
       $list_objects[$i]['desc'] = getClassDescription($object->classid);
+      $i++;
     }
 
     $foowd->template->assign_by_ref('changeList', $list_objects);

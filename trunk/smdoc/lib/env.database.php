@@ -65,13 +65,6 @@ class foowd_db {
   var $objects; // *SQM
 
   /**
-   * Default table 
-   * 
-   * @var str
-   */
-  var $default_source;  // *SQM
-
-  /**
    * Reference to the Foowd object.
    *
    * @var object
@@ -79,12 +72,20 @@ class foowd_db {
   var $foowd;
 
   /**
+   * The default table to use.
+   * 
+   * @var str
+   */
+  var $table;
+
+  /**
    * Constructs a new storage object.
    *
    * @abstract
    * @param object foowd The foowd environment object.
+   * @param array config Array of database config vars.
    */
-  function foowd_db(&$foowd) {
+  function foowd_db(&$foowd, $config) {
     trigger_error('This is an abstract class and can not be instanciated.', E_USER_ERROR);
   }
 
@@ -97,10 +98,10 @@ class foowd_db {
    *
    * @static
    * @param object foowd The foowd environment object.
-   * @param str type The type of database object to load.
+	 * @param array config Array of database config vars.
    * @return mixed The new database object or FALSE on failure.
    */
-  function factory(&$foowd, $type) {
+  function factory(&$foowd, $config) {
     trigger_error('Function provided by smdoc_db: foowd_db->factory', E_USER_ERROR);
   }
 
@@ -139,7 +140,6 @@ class foowd_db {
    * Add an object reference to the loaded objects array.
    *
    * @access protected
-   * @param array indexes Array of indexes and values to find object by
    * @param object object Reference of the object to add
    */
   function addToLoadedReference(&$object) {
@@ -196,7 +196,7 @@ class foowd_db {
       if (!is_array($index)) 
       {
         $where .= ' '.$key.' = ';
-        $where .= is_numeric($index) ? $index : '\''.$this->escape($index).'\'';
+        $where .= is_numeric($index) ? $index : $this->escape($index);
         $where .= ' ';
       } 
       else 
@@ -242,7 +242,7 @@ class foowd_db {
           }
 
           $where .= ' '.$index['index'].' '.$index['op'].' ';
-          $where .= is_numeric($value) ? $value : '\''.$value.'\'';
+          $where .= is_numeric($value) ? $value : $this->escape($value);
           $where .= ' ';
         }
       }
@@ -301,7 +301,7 @@ class foowd_db {
 
 // set source
     if (!isset($source)) {
-      $source = $this->default_source;  // *SQM
+      $source = $this->table;
     }
 
 // build joins
@@ -375,7 +375,7 @@ class foowd_db {
 
 // set source
     if (!isset($source)) {
-      $source = $this->default_source;  // *SQM
+      $source = $this->table;
     }
 
 // set workspace
@@ -413,18 +413,18 @@ class foowd_db {
 
   /**
    * Get a list of objects.
-   *
-   * @param array indexes Array of indexes and values to find object by
-   * @param str source The source to fetch the object from
-   * @param array order The index to sort the list on
-   * @param bool reverse Display the list in reverse order
-   * @param int offset Offset the list by this many items
-   * @param int number The length of the list to return
-   * @param bool returnObjects Return the actual objects not just the object meta data
-   * @return array An array of object meta data or of objects.
-   */
-  function &getObjList($indexes, $source = NULL, $order = NULL, $reverse = NULL, $offset = NULL, $number = NULL, $returnObjects = FALSE) {
-    trigger_error('Function provided by smdoc: foowd_db->getObjList', E_USER_ERROR);
+	 *
+	 * @param array indexes Array of indexes and values to find object by
+	 * @param str source The source to fetch the object from
+	 * @param array order The index to sort the list on
+	 * @param bool reverse Display the list in reverse order
+	 * @param int offset Offset the list by this many items
+	 * @param int number The length of the list to return
+	 * @param bool returnObjects Return the actual objects not just the object meta data
+	 * @return array An array of object meta data or of objects.
+	 */
+	function &getObjList($indexes) {
+    trigger_error('Function provided by smdoc_db: foowd_db->getObj', E_USER_ERROR);
   }
 
   /**
@@ -444,28 +444,7 @@ class foowd_db {
    * @return bool Success or failure.
    */
   function delete(&$object) {
-    $this->foowd->track('foowd_db->delete');
-
-    if (isset($object->foowd_source)) {
-      $source = $object->foowd_source['table'];           // *SQM
-      $makeTable = $object->foowd_source['table_create']; // *SQM
-    } else {
-      $source = $this->default_source;  // *SQM
-    }
-
-// build delete
-    $delete = 'DELETE FROM '.$source
-      .' WHERE objectid = '.$object->foowd_original_access_vars['objectid']
-      .' AND classid = '.$object->foowd_original_access_vars['classid']
-      .' AND workspaceid = '.$object->foowd_original_access_vars['workspaceid'];
-
-    if ($this->query($delete)) {
-      $this->foowd->track();
-      return TRUE;
-    } else {
-      $this->foowd->track();
-      return FALSE;
-    }
+    trigger_error('Function provided by smdoc: foowd_db->delete', E_USER_ERROR);
   }
 
   /**
@@ -480,7 +459,7 @@ class foowd_db {
     if (isset($object->foowd_source)) {
       $source = $object->foowd_source;
     } else {
-      $source = $this->default_source;  // *SQM
+      $source = $this->table;
     }
 
 // build delete

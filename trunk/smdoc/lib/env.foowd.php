@@ -39,6 +39,7 @@ require_once(SM_DIR.'lib.php'); // FOOWD lib
 
 setConst('REGEX_ID', '/^[0-9-]{1,11}$/');
 setConst('REGEX_TITLE', '/^[a-zA-Z0-9-_ ]{1,32}$/');
+setConst('REGEX_VERSION', '/^[0-9]*$/');
 setConst('REGEX_PASSWORD', '/^[A-Za-z0-9]{4,32}$/');
 setConst('REGEX_DATETIME', '/^[0-9-]{1,10}$/');
 setConst('REGEX_EMAIL', '/^[A-Za-z0-9._-]+@[A-Za-z0-9._-]+\.[A-Za-z]{1,4}$/');
@@ -117,69 +118,7 @@ class foowd {
    * @param array $settings Array of settings for this Foowd environment.
    */
   function foowd($settings = NULL) {
-// store config settings
-        $this->config_settings =& $settings;
-
-// create debug object
-        $this->debug = FALSE;
-        if ( $settings['debug']['debug_enabled'] )
-        {
-            require_once($settings['debug']['debug_path']);
-            $debugClass = $settings['debug']['debug_class'];
-            if ( class_exists($debugClass) )
-                $this->debug = new $debugClass($this);
-        }
-
-    $this->track('foowd->constructor');
-
-// create database object
-        require_once($settings['database']['db_path']);
-        $dbClass = $settings['database']['db_class'];
-        if ( !class_exists($dbClass) ) {
-          trigger_error('Can not find database class: ' . $dbClass, E_USER_ERROR);
-        }
-        $this->database = new $dbClass($this);
-
-// create template object
-        require_once($settings['template']['template_path']);
-        $tplClass = $settings['template']['template_class'];
-        if ( !class_exists($tplClass) )
-        {
-            trigger_error('Can not find template class: ' . $tplClass,
-                           E_USER_ERROR);
-        }
-        $this->template =& new $tplClass($this);
-        $this->template->template_dir = $settings['template']['template_dir'];
-        $this->template->assign_by_ref('foowd', $this);
-
-// load base Foowd class
-    require(FOOWD_DIR.'class.object.php');
-
-// set default user groups
-    if (!isset($this->groups['Everyone'])) $this->groups['Everyone'] = 'Everyone';
-    if (!isset($this->groups['Author'])) $this->groups['Author'] = 'Author';
-    if (!isset($this->groups['Gods'])) $this->groups['Gods'] = 'Gods';
-    if (!isset($this->groups['Nobody'])) $this->groups['Nobody'] = 'Nobody';
-    if (!isset($this->groups['Registered'])) $this->groups['Registered'] = 'Registered';
-
-// load user
-        require_once($settings['user']['user_path']);
-        require_once($settings['user']['anon_user_path']);
-        $userClass = $settings['user']['user_class'];
-        $anonUserClass = $settings['user']['anon_user_class'];
-        if ( !class_exists($anonUserClass) )
-        {
-            trigger_error('Can not find anonymous user class: ' .
-                          $anonUserClass,
-                          E_USER_ERROR);
-        }
-
-        if ( class_exists($userClass) )
-            $this->user = call_user_func(array($userClass,'factory'), &$this);
-        else
-            $this->user = new $anonUserClass;
-
-    $this->track();
+    trigger_error('Function provided by smdoc: foowd_db->constructor', E_USER_ERROR);
   }
 
   /**
@@ -365,23 +304,23 @@ class foowd {
   }
 
   /**
-   * Get a list of objects.
-   *
-   * @param array indexes Array of indexes and values to match
-   * @param str source Source to get object from
-   * @param str order The index to sort the list on
-   * @param bool reverse Display the list in reverse order
-   * @param int offset Offset the list by this many items
-   * @param int number The length of the list to return
-   * @param bool returnObjects Return the actual objects not just the object meta data
-   * @return array The array of selected objects or NULL on failure.
-   * @see foowd::getObjList
-   */
-  function &getObjList($indexes, $source = NULL, $order = NULL, $reverse = NULL, $offset = NULL, $number = NULL, $returnObjects = FALSE) {
-    trigger_error('Function provided by smdoc: foowd->getObjList', E_USER_ERROR);
-  }
+	 * Get a list of objects.
+	 *
+	 * @param array indexes Array of indexes and values to match
+	 * @param str source Source to get object from
+	 * @param str order The index to sort the list on
+	 * @param bool reverse Display the list in reverse order
+	 * @param int offset Offset the list by this many items
+	 * @param int number The length of the list to return
+	 * @param bool returnObjects Return the actual objects not just the object meta data
+	 * @return array The array of selected objects or NULL on failure.
+	 * @see foowd::getObjList
+	 */
+//	function &getObjList($indexes) {
+//          trigger_error('Function provided by smdoc: foowd->getObjList', E_USER_ERROR);
+//	}
 
-  /**
+	/**
    * Call class/object method.
    *
    * Wrapper function for <code>foowd_object::method</code> and
@@ -529,6 +468,17 @@ class foowd {
 
 // set unserialize callback function
 ini_set('unserialize_callback_func', 'unserializeCallback');
+
+/**
+ * Object unserialise callback function.
+ *
+ * Called when an object is unserialised that does not have its class
+ * definition loaded. foowd::unserialize() tries to load the required
+ * class before unserialisation, but if that fails then we load a
+ * default class definition based upon foowd_object.
+ *
+ * @param str className Name of the class trying to be unserialised
+ */
 function unserializeCallback($className) { foowd::loadDefaultClass($className); }
 
 ?>
