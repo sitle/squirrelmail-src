@@ -282,9 +282,6 @@ function timeSince($time) {
     }
 }
 
-/*** Execution time ***/
-
-
 /*** Locale functions ***/
 
 if (!function_exists('_')) { // no gettext support, so define our own "_" function
@@ -297,5 +294,48 @@ if (!function_exists('_')) { // no gettext support, so define our own "_" functi
         }
     }
 }
+
+/*** Settings ***/
+define('DATABASE_DATE', 'Y-m-d H:i:s'); // date format for database
+define('DATABASE_DATETIME_DATATYPE', 'DATETIME'); // name of database date time data type
+
+/*** Datetime Functions ***/
+
+/* turns a database datetime into a formatted date string */
+function dbdate2string($datetime, $format = DATEFORMAT) 
+{
+    if ($datetime = dbdate2unixtime($datetime)) {
+        return date($format, $datetime);
+    } else {
+        return FALSE;
+    }
+}
+
+/* turns a database datetime into a unix timestamp */
+function dbdate2unixtime($datetime) 
+{
+    if (!isemptydbdate($datetime)) {
+        return mktime(substr($datetime, 11, 2), substr($datetime, 14, 2), substr($datetime, 17, 2), substr($datetime, 5, 2), substr($datetime, 8, 2), substr($datetime, 0, 4));
+    } else {
+        return FALSE;
+    }
+}
+
+/* turns a unix timestamp into a database datetime */
+function unixtime2dbdate($datetime) 
+{
+    return date( 'Y-m-d H:i:s', $datetime);
+}
+
+/* returns if a database datetime is empty */
+function isemptydbdate($datetime) 
+{
+    if ($datetime == 0) {
+        return TRUE;
+    } else {
+        return FALSE;
+    }
+}
+
 
 ?>

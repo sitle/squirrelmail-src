@@ -37,14 +37,15 @@
           {
             // If an objectid is set, we're logged in.
             $url = getURI(array('objectid' => $user->objectid, 'classid' => USER_CLASS_ID));
-            echo '<a href="', $url, '">', $user->title, '</a> ';
-            echo '( ', $lang_url, '<a href="', getURI(array()), '?class=foowd_user&method=logout">', _("Logout"), '</a> )';
+            echo '<a href="' . $url . '">' . $user->title . '</a> ';
+            echo '( '. $lang_url
+                 . '<a href="', $loc_url, '?class=foowd_user&method=logout">'. _("Logout") .'</a> )';
           } else {
             // Otherwise, we're anonymous
-            $url = getURI(array());
             echo _("Anonymous User"), ' [' . $user->title . '] ';
-            echo '( ', $lang_url, '<a href="', $url, '?class=foowd_user&method=login">'. _("Login") .'</a> ';
-            echo '| <a href="', $url, '?class=foowd_user&method=create">'. _("Register") .'</a> )';
+            echo '( '. $lang_url  
+                 . '<a href="', $loc_url, '?class=foowd_user&method=login">'. _("Login") .'</a> ';
+            echo '| <a href="', $loc_url, '?class=foowd_user&method=create">'. _("Register") .'</a> )';
           }
         ?>
     </td>
@@ -79,7 +80,6 @@
       <td align="right" class="subtext">
         <nobr><?php
           echo '<a href="', $loc_url, '?object=search">',   _("Search"),'</a> | ';
-          echo '<a href="', $loc_url, '?object=sqmtools">', _("Tools"),'</a> | ';
           echo '<a href="', $loc_url, '?object=sqmindex">',_("Index"),'</a> ';
         ?></nobr>
       </td>
@@ -135,7 +135,8 @@
                     echo '<a href="', getURI(array('objectid' => $object->objectid,
                                                      'classid' => $object->classid,
                                                      'version' => $object->version,
-                                                     'method' => $methodName)), '">', ucfirst($methodName), '</a>';
+                                                     'method' => $methodName)), '">', 
+                          ucfirst($methodName), '</a>';
                 }
             }
         }
