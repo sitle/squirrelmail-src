@@ -75,7 +75,7 @@ if ($old_key){
     $msg = '<p>'
        . _("Your personal dictionary was re-encrypted successfully. Now return to the &quot;SpellChecker options&quot; menu and make your selection again." ) 
        . '</p>';
-    sqspell_makePage(_("Successful Re-encryption"), null, $msg);
+    sqspell_makePage(_("Successful re-encryption"), null, $msg);
   } else {
     $msg = '<p>'
        . _("Your personal dictionary was re-encrypted successfully. Please close this window and click \"Check Spelling\" button again to start your spellcheck over.") 

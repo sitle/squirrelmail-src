@@ -432,8 +432,9 @@ function showMessagesForMailbox($imapConnection, $mailbox, $num_msgs,
                 $msgs = getServerMessages($imapConnection, $start_msg, $show_num, $num_msgs, $id);
                 if ($msgs === false) {
                     echo '<b><small><center><font color=red>' .
-                         _("Thread sorting is not supported by your IMAP server.<br>Please report this to the system administrator.").
-                         '</center></small></b>';
+                        _("Thread sorting is not supported by your IMAP server.") . '<br />' .
+                        _("Please report this to the system administrator.") .
+                        '</center></small></b>';
                     $thread_sort_messages = 0;
                     $msort = $msgs = array();
                 } else {
@@ -446,8 +447,9 @@ function showMessagesForMailbox($imapConnection, $mailbox, $num_msgs,
                 $msgs = getServerMessages($imapConnection, $start_msg, $show_num, $num_msgs, $id);
                 if ($msgs === false) {
                     echo '<b><small><center><font color=red>' .
-                         _( "Server-side sorting is not supported by your IMAP server.<br>Please report this to the system administrator.").
-                         '</center></small></b>';
+                        _( "Server-side sorting is not supported by your IMAP server.") . '<br />' .
+                        _("Please report this to the system administrator.") .
+                        '</center></small></b>';
                     $sort = $server_sort_order;
                     $allow_server_sort = FALSE;
                     $msort = $msgs = array();
@@ -947,10 +949,10 @@ function get_msgcnt_str($start_msg, $end_msg, $num_msgs) {
     /* Compute the $msg_cnt_str. */
     $result = '';
     if ($start_msg < $end_msg) {
-        $result = sprintf(_("Viewing Messages: <B>%s</B> to <B>%s</B> (%s total)"),
-                          $start_msg, $end_msg, $num_msgs);
+        $result = sprintf(_("Viewing Messages: %s to %s (%s total)"),
+                  '<b>'.$start_msg.'</b>', '<b>'.$end_msg.'</b>', $num_msgs);
     } else if ($start_msg == $end_msg) {
-        $result = sprintf(_("Viewing Message: <B>%s</B> (1 total)"), $start_msg);
+        $result = sprintf(_("Viewing Message: %s (1 total)"), '<b>'.$start_msg.'</b>');
     } else {
         $result = '<br>';
     }

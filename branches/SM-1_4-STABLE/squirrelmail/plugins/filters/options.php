@@ -228,7 +228,10 @@ sqgetGlobalVar('action', $action, SQ_GET);
         echo ']</small></td>'.
             html_tag( 'td', '-', 'left' ) .
             html_tag( 'td', '', 'left' );
-        printf( _("If <b>%s</b> contains <b>%s</b> then move to <b>%s</b>"), $filters[$i]['where'], $filters[$i]['what'], $fdr );
+        printf( _("If %s contains %s then move to %s"),
+            '<b>'.$filters[$i]['where'].'</b>',
+            '<b>'.$filters[$i]['what'].'</b>',
+            '<b>'.$fdr.'</b>' );
         echo '</td></tr>';
 
     }

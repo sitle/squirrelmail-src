@@ -148,12 +148,11 @@ $body = htmlspecialchars($body_top . $body);
 
    echo "<ul>";
    echo "<li>";
-   echo _("Make sure that you are running the most recent copy of <a href=\"http://www.squirrelmail.org/\">SquirrelMail</a>.");
-   echo ' ' . sprintf(_("You are currently using version %s."),$version);
+   printf(_("Make sure that you are running the most recent copy of %s. You are currently using version %s."), '<a href="http://www.squirrelmail.org/" target="_blank">SquirrelMail</a>', $version);
    echo "</li>\n";
 
    echo "<li>";
-   echo _("Check to see if your bug is already listed in the <a href=\"http://sourceforge.net/bugs/?group_id=311\">Bug List</a> on SourceForge. If it is, we already know about it and are trying to fix it.");
+   printf(_("Check to see if your bug is already listed in the %sBug List%s on SourceForge. If it is, we already know about it and are trying to fix it."), '<a href="http://sourceforge.net/bugs/?group_id=311" target="_blank">', '</a>');
    echo "</li>\n";
    
    echo "<li>";
@@ -161,7 +160,7 @@ $body = htmlspecialchars($body_top . $body);
    echo "</li>\n";
 
    echo "<li>";
-   echo _("If there were warnings displayed above, try to resolve them yourself. Read the guides in the <tt>doc/</tt> directory where SquirrelMail was installed.");
+   printf(_("If there were warnings displayed above, try to resolve them yourself. Read the guides in the %s directory where SquirrelMail was installed."), '<tt>doc/</tt>');
    echo "</li>\n";
    echo "</ul>\n";
 

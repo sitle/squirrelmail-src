@@ -156,7 +156,7 @@ echo "<p>";
 echo _("Once you have signed up with SpamCop and have received your SpamCop authorization code, you need to enable this plugin -- just click the link above. Once enabled, you go about your normal life. If you encounter a spam message in your mailbox, just view it. On the right-hand side, near the top of where the message is displayed, you will see a link to report this message as spam. Clicking on it brings you to a confirmation page. Confirming that you want the spam report sent will do different things with different reporting methods.");
 echo "</p>\n";
 
-echo "<p><b>" . _("Email-based Reporting") . "</b><br />";
+echo "<p><b>" . _("Email-based reporting") . "</b><br />";
 echo _("Pressing the button forwards the message to the SpamCop service and will optionally delete the message. From there, you just need to go to your INBOX and quite soon a message should appear from SpamCop. (It gets sent to the account you registered with, so make sure that your mail forwarder works!) Open it up, click on the appropriate link at the top, and a new browser window will open.");
 echo "</p>";
 
@@ -166,7 +166,7 @@ echo _("Currently, the quick reporting just forwards the request to the thorough
 echo "</p>\n";
 }
 
-echo "<p><b>" . _("Web-based Reporting") . "</b><br />";
+echo "<p><b>" . _("Web-based reporting") . "</b><br />";
 echo _("When you press the button on the confirmation page, this will pop open a new browser window and the SpamCop service should appear inside. The message will not be deleted (working on that part), but you won't need to wait for a response email to start the spam reporting.");
 echo "</p>\n";
 

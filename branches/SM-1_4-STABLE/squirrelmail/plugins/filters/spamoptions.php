@@ -75,7 +75,7 @@ echo html_tag( 'table',
 if ($SpamFilters_YourHop == ' ') {
     echo '<br>' .
         html_tag( 'div', '<b>' .
-            _("WARNING! Tell your admin to set the SpamFilters_YourHop variable") .
+            sprintf(_("WARNING! Tell the administrator to set the %s variable."), '&quot;SpamFilters_YourHop&quot;') .
             '</b>' ,
         'center' ) .
         '<br>';
@@ -137,7 +137,7 @@ if (isset($action) && $action == 'spam') {
     html_tag( 'tr',
           html_tag( 'td', '&nbsp;' ) .
           html_tag( 'td',
-              _("The more messages you scan, the longer it takes. I would suggest that you scan only new messages. If you make a change to your filters, I would set it to scan all messages, then go view my INBOX, then come back and set it to scan only new messages. That way, your new spam filters will be applied and you'll scan even the spam you read with the new filters.") ,
+              _("The more messages scanned, the longer it takes. It's recommended to scan unread messages only. If a change to the filters is made, it's recommended to set it to scan all messages, then go view the INBOX, then come back and set it to scan unread messages only. That way, the new spam filters will be applied and even the spam you didn't catch with the old filters will be scanned.") ,
           'left' )
       );
 
@@ -184,9 +184,9 @@ if (! isset($_GET['action']) || $_GET['action'] != 'spam') {
     echo html_tag( 'p', '', 'center' ) .
          '[<a href="spamoptions.php?action=spam">' . _("Edit") . '</a>]' .
          ' - [<a href="../../src/options.php">' . _("Done") . '</a>]</center><br><br>';
-    printf( _("Spam is sent to <b>%s</b>"), ($filters_spam_folder?htmlspecialchars($filters_spam_folder):_("[<i>not set yet</i>]") ) );
+    printf( _("Spam is sent to %s"), ($filters_spam_folder?'<b>'.htmlspecialchars($filters_spam_folder).'</b>':'[<i>'._("not set yet").'</i>]' ) );
     echo '<br>';
-    printf( _("Spam scan is limited to <b>%s</b>"), (($filters_spam_scan == 'new')?_("New Messages Only"):_("All Messages") ) );
+    printf( _("Spam scan is limited to %s"), '<b>' . (($filters_spam_scan == 'new')?_("Unread messages only"):_("All messages") ) . '</b>');
     echo '</p>'.
         "<table border=0 cellpadding=3 cellspacing=0 align=center bgcolor=\"$color[0]\">";
 
