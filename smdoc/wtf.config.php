@@ -204,11 +204,12 @@ include(PATH.'wtf.class.thing.php');
 include(PATH.'wtf.class.definition.php');
 include(PATH.'wtf.class.content.php');
 include(PATH.'wtf.class.hardthing.php');
+include(PATH.'wiki.config.php');           // wiki moved because home changed to extend it
 include(PATH.'wtf.class.user.php');
 include(PATH.'wtf.class.workspace.php');
 
 /* load extensions */
-include(PATH.'wiki.config.php');
+//include(PATH.'wiki.config.php');
 include(PATH.'file.config.php'); // uncomment to load file extension
 
 include(PATH.'sqmail.wikimenu.php');
