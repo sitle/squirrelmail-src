@@ -33,27 +33,25 @@ include_once(TEMPLATE_PATH.'index.tpl');
  */
 function user_groups_body(&$foowd, $className, $method, &$user, &$object, &$t)
 {
-  echo '<h1>' . _("User Permissions") . '</h1>' . "\n";
   $obj = $t['form']->objects;
 
   // First, add some javaScript to toggle on/off other 
   // elements if None is selected.
 ?>
+
+<!-- Javascript for toggling item elements -->
 <script language="JavaScript" type="text/javascript" src="templates/toggleNone.js"></script>
 <?php
   // Start form display
   $t['form']->display_start('smdoc_form');
 ?>
 <table cellspacing="0" cellpadding="0" class="smdoc_table">
-<tr><td class="label"><b><?php echo _("Group Membership"); ?>:</b></td>
+<tr><th class="label"><?php echo _("Group Membership"); ?>:</th>
     <td class="value"><?php echo $obj['groups']->display(NULL, 6, ' onChange="toggleNone();"'); ?></td></tr>
 </table>
+<div class="form_submit"><?php $t['form']->display_buttons(); ?></div>
 
 <?php
-  echo "\n" . '<div class="form_submit">';
-  $t['form']->display_buttons();
-  echo '</div>'."\n";
-
   $t['form']->display_end();
 }
 

@@ -46,15 +46,15 @@ function user_view_body(&$foowd, $className, $method, &$user, &$object, &$t)
     </th>
 </tr>
 <tr>
-  <th class="heading"><?php echo _("Username"); ?>:</th>
+  <th class="label"><?php echo _("Username"); ?>:</th>
   <td class="value"><?php echo $t['title']; ?></td>
 </tr>
 <tr>
-  <th class="heading"><?php echo _("Created"); ?>:</th>
+  <th class="label"><?php echo _("Created"); ?>:</th>
   <td class="value"><span class="smalldate"><?php echo $t['created']; ?></span></td>
 </tr>
 <tr>
-  <th class="heading"><?php echo _("Last Visit"); ?>:</th>
+  <th class="label"><?php echo _("Last Visit"); ?>:</th>
   <td class="datevalue"><?php echo $t['lastvisit']; ?></td>
 </tr>
 <?php // DISPLAY IM ID's IF PRESENT
@@ -92,7 +92,7 @@ function user_view_body(&$foowd, $className, $method, &$user, &$object, &$t)
           }
 ?>
 <tr>
-  <th class="heading"><?php echo htmlentities($prot); ?>:</th>
+  <th class="label"><?php echo htmlentities($prot); ?>:</th>
   <td class="value"><?php echo $id; ?></td>
 </tr>
 <?php
@@ -110,7 +110,7 @@ function user_view_body(&$foowd, $className, $method, &$user, &$object, &$t)
     </th>
 </tr>
 <tr>
-  <th class="heading"><?php echo _("Group Membership"); ?>:</th>
+  <th class="label"><?php echo _("Groups"); ?>:</th>
   <td class="value">
 <?php 
       echo _("Registered");
@@ -126,7 +126,7 @@ function user_view_body(&$foowd, $className, $method, &$user, &$object, &$t)
 <?php   if ( !$t['show_email'] )
         { ?>
 <tr>
-  <th class="heading"><?php echo _("Email"); ?>:</th>
+  <th class="label"><?php echo _("Email"); ?>:</th>
   <td class="value"><?php echo isset($t['email']) ? htmlentities($t['email']) : $none; ?></td>
 </tr>
 <?php   } ?>
