@@ -61,22 +61,15 @@ function plugin_listcommands_menu() {
             }
             $url .= 'send_to=' . strtr($act,'?','&');
 
-            if ($compose_new_win == '1') {
-                $output[] = "<a href=\"javascript:void(0)\" onclick=\"comp_in_new('$url')\">" . $fieldsdescr[$cmd] . '</a>';
-            }
-            else {
-                $output[] = '<a href="' . $url . '">' . $fieldsdescr[$cmd] . '</a>';
-            }
+            $output[] = makeComposeLink($url, $fieldsdescr[$cmd]);
+
             if ($cmd == 'post') {
 	        $url .= '&amp;passed_id='.$passed_id.
 		        '&amp;mailbox='.urlencode($mailbox).
 		        (isset($passed_ent_id)?'&amp;passed_ent_id='.$passed_ent_id:'');
                 $url .= '&amp;smaction=reply';
-                if ($compose_new_win == '1') {
-                    $output[] = "<a href=\"javascript:void(0)\" onclick=\"comp_in_new('$url')\">" . $fieldsdescr['reply'] . '</a>';
-                } else {
-                    $output[] = '<a href="' . $url . '">' . $fieldsdescr['reply'] . '</a>';
-                }
+                
+                $output[] = makeComposeLink($url, $fieldsdescr['reply']);
             }
         } else if ($proto == 'href') {
             $output[] = '<a href="' . $act . '" target="_blank">'
