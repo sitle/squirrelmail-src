@@ -6,13 +6,14 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: SquirrelMail HEAD\n"
-"POT-Creation-Date: 2004-10-03 05:26+0200\n"
-"PO-Revision-Date: 2004-10-04 09:56+0200\n"
+"POT-Creation-Date: 2004-10-04 21:00+0300\n"
+"PO-Revision-Date: 2004-10-05 03:46+0200\n"
 "Last-Translator: Fredrik Jervfors <sqm_admin@fimbul.net>\n"
 "Language-Team: Swedish <squirrelmail-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=ISO-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
 "Report-Msgid-Bugs-To: \n"
 
 msgid "Address Book"
@@ -2956,7 +2957,9 @@ msgstr "Avisering från SquirrelMail:"
 
 #, c-format
 msgid "You have %s new message"
-msgstr "Du har %s nytt brev"
+msgid_plural "You have %s new messages"
+msgstr[0] "Du har %s nytt brev"
+msgstr[1] "Du har %s nya brev"
 
 #, c-format
 msgid "You have %s new messages"
@@ -3069,7 +3072,9 @@ msgstr "%s nya brev"
 
 #, c-format
 msgid "%s New Message"
-msgstr "%s nytt brev"
+msgid_plural "%s New Messages"
+msgstr[0] "%s nytt brev"
+msgstr[1] "%s nya brev"
 
 msgid "Test Sound"
 msgstr "Testa ljud"
@@ -4368,6 +4373,12 @@ msgstr "Inga POP3-servrar är konfigurerade."
 
 msgid "Click here to go to the options page."
 msgstr "Tillbaka till inställningar"
+
+#, c-format
+msgid "Login OK: Inbox contains %s message"
+msgid_plural "Login OK: Inbox contains %s messages"
+msgstr[0] "Inloggning OK: Inkorgen innehåller %s brev"
+msgstr[1] "Inloggning OK: Inkorgen innehåller %s brev"
 
 msgid "Spam Service Type:"
 msgstr "Typ av skräpposttjänst:"
