@@ -14,6 +14,7 @@
 
   foowd_translation::initialize($foowd, TRUE);
   $flag_links = foowd_translation::getLink($foowd);
+  $loc_url = getURI(array());
 ?>
 <body>
 <!-- begin page title -->
@@ -53,7 +54,7 @@
   <tr>
     <td class="titleblock" valign="bottom">
       <?php
-          if ( isset($user->objectid) )
+          if ( isset($template['PAGE_TITLE_URL']) )
             echo $template['PAGE_TITLE_URL'];
           else
             echo $template['PAGE_TITLE'];
@@ -67,7 +68,7 @@
   <table width="100%" cellspacing="0" cellpadding="0" border="0">
     <tr>
       <td align="left" class="subtext">
-        <nobr><?php $loc_url = getURI(array());
+        <nobr><?php
           echo '<a href="', $loc_url, '">',            _("Home"), '</a> | ';
           echo '<a href="', $loc_url, '?object=faq">', _("Docs"), '</a> | ';
           echo '<a href="', $loc_url, '?object=faq">', _("Plugins"), '</a> | ';
