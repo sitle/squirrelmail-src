@@ -37,56 +37,51 @@ setPermission('smdoc_error', 'object', 'view', 'Everyone');
  */
 class smdoc_error extends smdoc_storage
 {
-    /**
-     * String containing error message.
-     * @var string
-     */
-    var $errorString;
+  /**
+   * String containing error message.
+   * @var string
+   */
+  var $errorString;
 
-    /**
-	 * Constructs a new error object.
-	 *
-	 * @param smdoc foowd Reference to the foowd environment object.
-     * @param string title The error title
-     * @param string errorString The error message.
-	 */
-    function smdoc_error(&$foowd, 
-                         $title = ERROR_TITLE, 
-                         $errorString = '') {
-        $foowd->track('smdoc_error->constructor');
+  /**
+   * Constructs a new error object.
+   *
+   * @param smdoc foowd Reference to the foowd environment object.
+   * @param string title The error title
+   * @param string errorString The error message.
+   */
+  function smdoc_error(&$foowd, 
+                       $title = ERROR_TITLE, 
+                       $errorString = '') 
+  {
+    $foowd->track('smdoc_error->constructor');
+    parent::smdoc_storage($foowd, $title, NULL, FALSE);
+    $this->errorString = $errorString;
+    $foowd->track();
+  }
 
-        parent::smdoc_storage($foowd, $title, NULL, FALSE);
+  /**
+   * Override {@link foowd_object::save} to stop this object from being saved.
+   *
+   * @return bool Always returns FALSE.
+   */
+  function save() 
+  { 
+    return FALSE;
+  }
 
-        $this->errorString = $errorString;
+  /**
+   * Output the object.
+   */
+  function method_view() 
+  {
+    $this->foowd->track('smdoc_error->method_view');
+    $this->foowd->template->assign('title', $this->title);
+    $this->foowd->template->assign('failure', 'Page rendering error:');
+    $this->foowd->template->assign('body', '<p align="center">'. $this->errorString. '</p>');
 
-        $foowd->track();
-    }
-
-	/**
-	 * Override {@link foowd_object::save} to stop this object from being saved.
-	 *
-	 * @param smdoc foowd Reference to the foowd environment object.
-	 * @param optional bool incrementVersion Increment the object version.
-	 * @param optional bool doUpdate Update the objects details.
-	 * @return bool Always returns FALSE.
-	 */
-	function save(&$foowd, $incrementVersion = TRUE, $doUpdate = TRUE) { 
-		return FALSE;
-	}
-
-	/**
-	 * Output the object.
-	 *
-	 * @param smdoc foowd Reference to the foowd environment object.
-	 */
-	function method_view(&$foowd) {
-		$foowd->track('smdoc_error->method_view');
-        $foowd->template->assign('title', $this->title);
-        $foowd->template->assign('failure', 'Page rendering error:');
-        $foowd->template->assign('body', '<p align="center">'. $this->errorString. '</p>');
-
-		$foowd->track();
-    }
+    $this->foowd->track();
+  }
 }
 
 set_error_handler('smdocErrorCatch');
