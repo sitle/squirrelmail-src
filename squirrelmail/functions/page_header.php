@@ -17,6 +17,9 @@ require_once('../src/global.php');
 
 /* Always set up the language before calling these functions */
 function displayHtmlHeader( $title = 'SquirrelMail', $xtra = '', $do_hook = TRUE ) {
+    if ( (float)substr(PHP_VERSION,0,3) < 4.1 ) {
+            global $_SESSION;
+    }
     if (isset($_SESSION['base_uri'])) {
         $base_uri = $_SESSION['base_uri'];
     }
@@ -48,9 +51,7 @@ function displayHtmlHeader( $title = 'SquirrelMail', $xtra = '', $do_hook = TRUE
 function displayInternalLink($path, $text, $target='') {
 
     if ( (float)substr(PHP_VERSION,0,3) < 4.1 ) {
-        if (ini_get('register_globals') == 0) { 
             global $_SESSION;
-        }
     }
 
     $base_uri = $_SESSION['base_uri'];    
@@ -65,7 +66,12 @@ function displayPageHeader($color, $mailbox, $xtra='', $session=false) {
 
     global $hide_sm_attributions, $PHP_SELF, $frame_top,
            $compose_new_win, $username, $datadir, $compose_width, $compose_height,
-           $attachemessages, $session, $_SESSION;
+           $attachemessages, $session;
+           
+    if ( (float)substr(PHP_VERSION,0,3) < 4.1 ) {
+            global $_SESSION;
+    }
+
     $base_uri = $_SESSION['base_uri'];
     $delimiter = $_SESSION['delimiter'];
     $module = substr( $PHP_SELF, ( strlen( $PHP_SELF ) - strlen( $base_uri ) ) * -1 );
