@@ -835,8 +835,8 @@ $idents = getPref($data_dir, $username, 'identities');
 if (!empty($idents) && $idents > 1) {
     for ($i = 1; $i < $idents; $i++) {
         $ident_addr = getPref($data_dir , $username , 'email_address' . $i);
-        for($m = 0,$cnt_to = count($addr_arr); $m < $cnt_to; $m++) {
-            if (!empty($ident_addr) && stristr($addr_arr[$m] ,$ident_addr)) {
+        foreach($addr_arr as $addr) {
+            if (!empty($ident_addr) && stristr($addr ,$ident_addr)) {
                 $identity = $i;
                 break 2;
             }
