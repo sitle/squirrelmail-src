@@ -69,8 +69,9 @@ class input_textbox extends input_base
     elseif ( $size < INPUT_TEXTBOX_SIZE_MIN )
       $size = INPUT_TEXTBOX_SIZE_MIN;
 
-    if ($this->required && ( !$this->wasSet || !$this->wasValid ) ) 
-      $class .= 'error';
+    if ( $this->form->submitted() && $this->required && 
+         ( !$this->wasSet || !$this->wasValid ) ) 
+      $class = 'error';
 
     $type  = 'type='.$this->type.'" ';
     $name  = 'name="'.$this->name.'" ';

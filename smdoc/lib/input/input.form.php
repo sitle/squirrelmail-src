@@ -125,11 +125,12 @@ class input_form
    * @param object object The form object to add.
    * @return bool TRUE on success.
    */
-  function addObject(&$object)
+  function addObject($object)
   {
     if ( is_object($object) && isset($object->name) )
     {
-      $this->objects[$object->name] = $object;
+      $object->form =& $this;
+      $this->objects[$object->name] =& $object;
       return TRUE;
     }
 
