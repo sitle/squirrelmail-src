@@ -4,11 +4,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: $Id: squirrelmail.po,v 1.5 2003/09/13 12:49:45 tokul Exp "
-"$\n"
+"Project-Id-Version: $Id$\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2003-10-05 12:27+0300\n"
-"PO-Revision-Date: 2003-09-11 21:44+0300\n"
+"PO-Revision-Date: 2003-09-21 14:04+0300\n"
 "Last-Translator: Tomas Kuliavas <tokul@users.sourceforge.net>\n"
 "Language-Team: Lithuanian <squirrelmail-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -155,9 +154,8 @@ msgstr "Neįmanoma perkelti/kopijuoti failo. Failas neprikabintas"
 msgid "Draft Saved"
 msgstr "Juodraštis išsaugotas"
 
-#, fuzzy
 msgid "Your Message has been sent"
-msgstr "Jūsų žinutė išsiųsta."
+msgstr "Jūsų žinutė išsiųsta"
 
 msgid "From:"
 msgstr "Nuo:"
@@ -721,19 +719,17 @@ msgstr "išsaugoti"
 msgid "forget"
 msgstr "pamiršti"
 
-#, fuzzy
 msgid "Current Search"
-msgstr "Dabartinis aplankas"
+msgstr "Esama paieška"
 
 msgid "All Folders"
 msgstr "Visuose aplankuose"
 
-#, fuzzy
 msgid "Body"
-msgstr "Keisti"
+msgstr "Tekstas"
 
 msgid "Everywhere"
-msgstr ""
+msgstr "Visur"
 
 msgid "Search Results"
 msgstr "Paieškos rezultatai:"
@@ -1014,9 +1010,8 @@ msgstr "Nustatymų failas %s nerastas. Programos klaida."
 msgid "Unknown user or password incorrect."
 msgstr "Nežinomas vartotojas arba klaidingas slaptažodis."
 
-#, fuzzy
 msgid "Click here to try again"
-msgstr "Spragtelėkite ant nuorodos norėdami vėl prisijungti"
+msgstr "Spragtelėkite ant nuorodos norėdami pabandyti dar kartą"
 
 #, c-format
 msgid "Click here to return to %s"
@@ -1163,7 +1158,6 @@ msgstr ""
 msgid "(no subject)"
 msgstr "(tema nenurodyta)"
 
-#, fuzzy
 msgid "Unknown Sender"
 msgstr "Nežinomas siuntėjas"
 
@@ -1560,7 +1554,6 @@ msgstr "Tik naujos žinutės"
 msgid "Unseen and Total"
 msgstr "Naujos žinutės ir bendras skaičius"
 
-#, fuzzy
 msgid "Enable Collapsible Folders"
 msgstr "Aktyvuoti išsiskleidžiančius aplankus"
 
@@ -2457,9 +2450,8 @@ msgstr "Serveris nenurodytas"
 msgid "Error "
 msgstr "Klaida "
 
-#, fuzzy
 msgid "POP3 noop:"
-msgstr "POP3 top:"
+msgstr "POP3 noop:"
 
 msgid "No connection to server"
 msgstr "Prisijungti prie serverio nepavyko"
@@ -3475,6 +3467,68 @@ msgstr "Ataskaita apie pristatymo klaidą"
 msgid "Undelivered Message Headers"
 msgstr "Nepristatytos žinutės antraštės"
 
+#~ msgid "refresh unseen/total info"
+#~ msgstr "atnaujinti nauja/viso skaičius"
+
+#~ msgid ""
+#~ "FREE - Osirusoft Relays - Osirusofts list of verified open relays. Seems "
+#~ "to include servers used by abuse@uunet.net auto-replies too."
+#~ msgstr ""
+#~ "NEMOKAMAS - Osirusoft Relays - Osirusoft saugo patikrintus atvirų pašto "
+#~ "serverių sarašus. Panašu, kad įtraukia ir abuse@uunet.net pateikiamus "
+#~ "adresus."
+
+#~ msgid "FREE - Osirusoft Dialups - Osirusofts Dialup Spam Source list."
+#~ msgstr ""
+#~ "NEMOKAMAS - Osirusoft Dialups - Osirusoft dinaminių adresų, iš kurių "
+#~ "siunčiami spam tipo laiškai, sąrašas"
+
+#~ msgid ""
+#~ "FREE - Osirusoft Confirmed Spam Source - Sites that continually spam and "
+#~ "have been manually added after multiple nominations. Use with caution. "
+#~ "Seems to catch abuse auto-replies from some ISPs."
+#~ msgstr ""
+#~ "NEMOKAMAS - Osirusoft Confirmed Spam Source - Adresai, kurie nuolat "
+#~ "siuntinėja spamą ir kurie buvo įtraukti dėl pasikartojančių skundų. "
+#~ "Reiktų naudoti atsargiai. Atrodo, kad pagauna ir dalies IPT antispaminius "
+#~ "atsakymus."
+
+#~ msgid ""
+#~ "FREE - Osirusoft Smart Hosts - List of hosts that are secure but relay "
+#~ "for other mail servers that are not secure."
+#~ msgstr ""
+#~ "NEMOKAMAS - Osirusoft Smart Hosts - Serveriai, kurie nėra atviri, tačiau "
+#~ "priimantys paštą iš kitų neapsaugotų serverių."
+
+#~ msgid ""
+#~ "FREE - Osirusoft Spamware Developers - It is believed that these are IP "
+#~ "ranges of companies that are known to produce spam software. Seems to "
+#~ "catch abuse auto-replies from some ISPs."
+#~ msgstr ""
+#~ "NEMOKAMAS - Osirusoft Spamware Developers - Manoma, kad šie IP priklauso "
+#~ "kompanijoms, kurios gamina programas, naudojamas spamui. Atrodo, kad "
+#~ "pagauna ir dalies IPT automatinius antispamo atsakymus."
+
+#~ msgid ""
+#~ "FREE - Osirusoft Unconfirmed OptIn Servers - List of listservers that opt "
+#~ "users in without confirmation."
+#~ msgstr ""
+#~ "NEMOKAMAS - Osirusoft Unconfirmed OptIn Servers - Grupinių žinučių "
+#~ "(mailing lists) serverių, kurie įtraukia adresus negavę iš adresato "
+#~ "patvirtinimo, sąrašai. "
+
+#~ msgid ""
+#~ "FREE - Osirusoft Insecure formmail.cgi scripts - List of insecure "
+#~ "formmail.cgi scripts. (planned)."
+#~ msgstr ""
+#~ "NEMOKAMAS - Osirusoft pažeidžiami formmail.cgi skriptai - Nesaugių "
+#~ "frommail.cgi skriptų sąrašai. (Planuojamas)"
+
+#~ msgid "FREE - Osirusoft Open Proxy Servers - List of Open Proxy Servers."
+#~ msgstr ""
+#~ "NEMOKAMAS - Osirusoft atviri proxy serveriai - Atvirų proxy serverių "
+#~ "sąrašai."
+
 #~ msgid "Please enter something to search for"
 #~ msgstr "Įveskite ko norite ieškoti"
 
@@ -3631,67 +3685,91 @@ msgstr "Nepristatytos žinutės antraštės"
 #~ msgid "Subfolder"
 #~ msgstr "Žemesnio lygio aplankas"
 
-#~ msgid ""
-#~ "FREE - Osirusoft Relays - Osirusofts list of verified open relays. Seems "
-#~ "to include servers used by abuse@uunet.net auto-replies too."
-#~ msgstr ""
-#~ "NEMOKAMAS - Osirusoft Relays - Osirusoft saugo patikrintus atvirų pašto "
-#~ "serverių sarašus. Panašu, kad įtraukia ir abuse@uunet.net pateikiamus "
-#~ "adresus."
-
-#~ msgid "FREE - Osirusoft Dialups - Osirusofts Dialup Spam Source list."
-#~ msgstr ""
-#~ "NEMOKAMAS - Osirusoft Dialups - Osirusoft dinaminių adresų, iš kurių "
-#~ "siunčiami spam tipo laiškai, sąrašas"
-
-#~ msgid ""
-#~ "FREE - Osirusoft Confirmed Spam Source - Sites that continually spam and "
-#~ "have been manually added after multiple nominations. Use with caution. "
-#~ "Seems to catch abuse auto-replies from some ISPs."
-#~ msgstr ""
-#~ "NEMOKAMAS - Osirusoft Confirmed Spam Source - Adresai, kurie nuolat "
-#~ "siuntinėja spamą ir kurie buvo įtraukti dėl pasikartojančių skundų. "
-#~ "Reiktų naudoti atsargiai. Atrodo, kad pagauna ir dalies IPT antispaminius "
-#~ "atsakymus."
-
-#~ msgid ""
-#~ "FREE - Osirusoft Smart Hosts - List of hosts that are secure but relay "
-#~ "for other mail servers that are not secure."
-#~ msgstr ""
-#~ "NEMOKAMAS - Osirusoft Smart Hosts - Serveriai, kurie nėra atviri, tačiau "
-#~ "priimantys paštą iš kitų neapsaugotų serverių."
-
-#~ msgid ""
-#~ "FREE - Osirusoft Spamware Developers - It is believed that these are IP "
-#~ "ranges of companies that are known to produce spam software. Seems to "
-#~ "catch abuse auto-replies from some ISPs."
-#~ msgstr ""
-#~ "NEMOKAMAS - Osirusoft Spamware Developers - Manoma, kad šie IP priklauso "
-#~ "kompanijoms, kurios gamina programas, naudojamas spamui. Atrodo, kad "
-#~ "pagauna ir dalies IPT automatinius antispamo atsakymus."
-
-#~ msgid ""
-#~ "FREE - Osirusoft Unconfirmed OptIn Servers - List of listservers that opt "
-#~ "users in without confirmation."
-#~ msgstr ""
-#~ "NEMOKAMAS - Osirusoft Unconfirmed OptIn Servers - Grupinių žinučių "
-#~ "(mailing lists) serverių, kurie įtraukia adresus negavę iš adresato "
-#~ "patvirtinimo, sąrašai. "
-
-#~ msgid ""
-#~ "FREE - Osirusoft Insecure formmail.cgi scripts - List of insecure "
-#~ "formmail.cgi scripts. (planned)."
-#~ msgstr ""
-#~ "NEMOKAMAS - Osirusoft pažeidžiami formmail.cgi skriptai - Nesaugių "
-#~ "frommail.cgi skriptų sąrašai. (Planuojamas)"
-
-#~ msgid "FREE - Osirusoft Open Proxy Servers - List of Open Proxy Servers."
-#~ msgstr ""
-#~ "NEMOKAMAS - Osirusoft atviri proxy serveriai - Atvirų proxy serverių "
-#~ "sąrašai."
-
 #~ msgid "No POP3 servers configured yet."
 #~ msgstr "Nesukonfiguruotas nei vienas POP serveris"
 
 #~ msgid "Click here to go to the options page."
 #~ msgstr "Spragtelėkite ant nuorodos norėdami nueiti į nustatymų puslapį."
+
+#~ msgid ""
+#~ "Here you can install an automatic reply message. Specify the subject, "
+#~ "reply message, and if you want, a forwarding address.  This will copy all "
+#~ "incoming mail to another address as well as keep it in your mailbox."
+#~ msgstr ""
+#~ "Čia jūs galite nustatyti automatinius atsakymus. Galima nustatyti žinutės "
+#~ "pavadinimą, tekstą ir adresą, kuriuo reikia persiųsti gautus laiškus. Tai "
+#~ "leistų persiųsti žinutes kitam adresatui ir kartu išsaugoti jas savo "
+#~ "pašto dėžėje."
+
+#~ msgid "Change Vacation Message"
+#~ msgstr "Pakeisti atostogų pranešimą"
+
+#~ msgid ""
+#~ "You are not currently sending a reply message.<br>You can enter one by "
+#~ "typing the subject and reply message and checking the box."
+#~ msgstr ""
+#~ "Šiuo metu jūs nesiunčiate jokio pranešimo.<br>Jūs galite jį nustatyti "
+#~ "užpildydami temos ir žinutės teksto laukus bei pažymėdami šį lauką."
+
+#~ msgid "You are currently responding with the following:"
+#~ msgstr "Šiuo metu jūs siunčiate žemiau nurodytą pranešimą:"
+
+#~ msgid ""
+#~ "You are not currently forwarding incoming messages.<br>This will copy all "
+#~ "incoming mail to another address as well as keep it in your mailbox."
+#~ msgstr ""
+#~ "Šiuo metu jūs nepersiunčiate laiškų.<br>Persiuntimas leidžia nusiųsti "
+#~ "gaunamus laiškus kitam adresatui ir kartu išsaugoti juos savo pašto "
+#~ "dėžėje."
+
+#~ msgid "You are currently sending a copy of incoming message to:"
+#~ msgstr "Šiuo metu jūs persiunčiate laišku kopijas į"
+
+#~ msgid ""
+#~ "To delete recipient and keep your vacation message, uncheck the checkbox "
+#~ "and click "
+#~ msgstr ""
+#~ "Norėdami pašalinti gavėją ir išsaugoti atostogų pranešimą, nuimkite "
+#~ "varnikę ir paspauskite "
+
+#~ msgid "Vacation Message"
+#~ msgstr "Atostogų pranešimas"
+
+#~ msgid "Vacation settings set by system administrator."
+#~ msgstr "Atostogų nustatymus gali keisti tik pašto administratorius."
+
+#~ msgid "Send auto-reply to sender?"
+#~ msgstr "Ar siųsti automatinį atsakymą siuntėjui?"
+
+#~ msgid "Forward incoming message to another email address?"
+#~ msgstr "Ar persiųsti gautus laiškus kitam adresatui?"
+
+#~ msgid "No local delivery -- Forward and/or Auto-reply only."
+#~ msgstr "Nesaugoti laiškų -- Naudoti tik persiuntimą ir/arba autoatsakiklį."
+
+#~ msgid "Vacation Subject"
+#~ msgstr "Atostogų pranešimo tema"
+
+#~ msgid "Forwarding E-Mail Addresses (One Address Per Line)"
+#~ msgstr "Persiuntimo adresai (po vieną adresą eilutėje)"
+
+#~ msgid "Could not connect to FTP server."
+#~ msgstr "Nepavyko prisijungti prie FTP serverio."
+
+#~ msgid "Failed to login to FTP server."
+#~ msgstr "FTP serverio autorizacija nepavyko."
+
+#~ msgid "Unable to switch to passive FTP mode."
+#~ msgstr "Nepavyko persijungti į pasyvų FTP režimą."
+
+#~ msgid "An error occured uploading the file..."
+#~ msgstr "Įvyko klaida bandant nusiųsti failą..."
+
+#~ msgid "An error occured downloading the file."
+#~ msgstr "Įvyko klaida atsisiunčiant failą."
+
+#~ msgid "An error occured deleting the file..."
+#~ msgstr "Įvyko klaida trinant failą..."
+
+#~ msgid "Unknown action %s in do_ftp."
+#~ msgstr "Nežinomas veiksmas %s tarp do_ftp funkcijos."
