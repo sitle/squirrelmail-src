@@ -17,12 +17,16 @@
   $title     = isset($t['title'])     ? $t['title']: 'Unknown';
   $lastUpdate = '&nbsp;';
 
-  if ( !sqGetGlobalVar('ok', $ok, SQ_FORM) && isset($t['success']) )
+  if ( !sqGetGlobalVar('ok', $ok, SQ_SESSION) && isset($t['success']) )
     $ok = $t['success'];
-  elseif ( !sqGetGlobalVar('error', $error,  SQ_FORM) && isset($t['failure']) )
+  elseif ( !sqGetGlobalVar('error', $error,  SQ_SESSION) && isset($t['failure']) )
     $error = $t['failure'];
  
-  getStatusStrings($ok, $error); 
+  getStatusStrings($ok, $error);
+
+  // Clear ok/error values from session
+  unset($_SESSION['ok']);
+  unset($_SESSION['error']);
 
   if ( isset($t['classid']) && $object != NULL &&
        $t['classid'] != EXTERNAL_CLASS_ID && 
@@ -41,7 +45,7 @@
 //  smdoc_translation::initialize($foowd);
 //  $flag_links = smdoc_translation::getLink($foowd);
   $loc_url = getURI();
-  $user_url = $loc_url . '?class='.getClassName(USER_CLASS_ID);
+  $user_url = $loc_url . '?class=smdoc_user';
 
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
@@ -88,15 +92,16 @@
           if ( isset($user->objectid) )
           {
             // If an objectid is set, we're logged in.
-            echo '<a href="' . $loc_url . '&amp;objectid=' . $user->objectid .'">' . $user->title . '</a> ';
+            echo '<a href="'.$loc_url.'?classid='.USER_CLASS_ID.'&objectid='.$user->objectid.'">' 
+                 . $user->title . '</a> ';
             echo '( '. $lang_url
-                 . '<a href="', $user_url, '&amp;method=logout">'. _("Logout") .'</a> )';
+                 . '<a href="', $user_url, '&method=logout">'. _("Logout") .'</a> )';
           } else {
             // Otherwise, we're anonymous
             echo _("Anonymous User"), ' [' . $user->title . '] ';
             echo '( '. $lang_url  
-                 . '<a href="', $user_url, '&amp;method=login">'. _("Login") .'</a> ';
-            echo '| <a href="', $user_url, '&amp;method=create">'. _("Register") .'</a> )';
+                 . '<a href="', $user_url, '&method=login">'. _("Login") .'</a> ';
+            echo '| <a href="', $user_url, '&method=create">'. _("Register") .'</a> )';
           }
         ?>
     </td>
@@ -111,7 +116,7 @@
           {
             if ( $t['classid'] == USER_CLASS_ID )
                 echo 'User Profile: ';
-            echo '<a href="' . $loc_url . '&amp;objectid=' . $t['objectid'] .'">'. $title.'</a> ';
+            echo '<a href="'.$loc_url.'?classid='.USER_CLASS_ID.'&objectid='.$t['objectid'].'">'. $title.'</a> ';
           }
           else
             echo $title;
@@ -191,10 +196,12 @@
                 {
                     if ( $notfirst ) echo ' | ';
                     $notfirst = 1;
-                    echo '<a href="', getURI(array('objectid' => $t['objectid'],
-                                                    'version' => $t['version'],
-                                                     'method' => $methodName)), '">', 
-                          ucfirst($methodName), '</a>';
+                    $uri_arr['objectid'] = $t['objectid'];
+                    $uri_arr['classid'] = $t['classid'];
+                    if ( isset($t['version']) )
+                      $uri_arr['version'] = $t['version'];
+                    $uri_arr['method']  = $methodName;
+                    echo '<a href="', getURI($uri_arr), '">', ucfirst($methodName), '</a>';
                 }
             }
         }
