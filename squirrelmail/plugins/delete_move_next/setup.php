@@ -11,8 +11,14 @@
  * Licensed under the GNU GPL. For full terms see the file COPYING.
  *
  * $Id$
+ * @package plugins
+ * @subpackage delete_move_next
  */
 
+/**
+ * Initialize the plugin
+ * @return void
+ */
 function squirrelmail_plugin_init_delete_move_next() {
     global $squirrelmail_plugin_hooks;
 
@@ -24,7 +30,6 @@ function squirrelmail_plugin_init_delete_move_next() {
     $squirrelmail_plugin_hooks['options_display_save']['delete_move_next'] = 'delete_move_next_display_save';
     $squirrelmail_plugin_hooks['loading_prefs']['delete_move_next'] = 'delete_move_next_loading_prefs';
 }
-
 
 /* fixes the sort_array for the prev_del/next_del links when 
  * using server side sorting or thread sorting 
@@ -84,7 +89,6 @@ function delete_move_show_msg_array() {
     }
 }
 
-
 function delete_move_expunge_from_all($id) {
     global $msgs, $msort, $sort, $imapConnection, $mailbox, $uid_support;
     $delAt = -1;
@@ -117,25 +121,13 @@ function delete_move_next_action() {
 
     global $PHP_SELF;
 
-    if ( !check_php_version(4,1) ) {
-        global $_GET, $_POST;
-    }
-
-    if (isset($_GET['delete_id'])) {
-        $delete_id = $_GET['delete_id'];
-    }
-    if (isset($_POST['move_id'])) {
-        $move_id = $_POST['move_id'];
-    }       
-
-    if (isset($delete_id)) {
+    if ( sqgetGlobalVar('delete_id', $delete_id, SQ_GET) ) {
         delete_move_next_delete();
         fix_sort_array();
-    } elseif (isset($move_id)) {
+    } elseif ( sqgetGlobalVar('move_id', $move_id, SQ_POST) ) {
         delete_move_next_move();
         fix_sort_array();
     }
-
 }
 
 function delete_move_next_read_t() {
@@ -155,7 +147,6 @@ function delete_move_next_read_b() {
         delete_move_next_read('bottom');
     }
 }
-
 
 function delete_move_next_read($currloc) {
     global $delete_move_next_formATtop, $delete_move_next_formATbottom,
@@ -241,11 +232,7 @@ function delete_move_next_moveNextForm($next) {
 
     echo '<tr>'.
          "<td bgcolor=\"$color[9]\" width=\"100%\" align=\"center\">".
-           '<form action="read_body.php" method="post"><small>'.
-            "<input type=\"hidden\" name=\"passed_id\" value=\"$next\">".
-            "<input type=\"hidden\" name=\"mailbox\" value=\"".$mailbox."\">".
-            "<input type=\"hidden\" name=\"sort\" value=\"$sort\">".
-            "<input type=\"hidden\" name=\"startMessage\" value=\"$startMessage\">".
+           "<form action=\"read_body.php?mailbox=$mailbox&sort=$sort&startMessage=$startMessage&passed_id=$next\" method=\"post\"><small>".
             "<input type=\"hidden\" name=\"show_more\" value=\"0\">".
             "<input type=\"hidden\" name=\"move_id\" value=\"$passed_id\">".
             _("Move to:") .
@@ -257,8 +244,8 @@ function delete_move_next_moveNextForm($next) {
            '</form>'.
          '</td>'.
          '</tr>';
-
 }
+
 function delete_move_next_moveRightMainForm() {
 
     global $color, $where, $what, $currentArrayIndex, $passed_id,
@@ -267,10 +254,7 @@ function delete_move_next_moveRightMainForm() {
 
     echo '<tr>' .
             "<td bgcolor=\"$color[9]\" width=\"100%\" align=\"center\">".
-            '<form action="right_main.php" method="post"><small>' .
-            "<input type=\"hidden\" name=\"mailbox\" value=\"".$mailbox."\">".
-            "<input type=\"hidden\" name=\"sort\" value=\"$sort\">".
-            "<input type=\"hidden\" name=\"startMessage\" value=\"$startMessage\">".
+            "<form action=\"right_main.php?mailbox=$mailbox&sort=$sort&startMessage=$startMessage\" method=\"post\"><small>" .
             "<input type=\"hidden\" name=\"move_id\" value=\"$passed_id\">".
             _("Move to:") .
             ' <select name="targetMailbox">';
@@ -281,19 +265,13 @@ function delete_move_next_moveRightMainForm() {
          '</form>' .
          '</td>'.
          '</tr>';
-
 }
-
 
 function delete_move_next_delete() {
     global $imapConnection, $auto_expunge;
 
-    if ( !check_php_version(4,1) ) {
-        global $_GET;
-    }
-
-    $delete_id = $_GET['delete_id'];
-    $mailbox = $_GET['mailbox'];
+    sqgetGlobalVar('delete_id', $delete_id, SQ_GET);
+    sqgetGlobalVar('mailbox', $mailbox, SQ_GET);
 
     sqimap_messages_delete($imapConnection, $delete_id, $delete_id, $mailbox);
     if ($auto_expunge) {
@@ -305,13 +283,9 @@ function delete_move_next_delete() {
 function delete_move_next_move() {
     global $imapConnection, $mailbox, $auto_expunge, $lastTargetMailbox;
 
-    if ( !check_php_version(4,1) ) {
-        global $_POST;
-    }
-
-    $move_id = $_POST['move_id'];
-    $mailbox = $_POST['mailbox'];
-    $targetMailbox = $_POST['targetMailbox'];
+    sqgetGlobalVar('move_id', $move_id, SQ_POST);
+    sqgetGlobalVar('mailbox', $mailbox, SQ_FORM);
+    sqgetGlobalVar('targetMailbox', $targetMailbox, SQ_POST);
 
     // Move message
     sqimap_messages_copy($imapConnection, $move_id, $move_id, $targetMailbox);
@@ -365,50 +339,31 @@ function delete_move_next_display_save() {
 
     global $username,$data_dir;
 
-    if ( !check_php_version(4,1) ) {
-        global $_POST;
-    }
-
-    if (isset($_POST['delete_move_next_ti'])) {
-        $delete_move_next_ti = $_POST['delete_move_next_ti'];
-    }
-    if (isset($_POST['delete_move_next_bi'])) {
-        $delete_move_next_bi = $_POST['delete_move_next_bi'];
-    }
-    if (isset($_POST['delete_move_next_formATtopi'])) {
-        $delete_move_next_formATtopi = $_POST['delete_move_next_formATtopi'];
-    }
-    if (isset($_POST['delete_move_next_formATbottomi'])) {
-        $delete_move_next_formATbottomi = $_POST['delete_move_next_formATbottomi'];
-    }
-
-    if (isset($delete_move_next_ti)) {
+    if ( sqgetGlobalVar('delete_move_next_ti', $delete_move_next_ti, SQ_POST) ) {
         setPref($data_dir, $username, 'delete_move_next_t', 'on');
     } else {
         setPref($data_dir, $username, 'delete_move_next_t', "off");
     }
 
-    if (isset($delete_move_next_formATtopi)) {
+    if ( sqgetGlobalVar('delete_move_next_formATtopi', $delete_move_next_formATtopi, SQ_POST) ) {
         setPref($data_dir, $username, 'delete_move_next_formATtop', 'on');
     } else {
         setPref($data_dir, $username, 'delete_move_next_formATtop', "off");
     }
 
 
-    if (isset($delete_move_next_bi)) {
+    if ( sqgetGlobalVar('delete_move_next_bi', $delete_move_next_bi, SQ_POST) ) {
         setPref($data_dir, $username, 'delete_move_next_b', 'on');
     } else {
         setPref($data_dir, $username, 'delete_move_next_b', "off");
     }
 
-    if (isset($delete_move_next_formATbottomi)) {
+    if ( sqgetGlobalVar('delete_move_next_formATbottomi', $delete_move_next_formATbottomi, SQ_POST) ) {
         setPref($data_dir, $username, 'delete_move_next_formATbottom', 'on');
     } else {
         setPref($data_dir, $username, 'delete_move_next_formATbottom', "off");
     }
-
 }
-
 
 function delete_move_next_loading_prefs() {
     global $username,$data_dir,
