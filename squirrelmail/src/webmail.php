@@ -12,7 +12,6 @@
     **
     **  $Id$
     **/
-   include ("../src/validate.php");
 
    include ('../functions/i18n.php');
    include ('../functions/strings.php');
@@ -20,6 +19,10 @@
    include ('../functions/prefs.php');
    include ('../functions/imap.php');
    include ('../functions/plugin.php');
+   include ('../functions/auth.php');
+
+   session_start();
+   is_logged_in();
 
    // We'll need this to later have a noframes version
    //
