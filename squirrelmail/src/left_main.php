@@ -940,7 +940,7 @@ for ($i = 0; $i < count($boxes); $i++) {
         } else {
             $prefix = str_replace(' ','&nbsp;',$prefix);
         }
-        $line = "<nobr><tt>$prefix</tt>";
+        $line = "<span style=\"white-space: nowrap;\"><tt>$prefix</tt>";
 
         /* Add the folder name and link. */
         if (! isset($color[15])) {
@@ -963,7 +963,7 @@ for ($i = 0; $i < count($boxes); $i++) {
         }
 
         /* Put the final touches on our folder line. */
-        $line .= "</nobr><br />\n";
+        $line .= "</span><br />\n";
 
         /* Output the line for this folder. */
         echo $line;
@@ -998,4 +998,4 @@ sqimap_logout($imapConnection);
 
 ?>
 </td></tr></table>
-</div></body></html>
+</body></html>
