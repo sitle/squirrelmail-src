@@ -105,7 +105,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
     /**************************************************
      * Add new address                                *
      **************************************************/
-
+    if (!empty($addaddr)) {
         foreach( $addaddr as $k => $adr ) {
             $addaddr[$k] = strip_tags( $adr );
         }
@@ -121,7 +121,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
             $formerror = $errstr;
             $showaddrlist = false;
             $defdata = $addaddr;
-
+        }
     } else {
 
         /************************************************
