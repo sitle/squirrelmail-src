@@ -18,6 +18,8 @@
 
     $username = $_SESSION['username'];
     $key = $_COOKIE['key'];
+    $onetimepad = $_SESSION['onetimepad'];
+    $delimiter = $_SESSION['delimiter'];
 
     displayPageHeader( $color, 'None' );
 
