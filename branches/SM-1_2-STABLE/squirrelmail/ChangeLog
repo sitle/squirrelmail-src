@@ -4,8 +4,13 @@
 
 Version 1.2.9 -- CVS
 --------------------
+  - Reply now checks for multiple identities, bug #562303
+  - Fix for user prefs getting overwritten bugs #587860, 572502
+  - Fix adding events to calendar on Windows systems
+  - Improved session management system. 
   - Various minor fixes.
-  - Fix src directory being moved on Windows systems, bugs #586518 #605256 #610676.
+  - Fix src directory being moved on Windows systems, bugs #586518 
+    #605256 #610676.
   - Bugfixes for using SquirrelMail with register_globals = off
   - Write/close session before redirecting after login; this should (partially)
     solve the "You must be logged in"-trouble.
