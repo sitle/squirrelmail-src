@@ -5,8 +5,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: squirrelmail 1.4.3cvs\n"
-"POT-Creation-Date: 2004-01-26 20:14+0200\n"
-"PO-Revision-Date: 2004-03-21 23:10+0200\n"
+"POT-Creation-Date: 2004-03-22 11:43+0200\n"
+"PO-Revision-Date: 2004-03-23 23:10+0200\n"
 "Last-Translator: M.J. Prinsen <translation@prinsenonline.com>\n"
 "Language-Team: Dutch <squirrelmail-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -1426,8 +1426,11 @@ msgstr "Bericht weergave en compositie"
 msgid "Wrap Incoming Text At"
 msgstr "Begin een nieuwe regel na dit aantal tekens"
 
-msgid "Size of Editor Window"
+msgid "Width of Editor Window"
 msgstr "Breedte van het tekstvenster"
+
+msgid "Height of Editor Window"
+msgstr "Hoogte van het tekstvenster"
 
 msgid "Location of Buttons when Composing"
 msgstr "Positie van de knoppen bij schrijven nieuw bericht"
@@ -1671,6 +1674,9 @@ msgstr "Schrijver zei"
 msgid "Quote Who XML"
 msgstr "Citaat van XML"
 
+msgid "On DATE, AUTHOR Said"
+msgstr "Op DATUM, Schrijver zei"
+
 msgid "User-Defined"
 msgstr "Gedefinieerd door gebruiker"
 
@@ -1808,9 +1814,6 @@ msgstr "POP3 voor SMTP?"
 
 msgid "Invert Time"
 msgstr "Inverteer tijd"
-
-msgid "Use Confirmation Flags"
-msgstr "Gebruik bevestigings-flags"
 
 msgid "Folders Defaults"
 msgstr "Map voorkeuren"
@@ -2078,6 +2081,10 @@ msgstr "Fout rapportages:"
 
 msgid "Show button in toolbar"
 msgstr "Toon knop in menu"
+
+#, c-format
+msgid "Could not write calendar file %s"
+msgstr "Kan kalenderbestand %s niet wegschrijven"
 
 msgid "TODAY"
 msgstr "VANDAAG"
@@ -3660,33 +3667,43 @@ msgstr ""
 msgid "%s to %s"
 msgstr "%s in %s"
 
+#, c-format
 msgid "English"
 msgstr "Engels"
 
+#, c-format
 msgid "Chinese"
 msgstr "Chinees"
 
+#, c-format
 msgid "French"
 msgstr "Frans"
 
+#, c-format
 msgid "German"
 msgstr "Duits"
 
+#, c-format
 msgid "Italian"
 msgstr "Italiaans"
 
+#, c-format
 msgid "Japanese"
 msgstr "Japans"
 
+#, c-format
 msgid "Korean"
 msgstr "Koreaans"
 
+#, c-format
 msgid "Portuguese"
 msgstr "Portugees"
 
+#, c-format
 msgid "Spanish"
 msgstr "Spaans"
 
+#, c-format
 msgid "Russian"
 msgstr "Russisch"
 
@@ -3717,6 +3734,7 @@ msgstr "Europees Spaans"
 msgid "Finnish"
 msgstr "Fins"
 
+#, c-format
 msgid "Greek"
 msgstr "Grieks"
 
@@ -3776,6 +3794,9 @@ msgstr "Bezorgingsfout rapportage"
 
 msgid "Undelivered Message Headers"
 msgstr "Berichtkoppen onbestelbaar bericht"
+
+#~ msgid "Use Confirmation Flags"
+#~ msgstr "Gebruik bevestigings-flags"
 
 #~ msgid "refresh unseen/total info"
 #~ msgstr "vernieuw info ongelezen/totaal"
