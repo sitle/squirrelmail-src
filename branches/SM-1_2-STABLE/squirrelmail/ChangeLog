@@ -7,6 +7,8 @@ Version 1.2.9 -- CVS
   - Various minor fixes.
   - Fix src directory being moved on Windows systems, bugs #586518 #605256 #610676.
   - Bugfixes for using SquirrelMail with register_globals = off
+  - Write/close session before redirecting after login; this should (partially)
+    solve the "You must be logged in"-trouble.
 
 Version 1.2.8 -- September 14, 2002
 -----------------------------------
