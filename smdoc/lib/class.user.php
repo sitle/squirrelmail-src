@@ -472,8 +472,8 @@ class base_user extends foowd_object
     $object = new $class($foowd, $username, $password, $email, $objectid);
     if ( $object->objectid != 0 && $object->save($foowd) ) 
       return 0; // created ok
-    else
-      return 3; // eek, error creating user.
+
+    return 3; // eek, error creating user.
   }
 
   /**
@@ -665,11 +665,15 @@ class base_user extends foowd_object
   }
 
   /**
-   * Update the groups the user belongs to.
+   * Update the groups the user belongs to - this is used for
+   * adding or removing groups from an individual user.
    *
    * @access protected
    * @param array selectedGroups The groups selected for the user to be in.
    * @param array allGroups All the user groups in the system.
+   * @see smdoc::getUserGroups()
+   * @see smdoc_group::removeUser()
+   * @see smdoc_group::addUser()
    */
   function addGroupsToForm(&$form, &$error) 
   {
@@ -713,6 +717,29 @@ class base_user extends foowd_object
     }
 
     $form->addObject($groupBox);
+  }
+
+  /**
+   * Remove user from specified group
+   *
+   * @access protected
+   * @param array selectedGroups The groups selected for the user to be in.
+   * @param array allGroups All the user groups in the system.
+   * @see smdoc::getUserGroups()
+   * @see smdoc_group::removeUser()
+   * @see smdoc_group::addUser()
+   */
+  function removeFromGroup($group)
+  {
+    foreach($this->groups as $i => $g)
+    {
+      if ( $g == $group )
+      {
+        unset($this->groups[$g]);
+        break;
+      }
+    }
+    $this->set('groups', $this->groups);
   }
 
 // ----------------------------- class methods --------------

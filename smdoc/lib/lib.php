@@ -33,9 +33,11 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
  * @param mixed var Variable to output.
  */
-function show($var) 
+function show($var, $comment = NULL) 
 {
   echo '<pre>';
+  if ( $comment )
+    echo $comment . '<br />';
   if (is_object($var)) 
   {
     if ( isset($var->config_settings) ) 

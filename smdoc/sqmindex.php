@@ -58,7 +58,7 @@ $foowd = new smdoc($foowd_parameters);
  * Print site content, leave out groups, workspaces, name_lookup
  */
 $where['notshort'] = array('index' => 'classid', 'op' => '!=', 'value' => META_SMDOC_NAME_LOOKUP_CLASS_ID);
-$where['notgroup'] = array('index' => 'classid', 'op' => '!=', 'value' => META_SMDOC_APP_GROUPS_CLASS_ID);
+$where['notgroup'] = array('index' => 'classid', 'op' => '!=', 'value' => META_SMDOC_GROUP_APPEXT_CLASS_ID);
 
 $orderby = array('title', 'classid', 'version');
 $indices = array('DISTINCT objectid','classid','title','workspaceid','updated');
