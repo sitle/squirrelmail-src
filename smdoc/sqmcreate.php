@@ -35,7 +35,7 @@
  * Initial configuration, start session
  * @see config.default.php
  */
-require('config.php');
+require('smdoc_init.php');
 
 /* 
  * Initialize smdoc/FOOWD environment

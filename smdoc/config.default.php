@@ -165,12 +165,3 @@ include_once(SM_DIR . 'class.text.plain.php');
 include_once(SM_DIR . 'smdoc.class.text.textile.php');
 include_once(SM_DIR . 'smdoc.class.news.php');
 include_once(SM_DIR . 'smdoc.class.spec.php');
-
-
-/*
- * Session initialization
- * -------------------------------------------------------------
- */
-ini_set('magic_quotes_runtime','0');
-ini_set('session.name' , 'SMDOC_SESSID');
-session_start();

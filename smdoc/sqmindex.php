@@ -46,7 +46,7 @@
  * Initial configuration, start session
  * @see config.default.php
  */
-require('config.php');
+require('smdoc_init.php');
 
 /** Class to verify $_GET/querystring parameter data */
 require_once(INPUT_DIR . 'input.querystring.php');
