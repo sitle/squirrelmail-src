@@ -34,6 +34,7 @@ $foowd = new smdoc($foowd_parameters);
 $objectMethod = TRUE;
 $objectid = 0;
 $classid = 0;
+$objectOK = TRUE;
 
 /*
  * Check for shorthand objectid using well-known object name:
@@ -47,7 +48,10 @@ if ( $objectName_q->wasValid )
                                 $objectid, // defined
                                 $classid); // defined
   if ( !$result )
+  {
+    $objectOK = FALSE;
     $_SESSION['error'] = OBJECT_NOT_FOUND;
+  }
 }
 else
 {
@@ -57,9 +61,6 @@ else
   $objectid_q = new input_querystring('objectid', '/^[0-9-]*$/', NULL);
   $objectid = $objectid_q->value;
 }
-
-if ( $objectid == NULL )
-  $objectid = $foowd->config_settings['site']['default_objectid'];
 
 $version_q = new input_querystring('version', '/^[0-9]*$/');
 $method_q = new input_querystring('method', NULL);
@@ -73,11 +74,25 @@ if ( $className_q->wasValid )
 }
 elseif ( $classid != NULL )
   $className = getClassName($classid);
+elseif ( $objectid == NULL )
+{
+  $lookup =& smdoc_name_lookup::getInstance($foowd);
+  $result = $lookup->findObject('home',
+                                $objectid, // defined
+                                $classid); // defined
+  if ( !$result )
+  {
+    $objectOK = FALSE;
+    $_SESSION['error'] = OBJECT_NOT_FOUND;
+  }
+}
+
+
 
 /*
  * If form has been cancelled, redirect to view of that object
  */
-if ( sqGetGlobalVar('form_cancel', $value, SQ_FORM) )
+if ( $objectOK && sqGetGlobalVar('form_cancel', $value, SQ_FORM) )
 {
   unset($_SESSION['error']);
   $_SESSION['ok'] = OBJECT_UPDATE_CANCEL;
@@ -100,7 +115,18 @@ $result = FALSE;
  * index.php?object=faq&method=admin
  * index.php?objectid=3218321&classid=43872432&method=groups
  */
-if ( $objectMethod )  // fetch object and call object method
+if ( !$objectOK )
+{
+  $foowd->debug('msg', 'Object Not Found');
+  $query = empty($_SERVER['QUERY_STRING']) ? 'object=home' : $_SERVER['QUERY_STRING'];
+  $object = new smdoc_error($foowd, ERROR_TITLE,
+                            sprintf(_("Specified Object Not Found: %s"), $query));
+  $result = $foowd->method($object, 'view');
+
+  $className = 'smdoc_error';
+  $methodName = 'object_view';
+}
+elseif ( $objectMethod )  // fetch object and call object method
 {
   $foowd->debug('msg', 'fetch and call object method');
 
