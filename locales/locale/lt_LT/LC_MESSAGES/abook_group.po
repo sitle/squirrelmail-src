@@ -1,0 +1,222 @@
+# Lithuanian translation of
+# SquirrelMail's abook_group plugin.
+# Copyright (C) 2003 Free Software Foundation, Inc.
+# Tomas Kuliavas <tokul@users.sourceforge.net>, 2003.
+# $Id$
+msgid ""
+msgstr ""
+"Project-Id-Version: abook_group\n"
+"POT-Creation-Date: 2003-10-27 08:23-0500\n"
+"PO-Revision-Date: 2003-11-12 15:46+0200\n"
+"Last-Translator: Tomas Kuliavas <tokul@users.sourceforge.net>\n"
+"Language-Team: Lithuanian <squirrelmail-i18n@lists.sourceforge.net>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: abook_group_database.php:390
+#: abook_group_database.php:440
+msgid "$groupName does not exist"
+msgstr "$groupName neegzistuoja"
+
+#: addrbook_search.php:316
+#: addrbook_search.php:343
+msgid "Add"
+msgstr "Pridėti"
+
+#: abook_group_functions.php:91
+msgid "Add New Members"
+msgstr "Įtraukti Naujus Narius"
+
+#: addrbook_search.php:184
+#: addrbook_search.php:212
+msgid "Add Successful"
+msgstr "Įtraukta Sėkmingai"
+
+#: addrbook_search.php:302
+msgid "Add to Existing Group: "
+msgstr "Įtraukti į Esamą Grupę"
+
+#: addrbook_search.php:334
+msgid "Add to New Group (supply group name):"
+msgstr "Įtraukti į Naują Grupę (naujos grupės vardas):"
+
+#: setup.php:41
+msgid "Address Groups"
+msgstr "Adresų Grupės"
+
+#: abook_group_database.php:215
+#: abook_group_database.php:308
+#: abook_group_database.php:371
+#: abook_group_database.php:421
+msgid "Addressbook is read-only"
+msgstr "Adresų knyga yra skirta vien tik skaitymui"
+
+#: addrbook_search.php:145
+msgid "All address books"
+msgstr "Visos adresų knygos"
+
+#: abook_group_database.php:455
+msgid "Another $newGroupName already exists"
+msgstr "Jau yra kita grupė vardu $newGroupName"
+
+#: addrbook_search.php:163
+msgid "Close window"
+msgstr "Uždaryti langą"
+
+#: abook_group_database.php:109
+#: abook_group_database.php:141
+#: abook_group_database.php:189
+#: abook_group_database.php:291
+#: abook_group_database.php:359
+#: abook_group_database.php:409
+#: abook_group_database.php:474
+#, c-format
+msgid "Database error: %s"
+msgstr "Duomenų bazės klaida: %s"
+
+#: list_abook_group.php:74
+msgid "Delete"
+msgstr "Ištrinti"
+
+#: abook_group_interface.php:66
+#: addrbook_search.php:31
+msgid "E-mail"
+msgstr "El.paštas"
+
+#: abook_group_database.php:59
+msgid "Global address book"
+msgstr "Bendra adresų knyga"
+
+#: abook_group_database.php:236
+msgid "Group $groupName already exists"
+msgstr "Grupė $groupName jau yra"
+
+#: abook_group_interface.php:140
+#: list_abook_group.php:51
+#: setup.php:65
+msgid "Groups"
+msgstr "Grupės"
+
+#: abook_group_interface.php:67
+#: addrbook_search.php:32
+msgid "Info"
+msgstr "Info"
+
+#: list_abook_group.php:75
+msgid "List"
+msgstr "Sąrašas"
+
+#: abook_group_functions.php:91
+msgid "List All Groups"
+msgstr "Parodyti Visas Grupes"
+
+#: addrbook_search.php:160
+msgid "List all"
+msgstr "Parodyti visas"
+
+#: listMembers.php:90
+msgid "Members"
+msgstr "Nariai"
+
+#: list_abook_group.php:73
+#: modifyGroup.php:122
+msgid "Modify"
+msgstr "Keisti"
+
+#: modifyGroup.php:79
+msgid "Modify Group Name"
+msgstr "Keisti Grupės Vardą"
+
+#: abook_group_interface.php:65
+#: addrbook_search.php:30
+msgid "Name"
+msgstr "Vardas"
+
+#: modifyGroup.php:107
+msgid "New Group Name"
+msgstr "Naujas Grupės Vardas"
+
+#: addrbook_search.php:193
+msgid "New Group Name is Empty"
+msgstr "Nenurodytas Naujas Grupės Vardas"
+
+#: addrbook_search.php:253
+#: addrbook_search.php:282
+msgid "No persons matching your search was found"
+msgstr "Nerastas joks asmuo atitinkantis Jūsų paieškos kriterijus"
+
+#: addrbook_search.php:325
+msgid "OR"
+msgstr "ARBA"
+
+#: modifyGroup.php:95
+msgid "Old Group Name"
+msgstr "Senas Grupės Vardas"
+
+#: listMembers.php:137
+msgid "Remove"
+msgstr "Pašalinti"
+
+#: listMembers.php:69
+msgid "Remove Successful"
+msgstr "Pašalinta Sėkmingai"
+
+#: addrbook_search.php:159
+msgid "Search"
+msgstr "Paieška"
+
+#: addrbook_search.php:134
+msgid "Search for address to add"
+msgstr "Ieškoti įtrauktino adreso"
+
+#: abook_group_interface.php:74
+#: addrbook_search.php:35
+msgid "Source"
+msgstr "Šaltinis"
+
+#: abook_group_interface.php:171
+msgid "There are no groups available for selection"
+msgstr "Nėra grupių, kurias galėtumėte pasirinkti"
+
+#: addrbook_search.php:28
+msgid "Toggle All"
+msgstr "Perjungti Visus"
+
+#: addrbook_search.php:236
+#, c-format
+msgid "Unable to list addresses from %s"
+msgstr "Nepavyko parodyti adresų iš %s"
+
+#: abook_group_interface.php:105
+msgid "Use Addresses"
+msgstr "Naudoti Adresus"
+
+#: abook_group_database.php:270
+msgid "User Already Exists in The Group"
+msgstr "Toks Asmuo Jau Yra Nurodytoje Grupėje"
+
+#: abook_group_database.php:338
+msgid "User Does Not Exist in The Group"
+msgstr "Tokio Asmens Nėra Nurodytoje Grupėje"
+
+#: list_abook_group.php:90
+msgid "You Currently Do Not Have Any Groups"
+msgstr "Jūs Nesate Susikūrę Jokių Grupių"
+
+#: listMembers.php:125
+msgid "You Currently Do Not Have Any Members In This Group"
+msgstr "Jūs Kol Kas Neįtraukėte Jokių Narių į Šią Grupę"
+
+#: setup.php:43
+msgid "You can create address groups and add email addresses from your address book"
+msgstr "Jūs galite sukurti specialias adresų grupes ir įtraukti į jas adresus iš savo adresų knygos"
+
+#: addrbook_search.php:271
+msgid "Your search failed with the following error(s)"
+msgstr "Paieška nutrūko ties klaidos(ų) pranešimu"
+
+#: addrbook_search.php:144
+msgid "in"
+msgstr "tarp"
+
