@@ -15,7 +15,6 @@
 
 /** SquirrelMail required files. */
 require_once(SM_PATH . 'include/validate.php');
-require_once(SM_PATH . 'functions/prefs.php');
 require_once(SM_PATH . 'functions/plugin.php');
 require_once(SM_PATH . 'functions/constants.php');
 
@@ -108,8 +107,30 @@ $unseen_cum =
 $folder_prefix =
     getPref($data_dir, $username, 'folder_prefix', $default_folder_prefix);
 
+/* Load special folder - trash */
+$load_trash_folder = getPref($data_dir, $username, 'trash_folder');
+if (($load_trash_folder == '') && ($move_to_trash)) {
+    $trash_folder = $folder_prefix . $trash_folder;
+} else {
+    $trash_folder = $load_trash_folder;
+}
 
-/* OBSOLETE */
+/* Load special folder - sent */
+$load_sent_folder = getPref($data_dir, $username, 'sent_folder');
+if (($load_sent_folder == '') && ($move_to_sent)) {
+    $sent_folder = $folder_prefix . $sent_folder;
+} else {
+    $sent_folder = $load_sent_folder;
+}
+
+/* Load special folder - draft */
+$load_draft_folder = getPref($data_dir, $username, 'draft_folder');
+if (($load_draft_folder == '') && ($save_as_draft)) {
+    $draft_folder = $folder_prefix . $draft_folder;
+} else {
+    $draft_folder = $load_draft_folder;
+}
+
 $show_num = getPref($data_dir, $username, 'show_num', 15 );
 
 $wrap_at = getPref( $data_dir, $username, 'wrap_at', 86 );
@@ -152,7 +173,7 @@ $reply_focus = getPref($data_dir, $username, 'reply_focus', '');
 $left_refresh = getPref($data_dir, $username, 'left_refresh', SMPREF_NONE );
 $left_refresh = strtolower($left_refresh);
 
-/** Load up the Signature file **/
+/* Load up the Signature file */
 $signature_abs = $signature = getSig($data_dir, $username, 'g');
 
 /* Message Highlighting Rules */
@@ -176,89 +197,18 @@ if( $ser = getPref($data_dir, $username, 'hililist') ) {
 }
 
 /* Index order lets you change the order of the message index */
-/* OBSOLETE */
 $order = getPref($data_dir, $username, 'order1');
 for ($i = 1; $order; ++$i) {
     $index_order[$i] = $order;
     $order = getPref($data_dir, $username, 'order'.($i+1));
 }
-
-/* use the internal date of the message for sorting instead of the supplied header date */
-/* OBSOLETE */
-$internal_date_sort = getPref($data_dir, $username, 'internal_date_sort', SMPREF_ON);
-
-// new Index order handling
-$default_mailbox_pref = getPref($data_dir, $username, 'default_mailbox_pref');
-if (!$default_mailbox_pref) {
-    if (isset($index_order)) {
-        $aTmp = array();
-        foreach ($index_order as $position => $column) {
-            $aTmp[$position -1] = $column-1; // make use of 0 .. n index instead of 1 .. n
-            if (isset($prefs_cache['order'.$position])) {
-                unset($prefs_cache['order'.$position]);
-                removePref($data_dir,$username,'order'.$position);
-            }
-        }
-        ksort($aTmp);
-        $index_order = array_values($aTmp);
-
-        if (isset($internal_date_sort) && $internal_date_sort) {
-            if (in_array(SQM_COLUMNS_DATE,$index_order)) {
-                $k = array_search(SQM_COL_DATE,$index_order,true);
-                $index_order[$k] = SQM_COL_INT_DATE;
-            }
-        }
-    } else {
-        if (isset($internal_date_sort) && $internal_date_sort == false) {
-            $index_order = array(SQM_COL_CHECK,SQM_COL_FROM,SQM_COL_DATE,SQM_COL_FLAGS,SQM_COL_ATTACHMENT,SQM_COL_PRIO,SQM_COL_SUBJ);
-        } else {
-            $index_order = array(SQM_COL_CHECK,SQM_COL_FROM,SQM_COL_INT_DATE,SQM_COL_FLAGS,SQM_COL_ATTACHMENT,SQM_COL_PRIO,SQM_COL_SUBJ);
-        }
-    }
-    $show_num = (isset($show_num)) ? $show_num : 15;
-
-    $default_mailbox_pref = array (
-        MBX_PREF_SORT => 0,
-        MBX_PREF_LIMIT => $show_num,
-        MBX_PREF_AUTO_EXPUNGE => $auto_expunge,
-        MBX_PREF_COLUMNS => $index_order);
-    // clean up the old prefs
-    if (isset($prefs_cache['internal_date_sort'])) {
-        unset($prefs_cache['internal_date_sort']);
-        removePref($data_dir,$username,'internal_date_sort');
-    }
-    if (isset($prefs_cache['show_num'])) {
-        unset($prefs_cache['show_num']);
-        removePref($data_dir,$username,'show_num');
-    }
+if (!isset($index_order)) {
+    $index_order[1] = 1;
+    $index_order[2] = 2;
+    $index_order[3] = 3;
+    $index_order[4] = 5;
+    $index_order[5] = 4;
 }
-
-/* Load special folder - trash */
-$load_trash_folder = getPref($data_dir, $username, 'trash_folder');
-if (($load_trash_folder == '') && ($move_to_trash)) {
-    $trash_folder = $folder_prefix . $trash_folder;
-} else {
-    $trash_folder = $load_trash_folder;
-}
-
-/* Load special folder - sent */
-$load_sent_folder = getPref($data_dir, $username, 'sent_folder');
-if (($load_sent_folder == '') && ($move_to_sent)) {
-    $sent_folder = $folder_prefix . $sent_folder;
-} else {
-    $sent_folder = $load_sent_folder;
-}
-
-/* Load special folder - draft */
-$load_draft_folder = getPref($data_dir, $username, 'draft_folder');
-if (($load_draft_folder == '') && ($save_as_draft)) {
-    $draft_folder = $folder_prefix . $draft_folder;
-} else {
-    $draft_folder = $load_draft_folder;
-}
-
-
-
 
 $alt_index_colors =
     getPref($data_dir, $username, 'alt_index_colors', SMPREF_ON );
@@ -289,7 +239,9 @@ $mdn_user_support = getPref($data_dir, $username, 'mdn_user_support', SMPREF_ON)
 $include_self_reply_all =
     getPref($data_dir, $username, 'include_self_reply_all', SMPREF_ON);
 
+/* Page selector options */
 $page_selector = getPref($data_dir, $username, 'page_selector', SMPREF_ON);
+$compact_paginator = getPref($data_dir, $username, 'compact_paginator', SMPREF_OFF);
 $page_selector_max = getPref($data_dir, $username, 'page_selector_max', 10);
 
 /* SqClock now in the core */
