@@ -220,8 +220,8 @@ function SendMDN ( $mailbox, $passed_id, $sender, $message, $imapConnection) {
     $now = getLongDateString( time() );
     set_my_charset();
     $body = _("Your message") . "\r\n\r\n" .
-            "\t" . _("To") . ': ' . decodeHeader($to,false,false) . "\r\n" .
-            "\t" . _("Subject") . ': ' . decodeHeader($header->subject,false,false) . "\r\n" .
+            "\t" . _("To") . ': ' . decodeHeader($to,false,false,true) . "\r\n" .
+            "\t" . _("Subject") . ': ' . decodeHeader($header->subject,false,false,true) . "\r\n" .
             "\t" . _("Sent") . ': ' . $senton . "\r\n" .
             "\r\n" .
             sprintf( _("Was displayed on %s"), $now );
@@ -238,6 +238,9 @@ function SendMDN ( $mailbox, $passed_id, $sender, $message, $imapConnection) {
                 $special_encoding = '7bit';
             }
         }
+    } elseif (sq_is8bit($body)) {
+        // detect 8bit symbols added by translations
+        $special_encoding = '8bit';
     }
     $part1 = new Message();
     $part1->setBody($body);

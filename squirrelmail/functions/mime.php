@@ -572,8 +572,8 @@ function decodeBody($body, $encoding) {
  * RFC1522 (MIME Part Two: Message Header Extensions for Non-ASCII Text).
  * Patched by Christian Schmidt <christian@ostenfeld.dk>  23/03/2002
  */
-function decodeHeader ($string, $utfencode=true,$htmlsave=true) {
-    global $languages, $squirrelmail_language;
+function decodeHeader ($string, $utfencode=true,$htmlsave=true,$decide=false) {
+    global $languages, $squirrelmail_language,$default_charset;
     if (is_array($string)) {
         $string = implode("\n", $string);
     }
@@ -618,13 +618,26 @@ function decodeHeader ($string, $utfencode=true,$htmlsave=true) {
                 $ret .= $res[1];
             }
             $encoding = ucfirst($res[3]);
+
+            /* decide about valid decoding */
+            if ($decide && is_conversion_safe($res[2])) {
+                $can_be_encoded=true;
+            } else {
+                $can_be_encoded=false;
+            }
+
             switch ($encoding)
             {
             case 'B':
                 $replace = base64_decode($res[4]);
-                if ($utfencode) {
+                if ($can_be_encoded) {
+                    // string is converted from one charset to another and sanitized
+                    $replace =  charset_convert($res[2],$replace,$default_charset);
+                } elseif ($utfencode) {
+                    // string is converted to htmlentities and sanitized
                     $replace = charset_decode($res[2],$replace);
                 } elseif ($htmlsave) {
+                    // string is not converted, but still sanitized
                     $replace = htmlspecialchars($replace);
                 }
                 $ret.= $replace;
@@ -633,12 +646,14 @@ function decodeHeader ($string, $utfencode=true,$htmlsave=true) {
                 $replace = str_replace('_', ' ', $res[4]);
                 $replace = preg_replace('/=([0-9a-f]{2})/ie', 'chr(hexdec("\1"))',
                                     $replace);
-                /* Only encode into entities by default. Some places
-                 * don't need the encoding, like the compose form.
-                 */
-                if ($utfencode) {
+                if ($can_be_encoded) {
+                    // string is converted from one charset to another and sanitized
+                    $replace = charset_convert($res[2], $replace,$default_charset);
+                } elseif ($utfencode) {
+                    // string is converted to html entities and sanitized
                     $replace = charset_decode($res[2], $replace);
                 } elseif ($htmlsave) {
+                    // string is not converted, but still sanizited
                     $replace = htmlspecialchars($replace);
                 }
                 $ret .= $replace;
@@ -1914,6 +1929,7 @@ function magicHTML($body, $id, $message, $mailbox = 'INBOX') {
      // version
      //set all the Cache Control Headers for IE
      if ($isIE) {
+         $filename=urlencode($filename);
          header ("Pragma: public");
          header ("Cache-Control: no-store, max-age=0, no-cache, must-revalidate"); # HTTP/1.1
          header ("Cache-Control: post-check=0, pre-check=0", false);
