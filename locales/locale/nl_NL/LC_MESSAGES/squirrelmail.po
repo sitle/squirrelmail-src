@@ -5,8 +5,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: squirrelmail\n"
-"POT-Creation-Date: 2003-10-24 20:04+0300\n"
-"PO-Revision-Date: 2003-11-25 22:35+0200\n"
+"POT-Creation-Date: 2004-02-02 18:51+0200\n"
+"PO-Revision-Date: 2004-03-23 22:35+0200\n"
 "Last-Translator: M.J. Prinsen <translation@prinsenonline.com>\n"
 "Language-Team: Dutch <squirrelmail-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -96,6 +96,9 @@ msgstr "Voornaam"
 msgid "Additional info"
 msgstr "Meer informatie"
 
+msgid "Add to:"
+msgstr "Voeg toe:"
+
 msgid "No personal address book is defined. Contact administrator."
 msgstr ""
 "Geen persoonlijk adresboek gedefinieerd. Neem contact op met uw "
@@ -122,9 +125,8 @@ msgstr "Wijzig geselecteerd adres"
 msgid "Delete selected"
 msgstr "Verwijder geselecteerd adres"
 
-#, c-format
-msgid "Add to %s"
-msgstr "Voeg toe aan %s"
+msgid "Add to address book"
+msgstr "Voeg toe aan adresboek"
 
 msgid "said"
 msgstr "zei"
@@ -156,8 +158,8 @@ msgstr "Kan het bestand niet verplaatsen/kopieren. Bestand niet toegevoegd."
 msgid "Draft Saved"
 msgstr "Concept e-mail bewaard"
 
-msgid "Your Message has been sent"
-msgstr "Uw bericht is verzonden"
+msgid "Your Message has been sent."
+msgstr "Uw bericht is verzonden."
 
 msgid "From:"
 msgstr "Van:"
@@ -665,7 +667,16 @@ msgstr ""
 msgid "Send read receipt now"
 msgstr "Verzend leesbevestiging nu"
 
-msgid "Search results"
+msgid "View Message"
+msgstr "Bekijk bericht"
+
+msgid "Delete & Prev"
+msgstr "Verwijder & Vorige"
+
+msgid "Delete & Next"
+msgstr "Verwijder & Volgende"
+
+msgid "Search Results"
 msgstr "Zoek resultaten"
 
 msgid "Message List"
@@ -677,8 +688,11 @@ msgstr "Hervat Concept"
 msgid "Edit Message as New"
 msgstr "Bewerk als nieuw bericht"
 
-msgid "View Message"
-msgstr "Bekijk bericht"
+msgid "Reply"
+msgstr "Beantwoorden"
+
+msgid "Reply All"
+msgstr "Allen&nbsp;beantwoorden"
 
 msgid "Forward"
 msgstr "Doorsturen"
@@ -686,11 +700,14 @@ msgstr "Doorsturen"
 msgid "Forward as Attachment"
 msgstr "Doorsturen als bijlage"
 
-msgid "Reply"
-msgstr "Beantwoorden"
+msgid "Bypass Trash"
+msgstr "Omzeil Verwijderde Items"
 
-msgid "Reply All"
-msgstr "Allen&nbsp;beantwoorden"
+msgid "Move to:"
+msgstr "Verplaats:"
+
+msgid "Move"
+msgstr "Verplaats"
 
 msgid "View Full Header"
 msgstr "Bekijk volledige berichtinformatie"
@@ -702,8 +719,35 @@ msgid "You must be logged in to access this page."
 msgstr ""
 "U heeft een geldige gebruikersnaam en wachtwoord nodig voor deze pagina!"
 
-msgid "Folder:"
-msgstr "Map:"
+msgid "All Folders"
+msgstr "Alle mappen"
+
+msgid "Please enter something to search for"
+msgstr "Vul a.u.b. iets in om te zoeken"
+
+msgid "There must be at least one criteria to search for"
+msgstr "Er moet ten minste een criterium zijn om naar te zoeken"
+
+msgid "Error in criteria argument"
+msgstr "Fout in criteria argument"
+
+msgid "M j, Y"
+msgstr "j M, Y"
+
+msgid "(Illegal date)"
+msgstr "(Illegale datum)"
+
+msgid "(Wrong date)"
+msgstr "(Verkeerde datum)"
+
+msgid "In"
+msgstr "Op"
+
+msgid "(Missing argument)"
+msgstr "(Ontbrekend argument)"
+
+msgid "(Spurious argument)"
+msgstr "(Vals argument)"
 
 msgid "edit"
 msgstr "Wijzig"
@@ -714,8 +758,8 @@ msgstr "Zoek"
 msgid "delete"
 msgstr "Verwijder"
 
-msgid "Recent Searches"
-msgstr "Recente zoekopdrachten"
+msgid "Saved Searches"
+msgstr "Bewaarde zoekopdrachten"
 
 msgid "save"
 msgstr "Bewaar"
@@ -723,23 +767,116 @@ msgstr "Bewaar"
 msgid "forget"
 msgstr "vergeet"
 
-msgid "Current Search"
-msgstr "Huidige map"
+msgid "Recent Searches"
+msgstr "Recente zoekopdrachten"
 
-msgid "All Folders"
-msgstr "Alle mappen"
+msgid "Missing"
+msgstr "Ontbrekende"
 
-msgid "Body"
-msgstr "Inhoud"
+msgid "and&nbsp;subfolders:"
+msgstr "en&nbsp;submappen:"
 
-msgid "Everywhere"
-msgstr "Overal"
+msgid "Exclude Criteria:"
+msgstr "Uitsluitende criteria:"
 
-msgid "Search Results"
-msgstr "Zoek resultaten"
+msgid "Search Criteria"
+msgstr "Zoekcriteria"
+
+msgid "Folder:"
+msgstr "Map:"
+
+msgid "Add New Criteria"
+msgstr "Voeg nieuwe criteria toe"
+
+msgid "Remove Excluded Criteria"
+msgstr "Verwijder uitsluitende criteria"
+
+msgid "Remove All Criteria"
+msgstr "Verwijder alle criteria"
+
+msgid "Answered"
+msgstr "Beantwoord"
+
+msgid "Before"
+msgstr "Voordat"
+
+msgid "Message Body"
+msgstr "Berichttekst"
+
+msgid "Deleted"
+msgstr "Verwijderd"
+
+msgid "Draft"
+msgstr "Concept"
+
+msgid "Flagged"
+msgstr "Gevlagd"
+
+msgid "Sent By"
+msgstr "Verzonden door"
+
+msgid "Header Field"
+msgstr "Berichtkopveld"
+
+msgid "Keyword"
+msgstr "Sleutelwoord"
+
+msgid "Larger Than"
+msgstr "Groter dan"
+
+msgid "Old"
+msgstr "Oud"
+
+msgid "On"
+msgstr "Op"
+
+msgid "Recent"
+msgstr "Recent"
+
+msgid "Seen"
+msgstr "Gelezen"
+
+msgid "Sent Before"
+msgstr "Verzonden voordat"
+
+msgid "Sent On"
+msgstr "Verzonden op"
+
+msgid "Sent Since"
+msgstr "Verzonden sinds"
+
+msgid "Since"
+msgstr "Sinds"
+
+msgid "Smaller Than"
+msgstr "Kleiner dan"
+
+msgid "Subject Contains"
+msgstr "Onderwerp bevat"
+
+msgid "Header and Body"
+msgstr "Berichtkop en berichttekst"
+
+msgid "Sent To"
+msgstr "Verzonden aan"
+
+msgid "Not"
+msgstr "Niet"
+
+msgid "And In"
+msgstr "En in"
+
+msgid "Or In"
+msgstr "Of in"
+
+msgid "And"
+msgstr "En"
+
+msgid "Or"
+msgstr "Of"
 
 msgid "No Messages Found"
-msgstr "Bekijk bericht"
+msgstr "Geen berichten gevonden"
 
 msgid "Sign Out"
 msgstr "Afmelden"
@@ -794,6 +931,9 @@ msgstr "Bekijk volledige berichtinformatie"
 
 msgid "Viewing a text attachment"
 msgstr "Bekijk een tekst bijlage"
+
+msgid "Folder List"
+msgstr "Mappenlijst"
 
 msgid "Personal address book"
 msgstr "Persoonlijk adresboek"
@@ -992,9 +1132,6 @@ msgstr "D, j F, Y g:i a"
 msgid "D, F j, Y G:i"
 msgstr "D, j F, Y G:i"
 
-msgid "M j, Y"
-msgstr "j M, Y"
-
 msgid "g:i a"
 msgstr "g:i a"
 
@@ -1010,12 +1147,6 @@ msgstr "D, G:i"
 #, c-format
 msgid "Preference database error (%s). Exiting abnormally"
 msgstr "Bestand met voorkeuren (%s) niet gevonden. Programma afgebroken."
-
-msgid "Unknown user or password incorrect."
-msgstr "Onbekende gebruiker of verkeerd wachtwoord"
-
-msgid "Click here to try again"
-msgstr "Klik hier om het nog eens te proberen"
 
 #, c-format
 msgid "Click here to return to %s"
@@ -1097,39 +1228,47 @@ msgstr ""
 "Bestand met handtekeningen, %s, kan niet worden gekopieerd van het "
 "tijdelijke bestand, %s. Neem contact op met uw systeembeheerder."
 
-msgid ""
-"You need to have php4 installed with the multibyte string function enabled "
-"(using configure option --enable-mbstring)."
-msgstr ""
-"U dient php4 te hebben geinstalleerd met de multibyte string functie enabled "
-"(gebruik configure met de optie --with-mbstring)."
-
-msgid "ERROR : No available imapstream."
-msgstr "FOUT : Imapstream niet beschikbaar."
-
-msgid "ERROR : Connection dropped by imap-server."
-msgstr "FOUT : Verbinding verbroken door IMAP server"
-
 msgid "ERROR : Could not complete request."
 msgstr "FOUT : Kan opdracht niet verwerken."
-
-msgid "Query:"
-msgstr "Verzoek:"
-
-msgid "Reason Given: "
-msgstr "Reden: "
 
 msgid "ERROR : Bad or malformed request."
 msgstr "FOUT: Foute of corrupte aanvraag."
 
-msgid "Server responded: "
-msgstr "Server reageerde: "
-
 msgid "ERROR : Imap server closed the connection."
 msgstr "FOUT : IMAP server heeft de verbinding verbroken."
 
+msgid "ERROR : Connection dropped by imap-server."
+msgstr "FOUT : Verbinding verbroken door IMAP server"
+
 msgid "ERROR : Unknown imap response."
 msgstr "FOUT : Onbekend IMAP antwoord."
+
+msgid "Reason Given: "
+msgstr "Reden: "
+
+msgid "Possible reason : "
+msgstr "Mogelijke reden : "
+
+msgid "Query:"
+msgstr "Verzoek:"
+
+msgid "The imap server failed to handle threading."
+msgstr "De IMAP server kon de threading niet aan"
+
+msgid "Click here to unset thread view for this mailbox and start again."
+msgstr "Klik hier om de weergave in threads voor deze mailbox te deactiveren en start opnieuw."
+
+msgid "ERROR : No available imapstream."
+msgstr "FOUT : Imapstream niet beschikbaar."
+
+msgid "ERROR : Bad function call."
+msgstr "FOUT : Bad function call."
+
+msgid "Reason:"
+msgstr "Reden:"
+
+msgid "Server responded: "
+msgstr "Server reageerde: "
 
 #, c-format
 msgid "Error connecting to IMAP server: %s."
@@ -1146,6 +1285,9 @@ msgstr "Onbekende fout: %s"
 msgid "Read data:"
 msgstr "Lees data:"
 
+msgid "Unknown user or password incorrect."
+msgstr "Onbekende gebruiker of verkeerd wachtwoord"
+
 msgid "ERROR : Could not append message to"
 msgstr "FOUT : Kan bericht niet toevoegen aan"
 
@@ -1161,9 +1303,6 @@ msgstr ""
 
 msgid "(no subject)"
 msgstr "(geen onderwerp)"
-
-msgid "Unknown Sender"
-msgstr "Onbekende afzender"
 
 msgid "Unknown response from IMAP server: "
 msgstr "Onbekend antwoord van IMAP server: "
@@ -1203,14 +1342,11 @@ msgstr ""
 msgid "THIS FOLDER IS EMPTY"
 msgstr "DEZE MAP IS LEEG"
 
-msgid "Move Selected To"
-msgstr "Verplaats geselecteerde naar"
+msgid "Read"
+msgstr "Gelezen"
 
-msgid "Transform Selected Messages"
-msgstr "Wijzig geselecteerde berichten"
-
-msgid "Move"
-msgstr "Verplaats"
+msgid "Unread"
+msgstr "Ongelezen"
 
 msgid "Expunge"
 msgstr "Legen"
@@ -1218,17 +1354,14 @@ msgstr "Legen"
 msgid "mailbox"
 msgstr "postvak"
 
-msgid "Read"
-msgstr "Gelezen"
-
-msgid "Unread"
-msgstr "Ongelezen"
-
 msgid "Unthread View"
 msgstr "Verberg boomstructuur"
 
 msgid "Thread View"
 msgstr "Weergave boomstructuur"
+
+msgid "Click here to change the sorting of the message list"
+msgstr "Klik hier om de volgorde van sortering van de berichtenlijst te veranderen"
 
 msgid "Toggle All"
 msgstr "(de)Selecteer alles"
@@ -1420,6 +1553,15 @@ msgstr "Maximum aantal te tonen pagina's"
 msgid "Always Show Full Date"
 msgstr "Toon altijd de volledige datum"
 
+msgid "Length of From/To Field (0 for full)"
+msgstr "Lengte van het Van/Aan veld (0 voor onbeperkt)"
+
+msgid "Length of Subject Field (0 for full)"
+msgstr "Lengte van het onderwerp veld (0 voor onbeperkt)"
+
+msgid "Show recipient name if the message is from your default identity"
+msgstr "Toon naam ontvanger als het bericht van uw standaard identiteit afkomstig is"
+
 msgid "Message Display and Composition"
 msgstr "Bericht weergave en compositie"
 
@@ -1498,11 +1640,17 @@ msgstr "Focus op berichttekst"
 msgid "Select body"
 msgstr "Selecteer berichttekst"
 
+msgid "Strip signature when replying"
+msgstr "Verwijder handtekening bij beantwoorden"
+
 msgid "Enable Sort by of Receive Date"
 msgstr "Gebruik datum van ontvangst voor sorteren"
 
 msgid "Enable Thread Sort by References Header"
 msgstr "Gebruik referentie berichtkop voor sorteren in threads"
+
+msgid "Show 'Delete & Prev/Next' Links"
+msgstr "Toon 'Verwijder & Vorig/Volgende' links"
 
 msgid "Special Folder Options"
 msgstr "Speciale mapopties"
@@ -1516,17 +1664,20 @@ msgstr "Gebruik Verwijderde Items niet"
 msgid "Trash Folder"
 msgstr "Verwijderde Items"
 
+msgid "Do not use Drafts"
+msgstr "Gebruik Concept map niet"
+
+msgid "Draft Folder"
+msgstr "Concept map"
+
 msgid "Do not use Sent"
 msgstr "Gebruik Verzonden Items niet"
 
 msgid "Sent Folder"
 msgstr "Verzonden Items"
 
-msgid "Do not use Drafts"
-msgstr "Gebruik Concept map niet"
-
-msgid "Draft Folder"
-msgstr "Concept map"
+msgid "Save Replies with Original Message"
+msgstr "Bewaar antwoorden bij oorspronkelijk bericht"
 
 msgid "Folder List Options"
 msgstr "Speciale mapopties"
@@ -1576,8 +1727,8 @@ msgstr "Alleen ongelezen"
 msgid "Unseen and Total"
 msgstr "Ongelezen en Totaal"
 
-msgid "Enable Collapsible Folders"
-msgstr "Maak uitklapbare mappen mogelijk"
+msgid "Enable Collapsable Folders"
+msgstr "Activeer uitklapbare mappen"
 
 msgid "Enable Cumulative Unread Message Notification"
 msgstr "Activeer Herhaaldelijk Ongelezen bericht notificatie"
@@ -1620,6 +1771,12 @@ msgstr "Selectie mappenlijstweergave"
 
 msgid "Long: "
 msgstr "Lang: "
+
+msgid "Folder"
+msgstr "Map"
+
+msgid "Subfolder"
+msgstr "Submap"
 
 msgid "Indented: "
 msgstr "Ingesprongen: "
@@ -1698,6 +1855,10 @@ msgstr "Knop direct opslaan e-mailadres:"
 msgid "Try to verify addresses"
 msgstr "Probeer adressen te verifieren"
 
+#, c-format
+msgid "Add to %s"
+msgstr "Voeg toe aan %s"
+
 msgid "Config File Version"
 msgstr "Versie configuratiebestand"
 
@@ -1733,9 +1894,6 @@ msgstr "Provider Link URI"
 
 msgid "Provider Name"
 msgstr "Providernaam"
-
-msgid "Default Language"
-msgstr "Standaard taal"
 
 msgid "Top Frame"
 msgstr "Top Frame"
@@ -1866,9 +2024,6 @@ msgstr "Actieveer /Geenselectie map fix"
 msgid "General Options"
 msgstr "Algemene opties"
 
-msgid "Default Charset"
-msgstr "Standaard set van karakters"
-
 msgid "Data Directory"
 msgstr "Data directory"
 
@@ -1917,9 +2072,6 @@ msgstr "Gebruik sorteren door de server voor sorteren in threads"
 msgid "Allow server charset search"
 msgstr "Sta zoeken charset van server toe"
 
-msgid "UID support"
-msgstr "UID ondersteuning"
-
 msgid "PHP session name"
 msgstr "PHP sessie naam"
 
@@ -1950,6 +2102,51 @@ msgstr "Voorkeuren veld sleutel"
 msgid "Preferences value field"
 msgstr "Voorkeuren veld waarde"
 
+msgid "Global address book DSN"
+msgstr "Globaal adresboek DSN"
+
+msgid "Global address book table"
+msgstr "Globaal adresboek tabel"
+
+msgid "Allow writing into global address book"
+msgstr "Sta schrijven in globaal adresboek toe"
+
+msgid "Allow listing of global address book"
+msgstr "Sta tonen van globaal adresboek toe"
+
+msgid "Language settings"
+msgstr "Taalinstellingen"
+
+msgid "Default Language"
+msgstr "Standaard taal"
+
+msgid "Default Charset"
+msgstr "Standaard set van karakters"
+
+msgid "Show alternative language names"
+msgstr "Toon alternatieve taalnamen"
+
+msgid "Available languages"
+msgstr "Beschikbare talen"
+
+msgid "Use agresive decoding"
+msgstr "Gebruik agressieve codering"
+
+msgid "Tweaks"
+msgstr "Tweaks"
+
+msgid "Use advanced tree folder listing"
+msgstr "Gebruik geavanceerde boomstructuur"
+
+msgid "Use old folder listing functions"
+msgstr "Gebruik oude mapstructuur functies"
+
+msgid "Use php recode functions"
+msgstr "Gebruik php recode functies"
+
+msgid "Use php iconv functions"
+msgstr "Gebruik php iconv functies"
+
 msgid "Themes"
 msgstr "Thema's"
 
@@ -1964,6 +2161,21 @@ msgstr "Gebruik indexnummer van thema"
 
 msgid "Configuration Administrator"
 msgstr "Configuratie Administrator"
+
+msgid ""
+"Note: it is recommended that you configure your system using conf.pl, and "
+"not this plugin. conf.pl contains additional information regarding the "
+"purpose of variables and appropriate values, as well as additional "
+"verification steps."
+msgstr ""
+"NB. Het is aanbevolen dat u uw systeem configureerd met conf.pl en niet met "
+"deze plugin. conf.pl bevat extra informatie over het doel en gebruik van de "
+"variabelen en de juiste waarden alsmede extra verificatie stappen."
+
+msgid ""
+"Run or consult conf.pl should you run into difficulty with your "
+"configuration."
+msgstr "Gebruik conf.pl als u in moeilijkheden raakt met uw configuratie."
 
 msgid "Theme Name"
 msgstr "Thema naam"
@@ -2004,8 +2216,8 @@ msgid ""
 "Make sure that you are running the most recent copy of <a href=\"http://www."
 "squirrelmail.org/\">SquirrelMail</a>."
 msgstr ""
-"Zorg dat u de meest recente versie van <a href=\"http://www.squirrelmail.org/\">"
-"SquirrelMail</a> heeft."
+"Zorg dat u de meest recente versie van <a href=\"http://www.squirrelmail.org/"
+"\">SquirrelMail</a> heeft."
 
 #, c-format
 msgid "You are currently using version %s."
@@ -2016,26 +2228,27 @@ msgid ""
 "sourceforge.net/bugs/?group_id=311\">Bug List</a> on SourceForge. If it is, "
 "we already know about it and are trying to fix it."
 msgstr ""
-"Check of uw fout voorkomt in de<a href=\"http://sourceforge.net/bugs/?group_id=311\">"
-"Bug List</a> op SourceForge. Als dit het geval is, dan kennen we de bug al en proberen "
-"we deze te corrigeren."
+"Check of uw fout voorkomt in de<a href=\"http://sourceforge.net/bugs/?"
+"group_id=311\">Bug List</a> op SourceForge. Als dit het geval is, dan kennen "
+"we de bug al en proberen we deze te corrigeren."
 
 msgid ""
 "Try to make sure that you can repeat it. If the bug happens sporatically, "
 "try to document what you did when it happened. If it always occurs when you "
 "view a specific message, keep that message around so maybe we can see it."
 msgstr ""
-"Zorg dat u de fout kunt reproduceren. Als de fout slechts sporadisch optreedt, "
-"probeer dan te omschrijven wat u deed toen de fout zich voordeed. Als de fout altijd "
-"optreed bij een bepaald bericht, bewaar dan dat bericht, zodat wij het eventueel kunnen zien."
+"Zorg dat u de fout kunt reproduceren. Als de fout slechts sporadisch "
+"optreedt, probeer dan te omschrijven wat u deed toen de fout zich voordeed. "
+"Als de fout altijd optreed bij een bepaald bericht, bewaar dan dat bericht, "
+"zodat wij het eventueel kunnen zien."
 
 msgid ""
 "If there were warnings displayed above, try to resolve them yourself. Read "
 "the guides in the <tt>doc/</tt> directory where SquirrelMail was installed."
 msgstr ""
 "Als er foutmeldingen worden weergegeven, probeer deze dan zelf op te lossen."
-"Lees de handleidingen in de <tt>doc</tt> directory op de plek waar SquirrelMail "
-"is geinstalleerd."
+"Lees de handleidingen in de <tt>doc</tt> directory op de plek waar "
+"SquirrelMail is geinstalleerd."
 
 msgid ""
 "Pressing the button below will start a mail message to the developers of "
@@ -2044,11 +2257,12 @@ msgid ""
 "prompt you for information. Just fill out the sections at the top. If you "
 "like, you can scroll down in the message to see what else is being sent."
 msgstr ""
-"Een druk op de knop hieronder zal een e-mail starten naar de ontwikkelaars van "
-"SquirrelMail die een heleboel informatie over uw systeem, uw browser, hoe SquirrelMail "
-"is geconfigureerd en uw IMAP server zal bevatten. U zal ook worden gevraagd informatie "
-"in te vullen. Vul alleen de secties bovenaan in. Als u wilt kunt u de hele e-mail bekijken "
-"om te zien welke informatie er nog meer wordt verstuurd."
+"Een druk op de knop hieronder zal een e-mail starten naar de ontwikkelaars "
+"van SquirrelMail die een heleboel informatie over uw systeem, uw browser, "
+"hoe SquirrelMail is geconfigureerd en uw IMAP server zal bevatten. U zal ook "
+"worden gevraagd informatie in te vullen. Vul alleen de secties bovenaan in. "
+"Als u wilt kunt u de hele e-mail bekijken om te zien welke informatie er nog "
+"meer wordt verstuurd."
 
 msgid ""
 "Please make sure to fill out as much information as you possibly can to give "
@@ -2056,11 +2270,11 @@ msgid ""
 "like this will not have it automatically added to the bug list on "
 "SourceForge, but someone who gets your message may add it for you."
 msgstr ""
-"Vul a.u.b. zoveel mogelijk informatie in als u kunt geven, zodat er een goede "
-"kans is dat de fout wordt gevonden en gecorrigeerd. Verzenden van de fout op "
-"deze manier zal er niet voor zorgen dat hij automatisch op de bug list van "
-"SourceForge wordt toegevoegd. Iemand die het bericht krijgt zou hem echter "
-"alsnog kunnen toevoegen."
+"Vul a.u.b. zoveel mogelijk informatie in als u kunt geven, zodat er een "
+"goede kans is dat de fout wordt gevonden en gecorrigeerd. Verzenden van de "
+"fout op deze manier zal er niet voor zorgen dat hij automatisch op de bug "
+"list van SourceForge wordt toegevoegd. Iemand die het bericht krijgt zou hem "
+"echter alsnog kunnen toevoegen."
 
 msgid "This bug involves"
 msgstr "Deze fout behelst"
@@ -2188,27 +2402,6 @@ msgstr "6 uur"
 msgid "Calendar"
 msgstr "Kalender"
 
-msgid "Delete & Prev"
-msgstr "Verwijder & Vorige"
-
-msgid "Delete & Next"
-msgstr "Verwijder & Volgende"
-
-msgid "Move to:"
-msgstr "Verplaats:"
-
-msgid "Delete/Move/Next Buttons:"
-msgstr "Verwijder/Verplaats/Volgende knoppen:"
-
-msgid "Display at top"
-msgstr "toon boven"
-
-msgid "with move option"
-msgstr "met verplaats optie"
-
-msgid "Display at bottom"
-msgstr "toon onder"
-
 msgid ""
 "COMMERCIAL - This list contains servers that are verified spam senders. It "
 "is a pretty reliable list to scan spam from."
@@ -2289,8 +2482,8 @@ msgid ""
 "FREE, for now - SPAMCOP - An interesting solution that lists servers that "
 "have a very high spam to legit email ratio (85 percent or more)."
 msgstr ""
-"FREE, tot nu toe - SPAMCOP - Een interessant alternatief dat servers bevat die een erg "
-"hoge spam - e-mail ratio hebben. (85% of meer)"
+"FREE, tot nu toe - SPAMCOP - Een interessant alternatief dat servers bevat "
+"die een erg hoge spam - e-mail ratio hebben. (85% of meer)"
 
 msgid "FREE - dev.null.dk - I don't have any detailed info on this list."
 msgstr ""
@@ -2299,14 +2492,14 @@ msgstr ""
 msgid "FREE - visi.com - Relay Stop List. Very conservative OpenRelay List."
 msgstr "FREE - visi.com - Relay Stop Lijst. Erg conservatieve OpenRelay List."
 
-msgid "FREE - 2mbit.com Open Relays - Another list of Open Relays."
-msgstr "FREE - 2mbit.com Open Relays - Andere lijst van Open Relays."
+msgid "FREE - ahbl.org Open Relays - Another list of Open Relays."
+msgstr "FREE - ahbl.org Open Relays - Andere lijst van Open Relays."
 
-msgid "FREE - 2mbit.com SPAM Source - List of Direct SPAM Sources."
-msgstr "FREE - 2mbit.com SPAM Source - Lijst van Direct SPAM sources."
+msgid "FREE - ahbl.org SPAM Source - List of Direct SPAM Sources."
+msgstr "FREE - ahbl.org SPAM Source - Lijst van Direct SPAM sources."
 
-msgid "FREE - 2mbit.com SPAM ISPs - List of SPAM-friendly ISPs."
-msgstr "FREE - 2mbit.com SPAM ISPs - Lijst van SPAM-vriendelijke ISPs."
+msgid "FREE - ahbl.org SPAM ISPs - List of SPAM-friendly ISPs."
+msgstr "FREE - ahbl.org SPAM ISPs - Lijst van SPAM-vriendelijke ISPs."
 
 msgid ""
 "FREE - Leadmon DUL - Another list of Dial-up or otherwise dynamically "
@@ -2566,12 +2759,6 @@ msgstr "Geen server gespecificeerd"
 msgid "Error "
 msgstr "Fout "
 
-msgid "POP3 noop:"
-msgstr "POP3 noop:"
-
-msgid "No connection to server"
-msgstr "Geen verbinding met server"
-
 msgid "POP3 user:"
 msgstr "POP3 user:"
 
@@ -2592,6 +2779,9 @@ msgstr "authorisatie mislukt "
 
 msgid "POP3 apop:"
 msgstr "POP3 apop:"
+
+msgid "No connection to server"
+msgstr "Geen verbinding met server"
 
 msgid "No login ID submitted"
 msgstr "Geen gebruikersnaam opgegeven"
@@ -2650,9 +2840,6 @@ msgstr "Geen berichtnummer opgegeven"
 msgid "Command failed "
 msgstr "Commando mislukt"
 
-msgid "Remote POP server Fetching Mail"
-msgstr "Ophalen mail van externe POP-servers"
-
 msgid "Select Server:"
 msgstr "Selecteer server:"
 
@@ -2661,6 +2848,15 @@ msgstr "Wachtwoord voor"
 
 msgid "Fetch Mail"
 msgstr "Ophalen berichten"
+
+msgid "Remote POP server Fetching Mail"
+msgstr "Ophalen mail van externe POP-servers"
+
+msgid "No POP3 servers configured yet."
+msgstr "Geen POP3-servers geconfigureerd"
+
+msgid "Click here to go to the options page."
+msgstr "Klik hier om naar de opties pagina te gaan."
 
 msgid "Fetching from "
 msgstr "Ophalen van "
@@ -3040,6 +3236,15 @@ msgstr "Grondige op e-mail gebaseerde rapportage"
 msgid "Web-based form"
 msgstr "Webformulier"
 
+msgid "Spam Service Type:"
+msgstr "Spam Service Type:"
+
+msgid "Free reporting"
+msgstr "Gratis spamrapportage"
+
+msgid "Member services"
+msgstr "Gebruikers services"
+
 msgid "Your SpamCop authorization code:"
 msgstr "Uw SpamCop authorisatiecode:"
 
@@ -3050,17 +3255,18 @@ msgid ""
 "SpamCop is a free service that greatly assists in finding the true source of "
 "the spam and helps in letting the proper people know about the abuse."
 msgstr ""
-"SpamCop is een vrije service die uitstekend helpt bij het opsporen van de ware "
-"bron van de spam en in het informeren van integere mensen over het misbruik."
+"SpamCop is een vrije service die uitstekend helpt bij het opsporen van de "
+"ware bron van de spam en in het informeren van integere mensen over het "
+"misbruik."
 
 msgid ""
 "To use it, you must get a SpamCop authorization code. There is a free <a "
 "href=\"http://spamcop.net/anonsignup.shtml\">sign up page</a> so you can use "
 "SpamCop."
 msgstr ""
-"Om het te gebruiken moet u een SpamCop authorisatiecode aanvragen. Er is een vrije "
-"<a href=\"http://spamcop.net/anonsignup.shtml\">aanmeldingspagina</a> om SpamCop te "
-"kunnen gebruiken."
+"Om het te gebruiken moet u een SpamCop authorisatiecode aanvragen. Er is een "
+"vrije <a href=\"http://spamcop.net/anonsignup.shtml\">aanmeldingspagina</a> "
+"om SpamCop te kunnen gebruiken."
 
 msgid ""
 "<b>Before you sign up, be warned:</b> Some users have reported that the "
@@ -3075,13 +3281,14 @@ msgid ""
 "Free_Forwarding/\">list of places</a>) so that messages from system "
 "administrators and whatnot can be sent to you."
 msgstr ""
-"<b>Voordat u zichzelf aanmeldt, wees gewaarschuwd:</b> Sommige gebruikers hebben gerapporteerd "
-"dat de e-mailadressen gebruikt bij SpamCop op spamlijsten terechtkomen. Om veilig te "
-"zijn kunt u een e-mail forwarding account aanmaken en alle SpamCop rapportages daarheen "
-"laten verzenden. Als dit e-mailadres overspoeld wordt met spam, dan kan u het verwijderen "
-"zonder uw echte e-mailadres te verliezen. Maak een e-mail forwarder ergens (<a href=\"http://www."
-"yahoo.com/\">Yahoo!</a> heeft een <a href=\"http://dir.yahoo.com/"
-"Business_and_Economy/Business_to_Business/Communications_and_Networking/"
+"<b>Voordat u zichzelf aanmeldt, wees gewaarschuwd:</b> Sommige gebruikers "
+"hebben gerapporteerd dat de e-mailadressen gebruikt bij SpamCop op "
+"spamlijsten terechtkomen. Om veilig te zijn kunt u een e-mail forwarding "
+"account aanmaken en alle SpamCop rapportages daarheen laten verzenden. Als "
+"dit e-mailadres overspoeld wordt met spam, dan kan u het verwijderen zonder "
+"uw echte e-mailadres te verliezen. Maak een e-mail forwarder ergens (<a href="
+"\"http://www.yahoo.com/\">Yahoo!</a> heeft een <a href=\"http://dir.yahoo."
+"com/Business_and_Economy/Business_to_Business/Communications_and_Networking/"
 "Internet_and_World_Wide_Web/Email_Providers/Forwarding_Services/"
 "Free_Forwarding/\">lijst met plekken</a>) zodat berichten van systeem "
 "administrators en anderen naar u kunnen worden verzonden."
@@ -3096,13 +3303,13 @@ msgid ""
 "Confirming that you want the spam report sent will do different things with "
 "different reporting methods."
 msgstr ""
-"Als u zich heeft aangemeld bij SpamCop en u heeft uw SpamCop authorisatiecode "
-"ontvangen, dan dient u deze plugin te activeren -- klik op de link "
-"hierboven. Als u een spambericht in uw mailbox vindt, bekijk het dan. Aan "
-"de rechterkant zal u een link zien om het bericht als spam te rapporteren. "
-"Als u hierop klikt, dan krijgt u een bevestigingspagina te zien."
-"Bevestiging dat u de spam rapportage wilt verzenden, zal verschillende dingen "
-"doen met verschillende rapportage methoden."
+"Als u zich heeft aangemeld bij SpamCop en u heeft uw SpamCop "
+"authorisatiecode ontvangen, dan dient u deze plugin te activeren -- klik op "
+"de link hierboven. Als u een spambericht in uw mailbox vindt, bekijk het "
+"dan. Aan de rechterkant zal u een link zien om het bericht als spam te "
+"rapporteren. Als u hierop klikt, dan krijgt u een bevestigingspagina te zien."
+"Bevestiging dat u de spam rapportage wilt verzenden, zal verschillende "
+"dingen doen met verschillende rapportage methoden."
 
 msgid "Email-based Reporting"
 msgstr "Op e-mail gebaseerde rapportage"
@@ -3115,12 +3322,12 @@ msgid ""
 "works!) Open it up, click on the appropriate link at the top, and a new "
 "browser window will open."
 msgstr ""
-"Een druk op de knop stuurt het bericht door naar de SpamCop service en zal het "
-"bericht optioneel verwijderen. In uw INBOX zal nu vrij snel een bericht "
-"verschijnen van SpamCop. (Het zal worden gezonden naar het door u geregistreerde "
-"account, dus zorg dat uw e-mail forwarder werkt!) Open het bericht en klik op de "
-"juiste link bovenaan. Een nieuw browser scherm zal worden geopend."
-
+"Een druk op de knop stuurt het bericht door naar de SpamCop service en zal "
+"het bericht optioneel verwijderen. In uw INBOX zal nu vrij snel een bericht "
+"verschijnen van SpamCop. (Het zal worden gezonden naar het door u "
+"geregistreerde account, dus zorg dat uw e-mail forwarder werkt!) Open het "
+"bericht en klik op de juiste link bovenaan. Een nieuw browser scherm zal "
+"worden geopend."
 
 msgid ""
 "Currently, the quick reporting just forwards the request to the thorough "
@@ -3128,8 +3335,8 @@ msgid ""
 "Hopefully this will change soon."
 msgstr ""
 "Momenteel wordt de snelle rapportage alleen doorgestuurd naar de grondige "
-"rapportage. Deze is alleen voor leden (niet-vrij). Hopelijk zal dit "
-"spoedig veranderen."
+"rapportage. Deze is alleen voor leden (niet-vrij). Hopelijk zal dit spoedig "
+"veranderen."
 
 msgid "Web-based Reporting"
 msgstr "Op het web gebaseerde rapportage"
@@ -3140,22 +3347,35 @@ msgid ""
 "will not be deleted (working on that part), but you won't need to wait for a "
 "response email to start the spam reporting."
 msgstr ""
-"Wanneer u drukt op de knop op de bevestigingspagina, zal een nieuw browser scherm "
-"zich openen met daarin de SpamCop service. Het bericht zal niet worden verwijderd "
-"(wordt aan gewerkt), maar u hoeft niet te wachten op een antwoordmail op de "
-"spamapportage op te starten."
+"Wanneer u drukt op de knop op de bevestigingspagina, zal een nieuw browser "
+"scherm zich openen met daarin de SpamCop service. Het bericht zal niet "
+"worden verwijderd (wordt aan gewerkt), maar u hoeft niet te wachten op een "
+"antwoordmail op de spamapportage op te starten."
 
 msgid ""
 "The SpamCop service will display information as it finds it, so scroll down "
-"until you see a form button.  It might pause a little while it is looking up "
-"information, so be a little patient.  Read what it says, and submit the "
-"spam.  Close the browser window.  Press Cancel or click on the appropriate "
-"mail folder to see messages and/or delete the spam."
+"until you see a form button. It might pause a little while it is looking up "
+"information, so be a little patient. Read what it says, and submit the spam. "
+"Close the browser window.  Press Cancel or click on the appropriate mail "
+"folder to see messages and/or delete the spam."
 msgstr ""
-"De SpamCop service zal gevonden informatie tonen. Bekijk de pagina totdat "
-"u een formulierknop ziet. Afhankelijk van de informatie, kan het wat langer duren. "
-"Verzend de spamrapportage. Sluit het browser scherm. Klik op Annuleren of klik "
-"op de map met e-mail om de berichten te zien en/of de spam te verwijderen."
+"De SpamCop service zal gevonden informatie tonen. Bekijk de pagina totdat u "
+"een formulierknop ziet. Afhankelijk van de informatie, kan het wat langer "
+"duren. Verzend de spamrapportage. Sluit het browser scherm. Klik op "
+"Annuleren of klik op de map met e-mail om de berichten te zien en/of de spam "
+"te verwijderen."
+
+msgid "Spamcop Service Type"
+msgstr "Spamcop Service Type"
+
+msgid ""
+"Service type option allows selecting which spamcop services you are using. "
+"Member services use different web reporting forms  and does not display "
+"nags. You can purchase these services, if you want to support SpamCop."
+msgstr ""
+"Met de service type optie kunt u selecteren welke spamcop services uw gebruikt. "
+"Gebruikers services gebruiken andere webformulieren en tonen geen irritante informatie. "
+"U kunt deze services aanschaffen als u SpamCop wilt steunen."
 
 msgid ""
 "<b>For more information</b> about SpamCop, it's services, spam in general, "
@@ -3163,8 +3383,8 @@ msgid ""
 "spamcop.net/help.shtml\">Help and Feedback</a> section."
 msgstr ""
 "<b>Voor meer informatie</b> over SpamCop, de services, spam in het algemeen "
-"en gerelateerde onderwerpen, probeer de sectie <a href=\"http://spamcop.net/help.shtml\">"
-"Help en Feedback</a>."
+"en gerelateerde onderwerpen, probeer de sectie <a href=\"http://spamcop.net/"
+"help.shtml\">Help en Feedback</a>."
 
 msgid "Report as Spam"
 msgstr "Raporteer als Spam"
@@ -3187,10 +3407,10 @@ msgid ""
 "This is a free service.  By pressing the \"Send Spam Report\" button, you "
 "agree to follow SpamCop's rules/terms of service/etc."
 msgstr ""
-"Verzending van deze spamrapportage zal u een antwoord doen toekomen met URLs, "
-"die u kunt aanklikken om het bericht als spam te markeren bij integere autoriteiten. "
-"Dit is een vrije service. Door te klikken op de knop \"Send Spam Report\", gaat "
-"u akkoord met de voorwaarden van SpamCop."
+"Verzending van deze spamrapportage zal u een antwoord doen toekomen met "
+"URLs, die u kunt aanklikken om het bericht als spam te markeren bij integere "
+"autoriteiten. Dit is een vrije service. Door te klikken op de knop \"Send "
+"Spam Report\", gaat u akkoord met de voorwaarden van SpamCop."
 
 msgid "SpellChecker Options"
 msgstr "Spellingscontrole opties"
@@ -3593,15 +3813,15 @@ msgstr "Aantal ondersteunde talenparen: %s"
 msgid "No known limits, powered by Systran"
 msgstr "Geen limieten bekend, powered by Systran "
 
+msgid "No known limits, powered by GPLTrans (free, open source)"
+msgstr "Geen limieten bekend, powered by GPLTrans (free, open source)"
+
 msgid "No known limits, powered by Translation Experts's InterTran"
 msgstr "Geen limieten bekend, powered by Translation Experts's InterTran"
 
 #, c-format
 msgid "Number of supported languages: %s"
 msgstr "Aantal ondersteunde talen: %s"
-
-msgid "No known limits, powered by GPLTrans (free, open source)"
-msgstr "Geen limieten bekend, powered by GPLTrans (free, open source)"
 
 msgid "Hellenic translations, no known limits, powered by Systran"
 msgstr "Griekse vertalingen, geen limieten bekend, powered by Systran "
@@ -3706,8 +3926,8 @@ msgstr "Deens"
 msgid "Dutch"
 msgstr "Nederlands"
 
-msgid "European Spanish"
-msgstr "Europees Spaans"
+msgid "Filipino (Tagalog)"
+msgstr "Filipino (Tagalog)"
 
 msgid "Finnish"
 msgstr "Fins"
@@ -3720,6 +3940,9 @@ msgstr "Hongaars"
 
 msgid "Icelandic"
 msgstr "IJslands"
+
+msgid "Latin"
+msgstr "Latijns"
 
 msgid "Latin American Spanish"
 msgstr "Latijns Amerikaans Spaans"
@@ -3751,14 +3974,17 @@ msgstr "Wales"
 msgid "Indonesian"
 msgstr "Indonesisch"
 
-msgid "Latin"
-msgstr "Latijns"
-
 msgid "to English"
 msgstr "naar Engels"
 
 msgid "from English"
 msgstr "van Engels"
+
+msgid "Simplified Chinese"
+msgstr "Simplified Chinese"
+
+msgid "Traditional Chinese"
+msgstr "Traditional Chinese"
 
 msgid "Interface language"
 msgstr "Interface taal"
@@ -3771,6 +3997,58 @@ msgstr "Bezorgingsfout rapportage"
 
 msgid "Undelivered Message Headers"
 msgstr "Berichtkoppen onbestelbaar bericht"
+
+#~ msgid "Search results"
+#~ msgstr "Zoek resultaten"
+
+#~ msgid "Current Search"
+#~ msgstr "Huidige map"
+
+#~ msgid "Body"
+#~ msgstr "Inhoud"
+
+#~ msgid "Everywhere"
+#~ msgstr "Overal"
+
+#~ msgid "Click here to try again"
+#~ msgstr "Klik hier om het nog eens te proberen"
+
+#~ msgid ""
+#~ "You need to have php4 installed with the multibyte string function "
+#~ "enabled (using configure option --enable-mbstring)."
+#~ msgstr ""
+#~ "U dient php4 te hebben geinstalleerd met de multibyte string functie "
+#~ "enabled (gebruik configure met de optie --with-mbstring)."
+
+#~ msgid "Unknown Sender"
+#~ msgstr "Onbekende afzender"
+
+#~ msgid "Move Selected To"
+#~ msgstr "Verplaats geselecteerde naar"
+
+#~ msgid "Transform Selected Messages"
+#~ msgstr "Wijzig geselecteerde berichten"
+
+#~ msgid "UID support"
+#~ msgstr "UID ondersteuning"
+
+#~ msgid "Delete/Move/Next Buttons:"
+#~ msgstr "Verwijder/Verplaats/Volgende knoppen:"
+
+#~ msgid "Display at top"
+#~ msgstr "toon boven"
+
+#~ msgid "with move option"
+#~ msgstr "met verplaats optie"
+
+#~ msgid "Display at bottom"
+#~ msgstr "toon onder"
+
+#~ msgid "POP3 noop:"
+#~ msgstr "POP3 noop:"
+
+#~ msgid "European Spanish"
+#~ msgstr "Europees Spaans"
 
 #~ msgid "refresh unseen/total info"
 #~ msgstr "vernieuw info ongelezen/totaal"
@@ -3957,9 +4235,6 @@ msgstr "Berichtkoppen onbestelbaar bericht"
 
 #~ msgid "Left aligned"
 #~ msgstr "Links uitgelijnd"
-
-#~ msgid "Centered"
-#~ msgstr "Gecentreerd"
 
 #~ msgid "Right aligned"
 #~ msgstr "Rechts uitgelijnd"
