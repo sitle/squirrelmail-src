@@ -10,6 +10,25 @@
  *
  * $Id$
  */
+
+/* Put in a safety net here, in case a naughty admin didn't run conf.pl when they upgraded */
+
+if (! isset($smtp_auth_mech)) {
+  $smtp_auth_mech = 'none';
+}
+
+if (! isset($imap_auth_mech)) {
+  $imap_auth_mech = 'plain';
+}
+
+if (! isset($use_imap_tls)) {
+  $use_imap_tls = false;
+}
+
+if (! isset($use_smtp_tls)) {
+  $use_smtp_tls = false;
+}
+
 function is_logged_in() {
 
     if ( sqsession_is_registered('user_is_logged_in') ) {
