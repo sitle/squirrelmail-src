@@ -5,25 +5,22 @@
  * $Id$
  */
 
-define('PATH','/path/to/wtfw/');          // '/' terminated absolute path
-define('WTFW_DIFF_TEMP','/path/to/tmp/'); // '/' terminated absolute path
-define('URI_PATH','/wtfw/');
-define('FILENAME', URI_PATH . 'index.php'); // filename used as base document
-                                            // -- ABSOLUTE page reference as seen by webserver
-
 /* database settings */
-define('DATABASE', 'mysql'); // database type (MySQL is the only DB module at the moment)
-define('DBHOST', 'localhost'); // database IP address
-define('DBNAME', 'wtf'); // database name
-define('DBUSER', 'root'); // database username
-define('DBPASS', ''); // database password
+define('DB_HOST', 'localhost'); // database IP address
+define('DB_NAME', 'wtf'); // database name
+define('DB_USER', 'root'); // database username
+define('DB_PASS', ''); // database password
+define('DB_TABLE', 'tblObject'); // default database table
 
 /* debugging */
-define('DEBUG', FALSE); // show debug information
-define('DEBUG_VAR', TRUE); // show variable debug information
-define('DEBUG_TRACE', TRUE); // show trace debug information
-define('DEBUG_SQL', TRUE); // show SQL debug information
-define('DEBUG_TIME', TRUE); // show execution time
-define('RENDER', TRUE); // use rendering engine (FALSE bypasses rendering phase)
+define('DEBUG',       FALSE); // show debug information
+define('DEBUG_SQL',   FALSE); // include SQL debug information
+define('DEBUG_VAR',   FALSE); // include VAR debug information
+define('DEBUG_TRACE', FALSE); // include TRACE debug information
+define('DEBUG_TIME',  FALSE); // include execution time debug information
+define('DEBUG_EXT',   FALSE); // include external resource debug information
+
+/* Diff processing */
+define('DIFF_TMPDIR', $_ENV['TEMP']);
 
 ?>
