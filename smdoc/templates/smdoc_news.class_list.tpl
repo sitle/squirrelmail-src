@@ -20,6 +20,12 @@
 $t['title'] = _("Site News");
 $t['body_function'] = 'show_news_body';
 
+if ( $t['foowd']->hasPermission('smdoc_news', 'create', 'CLASS') ) 
+{
+    $t['edit_links']['news'] = array('name' => _("Create"),
+                                     'uri'  => BASE_URL . '?class=smdoc_news');
+}
+
 /** Include base template */
 include_once(TEMPLATE_PATH.'index.tpl');
 
@@ -35,26 +41,15 @@ include_once(TEMPLATE_PATH.'index.tpl');
  */
 function show_news_body(&$foowd, $className, $method, &$user, &$object, &$t)
 {
-  if ( $foowd->hasPermission('smdoc_news', 'create', 'CLASS') ) 
-  {
-    $uri_arr['class']='smdoc_news';
-    $url = getURI($uri_arr);
-    echo '<p>'._("News Editor").': <a href="'.$url.'">'._("Add News Item").'</a></p>'."\n";
-    unset($uri_arr);
-  }
-
   if ( empty($t['newslist']) )
     echo '<h3>'._("No News Items Found").'</h3>';
 
   // If there are no news items, return without displaying the table, etc.
   if ( empty($t['newslist']) )
     return;
-
 ?>
-<table class="smdoc_table" width="80%">
-<?php 
-      $row = 0;
-      foreach ( $t['newslist'] as $news )
+<dl>
+<?php foreach ( $t['newslist'] as $news )
       {
         $uri_arr['objectid'] = $news['objectid'];
         $uri_arr['classid']  = NEWS_CLASS_ID;
@@ -63,23 +58,18 @@ function show_news_body(&$foowd, $className, $method, &$user, &$object, &$t)
         $update_arr['objectid'] = $news['creatorid'];
         $update_arr['classid'] = USER_CLASS_ID;
 ?>
-      <tr class="row_odd">
-        <td class="heading"><a href="<?php echo $url; ?>"><?php echo $news['title']; ?></a></td>
-        <td class="smalldate newsdate">
-           ( <a href="<?php echo getURI($update_arr); ?>"><?php echo $news['creatorName']; ?></a> )
-           <?php echo date('Y/m/d H:i T',strtotime($news['updated'])); ?>
-        </td>
-      </tr>
-      <tr class="row_even">
-        <td class="newssummary" colspan="2"><?php echo $news['summary']; ?></td>
-      </tr>
-<?php    
-        $row = !$row;
-       } // end foreach user in list
-?>
-</table>
+    <dt class="bg-light">
+        <div class="newsupdate">
+            <?php echo date('d M Y',strtotime($news['updated'])) . _(" by "); ?> 
+            <a href="<?php echo getURI($update_arr); ?>"><?php echo $news['creatorName']; ?></a>
+        </div>
+        <?php echo $news['title']; ?>
+    </dt>   
+    <dd>
+        <?php echo $news['summary']; ?>
+        <div class="newsupdate">[<a href="<?php echo $url; ?>"><?php echo _("Continue"); ?></a>]</div>
+    </dd>
+<?php } // end foreach user in list  ?>
+</dl>
 <?php
 } // end user_list_body
-
-
-

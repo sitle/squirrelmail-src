@@ -37,29 +37,26 @@ include_once(TEMPLATE_PATH.'index.tpl');
 function text_textile_create_body(&$foowd, $className, $method, &$user, &$object, &$t)
 {
   $obj = $t['form']->objects;
+  include_once(TEMPLATE_PATH.'smdoc_text_textile.howto.tpl'); 
 ?>
+<!-- begin create body -->
+<div id="textileform">
+<?php $t['form']->display_start('smdoc_form'); ?>
 
-<table cellspacing="0" cellpadding="0" class="smdoc_table" style="width: 100%">
-<tr>
-  <td class="col_top" align="center">
-    <?php $t['form']->display_start('smdoc_form'); ?>
-    <p>
-      <span class="label"><?php echo _("Title"); ?>:</span>
-      <span class="value"><?php echo $obj['createTitle']->display(); ?></span>
-    </p>
-
-    <p><?php echo $obj['createBody']->display('textile'); ?></p>
-
-    <div class="form_submit"><?php echo $t['form']->display_buttons(); ?></div>
-
-    <?php $t['form']->display_end(); ?>
-  </td>
-  <td class="textile_howto">
-    <?php include_once(TEMPLATE_PATH.'smdoc_text_textile.howto.tpl'); ?>
-  </td>
-</tr>
+<table cellspacing="0" cellpadding="0" class="smdoc_table">
+  <tr><th class="label"><?php echo _("Title"); ?>:</th>
+      <td class="value"><?php echo $obj['createTitle']->display(); ?></td></tr>
+  <tr>
 </table>
+
+<?php echo $obj['createBody']->display('smdoc_textarea'); ?>
+
+<div class="form_submit"><?php echo $t['form']->display_buttons(); ?></div>
+<?php $t['form']->display_end(); ?>
+
+</div>
+<!-- end create body -->
+
+<div class="float-clear">&nbsp;</div>
 <?php
 }
-
-

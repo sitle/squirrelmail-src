@@ -33,44 +33,37 @@ include_once(TEMPLATE_PATH.'index.tpl');
  */
 function text_textile_edit_body(&$foowd, $className, $method, &$user, &$object, &$t)
 {
-  if ( isset($t['preview']) )
-    echo '<div class="preview">', $t['preview'], '</div>'."\n";
-
   $obj = $t['form']->objects;
-?>
 
-<table cellspacing="0" cellpadding="0" class="smdoc_table" style="width: 100%">
-<tr>
-  <td class="col_top" align="center">
-<?php 
-  $t['form']->display_start('smdoc_form'); 
-  $obj['editCollision']->display();
+      if ( isset($t['preview']) ) { ?>
+<div class="preview"><?php echo $t['preview']; ?></div>
+<?php }
 
-  if ( isset($t['preview']) )
-  { ?>
+      include_once(TEMPLATE_PATH.'smdoc_text_textile.howto.tpl');
+      $t['form']->display_start('smdoc_form'); 
+      $obj['editCollision']->display();
+
+      if ( isset($t['preview']) ) { ?>
     <div class="form_submit"><?php $t['form']->display_buttons(); ?></div>
-<?php 
-  }
-?>
-    <p><?php echo $obj['editArea']->display('textile'); ?></p>  
-    <p>
-<?php 
-  if ( isset($obj['noNewVersion']) )
-  {
-    echo $obj['noNewVersion']->display() . 
-         _("Minor Update (Do not create new version)");
-  }
-?>
-    </p>
-    <div class="form_submit"><?php echo $t['form']->display_buttons(); ?></div>
+<?php } ?>
 
-    <?php $t['form']->display_end(); ?>
-  </td>
-  <td class="textile_howto">
-    <?php include_once(TEMPLATE_PATH.'smdoc_text_textile.howto.tpl'); ?>
-  </td>
-</tr>
-</table>
+<!-- begin create body -->
+<div id="textileform">
+
+<?php echo $obj['editArea']->display('smdoc_textarea'); 
+      if ( isset($obj['noNewVersion']) ) {
+        ?><p><?php
+        echo $obj['noNewVersion']->display() . 
+             _("Minor Update (Do not create new version)");
+        ?></p><?php
+      } ?>
+
+<div class="form_submit"><?php echo $t['form']->display_buttons(); ?></div>
+
+<?php $t['form']->display_end(); ?>
+</div>
+<!-- end create body -->
+<div class="float-clear">&nbsp;</div>
 <?php
 }
 

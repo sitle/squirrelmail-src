@@ -36,6 +36,9 @@ $tools = array(
     'help' => array('name' => _("Help"),  'uri' => BASE_URL . '?object=faq'),
 );
 
+if ( isset($t['edit_links']) )
+    $edit_arr =& $t['edit_links'];
+
 $foowd =& $t['foowd'];
 $user =& $foowd->user;
 
@@ -85,7 +88,6 @@ $flag_links = smdoc_translation::getLink($foowd);
 $loc_url = getURI();
 $user_url = $loc_url . '?class=smdoc_user';
 $links = array();
-$edit_arr = array();
 $user_link = NULL;
 
 // Create list of links

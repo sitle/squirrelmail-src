@@ -60,12 +60,8 @@ function user_create_body(&$foowd, $className, $method, &$user, &$object, &$t)
     </td></tr>
 
 </table>
-
+<div class="form_submit"><?php echo $t['form']->display_buttons(); ?></div>
 <?php
-  echo "\n" . '<div class="form_submit">';
-  $t['form']->display_buttons();
-  echo '</div>'."\n";
-
   $uri_arr['class'] = $className;
   $uri_arr['method'] = 'login';
 ?>

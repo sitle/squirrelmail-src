@@ -28,7 +28,6 @@ setClassMeta('smdoc_translation', 'Site Translation');
 
 setConst('TRANSLATION_CLASS_ID', META_SMDOC_TRANSLATION_CLASS_ID);
 setConst('TRANSLATION_DEFAULT_LANGUAGE', 'en_US');
-setConst('TRANSLATION_DEFAULT_LANGUAGE_ICON', 'en_US');
 
 /** Base workspace implementation */
 require_once(SM_DIR . 'class.workspace.php');
@@ -79,9 +78,6 @@ class smdoc_translation extends foowd_workspace
   {
     $foowd->track('smdoc_translation::initialize', $forceRefresh);
 
-    $default_title = getConstOrDefault('TRANSLATION_DEFAULT_LANGUAGE', 'en_US');
-    $default_icon = getConstOrDefault('TRANSLATION_DEFAULT_LANGUAGE_ICON', '');
-
     $session_links = new input_session('lang_links', NULL);
     $session_langs = new input_session('languages', NULL);
 
@@ -91,6 +87,9 @@ class smdoc_translation extends foowd_workspace
       $foowd->track();
       return;
     }
+
+    $default_title = getConstOrDefault('TRANSLATION_DEFAULT_LANGUAGE', 'en_US');
+    $default_icon = getConstOrDefault('TRANSLATION_DEFAULT_LANGUAGE_ICON', '');
 
     $links = array();
     $languages = array();
@@ -102,13 +101,16 @@ class smdoc_translation extends foowd_workspace
 
     // Add elements for the default translation
     $the_url = '<a href="' . $url . '0">';
-    if ( $default_icon != '' )
+    if ( !empty($default_icon) )
     {
       $the_url .= '<img src="' . $default_icon . '" ';
-      $the_url .= 'alt="' . $default_title . '" border="0" />';
+      $the_url .= 'alt="' . $default_title . '" ';
+      $the_url .= 'title="' . $default_title . '" ';
+      $the_rul .= ' />';
     }
     else
       $the_url .= $default_title;
+
     $the_url .=  '</a>';
 
     $links[0] = $the_url;
@@ -131,7 +133,8 @@ class smdoc_translation extends foowd_workspace
       if ( isset($trans_obj->language_icon) )
       {
         $the_url .= '<img src="' . $trans_obj->language_icon . '" ';
-        $the_url .= 'alt="' . $trans_obj->title . '" border="0" />';
+        $the_url .= 'title="' . $trans_obj->title . '" ';
+        $the_url .= 'alt="' . $trans_obj->title . '" />';
       }
       else
         $the_url .= $trans_obj->title;
