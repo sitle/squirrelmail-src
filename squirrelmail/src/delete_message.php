@@ -57,6 +57,9 @@ if (isset($where) && isset($what)) {
     if (!isset($mail_sent)) {
         $mail_sent = '';
     }
+    if (!isset($saved_draft)) {
+        $saved_draft = '';
+    }
         if (!empty($saved_draft) || !empty($mail_sent)) {
             header("Location: $location/compose.php?mail_sent=$mail_sent&saved_draft=$saved_draft");
         }
