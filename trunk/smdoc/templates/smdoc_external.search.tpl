@@ -19,3 +19,6 @@
 ?>
 
 INTERFACE TO HTDIG here.
+
+<?php
+// vim: syntax=php

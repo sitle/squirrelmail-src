@@ -47,4 +47,5 @@ include_once(TEMPLATE_PATH.'index.tpl');
 
 }
 
-?>
+
+// vim: syntax=php

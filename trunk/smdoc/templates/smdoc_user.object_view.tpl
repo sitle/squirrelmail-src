@@ -153,3 +153,5 @@ function user_view_body(&$foowd, $className, $method, &$user, &$object, &$t)
             . '</div>';
       }
 } // end display function
+
+// vim: syntax=php

@@ -133,3 +133,5 @@ function user_update_body(&$foowd, $className, $method, &$user, &$object, &$t)
        . '</div>';
 
 }
+
+// vim: syntax=php

@@ -61,3 +61,5 @@ function text_textile_create_body(&$foowd, $className, $method, &$user, &$object
 </table>
 <?php
 }
+
+// vim: syntax=php

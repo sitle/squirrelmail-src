@@ -73,4 +73,5 @@ function workspace_view_body(&$foowd, $className, $method, &$user, &$object, &$t
       else
         echo '<p align="center">'._("There are no objects in this workspace.").'</p>';
 }
-?>
+
+// vim: syntax=php

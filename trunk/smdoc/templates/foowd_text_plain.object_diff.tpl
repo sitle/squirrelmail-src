@@ -70,3 +70,5 @@ function text_plain_view_body(&$foowd, $className, $method, &$user, &$object, &$
   }
   echo '</table>';
 }
+
+// vim: syntax=php
