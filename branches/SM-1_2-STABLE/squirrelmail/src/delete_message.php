@@ -15,6 +15,25 @@ require_once('../src/validate.php');
 require_once('../functions/display_messages.php');
 require_once('../functions/imap.php');
 
+$key = $_COOKIE['key'];
+$username = $_SESSION['username'];
+$onetimepad = $_SESSION['onetimepad'];
+
+$message = $_GET['message'];
+$mailbox = $_GET['mailbox'];
+
+$saved_draft = $_GET['saved_draft'];
+$mail_sent = $_GET['mail_sent'];
+$sort = $_GET['sort'];
+$startMessage = $_GET['startMessage'];
+
+if(isset($_GET['where'])) {
+    $where = $_GET['where'];
+}
+if(isset($_GET['what'])) {
+    $what = $_GET['what'];
+}
+
 $imapConnection = sqimap_login($username, $key, $imapServerAddress, $imapPort, 0);
 
 sqimap_mailbox_select($imapConnection, $mailbox);
@@ -22,13 +41,6 @@ sqimap_mailbox_select($imapConnection, $mailbox);
 sqimap_messages_delete($imapConnection, $message, $message, $mailbox);
 if ($auto_expunge) {
     sqimap_mailbox_expunge($imapConnection, $mailbox, true);
-}
-if (!isset($saved_draft)) {
-    $saved_draft = '';
-}
-
-if (!isset($mail_sent)) {
-    $mail_sent = '';
 }
 
 $location = get_location();
