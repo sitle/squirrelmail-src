@@ -162,18 +162,20 @@ class user extends thing { // a user
 	}
 	
 // delete
-	function delete() {
-		track('user::delete');
-// load home thing
-		$home = &wtf::loadObject($this->homeid, 0, $classes = 'home');
-		if ($home) {
-// delete home thing
-			$home->delete();
-		}
-// delete thing
-		track();
-		return parent::delete();
-	}
+	function delete($delete_home = true) {
+        track('user::delete');
+        if ( $delete_home ) {
+            // load home thing
+            $home = &wtf::loadObject($this->homeid, 0, $classes = 'home');
+            if ($home) {
+                // delete home thing
+                $home->delete();
+            }
+        }
+        // delete thing
+        track();
+        return parent::delete();
+    }
 
 /*** Methods ***/
 
