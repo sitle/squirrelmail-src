@@ -232,6 +232,16 @@ function showMessagesForMailbox($imapConnection, $mailbox, $num_msgs,
            $auto_expunge, $thread_sort_messages, $allow_server_sort,
            $data_dir, $username, $server_sort_order;
 
+    /*
+     * For some reason, on PHP 4.3+, this being unset, and set in the session causes havoc
+     * so setting it to an empty array beforehand seems to clean up the issue, and stopping the
+     * "Your script possibly relies on a session side-effect which existed until PHP 4.2.3" error
+     */
+
+    if (!isset($msort)) {
+        $msort = array();
+    }
+
     /* if $start_msg is lower than $num_msgs, we probably deleted all messages
      * in the last page. We need to re-adjust the start_msg
      */
