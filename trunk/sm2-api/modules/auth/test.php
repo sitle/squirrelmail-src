@@ -15,6 +15,11 @@
  * ZkSvc_auth class.
  */
 class ZkMod_auth_test {
+
+    var $name = 'test';
+
+    var $info;
+
     /**
      * Create a new ZkMod_auth_test with the given options.
      *
@@ -23,6 +28,7 @@ class ZkMod_auth_test {
      */
     function ZkMod_auth_test($options) {
         /* Instantiate the Authentication Module Here! */
+        $this->info = 'Foo check.';
     }
 
     /**
@@ -37,7 +43,6 @@ class ZkMod_auth_test {
         if (($username == 'captbunzo') && ($password == 'bunz-r-us')) {
             return (true);
         }
-
         /* Otherwise, fail authentication. */
         return (false);
     }
