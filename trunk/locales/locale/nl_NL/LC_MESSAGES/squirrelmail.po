@@ -5,8 +5,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: $Id$\n"
-"POT-Creation-Date: 2003-07-20 13:43+0300\n"
-"PO-Revision-Date: 2003-07-22 22:00+0200\n"
+"POT-Creation-Date: 2003-09-20 12:22+0300\n"
+"PO-Revision-Date: 2003-09-23 00:17+0200\n"
 "Last-Translator: M.J. Prinsen <translation@prinsenonline.com>\n"
 "Language-Team: Dutch <squirrelmail-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -155,8 +155,8 @@ msgstr "Kan het bestand niet verplaatsen/kopieren. Bestand niet toegevoegd."
 msgid "Draft Saved"
 msgstr "Concept e-mail bewaard"
 
-msgid "Your Message has been sent"
-msgstr "Uw bericht is verzonden"
+msgid "Your Message has been sent."
+msgstr "Uw bericht is verzonden."
 
 msgid "From:"
 msgstr "Van:"
@@ -608,11 +608,11 @@ msgstr "De kolomvolgorde van het berichtenoverzicht kan hier worden veranderd."
 msgid "Message not printable"
 msgstr "Bericht niet printbaar"
 
-msgid "Printer Friendly"
-msgstr "Printer vriendelijk"
-
 msgid "CC"
 msgstr "CC"
+
+msgid "Printer Friendly"
+msgstr "Printer vriendelijk"
 
 msgid "Print"
 msgstr "Print"
@@ -648,7 +648,7 @@ msgstr "Mailprogramma"
 msgid "Read receipt"
 msgstr "Leesbevestiging"
 
-msgid "send"
+msgid "sent"
 msgstr "verzonden"
 
 msgid "requested"
@@ -701,8 +701,35 @@ msgid "You must be logged in to access this page."
 msgstr ""
 "U heeft een geldige gebruikersnaam en wachtwoord nodig voor deze pagina!"
 
-msgid "Folder:"
-msgstr "Map:"
+msgid "All Folders"
+msgstr "Alle mappen"
+
+msgid "Please enter something to search for"
+msgstr "Vul a.u.b. iets in om te zoeken"
+
+msgid "There must be at least one criteria to search for"
+msgstr "Er moet in ieder geval een criterium zijn om voor te zoeken"
+
+msgid "Error in criteria argument"
+msgstr "Syntax fout in parameters of argumenten"
+
+msgid "M j, Y"
+msgstr "j M, Y"
+
+msgid "(Illegal date)"
+msgstr "(Illegale datum)"
+
+msgid "(Wrong date)"
+msgstr "(Verkeerde datum)"
+
+msgid "In"
+msgstr "In"
+
+msgid "(Missing argument)"
+msgstr "(Missend argument)"
+
+msgid "(Spurious argument)"
+msgstr "(Verdacht argument)"
 
 msgid "edit"
 msgstr "Wijzig"
@@ -713,8 +740,8 @@ msgstr "Zoek"
 msgid "delete"
 msgstr "Verwijder"
 
-msgid "Recent Searches"
-msgstr "Recente zoekopdrachten"
+msgid "Saved Searches"
+msgstr "Opgeslagen zoekopdrachten"
 
 msgid "save"
 msgstr "Bewaar"
@@ -722,17 +749,110 @@ msgstr "Bewaar"
 msgid "forget"
 msgstr "vergeet"
 
-msgid "Current Search"
-msgstr "Huidige map"
+msgid "Recent Searches"
+msgstr "Recente zoekopdrachten"
 
-msgid "All Folders"
-msgstr "Alle mappen"
+msgid "Missing"
+msgstr "Ontbrekend"
 
-msgid "Body"
-msgstr "Inhoud"
+msgid "Exclude Criteria:"
+msgstr "Uitsluitingscriteria:"
 
-msgid "Everywhere"
-msgstr "Overal"
+msgid "Search Criteria"
+msgstr "Zoekcriteria"
+
+msgid "Folder:"
+msgstr "Map:"
+
+msgid "Add New Criteria"
+msgstr "Voeg nieuwe criteria toe"
+
+msgid "Remove Excluded Criteria"
+msgstr "Verwijder uitsluitingscriteria"
+
+msgid "Remove All Criteria"
+msgstr "Verwijder alle criteria"
+
+msgid "Answered"
+msgstr "Beantwoord"
+
+msgid "Before"
+msgstr "Voor"
+
+msgid "Message Body"
+msgstr "Berichttekst"
+
+msgid "Deleted"
+msgstr "Verwijderd"
+
+msgid "Draft"
+msgstr "Concept"
+
+msgid "Flagged"
+msgstr "Gevlagd"
+
+msgid "Sent By"
+msgstr "Verzonden door"
+
+msgid "Header Field"
+msgstr "Berichtkop veld"
+
+msgid "Keyword"
+msgstr "Sleutelwoord"
+
+msgid "Larger Than"
+msgstr "Groter dan"
+
+msgid "Old"
+msgstr "Oud"
+
+msgid "On"
+msgstr "Aan"
+
+msgid "Recent"
+msgstr "Recent"
+
+msgid "Seen"
+msgstr "Gelezen"
+
+msgid "Sent Before"
+msgstr "Verzonden voordat"
+
+msgid "Sent On"
+msgstr "Verzonden aan"
+
+msgid "Sent Since"
+msgstr "Verzonden sinds"
+
+msgid "Since"
+msgstr "Sinds"
+
+msgid "Smaller Than"
+msgstr "Kleiner dan"
+
+msgid "Subject Contains"
+msgstr "Onderwerp bevat"
+
+msgid "Header and Body"
+msgstr "Berichtkop en berichttekst"
+
+msgid "Sent To"
+msgstr "Verzonden aan"
+
+msgid "Not"
+msgstr "Niet"
+
+msgid "And In"
+msgstr "En in"
+
+msgid "Or In"
+msgstr "Of in"
+
+msgid "And"
+msgstr "En"
+
+msgid "Or"
+msgstr "Of"
 
 msgid "Search Results"
 msgstr "Zoek resultaten"
@@ -793,6 +913,9 @@ msgstr "Bekijk volledige berichtinformatie"
 
 msgid "Viewing a text attachment"
 msgstr "Bekijk een tekst bijlage"
+
+msgid "Folder List"
+msgstr "Mappenlijst"
 
 msgid "Personal address book"
 msgstr "Persoonlijk adresboek"
@@ -991,9 +1114,6 @@ msgstr "D, j F, Y g:i a"
 msgid "D, F j, Y G:i"
 msgstr "D, j F, Y G:i"
 
-msgid "M j, Y"
-msgstr "j M, Y"
-
 msgid "g:i a"
 msgstr "g:i a"
 
@@ -1009,12 +1129,6 @@ msgstr "D, G:i"
 #, c-format
 msgid "Preference database error (%s). Exiting abnormally"
 msgstr "Bestand met voorkeuren (%s) niet gevonden. Programma afgebroken."
-
-msgid "Unknown user or password incorrect."
-msgstr "Onbekende gebruiker of verkeerd wachtwoord"
-
-msgid "Click here to try again"
-msgstr "Klik hier om het nog eens te proberen"
 
 #, c-format
 msgid "Click here to return to %s"
@@ -1052,8 +1166,8 @@ msgid ""
 "Preference file, %s, could not be copied from temporary file, %s. Contact "
 "your system administrator to resolve this issue."
 msgstr ""
-"Bestand met voorkeuren, %s, kan niet worden gekopieerd van het tijdelijke bestand, %s. "
-"Neem contact op met uw systeembeheerder."
+"Bestand met voorkeuren, %s, kan niet worden gekopieerd van het tijdelijke "
+"bestand, %s. Neem contact op met uw systeembeheerder."
 
 #, c-format
 msgid "Error opening %s"
@@ -1093,8 +1207,8 @@ msgid ""
 "Signature file, %s, could not be copied from temporary file, %s. Contact "
 "your system administrator to resolve this issue."
 msgstr ""
-"Bestand met handtekeningen, %s, kan niet worden gekopieerd van het tijdelijke bestand, %s. "
-"Neem contact op met uw systeembeheerder."
+"Bestand met handtekeningen, %s, kan niet worden gekopieerd van het "
+"tijdelijke bestand, %s. Neem contact op met uw systeembeheerder."
 
 msgid ""
 "You need to have php4 installed with the multibyte string function enabled "
@@ -1103,36 +1217,42 @@ msgstr ""
 "U dient php4 te hebben geinstalleerd met de multibyte string functie enabled "
 "(gebruik configure met de optie --with-mbstring)."
 
-msgid "ERROR : No available imapstream."
-msgstr "FOUT : Imapstream niet beschikbaar."
-
-msgid "ERROR : Connection dropped by imap-server."
-msgstr "FOUT : Verbinding verbroken door IMAP server"
-
-msgid "Query:"
-msgstr "Verzoek:"
-
 msgid "ERROR : Could not complete request."
 msgstr "FOUT : Kan opdracht niet verwerken."
 
-msgid "Reason Given: "
-msgstr "Reden: "
-
 msgid "ERROR : Bad or malformed request."
-msgstr "FOUT: Foute of corrupte aanvraag."
-
-msgid "Server responded: "
-msgstr "Server reageerde: "
+msgstr "FOUT : Foute of corrupte aanvraag."
 
 msgid "ERROR : Imap server closed the connection."
-msgstr "FOUT : IMAP server heeft de verbinding verbroken."
+msgstr "FOUT : IMAP server verbrak de verbinding."
 
 msgid "ERROR : Unknown imap response."
 msgstr "FOUT : Onbekend IMAP antwoord."
 
+msgid "Reason Given: "
+msgstr "Reden: "
+
+msgid "Query:"
+msgstr "Verzoek:"
+
+msgid "ERROR : No available imapstream."
+msgstr "FOUT : Imapstream niet beschikbaar."
+
+msgid "ERROR : Bad function call."
+msgstr "FOUT : Bad function call."
+
+msgid "Reason:"
+msgstr "Antwoord:"
+
+msgid "ERROR : Connection dropped by imap-server."
+msgstr "FOUT : Verbinding verbroken door IMAP server"
+
+msgid "Server responded: "
+msgstr "Server reageerde: "
+
 #, c-format
 msgid "Error connecting to IMAP server: %s."
-msgstr "FOUT : kan IMAP server %s niet initialiseren."
+msgstr "FOUT: kan IMAP server %s niet initialiseren."
 
 #, c-format
 msgid "Bad request: %s"
@@ -1144,6 +1264,9 @@ msgstr "Onbekende fout: %s"
 
 msgid "Read data:"
 msgstr "Lees data:"
+
+msgid "Unknown user or password incorrect."
+msgstr "Onbekende gebruiker of verkeerd wachtwoord"
 
 msgid "ERROR : Could not append message to"
 msgstr "FOUT : Kan bericht niet toevoegen aan"
@@ -1161,22 +1284,20 @@ msgstr ""
 msgid "(no subject)"
 msgstr "(geen onderwerp)"
 
-msgid "Unknown Sender"
-msgstr "Onbekende afzender"
-
 msgid "Unknown response from IMAP server: "
 msgstr "Onbekend antwoord van IMAP server: "
 
 msgid "The server couldn't find the message you requested."
-msgstr "De server kan het bericht dat u opvroeg niet vinden."
+msgstr "De server kon het gevraagde bericht niet vinden."
 
 msgid ""
 "Most probably your message list was out of date and the message has been "
 "moved away or deleted (perhaps by another program accessing the same "
 "mailbox)."
 msgstr ""
-"Uw berichtenlijst is waarschijnlijk verouderd en het bericht is verplaatst "
-"of verwijderd (misschien doordat een ander programma dezelfde mailbox heeft gebruikt)."
+"Zeer waarschijnlijk is uw berichtenlijst verouderd en is het bericht "
+"verplaatst of verwijderd (misschien door het gebruik van een ander programma "
+"met toegang tot de mailbox)."
 
 msgid "Unknown date"
 msgstr "Onbekende datum"
@@ -1227,6 +1348,12 @@ msgstr "Verberg boomstructuur"
 
 msgid "Thread View"
 msgstr "Weergave boomstructuur"
+
+msgid "Bypass Trash"
+msgstr "Omzeil verwijderde Items"
+
+msgid "Click here to change the sorting of the message list"
+msgstr "Klik hier om de sortering van de berichtenlijst te veranderen"
 
 msgid "Toggle All"
 msgstr "(de)Selecteer alles"
@@ -1309,7 +1436,7 @@ msgid "Service not available, closing channel"
 msgstr "Service niet beschikbaar, kanaal wordt afgesloten"
 
 msgid "A password transition is needed"
-msgstr "Er is een wachtwoord nodig"
+msgstr "Een wachtwoord is nodig"
 
 msgid "Requested mail action not taken: mailbox unavailable"
 msgstr "Gevraagde mail actie niet uitgevoerd: mailbox niet beschikbaar"
@@ -1355,7 +1482,7 @@ msgid "Requested action not taken: mailbox unavailable"
 msgstr "Gevraagde actie niet uitgevoerd: maibox niet beschikbaar"
 
 msgid "User not local; please try forwarding"
-msgstr "Gebruiker niet lokaal; probeer doorsturen"
+msgstr "Gebruiker niet locaal; probeer doorsturen"
 
 msgid "Requested mail action aborted: exceeding storage allocation"
 msgstr ""
@@ -1415,6 +1542,15 @@ msgstr "Maximum aantal te tonen pagina's"
 msgid "Always Show Full Date"
 msgstr "Toon altijd de volledige datum"
 
+msgid "Length of From/To Field (0 for full)"
+msgstr "Lengte van VAN/AAN veld (0 = onbeperkt)"
+
+msgid "Length of Subject Field (0 for full)"
+msgstr "Lengte van Onderwerp veld (0 = onbeperkt)"
+
+msgid "Show recipient name if the message is from your default identity"
+msgstr "Toon naam ontvanger als het bericht van uw standaard identiteit is"
+
 msgid "Message Display and Composition"
 msgstr "Bericht weergave en compositie"
 
@@ -1428,10 +1564,10 @@ msgid "Location of Buttons when Composing"
 msgstr "Positie van de knoppen bij schrijven nieuw bericht"
 
 msgid "Before headers"
-msgstr "Voor berichtinformatie"
+msgstr "Voor berichtkop"
 
 msgid "Between headers and message body"
-msgstr "Tussen berichtinformatie en berichttekst"
+msgstr "Tussen berichtkop en berichttekst"
 
 msgid "After message body"
 msgstr "Na berichttekst"
@@ -1480,6 +1616,9 @@ msgstr "Hoogte van berichtvenster"
 
 msgid "Append Signature before Reply/Forward Text"
 msgstr "Voeg handtekening toe _voor_ de beantwoorde/doorgestuurde tekst"
+
+msgid "Strip signature when replying"
+msgstr "Verwijder handtekening bij beantwoording"
 
 msgid "Enable Sort by of Receive Date"
 msgstr "Gebruik datum van ontvangst voor sorteren"
@@ -1559,7 +1698,7 @@ msgstr "Alleen ongelezen"
 msgid "Unseen and Total"
 msgstr "Ongelezen en Totaal"
 
-msgid "Enable Collapsible Folders"
+msgid "Enable Collapsable Folders"
 msgstr "Maak uitklapbare mappen mogelijk"
 
 msgid "Enable Cumulative Unread Message Notification"
@@ -1594,6 +1733,12 @@ msgstr "Selectie mappenlijstweergave"
 
 msgid "Long: "
 msgstr "Lang: "
+
+msgid "Folder"
+msgstr "Map"
+
+msgid "Subfolder"
+msgstr "Submap"
 
 msgid "Indented: "
 msgstr "Ingesprongen: "
@@ -1835,7 +1980,7 @@ msgid "Auto delete folders"
 msgstr "Automatisch verwijderen mappen"
 
 msgid "Enable /NoSelect folder fix"
-msgstr "Actieveer /Geenselectie map fix"
+msgstr "Activeer /Geenselectie map fix"
 
 msgid "General Options"
 msgstr "Algemene opties"
@@ -1995,7 +2140,7 @@ msgid "Length:"
 msgstr "Duur:"
 
 msgid "Priority:"
-msgstr "Prioriteit:"
+msgstr "Prioriteit"
 
 msgid "Title:"
 msgstr "Titel:"
@@ -2135,58 +2280,6 @@ msgstr "COMMERCIAL - RBL+ OpenRelay entries."
 
 msgid "COMMERCIAL - RBL+ Dial-up entries."
 msgstr "COMMERCIAL - RBL+ Dial-up entries."
-
-msgid ""
-"FREE - Osirusoft Relays - Osirusofts list of verified open relays. Seems to "
-"include servers used by abuse@uunet.net auto-replies too."
-msgstr ""
-"FREE - Osirusoft Relays - Osirusofts lijst van geverifieerde open relays. "
-"Lijkt ook servers gebruikt door abuse@uunet.net auto-replies te bevatten."
-
-msgid "FREE - Osirusoft Dialups - Osirusofts Dialup Spam Source list."
-msgstr "FREE - Osirusoft Dialups - Osirusofts Dialup Spam Source list."
-
-msgid ""
-"FREE - Osirusoft Confirmed Spam Source - Sites that continually spam and "
-"have been manually added after multiple nominations. Use with caution. Seems "
-"to catch abuse auto-replies from some ISPs."
-msgstr ""
-"FREE - Osirusoft Confirmed Spam Source - Sites die continu spam versturen en "
-"handmatig zijn toegevoegd na herhaaldelijke meldingen. Gebruik voorzichtig. "
-"Lijkt abuse auto-replies van ISPs ook te weren."
-
-msgid ""
-"FREE - Osirusoft Smart Hosts - List of hosts that are secure but relay for "
-"other mail servers that are not secure."
-msgstr ""
-"FREE - Osirusoft Smart Hosts - Lijst van hosts die beveiligd zijn, maar "
-"relayen voor andere mailservers die niet beveiligd zijn."
-
-msgid ""
-"FREE - Osirusoft Spamware Developers - It is believed that these are IP "
-"ranges of companies that are known to produce spam software. Seems to catch "
-"abuse auto-replies from some ISPs."
-msgstr ""
-"FREE - Osirusoft Spamware Developers - Dit zijn IP ranges van bedrijven die "
-"bekend staan om het maken van spam software. Lijkt abuse auto-replies van "
-"sommige ISPs te weren."
-
-msgid ""
-"FREE - Osirusoft Unconfirmed OptIn Servers - List of listservers that opt "
-"users in without confirmation."
-msgstr ""
-"FREE - Osirusoft Unconfirmed OptIn Servers - Lijst van listservers die "
-"gebruikers accepteren zonder bevestiging."
-
-msgid ""
-"FREE - Osirusoft Insecure formmail.cgi scripts - List of insecure formmail."
-"cgi scripts. (planned)."
-msgstr ""
-"FREE - Osirusoft onveilige formmail.cgi scripts - Lijst van onveilige "
-"formmail.cgi scripts. (geplanned)."
-
-msgid "FREE - Osirusoft Open Proxy Servers - List of Open Proxy Servers."
-msgstr "FREE - Osirusoft Open Proxy Servers - Lijst van Open Proxy Servers."
 
 msgid ""
 "FREE - ORDB was born when ORBS went off the air. It seems to have fewer "
@@ -2511,12 +2604,6 @@ msgstr "Geen server gespecificeerd"
 msgid "Error "
 msgstr "Fout "
 
-msgid "POP3 noop:"
-msgstr "POP3 noop:"
-
-msgid "No connection to server"
-msgstr "Geen verbinding met server"
-
 msgid "POP3 user:"
 msgstr "POP3 user:"
 
@@ -2538,6 +2625,9 @@ msgstr "authorisatie mislukt "
 msgid "POP3 apop:"
 msgstr "POP3 apop:"
 
+msgid "No connection to server"
+msgstr "Geen verbinding met server"
+
 msgid "No login ID submitted"
 msgstr "Geen gebruikersnaam opgegeven"
 
@@ -2551,7 +2641,7 @@ msgid "apop authentication failed"
 msgstr "apop authorisatie mislukt"
 
 msgid "POP3 login:"
-msgstr "POP3 login:"
+msgstr "POP3 gebruikersnaam:"
 
 msgid "POP3 top:"
 msgstr "POP3 top:"
@@ -2563,10 +2653,10 @@ msgid "Premature end of list"
 msgstr "Voortijdig einde van de lijst"
 
 msgid "POP3 get:"
-msgstr "POP3 get:"
+msgstr "POP3 ophalen:"
 
 msgid "POP3 last:"
-msgstr "POP3 last:"
+msgstr "POP3 laatste:"
 
 msgid "POP3 reset:"
 msgstr "POP3 reset:"
@@ -2578,7 +2668,7 @@ msgid "Empty command string"
 msgstr "Leeg commando"
 
 msgid "POP3 quit:"
-msgstr "POP3 quit:"
+msgstr "POP3 afsluiten:"
 
 msgid "connection does not exist"
 msgstr "verbinding bestaat niet"
@@ -2587,16 +2677,13 @@ msgid "POP3 uidl:"
 msgstr "POP3 uidl:"
 
 msgid "POP3 delete:"
-msgstr "POP3 delete:"
+msgstr "POP3 verwijderen:"
 
 msgid "No msg number submitted"
 msgstr "Geen berichtnummer opgegeven"
 
 msgid "Command failed "
 msgstr "Commando mislukt"
-
-msgid "Remote POP server Fetching Mail"
-msgstr "Ophalen mail van externe POP-servers"
 
 msgid "Select Server:"
 msgstr "Selecteer server:"
@@ -2606,6 +2693,15 @@ msgstr "Wachtwoord voor"
 
 msgid "Fetch Mail"
 msgstr "Ophalen berichten"
+
+msgid "Remote POP server Fetching Mail"
+msgstr "Ophalen mail van externe POP-servers"
+
+msgid "No POP3 servers configured yet."
+msgstr "Nog geen POP3 servers geconfigureerd "
+
+msgid "Click here to go to the options page."
+msgstr "Klik hier om naar de opties pagina te gaan."
 
 msgid "Fetching from "
 msgstr "Ophalen van "
@@ -2853,9 +2949,9 @@ msgid ""
 "Select from the list of <b>server files</b> the media file to play when new "
 "mail arrives.  If no file is specified, \"(none)\", no sound will be used."
 msgstr ""
-"Selecteer het bestand dat u wilt afspelen bij een nieuw bericht van de lijst "
-"met <b>server bestanden</b>. Indien er geen bestand wordt gespecificeerd, " 
-"\"(geen)\", zal geen geluid worden gebruikt."
+"Selecteer het geluid dat u wilt afspelen bij een nieuw bericht van de lijst "
+"met <b>server bestanden</b>. Indien er geen bestand wordt gespecificeerd, "
+"\"(geen)\" zal geen geluid worden gebruikt."
 
 msgid "Enable Media Playing"
 msgstr "Activeer afspelen geluid"
@@ -3358,22 +3454,20 @@ msgid "Number of supported language pairs: %s"
 msgstr "Aantal ondersteunde talenparen: %s"
 
 msgid "No known limits, powered by Systran"
-msgstr "Geen limieten bekend, powered by Systran "
+msgstr "Geen limieten bekend, powered by Systran"
 
 msgid "No known limits, powered by Translation Experts's InterTran"
-msgstr ""
-"Geen limieten bekend, powered by Translation Experts's InterTran"
+msgstr "Geen limieten bekend, powered by Translation Experts's InterTran"
 
 #, c-format
 msgid "Number of supported languages: %s"
 msgstr "Aantal ondersteunde talen: %s"
 
 msgid "No known limits, powered by GPLTrans (free, open source)"
-msgstr ""
-"Geen limieten bekend, powered by GPLTrans (free, open source)"
+msgstr "Geen limieten bekend, powered by GPLTrans (free, open source)"
 
 msgid "Hellenic translations, no known limits, powered by Systran"
-msgstr "Griekse vertalingen, geen limieten bekend, powered by Systran "
+msgstr "Griekse vertalingen, geen limieten bekend, powered by Systran"
 
 msgid "Russian translations, maximum of 500 characters translated"
 msgstr "Russische vertalingen, maximum van 500 tekens vertaald"
@@ -3541,6 +3635,80 @@ msgstr "Bezorgingsfout rapportage"
 msgid "Undelivered Message Headers"
 msgstr "Berichtkoppen onbestelbaar bericht"
 
+#~ msgid "Unknown Sender"
+#~ msgstr "Onbekende afzender"
+
+#~ msgid ""
+#~ "FREE - Osirusoft Relays - Osirusofts list of verified open relays. Seems "
+#~ "to include servers used by abuse@uunet.net auto-replies too."
+#~ msgstr ""
+#~ "FREE - Osirusoft Relays - Osirusofts lijst van geverifieerde open relays. "
+#~ "Lijkt ook servers gebruikt door abuse@uunet.net auto-replies te bevatten."
+
+#~ msgid "FREE - Osirusoft Dialups - Osirusofts Dialup Spam Source list."
+#~ msgstr "FREE - Osirusoft Dialups - Osirusofts Dialup Spam Source list."
+
+#~ msgid ""
+#~ "FREE - Osirusoft Confirmed Spam Source - Sites that continually spam and "
+#~ "have been manually added after multiple nominations. Use with caution. "
+#~ "Seems to catch abuse auto-replies from some ISPs."
+#~ msgstr ""
+#~ "FREE - Osirusoft Confirmed Spam Source - Sites die continu spam versturen "
+#~ "en handmatig zijn toegevoegd na herhaaldelijke meldingen. Gebruik "
+#~ "voorzichtig. Lijkt abuse auto-replies van ISPs ook te weren."
+
+#~ msgid ""
+#~ "FREE - Osirusoft Smart Hosts - List of hosts that are secure but relay "
+#~ "for other mail servers that are not secure."
+#~ msgstr ""
+#~ "FREE - Osirusoft Smart Hosts - Lijst van hosts die beveiligd zijn, maar "
+#~ "relayen voor andere mailservers die niet beveiligd zijn."
+
+#~ msgid ""
+#~ "FREE - Osirusoft Spamware Developers - It is believed that these are IP "
+#~ "ranges of companies that are known to produce spam software. Seems to "
+#~ "catch abuse auto-replies from some ISPs."
+#~ msgstr ""
+#~ "FREE - Osirusoft Spamware Developers - Dit zijn IP ranges van bedrijven "
+#~ "die bekend staan om het maken van spam software. Lijkt abuse auto-replies "
+#~ "van sommige ISPs te weren."
+
+#~ msgid ""
+#~ "FREE - Osirusoft Unconfirmed OptIn Servers - List of listservers that opt "
+#~ "users in without confirmation."
+#~ msgstr ""
+#~ "FREE - Osirusoft Unconfirmed OptIn Servers - Lijst van listservers die "
+#~ "gebruikers accepteren zonder bevestiging."
+
+#~ msgid ""
+#~ "FREE - Osirusoft Insecure formmail.cgi scripts - List of insecure "
+#~ "formmail.cgi scripts. (planned)."
+#~ msgstr ""
+#~ "FREE - Osirusoft onveilige formmail.cgi scripts - Lijst van onveilige "
+#~ "formmail.cgi scripts. (geplanned)."
+
+#~ msgid "FREE - Osirusoft Open Proxy Servers - List of Open Proxy Servers."
+#~ msgstr "FREE - Osirusoft Open Proxy Servers - Lijst van Open Proxy Servers."
+
+#~ msgid "Click here to try again"
+#~ msgstr "Klik hier om het nog eens te proberen"
+
+#~ msgid "Current Search"
+#~ msgstr "Huidige map"
+
+#~ msgid "Body"
+#~ msgstr "Inhoud"
+
+#~ msgid "Everywhere"
+#~ msgstr "Overal"
+
+#~ msgid "Mofify a Server"
+#~ msgstr "Bewerk een server"
+
+#~ msgid "4 language pairs for Hellenic, no known limits, powered by Systran"
+#~ msgstr ""
+#~ "4 talen paren voor Hellenic, geen limieten bekend, powered by Systran"
+
 #~ msgid "Not available"
 #~ msgstr "Niet beschikbaar"
 
@@ -3553,8 +3721,8 @@ msgstr "Berichtkoppen onbestelbaar bericht"
 #~ msgid "35 min."
 #~ msgstr "35 min."
 
-#~ msgid "Mofify a Server"
-#~ msgstr "Bewerk een server"
+#~ msgid "POP3 noop:"
+#~ msgstr "POP3 noop:"
 
 #~ msgid "Message details"
 #~ msgstr "Berichtdetails"
@@ -3580,10 +3748,10 @@ msgstr "Berichtkoppen onbestelbaar bericht"
 #~ msgstr "Bekijk een tekst bijlage"
 
 #~ msgid "Cc:"
-#~ msgstr "CC:"
+#~ msgstr "CC"
 
 #~ msgid "Bcc:"
-#~ msgstr "BCC:"
+#~ msgstr "BCC"
 
 #~ msgid "<No subject>"
 #~ msgstr "<geen onderwerp>"
@@ -3671,9 +3839,6 @@ msgstr "Berichtkoppen onbestelbaar bericht"
 
 #~ msgid "Left aligned"
 #~ msgstr "Links uitgelijnd"
-
-#~ msgid "Centered"
-#~ msgstr "Gecentreerd"
 
 #~ msgid "Right aligned"
 #~ msgstr "Rechts uitgelijnd"
