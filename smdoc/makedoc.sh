@@ -30,7 +30,7 @@
 #  * 
 #  * @var               string TITLE
 #  */
-TITLE="SMDoc WebFramework Documentation"
+TITLE="SquirrelMail Documentation Framework"
 
 #/** 
 #  * name to use for the default package. If not specified, uses 'default'
@@ -95,11 +95,18 @@ PRIVATE=on
 #  * Ignore certain files (comma separated, wildcards enabled)
 #  * @var               string IGNORE
 #  */
-IGNORE=CVS/,*.txt,docs/,config.php,*.sql,*.sh,test.php,*.gif,*.css,*.jpg
+IGNORE=CVS/,*.txt,doc_templates/,docs/,tpls/,config.php,*.sql,*.sh,test.php,*.gif,*.css,*.jpg
+
+#/**
+#  * Ignore certain tags (comma separated)
+#  * @var               string IGNORE_TAGS
+#  */
+IGNORE_TAGS=@author
 
 # make documentation
 $PATH_PHPDOC -d $PATH_PROJECT -t $PATH_DOCS -ti "$TITLE" -dn $PACKAGES \
--o $OUTPUTFORMAT:$CONVERTER:$TEMPLATE -pp $PRIVATE -i $IGNORE
+-o $OUTPUTFORMAT:$CONVERTER:$TEMPLATE -pp $PRIVATE \
+-i $IGNORE -it $IGNORE_TAGS
 
 
 # vim: set expandtab :

@@ -66,7 +66,7 @@ class smdoc_object_cache
    * This includes saving all modified objects,
    * and performing any deferred deletes.
    */
-  function destroy()
+  function __destruct()
   {
     $this->foowd->track('foowd_db->destructor');
 

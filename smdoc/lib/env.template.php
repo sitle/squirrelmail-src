@@ -151,7 +151,7 @@ class foowd_template
    *
    * @param string $file The template file to use
    */
-  function display($file) {
+  function display($file='default.tpl') {
     $t = &$this->values; // place values array directly in scope
     include($this->template_dir.$file);
   }
@@ -162,7 +162,7 @@ class foowd_template
    * @param string $file The template file to use
    * @return string A string of the results
    */
-  function fetch($file) {
+  function fetch($file='default.tpl') {
     ob_start();
     $t = &$this->values; // place values array directly in scope
     include($this->template_dir.$file);

@@ -27,6 +27,8 @@ define('DATETIME_FORMAT', 'Y/m/d h:ia');
 define('DIFF_TMPDIR', '/tmp/');
 /** Base filename/primary entrypoint */
 define('FILENAME', 'index.php');
+/** URL that gets you to the above file */
+define('FILENAME', 'http://'.$_SERVER['HTTP_HOST'].'/smdoc/');
 
 
 /**

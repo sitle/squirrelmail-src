@@ -30,12 +30,13 @@ setConst('TRANSLATION_CLASS_ID', META_FOOWD_TRANSLATION_CLASS_ID);
 setConst('TRANSLATION_DEFAULT_LANGUAGE', 'en_US');
 //setConst('TRANSLATION_DEFAULT_LANGUAGE_ICON', 'en_US');
 
-/** Include base workspace implementation */
+/** Base workspace implementation */
 require_once(SM_DIR . 'class.workspace.php');
 
 /**
  * Extension of workspaces to allow all-in-one-place
  * management of site and translations.
+ *
  * @package smdoc
  */
 class smdoc_translation extends foowd_workspace 

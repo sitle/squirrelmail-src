@@ -15,21 +15,25 @@
  * Selective index of site content, alphabetized by title, 
  * then class, then version.
  *
- * Set array selected object elements into 'objectList' element of template.
- * Also set specify template name in 'body_template' element of template.
+ * Values set in template:
+ *  + objectlist    - below
+ *  + body_template - specific filename (will be relative to TEMPLATE PATH)
+ *  + method        - empty string
+ *  + title         - 'Site Index'
+ *
  * Sample contents of $t['changelist']:
  * <pre>
  * array (
  *   0 => array ( 
- *          'url' => 'index.php?objectid=8493242&classid=48943242&version=1'
- *          'objectid' => 438904324
- *          'title' => 'A Page'
- *          'classid' => 894302432
- *          'lang_id' => '<a href.... /a>'
- *          'updated' => '2003/11/09 11:48am'
- *          'workspaceid' => 9
- *          'ver' => 12
- *          'desc' => 'HTML Object'
+ *     'url' => 'index.php?objectid=8493242&classid=48943242&version=122'
+ *     'objectid' => 438904324
+ *     'title' => 'A Page'
+ *     'classid' => 894302432
+ *     'lang_id' => '<a href.... /a>'
+ *     'updated' => '2003/11/09 11:48am'
+ *     'workspaceid' => 9
+ *     'ver' => 12
+ *     'desc' => 'HTML Object'
  *        )
  * )
  * </pre>
@@ -106,5 +110,5 @@ $foowd->template->display();
  * destroy Foowd - triggers cleanup of database object and 
  * display of debug information.
  */
-$foowd->destroy();
+$foowd->__destruct();
 

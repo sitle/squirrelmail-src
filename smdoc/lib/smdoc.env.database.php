@@ -163,12 +163,12 @@ class smdoc_db
   /**
    * Destructs the storage object.
    */
-  function destroy() 
+  function __destruct() 
   {
     $this->foowd->track('smdoc_db->destructor');
 
     // clean up object cache
-    $this->objects->destroy();   
+    $this->objects->__destruct();   
  
     // close connection
     $this->conn->disconnect();

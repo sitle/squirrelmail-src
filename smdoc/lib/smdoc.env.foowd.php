@@ -100,10 +100,10 @@ class smdoc extends foowd
    * Destroys the environment object outputting debugging information and
    * closing the database connection.
    */
-  function destroy()
+  function __destruct()
   {
     if ( $this->database )
-      $this->database->destroy(); // close DB
+      $this->database->__destruct(); // close DB
     if ( $this->debug )
       $this->debug->display();  // dump debug output
     unset($this);               // unset object
@@ -117,7 +117,7 @@ class smdoc extends foowd
   {
     unset($this->debug);
     $this->debug = FALSE;
-    $this->destroy();
+    $this->__destruct();
     header('Location: ' . $new_loc);
     exit;
   }

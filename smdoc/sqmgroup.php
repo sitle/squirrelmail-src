@@ -77,5 +77,5 @@ $foowd->template->display();
  * destroy Foowd - triggers cleanup of database object and 
  * display of debug information.
  */
-$foowd->destroy();
+$foowd->__destruct();
 
