@@ -9,7 +9,7 @@ msgstr ""
 "+0300\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2004-02-24 20:39+0200\n"
-"PO-Revision-Date: 2004-02-25 08:25+0100\n"
+"PO-Revision-Date: 2004-02-29 15:45+0100\n"
 "Last-Translator: Fredrik Jervfors <sqm_admin@fimbul.net>\n"
 "Language-Team: Swedish <squirrelmail-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -155,9 +155,6 @@ msgstr "Kunde inte flytta/kopiera filen. Filen bifogades inte."
 
 msgid "Draft Saved"
 msgstr "Utkast sparat"
-
-msgid "Your Message has been sent"
-msgstr "Brevet har skickats"
 
 msgid "From:"
 msgstr "Från:"
@@ -659,7 +656,7 @@ msgstr ""
 msgid "Send read receipt now"
 msgstr "Skicka mottagningsbevis nu"
 
-msgid "Search results"
+msgid "Search Results"
 msgstr "Sökresultat"
 
 msgid "Message List"
@@ -716,20 +713,8 @@ msgstr "spara"
 msgid "forget"
 msgstr "glöm"
 
-msgid "Current Search"
-msgstr "Aktuell sökning"
-
 msgid "All Folders"
 msgstr "Alla mappar"
-
-msgid "Body"
-msgstr "Text"
-
-msgid "Everywhere"
-msgstr "Överallt"
-
-msgid "Search Results"
-msgstr "Sökresultat"
 
 msgid "No Messages Found"
 msgstr "Inga brev hittades"
@@ -741,7 +726,7 @@ msgid "You have been successfully signed out."
 msgstr "Du har loggats ut."
 
 msgid "Click here to log back in."
-msgstr "Klicka här för att logga in igen."
+msgstr "Logga in igen"
 
 msgid "Viewing a Business Card"
 msgstr "Visar ett visitkort"
@@ -1007,9 +992,6 @@ msgstr "Fel i inställningsdatabas (%s). Avslutar programmet"
 msgid "Unknown user or password incorrect."
 msgstr "Felaktigt användarnamn eller lösenord."
 
-msgid "Click here to try again"
-msgstr "Försök igen"
-
 #, c-format
 msgid "Click here to return to %s"
 msgstr "Klicka här för att gå tillbaka till %s"
@@ -1091,13 +1073,6 @@ msgstr ""
 "Det gick inte att kopiera brevfotsfilen %s från den temporära filen %s."
 "Vänligen rapportera detta fel till systemadministratören."
 
-msgid ""
-"You need to have php4 installed with the multibyte string function enabled "
-"(using configure option --enable-mbstring)."
-msgstr ""
-"Du måste ha PHP4 installerat med Multi-Byte String-funktionerna aktiverade "
-"(använd --enable-mbstring i konfigureringsskriptet)."
-
 msgid "ERROR : No available imapstream."
 msgstr "FEL : Ingen IMAP-stream tillgänglig."
 
@@ -1154,9 +1129,6 @@ msgstr "Kasta onödiga brev fån mappen och börja med din Trash-mapp."
 msgid "(no subject)"
 msgstr "(ärende saknas)"
 
-msgid "Unknown Sender"
-msgstr "Okänd avsändare"
-
 msgid "Unknown response from IMAP server: "
 msgstr "Okänt svar från IMAP-servern: "
 
@@ -1193,12 +1165,6 @@ msgstr ""
 
 msgid "THIS FOLDER IS EMPTY"
 msgstr "DENNA MAPP ÄR TOM"
-
-msgid "Move Selected To"
-msgstr "Flytta markerade brev till"
-
-msgid "Transform Selected Messages"
-msgstr "Ändra status på markerade brev"
 
 msgid "Move"
 msgstr "Flytta"
@@ -1419,11 +1385,8 @@ msgstr "Brevvisning och -skrivning"
 msgid "Wrap Incoming Text At"
 msgstr "Radbryt mottagen text vid"
 
-msgid "Width of Editor Window"
-msgstr "Textfönstrets bredd"
-
-msgid "Height of Editor Window"
-msgstr "Textfönstrets höjd"
+msgid "Size of Editor Window"
+msgstr "Textfönstrets storlek"
 
 msgid "Location of Buttons when Composing"
 msgstr "Knapparnas placering vid brevskrivning"
@@ -1572,9 +1535,6 @@ msgstr "Endast olästa"
 msgid "Unseen and Total"
 msgstr "Olästa och totalt antal"
 
-msgid "Enable Collapsible Folders"
-msgstr "Tillåt att underliggande mappar döljs"
-
 msgid "Enable Cumulative Unread Message Notification"
 msgstr "Aktivera avisering vid ökande antal olästa brev"
 
@@ -1665,9 +1625,6 @@ msgstr "AVSÄNDAREN skrev"
 msgid "Quote Who XML"
 msgstr "XML Citat"
 
-msgid "On DATE, AUTHOR Said"
-msgstr "DATUMET skrev AVSÄNDAREN"
-
 msgid "User-Defined"
 msgstr "Användardefinierat"
 
@@ -1684,7 +1641,7 @@ msgid "Use Signature"
 msgstr "Använd brevfot"
 
 msgid "Prefix Signature with '-- ' Line"
-msgstr "Inled brevfoten med '-- '"
+msgstr "Inled brevfoten med avskiljaren '---'"
 
 msgid "Take Address"
 msgstr "Spara adress"
@@ -1913,9 +1870,6 @@ msgstr "Tillåt korrespondensvyer"
 
 msgid "Allow server charset search"
 msgstr "Tillåt servern att söka teckenuppsättningar"
-
-msgid "UID support"
-msgstr "Stöd för UID"
 
 msgid "PHP session name"
 msgstr "Sessionsnamn i PHP"
@@ -2193,18 +2147,6 @@ msgstr "Kasta och visa nästa"
 
 msgid "Move to:"
 msgstr "Flytta till:"
-
-msgid "Delete/Move/Next Buttons:"
-msgstr "Knappar för Kasta/Flytta/Nästa:"
-
-msgid "Display at top"
-msgstr "Visa högst upp"
-
-msgid "with move option"
-msgstr "vid flyttmöjligheten"
-
-msgid "Display at bottom"
-msgstr "Visa längst ned"
 
 msgid ""
 "COMMERCIAL - This list contains servers that are verified spam senders. It "
@@ -2563,9 +2505,6 @@ msgstr "Ingen server angiven"
 
 msgid "Error "
 msgstr "Fel "
-
-msgid "POP3 noop:"
-msgstr "POP3 noop:"
 
 msgid "No connection to server"
 msgstr "Kunde inte kontakta servern"
@@ -3630,43 +3569,33 @@ msgstr "Vilken översättare skall användas om du får brev i ett annat språk?"
 msgid "%s to %s"
 msgstr "%s till %s"
 
-#, c-format
 msgid "English"
 msgstr "Engelska"
 
-#, c-format
 msgid "Chinese"
 msgstr "Kinesiska"
 
-#, c-format
 msgid "French"
 msgstr "Franska"
 
-#, c-format
 msgid "German"
 msgstr "Tyska"
 
-#, c-format
 msgid "Italian"
 msgstr "Italienska"
 
-#, c-format
 msgid "Japanese"
 msgstr "Japanska"
 
-#, c-format
 msgid "Korean"
 msgstr "Koreanska"
 
-#, c-format
 msgid "Portuguese"
 msgstr "Portugisiska"
 
-#, c-format
 msgid "Spanish"
 msgstr "Spanska"
 
-#, c-format
 msgid "Russian"
 msgstr "Ryska"
 
@@ -3688,17 +3617,12 @@ msgstr "Tjeckiska"
 msgid "Danish"
 msgstr "Danska"
 
-#, c-format
 msgid "Dutch"
 msgstr "Holländska"
-
-msgid "European Spanish"
-msgstr "Europeisk spanska"
 
 msgid "Finnish"
 msgstr "Finska"
 
-#, c-format
 msgid "Greek"
 msgstr "Grekiska"
 
@@ -3904,8 +3828,7 @@ msgid "The imap server failed to handle threading."
 msgstr "IMAP-server kan inte hantera korrespondensvyer."
 
 msgid "Click here to unset thread view for this mailbox and start again."
-msgstr ""
-"Klicka här för att ta bort korrespondansvyer för denna brevlåda och börja om."
+msgstr "Ta bort korrespondansvyer för denna brevlåda och börja om."
 
 msgid "ERROR : Bad function call."
 msgstr "FEL : Felaktigt funktionsanrop."
@@ -3915,9 +3838,6 @@ msgstr "Orsak:"
 
 msgid "Click here to change the sorting of the message list"
 msgstr "Klicka här för att ändra sorteringen av brevlistan"
-
-msgid "Message Flags Icon Theme"
-msgstr "Tema för brevikoner"
 
 msgid "Length of From/To Field (0 for full)"
 msgstr "Längd på från-/till-fältet (0 för full längd)"
@@ -4016,19 +3936,6 @@ msgstr "Gratis rapportering"
 
 msgid "Member services"
 msgstr "Medlemstjänster"
-
-msgid ""
-"The SpamCop service will display information as it finds it, so scroll down "
-"until you see a form button. It might pause a little while it is looking up "
-"information, so be a little patient. Read what it says, and submit the spam. "
-"Close the browser window.  Press Cancel or click on the appropriate mail "
-"folder to see messages and/or delete the spam."
-msgstr ""
-"SpamCop-tjänsten visar informationen som den fått den, så bläddra nedåt till "
-"dess du ser en knapp. Det kan ta ett tag medan informationen kontrolleras, "
-"så ha tålamod. Läs vad det står och skicka in rapporten. Stäng fönstret. "
-"Klicka på avbryt eller tillämpbar mapp för att se skräpposten och/eller "
-"kasta den."
 
 msgid "Spamcop Service Type"
 msgstr "Typ av SpamCop-tjänst"
