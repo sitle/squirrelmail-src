@@ -426,7 +426,7 @@ while ( ( $command ne "q" ) && ( $command ne "Q" ) ) {
         print "\n";
         
         if ( $show_imap_settings ) {
-          print "Update IMAP Server\n---------------------\n";
+          print $WHT . "IMAP Settings". $NRM . "\n--------------\n";
           print "4.  IMAP Server            : $WHT$imapServerAddress$NRM\n";
           print "5.  IMAP Port              : $WHT$imapPort$NRM\n";
           print "6.  Authentication type    : $WHT$imap_auth_mech$NRM\n";
@@ -436,11 +436,11 @@ while ( ( $command ne "q" ) && ( $command ne "Q" ) ) {
           print "\n";
         } elsif ( $show_smtp_settings ) {
           if ( lc($useSendmail) eq "true" ) {
-            print "Update Sendmail\n---------------------\n";
-            print "4.   Sendmail Path        : $WHT$sendmail_path$NRM\n";
+            print $WHT . "Sendmail" . $NRM . "\n--------\n";
+            print "4.   Sendmail Path         : $WHT$sendmail_path$NRM\n";
             print "\n";
           } else {
-            print "Update SMTP Server\n---------------------\n";
+            print $WHT . "SMTP Settings" . $NRM . "\n-------------\n";
             print "4.   SMTP Server           : $WHT$smtpServerAddress$NRM\n";
             print "5.   SMTP Port             : $WHT$smtpPort$NRM\n";
             print "6.   POP before SMTP       : $WHT$pop_before_smtp$NRM\n";
@@ -451,16 +451,16 @@ while ( ( $command ne "q" ) && ( $command ne "Q" ) ) {
         }
 
         if ($show_imap_settings == 0) {
-          print "A.  Update IMAP Server     : ";
+          print "A.  Update IMAP Settings   : ";
           print "$WHT$imapServerAddress$NRM:";
           print "$WHT$imapPort$NRM ";
           print "($WHT$imap_server_type$NRM)\n";
         } 
         if ($show_smtp_settings == 0) {
           if ( lc($useSendmail) eq "true" ) {
-            print "B.  Update Sendmail       : $WHT$sendmail_path$NRM\n";
+            print "B.  Change Sendmail Config : $WHT$sendmail_path$NRM\n";
           } else {
-            print "B.  Update SMTP Server     : ";
+            print "B.  Update SMTP Settings   : ";
             print "$WHT$smtpServerAddress$NRM:";
             print "$WHT$smtpPort$NRM\n";
           }
