@@ -59,15 +59,16 @@ if ($my_language != $squirrelmail_language) {
 
 set_up_language(getPref($data_dir, $username, 'language'));
 
-echo "<html><head>\n" .
-     "<TITLE>$org_title</TITLE>";
+echo "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Frameset//EN\">\n" .
+     "<html><head>\n" .
+     "<title>$org_title</title>\n";
 
 $left_size = getPref($data_dir, $username, 'left_size');
 $location_of_bar = getPref($data_dir, $username, 'location_of_bar');
 if ($location_of_bar == '') {
     $location_of_bar = 'left';
 }
-if ($left_size == "") {
+if ($left_size == '') {
     if (isset($default_left_size)) {
          $left_size = $default_left_size;
     }
@@ -77,10 +78,10 @@ if ($left_size == "") {
 }
 
 if ($location_of_bar == 'right') {
-    echo "<FRAMESET COLS=\"*, $left_size\" BORDER=0 ID=fs1>";
+    echo "<FRAMESET COLS=\"*, $left_size\" BORDER=0 ID=fs1>\n";
 }
 else {
-    echo "<FRAMESET COLS=\"$left_size, *\" BORDER=0 ID=fs1>";
+    echo "<FRAMESET COLS=\"$left_size, *\" BORDER=0 ID=fs1>\n";
 }
 
 /*
@@ -114,12 +115,12 @@ if ($right_frame == 'right_main.php') {
 }
 
 if ($location_of_bar == 'right') {
-    echo "<FRAME SRC=\"$right_frame_url\" NORESIZE NAME=\"right\">" .
-         '<FRAME SRC="left_main.php" NORESIZE NAME="left">';
+    echo "<FRAME SRC=\"$right_frame_url\" NORESIZE NAME=\"right\">\n" .
+         "<FRAME SRC=\"left_main.php\" NORESIZE NAME=\"left\">\n";
 }
 else {
-    echo '<FRAME SRC="left_main.php" NORESIZE NAME="left">'.
-         "<FRAME SRC=\"$right_frame_url\" NORESIZE NAME=\"right\">";
+    echo "<FRAME SRC=\"left_main.php\" NORESIZE NAME=\"left\">\n".
+         "<FRAME SRC=\"$right_frame_url\" NORESIZE NAME=\"right\">\n";
 }
 do_hook('webmail_bottom');
 ?>
