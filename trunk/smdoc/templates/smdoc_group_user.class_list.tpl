@@ -95,4 +95,4 @@ function group_list_body(&$foowd, $className, $method, &$user, &$object, &$t)
   $t['deleteForm']->display_end();
 } // end user_list_body
 
-// vim: syntax=php
+

@@ -154,4 +154,4 @@ function user_view_body(&$foowd, $className, $method, &$user, &$object, &$t)
       }
 } // end display function
 
-// vim: syntax=php
+

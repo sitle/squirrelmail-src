@@ -74,4 +74,4 @@
  
 
 <?php
-// vim: syntax=php
+

@@ -63,4 +63,4 @@ function text_plain_edit_body(&$foowd, $className, $method, &$user, &$object, &$
   $t['form']->display_end();
 }
 
-// vim: syntax=php
+

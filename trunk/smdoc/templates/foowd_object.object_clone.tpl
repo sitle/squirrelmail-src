@@ -55,4 +55,4 @@ function object_clone_body(&$foowd, $className, $method, &$user, &$object, &$t)
   $t['form']->display_end();
 }
 
-// vim: syntax=php
+

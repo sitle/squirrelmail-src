@@ -58,5 +58,3 @@ Total Execution Time: <?php echo $execTime; ?>  seconds
 </html>
 <?php
 }
-
-// vim: syntax=php

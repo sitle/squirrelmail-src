@@ -43,5 +43,3 @@ function default_body(&$foowd, $className, $method, &$user, &$object, &$t)
       show($object);
     }
 }
-
-// vim: syntax=php
