@@ -24,8 +24,14 @@ file.thing.file.php
 File Upload Create
 */
 
-$HARDTHING[-1935722992]['func'] = 'createfile';
-$HARDTHING[-1935722992]['title'] = 'Create A New File';
+/*
+ * Modified by SquirrelMail Development Team
+ * $Id$
+ */
+
+$HARDTHING[FILECLASSID]['func'] = 'createfile';
+$HARDTHING[FILECLASSID]['title'] = 'Create A New File';
+$HARDTHING[FILECLASSD]['lastmodified'] ='$Date$';
 
 function createfile() {
 	track('createfile');
