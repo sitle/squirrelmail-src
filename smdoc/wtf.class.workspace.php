@@ -55,7 +55,8 @@ class workspace extends thing {
 		global $wtf;
 		track('workspace::placeInWorkspace');
 		if ( $wtf->user->inGroup($this->editGroup) && 
-            ($obj->objectid != ANONYMOUSUSERID || $obj->classid != USERCLASSID)) { // if has access and object is not anonymous user
+            ($obj->objectid != ANONYMOUSUSERID || 
+             $obj->classid != USERCLASSID)) { // if has access and object is not anonymous user
 			$obj->workspaceid = $this->objectid;
 			track(); return TRUE;
 		} else {
@@ -64,18 +65,23 @@ class workspace extends thing {
 	}
 	
 	function getWorkspaces() { // static member to get an array of workspace id's and names
-		global $conn;
+		global $conn, $wtf;
 		track('workspace::getWorkspaces');
 		$workspaces = array(0 => 'Main');
-		if ($query = DBSelect($conn, OBJECTTABLE, NULL, array('objectid', 'title'), array('classid = '.getIDFromName('workspace')), NULL, array('title'), NULL)) {
-			$numberOfRecords = getAffectedRows($conn);
-			if ($numberOfRecords > 0) {
-				for ($foo = 1; $foo <= $numberOfRecords; $foo++) {
-					$record = getRecord($query);
-					$workspaces[intval($record['objectid'])] = $record['title'];
-				}
-			}
-		}
+
+        $for_classid = $wtf->thing->classid;
+        if ( $for_classid != HOMECLASSID &&
+             $for_classid != WORKSPACECLASSID ) {
+  		    if ($query = DBSelect($conn, OBJECTTABLE, NULL, array('objectid', 'title'), array('classid = '.getIDFromName('workspace')), NULL, array('title'), NULL)) {
+			    $numberOfRecords = getAffectedRows($conn);
+			    if ($numberOfRecords > 0) {
+				    for ($foo = 1; $foo <= $numberOfRecords; $foo++) {
+					    $record = getRecord($query);
+					    $workspaces[intval($record['objectid'])] = $record['title'];
+				    }
+			    }
+		    }
+        }
 		return $workspaces;
 	}
 	
