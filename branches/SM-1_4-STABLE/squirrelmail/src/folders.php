@@ -85,7 +85,9 @@ if ( isset($success) && $success ) {
 echo "\n<br>";
 
 $imapConnection = sqimap_login ($username, $key, $imapServerAddress, $imapPort, 0);
-$boxes = sqimap_mailbox_list($imapConnection);
+
+// force retrieval of a non cached folderlist
+$boxes = sqimap_mailbox_list($imapConnection,true);
 
 /** CREATING FOLDERS **/
 echo html_tag( 'table', '', 'center', '', 'width="70%" cellpadding="4" cellspacing="0" border="0"' ) .
