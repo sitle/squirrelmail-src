@@ -28,6 +28,8 @@ function print_links() {
 <a name="doclist"></a>
 <H2>Planning Documents</H2>
 
+<a href="dev_todo.php">Active Dev Items</a><br />
+<br />
 <a href="config_revisions.php">Config revisions (devel)</a><br />
 <br />
 <a href="plugin_revisions.php">Plugin revisions (stable/devel)</a><br />
