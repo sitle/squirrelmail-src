@@ -33,6 +33,9 @@ body {
     color: #36F;
     font-weight: bold;
 }
+#sitetitle a:hover {
+    text-decoration: underline;
+}
 #locationmenu a,
 #debug_output,
 #content {
@@ -66,7 +69,6 @@ body {
     text-decoration: none; 
     color: #FFF;
 }
-#sitetitle a:hover,
 #editmenu a:hover,
 #usermenu a:hover {
     background-color: #FFF;
@@ -75,6 +77,9 @@ body {
 #copyright {
     border-top: 1px #69F solid;
 }
+/*
+ * Headings
+ */
 h1,
 h2,
 h3 {
