@@ -1,4 +1,23 @@
 <?php
+/*
+ * Copyright (c) 1999-2003 The SquirrelMail Project Team
+ * Licensed under the GNU GPL. For full terms see the file COPYING.
+ *
+ * This file is an addition/modification to the 
+ * Framework for Object Orientated Web Development (Foowd).
+ */
+
+/** 
+ * Template for basic page layout. Other templates provide the 'content'
+ * nested inside this template.
+ *
+ * Modified by SquirrelMail Development
+ * $Id$
+ * 
+ * @package smdoc
+ * @subpackage template
+ */
+ 
   $foowd =& $t['foowd'];
   $user =& $foowd->user;
 
@@ -21,7 +40,7 @@
     $ok = $t['success'];
   elseif ( !sqGetGlobalVar('error', $error,  SQ_SESSION) && isset($t['failure']) )
     $error = $t['failure'];
- 
+
   getStatusStrings($ok, $error);
 
   // Clear ok/error values from session
@@ -29,11 +48,11 @@
   unset($_SESSION['error']);
 
   if ( isset($t['classid']) && $object != NULL &&
-       $t['classid'] != EXTERNAL_CLASS_ID && 
+       $t['classid'] != EXTERNAL_CLASS_ID &&
        $t['classid'] != USER_CLASS_ID )
   {
-    $version = isset($t['version']) ? 'v. ' . $t['version'] . ', ' : ''; 
-    $lastUpdate = ' [ '. $version . _("Last Update") . ': ' 
+    $version = isset($t['version']) ? 'v. ' . $t['version'] . ', ' : '';
+    $lastUpdate = ' [ '. $version . _("Last Update") . ': '
                   . date('Y/m/d, H:i T', $object->updated) . ' ] ';
     if ( isset($t['workspaceid']) && $t['workspaceid'] != 0 )
       $lastUpdate .= ' (' . getLink($foowd, $t['workspaceid']) . ')';
@@ -41,7 +60,7 @@
 
   if ( $method != 'view' )
     $lastUpdate = $method . $lastUpdate;
-  
+
 //  smdoc_translation::initialize($foowd);
 //  $flag_links = smdoc_translation::getLink($foowd);
   $loc_url = getURI();
@@ -55,9 +74,9 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1;" />
 <meta name="Description" content="Documentation, Plugins, Downloads for SquirrelMail"/>
 <meta name="Author" content="SquirrelMail Project Team"/>
-<title>SquirrelMail<?php 
+<title>SquirrelMail<?php
     if ( isset($t['title']) )
-    echo ' - ', htmlspecialchars($t['title']); 
+    echo ' - ', htmlspecialchars($t['title']);
 ?></title>
 <link rel="stylesheet" type="text/css" href="templates/style.css" />
 </head>
@@ -92,20 +111,20 @@
           if ( isset($user->objectid) )
           {
             // If an objectid is set, we're logged in.
-            echo '<a href="'.$loc_url.'?classid='.USER_CLASS_ID.'&objectid='.$user->objectid.'">' 
+            echo '<a href="'.$loc_url.'?classid='.USER_CLASS_ID.'&objectid='.$user->objectid.'">'
                  . $user->title . '</a> ';
             echo '( '. $lang_url
                  . '<a href="', $user_url, '&method=logout">'. _("Logout") .'</a> )&nbsp;<br />';
             if ( $user->inGroup('Gods') )
             {
               echo '<span class="subtext">'._("Admin") .': '
-                 . '<a href="'.$loc_url.'?object=sqmgroup">' 
+                 . '<a href="'.$loc_url.'?object=sqmgroup">'
                  . _("Groups") . '</a></span>&nbsp;';
             }
           } else {
             // Otherwise, we're anonymous
             echo _("Anonymous User"), ' [' . $user->title . '] ';
-            echo '( '. $lang_url  
+            echo '( '. $lang_url
                  . '<a href="', $user_url, '&method=login">'. _("Login") .'</a> ';
             echo '| <a href="', $user_url, '&method=create">'. _("Register") .'</a> )';
           }
@@ -129,7 +148,7 @@
       ?>
           </td>
           <td class="titleupdate"><?php echo $lastUpdate; ?></td>
-        </tr> 
+        </tr>
       </table>
       <table width="100%" cellspacing="0" cellpadding="0" class="locationmenu">
         <tr>
@@ -170,7 +189,10 @@
   if ( isset($t['body']) )
     echo $t['body'];
   elseif ( isset($t['body_template']) )
+  {
+    /** If body template is specified, include it. */
     include_once(TEMPLATE_PATH . $t['body_template']);
+  }
   elseif ( isset($t['body_function']) )
     $t['body_function']($foowd, $className, $method, $user, $object, $t);
   else
@@ -229,7 +251,7 @@
   (v <?php echo $foowd->version ?>).
 </div>
 <?php
-if ($foowd->debug) 
+if ($foowd->debug)
   return;
 ?>
 </body>

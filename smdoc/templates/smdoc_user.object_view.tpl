@@ -1,8 +1,37 @@
 <?php
+/*
+ * Copyright (c) 1999-2003 The SquirrelMail Project Team
+ * Licensed under the GNU GPL. For full terms see the file COPYING.
+ *
+ * This file is an addition/modification to the 
+ * Framework for Object Orientated Web Development (Foowd).
+ */
+
+/** 
+ * Template for basic object view
+ *
+ * Modified by SquirrelMail Development
+ * $Id$
+ * 
+ * @package smdoc
+ * @subpackage template
+ */
 unset($t['version']);
 $t['body_function'] = 'user_view_body';
+
+/** Include base template */
 include(TEMPLATE_PATH.'index.tpl');
 
+/**
+ * Base template will call back to this function
+ *
+ * @param smdoc foowd Reference to the foowd environment object.
+ * @param string className String containing invoked className.
+ * @param string method String containing called method name.
+ * @param smdoc_user user Reference to active user.
+ * @param object object Reference to object being invoked.
+ * @param mixed t Reference to array filled with template parameters.
+ */
 function user_view_body(&$foowd, $className, $method, $user, $object, &$t)
 {
   $none = '<span class="subtext"><em>&lt;none specified&gt;</em></span>';
@@ -33,11 +62,11 @@ function user_view_body(&$foowd, $className, $method, $user, $object, &$t)
 <tr><td colspan="2"><div class="separator"><?php echo _("Public Contact Information"); ?></div></td></tr>
 <?php   ksort($t['nicks']);
         foreach ( $t['nicks'] as $prot => $id )
-        { 
+        {
           switch ($prot)
           {
             case 'MSN':
-            case 'Email':  
+            case 'Email':
               $id =  htmlspecialchars(mungEmail($id));
               break;
             case 'IRC':
@@ -47,9 +76,9 @@ function user_view_body(&$foowd, $className, $method, $user, $object, &$t)
             case 'ICQ':
               $id = '<a href="http://wwp.icq.com/'.$id.'">'.$id.'</a>';
               break;
-            case 'WWW':    
+            case 'WWW':
               $id = htmlspecialchars($id);
-              $id = '<a href="'.$id.'">'.$id.'</a>'; 
+              $id = '<a href="'.$id.'">'.$id.'</a>';
               break;
             default:
               $id = htmlspecialchars($id);
@@ -65,8 +94,8 @@ function user_view_body(&$foowd, $className, $method, $user, $object, &$t)
       } // END DISPLAY IM IDs
 
       // begin AUTHOR only elements
-      if ( $t['update'] ) 
-      { 
+      if ( $t['update'] )
+      {
 ?>
 <tr><td colspan="2"><div class="separator">
     <?php echo _("Private Attributes"); ?>
@@ -75,8 +104,8 @@ function user_view_body(&$foowd, $className, $method, $user, $object, &$t)
 </tr>
 <tr>
   <td class="heading"><?php echo _("Group Membership"); ?>:</td>
-  <td class="value">Registered 
-<?php   if ( !empty($object->groups) ) 
+  <td class="value">Registered
+<?php   if ( !empty($object->groups) )
           foreach($object->groups as $group)
             echo ', ' . smdoc_group::getDisplayName($group);
 ?>
@@ -116,11 +145,11 @@ function user_view_body(&$foowd, $className, $method, $user, $object, &$t)
 <p class="subtext_center"><a href="<?php echo getURI($uri_arr); ?>"><?php echo _("Update your profile"); ?></a></p>
 
 <div class="subtext_center"><a id="email" name="email"></a>
-<?php 
+<?php
         echo _("Your email and other contact information is only shared with your consent.")
             . '<br />'
             . sprintf(_("See our <a href=\"%s\">Privacy Policy</a>"),
                       getURI(array('object' => 'privacy')))
             . '</div>';
-      }   
+      }
 } // end display function
