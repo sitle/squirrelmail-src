@@ -18,7 +18,7 @@
  * @subpackage template
  */
 ?>
-<h3><a href="http://www.textile.com">Textile</a>
+<h3><a href="http://textpattern.com/help/?item=intro">Textile</a>
     <span class="subtext" style="font-size: x-small; font-weight: normal">v. 2 beta</span>
 </h3>
 
