@@ -20,10 +20,10 @@ $EXTERNAL_RESOURCES[SQMCHANGES_CLASS_ID]['title'] = 'Recent Changes';
 function sqmchanges(&$foowd, &$result) {
     $foowd->track('sqmchanges');
 
-    $objects = $foowd->getObjects(NULL,
-                                  NULL,
-                                  array('updated DESC'),
-                                  20);
+    // get 20 most recent changes
+    $objects =& $foowd->getObjList(NULL, NULL, 
+                                   array('updated DESC'), 20, 
+                                   TRUE, FALSE);
     $list_objects = array();
 
     $i = 0;
@@ -54,8 +54,8 @@ function sqmchanges(&$foowd, &$result) {
       $list_objects[$i]['desc'] = getClassDescription($object->classid);
     }
 
-    $result['changeList'] =& $list_objects;
-    $result['body_template'] = 'smdoc_external.changes.php';
+    $foowd->template->assign_by_ref('changeList', $list_objects);
+    $foowd->template->assign('body_template', 'smdoc_external.changes.tpl');
     $foowd->track();
 }
 ?>

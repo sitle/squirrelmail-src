@@ -11,10 +11,34 @@
  * $Id$
  */
 
+require_once(SM_PATH . 'input.lib.php');
+
+/**
+ * The SMdoc input_session class.
+ *
+ * Used to store/retrieve data from the session.
+ *
+ * @package smdoc/input
+ */
 class input_session extends input_base
 {
-  var $base64;                              // should/is value be base64 encoded
-    
+  /**
+   * Should/Is value base64 encoded in the session
+   *
+   * @var bool
+   * @access private
+   */
+  var $base64;
+
+
+  /**
+   * Constructs a new textarea object.
+   *
+   * @param str  name   The name of the textarea.
+   * @param str  regex  The validation regular expression.
+   * @param str  value  The initial contents value.
+   * @param bool base64 Should the value be base64 encoded in the session.
+   */    
   function input_session($name, 
                          $regex = NULL, 
                          $value = NULL,
@@ -31,6 +55,9 @@ class input_session extends input_base
       $this->set($value);
   }
 
+  /**
+   * Refresh values from the session
+   */
   function refresh()
   {
     if ( !isset($_SESSION[$this->name]) )
@@ -38,7 +65,6 @@ class input_session extends input_base
 
     if ( $_SESSION[$this->name] == NULL || $_SESSION[$this->name] == ''  )
       $this->set(NULL, FALSE);
-
     elseif ( $this->base64 )
       $new_value = unserialize(base64_decode($_SESSION[$this->name]));
     else
@@ -47,6 +73,14 @@ class input_session extends input_base
     $this->set($new_value, FALSE);
   }
     
+  /**
+   * Set the value for this object,
+   * also set value in session if set_in_session is true.
+   * 
+   * @param  str  value           The value to set.
+   * @param  bool set_in_session  Should value also be set in session
+   * @return bool TRUE on success.
+   */
   function set($value, $set_in_session = TRUE)
   { 
     if (!$this->verifyData($value) )
@@ -63,12 +97,22 @@ class input_session extends input_base
     return TRUE;
   }
 
+  /**
+   * Clear value from session.
+   */
   function remove()
   {
     unset($_SESSION[$this->name]);
     $this->value = NULL;
   }
   
+  /**
+   * Verify value against regex. Will recursively verify array elements.
+   * 
+   * @access private
+   * @param  str  value           The value to verify.
+   * @return bool TRUE if value is valid.
+   */
   function verifyData($value)
   {
     if ( $value == NULL || $this->regex == NULL )

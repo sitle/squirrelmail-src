@@ -45,6 +45,7 @@ class smdoc_external extends foowd_object {
 		
         $this->__wakeup(); // init meta arrays
 
+        $this->foowd =& $foowd;
 		$this->objectid = $objectid;
 		$this->classid = EXTERNAL_CLASS_ID;
         $this->workspaceid = 0;
@@ -73,20 +74,33 @@ class smdoc_external extends foowd_object {
         $foowd->track();
     }
 
+
+    /**
+     * Factory method
+     * see if object id is present in list of external resources.
+     * If so, create and return new smdoc_external object.
+     *
+     * @param int objectid Id of object to search for
+     * @return new External object or NULL.
+     */
     function &factory(&$foowd, $objectid)
     {
       global $EXTERNAL_RESOURCES;
       $ext_obj = NULL;
-      if ( isset($EXTERNAL_RESOURCES) &&
-           is_array($EXTERNAL_RESOURCES) &&
-           array_key_exists(intval($objectid), $EXTERNAL_RESOURCES) ) 
-      {
+      if ( smdoc_external::objectExists($objectid) ) 
         $ext_obj = new smdoc_external($foowd, intval($objectid));
-      }
+
       return $ext_obj;
     }
 
-    function objectExists($objectid)
+    /**
+     * See if object id is present in list of external resources.
+     *
+     * @param int objectid Id of object to search for
+     * @return TRUE if specified id registered as external object,
+     *         FALSE otherwise.
+     */
+     function objectExists($objectid)
     {
       global $EXTERNAL_RESOURCES;
       if ( isset($EXTERNAL_RESOURCES) &&
@@ -104,12 +118,11 @@ class smdoc_external extends foowd_object {
 	 *
 	 * @class foowd_object
 	 * @method public set
-	 * @param object foowd The foowd environment object.
 	 * @param str member The name of the member variable to set.
 	 * @param optional mixed value The value to set the member variable to.
 	 * @return mixed always returns false
 	 */
-    function set(&$foowd, $member, $value = NULL) {
+    function set($member, $value = NULL) {
         return FALSE;
     }
 
@@ -131,12 +144,11 @@ class smdoc_external extends foowd_object {
 	 *
 	 * @class foowd_object
 	 * @method public save
-	 * @param object foowd The foowd environment object.
 	 * @param optional bool incrementVersion Increment the object version.
 	 * @param optional bool doUpdate Update the objects details.
 	 * @return mixed Always returns false.
 	 */
-    function save(&$foowd) {
+    function save() {
         return FALSE;
     }
 
@@ -145,10 +157,9 @@ class smdoc_external extends foowd_object {
 	 *
 	 * @class foowd_object
 	 * @method protected delete
-	 * @param object foowd The foowd environment object.
 	 * @return bool Always returns false.
 	 */
-    function delete(&$foowd) {
+    function delete() {
         return FALSE;
     }
 
@@ -160,22 +171,22 @@ class smdoc_external extends foowd_object {
 	 * @method private method_view
 	 * @param object foowd The foowd environment object.
 	 */
-    function method_view(&$foowd) {     
+    function method_view() {     
         global $EXTERNAL_RESOURCES;
-        $foowd->track('smdoc_external->method_view');
+        $this->foowd->track('smdoc_external->method_view');
 
         $methodName = $EXTERNAL_RESOURCES[$this->objectid]['func'];
         
         $result['title'] = $this->title;
         
         if (function_exists($methodName)) {
-            $methodName(&$foowd, &$result);
+            $methodName(&$this->foowd, &$result);
         } else {
             triggerError('Request for unknown method, '. $methodName 
                          . ', on external resource, ' . $this->title
                          . ' (object id = ' . $this->objectid . ')' );
         }
-        $foowd->track();
+        $this->foowd->track();
         return $result;
     }
 

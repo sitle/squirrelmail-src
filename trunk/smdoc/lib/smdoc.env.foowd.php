@@ -9,57 +9,39 @@
  * $Id$
  */
 
-setConst('DEBUG_CLASS', 'smdoc_debug');
-setConst('FOOWD_CLASS_NAME', 'smdoc');
-setConst('DB_CLASS', 'smdoc_db_mysql');
-setConst('REGEX_PASSWORD','/^[A-Za-z0-9]{6,32}$/'); 
+define('FOOWD_CLASS_NAME', 'smdoc');
+include_once(SM_PATH . 'env.foowd.php');
 
-include_once(PATH . 'env.foowd.php');
-
-class smdoc extends foowd {
+/**
+ * The SMDoc Foowd environment class.
+ *
+ * Sets up the Foowd environment, including database connection, user group
+ * management and user initialisation, and provides methods for accessing
+ * objects within the system.
+ *
+ * @package smdoc
+ * @version 0.8.4
+ */
+class smdoc extends foowd
+{
 
   /**
    * Constructs a new environment object.
-   *
-   * @constructor foowd
-   * @param optional array database An array of database connection parameters.
-   * @param optional array user An array of identifiers of the user to load.
-   * @param optional array groups An array of user groups to define.
-   * @param optional mixed debug Track execution, boolean value.
-   * @param str path The Foowd library path so Foowd knows where to find class definitions
-   * @param array template An array of template parameters.
+   * smdoc: Simplified for smdoc objects, different group implementation.
+   * @param array $settings Array of settings for this Foowd environment.
    */
-  function smdoc($database = NULL,
-                 $user = NULL, $groups = NULL,
-                 $debug = NULL, $path = NULL, $cache = NULL, $template = NULL)
+  function smdoc($settings)
   {
-    // This path is used to retrieve input objects. 
-    // reset to our path, to make sure smdoc overrides are used.
-    $this->path = getVarConstOrDefault($path, 'PATH', 'lib/');
-
-    // get required classes
-    $debugClass = getConstOrDefault('DEBUG_CLASS', 'foowd_debug');
-    $dbClass    = getConstOrDefault('DB_CLASS', 'foowd_db');
-    $groupClass  = getConstOrDefault('GROUP_CLASS', 'smdoc_group');
-    $userClass  = getVarConstOrDefault($user['class'],  'USER_CLASS',  'smdoc_user');
-    $templateClass = getVarConstOrDefault($template['class'], 'TEMPLATE_CLASS', 'foowd_template');
-
-    if ( !class_exists($dbClass) )
-      trigger_error('Could not find class "'.$dbClass,'"' , E_USER_ERROR);
-    if ( !class_exists($userClass) )
-      trigger_error('Could not find class "'.$userClass,'"' , E_USER_ERROR);
-    if ( !class_exists($groupClass) )
-      trigger_error('Could not find class "'.$groupClass,'"' , E_USER_ERROR);
-    if ( !class_exists($templateClass) )
-      trigger_error('Could not find class "'.$templateClass,'"' , E_USER_ERROR);
+    $this->config_settings =& $settings;
 
     /*
-     * Initialize Debug object
+     * initialize debugging
      */
-    if ( class_exists($debugClass) ) {
-      $this->debug = call_user_func(array($debugClass,'factory'), $debug);
-    } else {
-      $this->debug = FALSE;
+    $this->debug = FALSE;
+    if ( $settings['debug']['debug_enabled'] )
+    {
+      require_once(SM_PATH . 'smdoc.env.debug.php');
+      $this->debug = new smdoc_debug($this);
     }
 
     $this->track('smdoc->constructor');
@@ -67,23 +49,28 @@ class smdoc extends foowd {
     /*
      * Initialize Database connection
      */
-    $this->database = call_user_func(array($dbClass,'factory'), &$this, $database);
-    $this->database->open();
+    require_once(SM_PATH . 'smdoc.env.database.php');
+    $this->database = new smdoc_db_mysql($this);
 
     /*
      * Initialize template
      */
-    $this->template = call_user_func(array($templateClass,'factory'), &$this);
+    require_once(SM_PATH . 'env.template.php');
+    $this->template = new foowd_template($this);
+    $this->template->template_dir = $settings['template']['template_dir'];
+    $this->template->assign_by_ref('foowd', $this);
 
     /*
      * User group initialization
      */
-    $this->groups = call_user_func(array($groupClass,'factory'), &$this, $groups);  
+    require_once(SM_PATH . 'smdoc.class.group.php');
+    $this->groups = new smdoc_group($this);
 
     /*
      * Get current User
      */
-    $this->user = call_user_func(array($userClass,'factory'), &$this, $user);
+    require_once(SM_PATH . 'smdoc.class.user.php');
+    $this->user = smdoc_user::factory($this);
 
     $this->track();
   }
@@ -93,46 +80,13 @@ class smdoc extends foowd {
    *
    * Destroys the environment object outputting debugging information and
    * closing the database connection.
+   * smdoc: removed debug display, handled by template
    */
   function destroy()
   {
-    // @ELH remove debug display.. 
     if ( $this->database )
-      $this->database->close(); // close DB
+      $this->database->destroy(); // close DB
     unset($this);               // unset object
-  }
-
-  /**
-   * Get name of template for the given class and method. If a template does
-   * not exist for the particular class and method, we look for a template for
-   * the classes parent class until we either find a template or reach the base
-   * class. In which case we use load default template "default.tpl".
-   *
-   * @param str className Name of the class.
-   * @param str methodName Name of the method.
-   */
-  function getTemplateName($className, $methodName) 
-  {
-    return $this->template->getTemplateName($className, $methodName);
-  }
-
-
-  /**
-   * Set database table.
-   *
-   * Switch the table used for data storage and retrieval in this environment
-   * object.
-   *
-   * @param mixed table Array containing table name, and create function.
-   * @return str  The name of the old table.
-   */
-  function setTable($table)
-  {
-    //@ELH: use array for setTable (name, makeTable method) rather than just table name string.
-    if ( is_Array($table) && method_exists($this->database, 'setTable') )
-      return $this->database->setTable($table);
-    else
-      return parent::setTable($table);
   }
 
   /**
@@ -141,8 +95,6 @@ class smdoc extends foowd {
    * Given the array of uesr details, fetch the corrisponding user object from
    * the database, unserialise and return it.
    *
-   * @class foowd
-   * @method fetchUser
    * @param array userArray The user array passed into <code>{@link foowd::foowd}</code>.
    * @return mixed The selected user object or FALSE on failure.
    */
@@ -157,21 +109,19 @@ class smdoc extends foowd {
    * This method caches the list of groups in the session, only
    * creating the list if it hasn't already been created during this session.
    *
-   * @class smdoc
-   * @method getUserGroups
    * @param optional boolean $includeSpecialGroups - whether or not to include all groups.
    * @param optional boolean $memberOnly - whether or not to restrict to only groups user is a member of
    * @return array An array of user groups.
    */
-  function getUserGroups($includeAll = FALSE, $memberOnly = FALSE)
+  function getUserGroups( $includeSpecialGroups = TRUE, $memberOnly = FALSE)
   {
     if ( $includeSpecialGroups )
     {
-      $allgroups = $this->groups->getUserGroups($this, FALSE);
+      $allgroups = $this->groups->getUserGroups(FALSE);
       return $allgroups;
     }
 
-    $usergroups = $this->groups->getUserGroups($this, TRUE);
+    $usergroups = $this->groups->getUserGroups(TRUE);
 
     if ( $memberOnly )
     {
@@ -189,89 +139,52 @@ class smdoc extends foowd {
   /**
    * Fetch one version of an object.
    *
-   * Given an array containing an objectid and optionally a version number,
-   * classid and workspaceid, fetch the object from the database and return it.
-   *
-   * @class foowd
-   * @method fetchObject
-   * @param optional int objectid Object ID of object to fetch.
-   * @param optional int classid Class ID of object to fetch.
-   * @param optional int version Version number of object to fetch.
-   * @param optional int workspaceid Workspace ID of object to fetch.
+   * @param array indexes Array of indexes and values to match
+   * @param str source Source to get object from
    * @return object The selected object or NULL on failure.
-   * @see foowd::getObject
+   * @see foowd_db::getObj
    */
-  function fetchObject($objectid = NULL, $classid = NULL,
-                           $version = 0, $workspaceid = NULL) 
+  function getObj($indexes, $source = NULL)
   {
-    $this->track('smdoc->fetchObject', $objectid, $classid, $version, $workspaceid);
+    $this->track('smdoc->getObj', $indexes, $source);
 
-    $oid = is_array($objectid) ? $objectid['objectid'] : $objectid;
-    $cid = is_array($objectid) ? $objectid['classid']  : $classid;
-
-    $oid = getVarOrConst($oid, 'DEFAULT_OBJECTID');
-    $cid = getVarOrConst($cid, 'DEFAULT_CLASSID');
+    if ( isset($indexes['objectid']) )
+      $oid = $indexes['objectid'];
+    else
+      $oid = $foowd->config_settings['site']['default_objectid '];
 
     // @ELH - search for external items first
-    $new_obj = smdoc_external::factory($this, $objectid);
+    $new_obj = smdoc_external::factory($this, $oid);
     if ( $new_obj == NULL )
-    {
-      if ( $cid == USER_CLASS_ID )
-        $new_obj = $this->fetchUser(array('userid' => $objectid));
-      else
-        $new_obj = parent::fetchObject($objectid, $classid,
-                                       $version, $method, $workspaceid);
-    }
+      $new_obj = parent::getObj($indexes, $source);
 
     $this->track();
     return $new_obj;
   }
 
-  /**
-   * Get objects that match a SQL clause.
-   *
-   * Return an array of objects that match the given SQL clause. The SQL clause
-   * is given as a number of arrays which define the clause in sections.
-   *
-   * @class foowd
-   * @method getObjects
-   * @param array whereClause An array of where clause elements.
-   * @param optional array groupClause An array of group clause elements.
-   * @param optional array orderClause An array of order clause elements.
-   * @param optional int limit Limit the number of results returned.
-   * @param optional int workspaceid Workspace to retrieve objects from.
-   * @return array The array of selected objects.
-   * @see foowd::retrieveObjects
-   */
-  function getObjects($whereClause, $groupClause = NULL, $orderClause = NULL, $limit = NULL, $workspaceid = NULL) {
-        $objects = array(); //@ELH
-    $query = $this->retrieveObjects($whereClause, $groupClause, $orderClause, $limit, $workspaceid);
-    if ($query) {
-      while ($object = $this->retrieveObject($query)) {
-        $objects[] = $object;
-      }
-    }
-        return $objects; // @ELH
-  }
 
   /**
-   * Get next object from a database query resource.
+   * Get a list of objects.
    *
-   * Return the next object from a database query resource generated by
-   * <code>retrieveObjects</code>.
-   *
-   * @class foowd
-   * @method retrieveObject
-   * @param object query A database query object generated by <code>foowd::retrieveObjects</code>.
-   * @return mixed The retrieved object or FALSE on failure.
-   * @see foowd::retrieveObjects
-   */
-  function retrieveObject(&$query) {
-    $this->track('smdoc->retrieveObject', $query);
-    $obj = FALSE; // @ELH
-    if ( $query != NULL )
-      $obj = parent::retrieveObject($query);
+   * @param array indexes Array of indexes and values to find object by
+   * @param str source The source to fetch the object from
+   * @param array order The index to sort the list on
+   * @param bool reverse Display the list in reverse order
+   * @param int number The length of the list to return
+   * @param bool returnObjects Return the actual objects not just the object meta data
+   * @param bool setWorkspace get specific workspace id (or any workspace ok)
+   * @return array An array of object meta data or of objects.
+   */   
+  function &getObjList($indexes = NULL, $source = NULL, 
+                       $order = NULL, $number = NULL, 
+                       $returnObjects = FALSE, $setWorkspace = TRUE) 
+  {
+    $this->track('foowd->getObjList', $indexes);
+    $objects = &$this->database->getObjList($indexes, $source, 
+                                            $order, $number, 
+                                            $returnObjects, $setWorkspace);
     $this->track();
-    return $obj; // @ELH
+    return $objects;
   }
+
 }                                        /* END CLASS smdoc            */
