@@ -499,7 +499,7 @@ function formatMenubar($mailbox, $passed_id, $passed_ent_id, $message, $mbx_resp
     if (isset($where) && isset($what)) {
         $msgs_url .= 'search.php?where=' . urlencode($where) .
                      '&amp;what=' . urlencode($what) . '&amp;mailbox=' . $urlMailbox;
-        $msgs_str  = _("Search results");
+        $msgs_str  = _("Search Results");
     } else {
         $msgs_url .= 'right_main.php?sort=' . $sort . '&amp;startMessage=' .
                      $startMessage . '&amp;mailbox=' . $urlMailbox;
