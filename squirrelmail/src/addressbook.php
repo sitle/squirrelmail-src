@@ -296,7 +296,8 @@ if ($showaddrlist) {
             /* New table header for each backend */
             if($prevbackend != $row['backend']) {
                 if($prevbackend < 0) {
-                    echo '<TR><TD COLSPAN=5 ALIGN=center>' . "\n" .
+                    echo '<TABLE ALIGN="CENTER" WIDTH="95%">'."\n".
+                         '<TR><TD COLSPAN=5 ALIGN=center>' . "\n" .
                          '<INPUT TYPE=submit NAME=editaddr VALUE="' . 
                          _("Edit selected") . "\">\n" .
                          '<INPUT TYPE=submit NAME=deladdr VALUE="' .
