@@ -161,7 +161,7 @@ class user extends thing { // a user
 	}
 	
 // delete
-	function delete($delete_home = true) {
+	function delete($delete_home = false) {
         track('user::delete');
         if ( $delete_home ) {
             // load home thing
@@ -379,6 +379,29 @@ class user extends thing { // a user
 		}
 		track();
 	}
+
+// delete
+    function method_delete() {
+        global $conn, $wtf;
+        track('user::method::delete');
+        if (hasPermission($this, $wtf->user, 'deleteGroup')) { // check permission
+            if (getValue('confirm', FALSE) == 'true') { // do delete
+                // Here, we're actually deleting the user,
+                // so specify true to also clean up the home
+                if ($this->delete(true)) {
+                    echo '<delete_success title="', $this->title, '"/>';
+                } else {
+                    echo '<delete_error title="', $this->title, '"/>';
+                }
+            } else { // prompt
+                echo '<delete_verify url="'.THINGIDURI.$this->objectid.'&amp;class='.$wtf->class.'&amp;op=delete&amp;confirm=true" class="'.$wtf->class.'" thingid="'.$this->objectid.'" title="'.$this->title.'"/>';
+            }
+        } else {
+            echo '<thing_permissionerror method="delete" title="'.$this->title.'"/>';
+        }
+        track();
+    }
+
 
 // admin
 	function admin_update() {
