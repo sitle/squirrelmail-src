@@ -169,7 +169,7 @@ function message_list($aTemplateVars) {
     foreach($aOrder as $iCol) {
 
 ?>
-                    <td align="<?php echo $align['left']; ?>" width="<?php echo $aWidth[$iCol]; ?>%">
+                    <td align="<?php echo $align['left']; ?>" width="<?php echo $aWidth[$iCol]; ?>%" style="white-space:nowrap">
                         <b>
 <?php
         switch ($iCol) {
@@ -296,7 +296,7 @@ function calcMessageListColumnWidth($aOrder) {
     $aWidthTpl = array(
         SQM_COL_CHECK => 1,
         SQM_COL_FROM =>  25,
-        SQM_COL_DATE => 10,
+        SQM_COL_DATE => 11,
         SQM_COL_SUBJ  => 100,
         SQM_COL_FLAGS => 2,
         SQM_COL_SIZE  => 5,
