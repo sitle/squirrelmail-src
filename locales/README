@@ -7,18 +7,20 @@ internationalization.
 Releases will deal with SM packages compatibility. Having in its version
 numbering enough tips to know if it's compatible with a specific SM release.
 
-compilepo - script compiles locales. It uses locale name as first argument. 
-
-buildpackages - script compiles and builds separate translation packages in 
-                packages/ directory.
-
-compilelocales - script compiles squirrelmail.mo files
-
+Translation files:
 help/ - directory holds all help system translations
-
 install - script is used to install squirrelmail translations. It is added
           in every package.
-
 locale/ - directory holds all gettext translations.
-
 version - file used to track translation version.
+independent_strings.txt - extra strings that can't be extracted from squirrelmail
+                          php files.
+
+Support scripts:
+compilepo      - script compiles locales. It uses locale name as first argument.
+mergepo        - script combines strings in main squirrelmail.po with translation
+                 strings. It uses translation name as first argument.
+buildpackages  - script compiles and builds separate translation packages in 
+                 packages/ directory.
+compilelocales - script compiles all squirrelmail.mo files
+status         - script generates html page with status of translations
