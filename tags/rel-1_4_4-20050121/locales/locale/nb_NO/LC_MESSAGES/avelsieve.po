@@ -1,0 +1,721 @@
+# translation of avelsieve.po to 
+# Alexander Brill <kiowa@egil.org>, 2003
+msgid ""
+msgstr ""
+"Project-Id-Version: avelsieve\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2003-06-09 09:32+0300\n"
+"PO-Revision-Date: 2003-05-02 14:39+0200\n"
+"Last-Translator: Alexander Brill <kiowa@egil.org>\n"
+"Language-Team:  <alexander@nettstudio.no>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=ISO-8859-1\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.0.1\n"
+
+#: ../addrule.php:82 ../process_input.php:39
+msgid "You have to define at least one header match text."
+msgstr "Du m&aring; definere minst en meldings-hoder tekst. "
+
+#: ../addrule.php:134
+#, fuzzy
+msgid "You have not defined the name for the new folder."
+msgstr "Du m&aring; definere minst en meldings-hoder tekst. "
+
+#: ../addrule.php:135
+msgid "Please try again."
+msgstr ""
+
+#: ../addrule.php:146
+msgid "Illegal folder name.  Please select a different name"
+msgstr ""
+
+#: ../addrule.php:391 ../addrule.php:396 ../addrule.php:463 ../addrule.php:473
+msgid "New Rule Wizard - Step"
+msgstr "Ny Regel Hjelper - Steg"
+
+#: ../addrule.php:391 ../addrule.php:396 ../addrule.php:463 ../addrule.php:473
+msgid "of"
+msgstr "av"
+
+#: ../addrule.php:391
+msgid "Rule Type"
+msgstr "Regeltype"
+
+#: ../addrule.php:396 ../edit.php:168
+msgid "Condition"
+msgstr "Betingelse"
+
+#: ../addrule.php:463 ../edit.php:197
+msgid "Action"
+msgstr "Utf&oslash;relse"
+
+#: ../addrule.php:473
+msgid "Confirmation"
+msgstr "Bekreftelse"
+
+#: ../addrule.php:476
+msgid ""
+"<p>You have chosen to keep every mail. This is the default action anyway, so "
+"you might want to start over with a rule that makes more sense. Select &quot;"
+"finished&quot; to save this rule nonetheless.</p>"
+msgstr ""
+"<p>Du har valtgt &aring; beholde all epost. Dette er standard, s&aring; du "
+"vil kanskjestarte om igjen med et regelverk som utf&oslash;rer en handling "
+"utover dette.Velg &quot;Ferdig&quot; for å lagre denne regelen uansett.</p>"
+
+#: ../addrule.php:485
+msgid ""
+"Please use the buttons on the bottom instead of your browser's reload, back "
+"and forward buttons, to build a rule."
+msgstr ""
+"Vennligst bruk knappene p&aring; bunnen i stedet for din nettlesers "
+"oppdater-, tilbake- og framover-knapper for &aring; lage en regel."
+
+#: ../addrule_html.php:41
+msgid "Clear this Form"
+msgstr "Slett"
+
+#: ../addrule_html.php:46
+msgid "Start Over"
+msgstr "Start På Nytt"
+
+#: ../addrule_html.php:51 ../edit.php:218
+msgid "Cancel"
+msgstr "Avbryt"
+
+#: ../addrule_html.php:60
+msgid "Move back to step"
+msgstr "G&aring; tilbake til steg"
+
+#: ../addrule_html.php:66
+msgid "Finished"
+msgstr "Ferdig"
+
+#: ../addrule_html.php:70
+msgid "Move on to step"
+msgstr "G&aring; videre til steg"
+
+#: ../addrule_html.php:120
+msgid "What kind of rule would you like to add?"
+msgstr "Hvilken type regel vil du legge til?"
+
+#: ../addrule_html.php:153
+msgid ""
+"The rule will trigger if the following addresses appear anywhere in the "
+"message's headers:"
+msgstr ""
+"Denne regel vil bli gjort gjeldende hvis meldings-hodet inneholder de "
+"f&oslash;lgende adresser:"
+
+#: ../addrule_html.php:238
+msgid "AND (Every item must match)"
+msgstr "OG (Alle punktene m&aring; eksistere)"
+
+#: ../addrule_html.php:239
+msgid "OR (Either item will match)"
+msgstr "ELLER (Et av punktene må eksistere)"
+
+#: ../addrule_html.php:242
+msgid "The condition for the following rules is:"
+msgstr "Den f&oslash;lgende regelen m&aring; inneholde:"
+
+#: ../addrule_html.php:308
+msgid "The header "
+msgstr "Epostens meldings-hode"
+
+#: ../addrule_html.php:333
+msgid "Less..."
+msgstr "Mindre..."
+
+#: ../addrule_html.php:339
+msgid "More..."
+msgstr "Mer..."
+
+#: ../addrule_html.php:355
+msgid "This rule will trigger if message is"
+msgstr "Denne regelen vil bli gjort gjeldende hvis eposten er"
+
+#: ../addrule_html.php:365
+msgid "bigger"
+msgstr "st&oslash;rre"
+
+#: ../addrule_html.php:373
+msgid "smaller"
+msgstr "mindre"
+
+#: ../addrule_html.php:375 ../buildrule.php:250
+msgid "than"
+msgstr " enn "
+
+#: ../addrule_html.php:393
+msgid "KB (kilobytes)"
+msgstr "KB (KiloBytes)"
+
+#: ../addrule_html.php:401
+msgid "MB (megabytes)"
+msgstr "MB (MegaBytes)"
+
+#: ../addrule_html.php:409
+msgid ""
+"The following action will be applied to <strong>all</strong> incoming "
+"messages that do not match any of the previous rules."
+msgstr ""
+"De f&oslash;lgende metodene vil bli utf&oslash;rt p&aring; <strong>alle</"
+"strong> innkommende meldinger som ikke er ber&oslash;rt av tidligere regler."
+
+#: ../addrule_html.php:416
+msgid ""
+"This rule will trigger upon the occurrence of one or more strings in the "
+"body of an e-mail message. "
+msgstr ""
+"Denne regelen vil bli gjort gjeldende n&aring;r eposten inneholder et eller "
+"flere ord i selve epost-teksten. "
+
+#: ../addrule_html.php:453
+msgid "Choose what to do when this rule triggers, from one of the following:"
+msgstr ""
+"Velg hva som skal utf&oslash;res n&aring;r denne regelenblir gjort gjeldende "
+"p&aring; ett av de f&oslash;lgende:"
+
+#: ../addrule_html.php:459 ../constants.php:44
+msgid "Keep (Default action)"
+msgstr "Behold (Standard handling)"
+
+#: ../addrule_html.php:465 ../constants.php:47
+msgid "Discard Silently"
+msgstr "Stille Sletting"
+
+#: ../addrule_html.php:473 ../constants.php:50
+msgid "Reject, sending this excuse to the sender:"
+msgstr "Nekt å motta; send dette svaret til senderen"
+
+#: ../addrule_html.php:480
+msgid "Please do not send me large attachments."
+msgstr "Vennligst ikke send meg store vedlegg"
+
+#: ../addrule_html.php:492 ../constants.php:53
+msgid "Redirect to the following email address:"
+msgstr "Videresend til den f&oslash;lgende epost-adressen:"
+
+#: ../addrule_html.php:498
+msgid "someone@example.org"
+msgstr "noen@eksempel.no"
+
+#: ../addrule_html.php:510 ../constants.php:56
+msgid "Move message into"
+msgstr "Flytt meldingen til"
+
+#: ../addrule_html.php:517 ../addrule_html.php:526
+msgid "the existing folder"
+msgstr "den eksisterende mappen"
+
+#: ../addrule_html.php:533
+msgid "a new folder, named"
+msgstr "en ny mappe; ved navn"
+
+#: ../addrule_html.php:535
+msgid "created as a subfolder of"
+msgstr "laget som en undermappe i"
+
+#: ../addrule_html.php:554
+msgid "Also keep copy in INBOX, marked as deleted."
+msgstr "Behold ogs&aring; en kopi i Innboksen, merket som slettet."
+
+#: ../addrule_html.php:574
+msgid "Vacation"
+msgstr "Ferie/borte/automatisk svar"
+
+#: ../addrule_html.php:576
+msgid ""
+"The notice will be sent only once to each person that sends you mail, and "
+"will not be sent to a mailing list address."
+msgstr ""
+"Denne meldingen vil bli sendt bare en gang til hver person som sender deg "
+"epost, og vil ikke bli sendt til epostlister."
+
+#: ../addrule_html.php:578
+msgid "Addresses: Only reply if sent to these addresses:"
+msgstr "Adresser: Bare svar hvis avsender har sendt til disse adressene:"
+
+#: ../addrule_html.php:587
+msgid "Days: Reply message will be resent after"
+msgstr "Dager: Tilbakesvar-beskjeder vil bli sendt igjen etter"
+
+#: ../addrule_html.php:595
+msgid "days"
+msgstr "dager"
+
+#: ../addrule_html.php:597
+msgid "Use the following message:"
+msgstr "Bruk f&oslash;lgende melding:"
+
+#: ../addrule_html.php:603
+msgid ""
+"This is an automated reply; I am away and will not be able to reply to you "
+"immediately."
+msgstr ""
+"Dette er et automatisk svar; Jeg er ikke tilgjengelig og har ikke anledning "
+"til &aring; svare deg med en gang."
+
+#: ../addrule_html.php:604
+msgid "I will get back to you as soon as I return."
+msgstr "Jeg gir svar p[ din epost s&aring; snart jeg er tilbake."
+
+#: ../addrule_html.php:616
+msgid "Additional Actions"
+msgstr "Flere Handlinger"
+
+#: ../addrule_html.php:627 ../addrule_html.php:630
+msgid "STOP"
+msgstr "STOPP"
+
+#: ../addrule_html.php:632
+msgid "If this rule matches, do not check any rules after it."
+msgstr "Hvis denne regelen blir gjort gjeldende, ikke sjekk flere regler."
+
+#: ../addrule_html.php:645
+msgid "Notify me, using the following method:"
+msgstr "Varsle meg med f&oslash;lgende metode:"
+
+#: ../addrule_html.php:681
+msgid "Notification ID"
+msgstr "Notification ID"
+
+#: ../addrule_html.php:690
+msgid "Parameters"
+msgstr "Parametere"
+
+#: ../addrule_html.php:717
+msgid "Message"
+msgstr "Melding"
+
+#: ../addrule_html.php:726
+msgid "Help: Valid variables are:"
+msgstr "Hjelp: Gyldige variabler er:"
+
+#: ../addrule_html.php:742
+msgid "Your new rule states:"
+msgstr "Din nye regel utf&oslash;rer:"
+
+#: ../addrule_html.php:744
+msgid ""
+"If this is what you wanted, select Finished. You can also start over or "
+"cancel adding a rule altogether."
+msgstr ""
+"Hvis dette er hva du &oslash;nsker, velg Ferdig. Du kan ogs&aring; starte "
+"p&aring; nytt eller avbryte denne handlingen."
+
+#: ../avelsieve_support.inc.php:42 ../avelsieve_support.inc.php:44
+msgid "Error Encountered"
+msgstr "Det har oppst&aring;tt en feil"
+
+#: ../buildrule.php:54
+msgid "For <strong>ALL</strong> incoming messages; "
+msgstr "For <strong>ALLE</strong> innkommende meldinger;"
+
+#: ../buildrule.php:57
+msgid "If"
+msgstr "Hvis"
+
+#: ../buildrule.php:75
+msgid "<em>any</em> of the following mail headers match: "
+msgstr "<em>noen</em> av de f&oslash;lgende epost-meldingshodene eksisterer:"
+
+#: ../buildrule.php:80
+msgid "<em>all</em> of the following mail headers match: "
+msgstr "<em>alle</em> av de f&oslash;lgende epost-meldingshodene eksisterer: "
+
+#: ../buildrule.php:93
+msgid "the header"
+msgstr "meldingshode"
+
+#: ../buildrule.php:101 ../constants.php:63
+msgid "is"
+msgstr "er"
+
+#: ../buildrule.php:106 ../constants.php:64
+msgid "is not"
+msgstr "ikke"
+
+#: ../buildrule.php:111 ../constants.php:61
+msgid "contains"
+msgstr "inneholder"
+
+#: ../buildrule.php:116 ../constants.php:62
+msgid "does not contain"
+msgstr "inneholder ikke"
+
+#: ../buildrule.php:121
+msgid "matches"
+msgstr "innhold passer"
+
+#: ../buildrule.php:127
+msgid "does not match"
+msgstr "innholder passer ikke"
+
+#: ../buildrule.php:133 ../constants.php:76
+msgid "is greater than"
+msgstr "er st&oslash;rre enn"
+
+#: ../buildrule.php:138 ../constants.php:77
+msgid "is greater or equal to"
+msgstr "er st&oslash;rre eller lik"
+
+#: ../buildrule.php:143 ../constants.php:78
+msgid "is lower than"
+msgstr "er lavere enn"
+
+#: ../buildrule.php:148 ../constants.php:79
+msgid "is lower or equal to"
+msgstr "er lavere eller lik"
+
+#: ../buildrule.php:153 ../constants.php:80
+msgid "is equal to"
+msgstr "er lik"
+
+#: ../buildrule.php:158 ../constants.php:81
+msgid "is not equal to"
+msgstr "er ikke lik"
+
+#: ../buildrule.php:163
+msgid "matches the regural expression"
+msgstr "passer med &quot;regular expression&quot;"
+
+#: ../buildrule.php:169
+msgid "does not match the regural expression"
+msgstr "passer ikke med &quot;regular expression&quot;"
+
+#: ../buildrule.php:175
+msgid "exists"
+msgstr "eksisterer"
+
+#: ../buildrule.php:180
+msgid "does not exist"
+msgstr "eksisterer ikke"
+
+#: ../buildrule.php:237
+msgid "the size of the message is"
+msgstr "st&oslash;rrelsen p&aring; meldingen er"
+
+#: ../buildrule.php:244
+msgid " bigger"
+msgstr " st&oslash;rre"
+
+#: ../buildrule.php:248
+msgid " smaller"
+msgstr " mindre"
+
+#: ../buildrule.php:278
+msgid "then"
+msgstr "enn"
+
+#: ../buildrule.php:285
+msgid "<em>keep</em> it."
+msgstr "<em>behold</em> den."
+
+#: ../buildrule.php:291
+msgid "<em>discard</em> it."
+msgstr "<em>ignorer</em> den."
+
+#: ../buildrule.php:298
+msgid "<em>reject</em> it, sending this excuse back to the sender:"
+msgstr "<em>nekt</em> den, og send dette svaret tilbake til senderen:"
+
+#: ../buildrule.php:304
+msgid "<em>redirect</em> it to the email address"
+msgstr "<em>send videre</em> til epost-adressen"
+
+#: ../buildrule.php:311
+msgid "<em>file</em> it into the folder <strong>"
+msgstr "<em>lagre</em> i mappen <strong>"
+
+#: ../buildrule.php:328
+msgid "reply with this vacation message: "
+msgstr "svar med denne automatisk-svar-meldingen:"
+
+#: ../buildrule.php:337
+msgid " Also keep a copy in INBOX, marked as deleted."
+msgstr " Behold ogs&aring; en melding i Innboksen, markert som slettet."
+
+#: ../buildrule.php:343
+msgid " Then <strong>STOP</strong> processing rules."
+msgstr " S&aring; <strong>STOPP</strong> &aring; prosessere regler."
+
+#: ../buildrule.php:365
+msgid " Also notify using the method"
+msgstr " Varlse ogs&aring; med denne metoden"
+
+#: ../buildrule.php:367
+msgid "with"
+msgstr "med"
+
+#: ../buildrule.php:369
+msgid "priority and the message"
+msgstr "prioritet og melding"
+
+#: ../constants.php:16
+msgid "Address Match"
+msgstr "Stemmer med epost-adresse"
+
+#: ../constants.php:17 ../constants.php:22
+msgid ""
+"Perform an action on messages matching a specified header (From, To etc.)."
+msgstr ""
+"Utf&oslash;r en handling p&aring; meldingen som inneholder et spesifisert "
+"meldingshode (Fra, Til osv.)."
+
+#: ../constants.php:21
+msgid "Header Match"
+msgstr "Stemmer med epost-meldingshode"
+
+#: ../constants.php:26
+msgid "Size"
+msgstr "St&oslash;rrelse"
+
+#: ../constants.php:27
+msgid "Perform an action on messages depending on their size."
+msgstr ""
+"Utf&oslash;r en handling p&aring; meldingen avhengig av dens st&oslash;"
+"rrelse."
+
+#: ../constants.php:31
+msgid "All Messages"
+msgstr "Alle Meldinger"
+
+#: ../constants.php:32
+msgid "Perform an action on <strong>all</strong> incoming messages."
+msgstr ""
+"Utf&oslash;r en handling p&aring; <strong>alle</strong> innkommende "
+"meldinger."
+
+#: ../constants.php:37
+msgid "Body Match"
+msgstr "Stemmer med epostens innhold"
+
+#: ../constants.php:38
+msgid "Perform an action on messages depending on their content (body text)."
+msgstr ""
+"Utf&oslash;r en handling p&aring; meldinger avhengig av deres innhold (body "
+"tekst)."
+
+#: ../constants.php:65
+msgid "matches wildcard"
+msgstr "stemmer med wildcard"
+
+#: ../constants.php:66
+msgid "does not match wildcard"
+msgstr "stemmer ikke med wildcard"
+
+#: ../constants.php:70
+msgid "matches regexp"
+msgstr "stemmer med regexp"
+
+#: ../constants.php:87
+msgid "verbose"
+msgstr "Utfyllende"
+
+#: ../constants.php:88
+msgid "terse"
+msgstr "Konsist"
+
+#: ../constants.php:96
+msgid "Mobile Phone Message (SMS)"
+msgstr "Melding til Mobiltelefon (SMS)"
+
+#: ../constants.php:97
+msgid "Email notification"
+msgstr "Melding via epost"
+
+#: ../constants.php:98
+msgid "Notification via Zephyr"
+msgstr "Zephyr"
+
+#: ../constants.php:99
+msgid "Notification via ICQ"
+msgstr "ICQ"
+
+#: ../constants.php:103
+msgid "Low"
+msgstr "Lav"
+
+#: ../constants.php:104
+msgid "Normal"
+msgstr "Normal"
+
+#: ../constants.php:105
+msgid "High"
+msgstr "H&oslash;y"
+
+#: ../edit.php:135
+msgid "Editing Mail Filtering Rule"
+msgstr "Editere Epost-Filtrerings-Regel"
+
+#: ../edit.php:214
+msgid "Add New Rule"
+msgstr "Lag Ny Regel"
+
+#: ../edit.php:216
+msgid "Apply Changes"
+msgstr "Utf&oslash;r Endringer"
+
+#: ../setup.php:40
+msgid "Message Filters"
+msgstr "Meldings-filter"
+
+#: ../setup.php:42
+msgid ""
+"Server-Side mail filtering enables you to add criteria in order to "
+"automatically forward, delete or place a given message into a folder."
+msgstr ""
+"Filtrering av dine meldinger på epost-serveren gj&oslash;r at du kan "
+"forh&aring;ndsdefinere automatisk sende videre, slette eller legge meldinger "
+"i andre mapper ut ifra spesielle kriterier."
+
+#: ../setup.php:86
+msgid "Filters"
+msgstr "Filtre"
+
+#: ../table.php:73 ../table.php:136
+msgid "Could not log on to timsieved daemon on your IMAP server"
+msgstr "Kunne ikke logge p&aring; timsieved daemonen p&aring; din IMAP-tjener"
+
+#: ../table.php:75 ../table.php:139 ../table.php:154 ../table.php:198
+msgid "Please contact your administrator."
+msgstr "Vennligst kontakt din system-administrator"
+
+#: ../table.php:90 ../table.php:359
+msgid "Current Mail Filtering Rules"
+msgstr "N&aring;v&aelig;rende Regler"
+
+#: ../table.php:92 ../table.php:215
+msgid "No Filtering Rules Defined Yet"
+msgstr "Ingen Regler Definert"
+
+#: ../table.php:138
+msgid "in order to save your rules."
+msgstr "for &aring; lagre dine regler."
+
+#: ../table.php:152
+msgid "Could not set active script on your IMAP server"
+msgstr "Kunne ikke aktivere regelsettet p&aring; din IMAP-tjener"
+
+#: ../table.php:195
+msgid "Could not get SIEVE script from your IMAP server"
+msgstr "Kunne ikke hente SIEVE regelsettet fra IMAP-tjeneren din."
+
+#: ../table.php:197
+msgid "(Probably the script is size null)."
+msgstr "(Sannsynligvis er regelsettet tomt)."
+
+#: ../table.php:269
+msgid "All your rules have been deleted"
+msgstr "Alle dine regler har blitt slettet"
+
+#: ../table.php:392 ../table.php:394
+msgid "Edit"
+msgstr "Editere"
+
+#: ../table.php:402 ../table.php:404
+msgid "Delete"
+msgstr "Slett"
+
+#: ../table.php:412 ../table.php:414
+msgid "Duplicate"
+msgstr "Duplisere"
+
+#: ../table.php:422 ../table.php:425
+msgid "Move Up"
+msgstr "Flytt Opp"
+
+#: ../table.php:435 ../table.php:438
+msgid "Move Down"
+msgstr "Flytt Ned"
+
+#: ../table.php:453
+msgid "Delete Selected"
+msgstr "Slett Valg(te)"
+
+#: ../table_html.php:17 ../table_html.php:33
+msgid "Server-Side Mail Filtering"
+msgstr "Filtrering p&aring; epostserveren"
+
+#: ../table_html.php:114 ../table_html.php:125
+msgid ""
+"Here you can add or delete filtering rules for your email account. These "
+"filters will always apply to your incoming mail, wherever you check your "
+"email."
+msgstr ""
+"Her kan du legge til eller slette filterings-regler for din epost-konto. "
+"Disse filterene vil alltid gjelde innkommende epost, uansett hvor du sjekker "
+"den (Hjemme, på kontoret, bærbar, mob. m.m.)."
+
+#: ../table_html.php:117
+msgid ""
+"You don't have any rules yet. Feel free to add any with the button &quot;Add "
+"a New Rule&quot;. When you are done, please select &quot;Save Changes&quot; "
+"to get back to the main options screen."
+msgstr ""
+"Du har ingen definerte regler. Du kan legge til regler med knappen &quot;Lag "
+"ny Regel&quot;. N&aring;r du er ferdig, vennligst velg &quot;Lagre "
+"Endringer&quot; for &aring; komme tilbake til hovedmenyen."
+
+#: ../table_html.php:128
+msgid ""
+"When you are done with editing, <strong>remember to select &quot;Save "
+"Changes&quot;</strong> to activate your changes!"
+msgstr ""
+"N&aring;r du er ferdig med &aring; editere, <strong>husk &aring; velge &quot;"
+"Lagre Endringer&quot;</strong> for &aring; aktivere dine endringer!"
+
+#: ../table_html.php:137
+msgid "Successfully added new rule."
+msgstr "Lagt til ny regel"
+
+#: ../table_html.php:140
+msgid "Successfully updated rule #"
+msgstr "Regel er oppdatert"
+
+#: ../table_html.php:145
+msgid "Successfully deleted rules #"
+msgstr "Regler er slettet: #"
+
+#: ../table_html.php:153
+msgid "Successfully deleted rule #"
+msgstr "Regel er slettet: #"
+
+#: ../table_html.php:163
+msgid "The following table summarizes your current mail filtering rules."
+msgstr "I f&oslash;lgende tabell finner du en oversikt over gjeldende regler."
+
+#: ../table_html.php:173
+msgid "No"
+msgstr "Nei"
+
+#: ../table_html.php:178
+msgid "Description of Rule"
+msgstr "Beskrivelse av regel"
+
+#: ../table_html.php:181
+msgid "Display as:"
+msgstr "Vis som:"
+
+#: ../table_html.php:193
+msgid "Options"
+msgstr "Alternativer/valg"
+
+#: ../table_html.php:223
+#, fuzzy
+msgid "Add a New Rule"
+msgstr "Lag Ny Regel"
+
+#: ../table_html.php:229
+msgid ""
+"When you are done, please click the button below to return to your webmail."
+msgstr ""
+"N&aring;r du er ferdig, trykk knappen under for &aring; g&aring; tilbake til "
+"din webmail."
+
+#: ../table_html.php:231
+msgid "Save Changes"
+msgstr "Lagre endringer"
