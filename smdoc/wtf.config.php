@@ -91,7 +91,6 @@ define('USERADMINGROUP', GODS); // default admin group
 /* URI settings */
 define('THING', 'thing'); // thing name in querystring
 define('THINGID', 'thingid'); // thing id in querystring
-define('FILENAME', '/index.php'); // filename used as base document
 define('THINGURI', FILENAME.'?'.THING.'='); // full prefix for thing name in querystring
 define('THINGIDURI', FILENAME.'?'.THINGID.'='); // full prefix for thing id in querystring
 
