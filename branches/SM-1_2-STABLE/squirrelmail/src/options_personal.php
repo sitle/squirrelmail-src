@@ -24,7 +24,7 @@ define('SMOPT_GRP_TZ', 3);
 function load_optpage_data_personal() {
     global $data_dir, $edit_identity, $edit_name,
            $full_name, $reply_to, $email_address, $signature, $tzChangeAllowed;
-    if ( (float)substr(PHP_VERSION,0,3) < 4.1 ) {
+    if ( !check_php_version(4,1) ) {
         global $_SESSION;
     }        
     $username = $_SESSION['username'];
@@ -207,7 +207,7 @@ function load_optpage_data_personal() {
 
 function save_option_signature($option) {
     global $data_dir, $username;
-    if ( (float)substr(PHP_VERSION,0,3) < 4.1 ) {
+    if ( !check_php_version(4,1) ) {
         global $_SESSION;
     } 
     $username = $_SESSION['username'];

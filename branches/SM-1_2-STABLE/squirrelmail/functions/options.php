@@ -295,7 +295,7 @@ class SquirrelOption {
 }
 
 function save_option($option) {
-    if ( (float)substr(PHP_VERSION,0,3) < 4.1 ) {
+    if ( !check_php_version(4,1) ) {
         global $_SESSION;
     }
     global $data_dir;

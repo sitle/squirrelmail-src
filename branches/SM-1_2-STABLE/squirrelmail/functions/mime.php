@@ -755,7 +755,7 @@ function formatBody($imap_stream, $message, $color, $wrap_at) {
     global $startMessage, $username, $key, $imapServerAddress, $imapPort, $body,
            $show_html_default, $has_unsafe_images, $sort;
 
-    if ( (float)substr(PHP_VERSION,0,3) < 4.1 ) {
+    if ( !check_php_version(4,1) ) {
         global $_GET;
     }
     if(isset($_GET['view_unsafe_images'])) {

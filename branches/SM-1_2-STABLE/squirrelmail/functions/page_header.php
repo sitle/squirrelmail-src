@@ -17,7 +17,7 @@ require_once('../src/global.php');
 
 /* Always set up the language before calling these functions */
 function displayHtmlHeader( $title = 'SquirrelMail', $xtra = '', $do_hook = TRUE ) {
-    if ( (float)substr(PHP_VERSION,0,3) < 4.1 ) {
+    if ( !check_php_version(4,1) ) {
             global $_SESSION;
     }
     if (isset($_SESSION['base_uri'])) {
@@ -50,7 +50,7 @@ function displayHtmlHeader( $title = 'SquirrelMail', $xtra = '', $do_hook = TRUE
 
 function displayInternalLink($path, $text, $target='') {
 
-    if ( (float)substr(PHP_VERSION,0,3) < 4.1 ) {
+    if ( !check_php_version(4,1) ) {
             global $_SESSION;
     }
 
@@ -68,7 +68,7 @@ function displayPageHeader($color, $mailbox, $xtra='', $session=false) {
            $compose_new_win, $username, $datadir, $compose_width, $compose_height,
            $attachemessages, $session;
            
-    if ( (float)substr(PHP_VERSION,0,3) < 4.1 ) {
+    if ( !check_php_version(4,1) ) {
             global $_SESSION;
     }
 

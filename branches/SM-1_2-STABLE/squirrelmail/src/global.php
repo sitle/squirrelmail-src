@@ -20,7 +20,7 @@
  * and redirect.php. Patch submitted by Ray Black.
  */ 
 
-if ( (float)substr(PHP_VERSION,0,3) < 4.1 ) {
+if ( !check_php_version(4,1) ) {
   global $_COOKIE, $_ENV, $_FILES, $_GET, $_POST, $_SERVER, $_SESSION;
   global $HTTP_COOKIE_VARS, $HTTP_ENV_VARS, $HTTP_POST_FILES, $HTTP_GET_VARS,
          $HTTP_POST_VARS, $HTTP_SERVER_VARS, $HTTP_SESSION_VARS;
@@ -49,6 +49,17 @@ if (get_magic_quotes_gpc()) {
 
 strip_tags($_SERVER['PHP_SELF']);
 
+/* returns true if current php version is at mimimum a.b.c */
+function check_php_version ($a = '0', $b = '0', $c = '0')             
+{
+    global $SQ_PHP_VERSION;       
+
+    if(!isset($SQ_PHP_VERSION))         
+        $SQ_PHP_VERSION = str_pad( preg_replace('/\D/','', PHP_VERSION), 3, '0');             
+
+    return $SQ_PHP_VERSION >= ($a.$b.$c);       
+}
+
 function sqstripslashes(&$array) {
     foreach ($array as $index=>$value) {
         if (is_array($array["$index"])) {
@@ -62,7 +73,7 @@ function sqstripslashes(&$array) {
 
 function sqsession_register ($var, $name) {
     $rg = ini_get('register_globals');
-    if ( (float)substr(PHP_VERSION,0,3) < 4.1 && empty($rg)) {
+    if ( !check_php_version(4,1) && empty($rg)) {
         global $HTTP_SESSION_VARS;
         $HTTP_SESSION_VARS["$name"] = $var;
     }
@@ -72,7 +83,7 @@ function sqsession_register ($var, $name) {
 }
 function sqsession_unregister ($name) {
     $rg = ini_get('register_globals');
-    if ( (float)substr(PHP_VERSION,0,3) < 4.1 && empty($rg)) {
+    if ( !check_php_version(4,1) && empty($rg)) {
     global $HTTP_SESSION_VARS;
         unset($HTTP_SESSION_VARS["$name"]);
     }
@@ -84,7 +95,7 @@ function sqsession_unregister ($name) {
 function sqsession_is_registered ($name) {
     $test_name = &$name;
     $result = false;
-    if ( (float)substr(PHP_VERSION,0,3) < 4.1 ) {
+    if ( !check_php_version(4,1) ) {
         global $HTTP_SESSION_VARS;
         if (isset($HTTP_SESSION_VARS[$test_name])) {
             $result = true;
@@ -104,7 +115,7 @@ function sqsession_destroy() {
     /* start session to be able to destroy it later */
     session_start();
 
-    if ( (float)substr(PHP_VERSION , 0 , 3) < 4.1) {
+    if ( !check_php_version(4,1) ) {
         global $HTTP_SESSION_VARS;
         $HTTP_SESSION_VARS = array();
     }
@@ -130,7 +141,7 @@ function sqsession_destroy() {
  *  (in that order) and register it as a global var.
  */
 function sqextractGlobalVar ($name) {
-    if ( (float)substr(PHP_VERSION,0,3) < 4.1 ) {
+    if ( !check_php_version(4,1) ) {
         global $_SESSION, $_GET, $_POST;
     }
     global  $$name;

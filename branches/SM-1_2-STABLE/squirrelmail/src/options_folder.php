@@ -20,7 +20,7 @@ define('SMOPT_GRP_FOLDERLIST', 1);
 /* Define the optpage load function for the folder options page. */
 function load_optpage_data_folder() {
     global $imapServerAddress, $imapPort;
-    if ( (float)substr(PHP_VERSION,0,3) < 4.1 ) {
+    if ( !check_php_version(4,1) ) {
         global $_SESSION, $_COOKIE;
     }
     global $folder_prefix, $default_folder_prefix, $show_prefix_option;
@@ -223,7 +223,7 @@ function load_optpage_data_folder() {
 /******************************************************************/
 function save_option_trash_folder($option) {
     global $data_dir;
-    if ( (float)substr(PHP_VERSION,0,3) < 4.1 ) {
+    if ( !check_php_version(4,1) ) {
         global $_SESSION;
     }
     $username = $_SESSION['username'];
@@ -238,7 +238,7 @@ function save_option_trash_folder($option) {
 
 function save_option_sent_folder($option) {
     global $data_dir;
-    if ( (float)substr(PHP_VERSION,0,3) < 4.1 ) {
+    if ( !check_php_version(4,1) ) {
         global $_SESSION;
     }
     $username = $_SESSION['username'];
@@ -253,7 +253,7 @@ function save_option_sent_folder($option) {
 
 function save_option_draft_folder($option) {
     global $data_dir;
-    if ( (float)substr(PHP_VERSION,0,3) < 4.1 ) {
+    if ( !check_php_version(4,1) ) {
         global $_SESSION;
     }
     $username = $_SESSION['username'];
