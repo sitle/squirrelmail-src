@@ -2,11 +2,12 @@
 *** SquirrelMail Stable Series 1.2 ***
 **************************************
 
-Version 1.2.10 [cvs]
+Version 1.2.10 -- 2 December 2002
 ---------------------------------
   - Fixed version checking to ignore patch levels.
   - Fixed bugs / worked around PHP problems in sqsession_register.
     This should fix a small range of session-related problems.
+  - Introduce session naming to avoid session collision with other apps.
   - Fixed that long preferences lines where not being read correctly.
   - Raised requirements to PHP 4.0.4 (was 4.0.2).
   - Support for charactersets 8859-4, 8859-13 and windows-1257.
