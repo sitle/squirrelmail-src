@@ -69,7 +69,7 @@ if ( -e "config.php" ) {
     close(FILE);
 
     if ( $config_version ne $conf_pl_version ) {
-        system "clear";
+        clear_screen();
         print $WHT. "WARNING:\n" . $NRM;
         print "  The file \"config/config.php\" was found, but it is for\n";
         print "  an older version of SquirrelMail. It is possible to still\n";
@@ -122,7 +122,7 @@ if ( -e "config.php" ) {
     close(FILE);
 
     if ( $config_version ne $conf_pl_version ) {
-        system "clear";
+        clear_screen();
         print $WHT. "WARNING:\n" . $NRM;
         print "  You are trying to use a 'config_default.php' from an older\n";
         print "  version of SquirrelMail. This is HIGHLY unrecommended. You\n";
@@ -382,7 +382,7 @@ if ( $config_use_color == 1 ) {
 }
 
 while ( ( $command ne "q" ) && ( $command ne "Q" ) ) {
-    system "clear";
+    clear_screen();
     print $WHT. "SquirrelMail Configuration : " . $NRM;
     if    ( $config == 1 ) { print "Read: config.php"; }
     elsif ( $config == 2 ) { print "Read: config_default.php"; }
@@ -1779,8 +1779,8 @@ sub command215 {
         print "mail to also contain folders.\n";
         print "Deleting folders will bypass the trash folder and";
         print "be immediately deleted\n\n";
-        print "If this is not the correct value for your server,";
-        print "please use option D. on the Main Menu to configure your server correctly.\n\n";
+        print "If this is not the correct value for your server,\n";
+        print "please use option D on the Main Menu to configure your server correctly.\n\n";
         print "Press any key to continue...\n";
         $new_delete = <STDIN>;
         $delete_folder = "true";
@@ -2865,6 +2865,15 @@ sub save_data {
 	    print CF "\n";
 		print CF "\@include SM_PATH . 'config/config_local.php';\n";
     
+		print CF "\n/**\n";
+	    print CF " * Make sure there are no characters after the PHP closing\n";
+	    print CF " * tag below (including newline characters and whitespace).\n";
+	    print CF " * Otherwise, that character will cause the headers to be\n";
+	    print CF " * sent and regular output to begin, which will majorly screw\n";
+	    print CF " * things up when we try to send more headers later.\n";
+	    print CF " */\n";
+	    print CF "?>";
+        
 		close CF;
 
 	    print "Data saved in config.php\n";
@@ -2874,7 +2883,7 @@ sub save_data {
 }
 
 sub set_defaults {
-    system "clear";
+    clear_screen();
     print $WHT. "SquirrelMail Configuration : " . $NRM;
     if    ( $config == 1 ) { print "Read: config.php"; }
     elsif ( $config == 2 ) { print "Read: config_default.php"; }
@@ -3002,9 +3011,11 @@ sub set_defaults {
 # prepended to the path, if not, then the path will be
 # converted to an absolute path, e.g.
 #   '../images/logo.gif'      --> SM_PATH . 'images/logo.gif'
+#   '../../someplace/data'    --> '/absolute/path/someplace/data'
 #   'images/logo.gif'         --> SM_PATH . 'config/images/logo.gif'
 #   '/absolute/path/logo.gif' --> '/absolute/path/logo.gif'
 #   'http://whatever/'        --> 'http://whatever'
+#   $some_var/path            --> "$some_var/path"
 sub change_to_SM_path() {
     my ($old_path) = @_;
     my $new_path = '';
@@ -3018,7 +3029,16 @@ sub change_to_SM_path() {
     return "\'" . $old_path . "\'"  if ( $old_path =~ /^\w:\// );
     return $old_path                if ( $old_path =~ /^\'(\/|http)/ );
     return $old_path                if ( $old_path =~ /^\'\w:\// );
-    return $old_path                if ( $old_path =~ /^(\$|SM_PATH)/);
+    return $old_path                if ( $old_path =~ /^SM_PATH/);
+   
+    if ( $old_path =~ /^\$/ ) {
+        # check if it's a single var, or a $var/path combination
+        # if it's $var/path, enclose in ""
+        if ( $old_path =~ /\// ) {
+            return '"'.$old_path.'"';
+        }
+        return $old_path;
+    }
     
     # Remove remaining '
     $old_path =~ s/\'//g;
@@ -3029,14 +3049,14 @@ sub change_to_SM_path() {
     if ( $#rel_path > 1 ) {
         # more than two levels away. Make it absolute.
         @abs_path = split(/\//, $dir);
-
+        
         # Lop off the relative pieces of the absolute path..
         for ( $i = 0; $i <= $#rel_path; $i++ ) {
             pop @abs_path;
             shift @rel_path;
         }
         push @abs_path, @rel_path;
-       $new_path = "\'" . join('/', @abs_path) . "\'";
+        $new_path = "\'" . join('/', @abs_path) . "\'";
     } elsif ( $#rel_path > 0 ) {
         # it's within the SM tree, prepend SM_PATH
         $new_path = $old_path;
@@ -3063,7 +3083,7 @@ sub change_to_rel_path() {
 
     if ( $old_path =~ /^SM_PATH/ ) {
         $new_path =~ s/^SM_PATH . \'/\.\.\//;
-	$new_path =~ s/\.\.\/config\///;
+        $new_path =~ s/\.\.\/config\///;
     }
 
     return $new_path;
@@ -3145,4 +3165,12 @@ sub detect_auth_support {
 	print $sock $logout; # Try to log out, but we don't really care if this fails
 	close $sock;
 	return 'YES';
+}
+
+sub clear_screen() {
+    if ( $^O =~ /^mswin/i) {
+        system "cls";
+    } else {
+        system "clear";
+    }
 }
