@@ -8,14 +8,10 @@
  *
  * Display Identities Options
  *
- * @version $Id$
- * @package squirrelmail
+ * $Id$
  */
 
-/**
- * Path for SquirrelMail required files.
- * @ignore
- */
+/* Path for SquirrelMail required files. */
 define('SM_PATH','../');
 
 /* SquirrelMail required files. */
@@ -27,7 +23,6 @@ require_once(SM_PATH . 'functions/html.php');
 /* POST data var names are dynamic because 
    of the possible multiple idents so lets get
    them all
-   FIXME! This circumvents the benefits of rg=0
 */
 if (!empty($_POST)) {
     extract($_POST);
@@ -36,7 +31,7 @@ if (!empty($_POST)) {
 
     if (isset($return)) {
        SaveUpdateFunction();
-       header('Location: '.get_location().'/options_personal.php');
+       header('Location: options_personal.php');
        exit();
     }
     

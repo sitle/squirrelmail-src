@@ -1,4 +1,5 @@
 <?php
+
 /**
  * addressbook.php
  *
@@ -7,12 +8,10 @@
  *
  * Functions and classes for the addressbook system.
  *
- * @version $Id$
- * @package squirrelmail
- * @subpackage addressbook
+ * $Id$
  */
 
-/**
+/*
    This is the path to the global site-wide addressbook.
    It looks and feels just like a user's .abook file
    If this is in the data directory, use "$data_dir/global.abook"
@@ -30,16 +29,15 @@
 
 */
 
-global $addrbook_dsn, $addrbook_global_dsn;
+global $addrbook_dsn;
 
-/**
+/*
    Create and initialize an addressbook object.
    Returns the created object
 */
 function addressbook_init($showerr = true, $onlylocal = false) {
     global $data_dir, $username, $ldap_server, $address_book_global_filename;
     global $addrbook_dsn, $addrbook_table;
-    global $addrbook_global_dsn, $addrbook_global_table, $addrbook_global_writeable, $addrbook_global_listing;
 
     /* Create a new addressbook object */
     $abook = new AddressBook;
@@ -82,30 +80,6 @@ function addressbook_init($showerr = true, $onlylocal = false) {
         }
     }
 
-    /* Load global addressbook from SQL if configured */
-    if (isset($addrbook_global_dsn) && !empty($addrbook_global_dsn)) {
-      /* Database configured */
-      if (!isset($addrbook_global_table) || empty($addrbook_global_table)) {
-	$addrbook_global_table = 'global_abook';
-      }
-      $r = $abook->add_backend('database',
-			       Array('dsn' => $addrbook_global_dsn,
-				     'owner' => 'global',
-				     'name' => _("Global address book"),
-				     'writeable' => $addrbook_global_writeable,
-				     'listing' => $addrbook_global_listing,
-				     'table' => $addrbook_global_table));
-    }
-
-    /*
-     * hook allows to include different address book backends.
-     * plugins should extract $abook and $r from arguments
-     * and use same add_backend commands as above functions.
-     */
-    $hookReturn = do_hook('abook_init', $abook, $r);
-    $abook = $hookReturn[1];
-    $r = $hookReturn[2];
-    
     if ($onlylocal) {
         return $abook;
     }
@@ -134,7 +108,6 @@ function addressbook_init($showerr = true, $onlylocal = false) {
 /*
  *   Had to move this function outside of the Addressbook Class
  *   PHP 4.0.4 Seemed to be having problems with inline functions.
- *   Note: this can return now since we don't support 4.0.4 anymore.
  */    
 function addressbook_cmp($a,$b) {
 
@@ -149,10 +122,10 @@ function addressbook_cmp($a,$b) {
 }
 
 
-/**
+/*
  * This is the main address book class that connect all the
  * backends and provide services to the functions above.
- * @package squirrelmail
+ *
  */
 
 class AddressBook {
@@ -412,7 +385,7 @@ class AddressBook {
             $alias = array(0 => $alias);
         }
         
-        /* Check that specified backend is writeable */
+        /* Check that specified backend is writable */
         if (!$this->backends[$bnum]->writeable) {
             $this->error = _("Addressbook is read-only");
             return false;
@@ -465,7 +438,7 @@ class AddressBook {
             $userdata['nickname'] = $userdata['email'];
         }
         
-        /* Check that specified backend is writeable */
+        /* Check that specified backend is writable */
         if (!$this->backends[$bnum]->writeable) {
             $this->error = _("Addressbook is read-only");;
             return false;
@@ -486,9 +459,8 @@ class AddressBook {
     
 } /* End of class Addressbook */
 
-/**
+/*
  * Generic backend that all other backends extend
- * @package squirrelmail
  */
 class addressbook_backend {
 
@@ -545,32 +517,8 @@ class addressbook_backend {
 
 }
 
-/**
- * Sort array by the key "name"
- */
+/* Sort array by the key "name" */
 function alistcmp($a,$b) {
-    $abook_sort_order=get_abook_sort();
-
-    switch ($abook_sort_order) {
-    case 0:
-    case 1:
-      $abook_sort='nickname';
-      break;
-    case 4:
-    case 5:
-      $abook_sort='email';
-      break;
-    case 6:
-    case 7:
-      $abook_sort='label';
-      break;
-    case 2:
-    case 3:
-    case 8:
-    default:
-      $abook_sort='name';
-    }
-
     if ($a['backend'] > $b['backend']) {
         return 1;
     } else {
@@ -578,69 +526,9 @@ function alistcmp($a,$b) {
             return -1;
         }
     }
-
-    if( (($abook_sort_order+2) % 2) == 1) {
-      return (strtolower($a[$abook_sort]) < strtolower($b[$abook_sort])) ? 1 : -1;
-    } else {
-      return (strtolower($a[$abook_sort]) > strtolower($b[$abook_sort])) ? 1 : -1;
-    }
+    return (strtolower($a['name']) > strtolower($b['name'])) ? 1 : -1;
 }
 
-/**
- * Address book sorting options
- *
- * returns address book sorting order
- * @return integer book sorting options order
- */
-function get_abook_sort() {
-    global $data_dir, $username;
-
-    /* get sorting order */
-    if(sqgetGlobalVar('abook_sort_order', $temp, SQ_GET)) {
-      $abook_sort_order = (int) $temp;
-
-      if ($abook_sort_order < 0 or $abook_sort_order > 8)
-        $abook_sort_order=8;
-
-      setPref($data_dir, $username, 'abook_sort_order', $abook_sort_order);
-    } else {
-      /* get previous sorting options. default to unsorted */
-      $abook_sort_order = getPref($data_dir, $username, 'abook_sort_order', 8);
-    }
-
-    return $abook_sort_order;
-}
-
-/**
- * This function shows the address book sort button.
- *
- * @param integer $abook_sort_order current sort value
- * @param string $alt_tag alt tag value (string visible to text only browsers)
- * @param integer $Down sort value when list is sorted ascending
- * @param integer $Up sort value when list is sorted descending
- * @return string html code with sorting images and urls 
- */
-function show_abook_sort_button($abook_sort_order, $alt_tag, $Down, $Up ) {
-    global $form_url;
-
-     /* Figure out which image we want to use. */
-    if ($abook_sort_order != $Up && $abook_sort_order != $Down) {
-        $img = 'sort_none.png';
-        $which = $Up;
-    } elseif ($abook_sort_order == $Up) {
-        $img = 'up_pointer.png';
-        $which = $Down;
-    } else {
-        $img = 'down_pointer.png';
-        $which = 8;
-    }
-
-      /* Now that we have everything figured out, show the actual button. */
-    return ' <a href="' . $form_url .'?abook_sort_order=' . $which
-         . '"><img src="../images/' . $img
-         . '" border="0" width="12" height="10" alt="' . $alt_tag . '" title="'
-         . _("Click here to change the sorting of the address list") .'"></a>';
-}
 
 /*
   PHP 5 requires that the class be made first, which seems rather
@@ -656,17 +544,8 @@ if (isset($address_book_global_filename)) {
 }
 
 /* Only load database backend if database is configured */
-if((isset($addrbook_dsn) && !empty($addrbook_dsn)) || 
- (isset($addrbook_global_dsn) && !empty($addrbook_global_dsn)) ) {
+if(isset($addrbook_dsn) && !empty($addrbook_dsn)) {
   include_once(SM_PATH . 'functions/abook_database.php');
 }
-
-/*
- * hook allows adding different address book classes.
- * class must follow address book class coding standards.
- *
- * see addressbook_backend class and functions/abook_*.php files.
- */
-do_hook('abook_add_class');
 
 ?>

@@ -8,14 +8,10 @@
  *
  *  Cleans up after the user. Resets cookies and terminates session.
  *
- * @version $Id$
- * @package squirrelmail
+ * $Id$
  */
 
-/**
- * Path for SquirrelMail required files.
- * @ignore
- */
+/* Path for SquirrelMail required files. */
 define('SM_PATH','../');
 
 /* SquirrelMail required files. */
@@ -68,7 +64,7 @@ if ($signout_page) {
 <?php
     }
 ?>
-   <title><?php echo $org_title . ' - ' . _("Signout"); ?></title>
+   <title><?php echo $org_title ?> - Signout</title>
 </head>
 <body text="<?php echo $color[8] ?>" bgcolor="<?php echo $color[4] ?>" 
 link="<?php echo $color[7] ?>" vlink="<?php echo $color[7] ?>"

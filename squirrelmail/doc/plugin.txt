@@ -156,14 +156,14 @@ Hook Types:  Parameters and Return Values
 -----------------------------------------
 
 Hooks, when executed, are called with differing parameters and may or may
-not take return values, all depending on the type of hook being called and
+not take return values, all depending on the type of hook being called and 
 the context in which it is being used.  On the source side (where the hook
 call originates), all hooks have at least one parameter, which is the
 name of the hook.  After that, things get complicated.
 
    do_hook
    -------
-   Most hook calls don't pass any data and don't ask for anything back.
+   Most hook calls don't pass any data and don't ask for anything back. 
    These always use the do_hook call.  A limited number of do_hook calls do
    pass some extra parameters, in which case your plugin may modify the
    given data if you do so by reference.  It is not necessary to return
@@ -179,14 +179,14 @@ name of the hook.  After that, things get complicated.
    ----------------
    This hook type was intended to be the main hook type used when the
    source needs to get something back from your plugin.  It is somewhat
-   limited in that it will only use the value returned from the LAST
+   limited in that it will only use the value returned from the LAST 
    plugin registered against the hook.  The source for this hook might
    use the return value for internal purposes, or might expect you to
    provide text or HTML to be sent to the client browser (you'll have to
    look at its use in context to understand how you should return values
-   here).  The parameters that your hook function gets will be anything
-   you see AFTER the hook name in the actual hook call in the source.
-   These cannot be changed in the same way that the do_hook parameters
+   here).  The parameters that your hook function gets will be anything 
+   you see AFTER the hook name in the actual hook call in the source.  
+   These cannot be changed in the same way that the do_hook parameters 
    can be.
 
    concat_hook_function
@@ -209,12 +209,12 @@ name of the hook.  After that, things get complicated.
    plugins registered against the hook to "vote" for some action.  What
    that action is is entirely dependent on how the hook is used in the
    source (look for yourself).  Plugins make their "vote" by returning
-   TRUE or FALSE.  This hook may be configured to "tally votes" in one
-   of three ways.  This configuration is done with the third parameter
-   in the hook call in the source:
+   TRUE or FALSE.  This hook may be configured to "tally votes" in one 
+   of three ways.  This configuration is done with the third parameter 
+   in the hook call in the source: 
       > 0  --  Any one or more TRUEs will override any FALSEs
       < 0  --  Any one or more FALSEs will override any TRUEs
-      = 0  --  Majority wins.  Ties are broken in this case with
+      = 0  --  Majority wins.  Ties are broken in this case with 
                the last parameter in the hook call in the source.
    Your hook function will get the second paramter in the hook call in
    the source as its parameter (this might be an array if multiple values
@@ -233,8 +233,6 @@ but may be out of date soon thereafter.  You never know.  ;-)
 
   Hook Name                      Found In                        Called With(#)
   ---------                      --------                        --------------
-  abook_init                     functions/addressbook.php       do_hook
-  abook_add_class                functions/addressbook.php       do_hook
   loading_constants              functions/constants.php         do_hook
   logout_error                   functions/display_messages.php  do_hook
   error_box                      functions/display_messages.php  concat_hook
@@ -242,19 +240,17 @@ but may be out of date soon thereafter.  You never know.  ;-)
   get_pref                       functions/file_prefs.php        hook_func
   special_mailbox                functions/imap_mailbox.php      hook_func
   % rename_or_delete_folder      functions/imap_mailbox.php      hook_func
+  msg_envelope                   functions/mailbox_display.php   do_hook
   mailbox_index_before           functions/mailbox_display.php   do_hook
   mailbox_form_before            functions/mailbox_display.php   do_hook
   mailbox_index_after            functions/mailbox_display.php   do_hook
   check_handleAsSent_result      functions/mailbox_display.php   do_hook
   subject_link                   functions/mailbox_display.php   concat_hook
-  mailbox_display_buttons        functions/mailbox_display.php   do_hook
   message_body                   functions/mime.php              do_hook
   ^ attachment $type0/$type1     functions/mime.php              do_hook
-  attachments_bottom             functions/mime.php              hook_func
   decode_body                    functions/mime.php              hook_func
   generic_header                 functions/page_header.php       do_hook
   menuline                       functions/page_header.php       do_hook
-  internal_link                  functions/page_header.php       hook_func
   loading_prefs                  include/load_prefs.php          do_hook
   addrbook_html_search_below     src/addrbook_search_html.php    do_hook
   addressbook_bottom             src/addressbook.php             do_hook
@@ -274,7 +270,6 @@ but may be out of date soon thereafter.  You never know.  ;-)
   login_form                     src/login.php                   do_hook
   login_bottom                   src/login.php                   do_hook
   move_before_move               src/move_messages.php           do_hook
-  move_messages_button_action    src/move_messages.php           concat_hook
   * optpage_set_loadinfo         src/options.php                 do_hook
   * optpage_loadhook_personal    src/options.php                 do_hook
   * optpage_loadhook_display     src/options.php                 do_hook
@@ -305,7 +300,7 @@ but may be out of date soon thereafter.  You never know.  ;-)
   & options_identities_buttons   src/options_identities.php      concat_hook
   message_body                   src/printer_friendly_bottom.php do_hook
   read_body_header               src/read_body.php               do_hook
-  read_body_menu_top             src/read_body.php               hook_func
+  read_body_menu_top             src/read_body.php               concat_hook
   read_body_menu_bottom          src/read_body.php               do_hook
   read_body_header_right         src/read_body.php               do_hook
   html_top                       src/read_body.php               do_hook
@@ -606,13 +601,13 @@ for you.  This is the preferred method of building options lists going forward.
                            SMOPT_TYPE_FLOAT      Floating point number input
                            SMOPT_TYPE_BOOLEAN    Boolean (yes/no radio buttons)
                                                  input
-                           SMOPT_TYPE_HIDDEN     Hidden input (not actually
+                           SMOPT_TYPE_HIDDEN     Hidden input (not actually 
                                                  shown on preferences page)
                            SMOPT_TYPE_COMMENT    Text is shown (specified by the
-                                                 'comment' attribute), but no
+                                                 'comment' attribute), but no 
                                                  user input is needed
                            SMOPT_TYPE_FLDRLIST   Select list of IMAP folders
-         refresh        Indicates if a link should be shown to refresh part or
+         refresh        Indicates if a link should be shown to refresh part or 
                         all of the window (optional).  Possible values are:
                            SMOPT_REFRESH_NONE         No refresh link is shown
                            SMOPT_REFRESH_FOLDERLIST   Link is shown to refresh
@@ -629,7 +624,7 @@ for you.  This is the preferred method of building options lists going forward.
                         input
          save           You may indicate that special functionality needs to be
                         used instead of just saving this setting by giving the
-                        name of a function to call when this value would 
+                        name of a function to call when this value would
                         otherwise just be saved in the user's preferences
          size           Specifies the size of certain input items (typically
                         textual inputs).  Possible values are:
@@ -641,7 +636,7 @@ for you.  This is the preferred method of building options lists going forward.
                            SMOPT_SIZE_NORMAL
          comment        For SMOPT_TYPE_COMMENT type options, this is the text
                         displayed to the user
-         script         This is where you may add any additional javascript 
+         script         This is where you may add any additional javascript
                         or other code to the user input
          post_script    You may specify some script (usually Javascript) that
                         will be placed after (outside of) the INPUT tag.
@@ -1094,10 +1089,10 @@ files.
 
          # Copyright (c) 1999-2003 The Squirrelmail Development Team
          # Roland Bauerschmidt <rb@debian.org>, 1999.
-         # $Id$
+	 # $Id$
          msgid ""
          msgstr ""
-         "Project-Id-Version: plugin-name version\n"
+         "Project-Id-Version: plugin-name plugin-version\n"
          "POT-Creation-Date: 2003-01-21 19:21+0100\n"
          "PO-Revision-Date: 2003-01-21 21:01+0100\n"
          "Last-Translator: Juergen Edner <juergen.edner@epost.de>\n"
@@ -1127,41 +1122,6 @@ files.
       same as the domain you bound in step 2 above and everything else works
       automatically.  In SquirrelMail, go to Options -> Display Preferences
       and change your Language setting to see the translations in action!
-
-
-
-Documenting the Code (Optional)
--------------------------------
-
-If you wish, you can use phpdoc (Javadoc-style) comments, when documenting your
-code.
-
-If you follow the standards that are followed between Squirrelmail core &
-plugin developers, the resulted documentation can be included with the rest of
-the Squirrelmail code & API documentation. Specifically, in the page-level
-docblock, declare the package to be 'plugins', and the subpackage to be the
-name of your plugin. For instance:
-  
-/**
- * demo.php
- *
- * Copyright (c) 2003 My Name <my-email-address>
- * Licensed under the GNU GPL. For full terms see the file COPYING.
- *
- * @package plugins
- * @subpackage demo
- */
-
-The rest is up to you. Try to follow some common sense and document what is
-really needed. Documenting the code properly can be a big help not only to
-yourself, but to those who will take a look at your code, fix the bugs and even
-improve it, in the true open-source spirit that Squirrelmail was built upon.
-
-For more information about phpdocumentor and how to write proper-tagged
-comments, you are directed at:
-
-http://phpdocu.sourceforge.net/
-
 
 
 PLUGIN STANDARDS AND REQUIREMENTS

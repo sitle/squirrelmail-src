@@ -23,11 +23,6 @@
     * too (with a plugin).
     *
     * $Id$
-    * @package plugins
-    * @subpackage newmail
-    */
-
-    /**
     */
     include_once(SM_PATH . 'functions/display_messages.php');
 
@@ -78,8 +73,9 @@
        // Gets added to the user's OPTIONS page.
        global $optpage_blocks;
 
-       if ( checkForJavascript() ) {
-       /* Register Squirrelspell with the $optionpages array. */
+       if ( !soupNazi() ) {
+
+           /* Register Squirrelspell with the $optionpages array. */
            $optpage_blocks[] = array(
                'name' => _("NewMail Options"),
                'url'  => SM_PATH . 'plugins/newmail/newmail_opt.php',
@@ -215,8 +211,7 @@
             }
 
             if ($totalNew > 0 && $newmail_enable == 'on' && $newmail_media != '' ) {
-                echo '<EMBED SRC="'.htmlspecialchars($newmail_media) .
-                    "\" HIDDEN=\"TRUE\" AUTOSTART=\"TRUE\">\n";
+                echo '<EMBED SRC="'.htmlspecialchars($newmail_media)."\" HIDDEN=TRUE AUTOSTART=TRUE>\n";
             }
             if ($totalNew > 0 && $newmail_popup == 'on') {
                 echo "<SCRIPT LANGUAGE=\"JavaScript\">\n".

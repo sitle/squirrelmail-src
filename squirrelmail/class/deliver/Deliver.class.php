@@ -8,10 +8,12 @@
  * This contains all the functions needed to send messages through
  * a delivery backend.
  *
- * @version $Id$
+ * $Id$
+ *
  * @author  Marc Groot Koerkamp
  * @package squirrelmail
  */
+
 
 /**
  * Deliver Class - called to actually deliver the message
@@ -360,7 +362,7 @@ class Deliver {
      * @return string $header
      */
     function prepareRFC822_Header($rfc822_header, $reply_rfc822_header, &$raw_length) {
-        global $domain, $version, $username, $skip_SM_header;
+        global $domain, $version, $username;
 
         /* if server var SERVER_NAME not available, use $domain */
         if(!sqGetGlobalVar('SERVER_NAME', $SERVER_NAME, SQ_SERVER)) {
@@ -393,13 +395,10 @@ class Deliver {
             $received_from .= " (proxying for $HTTP_X_FORWARDED_FOR)";
         }
         $header = array();
-        if ( !isset($skip_SM_header) || !$skip_SM_header )
-        {
-          $header[] = "Received: from $received_from" . $rn;
-          $header[] = "        (SquirrelMail authenticated user $username);" . $rn;
-          $header[] = "        by $SERVER_NAME with HTTP;" . $rn;
-          $header[] = "        $date" . $rn;
-        }
+        $header[] = "Received: from $received_from" . $rn;
+        $header[] = "        (SquirrelMail authenticated user $username);" . $rn;
+        $header[] = "        by $SERVER_NAME with HTTP;" . $rn;
+        $header[] = "        $date" . $rn;
         /* Insert the rest of the header fields */
         $header[] = 'Message-ID: '. $message_id . $rn;
         if ($reply_rfc822_header->message_id) {
@@ -411,12 +410,14 @@ class Deliver {
         }
         $header[] = "Date: $date" . $rn;
         $header[] = 'Subject: '.encodeHeader($rfc822_header->subject) . $rn;
-        $header[] = 'From: '. $rfc822_header->getAddr_s('from',",$rn ",true) . $rn;
 
-        // folding address list [From|To|Cc|Bcc] happens by using ",$rn<space>" as delimiter
+        // folding address list [From|To|Cc|Bcc] happens by using ",$rn<space>" 
+        // as delimiter
         // Do not use foldLine for that.
-
-        // RFC2822 if from contains more then 1 address
+ 
+        $header[] = 'From: '. $rfc822_header->getAddr_s('from',",$rn ",true) . $rn;
+ 
+        /* RFC2822 if from contains more then 1 address */
         if (count($rfc822_header->from) > 1) {
             $header[] = 'Sender: '. $rfc822_header->getAddr_s('sender',',',true) . $rn;
         }
@@ -441,6 +442,8 @@ class Deliver {
         }
         /* Identify SquirrelMail */
         $header[] = 'User-Agent: SquirrelMail/' . $version . $rn;
+        // Spamassassin complains about no X-Mailer in combination with X-Priority
+        $header[] = 'X-Mailer: SquirrelMail/' . $version . $rn;
         /* Do the MIME-stuff */
         $header[] = 'MIME-Version: 1.0' . $rn;
         $contenttype = 'Content-Type: '. $rfc822_header->content_type->type0 .'/'.

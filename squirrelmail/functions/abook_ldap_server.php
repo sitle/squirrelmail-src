@@ -27,9 +27,8 @@
  * NOTE. This class should not be used directly. Use the
  *       "AddressBook" class instead.
  *
- * @version $Id$
+ * $Id$
  * @package squirrelmail
- * @subpackage addressbook
  */
 
 /**

@@ -9,8 +9,6 @@
     **  Redirects to the login page.
     **
     **  $Id$
-    * @package plugins
-    * @subpackage mail_fetch
     **/
 
    header("Location:../../src/login.php\n\n");

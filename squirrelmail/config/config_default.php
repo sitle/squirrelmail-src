@@ -66,6 +66,17 @@ $org_title = "SquirrelMail $version";
 $signout_page = '';
 
 /**
+ * Default language
+ *
+ *   This is the default language. It is used as a last resort
+ *   if SquirrelMail can't figure out which language to display.
+ *   Language names usually consist of language code, undercore 
+ *   symbol and country code
+ * @global string $squirrelmail_default_language
+ */
+$squirrelmail_default_language = 'en_US';
+
+/**
  * Top frame
  *
  * By default SquirrelMail takes up the whole browser window,
@@ -143,20 +154,6 @@ $smtpServerAddress = 'localhost';
 $smtpPort = 25;
 
 /**
- * SquirrelMail header control
- *
- * Option can be used to disable Received: headers added by squirrelmail.
- * This can increase user's privacy and solve problems with spam filters
- * that increase spam marks for dynamic dialup addresses.
- *
- * If admin enables this setting, system should have some logging facility 
- * or other tools to control users. SquirrelMail's Received: header provides 
- * information, that can't be forged by webmail user.
- * @global bool $skip_SM_header
- */
-$skip_SM_header = false;
-
-/**
  * Path to Sendmail
  *
  * Program that should be used when sending email. SquirrelMail expects that
@@ -192,7 +189,6 @@ $imapPort = 143;
  *   exchange
  *   uw
  *   macosx
- *   mercury32
  *   other
  *
  * Please note that this changes only some of server settings.
@@ -416,6 +412,20 @@ $noselect_fix_enable = false;
 
 /*** General options ***/
 /**
+ * Default Charset
+ *
+ * This option controls what character set is used when sending mail
+ * and when sending HTML to the browser. Do not set this to US-ASCII,
+ * use ISO-8859-1 instead.
+ *
+ * Currently this option is disabled. SquirrelMail uses charset that depends
+ * on default language. See $squirrelmail_default_language
+ *
+ * @global string $default_charset
+ */
+$default_charset = 'iso-8859-1';
+
+/**
  * Path to the data/ directory
  *
  *   It is a possible security hole to have a writable directory
@@ -555,14 +565,12 @@ $allow_server_sort = false;
 $allow_charset_search = true;
 
 /**
- * Search functions control
+ * IMAP UID control
  *
- * This option allows you to control the use of advanced search form.
- * Set to 0 to enable basic search only, 1 to enable advanced search only
- * or 2 to enable both.
- * @global integer $allow_advanced_search
+ * This option allows you to enable unique identifier (UID) support.
+ * @global bool $uid_support
  */
-$allow_advanced_search = 0;
+$uid_support              = true;
 
 /**
  * PHP session name.
@@ -780,118 +788,6 @@ $prefs_table = 'userprefs';
 $prefs_key_field = 'prefkey';
 $prefs_user_field = 'user';
 $prefs_val_field = 'prefval';
-/**
- * Global sql database options
- */
-$addrbook_global_dsn = '';
-$addrbook_global_table = 'global_abook';
-$addrbook_global_writeable = false;
-$addrbook_global_listing = false;
-
-/*** Language settings ***/
-/**
- * Default language
- *
- *   This is the default language. It is used as a last resort
- *   if SquirrelMail can't figure out which language to display.
- *   Language names usually consist of language code, undercore 
- *   symbol and country code
- * @global string $squirrelmail_default_language
- */
-$squirrelmail_default_language = 'en_US';
-
-/**
- * Default Charset
- *
- * This option controls what character set is used when sending mail
- * and when sending HTML to the browser. Do not set this to US-ASCII,
- * use ISO-8859-1 instead.
- * 
- * You can set this option, only if $squirrelmail_default_language setting
- * contains 'en_US' string. In any other case system does not allow 
- * making mistakes with incorrect language and charset combinations.
- * @global string $default_charset
- */
-$default_charset = 'iso-8859-1';
-
-/**
- * Available Languages
- *
- * This option controls number of languages available to end user in
- * language selection preferences. You can use space separated list
- * of translations installed in locale/ directory or special keys
- * 'all' (all languages are available) and 'none' (language selection
- * is disabled, interface is set to $squirrelmail_default_language
- * @global string $available_languages
- */
-$available_languages   = 'all';
-
-/**
- * Alternative Language Names Control
- *
- * This options allows displaying native language names in language 
- * selection box.
- * @global bool $show_alternative_names
- */
-$show_alternative_names   = false;
-
-/**
- * Agresive Decoding Control
- *
- * This option enables reading of Eastern multibyte encodings. 
- * Functions that provide this support are very cpu and memory intensive.
- * Don't enable this option unless you really need it.
- * @global bool $agresive_decoding
- */
-$agresive_decoding = false;
-
-/*** Tweaks ***/
-/**
- * Advanced DHTML tree control 
- *
- * Use experimental DHTML folder listing
- * @global bool $advanced_tree
- */
-$advanced_tree = false;
-/**
- * Older listing way control
- *
- * Use older way of folder listing
- * @global bool $oldway
- */
-$oldway = false;
-/**
- * Message Icons control
- *
- * Use icons for message and folder markers
- * @global bool $use_icons
- */
-$use_icons = false;
-
-/**
- * PHP recode functions control
- *
- * Use experimental code with php recode functions when reading messages with
- * different encoding. This code is faster that original SM functions,
- * but it require php with recode support.
- * 
- * Don't enable this option if you are not sure about availability of 
- * recode support.
- * @global bool $use_php_recode
- */
-$use_php_recode = false;
-/**
- * PHP iconv functions control
- *
- * Use experimental code with php iconv functions when reading messages with
- * different encoding. This code is faster that original SM functions,
- * but it require php with iconv support and works only with some translations.
- * 
- * Don't enable this option if you are not sure about availability of 
- * iconv support.
- * @global bool $use_php_iconv
- */
-$use_php_iconv = false;
 
 /**
  * Subscribe Listing Control

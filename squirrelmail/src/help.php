@@ -8,14 +8,10 @@
  *
  * Displays help for the user
  *
- * @version $Id$
- * @package squirrelmail
+ * $Id$
  */
 
-/**
- * Path for SquirrelMail required files.
- * @ignore
- */
+/* Path for SquirrelMail required files. */
 define('SM_PATH','../');
 
 /* SquirrelMail required files. */

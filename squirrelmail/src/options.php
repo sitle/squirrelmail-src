@@ -9,14 +9,10 @@
  * Displays the options page. Pulls from proper user preference files
  * and config.php. Displays preferences as selected and other options.
  *
- * @version $Id$
- * @package squirrelmail
+ * $Id$
  */
 
-/**
- * Path for SquirrelMail required files.
- * @ignore
- */
+/* Path for SquirrelMail required files. */
 define('SM_PATH','../');
 
 /* SquirrelMail required files. */
@@ -125,7 +121,7 @@ sqgetGlobalVar('onetimepad',$onetimepad,    SQ_SESSION);
 sqgetGlobalVar('delimiter', $delimiter,     SQ_SESSION);
 
 sqgetGlobalVar('optpage',     $optpage);
-sqgetGlobalVar('optmode',     $optmode,      SQ_FORM);
+sqgetGlobalVar('optmode',     $optmode, SQ_FORM);
 sqgetGlobalVar('optpage_data',$optpage_data, SQ_POST);
 /* end of getting globals */
 

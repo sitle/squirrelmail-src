@@ -8,20 +8,14 @@
  *
  * This is a standard Squirrelmail-1.2 API for plugins.
  *
- * @version $Id$
- * @package plugins
- * @subpackage bug_report
+ * $Id$
  */
 
 /* This button fills out a form with your setup information already
    gathered -- all you have to do is type. */
 
 
-/**
- * Initialize the bug report plugin
- * @return void
- * @access private
- */
+/* Initialize the bug report plugin */
 function squirrelmail_plugin_init_bug_report() {
     global $squirrelmail_plugin_hooks;
 
@@ -32,10 +26,7 @@ function squirrelmail_plugin_init_bug_report() {
 }
 
 
-/**
- * Show the button in the main bar
- * @access private
- */
+/* Show the button in the main bar */
 function bug_report_button() {
     global $color, $bug_report_visible;
 
@@ -47,10 +38,7 @@ function bug_report_button() {
     echo "&nbsp;&nbsp;\n";
 }
 
-/**
- * Saves bug report options
- * @access private
- */
+
 function bug_report_save() {
     global $username,$data_dir;
 
@@ -61,10 +49,7 @@ function bug_report_save() {
     }
 }
 
-/**
- * Loads bug report options
- * @access private
- */
+
 function bug_report_load() {
     global $username, $data_dir;
     global $bug_report_visible;
@@ -72,10 +57,7 @@ function bug_report_load() {
     $bug_report_visible = getPref($data_dir, $username, 'bug_report_visible');
 }
 
-/**
- * Adds bug report options to display page
- * @access private
- */
+
 function bug_report_options() {
     global $bug_report_visible;
 
@@ -85,9 +67,6 @@ function bug_report_options() {
         echo ' checked';
     }
     echo ' /> ' . _("Show button in toolbar") . "</td></tr>\n";
-
-    echo '<tr><td></td>' .
-         '<td><a href="' . SM_PATH . 'plugins/bug_report/show_system_specs.php" target="_blank"><small>' . _("Show system specs") . '</small></a></td></tr>';
 }
 
 ?>

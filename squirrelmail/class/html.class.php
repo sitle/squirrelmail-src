@@ -7,14 +7,9 @@
  *
  * This contains functions needed to generate html output.
  *
- * @version $Id$
- * @package squirrelmail
+ * $Id$
  */
 
-/**
- * This class needs documenting - volunteers?
- * @package squirrelmail
- */
 class html {
   var $tag, $text, $style, $class,  
       $id, $html_el = array(), $javascript, $xtr_prop;

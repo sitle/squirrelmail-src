@@ -11,12 +11,6 @@
  * functions to create a event for calendar.
  *
  * $Id$
- * @package plugins
- * @subpackage calendar
- */
-
-/**
- * @ignore
  */
 define('SM_PATH','../../');
 

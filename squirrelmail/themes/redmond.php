@@ -1,15 +1,9 @@
 <?php
-/**
- * SquirrelMail Redmond Theme
- *
- * @author       Bert-Jan Wiegeraad
- * Date:          January 25, 2004
- * Theme Name:    'Redmond Theme'
- *
- * @version $Id$
- * @package squirrelmail
- * @subpackage themes
- */
+   /** Author:       Bert-Jan Wiegeraad
+       Date:         January 25, 2004
+       Theme Name:   'Redmond Theme'
+
+    **/
 
     global $color;
     $color[0]   = '#ece9d8';

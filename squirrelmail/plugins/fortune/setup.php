@@ -3,22 +3,17 @@
 /**
  * plugins/fortune/setup.php
  *
+ * Copyright (c) 1999-2004 The SquirrelMail Project Team
+ * Licensed under the GNU GPL. For full terms see the file COPYING.
+ *
  * Original code contributed by paulm@spider.org
  *
  * Simple SquirrelMail WebMail Plugin that displays the output of
  * fortune above the message listing.
  *
- * @copyright (c) 1999-2004 The SquirrelMail Project Team
- * @license http://opensource.org/licenses/gpl-license.php GNU Public License
- * @version $Id$
- * @package plugins
- * @subpackage fortune
+ * $Id$
  */
 
-/**
- * Init plugin
- * @access private 
- */
 function squirrelmail_plugin_init_fortune() {
   global $squirrelmail_plugin_hooks;
   
@@ -28,10 +23,6 @@ function squirrelmail_plugin_init_fortune() {
   $squirrelmail_plugin_hooks['loading_prefs']['fortune'] = 'fortune_load';  
 }
 
-/**
- * Show fortune
- * @access private 
- */
 function fortune() {
     global $fortune_visible, $color;
 
@@ -41,48 +32,34 @@ function fortune() {
 
     $fortune_location = '/usr/games/fortune';
     $exist = file_exists($fortune_location);
-    echo "<center><table cellpadding=\"0\" cellspacing=\"0\" border=\"0\" bgcolor=\"$color[10]\">\n".
-         "<tr><td><table width=\"100%\" cellpadding=\"2\" cellspacing=\"1\" border=\"0\" bgcolor=\"$color[5]\">\n".
-	 "<tr><td align=\"center\">\n";
+    echo "<center><table cellpadding=0 cellspacing=0 border=0 bgcolor=$color[10]><tr><td><table width=100% cellpadding=2 cellspacing=1 border=0 bgcolor=\"$color[5]\"><tr><td align=center>";
     echo '<table><tr><td>';
     if (!$exist) {
         echo "$fortune_location" . _(" not found.");
     } else {
-        echo "<center><em>" . _("Today's Fortune") . "</em><br></font></center><pre>";
+        echo "<center><em>" . _("Today's Fortune") . "</em><br></center><pre>";
         htmlspecialchars(system($fortune_location));
     } 
   
     echo '</pre></td></tr></table></td></tr></table></td></tr></table></center>';
 }
 
-/**
- * Get fortune prefs
- * @access private 
- */
 function fortune_load() {
     global $username, $data_dir, $fortune_visible;
 
     $fortune_visible = getPref($data_dir, $username, 'fortune_visible');
 }
 
-/**
- * Add fortune options
- * @access private 
- */
 function fortune_options() {
-  global $fortune_visible;
+    global $fortune_visible;
 
-  echo "<tr>" . html_tag('td',_("Fortunes:"),'right','','nowrap') . "\n";
-  echo '<td><input name="fortune_fortune_visible" type=CHECKBOX';
-  if ($fortune_visible)
-    echo ' CHECKED';
-  echo " /> " . _("Show fortunes at top of mailbox") . "</td></tr>\n";
+    echo "<tr>" . html_tag('td',_("Fortunes:"),'right','','nowrap') . "\n";
+    echo '<td><input name="fortune_fortune_visible" type="checkbox"';
+    if ($fortune_visible)
+	echo ' checked';
+    echo " /> " . _("Show fortunes at top of mailbox") . "</td></tr>\n";
 }
 
-/**
- * Save fortune prefs
- * @access private 
- */
 function fortune_save() {
     global $username,$data_dir;
 

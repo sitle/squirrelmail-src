@@ -1,25 +1,17 @@
 <?php
 
-/**
- *  options.php -- SpamCop options page
- *
- * @copyright (c) 1999-2004 The SquirrelMail development team
- * @license http://opensource.org/licenses/gpl-license.php GNU Public License
- * @version $Id$
- * @package plugins
- * @subpackage spamcop
- */
+   /**
+    **  options.php -- SpamCop options page
+    **
+    **  Copyright (c) 1999-2004 The SquirrelMail development team
+    **  Licensed under the GNU GPL. For full terms see the file COPYING.
+    **
+    **  $Id$
+    **/
 
-/** @ignore */
 define('SM_PATH','../../');
 require_once(SM_PATH . 'include/validate.php');
 
-/**
- * Internal spamcop plugin function.
- *
- * It is used to display similar action links.
- * @access private
- */
 function spamcop_enable_disable($option,$disable_action,$enable_action) {
     if ($option) { 
 	$ret= _("Enabled") . "(<a href=\"options.php?action=$disable_action\">" . _("Disable it") . "</a>)\n";
@@ -34,7 +26,6 @@ displayPageHeader($color, 'None');
 /* globals */
 sqgetGlobalVar('action', $action);
 sqgetGlobalVar('meth', $meth);
-sqgetGlobalVar('type', $type);
 sqgetGlobalVar('ID' , $ID);
 
 sqgetGlobalVar('username', $username, SQ_SESSION);
@@ -60,11 +51,6 @@ switch ($action) {
             setPref($data_dir, $username, 'spamcop_method', $meth);
         }
         break;
-    case 'type':
-        if (isset($type)) {
-            setPref($data_dir, $username, 'spamcop_type', $type);
-        }
-	break;
     case 'save_id':
         if (isset($ID)) {
             $ID = trim($ID);
@@ -136,32 +122,6 @@ spamcop_load();
 		echo '<input type="submit" value="' . _("Save Method") . "\" />\n";
 	    ?>
 	  </form></td>
-	</tr>
-	<tr>
-	    <?php
-		echo html_tag('td',_("Spam Service Type:"),'right');
-	    ?>
-	  <td>
-	  <form method="post" action="options.php">
-	    <select name="type">
-	      <option value="free"
-		<?php
-	    	  if ($spamcop_type == 'free') echo ' selected';
-	    	  echo ">"._("Free reporting");
-		?>
-	      </option>
-	      <option value="member"
-	        <?php
-	          if ($spamcop_type == 'member') echo ' selected';
-	    	  echo ">"._("Member services");
-		?>
-	      </option>
-	    </select>
-	    <?php
-	    echo '<input type="hidden" name="action" value="type" />' .
-		 '<input type="submit" value="' . _("Save Service Type") . "\" />\n";
-	    ?>
-	   </form></td>
 	</tr>
 	<tr>
 	  <?php

@@ -1,24 +1,19 @@
 <?php
-/** 
- * setup.php -- SpamCop plugin - setup script
- *
- * @copyright (c) 1999-2004 The SquirrelMail development team
- * @license http://opensource.org/licenses/gpl-license.php GNU Public License
- * @version $Id$
- * @package plugins
- * @subpackage spamcop
- */
+   /** 
+    **  setup.php -- SpamCop plugin           
+    **
+    **  Copyright (c) 1999-2004 The SquirrelMail development team
+    **  Licensed under the GNU GPL. For full terms see the file COPYING.
+    **  
+    **  $Id$                                                         
+    **/
 
-/** @ignore */
 require_once(SM_PATH . 'functions/global.php');
 
 /** Disable Quick Reporting by default */
 $spamcop_quick_report = false;
 
-/**
- * Initialize the plugin 
- * @access private
- */
+/* Initialize the plugin */
 function squirrelmail_plugin_init_spamcop() {
    global $squirrelmail_plugin_hooks, $data_dir, $username,
       $spamcop_is_composing;
@@ -39,21 +34,23 @@ function squirrelmail_plugin_init_spamcop() {
 }
 
 
-/**
- * Loads spamcop settings and validates some of values (make '' into 'default', etc.)
- * @access private
- */
+// Load the settings
+// Validate some of it (make '' into 'default', etc.)
 function spamcop_load() {
    global $username, $data_dir, $spamcop_enabled, $spamcop_delete,
-      $spamcop_method, $spamcop_id, $spamcop_quick_report, $spamcop_type;
+      $spamcop_method, $spamcop_id, $spamcop_quick_report;
 
    $spamcop_enabled = getPref($data_dir, $username, 'spamcop_enabled');
    $spamcop_delete = getPref($data_dir, $username, 'spamcop_delete');
    $spamcop_method = getPref($data_dir, $username, 'spamcop_method');
-   $spamcop_type = getPref($data_dir, $username, 'spamcop_type');
    $spamcop_id = getPref($data_dir, $username, 'spamcop_id');
     if ($spamcop_method == '') {
-      // Default to web_form. It is faster.
+// This variable is not used
+//      if (getPref($data_dir, $username, 'spamcop_form'))
+//         $spamcop_method = 'web_form';
+//      else
+
+// Default to web_form. It is faster.
 	$spamcop_method = 'web_form';
 	setPref($data_dir, $username, 'spamcop_method', $spamcop_method);
     }
@@ -61,21 +58,14 @@ function spamcop_load() {
 	$spamcop_method = 'web_form';
 	setPref($data_dir, $username, 'spamcop_method', $spamcop_method);
    }
-   if ($spamcop_type == '') {
-   	$spamcop_type = 'free';
-   	setPref($data_dir, $username, 'spamcop_type', $spamcop_type);
-   }
    if ($spamcop_id == '')
       $spamcop_enabled = 0;
 }
 
 
-/**
- * Shows spamcop link on the read-a-message screen
- * @access private
- */
+// Show the link on the read-a-message screen
 function spamcop_show_link() {
-   global $spamcop_enabled, $spamcop_method, $spamcop_quick_report,$javascript_on;
+   global $spamcop_enabled, $spamcop_method, $spamcop_quick_report;
 
    if (! $spamcop_enabled)
       return;
@@ -103,14 +93,15 @@ function spamcop_show_link() {
 	$spamcop_method = 'web_form';
     }
    
-    // Javascript is used only in web based reporting
-    // don't insert javascript if javascript is disabled
-   if ($spamcop_method == 'web_form' && $javascript_on) {
+   if ($spamcop_method == 'web_form') {
 ?><script language="javascript" type="text/javascript">
 document.write('<a href="../plugins/spamcop/spamcop.php?passed_id=<?PHP echo urlencode($passed_id); ?>&amp;js_web=1&amp;mailbox=<?PHP echo urlencode($mailbox); ?>&amp;passed_ent_id=<?PHP echo urlencode($passed_ent_id); ?>" target="_blank">');
 document.write("<?PHP echo _("Report as Spam"); ?>");
 document.write("</a>");
-</script><?PHP
+</script><noscript>
+<a href="../plugins/spamcop/spamcop.php?passed_id=<?PHP echo urlencode($passed_id); ?>&amp;mailbox=<?PHP echo urlencode($mailbox); ?>&amp;startMessage=<?PHP echo urlencode($startMessage); ?>&amp;passed_ent_id=<?PHP echo urlencode($passed_ent_id); ?>">
+<?PHP echo _("Report as Spam"); ?></a>
+</noscript><?PHP
    } else {
 ?><a href="../plugins/spamcop/spamcop.php?passed_id=<?PHP echo urlencode($passed_id); ?>&amp;mailbox=<?PHP echo urlencode($mailbox); ?>&amp;startMessage=<?PHP echo urlencode($startMessage); ?>&amp;passed_ent_id=<?PHP echo urlencode($passed_ent_id); ?>">
 <?PHP echo _("Report as Spam"); ?></a>
@@ -118,10 +109,8 @@ document.write("</a>");
    }
 }
 
-/**
- * Show spamcop options block
- * @access private
- */
+
+// Show the link to our own custom options page
 function spamcop_options()
 {
    global $optpage_blocks;
@@ -135,10 +124,7 @@ function spamcop_options()
 }
 
 
-/**
- * When we send the email, we optionally trash it then too
- * @access private
- */
+// When we send the email, we optionally trash it then too
 function spamcop_while_sending()
 {
    global $mailbox, $spamcop_delete, $spamcop_is_composing, $auto_expunge, 

@@ -8,14 +8,9 @@
  *
  * This contains functions needed to handle mime messages.
  *
- * @version $Id$
- * @package squirrelmail
+ * $Id$
  */
 
-/**
- * Undocumented class
- * @package squirrelmail
- */
 class AddressStructure {
     var $personal = '',
         $adl      = '',

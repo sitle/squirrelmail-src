@@ -11,11 +11,7 @@
  * Functions to edit an event.
  *
  * $Id$
- * @package plugins
- * @subpackage calendar
  */
-
-/** @ignore */
 define('SM_PATH','../../');
 
 /* Calender plugin required files. */
@@ -103,7 +99,7 @@ elseif (isset($_GET['minute'])) {
 /* got 'em */
 
 // update event info
-function update_event_form() {
+function show_event_form() {
     global $color, $editor_size, $year, $day, $month, $hour, $minute, $calendardata;
 
     $tmparray = $calendardata["$month$day$year"]["$hour$minute"];
@@ -287,7 +283,7 @@ echo html_tag( 'tr', '', '', $color[0] ) .
 if (!isset($updated)){
     //get changes to event
     readcalendardata();
-    update_event_form();
+    show_event_form();
 } else {
     if (!isset($confirmed)){
         //confirm changes

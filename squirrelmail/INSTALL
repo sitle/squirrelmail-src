@@ -8,7 +8,6 @@ Table of Contents:
   3.  (INSTALL)  Obtaining and installing SquirrelMail
   4.  (RUN)      Running SquirrelMail
   5.  (CHARSETS) Russian Charsets
-  6.  (LOCALES)  Translations of SquirrelMail
 
 
 0. QUICK INSTALL GUIDE
@@ -16,7 +15,7 @@ Table of Contents:
 
 Each of these steps is covered in detail below.
 
-- Install webserver and PHP4 (at least 4.1.0).
+- Install webserver and PHP4 (at least 4.0.6).
 - Install IMAP server (see docs of that server).
 - Unpack the SquirrelMail package in a web-accessible location.
 - Select a data-dir and attachment dir, outside the webtree (e.g. in /var).
@@ -27,8 +26,6 @@ Each of these steps is covered in detail below.
 - Run config/conf.pl from the command line. Use the D option to load
   predefined options for specific IMAP servers, and edit at least the
   Server Settings and General Options (datadir).
-- Browse to http://www.example.com/yourwebmaillocation/src/configtest.php
-  to test your configuration for common errors.
 - Browse to http://www.example.com/yourwebmaillocation/ to log in.
 
 
@@ -36,7 +33,7 @@ Each of these steps is covered in detail below.
 ---------------------------------------------
 
   If your webserver does not already have PHP you must configure it
-  to work with PHP. You need at least PHP v4.1.0. SquirrelMail uses
+  to work with PHP. You need at least PHP v4.0.6. SquirrelMail uses
   the standard suffix .php for all PHP4 files.
   
   You can find PHP at http://www.php.net. See the documentation that
@@ -157,11 +154,6 @@ c. Setting up SquirrelMail
   You can also copy the config/config_default.php file to config/config.php
   and edit that manually.
 
-  After you've created a configuration, you can use your webbrowser to
-  browse to http://your-squirrelmail-location/src/configtest.php.
-  This will perform some basic checks on your config to make sure
-  everything works like it should.
-
 
 4. RUNNING SQUIRRELMAIL
 -----------------------
@@ -179,27 +171,3 @@ c. Setting up SquirrelMail
 
   For information on how to make SquirrelMail work with Russian
   Apache, see the README.russian_apache in the doc/ subdirectory.
-
-
-6. TRANSLATIONS
----------------
-
-  In order to use translated versions of SquirrelMail, you need 
-  to download and install locale packages that contain translations
-  that you want to use with squirrelmail.
-  
-  Locale packages can be downloaded from SquirrelMail SourceForge
-  project page.
-  
-  http://sourceforge.net/project/showfiles.php?group_id=311&package_id=110388
-  
-  Each translation contains install script that copies required files
-  into appropriate locations. If you can't run that script, you can extract
-  contents of translation packages into your squirrelmail directory.
-  
-  NOTE No.1: *-src.tar.gz, *-src.tar.bz2 and *-src.zip archives does not contain
-  compiled translation files. You will need to run compilelocales script
-  in order to get all gettext binary translations.
-  
-  NOTE No.2: You might need to restart your webserver before using translations.
-  If you can't do that, install your translations _before_ you use SquirrelMail.

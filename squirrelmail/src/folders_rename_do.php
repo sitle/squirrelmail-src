@@ -9,14 +9,10 @@
  * Does the actual renaming of files on the IMAP server.
  * Called from the folders.php
  *
- * @version $Id$
- * @package squirrelmail
+ * $Id$
  */
 
-/**
- * Path for SquirrelMail required files.
- * @ignore
- */
+/* Path for SquirrelMail required files. */
 define('SM_PATH','../');
 
 /* SquirrelMail required files. */

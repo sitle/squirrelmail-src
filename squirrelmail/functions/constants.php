@@ -10,11 +10,9 @@
  * This file is include by src/login.php, src/redirect.php and
  * src/load_prefs.php.
  *
- * @version $Id$
- * @package squirrelmail
+ * $Id$
  */
 
-/** Need to enable plugin functions for a hook */
 require_once(SM_PATH . 'functions/plugin.php');  /* Required for the hook */
 
 /**************************************************************/

@@ -10,14 +10,10 @@
  * scripts which do most of the work. Also handles the Special
  * Folders.
  *
- * @version $Id$
- * @package squirrelmail
+ * $Id$
  */
 
-/**
- * Path for SquirrelMail required files.
- * @ignore
- */
+/* Path for SquirrelMail required files. */
 define('SM_PATH','../');
 
 /* SquirrelMail required files. */
@@ -90,6 +86,8 @@ if ( isset($success) && $success ) {
 echo "\n<br>";
 
 $imapConnection = sqimap_login ($username, $key, $imapServerAddress, $imapPort, 0);
+
+// force retrieval of a non cached folderlist
 $boxes = sqimap_mailbox_list($imapConnection,true);
 
 /** CREATING FOLDERS **/
@@ -142,8 +140,6 @@ echo html_tag( 'tr',
         ) ."\n";
 
 /** count special folders **/
-
-// FIX ME, why not check if the folders are defined IMHO move_to_sent, move_to_trash has nothing todo with it
 $count_special_folders = 0;
 $num_max = 1;
 if (strtolower($imap_server_type) == "courier" || $move_to_trash) {
@@ -156,37 +152,35 @@ if ($save_as_draft) {
     $num_max++;
 }
 
-// What if move_to_sent = false and $sent_folder is set? Should it still be skipped?
-
+// determine which folders the user shouldn't be able to rename/delete
 for ($p = 0, $cnt = count($boxes); $p < $cnt && $count_special_folders < $num_max; $p++) {
+    
     switch ($boxes[$p]['unformatted'])
     {
        case (strtoupper($boxes[$p]['unformatted']) == 'INBOX'):
           ++$count_special_folders;
-	  $skip_folders[] = $boxes[$p]['unformatted'];
-	  break;
+          $skip_folders[] = $boxes[$p]['unformatted'];
+       break;
        // FIX ME inbox.trash should be set in conf.pl
        case 'inbox.trash':
           if (strtolower($imap_server_type) == 'courier') {
-	      ++$count_special_folders;
-	  }
-	  break;
+              ++$count_special_folders;
+          }
+       break;
        case $trash_folder:
            ++$count_special_folders;
            $skip_folders[] = $trash_folder;
-	   break;
+       break;
        case $sent_folder:
            ++$count_special_folders;
            $skip_folders[] = $sent_folder;
-	   break;
+       break;
        case $draft_folder:
            ++$count_special_folders;
            $skip_folders[] = $draft_folder;
-	   break;
-       default: break;
-    }	  
+       break;
+    }      
 }
-
 
 /** RENAMING FOLDERS **/
 echo html_tag( 'tr',
@@ -267,9 +261,9 @@ if ($count_special_folders < count($boxes)) {
             ($boxes[$i]["unformatted"] != $trash_folder) &&
             ($boxes[$i]["unformatted"] != $sent_folder) &&
             ($boxes[$i]["unformatted"] != $draft_folder)) {
-            $box = htmlspecialchars($boxes[$i]["unformatted-dm"]);
-            $box2 = str_replace(' ', '&nbsp;',
-                                htmlspecialchars(imap_utf7_decode_local($boxes[$i]["unformatted-disp"])));
+            $box = $boxes[$i]["unformatted-dm"];
+            $box2 = str_replace(array(' ','<','>'), array('&nbsp;','&lt;','&gt;'),
+                                imap_utf7_decode_local($boxes[$i]["unformatted-disp"]));
             echo "         <OPTION VALUE=\"$box\">$box2\n";
         }
     }
@@ -301,8 +295,8 @@ if(!$no_list_for_subscribe) {
         }
     }
     if ($use_folder == true) {
-        $box[$q] = htmlspecialchars($boxes_all[$i]['unformatted-dm']);
-        $box2[$q] = htmlspecialchars(imap_utf7_decode_local($boxes_all[$i]['unformatted-disp']));
+        $box[$q] = $boxes_all[$i]['unformatted-dm'];
+        $box2[$q] = imap_utf7_decode_local($boxes_all[$i]['unformatted-disp']);
         $q++;
     }
   }
@@ -311,7 +305,7 @@ if(!$no_list_for_subscribe) {
        . '<tt><select name="mailbox[]" multiple size=8>';
 
     for ($q = 0; $q < count($box); $q++) {      
-       echo "         <OPTION VALUE=\"$box[$q]\">".$box2[$q]."\n";
+       echo "         <OPTION VALUE=\"$box[$q]\">".str_replace(array(' ','<','>'),array('&nbsp;','&lt;','&gt;'),$box2[$q])."\n";
     }      
     echo '</select></tt><br><br>'
        . '<input type=SUBMIT VALUE="'. _("Subscribe") . "\">\n"

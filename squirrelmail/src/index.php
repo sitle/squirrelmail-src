@@ -10,8 +10,7 @@
  * people to the login screen. At this point no attempt is made to see if
  * the person is logged or not.
  *
- * @version $Id$
- * @package squirrelmail
+ * $Id$
  */
 
 header("Location:../index.php");

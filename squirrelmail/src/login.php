@@ -9,14 +9,10 @@
  * This a simple login screen. Some housekeeping is done to clean
  * cookies and find language.
  *
- * @version $Id$
- * @package squirrelmail
+ * $Id$
  */
 
-/**
- * Path for SquirrelMail required files.
- * @ignore
- */
+/* Path for SquirrelMail required files. */
 define('SM_PATH','../');
 
 /* SquirrelMail required files. */
@@ -28,10 +24,9 @@ require_once(SM_PATH . 'functions/constants.php');
 require_once(SM_PATH . 'functions/page_header.php');
 require_once(SM_PATH . 'functions/html.php');
 require_once(SM_PATH . 'functions/global.php');
-require_once(SM_PATH . 'functions/imap_general.php');
 require_once(SM_PATH . 'functions/forms.php');
 
-/**
+/*
  * $squirrelmail_language is set by a cookie when the user selects
  * language and logs out
  */
@@ -54,26 +49,6 @@ sqsession_destroy();
  
 header('Pragma: no-cache');
 
-/**
- * This detects if the IMAP server has logins disabled, and if so, 
- * squelches the display of the login form and puts up a message
- * explaining the situation.
- */
-if($imap_auth_mech == 'login') {
-    $imap = sqimap_create_stream($imapServerAddress, $imapPort, $use_imap_tls);
-    $logindisabled = sqimap_capability($imap,'LOGINDISABLED');
-    sqimap_logout($imap);
-    if ($logindisabled) {
-        $string = "The IMAP server is reporting that logins are disabled.<br>";
-        if (!$use_imap_tls) {
-            $string .= "The use of TLS may allow SquirrelMail to login.<br>";
-        }
-        $string .= "Please contact your system administrator.";
-        error_box($string,$color);
-        exit;
-    }
-}
-
 do_hook('login_cookie');
 
 /* Output the javascript onload function. */
@@ -81,6 +56,7 @@ do_hook('login_cookie');
 $header = "<script language=\"JavaScript\" type=\"text/javascript\">\n" .
           "<!--\n".
           "  function squirrelmail_loginpage_onload() {\n".
+          "    document.forms[0].js_autodetect_results.value = '" . SMPREF_JS_ON . "';\n".
           "    var textElements = 0;\n".
           "    for (i = 0; i < document.forms[0].elements.length; i++) {\n".
           "      if (document.forms[0].elements[i].type == \"text\" || document.forms[0].elements[i].type == \"password\") {\n".
@@ -94,14 +70,11 @@ $header = "<script language=\"JavaScript\" type=\"text/javascript\">\n" .
           "  }\n".
           "// -->\n".
           "</script>\n";
-
-if (@file_exists($theme[$theme_default]['PATH']))
-   @include ($theme[$theme_default]['PATH']);
-
+$custom_css = 'none';          
 displayHtmlHeader( "$org_name - " . _("Login"), $header, FALSE );
 
-echo "<body text=\"$color[8]\" bgcolor=\"$color[4]\" link=\"$color[7]\" vlink=\"$color[7]\" alink=\"$color[7]\" onLoad=\"squirrelmail_loginpage_onload()\">" .
-     "\n" . '<form action="redirect.php" method="post" onSubmit="document.forms[0].js_autodetect_results.value=\'' . SMPREF_JS_ON .'\';">' . "\n";
+echo '<body text="#000000" bgcolor="#FFFFFF" link="#0000CC" vlink="#0000CC" alink="#0000CC" onload="squirrelmail_loginpage_onload();">' .
+     "\n" . addForm('redirect.php', 'POST');
 
 $username_form_name = 'login_username';
 $password_form_name = 'secretkey';
@@ -123,11 +96,6 @@ if (isset($org_logo) && $org_logo) {
     }
 }
 
-if(sqgetGlobalVar('mailto', $mailto)) {
-    $rcptaddress = addHidden('mailto', $mailto);
-} else {
-    $rcptaddress = '';
-}
 echo html_tag( 'table',
     html_tag( 'tr',
         html_tag( 'td',
@@ -144,7 +112,7 @@ echo html_tag( 'table',
                 html_tag( 'tr',
                     html_tag( 'td',
                         '<b>' . sprintf (_("%s Login"), $org_name) . "</b>\n",
-                    'center', $color[0] )
+                    'center', '#DCDCDC' )
                 ) .
                 html_tag( 'tr',
                     html_tag( 'td',  "\n" .
@@ -164,22 +132,21 @@ echo html_tag( 'table',
                                 html_tag( 'td',
 				    addPwField($password_form_name).
 				    addHidden('js_autodetect_results', SMPREF_JS_OFF).
-                                    $rcptaddress .
 				    addHidden('just_logged_in', '1'),
                                 'left', '', 'width="*"' )
                             ) ,
-                        'center', $color[4], 'border="0" width="100%"' ) ,
-                    'left', $color[4] )
+                        'center', '#ffffff', 'border="0" width="100%"' ) ,
+                    'left', '#FFFFFF' )
                 ) . 
                 html_tag( 'tr',
                     html_tag( 'td',
                         '<center>'. addSubmit(_("Login")) .'</center>',
                     'left' )
                 ),
-            '', $color[4], 'border="0" width="350"' ) . '</center>',
+            '', '#ffffff', 'border="0" width="350"' ) . '</center>',
         'center' )
     ) ,
-'', $color[4], 'border="0" cellspacing="0" cellpadding="0" width="100%"' );
+'', '#ffffff', 'border="0" cellspacing="0" cellpadding="0" width="100%"' );
 do_hook('login_form');
 echo '</form>' . "\n";
 

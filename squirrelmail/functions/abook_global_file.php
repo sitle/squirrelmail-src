@@ -1,7 +1,7 @@
 <?php
 
 /**
- * abook_global_file.php
+ * abook_local_file.php
  *
  * Copyright (c) 1999-2004 The SquirrelMail Project Team
  * Licensed under the GNU GPL. For full terms see the file COPYING.
@@ -16,15 +16,9 @@
  *
  * Make sure you configure this before using it!
  *
- * @version $Id$
- * @package squirrelmail
- * @subpackage addressbook
+ * $Id$
  */
 
-/**
- * Undocumented class - fixme
- * @package squirrelmail
- */
 class abook_global_file extends addressbook_backend {
     var $btype = 'local';
     var $bname = 'global_file';

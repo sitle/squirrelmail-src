@@ -11,22 +11,18 @@
  * functions to operate on calendar data files.
  *
  * $Id$
- * @package plugins
- * @subpackage calendar
  */
 
-/** this is array that contains all events
- *  it is three dimensional array with fallowing structure
- *  $calendardata[date][time] = array(length,priority,title,message); */
+// this is array that contains all events
+// it is three dimensional array with fallowing structure
+// $calendardata[date][time] = array(length,priority,title,message);
 $calendardata = array();
 
-/**
- * read events into array
- *
- * data is | delimited, just like addressbook
- * files are structured like this:
- * date|time|length|priority|title|message
- * files are divided by year for performance increase */
+//read events into array
+//data is | delimited, just like addresbook
+//files are structured like this:
+//date|time|length|priority|title|message);
+//files are divide by year for performance increase
 function readcalendardata() {
     global $calendardata, $username, $data_dir, $year;
 
@@ -46,11 +42,11 @@ function readcalendardata() {
             fclose ($fp);
             // this is to sort the events within a day on starttime
             $new_calendardata = array();
-	    foreach($calendardata as $day => $data) {
+            foreach($calendardata as $day => $data) {
                 ksort($data, SORT_NUMERIC);
                 $new_calendardata[$day] = $data;
             }
-	    $calendardata = $new_calendardata;
+            $calendardata = $new_calendardata;
         }
     }
 }
