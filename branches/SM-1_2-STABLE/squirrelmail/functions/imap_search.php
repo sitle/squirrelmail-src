@@ -136,18 +136,18 @@ function sqimap_search($imapConnection, $search_where, $search_what, $mailbox,
             $date[$j] = str_replace('  ', ' ', $date[$j]);
             $tmpdate = explode(' ', trim($date[$j]));
 
-            $messages[$j]["TIME_STAMP"] = getTimeStamp($tmpdate);
-            $messages[$j]["DATE_STRING"] = getDateString($messages[$j]["TIME_STAMP"]);
-            $messages[$j]["ID"] = $id[$j];
-            $messages[$j]["FROM"] = decodeHeader($from[$j]);
-            $messages[$j]["FROM-SORT"] = strtolower(sqimap_find_displayable_name(decodeHeader($from[$j])));
-            $messages[$j]["SUBJECT"] = decodeHeader($subject[$j]);
-            $messages[$j]["SUBJECT-SORT"] = strtolower(decodeHeader($subject[$j]));
-            $messages[$j]["TO"] = decodeHeader($to[$j]);
-            $messages[$j]["PRIORITY"] = $priority[$j];
-            $messages[$j]["CC"] = $cc[$j];
-            $messages[$j]["SIZE"] = $size[$j];
-            $messages[$j]["TYPE0"] = $type[$j];
+            $messages[$j]['TIME_STAMP'] = getTimeStamp($tmpdate);
+            $messages[$j]['DATE_STRING'] = getDateString($messages[$j]['TIME_STAMP']);
+            $messages[$j]['ID'] = $id[$j];
+            $messages[$j]['FROM'] = decodeHeader($from[$j]);
+            $messages[$j]['FROM-SORT'] = strtolower(sqimap_find_displayable_name(decodeHeader($from[$j])));
+            $messages[$j]['SUBJECT'] = decodeHeader($subject[$j]);
+            $messages[$j]['SUBJECT-SORT'] = strtolower(decodeHeader($subject[$j]));
+            $messages[$j]['TO'] = decodeHeader($to[$j]);
+            $messages[$j]['PRIORITY'] = $priority[$j];
+            $messages[$j]['CC'] = $cc[$j];
+            $messages[$j]['SIZE'] = $size[$j];
+            $messages[$j]['TYPE0'] = $type[$j];
     	    $messages[$j]['FLAG_DELETED'] = $flag_deleted[$j];
             $messages[$j]['FLAG_ANSWERED'] = $flag_answered[$j];
             $messages[$j]['FLAG_SEEN'] = $flag_seen[$j];
@@ -184,7 +184,7 @@ function sqimap_search($imapConnection, $search_where, $search_what, $mailbox,
                     $sort = 0;
             }
             mail_message_listing_beginning( $imapConnection,
-                "move_messages.php?msg=$msg&mailbox=$urlMailbox&pos=$pos&where=" . urlencode($search_where) . "&what=".urlencode($search_what),
+                "move_messages.php?msg=$msg&amp;mailbox=$urlMailbox&amp;pos=$pos&amp;where=" . urlencode($search_where) . "&amp;what=".urlencode($search_what),
                 $mailbox,
                 -1,
                 '<div align="left"><b><big>'. _("Folder:") .' '.(($mailbox == 'INBOX') ? _("INBOX") : $mailbox).
@@ -194,7 +194,7 @@ function sqimap_search($imapConnection, $search_where, $search_what, $mailbox,
         }
         else {
             mail_message_listing_beginning( $imapConnection,
-                "move_messages.php?msg=$msg&mailbox=$urlMailbox&pos=$pos&where=" . urlencode($search_where) . "&what=".urlencode($search_what),
+                "move_messages.php?msg=$msg&amp;mailbox=$urlMailbox&amp;pos=$pos&amp;where=" . urlencode($search_where) . "&amp;what=".urlencode($search_what),
                 $mailbox,
                 -1,
                 '<div align="left"><b><big>'. _("Folder:") .' '.(($mailbox == 'INBOX') ? _("INBOX") : $mailbox).
