@@ -175,7 +175,7 @@ if (isset($action) && $action == 'spam') {
     ) . "\n" .
         '</table>'.
         '</center>'.
-        '</form>';
+        '</form></body></html>';
 
 }
 
@@ -218,7 +218,7 @@ if (! isset($_GET['action']) || $_GET['action'] != 'spam') {
         }
         echo "</td></tr>\n";
     }
-    echo '</table>';
+    echo '</table></body></html>';
 }
 
 ?>
