@@ -501,19 +501,32 @@ function sqimap_login ($username, $password, $imap_server_address, $imap_port, $
                 $message .= '  Please contact your system administrator.';
       }
     } elseif ($imap_auth_mech == 'login') {
-          // Original IMAP login code
-      $query = 'LOGIN "' . quoteimap($username) .  '" "' . quoteimap($password) . '"';
-      $read = sqimap_run_command ($imap_stream, $query, false, $response, $message);
-    } elseif ($imap_auth_mech == 'plain') {
-                /* Replace this with SASL PLAIN if it ever gets implemented */
-                $response="BAD";
-                $message='SquirrelMail does not support SASL PLAIN yet. Rerun conf.pl and use login instead.';
+        // this is a workaround to alert users of LOGINDISABLED, which is done "right" in
+        // devel but requires functions not available in stable. RFC requires us to
+        // not send LOGIN when LOGINDISABLED is advertised.
+        if(stristr($server_info, 'LOGINDISABLED')) {
+            $response = 'BAD';	
+            $message = _("The IMAP server is reporting that plain text logins are disabled.").' '.
+                _("Using CRAM-MD5 or DIGEST-MD5 authentication instead may work.").' ';
+            if (!$use_imap_tls) {
+                $message .= _("The use of TLS may allow SquirrelMail to login.").' ';
+            }
+            $message .= _("Please contact your system administrator and report this error.");
         } else {
-                $response="BAD";
-                $message="Internal SquirrelMail error - unknown IMAP authentication method chosen.  Please contact the developers.";
+            // Original IMAP login code
+            $query = 'LOGIN "' . quoteimap($username) .  '" "' . quoteimap($password) . '"';
+            $read = sqimap_run_command ($imap_stream, $query, false, $response, $message);
         }
+    } elseif ($imap_auth_mech == 'plain') {
+        /* Replace this with SASL PLAIN if it ever gets implemented */
+        $response="BAD";
+        $message='SquirrelMail does not support SASL PLAIN yet. Rerun conf.pl and use login instead.';
+    } else {
+        $response="BAD";
+        $message="Internal SquirrelMail error - unknown IMAP authentication method chosen.  Please contact the developers.";
+    }
     
-        /* If the connection was not successful, lets see why */
+    /* If the connection was not successful, lets see why */
     if ($response != 'OK') {
         if (!$hide) {
             if ($response != 'NO') {
