@@ -4,8 +4,10 @@
 # v1.4.1 translation modified by Tomas Zvala
 msgid ""
 msgstr ""
-"Project-Id-Version: $Id$\n"
-"POT-Creation-Date: 2003-07-06 14:37+0300\n"
+"Project-Id-Version: $Id: squirrelmail.po,v 1.2 2003/08/24 09:59:15 tokul Exp "
+"$\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2003-10-05 12:27+0300\n"
 "PO-Revision-Date: 2003-08-20 17:30:00+0100\n"
 "Last-Translator: Tomá¹ Zvala <fox@murder.cz>\n"
 "Language-Team: Czech <squirrelmail-i18n@lists.sourceforge.net>\n"
@@ -235,6 +237,7 @@ msgstr "Neoznaèil jste slo¾ku ke smazání."
 msgid "Delete Folder"
 msgstr "Odstranit slo¾ku"
 
+#, c-format
 msgid "Are you sure you want to delete %s?"
 msgstr "Opravdu chcete smazat %s?"
 
@@ -604,11 +607,11 @@ msgstr "Poøadí sloupcù v seznamu zpráv mù¾e být upraveno podle va¹ich potøeb."
 msgid "Message not printable"
 msgstr "Zprávu nelze tisknout"
 
-msgid "Printer Friendly"
-msgstr "Verze pro tisk"
-
 msgid "CC"
 msgstr "Kopie"
+
+msgid "Printer Friendly"
+msgstr "Verze pro tisk"
 
 msgid "Print"
 msgstr "Tisknout"
@@ -644,7 +647,8 @@ msgstr "Emailový klient"
 msgid "Read receipt"
 msgstr "Doruèenka pøeètení"
 
-msgid "send"
+#, fuzzy
+msgid "sent"
 msgstr "odeslat"
 
 msgid "requested"
@@ -956,9 +960,11 @@ msgstr "Bøe"
 msgid "Apr"
 msgstr "Dub"
 
-#msgid "May"
-#msgstr "Kvì"
+msgid "Ma&#121;"
+msgstr ""
 
+# msgid "May"
+# msgstr "Kvì"
 msgid "Jun"
 msgstr "Èvn"
 
@@ -986,6 +992,9 @@ msgstr "j F Y, G:i"
 msgid "D, F j, Y G:i"
 msgstr "j F Y, G:i"
 
+msgid "M j, Y"
+msgstr "j M, Y"
+
 msgid "g:i a"
 msgstr "G:i"
 
@@ -997,9 +1006,6 @@ msgstr "D, G:i"
 
 msgid "D, G:i"
 msgstr "D, G:i"
-
-msgid "M j, Y"
-msgstr "j M, Y"
 
 #, c-format
 msgid "Preference database error (%s). Exiting abnormally"
@@ -1026,16 +1032,21 @@ msgstr ""
 "Soubor s nastavením, %s, neexistuje. Odhla¹te se a pøihlaste se zpìt, abyste "
 "vytvoøili výchozí soubor s nastavením."
 
+#, c-format
 msgid ""
 "Preference file, %s, could not be opened. Contact your system administrator "
 "to resolve this issue."
-msgstr "Soubor s nastavením, %s, nemohl být otevøen. Kontaktujte správce webmailu."
+msgstr ""
+"Soubor s nastavením, %s, nemohl být otevøen. Kontaktujte správce webmailu."
 
+#, c-format
 msgid ""
 "Preference file, %s, could not be written. Contact your system administrator "
 "to resolve this issue."
-msgstr "Soubor s nastavením, %s, nemohl být otevøen. Kontaktujte správce webmailu."
+msgstr ""
+"Soubor s nastavením, %s, nemohl být otevøen. Kontaktujte správce webmailu."
 
+#, fuzzy, c-format
 msgid ""
 "Preference file, %s, could not be copied from temporary file, %s. Contact "
 "your system administrator to resolve this issue."
@@ -1079,8 +1090,8 @@ msgid ""
 "Signature file, %s, could not be copied from temporary file, %s. Contact "
 "your system administrator to resolve this issue."
 msgstr ""
-"Soubor s podpisy, %s, nemohl být zkopírován z doèasného souboru %s. Oznamte tuto chybu "
-"administrátorovi systému."
+"Soubor s podpisy, %s, nemohl být zkopírován z doèasného souboru %s. Oznamte "
+"tuto chybu administrátorovi systému."
 
 msgid ""
 "You need to have php4 installed with the multibyte string function enabled "
@@ -1093,11 +1104,11 @@ msgstr "Chyba : Není k dispozici ¾ádné pøipojeni k serveru imap."
 msgid "ERROR : Connection dropped by imap-server."
 msgstr "Chyba : Spojení s IMAP serverem bylo pøeru¹eno"
 
-msgid "Query:"
-msgstr "Dotaz:"
-
 msgid "ERROR : Could not complete request."
 msgstr "Chyba : Nelze dokonèit po¾adovaný úkol."
+
+msgid "Query:"
+msgstr "Dotaz:"
 
 msgid "Reason Given: "
 msgstr "Odùvodnìní: "
@@ -1391,6 +1402,9 @@ msgstr "Zapnout Stránkovaè"
 msgid "Maximum Number of Pages to Show"
 msgstr "Maximální zobrazený poèet stránek"
 
+msgid "Always Show Full Date"
+msgstr ""
+
 msgid "Message Display and Composition"
 msgstr "Zobrazení a psaní zpráv"
 
@@ -1596,7 +1610,8 @@ msgid "Same as server"
 msgstr "Stejné jako server"
 
 msgid "Error opening timezone config, contact administrator."
-msgstr "Nelze otevøít soubor s nastavením èasových zón, kontaktujte správce webmailu."
+msgstr ""
+"Nelze otevøít soubor s nastavením èasových zón, kontaktujte správce webmailu."
 
 msgid "Timezone Options"
 msgstr "Èasové pásmo"
@@ -2109,59 +2124,6 @@ msgid "COMMERCIAL - RBL+ Dial-up entries."
 msgstr "KOMERÈNÍ - RBL a Dial-up záznamy"
 
 msgid ""
-"FREE - Osirusoft Relays - Osirusofts list of verified open relays. Seems to "
-"include servers used by abuse@uunet.net auto-replies too."
-msgstr ""
-"ZDARMA - Osirusoft Relays - Obsahuje seznam ovìøených open relay serverù."
-
-msgid "FREE - Osirusoft Dialups - Osirusofts Dialup Spam Source list."
-msgstr "ZDARMA - Osirusoft Dialups - Seznam vytáèených pøipojení"
-
-msgid ""
-"FREE - Osirusoft Confirmed Spam Source - Sites that continually spam and "
-"have been manually added after multiple nominations. Use with caution. Seems "
-"to catch abuse auto-replies from some ISPs."
-msgstr ""
-"ZDARMA - Osirusoft Ovìøené zdroje spamu - Servery a sítì které vytrvale "
-"rozesílají spam a byly ruènì pøidány po nìkolika upozornìní. Pozor! Mù¾e "
-"odchytit zprávy o zneu¾ívaní sí»e od nìkterých poskytovatelù."
-
-msgid ""
-"FREE - Osirusoft Smart Hosts - List of hosts that are secure but relay for "
-"other mail servers that are not secure."
-msgstr ""
-"ZDARMA - Osirusoft Smart Host - Seznam serverù, které jsou bezpeèné ale jiné "
-"servery, ktere je pou¾ívají, bezpeèné nejsou."
-
-msgid ""
-"FREE - Osirusoft Spamware Developers - It is believed that these are IP "
-"ranges of companies that are known to produce spam software. Seems to catch "
-"abuse auto-replies from some ISPs."
-msgstr ""
-"ZDARMA - Osirusoft Spamware Developers - Seznam IP u kterých je dùvodne "
-"podezøení, ¾e je vyu¾ívají spoleènosti, které vyvýjejí software pro "
-"rozesílání spamu. Pozor! Mù¾e odchytit zprávy o zneu¾ívání sí»e od nìkterých "
-"poskytovatelù. "
-
-msgid ""
-"FREE - Osirusoft Unconfirmed OptIn Servers - List of listservers that opt "
-"users in without confirmation."
-msgstr ""
-"ZDARMA - Osirusoft Unconfirmed OptIn Servers - Seznam diskusních skupin, "
-"které umo¾òují pøidávání u¾ivatelù bez ovìøení identity."
-
-msgid ""
-"FREE - Osirusoft Insecure formmail.cgi scripts - List of insecure formmail."
-"cgi scripts. (planned)."
-msgstr ""
-"ZDARMA - Osirusoft Insecure formmail.cgi scripts - Seznam nezabezpeèených "
-"CGI scriptù.(pøipravuje se)."
-
-msgid "FREE - Osirusoft Open Proxy Servers - List of Open Proxy Servers."
-msgstr ""
-"ZDARMA - Osirusoft Open Proxy Servers - Seznam nezabezpeèených proxy serverù"
-
-msgid ""
 "FREE - ORDB was born when ORBS went off the air. It seems to have fewer "
 "false positives than ORBS did though."
 msgstr ""
@@ -2432,8 +2394,7 @@ msgid ""
 "Run some test IMAP commands, displaying both the command and the result. "
 "These tests use the Squirrelmail IMAP commands and your current Squirrelmail "
 "configuration. Custom command strings can be used."
-msgstr ""
-"Provede nìkteré zku¹ební pøíkazy IMAPu, zobrazujíc pøíkaz i výsledek."
+msgstr "Provede nìkteré zku¹ební pøíkazy IMAPu, zobrazujíc pøíkaz i výsledek."
 
 msgid "Mailinglist"
 msgstr "Diskusní skupina"
@@ -3082,8 +3043,7 @@ msgstr "Slovník smazán"
 msgid ""
 "Your personal dictionary was erased. Please close this window and click "
 "\"Check Spelling\" button again to start your spellcheck over."
-msgstr ""
-"Osobní slovník byl smazán."
+msgstr "Osobní slovník byl smazán."
 
 msgid "Close this Window"
 msgstr "Zavøít okno"
@@ -3091,8 +3051,7 @@ msgstr "Zavøít okno"
 msgid ""
 "Your personal dictionary was re-encrypted successfully. Now return to the "
 "&quot;SpellChecker options&quot; menu and make your selection again."
-msgstr ""
-"Vá¹ slovník byl znovu za¹ifrován."
+msgstr "Vá¹ slovník byl znovu za¹ifrován."
 
 msgid "Successful Re-encryption"
 msgstr "Znovuza¹ifrování úspì¹né"
@@ -3101,8 +3060,7 @@ msgid ""
 "Your personal dictionary was re-encrypted successfully. Please close this "
 "window and click \"Check Spelling\" button again to start your spellcheck "
 "over."
-msgstr ""
-"Vá¹ slovník byl znovu za¹ifrován."
+msgstr "Vá¹ slovník byl znovu za¹ifrován."
 
 msgid "Dictionary re-encrypted"
 msgstr "Slovník byl znovu za¹ifrován"
@@ -3110,14 +3068,12 @@ msgstr "Slovník byl znovu za¹ifrován"
 msgid ""
 "Your personal dictionary has been <strong>encrypted</strong> and is now "
 "stored in an <strong>encrypted format</strong>."
-msgstr ""
-"Vá¹ osobní slovník byl za¹ifrován"
+msgstr "Vá¹ osobní slovník byl za¹ifrován"
 
 msgid ""
 "Your personal dictionary has been <strong>decrypted</strong> and is now "
 "stored as <strong>clear text</strong>."
-msgstr ""
-"Vá¹ osobní slovník byl roz¹ifrován."
+msgstr "Vá¹ osobní slovník byl roz¹ifrován."
 
 msgid "Personal Dictionary Crypto Settings"
 msgstr "Nastavení ¹ifrování osobního slovníku"
@@ -3152,7 +3108,9 @@ msgstr "Tímto za¹ifrujete svùj slovník. Pokraèovat?"
 msgid ""
 "This will decrypt your personal dictionary and store it in a clear-text "
 "format. Proceed?"
-msgstr "Tímto roz¹ifrujete svùj slovník, ten pak bude ulo¾en neza¹ifrovaný. Pokraèovat?"
+msgstr ""
+"Tímto roz¹ifrujete svùj slovník, ten pak bude ulo¾en neza¹ifrovaný. "
+"Pokraèovat?"
 
 msgid ""
 "<p>Your personal dictionary is <strong>currently encrypted</strong>. This "
@@ -3166,14 +3124,13 @@ msgid ""
 "old password in order to re-encrypt the dictionary with a new key.</p>"
 msgstr ""
 "<p>Vá¹ osobní slovník je nyní za¹ifrován. <strong>POZOR:</strong> Pokud "
-"zapomenete va¹e heslo, nebude mo¾né slovník ¾ádným zpùsobem roz¹ifrovat "
-"a tak se stane nepou¾itelným. Pokud si zmìníte heslo do va¹í schránky "
+"zapomenete va¹e heslo, nebude mo¾né slovník ¾ádným zpùsobem roz¹ifrovat a "
+"tak se stane nepou¾itelným. Pokud si zmìníte heslo do va¹í schránky "
 "SquirrelMail to pozná a umo¾ní vám slovník znovu za¹ifrovat heslem novým "
 
 msgid ""
 "Please decrypt my personal dictionary and store it in a clear-text format."
-msgstr ""
-"Prosím roz¹ifruj mùj osobní slovník a ulo¾ ho v neza¹ifrované podobì."
+msgstr "Prosím roz¹ifruj mùj osobní slovník a ulo¾ ho v neza¹ifrované podobì."
 
 msgid "Change crypto settings"
 msgstr "Zmìnit nastavení ¹ifrování"
@@ -3192,13 +3149,11 @@ msgid ""
 "change your mailbox password but you still have the old password at hand, "
 "you will be able to enter the old key to re-encrypt the dictionary with the "
 "new value.</p>"
-msgstr ""
-"Vá¹ osobní slovník nyní není za¹ifrován."
+msgstr "Vá¹ osobní slovník nyní není za¹ifrován."
 
 msgid ""
 "Please encrypt my personal dictionary and store it in an encrypted format."
-msgstr ""
-"Prosím za¹ifruj mùj osobní slovník a ulo¾ ho za¹ifrovaný."
+msgstr "Prosím za¹ifruj mùj osobní slovník a ulo¾ ho za¹ifrovaný."
 
 #, c-format
 msgid "Deleting the following entries from <strong>%s</strong> dictionary:"
@@ -3219,8 +3174,7 @@ msgstr "Prosím èekejte, komunikuji se serverem..."
 msgid ""
 "Please choose which dictionary you would like to use to spellcheck this "
 "message:"
-msgstr ""
-"Prosím vyberte slovník ke kontrole této zprávy."
+msgstr "Prosím vyberte slovník ke kontrole této zprávy."
 
 msgid "SquirrelSpell Initiating"
 msgstr "SquirrelSpell se inicializuje"
@@ -3235,7 +3189,8 @@ msgstr ""
 
 #, c-format
 msgid "Using <strong>%s</strong> dictionary (system default) for spellcheck."
-msgstr "Pou¾ívám <strong>%s</strong> slovník (implicitní) pro kontrolu pravopisu."
+msgstr ""
+"Pou¾ívám <strong>%s</strong> slovník (implicitní) pro kontrolu pravopisu."
 
 msgid "International Dictionaries Preferences Updated"
 msgstr "Nastavení mezinárodních slovníkù aktualizováno"
@@ -3244,7 +3199,8 @@ msgid ""
 "Please check any available international dictionaries which you would like "
 "to use when spellchecking:"
 msgstr ""
-"Prosím vyberte si z dostupných slovníkù ty, které chcete pou¾ívat pøi kontrole pravopisu:"
+"Prosím vyberte si z dostupných slovníkù ty, které chcete pou¾ívat pøi "
+"kontrole pravopisu:"
 
 msgid "Make this dictionary my default selection:"
 msgstr "Nastavit tento slovník jako implicitní:"
@@ -3282,27 +3238,41 @@ msgstr "Nastavení pøekladaèe bylo ulo¾eno"
 msgid "Your server options are as follows:"
 msgstr "Mo¾nosti va¹eho serveru jsou tyto:"
 
-msgid ""
-"19 language pairs, maximum of 1000 characters translated, powered by Systran"
+#, fuzzy
+msgid "Maximum of 1000 characters translated, powered by Systran"
 msgstr ""
 "19 jazykových párù, maximálnì 1000 znakù k pøekladu, vyu¾vá slu¾by Systran"
 
-msgid "12 language pairs, no known limits, powered by Systran"
+#, c-format
+msgid "Number of supported language pairs: %s"
+msgstr ""
+
+#, fuzzy
+msgid "No known limits, powered by Systran"
 msgstr "12 jazykových páru, bez nám známých omezení, vyu¾ívá slu¾by Systran"
 
-msgid ""
-"784 language pairs, no known limits, powered by Translation Experts's "
-"InterTran"
+#, fuzzy
+msgid "No known limits, powered by Translation Experts's InterTran"
 msgstr ""
 "784 Jazykových párù, bez známých omezení, vyu¾ívá slu¾by Translation "
 "Experts' InterTran"
 
-msgid ""
-"8 language pairs, no known limits, powered by GPLTrans (free, open source)"
+#, c-format
+msgid "Number of supported languages: %s"
+msgstr ""
+
+#, fuzzy
+msgid "No known limits, powered by GPLTrans (free, open source)"
 msgstr "8 jazykových páru, bez známých omezení, vyu¾ívá slu¾by GPLTrans"
 
-msgid "12 language pairs for Hellenic, no known limits, powered by Systran"
+#, fuzzy
+msgid "Hellenic translations, no known limits, powered by Systran"
 msgstr "12 jazykových páru, bez nám známých omezení, vyu¾ívá slu¾by Systran"
+
+#, fuzzy
+msgid "Russian translations, maximum of 500 characters translated"
+msgstr ""
+"19 jazykových párù, maximálnì 1000 znakù k pøekladu, vyu¾vá slu¾by Systran"
 
 msgid ""
 "You also decide if you want the translation box displayed, and where it will "
@@ -3454,11 +3424,76 @@ msgstr "do Angliètiny"
 msgid "from English"
 msgstr "z Angliètiny"
 
+#, fuzzy
+msgid "Interface language"
+msgstr "Implicitní jazyk"
+
+#, fuzzy
+msgid "Translation direction"
+msgstr "Mo¾nosti pøekladu"
+
 msgid "Delivery error report"
 msgstr "Zpráva o chybì"
 
 msgid "Undelivered Message Headers"
 msgstr "Hlavièky nedoruèených zpráv"
+
+#~ msgid ""
+#~ "FREE - Osirusoft Relays - Osirusofts list of verified open relays. Seems "
+#~ "to include servers used by abuse@uunet.net auto-replies too."
+#~ msgstr ""
+#~ "ZDARMA - Osirusoft Relays - Obsahuje seznam ovìøených open relay serverù."
+
+#~ msgid "FREE - Osirusoft Dialups - Osirusofts Dialup Spam Source list."
+#~ msgstr "ZDARMA - Osirusoft Dialups - Seznam vytáèených pøipojení"
+
+#~ msgid ""
+#~ "FREE - Osirusoft Confirmed Spam Source - Sites that continually spam and "
+#~ "have been manually added after multiple nominations. Use with caution. "
+#~ "Seems to catch abuse auto-replies from some ISPs."
+#~ msgstr ""
+#~ "ZDARMA - Osirusoft Ovìøené zdroje spamu - Servery a sítì které vytrvale "
+#~ "rozesílají spam a byly ruènì pøidány po nìkolika upozornìní. Pozor! Mù¾e "
+#~ "odchytit zprávy o zneu¾ívaní sí»e od nìkterých poskytovatelù."
+
+#~ msgid ""
+#~ "FREE - Osirusoft Smart Hosts - List of hosts that are secure but relay "
+#~ "for other mail servers that are not secure."
+#~ msgstr ""
+#~ "ZDARMA - Osirusoft Smart Host - Seznam serverù, které jsou bezpeèné ale "
+#~ "jiné servery, ktere je pou¾ívají, bezpeèné nejsou."
+
+#~ msgid ""
+#~ "FREE - Osirusoft Spamware Developers - It is believed that these are IP "
+#~ "ranges of companies that are known to produce spam software. Seems to "
+#~ "catch abuse auto-replies from some ISPs."
+#~ msgstr ""
+#~ "ZDARMA - Osirusoft Spamware Developers - Seznam IP u kterých je dùvodne "
+#~ "podezøení, ¾e je vyu¾ívají spoleènosti, které vyvýjejí software pro "
+#~ "rozesílání spamu. Pozor! Mù¾e odchytit zprávy o zneu¾ívání sí»e od "
+#~ "nìkterých poskytovatelù. "
+
+#~ msgid ""
+#~ "FREE - Osirusoft Unconfirmed OptIn Servers - List of listservers that opt "
+#~ "users in without confirmation."
+#~ msgstr ""
+#~ "ZDARMA - Osirusoft Unconfirmed OptIn Servers - Seznam diskusních skupin, "
+#~ "které umo¾òují pøidávání u¾ivatelù bez ovìøení identity."
+
+#~ msgid ""
+#~ "FREE - Osirusoft Insecure formmail.cgi scripts - List of insecure "
+#~ "formmail.cgi scripts. (planned)."
+#~ msgstr ""
+#~ "ZDARMA - Osirusoft Insecure formmail.cgi scripts - Seznam nezabezpeèených "
+#~ "CGI scriptù.(pøipravuje se)."
+
+#~ msgid "FREE - Osirusoft Open Proxy Servers - List of Open Proxy Servers."
+#~ msgstr ""
+#~ "ZDARMA - Osirusoft Open Proxy Servers - Seznam nezabezpeèených proxy "
+#~ "serverù"
+
+#~ msgid "12 language pairs for Hellenic, no known limits, powered by Systran"
+#~ msgstr "12 jazykových páru, bez nám známých omezení, vyu¾ívá slu¾by Systran"
 
 #~ msgid "Unknown message number in reply from server: "
 #~ msgstr "©patné èíslo zprávy v odpovìdi serveru: "

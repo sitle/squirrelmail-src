@@ -4,8 +4,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: $Id$\n"
-"POT-Creation-Date: 2003-05-31 14:56+0300\n"
+"Project-Id-Version: $Id: squirrelmail.po,v 1.2 2003/07/20 10:36:39 tokul Exp "
+"$\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2003-10-05 12:27+0300\n"
 "PO-Revision-Date: 2003-07-20 13:35+0300\n"
 "Last-Translator: Danial Olsen <danial@com-data.fo>\n"
 "Language-Team: Faroese <squirrelmail-i18n@lists.sourceforge.net>\n"
@@ -573,8 +575,8 @@ msgid ""
 "This contains personal information about yourself such as your name, your "
 "email address, etc."
 msgstr ""
-"Hetta inniheldur tínir persónligu upplýsingar, so sum títt navn, tína "
-"e-post adressu osv."
+"Hetta inniheldur tínir persónligu upplýsingar, so sum títt navn, tína e-post "
+"adressu osv."
 
 msgid ""
 "You can change the way that SquirrelMail looks and displays information to "
@@ -606,11 +608,11 @@ msgstr ""
 msgid "Message not printable"
 msgstr "Boð kann ikki prentast"
 
-msgid "Printer Friendly"
-msgstr "Prentaravinarligt"
-
 msgid "CC"
 msgstr "CC"
+
+msgid "Printer Friendly"
+msgstr "Prentaravinarligt"
 
 msgid "Print"
 msgstr "Prenta"
@@ -646,7 +648,8 @@ msgstr "Post-forrit"
 msgid "Read receipt"
 msgstr "Les kvittan"
 
-msgid "send"
+#, fuzzy
+msgid "sent"
 msgstr "send"
 
 msgid "requested"
@@ -1000,6 +1003,9 @@ msgstr "D, j F, Y g:i a"
 msgid "D, F j, Y G:i"
 msgstr "D, j F, Y G:i"
 
+msgid "M j, Y"
+msgstr "j M, Y"
+
 msgid "g:i a"
 msgstr "g:i a"
 
@@ -1011,9 +1017,6 @@ msgstr "D, g:i a"
 
 msgid "D, G:i"
 msgstr "D, G:i"
-
-msgid "M j, Y"
-msgstr "j M, Y"
 
 #, c-format
 msgid "Preference database error (%s). Exiting abnormally"
@@ -1105,11 +1108,14 @@ msgid ""
 "You need to have php4 installed with the multibyte string function enabled "
 "(using configure option --enable-mbstring)."
 msgstr ""
-"Tú mást hava php4 installerað við 'multibyte string' funkuni gildaðari "
-"(við at brúka møguleikan --with-mbstring)."
+"Tú mást hava php4 installerað við 'multibyte string' funkuni gildaðari (við "
+"at brúka møguleikan --with-mbstring)."
 
 msgid "ERROR : No available imapstream."
 msgstr "FEILUR : Ongin fríur imapstreymur."
+
+msgid "ERROR : Connection dropped by imap-server."
+msgstr ""
 
 msgid "ERROR : Could not complete request."
 msgstr "FEILUR : Kundi ikki fullføra umsøknina."
@@ -1125,6 +1131,13 @@ msgstr "FEILUR : Vánalig ella avskapað umsøkn."
 
 msgid "Server responded: "
 msgstr "Servari svaraði: "
+
+msgid "ERROR : Imap server closed the connection."
+msgstr ""
+
+#, fuzzy
+msgid "ERROR : Unknown imap response."
+msgstr "Ókent svar"
 
 #, c-format
 msgid "Error connecting to IMAP server: %s."
@@ -1160,6 +1173,15 @@ msgstr "Ókendur sendari"
 
 msgid "Unknown response from IMAP server: "
 msgstr "Ókent svar frá IMAP servara: "
+
+msgid "The server couldn't find the message you requested."
+msgstr ""
+
+msgid ""
+"Most probably your message list was out of date and the message has been "
+"moved away or deleted (perhaps by another program accessing the same "
+"mailbox)."
+msgstr ""
 
 msgid "Unknown date"
 msgstr "Ókend dagfesting"
@@ -1395,6 +1417,9 @@ msgstr "Gilda síðuveljara"
 msgid "Maximum Number of Pages to Show"
 msgstr "Tal av síðum at vísa í mesta lagi"
 
+msgid "Always Show Full Date"
+msgstr ""
+
 msgid "Message Display and Composition"
 msgstr "Boðvísing og skriving"
 
@@ -1539,7 +1564,8 @@ msgstr "Bara ósædd"
 msgid "Unseen and Total"
 msgstr "Ósædd og Fulfíggjað"
 
-msgid "Enable Collapsable Folders"
+#, fuzzy
+msgid "Enable Collapsible Folders"
 msgstr "Gilda skjáttur, ið kunnu krympast"
 
 msgid "Enable Cumulative Unread Message Notification"
@@ -2024,8 +2050,8 @@ msgid "15 min."
 msgstr "15 min."
 
 #, fuzzy
-msgid "35 min."
-msgstr "35 min."
+msgid "30 min."
+msgstr "0 min."
 
 msgid "45 min."
 msgstr "45 min."
@@ -2114,58 +2140,6 @@ msgstr "HANDIL - RBL+ OpenRelay entries"
 
 msgid "COMMERCIAL - RBL+ Dial-up entries."
 msgstr "HANDIL - RBL+ Diap-up entries"
-
-msgid ""
-"FREE - Osirusoft Relays - Osirusofts list of verified open relays. Seems to "
-"include servers used by abuse@uunet.net auto-replies too."
-msgstr ""
-"FREE - Osirusoft Relays - Osirusofts list of verified open relays. Seems to "
-"include servers used by abuse@uunet.net auto-replies too"
-
-msgid "FREE - Osirusoft Dialups - Osirusofts Dialup Spam Source list."
-msgstr "FREE - Osirusoft Dialups - Osirusofts Dialup Spam Source list."
-
-msgid ""
-"FREE - Osirusoft Confirmed Spam Source - Sites that continually spam and "
-"have been manually added after multiple nominations. Use with caution. Seems "
-"to catch abuse auto-replies from some ISPs."
-msgstr ""
-"FREE - Osirusoft Confirmed Spam Source - Sites that continually spam and "
-"have been manually added after multiple nominations. Use with caution. Seems "
-"to catch abuse auto-replies from some ISPs."
-
-msgid ""
-"FREE - Osirusoft Smart Hosts - List of hosts that are secure but relay for "
-"other mail servers that are not secure."
-msgstr ""
-"FREE - Osirusoft Smart Hosts - List of hosts that are secure but relay for "
-"other mail servers that are not secure."
-
-msgid ""
-"FREE - Osirusoft Spamware Developers - It is believed that these are IP "
-"ranges of companies that are known to produce spam software. Seems to catch "
-"abuse auto-replies from some ISPs."
-msgstr ""
-"FREE - Osirusoft Spamware Developers - It is believed that these are IP "
-"ranges of companies that are known to produce spam software. Seems to catch "
-"abuse auto-replies from some ISPs."
-
-msgid ""
-"FREE - Osirusoft Unconfirmed OptIn Servers - List of listservers that opt "
-"users in without confirmation."
-msgstr ""
-"FREE - Osirusoft Unconfirmed OptIn Servers - List of listservers that opt "
-"users in without confirmation."
-
-msgid ""
-"FREE - Osirusoft Insecure formmail.cgi scripts - List of insecure formmail."
-"cgi scripts. (planned)."
-msgstr ""
-"FREE - Osirusoft Insecure formmail.cgi scripts - List of insecure formmail."
-"cgi scripts. (planned)."
-
-msgid "FREE - Osirusoft Open Proxy Servers - List of Open Proxy Servers."
-msgstr "FREE - Osirusoft Open Proxy Servers - List of Open Proxy Servers."
 
 msgid ""
 "FREE - ORDB was born when ORBS went off the air. It seems to have fewer "
@@ -2367,8 +2341,8 @@ msgid ""
 msgstr ""
 "Flyting av spam beinleiðis til trash er nokk ikki eitt gott hugskot í "
 "fyrstani, tí boð frá vinum og mailing-listum kunnu av óvart, verða merkt sum "
-"spam. Verð varugur við, at skjáttan ið tú setir hesa til, má helst verða tømd "
-"av og á, so tú ikki endar við einari yvirstórari skjáttu."
+"spam. Verð varugur við, at skjáttan ið tú setir hesa til, má helst verða "
+"tømd av og á, so tú ikki endar við einari yvirstórari skjáttu."
 
 msgid ""
 "The more messages you scan, the longer it takes.  I would suggest that you "
@@ -2378,7 +2352,7 @@ msgid ""
 "you'll scan even the spam you read with the new filters."
 msgstr ""
 "Fleiri boð tú kannar, longri tekur tað. Eg vildi rátt tær til bert at kanna "
-"nýggj boð.  Um tú gert eina broyting í tínum filtrum, eg vildi sett tað til " 
+"nýggj boð.  Um tú gert eina broyting í tínum filtrum, eg vildi sett tað til "
 "at kanna øll boð, hygg síðani eftir INBOX, kom síðani aftur og set tað til "
 "bert at kanna nýggj boð.  Á tann hátt verða tíni nýggju spam filtur sett í "
 "gildi, og tú kannar sjálvt spammið tú lesur við tínum nýggju filtrum."
@@ -2446,7 +2420,7 @@ msgid ""
 "This will send a message to %s requesting that you will be subscribed to "
 "this list. You will be subscribed with the address below."
 msgstr ""
-"Hetta sendir eini boð til %s við umbøn um tekning av haldi fyri hendan " 
+"Hetta sendir eini boð til %s við umbøn um tekning av haldi fyri hendan "
 "listan. Hald verður teknað við adressuni niðanfyri."
 
 #, c-format
@@ -2454,7 +2428,7 @@ msgid ""
 "This will send a message to %s requesting that you will be unsubscribed from "
 "this list. It will try to unsubscribe the adress below."
 msgstr ""
-"Hetta sendir eini boð til %s við umbøn um frátekning av haldi fyri hendan " 
+"Hetta sendir eini boð til %s við umbøn um frátekning av haldi fyri hendan "
 "listan. Hald verður fráteknað við adressuni niðanfyri."
 
 msgid "Send Mail"
@@ -2484,6 +2458,12 @@ msgstr "Ongin servari valdur"
 msgid "Error "
 msgstr "Feilur "
 
+msgid "POP3 noop:"
+msgstr "POP3 noop:"
+
+msgid "No connection to server"
+msgstr "Onki samband við servaran"
+
 msgid "POP3 user:"
 msgstr "POP3 brúkari:"
 
@@ -2504,9 +2484,6 @@ msgstr "feilur í heimildarkanning"
 
 msgid "POP3 apop:"
 msgstr "POP3 apop:"
-
-msgid "No connection to server"
-msgstr "Onki samband við servaran"
 
 msgid "No login ID submitted"
 msgstr "Onki login ID sent"
@@ -2661,8 +2638,8 @@ msgid ""
 "encryption anyway. Additionally, the encryption that we do to save it on the "
 "server can be undone by a hacker reading the source to this file."
 msgstr ""
-"Tú skalt verða varugur við, at krypteringin sum er nýtt til at goyma "
-"tíni loyniorð, ikki er heilt trygg.  Men tá tú nýtir pop, er onki krypterað "
+"Tú skalt verða varugur við, at krypteringin sum er nýtt til at goyma tíni "
+"loyniorð, ikki er heilt trygg.  Men tá tú nýtir pop, er onki krypterað "
 "allíkavæl, so tað ger onki."
 
 msgid "If you leave password empty, it will be required when you fetch mail."
@@ -2725,9 +2702,6 @@ msgstr "Vátta strikan av valda servara?"
 msgid "Confirm Delete"
 msgstr "Vátta strikan"
 
-msgid "Mofify a Server"
-msgstr "Broyt ein servara"
-
 msgid "Undefined Function"
 msgstr "Ógreinað funka"
 
@@ -2781,8 +2755,8 @@ msgid ""
 "The <b>Check all boxes, not just INBOX</b> option will check ALL of your "
 "folders for unseen mail, not just the inbox for notification."
 msgstr ""
-"2. <b>Kanna allar skjáttur, ikki bert INBOX</b> ger tað, at allar skjáttur verða "
-"kannaðar fyri nýggjan post. Ikki bert INBOX."
+"2. <b>Kanna allar skjáttur, ikki bert INBOX</b> ger tað, at allar skjáttur "
+"verða kannaðar fyri nýggjan post. Ikki bert INBOX."
 
 msgid ""
 "Selecting the <b>Show popup</b> option will enable the showing of a popup "
@@ -2816,14 +2790,12 @@ msgstr ""
 #, fuzzy
 msgid ""
 "Select from the list of <b>server files</b> the media file to play when new "
-"mail arrives.  Selecting <b>local media</b> will play the file specified in "
-"the <b>local media file</b> box to play from the local computer.  If no file "
-"is specified, the system will use a default from the server."
+"mail arrives.  If no file is specified, \"(none)\", no sound will be used."
 msgstr ""
 "6. Vel úr listanum av <b>servara fílum</b>, hvørjar fílur skulu spælast tá "
 "nýggjur postur kemur.  Velur tú <b>lokal media</b>, velur tú hvørja fílu í "
-"<b>Lokal Media Fíla</b> tú spælir frá lokalu telduni.  Er ongin fíla er vald, "
-"verður ein sjálvvald frá servaranum spæld."
+"<b>Lokal Media Fíla</b> tú spælir frá lokalu telduni.  Er ongin fíla er "
+"vald, verður ein sjálvvald frá servaranum spæld."
 
 msgid "Enable Media Playing"
 msgstr "Ger tað møguligt at spæla media"
@@ -3188,7 +3160,7 @@ msgstr ""
 "loyniorði, ið ger tað torført hjá øðrum at síggja, hvat tín orðabók "
 "inniheldur.</p> <strong>LEGG TIL MERKIS:</strong> Gloymir tú loyniorðið, "
 "verður orðabókin ónýtilig, tí hon ikki kann dekrypterast longur. Broytir tú "
-"títt loyniorð, vil SquirrelSpell leggja hetta til merkis og spyrja teg um " 
+"títt loyniorð, vil SquirrelSpell leggja hetta til merkis og spyrja teg um "
 "títt gamla loyniorð, fyri at endurkryptera orðabókina við tínum nýggja lykli."
 "</p>"
 
@@ -3217,8 +3189,8 @@ msgstr ""
 "<p>Tín persónliga orðabók er <strong>ikki krypterað</strong>. Tú vilt "
 "møguliga kryptera tína persónligu orðabók fyri at halda hesa privata, um nú "
 "postskipanin fellur í skeivar hendur, og tín persónliga orðabókafíla verður "
-"stolin. Tá hon er krypterað, er innihaldið bronglað, og trupult er at"
-"avbrongla uttan at vita rætta lykilin (ið er títt postkassa loyniorð).</p> "
+"stolin. Tá hon er krypterað, er innihaldið bronglað, og trupult er "
+"atavbrongla uttan at vita rætta lykilin (ið er títt postkassa loyniorð).</p> "
 "<strong>LEGG TIL MERKIS:</strong> Velur tú at kryptera tína persónligu "
 "orðabók, mást tú minnast til, at hon gerst &quot;bronglað&quot; við tínum "
 "postkassa loyniorði. Gloymir tú loyniorðið, og umsitarin broytir hetta, "
@@ -3312,28 +3284,38 @@ msgid "Your server options are as follows:"
 msgstr "Tín servarauppseting er hendan:"
 
 #, fuzzy
-msgid ""
-"19 language pairs, maximum of 1000 characters translated, powered by Systran"
+msgid "Maximum of 1000 characters translated, powered by Systran"
 msgstr "19 málpør, í mesta lagi 1000 stavir umsettir, rikin av Systran"
 
-msgid "12 language pairs, no known limits, powered by Systran"
+#, c-format
+msgid "Number of supported language pairs: %s"
+msgstr ""
+
+#, fuzzy
+msgid "No known limits, powered by Systran"
 msgstr "12 málpør, ongar kendar avmarkingar, rikin av Systran"
 
 #, fuzzy
-msgid ""
-"784 language pairs, no known limits, powered by Translation Experts's "
-"InterTran"
+msgid "No known limits, powered by Translation Experts's InterTran"
 msgstr ""
 "784 málpør, ongar kendar avmarkingar, rikin av Translation Expert's InterTran"
 
-msgid ""
-"8 language pairs, no known limits, powered by GPLTrans (free, open source)"
+#, c-format
+msgid "Number of supported languages: %s"
+msgstr ""
+
+#, fuzzy
+msgid "No known limits, powered by GPLTrans (free, open source)"
 msgstr ""
 "8 málpør, ongar kendar avmarkingar, rikin av GPLTrans (ókeypis, open source)"
 
 #, fuzzy
-msgid "4 language pairs for Hellenic, no known limits, powered by Systran"
-msgstr "4 málpør, til Hellenic, ongar kendar avmarkingar, rikin av Systran"
+msgid "Hellenic translations, no known limits, powered by Systran"
+msgstr "12 málpør, ongar kendar avmarkingar, rikin av Systran"
+
+#, fuzzy
+msgid "Russian translations, maximum of 500 characters translated"
+msgstr "19 málpør, í mesta lagi 1000 stavir umsettir, rikin av Systran"
 
 msgid ""
 "You also decide if you want the translation box displayed, and where it will "
@@ -3489,11 +3471,82 @@ msgstr "til Enskt"
 msgid "from English"
 msgstr "frá Enskum"
 
+#, fuzzy
+msgid "Interface language"
+msgstr "Sjálvsett mál"
+
+#, fuzzy
+msgid "Translation direction"
+msgstr "Umsetingarmøguleikar"
+
 msgid "Delivery error report"
 msgstr "Frágreiðing um feil levering"
 
 msgid "Undelivered Message Headers"
 msgstr "Óleverað boðhøvd"
+
+#, fuzzy
+#~ msgid "35 min."
+#~ msgstr "35 min."
+
+#~ msgid ""
+#~ "FREE - Osirusoft Relays - Osirusofts list of verified open relays. Seems "
+#~ "to include servers used by abuse@uunet.net auto-replies too."
+#~ msgstr ""
+#~ "FREE - Osirusoft Relays - Osirusofts list of verified open relays. Seems "
+#~ "to include servers used by abuse@uunet.net auto-replies too"
+
+#~ msgid "FREE - Osirusoft Dialups - Osirusofts Dialup Spam Source list."
+#~ msgstr "FREE - Osirusoft Dialups - Osirusofts Dialup Spam Source list."
+
+#~ msgid ""
+#~ "FREE - Osirusoft Confirmed Spam Source - Sites that continually spam and "
+#~ "have been manually added after multiple nominations. Use with caution. "
+#~ "Seems to catch abuse auto-replies from some ISPs."
+#~ msgstr ""
+#~ "FREE - Osirusoft Confirmed Spam Source - Sites that continually spam and "
+#~ "have been manually added after multiple nominations. Use with caution. "
+#~ "Seems to catch abuse auto-replies from some ISPs."
+
+#~ msgid ""
+#~ "FREE - Osirusoft Smart Hosts - List of hosts that are secure but relay "
+#~ "for other mail servers that are not secure."
+#~ msgstr ""
+#~ "FREE - Osirusoft Smart Hosts - List of hosts that are secure but relay "
+#~ "for other mail servers that are not secure."
+
+#~ msgid ""
+#~ "FREE - Osirusoft Spamware Developers - It is believed that these are IP "
+#~ "ranges of companies that are known to produce spam software. Seems to "
+#~ "catch abuse auto-replies from some ISPs."
+#~ msgstr ""
+#~ "FREE - Osirusoft Spamware Developers - It is believed that these are IP "
+#~ "ranges of companies that are known to produce spam software. Seems to "
+#~ "catch abuse auto-replies from some ISPs."
+
+#~ msgid ""
+#~ "FREE - Osirusoft Unconfirmed OptIn Servers - List of listservers that opt "
+#~ "users in without confirmation."
+#~ msgstr ""
+#~ "FREE - Osirusoft Unconfirmed OptIn Servers - List of listservers that opt "
+#~ "users in without confirmation."
+
+#~ msgid ""
+#~ "FREE - Osirusoft Insecure formmail.cgi scripts - List of insecure "
+#~ "formmail.cgi scripts. (planned)."
+#~ msgstr ""
+#~ "FREE - Osirusoft Insecure formmail.cgi scripts - List of insecure "
+#~ "formmail.cgi scripts. (planned)."
+
+#~ msgid "FREE - Osirusoft Open Proxy Servers - List of Open Proxy Servers."
+#~ msgstr "FREE - Osirusoft Open Proxy Servers - List of Open Proxy Servers."
+
+#~ msgid "Mofify a Server"
+#~ msgstr "Broyt ein servara"
+
+#, fuzzy
+#~ msgid "4 language pairs for Hellenic, no known limits, powered by Systran"
+#~ msgstr "4 málpør, til Hellenic, ongar kendar avmarkingar, rikin av Systran"
 
 #~ msgid "Not available"
 #~ msgstr "Ikki tøkt"
@@ -3503,9 +3556,6 @@ msgstr "Óleverað boðhøvd"
 
 #~ msgid "(unknown sender)"
 #~ msgstr "(ókendur sendari)"
-
-#~ msgid "POP3 noop:"
-#~ msgstr "POP3 noop:"
 
 #~ msgid "Message details"
 #~ msgstr "Boð útgreinað"

@@ -4,8 +4,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: $Id$\n"
-"POT-Creation-Date: 2003-01-25 09:07+0100\n"
+"Project-Id-Version: $Id: squirrelmail.po,v 1.1 2003/07/13 09:54:22 tokul Exp "
+"$\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2003-10-05 12:27+0300\n"
 "PO-Revision-Date: 2003-03-15 16:53+0900\n"
 "Last-Translator: Masato HIGASHIYAMA <masato@yamaai-tech.com>\n"
 "Language-Team: Japanese  <squirrelmail-i18n@lists.sourceforge.net>\n"
@@ -86,11 +88,11 @@ msgstr "重複しないようにしてください"
 msgid "E-mail address"
 msgstr ""
 
-msgid "First name"
-msgstr "名"
-
 msgid "Last name"
 msgstr "姓"
+
+msgid "First name"
+msgstr "名"
 
 msgid "Additional info"
 msgstr "その他の情報"
@@ -122,6 +124,15 @@ msgstr "選択されたものを削除"
 #, c-format
 msgid "Add to %s"
 msgstr "%s に追加"
+
+msgid "said"
+msgstr ""
+
+msgid "quote"
+msgstr ""
+
+msgid "who"
+msgstr ""
 
 msgid "Subject"
 msgstr "件名"
@@ -206,15 +217,6 @@ msgstr "ドラフトに保存"
 
 msgid "You have not filled in the \"To:\" field."
 msgstr "宛先が入力されていません"
-
-msgid "said"
-msgstr ""
-
-msgid "quote"
-msgstr ""
-
-msgid "who"
-msgstr ""
 
 msgid "Draft folder"
 msgstr "Draft フォルダ"
@@ -361,9 +363,6 @@ msgstr "メッセージを表示"
 msgid "Download this as a file"
 msgstr "このファイルをダウンロード"
 
-msgid "Not available"
-msgstr "未実装"
-
 msgid "INBOX"
 msgstr "受信箱"
 
@@ -423,6 +422,12 @@ msgstr "件名"
 
 msgid "Edit"
 msgstr "編集"
+
+msgid "Up"
+msgstr "↑"
+
+msgid "Down"
+msgstr "↓"
 
 msgid "No highlighting is defined"
 msgstr "ハイライト表示は設定されていません"
@@ -593,11 +598,11 @@ msgstr "メッセージ一覧の表示項目の順番を設定します。"
 msgid "Message not printable"
 msgstr "メッセージは印刷できません"
 
-msgid "Printer Friendly"
-msgstr "印刷用"
-
 msgid "CC"
 msgstr ""
+
+msgid "Printer Friendly"
+msgstr "印刷用"
 
 msgid "Print"
 msgstr "印刷"
@@ -633,7 +638,8 @@ msgstr "メーラ"
 msgid "Read receipt"
 msgstr "受取通知"
 
-msgid "send"
+#, fuzzy
+msgid "sent"
 msgstr "送信済"
 
 msgid "requested"
@@ -642,7 +648,9 @@ msgstr "要求"
 msgid ""
 "The message sender has requested a response to indicate that you have read "
 "this message. Would you like to send a receipt?"
-msgstr "メッセージの送信者は、あなたがこのメッセージを読んだことを通知することを要求しました。受取通知を送信しますか？"
+msgstr ""
+"メッセージの送信者は、あなたがこのメッセージを読んだことを通知することを要求"
+"しました。受取通知を送信しますか？"
 
 msgid "Send read receipt now"
 msgstr "受取通知をすぐに送信する"
@@ -661,9 +669,6 @@ msgstr "このメッセージを編集"
 
 msgid "View Message"
 msgstr "メッセージを表示"
-
-msgid "Up"
-msgstr "↑"
 
 msgid "Forward"
 msgstr "転送"
@@ -877,6 +882,31 @@ msgstr "金"
 msgid "Saturday"
 msgstr "土"
 
+#, fuzzy
+msgid "Sun"
+msgstr "日"
+
+#, fuzzy
+msgid "Mon"
+msgstr "月"
+
+#, fuzzy
+msgid "Tue"
+msgstr "火"
+
+msgid "Wed"
+msgstr ""
+
+msgid "Thu"
+msgstr ""
+
+#, fuzzy
+msgid "Fri"
+msgstr "金"
+
+msgid "Sat"
+msgstr ""
+
 msgid "January"
 msgstr " 1"
 
@@ -913,11 +943,58 @@ msgstr "11"
 msgid "December"
 msgstr "12"
 
+#, fuzzy
+msgid "Jan"
+msgstr " 1"
+
+msgid "Feb"
+msgstr ""
+
+#, fuzzy
+msgid "Mar"
+msgstr " 3"
+
+#, fuzzy
+msgid "Apr"
+msgstr " 4"
+
+msgid "Ma&#121;"
+msgstr ""
+
+#, fuzzy
+msgid "Jun"
+msgstr " 6"
+
+#, fuzzy
+msgid "Jul"
+msgstr " 7"
+
+#, fuzzy
+msgid "Aug"
+msgstr " 8"
+
+msgid "Sep"
+msgstr ""
+
+#, fuzzy
+msgid "Oct"
+msgstr "10"
+
+#, fuzzy
+msgid "Nov"
+msgstr "いいえ"
+
+msgid "Dec"
+msgstr ""
+
 msgid "D, F j, Y g:i a"
 msgstr "Y年 F月 j日 (D) g:i a"
 
 msgid "D, F j, Y G:i"
 msgstr "Y年 F月 j日 (D) G:i"
+
+msgid "M j, Y"
+msgstr "Y/m/j"
 
 msgid "g:i a"
 msgstr ""
@@ -930,9 +1007,6 @@ msgstr "(D) g:i a"
 
 msgid "D, G:i"
 msgstr "(D) G:i"
-
-msgid "M j, Y"
-msgstr "Y/m/j"
 
 #, c-format
 msgid "Preference database error (%s). Exiting abnormally"
@@ -969,7 +1043,17 @@ msgstr ""
 msgid ""
 "Preference file, %s, could not be written. Contact your system administrator "
 "to resolve this issue."
-msgstr "設定ファイル %s に書き込みできません。このエラーとともに管理者に連絡を取ってください。"
+msgstr ""
+"設定ファイル %s に書き込みできません。このエラーとともに管理者に連絡を取って"
+"ください。"
+
+#, fuzzy, c-format
+msgid ""
+"Preference file, %s, could not be copied from temporary file, %s. Contact "
+"your system administrator to resolve this issue."
+msgstr ""
+"設定ファイル %s をオープンできません。このエラーとともに管理者に連絡を取って"
+"ください。"
 
 #, c-format
 msgid "Error opening %s"
@@ -1004,13 +1088,24 @@ msgstr ""
 "署名ファイル %s に書き込みできません。このエラーとともに管理者に連絡を取って"
 "ください。"
 
+#, fuzzy, c-format
+msgid ""
+"Signature file, %s, could not be copied from temporary file, %s. Contact "
+"your system administrator to resolve this issue."
+msgstr ""
+"署名ファイル %s がオープンできません。このエラーとともに管理者に連絡を取って"
+"ください。"
+
 msgid ""
 "You need to have php4 installed with the multibyte string function enabled "
-"(using configure option --with-mbstring)."
+"(using configure option --enable-mbstring)."
 msgstr ""
 
 msgid "ERROR : No available imapstream."
 msgstr "エラー: imapstreamが利用できません"
+
+msgid "ERROR : Connection dropped by imap-server."
+msgstr ""
 
 msgid "ERROR : Could not complete request."
 msgstr "エラー: 要求を完了できませんでした。"
@@ -1026,6 +1121,13 @@ msgstr "Error: リクエストに異常があります。"
 
 msgid "Server responded: "
 msgstr "サーバの応答:"
+
+msgid "ERROR : Imap server closed the connection."
+msgstr ""
+
+#, fuzzy
+msgid "ERROR : Unknown imap response."
+msgstr "不明な応答"
 
 #, c-format
 msgid "Error connecting to IMAP server: %s."
@@ -1053,20 +1155,23 @@ msgid ""
 "folder."
 msgstr "不要なメッセージをフォルダから削除してください。"
 
-msgid "Unknown response from IMAP server: "
-msgstr "異常な応答が IMAP サーバーからありました:"
-
-msgid "Unknown message number in reply from server: "
-msgstr "不正なメッセージ番号がサーバから返されました："
-
 msgid "(no subject)"
 msgstr ""
 
 msgid "Unknown Sender"
 msgstr "送信者不明"
 
-msgid "(unknown sender)"
-msgstr "(送信者不明)"
+msgid "Unknown response from IMAP server: "
+msgstr "異常な応答が IMAP サーバーからありました:"
+
+msgid "The server couldn't find the message you requested."
+msgstr ""
+
+msgid ""
+"Most probably your message list was out of date and the message has been "
+"moved away or deleted (perhaps by another program accessing the same "
+"mailbox)."
+msgstr ""
 
 msgid "Unknown date"
 msgstr "日付不明"
@@ -1298,6 +1403,9 @@ msgstr "ページセレクタを有効"
 msgid "Maximum Number of Pages to Show"
 msgstr "ページ数の表示の最大"
 
+msgid "Always Show Full Date"
+msgstr ""
+
 msgid "Message Display and Composition"
 msgstr "メッセージ表示と構成"
 
@@ -1442,7 +1550,8 @@ msgstr "未読のみ"
 msgid "Unseen and Total"
 msgstr "未読と合計"
 
-msgid "Enable Collapsable Folders"
+#, fuzzy
+msgid "Enable Collapsible Folders"
 msgstr "フォルダの折り畳みを有効"
 
 msgid "Enable Cumulative Unread Message Notification"
@@ -1924,8 +2033,9 @@ msgstr "0 分"
 msgid "15 min."
 msgstr "15 分"
 
-msgid "35 min."
-msgstr "35 分"
+#, fuzzy
+msgid "30 min."
+msgstr "0 分"
 
 msgid "45 min."
 msgstr "45分"
@@ -2015,60 +2125,6 @@ msgid "COMMERCIAL - RBL+ Dial-up entries."
 msgstr "有償 - RBL+ ダイヤルアップ項目"
 
 msgid ""
-"FREE - Osirusoft Relays - Osirusofts list of verified open relays. Seems to "
-"include servers used by abuse@uunet.net auto-replies too."
-msgstr ""
-"無償 - Osirusoft Relays - Osirusoftsによる、立証できたオープンリレーのリス"
-"ト。abuse@uunet.netが自動返信に使うサーバも含まれるようです。"
-
-msgid "FREE - Osirusoft Dialups - Osirusofts Dialup Spam Source list."
-msgstr "無償 - Osirusoft Dialups - Osirusoftのダイヤルアップスパム元のリスト"
-
-msgid ""
-"FREE - Osirusoft Confirmed Spam Source - Sites that continually spam and "
-"have been manually added after multiple nominations. Use with caution. Seems "
-"to catch abuse auto-replies from some ISPs."
-msgstr ""
-"無償 - Osirusoft Confirmed Spam Source - 連続的にスパム行為を行ない、数回にわ"
-"たって候補者として指名を受けた結果追加されたサイトです。使用すべきかは慎重な"
-"判断が必要です。悪用報告に対する、いくつかのISPによる自動返信も掴んでしまうよ"
-"うです。"
-
-msgid ""
-"FREE - Osirusoft Smart Hosts - List of hosts that are secure but relay for "
-"other mail servers that are not secure."
-msgstr ""
-"無償 - Osirusoft Smart Hosts - セキュアだが、セキュアではないメールサーバの中"
-"継をしてしまうホストのリストです。"
-
-msgid ""
-"FREE - Osirusoft Spamware Developers - It is believed that these are IP "
-"ranges of companies that are known to produce spam software. Seems to catch "
-"abuse auto-replies from some ISPs."
-msgstr ""
-"無償 - Osirusoft Spamware Developers - これらのIP群はスパムのソフトウェアを作"
-"ると知られる企業のものだとされています。いくつかのISPからのabuse自動返信を捕"
-"まえるようです。"
-
-msgid ""
-"FREE - Osirusoft Unconfirmed OptIn Servers - List of listservers that opt "
-"users in without confirmation."
-msgstr ""
-"無償 - Osirusoft 未確認オプトインサーバ - ユーザによる確認をなしに、登録する"
-"リストサーバのリストです。"
-
-msgid ""
-"FREE - Osirusoft Insecure formmail.cgi scripts - List of insecure formmail."
-"cgi scripts. (planned)."
-msgstr ""
-"無償 - Osirusoft Insecure formmail.cgi scripts - セキュアではないformmail cgi"
-"のリストです。(予定)"
-
-msgid "FREE - Osirusoft Open Proxy Servers - List of Open Proxy Servers."
-msgstr ""
-"無償 - Osirusoft Open Proxy Servers - オープンプロクシサーバのリストです。"
-
-msgid ""
 "FREE - ORDB was born when ORBS went off the air. It seems to have fewer "
 "false positives than ORBS did though."
 msgstr ""
@@ -2111,7 +2167,6 @@ msgstr ""
 msgid "FREE - SPAMhaus - A list of well-known SPAM sources."
 msgstr "無償 - SPAMhaus - 良く知られるスパム源のリストです。"
 
-#, c-format
 msgid ""
 "FREE, for now - SPAMCOP - An interesting solution that lists servers that "
 "have a very high spam to legit email ratio (85% or more)."
@@ -2230,9 +2285,6 @@ msgstr "ヘッダ"
 msgid "Contains:"
 msgstr "含む:"
 
-msgid "Down"
-msgstr "↓"
-
 #, c-format
 msgid "If <b>%s</b> contains <b>%s</b> then move to <b>%s</b>"
 msgstr "<b>%s</b> に <b>%s</b> を含むものを <b>%s</b> に移動する。"
@@ -2332,7 +2384,10 @@ msgid ""
 "Run some test IMAP commands, displaying both the command and the result. "
 "These tests use the Squirrelmail IMAP commands and your current Squirrelmail "
 "configuration. Custom command strings can be used."
-msgstr "いくつかのIMAPコマンドを実行し、コマンドとその結果を同時に表示します。これらのテストは、現在使用中のSquirrelmailの環境を使ってテストを行います。コマンドを自由に変更してテストすることができます。"
+msgstr ""
+"いくつかのIMAPコマンドを実行し、コマンドとその結果を同時に表示します。これら"
+"のテストは、現在使用中のSquirrelmailの環境を使ってテストを行います。コマンド"
+"を自由に変更してテストすることができます。"
 
 msgid "Mailinglist"
 msgstr "メーリングリスト"
@@ -2631,9 +2686,6 @@ msgstr "選択したサーバを削除してもいいですか？"
 msgid "Confirm Delete"
 msgstr "削除確認"
 
-msgid "Mofify a Server"
-msgstr "サーバの変更"
-
 msgid "Undefined Function"
 msgstr "登録されていない機能"
 
@@ -2658,9 +2710,6 @@ msgid ""
 msgstr "ここではPOP3を使ってメールをダウンロードする設定が出来ます。"
 
 msgid "Message Details"
-msgstr "メッセージ詳細"
-
-msgid "Message details"
 msgstr "メッセージ詳細"
 
 msgid "Close Window"
@@ -2717,11 +2766,10 @@ msgstr ""
 "他のブラウザではエラーになるかもしれません。これは、あなたが「チェック"
 "RECENT」を有効にていても、新着メールがあるかどうか知らせてくれます。"
 
+#, fuzzy
 msgid ""
 "Select from the list of <b>server files</b> the media file to play when new "
-"mail arrives.  Selecting <b>local media</b> will play the file specified in "
-"the <b>local media file</b> box to play from the local computer.  If no file "
-"is specified, the system will use a default from the server."
+"mail arrives.  If no file is specified, \"(none)\", no sound will be used."
 msgstr ""
 "新着メールがある時にならすファイルを、「サーバ・ファイル」のリストから選んで"
 "ください。「ローカルファイル」は、ローカルコンピュータのファイルを再生しま"
@@ -2749,14 +2797,12 @@ msgstr "新着メールがあるときにポップアップウインドウを開く"
 msgid "Select server file:"
 msgstr "サーバファイルの選択:"
 
-msgid "(local media)"
-msgstr "(ローカルメディア)"
+#, fuzzy
+msgid "(none)"
+msgstr "完了"
 
 msgid "Try"
 msgstr "試す"
-
-msgid "Local Media File:"
-msgstr "ローカルファイル:"
 
 msgid "Current File:"
 msgstr "現在のファイル:"
@@ -2794,6 +2840,10 @@ msgstr "新着メッセージ %s 通"
 msgid "Test Sound"
 msgstr "テスト"
 
+#, fuzzy
+msgid "No sound specified"
+msgstr "サーバが設定されていない"
+
 msgid "Loading the sound..."
 msgstr "サウンドを読み込んでいます"
 
@@ -2825,7 +2875,9 @@ msgid ""
 "Help fight the battle against unsolicited email.  SpamCop reads the spam "
 "email and determines the correct addresses to send complaints to.  Quite "
 "fast, really smart, and easy to use."
-msgstr "頼んでもいない電子メールと戦うことを手伝ってください。SpamCopは、スパムメールを読んで、苦情を送るアドレスを決定します。速く、高性能で簡単に使えます。"
+msgstr ""
+"頼んでもいない電子メールと戦うことを手伝ってください。SpamCopは、スパムメール"
+"を読んで、苦情を送るアドレスを決定します。速く、高性能で簡単に使えます。"
 
 msgid "SpellChecker Options"
 msgstr "スペルチェッカーのオプション"
@@ -2984,7 +3036,9 @@ msgstr "辞書を削除しました"
 msgid ""
 "Your personal dictionary was erased. Please close this window and click "
 "\"Check Spelling\" button again to start your spellcheck over."
-msgstr "あなたの個人辞書は削除されました。改めてスペルを確認するには、この画面を閉じて'スペルチェック開始'をクリックして下さい。"
+msgstr ""
+"あなたの個人辞書は削除されました。改めてスペルを確認するには、この画面を閉じ"
+"て'スペルチェック開始'をクリックして下さい。"
 
 msgid "Close this Window"
 msgstr "ウインドウを閉じる"
@@ -2992,7 +3046,9 @@ msgstr "ウインドウを閉じる"
 msgid ""
 "Your personal dictionary was re-encrypted successfully. Now return to the "
 "&quot;SpellChecker options&quot; menu and make your selection again."
-msgstr "あなたの個人辞書は無事再暗号化されました。'スペルチェッカオプション'のメニューへ戻って、改めて選択をして下さい。"
+msgstr ""
+"あなたの個人辞書は無事再暗号化されました。'スペルチェッカオプション'のメ"
+"ニューへ戻って、改めて選択をして下さい。"
 
 msgid "Successful Re-encryption"
 msgstr "再暗号化が完了しました"
@@ -3001,7 +3057,9 @@ msgid ""
 "Your personal dictionary was re-encrypted successfully. Please close this "
 "window and click \"Check Spelling\" button again to start your spellcheck "
 "over."
-msgstr "あなたの個人辞書は無事再暗号化されました。スペルチェックを改めて行うには、この画面を閉じて、'スペルチェック'をクリックして下さい。"
+msgstr ""
+"あなたの個人辞書は無事再暗号化されました。スペルチェックを改めて行うには、こ"
+"の画面を閉じて、'スペルチェック'をクリックして下さい。"
 
 msgid "Dictionary re-encrypted"
 msgstr "辞書は暗号化されました"
@@ -3009,12 +3067,16 @@ msgstr "辞書は暗号化されました"
 msgid ""
 "Your personal dictionary has been <strong>encrypted</strong> and is now "
 "stored in an <strong>encrypted format</strong>."
-msgstr "あなたの個人辞書は<strong>暗号化</strong>されました。<strong>暗号化形式</strong>で保存されています。"
+msgstr ""
+"あなたの個人辞書は<strong>暗号化</strong>されました。<strong>暗号化形式</"
+"strong>で保存されています。"
 
 msgid ""
 "Your personal dictionary has been <strong>decrypted</strong> and is now "
 "stored as <strong>clear text</strong>."
-msgstr "あなたの個人辞書は<strong>復号</strong>されました。<strong>平文</strong>として保存されています。"
+msgstr ""
+"あなたの個人辞書は<strong>復号</strong>されました。<strong>平文</strong>とし"
+"て保存されています。"
 
 msgid "Personal Dictionary Crypto Settings"
 msgstr "個人辞書の暗号化の設定"
@@ -3061,7 +3123,15 @@ msgid ""
 "unaccessible, since it can no longer be decrypted. If you change your "
 "mailbox password, SquirrelSpell will recognize it and prompt you for your "
 "old password in order to re-encrypt the dictionary with a new key.</p>"
-msgstr "<p>あなたの個人辞書は現在</strong>暗号化</strong>されています。web-mail システムが乗っ取られた場合に備えて、あなたのプライバシーを保護することが出来ます。あなたがメールボックスにアクセスするのに使うバスワードで個人辞書は暗号化されています。他の人があなたの個人辞書を読むことを難しくしています。</p> <p><strong>注意:</strong>パスワードを忘れると復号することが出来なくなるので、その個人辞書は使うことが出来なくなります。メールボックスパスワードを変更したら、SquirrelSpellがそれを認識して、古いパスワードを入力後新しいパスワードで暗号化します。</p>"
+msgstr ""
+"<p>あなたの個人辞書は現在</strong>暗号化</strong>されています。web-mail シス"
+"テムが乗っ取られた場合に備えて、あなたのプライバシーを保護することが出来ま"
+"す。あなたがメールボックスにアクセスするのに使うバスワードで個人辞書は暗号化"
+"されています。他の人があなたの個人辞書を読むことを難しくしています。</p> "
+"<p><strong>注意:</strong>パスワードを忘れると復号することが出来なくなるので、"
+"その個人辞書は使うことが出来なくなります。メールボックスパスワードを変更した"
+"ら、SquirrelSpellがそれを認識して、古いパスワードを入力後新しいパスワードで暗"
+"号化します。</p>"
 
 msgid ""
 "Please decrypt my personal dictionary and store it in a clear-text format."
@@ -3084,7 +3154,18 @@ msgid ""
 "change your mailbox password but you still have the old password at hand, "
 "you will be able to enter the old key to re-encrypt the dictionary with the "
 "new value.</p>"
-msgstr "<p>あなたの個人の辞書は現在<strong>暗号化されていません。</strong>webmailシステムが乗っ取られて個人辞書が盗まれた場合に備えて、あなたのプライバシーを守るためにあなたの個人の辞書を暗号化した方がいいでしょう。暗号化されたファイルは、正しいキー（それは、あなたのメールボックス・パスワード）を知らないと解読することができません。あなたの個人の辞書を暗号化する時には、あなたのメールボックス・パスワードでハッシュされるのを覚えておいてください。</p> <p><strong>注意:</strong>あなたのメールボックス・パスワードを忘れるか、管理者が変更した場合、個人の辞書は使えなくなります。その場合、新しく作り直さなければいけません。あなたのシステム管理者があなたのメールボックスパスワードを変更した後でも、古いパスワードがわかっているなら、新しいパスワードで再暗号化することで継続して使うことが出来ます。</p>"
+msgstr ""
+"<p>あなたの個人の辞書は現在<strong>暗号化されていません。</strong>webmailシス"
+"テムが乗っ取られて個人辞書が盗まれた場合に備えて、あなたのプライバシーを守る"
+"ためにあなたの個人の辞書を暗号化した方がいいでしょう。暗号化されたファイル"
+"は、正しいキー（それは、あなたのメールボックス・パスワード）を知らないと解読"
+"することができません。あなたの個人の辞書を暗号化する時には、あなたのメール"
+"ボックス・パスワードでハッシュされるのを覚えておいてください。</p> "
+"<p><strong>注意:</strong>あなたのメールボックス・パスワードを忘れるか、管理者"
+"が変更した場合、個人の辞書は使えなくなります。その場合、新しく作り直さなけれ"
+"ばいけません。あなたのシステム管理者があなたのメールボックスパスワードを変更"
+"した後でも、古いパスワードがわかっているなら、新しいパスワードで再暗号化する"
+"ことで継続して使うことが出来ます。</p>"
 
 msgid ""
 "Please encrypt my personal dictionary and store it in an encrypted format."
@@ -3118,11 +3199,13 @@ msgstr "SquirrelSpell初期化中"
 msgid ""
 "Settings adjusted to: <strong>%s</strong> with <strong>%s</strong> as "
 "default dictionary."
-msgstr "次のように設定:<strong>%s</strong>と<strong>%s</strong>をデフォルトの辞書"
+msgstr ""
+"次のように設定:<strong>%s</strong>と<strong>%s</strong>をデフォルトの辞書"
 
 #, c-format
 msgid "Using <strong>%s</strong> dictionary (system default) for spellcheck."
-msgstr "スペルチェックに<strong>%s</strong>の辞書をシステムのデフォルトとして使う。"
+msgstr ""
+"スペルチェックに<strong>%s</strong>の辞書をシステムのデフォルトとして使う。"
 
 msgid "International Dictionaries Preferences Updated"
 msgstr "外国語辞書の設定の更新"
@@ -3168,25 +3251,37 @@ msgstr "翻訳オプションを保存しました"
 msgid "Your server options are as follows:"
 msgstr "サーバオプションは以下のとおり:"
 
-msgid ""
-"13 language pairs, maximum of 1000 characters translated, powered by Systran"
+#, fuzzy
+msgid "Maximum of 1000 characters translated, powered by Systran"
 msgstr "13種類の言語の組み合わせ。最大1000文字までの制限。Systran提供。"
 
-msgid ""
-"10 language pairs, maximum of 25 kilobytes translated, powered by Systran"
-msgstr "10種類の言語の組み合わせ。制限不明。Systran提供。"
+#, c-format
+msgid "Number of supported language pairs: %s"
+msgstr ""
 
-msgid "12 language pairs, no known limits, powered by Systran"
+#, fuzzy
+msgid "No known limits, powered by Systran"
 msgstr "12言語の組み合わせ。制限不明。Systran提供。"
 
-msgid ""
-"767 language pairs, no known limits, powered by Translation Experts's "
-"InterTran"
+#, fuzzy
+msgid "No known limits, powered by Translation Experts's InterTran"
 msgstr "767言語の組み合わせ。制限不明。Translation Experts's InterTran提供。"
 
-msgid ""
-"8 language pairs, no known limits, powered by GPLTrans (free, open source)"
+#, c-format
+msgid "Number of supported languages: %s"
+msgstr ""
+
+#, fuzzy
+msgid "No known limits, powered by GPLTrans (free, open source)"
 msgstr "8言語の組み合わせ。制限不明。GPLTrans提供(free, open source)"
+
+#, fuzzy
+msgid "Hellenic translations, no known limits, powered by Systran"
+msgstr "12言語の組み合わせ。制限不明。Systran提供。"
+
+#, fuzzy
+msgid "Russian translations, maximum of 500 characters translated"
+msgstr "13種類の言語の組み合わせ。最大1000文字までの制限。Systran提供。"
 
 msgid ""
 "You also decide if you want the translation box displayed, and where it will "
@@ -3235,6 +3330,10 @@ msgstr "%s から %s"
 msgid "English"
 msgstr "英語"
 
+#, fuzzy
+msgid "Chinese"
+msgstr "変更"
+
 msgid "French"
 msgstr "フランス語"
 
@@ -3243,6 +3342,13 @@ msgstr "ドイツ語"
 
 msgid "Italian"
 msgstr "イタリア語"
+
+msgid "Japanese"
+msgstr "日本語"
+
+#, fuzzy
+msgid "Korean"
+msgstr "ノルウェー語"
 
 msgid "Portuguese"
 msgstr "ポルトガル語"
@@ -3289,9 +3395,6 @@ msgstr "ハンガリー語"
 msgid "Icelandic"
 msgstr "アイスランド語"
 
-msgid "Japanese"
-msgstr "日本語"
-
 msgid "Latin American Spanish"
 msgstr "スペイン語(南米)"
 
@@ -3325,8 +3428,107 @@ msgstr "インドネシア語"
 msgid "Latin"
 msgstr "ラテン語"
 
+#, fuzzy
+msgid "to English"
+msgstr "英語"
+
+#, fuzzy
+msgid "from English"
+msgstr "英語"
+
+#, fuzzy
+msgid "Interface language"
+msgstr "デフォルト言語"
+
+#, fuzzy
+msgid "Translation direction"
+msgstr "翻訳オプション"
+
 msgid "Delivery error report"
 msgstr "配送エラーレポート"
 
 msgid "Undelivered Message Headers"
 msgstr "配送不能メッセージヘッダ"
+
+#~ msgid "Not available"
+#~ msgstr "未実装"
+
+#~ msgid "Unknown message number in reply from server: "
+#~ msgstr "不正なメッセージ番号がサーバから返されました："
+
+#~ msgid "(unknown sender)"
+#~ msgstr "(送信者不明)"
+
+#~ msgid "35 min."
+#~ msgstr "35 分"
+
+#~ msgid ""
+#~ "FREE - Osirusoft Relays - Osirusofts list of verified open relays. Seems "
+#~ "to include servers used by abuse@uunet.net auto-replies too."
+#~ msgstr ""
+#~ "無償 - Osirusoft Relays - Osirusoftsによる、立証できたオープンリレーのリス"
+#~ "ト。abuse@uunet.netが自動返信に使うサーバも含まれるようです。"
+
+#~ msgid "FREE - Osirusoft Dialups - Osirusofts Dialup Spam Source list."
+#~ msgstr ""
+#~ "無償 - Osirusoft Dialups - Osirusoftのダイヤルアップスパム元のリスト"
+
+#~ msgid ""
+#~ "FREE - Osirusoft Confirmed Spam Source - Sites that continually spam and "
+#~ "have been manually added after multiple nominations. Use with caution. "
+#~ "Seems to catch abuse auto-replies from some ISPs."
+#~ msgstr ""
+#~ "無償 - Osirusoft Confirmed Spam Source - 連続的にスパム行為を行ない、数回"
+#~ "にわたって候補者として指名を受けた結果追加されたサイトです。使用すべきかは"
+#~ "慎重な判断が必要です。悪用報告に対する、いくつかのISPによる自動返信も掴ん"
+#~ "でしまうようです。"
+
+#~ msgid ""
+#~ "FREE - Osirusoft Smart Hosts - List of hosts that are secure but relay "
+#~ "for other mail servers that are not secure."
+#~ msgstr ""
+#~ "無償 - Osirusoft Smart Hosts - セキュアだが、セキュアではないメールサーバ"
+#~ "の中継をしてしまうホストのリストです。"
+
+#~ msgid ""
+#~ "FREE - Osirusoft Spamware Developers - It is believed that these are IP "
+#~ "ranges of companies that are known to produce spam software. Seems to "
+#~ "catch abuse auto-replies from some ISPs."
+#~ msgstr ""
+#~ "無償 - Osirusoft Spamware Developers - これらのIP群はスパムのソフトウェア"
+#~ "を作ると知られる企業のものだとされています。いくつかのISPからのabuse自動返"
+#~ "信を捕まえるようです。"
+
+#~ msgid ""
+#~ "FREE - Osirusoft Unconfirmed OptIn Servers - List of listservers that opt "
+#~ "users in without confirmation."
+#~ msgstr ""
+#~ "無償 - Osirusoft 未確認オプトインサーバ - ユーザによる確認をなしに、登録す"
+#~ "るリストサーバのリストです。"
+
+#~ msgid ""
+#~ "FREE - Osirusoft Insecure formmail.cgi scripts - List of insecure "
+#~ "formmail.cgi scripts. (planned)."
+#~ msgstr ""
+#~ "無償 - Osirusoft Insecure formmail.cgi scripts - セキュアではないformmail "
+#~ "cgiのリストです。(予定)"
+
+#~ msgid "FREE - Osirusoft Open Proxy Servers - List of Open Proxy Servers."
+#~ msgstr ""
+#~ "無償 - Osirusoft Open Proxy Servers - オープンプロクシサーバのリストです。"
+
+#~ msgid "Mofify a Server"
+#~ msgstr "サーバの変更"
+
+#~ msgid "Message details"
+#~ msgstr "メッセージ詳細"
+
+#~ msgid "(local media)"
+#~ msgstr "(ローカルメディア)"
+
+#~ msgid "Local Media File:"
+#~ msgstr "ローカルファイル:"
+
+#~ msgid ""
+#~ "10 language pairs, maximum of 25 kilobytes translated, powered by Systran"
+#~ msgstr "10種類の言語の組み合わせ。制限不明。Systran提供。"

@@ -5,8 +5,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: $Id$\n"
-"POT-Creation-Date: 2003-07-20 13:47+0300\n"
+"Project-Id-Version: $Id: squirrelmail.po,v 1.2 2003/07/22 17:36:08 tokul Exp "
+"$\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2003-10-05 12:27+0300\n"
 "PO-Revision-Date: 2003-07-22 14:02+0200\n"
 "Last-Translator: Valerio Felici <valerio@bgweb.it>\n"
 "Language-Team: Italian <squirrelmail-i18n@lists.sourceforge.net>\n"
@@ -68,7 +70,9 @@ msgid "Unable to list addresses from %s"
 msgstr "Impossibile elencare gli indirizzi da %s"
 
 msgid "Your search failed with the following error(s)"
-msgstr "La tua ricerca non ha avuto esito positivo ed ha prodotto il/i seguente/i errore/i"
+msgstr ""
+"La tua ricerca non ha avuto esito positivo ed ha prodotto il/i seguente/i "
+"errore/i"
 
 msgid "No persons matching your search was found"
 msgstr "Non è stata trovata alcuna persona corrispondente"
@@ -547,9 +551,9 @@ msgid ""
 "index.  You can add, remove, and move columns around to customize them to "
 "fit your needs."
 msgstr ""
-"L'ordine di indicizzazione è l'ordine in cui le colonne sono presentate nell'elenco "
-"dei messaggi. Puoi aggiungere, rimuovere, e spostare colonne in modo da rendere "
-"l'elenco conforme ai tuoi gusti."
+"L'ordine di indicizzazione è l'ordine in cui le colonne sono presentate "
+"nell'elenco dei messaggi. Puoi aggiungere, rimuovere, e spostare colonne in "
+"modo da rendere l'elenco conforme ai tuoi gusti."
 
 msgid "up"
 msgstr "su"
@@ -593,8 +597,8 @@ msgid ""
 "You can change the way that SquirrelMail looks and displays information to "
 "you, such as the colors, the language, and other settings."
 msgstr ""
-"E' possibile cambiare il modo in cui SquirrelMail mostra "
-"le informazioni, come colori, lingua ed altro."
+"E' possibile cambiare il modo in cui SquirrelMail mostra le informazioni, "
+"come colori, lingua ed altro."
 
 msgid ""
 "Based upon given criteria, incoming messages can have different background "
@@ -605,7 +609,8 @@ msgstr ""
 "diversi nella lista. Questo aiuta a distinguere chi ha spedito il messaggio,"
 "in particolar modo all'interno di mailing list."
 
-msgid "These settings change the way your folders are displayed and manipulated."
+msgid ""
+"These settings change the way your folders are displayed and manipulated."
 msgstr ""
 "Queste impostazioni cambiano il modo in cui le tue cartelle vengono mostrate "
 "e gestite."
@@ -620,12 +625,12 @@ msgstr ""
 msgid "Message not printable"
 msgstr "Messaggio non stampabile"
 
-msgid "Printer Friendly"
-msgstr "Visualizzazione adatta alla Stampa"
-
 #, fuzzy
 msgid "CC"
 msgstr "CC:"
+
+msgid "Printer Friendly"
+msgstr "Visualizzazione adatta alla Stampa"
 
 msgid "Print"
 msgstr "Stampa"
@@ -664,7 +669,7 @@ msgid "Read receipt"
 msgstr "Leggi ricevuta"
 
 #, fuzzy
-msgid "send"
+msgid "sent"
 msgstr "Invia"
 
 #, fuzzy
@@ -675,8 +680,8 @@ msgid ""
 "The message sender has requested a response to indicate that you have read "
 "this message. Would you like to send a receipt?"
 msgstr ""
-"Il mittente ha richiesto una tua risposta per indicargli che hai letto questo "
-"messaggio. Vuoi spedirgliela?"
+"Il mittente ha richiesto una tua risposta per indicargli che hai letto "
+"questo messaggio. Vuoi spedirgliela?"
 
 msgid "Send read receipt now"
 msgstr "Invia la risposta di avvenuta lettura del messaggio"
@@ -723,37 +728,8 @@ msgstr ""
 "Per l'accesso a questa pagina sono necessari un nome utente ed una password "
 "validi!"
 
-msgid "All Folders"
-msgstr "Tutte le Cartelle"
-
-msgid "Please enter something to search for"
-msgstr "Inserisci una parola o frase da cercare"
-
-msgid "There must be at least one criteria to search for"
-msgstr "Deve esserci almeno un criterio di ricerca"
-
-msgid "Error in criteria argument"
-msgstr "C'è un errore negli argomenti per la ricerca"
-
-msgid "M j, Y"
-msgstr ""
-
-msgid "(Illegal date)"
-msgstr "(Data non legale)"
-
-msgid "(Wrong date)"
-msgstr "(Data errata)"
-
-#, fuzzy
-msgid "In"
-msgstr "Info"
-
-msgid "(Missing argument)"
-msgstr "(Argomento mancante)"
-
-#, fuzzy
-msgid "(Spurious argument)"
-msgstr "(Argomento non previsto)"
+msgid "Folder:"
+msgstr "Cartelle:"
 
 #, fuzzy
 msgid "edit"
@@ -765,9 +741,8 @@ msgstr "Cerca"
 msgid "delete"
 msgstr "Elimina"
 
-#, fuzzy
-msgid "Saved Searches"
-msgstr "Cerca"
+msgid "Recent Searches"
+msgstr "Ricerche recenti"
 
 msgid "save"
 msgstr "Memorizza"
@@ -776,122 +751,18 @@ msgstr "Memorizza"
 msgid "forget"
 msgstr "di più"
 
-msgid "Recent Searches"
-msgstr "Ricerche recenti"
-
 #, fuzzy
-msgid "Exclude Criteria:"
-msgstr "Criteri esclusi:"
+msgid "Current Search"
+msgstr "Cartella attuale"
 
-msgid "Search Criteria"
-msgstr "Criteri di Ricerca"
+msgid "All Folders"
+msgstr "Tutte le Cartelle"
 
-msgid "Folder:"
-msgstr "Cartelle:"
+msgid "Body"
+msgstr "Corpo del messaggio"
 
-msgid "Add New Criteria"
-msgstr "Aggiungi un nuovo Criterio"
-
-msgid "Remove Excluded Criteria"
-msgstr "Rimuovi i criteri esclusi"
-
-msgid "Remove All Criteria"
-msgstr "Rimuovi tutti i criteri"
-
-#, fuzzy
-msgid "Answered"
-msgstr "Hai risposto"
-
-#, fuzzy
-msgid "Before"
-msgstr "di più"
-
-#, fuzzy
-msgid "Message Body"
-msgstr "Lista messaggi"
-
-#, fuzzy
-msgid "Deleted"
-msgstr "Elimina"
-
-#, fuzzy
-msgid "Draft"
-msgstr "Salva Bozza"
-
-msgid "Flagged"
-msgstr "Contrassegnato"
-
-#, fuzzy
-msgid "Sent By"
-msgstr "Invia"
-
-#, fuzzy
-msgid "Header Field"
-msgstr "Letti"
-
-msgid "Keyword"
-msgstr "Parola chiave"
-
-msgid "Larger Than"
-msgstr "Più grande di"
-
-#, fuzzy
-msgid "Old"
-msgstr "Vecchio"
-
-msgid "On"
-msgstr ""
-
-msgid "Recent"
-msgstr "Recente"
-
-#, fuzzy
-msgid "Seen"
-msgstr "Invia"
-
-msgid "Sent Before"
-msgstr "Posta Inviata"
-
-#, fuzzy
-msgid "Sent On"
-msgstr "Invia"
-
-msgid "Sent Since"
-msgstr ""
-
-#, fuzzy
-msgid "Since"
-msgstr "Dimensione"
-
-msgid "Smaller Than"
-msgstr "Più piccolo di"
-
-#, fuzzy
-msgid "Subject Contains"
-msgstr "Oggetto"
-
-msgid "Header and Body"
-msgstr "Intestazione e Corpo"
-
-#, fuzzy
-msgid "Sent To"
-msgstr "Invia"
-
-msgid "Not"
-msgstr "No"
-
-msgid "And In"
-msgstr "E In"
-
-msgid "Or In"
-msgstr "O In"
-
-#, fuzzy
-msgid "And"
-msgstr "Aggiungi"
-
-msgid "Or"
-msgstr "O"
+msgid "Everywhere"
+msgstr "Ovunque"
 
 msgid "Search Results"
 msgstr "Ricerca"
@@ -1164,6 +1035,9 @@ msgstr "D, j F Y, g:i a"
 msgid "D, F j, Y G:i"
 msgstr "D, j F Y, G:i"
 
+msgid "M j, Y"
+msgstr ""
+
 msgid "g:i a"
 msgstr "g:i a"
 
@@ -1178,7 +1052,8 @@ msgstr "D, G:i"
 
 #, c-format
 msgid "Preference database error (%s). Exiting abnormally"
-msgstr "Il file con le impostazioni %s non è stato trovato. Imposssibile continuare"
+msgstr ""
+"Il file con le impostazioni %s non è stato trovato. Imposssibile continuare"
 
 msgid "Unknown user or password incorrect."
 msgstr "Utente sconosciuto o password errata."
@@ -1206,24 +1081,24 @@ msgid ""
 "Preference file, %s, could not be opened. Contact your system administrator "
 "to resolve this issue."
 msgstr ""
-"Il file con le impostazioni, %s non può essere aperto. Contatta l'amministratore "
-"di sistema per risolvere questo problema."
+"Il file con le impostazioni, %s non può essere aperto. Contatta "
+"l'amministratore di sistema per risolvere questo problema."
 
 #, c-format
 msgid ""
 "Preference file, %s, could not be written. Contact your system administrator "
 "to resolve this issue."
 msgstr ""
-"Il file con le impostazioni, %s non può essere modificato. Contatta l'amministratore "
-"di sistema per risolvere questo problema."
+"Il file con le impostazioni, %s non può essere modificato. Contatta "
+"l'amministratore di sistema per risolvere questo problema."
 
 #, c-format
 msgid ""
 "Preference file, %s, could not be copied from temporary file, %s. Contact "
 "your system administrator to resolve this issue."
 msgstr ""
-"Il file con le impostazioni, %s non può essere copiato sul file temporaneo, %s. "
-"Contatta l'amministratore di sistema per risolvere questo problema."
+"Il file con le impostazioni, %s non può essere copiato sul file temporaneo, %"
+"s. Contatta l'amministratore di sistema per risolvere questo problema."
 
 #, c-format
 msgid "Error opening %s"
@@ -1255,8 +1130,8 @@ msgid ""
 "Signature file, %s, could not be written. Contact your system administrator "
 "to resolve this issue."
 msgstr ""
-"Il file con la firma, %s, non può essere modificato. Contatta l'amministratore "
-"di sistema per risolvere questo problema."
+"Il file con la firma, %s, non può essere modificato. Contatta "
+"l'amministratore di sistema per risolvere questo problema."
 
 #, c-format
 msgid ""
@@ -1276,21 +1151,14 @@ msgstr ""
 msgid "ERROR : No available imapstream."
 msgstr "ERRORE: Nessun imapstream disponibile."
 
-msgid "ERROR : Bad function call."
-msgstr "ERRORE: Chiamata a funzione non valida."
-
-#, fuzzy
-msgid "Reason:"
-msgstr "Motivo: "
-
 msgid "ERROR : Connection dropped by imap-server."
 msgstr "ERRORE: Connessione interrotta dal server imap."
 
-msgid "Query:"
-msgstr "Interrogazione:"
-
 msgid "ERROR : Could not complete request."
 msgstr "ERRORE: impossibile completare la richiesta:"
+
+msgid "Query:"
+msgstr "Interrogazione:"
 
 msgid "Reason Given: "
 msgstr "Motivo: "
@@ -1332,7 +1200,9 @@ msgstr "Soluzione:"
 msgid ""
 "Remove unneccessary messages from your folder and start with your Trash "
 "folder."
-msgstr "Rimuovi i messaggi non necessari dalle cartelle e spostali nella cartella Trash."
+msgstr ""
+"Rimuovi i messaggi non necessari dalle cartelle e spostali nella cartella "
+"Trash."
 
 msgid "(no subject)"
 msgstr "(Senza oggetto)"
@@ -1351,9 +1221,9 @@ msgid ""
 "moved away or deleted (perhaps by another program accessing the same "
 "mailbox)."
 msgstr ""
-"Molto probabilmente il tuo elenco dei messaggi non era aggiornato ed il messaggio "
-"è stato spostato o eliminato (forse attraverso un altro programma che ha avuto "
-"accesso alla tua mailbox)."
+"Molto probabilmente il tuo elenco dei messaggi non era aggiornato ed il "
+"messaggio è stato spostato o eliminato (forse attraverso un altro programma "
+"che ha avuto accesso alla tua mailbox)."
 
 #, fuzzy
 msgid "Unknown date"
@@ -1365,12 +1235,16 @@ msgstr "A"
 msgid ""
 "Thread sorting is not supported by your IMAP server.<br>Please report this "
 "to the system administrator."
-msgstr "L'ordinamento dei messaggi per thread (argomento) non è supporato dal server IMAP."
+msgstr ""
+"L'ordinamento dei messaggi per thread (argomento) non è supporato dal server "
+"IMAP."
 
 msgid ""
 "Server-side sorting is not supported by your IMAP server.<br>Please report "
 "this to the system administrator."
-msgstr "L'ordinamento dei messaggi sul server remoto non è supportato dal server IMAP."
+msgstr ""
+"L'ordinamento dei messaggi sul server remoto non è supportato dal server "
+"IMAP."
 
 msgid "THIS FOLDER IS EMPTY"
 msgstr "QUESTA CARTELLA E' VUOTA"
@@ -1764,7 +1638,8 @@ msgstr "Solo i nuovi"
 msgid "Unseen and Total"
 msgstr "Nuovi e totale"
 
-msgid "Enable Collapsable Folders"
+#, fuzzy
+msgid "Enable Collapsible Folders"
 msgstr "Abilita le cartelle chiudibili"
 
 #, fuzzy
@@ -2388,44 +2263,6 @@ msgid "COMMERCIAL - RBL+ Dial-up entries."
 msgstr ""
 
 msgid ""
-"FREE - Osirusoft Relays - Osirusofts list of verified open relays. Seems to "
-"include servers used by abuse@uunet.net auto-replies too."
-msgstr ""
-
-msgid "FREE - Osirusoft Dialups - Osirusofts Dialup Spam Source list."
-msgstr ""
-
-msgid ""
-"FREE - Osirusoft Confirmed Spam Source - Sites that continually spam and "
-"have been manually added after multiple nominations. Use with caution. Seems "
-"to catch abuse auto-replies from some ISPs."
-msgstr ""
-
-msgid ""
-"FREE - Osirusoft Smart Hosts - List of hosts that are secure but relay for "
-"other mail servers that are not secure."
-msgstr ""
-
-msgid ""
-"FREE - Osirusoft Spamware Developers - It is believed that these are IP "
-"ranges of companies that are known to produce spam software. Seems to catch "
-"abuse auto-replies from some ISPs."
-msgstr ""
-
-msgid ""
-"FREE - Osirusoft Unconfirmed OptIn Servers - List of listservers that opt "
-"users in without confirmation."
-msgstr ""
-
-msgid ""
-"FREE - Osirusoft Insecure formmail.cgi scripts - List of insecure formmail."
-"cgi scripts. (planned)."
-msgstr ""
-
-msgid "FREE - Osirusoft Open Proxy Servers - List of Open Proxy Servers."
-msgstr ""
-
-msgid ""
 "FREE - ORDB was born when ORBS went off the air. It seems to have fewer "
 "false positives than ORBS did though."
 msgstr ""
@@ -2711,6 +2548,13 @@ msgstr ""
 msgid "Error "
 msgstr "Errore durante l'aperturæ di"
 
+msgid "POP3 noop:"
+msgstr ""
+
+#, fuzzy
+msgid "No connection to server"
+msgstr "Errore durante la connessione al server IMAP: %s."
+
 msgid "POP3 user:"
 msgstr ""
 
@@ -2731,10 +2575,6 @@ msgstr ""
 
 msgid "POP3 apop:"
 msgstr ""
-
-#, fuzzy
-msgid "No connection to server"
-msgstr "Errore durante la connessione al server IMAP: %s."
 
 msgid "No login ID submitted"
 msgstr ""
@@ -2795,6 +2635,9 @@ msgstr ""
 msgid "Command failed "
 msgstr "Apertura fallita"
 
+msgid "Remote POP server Fetching Mail"
+msgstr ""
+
 msgid "Select Server:"
 msgstr ""
 
@@ -2803,9 +2646,6 @@ msgid "Password for"
 msgstr "Password:"
 
 msgid "Fetch Mail"
-msgstr ""
-
-msgid "Remote POP server Fetching Mail"
 msgstr ""
 
 msgid "Fetching from "
@@ -3191,7 +3031,8 @@ msgstr ""
 msgid "You must make a choice"
 msgstr ""
 
-msgid "You can either delete your dictionary or type in the old password. Not both."
+msgid ""
+"You can either delete your dictionary or type in the old password. Not both."
 msgstr ""
 
 msgid "This will delete your personal dictionary file. Proceed?"
@@ -3358,8 +3199,7 @@ msgstr "Informazioni personali"
 msgid "Please check any words you wish to delete from your dictionary."
 msgstr ""
 
-#, c-format
-#, fuzzy
+#, fuzzy, c-format
 msgid "%s dictionary"
 msgstr "%s Informazioni personali"
 
@@ -3396,7 +3236,8 @@ msgid ""
 "old password in order to re-encrypt the dictionary with a new key.</p>"
 msgstr ""
 
-msgid "Please decrypt my personal dictionary and store it in a clear-text format."
+msgid ""
+"Please decrypt my personal dictionary and store it in a clear-text format."
 msgstr ""
 
 msgid "Change crypto settings"
@@ -3418,7 +3259,8 @@ msgid ""
 "new value.</p>"
 msgstr ""
 
-msgid "Please encrypt my personal dictionary and store it in an encrypted format."
+msgid ""
+"Please encrypt my personal dictionary and store it in an encrypted format."
 msgstr ""
 
 #, c-format
@@ -3572,8 +3414,7 @@ msgid ""
 "language?"
 msgstr ""
 
-#, c-format
-#, fuzzy
+#, fuzzy, c-format
 msgid "%s to %s"
 msgstr "%s Aggiungi a %s"
 
@@ -3699,98 +3540,169 @@ msgstr "Report di Mancata Consegna"
 msgid "Undelivered Message Headers"
 msgstr ""
 
-msgid ""
-"Here you can install an automatic reply message. Specify the subject, reply "
-"message, and if you want, a forwarding address.  This will copy all incoming "
-"mail to another address as well as keep it in your mailbox."
-msgstr ""
+#~ msgid "Please enter something to search for"
+#~ msgstr "Inserisci una parola o frase da cercare"
 
-msgid "Change Vacation Message"
-msgstr ""
+#~ msgid "There must be at least one criteria to search for"
+#~ msgstr "Deve esserci almeno un criterio di ricerca"
 
-msgid ""
-"You are not currently sending a reply message.<br>You can enter one by "
-"typing the subject and reply message and checking the box."
-msgstr ""
+#~ msgid "Error in criteria argument"
+#~ msgstr "C'è un errore negli argomenti per la ricerca"
 
-#, fuzzy
-msgid "You are currently responding with the following:"
-msgstr "La tua ricerca è fallita con l'errore seguente"
+#~ msgid "(Illegal date)"
+#~ msgstr "(Data non legale)"
 
-msgid ""
-"You are not currently forwarding incoming messages.<br>This will copy all "
-"incoming mail to another address as well as keep it in your mailbox."
-msgstr ""
-
-msgid "You are currently sending a copy of incoming message to:"
-msgstr ""
-
-msgid ""
-"To delete recipient and keep your vacation message, uncheck the checkbox and "
-"click "
-msgstr ""
+#~ msgid "(Wrong date)"
+#~ msgstr "(Data errata)"
 
 #, fuzzy
-msgid "Vacation Message"
-msgstr "Visualizza il messaggio"
+#~ msgid "In"
+#~ msgstr "Info"
 
-msgid "Vacation settings set by system administrator."
-msgstr ""
-
-msgid "Send auto-reply to sender?"
-msgstr ""
-
-msgid "Forward incoming message to another email address?"
-msgstr ""
-
-msgid "No local delivery -- Forward and/or Auto-reply only."
-msgstr ""
+#~ msgid "(Missing argument)"
+#~ msgstr "(Argomento mancante)"
 
 #, fuzzy
-msgid "Vacation Subject"
-msgstr "Oggetto"
-
-msgid "Forwarding E-Mail Addresses (One Address Per Line)"
-msgstr ""
+#~ msgid "(Spurious argument)"
+#~ msgstr "(Argomento non previsto)"
 
 #, fuzzy
-msgid "Could not connect to FTP server."
-msgstr "Errore durante la connessione al server IMAP: %s."
+#~ msgid "Saved Searches"
+#~ msgstr "Cerca"
 
-msgid "Failed to login to FTP server."
-msgstr ""
+#, fuzzy
+#~ msgid "Exclude Criteria:"
+#~ msgstr "Criteri esclusi:"
 
-msgid "Unable to switch to passive FTP mode."
-msgstr ""
+#~ msgid "Search Criteria"
+#~ msgstr "Criteri di Ricerca"
 
-msgid "An error occured uploading the file..."
-msgstr ""
+#~ msgid "Add New Criteria"
+#~ msgstr "Aggiungi un nuovo Criterio"
 
-msgid "An error occured downloading the file."
-msgstr ""
+#~ msgid "Remove Excluded Criteria"
+#~ msgstr "Rimuovi i criteri esclusi"
 
-msgid "An error occured deleting the file..."
-msgstr ""
+#~ msgid "Remove All Criteria"
+#~ msgstr "Rimuovi tutti i criteri"
 
-#, c-format
-msgid "Unknown action %s in do_ftp."
-msgstr ""
+#, fuzzy
+#~ msgid "Answered"
+#~ msgstr "Hai risposto"
+
+#, fuzzy
+#~ msgid "Before"
+#~ msgstr "di più"
+
+#, fuzzy
+#~ msgid "Message Body"
+#~ msgstr "Lista messaggi"
+
+#, fuzzy
+#~ msgid "Deleted"
+#~ msgstr "Elimina"
+
+#, fuzzy
+#~ msgid "Draft"
+#~ msgstr "Salva Bozza"
+
+#~ msgid "Flagged"
+#~ msgstr "Contrassegnato"
+
+#, fuzzy
+#~ msgid "Sent By"
+#~ msgstr "Invia"
+
+#, fuzzy
+#~ msgid "Header Field"
+#~ msgstr "Letti"
+
+#~ msgid "Keyword"
+#~ msgstr "Parola chiave"
+
+#~ msgid "Larger Than"
+#~ msgstr "Più grande di"
+
+#, fuzzy
+#~ msgid "Old"
+#~ msgstr "Vecchio"
+
+#~ msgid "Recent"
+#~ msgstr "Recente"
+
+#, fuzzy
+#~ msgid "Seen"
+#~ msgstr "Invia"
+
+#~ msgid "Sent Before"
+#~ msgstr "Posta Inviata"
+
+#, fuzzy
+#~ msgid "Sent On"
+#~ msgstr "Invia"
+
+#, fuzzy
+#~ msgid "Since"
+#~ msgstr "Dimensione"
+
+#~ msgid "Smaller Than"
+#~ msgstr "Più piccolo di"
+
+#, fuzzy
+#~ msgid "Subject Contains"
+#~ msgstr "Oggetto"
+
+#~ msgid "Header and Body"
+#~ msgstr "Intestazione e Corpo"
+
+#, fuzzy
+#~ msgid "Sent To"
+#~ msgstr "Invia"
+
+#~ msgid "Not"
+#~ msgstr "No"
+
+#~ msgid "And In"
+#~ msgstr "E In"
+
+#~ msgid "Or In"
+#~ msgstr "O In"
+
+#, fuzzy
+#~ msgid "And"
+#~ msgstr "Aggiungi"
+
+#~ msgid "Or"
+#~ msgstr "O"
+
+#~ msgid "ERROR : Bad function call."
+#~ msgstr "ERRORE: Chiamata a funzione non valida."
+
+#, fuzzy
+#~ msgid "Reason:"
+#~ msgstr "Motivo: "
+
+#, fuzzy
+#~ msgid "You are currently responding with the following:"
+#~ msgstr "La tua ricerca è fallita con l'errore seguente"
+
+#, fuzzy
+#~ msgid "Vacation Message"
+#~ msgstr "Visualizza il messaggio"
+
+#, fuzzy
+#~ msgid "Vacation Subject"
+#~ msgstr "Oggetto"
+
+#, fuzzy
+#~ msgid "Could not connect to FTP server."
+#~ msgstr "Errore durante la connessione al server IMAP: %s."
 
 #~ msgid "(unknown sender)"
 #~ msgstr "(Mittente sconosciuto)"
 
 #~ msgid "Enable Subtle Printer Friendly Link"
 #~ msgstr "Abilita il link alla versione stampabile"
-
-#, fuzzy
-#~ msgid "Current Search"
-#~ msgstr "Cartella attuale"
-
-#~ msgid "Body"
-#~ msgstr "Corpo del messaggio"
-
-#~ msgid "Everywhere"
-#~ msgstr "Ovunque"
 
 #, fuzzy
 #~ msgid "Viewing a message attachment"
@@ -3877,4 +3789,3 @@ msgstr ""
 
 #~ msgid "total"
 #~ msgstr "totale"
-
