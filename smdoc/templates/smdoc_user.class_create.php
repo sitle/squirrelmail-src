@@ -1,11 +1,16 @@
 <?php
-ob_start();
+$t['title'] = _("Create New User");
+$t['body_function'] = 'user_create_body';
+include($foowd->template.'/index.php');
+
+function user_create_body($foowd, $className, $method, $user, $object, $t)
+{
 	if ( isset($t['form']) ) {
         $table = new input_table();
         $table->grabObjects($t['form']);
-        $string = '<span class="xsmall">' 
-                  . _("Used for password recovery. It will not be disclosed without your permission.")
-                  . '</span>';
+        $string = sprintf(_("<a href=\"%s\">Private attribute</a> used for password recovery."),
+                          getURI(array('object' => 'privacy')));
+        $string = '<span class="subtext">' . $string . '</span>';
         $table->addObject($string);
 
         $table->insertSpace(0);
@@ -24,11 +29,5 @@ ob_start();
 
         ?></center><br /><?php
     }
-    $result = ob_get_contents();
-ob_end_clean();
-
-$t['title'] = _("Create New User");
-$t['body'] =& $result;
-include($foowd->template.'/index.php');
-
+}
 ?>

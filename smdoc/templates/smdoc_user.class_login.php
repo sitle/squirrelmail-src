@@ -1,6 +1,10 @@
 <?php
+$t['title'] = _("User Login");
+$t['body_function'] = 'user_login_body';
+include($foowd->template.'/index.php');
 
-ob_start();
+function user_login_body($foowd, $className, $method, $user, $object, $t)
+{
     if ( isset($t['form']) ) {
         $table = new input_table();
         $table->grabObjects($t['form']);
@@ -23,12 +27,6 @@ ob_start();
              . '</a></p>';
         ?></center><?php
     }
-
-    $result = ob_get_contents();
-ob_end_clean();
-
-$t['title'] = _("User Login");
-$t['body'] =& $result;
-include($foowd->template.'/index.php');
+}
 
 ?>

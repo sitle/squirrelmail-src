@@ -23,8 +23,8 @@
   if ( is_numeric($error) )
     $error = getConst($error . '_MSG');
 
-  foowd_translation::initialize($foowd, TRUE);
-  $flag_links = foowd_translation::getLink($foowd);
+  smdoc_translation::initialize($foowd);
+  $flag_links = smdoc_translation::getLink($foowd);
   $loc_url = getURI(array());
   $user_url = $loc_url . '?class='.USER_CLASS_NAME;
 ?>
@@ -74,12 +74,12 @@
     <td class="titleblock" valign="bottom">
       <?php
           if ( isset($object) )
+          {
+            if ( $object->classid == USER_CLASS_ID )
+                echo 'User Profile: ';
             $obj_url = getURI(array('objectid' => $object->objectid, 'classid' => $object->classid));
-          else
-            $t['showurl'] = false;
-
-          if ( $t['showurl'] )
             echo '<a href="', $obj_url.'">'. $t['title'].'</a> ';
+          }
           else
             echo $t['title'];
       ?>
@@ -124,18 +124,14 @@
 <?php
   if ( isset($t['body']) )
     echo $t['body'];
-  else
+  elseif ( isset($t['body_function']) )
   {
-?>
-<p>This object did not provide a BODY to the template.</p>
-<?php
-    if ( isset($object) )
-    {
-      echo '<pre>Method: ' . $method  . '</pre>';
-      echo '<div class="debug_output_heading">', _("Contents of Current Object"), '</div>';
-      show($object);
-    }
+    ( isset($object) )    ? $myobject =& $object   : $myobject = NULL;
+    ( isset($className) ) ? $myclass =& $className : $myclass = NULL;
+    $t['body_function']($foowd, $myclass, $method, $user, $myobject, $t);
   }
+  else
+    echo '<p>This object did not provide a BODY to the template.</p>';
 ?>
 </div>
 <a name="footer"><img src="empty.png" alt="------------- end ------------------------------------------" border="0" /></a>
@@ -195,7 +191,7 @@
   This site is copyright &copy; 1999-2003 by the SquirrelMail Project Team.
 </div>
 <div id="footer">
-  Powered by <a href="http://foowd.peej.co.uk/">
+  Powered by <a href="http://sourceforge.net/projects/foowd/">
   Framework for Object Oriented Web Development</a>
   (v <?php echo VERSION ?>).
 </div>
