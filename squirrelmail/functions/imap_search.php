@@ -152,43 +152,26 @@ function sqimap_search($imapConnection, $search_where, $search_what, $mailbox,
             $messages[$j]['FLAG_ANSWERED'] = $flag_answered[$j];
             $messages[$j]['FLAG_SEEN'] = $flag_seen[$j];
             $messages[$j]['FLAG_FLAGGED'] = $flag_flagged[$j];
-/*
-            $num = 0;
-            while ($num < count($flags[$j])) {
-                if ($flags[$j][$num] == 'Deleted') {
-                    $messages[$j]['FLAG_DELETED'] = true;
-                } else if ($flags[$j][$num] == 'Answered') {
-                    $messages[$j]['FLAG_ANSWERED'] = true;
-                } else if ($flags[$j][$num] == 'Seen') {
-                    $messages[$j]['FLAG_SEEN'] = true;
-                } else if ($flags[$j][$num] == 'Flagged') {
-                    $messages[$j]['FLAG_FLAGGED'] = true;
-                }
-                $num++;
-            }
-*/	    
             $j++;
 
     }
 
-    /* Find and remove the ones that are deleted */
-    $i = 0;
-    $j = 0;
+    /* we used to skip deleted messages but now we don't :) */
+    $j =0;
+    $i =0;
     while ($j < count($messagelist)) {
-        if (isset($messages[$j]['FLAG_DELETED']) && $messages[$j]['FLAG_DELETED']) {
-            $j++;
-            continue;
-        }
-        $msgs[$i] = $messages[$j];
-
+            $msgs[$i] = $messages[$j];
         $i++;
         $j++;
     }
+
     $numMessages = $i;
-
     /* There's gotta be messages in the array for it to sort them. */
-
-    if (count($messagelist) > 0) {
+    if ($numMessages = 0) {
+        $messagelist = array();
+        $msgs = array();
+    }
+    if (count($messagelist) > 0 ) {
         $j=0;
         if (!isset ($msg)) {
             $msg = '';
