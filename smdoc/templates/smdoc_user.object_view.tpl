@@ -27,49 +27,41 @@ function user_view_body(&$foowd, $className, $method, $user, $object, &$t)
   <td class="value"><span class="smalldate"><?php echo $t['lastvisit']; ?></span></td>
 </tr>
 <?php // DISPLAY IM ID's IF PRESENT
-      if ( isset($t['IM_nicks']) || isset($t['IRC_nick']) )
+      if ( is_array($t['nicks']) || !empty($t['nicks']) )
       {
 ?>
 <tr><td colspan="2"><div class="separator"><?php echo _("Public Contact Information"); ?></div></td></tr>
-<?php   if ( isset($t['IRC_nick']) )
-        { ?>
-<tr>
-  <td class="heading"><?php echo _("IRC nickname"); ?>:</td>
-  <td class="value"><?php echo $t['IRC_nick']; ?><br />
-      <span class="subtext">#squirrelmail (<a href="http://freenode.net">irc.freenode.net</a>)</span></td>
-</tr>
-<?php   }
-
-        if ( isset($t['IM_nicks']) && is_array($t['IM_nicks']) && !empty($t['IM_nicks']) )
+<?php   ksort($t['nicks']);
+        foreach ( $t['nicks'] as $prot => $id )
         { 
-          ksort($t['IM_nicks']);
-          while( list ($prot, $id) = each ($t['IM_nicks']) )
-          { 
-            switch ($prot)
-            {
-              case 'MSN':
-              case 'Email':  
-                $id =  htmlspecialchars(mungEmail($id));
-                break;
-              case 'ICQ':
-                $id = '<a href="http://wwp.icq.com/'.$id.'">'.$id.'</a>';
-                break;
-              case 'WWW':    
-                $id = htmlspecialchars($id);
-                $id = '<a href="'.$id.'">'.$id.'</a>'; 
-                break;
-              default:
-                $id = htmlspecialchars($id);
-                break;
-            }
+          switch ($prot)
+          {
+            case 'MSN':
+            case 'Email':  
+              $id =  htmlspecialchars(mungEmail($id));
+              break;
+            case 'IRC':
+              $id = htmlspecialchars($id);
+              $id .= ' <span class="subtext">#squirrelmail (<a href="http://freenode.net">irc.freenode.net</a>)</span>';
+              break;
+            case 'ICQ':
+              $id = '<a href="http://wwp.icq.com/'.$id.'">'.$id.'</a>';
+              break;
+            case 'WWW':    
+              $id = htmlspecialchars($id);
+              $id = '<a href="'.$id.'">'.$id.'</a>'; 
+              break;
+            default:
+              $id = htmlspecialchars($id);
+              break;
+          }
 ?>
 <tr>
   <td class="heading"><?php echo htmlspecialchars($prot); ?>:</td>
   <td class="value"><?php echo $id; ?></td>
 </tr>
 <?php
-          }
-        }
+        } // END foreach
       } // END DISPLAY IM IDs
 
       // begin AUTHOR only elements
@@ -81,10 +73,13 @@ function user_view_body(&$foowd, $className, $method, $user, $object, &$t)
     <span class="subtext">(<a href="#email">privacy</a>)</span>
     </div></td>
 </tr>
+<?php   if ( !$t['show_email'] )
+        { ?>
 <tr>
   <td class="heading"><?php echo _("Email"); ?>:</td>
   <td class="value"><?php echo isset($t['email']) ? htmlspecialchars($t['email']) : $none; ?></td>
 </tr>
+<?php   } ?>
 <tr>
   <td class="heading" colspan="2"><?php echo _("Preferred Applications"); ?>:</td>
 </tr>

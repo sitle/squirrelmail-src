@@ -35,16 +35,18 @@ function user_update_body(&$foowd, $className, $method, $user, $object, &$t)
 <tr><td colspan="2"><div class="form_submit"><?php echo $t['form']->display_buttons(); ?></div></td></tr>
 
 <tr><td colspan="2"><div class="separator"><?php echo _("Public Contact Information"); ?></div></td></tr>
-<tr><td class="label">IRC:</td>
-    <td class="value"><?php echo $obj['IRC_nick']->display(); ?>
-        <span class="subtext">#squirrelmail (<a href="http://freenode.net">irc.freenode.net</a>)</span>
-    </td>
-</tr>
 
-<?php foreach ( $obj['nick'] as $box )
+<?php ksort($obj['nick']);
+      foreach ( $obj['nick'] as $box )
       { ?>
 <tr><td class="label"><?php echo $box->caption; ?>:</td>
-    <td class="value"><?php echo $box->display(); ?></td></tr>
+    <td class="value">
+<?php   echo $box->display(); 
+        if ( $box->name == 'IRC' )
+        { ?>
+         <span class="subtext">#squirrelmail (<a href="http://freenode.net">irc.freenode.net</a>)</span>
+<?php   } ?>
+    </td></tr>
 <?php } ?>
 
 <tr><td colspan="2"><div class="form_submit"><?php echo $t['form']->display_buttons(); ?></div></td></tr>

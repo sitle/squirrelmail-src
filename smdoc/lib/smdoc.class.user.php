@@ -17,7 +17,7 @@ $USER_SOURCE = array('table' => 'smdoc_user',
                      'table_create' => array('smdoc_user','makeTable'));
 
 setPermission('smdoc_user', 'object', 'clone', 'Nobody');
-setPermission('smdoc_user', 'object', 'admin', 'Nobody');
+setPermission('smdoc_user', 'object', 'admin', 'Gods');
 setPermission('smdoc_user', 'object', 'xml', 'Nobody');
 setPermission('smdoc_user', 'object', 'permissions', 'Nobody');
 setPermission('smdoc_user', 'object', 'history', 'Nobody');
@@ -155,7 +155,7 @@ class smdoc_user extends foowd_object
               `IMAP_server` int(10) unsigned default \'0\',
               `SMTP_server` int(10) unsigned default \'0\',
               `SM_version` int(10) unsigned default \'0\',
-              `IRC_nick` varchar(12) default \'\',
+              `IRC` varchar(12) default \'\',
               PRIMARY KEY  (`objectid`),
               KEY `idxuser_updated` (`updated`),
               KEY `idxuser_title` (`title`)
@@ -269,7 +269,7 @@ class smdoc_user extends foowd_object
    * #squirrelmail IRC channel nick
    * @var string
    */
-  var $IRC_nick;       
+  var $IRC;       
   
   /** 
    * Array containing other IM nicks 
@@ -354,7 +354,7 @@ class smdoc_user extends foowd_object
     $this->IMAP_server = 0;
     $this->SMTP_server = 0;
     $this->IM_nicks = array();
-    $this->IRC_nick = '';
+    $this->IRC = '';
 
     $salt = $foowd->config_settings['user']['password_salt'];
     $this->password = md5($salt.$password);
@@ -390,12 +390,12 @@ class smdoc_user extends foowd_object
     $this->foowd_vars_meta['email'] = REGEX_EMAIL;
     $this->foowd_vars_meta['groups'] = REGEX_GROUP;
     $this->foowd_vars_meta['title'] = REGEX_TITLE;
-    $this->foowd_vars_meta['irc'] = '/^[a-zA-Z0-9_]{1,12}$/';
-    $this->foowd_vars_meta['msn'] = REGEX_EMAIL;
-    $this->foowd_vars_meta['icq'] = '/^[0-9]{3,16}$/';
-    $this->foowd_vars_meta['aim'] = '/^[a-zA-Z0-9_]{3,16}$/';
-    $this->foowd_vars_meta['yahoo'] = '/^[a-zA-Z0-9_]{1,32}$/';
-    $this->foowd_vars_meta['www'] = '/^https?:\/\/[a-zA-Z0-9_\-\.]+\.[a-zA-Z]+[a-zA-Z0-9_\-\.\/~]*$/';
+    $this->foowd_vars_meta['IRC'] = '/^[a-zA-Z0-9_]{1,12}$/';
+    $this->foowd_vars_meta['MSN'] = REGEX_EMAIL;
+    $this->foowd_vars_meta['ICQ'] = '/^[0-9]{3,16}$/';
+    $this->foowd_vars_meta['AIM'] = '/^[a-zA-Z0-9_]{3,16}$/';
+    $this->foowd_vars_meta['Y!'] = '/^[a-zA-Z0-9_]{1,32}$/';
+    $this->foowd_vars_meta['WWW'] = '/^https?:\/\/[a-zA-Z0-9_\-\.]+\.[a-zA-Z]+[a-zA-Z0-9_\-\.\/~]*$/';
 
     // re-arrange our indices
     unset($this->foowd_indexes['version']);
@@ -404,7 +404,7 @@ class smdoc_user extends foowd_object
     $this->foowd_indexes['IMAP_server'] = array('name' => 'imap', 'type' => 'INT', 'unsigned' => TRUE, 'notnull' => FALSE, 'default' => 0);   
     $this->foowd_indexes['SMTP_server'] = array('name' => 'smtp', 'type' => 'INT', 'unsigned' => TRUE, 'notnull' => FALSE, 'default' => 0);   
     $this->foowd_indexes['SM_version'] = array('name' => 'sm_ver', 'type' => 'INT', 'unsigned' => TRUE, 'notnull' => FALSE, 'default' => 0);
-    $this->foowd_indexes['IRC_nick'] = array('name' => 'irc', 'type' => 'VARCHAR', 'length' => 12, 'notnull' => FALSE, 'default' => '');
+    $this->foowd_indexes['IRC'] = array('name' => 'irc', 'type' => 'VARCHAR', 'length' => 12, 'notnull' => FALSE, 'default' => '');
 
     // Original access vars
     unset($this->foowd_original_access_vars['version']);
@@ -671,94 +671,176 @@ class smdoc_user extends foowd_object
   }
 
   /**
-   * Update the users properties.
+   * Create form elements for the update form from the objects member variables.
    *
-   * @param str email The users new e-mail address.
-   * @return int 0 = nothing, show form<br />
-   *             1 = user updated successfully<br />
-   *             2 = passwords were set, but didn't match<br />
-   *             3 = username already in use<br />
+   * @param  object form The form to add the form items to.
+   * @return mixed array of error codes or 0 for success
    */
-  function updateUser($form) 
+  function addUserItemsToForm(&$form) 
   {
     global $USER_SOURCE;
-    $obj =& $form->objects;
+    $error = NULL;
 
-    // Check title first
-    if ( !empty($obj['title']->value) && $obj['title']->value != $this->title )
+    // Add regular elements to form
+    include_once(INPUT_DIR.'input.textbox.php');
+    include_once(INPUT_DIR.'input.dropdown.php');
+    include_once(INPUT_DIR.'input.checkbox.php');
+
+    $titleBox = new input_textbox('title', REGEX_TITLE, $this->title, 'Username', FALSE);
+    $emailBox = new input_textbox('email', REGEX_EMAIL, $this->email, 'Email', FALSE);
+    $showEmail = new input_checkbox('show_email', $this->show_email, 'Share Email');
+
+    if ( $form->submitted() )
     {
-      $username = $obj['title']->value;
-      // no workspaceid, don't calculate new objectid.
-      $unique = !$this->foowd->isTitleUnique($username, FALSE, $objectid, $USER_SOURCE, FALSE) ;
-      if ( $unique )
-        $this->set('title', $username);
-      else
+      if ( !empty($titleBox->value) && $titleBox->value != $this->title )
       {
-        $obj['title']->wasValid = FALSE;
-        return 3;
+        $unique = !$this->isTitleUnique($titleBox->value, FALSE, $objectid, $USER_SOURCE, FALSE) ;
+        if ( $unique )
+          $this->set('title', $titleBox->value);
+        else
+        {
+          $titleBox->wasValid = FALSE;
+          $error[] = _("User already exists, please choose a new name.");
+        }
       }
-    }
 
-    // Check for password change
-    if ( !empty($obj['password']->value) )
+      if ( !empty($emailBox->value) && $emailBox->value != $this->email )
+        $this->set('email', $emailBox->value);
+      if ( $showEmail->checked != $this->show_email )
+        $this->set('show_email', $showEmail->checked);
+    }
+    
+    $form->addObject($titleBox);
+    $form->addObject($emailBox);
+    $form->addObject($showEmail);
+    
+    $this->addPasswordItemsToForm($form, $error);
+    $this->addContactItemsToForm($form);
+    $this->addStatItemsToForm($form);
+
+    // If we experienced an error, mark the object as unchanged
+    // (will throw away changes), and set error array into template.
+    if ( $error != 0 )
     {
-      if ( $obj['password']->value == $obj['verify']->value )
+      $this->foowd_changed = FALSE;
+      $this->foowd->template->assign('failure', $error);
+    }
+    // Otherwise, if something changed, update the 
+    // status of email as a public contact item based on 
+    // new values
+    elseif ( $form->submitted() && $this->foowd_changed )
+    {
+      if ( $this->show_email && $this->email )
+        $this->IM_nicks['Email'] = $this->email;
+      else
+        unset($this->IM_nicks['Email']);
+    } 
+  }
+
+  /**
+   * Create form elements for the update form from the objects member variables.
+   *
+   * @param  object form  The form to add the form items to. 
+   * @param  array  error If error is encountered, add message to this array
+   * @return mixed array of error codes or 0 for success
+   */
+  function addPasswordItemsToForm(&$form, &$error) 
+  {
+    include_once(INPUT_DIR.'input.textbox.php');
+
+    $verify = new input_passwordbox('verify', REGEX_PASSWORD, NULL, 'Verify', FALSE);
+    $password = new input_passwordbox('password', REGEX_PASSWORD, NULL, 'Password', FALSE);
+
+    if ( $form->submitted() )
+    {
+      if ( $password->wasSet && $password->wasValid &&
+           $verify->wasSet && $verify->wasValid &&
+           $password->value == $verify->value )
       {
         $salt = $foowd->config_settings['user']['password_salt'];
         $this->set('password', md5($salt.$obj['password']->value));
       }
-      else
+      else 
       {
-        $obj['password']->wasValid = FALSE;
-        $obj['verify']->wasValid = FALSE;
-        return 2;
+        $password->wasValid = FALSE;
+        $verify->wasValid = FALSE;
+        $error[] = _("Passwords must be at least 4 characters, and must match.");
       }
     }
 
-    // Check IM nick names
-    foreach ( $obj['nick'] as $box )
+    $form->addObject($verify);
+    $form->addObject($password);
+  }
+
+  /**
+   * Create form elements for the update form from the objects member variables.
+   *
+   * @param  object form  The form to add the form items to. 
+   * @param  array  error If error is encountered, add message to this array
+   * @return mixed array of error codes or 0 for success
+   */
+  function addContactItemsToForm(&$form) 
+  {
+    $nicks = $this->IM_nicks;   // get all nicks.
+    
+    unset($nicks['Email']);     // remove Email
+    $nicks['IRC'] = $this->IRC; // add IRC
+
+    if ( !isset($nicks['MSN']) ) $nicks['MSN'] = NULL;
+    if ( !isset($nicks['AIM']) ) $nicks['AIM'] = NULL;
+    if ( !isset($nicks['ICQ']) ) $nicks['ICQ'] = NULL;
+    if ( !isset($nicks['Y!'] ) ) $nicks['Y!']  = NULL;
+    if ( !isset($nicks['WWW']) ) $nicks['WWW'] = NULL;
+
+    foreach ( $nicks as $prot => $nick )
     {
-      $nk = $box->name;
-      if ( (isset($this->IM_nicks[$nk])  && $box->value == $this->IM_nicks[$nk]) ||
-           (!isset($this->IM_nicks[$nk]) && $box->value == NULL) )
+      $nickBox = new input_textbox($prot, $this->foowd_vars_meta[$prot], $nick, $prot, FALSE);
+      $form->addToGroup('nick',$nickBox);
+
+      // If form wasn't submitted, or if the submitted value is the same, continue to next.     
+      if ( !$form->submitted() || $nickBox->value == $nicks[$prot] )
         continue;
-
-      if ( $box->value == NULL || $box->value == '' )
-        unset($this->IM_nicks[$nk]);
+      
+      // Otherwise, the value of the nick changed.. 
+      if ( $prot == 'IRC' )
+        $this->set('IRC', $nickBox->value);
+      elseif ( empty($nickBox->value) )
+        unset($this->IM_nicks[$prot]);
       else
-        $this->IM_nicks[$nk] = $box->value;
+        $this->IM_nicks[$prot] = $nickBox->value;
 
-      $this->foowd_changed = TRUE;  
+      $this->foowd_changed = TRUE;
     }
+  }
 
-    if ( !empty($obj['email']->value) && $obj['email']->value != $this->email )
-      $this->set('email', $obj['email']->value);
-    if ( $obj['show_email']->value != $this->show_email )
-      $this->set('show_email', $obj['show_email']->value);
-    if ( !empty($obj['IRC_nick']->value) && $obj['IRC_nick']->value != $this->IRC_nick )
-      $this->set('IRC_nick', $obj['IRC_nick']->value);
+  /**
+   * Create form elements for the update form from the objects member variables.
+   *
+   * @param  object form  The form to add the form items to. 
+   * @param  array  error If error is encountered, add message to this array
+   * @return mixed array of error codes or 0 for success
+   */
+  function addStatItemsToForm(&$form) 
+  {
+    include_once(INPUT_DIR . 'input.dropdown.php');
 
-    foreach ( $obj['stat'] as $box )
+    $smtpServer = new input_dropdown('SMTP_server', $this->SMTP_server, $this->smtp_to_string(true), 'SMTP Server');
+    $imapServer = new input_dropdown('IMAP_server', $this->IMAP_server, $this->imap_to_string(true), 'IMAP Server');
+    $smVersion  = new input_dropdown('SM_version', $this->SM_version, $this->smver_to_string(true), 'SquirrelMail Version');
+
+    if ( $form->submitted() )
     {
-      if ( empty($box->value) )
-        $box->value = 0;
-      $member = $box->name;
-      if ( $box->value != $this->$member )
-      {
-        $this->$member = $box->value;
-        $this->foowd_changed = TRUE;
-      }
+      if ( $smtpServer->value != $this->SMTP_server )
+        $this->set('SMTP_server', inval($smtpServer->value));
+      if ( $smtpServer->value != $this->SMTP_server )
+        $this->set('IMAP_server', inval($smtpServer->value));
+      if ( $smtpServer->value != $this->SMTP_server )
+        $this->set('SM_version', inval($smtpServer->value));
     }
-
-    if ( $this->show_email && $this->email )
-      $this->IM_nicks['Email'] = $this->email;
-    else
-      unset($this->IM_nicks['Email']);
-
-    if ( $this->save() )
-      return 1;
- 
-    return 4;
+    
+    $form->addToGroup('stat',$smtpServer);
+    $form->addToGroup('stat',$imapServer);
+    $form->addToGroup('stat',$smVersion);
   }
 
 // ----------------------------- class methods --------------
@@ -815,7 +897,7 @@ class smdoc_user extends foowd_object
         $foowd->loc_forward(getURI($uri_arr, FALSE));
         exit;
       case -1: 
-        $foowd->template->assign('failure', _("Passwords must be at least 6 characters, and must match."));
+        $foowd->template->assign('failure', _("Passwords must be at least 4 characters, and must match."));
         $verifyPassword->set(NULL);
         $createPassword->set(NULL);
         break;
@@ -946,11 +1028,14 @@ class smdoc_user extends foowd_object
 
     if ( $this->email )
       $this->foowd->template->assign('email', mungEmail($this->email));
+    $this->foowd->template->assign('show_email', $this->show_email);
+    
 
-    if ( $this->IRC_nick != '' )
-      $this->foowd->template->assign('IRC_nick', $this->IRC_nick);
-    if ( !empty($this->IM_nicks) )
-      $this->foowd->template->assign('IM_nicks', $this->IM_nicks);
+    $nicks = $this->IM_nicks;
+    if ( $this->IRC != '' )
+      $nicks['IRC'] = $this->IRC;
+    if ( !empty($nicks) )
+      $this->foowd->template->assign('nicks', $nicks);
 
     $this->foowd->track(); 
   }
@@ -965,82 +1050,60 @@ class smdoc_user extends foowd_object
     $this->foowd->track('smdoc_user->method_update');
     
     include_once(INPUT_DIR . 'input.form.php');
-    include_once(INPUT_DIR . 'input.dropdown.php');
-    include_once(INPUT_DIR . 'input.textbox.php');
-    include_once(INPUT_DIR . 'input.checkbox.php');
     
-    $updateForm = new input_form('updateForm', NULL, SQ_POST, _("Update"));
+    $updateForm = new input_form('updateForm', NULL, SQ_POST, _("Update Profile"));
 
-    $title = new input_textbox('title', REGEX_TITLE, $this->title, 'Username', FALSE);
-    $email = new input_textbox('email', REGEX_EMAIL, $this->email, 'Email', FALSE);
-    $showEmail = new input_checkbox('show_email', $this->show_email, 'Share Email');
-
-    $verify = new input_passwordbox('verify', REGEX_PASSWORD, NULL, 'Verify', FALSE);
-    $password = new input_passwordbox('password', REGEX_PASSWORD, NULL, 'Password', FALSE);
-
-    $nicks = $this->IM_nicks;
-    if ( !array_key_exists('MSN', $nicks) ) $nicks['MSN'] = '';
-    if ( !array_key_exists('ICQ', $nicks) ) $nicks['ICQ'] = '';
-    if ( !array_key_exists('AIM', $nicks) ) $nicks['AIM'] = '';
-    if ( !array_key_exists('Y!', $nicks) )  $nicks['Y!'] = '';
-    if ( !array_key_exists('WWW', $nicks) ) $nicks['WWW'] = '';
-
-    $ircNick = new input_textbox('IRC_nick', $this->foowd_vars_meta['irc'],  $this->IRC_nick,'IRC',FALSE);
-    $msnNick = new input_textbox('MSN', $this->foowd_vars_meta['msn'],  $nicks['MSN'], 'MSN', FALSE);
-    $aimNick = new input_textbox('AIM', $this->foowd_vars_meta['aim'],  $nicks['AIM'], 'AIM', FALSE);
-    $icqNick = new input_textbox('ICQ', $this->foowd_vars_meta['icq'],  $nicks['ICQ'], 'ICQ', FALSE);
-    $yahooNick = new input_textbox('Y!',$this->foowd_vars_meta['yahoo'],$nicks['Y!'],  'Y!',  FALSE);
-    $www     = new input_textbox('WWW', $this->foowd_vars_meta['www'],  $nicks['WWW'], 'WWW', FALSE);
-
-    $smtpServer = new input_dropdown('SMTP_server', $this->SMTP_server, $this->smtp_to_string(true), 'SMTP Server');
-    $imapServer = new input_dropdown('IMAP_server', $this->IMAP_server, $this->imap_to_string(true), 'IMAP Server');
-    $smVersion  = new input_dropdown('SM_version', $this->SM_version, $this->smver_to_string(true), 'SquirrelMail Version');
-
-    // public fields
-    $updateForm->addObject($ircNick);
-    $updateForm->addToGroup('nick', $aimNick);
-    $updateForm->addToGroup('nick', $icqNick);
-    $updateForm->addToGroup('nick', $msnNick);
-    $updateForm->addToGroup('nick', $yahooNick);
-    $updateForm->addToGroup('nick', $www);
-
-    // private fields
-    $updateForm->addObject($title);
-    $updateForm->addObject($email);
-    $updateForm->addObject($showEmail);
-    $updateForm->addObject($password);
-    $updateForm->addObject($verify);
-    $updateForm->addToGroup('stat',$smtpServer);
-    $updateForm->addToGroup('stat',$imapServer);
-    $updateForm->addToGroup('stat',$smVersion);
-
-    $this->foowd->template->assign_by_ref('form', $updateForm);
-    $result = 0;
- 
-    if ( $updateForm->submitted() )
-      $result = $this->updateUser($updateForm);
-
-    switch($result)
+    $this->addUserItemsToForm($updateForm);
+    if ( $updateForm->submitted() && $this->foowd_changed )
     {
-      case 1:
+      if ( $this->save() )
+      {
         $_SESSION['ok'] = USER_UPDATE_OK;
-        $uri_arr['objectid'] = $this->foowd->user->objectid;
+        $uri_arr['objectid'] = $this->objectid;
         $uri_arr['classid'] = USER_CLASS_ID;        
-        $url = getURI($uri_arr, FALSE);
-        $this->foowd->loc_forward( $url);
-        break;
-      case 2: 
-        $this->foowd->template->assign('failure', _("Passwords must match, please check your entries."));
-        break;
-      case 3:
-        $this->foowd->template->assign('failure', _("User already exists, please choose a new name."));
-        break;
-      case 4:
-        $this->foowd->template->assign('failure', _("Could not update user."));
-        break;
+        $this->foowd->loc_forward( getURI($uri_arr, FALSE));
+      }
+      else
+        $this->foowd->template->assign('failure', OBJECT_UPDATE_FAILED);
     }
+    $this->foowd->template->assign_by_ref('form', $updateForm);
 
     $this->foowd->track(); 
+  }
+
+  /**
+   * Output the object administration form and handle its input.
+   *
+   * @access protected
+   */
+  function method_admin() 
+  {
+    $this->foowd->track('smdoc_user->method_admin');
+
+    include_once(INPUT_DIR.'input.form.php');
+    include_once(INPUT_DIR.'input.dropdown.php');
+
+    $adminForm = new input_form('adminForm', NULL, SQ_POST);
+
+    $groups = $this->foowd->getUserGroups(FALSE);
+    $groupBox = new input_dropdown('groups', $this->groups, $groups, 'User Groups', TRUE);
+
+    if ( $adminForm->submitted() )
+    {
+      if ( $this->groups($groupBox->value, $groups) )
+      {
+        $_SESSION['ok'] = USER_UPDATE_OK;
+        $uri_arr['objectid'] = $this->objectid;
+        $uri_arr['classid'] = USER_CLASS_ID;        
+        $this->foowd->loc_forward( getURI($uri_arr, FALSE));
+      }
+      else
+        $this->foowd->template->assign('failure', OBJECT_UPDATE_FAILED);
+    }
+
+    $adminForm->addObject($groupBox);
+    $this->foowd->template->assign_by_ref('form', $groupBox);
+    $this->foowd->track();
   }
 
 // ----------------------------- disabled methods --------------

@@ -432,7 +432,7 @@ class foowd_object
     return htmlspecialchars($this->title);
   }
 
-  function isTitleUnique($title, $workspaceid, &$objectid, $in_source, $uniqueObjectid = TRUE)
+  function isTitleUnique($title, $workspaceid, &$objectid, $in_source = NULL, $uniqueObjectid = TRUE)
   {
     return $this->foowd->database->isTitleUnique($title, 
                                                  $workspaceid, 
@@ -651,7 +651,7 @@ class foowd_object
  
       if ( $titleBox->value != $this->title )
       {
-        $unique = $this->isTitleUnique($titleBox->value, $this->workspaceid, $objectid, FALSE);
+        $unique = $this->isTitleUnique($titleBox->value, $this->workspaceid, $objectid, NULL, FALSE);
         if ( $unique )
           $this->set('title', $titleBox->value);
         else
