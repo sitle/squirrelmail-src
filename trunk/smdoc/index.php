@@ -17,7 +17,11 @@ $wtf = new wtf();
 $wtf->loadThing();
 
 if ( $wtf->user->skin == 'sqmail' ) {
-  sqmNavMenu($wtf->thing);
+  if ( defined('SITE_MIRROR') ) {
+    sqmMirrorNavMenu($wtf->thing);
+  } else {
+    sqmNavMenu($wtf->thing);
+  }
 }
 
 echo '<content>';
@@ -25,7 +29,11 @@ $wtf->doOp();
 echo '</content>';
 
 if ( $wtf->user->skin == 'sqmail' ) {
-  sqmEditMenu($wtf->thing);
+  if ( defined('SITE_MIRROR') ) {
+    sqmMirrorEditMenu($wtf->thing);
+  } else {
+    sqmEditMenu($wtf->thing);
+  }
 } else {
   wikiMenu($wtf->thing);
 }
