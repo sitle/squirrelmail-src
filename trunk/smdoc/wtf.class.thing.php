@@ -31,6 +31,7 @@ class thing { // static base class
 	var $classid;
 	var $objectid, $title, $version = 1;
 	var $workspaceid = 0;
+    var $sectionid = 0;
 	var $creatorid, $creatorName, $creatorHomeid, $creatorDatetime;
 	var $updatorid, $updatorName, $updatorHomeid, $updatorDatetime;
 	var $viewGroup = DEFAULTVIEWGROUP;
@@ -61,6 +62,7 @@ class thing { // static base class
 		$this->indexes['workspaceid'] = 'INT NOT NULL DEFAULT 0';
 		$this->indexes['title'] = 'VARCHAR('.MAXTITLELENGTH.') NOT NULL';
 		$this->indexes['updatorDatetime'] = 'DATETIME NOT NULL';
+        $this->indexes['sectionid'] = 'INT NOT NULL DEFAULT 0';
 
 // set initial values
 		if (
@@ -90,6 +92,7 @@ class thing { // static base class
 				$this->objectid++;
 			}
 			$this->title = htmlspecialchars($title);
+            $this->sectionid = 0;
 			$this->version = 1;
 
 			$this->viewGroup = htmlspecialchars($viewGroup);
@@ -364,6 +367,30 @@ class thing { // static base class
 		if ($adminGroup && $adminGroup != $this->adminGroup && $wtf->user->inGroup($adminGroup)) {
 			$this->adminGroup = htmlspecialchars($adminGroup);
 		}
+    // sectionid
+        $sectionid = intval(getValue('sectionid', 0));
+        if ($sectionid != $this->sectionid ) {
+            $success = true;
+            if ( $this->sectionid != 0 ) {
+                $success = false;
+                $section = &wtf::loadObject($this->sectionid, 0, 'section');
+                if (is_object($section) && $wtf->user->inGroup($section->editGroup)) {
+                    $success = $section->removeFromSection($this);
+                }
+            }
+            // Don't try to update with the new section, if the 
+            // old one could not be cleaned up.
+            if ( $success ) {
+                if ( $sectionid != 0 ) {
+                    $section = &wtf::loadObject($sectionid, 0, 'section');
+                    if (is_object($section) && $wtf->user->inGroup($section->editGroup)) {
+                        $section->addToSection($this);
+                    }
+                } else {
+                    $this->sectionid = 0;
+                }
+            }
+        }
 	// workspace
 		$workspaceid = intval(getValue('workspaceid', 0));
 		if ($workspaceid != $this->workspaceid) {
@@ -418,6 +445,7 @@ class thing { // static base class
 			}
 		}
 		echo '</admin_workspace>';
+
 		if (isset($this->attributes)) {
 			echo '<admin_attribute name="newattribute">';
 			if (is_array($this->attributes) && $this->attributes != NULL) {
@@ -725,7 +753,7 @@ $FORMAT = array_merge($FORMAT, array(
 	'admin_workspaceitem' => '<option value="{workspaceid}">{workspacename}</option>',
 	'admin_workspaceitem.selected' => '<option value="{workspaceid}" selected="selected">{workspacename}</option>',
 	'/admin_workspaceitem' => '',
-	'admin_attribute' => 'Attributes: ',
+    'admin_attribute' => 'Attributes: ',
 	'/admin_attribute' => '<input type="text" value="" size="10" name="{name}" title="Create a new attribute" /><br />',
 	'admin_attributeitem' => '<input type="checkbox" name="{cbname}" title="Check to delete attribute \'{attribute}\'" /><input type="text" value="{attribute}" name="{name}" size="10" /> ',
 	'/admin_attributeitem' => '',
