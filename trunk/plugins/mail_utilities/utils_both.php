@@ -9,11 +9,11 @@
    **  $Id$
    **/
 
-chdir('..');
+define('SM_PATH','../../');
 
-require_once('../src/validate.php');
-require_once('../functions/page_header.php');
-require_once('../plugins/mail_utilities/functions.php');
+require_once(SM_PATH . 'include/validate.php');
+require_once(SM_PATH . 'functions/page_header.php');
+require_once(SM_PATH . 'plugins/mail_utilities/functions.php');
     
 displayPageHeader($color, 'None');
 
