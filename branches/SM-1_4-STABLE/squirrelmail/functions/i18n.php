@@ -417,9 +417,10 @@ $languages['nl_NL']['NAME']    = 'Dutch';
 $languages['nl_NL']['CHARSET'] = 'iso-8859-1';
 $languages['nl']['ALIAS'] = 'nl_NL';
 
-$languages['no_NO']['NAME']    = 'Norwegian (Bokm&aring;l)';
-$languages['no_NO']['CHARSET'] = 'iso-8859-1';
-$languages['no']['ALIAS'] = 'no_NO';
+$languages['nb_NO']['NAME']    = 'Norwegian (Bokm&aring;l)';
+$languages['nb_NO']['CHARSET'] = 'iso-8859-1';
+$languages['nb']['ALIAS'] = 'nb_NO';
+
 $languages['nn_NO']['NAME']    = 'Norwegian (Nynorsk)';
 $languages['nn_NO']['CHARSET'] = 'iso-8859-1';
 
