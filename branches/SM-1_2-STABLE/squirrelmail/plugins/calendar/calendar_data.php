@@ -35,8 +35,8 @@ function readcalendardata() {
                 $calendardata[$fdata[0]][$fdata[1]] = array( 'length' => $fdata[2],
                                                             'priority' => $fdata[3],
                                                             'title' => $fdata[4],
-                                                            'message' => htmlentites($fdata[5]),
-                                                            'reminder' => htmlentites($fdata[6]) );
+                                                            'message' => htmlentities($fdata[5]),
+                                                            'reminder' => htmlentities($fdata[6]) );
             }
             fclose ($fp);
         }
