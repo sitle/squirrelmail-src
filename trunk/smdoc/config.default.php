@@ -10,7 +10,7 @@ If database settings are not given explicitly to the FOOWD
 object at creation time, these constants are used to define
 the database connection.
 */
-define('DATABASE', 'flatfile'); // which storage medium to use (mysql|flatfile)
+define('DATABASE', 'mysql'); // which storage medium to use (mysql|flatfile)
 switch (DATABASE) {
 case 'mysql':
 	define('DB_HOST', 'localhost'); // database address
@@ -70,8 +70,8 @@ your application goes live.
 If you are using cookie authentication, it may be important
 that you set the cookie constants to your domain and path.
 */
-define('ANON_GOD', FALSE); // anonymous user is a god
-define('AUTH_TYPE', 'cookie'); // user auth type, either 'http' or 'cookie'
+define('ANON_GOD', TRUE); // anonymous user is a god
+define('AUTH_TYPE', 'cookie'); // user auth type, 'http', 'cookie' or 'ip'
 define('COOKIE_EXPIRE', 31536000);
 define('COOKIE_PATH', '/');
 define('COOKIE_DOMAIN', '');
