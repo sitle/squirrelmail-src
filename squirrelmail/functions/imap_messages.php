@@ -517,11 +517,16 @@ function sqimap_get_small_header_list ($imap_stream, $msg_list, $show_num=false)
     $i = 0;
     
     foreach ($read_list as $r) {
+        /* initialize/reset vars */
         $subject = _("(no subject)");
         $from = _("Unknown Sender");
         $priority = 0;
         $messageid = '<>';
-        $cc = $to = $date = $type[0] = $type[1] = $inrepto = '';
+        $type = array();
+        $cc = $to = $inrepto = '';
+        // use unset because we do isset below
+        unset($date);
+	
         $flag_seen = $flag_answered = $flag_deleted = $flag_flagged = false;
 
         $read = implode('',$r);
@@ -609,11 +614,11 @@ function sqimap_get_small_header_list ($imap_stream, $msg_list, $show_num=false)
                 $i = strpos($read,'{',$i);
                 $header = parseString($read,$i);
                 if ($header === false) break 3;
-                /* First we unfold the header */
-                $hdr = trim(str_replace(array("\r\n\t", "\r\n "),array(' ', ' '), $header));
+                /* First we replace all \r\n by \n, and unfold the header */
+                $hdr = trim(str_replace(array("\r\n", "\n\t", "\n "),array("\n", ' ', ' '), $header));
                 /* Now we can make a new header array with */
                 /* each element representing a headerline  */
-                $hdr = explode("\r\n" , $hdr);
+                $hdr = explode("\n" , $hdr);
                 foreach ($hdr as $line) {
                     $pos = strpos($line, ':');
                     if ($pos > 0) {
@@ -661,7 +666,7 @@ function sqimap_get_small_header_list ($imap_stream, $msg_list, $show_num=false)
             $date = str_replace('  ', ' ', $date);
             $tmpdate  = explode(' ', trim($date));
         } else {
-            $tmpdate = $date = array('', '', '', '', '', '');
+            $tmpdate = $date = array();
         }
         if ($uid_support) {
             $msgi ="$unique_id";
@@ -727,12 +732,12 @@ function sqimap_get_headerfield($imap_stream, $field) {
     foreach ($readin_list as $r) {
         $r = implode('',$r);
         /* first we unfold the header */
-        $r = str_replace(array("\r\n\t","\r\n\s"),array('',''),$r);
+        $r = str_replace(array("\r\n", "\n\t","\n\s"),array("\n",'',''),$r);
         /* 
          * now we can make a new header array with each element representing 
          * a headerline
          */
-        $r = explode("\r\n" , $r);  
+        $r = explode("\n" , $r);  
         if (!$uid_support) {
             if (!preg_match("/^\\*\s+([0-9]+)\s+FETCH/iAU",$r[0], $regs)) {
                 set_up_language($squirrelmail_language);
