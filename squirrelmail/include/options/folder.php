@@ -99,13 +99,6 @@ function load_optpage_data_folder() {
         'save'    => 'save_option_sent_folder'
     );
 
-    $optvals[SMOPT_GRP_SPCFOLDER][] = array(
-        'name'    => 'save_reply_with_orig',
-        'caption' => _("Save Replies with Original Message"),
-        'type'    => SMOPT_TYPE_BOOLEAN,
-        'refresh' => SMOPT_REFRESH_FOLDERLIST
-    );
-
     /*** Load the General Options into the array ***/
     $optgrps[SMOPT_GRP_FOLDERLIST] = _("Folder List Options");
     $optvals[SMOPT_GRP_FOLDERLIST] = array();

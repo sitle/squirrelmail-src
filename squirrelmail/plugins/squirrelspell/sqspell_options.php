@@ -1,6 +1,6 @@
 <?php
 /**
- * sqspell_options.php
+ * sqspell_options.php 
  *
  * Main wrapper for the options interface.
  *
@@ -11,20 +11,17 @@
  *
  * @author Konstantin Riabitsev <icon@duke.edu> ($Author$)
  * @version $Date$
- * @package plugins
- * @subpackage squirrelspell
  */
 
 /**
- * Set a couple of constants and defaults. Don't change these,
+ * Set a couple of constants and defaults. Don't change these, 
  * the configurable stuff is in sqspell_config.php
  */
 $SQSPELL_DIR='plugins/squirrelspell/';
 $SQSPELL_CRYPTO=FALSE;
 
 /**
- * Load some necessary stuff from SquirrelMail.
- * @ignore
+ * Load some necessary stuff from squirrelmail. 
  */
 define('SM_PATH','../../');
 

@@ -31,7 +31,7 @@ if (! isset($use_smtp_tls)) {
 }
 
 /**
- * Check if user has previously logged in to the SquirrelMail session.  If user
+ * Check if user has previously logged in to the Squirrelmail session.  If user
  * has not logged in, execution will stop inside this function.
  *
  * @return int A positive value is returned if user has previously logged in
@@ -42,14 +42,17 @@ function is_logged_in() {
     if ( sqsession_is_registered('user_is_logged_in') ) {
         return;
     } else {
-        global $PHP_SELF, $session_expired_post,
-               $session_expired_location, $squirrelmail_language;
+        global $PHP_SELF, $HTTP_POST_VARS, $_POST, $session_expired_post,
+	       $session_expired_location;
 
         /*  First we store some information in the new session to prevent
          *  information-loss.
          */
-
-        $session_expired_post = $_POST;
+	if ( !check_php_version(4,1) ) {
+	    $session_expired_post = $HTTP_POST_VARS;
+	} else {
+    	    $session_expired_post = $_POST;
+	}
         $session_expired_location = $PHP_SELF;
         if (!sqsession_is_registered('session_expired_post')) {
            sqsession_register($session_expired_post,'session_expired_post');
@@ -58,7 +61,6 @@ function is_logged_in() {
            sqsession_register($session_expired_location,'session_expired_location');
         }
         include_once( SM_PATH . 'functions/display_messages.php' );
-        set_up_language($squirrelmail_language, true);
         logout_error( _("You must be logged in to access this page.") );
         exit;
     }
@@ -110,7 +112,7 @@ function digest_md5_response ($username,$password,$challenge,$service,$host) {
 
   /* This can be auth (authentication only), auth-int (integrity protection), or
      auth-conf (confidentiality protection).  Right now only auth is supported.
-     DO NOT CHANGE THIS VALUE */
+	 DO NOT CHANGE THIS VALUE */
   $qop_value = "auth";
 
   $digest_uri_value = $service . '/' . $host;
@@ -175,10 +177,10 @@ function digest_md5_parse_challenge($challenge) {
       // We're in a "simple" value - explode to next comma
       $val=explode(',',$challenge,2);
       if (isset($val[1])) {
-          $challenge=$val[1];
-      } else {
-          unset($challenge);
-      }
+	  	$challenge=$val[1];
+	  } else {
+	    unset($challenge);
+	  }
       $value=$val[0];
     }
     $parsed["$key"]=$value;
@@ -217,29 +219,6 @@ function hmac_md5($data, $key='') {
     /* Heh, let's get recursive. */
     $hmac=hmac_md5($k_opad . pack("H*",md5($k_ipad . $data)) );
     return $hmac;
-}
-
-/**
- * Fillin user and password based on SMTP auth settings.
- *
- * @param string $user Reference to SMTP username
- * @param string $pass Reference to SMTP password (unencrypted)
- */
-function get_smtp_user(&$user, &$pass) {
-    global $username, $smtp_auth_mech,
-           $smtp_sitewide_user, $smtp_sitewide_pass;
-
-    if ($smtp_auth_mech == 'none') {
-        $user = '';
-        $pass = '';
-    } elseif ( isset($smtp_sitewide_user) && isset($smtp_sitewide_pass) ) {
-        $user = $smtp_sitewide_user;
-        $pass = $smtp_sitewide_pass;
-    } else {
-        global $key, $onetimepad;
-        $user = $username;
-        $pass = OneTimePadDecrypt($key, $onetimepad);
-    }
 }
 
 ?>

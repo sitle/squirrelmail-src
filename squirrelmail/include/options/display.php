@@ -17,22 +17,6 @@ define('SMOPT_GRP_GENERAL', 0);
 define('SMOPT_GRP_MAILBOX', 1);
 define('SMOPT_GRP_MESSAGE', 2);
 
-// load icon themes if in use
-global $use_icons;
-if ($use_icons) {
-    global $icon_themes;
-    $dirName = SM_PATH . 'images/themes';
-    if (is_readable($dirName) && is_dir($dirName)) {
-        $d = dir($dirName);
-        while($dir = $d->read()) {
-            if ($dir != "." && $dir != "..") {
-                if (is_dir($dirName."/".$dir) && file_exists("$dirName/$dir/theme.php"))
-                    include("$dirName/$dir/theme.php");
-            }
-        }
-    }
-}
-
 /**
  * This function builds an array with all the information about
  * the options available to the user, and returns it. The options
@@ -47,9 +31,9 @@ if ($use_icons) {
  * @return array all option information
  */
 function load_optpage_data_display() {
-    global $theme, $language, $languages,
-    $default_use_mdn, $squirrelmail_language, $allow_thread_sort,
-    $show_alternative_names, $available_languages, $use_icons;
+    global $theme, $language, $languages, $js_autodetect_results,
+    $compose_new_win, $default_use_mdn, $squirrelmail_language, $allow_thread_sort,
+    $optmode;
 
     /* Build a simple array into which we will build options. */
     $optgrps = array();
@@ -103,51 +87,24 @@ function load_optpage_data_display() {
 
     }
 
-    // config.php can be unupdated.
-    if (! isset($available_languages) || $available_languages=="" ) {
-     $available_languages="ALL"; }
-
     $language_values = array();
-    if ( strtoupper($available_languages)=='ALL') {
-        foreach ($languages as $lang_key => $lang_attributes) {
-            if (isset($lang_attributes['NAME'])) {
-                $language_values[$lang_key] = $lang_attributes['NAME'];
-                if ( isset($show_alternative_names) &&
-                     $show_alternative_names &&
-                     isset($lang_attributes['ALTNAME']) ) {
-                    $language_values[$lang_key] .= " / " . $lang_attributes['ALTNAME'];
-                }
-            }
-        }
-    } else if (strtoupper($available_languages)!='NONE') {
-        // admin can set list of available languages in config
-        $available_languages_array=explode (" ",$available_languages);
-        foreach ($available_languages_array as $lang_key ) {
-            if (isset($languages[$lang_key]['NAME'])) {
-                $language_values[$lang_key] = $languages[$lang_key]['NAME'];
-                if ( isset($show_alternative_names) &&
-                     $show_alternative_names &&
-                     isset($languages[$lang_key]['ALTNAME']) ) {
-                    $language_values[$lang_key] .= " / " . $languages[$lang_key]['ALTNAME'];
-                }
-            }
+    foreach ($languages as $lang_key => $lang_attributes) {
+        if (isset($lang_attributes['NAME'])) {
+            $language_values[$lang_key] = $lang_attributes['NAME'];
         }
     }
     asort($language_values);
     $language_values =
         array_merge(array('' => _("Default")), $language_values);
     $language = $squirrelmail_language;
-    if (strtoupper($available_languages)!='NONE') {
-        // if set to 'none', interface will use only default language
-        $optvals[SMOPT_GRP_GENERAL][] = array(
-            'name'    => 'language',
-            'caption' => _("Language"),
-            'type'    => SMOPT_TYPE_STRLIST,
-            'refresh' => SMOPT_REFRESH_ALL,
-            'posvals' => $language_values,
-            'htmlencoded' => true
-            );
-    }
+    $optvals[SMOPT_GRP_GENERAL][] = array(
+        'name'    => 'language',
+        'caption' => _("Language"),
+        'type'    => SMOPT_TYPE_STRLIST,
+        'refresh' => SMOPT_REFRESH_ALL,
+        'posvals' => $language_values,
+        'htmlencoded' => true
+    );
 
     /* Set values for the "use javascript" option. */
     $optvals[SMOPT_GRP_GENERAL][] = array(
@@ -157,17 +114,22 @@ function load_optpage_data_display() {
         'refresh' => SMOPT_REFRESH_ALL,
         'posvals' => array(SMPREF_JS_AUTODETECT => _("Autodetect"),
                            SMPREF_JS_ON         => _("Always"),
-                           SMPREF_JS_OFF        => _("Never")),
-        'save'    => 'save_option_javascript_autodetect',
-        'script'  => 'onclick="document.forms[0].new_js_autodetect_results.value = \'' . SMPREF_JS_ON . '\';"'
+                           SMPREF_JS_OFF        => _("Never"))
     );
+
+
+    if ($optmode != 'submit')
+       $onLoadScript = 'document.forms[0].new_js_autodetect_results.value = \'' . SMPREF_JS_ON . '\'';
+    else
+       $onLoadScript = '';
 
     $optvals[SMOPT_GRP_GENERAL][] = array(
         'name'    => 'js_autodetect_results',
         'caption' => '',
         'type'    => SMOPT_TYPE_HIDDEN,
-        'refresh' => SMOPT_REFRESH_NONE
+        'refresh' => SMOPT_REFRESH_NONE,
         //'post_script' => $js_autodetect_script,
+        'save'    => 'save_option_javascript_autodetect'
     );
 
     /*** Load the General Options into the array ***/
@@ -189,44 +151,9 @@ function load_optpage_data_display() {
         'refresh' => SMOPT_REFRESH_NONE
     );
 
-    if ($use_icons) {
-        global $icon_themes, $icon_theme;
-        $temp = array();
-        for ($count = 0; $count < sizeof($icon_themes); $count++) {
-            $temp[$count] = $icon_themes[$count]['NAME'];
-            if ($icon_theme == $icon_themes[$count]['PATH'])
-                $value = $count;
-        }
-        if (sizeof($icon_themes) > 0) {
-            $optvals[SMOPT_GRP_MAILBOX][] = array(
-                'name'          => 'icon_theme',
-                'caption'       => _("Message Flags Icon Theme"),
-                'type'          => SMOPT_TYPE_STRLIST,
-                'refresh'       => SMOPT_REFRESH_NONE,
-                'posvals'       => $temp,
-                'initial_value' => $value,
-                'save'          => 'icon_theme_save'
-            );
-        }
-    }
-
-    $optvals[SMOPT_GRP_MAILBOX][] = array(
-        'name'    => 'show_flag_buttons',
-        'caption' => _("Show Flag / Unflag Buttons"),
-        'type'    => SMOPT_TYPE_BOOLEAN,
-        'refresh' => SMOPT_REFRESH_NONE
-    );
-
     $optvals[SMOPT_GRP_MAILBOX][] = array(
         'name'    => 'page_selector',
         'caption' => _("Enable Page Selector"),
-        'type'    => SMOPT_TYPE_BOOLEAN,
-        'refresh' => SMOPT_REFRESH_NONE
-    );
-
-    $optvals[SMOPT_GRP_MAILBOX][] = array(
-        'name'    => 'compact_paginator',
-        'caption' => _("Use Compact Page Selector"),
         'type'    => SMOPT_TYPE_BOOLEAN,
         'refresh' => SMOPT_REFRESH_NONE
     );
@@ -245,31 +172,6 @@ function load_optpage_data_display() {
         'type'    => SMOPT_TYPE_BOOLEAN,
         'refresh' => SMOPT_REFRESH_NONE
     );
-
-    $optvals[SMOPT_GRP_MAILBOX][] = array(
-        'name'    => 'truncate_sender',
-        'caption' => _("Length of From/To Field (0 for full)"),
-        'type'    => SMOPT_TYPE_INTEGER,
-        'refresh' => SMOPT_REFRESH_NONE,
-        'size'    => SMOPT_SIZE_TINY
-    );
-
-    $optvals[SMOPT_GRP_MAILBOX][] = array(
-        'name'    => 'truncate_subject',
-        'caption' => _("Length of Subject Field (0 for full)"),
-        'type'    => SMOPT_TYPE_INTEGER,
-        'refresh' => SMOPT_REFRESH_NONE,
-        'size'    => SMOPT_SIZE_TINY
-    );
-
-    $optvals[SMOPT_GRP_MAILBOX][] = array(
-        'name'    => 'show_recipient_instead',
-        'caption' => _("Show recipient name if the message is from your default identity"),
-        'type'    => SMOPT_TYPE_BOOLEAN,
-        'refresh' => SMOPT_REFRESH_NONE,
-        'size'    => SMOPT_SIZE_TINY
-    );
-
 
     /*** Load the General Options into the array ***/
     $optgrps[SMOPT_GRP_MESSAGE] = _("Message Display and Composition");
@@ -408,15 +310,6 @@ function load_optpage_data_display() {
     );
 
     $optvals[SMOPT_GRP_MESSAGE][] = array(
-        'name'    => 'body_quote',
-        'caption' => _("Prefix for Original Message when Replying"),
-        'type'    => SMOPT_TYPE_STRING,
-        'refresh' => SMOPT_REFRESH_NONE,
-        'size'    => SMOPT_SIZE_TINY,
-        'save'    => 'save_option_reply_prefix'
-    );
-
-    $optvals[SMOPT_GRP_MESSAGE][] = array(
         'name'    => 'reply_focus',
         'caption' => _("Cursor Position when Replying"),
         'type'    => SMOPT_TYPE_STRLIST,
@@ -425,13 +318,6 @@ function load_optpage_data_display() {
                            'focus' => _("Focus in body"),
                            'select' => _("Select body"),
                            'none' => _("No focus"))
-    );
-
-    $optvals[SMOPT_GRP_MESSAGE][] = array(
-        'name'    => 'strip_sigs',
-        'caption' => _("Strip signature when replying"),
-        'type'    => SMOPT_TYPE_BOOLEAN,
-        'refresh' => SMOPT_REFRESH_NONE
     );
 
     $optvals[SMOPT_GRP_MESSAGE][] = array(
@@ -447,18 +333,12 @@ function load_optpage_data_display() {
             'type'    => SMOPT_TYPE_BOOLEAN,
             'refresh' => SMOPT_REFRESH_ALL
         );
-    $optvals[SMOPT_GRP_MESSAGE][] = array(
-        'name'    => 'delete_prev_next_display',
-        'caption' => _("Show 'Delete & Prev/Next' Links"),
-        'type'    => SMOPT_TYPE_BOOLEAN,
-        'refresh' => SMOPT_REFRESH_ALL
-    );
-
     }
     /* Assemble all this together and return it as our result. */
     $result = array(
         'grps' => $optgrps,
-        'vals' => $optvals
+        'vals' => $optvals,
+        'xtra' => $onLoadScript
     );
     return ($result);
 }
@@ -467,13 +347,6 @@ function load_optpage_data_display() {
 /** Define any specialized save functions for this option page. ***/
 /******************************************************************/
 
-function save_option_header($option) {
-}
-
-/**
- * This function saves a new theme setting.
- * It updates the theme array.
- */
 function save_option_theme($option) {
     global $theme;
 
@@ -498,42 +371,20 @@ function save_option_theme($option) {
  * This function saves the javascript detection option.
  */
 function save_option_javascript_autodetect($option) {
-    save_option($option);
-    checkForJavascript(TRUE);
-}
+    global $data_dir, $username;
 
-/**
- * This function saves the user's icon theme setting
- */
-function icon_theme_save($option) {
+    sqGetGlobalVar('new_javascript_setting', $new_javascript_setting);
 
-    global $icon_themes, $data_dir, $username;
-
-
-    // Don't assume the new value is there, double check
-    // and only save if found
-    //
-    if (isset($icon_themes[$option->new_value]['PATH']))
-        setPref($data_dir, $username, 'icon_theme', $icon_themes[$option->new_value]['PATH']);
-    else
-       setPref($data_dir, $username, 'icon_theme', 'none');
-
-}
-
-/**
- * This function saves the reply prefix (body_quote) character(s)
- */
-function save_option_reply_prefix($option) {
-
-    // save as "NONE" if it was blanked out
-    //
-    if (empty($option->new_value)) $option->new_value = 'NONE';
-
-
-    // Save the option like normal.
-    //
-    save_option($option);
-
+    /* Set javascript either on or off. */
+    if ($new_javascript_setting == SMPREF_JS_AUTODETECT) {
+        if ($option->new_value == SMPREF_JS_ON) {
+            setPref($data_dir, $username, 'javascript_on', SMPREF_JS_ON);
+        } else {
+            setPref($data_dir, $username, 'javascript_on', SMPREF_JS_OFF);
+        }
+    } else {
+        setPref($data_dir, $username, 'javascript_on', $new_javascript_setting);
+    }
 }
 
 ?>

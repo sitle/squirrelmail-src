@@ -12,13 +12,8 @@
  * commands such as (un)subscribe, help and list archives.
  *
  * $Id$
- * @package plugins
- * @subpackage listcommands
  */
 
-/**
- * Initialize the listcommands plugin
- */
 function squirrelmail_plugin_init_listcommands () {
     global $squirrelmail_plugin_hooks;
 
@@ -26,7 +21,8 @@ function squirrelmail_plugin_init_listcommands () {
 }
 
 function plugin_listcommands_menu() {
-    global $passed_id, $passed_ent_id, $color, $mailbox, $message;
+    global $passed_id, $passed_ent_id, $color, $mailbox,
+           $message, $compose_new_win;
 
     /**
      * Array of commands we can deal with from the header. The Reply option
@@ -43,34 +39,36 @@ function plugin_listcommands_menu() {
 
     foreach ($message->rfc822_header->mlist as $cmd => $actions) {
 
-        /* I don't know this action... skip it */
-        if ( !array_key_exists($cmd, $fieldsdescr) ) {
+	/* I don't know this action... skip it */
+	if ( ( function_exists('array_key_exists') &&       /* PHP >= 4.1 */
+               !array_key_exists($cmd, $fieldsdescr) ) ||
+             ( function_exists('key_exists') && 
+               !key_exists($cmd, $fieldsdescr) )            /* PHP == 4.0.6 */
+        ) {
             continue;
         }
 
         /* proto = {mailto,href} */
-        $proto = array_shift(array_keys($actions));
-        $act   = array_shift($actions);
+	$proto = array_shift(array_keys($actions));
+	$act   = array_shift($actions);
 
         if ($proto == 'mailto') {
 
             if (($cmd == 'post') || ($cmd == 'owner')) {
-                $url = 'src/compose.php?';
+                $url = 'compose.php?';
             } else {
-                $url = "plugins/listcommands/mailout.php?action=$cmd&amp;";
+                $url = "../plugins/listcommands/mailout.php?action=$cmd&amp;";
             }
             $url .= 'send_to=' . strtr($act,'?','&');
 
             $output[] = makeComposeLink($url, $fieldsdescr[$cmd]);
 
             if ($cmd == 'post') {
-                if (!isset($mailbox))
-                    $mailbox = 'INBOX';
-                $url .= '&amp;passed_id='.$passed_id.
-                        '&amp;mailbox='.urlencode($mailbox).
-                        (isset($passed_ent_id)?'&amp;passed_ent_id='.$passed_ent_id:'');
+	        $url .= '&amp;passed_id='.$passed_id.
+		        '&amp;mailbox='.urlencode($mailbox).
+		        (isset($passed_ent_id)?'&amp;passed_ent_id='.$passed_ent_id:'');
                 $url .= '&amp;smaction=reply';
-
+                
                 $output[] = makeComposeLink($url, $fieldsdescr['reply']);
             }
         } else if ($proto == 'href') {

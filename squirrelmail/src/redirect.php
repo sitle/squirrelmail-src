@@ -49,23 +49,21 @@ sqsession_register ($base_uri, 'base_uri');
 /* get globals we me need */
 sqGetGlobalVar('login_username', $login_username);
 sqGetGlobalVar('secretkey', $secretkey);
+sqGetGlobalVar('js_autodetect_results', $js_autodetect_results);
 if(!sqGetGlobalVar('squirrelmail_language', $squirrelmail_language) || $squirrelmail_language == '') {
     $squirrelmail_language = $squirrelmail_default_language;
-}
-if (!sqgetGlobalVar('mailto', $mailto)) {
-    $mailto = '';
 }
 
 /* end of get globals */
 
 set_up_language($squirrelmail_language, true);
 /* Refresh the language cookie. */
-setcookie('squirrelmail_language', $squirrelmail_language, time()+2592000,
+setcookie('squirrelmail_language', $squirrelmail_language, time()+2592000, 
           $base_uri);
 
 if (!isset($login_username)) {
     include_once(SM_PATH .  'functions/display_messages.php' );
-    logout_error( _("You must be logged in to access this page.") );
+    logout_error( _("You must be logged in to access this page.") );    
     exit;
 }
 
@@ -122,26 +120,36 @@ if ( sqgetGlobalVar('HTTP_ACCEPT', $http_accept, SQ_SERVER) &&
 }
 
 /* Complete autodetection of Javascript. */
-checkForJavascript();
+$javascript_setting = getPref
+    ($data_dir, $username, 'javascript_setting', SMPREF_JS_AUTODETECT);
+$js_autodetect_results = (isset($js_autodetect_results) ?
+    $js_autodetect_results : SMPREF_JS_OFF);
+/* See if it's set to "Always on" */
+$js_pref = SMPREF_JS_ON;
+if ($javascript_setting != SMPREF_JS_ON){
+    if ($javascript_setting == SMPREF_JS_AUTODETECT) {
+        if ($js_autodetect_results == SMPREF_JS_OFF) {
+            $js_pref = SMPREF_JS_OFF;
+        }
+    } else {
+        $js_pref = SMPREF_JS_OFF;
+    }
+}
+/* Update the prefs */
+setPref($data_dir, $username, 'javascript_on', $js_pref);
 
 /* Compute the URL to forward the user to. */
-$redirect_url = $location . '/webmail.php';
+$redirect_url = 'webmail.php';
 
 if ( sqgetGlobalVar('session_expired_location', $session_expired_location, SQ_SESSION) ) {
     sqsession_unregister('session_expired_location');
     $compose_new_win = getPref($data_dir, $username, 'compose_new_win', 0);
     if ($compose_new_win) {
-        // do not prefix $location here because $session_expired_location is set to PHP_SELF
-        // of the last page
         $redirect_url = $session_expired_location;
     } elseif ( strpos($session_expired_location, 'webmail.php') === FALSE ) {
-        $redirect_url = $location.'/webmail.php?right_frame='.urldecode($session_expired_location);
+        $redirect_url = 'webmail.php?right_frame='.urldecode($session_expired_location);
     }
     unset($session_expired_location);
-}
-if($mailto != '') {
-    $redirect_url  = $location . '/webmail.php?right_frame=compose.php&mailto=';
-    $redirect_url .= $mailto;
 }
 
 /* Write session data and send them off to the appropriate page. */
@@ -154,13 +162,13 @@ function attachment_common_parse($str, $debug) {
     global $attachment_common_types, $attachment_common_types_parsed;
 
     $attachment_common_types_parsed[$str] = true;
-
-    /*
-     * Replace ", " with "," and explode on that as Mozilla 1.x seems to
+    
+    /* 
+     * Replace ", " with "," and explode on that as Mozilla 1.x seems to  
      * use "," to seperate whilst IE, and earlier versions of Mozilla use
      * ", " to seperate
      */
-
+    
     $str = str_replace( ', ' , ',' , $str );
     $types = explode(',', $str);
 

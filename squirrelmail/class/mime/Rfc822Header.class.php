@@ -8,13 +8,12 @@
  *
  * This contains functions needed to handle mime messages.
  *
- * @version $Id$
- * @package squirrelmail
+ * $Id$
  */
 
-/**
+/*
+ * rdc822_header class
  * input: header_string or array
- * @package squirrelmail
  */
 class Rfc822Header {
     var $date = -1,
@@ -22,7 +21,6 @@ class Rfc822Header {
         $from = array(),
         $sender = '',
         $reply_to = array(),
-        $mail_followup_to = array(),
         $to = array(),
         $cc = array(),
         $bcc = array(),
@@ -36,8 +34,6 @@ class Rfc822Header {
         $priority = 3,
         $dnt = '',
         $encoding = '',
-        $content_id = '',
-        $content_desc = '',
         $mlist = array(),
         $more_headers = array(); /* only needed for constructing headers
                                     in smtp.php */
@@ -129,9 +125,6 @@ class Rfc822Header {
             case 'reply-to':
                 $this->reply_to = $this->parseAddress($value, true);
                 break;
-            case 'mail-followup-to':
-                $this->mail_followup_to = $this->parseAddress($value, true);
-                break;
             case 'to':
                 $this->to = $this->parseAddress($value, true);
                 break;
@@ -171,35 +164,23 @@ class Rfc822Header {
                 $value = $this->stripComments($value);
                 $this->parseDisposition($value);
                 break;
-            case 'content-transfer-encoding':
-                $this->encoding = $value;
-                break;
-            case 'content-description':
-                $this->content_desc = $value;
-                break;
-            case 'content-id':
-                $value = $this->stripComments($value);
-                $this->content_id = $value;
-                break;
             case 'user-agent':
             case 'x-mailer':
                 $this->xmailer = $value;
                 break;
             case 'x-priority':
-            case 'importance':
-            case 'priority':
-                $this->priority = $this->parsePriority($value);
+                $this->priority = $value;
                 break;
             case 'list-post':
                 $value = $this->stripComments($value);
                 $this->mlist('post', $value);
                 break;
             case 'list-reply':
-                $value = $this->stripComments($value);
+                $value = $this->stripComments($value);            
                 $this->mlist('reply', $value);
                 break;
             case 'list-subscribe':
-                $value = $this->stripComments($value);
+                $value = $this->stripComments($value);            
                 $this->mlist('subscribe', $value);
                 break;
             case 'list-unsubscribe':
@@ -229,6 +210,7 @@ class Rfc822Header {
 
     function getAddressTokens($address) {
         $aTokens = array();
+        $aAddress = array();
         $aSpecials = array('(' ,'<' ,',' ,';' ,':');
         $aReplace =  array(' (',' <',' ,',' ;',' :');
         $address = str_replace($aSpecials,$aReplace,$address);
@@ -360,7 +342,7 @@ class Rfc822Header {
         }
         if (count($aStack)) {
             $sPersonal = trim(implode('',$aStack));
-        } else {
+        } else { 
             $sPersonal = '';
         }
         if (!$sPersonal && count($aComment)) {
@@ -388,18 +370,18 @@ class Rfc822Header {
     }
 
     /*
-     * parseAddress: recursive function for parsing address strings and store
+     * parseAddress: recursive function for parsing address strings and store 
      *               them in an address stucture object.
      *               input: $address = string
      *                      $ar      = boolean (return array instead of only the
      *                                 first element)
      *                      $addr_ar = array with parsed addresses // obsolete
      *                      $group   = string // obsolete
-     *                      $host    = string (default domainname in case of
+     *                      $host    = string (default domainname in case of 
      *                                 addresses without a domainname)
      *                      $lookup  = callback function (for lookup address
      *                                 strings which are probably nicks
-     *                                 (without @ ) )
+     *                                 (without @ ) ) 
      *               output: array with addressstructure objects or only one
      *                       address_structure object.
      *  personal name: encoded: =?charset?Q|B?string?=
@@ -413,7 +395,7 @@ class Rfc822Header {
 
     function parseAddress($address,$ar=false,$aAddress=array(),$sGroup='',$sHost='',$lookup=false) {
         $aTokens = $this->getAddressTokens($address);
-        $sPersonal = $sEmail = $sGroup = '';
+        $sPersonal = $sEmail = $sComment = $sGroup = '';
         $aStack = $aComment = array();
         foreach ($aTokens as $sToken) {
             $cChar = $sToken{0};
@@ -422,7 +404,7 @@ class Rfc822Header {
             case '=':
             case '"':
             case ' ':
-                $aStack[] = $sToken;
+                $aStack[] = $sToken; 
                 break;
             case '(':
                 $aComment[] = substr($sToken,1,-1);
@@ -433,7 +415,7 @@ class Rfc822Header {
                     $oAddr = end($aAddress);
                     if(!$oAddr || ((isset($oAddr)) && !$oAddr->mailbox && !$oAddr->personal)) {
                         $sEmail = $sGroup . ':;';
-                    }
+                    } 
                     $aAddress[] = $this->createAddressObject($aStack,$aComment,$sEmail,$sGroup);
                     $sGroup = '';
                     $aStack = $aComment = array();
@@ -442,7 +424,7 @@ class Rfc822Header {
             case ',':
                 $aAddress[] = $this->createAddressObject($aStack,$aComment,$sEmail,$sGroup);
                 break;
-            case ':':
+            case ':': 
                 $sGroup = trim(implode(' ',$aStack));
                 $sGroup = preg_replace('/\s+/',' ',$sGroup);
                 $aStack = array();
@@ -452,7 +434,7 @@ class Rfc822Header {
                break;
             case '>':
                /* skip */
-               break;
+               break; 
             default: $aStack[] = $sToken; break;
             }
         }
@@ -491,45 +473,20 @@ class Rfc822Header {
                 if ($sHost && $oAddr->mailbox) {
                     $oAddr->host = $sHost;
                 }
-            }
+	    }
           }
           if (!$aAddrBookAddress && $oAddr->mailbox) {
               $aProcessedAddress[] = $oAddr;
           } else {
-              $aProcessedAddress = array_merge($aProcessedAddress,$aAddrBookAddress);
+              $aProcessedAddress = array_merge($aProcessedAddress,$aAddrBookAddress); 
           }
         }
-        if ($ar) {
+        if ($ar) { 
             return $aProcessedAddress;
         } else {
             return $aProcessedAddress[0];
         }
-    }
-
-    /**
-     * Normalise the different Priority headers into a uniform value,
-     * namely that of the X-Priority header (1, 3, 5). Supports:
-     * Prioirty, X-Priority, Importance.
-     * X-MS-Mail-Priority is not parsed because it always coincides
-     * with one of the other headers.
-     *
-     * NOTE: this is actually a duplicate from the function in
-     * functions/imap_messages. I'm not sure if it's ok here to call
-     * that function?
-     */
-    function parsePriority($value) {
-        $value = strtolower(array_shift(split('/\w/',trim($value))));
-        if ( is_numeric($value) ) {
-            return $value;
-        }
-        if ( $value == 'urgent' || $value == 'high' ) {
-            return 1;
-        } elseif ( $value == 'non-urgent' || $value == 'low' ) {
-            return 5;
-        }
-        // default is normal priority
-        return 3;
-    }
+    } 
 
     function parseContentType($value) {
         $pos = strpos($value, ';');
@@ -550,39 +507,37 @@ class Rfc822Header {
         }
         $this->content_type = $content_type;
     }
-
+    
     /* RFC2184 */
-    function processParameters($aParameters) {
+    function processParameters($aParameters) { 
         $aResults = array();
-        $aCharset = array();
-        // handle multiline parameters
+	$aCharset = array();
+	// handle multiline parameters
         foreach($aParameters as $key => $value) {
-            if ($iPos = strpos($key,'*')) {
-                $sKey = substr($key,0,$iPos);
-                if (!isset($aResults[$sKey])) {
-                    $aResults[$sKey] = $value;
-                    if (substr($key,-1) == '*') { // parameter contains language/charset info
-                        $aCharset[] = $sKey;
-                    }
-                } else {
-                    $aResults[$sKey] .= $value;
-                }
-            } else {
-                $aResults[$key] = $value;
-            }
+	    if ($iPos = strpos($key,'*')) {
+	        $sKey = substr($key,0,$iPos);
+		if (!isset($aResults[$sKey])) {
+		    $aResults[$sKey] = $value;
+		    if (substr($key,-1) == '*') { // parameter contains language/charset info
+		        $aCharset[] = $sKey;
+		    }
+	        } else {
+		    $aResults[$sKey] .= $value;
+		}
+	    }
         }
-        foreach ($aCharset as $key) {
-            $value = $aResults[$key];
-            // extract the charset & language
-            $charset = substr($value,0,strpos($value,"'"));
-            $value = substr($value,strlen($charset)+1);
-            $language = substr($value,0,strpos($value,"'"));
-            $value = substr($value,strlen($charset)+1);
-            // FIX ME What's the status of charset decode with language information ????
-            $value = charset_decode($charset,$value);
-            $aResults[$key] = $value;
-        }
-        return $aResults;
+	foreach ($aCharset as $key) {
+	    $value = $aResults[$key];
+	    // extract the charset & language
+	    $charset = substr($value,0,strpos($value,"'"));
+	    $value = substr($value,strlen($charset)+1);
+	    $language = substr($value,0,strpos($value,"'"));
+	    $value = substr($value,strlen($charset)+1);
+	    // FIX ME What's the status of charset decode with language information ????
+	    $value = charset_decode($charset,$value);
+	    $aResults[$key] = $value;
+	}
+	return $aResults;    
     }
 
     function parseProperties($value) {
@@ -711,13 +666,14 @@ class Rfc822Header {
         }
         return $arr;
     }
-
+    
     function findAddress($address, $recurs = false) {
         $result = false;
         if (is_array($address)) {
             $i=0;
             foreach($address as $argument) {
                 $match = $this->findAddress($argument, true);
+                $last = end($match);
                 if ($match[1]) {
                     return $i;
                 } else {
@@ -725,7 +681,7 @@ class Rfc822Header {
                         $result = $i;
                     }
                 }
-                ++$i;
+                ++$i;        
             }
         } else {
             if (!is_array($this->cc)) $this->cc = array();
@@ -765,7 +721,7 @@ class Rfc822Header {
                 return true;
             } else {
                 return false;
-            }
+            }        
         }
         //exit;
         return $result;

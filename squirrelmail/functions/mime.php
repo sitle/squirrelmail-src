@@ -40,9 +40,11 @@ function mime_structure ($bodystructure, $flags=array()) {
         global $color, $mailbox;
         /* removed urldecode because $_GET is auto urldecoded ??? */
         displayPageHeader( $color, $mailbox );
+        echo "<body text=\"$color[8]\" bgcolor=\"$color[4]\" link=\"$color[7]\" vlink=\"$color[7]\" alink=\"$color[7]\">\n\n" .
+         '<center>';
         $errormessage  = _("SquirrelMail could not decode the bodystructure of the message");
         $errormessage .= '<br />'._("the provided bodystructure by your imap-server").':<br /><br />';
-        $errormessage .= '<pre>' . htmlspecialchars($read) . '</pre>';
+        $errormessage .= '<table><tr><td>' . htmlspecialchars($read) . '</td></tr></table>';
         plain_error_message( $errormessage, $color );
         echo '</body></html>';
         exit;
@@ -97,6 +99,7 @@ function mime_structure ($bodystructure, $flags=array()) {
  */
 
 function mime_fetch_body($imap_stream, $id, $ent_id=1, $fetch_size=0) {
+    global $uid_support;
     /* Do a bit of error correction.  If we couldn't find the entity id, just guess
      * that it is the first one.  That is usually the case anyway.
      */
@@ -109,7 +112,7 @@ function mime_fetch_body($imap_stream, $id, $ent_id=1, $fetch_size=0) {
 
     if ($fetch_size!=0) $cmd .= "<0.$fetch_size>";
 
-    $data = sqimap_run_command ($imap_stream, $cmd, true, $response, $message, TRUE);
+    $data = sqimap_run_command ($imap_stream, $cmd, true, $response, $message, $uid_support);
     do {
         $topline = trim(array_shift($data));
     } while($topline && ($topline[0] == '*') && !preg_match('/\* [0-9]+ FETCH.*/i', $topline)) ;
@@ -121,7 +124,7 @@ function mime_fetch_body($imap_stream, $id, $ent_id=1, $fetch_size=0) {
          * in order to parse html messages. Let's get them here.
          */
 //        if ($ret{0} == '<') {
-//            $data = sqimap_run_command ($imap_stream, "FETCH $id BODY[$ent_id.MIME]", true, $response, $message, TRUE);
+//            $data = sqimap_run_command ($imap_stream, "FETCH $id BODY[$ent_id.MIME]", true, $response, $message, $uid_support);
 //        }
     } else if (ereg('"([^"]*)"', $topline, $regs)) {
         $ret = $regs[1];
@@ -148,7 +151,7 @@ function mime_fetch_body($imap_stream, $id, $ent_id=1, $fetch_size=0) {
                '<tr><td><b>' . _("FETCH line:") . "</td><td>$topline</td></tr>" .
                "</table><br /></tt></font><hr />";
 
-        $data = sqimap_run_command ($imap_stream, "FETCH $passed_id BODY[]", true, $response, $message, TRUE);
+        $data = sqimap_run_command ($imap_stream, "FETCH $passed_id BODY[]", true, $response, $message, $uid_support);
         array_shift($data);
         $wholemessage = implode('', $data);
 
@@ -158,6 +161,7 @@ function mime_fetch_body($imap_stream, $id, $ent_id=1, $fetch_size=0) {
 }
 
 function mime_print_body_lines ($imap_stream, $id, $ent_id=1, $encoding) {
+    global $uid_support;
 
     /* Don't kill the connection if the browser is over a dialup
      * and it would take over 30 seconds to download it.
@@ -175,55 +179,12 @@ function mime_print_body_lines ($imap_stream, $id, $ent_id=1, $encoding) {
         } else {
            $query = "FETCH $id BODY[$ent_id]";
         }
-        sqimap_run_command($imap_stream,$query,true,$response,$message,TRUE,'sqimap_base64_decode','php://stdout',true);
+        sqimap_run_command($imap_stream,$query,true,$response,$message,$uid_support,'sqimap_base64_decode','php://stdout',true);
     } else {
        $body = mime_fetch_body ($imap_stream, $id, $ent_id);
        echo decodeBody($body, $encoding);
     }
-
-    /*
-       TODO, use the same method for quoted printable.
-       However, I assume that quoted printable attachments aren't that large
-       so the performancegain / memory usage drop will be minimal.
-       If we decide to add that then we need to adapt sqimap_fread because
-       we need to split te result on \n and fread doesn't stop at \n. That
-       means we also should provide $results from sqimap_fread (by ref) to
-       te function and set $no_return to false. The $filter function for
-       quoted printable should handle unsetting of $results.
-    */
-    /*
-       TODO 2: find out how we write to the output stream php://stdout. fwrite
-       doesn't work because 'php://stdout isn't a stream.
-    */
-
     return;
-/*
-    fputs ($imap_stream, "$sid FETCH $id BODY[$ent_id]\r\n");
-    $cnt = 0;
-    $continue = true;
-    $read = fgets ($imap_stream,8192);
-
-
-    // This could be bad -- if the section has sqimap_session_id() . ' OK'
-    // or similar, it will kill the download.
-    while (!ereg("^".$sid_s." (OK|BAD|NO)(.*)$", $read, $regs)) {
-        if (trim($read) == ')==') {
-            $read1 = $read;
-            $read = fgets ($imap_stream,4096);
-            if (ereg("^".$sid." (OK|BAD|NO)(.*)$", $read, $regs)) {
-                return;
-            } else {
-                echo decodeBody($read1, $encoding) .
-                     decodeBody($read, $encoding);
-            }
-        } else if ($cnt) {
-            echo decodeBody($read, $encoding);
-        }
-        $read = fgets ($imap_stream,4096);
-        $cnt++;
-//      break;
-    }
-*/
 }
 
 /* -[ END MIME DECODING ]----------------------------------------------------------- */
@@ -331,20 +292,19 @@ function translateText(&$body, $wrap_at, $charset) {
     $body = '<pre>' . implode("\n", $body_ary) . '</pre>';
 }
 
-/**
- * This returns a parsed string called $body. That string can then
+/* This returns a parsed string called $body. That string can then
  * be displayed as the actual message in the HTML. It contains
  * everything needed, including HTML Tags, Attachments at the
  * bottom, etc.
- * @param clean Do not output stuff that's irrelevant for the printable version.
  */
-function formatBody($imap_stream, $message, $color, $wrap_at, $ent_num, $id, $mailbox='INBOX', $clean=FALSE) {
+function formatBody($imap_stream, $message, $color, $wrap_at, $ent_num, $id, $mailbox='INBOX') {
     /* This if statement checks for the entity to show as the
      * primary message. To add more of them, just put them in the
      * order that is their priority.
      */
-    global $startMessage, $languages, $squirrelmail_language,
+    global $startMessage, $username, $key, $imapServerAddress, $imapPort,
            $show_html_default, $sort, $has_unsafe_images, $passed_ent_id;
+    global $languages, $squirrelmail_language;
 
     if( !sqgetGlobalVar('view_unsafe_images', $view_unsafe_images, SQ_GET) ) {
         $view_unsafe_images = false;
@@ -359,9 +319,9 @@ function formatBody($imap_stream, $message, $color, $wrap_at, $ent_num, $id, $ma
         $body = decodeBody($body, $body_message->header->encoding);
 
         if (isset($languages[$squirrelmail_language]['XTRA_CODE']) &&
-            function_exists($languages[$squirrelmail_language]['XTRA_CODE'] . '_decode')) {
+            function_exists($languages[$squirrelmail_language]['XTRA_CODE'])) {
             if (mb_detect_encoding($body) != 'ASCII') {
-                $body = call_user_func($languages[$squirrelmail_language]['XTRA_CODE'] . '_decode',$body);
+                $body = $languages[$squirrelmail_language]['XTRA_CODE']('decode', $body);
             }
         }
         $hookResults = do_hook("message_body", $body);
@@ -394,12 +354,6 @@ function formatBody($imap_stream, $message, $color, $wrap_at, $ent_num, $id, $ma
             translateText($body, $wrap_at,
                           $body_message->header->getParameter('charset'));
         }
-
-        // if this is the clean display (i.e. printer friendly), stop here.
-        if ( $clean ) {
-            return $body;
-        }
-
         $link = 'passed_id=' . $id . '&amp;ent_id='.$ent_num.
                 '&amp;mailbox=' . $urlmailbox .'&amp;sort=' . $sort .
                 '&amp;startMessage=' . $startMessage . '&amp;show_more=0';
@@ -429,6 +383,7 @@ function formatBody($imap_stream, $message, $color, $wrap_at, $ent_num, $id, $ma
 
 function formatAttachments($message, $exclude_id, $mailbox, $id) {
     global $where, $what, $startMessage, $color, $passed_ent_id;
+    static $ShownHTML = 0;
 
     $att_ar = $message->getAttachments($exclude_id);
 
@@ -447,6 +402,7 @@ function formatAttachments($message, $exclude_id, $mailbox, $id) {
         $links['download link']['text'] = _("Download");
         $links['download link']['href'] = SM_PATH .
                 "src/download.php?absolute_dl=true&amp;passed_id=$id&amp;mailbox=$urlMailbox&amp;ent_id=$ent";
+        $ImageURL = '';
         if ($type0 =='message' && $type1 == 'rfc822') {
             $default_page = SM_PATH . 'src/read_body.php';
             $rfc822_header = $att->rfc822_header;
@@ -456,10 +412,11 @@ function formatAttachments($message, $exclude_id, $mailbox, $id) {
             }
             $from_o = $rfc822_header->from;
             if (is_object($from_o)) {
-                $from_name = decodeHeader($from_o->getAddress(false));
+                $from_name = $from_o->getAddress(false);
             } else {
                 $from_name = _("Unknown sender");
             }
+            $from_name = decodeHeader(($from_name));
             $description = $from_name;
         } else {
             $default_page = SM_PATH . 'src/download.php';
@@ -549,9 +506,6 @@ function formatAttachments($message, $exclude_id, $mailbox, $id) {
         unset($links);
         $attachments .= "</td></tr>\n";
     }
-    $attachmentadd = do_hook_function('attachments_bottom',$attachments);
-    if ($attachmentadd != '')
-        $attachments = $attachmentadd;
     return $attachments;
 }
 
@@ -617,12 +571,6 @@ function decodeBody($body, $encoding) {
  * This functions decode strings that is encoded according to
  * RFC1522 (MIME Part Two: Message Header Extensions for Non-ASCII Text).
  * Patched by Christian Schmidt <christian@ostenfeld.dk>  23/03/2002
- *
- * @param string $string header string that has to be made readable
- * @param boolean $utfencode change message in order to be readable on user's charset. defaults to true
- * @param boolean $htmlsave preserve spaces and sanitize html special characters. defaults to true
- * @param boolean $decide decide if string can be utfencoded. defaults to false
- * @return string decoded header string
  */
 function decodeHeader ($string, $utfencode=true,$htmlsave=true,$decide=false) {
     global $languages, $squirrelmail_language,$default_charset;
@@ -631,14 +579,14 @@ function decodeHeader ($string, $utfencode=true,$htmlsave=true,$decide=false) {
     }
 
     if (isset($languages[$squirrelmail_language]['XTRA_CODE']) &&
-        function_exists($languages[$squirrelmail_language]['XTRA_CODE'] . '_decodeheader')) {
-        $string = call_user_func($languages[$squirrelmail_language]['XTRA_CODE'] . '_decodeheader', $string);
+        function_exists($languages[$squirrelmail_language]['XTRA_CODE'])) {
+        $string = $languages[$squirrelmail_language]['XTRA_CODE']('decodeheader', $string);
         // Do we need to return at this point?
         // return $string;
     }
     $i = 0;
     $iLastMatch = -2;
-    $encoded = true;
+    $encoded = false;
 
     $aString = explode(' ',$string);
     $ret = '';
@@ -673,50 +621,40 @@ function decodeHeader ($string, $utfencode=true,$htmlsave=true,$decide=false) {
 
             /* decide about valid decoding */
             if ($decide && is_conversion_safe($res[2])) {
-              $utfencode=true;
-              $can_be_encoded=true;
+                $can_be_encoded=true;
             } else {
-              $can_be_encoded=false;
+                $can_be_encoded=false;
             }
+
             switch ($encoding)
             {
             case 'B':
                 $replace = base64_decode($res[4]);
-                if ($utfencode) {
-                    if ($can_be_encoded) {
-                        /* convert string to different charset,
-                         * if functions asks for it (usually in compose)
-                         */
-                        $ret .= charset_convert($res[2],$replace,$default_charset);
-                    } else {
-                        // convert string to html codes in order to display it
-                        $ret .= charset_decode($res[2],$replace);
-                    }
-                } else {
-                    if ($htmlsave) {
-                        $replace = htmlspecialchars($replace);
-                    }
-                    $ret.= $replace;
+                if ($can_be_encoded) {
+                    // string is converted from one charset to another and sanitized
+                    $replace =  charset_convert($res[2],$replace,$default_charset);
+                } elseif ($utfencode) {
+                    // string is converted to htmlentities and sanitized
+                    $replace = charset_decode($res[2],$replace);
+                } elseif ($htmlsave) {
+                    // string is not converted, but still sanitized
+                    $replace = htmlspecialchars($replace);
                 }
+                $ret.= $replace;
                 break;
             case 'Q':
                 $replace = str_replace('_', ' ', $res[4]);
                 $replace = preg_replace('/=([0-9a-f]{2})/ie', 'chr(hexdec("\1"))',
                                     $replace);
-                if ($utfencode) {
-                  if ($can_be_encoded) {
-                    /* convert string to different charset,
-                     * if functions asks for it (usually in compose)
-                     */
+                if ($can_be_encoded) {
+                    // string is converted from one charset to another and sanitized
                     $replace = charset_convert($res[2], $replace,$default_charset);
-                  } else {
-                    // convert string to html codes in order to display it
+                } elseif ($utfencode) {
+                    // string is converted to html entities and sanitized
                     $replace = charset_decode($res[2], $replace);
-                  }
-                } else {
-                    if ($htmlsave) {
-                        $replace = htmlspecialchars($replace);
-                    }
+                } elseif ($htmlsave) {
+                    // string is not converted, but still sanizited
+                    $replace = htmlspecialchars($replace);
                 }
                 $ret .= $replace;
                 break;
@@ -737,6 +675,7 @@ function decodeHeader ($string, $utfencode=true,$htmlsave=true,$decide=false) {
         if (!$encoded && $htmlsave) {
             $ret .= htmlspecialchars($chunk);
         } else {
+            
             $ret .= $chunk;
         }
         ++$i;
@@ -759,16 +698,13 @@ function decodeHeader ($string, $utfencode=true,$htmlsave=true,$decide=false) {
  * Encode a string according to RFC 1522 for use in headers if it
  * contains 8-bit characters or anything that looks like it should
  * be encoded.
- *
- * @param string $string header string, that has to be encoded
- * @return string quoted-printable encoded string
  */
 function encodeHeader ($string) {
     global $default_charset, $languages, $squirrelmail_language;
 
     if (isset($languages[$squirrelmail_language]['XTRA_CODE']) &&
-        function_exists($languages[$squirrelmail_language]['XTRA_CODE'] . '_encodeheader')) {
-        return  call_user_func($languages[$squirrelmail_language]['XTRA_CODE'] . '_encodeheader', $string);
+        function_exists($languages[$squirrelmail_language]['XTRA_CODE'])) {
+        return  $languages[$squirrelmail_language]['XTRA_CODE']('encodeheader', $string);
     }
 
     // Encode only if the string contains 8-bit characters or =?
@@ -913,23 +849,30 @@ function sq_check_save_extension($message) {
  */
 
 /**
- * This function is more or less a wrapper around stripslashes. Apparently
- * Explorer is stupid enough to just remove the backslashes and then
- * execute the content of the attribute as if nothing happened.
- * Who does that?
+ * This function checks attribute values for entity-encoded values
+ * and returns them translated into 8-bit strings so we can run
+ * checks on them.
  *
- * @param  attvalue   The value of the attribute
- * @return attvalue   The value of the attribute stripslashed.
+ * @param  $attvalue A string to run entity check against.
+ * @return           Nothing, modifies a reference value.
  */
-function sq_unbackslash($attvalue){
+function sq_defang(&$attvalue){
+    $me = 'sq_defang';
     /**
-     * Remove any backslashes. See if there are any first.
+     * Skip this if there aren't ampersands or backslashes.
      */
-
-    if (strstr($attvalue, '\\') !== false){
-        $attvalue = stripslashes($attvalue);
+    if (strpos($attvalue, '&') === false
+        && strpos($attvalue, '\\') === false){
+        return;
     }
-    return $attvalue;
+    $m = false;
+    do {
+        $m = false;
+        $m = $m || sq_deent($attvalue, '/\&#0*(\d+);*/s');
+        $m = $m || sq_deent($attvalue, '/\&#x0*((\d|[a-f])+);*/si', true);
+        $m = $m || sq_deent($attvalue, '/\\\\(\d+)/s', true);
+    } while ($m == true);
+    $attvalue = stripslashes($attvalue);
 }
 
 /**
@@ -938,14 +881,14 @@ function sq_unbackslash($attvalue){
  * be funny to make "java[tab]script" be just as good as "javascript".
  *
  * @param  attvalue  The attribute value before extraneous spaces removed.
- * @return attvalue  The attribute value after extraneous spaces removed.
+ * @return attvalue  Nothing, modifies a reference value.
  */
-function sq_unspace($attvalue){
-    if (strcspn($attvalue, "\t\r\n") != strlen($attvalue)){
-        $attvalue = str_replace(Array("\t", "\r", "\n"), Array('', '', ''),
-                                $attvalue);
+function sq_unspace(&$attvalue){
+    $me = 'sq_unspace';
+    if (strcspn($attvalue, "\t\r\n\0 ") != strlen($attvalue)){
+        $attvalue = str_replace(Array("\t", "\r", "\n", "\0", " "),
+                                Array('',   '',   '',   '',   ''), $attvalue);
     }
-    return $attvalue;
 }
 
 /**
@@ -1132,6 +1075,7 @@ function sq_getnxtag($body, $offset){
             break;
     }
 
+    $tag_start = $pos;
     $tagname = '';
     /**
      * Look for next [\W-_], which will indicate the end of the tag name.
@@ -1191,6 +1135,7 @@ function sq_getnxtag($body, $offset){
      * At this point we loop in order to find all attributes.
      */
     $attname = '';
+    $atttype = false;
     $attary = Array();
 
     while ($pos <= strlen($body)){
@@ -1349,51 +1294,31 @@ function sq_getnxtag($body, $offset){
 }
 
 /**
- * This function checks attribute values for entity-encoded values
- * and returns them translated into 8-bit strings so we can run
- * checks on them.
+ * Translates entities into literal values so they can be checked.
  *
- * @param  $attvalue A string to run entity check against.
- * @return           Translated value.
+ * @param $attvalue the by-ref value to check.
+ * @param $regex    the regular expression to check against.
+ * @param $hex      whether the entites are hexadecimal.
+ * @return          True or False depending on whether there were matches.
  */
-
-function sq_deent($attvalue){
+function sq_deent(&$attvalue, $regex, $hex=false){
     $me = 'sq_deent';
-    /**
-     * See if we have to run the checks first. All entities must start
-     * with "&".
-     */
-    if (strpos($attvalue, '&') === false){
-        return $attvalue;
-    }
-    /**
-     * Check named entities first.
-     */
-    $trans = get_html_translation_table(HTML_ENTITIES);
-    /**
-     * Leave &quot; in, as it can mess us up.
-     */
-    $trans = array_flip($trans);
-    unset($trans{'&quot;'});
-    while (list($ent, $val) = each($trans)){
-        $attvalue = preg_replace('/' . $ent . '*/si', $val, $attvalue);
-    }
-    /**
-     * Now translate numbered entities from 1 to 255 if needed.
-     */
-    if (strpos($attvalue, '#') !== false){
-        $omit = Array(34, 39);
-        for ($asc = 256; $asc >= 0; $asc--){
-            if (!in_array($asc, $omit)){
-                $chr = chr($asc);
-                $octrule = '/\&#0*' . $asc . ';*/si';
-                $hexrule = '/\&#x0*' . dechex($asc) . ';*/si';
-                $attvalue = preg_replace($octrule, $chr, $attvalue);
-                $attvalue = preg_replace($hexrule, $chr, $attvalue);
+    $ret_match = false;
+    preg_match_all($regex, $attvalue, $matches);
+    if (is_array($matches) && sizeof($matches[0]) > 0){
+        $repl = Array();
+        for ($i = 0; $i < sizeof($matches[0]); $i++){
+            $numval = $matches[1][$i];
+            if ($hex){
+                $numval = hexdec($numval);
             }
+            $repl{$matches[0][$i]} = chr($numval);
         }
+        $attvalue = strtr($attvalue, $repl);
+        return true;
+    } else {
+        return false;
     }
-    return $attvalue;
 }
 
 /**
@@ -1435,15 +1360,8 @@ function sq_fixatts($tagname,
         /**
          * Remove any backslashes, entities, and extraneous whitespace.
          */
-        $attvalue = sq_unbackslash($attvalue);
-        $attvalue = sq_deent($attvalue);
-        $attvalue = sq_unspace($attvalue);
-
-        /**
-         * Remove \r \n \t \0 " " "\\"
-         */
-        $attvalue = str_replace(Array("\r", "\n", "\t", "\0", " ", "\\"),
-                        Array('', '','','','',''), $attvalue);
+        sq_defang($attvalue);
+        sq_unspace($attvalue);
 
         /**
          * Now let's run checks on the attvalues.
@@ -1490,7 +1408,7 @@ function sq_fixatts($tagname,
 
 /**
  * This function edits the style definition to make them friendly and
- * usable in SquirrelMail.
+ * usable in squirrelmail.
  *
  * @param  $message  the message object
  * @param  $id       the message id
@@ -1599,8 +1517,8 @@ function sq_cid2http($message, $id, $cidurl, $mailbox){
 function sq_body2div($attary, $mailbox, $message, $id){
     $me = 'sq_body2div';
     $divattary = Array('class' => "'bodyclass'");
+    $bgcolor = '#ffffff';
     $text = '#000000';
-    $has_bgc_stl = $has_txt_stl = false;
     $styledef = '';
     if (is_array($attary) && sizeof($attary) > 0){
         foreach ($attary as $attname=>$attvalue){
@@ -1613,19 +1531,12 @@ function sq_body2div($attary, $mailbox, $message, $id){
                     $styledef .= "background-image: url('$attvalue'); ";
                     break;
                 case 'bgcolor':
-                    $has_bgc_stl = true;
                     $styledef .= "background-color: $attvalue; ";
                     break;
                 case 'text':
-                    $has_txt_stl = true;
                     $styledef .= "color: $attvalue; ";
                     break;
             }
-        }
-        // Outlook defines a white bgcolor and no text color. This can lead to
-        // white text on a white bg with certain themes.
-        if ($has_bgc_stl && !$has_txt_stl) {
-            $styledef .= "color: $text; ";
         }
         if (strlen($styledef) > 0){
             $divattary{"style"} = "\"$styledef\"";
@@ -1919,6 +1830,7 @@ function magicHTML($body, $id, $message, $mailbox = 'INBOX') {
                                 "url(\\1#\\1)",
                                 "url(\\1#\\1)",
                                 "url(\\1#\\1)",
+                                "url(\\1#\\1)",
                                 "\\1:url(\\2#\\3)"
                                )
                           )
@@ -1997,11 +1909,11 @@ function magicHTML($body, $id, $message, $mailbox = 'INBOX') {
      }
 
      if (isset($languages[$squirrelmail_language]['XTRA_CODE']) &&
-         function_exists($languages[$squirrelmail_language]['XTRA_CODE'] . '_downloadfilename')) {
+         function_exists($languages[$squirrelmail_language]['XTRA_CODE'])) {
          $filename =
-         call_user_func($languages[$squirrelmail_language]['XTRA_CODE'] . '_downloadfilename', $filename, $HTTP_USER_AGENT);
+         $languages[$squirrelmail_language]['XTRA_CODE']('downloadfilename', $filename, $HTTP_USER_AGENT);
      } else {
-         $filename = ereg_replace('[\\/:\*\?"<>\|;]', '_', str_replace('&nbsp;', ' ', $filename));
+         $filename = ereg_replace('[\\/:\*\?"<>\|;]', '_', str_replace('&#32;', ' ', $filename));
      }
 
      // A Pox on Microsoft and it's Internet Explorer!

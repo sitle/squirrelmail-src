@@ -16,9 +16,6 @@
  * If it throws errors you need to adjust your config.      *
  ************************************************************/
 
-// This script could really use some restructuring as it has grown quite rapidly
-// but is not very 'clean'. Feel free to get some structure into this thing.
-
 function do_err($str, $exit = TRUE) {
     global $IND;
     echo '<p>'.$IND.'<font color="red"><b>ERROR:</b></font> ' .$str. "</p>\n";
@@ -35,9 +32,9 @@ ob_implicit_flush();
 define('SM_PATH', '../');
 
 /*
- * Load config before output begins. functions/strings.php depends on
+ * Load config before output begins. functions/strings.php depends on 
  * functions/globals.php. functions/global.php needs to be run before
- * any html output starts. If config.php is missing, error will be displayed
+ * any html output starts. If config.php is missing, error will be displayed 
  * later.
  */
 if (file_exists(SM_PATH . 'config/config.php')) {
@@ -76,14 +73,14 @@ if(!in_array('strings.php', $included)) {
 
 echo "<p><table>\n<tr><td>SquirrelMail version:</td><td><b>" . $version . "</b></td></tr>\n" .
      '<tr><td>Config file version:</td><td><b>' . $config_version . "</b></td></tr>\n" .
-     '<tr><td>Config file last modified:</td><td><b>' .
+     '<tr><td>Config file last modified:</td><td><b>' . 
          date ('d F Y H:i:s', filemtime(SM_PATH . 'config/config.php')) .
          "</b></td></tr>\n</table>\n</p>\n\n";
 
 echo "Checking PHP configuration...<br />\n";
 
-if(!check_php_version(4,1,0)) {
-    do_err('Insufficient PHP version: '. PHP_VERSION . '! Minimum required: 4.1.0');
+if(!check_php_version(4,0,6)) {
+    do_err('Insufficient PHP version: '. PHP_VERSION . '! Minimum required: 4.0.6');
 }
 
 echo $IND . 'PHP version ' . PHP_VERSION . " OK.<br />\n";
@@ -103,13 +100,13 @@ echo "Checking paths...<br />\n";
 
 if(!file_exists($data_dir)) {
     do_err("Data dir ($data_dir) does not exist!");
-}
+} 
 if(!is_dir($data_dir)) {
     do_err("Data dir ($data_dir) is not a directory!");
-}
+} 
 if(!is_readable($data_dir)) {
     do_err("I cannot read from data dir ($data_dir)!");
-}
+} 
 if(!is_writable($data_dir)) {
     do_err("I cannot write to data dir ($data_dir)!");
 }
@@ -123,10 +120,10 @@ if($data_dir == $attachment_dir) {
 } else {
     if(!file_exists($attachment_dir)) {
         do_err("Attachment dir ($attachment_dir) does not exist!");
-    }
+    } 
     if (!is_dir($attachment_dir)) {
         do_err("Attachment dir ($attachment_dir) is not a directory!");
-    }
+    } 
     if (!is_writable($attachment_dir)) {
         do_err("I cannot write to attachment dir ($attachment_dir)!");
     }
@@ -175,7 +172,7 @@ if($useSendmail) {
     // is_executable also checks for existance, but we want to be as precise as possible with the errors
     if(!file_exists($sendmail_path)) {
         do_err("Location of sendmail program incorrect ($sendmail_path)!");
-    }
+    } 
     if(!is_executable($sendmail_path)) {
         do_err("I cannot execute the sendmail program ($sendmail_path)!");
     }
@@ -280,7 +277,7 @@ if (function_exists('mb_detect_encoding')) {
 echo "$IND recode - ";
 if (function_exists('recode')) {
     echo "Recode functions are available.<br />\n";
-} elseif ($use_php_recode) {
+} elseif (isset($use_php_recode) && $use_php_recode) {
     echo "Recode functions are unavailable.<br />\n";
     do_err('Your configuration requires recode support, but recode support is missing.');
 } else {
@@ -308,14 +305,14 @@ if ( (!ini_get('safe_mode')) ||
 
 // Pear DB tests
 echo "Checking database functions...<br />\n";
-if($addrbook_dsn || $prefs_dsn || $addrbook_global_dsn) {
+if(!empty($addrbook_dsn) || !empty($prefs_dsn) || !empty($addrbook_global_dsn)) {
     @include_once('DB.php');
     if (class_exists('DB')) {
         echo "$IND PHP Pear DB support is present.<br />\n";
         $db_functions=array(
-            'dbase' => 'dbase_open',
-            'fbsql' => 'fbsql_connect',
-            'interbase' => 'ibase_connect',
+            'dbase' => 'dbase_open', 
+            'fbsql' => 'fbsql_connect', 
+            'interbase' => 'ibase_connect', 
             'informix' => 'ifx_connect',
             'msql' => 'msql_connect',
             'mssql' => 'mssql_connect',
@@ -365,47 +362,6 @@ if($addrbook_dsn || $prefs_dsn || $addrbook_global_dsn) {
     }
 } else {
     echo $IND."not using database functionality.<br />\n";
-}
-
-// LDAP DB tests
-echo "Checking LDAP functions...<br />\n";
-if( empty($ldap_server) ) {
-    echo $IND."not using LDAP functionality.<br />\n";
-} else {
-    if ( !function_exists(ldap_connect) ) {
-        do_err('Required LDAP support is not available.');
-    } else {
-        echo "$IND LDAP support present.<br />\n";
-        foreach ( $ldap_server as $param ) {
-
-            $linkid = ldap_connect($param['host'], (empty($param['port']) ? 389 : $param['port']) );
-
-            if ( $linkid ) {
-               echo "$IND LDAP connect to ".$param['host']." successful: ".$linkid."<br />\n";
-
-                if ( !empty($param['protocol']) &&
-                     !ldap_set_option($linkid, LDAP_OPT_PROTOCOL_VERSION, $param['protocol']) ) {
-                    do_err('Unable to set LDAP protocol');
-                }
-
-                if ( empty($param['binddn']) ) {
-                    $bind = ldap_bind($linkid);
-                } else {
-                    $bind = ldap_bind($param['binddn'], $param['bindpw']);
-                }
-
-                if ( $bind ) {
-                    echo "$IND LDAP Bind Successful <br />";
-                } else {
-                    do_err('Unable to Bind to LDAP Server');
-                }
-
-                ldap_close($linkid);
-            } else {
-                do_err('Connection to LDAP failed');
-            }
-        }
-    }
 }
 ?>
 

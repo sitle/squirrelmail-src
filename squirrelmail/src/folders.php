@@ -90,6 +90,8 @@ if ( isset($success) && $success ) {
 echo "\n<br />";
 
 $imapConnection = sqimap_login ($username, $key, $imapServerAddress, $imapPort, 0);
+
+// force retrieval of a non cached folderlist
 $boxes = sqimap_mailbox_list($imapConnection,true);
 
 /** CREATING FOLDERS **/
@@ -99,7 +101,7 @@ echo html_tag( 'table', '', 'center', '', 'width="70%" cellpadding="4" cellspaci
             ) .
             html_tag( 'tr' ) .
                 html_tag( 'td', '', 'center', $color[0] ) .
-     addForm('folders_create.php', 'post', 'cf').
+     addForm('folders_create.php', 'POST', 'cf').
      addInput('folder_name', '', 25).
      "<br />\n". _("as a subfolder of"). '<br />'.
      "<tt><select name=\"subfolder\">\n";
@@ -122,7 +124,7 @@ if ( $default_sub_of_inbox == false ) {
 }
 
 // Call sqimap_mailbox_option_list, using existing connection to IMAP server,
-// the arrays of folders to include or skip (assembled above),
+// the arrays of folders to include or skip (assembled above), 
 // use 'noinferiors' as a mailbox filter to leave out folders that can not contain other folders.
 // use the long format to show subfolders in an intelligible way if parent is missing (special folder)
 echo sqimap_mailbox_option_list($imapConnection, $show_selected, $skip_folders, $boxes, 'noinferiors', true);
@@ -142,8 +144,6 @@ echo html_tag( 'tr',
         ) ."\n";
 
 /** count special folders **/
-
-// FIX ME, why not check if the folders are defined IMHO move_to_sent, move_to_trash has nothing todo with it
 $count_special_folders = 0;
 $num_max = 1;
 if (strtolower($imap_server_type) == "courier" || $move_to_trash) {
@@ -156,8 +156,7 @@ if ($save_as_draft) {
     $num_max++;
 }
 
-// What if move_to_sent = false and $sent_folder is set? Should it still be skipped?
-
+// determine which folders the user shouldn't be able to rename/delete
 for ($p = 0, $cnt = count($boxes); $p < $cnt && $count_special_folders < $num_max; $p++) {
     switch ($boxes[$p]['unformatted']) {
         case (strtoupper($boxes[$p]['unformatted']) == 'INBOX'):
@@ -182,7 +181,6 @@ for ($p = 0, $cnt = count($boxes); $p < $cnt && $count_special_folders < $num_ma
             ++$count_special_folders;
             $skip_folders[] = $draft_folder;
             break;
-        default: break;
     }
 }
 
@@ -199,7 +197,7 @@ if ($count_special_folders < count($boxes)) {
        . "<tt><select name=\"old\">\n"
        . '         <option value="">[ ' . _("Select a folder") . " ]</option>\n";
 
-    // use existing IMAP connection, we have no special values to show,
+    // use existing IMAP connection, we have no special values to show, 
     // but we do include values to skip. Use the pre-created $boxes to save an IMAP query.
     // send NULL for the flag - ALL folders are eligible for rename!
     // use long format to make sure folder names make sense when parents may be missing.
@@ -266,9 +264,9 @@ if ($count_special_folders < count($boxes)) {
             ($boxes[$i]["unformatted"] != $trash_folder) &&
             ($boxes[$i]["unformatted"] != $sent_folder) &&
             ($boxes[$i]["unformatted"] != $draft_folder)) {
-            $box = htmlspecialchars($boxes[$i]["unformatted-dm"]);
-            $box2 = str_replace(' ', '&nbsp;',
-                                htmlspecialchars(imap_utf7_decode_local($boxes[$i]["unformatted-disp"])));
+            $box = $boxes[$i]["unformatted-dm"];
+            $box2 = str_replace(array(' ','<','>'), array('&nbsp;','&lt;','&gt;'),
+                                imap_utf7_decode_local($boxes[$i]["unformatted-disp"]));
             echo "         <option value=\"$box\">$box2</option>\n";
         }
     }
@@ -300,8 +298,8 @@ if(!$no_list_for_subscribe) {
         }
     }
     if ($use_folder == true) {
-        $box[$q] = htmlspecialchars($boxes_all[$i]['unformatted-dm']);
-        $box2[$q] = htmlspecialchars(imap_utf7_decode_local($boxes_all[$i]['unformatted-disp']));
+        $box[$q] = $boxes_all[$i]['unformatted-dm'];
+        $box2[$q] = imap_utf7_decode_local($boxes_all[$i]['unformatted-disp']);
         $q++;
     }
   }
@@ -309,9 +307,10 @@ if(!$no_list_for_subscribe) {
     echo addForm('folders_subscribe.php?method=sub')
        . '<tt><select name="mailbox[]" multiple="multiple" size="8">';
 
-    for ($q = 0; $q < count($box); $q++) {
-       echo '         <option value="' . $box[$q] . '">'.$box2[$q]."</option>\n";
-    }
+    for ($q = 0; $q < count($box); $q++) {      
+        echo '         <option value="' . $box[$q] . '">' .
+            str_replace(array(' ','<','>'),array('&nbsp;','&lt;','&gt;'),$box2[$q])."</option>\n";
+    }      
     echo '</select></tt><br /><br />'
        . '<input type="submit" value="'. _("Subscribe") . "\" />\n"
        . "</form></td></tr></table><br />\n";

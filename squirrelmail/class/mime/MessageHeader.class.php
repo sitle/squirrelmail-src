@@ -8,14 +8,9 @@
  *
  * This contains functions needed to handle mime messages.
  *
- * @version $Id$
- * @package squirrelmail
+ * $Id$
  */
 
-/**
- * Contains all variables available in a bodystructure
- * @package squirrelmail
- */
 class MessageHeader {
     /** msg_header contains all variables available in a bodystructure **/
     /** entity like described in rfc2060                               **/

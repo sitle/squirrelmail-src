@@ -3,17 +3,17 @@
  * options_main.mod
  * ----------------
  * Squirrelspell module
- * Copyright (c) 1999-2005 The SquirrelMail development team
+ * Copyright (c) 1999-2003 The SquirrelMail development team
  * Licensed under the GNU GPL. For full terms see the file COPYING.
  *
  * Default page called when accessing SquirrelSpell's options.
  *
- * @author Konstantin Riabitsev <icon@duke.edu>
- * @version $Id$
- * @package plugins
- * @subpackage squirrelspell
+ *  $Id$
+ *
+ * @author Konstantin Riabitsev <icon@duke.edu> ($Author$)
+ * @version $Date$
  */
-
+    
 global $SQSPELL_APP;
 $msg = '<p>'
   . _("Please choose which options you wish to set up:")
@@ -41,7 +41,7 @@ if (function_exists("mcrypt_generic")) {
     . "</a></li>\n";
 } else {
   $msg .= '<li>'
-    . _("Encrypt or decrypt your personal dictionary") . ' <em>('
+    . _("Encrypt or decrypt your personal dictionary") . ' <em>(' 
     . _("not available") . ')</em></li>';
 }
 $msg .= "</ul>\n";

@@ -9,16 +9,10 @@
     **  Setup of the mailfetch plugin.
     **
     **  $Id$
-    * @package plugins
-    * @subpackage mail_fetch
     **/
 
-    /**  */
     require_once(SM_PATH . 'plugins/mail_fetch/functions.php' );
 
-    /**
-     * Initialize the plugin
-     */
     function squirrelmail_plugin_init_mail_fetch() {
         global $squirrelmail_plugin_hooks;
 
@@ -75,7 +69,7 @@
         require_once (SM_PATH . 'plugins/mail_fetch/functions.php');
 
         global $data_dir, $imapServerAddress, $imapPort;
-
+        
         sqgetGlobalVar('username', $username, SQ_SESSION);
         sqgetGlobalVar('key',      $key,      SQ_COOKIE);
 
@@ -117,9 +111,9 @@
                 $mailfetch_uidl=$mailfetch_uidl_[$i_loop];
                 $mailfetch_subfolder=$mailfetch_subfolder_[$i_loop];
 
-                // $outMsg .= "$mailfetch_alias checked<br />";
+                // $outMsg .= "$mailfetch_alias checked<br>";
 
-                // $outMsg .= "$mailfetch_alias_[$i_loop]<br />";
+                // $outMsg .= "$mailfetch_alias_[$i_loop]<br>";
 
                 $pop3 = new POP3($mailfetch_server, 60);
 
@@ -155,6 +149,8 @@
                 if ($Count == 0) {
                     $pop3->quit();
                     continue;
+                } else {
+                    $newmsgcount = $Count - $i + 1;
                 }
 
                 // Faster to get them all at once
@@ -207,7 +203,7 @@
         }
 
         if( trim( $outMsg ) <> '' ) {
-            echo '<br /><font size="1">' . _("Mail Fetch Result:") . "<br />$outMsg</font>";
+            echo '<br><font size="1">' . _("Mail Fetch Result:") . "<br>$outMsg</font>";
         }
         if( $mailfetch_newlog == 'on' ) {
             setPref($data_dir, $username, 'mailfetch_newlog', 'off');

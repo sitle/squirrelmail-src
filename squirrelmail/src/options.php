@@ -142,7 +142,7 @@ if (!isset($optmode)) {
 }
 
 /*
- * First, set the load information for each option page.
+ * First, set the load information for each option page.   
  */
 
 /* Initialize load information variables. */
@@ -152,7 +152,7 @@ $optpage_loader = '';
 
 /* Set the load information for each page. */
 switch ($optpage) {
-    case SMOPT_PAGE_MAIN:
+    case SMOPT_PAGE_MAIN: 
         break;
     case SMOPT_PAGE_PERSONAL:
         $optpage_name     = _("Personal Information");
@@ -195,7 +195,7 @@ if ( !@is_file( $optpage_file ) ) {
     $optpage = SMOPT_PAGE_MAIN;
 } else if ($optpage != SMOPT_PAGE_MAIN ) {
     /* Include the file for this optionpage. */
-
+    
     require_once($optpage_file);
 
     /* Assemble the data for this option page. */
@@ -209,8 +209,6 @@ if ( !@is_file( $optpage_file ) ) {
 /***********************************************************/
 /*** Next, process anything that needs to be processed. ***/
 /***********************************************************/
-
-$optpage_save_error=array();
 
 if ( isset( $optpage_data ) ) {
     switch ($optmode) {
@@ -245,7 +243,7 @@ if ($optmode == SMOPT_MODE_SUBMIT) {
         case SMOPT_PAGE_FOLDER:
             $save_hook_name = 'options_folder_save';
             break;
-        default:
+        default: 
             $save_hook_name = 'options_save';
             break;
     }
@@ -291,19 +289,8 @@ if ($optpage == SMOPT_PAGE_MAIN) {
         if (!isset($frame_top)) {
             $frame_top = '_top';
         }
-
-        if (isset($optpage_save_error) && $optpage_save_error!=array()) {
-            echo "<font color=\"$color[2]\"><b>" . _("Error(s) happened while saving your options") . "</b></font><br />\n";
-            echo "<ul>\n";
-            foreach ($optpage_save_error as $error_message) {
-                echo '<li><small>' . $error_message . "</small></li>\n";
-            }
-            echo "</ul>\n";
-            echo '<b>' . _("Some of your preference changes are not applied.") . "</b><br />\n";
-        } else {
-            /* Display a message indicating a successful save. */
-            echo '<b>' . _("Successfully Saved Options") . ": $optpage_name</b><br />\n";
-        }
+        /* Display a message indicating a successful save. */
+        echo '<b>' . _("Successfully Saved Options") . ": $optpage_name</b><br />\n";
 
         /* If $max_refresh != SMOPT_REFRESH_NONE, provide a refresh link. */
         if ( !isset( $max_refresh ) ) {
@@ -407,10 +394,12 @@ if ($optpage == SMOPT_PAGE_MAIN) {
 /* If we are not looking at the main option page, display the page here. */
 /*************************************************************************/
 } else {
-    echo addForm('options.php', 'post', 'f')
+    echo addForm('options.php', 'POST', 'f')
        . create_optpage_element($optpage)
        . create_optmode_element(SMOPT_MODE_SUBMIT)
-       . html_tag( 'table', '', '', '', 'width="100%" cellpadding="2" cellspacing="0" border="0"' ) . "\n";
+       . html_tag( 'table', '', '', '', 'width="100%" cellpadding="2" cellspacing="0" border="0"' ) . "\n"
+       . html_tag( 'tr' ) . "\n"
+       . html_tag( 'td', '', 'left' ) . "\n";
 
     /* Output the option groups for this page. */
     print_option_groups($optpage_data['options']);
@@ -450,16 +439,16 @@ if ($optpage == SMOPT_PAGE_MAIN) {
 
     /* If it is not empty, trigger the inside hook. */
     if ($inside_hook_name != '') {
-        do_hook($inside_hook_name);
+        do_hook($inside_hook_name);    
     }
 
     /* Spit out a submit button. */
     OptionSubmit($submit_name);
-    echo '</table></form>';
+    echo '</td></tr></table></form>';
 
     /* If it is not empty, trigger the bottom hook. */
     if ($bottom_hook_name != '') {
-        do_hook($bottom_hook_name);
+        do_hook($bottom_hook_name);    
     }
 }
 ?>

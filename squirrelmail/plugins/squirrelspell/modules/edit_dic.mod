@@ -4,15 +4,15 @@
  * -------------
  * Squirrelspell module
  *
- * Copyright (c) 1999-2005 The SquirrelMail development team
+ * Copyright (c) 1999-2003 The SquirrelMail development team
  * Licensed under the GNU GPL. For full terms see the file COPYING.
  *
  * This module lets the user edit his/her personal dictionary.
  *
- * @author Konstantin Riabitsev <icon@duke.edu>
- * @version $Id$
- * @package plugins
- * @subpackage squirrelspell
+ * $Id$
+ *
+ * @author Konstantin Riabitsev <icon@duke.edu> ($Author$)
+ * @version $Date
  */
 
 global $color;
@@ -25,15 +25,15 @@ if (!$words){
    * Agt. Smith: "You're empty."
    * Neo: "So are you."
    */
-  sqspell_makePage(_("Personal Dictionary"), null,
-      '<p>' . _("No words in your personal dictionary.")
-      . '</p>');
+  sqspell_makePage(_("Personal Dictionary"), null, 
+		   '<p>' . _("No words in your personal dictionary.") 
+		   . '</p>');
 } else {
   /**
    * We're loaded with booty.
    */
-  $pre_msg = '<p>'
-     . _("Please check any words you wish to delete from your dictionary.")
+  $pre_msg = '<p>' 
+     . _("Please check any words you wish to delete from your dictionary.") 
      . "</p>\n";
   $pre_msg .= "<table border=\"0\" width=\"95%\" align=\"center\">\n";
   /**
@@ -52,18 +52,18 @@ if (!$words){
        * "header" message.
        */
       if (!isset($msg) || !$msg) {
-          $msg = $pre_msg;
+	$msg = $pre_msg;
       }
       $msg .= "<tr bgcolor=\"$color[0]\" align=\"center\"><th>"
-          . sprintf( _("%s dictionary"), $langs[$i] ) . '</th></tr>'
-          . '<tr><td align="center">'
-          . '<form method="post">'
-          . '<input type="hidden" name="MOD" value="forget_me" />'
-          . '<input type="hidden" name="sqspell_use_app" value="'
-          . $langs[$i] . '" />'
-          . '<table border="0" width="95%" align="center">'
-          . '<tr>'
-          . "<td valign=\"top\">\n";
+	 . sprintf( _("%s dictionary"), $langs[$i] ) . '</th></tr>'
+	 . '<tr><td align="center">'
+	 . '<form method="post">'
+	 . '<input type="hidden" name="MOD" value="forget_me">'
+	 . '<input type="hidden" name="sqspell_use_app" value="' 
+	 . $langs[$i] . '">'
+	 . '<table border="0" width="95%" align="center">'
+	 . '<tr>'
+	 . "<td valign=\"top\">\n";
       $words_ary=explode("\n", $lang_words);
       /**
        * There are two lines we need to remove:
@@ -73,30 +73,30 @@ if (!$words){
       array_pop($words_ary);
       array_shift($words_ary);
       /**
-       * Do some fancy stuff to separate the words into three
+       * Do some fancy stuff to separate the words into three 
        * columns.
        */
       for ($j=0; $j<sizeof($words_ary); $j++){
-          if ($j==intval(sizeof($words_ary)/3)
-              || $j==intval(sizeof($words_ary)/3*2)){
-              $msg .= "</td><td valign=\"top\">\n";
-          }
-          $msg .= "<input type=\"checkbox\" name=\"words_ary[]\" "
-              . 'value="'.htmlspecialchars($words_ary[$j]). '" /> '
-              . htmlspecialchars($words_ary[$j]) . "<br />\n";
+	if ($j==intval(sizeof($words_ary)/3) 
+	    || $j==intval(sizeof($words_ary)/3*2)){
+	  $msg .= "</td><td valign=\"top\">\n";
+	}
+	$msg .= '<input type="checkbox" name="words_ary[]" '
+	   . 'value="' . htmlspecialchars($words_ary[$j]) . '"> '
+	   . htmlspecialchars($words_ary[$j])."<br>\n";
       }
       $msg .= '</td></tr></table></td></tr>'
-          . "<tr bgcolor=\"$color[0]\" align=\"center\"><td>"
-          . '<input type="submit" value="' . _("Delete checked words")
-          . '" /></form>'
-          . '</td></tr><tr><td><hr />'
-          . "</td></tr>\n";
+	 . "<tr bgcolor=\"$color[0]\" align=\"center\"><td>"
+	 . '<input type="submit" value="' . _("Delete checked words") 
+	 . '"></form>'
+	 . '</td></tr><tr><td><hr>'
+	 . "</td></tr>\n";
     }
   }
   /**
    * Check if all dictionaries were empty.
    */
-  if (! isset($msg)) {
+  if (!$msg) {
     $msg = '<p>' . _("No words in your personal dictionary.") . '</p>';
   } else {
     $msg .= '</table>';
