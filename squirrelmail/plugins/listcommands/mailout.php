@@ -13,6 +13,13 @@ include_once ('../src/validate.php');
 include_once ('../functions/page_header.php');
 include_once ('../src/load_prefs.php');
 
+/* get globals */
+$mailbox = $_GET['mailbox'];
+$send_to = $_GET['send_to'];
+$subject = $_GET['subject'];
+$body    = $_GET['body'];
+$action  = $_GET['action'];
+
 displayPageHeader($color, $mailbox);
 
 echo '<P><TABLE align="center" width="75%" BGCOLOR="' . $color[0] ."\">\n"
