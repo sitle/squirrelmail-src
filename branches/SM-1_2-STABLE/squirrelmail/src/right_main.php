@@ -69,6 +69,12 @@ if (isset($_GET['set_thread'])) {
 if (isset($_SESSION['lastTargetMailbox'])) {
     $lastTargetMailbox =$_SESSION['lastTargetMailbox'];
 }
+if (isset($_SESSION['msgs'])) {
+    $msgs = $_SESSION['msgs'];
+}
+if (isset($_SESSION['numMessages'])) {
+    $numMessages = $_SESSION['numMessages'];
+}
 
 /* end of get globals */
 
@@ -186,40 +192,44 @@ if (! isset($use_mailbox_cache)) {
     $use_mailbox_cache = 0;
 }
 
-if ($use_mailbox_cache && sqsession_is_registered('msgs')) {
-    showMessagesForMailbox($imapConnection, $mailbox, $numMessages, $startMessage, $sort, $color, $show_num, $use_mailbox_cache);
-} else {
+if (!$use_mailbox_cache && sqsession_is_registered('msgs')) {
     if (sqsession_is_registered('msgs')) {
-        unset($msgs);
-    }
-
-    if (sqsession_is_registered('msort')) {
-        unset($msort);
-    }
-
-    if (sqsession_is_registered('numMessages')) {
-        unset($numMessages);
-    }
-
-    $numMessages = sqimap_get_num_messages ($imapConnection, $mailbox);
-
-    showMessagesForMailbox($imapConnection, $mailbox, $numMessages, 
-                           $startMessage, $sort, $color, $show_num,
-                           $use_mailbox_cache);
-
-    if (sqsession_is_registered('msgs') && isset($msgs)) {
-        sqsession_register($msgs, 'msgs');
-        $_SESSION['msgs'] = $msgs;
-    }
-
-    if (sqsession_is_registered('msort') && isset($msort)) {
-        sqsession_register($msort, 'msort');
-        $_SESSION['msort'] = $msort;
-    }
-
-    sqsession_register($numMessages, 'numMessages');
-    $_SESSION['numMessages'] = $numMessages;
+	    unset($msgs);
+	}
+	if (sqsession_is_registered('msort')) {
+	    unset($msort);
+	}
+	if (sqsession_is_registered('numMessages')) {
+	    unset($numMessages);
+	}
 }
+
+/*
+ * If $numMessages isn't set, it's probably coming from a new session
+ * or $use_mailbox_cache is OFF, so get a new count on the list
+ */
+
+if (!isset($numMessages)) {
+    $numMessages = sqimap_get_num_messages($imapConnection, $mailbox);
+}
+
+showMessagesForMailbox($imapConnection, $mailbox, $numMessages, 
+                       $startMessage, $sort, $color, $show_num,
+                       $use_mailbox_cache);
+
+					   
+if (sqsession_is_registered('msgs') && isset($msgs)) {
+  sqsession_register($msgs , 'msgs');
+}
+
+if (sqsession_is_registered('msort') && isset($msort)) {
+  sqsession_register($msort , 'msort');
+}
+
+if (sqsession_is_registered('numMessages') && isset($numMessages)) {
+  sqsession_register($nunMessages , 'numMessages');
+}
+
 do_hook('right_main_bottom');
 sqimap_logout ($imapConnection);
 
