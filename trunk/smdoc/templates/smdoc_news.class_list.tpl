@@ -35,6 +35,12 @@ include_once(TEMPLATE_PATH.'index.tpl');
  */
 function show_news_body(&$foowd, $className, $method, &$user, &$object, &$t)
 {
+if ( empty($t['newslist']) )
+{
+  echo '<h3>'._("No News Items Found").'</h3>';
+  return;
+}
+
 ?>
 <table class="smdoc_table" width="80%">
 <?php 
