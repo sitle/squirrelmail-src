@@ -612,7 +612,11 @@ function decodeHeader ($string, $utfencode=true,$htmlsave=true) {
             }
             $iLastMatch = $i;
             $j = $i;
-            $ret .= $res[1];
+            if ($htmlsave) {
+                $ret .= htmlspecialchars($res[1]);
+            } else {
+                $ret .= $res[1];
+            }
             $encoding = ucfirst($res[3]);
             switch ($encoding)
             {
@@ -653,6 +657,7 @@ function decodeHeader ($string, $utfencode=true,$htmlsave=true) {
         if (!$encoded && $htmlsave) {
             $ret .= htmlspecialchars($chunk);
         } else {
+            
             $ret .= $chunk;
         }
         ++$i;
