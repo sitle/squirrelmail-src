@@ -37,6 +37,7 @@ body {
     color: #36F;
     font-weight: bold;
 }
+.newsheadline a:hover,
 #textile a:hover,
 #editmenu a:hover,
 #sitetitle a:hover {
@@ -52,9 +53,11 @@ body {
     background-attachment: fixed;
     border: 1px #69F solid;
 }
+.bottomline,
 #editmenu {
     border-bottom: 1px #69F solid;
 }
+.newsheadline a,
 #textile a,
 #editmenu a,
 #locationmenu a {
@@ -66,6 +69,7 @@ body {
     background-color: #69F;
     color: #FFF;
 }
+.newsheadline,
 #textile,
 #locationmenu .special a {
     background-color: #cce8ff;

@@ -52,13 +52,13 @@ function news_edit_body(&$foowd, $className, $method, &$user, &$object, &$t)
 </table>
 
 <h3><?php echo _("Short Summary"); ?></h3>
-<?php echo $obj['createSummary']->display('smdoc_textarea',NULL,5); ?>
+<?php echo $obj['editSummary']->display('smdoc_textarea',NULL,5); ?>
 <div class="subtext">[<?php echo _("255 Characters"); ?>]</div>
 
 <div class="form_submit"><?php echo $t['form']->display_buttons(); ?></div>
 
 <h3><?php echo _("Extended News Entry"); ?>:</h3>
-<?php echo $obj['createBody']->display('smdoc_textarea', NULL,25); ?>
+<?php echo $obj['editArea']->display('smdoc_textarea', NULL,25); ?>
 
 <div class="form_submit"><?php echo $t['form']->display_buttons(); ?></div>
   

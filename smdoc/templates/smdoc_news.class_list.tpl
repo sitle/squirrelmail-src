@@ -58,18 +58,20 @@ function show_news_body(&$foowd, $className, $method, &$user, &$object, &$t)
         $update_arr['objectid'] = $news['creatorid'];
         $update_arr['classid'] = USER_CLASS_ID;
 ?>
-    <dt class="bg-light">
+    <div class="bottomline">
+    <dt class="newsheadline">
         <div class="newsupdate">
             <?php echo date('d M Y',strtotime($news['updated'])) . _(" by "); ?> 
             <a href="<?php echo getURI($update_arr); ?>"><?php echo $news['creatorName']; ?></a>
         </div>
-        <?php echo $news['title']; ?>
+        <a href="<?php echo $url; ?>"><?php echo $news['title']; ?></a>
     </dt>   
     <dd>
         <?php echo $news['summary']; ?>
-        <div class="newsupdate">[<a href="<?php echo $url; ?>"><?php echo _("Continue"); ?></a>]</div>
     </dd>
+    </div>
 <?php } // end foreach user in list  ?>
 </dl>
+<div class="float-clear">&nbsp;</div>
 <?php
 } // end user_list_body
