@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: SquirrelMail HEAD\n"
-"POT-Creation-Date: 2004-08-13 23:34+0200\n"
-"PO-Revision-Date: 2004-08-14 01:38+0200\n"
+"POT-Creation-Date: 2004-09-01 22:46+0200\n"
+"PO-Revision-Date: 2004-09-01 23:05+0200\n"
 "Last-Translator: Fredrik Jervfors <sqm_admin@fimbul.net>\n"
 "Language-Team: Swedish <squirrelmail-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -29,6 +29,15 @@ msgstr "Information"
 
 msgid "Source"
 msgstr "Källa"
+
+msgid "To"
+msgstr "Till"
+
+msgid "Cc"
+msgstr "Kopia"
+
+msgid "Bcc"
+msgstr "Dold kopia"
 
 msgid "No persons matching your search were found"
 msgstr "Hittade inga personer överensstämmande med din sökning"
@@ -60,15 +69,6 @@ msgstr "Sökningen misslyckades med följande fel"
 
 msgid "All"
 msgstr "Alla"
-
-msgid "To"
-msgstr "Till"
-
-msgid "Cc"
-msgstr "Kopia"
-
-msgid "Bcc"
-msgstr "Dold kopia"
 
 msgid "Use Addresses"
 msgstr "Använd adresser"
@@ -160,18 +160,6 @@ msgstr "Brevet har skickats."
 
 msgid "From:"
 msgstr "Från:"
-
-msgid "To:"
-msgstr "Till:"
-
-msgid "CC:"
-msgstr "Kopia:"
-
-msgid "BCC:"
-msgstr "Dold kopia:"
-
-msgid "Subject:"
-msgstr "Ärende:"
 
 msgid "Send"
 msgstr "Skicka"
@@ -605,9 +593,6 @@ msgstr "Tillbaka"
 msgid "Message not printable"
 msgstr "Brevet går ej att skriva ut"
 
-msgid "CC"
-msgstr "Kopia"
-
 msgid "Printer Friendly"
 msgstr "Utskriftsvänligt"
 
@@ -623,8 +608,8 @@ msgstr "Läst:"
 msgid "Your message"
 msgstr "Ditt brev"
 
-msgid "Sent:"
-msgstr "Skickat:"
+msgid "Sent"
+msgstr "Skickat"
 
 #, c-format
 msgid "Was displayed on %s"
@@ -732,6 +717,9 @@ msgstr "Överallt"
 
 msgid "No Messages Found"
 msgstr "Inga brev hittades"
+
+msgid "Signout"
+msgstr "Utloggning"
 
 msgid "Sign Out"
 msgstr "Logga ut"
@@ -1085,6 +1073,9 @@ msgstr "Kunde inte skapa inställningsfil!"
 msgid "%s should be writable by user %s"
 msgstr "%s måste ha skrivrättigheter för användaren %s"
 
+msgid "Signature is too big."
+msgstr "Brevfoten är för stor."
+
 #, c-format
 msgid ""
 "Signature file, %s, could not be opened. Contact your system administrator "
@@ -1146,6 +1137,15 @@ msgstr "FEL : Okänt svar från IMAP-servern."
 #, c-format
 msgid "Error connecting to IMAP server: %s."
 msgstr "Kunde inte kontakta IMAP-servern: %s."
+
+msgid "The IMAP server is reporting that plain text logins are disabled."
+msgstr "IMAP-servern tillåter inte klartextsinloggningar."
+
+msgid "Using CRAM-MD5 or DIGEST-MD5 authentication instead may work."
+msgstr "Det kan fungera att använda CRAM-MD5 eller DIGEST-MD5 istället."
+
+msgid "Also, the use of TLS may allow SquirrelMail to login."
+msgstr "Dessutom kan det eventuellt fungera att använda TLS."
 
 #, c-format
 msgid "Bad request: %s"
@@ -3868,12 +3868,6 @@ msgstr "Lägg till i adressboken"
 msgid "Purge"
 msgstr "Töm"
 
-msgid "The IMAP server is reporting that logins are disabled."
-msgstr "Inloggningar är inaktiverade i IMAP-servern."
-
-msgid "The use of TLS may allow SquirrelMail to login."
-msgstr "SquirrelMail kan eventuellt logga in genom att använda TLS."
-
 msgid "Error(s) happened while saving your options"
 msgstr "Fel uppstod när inställningarna sparades"
 
@@ -4027,17 +4021,11 @@ msgstr "Standardsökning"
 msgid "Advanced search"
 msgstr "Avancerad sökning"
 
-msgid "Signout"
-msgstr "Utloggning"
-
 msgid "Folder List"
 msgstr "Lista över mappar"
 
 msgid "Click here to change the sorting of the address list"
 msgstr "Ändra sorteringen av adresslistan"
-
-msgid "Signature is too big."
-msgstr "Brevfoten är för stor."
 
 msgid "Possible reason : "
 msgstr "Trolig orsak : "
@@ -4083,6 +4071,9 @@ msgstr "Tecken som inleder citerade rader när brev besvaras"
 
 msgid "Strip signature when replying"
 msgstr "Avlägsna brevfot vid svar"
+
+msgid "Sort by Received Date"
+msgstr "Aktivera sortering på ankomstdatum"
 
 msgid "Show 'Delete & Prev/Next' Links"
 msgstr "Visa Kasta och visa föregående/nästa-länkar."
@@ -4135,8 +4126,11 @@ msgstr "Visa alternativa språknamn"
 msgid "Available languages"
 msgstr "Tillgängliga språk"
 
-msgid "Use agresive decoding"
+msgid "Enable aggressive decoding"
 msgstr "Använd aggressiv avkodning"
+
+msgid "Enable lossy encoding"
+msgstr "Använd förstörande kodning"
 
 msgid "Tweaks"
 msgstr "Finjusteringar"
@@ -4278,7 +4272,9 @@ msgid "Curl module NOT available! Unable to change password!"
 msgstr "Curl-modulen är inte tillgänglig. Det gick inte att byta lösenordet!"
 
 msgid "Cannot change password! (Is user 'Self Configurable User' ?) (401)"
-msgstr "Det gick inte att byta lösenordet! (Har användaren administrationsrättigheter? Fel: 401)"
+msgstr ""
+"Det gick inte att byta lösenordet! (Har användaren "
+"administrationsrättigheter? Fel: 401)"
 
 msgid "Cannot change password!"
 msgstr "Det gick inte att byta lösenordet!"
@@ -4293,7 +4289,8 @@ msgid "SQL call failed, try again later."
 msgstr "SQL-anropet misslyckades. Försök igen senare."
 
 msgid "Duplicate login entries detected, cannot change password!"
-msgstr "Flera samtidiga inloggningar detekterades. Det gick inte att byta lösenordet!"
+msgstr ""
+"Flera samtidiga inloggningar detekterades. Det gick inte att byta lösenordet!"
 
 msgid "Password change was not successful!"
 msgstr "Det gick inte att byta lösenordet!"
@@ -4303,9 +4300,6 @@ msgstr "Stänger anslutningen"
 
 msgid "Connecting to Password Server"
 msgstr "Ansluter till lösenordsservern"
-
-msgid "ERROR:"
-msgstr "FEL:"
 
 msgid "Plugin is disabled."
 msgstr "Insticksmodulen är inaktiverad."
@@ -4351,6 +4345,21 @@ msgstr "Inga POP3-servrar är konfigurerade."
 
 msgid "Click here to go to the options page."
 msgstr "Tillbaka till inställningar"
+
+msgid "Bodystructure"
+msgstr "Struktur"
+
+msgid "Entity"
+msgstr "Enhet"
+
+msgid "Content-Type"
+msgstr "Typ av innehåll"
+
+msgid "Encoding"
+msgstr "Kodning"
+
+msgid "RFC822 Message body"
+msgstr "Källa (i RFC822-format)"
 
 msgid "Spam Service Type:"
 msgstr "Typ av skräpposttjänst:"
