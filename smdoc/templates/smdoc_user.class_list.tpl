@@ -124,7 +124,7 @@ function user_list_body(&$foowd, $className, $method, $user, &$object, &$t)
       <tr class="<?php echo ($row ? 'row_odd' : 'row_even'); ?>">
         <td><a href="<?php echo $url; ?>"><?php echo $arr['title']; ?></a></td>
         <td class="subtext">[<?php echo $arr['objectid']; ?>]&nbsp;</td>
-        <td class="subtext">&nbsp;
+        <td class="menu_subtext">&nbsp;
 <?php   $methods = array();
         if ( $isAdmin )
           $methods[] = '<a href="'.$url.'&method=groups">Groups</a> ';
