@@ -5,8 +5,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: $Id$\n"
-"POT-Creation-Date: 2003-07-24 16:48+0300\n"
-"PO-Revision-Date: 2003-07-24 16:53+0300\n"
+"POT-Creation-Date: 2003-09-06 13:29+0300\n"
+"PO-Revision-Date: 2003-09-11 21:44+0300\n"
 "Last-Translator: Tomas Kuliavas <tokul@users.sourceforge.net>\n"
 "Language-Team: Lithuanian <squirrelmail-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -153,8 +153,8 @@ msgstr "Neçmanoma perkelti/kopijuoti failo. Failas neprikabintas"
 msgid "Draft Saved"
 msgstr "Juodra¹tis i¹saugotas"
 
-msgid "Your Message has been sent"
-msgstr "Jþsù ¾inutì i¹siùsta"
+msgid "Your Message has been sent."
+msgstr "Jþsù ¾inutì i¹siùsta."
 
 msgid "From:"
 msgstr "Nuo:"
@@ -603,11 +603,11 @@ msgstr ""
 msgid "Message not printable"
 msgstr "®inutì netinka spausdinimui"
 
-msgid "Printer Friendly"
-msgstr "Spausdinimui"
-
 msgid "CC"
 msgstr "CC"
+
+msgid "Printer Friendly"
+msgstr "Spausdinimui"
 
 msgid "Print"
 msgstr "Spausdinti"
@@ -747,6 +747,9 @@ msgstr "pamir¹ti"
 
 msgid "Recent Searches"
 msgstr "Paskutinìs paie¹kos"
+
+msgid "Missing"
+msgstr "Trþksta"
 
 msgid "Exclude Criteria:"
 msgstr "Atmetimo s±lyga:"
@@ -906,6 +909,9 @@ msgstr "Pilna antra¹èiù per¾iþra"
 
 msgid "Viewing a text attachment"
 msgstr "Per¾iþrìti prikabint± tekstinç fail±"
+
+msgid "Folder List"
+msgstr "Aplankù s±ra¹as"
 
 msgid "Personal address book"
 msgstr "Asmeninì adresù knyga"
@@ -1120,12 +1126,6 @@ msgstr "G:i, D"
 msgid "Preference database error (%s). Exiting abnormally"
 msgstr "Nustatymù failas %s nerastas. Programos klaida."
 
-msgid "Unknown user or password incorrect."
-msgstr "Ne¾inomas vartotojas arba klaidingas slapta¾odis."
-
-msgid "Click here to try again"
-msgstr "Spragtelìkite èia norìdami bandyti dar kart±"
-
 #, c-format
 msgid "Click here to return to %s"
 msgstr "Spragtelìkite èia norìdami grç¾ti ç %s"
@@ -1213,6 +1213,24 @@ msgstr ""
 "Jþs turite turìti php4 instaliacij± su çjungtomis multibyte funkcijomis "
 "(configure opcija --enable-mbstring)."
 
+msgid "ERROR : Could not complete request."
+msgstr "KLAIDA : Neçmanoma vykdyti u¾klausos."
+
+msgid "ERROR : Bad or malformed request."
+msgstr "KLAIDA : Klaidingas u¾klausimas."
+
+msgid "ERROR : Imap server closed the connection."
+msgstr "KLAIDA : IMAP serveris u¾darì jungtç."
+
+msgid "ERROR : Unknown imap response."
+msgstr "KLAIDA : Nesuprantamas IMAP atsakymas."
+
+msgid "Reason Given: "
+msgstr "Prie¾astis: "
+
+msgid "Query:"
+msgstr "U¾klausa:"
+
 msgid "ERROR : No available imapstream."
 msgstr "KLAIDA : imap srautas neprieinamas."
 
@@ -1225,26 +1243,8 @@ msgstr "Prie¾astis:"
 msgid "ERROR : Connection dropped by imap-server."
 msgstr "KLAIDA : IMAP serveris nutraukì jungtç."
 
-msgid "Query:"
-msgstr "U¾klausa:"
-
-msgid "ERROR : Could not complete request."
-msgstr "KLAIDA : Neçmanoma vykdyti u¾klausos."
-
-msgid "Reason Given: "
-msgstr "Prie¾astis: "
-
-msgid "ERROR : Bad or malformed request."
-msgstr "KLAIDA : Klaidingas u¾klausimas."
-
 msgid "Server responded: "
 msgstr "Serveris atsakì: "
-
-msgid "ERROR : Imap server closed the connection."
-msgstr "KLAIDA : IMAP serveris u¾darì jungtç."
-
-msgid "ERROR : Unknown imap response."
-msgstr "KLAIDA : Nesuprantamas IMAP atsakymas."
 
 #, c-format
 msgid "Error connecting to IMAP server: %s."
@@ -1261,6 +1261,9 @@ msgstr "Neai¹ki klaida: %s"
 msgid "Read data:"
 msgstr "Skaitomi duomenys:"
 
+msgid "Unknown user or password incorrect."
+msgstr "Ne¾inomas vartotojas arba klaidingas slapta¾odis."
+
 msgid "ERROR : Could not append message to"
 msgstr "KLAIDA : Neçmanoma prijungti ¾inutìs prie"
 
@@ -1276,9 +1279,6 @@ msgstr ""
 
 msgid "(no subject)"
 msgstr "(tema nenurodyta)"
-
-msgid "Unknown Sender"
-msgstr "Ne¾inomas siuntìjas"
 
 msgid "Unknown response from IMAP server: "
 msgstr "Nesuprantamas atsakymas i¹ IMAP serverio"
@@ -1343,6 +1343,12 @@ msgstr "Nerodyti sekù"
 
 msgid "Thread View"
 msgstr "Rodyti sekas"
+
+msgid "Bypass Trash"
+msgstr "Nesaugoti ¹iuk¹liadì¾ìje"
+
+msgid "Click here to change the sorting of the message list"
+msgstr "Paspauskite èia norìdami pakeisti ¾inuèiù s±ra¹o rþ¹iavimo tvark±"
 
 msgid "Toggle All"
 msgstr "Perjungti ¾ymes"
@@ -1529,6 +1535,12 @@ msgstr "Vienu metu rodomù puslapiù skaièius"
 msgid "Always Show Full Date"
 msgstr "Visada rodyti piln± dat±"
 
+msgid "Length of From/To Field (0 for full)"
+msgstr "Did¾iausias Nuo/Kam lauko ilgis (0 atitinka neribot± ilgç)"
+
+msgid "Length of Subject Field (0 for full)"
+msgstr "Did¾iausias temos lauko ilgis (0 atitinka neribot± ilgç)"
+
 msgid "Message Display and Composition"
 msgstr "®inuèiù rodymas ir ra¹ymas"
 
@@ -1594,6 +1606,9 @@ msgstr "®inutìs kþrimo lango auk¹tis"
 
 msgid "Append Signature before Reply/Forward Text"
 msgstr "Dìti para¹± prie¹ atsakymo/persiuntimo tekst±"
+
+msgid "Strip signature when replying"
+msgstr "Pa¹alinti para¹± atsakant ç lai¹k±"
 
 msgid "Enable Sort by of Receive Date"
 msgstr "Çjungti rþ¹iavim± pagal gavimo dat±"
@@ -1708,6 +1723,12 @@ msgstr "Pasirinkimo s±ra¹o stilius"
 
 msgid "Long: "
 msgstr "Ilgas: "
+
+msgid "Folder"
+msgstr "Aplankas"
+
+msgid "Subfolder"
+msgstr "®emesnio lygio aplankas"
 
 msgid "Indented: "
 msgstr "Su para¹tìmis: "
@@ -2345,6 +2366,7 @@ msgstr ""
 msgid "FREE - SPAMhaus - A list of well-known SPAM sources."
 msgstr "NEMOKAMAS - SPAMhaus - Gerai ¾inomù spameriù s±ra¹as"
 
+#, c-format
 msgid ""
 "FREE, for now - SPAMCOP - An interesting solution that lists servers that "
 "have a very high spam to legit email ratio (85% or more)."
@@ -2718,6 +2740,12 @@ msgstr "Atsiùsti pa¹t±"
 
 msgid "Remote POP server Fetching Mail"
 msgstr "Nutolês POP serveris. Gauname ¾inutes"
+
+msgid "No POP3 servers configured yet."
+msgstr "Nesukonfiguruotas nei vienas POP serveris"
+
+msgid "Click here to go to the options page."
+msgstr "Spragtelìkite ant nuorodos norìdami nueiti ç nustatymù puslapç."
 
 msgid "Fetching from "
 msgstr "Atsiunèiame i¹ "
