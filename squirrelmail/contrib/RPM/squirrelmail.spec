@@ -5,8 +5,8 @@
 ##
 # By default build rhl7 version. Rebuild with 
 # rpmbuild --rebuild --define 'rhl7 0' squirrelmail-1.2.x.src.rpm
-# to build for rhl8^Htnv. :)
-# If you want rhl8^Htnv to build by default, just flip the value to 0 in
+# to build for rhl8.
+# If you want rhl8 to build by default, just flip the value to 0 in
 # the next line.
 %{!?rhl7:%define rhl7 1}
 %if %{rhl7}
@@ -19,7 +19,7 @@
 
 Summary: SquirrelMail webmail client
 Name: squirrelmail
-Version: 1.2.9
+Version: 1.2.10
 Release: %{rpm_release}
 License: GPL
 URL: http://www.squirrelmail.org/
