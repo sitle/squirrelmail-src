@@ -17,22 +17,28 @@
  * @subpackage template
  */
 ?>
-<table class="smdoc_table" style="width: 100%">
+
+<script language="JavaScript" type="text/javascript" src="templates/iframe.js"></script>
+<table class="smdoc_table" style="width: 100%; margin-bottom:0px; padding-bottom: 0px;">
   <tr>
-    <td class="col_left">
-      <IFRAME src="docs/li_smdoc.html" name="left_bottom" class="doc_elements">
+    <td class="col_left" style="width: 300px">
+      <IFRAME src="docs/li_smdoc.html" class="doc_elements" 
+              name="left_bottom" id="left_bottom" onLoad="resizeMe(this)">
         <a href="/docs/index.html">View using regular frames</a>
       </IFRAME>
     </td>
     <td class="col_right">
-      <IFRAME src="docs/blank.html" name="right" class="doc_content">
+      <IFRAME src="docs/blank.html" class="doc_content"
+              name="right" id="right" onLoad="resizeMe(this)">
         <a href="/docs/index.html">View using regular frames</a>
       </IFRAME>
     </td>
   </tr>
+  <tr>
+    <td class="subtext_center"><?php echo $t['method']; ?></td>
+    <td class="subtext_center">
+      <?php printf(_("If this looks like garbage, or you prefer an undecorated frameset, try <a href=\"%s\">here</a>."), 
+                   "docs/index.html"); ?>
+    </td>
+  </tr>
 </table>
-
-<p class="subtext_center">
-<?php printf(_("If this looks like garbage, try <a href=\"%s\">here</a>"), 
-             "docs/index.html"); ?>
-</p>
