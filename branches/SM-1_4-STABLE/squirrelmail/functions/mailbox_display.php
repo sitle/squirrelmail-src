@@ -81,6 +81,7 @@ function printMessageInfo($imapConnection, $t, $not_last=true, $key, $mailbox,
     }
     $msg['FROM'] = parseAddress($msg['FROM'],1);
 
+
        /*
         * This is done in case you're looking into Sent folders,
         * because you can have multiple receivers.
@@ -88,16 +89,26 @@ function printMessageInfo($imapConnection, $t, $not_last=true, $key, $mailbox,
 
     $senderNames = $msg['FROM'];
     $senderName  = '';
+    $senderFrom = '';
+
+
     if (sizeof($senderNames)){
         foreach ($senderNames as $senderNames_part) {
             if ($senderName != '') {
                 $senderName .= ', ';
             }
+
+            if ($senderFrom != '') {
+                $senderFrom .= ', ';
+            }
+
             if ($senderNames_part[1]) {
                 $senderName .= decodeHeader($senderNames_part[1]);
             } else {
                 $senderName .= htmlspecialchars($senderNames_part[0]);
             }
+
+            $senderFrom .= htmlspecialchars($senderNames_part[0]);
         }
     }
     $senderName = str_replace('&nbsp;',' ',$senderName);
@@ -196,11 +207,13 @@ function printMessageInfo($imapConnection, $t, $not_last=true, $key, $mailbox,
                                $hlt_color );
                 break;
             case 2: /* from */
+                $from_xtra = '';
+                $from_xtra = 'title="' . $senderFrom . '"';
                 echo html_tag( 'td',
                                $italic . $bold . $flag . $fontstr . $senderName .
                                $fontstr_end . $flag_end . $bold_end . $italic_end,
                                'left',
-                               $hlt_color );
+                               $hlt_color, $from_xtra );
                 break;
             case 3: /* date */
                 $date_string = $msg['DATE_STRING'] . '';
