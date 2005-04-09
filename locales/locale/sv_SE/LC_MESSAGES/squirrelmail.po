@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: SquirrelMail HEAD\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-03-20 16:40+0200\n"
-"PO-Revision-Date: 2005-03-21 09:06+0100\n"
+"POT-Creation-Date: 2005-04-04 17:09+0300\n"
+"PO-Revision-Date: 2005-04-09 10:53+0200\n"
 "Last-Translator: Fredrik Jervfors <sqm_admin@fimbul.net>\n"
 "Language-Team: Swedish <squirrelmail-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -247,19 +247,19 @@ msgstr "Nej"
 msgid "Folders"
 msgstr "Mappar"
 
-msgid "Subscribed successfully!"
+msgid "Subscribed successfully."
 msgstr "Mappen har aktiverats."
 
-msgid "Unsubscribed successfully!"
+msgid "Unsubscribed successfully."
 msgstr "Mappen har avaktiverats."
 
-msgid "Deleted folder successfully!"
+msgid "Deleted folder successfully."
 msgstr "Mappen har tagits bort."
 
-msgid "Created folder successfully!"
+msgid "Created folder successfully."
 msgstr "Mappen har skapats."
 
-msgid "Renamed successfully!"
+msgid "Renamed successfully."
 msgstr "Mappens namn har ändrats."
 
 msgid "Subscription Unsuccessful - Folder does not exist."
@@ -305,10 +305,10 @@ msgid "Subscribe"
 msgstr "Aktivera"
 
 msgid "No folders were found to unsubscribe from!"
-msgstr "Inga mappar att avaktivera"
+msgstr "Inga mappar att avaktivera."
 
 msgid "No folders were found to subscribe to!"
-msgstr "Inga mappar att aktivera"
+msgstr "Inga mappar att aktivera."
 
 msgid "Subscribe to:"
 msgstr "Aktivera:"
@@ -367,6 +367,15 @@ msgstr "Inkorg"
 msgid "Purge"
 msgstr "Töm"
 
+msgid "Last Refresh"
+msgstr "Senast uppdaterad"
+
+msgid "Check mail"
+msgstr "Uppdatera"
+
+msgid "Save folder tree"
+msgstr "Spara mappstruktur"
+
 msgid "Login"
 msgstr "Logga in"
 
@@ -378,7 +387,7 @@ msgstr "Logotyp för %s"
 msgid "SquirrelMail version %s"
 msgstr "SquirrelMail version %s"
 
-msgid "By the SquirrelMail Development Team"
+msgid "By the SquirrelMail Project Team"
 msgstr "Av SquirrelMails utvecklingsteam"
 
 #, php-format
@@ -2817,7 +2826,7 @@ msgstr "Hämtar UIDL..."
 msgid "Server does not support UIDL."
 msgstr "Servern stödjer inte UIDL."
 
-msgid "Leaving Mail on Server..."
+msgid "Leaving mail on server..."
 msgstr "Lämnar brev på servern..."
 
 msgid "Deleting messages from server..."
@@ -2826,8 +2835,8 @@ msgstr "Kastar brev från servern..."
 msgid "Fetching message "
 msgstr "Hämtar brev "
 
-msgid "Server error...Disconnect"
-msgstr "Server-fel... Frånkopplas"
+msgid "Server error. Disconnect"
+msgstr "Server-fel. Frånkopplas."
 
 msgid "Reconnect from dead connection"
 msgstr "Återanslut till död anslutning"
@@ -2850,11 +2859,9 @@ msgstr "Loggar ut från IMAP-servern"
 msgid "Message appended to mailbox"
 msgstr "Brevet har lagts till i inkorgen"
 
-msgid "Message "
-msgstr "Brev "
-
-msgid " deleted from Remote Server!"
-msgstr " kastats från servern!"
+#, php-format
+msgid "Message %d deleted from remote server!"
+msgstr "Brev %d har kastats från fjärrservern!"
 
 msgid "Delete failed:"
 msgstr "Radering misslyckades:"
@@ -2873,7 +2880,7 @@ msgstr ""
 "överförs till POP-servern. Krypteringen kan knäckas av en hacker som kommer "
 "åt källkoden till den här filen."
 
-msgid "If you leave password empty, it will be required when you fetch mail."
+msgid "If you leave password empty, it will be asked when you fetch mail."
 msgstr ""
 "Om du inte fyller i ett lösenord efterfrågas detta när du hämtar din post."
 
@@ -2898,13 +2905,13 @@ msgstr "Användarnamn:"
 msgid "Store in Folder:"
 msgstr "Spara i mappen:"
 
-msgid "Leave Mail on Server"
+msgid "Leave mail on server"
 msgstr "Lämna brev på servern"
 
-msgid "Check mail during login"
+msgid "Check mail at login"
 msgstr "Kontrollera om det finns nya brev vid inloggning"
 
-msgid "Check mail during folder refresh"
+msgid "Check mail at folder refresh"
 msgstr "Kontrollera om det finns nya brev vid uppdateringen av mappen"
 
 msgid "Modify Server"
@@ -2916,8 +2923,8 @@ msgstr "Servernamn:"
 msgid "Modify"
 msgstr "Ändra"
 
-msgid "No-one server in use. Try to add."
-msgstr "Det finns inte någon POP3-server angiven."
+msgid "No servers known."
+msgstr "Ingen server angiven."
 
 msgid "Fetching Servers"
 msgstr "Hämtar servrar"
@@ -2934,11 +2941,14 @@ msgstr "Bekräfta borttagning av den valda servern"
 msgid "Confirm Delete"
 msgstr "Bekräfta borttagning"
 
+msgid "Leave Mail on Server"
+msgstr "Lämna brev på servern"
+
 msgid "Undefined Function"
 msgstr "Odefinierad funktion"
 
-msgid "Hey! Wath do You are looking for?"
-msgstr "Vad söker du efter?"
+msgid "The function you requested is unknown."
+msgstr "Den begärda funktionen är inte giltig."
 
 msgid "Fetch"
 msgstr "Hämta"
@@ -4002,14 +4012,11 @@ msgstr ""
 "det inte att bifoga filer. Kontakta systemadministratören för mer detaljerad "
 "information."
 
-msgid "Last Refresh"
-msgstr "Senast uppdaterad"
+msgid "No folders were found to unsubscribe from."
+msgstr "Inga mappar att avaktivera."
 
-msgid "Check mail"
-msgstr "Uppdatera"
-
-msgid "Save folder tree"
-msgstr "Spara mappstruktur"
+msgid "No folders were found to subscribe to."
+msgstr "Inga mappar att aktivera."
 
 msgid "SquirrelMail Webmail Application"
 msgstr "SquirrelMail - en webbpostklient"
@@ -4172,8 +4179,20 @@ msgstr "Avancerad sökning"
 msgid "Folder List"
 msgstr "Lista över mappar"
 
+msgid "PHP install does not have LDAP support."
+msgstr "Denna installation av PHP stödjer inte LDAP."
+
 msgid "Click here to change the sorting of the address list"
 msgstr "Ändra sorteringen av adresslistan"
+
+msgid "Cancel"
+msgstr "Avbryt"
+
+msgid "You have not selected a folder to subscribe. Please do so."
+msgstr "Du har inte valt vilken mapp du vill aktivera."
+
+msgid "You have not selected a folder to unsubscribe. Please do so."
+msgstr "Du har inte valt vilken mapp du vill avaktivera."
 
 msgid "Possible reason : "
 msgstr "Trolig orsak : "
@@ -4525,7 +4544,7 @@ msgid ""
 "Standard DES crypt is not supported by webserver's system crypt library."
 msgstr "Webbserverns krypteringsbibliotek stödjer inte standard DES."
 
-msgid "Curl module NOT available! Unable to change password!"
+msgid "PHP Curl extension is NOT available! Unable to change password!"
 msgstr "Curl-modulen är inte tillgänglig. Det gick inte att byta lösenordet!"
 
 msgid "Cannot change password! (Is user 'Self Configurable User' ?) (401)"
@@ -4558,6 +4577,9 @@ msgstr "Stänger anslutningen"
 msgid "Connecting to Password Server"
 msgstr "Ansluter till lösenordsservern"
 
+msgid "No valid backend defined."
+msgstr "Det finns inte någon giltig lösenordsmodul definierad."
+
 msgid "Incorrent path to vmail.inc file."
 msgstr "Felaktig sökväg till \"vmail.inc\"."
 
@@ -4566,6 +4588,18 @@ msgstr "Ogiltig eller korrupt \"vmail.inc\"."
 
 msgid "Invalid user."
 msgstr "Ogiltig användare."
+
+msgid "Empty domain"
+msgstr "Domän saknas"
+
+msgid "Empty domain password"
+msgstr "Domänlösenord saknas"
+
+msgid "Empty username"
+msgstr "Användarnamn saknas"
+
+msgid "Empty new password"
+msgstr "Lösenord saknas"
 
 msgid "Server Capability response:"
 msgstr "Serverns kapabilitetssvar:"
