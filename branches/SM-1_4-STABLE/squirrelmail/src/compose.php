@@ -156,7 +156,12 @@ function getReplyCitation($orig_from, $orig_date) {
     global $reply_citation_style, $reply_citation_start, $reply_citation_end;
 
     // FIXME: why object is rewritten with string.
-    $orig_from = decodeHeader($orig_from->getAddress(false),false,false,true);
+
+    if (!is_object($orig_from)) {
+        $orig_from = "";
+    } else {
+        $orig_from = decodeHeader($orig_from->getAddress(false),false,false,true);
+    }
 
     /* First, return an empty string when no citation style selected. */
     if (($reply_citation_style == '') || ($reply_citation_style == 'none')) {
