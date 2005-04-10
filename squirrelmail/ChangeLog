@@ -75,7 +75,8 @@ Version 1.4.5 - CVS
   - Fix incorrect folder hierarchy display (#1009654), thanks
     Awais Ahmad for the patch (#1082558).
   - Added title box for From: column to display the address.
-
+  - Make sure From: is really an object on replies, otherwise an error is
+    generated trying to find reply citation (#1179754).
 
 Version 1.4.4 - 21 January 2005
 -------------------------------
