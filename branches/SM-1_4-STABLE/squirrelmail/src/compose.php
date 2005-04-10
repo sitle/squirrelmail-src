@@ -158,7 +158,7 @@ function getReplyCitation($orig_from, $orig_date) {
     // FIXME: why object is rewritten with string.
 
     if (!is_object($orig_from)) {
-        $orig_from = "";
+        $orig_from = '';
     } else {
         $orig_from = decodeHeader($orig_from->getAddress(false),false,false,true);
     }
