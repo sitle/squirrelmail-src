@@ -78,6 +78,8 @@ Version 1.4.5 - CVS
   - Make sure From: is really an object on replies, otherwise an error is
     generated trying to find reply citation (#1179754).
   - Add Cancel button to addressbook (#1180565).
+  - Workaround for Courier IMAP; send mixed messages with multiparts
+    with nested boundaries that Courier is able to parse
 
 Version 1.4.4 - 21 January 2005
 -------------------------------
