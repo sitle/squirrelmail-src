@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: squirrelmail 1.5.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-01-28 22:05+0200\n"
+"POT-Creation-Date: 2005-04-16 19:47+0200\n"
 "PO-Revision-Date: 2003-01-03 02:53+0200\n"
 "Last-Translator: Kerem Erkan <kerem.erkan@hacettepe.edu.tr>\n"
 "Language-Team: Turkish <squirrelmail-i18n@lists.sourceforge.net>\n"
@@ -16,9 +16,6 @@ msgstr ""
 
 msgid "Address Book"
 msgstr "Adres Defteri"
-
-msgid "All"
-msgstr "Tümü"
 
 msgid "Name"
 msgstr "Ýsim"
@@ -41,11 +38,9 @@ msgstr "Cc"
 msgid "Bcc"
 msgstr "Bcc"
 
-msgid "Use Addresses"
-msgstr "Adresleri Kullan"
-
-msgid "Address Book Search"
-msgstr "Adres Defteri'nde Ara"
+#, fuzzy
+msgid "No persons matching your search were found"
+msgstr "Arama kriterlerinize uygun kiþi bulunamadý"
 
 msgid "Search for"
 msgstr "Ara"
@@ -62,21 +57,31 @@ msgstr "Ara"
 msgid "List all"
 msgstr "Tümünü listele"
 
-#, c-format
+msgid "Close"
+msgstr "Kapat"
+
+#, php-format
 msgid "Unable to list addresses from %s"
 msgstr "Buradan adresler listelenemedi: %s"
 
 msgid "Your search failed with the following error(s)"
 msgstr "Aramanýz þu hata(lar) ile baþarýsýz oldu"
 
-msgid "No persons matching your search was found"
-msgstr "Arama kriterlerinize uygun kiþi bulunamadý"
+msgid "All"
+msgstr "Tümü"
+
+msgid "Use Addresses"
+msgstr "Adresleri Kullan"
+
+#, fuzzy
+msgid "Cancel"
+msgstr "Deðiþtir"
+
+msgid "Address Book Search"
+msgstr "Adres Defteri'nde Ara"
 
 msgid "Return"
 msgstr "Dön"
-
-msgid "Close"
-msgstr "Kapat"
 
 msgid "Nickname"
 msgstr "Takma ad"
@@ -113,8 +118,8 @@ msgstr "Adresi güncelle"
 msgid "ERROR"
 msgstr "HATA"
 
-msgid "Unknown error"
-msgstr "Bilinmeyen hata"
+msgid "Please select address that you want to edit"
+msgstr ""
 
 msgid "Add address"
 msgstr "Adres ekle"
@@ -125,17 +130,23 @@ msgstr "Seçili öðeyi düzenle"
 msgid "Delete selected"
 msgstr "Seçili öðeyi sil"
 
-msgid "Add to address book"
-msgstr "Adres defterine ekle"
+#, php-format
+msgid "Add to %s"
+msgstr "Þuraya ekle: %s"
 
-msgid "said"
-msgstr "dedi ki"
+#, php-format
+msgid "%s wrote:"
+msgstr ""
 
 msgid "quote"
 msgstr "alýntý"
 
 msgid "who"
 msgstr "kim"
+
+#, php-format
+msgid "On %s, %s wrote:"
+msgstr ""
 
 msgid "Subject"
 msgstr "Konu"
@@ -163,18 +174,6 @@ msgstr "Mesajýnýz gönderildi."
 
 msgid "From:"
 msgstr "Gönderen:"
-
-msgid "To:"
-msgstr "Alýcý:"
-
-msgid "CC:"
-msgstr "Cc:"
-
-msgid "BCC:"
-msgstr "Bcc:"
-
-msgid "Subject:"
-msgstr "Konu:"
 
 msgid "Send"
 msgstr "Gönder"
@@ -221,50 +220,35 @@ msgstr "Taslaðý Kaydet"
 msgid "You have not filled in the \"To:\" field."
 msgstr "\"Alýcý:\" alanýný doldurmadýnýz."
 
-msgid "Draft folder"
-msgstr "Taslak Klasörü"
+#, fuzzy, php-format
+msgid "Error: Draft folder %s does not exist."
+msgstr "'%s' kullanýcýsý yok"
 
-msgid "Server replied: "
+#, fuzzy
+msgid "Server replied:"
 msgstr "Sunucu yanýtý: "
-
-msgid "Illegal folder name.  Please select a different name."
-msgstr "Hatalý klasör ismi. Lütfen farklý bir isim seçiniz."
-
-msgid "Click here to go back"
-msgstr "Geri dönmek için buraya týklayýn"
-
-msgid "You have not selected a folder to delete. Please do so."
-msgstr "Silmek için herhangi bir klasör seçmediniz. Lütfen seçin."
-
-msgid "Delete Folder"
-msgstr "Klasörü Sil"
-
-#, c-format
-msgid "Are you sure you want to delete %s?"
-msgstr "%s klasörünü silmek istediðinizden emin misiniz?"
-
-msgid "Yes"
-msgstr "Evet"
-
-msgid "No"
-msgstr "Hayýr"
 
 msgid "Folders"
 msgstr "Klasörler"
 
-msgid "Subscribed successfully!"
+#, fuzzy
+msgid "Subscribed successfully."
 msgstr "Klasör baþarýyla eklendi!"
 
-msgid "Unsubscribed successfully!"
+#, fuzzy
+msgid "Unsubscribed successfully."
 msgstr "Klasör baþarýyla çýkarýldý!"
 
-msgid "Deleted folder successfully!"
+#, fuzzy
+msgid "Deleted folder successfully."
 msgstr "Klasör baþarýyla silindi!"
 
-msgid "Created folder successfully!"
+#, fuzzy
+msgid "Created folder successfully."
 msgstr "Klasör baþarýyla oluþturuldu!"
 
-msgid "Renamed successfully!"
+#, fuzzy
+msgid "Renamed successfully."
 msgstr "Klasör baþarýyla yeniden adlandýrýldý!"
 
 msgid "Subscription Unsuccessful - Folder does not exist."
@@ -300,6 +284,9 @@ msgstr "Yeniden Adlandýr"
 msgid "No folders found"
 msgstr "Hiç klasör bulunamadý"
 
+msgid "Delete Folder"
+msgstr "Klasörü Sil"
+
 msgid "Delete"
 msgstr "Sil"
 
@@ -317,6 +304,26 @@ msgstr "Listeye eklenecek klasör bulunamadý!"
 
 msgid "Subscribe to:"
 msgstr "Üyelik yeri:"
+
+#, fuzzy
+msgid "Illegal folder name. Please select a different name."
+msgstr "Hatalý klasör ismi. Lütfen farklý bir isim seçiniz."
+
+msgid "Click here to go back"
+msgstr "Geri dönmek için buraya týklayýn"
+
+msgid "You have not selected a folder to delete. Please do so."
+msgstr "Silmek için herhangi bir klasör seçmediniz. Lütfen seçin."
+
+#, php-format
+msgid "Are you sure you want to delete %s?"
+msgstr "%s klasörünü silmek istediðinizden emin misiniz?"
+
+msgid "Yes"
+msgstr "Evet"
+
+msgid "No"
+msgstr "Hayýr"
 
 msgid "You have not selected a folder to rename. Please do so."
 msgstr "Adlandýracak herhangi bir klasör seçmediniz."
@@ -336,9 +343,9 @@ msgstr "HATA: Yardým dosyalarý doðru biçimde deðil!"
 msgid "Help"
 msgstr "Yardým"
 
-#, c-format
+#, fuzzy, php-format
 msgid ""
-"The help has not been translated to %s.  It will be displayed in English "
+"The help has not been translated to %s. It will be displayed in English "
 "instead."
 msgstr "Yardýmýn %s çevirisi yapýlmamýþ. Ýngilizce olarak gösterilecek."
 
@@ -369,30 +376,26 @@ msgstr "Bunu dosya olarak indir"
 msgid "INBOX"
 msgstr "Gelen Kutusu"
 
-msgid "purge"
+#, fuzzy
+msgid "Purge"
 msgstr "temizle"
-
-msgid "Last Refresh"
-msgstr "Son Güncelleme"
-
-msgid "Save folder tree"
-msgstr "Klasör yapýsýný kaydet"
 
 msgid "Login"
 msgstr "Giriþ"
 
-#, c-format
+#, php-format
 msgid "%s Logo"
 msgstr "%s Logo"
 
-#, c-format
+#, php-format
 msgid "SquirrelMail version %s"
 msgstr "SquirrelMail sürüm %s"
 
-msgid "By the SquirrelMail Development Team"
+#, fuzzy
+msgid "By the SquirrelMail Project Team"
 msgstr "SquirrelMail Geliþtirme Takýmý"
 
-#, c-format
+#, php-format
 msgid "%s Login"
 msgstr "%s Giriþ"
 
@@ -405,11 +408,74 @@ msgstr "Þifre:"
 msgid "No messages were selected."
 msgstr "Herhangi bir mesaj seçili deðil."
 
-msgid "Options"
-msgstr "Seçenekler"
+msgid "Personal Information"
+msgstr "Kiþisel Bilgiler"
+
+msgid "Display Preferences"
+msgstr "Görünüm Tercihleri"
 
 msgid "Message Highlighting"
 msgstr "Mesaj Vurgulama"
+
+msgid "Folder Preferences"
+msgstr "Klasör Tercihleri"
+
+msgid "Index Order"
+msgstr "Dizin Sýrasý"
+
+msgid "Options"
+msgstr "Seçenekler"
+
+msgid "Error(s) occurred while saving your options"
+msgstr ""
+
+msgid "Some of your preference changes were not applied."
+msgstr ""
+
+msgid "Successfully Saved Options"
+msgstr "Seçenekler Baþarýyla Kaydedildi"
+
+msgid "Refresh Folder List"
+msgstr "Klasör Listesini Güncelle"
+
+msgid "Refresh Page"
+msgstr "Sayfayý Güncelle"
+
+msgid ""
+"This contains personal information about yourself such as your name, your "
+"email address, etc."
+msgstr ""
+"Burada isminiz, e-posta adresiniz gibi kiþisel bilgilerinizi "
+"ayarlayabilirsiniz."
+
+msgid ""
+"You can change the way that SquirrelMail looks and displays information to "
+"you, such as the colors, the language, and other settings."
+msgstr ""
+"SquirrelMail'i isteðinize uygun olarak kiþiselleþtirmek için görünümü, dili "
+"vb. diðer seçenekleri buradan ayarlayabilirsiniz."
+
+#, fuzzy
+msgid ""
+"Based upon given criteria, incoming messages can have different background "
+"colors in the message list. This helps to easily distinguish who the "
+"messages are from, especially for mailing lists."
+msgstr ""
+"Girilen kritere göre mesaj listesinde gelen mesajlarýn arkaplan rengi "
+"ayarlanabilir. Bu sayede gelen mesajlarýn kimden olduðunu daha kolay ayýrt "
+"edebilirsiniz. Özellikle posta listelerinde faydalý bir seçenektir."
+
+msgid ""
+"These settings change the way your folders are displayed and manipulated."
+msgstr ""
+"Bu seçenekler ile klasörlerinizin görünümü ve iþleniþi deðiþtirilebilir."
+
+msgid ""
+"The order of the message index can be rearranged and changed to contain the "
+"headers in any order you want."
+msgstr ""
+"Mesaj dizininin sýrasý mesaj bilgilerini istediðiniz sýrada görüntülemek "
+"için tekrar ayarlanabilir."
 
 msgid "New"
 msgstr "Yeni"
@@ -492,7 +558,7 @@ msgstr "Örn: 63aa7f"
 msgid "Matches"
 msgstr "Eþlenir"
 
-#, c-format
+#, php-format
 msgid "Alternate Identity %d"
 msgstr "Alternatif Kimlik %d"
 
@@ -523,9 +589,6 @@ msgstr "Varsayýlan Yap"
 msgid "Move Up"
 msgstr "Yukarý Taþý"
 
-msgid "Index Order"
-msgstr "Dizin Sýrasý"
-
 msgid "Checkbox"
 msgstr "Onay Kutusu"
 
@@ -535,10 +598,11 @@ msgstr "Bayraklar"
 msgid "Size"
 msgstr "Boyut"
 
+#, fuzzy
 msgid ""
 "The index order is the order that the columns are arranged in the message "
-"index.  You can add, remove, and move columns around to customize them to "
-"fit your needs."
+"index. You can add, remove, and move columns around to customize them to fit "
+"your needs."
 msgstr ""
 "Dizin sýrasý mesajlarýnýzda kolonlarýn nasýl sýralanacaðýný belirler."
 "Ýsteðinize göre kolon ekleyebilir, çýkarabilir, veya yerlerini "
@@ -556,64 +620,11 @@ msgstr "kaldýr"
 msgid "Return to options page"
 msgstr "Seçenekler sayfasýna geri dön"
 
-msgid "Personal Information"
-msgstr "Kiþisel Bilgiler"
-
-msgid "Display Preferences"
-msgstr "Görünüm Tercihleri"
-
-msgid "Folder Preferences"
-msgstr "Klasör Tercihleri"
-
-msgid "Successfully Saved Options"
-msgstr "Seçenekler Baþarýyla Kaydedildi"
-
-msgid "Refresh Folder List"
-msgstr "Klasör Listesini Güncelle"
-
-msgid "Refresh Page"
-msgstr "Sayfayý Güncelle"
-
-msgid ""
-"This contains personal information about yourself such as your name, your "
-"email address, etc."
-msgstr ""
-"Burada isminiz, e-posta adresiniz gibi kiþisel bilgilerinizi "
-"ayarlayabilirsiniz."
-
-msgid ""
-"You can change the way that SquirrelMail looks and displays information to "
-"you, such as the colors, the language, and other settings."
-msgstr ""
-"SquirrelMail'i isteðinize uygun olarak kiþiselleþtirmek için görünümü, dili "
-"vb. diðer seçenekleri buradan ayarlayabilirsiniz."
-
-msgid ""
-"Based upon given criteria, incoming messages can have different background "
-"colors in the message list.  This helps to easily distinguish who the "
-"messages are from, especially for mailing lists."
-msgstr ""
-"Girilen kritere göre mesaj listesinde gelen mesajlarýn arkaplan rengi "
-"ayarlanabilir. Bu sayede gelen mesajlarýn kimden olduðunu daha kolay ayýrt "
-"edebilirsiniz. Özellikle posta listelerinde faydalý bir seçenektir."
-
-msgid ""
-"These settings change the way your folders are displayed and manipulated."
-msgstr ""
-"Bu seçenekler ile klasörlerinizin görünümü ve iþleniþi deðiþtirilebilir."
-
-msgid ""
-"The order of the message index can be rearranged and changed to contain the "
-"headers in any order you want."
-msgstr ""
-"Mesaj dizininin sýrasý mesaj bilgilerini istediðiniz sýrada görüntülemek "
-"için tekrar ayarlanabilir."
-
 msgid "Message not printable"
 msgstr "Mesaj yazdýrýlabilir deðil"
 
-msgid "CC"
-msgstr "Cc"
+msgid "Invalid URL"
+msgstr ""
 
 msgid "Printer Friendly"
 msgstr "Yazýcý Dostu"
@@ -630,10 +641,11 @@ msgstr "Okundu:"
 msgid "Your message"
 msgstr "Sizin mesajýnýz"
 
-msgid "Sent:"
+#, fuzzy
+msgid "Sent"
 msgstr "Gönderildi:"
 
-#, c-format
+#, php-format
 msgid "Was displayed on %s"
 msgstr "%s üzerinde görüntülendi"
 
@@ -668,15 +680,6 @@ msgstr ""
 msgid "Send read receipt now"
 msgstr "Okundu bilgisini þimdi gönder"
 
-msgid "View Message"
-msgstr "Mesajý göster"
-
-msgid "Delete & Prev"
-msgstr "Sil ve Öncekini Oku"
-
-msgid "Delete & Next"
-msgstr "Sil ve Sonrakini Oku"
-
 msgid "Search Results"
 msgstr "Arama Sonuçlarý"
 
@@ -689,11 +692,8 @@ msgstr "Taslaða Devam Et"
 msgid "Edit Message as New"
 msgstr "Mesajý Yeni Olarak Düzenle"
 
-msgid "Reply"
-msgstr "Cevap Yaz"
-
-msgid "Reply All"
-msgstr "Tümüne Cevap Yaz"
+msgid "View Message"
+msgstr "Mesajý göster"
 
 msgid "Forward"
 msgstr "Ýlet"
@@ -701,11 +701,11 @@ msgstr "Ýlet"
 msgid "Forward as Attachment"
 msgstr "Eklenti Olarak Ýlet"
 
-msgid "Move to:"
-msgstr "Klasöre Taþý:"
+msgid "Reply"
+msgstr "Cevap Yaz"
 
-msgid "Move"
-msgstr "Taþý"
+msgid "Reply All"
+msgstr "Tümüne Cevap Yaz"
 
 msgid "View Full Header"
 msgstr "Tüm Baþlýklarý Göster"
@@ -716,35 +716,8 @@ msgstr "Eklentiler"
 msgid "You must be logged in to access this page."
 msgstr "Bu sayfaya eriþebilmek için sisteme giriþ yapmanýz gerekmektedir."
 
-msgid "All Folders"
-msgstr "Tüm Klasörler"
-
-msgid "Please enter something to search for"
-msgstr "Aramak için birþey yazýn"
-
-msgid "There must be at least one criteria to search for"
-msgstr "Aramak için en az bir kriter olmalý"
-
-msgid "Error in criteria argument"
-msgstr "Kriter argümanýnda hata"
-
-msgid "M j, Y"
-msgstr "j M Y"
-
-msgid "(Illegal date)"
-msgstr "(Geçersiz tarih)"
-
-msgid "(Wrong date)"
-msgstr "(Yanlýþ tarih)"
-
-msgid "In"
-msgstr "Þunun Ýçinde:"
-
-msgid "(Missing argument)"
-msgstr "(Eksik argüman)"
-
-msgid "(Spurious argument)"
-msgstr "(Sahte argüman)"
+msgid "Folder:"
+msgstr "Klasör:"
 
 msgid "edit"
 msgstr "düzenle"
@@ -755,8 +728,8 @@ msgstr "ara"
 msgid "delete"
 msgstr "sil"
 
-msgid "Saved Searches"
-msgstr "Kayýtlý Aramalar"
+msgid "Recent Searches"
+msgstr "Son Arananlar"
 
 msgid "save"
 msgstr "kaydet"
@@ -764,116 +737,26 @@ msgstr "kaydet"
 msgid "forget"
 msgstr "unut"
 
-msgid "Recent Searches"
-msgstr "Son Arananlar"
+#, fuzzy
+msgid "Current Search"
+msgstr "Görüntülenen Klasör"
 
-msgid "Missing"
-msgstr "Eksik"
+msgid "All Folders"
+msgstr "Tüm Klasörler"
 
-msgid "and&nbsp;subfolders:"
-msgstr "ve&nbsp;alt&nbsp;klasörleri:"
+#, fuzzy
+msgid "Body"
+msgstr "Düzenle"
 
-msgid "Exclude Criteria:"
-msgstr "Kriteri Dýþla:"
-
-msgid "Search Criteria"
-msgstr "Arama Kriteri"
-
-msgid "Folder:"
-msgstr "Klasör:"
-
-msgid "Add New Criteria"
-msgstr "Yeni Kriter Ekle"
-
-msgid "Remove Excluded Criteria"
-msgstr "Dýþlanmýþ Kriteri Çýkar"
-
-msgid "Remove All Criteria"
-msgstr "Tüm Kriterleri Çýkar"
-
-msgid "Answered"
-msgstr "Cevaplanmýþ"
-
-msgid "Before"
-msgstr "Tarihten Önce"
-
-msgid "Message Body"
-msgstr "Mesaj Gövdesi"
-
-msgid "Deleted"
-msgstr "Silinmiþ"
-
-msgid "Draft"
-msgstr "Taslak"
-
-msgid "Flagged"
-msgstr "Ýþaretlenmiþ"
-
-msgid "Sent By"
-msgstr "Gönderen"
-
-msgid "Header Field"
-msgstr "Baþlýk Alaný"
-
-msgid "Keyword"
-msgstr "Anahtar Kelime"
-
-msgid "Larger Than"
-msgstr "Þundan Büyük"
-
-msgid "Old"
-msgstr "Eski"
-
-msgid "On"
-msgstr "Üzerinde"
-
-msgid "Recent"
-msgstr "Son"
-
-msgid "Seen"
-msgstr "Görülmüþ"
-
-msgid "Sent Before"
-msgstr "Tarihten Önce Gönderilmiþ"
-
-msgid "Sent On"
-msgstr "Tarihte Gönderilmiþ"
-
-msgid "Sent Since"
-msgstr "Tarihten Ýtibaren Gönderilmiþ"
-
-msgid "Since"
-msgstr "Tarihten Beri"
-
-msgid "Smaller Than"
-msgstr "Þundan Küçük"
-
-msgid "Subject Contains"
-msgstr "Konu Ýçeriði"
-
-msgid "Header and Body"
-msgstr "Baþlýk ve Gövde"
-
-msgid "Sent To"
-msgstr "Gönderilen"
-
-msgid "Not"
-msgstr "Deðil"
-
-msgid "And In"
-msgstr "Ve Þunun Ýçinde"
-
-msgid "Or In"
-msgstr "Veya Þunun Ýçinde"
-
-msgid "And"
-msgstr "Ve"
-
-msgid "Or"
-msgstr "Veya"
+msgid "Everywhere"
+msgstr ""
 
 msgid "No Messages Found"
 msgstr "Hiç Mesaj Bulunamadý"
+
+#, fuzzy
+msgid "Signout"
+msgstr "Oturumu Kapat"
 
 msgid "Sign Out"
 msgstr "Oturumu Kapat"
@@ -886,6 +769,12 @@ msgstr "Tekrar giriþ için buraya týklayýnýz."
 
 msgid "Viewing a Business Card"
 msgstr "Bir Kart Görüntüleniyor"
+
+#, php-format
+msgid ""
+"vCard Version %s is not supported. Some information might not be converted "
+"correctly."
+msgstr ""
 
 msgid "Title"
 msgstr "Baþlýk"
@@ -923,47 +812,53 @@ msgstr "Adres Defterine Ekle"
 msgid "Title & Org. / Dept."
 msgstr "Ünvan ve Kurum / Bölüm"
 
+#, fuzzy
+msgid "Add to Address Book"
+msgstr "Adres Defterine Ekle"
+
 msgid "Viewing Full Header"
 msgstr "Tüm Baþlýklar Görüntüleniyor"
 
 msgid "Viewing a text attachment"
 msgstr "Bir yazý eklentisi görüntüleniyor"
 
-msgid "Folder List"
-msgstr "Klasör Listesi"
+msgid ""
+"Could not include PEAR database functions required for the database backend."
+msgstr ""
+
+#, php-format
+msgid "Is PEAR installed, and is the include path set correctly to find %s?"
+msgstr ""
+
+msgid "Please contact your system administrator and report this error."
+msgstr "Lütfen sistem yöneticinize bu hatayý bildirin."
 
 msgid "Personal address book"
 msgstr "Kiþisel adres defteri"
 
-#, c-format
+#, php-format
 msgid "Database error: %s"
 msgstr "Veritabaný hatasý: %s"
 
 msgid "Addressbook is read-only"
 msgstr "Adres defteri salt okunur durumda"
 
-#, c-format
+#, php-format
 msgid "User '%s' already exist"
 msgstr "'%s' kullanýcýsý zaten var"
 
-#, c-format
+#, php-format
 msgid "User '%s' does not exist"
 msgstr "'%s' kullanýcýsý yok"
 
-msgid "Global address book"
-msgstr "Global adres defteri"
+msgid "Not a file name"
+msgstr "Dosya ismi deðil"
 
 msgid "No such file or directory"
 msgstr "Böyle bir dosya veya dizin yok"
 
 msgid "Open failed"
 msgstr "Dosya / dizin açýlamadý"
-
-msgid "Can not modify global address book"
-msgstr "Global adres defteri deðiþtirilemez"
-
-msgid "Not a file name"
-msgstr "Dosya ismi deðil"
 
 msgid "Write failed"
 msgstr "Dosya / dizin açýlamadý"
@@ -980,14 +875,17 @@ msgstr "Adres defterine yazma baþarýsýz oldu"
 msgid "Error initializing addressbook database."
 msgstr "Adres defteri veri tabaný oluþturulamadý."
 
-#, c-format
+#, php-format
 msgid "Error opening file %s"
 msgstr "%s dosyasýný açarken hata oluþtu"
+
+msgid "Global address book"
+msgstr "Global adres defteri"
 
 msgid "Error initializing global addressbook."
 msgstr "Global adres defteri oluþturulurken hata oluþtu."
 
-#, c-format
+#, php-format
 msgid "Error initializing LDAP server %s:"
 msgstr "LDAP sunucusu baðlantýsýnda hata oluþtu: %s"
 
@@ -1003,11 +901,13 @@ msgstr "E-posta adresi yok"
 msgid "Nickname contains illegal characters"
 msgstr "Takma ad geçersiz karakterler içeriyor"
 
-msgid "view"
+#, fuzzy
+msgid "View"
 msgstr "göster"
 
-msgid "Business Card"
-msgstr "Ýþ Kartý"
+#, fuzzy
+msgid "View Business Card"
+msgstr "Bir Kart Görüntüleniyor"
 
 msgid "Sunday"
 msgstr "Pazar"
@@ -1126,33 +1026,39 @@ msgstr "Ara"
 msgid "D, F j, Y g:i a"
 msgstr "j F Y, l, g:i a"
 
-msgid "D, F j, Y G:i"
+#, fuzzy
+msgid "D, F j, Y H:i"
 msgstr "j F Y, l, G:i"
+
+msgid "M j, Y"
+msgstr "j M Y"
 
 msgid "g:i a"
 msgstr "g:i a"
 
-msgid "G:i"
+#, fuzzy
+msgid "H:i"
 msgstr "G:i"
 
 msgid "D, g:i a"
 msgstr "D, g:i a"
 
-msgid "D, G:i"
+#, fuzzy
+msgid "D, H:i"
 msgstr "D, G:i"
 
-#, c-format
+#, php-format
 msgid "Preference database error (%s). Exiting abnormally"
 msgstr "Tercih veritabaný hatasý (%s). Anormal sonlandýrma yapýlýyor."
 
-#, c-format
+#, php-format
 msgid "Click here to return to %s"
 msgstr "Dönmek için týklayýn: %s"
 
 msgid "Go to the login page"
 msgstr "Giriþ sayfasýna git"
 
-#, c-format
+#, php-format
 msgid ""
 "Preference file, %s, does not exist. Log out, and log back in to create a "
 "default preference file."
@@ -1160,7 +1066,7 @@ msgstr ""
 "Tercih dosyasý %s yok. Varsayýlan bir dosya oluþturmak için oturumunuzu "
 "kapatýp tekrar sisteme girin."
 
-#, c-format
+#, php-format
 msgid ""
 "Preference file, %s, could not be opened. Contact your system administrator "
 "to resolve this issue."
@@ -1168,7 +1074,7 @@ msgstr ""
 "Tercih dosyasý %s açýlamadý. Bu sorunun çözümü için sistem yöneticinize "
 "baþvurun."
 
-#, c-format
+#, php-format
 msgid ""
 "Preference file, %s, could not be written. Contact your system administrator "
 "to resolve this issue."
@@ -1176,7 +1082,7 @@ msgstr ""
 "Tercih dosyasý %s yazýlamadý. Bu sorunun çözümü için sistem yöneticinize "
 "baþvurun."
 
-#, c-format
+#, php-format
 msgid ""
 "Preference file, %s, could not be copied from temporary file, %s. Contact "
 "your system administrator to resolve this issue."
@@ -1184,24 +1090,25 @@ msgstr ""
 "Tercih dosyasý %s, geçici %s dosyasýndan kopyalanamadý. Bu sorunun çözümü "
 "için sistem yöneticinize baþvurun."
 
-#, c-format
+#, php-format
 msgid "Error opening %s"
 msgstr "%s açýlýrken hata oluþtu"
 
 msgid "Default preference file not found or not readable!"
 msgstr "Varsayýlan tercih dosyasý bulunamadý veya okunabilir deðil!"
 
-msgid "Please contact your system administrator and report this error."
-msgstr "Lütfen sistem yöneticinize bu hatayý bildirin."
-
 msgid "Could not create initial preference file!"
 msgstr "Baþlangýç tercih dosyasý yaratýlamadý!"
 
-#, c-format
+#, php-format
 msgid "%s should be writable by user %s"
 msgstr "%s, %s kullanýcýsý tarafýndan yazýlabilir olmalý"
 
-#, c-format
+#, fuzzy
+msgid "Signature is too big."
+msgstr "Ýmza Seçenekleri"
+
+#, php-format
 msgid ""
 "Signature file, %s, could not be opened. Contact your system administrator "
 "to resolve this issue."
@@ -1209,7 +1116,7 @@ msgstr ""
 "Ýmza dosyasý %s açýlamadý. Bu sorunun çözümü için sistem yöneticinize "
 "baþvurun."
 
-#, c-format
+#, php-format
 msgid ""
 "Signature file, %s, could not be written. Contact your system administrator "
 "to resolve this issue."
@@ -1217,7 +1124,7 @@ msgstr ""
 "Ýmza dosyasý %s yazýlamadý. Bu sorunun çözümü için sistem yöneticinize "
 "baþvurun."
 
-#, c-format
+#, php-format
 msgid ""
 "Signature file, %s, could not be copied from temporary file, %s. Contact "
 "your system administrator to resolve this issue."
@@ -1225,59 +1132,64 @@ msgstr ""
 "Ýmza dosyasý %s, geçici %s dosyasýndan kopyalanamadý. Bu sorunun çözümü için "
 "sistem yöneticinize baþvurun."
 
-msgid "ERROR : Could not complete request."
-msgstr "HATA : Ýsteðiniz tamamlanamadý."
+msgid ""
+"You need to have php4 installed with the multibyte string function enabled "
+"(using configure option --enable-mbstring)."
+msgstr ""
 
-msgid "ERROR : Bad or malformed request."
-msgstr "HATA : Kötü istek"
+#, fuzzy
+msgid "ERROR: No available IMAP stream."
+msgstr "HATA : Mevcut imap akýmý yok."
 
-msgid "ERROR : Imap server closed the connection."
-msgstr "HATA : Imap sunucusu baðlantýyý kapattý."
-
-msgid "ERROR : Connection dropped by imap-server."
+#, fuzzy
+msgid "ERROR: Connection dropped by IMAP server."
 msgstr "HATA : Imap sunucusu baðlantýyý düþürdü."
 
-msgid "ERROR : Unknown imap response."
-msgstr "HATA : Bilinmeyen imap yanýtý."
-
-msgid "Reason Given: "
-msgstr "Verilen Neden: "
-
-msgid "Possible reason : "
-msgstr "Muhtemel neden : "
+#, fuzzy
+msgid "ERROR: Could not complete request."
+msgstr "HATA : Ýsteðiniz tamamlanamadý."
 
 msgid "Query:"
 msgstr "Sorgu:"
 
-msgid "The imap server failed to handle threading."
-msgstr "Imap sunucusu threading yapmayý baþaramadý."
+#, fuzzy
+msgid "Reason Given:"
+msgstr "Verilen Neden: "
 
-msgid "Click here to unset thread view for this mailbox and start again."
-msgstr ""
-"Bu posta kutusu için thread görünümünü kaldýrmak için buraya týklayýp "
-"yeniden baþlayýn."
+#, fuzzy
+msgid "ERROR: Bad or malformed request."
+msgstr "HATA : Kötü istek"
 
-msgid "ERROR : No available imapstream."
-msgstr "HATA : Mevcut imap akýmý yok."
-
-msgid "ERROR : Bad function call."
-msgstr "HATA : Kötü iþlev çaðrýsý"
-
-msgid "Reason:"
-msgstr "Neden:"
-
-msgid "Server responded: "
+#, fuzzy
+msgid "Server responded:"
 msgstr "Sunucu yanýtý: "
 
-#, c-format
+#, fuzzy
+msgid "ERROR: IMAP server closed the connection."
+msgstr "HATA : Imap sunucusu baðlantýyý kapattý."
+
+#, fuzzy
+msgid "ERROR: Unknown IMAP response."
+msgstr "HATA : Bilinmeyen imap yanýtý."
+
+#, php-format
 msgid "Error connecting to IMAP server: %s."
 msgstr "IMAP sunucusuna baðlantýda hata oluþtu: %s."
 
-#, c-format
+msgid "The IMAP server is reporting that plain text logins are disabled."
+msgstr ""
+
+msgid "Using CRAM-MD5 or DIGEST-MD5 authentication instead may work."
+msgstr ""
+
+msgid "Also, the use of TLS may allow SquirrelMail to login."
+msgstr ""
+
+#, php-format
 msgid "Bad request: %s"
 msgstr "Kötü istek: %s"
 
-#, c-format
+#, php-format
 msgid "Unknown error: %s"
 msgstr "Bilinmeyen hata: %s"
 
@@ -1287,10 +1199,12 @@ msgstr "Okunan veri:"
 msgid "Unknown user or password incorrect."
 msgstr "Bilinmeyen kullanýcý veya þifre hatasý."
 
-msgid "ERROR : Could not append message to"
+#, fuzzy
+msgid "ERROR: Could not append message to"
 msgstr "HATA : Mesajýnýz'a ekleme iþlemi baþarýsýz oldu"
 
-msgid "Solution: "
+#, fuzzy
+msgid "Solution:"
 msgstr "Çözüm: "
 
 msgid ""
@@ -1301,7 +1215,12 @@ msgstr "Klasörünüzden gereksiz mesajlarý kaldýrýn ve Çöp Klasörü ile baþlatýn."
 msgid "(no subject)"
 msgstr "(konu yok)"
 
-msgid "Unknown response from IMAP server: "
+#, fuzzy
+msgid "Unknown Sender"
+msgstr "Bilinmeyen gönderici"
+
+#, fuzzy
+msgid "Unknown response from IMAP server:"
 msgstr "IMAP sunucusundan bilinmeyen yanýt: "
 
 msgid "The server couldn't find the message you requested."
@@ -1322,16 +1241,14 @@ msgstr "Bilinmeyen tarih"
 msgid "A"
 msgstr "Y"
 
-msgid ""
-"Thread sorting is not supported by your IMAP server.<br>Please report this "
-"to the system administrator."
+#, fuzzy
+msgid "Thread sorting is not supported by your IMAP server."
 msgstr ""
 "IMAP sunucunuz sunucu-taraflý sýralamayý desteklemiyor.<br>Lütfen bu durumu "
 "sistem yöneticinize bildirin."
 
-msgid ""
-"Server-side sorting is not supported by your IMAP server.<br>Please report "
-"this to the system administrator."
+#, fuzzy
+msgid "Server-side sorting is not supported by your IMAP server."
 msgstr ""
 "IMAP sunucunuz sunucu-taraflý sýralamayý desteklemiyor.<br>Lütfen bu durumu "
 "sistem yöneticinize bildirin."
@@ -1344,6 +1261,9 @@ msgstr "Seçili Öðeyi Taþý:"
 
 msgid "Transform Selected Messages"
 msgstr "Seçili Mesajlarý Dönüþtür"
+
+msgid "Move"
+msgstr "Taþý"
 
 msgid "Expunge"
 msgstr "Sil"
@@ -1363,12 +1283,6 @@ msgstr "Thread'siz Görünüm"
 msgid "Thread View"
 msgstr "Thread'li Görünüm"
 
-msgid "Bypass Trash"
-msgstr "Çöpü Atla"
-
-msgid "Click here to change the sorting of the message list"
-msgstr "Mesaj listesinin sýralanmasýný deðiþtirmek için buraya týklayýn"
-
 msgid "Toggle All"
 msgstr "Tümünü Seç/Býrak"
 
@@ -1378,12 +1292,12 @@ msgstr "Tümünü Býrak"
 msgid "Select All"
 msgstr "Tümünü Seç"
 
-#, c-format
-msgid "Viewing Messages: <B>%s</B> to <B>%s</B> (%s total)"
+#, fuzzy, php-format
+msgid "Viewing Messages: %s to %s (%s total)"
 msgstr "Görüntülenen Mesajlar: <B>%s</B> ile <B>%s</B> arasý (toplam %s)"
 
-#, c-format
-msgid "Viewing Message: <B>%s</B> (1 total)"
+#, fuzzy, php-format
+msgid "Viewing Message: %s (%s total)"
 msgstr "Görüntülenen Mesaj: <B>%s</B> (toplam 1)"
 
 msgid "Paginate"
@@ -1422,7 +1336,8 @@ msgstr "Tehlikeli Resimleri Gizle"
 msgid "View Unsafe Images"
 msgstr "Tehlikeli Resimleri Göster"
 
-msgid "download"
+#, fuzzy
+msgid "Download"
 msgstr "indir"
 
 msgid "sec_remove_eng.png"
@@ -1431,7 +1346,7 @@ msgstr "sec_remove_tr_TR.png"
 msgid "This external link will open in a new window"
 msgstr "Bu dýþ link yeni bir pencerede açýlacaktýr"
 
-#, c-format
+#, php-format
 msgid "Option Type '%s' Not Found"
 msgstr "'%s' Seçenek Tipi Bulunamadý"
 
@@ -1441,7 +1356,7 @@ msgstr "Görüntülenen Klasör"
 msgid "Compose"
 msgstr "Mesaj Yaz"
 
-#, c-format
+#, php-format
 msgid "Error creating directory %s."
 msgstr "%s dizini oluþturulurken hata oluþtu."
 
@@ -1541,7 +1456,8 @@ msgstr "Hiçbir zaman"
 msgid "Mailbox Display Options"
 msgstr "Posta Kutusu Görünüm Seçenekleri"
 
-msgid "Number of Messages to Index"
+#, fuzzy
+msgid "Number of Messages per Page"
 msgstr "Görüntülenecek Mesaj Sayýsý"
 
 msgid "Enable Alternating Row Colors"
@@ -1556,22 +1472,18 @@ msgstr "Görüntülenecek En Fazla Sayfa Sayýsý"
 msgid "Always Show Full Date"
 msgstr "Her Zaman Tam Tarih Göster"
 
-msgid "Length of From/To Field (0 for full)"
-msgstr "Gönderen/Alýcý Alanýnýn Uzunluðu (tüm alan için 0)"
-
-msgid "Length of Subject Field (0 for full)"
-msgstr "Konu Alanýnýn Uzunluðu (tüm alan için 0)"
-
-msgid "Show recipient name if the message is from your default identity"
-msgstr "Mesaj sizden gidiyorsa alýcý ismi gösterilsin"
-
 msgid "Message Display and Composition"
 msgstr "Mesaj Görünüm ve Yazýmý"
 
 msgid "Wrap Incoming Text At"
 msgstr "Gelen Metinde Sözcük Kaydýrmasý"
 
-msgid "Size of Editor Window"
+#, fuzzy
+msgid "Width of Editor Window"
+msgstr "Editör Penceresinin Boyutu"
+
+#, fuzzy
+msgid "Height of Editor Window"
 msgstr "Editör Penceresinin Boyutu"
 
 msgid "Location of Buttons when Composing"
@@ -1631,6 +1543,10 @@ msgstr "Yazým Penceresinin Yüksekliði"
 msgid "Append Signature before Reply/Forward Text"
 msgstr "Cevapla/Ýlet Yazýsýndan Önce Ýmza Ekle"
 
+#, fuzzy
+msgid "Prefix for Original Message when Replying"
+msgstr "Cevap verirken imzayý sil"
+
 msgid "Cursor Position when Replying"
 msgstr "Cevap Verirken Ýmleç Konumu"
 
@@ -1643,17 +1559,16 @@ msgstr "Mesaj gövdesi"
 msgid "Select body"
 msgstr "Tüm gövde seçili"
 
-msgid "Strip signature when replying"
-msgstr "Cevap verirken imzayý sil"
+#, fuzzy
+msgid "No focus"
+msgstr "Saat Yok"
 
-msgid "Enable Sort by of Receive Date"
+#, fuzzy
+msgid "Sort by Received Date"
 msgstr "Geliþ tarihine göre sýralamayý geçerli kýl"
 
 msgid "Enable Thread Sort by References Header"
 msgstr "Referans baþlýðýna göre sýralamayý geçerli kýl"
-
-msgid "Show 'Delete & Prev/Next' Links"
-msgstr "'Sil ve Önceki/Sonraki' Linklerini Göster"
 
 msgid "Special Folder Options"
 msgstr "Özel Klasör Seçenekleri"
@@ -1667,17 +1582,17 @@ msgstr "Çöp Kutusu Kullanma"
 msgid "Trash Folder"
 msgstr "Çöp Kutusu"
 
-msgid "Do not use Sent"
-msgstr "Giden Klasörü Kullanma"
-
-msgid "Sent Folder"
-msgstr "Giden Klasörü"
-
 msgid "Do not use Drafts"
 msgstr "Taslak Kullanma"
 
 msgid "Draft Folder"
 msgstr "Taslak Klasörü"
+
+msgid "Do not use Sent"
+msgstr "Giden Klasörü Kullanma"
+
+msgid "Sent Folder"
+msgstr "Giden Klasörü"
 
 msgid "Folder List Options"
 msgstr "Klasör Listesi Seçenekleri"
@@ -1736,6 +1651,17 @@ msgstr "Birikimli Okunmamýþ Mesaj Bildirimi'ni Etkinleþtir"
 msgid "Show Clock on Folders Panel"
 msgstr "Klasörler Panelinde Saati Göster"
 
+#, fuzzy
+msgid "International date and time"
+msgstr "Uluslararasý Sözlük Ekle"
+
+msgid "American date and time"
+msgstr ""
+
+#, fuzzy
+msgid "European date and time"
+msgstr "Ýþgünü ve saati göster"
+
 msgid "Show weekday and time"
 msgstr "Ýþgünü ve saati göster"
 
@@ -1769,7 +1695,8 @@ msgstr "Klasör Seçimi Seçenekleri"
 msgid "Selection List Style"
 msgstr "Seçim Listesi Stili"
 
-msgid "Long: "
+#, fuzzy
+msgid "Long:"
 msgstr "Uzun: "
 
 msgid "Folder"
@@ -1778,10 +1705,12 @@ msgstr "Klasör"
 msgid "Subfolder"
 msgstr "Altklasör"
 
-msgid "Indented: "
+#, fuzzy
+msgid "Indented:"
 msgstr "Girintili Yazýlmýþ: "
 
-msgid "Delimited: "
+#, fuzzy
+msgid "Delimited:"
 msgstr "Sýnýrlanmýþ: "
 
 msgid "Name and Address Options"
@@ -1820,8 +1749,12 @@ msgstr "Cevap Aktarma Stili"
 msgid "No Citation"
 msgstr "Aktarma Yok"
 
-msgid "AUTHOR Said"
+#, fuzzy
+msgid "AUTHOR Wrote"
 msgstr "YAZAN dedi ki"
+
+msgid "On DATE, AUTHOR Wrote"
+msgstr ""
 
 msgid "Quote Who XML"
 msgstr "XML Ýle Alýntý"
@@ -1853,14 +1786,11 @@ msgstr "Adres Defteri Al:"
 msgid "Try to verify addresses"
 msgstr "Adresleri doðrulamaya çalýþ"
 
-#, c-format
-msgid "Add to %s"
-msgstr "Þuraya ekle: %s"
-
 msgid "Config File Version"
 msgstr "Konfigürasyon Dosyasý Sürüm"
 
-msgid "Squirrelmail Version"
+#, fuzzy
+msgid "SquirrelMail Version"
 msgstr "Squirrelmail Sürüm"
 
 msgid "PHP Version"
@@ -1923,13 +1853,21 @@ msgstr "Microsoft Exchange IMAP sunucusu"
 msgid "Courier IMAP server"
 msgstr "Courier IMAP sunucusu"
 
+msgid "Mac OS X Mailserver"
+msgstr ""
+
+#, fuzzy
+msgid "hMailServer IMAP server"
+msgstr "Courier IMAP sunucusu"
+
 msgid "Not one of the above servers"
 msgstr "bunlarýn dýþýnda"
 
 msgid "IMAP Folder Delimiter"
 msgstr "IMAP Klasör Sýnýrlayýcý"
 
-msgid "Use \"detect\" to auto-detect."
+#, fuzzy
+msgid "Use &quot;detect&quot; to auto-detect."
 msgstr "Otomatik tespit için \"detect\" yazýn."
 
 msgid "Use TLS for IMAP Connections"
@@ -1941,8 +1879,15 @@ msgstr "PHP 4.3.x gerektirir! Deneyseldir."
 msgid "IMAP Authentication Type"
 msgstr "IMAP Doðrulama Tipi"
 
+#, fuzzy
+msgid "IMAP login"
+msgstr "POP3 login:"
+
 msgid "Use Sendmail Binary"
 msgstr "Sendmail kullan"
+
+msgid "Choose &quot;no&quot; for SMTP"
+msgstr ""
 
 msgid "Sendmail Path"
 msgstr "Sendmail Yolu"
@@ -1959,14 +1904,17 @@ msgstr "SMTP Baðlantýlarý için TLS Kullan"
 msgid "SMTP Authentication Type"
 msgstr "SMTP Doðrulama Tipi"
 
+msgid "No SMTP auth"
+msgstr ""
+
+msgid "Login (plain text)"
+msgstr ""
+
 msgid "POP3 Before SMTP?"
 msgstr "SMTP'den Önce POP3"
 
 msgid "Invert Time"
 msgstr "Zamaný Çevir"
-
-msgid "Use Confirmation Flags"
-msgstr "Onaylama Ýþaretlerini Kullan"
 
 msgid "Folders Defaults"
 msgstr "Klasör Varsayýlanlarý"
@@ -2009,9 +1957,6 @@ msgstr "Varsayýlan Görüntülenmemiþ Tipi"
 
 msgid "Auto Create Special Folders"
 msgstr "Özel Klasörleri Otomatik Olarak Oluþtur"
-
-msgid "Default Javascript Adrressbook"
-msgstr "Varsayýlan Javascript Adres Defteri"
 
 msgid "Auto delete folders"
 msgstr "Klasörleri otomatik olarak sil"
@@ -2070,6 +2015,9 @@ msgstr "Sunucu-taraflý thread düzenleme kullan"
 msgid "Allow server charset search"
 msgstr "Sunucu karakter seti aramasýna izin ver"
 
+msgid "UID support"
+msgstr ""
+
 msgid "PHP session name"
 msgstr "PHP oturum ismi"
 
@@ -2121,29 +2069,24 @@ msgstr "Varsayýlan Dil"
 msgid "Default Charset"
 msgstr "Varsayýlan Karakter Seti"
 
-msgid "Show alternative language names"
-msgstr "Alternatif dil isimlerini göster"
+msgid "Enable lossy encoding"
+msgstr ""
 
-msgid "Available languages"
-msgstr "Mevcut diller"
+#, fuzzy
+msgid "Address Books"
+msgstr "Adres Defteri"
 
-msgid "Use agresive decoding"
-msgstr "Agresif þifre çözümü kullan"
+#, fuzzy
+msgid "Default Javascript Addressbook"
+msgstr "Varsayýlan Javascript Adres Defteri"
 
-msgid "Tweaks"
-msgstr "Optimizasyonlar"
+#, fuzzy
+msgid "Global address book file"
+msgstr "Global adres defteri tablosu"
 
-msgid "Use advanced tree folder listing"
-msgstr "Geliþmiþ dizin listelemesi kullan"
-
-msgid "Use old folder listing functions"
-msgstr "Eski listeleme iþlevlerini kullan"
-
-msgid "Use php recode functions"
-msgstr "Php recode iþlevlerini kullan"
-
-msgid "Use php iconv functions"
-msgstr "Php iconv iþlevlerini kullan"
+#, fuzzy
+msgid "Allow writing into global address book file"
+msgstr "Global adres defterine yazýma izin ver"
 
 msgid "Themes"
 msgstr "Temalar"
@@ -2186,8 +2129,16 @@ msgstr "Tema Klasörü yolu"
 msgid "Plugins"
 msgstr "Eklentiler (Plugins)"
 
+#, php-format
+msgid "Plugin directory could not be found: %s"
+msgstr ""
+
 msgid "Change Settings"
 msgstr "Ayarlarý deðiþtir"
+
+#, fuzzy
+msgid "Test Configuration"
+msgstr "Onaylama Ýþaretlerini Kullan"
 
 msgid "Config file can't be opened. Please check config.php."
 msgstr "Yapýlandýrma dosyasý açýlamadý. Lütfen config.php'yi kontrol ediniz."
@@ -2211,21 +2162,18 @@ msgstr ""
 "Hata raporunuzu göndermeden önce, yaygýn sorunlar için bu kontrol listesini "
 "incelemeyi unutmayýn."
 
+#, fuzzy, php-format
 msgid ""
-"Make sure that you are running the most recent copy of <a href=\"http://www."
-"squirrelmail.org/\">SquirrelMail</a>."
+"Make sure that you are running the most recent copy of %s. You are currently "
+"using version %s."
 msgstr ""
 "En yeni <a href=\"http://www.squirrelmail.org/\">SquirrelMail</a> sürümünü "
 "kullandýðýnýzdan emin olun."
 
-#, c-format
-msgid "You are currently using version %s."
-msgstr "Þu anda sürüm %s kullanýyorsunuz."
-
+#, fuzzy, php-format
 msgid ""
-"Check to see if you bug is already listed in the <a href=\"http://"
-"sourceforge.net/bugs/?group_id=311\">Bug List</a> on SourceForge. If it is, "
-"we already know about it and are trying to fix it."
+"Check to see if your bug is already listed in the %sBug List%s on "
+"SourceForge. If it is, we already know about it and are trying to fix it."
 msgstr ""
 "Bu hatanýn <a href=\"http://sourceforge.net/bugs/?group_id=311\">Hata "
 "Listesi</a>'nde listelenmediðinden emin olun. Eðer listelenmiþse zaten bu "
@@ -2240,9 +2188,10 @@ msgstr ""
 "hata oluþtuðu anda ne yaptýðýnýzý anlatmaya çalýþýn. Eðer belirli bir mesajý "
 "görüntülediðinizde oluþuyorsa, bu mesajý saklayýn, görmek isteyebiliriz."
 
+#, fuzzy, php-format
 msgid ""
 "If there were warnings displayed above, try to resolve them yourself. Read "
-"the guides in the <tt>doc/</tt> directory where SquirrelMail was installed."
+"the guides in the %s directory where SquirrelMail was installed."
 msgstr ""
 "Eðer yukarýda görüntülenen uyarýlar varsa, onlarý kendiniz çözmeye çalýþýn. "
 "SquirrelMail'in yüklendiði yerdeki <tt>doc/</tt> dizininde bulunan "
@@ -2281,6 +2230,14 @@ msgstr "genel program"
 msgid "a specific plugin"
 msgstr "belirli bir ek"
 
+#, fuzzy
+msgid "Start Bug Report Form"
+msgstr "Bir Hata Raporu Gönder"
+
+#, fuzzy
+msgid "Bug"
+msgstr "Aðu"
+
 msgid "Bug Reports:"
 msgstr "Hata Raporlarý:"
 
@@ -2292,6 +2249,10 @@ msgstr "BUGÜN"
 
 msgid "Go"
 msgstr "Git"
+
+#, fuzzy, php-format
+msgid "Could not write calendar file %s"
+msgstr "Baþlangýç tercih dosyasý yaratýlamadý!"
 
 msgid "l, F j Y"
 msgstr "l, F j Y"
@@ -2398,6 +2359,28 @@ msgstr "6 saat"
 msgid "Calendar"
 msgstr "Takvim"
 
+msgid "Delete & Prev"
+msgstr "Sil ve Öncekini Oku"
+
+msgid "Delete & Next"
+msgstr "Sil ve Sonrakini Oku"
+
+msgid "Move to:"
+msgstr "Klasöre Taþý:"
+
+msgid "Delete/Move/Next Buttons:"
+msgstr ""
+
+msgid "Display at top"
+msgstr ""
+
+#, fuzzy
+msgid "with move option"
+msgstr "Saat Dilimi Seçenekleri"
+
+msgid "Display at bottom"
+msgstr ""
+
 msgid ""
 "COMMERCIAL - This list contains servers that are verified spam senders. It "
 "is a pretty reliable list to scan spam from."
@@ -2405,18 +2388,20 @@ msgstr ""
 "TÝCARÝ - Bu liste spam gönderdiði tespit edilmiþ sunucularý içerir. Spam "
 "taramasý için güvenilir bir listedir."
 
+#, fuzzy
 msgid ""
 "COMMERCIAL - Servers that are configured (or misconfigured) to allow spam to "
-"be relayed through their system will be banned with this.  Another good one "
+"be relayed through their system will be banned with this. Another good one "
 "to use."
 msgstr ""
 "TÝCARÝ - Spam postalara karþý gerekli ayarlarýn yapýlmadýðý (veya bilerek) "
 "kötü ayarlandýðý sunucular bu liste sayesinde yasaklanýr. Kullanýlmasý "
 "yararlý olacak listelerden biridir."
 
+#, fuzzy
 msgid ""
 "COMMERCIAL - Dial-up users are often filtered out since they should use "
-"their ISP's mail servers to send mail.  Spammers typically get a dial-up "
+"their ISP's mail servers to send mail. Spammers typically get a dial-up "
 "account and send spam directly from there."
 msgstr ""
 "TÝCARÝ - Çevirmeli baðlantý ile baðlananlar genelde kendi servis "
@@ -2476,8 +2461,9 @@ msgstr ""
 msgid "FREE - SPAMhaus - A list of well-known SPAM sources."
 msgstr "ÜCRETSÝZ - SPAMhaus - Ýyi bilinen SPAM kaynaklarý listesi."
 
+#, fuzzy
 msgid ""
-"FREE, for now - SPAMCOP - An interesting solution that lists servers that "
+"FREE, for now - SpamCop - An interesting solution that lists servers that "
 "have a very high spam to legit email ratio (85 percent or more)."
 msgstr ""
 "ÜCRETSÝZ, þimdilik - SPAMCOP - Gönderdikleri e-postalarýn %85'in üzerinde "
@@ -2572,6 +2558,14 @@ msgid "FREE - Distributed Sender Boycott List - UN-Confirmed Relays"
 msgstr ""
 "ÜCRETSÝZ - Distributed Sender Boycott List - ONAYLANMAMIÞ Relay Kayýtlarý"
 
+#, fuzzy
+msgid "WARNING! You must enter something to search for."
+msgstr "Aramak için birþey yazýn"
+
+msgid ""
+"WARNING! Header filters should be of the format &quot;Header: value&quot;"
+msgstr ""
+
 msgid "Saved Scan type"
 msgstr "Kaydedilmiþ Arama Tipi"
 
@@ -2599,8 +2593,8 @@ msgstr "Baþlýk"
 msgid "Contains:"
 msgstr "Ýçeriði:"
 
-#, c-format
-msgid "If <b>%s</b> contains <b>%s</b> then move to <b>%s</b>"
+#, fuzzy, php-format
+msgid "If %s contains %s then move to %s"
 msgstr "Eðer <b>%s</b> <b>%s</b> içeriyorsa, <b>%s</b> içine taþý"
 
 msgid "Message Filters"
@@ -2624,10 +2618,19 @@ msgstr ""
 "içindeki spam e-postalarý farklý bir klasöre taþýmanýzý saðlar (örneðin Çöp "
 "Kutusu)."
 
+#, fuzzy
+msgid "You must select a spam folder."
+msgstr "Bir klasör seçin"
+
+#, fuzzy
+msgid "You must select a scan type."
+msgstr "Bir seçim yapmalýsýnýz"
+
 msgid "Spam Filtering"
 msgstr "Spam Filtreleme"
 
-msgid "WARNING! Tell your admin to set the SpamFilters_YourHop variable"
+#, fuzzy, php-format
+msgid "WARNING! Tell the administrator to set the %s variable."
 msgstr ""
 "DÝKKAT! Sistem yöneticinizin SpamFilters_YourHop deðiþkenini açmýþ olmasý "
 "gereklidir!"
@@ -2647,12 +2650,18 @@ msgstr ""
 "olarak tanýmlanabilir. Bu klasörü ne olarak seçerseniz seçin, periyodik "
 "olarak boþaltýldýðýndan emin olun, yoksa posta kutunuz çok büyüyebilir."
 
+#, fuzzy
+msgid "Unread messages only"
+msgstr "Sadece Yeni Mesajlar"
+
+#, fuzzy
 msgid ""
-"The more messages you scan, the longer it takes.  I would suggest that you "
-"scan only new messages.  If you make a change to your filters, I would set "
-"it to scan all messages, then go view my INBOX, then come back and set it to "
-"scan only new messages.  That way, your new spam filters will be applied and "
-"you'll scan even the spam you read with the new filters."
+"The more messages scanned, the longer it takes. It's recommended to scan "
+"unread messages only. If a change to the filters is made, it's recommended "
+"to set it to scan all messages, then go view the INBOX, then come back and "
+"set it to scan unread messages only. That way, the new spam filters will be "
+"applied and even the spam you didn't catch with the old filters will be "
+"scanned."
 msgstr ""
 "Ne kadar çok mesaj tararsanýz, o kadar uzun sürecektir. Sadece yeni "
 "mesajlarý taramanýz iyi olur. Filtrelerinizde bir deðiþiklik yaptýðýnýz "
@@ -2661,22 +2670,17 @@ msgstr ""
 "uygulanacak ve okumuþ olduðunuz spam mesajlarý bile yeni filtrelerinizle "
 "tarayabileceksiniz."
 
-#, c-format
-msgid "Spam is sent to <b>%s</b>"
+#, fuzzy, php-format
+msgid "Spam is sent to %s."
 msgstr "Spam gönderildi: <b>%s</b>"
 
-msgid "[<i>not set yet</i>]"
+#, fuzzy
+msgid "not set yet"
 msgstr "[<i>henüz ayarlanmadý</i>]"
 
-#, c-format
-msgid "Spam scan is limited to <b>%s</b>"
+#, fuzzy, php-format
+msgid "Spam scan is limited to %s."
 msgstr "Spam taramasý þuna kýsýtlandý: <b>%s</b>"
-
-msgid "New Messages Only"
-msgstr "Sadece Yeni Mesajlar"
-
-msgid "All Messages"
-msgstr "Tüm Mesajlar"
 
 msgid "ON"
 msgstr "Açýk"
@@ -2684,7 +2688,8 @@ msgstr "Açýk"
 msgid "OFF"
 msgstr "Kapalý"
 
-msgid " not found."
+#, fuzzy, php-format
+msgid "%s is not found."
 msgstr " bulunamadý."
 
 msgid "Today's Fortune"
@@ -2696,12 +2701,16 @@ msgstr "Fallar:"
 msgid "Show fortunes at top of mailbox"
 msgstr "Posta kutusunun üzerinde fallarý göster"
 
+msgid "Plugin is disabled."
+msgstr ""
+
 msgid "IMAP server information"
 msgstr "IMAP sunucu bilgisi"
 
+#, fuzzy
 msgid ""
 "Run some test IMAP commands, displaying both the command and the result. "
-"These tests use the Squirrelmail IMAP commands and your current Squirrelmail "
+"These tests use the SquirrelMail IMAP commands and your current SquirrelMail "
 "configuration. Custom command strings can be used."
 msgstr ""
 "Bazý test IMAP komutlarý çalýþtýrarak hem komut hem de sonucu gösterir. Bu "
@@ -2711,7 +2720,7 @@ msgstr ""
 msgid "Mailinglist"
 msgstr "E-posta listesi"
 
-#, c-format
+#, php-format
 msgid ""
 "This will send a message to %s requesting help for this list. You will "
 "receive an emailed response at the address below."
@@ -2719,7 +2728,7 @@ msgstr ""
 "Bu, %s adresine, bu liste ile ilgili yardým almak için bir mesaj "
 "gönderecektir. Aþaðýdaki adrese bir e-posta yanýtý alacaksýnýz."
 
-#, c-format
+#, php-format
 msgid ""
 "This will send a message to %s requesting that you will be subscribed to "
 "this list. You will be subscribed with the address below."
@@ -2727,7 +2736,7 @@ msgstr ""
 "Bu, %s adresine, bu listeye kaydolmak istediðinizi belirten bir mesaj "
 "gönderecektir. Aþaðýdaki adres ile kayýt olacaksýnýz."
 
-#, c-format
+#, php-format
 msgid ""
 "This will send a message to %s requesting that you will be unsubscribed from "
 "this list. It will try to unsubscribe the adress below."
@@ -2843,6 +2852,9 @@ msgstr "Mesaj numarasý girilmedi"
 msgid "Command failed "
 msgstr "Komut baþarýsýz "
 
+msgid "Remote POP server Fetching Mail"
+msgstr "Karþý POP sunucusundan mesajlar alýnýyor"
+
 msgid "Select Server:"
 msgstr "Sunucu Seçin:"
 
@@ -2851,15 +2863,6 @@ msgstr "Þifre"
 
 msgid "Fetch Mail"
 msgstr "Mesaj al"
-
-msgid "Remote POP server Fetching Mail"
-msgstr "Karþý POP sunucusundan mesajlar alýnýyor"
-
-msgid "No POP3 servers configured yet."
-msgstr "Herhangi bir POP3 sunucusu ayarlanmadý."
-
-msgid "Click here to go to the options page."
-msgstr "Seçenekler sayfasýna gitmek için buraya týklayýn."
 
 msgid "Fetching from "
 msgstr "alýndýðý taraf "
@@ -2882,11 +2885,9 @@ msgstr "Giriþ Tamam : Yeni mesaj yok."
 msgid "Login OK: Inbox EMPTY"
 msgstr "Giriþ Tamam: Gelen Kutusu BOÞ"
 
-msgid "Login OK: Inbox contains ["
+#, fuzzy, php-format
+msgid "Login OK: Inbox contains %s messages"
 msgstr "Giriþ Tamam: Inbox ["
-
-msgid "] messages"
-msgstr "] mesaj içeriyor"
 
 msgid "Fetching UIDL..."
 msgstr "UIDL alýnýyor..."
@@ -2894,7 +2895,8 @@ msgstr "UIDL alýnýyor..."
 msgid "Server does not support UIDL."
 msgstr "Sunucu UIDL desteklemiyor."
 
-msgid "Leaving Mail on Server..."
+#, fuzzy
+msgid "Leaving mail on server..."
 msgstr "Mesajlar sunucuda býrakýlýyor..."
 
 msgid "Deleting messages from server..."
@@ -2903,7 +2905,8 @@ msgstr "Mesajlar sunucudan siliniyor..."
 msgid "Fetching message "
 msgstr "Mesaj alýnýyor "
 
-msgid "Server error...Disconnect"
+#, fuzzy
+msgid "Server error. Disconnect"
 msgstr "Sunucu hatasý...Baðlantý kesildi"
 
 msgid "Reconnect from dead connection"
@@ -2927,10 +2930,8 @@ msgstr "IMAP baðlantýsýndan çýkýlýyor"
 msgid "Message appended to mailbox"
 msgstr "Mesaj posta kutusuna eklendi"
 
-msgid "Message "
-msgstr "Mesaj "
-
-msgid " deleted from Remote Server!"
+#, fuzzy, php-format
+msgid "Message %d deleted from remote server!"
 msgstr " karþý sunucudan silindi!"
 
 msgid "Delete failed:"
@@ -2939,9 +2940,10 @@ msgstr "Silme baþarýsýz oldu:"
 msgid "Remote POP server settings"
 msgstr "POP sunucusu ayarlarý"
 
+#, fuzzy
 msgid ""
 "You should be aware that the encryption used to store your password is not "
-"perfectly secure.  However, if you are using pop, there is inherently no "
+"perfectly secure. However, if you are using pop, there is inherently no "
 "encryption anyway. Additionally, the encryption that we do to save it on the "
 "server can be undone by a hacker reading the source to this file."
 msgstr ""
@@ -2950,7 +2952,8 @@ msgstr ""
 "hiç yoktur. Ayrýca bu dosyanýn kaynaðýna ulaþabilen bir hacker sunucuda "
 "þifrenizi saklamak için yaptýðýmýz bu þifrelemeyi çözebilir."
 
-msgid "If you leave password empty, it will be required when you fetch mail."
+#, fuzzy
+msgid "If you leave password empty, it will be asked when you fetch mail."
 msgstr "Þifrenizi boþ býrakýrsanýz, mesajlar alýnýrken gerekecektir."
 
 msgid "Encrypt passwords (informative only)"
@@ -2974,13 +2977,16 @@ msgstr "Kullanýcý Adý:"
 msgid "Store in Folder:"
 msgstr "Þu Klasörde Sakla:"
 
-msgid "Leave Mail on Server"
+#, fuzzy
+msgid "Leave mail on server"
 msgstr "Postalarý Sunucuda Býrak"
 
-msgid "Check mail during login"
+#, fuzzy
+msgid "Check mail at login"
 msgstr "Oturum açma sýrasýnda mesaj kontrolü yap"
 
-msgid "Check mail during folder refresh"
+#, fuzzy
+msgid "Check mail at folder refresh"
 msgstr "Klasör güncellemesi sýrasýnda mesaj kontrolü yap"
 
 msgid "Modify Server"
@@ -2992,8 +2998,9 @@ msgstr "Sunucu Adý:"
 msgid "Modify"
 msgstr "Düzenle"
 
-msgid "No-one server in use. Try to add."
-msgstr "Kullanýlacak sunucu yok. Bir tane ekleyiniz."
+#, fuzzy
+msgid "No servers known."
+msgstr "Sunucu banner'ý yok"
 
 msgid "Fetching Servers"
 msgstr "Sunucular Alýnýyor"
@@ -3010,11 +3017,14 @@ msgstr "Seçilen sunucuyu silmek istiyor musunuz?"
 msgid "Confirm Delete"
 msgstr "Silmeyi Onayla"
 
+msgid "Leave Mail on Server"
+msgstr "Postalarý Sunucuda Býrak"
+
 msgid "Undefined Function"
 msgstr "Tanýmlanmamýþ Ýþlem"
 
-msgid "Hey! Wath do You are looking for?"
-msgstr "Hey! Ne arýyorsunuz?"
+msgid "The function you requested is unknown."
+msgstr ""
 
 msgid "Fetch"
 msgstr "Al"
@@ -3025,16 +3035,35 @@ msgstr "Uyarý, "
 msgid "Mail Fetch Result:"
 msgstr "Mesaj Alýmý Sonucu:"
 
-msgid "Simple POP3 Fetch Mail"
+#, fuzzy
+msgid "POP3 Fetch Mail"
 msgstr "Basit POP3 mesajý alýmý"
 
+#, fuzzy
 msgid ""
-"This configures settings for downloading email from a pop3 mailbox to your "
+"This configures settings for downloading email from a POP3 mailbox to your "
 "account on this server."
 msgstr "Sunucudaki pop3 kutunuzdan mesaj alýmý ile ilgili ayarlar"
 
 msgid "Message Details"
 msgstr "Mesaj Ayrýntýlarý"
+
+msgid "Bodystructure"
+msgstr ""
+
+#, fuzzy
+msgid "Entity"
+msgstr "Düzenle"
+
+msgid "Content-Type"
+msgstr ""
+
+msgid "Encoding"
+msgstr ""
+
+#, fuzzy
+msgid "RFC822 Message body"
+msgstr "Mesaj Gövdesi"
 
 msgid "Close Window"
 msgstr "Pencereyi Kapat"
@@ -3045,48 +3074,67 @@ msgstr "Mesajý Kaydet"
 msgid "View Message details"
 msgstr "Mesaj Ayrýntýlarýný Göster"
 
+msgid "New Mail"
+msgstr "Yeni Mesaj"
+
+msgid "SquirrelMail Notice:"
+msgstr "SquirrelMail Uyarýsý:"
+
+#, fuzzy, php-format
+msgid "You have %s new message"
+msgid_plural "You have %s new messages"
+msgstr[0] "%s yeni mesajýnýz var"
+msgstr[1] "%s yeni mesajýnýz var"
+
+#, fuzzy, php-format
+msgid "You have %s new messages"
+msgstr "%s yeni mesajýnýz var"
+
 msgid "New Mail Notification"
 msgstr "Yeni Mesaj Bildirimi"
 
+#, fuzzy, php-format
 msgid ""
-"Select <b>Enable Media Playing</b> to turn on playing a media file when "
-"unseen mail is in your folders. When enabled, you can specify the media file "
-"to play in the provided file box."
-msgstr ""
-"Klasörlerinizde görmediðiniz posta varken bir medya dosyasý çalmak için "
-"<b>Medya Çalmayý Etkinleþtir</b> seçeneðini seçin. Etkin olduðunda, verilen "
-"kutuda çalacak dosyayý belirleyebilirsiniz."
-
-msgid ""
-"The <b>Check all boxes, not just INBOX</b> option will check ALL of your "
-"folders for unseen mail, not just the inbox for notification."
+"The %s option will check ALL of your folders for unseen mail, not just the "
+"inbox for notification."
 msgstr ""
 "<b>Sadece Gelen Kutusu deðil, tümünü seç</b> seçeneði görmediðiniz mesajlar "
 "için sadece Gelen Kutunuzu deðil, TÜM klasörlerinizi kontrol eder."
 
+msgid "Check all boxes, not just INBOX"
+msgstr "Sadece Gelen Kutusu deðil, tümünü seç"
+
+#, fuzzy, php-format
 msgid ""
-"Selecting the <b>Show popup</b> option will enable the showing of a popup "
-"window when unseen mail is in your folders (requires JavaScript)."
+"Selecting the %s option will enable the showing of a popup window when "
+"unseen mail is in your folders (requires JavaScript)."
 msgstr ""
 "<b>Popup Göster</b> seçeneði klasörlerinizde görmediðiniz mesaj varsa bir "
 "popup penceresi gösterir (JavaScript gerektirir)."
 
+msgid "Show popup window on new mail"
+msgstr "Yeni mesaj geldiðinde popup penceresi göster"
+
+#, fuzzy, php-format
 msgid ""
-"Use the <b>Check RECENT</b> to only check for messages that are recent. "
-"Recent messages are those that have just recently showed up and have not "
-"been \"viewed\" or checked yet.  This can prevent being continuously annoyed "
-"by sounds or popups for unseen mail."
+"Use the %s option to only check for messages that are recent. Recent "
+"messages are those that have just recently showed up and have not been "
+"\"viewed\" or checked yet. This can prevent being continuously annoyed by "
+"sounds or popups for unseen mail."
 msgstr ""
 "<b>Sadece YENÝLER</b> seçeneði ile sadece yeni gelmiþ mesajlarýn kontrol "
 "edilmesini saðlarsýnýz. Bu sayede devamlý olarak popup pencerelerin veya "
 "seslerin çýkarak sizi rahatsýz etmesini engelleyebilirsiniz."
 
+msgid "Count only messages that are RECENT"
+msgstr "Sadece YENÝ mesajlarý say"
+
+#, fuzzy, php-format
 msgid ""
-"Selecting the <b>Change title</b> option will change the title in some "
-"browsers to let you know when you have new mail (requires JavaScript, and "
-"only works in IE but you won't see errors with other browsers).  This will "
-"always tell you if you have new mail, even if you have <b>Check RECENT</b> "
-"enabled."
+"Selecting the %s option will change the title in some browsers to let you "
+"know when you have new mail (requires JavaScript, and only works in IE but "
+"you won't see errors with other browsers). This will always tell you if you "
+"have new mail, even if you have %s enabled."
 msgstr ""
 "<b>Baþlýðý Deðiþtir</b> seçeneði bazý tarayýcýlarda yeni mesaj aldýðýnýzý "
 "belirtmek için baþlýðýn deðiþmesini saðlar (JavaScript gerektirir ve sadece "
@@ -3094,60 +3142,47 @@ msgstr ""
 "size <b>Sadece YENÝLER</b> seçeneðini seçmiþ olsanýz bile her zaman yeni "
 "mesajýnýz olduðunu söyleyecektir."
 
+#, fuzzy
+msgid "Change title on supported browsers"
+msgstr "Desteklenen tarayýcýlarda baþlýðý deðiþtir."
+
+#, fuzzy, php-format
 msgid ""
-"Select from the list of <b>server files</b> the media file to play when new "
-"mail arrives.  If no file is specified, \"(none)\", no sound will be used."
+"Select %s to turn on playing a media file when unseen mail is in your "
+"folders. When enabled, you can specify the media file to play in the "
+"provided file box."
+msgstr ""
+"Klasörlerinizde görmediðiniz posta varken bir medya dosyasý çalmak için "
+"<b>Medya Çalmayý Etkinleþtir</b> seçeneðini seçin. Etkin olduðunda, verilen "
+"kutuda çalacak dosyayý belirleyebilirsiniz."
+
+msgid "Enable Media Playing"
+msgstr "Medya Çalmayý Etkinleþtir"
+
+#, fuzzy, php-format
+msgid ""
+"Select from the list of %s the media file to play when new mail arrives. If "
+"no file is specified, %s, no sound will be used."
 msgstr ""
 "<b>Sunucu dosyalarý</b> listesinden yeni mesaj geldiðinde çalmasýný "
 "istediðiniz dosyayý seçin. Eðer bir dosya seçmezseniz, \"(hiçbiri)\", ses "
 "dosyasý çalýnmayacaktýr."
 
-msgid "Enable Media Playing"
-msgstr "Medya Çalmayý Etkinleþtir"
-
-msgid "Check all boxes, not just INBOX"
-msgstr "Sadece Gelen Kutusu deðil, tümünü seç"
-
-msgid "Count only messages that are RECENT"
-msgstr "Sadece YENÝ mesajlarý say"
-
-msgid "Change title on supported browsers."
-msgstr "Desteklenen tarayýcýlarda baþlýðý deðiþtir."
-
-msgid "requires JavaScript to work"
-msgstr "çalýþmak için JavaScript gerektirir"
-
-msgid "Show popup window on new mail"
-msgstr "Yeni mesaj geldiðinde popup penceresi göster"
-
-msgid "Select server file:"
+#, fuzzy
+msgid "Select server file"
 msgstr "Sunucu dosyasýný seç:"
 
 msgid "(none)"
 msgstr "(hiçbiri)"
+
+msgid "requires JavaScript to work"
+msgstr "çalýþmak için JavaScript gerektirir"
 
 msgid "Try"
 msgstr "Dene"
 
 msgid "Current File:"
 msgstr "Þu Andaki Dosya:"
-
-msgid "New Mail"
-msgstr "Yeni Mesaj"
-
-msgid "SquirrelMail Notice:"
-msgstr "SquirrelMail Uyarýsý:"
-
-msgid "You have"
-msgstr "Yeni"
-
-#, c-format
-msgid "%s new message"
-msgstr "%s yeni mesajýnýz var"
-
-#, c-format
-msgid "%s new messages"
-msgstr "%s yeni mesajýnýz var"
 
 msgid "NewMail Options"
 msgstr "YeniMesaj Seçenekleri"
@@ -3159,16 +3194,15 @@ msgstr ""
 "Bu, yeni mesaj geldiðinde ses dosyalarý çalma ve/veya yeni pencereler "
 "gösterme ile ilgili ayarlar yapar."
 
-msgid "New Mail Notification options saved"
-msgstr "Yeni Mesaj Bildirimi seçenekleri kaydedildi"
-
-#, c-format
+#, php-format
 msgid "%s New Messages"
 msgstr "%s Yeni Mesaj"
 
-#, c-format
+#, fuzzy, php-format
 msgid "%s New Message"
-msgstr "%s Yeni Mesaj"
+msgid_plural "%s New Messages"
+msgstr[0] "%s Yeni Mesaj"
+msgstr[1] "%s Yeni Mesaj"
 
 msgid "Test Sound"
 msgstr "Sesi Dene"
@@ -3230,20 +3264,22 @@ msgstr "Tam e-posta tabanlý raporlama"
 msgid "Web-based form"
 msgstr "Web tabanlý form"
 
-msgid "Spam Service Type:"
-msgstr "Spam Servis Türü:"
-
-msgid "Free reporting"
-msgstr "Ücretsiz raporlama"
-
-msgid "Member services"
-msgstr "Üye servisleri"
+#, fuzzy
+msgid "Save Method"
+msgstr "Mesajý Kaydet"
 
 msgid "Your SpamCop authorization code:"
 msgstr "SpamCop yetki þifreniz:"
 
 msgid "see below"
 msgstr "aþaðýya bakýn"
+
+#, fuzzy
+msgid "Save ID"
+msgstr "Kaydet"
+
+msgid "About SpamCop"
+msgstr ""
 
 msgid ""
 "SpamCop is a free service that greatly assists in finding the true source of "
@@ -3252,27 +3288,27 @@ msgstr ""
 "SpamCop spam mesajýn gerçek kaynaðýný bulmak ve uygun kiþileri durumdan "
 "haberdar etmek için yardýmcý olan ücretsiz bir servistir."
 
+#, fuzzy, php-format
 msgid ""
-"To use it, you must get a SpamCop authorization code. There is a free <a "
-"href=\"http://spamcop.net/anonsignup.shtml\">sign up page</a> so you can use "
-"SpamCop."
+"To use it, you must get a SpamCop authorization code. There is a free %ssign "
+"up page%s so you can use SpamCop."
 msgstr ""
 "Kullanmak için bir SpamCop yetki þifresi almanýz gerekmektedir. SpamCop'ý "
 "kullanabilmeniz için ücretsiz bir href=\"http://spamcop.net/anonsignup.shtml"
 "\">kayýt sayfasý</a> bulunmaktadýr."
 
+msgid "Before you sign up, be warned"
+msgstr ""
+
+#, fuzzy, php-format
 msgid ""
-"<b>Before you sign up, be warned:</b> Some users have reported that the "
-"email addresses used with SpamCop find their way onto spam lists. To be "
-"safe, you can just create an email forwarding account and have all SpamCop "
-"reports get sent to there. Also, if it gets flooded with spam, you can then "
-"just delete that account with no worries about losing your real email "
-"address. Just go create an email forwarder somewhere (<a href=\"http://www."
-"yahoo.com/\">Yahoo!</a> has a <a href=\"http://dir.yahoo.com/"
-"Business_and_Economy/Business_to_Business/Communications_and_Networking/"
-"Internet_and_World_Wide_Web/Email_Providers/Forwarding_Services/"
-"Free_Forwarding/\">list of places</a>) so that messages from system "
-"administrators and whatnot can be sent to you."
+"Some users have reported that the email addresses used with SpamCop find "
+"their way onto spam lists. To be safe, you can just create an email "
+"forwarding account and have all SpamCop reports get sent to there. Also, if "
+"it gets flooded with spam, you can then just delete that account with no "
+"worries about losing your real email address. Just go create an email "
+"forwarder somewhere (%s has a %slist of places%s) so that messages from "
+"system administrators and what not can be sent to you."
 msgstr ""
 "<b>Üye olmadan önce dikkat edin:</b> Bazý kullanýcýlar SpamCop ile "
 "kullandýklarý e-posta adresinin spam listelerine ulaþtýðýný bildirdi. "
@@ -3286,13 +3322,14 @@ msgstr ""
 "Forwarding_Services/Free_Forwarding/\">yer listesine</a> sahiptir.) bir "
 "hesap açýn."
 
+#, fuzzy
 msgid ""
 "Once you have signed up with SpamCop and have received your SpamCop "
-"authorization code, you need to enable this plugin -- just click the link "
-"above.  Once enabled, you go about your normal life.  If you encounter a "
-"spam message in your mailbox, just view it.  On the right-hand side, near "
-"the top of where the message is displayed, you will see a link to report "
-"this message as spam.  Clicking on it brings you to a confirmation page. "
+"authorization code, you need to enable this plugin by clicking the link "
+"above. Once enabled, you go about your normal life. If you encounter a spam "
+"message in your mailbox, just view it. On the right-hand side, near the top "
+"of where the message is displayed, you will see a link to report this "
+"message as spam. Clicking on it brings you to a confirmation page. "
 "Confirming that you want the spam report sent will do different things with "
 "different reporting methods."
 msgstr ""
@@ -3304,16 +3341,18 @@ msgstr ""
 "raporunun gönderimini onaylamanýz raporu farklý þekilde farklý raporlama "
 "yöntemleri ile gönderir."
 
-msgid "Email-based Reporting"
+#, fuzzy
+msgid "Email-based reporting"
 msgstr "E-posta Tabanlý Raporlama"
 
+#, fuzzy
 msgid ""
 "Pressing the button forwards the message to the SpamCop service and will "
-"optionally delete the message.  From there, you just need to go to your "
-"INBOX and quite soon a message should appear from SpamCop.  (It gets sent to "
-"the account you registered with, so make sure that your mail forwarder "
-"works!) Open it up, click on the appropriate link at the top, and a new "
-"browser window will open."
+"optionally delete the message. From there, you just need to go to your INBOX "
+"and quite soon a message should appear from SpamCop. (It gets sent to the "
+"account you registered with, so make sure that your mail forwarder works!) "
+"Open it up, click on the appropriate link at the top, and a new browser "
+"window will open."
 msgstr ""
 "Bu düðmeye týklamak SpamCop servisine spam mesajý gönderecek ve opsiyonel "
 "olarak mesajý silecektir. Oradan Gelen Kutunuza gitmeniz yeterlidir. Bir "
@@ -3321,16 +3360,18 @@ msgstr ""
 "gideceði için iletim hesabýnýzýn çalýþtýðýndan emin olun!). Bu mesajý açýn, "
 "üstteki uygun linke týklayýn ve yeni bir tarayýcý penceresi açýlacaktýr."
 
+#, fuzzy
 msgid ""
 "Currently, the quick reporting just forwards the request to the thorough "
-"reporting.  Also, it appears that this is for members (non-free) only. "
+"reporting. Also, it appears that this is for members (non-free) only. "
 "Hopefully this will change soon."
 msgstr ""
 "Þu anda hýzlý raporlama sadece isteði tam raporlamaya iletir. Ayrýca, "
 "görüldüðü kadarýyla bu sadece üyeler (ücretli) içindir. Umarýz bunu ileride "
 "deðiþtireceklerdir."
 
-msgid "Web-based Reporting"
+#, fuzzy
+msgid "Web-based reporting"
 msgstr "Web Tabanlý Raporlama"
 
 msgid ""
@@ -3343,11 +3384,12 @@ msgstr ""
 "ve içinde SpamCop servisi görülecektir. Mesaj silinmeyecek, fakat spam "
 "raporu göndermek için bir yanýt e-postasý beklemenize gerek olmayacaktýr."
 
+#, fuzzy
 msgid ""
 "The SpamCop service will display information as it finds it, so scroll down "
 "until you see a form button. It might pause a little while it is looking up "
 "information, so be a little patient. Read what it says, and submit the spam. "
-"Close the browser window.  Press Cancel or click on the appropriate mail "
+"Close the browser window. Press Cancel or click on the appropriate mail "
 "folder to see messages and/or delete the spam."
 msgstr ""
 "SpamCop servisi bilgi buldukça gösterecektir, bu yüzden bir form düðmesi "
@@ -3356,22 +3398,28 @@ msgstr ""
 "penceresini kapatýn . Vazgeç'e týklayýn veya mesajlarý görmek ve/veya spam "
 "mesajý silmek için istediðiniz posta klasörüne týklayýn."
 
-msgid "Spamcop Service Type"
+#, fuzzy
+msgid "SpamCop service type"
 msgstr "SpamCop Servis Türü"
 
+#, fuzzy
 msgid ""
-"Service type option allows selecting which spamcop services you are using. "
-"Member services use different web reporting forms  and does not display "
-"nags. You can purchase these services, if you want to support SpamCop."
+"Service type option allows selecting which SpamCop services you are using. "
+"Member services use different web reporting forms and does not display nags. "
+"You can purchase these services, if you want to support SpamCop."
 msgstr ""
 "Servis türü seçeneði hangi spamcop servislerini kullanacaðýnýzý seçmeninizi "
 "saðlar. Üye servisleri farklý web rapor formlarý kullanýr ve reklam vb "
 "içermez. SpamCop'ý desteklemek için bu servisleri satýn alabilirsiniz."
 
+#, fuzzy
+msgid "More information"
+msgstr "IMAP sunucu bilgisi"
+
+#, fuzzy, php-format
 msgid ""
-"<b>For more information</b> about SpamCop, it's services, spam in general, "
-"and many related topics, try reading through SpamCop's <a href=\"http://"
-"spamcop.net/help.shtml\">Help and Feedback</a> section."
+"For more information about SpamCop, it's services, spam in general, and many "
+"related topics, try reading through SpamCop's %sHelp and Feedback%s section."
 msgstr ""
 "SpamCop, servisleri, genel olarak spam, ve birçok ilgili konu hakkýnda "
 "<b>daha fazla bilgi için</b> <a href=\"http://spamcop.net/help.shtml"
@@ -3383,25 +3431,34 @@ msgstr "Spam Olarak Bildir"
 msgid "SpamCop - Spam Reporting"
 msgstr "SpamCop - Spam Bildirimi"
 
+#, fuzzy
 msgid ""
-"Help fight the battle against unsolicited email.  SpamCop reads the spam "
-"email and determines the correct addresses to send complaints to.  Quite "
+"Help fight the battle against unsolicited email. SpamCop reads the spam "
+"email and determines the correct addresses to send complaints to. Quite "
 "fast, really smart, and easy to use."
 msgstr ""
 "Ýstenmeyen e-postalara karþý savaþta yardým edin. SpamCop spam e-postayý "
 "okur ve þikayetlerin gönderileceði doðru adrese karar verir. Çok hýzlý, "
 "gerçekten zeki ve kullanýmý kolaydýr."
 
+#, fuzzy
 msgid ""
 "Sending this spam report will give you back a reply with URLs that you can "
 "click on to properly report this spam message to the proper authorities. "
-"This is a free service.  By pressing the \"Send Spam Report\" button, you "
+"This is a free service. By pressing the \"Send Spam Report\" button, you "
 "agree to follow SpamCop's rules/terms of service/etc."
 msgstr ""
 "Bu spam raporunu göndermek size, bu spam mesajý uygun yetkililere "
 "iletebilmeniz için týklayabileceðiniz URL'leri içeren bir yanýt "
 "gönderecektir. \"Spam Raporu Gönder\"düðmesine týklayarak SpamCop'ýn servis "
 "kurallarýna uyacaðýnýzý kabul edersiniz."
+
+msgid "Cancel / Done"
+msgstr ""
+
+#, fuzzy
+msgid "Send Spam Report"
+msgstr "Spam raporlama"
 
 msgid "SpellChecker Options"
 msgstr "Sözcük Denetim Seçenekleri"
@@ -3422,15 +3479,16 @@ msgstr "&quot;Sözcük Denetimi Seçenekleri&quot; Sayfasýna Dön"
 msgid "ATTENTION:"
 msgstr "DÝKKAT:"
 
+#, fuzzy
 msgid ""
 "SquirrelSpell was unable to decrypt your personal dictionary. This is most "
 "likely due to the fact that you have changed your mailbox password. In order "
 "to proceed, you will have to supply your old password so that SquirrelSpell "
 "can decrypt your personal dictionary. It will be re-encrypted with your new "
-"password after this.<br>If you haven't encrypted your dictionary, then it "
-"got mangled and is no longer valid. You will have to delete it and start "
-"anew. This is also true if you don't remember your old password -- without "
-"it, the encrypted data is no longer accessible."
+"password after this. If you haven't encrypted your dictionary, then it got "
+"mangled and is no longer valid. You will have to delete it and start anew. "
+"This is also true if you don't remember your old password -- without it, the "
+"encrypted data is no longer accessible."
 msgstr ""
 "Squirrel Sözcük Denetimi kiþisel sözlüðünüzün þifresini çözemedi. Bunun en "
 "muhtemel nedeni þifrenizi deðiþtirmiþ olmanýzdýr. Devam edebilmek için eski "
@@ -3468,15 +3526,27 @@ msgstr "Sözlük Þifresi Çözülürken Hata Oldu"
 msgid "Cute."
 msgstr "Sevimli."
 
-#, c-format
+#, php-format
+msgid "Could not run the spellchecker command (%s)."
+msgstr ""
+
+msgid "Error while writing to pipe."
+msgstr ""
+
+#, fuzzy, php-format
+msgid "Could not open temporary file '%s'."
+msgstr "Veri dosyasý kilitlenemedi"
+
+#, php-format
+msgid "Error while writing to temporary file '%s'."
+msgstr ""
+
+#, php-format
 msgid "I tried to execute '%s', but it returned:"
 msgstr "'%s' çalýþtýrmayý denedim, fakat þunu döndürdü:"
 
 msgid "SquirrelSpell is misconfigured."
 msgstr "Squirrel Sözcük Denetimi yanlýþ ayarlanmýþ."
-
-msgid "SquirrelSpell Results"
-msgstr "Squirrel Sözcük Denetimi Sonuçlarý"
 
 msgid "Spellcheck completed. Commit changes?"
 msgstr "Sözcük denetimi tamamlandý. Deðiþiklikler uyugulansýn mý?"
@@ -3487,7 +3557,10 @@ msgstr "Herhangi bir deðiþiklik yapýlmadý."
 msgid "Now saving your personal dictionary... Please wait."
 msgstr "Kiþisel sözlüðünüz kaydediliyor... Lütfen bekleyin."
 
-#, c-format
+msgid "SquirrelSpell Results"
+msgstr "Squirrel Sözcük Denetimi Sonuçlarý"
+
+#, php-format
 msgid "Found %s errors"
 msgstr "%s hata bulundu"
 
@@ -3558,6 +3631,24 @@ msgstr ""
 msgid "No errors found"
 msgstr "Hiç hata bulunmadý"
 
+#, fuzzy
+msgid ""
+"Your personal dictionary has been encrypted and is now stored in an "
+"encrypted format."
+msgstr ""
+"Kiþisel sözlüðünüz <strong>þifrelendi</strong> ve þu anda <strong>þifreli</"
+"strong> olarak saklanýyor."
+
+#, fuzzy
+msgid ""
+"Your personal dictionary has been decrypted and is now stored as plain text."
+msgstr ""
+"Kiþisel sözlüðünüzün <strong>þifresi çözüldü</strong> ve þu anda "
+"<strong>açýk yazý</strong> olarak saklanýyor."
+
+msgid "Personal Dictionary Crypto Settings"
+msgstr "Kiþisel Sözlük Þifreleme Ayarlarý"
+
 msgid "Your personal dictionary was erased."
 msgstr "Kiþisel sözlüðünüz silindi."
 
@@ -3581,7 +3672,8 @@ msgstr ""
 "Kiþisel sözlüðünüz baþarýyla yeniden þifrelendi. Þimdi &quot;Sözcük Denetimi "
 "Seçenekleri&quot; menüsüne dönerek seçiminizi tekrar yapýn."
 
-msgid "Successful Re-encryption"
+#, fuzzy
+msgid "Successful re-encryption"
 msgstr "Baþarýlý yeniden þifreleme"
 
 msgid ""
@@ -3595,23 +3687,6 @@ msgstr ""
 msgid "Dictionary re-encrypted"
 msgstr "Sözlük yeniden þifrelendi"
 
-msgid ""
-"Your personal dictionary has been <strong>encrypted</strong> and is now "
-"stored in an <strong>encrypted format</strong>."
-msgstr ""
-"Kiþisel sözlüðünüz <strong>þifrelendi</strong> ve þu anda <strong>þifreli</"
-"strong> olarak saklanýyor."
-
-msgid ""
-"Your personal dictionary has been <strong>decrypted</strong> and is now "
-"stored as <strong>clear text</strong>."
-msgstr ""
-"Kiþisel sözlüðünüzün <strong>þifresi çözüldü</strong> ve þu anda "
-"<strong>açýk yazý</strong> olarak saklanýyor."
-
-msgid "Personal Dictionary Crypto Settings"
-msgstr "Kiþisel Sözlük Þifreleme Ayarlarý"
-
 msgid "Personal Dictionary"
 msgstr "Kiþisel Sözlük"
 
@@ -3621,7 +3696,7 @@ msgstr "Kiþisel sözlüðünüzde hiç sözcük yok."
 msgid "Please check any words you wish to delete from your dictionary."
 msgstr "Sözlüðünüzden silmek istediðiniz sözcükleri seçin."
 
-#, c-format
+#, php-format
 msgid "%s dictionary"
 msgstr "%s sözlük"
 
@@ -3641,32 +3716,31 @@ msgstr ""
 "Bu, kiþisel sözlüðünüzü þifreleyerek þifreli olarak saklayacaktýr. Devam "
 "etmek istiyor musunuz?"
 
+#, fuzzy
 msgid ""
-"This will decrypt your personal dictionary and store it in a clear-text "
+"This will decrypt your personal dictionary and store it in a plain text "
 "format. Proceed?"
 msgstr ""
 "Bu, kiþisel sözlüðünüzün þifresini çözerek açýk yazý olarak saklayacaktýr. "
 "Devam etmek istiyor musunuz?"
 
+#, fuzzy
+msgid "Your personal dictionary is currently encrypted."
+msgstr "Kiþisel sözlüðünüz silindi."
+
 msgid ""
-"<p>Your personal dictionary is <strong>currently encrypted</strong>. This "
-"helps protect your privacy in case the web-mail system gets compromized and "
-"your personal dictionary ends up stolen. It is currently encrypted with the "
-"password you use to access your mailbox, making it hard for anyone to see "
-"what is stored in your personal dictionary.</p> <p><strong>ATTENTION:</"
-"strong> If you forget your password, your personal dictionary will become "
+"This helps protect your privacy in case the web-mail system gets compromized "
+"and your personal dictionary ends up stolen. It is currently encrypted with "
+"the password you use to access your mailbox, making it hard for anyone to "
+"see what is stored in your personal dictionary."
+msgstr ""
+
+msgid ""
+"If you forget your password, your personal dictionary will become "
 "unaccessible, since it can no longer be decrypted. If you change your "
 "mailbox password, SquirrelSpell will recognize it and prompt you for your "
-"old password in order to re-encrypt the dictionary with a new key.</p>"
+"old password in order to re-encrypt the dictionary with a new key."
 msgstr ""
-"<p>Kiþisel sözlüðünüz <strong>þu anda þifreli</strong>. Bu, web e-posta "
-"sistemine izinsiz girilmesi ve sözlüðünüzün çalýnmasý durumunda kiþisel "
-"gizliliðinizi koruyacaktýr. Þu anda posta kutunuza ulaþmak için "
-"kullandýðýnýz þifreniz ile þifrelenmiþ durumda ve bu þifreyi bilmeden "
-"okunmasý çok zor.</p> <p>DÝKKAT:</p> Eðer þifrenizi unutursanýz, kiþisel "
-"sözlüðünüz çözülemediði için ulaþýlamaz hale gelecek. Eðer posta kutusu "
-"þifrenizi deðiþtirirseniz, Squirrel Sözcük Denetimi bunu farkederek "
-"sözlüðünüzü yeni þifrenizle þifrelemek için bunu size soracaktýr.</p>"
 
 msgid ""
 "Please decrypt my personal dictionary and store it in a clear-text format."
@@ -3675,20 +3749,26 @@ msgstr "Lütfen kiþisel sözlüðümün þifresini çöz ve düz yazý olarak sakla."
 msgid "Change crypto settings"
 msgstr "Þifreleme ayarlarýný deðiþtir"
 
+#, fuzzy
+msgid "Your personal dictionary is currently not encrypted."
+msgstr "Kiþisel sözlüðünüz silindi."
+
 msgid ""
-"<p>Your personal dictionary is <strong>currently not encrypted</strong>. You "
-"may wish to encrypt your personal dictionary to protect your privacy in case "
-"the webmail system gets compromized and your personal dictionary file gets "
-"stolen. When encrypted, the file's contents look garbled and are hard to "
-"decrypt without knowing the correct key (which is your mailbox password).</"
-"p> <strong>ATTENTION:</strong> If you decide to encrypt your personal "
-"dictionary, you must remember that it gets &quot;hashed&quot; with your "
-"mailbox password. If you forget your mailbox password and the administrator "
-"changes it to a new value, your personal dictionary will become useless and "
-"will have to be created anew. However, if you or your system administrator "
-"change your mailbox password but you still have the old password at hand, "
-"you will be able to enter the old key to re-encrypt the dictionary with the "
-"new value.</p>"
+"You may wish to encrypt your personal dictionary to protect your privacy in "
+"case the webmail system gets compromized and your personal dictionary file "
+"gets stolen. When encrypted, the file's contents look garbled and are hard "
+"to decrypt without knowing the correct key (which is your mailbox password)."
+msgstr ""
+
+#, fuzzy
+msgid ""
+"If you decide to encrypt your personal dictionary, you must remember that it "
+"gets &quot;hashed&quot; with your mailbox password. If you forget your "
+"mailbox password and the administrator changes it to a new value, your "
+"personal dictionary will become useless and will have to be created anew. "
+"However, if you or your system administrator change your mailbox password "
+"but you still have the old password at hand, you will be able to enter the "
+"old key to re-encrypt the dictionary with the new value."
 msgstr ""
 "<p>Kiþisel sözlüðünüz <strong>þu anda þifreli deðil</strong>. Web e-posta "
 "sistemine izinsiz giriþ olmasý ve kiþisel sözlük dosyanýzýn çalýnmasý "
@@ -3707,8 +3787,8 @@ msgid ""
 "Please encrypt my personal dictionary and store it in an encrypted format."
 msgstr "Lütfen kiþisel sözlüðümü þifrele ve þifrelenmiþ olarak sakla."
 
-#, c-format
-msgid "Deleting the following entries from <strong>%s</strong> dictionary:"
+#, fuzzy, php-format
+msgid "Deleting the following entries from %s dictionary:"
 msgstr "<strong>%s</strong> sözlüðünden aþaðýdaki girdiler siliniyor:"
 
 msgid "All done!"
@@ -3733,16 +3813,14 @@ msgstr ""
 msgid "SquirrelSpell Initiating"
 msgstr "Squirrel Sözcük Denetimi Baþlýyor"
 
-#, c-format
-msgid ""
-"Settings adjusted to: <strong>%s</strong> with <strong>%s</strong> as "
-"default dictionary."
+#, fuzzy, php-format
+msgid "Settings adjusted to: %s with %s as default dictionary."
 msgstr ""
 "Ayarlar þöyle yapýldý: Varsayýlan sözlük olarak <strong>%s</strong> ile "
 "<strong>%s</strong>."
 
-#, c-format
-msgid "Using <strong>%s</strong> dictionary (system default) for spellcheck."
+#, fuzzy, php-format
+msgid "Using %s dictionary (system default) for spellcheck."
 msgstr ""
 "Sözcük denetimi için <strong>%s</strong> sözlüðü (sistem varsayýlaný) "
 "kullanýlýyor."
@@ -3793,27 +3871,24 @@ msgstr "Çevirmen Seçenekleri Kaydedildi"
 msgid "Your server options are as follows:"
 msgstr "Sunucu seçenekleriniz þu þekildedir:"
 
-msgid "Maximum of 1000 characters translated, powered by Systran"
+#, fuzzy
+msgid "Maximum of 150 words translated, powered by Systran"
 msgstr "En fazla 1000 karakter çevrilir, Systran tarafýndan desteklenir."
 
-#, c-format
+#, php-format
 msgid "Number of supported language pairs: %s"
 msgstr "Desteklenen dil çifti sayýsý: %s"
 
 msgid "No known limits, powered by Systran"
 msgstr "Bilinen sýnýrlamalarý yoktur, Systran tarafýndan desteklenir."
 
-msgid "No known limits, powered by GPLTrans (free, open source)"
-msgstr ""
-"Bilinen sýnýrlamalarý yoktur, GPLTrans (bedava, açýk kaynak) tarafýndan "
-"desteklenir."
-
-msgid "No known limits, powered by Translation Experts's InterTran"
+#, fuzzy
+msgid "No known limits, powered by Translation Experts' InterTran"
 msgstr ""
 "Bilinen sýnýrlamalarý yoktur, Translation Expert's InterTran tarafýndan "
 "desteklenir."
 
-#, c-format
+#, php-format
 msgid "Number of supported languages: %s"
 msgstr "Desteklenen dil sayýsý: %s"
 
@@ -3853,12 +3928,6 @@ msgstr "saðda"
 msgid "Translate inside the SquirrelMail frames"
 msgstr "SquirrelMail çerçevelerinin içinde çevir"
 
-msgid "When composing:"
-msgstr "Mesaj yazarken:"
-
-msgid "Not yet functional, currently does nothing"
-msgstr "Henüz fonksiyonel deðil, hiçbir iþe yaramýyor"
-
 msgid "Translation Options"
 msgstr "Çeviri Seçenekleri"
 
@@ -3867,21 +3936,30 @@ msgid ""
 "language?"
 msgstr "Farklý bir dilde mesaj aldýðýnýzda hangi çevirmen kullanýlsýn?"
 
-#, c-format
+#, php-format
 msgid "%s to %s"
 msgstr "%s dilinden %s diline"
+
+msgid "Chinese, Simplified"
+msgstr ""
 
 msgid "English"
 msgstr "Ýngilizce"
 
-msgid "Chinese"
-msgstr "Çince"
+msgid "Chinese, Traditional"
+msgstr ""
+
+msgid "Dutch"
+msgstr "Hollandaca"
 
 msgid "French"
 msgstr "Fransýzca"
 
 msgid "German"
 msgstr "Almanca"
+
+msgid "Greek"
+msgstr "Yunanca"
 
 msgid "Italian"
 msgstr "Ýtalyanca"
@@ -3895,11 +3973,11 @@ msgstr "Korece"
 msgid "Portuguese"
 msgstr "Portekizce"
 
-msgid "Spanish"
-msgstr "Ýspanyolca"
-
 msgid "Russian"
 msgstr "Rusça"
+
+msgid "Spanish"
+msgstr "Ýspanyolca"
 
 msgid "Translate"
 msgstr "Çevir"
@@ -3919,17 +3997,11 @@ msgstr "Çekçe"
 msgid "Danish"
 msgstr "Danimarkaca"
 
-msgid "Dutch"
-msgstr "Hollandaca"
-
 msgid "Filipino (Tagalog)"
 msgstr "Filipince (Tagalog)"
 
 msgid "Finnish"
 msgstr "Fince"
-
-msgid "Greek"
-msgstr "Yunanca"
 
 msgid "Hungarian"
 msgstr "Macarca"
@@ -3976,20 +4048,973 @@ msgstr "Ýngilizce'ye"
 msgid "from English"
 msgstr "Ýngilizce'den"
 
-msgid "Simplified Chinese"
-msgstr "Basitleþtirilmiþ Çince"
-
-msgid "Traditional Chinese"
-msgstr "Geleneksel Çince"
-
 msgid "Interface language"
 msgstr "Arayüz dili"
 
 msgid "Translation direction"
 msgstr "Çeviri yönü"
 
+#, fuzzy, php-format
+msgid "About SquirrelMail %s"
+msgstr "SquirrelMail sürüm %s"
+
+msgid ""
+"SquirrelMail is the name of the program that provides access to your email "
+"via the web."
+msgstr ""
+
+#, php-format
+msgid ""
+"If you have questions about or problems with your mail account, passwords, "
+"abuse etc, please refer to your system administrator or provider%s."
+msgstr ""
+
+#, php-format
+msgid ""
+"They can assist you adequately with these issues. The SquirrelMail Project "
+"Team cannot help you with that. The %shelp system%s provides answers to "
+"frequently asked questions."
+msgstr ""
+
+#, php-format
+msgid ""
+"SquirrelMail is a feature rich, standards compliant webmail application "
+"written in PHP. It was made by a group of volunteers united in the "
+"SquirrelMail Project Team and is released as open source, free software "
+"under the %sGNU General Public License%s."
+msgstr ""
+
+#, php-format
+msgid ""
+"For more information about SquirrelMail and the SquirrelMail Project Team, "
+"see %sthe SquirrelMail website%s."
+msgstr ""
+
+#, fuzzy
+msgid "System information"
+msgstr "IMAP sunucu bilgisi"
+
+#, fuzzy, php-format
+msgid "You are using SquirrelMail version: %s"
+msgstr "SquirrelMail sürüm %s"
+
+msgid "The administrator installed the following plugins:"
+msgstr ""
+
+msgid "none installed"
+msgstr ""
+
+msgid "sort by nickname"
+msgstr ""
+
+#, fuzzy
+msgid "sort by name"
+msgstr "Soyadý"
+
+msgid "sort by email"
+msgstr ""
+
+msgid "sort by info"
+msgstr ""
+
+msgid "Add to address book"
+msgstr "Adres defterine ekle"
+
+msgid ""
+"Because PHP file uploads are turned off, you can not attach files to this "
+"message. Please see your system administrator for details."
+msgstr ""
+
+#, fuzzy
+msgid "No folders were found to unsubscribe from."
+msgstr "Listeden çýkarýlacak klasör bulunamadý!"
+
+#, fuzzy
+msgid "No folders were found to subscribe to."
+msgstr "Listeye eklenecek klasör bulunamadý!"
+
+msgid "Last Refresh"
+msgstr "Son Güncelleme"
+
+#, fuzzy
+msgid "Check mail"
+msgstr "Oturum açma sýrasýnda mesaj kontrolü yap"
+
+msgid "Save folder tree"
+msgstr "Klasör yapýsýný kaydet"
+
+#, fuzzy
+msgid "SquirrelMail Webmail Application"
+msgstr "SquirrelMail sürüm %s"
+
+#, fuzzy
+msgid "Compose Preferences"
+msgstr "Klasör Tercihleri"
+
+msgid ""
+"Control the behaviour and layout of writing new mail messages, replying to "
+"and forwarding messages."
+msgstr ""
+
+#, fuzzy
+msgid "Received"
+msgstr "Alýndý bilgisi"
+
+#, fuzzy
+msgid "As Attachment"
+msgstr "Eklentiler"
+
+msgid "Bypass Trash"
+msgstr "Çöpü Atla"
+
+msgid "Please enter something to search for"
+msgstr "Aramak için birþey yazýn"
+
+msgid "There must be at least one criteria to search for"
+msgstr "Aramak için en az bir kriter olmalý"
+
+msgid "Error in criteria argument"
+msgstr "Kriter argümanýnda hata"
+
+msgid "(Illegal date)"
+msgstr "(Geçersiz tarih)"
+
+msgid "(Wrong date)"
+msgstr "(Yanlýþ tarih)"
+
+msgid "In"
+msgstr "Þunun Ýçinde:"
+
+msgid "(Missing argument)"
+msgstr "(Eksik argüman)"
+
+msgid "(Spurious argument)"
+msgstr "(Sahte argüman)"
+
+#, fuzzy
+msgid "Fold"
+msgstr "Klasör"
+
+#, fuzzy
+msgid "Unfold"
+msgstr "Bilgi"
+
+msgid "Saved Searches"
+msgstr "Kayýtlý Aramalar"
+
+msgid "Missing"
+msgstr "Eksik"
+
+msgid "and&nbsp;subfolders:"
+msgstr "ve&nbsp;alt&nbsp;klasörleri:"
+
+msgid "Exclude Criteria:"
+msgstr "Kriteri Dýþla:"
+
+msgid "Search Criteria"
+msgstr "Arama Kriteri"
+
+msgid "Add New Criteria"
+msgstr "Yeni Kriter Ekle"
+
+msgid "Remove Excluded Criteria"
+msgstr "Dýþlanmýþ Kriteri Çýkar"
+
+msgid "Remove All Criteria"
+msgstr "Tüm Kriterleri Çýkar"
+
+msgid "Not"
+msgstr "Deðil"
+
+msgid "Answered"
+msgstr "Cevaplanmýþ"
+
+msgid "Before"
+msgstr "Tarihten Önce"
+
+msgid "Message Body"
+msgstr "Mesaj Gövdesi"
+
+msgid "Deleted"
+msgstr "Silinmiþ"
+
+msgid "Draft"
+msgstr "Taslak"
+
+msgid "Flagged"
+msgstr "Ýþaretlenmiþ"
+
+msgid "Sent By"
+msgstr "Gönderen"
+
+msgid "Header Field"
+msgstr "Baþlýk Alaný"
+
+msgid "Keyword"
+msgstr "Anahtar Kelime"
+
+msgid "Larger Than"
+msgstr "Þundan Büyük"
+
+msgid "Old"
+msgstr "Eski"
+
+msgid "On"
+msgstr "Üzerinde"
+
+msgid "Recent"
+msgstr "Son"
+
+msgid "Seen"
+msgstr "Görülmüþ"
+
+msgid "Sent Before"
+msgstr "Tarihten Önce Gönderilmiþ"
+
+msgid "Sent On"
+msgstr "Tarihte Gönderilmiþ"
+
+msgid "Sent Since"
+msgstr "Tarihten Ýtibaren Gönderilmiþ"
+
+msgid "Since"
+msgstr "Tarihten Beri"
+
+msgid "Smaller Than"
+msgstr "Þundan Küçük"
+
+msgid "Subject Contains"
+msgstr "Konu Ýçeriði"
+
+msgid "Header and Body"
+msgstr "Baþlýk ve Gövde"
+
+msgid "Sent To"
+msgstr "Gönderilen"
+
+msgid "And In"
+msgstr "Ve Þunun Ýçinde"
+
+msgid "Or In"
+msgstr "Veya Þunun Ýçinde"
+
+msgid "And"
+msgstr "Ve"
+
+msgid "Or"
+msgstr "Veya"
+
+#, fuzzy
+msgid "Standard search"
+msgstr "Kayýtlý Aramalar"
+
+#, fuzzy
+msgid "Advanced search"
+msgstr "Kayýtlý Aramalar"
+
+msgid "Folder List"
+msgstr "Klasör Listesi"
+
+msgid "PHP install does not have LDAP support."
+msgstr ""
+
+#, fuzzy
+msgid "Click here to change the sorting of the address list"
+msgstr "Mesaj listesinin sýralanmasýný deðiþtirmek için buraya týklayýn"
+
+#, fuzzy
+msgid "Illegal folder name."
+msgstr "(Geçersiz tarih)"
+
+#, php-format
+msgid "The name may not contain any of the following: %s"
+msgstr ""
+
+#, fuzzy
+msgid "Please select a different name."
+msgstr "Hatalý klasör ismi. Lütfen farklý bir isim seçiniz."
+
+#, fuzzy
+msgid "You have not selected a folder to subscribe. Please do so."
+msgstr "Adlandýracak herhangi bir klasör seçmediniz."
+
+#, fuzzy
+msgid "You have not selected a folder to unsubscribe. Please do so."
+msgstr "Adlandýracak herhangi bir klasör seçmediniz."
+
+#, fuzzy
+msgid "Possible reason:"
+msgstr "Muhtemel neden : "
+
+#, fuzzy
+msgid "ERROR: Bad function call."
+msgstr "HATA : Kötü iþlev çaðrýsý"
+
+msgid "Reason:"
+msgstr "Neden:"
+
+msgid ""
+"TLS is enabled, but this version of PHP does not support TLS sockets, or is "
+"missing the openssl extension."
+msgstr ""
+
+msgid ""
+"Your mailbox is not located at this server. Try a different server or "
+"consult your system administrator"
+msgstr ""
+
+#, fuzzy
+msgid "Unknown recipient"
+msgstr "Bilinmeyen yanýt"
+
+msgid "Unflag"
+msgstr ""
+
+#, fuzzy
+msgid "Flag"
+msgstr "Bayraklar"
+
+#, fuzzy
+msgid "Undelete"
+msgstr "sil"
+
+#, fuzzy
+msgid "General Message Composition"
+msgstr "Mesaj Görünüm ve Yazýmý"
+
+#, fuzzy
+msgid "Replying and Forwarding Messages"
+msgstr "Mesajlarý Ýletirken Cc'leri Silme"
+
+msgid "Strip signature when replying"
+msgstr "Cevap verirken imzayý sil"
+
+msgid "Enable Fancy Row Mouseover Highlighting"
+msgstr ""
+
+msgid "Message Flags Icon Theme"
+msgstr ""
+
+msgid "Show Flag / Unflag Buttons"
+msgstr ""
+
+#, fuzzy
+msgid "Use Compact Page Selector"
+msgstr "Sayfa Seçici Kullan"
+
+msgid "Length of From/To Field (0 for full)"
+msgstr "Gönderen/Alýcý Alanýnýn Uzunluðu (tüm alan için 0)"
+
+msgid "Length of Subject Field (0 for full)"
+msgstr "Konu Alanýnýn Uzunluðu (tüm alan için 0)"
+
+#, fuzzy
+msgid "Message Display Options"
+msgstr "Genel Görünüm Seçenekleri"
+
+msgid "Show 'Delete & Prev/Next' Links"
+msgstr "'Sil ve Önceki/Sonraki' Linklerini Göster"
+
+#, fuzzy
+msgid "Save Replies with Original Message"
+msgstr "Özgün Mesaj"
+
+#, fuzzy, php-format
+msgid "%d Minute"
+msgid_plural "%d Minutes"
+msgstr[0] "Dakika"
+msgstr[1] "Dakika"
+
+msgid "Show only subscribed folders"
+msgstr ""
+
+msgid "XP"
+msgstr ""
+
+#, fuzzy
+msgid "Hide SquirrelMail Header"
+msgstr "Tüm Baþlýklarý Göster"
+
+#, fuzzy
+msgid "Search functions"
+msgstr "Ara"
+
+msgid "Only basic search"
+msgstr ""
+
+msgid "Only advanced search"
+msgstr ""
+
+#, fuzzy
+msgid "Both search functions"
+msgstr "Php recode iþlevlerini kullan"
+
+msgid "Show alternative language names"
+msgstr "Alternatif dil isimlerini göster"
+
+msgid "Available languages"
+msgstr "Mevcut diller"
+
+#, fuzzy
+msgid "Enable aggressive decoding"
+msgstr "Agresif þifre çözümü kullan"
+
+msgid "Tweaks"
+msgstr "Optimizasyonlar"
+
+msgid "Use advanced tree folder listing"
+msgstr "Geliþmiþ dizin listelemesi kullan"
+
+#, fuzzy
+msgid "Use icons"
+msgstr "Saniye"
+
+#, fuzzy
+msgid "Use PHP recode functions"
+msgstr "Php recode iþlevlerini kullan"
+
+#, fuzzy
+msgid "Use PHP iconv functions"
+msgstr "Php iconv iþlevlerini kullan"
+
+msgid "Allow remote configuration test"
+msgstr ""
+
+msgid "Show System Specifications"
+msgstr ""
+
+#, fuzzy
+msgid "Search Mailing List Archives"
+msgstr "Liste Arþivleri"
+
+msgid "Search SourceForge Bugtracker"
+msgstr ""
+
+#, fuzzy
+msgid "Search for words:"
+msgstr "Ara"
+
+msgid "Written by:"
+msgstr ""
+
+#, fuzzy
+msgid "Email addresses only"
+msgstr "E-posta adresi"
+
+#, fuzzy
+msgid "Mailing list:"
+msgstr "E-posta listesi"
+
+#, fuzzy
+msgid "SquirrelMail users list"
+msgstr "SquirrelMail sürüm %s"
+
+#, fuzzy
+msgid "SquirrelMail plugins list"
+msgstr "SquirrelMail sürüm %s"
+
+#, fuzzy
+msgid "SquirrelMail developers list"
+msgstr "SquirrelMail sürüm %s"
+
+#, fuzzy
+msgid "SquirrelMail internationalization list"
+msgstr "SquirrelMail sürüm %s"
+
+#, fuzzy
+msgid "Sort by:"
+msgstr "Port:"
+
+msgid "Relevance"
+msgstr ""
+
+#, fuzzy
+msgid "Search Archives"
+msgstr "Arama Kriteri"
+
+#, fuzzy
+msgid "Reset Form"
+msgstr "Klasörü Sil"
+
+msgid "Summary keyword:"
+msgstr ""
+
+#, fuzzy
+msgid "Sort By:"
+msgstr "Gönderen"
+
+msgid "ID"
+msgstr ""
+
+#, fuzzy
+msgid "Summary"
+msgstr "Pazar"
+
+#, fuzzy
+msgid "Open Date"
+msgstr "Dosya / dizin açýlamadý"
+
+#, fuzzy
+msgid "Close Date"
+msgstr "Kapat"
+
+#, fuzzy
+msgid "Submitter"
+msgstr "Tamam"
+
+msgid "Assignee"
+msgstr ""
+
+#, fuzzy
+msgid "Order:"
+msgstr "Diðer:"
+
+msgid "Ascending"
+msgstr ""
+
+msgid "Descending"
+msgstr ""
+
+#, fuzzy
+msgid "Search Bugtracker"
+msgstr "Arama Kriteri"
+
+msgid "You must type in a new password."
+msgstr ""
+
+msgid "You must also type in your new password in the verify box."
+msgstr ""
+
+msgid "Your new password does not match the verify password."
+msgstr ""
+
+msgid "You must type in your current password."
+msgstr ""
+
+#, fuzzy
+msgid "Your current password is not correct."
+msgstr "Bilinmeyen kullanýcý veya þifre hatasý."
+
+#, php-format
+msgid "Your new password should be %s to %s characters long."
+msgstr ""
+
+#, fuzzy
+msgid "Your new password contains invalid characters."
+msgstr "Takma ad geçersiz karakterler içeriyor"
+
+#, fuzzy
+msgid "Change Password"
+msgstr "Bu kelimeyi deðiþtir"
+
+#, fuzzy
+msgid "Current Password:"
+msgstr "Þifre:"
+
+#, fuzzy
+msgid "New Password:"
+msgstr "Þifre:"
+
+#, fuzzy
+msgid "Verify New Password:"
+msgstr "Þifre:"
+
+msgid "Use this to change your email password."
+msgstr ""
+
+#, fuzzy
+msgid "User's Password"
+msgstr "Þifre:"
+
+msgid "Current configuration requires LDAP support in PHP."
+msgstr ""
+
+msgid "Plugin is not configured correctly."
+msgstr ""
+
+#, php-format
+msgid "Setting of LDAP connection option %s to value %s failed."
+msgstr ""
+
+#, php-format
+msgid "Incorrect LDAP connection option: %s"
+msgstr ""
+
+msgid ""
+"Current PHP LDAP extension does not allow use of ldap_set_option() function."
+msgstr ""
+
+#, fuzzy
+msgid "Unable to use TLS."
+msgstr "Güncelleme yapýlamýyor."
+
+#, fuzzy, php-format
+msgid "Error: %s"
+msgstr "Hata "
+
+msgid "Unable to use LDAP TLS in current setup."
+msgstr ""
+
+msgid "Unable to bind to LDAP server."
+msgstr ""
+
+#, fuzzy, php-format
+msgid "Server replied: %s"
+msgstr "Sunucu yanýtý: "
+
+msgid "Unable to find user's password attribute."
+msgstr ""
+
+msgid "Unable to rebind to LDAP server."
+msgstr ""
+
+msgid "LDAP server uses different attribute to store user's password."
+msgstr ""
+
+#, fuzzy
+msgid "Unable to connect to LDAP server."
+msgstr "Sunucuya baðlantý yok"
+
+msgid "Unable to find user's DN."
+msgstr ""
+
+#, fuzzy
+msgid "Search error."
+msgstr "Ara"
+
+msgid "Multiple userid matches found."
+msgstr ""
+
+msgid "ldap_get_dn error."
+msgstr ""
+
+#, php-format
+msgid "Unsupported crypto: %s"
+msgstr ""
+
+msgid "PHP mhash extension is missing."
+msgstr ""
+
+msgid "System crypt library doesn't support standard DES crypt."
+msgstr ""
+
+msgid "System crypt library doesn't have MD5 support."
+msgstr ""
+
+msgid "System crypt library doesn't support extended DES crypt."
+msgstr ""
+
+msgid "System crypt library doesn't have Blowfish support."
+msgstr ""
+
+#, fuzzy
+msgid "unknown"
+msgstr "Bilinmeyen tarih"
+
+msgid "Unable to validate user's password."
+msgstr ""
+
+msgid "Blowfish is not supported by webserver's system crypt library."
+msgstr ""
+
+msgid "MD5 is not supported by webserver's system crypt library."
+msgstr ""
+
+msgid ""
+"Extended DES crypt is not supported by webserver's system crypt library."
+msgstr ""
+
+msgid ""
+"Standard DES crypt is not supported by webserver's system crypt library."
+msgstr ""
+
+msgid "PHP Curl extension is NOT available! Unable to change password!"
+msgstr ""
+
+msgid "Cannot change password! (Is user 'Self Configurable User' ?) (401)"
+msgstr ""
+
+#, fuzzy
+msgid "Cannot change password!"
+msgstr "Bu kelimeyi deðiþtir"
+
+msgid "Cannot connect to Database Server, please try later!"
+msgstr ""
+
+msgid "Database not found on server"
+msgstr ""
+
+msgid "SQL call failed, try again later."
+msgstr ""
+
+msgid "Duplicate login entries detected, cannot change password!"
+msgstr ""
+
+msgid "Password change was not successful!"
+msgstr ""
+
+msgid "Closing Connection"
+msgstr ""
+
+#, fuzzy
+msgid "Connecting to Password Server"
+msgstr "Sunucuya baðlantý yok"
+
+msgid "No valid backend defined."
+msgstr ""
+
+msgid "Incorrent path to vmail.inc file."
+msgstr ""
+
+msgid "Invalid or corrupted vmail.inc file."
+msgstr ""
+
+msgid "Invalid user."
+msgstr ""
+
+#, fuzzy
+msgid "Empty domain"
+msgstr "Boþ komut giriþi"
+
+#, fuzzy
+msgid "Empty domain password"
+msgstr "Boþ komut giriþi"
+
+#, fuzzy
+msgid "Empty username"
+msgstr "Kullanýcý Adý:"
+
+msgid "Empty new password"
+msgstr ""
+
+#, fuzzy
+msgid "Server Capability response:"
+msgstr "Sunucu yanýtý: "
+
+msgid ""
+"Select the IMAP commands you would like to run. Most commands require a "
+"selected mailbox so the select command is already setup. You can clear all "
+"the commands and test your own IMAP command strings. The commands are "
+"executed in order. The default values are simple IMAP commands using your "
+"default_charset and folder_prefix from SquirrelMail when needed."
+msgstr ""
+
+msgid ""
+"NOTE: These commands are live, any changes made will effect your current "
+"email account."
+msgstr ""
+
+#, fuzzy
+msgid "Select"
+msgstr "Tümünü Seç"
+
+#, fuzzy
+msgid "Test Name"
+msgstr "Tema ismi"
+
+#, fuzzy
+msgid "IMAP command string"
+msgstr "Boþ komut giriþi"
+
+#, fuzzy
+msgid "Request:"
+msgstr "istendi"
+
+msgid "No POP3 servers configured yet."
+msgstr "Herhangi bir POP3 sunucusu ayarlanmadý."
+
+msgid "Click here to go to the options page."
+msgstr "Seçenekler sayfasýna gitmek için buraya týklayýn."
+
+#, fuzzy, php-format
+msgid "Login OK: Inbox contains %s message"
+msgid_plural "Login OK: Inbox contains %s messages"
+msgstr[0] "Giriþ Tamam: Inbox ["
+msgstr[1] "Giriþ Tamam: Inbox ["
+
+#, fuzzy
+msgid "Width of popup window:"
+msgstr "Yazým Penceresinin Geniþliði"
+
+msgid "If set to 0, reverts to default value"
+msgstr ""
+
+#, fuzzy
+msgid "Height of popup window:"
+msgstr "Yazým Penceresinin Yüksekliði"
+
+msgid "uploaded media file"
+msgstr ""
+
+#, fuzzy
+msgid "none"
+msgstr "(hiçbiri)"
+
+msgid "Upload Media File:"
+msgstr ""
+
+msgid "Uploaded Media File:"
+msgstr ""
+
+#, fuzzy
+msgid "unavailable"
+msgstr "kullanýlýr deðil"
+
+#, php-format
+msgid "Media file %s will be removed, if you upload other media file."
+msgstr ""
+
+msgid "Spam Service Type:"
+msgstr "Spam Servis Türü:"
+
+msgid "Free reporting"
+msgstr "Ücretsiz raporlama"
+
+msgid "Member services"
+msgstr "Üye servisleri"
+
+#, fuzzy
+msgid "Save Service Type"
+msgstr "Spam Servis Türü:"
+
+#, fuzzy
+msgid "SpamCop reporting"
+msgstr "Spam raporlama"
+
+#, fuzzy
+msgid "Translation Theme:"
+msgstr "Çeviri yönü"
+
+msgid ""
+"Selected translation engine is disabled. Please update your translation "
+"preferences."
+msgstr ""
+
+#, fuzzy
+msgid "Translation Preferences"
+msgstr "Kurum Ayarlarý"
+
+#, fuzzy
+msgid "Maximum of 25 kilobytes translated, powered by Systran"
+msgstr "En fazla 1000 karakter çevrilir, Systran tarafýndan desteklenir."
+
+msgid "No known limits, powered by GPLTrans (free, open source)"
+msgstr ""
+"Bilinen sýnýrlamalarý yoktur, GPLTrans (bedava, açýk kaynak) tarafýndan "
+"desteklenir."
+
+msgid "Transliterate unknown words:"
+msgstr ""
+
+msgid "When composing:"
+msgstr "Mesaj yazarken:"
+
+msgid "Not yet functional, currently does nothing"
+msgstr "Henüz fonksiyonel deðil, hiçbir iþe yaramýyor"
+
 msgid "Delivery error report"
 msgstr "Daðýtým hata raporu"
 
 msgid "Undelivered Message Headers"
 msgstr "Daðýtýlmayan Mesaj Baþlýklarý"
+
+msgid "This image has been removed for security reasons"
+msgstr ""
+
+#~ msgid "Unknown error"
+#~ msgstr "Bilinmeyen hata"
+
+#~ msgid "said"
+#~ msgstr "dedi ki"
+
+#~ msgid "To:"
+#~ msgstr "Alýcý:"
+
+#~ msgid "CC:"
+#~ msgstr "Cc:"
+
+#~ msgid "BCC:"
+#~ msgstr "Bcc:"
+
+#~ msgid "Subject:"
+#~ msgstr "Konu:"
+
+#~ msgid "Draft folder"
+#~ msgstr "Taslak Klasörü"
+
+#~ msgid "CC"
+#~ msgstr "Cc"
+
+#~ msgid "Can not modify global address book"
+#~ msgstr "Global adres defteri deðiþtirilemez"
+
+#~ msgid "Business Card"
+#~ msgstr "Ýþ Kartý"
+
+#~ msgid "The imap server failed to handle threading."
+#~ msgstr "Imap sunucusu threading yapmayý baþaramadý."
+
+#~ msgid "Click here to unset thread view for this mailbox and start again."
+#~ msgstr ""
+#~ "Bu posta kutusu için thread görünümünü kaldýrmak için buraya týklayýp "
+#~ "yeniden baþlayýn."
+
+#~ msgid "Show recipient name if the message is from your default identity"
+#~ msgstr "Mesaj sizden gidiyorsa alýcý ismi gösterilsin"
+
+#~ msgid "Use old folder listing functions"
+#~ msgstr "Eski listeleme iþlevlerini kullan"
+
+#~ msgid "You are currently using version %s."
+#~ msgstr "Þu anda sürüm %s kullanýyorsunuz."
+
+#~ msgid "All Messages"
+#~ msgstr "Tüm Mesajlar"
+
+#~ msgid "] messages"
+#~ msgstr "] mesaj içeriyor"
+
+#~ msgid "Message "
+#~ msgstr "Mesaj "
+
+#~ msgid "No-one server in use. Try to add."
+#~ msgstr "Kullanýlacak sunucu yok. Bir tane ekleyiniz."
+
+#~ msgid "Hey! Wath do You are looking for?"
+#~ msgstr "Hey! Ne arýyorsunuz?"
+
+#~ msgid "You have"
+#~ msgstr "Yeni"
+
+#~ msgid "New Mail Notification options saved"
+#~ msgstr "Yeni Mesaj Bildirimi seçenekleri kaydedildi"
+
+#~ msgid ""
+#~ "<p>Your personal dictionary is <strong>currently encrypted</strong>. This "
+#~ "helps protect your privacy in case the web-mail system gets compromized "
+#~ "and your personal dictionary ends up stolen. It is currently encrypted "
+#~ "with the password you use to access your mailbox, making it hard for "
+#~ "anyone to see what is stored in your personal dictionary.</p> "
+#~ "<p><strong>ATTENTION:</strong> If you forget your password, your personal "
+#~ "dictionary will become unaccessible, since it can no longer be decrypted. "
+#~ "If you change your mailbox password, SquirrelSpell will recognize it and "
+#~ "prompt you for your old password in order to re-encrypt the dictionary "
+#~ "with a new key.</p>"
+#~ msgstr ""
+#~ "<p>Kiþisel sözlüðünüz <strong>þu anda þifreli</strong>. Bu, web e-posta "
+#~ "sistemine izinsiz girilmesi ve sözlüðünüzün çalýnmasý durumunda kiþisel "
+#~ "gizliliðinizi koruyacaktýr. Þu anda posta kutunuza ulaþmak için "
+#~ "kullandýðýnýz þifreniz ile þifrelenmiþ durumda ve bu þifreyi bilmeden "
+#~ "okunmasý çok zor.</p> <p>DÝKKAT:</p> Eðer þifrenizi unutursanýz, kiþisel "
+#~ "sözlüðünüz çözülemediði için ulaþýlamaz hale gelecek. Eðer posta kutusu "
+#~ "þifrenizi deðiþtirirseniz, Squirrel Sözcük Denetimi bunu farkederek "
+#~ "sözlüðünüzü yeni þifrenizle þifrelemek için bunu size soracaktýr.</p>"
+
+#~ msgid "Chinese"
+#~ msgstr "Çince"
+
+#~ msgid "Simplified Chinese"
+#~ msgstr "Basitleþtirilmiþ Çince"
+
+#~ msgid "Traditional Chinese"
+#~ msgstr "Geleneksel Çince"
