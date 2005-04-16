@@ -6,7 +6,7 @@
  * Copyright (c) 1999-2005 The SquirrelMail Project Team
  * Licensed under the GNU GPL. For full terms see the file COPYING.
  *
- * This implements all functions that do general imap functions.
+ * This implements all functions that do general IMAP functions.
  *
  * @version $Id$
  * @package squirrelmail
@@ -49,7 +49,7 @@ function sqimap_run_command_list ($imap_stream, $query, $handle_errors, &$respon
         set_up_language($squirrelmail_language);
         require_once(SM_PATH . 'functions/display_messages.php');
         $string = "<b><font color=\"$color[2]\">\n" .
-                _("ERROR : No available imapstream.") .
+                _("ERROR: No available IMAP stream.") .
                 "</b></font>\n";
         error_box($string,$color);
         return false;
@@ -70,7 +70,7 @@ function sqimap_run_command ($imap_stream, $query, $handle_errors, &$response,
         set_up_language($squirrelmail_language);
         require_once(SM_PATH . 'functions/display_messages.php');
         $string = "<b><font color=\"$color[2]\">\n" .
-                _("ERROR : No available imapstream.") .
+                _("ERROR: No available IMAP stream.") .
                 "</b></font>\n";
         error_box($string,$color);
         return false;
@@ -79,7 +79,7 @@ function sqimap_run_command ($imap_stream, $query, $handle_errors, &$response,
 
 
 /**
- * Custom fgets function: gets a line from the IMAP-server,
+ * Custom fgets function: gets a line from the IMAP server,
  * no matter how big it may be.
  * @param stream imap_stream the stream to read from
  * @return string a line
@@ -311,7 +311,7 @@ function sqimap_read_data_list ($imap_stream, $tag_uid, $handle_errors,
         set_up_language($squirrelmail_language);
         require_once(SM_PATH . 'functions/display_messages.php');
         $string = "<b><font color=\"$color[2]\">\n" .
-                  _("ERROR : Connection dropped by imap-server.") .
+                  _("ERROR: Connection dropped by IMAP server.") .
                   "</b><br />\n";
         $cmd = explode(' ',$query);
         $cmd = strtolower($cmd[0]);
@@ -345,11 +345,11 @@ function sqimap_read_data_list ($imap_stream, $tag_uid, $handle_errors,
             set_up_language($squirrelmail_language);
             require_once(SM_PATH . 'functions/display_messages.php');
             $string = "<b><font color=\"$color[2]\">\n" .
-                _("ERROR : Could not complete request.") .
+                _("ERROR: Could not complete request.") .
                 "</b><br />\n" .
                 _("Query:") . ' ' .
                 htmlspecialchars($query) . '<br />' .
-                _("Reason Given: ") .
+                _("Reason Given:") . ' ' .
                 htmlspecialchars($message) . "</font><br />\n";
             error_box($string,$color);
             echo '</body></html>';
@@ -360,11 +360,11 @@ function sqimap_read_data_list ($imap_stream, $tag_uid, $handle_errors,
         set_up_language($squirrelmail_language);
         require_once(SM_PATH . 'functions/display_messages.php');
         $string = "<b><font color=\"$color[2]\">\n" .
-            _("ERROR : Bad or malformed request.") .
+            _("ERROR: Bad or malformed request.") .
             "</b><br />\n" .
             _("Query:") . ' '.
             htmlspecialchars($query) . '<br />' .
-            _("Server responded: ") .
+            _("Server responded:") . ' ' .
             htmlspecialchars($message) . "</font><br />\n";
         error_box($string,$color);
         echo '</body></html>';
@@ -373,11 +373,11 @@ function sqimap_read_data_list ($imap_stream, $tag_uid, $handle_errors,
         set_up_language($squirrelmail_language);
         require_once(SM_PATH . 'functions/display_messages.php');
         $string = "<b><font color=\"$color[2]\">\n" .
-            _("ERROR : Imap server closed the connection.") .
+            _("ERROR: IMAP server closed the connection.") .
             "</b><br />\n" .
             _("Query:") . ' '.
             htmlspecialchars($query) . '<br />' .
-            _("Server responded: ") .
+            _("Server responded:") . ' ' .
             htmlspecialchars($message) . "</font><br />\n";
         error_box($string,$color);
         echo '</body></html>';
@@ -386,11 +386,11 @@ function sqimap_read_data_list ($imap_stream, $tag_uid, $handle_errors,
         set_up_language($squirrelmail_language);
         require_once(SM_PATH . 'functions/display_messages.php');
         $string = "<b><font color=\"$color[2]\">\n" .
-            _("ERROR : Unknown imap response.") .
+            _("ERROR: Unknown IMAP response.") .
             "</b><br />\n" .
             _("Query:") . ' '.
             htmlspecialchars($query) . '<br />' .
-            _("Server responded: ") .
+            _("Server responded:") . ' ' .
             htmlspecialchars($message) . "</font><br />\n";
         error_box($string,$color);
        /* the error is displayed but because we don't know the reponse we
@@ -424,8 +424,8 @@ function sqimap_read_data ($imap_stream, $tag_uid, $handle_errors,
 }
 
 /**
- * Logs the user into the imap server.  If $hide is set, no error messages
- * will be displayed.  This function returns the imap connection handle.
+ * Logs the user into the IMAP server.  If $hide is set, no error messages
+ * will be displayed.  This function returns the IMAP connection handle.
  */
 function sqimap_login ($username, $password, $imap_server_address, $imap_port, $hide) {
     global $color, $squirrelmail_language, $onetimepad, $use_imap_tls, $imap_auth_mech;
@@ -588,7 +588,7 @@ function sqimap_login ($username, $password, $imap_server_address, $imap_port, $
  */
 function sqimap_logout ($imap_stream) {
     /* Logout is not valid until the server returns 'BYE'
-     * If we don't have an imap_ stream we're already logged out */
+     * If we don't have an imap_stream we're already logged out */
     if(isset($imap_stream) && $imap_stream)
         sqimap_run_command($imap_stream, 'LOGOUT', false, $response, $message);
 }
@@ -899,7 +899,7 @@ function sqimap_append_done ($imap_stream, $folder='') {
 }
 
 function sqimap_append_checkresponse($response, $folder) {
-    
+
     if (preg_match("/(.*)(BAD|NO)(.*)$/", $response, $regs)) {
         global $squirrelmail_language, $color;
         set_up_language($squirrelmail_language);
@@ -908,12 +908,12 @@ function sqimap_append_checkresponse($response, $folder) {
         $reason = $regs[3];
         if ($regs[2] == 'NO') {
            $string = "<b><font color=\"$color[2]\">\n" .
-                  _("ERROR : Could not append message to") ." $folder." .
+                  _("ERROR: Could not append message to") ." $folder." .
                   "</b><br />\n" .
-                  _("Server responded: ") .
+                  _("Server responded:") . ' ' .
                   $reason . "<br />\n";
            if (preg_match("/(.*)(quota)(.*)$/i", $reason, $regs)) {
-              $string .= _("Solution: ") .
+              $string .= _("Solution:") . ' ' .
             _("Remove unneccessary messages from your folder and start with your Trash folder.")
               ."<br />\n";
            }
@@ -921,9 +921,9 @@ function sqimap_append_checkresponse($response, $folder) {
            error_box($string,$color);
         } else {
            $string = "<b><font color=\"$color[2]\">\n" .
-                  _("ERROR : Bad or malformed request.") .
+                  _("ERROR: Bad or malformed request.") .
                   "</b><br />\n" .
-                  _("Server responded: ") .
+                  _("Server responded:") . ' ' .
                   $reason . "</font><br />\n";
            error_box($string,$color);
            exit;
@@ -940,10 +940,10 @@ function sqimap_get_user_server ($imap_server, $username) {
 }
 
 /**
- * This is an example that gets imapservers from yellowpages (NIS).
+ * This is an example that gets IMAP servers from yellowpages (NIS).
  * you can simple put map:map_yp_alias in your $imap_server_address
  * in config.php use your own function instead map_yp_alias to map your
- * LDAP whatever way to find the users imapserver.
+ * LDAP whatever way to find the users IMAP server.
  */
 function map_yp_alias($username) {
    $yp = `ypmatch $username aliases`;

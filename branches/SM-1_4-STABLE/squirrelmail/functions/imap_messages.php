@@ -550,9 +550,9 @@ function sqimap_get_small_header_list($imap_stream, $msg_list, $show_num=false) 
         if (!is_numeric($id) && $fetch !== 'FETCH') {
             set_up_language($squirrelmail_language);
             echo '<br /><b><font color="'.$color[2].'">' .
-                 _("ERROR : Could not complete request.") .
+                 _("ERROR: Could not complete request.") .
                  '</b><br />' .
-                 _("Unknown response from IMAP server: ") . ' 1.' .
+                 _("Unknown response from IMAP server:") . ' 1.' .
                  htmlspecialchars($read) . "</font><br />\n";
                  break;
         }
@@ -753,9 +753,9 @@ function sqimap_get_headerfield($imap_stream, $field) {
             if (!preg_match("/^\\*\s+([0-9]+)\s+FETCH/iAU",$r[0], $regs)) {
                 set_up_language($squirrelmail_language);
                 echo '<br /><b><font color="'.$color[2].'">' .
-                      _("ERROR : Could not complete request.") .
+                      _("ERROR: Could not complete request.") .
                       '</b><br />' .
-                      _("Unknown response from IMAP server: ") . ' 1.' .
+                      _("Unknown response from IMAP server:") . ' 1.' .
                       $r[0] . "</font><br />\n";
             } else {
                 $id = $regs[1];
@@ -764,9 +764,9 @@ function sqimap_get_headerfield($imap_stream, $field) {
             if (!preg_match("/^\\*\s+([0-9]+)\s+FETCH.*UID\s+([0-9]+)\s+/iAU",$r[0], $regs)) {
                 set_up_language($squirrelmail_language);
                 echo '<br /><b><font color="'.$color[2].'">' .
-                     _("ERROR : Could not complete request.") .
+                     _("ERROR: Could not complete request.") .
                      '</b><br />' .
-                     _("Unknown response from IMAP server: ") . ' 1.' .
+                     _("Unknown response from IMAP server:") . ' 1.' .
                      $r[0] . "</font><br />\n";
             } else {
                 $id = $regs[2];
