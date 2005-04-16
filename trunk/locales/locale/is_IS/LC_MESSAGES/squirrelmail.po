@@ -5,7 +5,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: squirrelmail VERSION\n"
-"POT-Creation-Date: 2003-08-24 15:03+0300\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2005-04-16 19:47+0200\n"
 "PO-Revision-Date: 2003-09-01 16:58+0000\n"
 "Last-Translator: Hordur Mar Gestsson <zbot@kuntnet.org>\n"
 "Language-Team: Icelandic <is@li.org>\n"
@@ -16,9 +17,6 @@ msgstr ""
 
 msgid "Address Book"
 msgstr "Netfangaskrá"
-
-msgid "All"
-msgstr "Allir"
 
 msgid "Name"
 msgstr "Nafn"
@@ -41,11 +39,9 @@ msgstr "Afrit"
 msgid "Bcc"
 msgstr "Bcc"
 
-msgid "Use Addresses"
-msgstr "Nota netföng"
-
-msgid "Address Book Search"
-msgstr "Leita í netfangaskrá"
+#, fuzzy
+msgid "No persons matching your search were found"
+msgstr "Leitin skilaði auðu"
 
 msgid "Search for"
 msgstr "Leita að"
@@ -62,21 +58,31 @@ msgstr "Leita"
 msgid "List all"
 msgstr "Birta allt"
 
-#, c-format
+msgid "Close"
+msgstr "Loka"
+
+#, php-format
 msgid "Unable to list addresses from %s"
 msgstr "Gat ekki birt netföng frá %s"
 
 msgid "Your search failed with the following error(s)"
 msgstr "Leit þín mistókst með eftirfarandi villu(m)"
 
-msgid "No persons matching your search was found"
-msgstr "Leitin skilaði auðu"
+msgid "All"
+msgstr "Allir"
+
+msgid "Use Addresses"
+msgstr "Nota netföng"
+
+#, fuzzy
+msgid "Cancel"
+msgstr "Breyta"
+
+msgid "Address Book Search"
+msgstr "Leita í netfangaskrá"
 
 msgid "Return"
 msgstr "Næst"
-
-msgid "Close"
-msgstr "Loka"
 
 msgid "Nickname"
 msgstr "Gælunafn"
@@ -96,6 +102,10 @@ msgstr "Fornafn"
 msgid "Additional info"
 msgstr "Aðrar upplýsingar"
 
+#, fuzzy
+msgid "Add to:"
+msgstr "Bæta við %s"
+
 msgid "No personal address book is defined. Contact administrator."
 msgstr ""
 "Engin persónuleg netfangaskrá hefur verið skilgreind. Hafðu samband við "
@@ -110,8 +120,8 @@ msgstr "Uppfæra netfang"
 msgid "ERROR"
 msgstr "VILLA"
 
-msgid "Unknown error"
-msgstr "Óþekkt Villa"
+msgid "Please select address that you want to edit"
+msgstr ""
 
 msgid "Add address"
 msgstr "Bæta við netfangi"
@@ -122,18 +132,23 @@ msgstr "Breyta völdu"
 msgid "Delete selected"
 msgstr "Eyða merktu"
 
-#, c-format
+#, php-format
 msgid "Add to %s"
 msgstr "Bæta við %s"
 
-msgid "said"
-msgstr "sagði"
+#, php-format
+msgid "%s wrote:"
+msgstr ""
 
 msgid "quote"
 msgstr "tilvitnun"
 
 msgid "who"
 msgstr "hver"
+
+#, php-format
+msgid "On %s, %s wrote:"
+msgstr ""
 
 msgid "Subject"
 msgstr "Titill"
@@ -156,23 +171,12 @@ msgstr "Gat ekki fært/afritað skrá. Viðhengi ekki hengt við."
 msgid "Draft Saved"
 msgstr "Uppkast að skeyti vistað"
 
-msgid "Your Message has been sent"
+#, fuzzy
+msgid "Your Message has been sent."
 msgstr "Skeytið var sent"
 
 msgid "From:"
 msgstr "Frá:"
-
-msgid "To:"
-msgstr "Til:"
-
-msgid "CC:"
-msgstr "Afrit:"
-
-msgid "BCC:"
-msgstr "Falið Afrit:"
-
-msgid "Subject:"
-msgstr "Titill:"
 
 msgid "Send"
 msgstr "Senda"
@@ -219,50 +223,35 @@ msgstr "Vista uppkast"
 msgid "You have not filled in the \"To:\" field."
 msgstr "Þú hefur ekki fyllt í \"Til:\" svæðið."
 
-msgid "Draft folder"
-msgstr "Mappa fyrir uppköst"
+#, fuzzy, php-format
+msgid "Error: Draft folder %s does not exist."
+msgstr "Notandi '%s' er ekki til"
 
-msgid "Server replied: "
+#, fuzzy
+msgid "Server replied:"
 msgstr "Þjónn svaraði: "
-
-msgid "Illegal folder name.  Please select a different name."
-msgstr "Ólöglegt heiti á möppu. Veldu annað nafn."
-
-msgid "Click here to go back"
-msgstr "Smelltu hér til að fara til baka."
-
-msgid "You have not selected a folder to delete. Please do so."
-msgstr "Þú hefur ekki valið möppu til að eyða."
-
-msgid "Delete Folder"
-msgstr "Eyða möppu"
-
-#, c-format
-msgid "Are you sure you want to delete %s?"
-msgstr "Ertu viss um að vilja eyða %s?"
-
-msgid "Yes"
-msgstr "Já"
-
-msgid "No"
-msgstr "Nei"
 
 msgid "Folders"
 msgstr "Möppur"
 
-msgid "Subscribed successfully!"
+#, fuzzy
+msgid "Subscribed successfully."
 msgstr "Skráning Tókst!"
 
-msgid "Unsubscribed successfully!"
+#, fuzzy
+msgid "Unsubscribed successfully."
 msgstr "Áskrift sagt upp!"
 
-msgid "Deleted folder successfully!"
+#, fuzzy
+msgid "Deleted folder successfully."
 msgstr "Eyðing möppu tókst!"
 
-msgid "Created folder successfully!"
+#, fuzzy
+msgid "Created folder successfully."
 msgstr "Tókst að búa til möppu!"
 
-msgid "Renamed successfully!"
+#, fuzzy
+msgid "Renamed successfully."
 msgstr "Endurnefning tókst!"
 
 msgid "Subscription Unsuccessful - Folder does not exist."
@@ -298,6 +287,9 @@ msgstr "Endurnefna"
 msgid "No folders found"
 msgstr "Engar möppur fundust"
 
+msgid "Delete Folder"
+msgstr "Eyða möppu"
+
 msgid "Delete"
 msgstr "Eyða"
 
@@ -315,6 +307,26 @@ msgstr "Engar möppur fundust til að setja í áskrift!"
 
 msgid "Subscribe to:"
 msgstr "Setja í áskrift"
+
+#, fuzzy
+msgid "Illegal folder name. Please select a different name."
+msgstr "Ólöglegt heiti á möppu. Veldu annað nafn."
+
+msgid "Click here to go back"
+msgstr "Smelltu hér til að fara til baka."
+
+msgid "You have not selected a folder to delete. Please do so."
+msgstr "Þú hefur ekki valið möppu til að eyða."
+
+#, php-format
+msgid "Are you sure you want to delete %s?"
+msgstr "Ertu viss um að vilja eyða %s?"
+
+msgid "Yes"
+msgstr "Já"
+
+msgid "No"
+msgstr "Nei"
 
 msgid "You have not selected a folder to rename. Please do so."
 msgstr "Þú valdir ekki möppu til að endurnefna.  Gjörðu það."
@@ -334,9 +346,9 @@ msgstr "VILLA Hjálparskrárnar eru ekki á réttu formi"
 msgid "Help"
 msgstr "Hjálp"
 
-#, c-format
+#, fuzzy, php-format
 msgid ""
-"The help has not been translated to %s.  It will be displayed in English "
+"The help has not been translated to %s. It will be displayed in English "
 "instead."
 msgstr "Hjálpin hefur ekki verið þýdd í %s. Það verður birt á Ensku í staðinn"
 
@@ -367,30 +379,26 @@ msgstr "Sækja sem skrá"
 msgid "INBOX"
 msgstr "INNHÓLF"
 
-msgid "purge"
+#, fuzzy
+msgid "Purge"
 msgstr "þurrka út"
-
-msgid "Last Refresh"
-msgstr "Síðast uppfært"
-
-msgid "Save folder tree"
-msgstr "Vista möpputré"
 
 msgid "Login"
 msgstr "Innskrá"
 
-#, c-format
+#, php-format
 msgid "%s Logo"
 msgstr "%s Vörumerki"
 
-#, c-format
+#, php-format
 msgid "SquirrelMail version %s"
 msgstr "SquirrelMail útgáfa %s"
 
-msgid "By the SquirrelMail Development Team"
+#, fuzzy
+msgid "By the SquirrelMail Project Team"
 msgstr "Eftir SquirrelMail þróunarhópinn"
 
-#, c-format
+#, php-format
 msgid "%s Login"
 msgstr "Vefpóstur %s"
 
@@ -403,11 +411,74 @@ msgstr "Lykilorð:"
 msgid "No messages were selected."
 msgstr "Engin skilaboð voru valin."
 
-msgid "Options"
-msgstr "Valmöguleikar"
+msgid "Personal Information"
+msgstr "Persónulegar upplýsingar"
+
+msgid "Display Preferences"
+msgstr "Útlitsstillingar"
 
 msgid "Message Highlighting"
 msgstr "Litmerking skilaboða"
+
+msgid "Folder Preferences"
+msgstr "Stillingar á möppu"
+
+msgid "Index Order"
+msgstr "Röðun skeyta"
+
+msgid "Options"
+msgstr "Valmöguleikar"
+
+msgid "Error(s) occurred while saving your options"
+msgstr ""
+
+msgid "Some of your preference changes were not applied."
+msgstr ""
+
+msgid "Successfully Saved Options"
+msgstr "Vistun valkosta tókst!"
+
+msgid "Refresh Folder List"
+msgstr "Endurhlaða möppulista"
+
+msgid "Refresh Page"
+msgstr "Endurhlaða síðu"
+
+msgid ""
+"This contains personal information about yourself such as your name, your "
+"email address, etc."
+msgstr ""
+"Hér eru geymdar persónulegar upplýsingar um þig, slíkt og nafn, netfang og "
+"fleira."
+
+msgid ""
+"You can change the way that SquirrelMail looks and displays information to "
+"you, such as the colors, the language, and other settings."
+msgstr ""
+"Þú getur breytt því hvernig SquirrelMail lítur út og hvernig það birtir "
+"upplýsingarnar til þín, sem dæmi litum, tungumáli og öðrum stillingum."
+
+#, fuzzy
+msgid ""
+"Based upon given criteria, incoming messages can have different background "
+"colors in the message list. This helps to easily distinguish who the "
+"messages are from, especially for mailing lists."
+msgstr ""
+"Hægt er að láta skilaboð vera með mismunandi bakgrunnsliti í "
+"yfirlitslistanum eftir því frá hverjum þau eru. "
+
+msgid ""
+"These settings change the way your folders are displayed and manipulated."
+msgstr ""
+"Þessar stillingar breyta hvernig möppurnar eru birtar og hvernig farið er "
+"með þær"
+
+msgid ""
+"The order of the message index can be rearranged and changed to contain the "
+"headers in any order you want."
+msgstr ""
+"Hægt er að stilla eftir hverju bréfunum er raðað,  og einnig er hægt að "
+"breyta því í hvaða röð dálkarnir birtast."
 
 msgid "New"
 msgstr "Nýtt"
@@ -490,7 +561,7 @@ msgstr "T.d: 63aa7f"
 msgid "Matches"
 msgstr "Passar við"
 
-#, c-format
+#, php-format
 msgid "Alternate Identity %d"
 msgstr "Annar persónuleiki %d"
 
@@ -521,9 +592,6 @@ msgstr "Velja sem sjálfgefið"
 msgid "Move Up"
 msgstr "Færa"
 
-msgid "Index Order"
-msgstr "Röðun skeyta"
-
 msgid "Checkbox"
 msgstr "Valreitur"
 
@@ -533,10 +601,11 @@ msgstr "Rofar"
 msgid "Size"
 msgstr "Stærð"
 
+#, fuzzy
 msgid ""
 "The index order is the order that the columns are arranged in the message "
-"index.  You can add, remove, and move columns around to customize them to "
-"fit your needs."
+"index. You can add, remove, and move columns around to customize them to fit "
+"your needs."
 msgstr ""
 "Flokkunarröð er röðin sem dálkunum er raðað í í yfirliti skeyta. Þú getur "
 "bætt við, eytt og fært dálka til að sérsníða að þínum þörfum."
@@ -553,63 +622,11 @@ msgstr "eyða"
 msgid "Return to options page"
 msgstr "Fara til baka á stillingar síðu"
 
-msgid "Personal Information"
-msgstr "Persónulegar upplýsingar"
-
-msgid "Display Preferences"
-msgstr "Útlitsstillingar"
-
-msgid "Folder Preferences"
-msgstr "Stillingar á möppu"
-
-msgid "Successfully Saved Options"
-msgstr "Vistun valkosta tókst!"
-
-msgid "Refresh Folder List"
-msgstr "Endurhlaða möppulista"
-
-msgid "Refresh Page"
-msgstr "Endurhlaða síðu"
-
-msgid ""
-"This contains personal information about yourself such as your name, your "
-"email address, etc."
-msgstr ""
-"Hér eru geymdar persónulegar upplýsingar um þig, slíkt og nafn, netfang og "
-"fleira."
-
-msgid ""
-"You can change the way that SquirrelMail looks and displays information to "
-"you, such as the colors, the language, and other settings."
-msgstr ""
-"Þú getur breytt því hvernig SquirrelMail lítur út og hvernig það birtir "
-"upplýsingarnar til þín, sem dæmi litum, tungumáli og öðrum stillingum."
-
-msgid ""
-"Based upon given criteria, incoming messages can have different background "
-"colors in the message list.  This helps to easily distinguish who the "
-"messages are from, especially for mailing lists."
-msgstr ""
-"Hægt er að láta skilaboð vera með mismunandi bakgrunnsliti í "
-"yfirlitslistanum eftir því frá hverjum þau eru. "
-
-msgid "These settings change the way your folders are displayed and manipulated."
-msgstr ""
-"Þessar stillingar breyta hvernig möppurnar eru birtar og hvernig farið er "
-"með þær"
-
-msgid ""
-"The order of the message index can be rearranged and changed to contain the "
-"headers in any order you want."
-msgstr ""
-"Hægt er að stilla eftir hverju bréfunum er raðað,  og einnig er hægt að "
-"breyta því í hvaða röð dálkarnir birtast."
-
 msgid "Message not printable"
 msgstr "Skeyti ekki prenthæft"
 
-msgid "CC"
-msgstr "Afrit"
+msgid "Invalid URL"
+msgstr ""
 
 msgid "Printer Friendly"
 msgstr "Prentvænt"
@@ -626,10 +643,11 @@ msgstr "Lesa:"
 msgid "Your message"
 msgstr "Bréf þitt"
 
-msgid "Sent:"
+#, fuzzy
+msgid "Sent"
 msgstr "Sent:"
 
-#, c-format
+#, php-format
 msgid "Was displayed on %s"
 msgstr "Var skoðað þann %s"
 
@@ -664,7 +682,7 @@ msgstr ""
 msgid "Send read receipt now"
 msgstr "Senda móttökukvittun núna"
 
-msgid "Search results"
+msgid "Search Results"
 msgstr "Niðurstöður leitar"
 
 msgid "Message List"
@@ -733,11 +751,12 @@ msgstr "Meginmál"
 msgid "Everywhere"
 msgstr "Alls staðar"
 
-msgid "Search Results"
-msgstr "Niðurstöður leitar"
-
 msgid "No Messages Found"
 msgstr "Engin skeyti fundust"
+
+#, fuzzy
+msgid "Signout"
+msgstr "Skrá út"
 
 msgid "Sign Out"
 msgstr "Skrá út"
@@ -750,6 +769,12 @@ msgstr "Smelltu hér til að skrá þig inn."
 
 msgid "Viewing a Business Card"
 msgstr "Að skoða nafnspjald"
+
+#, php-format
+msgid ""
+"vCard Version %s is not supported. Some information might not be converted "
+"correctly."
+msgstr ""
 
 msgid "Title"
 msgstr "Titill"
@@ -787,44 +812,53 @@ msgstr "Bæta netfangi við netfangaskrá"
 msgid "Title & Org. / Dept."
 msgstr "Titill og Stofnun / Deild"
 
+#, fuzzy
+msgid "Add to Address Book"
+msgstr "Bæta netfangi við netfangaskrá"
+
 msgid "Viewing Full Header"
 msgstr "Að skoða allan haus"
 
 msgid "Viewing a text attachment"
 msgstr "Skoða textaviðhengi"
 
+msgid ""
+"Could not include PEAR database functions required for the database backend."
+msgstr ""
+
+#, php-format
+msgid "Is PEAR installed, and is the include path set correctly to find %s?"
+msgstr ""
+
+msgid "Please contact your system administrator and report this error."
+msgstr "Hafðu samband við kerfisstjóra og láttu hann vita af þessari villu"
+
 msgid "Personal address book"
 msgstr "Persónuleg netfangaskrá"
 
-#, c-format
+#, php-format
 msgid "Database error: %s"
 msgstr "Gagnagrunnsvilla: %s"
 
 msgid "Addressbook is read-only"
 msgstr "Aðeins er hægt að lesa netfangaaskrá, ekki skrifa í hana."
 
-#, c-format
+#, php-format
 msgid "User '%s' already exist"
 msgstr "Notandi '%s' er þegar til"
 
-#, c-format
+#, php-format
 msgid "User '%s' does not exist"
 msgstr "Notandi '%s' er ekki til"
 
-msgid "Global address book"
-msgstr "Allar nafnaskrár"
+msgid "Not a file name"
+msgstr "Ekki skráar nafn"
 
 msgid "No such file or directory"
 msgstr "Engin slík skrá eða mappa"
 
 msgid "Open failed"
 msgstr "Mistókst að opna"
-
-msgid "Can not modify global address book"
-msgstr "Get ekki breytt sameiginlegri netfangaskrá"
-
-msgid "Not a file name"
-msgstr "Ekki skráar nafn"
 
 msgid "Write failed"
 msgstr "Mistókst að skrifa"
@@ -841,14 +875,17 @@ msgstr "Færsla í netfangabók mistókst"
 msgid "Error initializing addressbook database."
 msgstr "Villa í frumstillingu netfangagagnagrunns."
 
-#, c-format
+#, php-format
 msgid "Error opening file %s"
 msgstr "Villa við að opna skrá %s"
+
+msgid "Global address book"
+msgstr "Allar nafnaskrár"
 
 msgid "Error initializing global addressbook."
 msgstr "Villa við frumstillingu netfangaskrár."
 
-#, c-format
+#, php-format
 msgid "Error initializing LDAP server %s:"
 msgstr "Villa við ræsingu LDAP þjóns %s:"
 
@@ -864,11 +901,13 @@ msgstr "Netfang vantar"
 msgid "Nickname contains illegal characters"
 msgstr "Gælunafn inniheldur óleyfileg tákn"
 
-msgid "view"
+#, fuzzy
+msgid "View"
 msgstr "skoða"
 
-msgid "Business Card"
-msgstr "Nafnspjald"
+#, fuzzy
+msgid "View Business Card"
+msgstr "Að skoða nafnspjald"
 
 msgid "Sunday"
 msgstr "sunnudagur"
@@ -987,7 +1026,8 @@ msgstr "des"
 msgid "D, F j, Y g:i a"
 msgstr "D, F j, Y g:i a"
 
-msgid "D, F j, Y G:i"
+#, fuzzy
+msgid "D, F j, Y H:i"
 msgstr "D, F j, Y G:i"
 
 msgid "M j, Y"
@@ -996,33 +1036,29 @@ msgstr "M j, Y"
 msgid "g:i a"
 msgstr "g:i a"
 
-msgid "G:i"
+#, fuzzy
+msgid "H:i"
 msgstr "G:i"
 
 msgid "D, g:i a"
 msgstr "D, g:i a"
 
-msgid "D, G:i"
+#, fuzzy
+msgid "D, H:i"
 msgstr "D, G:i"
 
-#, c-format
+#, php-format
 msgid "Preference database error (%s). Exiting abnormally"
 msgstr "Stillingaskrá %s fannst ekki. Hætt með óeðlilegum hætti"
 
-msgid "Unknown user or password incorrect."
-msgstr "Óþekktur notandi eða lykilorð rangt."
-
-msgid "Click here to try again"
-msgstr "Smelltu hér til að reyna aftur"
-
-#, c-format
+#, php-format
 msgid "Click here to return to %s"
 msgstr "Smelltu hér til að fara aftur í %s"
 
 msgid "Go to the login page"
 msgstr "Farðu á innskráningarsíðu"
 
-#, c-format
+#, php-format
 msgid ""
 "Preference file, %s, does not exist. Log out, and log back in to create a "
 "default preference file."
@@ -1030,19 +1066,19 @@ msgstr ""
 "Stillingaskráin %s er ekki til. Skráðu þig út og aftur inn til að búa til "
 "sjálfgefna stillingaskrá"
 
-#, c-format
+#, php-format
 msgid ""
 "Preference file, %s, could not be opened. Contact your system administrator "
 "to resolve this issue."
 msgstr "Gat ekki opnað stillingaskránna %s.  Hafðu samband við kerfisstjóra."
 
-#, c-format
+#, php-format
 msgid ""
 "Preference file, %s, could not be written. Contact your system administrator "
 "to resolve this issue."
 msgstr "Gat ekki skrifað stillingaskránna %s.  Hafðu samband við kerfisstjóra"
 
-#, c-format
+#, php-format
 msgid ""
 "Preference file, %s, could not be copied from temporary file, %s. Contact "
 "your system administrator to resolve this issue."
@@ -1050,36 +1086,39 @@ msgstr ""
 "Gat ekki fært biðskránna %s í stillingaskránna %s.  Hafðu samband við "
 "kerfisstjóra"
 
-#, c-format
+#, php-format
 msgid "Error opening %s"
 msgstr "Villa við að opna %s"
 
 msgid "Default preference file not found or not readable!"
 msgstr "Fann ekki eða gat ekki lesið skrá með sjálfgefnum stillingum"
 
-msgid "Please contact your system administrator and report this error."
-msgstr "Hafðu samband við kerfisstjóra og láttu hann vita af þessari villu"
-
 msgid "Could not create initial preference file!"
 msgstr "Gat ekki frumstillt stillingaskrá"
 
-#, c-format
+#, php-format
 msgid "%s should be writable by user %s"
 msgstr "%s ætti ekki að vera skrifanleg af notanda%s"
 
-#, c-format
+#, fuzzy
+msgid "Signature is too big."
+msgstr "Valkostir undirskrift"
+
+#, php-format
 msgid ""
 "Signature file, %s, could not be opened. Contact your system administrator "
 "to resolve this issue."
-msgstr "Gat ekki opnað undirskriftarskránna %s.  Hafðu samband við kerfisstjóra"
+msgstr ""
+"Gat ekki opnað undirskriftarskránna %s.  Hafðu samband við kerfisstjóra"
 
-#, c-format
+#, php-format
 msgid ""
 "Signature file, %s, could not be written. Contact your system administrator "
 "to resolve this issue."
-msgstr "Gat ekki skrifað undirskriftina í skránna %s.  Hafðu samband við kerfisstjóra"
+msgstr ""
+"Gat ekki skrifað undirskriftina í skránna %s.  Hafðu samband við kerfisstjóra"
 
-#, c-format
+#, php-format
 msgid ""
 "Signature file, %s, could not be copied from temporary file, %s. Contact "
 "your system administrator to resolve this issue."
@@ -1094,52 +1133,74 @@ msgstr ""
 "Þú þarft að setja php4 upp með fjölbæta strengja stuðning  (gert með --with-"
 "mbstring stillirofanum í configure)"
 
-msgid "ERROR : No available imapstream."
+#, fuzzy
+msgid "ERROR: No available IMAP stream."
 msgstr "VILLA . Enginn imapstraumur fáanlegur."
 
-msgid "ERROR : Connection dropped by imap-server."
+#, fuzzy
+msgid "ERROR: Connection dropped by IMAP server."
 msgstr "VILLA - póstþjónninn lokaði tengingunni"
 
-msgid "ERROR : Could not complete request."
+#, fuzzy
+msgid "ERROR: Could not complete request."
 msgstr "VILLA: Gat ekki klárað fyrirspurn."
 
 msgid "Query:"
 msgstr "Fyrirspurn:"
 
-msgid "Reason Given: "
+#, fuzzy
+msgid "Reason Given:"
 msgstr "Gefin ástæða: "
 
-msgid "ERROR : Bad or malformed request."
+#, fuzzy
+msgid "ERROR: Bad or malformed request."
 msgstr "VILLA: Skemmd eða gölluð fyrirspurn"
 
-msgid "Server responded: "
+#, fuzzy
+msgid "Server responded:"
 msgstr "Þjónn svaraði: "
 
-msgid "ERROR : Imap server closed the connection."
+#, fuzzy
+msgid "ERROR: IMAP server closed the connection."
 msgstr "VILLA - póstþjónninn lokaði tengingunni"
 
-msgid "ERROR : Unknown imap response."
+#, fuzzy
+msgid "ERROR: Unknown IMAP response."
 msgstr "VILLA - Óþekkt svar frá þjóni"
 
-#, c-format
+#, php-format
 msgid "Error connecting to IMAP server: %s."
 msgstr "Villa við að tengjast IMAP þjóni: %s"
 
-#, c-format
+msgid "The IMAP server is reporting that plain text logins are disabled."
+msgstr ""
+
+msgid "Using CRAM-MD5 or DIGEST-MD5 authentication instead may work."
+msgstr ""
+
+msgid "Also, the use of TLS may allow SquirrelMail to login."
+msgstr ""
+
+#, php-format
 msgid "Bad request: %s"
 msgstr "Röng fyrirspurn: %s"
 
-#, c-format
+#, php-format
 msgid "Unknown error: %s"
 msgstr "Óþekkt villa: %s"
 
 msgid "Read data:"
 msgstr "Lesa gögn:"
 
-msgid "ERROR : Could not append message to"
+msgid "Unknown user or password incorrect."
+msgstr "Óþekktur notandi eða lykilorð rangt."
+
+#, fuzzy
+msgid "ERROR: Could not append message to"
 msgstr "VILLA : Gat ekki bætt skeyti við"
 
-msgid "Solution: "
+#, fuzzy
+msgid "Solution:"
 msgstr "Úrlausn:"
 
 msgid ""
@@ -1153,7 +1214,8 @@ msgstr "(enginn titill)"
 msgid "Unknown Sender"
 msgstr "Óþekktur Sendandi"
 
-msgid "Unknown response from IMAP server: "
+#, fuzzy
+msgid "Unknown response from IMAP server:"
 msgstr "Óþekkt svar frá IMAP póstþjóni: "
 
 msgid "The server couldn't find the message you requested."
@@ -1173,14 +1235,13 @@ msgstr "Óþekkt dagsetning"
 msgid "A"
 msgstr "A"
 
-msgid ""
-"Thread sorting is not supported by your IMAP server.<br>Please report this "
-"to the system administrator."
-msgstr "IMAP þjónninn þinn býður ekki upp á að raða skilaboðum eftir umræðuþráðum. "
+#, fuzzy
+msgid "Thread sorting is not supported by your IMAP server."
+msgstr ""
+"IMAP þjónninn þinn býður ekki upp á að raða skilaboðum eftir umræðuþráðum. "
 
-msgid ""
-"Server-side sorting is not supported by your IMAP server.<br>Please report "
-"this to the system administrator."
+#, fuzzy
+msgid "Server-side sorting is not supported by your IMAP server."
 msgstr "Miðlaralæg röðun er ekki studd af IMAP þjóninum þínum. "
 
 msgid "THIS FOLDER IS EMPTY"
@@ -1222,12 +1283,12 @@ msgstr "Afvelja allt"
 msgid "Select All"
 msgstr "Velja allt"
 
-#, c-format
-msgid "Viewing Messages: <B>%s</B> to <B>%s</B> (%s total)"
+#, fuzzy, php-format
+msgid "Viewing Messages: %s to %s (%s total)"
 msgstr "Sýni skeyti: <B>%s</B> til <B>%s</B> (%s alls)"
 
-#, c-format
-msgid "Viewing Message: <B>%s</B> (1 total)"
+#, fuzzy, php-format
+msgid "Viewing Message: %s (%s total)"
 msgstr "Sýni skeyti: <B>%s</B> (1 alls)"
 
 msgid "Paginate"
@@ -1245,7 +1306,8 @@ msgstr "the provided bodystructure by your imap-server"
 msgid ""
 "Body retrieval error. The reason for this is most probably that the message "
 "is malformed."
-msgstr "Villa við færslu á meginmáli.  Ástæðan er líklega sú að skeytið sé skaddað."
+msgstr ""
+"Villa við færslu á meginmáli.  Ástæðan er líklega sú að skeytið sé skaddað."
 
 msgid "Command:"
 msgstr "Skipun:"
@@ -1265,13 +1327,17 @@ msgstr "Fela varhugaverð skeyti"
 msgid "View Unsafe Images"
 msgstr "Skoða varhugaverð skeyti"
 
-msgid "download"
+#, fuzzy
+msgid "Download"
 msgstr "sækja"
 
 msgid "sec_remove_eng.png"
 msgstr ""
 
-#, c-format
+msgid "This external link will open in a new window"
+msgstr ""
+
+#, php-format
 msgid "Option Type '%s' Not Found"
 msgstr "Valmöguleiki af tegund '%s' ekki til"
 
@@ -1281,7 +1347,7 @@ msgstr "Núverandi mappa"
 msgid "Compose"
 msgstr "Skrifa skeyti"
 
-#, c-format
+#, php-format
 msgid "Error creating directory %s."
 msgstr "Villa við að búa til möppuna %s"
 
@@ -1381,7 +1447,8 @@ msgstr "Aldrei"
 msgid "Mailbox Display Options"
 msgstr "Útlitsbreytur pósthólfs"
 
-msgid "Number of Messages to Index"
+#, fuzzy
+msgid "Number of Messages per Page"
 msgstr "Fjöldi skeyta til að birta"
 
 msgid "Enable Alternating Row Colors"
@@ -1402,7 +1469,12 @@ msgstr "Sýna og rita skeyti"
 msgid "Wrap Incoming Text At"
 msgstr "Skipta á milli lína við"
 
-msgid "Size of Editor Window"
+#, fuzzy
+msgid "Width of Editor Window"
+msgstr "Gluggastærð ritils"
+
+#, fuzzy
+msgid "Height of Editor Window"
 msgstr "Gluggastærð ritils"
 
 msgid "Location of Buttons when Composing"
@@ -1462,7 +1534,30 @@ msgstr "Hæð ritglugga"
 msgid "Append Signature before Reply/Forward Text"
 msgstr "Setja undirskrift á undan texta sem verið er að svara/áframsenda."
 
-msgid "Enable Sort by of Receive Date"
+#, fuzzy
+msgid "Prefix for Original Message when Replying"
+msgstr "Taka út undirskrift þegar svarað er"
+
+#, fuzzy
+msgid "Cursor Position when Replying"
+msgstr "Taka út undirskrift þegar svarað er"
+
+msgid "To: field"
+msgstr ""
+
+msgid "Focus in body"
+msgstr ""
+
+#, fuzzy
+msgid "Select body"
+msgstr "Veldu möppu"
+
+#, fuzzy
+msgid "No focus"
+msgstr "Engin klukka"
+
+#, fuzzy
+msgid "Sort by Received Date"
 msgstr "Virkja röðun eftir móttökudegi"
 
 msgid "Enable Thread Sort by References Header"
@@ -1480,17 +1575,17 @@ msgstr "Ekki nota ruslafötuna"
 msgid "Trash Folder"
 msgstr "Ruslafata"
 
-msgid "Do not use Sent"
-msgstr "Ekki nota möppuna send bréf"
-
-msgid "Sent Folder"
-msgstr "Send bréf"
-
 msgid "Do not use Drafts"
 msgstr "Ekki nota sérstaka möppu fyrir uppköst"
 
 msgid "Draft Folder"
 msgstr "Mappa fyrir uppköst"
+
+msgid "Do not use Sent"
+msgstr "Ekki nota möppuna send bréf"
+
+msgid "Sent Folder"
+msgstr "Send bréf"
 
 msgid "Folder List Options"
 msgstr "Birtimöguleikar möppulista"
@@ -1540,7 +1635,8 @@ msgstr "Einungis óséð"
 msgid "Unseen and Total"
 msgstr "Óséð og samtals"
 
-msgid "Enable Collapsible Folders"
+#, fuzzy
+msgid "Enable Collapsable Folders"
 msgstr "Nota samfellanlegar möppur"
 
 msgid "Enable Cumulative Unread Message Notification"
@@ -1548,6 +1644,27 @@ msgstr "Virkja tilkynningar fyrir öll óséð skilaboð"
 
 msgid "Show Clock on Folders Panel"
 msgstr "Sýna klukku við möppulista"
+
+#, fuzzy
+msgid "International date and time"
+msgstr "Bæta við alþjóðlegri orðabók"
+
+msgid "American date and time"
+msgstr ""
+
+#, fuzzy
+msgid "European date and time"
+msgstr "Evrópsk Spænska"
+
+msgid "Show weekday and time"
+msgstr ""
+
+msgid "Show time with seconds"
+msgstr ""
+
+#, fuzzy
+msgid "Show time"
+msgstr "Upphafstími"
 
 msgid "No Clock"
 msgstr "Engin klukka"
@@ -1573,13 +1690,24 @@ msgstr "Birtimöguleikar möppulista"
 msgid "Selection List Style"
 msgstr "Hamur vallista"
 
-msgid "Long: "
+#, fuzzy
+msgid "Long:"
 msgstr "Langur:"
 
-msgid "Indented: "
+#, fuzzy
+msgid "Folder"
+msgstr "Möppur"
+
+#, fuzzy
+msgid "Subfolder"
+msgstr "Nota undirmöppur í Sent"
+
+#, fuzzy
+msgid "Indented:"
 msgstr "Inndreginn: "
 
-msgid "Delimited: "
+#, fuzzy
+msgid "Delimited:"
 msgstr "Skipt:"
 
 msgid "Name and Address Options"
@@ -1601,7 +1729,8 @@ msgid "Same as server"
 msgstr "Sama og miðlari"
 
 msgid "Error opening timezone config, contact administrator."
-msgstr "Gat ekki opnað stillingaskra fyrir tímabelti. Hafðu samband við kerfisstjóra"
+msgstr ""
+"Gat ekki opnað stillingaskra fyrir tímabelti. Hafðu samband við kerfisstjóra"
 
 msgid "Timezone Options"
 msgstr "Valkostir tímabeltis"
@@ -1618,8 +1747,12 @@ msgstr "Stíll tilvitnunar"
 msgid "No Citation"
 msgstr "Engin tilvitnun"
 
-msgid "AUTHOR Said"
+#, fuzzy
+msgid "AUTHOR Wrote"
 msgstr "HÖFUNDUR sagði"
+
+msgid "On DATE, AUTHOR Wrote"
+msgstr ""
 
 msgid "Quote Who XML"
 msgstr "Quote Who XML"
@@ -1640,7 +1773,8 @@ msgid "Use Signature"
 msgstr "Nota undirskrift"
 
 msgid "Prefix Signature with '-- ' Line"
-msgstr "Láttu undirskriftina byrja með einni línu sem inniheldur einungis '-- '"
+msgstr ""
+"Láttu undirskriftina byrja með einni línu sem inniheldur einungis '-- '"
 
 msgid "Take Address"
 msgstr "Nota netfang"
@@ -1654,7 +1788,8 @@ msgstr "Reyna að sannreyna póstfang"
 msgid "Config File Version"
 msgstr "Útgáfunúmer stillingaskrár"
 
-msgid "Squirrelmail Version"
+#, fuzzy
+msgid "SquirrelMail Version"
 msgstr "SquirrelMail útgáfa "
 
 msgid "PHP Version"
@@ -1687,9 +1822,6 @@ msgstr "Slóð á þjónustuveitanda"
 msgid "Provider Name"
 msgstr "Heiti þjónustuveitanda"
 
-msgid "Default Language"
-msgstr "Sjálfgefið tungumál"
-
 msgid "Top Frame"
 msgstr "Top Frame"
 
@@ -1720,13 +1852,21 @@ msgstr "Microsoft Exchange IMAP þjónn"
 msgid "Courier IMAP server"
 msgstr "Courier IMAP þjónn"
 
+msgid "Mac OS X Mailserver"
+msgstr ""
+
+#, fuzzy
+msgid "hMailServer IMAP server"
+msgstr "Courier IMAP þjónn"
+
 msgid "Not one of the above servers"
 msgstr "Enginn ofantalinna"
 
 msgid "IMAP Folder Delimiter"
 msgstr "Greinarmerki milli IMAP mappa"
 
-msgid "Use \"detect\" to auto-detect."
+#, fuzzy
+msgid "Use &quot;detect&quot; to auto-detect."
 msgstr "Notið \"detect\" til að skynja það."
 
 msgid "Use TLS for IMAP Connections"
@@ -1738,8 +1878,14 @@ msgstr "Krefst PHP 4.3.x! Í vinnslu"
 msgid "IMAP Authentication Type"
 msgstr "Tegund IMAP auðkenningar"
 
+msgid "IMAP login"
+msgstr ""
+
 msgid "Use Sendmail Binary"
 msgstr "Nota Sendmail keyrsluskrá"
+
+msgid "Choose &quot;no&quot; for SMTP"
+msgstr ""
 
 msgid "Sendmail Path"
 msgstr "Slóð að Sendmail "
@@ -1756,14 +1902,17 @@ msgstr "Nota TLS fyrir SMTP tengingar"
 msgid "SMTP Authentication Type"
 msgstr "Tegund SMTP auðkenningar"
 
+msgid "No SMTP auth"
+msgstr ""
+
+msgid "Login (plain text)"
+msgstr ""
+
 msgid "POP3 Before SMTP?"
 msgstr "POP3 fyrir SMTP?"
 
 msgid "Invert Time"
 msgstr "Öfugur tími"
-
-msgid "Use Confirmation Flags"
-msgstr "Nota staðfestingarflögg"
 
 msgid "Folders Defaults"
 msgstr "Frumgildi möppu"
@@ -1807,9 +1956,6 @@ msgstr "Sjálfgefin óséð tegund"
 msgid "Auto Create Special Folders"
 msgstr "Búa sjálfkrafa til sérstakar möppur"
 
-msgid "Default Javascript Adrressbook"
-msgstr "Sjálfgefin JavaScript heimilisfangaskrá"
-
 msgid "Auto delete folders"
 msgstr "Eyða möppum sjálfkrafa"
 
@@ -1818,9 +1964,6 @@ msgstr "Virkja /NoSelect folder lagfæringu"
 
 msgid "General Options"
 msgstr "Almennar stillingar"
-
-msgid "Default Charset"
-msgstr "Sjálfgefið stafasett"
 
 msgid "Data Directory"
 msgstr "Gagnasvæði"
@@ -1903,6 +2046,51 @@ msgstr ""
 msgid "Preferences value field"
 msgstr ""
 
+#, fuzzy
+msgid "Global address book DSN"
+msgstr "Allar nafnaskrár"
+
+#, fuzzy
+msgid "Global address book table"
+msgstr "Allar nafnaskrár"
+
+#, fuzzy
+msgid "Allow writing into global address book"
+msgstr "Get ekki breytt sameiginlegri netfangaskrá"
+
+#, fuzzy
+msgid "Allow listing of global address book"
+msgstr "Get ekki breytt sameiginlegri netfangaskrá"
+
+#, fuzzy
+msgid "Language settings"
+msgstr "Breyta stillingum"
+
+msgid "Default Language"
+msgstr "Sjálfgefið tungumál"
+
+msgid "Default Charset"
+msgstr "Sjálfgefið stafasett"
+
+msgid "Enable lossy encoding"
+msgstr ""
+
+#, fuzzy
+msgid "Address Books"
+msgstr "Netfangaskrá"
+
+#, fuzzy
+msgid "Default Javascript Addressbook"
+msgstr "Sjálfgefin JavaScript heimilisfangaskrá"
+
+#, fuzzy
+msgid "Global address book file"
+msgstr "Allar nafnaskrár"
+
+#, fuzzy
+msgid "Allow writing into global address book file"
+msgstr "Færsla í netfangabók mistókst"
+
 msgid "Themes"
 msgstr "Þemu"
 
@@ -1918,6 +2106,18 @@ msgstr "Nota röðunarnúmer þema"
 msgid "Configuration Administrator"
 msgstr "Umsjónamaður breytinga"
 
+msgid ""
+"Note: it is recommended that you configure your system using conf.pl, and "
+"not this plugin. conf.pl contains additional information regarding the "
+"purpose of variables and appropriate values, as well as additional "
+"verification steps."
+msgstr ""
+
+msgid ""
+"Run or consult conf.pl should you run into difficulty with your "
+"configuration."
+msgstr ""
+
 msgid "Theme Name"
 msgstr "Nafn þema"
 
@@ -1927,8 +2127,16 @@ msgstr "Slóð í þema"
 msgid "Plugins"
 msgstr "Íforrrit"
 
+#, php-format
+msgid "Plugin directory could not be found: %s"
+msgstr ""
+
 msgid "Change Settings"
 msgstr "Breyta stillingum"
+
+#, fuzzy
+msgid "Test Configuration"
+msgstr "Nota staðfestingarflögg"
 
 msgid "Config file can't be opened. Please check config.php."
 msgstr "Gat ekki opnað stillingaskrá.  Athugaðu config.php"
@@ -1939,7 +2147,73 @@ msgstr "Stjórnun"
 msgid ""
 "This module allows administrators to manage SquirrelMail main configuration "
 "remotely."
-msgstr "Þessi viðbót gerir umsjónarmanni mögulegt að stýra SqurrelMail úr vafra."
+msgstr ""
+"Þessi viðbót gerir umsjónarmanni mögulegt að stýra SqurrelMail úr vafra."
+
+#, fuzzy
+msgid "Submit a Bug Report"
+msgstr "Lúsa skýrslur"
+
+msgid ""
+"Before you send your bug report, please make sure to check this checklist "
+"for any common problems."
+msgstr ""
+
+#, php-format
+msgid ""
+"Make sure that you are running the most recent copy of %s. You are currently "
+"using version %s."
+msgstr ""
+
+#, php-format
+msgid ""
+"Check to see if your bug is already listed in the %sBug List%s on "
+"SourceForge. If it is, we already know about it and are trying to fix it."
+msgstr ""
+
+msgid ""
+"Try to make sure that you can repeat it. If the bug happens sporatically, "
+"try to document what you did when it happened. If it always occurs when you "
+"view a specific message, keep that message around so maybe we can see it."
+msgstr ""
+
+#, php-format
+msgid ""
+"If there were warnings displayed above, try to resolve them yourself. Read "
+"the guides in the %s directory where SquirrelMail was installed."
+msgstr ""
+
+msgid ""
+"Pressing the button below will start a mail message to the developers of "
+"SquirrelMail that will contain a lot of information about your system, your "
+"browser, how SquirrelMail is set up, and your IMAP server. It will also "
+"prompt you for information. Just fill out the sections at the top. If you "
+"like, you can scroll down in the message to see what else is being sent."
+msgstr ""
+
+msgid ""
+"Please make sure to fill out as much information as you possibly can to give "
+"everyone a good chance of finding and removing the bug. Submitting your bug "
+"like this will not have it automatically added to the bug list on "
+"SourceForge, but someone who gets your message may add it for you."
+msgstr ""
+
+msgid "This bug involves"
+msgstr ""
+
+msgid "the general program"
+msgstr ""
+
+msgid "a specific plugin"
+msgstr ""
+
+#, fuzzy
+msgid "Start Bug Report Form"
+msgstr "Lúsa skýrslur"
+
+#, fuzzy
+msgid "Bug"
+msgstr "ágú"
 
 msgid "Bug Reports:"
 msgstr "Lúsa skýrslur"
@@ -1952,6 +2226,10 @@ msgstr "Í DAG"
 
 msgid "Go"
 msgstr "Fara"
+
+#, fuzzy, php-format
+msgid "Could not write calendar file %s"
+msgstr "Gat ekki frumstillt stillingaskrá"
 
 msgid "l, F j Y"
 msgstr "l, F j Y"
@@ -2086,17 +2364,19 @@ msgstr ""
 "Gegn gjaldi- Þessi listi inniheldur þjóna sem eru sannanlega að senda út "
 "ruslpóst."
 
+#, fuzzy
 msgid ""
 "COMMERCIAL - Servers that are configured (or misconfigured) to allow spam to "
-"be relayed through their system will be banned with this.  Another good one "
+"be relayed through their system will be banned with this. Another good one "
 "to use."
 msgstr ""
 "Gegn gjaldi - Þjónar sem eru stilltir (eða vanstilltir) til að leyfa "
 "sendingar á ruslpósti. Þessi þykir nokk góður."
 
+#, fuzzy
 msgid ""
 "COMMERCIAL - Dial-up users are often filtered out since they should use "
-"their ISP's mail servers to send mail.  Spammers typically get a dial-up "
+"their ISP's mail servers to send mail. Spammers typically get a dial-up "
 "account and send spam directly from there."
 msgstr ""
 "Gegn gjaldi - Innhringinotendur ættu alla jafna ekki að að senda póst beint "
@@ -2114,44 +2394,6 @@ msgid "COMMERCIAL - RBL+ Dial-up entries."
 msgstr "Gegn gjaldi - RBL og innhringinotendur"
 
 msgid ""
-"FREE - Osirusoft Relays - Osirusofts list of verified open relays. Seems to "
-"include servers used by abuse@uunet.net auto-replies too."
-msgstr ""
-
-msgid "FREE - Osirusoft Dialups - Osirusofts Dialup Spam Source list."
-msgstr ""
-
-msgid ""
-"FREE - Osirusoft Confirmed Spam Source - Sites that continually spam and "
-"have been manually added after multiple nominations. Use with caution. Seems "
-"to catch abuse auto-replies from some ISPs."
-msgstr ""
-
-msgid ""
-"FREE - Osirusoft Smart Hosts - List of hosts that are secure but relay for "
-"other mail servers that are not secure."
-msgstr ""
-
-msgid ""
-"FREE - Osirusoft Spamware Developers - It is believed that these are IP "
-"ranges of companies that are known to produce spam software. Seems to catch "
-"abuse auto-replies from some ISPs."
-msgstr ""
-
-msgid ""
-"FREE - Osirusoft Unconfirmed OptIn Servers - List of listservers that opt "
-"users in without confirmation."
-msgstr ""
-
-msgid ""
-"FREE - Osirusoft Insecure formmail.cgi scripts - List of insecure formmail."
-"cgi scripts. (planned)."
-msgstr ""
-
-msgid "FREE - Osirusoft Open Proxy Servers - List of Open Proxy Servers."
-msgstr ""
-
-msgid ""
 "FREE - ORDB was born when ORBS went off the air. It seems to have fewer "
 "false positives than ORBS did though."
 msgstr ""
@@ -2162,7 +2404,8 @@ msgid "FREE - Five-Ten-sg.com - Direct SPAM sources."
 msgstr "Frír - Five-Ten-sg.com - Listi yfir rustarlýð"
 
 msgid "FREE - Five-Ten-sg.com - Dial-up lists - includes some DSL IPs."
-msgstr "Frír - Five-Ten-sg.com - Listi yfir innhringinet hjá nokkrum þjónustuaðilum."
+msgstr ""
+"Frír - Five-Ten-sg.com - Listi yfir innhringinet hjá nokkrum þjónustuaðilum."
 
 msgid "FREE - Five-Ten-sg.com - Bulk mailers that do not use confirmed opt-in."
 msgstr "Frír - Five-Ten-sg.com - Listi yfir póstlista sem ekki nota \"opt-in\""
@@ -2189,8 +2432,8 @@ msgid "FREE - SPAMhaus - A list of well-known SPAM sources."
 msgstr "Frír - SPAMhaus - Listi yfir þekkta fjöldapóstsendendur"
 
 msgid ""
-"FREE, for now - SPAMCOP - An interesting solution that lists servers that "
-"have a very high spam to legit email ratio (85% or more)."
+"FREE, for now - SpamCop - An interesting solution that lists servers that "
+"have a very high spam to legit email ratio (85 percent or more)."
 msgstr ""
 
 msgid "FREE - dev.null.dk - I don't have any detailed info on this list."
@@ -2199,13 +2442,14 @@ msgstr ""
 msgid "FREE - visi.com - Relay Stop List. Very conservative OpenRelay List."
 msgstr ""
 
-msgid "FREE - 2mbit.com Open Relays - Another list of Open Relays."
+msgid "FREE - ahbl.org Open Relays - Another list of Open Relays."
 msgstr ""
 
-msgid "FREE - 2mbit.com SPAM Source - List of Direct SPAM Sources."
-msgstr ""
+#, fuzzy
+msgid "FREE - ahbl.org SPAM Source - List of Direct SPAM Sources."
+msgstr "Frír - SPAMhaus - Listi yfir þekkta fjöldapóstsendendur"
 
-msgid "FREE - 2mbit.com SPAM ISPs - List of SPAM-friendly ISPs."
+msgid "FREE - ahbl.org SPAM ISPs - List of SPAM-friendly ISPs."
 msgstr ""
 
 msgid ""
@@ -2258,6 +2502,14 @@ msgstr ""
 msgid "FREE - Distributed Sender Boycott List - UN-Confirmed Relays"
 msgstr ""
 
+#, fuzzy
+msgid "WARNING! You must enter something to search for."
+msgstr "Vinsamlegast sláðu inn eitthvað til að leita að "
+
+msgid ""
+"WARNING! Header filters should be of the format &quot;Header: value&quot;"
+msgstr ""
+
 msgid "Saved Scan type"
 msgstr "Tegund skönnunar"
 
@@ -2285,8 +2537,8 @@ msgstr "Haus"
 msgid "Contains:"
 msgstr "Inniheldur:"
 
-#, c-format
-msgid "If <b>%s</b> contains <b>%s</b> then move to <b>%s</b>"
+#, fuzzy, php-format
+msgid "If %s contains %s then move to %s"
 msgstr "Ef <b>%s</b> inniheldur <b>%s</b> þá flytja í <b>%s</b>"
 
 msgid "Message Filters"
@@ -2309,10 +2561,19 @@ msgstr ""
 "Ruslpóstsíur gera þér mögulegt að velja úr mismunandi DNS svartlistum til að "
 "nota til að færa ruslpóstinn úr INNHÓLFI og í aðra möppu (t.d. RUSLAKÖRFU)."
 
+#, fuzzy
+msgid "You must select a spam folder."
+msgstr "Veldu möppu"
+
+#, fuzzy
+msgid "You must select a scan type."
+msgstr "Þú verður að velja"
+
 msgid "Spam Filtering"
 msgstr "Ruslpóstsíun"
 
-msgid "WARNING! Tell your admin to set the SpamFilters_YourHop variable"
+#, fuzzy, php-format
+msgid "WARNING! Tell the administrator to set the %s variable."
 msgstr "ATH! Láttu kefisstjóran stilla SpamFilters_YourHop breytuna"
 
 msgid "Move spam to:"
@@ -2330,34 +2591,35 @@ msgstr ""
 "samt að tæma reglulega möppuna sem þú velur, til að halda stærð pósthólfsins "
 "í lágmarki."
 
+#, fuzzy
+msgid "Unread messages only"
+msgstr "Einungis ný skeyti"
+
+#, fuzzy
 msgid ""
-"The more messages you scan, the longer it takes.  I would suggest that you "
-"scan only new messages.  If you make a change to your filters, I would set "
-"it to scan all messages, then go view my INBOX, then come back and set it to "
-"scan only new messages.  That way, your new spam filters will be applied and "
-"you'll scan even the spam you read with the new filters."
+"The more messages scanned, the longer it takes. It's recommended to scan "
+"unread messages only. If a change to the filters is made, it's recommended "
+"to set it to scan all messages, then go view the INBOX, then come back and "
+"set it to scan unread messages only. That way, the new spam filters will be "
+"applied and even the spam you didn't catch with the old filters will be "
+"scanned."
 msgstr ""
 "Því fleiri skeyti sem þú lætur skoða, því lengur tekur það.  Ég mæli með að "
 "einungis séu ný skeyti skoðuð.  Ef þú breytir stillingum á síunni myndi ég "
 "láta skoða öll skeyti, fara svo í INNHÓLF.  Að því loknu að fra og breyta "
 "stillingunni aftur í að skoða einungis ný skeyti."
 
-#, c-format
-msgid "Spam is sent to <b>%s</b>"
+#, fuzzy, php-format
+msgid "Spam is sent to %s."
 msgstr "Ruslpóstur er sendur til  <b>%s</b>"
 
-msgid "[<i>not set yet</i>]"
+#, fuzzy
+msgid "not set yet"
 msgstr "<i>ekki enn stillt</i>"
 
-#, c-format
-msgid "Spam scan is limited to <b>%s</b>"
+#, fuzzy, php-format
+msgid "Spam scan is limited to %s."
 msgstr "Ruslpóstsíun er takmörkuð við <b>%s</b>"
-
-msgid "New Messages Only"
-msgstr "Einungis ný skeyti"
-
-msgid "All Messages"
-msgstr "Öll skeyti"
 
 msgid "ON"
 msgstr "VIRKT"
@@ -2365,7 +2627,8 @@ msgstr "VIRKT"
 msgid "OFF"
 msgstr "ÓVIRKT"
 
-msgid " not found."
+#, fuzzy, php-format
+msgid "%s is not found."
 msgstr " fanst ekki"
 
 msgid "Today's Fortune"
@@ -2377,12 +2640,16 @@ msgstr "Speki:"
 msgid "Show fortunes at top of mailbox"
 msgstr "Sýna speki fyrir ofan pósthólf"
 
+msgid "Plugin is disabled."
+msgstr ""
+
 msgid "IMAP server information"
 msgstr "Upplýsingar um IMAP þjón"
 
+#, fuzzy
 msgid ""
 "Run some test IMAP commands, displaying both the command and the result. "
-"These tests use the Squirrelmail IMAP commands and your current Squirrelmail "
+"These tests use the SquirrelMail IMAP commands and your current SquirrelMail "
 "configuration. Custom command strings can be used."
 msgstr ""
 "Keyrir nokkrar prufuskipanir á IMAP þjóninum.  Sýnir bæði skipanirnar og "
@@ -2392,7 +2659,7 @@ msgstr ""
 msgid "Mailinglist"
 msgstr "Póstlisti"
 
-#, c-format
+#, php-format
 msgid ""
 "This will send a message to %s requesting help for this list. You will "
 "receive an emailed response at the address below."
@@ -2400,7 +2667,7 @@ msgstr ""
 "Þetta mun senda skeyti á %s og biðja um listahjálpina.  Svar verður send á "
 "vistfangið hér fyrir neðan."
 
-#, c-format
+#, php-format
 msgid ""
 "This will send a message to %s requesting that you will be subscribed to "
 "this list. You will be subscribed with the address below."
@@ -2408,7 +2675,7 @@ msgstr ""
 "Þetta mun senda skeyti á %s og biðja um að gerast áskrifandi að listanum. Þú "
 "verður skáður með vistfangið hér fyrir neðan."
 
-#, c-format
+#, php-format
 msgid ""
 "This will send a message to %s requesting that you will be unsubscribed from "
 "this list. It will try to unsubscribe the adress below."
@@ -2443,12 +2710,6 @@ msgstr "Enginn þjónn skilgreindur"
 msgid "Error "
 msgstr "Villa "
 
-msgid "POP3 noop:"
-msgstr "POP3 noop:"
-
-msgid "No connection to server"
-msgstr "Engin tenging við póstþjón"
-
 msgid "POP3 user:"
 msgstr "POP3 notandi"
 
@@ -2469,6 +2730,9 @@ msgstr "auðkenning misfórst"
 
 msgid "POP3 apop:"
 msgstr "POP3 apop:"
+
+msgid "No connection to server"
+msgstr "Engin tenging við póstþjón"
 
 msgid "No login ID submitted"
 msgstr "Ekkert auðkenni sent"
@@ -2560,11 +2824,9 @@ msgstr "Auðkenni í lagi: Engin ný skeyti"
 msgid "Login OK: Inbox EMPTY"
 msgstr "Auðkenni í lagi: Innhólf tómt"
 
-msgid "Login OK: Inbox contains ["
+#, fuzzy, php-format
+msgid "Login OK: Inbox contains %s messages"
 msgstr "Auðkenni í lagi: Innhólf inniheldur ["
-
-msgid "] messages"
-msgstr "] skilaboð"
 
 msgid "Fetching UIDL..."
 msgstr "Sæki UIDL..."
@@ -2572,7 +2834,8 @@ msgstr "Sæki UIDL..."
 msgid "Server does not support UIDL."
 msgstr "Miðlari styður ekki UIDL."
 
-msgid "Leaving Mail on Server..."
+#, fuzzy
+msgid "Leaving mail on server..."
 msgstr "Skil póst eftir á miðlara"
 
 msgid "Deleting messages from server..."
@@ -2581,7 +2844,8 @@ msgstr "Eyði póst á miðlara"
 msgid "Fetching message "
 msgstr "Er að sækja skeyti "
 
-msgid "Server error...Disconnect"
+#, fuzzy
+msgid "Server error. Disconnect"
 msgstr "Villa... aftengist"
 
 msgid "Reconnect from dead connection"
@@ -2605,10 +2869,8 @@ msgstr "Aftengist IMAP"
 msgid "Message appended to mailbox"
 msgstr "Skeyti bætt við pósthólf"
 
-msgid "Message "
-msgstr "Skeyti "
-
-msgid " deleted from Remote Server!"
+#, fuzzy, php-format
+msgid "Message %d deleted from remote server!"
 msgstr " eytt af póstþjóni!"
 
 msgid "Delete failed:"
@@ -2617,9 +2879,10 @@ msgstr "Eyðing mistókst:"
 msgid "Remote POP server settings"
 msgstr "Stillingar á POP þjón"
 
+#, fuzzy
 msgid ""
 "You should be aware that the encryption used to store your password is not "
-"perfectly secure.  However, if you are using pop, there is inherently no "
+"perfectly secure. However, if you are using pop, there is inherently no "
 "encryption anyway. Additionally, the encryption that we do to save it on the "
 "server can be undone by a hacker reading the source to this file."
 msgstr ""
@@ -2628,7 +2891,8 @@ msgstr ""
 "dúlkóðun í notkun.  Dulkóðunin sem er notuð er auðbrotin af tölvuþrjótum sem "
 "lesa frumkóða þessa skjals."
 
-msgid "If you leave password empty, it will be required when you fetch mail."
+#, fuzzy
+msgid "If you leave password empty, it will be asked when you fetch mail."
 msgstr ""
 "If þú gefur ekki upp lykilorðið, þá verður þú spurður um það þegar póstur er "
 "sóttur."
@@ -2654,13 +2918,16 @@ msgstr "Notandanafn:"
 msgid "Store in Folder:"
 msgstr "Geyma í möppunni:"
 
-msgid "Leave Mail on Server"
+#, fuzzy
+msgid "Leave mail on server"
 msgstr "Skilja póst eftir á póstþjóni"
 
-msgid "Check mail during login"
+#, fuzzy
+msgid "Check mail at login"
 msgstr "Athuga póst við innskráningu"
 
-msgid "Check mail during folder refresh"
+#, fuzzy
+msgid "Check mail at folder refresh"
 msgstr "Ná í póst þegar mappa er endurhlaðin"
 
 msgid "Modify Server"
@@ -2672,8 +2939,9 @@ msgstr "Heiti póstþjóns:"
 msgid "Modify"
 msgstr "Breyta"
 
-msgid "No-one server in use. Try to add."
-msgstr "Enginn miðlari í notkun."
+#, fuzzy
+msgid "No servers known."
+msgstr "Enginn borði frá þjón"
 
 msgid "Fetching Servers"
 msgstr "Sæki þjóna"
@@ -2690,11 +2958,14 @@ msgstr "Viltu eyða völdum þjón?"
 msgid "Confirm Delete"
 msgstr "Staðfesta eyðingu"
 
+msgid "Leave Mail on Server"
+msgstr "Skilja póst eftir á póstþjóni"
+
 msgid "Undefined Function"
 msgstr "Þetta fall er ekki til"
 
-msgid "Hey! Wath do You are looking for?"
-msgstr "Hey! Að hverju ert þú að leita?"
+msgid "The function you requested is unknown."
+msgstr ""
 
 msgid "Fetch"
 msgstr "Sækja"
@@ -2705,11 +2976,13 @@ msgstr "Aðvörun, "
 msgid "Mail Fetch Result:"
 msgstr "Niðurstaða:"
 
-msgid "Simple POP3 Fetch Mail"
+#, fuzzy
+msgid "POP3 Fetch Mail"
 msgstr "Einfaldur sækir fyr POP3 póst"
 
+#, fuzzy
 msgid ""
-"This configures settings for downloading email from a pop3 mailbox to your "
+"This configures settings for downloading email from a POP3 mailbox to your "
 "account on this server."
 msgstr ""
 "Hér er hægt að stilla vefpóstinn til að sækja póst af öðrum póstþjónum og "
@@ -2717,6 +2990,23 @@ msgstr ""
 
 msgid "Message Details"
 msgstr "Nánar um skeyti"
+
+msgid "Bodystructure"
+msgstr ""
+
+#, fuzzy
+msgid "Entity"
+msgstr "Breyta "
+
+msgid "Content-Type"
+msgstr ""
+
+msgid "Encoding"
+msgstr ""
+
+#, fuzzy
+msgid "RFC822 Message body"
+msgstr "Meginmáli"
 
 msgid "Close Window"
 msgstr "Loka glugga"
@@ -2727,100 +3017,114 @@ msgstr "Vista skeyti"
 msgid "View Message details"
 msgstr "Skoða nánari upplýsingar um skeyti"
 
-msgid "New Mail Notification"
-msgstr "Tilkynning um nýjan póst"
-
-msgid ""
-"Select <b>Enable Media Playing</b> to turn on playing a media file when "
-"unseen mail is in your folders. When enabled, you can specify the media file "
-"to play in the provided file box."
-msgstr ""
-"Veldu <b>Virkja tónlist</b> til að láta spila lag þegar það eru ólesin bréf "
-"í pósthólfinu þínu.  Þú getur svo valið lagið sem er spilað í viðeigandi "
-"reit."
-
-msgid ""
-"The <b>Check all boxes, not just INBOX</b> option will check ALL of your "
-"folders for unseen mail, not just the inbox for notification."
-msgstr ""
-"<b>Haka í allt, ekki bara INNHÓLF</b> mun athuga í ÖLLUM möppum eftir "
-"ólesnum pósti."
-
-msgid ""
-"Selecting the <b>Show popup</b> option will enable the showing of a popup "
-"window when unseen mail is in your folders (requires JavaScript)."
-msgstr ""
-"Veldu <b>Opna glugga</b> til að láta opna nýjan glugga þegar það er ólesinn "
-"póstur í pósthólfinu (krefst JavaScript)"
-
-msgid ""
-"Use the <b>Check RECENT</b> to only check for messages that are recent. "
-"Recent messages are those that have just recently showed up and have not "
-"been \"viewed\" or checked yet.  This can prevent being continuously annoyed "
-"by sounds or popups for unseen mail."
-msgstr ""
-"Veldu <b>Athuga nýleg</b> til að taka einungis mark á skeytum sem eru "
-"nýkomin og hafa ekki verið lesin eða merkt.  Með þessu er ekki alltaf verið "
-"að trufla þig þótt það sé gamall ólesinn póstur í pósthólfinu."
-
-msgid ""
-"Selecting the <b>Change title</b> option will change the title in some "
-"browsers to let you know when you have new mail (requires JavaScript, and "
-"only works in IE but you won't see errors with other browsers).  This will "
-"always tell you if you have new mail, even if you have <b>Check RECENT</b> "
-"enabled."
-msgstr ""
-"Veldir <b>Breyta titli</b> til að breyta titlinum á þeim vöfrum sem styðja "
-"það.  Þetta krefst JavaScript og virkar líklega einungis í Internet Explorer "
-"frá Microsoft. Þessi valkostur tekur ekki mark á <b>Athuga nýleg</b> "
-"valkostinum."
-
-msgid ""
-"Select from the list of <b>server files</b> the media file to play when new "
-"mail arrives.  If no file is specified, \"(none)\", no sound will be used."
-msgstr ""
-"Veldu úr listanum yfir <b>Skrár á þjóni</b> það hljóð sem þú vilt að sé "
-"spilað þegar nýr póstur berst.  Ef þú velur \"(ekkert)\", verður ekkert "
-"hljóð spilað."
-
-msgid "Enable Media Playing"
-msgstr "Virkja tónlist"
-
-msgid "Check all boxes, not just INBOX"
-msgstr "Haka í allt, ekki bara INNHÓLF"
-
-msgid "Count only messages that are RECENT"
-msgstr "Taka aðeins mark á nýlegum skeytum"
-
-msgid "Change title on supported browsers."
-msgstr "Breyta titli á vöfrum sem styðja það"
-
-msgid "requires JavaScript to work"
-msgstr "krefst JavaScript"
-
-msgid "Show popup window on new mail"
-msgstr "Opna glugga þegar póstur berst"
-
-msgid "Select server file:"
-msgstr "Veldu skrá á þjóni"
-
-msgid "(none)"
-msgstr "(ekkert)"
-
-msgid "Try"
-msgstr "Prófa"
-
-msgid "Current File:"
-msgstr "Núverandi skrá:"
-
 msgid "New Mail"
 msgstr "Nýr póstur"
 
 msgid "SquirrelMail Notice:"
 msgstr "SquirrelMail skilaboð"
 
-msgid "You have new mail!"
+#, fuzzy, php-format
+msgid "You have %s new message"
+msgid_plural "You have %s new messages"
+msgstr[0] "Þú átt nýjan póst!"
+msgstr[1] "Þú átt nýjan póst!"
+
+#, fuzzy, php-format
+msgid "You have %s new messages"
 msgstr "Þú átt nýjan póst!"
+
+msgid "New Mail Notification"
+msgstr "Tilkynning um nýjan póst"
+
+#, fuzzy, php-format
+msgid ""
+"The %s option will check ALL of your folders for unseen mail, not just the "
+"inbox for notification."
+msgstr ""
+"<b>Haka í allt, ekki bara INNHÓLF</b> mun athuga í ÖLLUM möppum eftir "
+"ólesnum pósti."
+
+msgid "Check all boxes, not just INBOX"
+msgstr "Haka í allt, ekki bara INNHÓLF"
+
+#, fuzzy, php-format
+msgid ""
+"Selecting the %s option will enable the showing of a popup window when "
+"unseen mail is in your folders (requires JavaScript)."
+msgstr ""
+"Veldu <b>Opna glugga</b> til að láta opna nýjan glugga þegar það er ólesinn "
+"póstur í pósthólfinu (krefst JavaScript)"
+
+msgid "Show popup window on new mail"
+msgstr "Opna glugga þegar póstur berst"
+
+#, fuzzy, php-format
+msgid ""
+"Use the %s option to only check for messages that are recent. Recent "
+"messages are those that have just recently showed up and have not been "
+"\"viewed\" or checked yet. This can prevent being continuously annoyed by "
+"sounds or popups for unseen mail."
+msgstr ""
+"Veldu <b>Athuga nýleg</b> til að taka einungis mark á skeytum sem eru "
+"nýkomin og hafa ekki verið lesin eða merkt.  Með þessu er ekki alltaf verið "
+"að trufla þig þótt það sé gamall ólesinn póstur í pósthólfinu."
+
+msgid "Count only messages that are RECENT"
+msgstr "Taka aðeins mark á nýlegum skeytum"
+
+#, fuzzy, php-format
+msgid ""
+"Selecting the %s option will change the title in some browsers to let you "
+"know when you have new mail (requires JavaScript, and only works in IE but "
+"you won't see errors with other browsers). This will always tell you if you "
+"have new mail, even if you have %s enabled."
+msgstr ""
+"Veldir <b>Breyta titli</b> til að breyta titlinum á þeim vöfrum sem styðja "
+"það.  Þetta krefst JavaScript og virkar líklega einungis í Internet Explorer "
+"frá Microsoft. Þessi valkostur tekur ekki mark á <b>Athuga nýleg</b> "
+"valkostinum."
+
+#, fuzzy
+msgid "Change title on supported browsers"
+msgstr "Breyta titli á vöfrum sem styðja það"
+
+#, fuzzy, php-format
+msgid ""
+"Select %s to turn on playing a media file when unseen mail is in your "
+"folders. When enabled, you can specify the media file to play in the "
+"provided file box."
+msgstr ""
+"Veldu <b>Virkja tónlist</b> til að láta spila lag þegar það eru ólesin bréf "
+"í pósthólfinu þínu.  Þú getur svo valið lagið sem er spilað í viðeigandi "
+"reit."
+
+msgid "Enable Media Playing"
+msgstr "Virkja tónlist"
+
+#, fuzzy, php-format
+msgid ""
+"Select from the list of %s the media file to play when new mail arrives. If "
+"no file is specified, %s, no sound will be used."
+msgstr ""
+"Veldu úr listanum yfir <b>Skrár á þjóni</b> það hljóð sem þú vilt að sé "
+"spilað þegar nýr póstur berst.  Ef þú velur \"(ekkert)\", verður ekkert "
+"hljóð spilað."
+
+#, fuzzy
+msgid "Select server file"
+msgstr "Veldu skrá á þjóni"
+
+msgid "(none)"
+msgstr "(ekkert)"
+
+msgid "requires JavaScript to work"
+msgstr "krefst JavaScript"
+
+msgid "Try"
+msgstr "Prófa"
+
+msgid "Current File:"
+msgstr "Núverandi skrá:"
 
 msgid "NewMail Options"
 msgstr "Valmöguleikar"
@@ -2830,16 +3134,15 @@ msgid ""
 "when new mail arrives."
 msgstr "Hér stillirðu hljóð og/eða glugga sem láta vita er nýr póstur berst."
 
-msgid "New Mail Notification options saved"
-msgstr "Stillingar vistaðar"
-
-#, c-format
+#, php-format
 msgid "%s New Messages"
 msgstr "%s ný skeyti"
 
-#, c-format
+#, fuzzy, php-format
 msgid "%s New Message"
-msgstr "%s nýtt skeyti"
+msgid_plural "%s New Messages"
+msgstr[0] "%s nýtt skeyti"
+msgstr[1] "%s nýtt skeyti"
 
 msgid "Test Sound"
 msgstr "Prófa hljóð"
@@ -2868,19 +3171,180 @@ msgstr "Árlega"
 msgid "Base Sent Folder"
 msgstr "Rótar \"Sent\" mappa"
 
+#, fuzzy
+msgid "Enabled"
+msgstr "Óvirkt"
+
+#, fuzzy
+msgid "Disable it"
+msgstr "Óvirkt"
+
+msgid "Enable it"
+msgstr ""
+
+#, fuzzy
+msgid "Spam reporting"
+msgstr "Ruslpóstsíun"
+
+msgid "SpamCop link is:"
+msgstr ""
+
+#, fuzzy
+msgid "Delete spam when reported:"
+msgstr "Eyða merktu"
+
+msgid "Only works with email-based reporting"
+msgstr ""
+
+#, fuzzy
+msgid "Spam Reporting Method:"
+msgstr "SpamCop - Klagar ruslpóst"
+
+msgid "Quick email-based reporting"
+msgstr ""
+
+msgid "Thorough email-based reporting"
+msgstr ""
+
+msgid "Web-based form"
+msgstr ""
+
+#, fuzzy
+msgid "Save Method"
+msgstr "Færa í:"
+
+msgid "Your SpamCop authorization code:"
+msgstr ""
+
+msgid "see below"
+msgstr ""
+
+#, fuzzy
+msgid "Save ID"
+msgstr "Vista"
+
+msgid "About SpamCop"
+msgstr ""
+
+msgid ""
+"SpamCop is a free service that greatly assists in finding the true source of "
+"the spam and helps in letting the proper people know about the abuse."
+msgstr ""
+
+#, php-format
+msgid ""
+"To use it, you must get a SpamCop authorization code. There is a free %ssign "
+"up page%s so you can use SpamCop."
+msgstr ""
+
+msgid "Before you sign up, be warned"
+msgstr ""
+
+#, php-format
+msgid ""
+"Some users have reported that the email addresses used with SpamCop find "
+"their way onto spam lists. To be safe, you can just create an email "
+"forwarding account and have all SpamCop reports get sent to there. Also, if "
+"it gets flooded with spam, you can then just delete that account with no "
+"worries about losing your real email address. Just go create an email "
+"forwarder somewhere (%s has a %slist of places%s) so that messages from "
+"system administrators and what not can be sent to you."
+msgstr ""
+
+msgid ""
+"Once you have signed up with SpamCop and have received your SpamCop "
+"authorization code, you need to enable this plugin by clicking the link "
+"above. Once enabled, you go about your normal life. If you encounter a spam "
+"message in your mailbox, just view it. On the right-hand side, near the top "
+"of where the message is displayed, you will see a link to report this "
+"message as spam. Clicking on it brings you to a confirmation page. "
+"Confirming that you want the spam report sent will do different things with "
+"different reporting methods."
+msgstr ""
+
+msgid "Email-based reporting"
+msgstr ""
+
+msgid ""
+"Pressing the button forwards the message to the SpamCop service and will "
+"optionally delete the message. From there, you just need to go to your INBOX "
+"and quite soon a message should appear from SpamCop. (It gets sent to the "
+"account you registered with, so make sure that your mail forwarder works!) "
+"Open it up, click on the appropriate link at the top, and a new browser "
+"window will open."
+msgstr ""
+
+msgid ""
+"Currently, the quick reporting just forwards the request to the thorough "
+"reporting. Also, it appears that this is for members (non-free) only. "
+"Hopefully this will change soon."
+msgstr ""
+
+msgid "Web-based reporting"
+msgstr ""
+
+msgid ""
+"When you press the button on the confirmation page, this will pop open a new "
+"browser window and the SpamCop service should appear inside. The message "
+"will not be deleted (working on that part), but you won't need to wait for a "
+"response email to start the spam reporting."
+msgstr ""
+
+msgid ""
+"The SpamCop service will display information as it finds it, so scroll down "
+"until you see a form button. It might pause a little while it is looking up "
+"information, so be a little patient. Read what it says, and submit the spam. "
+"Close the browser window. Press Cancel or click on the appropriate mail "
+"folder to see messages and/or delete the spam."
+msgstr ""
+
+msgid "SpamCop service type"
+msgstr ""
+
+msgid ""
+"Service type option allows selecting which SpamCop services you are using. "
+"Member services use different web reporting forms and does not display nags. "
+"You can purchase these services, if you want to support SpamCop."
+msgstr ""
+
+#, fuzzy
+msgid "More information"
+msgstr "Upplýsingar um IMAP þjón"
+
+#, php-format
+msgid ""
+"For more information about SpamCop, it's services, spam in general, and many "
+"related topics, try reading through SpamCop's %sHelp and Feedback%s section."
+msgstr ""
+
 msgid "Report as Spam"
 msgstr "Klaga sem ruslpóst"
 
 msgid "SpamCop - Spam Reporting"
 msgstr "SpamCop - Klagar ruslpóst"
 
+#, fuzzy
 msgid ""
-"Help fight the battle against unsolicited email.  SpamCop reads the spam "
-"email and determines the correct addresses to send complaints to.  Quite "
+"Help fight the battle against unsolicited email. SpamCop reads the spam "
+"email and determines the correct addresses to send complaints to. Quite "
 "fast, really smart, and easy to use."
 msgstr ""
 "Taktu þátt í að berjast gegn ruslpósti!!  SpamCop les yfir ruslpóstinn og "
 "velur rétta aðila til að kvarta í.  Niður með Ástþór og hans líka!"
+
+msgid ""
+"Sending this spam report will give you back a reply with URLs that you can "
+"click on to properly report this spam message to the proper authorities. "
+"This is a free service. By pressing the \"Send Spam Report\" button, you "
+"agree to follow SpamCop's rules/terms of service/etc."
+msgstr ""
+
+msgid "Cancel / Done"
+msgstr ""
+
+#, fuzzy
+msgid "Send Spam Report"
+msgstr "SpamCop - Klagar ruslpóst"
 
 msgid "SpellChecker Options"
 msgstr "Villupúka stillingar"
@@ -2901,15 +3365,16 @@ msgstr "Aftur í &quot;Villupúka stillingar&quot; síðuna"
 msgid "ATTENTION:"
 msgstr "ATH!:"
 
+#, fuzzy
 msgid ""
 "SquirrelSpell was unable to decrypt your personal dictionary. This is most "
 "likely due to the fact that you have changed your mailbox password. In order "
 "to proceed, you will have to supply your old password so that SquirrelSpell "
 "can decrypt your personal dictionary. It will be re-encrypted with your new "
-"password after this.<br>If you haven't encrypted your dictionary, then it "
-"got mangled and is no longer valid. You will have to delete it and start "
-"anew. This is also true if you don't remember your old password -- without "
-"it, the encrypted data is no longer accessible."
+"password after this. If you haven't encrypted your dictionary, then it got "
+"mangled and is no longer valid. You will have to delete it and start anew. "
+"This is also true if you don't remember your old password -- without it, the "
+"encrypted data is no longer accessible."
 msgstr ""
 "SquirrelSpell gat ekki afkóðað orðabókina þína.  Líklega er þetta sökum þess "
 "að þú hafir breytt lykilorðinu að pósthólfinu.  Ef svo er, þá þarftu að slá "
@@ -2931,7 +3396,8 @@ msgstr "Halda áfram"
 msgid "You must make a choice"
 msgstr "Þú verður að velja"
 
-msgid "You can either delete your dictionary or type in the old password. Not both."
+msgid ""
+"You can either delete your dictionary or type in the old password. Not both."
 msgstr ""
 "Þú getur annaðhvort eytt orðabókinni þinni eða slegið inn gamla lykilorðið, "
 "en ekki bæði."
@@ -2946,15 +3412,27 @@ msgstr "Villa við afkóðun á orðabók"
 msgid "Cute."
 msgstr "tilvitnun"
 
-#, c-format
+#, php-format
+msgid "Could not run the spellchecker command (%s)."
+msgstr ""
+
+msgid "Error while writing to pipe."
+msgstr ""
+
+#, fuzzy, php-format
+msgid "Could not open temporary file '%s'."
+msgstr "Ekki tókst að læsa gagnaskrá"
+
+#, php-format
+msgid "Error while writing to temporary file '%s'."
+msgstr ""
+
+#, php-format
 msgid "I tried to execute '%s', but it returned:"
 msgstr "Reyndi að keyra %s en það skilaði: "
 
 msgid "SquirrelSpell is misconfigured."
 msgstr "SquirrelMail er vanstillt"
-
-msgid "SquirrelSpell Results"
-msgstr "SquirrelSpell niðurstöður"
 
 msgid "Spellcheck completed. Commit changes?"
 msgstr "Villuleiðréttingum lokið, virkja breytingar?"
@@ -2965,7 +3443,10 @@ msgstr "Engar breytingar voru gerðar."
 msgid "Now saving your personal dictionary... Please wait."
 msgstr "Vista núna orðabókina þína.  Dokaðu við..."
 
-#, c-format
+msgid "SquirrelSpell Results"
+msgstr "SquirrelSpell niðurstöður"
+
+#, php-format
 msgid "Found %s errors"
 msgstr "Fann %s villu/r"
 
@@ -3021,16 +3502,36 @@ msgid "Close and Commit"
 msgstr "Loka og virkja"
 
 msgid "The spellcheck is not finished. Really close and commit changes?"
-msgstr "Villuleiðréttingunni ekki lokið.  Viltu virkilega loka og virkja breytingar?"
+msgstr ""
+"Villuleiðréttingunni ekki lokið.  Viltu virkilega loka og virkja breytingar?"
 
 msgid "Close and Cancel"
 msgstr "Loka og hætta við"
 
 msgid "The spellcheck is not finished. Really close and discard changes?"
-msgstr "Villuleiðréttingunni ekki lokið.  Viltu virkilega loka og henda breytingum?"
+msgstr ""
+"Villuleiðréttingunni ekki lokið.  Viltu virkilega loka og henda breytingum?"
 
 msgid "No errors found"
 msgstr "Engar villur fundust"
+
+#, fuzzy
+msgid ""
+"Your personal dictionary has been encrypted and is now stored in an "
+"encrypted format."
+msgstr ""
+"Orðabókin þín hefur nú verið <strong>dulkóðuð</strong>, og er geymt á "
+"<strong> dulkóðuðu formi</strong>."
+
+#, fuzzy
+msgid ""
+"Your personal dictionary has been decrypted and is now stored as plain text."
+msgstr ""
+"Orðabókin þín hefur nú verið afkóðuð og er geymt sem <strong>textaskjal</"
+"strong>."
+
+msgid "Personal Dictionary Crypto Settings"
+msgstr "Dulkóðunarstillingar fyrir orðabókina þína"
 
 msgid "Your personal dictionary was erased."
 msgstr "Orðabókinni þinni var eytt"
@@ -3055,7 +3556,8 @@ msgstr ""
 "Tókst að dulkóða orðabókina þína.  Farðu nú aftur í &quot;Villupúka "
 "stillingar&quot; og veldu aftur."
 
-msgid "Successful Re-encryption"
+#, fuzzy
+msgid "Successful re-encryption"
 msgstr "Tókst að endurdúlkóða"
 
 msgid ""
@@ -3069,23 +3571,6 @@ msgstr ""
 msgid "Dictionary re-encrypted"
 msgstr "Orðabók endurdulkóðuð"
 
-msgid ""
-"Your personal dictionary has been <strong>encrypted</strong> and is now "
-"stored in an <strong>encrypted format</strong>."
-msgstr ""
-"Orðabókin þín hefur nú verið <strong>dulkóðuð</strong>, og er geymt á "
-"<strong> dulkóðuðu formi</strong>."
-
-msgid ""
-"Your personal dictionary has been <strong>decrypted</strong> and is now "
-"stored as <strong>clear text</strong>."
-msgstr ""
-"Orðabókin þín hefur nú verið afkóðuð og er geymt sem <strong>textaskjal</"
-"strong>."
-
-msgid "Personal Dictionary Crypto Settings"
-msgstr "Dulkóðunarstillingar fyrir orðabókina þína"
-
 msgid "Personal Dictionary"
 msgstr "Persónulegar upplýsingar"
 
@@ -3095,7 +3580,7 @@ msgstr "Engin orð í orðabókinni þinni"
 msgid "Please check any words you wish to delete from your dictionary."
 msgstr "Vinsamlegast veldu þau orð sem þú vilt eyða úr orðabókinni."
 
-#, c-format
+#, php-format
 msgid "%s dictionary"
 msgstr "   orðabók                      %s"
 
@@ -3115,50 +3600,64 @@ msgstr ""
 "Þetta mun dulkóða orðabókina og geyma hana á dulkóðuðu formi. Ganga til "
 "verks?"
 
+#, fuzzy
 msgid ""
-"This will decrypt your personal dictionary and store it in a clear-text "
+"This will decrypt your personal dictionary and store it in a plain text "
 "format. Proceed?"
 msgstr "Þetta mun afkóða orðabókina og vista hana sem texta.  Ganga til verks?"
 
+#, fuzzy
+msgid "Your personal dictionary is currently encrypted."
+msgstr "Orðabókinni þinni var eytt"
+
 msgid ""
-"<p>Your personal dictionary is <strong>currently encrypted</strong>. This "
-"helps protect your privacy in case the web-mail system gets compromized and "
-"your personal dictionary ends up stolen. It is currently encrypted with the "
-"password you use to access your mailbox, making it hard for anyone to see "
-"what is stored in your personal dictionary.</p> <p><strong>ATTENTION:</"
-"strong> If you forget your password, your personal dictionary will become "
-"unaccessible, since it can no longer be decrypted. If you change your "
-"mailbox password, SquirrelSpell will recognize it and prompt you for your "
-"old password in order to re-encrypt the dictionary with a new key.</p>"
+"This helps protect your privacy in case the web-mail system gets compromized "
+"and your personal dictionary ends up stolen. It is currently encrypted with "
+"the password you use to access your mailbox, making it hard for anyone to "
+"see what is stored in your personal dictionary."
 msgstr ""
 
-msgid "Please decrypt my personal dictionary and store it in a clear-text format."
+msgid ""
+"If you forget your password, your personal dictionary will become "
+"unaccessible, since it can no longer be decrypted. If you change your "
+"mailbox password, SquirrelSpell will recognize it and prompt you for your "
+"old password in order to re-encrypt the dictionary with a new key."
+msgstr ""
+
+msgid ""
+"Please decrypt my personal dictionary and store it in a clear-text format."
 msgstr "Vinsamlegast afkóðaðu orðabókina mína og vistaðu hana sem texta."
 
 msgid "Change crypto settings"
 msgstr "Breyta dulkóðunar stillingum"
 
+#, fuzzy
+msgid "Your personal dictionary is currently not encrypted."
+msgstr "Orðabókinni þinni var eytt"
+
 msgid ""
-"<p>Your personal dictionary is <strong>currently not encrypted</strong>. You "
-"may wish to encrypt your personal dictionary to protect your privacy in case "
-"the webmail system gets compromized and your personal dictionary file gets "
-"stolen. When encrypted, the file's contents look garbled and are hard to "
-"decrypt without knowing the correct key (which is your mailbox password).</"
-"p> <strong>ATTENTION:</strong> If you decide to encrypt your personal "
-"dictionary, you must remember that it gets &quot;hashed&quot; with your "
-"mailbox password. If you forget your mailbox password and the administrator "
-"changes it to a new value, your personal dictionary will become useless and "
-"will have to be created anew. However, if you or your system administrator "
-"change your mailbox password but you still have the old password at hand, "
-"you will be able to enter the old key to re-encrypt the dictionary with the "
-"new value.</p>"
+"You may wish to encrypt your personal dictionary to protect your privacy in "
+"case the webmail system gets compromized and your personal dictionary file "
+"gets stolen. When encrypted, the file's contents look garbled and are hard "
+"to decrypt without knowing the correct key (which is your mailbox password)."
 msgstr ""
 
-msgid "Please encrypt my personal dictionary and store it in an encrypted format."
+msgid ""
+"If you decide to encrypt your personal dictionary, you must remember that it "
+"gets &quot;hashed&quot; with your mailbox password. If you forget your "
+"mailbox password and the administrator changes it to a new value, your "
+"personal dictionary will become useless and will have to be created anew. "
+"However, if you or your system administrator change your mailbox password "
+"but you still have the old password at hand, you will be able to enter the "
+"old key to re-encrypt the dictionary with the new value."
+msgstr ""
+
+msgid ""
+"Please encrypt my personal dictionary and store it in an encrypted format."
 msgstr "Vinsamlegast dulkóðaðu orðabókina mína og geymdu hana kóðaða."
 
-#, c-format
-msgid "Deleting the following entries from <strong>%s</strong> dictionary:"
+#, fuzzy, php-format
+msgid "Deleting the following entries from %s dictionary:"
 msgstr "Eyði eftirfarandi úr orðabókinni <strong>%s</strong>:"
 
 msgid "All done!"
@@ -3181,16 +3680,14 @@ msgstr "Veldu hvaða orðabók þú vilt nota til að villuleita þetta skeyti eftir:"
 msgid "SquirrelSpell Initiating"
 msgstr "Ræsi SquirrelSpell"
 
-#, c-format
-msgid ""
-"Settings adjusted to: <strong>%s</strong> with <strong>%s</strong> as "
-"default dictionary."
+#, fuzzy, php-format
+msgid "Settings adjusted to: %s with %s as default dictionary."
 msgstr ""
 "Stillingum breytt í: <strong>%s</strong> með <strong>%s</strong> sem "
 "grunnmöppu"
 
-#, c-format
-msgid "Using <strong>%s</strong> dictionary (system default) for spellcheck."
+#, fuzzy, php-format
+msgid "Using %s dictionary (system default) for spellcheck."
 msgstr "Nota <strong>%s</strong> orðabókina við villuleitun."
 
 msgid "International Dictionaries Preferences Updated"
@@ -3237,27 +3734,25 @@ msgstr "Vistaðar þýðingarstillingar"
 msgid "Your server options are as follows:"
 msgstr "Val er á milli eftirfarandi þjóna:"
 
-msgid "Maximum of 1000 characters translated, powered by Systran"
+#, fuzzy
+msgid "Maximum of 150 words translated, powered by Systran"
 msgstr "Þýðir allt að 1000 stöfum.  Knúið af Systran"
 
-#, c-format
+#, php-format
 msgid "Number of supported language pairs: %s"
 msgstr "Fjöldi studdra tungumálapara : %s"
 
 msgid "No known limits, powered by Systran"
 msgstr "Engar þekktar takmarkanir.  Knúið af Systran"
 
-msgid "No known limits, powered by Translation Experts's InterTran"
-msgstr "Engar þekktar takmarkanir.  Knúið af InterTran frá Translation Experts's"
+#, fuzzy
+msgid "No known limits, powered by Translation Experts' InterTran"
+msgstr ""
+"Engar þekktar takmarkanir.  Knúið af InterTran frá Translation Experts's"
 
-#, c-format
+#, php-format
 msgid "Number of supported languages: %s"
 msgstr "Fjöldir studdra tungumála: %s"
-
-msgid "No known limits, powered by GPLTrans (free, open source)"
-msgstr ""
-"Engar þekktar takmarkanir.  Knúið af GPLTrans (frjáls og "
-"frír hugbúnaður)"
 
 msgid "Hellenic translations, no known limits, powered by Systran"
 msgstr "Grískar þýðingar, engar þekktar takmarkanir.  Knúið af Systran"
@@ -3268,7 +3763,8 @@ msgstr "Rússneskar þýðingar, þýðir allt að 500 stafi. "
 msgid ""
 "You also decide if you want the translation box displayed, and where it will "
 "be located."
-msgstr "Þú þarft einnig að velja hvort þýðingargluggi sjáist, og þá hvar hann er."
+msgstr ""
+"Þú þarft einnig að velja hvort þýðingargluggi sjáist, og þá hvar hann er."
 
 msgid "Select your translator:"
 msgstr "Veldu þýðanda"
@@ -3291,12 +3787,6 @@ msgstr "til hægri"
 msgid "Translate inside the SquirrelMail frames"
 msgstr "Þýða í SquirrelMail "
 
-msgid "When composing:"
-msgstr "Við skrifir:"
-
-msgid "Not yet functional, currently does nothing"
-msgstr "Ekki enn útfært, gerir ekkert í augnablikinu"
-
 msgid "Translation Options"
 msgstr "Stillinga þýðanda"
 
@@ -3305,21 +3795,30 @@ msgid ""
 "language?"
 msgstr "Hvaða þýðanda viltu nota ef bréf berast á erlendri tungu?"
 
-#, c-format
+#, php-format
 msgid "%s to %s"
 msgstr "%s til %s"
+
+msgid "Chinese, Simplified"
+msgstr ""
 
 msgid "English"
 msgstr "Enska"
 
-msgid "Chinese"
-msgstr "Kínverska"
+msgid "Chinese, Traditional"
+msgstr ""
+
+msgid "Dutch"
+msgstr "Hollenska"
 
 msgid "French"
 msgstr "Franska"
 
 msgid "German"
 msgstr "Þýska"
+
+msgid "Greek"
+msgstr "Gríska"
 
 msgid "Italian"
 msgstr "Ítalska"
@@ -3333,11 +3832,11 @@ msgstr "Kóreska"
 msgid "Portuguese"
 msgstr "Portúgalska"
 
-msgid "Spanish"
-msgstr "Spænska"
-
 msgid "Russian"
 msgstr "Rússneska"
+
+msgid "Spanish"
+msgstr "Spænska"
 
 msgid "Translate"
 msgstr "Þýða"
@@ -3357,23 +3856,20 @@ msgstr "Tékkneska"
 msgid "Danish"
 msgstr "Danska"
 
-msgid "Dutch"
-msgstr "Hollenska"
-
-msgid "European Spanish"
-msgstr "Evrópsk Spænska"
+msgid "Filipino (Tagalog)"
+msgstr ""
 
 msgid "Finnish"
 msgstr "Finnska"
-
-msgid "Greek"
-msgstr "Gríska"
 
 msgid "Hungarian"
 msgstr "Ungverska"
 
 msgid "Icelandic"
 msgstr "Íslenska"
+
+msgid "Latin"
+msgstr "Latína"
 
 msgid "Latin American Spanish"
 msgstr "Suður-Amerísk Spænska"
@@ -3405,9 +3901,6 @@ msgstr "Velska"
 msgid "Indonesian"
 msgstr "Indónesíska"
 
-msgid "Latin"
-msgstr "Latína"
-
 msgid "to English"
 msgstr "í ensku"
 
@@ -3420,140 +3913,931 @@ msgstr "Tungumál viðmóts"
 msgid "Translation direction"
 msgstr "Þýða upp/niður"
 
+#, fuzzy, php-format
+msgid "About SquirrelMail %s"
+msgstr "SquirrelMail útgáfa %s"
+
+msgid ""
+"SquirrelMail is the name of the program that provides access to your email "
+"via the web."
+msgstr ""
+
+#, php-format
+msgid ""
+"If you have questions about or problems with your mail account, passwords, "
+"abuse etc, please refer to your system administrator or provider%s."
+msgstr ""
+
+#, php-format
+msgid ""
+"They can assist you adequately with these issues. The SquirrelMail Project "
+"Team cannot help you with that. The %shelp system%s provides answers to "
+"frequently asked questions."
+msgstr ""
+
+#, php-format
+msgid ""
+"SquirrelMail is a feature rich, standards compliant webmail application "
+"written in PHP. It was made by a group of volunteers united in the "
+"SquirrelMail Project Team and is released as open source, free software "
+"under the %sGNU General Public License%s."
+msgstr ""
+
+#, php-format
+msgid ""
+"For more information about SquirrelMail and the SquirrelMail Project Team, "
+"see %sthe SquirrelMail website%s."
+msgstr ""
+
+#, fuzzy
+msgid "System information"
+msgstr "Upplýsingar um IMAP þjón"
+
+#, fuzzy, php-format
+msgid "You are using SquirrelMail version: %s"
+msgstr "SquirrelMail útgáfa %s"
+
+msgid "The administrator installed the following plugins:"
+msgstr ""
+
+msgid "none installed"
+msgstr ""
+
+msgid "sort by nickname"
+msgstr ""
+
+#, fuzzy
+msgid "sort by name"
+msgstr "Eftirnafn"
+
+msgid "sort by email"
+msgstr ""
+
+msgid "sort by info"
+msgstr ""
+
+#, fuzzy
+msgid "Add to address book"
+msgstr "Bæta netfangi við netfangaskrá"
+
+msgid ""
+"Because PHP file uploads are turned off, you can not attach files to this "
+"message. Please see your system administrator for details."
+msgstr ""
+
+#, fuzzy
+msgid "No folders were found to unsubscribe from."
+msgstr "Engin mappa fannst til að fjarlægja úr áskrift!"
+
+#, fuzzy
+msgid "No folders were found to subscribe to."
+msgstr "Engar möppur fundust til að setja í áskrift!"
+
+msgid "Last Refresh"
+msgstr "Síðast uppfært"
+
+#, fuzzy
+msgid "Check mail"
+msgstr "Athuga póst við innskráningu"
+
+msgid "Save folder tree"
+msgstr "Vista möpputré"
+
+#, fuzzy
+msgid "SquirrelMail Webmail Application"
+msgstr "SquirrelMail útgáfa %s"
+
+#, fuzzy
+msgid "Compose Preferences"
+msgstr "Stillingar á möppu"
+
+msgid ""
+"Control the behaviour and layout of writing new mail messages, replying to "
+"and forwarding messages."
+msgstr ""
+
+#, fuzzy
+msgid "Received"
+msgstr "Fá staðfestingu"
+
+#, fuzzy
+msgid "As Attachment"
+msgstr "Viðhengi"
+
+msgid "Bypass Trash"
+msgstr ""
+
+msgid "Please enter something to search for"
+msgstr "Vinsamlegast sláðu inn eitthvað til að leita að "
+
+msgid "There must be at least one criteria to search for"
+msgstr ""
+
+#, fuzzy
+msgid "Error in criteria argument"
+msgstr "Villa í breytum eða viðföngum"
+
+msgid "(Illegal date)"
+msgstr "(óleyfileg dagsetning)"
+
+msgid "(Wrong date)"
+msgstr "(Vitlaus dagsetning)"
+
+msgid "In"
+msgstr "Inn"
+
+msgid "(Missing argument)"
+msgstr "(Vantar viðfang)"
+
+#, fuzzy
+msgid "(Spurious argument)"
+msgstr "(Vantar viðfang)"
+
+#, fuzzy
+msgid "Fold"
+msgstr "Möppur"
+
+#, fuzzy
+msgid "Unfold"
+msgstr "Upplýsingar"
+
+msgid "Saved Searches"
+msgstr "Vistaðar leitir"
+
+msgid "Missing"
+msgstr "Vantar"
+
+msgid "and&nbsp;subfolders:"
+msgstr ""
+
+#, fuzzy
+msgid "Exclude Criteria:"
+msgstr "Bæta við póstþjóni"
+
+#, fuzzy
+msgid "Search Criteria"
+msgstr "Leita að"
+
+#, fuzzy
+msgid "Add New Criteria"
+msgstr "Bæta við póstþjóni"
+
+msgid "Remove Excluded Criteria"
+msgstr ""
+
+msgid "Remove All Criteria"
+msgstr ""
+
+msgid "Not"
+msgstr "Ekki"
+
+msgid "Answered"
+msgstr "Svarað"
+
+msgid "Before"
+msgstr "Fyrir"
+
+msgid "Message Body"
+msgstr "Meginmáli"
+
+msgid "Deleted"
+msgstr "Eytt"
+
+msgid "Draft"
+msgstr "Uppkast"
+
+msgid "Flagged"
+msgstr "Merkt"
+
+msgid "Sent By"
+msgstr "Sent af"
+
+msgid "Header Field"
+msgstr "Haus dálkur"
+
+msgid "Keyword"
+msgstr "Lykilorð"
+
+msgid "Larger Than"
+msgstr "Stærra en"
+
+msgid "Old"
+msgstr "Gamalt"
+
+msgid "On"
+msgstr "Á"
+
+msgid "Recent"
+msgstr "Nýlegt"
+
+msgid "Seen"
+msgstr "Séð"
+
+msgid "Sent Before"
+msgstr "Sent fyrir"
+
+msgid "Sent On"
+msgstr "Sent: þann"
+
+msgid "Sent Since"
+msgstr "Sent eftir"
+
+msgid "Since"
+msgstr "Eftir"
+
+msgid "Smaller Than"
+msgstr "Minna en"
+
+msgid "Subject Contains"
+msgstr "Fyrirsögn inniheldur:"
+
+msgid "Header and Body"
+msgstr "Haus og meginmál"
+
+msgid "Sent To"
+msgstr "Sent til:"
+
+msgid "And In"
+msgstr "Og í"
+
+msgid "Or In"
+msgstr "Eða í"
+
+msgid "And"
+msgstr "Og"
+
+msgid "Or"
+msgstr "Eða"
+
+#, fuzzy
+msgid "Standard search"
+msgstr "Vistaðar leitir"
+
+#, fuzzy
+msgid "Advanced search"
+msgstr "Vistaðar leitir"
+
+msgid "Folder List"
+msgstr "Möppu listi"
+
+msgid "PHP install does not have LDAP support."
+msgstr ""
+
+#, fuzzy
+msgid "Click here to change the sorting of the address list"
+msgstr "Smelltu hér til að breyta röðun í skeytalista"
+
+#, fuzzy
+msgid "Illegal folder name."
+msgstr "(óleyfileg dagsetning)"
+
+#, php-format
+msgid "The name may not contain any of the following: %s"
+msgstr ""
+
+#, fuzzy
+msgid "Please select a different name."
+msgstr "Ólöglegt heiti á möppu. Veldu annað nafn."
+
+#, fuzzy
+msgid "You have not selected a folder to subscribe. Please do so."
+msgstr "Þú valdir ekki möppu til að endurnefna.  Gjörðu það."
+
+#, fuzzy
+msgid "You have not selected a folder to unsubscribe. Please do so."
+msgstr "Þú valdir ekki möppu til að endurnefna.  Gjörðu það."
+
+msgid "Possible reason:"
+msgstr ""
+
+msgid "ERROR: Bad function call."
+msgstr ""
+
+msgid "Reason:"
+msgstr "Ástæða:"
+
+msgid ""
+"TLS is enabled, but this version of PHP does not support TLS sockets, or is "
+"missing the openssl extension."
+msgstr ""
+
+msgid ""
+"Your mailbox is not located at this server. Try a different server or "
+"consult your system administrator"
+msgstr ""
+
+#, fuzzy
+msgid "Unknown recipient"
+msgstr "Óþekkt svar"
+
+msgid "Unflag"
+msgstr ""
+
+#, fuzzy
+msgid "Flag"
+msgstr "Rofar"
+
+#, fuzzy
+msgid "Undelete"
+msgstr "eyða"
+
+#, fuzzy
+msgid "General Message Composition"
+msgstr "Sýna og rita skeyti"
+
+#, fuzzy
+msgid "Replying and Forwarding Messages"
+msgstr "Senda líka á afritshafa (CC) þegar er áframsent"
+
+msgid "Strip signature when replying"
+msgstr "Taka út undirskrift þegar svarað er"
+
+msgid "Enable Fancy Row Mouseover Highlighting"
+msgstr ""
+
+msgid "Message Flags Icon Theme"
+msgstr ""
+
+msgid "Show Flag / Unflag Buttons"
+msgstr ""
+
+#, fuzzy
+msgid "Use Compact Page Selector"
+msgstr "Virkja síðuval"
+
+msgid "Length of From/To Field (0 for full)"
+msgstr ""
+
+msgid "Length of Subject Field (0 for full)"
+msgstr ""
+
+#, fuzzy
+msgid "Message Display Options"
+msgstr "Almennar útlitsbreytur"
+
+msgid "Show 'Delete & Prev/Next' Links"
+msgstr ""
+
+#, fuzzy
+msgid "Save Replies with Original Message"
+msgstr "Upprunalegt Skeyti"
+
+#, fuzzy, php-format
+msgid "%d Minute"
+msgid_plural "%d Minutes"
+msgstr[0] "Mínúta"
+msgstr[1] "Mínúta"
+
+msgid "Show only subscribed folders"
+msgstr ""
+
+msgid "XP"
+msgstr ""
+
+#, fuzzy
+msgid "Hide SquirrelMail Header"
+msgstr "Skoða allan haus"
+
+#, fuzzy
+msgid "Search functions"
+msgstr "Leita að"
+
+msgid "Only basic search"
+msgstr ""
+
+msgid "Only advanced search"
+msgstr ""
+
+msgid "Both search functions"
+msgstr ""
+
+msgid "Show alternative language names"
+msgstr ""
+
+msgid "Available languages"
+msgstr ""
+
+#, fuzzy
+msgid "Enable aggressive decoding"
+msgstr "Virkja síðuval"
+
+msgid "Tweaks"
+msgstr ""
+
+msgid "Use advanced tree folder listing"
+msgstr ""
+
+#, fuzzy
+msgid "Use icons"
+msgstr "Sekúndur"
+
+msgid "Use PHP recode functions"
+msgstr ""
+
+msgid "Use PHP iconv functions"
+msgstr ""
+
+msgid "Allow remote configuration test"
+msgstr ""
+
+msgid "Show System Specifications"
+msgstr ""
+
+#, fuzzy
+msgid "Search Mailing List Archives"
+msgstr "Lista safn"
+
+msgid "Search SourceForge Bugtracker"
+msgstr ""
+
+#, fuzzy
+msgid "Search for words:"
+msgstr "Leita að"
+
+msgid "Written by:"
+msgstr ""
+
+#, fuzzy
+msgid "Email addresses only"
+msgstr "Netfang"
+
+#, fuzzy
+msgid "Mailing list:"
+msgstr "Póstlisti"
+
+#, fuzzy
+msgid "SquirrelMail users list"
+msgstr "SquirrelMail útgáfa %s"
+
+#, fuzzy
+msgid "SquirrelMail plugins list"
+msgstr "SquirrelMail útgáfa %s"
+
+#, fuzzy
+msgid "SquirrelMail developers list"
+msgstr "SquirrelMail útgáfa %s"
+
+#, fuzzy
+msgid "SquirrelMail internationalization list"
+msgstr "SquirrelMail útgáfa %s"
+
+#, fuzzy
+msgid "Sort by:"
+msgstr "Port:"
+
+msgid "Relevance"
+msgstr ""
+
+#, fuzzy
+msgid "Search Archives"
+msgstr "Niðurstöður leitar"
+
+#, fuzzy
+msgid "Reset Form"
+msgstr "Eyða möppu"
+
+msgid "Summary keyword:"
+msgstr ""
+
+#, fuzzy
+msgid "Sort By:"
+msgstr "Sent af"
+
+msgid "ID"
+msgstr ""
+
+#, fuzzy
+msgid "Summary"
+msgstr "sunnudagur"
+
+#, fuzzy
+msgid "Open Date"
+msgstr "Mistókst að opna"
+
+#, fuzzy
+msgid "Close Date"
+msgstr "Loka"
+
+#, fuzzy
+msgid "Submitter"
+msgstr "Skrá"
+
+msgid "Assignee"
+msgstr ""
+
+#, fuzzy
+msgid "Order:"
+msgstr "Annað"
+
+msgid "Ascending"
+msgstr ""
+
+msgid "Descending"
+msgstr ""
+
+#, fuzzy
+msgid "Search Bugtracker"
+msgstr "Leita að"
+
+msgid "You must type in a new password."
+msgstr ""
+
+msgid "You must also type in your new password in the verify box."
+msgstr ""
+
+msgid "Your new password does not match the verify password."
+msgstr ""
+
+msgid "You must type in your current password."
+msgstr ""
+
+#, fuzzy
+msgid "Your current password is not correct."
+msgstr "Óþekktur notandi eða lykilorð rangt."
+
+#, php-format
+msgid "Your new password should be %s to %s characters long."
+msgstr ""
+
+#, fuzzy
+msgid "Your new password contains invalid characters."
+msgstr "Gælunafn inniheldur óleyfileg tákn"
+
+#, fuzzy
+msgid "Change Password"
+msgstr "Breyta þessu orði"
+
+#, fuzzy
+msgid "Current Password:"
+msgstr "Lykilorð:"
+
+#, fuzzy
+msgid "New Password:"
+msgstr "Lykilorð:"
+
+#, fuzzy
+msgid "Verify New Password:"
+msgstr "Lykilorð:"
+
+msgid "Use this to change your email password."
+msgstr ""
+
+#, fuzzy
+msgid "User's Password"
+msgstr "Lykilorð:"
+
+msgid "Current configuration requires LDAP support in PHP."
+msgstr ""
+
+msgid "Plugin is not configured correctly."
+msgstr ""
+
+#, php-format
+msgid "Setting of LDAP connection option %s to value %s failed."
+msgstr ""
+
+#, php-format
+msgid "Incorrect LDAP connection option: %s"
+msgstr ""
+
+msgid ""
+"Current PHP LDAP extension does not allow use of ldap_set_option() function."
+msgstr ""
+
+#, fuzzy
+msgid "Unable to use TLS."
+msgstr "Gat ekki uppfært"
+
+#, fuzzy, php-format
+msgid "Error: %s"
+msgstr "Villa "
+
+msgid "Unable to use LDAP TLS in current setup."
+msgstr ""
+
+msgid "Unable to bind to LDAP server."
+msgstr ""
+
+#, fuzzy, php-format
+msgid "Server replied: %s"
+msgstr "Þjónn svaraði: "
+
+msgid "Unable to find user's password attribute."
+msgstr ""
+
+msgid "Unable to rebind to LDAP server."
+msgstr ""
+
+msgid "LDAP server uses different attribute to store user's password."
+msgstr ""
+
+#, fuzzy
+msgid "Unable to connect to LDAP server."
+msgstr "Engin tenging við póstþjón"
+
+msgid "Unable to find user's DN."
+msgstr ""
+
+#, fuzzy
+msgid "Search error."
+msgstr "Leita að"
+
+msgid "Multiple userid matches found."
+msgstr ""
+
+msgid "ldap_get_dn error."
+msgstr ""
+
+#, php-format
+msgid "Unsupported crypto: %s"
+msgstr ""
+
+msgid "PHP mhash extension is missing."
+msgstr ""
+
+msgid "System crypt library doesn't support standard DES crypt."
+msgstr ""
+
+msgid "System crypt library doesn't have MD5 support."
+msgstr ""
+
+msgid "System crypt library doesn't support extended DES crypt."
+msgstr ""
+
+msgid "System crypt library doesn't have Blowfish support."
+msgstr ""
+
+#, fuzzy
+msgid "unknown"
+msgstr "Óþekkt dagsetning"
+
+msgid "Unable to validate user's password."
+msgstr ""
+
+msgid "Blowfish is not supported by webserver's system crypt library."
+msgstr ""
+
+msgid "MD5 is not supported by webserver's system crypt library."
+msgstr ""
+
+msgid ""
+"Extended DES crypt is not supported by webserver's system crypt library."
+msgstr ""
+
+msgid ""
+"Standard DES crypt is not supported by webserver's system crypt library."
+msgstr ""
+
+msgid "PHP Curl extension is NOT available! Unable to change password!"
+msgstr ""
+
+msgid "Cannot change password! (Is user 'Self Configurable User' ?) (401)"
+msgstr ""
+
+#, fuzzy
+msgid "Cannot change password!"
+msgstr "Breyta þessu orði"
+
+msgid "Cannot connect to Database Server, please try later!"
+msgstr ""
+
+msgid "Database not found on server"
+msgstr ""
+
+msgid "SQL call failed, try again later."
+msgstr ""
+
+msgid "Duplicate login entries detected, cannot change password!"
+msgstr ""
+
+msgid "Password change was not successful!"
+msgstr ""
+
+msgid "Closing Connection"
+msgstr ""
+
+#, fuzzy
+msgid "Connecting to Password Server"
+msgstr "Engin tenging við póstþjón"
+
+msgid "No valid backend defined."
+msgstr ""
+
+msgid "Incorrent path to vmail.inc file."
+msgstr ""
+
+msgid "Invalid or corrupted vmail.inc file."
+msgstr ""
+
+msgid "Invalid user."
+msgstr ""
+
+#, fuzzy
+msgid "Empty domain"
+msgstr "Tæma skipanastreng"
+
+#, fuzzy
+msgid "Empty domain password"
+msgstr "Tæma skipanastreng"
+
+#, fuzzy
+msgid "Empty username"
+msgstr "Notandanafn:"
+
+msgid "Empty new password"
+msgstr ""
+
+#, fuzzy
+msgid "Server Capability response:"
+msgstr "Þjónn svaraði: "
+
+msgid ""
+"Select the IMAP commands you would like to run. Most commands require a "
+"selected mailbox so the select command is already setup. You can clear all "
+"the commands and test your own IMAP command strings. The commands are "
+"executed in order. The default values are simple IMAP commands using your "
+"default_charset and folder_prefix from SquirrelMail when needed."
+msgstr ""
+
+msgid ""
+"NOTE: These commands are live, any changes made will effect your current "
+"email account."
+msgstr ""
+
+#, fuzzy
+msgid "Select"
+msgstr "Velja allt"
+
+#, fuzzy
+msgid "Test Name"
+msgstr "Nafn þema"
+
+#, fuzzy
+msgid "IMAP command string"
+msgstr "Tæma skipanastreng"
+
+#, fuzzy
+msgid "Request:"
+msgstr "umbeðið"
+
+#, fuzzy
+msgid "No POP3 servers configured yet."
+msgstr "Enginn þjónn skilgreindur"
+
+msgid "Click here to go to the options page."
+msgstr "Smelltu hér til fara á stillingasíðuna"
+
+#, fuzzy, php-format
+msgid "Login OK: Inbox contains %s message"
+msgid_plural "Login OK: Inbox contains %s messages"
+msgstr[0] "Auðkenni í lagi: Innhólf inniheldur ["
+msgstr[1] "Auðkenni í lagi: Innhólf inniheldur ["
+
+#, fuzzy
+msgid "Width of popup window:"
+msgstr "Breidd ritglugga"
+
+msgid "If set to 0, reverts to default value"
+msgstr ""
+
+#, fuzzy
+msgid "Height of popup window:"
+msgstr "Hæð ritglugga"
+
+#, fuzzy
+msgid "uploaded media file"
+msgstr "Hljóðið mitt"
+
+#, fuzzy
+msgid "none"
+msgstr "(ekkert)"
+
+#, fuzzy
+msgid "Upload Media File:"
+msgstr "Hljóðið mitt"
+
+#, fuzzy
+msgid "Uploaded Media File:"
+msgstr "Hljóðið mitt"
+
+#, fuzzy
+msgid "unavailable"
+msgstr "ekki fyrir hendi"
+
+#, php-format
+msgid "Media file %s will be removed, if you upload other media file."
+msgstr ""
+
+#, fuzzy
+msgid "Spam Service Type:"
+msgstr "Tegund IMAP þjóns"
+
+msgid "Free reporting"
+msgstr ""
+
+msgid "Member services"
+msgstr ""
+
+#, fuzzy
+msgid "Save Service Type"
+msgstr "Tegund skönnunar"
+
+#, fuzzy
+msgid "SpamCop reporting"
+msgstr "SpamCop - Klagar ruslpóst"
+
+#, fuzzy
+msgid "Translation Theme:"
+msgstr "Þýða upp/niður"
+
+msgid ""
+"Selected translation engine is disabled. Please update your translation "
+"preferences."
+msgstr ""
+
+#, fuzzy
+msgid "Translation Preferences"
+msgstr "Stofnunar stillingar"
+
+#, fuzzy
+msgid "Maximum of 25 kilobytes translated, powered by Systran"
+msgstr "10 tungumálapör, þýðir mest 25 kílóbæti.  Knúið af Systran"
+
+msgid "No known limits, powered by GPLTrans (free, open source)"
+msgstr ""
+"Engar þekktar takmarkanir.  Knúið af GPLTrans (frjáls og frír hugbúnaður)"
+
+msgid "Transliterate unknown words:"
+msgstr ""
+
+msgid "When composing:"
+msgstr "Við skrifir:"
+
+msgid "Not yet functional, currently does nothing"
+msgstr "Ekki enn útfært, gerir ekkert í augnablikinu"
+
 msgid "Delivery error report"
 msgstr "Upplýsingar um villu í sendingu"
 
 msgid "Undelivered Message Headers"
 msgstr "Hausar á ósendum skeytum"
 
-#~ msgid "Please enter something to search for"
-#~ msgstr "Vinsamlegast sláðu inn eitthvað til að leita að "
+msgid "This image has been removed for security reasons"
+msgstr ""
 
-#, fuzzy
-#~ msgid "Error in criteria argument"
-#~ msgstr "Villa í breytum eða viðföngum"
+#~ msgid "Unknown error"
+#~ msgstr "Óþekkt Villa"
 
-#~ msgid "(Illegal date)"
-#~ msgstr "(óleyfileg dagsetning)"
+#~ msgid "said"
+#~ msgstr "sagði"
 
-#~ msgid "(Wrong date)"
-#~ msgstr "(Vitlaus dagsetning)"
+#~ msgid "To:"
+#~ msgstr "Til:"
 
-#~ msgid "In"
-#~ msgstr "Inn"
+#~ msgid "CC:"
+#~ msgstr "Afrit:"
 
-#~ msgid "(Missing argument)"
-#~ msgstr "(Vantar viðfang)"
+#~ msgid "BCC:"
+#~ msgstr "Falið Afrit:"
 
-#~ msgid "Saved Searches"
-#~ msgstr "Vistaðar leitir"
+#~ msgid "Subject:"
+#~ msgstr "Titill:"
 
-#~ msgid "Missing"
-#~ msgstr "Vantar"
+#~ msgid "Draft folder"
+#~ msgstr "Mappa fyrir uppköst"
 
-#, fuzzy
-#~ msgid "Search Criteria"
-#~ msgstr "Leita að"
+#~ msgid "CC"
+#~ msgstr "Afrit"
 
-#, fuzzy
-#~ msgid "Add New Criteria"
-#~ msgstr "Bæta við póstþjóni"
+#~ msgid "Business Card"
+#~ msgstr "Nafnspjald"
 
-#~ msgid "Answered"
-#~ msgstr "Svarað"
+#~ msgid "Click here to try again"
+#~ msgstr "Smelltu hér til að reyna aftur"
 
-#~ msgid "Before"
-#~ msgstr "Fyrir"
+#~ msgid "All Messages"
+#~ msgstr "Öll skeyti"
 
-#~ msgid "Message Body"
-#~ msgstr "Meginmáli"
+#~ msgid "POP3 noop:"
+#~ msgstr "POP3 noop:"
 
-#~ msgid "Deleted"
-#~ msgstr "Eytt"
+#~ msgid "] messages"
+#~ msgstr "] skilaboð"
 
-#~ msgid "Draft"
-#~ msgstr "Uppkast"
+#~ msgid "Message "
+#~ msgstr "Skeyti "
 
-#~ msgid "Flagged"
-#~ msgstr "Merkt"
+#~ msgid "No-one server in use. Try to add."
+#~ msgstr "Enginn miðlari í notkun."
 
-#~ msgid "Sent By"
-#~ msgstr "Sent af"
+#~ msgid "Hey! Wath do You are looking for?"
+#~ msgstr "Hey! Að hverju ert þú að leita?"
 
-#~ msgid "Header Field"
-#~ msgstr "Haus dálkur"
+#~ msgid "New Mail Notification options saved"
+#~ msgstr "Stillingar vistaðar"
 
-#~ msgid "Keyword"
-#~ msgstr "Lykilorð"
-
-#~ msgid "Larger Than"
-#~ msgstr "Stærra en"
-
-#~ msgid "Old"
-#~ msgstr "Gamalt"
-
-#~ msgid "On"
-#~ msgstr "Á"
-
-#~ msgid "Recent"
-#~ msgstr "Nýlegt"
-
-#~ msgid "Seen"
-#~ msgstr "Séð"
-
-#~ msgid "Sent Before"
-#~ msgstr "Sent fyrir"
-
-#~ msgid "Sent On"
-#~ msgstr "Sent: þann"
-
-#~ msgid "Sent Since"
-#~ msgstr "Sent eftir"
-
-#~ msgid "Since"
-#~ msgstr "Eftir"
-
-#~ msgid "Smaller Than"
-#~ msgstr "Minna en"
-
-#~ msgid "Subject Contains"
-#~ msgstr "Fyrirsögn inniheldur:"
-
-#~ msgid "Header and Body"
-#~ msgstr "Haus og meginmál"
-
-#~ msgid "Sent To"
-#~ msgstr "Sent til:"
-
-#~ msgid "Not"
-#~ msgstr "Ekki"
-
-#~ msgid "And In"
-#~ msgstr "Og í"
-
-#~ msgid "Or In"
-#~ msgstr "Eða í"
-
-#~ msgid "And"
-#~ msgstr "Og"
-
-#~ msgid "Or"
-#~ msgstr "Eða"
-
-#~ msgid "Folder List"
-#~ msgstr "Möppu listi"
-
-#~ msgid "Reason:"
-#~ msgstr "Ástæða:"
-
-#~ msgid "Click here to change the sorting of the message list"
-#~ msgstr "Smelltu hér til að breyta röðun í skeytalista"
-
-#~ msgid "Strip signature when replying"
-#~ msgstr "Taka út undirskrift þegar svarað er"
-
-#~ msgid "Click here to go to the options page."
-#~ msgstr "Smelltu hér til fara á stillingasíðuna"
+#~ msgid "Chinese"
+#~ msgstr "Kínverska"
 
 #~ msgid "4 language pairs for Hellenic, no known limits, powered by Systran"
 #~ msgstr ""
@@ -3581,20 +4865,9 @@ msgstr "Hausar á ósendum skeytum"
 #~ msgid "(local media)"
 #~ msgstr "(mitt hljóð)"
 
-#~ msgid "Local Media File:"
-#~ msgstr "Hljóðið mitt"
-
-#~ msgid ""
-#~ "10 language pairs, maximum of 25 kilobytes translated, powered by Systran"
-#~ msgstr "10 tungumálapör, þýðir mest 25 kílóbæti.  Knúið af Systran"
-
 #, fuzzy
 #~ msgid "Viewing a message attachment"
 #~ msgstr "Skoða myndviðhengi"
-
-#, fuzzy
-#~ msgid "Save to:"
-#~ msgstr "Færa í:"
 
 #, fuzzy
 #~ msgid "Cc:"
@@ -3645,4 +4918,3 @@ msgstr "Hausar á ósendum skeytum"
 
 #~ msgid "empty"
 #~ msgstr "tómt"
-

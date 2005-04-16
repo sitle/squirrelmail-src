@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: squirrelmail 1.4.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-05-24 18:21+0300\n"
+"POT-Creation-Date: 2005-04-16 19:47+0200\n"
 "PO-Revision-Date: 2004-10-13 10:14+0200\n"
 "Last-Translator: Tomá¹ Drbohlav <tomas.drbohlav@mff.cuni.cz>\n"
 "Language-Team: Czech <squirrelmail-i18n@lists.sourceforge.net>\n"
@@ -17,9 +17,6 @@ msgstr ""
 
 msgid "Address Book"
 msgstr "Adresáø"
-
-msgid "All"
-msgstr "V¹echny"
 
 msgid "Name"
 msgstr "Jméno"
@@ -42,11 +39,8 @@ msgstr "Kopie"
 msgid "Bcc"
 msgstr "Neviditelná kopie"
 
-msgid "Use Addresses"
-msgstr "Pou¾ít adresáø"
-
-msgid "Address Book Search"
-msgstr "Hledat v adresáøi"
+msgid "No persons matching your search were found"
+msgstr "Hledaná osoba nenalezena"
 
 msgid "Search for"
 msgstr "Hledat"
@@ -63,21 +57,31 @@ msgstr "Hledat"
 msgid "List all"
 msgstr "Zobrazit v¹e"
 
-#, c-format
+msgid "Close"
+msgstr "Zavøít"
+
+#, php-format
 msgid "Unable to list addresses from %s"
 msgstr "Nelze zobrazit adresy z %s"
 
 msgid "Your search failed with the following error(s)"
 msgstr "Va¹e hledání probìhlo neúspì¹nì díky tìmto chybám"
 
-msgid "No persons matching your search were found"
-msgstr "Hledaná osoba nenalezena"
+msgid "All"
+msgstr "V¹echny"
+
+msgid "Use Addresses"
+msgstr "Pou¾ít adresáø"
+
+#, fuzzy
+msgid "Cancel"
+msgstr "Zmìnit"
+
+msgid "Address Book Search"
+msgstr "Hledat v adresáøi"
 
 msgid "Return"
 msgstr "Zpìt"
-
-msgid "Close"
-msgstr "Zavøít"
 
 msgid "Nickname"
 msgstr "Pøezdívka"
@@ -97,6 +101,10 @@ msgstr "Jméno"
 msgid "Additional info"
 msgstr "Dal¹í informace"
 
+#, fuzzy
+msgid "Add to:"
+msgstr "Pøidat do %s"
+
 msgid "No personal address book is defined. Contact administrator."
 msgstr "Není definován ¾ádný osobní adresáø. Kontaktujte správce."
 
@@ -109,8 +117,8 @@ msgstr "Aktualizovat adresu"
 msgid "ERROR"
 msgstr "Chyba"
 
-msgid "Unknown error"
-msgstr "Neznámá chyba"
+msgid "Please select address that you want to edit"
+msgstr ""
 
 msgid "Add address"
 msgstr "Pøidat adresu"
@@ -121,19 +129,23 @@ msgstr "Upravit vybrané polo¾ky"
 msgid "Delete selected"
 msgstr "Odstranit vybrané polo¾ky"
 
-#, c-format
+#, php-format
 msgid "Add to %s"
 msgstr "Pøidat do %s"
 
-# squirrelmail/src/compose.php:572?
-msgid "said"
-msgstr "napsal(a)"
+#, php-format
+msgid "%s wrote:"
+msgstr ""
 
 msgid "quote"
 msgstr "cituji"
 
 msgid "who"
 msgstr "kdo"
+
+#, php-format
+msgid "On %s, %s wrote:"
+msgstr ""
 
 msgid "Subject"
 msgstr "Pøedmìt"
@@ -156,23 +168,12 @@ msgstr "Nelze pøesunout/zkopírovat soubor. Soubor není pøilo¾en"
 msgid "Draft Saved"
 msgstr "Email ulo¾en do Konceptù"
 
-msgid "Your Message has been sent"
+#, fuzzy
+msgid "Your Message has been sent."
 msgstr "Zpráva byla odeslána"
 
 msgid "From:"
 msgstr "Od:"
-
-msgid "To:"
-msgstr "Komu:"
-
-msgid "CC:"
-msgstr "Kopie:"
-
-msgid "BCC:"
-msgstr "Skrytá kopie:"
-
-msgid "Subject:"
-msgstr "Pøedmìt:"
 
 msgid "Send"
 msgstr "Odeslat"
@@ -219,51 +220,35 @@ msgstr "Ulo¾it Koncept"
 msgid "You have not filled in the \"To:\" field."
 msgstr "Nezadali jste adresáta"
 
-#, fuzzy, c-format
+#, fuzzy, php-format
 msgid "Error: Draft folder %s does not exist."
 msgstr "U¾ivatel %s neexistuje"
 
-msgid "Server replied: "
+#, fuzzy
+msgid "Server replied:"
 msgstr "Odpovìï serveru: "
-
-msgid "Illegal folder name.  Please select a different name."
-msgstr "Neplatný název slo¾ky. Vyberte prosím jiný název."
-
-msgid "Click here to go back"
-msgstr "Kliknìte zde pro návrat zpìt"
-
-msgid "You have not selected a folder to delete. Please do so."
-msgstr "Neoznaèil jste slo¾ku ke smazání."
-
-msgid "Delete Folder"
-msgstr "Odstranit slo¾ku"
-
-#, c-format
-msgid "Are you sure you want to delete %s?"
-msgstr "Opravdu chcete smazat %s?"
-
-msgid "Yes"
-msgstr "Ano"
-
-msgid "No"
-msgstr "Ne"
 
 msgid "Folders"
 msgstr "Slo¾ky"
 
-msgid "Subscribed successfully!"
+#, fuzzy
+msgid "Subscribed successfully."
 msgstr "Pøihlá¹ení probìhlo úspì¹nì"
 
-msgid "Unsubscribed successfully!"
+#, fuzzy
+msgid "Unsubscribed successfully."
 msgstr "Odhlá¹ení probìhlo úspì¹nì"
 
-msgid "Deleted folder successfully!"
+#, fuzzy
+msgid "Deleted folder successfully."
 msgstr "Slo¾ka byla úspì¹nì smazána"
 
-msgid "Created folder successfully!"
+#, fuzzy
+msgid "Created folder successfully."
 msgstr "Slo¾ka byla úspì¹nì vytvoøena"
 
-msgid "Renamed successfully!"
+#, fuzzy
+msgid "Renamed successfully."
 msgstr "Úspì¹nì pøejmenováno"
 
 msgid "Subscription Unsuccessful - Folder does not exist."
@@ -299,6 +284,9 @@ msgstr "Pøejmenovat"
 msgid "No folders found"
 msgstr "Nebyla nalezena ¾ádná slo¾ka"
 
+msgid "Delete Folder"
+msgstr "Odstranit slo¾ku"
+
 msgid "Delete"
 msgstr "Odstranit"
 
@@ -316,6 +304,26 @@ msgstr "Nebyly nalezeny ¾ádné slo¾ky k pøihlá¹ení"
 
 msgid "Subscribe to:"
 msgstr "Pøihlásit:"
+
+#, fuzzy
+msgid "Illegal folder name. Please select a different name."
+msgstr "Neplatný název slo¾ky. Vyberte prosím jiný název."
+
+msgid "Click here to go back"
+msgstr "Kliknìte zde pro návrat zpìt"
+
+msgid "You have not selected a folder to delete. Please do so."
+msgstr "Neoznaèil jste slo¾ku ke smazání."
+
+#, php-format
+msgid "Are you sure you want to delete %s?"
+msgstr "Opravdu chcete smazat %s?"
+
+msgid "Yes"
+msgstr "Ano"
+
+msgid "No"
+msgstr "Ne"
 
 msgid "You have not selected a folder to rename. Please do so."
 msgstr "Neoznaèil jste slo¾ku k pøejmenování."
@@ -335,9 +343,9 @@ msgstr "CHYBA: ©patný formát souborù nápovìdy"
 msgid "Help"
 msgstr "Nápovìda"
 
-#, c-format
+#, fuzzy, php-format
 msgid ""
-"The help has not been translated to %s.  It will be displayed in English "
+"The help has not been translated to %s. It will be displayed in English "
 "instead."
 msgstr "Nápovìda není pøelo¾ena do %s. Bude zobrazena v angliètinì."
 
@@ -368,30 +376,26 @@ msgstr "Ulo¾it jako soubor"
 msgid "INBOX"
 msgstr "Doruèená po¹ta"
 
-msgid "purge"
+#, fuzzy
+msgid "Purge"
 msgstr "vysypat"
-
-msgid "Last Refresh"
-msgstr "Poslední zobrazení"
-
-msgid "Save folder tree"
-msgstr "Ulo¾it strom slo¾ek"
 
 msgid "Login"
 msgstr "Pøihlásit"
 
-#, c-format
+#, php-format
 msgid "%s Logo"
 msgstr "%s Logo"
 
-#, c-format
+#, php-format
 msgid "SquirrelMail version %s"
 msgstr "SquirrelMail verze %s"
 
-msgid "By the SquirrelMail Development Team"
+#, fuzzy
+msgid "By the SquirrelMail Project Team"
 msgstr "Vytvoøeno týmem SquirrelMail"
 
-#, c-format
+#, php-format
 msgid "%s Login"
 msgstr "%s Pøihlásit"
 
@@ -404,11 +408,72 @@ msgstr "Heslo:"
 msgid "No messages were selected."
 msgstr "Nebyly vybrány ¾ádné zprávy"
 
-msgid "Options"
-msgstr "Mo¾nosti"
+msgid "Personal Information"
+msgstr "Osobní informace"
+
+msgid "Display Preferences"
+msgstr "Vzhled - mo¾nosti"
 
 msgid "Message Highlighting"
 msgstr "Zvýrazòování zpráv"
+
+msgid "Folder Preferences"
+msgstr "Slo¾ky - mo¾nosti"
+
+msgid "Index Order"
+msgstr "Poøadí v seznamu"
+
+msgid "Options"
+msgstr "Mo¾nosti"
+
+msgid "Error(s) occurred while saving your options"
+msgstr ""
+
+msgid "Some of your preference changes were not applied."
+msgstr ""
+
+msgid "Successfully Saved Options"
+msgstr "Nastavení bylo úspì¹nì ulo¾eno"
+
+msgid "Refresh Folder List"
+msgstr "Obnovit seznam slo¾ek"
+
+msgid "Refresh Page"
+msgstr "Aktualizovat stránku"
+
+msgid ""
+"This contains personal information about yourself such as your name, your "
+"email address, etc."
+msgstr ""
+"Obsahuje Va¹e osobní informace, napø. Va¹e jméno, e-mailovou adresu atd. "
+
+msgid ""
+"You can change the way that SquirrelMail looks and displays information to "
+"you, such as the colors, the language, and other settings."
+msgstr ""
+"Mù¾ete mìnit vzhled a zpùsob zobrazení informací, napø. barvy, jazyk a jiná "
+"nastavení."
+
+#, fuzzy
+msgid ""
+"Based upon given criteria, incoming messages can have different background "
+"colors in the message list. This helps to easily distinguish who the "
+"messages are from, especially for mailing lists."
+msgstr ""
+"Na základì uvedených kritérií mohou mít pøíchozí zprávy v seznamu rùznou "
+"barvu pozadí. Tato funkce umo¾òuje snadno rozli¹it odesílatele zpráv, "
+"zvlá¹tì pak e-mailové konference."
+
+msgid ""
+"These settings change the way your folders are displayed and manipulated."
+msgstr ""
+"Tato nastavení zmìní zpùsob, kterým se budou slo¾ky zobrazovat a jak s nimi "
+"budete zacházet."
+
+msgid ""
+"The order of the message index can be rearranged and changed to contain the "
+"headers in any order you want."
+msgstr "Poøadí sloupcù v seznamu zpráv mù¾e být upraveno podle va¹ich potøeb."
 
 msgid "New"
 msgstr "Nová"
@@ -491,7 +556,7 @@ msgstr "Ex: 63aa7f"
 msgid "Matches"
 msgstr "Odpovídá"
 
-#, c-format
+#, php-format
 msgid "Alternate Identity %d"
 msgstr "Alternativní identita %d"
 
@@ -522,9 +587,6 @@ msgstr "Vytvoø nastavení"
 msgid "Move Up"
 msgstr "Pøesun nahoru"
 
-msgid "Index Order"
-msgstr "Poøadí v seznamu"
-
 msgid "Checkbox"
 msgstr "Za¹krtávací pole"
 
@@ -534,10 +596,11 @@ msgstr "Pøíznaky zprávy"
 msgid "Size"
 msgstr "Velikost"
 
+#, fuzzy
 msgid ""
 "The index order is the order that the columns are arranged in the message "
-"index.  You can add, remove, and move columns around to customize them to "
-"fit your needs."
+"index. You can add, remove, and move columns around to customize them to fit "
+"your needs."
 msgstr ""
 "Poøadí seznamu zpráv je poøadí v jakém jsou uspoøádány sloupce ve výpisu\n"
 "zpráv.  Mù¾ete pøídávat, odebírat a pøesunovat jednotlivé slo¾ky."
@@ -554,62 +617,11 @@ msgstr "odstranit"
 msgid "Return to options page"
 msgstr "Návrat na stránku s nastavením"
 
-msgid "Personal Information"
-msgstr "Osobní informace"
-
-msgid "Display Preferences"
-msgstr "Vzhled - mo¾nosti"
-
-msgid "Folder Preferences"
-msgstr "Slo¾ky - mo¾nosti"
-
-msgid "Successfully Saved Options"
-msgstr "Nastavení bylo úspì¹nì ulo¾eno"
-
-msgid "Refresh Folder List"
-msgstr "Obnovit seznam slo¾ek"
-
-msgid "Refresh Page"
-msgstr "Aktualizovat stránku"
-
-msgid ""
-"This contains personal information about yourself such as your name, your "
-"email address, etc."
-msgstr ""
-"Obsahuje Va¹e osobní informace, napø. Va¹e jméno, e-mailovou adresu atd. "
-
-msgid ""
-"You can change the way that SquirrelMail looks and displays information to "
-"you, such as the colors, the language, and other settings."
-msgstr ""
-"Mù¾ete mìnit vzhled a zpùsob zobrazení informací, napø. barvy, jazyk a jiná "
-"nastavení."
-
-msgid ""
-"Based upon given criteria, incoming messages can have different background "
-"colors in the message list.  This helps to easily distinguish who the "
-"messages are from, especially for mailing lists."
-msgstr ""
-"Na základì uvedených kritérií mohou mít pøíchozí zprávy v seznamu rùznou "
-"barvu pozadí. Tato funkce umo¾òuje snadno rozli¹it odesílatele zpráv, "
-"zvlá¹tì pak e-mailové konference."
-
-msgid ""
-"These settings change the way your folders are displayed and manipulated."
-msgstr ""
-"Tato nastavení zmìní zpùsob, kterým se budou slo¾ky zobrazovat a jak s nimi "
-"budete zacházet."
-
-msgid ""
-"The order of the message index can be rearranged and changed to contain the "
-"headers in any order you want."
-msgstr "Poøadí sloupcù v seznamu zpráv mù¾e být upraveno podle va¹ich potøeb."
-
 msgid "Message not printable"
 msgstr "Zprávu nelze tisknout"
 
-msgid "CC"
-msgstr "Kopie"
+msgid "Invalid URL"
+msgstr ""
 
 msgid "Printer Friendly"
 msgstr "Verze pro tisk"
@@ -626,10 +638,11 @@ msgstr "Pøeètena:"
 msgid "Your message"
 msgstr "Va¹e zpráva"
 
-msgid "Sent:"
+#, fuzzy
+msgid "Sent"
 msgstr "Odeslána:"
 
-#, c-format
+#, php-format
 msgid "Was displayed on %s"
 msgstr "Byla zobrazena %s"
 
@@ -664,7 +677,7 @@ msgstr ""
 msgid "Send read receipt now"
 msgstr "Odeslat potvrzení pøeètení nyní"
 
-msgid "Search results"
+msgid "Search Results"
 msgstr "Výsledky hledání"
 
 msgid "Message List"
@@ -733,11 +746,12 @@ msgstr "Tìlo zprávy"
 msgid "Everywhere"
 msgstr "V¹ude"
 
-msgid "Search Results"
-msgstr "Výsledky hledání"
-
 msgid "No Messages Found"
 msgstr "Nebyly nalezeny ¾ádné zprávy"
+
+#, fuzzy
+msgid "Signout"
+msgstr "Odhlásit se"
 
 msgid "Sign Out"
 msgstr "Odhlásit se"
@@ -750,6 +764,12 @@ msgstr "Pro nové pøihlá¹ení kliknìte zde "
 
 msgid "Viewing a Business Card"
 msgstr "Zobrazení Visitky"
+
+#, php-format
+msgid ""
+"vCard Version %s is not supported. Some information might not be converted "
+"correctly."
+msgstr ""
 
 msgid "Title"
 msgstr "Pozice"
@@ -796,38 +816,43 @@ msgstr "Zobrazení celé hlavièky"
 msgid "Viewing a text attachment"
 msgstr "Náhled pøilo¾eného souboru"
 
+msgid ""
+"Could not include PEAR database functions required for the database backend."
+msgstr ""
+
+#, php-format
+msgid "Is PEAR installed, and is the include path set correctly to find %s?"
+msgstr ""
+
+msgid "Please contact your system administrator and report this error."
+msgstr "Prosím nahla¹te tuto chybu správci systému."
+
 msgid "Personal address book"
 msgstr "Osobní adresáø"
 
-#, c-format
+#, php-format
 msgid "Database error: %s"
 msgstr "Chyba databáze: %s"
 
 msgid "Addressbook is read-only"
 msgstr "Adresáø pouze ke ètení"
 
-#, c-format
+#, php-format
 msgid "User '%s' already exist"
 msgstr "U¾ivatel %s ji¾ existuje"
 
-#, c-format
+#, php-format
 msgid "User '%s' does not exist"
 msgstr "U¾ivatel %s neexistuje"
 
-msgid "Global address book"
-msgstr "Centrální adresáø kontaktù"
+msgid "Not a file name"
+msgstr "Není název souboru"
 
 msgid "No such file or directory"
 msgstr "Nebyl nalezen ¾ádný soubor ani adresáø"
 
 msgid "Open failed"
 msgstr "Otevírání probìhlo neúspì¹nì"
-
-msgid "Can not modify global address book"
-msgstr "Nemù¾u modifikovat globální adresáø kontaktù"
-
-msgid "Not a file name"
-msgstr "Není název souboru"
 
 msgid "Write failed"
 msgstr "Zápis probìhl neúspì¹nì"
@@ -844,14 +869,17 @@ msgstr "Zápis do adresáøe probìhl neúspì¹nì"
 msgid "Error initializing addressbook database."
 msgstr "Chyba pøi inicializaci databáze kontaktù."
 
-#, c-format
+#, php-format
 msgid "Error opening file %s"
 msgstr "Chyba pøi otevírání souboru %s"
+
+msgid "Global address book"
+msgstr "Centrální adresáø kontaktù"
 
 msgid "Error initializing global addressbook."
 msgstr "Chyba pøi inicializaci centrální databáze kontaktù."
 
-#, c-format
+#, php-format
 msgid "Error initializing LDAP server %s:"
 msgstr "Chyba pøi inicializaci LDAP serveru %s"
 
@@ -867,11 +895,13 @@ msgstr "Chybí e-mailová adresa"
 msgid "Nickname contains illegal characters"
 msgstr "Pøezdívka obsahuje nedovolené znaky"
 
-msgid "view"
+#, fuzzy
+msgid "View"
 msgstr "zobrazit"
 
-msgid "Business Card"
-msgstr "Visitka"
+#, fuzzy
+msgid "View Business Card"
+msgstr "Zobrazení Visitky"
 
 msgid "Sunday"
 msgstr "Nedìle"
@@ -992,7 +1022,8 @@ msgstr "Pro"
 msgid "D, F j, Y g:i a"
 msgstr "j F Y, G:i"
 
-msgid "D, F j, Y G:i"
+#, fuzzy
+msgid "D, F j, Y H:i"
 msgstr "j F Y, G:i"
 
 msgid "M j, Y"
@@ -1001,33 +1032,29 @@ msgstr "j M, Y"
 msgid "g:i a"
 msgstr "G:i"
 
-msgid "G:i"
+#, fuzzy
+msgid "H:i"
 msgstr "G:i"
 
 msgid "D, g:i a"
 msgstr "D, G:i"
 
-msgid "D, G:i"
+#, fuzzy
+msgid "D, H:i"
 msgstr "D, G:i"
 
-#, c-format
+#, php-format
 msgid "Preference database error (%s). Exiting abnormally"
 msgstr "Chyba databáze nastavení (%s). Abnormální ukonèení."
 
-msgid "Unknown user or password incorrect."
-msgstr "Neznámý u¾ivatel nebo neplatné heslo"
-
-msgid "Click here to try again"
-msgstr "Pro dal¹í pokus kliknìte zde"
-
-#, c-format
+#, php-format
 msgid "Click here to return to %s"
 msgstr "Pro návrat do %s klinìte zde"
 
 msgid "Go to the login page"
 msgstr "Jdi na pøihla¹ovací stránku"
 
-#, c-format
+#, php-format
 msgid ""
 "Preference file, %s, does not exist. Log out, and log back in to create a "
 "default preference file."
@@ -1035,44 +1062,47 @@ msgstr ""
 "Soubor s nastavením, %s, neexistuje. Odhla¹te se a pøihlaste se zpìt, abyste "
 "vytvoøili výchozí soubor s nastavením."
 
-#, c-format
+#, php-format
 msgid ""
 "Preference file, %s, could not be opened. Contact your system administrator "
 "to resolve this issue."
 msgstr ""
 "Soubor s nastavením, %s, nemohl být otevøen. Kontaktujte správce webmailu."
 
-#, c-format
+#, php-format
 msgid ""
 "Preference file, %s, could not be written. Contact your system administrator "
 "to resolve this issue."
 msgstr ""
 "Soubor s nastavením, %s, nemohl být otevøen. Kontaktujte správce webmailu."
 
-#, c-format
+#, php-format
 msgid ""
 "Preference file, %s, could not be copied from temporary file, %s. Contact "
 "your system administrator to resolve this issue."
-msgstr "Soubor s nastavením, %s, nemohl být zkopírován z doèasného adresáøe, %s. Kontaktujte správce."
+msgstr ""
+"Soubor s nastavením, %s, nemohl být zkopírován z doèasného adresáøe, %s. "
+"Kontaktujte správce."
 
-#, c-format
+#, php-format
 msgid "Error opening %s"
 msgstr "Chyba pøi otevírání %s"
 
 msgid "Default preference file not found or not readable!"
 msgstr "Soubor s implicitním nastavením nenalezen"
 
-msgid "Please contact your system administrator and report this error."
-msgstr "Prosím nahla¹te tuto chybu správci systému."
-
 msgid "Could not create initial preference file!"
 msgstr "Nemohu vytvoøit poèáteèní soubor s preferencemi!"
 
-#, c-format
+#, php-format
 msgid "%s should be writable by user %s"
 msgstr "Soubor %s by mìl být zapsatelný u¾ivatelem %s"
 
-#, c-format
+#, fuzzy
+msgid "Signature is too big."
+msgstr "Mo¾nosti podpisu"
+
+#, php-format
 msgid ""
 "Signature file, %s, could not be opened. Contact your system administrator "
 "to resolve this issue."
@@ -1080,7 +1110,7 @@ msgstr ""
 "Soubor s podpisy, %s, nemohl být otevøen. Oznamte tuto chybu "
 "administrátorovi systému."
 
-#, c-format
+#, php-format
 msgid ""
 "Signature file, %s, could not be written. Contact your system administrator "
 "to resolve this issue."
@@ -1088,7 +1118,7 @@ msgstr ""
 "Soubor s podpisy, %s, nemohl být otevøen. Oznamte tuto chybu "
 "administrátorovi systému."
 
-#, c-format
+#, php-format
 msgid ""
 "Signature file, %s, could not be copied from temporary file, %s. Contact "
 "your system administrator to resolve this issue."
@@ -1101,52 +1131,74 @@ msgid ""
 "(using configure option --enable-mbstring)."
 msgstr "Je nutne míti php4 nainstalováno s parametrem --with-mbstring"
 
-msgid "ERROR : No available imapstream."
+#, fuzzy
+msgid "ERROR: No available IMAP stream."
 msgstr "Chyba : Není k dispozici ¾ádné pøipojeni k serveru imap."
 
-msgid "ERROR : Connection dropped by imap-server."
+#, fuzzy
+msgid "ERROR: Connection dropped by IMAP server."
 msgstr "Chyba : Spojení s IMAP serverem bylo pøeru¹eno"
 
-msgid "ERROR : Could not complete request."
+#, fuzzy
+msgid "ERROR: Could not complete request."
 msgstr "Chyba : Nelze dokonèit po¾adovaný úkol."
 
 msgid "Query:"
 msgstr "Dotaz:"
 
-msgid "Reason Given: "
+#, fuzzy
+msgid "Reason Given:"
 msgstr "Odùvodnìní: "
 
-msgid "ERROR : Bad or malformed request."
+#, fuzzy
+msgid "ERROR: Bad or malformed request."
 msgstr "Chyba : ©patnì zadaný po¾adovaný úkol."
 
-msgid "Server responded: "
+#, fuzzy
+msgid "Server responded:"
 msgstr "Odpovìï serveru: "
 
-msgid "ERROR : Imap server closed the connection."
+#, fuzzy
+msgid "ERROR: IMAP server closed the connection."
 msgstr "Chyba : Server IMAP ukonèil spojení."
 
-msgid "ERROR : Unknown imap response."
+#, fuzzy
+msgid "ERROR: Unknown IMAP response."
 msgstr "Chyba: neznámá odpovìï serveru IMAP"
 
-#, c-format
+#, php-format
 msgid "Error connecting to IMAP server: %s."
 msgstr "Chyba v pøipojování k serveru IMAP: %s "
 
-#, c-format
+msgid "The IMAP server is reporting that plain text logins are disabled."
+msgstr ""
+
+msgid "Using CRAM-MD5 or DIGEST-MD5 authentication instead may work."
+msgstr ""
+
+msgid "Also, the use of TLS may allow SquirrelMail to login."
+msgstr ""
+
+#, php-format
 msgid "Bad request: %s"
 msgstr "©patnì zadaný po¾adovaný úkol: %s"
 
-#, c-format
+#, php-format
 msgid "Unknown error: %s"
 msgstr "Neznámá chyba: %s"
 
 msgid "Read data:"
 msgstr "Naètení dat:"
 
-msgid "ERROR : Could not append message to"
+msgid "Unknown user or password incorrect."
+msgstr "Neznámý u¾ivatel nebo neplatné heslo"
+
+#, fuzzy
+msgid "ERROR: Could not append message to"
 msgstr "Chyba : Zprávu nelze pøipojit k"
 
-msgid "Solution: "
+#, fuzzy
+msgid "Solution:"
 msgstr "Návrh øe¹ení: "
 
 msgid ""
@@ -1162,7 +1214,8 @@ msgstr "(¾ádný pøedmìt)"
 msgid "Unknown Sender"
 msgstr "Neznámý Odesílatel"
 
-msgid "Unknown response from IMAP server: "
+#, fuzzy
+msgid "Unknown response from IMAP server:"
 msgstr "Neznámá odpovìï IMAP serveru:"
 
 msgid "The server couldn't find the message you requested."
@@ -1181,16 +1234,14 @@ msgstr "Neznámé datum"
 msgid "A"
 msgstr "O"
 
-msgid ""
-"Thread sorting is not supported by your IMAP server.<br>Please report this "
-"to the system administrator."
+#, fuzzy
+msgid "Thread sorting is not supported by your IMAP server."
 msgstr ""
 "Øazení zpráv podle konverzace na serveru IMAP je nedostupné.<br> Nahla¹te "
 "tuto chybu správci systému."
 
-msgid ""
-"Server-side sorting is not supported by your IMAP server.<br>Please report "
-"this to the system administrator."
+#, fuzzy
+msgid "Server-side sorting is not supported by your IMAP server."
 msgstr ""
 "Øazení zpráv serveru IMAP je nedostupné. <br>Nahla¹te tuto chybu správci "
 "systému."
@@ -1234,12 +1285,12 @@ msgstr "Odznaèit v¹e"
 msgid "Select All"
 msgstr "Oznaèit v¹e"
 
-#, c-format
-msgid "Viewing Messages: <B>%s</B> to <B>%s</B> (%s total)"
+#, fuzzy, php-format
+msgid "Viewing Messages: %s to %s (%s total)"
 msgstr "Zobrazení zpráv: <b>%s</b> a¾ <b>%s</b> (%s celkem)"
 
-#, c-format
-msgid "Viewing Message: <B>%s</B> (1 total)"
+#, fuzzy, php-format
+msgid "Viewing Message: %s (%s total)"
 msgstr "Zobrazení zprávy: <b>%s</b> (1 celkem)"
 
 msgid "Paginate"
@@ -1277,7 +1328,8 @@ msgstr "Schovat nebezpeèné obrázky"
 msgid "View Unsafe Images"
 msgstr "Zobrazit nebezpeèné obrázky"
 
-msgid "download"
+#, fuzzy
+msgid "Download"
 msgstr "stáhnout"
 
 msgid "sec_remove_eng.png"
@@ -1286,7 +1338,7 @@ msgstr ""
 msgid "This external link will open in a new window"
 msgstr "Odkaz se otevøe v novém oknì"
 
-#, c-format
+#, php-format
 msgid "Option Type '%s' Not Found"
 msgstr "Volba typu '%s' nenalezena"
 
@@ -1296,7 +1348,7 @@ msgstr "Aktuální slo¾ka"
 msgid "Compose"
 msgstr "Nová zpráva"
 
-#, c-format
+#, php-format
 msgid "Error creating directory %s."
 msgstr "Chyba pøi otevírání souboru %s"
 
@@ -1396,7 +1448,8 @@ msgstr "Nikdy"
 msgid "Mailbox Display Options"
 msgstr "Volby zobrazení slo¾ky"
 
-msgid "Number of Messages to Index"
+#, fuzzy
+msgid "Number of Messages per Page"
 msgstr "Poèet zpráv zobrazených ve slo¾ce"
 
 msgid "Enable Alternating Row Colors"
@@ -1480,6 +1533,10 @@ msgstr "Vý¹ka okna pro novou zprávu"
 msgid "Append Signature before Reply/Forward Text"
 msgstr "Pøipojit podpis pøed text u odpovìdí a pøedávaných zpráv"
 
+#, fuzzy
+msgid "Prefix for Original Message when Replying"
+msgstr "Zaèít Odpovídání v"
+
 msgid "Cursor Position when Replying"
 msgstr "Zaèít Odpovídání v"
 
@@ -1492,7 +1549,12 @@ msgstr "tìle zprávy"
 msgid "Select body"
 msgstr "tìle zprávy (vybrat text)"
 
-msgid "Enable Sort by of Receive Date"
+#, fuzzy
+msgid "No focus"
+msgstr "®ádný èas"
+
+#, fuzzy
+msgid "Sort by Received Date"
 msgstr "Povolit tøídìní podle data pøíjmu"
 
 msgid "Enable Thread Sort by References Header"
@@ -1510,17 +1572,17 @@ msgstr "Nepou¾ívat Ko¹"
 msgid "Trash Folder"
 msgstr "Slo¾ka Ko¹"
 
-msgid "Do not use Sent"
-msgstr "Nepou¾ívat slo¾ku Odeslaná po¹ta"
-
-msgid "Sent Folder"
-msgstr "Slo¾ka Odeslaná po¹ta"
-
 msgid "Do not use Drafts"
 msgstr "Nepou¾ívat Koncepty"
 
 msgid "Draft Folder"
 msgstr "Slo¾ka Konceptù"
+
+msgid "Do not use Sent"
+msgstr "Nepou¾ívat slo¾ku Odeslaná po¹ta"
+
+msgid "Sent Folder"
+msgstr "Slo¾ka Odeslaná po¹ta"
 
 msgid "Folder List Options"
 msgstr "Nastavení výpisu slo¾ek"
@@ -1570,7 +1632,8 @@ msgstr "Pouze nepøeètené"
 msgid "Unseen and Total"
 msgstr "Nepøeètené a Celkem"
 
-msgid "Enable Collapsible Folders"
+#, fuzzy
+msgid "Enable Collapsable Folders"
 msgstr "Zapnout rozbalovatelné slo¾ky"
 
 msgid "Enable Cumulative Unread Message Notification"
@@ -1621,13 +1684,24 @@ msgstr "Mo¾nosti - Výbìr slo¾ek"
 msgid "Selection List Style"
 msgstr "Výbìr stylu"
 
-msgid "Long: "
+#, fuzzy
+msgid "Long:"
 msgstr "Délka:"
 
-msgid "Indented: "
+#, fuzzy
+msgid "Folder"
+msgstr "Slo¾ky"
+
+#, fuzzy
+msgid "Subfolder"
+msgstr "Pou¾ívat podslo¾ky Odeslané po¹ty"
+
+#, fuzzy
+msgid "Indented:"
 msgstr "Odsazení: "
 
-msgid "Delimited: "
+#, fuzzy
+msgid "Delimited:"
 msgstr "Oddìlovaè: "
 
 msgid "Name and Address Options"
@@ -1667,14 +1741,16 @@ msgstr "Styl citace"
 msgid "No Citation"
 msgstr "Bez citace"
 
-msgid "AUTHOR Said"
+#, fuzzy
+msgid "AUTHOR Wrote"
 msgstr "Autor napsal"
+
+#, fuzzy
+msgid "On DATE, AUTHOR Wrote"
+msgstr "Dne DATE AUTHOR napsal"
 
 msgid "Quote Who XML"
 msgstr "XML Citace"
-
-msgid "On DATE, AUTHOR Said"
-msgstr "Dne DATE AUTHOR napsal"
 
 msgid "User-Defined"
 msgstr "Vlastní"
@@ -1706,7 +1782,8 @@ msgstr "Sna¾it se ovìøit adresy"
 msgid "Config File Version"
 msgstr "Verze konfiguraèního souboru"
 
-msgid "Squirrelmail Version"
+#, fuzzy
+msgid "SquirrelMail Version"
 msgstr "SquirrelMail Verze"
 
 msgid "PHP Version"
@@ -1739,9 +1816,6 @@ msgstr "URI Poskytovatele"
 msgid "Provider Name"
 msgstr "Název poskytovatele: "
 
-msgid "Default Language"
-msgstr "Implicitní jazyk"
-
 msgid "Top Frame"
 msgstr "Horní rám"
 
@@ -1772,13 +1846,21 @@ msgstr "MS Exchange IMAP server"
 msgid "Courier IMAP server"
 msgstr "Courier IMAP server"
 
+msgid "Mac OS X Mailserver"
+msgstr ""
+
+#, fuzzy
+msgid "hMailServer IMAP server"
+msgstr "Courier IMAP server"
+
 msgid "Not one of the above servers"
 msgstr "®ádný z pøedcházejících"
 
 msgid "IMAP Folder Delimiter"
 msgstr "Oddìlovaè slo¾ek"
 
-msgid "Use \"detect\" to auto-detect."
+#, fuzzy
+msgid "Use &quot;detect&quot; to auto-detect."
 msgstr "Pou¾ijte \"detect\" pro autodetekci."
 
 msgid "Use TLS for IMAP Connections"
@@ -1790,8 +1872,15 @@ msgstr "Vy¾aduje PHP 4.3.x! Experimentalní verze."
 msgid "IMAP Authentication Type"
 msgstr "autentifikace se nezdaøíla"
 
+#, fuzzy
+msgid "IMAP login"
+msgstr "U¾ivatelské jméno na POP3 serveru"
+
 msgid "Use Sendmail Binary"
 msgstr "Pou¾ívat Sendmail"
+
+msgid "Choose &quot;no&quot; for SMTP"
+msgstr ""
 
 msgid "Sendmail Path"
 msgstr "Cesta k Sendmailu"
@@ -1807,6 +1896,12 @@ msgstr "Pou¾ívat TLS v pøístupu na SMTP server"
 
 msgid "SMTP Authentication Type"
 msgstr "Typ SMTP autentifikace"
+
+msgid "No SMTP auth"
+msgstr ""
+
+msgid "Login (plain text)"
+msgstr ""
 
 msgid "POP3 Before SMTP?"
 msgstr "POP3 Pøed SMTP?"
@@ -1856,10 +1951,6 @@ msgstr "Implicitní nastavení zobrazení nepøeètených zpráv"
 msgid "Auto Create Special Folders"
 msgstr "Automaticky vytváøet Speciální slo¾ky"
 
-#, fuzzy
-msgid "Default Javascript Addressbook"
-msgstr "Implicitnì Javascriptový adresáø"
-
 msgid "Auto delete folders"
 msgstr "Automaticky odstraòovat slo¾ky"
 
@@ -1868,9 +1959,6 @@ msgstr "Zapnout opravu chyby s /NoSelect"
 
 msgid "General Options"
 msgstr "Obecné nastavení"
-
-msgid "Default Charset"
-msgstr "Implicitní znaková sada"
 
 msgid "Data Directory"
 msgstr "Adresáø s daty"
@@ -1953,6 +2041,51 @@ msgstr "Políèko s názvem v tabulce nastavení"
 msgid "Preferences value field"
 msgstr "Políèko s hodnotou v tabulce nastavení"
 
+#, fuzzy
+msgid "Global address book DSN"
+msgstr "Centrální adresáø kontaktù"
+
+#, fuzzy
+msgid "Global address book table"
+msgstr "Centrální adresáø kontaktù"
+
+#, fuzzy
+msgid "Allow writing into global address book"
+msgstr "Nemù¾u modifikovat globální adresáø kontaktù"
+
+#, fuzzy
+msgid "Allow listing of global address book"
+msgstr "Nemù¾u modifikovat globální adresáø kontaktù"
+
+#, fuzzy
+msgid "Language settings"
+msgstr "Zmìnit nastavení"
+
+msgid "Default Language"
+msgstr "Implicitní jazyk"
+
+msgid "Default Charset"
+msgstr "Implicitní znaková sada"
+
+msgid "Enable lossy encoding"
+msgstr ""
+
+#, fuzzy
+msgid "Address Books"
+msgstr "Adresáø"
+
+#, fuzzy
+msgid "Default Javascript Addressbook"
+msgstr "Implicitnì Javascriptový adresáø"
+
+#, fuzzy
+msgid "Global address book file"
+msgstr "Centrální adresáø kontaktù"
+
+#, fuzzy
+msgid "Allow writing into global address book file"
+msgstr "Zápis do adresáøe probìhl neúspì¹nì"
+
 msgid "Themes"
 msgstr "Schémata"
 
@@ -1968,6 +2101,18 @@ msgstr "Pou¾ívat èíslo indexu u barevných témat"
 msgid "Configuration Administrator"
 msgstr "Administrátor konfigurace"
 
+msgid ""
+"Note: it is recommended that you configure your system using conf.pl, and "
+"not this plugin. conf.pl contains additional information regarding the "
+"purpose of variables and appropriate values, as well as additional "
+"verification steps."
+msgstr ""
+
+msgid ""
+"Run or consult conf.pl should you run into difficulty with your "
+"configuration."
+msgstr ""
+
 msgid "Theme Name"
 msgstr "Název schéma"
 
@@ -1977,8 +2122,16 @@ msgstr "Cesta ke schématùm"
 msgid "Plugins"
 msgstr "Pluginy"
 
+#, php-format
+msgid "Plugin directory could not be found: %s"
+msgstr ""
+
 msgid "Change Settings"
 msgstr "Zmìnit nastavení"
+
+#, fuzzy
+msgid "Test Configuration"
+msgstr "Pou¾ívat pøíznak ovìøení"
 
 msgid "Config file can't be opened. Please check config.php."
 msgstr "Nelze otevøít konfiguraèní soubor. Zkontrolujte config.php."
@@ -1997,34 +2150,39 @@ msgstr "Hlá¹ení chyb:"
 msgid ""
 "Before you send your bug report, please make sure to check this checklist "
 "for any common problems."
-msgstr "Pøed posláním Hlá¹ení chyby, prosím projdìte tento seznam s najèastìj¹ími problémy."
+msgstr ""
+"Pøed posláním Hlá¹ení chyby, prosím projdìte tento seznam s najèastìj¹ími "
+"problémy."
 
+#, php-format
 msgid ""
-"Make sure that you are running the most recent copy of <a href=\"http://www."
-"squirrelmail.org/\">SquirrelMail</a>."
+"Make sure that you are running the most recent copy of %s. You are currently "
+"using version %s."
 msgstr ""
 
-#, c-format
-msgid "You are currently using version %s."
-msgstr "Právì pou¾íváte verzi %s."
-
+#, fuzzy, php-format
 msgid ""
-"Check to see if your bug is already listed in the <a href=\"http://"
-"sourceforge.net/bugs/?group_id=311\">Bug List</a> on SourceForge. If it is, "
-"we already know about it and are trying to fix it."
+"Check to see if your bug is already listed in the %sBug List%s on "
+"SourceForge. If it is, we already know about it and are trying to fix it."
 msgstr ""
 "Ovìøte, zda ji¾ není chyba uvedena v&nbsp;<a href=\\\"http://\"\n"
-"\"sourceforge.net/bugs/?group_id=311\\\">seznamu chyb</a>. Pokud je, ji¾ o této chybì víme a sna¾íme se ji odstranit."
+"\"sourceforge.net/bugs/?group_id=311\\\">seznamu chyb</a>. Pokud je, ji¾ o "
+"této chybì víme a sna¾íme se ji odstranit."
 
 msgid ""
 "Try to make sure that you can repeat it. If the bug happens sporatically, "
 "try to document what you did when it happened. If it always occurs when you "
 "view a specific message, keep that message around so maybe we can see it."
-msgstr "Pokuste se provìøit, zda doká¾ete chybu zopakovat. Pokud se vyskytuje pouze sporadicky, zkuste popsat, co jste dìlal(a), kdy¾ chyba vznikla. Pokud je výskyt chyby váván na kontrétní zprávu, uchovejte si ji pro pøípad, ¾e bychom ji chtìli vidìt."
+msgstr ""
+"Pokuste se provìøit, zda doká¾ete chybu zopakovat. Pokud se vyskytuje pouze "
+"sporadicky, zkuste popsat, co jste dìlal(a), kdy¾ chyba vznikla. Pokud je "
+"výskyt chyby váván na kontrétní zprávu, uchovejte si ji pro pøípad, ¾e "
+"bychom ji chtìli vidìt."
 
+#, php-format
 msgid ""
 "If there were warnings displayed above, try to resolve them yourself. Read "
-"the guides in the <tt>doc/</tt> directory where SquirrelMail was installed."
+"the guides in the %s directory where SquirrelMail was installed."
 msgstr ""
 
 msgid ""
@@ -2064,15 +2222,15 @@ msgstr "Hlá¹ení chyb:"
 msgid "Show button in toolbar"
 msgstr "Zobrazit tlaèítko na li¹tì"
 
-#, c-format
-msgid "Could not write calendar file %s"
-msgstr "Nelze zapsat soubor s kalendáøem %s"
-
 msgid "TODAY"
 msgstr "DNES"
 
 msgid "Go"
 msgstr "Pøejít"
+
+#, php-format
+msgid "Could not write calendar file %s"
+msgstr "Nelze zapsat soubor s kalendáøem %s"
 
 msgid "l, F j Y"
 msgstr "l, j F Y"
@@ -2208,17 +2366,19 @@ msgstr ""
 "rozesílají spam.Je to velmi spolehlivý seznam proti kterému lze kontrolovat "
 "zprávy."
 
+#, fuzzy
 msgid ""
 "COMMERCIAL - Servers that are configured (or misconfigured) to allow spam to "
-"be relayed through their system will be banned with this.  Another good one "
+"be relayed through their system will be banned with this. Another good one "
 "to use."
 msgstr ""
 "KOMERÈNÍ - Servery které nevhodnou konfigurací dovolují rozesílání spamu."
 "Dal¹í dobrý seznam."
 
+#, fuzzy
 msgid ""
 "COMMERCIAL - Dial-up users are often filtered out since they should use "
-"their ISP's mail servers to send mail.  Spammers typically get a dial-up "
+"their ISP's mail servers to send mail. Spammers typically get a dial-up "
 "account and send spam directly from there."
 msgstr ""
 "KOMERÈNÍ - U¾ivatelé vytáèených pøipojení jsou velmi èasto filtrováni "
@@ -2280,8 +2440,9 @@ msgstr ""
 msgid "FREE - SPAMhaus - A list of well-known SPAM sources."
 msgstr "ZDARMA - SPAMhaus - Seznam dobøe známých zdrojù SPAMu."
 
+#, fuzzy
 msgid ""
-"FREE, for now - SPAMCOP - An interesting solution that lists servers that "
+"FREE, for now - SpamCop - An interesting solution that lists servers that "
 "have a very high spam to legit email ratio (85 percent or more)."
 msgstr ""
 "ZDARMA, prozatím - SPAMCOP - Zajímavì øe¹ený seznam SPAM serverù, které mají "
@@ -2296,18 +2457,23 @@ msgstr ""
 "nakonfigurované servery."
 
 msgid "FREE - ahbl.org Open Relays - Another list of Open Relays."
-msgstr "ZDARMA - anbl.org Open Relays - Dal¹í seznam nevhodnì nakonfigurovaných serverù."
+msgstr ""
+"ZDARMA - anbl.org Open Relays - Dal¹í seznam nevhodnì nakonfigurovaných "
+"serverù."
 
 msgid "FREE - ahbl.org SPAM Source - List of Direct SPAM Sources."
 msgstr "ZDARMA - anbl.org SPAM Source - Seznam zdrojù spamu."
 
 msgid "FREE - ahbl.org SPAM ISPs - List of SPAM-friendly ISPs."
-msgstr "ZDARMA - anbl.org SPAM ISPs - Seznam poskytovatelù kteøí podporují spammery."
+msgstr ""
+"ZDARMA - anbl.org SPAM ISPs - Seznam poskytovatelù kteøí podporují spammery."
 
 msgid ""
 "FREE - Leadmon DUL - Another list of Dial-up or otherwise dynamically "
 "assigned IPs."
-msgstr "ZDARMA - Leadmon DUL - Dal¹í seznam Vytáèených pøipojení a dynamicky pøidìlovaných IP adres."
+msgstr ""
+"ZDARMA - Leadmon DUL - Dal¹í seznam Vytáèených pøipojení a dynamicky "
+"pøidìlovaných IP adres."
 
 msgid ""
 "FREE - Leadmon SPAM Source - List of IPs Leadmon.net has received SPAM "
@@ -2372,6 +2538,13 @@ msgstr ""
 "ZDARMA - Distributed Sender Boycott List - Neovìøené nevhodnì "
 "nakonfigurované servery"
 
+msgid "WARNING! You must enter something to search for."
+msgstr ""
+
+msgid ""
+"WARNING! Header filters should be of the format &quot;Header: value&quot;"
+msgstr ""
+
 msgid "Saved Scan type"
 msgstr "Výbìr ulo¾en"
 
@@ -2399,8 +2572,8 @@ msgstr "Hlavièka"
 msgid "Contains:"
 msgstr "Obsahuje:"
 
-#, c-format
-msgid "If <b>%s</b> contains <b>%s</b> then move to <b>%s</b>"
+#, fuzzy, php-format
+msgid "If %s contains %s then move to %s"
 msgstr "Pokud <b>%s</b> obsahuje <b>%s</b> pak zprávu pøesuò do <b>%s</b>"
 
 msgid "Message Filters"
@@ -2423,10 +2596,19 @@ msgstr ""
 "Filtrování nevy¾ádané po¹ty vám umo¾òují filtrovat nevy¾ádanou po¹tu ze "
 "slo¾ky doruèená po¹ta a pøesouvat jí do jiné slo¾ky (napøíklad ko¹)."
 
+#, fuzzy
+msgid "You must select a spam folder."
+msgstr "Vybrat slo¾ku"
+
+#, fuzzy
+msgid "You must select a scan type."
+msgstr "Musíte si vybrat"
+
 msgid "Spam Filtering"
 msgstr "Fitrování nevy¾ádané po¹ty"
 
-msgid "WARNING! Tell your admin to set the SpamFilters_YourHop variable"
+#, fuzzy, php-format
+msgid "WARNING! Tell the administrator to set the %s variable."
 msgstr ""
 "VAROVÁNÍ! Kontaktujte správce va¹eho systému s po¾adavkem na nastaveni "
 "promìnné SpamFilters_YourHop"
@@ -2446,34 +2628,35 @@ msgstr ""
 "po¹ta. A» zde nastavíte cokoliv, dbejte na vymázávání nevy¾ádané po¹ty, aby "
 "se nestalo, ¾e va¹e mailová schránka pøeteèe. "
 
+#, fuzzy
+msgid "Unread messages only"
+msgstr "Pouze nové zprávy"
+
+#, fuzzy
 msgid ""
-"The more messages you scan, the longer it takes.  I would suggest that you "
-"scan only new messages.  If you make a change to your filters, I would set "
-"it to scan all messages, then go view my INBOX, then come back and set it to "
-"scan only new messages.  That way, your new spam filters will be applied and "
-"you'll scan even the spam you read with the new filters."
+"The more messages scanned, the longer it takes. It's recommended to scan "
+"unread messages only. If a change to the filters is made, it's recommended "
+"to set it to scan all messages, then go view the INBOX, then come back and "
+"set it to scan unread messages only. That way, the new spam filters will be "
+"applied and even the spam you didn't catch with the old filters will be "
+"scanned."
 msgstr ""
 "Èím více zpráv kontrolujete, tím delé kontrola trvá. Doporuèujeme vám proto, "
 "kontrolu pouze nových zpráv. Pokud zmìníte nastavení filtrù, je dobré "
 "nastavit je na v¹echny zprávy, otevøít slo¾ku doruèená po¹ta a poté v¹e "
 "nastavit zpìt na filtrování pouze nových zpráv."
 
-#, c-format
-msgid "Spam is sent to <b>%s</b>"
+#, fuzzy, php-format
+msgid "Spam is sent to %s."
 msgstr "Nevy¾ádaná po¹ta bude pøesouvána do slo¾ky <b>%s</b>"
 
-msgid "[<i>not set yet</i>]"
+#, fuzzy
+msgid "not set yet"
 msgstr "[<i>je¹tì nebylo nastaveno </i>]"
 
-#, c-format
-msgid "Spam scan is limited to <b>%s</b>"
+#, fuzzy, php-format
+msgid "Spam scan is limited to %s."
 msgstr "Filtrování nevy¾ádané po¹ty je omezeno na <b>%s</b>"
-
-msgid "New Messages Only"
-msgstr "Pouze nové zprávy"
-
-msgid "All Messages"
-msgstr "V¹echny zprávy"
 
 msgid "ON"
 msgstr "ZAP"
@@ -2481,7 +2664,8 @@ msgstr "ZAP"
 msgid "OFF"
 msgstr "VYP"
 
-msgid " not found."
+#, fuzzy, php-format
+msgid "%s is not found."
 msgstr " nenalezen."
 
 msgid "Today's Fortune"
@@ -2493,19 +2677,23 @@ msgstr "©tìstíèka:"
 msgid "Show fortunes at top of mailbox"
 msgstr "Zobrazovat ¹tìstíèka nad doruèenou po¹tou"
 
+msgid "Plugin is disabled."
+msgstr ""
+
 msgid "IMAP server information"
 msgstr "Informace o IMAP serveru"
 
+#, fuzzy
 msgid ""
 "Run some test IMAP commands, displaying both the command and the result. "
-"These tests use the Squirrelmail IMAP commands and your current Squirrelmail "
+"These tests use the SquirrelMail IMAP commands and your current SquirrelMail "
 "configuration. Custom command strings can be used."
 msgstr "Provede nìkteré zku¹ební pøíkazy IMAPu, zobrazujíc pøíkaz i výsledek."
 
 msgid "Mailinglist"
 msgstr "Diskusní skupina"
 
-#, c-format
+#, php-format
 msgid ""
 "This will send a message to %s requesting help for this list. You will "
 "receive an emailed response at the address below."
@@ -2513,7 +2701,7 @@ msgstr ""
 "Tímto ode¹lete zprávu na %s s po¾adavkem na pomoc s tímto seznamem. Odpovìï "
 "dostanete na adresu uvedenou ní¾e."
 
-#, c-format
+#, php-format
 msgid ""
 "This will send a message to %s requesting that you will be subscribed to "
 "this list. You will be subscribed with the address below."
@@ -2521,7 +2709,7 @@ msgstr ""
 "Tímto ode¹lete zprávu na %s s po¾adavkem na pøihlá¹en k odbìru tohoto "
 "seznamu Bude zaøazena adresa uvedená ní¾e."
 
-#, c-format
+#, php-format
 msgid ""
 "This will send a message to %s requesting that you will be unsubscribed from "
 "this list. It will try to unsubscribe the adress below."
@@ -2556,12 +2744,6 @@ msgstr "Nebyl specifikován ¾ádný server"
 msgid "Error "
 msgstr "Chyba "
 
-msgid "POP3 noop:"
-msgstr ""
-
-msgid "No connection to server"
-msgstr "Nejste pøipojeni k serveru"
-
 msgid "POP3 user:"
 msgstr "U¾ivatel na POP3 serveru:"
 
@@ -2582,6 +2764,9 @@ msgstr "autentifikace se nezdaøíla"
 
 msgid "POP3 apop:"
 msgstr ""
+
+msgid "No connection to server"
+msgstr "Nejste pøipojeni k serveru"
 
 msgid "No login ID submitted"
 msgstr "nezadali jste ¾ádné u¾ivatelské jméno"
@@ -2673,11 +2858,9 @@ msgstr "Pøihlá¹ení se zdaøilo. Nemáte v¹ak ¾ádné nové zprávy"
 msgid "Login OK: Inbox EMPTY"
 msgstr "Pøihlá¹ení se zdaøilo. Slo¾ka doruèené po¹ty je v¹ak prázdná"
 
-msgid "Login OK: Inbox contains ["
+#, fuzzy, php-format
+msgid "Login OK: Inbox contains %s messages"
 msgstr "Pøihlá¹eni se zdaøilo. Slo¾ka doruèené po¹ty obsahuje ["
-
-msgid "] messages"
-msgstr "zpráv"
 
 msgid "Fetching UIDL..."
 msgstr "Získávám UIDL..."
@@ -2685,7 +2868,8 @@ msgstr "Získávám UIDL..."
 msgid "Server does not support UIDL."
 msgstr "Server nepodporuje UIDL."
 
-msgid "Leaving Mail on Server..."
+#, fuzzy
+msgid "Leaving mail on server..."
 msgstr "Nechávám zprávy na serveru..."
 
 msgid "Deleting messages from server..."
@@ -2694,7 +2878,8 @@ msgstr "Ma¾u zprávy ze serveru..."
 msgid "Fetching message "
 msgstr "Stahuji zprávu"
 
-msgid "Server error...Disconnect"
+#, fuzzy
+msgid "Server error. Disconnect"
 msgstr "Chyba serveru... Odopojeno"
 
 msgid "Reconnect from dead connection"
@@ -2718,10 +2903,8 @@ msgstr "Odhla¹uji se z IMAP serveru"
 msgid "Message appended to mailbox"
 msgstr "Zpráva pøidána do schránky"
 
-msgid "Message "
-msgstr "Zpráva "
-
-msgid " deleted from Remote Server!"
+#, fuzzy, php-format
+msgid "Message %d deleted from remote server!"
 msgstr " smazána ze vzdáleného serveru!"
 
 msgid "Delete failed:"
@@ -2730,9 +2913,10 @@ msgstr "Mazání selhalo:"
 msgid "Remote POP server settings"
 msgstr "Nastavení vzdáleného POP3 serveru"
 
+#, fuzzy
 msgid ""
 "You should be aware that the encryption used to store your password is not "
-"perfectly secure.  However, if you are using pop, there is inherently no "
+"perfectly secure. However, if you are using pop, there is inherently no "
 "encryption anyway. Additionally, the encryption that we do to save it on the "
 "server can be undone by a hacker reading the source to this file."
 msgstr ""
@@ -2740,7 +2924,8 @@ msgstr ""
 "pøípadì perfektní. Navíc pokud pou¾íváte POP3 není ¾ádné ¹ifrování k "
 "dispozici."
 
-msgid "If you leave password empty, it will be required when you fetch mail."
+#, fuzzy
+msgid "If you leave password empty, it will be asked when you fetch mail."
 msgstr ""
 "Pokud necháte heslo prázdne, budete ho muset zadat pøi ka¾dém stahování "
 "po¹ty."
@@ -2766,13 +2951,16 @@ msgstr "U¾ivatelské jméno:"
 msgid "Store in Folder:"
 msgstr "Ukládat do slo¾ky: "
 
-msgid "Leave Mail on Server"
+#, fuzzy
+msgid "Leave mail on server"
 msgstr "Nechávat po¹tu na serveru"
 
-msgid "Check mail during login"
+#, fuzzy
+msgid "Check mail at login"
 msgstr "Kontrolovat novou po¹tu pøi pøihlá¹ení"
 
-msgid "Check mail during folder refresh"
+#, fuzzy
+msgid "Check mail at folder refresh"
 msgstr "Kontrolovat novou po¹tu pøi obnovení slo¾ky"
 
 msgid "Modify Server"
@@ -2784,8 +2972,9 @@ msgstr "Název serveru: "
 msgid "Modify"
 msgstr "Zmìnit"
 
-msgid "No-one server in use. Try to add."
-msgstr "Nepou¾íváte ¾ádný server. Zkuste nìjaký pøidat."
+#, fuzzy
+msgid "No servers known."
+msgstr "Chybí uvítání na serveru"
 
 msgid "Fetching Servers"
 msgstr "Stahuji servery"
@@ -2802,11 +2991,14 @@ msgstr "Potvrdit vymazání vybraného serveru?"
 msgid "Confirm Delete"
 msgstr "Potvrdit Smazání"
 
+msgid "Leave Mail on Server"
+msgstr "Nechávat po¹tu na serveru"
+
 msgid "Undefined Function"
 msgstr "Nedefinovaná funkce"
 
-msgid "Hey! Wath do You are looking for?"
-msgstr "Co tu hleá¹?"
+msgid "The function you requested is unknown."
+msgstr ""
 
 msgid "Fetch"
 msgstr "Stáhnout"
@@ -2817,11 +3009,13 @@ msgstr "Varování, "
 msgid "Mail Fetch Result:"
 msgstr "Výsledek stahování po¹ty:"
 
-msgid "Simple POP3 Fetch Mail"
+#, fuzzy
+msgid "POP3 Fetch Mail"
 msgstr "Jednoduchý stahovaè POP3"
 
+#, fuzzy
 msgid ""
-"This configures settings for downloading email from a pop3 mailbox to your "
+"This configures settings for downloading email from a POP3 mailbox to your "
 "account on this server."
 msgstr ""
 "Zde mù¾ete nastavit stahování po¹ty z va¹í POP3 schránky do schránky na "
@@ -2829,6 +3023,23 @@ msgstr ""
 
 msgid "Message Details"
 msgstr "Detaily zprávy"
+
+msgid "Bodystructure"
+msgstr ""
+
+#, fuzzy
+msgid "Entity"
+msgstr "Editovat"
+
+msgid "Content-Type"
+msgstr ""
+
+msgid "Encoding"
+msgstr ""
+
+#, fuzzy
+msgid "RFC822 Message body"
+msgstr "Za tìlem zprávy"
 
 msgid "Close Window"
 msgstr "Zavøít okno"
@@ -2839,106 +3050,112 @@ msgstr "Ulo¾it zprávu"
 msgid "View Message details"
 msgstr "Zobrazit detaily zprávy"
 
-msgid "New Mail Notification"
-msgstr "Oznáméní o nových emailech"
-
-msgid ""
-"Select <b>Enable Media Playing</b> to turn on playing a media file when "
-"unseen mail is in your folders. When enabled, you can specify the media file "
-"to play in the provided file box."
-msgstr ""
-"V pøípadì ¾e si zapnete <b>Pøehrávání zvuku</b>, mù¾ete si vybrat jaký zvuk "
-"má být pøehrán v pøípadì ¾e se ve va¹í schránce objeví nová po¹ta."
-
-msgid ""
-"The <b>Check all boxes, not just INBOX</b> option will check ALL of your "
-"folders for unseen mail, not just the inbox for notification."
-msgstr ""
-"Mo¾nost <B>Kontrolovat v¹echny slo¾ky</b> zapne kontrolu V©ECH va¹ich slo¾ek "
-"na nepøeètenou po¹tu. "
-
-msgid ""
-"Selecting the <b>Show popup</b> option will enable the showing of a popup "
-"window when unseen mail is in your folders (requires JavaScript)."
-msgstr ""
-"Mo¾nost <b>Zobrazit okno s oznámením</b> zapne zobrazování okna, které vás "
-"upozorní na to ¾e máte novou zprávu. (Vy¾aduje prohlí¾eè se zapnutou "
-"podporou JavaScriptu)"
-
-msgid ""
-"Use the <b>Check RECENT</b> to only check for messages that are recent. "
-"Recent messages are those that have just recently showed up and have not "
-"been \"viewed\" or checked yet.  This can prevent being continuously annoyed "
-"by sounds or popups for unseen mail."
-msgstr ""
-"Mo¾nost <b>Pouze nové</b> upraví chovaní kontroly tak aby se upozornìní "
-"zobrazovalo pouze u zpráv, které jste je¹tì nevidìl."
-
-msgid ""
-"Selecting the <b>Change title</b> option will change the title in some "
-"browsers to let you know when you have new mail (requires JavaScript, and "
-"only works in IE but you won't see errors with other browsers).  This will "
-"always tell you if you have new mail, even if you have <b>Check RECENT</b> "
-"enabled."
-msgstr ""
-"Mo¾nost <b>Zmìnit popisek okna</b> zmìní popisek okna tak aby zobrazoval "
-"poèet nových zpráv ve va¹í schránce. (Vy¾aduje JavaScript a funguje jen v "
-"nìkterých prohlí¾eèích) Popisek vám bude v¾dy zobrazovat poèet nových zpráv "
-"i kdy¾ máte vybránu mo¾nost <b>Pouze nové</b>"
-
-msgid ""
-"Select from the list of <b>server files</b> the media file to play when new "
-"mail arrives.  If no file is specified, \"(none)\", no sound will be used."
-msgstr ""
-"Ze <b>seznamu zvukù na serveru</b> si mù¾ete vybrat, který zvuk bude pøehrán "
-"kdy¾ pøíjde nová zpráva."
-
-msgid "Enable Media Playing"
-msgstr "Pøehrávání zvuku"
-
-msgid "Check all boxes, not just INBOX"
-msgstr "Kontrolovat v¹echny slo¾ky"
-
-msgid "Count only messages that are RECENT"
-msgstr "Pouze nové"
-
-msgid "Change title on supported browsers."
-msgstr "Zmìnit popisek okna"
-
-msgid "requires JavaScript to work"
-msgstr "(Vy¾aduje JavaScript)"
-
-msgid "Show popup window on new mail"
-msgstr "Zobrazit okno s oznámením"
-
-msgid "Select server file:"
-msgstr "Seznam zvukù na serveru"
-
-msgid "(none)"
-msgstr "(nic)"
-
-msgid "Try"
-msgstr "Vyzkou¹et"
-
-msgid "Current File:"
-msgstr "Aktuální soubor:"
-
 msgid "New Mail"
 msgstr "Nová po¹ta"
 
 msgid "SquirrelMail Notice:"
 msgstr "Poznámka:"
 
-msgid "You have"
-msgstr "Nové zprávy"
+#, fuzzy, php-format
+msgid "You have %s new message"
+msgid_plural "You have %s new messages"
+msgstr[0] ": %s"
+msgstr[1] ": %s"
 
-#, c-format
-msgid "%s new message"
+#, fuzzy, php-format
+msgid "You have %s new messages"
 msgstr ": %s"
 
-#, fuzzy, c-format
-msgid "%s new messages"
-msgstr ": %s"
+msgid "New Mail Notification"
+msgstr "Oznáméní o nových emailech"
+
+#, fuzzy, php-format
+msgid ""
+"The %s option will check ALL of your folders for unseen mail, not just the "
+"inbox for notification."
+msgstr ""
+"Mo¾nost <B>Kontrolovat v¹echny slo¾ky</b> zapne kontrolu V©ECH va¹ich slo¾ek "
+"na nepøeètenou po¹tu. "
+
+msgid "Check all boxes, not just INBOX"
+msgstr "Kontrolovat v¹echny slo¾ky"
+
+#, fuzzy, php-format
+msgid ""
+"Selecting the %s option will enable the showing of a popup window when "
+"unseen mail is in your folders (requires JavaScript)."
+msgstr ""
+"Mo¾nost <b>Zobrazit okno s oznámením</b> zapne zobrazování okna, které vás "
+"upozorní na to ¾e máte novou zprávu. (Vy¾aduje prohlí¾eè se zapnutou "
+"podporou JavaScriptu)"
+
+msgid "Show popup window on new mail"
+msgstr "Zobrazit okno s oznámením"
+
+#, fuzzy, php-format
+msgid ""
+"Use the %s option to only check for messages that are recent. Recent "
+"messages are those that have just recently showed up and have not been "
+"\"viewed\" or checked yet. This can prevent being continuously annoyed by "
+"sounds or popups for unseen mail."
+msgstr ""
+"Mo¾nost <b>Pouze nové</b> upraví chovaní kontroly tak aby se upozornìní "
+"zobrazovalo pouze u zpráv, které jste je¹tì nevidìl."
+
+msgid "Count only messages that are RECENT"
+msgstr "Pouze nové"
+
+#, fuzzy, php-format
+msgid ""
+"Selecting the %s option will change the title in some browsers to let you "
+"know when you have new mail (requires JavaScript, and only works in IE but "
+"you won't see errors with other browsers). This will always tell you if you "
+"have new mail, even if you have %s enabled."
+msgstr ""
+"Mo¾nost <b>Zmìnit popisek okna</b> zmìní popisek okna tak aby zobrazoval "
+"poèet nových zpráv ve va¹í schránce. (Vy¾aduje JavaScript a funguje jen v "
+"nìkterých prohlí¾eèích) Popisek vám bude v¾dy zobrazovat poèet nových zpráv "
+"i kdy¾ máte vybránu mo¾nost <b>Pouze nové</b>"
+
+#, fuzzy
+msgid "Change title on supported browsers"
+msgstr "Zmìnit popisek okna"
+
+#, fuzzy, php-format
+msgid ""
+"Select %s to turn on playing a media file when unseen mail is in your "
+"folders. When enabled, you can specify the media file to play in the "
+"provided file box."
+msgstr ""
+"V pøípadì ¾e si zapnete <b>Pøehrávání zvuku</b>, mù¾ete si vybrat jaký zvuk "
+"má být pøehrán v pøípadì ¾e se ve va¹í schránce objeví nová po¹ta."
+
+msgid "Enable Media Playing"
+msgstr "Pøehrávání zvuku"
+
+#, fuzzy, php-format
+msgid ""
+"Select from the list of %s the media file to play when new mail arrives. If "
+"no file is specified, %s, no sound will be used."
+msgstr ""
+"Ze <b>seznamu zvukù na serveru</b> si mù¾ete vybrat, který zvuk bude pøehrán "
+"kdy¾ pøíjde nová zpráva."
+
+#, fuzzy
+msgid "Select server file"
+msgstr "Seznam zvukù na serveru"
+
+msgid "(none)"
+msgstr "(nic)"
+
+msgid "requires JavaScript to work"
+msgstr "(Vy¾aduje JavaScript)"
+
+msgid "Try"
+msgstr "Vyzkou¹et"
+
+msgid "Current File:"
+msgstr "Aktuální soubor:"
 
 msgid "NewMail Options"
 msgstr "Mo¾nosti oznámení o nových zprávách"
@@ -2948,16 +3165,15 @@ msgid ""
 "when new mail arrives."
 msgstr "Zde si mù¾ete nakonfigurovat oznámení o nových zprávách."
 
-msgid "New Mail Notification options saved"
-msgstr "Nové nastavení bylo ulo¾eno"
-
-#, c-format
+#, php-format
 msgid "%s New Messages"
 msgstr "%s nových zpráv"
 
-#, c-format
+#, fuzzy, php-format
 msgid "%s New Message"
-msgstr "%s nová zpráva"
+msgid_plural "%s New Messages"
+msgstr[0] "%s nová zpráva"
+msgstr[1] "%s nová zpráva"
 
 msgid "Test Sound"
 msgstr "Vyzkou¹et zvuk"
@@ -3037,34 +3253,37 @@ msgstr ""
 msgid "Save ID"
 msgstr "Ulo¾it"
 
+msgid "About SpamCop"
+msgstr ""
+
 msgid ""
 "SpamCop is a free service that greatly assists in finding the true source of "
 "the spam and helps in letting the proper people know about the abuse."
 msgstr ""
 
+#, php-format
 msgid ""
-"To use it, you must get a SpamCop authorization code. There is a free <a "
-"href=\"http://spamcop.net/anonsignup.shtml\">sign up page</a> so you can use "
-"SpamCop."
+"To use it, you must get a SpamCop authorization code. There is a free %ssign "
+"up page%s so you can use SpamCop."
 msgstr ""
 
+msgid "Before you sign up, be warned"
+msgstr ""
+
+#, php-format
 msgid ""
-"<b>Before you sign up, be warned:</b> Some users have reported that the "
-"email addresses used with SpamCop find their way onto spam lists. To be "
-"safe, you can just create an email forwarding account and have all SpamCop "
-"reports get sent to there. Also, if it gets flooded with spam, you can then "
-"just delete that account with no worries about losing your real email "
-"address. Just go create an email forwarder somewhere (<a href=\"http://www."
-"yahoo.com/\">Yahoo!</a> has a <a href=\"http://dir.yahoo.com/"
-"Business_and_Economy/Business_to_Business/Communications_and_Networking/"
-"Internet_and_World_Wide_Web/Email_Providers/Forwarding_Services/"
-"Free_Forwarding/\">list of places</a>) so that messages from system "
-"administrators and whatnot can be sent to you."
+"Some users have reported that the email addresses used with SpamCop find "
+"their way onto spam lists. To be safe, you can just create an email "
+"forwarding account and have all SpamCop reports get sent to there. Also, if "
+"it gets flooded with spam, you can then just delete that account with no "
+"worries about losing your real email address. Just go create an email "
+"forwarder somewhere (%s has a %slist of places%s) so that messages from "
+"system administrators and what not can be sent to you."
 msgstr ""
 
 msgid ""
 "Once you have signed up with SpamCop and have received your SpamCop "
-"authorization code, you need to enable this plugin -- just click the link "
+"authorization code, you need to enable this plugin by clicking the link "
 "above. Once enabled, you go about your normal life. If you encounter a spam "
 "message in your mailbox, just view it. On the right-hand side, near the top "
 "of where the message is displayed, you will see a link to report this "
@@ -3073,8 +3292,9 @@ msgid ""
 "different reporting methods."
 msgstr ""
 
-msgid "Email-based Reporting"
-msgstr ""
+#, fuzzy
+msgid "Email-based reporting"
+msgstr "Fitrování nevy¾ádané po¹ty"
 
 msgid ""
 "Pressing the button forwards the message to the SpamCop service and will "
@@ -3091,8 +3311,9 @@ msgid ""
 "Hopefully this will change soon."
 msgstr ""
 
-msgid "Web-based Reporting"
-msgstr ""
+#, fuzzy
+msgid "Web-based reporting"
+msgstr "Fitrování nevy¾ádané po¹ty"
 
 msgid ""
 "When you press the button on the confirmation page, this will pop open a new "
@@ -3109,10 +3330,23 @@ msgid ""
 "folder to see messages and/or delete the spam."
 msgstr ""
 
+msgid "SpamCop service type"
+msgstr ""
+
 msgid ""
-"<b>For more information</b> about SpamCop, it's services, spam in general, "
-"and many related topics, try reading through SpamCop's <a href=\"http://"
-"spamcop.net/help.shtml\">Help and Feedback</a> section."
+"Service type option allows selecting which SpamCop services you are using. "
+"Member services use different web reporting forms and does not display nags. "
+"You can purchase these services, if you want to support SpamCop."
+msgstr ""
+
+#, fuzzy
+msgid "More information"
+msgstr "Informace o IMAP serveru"
+
+#, php-format
+msgid ""
+"For more information about SpamCop, it's services, spam in general, and many "
+"related topics, try reading through SpamCop's %sHelp and Feedback%s section."
 msgstr ""
 
 msgid "Report as Spam"
@@ -3121,9 +3355,10 @@ msgstr "Nahlásit jako nevy¾ádanou po¹tu"
 msgid "SpamCop - Spam Reporting"
 msgstr "SpamCop - Hlá¹ení nevy¾ádané po¹ty"
 
+#, fuzzy
 msgid ""
-"Help fight the battle against unsolicited email.  SpamCop reads the spam "
-"email and determines the correct addresses to send complaints to.  Quite "
+"Help fight the battle against unsolicited email. SpamCop reads the spam "
+"email and determines the correct addresses to send complaints to. Quite "
 "fast, really smart, and easy to use."
 msgstr ""
 "Umo¾òuje bojovat proti nevy¾ádané po¹tì. SpamCop ète zprávy a vyhodnocuje "
@@ -3133,7 +3368,7 @@ msgstr ""
 msgid ""
 "Sending this spam report will give you back a reply with URLs that you can "
 "click on to properly report this spam message to the proper authorities. "
-"This is a free service.  By pressing the \"Send Spam Report\" button, you "
+"This is a free service. By pressing the \"Send Spam Report\" button, you "
 "agree to follow SpamCop's rules/terms of service/etc."
 msgstr ""
 
@@ -3162,15 +3397,16 @@ msgstr "Zpìt na stránku &quot;Mo¾nosti kontroly pravopisu&quot;"
 msgid "ATTENTION:"
 msgstr "POZOR:"
 
+#, fuzzy
 msgid ""
 "SquirrelSpell was unable to decrypt your personal dictionary. This is most "
 "likely due to the fact that you have changed your mailbox password. In order "
 "to proceed, you will have to supply your old password so that SquirrelSpell "
 "can decrypt your personal dictionary. It will be re-encrypted with your new "
-"password after this.<br>If you haven't encrypted your dictionary, then it "
-"got mangled and is no longer valid. You will have to delete it and start "
-"anew. This is also true if you don't remember your old password -- without "
-"it, the encrypted data is no longer accessible."
+"password after this. If you haven't encrypted your dictionary, then it got "
+"mangled and is no longer valid. You will have to delete it and start anew. "
+"This is also true if you don't remember your old password -- without it, the "
+"encrypted data is no longer accessible."
 msgstr ""
 "SquirrelSpell nemohl roz¹ifrovat vá¹ osobní slovník. Nejpravdìpodobnìj¹í "
 "pøíèinou mù¾e být zmìna va¹eho hesla. Pokud jste si zmìnili heslo, zadejte "
@@ -3204,15 +3440,27 @@ msgstr "Chyba pøi roz¹ifrovávání slovníku"
 msgid "Cute."
 msgstr "Bezva."
 
-#, c-format
+#, php-format
+msgid "Could not run the spellchecker command (%s)."
+msgstr ""
+
+msgid "Error while writing to pipe."
+msgstr ""
+
+#, fuzzy, php-format
+msgid "Could not open temporary file '%s'."
+msgstr "Nelze zapsat soubor s kalendáøem %s"
+
+#, php-format
+msgid "Error while writing to temporary file '%s'."
+msgstr ""
+
+#, php-format
 msgid "I tried to execute '%s', but it returned:"
 msgstr "Pokusil jsem se pustit '%s', ale on mi vrátil:"
 
 msgid "SquirrelSpell is misconfigured."
 msgstr "SquirrelSpell je ¹patnì nakonfigurován."
-
-msgid "SquirrelSpell Results"
-msgstr "SquirrelSpell Výsledky"
 
 msgid "Spellcheck completed. Commit changes?"
 msgstr "Kontrola pravopisu dokonèena. Provést zmìny?"
@@ -3223,7 +3471,10 @@ msgstr "Nebyly provedeny ¾ádné zmìny."
 msgid "Now saving your personal dictionary... Please wait."
 msgstr "Nyní ukládám vá¹ osobní slovník...  Prosím èekejte."
 
-#, c-format
+msgid "SquirrelSpell Results"
+msgstr "SquirrelSpell Výsledky"
+
+#, php-format
 msgid "Found %s errors"
 msgstr "Nalezeno %s chyb"
 
@@ -3290,6 +3541,20 @@ msgstr "Kontrola pravopisu nebyla dokonèena. Opravdu zavøít a zahodit zmìny?"
 msgid "No errors found"
 msgstr "Nebyla nalezena ¾ádná chyba"
 
+#, fuzzy
+msgid ""
+"Your personal dictionary has been encrypted and is now stored in an "
+"encrypted format."
+msgstr "Vá¹ osobní slovník byl za¹ifrován"
+
+#, fuzzy
+msgid ""
+"Your personal dictionary has been decrypted and is now stored as plain text."
+msgstr "Vá¹ osobní slovník byl roz¹ifrován."
+
+msgid "Personal Dictionary Crypto Settings"
+msgstr "Nastavení ¹ifrování osobního slovníku"
+
 msgid "Your personal dictionary was erased."
 msgstr "Vá¹ osobní slovník byl smazán"
 
@@ -3309,7 +3574,8 @@ msgid ""
 "&quot;SpellChecker options&quot; menu and make your selection again."
 msgstr "Vá¹ slovník byl znovu za¹ifrován."
 
-msgid "Successful Re-encryption"
+#, fuzzy
+msgid "Successful re-encryption"
 msgstr "Znovuza¹ifrování úspì¹né"
 
 msgid ""
@@ -3321,19 +3587,6 @@ msgstr "Vá¹ slovník byl znovu za¹ifrován."
 msgid "Dictionary re-encrypted"
 msgstr "Slovník byl znovu za¹ifrován"
 
-msgid ""
-"Your personal dictionary has been <strong>encrypted</strong> and is now "
-"stored in an <strong>encrypted format</strong>."
-msgstr "Vá¹ osobní slovník byl za¹ifrován"
-
-msgid ""
-"Your personal dictionary has been <strong>decrypted</strong> and is now "
-"stored as <strong>clear text</strong>."
-msgstr "Vá¹ osobní slovník byl roz¹ifrován."
-
-msgid "Personal Dictionary Crypto Settings"
-msgstr "Nastavení ¹ifrování osobního slovníku"
-
 msgid "Personal Dictionary"
 msgstr "Osobní slovník"
 
@@ -3343,7 +3596,7 @@ msgstr "V osobním slovníku nejsou ¾ádná slova"
 msgid "Please check any words you wish to delete from your dictionary."
 msgstr "Prosím oznaète slova, které chcete odstranit z osobního slovníku."
 
-#, c-format
+#, php-format
 msgid "%s dictionary"
 msgstr "%s slovník"
 
@@ -3361,28 +3614,31 @@ msgid ""
 "format. Proceed?"
 msgstr "Tímto za¹ifrujete svùj slovník. Pokraèovat?"
 
+#, fuzzy
 msgid ""
-"This will decrypt your personal dictionary and store it in a clear-text "
+"This will decrypt your personal dictionary and store it in a plain text "
 "format. Proceed?"
 msgstr ""
 "Tímto roz¹ifrujete svùj slovník, ten pak bude ulo¾en neza¹ifrovaný. "
 "Pokraèovat?"
 
+#, fuzzy
+msgid "Your personal dictionary is currently encrypted."
+msgstr "Vá¹ osobní slovník byl smazán"
+
 msgid ""
-"<p>Your personal dictionary is <strong>currently encrypted</strong>. This "
-"helps protect your privacy in case the web-mail system gets compromized and "
-"your personal dictionary ends up stolen. It is currently encrypted with the "
-"password you use to access your mailbox, making it hard for anyone to see "
-"what is stored in your personal dictionary.</p> <p><strong>ATTENTION:</"
-"strong> If you forget your password, your personal dictionary will become "
+"This helps protect your privacy in case the web-mail system gets compromized "
+"and your personal dictionary ends up stolen. It is currently encrypted with "
+"the password you use to access your mailbox, making it hard for anyone to "
+"see what is stored in your personal dictionary."
+msgstr ""
+
+msgid ""
+"If you forget your password, your personal dictionary will become "
 "unaccessible, since it can no longer be decrypted. If you change your "
 "mailbox password, SquirrelSpell will recognize it and prompt you for your "
-"old password in order to re-encrypt the dictionary with a new key.</p>"
+"old password in order to re-encrypt the dictionary with a new key."
 msgstr ""
-"<p>Vá¹ osobní slovník je nyní za¹ifrován. <strong>POZOR:</strong> Pokud "
-"zapomenete va¹e heslo, nebude mo¾né slovník ¾ádným zpùsobem roz¹ifrovat a "
-"tak se stane nepou¾itelným. Pokud si zmìníte heslo do va¹í schránky "
-"SquirrelMail to pozná a umo¾ní vám slovník znovu za¹ifrovat heslem novým "
 
 msgid ""
 "Please decrypt my personal dictionary and store it in a clear-text format."
@@ -3391,28 +3647,34 @@ msgstr "Prosím roz¹ifruj mùj osobní slovník a ulo¾ ho v neza¹ifrované podobì."
 msgid "Change crypto settings"
 msgstr "Zmìnit nastavení ¹ifrování"
 
+#, fuzzy
+msgid "Your personal dictionary is currently not encrypted."
+msgstr "Vá¹ osobní slovník byl smazán"
+
 msgid ""
-"<p>Your personal dictionary is <strong>currently not encrypted</strong>. You "
-"may wish to encrypt your personal dictionary to protect your privacy in case "
-"the webmail system gets compromized and your personal dictionary file gets "
-"stolen. When encrypted, the file's contents look garbled and are hard to "
-"decrypt without knowing the correct key (which is your mailbox password).</"
-"p> <strong>ATTENTION:</strong> If you decide to encrypt your personal "
-"dictionary, you must remember that it gets &quot;hashed&quot; with your "
-"mailbox password. If you forget your mailbox password and the administrator "
-"changes it to a new value, your personal dictionary will become useless and "
-"will have to be created anew. However, if you or your system administrator "
-"change your mailbox password but you still have the old password at hand, "
-"you will be able to enter the old key to re-encrypt the dictionary with the "
-"new value.</p>"
+"You may wish to encrypt your personal dictionary to protect your privacy in "
+"case the webmail system gets compromized and your personal dictionary file "
+"gets stolen. When encrypted, the file's contents look garbled and are hard "
+"to decrypt without knowing the correct key (which is your mailbox password)."
+msgstr ""
+
+#, fuzzy
+msgid ""
+"If you decide to encrypt your personal dictionary, you must remember that it "
+"gets &quot;hashed&quot; with your mailbox password. If you forget your "
+"mailbox password and the administrator changes it to a new value, your "
+"personal dictionary will become useless and will have to be created anew. "
+"However, if you or your system administrator change your mailbox password "
+"but you still have the old password at hand, you will be able to enter the "
+"old key to re-encrypt the dictionary with the new value."
 msgstr "Vá¹ osobní slovník nyní není za¹ifrován."
 
 msgid ""
 "Please encrypt my personal dictionary and store it in an encrypted format."
 msgstr "Prosím za¹ifruj mùj osobní slovník a ulo¾ ho za¹ifrovaný."
 
-#, c-format
-msgid "Deleting the following entries from <strong>%s</strong> dictionary:"
+#, fuzzy, php-format
+msgid "Deleting the following entries from %s dictionary:"
 msgstr "Mazání následujících polo¾ek z <strong>%s</strong> slovníku:"
 
 msgid "All done!"
@@ -3435,16 +3697,14 @@ msgstr "Prosím vyberte slovník ke kontrole této zprávy."
 msgid "SquirrelSpell Initiating"
 msgstr "SquirrelSpell se inicializuje"
 
-#, c-format
-msgid ""
-"Settings adjusted to: <strong>%s</strong> with <strong>%s</strong> as "
-"default dictionary."
+#, fuzzy, php-format
+msgid "Settings adjusted to: %s with %s as default dictionary."
 msgstr ""
 "Nastavení zmìnìno na: <strong>%s</strong> s <strong>%s</strong> jako "
 "implicitní slovník."
 
-#, c-format
-msgid "Using <strong>%s</strong> dictionary (system default) for spellcheck."
+#, fuzzy, php-format
+msgid "Using %s dictionary (system default) for spellcheck."
 msgstr ""
 "Pou¾ívám <strong>%s</strong> slovník (implicitní) pro kontrolu pravopisu."
 
@@ -3495,11 +3755,11 @@ msgid "Your server options are as follows:"
 msgstr "Mo¾nosti va¹eho serveru jsou tyto:"
 
 #, fuzzy
-msgid "Maximum of 1000 characters translated, powered by Systran"
+msgid "Maximum of 150 words translated, powered by Systran"
 msgstr ""
 "19 jazykových párù, maximálnì 1000 znakù k pøekladu, vyu¾vá slu¾by Systran"
 
-#, c-format
+#, php-format
 msgid "Number of supported language pairs: %s"
 msgstr "Poèet podporovaných jazykových párù: %s"
 
@@ -3508,18 +3768,14 @@ msgid "No known limits, powered by Systran"
 msgstr "12 jazykových páru, bez nám známých omezení, vyu¾ívá slu¾by Systran"
 
 #, fuzzy
-msgid "No known limits, powered by Translation Experts's InterTran"
+msgid "No known limits, powered by Translation Experts' InterTran"
 msgstr ""
 "784 Jazykových párù, bez známých omezení, vyu¾ívá slu¾by Translation "
 "Experts' InterTran"
 
-#, c-format
+#, php-format
 msgid "Number of supported languages: %s"
 msgstr "Poèet podporovaných jazykù: %s"
-
-#, fuzzy
-msgid "No known limits, powered by GPLTrans (free, open source)"
-msgstr "8 jazykových páru, bez známých omezení, vyu¾ívá slu¾by GPLTrans"
 
 #, fuzzy
 msgid "Hellenic translations, no known limits, powered by Systran"
@@ -3556,12 +3812,6 @@ msgstr "vpravo"
 msgid "Translate inside the SquirrelMail frames"
 msgstr "Pøekládat v hlavním oknì SquirrelMailu"
 
-msgid "When composing:"
-msgstr "Pøi psaní"
-
-msgid "Not yet functional, currently does nothing"
-msgstr "Je¹tì nebylo implementováno, zatím nic nedìlá"
-
 msgid "Translation Options"
 msgstr "Mo¾nosti pøekladu"
 
@@ -3571,21 +3821,30 @@ msgid ""
 msgstr ""
 "Který pøekladaè mám pou¾ít v pøípadì ¾e dostanete zprávu v cizím jazyce? "
 
-#, c-format
+#, php-format
 msgid "%s to %s"
 msgstr "z %s do %s"
+
+msgid "Chinese, Simplified"
+msgstr ""
 
 msgid "English"
 msgstr "Angliètina"
 
-msgid "Chinese"
-msgstr "Èín¹tina"
+msgid "Chinese, Traditional"
+msgstr ""
+
+msgid "Dutch"
+msgstr "Holand¹tina"
 
 msgid "French"
 msgstr "Francouz¹tina"
 
 msgid "German"
 msgstr "Nìmèina"
+
+msgid "Greek"
+msgstr "Øeètina"
 
 msgid "Italian"
 msgstr "Ital¹tina"
@@ -3599,11 +3858,11 @@ msgstr "Korej¹tina"
 msgid "Portuguese"
 msgstr "Portugal¹tina"
 
-msgid "Spanish"
-msgstr "©panìl¹tina"
-
 msgid "Russian"
 msgstr "Ru¹tina"
+
+msgid "Spanish"
+msgstr "©panìl¹tina"
 
 msgid "Translate"
 msgstr "Pøelo¾it"
@@ -3623,23 +3882,20 @@ msgstr "Èe¹tina"
 msgid "Danish"
 msgstr "Dán¹tina"
 
-msgid "Dutch"
-msgstr "Holand¹tina"
-
-msgid "European Spanish"
-msgstr "Evropská ¹panìl¹tina"
+msgid "Filipino (Tagalog)"
+msgstr ""
 
 msgid "Finnish"
 msgstr "Fin¹tina"
-
-msgid "Greek"
-msgstr "Øeètina"
 
 msgid "Hungarian"
 msgstr "Maïar¹tina"
 
 msgid "Icelandic"
 msgstr "Island¹tina"
+
+msgid "Latin"
+msgstr "Latina"
 
 msgid "Latin American Spanish"
 msgstr "Latinsko-americká ¹panìl¹tina"
@@ -3671,9 +3927,6 @@ msgstr "Vel¹tina"
 msgid "Indonesian"
 msgstr "Indonéz¹tina"
 
-msgid "Latin"
-msgstr "Latina"
-
 msgid "to English"
 msgstr "do Angliètiny"
 
@@ -3688,20 +3941,971 @@ msgstr "Implicitní jazyk"
 msgid "Translation direction"
 msgstr "Mo¾nosti pøekladu"
 
+#, fuzzy, php-format
+msgid "About SquirrelMail %s"
+msgstr "SquirrelMail verze %s"
+
+msgid ""
+"SquirrelMail is the name of the program that provides access to your email "
+"via the web."
+msgstr ""
+
+#, php-format
+msgid ""
+"If you have questions about or problems with your mail account, passwords, "
+"abuse etc, please refer to your system administrator or provider%s."
+msgstr ""
+
+#, php-format
+msgid ""
+"They can assist you adequately with these issues. The SquirrelMail Project "
+"Team cannot help you with that. The %shelp system%s provides answers to "
+"frequently asked questions."
+msgstr ""
+
+#, php-format
+msgid ""
+"SquirrelMail is a feature rich, standards compliant webmail application "
+"written in PHP. It was made by a group of volunteers united in the "
+"SquirrelMail Project Team and is released as open source, free software "
+"under the %sGNU General Public License%s."
+msgstr ""
+
+#, php-format
+msgid ""
+"For more information about SquirrelMail and the SquirrelMail Project Team, "
+"see %sthe SquirrelMail website%s."
+msgstr ""
+
+#, fuzzy
+msgid "System information"
+msgstr "Informace o IMAP serveru"
+
+#, fuzzy, php-format
+msgid "You are using SquirrelMail version: %s"
+msgstr "SquirrelMail verze %s"
+
+msgid "The administrator installed the following plugins:"
+msgstr ""
+
+msgid "none installed"
+msgstr ""
+
+msgid "sort by nickname"
+msgstr ""
+
+#, fuzzy
+msgid "sort by name"
+msgstr "Pøíjmení"
+
+msgid "sort by email"
+msgstr ""
+
+msgid "sort by info"
+msgstr ""
+
+#, fuzzy
+msgid "Add to address book"
+msgstr "Pøidat do adresáøe"
+
+msgid ""
+"Because PHP file uploads are turned off, you can not attach files to this "
+"message. Please see your system administrator for details."
+msgstr ""
+
+#, fuzzy
+msgid "No folders were found to unsubscribe from."
+msgstr "Nebyly nalezeny ¾ádné slo¾ky, ze kterých se lze odhlásit!"
+
+#, fuzzy
+msgid "No folders were found to subscribe to."
+msgstr "Nebyly nalezeny ¾ádné slo¾ky k pøihlá¹ení"
+
+msgid "Last Refresh"
+msgstr "Poslední zobrazení"
+
+#, fuzzy
+msgid "Check mail"
+msgstr "Kontrolovat novou po¹tu pøi pøihlá¹ení"
+
+msgid "Save folder tree"
+msgstr "Ulo¾it strom slo¾ek"
+
+#, fuzzy
+msgid "SquirrelMail Webmail Application"
+msgstr "SquirrelMail verze %s"
+
+#, fuzzy
+msgid "Compose Preferences"
+msgstr "Slo¾ky - mo¾nosti"
+
+msgid ""
+"Control the behaviour and layout of writing new mail messages, replying to "
+"and forwarding messages."
+msgstr ""
+
+#, fuzzy
+msgid "Received"
+msgstr "Doruèenka"
+
+#, fuzzy
+msgid "As Attachment"
+msgstr "Pøílohy"
+
+msgid "Bypass Trash"
+msgstr ""
+
+msgid "Please enter something to search for"
+msgstr ""
+
+msgid "There must be at least one criteria to search for"
+msgstr ""
+
+#, fuzzy
+msgid "Error in criteria argument"
+msgstr "Chyba syntaxe v parametrech nebo argumentech"
+
+msgid "(Illegal date)"
+msgstr ""
+
+msgid "(Wrong date)"
+msgstr ""
+
+#, fuzzy
+msgid "In"
+msgstr "Informace"
+
+msgid "(Missing argument)"
+msgstr ""
+
+msgid "(Spurious argument)"
+msgstr ""
+
+#, fuzzy
+msgid "Fold"
+msgstr "Slo¾ky"
+
+#, fuzzy
+msgid "Unfold"
+msgstr "Informace"
+
+#, fuzzy
+msgid "Saved Searches"
+msgstr "Poslední hledání"
+
+msgid "Missing"
+msgstr ""
+
+msgid "and&nbsp;subfolders:"
+msgstr ""
+
+msgid "Exclude Criteria:"
+msgstr ""
+
+#, fuzzy
+msgid "Search Criteria"
+msgstr "Hledat"
+
+#, fuzzy
+msgid "Add New Criteria"
+msgstr "Pøidat server"
+
+msgid "Remove Excluded Criteria"
+msgstr ""
+
+msgid "Remove All Criteria"
+msgstr ""
+
+#, fuzzy
+msgid "Not"
+msgstr "Poznámka"
+
+msgid "Answered"
+msgstr ""
+
+#, fuzzy
+msgid "Before"
+msgstr "zapomenout"
+
+#, fuzzy
+msgid "Message Body"
+msgstr "Zpráva "
+
+#, fuzzy
+msgid "Deleted"
+msgstr "Odstranit"
+
+#, fuzzy
+msgid "Draft"
+msgstr "Ulo¾it Koncept"
+
+#, fuzzy
+msgid "Flagged"
+msgstr "Pøíznaky zprávy"
+
+#, fuzzy
+msgid "Sent By"
+msgstr "Odeslána:"
+
+#, fuzzy
+msgid "Header Field"
+msgstr "Hlavièka"
+
+msgid "Keyword"
+msgstr ""
+
+msgid "Larger Than"
+msgstr ""
+
+msgid "Old"
+msgstr ""
+
+msgid "On"
+msgstr ""
+
+#, fuzzy
+msgid "Recent"
+msgstr "Doruèenka"
+
+#, fuzzy
+msgid "Seen"
+msgstr "Odeslat"
+
+#, fuzzy
+msgid "Sent Before"
+msgstr "Slo¾ka Odeslaná po¹ta"
+
+#, fuzzy
+msgid "Sent On"
+msgstr "Odeslána:"
+
+msgid "Sent Since"
+msgstr ""
+
+#, fuzzy
+msgid "Since"
+msgstr "Velikost"
+
+msgid "Smaller Than"
+msgstr ""
+
+#, fuzzy
+msgid "Subject Contains"
+msgstr "Obsahuje:"
+
+msgid "Header and Body"
+msgstr ""
+
+#, fuzzy
+msgid "Sent To"
+msgstr "Slo¾ka Odeslaná po¹ta"
+
+msgid "And In"
+msgstr ""
+
+msgid "Or In"
+msgstr ""
+
+#, fuzzy
+msgid "And"
+msgstr "Pøilo¾it"
+
+msgid "Or"
+msgstr ""
+
+msgid "Standard search"
+msgstr ""
+
+msgid "Advanced search"
+msgstr ""
+
+#, fuzzy
+msgid "Folder List"
+msgstr "Slo¾ky"
+
+msgid "PHP install does not have LDAP support."
+msgstr ""
+
+msgid "Click here to change the sorting of the address list"
+msgstr ""
+
+msgid "Illegal folder name."
+msgstr ""
+
+#, php-format
+msgid "The name may not contain any of the following: %s"
+msgstr ""
+
+#, fuzzy
+msgid "Please select a different name."
+msgstr "Neplatný název slo¾ky. Vyberte prosím jiný název."
+
+#, fuzzy
+msgid "You have not selected a folder to subscribe. Please do so."
+msgstr "Neoznaèil jste slo¾ku k pøejmenování."
+
+#, fuzzy
+msgid "You have not selected a folder to unsubscribe. Please do so."
+msgstr "Neoznaèil jste slo¾ku k pøejmenování."
+
+msgid "Possible reason:"
+msgstr ""
+
+msgid "ERROR: Bad function call."
+msgstr ""
+
+#, fuzzy
+msgid "Reason:"
+msgstr "Odpovìï:"
+
+msgid ""
+"TLS is enabled, but this version of PHP does not support TLS sockets, or is "
+"missing the openssl extension."
+msgstr ""
+
+msgid ""
+"Your mailbox is not located at this server. Try a different server or "
+"consult your system administrator"
+msgstr ""
+
+#, fuzzy
+msgid "Unknown recipient"
+msgstr "Neznámá odpovìï"
+
+msgid "Unflag"
+msgstr ""
+
+#, fuzzy
+msgid "Flag"
+msgstr "Pøíznaky zprávy"
+
+#, fuzzy
+msgid "Undelete"
+msgstr "odstranit"
+
+#, fuzzy
+msgid "General Message Composition"
+msgstr "Zobrazení a psaní zpráv"
+
+#, fuzzy
+msgid "Replying and Forwarding Messages"
+msgstr "Pøi pøedávání dál zahrnout i adresy v polo¾ce kopie"
+
+#, fuzzy
+msgid "Strip signature when replying"
+msgstr "Zaèít Odpovídání v"
+
+msgid "Enable Fancy Row Mouseover Highlighting"
+msgstr ""
+
+msgid "Message Flags Icon Theme"
+msgstr ""
+
+msgid "Show Flag / Unflag Buttons"
+msgstr ""
+
+#, fuzzy
+msgid "Use Compact Page Selector"
+msgstr "Zapnout Stránkovaè"
+
+msgid "Length of From/To Field (0 for full)"
+msgstr ""
+
+msgid "Length of Subject Field (0 for full)"
+msgstr ""
+
+#, fuzzy
+msgid "Message Display Options"
+msgstr "Obecné volby zobrazení"
+
+msgid "Show 'Delete & Prev/Next' Links"
+msgstr ""
+
+#, fuzzy
+msgid "Save Replies with Original Message"
+msgstr "Pùvodní zpráva"
+
+#, fuzzy, php-format
+msgid "%d Minute"
+msgid_plural "%d Minutes"
+msgstr[0] "Minuta"
+msgstr[1] "Minuta"
+
+msgid "Show only subscribed folders"
+msgstr ""
+
+msgid "XP"
+msgstr ""
+
+#, fuzzy
+msgid "Hide SquirrelMail Header"
+msgstr "Zobrazit celou hlavièku"
+
+#, fuzzy
+msgid "Search functions"
+msgstr "Hledat"
+
+msgid "Only basic search"
+msgstr ""
+
+msgid "Only advanced search"
+msgstr ""
+
+msgid "Both search functions"
+msgstr ""
+
+msgid "Show alternative language names"
+msgstr ""
+
+msgid "Available languages"
+msgstr ""
+
+#, fuzzy
+msgid "Enable aggressive decoding"
+msgstr "Zapnout Stránkovaè"
+
+msgid "Tweaks"
+msgstr ""
+
+msgid "Use advanced tree folder listing"
+msgstr ""
+
+#, fuzzy
+msgid "Use icons"
+msgstr "Sekund"
+
+msgid "Use PHP recode functions"
+msgstr ""
+
+msgid "Use PHP iconv functions"
+msgstr ""
+
+msgid "Allow remote configuration test"
+msgstr ""
+
+msgid "Show System Specifications"
+msgstr ""
+
+#, fuzzy
+msgid "Search Mailing List Archives"
+msgstr "Seznam archívù"
+
+msgid "Search SourceForge Bugtracker"
+msgstr ""
+
+#, fuzzy
+msgid "Search for words:"
+msgstr "Hledat"
+
+msgid "Written by:"
+msgstr ""
+
+#, fuzzy
+msgid "Email addresses only"
+msgstr "E-mailová adresa"
+
+#, fuzzy
+msgid "Mailing list:"
+msgstr "Diskusní skupina"
+
+#, fuzzy
+msgid "SquirrelMail users list"
+msgstr "SquirrelMail verze %s"
+
+#, fuzzy
+msgid "SquirrelMail plugins list"
+msgstr "SquirrelMail verze %s"
+
+#, fuzzy
+msgid "SquirrelMail developers list"
+msgstr "SquirrelMail verze %s"
+
+#, fuzzy
+msgid "SquirrelMail internationalization list"
+msgstr "SquirrelMail verze %s"
+
+#, fuzzy
+msgid "Sort by:"
+msgstr "Port:"
+
+msgid "Relevance"
+msgstr ""
+
+#, fuzzy
+msgid "Search Archives"
+msgstr "Výsledky hledání"
+
+#, fuzzy
+msgid "Reset Form"
+msgstr "Odstranit slo¾ku"
+
+msgid "Summary keyword:"
+msgstr ""
+
+#, fuzzy
+msgid "Sort By:"
+msgstr "Port:"
+
+msgid "ID"
+msgstr ""
+
+#, fuzzy
+msgid "Summary"
+msgstr "Nedìle"
+
+#, fuzzy
+msgid "Open Date"
+msgstr "Otevírání probìhlo neúspì¹nì"
+
+#, fuzzy
+msgid "Close Date"
+msgstr "Zavøít"
+
+#, fuzzy
+msgid "Submitter"
+msgstr "Odeslat"
+
+msgid "Assignee"
+msgstr ""
+
+#, fuzzy
+msgid "Order:"
+msgstr "Jiná:"
+
+msgid "Ascending"
+msgstr ""
+
+msgid "Descending"
+msgstr ""
+
+msgid "Search Bugtracker"
+msgstr ""
+
+msgid "You must type in a new password."
+msgstr ""
+
+msgid "You must also type in your new password in the verify box."
+msgstr ""
+
+msgid "Your new password does not match the verify password."
+msgstr ""
+
+msgid "You must type in your current password."
+msgstr ""
+
+#, fuzzy
+msgid "Your current password is not correct."
+msgstr "Neznámý u¾ivatel nebo neplatné heslo"
+
+#, php-format
+msgid "Your new password should be %s to %s characters long."
+msgstr ""
+
+#, fuzzy
+msgid "Your new password contains invalid characters."
+msgstr "Pøezdívka obsahuje nedovolené znaky"
+
+#, fuzzy
+msgid "Change Password"
+msgstr "Zmìnit toto slovo"
+
+#, fuzzy
+msgid "Current Password:"
+msgstr "Heslo:"
+
+#, fuzzy
+msgid "New Password:"
+msgstr "Heslo:"
+
+#, fuzzy
+msgid "Verify New Password:"
+msgstr "Heslo:"
+
+msgid "Use this to change your email password."
+msgstr ""
+
+#, fuzzy
+msgid "User's Password"
+msgstr "Heslo:"
+
+msgid "Current configuration requires LDAP support in PHP."
+msgstr ""
+
+msgid "Plugin is not configured correctly."
+msgstr ""
+
+#, php-format
+msgid "Setting of LDAP connection option %s to value %s failed."
+msgstr ""
+
+#, php-format
+msgid "Incorrect LDAP connection option: %s"
+msgstr ""
+
+msgid ""
+"Current PHP LDAP extension does not allow use of ldap_set_option() function."
+msgstr ""
+
+#, fuzzy
+msgid "Unable to use TLS."
+msgstr "Aktualizace nebyla mo¾ná"
+
+#, fuzzy, php-format
+msgid "Error: %s"
+msgstr "Chyba "
+
+msgid "Unable to use LDAP TLS in current setup."
+msgstr ""
+
+msgid "Unable to bind to LDAP server."
+msgstr ""
+
+#, fuzzy, php-format
+msgid "Server replied: %s"
+msgstr "Odpovìï serveru: "
+
+msgid "Unable to find user's password attribute."
+msgstr ""
+
+msgid "Unable to rebind to LDAP server."
+msgstr ""
+
+msgid "LDAP server uses different attribute to store user's password."
+msgstr ""
+
+#, fuzzy
+msgid "Unable to connect to LDAP server."
+msgstr "Nejste pøipojeni k serveru"
+
+msgid "Unable to find user's DN."
+msgstr ""
+
+#, fuzzy
+msgid "Search error."
+msgstr "Hledat"
+
+msgid "Multiple userid matches found."
+msgstr ""
+
+msgid "ldap_get_dn error."
+msgstr ""
+
+#, php-format
+msgid "Unsupported crypto: %s"
+msgstr ""
+
+msgid "PHP mhash extension is missing."
+msgstr ""
+
+msgid "System crypt library doesn't support standard DES crypt."
+msgstr ""
+
+msgid "System crypt library doesn't have MD5 support."
+msgstr ""
+
+msgid "System crypt library doesn't support extended DES crypt."
+msgstr ""
+
+msgid "System crypt library doesn't have Blowfish support."
+msgstr ""
+
+#, fuzzy
+msgid "unknown"
+msgstr "Neznámé datum"
+
+msgid "Unable to validate user's password."
+msgstr ""
+
+msgid "Blowfish is not supported by webserver's system crypt library."
+msgstr ""
+
+msgid "MD5 is not supported by webserver's system crypt library."
+msgstr ""
+
+msgid ""
+"Extended DES crypt is not supported by webserver's system crypt library."
+msgstr ""
+
+msgid ""
+"Standard DES crypt is not supported by webserver's system crypt library."
+msgstr ""
+
+msgid "PHP Curl extension is NOT available! Unable to change password!"
+msgstr ""
+
+msgid "Cannot change password! (Is user 'Self Configurable User' ?) (401)"
+msgstr ""
+
+#, fuzzy
+msgid "Cannot change password!"
+msgstr "Zmìnit toto slovo"
+
+msgid "Cannot connect to Database Server, please try later!"
+msgstr ""
+
+msgid "Database not found on server"
+msgstr ""
+
+msgid "SQL call failed, try again later."
+msgstr ""
+
+msgid "Duplicate login entries detected, cannot change password!"
+msgstr ""
+
+msgid "Password change was not successful!"
+msgstr ""
+
+msgid "Closing Connection"
+msgstr ""
+
+#, fuzzy
+msgid "Connecting to Password Server"
+msgstr "Nejste pøipojeni k serveru"
+
+msgid "No valid backend defined."
+msgstr ""
+
+msgid "Incorrent path to vmail.inc file."
+msgstr ""
+
+msgid "Invalid or corrupted vmail.inc file."
+msgstr ""
+
+msgid "Invalid user."
+msgstr ""
+
+#, fuzzy
+msgid "Empty domain"
+msgstr "Prázdný pøíkaz"
+
+#, fuzzy
+msgid "Empty domain password"
+msgstr "Prázdný pøíkaz"
+
+#, fuzzy
+msgid "Empty username"
+msgstr "U¾ivatelské jméno:"
+
+msgid "Empty new password"
+msgstr ""
+
+#, fuzzy
+msgid "Server Capability response:"
+msgstr "Odpovìï serveru: "
+
+msgid ""
+"Select the IMAP commands you would like to run. Most commands require a "
+"selected mailbox so the select command is already setup. You can clear all "
+"the commands and test your own IMAP command strings. The commands are "
+"executed in order. The default values are simple IMAP commands using your "
+"default_charset and folder_prefix from SquirrelMail when needed."
+msgstr ""
+
+msgid ""
+"NOTE: These commands are live, any changes made will effect your current "
+"email account."
+msgstr ""
+
+#, fuzzy
+msgid "Select"
+msgstr "Oznaèit v¹e"
+
+#, fuzzy
+msgid "Test Name"
+msgstr "Název schéma"
+
+#, fuzzy
+msgid "IMAP command string"
+msgstr "Prázdný pøíkaz"
+
+#, fuzzy
+msgid "Request:"
+msgstr "vy¾adována"
+
+#, fuzzy
+msgid "No POP3 servers configured yet."
+msgstr "Nebyl specifikován ¾ádný server"
+
+#, fuzzy
+msgid "Click here to go to the options page."
+msgstr "Pro nové pøihlá¹ení kliknìte zde "
+
+#, fuzzy, php-format
+msgid "Login OK: Inbox contains %s message"
+msgid_plural "Login OK: Inbox contains %s messages"
+msgstr[0] "Pøihlá¹eni se zdaøilo. Slo¾ka doruèené po¹ty obsahuje ["
+msgstr[1] "Pøihlá¹eni se zdaøilo. Slo¾ka doruèené po¹ty obsahuje ["
+
+#, fuzzy
+msgid "Width of popup window:"
+msgstr "©íøka okna pro novou zprávu"
+
+msgid "If set to 0, reverts to default value"
+msgstr ""
+
+#, fuzzy
+msgid "Height of popup window:"
+msgstr "Vý¹ka okna pro novou zprávu"
+
+#, fuzzy
+msgid "uploaded media file"
+msgstr "Soubor na va¹em poèítaèi:"
+
+#, fuzzy
+msgid "none"
+msgstr "(nic)"
+
+#, fuzzy
+msgid "Upload Media File:"
+msgstr "Soubor na va¹em poèítaèi:"
+
+#, fuzzy
+msgid "Uploaded Media File:"
+msgstr "Soubor na va¹em poèítaèi:"
+
+#, fuzzy
+msgid "unavailable"
+msgstr "Není k dispozici"
+
+#, php-format
+msgid "Media file %s will be removed, if you upload other media file."
+msgstr ""
+
+#, fuzzy
+msgid "Spam Service Type:"
+msgstr "Typ IMAP serveru"
+
+#, fuzzy
+msgid "Free reporting"
+msgstr "Fitrování nevy¾ádané po¹ty"
+
+msgid "Member services"
+msgstr ""
+
+#, fuzzy
+msgid "Save Service Type"
+msgstr "Výbìr ulo¾en"
+
+#, fuzzy
+msgid "SpamCop reporting"
+msgstr "Fitrování nevy¾ádané po¹ty"
+
+#, fuzzy
+msgid "Translation Theme:"
+msgstr "Mo¾nosti pøekladu"
+
+msgid ""
+"Selected translation engine is disabled. Please update your translation "
+"preferences."
+msgstr ""
+
+#, fuzzy
+msgid "Translation Preferences"
+msgstr "Nastavení organizace"
+
+#, fuzzy
+msgid "Maximum of 25 kilobytes translated, powered by Systran"
+msgstr "10 jazykových párù, maximálnì 25KB k pøekladu, vyu¾ívá slu¾by Systran"
+
+#, fuzzy
+msgid "No known limits, powered by GPLTrans (free, open source)"
+msgstr "8 jazykových páru, bez známých omezení, vyu¾ívá slu¾by GPLTrans"
+
+msgid "Transliterate unknown words:"
+msgstr ""
+
+msgid "When composing:"
+msgstr "Pøi psaní"
+
+msgid "Not yet functional, currently does nothing"
+msgstr "Je¹tì nebylo implementováno, zatím nic nedìlá"
+
 msgid "Delivery error report"
 msgstr "Zpráva o chybì"
 
 msgid "Undelivered Message Headers"
 msgstr "Hlavièky nedoruèených zpráv"
 
+msgid "This image has been removed for security reasons"
+msgstr ""
+
+#~ msgid "Unknown error"
+#~ msgstr "Neznámá chyba"
+
+# squirrelmail/src/compose.php:572?
+#~ msgid "said"
+#~ msgstr "napsal(a)"
+
+#~ msgid "To:"
+#~ msgstr "Komu:"
+
+#~ msgid "CC:"
+#~ msgstr "Kopie:"
+
+#~ msgid "BCC:"
+#~ msgstr "Skrytá kopie:"
+
+#~ msgid "Subject:"
+#~ msgstr "Pøedmìt:"
+
+#~ msgid "CC"
+#~ msgstr "Kopie"
+
+#~ msgid "Business Card"
+#~ msgstr "Visitka"
+
+#~ msgid "Click here to try again"
+#~ msgstr "Pro dal¹í pokus kliknìte zde"
+
+#~ msgid "You are currently using version %s."
+#~ msgstr "Právì pou¾íváte verzi %s."
+
+#~ msgid "All Messages"
+#~ msgstr "V¹echny zprávy"
+
+#~ msgid "] messages"
+#~ msgstr "zpráv"
+
+#~ msgid "No-one server in use. Try to add."
+#~ msgstr "Nepou¾íváte ¾ádný server. Zkuste nìjaký pøidat."
+
+#~ msgid "Hey! Wath do You are looking for?"
+#~ msgstr "Co tu hleá¹?"
+
+#~ msgid "You have"
+#~ msgstr "Nové zprávy"
+
+#~ msgid "New Mail Notification options saved"
+#~ msgstr "Nové nastavení bylo ulo¾eno"
+
+#~ msgid ""
+#~ "<p>Your personal dictionary is <strong>currently encrypted</strong>. This "
+#~ "helps protect your privacy in case the web-mail system gets compromized "
+#~ "and your personal dictionary ends up stolen. It is currently encrypted "
+#~ "with the password you use to access your mailbox, making it hard for "
+#~ "anyone to see what is stored in your personal dictionary.</p> "
+#~ "<p><strong>ATTENTION:</strong> If you forget your password, your personal "
+#~ "dictionary will become unaccessible, since it can no longer be decrypted. "
+#~ "If you change your mailbox password, SquirrelSpell will recognize it and "
+#~ "prompt you for your old password in order to re-encrypt the dictionary "
+#~ "with a new key.</p>"
+#~ msgstr ""
+#~ "<p>Vá¹ osobní slovník je nyní za¹ifrován. <strong>POZOR:</strong> Pokud "
+#~ "zapomenete va¹e heslo, nebude mo¾né slovník ¾ádným zpùsobem roz¹ifrovat a "
+#~ "tak se stane nepou¾itelným. Pokud si zmìníte heslo do va¹í schránky "
+#~ "SquirrelMail to pozná a umo¾ní vám slovník znovu za¹ifrovat heslem novým "
+
+#~ msgid "Chinese"
+#~ msgstr "Èín¹tina"
+
+#~ msgid "European Spanish"
+#~ msgstr "Evropská ¹panìl¹tina"
+
 #~ msgid "Draft folder"
 #~ msgstr "Slo¾ka Konceptù"
 
 #~ msgid "refresh unseen/total info"
 #~ msgstr "Obnovit Nepøeètené/Celkem"
-
-#~ msgid "Use Confirmation Flags"
-#~ msgstr "Pou¾ívat pøíznak ovìøení"
 
 #~ msgid ""
 #~ "FREE - Osirusoft Relays - Osirusofts list of verified open relays. Seems "
@@ -3780,14 +4984,6 @@ msgstr "Hlavièky nedoruèených zpráv"
 
 #~ msgid "(local media)"
 #~ msgstr "(soubor na va¹em poèítaèi)"
-
-#~ msgid "Local Media File:"
-#~ msgstr "Soubor na va¹em poèítaèi:"
-
-#~ msgid ""
-#~ "10 language pairs, maximum of 25 kilobytes translated, powered by Systran"
-#~ msgstr ""
-#~ "10 jazykových párù, maximálnì 25KB k pøekladu, vyu¾ívá slu¾by Systran"
 
 #~ msgid "Viewing a message attachment"
 #~ msgstr "Náhled pøilo¾eného souboru"
