@@ -266,4 +266,33 @@ SquirrelMail versions tries to avoid this error.
 <p>
 FreeBSD requires full locale name.
 
+<sect>OS Specific problems
+<sect1>GNU/Debian
+<p>
+Debian does not enable any system locales by default. You must enable
+appropriate locales in <tt>dpkg-reconfigure locales</tt>. Gettext 
+translations don't work on glibc systems when system locale is not 
+available.
+
+<sect1>Solaris with Sun gettext libraries
+<p>
+Sun gettext libraries use locale name set in successful php setlocale() 
+function call. SquirrelMail 1.4.3a and later versions use locale
+name with charset information and stores locales in directories without 
+charset information. You must rename directories and include charset 
+information in it or create symbolic links with charset information or
+disable all $langauges[xx_XX]['LOCALE'] code in functions/i18n.php or
+recompile php to use GNU Gettext libraries.
+
+<sect1>Solaris with GNU gettext libraries
+<p>
+You must set language environtment variables in order to use translations.
+SquirrelMail does not set them when php is running is safe mode.
+
+<sect1>OpenBSD
+<p>
+You must set language environtment variables in order to use translations.
+SquirrelMail does not set them when php is running is safe mode.
+
+
 </article>
