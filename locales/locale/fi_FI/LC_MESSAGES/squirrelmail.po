@@ -1,18 +1,18 @@
 # Finnish SquirrelMail Translation
 # Copyright (c) 1999-2002 The Squirrelmail Development Team
 # Teemu Junnila <teejun@vallcom.com>, 2002.
-# Jaakko Heusala <Jaakko.Heusala@kapsi.fi>
+# Jaakko Heusala <jaakko.heusala@kapsi.fi>, 2004.
+# Juha Ojaniemi <juha.ojaniemi@netello.com>, 2005.
 # $Id$
 msgid ""
 msgstr ""
-"Project-Id-Version: squirrelmail 1.4.2\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2003-09-20 11:04+0300\n"
-"PO-Revision-Date: 2004-01-16 19:30+2\n"
-"Last-Translator: Jaakko Heusala <Jaakko.Heusala@kapsi.fi>\n"
+"Project-Id-Version: squirrelmail\n"
+"POT-Creation-Date: 2005-01-01 10:16+0200\n"
+"PO-Revision-Date: 2005-04-20 09:44+0200\n"
+"Last-Translator: Juha Ojaniemi <juha.ojaniemi@netello.com>\n"
 "Language-Team: Finnish <squirrelmail-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=iso-8859-15\n"
+"Content-Type: text/plain; charset=iso-8859-1\n"
 "Content-Transfer-Encoding: 8-bit\n"
 
 msgid "Address Book"
@@ -20,6 +20,12 @@ msgstr "Osoitekirja"
 
 msgid "All"
 msgstr "Kaikki"
+
+msgid "To"
+msgstr "Vastaanottaja"
+
+msgid "Cc"
+msgstr "Kopio (Cc)"
 
 msgid "Name"
 msgstr "Nimi"
@@ -32,12 +38,6 @@ msgstr "Tietoja"
 
 msgid "Source"
 msgstr "Lähde"
-
-msgid "To"
-msgstr "Vastaanottaja"
-
-msgid "Cc"
-msgstr "Kopio (Cc)"
 
 msgid "Bcc"
 msgstr "Piilokopio (Bcc)"
@@ -65,12 +65,13 @@ msgstr "Näytä kaikki"
 
 #, c-format
 msgid "Unable to list addresses from %s"
-msgstr "Osoitteita ei löytynyt: %s"
+msgstr "Osoitteita ei löytynyt %s:sta"
 
 msgid "Your search failed with the following error(s)"
 msgstr "Hakusi epäonnistui seuraavin virheilmoituksin"
 
-msgid "No persons matching your search was found"
+#, fuzzy
+msgid "No persons matching your search were found"
 msgstr "Ketään hakemaasi ei löytynyt"
 
 msgid "Return"
@@ -83,7 +84,7 @@ msgid "Nickname"
 msgstr "Lempinimi"
 
 msgid "Must be unique"
-msgstr "Täytyy olla ainutlaatuinen"
+msgstr "Täytyy olla ainutkertainen"
 
 msgid "E-mail address"
 msgstr "Sähköpostiosoite"
@@ -97,8 +98,12 @@ msgstr "Etunimi"
 msgid "Additional info"
 msgstr "Lisätietoja"
 
+#, fuzzy
+msgid "Add to:"
+msgstr "Lisää kohteeseen (%s)"
+
 msgid "No personal address book is defined. Contact administrator."
-msgstr "Osoitekirjaa ei löydy. Ota yhteys Administraattoriin."
+msgstr "Osoitekirjaa ei löydy. Ota yhteys käyttötukeesi."
 
 msgid "You can only edit one address at the time"
 msgstr "Osoitteita voi muokata vain yksi kerrallaan"
@@ -123,7 +128,7 @@ msgstr "Poista valitut"
 
 #, c-format
 msgid "Add to %s"
-msgstr "Lisää (%s)"
+msgstr "Lisää kohteeseen (%s)"
 
 msgid "said"
 msgstr "kirjoitti"
@@ -150,28 +155,18 @@ msgid "Draft Email Saved"
 msgstr "Luonnos Talletettu"
 
 msgid "Could not move/copy file. File not attached"
-msgstr "Tiedoston siirto/kopiointi epäonnistu. Tiedostoa ei liittetty viestiin"
+msgstr ""
+"Tiedoston siirto/kopiointi epäonnistui. Tiedostoa ei liittetty viestiin"
 
 msgid "Draft Saved"
 msgstr "Luonnos Talletettu"
 
-msgid "Your Message has been sent"
-msgstr "Viesti lähetetty"
+#, fuzzy
+msgid "Your Message has been sent."
+msgstr "Viestisi on lähetetty"
 
 msgid "From:"
 msgstr "Lähettäjä:"
-
-msgid "To:"
-msgstr "Vastaanottaja:"
-
-msgid "CC:"
-msgstr "Kopio (CC):"
-
-msgid "BCC:"
-msgstr "Piilokopio (BCC):"
-
-msgid "Subject:"
-msgstr "Aihe:"
 
 msgid "Send"
 msgstr "Lähetä"
@@ -180,7 +175,7 @@ msgid "Attach:"
 msgstr "Liite:"
 
 msgid "Add"
-msgstr "Lisää liite"
+msgstr "Lisää"
 
 msgid "Delete selected attachments"
 msgstr "Poista valitut liitteet"
@@ -198,9 +193,8 @@ msgid "Low"
 msgstr "Alhainen"
 
 msgid "Receipt"
-msgstr "Kuitti"
+msgstr "Kuittaus"
 
-#, fuzzy
 msgid "On Read"
 msgstr "Luettaessa"
 
@@ -217,31 +211,31 @@ msgid "Save Draft"
 msgstr "Talleta Luonnos"
 
 msgid "You have not filled in the \"To:\" field."
-msgstr "Et ole valinnut Vastaanottajaa."
+msgstr "Et ole määrittänyt Vastaanottajaa (To:)."
 
-#, fuzzy
-msgid "Draft folder"
-msgstr "Luonnosten Kansio"
+#, fuzzy, c-format
+msgid "Error: Draft folder %s does not exist."
+msgstr "Käyttäjää '%s' ei ole olemassa"
 
 #, fuzzy
 msgid "Server replied: "
 msgstr "Palvelin vastasi: "
 
-msgid "Illegal folder name.  Please select a different name."
-msgstr "Epäkelpo nimi kansiolle. Ole hyvä ja valitse joku toinen nimi."
+msgid "Illegal folder name. Please select a different name."
+msgstr "Virheellinen nimi kansiolle. Ole hyvä ja valitse jokin toinen nimi."
 
 msgid "Click here to go back"
 msgstr "Klikkaa tästä päästäksesi takaisin"
 
 msgid "You have not selected a folder to delete. Please do so."
-msgstr ""
+msgstr "Et ole valinnut poistettavaa kansiota. Ole hyvä ja valitse."
 
 msgid "Delete Folder"
 msgstr "Poista Kansio"
 
 #, fuzzy, c-format
 msgid "Are you sure you want to delete %s?"
-msgstr "Haluatko varmasti poistaa tämän tapahtuman?"
+msgstr "Haluatko varmasti poistaa %s:n?"
 
 msgid "Yes"
 msgstr "Kyllä"
@@ -268,19 +262,19 @@ msgid "Renamed successfully!"
 msgstr "Nimi vaihdettu!"
 
 msgid "Subscription Unsuccessful - Folder does not exist."
-msgstr ""
+msgstr "Käyttöönotto epäonnistui - Kansiota ei ole."
 
 msgid "refresh folder list"
-msgstr "päivitä lista"
+msgstr "päivitä kansioluettelo"
 
 msgid "Create Folder"
 msgstr "Luo Kansio"
 
 msgid "as a subfolder of"
-msgstr "alikansiona seuraavalle: "
+msgstr "alikansiona kansiolle"
 
 msgid "None"
-msgstr "----"
+msgstr "Ei mikään"
 
 msgid "Let this folder contain subfolders"
 msgstr "Tämä kansio voi sisältää alikansioita"
@@ -289,11 +283,11 @@ msgid "Create"
 msgstr "Luo"
 
 msgid "Rename a Folder"
-msgstr "Muuta Kansion nimeä"
+msgstr "Muuta kansion nimeä"
 
 #, fuzzy
 msgid "Select a folder"
-msgstr "Muuta kansion nimi"
+msgstr "Valitse kansio"
 
 msgid "Rename"
 msgstr "Muuta nimeä"
@@ -318,10 +312,10 @@ msgstr "Ei käyttöönotettavia kansioita!"
 
 #, fuzzy
 msgid "Subscribe to:"
-msgstr "Ota käyttöön"
+msgstr "Ota käyttöön:"
 
 msgid "You have not selected a folder to rename. Please do so."
-msgstr ""
+msgstr "Et ole valinnut kansiota, jonka nimi muutetaan. Ole hyvä ja valitse."
 
 msgid "Rename a folder"
 msgstr "Muuta kansion nimi"
@@ -333,20 +327,21 @@ msgid "Submit"
 msgstr "Aktivoi"
 
 msgid "ERROR: Help files are not in the right format!"
-msgstr ""
+msgstr "VIRHE: Ohjetiedostot ovat väärää muotoa!"
 
 msgid "Help"
-msgstr "Apua"
+msgstr "Ohje"
 
 #, c-format
 msgid ""
-"The help has not been translated to %s.  It will be displayed in English "
+"The help has not been translated to %s. It will be displayed in English "
 "instead."
 msgstr ""
-"Apua ei valitettavasti ole käännetty suomeksi. Apu näytetään englanniksi "
+"Ohjetta ei valitettavasti ole käännetty kielelle %s. Apu näytetään "
+"englanniksi "
 
 msgid "Some or all of the help documents are not present!"
-msgstr "Joku tai kaikki dokumentit puuttuvat!"
+msgstr "Joku tai kaikki ohjedokumentit puuttuvat!"
 
 msgid "Table of Contents"
 msgstr "Sisältö"
@@ -372,42 +367,41 @@ msgstr "Lataa tämä tiedostona"
 msgid "INBOX"
 msgstr "Saapuneet"
 
-#, fuzzy
-msgid "purge"
+msgid "Purge"
 msgstr "Siivoa"
 
 msgid "Last Refresh"
 msgstr "Viimeinen Päivitys"
 
-msgid "refresh unseen/total info"
-msgstr ""
+msgid "Check mail"
+msgstr "Päivitä"
 
 msgid "Save folder tree"
-msgstr ""
+msgstr "Tallenna kansiorakenne"
 
 msgid "Login"
 msgstr "Kirjaudu sisään"
 
 #, fuzzy, c-format
 msgid "%s Logo"
-msgstr "Kirjaudu sisään"
+msgstr "%s logo"
 
 #, c-format
 msgid "SquirrelMail version %s"
-msgstr "SquirrelMail versio %s"
+msgstr "SquirrelMail webmail versio %s"
 
 msgid "By the SquirrelMail Development Team"
 msgstr "SquirrelMailin kehitystiimiltä"
 
 #, c-format
 msgid "%s Login"
-msgstr "Kirjaudu sisään"
+msgstr "%s Kirjautuminen"
 
 msgid "Name:"
-msgstr "Nimi:"
+msgstr "Sähköpostitunnus:"
 
 msgid "Password:"
-msgstr "Tunnussana:"
+msgstr "Salasana:"
 
 msgid "No messages were selected."
 msgstr "Ei valittuja viestejä."
@@ -425,7 +419,7 @@ msgid "Done"
 msgstr "Valmis"
 
 msgid "To or Cc"
-msgstr "Vastaanottaja tai Kopionvastaanottaja"
+msgstr "Vastaanottaja (To) tai Kopionvastaanottaja (Cc)"
 
 #, fuzzy
 msgid "subject"
@@ -435,10 +429,10 @@ msgid "Edit"
 msgstr "Muokkaa"
 
 msgid "Up"
-msgstr "Ylöspäin"
+msgstr "Ylös"
 
 msgid "Down"
-msgstr "Alaspäin"
+msgstr "Alas"
 
 msgid "No highlighting is defined"
 msgstr "Merkintäesitystä ei ole määritelty"
@@ -502,16 +496,16 @@ msgstr "Täsmää"
 
 #, c-format
 msgid "Alternate Identity %d"
-msgstr "Vaihtoehtoinen informaatio %d"
+msgstr "Vaihtoehtoinen henkilöllisyys %d"
 
 msgid "Advanced Identities"
 msgstr "Henkilötietojen lisähallinta"
 
 msgid "Default Identity"
-msgstr "Henkilötiedot"
+msgstr "Henkilötiedot (oletus)"
 
 msgid "Add a New Identity"
-msgstr "Lisää uusi"
+msgstr "Lisää uusi henkilöllisyys"
 
 msgid "Full Name"
 msgstr "Koko Nimi"
@@ -526,16 +520,16 @@ msgid "Save / Update"
 msgstr "Talleta / Päivitä"
 
 msgid "Make Default"
-msgstr "Käytä tätä"
+msgstr "Käytä tätä oletuksena"
 
 msgid "Move Up"
-msgstr "Siirrä ylöspäin"
+msgstr "Siirrä ylös"
 
 msgid "Index Order"
-msgstr "Indeksijärjestys"
+msgstr "Sarakejärjestys"
 
 msgid "Checkbox"
-msgstr "Kontrolliruutu"
+msgstr "Rastitusruutu"
 
 msgid "Flags"
 msgstr "Liput"
@@ -545,11 +539,11 @@ msgstr "Koko"
 
 msgid ""
 "The index order is the order that the columns are arranged in the message "
-"index.  You can add, remove, and move columns around to customize them to "
-"fit your needs."
+"index. You can add, remove, and move columns around to customize them to fit "
+"your needs."
 msgstr ""
-"Indeksijärjestys on sarakkeiden esittämisjärjestys. Voit lisätä, poistaa ja "
-"siirtää sarakkeita tarpeen mukaan."
+"Sarakejärjestys on sarakkeiden esittämisjärjestys viestissä. Voit lisätä, "
+"poistaa ja siirtää sarakkeita tarpeen mukaan."
 
 msgid "up"
 msgstr "ylös"
@@ -584,7 +578,7 @@ msgstr "Päivitä Sivu"
 msgid ""
 "This contains personal information about yourself such as your name, your "
 "email address, etc."
-msgstr "Sisältää henkilötietoja, nimesi, epostiosoitteesi jne."
+msgstr "Sisältää henkilötietoja, kuten nimesi, sähköpostiosoitteesi jne."
 
 msgid ""
 "You can change the way that SquirrelMail looks and displays information to "
@@ -593,10 +587,10 @@ msgstr "Voit vaihtaa SquirrelMailin näytön värejä sekä kielen jne."
 
 msgid ""
 "Based upon given criteria, incoming messages can have different background "
-"colors in the message list.  This helps to easily distinguish who the "
+"colors in the message list. This helps to easily distinguish who the "
 "messages are from, especially for mailing lists."
 msgstr ""
-"Listatut viestit voidaan määritellä näytettäväksi erilaisin taustavärein. "
+"Viestit voidaan määritellä näytettäväksi luettelossa erilaisin taustavärein. "
 "Tämä helpottaa erottamaan esimerkiksi sen keneltä viesti on tullut. "
 "Erityisen sopiva viestilistojen yhteydessä"
 
@@ -610,14 +604,14 @@ msgid ""
 "The order of the message index can be rearranged and changed to contain the "
 "headers in any order you want."
 msgstr ""
-"Viestilista voidaan määritellä näyttämään otsikkotiedot halutussa "
+"Viestisarakkeet voidaan määritellä näyttämään otsaketiedot halutussa "
 "järjestyksessä."
 
 msgid "Message not printable"
 msgstr "Viestiä ei voida tulostaa"
 
-msgid "CC"
-msgstr "Kopio (CC):"
+msgid "Invalid URL"
+msgstr ""
 
 msgid "Printer Friendly"
 msgstr "Tulostusystävällinen"
@@ -626,7 +620,7 @@ msgid "Print"
 msgstr "Tulosta"
 
 msgid "View Printable Version"
-msgstr "Näytä Tulostettavassa Muodossa"
+msgstr "Näytä Tulostusversio"
 
 msgid "Read:"
 msgstr "Luettu:"
@@ -634,7 +628,8 @@ msgstr "Luettu:"
 msgid "Your message"
 msgstr "Viestisi"
 
-msgid "Sent:"
+#, fuzzy
+msgid "Sent"
 msgstr "Lähetetty:"
 
 #, c-format
@@ -645,7 +640,7 @@ msgid "less"
 msgstr "vähemmän"
 
 msgid "more"
-msgstr "lisää"
+msgstr "enemmän"
 
 #, fuzzy
 msgid "Unknown sender"
@@ -657,9 +652,8 @@ msgstr "Postittaja"
 msgid "Read receipt"
 msgstr "Lukukuitti"
 
-#, fuzzy
 msgid "sent"
-msgstr "lähetä"
+msgstr "lähetetty"
 
 msgid "requested"
 msgstr "pyydetään"
@@ -674,35 +668,33 @@ msgstr ""
 msgid "Send read receipt now"
 msgstr "Lähetä lukukuitti nyt"
 
-#, fuzzy
-msgid "Search results"
+msgid "Search Results"
 msgstr "Hakutulokset"
 
 msgid "Message List"
-msgstr "Viestilista"
+msgstr "Viestiluettelo"
 
 msgid "Resume Draft"
-msgstr "Palaa luonnoksen muokkaamiseen"
+msgstr "Jatka luonnoksen kirjoitusta"
 
 msgid "Edit Message as New"
-msgstr ""
+msgstr "Muokkaa viestiä uutena"
 
 #, fuzzy
 msgid "View Message"
 msgstr "Näytä viesti"
 
 msgid "Forward"
-msgstr "Edelleenlähetys"
+msgstr "Välitä"
 
-#, fuzzy
 msgid "Forward as Attachment"
-msgstr "Liitteet:"
+msgstr "Välitä liitteenä"
 
 msgid "Reply"
-msgstr "Vastaus"
+msgstr "Vastaa"
 
 msgid "Reply All"
-msgstr "Vastaus kaikille"
+msgstr "Vastaa kaikille"
 
 msgid "View Full Header"
 msgstr "Näytä kaikki otsaketiedot"
@@ -711,7 +703,7 @@ msgid "Attachments"
 msgstr "Liitteet:"
 
 msgid "You must be logged in to access this page."
-msgstr "Tarvitset voimassaolevan käyttäjätunnuksen ja salasanan!"
+msgstr "Tätä sivua voi tarkastella vasta kirjauduttuasi sisään."
 
 msgid "Folder:"
 msgstr "Kansio:"
@@ -725,9 +717,8 @@ msgstr "etsi"
 msgid "delete"
 msgstr "poista"
 
-#, fuzzy
 msgid "Recent Searches"
-msgstr "Tämänhetkinen Haku"
+msgstr "Aiemmat haut"
 
 msgid "save"
 msgstr "talleta"
@@ -747,23 +738,30 @@ msgstr "Viesti"
 msgid "Everywhere"
 msgstr "Kaikki kentät"
 
-msgid "Search Results"
-msgstr "Hakutulokset"
-
 msgid "No Messages Found"
-msgstr "Ei Viestejä"
+msgstr "Viestejä ei löytynyt"
+
+#, fuzzy
+msgid "Signout"
+msgstr "Kirjaudu ulos"
 
 msgid "Sign Out"
-msgstr "Poistu"
+msgstr "Kirjaudu ulos"
 
 msgid "You have been successfully signed out."
-msgstr "Olet poistunut systeemistä."
+msgstr "Olet kirjautunut ulos webmailista."
 
 msgid "Click here to log back in."
 msgstr "Klikkaa tästä kirjautuaksesi uudestaan sisään."
 
 msgid "Viewing a Business Card"
 msgstr "Näytössä Käyntikortti"
+
+#, c-format
+msgid ""
+"vCard Version %s is not supported. Some information might not be converted "
+"correctly."
+msgstr ""
 
 msgid "Title"
 msgstr "Otsikko:"
@@ -787,7 +785,7 @@ msgid "Home Phone"
 msgstr "Kotipuhelin"
 
 msgid "Cellular Phone"
-msgstr "Kännykkä"
+msgstr "Matkapuhelin"
 
 msgid "Fax"
 msgstr "Faksi"
@@ -801,11 +799,26 @@ msgstr "Lisää Osoitekirjaan"
 msgid "Title & Org. / Dept."
 msgstr "Titteli ja Organisaatio / Osasto"
 
+#, fuzzy
+msgid "Add to Address Book"
+msgstr "Lisää Osoitekirjaan"
+
 msgid "Viewing Full Header"
 msgstr "Näytössä kaikki otsaketiedot"
 
 msgid "Viewing a text attachment"
 msgstr "Näytössä tekstiliite"
+
+msgid ""
+"Could not include PEAR database functions required for the database backend."
+msgstr ""
+
+#, c-format
+msgid "Is PEAR installed, and is the include path set correctly to find %s?"
+msgstr ""
+
+msgid "Please contact your system administrator and report this error."
+msgstr "Ota yhteys käyttötukeesi, ilmoita tämä virhe."
 
 msgid "Personal address book"
 msgstr "Henkilökohtainen osoitekirja"
@@ -825,8 +838,8 @@ msgstr "Käyttäjä '%s' on jo olemassa"
 msgid "User '%s' does not exist"
 msgstr "Käyttäjää '%s' ei ole olemassa"
 
-msgid "Global address book"
-msgstr "Yleinen osoitekirja"
+msgid "Not a file name"
+msgstr "Virheellinen tiedostonimi"
 
 msgid "No such file or directory"
 msgstr "Tiedostoa tai hakemistoa ei ole olemassa"
@@ -834,19 +847,13 @@ msgstr "Tiedostoa tai hakemistoa ei ole olemassa"
 msgid "Open failed"
 msgstr "Avaus epäonnistui"
 
-msgid "Can not modify global address book"
-msgstr "Osoitekirjaa ei voi muokata"
-
-msgid "Not a file name"
-msgstr "Virheellinen tiedostonimi"
-
 #, fuzzy
 msgid "Write failed"
-msgstr "Avaus epäonnistui"
+msgstr "Kirjoittaminen epäonnistui"
 
 #, fuzzy
 msgid "Unable to update"
-msgstr "Talleta / Päivitä"
+msgstr "Päivitys epäonnistui"
 
 msgid "Could not lock datafile"
 msgstr "Tietokantatiedoston lukistus epäonnistui"
@@ -855,18 +862,21 @@ msgid "Write to addressbook failed"
 msgstr "Osoitekirjaan kirjoittaminen epäonnistui"
 
 msgid "Error initializing addressbook database."
-msgstr "Virhe LDAP tietokannan initialisoinnissa:"
+msgstr "Virhe osoitekirjan tietokannan alustamisessa:"
 
 #, c-format
 msgid "Error opening file %s"
 msgstr "Virhe tiedoston %s avauksessa"
 
+msgid "Global address book"
+msgstr "Yleinen osoitekirja"
+
 msgid "Error initializing global addressbook."
-msgstr "Virhe LDAP palvelimen initialisoinnissa:"
+msgstr "Virhe yleisen osoitekirjan alustuksessa:"
 
 #, c-format
 msgid "Error initializing LDAP server %s:"
-msgstr "Virhe LDAP palvelimen %s initialisoinnissa:"
+msgstr "Virhe LDAP palvelimen %s alustuksessa:"
 
 msgid "Invalid input data"
 msgstr "Virhe syöttötiedossa"
@@ -878,13 +888,15 @@ msgid "E-mail address is missing"
 msgstr "Sähköpostiosoite puuttuu"
 
 msgid "Nickname contains illegal characters"
-msgstr "Lempinimessä kiellettyjä merkkejä"
+msgstr "Lempinimessä virheellisiä merkkejä"
 
-msgid "view"
+#, fuzzy
+msgid "View"
 msgstr "näytä"
 
-msgid "Business Card"
-msgstr "Käyntikortti"
+#, fuzzy
+msgid "View Business Card"
+msgstr "Näytössä Käyntikortti"
 
 msgid "Sunday"
 msgstr "Sunnuntai"
@@ -977,7 +989,7 @@ msgid "Apr"
 msgstr "Huhti"
 
 msgid "Ma&#121;"
-msgstr ""
+msgstr "Touko"
 
 msgid "Jun"
 msgstr "Kesä"
@@ -998,16 +1010,16 @@ msgid "Nov"
 msgstr "Marras"
 
 msgid "Dec"
-msgstr "Talvi"
+msgstr "Joulu"
 
 msgid "D, F j, Y g:i a"
 msgstr "D j.n.Y G:i"
 
-msgid "M j, Y"
-msgstr "j.n.Y"
-
 msgid "D, F j, Y G:i"
 msgstr "D j.n.Y G:i"
+
+msgid "M j, Y"
+msgstr "j.n.Y"
 
 msgid "g:i a"
 msgstr "G:i"
@@ -1023,13 +1035,7 @@ msgstr "D G:i"
 
 #, c-format
 msgid "Preference database error (%s). Exiting abnormally"
-msgstr "Asetustietokantavirhe (%s). Ohjelma lopetataan"
-
-msgid "Unknown user or password incorrect."
-msgstr "Tuntematon käyttäjä tai väärä tunnussana."
-
-msgid "Click here to try again"
-msgstr "Klikkaa tästä ja yritä uudestaan"
+msgstr "Asetustietokantavirhe (%s). Epänormaali lopetus"
 
 #, c-format
 msgid "Click here to return to %s"
@@ -1050,66 +1056,79 @@ msgstr ""
 msgid ""
 "Preference file, %s, could not be opened. Contact your system administrator "
 "to resolve this issue."
-msgstr "Ota yhteys administraattoriin, ilmoita tämä virhe."
+msgstr ""
+"Asetustiedostoa %s ei saatu auki. Ota yhteys käyttötukeesi, ilmoita tämä "
+"virhe."
 
 #, fuzzy, c-format
 msgid ""
 "Preference file, %s, could not be written. Contact your system administrator "
 "to resolve this issue."
-msgstr "Ota yhteys administraattoriin, ilmoita tämä virhe."
+msgstr ""
+"Asetustiedostoon %s ei voitu kirjoittaa. Ota yhteys käyttötukeesi, ilmoita "
+"tämä virhe."
 
 #, fuzzy, c-format
 msgid ""
 "Preference file, %s, could not be copied from temporary file, %s. Contact "
 "your system administrator to resolve this issue."
-msgstr "Ota yhteys administraattoriin, ilmoita tämä virhe."
+msgstr ""
+"Asetustiedostoa %s ei voitu kopioida väliaikaistiedostosta %s. Ota yhteys "
+"käyttötukeesi, ilmoita tämä virhe."
 
 #, fuzzy, c-format
 msgid "Error opening %s"
-msgstr "Virhe avatessa "
+msgstr "Virhe %s:n avaamisessa"
 
 #, fuzzy
 msgid "Default preference file not found or not readable!"
-msgstr "Systeemin asetustiedostoa ei löytynyt!"
-
-msgid "Please contact your system administrator and report this error."
-msgstr "Ota yhteys administraattoriin, ilmoita tämä virhe."
+msgstr "Asetustiedostoa ei löytynyt tai sitä ei voitu lukea!"
 
 msgid "Could not create initial preference file!"
 msgstr "Asetustiedoston teko epäonnistui!"
 
 #, c-format
 msgid "%s should be writable by user %s"
-msgstr ""
+msgstr "%s pitäisi olla kirjoitusoikeus käyttäjällä %s"
+
+#, fuzzy
+msgid "Signature is too big."
+msgstr "Allekirjoitusasetukset"
 
 #, fuzzy, c-format
 msgid ""
 "Signature file, %s, could not be opened. Contact your system administrator "
 "to resolve this issue."
-msgstr "Ota yhteys administraattoriin, ilmoita tämä virhe."
+msgstr ""
+"Allekirjoitustiedostoa %s ei voitu avata. Ota yhteys käyttötukeesi, ilmoita "
+"tämä virhe."
 
 #, fuzzy, c-format
 msgid ""
 "Signature file, %s, could not be written. Contact your system administrator "
 "to resolve this issue."
-msgstr "Ota yhteys administraattoriin, ilmoita tämä virhe."
+msgstr ""
+"Allekirjoitustiedostoon %s ei voitu kirjoittaa. Ota yhteys käyttötukeesi, "
+"ilmoita tämä virhe."
 
 #, fuzzy, c-format
 msgid ""
 "Signature file, %s, could not be copied from temporary file, %s. Contact "
 "your system administrator to resolve this issue."
-msgstr "Ota yhteys administraattoriin, ilmoita tämä virhe."
+msgstr ""
+"Allekirjoitustiedostoa %s ei voitu kopioida %s:sta. Ota yhteys "
+"käyttötukeesi, ilmoita tämä virhe."
 
 msgid ""
 "You need to have php4 installed with the multibyte string function enabled "
 "(using configure option --enable-mbstring)."
-msgstr ""
+msgstr "PHP asetusvirhe, tarvitaan --enable-mbstring"
 
 msgid "ERROR : No available imapstream."
-msgstr ""
+msgstr "VIRHE: IMAP yhteys ei ole käytettävissä."
 
 msgid "ERROR : Connection dropped by imap-server."
-msgstr ""
+msgstr "VIRHE: IMAP-palvelin katkaisi yhteyden."
 
 msgid "ERROR : Could not complete request."
 msgstr "VIRHE : Pyyntöä ei voida täyttää."
@@ -1127,14 +1146,23 @@ msgid "Server responded: "
 msgstr "Palvelin vastasi: "
 
 msgid "ERROR : Imap server closed the connection."
-msgstr ""
+msgstr "VIRHE: IMAP-palvelin sulki yhteyden."
 
 msgid "ERROR : Unknown imap response."
-msgstr ""
+msgstr "VIRHE: Tuntematon IMAP-vastaus."
 
 #, c-format
 msgid "Error connecting to IMAP server: %s."
 msgstr "Virhe yhteydenotossa IMAP palvelimeen: %s."
+
+msgid "The IMAP server is reporting that plain text logins are disabled."
+msgstr ""
+
+msgid "Using CRAM-MD5 or DIGEST-MD5 authentication instead may work."
+msgstr ""
+
+msgid "Also, the use of TLS may allow SquirrelMail to login."
+msgstr ""
 
 #, c-format
 msgid "Bad request: %s"
@@ -1147,18 +1175,22 @@ msgstr "Tuntematon virhe: %s"
 msgid "Read data:"
 msgstr "Lue tietoja:"
 
+msgid "Unknown user or password incorrect."
+msgstr "Tuntematon käyttäjä tai väärä tunnussana."
+
 #, fuzzy
 msgid "ERROR : Could not append message to"
-msgstr "VIRHE : Pyyntöä ei voida täyttää."
+msgstr "VIRHE : Viestiä ei voitu liittää kohteeseen"
 
 #, fuzzy
 msgid "Solution: "
-msgstr "Ehdotuksia:"
+msgstr "Ehdotuksia: "
 
 msgid ""
 "Remove unneccessary messages from your folder and start with your Trash "
 "folder."
 msgstr ""
+"Poista tarpeettomia viestejä kansioistasi, aloita Poistetut -kansiosta."
 
 msgid "(no subject)"
 msgstr "(tyhjä)"
@@ -1170,30 +1202,31 @@ msgid "Unknown response from IMAP server: "
 msgstr "IMAP palvelimen vastaus tuntematon: "
 
 msgid "The server couldn't find the message you requested."
-msgstr ""
+msgstr "Palvelin ei löytänyt pyytämääsi viestiä."
 
 msgid ""
 "Most probably your message list was out of date and the message has been "
 "moved away or deleted (perhaps by another program accessing the same "
 "mailbox)."
 msgstr ""
+"Luultavasti viestiluettelo oli vanhentunut, ja viesti oli poistettu tai "
+"siirretty (mahdollisesti toinen sähköpostiohjelma käyttää samaa "
+"postilaatikkoa?)"
 
 #, fuzzy
 msgid "Unknown date"
-msgstr "Tuntematon Lähettäjä"
+msgstr "Tuntematon päiväys"
 
 msgid "A"
 msgstr "V"
 
-msgid ""
-"Thread sorting is not supported by your IMAP server.<br>Please report this "
-"to the system administrator."
-msgstr ""
+#, fuzzy
+msgid "Thread sorting is not supported by your IMAP server."
+msgstr "IMAP-palvelin ei tue järjestämistä ketjuittain."
 
-msgid ""
-"Server-side sorting is not supported by your IMAP server.<br>Please report "
-"this to the system administrator."
-msgstr ""
+#, fuzzy
+msgid "Server-side sorting is not supported by your IMAP server."
+msgstr "IMAP-palvelin ei tue järjestämistä."
 
 msgid "THIS FOLDER IS EMPTY"
 msgstr "TÄMÄ KANSIO ON TYHJÄ"
@@ -1222,11 +1255,11 @@ msgstr "Ei luettu"
 
 #, fuzzy
 msgid "Unthread View"
-msgstr "Kuukausinäyttö"
+msgstr "Viestinäkymä"
 
 #, fuzzy
 msgid "Thread View"
-msgstr "Päivänäyttö"
+msgstr "Ketjunäkymä"
 
 msgid "Toggle All"
 msgstr "Vaihda kaikki valinnat"
@@ -1237,12 +1270,12 @@ msgstr "Peruuta Kaikki Valinnat"
 msgid "Select All"
 msgstr "Valitse Kaikki"
 
-#, c-format
-msgid "Viewing Messages: <B>%s</B> to <B>%s</B> (%s total)"
+#, fuzzy, c-format
+msgid "Viewing Messages: %s to %s (%s total)"
 msgstr "Näytössä Viestit: <B>%s</B> - <B>%s</B> (%s kaikkiaan)"
 
-#, c-format
-msgid "Viewing Message: <B>%s</B> (1 total)"
+#, fuzzy, c-format
+msgid "Viewing Message: %s (%s total)"
 msgstr "Näytössä Viesti: <B>%s</B>"
 
 msgid "Paginate"
@@ -1252,10 +1285,10 @@ msgid "Show All"
 msgstr "Näytä kaikki"
 
 msgid "SquirrelMail could not decode the bodystructure of the message"
-msgstr ""
+msgstr "Webmail ei saanut rakennetta auki viestistä"
 
 msgid "the provided bodystructure by your imap-server"
-msgstr ""
+msgstr "IMAP-palvelimen antama viestirakenne"
 
 #, fuzzy
 msgid ""
@@ -1279,16 +1312,20 @@ msgid "FETCH line:"
 msgstr "HAE rivi:"
 
 msgid "Hide Unsafe Images"
-msgstr ""
+msgstr "Piilota epäturvalliset kuvat"
 
 #, fuzzy
 msgid "View Unsafe Images"
-msgstr "Näytä viesti"
+msgstr "Näytä epäturvalliset kuvat"
 
-msgid "download"
+#, fuzzy
+msgid "Download"
 msgstr "lataa"
 
 msgid "sec_remove_eng.png"
+msgstr ""
+
+msgid "This external link will open in a new window"
 msgstr ""
 
 #, c-format
@@ -1296,86 +1333,86 @@ msgid "Option Type '%s' Not Found"
 msgstr "Asetustyyppiä '%s' Ei Löydy"
 
 msgid "Current Folder"
-msgstr "Tämänhetkinen Kansio"
+msgstr "Nykyinen Kansio"
 
 msgid "Compose"
-msgstr "Uusi Viesti"
+msgstr "Kirjoita Viesti"
 
 #, c-format
 msgid "Error creating directory %s."
-msgstr "Virhe sanaston %s teossa."
+msgstr "Virhe hakemiston %s teossa."
 
 msgid "Could not create hashed directory structure!"
 msgstr "Hakemistopolun teko epäonnistui!"
 
 msgid "Service not available, closing channel"
-msgstr ""
+msgstr "Palvelua ei ole käytössä, yhteys katkaistaan"
 
 msgid "A password transition is needed"
-msgstr ""
+msgstr "Salasananvaihtoa tarvitaan"
 
 msgid "Requested mail action not taken: mailbox unavailable"
-msgstr ""
+msgstr "Toimintoa ei suoritettu: postilaatikko ei käytössä"
 
 msgid "Requested action aborted: error in processing"
-msgstr ""
+msgstr "Toimintoa ei suoritettu: virhe suorituksessa"
 
 msgid "Requested action not taken: insufficient system storage"
-msgstr ""
+msgstr "Toimintoa ei suoritettu: tila ei riitä"
 
 #, fuzzy
 msgid "Temporary authentication failure"
-msgstr "apop käyttäjäntarkistus epäonnistui"
+msgstr "Käyttäjäntarkistus epäonnistui"
 
 msgid "Syntax error; command not recognized"
-msgstr ""
+msgstr "Komentoa ei tunnettu"
 
 msgid "Syntax error in parameters or arguments"
-msgstr ""
+msgstr "Syntaksivirhe"
 
 #, fuzzy
 msgid "Command not implemented"
-msgstr "Komento epäonnistui"
+msgstr "Komento ei ole tuettu"
 
 msgid "Bad sequence of commands"
-msgstr ""
+msgstr "Komennot väärässä järjestyksessä"
 
 msgid "Command parameter not implemented"
-msgstr ""
+msgstr "Komennon parametri ei ole tuettu"
 
 #, fuzzy
 msgid "Authentication required"
-msgstr "käyttäjän tarkastus epäonnistui"
+msgstr "käyttäjän tarkastus"
 
 msgid "Authentication mechanism is too weak"
-msgstr ""
+msgstr "Käyttäjätunnistusmekanismissa virhe"
 
 #, fuzzy
 msgid "Authentication failed"
 msgstr "käyttäjän tarkastus epäonnistui"
 
 msgid "Encryption required for requested authentication mechanism"
-msgstr ""
+msgstr "Tiedonsalausta tarvitaan"
 
 msgid "Requested action not taken: mailbox unavailable"
-msgstr ""
+msgstr "Toimintoa ei suoritettu: sähköpostilaatikkoa ei käytössä"
 
 msgid "User not local; please try forwarding"
-msgstr ""
+msgstr "Käyttäjä ei ole paikallinen; yritä välittää viesti"
 
 msgid "Requested mail action aborted: exceeding storage allocation"
-msgstr ""
+msgstr "Toimintoa ei suoritettu: postilaatikko on täynnä"
 
 msgid "Requested action not taken: mailbox name not allowed"
-msgstr ""
+msgstr "Toimintoa ei suoritettu: postilaatikon nimi on virheellinen"
 
 #, fuzzy
 msgid "Transaction failed"
-msgstr "käyttäjän tarkastus epäonnistui"
+msgstr "Tietojen vaihto epäonnistui"
 
 #, fuzzy
 msgid "Unknown response"
-msgstr "Tuntematon Lähettäjä"
+msgstr "Tuntematon vastaus"
 
 msgid "General Display Options"
 msgstr "Yleiset Näyttöasetukset"
@@ -1387,7 +1424,7 @@ msgid "Default"
 msgstr "Oletus"
 
 msgid "Custom Stylesheet"
-msgstr "Sovellettu Tyylimalli"
+msgstr "Räätälöity Tyylimalli"
 
 msgid "Language"
 msgstr "Kieli"
@@ -1411,7 +1448,7 @@ msgid "Number of Messages to Index"
 msgstr "Viestien lukumäärä indeksissä"
 
 msgid "Enable Alternating Row Colors"
-msgstr "Käytä vaihtelevia värejä eri riveillä?"
+msgstr "Käytä vuorovärejä eri riveillä"
 
 msgid "Enable Page Selector"
 msgstr "Käytä Sivunvalitsinta"
@@ -1420,7 +1457,7 @@ msgid "Maximum Number of Pages to Show"
 msgstr "Sivujen maksimi lukumäärä näytössä"
 
 msgid "Always Show Full Date"
-msgstr ""
+msgstr "Näytä päiväys aina kokonaisena"
 
 msgid "Message Display and Composition"
 msgstr "Viestien Näyttö ja Kirjoittaminen"
@@ -1428,17 +1465,20 @@ msgstr "Viestien Näyttö ja Kirjoittaminen"
 msgid "Wrap Incoming Text At"
 msgstr "Näytettävien kirjaimien määrä riviä kohti"
 
-msgid "Size of Editor Window"
-msgstr "Editori-ikkunan koko"
+msgid "Width of Editor Window"
+msgstr "Muokkausikkunan leveys"
+
+msgid "Height of Editor Window"
+msgstr "Muokkausikkunan korkeus"
 
 msgid "Location of Buttons when Composing"
-msgstr "Nappien paikka viestiä kirjoitettaessa"
+msgstr "Painikkeiden paikka viestiä kirjoitettaessa"
 
 msgid "Before headers"
-msgstr "Ennen otsikkoja"
+msgstr "Ennen otsakkeita"
 
 msgid "Between headers and message body"
-msgstr "Otsikoiden ja viestin välissä"
+msgstr "Otsakkeiden ja viestin välissä"
 
 msgid "After message body"
 msgstr "Viestin jälkeen"
@@ -1456,10 +1496,10 @@ msgid "Show HTML Version by Default"
 msgstr "Näytä HTML-versio"
 
 msgid "Enable Forward as Attachment"
-msgstr ""
+msgstr "Mahdollista liitteenä välittäminen"
 
 msgid "Include CCs when Forwarding Messages"
-msgstr ""
+msgstr "Ota Cc:t mukaan viestiä välitettäessä"
 
 msgid "Include Me in CC when I Reply All"
 msgstr "Lisää minut kopionsaajiin kun vastaan kaikille"
@@ -1471,56 +1511,67 @@ msgid "Display Attached Images with Message"
 msgstr "Näytä kuvaliitteet viestissä"
 
 msgid "Enable Printer Friendly Clean Display"
-msgstr "Tulostusystävällinen Puhdas Näyttö päälle"
+msgstr "Salli Tulostusystävällinen Näyttö"
 
-#, fuzzy
 msgid "Enable Mail Delivery Notification"
-msgstr "Ei-luettujen viestien esitys käyttöön"
+msgstr "Ota lukukuittaukset käyttöön"
 
-#, fuzzy
 msgid "Compose Messages in New Window"
 msgstr "Avaa aina uusi ikkuna uuden viestin kirjoittamiseen"
 
-#, fuzzy
 msgid "Width of Compose Window"
-msgstr "Sulje ikkuna"
+msgstr "Kirjoitusikkunan leveys"
 
-#, fuzzy
 msgid "Height of Compose Window"
-msgstr "Sulje ikkuna"
+msgstr "Kirjoitusikkunan korkeus"
 
 msgid "Append Signature before Reply/Forward Text"
-msgstr ""
+msgstr "Lisää allekirjoitus ennen lainattavaa viestiä"
 
-msgid "Enable Sort by of Receive Date"
-msgstr ""
+msgid "Cursor Position when Replying"
+msgstr "Kursorin sijoitus vastattaessa"
+
+msgid "To: field"
+msgstr "To: kenttä"
+
+msgid "Focus in body"
+msgstr "Viestiteksti"
+
+msgid "Select body"
+msgstr "Valitse viesti"
+
+msgid "No focus"
+msgstr "Ei mitään"
+
+msgid "Sort by Received Date"
+msgstr "Järjestä vastaanottopäiväyksen mukaan"
 
 msgid "Enable Thread Sort by References Header"
-msgstr ""
+msgstr "Salli järjestäminen ketjuittain"
 
 msgid "Special Folder Options"
-msgstr "Erikoiskansio-ominaisuudet"
+msgstr "Erityiset kansioasetukset"
 
 msgid "Folder Path"
 msgstr "Kansion hakemistopolku"
 
 msgid "Do not use Trash"
-msgstr "Älä käytä Paperikoria"
+msgstr "Älä käytä Poistetut -kansiota"
 
 msgid "Trash Folder"
-msgstr "Paperikori"
-
-msgid "Do not use Sent"
-msgstr "Älä käytä Lähetettyjä"
-
-msgid "Sent Folder"
-msgstr "Lähetettyjen Kansio:"
+msgstr "Poistetut -kansio"
 
 msgid "Do not use Drafts"
 msgstr "Älä käytä Luonnoksia"
 
 msgid "Draft Folder"
 msgstr "Luonnosten Kansio"
+
+msgid "Do not use Sent"
+msgstr "Älä käytä Lähetettyjä"
+
+msgid "Sent Folder"
+msgstr "Lähetettyjen Kansio:"
 
 msgid "Folder List Options"
 msgstr "Kansiolista-asetukset"
@@ -1535,7 +1586,7 @@ msgid "Right"
 msgstr "Oikealla"
 
 msgid "pixels"
-msgstr "pikseliä"
+msgstr "kuvapistettä"
 
 msgid "Width of Folder List"
 msgstr "Kansiolistan leveys"
@@ -1553,16 +1604,16 @@ msgid "Auto Refresh Folder List"
 msgstr "Päivitä Kansiolista automaattisesti"
 
 msgid "Enable Unread Message Notification"
-msgstr "Ei-luettujen viestien esitys käyttöön"
+msgstr "Mahdollista varoitus lukematta jättämisestä"
 
 msgid "No Notification"
-msgstr "Ei esitetä"
+msgstr "Ei varoituksia"
 
 msgid "Only INBOX"
 msgstr "Vain Saapuneet"
 
 msgid "Unread Message Notification Type"
-msgstr "Ei-luettujen viestien esityksen tyyppi"
+msgstr "Ei-luettujen viestien varoituksen tyyppi"
 
 msgid "Only Unseen"
 msgstr "Vain ei-luetut"
@@ -1570,16 +1621,32 @@ msgstr "Vain ei-luetut"
 msgid "Unseen and Total"
 msgstr "Ei-luetut ja Kaikkiaan"
 
-#, fuzzy
-msgid "Enable Collapsible Folders"
-msgstr "Käytä hierarkisia kansioita"
+msgid "Enable Collapsable Folders"
+msgstr "Salli kansioiden puurakenne"
 
-#, fuzzy
 msgid "Enable Cumulative Unread Message Notification"
-msgstr "Ei-luettujen viestien esitys käyttöön"
+msgstr "Ei-luettujen viestien kertyvä varoitus käyttöön"
 
 msgid "Show Clock on Folders Panel"
 msgstr "Näytä Kello Kansiopaneelissa"
+
+msgid "International date and time"
+msgstr "Kansainvälinen päiväys ja aika"
+
+msgid "American date and time"
+msgstr "Amerikkalainen päiväys ja aika"
+
+msgid "European date and time"
+msgstr "Eurooppalainen päiväys ja aika"
+
+msgid "Show weekday and time"
+msgstr "Näytä viikonpäivä ja aika"
+
+msgid "Show time with seconds"
+msgstr "Näytä aika sekuntteineen"
+
+msgid "Show time"
+msgstr "Näytä aika"
 
 msgid "No Clock"
 msgstr "Ei Kelloa"
@@ -1599,23 +1666,28 @@ msgstr "Muistietsintä"
 msgid "Disabled"
 msgstr "Ei käytössä"
 
-#, fuzzy
 msgid "Folder Selection Options"
-msgstr "Kansiolista-asetukset"
+msgstr "Kansioiden valinta-asetukset"
 
-#, fuzzy
 msgid "Selection List Style"
-msgstr "Vastauksen muoto"
+msgstr "Valintalistan muoto"
+
+msgid "Long: "
+msgstr "Pitkä: "
 
 #, fuzzy
-msgid "Long: "
-msgstr "Kesto:"
+msgid "Folder"
+msgstr "Kansiot"
+
+#, fuzzy
+msgid "Subfolder"
+msgstr "Kansio.Alikansio"
 
 msgid "Indented: "
-msgstr ""
+msgstr "Sisennetty: "
 
 msgid "Delimited: "
-msgstr ""
+msgstr "Rajattu: "
 
 msgid "Name and Address Options"
 msgstr "Nimi- ja Osoiteasetukset"
@@ -1633,29 +1705,31 @@ msgid "Multiple Identities"
 msgstr "Useat Henkilötiedot"
 
 msgid "Same as server"
-msgstr ""
+msgstr "Sama kuin palvelimella"
 
 msgid "Error opening timezone config, contact administrator."
-msgstr ""
+msgstr "Aikavyöhyketietojen avaamisessa sattui virhe."
 
-#, fuzzy
 msgid "Timezone Options"
-msgstr "Yleisasetukset"
+msgstr "Aikavyöhykeasetukset"
 
 msgid "Your current timezone"
-msgstr ""
+msgstr "Aikavyöhykkeesi tällä hetkellä"
 
 msgid "Reply Citation Options"
-msgstr "Vastauksen Muodon Asetukset"
+msgstr "Vastauksen sitaattiasetukset"
 
 msgid "Reply Citation Style"
-msgstr "Vastauksen muoto"
+msgstr "Vastauksen sitaattimuoto"
 
 msgid "No Citation"
-msgstr "Ei esitetä"
+msgstr "Ei sitaattia"
 
 msgid "AUTHOR Said"
-msgstr "LÄHETTÄJÄ kirjoitti"
+msgstr "AUTHOR kirjoitti"
+
+msgid "On DATE, AUTHOR Said"
+msgstr "AUTHOR kirjoitti DATE"
 
 msgid "Quote Who XML"
 msgstr "Lainaus XML"
@@ -1676,7 +1750,7 @@ msgid "Use Signature"
 msgstr "Käytä Allekirjoitusta"
 
 msgid "Prefix Signature with '-- ' Line"
-msgstr "Lisää '-- ' allekirjoituksen edelle"
+msgstr "Lisää '-- ' rivi allekirjoituksen edelle"
 
 #, fuzzy
 msgid "Take Address"
@@ -1687,12 +1761,13 @@ msgid "Address Book Take:"
 msgstr "Osoitekirja"
 
 msgid "Try to verify addresses"
-msgstr ""
+msgstr "Varmista osoitteet"
 
 msgid "Config File Version"
 msgstr "Konfiguraatiotiedoston versio"
 
-msgid "Squirrelmail Version"
+#, fuzzy
+msgid "SquirrelMail Version"
 msgstr "SquirrelMail versio"
 
 msgid "PHP Version"
@@ -1709,11 +1784,11 @@ msgstr "Organisaation logo"
 
 #, fuzzy
 msgid "Organization Logo Width"
-msgstr "Organisaation logo"
+msgstr "Organisaation logon leveys"
 
 #, fuzzy
 msgid "Organization Logo Height"
-msgstr "Organisaation logo"
+msgstr "Organisaation logon korkeus"
 
 msgid "Organization Title"
 msgstr "Organisaation titteli"
@@ -1722,14 +1797,11 @@ msgid "Signout Page"
 msgstr "Poistumissivu"
 
 msgid "Provider Link URI"
-msgstr ""
+msgstr "Palveluntarjoajan linkin URI"
 
 #, fuzzy
 msgid "Provider Name"
-msgstr "Palvelimen nimi: "
-
-msgid "Default Language"
-msgstr "Oletuskieli"
+msgstr "Palveluntarjoajan nimi: "
 
 msgid "Top Frame"
 msgstr "Näytön yläosa"
@@ -1738,51 +1810,66 @@ msgid "Server Settings"
 msgstr "Palvelimen asetukset"
 
 msgid "Mail Domain"
-msgstr "Postidomeeni (domain)"
+msgstr "Postiverkko-osoite (domain)"
 
 msgid "IMAP Server Address"
-msgstr "IMAP Palvelimen Osoite"
+msgstr "IMAP-palvelimen Osoite"
 
 msgid "IMAP Server Port"
-msgstr "IMAP Palvelimen portti"
+msgstr "IMAP-palvelimen portti"
 
 msgid "IMAP Server Type"
-msgstr "IMAP Palvelimen tyyppi"
+msgstr "IMAP-palvelimen tyyppi"
 
 msgid "Cyrus IMAP server"
-msgstr "Cyrus IMAP palvelin"
+msgstr "Cyrus IMAP-palvelin"
 
 msgid "University of Washington's IMAP server"
-msgstr "Washingtonin Yliopistin IMAP palvelin"
+msgstr "Washingtonin Yliopistin IMAP-palvelin"
 
 msgid "Microsoft Exchange IMAP server"
-msgstr "Microsoft Exchange IMAP palvelin"
+msgstr "Microsoft Exchange IMAP-palvelin"
 
 msgid "Courier IMAP server"
-msgstr "Courier IMAP palvelin"
+msgstr "Courier IMAP-palvelin"
+
+msgid "Mac OS X Mailserver"
+msgstr ""
+
+#, fuzzy
+msgid "hMailServer IMAP server"
+msgstr "Courier IMAP-palvelin"
 
 msgid "Not one of the above servers"
 msgstr "Ei mikään edelläolevista"
 
 msgid "IMAP Folder Delimiter"
-msgstr "IMAP kansion erotusmerkki"
+msgstr "IMAP-kansion erotusmerkki"
 
-msgid "Use \"detect\" to auto-detect."
+#, fuzzy
+msgid "Use &quot;detect&quot; to auto-detect."
 msgstr "Käytä \"tunnista\" automaattiseen tunnistukseen."
 
 msgid "Use TLS for IMAP Connections"
-msgstr ""
+msgstr "Käytä TLS suojausta"
 
 msgid "Requires PHP 4.3.x! Experimental."
 msgstr ""
 
 #, fuzzy
 msgid "IMAP Authentication Type"
-msgstr "käyttäjän tarkastus epäonnistui"
+msgstr "käyttäjän tarkastustapa"
+
+#, fuzzy
+msgid "IMAP login"
+msgstr "POP3 sisääkirjoittautuminen:"
 
 #, fuzzy
 msgid "Use Sendmail Binary"
 msgstr "Käytä sendmailia"
+
+msgid "Choose &quot;no&quot; for SMTP"
+msgstr ""
 
 msgid "Sendmail Path"
 msgstr "Sendmailin hakemistopolku"
@@ -1794,20 +1881,23 @@ msgid "SMTP Server Port"
 msgstr "Postipalvelimen (SMTP) Portti"
 
 msgid "Use TLS for SMTP Connections"
-msgstr ""
+msgstr "Käytä TLS suojausta"
 
 #, fuzzy
 msgid "SMTP Authentication Type"
-msgstr "käyttäjän tarkastus epäonnistui"
+msgstr "käyttäjän tarkastustapa (SMTP)"
+
+msgid "No SMTP auth"
+msgstr ""
+
+msgid "Login (plain text)"
+msgstr ""
 
 msgid "POP3 Before SMTP?"
-msgstr ""
+msgstr "POP3 ennen SMTP:tä?"
 
 msgid "Invert Time"
 msgstr "Kellonaika Päinvastoin"
-
-msgid "Use Confirmation Flags"
-msgstr ""
 
 msgid "Folders Defaults"
 msgstr "Kansion oletusarvot"
@@ -1851,9 +1941,6 @@ msgstr "Ei nähtyjen viestien oletusarvoinen tyyppi"
 msgid "Auto Create Special Folders"
 msgstr "Luo Erikoiskansiot automaattisesti"
 
-msgid "Default Javascript Adrressbook"
-msgstr "Oletusarvona Javascript Osoitekirja"
-
 msgid "Auto delete folders"
 msgstr "Kansioitten automaattinen poistaminen"
 
@@ -1864,9 +1951,6 @@ msgstr "Käytä Sivunvalitsinta"
 msgid "General Options"
 msgstr "Yleisasetukset"
 
-msgid "Default Charset"
-msgstr "Kirjasimen oletustyyppi"
-
 msgid "Data Directory"
 msgstr "Tietohakemisto"
 
@@ -1874,10 +1958,10 @@ msgid "Temp Directory"
 msgstr "Väliaikaisten Hakemisto"
 
 msgid "Hash Level"
-msgstr "Sisennystasojen Määrä"
+msgstr "HASH-taso"
 
 msgid "Hash Disabled"
-msgstr "Sisennys ei käytössä"
+msgstr "HASH ei käytössä"
 
 msgid "Moderate"
 msgstr "Maltillinen"
@@ -1889,7 +1973,7 @@ msgid "Default Left Size"
 msgstr "Vasemman puolen oletusleveys"
 
 msgid "Usernames in Lowercase"
-msgstr "Käyttäjänimet Pienillä Kirjaimilla"
+msgstr "Käyttäjänimet pienillä kirjaimilla"
 
 msgid "Allow use of priority"
 msgstr "Salli prioriteettien käyttö"
@@ -1898,32 +1982,32 @@ msgid "Hide SM attributions"
 msgstr "Piilota SM atribuutiot"
 
 msgid "Enable use of delivery receipts"
-msgstr ""
+msgstr "Salli kuittaukset"
 
 msgid "Allow editing of identities"
-msgstr ""
+msgstr "Salli henkilöllisyyksien muokkaaminen"
 
 msgid "Allow editing of full name"
-msgstr ""
+msgstr "Salli koko nimen muokkaaminen"
 
 msgid "Use server-side sorting"
-msgstr ""
+msgstr "Käytä järjestämistä palvelimella"
 
 msgid "Use server-side thread sorting"
-msgstr ""
+msgstr "Käytä ketjutusta palvelimella"
 
 msgid "Allow server charset search"
-msgstr ""
+msgstr "Salli merkistöhaku palvelimella"
 
 msgid "UID support"
-msgstr ""
+msgstr "UID tuki"
 
 #, fuzzy
 msgid "PHP session name"
-msgstr "PHP Versio"
+msgstr "PHP istuntonimi"
 
 msgid "Message of the Day"
-msgstr "Päivän ilmoitusviesti"
+msgstr "Päivän tiedoteviesti"
 
 msgid "Database"
 msgstr "Tietokanta"
@@ -1942,31 +2026,88 @@ msgstr "Asetukset taulukko"
 
 #, fuzzy
 msgid "Preferences username field"
-msgstr "Asetukset taulukko"
+msgstr "Asetukset käyttäjänimitaulukko"
 
 #, fuzzy
 msgid "Preferences key field"
-msgstr "Asetukset taulukko"
+msgstr "Asetukset avaintaulukko"
 
 #, fuzzy
 msgid "Preferences value field"
-msgstr "Asetukset taulukko"
+msgstr "Asetukset arvotaulukko"
+
+#, fuzzy
+msgid "Global address book DSN"
+msgstr "Yleinen osoitekirja"
+
+#, fuzzy
+msgid "Global address book table"
+msgstr "Yleinen osoitekirja"
+
+#, fuzzy
+msgid "Allow writing into global address book"
+msgstr "Yleistä osoitekirjaa ei voi muokata"
+
+#, fuzzy
+msgid "Allow listing of global address book"
+msgstr "Yleistä osoitekirjaa ei voi muokata"
+
+#, fuzzy
+msgid "Language settings"
+msgstr "Muuta asetuksia"
+
+msgid "Default Language"
+msgstr "Oletuskieli"
+
+msgid "Default Charset"
+msgstr "Merkistön oletustyyppi"
+
+msgid "Enable lossy encoding"
+msgstr ""
+
+#, fuzzy
+msgid "Address Books"
+msgstr "Osoitekirja"
+
+#, fuzzy
+msgid "Default Javascript Addressbook"
+msgstr "Oletusarvona Javascript Osoitekirja"
+
+#, fuzzy
+msgid "Global address book file"
+msgstr "Yleinen osoitekirja"
+
+#, fuzzy
+msgid "Allow writing into global address book file"
+msgstr "Osoitekirjaan kirjoittaminen epäonnistui"
 
 msgid "Themes"
 msgstr "Teemat"
 
 msgid "Style Sheet URL (css)"
-msgstr "Tyylisivujen internetosoite (css)"
+msgstr "Tyylisivujen (css) internetosoite URL"
 
 #, fuzzy
 msgid "Default theme"
-msgstr "Kirjasimen oletustyyppi"
+msgstr "Oletusteema"
 
 msgid "Use index number of theme"
-msgstr ""
+msgstr "Teemojen numerointi"
 
 msgid "Configuration Administrator"
-msgstr "Konfiguraatioadministraattori"
+msgstr "Asetusten ylläpitäjä"
+
+msgid ""
+"Note: it is recommended that you configure your system using conf.pl, and "
+"not this plugin. conf.pl contains additional information regarding the "
+"purpose of variables and appropriate values, as well as additional "
+"verification steps."
+msgstr ""
+
+msgid ""
+"Run or consult conf.pl should you run into difficulty with your "
+"configuration."
+msgstr ""
 
 msgid "Theme Name"
 msgstr "Teeman nimi"
@@ -1977,26 +2118,102 @@ msgstr "Teeman hakemistopolku"
 msgid "Plugins"
 msgstr "Lisätoimintoohjelmistot (plugin)"
 
+#, c-format
+msgid "Plugin directory could not be found: %s"
+msgstr ""
+
 msgid "Change Settings"
 msgstr "Muuta asetuksia"
 
+#, fuzzy
+msgid "Test Configuration"
+msgstr "Käytä vahvistuslippuja"
+
 msgid "Config file can't be opened. Please check config.php."
-msgstr ""
+msgstr "Asetustiedostoa ei voitu avata. Tarkista config.php"
 
 msgid "Administration"
-msgstr "Administrointi"
+msgstr "Ylläpito"
 
 msgid ""
 "This module allows administrators to manage SquirrelMail main configuration "
 "remotely."
+msgstr "Tämä moduuli mahdollistaa SquirrelMailin pääasetusten etäkäsittelyn."
+
+#, fuzzy
+msgid "Submit a Bug Report"
+msgstr "Virheraportointi:"
+
+msgid ""
+"Before you send your bug report, please make sure to check this checklist "
+"for any common problems."
 msgstr ""
-"Tämä moduuli mahdollistaa SquirrelMailin pääkonfiguraation etäiskäsittelyn."
+
+#, c-format
+msgid ""
+"Make sure that you are running the most recent copy of %s. You are currently "
+"using version %s."
+msgstr ""
+
+#, c-format
+msgid ""
+"Check to see if your bug is already listed in the %sBug List%s on "
+"SourceForge. If it is, we already know about it and are trying to fix it."
+msgstr ""
+
+msgid ""
+"Try to make sure that you can repeat it. If the bug happens sporatically, "
+"try to document what you did when it happened. If it always occurs when you "
+"view a specific message, keep that message around so maybe we can see it."
+msgstr ""
+
+#, c-format
+msgid ""
+"If there were warnings displayed above, try to resolve them yourself. Read "
+"the guides in the %s directory where SquirrelMail was installed."
+msgstr ""
+
+msgid ""
+"Pressing the button below will start a mail message to the developers of "
+"SquirrelMail that will contain a lot of information about your system, your "
+"browser, how SquirrelMail is set up, and your IMAP server. It will also "
+"prompt you for information. Just fill out the sections at the top. If you "
+"like, you can scroll down in the message to see what else is being sent."
+msgstr ""
+
+msgid ""
+"Please make sure to fill out as much information as you possibly can to give "
+"everyone a good chance of finding and removing the bug. Submitting your bug "
+"like this will not have it automatically added to the bug list on "
+"SourceForge, but someone who gets your message may add it for you."
+msgstr ""
+
+msgid "This bug involves"
+msgstr ""
+
+msgid "the general program"
+msgstr ""
+
+msgid "a specific plugin"
+msgstr ""
+
+#, fuzzy
+msgid "Start Bug Report Form"
+msgstr "Virheraportointi:"
+
+#, fuzzy
+msgid "Bug"
+msgstr "Elo"
 
 msgid "Bug Reports:"
 msgstr "Virheraportointi:"
 
 msgid "Show button in toolbar"
-msgstr "Näytä painike menupalkissa"
+msgstr "Näytä painike työkalupalkissa"
+
+#, fuzzy, c-format
+msgid "Could not write calendar file %s"
+msgstr "Asetustiedoston teko epäonnistui!"
 
 msgid "TODAY"
 msgstr "TÄNÄÄN"
@@ -2005,7 +2222,7 @@ msgid "Go"
 msgstr "Siirry"
 
 msgid "l, F j Y"
-msgstr ""
+msgstr "l, F j Y"
 
 msgid "ADD"
 msgstr "LISÄÄ"
@@ -2075,7 +2292,7 @@ msgstr "15 minuuttia"
 
 #, fuzzy
 msgid "30 min."
-msgstr "0 minuuttia"
+msgstr "30 minuuttia"
 
 msgid "45 min."
 msgstr "45 minuuttia"
@@ -2120,7 +2337,7 @@ msgid "Move to:"
 msgstr "Siirrä"
 
 msgid "Delete/Move/Next Buttons:"
-msgstr ""
+msgstr "Poista/Siirrä/Seuraava -painikkeet:"
 
 #, fuzzy
 msgid "Display at top"
@@ -2143,7 +2360,7 @@ msgstr ""
 
 msgid ""
 "COMMERCIAL - Servers that are configured (or misconfigured) to allow spam to "
-"be relayed through their system will be banned with this.  Another good one "
+"be relayed through their system will be banned with this. Another good one "
 "to use."
 msgstr ""
 "KAUPALLINEN - Palvelimia jotka ovat huonosti administroituja, näiden kautta "
@@ -2151,12 +2368,12 @@ msgstr ""
 
 msgid ""
 "COMMERCIAL - Dial-up users are often filtered out since they should use "
-"their ISP's mail servers to send mail.  Spammers typically get a dial-up "
+"their ISP's mail servers to send mail. Spammers typically get a dial-up "
 "account and send spam directly from there."
 msgstr ""
-"KAUPALLINEN - Puhelinverkkokäyttäjät ovat myös usein suodatettu koska heidän "
-"pitäisi käyttää oman nettipalvelunsa palvelimia mailin lähetykseen. "
-"Roskapostinlähettäjät käyttävät usein puhelinverkkoyhteyksiä."
+"KAUPALLINEN - Modeemikäyttäjät ovat myös usein suodatettuja koska heidän "
+"pitäisi käyttää oman ISP:nsä palvelimia sähköpostin lähetykseen. "
+"Roskapostinlähettäjät käyttävät usein modeemiyhteyksiä."
 
 msgid "COMMERCIAL - RBL+ Blackhole entries."
 msgstr "KAUPALLINEN - RBL+ Mustat aukot."
@@ -2178,10 +2395,11 @@ msgid "FREE - Five-Ten-sg.com - Direct SPAM sources."
 msgstr "VAPAA - Five-Ten-sg.com - Suorat roskapostilähteet."
 
 msgid "FREE - Five-Ten-sg.com - Dial-up lists - includes some DSL IPs."
-msgstr "VAPAA - Five-Ten-sg.com - Puhelinverkkoroskapostilähteet."
+msgstr "VAPAA - Five-Ten-sg.com - Modeemiroskapostilähteet."
 
 msgid "FREE - Five-Ten-sg.com - Bulk mailers that do not use confirmed opt-in."
-msgstr "VAPAA - Five-Ten-sg.com - Massapostittajia."
+msgstr ""
+"VAPAA - Five-Ten-sg.com - Massapostittajia ilman etukäteissuostumuksia."
 
 msgid "FREE - Five-Ten-sg.com - Other misc. servers."
 msgstr "VAPAA - Five-Ten-sg.com - Muita sekalaisia."
@@ -2208,55 +2426,61 @@ msgstr ""
 msgid "FREE - SPAMhaus - A list of well-known SPAM sources."
 msgstr "VAPAA - SPAMhaus - Lista tunnetuista roskapostilähteistä."
 
+#, fuzzy
 msgid ""
-"FREE, for now - SPAMCOP - An interesting solution that lists servers that "
-"have a very high spam to legit email ratio (85% or more)."
+"FREE, for now - SpamCop - An interesting solution that lists servers that "
+"have a very high spam to legit email ratio (85 percent or more)."
 msgstr ""
 "VAPAA, toistaiseksi - SPAMCOP - Mielenkiintoinen ratkaisu joka listaa "
 "palvelimia joilla on erittäin suuri roskapostin suhde kunnolliseen postiin "
 "verrattuna (85% tai enemmän)."
 
 msgid "FREE - dev.null.dk - I don't have any detailed info on this list."
-msgstr ""
+msgstr "VAPAA - dev.null.dk - ei tietoja"
 
 msgid "FREE - visi.com - Relay Stop List. Very conservative OpenRelay List."
-msgstr ""
-
-msgid "FREE - 2mbit.com Open Relays - Another list of Open Relays."
-msgstr ""
+msgstr "VAPAA - vitsi.com - Maltillinen lista avoimista palvelimista"
 
 #, fuzzy
-msgid "FREE - 2mbit.com SPAM Source - List of Direct SPAM Sources."
-msgstr "VAPAA - Five-Ten-sg.com - Suorat roskapostilähteet."
+msgid "FREE - ahbl.org Open Relays - Another list of Open Relays."
+msgstr "VAPAA - 2mbit.com - Avoimia palvelimia"
 
-msgid "FREE - 2mbit.com SPAM ISPs - List of SPAM-friendly ISPs."
-msgstr ""
+#, fuzzy
+msgid "FREE - ahbl.org SPAM Source - List of Direct SPAM Sources."
+msgstr "VAPAA - 2mbit.com - Suorat roskapostilähteet."
+
+#, fuzzy
+msgid "FREE - ahbl.org SPAM ISPs - List of SPAM-friendly ISPs."
+msgstr "VAPAA - 2mbit.com - Spammiystävällisiä ISP:itä"
 
 msgid ""
 "FREE - Leadmon DUL - Another list of Dial-up or otherwise dynamically "
 "assigned IPs."
 msgstr ""
+"VAPAA - Leadmon DUL - dynaamisia osoitteita esimerkiksi modeemiyhteyksiä"
 
 msgid ""
 "FREE - Leadmon SPAM Source - List of IPs Leadmon.net has received SPAM "
 "directly from."
 msgstr ""
+"VAPAA - Leadmon SPAM Source - Lista mistä Leadmon on vastaanottanut SPAMmia"
 
 msgid ""
 "FREE - Leadmon Bulk Mailers - Bulk mailers that do not require confirmed opt-"
 "in or that have allowed known spammers to become clients and abuse their "
 "services."
-msgstr ""
+msgstr "VAPAA - Leadmon massapostittajat - epämääräisiä massapostittajia"
 
 msgid ""
 "FREE - Leadmon Open Relays - Single Stage Open Relays that are not listed on "
 "other active RBLs."
 msgstr ""
+"VAPAA - Leadmon Open Relays - avoimia palvelimia, joita ei muissa listoissa"
 
 msgid ""
 "FREE - Leadmon Multi-stage - Multi-Stage Open Relays that are not listed on "
 "other active RBLs and that have sent SPAM to Leadmon.net."
-msgstr ""
+msgstr "VAPAA - Leadmon monivaihe - monivaiheista roskapostia"
 
 msgid ""
 "FREE - Leadmon SpamBlock - Sites on this listing have sent Leadmon.net "
@@ -2264,26 +2488,32 @@ msgid ""
 "mappings. It's a list of BLOCKS of IPs being used by people who have SPAMmed "
 "Leadmon.net."
 msgstr ""
+"VAPAA - Leadmon SpamBlock - näistä IP-avaruuksista on tullut SPAMmia suoraan "
+"Leadmon.Net:iin."
 
 msgid ""
 "FREE, for now - Not Just Another Blacklist - Both Open Relays and Direct "
 "SPAM Sources."
-msgstr ""
+msgstr "VAPAA - toistaiseksi - avoimia palvelimia ja suoraa SPAMmia"
 
 msgid "FREE, for now - Not Just Another Blacklist - Dial-up IPs."
-msgstr ""
+msgstr "VAPAA - toistaiseksi - modeemiosoitteita"
 
 msgid "FREE - Distributed Sender Boycott List - Confirmed Relays"
-msgstr ""
+msgstr "VAPAA - boikottilista - tunnettuja avoimia palvelimia"
 
 msgid "FREE - Distributed Sender Boycott List - Confirmed Multi-stage Relays"
-msgstr ""
+msgstr "VAPAA - boikottilista - tunnettuja välittäjiä"
 
 msgid "FREE - Distributed Sender Boycott List - UN-Confirmed Relays"
+msgstr "VAPAA - boikottilista - MAHDOLLISIA avoimia palvelimia"
+
+msgid ""
+"WARNING! Header filters should be of the format &quot;Header: value&quot;"
 msgstr ""
 
 msgid "Saved Scan type"
-msgstr ""
+msgstr "Tallennettu skannaustyyppi"
 
 msgid "Message Filtering"
 msgstr "Viestien Suodatus"
@@ -2310,8 +2540,8 @@ msgstr "Luettu"
 msgid "Contains:"
 msgstr "Sisältää:"
 
-#, c-format
-msgid "If <b>%s</b> contains <b>%s</b> then move to <b>%s</b>"
+#, fuzzy, c-format
+msgid "If %s contains %s then move to %s"
 msgstr "Jos <b>%s</b> sisältää <b>%s</b> niin siirrä: <b>%s</b>"
 
 msgid "Message Filters"
@@ -2335,10 +2565,19 @@ msgstr ""
 "viestienlähettäjien viestien siirtämisen muihin kansioihin (esim "
 "roskakoriin)."
 
+#, fuzzy
+msgid "You must select a spam folder."
+msgstr "Valitse kansio"
+
+#, fuzzy
+msgid "You must select a scan type."
+msgstr "Sinun on valittava yksi vaihtoehdoista"
+
 msgid "Spam Filtering"
 msgstr "Roskapostin Suodatus"
 
-msgid "WARNING! Tell your admin to set the SpamFilters_YourHop variable"
+#, fuzzy, c-format
+msgid "WARNING! Tell the administrator to set the %s variable."
 msgstr "VAROITUS Pyydä administraattoriasi asettamaan SpamFilters_YourHop"
 
 msgid "Move spam to:"
@@ -2356,34 +2595,35 @@ msgstr ""
 "Valitsetpa minkä tahansa kansion niin pidä huoli siitä että tyhjennät sen "
 "sisällön silloin tällöin ettei palvelimesi turhaan täyty suurista kansioista."
 
+#, fuzzy
+msgid "Unread messages only"
+msgstr "Vain Uudet Viestit"
+
+#, fuzzy
 msgid ""
-"The more messages you scan, the longer it takes.  I would suggest that you "
-"scan only new messages.  If you make a change to your filters, I would set "
-"it to scan all messages, then go view my INBOX, then come back and set it to "
-"scan only new messages.  That way, your new spam filters will be applied and "
-"you'll scan even the spam you read with the new filters."
+"The more messages scanned, the longer it takes. It's recommended to scan "
+"unread messages only. If a change to the filters is made, it's recommended "
+"to set it to scan all messages, then go view the INBOX, then come back and "
+"set it to scan unread messages only. That way, the new spam filters will be "
+"applied and even the spam you didn't catch with the old filters will be "
+"scanned."
 msgstr ""
 "Mitä enemmän skannaat sitä kauemmin se kestää. Ehdottaisin että skannaat "
 "vain uudet viestit. Jos muutat asetuksiasi niin muuta silloin hetkellisesti "
 "päälle kaikkien viestien skannaus, skannaa kansiosi, ja palauta skannaus "
 "takaisin vain uusille viesteille."
 
-#, c-format
-msgid "Spam is sent to <b>%s</b>"
+#, fuzzy, c-format
+msgid "Spam is sent to %s."
 msgstr "Roskaposti lähetty vastaanottajalle: <b>%s</b>"
 
-msgid "[<i>not set yet</i>]"
+#, fuzzy
+msgid "not set yet"
 msgstr "[<i>ei vielä asetettu</i>]"
 
-#, c-format
-msgid "Spam scan is limited to <b>%s</b>"
+#, fuzzy, c-format
+msgid "Spam scan is limited to %s."
 msgstr "Roskapostin skannaus rajoitettu: <b>%s</b>"
-
-msgid "New Messages Only"
-msgstr "Vain Uudet Viestit"
-
-msgid "All Messages"
-msgstr "Kaikki Viestit"
 
 msgid "ON"
 msgstr "PÄÄLLÄ"
@@ -2391,29 +2631,33 @@ msgstr "PÄÄLLÄ"
 msgid "OFF"
 msgstr "POIS PÄÄLTÄ"
 
-#, fuzzy
-msgid " not found."
-msgstr "Ei virheitä"
+#, fuzzy, c-format
+msgid "%s is not found."
+msgstr " ei löytynyt."
 
 msgid "Today's Fortune"
-msgstr ""
+msgstr "Tämän päivän vinkki"
 
 #, fuzzy
 msgid "Fortunes:"
-msgstr "Portugali"
+msgstr "Vinkit:"
 
 msgid "Show fortunes at top of mailbox"
+msgstr "Näytä vinkit postilaatikon yläpuolella"
+
+msgid "Plugin is disabled."
 msgstr ""
 
 #, fuzzy
 msgid "IMAP server information"
-msgstr "IMAP Palvelimen portti"
+msgstr "IMAP-palvelimen tiedot"
 
+#, fuzzy
 msgid ""
 "Run some test IMAP commands, displaying both the command and the result. "
-"These tests use the Squirrelmail IMAP commands and your current Squirrelmail "
+"These tests use the SquirrelMail IMAP commands and your current SquirrelMail "
 "configuration. Custom command strings can be used."
-msgstr ""
+msgstr "Testaa joitakin IMAP-komentoja ja niiden vastauksia."
 
 msgid "Mailinglist"
 msgstr "Postituslista"
@@ -2424,7 +2668,7 @@ msgid ""
 "receive an emailed response at the address below."
 msgstr ""
 "Lähettää viestin vastaanottajalle %s ja pyytää apua listan käytöstä. Saat "
-"vastauksen allaolevaan osoitteeseen."
+"vastauksen sähköpostitse alla olevaan osoitteeseen."
 
 #, c-format
 msgid ""
@@ -2452,7 +2696,7 @@ msgid "Reply to List"
 msgstr "Vastaa listaosoitteeseen"
 
 msgid "List Archives"
-msgstr "Listaa Arkkiivit"
+msgstr "Listaa arkistot"
 
 msgid "Contact Listowner"
 msgstr "Ota yhteys listan omistajaan"
@@ -2469,12 +2713,6 @@ msgstr "Palvelinta ei määritelty"
 
 msgid "Error "
 msgstr "Virhe "
-
-msgid "POP3 noop:"
-msgstr ""
-
-msgid "No connection to server"
-msgstr "Ei yhteyttä palvelimeen"
 
 msgid "POP3 user:"
 msgstr "POP3 käyttäjä:"
@@ -2495,7 +2733,10 @@ msgid "authentication failed "
 msgstr "käyttäjän tarkastus epäonnistui"
 
 msgid "POP3 apop:"
-msgstr ""
+msgstr "POP3 apop:"
+
+msgid "No connection to server"
+msgstr "Ei yhteyttä palvelimeen"
 
 msgid "No login ID submitted"
 msgstr "Käyttäjätunnus puuttuu"
@@ -2522,31 +2763,31 @@ msgid "Premature end of list"
 msgstr "Lista keskeneräinen"
 
 msgid "POP3 get:"
-msgstr "POP3 haku:"
+msgstr "POP3 get:"
 
 msgid "POP3 last:"
-msgstr "POP3 viimeinen:"
+msgstr "POP3 last:"
 
 msgid "POP3 reset:"
-msgstr "POP3 palautus:"
+msgstr "POP3 reset:"
 
 msgid "POP3 send_cmd:"
-msgstr "POP3 lähetyskomento:"
+msgstr "POP3 send_cmd:"
 
 msgid "Empty command string"
 msgstr "Tyhjä komento:"
 
 msgid "POP3 quit:"
-msgstr "POP3 lopetus:"
+msgstr "POP3 quit:"
 
 msgid "connection does not exist"
 msgstr "ei yhteyttä"
 
 msgid "POP3 uidl:"
-msgstr ""
+msgstr "POP3 uidl:"
 
 msgid "POP3 delete:"
-msgstr "POP3 poisto:"
+msgstr "POP3 delete:"
 
 msgid "No msg number submitted"
 msgstr "Ei viestinumeroa"
@@ -2561,7 +2802,7 @@ msgid "Select Server:"
 msgstr "Valitse Palvelin:"
 
 msgid "Password for"
-msgstr "Tunnussana:"
+msgstr "Salasana tunnukselle"
 
 msgid "Fetch Mail"
 msgstr "Lataa Viestit"
@@ -2573,10 +2814,10 @@ msgid "Oops, "
 msgstr "Hups,"
 
 msgid "Opening IMAP server"
-msgstr "Yhteys IMAP palvelimeen"
+msgstr "Yhteys IMAP-palvelimeen"
 
 msgid "Opening POP server"
-msgstr "Yhteys POP palvelimeen"
+msgstr "Yhteys POP-palvelimeen"
 
 msgid "Login Failed:"
 msgstr "Sisäänkirjoittautuminen epäonnistui:"
@@ -2587,11 +2828,9 @@ msgstr "Sisäänkirjoittautuminen oikein: Ei uusia viestejä"
 msgid "Login OK: Inbox EMPTY"
 msgstr "Sisäänkirjoittautuminen oikein: INBOX tyhjä"
 
-msgid "Login OK: Inbox contains ["
+#, fuzzy, c-format
+msgid "Login OK: Inbox contains %s messages"
 msgstr "Sisäänkirjoittautuminen oikein: INBOXissa ["
-
-msgid "] messages"
-msgstr "] viestiä"
 
 msgid "Fetching UIDL..."
 msgstr "Ladataan UIDL"
@@ -2609,10 +2848,10 @@ msgid "Fetching message "
 msgstr "Ladataan viesti"
 
 msgid "Server error...Disconnect"
-msgstr ""
+msgstr "Palvelinvirhe...Katkaisu"
 
 msgid "Reconnect from dead connection"
-msgstr ""
+msgstr "Uusi yhteys"
 
 msgid "Saving UIDL"
 msgstr "Talletetaan UIDL"
@@ -2634,7 +2873,7 @@ msgid "Message appended to mailbox"
 msgstr "Viesti lisätty kansioon"
 
 msgid "Message "
-msgstr "Viesti"
+msgstr "Viesti "
 
 msgid " deleted from Remote Server!"
 msgstr " poistettu palvelimesta!"
@@ -2647,19 +2886,19 @@ msgstr "POP palvelimen asetukset"
 
 msgid ""
 "You should be aware that the encryption used to store your password is not "
-"perfectly secure.  However, if you are using pop, there is inherently no "
+"perfectly secure. However, if you are using pop, there is inherently no "
 "encryption anyway. Additionally, the encryption that we do to save it on the "
 "server can be undone by a hacker reading the source to this file."
 msgstr ""
 "Huomaa että salasanasi suojaus ei ole täydellinen. Jos käytät POP palvelinta "
-"niin silloin suojausta ei ole ollenkaan. Suojaus on "
-"valitettavastimahdollista murtaa lukemalla ja ymmärtämällä tämä tiedosto."
+"niin silloin suojausta ei ole lainkaan. Suojaus on valitettavasti "
+"mahdollista murtaa lukemalla ja ymmärtämällä tämä tiedosto."
 
 msgid "If you leave password empty, it will be required when you fetch mail."
 msgstr "Jos et laita tähän salasanaa niin sitä kysytään viestejä haettaessa."
 
 msgid "Encrypt passwords (informative only)"
-msgstr "Suojaa salasanat (vain informaatioksi)"
+msgstr "Salaa salasanat (vain tiedoksi)"
 
 msgid "Add Server"
 msgstr "Lisää Palvelin"
@@ -2669,7 +2908,7 @@ msgstr "Palvelin:"
 
 #, fuzzy
 msgid "Port:"
-msgstr "Prioriteetti:"
+msgstr "Portti:"
 
 msgid "Alias:"
 msgstr "Lempinimi:"
@@ -2684,7 +2923,7 @@ msgid "Leave Mail on Server"
 msgstr "Jätä Viestit Palvelimeen"
 
 msgid "Check mail during login"
-msgstr "Tarkista viestit sisäänkirjoittauduttaessa"
+msgstr "Tarkista viestit sisäänkirjauduttaessa"
 
 msgid "Check mail during folder refresh"
 msgstr "Tarkista viestit kansion päivityksen aikana"
@@ -2693,7 +2932,7 @@ msgid "Modify Server"
 msgstr "Muuta Palvelinta"
 
 msgid "Server Name:"
-msgstr "Palvelimen nimi: "
+msgstr "Palvelimen nimi:"
 
 msgid "Modify"
 msgstr "Muokkaa"
@@ -2731,11 +2970,13 @@ msgstr "Varoitus, "
 msgid "Mail Fetch Result:"
 msgstr "Viestien haun Tulokset:"
 
-msgid "Simple POP3 Fetch Mail"
+#, fuzzy
+msgid "POP3 Fetch Mail"
 msgstr "Tavallinen POP3 Viestinhaku"
 
+#, fuzzy
 msgid ""
-"This configures settings for downloading email from a pop3 mailbox to your "
+"This configures settings for downloading email from a POP3 mailbox to your "
 "account on this server."
 msgstr ""
 "Tässä asetukset viestien hakuun POP3 postilaatikolta tämän palvelimen "
@@ -2744,6 +2985,23 @@ msgstr ""
 #, fuzzy
 msgid "Message Details"
 msgstr "Viestilista"
+
+msgid "Bodystructure"
+msgstr ""
+
+#, fuzzy
+msgid "Entity"
+msgstr "Muokkaa"
+
+msgid "Content-Type"
+msgstr ""
+
+msgid "Encoding"
+msgstr ""
+
+#, fuzzy
+msgid "RFC822 Message body"
+msgstr "Viestin jälkeen"
 
 msgid "Close Window"
 msgstr "Sulje ikkuna"
@@ -2759,87 +3017,93 @@ msgstr "Näytä viesti"
 msgid "New Mail Notification"
 msgstr "Uusien Viestien Esitys"
 
+#, fuzzy, c-format
 msgid ""
-"Select <b>Enable Media Playing</b> to turn on playing a media file when "
-"unseen mail is in your folders. When enabled, you can specify the media file "
-"to play in the provided file box."
-msgstr ""
-"Valitse <b>Käytä Multimediaa</b> jos haluat soittaa multimediatiedoston "
-"uusien viestien saapuessa. Voit valita haluamasi multimediatiedoston, "
-"esimerkiksi jonkin äänitiedoston."
-
-msgid ""
-"The <b>Check all boxes, not just INBOX</b> option will check ALL of your "
-"folders for unseen mail, not just the inbox for notification."
+"The %s option will check ALL of your folders for unseen mail, not just the "
+"inbox for notification."
 msgstr ""
 "<b>Tarkista kaikki kansiot, ei ainosastaan INBOX</b> jos haluat että uusien "
 "viestien ilmoitus koskee kaikkia kansioitasi."
 
+msgid "Check all boxes, not just INBOX"
+msgstr "Tarkista kaikki kansiot, ei ainosastaan INBOX"
+
+#, fuzzy, c-format
 msgid ""
-"Selecting the <b>Show popup</b> option will enable the showing of a popup "
-"window when unseen mail is in your folders (requires JavaScript)."
+"Selecting the %s option will enable the showing of a popup window when "
+"unseen mail is in your folders (requires JavaScript)."
 msgstr ""
 "Valitsemalla <b>Näytä ilmoitusruutu<b> asetuksella uusi ikkuna avautuu jos "
 "kansioihisi on tullut uusia viestejä (vaatii JavaScriptin)."
 
+msgid "Show popup window on new mail"
+msgstr "Näytä uudessa ikkunassa ilmoitus uusista viesteistä"
+
+#, fuzzy, c-format
 msgid ""
-"Use the <b>Check RECENT</b> to only check for messages that are recent. "
-"Recent messages are those that have just recently showed up and have not "
-"been \"viewed\" or checked yet.  This can prevent being continuously annoyed "
-"by sounds or popups for unseen mail."
+"Use the %s option to only check for messages that are recent. Recent "
+"messages are those that have just recently showed up and have not been "
+"\"viewed\" or checked yet. This can prevent being continuously annoyed by "
+"sounds or popups for unseen mail."
 msgstr ""
 "Käytä <b>Tarkista viimeisimmät</b> tarkistaaksesi viimeisimmät viestit. "
 "Viimeisimmät viestit ovat ne jotka ovat saapuneet mutta joita ei ole vielä "
-"\"luettu\" tai tarkistettu. Tällä voi välttyä jatkuvalta piippitykseltä "
+"\"luettu\" tai tarkistettu. Tällä voi välttyä jatkuvalta piipitykseltä "
 "uusien viestien saapuessa."
 
+msgid "Count only messages that are RECENT"
+msgstr "Ota huomioon vain viimeisimmät viestit"
+
+#, fuzzy, c-format
 msgid ""
-"Selecting the <b>Change title</b> option will change the title in some "
-"browsers to let you know when you have new mail (requires JavaScript, and "
-"only works in IE but you won't see errors with other browsers).  This will "
-"always tell you if you have new mail, even if you have <b>Check RECENT</b> "
-"enabled."
+"Selecting the %s option will change the title in some browsers to let you "
+"know when you have new mail (requires JavaScript, and only works in IE but "
+"you won't see errors with other browsers). This will always tell you if you "
+"have new mail, even if you have %s enabled."
 msgstr ""
-"Valitsemalla <b>Vaihda otsikko</b> saadaan Internet Explorerin otsake "
+"Valitsemalla <b>Vaihda otsikko</b> saadaan Internet Explorerin otsikkorivi "
 "vaihtumaan uusien viestien saapuessa (vaatii JavaScriptin, ei aiheuta "
 "virheitä muissa selaimissa vaikka näistä toiminto puuttuu). Tämän "
 "valitsemalla näet aina jos sinulla on uusia viestejä, jopa silloin kun "
 "<b>Tarkista viimeisimmät</b> on käytössä."
 
 #, fuzzy
+msgid "Change title on supported browsers"
+msgstr "Vaihda otsikkorivi selaimissa jotka tätä tukevat."
+
+#, fuzzy, c-format
 msgid ""
-"Select from the list of <b>server files</b> the media file to play when new "
-"mail arrives.  If no file is specified, \"(none)\", no sound will be used."
+"Select %s to turn on playing a media file when unseen mail is in your "
+"folders. When enabled, you can specify the media file to play in the "
+"provided file box."
+msgstr ""
+"Valitse <b>Käytä Multimediaa</b> jos haluat soittaa multimediatiedoston "
+"uusien viestien saapuessa. Voit valita haluamasi multimediatiedoston, "
+"esimerkiksi jonkin äänitiedoston."
+
+msgid "Enable Media Playing"
+msgstr "Käytä Multimediaa"
+
+#, fuzzy, c-format
+msgid ""
+"Select from the list of %s the media file to play when new mail arrives. If "
+"no file is specified, %s, no sound will be used."
 msgstr ""
 "Valitse <b>palvelimen tiedostot</b> listalta multimediatiedosto joka "
 "soitetaan uusien viestien saapuessa. Valitsemalla <b>paikallinen "
 "multimediatiedosto</b> voit käyttää omassa koneessasi olevia tiedostoja. Jos "
 "et valitse mitään niin palvelimen oletustiedosto otetaan käyttöön."
 
-msgid "Enable Media Playing"
-msgstr "Käytä Multimediaa"
-
-msgid "Check all boxes, not just INBOX"
-msgstr "Tarkista kaikki kansiot, ei ainosastaan INBOX"
-
-msgid "Count only messages that are RECENT"
-msgstr "Ota huomioon vain viimeisimmät viestit"
-
-msgid "Change title on supported browsers."
-msgstr "Vaihda otsake selaimissa jotka tätä tukevat."
-
-msgid "requires JavaScript to work"
-msgstr "vatii JavaScriptin"
-
-msgid "Show popup window on new mail"
-msgstr "Näytä uudessa ikkunassa ilmoitus uusista viesteistä"
-
-msgid "Select server file:"
+#, fuzzy
+msgid "Select server file"
 msgstr "Valitse palvelimen tiedosto:"
 
 #, fuzzy
 msgid "(none)"
 msgstr "----"
+
+msgid "requires JavaScript to work"
+msgstr "vatii JavaScriptin"
 
 msgid "Try"
 msgstr "Kokeile"
@@ -2853,7 +3117,12 @@ msgstr "Uusi viesti"
 msgid "SquirrelMail Notice:"
 msgstr "SquirrelMail Merkintö:"
 
-msgid "You have new mail!"
+#, fuzzy, c-format
+msgid "You have %s new message"
+msgstr "Olet saanut uusia viestejä!"
+
+#, fuzzy, c-format
+msgid "You have %s new messages"
 msgstr "Olet saanut uusia viestejä!"
 
 msgid "NewMail Options"
@@ -2865,9 +3134,6 @@ msgid ""
 msgstr ""
 "Tässä setuksia äänien ja/tai ikkunailmoitusten käytöstä kun uusia viestejä "
 "on tullut kansioihin."
-
-msgid "New Mail Notification options saved"
-msgstr "Uusien Viestien Ilmoitusasetukset talletettu"
 
 #, c-format
 msgid "%s New Messages"
@@ -2882,7 +3148,7 @@ msgstr "Kokeile Ääntä"
 
 #, fuzzy
 msgid "No sound specified"
-msgstr "Palvelinta ei määritelty"
+msgstr "Ääntä ei määritelty"
 
 msgid "Loading the sound..."
 msgstr "Ladataan ääntä..."
@@ -2905,17 +3171,179 @@ msgstr "Vuosittain"
 msgid "Base Sent Folder"
 msgstr "Lähetettyjen Peruskansio:"
 
-msgid "Report as Spam"
+#, fuzzy
+msgid "Enabled"
+msgstr "Ei käytössä"
+
+#, fuzzy
+msgid "Disable it"
+msgstr "Ei käytössä"
+
+msgid "Enable it"
 msgstr ""
 
-msgid "SpamCop - Spam Reporting"
+#, fuzzy
+msgid "Spam reporting"
+msgstr "Roskapostin Suodatus"
+
+msgid "SpamCop link is:"
+msgstr ""
+
+#, fuzzy
+msgid "Delete spam when reported:"
+msgstr "Poista valitut"
+
+msgid "Only works with email-based reporting"
+msgstr ""
+
+#, fuzzy
+msgid "Spam Reporting Method:"
+msgstr "SpamCop - raportointi"
+
+msgid "Quick email-based reporting"
+msgstr ""
+
+msgid "Thorough email-based reporting"
+msgstr ""
+
+msgid "Web-based form"
+msgstr ""
+
+#, fuzzy
+msgid "Save Method"
+msgstr "Näytä viesti"
+
+msgid "Your SpamCop authorization code:"
+msgstr ""
+
+msgid "see below"
+msgstr ""
+
+#, fuzzy
+msgid "Save ID"
+msgstr "Talleta"
+
+msgid "About SpamCop"
 msgstr ""
 
 msgid ""
-"Help fight the battle against unsolicited email.  SpamCop reads the spam "
-"email and determines the correct addresses to send complaints to.  Quite "
+"SpamCop is a free service that greatly assists in finding the true source of "
+"the spam and helps in letting the proper people know about the abuse."
+msgstr ""
+
+#, c-format
+msgid ""
+"To use it, you must get a SpamCop authorization code. There is a free %ssign "
+"up page%s so you can use SpamCop."
+msgstr ""
+
+msgid "Before you sign up, be warned"
+msgstr ""
+
+#, c-format
+msgid ""
+"Some users have reported that the email addresses used with SpamCop find "
+"their way onto spam lists. To be safe, you can just create an email "
+"forwarding account and have all SpamCop reports get sent to there. Also, if "
+"it gets flooded with spam, you can then just delete that account with no "
+"worries about losing your real email address. Just go create an email "
+"forwarder somewhere (%s has a %slist of places%s) so that messages from "
+"system administrators and what not can be sent to you."
+msgstr ""
+
+msgid ""
+"Once you have signed up with SpamCop and have received your SpamCop "
+"authorization code, you need to enable this plugin by clicking the link "
+"above. Once enabled, you go about your normal life. If you encounter a spam "
+"message in your mailbox, just view it. On the right-hand side, near the top "
+"of where the message is displayed, you will see a link to report this "
+"message as spam. Clicking on it brings you to a confirmation page. "
+"Confirming that you want the spam report sent will do different things with "
+"different reporting methods."
+msgstr ""
+
+msgid "Email-based reporting"
+msgstr ""
+
+msgid ""
+"Pressing the button forwards the message to the SpamCop service and will "
+"optionally delete the message. From there, you just need to go to your INBOX "
+"and quite soon a message should appear from SpamCop. (It gets sent to the "
+"account you registered with, so make sure that your mail forwarder works!) "
+"Open it up, click on the appropriate link at the top, and a new browser "
+"window will open."
+msgstr ""
+
+msgid ""
+"Currently, the quick reporting just forwards the request to the thorough "
+"reporting. Also, it appears that this is for members (non-free) only. "
+"Hopefully this will change soon."
+msgstr ""
+
+msgid "Web-based reporting"
+msgstr ""
+
+msgid ""
+"When you press the button on the confirmation page, this will pop open a new "
+"browser window and the SpamCop service should appear inside. The message "
+"will not be deleted (working on that part), but you won't need to wait for a "
+"response email to start the spam reporting."
+msgstr ""
+
+msgid ""
+"The SpamCop service will display information as it finds it, so scroll down "
+"until you see a form button. It might pause a little while it is looking up "
+"information, so be a little patient. Read what it says, and submit the spam. "
+"Close the browser window. Press Cancel or click on the appropriate mail "
+"folder to see messages and/or delete the spam."
+msgstr ""
+
+msgid "SpamCop service type"
+msgstr ""
+
+msgid ""
+"Service type option allows selecting which SpamCop services you are using. "
+"Member services use different web reporting forms and does not display nags. "
+"You can purchase these services, if you want to support SpamCop."
+msgstr ""
+
+#, fuzzy
+msgid "More information"
+msgstr "IMAP-palvelimen tiedot"
+
+#, c-format
+msgid ""
+"For more information about SpamCop, it's services, spam in general, and many "
+"related topics, try reading through SpamCop's %sHelp and Feedback%s section."
+msgstr ""
+
+msgid "Report as Spam"
+msgstr "Ilmoita roskapostiksi"
+
+msgid "SpamCop - Spam Reporting"
+msgstr "SpamCop - raportointi"
+
+msgid ""
+"Help fight the battle against unsolicited email. SpamCop reads the spam "
+"email and determines the correct addresses to send complaints to. Quite "
 "fast, really smart, and easy to use."
 msgstr ""
+"SpamCop lähettää valituksen ilmoittamastati viestistä löytämiinsä "
+"yhteysosoitteisiin."
+
+msgid ""
+"Sending this spam report will give you back a reply with URLs that you can "
+"click on to properly report this spam message to the proper authorities. "
+"This is a free service. By pressing the \"Send Spam Report\" button, you "
+"agree to follow SpamCop's rules/terms of service/etc."
+msgstr ""
+
+msgid "Cancel / Done"
+msgstr ""
+
+#, fuzzy
+msgid "Send Spam Report"
+msgstr "SpamCop - raportointi"
 
 msgid "SpellChecker Options"
 msgstr "Oikeinkirjoituksen tarkistuksen Asetukset"
@@ -2936,15 +3364,16 @@ msgstr "Takaisin &quot;Oikeinkirjoitusasetuksiin&quot; sivu"
 msgid "ATTENTION:"
 msgstr "HUOMIO:"
 
+#, fuzzy
 msgid ""
 "SquirrelSpell was unable to decrypt your personal dictionary. This is most "
 "likely due to the fact that you have changed your mailbox password. In order "
 "to proceed, you will have to supply your old password so that SquirrelSpell "
 "can decrypt your personal dictionary. It will be re-encrypted with your new "
-"password after this.<br>If you haven't encrypted your dictionary, then it "
-"got mangled and is no longer valid. You will have to delete it and start "
-"anew. This is also true if you don't remember your old password -- without "
-"it, the encrypted data is no longer accessible."
+"password after this. If you haven't encrypted your dictionary, then it got "
+"mangled and is no longer valid. You will have to delete it and start anew. "
+"This is also true if you don't remember your old password -- without it, the "
+"encrypted data is no longer accessible."
 msgstr ""
 "SquirrelSpell ei pystynyt lukemaan henkilökohtaista sanastoasi. Tämän "
 "luultavin syy on se että olet vaihtanut salasanasi. Voit jatkaa antamalla "
@@ -2968,7 +3397,7 @@ msgstr "Sinun on valittava yksi vaihtoehdoista"
 
 msgid ""
 "You can either delete your dictionary or type in the old password. Not both."
-msgstr "Voit joko poistaa sanaston tai antaa vanhan tunnussanasi. Ei Molempia."
+msgstr "Voit joko poistaa sanaston tai antaa vanhan salasanasi. Ei Molempia."
 
 msgid "This will delete your personal dictionary file. Proceed?"
 msgstr "Tämä poistaa henkilökohtaisen sanastotiedoston. Jatketaanko?"
@@ -2981,14 +3410,11 @@ msgstr "Hienoa."
 
 #, c-format
 msgid "I tried to execute '%s', but it returned:"
-msgstr ""
+msgstr "Yritin suorittaa '%s', mutta se palautti:"
 
 #, fuzzy
 msgid "SquirrelSpell is misconfigured."
 msgstr "SquirrelSpell Asetusmenu"
-
-msgid "SquirrelSpell Results"
-msgstr "SquirrelSpell Tulokset"
 
 msgid "Spellcheck completed. Commit changes?"
 msgstr "Oikeinkirjoituksen tarkistus valmis. Tehdäänkö muutokset?"
@@ -2998,6 +3424,9 @@ msgstr "Ei muutoksia."
 
 msgid "Now saving your personal dictionary... Please wait."
 msgstr "Henkilökohtainen sanastosi talletetaan... Odota."
+
+msgid "SquirrelSpell Results"
+msgstr "SquirrelSpell Tulokset"
 
 #, c-format
 msgid "Found %s errors"
@@ -3090,7 +3519,8 @@ msgstr ""
 "Sanastosi uudelleentalletus onnistui. Palaa &quot;"
 "Oikeikirjoitusasetuksiin&quot; ja tee valintasi uudelleen."
 
-msgid "Successful Re-encryption"
+#, fuzzy
+msgid "Successful re-encryption"
 msgstr "Uudelleentalletus Onnistui"
 
 msgid ""
@@ -3104,16 +3534,17 @@ msgstr ""
 msgid "Dictionary re-encrypted"
 msgstr "Sanasto uudelleentalletettu"
 
+#, fuzzy
 msgid ""
-"Your personal dictionary has been <strong>encrypted</strong> and is now "
-"stored in an <strong>encrypted format</strong>."
+"Your personal dictionary has been encrypted and is now stored in an "
+"encrypted format."
 msgstr ""
 "Sanastosi on <strong>suojattu</strong> ja talletettu <strong>suojatussa "
 "muodossa</strong>."
 
+#, fuzzy
 msgid ""
-"Your personal dictionary has been <strong>decrypted</strong> and is now "
-"stored as <strong>clear text</strong>."
+"Your personal dictionary has been decrypted and is now stored as plain text."
 msgstr ""
 "Sanastosio on <strong>avattu</strong> ja talletettu <strong>avoimena</strong>"
 
@@ -3147,29 +3578,29 @@ msgid ""
 "format. Proceed?"
 msgstr "Tallettaa henkilökohtaisen sanastosi suojatussa muodossa. Jatketaanko?"
 
+#, fuzzy
 msgid ""
-"This will decrypt your personal dictionary and store it in a clear-text "
+"This will decrypt your personal dictionary and store it in a plain text "
 "format. Proceed?"
 msgstr "Avaa oman sanastosi ja tallettaa se avoimessa muodossa. Jatketaanko?"
 
+#, fuzzy
+msgid "Your personal dictionary is currently encrypted."
+msgstr "Sanastosi poistettu."
+
 msgid ""
-"<p>Your personal dictionary is <strong>currently encrypted</strong>. This "
-"helps protect your privacy in case the web-mail system gets compromized and "
-"your personal dictionary ends up stolen. It is currently encrypted with the "
-"password you use to access your mailbox, making it hard for anyone to see "
-"what is stored in your personal dictionary.</p> <p><strong>ATTENTION:</"
-"strong> If you forget your password, your personal dictionary will become "
+"This helps protect your privacy in case the web-mail system gets compromized "
+"and your personal dictionary ends up stolen. It is currently encrypted with "
+"the password you use to access your mailbox, making it hard for anyone to "
+"see what is stored in your personal dictionary."
+msgstr ""
+
+msgid ""
+"If you forget your password, your personal dictionary will become "
 "unaccessible, since it can no longer be decrypted. If you change your "
 "mailbox password, SquirrelSpell will recognize it and prompt you for your "
-"old password in order to re-encrypt the dictionary with a new key.</p>"
+"old password in order to re-encrypt the dictionary with a new key."
 msgstr ""
-"<p>Oma sanastosi on <strong>suojattu</strong>. Tämän ansiosta sitä ei pysty "
-"kuka tahansa lukemaan, esim silloin jos joku murtautuu sisään "
-"webmailsysteemiin ja kopioi sen. Sanastosi on suojattu samalla salasanalla "
-"kuin kirjoittaudut sisään webmailiin. </p> <p><strong>HUOMIO:</strong> jos "
-"unohdat salasanasi niin et pysty itsekään käyttämään omaa sanastoasi. Jos "
-"vaihdat salasanasi niin SquirrelSpell pyytää sinulta vanhan salasanan jotta "
-"oma sanastosi voidaan avata ja suojata uudella salasanallasi.</p>"
 
 msgid ""
 "Please decrypt my personal dictionary and store it in a clear-text format."
@@ -3178,20 +3609,26 @@ msgstr "Avaa oma sanastoni ja talleta se avoimessa muodossa."
 msgid "Change crypto settings"
 msgstr "Muuta suojausasetuksia"
 
+#, fuzzy
+msgid "Your personal dictionary is currently not encrypted."
+msgstr "Sanastosi poistettu."
+
 msgid ""
-"<p>Your personal dictionary is <strong>currently not encrypted</strong>. You "
-"may wish to encrypt your personal dictionary to protect your privacy in case "
-"the webmail system gets compromized and your personal dictionary file gets "
-"stolen. When encrypted, the file's contents look garbled and are hard to "
-"decrypt without knowing the correct key (which is your mailbox password).</"
-"p> <strong>ATTENTION:</strong> If you decide to encrypt your personal "
-"dictionary, you must remember that it gets &quot;hashed&quot; with your "
-"mailbox password. If you forget your mailbox password and the administrator "
-"changes it to a new value, your personal dictionary will become useless and "
-"will have to be created anew. However, if you or your system administrator "
-"change your mailbox password but you still have the old password at hand, "
-"you will be able to enter the old key to re-encrypt the dictionary with the "
-"new value.</p>"
+"You may wish to encrypt your personal dictionary to protect your privacy in "
+"case the webmail system gets compromized and your personal dictionary file "
+"gets stolen. When encrypted, the file's contents look garbled and are hard "
+"to decrypt without knowing the correct key (which is your mailbox password)."
+msgstr ""
+
+#, fuzzy
+msgid ""
+"If you decide to encrypt your personal dictionary, you must remember that it "
+"gets &quot;hashed&quot; with your mailbox password. If you forget your "
+"mailbox password and the administrator changes it to a new value, your "
+"personal dictionary will become useless and will have to be created anew. "
+"However, if you or your system administrator change your mailbox password "
+"but you still have the old password at hand, you will be able to enter the "
+"old key to re-encrypt the dictionary with the new value."
 msgstr ""
 "<p>Oma sanastosi on <strong>talletettu avoimena</strong>. Voit haluta "
 "suojata sen niin ettei kukaan muu pysty sitä lukemaan jos esimerkiksi "
@@ -3208,8 +3645,8 @@ msgid ""
 "Please encrypt my personal dictionary and store it in an encrypted format."
 msgstr "Talleta sanastoni suojatussa muodossa."
 
-#, c-format
-msgid "Deleting the following entries from <strong>%s</strong> dictionary:"
+#, fuzzy, c-format
+msgid "Deleting the following entries from %s dictionary:"
 msgstr "Poistetaan seuraavat <strong>%s</strong> sanastostasi:"
 
 msgid "All done!"
@@ -3234,16 +3671,14 @@ msgstr ""
 msgid "SquirrelSpell Initiating"
 msgstr "SquirrelSpell Alustus"
 
-#, c-format
-msgid ""
-"Settings adjusted to: <strong>%s</strong> with <strong>%s</strong> as "
-"default dictionary."
+#, fuzzy, c-format
+msgid "Settings adjusted to: %s with %s as default dictionary."
 msgstr ""
 "Asetettu: <strong>%s</strong> ja <strong>%s</strong> käytettäväksi "
 "sanastoksi."
 
-#, c-format
-msgid "Using <strong>%s</strong> dictionary (system default) for spellcheck."
+#, fuzzy, c-format
+msgid "Using %s dictionary (system default) for spellcheck."
 msgstr "Käytössä <strong>%s</strong> sanasto (systeemin oletusarvo)."
 
 msgid "International Dictionaries Preferences Updated"
@@ -3257,7 +3692,7 @@ msgstr ""
 "oikeinkirjoituksen tarkistuksessa:"
 
 msgid "Make this dictionary my default selection:"
-msgstr "Aseta tämä sanaso oletusarvoksi:"
+msgstr "Aseta tämä sanasto oletusarvoksi:"
 
 msgid "Make these changes"
 msgstr "Tee nämä muutokset"
@@ -3295,40 +3730,33 @@ msgid "Your server options are as follows:"
 msgstr "Palvelinasetuksesi ovat seuraavat:"
 
 #, fuzzy
-msgid "Maximum of 1000 characters translated, powered by Systran"
-msgstr "13 kieliparia, maksimi 1000 merkkiä käännetty, tehty Systranilla"
+msgid "Maximum of 150 words translated, powered by Systran"
+msgstr "Maksimi 1000 merkkiä käännetty, tehty Systranilla"
 
 #, c-format
 msgid "Number of supported language pairs: %s"
-msgstr ""
+msgstr "Tuettuja kielipareja: %s"
 
 #, fuzzy
 msgid "No known limits, powered by Systran"
-msgstr "12 kieliparia, ei tunnettuja rajoituksia, tehty Systranilla"
+msgstr "Ei tunnettuja rajoituksia, tehty Systranilla"
 
 #, fuzzy
-msgid "No known limits, powered by Translation Experts's InterTran"
-msgstr ""
-"767 kieliparia, ei tunnettuja rajoituksia, tehty Translation Experts "
-"InterTranilla"
+msgid "No known limits, powered by Translation Experts' InterTran"
+msgstr "Ei tunnettuja rajoituksia, tehty Translation Experts InterTranilla"
 
 #, c-format
 msgid "Number of supported languages: %s"
-msgstr ""
-
-#, fuzzy
-msgid "No known limits, powered by GPLTrans (free, open source)"
-msgstr ""
-"8 kieliparia, ei tunnettuja rajoituksia, tehty GPLTransilla (vapaa, open "
-"source)"
+msgstr "Tuettuja kielipareja: %s"
 
 #, fuzzy
 msgid "Hellenic translations, no known limits, powered by Systran"
-msgstr "12 kieliparia, ei tunnettuja rajoituksia, tehty Systranilla"
+msgstr "Helleeniset käännökset, ei tunnettuja rajoituksia, tehty Systranilla"
 
 #, fuzzy
 msgid "Russian translations, maximum of 500 characters translated"
-msgstr "13 kieliparia, maksimi 1000 merkkiä käännetty, tehty Systranilla"
+msgstr ""
+"Venäläiset käännökset, maksimi 500 merkkiä käännetty, tehty Systranilla"
 
 msgid ""
 "You also decide if you want the translation box displayed, and where it will "
@@ -3356,12 +3784,6 @@ msgstr "oikealla"
 msgid "Translate inside the SquirrelMail frames"
 msgstr "Käännös SquirrelMail ruutujen sisällä"
 
-msgid "When composing:"
-msgstr "Kirjoitettasessa:"
-
-msgid "Not yet functional, currently does nothing"
-msgstr "Ei vielä käytettävissä"
-
 msgid "Translation Options"
 msgstr "Käännösasetukset"
 
@@ -3374,37 +3796,45 @@ msgstr "Mitä kääntäjää käytetään muunkielisten viestien saapuessa?"
 msgid "%s to %s"
 msgstr "%s -> %s"
 
-msgid "English"
-msgstr "Englanti"
+msgid "Chinese, Simplified"
+msgstr ""
 
-#, fuzzy
-msgid "Chinese"
-msgstr "Vaihda"
+msgid "English"
+msgstr "englanti"
+
+msgid "Chinese, Traditional"
+msgstr ""
+
+msgid "Dutch"
+msgstr "hollanti"
 
 msgid "French"
-msgstr "Ranska"
+msgstr "ranska"
 
 msgid "German"
-msgstr "Saksa"
+msgstr "saksa"
+
+msgid "Greek"
+msgstr "kreikka"
 
 msgid "Italian"
-msgstr "Italia"
+msgstr "italia"
 
 msgid "Japanese"
-msgstr "Japani"
+msgstr "japani"
 
 #, fuzzy
 msgid "Korean"
-msgstr "Norja"
+msgstr "norja"
 
 msgid "Portuguese"
-msgstr "Portugali"
-
-msgid "Spanish"
-msgstr "Espanja"
+msgstr "portugali"
 
 msgid "Russian"
-msgstr "Venäjä"
+msgstr "venäjä"
+
+msgid "Spanish"
+msgstr "espanja"
 
 msgid "Translate"
 msgstr "Käännä"
@@ -3413,89 +3843,177 @@ msgid "Brazilian Portuguese"
 msgstr "Brasilian portugali"
 
 msgid "Bulgarian"
-msgstr "Bulgaria"
+msgstr "bulgaria"
 
 msgid "Croatian"
-msgstr "Kroatia"
+msgstr "kroatia"
 
 msgid "Czech"
-msgstr "Tsekki"
+msgstr "tsekki"
 
 msgid "Danish"
-msgstr "Tanska"
+msgstr "tanska"
 
-msgid "Dutch"
-msgstr "Hollanti"
-
-msgid "European Spanish"
-msgstr "Euroopan espanja"
+msgid "Filipino (Tagalog)"
+msgstr ""
 
 msgid "Finnish"
-msgstr "Suomi"
-
-msgid "Greek"
-msgstr "Kreikka"
+msgstr "suomi"
 
 msgid "Hungarian"
-msgstr "Unkari"
+msgstr "unkari"
 
 msgid "Icelandic"
-msgstr "Islanti"
+msgstr "islanti"
+
+msgid "Latin"
+msgstr "latina"
 
 msgid "Latin American Spanish"
 msgstr "Latinalaisamerikkalainen espanja"
 
 msgid "Norwegian"
-msgstr "Norja"
+msgstr "norja"
 
 msgid "Polish"
-msgstr "Puola"
+msgstr "puola"
 
 msgid "Romanian"
-msgstr "Romania"
+msgstr "romania"
 
 msgid "Serbian"
-msgstr "Serbia"
+msgstr "serbia"
 
 msgid "Slovenian"
-msgstr "Slovenia"
+msgstr "slovenia"
 
 msgid "Swedish"
-msgstr "Ruotsi"
+msgstr "ruotsi"
 
 msgid "Turkish"
-msgstr ""
+msgstr "turkki"
 
 msgid "Welsh"
-msgstr "Wales"
+msgstr "wales"
 
 msgid "Indonesian"
-msgstr "Indonesia"
-
-msgid "Latin"
-msgstr "Latina"
+msgstr "indonesia"
 
 #, fuzzy
 msgid "to English"
-msgstr "Englanti"
+msgstr "englantiin"
 
 #, fuzzy
 msgid "from English"
-msgstr "Englanti"
+msgstr "englannista"
 
 #, fuzzy
 msgid "Interface language"
-msgstr "Oletuskieli"
+msgstr "Käyttökieli"
 
 #, fuzzy
 msgid "Translation direction"
-msgstr "Käännösasetukset"
+msgstr "Käännössuunta"
 
 msgid "Delivery error report"
 msgstr "Perilletoimituksen virheraportti"
 
 msgid "Undelivered Message Headers"
 msgstr "Toimittamattomat Viestiotsakkeet"
+
+msgid "This image has been removed for security reasons"
+msgstr ""
+
+#~ msgid "To:"
+#~ msgstr "Vastaanottaja:"
+
+#~ msgid "CC:"
+#~ msgstr "Kopio (CC):"
+
+#~ msgid "BCC:"
+#~ msgstr "Piilokopio (BCC):"
+
+#~ msgid "Subject:"
+#~ msgstr "Aihe:"
+
+#, fuzzy
+#~ msgid "Draft folder"
+#~ msgstr "Luonnosten Kansio"
+
+#~ msgid "(Check mail)"
+#~ msgstr "(Päivitä)"
+
+#~ msgid "refresh unseen/total info"
+#~ msgstr "päivitä tiedot"
+
+#~ msgid "CC"
+#~ msgstr "Kopio (CC):"
+
+#, fuzzy
+#~ msgid "Search results"
+#~ msgstr "Hakutulokset"
+
+#~ msgid "Please enter something to search for"
+#~ msgstr "Kirjoita ensin etsittävä teksti"
+
+#~ msgid "Business Card"
+#~ msgstr "Käyntikortti"
+
+#~ msgid "Click here to try again"
+#~ msgstr "Klikkaa tästä ja yritä uudestaan"
+
+#~ msgid "Size of Editor Window"
+#~ msgstr "Muokkausikkunan koko"
+
+#~ msgid "All Messages"
+#~ msgstr "Kaikki Viestit"
+
+#~ msgid "POP3 noop:"
+#~ msgstr "POP3 noop:"
+
+#~ msgid "] messages"
+#~ msgstr "] viestiä"
+
+#~ msgid "New Mail Notification options saved"
+#~ msgstr "Uusien Viestien Ilmoitusasetukset talletettu"
+
+#~ msgid ""
+#~ "<p>Your personal dictionary is <strong>currently encrypted</strong>. This "
+#~ "helps protect your privacy in case the web-mail system gets compromized "
+#~ "and your personal dictionary ends up stolen. It is currently encrypted "
+#~ "with the password you use to access your mailbox, making it hard for "
+#~ "anyone to see what is stored in your personal dictionary.</p> "
+#~ "<p><strong>ATTENTION:</strong> If you forget your password, your personal "
+#~ "dictionary will become unaccessible, since it can no longer be decrypted. "
+#~ "If you change your mailbox password, SquirrelSpell will recognize it and "
+#~ "prompt you for your old password in order to re-encrypt the dictionary "
+#~ "with a new key.</p>"
+#~ msgstr ""
+#~ "<p>Oma sanastosi on <strong>suojattu</strong>. Tämän ansiosta sitä ei "
+#~ "pysty kuka tahansa lukemaan, esim silloin jos joku murtautuu sisään "
+#~ "webmailsysteemiin ja kopioi sen. Sanastosi on suojattu samalla "
+#~ "salasanalla kuin kirjoittaudut sisään webmailiin. </p> <p><strong>HUOMIO:"
+#~ "</strong> jos unohdat salasanasi niin et pysty itsekään käyttämään omaa "
+#~ "sanastoasi. Jos vaihdat salasanasi niin SquirrelSpell pyytää sinulta "
+#~ "vanhan salasanan jotta oma sanastosi voidaan avata ja suojata uudella "
+#~ "salasanallasi.</p>"
+
+#, fuzzy
+#~ msgid "No known limits, powered by GPLTrans (free, open source)"
+#~ msgstr "Ei tunnettuja rajoituksia, tehty GPLTransilla (vapaa, open source)"
+
+#~ msgid "When composing:"
+#~ msgstr "Kirjoitettasessa:"
+
+#~ msgid "Not yet functional, currently does nothing"
+#~ msgstr "Ei vielä käytettävissä"
+
+#, fuzzy
+#~ msgid "Chinese"
+#~ msgstr "kiina"
+
+#~ msgid "European Spanish"
+#~ msgstr "Euroopan espanja"
 
 #~ msgid "Unknown message number in reply from server: "
 #~ msgstr "Palvelin vastasi tuntemattomalla viestinumerolla: "
@@ -3510,7 +4028,7 @@ msgstr "Toimittamattomat Viestiotsakkeet"
 #~ msgstr "Varmistettu SMTP"
 
 #~ msgid "35 min."
-#~ msgstr "35 minuuttia"
+#~ msgstr "35 min."
 
 #~ msgid ""
 #~ "FREE - Osirusoft Relays - Osirusofts list of verified open relays. Seems "
@@ -3554,7 +4072,7 @@ msgstr "Toimittamattomat Viestiotsakkeet"
 #~ "users in without confirmation."
 #~ msgstr ""
 #~ "VAPAA - Osirusoft Unconfirmed OptIn Servers - Lista palvelimista jotka "
-#~ "päästävät sisään käyttäjiä ilman konfirmaatiota."
+#~ "lisäävät tilaajia ilman varmistusta."
 
 #~ msgid ""
 #~ "FREE - Osirusoft Insecure formmail.cgi scripts - List of insecure "
@@ -3571,10 +4089,10 @@ msgstr "Toimittamattomat Viestiotsakkeet"
 #~ msgstr "Muokkaa palvelinta"
 
 #~ msgid "(local media)"
-#~ msgstr "(paikallinen multimediatiedosto)"
+#~ msgstr "(paikallinen media)"
 
 #~ msgid "Local Media File:"
-#~ msgstr "Paikallinen Multimediatiedosto:"
+#~ msgstr "Paikallinen Mediatiedosto:"
 
 #~ msgid ""
 #~ "10 language pairs, maximum of 25 kilobytes translated, powered by Systran"
@@ -3584,7 +4102,7 @@ msgstr "Toimittamattomat Viestiotsakkeet"
 #~ msgstr "tyhjä"
 
 #~ msgid "Enable request/confirm reading"
-#~ msgstr "Käytä lukemisen konfirmointia"
+#~ msgstr "Käytä lukemisen vahvistusta"
 
 #~ msgid "Remove MDN flag"
 #~ msgstr "Poista MDN merkintä"
@@ -3593,7 +4111,7 @@ msgstr "Toimittamattomat Viestiotsakkeet"
 #~ msgstr "Ongelmia postipalvelimen yhteydenotossa."
 
 #~ msgid "Contact your administrator for help."
-#~ msgstr "Ota yhteys administraattoriin saadaksesi apua."
+#~ msgstr "Ota yhteys käyttötukeesi saadaksesi apua."
 
 #~ msgid "No Messages found"
 #~ msgstr "Ei löytynyt viestejä"
@@ -3614,9 +4132,9 @@ msgstr "Toimittamattomat Viestiotsakkeet"
 #~ msgstr "Löytyi"
 
 #~ msgid "messages"
-#~ msgstr "viesteissä"
+#~ msgstr "viestiä"
 
-#~ msgid "Error decoding mime structure.  Report this as a bug!"
+#~ msgid "Error decoding mime structure. Report this as a bug!"
 #~ msgstr "MIME-rakenteen avaus epäonnistui. Ohjelmassa on virhe!"
 
 #~ msgid "Submit message"
