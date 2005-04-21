@@ -25,7 +25,7 @@ name="gettext manual"> for more information about gettext.
 <sect1>Translation tools
 <p>
 To translate the actual strings fill in the msgstr after each msgid with the 
-appropiate translation. There are a few tools which can make this job a bit
+appropriate translation. There are a few tools which can make this job a bit
 easier.
 
 <url
@@ -53,7 +53,7 @@ capability of accessing KBabel's powerful dictionaries.
 <sect2>Gtranslator
 <p>
 gtranslator offers a comfortable, colored, and easy way to edit gettext po files
-and all other flavours of po files (po.gz, mo/gmo) with many comfortable
+and all other flavors of po files (po.gz, mo/gmo) with many comfortable
 function like find, replace, autoaccomplishment, query capability and personal
 learn buffer (TM). The GUI also offers you a very nice messages tree to see the
 translations grouped by status (untranslated, fuzzy) and with customizable
@@ -66,7 +66,7 @@ colors for the rows.
 poEdit is cross-platform (Win32/Linux/Unix) gettext catalogs (.po files)
 editor. It is built with the wxWindows toolkit. It aims to provide a convenient
 way of editing gettext catalogs with features such as fuzzy and untranslated
-records highlighting, whitespaces highlighting, references browser, and header
+records highlighting, whitespace highlighting, references browser, and header
 editing, and can also be used to create new catalogs or update existing catalogs
 from source code by a single click.
 
@@ -136,7 +136,7 @@ the help section.
 <p>
 To translate, just copy all the .hlp files from help/en into your new directory
 that you created for this language (i.e. help/pl). You only need to translate
-what is inbetween the tags. Do not translate the actual tags such as
+what is in between the tags. Do not translate the actual tags such as
 &lt;chapter&gt; or &lt;summary&gt;. The tag names need to remain in English. You
 should only translate the text between tags.
 
@@ -206,7 +206,7 @@ by the Unicode consortium.
 <sect1>Translations are not working
 <p>
 If you have gettext support in php, translations will work only if you have
-apropriate system locale.
+appropriate system locale.
 
 <sect1>Some words are not translated
 <p>
@@ -225,7 +225,7 @@ Possible causes are:
 translations. This usually means that your IMAP server does not support charset
 that is used by translation.
 
-Error can be disabled by unsetting following SquirrelMail options:
+Error can be disabled by setting following SquirrelMail options to false:
 <itemize>
  <item>4. General Options -> 11. Allow server thread sort (it is not enabled by
  default)
@@ -235,8 +235,8 @@ Error can be disabled by unsetting following SquirrelMail options:
  default)
 </itemize>
 
-There is one exception. If you are ussing Turkish translation, you can get
-similar errors even when your imap server supports ISO-8859-9 charset. This
+There is one exception. If you are using Turkish translation, you can get
+similar errors even when your IMAP server supports ISO-8859-9 charset. This
 happens due to different small letters to capital letters conversion rules in
 Turkish. See <url
 url="https://sourceforge.net/tracker/?func=detail&amp;aid=690625&amp;group_id=311&amp;atid=100311" 
@@ -281,17 +281,17 @@ function call. SquirrelMail 1.4.3a and later versions use locale
 name with charset information and stores locales in directories without 
 charset information. You must rename directories and include charset 
 information in it or create symbolic links with charset information or
-disable all $langauges[xx_XX]['LOCALE'] code in functions/i18n.php or
+disable all $languages[xx_XX]['LOCALE'] code in functions/i18n.php or
 recompile php to use GNU Gettext libraries.
 
 <sect1>Solaris with GNU gettext libraries
 <p>
-You must set language environtment variables in order to use translations.
+You must set language environment variables in order to use translations.
 SquirrelMail does not set them when php is running is safe mode.
 
 <sect1>OpenBSD
 <p>
-You must set language environtment variables in order to use translations.
+You must set language environment variables in order to use translations.
 SquirrelMail does not set them when php is running is safe mode.
 
 
