@@ -162,9 +162,9 @@ If there is a 2 letter code for the language, use this.
 You may also need country code, that can be found at
 <url url="http://www.iso.org/iso/en/prods-services/iso3166ma/02iso-3166-code-lists/list-en1.html"
 name="http://www.iso.org/iso/en/prods-services/iso3166ma/02iso-3166-code-lists/list-en1.html">
-<sect2>
-Getting the template:
 
+<sect2>Getting the template:
+<p>
 Create a directory <tt>squirrelmail/locale/language_code/LC_MESSAGES/.</tt> 
 Copy <tt>squirrelmail/po/squirrelmail.pot</tt> into this directory and rename it
 to squirrelmail.po. This is the file that is going to be translated.
@@ -173,7 +173,6 @@ to squirrelmail.po. This is the file that is going to be translated.
 <p>
 Translate strings
 
-<sect2>
 Convert the translated squirrelmail.po into a binary file by running the 
 command <tt>"msgfmt -o squirrelmail.mo squirrelmail.po"</tt> in the directory 
 where the translated <tt>squirrelmail.po</tt> is residing. 
