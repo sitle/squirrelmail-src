@@ -932,7 +932,8 @@ while ($curbox < $boxcount) {
 for ($i = 0; $i < count($boxes); $i++) {
     if ( $boxes[$i]['visible'] ) {
         $mailbox = $boxes[$i]['formatted'];
-        $mblevel = substr_count($boxes[$i]['unformatted'], $delimiter) + 1;
+	// remove folder_prefix using substr so folders aren't indented unnecessarily
+        $mblevel = substr_count(substr($boxes[$i]['unformatted'], strlen($folder_prefix)), $delimiter) + 1;
 
         /* Create the prefix for the folder name and link. */
         $prefix = str_repeat('  ',$mblevel);
