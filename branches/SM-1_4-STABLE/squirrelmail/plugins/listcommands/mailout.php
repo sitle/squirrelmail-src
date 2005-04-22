@@ -17,7 +17,7 @@ require_once(SM_PATH . 'include/validate.php');
 include_once(SM_PATH . 'functions/page_header.php');
 include_once(SM_PATH . 'include/load_prefs.php');
 include_once(SM_PATH . 'functions/html.php');
-require_once(SM_PATH . 'functions/identity.php')
+require_once(SM_PATH . 'functions/identity.php');
 
 displayPageHeader($color, $mailbox);
 
