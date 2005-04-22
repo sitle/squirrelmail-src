@@ -19,7 +19,7 @@ include_once(SM_PATH . 'include/load_prefs.php');
 include_once(SM_PATH . 'functions/html.php');
 require_once(SM_PATH . 'functions/identity.php');
 
-displayPageHeader($color, $mailbox);
+displayPageHeader($color, null);
 
 /* get globals */
 sqgetGlobalVar('mailbox', $mailbox, SQ_GET);
