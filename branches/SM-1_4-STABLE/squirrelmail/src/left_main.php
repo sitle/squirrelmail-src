@@ -743,6 +743,7 @@ $xtra .= <<<ECHO
      font-size:1.0em;
      margin-left:4px;
      margin-right:0px;
+     white-space: nowrap;
   }
 
   a.mbx_link {
@@ -765,6 +766,7 @@ $xtra .= <<<ECHO
      margin-left:4px;
      margin-right:0px;
      font-size:0.9em;
+     white-space: nowrap;
   }
 
   .par_area {
