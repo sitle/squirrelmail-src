@@ -90,7 +90,7 @@ function find_mailbox_name ($mailbox) {
  * @return bool whether this is a Noselect mailbox.
  */
 function check_is_noselect ($lsub_line) {
-    return preg_match("/^\* LSUB \([^\)]*\\Noselect[^\)]*\)/i", $lsub_line);
+    return preg_match("/^\* (LSUB|LIST) \([^\)]*\\\\Noselect[^\)]*\)/i", $lsub_line);
 }
 
 /**
