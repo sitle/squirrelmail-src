@@ -83,6 +83,9 @@ Version 1.4.5 - CVS
     (#1187995).
   - Fix folder indenting in message list didn't use folder_prefix (#726719,
     #1013888).
+  - mail_fetch plugin should check destination folder before trying to store 
+    messages in it. INBOX is used as fallback folder. By default plugin
+    can use only subscribed mail folders that can store messages (#584658).
 
 Version 1.4.4 - 21 January 2005
 -------------------------------
