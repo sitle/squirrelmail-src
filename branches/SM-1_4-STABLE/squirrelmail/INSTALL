@@ -21,7 +21,7 @@ Each of these steps is covered in detail below.
 - Unpack the SquirrelMail package in a web-accessible location.
 - Select a data-dir and attachment dir, outside the webtree (e.g. in /var).
   The data-dir (for user prefs) should be owned by the user the webserver
-  runs as (eg www-data). The attachment dir (for uploading files as
+  runs as (e.g. www-data). The attachment dir (for uploading files as
   attachments) should be file mode 0730 and in the same group as the
   webserver.
 - Run config/conf.pl from the command line. Use the D option to load
@@ -42,7 +42,7 @@ Each of these steps is covered in detail below.
   You can find PHP at http://www.php.net. See the documentation that
   comes with PHP for instructions how to set it up.
 
-  The PHP IMAP extension is NOT neccessary at all (but won't harm)!
+  The PHP IMAP extension is NOT necessary at all (but won't harm)!
   Below is a list of optional PHP extensions:
 
   --with-ldap     Required for LDAP addressbooks
