@@ -260,9 +260,15 @@ function set_up_language($sm_language, $do_search = false, $default = false) {
             mb_internal_encoding('EUC-JP');
             mb_http_output('pass');
         } else {
-        header( 'Content-Type: text/html; charset=' . $languages[$sm_notAlias]['CHARSET'] );
+            header( 'Content-Type: text/html; charset=' . $languages[$sm_notAlias]['CHARSET'] );
+        }
+        // mbstring.func_overload<>0 fix. See cvs HEAD comments.
+        if (function_exists('mb_internal_encoding') &&
+            check_php_version(4,2,0) &&
+            (int)ini_get('mbstring.func_overload')!=0) {
+            mb_internal_encoding('pass');
+        }
     }
-}
 }
 
 /**

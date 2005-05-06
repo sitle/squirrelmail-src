@@ -86,6 +86,8 @@ Version 1.4.5 - CVS
   - mail_fetch plugin should check destination folder before trying to store 
     messages in it. INBOX is used as fallback folder. By default plugin
     can use only subscribed mail folders that can store messages (#584658).
+  - Added mbstring.func_overload!=0 workaround (#929644, #1061699).
+    src/configtest.php is modified to warn about broken php configuration.
 
 Version 1.4.4 - 21 January 2005
 -------------------------------
