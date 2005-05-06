@@ -93,6 +93,15 @@ if(count($diff)) {
 
 echo $IND . "PHP extensions OK.<br />\n";
 
+/* dangerous php settings */
+/** mbstring.func_overload<>0 fix. See cvs HEAD comments. */
+if (function_exists('mb_internal_encoding') &&
+    check_php_version(4,2,0) &&
+    (int)ini_get('mbstring.func_overload')!=0) {
+    $mb_error='You have enabled mbstring overloading.'
+        .' It can cause problems with SquirrelMail scripts that rely on single byte string functions.';
+    do_err($mb_error);
+}
 
 /* checking paths */
 
