@@ -173,8 +173,8 @@ function set_up_language($sm_language, $do_search = false, $default = false) {
 
     static $SetupAlready = 0;
     global $use_gettext, $languages,
-           $squirrelmail_language, $squirrelmail_default_language,
-           $sm_notAlias;
+           $squirrelmail_language, $squirrelmail_default_language, 
+           $default_charset, $sm_notAlias;
 
     if ($SetupAlready) {
         return;
@@ -183,14 +183,40 @@ function set_up_language($sm_language, $do_search = false, $default = false) {
     $SetupAlready = TRUE;
     sqgetGlobalVar('HTTP_ACCEPT_LANGUAGE',  $accept_lang, SQ_SERVER);
 
-    if ($do_search && ! $sm_language && isset($accept_lang)) {
+    /**
+     * detect preferred language from header when SquirrelMail asks for
+     * it or when default language is set to empty string.
+     */
+    if (($do_search || empty($squirrelmail_default_language)) &&
+        ! $sm_language &&
+        isset($accept_lang)) {
         $sm_language = substr($accept_lang, 0, 2);
     }
-    if ((!$sm_language||$default) && isset($squirrelmail_default_language)) {
+
+    /**
+     * Use default language when it is not detected or when script
+     * asks to use default language.
+     */
+    if ((!$sm_language||$default) && 
+        ! empty($squirrelmail_default_language)) {
         $squirrelmail_language = $squirrelmail_default_language;
         $sm_language = $squirrelmail_default_language;
     }
+
+    /** provide failsafe language when detection fails */
+    if (! $sm_language) $sm_language='en_US';
+
     $sm_notAlias = $sm_language;
+
+    /**
+     * Catch removed translation
+     * System reverts to English translation if user prefs contain translation
+     * that is not available in $languages array
+     */
+    if (!isset($languages[$sm_notAlias])) {
+        $sm_notAlias="en_US";
+    }
+
     while (isset($languages[$sm_notAlias]['ALIAS'])) {
         $sm_notAlias = $languages[$sm_notAlias]['ALIAS'];
     }
@@ -259,11 +285,14 @@ function set_up_language($sm_language, $do_search = false, $default = false) {
             }
             mb_internal_encoding('EUC-JP');
             mb_http_output('pass');
+        } elseif ($squirrelmail_language == 'en_US') {
+            header( 'Content-Type: text/html; charset=' . $default_charset );
         } else {
             header( 'Content-Type: text/html; charset=' . $languages[$sm_notAlias]['CHARSET'] );
         }
         // mbstring.func_overload<>0 fix. See cvs HEAD comments.
-        if (function_exists('mb_internal_encoding') &&
+        if ($squirrelmail_language != 'ja_JP' && 
+            function_exists('mb_internal_encoding') &&
             check_php_version(4,2,0) &&
             (int)ini_get('mbstring.func_overload')!=0) {
             mb_internal_encoding('pass');
@@ -275,7 +304,7 @@ function set_up_language($sm_language, $do_search = false, $default = false) {
  * Sets default_charset variable according to the one that is used by user's translations.
  *
  * Function changes global $default_charset variable in order to be sure, that it
- * contains charset used by user's translation. Sanity of $squirrelmail_default_language
+ * contains charset used by user's translation. Sanity of $squirrelmail_language
  * and $default_charset combination provided in SquirrelMail config is also tested.
  *
  * There can be a $default_charset setting in the
@@ -287,11 +316,11 @@ function set_up_language($sm_language, $do_search = false, $default = false) {
  * message blindly with the system-wide $default_charset.
  */
 function set_my_charset(){
-    global $data_dir, $username, $default_charset, $languages, $squirrelmail_default_language;
+    global $data_dir, $username, $default_charset, $languages, $squirrelmail_language;
 
     $my_language = getPref($data_dir, $username, 'language');
     if (!$my_language) {
-        $my_language = $squirrelmail_default_language ;
+        $my_language = $squirrelmail_language ;
     }
     // Catch removed translation
     if (!isset($languages[$my_language])) {
@@ -552,7 +581,7 @@ function korean_charset_xtra() {
 
 global $squirrelmail_language, $languages, $use_gettext;
 
-if (! isset($squirrelmail_language)) {
+if (! sqgetGlobalVar('squirrelmail_language',$squirrelmail_language,SQ_COOKIE)) {
     $squirrelmail_language = '';
 }
 
