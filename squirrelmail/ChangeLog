@@ -88,6 +88,13 @@ Version 1.4.5 - CVS
     can use only subscribed mail folders that can store messages (#584658).
   - Added mbstring.func_overload!=0 workaround (#929644, #1061699).
     src/configtest.php is modified to warn about broken php configuration.
+  - Fixed use of squirrelmail_language cookie with PHP register_globals =
+    off.
+  - Interface can default to first language listed in browser's 
+    'HTTP_ACCEPT_LANGUAGE' header, if default SquirrelMail language is set
+    to empty string (#764709).
+  - Default charset variable can be used to change charset used by US
+    English translation (#1195728).
 
 Version 1.4.4 - 21 January 2005
 -------------------------------
