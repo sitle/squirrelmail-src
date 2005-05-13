@@ -85,7 +85,7 @@ function sqimap_search($imapConnection, $search_where, $search_what, $mailbox,
         && strtolower($result) == 'no') {
         $ss = "SEARCH CHARSET \"US-ASCII\" ALL $search_string";
         $readin = sqimap_run_command ($imapConnection, $ss, true,
-                                      $result, $message);
+                                      $result, $message, $uid_support);
     }
 
     unset($messagelist);
