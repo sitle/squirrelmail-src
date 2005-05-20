@@ -449,7 +449,8 @@ function sqimap_login ($username, $password, $imap_server_address, $imap_port, $
             set_up_language($squirrelmail_language, true);
             require_once(SM_PATH . 'functions/display_messages.php');
             logout_error( sprintf(_("Error connecting to IMAP server: %s."), $imap_server_address).
-                "<br />\r\n$error_number : $error_string<br />\r\n" );
+                "<br />\r\n$error_number : $error_string<br />\r\n",
+		sprintf(_("Error connecting to IMAP server: %s."), $imap_server_address) );
         }
         exit;
     }
