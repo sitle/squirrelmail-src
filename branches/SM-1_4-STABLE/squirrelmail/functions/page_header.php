@@ -28,7 +28,8 @@ function displayHtmlHeader( $title = 'SquirrelMail', $xtra = '', $do_hook = TRUE
     global $theme_css, $custom_css, $pageheader_sent;
 
     echo '<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">' .
-         "\n\n" . html_tag( 'html' ,'' , '', '', '' ) . "\n<head>\n";
+         "\n\n" . html_tag( 'html' ,'' , '', '', '' ) . "\n<head>\n" .
+         "<meta name=\"robots\" content=\"noindex,nofollow\">\n";
 
     if ( !isset( $custom_css ) || $custom_css == 'none' ) {
         if ($theme_css != '') {

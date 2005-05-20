@@ -63,6 +63,7 @@ set_up_language($squirrelmail_language, true, true);
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
+   <meta name="robots" content="noindex,nofollow">
 <?php
     if ($theme_css != '') {
 ?>
