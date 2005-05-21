@@ -336,18 +336,38 @@ if ($draft) {
         $draft_message = _("Draft Email Saved");
         /* If this is a resumed draft, then delete the original */
         if(isset($delete_draft)) {
-            Header("Location: $location/delete_message.php?mailbox=" . urlencode($draft_folder) .
-                    "&message=$delete_draft&sort=$sort&startMessage=1&saved_draft=yes");
+            if ( !isset($pageheader_sent) || !$pageheader_sent ) {
+                Header("Location: $location/delete_message.php?mailbox=" . urlencode($draft_folder) .
+                        "&message=$delete_draft&sort=$sort&startMessage=1&saved_draft=yes");
+            } else {
+                echo '   <br><br><center><a href="' . $location
+                    . "/delete_message.php?mailbox=" . urlencode($draft_folder)
+                    . "&message=$delete_draft&sort=$sort&startMessage=1&saved_draft=yes\">"
+                    . _("Return") . '</a></center>';
+            }
             exit();
         }
         else {
             if ($compose_new_win == '1') {
-                Header("Location: $location/compose.php?saved_draft=yes&session=$composesession");
+                if ( !isset($pageheader_sent) || !$pageheader_sent ) {
+                    Header("Location: $location/compose.php?saved_draft=yes&session=$composesession");
+                } else {
+                    echo '   <br><br><center><a href="' . $location
+                        . "/compose.php?saved_draft=yes&session=$composesession\">"
+                        . _("Return") . '</a></center>';
+                }
                 exit();
             }
             else {
-                Header("Location: $location/right_main.php?mailbox=" . urlencode($draft_folder) .
+                if ( !isset($pageheader_sent) || !$pageheader_sent ) {
+                    Header("Location: $location/right_main.php?mailbox=" . urlencode($draft_folder) .
                         "&sort=$sort&startMessage=1&note=".urlencode($draft_message));
+                } else {
+                    echo '   <br><br><center><a href="' . $location
+                        . "/right_main.php?mailbox=" . urlencode($draft_folder)
+                        . "&sort=$sort&startMessage=1&note=".urlencode($draft_message)
+                        . "\">" . _("Return") . '</a></center>';
+                }
                 exit();
             }
         }

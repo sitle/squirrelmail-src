@@ -98,6 +98,8 @@ Version 1.4.5 - CVS
   - Fix for search. On fallback also use UID SEARCH.
   - Tweak IMAP connection error display (#1203154).
   - Add robots noindex/nofollow meta tag to SquirrelMail generated pages.
+  - Fix typo in addrbook_search.php.
+  - Gracefully recover from over quota error while sending a mail (#1145144).
 
 Version 1.4.4 - 21 January 2005
 -------------------------------
