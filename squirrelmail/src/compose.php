@@ -35,6 +35,7 @@ require_once(SM_PATH . 'functions/display_messages.php');
 require_once(SM_PATH . 'class/deliver/Deliver.class.php');
 require_once(SM_PATH . 'functions/addressbook.php');
 require_once(SM_PATH . 'functions/forms.php');
+require_once(SM_PATH . 'functions/identity.php');
 
 /* --------------------- Get globals ------------------------------------- */
 /** COOKIE VARS */
@@ -112,17 +113,9 @@ function replyAllString($header) {
      * TO list) only if $include_self_reply_all is turned off
      */
     if (!$include_self_reply_all) {
-        $email_address = strtolower(trim(getPref($data_dir, $username, 'email_address')));
-        $excl_ar[$email_address] = '';
-        $idents = getPref($data_dir, $username, 'identities');
-        if ($idents != '' && $idents > 1) {
-            $first_id = false;
-            for ($i = 1; $i < $idents; $i ++) {
-                $cur_email_address = getPref($data_dir, $username,
-                        'email_address' . $i);
-                $cur_email_address = strtolower(trim($cur_email_address));
-                $excl_ar[$cur_email_address] = '';
-            }
+        $ids = get_identities();
+        foreach($ids as $id) {
+            $excl_ar[strtolower(trim($id['email_address']))] = '';
         }
     }
 
