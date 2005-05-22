@@ -106,6 +106,8 @@ Version 1.4.5 - CVS
     allows to disable authenticated user part in Received: header, when user 
     can't force used email address. It is set in 4. General Options -> 
     9. Allow editing of identity (#847107).
+  - Fix get_identities() for the case where the user has not set an email
+    address: use the fallback $username@$domain that's used in compose aswell.
 
 Version 1.4.4 - 21 January 2005
 -------------------------------
