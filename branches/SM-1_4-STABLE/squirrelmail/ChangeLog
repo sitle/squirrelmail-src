@@ -100,6 +100,12 @@ Version 1.4.5 - CVS
   - Add robots noindex/nofollow meta tag to SquirrelMail generated pages.
   - Fix typo in addrbook_search.php.
   - Gracefully recover from over quota error while sending a mail (#1145144).
+  - Added $encode_header_key and $hide_auth_header options. First option 
+    allows to encode user's information with provided encryption key (set in 
+    2. Server settings -> B. Update SMTP / Sendmail settings). Second option 
+    allows to disable authenticated user part in Received: header, when user 
+    can't force used email address. It is set in 4. General Options -> 
+    9. Allow editing of identity (#847107).
 
 Version 1.4.4 - 21 January 2005
 -------------------------------

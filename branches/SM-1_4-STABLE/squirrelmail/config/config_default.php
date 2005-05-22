@@ -143,6 +143,25 @@ $smtpServerAddress = 'localhost';
 $smtpPort = 25;
 
 /**
+ * SquirrelMail header encryption
+ *
+ * Encryption key allows to hide SquirrelMail Received: headers
+ * in outbound messages. Interface uses encryption key to encode
+ * username, remote address and proxied address, then stores encoded
+ * information in X-Squirrel-* headers.
+ *
+ * Warning: used encryption function is not bulletproof. When used
+ * with static encryption keys, it provides only minimal security
+ * measures and information can be decoded quickly.
+ *
+ * Encoded information can be decoded with decrypt_headers.php script
+ * from SquirrelMail contrib/ directory.
+ * @global string $encode_header_key
+ * @since 1.5.1 and 1.4.5
+ */
+$encode_header_key = '';
+
+/**
  * Path to Sendmail
  *
  * Program that should be used when sending email. SquirrelMail expects that
@@ -509,6 +528,22 @@ $default_use_mdn = true;
  */
 $edit_identity = true;
 $edit_name = true;
+
+/**
+ * SquirrelMail adds username information to every sent email.
+ * It is done in order to prevent possible sender forging when 
+ * end users are allowed to change their email and name 
+ * information.
+ *
+ * You can disable this header, if you think that it violates
+ * user's privacy or security. Please note, that setting will
+ * work only when users are not allowed to change their identity.
+ *
+ * See SquirrelMail bug tracker #847107 for more details about it.
+ * @global bool $hide_auth_header
+ * @since 1.5.1 and 1.4.5
+ */
+$hide_auth_header = false;
 
 /**
  * Server Side Threading Control
