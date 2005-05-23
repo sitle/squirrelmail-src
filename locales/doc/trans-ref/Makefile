@@ -1,10 +1,13 @@
-all: txt html
+all: txt html pdf
 
 txt:
 	echo "Converting sgml to txt"
-	sgml2txt trans-ref.sgml
-	
+	linuxdoc -B txt trans-ref.sgml
+
 html:
 	echo "Converting sgml to multipaged html"
-	sgml2html trans-ref.sgml
-	
+	linuxdoc -B html trans-ref.sgml
+
+pdf:
+	echo "Converting sgml to pdf"
+	linuxdoc -B latex --output=pdf trans-ref.sgml
