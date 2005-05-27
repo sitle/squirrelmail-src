@@ -137,9 +137,13 @@ function displayPageHeader($color, $mailbox, $xtra='', $session=false) {
 
             // javascript for sending read receipts
             if($default_use_mdn && $mdn_user_support) {
-                $js .= 'function sendMDN() {'."\n".
-                       "    mdnuri=window.location+'&sendreceipt=1'; ".
-                       "var newwin = window.open(mdnuri,'right');".
+                $js .= "function sendMDN() {\n".
+                         "    mdnuri=window.location+'&sendreceipt=1';\n" .
+                         "    if (window.top != window.self) {\n" .
+                         "      var newwin = window.open(mdnuri,'right');\n" .
+                         "    } else {\n " .
+                         "      var newwin = window.location = mdnuri;\n" .
+                         "    }\n" .
                        "\n}\n\n";
             }
 
