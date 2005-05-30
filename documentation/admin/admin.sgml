@@ -115,9 +115,177 @@ SquirrelMailInstallIIS
 <p>
 MacInfoHere
 
+<sect1>Prepackaged SquirrelMail installs
+<p>
+SquirrelMail provides RPM.
+
 <sect>Upgrading SquirrelMail
 <p>
-Information for upgraders.
+This chapter talks about upgrading existing SquirrelMail install.
+
+<sect1>Backup old install
+<p>
+Make a backup of your current SquirrelMail directory.  If you use "cp", be
+sure to use the "-Rp" options.  -R means recursive, and -p will save the
+permissions in the directory.
+
+In this example, we assume that your httpd document directory is 
+<tt>/home/httpd/html</tt>, that your SquirrelMail install is located at
+<tt>/home/httpd/html/squirrelmail-1.0.6</tt>, and that your new SM version is 1.2.0.
+Substitute version numbers and names as required.
+
+<verb>
+$ cd /home/httpd/html
+$ cp -Rp squirrelmail-1.0.6 squirrelmail-1.0.6.bak
+</verb>
+
+<sect1>Unarchive new SquirrelMail
+<p>
+Make sure that you are in your httpd document directory (<tt>/home/httpd/html</tt>)
+and then unarchive the SquirrelMail archive (whatever the filename is): 
+<verb>
+$ tar -zxvf squirrelmail-1.2.0.tar.gz
+</verb>
+
+<sect1>Copy important files from old install
+<p>
+The important files to copy are:
+<itemize>
+  <item>Preferences
+  <item>Config details
+  <item>Plugins
+  <item>Themes (if you've edited or added any of them)
+</itemize>
+
+<sect2>Preferences
+<p>
+First, copy your preference data over to the new directory.  Usually
+this is ok, but if you are upgrading from anything less than 1.0.5, we
+strongly suggest you let your users reset their preferences.  There
+were important security upgrades in 1.0.5 regarding preference files.
+<verb>
+$ cp squirrelmail-1.0.6.bak/data/* squirrelmail-1.2.0/data
+</verb>
+  
+<sect2>Config details
+<p>
+If at all possible, start the configuration process from scratch.  It is 
+much less prone to missing configuration options than copying your old
+configuration.  Ideally, you should just run conf.pl to reconfigure
+SquirrelMail.  If you decide to copy your old config.php over, we strongly
+recommend that you run conf.pl to make sure things are correct and then save
+the config file.
+<verb>
+$ cp squirrelmail-1.0.6.bak/config/config.php squirrelmail-1.2.0/config
+</verb>
+
+<sect2>Copy plugins
+<p>
+Like SquirrelMail, plugins are frequently updated for improvements, as well
+as to make them compatible with new SquirrelMail releases.  It is suggested
+that you download new versions of your plugins at the same time you download
+your SquirrelMail install, and that you install your plugins fresh (it's
+easy, don't panic!).
+
+You should not try replacing plugins that are already included in SquirrelMail
+package. Download latest versions of plugins that are not included in new
+SquirrelMail package or copy them from older SquirrelMail install.
+
+<sect2>Copy themes
+<p>
+If you've created or modified themes, you should copy just those to the new
+SquirrelMail themes directory.  To just copy them all over to the new
+SquirrelMail installation, you can run one command.
+<verb>
+$ cp -ui squirrelmail-1.0.6.bak/themes/* squirrelmail-1.2.0/themes/
+</verb>
+
+When <tt/-u/ flag is used, command copies only missing and newer files. 
+When <tt/-i/ flag is used, command will ask for confirmation before replacing
+existing files.
+
+If you want to see your theme in future SquirrelMail packages, send it to 
+SquirrelMail developers. They might add it to the themes in the standard
+install!
+
+<sect1>Change permissions
+<p>
+The web server must have write permission to the data directory.  In this
+example, we assume that user "nobody" and group "nobody" are the web server
+as is often the case with Apache.
+<verb>
+  $ cd squirrelmail-1.2.0
+  $ chown -R nobody:nobody data
+</verb>
+  
+Check your webserver's configuration file. It might be using different
+userid/groupid pair. Additionally, if "chown user:group" doesn't work, you can
+use "chown user" and "chgrp group" instead. See the man pages for these commands
+for more information.
+
+TODO: php safe_mode restrictions.
+
+<sect1>Run conf.pl
+<p>
+Run config/conf.pl to see the new configuration options available with the
+new version, as well as to verify that all of your old options are set
+properly.
+
+Always save your options, also if you haven't changed anything.
+This will ensure that any problems with conf.pl that might have been solved
+are effective to your installation.
+
+If you want to make sure that your configuration contains all themes included in
+new SquirrelMail package, go to theme options in configuration utility and 
+run theme detection command.
+
+<sect1>Version specific notes
+<sect2>Upgrade from version older than 1.2.2 to later version.
+<p>
+In order to provide better i18n support, developers have changed names used by
+translations. From 1.2.2 SquirrelMail uses language and country codes in
+translation names. In most of cases upgraded SquirrelMail should work correctly.
+only Norwegian Nynorsk (no_NO_ny) translation might need fixes. If your user
+preference files contain <tt/language=no_NO_ny/ lines, these lines should be updated
+to <tt/language=nn_NO/.
+
+<sect2>Upgrade from 1.2.x or older versions to 1.4.x or later.
+<p>
+Layout changes. Plugins can break.
+
+<sect2>Upgrade from version older than 1.4.4 to later version.
+<p>
+Translations are removed.
+
+<sect2>Downgrade from 1.5.1 to older version.
+<p>
+Options -&lt; Index Order options are not preserved.
+
+<sect1>Recheck new install
+<p>
+Login into new SquirrelMail install and check if everything is working.
+
+<sect1>Replace old install.
+<p>
+Redirect your users to new SquirrelMail install. You can use Apache <url 
+url="http://httpd.apache.org/docs/mod/mod_alias.html#redirectperm"
+name="RedirectPermanent"> directive or other redirection tools provided by your
+webserver.
+
+If you use SquirrelMail directory without version information, you can also
+replace it with new SquirrelMail directory.
+<verb>
+$ mv /home/httpd/html/squirrelmail /home/httpd/html/squirrelmail.old
+$ mv /home/httpd/html/squirrelmail.new /home/httpd/html/squirrelmail
+</verb>
+
+<sect1>DONE!
+<p>
+That should be all!  The most important part is copying your users'
+preference files back into the new data directory.  This will insure that
+your users will have their old preferences.  Remember to do so with caution,
+especially if you are upgrading from a version before 1.0.5 to version 1.0.5
+or later.
 
 <sect>Configuring SquirrelMail
 <p>
