@@ -223,7 +223,11 @@ userid/groupid pair. Additionally, if "chown user:group" doesn't work, you can
 use "chown user" and "chgrp group" instead. See the man pages for these commands
 for more information.
 
-TODO: php safe_mode restrictions.
+If you are using SquirrelMail in setup with php safe_mode restrictions, data and
+attachment directories should be owned by same user that owns other SquirrelMail
+scripts. It must be writable by webserver group. Check <url
+url="http://www.php.net/features.safe-mode" name="PHP Safe mode manual"> for
+more details.
 
 <sect1>Run conf.pl
 <p>
@@ -242,12 +246,12 @@ run theme detection command.
 <sect1>Version specific notes
 <sect2>Upgrade from version older than 1.2.2 to later version.
 <p>
-In order to provide better i18n support, developers have changed names used by
-translations. From 1.2.2 SquirrelMail uses language and country codes in
-translation names. In most of cases upgraded SquirrelMail should work correctly.
-only Norwegian Nynorsk (no_NO_ny) translation might need fixes. If your user
-preference files contain <tt/language=no_NO_ny/ lines, these lines should be updated
-to <tt/language=nn_NO/.
+In order to provide better internationalization support, developers have changed
+names used by translations. From 1.2.2 SquirrelMail uses language and country
+codes in translation names. In most of cases upgraded SquirrelMail should work
+correctly. Only Norwegian Nynorsk (no_NO_ny) translation might need fixes. If
+your user preference files contain <tt/language=no_NO_ny/ lines, these lines
+should be updated to <tt/language=nn_NO/.
 
 <sect2>Upgrade from 1.2.x or older versions to 1.4.x or later.
 <p>
@@ -259,7 +263,7 @@ Translations are removed.
 
 <sect2>Downgrade from 1.5.1 to older version.
 <p>
-Options -&lt; Index Order options are not preserved.
+Index Order options are not preserved.
 
 <sect1>Recheck new install
 <p>
@@ -289,16 +293,35 @@ or later.
 
 <sect>Configuring SquirrelMail
 <p>
-run conf.pl script.
+SquirrelMail stores interface configuration in <tt>config/config.php</tt>
+file. This file can be controlled with SquirrelMail configuration utility
+<tt>config/conf.pl</tt>. Default configuration values are stored and 
+documented in <tt>config/config_default.php</tt> file.
 
-<sect1>basic configuration
+<sect1>Basic configuration
 <p>
-essential configuration steps.
+In order to use SquirrelMail you must create configuration file. Default
+configuration should adjusted to match your setup. Main things that should be
+checked are:
+<itemize>
+  <item>Default domain (2. Server settings &gt; 1. Domain)
+  <item>Addresses of IMAP and SMTP servers.
+  <item>Type of IMAP server. See next chapter about <ref id="select-imap"
+  name="selecting IMAP server">.
+</itemize>
 
-<sect1>Selecting IMAP server
+You might want to change:
+<itemize>
+  <item>Organization Preferences(1. Organization Preferences)
+</itemize>
+
+<sect1>Selecting IMAP server<label id="select-imap">
 <p>
-Recommend use of presets. List main presets. Explain why setting only
+TODO: Recommend use of presets. List main presets. Explain why setting only
 $imap_server_type does not work.
+
+See chapter about <ref id="presets" name="Presets"> for more information about
+server specific settings.
 
 <sect1>Authentication
 <p>
@@ -385,5 +408,228 @@ We have them too.
 <sect1>Security contacts
 <p>
 address used for security contact.
+
+<sect>Presets<label id="presets">
+<p>
+This chapter lists SquirrelMail options set by D option in SquirrelMail
+configuration utility.
+
+It can be used if user can't run configuration utility and changes options
+manually. Settings can be different if IMAP server uses shared folders.
+
+Possible server values are:
+<itemize>
+  <item>cyrus = Cyrus IMAP server
+  <item>uw = University of Washington's IMAP server
+  <item>exchange = Microsoft Exchange IMAP server
+  <item>courier = Courier IMAP server
+  <item>macosx = Mac OS X Mailserver
+  <item>hmailserver = hMailServer
+  <item>mercury32 = Mercury/32
+  <item>dovecot = Dovecot Secure IMAP server
+</itemize>
+
+<sect1>default settings:
+<p>
+These are generic settings that should work in some IMAP servers.
+
+<p>
+<itemize>
+  <item>imap_server_type = other
+  <item>default_folder_prefix = none (is set to empty string)
+  <item>trash_folder = INBOX.Trash
+  <item>sent_folder = INBOX.Sent
+  <item>draft_folder = INBOX.Drafts
+  <item>show_prefix_option = false
+  <item>default_sub_of_inbox = true
+  <item>show_contain_subfolders_option = false
+  <item>optional_delimiter = detect
+  <item>delete_folder = false
+  <item>force_username_lowercase = false
+</itemize>
+
+<sect1>'cyrus' preset
+<p>
+This preset is written for Cyrus IMAP.
+
+<p>
+<itemize>
+  <item>imap_server_type = cyrus
+  <item>default_folder_prefix = none (is set to empty string)
+  <item>trash_folder = INBOX.Trash
+  <item>sent_folder = INBOX.Sent
+  <item>draft_folder = INBOX.Drafts
+  <item>show_prefix_option = false
+  <item>default_sub_of_inbox = true
+  <item>show_contain_subfolders_option = false
+  <item>optional_delimiter = .
+  <item>delete_folder = true
+  <item>force_username_lowercase = false
+</itemize>
+
+<sect1>'uw' preset
+<p>
+This preset is written for UW IMAPD.
+
+<p>
+<itemize>
+  <item>imap_server_type = uw
+  <item>default_folder_prefix = mail/
+  <item>trash_folder = Trash
+  <item>sent_folder = Sent
+  <item>draft_folder = Drafts
+  <item>show_prefix_option = true
+  <item>default_sub_of_inbox = false
+  <item>show_contain_subfolders_option = true
+  <item>optional_delimiter = /
+  <item>delete_folder = true
+  <item>force_username_lowercase = true
+</itemize>
+
+Comments:
+<itemize>
+  <item>Since v.2002 UW IMAPD disabled plain text logins in default
+  configuration. SquirrelMail can't use STARTTLS features provided by default
+  server configuration. You might have to run IMAPS (IMAP over SSL) service or
+  enable plain text logins.
+</itemize>
+
+<sect1>'exchange' preset
+<p>
+This preset is written for Microsoft Exchange IMAP server.
+
+<p>
+<itemize>
+  <item>imap_server_type = exchange
+  <item>default_folder_prefix = none (is set to empty string)
+  <item>trash_folder = INBOX/Deleted Items
+  <item>sent_folder = INBOX/Sent Items
+  <item>draft_folder = Drafts
+  <item>show_prefix_option = false
+  <item>default_sub_of_inbox = true
+  <item>show_contain_subfolders_option = false
+  <item>optional_delimiter = detect
+  <item>delete_folder = true
+  <item>force_username_lowercase = true
+</itemize>
+
+<sect1>'courier' preset
+<p>
+This preset is written for Courier IMAP server.
+
+<p>
+<itemize>
+  <item>imap_server_type = courier
+  <item>default_folder_prefix = INBOX.
+  <item>trash_folder = Trash
+  <item>sent_folder = Sent
+  <item>draft_folder = Drafts
+  <item>show_prefix_option = false
+  <item>default_sub_of_inbox = false
+  <item>show_contain_subfolders_option = false
+  <item>optional_delimiter = .
+  <item>delete_folder = true
+  <item>force_username_lowercase = false
+</itemize>
+
+<sect1>'macosx' preset
+<p>
+This preset is written for IMAP server used by MacOS X
+
+<p>
+<itemize>
+  <item>imap_server_type = macosx
+  <item>default_folder_prefix = INBOX/
+  <item>trash_folder = Trash
+  <item>sent_folder = Sent
+  <item>draft_folder = Drafts
+  <item>show_prefix_option = false
+  <item>default_sub_of_inbox = true
+  <item>show_contain_subfolders_option = false
+  <item>optional_delimiter = detect
+  <item>delete_folder = true
+  <item>force_username_lowercase = false
+</itemize>
+
+<sect1>'hmailserver' preset
+<p>
+This preset is written for hMailServer
+
+<p>
+<itemize>
+  <item>imap_server_type = hmailserver   (used in imap_search.php)
+  <item>default_folder_prefix = none (is set to empty string)
+  <item>trash_folder = INBOX.Trash
+  <item>sent_folder = INBOX.Sent
+  <item>draft_folder = INBOX.Drafts
+  <item>show_prefix_option = false
+  <item>default_sub_of_inbox = true
+  <item>show_contain_subfolders_option = false
+  <item>optional_delimiter = detect
+  <item>delete_folder = false
+  <item>force_username_lowercase = false
+</itemize>
+
+<sect1>'mercury32' preset
+<p>
+This preset is used for Mercury Mail Transport System. Preset is available since
+SquirrelMail 1.5.0. It was tested on Mercury32 v.4.01b
+
+<p>
+<itemize>
+  <item>imap_server_type = mercury32
+  <item>default_folder_prefix = none (is set to empty string)
+  <item>trash_folder = Trash
+  <item>sent_folder = Sent
+  <item>draft_folder = Drafts
+  <item>show_prefix_option = false
+  <item>default_sub_of_inbox = true
+  <item>show_contain_subfolders_option = true
+  <item>optional_delimiter = detect
+  <item>delete_folder = true
+  <item>force_username_lowercase = true
+</itemize>
+
+Comments:
+<itemize>
+  <item>Server side sorting and threading are not supported.
+  <item>Message flags are not supported.
+  <item>IMAP folders can store messages _or_ other folders.
+  <item>Supports STARTTLS, if configured.
+  <item>May have issues with 8bit IMAP folder names.
+</itemize>
+
+$imap_server_type variable is used to handle imap folder subscription
+differences.
+
+Site URL: <url url="http://www.pmail.com" name="http://www.pmail.com">
+
+<sect1>'dovecot' preset
+<p>
+Preset used for Dovecot Secure IMAP server. It is available since SquirrelMail
+1.5.1. There is no code specific to Dovecot IMAP server. Preset provides only a
+quick way to set correct folder settings. Tested on Dovecot v.0.99.14
+
+<p>
+<itemize>
+  <item>imap_server_type = dovecot
+  <item>default_folder_prefix = none (is set to empty string)
+  <item>trash_folder = Trash
+  <item>sent_folder = Sent
+  <item>draft_folder = Drafts
+  <item>show_prefix_option = false
+  <item>default_sub_of_inbox = false
+  <item>show_contain_subfolders_option = false
+  <item>optional_delimiter = detect
+  <item>delete_folder = false
+  <item>force_username_lowercase = true
+</itemize>
+
+Comments:
+<itemize>
+  <item>IMAP server supports server side sorting and threading.
+</itemize>
+
+Site URL: <url url="http://www.dovecot.org" name="http://www.dovecot.org">
 
 </article>
