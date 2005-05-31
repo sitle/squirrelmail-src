@@ -59,7 +59,7 @@ function charset_decode_euc_jp($string) {
     // TODO: check sanitizing of html special chars.
     if (function_exists('mbstring_convert_encoding') && 
         check_php_version(4,3,0) &&
-        in_array('euc-jp',sq_mb_list_encodings()) {
+        in_array('euc-jp',sq_mb_list_encodings())) {
         return mbstring_convert_encoding($string,'HTML-ENTITIES','EUC-JP');
     }
 
