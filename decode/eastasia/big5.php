@@ -54,6 +54,7 @@ function charset_decode_big5 ($string) {
     // try mbstring
     // TODO: check sanitizing of html special chars.
     if (function_exists('mbstring_convert_encoding') && 
+        function_exists('sq_mb_list_encodings') &&
         check_php_version(4,3,0) &&
         in_array('big5',sq_mb_list_encodings())) {
         return mbstring_convert_encoding($string,'HTML-ENTITIES','BIG5');
