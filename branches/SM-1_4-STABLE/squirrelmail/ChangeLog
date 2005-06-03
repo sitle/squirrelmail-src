@@ -115,6 +115,8 @@ Version 1.4.5 - CVS
     (#928954).
   - Fix an off-by-one and a HTML-formatting bug in saved searches.
   - Remove in-development default-off folder list code from left_main.php.
+  - Fixed broken attachments caused by inconsistency of PHP chunk_split().
+    Thanks to Roalt Zijlstra.
   
 
 Version 1.4.4 - 21 January 2005
