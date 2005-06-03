@@ -92,7 +92,132 @@ client, including strong MIME support, address books, and folder manipulation.
 
 <sect>Quick Start Guide
 <p>
-download it, configure it, use it.
+SquirrelMail can be downloaded from SquirrelMail site or provided by your OS
+packager. It is configured with conf.pl utility, that is stored in <tt/config/
+directory. You must configure SquirrelMail before using it. SquirrelMail can be
+used by accessing it in web browser just like any other files and scripts
+stored on your web server.
+
+If you want to install SquirrelMail, check chapters about SquirrelMail
+installation.
+
+<sect1>Directory layout
+<p>
+SquirrelMail files are splitted into subdirectories according to file type and
+provided functions.
+
+<tscreen><verb>
+squirrelmail/
+  class/
+  config/
+  contrib/
+  data/
+  doc/
+  functions/
+    decode/
+    encode/
+  help/
+  images/
+  locale/
+  plugins/
+  po/
+  src/
+  templates/
+  themes/
+    css/
+</verb></tscreen>
+
+<tt/class/ directory stores various classes used with mime messages, email
+delivery, localications and other interface functions.
+
+<tt/config/ directory stores SquirrelMail configuration files and configuration
+utility. <tt/conf.pl/ script is perl based utility used to manage SquirrelMail
+configuration. <tt/config_default.php/ file stores default configuration
+values. <tt/config.php/ file stores current configuration. <tt/config_local.php/
+file can store local site configuration overrides and configration options that
+are not supported by configuration utility. <tt/default_pref/ file stores <ref
+id="default_pref" name="default configuration"> that is used when user's
+preference file does not exist. <tt/default_pref/ file was stored in data
+directory before SquirrelMail 1.5.1.
+
+<tt/contrib/ directory stores files that provide extra features to SquirrelMail
+package, but are not used directly in webmail interface.
+
+<tt/data/ directory is default location for SquirrelMail users' preference
+files. You should move that directory outside of web tree or make sure that it
+can't be accessed by external user.
+
+<tt/doc/ directory stores some documentation about SquirrelMail.
+
+<tt/functions/ directory stores SquirrelMail function files. <tt/decode/
+subdirectory stores charset decoding functions that are used to read emails
+encoded in different charsets. <tt/encode/ directory stores charset encoding
+functions that are used to convert emails to charset used in interface when
+user replies or forwards email written in different charset.
+
+<tt/help/ directory stores SquirrelMail help files. Information from these files
+is displayed when user clicks on Help link in SquirrelMail menu line. Help files
+use XML formating. They can be translated into different languages.
+
+<tt/images/ directory stores various image files that can be used in interface.
+
+<tt/locale/ directory stores SquirrelMail translations. User can select
+preferred translation in SquirrelMail Display Options. 
+
+<tt/plugins/ directory stores plugins that can be used to extend interface
+functionality. Plugins are controlled in SquirrelMail configuration
+utility. Some plugins might use own configuration files or functions provided by
+other plugins. See README and INSTALL files in plugin's directory.
+
+<tt/po/ directory stores scripts that are used to work with SquirrelMail
+translation files. <tt/xgetpo/ script extracts translatable strings from
+SquirrelMail script. <tt/mergepo/ script combines default strings with selected
+translation. <tt/compilepo/ script compiles selected translation. These scripts
+are usually used only by SquirrelMail translators.
+
+<tt/src/ directory stores scripts that are used when user uses webmail
+interface.
+
+<tt/templates/ directory stores template files that can be used in SquirrelMail
+1.5.1 and later versions.
+
+<tt/themes/ directory stores SquirrelMail <ref id="themes"
+name="themes">. <tt/css/ subdirectory stores style sheet files available to end
+user.
+
+<sect1>User data storage
+<p>
+SquirrelMail stores users' preferences and address books in simple text
+files. Location of the files is set in SquirrelMail configuration, data
+directory setting. SquirrelMail can also use <ref id="db-backend"
+name="database"> or other other storage facility, if required preference
+functions are provided by plugin.
+
+Users' preferences are stored in <tt/.pref/ files. Address books are stored in
+<tt/.abook/ files. <tt/.sig/ and <tt/.si&lt;somenumber&gt;/ files store users'
+signatures. Some plugins might use other files to store users' data.
+
+When data directory stores many files, directory access time can be
+affected. Administrator can split preference files into subdirectories, if
+directory hashing is enabled in SquirrelMail configuration.
+
+<sect1>Address book format
+<p>
+SquirrelMail stores address books in CSV format. <tt/|/ symbol is used as field
+delimiter. Address books can also be stored in <ref id="db-backend"
+name="database"> or other other storage facility, if required functions are
+provided by plugin. SquirrelMail can lookup addresses from LDAP directories, if
+directories are configured in SquirrelMail configuration and PHP installation
+contains LDAP support.
+
+Address book file contains five fields. First field stores nicknames, short
+names, that are used to identify address book entries. Second field stores
+names. Third field stores surnames. Forth field stores email addresses. Fifth
+field stores additional information.
+
+Additional address book fields and functions can be provided by experimental
+vcard address book format and some address book plugins. You can find list of
+address book plugins on SquirrelMail site.
 
 <sect>Installing SquirrelMail
 <sect1>Quick and Dirty install
@@ -331,7 +456,38 @@ login, cram-md5, digest-md5.
 <p>
 secure connection ways. supported and not supported. minimal requirements.
 
-<sect1>Using database backends
+<sect1>Default user preferences<label id="default_pref">
+<p>
+If SquirrelMail interface uses file-based preferences, default preferences are
+stored in your data directory in a file called "default_pref". As you add
+plugins to your SquirrelMail installation, you might want to configure some of
+them on your own account and then propagate those settings to all of your
+users. Or you may simply want to change the default theme, etc. This is what you
+need to do to accomplish that. 
+
+<itemize>
+  <item>Log into your own account and get all your configuration set to what
+  you'd like the defaults to be.
+  <item>Open your personal prefs file in your data directory (usually a file
+  that looks something like "username.pref" or "user@domain.tld.pref", depending
+  on what your usernames look like).
+  <item>Find the relevant settings. Most plugin settings are identified by the
+  plugin's name being the first thing on the line. Note that some plugins can
+  have multiple setting lines. If you want to duplicate all of your settings,
+  you can copy the entire file, but be careful that nothing with your name and
+  email address or other personal items get copied.
+  <item>Copy those settings into the "default_pref" file in the data directory.
+</itemize>
+
+Note that <tt/default_pref/ file works only for users that don't have own
+preference file. If you want to add preferences to existing user accounts, you
+should add them to their preference files. You can do that by editing user .pref
+files or use Forced Preferences plugin.
+
+If you use database based setup, default settings are stored in
+<tt>functions/db_prefs.php</tt> file, <tt/$default/ parameter in dbPrefs class.
+
+<sect1>Using database backends<label id="db-backend">
 <p>
 SquirrelMail can store preferences and address books in database.
 
@@ -345,7 +501,100 @@ Other configuration issues.
 
 <sect>Optimizing SquirrelMail
 <p>
-What to do in order to make it fast without toasting the server.
+This chapter should explain what can help in speeding up your SquirrelMail
+installation.
+
+<sect1>PHP extensions
+<p>
+SquirrelMail uses gettext functions for translations. If php gettext extension
+is not present, interface switches to slower internal gettext implementation.
+
+In some cases SquirrelMail can take advantage of php recode or iconv
+functions. These functions can be used to speedup decoding of Eastern charsets.
+
+<sect1>IMAP server extensions
+<p>
+If your IMAP server supports the IMAP SORT or THREAD extensions (most mainstream
+servers do) turn it on. Server side sorting is faster than sorting in php
+script.
+
+Options can be enabled in SquirrelMail configuration utility: 
+<tscreen><verb>
+4. General Options
+  11. Allow server thread sort: false (default) -&gt; true
+  12. Allow server-side sorting: false (default) -&gt; true 
+</verb></tscreen>
+
+Server side sorting can cause problems in SquirrelMail only when IMAP server
+does not support charset used by selected SquirrelMail translation. SquirrelMail
+can use more that 15 charsets in server side sorting and threading
+commands. Courier IMAP server supports them only when compiled with
+<tt/--enable-unicode/ option. Cyrus IMAP (v.2.2.12) does not support some
+multibyte charsets used by SquirrelMail.
+
+<sect1>Mailbox format
+<p>
+Default unix mailbox format is slower than other formats and can increase server
+loads when used with bigger mail folders. If you use UW IMAP server, you should
+try switching to mbx mailbox format. Maildir mailboxes have higher bottlenecks
+than formats that store entire mail folder in one file.
+
+<sect1>Filtering
+<p>
+SquirrelMail package includes filters plugin, that can be used to sort
+messages. This plugin is implemented in PHP and works on active mailbox. It
+should be used only when server side solution is not available. Server side
+filtering performed by procmail, maildrop or sieve provides more options and is
+faster.
+
+<sect1>IMAP Proxy
+<p>
+A caching IMAP proxy server can vastly improve SquirrelMail performance by
+cutting down on the number of times you have to create a new connection to the
+IMAP server. It keeps server connections alive for reuse avoiding a new IMAP
+connection for each SquirrelMail transaction. You run the proxy on your
+webserver (SquirrelMail connects to localhost) and the Proxy connects to your
+IMAP server. A side benefit is your logs are not full of IMAP logins. The
+following caching IMAP proxies have worked well for other people with
+SquirrelMail.
+
+<url url="http://www.imapproxy.org/" name="Up-imapproxy"> is a caching IMAP
+proxy server. It is opensource and free. The package is written in C. Tested on
+Solaris, Linux, IRIX and FreeBSD. The latest version allows log levels to be
+configured at runtime from the config file.
+
+<url url="http://www.horde.org/imapproxy/" name="other imapproxy project">
+designed for use with Horde. Licensed under GPL and also works with
+SquirrelMail.
+
+<sect1>PHP cache
+<p>
+<url url="http://turck-mmcache.sf.net" name="Turck MMCache"> (Discontinued) is
+an opcode cache that works on both *NIX and Win32. It speeds up PHP's
+performance significantly. It's open source and is under active
+development. Note: turck-mmcache is rumoured to be dead. The developer was
+supposedly hired by Zend, and the project looks abandoned with many open bug
+reports. However, it still seems to be working for everyone and is possibly the
+fastest of the three we list here. Software is licensed under GPL.
+
+<url url="http://www.php-accelerator.co.uk/" name="PHP Accelerator"> is quite
+similar to turck, but it also seems a bit stalled. However, the parent
+company still exists, and so far it is running SquirrelMail with no
+problems. Closed source, binary only accelerator.
+
+<url url="http://eaccelerator.sourceforge.net/" name="EAccelerator"> is a fork
+of the old Turck MMCache project. Improvements have been made so this is more
+stable and also supports PHP5 now. Software is licensed under GPL.
+
+<url url="http://www.zend.com/store/products/zend-optimizer.php" name="Zend
+Optimizer"> is closed source product that runs on Windows, Linux, *BSD, and
+Solaris. Works not only with Apache 1.3.x/2 but also IIS 4/5, Zeus and the
+standalone CGI version of PHP.
+
+See also:
+<itemize>
+  <item><url url="http://pecl.php.net/package/APC" name="PHP APC">
+</itemize>
 
 <sect>Customizing SquirrelMail
 <sect1>Plugins
@@ -353,7 +602,7 @@ What to do in order to make it fast without toasting the server.
 SquirrelMail is modular system. Interface can be extented with extra features
 provided by various plugins.
 
-<sect1>Themes
+<sect1>Themes<label id="themes">
 <p>
 Which color is da best.
 
