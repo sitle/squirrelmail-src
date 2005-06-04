@@ -1,19 +1,21 @@
 <?php
 /**
- * forget_me.mod 
+ * forget_me.mod
  * --------------
  * Squirrelspell module
  *
- * Copyright (c) 1999-2003 The SquirrelMail Project Team
+ * Copyright (c) 1999-2005 The SquirrelMail Project Team
  * Licensed under the GNU GPL. For full terms see the file COPYING.
  *
  * This module deletes the words from the user dictionary. Called
- * after EDIT_DIC module.                                        
+ * after EDIT_DIC module.
  *
- * $Id$
  *
- * @author Konstantin Riabitsev <icon@duke.edu> ($Author$)
- * @version $Date$
+ *
+ * @author Konstantin Riabitsev <icon@duke.edu>
+ * @version $Id$
+ * @package plugins
+ * @subpackage squirrelspell
  */
 
 global $SQSPELL_VERSION;
@@ -54,7 +56,7 @@ if (sizeof($words_ary)){
    */
   $langs=sqspell_getSettings($words);
   $words_dic = "# SquirrelSpell User Dictionary $SQSPELL_VERSION\n# "
-     . "Last Revision: " . date("Y-m-d") . "\n# LANG: " 
+     . "Last Revision: " . date("Y-m-d") . "\n# LANG: "
      . join(", ", $langs) . "\n";
   for ($i=0; $i<sizeof($langs); $i++){
     /**
@@ -78,8 +80,8 @@ if (sizeof($words_ary)){
   /**
    * Click on some words first, Einstein!
    */
-  sqspell_makePage(_("Personal Dictionary"), null, 
-		   '<p>' . _("No changes requested.") . '</p>');
+  sqspell_makePage(_("Personal Dictionary"), null,
+          '<p>' . _("No changes requested.") . '</p>');
 }
 
 /**
@@ -88,5 +90,5 @@ if (sizeof($words_ary)){
  * mode: php
  * End:
  * vim: syntax=php
- */    
+ */
 ?>

@@ -4,16 +4,16 @@
  * ------------------
  * Squirrelspell module
  *
- * Copyright (c) 1999-2003 The SquirrelMail Project Team
+ * Copyright (c) 1999-2005 The SquirrelMail Project Team
  * Licensed under the GNU GPL. For full terms see the file COPYING.
  *
  * This module tries to decrypt the user dictionary with a newly provided
- * old password, or erases the file if everything else fails. :(         
+ * old password, or erases the file if everything else fails. :(
  *
- * $Id$
- *
- * @author Konstantin Riabitsev <icon@duke.edu> ($Author$)
- * @version $Date$
+ * @author Konstantin Riabitsev <icon@duke.edu>
+ * @version $Id$
+ * @package plugins
+ * @subpackage squirrelspell
  */
 
 global $SCRIPT_NAME;
@@ -29,7 +29,7 @@ if ($delete_words=='ON'){
    * the user asked to delete the file. Erase the bastard and hope
    * this never happens again.
    */
-  sqspell_deleteWords(); 
+  sqspell_deleteWords();
   /**
    * See where we were called from -- pop-up window or options page
    * and call whichever wrapper is appropriate.
@@ -43,7 +43,7 @@ if ($delete_words=='ON'){
      * The _("Your....") has to be on one line. Otherwise xgettext borks
      * on getting the strings.
      */
-    $msg = '<p>' 
+    $msg = '<p>'
        . _("Your personal dictionary was erased. Please close this window and click \"Check Spelling\" button again to start your spellcheck over.")
        . '</p> '
        . '<p align="center"><form>'
@@ -54,7 +54,7 @@ if ($delete_words=='ON'){
   }
   exit;
 }
-    
+
 if ($old_key){
   /**
    * User provided another key to try and decrypt the dictionary.
@@ -73,15 +73,15 @@ if ($old_key){
    */
   if (strstr($SCRIPT_NAME, 'sqspell_options')){
     $msg = '<p>'
-       . _("Your personal dictionary was re-encrypted successfully. Now return to the &quot;SpellChecker options&quot; menu and make your selection again." ) 
+       . _("Your personal dictionary was re-encrypted successfully. Now return to the &quot;SpellChecker options&quot; menu and make your selection again." )
        . '</p>';
     sqspell_makePage(_("Successful re-encryption"), null, $msg);
   } else {
     $msg = '<p>'
-       . _("Your personal dictionary was re-encrypted successfully. Please close this window and click \"Check Spelling\" button again to start your spellcheck over.") 
-       . '</p><form><p align="center"><input type="button" value=" ' 
-       . _("Close this Window") . ' "'
-       . 'onclick="self.close()"></p></form>';
+        . _("Your personal dictionary was re-encrypted successfully. Please close this window and click \"Check Spelling\" button again to start your spellcheck over.")
+        . '</p><form><p align="center"><input type="button" value=" '
+        . _("Close this Window") . ' "'
+        . 'onclick="self.close()" /></p></form>';
     sqspell_makeWindow(null, _("Dictionary re-encrypted"), null, $msg);
   }
   exit;
@@ -93,5 +93,5 @@ if ($old_key){
  * mode: php
  * End:
  * vim: syntax=php
- */    
+ */
 ?>

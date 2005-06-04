@@ -1,19 +1,19 @@
 <?php
 /**
  * crypto.mod
- * --------------- 
+ * ---------------
  * Squirrelspell module
  *
- * Copyright (c) 1999-2003 The SquirrelMail Project Team
+ * Copyright (c) 1999-2005 The SquirrelMail Project Team
  * Licensed under the GNU GPL. For full terms see the file COPYING.
  *
  * This module handles the encryption/decryption of the user dictionary
  * if the user so chooses from the options page.
  *
- * $Id$
- *
- * @author Konstantin Riabitsev <icon@duke.edu> ($Author$)
- * @version $Date$
+ * @author Konstantin Riabitsev <icon@duke.edu>
+ * @version $Id$
+ * @package plugins
+ * @subpackage squirrelspell
  */
 
 /**
@@ -27,7 +27,7 @@ switch ($_POST['action']){
          * Let's encrypt the file and save it in an encrypted format.
          */
         $words=sqspell_getWords();
-        /** 
+        /**
          * Flip the flag so the sqspell_writeWords function knows to encrypt
          * the message before writing it to the disk.
          */
@@ -37,7 +37,7 @@ switch ($_POST['action']){
          */
         sqspell_writeWords($words);
         $msg='<p>'
-            . _("Your personal dictionary has been encrypted and is now stored in an encrypted format.") 
+            . _("Your personal dictionary has been encrypted and is now stored in an encrypted format.")
             . '</p>';
     break;
     case 'decrypt':
@@ -45,7 +45,7 @@ switch ($_POST['action']){
          * Let's decrypt the file and save it as plain text.
          */
         $words=sqspell_getWords();
-        /** 
+        /**
          * Flip the flag and tell the sqspell_writeWords() function that we
          * want to save it plaintext.
          */
@@ -59,7 +59,7 @@ switch ($_POST['action']){
         /**
          * Wait, this shouldn't happen! :)
          */
-        $msg = '<p>No action requested.</p>';
+        $msg = '<p>'._("No action requested.").'</p>';
     break;
 }
 sqspell_makePage( _("Personal Dictionary Crypto Settings"), null, $msg);

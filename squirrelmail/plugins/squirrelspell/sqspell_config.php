@@ -5,9 +5,9 @@
  * Copyright (c) 1999-2005 The SquirrelMail Project Team
  * Licensed under the GNU GPL. For full terms see the file COPYING.
  *
- *
- *
- * $Id$
+ * @version $Id$
+ * @package plugins
+ * @subpackage squirrelspell
  */
 
 require_once(SM_PATH . 'functions/prefs.php');

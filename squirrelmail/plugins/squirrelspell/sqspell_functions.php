@@ -1,16 +1,14 @@
 <?php
 /**
- * sqspell_functions.php 
+ * sqspell_functions.php
  * ----------------------
  * All SquirrelSpell-wide functions are in this file.
  *
  * Copyright (c) 1999-2005 The SquirrelMail Project Team
  * Licensed under the GNU GPL. For full terms see the file COPYING.
  *
- * $Id$
- *
- * @author Konstantin Riabitsev <icon@duke.edu> ($Author$)
- * @version $Date$
+ * @author Konstantin Riabitsev <icon@duke.edu>
+ * @version $Id$
  * @package plugins
  * @subpackage squirrelspell
  */
@@ -19,12 +17,12 @@
  * This function is the GUI wrapper for the options page. SquirrelSpell
  * uses it for creating all Options pages.
  *
- * @param  $title     The title of the page to display
- * @param  $scriptsrc This is used to link a file.js into the 
+ * @param  string $title     The title of the page to display
+ * @param  string $scriptsrc This is used to link a file.js into the
  *                    <script src="file.js"></script> format. This
  *                    allows to separate javascript from the rest of the
  *                    plugin and place it into the js/ directory.
- * @param  $body      The body of the message to display.
+ * @param  string $body      The body of the message to display.
  * @return            void
  */
 function sqspell_makePage($title, $scriptsrc, $body){
@@ -34,12 +32,12 @@ function sqspell_makePage($title, $scriptsrc, $body){
       $MOD = 'options_main';
   }
 
-  displayPageHeader($color, 'None');  
+  displayPageHeader($color, 'None');
   echo "&nbsp;<br />\n";
   /**
    * Check if we need to link in a script.
    */
-  if($scriptsrc) { 
+  if($scriptsrc) {
     echo "<script type=\"text/javascript\" src=\"js/$scriptsrc\"></script>\n";
   }
   echo html_tag( 'table', '', 'center', '', 'width="95%" border="0" cellpadding="2" cellspacing="0"' ) . "\n"
@@ -47,7 +45,7 @@ function sqspell_makePage($title, $scriptsrc, $body){
           html_tag( 'td', '<strong>' . $title .'</strong>', 'center', $color[9] )
       ) . "\n"
     . html_tag( 'tr', "\n" .
-          html_tag( 'td', '<hr>', 'left' )
+          html_tag( 'td', '<hr />', 'left' )
       ) . "\n"
     . html_tag( 'tr', "\n" .
           html_tag( 'td', $body, 'left' )
@@ -56,9 +54,9 @@ function sqspell_makePage($title, $scriptsrc, $body){
    * Generate a nice "Return to Options" link, unless this is the
    * starting page.
    */
-  if ($MOD != "options_main"){ 
+  if ($MOD != "options_main"){
     echo html_tag( 'tr', "\n" .
-                html_tag( 'td', '<hr>', 'left' )
+                html_tag( 'td', '<hr />', 'left' )
             ) . "\n"
       . html_tag( 'tr', "\n" .
             html_tag( 'td', '<a href="sqspell_options.php">'
@@ -71,7 +69,7 @@ function sqspell_makePage($title, $scriptsrc, $body){
    * Close the table and display the version.
    */
   echo html_tag( 'tr', "\n" .
-              html_tag( 'td', '<hr>', 'left' )
+              html_tag( 'td', '<hr />', 'left' )
           ) . "\n"
     . html_tag( 'tr',
           html_tag( 'td', 'SquirrelSpell ' . $SQSPELL_VERSION, 'center', $color[9] )
@@ -85,45 +83,45 @@ function sqspell_makePage($title, $scriptsrc, $body){
  * everywhere, except the check_me module, since that one is highly
  * customized.
  *
- * @param  $onload    Used to indicate and pass the name of a js function
+ * @param  string $onload    Used to indicate and pass the name of a js function
  *                    to call in a <body onload="function()" for automatic
  *                    onload script execution.
- * @param  $title     Title of the page.
- * @param  $scriptsrc If defined, link this javascript source page into
+ * @param  string $title     Title of the page.
+ * @param  string $scriptsrc If defined, link this javascript source page into
  *                    the document using <script src="file.js"> format.
- * @param  $body      The content to include.
+ * @param  string $body      The content to include.
  * @return            void
  */
 function sqspell_makeWindow($onload, $title, $scriptsrc, $body){
   global $color, $SQSPELL_VERSION;
 
   displayHtmlHeader($title,
-        ($scriptsrc ? "\n<script type=\"text/javascript\" src=\"js/$scriptsrc\"></script>\n" : ''));
+      ($scriptsrc ? "\n<script type=\"text/javascript\" src=\"js/$scriptsrc\"></script>\n" : ''));
 
   echo "<body text=\"$color[8]\" bgcolor=\"$color[4]\" link=\"$color[7]\" "
-    . "vlink=\"$color[7]\" alink=\"$color[7]\"";
+      . "vlink=\"$color[7]\" alink=\"$color[7]\"";
   /**
    * Provide an onload="jsfunction()" if asked to.
    */
   if ($onload) {
-    echo " onload=\"$onload\"";
+      echo " onload=\"$onload\"";
   }
   /**
    * Draw the rest of the page.
    */
-  echo '>'
+  echo ">\n"
     . html_tag( 'table', "\n" .
           html_tag( 'tr', "\n" .
               html_tag( 'td', '<strong>' . $title . '</strong>', 'center', $color[9] )
           ) . "\n" .
           html_tag( 'tr', "\n" .
-              html_tag( 'td', '<hr>', 'left' )
+              html_tag( 'td', '<hr />', 'left' )
           ) . "\n" .
           html_tag( 'tr', "\n" .
               html_tag( 'td', $body, 'left' )
           ) . "\n" .
           html_tag( 'tr', "\n" .
-              html_tag( 'td', '<hr>', 'left' )
+              html_tag( 'td', '<hr />', 'left' )
           ) . "\n" .
           html_tag( 'tr', "\n" .
               html_tag( 'td', 'SquirrelSpell ' . $SQSPELL_VERSION, 'center', $color[9] )
@@ -134,7 +132,7 @@ function sqspell_makeWindow($onload, $title, $scriptsrc, $body){
 
 /**
  * This function does the encryption and decryption of the user
- * dictionary. It is only available when PHP is compiled with 
+ * dictionary. It is only available when PHP is compiled with
  * mcrypt support (--with-mcrypt). See doc/CRYPTO for more
  * information.
  *
@@ -171,7 +169,7 @@ function sqspell_crypto($mode, $ckey, $input){
     break;
   case 'decrypt':
     $crypto = mdecrypt_generic($td, $input);
-    /** 
+    /**
      * See if it decrypted successfully. If so, it should contain
      * the string "# SquirrelSpell". If not, then bail out.
      */
@@ -204,7 +202,7 @@ function sqspell_crypto($mode, $ckey, $input){
  *
  * @param  $words_string Contents of the 0.2-style user dictionary.
  * @return               Contents of the 0.3-style user dictionary.
- */   
+ */
 function sqspell_upgradeWordsFile($words_string){
   global $SQSPELL_APP_DEFAULT, $SQSPELL_VERSION;
   /**
@@ -212,23 +210,23 @@ function sqspell_upgradeWordsFile($words_string){
    * If the user wants more, s/he can set them up in personal
    * preferences. See doc/UPGRADING for more info.
    */
-  $new_words_string = 
-     substr_replace($words_string, 
-		    "# SquirrelSpell User Dictionary $SQSPELL_VERSION\n# "
-		    . "Last Revision: " . date("Y-m-d") 
-		    . "\n# LANG: $SQSPELL_APP_DEFAULT\n# $SQSPELL_APP_DEFAULT",
-		    0, strpos($words_string, "\n")) . "# End\n";
+  $new_words_string =
+     substr_replace($words_string,
+                    "# SquirrelSpell User Dictionary $SQSPELL_VERSION\n# "
+                    . "Last Revision: " . date("Y-m-d")
+                    . "\n# LANG: $SQSPELL_APP_DEFAULT\n# $SQSPELL_APP_DEFAULT",
+                    0, strpos($words_string, "\n")) . "# End\n";
   sqspell_writeWords($new_words_string);
   return $new_words_string;
 }
 
 /**
- * Right now it just returns an array with the dictionaries 
+ * Right now it just returns an array with the dictionaries
  * available to the user for spell-checking. It will probably
  * do more in the future, as features are added.
  *
- * @param  $words The contents of the user's ".words" file.
- * @return        a strings array with dictionaries available
+ * @param string $words The contents of the user's ".words" file.
+ * @return array a strings array with dictionaries available
  *                to this user, e.g. {"English", "Spanish"}, etc.
  */
 function sqspell_getSettings($words){
@@ -275,12 +273,12 @@ function sqspell_getSettings($words){
  * to the requested language.
  *
  * @param  $words The contents of the user's ".words" file.
- * @param  $lang  Which language words to return, e.g. requesting 
+ * @param  $lang  Which language words to return, e.g. requesting
  *                "English" will return ONLY the words from user's
  *                English dictionary, disregarding any others.
  * @return        The list of words corresponding to the language
  *                requested.
- */    
+ */
 function sqspell_getLang($words, $lang){
   $start=strpos($words, "# $lang\n");
   /**
@@ -305,8 +303,8 @@ function sqspell_getLang($words, $lang){
  * the file is encrypted (well, "garbled"), then it tries to decrypt
  * it, checks whether the decryption was successful, troubleshoots if
  * not, then returns the clear-text dictionary to the app.
- * 
- * @return the contents of the user's ".words" file, decrypted if 
+ *
+ * @return the contents of the user's ".words" file, decrypted if
  *         necessary.
  */
 function sqspell_getWords(){
@@ -379,7 +377,7 @@ function sqspell_getWords(){
 	   'left' ) . "\n"
 	 . '</blockquote>' . "\n"
 	 . html_tag( 'p', "\n" .
-	       '<input type="submit" value="' 
+	       '<input type="submit" value="'
 	       . _("Proceed") . ' &gt;&gt;">' ,
 	   'center' ) . "\n"
 	 . '</form>' . "\n";
@@ -393,28 +391,28 @@ function sqspell_getWords(){
 	 . "//--></script>\n";
       /**
        * See if this happened in the pop-up window or when accessing
-       * the SpellChecker options page. 
+       * the SpellChecker options page.
        * This is a dirty solution, I agree. TODO: make this prettier.
        */
       global $SCRIPT_NAME;
       if (strstr($SCRIPT_NAME, "sqspell_options")){
-	sqspell_makePage(_("Error Decrypting Dictionary"), 
+	sqspell_makePage(_("Error Decrypting Dictionary"),
 			  "decrypt_error.js", $msg);
       } else {
-	sqspell_makeWindow(null, _("Error Decrypting Dictionary"), 
-			   "decrypt_error.js", $msg); 
+	sqspell_makeWindow(null, _("Error Decrypting Dictionary"),
+			   "decrypt_error.js", $msg);
       }
       exit;
     } else {
       /**
-       * OK! Phew. Set the encryption flag to true so we can later on 
+       * OK! Phew. Set the encryption flag to true so we can later on
        * encrypt it again before saving to HDD.
        */
       $SQSPELL_CRYPTO=true;
     }
   } else {
     /**
-     * No encryption is/was used. Set $SQSPELL_CRYPTO to false, 
+     * No encryption is/was used. Set $SQSPELL_CRYPTO to false,
      * in case we have to save the dictionary later.
      */
     $SQSPELL_CRYPTO=false;
@@ -428,7 +426,7 @@ function sqspell_getWords(){
   }
   return $words;
 }
-   
+
 /**
  * Writes user dictionary into the $username.words file, then changes mask
  * to 0600. If encryption is needed -- does that, too.
@@ -479,7 +477,7 @@ function sqspell_writeWords($words){
   fclose($fp);
   chmod($SQSPELL_WORDS_FILE, 0600);
 }
-    
+
 function sqspell_deleteWords(){
   /**
    * So I open the door to my enemies,
@@ -497,12 +495,12 @@ function sqspell_deleteWords(){
  * whatever.
  *
  * @return The template to use when storing the user dictionary.
- */    
+ */
 function sqspell_makeDummy(){
   global $SQSPELL_VERSION, $SQSPELL_APP_DEFAULT;
   $words = "# SquirrelSpell User Dictionary $SQSPELL_VERSION\n"
-     . "# Last Revision: " . date('Y-m-d') 
-     . "\n# LANG: $SQSPELL_APP_DEFAULT\n# End\n"; 
+     . "# Last Revision: " . date('Y-m-d')
+     . "\n# LANG: $SQSPELL_APP_DEFAULT\n# End\n";
   return $words;
 }
 
@@ -513,14 +511,14 @@ function sqspell_makeDummy(){
  * of the modules directory by providing dots, unicode strings, or
  * slashes.
  *
- * @param  $rMOD the name of the module requested to include.
- * @return       void, since it bails out with an access error if needed.
+ * @param  string $rMOD the name of the module requested to include.
+ * @return void, since it bails out with an access error if needed.
  */
 function sqspell_ckMOD($rMOD){
-  if (strstr($rMOD, '.') 
-      || strstr($rMOD, '/') 
+  if (strstr($rMOD, '.')
+      || strstr($rMOD, '/')
       || strstr($rMOD, '%')
-      || strstr($rMOD, "\\")){ 
+      || strstr($rMOD, "\\")){
     echo _("Cute.");
     exit;
   }
@@ -528,7 +526,7 @@ function sqspell_ckMOD($rMOD){
 
 /**
  * SquirrelSpell version. Don't modify, since it identifies the format
- * of the user dictionary files and messing with this can do ugly 
+ * of the user dictionary files and messing with this can do ugly
  * stuff. :)
  */
 $SQSPELL_VERSION="v0.3.8";

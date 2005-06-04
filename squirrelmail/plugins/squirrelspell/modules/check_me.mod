@@ -4,17 +4,17 @@
  * -------------
  * Squirrelspell module.
  *
- * Copyright (c) 1999-2003 The SquirrelMail Project Team
+ * Copyright (c) 1999-2005 The SquirrelMail Project Team
  * Licensed under the GNU GPL. For full terms see the file COPYING.
  *
  * This module is the main workhorse of SquirrelSpell. It submits
  * the message to the spell-checker, parses the output, and loads
  * the interface window.
  *
- * $Id$
- *
- * @author Konstantin Riabitsev <icon@duke.edu> ($Author$)
- * @version $Date$
+ * @author Konstantin Riabitsev <icon@duke.edu>
+ * @version $Id$
+ * @package plugins
+ * @subpackage squirrelspell
  */
 
 /**
@@ -82,7 +82,7 @@ $sqspell_command=$SQSPELL_APP[$sqspell_use_app];
 /**
  * If you have php >= 4.3.0, we can use proc_open and safe mode
  * and not mess w/ temp files.  Otherwise we will do it the old
- * way, (minus the uneeded call to cat that messes up Wintel 
+ * way, (minus the uneeded call to cat that messes up Wintel
  * boxen.)
  * Thanks Ray Ferguson for providing this patch.
  */
@@ -103,10 +103,10 @@ if( check_php_version ( 4, 3 ) ) {
     }
     fclose($pipes[0]);
     $sqspell_output = array();
-    for($i=1; $i<=2; $i++){
+    for($i=1; $i<=2; $i++) {
         while(!feof($pipes[$i])) {
            array_push($sqspell_output, rtrim(fgetss($pipes[$i],999),"\n"));
-    	}
+        }
         fclose($pipes[$i]);
     }
     $sqspell_exitcode=proc_close($spell_proc);
@@ -136,9 +136,9 @@ if ($sqspell_exitcode){
      . sprintf(_("I tried to execute '%s', but it returned:"),
                $sqspell_command) . "<pre>"
      . htmlspecialchars(join("\n", $sqspell_output)) . '</pre>'
-     . "<form onsubmit=\"return false\">"
-     . "<input type=\"submit\" value=\"  " . _("Close")
-     . "  \" onclick=\"self.close()\"></form></div>";
+     . '<form onsubmit="return false">'
+     . '<input type="submit" value="  ' . _("Close")
+     . '  " onclick="self.close()" /></form></div>';
   sqspell_makeWindow(null, _("SquirrelSpell is misconfigured."), null, $msg);
   exit;
 }
@@ -191,7 +191,7 @@ for ($i=0; $i<sizeof($sqspell_output); $i++){
       }
       if (isset($locations[$sqspell_word])){
         $locations[$sqspell_word] .= ', ';
-      } else { 
+      } else {
         $locations[$sqspell_word] = '';
       }
       $locations[$sqspell_word] .= "$current_line:$sqspell_symb";
@@ -205,21 +205,21 @@ for ($i=0; $i<sizeof($sqspell_output); $i++){
     $tmparray = explode(" ", $sqspell_output[$i]);
     $sqspell_word=$tmparray[1];
     /**
-     * 
+     *
      * Check if the word is in user dictionary.
      */
     if (!$SQSPELL_EREG("\n$sqspell_word\n", $words)){
       $sqspell_symb=intval($tmparray[2])-1;
       if (!isset($misses[$sqspell_word])) {
-	    $misses[$sqspell_word] = '_NONE';
-	    $missed_words[$errors] = $sqspell_word;
-	    $errors++;
+          $misses[$sqspell_word] = '_NONE';
+          $missed_words[$errors] = $sqspell_word;
+          $errors++;
       }
       if (isset($locations[$sqspell_word])) {
-	    $locations[$sqspell_word] .= ', ';
+          $locations[$sqspell_word] .= ', ';
       } else {
-	    $locations[$sqspell_word] = '';
-	  }
+          $locations[$sqspell_word] = '';
+      }
       $locations[$sqspell_word] .= "$current_line:$sqspell_symb";
     }
   break;
@@ -233,7 +233,7 @@ if ($errors){
    */
   $extrajs="<script type=\"text/javascript\">\n"
     . "<!--\n";
-  
+
   $sqspell_lines = explode("\n", $sqspell_text);
   /**
    * The javascript array sqspell_lines[] contains all lines of
@@ -241,9 +241,9 @@ if ($errors){
    */
   $extrajs.= "var sqspell_lines=new Array();\n";
   for ($i=0; $i<sizeof($sqspell_lines); $i++){
-    $extrajs.= "sqspell_lines[$i] = \"" 
+    $extrajs.= "sqspell_lines[$i] = \""
       . chop(addslashes($sqspell_lines[$i])) . "\";\n";
-  }  
+  }
   $extrajs.= "\n\n";
 
   /**
@@ -254,7 +254,7 @@ if ($errors){
     $extrajs.= "misses[$i] = \"" . $missed_words[$i] . "\";\n";
   }
   $extrajs.= "\n\n";
-  
+
   /**
    * Suggestions are (guess what!) suggestions for misspellings
    */
@@ -277,16 +277,16 @@ if ($errors){
     $i++;
   }
 
-  /** 
+  /**
    * Add some strings so they can be i18n'd.
    */
   $extrajs.= "var ui_completed = \"" . _("Spellcheck completed. Commit changes?")
     . "\";\n";
   $extrajs.= "var ui_nochange = \"" . _("No changes were made.") . "\";\n";
-  $extrajs.= "var ui_wait = \"" 
+  $extrajs.= "var ui_wait = \""
     . _("Now saving your personal dictionary... Please wait.")
     . "\";\n";
-  
+
 
   /**
    * Did I mention that I hate dots on the end of contcatenated lines?
@@ -295,7 +295,7 @@ if ($errors){
   $extrajs.= "//-->\n"
     . "</script>\n"
     . "<script src=\"js/check_me.js\" type=\"text/javascript\"></script>\n";
-  
+
 
   displayHtmlHeader(_("SquirrelSpell Results"),$extrajs);
 
@@ -313,7 +313,7 @@ if ($errors){
    </tr>
    <tr>
     <td>
-      <hr>
+      <hr />
     </td>
    </tr>
    <tr>
@@ -321,7 +321,7 @@ if ($errors){
      <form method="post">
       <input type="hidden" name="MOD" value="forget_me_not" />
       <input type="hidden" name="words" value="" />
-      <input type="hidden" name="sqspell_use_app" 
+      <input type="hidden" name="sqspell_use_app"
              value="<?php echo $sqspell_use_app ?>" />
       <table border="0" width="100%">
        <tr align="center">
@@ -331,7 +331,7 @@ if ($errors){
           echo $sptag . _("Line with an error:") . '</span>';
          ?>
          <br />
-         <textarea name="sqspell_line_area" cols="50" rows="3" 
+         <textarea name="sqspell_line_area" cols="50" rows="3"
                    wrap="hard" onfocus="this.blur()"></textarea>
         </td>
        </tr>
@@ -342,7 +342,7 @@ if ($errors){
          ?>
         </td>
         <td align="left" width="25%">
-         <input name="sqspell_error" size="10" value="" 
+         <input name="sqspell_error" size="10" value=""
                 onfocus="this.blur()" />
         </td>
         <td align="right" width="25%">
@@ -351,7 +351,7 @@ if ($errors){
          ?>
         </td>
         <td align="left" width="25%">
-         <select name="sqspell_suggestion" 
+         <select name="sqspell_suggestion"
                  onchange="if (this.options[this.selectedIndex].value != '_NONE') document.forms[0].sqspell_oruse.value=this.options[this.selectedIndex].value">
           <?php
            echo '<option>' . _("Suggestions") . '</option>';
@@ -367,7 +367,7 @@ if ($errors){
         </td>
         <td align="left">
          <input name="sqspell_oruse" size="15" value=""
-                onfocus="if(!this.value) this.value=document.forms[0].sqspell_error.value">
+                onfocus="if(!this.value) this.value=document.forms[0].sqspell_error.value" />
         </td>
         <td align="right">
          <?php
@@ -375,54 +375,54 @@ if ($errors){
          ?>
         </td>
         <td align="left">
-         <input name="sqspell_likethis" size=3 value="" onfocus="this.blur()">
+         <input name="sqspell_likethis" size=3 value="" onfocus="this.blur()" />
         </td>
        </tr>
         <!-- hello? What is this? </td></tr> -->
        <tr>
-        <td colspan="4"><hr></td>
+        <td colspan="4"><hr /></td>
        </tr>
        <tr>
         <td colspan="4">
          <table border="0" cellpadding="0" cellspacing="3" width="100%">
-	  <tr align="center" bgcolor="<?php echo $color[9] ?>">
+          <tr align="center" bgcolor="<?php echo $color[9] ?>">
            <?php
-	    SpellLink('sqspellChange()',
-		      _("Change this word"),
-		      _("Change"));
-	    SpellLink('sqspellChangeAll()',
-		      _("Change ALL occurances of this word"),
-		      _("Change All"));
-	    SpellLink('sqspellIgnore()',
-		      _("Ignore this word"),
-		      _("Ignore"));
-	    SpellLink('sqspellIgnoreAll()',
-		      _("Ignore ALL occurances this word"),
-		      _("Ignore All"));
-	    SpellLink('sqspellRemember()',
-		      _("Add this word to your personal dictionary"),
-		      _("Add to Dic"));
+           SpellLink('sqspellChange()',
+                   _("Change this word"),
+                   _("Change"));
+         SpellLink('sqspellChangeAll()',
+                 _("Change ALL occurances of this word"),
+                 _("Change All"));
+         SpellLink('sqspellIgnore()',
+                 _("Ignore this word"),
+                 _("Ignore"));
+         SpellLink('sqspellIgnoreAll()',
+                 _("Ignore ALL occurances this word"),
+                 _("Ignore All"));
+         SpellLink('sqspellRemember()',
+                 _("Add this word to your personal dictionary"),
+                 _("Add to Dic"));
            ?>
           </tr>
          </table>
         </td>
        </tr>
        <tr>
-        <td colspan="4"><hr></td>
+        <td colspan="4"><hr /></td>
        </tr>
        <tr>
-	<td colspan="4" align="center" bgcolor="<?php echo $color[9] ?>">
-	 <?php
-	  echo '<input type="button" value="  '
-	    . _("Close and Commit")
-	    . '  " onclick="if (confirm(\''
-	    . _("The spellcheck is not finished. Really close and commit changes?")
-	    . '\')) sqspellCommitChanges()">'
-            . ' <input type="button" value="  '
-            . _("Close and Cancel")
-            . '  " onclick="if (confirm(\''
-            . _("The spellcheck is not finished. Really close and discard changes?")
-            . '\')) self.close()">';
+        <td colspan="4" align="center" bgcolor="<?php echo $color[9] ?>">
+         <?php
+             echo '<input type="button" value="  '
+                 . _("Close and Commit")
+                 . '  " onclick="if (confirm(\''
+                 . _("The spellcheck is not finished. Really close and commit changes?")
+                 . '\')) sqspellCommitChanges()" />'
+                 . ' <input type="button" value="  '
+                 . _("Close and Cancel")
+                 . '  " onclick="if (confirm(\''
+                 . _("The spellcheck is not finished. Really close and discard changes?")
+                 . '\')) self.close()" />';
          ?>
         </td>
        </tr>
@@ -437,9 +437,9 @@ if ($errors){
   /**
    * AREN'T YOU SUCH A KNOW-IT-ALL!
    */
-  $msg="<form onsubmit=\"return false\"><div align=\"center\">"
-     . "<input type=\"submit\" value=\"  " . _("Close") 
-     . "  \" onclick=\"self.close()\"></div></form>";
+  $msg='<form onsubmit="return false"><div align="center">' .
+       '<input type="submit" value="  ' . _("Close") .
+       '  " onclick="self.close()" /></div></form>';
   sqspell_makeWindow(null, _("No errors found"), null, $msg);
 }
 
