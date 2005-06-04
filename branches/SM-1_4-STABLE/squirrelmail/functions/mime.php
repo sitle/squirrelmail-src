@@ -43,7 +43,7 @@ function mime_structure ($bodystructure, $flags=array()) {
         echo "<body text=\"$color[8]\" bgcolor=\"$color[4]\" link=\"$color[7]\" vlink=\"$color[7]\" alink=\"$color[7]\">\n\n" .
          '<center>';
         $errormessage  = _("SquirrelMail could not decode the bodystructure of the message");
-        $errormessage .= '<br />'._("the provided bodystructure by your imap-server").':<br /><br />';
+        $errormessage .= '<br />'._("The bodystructure provided by your IMAP server:").'<br /><br />';
         $errormessage .= '<table><tr><td>' . htmlspecialchars($read) . '</td></tr></table>';
         plain_error_message( $errormessage, $color );
         echo '</body></html>';
@@ -137,19 +137,19 @@ function mime_fetch_body($imap_stream, $id, $ent_id=1, $fetch_size=0) {
             $par .= '&amp;startMessage=' . $startMessage . '&amp;show_more=0';
         }
         $par .= '&amp;response=' . urlencode($response) .
-                '&amp;message='  . urlencode($message)  .
-                '&amp;topline='  . urlencode($topline);
+            '&amp;message='  . urlencode($message)  .
+            '&amp;topline='  . urlencode($topline);
 
-        echo   '<tt><br />' .
-               '<table width="80%"><tr>' .
-               '<tr><td colspan="2">' .
-               _("Body retrieval error. The reason for this is most probably that the message is malformed.") .
-               '</td></tr>' .
-               '<tr><td><b>' . _("Command:") . "</td><td>$cmd</td></tr>" .
-               '<tr><td><b>' . _("Response:") . "</td><td>$response</td></tr>" .
-               '<tr><td><b>' . _("Message:") . "</td><td>$message</td></tr>" .
-               '<tr><td><b>' . _("FETCH line:") . "</td><td>$topline</td></tr>" .
-               "</table><br /></tt></font><hr />";
+        echo '<tt><br />' .
+            '<table width="80%"><tr>' .
+            '<tr><td colspan="2">' .
+            _("Body retrieval error. The reason for this is most probably that the message is malformed.") .
+            '</td></tr>' .
+            '<tr><td><b>' . _("Command:") . "</td><td>$cmd</td></tr>" .
+            '<tr><td><b>' . _("Response:") . "</td><td>$response</td></tr>" .
+            '<tr><td><b>' . _("Message:") . "</td><td>$message</td></tr>" .
+            '<tr><td><b>' . _("FETCH line:") . "</td><td>$topline</td></tr>" .
+            "</table><br /></tt></font><hr />";
 
         $data = sqimap_run_command ($imap_stream, "FETCH $passed_id BODY[]", true, $response, $message, $uid_support);
         array_shift($data);
@@ -175,14 +175,14 @@ function mime_print_body_lines ($imap_stream, $id, $ent_id=1, $encoding) {
        Instead, echo the decoded attachment directly to screen */
     if (strtolower($encoding) == 'base64') {
         if (!$ent_id) {
-           $query = "FETCH $id BODY[]";
+            $query = "FETCH $id BODY[]";
         } else {
-           $query = "FETCH $id BODY[$ent_id]";
+            $query = "FETCH $id BODY[$ent_id]";
         }
         sqimap_run_command($imap_stream,$query,true,$response,$message,$uid_support,'sqimap_base64_decode','php://stdout',true);
     } else {
-       $body = mime_fetch_body ($imap_stream, $id, $ent_id);
-       echo decodeBody($body, $encoding);
+        $body = mime_fetch_body ($imap_stream, $id, $ent_id);
+        echo decodeBody($body, $encoding);
     }
     return;
 }
@@ -292,7 +292,8 @@ function translateText(&$body, $wrap_at, $charset) {
     $body = '<pre>' . implode("\n", $body_ary) . '</pre>';
 }
 
-/* This returns a parsed string called $body. That string can then
+/**
+ * This returns a parsed string called $body. That string can then
  * be displayed as the actual message in the HTML. It contains
  * everything needed, including HTML Tags, Attachments at the
  * bottom, etc.
@@ -314,12 +315,12 @@ function formatBody($imap_stream, $message, $color, $wrap_at, $ent_num, $id, $ma
     $urlmailbox = urlencode($mailbox);
     $body_message = getEntity($message, $ent_num);
     if (($body_message->header->type0 == 'text') ||
-        ($body_message->header->type0 == 'rfc822')) {
+            ($body_message->header->type0 == 'rfc822')) {
         $body = mime_fetch_body ($imap_stream, $id, $ent_num);
         $body = decodeBody($body, $body_message->header->encoding);
 
         if (isset($languages[$squirrelmail_language]['XTRA_CODE']) &&
-            function_exists($languages[$squirrelmail_language]['XTRA_CODE'])) {
+                function_exists($languages[$squirrelmail_language]['XTRA_CODE'])) {
             if (mb_detect_encoding($body) != 'ASCII') {
                 $body = $languages[$squirrelmail_language]['XTRA_CODE']('decode', $body);
             }
@@ -346,22 +347,23 @@ function formatBody($imap_stream, $message, $color, $wrap_at, $ent_num, $id, $ma
                 $body = strip_tags($body);
                 $body = trim($body);
                 translateText($body, $wrap_at,
-                              $body_message->header->getParameter('charset'));
+                        $body_message->header->getParameter('charset'));
             } else {
                 $body = magicHTML($body, $id, $message, $mailbox);
             }
         } else {
             translateText($body, $wrap_at,
-                          $body_message->header->getParameter('charset'));
+                    $body_message->header->getParameter('charset'));
         }
+
         $link = 'passed_id=' . $id . '&amp;ent_id='.$ent_num.
-                '&amp;mailbox=' . $urlmailbox .'&amp;sort=' . $sort .
-                '&amp;startMessage=' . $startMessage . '&amp;show_more=0';
+            '&amp;mailbox=' . $urlmailbox .'&amp;sort=' . $sort .
+            '&amp;startMessage=' . $startMessage . '&amp;show_more=0';
         if (isset($passed_ent_id)) {
             $link .= '&amp;passed_ent_id='.$passed_ent_id;
         }
         $body .= '<center><small><a href="download.php?absolute_dl=true&amp;' .
-                 $link . '">' . _("Download this as a file") .  '</a>';
+            $link . '">' . _("Download this as a file") .  '</a>';
         if ($view_unsafe_images) {
             $text = _("Hide Unsafe Images");
         } else {
@@ -401,7 +403,7 @@ function formatAttachments($message, $exclude_id, $mailbox, $id) {
         $name = '';
         $links['download link']['text'] = _("Download");
         $links['download link']['href'] = SM_PATH .
-                "src/download.php?absolute_dl=true&amp;passed_id=$id&amp;mailbox=$urlMailbox&amp;ent_id=$ent";
+            "src/download.php?absolute_dl=true&amp;passed_id=$id&amp;mailbox=$urlMailbox&amp;ent_id=$ent";
         $ImageURL = '';
         if ($type0 =='message' && $type1 == 'rfc822') {
             $default_page = SM_PATH . 'src/read_body.php';
@@ -463,8 +465,8 @@ function formatAttachments($message, $exclude_id, $mailbox, $id) {
             $passed_ent_id_link = '';
         }
         $defaultlink = $default_page . "?startMessage=$startMessage"
-                     . "&amp;passed_id=$id&amp;mailbox=$urlMailbox"
-                     . '&amp;ent_id='.$ent.$passed_ent_id_link;
+            . "&amp;passed_id=$id&amp;mailbox=$urlMailbox"
+            . '&amp;ent_id='.$ent.$passed_ent_id_link;
         if ($where && $what) {
            $defaultlink .= '&amp;where='. urlencode($where).'&amp;what='.urlencode($what);
         }
@@ -474,23 +476,23 @@ function formatAttachments($message, $exclude_id, $mailbox, $id) {
          * for a more generic type.
          */
         $hookresults = do_hook("attachment $type0/$type1", $links,
-                               $startMessage, $id, $urlMailbox, $ent, $defaultlink,
-                               $display_filename, $where, $what);
+                $startMessage, $id, $urlMailbox, $ent, $defaultlink,
+                $display_filename, $where, $what);
         if(count($hookresults[1]) <= 1) {
             $hookresults = do_hook("attachment $type0/*", $links,
-                                   $startMessage, $id, $urlMailbox, $ent, $defaultlink,
-                                   $display_filename, $where, $what);
+                    $startMessage, $id, $urlMailbox, $ent, $defaultlink,
+                    $display_filename, $where, $what);
         }
 
         $links = $hookresults[1];
         $defaultlink = $hookresults[6];
 
         $attachments .= '<tr><td>' .
-                        '<a href="'.$defaultlink.'">'.decodeHeader($display_filename).'</a>&nbsp;</td>' .
-                        '<td><small><b>' . show_readable_size($header->size) .
-                        '</b>&nbsp;&nbsp;</small></td>' .
-                        '<td><small>[ '.htmlspecialchars($type0).'/'.htmlspecialchars($type1).' ]&nbsp;</small></td>' .
-                        '<td><small>';
+            '<a href="'.$defaultlink.'">'.decodeHeader($display_filename).'</a>&nbsp;</td>' .
+            '<td><small><b>' . show_readable_size($header->size) .
+            '</b>&nbsp;&nbsp;</small></td>' .
+            '<td><small>[ '.htmlspecialchars($type0).'/'.htmlspecialchars($type1).' ]&nbsp;</small></td>' .
+            '<td><small>';
         $attachments .= '<b>' . $description . '</b>';
         $attachments .= '</small></td><td><small>&nbsp;';
 
@@ -550,7 +552,7 @@ function decodeBody($body, $encoding) {
         $body = $encoding_handler('decode', $body);
 
     } else if ($encoding == 'quoted-printable' ||
-        $encoding == 'quoted_printable') {
+            $encoding == 'quoted_printable') {
         $body = quoted_printable_decode($body);
 
         while (ereg("=\n", $body)) {
@@ -579,7 +581,7 @@ function decodeHeader ($string, $utfencode=true,$htmlsave=true,$decide=false) {
     }
 
     if (isset($languages[$squirrelmail_language]['XTRA_CODE']) &&
-        function_exists($languages[$squirrelmail_language]['XTRA_CODE'])) {
+            function_exists($languages[$squirrelmail_language]['XTRA_CODE'])) {
         $string = $languages[$squirrelmail_language]['XTRA_CODE']('decodeheader', $string);
         // Do we need to return at this point?
         // return $string;
@@ -628,38 +630,38 @@ function decodeHeader ($string, $utfencode=true,$htmlsave=true,$decide=false) {
 
             switch ($encoding)
             {
-            case 'B':
-                $replace = base64_decode($res[4]);
-                if ($can_be_encoded) {
-                    // string is converted from one charset to another and sanitized
-                    $replace =  charset_convert($res[2],$replace,$default_charset);
-                } elseif ($utfencode) {
-                    // string is converted to htmlentities and sanitized
-                    $replace = charset_decode($res[2],$replace);
-                } elseif ($htmlsave) {
-                    // string is not converted, but still sanitized
-                    $replace = htmlspecialchars($replace);
-                }
-                $ret.= $replace;
-                break;
-            case 'Q':
-                $replace = str_replace('_', ' ', $res[4]);
-                $replace = preg_replace('/=([0-9a-f]{2})/ie', 'chr(hexdec("\1"))',
-                                    $replace);
-                if ($can_be_encoded) {
-                    // string is converted from one charset to another and sanitized
-                    $replace = charset_convert($res[2], $replace,$default_charset);
-                } elseif ($utfencode) {
-                    // string is converted to html entities and sanitized
-                    $replace = charset_decode($res[2], $replace);
-                } elseif ($htmlsave) {
-                    // string is not converted, but still sanizited
-                    $replace = htmlspecialchars($replace);
-                }
-                $ret .= $replace;
-                break;
-            default:
-                break;
+                case 'B':
+                    $replace = base64_decode($res[4]);
+                    if ($can_be_encoded) {
+                        // string is converted from one charset to another and sanitized
+                        $replace =  charset_convert($res[2],$replace,$default_charset);
+                    } elseif ($utfencode) {
+                        // string is converted to htmlentities and sanitized
+                        $replace = charset_decode($res[2],$replace);
+                    } elseif ($htmlsave) {
+                        // string is not converted, but still sanitized
+                        $replace = htmlspecialchars($replace);
+                    }
+                    $ret.= $replace;
+                    break;
+                case 'Q':
+                    $replace = str_replace('_', ' ', $res[4]);
+                    $replace = preg_replace('/=([0-9a-f]{2})/ie', 'chr(hexdec("\1"))',
+                            $replace);
+                    if ($can_be_encoded) {
+                        // string is converted from one charset to another and sanitized
+                        $replace = charset_convert($res[2], $replace,$default_charset);
+                    } elseif ($utfencode) {
+                        // string is converted to html entities and sanitized
+                        $replace = charset_decode($res[2], $replace);
+                    } elseif ($htmlsave) {
+                        // string is not converted, but still sanizited
+                        $replace = htmlspecialchars($replace);
+                    }
+                    $ret .= $replace;
+                    break;
+                default:
+                    break;
             }
             $chunk = $res[5];
             $encoded = true;
@@ -675,7 +677,6 @@ function decodeHeader ($string, $utfencode=true,$htmlsave=true,$decide=false) {
         if (!$encoded && $htmlsave) {
             $ret .= htmlspecialchars($chunk);
         } else {
-            
             $ret .= $chunk;
         }
         ++$i;
@@ -703,7 +704,7 @@ function encodeHeader ($string) {
     global $default_charset, $languages, $squirrelmail_language;
 
     if (isset($languages[$squirrelmail_language]['XTRA_CODE']) &&
-        function_exists($languages[$squirrelmail_language]['XTRA_CODE'])) {
+            function_exists($languages[$squirrelmail_language]['XTRA_CODE'])) {
         return  $languages[$squirrelmail_language]['XTRA_CODE']('encodeheader', $string);
     }
 
@@ -717,43 +718,18 @@ function encodeHeader ($string) {
     for($i = 0; $i < $j; ++$i) {
         switch($string{$i})
         {
-        case '=':
-        case '<':
-        case '>':
-        case ',':
-        case '?':
-        case '_':
-            if ($iEncStart === false) {
-                $iEncStart = $i;
-            }
-            $cur_l+=3;
-            if ($cur_l > ($max_l-2)) {
-                /* if there is an stringpart that doesn't need encoding, add it */
-                $aRet[] = substr($string,$iOffset,$iEncStart-$iOffset);
-                $aRet[] = "=?$default_charset?Q?$ret?=";
-                $iOffset = $i;
-                $cur_l = 0;
-                $ret = '';
-                $iEncStart = false;
-            } else {
-                $ret .= sprintf("=%02X",ord($string{$i}));
-            }
-            break;
-        case '(':
-        case ')':
-            if ($iEncStart !== false) {
-                $aRet[] = substr($string,$iOffset,$iEncStart-$iOffset);
-                $aRet[] = "=?$default_charset?Q?$ret?=";
-                $iOffset = $i;
-                $cur_l = 0;
-                $ret = '';
-                $iEncStart = false;
-            }
-            break;
-        case ' ':
-            if ($iEncStart !== false) {
-                $cur_l++;
-                if ($cur_l > $max_l) {
+            case '=':
+            case '<':
+            case '>':
+            case ',':
+            case '?':
+            case '_':
+                if ($iEncStart === false) {
+                    $iEncStart = $i;
+                }
+                $cur_l+=3;
+                if ($cur_l > ($max_l-2)) {
+                    /* if there is an stringpart that doesn't need encoding, add it */
                     $aRet[] = substr($string,$iOffset,$iEncStart-$iOffset);
                     $aRet[] = "=?$default_charset?Q?$ret?=";
                     $iOffset = $i;
@@ -761,50 +737,75 @@ function encodeHeader ($string) {
                     $ret = '';
                     $iEncStart = false;
                 } else {
-                    $ret .= '_';
+                    $ret .= sprintf("=%02X",ord($string{$i}));
                 }
-            }
-            break;
-        default:
-            $k = ord($string{$i});
-            if ($k > 126) {
-                if ($iEncStart === false) {
-                    // do not start encoding in the middle of a string, also take the rest of the word.
-                    $sLeadString = substr($string,0,$i);
-                    $aLeadString = explode(' ',$sLeadString);
-                    $sToBeEncoded = array_pop($aLeadString);
-                    $iEncStart = $i - strlen($sToBeEncoded);
-                    $ret .= $sToBeEncoded;
-                    $cur_l += strlen($sToBeEncoded);
-                }
-                $cur_l += 3;
-                /* first we add the encoded string that reached it's max size */
-                if ($cur_l > ($max_l-2)) {
+                break;
+            case '(':
+            case ')':
+                if ($iEncStart !== false) {
                     $aRet[] = substr($string,$iOffset,$iEncStart-$iOffset);
-                    $aRet[] = "=?$default_charset?Q?$ret?= "; /* the next part is also encoded => separate by space */
-                    $cur_l = 3;
-                    $ret = '';
+                    $aRet[] = "=?$default_charset?Q?$ret?=";
                     $iOffset = $i;
-                    $iEncStart = $i;
+                    $cur_l = 0;
+                    $ret = '';
+                    $iEncStart = false;
                 }
-                $enc_init = true;
-                $ret .= sprintf("=%02X", $k);
-            } else {
+                break;
+            case ' ':
                 if ($iEncStart !== false) {
                     $cur_l++;
                     if ($cur_l > $max_l) {
                         $aRet[] = substr($string,$iOffset,$iEncStart-$iOffset);
                         $aRet[] = "=?$default_charset?Q?$ret?=";
-                        $iEncStart = false;
                         $iOffset = $i;
                         $cur_l = 0;
                         $ret = '';
+                        $iEncStart = false;
                     } else {
-                        $ret .= $string{$i};
+                        $ret .= '_';
                     }
                 }
-            }
-            break;
+                break;
+            default:
+                $k = ord($string{$i});
+                if ($k > 126) {
+                    if ($iEncStart === false) {
+                        // do not start encoding in the middle of a string, also take the rest of the word.
+                        $sLeadString = substr($string,0,$i);
+                        $aLeadString = explode(' ',$sLeadString);
+                        $sToBeEncoded = array_pop($aLeadString);
+                        $iEncStart = $i - strlen($sToBeEncoded);
+                        $ret .= $sToBeEncoded;
+                        $cur_l += strlen($sToBeEncoded);
+                    }
+                    $cur_l += 3;
+                    /* first we add the encoded string that reached it's max size */
+                    if ($cur_l > ($max_l-2)) {
+                        $aRet[] = substr($string,$iOffset,$iEncStart-$iOffset);
+                        $aRet[] = "=?$default_charset?Q?$ret?= "; /* the next part is also encoded => separate by space */
+                        $cur_l = 3;
+                        $ret = '';
+                        $iOffset = $i;
+                        $iEncStart = $i;
+                    }
+                    $enc_init = true;
+                    $ret .= sprintf("=%02X", $k);
+                } else {
+                    if ($iEncStart !== false) {
+                        $cur_l++;
+                        if ($cur_l > $max_l) {
+                            $aRet[] = substr($string,$iOffset,$iEncStart-$iOffset);
+                            $aRet[] = "=?$default_charset?Q?$ret?=";
+                            $iEncStart = false;
+                            $iOffset = $i;
+                            $cur_l = 0;
+                            $ret = '';
+                        } else {
+                            $ret .= $string{$i};
+                        }
+                    }
+                }
+                break;
         }
     }
 
@@ -828,7 +829,7 @@ function find_ent_id($id, $message) {
         } else {
             if (strcasecmp($message->entities[$i]->header->id, $id) == 0) {
 //                if (sq_check_save_extension($message->entities[$i])) {
-                    return $message->entities[$i]->entity_id;
+                return $message->entities[$i]->entity_id;
 //                }
             } elseif (!empty($message->entities[$i]->header->parameters['name'])) {
                 /**
@@ -1415,7 +1416,6 @@ function sq_fixatts($tagname,
             $attary{$attname} = sq_cid2http($message, $id, $attvalue, $mailbox);
         }
 
-
         /**
          * "Hack" fix for Outlook using propriatary outbind:// protocol in img tags.
          * One day MS might actually make it match something useful, for now, falling
@@ -1439,7 +1439,7 @@ function sq_fixatts($tagname,
 
 /**
  * This function edits the style definition to make them friendly and
- * usable in squirrelmail.
+ * usable in SquirrelMail.
  *
  * @param  $message  the message object
  * @param  $id       the message id
@@ -1468,25 +1468,25 @@ function sq_fixstyle($body, $pos, $message, $id, $mailbox){
      * Fix url('blah') declarations.
      */
     $content = preg_replace("|url\s*\(\s*([\'\"])\s*\S+script\s*:.*?([\'\"])\s*\)|si",
-                            "url(\\1$secremoveimg\\2)", $content);
+            "url(\\1$secremoveimg\\2)", $content);
     /**
      * Fix url('https*://.*) declarations but only if $view_unsafe_images
      * is false.
      */
     if (!$view_unsafe_images){
         $content = preg_replace("|url\s*\(\s*([\'\"])\s*https*:.*?([\'\"])\s*\)|si",
-                                "url(\\1$secremoveimg\\2)", $content);
+                "url(\\1$secremoveimg\\2)", $content);
     }
 
     /**
      * Fix urls that refer to cid:
      */
     while (preg_match("|url\s*\(\s*([\'\"]\s*cid:.*?[\'\"])\s*\)|si",
-                      $content, $matches)){
+                $content, $matches)){
         $cidurl = $matches{1};
         $httpurl = sq_cid2http($message, $id, $cidurl, $mailbox);
         $content = preg_replace("|url\s*\(\s*$cidurl\s*\)|si",
-                                "url($httpurl)", $content);
+                "url($httpurl)", $content);
     }
 
     /**
@@ -1533,14 +1533,14 @@ function sq_cid2http($message, $id, $cidurl, $mailbox){
        unsave link image */
     $httpurl = '';
 
-   /**
-    * This is part of a fix for Outlook Express 6.x generating
-    * cid URLs without creating content-id headers. These images are
-    * not part of the multipart/related html mail. The html contains
-    * <img src="cid:{some_id}/image_filename.ext"> references to
-    * attached images with as goal to render them inline although
-    * the attachment disposition property is not inline.
-    **/
+    /**
+     * This is part of a fix for Outlook Express 6.x generating
+     * cid URLs without creating content-id headers. These images are
+     * not part of the multipart/related html mail. The html contains
+     * <img src="cid:{some_id}/image_filename.ext"> references to
+     * attached images with as goal to render them inline although
+     * the attachment disposition property is not inline.
+     */
 
     if (empty($linkurl)) {
         if (preg_match('/{.*}\//', $cidurl)) {
@@ -1553,8 +1553,8 @@ function sq_cid2http($message, $id, $cidurl, $mailbox){
 
     if (!empty($linkurl)) {
         $httpurl = $quotchar . SM_PATH . 'src/download.php?absolute_dl=true&amp;' .
-                   "passed_id=$id&amp;mailbox=" . urlencode($mailbox) .
-                   '&amp;ent_id=' . $linkurl . $quotchar;
+            "passed_id=$id&amp;mailbox=" . urlencode($mailbox) .
+            '&amp;ent_id=' . $linkurl . $quotchar;
     } else {
         /**
          * If we couldn't generate a proper img url, drop in a blank image
@@ -1588,8 +1588,7 @@ function sq_body2div($attary, $mailbox, $message, $id){
             $attvalue = str_replace($quotchar, "", $attvalue);
             switch ($attname){
                 case 'background':
-                    $attvalue = sq_cid2http($message, $id,
-                                            $attvalue, $mailbox);
+                    $attvalue = sq_cid2http($message, $id, $attvalue, $mailbox);
                     $styledef .= "background-image: url('$attvalue'); ";
                     break;
                 case 'bgcolor':
@@ -1695,7 +1694,7 @@ function sq_sanitize($body,
                             $tagname = "div";
                         }
                         if (isset($open_tags{$tagname}) &&
-                            $open_tags{$tagname} > 0){
+                                $open_tags{$tagname} > 0){
                             $open_tags{$tagname}--;
                         } else {
                             $tagname = false;
@@ -1712,7 +1711,7 @@ function sq_sanitize($body,
                      * tagtype appropriately.
                      */
                     if ($tagtype == 1
-                        && in_array($tagname, $self_closing_tags)){
+                            && in_array($tagname, $self_closing_tags)){
                         $tagtype = 3;
                     }
                     /**
@@ -1720,13 +1719,13 @@ function sq_sanitize($body,
                      * inside it.
                      */
                     if ($tagtype == 1 &&
-                        in_array($tagname, $rm_tags_with_content)){
+                            in_array($tagname, $rm_tags_with_content)){
                         $skip_content = $tagname;
                     } else {
                         if (($rm_tags == false
-                             && in_array($tagname, $tag_list)) ||
-                            ($rm_tags == true &&
-                             !in_array($tagname, $tag_list))){
+                                    && in_array($tagname, $tag_list)) ||
+                                ($rm_tags == true &&
+                                 !in_array($tagname, $tag_list))){
                             $tagname = false;
                         } else {
                             /**
@@ -1735,7 +1734,7 @@ function sq_sanitize($body,
                             if ($tagname == "body"){
                                 $tagname = "div";
                                 $attary = sq_body2div($attary, $mailbox,
-                                                      $message, $id);
+                                        $message, $id);
                             }
                             if ($tagtype == 1){
                                 if (isset($open_tags{$tagname})){
@@ -1797,109 +1796,109 @@ function magicHTML($body, $id, $message, $mailbox = 'INBOX') {
      */
     $attachment_common_show_images = false;
     $tag_list = Array(
-                      false,
-                      "object",
-                      "meta",
-                      "html",
-                      "head",
-                      "base",
-                      "link",
-                      "frame",
-                      "iframe",
-                      "plaintext",
-                      "marquee"
-                      );
+            false,
+            "object",
+            "meta",
+            "html",
+            "head",
+            "base",
+            "link",
+            "frame",
+            "iframe",
+            "plaintext",
+            "marquee"
+            );
 
     $rm_tags_with_content = Array(
-                                  "script",
-                                  "applet",
-                                  "embed",
-                                  "title",
-                                  "frameset",
-                                  "xml"
-                                  );
+            "script",
+            "applet",
+            "embed",
+            "title",
+            "frameset",
+            "xml"
+            );
 
     $self_closing_tags =  Array(
-                                "img",
-                                "br",
-                                "hr",
-                                "input",
-                                "outbind"
-                                );
+            "img",
+            "br",
+            "hr",
+            "input",
+            "outbind"
+            );
 
     $force_tag_closing = true;
 
     $rm_attnames = Array(
-                         "/.*/" =>
-                         Array(
-                               "/target/i",
-                               "/^on.*/i",
-                               "/^dynsrc/i",
-                               "/^data.*/i",
-                               "/^lowsrc.*/i"
-                               )
-                         );
+            "/.*/" =>
+            Array(
+                "/target/i",
+                "/^on.*/i",
+                "/^dynsrc/i",
+                "/^data.*/i",
+                "/^lowsrc.*/i"
+                )
+            );
 
     $secremoveimg = "../images/" . _("sec_remove_eng.png");
     $bad_attvals = Array(
-        "/.*/" =>
+            "/.*/" =>
             Array(
                 "/^src|background/i" =>
+                Array(
                     Array(
-                          Array(
-                                "/^([\'\"])\s*\S+script\s*:.*([\'\"])/si",
-                                "/^([\'\"])\s*mocha\s*:*.*([\'\"])/si",
-                                "/^([\'\"])\s*about\s*:.*([\'\"])/si"
-                                ),
-                          Array(
-                                "\\1$secremoveimg\\2",
-                                "\\1$secremoveimg\\2",
-                                "\\1$secremoveimg\\2",
-                                "\\1$secremoveimg\\2"
-                                )
+                        "/^([\'\"])\s*\S+script\s*:.*([\'\"])/si",
+                        "/^([\'\"])\s*mocha\s*:*.*([\'\"])/si",
+                        "/^([\'\"])\s*about\s*:.*([\'\"])/si"
                         ),
+                    Array(
+                        "\\1$secremoveimg\\2",
+                        "\\1$secremoveimg\\2",
+                        "\\1$secremoveimg\\2",
+                        "\\1$secremoveimg\\2"
+                        )
+                    ),
                 "/^href|action/i" =>
+                Array(
                     Array(
-                          Array(
-                                "/^([\'\"])\s*\S+script\s*:.*([\'\"])/si",
-                                "/^([\'\"])\s*mocha\s*:*.*([\'\"])/si",
-                                "/^([\'\"])\s*about\s*:.*([\'\"])/si"
-                                ),
-                          Array(
-                                "\\1#\\1",
-                                "\\1#\\1",
-                                "\\1#\\1",
-                                "\\1#\\1"
-                                )
+                        "/^([\'\"])\s*\S+script\s*:.*([\'\"])/si",
+                        "/^([\'\"])\s*mocha\s*:*.*([\'\"])/si",
+                        "/^([\'\"])\s*about\s*:.*([\'\"])/si"
                         ),
-                "/^style/i" =>
                     Array(
-                          Array(
-                                "/expression/i",
-                                "/binding/i",
-                                "/behaviou*r/i",
-                                "/include-source/i",
-                                "/position\s*:\s*absolute/i",
-                                "/url\s*\(\s*([\'\"])\s*\S+script\s*:.*([\'\"])\s*\)/si",
-                                "/url\s*\(\s*([\'\"])\s*mocha\s*:.*([\'\"])\s*\)/si",
-                                "/url\s*\(\s*([\'\"])\s*about\s*:.*([\'\"])\s*\)/si",
-                                "/(.*)\s*:\s*url\s*\(\s*([\'\"]*)\s*\S+script\s*:.*([\'\"]*)\s*\)/si"
-                               ),
-                          Array(
-                                "idiocy",
-                                "idiocy",
-                                "idiocy",
-                                "idiocy",
-                                "",
-                                "url(\\1#\\1)",
-                                "url(\\1#\\1)",
-                                "url(\\1#\\1)",
-                                "url(\\1#\\1)",
-                                "url(\\1#\\1)",
-                                "\\1:url(\\2#\\3)"
-                               )
-                          )
+                        "\\1#\\1",
+                        "\\1#\\1",
+                        "\\1#\\1",
+                        "\\1#\\1"
+                        )
+                    ),
+        "/^style/i" =>
+            Array(
+                Array(
+                    "/expression/i",
+                    "/binding/i",
+                    "/behaviou*r/i",
+                    "/include-source/i",
+                    "/position\s*:\s*absolute/i",
+                    "/url\s*\(\s*([\'\"])\s*\S+script\s*:.*([\'\"])\s*\)/si",
+                    "/url\s*\(\s*([\'\"])\s*mocha\s*:.*([\'\"])\s*\)/si",
+                    "/url\s*\(\s*([\'\"])\s*about\s*:.*([\'\"])\s*\)/si",
+                    "/(.*)\s*:\s*url\s*\(\s*([\'\"]*)\s*\S+script\s*:.*([\'\"]*)\s*\)/si"
+                    ),
+                Array(
+                    "idiocy",
+                    "idiocy",
+                    "idiocy",
+                    "idiocy",
+                    "",
+                    "url(\\1#\\1)",
+                    "url(\\1#\\1)",
+                    "url(\\1#\\1)",
+                    "url(\\1#\\1)",
+                    "url(\\1#\\1)",
+                    "\\1:url(\\2#\\3)"
+                    )
                 )
+            )
         );
     if( !sqgetGlobalVar('view_unsafe_images', $view_unsafe_images, SQ_GET) ) {
         $view_unsafe_images = false;
@@ -1909,22 +1908,22 @@ function magicHTML($body, $id, $message, $mailbox = 'INBOX') {
          * Remove any references to http/https if view_unsafe_images set
          * to false.
          */
-         array_push($bad_attvals{'/.*/'}{'/^src|background/i'}[0],
-                    '/^([\'\"])\s*https*:.*([\'\"])/si');
-         array_push($bad_attvals{'/.*/'}{'/^src|background/i'}[1],
-                    "\\1$secremoveimg\\1");
-         array_push($bad_attvals{'/.*/'}{'/^style/i'}[0],
-                    '/url\(([\'\"])\s*https*:.*([\'\"])\)/si');
-         array_push($bad_attvals{'/.*/'}{'/^style/i'}[1],
-                    "url(\\1$secremoveimg\\1)");
+        array_push($bad_attvals{'/.*/'}{'/^src|background/i'}[0],
+                '/^([\'\"])\s*https*:.*([\'\"])/si');
+        array_push($bad_attvals{'/.*/'}{'/^src|background/i'}[1],
+                "\\1$secremoveimg\\1");
+        array_push($bad_attvals{'/.*/'}{'/^style/i'}[0],
+                '/url\(([\'\"])\s*https*:.*([\'\"])\)/si');
+        array_push($bad_attvals{'/.*/'}{'/^style/i'}[1],
+                "url(\\1$secremoveimg\\1)");
     }
 
     $add_attr_to_tag = Array(
-        "/^a$/i" =>
+            "/^a$/i" =>
             Array('target'=>'"_blank"',
-                  'title'=>'"'._("This external link will open in a new window").'"'
-            )
-    );
+                'title'=>'"'._("This external link will open in a new window").'"'
+                )
+            );
     $trusted = sq_sanitize($body,
                            $tag_list,
                            $rm_tags_with_content,
@@ -1957,97 +1956,97 @@ function magicHTML($body, $id, $message, $mailbox = 'INBOX') {
  * @param optional integer $filesize send the Content-Header and length to the browser
  * @return void
  */
- function SendDownloadHeaders($type0, $type1, $filename, $force, $filesize=0) {
-     global $languages, $squirrelmail_language;
-     $isIE = $isIE6 = 0;
+function SendDownloadHeaders($type0, $type1, $filename, $force, $filesize=0) {
+    global $languages, $squirrelmail_language;
+    $isIE = $isIE6 = 0;
 
-     sqgetGlobalVar('HTTP_USER_AGENT', $HTTP_USER_AGENT, SQ_SERVER);
+    sqgetGlobalVar('HTTP_USER_AGENT', $HTTP_USER_AGENT, SQ_SERVER);
 
-     if (strstr($HTTP_USER_AGENT, 'compatible; MSIE ') !== false &&
-         strstr($HTTP_USER_AGENT, 'Opera') === false) {
-         $isIE = 1;
-     }
+    if (strstr($HTTP_USER_AGENT, 'compatible; MSIE ') !== false &&
+            strstr($HTTP_USER_AGENT, 'Opera') === false) {
+        $isIE = 1;
+    }
 
-     if (strstr($HTTP_USER_AGENT, 'compatible; MSIE 6') !== false &&
-         strstr($HTTP_USER_AGENT, 'Opera') === false) {
-         $isIE6 = 1;
-     }
+    if (strstr($HTTP_USER_AGENT, 'compatible; MSIE 6') !== false &&
+            strstr($HTTP_USER_AGENT, 'Opera') === false) {
+        $isIE6 = 1;
+    }
 
-     if (isset($languages[$squirrelmail_language]['XTRA_CODE']) &&
-         function_exists($languages[$squirrelmail_language]['XTRA_CODE'])) {
-         $filename =
-         $languages[$squirrelmail_language]['XTRA_CODE']('downloadfilename', $filename, $HTTP_USER_AGENT);
-     } else {
-         $filename = ereg_replace('[\\/:\*\?"<>\|;]', '_', str_replace('&#32;', ' ', $filename));
-     }
+    if (isset($languages[$squirrelmail_language]['XTRA_CODE']) &&
+            function_exists($languages[$squirrelmail_language]['XTRA_CODE'])) {
+        $filename =
+            $languages[$squirrelmail_language]['XTRA_CODE']('downloadfilename', $filename, $HTTP_USER_AGENT);
+    } else {
+        $filename = ereg_replace('[\\/:\*\?"<>\|;]', '_', str_replace('&#32;', ' ', $filename));
+    }
 
-     // A Pox on Microsoft and it's Internet Explorer!
-     //
-     // IE has lots of bugs with file downloads.
-     // It also has problems with SSL.  Both of these cause problems
-     // for us in this function.
-     //
-     // See this article on Cache Control headers and SSL
-     // http://support.microsoft.com/default.aspx?scid=kb;en-us;323308
-     //
-     // The best thing you can do for IE is to upgrade to the latest
-     // version
-     //set all the Cache Control Headers for IE
-     if ($isIE) {
-         $filename=rawurlencode($filename);
-         header ("Pragma: public");
-         header ("Cache-Control: no-store, max-age=0, no-cache, must-revalidate"); # HTTP/1.1
-         header ("Cache-Control: post-check=0, pre-check=0", false);
-         header ("Cache-control: private");
+    // A Pox on Microsoft and it's Internet Explorer!
+    //
+    // IE has lots of bugs with file downloads.
+    // It also has problems with SSL.  Both of these cause problems
+    // for us in this function.
+    //
+    // See this article on Cache Control headers and SSL
+    // http://support.microsoft.com/default.aspx?scid=kb;en-us;323308
+    //
+    // The best thing you can do for IE is to upgrade to the latest
+    // version
+    //set all the Cache Control Headers for IE
+    if ($isIE) {
+        $filename=rawurlencode($filename);
+        header ("Pragma: public");
+        header ("Cache-Control: no-store, max-age=0, no-cache, must-revalidate"); // HTTP/1.1
+        header ("Cache-Control: post-check=0, pre-check=0", false);
+        header ("Cache-Control: private");
 
-         //set the inline header for IE, we'll add the attachment header later if we need it
-         header ("Content-Disposition: inline; filename=$filename");
-     }
+        //set the inline header for IE, we'll add the attachment header later if we need it
+        header ("Content-Disposition: inline; filename=$filename");
+    }
 
-     if (!$force) {
-         // Try to show in browser window
-         header ("Content-Disposition: inline; filename=\"$filename\"");
-         header ("Content-Type: $type0/$type1; name=\"$filename\"");
-     } else {
-         // Try to pop up the "save as" box
+    if (!$force) {
+        // Try to show in browser window
+        header ("Content-Disposition: inline; filename=\"$filename\"");
+        header ("Content-Type: $type0/$type1; name=\"$filename\"");
+    } else {
+        // Try to pop up the "save as" box
 
-         // IE makes this hard.  It pops up 2 save boxes, or none.
-         // http://support.microsoft.com/support/kb/articles/Q238/5/88.ASP
-         // http://support.microsoft.com/default.aspx?scid=kb;EN-US;260519
-         // But, according to Microsoft, it is "RFC compliant but doesn't
-         // take into account some deviations that allowed within the
-         // specification."  Doesn't that mean RFC non-compliant?
-         // http://support.microsoft.com/support/kb/articles/Q258/4/52.ASP
+        // IE makes this hard.  It pops up 2 save boxes, or none.
+        // http://support.microsoft.com/support/kb/articles/Q238/5/88.ASP
+        // http://support.microsoft.com/default.aspx?scid=kb;EN-US;260519
+        // But, according to Microsoft, it is "RFC compliant but doesn't
+        // take into account some deviations that allowed within the
+        // specification."  Doesn't that mean RFC non-compliant?
+        // http://support.microsoft.com/support/kb/articles/Q258/4/52.ASP
 
-         // all browsers need the application/octet-stream header for this
-         header ("Content-Type: application/octet-stream; name=\"$filename\"");
+        // all browsers need the application/octet-stream header for this
+        header ("Content-Type: application/octet-stream; name=\"$filename\"");
 
-         // http://support.microsoft.com/support/kb/articles/Q182/3/15.asp
-         // Do not have quotes around filename, but that applied to
-         // "attachment"... does it apply to inline too?
-         header ("Content-Disposition: attachment; filename=\"$filename\"");
+        // http://support.microsoft.com/support/kb/articles/Q182/3/15.asp
+        // Do not have quotes around filename, but that applied to
+        // "attachment"... does it apply to inline too?
+        header ("Content-Disposition: attachment; filename=\"$filename\"");
 
-         if ($isIE && !$isIE6) {
-             // This combination seems to work mostly.  IE 5.5 SP 1 has
-             // known issues (see the Microsoft Knowledge Base)
+        if ($isIE && !$isIE6) {
+            // This combination seems to work mostly.  IE 5.5 SP 1 has
+            // known issues (see the Microsoft Knowledge Base)
 
-             // This works for most types, but doesn't work with Word files
-             header ("Content-Type: application/download; name=\"$filename\"");
+            // This works for most types, but doesn't work with Word files
+            header ("Content-Type: application/download; name=\"$filename\"");
 
-             // These are spares, just in case.  :-)
-             //header("Content-Type: $type0/$type1; name=\"$filename\"");
-             //header("Content-Type: application/x-msdownload; name=\"$filename\"");
-             //header("Content-Type: application/octet-stream; name=\"$filename\"");
-         } else {
-             // another application/octet-stream forces download for Netscape
-             header ("Content-Type: application/octet-stream; name=\"$filename\"");
-         }
-     }
+            // These are spares, just in case.  :-)
+            //header("Content-Type: $type0/$type1; name=\"$filename\"");
+            //header("Content-Type: application/x-msdownload; name=\"$filename\"");
+            //header("Content-Type: application/octet-stream; name=\"$filename\"");
+        } else {
+            // another application/octet-stream forces download for Netscape
+            header ("Content-Type: application/octet-stream; name=\"$filename\"");
+        }
+    }
 
-     //send the content-length header if the calling function provides it
-     if ($filesize > 0) {
-         header("Content-Length: $filesize");
-     }
+    //send the content-length header if the calling function provides it
+    if ($filesize > 0) {
+        header("Content-Length: $filesize");
+    }
 
 }  // end fn SendDownloadHeaders
 
