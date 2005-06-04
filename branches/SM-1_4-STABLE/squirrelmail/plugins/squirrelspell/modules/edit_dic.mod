@@ -4,15 +4,15 @@
  * -------------
  * Squirrelspell module
  *
- * Copyright (c) 1999-2003 The SquirrelMail Project Team
+ * Copyright (c) 1999-2005 The SquirrelMail Project Team
  * Licensed under the GNU GPL. For full terms see the file COPYING.
  *
  * This module lets the user edit his/her personal dictionary.
  *
- * $Id$
- *
- * @author Konstantin Riabitsev <icon@duke.edu> ($Author$)
- * @version $Date
+ * @author Konstantin Riabitsev <icon@duke.edu>
+ * @version $Id$
+ * @package plugins
+ * @subpackage squirrelspell
  */
 
 global $color;
@@ -58,9 +58,9 @@ if (!$words){
 	 . sprintf( _("%s dictionary"), $langs[$i] ) . '</th></tr>'
 	 . '<tr><td align="center">'
 	 . '<form method="post">'
-	 . '<input type="hidden" name="MOD" value="forget_me">'
+	 . '<input type="hidden" name="MOD" value="forget_me" />'
 	 . '<input type="hidden" name="sqspell_use_app" value="' 
-	 . $langs[$i] . '">'
+	 . $langs[$i] . '" />'
 	 . '<table border="0" width="95%" align="center">'
 	 . '<tr>'
 	 . "<td valign=\"top\">\n";
@@ -82,14 +82,14 @@ if (!$words){
 	  $msg .= "</td><td valign=\"top\">\n";
 	}
 	$msg .= '<input type="checkbox" name="words_ary[]" '
-	   . 'value="' . htmlspecialchars($words_ary[$j]) . '"> '
+	   . 'value="' . htmlspecialchars($words_ary[$j]) . '" /> '
 	   . htmlspecialchars($words_ary[$j])."<br>\n";
       }
       $msg .= '</td></tr></table></td></tr>'
 	 . "<tr bgcolor=\"$color[0]\" align=\"center\"><td>"
 	 . '<input type="submit" value="' . _("Delete checked words") 
-	 . '"></form>'
-	 . '</td></tr><tr><td><hr>'
+	 . '" /></form>'
+	 . '</td></tr><tr><td><hr />'
 	 . "</td></tr>\n";
     }
   }

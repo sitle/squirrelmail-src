@@ -4,27 +4,27 @@
  * --------------
  * Squirrelspell module
  *
- * Copyright (c) 1999-2003 The SquirrelMail Project Team
+ * Copyright (c) 1999-2005 The SquirrelMail Project Team
  * Licensed under the GNU GPL. For full terms see the file COPYING.
  *
- * This module shows the user a nice invitation to encrypt or decypt        
- * his/her personal dictionary and explains the caveats of such a decision. 
+ * This module shows the user a nice invitation to encrypt or decypt
+ * his/her personal dictionary and explains the caveats of such a decision.
  *
- * $Id$
- *
- * @author Konstantin Riabitsev <icon@duke.edu> ($Author$)
- * @version $Date$
+ * @author Konstantin Riabitsev <icon@duke.edu>
+ * @version $Id$
+ * @package plugins
+ * @subpackage squirrelspell
  */
 
-global $SQSPELL_CRYPTO; 
+global $SQSPELL_CRYPTO;
 
 /**
  * Set up some i18n'able wrappers for javascript.
  */
 $msg = '<script type="text/javascript"><!--'."\n"
     . 'var ui_makesel = "' . _("Please make your selection first.") . "\";\n"
-    . 'var ui_encrypt = "' 
-    . _("This will encrypt your personal dictionary and store it in an encrypted format. Proceed?") 
+    . 'var ui_encrypt = "'
+    . _("This will encrypt your personal dictionary and store it in an encrypted format. Proceed?")
     . "\";\n"
     . 'var ui_decrypt = "'
     . _("This will decrypt your personal dictionary and store it in a plain text format. Proceed?")
@@ -53,14 +53,14 @@ if ($SQSPELL_CRYPTO){
         . _("If you forget your password, your personal dictionary will become unaccessible, since it can no longer be decrypted. If you change your mailbox password, SquirrelSpell will recognize it and prompt you for your old password in order to re-encrypt the dictionary with a new key.")
         . '</p>'
         . '<form method="post" onsubmit="return checkMe()">'
-        . '<input type="hidden" name="MOD" value="crypto">'
+        . '<input type="hidden" name="MOD" value="crypto" />'
         . '<p align="center"><input type="checkbox" name="action" '
-        . 'value="decrypt"> '
+        . 'value="decrypt" /> '
         . _("Please decrypt my personal dictionary and store it in a clear-text format." )
         . '</p>'
         . '<p align="center"><input type="submit" value=" '
         . _("Change crypto settings")
-        . ' "></p>'
+        . ' " /></p>'
         . '</form>';
 } else {
     /**
@@ -78,17 +78,17 @@ if ($SQSPELL_CRYPTO){
         . _("If you decide to encrypt your personal dictionary, you must remember that it gets &quot;hashed&quot; with your mailbox password. If you forget your mailbox password and the administrator changes it to a new value, your personal dictionary will become useless and will have to be created anew. However, if you or your system administrator change your mailbox password but you still have the old password at hand, you will be able to enter the old key to re-encrypt the dictionary with the new value.")
         . '</p>'
         . '<form method="post" onsubmit="return checkMe()">'
-        . '<input type="hidden" name="MOD" value="crypto">'
+        . '<input type="hidden" name="MOD" value="crypto" />'
         . '<p align="center"><input type="checkbox" name="action" '
-        . 'value="encrypt"> '
+        . 'value="encrypt" /> '
         . _("Please encrypt my personal dictionary and store it in an encrypted format.")
         . '</p>'
         . '<p align="center"><input type="submit" value=" '
-        . _("Change crypto settings") . ' "></p>'
+        . _("Change crypto settings") . ' " /></p>'
         . '</form>';
 }
-sqspell_makePage(_("Personal Dictionary Crypto Settings"), 
-		 "crypto_settings.js", $msg);
+sqspell_makePage(_("Personal Dictionary Crypto Settings"),
+        "crypto_settings.js", $msg);
 
 /**
  * For Emacs weenies:
@@ -96,6 +96,6 @@ sqspell_makePage(_("Personal Dictionary Crypto Settings"),
  * mode: php
  * End:
  * vim: syntax=php
- */ 
+ */
 
 ?>
