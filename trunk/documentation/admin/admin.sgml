@@ -10,12 +10,12 @@
 
  SquirrelMail is distributed in the hope that it will be useful,
  but WITHOUT ANY WARRANTY; without even the implied warranty of
- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  GNU General Public License for more details.
 
  You should have received a copy of the GNU General Public License
  along with SquirrelMail; if not, write to the Free Software
- Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
 -->
 <article>
 
@@ -74,14 +74,14 @@ client, including strong MIME support, address books, and folder manipulation.
 <sect2>Preferred configuration:
 <p>
 <itemize>
-  <item>php with gettext and mbstring support. Without gettext you lose in
+  <item>PHP with gettext and mbstring support. Without gettext you lose in
     performance. mbstring is actually required if you want a good i18n webmail
     system.
-  <item>imap server that supports sort and thread imap extensions. Without these
+  <item>IMAP server that supports sort and thread IMAP extensions. Without these
     extensions you lose in performance.
-  <item>imap server should support unicode. CourierIMAP must be compiled with
-    <tt/--enable-unicode/ option. Without it some translations might be unable to use
-    sorting and threading.
+  <item>IMAP server should support unicode. CourierIMAP must be compiled with
+    <tt/--enable-unicode/ option. Without it some translations might be unable
+    to use sorting and threading.
 </itemize>
 
 <sect2>Browser Requirements:
@@ -228,7 +228,7 @@ QuickAndDirty
 <p>
 SquirrelMailInstallUnix
 
-<sect1>Installing Squirrelmail on Windows systems with Apache webserver
+<sect1>Installing SquirrelMail on Windows systems with Apache webserver
 <p>
 SquirrelMailInstallWin32Apache
 
@@ -250,14 +250,14 @@ This chapter talks about upgrading existing SquirrelMail install.
 
 <sect1>Backup old install
 <p>
-Make a backup of your current SquirrelMail directory.  If you use "cp", be
-sure to use the "-Rp" options.  -R means recursive, and -p will save the
+Make a backup of your current SquirrelMail directory. If you use "cp", be
+sure to use the "-Rp" options. -R means recursive, and -p will save the
 permissions in the directory.
 
 In this example, we assume that your httpd document directory is 
 <tt>/home/httpd/html</tt>, that your SquirrelMail install is located at
-<tt>/home/httpd/html/squirrelmail-1.0.6</tt>, and that your new SM version is 1.2.0.
-Substitute version numbers and names as required.
+<tt>/home/httpd/html/squirrelmail-1.0.6</tt>, and that your new SquirrelMail
+version is 1.2.0. Substitute version numbers and names as required.
 
 <verb>
 $ cd /home/httpd/html
@@ -284,9 +284,9 @@ The important files to copy are:
 
 <sect2>Preferences
 <p>
-First, copy your preference data over to the new directory.  Usually
+First, copy your preference data over to the new directory. Usually
 this is ok, but if you are upgrading from anything less than 1.0.5, we
-strongly suggest you let your users reset their preferences.  There
+strongly suggest you let your users reset their preferences. There
 were important security upgrades in 1.0.5 regarding preference files.
 <verb>
 $ cp squirrelmail-1.0.6.bak/data/* squirrelmail-1.2.0/data
@@ -294,10 +294,10 @@ $ cp squirrelmail-1.0.6.bak/data/* squirrelmail-1.2.0/data
   
 <sect2>Config details
 <p>
-If at all possible, start the configuration process from scratch.  It is 
+If at all possible, start the configuration process from scratch. It is 
 much less prone to missing configuration options than copying your old
-configuration.  Ideally, you should just run conf.pl to reconfigure
-SquirrelMail.  If you decide to copy your old config.php over, we strongly
+configuration. Ideally, you should just run conf.pl to reconfigure
+SquirrelMail. If you decide to copy your old config.php over, we strongly
 recommend that you run conf.pl to make sure things are correct and then save
 the config file.
 <verb>
@@ -307,7 +307,7 @@ $ cp squirrelmail-1.0.6.bak/config/config.php squirrelmail-1.2.0/config
 <sect2>Copy plugins
 <p>
 Like SquirrelMail, plugins are frequently updated for improvements, as well
-as to make them compatible with new SquirrelMail releases.  It is suggested
+as to make them compatible with new SquirrelMail releases. It is suggested
 that you download new versions of your plugins at the same time you download
 your SquirrelMail install, and that you install your plugins fresh (it's
 easy, don't panic!).
@@ -319,7 +319,7 @@ SquirrelMail package or copy them from older SquirrelMail install.
 <sect2>Copy themes
 <p>
 If you've created or modified themes, you should copy just those to the new
-SquirrelMail themes directory.  To just copy them all over to the new
+SquirrelMail themes directory. To just copy them all over to the new
 SquirrelMail installation, you can run one command.
 <verb>
 $ cp -ui squirrelmail-1.0.6.bak/themes/* squirrelmail-1.2.0/themes/
@@ -335,7 +335,7 @@ install!
 
 <sect1>Change permissions
 <p>
-The web server must have write permission to the data directory.  In this
+The web server must have write permission to the data directory. In this
 example, we assume that user "nobody" and group "nobody" are the web server
 as is often the case with Apache.
 <verb>
@@ -348,7 +348,7 @@ userid/groupid pair. Additionally, if "chown user:group" doesn't work, you can
 use "chown user" and "chgrp group" instead. See the man pages for these commands
 for more information.
 
-If you are using SquirrelMail in setup with php safe_mode restrictions, data and
+If you are using SquirrelMail in setup with PHP safe_mode restrictions, data and
 attachment directories should be owned by same user that owns other SquirrelMail
 scripts. It must be writable by webserver group. Check <url
 url="http://www.php.net/features.safe-mode" name="PHP Safe mode manual"> for
@@ -410,9 +410,9 @@ $ mv /home/httpd/html/squirrelmail.new /home/httpd/html/squirrelmail
 
 <sect1>DONE!
 <p>
-That should be all!  The most important part is copying your users'
-preference files back into the new data directory.  This will insure that
-your users will have their old preferences.  Remember to do so with caution,
+That should be all! The most important part is copying your users'
+preference files back into the new data directory. This will insure that
+your users will have their old preferences. Remember to do so with caution,
 especially if you are upgrading from a version before 1.0.5 to version 1.0.5
 or later.
 
@@ -491,7 +491,7 @@ If you use database based setup, default settings are stored in
 <p>
 SquirrelMail can store preferences and address books in database.
 
-<sect1>Using more than one imap server
+<sect1>Using more than one IMAP server
 <p>
 How to do that.
 
@@ -506,16 +506,16 @@ installation.
 
 <sect1>PHP extensions
 <p>
-SquirrelMail uses gettext functions for translations. If php gettext extension
+SquirrelMail uses gettext functions for translations. If PHP gettext extension
 is not present, interface switches to slower internal gettext implementation.
 
-In some cases SquirrelMail can take advantage of php recode or iconv
+In some cases SquirrelMail can take advantage of PHP recode or iconv
 functions. These functions can be used to speedup decoding of Eastern charsets.
 
 <sect1>IMAP server extensions
 <p>
 If your IMAP server supports the IMAP SORT or THREAD extensions (most mainstream
-servers do) turn it on. Server side sorting is faster than sorting in php
+servers do) turn it on. Server side sorting is faster than sorting in PHP
 script.
 
 Options can be enabled in SquirrelMail configuration utility: 
