@@ -136,7 +136,7 @@ class abook_database extends addressbook_backend {
 
 
     /**
-     * Open the database. 
+     * Open the database.
      * @param bool $new new connection if it is true
      * @return bool
      */
@@ -259,7 +259,7 @@ class abook_database extends addressbook_backend {
     }
 
     /**
-     * List all addresses 
+     * List all addresses
      * @return array search results
      */
     function &list_addr() {
@@ -313,8 +313,8 @@ class abook_database extends addressbook_backend {
         /* See if user exist already */
         $ret = $this->lookup($userdata['nickname']);
         if (!empty($ret)) {
-            return $this->set_error(sprintf(_("User '%s' already exists"),
-                                            $ret['nickname']));
+            return $this->set_error(sprintf(_("User %s already exists"),
+                        '&quot;' . $ret['nickname'] . '&quot;'));
         }
 
         /* Create query */
@@ -394,8 +394,8 @@ class abook_database extends addressbook_backend {
          /* See if user exist */
         $ret = $this->lookup($alias);
         if (empty($ret)) {
-            return $this->set_error(sprintf(_("User '%s' does not exist"),
-                                            $alias));
+            return $this->set_error(sprintf(_("User %s does not exist"),
+                        '&qout;' . $alias . '&qout;'));
         }
 
         /* Create query */
