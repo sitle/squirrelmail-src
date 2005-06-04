@@ -1,8 +1,7 @@
 SquirrelSpell plugin
 --------------------
 
-Untar SquirrelSpell into your squirrelmail/plugins directory. Modify the 
-sqspell_config.php file making sure you have ispell or aspell
+Modify the sqspell_config.php file making sure you have ispell or aspell
 available on your system and located in PHP's path. The squirrelspell
 doesn't check for that and if it is not available, you're just going to
 get a "No errors found" message every time. :) Quite pleasing, but not
@@ -11,7 +10,7 @@ very useful.
 Read files in "doc" directory -- they explain some features.
 
 Enable the plugin either by hand or by running the configure script from
-your squirrelmail install directory.
+your SquirrelMail install directory.
 
 NOTE: If you are using php >= 4.3.0 squirrelspell should work in safe mode.
 Otherwise, you may have to disable safe mode for the squirrelspell directory.
@@ -20,6 +19,7 @@ Otherwise, you may have to disable safe mode for the squirrelspell directory.
                 php_admin_value safe_mode 0
         </Directory>
 
+
 Enjoy and report bugs. ;)
 
 This is an options commented sqspell_config.php
@@ -27,15 +27,15 @@ This is an options commented sqspell_config.php
 <?php
 
    /**
-    **  sqspell_config.php -- SquirrelSpell Configuration file.
-    **
-    **  Copyright (c) 1999-2000 The SquirrelMail Project Team
-    **  Licensed under the GNU GPL. For full terms see the file COPYING.
-    **
-    **
-    **
-    **  $Id$
-    **/
+    *  sqspell_config.php -- SquirrelSpell Configuration file.
+    *
+    *  Copyright (c) 1999-2000 The SquirrelMail Project Team
+    *  Licensed under the GNU GPL. For full terms see the file COPYING.
+    *
+    *
+    *
+    *  $Id$
+    */
 
     /* Just for poor wretched souls with E_ALL. :) */
     global $username, $data_dir;
