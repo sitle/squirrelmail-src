@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: SquirrelMail HEAD\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-04-16 19:47+0200\n"
-"PO-Revision-Date: 2005-04-16 20:05+0200\n"
+"POT-Creation-Date: 2005-06-05 00:44+0200\n"
+"PO-Revision-Date: 2005-06-05 00:45+0200\n"
 "Last-Translator: Fredrik Jervfors <sqm_admin@fimbul.net>\n"
 "Language-Team: Swedish <squirrelmail-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -820,12 +820,12 @@ msgid "Addressbook is read-only"
 msgstr "Adressboken är skrivskyddad"
 
 #, php-format
-msgid "User '%s' already exist"
-msgstr "Användaren '%s' finns redan"
+msgid "User %s already exists"
+msgstr "Användaren %s finns redan"
 
 #, php-format
-msgid "User '%s' does not exist"
-msgstr "Användaren '%s' finns inte"
+msgid "User %s does not exist"
+msgstr "Användaren %s finns inte"
 
 msgid "Not a file name"
 msgstr "Ogiltigt filnamn"
@@ -1263,8 +1263,8 @@ msgstr "Visa alla"
 msgid "SquirrelMail could not decode the bodystructure of the message"
 msgstr "Brevet har en struktur okänd för SquirrelMail."
 
-msgid "the provided bodystructure by your imap-server"
-msgstr "den struktur som stödjs av din IMAP-server"
+msgid "The bodystructure provided by your IMAP server:"
+msgstr "Strukturen enligt IMAP-servern:"
 
 msgid ""
 "Body retrieval error. The reason for this is most probably that the message "
@@ -1855,6 +1855,9 @@ msgstr "Inloggning (klartext)"
 msgid "POP3 Before SMTP?"
 msgstr "POP3 innan SMTP?"
 
+msgid "Header Encryption Key"
+msgstr "Nyckel för kryptering av brevhuvuden"
+
 msgid "Invert Time"
 msgstr "Invertera tid"
 
@@ -1947,6 +1950,12 @@ msgstr "Tillåt redigering av användaruppgifter"
 
 msgid "Allow editing of full name"
 msgstr "Tillåt redigering av fullständigt namn"
+
+msgid "Remove username from headers"
+msgstr "Visa inte användarnamn i brevhuvudet"
+
+msgid "Used only when identities can't be modified"
+msgstr "Används bara när identiteterna inte kan ändras"
 
 msgid "Use server-side sorting"
 msgstr "Använd sortering på server-sidan"
@@ -3527,6 +3536,9 @@ msgid ""
 "Your personal dictionary has been decrypted and is now stored as plain text."
 msgstr "Din personliga ordlista har dekrypterats och har sparats i klartext."
 
+msgid "No action requested."
+msgstr "Ingen åtgärd begärdes."
+
 msgid "Personal Dictionary Crypto Settings"
 msgstr "Krypteringsinställningar för personlig ordlista"
 
@@ -3727,8 +3739,8 @@ msgstr "Konfigurera internationella ordlistor"
 msgid "Encrypt or decrypt your personal dictionary"
 msgstr "Kryptera eller dekryptera din personliga ordlista"
 
-msgid "not available"
-msgstr "inte tillgänglig"
+msgid "Personal dictionary encryption options are not available"
+msgstr "Krypteringsinställningarna är inte tillgängliga"
 
 msgid "SquirrelSpell Options Menu"
 msgstr "Inställningar för SquirrelSpell"
@@ -4242,6 +4254,9 @@ msgstr "Markera"
 msgid "Undelete"
 msgstr "Ta tillbaka"
 
+msgid "Viewing HTML formatted email"
+msgstr "Visar HTML-formaterat brev"
+
 msgid "General Message Composition"
 msgstr "Allmänt"
 
@@ -4272,6 +4287,9 @@ msgstr "Längd på ärendefältet (0 för full längd)"
 msgid "Message Display Options"
 msgstr "Brevvisning"
 
+msgid "Height of inline frame"
+msgstr "Den invändiga ramens höjd"
+
 msgid "Show 'Delete & Prev/Next' Links"
 msgstr "Visa Kasta och visa föregående/nästa-länkar."
 
@@ -4289,9 +4307,6 @@ msgstr "Visa endast aktiverade mappar"
 
 msgid "XP"
 msgstr "XP"
-
-msgid "Hide SquirrelMail Header"
-msgstr "Dölj SquirrelMail-poster i brevhuvudet"
 
 msgid "Search functions"
 msgstr "Sökfunktioner"
@@ -4322,6 +4337,9 @@ msgstr "Använd avancerad mappträdlista"
 
 msgid "Use icons"
 msgstr "Använd ikoner"
+
+msgid "Use inline frames with HTML mails"
+msgstr "Använd invändiga ramar vid HTML-formatering"
 
 msgid "Use PHP recode functions"
 msgstr "Använd PHP-omkodningsfunktioner"
@@ -4520,8 +4538,10 @@ msgstr "ldap_get_dn-fel."
 msgid "Unsupported crypto: %s"
 msgstr "Stödjer inte krypto av typen: %s"
 
-msgid "PHP mhash extension is missing."
-msgstr "PHP är inte installerat med mhash-stöd."
+msgid "PHP mhash extension is missing or does not support selected crypto."
+msgstr ""
+"PHP är inte installerat med mhash-stöd eller så stödjs inte den valda "
+"krypteringsmetoden."
 
 msgid "System crypt library doesn't support standard DES crypt."
 msgstr "Systemets krypteringsbibliotek stödjer inte standard DES."
@@ -4581,6 +4601,60 @@ msgstr ""
 
 msgid "Password change was not successful!"
 msgstr "Det gick inte att byta lösenordet!"
+
+msgid ""
+"Plugin is unable to use PHP Pear DB libraries. PHP Pear includes must be "
+"available in your PHP include_path setting."
+msgstr ""
+"Insticksmodulen kan inte använda PHP Pear databasbibliotek. PHP:s "
+"include_path måste konfigureras med sökvägen till PHP Pear."
+
+msgid "Required change password backend configuration options are missing."
+msgstr ""
+"Erfordrade konfigureringsinställningar för lösenordsbytesmodulen saknas."
+
+#, php-format
+msgid "Connection error: %s"
+msgstr "Fel vid anslutningen: %s"
+
+#, php-format
+msgid "Invalid table name: %s"
+msgstr "Ogiltigt tabellnamn: %s"
+
+msgid "User table is empty."
+msgstr "Användartabellen är tom."
+
+msgid "Invalid uid field."
+msgstr "Ogiltigt UID-fält."
+
+msgid "Invalid password field"
+msgstr "Ogiltigt lösenordsfält."
+
+msgid "Invalid domain field"
+msgstr "Ogiltigt domänfält."
+
+#, php-format
+msgid "Query failed: %s"
+msgstr "Frågan misslyckades: %s"
+
+msgid "Unable to find user in user table."
+msgstr "Kunde inte hitta användaren i användartabellen."
+
+msgid "Too many matches found in user table."
+msgstr "För många träffar i användartabellen."
+
+msgid "Unable to detect password crypto algorithm."
+msgstr "Kan inte detektera krypteringsalgoritmen för lösenord."
+
+msgid "Unable to encrypt new password."
+msgstr "Det går inte att kryptera det nya lösenordet."
+
+#, php-format
+msgid "Unable to set new password: %s"
+msgstr "Kan inte ändra till det nya lösenordet: %s"
+
+msgid "Unable to use digest-md5 crypto."
+msgstr "Kan inte använda DIGEST-MD5-kryptering."
 
 msgid "Closing Connection"
 msgstr "Stänger anslutningen"
@@ -4703,6 +4777,29 @@ msgstr "Spara tjänstetyp"
 msgid "SpamCop reporting"
 msgstr "Skräppostrapportering till SpamCop"
 
+#, php-format
+msgid ""
+"Your %s dictionary is encrypted with password that differs from your current "
+"password."
+msgstr ""
+"Din %s-ordlista är krypterad med ett lösenord som avviker från ditt "
+"nuvarande lösenord."
+
+msgid "Invalid SquirrelSpell module."
+msgstr "Ogiltig SquirrelSpell-modul."
+
+#, php-format
+msgid "Found %d error"
+msgstr "Hittade %d fel"
+
+#, php-format
+msgid "Found %d errors"
+msgstr "Hittade %d fel"
+
+#, php-format
+msgid "Using %s dictionary for spellcheck."
+msgstr "Använder %s ordlista för stavningskontroll."
+
 msgid "Translation Theme:"
 msgstr "Översättningstema:"
 
@@ -4730,6 +4827,21 @@ msgstr "Vid skrivning:"
 
 msgid "Not yet functional, currently does nothing"
 msgstr "Ej implementerat"
+
+msgid "D"
+msgstr "K"
+
+msgid "F"
+msgstr "M"
+
+msgid "Message Flags"
+msgstr "Ikoner"
+
+msgid "Attachment"
+msgstr "Bilaga"
+
+msgid "Click here to change the sorting of the message list"
+msgstr "Ändra sorteringen av index"
 
 msgid "Delivery error report"
 msgstr "Rapport om leveransfel"
