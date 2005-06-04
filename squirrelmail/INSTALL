@@ -38,7 +38,7 @@ Each of these steps is covered in detail below.
   If your webserver does not already have PHP you must configure it
   to work with PHP. You need at least PHP v4.0.6. SquirrelMail uses
   the standard suffix .php for all PHP4 files.
-  
+
   You can find PHP at http://www.php.net. See the documentation that
   comes with PHP for instructions how to set it up.
 
@@ -47,11 +47,11 @@ Each of these steps is covered in detail below.
 
   --with-ldap
     Required for LDAP addressbooks
-  
+
   --with-pear and --with-mysql
-    For MySQL storage of preferences or addressbooks. You will need php 
+    For MySQL storage of preferences or addressbooks. You will need PHP
     compiled with --with-pgsql option, if you want to use PostgreSQL instead
-    of MySQL. You will need php with appropriate database extension, if you 
+    of MySQL. You will need PHP with appropriate database extension, if you
     want to use any other database.
 
   --with-openssl
@@ -65,7 +65,7 @@ Each of these steps is covered in detail below.
     Can be used by Eastern charset decoding functions
 
   --enable-mbstring
-    Required for Japanese translation. Optional for translations that 
+    Required for Japanese translation. Optional for translations that
     use non-ISO-8859-1 charset
 
   If you want your users to attach files to their mails, make sure
@@ -77,7 +77,7 @@ Each of these steps is covered in detail below.
 
   This depends a lot on the server your choose. See the documentation
   that comes with your server.
-  
+
   If you're concerned about people accessing it directly, you can
   limit access to only the IP of the webserver.
 
@@ -114,8 +114,8 @@ b. Setting up directories
     $ chgrp -R nobody data
 
   Keep in mind that with different installations, the web server could
-  typically run as userid/groupid of nobody/nobody, nobody/nogroup, 
-  apache/apache or www-data/www-data.  The best way to find out is to read 
+  typically run as userid/groupid of nobody/nobody, nobody/nogroup,
+  apache/apache or www-data/www-data.  The best way to find out is to read
   the web server's configuration file.
 
   There also needs to be a directory where attachments are stored
@@ -134,30 +134,30 @@ b. Setting up directories
 
   If you trust all the users on you system not to read mail they are
   not supposed to read change the last line to chmod 777 SomeDirectory
-  or simply use /tmp as you attachments directory. 
-  
-  If a user is aborting a mail but has uploaded some attachments to it 
-  the files will be lying around in this directory forever if you do not 
+  or simply use /tmp as you attachments directory.
+
+  If a user is aborting a mail but has uploaded some attachments to it
+  the files will be lying around in this directory forever if you do not
   remove them.  To fix this, it is recommended to create a cron job that
   deletes everything in the attachment directory.  Something similar
   to the following will be good enough:
 
     $ cd /var/attach/directory
     $ rm -f *
-    
+
   However, this will delete attachments that are currently in use by people
   sending email when the cron job runs.  You can either (1) make sure that
   the cron job runs at an obscure hour and hope that nobody gets upset, or
   (2) you can run a modified version of the commands above.  Check out the
   man pages for other commands such as 'find' or 'tmpreaper'.
-  
+
   One sample script you could set up that would erase all attachments, but
   wouldn't erase preferences, address books, or the like (just in case your
-  attachment directory is the same as your data directory) might look like 
+  attachment directory is the same as your data directory) might look like
   this:
-   
+
     $ rm `find /var/attach/directory -atime +2 | grep -v "\." | grep -v _`
-    
+
   Remember to be careful with whatever method you do use, and to test out
   the command before it potentially wipes out everyone's preferences.
 
@@ -184,9 +184,9 @@ c. Setting up SquirrelMail
 -----------------------
 
   Point your browser at the URL at which SquirrelMail is installed.  A
-  possible example of this is: 
+  possible example of this is:
      http://www.example.com/squirrelmail
-     
+
   It should be pretty straight forward to use. Some more documentation
   might show up one day or another.
 
@@ -196,6 +196,7 @@ c. Setting up SquirrelMail
 
   For information on how to make SquirrelMail work with Russian
   Apache, see the russian_apache.txt in the doc/ subdirectory.
+
 
 6. TRANSLATIONS
 ---------------
