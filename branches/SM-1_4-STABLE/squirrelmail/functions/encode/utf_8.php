@@ -10,7 +10,7 @@
  * Original author: ronen at greyzone dot com
  *
  * @version $Id$
- * @copyright Copyright &copy; 2004-2004 The SquirrelMail Project Team
+ * @copyright Copyright &copy; 2004-2005 The SquirrelMail Project Team
  * @package squirrelmail
  * @subpackage encode
  */
