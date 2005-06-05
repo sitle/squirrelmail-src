@@ -60,7 +60,7 @@ client, including strong MIME support, address books, and folder manipulation.
     Alternatively, you can manually edit the configuration files.)
   <item>Unlike many PHP applications, SquirrelMail does not require MySQL or
     other database type.
-  <item>If you use MySQL for the address book or for prefs, note that Pear DB
+  <item>If you use MySQL for the address book or for preferences, note that Pear DB
     lib is required to be installed and available in the include
     path.
   <item>Aspell installed if using the SquirrelSpell plugin, For UNIX/Linux see:
@@ -79,7 +79,7 @@ client, including strong MIME support, address books, and folder manipulation.
     system.
   <item>IMAP server that supports sort and thread IMAP extensions. Without these
     extensions you lose in performance.
-  <item>IMAP server should support unicode. CourierIMAP must be compiled with
+  <item>IMAP server should support Unicode. Courier IMAP must be compiled with
     <tt/--enable-unicode/ option. Without it some translations might be unable
     to use sorting and threading.
 </itemize>
@@ -264,10 +264,10 @@ $ cd /home/httpd/html
 $ cp -Rp squirrelmail-1.0.6 squirrelmail-1.0.6.bak
 </verb>
 
-<sect1>Unarchive new SquirrelMail
+<sect1>Unpack new SquirrelMail
 <p>
 Make sure that you are in your httpd document directory (<tt>/home/httpd/html</tt>)
-and then unarchive the SquirrelMail archive (whatever the filename is): 
+and then unpack the SquirrelMail archive (whatever the filename is): 
 <verb>
 $ tar -zxvf squirrelmail-1.2.0.tar.gz
 </verb>
@@ -442,19 +442,98 @@ You might want to change:
 
 <sect1>Selecting IMAP server<label id="select-imap">
 <p>
-TODO: Recommend use of presets. List main presets. Explain why setting only
-$imap_server_type does not work.
+Some IMAP servers use specific IMAP folder layout or need some tweaks in IMAP
+client's configuration. In order to set SquirrelMail according to your server's
+requirements you might have to set more than 10 different SquirrelMail
+options. SquirrelMail simplifies modification of these settings by providing
+special configuration command. If you select D command in SquirrelMail
+configuration utility, you will be asked to select your IMAP server and all
+settings will be adjusted according to selected IMAP server.
 
-See chapter about <ref id="presets" name="Presets"> for more information about
-server specific settings.
+For example, correct combination of SquirrelMail settings can hide INBOX prefix
+in courier IMAP server. Value that is set in IMAP <tt/"Server software"/
+configuration option can fix search issues in EIMS or hmailServer, provide
+workarounds for some folder subscription errors in mercury32 IMAP server, but it
+does not affect system folder names, folder prefix, delimiter and other specific
+configuration options.
+
+SquirrelMail provides configuration presets for Cyrus, UW, Courier, Exchange,
+EIMS (Mac OS X), hmailServer, mercury32 and dovecot IMAP servers. See chapter
+about <ref id="presets" name="Presets"> for more information about server
+specific settings.
 
 <sect1>Authentication
 <p>
-login, cram-md5, digest-md5.
+Prior to SquirrelMail 1.3.3, only plain text logins for IMAP and SMTP were
+supported.  With the release of SquirrelMail 1.3.3, support for the
+CRAM-MD5 and DIGEST-MD5 authentication mechanisms has been added. It is possible
+to use different methods for both IMAP and SMTP. Unless the administrator
+changes the authentication methods, SquirrelMail will default to the "classic"
+plain text methods.
+
+<sect2>Requirements
+<p>
+<verb>
+CRAM/DIGEST-MD5
+* SquirrelMail 1.3.3 or higher
+* If you have the mhash extension to PHP, it will automatically
+  be used, which may help performance on heavily loaded servers.
+  ** NOTE: mhash is optional and no longer a requirement **
+</verb>
+
+<sect2>POP before SMTP
+<p>
+Some SMTP servers require POP3 authentication before accepting messages to
+external recipients. SquirrelMail supports POP before SMTP since 1.2.6. You can
+enable it in SMTP server settings <tt/"POP before SMTP"/ option. SquirrelMail
+uses same username and password that was used for IMAP authentication.
+
+<sect2>Using different username for SMTP relaying
+<p>
+If SMTP server uses different username and password for authentication,
+since 1.5.1 version SquirrelMail can use one username and password for entire
+SquirrelMail installation. They can be set in <tt>config/config_local.php</tt>
+<tt/$smtp_sitewide_user/ and <tt/$smtp_sitewide_pass/ configuration variables.
+
+If you use older SquirrelMail version and want to use single user/password
+for SMTP authentication, you might have to install local SMTP server and set it
+as smart relay. See SMTP server's documentation about email relaying through
+other SMTP server.
 
 <sect1>StartTLS, IMAPS, SSMTP
 <p>
-secure connection ways. supported and not supported. minimal requirements.
+Since 1.3.3 version SquirrelMail is able to connect to IMAP and SMTP servers
+that use TLS.
+
+<sect2>Requirements
+<p>
+<itemize>
+  <item>SquirrelMail 1.3.3 or higher
+  <item>PHP 4.3.0 or higher
+  <item>The "STARTTLS" command is NOT supported.  The server you wish to use TLS
+  on must have a dedicated port listening for TLS connections.
+  <item>If you use PHP 4.3.x, OpenSSL support must be compiled staticly. See
+  PHP bug <url url="http://bugs.php.net/bug.php?id=29934" name="#29934">.
+</itemize>
+
+TLS can be enabled in SquirrelMail configuration utility, <tt>"Server settings"</tt>
+section. If you want to use IMAP with TLS, you should select command that
+updates IMAP settings, enable TLS in <tt>"Secure IMAP (TLS)"</tt> option and set
+secure IMAP port in <tt>"IMAP Port"</tt> option. Secure IMAP servers use tcp 993
+port by default. If you want to use SMTP with TLS, you should select command
+that updates SMTP settings, enable TLS in <tt>"Secure SMTP (TLS)"</tt> option and
+set secure SMTP port in <tt>"SMTP Port"</tt> option. Secure SMTP servers use tcp 465
+port by default.
+
+Some IMAP and SMTP servers support STARTTLS protocol (<ref id="rfc"
+name="rfc2595 and rfc2487">), which allows to start TLS encryption on existing
+plaintext connection. Current SquirrelMail TLS implementation can't use such
+feature.
+
+Note: There is no point in using TLS if your IMAP server is localhost. You need
+root to sniff the loopback interface, and if you don't trust root, or an attacker
+already has root, the game is over.  You've got a lot more to worry about beyond
+having the loopback interface sniffed.
 
 <sect1>Default user preferences<label id="default_pref">
 <p>
@@ -489,11 +568,131 @@ If you use database based setup, default settings are stored in
 
 <sect1>Using database backends<label id="db-backend">
 <p>
-SquirrelMail can store preferences and address books in database.
+On sites with many users you might want to store your user data in a
+database instead of in files. This document describes how to configure
+SquirrelMail to do this.
+
+Methods for storing both personal addressbooks and user preferences in
+a database is included as a part of the distribution.
+
+<sect2>Configuring PEAR DB
+<p>
+For this to work you must have the PEAR classes installed, these are part of
+PHP. Once these are installed you must have sure the directory containg them is
+a part of your PHP include_path. See the PHP documentation for information on
+how to do that. 
+
+Under Mandrake Linux the PEAR classes are installed as part of the php-devel
+package and under FreeBSD they are installed as part of the mod_php4 or php4
+port/package. Debian packages pear libraries in php4-pear package.
+
+<sect2>Configuring addressbooks in database
+<p>
+First you need to create a database and a table to store the data in.
+Create a database user with access to read and write in that table.
+
+For MySQL you would normally do something like:
+
+<tscreen><verb>
+ (from the command line)
+ # mysqladmin create squirrelmail
+
+ (from the MySQL client)
+ mysql> GRANT select,insert,update,delete ON squirrelmail.*
+              TO squirreluser@localhost IDENTIFIED BY 'sqpassword';
+</verb></tscreen>
+
+The table structure should be similar to this (for MySQL):
+
+<tscreen><verb>
+CREATE TABLE address (
+  owner varchar(128) DEFAULT '' NOT NULL,
+  nickname varchar(16) DEFAULT '' NOT NULL,
+  firstname varchar(128) DEFAULT '' NOT NULL,
+  lastname varchar(128) DEFAULT '' NOT NULL,
+  email varchar(128) DEFAULT '' NOT NULL,
+  label varchar(255),
+  PRIMARY KEY (owner,nickname),
+  KEY firstname (firstname,lastname)
+);
+</verb></tscreen>
+
+and similar to this for PostgreSQL:
+
+<tscreen><verb>
+CREATE TABLE "address" (
+  "owner" varchar(128) NOT NULL,
+  "nickname" varchar(16) NOT NULL,
+  "firstname" varchar(128) NOT NULL,
+  "lastname" varchar(128) NOT NULL,
+  "email" varchar(128) NOT NULL,
+  "label" varchar(255) NOT NULL,
+  CONSTRAINT "address_pkey" PRIMARY KEY ("nickname", "owner")
+);
+CREATE  UNIQUE INDEX "address_firstname_key" ON "address"
+  ("firstname", "lastname");
+</verb></tscreen>
+
+Next, edit your configuration so that the address book DSN (Data Source
+Name) is specified, this can be done using either conf.pl or via the
+administration plugin. The DSN should look something like:
+
+<tscreen><verb>
+ mysql://squirreluser:sqpassword@localhost/squirrelmail or
+ pgsql://squirreluser:sqpassword@localhost/squirrelmail
+</verb></tscreen>
+
+See <url url="http://pear.php.net/manual/en/package.database.db.php" 
+name="PHP Pear DB manual"> for more details about DSN syntax.
+
+Global address book uses same table format as the one used for personal
+address book. You can even use same table, if you don't have user named
+'global'.
+
+<sect2>Configuring preferences in database
+<p>
+This is done in much the same way as it is for storing your address
+books in a database.
+
+The table structure should be similar to this (for MySQL):
+
+<tscreen><verb>
+  CREATE TABLE userprefs (
+    user varchar(128) DEFAULT '' NOT NULL,
+    prefkey varchar(64) DEFAULT '' NOT NULL,
+    prefval BLOB DEFAULT '' NOT NULL,
+    PRIMARY KEY (user,prefkey)
+  );
+</verb></tscreen>
+
+and for PostgreSQL:
+
+<tscreen><verb>
+CREATE TABLE "userprefs" (
+   "username" varchar(128) NOT NULL,
+   "prefkey" varchar(64) NOT NULL,
+   "prefval" text,
+   CONSTRAINT "userprefs_pkey" PRIMARY KEY ("prefkey", "username")
+);
+</verb></tscreen>
+
+Next, edit your configuration so that the preferences DSN (Data Source
+Name) is specified, this can be done using either SquirrelMail configuration
+utility or via the administration plugin. The DSN should look something like:
+
+<tscreen><verb>
+ mysql://squirreluser:sqpassword@localhost/squirrelmail or
+ pgsql://squirreluser:sqpassword@localhost/squirrelmail
+</verb></tscreen>
+
+Once configuration settings are saved, users' personal preferences will be
+stored in a database. Some SquirrelMail plugins are designed to use different
+files for users' data storage and won't be able to use database to store users'
+data.
 
 <sect1>Using more than one IMAP server
 <p>
-How to do that.
+How to do that. Perdition, vlogin and multilogin plugs, sqimap_get_user_server function.
 
 <sect1>Other configuration issues
 <p>
@@ -509,20 +708,24 @@ installation.
 SquirrelMail uses gettext functions for translations. If PHP gettext extension
 is not present, interface switches to slower internal gettext implementation.
 
+If you use CRAM-MD5 or DIGEST-MD5 authentication methods, SquirrelMail can use
+PHP mhash functions. If PHP mhash extension is not present, interface uses own
+hmac_md5 implementation.
+
 In some cases SquirrelMail can take advantage of PHP recode or iconv
 functions. These functions can be used to speedup decoding of Eastern charsets.
 
 <sect1>IMAP server extensions
 <p>
 If your IMAP server supports the IMAP SORT or THREAD extensions (most mainstream
-servers do) turn it on. Server side sorting is faster than sorting in PHP
+servers do) turn them on. Server side sorting is faster than sorting in PHP
 script.
 
 Options can be enabled in SquirrelMail configuration utility: 
 <tscreen><verb>
 4. General Options
-  11. Allow server thread sort: false (default) -&gt; true
-  12. Allow server-side sorting: false (default) -&gt; true 
+  11. Allow server thread sort: false (default) &gt; true
+  12. Allow server-side sorting: false (default) &gt; true 
 </verb></tscreen>
 
 Server side sorting can cause problems in SquirrelMail only when IMAP server
@@ -534,7 +737,7 @@ multibyte charsets used by SquirrelMail.
 
 <sect1>Mailbox format
 <p>
-Default unix mailbox format is slower than other formats and can increase server
+Default Unix mailbox format is slower than other formats and can increase server
 loads when used with bigger mail folders. If you use UW IMAP server, you should
 try switching to mbx mailbox format. Maildir mailboxes have higher bottlenecks
 than formats that store entire mail folder in one file.
@@ -572,7 +775,7 @@ SquirrelMail.
 <url url="http://turck-mmcache.sf.net" name="Turck MMCache"> (Discontinued) is
 an opcode cache that works on both *NIX and Win32. It speeds up PHP's
 performance significantly. It's open source and is under active
-development. Note: turck-mmcache is rumoured to be dead. The developer was
+development. Note: turck-mmcache is rumored to be dead. The developer was
 supposedly hired by Zend, and the project looks abandoned with many open bug
 reports. However, it still seems to be working for everyone and is possibly the
 fastest of the three we list here. Software is licensed under GPL.
@@ -599,7 +802,7 @@ See also:
 <sect>Customizing SquirrelMail
 <sect1>Plugins
 <p>
-SquirrelMail is modular system. Interface can be extented with extra features
+SquirrelMail is modular system. Interface can be extended with extra features
 provided by various plugins.
 
 <sect1>Themes<label id="themes">
@@ -628,7 +831,7 @@ Daily questions
 <p>
 missing session support
 
-<sect1>Common interface error messsages
+<sect1>Common interface error messages
 <sect2>Unknown username or password
 <p>
 password is not ********. you need cookies.
@@ -639,7 +842,38 @@ session.gc_maxlifetime
 
 <sect2>Can't delete emails. Quota exceeded.
 <p>
-DisableTrash
+SquirrelMail's default behaviour is to move messages to the trash folder when
+they are deleted. If mail account has a quota and user is close to exceeding it,
+user might experience problems. IMAP protocol does not support move
+command. This is what happens when message is deleted:
+
+<enum>
+  <item>The message is copied to the trashcan.
+  <item>The original message is marked for deletion.
+  <item>The original message is expunged, i.e. removed from the original folder.
+</enum>
+
+If user tries to delete message that exceeds left quota, operation is aborted
+with quota error message.
+
+Issue can be solved by deleting messages from trash or disabling use of Trash in
+SquirrelMail.
+
+<enum>
+  <item>Click "Options".
+  <item>Click "Folder Preferences".
+  <item>Set "Trash Folder" to "Do not use Trash".
+  <item>Click "Submit".
+</enum>
+
+When trash is disabled, user can delete unneeded messages and reduce total
+ammount of data stored in his/her account.
+
+Starting with SquirrelMail 1.5.0 version, there is a "Bypass Trash" checkbox when
+viewing the message list or a message's content, that can be used to delete
+mails without changing the trash folder setting per above.
+
+Some quota setups can ignore files placed in Trash folder.
 
 <sect>Support
 <p>
@@ -648,15 +882,32 @@ suggestions, bug reports.
 
 <sect1>SquirrelMail bugtracker
 <p>
-We have it on SF.
+SquirrelMail uses Sourceforge system to manage bugs, patches and feature
+requests. See <url url="http://www.squirrelmail.org/bugs" name="bug tracker
+site">.
 
 <sect1>SquirrelMail mailing lists
 <p>
-We have them too.
+SquirrelMail uses Sourceforge mailing list services. See <url
+url="http://lists.sourceforge.net/lists/listinfo/squirrelmail-users"
+name="squirrelmail users mailing list">.
 
-<sect1>Security contacts
+Mailing list archives can be found on <url 
+url="http://sourceforge.net/mail/?group_id=311" name="Sourceforge"> and 
+<url url="http://www.gmane.org" name="Gmane">.
+
+<sect1>Security issues
 <p>
-address used for security contact.
+The SquirrelMail Project takes security very seriously. If you think you've
+discovered a security-related issue in SquirrelMail, please contact developers
+directly at <htmlurl url="mailto:security@squirrelmail.org"
+name="security@squirrelmail.org">. Developers will do their best to work with
+you towards a solution as quickly as possible and will of course give all credit
+where it's due.address used for security contact.
+
+List of SquirrelMail security issues can be found at <url
+url="http://www.squirrelmail.org/security/"
+name="http://www.squirrelmail.org/security/">.
 
 <sect>Presets<label id="presets">
 <p>
@@ -678,7 +929,7 @@ Possible server values are:
   <item>dovecot = Dovecot Secure IMAP server
 </itemize>
 
-<sect1>default settings:
+<sect1>default settings
 <p>
 These are generic settings that should work in some IMAP servers.
 
@@ -697,7 +948,7 @@ These are generic settings that should work in some IMAP servers.
   <item>force_username_lowercase = false
 </itemize>
 
-<sect1>'cyrus' preset
+<sect1>cyrus preset
 <p>
 This preset is written for Cyrus IMAP.
 
@@ -716,7 +967,7 @@ This preset is written for Cyrus IMAP.
   <item>force_username_lowercase = false
 </itemize>
 
-<sect1>'uw' preset
+<sect1>uw preset
 <p>
 This preset is written for UW IMAPD.
 
@@ -743,7 +994,7 @@ Comments:
   enable plain text logins.
 </itemize>
 
-<sect1>'exchange' preset
+<sect1>exchange preset
 <p>
 This preset is written for Microsoft Exchange IMAP server.
 
@@ -762,7 +1013,7 @@ This preset is written for Microsoft Exchange IMAP server.
   <item>force_username_lowercase = true
 </itemize>
 
-<sect1>'courier' preset
+<sect1>courier preset
 <p>
 This preset is written for Courier IMAP server.
 
@@ -781,7 +1032,7 @@ This preset is written for Courier IMAP server.
   <item>force_username_lowercase = false
 </itemize>
 
-<sect1>'macosx' preset
+<sect1>macosx preset
 <p>
 This preset is written for IMAP server used by MacOS X
 
@@ -800,7 +1051,7 @@ This preset is written for IMAP server used by MacOS X
   <item>force_username_lowercase = false
 </itemize>
 
-<sect1>'hmailserver' preset
+<sect1>hmailserver preset
 <p>
 This preset is written for hMailServer
 
@@ -819,7 +1070,7 @@ This preset is written for hMailServer
   <item>force_username_lowercase = false
 </itemize>
 
-<sect1>'mercury32' preset
+<sect1>mercury32 preset
 <p>
 This preset is used for Mercury Mail Transport System. Preset is available since
 SquirrelMail 1.5.0. It was tested on Mercury32 v.4.01b
@@ -853,7 +1104,7 @@ differences.
 
 Site URL: <url url="http://www.pmail.com" name="http://www.pmail.com">
 
-<sect1>'dovecot' preset
+<sect1>dovecot preset
 <p>
 Preset used for Dovecot Secure IMAP server. It is available since SquirrelMail
 1.5.1. There is no code specific to Dovecot IMAP server. Preset provides only a
@@ -881,4 +1132,31 @@ Comments:
 
 Site URL: <url url="http://www.dovecot.org" name="http://www.dovecot.org">
 
+<sect1>Links
+<p>
+This chapter provides links to some commonly used software and documents.
+
+<sect2>RFC<label id="rfc">
+<p>
+The Requests for Comments (RFC) document series is a set of technical and
+organizational notes about the Internet (originally the ARPANET), beginning in
+1969. Memos in the RFC series discuss many aspects of computer networking,
+including protocols, procedures, programs, and concepts, as well as meeting
+notes, opinions, and sometimes humor.
+
+These documents are available on many sites. For example:
+<itemize>
+  <item><url url="http://www.ietf.org/rfc.html" name="IETF">
+  <item><url url="http://www.rfc-editor.org/rfc.html" name="RFC Editor">
+  <item><url url="http://www.faqs.org/rfcs/" name="Internet FAQ Archives">
+</itemize>
+
+You might be able to find nearby RFC site by searching for 'rfc somenumber' in
+your favorite search engine.
+
+<sect2>IMAP servers
+<p>
+<itemize>
+  <item><url url="http://asg.web.cmu.edu/cyrus/" name="Cyrus">
+</itemize>
 </article>
