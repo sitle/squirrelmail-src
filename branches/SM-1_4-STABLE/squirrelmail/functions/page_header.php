@@ -174,24 +174,24 @@ function displayPageHeader($color, $mailbox, $xtra='', $session=false) {
                 $js .= "}\n";
             }
             else
-                $js .= "var f = document.forms.length;\n".
-                "var i = 0;\n".
-                "var pos = -1;\n".
-                "while( pos == -1 && i < f ) {\n".
-                    "var e = document.forms[i].elements.length;\n".
-                    "var j = 0;\n".
-                    "while( pos == -1 && j < e ) {\n".
-                        "if ( document.forms[i].elements[j].type == 'text' ) {\n".
-                            "pos = j;\n".
-                        "}\n".
-                        "j++;\n".
-                    "}\n".
-                "i++;\n".
-                "}\n".
-                "if( pos >= 0 ) {\n".
-                    "document.forms[i-1].elements[pos].focus();\n".
-                "}\n".
-            "}\n";
+                $js .= "    var f = document.forms.length;\n".
+                "    var i = 0;\n".
+                "    var pos = -1;\n".
+                "    while( pos == -1 && i < f ) {\n".
+                "        var e = document.forms[i].elements.length;\n".
+                "        var j = 0;\n".
+                "        while( pos == -1 && j < e ) {\n".
+                "            if ( document.forms[i].elements[j].type == 'text' ) {\n".
+                "                pos = j;\n".
+                "            }\n".
+                "            j++;\n".
+                "        }\n".
+                "        i++;\n".
+                "    }\n".
+                "    if( pos >= 0 ) {\n".
+                "        document.forms[i-1].elements[pos].focus();\n".
+                "    }\n".
+                "}\n";
 
             $js .= "// -->\n".
                  "</script>\n";
@@ -203,26 +203,26 @@ function displayPageHeader($color, $mailbox, $xtra='', $session=false) {
             $js = '<script language="JavaScript" type="text/javascript">' .
              "\n<!--\n" .
              "function checkForm() {\n".
-                "var f = document.forms.length;\n".
-                "var i = 0;\n".
-                "var pos = -1;\n".
-                "while( pos == -1 && i < f ) {\n".
-                    "var e = document.forms[i].elements.length;\n".
-                    "var j = 0;\n".
-                    "while( pos == -1 && j < e ) {\n".
-                        "if ( document.forms[i].elements[j].type == 'text' " .
-                        "|| document.forms[i].elements[j].type == 'password' ) {\n".
-                            "pos = j;\n".
-                        "}\n".
-                        "j++;\n".
-                    "}\n".
-                "i++;\n".
-                "}\n".
-                "if( pos >= 0 ) {\n".
-                    "document.forms[i-1].elements[pos].focus();\n".
-                "}\n".
-                "$xtra\n".
-            "}\n";
+             "   var f = document.forms.length;\n".
+             "   var i = 0;\n".
+             "   var pos = -1;\n".
+             "   while( pos == -1 && i < f ) {\n".
+             "       var e = document.forms[i].elements.length;\n".
+             "       var j = 0;\n".
+             "       while( pos == -1 && j < e ) {\n".
+             "           if ( document.forms[i].elements[j].type == 'text' " .
+             "           || document.forms[i].elements[j].type == 'password' ) {\n".
+             "               pos = j;\n".
+             "           }\n".
+             "           j++;\n".
+             "       }\n".
+             "   i++;\n".
+             "   }\n".
+             "   if( pos >= 0 ) {\n".
+             "       document.forms[i-1].elements[pos].focus();\n".
+             "   }\n".
+             "   $xtra\n".
+             "}\n";
 
             if ($compose_new_win == '1') {
                 if (!preg_match("/^[0-9]{3,4}$/", $compose_width)) {
