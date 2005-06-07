@@ -1,0 +1,36 @@
+This CVS module contains files that can be used to create static
+SquirrelMail documentation.
+
+-------
+Status:
+-------
+admin.sgml
+ - INSTALL
+ - UPGRADE (added)
+ - doc/authentication.txt (added)
+ - doc/db-backend.txt (added)
+ - doc/ie_ssl.txt
+ - doc/presets.txt (added)
+ - doc/russian_apache.txt
+ 
+devel.sgml
+ - doc/Development/addressbook.txt
+ - doc/Development/compose.txt
+ - doc/Development/mime.txt (outdated class names)
+ - doc/Development/plugins.txt
+ - doc/Development/i18n.txt
+ - doc/Development/themes.txt
+ - doc/Development/rfc_documents.txt
+
+translator.sgml
+ - doc/translating.txt
+ - doc/translating_help.txt (added)
+ - http://www.squirrelmail.org/wiki/LanguageTranslation
+
+user.sgml
+ - help files
+ - http://www.squirrelmail.org/wiki/UserManual
+
+phpdoc
+ - contrib/phpdoc/
+ - contrib/makedoc.sh
