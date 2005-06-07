@@ -690,6 +690,11 @@ stored in a database. Some SquirrelMail plugins are designed to use different
 files for users' data storage and won't be able to use database to store users'
 data.
 
+<sect2>Primary keys
+<p>
+You <bf>must</bf> set primary keys correctly. If keys are not set correctly,
+database entries might be dublicated when user changes their preferences.
+
 <sect1>Using more than one IMAP server
 <p>
 How to do that. Perdition, vlogin and multilogin plugs, sqimap_get_user_server function.
