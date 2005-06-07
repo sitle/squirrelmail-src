@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2003-11-11 21:44+0200\n"
+"POT-Creation-Date: 2005-06-07 15:40+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,20 +16,30 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-msgid "Too Many Outgoing Recipients.  Please Limit Number Of Recipients To "
+#, php-format
+msgid "Too many outgoing recipients. Please limit number of recipients to %d."
+msgstr ""
+
+#, php-format
+msgid ""
+"Daily e-mail limit has been reached. Please limit number of emails per day "
+"to %d."
 msgstr ""
 
 msgid "All recipients in the To: field are illegal destinations."
 msgstr ""
 
-msgid "plugin is not configured correctly."
+#, php-format
+msgid "\"%s\" plugin is not configured correctly."
 msgstr ""
 
-msgid "Error on data/send_restrictions.dat line number "
+#, php-format
+msgid "Error on data/send_restrictions.dat line number %d."
 msgstr ""
 
-msgid "Message not sent"
+msgid "Message not sent."
 msgstr ""
 
-msgid "plugin could not open its restriction table"
+#, php-format
+msgid "\"%s\" plugin could not open its restriction table."
 msgstr ""
