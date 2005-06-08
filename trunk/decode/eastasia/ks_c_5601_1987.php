@@ -2,11 +2,8 @@
 /**
  * decode/cp949.php
  *
- * Copyright (c) 2004-2005 The SquirrelMail Project Team
- * Licensed under the GNU GPL. For full terms see the file COPYING.
- *
  * This file contains cp949 decoding function that is needed to read
- * cp949 encoded mails in non-cp949 locale. I think microsoft use cp949 for
+ * cp949 encoded mails in non-cp949 locale. I think microsoft uses cp949 for
  * emails that use ks_c_5601_1987 charset name. Fix me if I wrong.
  *
  * cp949 array is not aligned correctly in order to preserve space.

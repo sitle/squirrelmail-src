@@ -4,7 +4,7 @@
  *
  * This script provides iso-2022-jp (rfc1468) decoding functions.
  *
- * @copyright Copyright &copy; 2004-2005 The SquirrelMail Project Team
+ * @copyright (c) 2004-2005 The SquirrelMail Project Team
  * @license http://opensource.org/licenses/gpl-license.php GNU Public License
  * @version $Id$
  * @package decode
@@ -20,7 +20,9 @@ if (! defined('SM_PATH')) define('SM_PATH','../../');
 include_once(SM_PATH . 'functions/decode/iso_2022_support.php');
 
 /**
- *
+ * Converts iso-2022-jp texts
+ * @param string $string iso-2022-jp encoded string
+ * @return string html encoded text
  */
 function charset_decode_iso_2022_jp ($string) {
     global $squirrelmail_language;
@@ -29,18 +31,19 @@ function charset_decode_iso_2022_jp ($string) {
     if ($squirrelmail_language=='ja_JP')
         return $string;
 
+    // undo htmlspecial chars (they can break iso-2022-jp)
+    $string=str_replace(array('&amp;','&quot;','&lt;','&gt;'),array('&','"','<','>'),$string);
+
     // recode
     // this is CPU intensive task. Use recode functions if they are available. 
     if (function_exists('recode_string')) {
-        $string=str_replace(array('&amp;','&quot;','&lt;','&gt;'),array('&','"','<','>'),$string);
+        // recode includes htmlspecialchars sanitizing
         return recode_string("iso-2022-jp..html",$string);
     }
 
     // iconv does not support html target, but internal utf-8 decoding is faster than iso-2022-jp. 
     if (function_exists('iconv') && file_exists(SM_PATH . 'functions/decode/utf_8.php') ) {
         include_once(SM_PATH . 'functions/decode/utf_8.php');
-        // undo htmlspecial chars (they can break iso-2022-jp)
-        $string = str_replace(array('&amp;','&quot;','&lt;','&gt;'),array('&','"','<','>'),$string);
         $string = iconv('iso-2022-jp','utf-8',$string);
         // redo htmlspecial chars
         $string = htmlspecialchars($string);
@@ -57,18 +60,13 @@ function charset_decode_iso_2022_jp ($string) {
     }
 
     // aggressive decoding disabled
-    if (! isset($aggressive_decoding) || 
-        ! $aggressive_decoding )
-        return $string;
+    if (! isset($aggressive_decoding) || ! $aggressive_decoding )
+        return htmlspecialchars($string);
 
     $index=0;
     $ret='';
     $enc_table='ascii';
 
-    // remove html tags (non-japanese charsets are still sanitized or 
-    // don't include html tags)
-    $string=str_replace(array('&amp;','&quot;','&lt;','&gt;'),array('&','"','<','>'),$string);
-  
     while ( $index < strlen($string)) {
         if (isset($string[$index+2]) && $string[$index]=="\x1B") {
             // table change
