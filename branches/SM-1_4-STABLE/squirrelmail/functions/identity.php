@@ -29,8 +29,13 @@ function get_identities() {
     global $username, $data_dir, $domain;
 
     $em = getPref($data_dir,$username,'email_address');
-    if ( ! $em )  $em = $username.'@'.$domain;
-
+    if ( ! $em ) {
+        if (strpos($username , '@') == false) {
+            $em = $username.'@'.$domain;
+        } else {
+            $em = $username;
+        }
+    }
     $identities = array();
     /* We always have this one, even if the user doesn't use multiple identities */
     $identities[] = array('full_name' => getPref($data_dir,$username,'full_name'),

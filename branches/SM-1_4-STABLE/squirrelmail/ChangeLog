@@ -117,6 +117,9 @@ Version 1.4.5 - CVS
   - Remove in-development default-off folder list code from left_main.php.
   - Fixed broken attachments caused by inconsistency of PHP chunk_split().
     Thanks to Roalt Zijlstra.
+  - Identites code incorrectly assumes username does not contain domain part
+    and appended domain to username when no user defined email set.
+	(#1219184).
   
 
 Version 1.4.4 - 21 January 2005
