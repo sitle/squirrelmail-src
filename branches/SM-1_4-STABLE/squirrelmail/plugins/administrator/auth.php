@@ -19,8 +19,12 @@
  * @return boolean
  */
 function adm_check_user() {
-    global $PHP_SELF;
+    global $PHP_SELF, $plugins;
     require_once(SM_PATH . 'functions/global.php');
+    
+    if ( !in_array('administrator', $plugins) ) {
+        return FALSE;
+    }
     
     if ( !sqgetGlobalVar('username',$username,SQ_SESSION) ) {
         $username = '';

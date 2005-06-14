@@ -120,7 +120,8 @@ Version 1.4.5 - CVS
   - Identites code incorrectly assumes username does not contain domain part
     and appended domain to username when no user defined email set.
 	(#1219184).
-  
+  - Disallow access to the administrator plugin screens when the plugin is
+    not enabled in the config.
 
 Version 1.4.4 - 21 January 2005
 -------------------------------
