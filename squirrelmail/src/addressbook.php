@@ -348,7 +348,7 @@ if ($showaddrlist) {
     /* Get and sort address list */
     $alist = $abook->list_addr();
     if(!is_array($alist)) {
-        $abook_error = htmlspecialchars($abook_error);
+        $abook->error = htmlspecialchars($abook->error);
         plain_error_message($abook->error, $color);
         exit;
     }
