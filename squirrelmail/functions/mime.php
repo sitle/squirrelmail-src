@@ -1467,27 +1467,52 @@ function sq_fixstyle($body, $pos, $message, $id, $mailbox){
     /**
      * Fix url('blah') declarations.
      */
-    $content = preg_replace("|url\s*\(\s*([\'\"])\s*\S+script\s*:.*?([\'\"])\s*\)|si",
-            "url(\\1$secremoveimg\\2)", $content);
+    // remove NUL
+    $content = str_replace("\0", "", $content);
+    // NB I insert NUL characters to keep to avoid an infinite loop. They are removed after the loop.
+    while (preg_match("/url\s*\(\s*[\'\"]?([^:]+):(.*)?[\'\"]?\s*\)/si", $content, $matches)) {
+        $sProto = strtolower($matches[1]);
+        switch ($sProto) {
     /**
      * Fix url('https*://.*) declarations but only if $view_unsafe_images
      * is false.
      */
+           case 'https':
+           case 'http':
     if (!$view_unsafe_images){
-        $content = preg_replace("|url\s*\(\s*([\'\"])\s*https*:.*?([\'\"])\s*\)|si",
-                "url(\\1$secremoveimg\\2)", $content);
+                 $sExpr = "/url\s*\(\s*([\'\"])\s*$sProto*:.*?([\'\"])\s*\)/si";
+                 $content = preg_replace($sExpr, "u\0r\0l(\\1$secremoveimg\\2)", $content);
     }
-
+             break;
     /**
      * Fix urls that refer to cid:
      */
-    while (preg_match("|url\s*\(\s*([\'\"]\s*cid:.*?[\'\"])\s*\)|si",
-                $content, $matches)){
-        $cidurl = $matches{1};
++           case 'cid':
++             $cidurl = 'cid:'. $matches[2];
         $httpurl = sq_cid2http($message, $id, $cidurl, $mailbox);
         $content = preg_replace("|url\s*\(\s*$cidurl\s*\)|si",
-                "url($httpurl)", $content);
+                                 "u\0r\0l($httpurl)", $content);
+             break;
+           default:
+             /**
+              * replace url with protocol other then the white list
+              * http,https and cid by an empty string.
+              */
+             $content = preg_replace("/url\s*\(\s*[\'\"]?([^:]+):(.*)?[\'\"]?\s*\)/si",
+                                 "", $content);
+             break;
     }
+         break;
+     }
+     // remove NUL
+     $content = str_replace("\0", "", $content);
+ 
+    /**
+     * Remove any backslashes, entities, and extraneous whitespace.
+     */
+     $contentTemp = $content;
+     sq_defang($contentTemp);
+     sq_unspace($contentTemp);
 
     /**
      * Fix stupid css declarations which lead to vulnerabilities
@@ -1498,9 +1523,15 @@ function sq_fixstyle($body, $pos, $message, $id, $mailbox){
                      '/binding/i',
                      '/include-source/i');
     $replace = Array('idiocy', 'idiocy', 'idiocy', 'idiocy');
-    $content = preg_replace($match, $replace, $content);
+    $contentNew = preg_replace($match, $replace, $contentTemp);
+    if ($contentNew !== $contentTemp) {
+        // insecure css declarations are used. From now on we don't care
+        // anymore if the css is destroyed by sq_deent, sq_unspace or sq_unbackslash
+        $content = $contentNew;
+    }
     return array($content, $newpos);
 }
+
 
 /**
  * This function converts cid: url's into the ones that can be viewed in
@@ -1529,8 +1560,8 @@ function sq_cid2http($message, $id, $cidurl, $mailbox){
     $cidurl = preg_replace($match_str, $str_rep, $cidurl);
 
     $linkurl = find_ent_id($cidurl, $message);
-    /* in case of non-save cid links $httpurl should be replaced by a sort of
-       unsave link image */
+    /* in case of non-safe cid links $httpurl should be replaced by a sort of
+       unsafe link image */
     $httpurl = '';
 
     /**
@@ -1815,6 +1846,7 @@ function magicHTML($body, $id, $message, $mailbox = 'INBOX') {
             "embed",
             "title",
             "frameset",
+            "xmp",
             "xml"
             );
 
