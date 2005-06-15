@@ -56,7 +56,7 @@ function addressbook_init($showerr = true, $onlylocal = false) {
                             'owner' => $username,
                             'table' => $addrbook_table));
         if (!$r && $showerr) {
-            $abook_init_error.=_("Error initializing addressbook database.") . "<br />\n" . $abook->error;
+            $abook_init_error.=_("Error initializing addressbook database.") .' '. $abook->error;
         }
     } else {
         /* File */
@@ -91,8 +91,8 @@ function addressbook_init($showerr = true, $onlylocal = false) {
                                                     'detect_writeable' => false,
                                                     'writeable'=> $abook_global_file_writeable));
         if (!$r && $showerr) {
-            if ($abook_init_error!='') $abook_init_error.="<br />\n";
-            $abook_init_error.=_("Error initializing global addressbook.") . "<br />\n" . $abook->error;
+            if ($abook_init_error!='') $abook_init_error.="\n";
+            $abook_init_error.=_("Error initializing global addressbook.") . "\n" . $abook->error;
         }
     }
 
@@ -121,8 +121,8 @@ function addressbook_init($showerr = true, $onlylocal = false) {
                                        'listing' => $addrbook_global_listing,
                                        'table' => $addrbook_global_table));
         if (!$r && $showerr) {
-            if ($abook_init_error!='') $abook_init_error.="<br />\n";
-            $abook_init_error.=_("Error initializing global addressbook.") . "<br />\n" . $abook->error;
+            if ($abook_init_error!='') $abook_init_error.="\n";
+            $abook_init_error.=_("Error initializing global addressbook.") . "\n" . $abook->error;
     }
     }
 
@@ -134,9 +134,9 @@ function addressbook_init($showerr = true, $onlylocal = false) {
             if (is_array($param)) {
                 $r = $abook->add_backend('ldap_server', $param);
                 if (!$r && $showerr) {
-                        if ($abook_init_error!='') $abook_init_error.="<br />\n";
+                        if ($abook_init_error!='') $abook_init_error.="\n";
                         $abook_init_error.=sprintf(_("Error initializing LDAP server %s:") .
-                            "<br />\n", $param['host']);
+                            "\n", $param['host']);
                         $abook_init_error.= $abook->error;
                     }
                 }
@@ -148,6 +148,7 @@ function addressbook_init($showerr = true, $onlylocal = false) {
      * display address book init errors.
      */
     if ($abook_init_error!='' && $showerr) {
+        $abook_init_error = htmlspecialchars($abook_init_error);
         error_box($abook_init_error,$color);
     }
 
@@ -275,7 +276,7 @@ class AddressBook {
                 if (is_array($res)) {
                     $ret = array_merge($ret, $res);
                 } else {
-                    $this->error .= "<br />\n" . $backend->error;
+                    $this->error .= "\n" . $backend->error;
                     $failed++;
                 }
             }
@@ -291,7 +292,7 @@ class AddressBook {
 
             $ret = $this->backends[$bnum]->search($expression);
             if (!is_array($ret)) {
-                $this->error .= "<br />\n" . $this->backends[$bnum]->error;
+                $this->error .= "\n" . $this->backends[$bnum]->error;
                 $ret = FALSE;
             }
         }
