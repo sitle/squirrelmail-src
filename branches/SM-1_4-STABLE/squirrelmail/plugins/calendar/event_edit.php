@@ -29,8 +29,8 @@ require_once(SM_PATH . 'functions/html.php');
 
 
 /* get globals */
-$event_year = $event_month = $event_day = $event_hour = $event_minute =
-    $event_length = $event_priority = $year = $month = $day = $hour = $minute = null;
+unset($event_year, $event_month, $event_day, $event_hour, $event_minute,
+    $event_length, $event_priority, $year, $month, $day, $hour, $minute);
 if (isset($_POST['updated'])) {
     $updated = $_POST['updated'];
 }
