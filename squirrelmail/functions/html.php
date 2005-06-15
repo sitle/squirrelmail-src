@@ -83,7 +83,7 @@ function html_tag( $tag,                // Tag to output
         if ( $val <> '' ) {
             $ret .= ">$val</$tag>\n";
         } else {
-            $ret .= '>'. "\n";
+            $ret .= '>' . "\n";
         }
 
         return( $ret );
@@ -93,13 +93,14 @@ function html_tag( $tag,                // Tag to output
     /* especially usefull when $url = $PHP_SELF */
     function set_url_var($url, $var, $val=0, $link=true) {
         $k = '';
+        $ret = '';
         $pat_a = array (
                        '/.+(\\&'.$var.')=(.*)\\&/AU',   /* in the middle */
                        '/.+\\?('.$var.')=(.*\\&).+/AU', /* at front, more follow */
                        '/.+(\\?'.$var.')=(.*)$/AU',     /* at front and only var */
                        '/.+(\\&'.$var.')=(.*)$/AU'      /* at the end */
                      );
-        preg_replace('/&amp;/','&',$url);
+	preg_replace('/&amp;/','&',$url);
         switch (true) {
             case (preg_match($pat_a[0],$url,$regs)):
                 $k = $regs[1];
@@ -131,9 +132,9 @@ function html_tag( $tag,                // Tag to output
         if ($k) {
             if ($val) {
                 $rpl = "$k=$val";
-                if ($link) {
-                    $rpl = preg_replace('/&/','&amp;',$rpl);
-                }
+		if ($link) {
+		    $rpl = preg_replace('/&/','&amp;',$rpl);
+		}
             } else {
                 $rpl = '';
             }

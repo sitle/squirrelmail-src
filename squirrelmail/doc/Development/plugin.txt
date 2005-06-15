@@ -177,7 +177,6 @@ version is not listed, files are included from v.1.3.2.):
          7.3.2. functions/prefs.php (from 1.5.1)
       7.4. functions/constants.php
       7.5. do_hook('loading_prefs')
-         7.5.1. files loaded by plugins that use 'loading_prefs'
    8. functions/page_header.php
       8.1. functions/strings.php
       8.2. functions/html.php
@@ -186,13 +185,9 @@ version is not listed, files are included from v.1.3.2.):
       8.4. functions/global.php
    9. functions/prefs.php
       9.1. functions/global.php
-      9.2. $prefs_backend (only in 1.4.3 and 1.5.0)
-           do_hook_function('prefs_backend') (since 1.4.4 and 1.5.1)
+      9.2. $prefs_backend (from 1.4.3rc1 and 1.5.0)
            functions/db_prefs.php
            functions/file_prefs.php
-         9.2.1. functions/display_messages.php
-                (loaded only by file_prefs.php)
-         9.2.2. files loaded by plugin that uses 'prefs_backend'
 
 Hook Types:  Parameters and Return Values
 -----------------------------------------
@@ -284,16 +279,14 @@ but may be out of date soon thereafter.  You never know.  ;-)
   get_pref                       functions/file_prefs.php        hook_func
   special_mailbox                functions/imap_mailbox.php      hook_func
 % rename_or_delete_folder        functions/imap_mailbox.php      hook_func
+  msg_envelope                   functions/mailbox_display.php   do_hook
   mailbox_index_before           functions/mailbox_display.php   do_hook
   mailbox_form_before            functions/mailbox_display.php   do_hook
   mailbox_index_after            functions/mailbox_display.php   do_hook
   check_handleAsSent_result      functions/mailbox_display.php   do_hook
   subject_link                   functions/mailbox_display.php   concat_hook
-  mailbox_display_buttons        functions/mailbox_display.php   do_hook
-  mailbox_display_button_action  functions/mailbox_display.php   hook_func
   message_body                   functions/mime.php              do_hook
 ^ attachment $type0/$type1       functions/mime.php              do_hook
-  attachments_bottom             functions/mime.php              hook_func
   decode_body                    functions/mime.php              hook_func
   generic_header                 functions/page_header.php       do_hook
   menuline                       functions/page_header.php       do_hook
@@ -316,6 +309,7 @@ but may be out of date soon thereafter.  You never know.  ;-)
   login_top                      src/login.php                   do_hook
   login_form                     src/login.php                   do_hook
   login_bottom                   src/login.php                   do_hook
+  move_before_move               src/move_messages.php           do_hook
 * optpage_set_loadinfo           src/options.php                 do_hook
 * optpage_loadhook_personal      src/options.php                 do_hook
 * optpage_loadhook_display       src/options.php                 do_hook
@@ -346,11 +340,13 @@ but may be out of date soon thereafter.  You never know.  ;-)
 & options_identities_buttons     src/options_identities.php      concat_hook
   message_body                   src/printer_friendly_bottom.php do_hook
   read_body_header               src/read_body.php               do_hook
-  read_body_menu_top             src/read_body.php               hook_func
+  read_body_menu_top             src/read_body.php               concat_hook
   read_body_menu_bottom          src/read_body.php               do_hook
   read_body_header_right         src/read_body.php               do_hook
+  html_top                       src/read_body.php               do_hook
   read_body_top                  src/read_body.php               do_hook
   read_body_bottom               src/read_body.php               do_hook
+  html_bottom                    src/read_body.php               do_hook
   login_before                   src/redirect.php                do_hook
   login_verified                 src/redirect.php                do_hook
   generic_header                 src/right_main.php              do_hook
@@ -477,14 +473,9 @@ To set up links for actions, you assign them like this:
 
   $Args[1]['<plugin_name>']['href'] = 'URL to link to';
   $Args[1]['<plugin_name>']['text'] = _("What to display");
-  $Args[1]['<plugin_name>']['extra'] = 'extra stuff, such as an <img ...> tag';
 
 Note: _("What to display") is explained in the section about
 internationalization.
-
-You can leave the 'text' empty and put an image tag in 'extra' to show an
-image-only link for the attachment, or do the opposite (leave 'extra' empty)
-to display a text-only link.
 
 It's also possible to specify a hook as "attachment type0/*",
 for example "attachment text/*". This hook will be executed whenever there's
@@ -647,9 +638,6 @@ for you.  This is the preferred method of building options lists going forward.
                         setting in the user's preferences
          caption        The text that prefaces this setting on the preferences
                         page
-         trailing_text  Text that follows a text input or select list input on
-                        the preferences page (useful for indicating units,
-                        meanings of special values, etc.)
          type           The type of INPUT element, which should be one of:
                            SMOPT_TYPE_STRING     String/text input
                            SMOPT_TYPE_STRLIST    Select list input
@@ -697,9 +685,6 @@ for you.  This is the preferred method of building options lists going forward.
                         or other code to the user input
          post_script    You may specify some script (usually Javascript) that
                         will be placed after (outside of) the INPUT tag.
-         htmlencoded    disables html sanitizing. WARNING - don't use it, if user
-                        input is possible in option or use own sanitizing functions.
-                        Currently works only with SMOPT_TYPE_STRLIST.
 
       Note that you do not have to create a whole new section on the options
       page if you merely want to add a simple input item or two to an options
@@ -1195,41 +1180,6 @@ files.
       same as the domain you bound in step 2 above and everything else works
       automatically.  In SquirrelMail, go to Options -> Display Preferences
       and change your Language setting to see the translations in action!
-
-
-
-Documenting the Code (Optional)
--------------------------------
-
-If you wish, you can use phpdoc (Javadoc-style) comments, when documenting your
-code.
-
-If you follow the standards that are followed between SquirrelMail core &
-plugin developers, the resulted documentation can be included with the rest of
-the SquirrelMail code & API documentation. Specifically, in the page-level
-docblock, declare the package to be 'plugins', and the subpackage to be the
-name of your plugin. For instance:
-
-/**
- * demo.php
- *
- * Copyright (c) 2005 My Name <my-email-address>
- * Licensed under the GNU GPL. For full terms see the file COPYING.
- *
- * @package plugins
- * @subpackage demo
- */
-
-The rest is up to you. Try to follow some common sense and document what is
-really needed. Documenting the code properly can be a big help not only to
-yourself, but to those who will take a look at your code, fix the bugs and even
-improve it, in the true open-source spirit that SquirrelMail was built upon.
-
-For more information about phpdocumentor and how to write proper-tagged
-comments, you are directed at:
-
-http://phpdocu.sourceforge.net/
-
 
 
 PLUGIN STANDARDS AND REQUIREMENTS

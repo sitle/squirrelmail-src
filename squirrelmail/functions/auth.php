@@ -42,13 +42,17 @@ function is_logged_in() {
     if ( sqsession_is_registered('user_is_logged_in') ) {
         return;
     } else {
-        global $PHP_SELF, $session_expired_post,
+        global $PHP_SELF, $HTTP_POST_VARS, $_POST, $session_expired_post,
                $session_expired_location, $squirrelmail_language;
 
         //  First we store some information in the new session to prevent
         //  information-loss.
         //
-        $session_expired_post = $_POST;
+        if ( !check_php_version(4,1) ) {
+            $session_expired_post = $HTTP_POST_VARS;
+        } else {
+            $session_expired_post = $_POST;
+        }
         $session_expired_location = $PHP_SELF;
         if (!sqsession_is_registered('session_expired_post')) {
             sqsession_register($session_expired_post,'session_expired_post');
@@ -57,7 +61,7 @@ function is_logged_in() {
             sqsession_register($session_expired_location,'session_expired_location');
         }
 
-        // signout page will deal with users who aren't logged
+        // signout page will deal with users who aren't logged 
         // in on its own; don't show error here
         //
         if (strpos($PHP_SELF, 'signout.php') !== FALSE) {
@@ -224,29 +228,6 @@ function hmac_md5($data, $key='') {
     /* Heh, let's get recursive. */
     $hmac=hmac_md5($k_opad . pack("H*",md5($k_ipad . $data)) );
     return $hmac;
-}
-
-/**
- * Fillin user and password based on SMTP auth settings.
- *
- * @param string $user Reference to SMTP username
- * @param string $pass Reference to SMTP password (unencrypted)
- */
-function get_smtp_user(&$user, &$pass) {
-    global $username, $smtp_auth_mech,
-           $smtp_sitewide_user, $smtp_sitewide_pass;
-
-    if ($smtp_auth_mech == 'none') {
-        $user = '';
-        $pass = '';
-    } elseif ( isset($smtp_sitewide_user) && isset($smtp_sitewide_pass) ) {
-        $user = $smtp_sitewide_user;
-        $pass = $smtp_sitewide_pass;
-    } else {
-        global $key, $onetimepad;
-        $user = $username;
-        $pass = OneTimePadDecrypt($key, $onetimepad);
-    }
 }
 
 ?>

@@ -19,12 +19,12 @@
 require_once(SM_PATH . 'functions/plugin.php');
 
 /**
- * Find out where SquirrelMail lives and try to be smart about it.
- * The only problem would be when SquirrelMail lives in directories
+ * Find out where squirrelmail lives and try to be smart about it.
+ * The only problem would be when squirrelmail lives in directories
  * called "src", "functions", or "plugins", but people who do that need
  * to be beaten with a steel pipe anyway.
  *
- * @return string the base uri of SquirrelMail installation.
+ * @return string the base uri of squirrelmail installation.
  */
 function sqm_baseuri(){
     global $base_uri, $PHP_SELF;
@@ -46,7 +46,7 @@ function error_message($message, $mailbox, $sort, $startMessage, $color) {
               '<tr><td align="center">'.
               '<a href="'.sqm_baseuri()."src/right_main.php?sort=$sort&amp;startMessage=$startMessage&amp;mailbox=$urlMailbox\">".
               sprintf (_("Click here to return to %s"),
-                  strtoupper($mailbox) == 'INBOX' ? _("INBOX") : imap_utf7_decode_local($mailbox)).
+                  imap_utf7_decode_local($mailbox)).
               '</a></td></tr>';
     error_box($string, $color);
 }
@@ -106,7 +106,7 @@ function logout_error( $errString, $errTitle = '' ) {
              "\"$width_and_height /><br />\n";
     }
     echo ( $hide_sm_attributions ? '' :
-            '<small>' .  _("SquirrelMail Webmail Application") . '<br />'.
+            '<small>' . sprintf (_("SquirrelMail version %s"), $version) . '<br />'.
             _("By the SquirrelMail Project Team") . "<br /></small>\n" ).
          '<table cellspacing="1" cellpadding="0" bgcolor="'.$color[1].'" width="70%">'.
          '<tr><td>'.

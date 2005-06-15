@@ -63,6 +63,7 @@ set_up_language($squirrelmail_language, true, true);
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
+   <meta name="robots" content="noindex,nofollow">
 <?php
     if ($theme_css != '') {
 ?>
@@ -70,7 +71,6 @@ set_up_language($squirrelmail_language, true, true);
 <?php
     }
 ?>
-   <meta name="robots" content="noindex,nofollow">
    <title><?php echo $org_title . ' - ' . _("Signout"); ?></title>
 </head>
 <body text="<?php echo $color[8]; ?>" bgcolor="<?php echo $color[4]; ?>"
@@ -83,19 +83,18 @@ echo
 html_tag( 'table',
     html_tag( 'tr',
          html_tag( 'th', _("Sign Out"), 'center' ) ,
-    '', $color[0] ) .
+    '', $color[0], 'width="100%"' ) .
     $plugin_message .
     html_tag( 'tr',
          html_tag( 'td', _("You have been successfully signed out.") .
              '<br /><a href="login.php" target="' . $frame_top . '">' .
              _("Click here to log back in.") . '</a><br />' ,
          'center' ) ,
-    '', $color[4] ) .
+    '', $color[4], 'width="100%"' ) .
     html_tag( 'tr',
          html_tag( 'td', '<br />', 'center' ) ,
-    '', $color[0] ) ,
-'center', $color[4], 'width="50%" cellpadding="2" cellspacing="0" border="0"' )
-
+    '', $color[0], 'width="100%"' ) ,
+'center', $color[4], 'width="50%" cols="1" cellpadding="2" cellspacing="0" border="0"' )
 ?>
 </body>
 </html>

@@ -39,7 +39,7 @@ For MySQL you would normally do something like:
  # mysqladmin create squirrelmail
 
  (from the mysql client)
- mysql> GRANT select,insert,update,delete ON squirrelmail.*
+ mysql> GRANT select,insert,update,delete ON squirrelmail.* 
               TO squirreluser@localhost IDENTIFIED BY 'sqpassword';
 
 The table structure should be similar to this (for MySQL):
@@ -82,6 +82,7 @@ database.
 Global address book uses same table format as the one used for personal
 address book. You can even use same table, if you don't have user named
 'global'.
+
 
 Configuring preferences in database
 -----------------------------------

@@ -7,25 +7,18 @@
  *
  * Delivery backend for the Deliver class.
  *
- * @version $Id$
- * @package squirrelmail
+ * $Id$
  */
-
-/** This of course depends upon Deliver.. */
 
 require_once(SM_PATH . 'class/deliver/Deliver.class.php');
 
-/**
- * This class is incomplete and entirely undocumented.
- * @package squirrelmail
- */
 class Deliver_IMAP extends Deliver {
 
     function getBcc() {
        return true;
     }
-
-    /* to do: finishing the imap-class so the initStream function can call the
+    
+    /* to do: finishing the imap-class so the initStream function can call the 
        imap-class */
 }
 

@@ -50,7 +50,7 @@ $org_logo_height = '111';
  * This is the web page title that appears at the top of the browser window.
  * @global string $org_title
  */
-$org_title = "SquirrelMail";
+$org_title = "SquirrelMail $version";
 
 /**
  * Signout page
@@ -80,7 +80,7 @@ $frame_top = '_top';
  *
  * Here you can set name of the link displayed on the right side of main page.
  *
- * Link will be displayed only if you have $hide_sm_attributions
+ * Link will be displayed only if you have $hide_sm_attributions 
  * option set to true.
  * @global string $provider_name
  */
@@ -90,12 +90,12 @@ $provider_name = 'SquirrelMail';
  * Provider URI
  *
  * Here you can set URL of the link displayed on the right side of main page.
- * When empty, this refers to the SquirrelMail About page.
- * Link will be displayed only if you have $hide_sm_attributions
+ *
+ * Link will be displayed only if you have $hide_sm_attributions 
  * option set to true.
  * @global string $provider_uri
  */
-$provider_uri = '';
+$provider_uri = 'http://www.squirrelmail.org/';
 
 /*** Server Settings ***/
 /**
@@ -125,7 +125,7 @@ $invert_time = false;
  *
  * What should be used when sending email.
  * If it is set to false, SquirrelMail will use SMTP server settings.
- * If it is set to true, SquirrelMail will use program defined in
+ * If it is set to true, SquirrelMail will use program defined in 
  * $sendmail_path
  * @global bool $useSendmail
  */
@@ -165,12 +165,12 @@ $encode_header_key = '';
  * Path to Sendmail
  *
  * Program that should be used when sending email. SquirrelMail expects that
- * this program will follow options used by original sendmail
+ * this program will follow options used by original sendmail 
  * (http://www.sendmail.org).
  * @global string $sendmail_path
  */
 $sendmail_path = '/usr/sbin/sendmail';
-
+    
 /**
  * IMAP server address
  *
@@ -198,14 +198,12 @@ $imapPort = 143;
  *   uw
  *   macosx
  *   hmailserver
- *   mercury32
- *   dovecot
  *   other
  *
  * Please note that this changes only some of server settings.
  *
  * In order to set everything correctly, you need to adjust several
- * SquirrelMail options. These options are listed in doc/presets.txt
+ * squirrelmail options. These options are listed in doc/presets.txt
  * @global string $imap_server_type
  */
 $imap_server_type = 'other';
@@ -367,7 +365,7 @@ $auto_create_special = true;
  * List Special Folders First Control
  *
  * Whether or not to list the special folders first (true/false).
- * @global bool $list_special_folders_first
+ * @global bool $list_special_folders_first 
  */
 $list_special_folders_first = true;
 
@@ -389,7 +387,7 @@ $default_sub_of_inbox = true;
  * option during folder creation. The option toggles which type of
  * folder it should be.
  *
- * If this option confuses you, just set it to 'true'. You can not hurt
+ * If this option confuses you, just set it to 'true'. You can not hurt 
  * anything if it's true, but some servers will respond weird if it's
  * false. (Cyrus works fine whether it's true OR false).
  * @global bool $show_contain_subfolders_option
@@ -400,7 +398,7 @@ $show_contain_subfolders_option = false;
  * These next two options set the defaults for the way that the
  * users see their folder list.
  *   $default_unseen_notify
- *       Specifies whether or not the users will see the number of
+ *       Specifies whether or not the users will see the number of 
  *       unseen in each folder by default and also which folders to
  *       do this to. Valid values are: 1=none, 2=inbox, 3=all.
  *   $default_unseen_type
@@ -452,7 +450,7 @@ $data_dir = SM_PATH . 'data/';
  *      list files in this directory. Confidential data might be laying
  *      around there.
  *    + Since the webserver is not able to list the files in the content
- *       is also impossible for the webserver to delete files lying around
+ *       is also impossible for the webserver to delete files lying around 
  *       there for too long.
  *    + It should probably be another directory than data_dir.
  * @global string $attachment_dir
@@ -461,12 +459,12 @@ $attachment_dir = $data_dir;
 
 /**
  * Hash level used for data directory.
- *
- * This option allows spliting file based SquirrelMail user
+ * 
+ * This option allows spliting file based squirrelmail user
  * data storage directory into several subfolders. Number from
  * 0 to 4 allows allows having up to four subfolder levels.
  *
- * Hashing should speed up directory access if you have big number
+ * Hashing should speed up directory access if you have big number 
  * of users (500 and more).
  * @global integer $dir_hash_level
  */
@@ -503,7 +501,7 @@ $default_use_priority = true;
 /**
  * SquirrelMail Attributions Control
  *
- * This option disables display of "created by SquirrelMail developers"
+ * This option disables display of "created by squirrelmail developers" 
  * strings and provider link
  * @global bool $hide_sm_attributions
  */
@@ -551,7 +549,7 @@ $hide_auth_header = false;
  * Server Side Threading Control
  *
  * If you want to enable server side thread sorting options
- * Your IMAP server must support the THREAD extension for
+ * Your IMAP server must support the THREAD extension for 
  * this to work.
  * @global bool $allow_thread_sort
  */
@@ -571,21 +569,19 @@ $allow_server_sort = false;
  * IMAP Charset Use Control
  *
  * This option allows you to choose if SM uses charset search
- * Your imap server should support SEARCH CHARSET command for
+ * Your imap server should support SEARCH CHARSET command for 
  * this to work.
  * @global bool $allow_charset_search
  */
 $allow_charset_search = true;
 
 /**
- * Search functions control
+ * IMAP UID control
  *
- * This option allows you to control the use of advanced search form.
- * Set to 0 to enable basic search only, 1 to enable advanced search only
- * or 2 to enable both.
- * @global integer $allow_advanced_search
+ * This option allows you to enable unique identifier (UID) support.
+ * @global bool $uid_support
  */
-$allow_advanced_search = 0;
+$uid_support              = true;
 
 /**
  * PHP session name.
@@ -605,9 +601,9 @@ $session_name = 'SQMSESSID';
  *
  * To add a new theme to the options that users can choose from, just
  * add a new number to the array at the bottom, and follow the pattern.
- *
+ * 
  * $theme_default sets theme that will be used by default
- * $theme_css sets stylesheet (from theme/css directory) that will be
+ * $theme_css sets stylesheet (from theme/css directory) that will be 
  * used by default.
  * @global integer $theme_default
  * @global string $theme_css
@@ -733,15 +729,6 @@ $theme[36]['NAME'] = 'Redmond';
 $theme[37]['PATH'] = SM_PATH . 'themes/netstyle_theme.php';
 $theme[37]['NAME'] = 'Net Style';
 
-$theme[38]['PATH'] = SM_PATH . 'themes/silver_steel_theme.php';
-$theme[38]['NAME'] = 'Silver Steel';
-
-$theme[39]['PATH'] = SM_PATH . 'themes/simple_green_theme.php';
-$theme[39]['NAME'] = 'Simple Green';
-
-$theme[40]['PATH'] = SM_PATH . 'themes/wood_theme.php';
-$theme[40]['NAME'] = 'Wood';
-
 /**
  * LDAP server(s)
  *   Array of arrays with LDAP server parameters. See
@@ -753,7 +740,7 @@ $theme[40]['NAME'] = 'Wood';
  *       'host' => 'memberdir.netscape.com',
  *       'name' => 'Netcenter Member Directory',
  *       'base' => 'ou=member_directory,o=netcenter.com'
- *   );
+ *   ); 
  */
 // Add your ldap server options here
 
@@ -769,31 +756,11 @@ $theme[40]['NAME'] = 'Wood';
  */
 $default_use_javascript_addr_book = false;
 
-/**
- * Shared filebased address book
- * @global string $abook_global_file
- * @since 1.5.1 and 1.4.4
- */
-$abook_global_file = '';
-
-/**
- * Writing into shared address book control
- * @global bool $abook_global_file_writeable
- * @since 1.5.1 and 1.4.4
- */
-$abook_global_file_writeable = false;
-
-/**
- * Listing of shared address book control
- * @global bool $abook_global_file_listing
- * @since 1.5.1
- */
-$abook_global_file_listing = true;
 
 /**
  * MOTD
  *
- * This is a message that is displayed immediately after a user logs in.
+ * This is a message that is displayed immediately after a user logs in. 
  * @global string $motd
  */
 $motd = "";
@@ -804,15 +771,15 @@ $motd = "";
  * the plugin directory name relative to the /plugins/ directory.
  * For instance, for the 'sqclock' plugin, you'd put a line like
  * the following.
- *    $plugins[] = 'sqclock';
- *    $plugins[] = 'attachment_common';
+ *    $plugins[0] = 'sqclock';
+ *    $plugins[1] = 'attachment_common';
  */
 // Add list of enabled plugins here
 
 
 /*** Database ***/
 /**
- * Read doc/database.txt in order to get more information
+ * Read doc/database.txt in order to get more information 
  * about these settings.
  */
 /**
@@ -836,40 +803,14 @@ $prefs_key_field = 'prefkey';
 $prefs_user_field = 'user';
 $prefs_val_field = 'prefval';
 
-/*** Global sql database options ***/
-/**
- * DSN of global address book database
- * @global string $addrbook_global_dsn
- * @since 1.5.1
- */
-$addrbook_global_dsn = '';
-/**
- * Table used for global database address book
- * @global string $addrbook_global_table
- * @since 1.5.1
- */
-$addrbook_global_table = 'global_abook';
-/**
- * Control writing into global database address book
- * @global boolean $addrbook_global_writeable
- * @since 1.5.1
- */
-$addrbook_global_writeable = false;
-/**
- * Control listing of global database address book
- * @global boolean $addrbook_global_listing
- * @since 1.5.1
- */
-$addrbook_global_listing = false;
-
 /*** Language settings ***/
 /**
  * Default language
  *
- *   This is the default language. It is used as a last resort
- *   if SquirrelMail can't figure out which language to display.
- *   Language names usually consist of language code, undercore
- *   symbol and country code
+ * This is the default language. It is used as a last resort
+ * if SquirrelMail can't figure out which language to display.
+ * Language names usually consist of language code, undercore 
+ * symbol and country code
  * @global string $squirrelmail_default_language
  */
 $squirrelmail_default_language = 'en_US';
@@ -877,48 +818,17 @@ $squirrelmail_default_language = 'en_US';
 /**
  * Default Charset
  *
- * This option controls what character set is used when sending
- * mail and when sending HTML to the browser. Option works only
- * with US English (en_US) translation. Other translations use
- * charsets that are set in functions/i18n.php.
+ * This option controls what character set is used when sending mail
+ * and when sending HTML to the browser. Do not set this to US-ASCII,
+ * use ISO-8859-1 instead.
+ *
+ * This option is active only when default language is en_US. In other
+ * cases SquirrelMail uses charset that depends on default language.
+ * See $squirrelmail_default_language
  *
  * @global string $default_charset
  */
 $default_charset = 'iso-8859-1';
-
-/**
- * Available Languages
- *
- * This option controls number of languages available to end user in
- * language selection preferences. You can use space separated list
- * of translations installed in locale/ directory or special keys
- * 'all' (all languages are available) and 'none' (language selection
- * is disabled, interface is set to $squirrelmail_default_language
- * @global string $available_languages
- * @since 1.5.0
- */
-$available_languages   = 'all';
-
-/**
- * Alternative Language Names Control
- *
- * This options allows displaying native language names in language
- * selection box.
- * @global bool $show_alternative_names
- * @since 1.5.0
- */
-$show_alternative_names   = false;
-
-/**
- * Aggressive Decoding Control
- *
- * This option enables reading of Eastern multibyte encodings.
- * Functions that provide this support are very cpu and memory intensive.
- * Don't enable this option unless you really need it.
- * @global bool $aggressive_decoding
- * @since 1.5.1
- */
-$aggressive_decoding = false;
 
 /**
  * Lossy Encoding Control
@@ -927,73 +837,9 @@ $aggressive_decoding = false;
  * all symbols used in original charset. Symbols unsupported by output charset
  * will be replaced with question marks.
  * @global bool $lossy_encoding
- * @since 1.5.1
+ * @since 1.4.4 and 1.5.1
  */
 $lossy_encoding = false;
-
-/*** Tweaks ***/
-/**
- * Advanced DHTML tree control
- *
- * Use experimental DHTML folder listing
- * @global bool $advanced_tree
- * @since 1.5.0
- */
-$advanced_tree = false;
-
-/**
- * Iframe sandbox code control
- *
- * Use iframe to render html emails
- * (temp option used during debuging of new code)
- * @global bool $use_iframe
- * @since 1.5.1
- */
-$use_iframe = false;
-
-/**
- * Message Icons control
- *
- * Use icons for message and folder markers
- * @global bool $use_icons
- * @since 1.5.1
- */
-$use_icons = false;
-
-/**
- * PHP recode functions control
- *
- * Use experimental code with php recode functions when reading messages with
- * different encoding. This code is faster that original SM functions,
- * but it require php with recode support.
- *
- * Don't enable this option if you are not sure about availability of
- * recode support.
- * @global bool $use_php_recode
- * @since 1.5.0
- */
-$use_php_recode = false;
-
-/**
- * PHP iconv functions control
- *
- * Use experimental code with php iconv functions when reading messages with
- * different encoding. This code is faster that original SM functions,
- * but it require php with iconv support and works only with some translations.
- *
- * Don't enable this option if you are not sure about availability of
- * iconv support.
- * @global bool $use_php_iconv
- * @since 1.5.0
- */
-$use_php_iconv = false;
-
-/**
- * Controls remote configuration checks
- * @global boolean $allow_remote_configtest
- * @since 1.5.1
- */
-$allow_remote_configtest = false;
 
 /**
  * Subscribe Listing Control
@@ -1002,7 +848,7 @@ $allow_remote_configtest = false;
  * generate the folder subscribe listbox (this can take a long time
  * when you have a lot of folders).  Instead, a textbox will be
  * displayed allowing users to enter a specific folder name to subscribe to
- *
+ * 
  * This option can't be changed by conf.pl
  * @global bool $no_list_for_subscribe
  */
@@ -1012,7 +858,7 @@ $no_list_for_subscribe = false;
  * Color in config control
  *
  * This option is used only by conf.pl script to generate configuration
- * menu with some colors and is provided here only as reference.
+ * menu with some colors and is provided here only as reference. 
  * @global integer $config_use_color
  */
 $config_use_color = 2;

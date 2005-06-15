@@ -27,12 +27,7 @@
  *
  * @version $Id$
  * @package squirrelmail
- * @subpackage prefs
- * @since 1.1.3
  */
-
-/** @ignore */
-if (!defined('SM_PATH')) define('SM_PATH','../');
 
 /** Unknown database */
 define('SMDB_UNKNOWN', 0);
@@ -91,61 +86,22 @@ function cachePrefValues($username) {
 }
 
 /**
- * Class used to handle connections to prefs database and operations with preferences
+ * Completely undocumented class - someone document it!
  * @package squirrelmail
- * @subpackage prefs
- * @since 1.1.3
  */
 class dbPrefs {
-    /**
-     * Table used to store preferences
-     * @var string
-     */
     var $table = 'userprefs';
-    /**
-     * Field used to store owner of preference
-     * @var string
-     */
     var $user_field = 'user';
-    /**
-     * Field used to store preference name
-     * @var string
-     */
     var $key_field = 'prefkey';
-    /**
-     * Field used to store preference value
-     * @var string
-     */
     var $val_field = 'prefval';
 
-    /**
-     * Database connection object
-     * @var object
-     */
     var $dbh   = NULL;
-    /**
-     * Error messages
-     * @var string
-     */
     var $error = NULL;
-    /**
-     * Database type (SMDB_* constants)
-     * Is used in setKey().
-     * @var integer
-     */
     var $db_type = SMDB_UNKNOWN;
 
-    /**
-     * Default preferences
-     * @var array
-     */
     var $default = Array('theme_default' => 0,
                          'show_html_default' => '0');
 
-    /**
-     * initialize DB connection object
-     * @return boolean true, if object is initialized
-     */
     function open() {
         global $prefs_dsn, $prefs_table;
         global $prefs_user_field, $prefs_key_field, $prefs_val_field;
@@ -183,10 +139,6 @@ class dbPrefs {
         return true;
     }
 
-    /**
-     * Function used to handle database connection errors
-     * @param object PEAR Error object 
-     */
     function failQuery($res = NULL) {
         if($res == NULL) {
             printf(_("Preference database error (%s). Exiting abnormally"),
@@ -198,13 +150,7 @@ class dbPrefs {
         exit;
     }
 
-    /**
-     * Get user's prefs setting
-     * @param string $user user name
-     * @param string $key preference name
-     * @param mixed $default (since 1.2.5) default value
-     * @return mixed preference value
-     */
+
     function getKey($user, $key, $default = '') {
         global $prefs_cache;
 
@@ -221,12 +167,6 @@ class dbPrefs {
         }
     }
 
-    /**
-     * Delete user's prefs setting
-     * @param string $user user name 
-     * @param string $key preference name
-     * @return boolean
-     */
     function deleteKey($user, $key) {
         global $prefs_cache;
 
@@ -250,13 +190,6 @@ class dbPrefs {
         return true;
     }
 
-    /**
-     * Set user's preference
-     * @param string $user user name
-     * @param string $key preference name
-     * @param mixed $value preference value
-     * @return boolean
-     */
     function setKey($user, $key, $value) {
         if (!$this->open()) {
             return false;
@@ -331,11 +264,6 @@ class dbPrefs {
         return true;
     }
 
-    /**
-     * Fill preference cache array
-     * @param string $user user name
-     * @since 1.2.3
-     */
     function fillPrefsCache($user) {
         global $prefs_cache;
 
