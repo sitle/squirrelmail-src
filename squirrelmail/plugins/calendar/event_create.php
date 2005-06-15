@@ -28,7 +28,8 @@ require_once(SM_PATH . 'include/load_prefs.php');
 require_once(SM_PATH . 'functions/html.php');
 
 /* get globals */
-
+$year = $month = $day = $hour = $event_hour = $event_minute =
+    $event_length = $event_priority = null;
 if (isset($_POST['year']) && is_numeric($_POST['year'])) {
     $year = $_POST['year'];
 }

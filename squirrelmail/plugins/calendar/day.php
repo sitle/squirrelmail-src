@@ -29,6 +29,7 @@ require_once(SM_PATH . 'include/load_prefs.php');
 require_once(SM_PATH . 'functions/html.php');
 
 /* get globals */
+$year = $month = $day = null;
 if (isset($_GET['year']) && is_numeric($_GET['year'])) {
     $year = $_GET['year'];
 }
