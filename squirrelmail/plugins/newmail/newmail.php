@@ -22,6 +22,7 @@ require_once(SM_PATH . 'include/load_prefs.php');
 require_once(SM_PATH . 'functions/page_header.php');
 
 sqGetGlobalVar('numnew', $numnew, SQ_GET);
+$numnew = (int)$numnew;
 
    displayHtmlHeader( _("New Mail"), '', FALSE );
 

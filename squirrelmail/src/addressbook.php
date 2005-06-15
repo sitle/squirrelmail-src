@@ -282,7 +282,7 @@ if(sqgetGlobalVar('REQUEST_METHOD', $req_method, SQ_SERVER) && $req_method == 'P
                                  html_tag( 'tr',
                                      html_tag( 'td',
                                                "\n". '<strong><font color="' . $color[2] .
-                                               '">' . _("ERROR") . ': ' . $abook->error . '</font></strong>' ."\n",
+                                               '">' . _("ERROR") . ': ' . htmlspecialchars($abook->error) . '</font></strong>' ."\n",
                                                'center' )
                                            ),
                                        'center', '', 'width="100%"' );
@@ -336,7 +336,7 @@ if (!empty($formerror)) {
             html_tag( 'tr',
                 html_tag( 'td',
                     "\n". '<br /><strong><font color="' . $color[2] .
-                    '">' . _("ERROR") . ': ' . $formerror . '</font></strong>' ."\n",
+                    '">' . _("ERROR") . ': ' . htmlspecialchars($formerror) . '</font></strong>' ."\n",
                     'center' )
                 ),
             'center', '', 'width="100%"' );
@@ -348,6 +348,7 @@ if ($showaddrlist) {
     /* Get and sort address list */
     $alist = $abook->list_addr();
     if(!is_array($alist)) {
+        $abook_error = htmlspecialchars($abook_error);
         plain_error_message($abook->error, $color);
         exit;
     }

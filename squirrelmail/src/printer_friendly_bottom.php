@@ -33,7 +33,8 @@ sqgetGlobalVar('onetimepad', $onetimepad, SQ_SESSION);
 sqgetGlobalVar('passed_id', $passed_id, SQ_GET);
 sqgetGlobalVar('mailbox', $mailbox, SQ_GET);
 
-if (! sqgetGlobalVar('passed_ent_id', $passed_ent_id, SQ_GET) ) {
+if (! sqgetGlobalVar('passed_ent_id', $passed_ent_id, SQ_GET) ||
+    ! preg_match('/^\d+(\.\d+)*$/', $passed_ent_id) ) {
     $passed_ent_id = '';
 } 
 /* end globals */
