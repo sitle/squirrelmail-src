@@ -17,14 +17,14 @@
  * SquirrelMail version number -- DO NOT CHANGE
  */
 global $version;
-$version = '1.4.5 [CVS]';
+$version = '1.4.5-rc1';
 
 /**
  * SquirrelMail internal version number -- DO NOT CHANGE
  * $sm_internal_version = array (release, major, minor)
  */
 global $SQM_INTERNAL_VERSION;
-$SQM_INTERNAL_VERSION = array(1,4,4);
+$SQM_INTERNAL_VERSION = array(1,4,5);
 
 /**
  * There can be a circular issue with includes, where the $version string is
