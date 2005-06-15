@@ -1,7 +1,7 @@
 /*****************************************************************
- * Release Notes: SquirrelMail 1.4.5 Release Candidate 1         *
- * The "" Release                                                *
- * 15 June 2005                                                  *
+ * Release Notes: SquirrelMail 1.4.4                             *
+ * The "Did I Leave The Gas On?" Release                         *
+ *                                                               *
  *****************************************************************/
 
 In this edition of SquirrelMail Release Notes:
@@ -13,46 +13,49 @@ In this edition of SquirrelMail Release Notes:
    * Reporting my favorite SquirrelMail 1.4 bug
 
 
-This is not a stable release
-============================
+All about this Release!
+=======================
 
-This is a *Release Candidate*, which menas it's the final step before a
-proper stable release. That means that this is _not_ an official, stable,
-supported SquirrelMail release. However, we're pretty confident that it's
-ok, that's why we put this one out for some final testing before we call
-it "stable". If you encounter anything, report it swiftly so it can be
-fixed in time.
+This is the fifth release of the stable 1.4.x series. It fixes many
+bugs discovered since the last release, separates out the translations
+to a separate package, greatly improves charset decoding and fixes
+some different security issues.
 
-
-All about this release
-======================
-
-The upcoming 1.4.5 release is a maintentance release, featuring:
-- Security fixes (see below)
-- A lot of bugfixes
-- Stability and interoperability enhancements
-
-
-Security Issues
-===============
-
-A couple of different Cross Site Scripting issues were discovered
-and fixed in this release. Thanks go to Martijn Brinkers who helped
-us a great deal in uncovering these.
+See the Major Updates section of this file for more about the 
+1.4.x stable series.  For changes in this release, please refer to
+the ChangeLog.
 
 
 Locales / Translations / Charsets
 =================================
 
-Since the release of 1.4.4, the the translations for SquirrelMail are
-no longer part of the main package but have to be downloaded separately;
-either in one large file or an individual language. You can find these
+From this release on, the translations for SquirrelMail are no longer
+part of the main package but have to be downloaded separately; either
+in one large file or an individual language. You can find these
 packages through our homepage. They also contain instructions on how
 to install.
 
-That release also introduced a backport of the new Character set
+This release also introduces a backport of the new Character set
 decoding functions from the development branch, vastly increasing the
 number of supported character sets and decoding performance.
+
+
+Security Issues
+===============
+
+This release addresses a remotely exploitable cross site scripting
+vulnerability in the decodeHeader() function, known as CAN-2004-1036.
+Thanks go to Joost Pol for notifying us about this issue.
+
+Also fixed is an issue in prefs.php which allowed for insecure file
+inclusion. The problem was introduced in version 1.4.3 and is known
+as CAN-2005-0075.
+
+In webmail.php an issue was closed which allowed the contents of the
+right frame to be replaced by manipulating an URL variabale. Thanks
+to Manoel Zaninetti for discovering this (CAN-2005-0104). In the
+same place, two integer variables turned out also not sanitized,
+CAN-2005-0104.
 
 
 Major updates
