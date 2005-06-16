@@ -27,7 +27,7 @@ $msg = '<p>'
 /**
  * Present a nice listing.
  */
-$langs = sqspell_getSettings();
+$langs = sqspell_getSettings(null);
 $add = '<p>'
   . _("Make this dictionary my default selection:")
   . " <select name=\"lang_default\">\n";

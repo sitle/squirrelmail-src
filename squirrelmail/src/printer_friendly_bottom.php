@@ -33,11 +33,13 @@ sqgetGlobalVar('onetimepad', $onetimepad, SQ_SESSION);
 sqgetGlobalVar('passed_id', $passed_id, SQ_GET);
 sqgetGlobalVar('mailbox', $mailbox, SQ_GET);
 
-if (! sqgetGlobalVar('passed_ent_id', $passed_ent_id, SQ_GET) ) {
+if (! sqgetGlobalVar('passed_ent_id', $passed_ent_id, SQ_GET) ||
+    ! preg_match('/^\d+(\.\d+)*$/', $passed_ent_id) ) {
     $passed_ent_id = '';
-}
+} 
 /* end globals */
 
+$pf_cleandisplay = getPref($data_dir, $username, 'pf_cleandisplay', false);
 $imapConnection = sqimap_login($username, $key, $imapServerAddress, $imapPort, 0);
 $mbx_response = sqimap_mailbox_select($imapConnection, $mailbox);
 if (isset($messages[$mbx_response['UIDVALIDITY']][$passed_id])) {
@@ -51,7 +53,7 @@ if ($passed_ent_id) {
 
 /* --start display setup-- */
 
-$rfc822_header = $message->rfc822_header;
+$rfc822_header = $message->rfc822_header; 
 /* From and Date are usually fine as they are... */
 $from = $rfc822_header->getAddr_s('from');
 $date = getLongDateString($rfc822_header->date);
@@ -69,8 +71,8 @@ if ($show_html_default == 1) {
 $body = '';
 if ($ent_ar[0] != '') {
   for ($i = 0; $i < count($ent_ar); $i++) {
-     $body .= formatBody($imapConnection, $message, $color, $wrap_at, $ent_ar[$i], $passed_id, $mailbox, TRUE);
-     $body .= '<hr style="height: 1px;" />';
+     $body .= formatBody($imapConnection, $message, $color, $wrap_at, $ent_ar[$i], $passed_id, $mailbox);
+     $body .= '<hr noshade size="1" />';
   }
   $hookResults = do_hook('message_body', $body);
   $body = $hookResults[1];
@@ -78,20 +80,27 @@ if ($ent_ar[0] != '') {
   $body = _("Message not printable");
 }
 
-/* now we clean up the display a bit... */
+ /* now, if they choose to, we clean up the display a bit... */
+ 
+if ($pf_cleandisplay) {
 
-$num_leading_spaces = 9; // nine leading spaces for indentation
+    $num_leading_spaces = 9; // nine leading spaces for indentation
 
-// sometimes I see ',,' instead of ',' seperating addresses *shrug*
-$cc = pf_clean_string(str_replace(',,', ',', $cc), $num_leading_spaces);
-$to = pf_clean_string(str_replace(',,', ',', $to), $num_leading_spaces);
+     // sometimes I see ',,' instead of ',' seperating addresses *shrug*
+    $cc = pf_clean_string(str_replace(',,', ',', $cc), $num_leading_spaces);
+    $to = pf_clean_string(str_replace(',,', ',', $to), $num_leading_spaces);
 
-// clean up everything else...
-$subject = pf_clean_string($subject, $num_leading_spaces);
-$from = pf_clean_string($from, $num_leading_spaces);
-$date = pf_clean_string($date, $num_leading_spaces);
+     // the body should have no leading zeros
+    // disabled because it destroys html mail
 
-// end cleanup
+//    $body = pf_clean_string($body, 0);
+
+     // clean up everything else...
+    $subject = pf_clean_string($subject, $num_leading_spaces);
+    $from = pf_clean_string($from, $num_leading_spaces);
+    $date = pf_clean_string($date, $num_leading_spaces);
+
+} // end cleanup
 
 $to = decodeHeader($to);
 $cc = decodeHeader($cc);
@@ -108,30 +117,30 @@ echo '<body text="#000000" bgcolor="#FFFFFF" link="#000000" vlink="#000000" alin
      /* headers (we use table because translations are not all the same width) */
      html_tag( 'table', '', 'center', '', 'cellspacing="0" cellpadding="0" border="0" width="100%"' ) .
      html_tag( 'tr',
-         html_tag( 'td', '<b>'._("From").':</b>&nbsp;', 'left' ,'','valign="top"') .
+         html_tag( 'td', _("From").':&nbsp;', 'left' ,'','valign="top"') .
          html_tag( 'td', $from, 'left' )
      ) . "\n" .
      html_tag( 'tr',
-         html_tag( 'td', '<b>'._("Subject").':</b>&nbsp;', 'left','','valign="top"' ) .
+         html_tag( 'td', _("Subject").':&nbsp;', 'left','','valign="top"' ) .
          html_tag( 'td', $subject, 'left' )
      ) . "\n" .
      html_tag( 'tr',
-         html_tag( 'td', '<b>'._("Date").':</b>&nbsp;', 'left' ) .
+         html_tag( 'td', _("Date").':&nbsp;', 'left' ) .
          html_tag( 'td', htmlspecialchars($date), 'left' )
      ) . "\n" .
      html_tag( 'tr',
-         html_tag( 'td', '<b>'._("To").':</b>&nbsp;', 'left','','valign="top"' ) .
+         html_tag( 'td', _("To").':&nbsp;', 'left','','valign="top"' ) .
          html_tag( 'td', $to, 'left' )
     ) . "\n";
     if ( strlen($cc) > 0 ) { /* only show Cc: if it's there... */
          echo html_tag( 'tr',
-             html_tag( 'td', '<b>'._("Cc").':</b>&nbsp;', 'left','','valign="top"' ) .
+             html_tag( 'td', _("Cc").':&nbsp;', 'left','','valign="top"' ) .
              html_tag( 'td', $cc, 'left' )
          );
      }
      /* body */
      echo html_tag( 'tr',
-         html_tag( 'td', '<hr style="height: 1px;" /><br />' . "\n" . $body, 'left', '', 'colspan="2"' )
+         html_tag( 'td', '<hr noshade size="1" /><br />' . "\n" . $body, 'left', '', 'colspan="2"' )
      ) . "\n" .
 
      '</table>' . "\n" .
@@ -145,12 +154,12 @@ echo '<body text="#000000" bgcolor="#FFFFFF" link="#000000" vlink="#000000" alin
 /**
  * Function should clean layout of printed messages when user
  * enables "Printer Friendly Clean Display" option.
- * For example: $string = pf_clean_string($string, 9);
  *
  * @param string unclean_string
  * @param integer num_leading_spaces
  * @return string
- * @access private
+ * @example $string = pf_clean_string($string, 9);
+ * @access private 
  */
 function pf_clean_string ( $unclean_string, $num_leading_spaces ) {
     global $data_dir, $username;
@@ -186,5 +195,4 @@ function pf_clean_string ( $unclean_string, $num_leading_spaces ) {
 } /* end pf_clean_string() function */
 
 /* --end pf-specific functions */
-
 ?>

@@ -8,10 +8,12 @@
  * This contains all the functions needed to send messages through
  * a delivery backend.
  *
- * @version $Id$
+ * $Id$
+ *
  * @author  Marc Groot Koerkamp
  * @package squirrelmail
  */
+
 
 /**
  * Deliver Class - called to actually deliver the message
@@ -77,7 +79,7 @@ class Deliver {
             if (strpos($boundary,'_part_')) {
                 $boundary = substr($boundary,0,strpos($boundary,'_part_'));
 
-            // the next four lines use strrev to reverse any nested boundaries
+            // the next four lines use strrev to reverse any nested boundaries 
             // because RFC 2046 (5.1.1) says that if a line starts with the outer
             // boundary string (doesn't matter what the line ends with), that
             // can be considered a match for the outer boundary; thus the nested
@@ -154,8 +156,6 @@ class Deliver {
                 $filename = $message->att_local_name;
                 $file = fopen ($filename, 'rb');
                 while ($body_part = fgets($file, 4096)) {
-                    // remove NUL characters
-                    $body_part = str_replace("\0",'',$body_part);
                     $length += $this->clean_crlf($body_part);
                     if ($stream) {
                         $this->preWriteToStream($body_part);
@@ -169,8 +169,6 @@ class Deliver {
         default:
             if ($message->body_part) {
                 $body_part = $message->body_part;
-                // remove NUL characters
-                $body_part = str_replace("\0",'',$body_part);
                 $length += $this->clean_crlf($body_part);
                 if ($stream) {
                     $this->writeToStream($stream, $body_part);
@@ -178,10 +176,11 @@ class Deliver {
             } elseif ($message->att_local_name) {
                 $filename = $message->att_local_name;
                 $file = fopen ($filename, 'rb');
+                $encoded = '';
                 while ($tmp = fread($file, 570)) {
                     $body_part = chunk_split(base64_encode($tmp));
-                    // Up to 4.3.10 chunk_split always appends a newline,
-                    // while in 4.3.11 it doesn't if the string to split
+                    // Up to 4.3.10 chunk_split always appends a newline, 
+                    // while in 4.3.11 it doesn't if the string to split 
                     // is shorter than the chunk length.
                     if( substr($body_part, -1 , 1 ) != "\n" )
                         $body_part .= "\n";
@@ -327,6 +326,7 @@ class Deliver {
             $header[] = 'Content-Description: ' . $mime_header->description . $rn;
         }
         if ($mime_header->encoding) {
+            $encoding = $mime_header->encoding;
             $header[] = 'Content-Transfer-Encoding: ' . $mime_header->encoding . $rn;
         } else {
             if ($mime_header->type0 == 'text' || $mime_header->type0 == 'message') {
@@ -379,6 +379,8 @@ class Deliver {
      */
     function prepareRFC822_Header($rfc822_header, $reply_rfc822_header, &$raw_length) {
         global $domain, $version, $username, $encode_header_key, $edit_identity, $hide_auth_header;
+
+        if (! isset($hide_auth_header)) $hide_auth_header=false;
 
         /* if server var SERVER_NAME not available, use $domain */
         if(!sqGetGlobalVar('SERVER_NAME', $SERVER_NAME, SQ_SERVER)) {
@@ -454,12 +456,14 @@ class Deliver {
         }
         $header[] = "Date: $date" . $rn;
         $header[] = 'Subject: '.encodeHeader($rfc822_header->subject) . $rn;
-        $header[] = 'From: '. $rfc822_header->getAddr_s('from',",$rn ",true) . $rn;
 
-        // folding address list [From|To|Cc|Bcc] happens by using ",$rn<space>" as delimiter
+        // folding address list [From|To|Cc|Bcc] happens by using ",$rn<space>"
+        // as delimiter
         // Do not use foldLine for that.
 
-        // RFC2822 if from contains more then 1 address
+        $header[] = 'From: '. $rfc822_header->getAddr_s('from',",$rn ",true) . $rn;
+
+        /* RFC2822 if from contains more then 1 address */
         if (count($rfc822_header->from) > 1) {
             $header[] = 'Sender: '. $rfc822_header->getAddr_s('sender',',',true) . $rn;
         }
@@ -510,11 +514,14 @@ class Deliver {
             switch($rfc822_header->priority)
             {
             case 1:
-                $header[] = 'X-Priority: 1 (Highest)'.$rn;
-                $header[] = 'Importance: High'. $rn; break;
+            $header[] = 'X-Priority: 1 (Highest)'.$rn;
+            $header[] = 'Importance: High'. $rn; break;
+            case 3:
+            $header[] = 'X-Priority: 3 (Normal)'.$rn;
+            $header[] = 'Importance: Normal'. $rn; break;
             case 5:
-                $header[] = 'X-Priority: 5 (Lowest)'.$rn;
-                $header[] = 'Importance: Low'. $rn; break;
+            $header[] = 'X-Priority: 5 (Lowest)'.$rn;
+            $header[] = 'Importance: Low'. $rn; break;
             default: break;
             }
         }
@@ -789,4 +796,6 @@ class Deliver {
         return $ret;
     }
 }
+
+// vim: et ts=4
 ?>

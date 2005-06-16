@@ -9,7 +9,6 @@ Table of Contents:
   4.  (RUN)      Running SquirrelMail
   5.  (CHARSETS) Russian Charsets
   6.  (LOCALES)  Translations of SquirrelMail
-  7.  (PLUGINS)  Installation of included plugins
 
 
 0. QUICK INSTALL GUIDE
@@ -17,7 +16,7 @@ Table of Contents:
 
 Each of these steps is covered in detail below.
 
-- Install webserver and PHP4 (at least 4.1.0).
+- Install webserver and PHP4 (at least 4.0.6).
 - Install IMAP server (see docs of that server).
 - Unpack the SquirrelMail package in a web-accessible location.
 - Select a data-dir and attachment dir, outside the webtree (e.g. in /var).
@@ -37,7 +36,7 @@ Each of these steps is covered in detail below.
 ---------------------------------------------
 
   If your webserver does not already have PHP you must configure it
-  to work with PHP. You need at least PHP v4.1.0. SquirrelMail uses
+  to work with PHP. You need at least PHP v4.0.6. SquirrelMail uses
   the standard suffix .php for all PHP4 files.
 
   You can find PHP at http://www.php.net. See the documentation that
@@ -164,10 +163,13 @@ b. Setting up directories
 
 c. Setting up SquirrelMail
 
-  There are two ways to configure SquirrelMail.  In the config/ directory,
+  There are three ways to configure SquirrelMail.  In the config/ directory,
   there is a perl script called conf.pl that will aid you in the
   configuration process.  This is the recommended way of handling
   the config.
+
+  There's also a plugin called 'administrator' for the webinterface but you'll
+  have to be able to at least log in to SquirrelMail first.
 
   You can also copy the config/config_default.php file to config/config.php
   and edit that manually.
@@ -209,33 +211,13 @@ c. Setting up SquirrelMail
      http://sourceforge.net/project/showfiles.php?group_id=311&package_id=110388
 
   Each translation contains an install script that copies the required files
-  into their appropriate locations. If you can't run that script, you can
-  extract the contents of translation packages into your SquirrelMail
-  directory.
+  into their appropriate locations. If you can't run that script, you can extract
+  the contents of a translation package into your SquirrelMail directory.
 
   NOTE No.1: *-src.tar.gz, *-src.tar.bz2 and *-src.zip archives do not contain
-  compiled translation files. You will need to run the compilelocales script
+  compiled translation files. You will need to run the `compilelocales` script
   in order to get all gettext binary translations.
 
   NOTE No.2: You might need to restart your webserver before using translations.
   If you can't do that, install your translations _before_ you use SquirrelMail.
 
-
-7. PLUGINS
-----------
-
-  The SquirrelMail package includes some standard plugins. These plugins can be
-  enabled in the SquirrelMail configuration script.
-
-  Included plugins can use additional configuration files:
-  * change_password
-    configuration file is required. Without it plugin defaults to invalid
-    backend. See plugins/change_password/README
-  * filters, fortune, mail_fetch, newmail, translate
-    configuration files are optional. See README files in plugin directories.
-  * squirrelspell
-    configuration is stored in plugins/squirrelspell/sqspell_config.php
-    Default configuration might not work on your server.
-  * administrator
-    plugin must be setup correctly in order to detect administrative user.
-    See plugins/administrator/INSTALL

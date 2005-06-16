@@ -15,7 +15,6 @@
 
 /**
  * Initialize the plugin
- * @access private
  */
 function squirrelmail_plugin_init_message_details()
 {
@@ -24,12 +23,8 @@ function squirrelmail_plugin_init_message_details()
   $squirrelmail_plugin_hooks['read_body_header_right']['message_details'] = 'show_message_details';
 }
 
-/**
- * Add message details link in message view
- * @access private
- */
 function show_message_details() {
-    global $passed_id, $mailbox, $ent_num,
+    global $passed_id, $mailbox, $ent_num, $color,
            $javascript_on;
 
     if (strlen(trim($mailbox)) < 1) {
@@ -53,9 +48,9 @@ function show_message_details() {
                 "  }\n" .
                 "// -->\n" .
                 "</script>\n" .
-                "&nbsp;|&nbsp;<a href=\"javascript:MessageSource();\">$print_text</a>\n";
-    }
+                "&nbsp;|&nbsp;<A HREF=\"javascript:MessageSource();\">$print_text</A>\n";
+    } 
     echo $result;
 }
-
+ 
 ?>

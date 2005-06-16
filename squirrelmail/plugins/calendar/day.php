@@ -11,11 +11,8 @@
  * Displays the day page (day view).
  *
  * $Id$
- * @package plugins
- * @subpackage calendar
  */
 
-/** @ignore */
 define('SM_PATH','../../');
 
 /* Calender plugin required files. */
@@ -32,12 +29,7 @@ require_once(SM_PATH . 'include/load_prefs.php');
 require_once(SM_PATH . 'functions/html.php');
 
 /* get globals */
-
-// undo rg = on effects
-if (isset($month)) unset($month);
-if (isset($year))  unset($year);
-if (isset($day))  unset($day);
-
+unset($year, $month, $day);
 if (isset($_GET['year']) && is_numeric($_GET['year'])) {
     $year = $_GET['year'];
 }
@@ -47,13 +39,13 @@ elseif (isset($_POST['year']) && is_numeric($_POST['year'])) {
 if (isset($_GET['month']) && is_numeric($_GET['month'])) {
     $month = $_GET['month'];
 }
-elseif (isset($_POST['month'])  && is_numeric($_POST['month'])) {
+elseif (isset($_POST['month']) && is_numeric($_POST['month'])) {
     $month = $_POST['month'];
 }
 if (isset($_GET['day']) && is_numeric($_GET['day'])) {
     $day = $_GET['day'];
 }
-elseif (isset($_POST['day'])  && is_numeric($_POST['day'])) {
+elseif (isset($_POST['day']) && is_numeric($_POST['day'])) {
     $day = $_POST['day'];
 }
 
@@ -67,7 +59,7 @@ function day_header() {
     echo html_tag( 'tr', '', '', $color[0] ) . "\n".
                 html_tag( 'td', '', 'left' ) .
                     html_tag( 'table', '', '', $color[0], 'width="100%" border="0" cellpadding="2" cellspacing="1"' ) ."\n" .
-                        html_tag( 'tr',
+                        html_tag( 'tr', 
                             html_tag( 'th',
                                 "<a href=\"day.php?year=$prev_year&amp;month=$prev_month&amp;day=$prev_day\">&lt;&nbsp;".
                                 date_intl('D',$prev_date)."</a>",

@@ -29,8 +29,6 @@ function squirrelmail_plugin_init_squirrelspell() {
       'squirrelspell_optpage_register_block';
   $squirrelmail_plugin_hooks['options_link_and_description']['squirrelspell'] =
       'squirrelspell_options';
-  $squirrelmail_plugin_hooks['right_main_after_header']['squirrelspell'] =
-      'squirrelspell_upgrade';
 }
 
 /**
@@ -42,12 +40,12 @@ function squirrelmail_plugin_init_squirrelspell() {
 function squirrelspell_optpage_register_block() {
   global $optpage_blocks;
   /**
-   * Check if this browser is capable of using the plugin
+   * soupNazi checks if this browser is capable of using the plugin.
    */
-  if (checkForJavascript()) {
+  if (!soupNazi()) {
     /**
      * The browser checks out.
-     * Register Squirrelspell with the $optpage_blocks array.
+     * Register Squirrelspell with the $optionpages array.
      */
     $optpage_blocks[] =
       array(
@@ -69,7 +67,7 @@ function squirrelspell_setup() {
    * Check if this browser is capable of displaying SquirrelSpell
    * correctly.
    */
-  if (checkForJavascript()) {
+  if (!soupNazi()) {
     /**
      * Some people may choose to disable javascript even though their
      * browser is capable of using it. So these freaks don't complain,
@@ -86,49 +84,6 @@ function squirrelspell_setup() {
       "//-->\n".
       "</script>\n";
   }
-}
-
-/**
- * Transparently upgrades user's dictionaries when message listing is loaded
- * @since 1.5.1 (sqspell 0.5)
- */
-function squirrelspell_upgrade() {
-  // globalize configuration vars before loading config.
-  // Vars are not available to scripts if not globalized before loading config.
-  // FIXME: move configuration loading to loading_prefs hook.
-  global $SQSPELL_APP, $SQSPELL_APP_DEFAULT, $SQSPELL_WORDS_FILE, $SQSPELL_CRYPTO;
-  include_once(SM_PATH . 'plugins/squirrelspell/sqspell_config.php');
-  include_once(SM_PATH . 'plugins/squirrelspell/sqspell_functions.php');
-  
-  if (! sqspell_check_version(0,5)) {
-    $langs=sqspell_getSettings_old(null);
-    $words=sqspell_getWords_old();
-    sqspell_saveSettings($langs);
-    foreach ($langs as $lang) {
-      $lang_words=sqspell_getLang_old($words,$lang);
-      $aLang_words=explode("\n",$lang_words);
-      $new_words=array();
-      foreach($aLang_words as $word) {
-        if (! preg_match("/^#/",$word) && trim($word)!='') {
-          $new_words[]=$word;
-        }
-      }
-      sqspell_writeWords($new_words,$lang);
-    }
-    // bump up version number
-    setPref($data_dir,$username,'sqspell_version','0.5');
-  }
-}
-
-/**
- * Function that displays internal squirrelspell version
- * @since 1.5.1 (sqspell 0.5)
- * @return string plugin's version
- * @todo remove 'cvs' part from version when plugin's code is 
- * stable enough
- */
-function squirrelspell_version() {
-  return '0.5cvs';
 }
 
 ?>
