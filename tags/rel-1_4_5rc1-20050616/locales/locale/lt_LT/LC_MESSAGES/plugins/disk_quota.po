@@ -1,0 +1,150 @@
+# Lithuanian Disk Quota Plugin Translation.
+# Copyright (c) 2003-2005 SquirrelMail Project Team
+# Tomas Kuliavas <tokul@users.sourceforge.net>, 2003
+# $Id$
+msgid ""
+msgstr ""
+"Project-Id-Version: disk_quota 3.0.3\n"
+"POT-Creation-Date: 2003-11-04 11:02+0200\n"
+"PO-Revision-Date: 2003-11-12 16:05+0200\n"
+"Last-Translator: Tomas Kuliavas <tokul@users.sourceforge.net>\n"
+"Language-Team: Lithuanian <squirrelmail-i18n@lists.sourceforge.net>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "Your Disk Usage"
+msgstr "Jūsų Disko Panaudojimas"
+
+msgid "Click on graph for details"
+msgstr "Spragtelėkite ant diagramos, norėdami gauti daugiau informacijos"
+
+msgid "Click on one of the graphs for details"
+msgstr "Spragtelėkite ant vienos iš diagramų, norėdami gauti daugiau informacijos"
+
+msgid "Your Disk Usage on The Server"
+msgstr "Jūsų Disko Vietos Panaudojimas Serveryje"
+
+msgid "Percent"
+msgstr "Procentas"
+
+msgid "Details"
+msgstr "Detalės"
+
+msgid "Filesystem"
+msgstr "Bylų sistema"
+
+msgid "Data Amount You Use on The Server"
+msgstr "Duomenų Kiekis, Kurį Jūs Laikote Serveryje"
+
+msgid "Your Quota"
+msgstr "Jūsų Kvota"
+
+msgid "Your Limit"
+msgstr "Jūsų Riba"
+
+msgid "Grace Time"
+msgstr "Pakantumo Terminas"
+
+msgid "* Hover your mouse on the texts and graph to get more information..."
+msgstr "* Užveskite pelės kursorių virš teksto ar diagramos, norėdami gauti daugiau informacijos..."
+
+msgid "Days"
+msgstr "Dienos"
+
+msgid "Day"
+msgstr "Diena"
+
+msgid "Hours"
+msgstr "Valandos"
+
+msgid "Hour"
+msgstr "Valanda"
+
+msgid "Minutes"
+msgstr "Minutės"
+
+msgid "Minute"
+msgstr "Minutė"
+
+msgid "Time Expired!"
+msgstr "Terminas Baigėsi!"
+
+msgid "This is the bar graph of your status. The green bar shows the amount of disk space you use."
+msgstr "Čia yra Jūsų duomenų panaudojimo grafinė diagrama. Žalia juosta rodo panaudotą duomenų kiekį."
+
+msgid " The red line shows your quota and the area after the red line shows your limit, which you cannot exceed."
+msgstr "Raudona linija rodo Jums nustatytą kvotą, o sritis po jos rodo ribą, kurios Jūs negalite viršyti."
+
+msgid " At this time, you are not over quota."
+msgstr "Šiuo metu Jūs neviršijate kvotų."
+
+msgid " YOU ARE OVER QUOTA NOW!"
+msgstr "JŪS VIRŠIJOTE NUSTATYTĄ KVOTĄ!"
+
+msgid "This shows your percent usage compared to your limit."
+msgstr "Čia parodamas procentinis turimų duomenų santykis su nustatyta riba."
+
+msgid "This is the name of the filesystem on which your data is kept."
+msgstr "Tai yra bylų sistemos, kurioje Jūs laikote savo duomenis, vardas."
+
+msgid " Your server did not show the filesystem name. So you see a hyphen for the name."
+msgstr "Serveris nepateikė bylų sistemos vardo. Todėl Jūs čia matote brūkšnį."
+
+msgid "This is the total amount of data you are using on your server."
+msgstr "Tai yra disko talpos dydis, kurį Jūs naudojate serveryje."
+
+msgid "This is the maximum amount of data you can keep on your server."
+msgstr "Tai yra disko talpos dydis, kurį Jūs galite panaudoti serveryje."
+
+msgid "This is the maximum amount of data you can keep on the server when you are over quota in your grace time."
+msgstr "Tai didžiausias duomenų kiekis, kurį Jūs galite laikyti serveryje pakantumo termino metu, kai Jūs viršijate nustatytą kvotą."
+
+msgid "This shows the time left in which you must delete some of your data in order to get under your quota."
+msgstr "Čia rodomas laikas, per kurį Jūs turite susitvarkyti savo saugomus duomenis, kai viršijama leistina disko talpa."
+
+msgid " You are not over quota so you see a hyphen for the grace time."
+msgstr "Jūs neviršijote kvotos ir pakantumo terminas yra nenurodytas."
+
+msgid " After this time,if you are still over quota, you will not be able to get any e-mails."
+msgstr "Jei po šio laiko, Jūs vis dar viršysite nustatytas ribas, Jūs negalėsite gauti naujų žinučių."
+
+msgid "Detailed Information"
+msgstr "Detali Informacija"
+
+msgid "There is no problem as you are now using "
+msgstr "Šiuo metu nėra jokių problemų, kadangi Jūs serveryje naudojate"
+
+msgid "KB on the server which is under your quota. Be sure to always keep the data you use under your "
+msgstr "KB ir neviršyjate nustatytų kvotų. Pasistenkite, kad Jūsų saugomi duomenys neviršytų"
+
+msgid "KB quota to ensure that you can always receive e-mails."
+msgstr "KB ribos, jei norite gauti laiškus."
+
+msgid "WARNING:"
+msgstr "DĖMESIO:"
+
+msgid "You are using "
+msgstr "Jūs serveryje naudojate"
+
+msgid "KB on the server which is over your quota. "
+msgstr "KB ir viršijate leistiną ribą."
+
+msgid "If you don't delete some e-mails from the server in "
+msgstr "Jei Jūs neištrinsite dalies žinučių iš serverio per"
+
+msgid "and get your data under your "
+msgstr "ir pasirodžius naujoms žinutėms Jūs viršysite"
+
+msgid "KB quota, you WILL NOT be able to get any more e-mails."
+msgstr "KB ribą, Jūs daugiau NEBEGALĖSITE gauti žinučių."
+
+msgid "You CANNOT get any e-mails now and all e-mails sent to you are bouncing back to their senders. "
+msgstr "Šiuo metu Jūs NEGALITE gauti jokių naujų žinučių ir viskas, kas yra Jums siunčiama yra atmetama siuntėjams."
+
+msgid "You must delete some e-mails from the server and get your usage under your "
+msgstr "Jūs turite ištrinti dalį žinučių iš serverio ir pasiekti, kad jūsų disko panaudojimas neviršytų"
+
+msgid "KB quota in order to be able to get new e-mails."
+msgstr "KB ribos, jei Jūs norite gauti naujus laiškus."
+
