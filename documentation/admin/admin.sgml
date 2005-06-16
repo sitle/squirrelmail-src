@@ -824,7 +824,74 @@ Using interface with different languages.
 
 <sect1>Personal and shared address books
 <p>
-Information about global address books here.
+SquirrelMail supports multiple address book backends. Backends can be
+configured to provide address books that store entries visible to one user
+or to group of users or to all users that use same SquirrelMail installation.
+
+SquirrelMail supports own flat file format, database supported by PHP Pear
+DB libraries and LDAP.
+
+LDAP address books are readonly and listing of addresses is available only
+when users search for address.
+
+Global address book is address book that can be shared between users. Global 
+address books can be configured in SquirrelMail since 1.4.4 version. Before 
+than admin had to modify functions/addressbook.php file. There is a typo in 
+1.4.4 code and if you want to have writeable global address
+books, you should apply patch or use newer SquirrelMail version. See
+http://www.squirrelmail.org/wiki/KnownBugs
+
+If admin wants to use different backend for address book storage (IMSP,
+personal LDAP address books, sticky notes attached to server),
+SquirrelMail 1.4.5 and 1.5.1 provides hooks that allow plugins to attach
+own functions during address book initiation and admin needs only a plugin that
+can interact with used data storage system. Older SquirrelMail versions
+need two extra hooks in functions/addressbook.php. Current backend implementation
+is limited to standard squirrelmail address book format.
+
+<sect2>How to use shared file based address book in SquirrelMail.
+<p>
+1. Get SquirrelMail 1.4.4, 1.4.5cvs, 1.5.1cvs or later.
+
+2. If you want to use writable address book in 1.4.4, get <url
+url="http://cvs.sf.net/viewcvs.py/squirrelmail/squirrelmail/src/addressbook.php?r1=1.58.2.16&amp;r2=1.58.2.17" 
+name="patch that fixes address book form">.
+
+3. Create address book file. SquirrelMail address book uses CSV format
+with | symbol as delimiter.
+
+first field is nickname
+second field - name
+third field - surname
+forth field - email
+fifth field - additional information
+
+for example:
+
+test|Testname|Testsurname|test@example.org|testinfo
+
+4. If you want writable address book, file must be writable by webserver
+user.
+
+5. After you have created address book file, go to SquirrelMail configuration
+utility, select 6. Address Books option and configure address book in 3. 
+Global file address book.
+
+If you enter only address book file name, system assumes that address book
+is in data directory. For example: <tt/global_abook/. If you use data directory
+to store global address book, remember that personal address books use
+<tt/.abook/ suffix. You should not use global address book file with same
+suffix, unless you understand what you are doing.
+
+If you enter full path, system uses full path. For example:
+<tt>/var/lib/squirrelmail/global_abook</tt>
+
+If your configuration option contains slashes, but does not look like full
+path, system assumes path relative to SquirrelMail top directory.
+
+If you want to use global file based address book in older SquirrelMail
+versions, take a look at <tt>functions/addressbook.php file</tt>. It contains some
+comments that explain how to do that without configuration utility.
 
 <sect>FAQ
 <p>
