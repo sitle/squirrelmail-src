@@ -1487,8 +1487,8 @@ function sq_fixstyle($body, $pos, $message, $id, $mailbox){
     /**
      * Fix urls that refer to cid:
      */
-+           case 'cid':
-+             $cidurl = 'cid:'. $matches[2];
+           case 'cid':
+             $cidurl = 'cid:'. $matches[2];
         $httpurl = sq_cid2http($message, $id, $cidurl, $mailbox);
         $content = preg_replace("|url\s*\(\s*$cidurl\s*\)|si",
                                  "u\0r\0l($httpurl)", $content);
