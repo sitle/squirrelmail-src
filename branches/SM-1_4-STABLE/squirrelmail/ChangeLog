@@ -12,6 +12,9 @@ Version 1.4.5 - CVS
     differently in different PHP versions).
   - Javascript relied on rg=1 in the login page to force focus to
     password box if username was supplied as a url arg (#1222617).
+  - Disabled unmaintained Estonian translation.
+  - Allowed use of wildcards in LDAP address book search expressions. Issue
+    is specific to 1.4.5cvs and not present in older versions.
 
 Version 1.4.5 Release Candidate 1 - 15 June 2005
 ------------------------------------------------
