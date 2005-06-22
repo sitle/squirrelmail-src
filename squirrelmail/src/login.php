@@ -55,6 +55,8 @@ header('Pragma: no-cache');
 
 do_hook('login_cookie');
 
+$loginname_value = (sqGetGlobalVar('loginname', $loginname) ? htmlspecialchars($loginname) : '');
+
 /* Output the javascript onload function. */
 
 $header = "<script language=\"JavaScript\" type=\"text/javascript\">\n" .
@@ -83,8 +85,6 @@ echo '<body text="#000000" bgcolor="#FFFFFF" link="#0000CC" vlink="#0000CC" alin
 $username_form_name = 'login_username';
 $password_form_name = 'secretkey';
 do_hook('login_top');
-
-$loginname_value = (sqGetGlobalVar('loginname', $loginname) ? htmlspecialchars($loginname) : '');
 
 
 if(sqgetGlobalVar('mailto', $mailto)) {
