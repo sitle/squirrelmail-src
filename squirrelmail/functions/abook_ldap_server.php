@@ -269,6 +269,8 @@ class abook_ldap_server extends addressbook_backend {
          */
         if($expr!='*') {
             $expr = '*' . $this->ldapspecialchars($expr) . '*';
+            /* Undo sanitizing of * symbol */
+            $expr = str_replace('\2a','*',$expr);
         }
         $expression = "cn=$expr";
 
