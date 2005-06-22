@@ -8,7 +8,9 @@ Version 1.4.5 - CVS
   - Fixed bad code from patch being pasted instead of
     executed.
   - Fixed missing quote character in img tag if blank src is supplied.
-
+  - Javascript relied on rg=1 in the login page to force focus to
+    password box if username was supplied as a url arg (#1222617).
+	  
 Version 1.4.5 Release Candidate 1 - 15 June 2005
 ------------------------------------------------
   - Make SquirrelSpell work with safe_mode enabled, if using PHP >=4.3.0.
