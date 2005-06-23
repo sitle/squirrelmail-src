@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: compatibility\n"
-"POT-Creation-Date: 2004-04-25 18:35+0300\n"
+"POT-Creation-Date: 2005-06-22 16:03-0700\n"
 "PO-Revision-Date: 2004-05-27 10:12+0200\n"
 "Last-Translator: Ola Ketil Siqveland <olaketil@hotmail.com>\n"
 "Language-Team: Nynorsk <nn@li.org>\n"
@@ -14,22 +14,26 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.0.1\n"
 
-#: functions.php:269
+#: functions.php:211
 msgid "Administrative error:"
 msgstr "Administrativ feil:"
 
-#: functions.php:270
-msgid "The plugin"
-msgstr "Programtilleg"
-
-#: functions.php:271
-msgid "has not been set up correctly."
+#: functions.php:212
+#, fuzzy, php-format
+msgid "The plugin %s has not been set up correctly."
 msgstr "er ikkje set opp rett."
 
-#: functions.php:272
-msgid "Missing "
-msgstr "Mangler "
+#: functions.php:214
+#, php-format
+msgid "The configuration file %s is missing."
+msgstr ""
 
-#: functions.php:273
+#: functions.php:216
 msgid "Please read the README or INSTALL files that came with the plugin."
 msgstr "Les README eller INSTALL filene som kom med programtillegget."
+
+#~ msgid "The plugin"
+#~ msgstr "Programtilleg"
+
+#~ msgid "Missing "
+#~ msgstr "Mangler "
