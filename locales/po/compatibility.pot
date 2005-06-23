@@ -1,12 +1,13 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR Free Software Foundation, Inc.
+# <your language> SquirrelMail Compatibility Plugin Translation File
+# Copyright (c) 2005 The Squirrelmail Project Team
+# This file is distributed under the same license as the SquirrelMail package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2004-04-25 18:35+0300\n"
+"Project-Id-Version: compability 2.0\n"
+"POT-Creation-Date: 2005-06-22 16:03-0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -14,22 +15,20 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: functions.php:269
+#: functions.php:211
 msgid "Administrative error:"
 msgstr ""
 
-#: functions.php:270
-msgid "The plugin"
+#: functions.php:212
+#, php-format
+msgid "The plugin %s has not been set up correctly."
 msgstr ""
 
-#: functions.php:271
-msgid "has not been set up correctly."
+#: functions.php:214
+#, php-format
+msgid "The configuration file %s is missing."
 msgstr ""
 
-#: functions.php:272
-msgid "Missing "
-msgstr ""
-
-#: functions.php:273
+#: functions.php:216
 msgid "Please read the README or INSTALL files that came with the plugin."
 msgstr ""

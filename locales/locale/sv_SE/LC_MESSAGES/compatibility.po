@@ -1,13 +1,13 @@
 # Swedish (sv_SE) compatibility Translation (SquirrelMail plugin)
-# Copyright (C) 1999-2005 The Squirrelmail Development Team
+# Copyright (c) 1999-2005 The SquirrelMail Project Team
 # This file is distributed under the same license as the SquirrelMail package.
 # Fredrik Jervfors <sqm_admin@fimbul.net>, 2004-2005.
 # $Id$
 msgid ""
 msgstr ""
-"Project-Id-Version: compatibility\n"
-"POT-Creation-Date: 2004-04-25 18:35+0300\n"
-"PO-Revision-Date: 2004-12-08 23:23+0100\n"
+"Project-Id-Version: compatibility 2.0\n"
+"POT-Creation-Date: 2005-06-22 16:03-0700\n"
+"PO-Revision-Date: 2005-06-23 10:49+0200\n"
 "Last-Translator: Fredrik Jervfors <sqm_admin@fimbul.net>\n"
 "Language-Team: Swedish <squirrelmail-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -17,14 +17,13 @@ msgstr ""
 msgid "Administrative error:"
 msgstr "Administrativt fel:"
 
-msgid "The plugin"
-msgstr "Insticksmodulen"
+#, php-format
+msgid "The plugin %s has not been set up correctly."
+msgstr "Insticksmodulen %s är inte korrekt installerad."
 
-msgid "has not been set up correctly."
-msgstr "är inte korrekt installerad."
-
-msgid "Missing "
-msgstr "Saknar "
+#, php-format
+msgid "The configuration file %s is missing."
+msgstr "Konfigurationsfilen %s saknas."
 
 msgid "Please read the README or INSTALL files that came with the plugin."
 msgstr "Läs filerna README och INSTALL som ingår i insticksmodulen."
