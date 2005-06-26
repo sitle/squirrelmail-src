@@ -84,10 +84,11 @@ client, including strong MIME support, address books, and folder manipulation.
     to use sorting and threading.
 </itemize>
 
-<sect2>Browser Requirements:
+<sect2>Client Requirements:
 <p>
 <itemize>
   <item>Cookies must be enabled in your browser.
+  <item>15" display with 1024x768 or higher resolution.
 </itemize>
 
 <sect>Quick Start Guide
@@ -242,7 +243,24 @@ MacInfoHere
 
 <sect1>Prepackaged SquirrelMail installs
 <p>
-SquirrelMail provides RPM.
+SquirrelMail provides RPM packages. There are two packaging flavors. Standard
+package that can be used on RedHat 8.x or later. 7.x.noarch.rpm package is
+designed for RedHat 7.x systems. Main difference between packages - standard
+package contains standard Apache configuration file with /webmail/ alias in
+<tt>/etc/httpd/conf.d</tt> and different package dependencies. There are other 
+SquirrelMail packages created by RedHat, Fedora, SuSE and other RPM
+distributions.
+
+Debian packages can be downloaded from <url
+url="http://packages.debian.org/squirrelmail" name="Debian site."> or you can
+install them with your favorite Debian package manager. For example: <tt>apt-get
+install squirrelmail</tt>. If you use Debian stable and SquirrelMail package is
+little bit outdated, you should be able to install newer SquirrelMail package
+from testing or unstable. SquirrelMail PHP scripts don't depend on platform.
+You might be unable to install testing/unstable packages into stable only if
+packager uses packaging features that are unavailable in stable distribution.
+
+FreeBSD includes two different SquirrelMail packages in ports collection.
 
 <sect>Upgrading SquirrelMail
 <p>
@@ -384,7 +402,8 @@ Layout changes. Plugins can break.
 
 <sect2>Upgrade from version older than 1.4.4 to later version.
 <p>
-Translations are removed.
+Translations are removed in order to reduce package size. You must download
+and install separate translation packages.
 
 <sect2>Downgrade from 1.5.1 to older version.
 <p>
@@ -697,12 +716,11 @@ database entries might be duplicated when users change their preferences.
 
 <sect1>Using more than one IMAP server
 <p>
-SquirrelMail is designed to work with one user account on one IMAP server. If
-you want to use same SquirrelMail installation with multiple IMAP servers, you
-should be able to implement it with Perdition mail proxy, vlogin or multilogin
-plugins, or write custom server mapping function. These tools allow
-transparently redirect users to their mail servers. They don't support use of
-two IMAP accounts during one SquirrelMail login session.
+SquirrelMail is designed to work with one IMAP server. If you want to use same
+SquirrelMail installation with multiple IMAP servers, you should be able to
+implement it with Perdition mail proxy, vlogin or multilogin plugins, or write
+custom server mapping function. These tools allow transparently redirect users
+to their mail servers.
 
 <sect2>Perdition proxy
 <p>
@@ -842,9 +860,100 @@ See also:
 SquirrelMail is modular system. Interface can be extended with extra features
 provided by various plugins.
 
-<sect1>Themes<label id="themes">
+<sect2>Installing plugins
 <p>
-Which color is da best.
+Plugins are installed by unpacking them into SquirrelMail plugins
+directory. Each plugin uses own directory.
+
+After unpacking plugin you should check plugin's installation documentation and
+requirements. Some plugins need special plugin libraries, some need
+configuration files, some might need modifications in SquirrelMail
+scripts.
+
+After plugin is configured, you should start SquirrelMail configuration utility,
+select <tt/8. Plugins/ menu option.
+
+Option displays two plugin categories. Installed and available. Installed
+category lists plugins that are enabled. Available category lists plugins are
+not enabled.
+
+Each plugin has number written next to plugin's name. If you enter that number
+in command line, you enable or disable plugin.
+
+Configuration utility should display any plugin present in plugins/ directory.
+
+<sect1>Themes and Styles<label id="themes">
+<p>
+SquirrelMail users are able to customize look of interface by selecting custom
+theme and font style.
+
+SquirrelMail themes define interface colors. Each theme is set of 15 or more
+colors.
+
+You can easily create own theme. It is very simple. Just go into the
+<tt>themes/</tt> directory and create a file called
+<tt/yourtheme_theme.php/. You then need to create an array with 16 elements
+(0-15). Below is a blank theme sample followed by a description of what the
+different entries are for.
+
+<tscreen><verb>
+---<START>--- 
+<?php
+ 
+    #  My Theme
+    #  Author:  My Name
+    #  Date:  Today's Date
+    #
+    #  Optional description
+  
+    $color[0]   = '#xxxxxx';
+    $color[1]   = '#xxxxxx';
+    $color[2]   = '#xxxxxx';
+    $color[3]   = '#xxxxxx';
+    $color[4]   = '#xxxxxx';
+    $color[5]   = '#xxxxxx';
+    $color[6]   = '#xxxxxx';
+    $color[7]   = '#xxxxxx';
+    $color[8]   = '#xxxxxx';
+    $color[9]   = '#xxxxxx';
+    $color[10]  = '#xxxxxx';
+    $color[11]  = '#xxxxxx';
+    $color[12]  = '#xxxxxx';
+    $color[13]  = '#xxxxxx';
+    $color[14]  = '#xxxxxx';
+    $color[15]  = '#xxxxxx';
+
+?>
+---<END>---
+</verb></tscreen>
+
+And here is a description of what the different entries in the array
+are colors of, and the letter before the number denotes 'b' for background and
+'f' for foreground colors.
+
+<tscreen><verb>
+b  0: Title Bar at the top of the page header
+f  1: <not currently used>
+f  2: Error messages, usually red
+b  3: Left folder list background color
+b  4: Normal background color
+b  5: Header of the message index [From, Date, Subject]
+f  6: Normal text on the left folder list
+f  7: Links in the right frame
+f  8: Normal text [usually black]
+b  9: Darker version of #0
+b 10: Darker version of #9
+f 11: Special folders color [Inbox, Trash, Sent]
+b 12: Alternate color for message list [alters between 4 and this one]
+f 13: Color for single-quoted text ('> text') when reading (default:  #800000)
+f 14: Color for text with more than one quote (default: #FF0000)
+f 15: Non-selectable folders in the left frame (used in SquirrelMail 1.5.1 or
+      later. defaults to $color[6])
+</verb></tscreen>
+
+Next all you have to do is run SquirrelMail configuration utility and add the
+theme to the list of themes available to you.
+
 
 <sect1>Site customizations
 <p>
@@ -852,7 +961,83 @@ Own login page. Site control with vlogin plugin.
 
 <sect1>Internationalization
 <p>
-Using interface with different languages.
+SquirrelMail interface can be used with different languages. Default language
+can be set in SquirrelMail configuration utility. User can select other language
+in Options &gt; Display Preferences. In SquirrelMail 1.4.5/1.5.1 or later
+administrator can set default language to empty string. Then interface will try
+to detect preferred translation from browser's preferred language setting.
+
+SquirrelMail implements translations with gettext functions. Interface can use
+PHP gettext extension or internal gettext implementation. If PHP gettext
+extension is used, it might require special webserver setup. On Linux gettext
+functions work only when appropriate system locales are available. On BSD you
+should be able to set LC_ALL environment variable in PHP script. There are some
+differences between GNU Gettext and Solaris Gettext implementations.
+
+<sect2>Supported character sets
+<p>
+SquirrelMail displays interface in character set that depends on selected
+translation. If SquirrelMail has to display email written in other charset,
+interface uses special decoding functions that convert email to html codes that
+can display foreign symbols in selected character set.
+
+Stock SquirrelMail 1.4.4 installation supports following charset decoding
+functions:
+<itemize>
+  <item>cp1250 (windows-1250)
+  <item>cp1251 (windows-1251)
+  <item>cp1252 (windows-1252)
+  <item>cp1253 (windows-1253)
+  <item>cp1254 (windows-1254)
+  <item>cp1255 (windows-1255)
+  <item>cp1256 (windows-1256)
+  <item>cp1257 (windows-1257)
+  <item>cp1258 (windows-1258)
+  <item>cp855 (ibm855) 
+  <item>cp866 (ibm866)
+  <item>iso-8859-1
+  <item>iso-8859-2
+  <item>iso-8859-3
+  <item>iso-8859-4
+  <item>iso-8859-5
+  <item>iso-8859-6
+  <item>iso-8859-7
+  <item>iso-8859-8
+  <item>iso-8859-9
+  <item>iso-8859-10
+  <item>iso-8859-11
+  <item>iso-8859-13
+  <item>iso-8859-14
+  <item>iso-8859-15
+  <item>iso-8859-16
+  <item>iso-ir-111
+  <item>koi8-r
+  <item>koi8-u
+  <item>ns-4551_1
+  <item>tis-620
+  <item>us-ascii
+  <item>utf-8
+</itemize> 
+
+big-5, euc-kr and gb2312 characters can be displayed by Chinese and Korean
+translations that use those character sets. Japanese translation can display
+iso-2022-jp, euc-jp and shiftjis character sets. Other Eastern characters will
+be displayed correctly only when character codes match big-5, euc-kr or gb2312
+character sets.
+
+Other character sets can be decoded with special decoding functions.
+
+<sect2>Message composition
+<p>
+SquirrelMail can create emails that use character set defined in user's
+translation. Composed email must use symbols that are supported by selected
+charset. If unsupported symbols are used, browser might use different character
+set or html entities instead of entered characters.
+
+Different character set can be used only with US English
+translation. Administrator can set that character set in SquirrelMail
+1.4.5/1.5.1 configuration utility. Users can also select different character
+set, if Custom Charset plugin is installed.
 
 <sect1>Personal and shared address books
 <p>
@@ -871,7 +1056,8 @@ address books can be configured in SquirrelMail since 1.4.4 version. Before
 than admin had to modify functions/addressbook.php file. There is a typo in 
 1.4.4 code and if you want to have writeable global address
 books, you should apply patch or use newer SquirrelMail version. See
-http://www.squirrelmail.org/wiki/KnownBugs
+<url url="http://www.squirrelmail.org/wiki/KnownBugs" 
+name="http://www.squirrelmail.org/wiki/KnownBugs">
 
 If admin wants to use different backend for address book storage (IMSP,
 personal LDAP address books, sticky notes attached to server),
@@ -900,7 +1086,9 @@ fifth field - additional information
 
 for example:
 
+<tscreen><verb>
 test|Testname|Testsurname|test@example.org|testinfo
+</verb></tscreen>
 
 4. If you want writable address book, file must be writable by webserver
 user.
