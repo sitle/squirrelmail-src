@@ -1,6 +1,6 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
+# <your language> SquirrelMail HTML Mail Plugin Translation File
+# Copyright (c) 2005 The Squirrelmail Development Team
+# This file is distributed under the same license as the SquirrelMail package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #, fuzzy
@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-03-18 08:50+0100\n"
+"POT-Creation-Date: 2005-06-15 01:34-0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,43 +16,57 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: functions.php:29 functions.php:601
 msgid "HTML"
 msgstr ""
 
-#: functions.php:30
-msgid ""
-"Warning: all special formatting will be lost.  Are you sure you want to send "
-"your message in plain text format?"
+msgid "Warning: all special formatting will be lost.  Are you sure you want to send your message in plain text format?"
 msgstr ""
 
-#: functions.php:30 functions.php:596
 msgid "Plain Text"
 msgstr ""
 
-#: functions.php:98
-#, php-format
-msgid ""
-"FATAL: HTML_Mail plugin must come AFTER %s in plugins array.  Please modify "
-"plugin order using conf.pl or by editing config/config.php"
+msgid "Compose in HTML"
 msgstr ""
 
-#: functions.php:462
+#, c-format
+msgid "FATAL: HTML_Mail plugin must come AFTER %s in plugins array.  Please modify plugin order using conf.pl or by editing config/config.php"
+msgstr ""
+
 msgid "Subject"
 msgstr ""
 
-#: functions.php:591
+msgid "From"
+msgstr ""
+
 msgid "Default Email Composition Format:"
 msgstr ""
 
-#: functions.php:611
 msgid "Use Emoticons:"
 msgstr ""
 
-#: functions.php:616
 msgid "Yes"
 msgstr ""
 
-#: functions.php:621
 msgid "No"
+msgstr ""
+
+msgid "Only Reply In HTML When Viewing HTML Format:"
+msgstr ""
+
+msgid "(Always Attempt To Reply In HTML)"
+msgstr ""
+
+msgid "Only Allow Unsafe Images In HTML Replies When Viewing Unsafe Images:"
+msgstr ""
+
+msgid "(Always Include Unsafe Images)"
+msgstr ""
+
+msgid "HTML Editor Type:"
+msgstr ""
+
+msgid "FCKeditor"
+msgstr ""
+
+msgid "HTMLArea"
 msgstr ""
