@@ -15,8 +15,8 @@ Version 1.4.5 - CVS
   - Disabled unmaintained Estonian translation.
   - Allowed use of wildcards in LDAP address book search expressions. Issue
     is specific to 1.4.5cvs and not present in older versions.
-  - Rewrite advanced identity handling to remove call to extraction of all
-    POST values.
+  - Security: Rewrite advanced identity handling to remove call to extraction
+    of all POST values. [CAN-2005-2095]
 
 Version 1.4.5 Release Candidate 1 - 15 June 2005
 ------------------------------------------------
