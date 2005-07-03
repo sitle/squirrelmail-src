@@ -334,7 +334,7 @@ iso-8859-1 symbols. Other charsets use same 8bit ranges to store different
 symbols.
 
 htmlspecialchars() sanitizes only three, four or five 7bit symbols
-(&amp;, &dquot;, '', &lt; and &gt;). htmlspecialchars() breaks only 
+(&amp;, &dquot;, ', &lt; and &gt;). htmlspecialchars() breaks only 
 <url url="http://en.wikipedia.org/wiki/ISO_2022" name="ISO-2022">
 charsets and html encoded strings.
 
@@ -350,8 +350,8 @@ url="http://www.php.net/get-html-translation-table"
 name="get_html_translation_table()"> function.
 
 If SquirrelMail charset decoding functions are used, they should apply
-htmlspecialchars to decoded string. Second use of htmlspecialchars() might break
-decoded strings.
+htmlspecialchars to decoded string automatically. Second use of 
+htmlspecialchars() might break decoded strings.
 
 <sect>Links
 <p>
