@@ -61,11 +61,11 @@ client, including strong MIME support, address books, and folder manipulation.
   <item>Unlike many PHP applications, SquirrelMail does not require MySQL or
     other database type.
   <item>If you use MySQL for the address book or for preferences, note that Pear DB
-    lib is required to be installed and available in the include
-    path.
+    library is required to be installed and available in the include path.
   <item>Aspell installed if using the SquirrelSpell plugin, For UNIX/Linux see:
     <url url="http://aspell.sourceforge.net/" name="http://aspell.sourceforge.net/">
-    or for Windows, see: <url url="http://aspell.net/win32/" name="http://aspell.net/win32/">
+    or for Windows, see: <url url="http://aspell.net/win32/"
+    name="http://aspell.net/win32/">
   <item>Japanese language support: PHP must be compiled with the
     <tt/--enable-mbstring/ option for SquirrelMail to read and write Japanese
     emails. Each user must also set their language option to Japanese.
@@ -88,7 +88,9 @@ client, including strong MIME support, address books, and folder manipulation.
 <p>
 <itemize>
   <item>Cookies must be enabled in your browser.
-  <item>15" display with 1024x768 or higher resolution.
+  <item>15" display with 1024x768 or higher resolution. It might be hard to use
+  interface on smaller displays and some customizations are required to make it
+  usable.
 </itemize>
 
 <sect>Quick Start Guide
@@ -202,6 +204,47 @@ When data directory stores many files, directory access time can be
 affected. Administrator can split preference files into subdirectories, if
 directory hashing is enabled in SquirrelMail configuration.
 
+<sect1>Configuration utility
+<p>
+SquirrelMail can be configured with <tt/conf.pl/, Perl script that is stored in
+<tt>config/</tt> directory. You can start it by running <tt>configure</tt>
+script in SquirrelMail base directory or by running <tt>conf.pl</tt> script in
+<tt>config</tt> directory.
+
+<tscreen><verb>
+# cd /path/to/squirrelmail
+# cd config
+# ./conf.pl
+</verb></tscreen>
+
+Script provides menu based configuration options.
+<tscreen><verb>
+SquirrelMail Configuration : Read: config_default.php (1.4.0)
+---------------------------------------------------------
+Main Menu --
+1.  Organization Preferences
+2.  Server Settings
+3.  Folder Defaults
+4.  General Options
+5.  Themes
+6.  Address Books
+7.  Message of the Day (MOTD)
+8.  Plugins
+9.  Database
+10. Languages
+
+D.  Set pre-defined settings for specific IMAP servers
+
+C   Turn color on
+S   Save data
+Q   Quit
+
+Command >>
+</verb></tscreen>
+
+Menu is controlled by entering numbers or letters that are listed on the left
+side.
+
 <sect1>Address book format
 <p>
 SquirrelMail stores address books in CSV format. <tt/|/ symbol is used as field
@@ -223,11 +266,218 @@ address book plugins on SquirrelMail site.
 <sect>Installing SquirrelMail
 <sect1>Quick and Dirty install
 <p>
-QuickAndDirty
+In order to use SquirrelMail, you should
+
+<sect2>Download all required software
+<p>
+You can find SquirrelMail package on <url url="http://www.squirrelmail.org"
+name="SquirrelMail site">. PHP can be found on <url url="http://www.php.net"
+name="PHP site">.
+
+<sect2>Install webserver and PHP4 (at least 4.1.0).
+<p>
+SquirrelMail needs webserver with php4 support. Check <url
+url="http://www.php.net/manual/en/install.php" name="PHP install manual"> for
+information about supported web servers and install procedures.
+
+Some Linux and Unix distributions provide precompiled web server and php packages.
+
+<sect2>Install IMAP server
+<p>
+It depends on used email system. Email server needs IMAP service that knows
+used email system layout. If you use Unix with standard sendmail server, you
+might have to install UW IMAP, Dovecot or other IMAP server, that can use email
+stored in /var/spool/mail/ directory. If you use Windows, you might have to
+enable IMAP service that is bundled with your email server. If your email server
+does not support IMAP, you might have to find some other email server product.
+
+<sect2>Unpack SquirrelMail package
+<p>
+Unpack the SquirrelMail package in a web-accessible location.
+
+<sect2>Prepare data and attachment directories
+<p>
+Select a data-dir and attachment dir, outside the webtree (e.g. in /var).
+The data-dir (for user prefs) should be owned by the user the webserver
+runs as (e.g. www-data). The attachment dir (for uploading files as
+attachments) should be file mode 0730 and in the same group as the
+webserver.
+
+If you use PHP with safe mode enabled, check chapter about safe mode.
+
+<sect2>Configure SquirrelMail
+<p>
+Run <tt>config/conf.pl</tt> from the command line. Use the D option to load
+predefined options for specific IMAP servers, and edit at least the
+Server Settings and General Options (datadir).
+
+<sect2>Check your SquirrelMail configuration
+<p>
+Browse to http://www.example.com/yourwebmaillocation/src/configtest.php
+to test your configuration for common errors.
+
+<sect2>Log into squirrelMail
+<p>
+Browse to http://www.example.com/yourwebmaillocation/ to log in.
+
 
 <sect1>Installing SquirrelMail on Unix and Linux systems
 <p>
-SquirrelMailInstallUnix
+This chapter covers installation of SquirrelMail on generic Unix or Linux
+system. It does not cover installation of operating system or tools required to
+install web server or PHP.
+
+Any version numbers used in examples are specific to the time when this
+documentation is written. If current version numbers differ, make sure that you
+are not using old, obsolete or vulnerable software.
+
+Guide uses UW IMAP server as example. This IMAP server can be used in generic
+email setup when incoming mail is stored in <tt>/var/spool/mail</tt>
+directory. If you are planning to use webmail with big number of users or with
+bigger mailboxes, consider using different IMAP server and redesign entire email
+system.
+
+<sect2>Download required software
+<p>
+You will need:
+<itemize>
+  <item>Apache - <url url="http://httpd.apache.org/download.cgi"
+  name="http://httpd.apache.org/download.cgi">
+  <item>PHP - <url url="http://www.php.net/downloads.php"
+  name="http://www.php.net/downloads.php">
+  <item>UW IMAP - <url url="http://www.washington.edu/imap/"
+  name="http://www.washington.edu/imap/">
+  <item>SquirrelMail - <url url="http://www.squirrelmail.org/download.php"
+  name="http://www.squirrelmail.org/download.php"> 
+</itemize>
+
+<tscreen><verb>
+# install -d /usr/local/src/downloads
+# cd /usr/local/src/downloads
+# wget http://some-apache-mirror-server/apache/httpd/httpd-2.0.54.tar.gz
+# wget http://some-php-mirror-server/get/php-4.3.11.tar.bz2/from/this/mirror
+# wget ftp://ftp.washington.edu/imap/imap.tar.Z
+# wget http://some-sourceforge-mirror/some-path/squirrelmail-1.4.5.tar.bz2
+</verb></tscreen>
+
+<sect2>Unpack and install apache
+<p>
+<tscreen><verb>
+# cd /usr/local/src
+# tar -xzvf /usr/local/src/downloads/httpd-2.0.54.tar.gz
+# cd httpd-2.0.54
+# ./configure --prefix=/usr/local/apache --enable-module=so
+# make
+# make install
+</verb></tscreen>
+
+<sect2>Unpack and install php
+<p>
+<tscreen><verb>
+# cd /usr/local/src
+# tar --bzip2 -xvf /usr/local/src/downloads/php-4.3.11.tar.bz2
+# cd php-4.3.11
+# ./configure --prefix=/usr/local/php \
+> --with-apxs2=/usr/local/apache/bin/apxs
+# make
+# make install
+</verb></tscreen>
+
+If you configure PHP compilation with <tt/--disable-all/ option, you must add
+<tt/--enable-session/ and  <tt/--with-pcre-regex/ options.
+
+<sect2>Add PHP support to apache
+<p>
+<tscreen><verb>
+&lt;IfModule mod_php4.c&gt;
+  AddType application/x-httpd-php .php
+&lt;/IfModule&gt;
+</verb></tscreen>
+
+<sect2>Restart apache and check if php is working
+<p>
+<tscreen><verb>
+/usr/local/apache/bin/apachectl graceful
+</verb></tscreen>
+
+<tscreen><verb>
+&lt;?php phpinfo(); ?&gt;
+</verb></tscreen>
+
+<sect2>Unpack and install imap server
+<p>
+Unpack UW IMAP archive.
+<tscreen><verb>
+# cd /usr/local/src
+# tar -xzvf /usr/local/src/downloads/imap-2004e.tar.Z
+</verb></tscreen>
+
+Compile UW IMAP
+<tscreen><verb>
+make port-name EXTRADRIVERS='' SSLTYPE=unix
+</verb></tscreen>
+
+Replace <tt>port-name</tt> with name that matches your system. Check Makefile
+for possible values. If you haven't installed OpenSSL libraries and headers, use
+<tt>SSLTYPE=none</tt> instead of <tt>SSLTYPE=unix</tt>.
+
+Install IMAP server binary
+<tscreen><verb>
+strip imapd/imapd
+install -d /usr/local/libexec/
+cp imapd/imapd /usr/local/libexec/
+</verb></tscreen>
+
+Enable IMAP server in inetd.conf
+<tscreen><verb>
+imap2 stream tcp nowait root /usr/sbin/tcpd /usr/local/libexec/imapd
+</verb></tscreen>
+
+Restart inetd
+
+<sect2>Prepare SquirrelMail directories
+<p>
+<tscreen><verb>
+# mkdir /usr/local/squirrelmail
+# cd /usr/local/squirrelmail
+# mkdir data temp
+# chgrp nogroup data temp
+# chmod 0730 data temp
+</verb></tscreen>
+
+<sect2>Unpack SquirrelMail
+<p>
+<tscreen><verb>
+# cd /usr/local/squirrelmail
+# tar --bzip2 -xvf /usr/local/src/downloads/squirrelmail-1.4.5.tar.bz2
+# mv squirrelmail-1.4.5 www
+</verb></tscreen>
+
+<sect2>Configure SquirrelMail
+<p>
+Start SquirrelMail configuration utility. Configure SquirrelMail with UW
+preset. Set data and attachment directories.
+
+<sect2>Configure access to SquirrelMail in Apache
+<p>
+Modify httpd.conf
+
+<tscreen><verb>
+Alias /squirrelmail /usr/local/squirrelmail/www
+&lt;Directory /usr/local/squirrelmail/www&gt;
+  Options Indexes
+  AllowOverride none
+  DirectoryIndex index.php
+  Order allow,deny
+  allow from all
+&lt;/Directory&gt;
+</verb></tscreen>
+
+<sect2>Log into SquirrelMail
+<p>
+After you add alias to SquirrelMail in apache configuration and restart apache,
+you should be able to access SquirrelMail by going to
+<tt>http://your-server/squirrelmail</tt>.
 
 <sect1>Installing SquirrelMail on Windows systems with Apache webserver
 <p>
@@ -591,13 +841,13 @@ On sites with many users you might want to store your user data in a
 database instead of in files. This document describes how to configure
 SquirrelMail to do this.
 
-Methods for storing both personal addressbooks and user preferences in
+Methods for storing both personal address books and user preferences in
 a database is included as a part of the distribution.
 
 <sect2>Configuring PEAR DB
 <p>
 For this to work you must have the PEAR classes installed, these are part of
-PHP. Once these are installed you must have sure the directory containg them is
+PHP. Once these are installed you must have sure the directory containing them is
 a part of your PHP include_path. See the PHP documentation for information on
 how to do that. 
 
@@ -605,7 +855,7 @@ Under Mandrake Linux the PEAR classes are installed as part of the php-devel
 package and under FreeBSD they are installed as part of the mod_php4 or php4
 port/package. Debian packages pear libraries in php4-pear package.
 
-<sect2>Configuring addressbooks in database
+<sect2>Configuring address books in database
 <p>
 First you need to create a database and a table to store the data in.
 Create a database user with access to read and write in that table.
@@ -817,7 +1067,7 @@ following caching IMAP proxies have worked well for other people with
 SquirrelMail.
 
 <url url="http://www.imapproxy.org/" name="Up-imapproxy"> is a caching IMAP
-proxy server. It is opensource and free. The package is written in C. Tested on
+proxy server. It is open source and free. The package is written in C. Tested on
 Solaris, Linux, IRIX and FreeBSD. The latest version allows log levels to be
 configured at runtime from the config file.
 
@@ -877,6 +1127,38 @@ Option displays two plugin categories. Installed and available. Installed
 category lists plugins that are enabled. Available category lists plugins are
 not enabled.
 
+<tscreen><verb>
+SquirrelMail Configuration : Read: config.php (1.4.0)
+---------------------------------------------------------
+Plugins
+  Installed Plugins
+    1. abook_take
+    2. delete_move_next
+    3. listcommands
+    4. message_details
+
+  Available Plugins:
+    5. administrator
+    6. bug_report
+    7. calendar
+    8. filters
+    9. fortune
+    10. info
+    11. mail_fetch
+    12. newmail
+    13. sent_subfolders
+    14. spamcop
+    15. squirrelspell
+    16. translate
+
+R   Return to Main Menu
+C   Turn color on
+S   Save data
+Q   Quit
+
+Command &gt;&gt;
+</verb></tscreen>
+
 Each plugin has number written next to plugin's name. If you enter that number
 in command line, you enable or disable plugin.
 
@@ -887,7 +1169,7 @@ Configuration utility should display any plugin present in plugins/ directory.
 SquirrelMail users are able to customize look of interface by selecting custom
 theme and font style.
 
-SquirrelMail themes define interface colors. Each theme is set of 15 or more
+SquirrelMail themes define interface colors. Each theme is a set of 15 or more
 colors.
 
 You can easily create own theme. It is very simple. Just go into the
@@ -1113,6 +1395,27 @@ If you want to use global file based address book in older SquirrelMail
 versions, take a look at <tt>functions/addressbook.php file</tt>. It contains some
 comments that explain how to do that without configuration utility.
 
+<sect>Security
+<p>
+This chapter should discuss some security aspects of your SquirrelMail
+installation.
+
+<sect1>Main SquirrelMail attack vectors
+<p>
+XSS and user level crackers
+
+<sect1>HTTP vs HTTPS
+<p>
+About web traffic encryption
+
+<sect1>IMAP vs IMAPS
+<p>
+Information about sniffing local interface.
+
+<sect1>Data directory security
+<p>
+About data directory security.
+
 <sect>FAQ
 <p>
 Daily questions
@@ -1122,6 +1425,130 @@ Daily questions
 <sect2>unknown function session_id() call
 <p>
 missing session support
+
+<sect2>Safe Mode
+<p>
+Running SquirrelMail with PHP [safe_mode] restrictions.
+
+Settings that are used in safe mode
+<itemize>
+  <item>safe_mode
+  <item>safe_mode_gid
+  <item>safe_mode_include_dir
+  <item>safe_mode_exec_dir
+  <item>safe_mode_allowed_env_vars
+  <item>safe_mode_protected_env_vars
+  <item>open_basedir
+  <item>disable_functions
+  <item>disable_classes
+</itemize>
+
+It is possible to run SquirrelMail with safe_mode limitations, if you solve
+some problems. 
+
+<em>1. safe_mode controls list of allowed executables.</em>
+
+SquirrelMail has to use SMTP in order to send email or provider has to provide
+wrapper for /usr/sbin/sendmail. 
+
+Fortune and SquirrelSpell plugins don't work, if provider does not add path to
+fortune, ispell/aspell and cat programs into safe_mode_exec_dir variable. 
+
+<em>2. safe_mode controls list of allowed environment variables.</em>
+
+time zone settings are not available if use of TZ variable is not allowed.
+
+gettext extension on some operating systems depends on environment
+variables. SquirrelMail does not set them in safe mode.
+
+<em>3. directory hashing does not work</em>
+
+
+<em>4. path to data directory should be relative.</em>
+
+SquirrelMail configuration tools allow relative paths only with one upper
+level. Longer relative paths are converted to full path.
+
+<em>5. mail_fetch plugin can't control PHP script execution time limits.</em>
+
+Your email fetching time must be within PHP max_execution_time limits.
+
+<em>6. File ownership restrictions</em>
+
+Default preference file must be owned by same user that owns other SquirrelMail
+scrips. It must be readable by webserver's user.
+
+<sect1>UW IMAP
+<sect2>Login Disabled
+<p>
+uw-imapd server disables plain text logins by default in 2002 and newer
+versions. This was done in order to follow security recommendations by IETF (The
+Internet Engineering Task Force) and strict RFC 3501 security recommendations.
+
+You can see this by telneting to your IMAP server and checking for
+LOGIN=DISABLED string in CAPABILITY description.
+
+SquirrelMail uses plain text logins. In order to enable plain text logins, you
+will have to recompile UW IMAP or use the semi-official /etc/c-client.cf
+configuration file.
+
+See doc/imaprc.txt for further information. In order to enable plain text
+logins, you must add
+<verb>
+set disable-plaintext nil
+</verb>
+
+Please remember that you need to use specific phrase in first line of
+/etc/c-client.cf. This phrase does not look like normal option, but uw imap will
+refuse to parse other options, if this phrase is not present. Correct sentence
+can be found in uw imap source or imaprc.txt document.
+
+WARNING: uw imap developers discourage usage of /etc/c-client.cf options
+
+<em>OS specific notes</em>
+<descrip>
+  <tag/Debian Sarge 3.1 and newer versions/
+  Plain text logins are not enabled. See bugs 
+  <url url="http://bugs.debian.org/227709" name="227709">,
+  <url url="http://bugs.debian.org/239537" name="239537">,
+  <url url="http://bugs.debian.org/273687" name="273687">.
+
+  Create c-client.cf file manually or <tt>dpkg-reconfigure uw-imapd</tt>, enable
+  IMAPS and set SquirrelMail to use IMAP over SSL or use different IMAP server.
+
+  <tag/OpenBSD/
+  there are two different packaging flavors. [default package] and
+  [package with plaintext support]. Use plaintext package or enable plain text
+  login in <tt>/etc/c-client.cf</tt>
+
+  <tag/FreeBSD/
+  You need to recompile package from ports and set WITHOUT_SSL or
+  WITH_SSL_AND_PLAINTEXT variables. You must remove prepackaged versions of
+  imap-uw and cclient before doing this. If you don't want to recompile -
+  enable plain text login in /etc/c-client.cf.
+
+  <tscreen><verb>
+  cd /usr/ports/mail/imap-uw
+  env WITH_SSL_AND_PLAINTEXT=YES make
+  </verb></tscreen>
+</descrip>
+
+If you don't want to enable plain text login, you must use IMAP-SSL server on
+different port. Other programs support STARTTLS on default IMAP port, but
+SquirrelMail can't do that due to specific limitations of PHP SSL module and
+restrictions of SquirrelMail IMAP implementation. You may be able to use the
+IMAPS port of 993.
+
+Please note, that if your IMAP server is on the same host as webserver with
+SquirrelMail, SSL adds security features that are useless. During connection to
+localhost password information is not transmitted over unsafe network. If you
+want to secure your IMAP server, bind it to localhost address only or use
+tcpwrappers or firewall to disable external connections.
+
+<sect2>Long listing
+<p>
+Configure SquirrelMail with UW preset and don't remove <tt>mail/</tt> prefix in
+Folder Options.
 
 <sect1>Common interface error messages
 <sect2>Unknown username or password
@@ -1134,7 +1561,7 @@ session.gc_maxlifetime
 
 <sect2>Can't delete emails. Quota exceeded.
 <p>
-SquirrelMail's default behaviour is to move messages to the trash folder when
+SquirrelMail's default behavior is to move messages to the trash folder when
 they are deleted. If mail account has a quota and user is close to exceeding it,
 user might experience problems. IMAP protocol does not support move
 command. This is what happens when message is deleted:
@@ -1159,9 +1586,9 @@ SquirrelMail.
 </enum>
 
 When trash is disabled, user can delete unneeded messages and reduce total
-ammount of data stored in his/her account.
+amount of data stored in his/her account.
 
-Starting with SquirrelMail 1.5.0 version, there is a "Bypass Trash" checkbox when
+Starting with SquirrelMail 1.5.0 version, there is a "Bypass Trash" check box when
 viewing the message list or a message's content, that can be used to delete
 mails without changing the trash folder setting per above.
 
@@ -1172,7 +1599,7 @@ Some quota setups can ignore files placed in Trash folder.
 Where do I get support? How do I provide feedback, patches, feature 
 suggestions, bug reports.
 
-<sect1>SquirrelMail bugtracker
+<sect1>SquirrelMail bug tracker
 <p>
 SquirrelMail uses Sourceforge system to manage bugs, patches and feature
 requests. See <url url="http://www.squirrelmail.org/bugs" name="bug tracker
