@@ -6,17 +6,27 @@ msgid ""
 msgstr ""
 "Project-Id-Version: squirrelmail 1.4.5\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-06-05 00:27+0200\n"
+"POT-Creation-Date: 2005-07-03 18:50+0300\n"
 "PO-Revision-Date: 2005-07-03 14:30+0300\n"
 "Last-Translator: Tomas Kuliavas <tokul@users.sourceforge.net>\n"
 "Language-Team: Lithuanian <squirrelmail-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && (n%100<10 || n%100>=20) ? 1 : 2);"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && (n%"
+"100<10 || n%100>=20) ? 1 : 2);\n"
 
 msgid "Address Book"
 msgstr "Adresų knyga"
+
+msgid "All"
+msgstr "Visi"
+
+msgid "To"
+msgstr "Kam"
+
+msgid "Cc"
+msgstr "Cc"
 
 msgid "Name"
 msgstr "Vardas"
@@ -30,17 +40,17 @@ msgstr "Info"
 msgid "Source"
 msgstr "Šaltinis"
 
-msgid "To"
-msgstr "Kam"
-
-msgid "Cc"
-msgstr "Cc"
-
 msgid "Bcc"
 msgstr "Bcc"
 
-msgid "No persons matching your search were found"
-msgstr "Nerastas nei vienas asmuo, atitinkantis paieškos sąlygas"
+msgid "Use Addresses"
+msgstr "Naudoti adresus"
+
+msgid "Cancel"
+msgstr "Atšaukti"
+
+msgid "Address Book Search"
+msgstr "Paieška adresų knygoje"
 
 msgid "Search for"
 msgstr "Ieškoti"
@@ -57,9 +67,6 @@ msgstr "Ieškoti"
 msgid "List all"
 msgstr "Rodyti visus"
 
-msgid "Close"
-msgstr "Uždaryti"
-
 #, c-format
 msgid "Unable to list addresses from %s"
 msgstr "Nepavyko gauti adresų iš %s"
@@ -67,20 +74,14 @@ msgstr "Nepavyko gauti adresų iš %s"
 msgid "Your search failed with the following error(s)"
 msgstr "Paieška nutrūko dėl žemiau nurodytų(os) klaidų(os)"
 
-msgid "All"
-msgstr "Visi"
-
-msgid "Use Addresses"
-msgstr "Naudoti adresus"
-
-msgid "Cancel"
-msgstr "Atšaukti"
-
-msgid "Address Book Search"
-msgstr "Paieška adresų knygoje"
+msgid "No persons matching your search were found"
+msgstr "Nerastas nei vienas asmuo, atitinkantis paieškos sąlygas"
 
 msgid "Return"
 msgstr "Grįžti"
+
+msgid "Close"
+msgstr "Uždaryti"
 
 msgid "Nickname"
 msgstr "Trumpas vardas"
@@ -225,6 +226,28 @@ msgstr "Klaida: Juodraščių aplankas %s neegzistuoja."
 msgid "Server replied:"
 msgstr "Serveris atsakė:"
 
+msgid "Illegal folder name. Please select a different name."
+msgstr "Neleistinas aplanko vardas. Pasirinkite kitą vardą."
+
+msgid "Click here to go back"
+msgstr "Spragtelėkite čia, kad grįžti atgal"
+
+msgid "You have not selected a folder to delete. Please do so."
+msgstr "Bandant trinti buvo nepasirinktas joks aplankas."
+
+msgid "Delete Folder"
+msgstr "Ištrinti aplanką"
+
+#, c-format
+msgid "Are you sure you want to delete %s?"
+msgstr "Ar tikrai norite ištrinti %s?"
+
+msgid "Yes"
+msgstr "Taip"
+
+msgid "No"
+msgstr "Ne"
+
 msgid "Folders"
 msgstr "Aplankai"
 
@@ -276,9 +299,6 @@ msgstr "Pervardinti"
 msgid "No folders found"
 msgstr "Nerasta jokių aplankų"
 
-msgid "Delete Folder"
-msgstr "Ištrinti aplanką"
-
 msgid "Delete"
 msgstr "Ištrinti"
 
@@ -296,25 +316,6 @@ msgstr "Nerasta aplankų, kuriuos galima būtų užsiprenumeruoti!"
 
 msgid "Subscribe to:"
 msgstr "Užsiprenumeruoti:"
-
-msgid "Illegal folder name. Please select a different name."
-msgstr "Neleistinas aplanko vardas. Pasirinkite kitą vardą."
-
-msgid "Click here to go back"
-msgstr "Spragtelėkite čia, kad grįžti atgal"
-
-msgid "You have not selected a folder to delete. Please do so."
-msgstr "Bandant trinti buvo nepasirinktas joks aplankas."
-
-#, c-format
-msgid "Are you sure you want to delete %s?"
-msgstr "Ar tikrai norite ištrinti %s?"
-
-msgid "Yes"
-msgstr "Taip"
-
-msgid "No"
-msgstr "Ne"
 
 msgid "You have not selected a folder to rename. Please do so."
 msgstr "Bandant pervadinti buvo nepasirinktas joks aplankas."
@@ -403,69 +404,11 @@ msgstr "Slaptažodis:"
 msgid "No messages were selected."
 msgstr "Nepasirinkta nei viena žinutė."
 
-msgid "Personal Information"
-msgstr "Asmeninė informacija"
-
-msgid "Display Preferences"
-msgstr "Grafiniai nustatymai"
-
-msgid "Message Highlighting"
-msgstr "Žinučių žymėjimas"
-
-msgid "Folder Preferences"
-msgstr "Aplankų nustatymai"
-
-msgid "Index Order"
-msgstr "Rūšiavimo tvarka"
-
 msgid "Options"
 msgstr "Nustatymai"
 
-msgid "Error(s) occurred while saving your options"
-msgstr "Saugant Jūsų nustatymus įvyko klaida(os)"
-
-msgid "Some of your preference changes were not applied."
-msgstr "Dalis Jūsų nustatymų pakeitimų buvo neišsaugota."
-
-msgid "Successfully Saved Options"
-msgstr "Nustatymai sėkmingai išsaugoti"
-
-msgid "Refresh Folder List"
-msgstr "Atnaujinti aplankų sąrašą"
-
-msgid "Refresh Page"
-msgstr "Atnaujinti puslapį"
-
-msgid ""
-"This contains personal information about yourself such as your name, your "
-"email address, etc."
-msgstr "Čia jūs nustatote asmeninę informaciją (vardą, e-paštą ir kt.)"
-
-msgid ""
-"You can change the way that SquirrelMail looks and displays information to "
-"you, such as the colors, the language, and other settings."
-msgstr ""
-"Jūs galite pakeisti bendrą SquirrelMail išvaizdą, nustatydami patinkančius "
-"spalvų, kalbos ir kitus nustatymus."
-
-msgid ""
-"Based upon given criteria, incoming messages can have different background "
-"colors in the message list. This helps to easily distinguish who the "
-"messages are from, especially for mailing lists."
-msgstr ""
-"Žinutės gali būti sužymėtos skirtingomis spalvomis pagal nustatytas sąlygas. "
-"Tai leidžia skirti žinučių siuntėjus ir gali būti naudinga dirbant su "
-"persiuntimo sąrašais (mailing lists)."
-
-msgid ""
-"These settings change the way your folders are displayed and manipulated."
-msgstr "Čia jūs nustatote tai, kaip tvarkomi jūsų pašto aplankai."
-
-msgid ""
-"The order of the message index can be rearranged and changed to contain the "
-"headers in any order you want."
-msgstr ""
-"Rūšiavimo tvarka gali būti pakeista spragtelėjus ant stulpelio antraštės."
+msgid "Message Highlighting"
+msgstr "Žinučių žymėjimas"
 
 msgid "New"
 msgstr "Nauja"
@@ -548,18 +491,18 @@ msgstr "Pvz: 63aa7f"
 msgid "Matches"
 msgstr "Atitinka"
 
+msgid "Default Identity"
+msgstr "Standartinis ID"
+
 #, c-format
 msgid "Alternate Identity %d"
 msgstr "Specialus ID %d"
 
-msgid "Advanced Identities"
-msgstr "Specialūs ID"
-
-msgid "Default Identity"
-msgstr "Standartinis ID"
-
 msgid "Add a New Identity"
 msgstr "Sukurti naują ID"
+
+msgid "Advanced Identities"
+msgstr "Specialūs ID"
 
 msgid "Full Name"
 msgstr "Pilnas vardas"
@@ -578,6 +521,9 @@ msgstr "Padaryti standartiniu"
 
 msgid "Move Up"
 msgstr "Perkelti aukštyn"
+
+msgid "Index Order"
+msgstr "Rūšiavimo tvarka"
 
 msgid "Checkbox"
 msgstr "Žymeklis"
@@ -608,6 +554,61 @@ msgstr "išmesti"
 
 msgid "Return to options page"
 msgstr "Grįžti į nustatymų puslapį"
+
+msgid "Personal Information"
+msgstr "Asmeninė informacija"
+
+msgid "Display Preferences"
+msgstr "Grafiniai nustatymai"
+
+msgid "Folder Preferences"
+msgstr "Aplankų nustatymai"
+
+msgid "Error(s) occurred while saving your options"
+msgstr "Saugant Jūsų nustatymus įvyko klaida(os)"
+
+msgid "Some of your preference changes were not applied."
+msgstr "Dalis Jūsų nustatymų pakeitimų buvo neišsaugota."
+
+msgid "Successfully Saved Options"
+msgstr "Nustatymai sėkmingai išsaugoti"
+
+msgid "Refresh Folder List"
+msgstr "Atnaujinti aplankų sąrašą"
+
+msgid "Refresh Page"
+msgstr "Atnaujinti puslapį"
+
+msgid ""
+"This contains personal information about yourself such as your name, your "
+"email address, etc."
+msgstr "Čia jūs nustatote asmeninę informaciją (vardą, e-paštą ir kt.)"
+
+msgid ""
+"You can change the way that SquirrelMail looks and displays information to "
+"you, such as the colors, the language, and other settings."
+msgstr ""
+"Jūs galite pakeisti bendrą SquirrelMail išvaizdą, nustatydami patinkančius "
+"spalvų, kalbos ir kitus nustatymus."
+
+msgid ""
+"Based upon given criteria, incoming messages can have different background "
+"colors in the message list. This helps to easily distinguish who the "
+"messages are from, especially for mailing lists."
+msgstr ""
+"Žinutės gali būti sužymėtos skirtingomis spalvomis pagal nustatytas sąlygas. "
+"Tai leidžia skirti žinučių siuntėjus ir gali būti naudinga dirbant su "
+"persiuntimo sąrašais (mailing lists)."
+
+msgid ""
+"These settings change the way your folders are displayed and manipulated."
+msgstr "Čia jūs nustatote tai, kaip tvarkomi jūsų pašto aplankai."
+
+msgid ""
+"The order of the message index can be rearranged and changed to contain the "
+"headers in any order you want."
+msgstr ""
+"Rūšiavimo tvarka gali būti pakeista spragtelėjus ant stulpelio antraštės."
 
 msgid "Message not printable"
 msgstr "Žinutė netinka spausdinimui"
@@ -2202,15 +2203,15 @@ msgstr "Klaidų pranešimai:"
 msgid "Show button in toolbar"
 msgstr "Rodyti mygtuką įrankių juostoje"
 
+#, c-format
+msgid "Could not write calendar file %s"
+msgstr "Nepavyko įrašyti į kalendoriaus bylą %s!"
+
 msgid "TODAY"
 msgstr "ŠIANDIEN"
 
 msgid "Go"
 msgstr "Pirmyn"
-
-#, c-format
-msgid "Could not write calendar file %s"
-msgstr "Nepavyko įrašyti į kalendoriaus bylą %s!"
 
 msgid "l, F j Y"
 msgstr "Y F j, l"
@@ -2658,9 +2659,6 @@ msgstr ""
 "Paprastai testai naudoja IMAP komandas atitinkančias dabartinę SquirrelMail "
 "konfiguraciją. Galima naudoti ir kitas komandas."
 
-msgid "Mailinglist"
-msgstr "Susirašinėjimo sąrašas"
-
 #, c-format
 msgid ""
 "This will send a message to %s requesting help for this list. You will "
@@ -2684,6 +2682,13 @@ msgid ""
 msgstr ""
 "Ši komanda nusiųs žinutę į %s, prašydama jus pašalinti iš šio susirašinėjimo "
 "sąrašo. Bandoma bus nurašyti žemiau esantį adresą."
+
+#, fuzzy, c-format
+msgid "Unknown action: %s"
+msgstr "Neaiški klaida: %s"
+
+msgid "Mailinglist"
+msgstr "Susirašinėjimo sąrašas"
 
 msgid "Send Mail"
 msgstr "Išsiųsti žinutę"
@@ -3009,20 +3014,6 @@ msgstr "Išsaugoti žinutę"
 msgid "View Message details"
 msgstr "Peržiūrėti žinutės detales"
 
-msgid "New Mail"
-msgstr "Naujas paštas"
-
-msgid "SquirrelMail Notice:"
-msgstr "SquirrelMail informacija:"
-
-#, c-format
-msgid "You have %s new message"
-msgstr "Jūs turite %s naują žinutę"
-
-#, c-format
-msgid "You have %s new messages"
-msgstr "Jūs turite %s naujų(as) žinučių(tes)"
-
 msgid "New Mail Notification"
 msgstr "Perspėjimai apie naujas žinutes"
 
@@ -3034,7 +3025,6 @@ msgstr ""
 "Nustatymas \"%s\" leidžia tikrinti, ar naujos žinutės pasirodo ne tik Gautų "
 "žinučių aplanke, bet ir kituose aplankuose."
 
-#, c-format
 msgid "Check all boxes, not just INBOX"
 msgstr "Tikrinti visus aplankus, ne tik gautas žinutes"
 
@@ -3046,7 +3036,6 @@ msgstr ""
 "Pasirinkdami nustatymą %s, įjungsite naujo naršyklės lango iššokimą "
 "pasirodžius naujoms žinutėms (reikalauja JavaScript palaikymo naršyklėje)."
 
-#, c-format
 msgid "Show popup window on new mail"
 msgstr "Iškviesti naują langą pasirodžius naujoms žinutėms"
 
@@ -3062,7 +3051,6 @@ msgstr ""
 "anksčiau. Tai leidžia išvengti pastoviai lendančių langų ar garsų apie tas "
 "pačias žinutes."
 
-#, c-format
 msgid "Count only messages that are RECENT"
 msgstr "Įvertinti tik paskutines žinutes"
 
@@ -3078,7 +3066,6 @@ msgstr ""
 "garantuotai veikia tik IE, kitos naršyklės gali neveikti arba visai "
 "nereaguoti). Galioja nepriklausomai nuo \"%s\" nustatymo."
 
-#, c-format
 msgid "Change title on supported browsers"
 msgstr "Pakeisti antraštę, jei naršyklė tai palaiko"
 
@@ -3092,7 +3079,6 @@ msgstr ""
 "žinutes išleisdama kokius nors garsus. Jums teks nurodyti, ką būtent turės "
 "groti naršyklė."
 
-#, c-format
 msgid "Enable Media Playing"
 msgstr "Groti garsus"
 
@@ -3104,7 +3090,6 @@ msgstr ""
 "Garsus galima pasirinkti iš %s. Nenurodžius nieko, %s, garsas nebus "
 "naudojamas."
 
-#, c-format
 msgid "Select server file"
 msgstr "Pasirinkti bylą serveryje"
 
@@ -3119,6 +3104,20 @@ msgstr "Patikrinti"
 
 msgid "Current File:"
 msgstr "Dabar nustatyta byla:"
+
+msgid "New Mail"
+msgstr "Naujas paštas"
+
+msgid "SquirrelMail Notice:"
+msgstr "SquirrelMail informacija:"
+
+#, c-format
+msgid "You have %s new message"
+msgstr "Jūs turite %s naują žinutę"
+
+#, c-format
+msgid "You have %s new messages"
+msgstr "Jūs turite %s naujų(as) žinučių(tes)"
 
 msgid "NewMail Options"
 msgstr "Naujų žinučių nustatymai"
@@ -3548,25 +3547,6 @@ msgstr ""
 msgid "No errors found"
 msgstr "Nerasta jokių klaidų"
 
-msgid ""
-"Your personal dictionary has been encrypted and is now stored in an "
-"encrypted format."
-msgstr ""
-"Jūsų asmeninis žodynas buvo užkoduotas ir dabar yra saugomas užkoduotu "
-"formatu."
-
-msgid ""
-"Your personal dictionary has been decrypted and is now stored as plain text."
-msgstr ""
-"Jūsų asmeninis žodynas buvo atkoduotas ir dabar yra saugomas paprasto teksto "
-"formatu."
-
-msgid "No action requested."
-msgstr "Nepasirinktas joks veiksmas."
-
-msgid "Personal Dictionary Crypto Settings"
-msgstr "Asmeninio žodyno kodavimo nustatymai"
-
 msgid "Your personal dictionary was erased."
 msgstr "Jūsų asmeninis žodynas ištrintas"
 
@@ -3604,6 +3584,25 @@ msgstr ""
 
 msgid "Dictionary re-encrypted"
 msgstr "Žodynas perkoduotas"
+
+msgid ""
+"Your personal dictionary has been encrypted and is now stored in an "
+"encrypted format."
+msgstr ""
+"Jūsų asmeninis žodynas buvo užkoduotas ir dabar yra saugomas užkoduotu "
+"formatu."
+
+msgid ""
+"Your personal dictionary has been decrypted and is now stored as plain text."
+msgstr ""
+"Jūsų asmeninis žodynas buvo atkoduotas ir dabar yra saugomas paprasto teksto "
+"formatu."
+
+msgid "No action requested."
+msgstr "Nepasirinktas joks veiksmas."
+
+msgid "Personal Dictionary Crypto Settings"
+msgstr "Asmeninio žodyno kodavimo nustatymai"
 
 msgid "Personal Dictionary"
 msgstr "Asmeninis žodynas"
@@ -3967,4 +3966,3 @@ msgstr "Nepristatytos žinutės antraštės"
 
 msgid "This image has been removed for security reasons"
 msgstr "Šis piešinys buvo pašalintas saugumo sumetimais"
-
