@@ -5,9 +5,9 @@
 # Marcos Tadeu <marcos@v2r.com.br>, 2003-2005.
 msgid ""
 msgstr ""
-"Project-Id-Version: squirrelmail 1.4.5\n"
+"Project-Id-Version: squirrelmail\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-06-05 00:27+0200\n"
+"POT-Creation-Date: 2005-07-03 18:50+0300\n"
 "PO-Revision-Date: 2005-06-28 14:21-0300\n"
 "Last-Translator: Marcos Tadeu <marcos@v2r.com.br>\n"
 "Language-Team: Portugues Brasileiro <squirrelmail-i18n@lists.sourceforge.net>\n"
@@ -19,6 +19,15 @@ msgstr ""
 
 msgid "Address Book"
 msgstr "Livro de Endereços"
+
+msgid "All"
+msgstr "Todos"
+
+msgid "To"
+msgstr "Para"
+
+msgid "Cc"
+msgstr "CC"
 
 msgid "Name"
 msgstr "Nome"
@@ -32,17 +41,17 @@ msgstr "Info"
 msgid "Source"
 msgstr "Fonte"
 
-msgid "To"
-msgstr "Para"
-
-msgid "Cc"
-msgstr "CC"
-
 msgid "Bcc"
 msgstr "Bcc"
 
-msgid "No persons matching your search were found"
-msgstr "Não foram encontradas pessoas para a pesquisa solicitada."
+msgid "Use Addresses"
+msgstr "Usar Endereços"
+
+msgid "Cancel"
+msgstr "Cancela"
+
+msgid "Address Book Search"
+msgstr "Pesquisa no Livro de Endereços"
 
 msgid "Search for"
 msgstr "Procurar por"
@@ -59,9 +68,6 @@ msgstr "Procurar"
 msgid "List all"
 msgstr "Listar todos"
 
-msgid "Close"
-msgstr "Fechar"
-
 #, c-format
 msgid "Unable to list addresses from %s"
 msgstr "Impossível listar endereços de %s"
@@ -69,20 +75,14 @@ msgstr "Impossível listar endereços de %s"
 msgid "Your search failed with the following error(s)"
 msgstr "Sua pesquisa falhou retornando o(s) seguinte(s) erro(s)"
 
-msgid "All"
-msgstr "Todos"
-
-msgid "Use Addresses"
-msgstr "Usar Endereços"
-
-msgid "Cancel"
-msgstr "Cancela"
-
-msgid "Address Book Search"
-msgstr "Pesquisa no Livro de Endereços"
+msgid "No persons matching your search were found"
+msgstr "Não foram encontradas pessoas para a pesquisa solicitada."
 
 msgid "Return"
 msgstr "Voltar"
+
+msgid "Close"
+msgstr "Fechar"
 
 msgid "Nickname"
 msgstr "Apelido"
@@ -106,7 +106,8 @@ msgid "Add to:"
 msgstr "Adicionar a:"
 
 msgid "No personal address book is defined. Contact administrator."
-msgstr "Nenhum livro de endereços pessoais está definido. Contacte o administrador."
+msgstr ""
+"Nenhum livro de endereços pessoais está definido. Contacte o administrador."
 
 msgid "You can only edit one address at the time"
 msgstr "Você pode editar somente um endereço por vez"
@@ -226,6 +227,28 @@ msgstr "Erro: a pasta de rascunho %s não existe."
 msgid "Server replied:"
 msgstr "Resposta do servidor: "
 
+msgid "Illegal folder name. Please select a different name."
+msgstr "Nome ilegal para pasta. Por favor escolha um nome diferente."
+
+msgid "Click here to go back"
+msgstr "Clique aqui para voltar"
+
+msgid "You have not selected a folder to delete. Please do so."
+msgstr "Você não selecionou uma pasta para apagar. Por favor, faça-o."
+
+msgid "Delete Folder"
+msgstr "Apagar Pasta"
+
+#, c-format
+msgid "Are you sure you want to delete %s?"
+msgstr "Deseja realmente apagar %s?"
+
+msgid "Yes"
+msgstr "Sim"
+
+msgid "No"
+msgstr "Não"
+
 msgid "Folders"
 msgstr "Pastas"
 
@@ -277,9 +300,6 @@ msgstr "Renomear"
 msgid "No folders found"
 msgstr "Nenhuma pasta encontrada"
 
-msgid "Delete Folder"
-msgstr "Apagar Pasta"
-
 msgid "Delete"
 msgstr "Apagar"
 
@@ -297,25 +317,6 @@ msgstr "Não foi encontrada nenhuma pasta para inscrever!"
 
 msgid "Subscribe to:"
 msgstr "Inscrever em:"
-
-msgid "Illegal folder name. Please select a different name."
-msgstr "Nome ilegal para pasta. Por favor escolha um nome diferente."
-
-msgid "Click here to go back"
-msgstr "Clique aqui para voltar"
-
-msgid "You have not selected a folder to delete. Please do so."
-msgstr "Você não selecionou uma pasta para apagar. Por favor, faça-o."
-
-#, c-format
-msgid "Are you sure you want to delete %s?"
-msgstr "Deseja realmente apagar %s?"
-
-msgid "Yes"
-msgstr "Sim"
-
-msgid "No"
-msgstr "Não"
 
 msgid "You have not selected a folder to rename. Please do so."
 msgstr "Você não selecionou uma pasta para renomear. Por favor, faça-o."
@@ -406,71 +407,11 @@ msgstr "Senha:"
 msgid "No messages were selected."
 msgstr "Nenhuma mensagem selecionada."
 
-msgid "Personal Information"
-msgstr "Informações Pessoais"
-
-msgid "Display Preferences"
-msgstr "Preferências de Exibição"
-
-msgid "Message Highlighting"
-msgstr "Destacando mensagem"
-
-msgid "Folder Preferences"
-msgstr "Preferências de Pastas"
-
-msgid "Index Order"
-msgstr "Ordem de indexação"
-
 msgid "Options"
 msgstr "Opções"
 
-msgid "Error(s) occurred while saving your options"
-msgstr "Ocorreu(ram) erro(s) enquanto salvava suas opções"
-
-msgid "Some of your preference changes were not applied."
-msgstr "Alguma(s) de sua(s) alteração(ões) de preferências não são aplicáveis."
-
-msgid "Successfully Saved Options"
-msgstr "Opções salvas com sucesso!"
-
-msgid "Refresh Folder List"
-msgstr "Atualizar lista de pastas"
-
-msgid "Refresh Page"
-msgstr "Atualizar página"
-
-msgid ""
-"This contains personal information about yourself such as your name, your "
-"email address, etc."
-msgstr ""
-"Contém informações pessoais sobre você, tais como nome, seu endereço de "
-"email, etc."
-
-msgid ""
-"You can change the way that SquirrelMail looks and displays information to "
-"you, such as the colors, the language, and other settings."
-msgstr ""
-"Você pode alterar a forma como o SquirrelMail apresenta informação para "
-"você, como as cores, idioma e outras características."
-
-msgid ""
-"Based upon given criteria, incoming messages can have different background "
-"colors in the message list. This helps to easily distinguish who the "
-"messages are from, especially for mailing lists."
-msgstr ""
-"Baseado nos critérios fornecidos, as mensagens recebidas podem ter "
-"direfernte cores de fundo na lista de mensagens. Isto facilita distinguir "
-"quem está enviando as mensagens, especialmente em listas de mensagens."
-
-msgid "These settings change the way your folders are displayed and manipulated."
-msgstr "Estas opções alteram a forma que as pastas são apresentadas e manipuladas."
-
-msgid ""
-"The order of the message index can be rearranged and changed to contain the "
-"headers in any order you want."
-msgstr ""
-"A ordem que as mensagens estão indexadas pode ser alterada para conter os "
-"cabeçalhos em qualquer ordem que você queira."
+msgid "Message Highlighting"
+msgstr "Destacando mensagem"
 
 msgid "New"
 msgstr "Novo"
@@ -553,18 +494,18 @@ msgstr "Ex: 63aa7f"
 msgid "Matches"
 msgstr "Encontrados"
 
+msgid "Default Identity"
+msgstr "Identificação Padrão"
+
 #, c-format
 msgid "Alternate Identity %d"
 msgstr "Identificação Alternativa %d"
 
-msgid "Advanced Identities"
-msgstr "Identificação Avançada"
-
-msgid "Default Identity"
-msgstr "Identificação Padrão"
-
 msgid "Add a New Identity"
 msgstr "Adicionar nova Identidade"
+
+msgid "Advanced Identities"
+msgstr "Identificação Avançada"
 
 msgid "Full Name"
 msgstr "Nome completo"
@@ -583,6 +524,9 @@ msgstr "Criar Padrão"
 
 msgid "Move Up"
 msgstr "Mover Acima"
+
+msgid "Index Order"
+msgstr "Ordem de indexação"
 
 msgid "Checkbox"
 msgstr "Checkbox"
@@ -613,6 +557,65 @@ msgstr "remover"
 
 msgid "Return to options page"
 msgstr "Voltar para página de opções"
+
+msgid "Personal Information"
+msgstr "Informações Pessoais"
+
+msgid "Display Preferences"
+msgstr "Preferências de Exibição"
+
+msgid "Folder Preferences"
+msgstr "Preferências de Pastas"
+
+msgid "Error(s) occurred while saving your options"
+msgstr "Ocorreu(ram) erro(s) enquanto salvava suas opções"
+
+msgid "Some of your preference changes were not applied."
+msgstr "Alguma(s) de sua(s) alteração(ões) de preferências não são aplicáveis."
+
+msgid "Successfully Saved Options"
+msgstr "Opções salvas com sucesso!"
+
+msgid "Refresh Folder List"
+msgstr "Atualizar lista de pastas"
+
+msgid "Refresh Page"
+msgstr "Atualizar página"
+
+msgid ""
+"This contains personal information about yourself such as your name, your "
+"email address, etc."
+msgstr ""
+"Contém informações pessoais sobre você, tais como nome, seu endereço de "
+"email, etc."
+
+msgid ""
+"You can change the way that SquirrelMail looks and displays information to "
+"you, such as the colors, the language, and other settings."
+msgstr ""
+"Você pode alterar a forma como o SquirrelMail apresenta informação para "
+"você, como as cores, idioma e outras características."
+
+msgid ""
+"Based upon given criteria, incoming messages can have different background "
+"colors in the message list. This helps to easily distinguish who the "
+"messages are from, especially for mailing lists."
+msgstr ""
+"Baseado nos critérios fornecidos, as mensagens recebidas podem ter "
+"direfernte cores de fundo na lista de mensagens. Isto facilita distinguir "
+"quem está enviando as mensagens, especialmente em listas de mensagens."
+
+msgid ""
+"These settings change the way your folders are displayed and manipulated."
+msgstr ""
+"Estas opções alteram a forma que as pastas são apresentadas e manipuladas."
+
+msgid ""
+"The order of the message index can be rearranged and changed to contain the "
+"headers in any order you want."
+msgstr ""
+"A ordem que as mensagens estão indexadas pode ser alterada para conter os "
+"cabeçalhos em qualquer ordem que você queira."
 
 msgid "Message not printable"
 msgstr "A mensagem não pode ser impressa"
@@ -813,8 +816,10 @@ msgstr "Vendo cabeçalho completo"
 msgid "Viewing a text attachment"
 msgstr "Visualizando texto anexado"
 
-msgid "Could not include PEAR database functions required for the database backend."
-msgstr "As funções necessárisas ao banco de dados PEAR não puderam ser incluídas."
+msgid ""
+"Could not include PEAR database functions required for the database backend."
+msgstr ""
+"As funções necessárisas ao banco de dados PEAR não puderam ser incluídas."
 
 #, c-format
 msgid "Is PEAR installed, and is the include path set correctly to find %s?"
@@ -1155,7 +1160,8 @@ msgid "Error connecting to IMAP server: %s."
 msgstr "Erro ao conectar com o servidor IMAP: %s."
 
 msgid "The IMAP server is reporting that plain text logins are disabled."
-msgstr "O servidor IMAP informou que o login com texto plano está desabilitada."
+msgstr ""
+"O servidor IMAP informou que o login com texto plano está desabilitada."
 
 msgid "Using CRAM-MD5 or DIGEST-MD5 authentication instead may work."
 msgstr "Usar CRAM-MD5 ou DIGEST-MD5 no lugar deve funcionar."
@@ -1284,7 +1290,8 @@ msgstr "A estrutura do corpo de mensagem fornecida pelo seu servidor imap:"
 msgid ""
 "Body retrieval error. The reason for this is most probably that the message "
 "is malformed."
-msgstr "Erro na recuperação do corpo. Provavelmente esta mensagem está mal formada."
+msgstr ""
+"Erro na recuperação do corpo. Provavelmente esta mensagem está mal formada."
 
 msgid "Command:"
 msgstr "Comando:"
@@ -2033,7 +2040,6 @@ msgstr "Idioma Padrão"
 msgid "Default Charset"
 msgstr "Conjunto de caracteres padrão"
 
-# fuzzy
 msgid "Enable lossy encoding"
 msgstr "Habilitar codificação \"lossy\""
 
@@ -2204,15 +2210,15 @@ msgstr "Relatório de defeitos (Bugs):"
 msgid "Show button in toolbar"
 msgstr "Mostrar botão na barra de ferramentas"
 
+#, c-format
+msgid "Could not write calendar file %s"
+msgstr "Não foi possívelescrever no arquivo de calendário %s"
+
 msgid "TODAY"
 msgstr "HOJE"
 
 msgid "Go"
 msgstr "Ir"
-
-#, c-format
-msgid "Could not write calendar file %s"
-msgstr "Não foi possívelescrever no arquivo de calendário %s"
 
 msgid "l, F j Y"
 msgstr "l, F j Y"
@@ -2390,7 +2396,8 @@ msgstr ""
 "xDLS"
 
 msgid "FREE - Five-Ten-sg.com - Bulk mailers that do not use confirmed opt-in."
-msgstr "FREE - Five-Ten-sg.com - Servidores email que não usam confirmação na entrada"
+msgstr ""
+"FREE - Five-Ten-sg.com - Servidores email que não usam confirmação na entrada"
 
 msgid "FREE - Five-Ten-sg.com - Other misc. servers."
 msgstr "FREE - Five-Ten-sg.com - Outra miscelânea de servidores."
@@ -2466,7 +2473,8 @@ msgstr ""
 msgid ""
 "FREE - Leadmon Open Relays - Single Stage Open Relays that are not listed on "
 "other active RBLs."
-msgstr "FREE - Leadmon Open Relays - Relays abertos que não estã listados em outros."
+msgstr ""
+"FREE - Leadmon Open Relays - Relays abertos que não estã listados em outros."
 
 msgid ""
 "FREE - Leadmon Multi-stage - Multi-Stage Open Relays that are not listed on "
@@ -2493,7 +2501,8 @@ msgstr ""
 "enviadores diretos de SPAM."
 
 msgid "FREE, for now - Not Just Another Blacklist - Dial-up IPs."
-msgstr "FREE, por enquanto - Not Just Another Blacklist - IPs de acessos discados."
+msgstr ""
+"FREE, por enquanto - Not Just Another Blacklist - IPs de acessos discados."
 
 msgid "FREE - Distributed Sender Boycott List - Confirmed Relays"
 msgstr "FREE - Distributed Sender Boycott List - Relays confirmados"
@@ -2509,8 +2518,10 @@ msgstr "FREE - Distributed Sender Boycott List - Relays não confirmados"
 msgid "WARNING! You must enter something to search for."
 msgstr "AVISO: Você deve entrar com algo para procurar."
 
-msgid "WARNING! Header filters should be of the format &quot;Header: value&quot;"
-msgstr "AVISO! Filtros de cabeçalho devem estar no formato &quot;Header: value&quot;"
+msgid ""
+"WARNING! Header filters should be of the format &quot;Header: value&quot;"
+msgstr ""
+"AVISO! Filtros de cabeçalho devem estar no formato &quot;Header: value&quot;"
 
 msgid "Saved Scan type"
 msgstr "Tipo de verificação salva"
@@ -2657,9 +2668,6 @@ msgstr ""
 "Estes testes usam os comandos do IMAP do Squirrelmail e sua configuração "
 "atual. Comandos alterados localmente podem ser usados."
 
-msgid "Mailinglist"
-msgstr "Lista de E-mails"
-
 #, c-format
 msgid ""
 "This will send a message to %s requesting help for this list. You will "
@@ -2683,6 +2691,13 @@ msgid ""
 msgstr ""
 "Será enviada uma mensagem a %s requisitando sua desinscrição desta lista. "
 "Irá tentar desinscrever o endereço abaixo."
+
+#, c-format
+msgid "Unknown action: %s"
+msgstr "Ação desconhecida: %s"
+
+msgid "Mailinglist"
+msgstr "Lista de E-mails"
 
 msgid "Send Mail"
 msgstr "Enviar mensagem"
@@ -2890,7 +2905,8 @@ msgstr ""
 "por um hacker que tenha acesso ao fonte deste arquivo."
 
 msgid "If you leave password empty, it will be asked when you fetch mail."
-msgstr "Se você deixar sua senha em branco, ela será pedida quando buscar email."
+msgstr ""
+"Se você deixar sua senha em branco, ela será pedida quando buscar email."
 
 msgid "Encrypt passwords (informative only)"
 msgstr "Criptografar senhas (apenas informativo)"
@@ -3004,20 +3020,6 @@ msgstr "Salvar mensagem"
 msgid "View Message details"
 msgstr "Ver detalhes da mensagem"
 
-msgid "New Mail"
-msgstr "Nova mensagem"
-
-msgid "SquirrelMail Notice:"
-msgstr "Nota do SquirrelMail:"
-
-#, c-format
-msgid "You have %s new message"
-msgstr "Você tem %s nova mensagem"
-
-#, c-format
-msgid "You have %s new messages"
-msgstr "Você tem %s novas mensagens!"
-
 msgid "New Mail Notification"
 msgstr "Notificação de novo Email"
 
@@ -3029,7 +3031,6 @@ msgstr ""
 "A opção %s irá procurar em TODAS as pastas por mensagens não lidas, para "
 "fazer a notificação, e não apenas na Caixa de Entrada (INBOX)."
 
-#, c-format
 msgid "Check all boxes, not just INBOX"
 msgstr "Verificar todas as pastas, não apenas a Caixa de Entrada"
 
@@ -3041,7 +3042,6 @@ msgstr ""
 "Selecionando a opção %s, uma janela de aviso irá aparecer toda vez que uma "
 "mensagem ainda não lida estiver em suas pastas (necessita de JavaScript)."
 
-#, c-format
 msgid "Show popup window on new mail"
 msgstr "Mostre janela popup quando nova mensagem chegar"
 
@@ -3056,7 +3056,6 @@ msgstr ""
 "são aquelas que você acabou de receber e ainda não foram visualizadas. Isto "
 "serve para evitar que os avisos de nova mensagem apareçam o tempo todo."
 
-#, c-format
 msgid "Count only messages that are RECENT"
 msgstr "Contar apenas mensagens RECENTES"
 
@@ -3073,7 +3072,6 @@ msgstr ""
 "navegadores).  Esta opção sempre irá avisar se existirem novas mensagens, "
 "mesmo se você escolheu a opção %s."
 
-#, c-format
 msgid "Change title on supported browsers"
 msgstr "Altere o título em navegadores que suportem a opção"
 
@@ -3087,7 +3085,6 @@ msgstr ""
 "não lidas em suas pastas. Quando selecionada, você pode especificar qual o "
 "arquivo que você deseja que seja reproduzido."
 
-#, c-format
 msgid "Enable Media Playing"
 msgstr "Permitir a reprodução de mídia"
 
@@ -3100,7 +3097,6 @@ msgstr ""
 "mensagem chegar. Se nenhum arquivo for especificado, %s, nenhum som será "
 "usado."
 
-#, c-format
 msgid "Select server file"
 msgstr "Selecione o arquivo no servidor"
 
@@ -3115,6 +3111,20 @@ msgstr "Tente"
 
 msgid "Current File:"
 msgstr "Arquivo atual:"
+
+msgid "New Mail"
+msgstr "Nova mensagem"
+
+msgid "SquirrelMail Notice:"
+msgstr "Nota do SquirrelMail:"
+
+#, c-format
+msgid "You have %s new message"
+msgstr "Você tem %s nova mensagem"
+
+#, c-format
+msgid "You have %s new messages"
+msgstr "Você tem %s novas mensagens!"
 
 msgid "NewMail Options"
 msgstr "Opções de novas mensagens"
@@ -3428,8 +3438,10 @@ msgstr "Proceda"
 msgid "You must make a choice"
 msgstr "Você deve fazer uma escolha"
 
-msgid "You can either delete your dictionary or type in the old password. Not both."
-msgstr "Você pode ou apagar seu dicionário ou digitar sua senha antiga. Não os dois."
+msgid ""
+"You can either delete your dictionary or type in the old password. Not both."
+msgstr ""
+"Você pode ou apagar seu dicionário ou digitar sua senha antiga. Não os dois."
 
 msgid "This will delete your personal dictionary file. Proceed?"
 msgstr "Isto irá APAGAR seu dicionário pessoal. Posso fazer?"
@@ -3545,24 +3557,6 @@ msgstr ""
 msgid "No errors found"
 msgstr "Nenhum erro encontrado"
 
-msgid ""
-"Your personal dictionary has been encrypted and is now stored in an "
-"encrypted format."
-msgstr ""
-"Seu dicionário pessoal foi criptografado e agora será armazenado com formato "
-"de arquivo criptografado."
-
-msgid "Your personal dictionary has been decrypted and is now stored as plain text."
-msgstr ""
-"Seu dicionário pessoal foi decriptografado e agora será armazenado como "
-"texto puro."
-
-msgid "No action requested."
-msgstr "Nenhuma mudança pedida."
-
-msgid "Personal Dictionary Crypto Settings"
-msgstr "Opções de criptografia do dicionário pessoal"
-
 msgid "Your personal dictionary was erased."
 msgstr "Seu dicionário pessoal foi apagado."
 
@@ -3602,6 +3596,25 @@ msgstr ""
 
 msgid "Dictionary re-encrypted"
 msgstr "Dicionário novamente criptografado"
+
+msgid ""
+"Your personal dictionary has been encrypted and is now stored in an "
+"encrypted format."
+msgstr ""
+"Seu dicionário pessoal foi criptografado e agora será armazenado com formato "
+"de arquivo criptografado."
+
+msgid ""
+"Your personal dictionary has been decrypted and is now stored as plain text."
+msgstr ""
+"Seu dicionário pessoal foi decriptografado e agora será armazenado como "
+"texto puro."
+
+msgid "No action requested."
+msgstr "Nenhuma mudança pedida."
+
+msgid "Personal Dictionary Crypto Settings"
+msgstr "Opções de criptografia do dicionário pessoal"
 
 msgid "Personal Dictionary"
 msgstr "Dicionário Pessoal"
@@ -3666,7 +3679,8 @@ msgstr ""
 "postal, o SquirrelSpell irá reconhecer isto e pedirá a senha antiga, de modo "
 "a poder criptografar novamente com a nova senha."
 
-msgid "Please decrypt my personal dictionary and store it in a clear-text format."
+msgid ""
+"Please decrypt my personal dictionary and store it in a clear-text format."
 msgstr ""
 "Por favor, decriptografe meu dicionário pessoal e armazene-o em um formato "
 "texto."
@@ -3704,7 +3718,8 @@ msgstr ""
 "novo. Se você ainda souber a antiga senha, será possível recuperar o "
 "conteúdo e utilizar a nova senha para criptografá-lo novamente."
 
-msgid "Please encrypt my personal dictionary and store it in an encrypted format."
+msgid ""
+"Please encrypt my personal dictionary and store it in an encrypted format."
 msgstr ""
 "Por favor, criptografe meu dicionário pessoal e armazene-o em um formato "
 "criptografado."
@@ -4783,4 +4798,3 @@ msgstr "Esta imagem foi removida por motivo de segurança"
 
 #~ msgid "Not yet functional, currently does nothing"
 #~ msgstr "Ainda não funcional, não realiza nada"
-
