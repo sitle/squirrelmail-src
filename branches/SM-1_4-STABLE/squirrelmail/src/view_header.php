@@ -78,13 +78,12 @@ function parse_viewheader($imapConnection,$id, $passed_ent_id) {
             $header_output[] = array($f,$s);
         }
     }
-    sqimap_logout($imapConnection);
     return $header_output;
 }
 
 function view_header($header, $mailbox, $color) {
     sqgetGlobalVar('QUERY_STRING', $queryStr, SQ_SERVER);
-    $ret_addr = SM_PATH . 'src/read_body.php?'.$queryStr;
+~~    $ret_addr = SM_PATH . 'src/read_body.php?'.$queryStr;
 
     displayPageHeader($color, $mailbox);
 
@@ -131,5 +130,5 @@ $mbx_response = sqimap_mailbox_select($imapConnection, $mailbox, false, false, t
 
 $header = parse_viewheader($imapConnection,$passed_id, $passed_ent_id); 
 view_header($header, $mailbox, $color);
-
+sqimap_logout($imapConnection);
 ?>
