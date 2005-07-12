@@ -356,7 +356,7 @@ You will need:
 # cd /usr/local/src/downloads
 # wget http://some-apache-mirror-server/apache/httpd/httpd-2.0.54.tar.gz
 # wget http://some-php-mirror-server/get/php-4.3.11.tar.bz2/from/this/mirror
-# wget ftp://ftp.washington.edu/imap/imap.tar.Z
+# wget ftp://ftp.cac.washington.edu/mail/imap.tar.Z
 # wget http://some-sourceforge-mirror/some-path/squirrelmail-1.4.5.tar.bz2
 </verb></tscreen>
 
@@ -409,11 +409,12 @@ If you configure PHP compilation with <tt/--disable-all/ option, you must add
 Unpack UW IMAP archive.
 <tscreen><verb>
 # cd /usr/local/src
-# tar -xzvf /usr/local/src/downloads/imap-2004e.tar.Z
+# tar -xzvf /usr/local/src/downloads/imap.tar.Z
 </verb></tscreen>
 
 Compile UW IMAP
 <tscreen><verb>
+cd /usr/local/src/imap-&lt;someversion&gt;
 make port-name EXTRADRIVERS='' SSLTYPE=unix
 </verb></tscreen>
 
@@ -1876,6 +1877,8 @@ your favorite search engine.
 <sect1>IMAP servers
 <p>
 <itemize>
+  <item><url url="http://www.courier-mta.org" name="Courier">
   <item><url url="http://asg.web.cmu.edu/cyrus/" name="Cyrus">
+  <item><url url="http://www.washington.edu/imap/" name="UW IMAP">
 </itemize>
 </article>
