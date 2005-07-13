@@ -1,13 +1,13 @@
 # Swedish (sv_SE) html_mail Translation (SquirrelMail plugin)
-# Copyright (C) 1999-2005 The Squirrelmail Development Team
+# Copyright (c) 1999-2005 The SquirrelMail Project Team
 # This file is distributed under the same license as the SquirrelMail package.
 # Fredrik Jervfors <sqm_admin@fimbul.net>, 2005.
 # $Id$
 msgid ""
 msgstr ""
 "Project-Id-Version: html_mail\n"
-"POT-Creation-Date: 2005-03-18 08:50+0100\n"
-"PO-Revision-Date: 2005-03-19 23:14+0100\n"
+"POT-Creation-Date: 2005-06-15 01:34-0700\n"
+"PO-Revision-Date: 2005-07-13 09:56+0200\n"
 "Last-Translator: Fredrik Jervfors <sqm_admin@fimbul.net>\n"
 "Language-Team: Swedish <squirrelmail-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -27,6 +27,9 @@ msgstr ""
 msgid "Plain Text"
 msgstr "Ren text"
 
+msgid "Compose in HTML"
+msgstr "Skriv i HTML-läge"
+
 #, php-format
 msgid ""
 "FATAL: HTML_Mail plugin must come AFTER %s in plugins array.  Please modify "
@@ -39,6 +42,9 @@ msgstr ""
 msgid "Subject"
 msgstr "Ärende"
 
+msgid "From"
+msgstr "Från"
+
 msgid "Default Email Composition Format:"
 msgstr "Förvalt format för nya brev:"
 
@@ -50,3 +56,24 @@ msgstr "Ja"
 
 msgid "No"
 msgstr "Nej"
+
+msgid "Only Reply In HTML When Viewing HTML Format:"
+msgstr "Svara endast som HTML om brevet visas som HTML:"
+
+msgid "(Always Attempt To Reply In HTML)"
+msgstr "(Försök alltid svara som HTML)"
+
+msgid "Only Allow Unsafe Images In HTML Replies When Viewing Unsafe Images:"
+msgstr "Tillåt endast osäkra bilder när osäkra bilder visas:"
+
+msgid "(Always Include Unsafe Images)"
+msgstr "(Inkludera alltid osäkra bilder)"
+
+msgid "HTML Editor Type:"
+msgstr "HTML-editor"
+
+msgid "FCKeditor"
+msgstr "FCKeditor"
+
+msgid "HTMLArea"
+msgstr "HTMLArea"
