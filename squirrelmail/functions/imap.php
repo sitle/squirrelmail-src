@@ -18,10 +18,6 @@
 require_once(SM_PATH . 'functions/imap_mailbox.php');
 require_once(SM_PATH . 'functions/imap_messages.php');
 require_once(SM_PATH . 'functions/imap_general.php');
-
-/** This is here for bc */
-require_once(SM_PATH . 'functions/date.php');
-require_once(SM_PATH . 'functions/mailbox_display.php');
-require_once(SM_PATH . 'functions/mime.php');
+require_once(SM_PATH . 'functions/imap_search.php');
 
 ?>

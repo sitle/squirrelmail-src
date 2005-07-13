@@ -10,7 +10,7 @@
  *
  * $Id$
  */
-
+ 
 // are we configured yet?
 if( ! file_exists ( 'config/config.php' ) ) {
     echo "<html><body><p><strong>ERROR:</strong> Config file \"<tt>config/config.php</tt>\" not found. " .
@@ -19,7 +19,7 @@ if( ! file_exists ( 'config/config.php' ) ) {
 }
 
 // if we are, go ahead to the login page.
-header("Location: src/login.php\n\n");
+header('Location: src/login.php');
 
 ?>
 <html></html>

@@ -13,22 +13,18 @@
  * @package squirrelmail
  */
 
-/** @ignore */
-if (! defined('SM_PATH')) define('SM_PATH','../');
-
 /**
  * including plugin functions
  */
-include_once(SM_PATH . 'functions/plugin.php');
+require_once(SM_PATH . 'functions/plugin.php');
 
 /**
- * Find out where SquirrelMail lives and try to be smart about it.
- * The only problem would be when SquirrelMail lives in directories
+ * Find out where squirrelmail lives and try to be smart about it.
+ * The only problem would be when squirrelmail lives in directories
  * called "src", "functions", or "plugins", but people who do that need
  * to be beaten with a steel pipe anyway.
  *
- * @return string the base uri of SquirrelMail installation.
- * @since 1.2.6
+ * @return string the base uri of squirrelmail installation.
  */
 function sqm_baseuri(){
     global $base_uri, $PHP_SELF;
@@ -44,48 +40,24 @@ function sqm_baseuri(){
     return $base_uri;
 }
 
-/**
- * Displays error message and URL to message listing
- * @param string $message error message
- * @param string $mailbox mailbox name
- * @param integer $sort sort order
- * @param integer $startMessage first message
- * @param array $color color theme
- * @since 1.0
- */
 function error_message($message, $mailbox, $sort, $startMessage, $color) {
     $urlMailbox = urlencode($mailbox);
     $string = '<tr><td align="center">' . $message . '</td></tr>'.
               '<tr><td align="center">'.
               '<a href="'.sqm_baseuri()."src/right_main.php?sort=$sort&amp;startMessage=$startMessage&amp;mailbox=$urlMailbox\">".
               sprintf (_("Click here to return to %s"),
-                  strtoupper($mailbox) == 'INBOX' ? _("INBOX") : imap_utf7_decode_local($mailbox)).
+                  imap_utf7_decode_local($mailbox)).
               '</a></td></tr>';
     error_box($string, $color);
 }
 
-/**
- * Displays error message
- * @param string $message error message
- * @param array $color color theme
- * @since 1.0
- */
 function plain_error_message($message, $color) {
     error_box($message, $color);
 }
 
-/**
- * Displays error when user is logged out
- * 
- * Error strings can be overriden by logout_error hook
- * @param string $errString error message
- * @param string $errTitle title of page with error message
- * @since 1.2.6
- */
 function logout_error( $errString, $errTitle = '' ) {
     global $frame_top, $org_logo, $org_name, $org_logo_width, $org_logo_height,
-           $hide_sm_attributions, $version, $squirrelmail_language, 
-           $color, $theme, $theme_default;
+           $hide_sm_attributions, $version, $squirrelmail_language, $color;
 
     $base_uri = sqm_baseuri();
 
@@ -106,10 +78,6 @@ function logout_error( $errString, $errTitle = '' ) {
     if (!isset($frame_top) || $frame_top == '' ) {
         $frame_top = '_top';
     }
-
-    // load default theme if possible
-    if (!isset($color) && @file_exists($theme[$theme_default]['PATH']))
-        @include ($theme[$theme_default]['PATH']);
 
     if ( !isset( $color ) ) {
         $color = array();
@@ -138,7 +106,7 @@ function logout_error( $errString, $errTitle = '' ) {
              "\"$width_and_height /><br />\n";
     }
     echo ( $hide_sm_attributions ? '' :
-            '<small>' .  _("SquirrelMail Webmail Application") . '<br />'.
+            '<small>' . sprintf (_("SquirrelMail version %s"), $version) . '<br />'.
             _("By the SquirrelMail Project Team") . "<br /></small>\n" ).
          '<table cellspacing="1" cellpadding="0" bgcolor="'.$color[1].'" width="70%">'.
          '<tr><td>'.
@@ -154,17 +122,6 @@ function logout_error( $errString, $errTitle = '' ) {
          '</table></td></tr></table></center></body></html>';
 }
 
-/**
- * Displays error message
- * 
- * Since 1.4.1 function checks if page header is already displayed.
- * Since 1.4.3 and 1.5.1 function contains error_box hook.
- * Use plain_error_message() and make sure that page header is created,
- * if you want compatibility with 1.4.0 and older.
- * @param string $string
- * @param array $color
- * @since 1.3.2
- */
 function error_box($string, $color) {
     global $pageheader_sent;
 

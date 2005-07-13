@@ -15,14 +15,14 @@
  *
  * From http://www.php.net/manual/en/language.oop.serialization.php:
  *   In case this isn't clear:
- *   In 4.2 and below:
+ *   In 4.2 and below: 
  *      session.auto_start and session objects are mutually exclusive.
  *
- * We need to load the classes before the session is started,
- * except that the session could be started automatically
- * via session.auto_start. So, we'll close the session,
- * then load the classes, and reopen the session which should
- * make everything happy.
+ * We need to load the classes before the session is started, 
+ * except that the session could be started automatically 
+ * via session.auto_start. So, we'll close the session, 
+ * then load the classes, and reopen the session which should 
+ * make everything happy.  
  *
  * ** Note this means that for the 1.3.2 release, we should probably
  * recommend that people set session.auto_start=0 to avoid this altogether.
@@ -91,32 +91,18 @@ set_up_language(getPref($data_dir, $username, 'language'));
 $timeZone = getPref($data_dir, $username, 'timezone');
 
 /* Check to see if we are allowed to set the TZ environment variable.
- * We are able to do this if ...
+ * We are able to do this if ... 
  *   safe_mode is disabled OR
  *   safe_mode_allowed_env_vars is empty (you are allowed to set any) OR
- *   safe_mode_allowed_env_vars contains TZ
+ *   safe_mode_allowed_env_vars contains TZ 
  */
 $tzChangeAllowed = (!ini_get('safe_mode')) ||
-                    !strcmp(ini_get('safe_mode_allowed_env_vars'),'') ||
-                    preg_match('/^([\w_]+,)*TZ/', ini_get('safe_mode_allowed_env_vars'));
+                    !strcmp(ini_get('safe_mode_allowed_env_vars'),'') || 
+                    preg_match('/^([\w_]+,)*TZ/', ini_get('safe_mode_allowed_env_vars')); 
 
-if ( $timeZone != SMPREF_NONE && ($timeZone != "")
+if ( $timeZone != SMPREF_NONE && ($timeZone != "") 
     && $tzChangeAllowed ) {
-
-    // get time zone key, if strict or custom strict timezones are used
-    if (isset($time_zone_type) && 
-        ($time_zone_type == 1 || $time_zone_type == 3)) {
-        /* load time zone functions */
-        require_once(SM_PATH . 'include/timezones.php');
-        $realTimeZone = sq_get_tz_key($timeZone);
-    } else {
-        $realTimeZone = $timeZone;
-    }
-
-    // set time zone
-    if ($realTimeZone) {
-        putenv("TZ=".$realTimeZone);
-    }
+    putenv("TZ=".$timeZone);
 }
 
 ?>

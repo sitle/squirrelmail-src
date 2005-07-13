@@ -51,8 +51,8 @@ function get_info($doc, $pos) {
     for ($n=$pos; $n < $cntdoc; $n++) {
         if (trim(strtolower($doc[$n])) == '<chapter>'
             || trim(strtolower($doc[$n])) == '<section>') {
-            for ($n++; $n < $cntdoc
-                 && (trim(strtolower($doc[$n])) != '</section>')
+            for ($n++; $n < $cntdoc 
+                 && (trim(strtolower($doc[$n])) != '</section>') 
                  && (trim(strtolower($doc[$n])) != '</chapter>'); $n++) {
                 if (trim(strtolower($doc[$n])) == '<title>') {
                     $n++;
@@ -60,7 +60,7 @@ function get_info($doc, $pos) {
                 }
                 if (trim(strtolower($doc[$n])) == '<description>') {
                     $ary[1] = '';
-                    for ($n++;$n < $cntdoc
+                    for ($n++;$n < $cntdoc 
                          && (trim(strtolower($doc[$n])) != '</description>');
                          $n++) {
                         $ary[1] .= $doc[$n];
@@ -68,8 +68,8 @@ function get_info($doc, $pos) {
                 }
                 if (trim(strtolower($doc[$n])) == '<summary>') {
                     $ary[2] = '';
-                    for ($n++; $n < $cntdoc
-                         && (trim(strtolower($doc[$n])) != '</summary>');
+                    for ($n++; $n < $cntdoc 
+                         && (trim(strtolower($doc[$n])) != '</summary>'); 
                          $n++) {
                         $ary[2] .= $doc[$n];
                     }
@@ -154,7 +154,7 @@ if ( $chapter == 0 || !isset( $helpdir[$chapter-1] ) ) {
     echo html_tag( 'table', '', 'center', '', 'cellpadding="0" cellspacing="0" border="0"' ) .
          html_tag( 'tr' ) .
          html_tag( 'td' ) .
-         '<center><b>' . _("Table of Contents") . '</b></center><br />';
+         '<b><center>' . _("Table of Contents") . '</center></b><br />';
     echo html_tag( 'ol' );
     for ($i=0, $cnt = count($helpdir); $i < $cnt; $i++) {
         $doc = file("../help/$user_language/$helpdir[$i]");
@@ -168,7 +168,7 @@ if ( $chapter == 0 || !isset( $helpdir[$chapter-1] ) ) {
 } else {
     $doc = file("../help/$user_language/" . $helpdir[$chapter-1]);
     $help_info = get_info($doc, 0);
-    echo '<center><small>';
+    echo '<small><center>';
     if ($chapter <= 1){
         echo '<font color="' . $color[9] . '">' . _("Previous")
              . '</font> | ';
@@ -183,7 +183,7 @@ if ( $chapter == 0 || !isset( $helpdir[$chapter-1] ) ) {
         echo ' | <a href="../src/help.php?chapter=' . ($chapter+1)
              . '">' . _("Next") . '</a>';
     }
-    echo '</small></center><br />';
+    echo '</center></small><br />';
 
     echo '<font size="5"><b>' . $chapter . ' - ' . $help_info[0]
          . '</b></font><br /><br />';
@@ -193,7 +193,7 @@ if ( $chapter == 0 || !isset( $helpdir[$chapter-1] ) ) {
     } else {
         echo html_tag( 'p', $help_info[2], 'left' );
     }
-
+             
     $section = 0;
     for ($n = $help_info[3], $cnt = count($doc); $n < $cnt; $n++) {
         $section++;
@@ -211,6 +211,5 @@ do_hook('help_bottom');
 echo html_tag( 'tr',
             html_tag( 'td', '&nbsp;', 'left', $color[0] )
         );
-
 ?>
 </table></body></html>
