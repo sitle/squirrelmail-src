@@ -6,88 +6,143 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: vacation_local 1.0\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-02-15 13:00+0200\n"
-"PO-Revision-Date: 2005-02-18 17:06+0200\n"
+"POT-Creation-Date: 2005-07-20 17:05+0200\n"
+"PO-Revision-Date: 2005-07-20 17:30+0200\n"
 "Last-Translator: Tomas Kuliavas <tokul@users.sourceforge.net>\n"
 "Language-Team: Lithuanian <squirrelmail-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit"
+"Content-Transfer-Encoding: 8bit\n"
 
-#: functions.php:30
 msgid "Vacation Message"
 msgstr "Atostogų žinutė"
 
-#: functions.php:32
+#, fuzzy
 msgid ""
-"Set up an auto-reply message for your incoming email.  This can be useful "
-"when you are away on vacation."
+"Set up an auto-reply message and optionally forward your incoming email. "
+"This can be useful when you are away on vacation."
 msgstr ""
 "Čia galima nustatyti automatinį atsakymą išsiunčiamą gavus žinutę. Tai gali "
 "praversti Jūsų atostogų metu."
 
-#: vac_init.php:105
+msgid "Bad characters in list of forwarding address."
+msgstr ""
+
 msgid "Options"
 msgstr "Nustatymai"
 
-#: vac_init.php:105
 msgid "Change Vacation Message"
 msgstr "Pakeisti atostogų žinutę"
 
-#: vac_init.php:111
-msgid "Compose"
-msgstr "Rašyti"
-
-#: vac_init.php:116
-msgid ""
-"You do not have a vacation message set up.<br />You can enter one by typing "
-"the text you want to reply with in the box below."
+msgid "Settings Saved"
 msgstr ""
-"Šiuo metu Jūs nesate nusistatę atostogų žinutės.<br />"
-"Jūs galite įvesti žinutę žemiau esančiame lauke."
 
-#: vac_init.php:122
-msgid "Add Message"
-msgstr "Pridėti žinutę"
+msgid "Send auto-reply to sender?"
+msgstr ""
 
-#: vac_init.php:132
-msgid "Your current Vacation message is:"
-msgstr "Šiuo metu Jūsų atostogų žinutė sako:"
+#, fuzzy
+msgid "Vacation subject:"
+msgstr "Atostogų žinutė"
 
-#: vac_init.php:137
-msgid "Change Message"
-msgstr "Pakeisti žinutę"
+#, fuzzy
+msgid "Vacation message:"
+msgstr "Atostogų žinutė"
 
-#: vac_init.php:141
-msgid "Delete Message"
-msgstr "Ištrinti žinutę"
+msgid "Forward incoming messages to addresses listed below?"
+msgstr ""
 
-#: vac_init.php:229
-msgid "An error occurred uploading the file: "
+msgid "No local delivery; forward and/or auto-reply only."
+msgstr ""
+
+msgid "Forwarding email addresses (one address per line)"
+msgstr ""
+
+msgid "Submit"
+msgstr ""
+
+msgid "Error: Could not bind to LDAP server."
+msgstr ""
+
+#, php-format
+msgid "Error: Could not find FTP server for %s in LDAP server."
+msgstr ""
+
+msgid "Error: Could not connect to LDAP server."
+msgstr ""
+
+msgid "Error: Unable to connect to FTP server. Please try again later."
+msgstr ""
+
+msgid ""
+"Error: Unable to log in to FTP server. Please contact your system "
+"administrator."
+msgstr ""
+
+msgid ""
+"Error: Unable to switch to passive FTP mode. Please contact your system "
+"administrator."
+msgstr ""
+
+msgid "Error: Unable to upload file. Please contact your system administrator."
+msgstr ""
+
+#, fuzzy
+msgid "An error occurred uploading the file:"
 msgstr "Įvyko klaida įkeliant bylą: "
 
-#: vac_init.php:248
-msgid "An error occurred downloading the file: "
+msgid ""
+"Error: unable to download file. Please contact your system administrator."
+msgstr ""
+
+#, fuzzy
+msgid "An error occurred downloading the file:"
 msgstr "Įvyko klaida atsisiunčiant bylą: "
 
-#: vac_init.php:275
-msgid "An error occurred deleting the file: "
+msgid "Error: unable to delete file. Please contact your system administrator."
+msgstr ""
+
+#, fuzzy
+msgid "An error occurred deleting the file:"
 msgstr "Įvyko klaida trinant bylą: "
 
-#: vac_init.php:291
-msgid "Unknown action: "
+#, fuzzy
+msgid "Unknown action:"
 msgstr "Nežinomas veiksmas: "
 
-#: vac_init.php:328
+#, fuzzy
 msgid ""
 "An error occurred attempting to read temp file; check permissions on "
-"attachments directory"
-msgstr "Įvyko klaida bandant perskaityti laikiną bylą. Patikrinkite priedų katalogo priėjimo teises."
+"attachments directory."
+msgstr ""
+"Įvyko klaida bandant perskaityti laikiną bylą. Patikrinkite priedų katalogo "
+"priėjimo teises."
 
-#: vac_init.php:369
+#, fuzzy
 msgid ""
 "An error occurred attempting to create temp file; check permissions on "
-"attachments directory"
-msgstr "Įvyko klaida bandant sukurti laikiną bylą. Patikrinkite priedų katalogo priėjimo teises."
+"attachments directory."
+msgstr ""
+"Įvyko klaida bandant sukurti laikiną bylą. Patikrinkite priedų katalogo "
+"priėjimo teises."
 
+#~ msgid "Compose"
+#~ msgstr "Rašyti"
+
+#~ msgid ""
+#~ "You do not have a vacation message set up.<br />You can enter one by "
+#~ "typing the text you want to reply with in the box below."
+#~ msgstr ""
+#~ "Šiuo metu Jūs nesate nusistatę atostogų žinutės.<br />Jūs galite įvesti "
+#~ "žinutę žemiau esančiame lauke."
+
+#~ msgid "Add Message"
+#~ msgstr "Pridėti žinutę"
+
+#~ msgid "Your current Vacation message is:"
+#~ msgstr "Šiuo metu Jūsų atostogų žinutė sako:"
+
+#~ msgid "Change Message"
+#~ msgstr "Pakeisti žinutę"
+
+#~ msgid "Delete Message"
+#~ msgstr "Ištrinti žinutę"
