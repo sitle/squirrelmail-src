@@ -41,8 +41,8 @@ function plugin_listcommands_menu() {
 
     foreach ($message->rfc822_header->mlist as $cmd => $actions) {
 
-	/* I don't know this action... skip it */
-	if ( ( function_exists('array_key_exists') &&       /* PHP >= 4.1 */
+        /* I don't know this action... skip it */
+        if ( ( function_exists('array_key_exists') &&       /* PHP >= 4.1 */
                !array_key_exists($cmd, $fieldsdescr) ) ||
              ( function_exists('key_exists') && 
                !key_exists($cmd, $fieldsdescr) )            /* PHP == 4.0.6 */
@@ -51,8 +51,9 @@ function plugin_listcommands_menu() {
         }
 
         /* proto = {mailto,href} */
-	$proto = array_shift(array_keys($actions));
-	$act   = array_shift($actions);
+        $aActionKeys = array_keys($actions);
+        $proto = array_shift($aActionKeys);
+        $act   = array_shift($actions);
 
         if ($proto == 'mailto') {
 
@@ -67,9 +68,9 @@ function plugin_listcommands_menu() {
             $output[] = makeComposeLink($url, $fieldsdescr[$cmd]);
 
             if ($cmd == 'post') {
-	        $url .= '&amp;passed_id='.$passed_id.
-		        '&amp;mailbox='.urlencode($mailbox).
-		        (isset($passed_ent_id)?'&amp;passed_ent_id='.$passed_ent_id:'');
+                $url .= '&amp;passed_id='.$passed_id.
+                    '&amp;mailbox='.urlencode($mailbox).
+                    (isset($passed_ent_id)?'&amp;passed_ent_id='.$passed_ent_id:'');
                 $url .= '&amp;smaction=reply';
                 
                 $output[] = makeComposeLink($url, $fieldsdescr['reply']);
