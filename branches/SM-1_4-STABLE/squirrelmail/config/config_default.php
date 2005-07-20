@@ -729,6 +729,24 @@ $theme[36]['NAME'] = 'Redmond';
 $theme[37]['PATH'] = SM_PATH . 'themes/netstyle_theme.php';
 $theme[37]['NAME'] = 'Net Style';
 
+$theme[38]['PATH'] = SM_PATH . 'themes/silver_steel_theme.php';
+$theme[38]['NAME'] = 'Silver Steel';
+
+$theme[39]['PATH'] = SM_PATH . 'themes/simple_green_theme.php';
+$theme[39]['NAME'] = 'Simple Green';
+
+$theme[40]['PATH'] = SM_PATH . 'themes/wood_theme.php';
+$theme[40]['NAME'] = 'Wood';
+
+$theme[41]['PATH'] = SM_PATH . 'themes/bluesome.php';
+$theme[41]['NAME'] = 'Bluesome';
+
+$theme[42]['PATH'] = SM_PATH . 'themes/simple_green2.php';
+$theme[42]['NAME'] = 'Simple Green 2';
+
+$theme[43]['PATH'] = SM_PATH . 'themes/simple_purple.php';
+$theme[43]['NAME'] = 'Simple Purple';
+
 /**
  * LDAP server(s)
  *   Array of arrays with LDAP server parameters. See
