@@ -673,9 +673,10 @@ class Message {
                 }
             } else { /* Treat as multipart/mixed */
                 foreach ($this->entities as $ent) {
+                    // FIXME: Trying to get property of non-object (message with attachment, php 5.1b2)
                     if((strtolower($ent->header->disposition->name) != 'attachment') &&
-                (!isset($ent->header->parameters['filename'])) &&
-                (!isset($ent->header->parameters['name'])) &&
+                       (!isset($ent->header->parameters['filename'])) &&
+                       (!isset($ent->header->parameters['name'])) &&
                        (($ent->type0 != 'message') && ($ent->type1 != 'rfc822'))) {
                         $entity = $ent->findDisplayEntity($entity, $alt_order, $strict);
                         $found = true;
@@ -688,8 +689,9 @@ class Message {
             foreach ($alt_order as $alt) {
                 if( ($alt == $type) && isset($this->entity_id) ) {
                     if ((count($this->entities) == 0) && 
-                (!isset($ent->header->parameters['filename'])) &&
-                (!isset($ent->header->parameters['name'])) &&
+                        // FIXME: Trying to get property of non-object (php 5.1b2 two next lines)
+                        (!isset($ent->header->parameters['filename'])) &&
+                        (!isset($ent->header->parameters['name'])) &&
                         (strtolower($this->header->disposition->name) != 'attachment')) {
                         $entity[] = $this->entity_id;
                         $found = true;
