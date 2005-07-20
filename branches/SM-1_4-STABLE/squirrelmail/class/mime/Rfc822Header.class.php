@@ -479,7 +479,7 @@ class Rfc822Header {
                 if ($sHost && $oAddr->mailbox) {
                     $oAddr->host = $sHost;
                 }
-	    }
+            }
           }
           if (!$aAddrBookAddress && $oAddr->mailbox) {
               $aProcessedAddress[] = $oAddr;
@@ -505,8 +505,9 @@ class Rfc822Header {
      * functions/imap_messages. I'm not sure if it's ok here to call
      * that function?
      */
-    function parsePriority($value) {
-        $value = strtolower(array_shift(split('/\w/',trim($value))));
+    function parsePriority($sValue) {
+        $aValue = split('/\w/',trim($sValue));
+        $value = strtolower(array_shift($aValue));
         if ( is_numeric($value) ) {
             return $value;
         }
@@ -542,33 +543,33 @@ class Rfc822Header {
     /* RFC2184 */
     function processParameters($aParameters) { 
         $aResults = array();
-	$aCharset = array();
-	// handle multiline parameters
+        $aCharset = array();
+        // handle multiline parameters
         foreach($aParameters as $key => $value) {
-	    if ($iPos = strpos($key,'*')) {
-	        $sKey = substr($key,0,$iPos);
-		if (!isset($aResults[$sKey])) {
-		    $aResults[$sKey] = $value;
-		    if (substr($key,-1) == '*') { // parameter contains language/charset info
-		        $aCharset[] = $sKey;
-		    }
-	        } else {
-		    $aResults[$sKey] .= $value;
-		}
-	    }
+            if ($iPos = strpos($key,'*')) {
+                $sKey = substr($key,0,$iPos);
+                if (!isset($aResults[$sKey])) {
+                    $aResults[$sKey] = $value;
+                    if (substr($key,-1) == '*') { // parameter contains language/charset info
+                        $aCharset[] = $sKey;
+                    }
+                } else {
+                    $aResults[$sKey] .= $value;
+                }
+            }
         }
-	foreach ($aCharset as $key) {
-	    $value = $aResults[$key];
-	    // extract the charset & language
-	    $charset = substr($value,0,strpos($value,"'"));
-	    $value = substr($value,strlen($charset)+1);
-	    $language = substr($value,0,strpos($value,"'"));
-	    $value = substr($value,strlen($charset)+1);
-	    // FIX ME What's the status of charset decode with language information ????
-	    $value = charset_decode($charset,$value);
-	    $aResults[$key] = $value;
-	}
-	return $aResults;    
+        foreach ($aCharset as $key) {
+            $value = $aResults[$key];
+            // extract the charset & language
+            $charset = substr($value,0,strpos($value,"'"));
+            $value = substr($value,strlen($charset)+1);
+            $language = substr($value,0,strpos($value,"'"));
+            $value = substr($value,strlen($charset)+1);
+            // FIX ME What's the status of charset decode with language information ????
+            $value = charset_decode($charset,$value);
+            $aResults[$key] = $value;
+        }
+        return $aResults;    
     }
 
     function parseProperties($value) {
