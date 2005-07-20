@@ -297,7 +297,11 @@ echo html_tag( 'table',
 /*  update the recent and saved searches from the pref files  */
 $attributes = get_recent($username, $data_dir);
 $saved_attributes = get_saved($username, $data_dir);
-$saved_count = count($saved_attributes['saved_what']);
+if (isset($saved_attributes['saved_what'])) {
+    $saved_count = count($saved_attributes['saved_what']);
+} else {
+    $saved_count = 0;
+}
 $count_all = 0;
 
 /* Saved Search Table */
