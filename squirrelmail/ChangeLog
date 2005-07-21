@@ -12,7 +12,9 @@ Version 1.4.6 - CVS
   - Added extra checks in delivery class for In-Reply-To header. Fixes
     E_NOTICE level warnings in php 5.0.4 and later (#1206474). [php5]
   - Added extra checks in SquirrelMail charset_encode() function in case
-    somebody removed html to us-ascii conversion library (#1239782).
+    somebody removes html to us-ascii conversion library (#1239782).
+  - Ported devel fixes for php 5.0.4 E_NOTICE warnings in Message class
+    (#1164045). [php5]
 
 Version 1.4.5 - 13 July 2005
 ----------------------------
