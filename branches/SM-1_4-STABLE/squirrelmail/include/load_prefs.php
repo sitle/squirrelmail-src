@@ -164,7 +164,7 @@ if ($body_quote == 'NONE') $body_quote = '';
 $reply_focus = getPref($data_dir, $username, 'reply_focus', '');
 
 // left refresh rate, strtolower makes 1.0.6 prefs compatible 
-$left_refresh = getPref($data_dir, $username, 'left_refresh', SMPREF_NONE );
+$left_refresh = getPref($data_dir, $username, 'left_refresh', 600 );
 $left_refresh = strtolower($left_refresh);
 
 $sort = getPref($data_dir, $username, 'sort', 6 );
