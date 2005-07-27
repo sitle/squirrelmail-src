@@ -1,13 +1,12 @@
 # Dutch Squirrelmail Translation
 # Copyright (c) 1999-2005 The SquirrelMail Project Team
-# M.J. Prinsen <translation@prinsenonline.com>, 2002.
+# M.J. Prinsen <translation@prinsenonline.com>, 2005.
 # $Id$
 msgid ""
 msgstr ""
-"Project-Id-Version: squirrelmail VERSION\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-04-16 19:47+0200\n"
-"PO-Revision-Date: 2004-12-29 16:38+0100\n"
+"Project-Id-Version: squirrelmail HEAD\n"
+"POT-Creation-Date: 2005-07-03 19:19+0300\n"
+"PO-Revision-Date: 2005-07-27 07:41+0200\n"
 "Last-Translator: M.J. Prinsen <translation@prinsenonline.com>\n"
 "Language-Team: Dutch <squirrelmail-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -17,6 +16,15 @@ msgstr ""
 
 msgid "Address Book"
 msgstr "Adresboek"
+
+msgid "All"
+msgstr "Alle"
+
+msgid "To"
+msgstr "Aan"
+
+msgid "Cc"
+msgstr "CC"
 
 msgid "Name"
 msgstr "Naam"
@@ -30,17 +38,17 @@ msgstr "Informatie"
 msgid "Source"
 msgstr "Bron"
 
-msgid "To"
-msgstr "Aan"
-
-msgid "Cc"
-msgstr "CC"
-
 msgid "Bcc"
 msgstr "BCC"
 
-msgid "No persons matching your search were found"
-msgstr "Geen personen gevonden die voldoen aan de zoekopdracht"
+msgid "Use Addresses"
+msgstr "Gebruik adressen"
+
+msgid "Cancel"
+msgstr "Annuleren"
+
+msgid "Address Book Search"
+msgstr "Zoek in adresboek"
 
 msgid "Search for"
 msgstr "Zoek naar"
@@ -57,9 +65,6 @@ msgstr "Zoek"
 msgid "List all"
 msgstr "Toon alles"
 
-msgid "Close"
-msgstr "Sluit"
-
 #, php-format
 msgid "Unable to list addresses from %s"
 msgstr "Niet mogelijk om adressen te tonen van %s"
@@ -67,21 +72,14 @@ msgstr "Niet mogelijk om adressen te tonen van %s"
 msgid "Your search failed with the following error(s)"
 msgstr "Uw zoekopdracht is mislukt door de volgende fouten"
 
-msgid "All"
-msgstr "Alle"
-
-msgid "Use Addresses"
-msgstr "Gebruik adressen"
-
-#, fuzzy
-msgid "Cancel"
-msgstr "Verander"
-
-msgid "Address Book Search"
-msgstr "Zoek in adresboek"
+msgid "No persons matching your search were found"
+msgstr "Geen personen gevonden die voldoen aan de zoekopdracht"
 
 msgid "Return"
 msgstr "Terug"
+
+msgid "Close"
+msgstr "Sluit"
 
 msgid "Nickname"
 msgstr "Bijnaam"
@@ -119,7 +117,7 @@ msgid "ERROR"
 msgstr "FOUT"
 
 msgid "Please select address that you want to edit"
-msgstr ""
+msgstr "Selecteer het adres dat u wilt wijzigen"
 
 msgid "Add address"
 msgstr "Voeg adres toe"
@@ -136,7 +134,7 @@ msgstr "Voeg toe aan %s"
 
 #, php-format
 msgid "%s wrote:"
-msgstr ""
+msgstr "%s schreef:"
 
 msgid "quote"
 msgstr "citaat"
@@ -146,7 +144,7 @@ msgstr "van"
 
 #, php-format
 msgid "On %s, %s wrote:"
-msgstr ""
+msgstr "Op %s, schreef %s:"
 
 msgid "Subject"
 msgstr "Onderwerp"
@@ -170,7 +168,7 @@ msgid "Draft Saved"
 msgstr "Concept e-mail bewaard"
 
 msgid "Your Message has been sent."
-msgstr "Uw bericht is verzonden"
+msgstr "Uw bericht is verzonden."
 
 msgid "From:"
 msgstr "Van:"
@@ -224,32 +222,49 @@ msgstr "U heeft het \"Aan:\" veld niet ingevuld."
 msgid "Error: Draft folder %s does not exist."
 msgstr "Fout: Concepts map %s bestaat niet."
 
-#, fuzzy
 msgid "Server replied:"
-msgstr "Server reageerde: "
+msgstr "Server reageerde:"
+
+msgid "Illegal folder name. Please select a different name."
+msgstr "Deze mapnaam is niet toegestaan. Kies een andere naam a.u.b."
+
+msgid "Click here to go back"
+msgstr "Klik hier om terug te gaan"
+
+msgid "You have not selected a folder to delete. Please do so."
+msgstr ""
+"U heeft geen map geselecteerd om te verwijderen. Selecteer een map a.u.b."
+
+msgid "Delete Folder"
+msgstr "Verwijder map"
+
+#, php-format
+msgid "Are you sure you want to delete %s?"
+msgstr "Weet u zeker dat u %s wilt verwijderen?"
+
+msgid "Yes"
+msgstr "Ja"
+
+msgid "No"
+msgstr "Nee"
 
 msgid "Folders"
 msgstr "Mappen"
 
-#, fuzzy
 msgid "Subscribed successfully."
-msgstr "Succesvol aangemeld!"
+msgstr "Succesvol aangemeld."
 
-#, fuzzy
 msgid "Unsubscribed successfully."
-msgstr "Succesvol afgemeld!"
+msgstr "Succesvol afgemeld."
 
-#, fuzzy
 msgid "Deleted folder successfully."
-msgstr "Map succesvol verwijderd!"
+msgstr "Map succesvol verwijderd."
 
-#, fuzzy
 msgid "Created folder successfully."
-msgstr "Map succesvol aangemaakt!"
+msgstr "Map succesvol aangemaakt."
 
-#, fuzzy
 msgid "Renamed successfully."
-msgstr "Succesvol hernoemd!"
+msgstr "Succesvol hernoemd"
 
 msgid "Subscription Unsuccessful - Folder does not exist."
 msgstr "Aanmelding niet succesvol - Map bestaat niet."
@@ -284,9 +299,6 @@ msgstr "Hernoem"
 msgid "No folders found"
 msgstr "Geen mappen gevonden"
 
-msgid "Delete Folder"
-msgstr "Verwijder map"
-
 msgid "Delete"
 msgstr "Verwijder"
 
@@ -304,26 +316,6 @@ msgstr "Geen mappen gevonden om bij aan te melden!"
 
 msgid "Subscribe to:"
 msgstr "Aanmelden bij:"
-
-msgid "Illegal folder name. Please select a different name."
-msgstr "Deze mapnaam is niet toegestaan. Kies een andere naam a.u.b."
-
-msgid "Click here to go back"
-msgstr "Klik hier om terug te gaan"
-
-msgid "You have not selected a folder to delete. Please do so."
-msgstr ""
-"U heeft geen map geselecteerd om te verwijderen. Selecteer een map a.u.b."
-
-#, php-format
-msgid "Are you sure you want to delete %s?"
-msgstr "Weet u zeker dat u %s wilt verwijderen?"
-
-msgid "Yes"
-msgstr "Ja"
-
-msgid "No"
-msgstr "Nee"
 
 msgid "You have not selected a folder to rename. Please do so."
 msgstr "U heeft geen map geselecteerd om te hernoemen."
@@ -392,9 +384,8 @@ msgstr "%s Logo"
 msgid "SquirrelMail version %s"
 msgstr "SquirrelMail versie %s"
 
-#, fuzzy
 msgid "By the SquirrelMail Project Team"
-msgstr "Door het Squirrelmail ontwikkelingsteam"
+msgstr "Door het SquirrelMail ontwikkelingsteam"
 
 #, php-format
 msgid "%s Login"
@@ -409,72 +400,11 @@ msgstr "Wachtwoord:"
 msgid "No messages were selected."
 msgstr "Geen berichten geselecteerd."
 
-msgid "Personal Information"
-msgstr "Persoonlijke informatie"
-
-msgid "Display Preferences"
-msgstr "Weergavevoorkeuren"
-
-msgid "Message Highlighting"
-msgstr "Berichten weergave"
-
-msgid "Folder Preferences"
-msgstr "Mapvoorkeuren"
-
-msgid "Index Order"
-msgstr "Kolomvolgorde"
-
 msgid "Options"
 msgstr "Opties"
 
-#, fuzzy
-msgid "Error(s) occurred while saving your options"
-msgstr "Fout(en) gevonden bij het opslaan van uw opties"
-
-#, fuzzy
-msgid "Some of your preference changes were not applied."
-msgstr "Enkele van uw voorkeuren konden niet worden ingesteld."
-
-msgid "Successfully Saved Options"
-msgstr "Persoonlijke informatie is opgeslagen!"
-
-msgid "Refresh Folder List"
-msgstr "Vernieuw mappenlijst"
-
-msgid "Refresh Page"
-msgstr "Vernieuw pagina"
-
-msgid ""
-"This contains personal information about yourself such as your name, your "
-"email address, etc."
-msgstr ""
-"Dit bevat persoonlijke informatie over uzelf, zoals uw naam, uw e-mailadres, "
-"etc."
-
-msgid ""
-"You can change the way that SquirrelMail looks and displays information to "
-"you, such as the colors, the language, and other settings."
-msgstr ""
-"U kunt hier zelf instellen hoe alles weergegeven moet worden. Hier kunnen "
-"onder andere kleuren en de taal ingesteld worden."
-
-msgid ""
-"Based upon given criteria, incoming messages can have different background "
-"colors in the message list. This helps to easily distinguish who the "
-"messages are from, especially for mailing lists."
-msgstr ""
-"Gebaseerd op de opgegeven criteria kunnen bepaalde binnengekomen berichten "
-"een andere achtergrondkleur in de berichtenlijst krijgen, zodat u berichten "
-"eenvoudig uit elkaar kunt houden."
-
-msgid ""
-"These settings change the way your folders are displayed and manipulated."
-msgstr "Deze opties bepalen hoe uw mappen worden gebruikt en weergegeven."
-
-msgid ""
-"The order of the message index can be rearranged and changed to contain the "
-"headers in any order you want."
-msgstr "De kolomvolgorde van het berichtenoverzicht kan hier worden veranderd."
+msgid "Message Highlighting"
+msgstr "Berichten weergave"
 
 msgid "New"
 msgstr "Nieuw"
@@ -557,18 +487,18 @@ msgstr "Bijv: 63aa7f"
 msgid "Matches"
 msgstr "Selecteer"
 
+msgid "Default Identity"
+msgstr "Standaard identiteit"
+
 #, php-format
 msgid "Alternate Identity %d"
 msgstr "Identiteit %d"
 
-msgid "Advanced Identities"
-msgstr "Geavanceerde identiteiten"
-
-msgid "Default Identity"
-msgstr "Standaard identiteit"
-
 msgid "Add a New Identity"
 msgstr "Voeg een nieuwe identiteit toe"
+
+msgid "Advanced Identities"
+msgstr "Geavanceerde identiteiten"
 
 msgid "Full Name"
 msgstr "Volledige naam"
@@ -587,6 +517,9 @@ msgstr "Maak standaard"
 
 msgid "Move Up"
 msgstr "Verplaats omhoog"
+
+msgid "Index Order"
+msgstr "Kolomvolgorde"
 
 msgid "Checkbox"
 msgstr "Aankruisvak"
@@ -616,6 +549,62 @@ msgstr "verwijder"
 
 msgid "Return to options page"
 msgstr "Terug naar Opties"
+
+msgid "Personal Information"
+msgstr "Persoonlijke informatie"
+
+msgid "Display Preferences"
+msgstr "Weergavevoorkeuren"
+
+msgid "Folder Preferences"
+msgstr "Mapvoorkeuren"
+
+msgid "Error(s) occurred while saving your options"
+msgstr "Fout(en) gevonden tijdens het opslaan van uw opties"
+
+msgid "Some of your preference changes were not applied."
+msgstr "Enkele van uw voorkeuren konden niet worden ingesteld."
+
+msgid "Successfully Saved Options"
+msgstr "Persoonlijke informatie is opgeslagen!"
+
+msgid "Refresh Folder List"
+msgstr "Vernieuw mappenlijst"
+
+msgid "Refresh Page"
+msgstr "Vernieuw pagina"
+
+msgid ""
+"This contains personal information about yourself such as your name, your "
+"email address, etc."
+msgstr ""
+"Dit bevat persoonlijke informatie over uzelf, zoals uw naam, uw e-mailadres, "
+"etc."
+
+msgid ""
+"You can change the way that SquirrelMail looks and displays information to "
+"you, such as the colors, the language, and other settings."
+msgstr ""
+"U kunt hier zelf instellen hoe alles weergegeven moet worden. Hier kunnen "
+"onder andere kleuren en de taal ingesteld worden."
+
+msgid ""
+"Based upon given criteria, incoming messages can have different background "
+"colors in the message list. This helps to easily distinguish who the "
+"messages are from, especially for mailing lists."
+msgstr ""
+"Gebaseerd op de opgegeven criteria kunnen bepaalde binnengekomen berichten "
+"een andere achtergrondkleur in de berichtenlijst krijgen, zodat u berichten "
+"eenvoudig uit elkaar kunt houden."
+
+msgid ""
+"These settings change the way your folders are displayed and manipulated."
+msgstr "Deze opties bepalen hoe uw mappen worden gebruikt en weergegeven."
+
+msgid ""
+"The order of the message index can be rearranged and changed to contain the "
+"headers in any order you want."
+msgstr "De kolomvolgorde van het berichtenoverzicht kan hier worden veranderd."
 
 msgid "Message not printable"
 msgstr "Bericht niet printbaar"
@@ -841,12 +830,12 @@ msgid "Addressbook is read-only"
 msgstr "Adresboek is alleen-lezen"
 
 #, php-format
-msgid "User '%s' already exist"
-msgstr "Gebruiker '%s' bestaat al"
+msgid "User %s already exists"
+msgstr "Gebruiker %s bestaat al"
 
 #, php-format
-msgid "User '%s' does not exist"
-msgstr "Gebruiker '%s' bestaat niet"
+msgid "User %s does not exist"
+msgstr "Gebruiker %s bestaat niet"
 
 msgid "Not a file name"
 msgstr "Geen bestandsnaam"
@@ -1021,9 +1010,8 @@ msgstr "dec"
 msgid "D, F j, Y g:i a"
 msgstr "D, j F, Y g:i a"
 
-#, fuzzy
 msgid "D, F j, Y H:i"
-msgstr "D, j F, Y G:i"
+msgstr "D, j F, Y H:i"
 
 msgid "M j, Y"
 msgstr "j M, Y"
@@ -1031,16 +1019,14 @@ msgstr "j M, Y"
 msgid "g:i a"
 msgstr "g:i a"
 
-#, fuzzy
 msgid "H:i"
-msgstr "G:i"
+msgstr "H:i"
 
 msgid "D, g:i a"
 msgstr "D, g:i a"
 
-#, fuzzy
 msgid "D, H:i"
-msgstr "D, G:i"
+msgstr "D, H:i"
 
 #, php-format
 msgid "Preference database error (%s). Exiting abnormally"
@@ -1133,43 +1119,36 @@ msgstr ""
 "U dient php4 te hebben geinstalleerd met de multibyte string functie enabled "
 "(gebruik configure met de optie --with-mbstring)."
 
-#, fuzzy
 msgid "ERROR: No available IMAP stream."
-msgstr "FOUT : Imapstream niet beschikbaar."
+msgstr "FOUT: Imapstream niet beschikbaar."
 
-#, fuzzy
 msgid "ERROR: Connection dropped by IMAP server."
-msgstr "FOUT : Verbinding verbroken door IMAP server"
+msgstr "FOUT: Verbinding verbroken door IMAP server"
 
-#, fuzzy
 msgid "ERROR: Could not complete request."
-msgstr "FOUT : Kan opdracht niet verwerken."
+msgstr "FOUT: Kan opdracht niet verwerken."
 
 msgid "Query:"
 msgstr "Verzoek:"
 
-#, fuzzy
 msgid "Reason Given:"
-msgstr "Reden: "
+msgstr "Reden:"
 
-#, fuzzy
 msgid "ERROR: Bad or malformed request."
 msgstr "FOUT: Foute of corrupte aanvraag."
 
 msgid "Server responded:"
 msgstr "Server reageerde:"
 
-#, fuzzy
 msgid "ERROR: IMAP server closed the connection."
-msgstr "FOUT : IMAP server heeft de verbinding verbroken."
+msgstr "FOUT: IMAP server heeft de verbinding verbroken."
 
-#, fuzzy
 msgid "ERROR: Unknown IMAP response."
-msgstr "FOUT : Onbekend IMAP antwoord."
+msgstr "FOUT: Onbekend IMAP antwoord."
 
 #, php-format
 msgid "Error connecting to IMAP server: %s."
-msgstr "FOUT : kan IMAP server %s niet initialiseren."
+msgstr "Fout verbinden met IMAP server: %s."
 
 msgid "The IMAP server is reporting that plain text logins are disabled."
 msgstr ""
@@ -1197,13 +1176,11 @@ msgstr "Lees data:"
 msgid "Unknown user or password incorrect."
 msgstr "Onbekende gebruiker of verkeerd wachtwoord"
 
-#, fuzzy
 msgid "ERROR: Could not append message to"
-msgstr "FOUT : Kan bericht niet toevoegen aan"
+msgstr "FOUT: Kan bericht niet toevoegen aan"
 
-#, fuzzy
 msgid "Solution:"
-msgstr "Oplossing: "
+msgstr "Oplossing:"
 
 msgid ""
 "Remove unneccessary messages from your folder and start with your Trash "
@@ -1218,9 +1195,8 @@ msgstr "(geen onderwerp)"
 msgid "Unknown Sender"
 msgstr "Onbekende afzender"
 
-#, fuzzy
 msgid "Unknown response from IMAP server:"
-msgstr "Onbekend antwoord van IMAP server: "
+msgstr "Onbekend antwoord van IMAP server:"
 
 msgid "The server couldn't find the message you requested."
 msgstr "De server kan het bericht dat u opvroeg niet vinden."
@@ -1302,8 +1278,8 @@ msgstr "Toon alle"
 msgid "SquirrelMail could not decode the bodystructure of the message"
 msgstr "SquirrelMail kan de hoofdstructuur van het bericht niet decoderen"
 
-msgid "the provided bodystructure by your imap-server"
-msgstr "de gebruikte hoofdstructuur door uw IMAP-server"
+msgid "The bodystructure provided by your IMAP server:"
+msgstr "De hoofdstructuur van uw IMAP-server:"
 
 msgid ""
 "Body retrieval error. The reason for this is most probably that the message "
@@ -1451,9 +1427,8 @@ msgstr "Nooit"
 msgid "Mailbox Display Options"
 msgstr "Weergave opties voor mailbox"
 
-#, fuzzy
 msgid "Number of Messages per Page"
-msgstr "Aantal berichten te indexeren"
+msgstr "Aantal berichten per pagina"
 
 msgid "Enable Alternating Row Colors"
 msgstr "Gebruik afwisselende regel kleuren"
@@ -1683,9 +1658,8 @@ msgstr "Map selectie opties"
 msgid "Selection List Style"
 msgstr "Selectie mappenlijstweergave"
 
-#, fuzzy
 msgid "Long:"
-msgstr "Lang: "
+msgstr "Lang:"
 
 msgid "Folder"
 msgstr "Map"
@@ -1693,13 +1667,11 @@ msgstr "Map"
 msgid "Subfolder"
 msgstr "Submap"
 
-#, fuzzy
 msgid "Indented:"
-msgstr "Ingesprongen: "
+msgstr "Ingesprongen:"
 
-#, fuzzy
 msgid "Delimited:"
-msgstr "Gescheiden: "
+msgstr "Gescheiden:"
 
 msgid "Name and Address Options"
 msgstr "Naam en adres opties"
@@ -1739,13 +1711,11 @@ msgstr "Antwoordstijl citering"
 msgid "No Citation"
 msgstr "Geen citering"
 
-#, fuzzy
 msgid "AUTHOR Wrote"
-msgstr "Schrijver zei"
+msgstr "SCHRIJVER schreef"
 
-#, fuzzy
 msgid "On DATE, AUTHOR Wrote"
-msgstr "Op DATUM, Schrijver zei"
+msgstr "Op DATUM, schreef SCHRIJVER"
 
 msgid "Quote Who XML"
 msgstr "Citaat van XML"
@@ -1900,6 +1870,9 @@ msgstr "Aanmelden (platte text)"
 msgid "POP3 Before SMTP?"
 msgstr "POP3 voor SMTP?"
 
+msgid "Header Encryption Key"
+msgstr "Berichtinformatie beveiligingssleutel"
+
 msgid "Invert Time"
 msgstr "Inverteer tijd"
 
@@ -1992,6 +1965,12 @@ msgstr "Sta wijzigen van identiteiten toe"
 
 msgid "Allow editing of full name"
 msgstr "Sta wijzigen volledige naam toe"
+
+msgid "Remove username from headers"
+msgstr "Verwijder gebruikersnaam van berichtinformatie"
+
+msgid "Used only when identities can't be modified"
+msgstr "Alleen gebruikt als identiteiten niet kunnen worden gewijzigd"
 
 msgid "Use server-side sorting"
 msgstr "Gebruik sorteren door de server"
@@ -2225,15 +2204,15 @@ msgstr "Fout rapportages:"
 msgid "Show button in toolbar"
 msgstr "Toon knop in menu"
 
+#, php-format
+msgid "Could not write calendar file %s"
+msgstr "Kan kalenderbestand %s niet wegschrijven"
+
 msgid "TODAY"
 msgstr "VANDAAG"
 
 msgid "Go"
 msgstr "Ga"
-
-#, php-format
-msgid "Could not write calendar file %s"
-msgstr "Kan kalenderbestand %s niet wegschrijven"
 
 msgid "l, F j Y"
 msgstr "l, j F Y"
@@ -2527,9 +2506,8 @@ msgstr ""
 msgid "FREE - Distributed Sender Boycott List - UN-Confirmed Relays"
 msgstr "FREE - Gedistribueerde zender boycot lijst - Onbevestigde relays"
 
-#, fuzzy
 msgid "WARNING! You must enter something to search for."
-msgstr "Vul a.u.b. iets in om te zoeken"
+msgstr "WAARSCHUWING! Vul a.u.b. iets in om naar te zoeken."
 
 msgid ""
 "WARNING! Header filters should be of the format &quot;Header: value&quot;"
@@ -2682,9 +2660,6 @@ msgstr ""
 "huidige Squirrelmail configuratie. Aangepaste commandoregels kunnen worden "
 "gebruikt."
 
-msgid "Mailinglist"
-msgstr "Mailinglist"
-
 #, php-format
 msgid ""
 "This will send a message to %s requesting help for this list. You will "
@@ -2708,6 +2683,13 @@ msgid ""
 msgstr ""
 "Dit zal een bericht naar %s sturen voor afmelding van deze lijst.Het "
 "onderstaande e-mailadres zal worden afgemeld."
+
+#, php-format
+msgid "Unknown action: %s"
+msgstr "Onbekende actie: %s"
+
+msgid "Mailinglist"
+msgstr "Mailinglist"
 
 msgid "Send Mail"
 msgstr "Verstuur bericht"
@@ -2855,24 +2837,22 @@ msgid "Login OK: Inbox contains %s messages"
 msgstr "Aanmelden OK: Inbox bevat %s berichten"
 
 msgid "Fetching UIDL..."
-msgstr "Ophalen UIDL ..."
+msgstr "Ophalen UIDL..."
 
 msgid "Server does not support UIDL."
 msgstr "Server ondersteunt geen UIDL."
 
-#, fuzzy
 msgid "Leaving mail on server..."
-msgstr "Bewaren mail op server ..."
+msgstr "Mail bewaren op server..."
 
 msgid "Deleting messages from server..."
-msgstr "Verwijderen berichten van server ..."
+msgstr "Berichten verwijderen van server..."
 
 msgid "Fetching message "
 msgstr "Ophalen bericht "
 
-#, fuzzy
 msgid "Server error. Disconnect"
-msgstr "Server fout ... connectie verbroken"
+msgstr "Server fout. Connectie verbroken"
 
 msgid "Reconnect from dead connection"
 msgstr "Herstel verbroken connectie"
@@ -2884,7 +2864,7 @@ msgid "Refetching message "
 msgstr "Opnieuw ophalen bericht "
 
 msgid "Error Appending Message!"
-msgstr "Fout bij het toevoegen van het bericht! "
+msgstr "Fout bij het toevoegen van het bericht!"
 
 msgid "Closing POP"
 msgstr "Sluiten POP"
@@ -2895,9 +2875,9 @@ msgstr "Aanmelden van IMAP"
 msgid "Message appended to mailbox"
 msgstr "Bericht toegevoegd aan mailbox"
 
-#, fuzzy, php-format
+#, php-format
 msgid "Message %d deleted from remote server!"
-msgstr " verwijderd van externe server!"
+msgstr "Bericht %d verwijderd van externe server!"
 
 msgid "Delete failed:"
 msgstr "Verwijderen mislukt:"
@@ -2917,7 +2897,6 @@ msgstr ""
 "wordt om uw wachtwoord op te slaan op de server kan ongedaan worden gemaakt "
 "door een hacker door de bron van dit bestand te lezen."
 
-#, fuzzy
 msgid "If you leave password empty, it will be asked when you fetch mail."
 msgstr ""
 "Als u uw wachtwoord leeg laat, zal het worden gevraagd wanneer u uw mail "
@@ -2944,17 +2923,14 @@ msgstr "Gebruikersnaam:"
 msgid "Store in Folder:"
 msgstr "Sla op in map:"
 
-#, fuzzy
 msgid "Leave mail on server"
 msgstr "Bewaar mail op server"
 
-#, fuzzy
 msgid "Check mail at login"
 msgstr "Check mail tijdens aanmelden"
 
-#, fuzzy
 msgid "Check mail at folder refresh"
-msgstr "Check mail tijdens vernieuwing mappen"
+msgstr "Check mail tijdens vernieuwen van mappen"
 
 msgid "Modify Server"
 msgstr "Bewerk server"
@@ -2965,9 +2941,8 @@ msgstr "Servernaam:"
 msgid "Modify"
 msgstr "Bewerk"
 
-#, fuzzy
 msgid "No servers known."
-msgstr "Geen server vaandel"
+msgstr "Geen servers bekend."
 
 msgid "Fetching Servers"
 msgstr "Ophalen servers"
@@ -2991,7 +2966,7 @@ msgid "Undefined Function"
 msgstr "Niet gedefinieerde functie"
 
 msgid "The function you requested is unknown."
-msgstr ""
+msgstr "De functie die u verzocht is onbekend."
 
 msgid "Fetch"
 msgstr "Ophalen"
@@ -3038,22 +3013,6 @@ msgstr "Bewaar bericht"
 
 msgid "View Message details"
 msgstr "Bekijk berichtdetails"
-
-msgid "New Mail"
-msgstr "Nieuw bericht"
-
-msgid "SquirrelMail Notice:"
-msgstr "SquirrelMail notificatie:"
-
-#, php-format
-msgid "You have %s new message"
-msgid_plural "You have %s new messages"
-msgstr[0] "U heeft %s nieuw bericht"
-msgstr[1] "U heeft %s nieuwe berichten"
-
-#, php-format
-msgid "You have %s new messages"
-msgstr "U heeft %s nieuwe berichten"
 
 msgid "New Mail Notification"
 msgstr "Notificatie nieuw bericht"
@@ -3146,6 +3105,22 @@ msgstr "Test"
 
 msgid "Current File:"
 msgstr "Huidig bestand:"
+
+msgid "New Mail"
+msgstr "Nieuw bericht"
+
+msgid "SquirrelMail Notice:"
+msgstr "SquirrelMail notificatie:"
+
+#, php-format
+msgid "You have %s new message"
+msgid_plural "You have %s new messages"
+msgstr[0] "U heeft %s nieuw bericht"
+msgstr[1] "U heeft %s nieuwe berichten"
+
+#, php-format
+msgid "You have %s new messages"
+msgstr "U heeft %s nieuwe berichten"
 
 msgid "NewMail Options"
 msgstr "Nieuw bericht opties"
@@ -3474,18 +3449,18 @@ msgstr "Cute."
 
 #, php-format
 msgid "Could not run the spellchecker command (%s)."
-msgstr ""
+msgstr "Kan spellingscontrole commando (%s) niet uitvoeren."
 
 msgid "Error while writing to pipe."
-msgstr ""
+msgstr "Fout tijdens het schrijven naar pipe"
 
-#, fuzzy, php-format
+#, php-format
 msgid "Could not open temporary file '%s'."
-msgstr "Kan kalenderbestand %s niet wegschrijven"
+msgstr "Kan tijdelijk bestand '%s' niet openen."
 
 #, php-format
 msgid "Error while writing to temporary file '%s'."
-msgstr ""
+msgstr "Fout tijdens het schrijven naar tijdelijk bestand '%s'."
 
 #, php-format
 msgid "I tried to execute '%s', but it returned:"
@@ -3576,22 +3551,6 @@ msgstr ""
 msgid "No errors found"
 msgstr "Geen fouten gevonden"
 
-msgid ""
-"Your personal dictionary has been encrypted and is now stored in an "
-"encrypted format."
-msgstr ""
-"Uw persoonlijke woordenboek is beveiligd en is nuopgeslagen in beveiligd "
-"formaat."
-
-msgid ""
-"Your personal dictionary has been decrypted and is now stored as plain text."
-msgstr ""
-"Uw persoonlijke woordenboek is ontcijferd en is nu opgeslagen als platte "
-"tekst."
-
-msgid "Personal Dictionary Crypto Settings"
-msgstr "Persoonlijk woordenboek beveiligingsinstellingen"
-
 msgid "Your personal dictionary was erased."
 msgstr "Uw persoonlijk woordenboek is verwijderd"
 
@@ -3628,6 +3587,25 @@ msgstr ""
 
 msgid "Dictionary re-encrypted"
 msgstr "Woordenboek beveiligd"
+
+msgid ""
+"Your personal dictionary has been encrypted and is now stored in an "
+"encrypted format."
+msgstr ""
+"Uw persoonlijke woordenboek is beveiligd en is nuopgeslagen in beveiligd "
+"formaat."
+
+msgid ""
+"Your personal dictionary has been decrypted and is now stored as plain text."
+msgstr ""
+"Uw persoonlijke woordenboek is ontcijferd en is nu opgeslagen als platte "
+"tekst."
+
+msgid "No action requested."
+msgstr "Geen actie verzocht."
+
+msgid "Personal Dictionary Crypto Settings"
+msgstr "Persoonlijk woordenboek beveiligingsinstellingen"
 
 msgid "Personal Dictionary"
 msgstr "Persoonlijk woordenboek"
@@ -3798,8 +3776,8 @@ msgstr "Configureer internationale woordenboeken"
 msgid "Encrypt or decrypt your personal dictionary"
 msgstr "Beveilig of ontcijfer uw persoonlijk woordenboek"
 
-msgid "not available"
-msgstr "niet beschikbaar"
+msgid "Personal dictionary encryption options are not available"
+msgstr "Persoonlijk woordenboek beveiligingsinstellingen zijn niet beschikbaar"
 
 msgid "SquirrelSpell Options Menu"
 msgstr "SquirrelSpell Opties Menu"
@@ -3990,20 +3968,24 @@ msgstr "Interface taal"
 msgid "Translation direction"
 msgstr "Vertaalrichting"
 
-#, fuzzy, php-format
+#, php-format
 msgid "About SquirrelMail %s"
-msgstr "SquirrelMail Versie"
+msgstr "Over SquirrelMail %s"
 
 msgid ""
 "SquirrelMail is the name of the program that provides access to your email "
 "via the web."
 msgstr ""
+"SquirrelMail is de naam van het programma dat uw e-mail toegankelijk maakt "
+"via het web."
 
 #, php-format
 msgid ""
 "If you have questions about or problems with your mail account, passwords, "
 "abuse etc, please refer to your system administrator or provider%s."
 msgstr ""
+"Als u vragen heeft over of problemen heeft met uw mailaccount, wachtwoorden, "
+"abuse etc, neem dan a.u.b. contact op met uw systeembeheerder of provider%s."
 
 #, php-format
 msgid ""
@@ -4011,6 +3993,9 @@ msgid ""
 "Team cannot help you with that. The %shelp system%s provides answers to "
 "frequently asked questions."
 msgstr ""
+"Zij kunnen u adequaat helpen met deze zaken. Het SquirrelMail "
+"ontwikkelingsteam kan u daarbij niet helpen. Het %shelp systeem%s bevat "
+"antwoorden op de meest gestelde vragen (FAQ)."
 
 #, php-format
 msgid ""
@@ -4019,26 +4004,35 @@ msgid ""
 "SquirrelMail Project Team and is released as open source, free software "
 "under the %sGNU General Public License%s."
 msgstr ""
+"Squirrelmail is een webmail applicatie geschreven in PHP met veel "
+"mogelijkheden en sluit aan bij de geldende standaarden. Het is ontwikkeld "
+"door een groep ontwikkelaars verenigd in het Squirrelmail ontwikkelingsteam "
+"en als open source, vrije software onder the %sGNU General Public License%s "
+"vrijgegeven."
 
 #, php-format
 msgid ""
 "For more information about SquirrelMail and the SquirrelMail Project Team, "
 "see %sthe SquirrelMail website%s."
 msgstr ""
+"Voor meer informatie over SquirrelMail en het SquirrelMail "
+"ontwikkelingsteam, zie %sde Squirrelmail website%s."
 
-#, fuzzy
 msgid "System information"
-msgstr "Meer informatie"
+msgstr "Systeeminformatie"
 
-#, fuzzy, php-format
+#, php-format
 msgid "You are using SquirrelMail version: %s"
-msgstr "SquirrelMail versie %s"
+msgstr "U gebruikt SquirrelMail versie: %s"
 
 msgid "The administrator installed the following plugins:"
-msgstr ""
+msgstr "De systeembeheerder heeft de volgende plugins geinstalleerd:"
 
 msgid "none installed"
-msgstr ""
+msgstr "niet geinstalleerd"
+
+msgid "Nothing to search"
+msgstr "Niets te zoeken"
 
 msgid "sort by nickname"
 msgstr "sorteer op bijnaam"
@@ -4059,14 +4053,15 @@ msgid ""
 "Because PHP file uploads are turned off, you can not attach files to this "
 "message. Please see your system administrator for details."
 msgstr ""
+"Omdat het uploaden van PHP-bestanden uit staat kunt u geen bestanden als "
+"bijlage aan dit bericht toevoegen. Neem a.u.b. contact op met uw "
+"systeembeheerder voor meer details."
 
-#, fuzzy
 msgid "No folders were found to unsubscribe from."
-msgstr "Geen mappen gevonden om bij af te melden!"
+msgstr "Geen mappen gevonden om bij af te melden."
 
-#, fuzzy
 msgid "No folders were found to subscribe to."
-msgstr "Geen mappen gevonden om bij aan te melden!"
+msgstr "Geen mappen gevonden om bij aan te melden"
 
 msgid "Last Refresh"
 msgstr "Laatste vernieuwing"
@@ -4077,22 +4072,21 @@ msgstr "Vernieuw mapstructuur"
 msgid "Save folder tree"
 msgstr "Sla mapstructuur op"
 
-#, fuzzy
 msgid "SquirrelMail Webmail Application"
-msgstr "SquirrelMail vertalingslijst"
+msgstr "SquirrelMail webmail applicatie"
 
-#, fuzzy
+msgid "Received"
+msgstr "Ontvangen"
+
 msgid "Compose Preferences"
-msgstr "Mapvoorkeuren"
+msgstr "Voorkeuren opstellen nieuw bericht"
 
 msgid ""
 "Control the behaviour and layout of writing new mail messages, replying to "
 "and forwarding messages."
 msgstr ""
-
-#, fuzzy
-msgid "Received"
-msgstr "Bevestiging"
+"Stelt de voorkeuren in voor de layout en het schrijven van nieuwe berichten, "
+"alsmede van te beantwoorden en door te sturen berichten."
 
 msgid "As Attachment"
 msgstr "Als bijlage"
@@ -4245,39 +4239,33 @@ msgid "Folder List"
 msgstr "Mappenlijst"
 
 msgid "PHP install does not have LDAP support."
-msgstr ""
+msgstr "PHP installatie heeft geen LDAP ondersteuning."
 
 msgid "Click here to change the sorting of the address list"
 msgstr ""
 "Klik hier om de volgorde van sortering van de adressenlijst te veranderen"
 
-#, fuzzy
 msgid "Illegal folder name."
-msgstr "(Illegale datum)"
+msgstr "Illegale mapnaam."
 
 #, php-format
 msgid "The name may not contain any of the following: %s"
-msgstr ""
+msgstr "De naam mag de volgende karakters niet bevaten: %s"
 
-#, fuzzy
 msgid "Please select a different name."
-msgstr "Deze mapnaam is niet toegestaan. Kies een andere naam a.u.b."
+msgstr "Kies een andere naam a.u.b."
 
-#, fuzzy
 msgid "You have not selected a folder to subscribe. Please do so."
-msgstr "U heeft geen map geselecteerd om te hernoemen."
+msgstr "U heeft geen map geselecteerd om aan te melden. Doe dit a.u.b."
 
-#, fuzzy
 msgid "You have not selected a folder to unsubscribe. Please do so."
-msgstr "U heeft geen map geselecteerd om te hernoemen."
+msgstr "U heeft geen map geselecteerd om af te melden. Doe dit a.u.b."
 
-#, fuzzy
 msgid "Possible reason:"
-msgstr "Mogelijke reden : "
+msgstr "Mogelijke reden:"
 
-#, fuzzy
 msgid "ERROR: Bad function call."
-msgstr "FOUT : Bad function call."
+msgstr "FOUT: Bad function call."
 
 msgid "Reason:"
 msgstr "Reden:"
@@ -4293,6 +4281,8 @@ msgid ""
 "Your mailbox is not located at this server. Try a different server or "
 "consult your system administrator"
 msgstr ""
+"Uw mailbox is niet beschikbaar op deze server. Probeer een andere server of "
+"neem contact op met uw systeembeheerder"
 
 msgid "Unknown recipient"
 msgstr "Onbekende ontvanger"
@@ -4303,23 +4293,23 @@ msgstr "Ontvlag"
 msgid "Flag"
 msgstr "Vlag"
 
-#, fuzzy
 msgid "Undelete"
-msgstr "Verwijder"
+msgstr "Maak verwijdering ongedaan"
 
-#, fuzzy
+msgid "Viewing HTML formatted email"
+msgstr "Bekijk e-mail in HTML"
+
 msgid "General Message Composition"
-msgstr "Bericht weergave en compositie"
+msgstr "Algemene bericht weergave opties"
 
-#, fuzzy
 msgid "Replying and Forwarding Messages"
-msgstr "Voeg CCs toe bij forwarden berichten"
+msgstr "Te beantwoorden en door te sturen berichten"
 
 msgid "Strip signature when replying"
 msgstr "Verwijder handtekening bij beantwoorden"
 
 msgid "Enable Fancy Row Mouseover Highlighting"
-msgstr ""
+msgstr "Activeer het oplichten van de regel bij muisbeweging"
 
 msgid "Message Flags Icon Theme"
 msgstr "Message Flags Icon Theme"
@@ -4336,9 +4326,11 @@ msgstr "Lengte van het Van/Aan veld (0 voor onbeperkt)"
 msgid "Length of Subject Field (0 for full)"
 msgstr "Lengte van het onderwerp veld (0 voor onbeperkt)"
 
-#, fuzzy
 msgid "Message Display Options"
-msgstr "Algemene weergave opties"
+msgstr "Bericht weergave opties"
+
+msgid "Height of inline frame"
+msgstr "Hoogte van ingezet kader"
 
 msgid "Show 'Delete & Prev/Next' Links"
 msgstr "Toon 'Verwijder & Vorige/Volgende' links"
@@ -4346,20 +4338,17 @@ msgstr "Toon 'Verwijder & Vorige/Volgende' links"
 msgid "Save Replies with Original Message"
 msgstr "Bewaar antwoord bij oorspronkelijk bericht"
 
-#, fuzzy, php-format
+#, php-format
 msgid "%d Minute"
 msgid_plural "%d Minutes"
 msgstr[0] "Minuut"
-msgstr[1] "Minuut"
+msgstr[1] "Minuten"
 
 msgid "Show only subscribed folders"
-msgstr ""
+msgstr "Toon alleen aangemelde mappen"
 
 msgid "XP"
 msgstr "XP"
-
-msgid "Hide SquirrelMail Header"
-msgstr "Verberg Squirrelmail berichtinformatie"
 
 msgid "Search functions"
 msgstr "Zoekfuncties"
@@ -4391,19 +4380,18 @@ msgstr "Gebruik geavanceerde boomstructuur"
 msgid "Use icons"
 msgstr "Gebruik iconen"
 
-#, fuzzy
+msgid "Use inline frames with HTML mails"
+msgstr "Gebruik ingezette kaders met HTML mails"
+
 msgid "Use PHP recode functions"
-msgstr "Gebruik php recode functies"
+msgstr "Gebruik PHP recode functies"
 
-#, fuzzy
 msgid "Use PHP iconv functions"
-msgstr "Gebruik php iconv functies"
+msgstr "Gebruik PHP iconv functies"
 
-#, fuzzy
 msgid "Allow remote configuration test"
-msgstr "Test configuratie"
+msgstr "Sta configuratietest op afstand toe"
 
-#, fuzzy
 msgid "Show System Specifications"
 msgstr "Toon systeemspecificaties"
 
@@ -4522,113 +4510,118 @@ msgstr "Verifieer nieuw wachtwoord:"
 msgid "Use this to change your email password."
 msgstr "Gebruik dit om uw e-mail wachtwoord te veranderen."
 
-#, fuzzy
 msgid "User's Password"
-msgstr "Nieuw wachtwoord:"
+msgstr "Wachtwoord gebruiker"
 
 msgid "Current configuration requires LDAP support in PHP."
-msgstr ""
+msgstr "Huidige configuratie heeft LDAP support nodig in PHP."
 
 msgid "Plugin is not configured correctly."
-msgstr ""
+msgstr "Plugin is niet correct geconfigureerd."
 
 #, php-format
 msgid "Setting of LDAP connection option %s to value %s failed."
-msgstr ""
+msgstr "Verandering van LDAP connectieoptie %s naar waarde %s mislukt."
 
 #, php-format
 msgid "Incorrect LDAP connection option: %s"
-msgstr ""
+msgstr "Incorrecte LDAP connectieoptie: %s"
 
 msgid ""
 "Current PHP LDAP extension does not allow use of ldap_set_option() function."
 msgstr ""
+"Huidige PHP LDAP extensie staat het gebruik van de ldap_set_option() functie "
+"niet toe."
 
-#, fuzzy
 msgid "Unable to use TLS."
-msgstr "Onmogelijk om te vernieuwen"
+msgstr "Onmogelijk om TLS te gebruiken."
 
-#, fuzzy, php-format
+#, php-format
 msgid "Error: %s"
-msgstr "Fout "
+msgstr "Fout: %s"
 
 msgid "Unable to use LDAP TLS in current setup."
-msgstr ""
+msgstr "Onmogelijk om LDAP TLS te gebruiken in huidige setup."
 
 msgid "Unable to bind to LDAP server."
-msgstr ""
+msgstr "Onmogelijk om te binden aan de LDAP server."
 
-#, fuzzy, php-format
+#, php-format
 msgid "Server replied: %s"
-msgstr "Server reageerde: "
+msgstr "Server reageerde: %s"
 
 msgid "Unable to find user's password attribute."
-msgstr ""
+msgstr "Onmogelijk om het wachtwoord van de gebruiker te vinden."
 
 msgid "Unable to rebind to LDAP server."
-msgstr ""
+msgstr "Onmogelijk om te binden aan de LDAP server."
 
 msgid "LDAP server uses different attribute to store user's password."
 msgstr ""
+"LDAP server gebruikt een verschillende methode om wachtwoorden van "
+"gebruikers op te slaan."
 
-#, fuzzy
 msgid "Unable to connect to LDAP server."
-msgstr "Geen verbinding met server"
+msgstr "Geen verbinding met LDAP server."
 
 msgid "Unable to find user's DN."
-msgstr ""
+msgstr "Onmogelijk om de DN van de gebruiker te vinden."
 
-#, fuzzy
 msgid "Search error."
-msgstr "Zoek naar"
+msgstr "Zoek fout."
 
 msgid "Multiple userid matches found."
-msgstr ""
+msgstr "Meerdere gebruikersidentiteiten gevonden."
 
 msgid "ldap_get_dn error."
-msgstr ""
+msgstr "ldap_get_dn error."
 
 #, php-format
 msgid "Unsupported crypto: %s"
-msgstr ""
+msgstr "Crypto: %s niet ondersteund"
 
-msgid "PHP mhash extension is missing."
-msgstr ""
+msgid "PHP mhash extension is missing or does not support selected crypto."
+msgstr "PHP mhash extensie ontbreekt of ondersteund geselecteerde crypto niet."
 
 msgid "System crypt library doesn't support standard DES crypt."
-msgstr ""
+msgstr "Systeem crypt library ondersteunt geen standaard DES crypt."
 
 msgid "System crypt library doesn't have MD5 support."
-msgstr ""
+msgstr "Systeem crypt library heeft geen MD5 ondersteuning."
 
 msgid "System crypt library doesn't support extended DES crypt."
-msgstr ""
+msgstr "Systeem crypt library ondersteunt geen extended DES crypt."
 
 msgid "System crypt library doesn't have Blowfish support."
-msgstr ""
+msgstr "Systeem crypt library heeft geen Blowfish ondersteuning."
 
-#, fuzzy
 msgid "unknown"
-msgstr "Onbekende datum"
+msgstr "onbekend"
 
 msgid "Unable to validate user's password."
-msgstr ""
+msgstr "Onmogelijk om wachtwoord van de gebruiker te valideren."
 
 msgid "Blowfish is not supported by webserver's system crypt library."
 msgstr ""
+"Blowfish wordt niet ondersteund door de systeem crypt library van de "
+"webserver."
 
 msgid "MD5 is not supported by webserver's system crypt library."
 msgstr ""
+"MD5 wordt niet ondersteund door de systeem crypt library van de webserver."
 
 msgid ""
 "Extended DES crypt is not supported by webserver's system crypt library."
 msgstr ""
+"Extended DES crypt wordt niet ondersteund door de systeem crypt library van "
+"de webserver."
 
 msgid ""
 "Standard DES crypt is not supported by webserver's system crypt library."
 msgstr ""
+"Standaard DES crypt wordt niet ondersteund door de systeem crypt library van "
+"de webserver."
 
-#, fuzzy
 msgid "PHP Curl extension is NOT available! Unable to change password!"
 msgstr "Curl module NIET beschikbaar! Onmogelijk om wachtwoord te veranderen!"
 
@@ -4656,6 +4649,61 @@ msgstr "Dubbele aanmeldgegevens ontdekt, kan wachtwoord niet veranderen!"
 msgid "Password change was not successful!"
 msgstr "Wachtwoord veranderen was niet succesvol!"
 
+msgid ""
+"Plugin is unable to use PHP Pear DB libraries. PHP Pear includes must be "
+"available in your PHP include_path setting."
+msgstr ""
+"De plugin is niet in staat om PHP Pear DB libraries te gebruiken. PHP Pear "
+"includes moeten beschikbaar zijn in uw PHP include_path setting."
+
+msgid "Required change password backend configuration options are missing."
+msgstr ""
+"Vereiste backend configuratieopties voor het veranderen van wachtwoorden "
+"ontbreken."
+
+#, php-format
+msgid "Connection error: %s"
+msgstr "Onbekende fout: %s"
+
+#, php-format
+msgid "Invalid table name: %s"
+msgstr "Ongeldige tabelnaam: %s"
+
+msgid "User table is empty."
+msgstr "Gebruikerstabel is leeg."
+
+msgid "Invalid uid field."
+msgstr "Ongeldig uid veld."
+
+msgid "Invalid password field"
+msgstr "Ongeldig wachtwoord veld"
+
+msgid "Invalid domain field"
+msgstr "Ongeldig domein veld"
+
+#, php-format
+msgid "Query failed: %s"
+msgstr "Verzoek mislukt: %s"
+
+msgid "Unable to find user in user table."
+msgstr "Geen gebruiker gevonden in gebruikerstabel."
+
+msgid "Too many matches found in user table."
+msgstr "Te veel mogelijkheden gevonden in gebruikerstabel."
+
+msgid "Unable to detect password crypto algorithm."
+msgstr "Onmogelijk om het algoritme van wachtwoord crypto te achterhalen."
+
+msgid "Unable to encrypt new password."
+msgstr "Onmogelijk om nieuw wachtwoord te beveiligen."
+
+#, php-format
+msgid "Unable to set new password: %s"
+msgstr "Onmogelijk om nieuw wachtwoord %s in te stellen"
+
+msgid "Unable to use digest-md5 crypto."
+msgstr "Onmogelijk om digest-md5 crypto te gebruiken."
+
 msgid "Closing Connection"
 msgstr "Sluiten verbinding"
 
@@ -4663,33 +4711,28 @@ msgid "Connecting to Password Server"
 msgstr "Verbinden met wachtwoordserver"
 
 msgid "No valid backend defined."
-msgstr ""
+msgstr "Geen geldige backend gedefinieerd."
 
 msgid "Incorrent path to vmail.inc file."
-msgstr ""
+msgstr "Incorrect path naar vmail.inc bestand."
 
 msgid "Invalid or corrupted vmail.inc file."
-msgstr ""
+msgstr "Ongeldig of corrupt vmail.inc bestand."
 
-#, fuzzy
 msgid "Invalid user."
-msgstr "Ongeldige URL"
+msgstr "Ongeldige gebruiker."
 
-#, fuzzy
 msgid "Empty domain"
-msgstr "Leeg commando"
+msgstr "Leeg domein"
 
-#, fuzzy
 msgid "Empty domain password"
-msgstr "Leeg commando"
+msgstr "Leeg domein wachtwoord"
 
-#, fuzzy
 msgid "Empty username"
-msgstr "Gebruikersnaam:"
+msgstr "Lege gebruikersnaam"
 
-#, fuzzy
 msgid "Empty new password"
-msgstr "Nieuw wachtwoord:"
+msgstr "Leeg nieuw wachtwoord"
 
 msgid "Server Capability response:"
 msgstr "Server reageert: "
@@ -4739,37 +4782,33 @@ msgid_plural "Login OK: Inbox contains %s messages"
 msgstr[0] "Aanmelden OK: Inbox bevat %s bericht"
 msgstr[1] "Aanmelden OK: Inbox bevat %s berichten"
 
-#, fuzzy
 msgid "Width of popup window:"
-msgstr "Breedte van berichtvenster"
+msgstr "Breedte van popup venster:"
 
 msgid "If set to 0, reverts to default value"
-msgstr ""
+msgstr "Indien op 0 gezet wordt de standaard waarde aangehouden"
 
-#, fuzzy
 msgid "Height of popup window:"
-msgstr "Hoogte van berichtvenster"
+msgstr "Hoogte van popup venster:"
 
 msgid "uploaded media file"
-msgstr ""
+msgstr "uploaded media bestand"
 
-#, fuzzy
 msgid "none"
-msgstr "(geen)"
+msgstr "geen"
 
 msgid "Upload Media File:"
-msgstr ""
+msgstr "Upload Mediabestand:"
 
 msgid "Uploaded Media File:"
-msgstr ""
+msgstr "Uploaded Mediabestand:"
 
-#, fuzzy
 msgid "unavailable"
 msgstr "niet beschikbaar"
 
 #, php-format
 msgid "Media file %s will be removed, if you upload other media file."
-msgstr ""
+msgstr "Mediabestand %s wordt verwijderd als u een ander media bestand upload."
 
 msgid "Spam Service Type:"
 msgstr "Spam Service Type:"
@@ -4785,6 +4824,29 @@ msgstr "Sla Service Type op"
 
 msgid "SpamCop reporting"
 msgstr "SpamCop rapportage"
+
+#, php-format
+msgid ""
+"Your %s dictionary is encrypted with password that differs from your current "
+"password."
+msgstr ""
+"Uw %s woordenboek is beveiligd met een wachtwoord dat anders is dan uw "
+"huidige wachtwoord."
+
+msgid "Invalid SquirrelSpell module."
+msgstr "Ongeldige SquirrelSpell module."
+
+#, php-format
+msgid "Found %d error"
+msgstr "%d fout gevonden"
+
+#, php-format
+msgid "Found %d errors"
+msgstr "%d fouten gevonden"
+
+#, php-format
+msgid "Using %s dictionary for spellcheck."
+msgstr "%s woordenboek gebruikt voor spellingscontrole."
 
 msgid "Translation Theme:"
 msgstr "Vertaling thema:"
@@ -4814,6 +4876,22 @@ msgstr "Tijdens schrijven:"
 msgid "Not yet functional, currently does nothing"
 msgstr "Nog niet functioneel, doet momenteel niets"
 
+msgid "D"
+msgstr "D"
+
+msgid "F"
+msgstr "F"
+
+msgid "Message Flags"
+msgstr "Berichtvlaggen"
+
+msgid "Attachment"
+msgstr "Bijlage"
+
+msgid "Click here to change the sorting of the message list"
+msgstr ""
+"Klik hier om de volgorde van sortering van de berichtenlijst te veranderen"
+
 msgid "Delivery error report"
 msgstr "Bezorgingsfout rapportage"
 
@@ -4822,48 +4900,3 @@ msgstr "Berichtkoppen onbestelbaar bericht"
 
 msgid "This image has been removed for security reasons"
 msgstr "Deze afbeelding is om veiligheidsredenen verwijders"
-
-#~ msgid "Unknown error"
-#~ msgstr "Onbekende fout"
-
-#~ msgid "said"
-#~ msgstr "zei"
-
-#~ msgid "purge"
-#~ msgstr "legen"
-
-#~ msgid "Nickname:"
-#~ msgstr "Bijnaam:"
-
-#~ msgid "Note Field Contains:"
-#~ msgstr "Aantekeningveld bevat:"
-
-#~ msgid "Server responded: "
-#~ msgstr "Server reageerde: "
-
-#~ msgid "Please report this to the system administrator."
-#~ msgstr "Neem contact op met uw systeembeheerder."
-
-#~ msgid " not found."
-#~ msgstr " niet gevonden"
-
-#~ msgid "Message "
-#~ msgstr "Bericht "
-
-#~ msgid "No-one server in use. Try to add."
-#~ msgstr "Geen server in gebruik. Voeg er een toe."
-
-#~ msgid "Hey! Wath do You are looking for?"
-#~ msgstr "Hey! Wat zoekt u?"
-
-#~ msgid "Click here to change the sorting of the message list"
-#~ msgstr ""
-#~ "Klik hier om de volgorde van sortering van de berichtenlijst te veranderen"
-
-#~ msgid "Show recipient name if the message is from your default identity"
-#~ msgstr ""
-#~ "Toon naam ontvanger als het bericht van uw standaard identiteit afkomstig "
-#~ "is"
-
-#~ msgid "Use old folder listing functions"
-#~ msgstr "Gebruik oude mapstructuur functies"
