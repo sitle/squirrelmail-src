@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: vacation_local\n"
 "POT-Creation-Date: 2005-07-20 17:05+0200\n"
-"PO-Revision-Date: 2005-03-02 00:17+0100\n"
+"PO-Revision-Date: 2005-07-28 09:14+0200\n"
 "Last-Translator: Fredrik Jervfors <sqm_admin@fimbul.net>\n"
 "Language-Team: Swedish <squirrelmail-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -17,16 +17,15 @@ msgstr ""
 msgid "Vacation Message"
 msgstr "Frånvaromeddelande"
 
-#, fuzzy
 msgid ""
 "Set up an auto-reply message and optionally forward your incoming email. "
 "This can be useful when you are away on vacation."
 msgstr ""
-"Automatiska svar på inkommande brev kan t.ex. vara användbart när man är på "
-"semester."
+"Automatiska svar på och/eller vidarebefordran av inkommande brev kan t.ex. "
+"vara användbart när man är på semester."
 
 msgid "Bad characters in list of forwarding address."
-msgstr ""
+msgstr "Felaktiga tecken in adressen för vidarebefordran."
 
 msgid "Options"
 msgstr "Inställningar"
@@ -35,81 +34,86 @@ msgid "Change Vacation Message"
 msgstr "Byt frånvaromeddelande"
 
 msgid "Settings Saved"
-msgstr ""
+msgstr "Inställningarna sparades"
 
 msgid "Send auto-reply to sender?"
-msgstr ""
+msgstr "Automatiskt skicka svar till avsändaren?"
 
-#, fuzzy
 msgid "Vacation subject:"
-msgstr "Frånvaromeddelande"
+msgstr "Frånvaromeddelandes ärende:"
 
-#, fuzzy
 msgid "Vacation message:"
-msgstr "Frånvaromeddelande"
+msgstr "Frånvaromeddelande:"
 
 msgid "Forward incoming messages to addresses listed below?"
-msgstr ""
+msgstr "Vidarebefordra inkommande brev till adresserna nedan?"
 
 msgid "No local delivery; forward and/or auto-reply only."
 msgstr ""
+"Spara inte någon kopia, det vill säga endast automatiska svar och/eller "
+"vidarebefordran."
 
 msgid "Forwarding email addresses (one address per line)"
-msgstr ""
+msgstr "Adresser att vidarebefordra till (en adress per rad)"
 
 msgid "Submit"
-msgstr ""
+msgstr "Spara"
 
 msgid "Error: Could not bind to LDAP server."
-msgstr ""
+msgstr "Fel: Kunde inte ansluta till LDAP-servern."
 
 #, php-format
 msgid "Error: Could not find FTP server for %s in LDAP server."
-msgstr ""
+msgstr "Fel: LDAP-servern kan inte hitta någon FTP-server för %s."
 
 msgid "Error: Could not connect to LDAP server."
-msgstr ""
+msgstr "Fel: Kunde inte kontakta LDAP-servern."
 
 msgid "Error: Unable to connect to FTP server. Please try again later."
-msgstr ""
+msgstr "Fel: Kunde inte ansluta till FTP-servern. Försök igen senare."
 
 msgid ""
 "Error: Unable to log in to FTP server. Please contact your system "
 "administrator."
 msgstr ""
+"Fel: Kunde inte logga in på FTP-servern. Vänligen rapportera detta fel till "
+"systemadministratören."
 
 msgid ""
 "Error: Unable to switch to passive FTP mode. Please contact your system "
 "administrator."
 msgstr ""
+"Fel: Kunde inte växla till en passiv FTP-anslutning. Vänligen rapportera "
+"detta fel till systemadministratören."
 
 msgid "Error: Unable to upload file. Please contact your system administrator."
 msgstr ""
+"Fel: Kunde inte ladda upp filen. Vänligen rapportera detta fel till "
+"systemadministratören."
 
-#, fuzzy
 msgid "An error occurred uploading the file:"
-msgstr "Ett fel uppstod vid uppladdning av filen: "
+msgstr "Ett fel uppstod vid uppladdning av filen:"
 
 msgid ""
 "Error: unable to download file. Please contact your system administrator."
 msgstr ""
+"Fel: Kunde inte ladda ned filen. Vänligen rapportera detta fel till "
+"systemadministratören."
 
-#, fuzzy
 msgid "An error occurred downloading the file:"
-msgstr "Ett fel uppstod vid nedladdning av filen: "
+msgstr "Ett fel uppstod vid nedladdning av filen:"
 
 msgid "Error: unable to delete file. Please contact your system administrator."
 msgstr ""
+"Fel: Kunde inte ta bort filen. Vänligen rapportera detta fel till "
+"systemadministratören."
 
-#, fuzzy
 msgid "An error occurred deleting the file:"
-msgstr "Ett fel uppstod vid borttagning av filen: "
+msgstr "Ett fel uppstod vid borttagning av filen:"
 
-#, fuzzy
 msgid "Unknown action:"
-msgstr "Okänd begäran: "
+msgstr "Okänd begäran:"
 
-#, fuzzy
 msgid ""
 "An error occurred attempting to read temp file; check permissions on "
 "attachments directory."
@@ -117,32 +121,9 @@ msgstr ""
 "Ett fel uppstod när en temporärfil skulle läsas. Be systemadministratören "
 "kontrollera rättigheterna för bilagemappen."
 
-#, fuzzy
 msgid ""
 "An error occurred attempting to create temp file; check permissions on "
 "attachments directory."
 msgstr ""
 "Ett fel uppstod när en temporärfil skulle skrivas. Be systemadministratören "
 "kontrollera rättigheterna för bilagemappen."
-
-#~ msgid "Compose"
-#~ msgstr "Redigera"
-
-#~ msgid ""
-#~ "You do not have a vacation message set up.<br />You can enter one by "
-#~ "typing the text you want to reply with in the box below."
-#~ msgstr ""
-#~ "Du har inte angett något frånvaromeddelande.<br />Du kan ange ett genom "
-#~ "att skriva in den text som ska användas som svar i rutan nedanför."
-
-#~ msgid "Add Message"
-#~ msgstr "Ange meddelande"
-
-#~ msgid "Your current Vacation message is:"
-#~ msgstr "Ditt nuvarande frånvaromeddelande är:"
-
-#~ msgid "Change Message"
-#~ msgstr "Ändra meddelande"
-
-#~ msgid "Delete Message"
-#~ msgstr "Kasta meddelande"
