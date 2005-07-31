@@ -55,7 +55,7 @@ if (!is_object($message)) {
 }
 $subject = $message->rfc822_header->subject;
 if ($ent_id) {
-    $message = &$message->getEntity($ent_id);
+    $message = $message->getEntity($ent_id);
     $header = $message->header;
 
     if ($message->rfc822_header) {
