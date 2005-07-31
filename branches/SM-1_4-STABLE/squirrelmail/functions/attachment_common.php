@@ -37,6 +37,8 @@ $FileExtensionToMimeType = array('bmp'  => 'image/x-bitmap',
 /* Register browser-supported image types */
 sqgetGlobalVar('attachment_common_types', $attachment_common_types);
 if (isset($attachment_common_types)) {
+    // var is used to detect activation of jpeg image types
+    unset($jpeg_done);
     /* Don't run this before being logged in. That may happen
        when plugins include mime.php */
     foreach ($attachment_common_types as $val => $v) {
@@ -52,6 +54,20 @@ if (isset($attachment_common_types)) {
             register_attachment_common('image/png',       'link_image');
         elseif ($val == 'image/x-xbitmap')
             register_attachment_common('image/x-xbitmap', 'link_image');
+        elseif ($val == '*/*' || $val == 'image/*') {
+            /**
+             * browser (Firefox) declared that anything is acceptable. 
+             * Lets register some common image types.
+             */
+            if (! isset($jpeg_done)) {
+                $jpeg_done = 1;
+                register_attachment_common('image/jpeg',  'link_image');
+                register_attachment_common('image/pjpeg', 'link_image');
+            }
+            register_attachment_common('image/gif',       'link_image');
+            register_attachment_common('image/png',       'link_image');
+            register_attachment_common('image/x-xbitmap', 'link_image');
+        }
     }
     unset($jpeg_done);
 }
