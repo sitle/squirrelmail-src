@@ -12,11 +12,15 @@ Version 1.4.6 - CVS
   - Added extra checks in Delivery class for In-Reply-To header. Fixes
     E_NOTICE level warnings in PHP 5.0.4 and later (#1206474). [php5]
   - Added extra checks in SquirrelMail charset_encode() function in case
-    somebody removes HTML to us-ascii conversion library (#1239782).
+    somebody removes HTML to US-ASCII conversion library (#1239782).
   - Ported devel fixes for PHP 5.0.4 E_NOTICE warnings in Message class
     (#1164045). [php5]
   - Auto Refresh Folder List preference now defaults to 10 Minutes, add
     option for 20 Minutes.
+  - Fixed inline display of attached jpeg/gif/xbm attachments in Mozilla
+    Firefox.
+  - Fixed invalid reference in src/download.php. E_NOTICE level warnings
+    could corrupt attachments in php 4.4.0.
 
 Version 1.4.5 - 13 July 2005
 ----------------------------
