@@ -6,12 +6,10 @@ echo "<p>Stats are available for:\n";
 echo "<dl>\n";
 echo "<dt><a href=\"HEAD/\">HEAD</a>\n";
 echo "<dd>SquirrelMail locales cvs, HEAD branch.\n";
-//echo "<dt><a href=\"SM-1_4_3/\">SM-1_4_3</a>\n";
-//echo "<dd>SquirrelMail locales cvs, SM-1_4_3 branch.\n";
-echo "<dt><a href=\"SM-1_4_4/\">SM-1_4_4</a>\n";
-echo "<dd>SquirrelMail locales cvs, SM-1_4_4 branch.\n";
-echo "<dt><a href=\"SM-1_5_0/\">SM-1_5_0</a>\n";
-echo "<dd>SquirrelMail locales cvs, SM-1_5_0 branch.\n";
+foreach(glob('SM-*',GLOB_ONLYDIR) as $branch) {
+  echo "<dt><a href=\"$branch/\">$branch</a>\n";
+  echo "<dd>SquirrelMail locales cvs, $branch branch.\n";   
+}
 echo "</dl>\n";
 echo "</p>\n";
 
