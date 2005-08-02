@@ -23,10 +23,12 @@ for trans in `ls locale/`; do
 	tar -cf ../packages/${trans}-${STABLE_VERSION}-${date}.tar \
 	    locale/${trans}/LC_MESSAGES/*.po \
 	    locale/${trans}/LC_MESSAGES/*.mo \
+	    locale/${trans}/setup.php \
 	    install version ReleaseNotes.locales COPYING.locales ChangeLog.locales
 	zip -q ../packages/${trans}-${STABLE_VERSION}-${date}.zip \
 	    locale/${trans}/LC_MESSAGES/*.po \
 	    locale/${trans}/LC_MESSAGES/*.mo \
+	    locale/${trans}/setup.php \
 	    install version ReleaseNotes.locales COPYING.locales ChangeLog.locales
 	# sec_remove images
 	if [ -f images/sec_remove_${trans}.png ]; then
@@ -49,12 +51,14 @@ done
 tar -cf ../packages/all_locales-${STABLE_VERSION}-${date}.tar \
     locale/*/LC_MESSAGES/*.po \
     locale/*/LC_MESSAGES/*.mo \
+    locale/*/setup.php \
     images/sec_remove_*.png \
     help/*/*.hlp install version \
     ReleaseNotes.locales COPYING.locales ChangeLog.locales
 zip -q ../packages/all_locales-${STABLE_VERSION}-${date}.zip \
     locale/*/LC_MESSAGES/*.po \
     locale/*/LC_MESSAGES/*.mo \
+    locale/*/setup.php \
     images/sec_remove_*.png \
     help/*/*.hlp install version \
     ReleaseNotes.locales COPYING.locales ChangeLog.locales
@@ -65,6 +69,8 @@ for package in `ls ../packages/*-${date}.tar`; do
     bzip2 ${package}
 done
 
-# md5sum them
+# md5sum and sha1sum them
 cd ../packages/
-md5sum *-${date}.* > md5sum-${date}.txt
+md5sum *-${date}.* > md5sum.txt
+sha1sum *-${date}.* > sha1sum.txt
+
