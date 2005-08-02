@@ -21,6 +21,8 @@ Version 1.4.6 - CVS
     Firefox.
   - Fixed invalid reference in src/download.php. E_NOTICE level warnings
     could corrupt attachments in php 4.4.0.
+  - Fixed error handling in SquirrelSpell plugin. sprintf and gettext 
+    formating errors in check_me.mod. Reported by Edward Chapman.
 
 Version 1.4.5 - 13 July 2005
 ----------------------------
