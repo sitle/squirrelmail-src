@@ -29,8 +29,16 @@ else
  if [ -f po/${2}.pot ]; then
     string=$2
  else
+  if [ -f po/plugins/${2}.pot ]; then
+     string='plugins/'$2
+  else
+   if [ -f po/extra/${2}.pot ]; then
+       string='extra/'$2
+   else
     echo "ERROR: No such template in po directory"
     exit 1
+   fi
+  fi
  fi
 fi
 
