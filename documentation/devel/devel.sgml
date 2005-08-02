@@ -280,10 +280,10 @@ SquirrelMail gets interface language from three places:
     preference uses language key. If user's preferences are not available (user
     is not logged in), system tries to extract language value from 
     'squirrelmail_language' cookie.
- b) default squirrelmail language that is set in configuration 
+ b) default SquirrelMail language that is set in configuration 
     ($squirrelmail_default_language variable).
  c) preferred language setting provided by browser. It is used only when default 
-    squirrelmail language is set to empty string
+    SquirrelMail language is set to empty string
 
 If language information is not available, SquirrelMail falls back to US English
 translation.
