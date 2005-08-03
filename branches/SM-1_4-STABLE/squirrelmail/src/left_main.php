@@ -315,263 +315,6 @@ if (isset($left_refresh) && ($left_refresh != '') &&
     $xtra = '';
 }
 
-/**
- * $advanced_tree is a boolean var which is set to default SM behaviour.
- * Setting $advanced tree to true causes SM to display a experimental
- * mailbox-tree with dhtml behaviour.
- * It only works on browsers which supports css and javascript. The used
- * javascript is experimental and doesn't support all browsers.
- * It has been tested on IE6 an Konquerer 3.0.0-2.
- **/
-
-$advanced_tree = false; /* set this to true if you want to see a nicer mailboxtree */
-
-if ($advanced_tree) {
-$xtra .= <<<ECHO
-<script language="Javascript" type="text/javascript">
-
-<!--
-
-    function hidechilds(el) {
-        id = el.id+".0000";
-        form_id = "mbx[" + el.id +"F]";
-        if (document.all) {
-            ele = document.all[id];
-            if (ele) {
-                if(ele.style.display == "none") {
-                    ele.style.display = "block";
-                    ele.style.visibility = "visible"
-                        el.src="../images/minus.png";
-                    document.all[form_id].value=0;
-               } else {
-                  ele.style.display = "none";
-                  ele.style.visibility = "hidden"
-                      el.src="../images/plus.png";
-                  document.all[form_id].value=1;
-               }
-            }
-        } else if (document.getElementById) {
-            ele = document.getElementById(id);
-                if (ele) {
-                    if(ele.style.display == "none") {
-                        ele.style.display = "block";
-                        ele.style.visibility = "visible"
-                            el.src="../images/minus.png";
-                        document.getElementById(form_id).value=0;
-                    } else {
-                        ele.style.display = "none";
-                        ele.style.visibility = "hidden"
-                            el.src="../images/plus.png";
-                        document.getElementById(form_id).value=1;
-                    }
-                }   
-        }
-    }
-
-    function preload() {
-       if (!document.images) return;
-       var ar = new Array();
-       var arguments = preload.arguments;
-       for (var i = 0; i<arguments.length; i++) {
-           ar[i] = new Image();
-           ar[i].src = arguments[i];
-       }
-    }
-
-    function buttonover(el,on) {
-        if (!on) {
-            el.style.borderColor="blue";
-        } else {
-            el.style.borderColor="orange";
-        }
-    }
-
-    function buttonclick(el,on) {
-        if (!on) { 
-            el.style.border="groove"
-        } else {
-            el.style.border="ridge";
-        }
-    }
-
-    function hideframe(hide) {
-   
-ECHO;
-$xtra .= "      left_size = \"$left_size\";\n";
-$xtra .= <<<ECHO
-        if (document.all) {
-            masterf = window.parent.document.all["fs1"];
-            leftf = window.parent.document.all["left"];
-            leftcontent = document.all["leftframe"];
-            leftbutton = document.all["showf"];
-        } else if (document.getElementById) {
-            masterf = window.parent.document.getElementById("fs1");
-            leftf = window.parent.document.getElementById("left");
-            leftcontent = document.getElementById("leftframe");
-            leftbutton = document.getElementById("showf");
-        } else {
-            return false;
-        }
-        if(hide) {
-            new_col = calc_col("20");
-            masterf.cols = new_col;
-            document.body.scrollLeft=0;
-            document.body.style.overflow='hidden';
-            leftcontent.style.display = 'none';
-            leftbutton.style.display='block';
-        } else {
-            masterf.cols = calc_col(left_size);
-            document.body.style.overflow='';
-            leftbutton.style.display='none';
-            leftcontent.style.display='block';
-
-      }
-   }
-
-   function calc_col(c_w) {
-
-ECHO;
-   if ($location_of_bar == 'right') {
-       $xtra .= '     right=true;';
-   } else {
-       $xtra .= '     right=false;';
-   }
-   $xtra .= "\n";
-$xtra .= <<<ECHO
-     if (right) {
-         new_col = '*,'+c_w;
-     } else {
-         new_col = c_w+',*';
-     }
-     return new_col;
-   }
-
-   function resizeframe(direction) {
-     if (document.all) {
-        masterf = window.parent.document.all["fs1"];
-     } else if (document.getElementById) {
-        window.parent.document.getElementById("fs1");
-     } else {
-        return false;
-     }
-
-ECHO;
-   if ($location_of_bar == 'right') {
-       $xtra .= '  colPat=/^\*,(\d+)$/;';
-   } else {
-       $xtra .= '  colPat=/^(\d+),.*$/;';
-   }
-   $xtra .= "\n";
-
-$xtra .= <<<ECHO
-     old_col = masterf.cols;
-     colPat.exec(old_col);
-
-     if (direction) {
-        new_col_width = parseInt(RegExp.$1) + 25;
-
-     } else {
-        if (parseInt(RegExp.$1) > 35) {
-           new_col_width = parseInt(RegExp.$1) - 25;
-        }
-     }
-     masterf.cols = calc_col(new_col_width);
-   }
-
-//-->
-
-</script>
-
-ECHO;
-
-/* style definitions */
-
-$xtra .= <<<ECHO
-
-<style type="text/css">
-<!--
-  body {
-     margin: 0px 0px 0px 0px;
-     padding: 5px 5px 5px 5px;
-  }
-
-  .button {
-     border:outset;
-     border-color: $color[9];
-     background:$color[0];
-     color:$color[6];
-     width:99%;
-     heigth:99%;
-  }
-
-  .mbx_par {
-     font-size:1.0em;
-     margin-left:4px;
-     margin-right:0px;
-     white-space: nowrap;
-  }
-
-  a.mbx_link {
-      text-decoration: none;
-      background-color: $color[0];
-      display: inline;
-  }
-
-  a:hover.mbx_link {
-      background-color: $color[9];
-  }
-
-  a.mbx_link img {
-      border-style: none;
-  }
-
-  .mbx_sub {
-     padding-left:5px;
-     padding-right:0px;
-     margin-left:4px;
-     margin-right:0px;
-     font-size:0.9em;
-     white-space: nowrap;
-  }
-
-  .par_area {
-     margin-top:0px;
-     margin-left:4px;
-     margin-right:0px;
-     padding-left:10px;
-     padding-bottom:5px;
-     border-left: solid;
-     border-left-width:0.1em;
-     border-left-color:$color[9];
-     border-bottom: solid;
-     border-bottom-width:0.1em;
-     border-bottom-color:$color[9];
-     display: block;
-  }
-
-  .mailboxes {
-     padding-bottom:3px;
-     margin-right:4px;
-     padding-right:4px;
-     margin-left:4px;
-     padding-left:4px;
-     border: groove;
-     border-width:0.1em;
-     border-color:$color[9];
-     background: $color[0];
-  }
-
--->
-
-</style>
-
-ECHO;
-
-}
-
-
-
-
 displayHtmlHeader( 'SquirrelMail', $xtra );
 
 /* If requested and not yet complete, attempt to autocreate folders. */
@@ -595,25 +338,12 @@ if ($auto_create_special && !$auto_create_done) {
        version of the mailboxlist without the newly created folders.
        The second parameter forces a non cached mailboxlist return.
      */
-    if ($advanced_tree) {
-        // do nothing, caching not seported yet.
-    } else {
-        $boxes = sqimap_mailbox_list($imapConnection,true);
-    }
+    $boxes = sqimap_mailbox_list($imapConnection,true);
 }
 
 echo "\n<body bgcolor=\"$color[3]\" text=\"$color[6]\" link=\"$color[6]\" vlink=\"$color[6]\" alink=\"$color[6]\">\n";
 
 do_hook('left_main_before');
-if ($advanced_tree) {
-   /* nice future feature, needs layout !! volunteers?   */
-   $right_pos = $left_size - 20;
-/*   echo '<div style="position:absolute;top:0;border=solid;border-width:0.1em;border-color:blue;"><div id="hidef" style="width=20;font-size:12"><a href="javascript:hideframe(true)"><b>&lt;&lt;</b></a></div>';
-   echo '<div id="showf" style="width=20;font-size:12;display:none;"><a href="javascript:hideframe(false)"><b>&gt;&gt;</b></a></div>';
-   echo '<div id="incrf" style="width=20;font-size:12"><a href="javascript:resizeframe(true)"><b>&gt;</b></a></div>';
-   echo '<div id="decrf" style="width=20;font-size:12"><a href="javascript:resizeframe(false)"><b>&lt;</b></a></div></div>';
-   echo '<div id="leftframe"><br /><br />';*/
-}
 
 echo "\n\n" . html_tag( 'table', '', 'left', '', 'border="0" cellspacing="0" cellpadding="0" width="99%"' ) .
     html_tag( 'tr' ) .
@@ -657,8 +387,8 @@ if ($date_format != 6) {
     }
     $clk = str_replace(' ','&nbsp;',$clk);
 
-    echo '<small><span style="white-space: nowrap;">' 
-       . str_replace(' ', '&nbsp;', _("Last Refresh")) 
+    echo '<small><span style="white-space: nowrap;">'
+       . str_replace(' ', '&nbsp;', _("Last Refresh"))
        . ":</span><br /><span style=\"white-space: nowrap;\">$clk</span></small><br />";
 }
 
@@ -694,7 +424,7 @@ while ($curbox < $boxcount) {
 for ($i = 0; $i < count($boxes); $i++) {
     if ( $boxes[$i]['visible'] ) {
         $mailbox = $boxes[$i]['formatted'];
-	// remove folder_prefix using substr so folders aren't indented unnecessarily
+    // remove folder_prefix using substr so folders aren't indented unnecessarily
         $mblevel = substr_count(substr($boxes[$i]['unformatted'], strlen($folder_prefix)), $delimiter) + 1;
 
         /* Create the prefix for the folder name and link. */
