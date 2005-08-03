@@ -4,9 +4,8 @@
 
 Version 1.4.6 - CVS
 -------------------
-  - Added Simple Green, Silver Steel, Wood, Bluesome, Simple Green2 and 
-    Simple Purple themes. Contributed by Pavel Spatny, Saku Lehtiö
-    (#1188209), Vicky Pyne (#1217066 and #1217069).
+  - Added Simple Green, Silver Steel, Wood, Bluesome, Simple Green2 and
+    Simple Purple themes. Contributed by Pavel Spatny, Saku Lehtiï¿½    (#1188209), Vicky Pyne (#1217066 and #1217069).
   - Fixes for increased error checking in PHP 5.1 array_shift() (#1237160).
     [php5]
   - Added extra checks in Delivery class for In-Reply-To header. Fixes
@@ -21,9 +20,12 @@ Version 1.4.6 - CVS
     Firefox.
   - Fixed invalid reference in src/download.php. E_NOTICE level warnings
     could corrupt attachments in php 4.4.0.
-  - Fixed error handling in SquirrelSpell plugin. sprintf and gettext 
+  - Fixed error handling in SquirrelSpell plugin. sprintf and gettext
     formating errors in check_me.mod. Reported by Edward Chapman.
   - Allow configure to be ran from any directory, thanks Ceri Davies.
+  - Fixed reloading the cached mailbox-tree after a purge trash action.
+  - Fixed loading of external background-images in style attributes when
+    show_unsafe_images is false.
 
 Version 1.4.5 - 13 July 2005
 ----------------------------
@@ -54,7 +56,7 @@ Version 1.4.5 Release Candidate 1 - 15 June 2005
   - Fixed uid based authentication in administrator plugin. Thanks to
     Gareth Johnston.
   - Added three Tahoma stylesheets.
-  - Added required code to display error message that might occur when options 
+  - Added required code to display error message that might occur when options
     are saved.
   - Fixed translations of "On DATE, AUTHOR Wrote" and "AUTHOR Wrote" replies.
   - Added trailing slash for data directory used by global file based
@@ -94,8 +96,8 @@ Version 1.4.5 Release Candidate 1 - 15 June 2005
   - Added verbose error messages to addressbook_init() function.
   - Added $force_decode option to charset_decode() function in order
     to use this function correctly in charset_convert().
-  - Added wrapper function in order to use more than one locale name in 
-    setlocale() calls. Fixes translation issues on some broken glibc 
+  - Added wrapper function in order to use more than one locale name in
+    setlocale() calls. Fixes translation issues on some broken glibc
     systems (#1105168).
   - Removed unnecessary require_once() calls from abook_take plugin.
   - Fixed broken saved search display.
@@ -116,21 +118,21 @@ Version 1.4.5 Release Candidate 1 - 15 June 2005
   - Make sure From: is really an object on replies, otherwise an error is
     generated trying to find reply citation (#1179754).
   - Add Cancel button to addressbook (#1180565).
-  - RFC 2046: Send mixed messages with multipart/alternative nested boundaries 
+  - RFC 2046: Send mixed messages with multipart/alternative nested boundaries
     with correct boundary strings.
   - Ported abook_init and abook_add_class hooks from devel.
   - Fix wrapping between folder icon and name in advanced folder list
     (#1187995).
   - Fix folder indenting in message list didn't use folder_prefix (#726719,
     #1013888).
-  - mail_fetch plugin should check destination folder before trying to store 
+  - mail_fetch plugin should check destination folder before trying to store
     messages in it. INBOX is used as fallback folder. By default plugin
     can use only subscribed mail folders that can store messages (#584658).
   - Added mbstring.func_overload!=0 workaround (#929644, #1061699).
     src/configtest.php is modified to warn about broken php configuration.
   - Fixed use of squirrelmail_language cookie with PHP register_globals =
     off.
-  - Interface can default to first language listed in browser's 
+  - Interface can default to first language listed in browser's
     'HTTP_ACCEPT_LANGUAGE' header, if default SquirrelMail language is set
     to empty string (#764709).
   - Default charset variable can be used to change charset used by US
@@ -140,11 +142,11 @@ Version 1.4.5 Release Candidate 1 - 15 June 2005
   - Add robots noindex/nofollow meta tag to SquirrelMail generated pages.
   - Fix typo in addrbook_search.php.
   - Gracefully recover from over quota error while sending a mail (#1145144).
-  - Added $encode_header_key and $hide_auth_header options. First option 
-    allows to encode user's information with provided encryption key (set in 
-    2. Server settings -> B. Update SMTP / Sendmail settings). Second option 
-    allows to disable authenticated user part in Received: header, when user 
-    can't force used email address. It is set in 4. General Options -> 
+  - Added $encode_header_key and $hide_auth_header options. First option
+    allows to encode user's information with provided encryption key (set in
+    2. Server settings -> B. Update SMTP / Sendmail settings). Second option
+    allows to disable authenticated user part in Received: header, when user
+    can't force used email address. It is set in 4. General Options ->
     9. Allow editing of identity (#847107).
   - Fix get_identities() for the case where the user has not set an email
     address: use the fallback $username@$domain that's used in compose aswell.
@@ -159,7 +161,7 @@ Version 1.4.5 Release Candidate 1 - 15 June 2005
     Thanks to Roalt Zijlstra.
   - Identites code incorrectly assumes username does not contain domain part
     and appended domain to username when no user defined email set.
-	(#1219184).
+    (#1219184).
   - Disallow access to the administrator plugin screens when the plugin is
     not enabled in the config.
   - Security: fix several cross site scripting (XSS) attacks. Thanks go to
@@ -171,7 +173,7 @@ Version 1.4.4 - 21 January 2005
   - Fix listcommands plugin to behave like normal reply/compose
     links, and return to message page that originally called from.
   - Max upload file size now correctly handles a '-1' value, meaning
-    unlimited (#1094569). 
+    unlimited (#1094569).
   - Send 8-bit username or password as literals (#1081259).
   - configtest.php now checks whether default language is actually
     present.
@@ -237,11 +239,11 @@ Version 1.4.4 RC1 - 31 December 2004
   - Corrected poor English in a string (#775978).
   - Corrected bug in SquirrelSpell that'd put the corrected spelling on the wrong
     line if quoting inline, or below the original email (#906217).
-  - LC_NUMERIC locale is set to C. Some plugins might use decimal delimiters 
+  - LC_NUMERIC locale is set to C. Some plugins might use decimal delimiters
     incorrectly (#1027130).
   - Turkish translation uses C character case conversion rules. Fixes php and
     squirrelmail functions are assume English conversion rules.
-  - Removed X-Mailer header from SquirrelMail. SpamAssassin 3.0 detects 
+  - Removed X-Mailer header from SquirrelMail. SpamAssassin 3.0 detects
     User-Agent + X-Priority headers correctly. Older versions have to fix
     rules/20_head_tests.cf.
   - When replying to message with a " in the subject, the " was a replaced with a '.
@@ -925,7 +927,7 @@ Version 1.0.2 -- February 8, 2001
   - Better escaped string handling from POST variables
   - Many more code cleanups and optimizations
   - Added Hungarian translation by Teemu Junnila <teejun@vallcom.com>
-  - Added Icelandic translation by Karl Heiðar <karlh@macho.is>
+  - Added Icelandic translation by Karl Heiï¿½r <karlh@macho.is>
   - Updated Taiwan translation
   - Updated Swedish translation
   - Updated Finnish translation
