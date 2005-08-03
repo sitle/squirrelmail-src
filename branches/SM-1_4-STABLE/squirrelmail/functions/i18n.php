@@ -282,7 +282,7 @@ function set_up_language($sm_language, $do_search = false, $default = false) {
         if ($squirrelmail_language == 'ja_JP') {
             header ('Content-Type: text/html; charset=EUC-JP');
             if (!function_exists('mb_internal_encoding')) {
-                echo _("You need to have php4 installed with the multibyte string function enabled (using configure option --enable-mbstring).");
+                echo _("You need to have PHP installed with the multibyte string function enabled (using configure option --enable-mbstring).");
                 // Revert to English link has to be added.
                 // stop further execution in order not to get php errors on mb_internal_encoding().
                 return;
