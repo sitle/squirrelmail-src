@@ -76,6 +76,7 @@ sqimap_logout($imap_stream);
 session_write_close();
 
 $location = get_location();
-header ("Location: $location/left_main.php");
+// force_refresh = 1 in case trash contains deleted mailboxes
+header ("Location: $location/left_main.php?force_refresh=1");
 
 ?>
