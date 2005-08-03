@@ -49,7 +49,7 @@ global $uid_support;
 $imapConnection = sqimap_login($username, $key, $imapServerAddress, $imapPort, 0);
 $mbx_response =  sqimap_mailbox_select($imapConnection, $mailbox);
 
-$message = &$messages[$mbx_response['UIDVALIDITY']]["$passed_id"];
+$message = $messages[$mbx_response['UIDVALIDITY']]["$passed_id"];
 if (!is_object($message)) {
     $message = sqimap_get_message($imapConnection,$passed_id, $mailbox);
 }
