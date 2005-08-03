@@ -1506,7 +1506,7 @@ function sq_fixstyle($body, $pos, $message, $id, $mailbox){
      }
      // remove NUL
      $content = str_replace("\0", "", $content);
- 
+
     /**
      * Remove any backslashes, entities, and extraneous whitespace.
      */
@@ -1885,7 +1885,6 @@ function magicHTML($body, $id, $message, $mailbox = 'INBOX') {
                     Array(
                         "\\1$secremoveimg\\2",
                         "\\1$secremoveimg\\2",
-                        "\\1$secremoveimg\\2",
                         "\\1$secremoveimg\\2"
                         )
                     ),
@@ -1897,7 +1896,6 @@ function magicHTML($body, $id, $message, $mailbox = 'INBOX') {
                         "/^([\'\"])\s*about\s*:.*([\'\"])/si"
                         ),
                     Array(
-                        "\\1#\\1",
                         "\\1#\\1",
                         "\\1#\\1",
                         "\\1#\\1"
@@ -1925,8 +1923,6 @@ function magicHTML($body, $id, $message, $mailbox = 'INBOX') {
                     "url(\\1#\\1)",
                     "url(\\1#\\1)",
                     "url(\\1#\\1)",
-                    "url(\\1#\\1)",
-                    "url(\\1#\\1)",
                     "\\1:url(\\2#\\3)"
                     )
                 )
@@ -1945,7 +1941,7 @@ function magicHTML($body, $id, $message, $mailbox = 'INBOX') {
         array_push($bad_attvals{'/.*/'}{'/^src|background/i'}[1],
                 "\\1$secremoveimg\\1");
         array_push($bad_attvals{'/.*/'}{'/^style/i'}[0],
-                '/url\(([\'\"])\s*https*:.*([\'\"])\)/si');
+                '/url\([\'\"]?https?:[^\)]*[\'\"]?\)/si');
         array_push($bad_attvals{'/.*/'}{'/^style/i'}[1],
                 "url(\\1$secremoveimg\\1)");
     }
