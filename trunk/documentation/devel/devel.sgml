@@ -151,7 +151,9 @@ Charset totals:
 <sect1>$languages array
 <p>
 $languages array is stored in functions/i18n.php and defines translations
-that are enabled in SquirrelMail.
+that are enabled in SquirrelMail. Since SquirrelMail 1.5.1 functions/i18n.php
+stores only English entry. Other languages are loaded automatically from 
+locale/&lt;language_code&gt;/setup.php files.
 
 Format of array:
 <tscreen><verb>
@@ -197,7 +199,8 @@ Requires mbstring support
 
  <tag/_encode/ Used in src/compose.php, src/read_body.php
 
- <tag/_encodeheader/ Used in functions/mime.php. Returning function
+ <tag/_encodeheader/ Used in functions/mime.php. Should accept one string
+ argument and return correctly encoded MIME header string.
 
  <tag/_decodeheader/ Used in functions/mime.php. Returning function
 

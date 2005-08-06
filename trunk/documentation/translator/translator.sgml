@@ -1,7 +1,28 @@
 <!doctype linuxdoc system>
+<!--
+ Copyright (c) 2005 The SquirrelMail Project Team
+ This file is part of SquirrelMail webmail interface documentation.
+
+ SquirrelMail is free software; you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation; either version 2 of the License, or
+ (at your option) any later version.
+
+ SquirrelMail is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+
+ You should have received a copy of the GNU General Public License
+ along with SquirrelMail; if not, write to the Free Software
+ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+-->
 <article>
-<title>		SquirrelMail translation reference
-<author>	Tomas Kuliavas &lt;tokul@users.sourceforge.net&gt;
+<title>		SquirrelMail Translator's Manual
+<author>
+by the SquirrelMail Project Team:
+<!-- put your name here -->
+</author>
 
 <sect>Overview
 <sect1>Translation method
@@ -184,6 +205,20 @@ translation is correct.
 <p>
 Add the language name and language code to the array at the top of 
 squirrelmail/functions/i18n.php.
+
+Since SquirrelMail 1.5.1 new translations are enabled by creating
+file named setup.php in locale/&lt;translation_code&gt; directory.
+This file should contain $languages array entries and XTRA_CODE 
+functions used by translation.
+
+For example (locale/tlh/setup.php file):
+<code>
+&lt;?php
+$languages['tlh']['NAME']='Klingon';
+$languages['tlh']['ALTNAME']='tlhIngan Hol';
+$languages['tlh']['CHARSET']='utf-8';
+?&gt;
+</code>
 
 <sect2>Example (step by step)
 <p>
