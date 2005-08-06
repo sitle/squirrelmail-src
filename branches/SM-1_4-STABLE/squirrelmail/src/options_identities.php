@@ -43,8 +43,8 @@ if (!empty($smaction) && is_array($smaction)) {
         // we only need to extract the action and the identity we are
         // altering
 
-        foreach($row as $key=>$data) {
-            $identid = $key;
+        foreach($row as $iKey=>$data) {
+            $identid = $iKey;
         }
 
         $doaction = $action;
@@ -67,15 +67,15 @@ $td_str = '';
 $td_str .= '<form name="f" action="options_identities.php" method="post"><br />' . "\n";
 $td_str .= '<table border="0" cellspacing="0" cellpadding="0" width="100%">' . "\n";
 $cnt = count($identities);
-foreach( $identities as $key=>$ident ) {
+foreach( $identities as $iKey=>$ident ) {
 
-    if ($key == 0) {
+    if ($iKey == 0) {
         $hdr_str = _("Default Identity");
     } else {
-        $hdr_str = sprintf( _("Alternate Identity %d"), $key);
+        $hdr_str = sprintf( _("Alternate Identity %d"), $iKey);
     }
 
-    $td_str .= ShowIdentityInfo( $hdr_str, $ident, $key );
+    $td_str .= ShowIdentityInfo( $hdr_str, $ident, $iKey );
 
 }
 
@@ -86,7 +86,7 @@ $td_str .= '</form>';
 echo '<br /> ' . "\n" .
     html_tag('table', "\n" .
         html_tag('tr', "\n" .
-            html_tag('td' , "\n" . 
+            html_tag('td' , "\n" .
             '<b>' . _("Options") . ' - ' . _("Advanced Identities") . '</b><br />' .
             html_tag('table', "\n" .
                 html_tag('tr', "\n" .
@@ -101,7 +101,7 @@ echo '<br /> ' . "\n" .
             '', '', 'width="100%" border="0" cellpadding="1" cellspacing="1"' )) ,
         'center', $color[0]),
     'center', '', 'width="95%" border="0" cellpadding="2" cellspacing="0"' ) . '</body></html>';
-                    
+
 
 function ShowIdentityInfo($title, $identity, $id ) {
     global $color;
@@ -159,7 +159,7 @@ function sti_input( $title, $name, $data, $bgcolor ) {
     $str .= '  <td style="white-space: nowrap;text-align:right;">' . $title . ' </td>' . "\n";
     $str .= '  <td> <input type="text" name="' . $name . '" size="50" value="'. htmlspecialchars($data) . '"> </td>' . "\n";
     $str .= '</tr>';
-    
+
     return $str;
 
 }
@@ -170,7 +170,7 @@ function sti_textarea( $title, $name, $data, $bgcolor ) {
     $str .= '  <td style="white-space: nowrap;text-align:right;">' . $title . ' </td>' . "\n";
     $str .= '  <td> <textarea name="' . $name . '" cols="50" rows="5">'. htmlspecialchars($data) . '</textarea> </td>' . "\n";
     $str .= '</tr>';
-    
+
     return $str;
 
 }
