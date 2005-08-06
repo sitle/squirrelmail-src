@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-07-03 19:19+0300\n"
+"POT-Creation-Date: 2005-08-06 09:25+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -335,10 +335,9 @@ msgstr ""
 msgid "Help"
 msgstr ""
 
-#, php-format
 msgid ""
-"The help has not been translated to %s. It will be displayed in English "
-"instead."
+"The help has not been translated to selected language. It will be displayed "
+"in English instead."
 msgstr ""
 
 msgid "Some or all of the help documents are not present!"
@@ -369,6 +368,12 @@ msgid "INBOX"
 msgstr ""
 
 msgid "Purge"
+msgstr ""
+
+msgid "Last Refresh"
+msgstr ""
+
+msgid "Check mail"
 msgstr ""
 
 msgid "Login"
@@ -1081,7 +1086,7 @@ msgid ""
 msgstr ""
 
 msgid ""
-"You need to have php4 installed with the multibyte string function enabled "
+"You need to have PHP installed with the multibyte string function enabled "
 "(using configure option --enable-mbstring)."
 msgstr ""
 
@@ -3772,12 +3777,6 @@ msgstr ""
 msgid "No folders were found to subscribe to."
 msgstr ""
 
-msgid "Last Refresh"
-msgstr ""
-
-msgid "Check mail"
-msgstr ""
-
 msgid "Save folder tree"
 msgstr ""
 
@@ -3793,6 +3792,18 @@ msgstr ""
 msgid ""
 "Control the behaviour and layout of writing new mail messages, replying to "
 "and forwarding messages."
+msgstr ""
+
+msgid "Attachments:"
+msgstr ""
+
+msgid "Info:"
+msgstr ""
+
+msgid "Size:"
+msgstr ""
+
+msgid "Type:"
 msgstr ""
 
 msgid "As Attachment"
@@ -4001,6 +4012,19 @@ msgstr ""
 msgid "Viewing HTML formatted email"
 msgstr ""
 
+msgid "Terminating SquirrelMail due to a fatal error"
+msgstr ""
+
+msgid ""
+"Run \"configure\", choose option 4 (General options) and set option 10 "
+"(Allow server thread sort to false"
+msgstr ""
+
+msgid ""
+"Run \"configure\", choose option 4 (General options) and set option 11 "
+"(Allow server-side sorting to false"
+msgstr ""
+
 msgid "General Message Composition"
 msgstr ""
 
@@ -4052,6 +4076,9 @@ msgstr ""
 msgid "XP"
 msgstr ""
 
+msgid "Mercury/32 IMAP server"
+msgstr ""
+
 msgid "Search functions"
 msgstr ""
 
@@ -4064,10 +4091,22 @@ msgstr ""
 msgid "Both search functions"
 msgstr ""
 
-msgid "Show alternative language names"
+msgid "Time Zone Configuration"
 msgstr ""
 
-msgid "Available languages"
+msgid "Standard GNU C time zones"
+msgstr ""
+
+msgid "Strict time zones"
+msgstr ""
+
+msgid "Custom GNU C time zones"
+msgstr ""
+
+msgid "Custom strict time zones"
+msgstr ""
+
+msgid "Show alternative language names"
 msgstr ""
 
 msgid "Enable aggressive decoding"
@@ -4173,6 +4212,9 @@ msgid "Descending"
 msgstr ""
 
 msgid "Search Bugtracker"
+msgstr ""
+
+msgid "Bug Reports"
 msgstr ""
 
 msgid "You must type in a new password."
@@ -4486,6 +4528,9 @@ msgstr ""
 msgid "Media file %s will be removed, if you upload other media file."
 msgstr ""
 
+msgid "Save emails submitted to spamcop:"
+msgstr ""
+
 msgid "Spam Service Type:"
 msgstr ""
 
@@ -4552,6 +4597,21 @@ msgid "D"
 msgstr ""
 
 msgid "F"
+msgstr ""
+
+msgid "SquirrelMail notice messages"
+msgstr ""
+
+msgid "Category"
+msgstr ""
+
+msgid "Message"
+msgstr ""
+
+msgid "Tip"
+msgstr ""
+
+msgid "More info"
 msgstr ""
 
 msgid "Message Flags"
