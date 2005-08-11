@@ -5,7 +5,8 @@
 Version 1.4.6 - CVS
 -------------------
   - Added Simple Green, Silver Steel, Wood, Bluesome, Simple Green2 and
-    Simple Purple themes. Contributed by Pavel Spatny, Saku Lehti�    (#1188209), Vicky Pyne (#1217066 and #1217069).
+    Simple Purple themes. Contributed by Pavel Spatny, Saku Lehtio 
+    (#1188209), Vicky Pyne (#1217066 and #1217069).
   - Fixes for increased error checking in PHP 5.1 array_shift() (#1237160).
     [php5]
   - Added extra checks in Delivery class for In-Reply-To header. Fixes
@@ -29,6 +30,12 @@ Version 1.4.6 - CVS
   - Fix to stop deletion of mailboxes that do not exist, otherwise an
     IMAP error is generated.
   - Add missing break to listcommands plugin so unsubscribe works again.
+  - Removed function references from address book database backend class,
+    list_addr(), lookup() and search() functions. Referenced lookup()
+    function caused E_NOTICE warnings in PHP 4.4.0. Reported by Cor
+    Bosman.
+  - Fixed address book file and database backend error messages broken by
+    CAN-2005-1769 patches.
 
 Version 1.4.5 - 13 July 2005
 ----------------------------
