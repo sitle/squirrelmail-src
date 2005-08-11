@@ -179,7 +179,7 @@ class abook_database extends addressbook_backend {
      * @param string $expr search expression
      * @return array search results
      */
-    function &search($expr) {
+    function search($expr) {
         $ret = array();
         if(!$this->open()) {
             return false;
@@ -224,7 +224,7 @@ class abook_database extends addressbook_backend {
      * @param string $alias alias
      * @return array search results
      */
-    function &lookup($alias) {
+    function lookup($alias) {
         if (empty($alias)) {
             return array();
         }
@@ -262,7 +262,7 @@ class abook_database extends addressbook_backend {
      * List all addresses
      * @return array search results
      */
-    function &list_addr() {
+    function list_addr() {
         $ret = array();
         if (!$this->open()) {
             return false;
@@ -313,8 +313,7 @@ class abook_database extends addressbook_backend {
         /* See if user exist already */
         $ret = $this->lookup($userdata['nickname']);
         if (!empty($ret)) {
-            return $this->set_error(sprintf(_("User %s already exists"),
-                        '&quot;' . $ret['nickname'] . '&quot;'));
+            return $this->set_error(sprintf(_("User \"%s\" already exists"), $ret['nickname']));
         }
 
         /* Create query */
@@ -394,8 +393,7 @@ class abook_database extends addressbook_backend {
          /* See if user exist */
         $ret = $this->lookup($alias);
         if (empty($ret)) {
-            return $this->set_error(sprintf(_("User %s does not exist"),
-                        '&qout;' . $alias . '&qout;'));
+            return $this->set_error(sprintf(_("User \"%s\" does not exist"), $alias));
         }
 
         /* Create query */
