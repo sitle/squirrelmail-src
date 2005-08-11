@@ -26,6 +26,8 @@ Version 1.4.6 - CVS
   - Fixed reloading the cached mailbox-tree after a purge trash action.
   - Fixed loading of external background-images in style attributes when
     show_unsafe_images is false.
+  - Fix to stop deletion of mailboxes that do not exist, otherwise an
+    IMAP error is generated.
 
 Version 1.4.5 - 13 July 2005
 ----------------------------
