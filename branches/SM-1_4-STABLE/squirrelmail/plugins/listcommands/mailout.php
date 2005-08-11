@@ -37,6 +37,7 @@ case 'subscribe':
     break;
 case 'unsubscribe':
     $out_string = _("This will send a message to %s requesting that you will be unsubscribed from this list. It will try to unsubscribe the adress below.");
+    break;
 default:
     error_box(sprintf(_("Unknown action: %s"),htmlspecialchars($action)), $color);
     exit;
