@@ -28,6 +28,7 @@ Version 1.4.6 - CVS
     show_unsafe_images is false.
   - Fix to stop deletion of mailboxes that do not exist, otherwise an
     IMAP error is generated.
+  - Add missing break to listcommands plugin so unsubscribe works again.
 
 Version 1.4.5 - 13 July 2005
 ----------------------------
