@@ -51,10 +51,9 @@ client, including strong MIME support, address books, and folder manipulation.
   <item>UNIX/Linux or Windows (UNIX/Linux version may be more functional)
   <item>IMAP4rev1 server (e.g. uw-imap, courier-imap, cyrus-imap, hMailServer, 
     Binc IMAP, CommuniGate, MS Exchange Server, MercuryMail 32, Dovecot)
-  <item>Web server with PHP4 installed (preferably <url
+  <item>Web server with PHP4 installed (for example <url
     url="http://httpd.apache.org/" name="Apache httpd">)
-  <item>You need at least PHP 4.1.2. If you are using PHP 4.1.2 or 4.1.4, please 
-    upgrade to the latest version ( >= 4.1.2.11, >= 4.1.4.1 final).
+  <item>You need at least PHP 4.1.0.
   <item>Perl installed on the system. (If you don't have Perl, SquirrelMail will 
     work fine but it's very helpful for the initial configuration. 
     Alternatively, you can manually edit the configuration files.)
@@ -62,7 +61,7 @@ client, including strong MIME support, address books, and folder manipulation.
     other database type.
   <item>If you use MySQL for the address book or for preferences, note that Pear DB
     library is required to be installed and available in the include path.
-  <item>Aspell installed if using the SquirrelSpell plugin, For UNIX/Linux see:
+  <item>Aspell or ispell installed if using the SquirrelSpell plugin, For UNIX/Linux see:
     <url url="http://aspell.sourceforge.net/" name="http://aspell.sourceforge.net/">
     or for Windows, see: <url url="http://aspell.net/win32/"
     name="http://aspell.net/win32/">
@@ -493,6 +492,13 @@ SquirrelMailInstallIIS
 MacInfoHere
 
 <sect1>Prepackaged SquirrelMail installs
+<p>
+If your operating system distribution provides prepackaged squirrelmail, it
+might be a good idea to use that. The drawback is that you probably don't have
+the latest and greatest version. But on the plus side: the whole installation
+step is managed for you, it integrates better with the rest of your system
+and you're provided with security updates automatically.
+
 <p>
 SquirrelMail provides RPM packages. There are two packaging flavors. Standard
 package that can be used on RedHat 8.x or later. 7.x.noarch.rpm package is
@@ -1426,6 +1432,9 @@ About data directory security.
 Daily questions
 
 <sect>Solving problems
+<sect1>Configtest
+<p>
+Using configtest.php as a first diagnose tool.
 <sect1>Common PHP error messages
 <sect2>unknown function session_id() call
 <p>
