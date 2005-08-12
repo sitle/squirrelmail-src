@@ -509,13 +509,11 @@ SquirrelMail packages created by RedHat, Fedora, SuSE and other RPM
 distributions.
 
 Debian packages can be downloaded from <url
-url="http://packages.debian.org/squirrelmail" name="Debian site."> or you can
+url="http://packages.debian.org/squirrelmail" name="the Debian website"> or you can
 install them with your favorite Debian package manager. For example: <tt>apt-get
 install squirrelmail</tt>. If you use Debian stable and SquirrelMail package is
-a little bit outdated, you should be able to install newer SquirrelMail package
-from testing or unstable. SquirrelMail PHP scripts don't depend on platform.
-You might be unable to install testing/unstable packages into stable only if
-packager uses packaging features that are unavailable in stable distribution.
+a little bit outdated, you might be able to install newer SquirrelMail package
+from testing or unstable. This is not guaranteed to work though.
 
 FreeBSD includes two different SquirrelMail packages in ports collection.
 
@@ -1013,12 +1011,30 @@ Other configuration issues.
 <sect>Optimizing SquirrelMail
 <p>
 This chapter should explain what can help in speeding up your SquirrelMail
-installation.
+installation and improve its performance.
+
+<sect1>Examining the whole chain
+<p>
+SquirrelMail is far from a stand alone product. The performance of a webmail system
+depends on a lot of factors. It makes sense to look at each of these factors. You
+should think about the following:
+<itemize>
+<item> Webserver. There's a lot of documentation about tuning Apache for example.
+<item> PHP. Using PHP as a module is a lot faster than the CGI version.
+<item> IMAP server. This starts with the choice of software. Different servers can have
+radical performance differences.
+<item> Authentication backend. Some backends have slow responses. Caching solutions
+are available.
+<item> Mail storage backend (mbox, maildir, database).
+<item> SquirrelMail itself.
+</itemize>
 
 <sect1>PHP extensions
 <p>
-SquirrelMail uses gettext functions for translations. If PHP gettext extension
-is not present, interface switches to slower internal gettext implementation.
+You can install or enable some PHP extensions which will make SquirrelMail
+functionality run faster. SquirrelMail uses gettext functions for translations.
+If PHP gettext extension is not present, the interface switches to slower
+internal gettext implementation.
 
 If you use CRAM-MD5 or DIGEST-MD5 authentication methods, SquirrelMail can use
 PHP mhash functions. If PHP mhash extension is not present, interface uses own
@@ -1057,10 +1073,10 @@ than formats that store entire mail folder in one file.
 <sect1>Filtering
 <p>
 SquirrelMail package includes filters plugin, that can be used to sort
-messages. This plugin is implemented in PHP and works on active mailbox. It
-should be used only when server side solution is not available. Server side
-filtering performed by procmail, maildrop or sieve provides more options and is
-faster.
+messages. It is a bit of an option of last resort when you can't provide
+other means of filtering. This plugin is implemented in PHP and works on active
+mailbox Server side filtering performed by procmail, maildrop or sieve provides
+more options and is faster.
 
 <sect1>IMAP Proxy
 <p>
