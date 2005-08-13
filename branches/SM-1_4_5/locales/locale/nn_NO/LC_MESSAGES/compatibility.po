@@ -1,12 +1,14 @@
 # translation of compatibility.po to Nynorsk
-# Copyright (c) 2004-2005 SquirrelMail Project Team
-# Ola Ketil Siqveland <olaketil@hotmail.com>, 2004
-#
+# This file is distributed under the same license as the compatibility plugin.
+# Copyright (c) 2004-2005 The SquirrelMail Project Team
+# Ola Ketil Siqveland <olaketil@hotmail.com>, 2004,2005
+# $Id$
 msgid ""
 msgstr ""
 "Project-Id-Version: compatibility\n"
+"Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2005-06-22 16:03-0700\n"
-"PO-Revision-Date: 2004-05-27 10:12+0200\n"
+"PO-Revision-Date: 2005-08-03 08:23+0200\n"
 "Last-Translator: Ola Ketil Siqveland <olaketil@hotmail.com>\n"
 "Language-Team: Nynorsk <nn@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -14,26 +16,16 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.0.1\n"
 
-#: functions.php:211
 msgid "Administrative error:"
 msgstr "Administrativ feil:"
 
-#: functions.php:212
-#, fuzzy, php-format
+#, c-format
 msgid "The plugin %s has not been set up correctly."
-msgstr "er ikkje set opp rett."
+msgstr "Programtillegget %s er ikkje set opp rett."
 
-#: functions.php:214
-#, php-format
+#, c-format
 msgid "The configuration file %s is missing."
-msgstr ""
+msgstr "Konfigurasjonsfila %s finst ikkje."
 
-#: functions.php:216
 msgid "Please read the README or INSTALL files that came with the plugin."
 msgstr "Les README eller INSTALL filene som kom med programtillegget."
-
-#~ msgid "The plugin"
-#~ msgstr "Programtilleg"
-
-#~ msgid "Missing "
-#~ msgstr "Mangler "
