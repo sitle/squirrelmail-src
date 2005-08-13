@@ -1,15 +1,14 @@
 # translation of sasql.po to Nynorsk
-# translation of sasql.po to
-# This file is distributed under the same license as the PACKAGE package.
-# Copyright (c) 2004-2005 SquirrelMail Project Team
-# Ola Ketil Siqveland <olaketil@hotmail.com>, 2004
-#
+# This file is distributed under the same license as the sasql plugin.
+# Copyright (c) 2004-2005 The SquirrelMail Project Team
+# Ola Ketil Siqveland <olaketil@hotmail.com>, 2004,2005
+# $Id$
 msgid ""
 msgstr ""
 "Project-Id-Version: sasql\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2005-03-29 08:36-0700\n"
-"PO-Revision-Date: 2004-06-30 13:12+0200\n"
+"PO-Revision-Date: 2005-08-05 13:18+0200\n"
 "Last-Translator: Ola Ketil Siqveland <olaketil@hotmail.com>\n"
 "Language-Team: Nynorsk <nn@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -17,21 +16,15 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.0.1\n"
 
-#: dspam.inc.php:82
-#, fuzzy
 msgid "DSPAM Settings"
-msgstr "dspam innstillingar"
+msgstr "DSPAM innstillingar"
 
-#: dspam.inc.php:89
 msgid "Warning"
 msgstr "Åtvaring"
 
-#: dspam.inc.php:91
-#, fuzzy
 msgid "Enabling DSPAM will disable SpamAssassin scanning of your email."
-msgstr "Ved å slå på dspam vil ein slå av SpamAssassin sitt søk av e-posten."
+msgstr "Ved å slå på DSAPM vil ein slå av SpamAssassin sitt søk av e-posten."
 
-#: dspam.inc.php:94
 msgid "SpamAssassin settings and white/blacklists will not be used by dspam."
 msgstr ""
 "SpamAssissin innstillingar og kvit/svarteliste er ikkje brukt av dspam."
@@ -39,20 +32,15 @@ msgstr ""
 #. *
 #. * To translators: %s's will be replaced with <a ..> and </a>
 #.
-#: dspam.inc.php:102
-#, fuzzy, php-format
 msgid ""
 "This %sFAQ%s from the DSPAM web site explains the differences between "
 "SpamAssassin and DSPAM and why you might want to use dspam instead of "
 "SpamAssassin."
 msgstr ""
-"Denne <a href='http://www.nuclearelephant.com/projects/dspam/faq.html#1.7' "
-"target='_blank'>OSS</a> frå dspam si wevside forklare forskjellen mellom "
-"SpamAssissin og dspam og kvifor ein kanskje skal bruke dspam i staden for "
+"Denne %s OSS %s  frå DSPAM si vevside forklare forskjellen mellom "
+"SpamAssissin og DSAPM og kvifor ein kanskje skal bruke DSAPM i staden for "
 "SpamAssissin."
 
-#: dspam.inc.php:113
-#, fuzzy
 msgid ""
 "DSPAM is a learning system that filters spam based on what <i>you</i> tell "
 "it is spam and what isn't. Messages are analyzed as they are delivered and "
@@ -60,17 +48,15 @@ msgid ""
 "receive, both spam and innocent, the better DSPAM learns what <i>you</i> "
 "think is spam and what is not."
 msgstr ""
-"dspam er eit leiande system som filtrerer reklame/søppel basert på kva <i> "
+"DSPAM er eit leiande system som filtrerer reklame/søppel basert på kva <i> "
 "ein </i> seier er søppel eller ikkje. Meldingane vert analysert som dei er "
 "leverte og merka med eit tal mellom 0 og 1 etter kor sannsynleg det er "
 "søppel. Til fleire meldingar ein mottar, både søppel og ikkje søppel, til "
-"betre lærer dspam kva <i> ein</i> trur er søppel eller ikkje."
+"betre lærer DSPAM kva <i> ein</i> trur er søppel eller ikkje."
 
-#: dspam.inc.php:117
 msgid "Reporting Spam"
 msgstr "Raportering av søppel"
 
-#: dspam.inc.php:120
 msgid ""
 "If you receive a spam message in your Inbox, forward the message to "
 "<nobr>username-spam@domain</nobr> and it will be learned as spam. For "
@@ -82,8 +68,6 @@ msgstr ""
 "adressa di er ola@eksempel.no, vidaresend meldinga til <nobr>ola-"
 "spam@eksempel.no</nobr>."
 
-#: dspam.inc.php:126
-#, php-format
 msgid ""
 "You can also move your spam messages to the <i>%s</i> folder. This folder is "
 "periodically checked for messages which are then learned as spam and "
@@ -95,12 +79,9 @@ msgstr ""
 "Ein treng ikkje flytta meldingar frå %s mappa fordi dei allereie er lært som "
 "søppel."
 
-#: dspam.inc.php:131
 msgid "Reporting False Positives"
 msgstr "Raportering av falske posetive"
 
-#: dspam.inc.php:134
-#, fuzzy
 msgid ""
 "From time to time, DSPAM will catch an innocent messages as spam. These "
 "messages are called \"false positives\". There is no way to prevent false "
@@ -109,15 +90,13 @@ msgid ""
 "message. For example, if your email address is joe@example.com, you would "
 "forward the message to <nobr>joe-fp@example.com</nobr>."
 msgstr ""
-"Av og til vil dspam merka ei vanleg melding som søppel. Desse meldingane "
+"Av og til vil DSPAM merka ei vanleg melding som søppel. Desse meldingane "
 "vert kalla \"falske posetive\". Det er inga måte å hindra falske posetive "
 "heilt. Viss ein finn falske posetive vidaresend til <nobr>brukarnamn-"
 "fp@domain</nobr> og den vert lært som ei harmlaus melding. For eksempel viss "
 "adressa di er ola@eksempel.no, vidaresend meldinga til <nobr>ola-fp@eksempel."
 "no</nobr>."
 
-#: dspam.inc.php:140
-#, php-format
 msgid ""
 "You can also move your false positives to the <i>%s</i> folder from the %s "
 "folder. This folder is periodically checked for messages which are then "
@@ -127,12 +106,9 @@ msgstr ""
 "vert periodisk sjekka for meldingar som då vert lært som falske posetive og "
 "sletta."
 
-#: dspam.inc.php:145
 msgid "Disclaimer"
 msgstr "Dementi"
 
-#: dspam.inc.php:148
-#, fuzzy
 msgid ""
 "DSPAM is a learning system. It only knows what is spam based on what you "
 "teach it is spam and what is not. Due to DSPAM's nature, you are more likely "
@@ -141,8 +117,8 @@ msgid ""
 "permanently learned as innocent and you will be more likely to receive more "
 "spam."
 msgstr ""
-"dspam er eit lærande system. Det veit bare kva som er søppel basert på kva "
-"ein lærer det er søppel og kva som ikkje er søppel.  på grunn av dspam sin "
+"DSPAM er eit lærande system. Det veit bare kva som er søppel basert på kva "
+"ein lærer det er søppel og kva som ikkje er søppel.  på grunn av DSPAM sin "
 "vikremåte, vil ein truleg sjå feil i søppel detekteringa til programmet er "
 "trena opp. Viss ein ikkje raporterer ei melding som søppel innafor ti dagar, "
 "vil meldinga verta lært som vanleg melding og ein vil truleg motta meir "
@@ -151,32 +127,24 @@ msgstr ""
 #. *
 #. * To translators: %s's will be replaced by <a ..> and </a>
 #.
-#: dspam.inc.php:162
-#, php-format
 msgid "Please read the %sDSPAM Primer%s before enabling DSPAM."
-msgstr ""
+msgstr "Les %sDSAPM hjelp%s før ein slår på DSAPM."
 
-#: dspam.inc.php:183
 msgid "Use DSPAM"
-msgstr ""
+msgstr "Bruk DSAPM"
 
 #. *
 #. * To translators: %s is the name of the spam folder.
 #.
-#: dspam.inc.php:198
-#, php-format
 msgid "Clean out your %s folder on opt-in?"
 msgstr "Rensk opp i %s mappa på opt-in?"
 
-#: dspam.inc.php:200 purge.inc.php:37
 msgid "Note"
 msgstr "Merk"
 
 #. *
 #. * To translators: %s is the name of the spam folder.
 #.
-#: dspam.inc.php:205 purge.inc.php:38
-#, php-format
 msgid ""
 "Your %s folder may be unavailable during the purge. It will become available "
 "again when the purge is complete."
@@ -184,575 +152,482 @@ msgstr ""
 "Mappa %s er kanskje ikkje tilgjenngeleg under ryddinga. Den er tilgjenngeleg "
 "når ryddinga er ferdig."
 
-#: dspam.inc.php:214
 msgid "Update"
-msgstr ""
+msgstr "Oppdater"
 
-#: move_to.php:98
 msgid "No messages were selected."
-msgstr ""
+msgstr "Inga melding var valgt."
 
-#: purge.inc.php:30
 msgid "Purge"
 msgstr "Rydd opp"
 
-#: purge.inc.php:33
-#, php-format
 msgid "Delete all messages from your %s folder."
 msgstr "Slett all meldingar frå mappa %s."
 
-#: sa_abooksync.inc.php:20
 msgid "Allow Senders from Address Book"
 msgstr "Tillat mottakarar frå adresseboka"
 
-#: sa_abooksync.inc.php:26
 msgid "Allow"
-msgstr ""
+msgstr "Tillat"
 
-#: sa_abooksync.inc.php:27
 msgid "Allow all address in the address book."
 msgstr "Tillet alle adresser i adresseboka."
 
 #. required_hists
-#: sa_opts-dist.php:19
 msgid "Spam Score"
-msgstr ""
+msgstr "Søppel poeng"
 
-#: sa_opts-dist.php:20
 msgid ""
 "Once all SpamAssassin tests have been run, the resulting score is matched "
 "against this value, and if greater than this value, the e-mail message is "
 "marked as spam. We recommend a value of '5'."
 msgstr ""
+"Når alle SpamAssassin tester er ferdig kjørt, resultatet er målt mot denne "
+"verdien, og viss den er større enn denne verdien, vert e-posten merka som "
+"søppel. Føreslår å setja verdien til '5'."
 
-#: sa_opts-dist.php:22
 msgid "0 - Very Aggressive"
-msgstr ""
+msgstr "0 - Svært aggresivt"
 
-#: sa_opts-dist.php:23
 msgid "1"
-msgstr ""
+msgstr "1"
 
-#: sa_opts-dist.php:24
 msgid "2 - Aggressive"
-msgstr ""
+msgstr "2 - Aggresivt"
 
-#: sa_opts-dist.php:25
 msgid "3"
-msgstr ""
+msgstr "3"
 
-#: sa_opts-dist.php:26
 msgid "4"
-msgstr ""
+msgstr "4"
 
-#: sa_opts-dist.php:27
 msgid "5 - Recommended"
-msgstr ""
+msgstr "5 - Føreslått"
 
-#: sa_opts-dist.php:28
 msgid "6"
-msgstr ""
+msgstr "6"
 
-#: sa_opts-dist.php:29
 msgid "7"
-msgstr ""
+msgstr "7"
 
-#: sa_opts-dist.php:30
 msgid "8 - Lenient"
-msgstr ""
+msgstr "8 - Mild"
 
-#: sa_opts-dist.php:31
 msgid "9"
-msgstr ""
+msgstr "9"
 
-#: sa_opts-dist.php:32
 msgid "10 - Very Lenient"
-msgstr ""
+msgstr "10 - Svært mild"
 
-#: sa_opts-dist.php:33
-#, fuzzy
 msgid "Don't Filter"
-msgstr "Ikkje kviteliste frå"
+msgstr "Ikkje filtrer"
 
 #. NOTE: The ordering here is a little odd to allow some inclusion of
 #. other option names.
 #. subject_tag
-#: sa_opts-dist.php:43
 msgid "Spam Subject Tag"
-msgstr ""
+msgstr "Søppel emne merke"
 
-#: sa_opts-dist.php:45
 msgid "*****SPAM*****"
-msgstr ""
+msgstr "*****SPAM*****"
 
 #. rewrite_subject
-#: sa_opts-dist.php:48 sa_opts-dist.php:63
 msgid "Rewrite Subject Line"
-msgstr ""
+msgstr "Omskriv emnelinja"
 
 #. To translators: %s is the default from subject_tag
-#: sa_opts-dist.php:50
-#, php-format
 msgid ""
 "SpamAssassin can re-write the subject line of e-mail that has been "
 "determined to be spam by prefixing the original subject with: %s.  To turn "
 "on this feature, select this option."
 msgstr ""
+"SpamAssassin kan omskrive emnelinja til e-postar som er fastslått som søppel "
+"ved å skriva %s føre orginal emnelinje. For å skru på denne eigenskapen, "
+"velg denne opsjonen."
 
 #. This is here to allow me to include the rewrite_subject title
 #. *
 #. * To Translators: %s is the title from rewrite_subject
 #.
-#: sa_opts-dist.php:60
-#, php-format
 msgid ""
 "The text to prefix to the subject of messages determined to be spam. %s must "
 "be turned on."
 msgstr ""
+"Teksten som skal skrivast fremst i emne til søppelmeldinga  %s må vera slått "
+"på."
 
-#: sa_opts-dist.php:64
 msgid ""
 "SpamAssassin can re-write the subject line of e-mail that has been "
 "determined to be spam by prefixing the original subject with this value."
 msgstr ""
+"SpaAssassin kan skrive om emnelinja til e-postar som er fastslått som søppel "
+"ved å skrive denne verdien først i orginal emnelinje"
 
 #. use_terse_report
-#: sa_opts-dist.php:70
 msgid "Short Report"
-msgstr ""
+msgstr "Kort rapport"
 
-#: sa_opts-dist.php:71
 msgid ""
 "This option will tell SpamAssassin to use a shorter spam report once the "
 "message has been found to be spam."
 msgstr ""
+"Dette valet vil gjer at SpamAssassin brukar ein kortare rapport når meldinga "
+"syner seg å vera søppel."
 
 #. use_dcc
-#: sa_opts-dist.php:77
 msgid "Use DCC"
-msgstr ""
+msgstr "Bruk DCC"
 
-#: sa_opts-dist.php:78
 msgid ""
 "Checks messages against the DCC (Distrubuted Checksum Clearinghouse) to see "
 "if a message matches a known spam message."
 msgstr ""
+"Sjekk melding mpt DCC(Distributet Checksum Clearinghouse) for å sjå om "
+"meldinga er lik kjente søppelmeldingar."
 
 #. use_razor1
-#: sa_opts-dist.php:84
 msgid "Use SpamNet (version 1)"
-msgstr ""
+msgstr "Bruk SpamNet(versjon1)"
 
-#: sa_opts-dist.php:85 sa_opts-dist.php:92
 msgid ""
 "Checks messages against SpamNet to see if a message is a known spam message."
 msgstr ""
+"Sjekk meldinga mot SpamNet for å sjå om meldinga er kjent som søppelmelding."
 
 #. use_razor2
-#: sa_opts-dist.php:91
 msgid "Use SpamNet (version 2)"
-msgstr ""
+msgstr "Bruk SpamNet (versjon 2)"
 
 #. always_add_headers
-#: sa_opts-dist.php:98
 msgid "Always Add Headers"
-msgstr ""
+msgstr "Legg alltid til topptekst"
 
-#: sa_opts-dist.php:99
 msgid "Uncheck if you do not want to add the headers to non-spam."
 msgstr ""
+"Fjern merke viss ein ikkje vil leggja til topptekst til normale meldingar."
 
 #. ok_languages
-#: sa_opts-dist.php:105
 msgid "Acceptable Languages"
-msgstr ""
+msgstr "Akksepterte språk"
 
-#: sa_opts-dist.php:106
 msgid "Select all the languages you expect to receive e-mail in."
-msgstr ""
+msgstr "Vel alle språka ein forventa å få e-post frå."
 
-#: sa_opts-dist.php:112
 msgid "All"
-msgstr ""
+msgstr "All"
 
-#: sa_opts-dist.php:113
 msgid "Afrikaans"
-msgstr ""
+msgstr "Afrikansk"
 
-#: sa_opts-dist.php:114
 msgid "Albanian"
-msgstr ""
+msgstr "Albansk"
 
-#: sa_opts-dist.php:115
 msgid "Amharic"
-msgstr ""
+msgstr "Amharic"
 
-#: sa_opts-dist.php:116
 msgid "Arabic"
-msgstr ""
+msgstr "Arabisk"
 
-#: sa_opts-dist.php:117
 msgid "Armenian"
-msgstr ""
+msgstr "Armensk"
 
-#: sa_opts-dist.php:118
 msgid "Basque"
-msgstr ""
+msgstr "Baskisk"
 
-#: sa_opts-dist.php:119
 msgid "Bosnian"
-msgstr ""
+msgstr "Bosnisk"
 
-#: sa_opts-dist.php:120
 msgid "Bulgarian"
-msgstr ""
+msgstr "Bulgarsk"
 
-#: sa_opts-dist.php:121
 msgid "Byelorussian"
-msgstr ""
+msgstr "Kviterussisk"
 
-#: sa_opts-dist.php:122
 msgid "Catalan"
-msgstr ""
+msgstr "Katalansk"
 
-#: sa_opts-dist.php:123
 msgid "Chinese"
-msgstr ""
+msgstr "Kinesisk"
 
-#: sa_opts-dist.php:124
 msgid "Croatian"
-msgstr ""
+msgstr "Kroatisk"
 
-#: sa_opts-dist.php:125
 msgid "Czech"
-msgstr ""
+msgstr "Tjekkisk"
 
-#: sa_opts-dist.php:126
 msgid "Danish"
-msgstr ""
+msgstr "Dansk"
 
-#: sa_opts-dist.php:127
 msgid "Dutch"
-msgstr ""
+msgstr "Nederlansk"
 
-#: sa_opts-dist.php:128
 msgid "English"
-msgstr ""
+msgstr "Engelsk"
 
-#: sa_opts-dist.php:129
 msgid "Esperanto"
-msgstr ""
+msgstr "Esperanto"
 
-#: sa_opts-dist.php:130
 msgid "Estonian"
-msgstr ""
+msgstr "Estisk"
 
-#: sa_opts-dist.php:131
 msgid "Finnish"
-msgstr ""
+msgstr "Finsk"
 
-#: sa_opts-dist.php:132
 msgid "French"
-msgstr ""
+msgstr "Fransk"
 
-#: sa_opts-dist.php:133
 msgid "Frisian"
-msgstr ""
+msgstr "Frisisk"
 
-#: sa_opts-dist.php:134
 msgid "Georgian"
-msgstr ""
+msgstr "Georgisk"
 
-#: sa_opts-dist.php:135
 msgid "German"
-msgstr ""
+msgstr "Tysk"
 
-#: sa_opts-dist.php:136
 msgid "Greek"
-msgstr ""
+msgstr "Gresk"
 
-#: sa_opts-dist.php:137
 msgid "Hebrew"
-msgstr ""
+msgstr "Hebraisk"
 
-#: sa_opts-dist.php:138
 msgid "Hindi"
-msgstr ""
+msgstr "Hindisk"
 
-#: sa_opts-dist.php:139
 msgid "Hungarian"
-msgstr ""
+msgstr "Ungarsk"
 
-#: sa_opts-dist.php:140
 msgid "Icelandic"
-msgstr ""
+msgstr "Islandsk"
 
-#: sa_opts-dist.php:141
 msgid "Indonesian"
-msgstr ""
+msgstr "Indonesisk"
 
-#: sa_opts-dist.php:142
 msgid "Irish Gaelic"
-msgstr ""
+msgstr "Irsk galisk"
 
-#: sa_opts-dist.php:143
 msgid "Italian"
-msgstr ""
+msgstr "Italiensk"
 
-#: sa_opts-dist.php:144
 msgid "Japanese"
-msgstr ""
+msgstr "Japansk"
 
-#: sa_opts-dist.php:145
 msgid "Korean"
-msgstr ""
+msgstr "Koreansk"
 
-#: sa_opts-dist.php:146
 msgid "Latin"
-msgstr ""
+msgstr "Latinsk"
 
-#: sa_opts-dist.php:147
 msgid "Latvian"
-msgstr ""
+msgstr "Latvisk"
 
-#: sa_opts-dist.php:148
 msgid "Lithuanian"
-msgstr ""
+msgstr "Litauisk"
 
-#: sa_opts-dist.php:149
 msgid "Malay"
-msgstr ""
+msgstr "Malayisk"
 
-#: sa_opts-dist.php:150
 msgid "Marathi"
-msgstr ""
+msgstr "Maratisk"
 
-#: sa_opts-dist.php:151
 msgid "Nepali"
-msgstr ""
+msgstr "Nepalsk"
 
-#: sa_opts-dist.php:152
 msgid "Norwegian"
-msgstr ""
+msgstr "Norsk"
 
-#: sa_opts-dist.php:153
 msgid "Persian"
-msgstr ""
+msgstr "Persisk"
 
-#: sa_opts-dist.php:154
 msgid "Polish"
-msgstr ""
+msgstr "Polsk"
 
-#: sa_opts-dist.php:155
 msgid "Portuguese"
-msgstr ""
+msgstr "Portugisisk"
 
-#: sa_opts-dist.php:156
 msgid "Quechua"
-msgstr ""
+msgstr "Quechisk"
 
-#: sa_opts-dist.php:157
 msgid "Rhaeto-Romance"
-msgstr ""
+msgstr "Raeto-romansk"
 
-#: sa_opts-dist.php:158
 msgid "Romanian"
-msgstr ""
+msgstr "Romansk"
 
-#: sa_opts-dist.php:159
 msgid "Russian"
-msgstr ""
+msgstr "Russisk"
 
-#: sa_opts-dist.php:160
 msgid "Sanskrit"
-msgstr ""
+msgstr "Sanskrit"
 
-#: sa_opts-dist.php:161
 msgid "Scots"
-msgstr ""
+msgstr "Skotsk"
 
-#: sa_opts-dist.php:162
 msgid "Scottish Gaelic"
-msgstr ""
+msgstr "Skotsk galisk"
 
-#: sa_opts-dist.php:163
 msgid "Serbian"
-msgstr ""
+msgstr "Serbisk"
 
-#: sa_opts-dist.php:164
 msgid "Slovak"
-msgstr ""
+msgstr "Slovakisk"
 
-#: sa_opts-dist.php:165
 msgid "Slovenian"
-msgstr ""
+msgstr "Slovensk"
 
-#: sa_opts-dist.php:166
 msgid "Spanish"
-msgstr ""
+msgstr "Spansk"
 
-#: sa_opts-dist.php:167
 msgid "Swahili"
-msgstr ""
+msgstr "Swahilisk"
 
-#: sa_opts-dist.php:168
 msgid "Swedish"
-msgstr ""
+msgstr "Svensk"
 
-#: sa_opts-dist.php:169
 msgid "Tagalog"
-msgstr ""
+msgstr "Tagalogisk"
 
-#: sa_opts-dist.php:170
 msgid "Tamil"
-msgstr ""
+msgstr "Tamilsk"
 
-#: sa_opts-dist.php:171
 msgid "Thai"
-msgstr ""
+msgstr "Thai"
 
-#: sa_opts-dist.php:172
 msgid "Turkish"
-msgstr ""
+msgstr "Tyrkisk"
 
-#: sa_opts-dist.php:173
 msgid "Ukrainian"
-msgstr ""
+msgstr "Ukrainsk"
 
-#: sa_opts-dist.php:174
 msgid "Vietnamese"
-msgstr ""
+msgstr "Vietamesisk"
 
-#: sa_opts-dist.php:175
 msgid "Welsh"
-msgstr ""
+msgstr "Walisisk"
 
-#: sa_opts-dist.php:176
 msgid "Yiddish"
-msgstr ""
+msgstr "Jødisk"
 
 #. use_bayes
-#: sa_opts-dist.php:179
 msgid "Use Bayesian Filter"
-msgstr ""
+msgstr "Bruk bayesisk filter"
 
-#: sa_opts-dist.php:180
 msgid ""
 "The Baysian Filter will learn what is spam and what isn't to become a better "
 "filter."
 msgstr ""
+"Bayesisk filter vil læra kva som er søppel og kva som ikkje er for å verta "
+"eit betre filter."
 
 #. auto_learn
-#: sa_opts-dist.php:186
 msgid "Auto-learn"
-msgstr ""
+msgstr "Auto-lær"
 
-#: sa_opts-dist.php:187
 msgid ""
 "Automatically feed high and low scoring mails into SpamAssassin's learning "
 "systems. (Currently, only Bayesian filtering is supported.)"
 msgstr ""
+"Automatisk mate høge og låge poeng e-postar inni SpamAssassin læresystem. "
+"(Til nå, er det bare Bayesisk filter som er støtta.)"
 
 #. report_safe
-#: sa_opts-dist.php:193
 msgid "Spam Encapsulation"
-msgstr ""
+msgstr "Søppelinnkapsling"
 
-#: sa_opts-dist.php:194
 msgid ""
 "Encapsulate spam messages into a MIME or plain-text attachment, or you can "
 "disable it altogether."
 msgstr ""
+"Innkapls søppelmeldinger inn ei MIME eller rein tekst vedlegg, eller ein kan "
+"slå av alt saman."
 
-#: sa_opts-dist.php:196
 msgid "Disabled"
-msgstr ""
+msgstr "Slå av"
 
-#: sa_opts-dist.php:197
 msgid "MIME Attachment"
-msgstr ""
+msgstr "MIME vedlegg"
 
-#: sa_opts-dist.php:198
 msgid "Text Attachment"
-msgstr ""
+msgstr "Teskt vedlegg"
 
 #. These options were removed as of SpamAssassin 2.50-ish
 #. They are here for those running older versions of SA.
 #. report_header
-#: sa_opts-dist.php:205
-#, fuzzy
 msgid "Report in Header"
-msgstr "Raportering av søppel"
+msgstr "Raport i topptekst"
 
-#: sa_opts-dist.php:206
 msgid ""
 "SpamAssassin will create a report when it determines an e-mail message to be "
 "spam.  This report is normally prepended to the e-mail message.  To have the "
 "report written as part of the e-mail header, select this option."
 msgstr ""
+"SpamAssassin vil lage ein rapport når den finn ein e-post som er "
+"søppelmelding. Dette vert normalt lagt til e-postmeldinga. For å la "
+"rapporten vera ein del av toppteksten, slå på dette valet."
 
 #. defang_mime
-#: sa_opts-dist.php:212
-#, fuzzy
 msgid "Reformat HTML Spam"
-msgstr "Raportering av søppel"
+msgstr "Omformater HTML søppel"
 
-#: sa_opts-dist.php:213
 msgid ""
 "When an e-mail in HTML format is determined to be spam, SpamAssassin can "
 "convert the message to text. To allow this, select this option."
 msgstr ""
+"Når ein e-post i HTML format er søppel, SpamAssassin kan omforme meldinga "
+"til tekst . For å tillate dette slå på valet."
 
 #. White/black list info
-#: sa_opts-dist.php:243
 msgid "Whitelist From"
 msgstr "Kviteliste frå"
 
-#: sa_opts-dist.php:244
 msgid ""
 "E-mail from these addresses will not be marked as spam. You may use '*' as a "
 "wildcard to allow a large number of addresses at one time. E.g. Whitelist "
 "From '*@aol.com' will not mark any message that claims to be from aol.com as "
 "spam."
 msgstr ""
+"E-post frå desse adressane vil ikkje verta merka som søppel. Ein kan bruka "
+"'*' som jokerteiken for å godkjenne mange adresser på ein gang. F. eks "
+"Kviteliste frå '@online.no' vil ikkje merka nokon adresse frå 'online.no' "
+"som søppel"
 
-#: sa_opts-dist.php:246
 msgid "Don't Whitelist From"
 msgstr "Ikkje kviteliste frå"
 
-#: sa_opts-dist.php:247
 msgid ""
 "This address will be excluded from a previous whitelist and will be treated "
 "as a normal address, i.e. it will not be automatically allowed."
 msgstr ""
+"Denne adressa vert ekskludert får førre kvitelist og vil verta handsama som "
+"ei normal adesse, dvs vil ikkje automatisk verta godkjent."
 
-#: sa_opts-dist.php:249
 msgid "Blacklist From"
 msgstr "Svarteliste frå"
 
-#: sa_opts-dist.php:250
 msgid ""
 "E-mail from these addresses will always be marked as spam. You may use '*' "
 "as a wildcard to block a large number of addresses at one time. E.g. "
 "Blacklist From '*@aol.com' will mark all messages that claims to be from aol."
 "com as spam."
 msgstr ""
+"E-post frå desse adressene vil alltid verta markert som søppel. Ein kan "
+"bruka '*' jokerteiken til å blokera fleire adreser samtidig. F. eks  "
+"svarteliste Frå '*online.no' vil merka alle meldingar frå 'online.no' som "
+"søppel."
 
-#: sa_opts-dist.php:252
 msgid "Don't Blacklist From"
 msgstr "Ikkje svarteliste frå"
 
-#: sa_opts-dist.php:253
 msgid ""
 "This address will be excluded from a previous blacklist and will be treated "
 "as a normal address, i.e. it will not be automatically denied."
 msgstr ""
+"Desse adressene vil verta ekskluderte frå tidlegare svarteliste og handsama "
+"som normale adresser. dvs ikkje atomatisk verta blokert."
 
-#: sa_opts-dist.php:255
 msgid "Whitelist To"
 msgstr "Kviteliste til"
 
-#: sa_opts-dist.php:256
 msgid ""
 "E-mail to these addresses will not be marked as spam. This is useful for "
 "allowing e-mail lists. For example, you can allow all messages from an e-"
@@ -761,216 +636,164 @@ msgid ""
 "Whitelist To '*@aol.com' will not mark any message that claims to be to aol."
 "com as spam."
 msgstr ""
+"E-post til desse adressene ver ikkje markert som søppel. Dette er nyttig for "
+"å tillate e-postliste. F. eks ein kan tillate meldingar frå ei e-postliste "
+"som sender til 'Til_støtte-list@bi-blomster.com'. F. eks Kviteliste Til "
+"'@online.no' vil ikkje merka nokon adresse frå 'online.no' som søppel. "
 
-#: sa_opts-dist.php:258
-#, fuzzy
 msgid "Blacklist To"
-msgstr "Svarteliste frå"
+msgstr "Svarteliste Til"
 
-#: sa_opts-dist.php:259
 msgid ""
 "E-mail to these addresses will be marked as spam. You may use '*' as a "
 "wildcard to reject a large number of addresses at one time. E.g. Blacklist "
 "To '*@aol.com' will mark all messages that claims to be to aol.com as spam."
 msgstr ""
+"E-post frå desse adressene vil verta markert som søppel. Ein kan bruka '*' "
+"jokerteiken til å blokera fleire adreser samtidig. F. eks  svarteliste Frå "
+"'*online.no' vil merka alle meldingar frå 'online.no' som søppel."
 
-#: sa_settings.inc.php:114
 msgid "General Settings"
 msgstr "Innstillingar"
 
-#: sa_settings.inc.php:173
-#, fuzzy
 msgid "Save Settings"
-msgstr "dspam innstillingar"
+msgstr "Lagre innstillingar"
 
-#: sa_whitelist.inc.php:43 sasql_wblist.php:41
 msgid "Error: You must include an e-mail address."
 msgstr "Feil. Må inkludera ei e-postadresse."
 
-#: sa_whitelist.inc.php:49 sasql_wblist.php:48
 msgid "Error: You have entered an invalid e-mail address."
 msgstr "Feil. Oppgitt ugyldig e-postadresse."
 
-#: sa_whitelist.inc.php:53
 msgid "Error: You must select Allow or Deny."
 msgstr "Feil Må velja tillat eller nekt."
 
-#: sa_whitelist.inc.php:76
 msgid "Global Allow / Deny Address List"
 msgstr "Global tillat/nekt adresseliste"
 
-#: sa_whitelist.inc.php:83 sa_whitelist.inc.php:125
 msgid "Address"
 msgstr "Adresse"
 
-#: sa_whitelist.inc.php:84 sa_whitelist.inc.php:126
 msgid "Type"
 msgstr "Type"
 
-#: sa_whitelist.inc.php:118
 msgid "Personal Allow / Deny Address List"
 msgstr "Personleg tillat/nekt adresseliste"
 
-#: sa_whitelist.inc.php:127
 msgid "Action"
 msgstr "Handling"
 
-#: sa_whitelist.inc.php:134
 msgid "Address Removed"
 msgstr "Adresse fjerna"
 
-#: sa_whitelist.inc.php:160
-#, php-format
 msgid "Unknown option: %s"
-msgstr ""
+msgstr "Ukjent val: %s"
 
-#: sa_whitelist.inc.php:168
 msgid "Delete"
 msgstr "Slett"
 
-#: sa_whitelist.inc.php:174
 msgid "Edit"
 msgstr "Rediger"
 
 #. echo $edit;
-#: sa_whitelist.inc.php:188
 msgid "Edit Address"
 msgstr "Rediger adresse"
 
-#: sa_whitelist.inc.php:194
 msgid "Add New Address"
 msgstr "Legg til ny adresse"
 
-#: sa_whitelist.inc.php:220
 msgid "Address:"
 msgstr "Adresse:"
 
-#: sa_whitelist.inc.php:224
 msgid "Type:"
 msgstr "Type"
 
 #. End Form
 #. Help
-#: sa_whitelist.inc.php:245
 msgid "Legend"
-msgstr ""
+msgstr "Teiken"
 
 #. To translators: %s's are the function name
 #. and PEAR generated error message.
 #.
-#: sasql_db.php:14 sasql_db.php:37 sasql_db.php:121 sasql_db.php:165
-#: sasql_db.php:206 sasql_db.php:246 sasql_db.php:263 sasql_db.php:296
-#: sasql_db.php:326
-#, fuzzy, php-format
 msgid "Database error in %s: %s"
-msgstr "sasql_AddPref database feil: %s"
+msgstr "Database feil: i %s: %s"
 
 #. To translators: %s's are the function name
 #. and PEAR generated error message.
 #.
-#: sasql_db.php:188
-#, fuzzy, php-format
 msgid "Database error: %s"
-msgstr "sasql_delPref database feil: %s"
+msgstr "Database feil: %s"
 
-#: sasql_db.php:227
-#, php-format
 msgid "sasql_AddPref_multiple Database error: %s"
 msgstr "sasql_AddPref_multiple database feil: %s"
 
 #. To translators: %s's are the function name
 #. and PEAR generated error message.
 #.
-#: sasql_db.php:280
-#, fuzzy, php-format
 msgid "Database error %s: %s"
-msgstr "sasql_delPref database feil: %s"
+msgstr "Database feil: %s: %s"
 
-#: sasql_hooks.php:104 sasql_options.php:62
 msgid "Spam Filters"
-msgstr ""
+msgstr "Søppelfilter"
 
-#: sasql_hooks.php:106
-#, fuzzy
 msgid "Configure the behavior of your spam filters."
-msgstr "Innstillinger av eigenskapane til søppelfiltrerings programmet."
+msgstr "Innstillinger av eigenskapane til søppelfilteret"
 
-#: sasql_hooks.php:199
 msgid "Add Email to Whitelist"
-msgstr ""
+msgstr "Legg til e-post til Kvitelista"
 
-#: sasql_hooks.php:200
 msgid "Allow Sender"
 msgstr "Tillat avsendar"
 
-#: sasql_hooks.php:201
 msgid "Remove Email from Whitelist"
-msgstr ""
+msgstr "Fjern e-post frå Kvitelista"
 
-#: sasql_hooks.php:202 sasql_hooks.php:204 sasql_hooks.php:209
-#: sasql_hooks.php:211
 msgid "remove"
 msgstr "fjern"
 
-#: sasql_hooks.php:203
 msgid "Remove Domain from Whitelist"
-msgstr ""
+msgstr "Fjern domene frå Kvitelista"
 
-#: sasql_hooks.php:206
 msgid "Add Email to Blacklist"
-msgstr ""
+msgstr "Legg il e-post til Svartelista"
 
-#: sasql_hooks.php:207
-#, fuzzy
 msgid "Block Sender"
-msgstr "Tillat avsendar"
+msgstr "Blokker avsendar"
 
-#: sasql_hooks.php:208
 msgid "Remove Email from Blacklist"
-msgstr ""
+msgstr "Fjern e-post frå Svartelista"
 
-#: sasql_hooks.php:210
 msgid "Remove Domain from Blacklist"
-msgstr ""
+msgstr "Fjern domene frå Svartelista"
 
-#: sasql_hooks.php:217
 msgid "Address is already in your whitelist"
-msgstr ""
+msgstr "Adressa er allereie på Kvitelista"
 
-#: sasql_hooks.php:218 sasql_hooks.php:226
 msgid "Whitelisted"
 msgstr "Kvitelista"
 
-#: sasql_hooks.php:225
 msgid "Domain is already in your whitelist"
-msgstr ""
+msgstr "Domene er allereie i Kvitelista"
 
-#: sasql_hooks.php:239
 msgid "Address is already in your blacklist"
-msgstr ""
+msgstr "Adressa er allereie på Svartelista"
 
-#: sasql_hooks.php:240 sasql_hooks.php:248
 msgid "Blacklisted"
 msgstr "Svartelista"
 
-#: sasql_hooks.php:247
 msgid "Domain is already in your blacklist"
-msgstr ""
+msgstr "Domene er allereiepå Svartelista"
 
-#: sasql_hooks.php:291 sasql_hooks.php:349
-#, fuzzy
 msgid "Learn as False Positive"
-msgstr "Raportering av falske posetive"
+msgstr "Lær som falske posetive"
 
-#: sasql_hooks.php:295 sasql_hooks.php:353
 msgid "Learn as Spam"
-msgstr ""
+msgstr "Lær som søppel"
 
-#: sasql_options.php:62
 msgid "Options"
 msgstr "Val"
 
-#: sasql_wblist.php:53
 msgid "Error: Missing option."
 msgstr "Feil: Instilling manglar."
 
