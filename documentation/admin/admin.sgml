@@ -26,7 +26,7 @@ by the SquirrelMail Project Team:
 </author>
 <date>$Date$
 <abstract>
-This document provides information about SquirrelMail webmail interface 
+This document provides information about SquirrelMail webmail interface
 install procedures.
 </abstract>
 
@@ -37,11 +37,11 @@ Document version: $Revision$
 
 <sect>SquirrelMail overview
 <p>
-SquirrelMail is a standards-based webmail package written in PHP4. It includes 
+SquirrelMail is a standards-based webmail package written in PHP4. It includes
 built-in pure PHP support for the IMAP and SMTP protocols, and all pages render
 in pure HTML 4.0 (with no JavaScript required) for maximum compatibility across
-browsers. It has very few requirements and is very easy to configure and 
-install. SquirrelMail has all the functionality you would want from an email 
+browsers. It has very few requirements and is very easy to configure and
+install. SquirrelMail has all the functionality you would want from an email
 client, including strong MIME support, address books, and folder manipulation.
 
 <sect1>SquirrelMail Requirements
@@ -49,13 +49,13 @@ client, including strong MIME support, address books, and folder manipulation.
 <p>
 <itemize>
   <item>UNIX/Linux or Windows (UNIX/Linux version may be more functional)
-  <item>IMAP4rev1 server (e.g. uw-imap, courier-imap, cyrus-imap, hMailServer, 
+  <item>IMAP4rev1 server (e.g. uw-imap, courier-imap, cyrus-imap, hMailServer,
     Binc IMAP, CommuniGate, MS Exchange Server, MercuryMail 32, Dovecot)
   <item>Web server with PHP4 installed (for example <url
     url="http://httpd.apache.org/" name="Apache httpd">)
   <item>You need at least PHP 4.1.0.
-  <item>Perl installed on the system. (If you don't have Perl, SquirrelMail will 
-    work fine but it's very helpful for the initial configuration. 
+  <item>Perl installed on the system. (If you don't have Perl, SquirrelMail will
+    work fine but it's very helpful for the initial configuration.
     Alternatively, you can manually edit the configuration files.)
   <item>Unlike many PHP applications, SquirrelMail does not require MySQL or
     other database type.
@@ -164,7 +164,7 @@ use XML formating. They can be translated into different languages.
 <tt/images/ directory stores various image files that can be used in interface.
 
 <tt/locale/ directory stores SquirrelMail translations. User can select
-preferred translation in SquirrelMail Display Options. 
+preferred translation in SquirrelMail Display Options.
 
 <tt/plugins/ directory stores plugins that can be used to extend interface
 functionality. Plugins are controlled in SquirrelMail configuration
@@ -347,7 +347,7 @@ You will need:
   <item>UW IMAP - <url url="http://www.washington.edu/imap/"
   name="http://www.washington.edu/imap/">
   <item>SquirrelMail - <url url="http://www.squirrelmail.org/download.php"
-  name="http://www.squirrelmail.org/download.php"> 
+  name="http://www.squirrelmail.org/download.php">
 </itemize>
 
 <tscreen><verb>
@@ -493,7 +493,7 @@ MacInfoHere
 
 <sect1>Prepackaged SquirrelMail installs
 <p>
-If your operating system distribution provides prepackaged squirrelmail, it
+If your operating system distribution provides prepackaged SquirrelMail, it
 might be a good idea to use that. The drawback is that you probably don't have
 the latest and greatest version. But on the plus side: the whole installation
 step is managed for you, it integrates better with the rest of your system
@@ -504,7 +504,7 @@ SquirrelMail provides RPM packages. There are two packaging flavors. Standard
 package that can be used on RedHat 8.x or later. 7.x.noarch.rpm package is
 designed for RedHat 7.x systems. Main difference between packages - standard
 package contains standard Apache configuration file with /webmail/ alias in
-<tt>/etc/httpd/conf.d</tt> and different package dependencies. There are other 
+<tt>/etc/httpd/conf.d</tt> and different package dependencies. There are other
 SquirrelMail packages created by RedHat, Fedora, SuSE and other RPM
 distributions.
 
@@ -527,7 +527,7 @@ Make a backup of your current SquirrelMail directory. If you use "cp", be
 sure to use the "-Rp" options. -R means recursive, and -p will save the
 permissions in the directory.
 
-In this example, we assume that your httpd document directory is 
+In this example, we assume that your httpd document directory is
 <tt>/home/httpd/html</tt>, that your SquirrelMail install is located at
 <tt>/home/httpd/html/squirrelmail-1.0.6</tt>, and that your new SquirrelMail
 version is 1.2.0. Substitute version numbers and names as required.
@@ -540,7 +540,7 @@ $ cp -Rp squirrelmail-1.0.6 squirrelmail-1.0.6.bak
 <sect1>Unpack new SquirrelMail
 <p>
 Make sure that you are in your httpd document directory (<tt>/home/httpd/html</tt>)
-and then unpack the SquirrelMail archive (whatever the filename is): 
+and then unpack the SquirrelMail archive (whatever the filename is):
 <verb>
 $ tar -zxvf squirrelmail-1.2.0.tar.gz
 </verb>
@@ -564,10 +564,10 @@ were important security upgrades in 1.0.5 regarding preference files.
 <verb>
 $ cp squirrelmail-1.0.6.bak/data/* squirrelmail-1.2.0/data
 </verb>
-  
+
 <sect2>Config details
 <p>
-If at all possible, start the configuration process from scratch. It is 
+If at all possible, start the configuration process from scratch. It is
 much less prone to missing configuration options than copying your old
 configuration. Ideally, you should just run conf.pl to reconfigure
 SquirrelMail. If you decide to copy your old config.php over, we strongly
@@ -598,11 +598,11 @@ SquirrelMail installation, you can run one command.
 $ cp -ui squirrelmail-1.0.6.bak/themes/* squirrelmail-1.2.0/themes/
 </verb>
 
-When <tt/-u/ flag is used, command copies only missing and newer files. 
+When <tt/-u/ flag is used, command copies only missing and newer files.
 When <tt/-i/ flag is used, command will ask for confirmation before replacing
 existing files.
 
-If you want to see your theme in future SquirrelMail packages, send it to 
+If you want to see your theme in future SquirrelMail packages, send it to
 SquirrelMail developers. They might add it to the themes in the standard
 install!
 
@@ -615,7 +615,7 @@ as is often the case with Apache.
   $ cd squirrelmail-1.2.0
   $ chown -R nobody:nobody data
 </verb>
-  
+
 Check your webserver's configuration file. It might be using different
 userid/groupid pair. Additionally, if "chown user:group" doesn't work, you can
 use "chown user" and "chgrp group" instead. See the man pages for these commands
@@ -638,7 +638,7 @@ This will ensure that any problems with conf.pl that might have been solved
 are effective to your installation.
 
 If you want to make sure that your configuration contains all themes included in
-new SquirrelMail package, go to theme options in configuration utility and 
+new SquirrelMail package, go to theme options in configuration utility and
 run theme detection command.
 
 <sect1>Version specific notes
@@ -670,7 +670,7 @@ Login into new SquirrelMail install and check if everything is working.
 
 <sect1>Replace old install.
 <p>
-Redirect your users to new SquirrelMail install. You can use Apache <url 
+Redirect your users to new SquirrelMail install. You can use Apache <url
 url="http://httpd.apache.org/docs/mod/mod_alias.html#redirectperm"
 name="RedirectPermanent"> directive or other redirection tools provided by your
 webserver.
@@ -694,7 +694,7 @@ or later.
 <p>
 SquirrelMail stores interface configuration in <tt>config/config.php</tt>
 file. This file can be controlled with SquirrelMail configuration utility
-<tt>config/conf.pl</tt>. Default configuration values are stored and 
+<tt>config/conf.pl</tt>. Default configuration values are stored and
 documented in <tt>config/config_default.php</tt> file.
 
 <sect1>Basic configuration
@@ -816,7 +816,7 @@ stored in your data directory in a file called "default_pref". As you add
 plugins to your SquirrelMail installation, you might want to configure some of
 them on your own account and then propagate those settings to all of your
 users. Or you may simply want to change the default theme, etc. This is what you
-need to do to accomplish that. 
+need to do to accomplish that.
 
 <itemize>
   <item>Log into your own account and get all your configuration set to what
@@ -854,7 +854,7 @@ a database is included as a part of the distribution.
 For this to work you must have the PEAR classes installed, these are part of
 PHP. Once these are installed you must have sure the directory containing them is
 a part of your PHP include_path. See the PHP documentation for information on
-how to do that. 
+how to do that.
 
 Under Mandrake Linux the PEAR classes are installed as part of the php-devel
 package and under FreeBSD they are installed as part of the mod_php4 or php4
@@ -916,7 +916,7 @@ administration plugin. The DSN should look something like:
  pgsql://squirreluser:sqpassword@localhost/squirrelmail
 </verb></tscreen>
 
-See <url url="http://pear.php.net/manual/en/package.database.db.php" 
+See <url url="http://pear.php.net/manual/en/package.database.db.php"
 name="PHP Pear DB manual"> for more details about DSN syntax.
 
 Global address book uses same table format as the one used for personal
@@ -1049,11 +1049,11 @@ If your IMAP server supports the IMAP SORT or THREAD extensions (most mainstream
 servers do) turn them on. Server side sorting is faster than sorting in PHP
 script.
 
-Options can be enabled in SquirrelMail configuration utility: 
+Options can be enabled in SquirrelMail configuration utility:
 <tscreen><verb>
 4. General Options
   11. Allow server thread sort: false (default) &gt; true
-  12. Allow server-side sorting: false (default) &gt; true 
+  12. Allow server-side sorting: false (default) &gt; true
 </verb></tscreen>
 
 Server side sorting can cause problems in SquirrelMail only when IMAP server
@@ -1201,7 +1201,7 @@ You then need to create an array with 17 elements (0-16). Below is a blank theme
 sample followed by a description of what the different entries are for.
 
 <tscreen><verb>
----<START>--- 
+---<START>---
 <?php
 
 /**
@@ -1302,7 +1302,7 @@ functions:
   <item>cp1256 (windows-1256)
   <item>cp1257 (windows-1257)
   <item>cp1258 (windows-1258)
-  <item>cp855 (ibm855) 
+  <item>cp855 (ibm855)
   <item>cp866 (ibm866)
   <item>iso-8859-1
   <item>iso-8859-2
@@ -1326,7 +1326,7 @@ functions:
   <item>tis-620
   <item>us-ascii
   <item>utf-8
-</itemize> 
+</itemize>
 
 big-5, euc-kr and gb2312 characters can be displayed by Chinese and Korean
 translations that use those character sets. Japanese translation can display
@@ -1360,12 +1360,12 @@ DB libraries and LDAP.
 LDAP address books are readonly and listing of addresses is available only
 when users search for address.
 
-Global address book is address book that can be shared between users. Global 
-address books can be configured in SquirrelMail since 1.4.4 version. Before 
-than admin had to modify functions/addressbook.php file. There is a typo in 
+Global address book is address book that can be shared between users. Global
+address books can be configured in SquirrelMail since 1.4.4 version. Before
+than admin had to modify functions/addressbook.php file. There is a typo in
 1.4.4 code and if you want to have writeable global address
 books, you should apply patch or use newer SquirrelMail version. See
-<url url="http://www.squirrelmail.org/wiki/KnownBugs" 
+<url url="http://www.squirrelmail.org/wiki/KnownBugs"
 name="http://www.squirrelmail.org/wiki/KnownBugs">
 
 If admin wants to use different backend for address book storage (IMSP,
@@ -1381,7 +1381,7 @@ is limited to standard SquirrelMail address book format.
 1. Get SquirrelMail 1.4.4, 1.4.5cvs, 1.5.1cvs or later.
 
 2. If you want to use writable address book in 1.4.4, get <url
-url="http://cvs.sf.net/viewcvs.py/squirrelmail/squirrelmail/src/addressbook.php?r1=1.58.2.16&amp;r2=1.58.2.17" 
+url="http://cvs.sf.net/viewcvs.py/squirrelmail/squirrelmail/src/addressbook.php?r1=1.58.2.16&amp;r2=1.58.2.17"
 name="patch that fixes address book form">.
 
 3. Create address book file. SquirrelMail address book uses CSV format
@@ -1403,7 +1403,7 @@ test|Testname|Testsurname|test@example.org|testinfo
 user.
 
 5. After you have created address book file, go to SquirrelMail configuration
-utility, select 6. Address Books option and configure address book in 3. 
+utility, select 6. Address Books option and configure address book in 3.
 Global file address book.
 
 If you enter only address book file name, system assumes that address book
@@ -1474,15 +1474,15 @@ Settings that are used in safe mode
 </itemize>
 
 It is possible to run SquirrelMail with safe_mode limitations, if you solve
-some problems. 
+some problems.
 
 <em>1. safe_mode controls list of allowed executables.</em>
 
 SquirrelMail has to use SMTP in order to send email or provider has to provide
-wrapper for /usr/sbin/sendmail. 
+wrapper for /usr/sbin/sendmail.
 
 Fortune and SquirrelSpell plugins don't work, if provider does not add path to
-fortune, ispell/aspell and cat programs into safe_mode_exec_dir variable. 
+fortune, ispell/aspell and cat programs into safe_mode_exec_dir variable.
 
 <em>2. safe_mode controls list of allowed environment variables.</em>
 
@@ -1538,7 +1538,7 @@ WARNING: uw imap developers discourage usage of /etc/c-client.cf options
 <em>OS specific notes</em>
 <descrip>
   <tag/Debian Sarge 3.1 and newer versions/
-  Plain text logins are not enabled. See bugs 
+  Plain text logins are not enabled. See bugs
   <url url="http://bugs.debian.org/227709" name="227709">,
   <url url="http://bugs.debian.org/239537" name="239537">,
   <url url="http://bugs.debian.org/273687" name="273687">.
@@ -1626,7 +1626,7 @@ Some quota setups can ignore files placed in Trash folder.
 
 <sect>Support
 <p>
-Where do I get support? How do I provide feedback, patches, feature 
+Where do I get support? How do I provide feedback, patches, feature
 suggestions, bug reports.
 
 <sect1>SquirrelMail bug tracker
@@ -1641,8 +1641,8 @@ SquirrelMail uses Sourceforge mailing list services. See <url
 url="http://lists.sourceforge.net/lists/listinfo/squirrelmail-users"
 name="SquirrelMail users mailing list">.
 
-Mailing list archives can be found on <url 
-url="http://sourceforge.net/mail/?group_id=311" name="Sourceforge"> and 
+Mailing list archives can be found on <url
+url="http://sourceforge.net/mail/?group_id=311" name="Sourceforge"> and
 <url url="http://www.gmane.org" name="Gmane">.
 
 <sect1>Security issues
