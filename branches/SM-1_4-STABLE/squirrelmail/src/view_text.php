@@ -51,7 +51,7 @@ $imapConnection = sqimap_login($username, $key, $imapServerAddress, $imapPort, 0
 $mbx_response = sqimap_mailbox_select($imapConnection, $mailbox);
 
 $message = &$messages[$mbx_response['UIDVALIDITY']][$passed_id];
-$message_ent = &$message->getEntity($ent_id);
+$message_ent = $message->getEntity($ent_id);
 if ($passed_ent_id) {
     $message = &$message->getEntity($passed_ent_id);
 }
