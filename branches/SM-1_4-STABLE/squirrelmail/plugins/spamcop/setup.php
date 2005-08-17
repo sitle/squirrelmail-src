@@ -1,36 +1,29 @@
 <?php
-   /** 
-    **  setup.php -- SpamCop plugin           
-    **
-    **  Copyright (c) 1999-2005 The SquirrelMail Project Team
-    **  Licensed under the GNU GPL. For full terms see the file COPYING.
-    **  
-    **  $Id$                                                         
-    **/
-
-require_once(SM_PATH . 'functions/global.php');
+/** 
+ *  setup.php -- SpamCop plugin           
+ *
+ *  Copyright (c) 1999-2005 The SquirrelMail Project Team
+ *  Licensed under the GNU GPL. For full terms see the file COPYING.
+ *  
+ *  $Id$                                                         
+ */
 
 /** Disable Quick Reporting by default */
+global $spamcop_quick_report;
 $spamcop_quick_report = false;
 
 /* Initialize the plugin */
 function squirrelmail_plugin_init_spamcop() {
-   global $squirrelmail_plugin_hooks, $data_dir, $username,
-      $spamcop_is_composing;
+   global $squirrelmail_plugin_hooks;
 
    $squirrelmail_plugin_hooks['optpage_register_block']['spamcop'] =
-      'spamcop_options';
+       'spamcop_options';
    $squirrelmail_plugin_hooks['loading_prefs']['spamcop'] =
-      'spamcop_load';
+       'spamcop_load';
    $squirrelmail_plugin_hooks['read_body_header_right']['spamcop'] =
-      'spamcop_show_link';
-
-    sqgetGlobalVar('spamcop_is_composing' , $spamcop_is_composing);
-      
-   if (isset($spamcop_is_composing)) {
-      $squirrelmail_plugin_hooks['compose_send']['spamcop'] =
-         'spamcop_while_sending';
-   }
+       'spamcop_show_link';
+   $squirrelmail_plugin_hooks['compose_send']['spamcop'] =
+       'spamcop_while_sending';
 }
 
 
@@ -51,12 +44,12 @@ function spamcop_load() {
 //      else
 
 // Default to web_form. It is faster.
-	$spamcop_method = 'web_form';
-	setPref($data_dir, $username, 'spamcop_method', $spamcop_method);
+        $spamcop_method = 'web_form';
+        setPref($data_dir, $username, 'spamcop_method', $spamcop_method);
     }
    if (! $spamcop_quick_report && $spamcop_method=='quick_email') {
-	$spamcop_method = 'web_form';
-	setPref($data_dir, $username, 'spamcop_method', $spamcop_method);
+       $spamcop_method = 'web_form';
+       setPref($data_dir, $username, 'spamcop_method', $spamcop_method);
    }
    if ($spamcop_id == '')
       $spamcop_enabled = 0;
@@ -92,7 +85,7 @@ function spamcop_show_link() {
        quick_email format - they will be updated after clicking the link
      */
     if (! $spamcop_quick_report && $spamcop_method=='quick_email') {
-	$spamcop_method = 'web_form';
+        $spamcop_method = 'web_form';
     }
    
    if ($spamcop_method == 'web_form') {
@@ -113,8 +106,7 @@ document.write("</a>");
 
 
 // Show the link to our own custom options page
-function spamcop_options()
-{
+function spamcop_options() {
    global $optpage_blocks;
    
    $optpage_blocks[] = array(
@@ -127,19 +119,27 @@ function spamcop_options()
 
 
 // When we send the email, we optionally trash it then too
-function spamcop_while_sending()
-{
-   global $mailbox, $spamcop_delete, $spamcop_is_composing, $auto_expunge, 
+function spamcop_while_sending() {
+   global $mailbox, $spamcop_delete, $auto_expunge, 
       $username, $key, $imapServerAddress, $imapPort;
 
-   if ($spamcop_delete) {
-      $imapConnection = sqimap_login($username, $key, $imapServerAddress, 
-         $imapPort, 0);
-      sqimap_mailbox_select($imapConnection, $mailbox);
-      sqimap_messages_delete($imapConnection, $spamcop_is_composing, 
-         $spamcop_is_composing, $mailbox);
-      if ($auto_expunge)
-         sqimap_mailbox_expunge($imapConnection, $mailbox, true);
+   // load sqgetGlobalVar()
+   include_once(SM_PATH . 'functions/global.php');
+
+   // check if compose.php is called by spamcop plugin
+   if (sqgetGlobalVar('spamcop_is_composing' , $spamcop_is_composing)) {
+       if ($spamcop_delete) {
+           $imapConnection = sqimap_login($username, $key, $imapServerAddress, $imapPort, 0);
+           sqimap_mailbox_select($imapConnection, $mailbox);
+           sqimap_messages_delete($imapConnection, $spamcop_is_composing, 
+                                  $spamcop_is_composing, $mailbox);
+           if ($auto_expunge)
+               sqimap_mailbox_expunge($imapConnection, $mailbox, true);
+       }
+       // change default email composition setting. Plugin always operates in right frame.
+       // make sure that compose.php redirects to right page. Temporally override.
+       global $compose_new_win;
+       $compose_new_win = false;
    }
 }
 
