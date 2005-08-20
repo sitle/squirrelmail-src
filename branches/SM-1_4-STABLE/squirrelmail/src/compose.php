@@ -309,6 +309,7 @@ if (!isset($compose_messages[$session]) || ($compose_messages[$session] == NULL)
     $composeMessage->rfc822_header = $rfc822_header;
     $composeMessage->reply_rfc822_header = '';
     $compose_messages[$session] = $composeMessage;
+
     sqsession_register($compose_messages,'compose_messages');
 } else {
     $composeMessage=$compose_messages[$session];
@@ -428,6 +429,7 @@ if ($send) {
             exit();
         }
         unset($compose_messages[$session]);
+        /* if it is resumed draft, delete draft message */
         if ( isset($delete_draft)) {
             Header("Location: $location/delete_message.php?mailbox=" . urlencode( $draft_folder ).
                     "&message=$delete_draft&sort=$sort&startMessage=1&mail_sent=yes");
@@ -680,6 +682,7 @@ function newMail ($mailbox='', $passed_id='', $passed_ent_id='', $action='', $se
             } else {
                 $actual = 'us-ascii';
             }
+
             if ( $actual && is_conversion_safe($actual) && $actual != $default_charset){
                 $bodypart = charset_convert($actual,$bodypart,$default_charset,false);
             }
@@ -1002,10 +1005,13 @@ function showInputForm ($session, $values=false) {
     if ($mail_sent == 'yes') {
         echo '<br /><center><b>'. _("Your Message has been sent.").'</center></b>';
     }
-    echo '<table align="center" cellspacing="0" border="0">' . "\n";
     if ($compose_new_win == '1') {
         echo '<table align="center" bgcolor="'.$color[0].'" width="100%" border="0">'."\n" .
-            '   <tr><td></td>'. html_tag( 'td', '', 'right' ) . '<input type="button" name="Close" onClick="return self.close()" value="'._("Close").'" /></td></tr>'."\n";
+            '   <tr><td></td>'.html_tag( 'td', '', 'right' ).
+            '<input type="button" name="Close" onclick="return self.close()" value="'.
+            _("Close").'" /></td></tr>'."\n";
+    } else {
+        echo '<table align="center" cellspacing="0" border="0">' . "\n";
     }
     if ($location_of_buttons == 'top') {
         showComposeButtonRow();
@@ -1224,10 +1230,6 @@ function showInputForm ($session, $values=false) {
             '   </tr>' . "\n";
     } // End of file_uploads if-block
     /* End of attachment code */
-    if ($compose_new_win == '1') {
-        echo '</table>'."\n";
-    }
-
     echo '</table>' . "\n" .
         addHidden('username', $username).
         addHidden('smaction', $action).
@@ -1244,8 +1246,9 @@ function showInputForm ($session, $values=false) {
     if (!(bool) ini_get('file_uploads')) {
         /* File uploads are off, so we didn't show that part of the form.
            To avoid bogus bug reports, tell the user why. */
-        echo 'Because PHP file uploads are turned off, you can not attach files ';
-        echo "to this message.  Please see your system administrator for details.\r\n";
+        echo '<p style="text-align:center">'
+            . _("Because PHP file uploads are turned off, you can not attach files to this message. Please see your system administrator for details.")
+            . "</p>\r\n";
     }
 
     do_hook('compose_bottom');
@@ -1349,7 +1352,7 @@ function saveAttachedFiles($session) {
     }
 
     // FIXME: we SHOULD prefer move_uploaded_file over rename because
-    // m_u_f works better with restricted PHP installes (safe_mode, open_basedir)
+    // m_u_f works better with restricted PHP installs (safe_mode, open_basedir)
     if (!@rename($_FILES['attachfile']['tmp_name'], $full_localfilename)) {
         if (!@move_uploaded_file($_FILES['attachfile']['tmp_name'],$full_localfilename)) {
             return true;
@@ -1406,12 +1409,12 @@ function getByteSize($ini_size) {
 }
 
 
-/* temporary function to make use of the deliver class.
-   In the future the responsable backend should be automaticly loaded
-   and conf.pl should show a list of available backends.
-   The message also should be constructed by the message class.
+/**
+ * temporary function to make use of the deliver class.
+ * In the future the responsable backend should be automaticly loaded
+ * and conf.pl should show a list of available backends.
+ * The message also should be constructed by the message class.
  */
-
 function deliverMessage($composeMessage, $draft=false) {
     global $send_to, $send_to_cc, $send_to_bcc, $mailprio, $subject, $body,
         $username, $popuser, $usernamedata, $identity, $data_dir,
@@ -1575,7 +1578,7 @@ function deliverMessage($composeMessage, $draft=false) {
     }
     if (!$succes) {
         $msg  = $deliver->dlv_msg . '<br />' .
-            _("Server replied:") . ' ' . $deliver->dlv_ret_nr . ' '.
+            _("Server replied:") . ' ' . $deliver->dlv_ret_nr . ' ' .
             $deliver->dlv_server_msg;
         plain_error_message($msg, $color);
     } else {
@@ -1622,5 +1625,4 @@ function deliverMessage($composeMessage, $draft=false) {
     return $succes;
 }
 
-// vim: et ts=4
 ?>
