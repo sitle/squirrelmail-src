@@ -649,13 +649,10 @@ $languages['es_ES']['CHARSET'] = 'iso-8859-1';
 $languages['es_ES']['LOCALE']  = array('es_ES.ISO8859-1','es_ES.ISO-8859-1','es_ES');
 $languages['es']['ALIAS']      = 'es_ES';
 
-/**
- * translation is disabled because it contains less than 50% translated strings
 $languages['et_EE']['NAME']    = 'Estonian';
 $languages['et_EE']['CHARSET'] = 'iso-8859-15';
 $languages['et_EE']['LOCALE']  = array('et_EE.ISO8859-15','et_EE.ISO-8859-15','et_EE');
 $languages['et']['ALIAS']      = 'et_EE';
-*/
 
 $languages['eu_ES']['NAME']    = 'Basque';
 $languages['eu_ES']['CHARSET'] = 'iso-8859-1';
