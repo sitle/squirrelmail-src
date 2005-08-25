@@ -491,8 +491,12 @@ function showMessagesForMailbox($imapConnection, $mailbox, $num_msgs,
     $start_msg = $res[0];
     $end_msg   = $res[1];
 
-    $paginator_str = get_paginator_str($mailbox, $start_msg, $end_msg,
-                                       $num_msgs, $show_num, $sort);
+    if ($num_msg > 0) {
+        $paginator_str = get_paginator_str($mailbox, $start_msg, $end_msg,
+                                           $num_msgs, $show_num, $sort);
+    } else {
+        $paginator_str = '';
+    }
 
     $msg_cnt_str = get_msgcnt_str($start_msg, $end_msg, $num_msgs);
 
@@ -687,9 +691,9 @@ function mail_message_listing_beginning ($imapConnection,
     if (!isset($msg)) {
         $msg = '';
     }
-    $moveFields = '<input type="hidden" name="msg" value="'.htmlspecialchars($msg).'">' .
-		  '<input type="hidden" name="mailbox" value="'.htmlspecialchars($mailbox).'">' .
-		  '<input type="hidden" name="startMessage" value="'.htmlspecialchars($start_msg).'">';
+    $moveFields = '<input type="hidden" name="msg" value="'.htmlspecialchars($msg).'">' . "\n" .
+		  '<input type="hidden" name="mailbox" value="'.htmlspecialchars($mailbox).'">' . "\n" .
+		  '<input type="hidden" name="startMessage" value="'.htmlspecialchars($start_msg).'">' . "\n";
 
 //    $moveURL = "move_messages.php?msg=$msg&amp;mailbox=$urlMailbox"
 //             . "&amp;startMessage=$start_msg";
@@ -700,8 +704,11 @@ function mail_message_listing_beginning ($imapConnection,
     $safe_name = preg_replace("/[^0-9A-Za-z_]/", '_', $mailbox);
     $form_name = "FormMsgs" . $safe_name;
     echo '<form name="' . $form_name . '" method="post" action="move_messages.php">' ."\n"
-	. $moveFields
-        . html_tag( 'table' ,
+	. $moveFields . "\n";
+
+    if (!empty($paginator) && !empty($msg_cnt_str)) {
+
+        echo html_tag( 'table' ,
             html_tag( 'tr',
                 html_tag( 'td' ,
                     html_tag( 'table' ,
@@ -713,8 +720,9 @@ function mail_message_listing_beginning ($imapConnection,
                 , 'left', '', '' )
             , '', $color[0] )
 	    , '', '', 'border="0" width="100%" cellpadding="1"  cellspacing="0"' );
+    }
 	/* line between header and button area */
-        echo '<tr><td HEIGHT="5" BGCOLOR="'.$color[4].'"></td></tr>';
+        echo '</td></tr><tr><td HEIGHT="5" BGCOLOR="'.$color[4].'"></td></tr>';
 
         echo '<tr><td>';
         echo html_tag( 'tr' ) . "\n"
