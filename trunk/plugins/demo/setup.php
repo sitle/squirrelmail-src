@@ -30,6 +30,7 @@
 function squirrelmail_plugin_init_demo() {
     global $squirrelmail_plugin_hooks;
     $squirrelmail_plugin_hooks['login_form']['demo']='demo_login_form';
+    $squirrelmail_plugin_hooks['options_identities_table']['demo']='demo_options_identities_table';
 }
 
 /**
@@ -38,6 +39,14 @@ function squirrelmail_plugin_init_demo() {
 function demo_login_form() {
     include_once(SM_PATH.'plugins/demo/functions.php');
     return demo_login_form_do();
+}
+
+/**
+ * Add code to Advanced Identities option form table
+ */
+function demo_options_identities_table(&$args) {
+    include_once(SM_PATH.'plugins/demo/functions.php');
+    return demo_options_identities_table_do($args);
 }
 
 /**

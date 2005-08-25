@@ -60,4 +60,39 @@ function demo_login_form_do() {
         return null;
     }
 }
+
+/**
+ * Main function attached to options_identities_table hook
+ */
+function demo_options_identities_table_do(&$args) {
+    // first key in $args - color or style - string type
+    if (!isset($args[0]) || empty($args[0])) {
+        // is not set or empty string
+        $bgstyle = '';
+    } elseif (check_sm_version(1,5,1) ||
+              (check_sm_version(1,4,5) && ! check_sm_version(1,5,0))) {
+        // row style (1.4.5+ and 1.5.1+, not in 1.5.0)
+        $bgstyle=$args[0];
+    } else {
+        // background color (1.4.4 or older and 1.5.0) 
+        $bgstyle = 'bgcolor="' . $args[0] . '"';
+    }
+
+    // second key - is hook called by new id form or id form is empty - boolean type 
+    if ($args[1]) {
+        $suffix = _("This new id");
+    } else {
+        $suffix = _("This existing id");
+    }
+
+    // third key - identity number or null (default id) - integer type.
+    $id = (int) $args[2];
+
+    $ret = html_tag('tr',
+        html_tag('td',_("Set as demo identity:"),'right').
+        html_tag('td','<input type="radio" name="demo_id_select" value="'.$id.'">&nbsp;'.$suffix,'left'),
+                    '','',$bgstyle);
+
+    return $ret;
+}
 ?>
