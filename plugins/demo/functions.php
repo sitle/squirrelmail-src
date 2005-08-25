@@ -23,6 +23,20 @@
  */
 
 /**
+ * Define SM_PATH constant for situations when functions are loaded 
+ * directly.
+ * @ignore
+ */
+if (! defined('SM_PATH')) define('SM_PATH','../../');
+
+// load check_sm_version() function
+include_once(SM_PATH.'functions/strings.php');
+// load html_tag() function
+include_once(SM_PATH.'functions/html.php');
+// load error_box() function
+include_once(SM_PATH.'functions/display_messages.php');
+
+/**
  * Main login_form hook function
  */
 function demo_login_form_do() {
@@ -30,11 +44,6 @@ function demo_login_form_do() {
 
     // check if used color is set
     if (!isset($color[4])) $color[4]='#ffffff';
-
-    // load check_sm_version() function
-    include_once(SM_PATH.'functions/strings.php');
-    // load html_tag() function
-    include_once(SM_PATH.'functions/html.php');
 
     // switch gettext domain
     bindtextdomain('demo',SM_PATH . 'locale');
@@ -62,6 +71,48 @@ function demo_login_form_do() {
 }
 
 /**
+ * Main function attached to options_identities_process hook.
+ * Hook is broken in 1.4.5
+ */
+function demo_options_identities_process_do(&$args) {
+    // TODO: save plugin options
+    //sm_print_r($args);
+}
+
+/**
+ * Main function attached to options_identities_top hook.
+ */
+function demo_options_identities_top_do() {
+    global $color;
+
+    // switch gettext domain
+    bindtextdomain('demo',SM_PATH . 'locale');
+    textdomain('demo');
+
+    $message = _("You have demo plugin installed.");
+
+    // revert gettext domain
+    bindtextdomain('squirrelmail',SM_PATH . 'locale');
+    textdomain('squirrelmail');
+
+    // example error box
+    // put it inside the table in order to reduce box width
+    echo '<table align="center"><tr><td>';
+    error_box($message,$color);
+    echo '</td></tr></table>';
+}
+
+/**
+ * Main function attached to options_identities_renumber hook
+ *
+ * Process changes in identity numbers
+ * Hook is broken in 1.4.5
+ */
+function demo_options_identities_renumber_do(&$args) {
+    //sm_print_r($args);
+}
+
+/**
  * Main function attached to options_identities_table hook
  */
 function demo_options_identities_table_do(&$args) {
@@ -78,6 +129,10 @@ function demo_options_identities_table_do(&$args) {
         $bgstyle = 'bgcolor="' . $args[0] . '"';
     }
 
+    // switch gettext domain
+    bindtextdomain('demo',SM_PATH . 'locale');
+    textdomain('demo');
+
     // second key - is hook called by new id form or id form is empty - boolean type 
     if ($args[1]) {
         $suffix = _("This new id");
@@ -93,6 +148,19 @@ function demo_options_identities_table_do(&$args) {
         html_tag('td','<input type="radio" name="demo_id_select" value="'.$id.'">&nbsp;'.$suffix,'left'),
                     '','',$bgstyle);
 
+    // revert gettext domain
+    bindtextdomain('squirrelmail',SM_PATH . 'locale');
+    textdomain('squirrelmail');
+
     return $ret;
+}
+
+/**
+ * Main function attached to options_identities_buttons hook
+ */
+function demo_options_identities_buttons_do(&$args) {
+    // TODO: add some button to identities form
+    //sm_print_r($args);
+    return null;
 }
 ?>

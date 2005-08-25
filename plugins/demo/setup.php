@@ -29,8 +29,14 @@
  */
 function squirrelmail_plugin_init_demo() {
     global $squirrelmail_plugin_hooks;
+    // login page form
     $squirrelmail_plugin_hooks['login_form']['demo']='demo_login_form';
+
+    $squirrelmail_plugin_hooks['options_identities_process']['demo']='demo_options_identities_process';
+    $squirrelmail_plugin_hooks['options_identities_top']['demo']='demo_options_identities_top';
+    $squirrelmail_plugin_hooks['options_identities_renumber']['demo']='demo_options_identities_renumber';
     $squirrelmail_plugin_hooks['options_identities_table']['demo']='demo_options_identities_table';
+    $squirrelmail_plugin_hooks['options_identities_buttons']['demo']='demo_options_identities_buttons';
 }
 
 /**
@@ -42,11 +48,43 @@ function demo_login_form() {
 }
 
 /**
+ * Process Advanced Identities submission
+ */
+function demo_options_identities_process(&$args) {
+    include_once(SM_PATH.'plugins/demo/functions.php');
+    demo_options_identities_process_do($args);
+}
+
+/**
+ * Add some text before advanced identities forms
+ */
+function demo_options_identities_top() {
+    include_once(SM_PATH.'plugins/demo/functions.php');
+    demo_options_identities_top_do();
+}
+
+/**
+ * Process renumbering of identities
+ */
+function demo_options_identities_renumber(&$args) {
+    include_once(SM_PATH.'plugins/demo/functions.php');
+    demo_options_identities_renumber_do($args);
+}
+
+/**
  * Add code to Advanced Identities option form table
  */
 function demo_options_identities_table(&$args) {
     include_once(SM_PATH.'plugins/demo/functions.php');
     return demo_options_identities_table_do($args);
+}
+
+/**
+ * Add some text before advanced identities forms
+ */
+function demo_options_identities_buttons(&$args) {
+    include_once(SM_PATH.'plugins/demo/functions.php');
+    return demo_options_identities_buttons_do($args);
 }
 
 /**
