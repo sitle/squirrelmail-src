@@ -37,6 +37,8 @@ function squirrelmail_plugin_init_demo() {
     $squirrelmail_plugin_hooks['options_identities_renumber']['demo']='demo_options_identities_renumber';
     $squirrelmail_plugin_hooks['options_identities_table']['demo']='demo_options_identities_table';
     $squirrelmail_plugin_hooks['options_identities_buttons']['demo']='demo_options_identities_buttons';
+
+    $squirrelmail_plugin_hooks['loading_prefs']['demo']='demo_loading_prefs';
 }
 
 /**
@@ -85,6 +87,14 @@ function demo_options_identities_table(&$args) {
 function demo_options_identities_buttons(&$args) {
     include_once(SM_PATH.'plugins/demo/functions.php');
     return demo_options_identities_buttons_do($args);
+}
+
+/**
+ * Main function attached to loading_prefs hook
+ */
+function demo_loading_prefs() {
+    include_once(SM_PATH.'plugins/demo/functions.php');
+    demo_loading_prefs_do();
 }
 
 /**

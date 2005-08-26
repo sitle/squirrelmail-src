@@ -75,8 +75,15 @@ function demo_login_form_do() {
  * Hook is broken in 1.4.5
  */
 function demo_options_identities_process_do(&$args) {
-    // TODO: save plugin options
-    //sm_print_r($args);
+    global $demo_id, $data_dir, $username;
+    // TODO: check sm_print_r($args);
+
+    // check if form action is 'save/update', extract selected value of demo id radio box and save it
+    if (sqgetGlobalVar('update',$tmp,SQ_POST) && 
+        sqGetGlobalVar('demo_id_select',$demo_id_number,SQ_POST)) {
+        $demo_id = (int) $demo_id_number;
+        setPref($data_dir,$username,'demo_id',$demo_id);
+    }
 }
 
 /**
@@ -105,17 +112,44 @@ function demo_options_identities_top_do() {
 /**
  * Main function attached to options_identities_renumber hook
  *
- * Process changes in identity numbers
+ * Process changes in identity numbers. Must handle 'move_up' 
+ * and 'make default' actions.
  * Hook is broken in 1.4.5
  */
 function demo_options_identities_renumber_do(&$args) {
-    //sm_print_r($args);
+    global $demo_id, $data_dir, $username;
+
+    // from id
+    $from_id = $args[1];
+
+    // to_id ('default' or number);
+    $to_id = $args[2];
+
+    unset($flip_id);
+    if ($from_id != $to_id) {
+        if ($to_id == 'default') {
+            $to_id = 0;
+        }
+
+        if ($demo_id == $to_id) {
+            $flip_id = $from_id;
+        } elseif ($demo_id == $from_id) {
+            $flip_id = $to_id;
+        }
+
+        if (isset($flip_id)) {
+            $demo_id = (int) $flip_id;
+            setPref($data_dir,$username,'demo_id',$demo_id);
+        }
+    }
 }
 
 /**
  * Main function attached to options_identities_table hook
  */
 function demo_options_identities_table_do(&$args) {
+    global $demo_id;
+
     // first key in $args - color or style - string type
     if (!isset($args[0]) || empty($args[0])) {
         // is not set or empty string
@@ -143,9 +177,15 @@ function demo_options_identities_table_do(&$args) {
     // third key - identity number or null (default id) - integer type.
     $id = (int) $args[2];
 
+    // FIXME: can be broken if SMPREF_NONE is int 0. SquirrelMail 1.4.0-1.4.5 uses string 'none'
+    if ($demo_id !== SMPREF_NONE && $demo_id == $id) {
+        $checked = ' checked="checked"';
+    } else {
+        $checked = '';
+    }
     $ret = html_tag('tr',
         html_tag('td',_("Set as demo identity:"),'right').
-        html_tag('td','<input type="radio" name="demo_id_select" value="'.$id.'">&nbsp;'.$suffix,'left'),
+        html_tag('td','<input type="radio" name="demo_id_select" value="'.$id.'"'.$checked.'>&nbsp;'.$suffix,'left'),
                     '','',$bgstyle);
 
     // revert gettext domain
@@ -162,5 +202,13 @@ function demo_options_identities_buttons_do(&$args) {
     // TODO: add some button to identities form
     //sm_print_r($args);
     return null;
+}
+
+/**
+ * Load plugin preferences.
+ */
+function demo_loading_prefs_do() {
+    global $demo_id, $data_dir, $username;
+    $demo_id = getPref($data_dir, $username, 'demo_id', SMPREF_NONE);
 }
 ?>
