@@ -491,7 +491,7 @@ function showMessagesForMailbox($imapConnection, $mailbox, $num_msgs,
     $start_msg = $res[0];
     $end_msg   = $res[1];
 
-    if ($num_msg > 0) {
+    if ($num_msgs > 0) {
         $paginator_str = get_paginator_str($mailbox, $start_msg, $end_msg,
                                            $num_msgs, $show_num, $sort);
     } else {
