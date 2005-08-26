@@ -129,6 +129,14 @@ function demo_options_identities_renumber_do(&$args) {
     if ($from_id != $to_id) {
         if ($to_id == 'default') {
             $to_id = 0;
+            // WARNING: 'make default' behaves differently in 1.4.5+ and 1.5.1+
+            // plugin must handle renumbering of ids 
+            // if demo_id is smaller than from_id, it must be incremented by 1
+            if ((check_sm_version(1,5,1) ||
+                (check_sm_version(1,4,5) && ! check_sm_version(1,5,0))) &&
+                $demo_id < $from_id) {
+                $flip_id = $demo_id++;
+            }
         }
 
         if ($demo_id == $to_id) {
