@@ -42,7 +42,8 @@ function squirrelmail_plugin_init_demo() {
 }
 
 /**
- * Show language selection form
+ * Show input field in login_form
+ * @return string html formated demo input field
  */
 function demo_login_form() {
     include_once(SM_PATH.'plugins/demo/functions.php');
@@ -75,6 +76,7 @@ function demo_options_identities_renumber(&$args) {
 
 /**
  * Add code to Advanced Identities option form table
+ * @return string html formated table rows added to identity table
  */
 function demo_options_identities_table(&$args) {
     include_once(SM_PATH.'plugins/demo/functions.php');
@@ -83,6 +85,7 @@ function demo_options_identities_table(&$args) {
 
 /**
  * Add some text before advanced identities forms
+ * @return string html formated form buttons added to identity form
  */
 function demo_options_identities_buttons(&$args) {
     include_once(SM_PATH.'plugins/demo/functions.php');
