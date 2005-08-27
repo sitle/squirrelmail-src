@@ -72,15 +72,23 @@ function demo_login_form_do() {
 
 /**
  * Main function attached to options_identities_process hook.
- * Hook is broken in 1.4.5
+ *
+ * Hook is broken in 1.4.5.
  */
 function demo_options_identities_process_do(&$args) {
     global $demo_id, $data_dir, $username;
-    // TODO: check sm_print_r($args);
+    // TODO: check sm_print_r($args). Why do we need it? It does not provide
+    // enough information about processed id and plugin must use own hacks to
+    // detect id.
 
-    // check if form action is 'save/update', extract selected value of demo id radio box and save it
-    if (sqgetGlobalVar('update',$tmp,SQ_POST) && 
+    if (sqgetGlobalVar('demo_submit',$demo_submit,SQ_POST) &&
+        is_array($demo_submit) && count($demo_submit)==1) {
+        // process own buttons in form submission
+        $demo_id = (int) key($demo_submit);
+        setPref($data_dir,$username,'demo_id',$demo_id);
+    } elseif (sqgetGlobalVar('update',$tmp,SQ_POST) && 
         sqGetGlobalVar('demo_id_select',$demo_id_number,SQ_POST)) {
+        // check if form action is 'save/update', extract selected value of demo id radio box and save it
         $demo_id = (int) $demo_id_number;
         setPref($data_dir,$username,'demo_id',$demo_id);
     }
@@ -207,9 +215,27 @@ function demo_options_identities_table_do(&$args) {
  * Main function attached to options_identities_buttons hook
  */
 function demo_options_identities_buttons_do(&$args) {
-    // TODO: add some button to identities form
-    //sm_print_r($args);
-    return null;
+    // Is hook called in new identity table 
+    $new_id_form = (bool) $args[0];
+    // get identity number
+    $id = (int) $args[1];
+
+    // Set initial return value
+    $ret='';
+    // Add button if it is not new id form
+    if (!$new_id_form) {
+        // switch gettext domain only if you need it.
+        bindtextdomain('demo',SM_PATH . 'locale');
+        textdomain('demo');
+
+        $ret.= '<input type="submit" name="demo_submit['.$id.']" value="'._("Mark as Demo ID").'" />';
+
+        // revert gettext domain
+        bindtextdomain('squirrelmail',SM_PATH . 'locale');
+        textdomain('squirrelmail');
+    }
+
+    return $ret;
 }
 
 /**
