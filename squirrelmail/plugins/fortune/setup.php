@@ -52,11 +52,12 @@ function fortune() {
     if (!$exist) {
         printf(_("%s is not found."),$fortune_location);
     } else {
-        echo "<center><em>" . _("Today's Fortune") . "</em><br /></font></center><pre>";
-        htmlspecialchars(system($fortune_location));
+        echo '<center><em>' . _("Today's Fortune") . '</em></center><br /><pre>' .
+            htmlspecialchars(shell_exec($fortune_location)) .
+            '</pre>';
     }
 
-    echo '</pre></td></tr></table></td></tr></table></td></tr></table></center>';
+    echo '</td></tr></table></td></tr></table></td></tr></table></center>';
 }
 
 /**
