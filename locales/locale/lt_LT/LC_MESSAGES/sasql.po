@@ -7,28 +7,22 @@ msgstr ""
 "Project-Id-Version: sasql\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2005-03-29 08:36-0700\n"
-"PO-Revision-Date: 2004-04-30 13:07+0300\n"
+"PO-Revision-Date: 2005-08-28 13:43+0300\n"
 "Last-Translator: Tomas Kuliavas <tokul@users.sourceforge.net>\n"
 "Language-Team: Lithuanian <squirrelmail-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
+"Content-Transfer-Encoding: 8bit"
 
-#: dspam.inc.php:82
-#, fuzzy
 msgid "DSPAM Settings"
-msgstr "dspam nustatymai"
+msgstr "DSPAM nustatymai"
 
-#: dspam.inc.php:89
 msgid "Warning"
 msgstr "Perspėjimas"
 
-#: dspam.inc.php:91
-#, fuzzy
 msgid "Enabling DSPAM will disable SpamAssassin scanning of your email."
-msgstr "Įjungdami dspam, Jūs atjungiate SpamAssassin skanavimo funkcijas."
+msgstr "Įjungdami DSPAM, Jūs atjungiate SpamAssassin skanavimo funkcijas."
 
-#: dspam.inc.php:94
 msgid "SpamAssassin settings and white/blacklists will not be used by dspam."
 msgstr ""
 "SpamAssassin nustatymai ir leidimų/draudimų sąrašai nėra naudojami tarp "
@@ -37,20 +31,16 @@ msgstr ""
 #. *
 #. * To translators: %s's will be replaced with <a ..> and </a>
 #.
-#: dspam.inc.php:102
-#, fuzzy, php-format
+#, php-format
 msgid ""
 "This %sFAQ%s from the DSPAM web site explains the differences between "
 "SpamAssassin and DSPAM and why you might want to use dspam instead of "
 "SpamAssassin."
 msgstr ""
-"Dspam svetainėje esantis <a href='http://www.nuclearelephant.com/projects/"
-"dspam/faq.html#1.7' target='_blank'>aprašymas</a> paaiškina skirtumus tarp "
-"SpamAssassin ir dspam, bei pateikia dspam sistemos privalumus prieš "
+"DSPAM svetainėje esantis %saprašymas%s paaiškina skirtumus tarp "
+"SpamAssassin ir DSPAM, bei pateikia DSPAM sistemos privalumus prieš "
 "SpamAssassin."
 
-#: dspam.inc.php:113
-#, fuzzy
 msgid ""
 "DSPAM is a learning system that filters spam based on what <i>you</i> tell "
 "it is spam and what isn't. Messages are analyzed as they are delivered and "
@@ -58,17 +48,15 @@ msgid ""
 "receive, both spam and innocent, the better DSPAM learns what <i>you</i> "
 "think is spam and what is not."
 msgstr ""
-"dspam yra valdoma sistema, kuri filtruoja nesankcionuotas žinutes, remdamasi "
+"DSPAM yra valdoma sistema, kuri filtruoja nesankcionuotas žinutes, remdamasi "
 "Jūsų pateikta informacija apie analogiškų žinučių prigimtį. Žinutės yra "
 "analizuojamas jų pristatymo metu ir joms yra suteikiamas įvertinimas nuo 0 "
 "iki 1. Kuo daugiau žinučių Jūs gaunate ir kuo daugiau pateikiate sistemai "
 "įvertinimų, tuo geriau sistema atskiria teisėtas žinutes nuo nesankcionuotų."
 
-#: dspam.inc.php:117
 msgid "Reporting Spam"
 msgstr "Pranešti apie spamą"
 
-#: dspam.inc.php:120
 msgid ""
 "If you receive a spam message in your Inbox, forward the message to "
 "<nobr>username-spam@domain</nobr> and it will be learned as spam. For "
@@ -80,7 +68,6 @@ msgstr ""
 "žinutes prie spamo. Pavyzdžiui, jei Jūsų pašto adresas yra jonas@example.com,"
 "·Jūs turėtumėte žinutę persiųsti adresu·<nobr>jonas-spam@example.com</nobr>."
 
-#: dspam.inc.php:126
 #, php-format
 msgid ""
 "You can also move your spam messages to the <i>%s</i> folder. This folder is "
@@ -93,12 +80,9 @@ msgstr ""
 "kaip spamas bei pašalinamos. Jums nereikia perkėlinėti žinučių iš aplanko %"
 "s, kadangi jos jau yra atpažįstamos kaip spamas."
 
-#: dspam.inc.php:131
 msgid "Reporting False Positives"
 msgstr "Pranešti apie klaidingą priskyrimą"
 
-#: dspam.inc.php:134
-#, fuzzy
 msgid ""
 "From time to time, DSPAM will catch an innocent messages as spam. These "
 "messages are called \"false positives\". There is no way to prevent false "
@@ -107,7 +91,7 @@ msgid ""
 "message. For example, if your email address is joe@example.com, you would "
 "forward the message to <nobr>joe-fp@example.com</nobr>."
 msgstr ""
-"Kartais dspam sistema gali klaidingai priskirti teisėtas žinutes prie "
+"Kartais DSPAM sistema gali klaidingai priskirti teisėtas žinutes prie "
 "nesankcionuotų. Šios žinutės yra vadinamos atpažinimo klaidomis. Jų negalima "
 "išvengti besimokančioje sistemoje. Jei Jūs aptinkate atpažinimo klaidą, "
 "persiųskite žinutę adresu <nobr>vartotojas-fp@domenas</nobr> ir sistema "
@@ -115,7 +99,6 @@ msgstr ""
 "pašto adresas yra·jonas@example.com,·Jūs·turėtumėte persiųsti žinutę "
 "adresu·<nobr>jonas-fp@example.com</nobr>."
 
-#: dspam.inc.php:140
 #, php-format
 msgid ""
 "You can also move your false positives to the <i>%s</i> folder from the %s "
@@ -126,12 +109,9 @@ msgstr ""
 "i>·iš aplanko %s. Šis aplankas yra periodiškai tikrinamas ir sistema "
 "atpažįsta klaidingai priskirtas žinutes bei jas pašalina."
 
-#: dspam.inc.php:145
 msgid "Disclaimer"
 msgstr "Perspėjimas"
 
-#: dspam.inc.php:148
-#, fuzzy
 msgid ""
 "DSPAM is a learning system. It only knows what is spam based on what you "
 "teach it is spam and what is not. Due to DSPAM's nature, you are more likely "
@@ -140,7 +120,7 @@ msgid ""
 "permanently learned as innocent and you will be more likely to receive more "
 "spam."
 msgstr ""
-"dspam yra besimokanti sistema. Ji žino apie žinučių atpažinimą tik tai, ko "
+"DSPAM yra besimokanti sistema. Ji žino apie žinučių atpažinimą tik tai, ko "
 "Jūs ją išmokote. Dėl spamo siekimo pasiekti Jus visais įmanomais metodais, "
 "Jūs galite sutikti klaidas atpažinimo sistemoje ir spamas vis dar Jus "
 "pasieks. Jei Jūs neinformuosite sistemos apie spamą per dešimt dienų, "
@@ -150,31 +130,26 @@ msgstr ""
 #. *
 #. * To translators: %s's will be replaced by <a ..> and </a>
 #.
-#: dspam.inc.php:162
 #, php-format
 msgid "Please read the %sDSPAM Primer%s before enabling DSPAM."
-msgstr ""
+msgstr "Perskaitykite %sDSPAM aprašymą%s prieš įjungdami DSPAM."
 
-#: dspam.inc.php:183
 msgid "Use DSPAM"
-msgstr ""
+msgstr "Naudoti DSPAM"
 
 #. *
 #. * To translators: %s is the name of the spam folder.
 #.
-#: dspam.inc.php:198
 #, php-format
 msgid "Clean out your %s folder on opt-in?"
 msgstr "Išvalyti %s aplanką išsiregistruojant?"
 
-#: dspam.inc.php:200 purge.inc.php:37
 msgid "Note"
 msgstr "Pastabos"
 
 #. *
 #. * To translators: %s is the name of the spam folder.
 #.
-#: dspam.inc.php:205 purge.inc.php:38
 #, php-format
 msgid ""
 "Your %s folder may be unavailable during the purge. It will become available "
@@ -183,575 +158,448 @@ msgstr ""
 "Aplankas %s gali būti nepasiekiamas valymo metu. Jis vėl bus pasiekiamas "
 "pasibaigus valymui."
 
-#: dspam.inc.php:214
 msgid "Update"
-msgstr ""
+msgstr "Atnaujinti"
 
-#: move_to.php:98
 msgid "No messages were selected."
-msgstr ""
+msgstr "Nepasirinkta jokia žinutė."
 
-#: purge.inc.php:30
 msgid "Purge"
 msgstr "Išvalyti"
 
-#: purge.inc.php:33
 #, php-format
 msgid "Delete all messages from your %s folder."
 msgstr "Pašalinti visas žinutės iš aplanko %s."
 
-#: sa_abooksync.inc.php:20
 msgid "Allow Senders from Address Book"
 msgstr "Praleisti siuntėjus iš adresų knygutės"
 
-#: sa_abooksync.inc.php:26
 msgid "Allow"
-msgstr ""
+msgstr "Leisti"
 
-#: sa_abooksync.inc.php:27
 msgid "Allow all address in the address book."
 msgstr "Praleisti visus adresus iš adresų knygutės."
 
 #. required_hists
-#: sa_opts-dist.php:19
 msgid "Spam Score"
-msgstr ""
+msgstr "Spamo įvertinimas"
 
-#: sa_opts-dist.php:20
 msgid ""
 "Once all SpamAssassin tests have been run, the resulting score is matched "
 "against this value, and if greater than this value, the e-mail message is "
 "marked as spam. We recommend a value of '5'."
-msgstr ""
+msgstr "SpamAssassin apskaičiuoja bendrą spamo taškų sumą, kuria surenka žinutė, ir palygina ją su leistina taškų suma. Jei žinutė surenka daugiau nei leidžiama, ji laikoma nesankcionuota žinute, spamu. Rekomenduojama reikšmė yra 5."
 
-#: sa_opts-dist.php:22
 msgid "0 - Very Aggressive"
-msgstr ""
+msgstr "0 - Labai agresyvus"
 
-#: sa_opts-dist.php:23
 msgid "1"
-msgstr ""
+msgstr "1"
 
-#: sa_opts-dist.php:24
 msgid "2 - Aggressive"
-msgstr ""
+msgstr "2 - Agresyvus"
 
-#: sa_opts-dist.php:25
 msgid "3"
-msgstr ""
+msgstr "3"
 
-#: sa_opts-dist.php:26
 msgid "4"
-msgstr ""
+msgstr "4"
 
-#: sa_opts-dist.php:27
 msgid "5 - Recommended"
-msgstr ""
+msgstr "5 - Rekomenduojamas"
 
-#: sa_opts-dist.php:28
 msgid "6"
-msgstr ""
+msgstr "6"
 
-#: sa_opts-dist.php:29
 msgid "7"
-msgstr ""
+msgstr "7"
 
-#: sa_opts-dist.php:30
 msgid "8 - Lenient"
-msgstr ""
+msgstr "8 - Laisvesnis"
 
-#: sa_opts-dist.php:31
 msgid "9"
-msgstr ""
+msgstr "9"
 
-#: sa_opts-dist.php:32
 msgid "10 - Very Lenient"
-msgstr ""
+msgstr "10 - Labai laisvas"
 
-#: sa_opts-dist.php:33
-#, fuzzy
 msgid "Don't Filter"
-msgstr "Nepraleisti nuo"
+msgstr "Nefiltruoti"
 
 #. NOTE: The ordering here is a little odd to allow some inclusion of
 #. other option names.
 #. subject_tag
-#: sa_opts-dist.php:43
 msgid "Spam Subject Tag"
-msgstr ""
+msgstr "Antraštės žymė"
 
-#: sa_opts-dist.php:45
 msgid "*****SPAM*****"
-msgstr ""
+msgstr "*****SPAMAS*****"
 
 #. rewrite_subject
-#: sa_opts-dist.php:48 sa_opts-dist.php:63
 msgid "Rewrite Subject Line"
-msgstr ""
+msgstr "Keisti antraštę"
 
 #. To translators: %s is the default from subject_tag
-#: sa_opts-dist.php:50
 #, php-format
 msgid ""
 "SpamAssassin can re-write the subject line of e-mail that has been "
 "determined to be spam by prefixing the original subject with: %s.  To turn "
 "on this feature, select this option."
-msgstr ""
+msgstr "SpamAssassin gali pakeisti žinutės, kuri surenka pakankamai spamo taškų antraštę. Prie pavadinimo yra pridedama %s. Pasirinkite šį nustatymą norėdami jį įjungti."
 
 #. This is here to allow me to include the rewrite_subject title
 #. *
 #. * To Translators: %s is the title from rewrite_subject
 #.
-#: sa_opts-dist.php:60
 #, php-format
 msgid ""
 "The text to prefix to the subject of messages determined to be spam. %s must "
 "be turned on."
-msgstr ""
+msgstr "Tekstas pridedamas prie spamo žinučių. Nustatymas \"%s\" turi būti įjungtas."
 
-#: sa_opts-dist.php:64
 msgid ""
 "SpamAssassin can re-write the subject line of e-mail that has been "
 "determined to be spam by prefixing the original subject with this value."
 msgstr ""
+"SpamAssassin gali pakeisti laiško antraštę, jei žinutė surenka pakankamai spamo taškų."
 
 #. use_terse_report
-#: sa_opts-dist.php:70
 msgid "Short Report"
-msgstr ""
+msgstr "Trumpa ataskaita"
 
-#: sa_opts-dist.php:71
 msgid ""
 "This option will tell SpamAssassin to use a shorter spam report once the "
 "message has been found to be spam."
-msgstr ""
+msgstr "Šis nustatymas nurodo, kad SpamAssassin turi naudoti trumpą spamo įvertinimo ataskaitą, kai žinutė bus atpažinta kaip spamas."
 
 #. use_dcc
-#: sa_opts-dist.php:77
 msgid "Use DCC"
-msgstr ""
+msgstr "Naudoti DCC"
 
-#: sa_opts-dist.php:78
 msgid ""
 "Checks messages against the DCC (Distrubuted Checksum Clearinghouse) to see "
 "if a message matches a known spam message."
 msgstr ""
+"Patikrina žinutes pagal DCC (Distrubuted Checksum Clearinghouse) turimus žinomo spamo duomenis."
 
 #. use_razor1
-#: sa_opts-dist.php:84
 msgid "Use SpamNet (version 1)"
-msgstr ""
+msgstr "Naudoti SpamNet (pirma versija)"
 
-#: sa_opts-dist.php:85 sa_opts-dist.php:92
 msgid ""
 "Checks messages against SpamNet to see if a message is a known spam message."
-msgstr ""
+msgstr "Patikrina žinutes pagal SpamNet turimus žinomo spamo duomenis."
 
 #. use_razor2
-#: sa_opts-dist.php:91
 msgid "Use SpamNet (version 2)"
-msgstr ""
+msgstr "Naudoti SpamNet (antra versija)"
 
 #. always_add_headers
-#: sa_opts-dist.php:98
 msgid "Always Add Headers"
-msgstr ""
+msgstr "Visada pridėti antraštes"
 
-#: sa_opts-dist.php:99
 msgid "Uncheck if you do not want to add the headers to non-spam."
-msgstr ""
+msgstr "Nuimkite pažymėjimą, jei įvertinimo antraštės nereikia pridėti prie ne spamo žinučių."
 
 #. ok_languages
-#: sa_opts-dist.php:105
 msgid "Acceptable Languages"
-msgstr ""
+msgstr "Priimtinos kalbos"
 
-#: sa_opts-dist.php:106
 msgid "Select all the languages you expect to receive e-mail in."
-msgstr ""
+msgstr "Pasirinkite kalbas, kurias Jūs tikitės matyti gaunamose žinutėse."
 
-#: sa_opts-dist.php:112
 msgid "All"
-msgstr ""
+msgstr "Visos"
 
-#: sa_opts-dist.php:113
 msgid "Afrikaans"
-msgstr ""
+msgstr "Afrikansas"
 
-#: sa_opts-dist.php:114
 msgid "Albanian"
-msgstr ""
+msgstr "Albanų"
 
-#: sa_opts-dist.php:115
 msgid "Amharic"
-msgstr ""
+msgstr "Amharų"
 
-#: sa_opts-dist.php:116
 msgid "Arabic"
-msgstr ""
+msgstr "Arabų"
 
-#: sa_opts-dist.php:117
 msgid "Armenian"
-msgstr ""
+msgstr "Armėnų"
 
-#: sa_opts-dist.php:118
 msgid "Basque"
-msgstr ""
+msgstr "Baskų"
 
-#: sa_opts-dist.php:119
 msgid "Bosnian"
-msgstr ""
+msgstr "Bosnių"
 
-#: sa_opts-dist.php:120
 msgid "Bulgarian"
-msgstr ""
+msgstr "Bulgarų"
 
-#: sa_opts-dist.php:121
 msgid "Byelorussian"
-msgstr ""
+msgstr "Baltarusių"
 
-#: sa_opts-dist.php:122
 msgid "Catalan"
-msgstr ""
+msgstr "Katalonų"
 
-#: sa_opts-dist.php:123
 msgid "Chinese"
-msgstr ""
+msgstr "Kinų"
 
-#: sa_opts-dist.php:124
 msgid "Croatian"
-msgstr ""
+msgstr "Kroatų"
 
-#: sa_opts-dist.php:125
 msgid "Czech"
-msgstr ""
+msgstr "Čekų"
 
-#: sa_opts-dist.php:126
 msgid "Danish"
-msgstr ""
+msgstr "Danų"
 
-#: sa_opts-dist.php:127
 msgid "Dutch"
-msgstr ""
+msgstr "Olandų"
 
-#: sa_opts-dist.php:128
 msgid "English"
-msgstr ""
+msgstr "Anglų"
 
-#: sa_opts-dist.php:129
 msgid "Esperanto"
-msgstr ""
+msgstr "Esperanto"
 
-#: sa_opts-dist.php:130
 msgid "Estonian"
-msgstr ""
+msgstr "Estų"
 
-#: sa_opts-dist.php:131
 msgid "Finnish"
-msgstr ""
+msgstr "Suomių"
 
-#: sa_opts-dist.php:132
 msgid "French"
-msgstr ""
+msgstr "Prancūzų"
 
-#: sa_opts-dist.php:133
 msgid "Frisian"
-msgstr ""
+msgstr "Frizų"
 
-#: sa_opts-dist.php:134
 msgid "Georgian"
-msgstr ""
+msgstr "Gruzinų"
 
-#: sa_opts-dist.php:135
 msgid "German"
-msgstr ""
+msgstr "Vokiečių"
 
-#: sa_opts-dist.php:136
 msgid "Greek"
-msgstr ""
+msgstr "Graikų"
 
-#: sa_opts-dist.php:137
 msgid "Hebrew"
-msgstr ""
+msgstr "Hebrajų"
 
-#: sa_opts-dist.php:138
 msgid "Hindi"
-msgstr ""
+msgstr "Indų"
 
-#: sa_opts-dist.php:139
 msgid "Hungarian"
-msgstr ""
+msgstr "Vengrų"
 
-#: sa_opts-dist.php:140
 msgid "Icelandic"
-msgstr ""
+msgstr "Islandų"
 
-#: sa_opts-dist.php:141
 msgid "Indonesian"
-msgstr ""
+msgstr "Indoneziečių"
 
-#: sa_opts-dist.php:142
 msgid "Irish Gaelic"
-msgstr ""
+msgstr "Airių-galų"
 
-#: sa_opts-dist.php:143
 msgid "Italian"
-msgstr ""
+msgstr "Italų"
 
-#: sa_opts-dist.php:144
 msgid "Japanese"
-msgstr ""
+msgstr "Japonų"
 
-#: sa_opts-dist.php:145
 msgid "Korean"
-msgstr ""
+msgstr "Korėjiečių"
 
-#: sa_opts-dist.php:146
 msgid "Latin"
-msgstr ""
+msgstr "Lotynų"
 
-#: sa_opts-dist.php:147
 msgid "Latvian"
-msgstr ""
+msgstr "Latvių"
 
-#: sa_opts-dist.php:148
 msgid "Lithuanian"
-msgstr ""
+msgstr "Lietuvių"
 
-#: sa_opts-dist.php:149
 msgid "Malay"
-msgstr ""
+msgstr "Malajų"
 
-#: sa_opts-dist.php:150
 msgid "Marathi"
-msgstr ""
+msgstr "Maratų"
 
-#: sa_opts-dist.php:151
 msgid "Nepali"
-msgstr ""
+msgstr "Nepaliečių"
 
-#: sa_opts-dist.php:152
 msgid "Norwegian"
-msgstr ""
+msgstr "Norvegų"
 
-#: sa_opts-dist.php:153
 msgid "Persian"
-msgstr ""
+msgstr "Persų"
 
-#: sa_opts-dist.php:154
 msgid "Polish"
-msgstr ""
+msgstr "Lenkų"
 
-#: sa_opts-dist.php:155
 msgid "Portuguese"
-msgstr ""
+msgstr "Portugalų"
 
-#: sa_opts-dist.php:156
 msgid "Quechua"
-msgstr ""
+msgstr "Inkų"
 
-#: sa_opts-dist.php:157
 msgid "Rhaeto-Romance"
-msgstr ""
+msgstr "Retoromanų"
 
-#: sa_opts-dist.php:158
 msgid "Romanian"
-msgstr ""
+msgstr "Rumunų"
 
-#: sa_opts-dist.php:159
 msgid "Russian"
-msgstr ""
+msgstr "Rusų"
 
-#: sa_opts-dist.php:160
 msgid "Sanskrit"
-msgstr ""
+msgstr "Sanskritas"
 
-#: sa_opts-dist.php:161
 msgid "Scots"
-msgstr ""
+msgstr "Škotų"
 
-#: sa_opts-dist.php:162
 msgid "Scottish Gaelic"
-msgstr ""
+msgstr "Škotų-galų"
 
-#: sa_opts-dist.php:163
 msgid "Serbian"
-msgstr ""
+msgstr "Serbų"
 
-#: sa_opts-dist.php:164
 msgid "Slovak"
-msgstr ""
+msgstr "Slovakų"
 
-#: sa_opts-dist.php:165
 msgid "Slovenian"
-msgstr ""
+msgstr "Slovėnų"
 
-#: sa_opts-dist.php:166
 msgid "Spanish"
-msgstr ""
+msgstr "Ispanų"
 
-#: sa_opts-dist.php:167
 msgid "Swahili"
-msgstr ""
+msgstr "Suahelių"
 
-#: sa_opts-dist.php:168
 msgid "Swedish"
-msgstr ""
+msgstr "Švedų"
 
-#: sa_opts-dist.php:169
 msgid "Tagalog"
-msgstr ""
+msgstr "Tagalogas"
 
-#: sa_opts-dist.php:170
 msgid "Tamil"
-msgstr ""
+msgstr "Tamilų"
 
-#: sa_opts-dist.php:171
 msgid "Thai"
-msgstr ""
+msgstr "Tajų"
 
-#: sa_opts-dist.php:172
 msgid "Turkish"
-msgstr ""
+msgstr "Turkų"
 
-#: sa_opts-dist.php:173
 msgid "Ukrainian"
-msgstr ""
+msgstr "Ukrainiečių"
 
-#: sa_opts-dist.php:174
 msgid "Vietnamese"
-msgstr ""
+msgstr "Vietnamiečių"
 
-#: sa_opts-dist.php:175
 msgid "Welsh"
-msgstr ""
+msgstr "Velsiečių"
 
-#: sa_opts-dist.php:176
 msgid "Yiddish"
-msgstr ""
+msgstr "Idiš"
 
 #. use_bayes
-#: sa_opts-dist.php:179
 msgid "Use Bayesian Filter"
-msgstr ""
+msgstr "Naudoti Bayes filtrus"
 
-#: sa_opts-dist.php:180
 msgid ""
 "The Baysian Filter will learn what is spam and what isn't to become a better "
 "filter."
-msgstr ""
+msgstr "Bayes filtrai gali būti mokomi atskirti spamą nuo ne spamo, kad pagerinti spamo filtravimą."
 
 #. auto_learn
-#: sa_opts-dist.php:186
 msgid "Auto-learn"
-msgstr ""
+msgstr "Automokymasis"
 
-#: sa_opts-dist.php:187
 msgid ""
 "Automatically feed high and low scoring mails into SpamAssassin's learning "
 "systems. (Currently, only Bayesian filtering is supported.)"
-msgstr ""
+msgstr "Automatiškai siųsti aukšto ir žemo įvertinimo žinutes į SpamAssassin besimokančias sistemas. (Šiuo metu palaikoma tik Bayes.)"
 
 #. report_safe
-#: sa_opts-dist.php:193
 msgid "Spam Encapsulation"
-msgstr ""
+msgstr "Spamo perdarymas"
 
-#: sa_opts-dist.php:194
 msgid ""
 "Encapsulate spam messages into a MIME or plain-text attachment, or you can "
 "disable it altogether."
-msgstr ""
+msgstr "SpamAssassin gali pateikti spamo laiškus kaip MIME arba paprastus tekstinius priedus. Jūs taip pat galite atjungti šią opciją."
 
-#: sa_opts-dist.php:196
 msgid "Disabled"
-msgstr ""
+msgstr "Atjungta"
 
-#: sa_opts-dist.php:197
 msgid "MIME Attachment"
-msgstr ""
+msgstr "MIME priedas"
 
-#: sa_opts-dist.php:198
 msgid "Text Attachment"
-msgstr ""
+msgstr "Tekstinis priedas"
 
 #. These options were removed as of SpamAssassin 2.50-ish
 #. They are here for those running older versions of SA.
 #. report_header
-#: sa_opts-dist.php:205
-#, fuzzy
 msgid "Report in Header"
-msgstr "Pranešti apie spamą"
+msgstr "Ataskaita tarp antraštės"
 
-#: sa_opts-dist.php:206
 msgid ""
 "SpamAssassin will create a report when it determines an e-mail message to be "
 "spam.  This report is normally prepended to the e-mail message.  To have the "
 "report written as part of the e-mail header, select this option."
-msgstr ""
+msgstr "SpamAssassin sukuria žinutės įvertinimo ataskaitą. Paprastai ataskaita yra pridedama prie žinutės. Jei norite, kad ataskaita būtų pridedama prie žinutės antraščių, pasirinkite šį nustatymą."
 
 #. defang_mime
-#: sa_opts-dist.php:212
-#, fuzzy
 msgid "Reformat HTML Spam"
-msgstr "Pranešti apie spamą"
+msgstr "Performatuoti HTML spamą"
 
-#: sa_opts-dist.php:213
 msgid ""
 "When an e-mail in HTML format is determined to be spam, SpamAssassin can "
 "convert the message to text. To allow this, select this option."
-msgstr ""
+msgstr "Jei žinutė HTML formate yra atpažįstama kaip spamas, SpamAssassin gali konvertuoti ją į paprastą tekstą. Tai galima nustatyti įjungus šį nustatymą."
 
 #. White/black list info
-#: sa_opts-dist.php:243
 msgid "Whitelist From"
-msgstr "Praleisti nuo"
+msgstr "Praleisti siuntėją"
 
-#: sa_opts-dist.php:244
 msgid ""
 "E-mail from these addresses will not be marked as spam. You may use '*' as a "
 "wildcard to allow a large number of addresses at one time. E.g. Whitelist "
 "From '*@aol.com' will not mark any message that claims to be from aol.com as "
 "spam."
-msgstr ""
+msgstr "Žinutės iš nurodytų adresatų niekada nebus laikomos spamu. Jūs galite naudoti '*' simbolį norėdami apimti didesnį adresų kiekį vienu nustatymu. Pvz. \"*@example.com\" praleistų visas example.com žinutes."
 
-#: sa_opts-dist.php:246
 msgid "Don't Whitelist From"
-msgstr "Nepraleisti nuo"
+msgstr "Nepraleisti siuntėjo"
 
-#: sa_opts-dist.php:247
 msgid ""
 "This address will be excluded from a previous whitelist and will be treated "
 "as a normal address, i.e. it will not be automatically allowed."
-msgstr ""
+msgstr "Šis adresas bus pašalintas iš leidžiamų sąrašo ir bus vertinamas kaip paprastas adresas, t.y. nebus automatiškai praleidžiamas."
 
-#: sa_opts-dist.php:249
 msgid "Blacklist From"
-msgstr "Blokuoti nuo"
+msgstr "Blokuoti siuntėją"
 
-#: sa_opts-dist.php:250
 msgid ""
 "E-mail from these addresses will always be marked as spam. You may use '*' "
 "as a wildcard to block a large number of addresses at one time. E.g. "
 "Blacklist From '*@aol.com' will mark all messages that claims to be from aol."
 "com as spam."
-msgstr ""
+msgstr "Žinutės iš nurodytų adresatų visada bus laikomos spamu. Jūs galite naudoti '*' simbolį norėdami apimti didesnį adresų kiekį vienu nustatymu. Pvz. \"*@example.com\" būtų blokuotos visos example.com žinutės."
 
-#: sa_opts-dist.php:252
 msgid "Don't Blacklist From"
-msgstr "Neblokuoti nuo"
+msgstr "Neblokuoti siuntėjo"
 
-#: sa_opts-dist.php:253
 msgid ""
 "This address will be excluded from a previous blacklist and will be treated "
 "as a normal address, i.e. it will not be automatically denied."
-msgstr ""
+msgstr "Šis adresas bus pašalintas iš draudžiamų sąrašo ir bus laikomas normaliu, t.y. nebus automatiškai blokuojamas."
 
-#: sa_opts-dist.php:255
 msgid "Whitelist To"
-msgstr "Leisti į"
+msgstr "Leisti gavėją"
 
-#: sa_opts-dist.php:256
 msgid ""
 "E-mail to these addresses will not be marked as spam. This is useful for "
 "allowing e-mail lists. For example, you can allow all messages from an e-"
@@ -759,120 +607,92 @@ msgid ""
 "as a wildcard to allow a large number of addresses at one time. E.g. "
 "Whitelist To '*@aol.com' will not mark any message that claims to be to aol."
 "com as spam."
-msgstr ""
+msgstr "Žinutės siunčiamos nurodytais adresais nebus žymimos kaip spamas. Tai leidžia praleisti pašto konferencijų žinutes. Pavyzdžiui, Jūs galite praleisti visas žinutes, kurios siunčiamos į konferencija@example.org. Siekiant praleisti daugiau adresų vienu nustatymu, galima naudoti '*' simbolį."
 
-#: sa_opts-dist.php:258
-#, fuzzy
 msgid "Blacklist To"
-msgstr "Blokuoti nuo"
+msgstr "Blokuoti gavėją"
 
-#: sa_opts-dist.php:259
 msgid ""
 "E-mail to these addresses will be marked as spam. You may use '*' as a "
 "wildcard to reject a large number of addresses at one time. E.g. Blacklist "
 "To '*@aol.com' will mark all messages that claims to be to aol.com as spam."
-msgstr ""
+msgstr "Žinutės pasiųstos nurodytais adresais bus pažymėtos kaip spamas. Jūs galite naudoti '*' simbolį, kad apimti didesnį adresų kiekį vienu nustatymu. Pvz. '*@example.com' pažymėtų visas žinutes, kurios siunčiamos example.com pašto adresais."
 
-#: sa_settings.inc.php:114
 msgid "General Settings"
 msgstr "Bendriniai nustatymai"
 
-#: sa_settings.inc.php:173
-#, fuzzy
 msgid "Save Settings"
-msgstr "dspam nustatymai"
+msgstr "Išsaugoti nustatymus"
 
-#: sa_whitelist.inc.php:43 sasql_wblist.php:41
 msgid "Error: You must include an e-mail address."
 msgstr "Klaida: Jūs turite nurodyti el-pašto adresą."
 
-#: sa_whitelist.inc.php:49 sasql_wblist.php:48
 msgid "Error: You have entered an invalid e-mail address."
 msgstr "Klaida: Jūs nurodėte neteisingą el-pašto adresą."
 
-#: sa_whitelist.inc.php:53
 msgid "Error: You must select Allow or Deny."
 msgstr "Klaida: Jūs turite pasirinkti praleisti ar blokuoti."
 
-#: sa_whitelist.inc.php:76
 msgid "Global Allow / Deny Address List"
 msgstr "Bendrinis Leidimų/Draudimų sąrašas"
 
-#: sa_whitelist.inc.php:83 sa_whitelist.inc.php:125
 msgid "Address"
 msgstr "Adresas"
 
-#: sa_whitelist.inc.php:84 sa_whitelist.inc.php:126
 msgid "Type"
 msgstr "Tipas"
 
-#: sa_whitelist.inc.php:118
 msgid "Personal Allow / Deny Address List"
 msgstr "Asmeninis Leidimų/Draudimų Sąrašas"
 
-#: sa_whitelist.inc.php:127
 msgid "Action"
 msgstr "Veiksmas"
 
-#: sa_whitelist.inc.php:134
 msgid "Address Removed"
 msgstr "Adresas Pašalintas"
 
-#: sa_whitelist.inc.php:160
 #, php-format
 msgid "Unknown option: %s"
-msgstr ""
+msgstr "Nežinomas nustatymas: %s"
 
-#: sa_whitelist.inc.php:168
 msgid "Delete"
 msgstr "Ištrinti"
 
-#: sa_whitelist.inc.php:174
 msgid "Edit"
 msgstr "Taisyti"
 
 #. echo $edit;
-#: sa_whitelist.inc.php:188
 msgid "Edit Address"
 msgstr "Keisti adresą"
 
-#: sa_whitelist.inc.php:194
 msgid "Add New Address"
 msgstr "Įtraukti naują adresą"
 
-#: sa_whitelist.inc.php:220
 msgid "Address:"
 msgstr "Adresas:"
 
-#: sa_whitelist.inc.php:224
 msgid "Type:"
 msgstr "Tipas:"
 
 #. End Form
 #. Help
-#: sa_whitelist.inc.php:245
 msgid "Legend"
-msgstr ""
+msgstr "Santrauka"
 
 #. To translators: %s's are the function name
 #. and PEAR generated error message.
 #.
-#: sasql_db.php:14 sasql_db.php:37 sasql_db.php:121 sasql_db.php:165
-#: sasql_db.php:206 sasql_db.php:246 sasql_db.php:263 sasql_db.php:296
-#: sasql_db.php:326
-#, fuzzy, php-format
+#, php-format
 msgid "Database error in %s: %s"
-msgstr "sasql_AddPref - Duomenų bazės klaida: %s"
+msgstr "Duomenų bazės klaida tarp %s: %s"
 
 #. To translators: %s's are the function name
 #. and PEAR generated error message.
 #.
-#: sasql_db.php:188
-#, fuzzy, php-format
+#, php-format
 msgid "Database error: %s"
-msgstr "sasql_DelPref - Duomenų bazės klaida: %s"
+msgstr "Duomenų bazės klaida: %s"
 
-#: sasql_db.php:227
 #, php-format
 msgid "sasql_AddPref_multiple Database error: %s"
 msgstr "sasql_AddPref_multiple - Duomenų bazės klaida: %s"
@@ -880,125 +700,70 @@ msgstr "sasql_AddPref_multiple - Duomenų bazės klaida: %s"
 #. To translators: %s's are the function name
 #. and PEAR generated error message.
 #.
-#: sasql_db.php:280
-#, fuzzy, php-format
+#, php-format
 msgid "Database error %s: %s"
-msgstr "sasql_DelPref - Duomenų bazės klaida: %s"
+msgstr "Duomenų bazės klaida %s: %s"
 
-#: sasql_hooks.php:104 sasql_options.php:62
 msgid "Spam Filters"
-msgstr ""
+msgstr "Spamo filtrai"
 
-#: sasql_hooks.php:106
-#, fuzzy
 msgid "Configure the behavior of your spam filters."
 msgstr "Čia Jūs galite valdyti spamo filtravimo sistemos elgseną."
 
-#: sasql_hooks.php:199
 msgid "Add Email to Whitelist"
-msgstr ""
+msgstr "Įtraukti adresą į leidžiamų sąrašą"
 
-#: sasql_hooks.php:200
 msgid "Allow Sender"
 msgstr "Praleisti Siuntėją"
 
-#: sasql_hooks.php:201
 msgid "Remove Email from Whitelist"
-msgstr ""
+msgstr "Pašalinti adresą iš leidžiamų sąrašo"
 
-#: sasql_hooks.php:202 sasql_hooks.php:204 sasql_hooks.php:209
-#: sasql_hooks.php:211
 msgid "remove"
 msgstr "išmesti"
 
-#: sasql_hooks.php:203
 msgid "Remove Domain from Whitelist"
-msgstr ""
+msgstr "Pašalinti domeną iš leidžiamų sąrašo"
 
-#: sasql_hooks.php:206
 msgid "Add Email to Blacklist"
-msgstr ""
+msgstr "Įtraukti adresą į draudžiamų sąrašą"
 
-#: sasql_hooks.php:207
-#, fuzzy
 msgid "Block Sender"
-msgstr "Praleisti Siuntėją"
+msgstr "Blokuoti siuntėją"
 
-#: sasql_hooks.php:208
 msgid "Remove Email from Blacklist"
-msgstr ""
+msgstr "Pašalinti adresą iš draudžiamų sąrašo"
 
-#: sasql_hooks.php:210
 msgid "Remove Domain from Blacklist"
-msgstr ""
+msgstr "Pašalinti domeną iš draudžiamų sąrašo"
 
-#: sasql_hooks.php:217
 msgid "Address is already in your whitelist"
-msgstr ""
+msgstr "Adresas jau yra tarp leidžiamų sąrašo"
 
-#: sasql_hooks.php:218 sasql_hooks.php:226
 msgid "Whitelisted"
 msgstr "Adresas praleidžiamas"
 
-#: sasql_hooks.php:225
 msgid "Domain is already in your whitelist"
-msgstr ""
+msgstr "Domenas jau yra tarp leidžiamų sąrašo"
 
-#: sasql_hooks.php:239
 msgid "Address is already in your blacklist"
-msgstr ""
+msgstr "Adresas jau yra tarp draudžiamų sąrašo"
 
-#: sasql_hooks.php:240 sasql_hooks.php:248
 msgid "Blacklisted"
 msgstr "Įtraukta į draudžiamų sąrašą"
 
-#: sasql_hooks.php:247
 msgid "Domain is already in your blacklist"
-msgstr ""
+msgstr "Domenas jau yra tarp draudžiamų sąrašo"
 
-#: sasql_hooks.php:291 sasql_hooks.php:349
-#, fuzzy
 msgid "Learn as False Positive"
-msgstr "Pranešti apie klaidingą priskyrimą"
+msgstr "Išmokti kaip klaidingą priskyrimą"
 
-#: sasql_hooks.php:295 sasql_hooks.php:353
 msgid "Learn as Spam"
-msgstr ""
+msgstr "Išmokti kaip spamą"
 
-#: sasql_options.php:62
 msgid "Options"
 msgstr "Nustatymai"
 
-#: sasql_wblist.php:53
 msgid "Error: Missing option."
 msgstr "Klaida: Trūksta nustatymo."
 
-#~ msgid "Use dspam"
-#~ msgstr "Naudoti dspam"
-
-#~ msgid "Purge $spam_folder Folder"
-#~ msgstr "Išvalyti $spam_folder aplanką"
-
-#~ msgid "sasql_DBConnect Database error: %s"
-#~ msgstr "sasql_DBConnect - Duomenų bazės klaida: %s"
-
-#~ msgid "sasql_ReadWBList Database error: $s"
-#~ msgstr "sasql_ReadWBList - Duomenų bazės klaida: %s"
-
-#~ msgid "sasql_ReadPrefs Database error: %s"
-#~ msgstr "sasql_ReadPrefs - Duomenų bazės klaida: %s"
-
-#~ msgid "sasql_UpdatePref Database error: %s"
-#~ msgstr "sasql_UpdatePref - Duomenų bazės klaida: %s"
-
-#~ msgid "sasql_UpdatePref_multiple Database error: %s"
-#~ msgstr "sasql_UpdatePref_multiple - Duomenų bazės klaida: %s"
-
-#~ msgid "sasql_GetPref Database error: $s"
-#~ msgstr "sasql_GetPref - Duomenų bazės klaida: %s"
-
-#~ msgid "Spam Filter Configuration"
-#~ msgstr "Spamo filtrų konfiguracija"
-
-#~ msgid "Description"
-#~ msgstr "Aprašymas"
