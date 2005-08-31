@@ -67,4 +67,5 @@ done
 
 # md5sum them
 cd ../packages/
-md5sum *-${date}.* > md5sum-${date}.txt
+md5sum *-${date}.* > all_locales-${STABLE_VERSION}-${date}.md5
+sha1sum *-${date}.* > all_locales-${STABLE_VERSION}-${date}.sha1
