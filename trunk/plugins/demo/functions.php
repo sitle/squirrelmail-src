@@ -23,8 +23,8 @@
  */
 
 /**
- * Define SM_PATH constant for situations when functions are loaded 
- * directly.
+ * Define SM_PATH constant for situations when functions.php is loaded
+ * directly. It must be defined by main script in any other case.
  * @ignore
  */
 if (! defined('SM_PATH')) define('SM_PATH','../../');
@@ -38,6 +38,10 @@ include_once(SM_PATH.'functions/display_messages.php');
 
 /**
  * Main login_form hook function
+ *
+ * Function echoes output instead of sending it in return call, if
+ * squirrelmail version is older than 1.5.1.
+ * @return html formated demo input field
  */
 function demo_login_form_do() {
     global $color;
@@ -170,6 +174,7 @@ function demo_options_identities_renumber_do(&$args) {
 
 /**
  * Main function attached to options_identities_table hook
+ * @return string html formated  table rows added to identity table
  */
 function demo_options_identities_table_do(&$args) {
     global $demo_id;
@@ -221,6 +226,7 @@ function demo_options_identities_table_do(&$args) {
 
 /**
  * Main function attached to options_identities_buttons hook
+ * @return string html formated form buttons added to identity form
  */
 function demo_options_identities_buttons_do(&$args) {
     // Is hook called in new identity table 
