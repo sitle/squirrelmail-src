@@ -151,8 +151,6 @@ else {
     $thread_sort_messages = 0;
 }
 
-do_hook ('generic_header');
-
 sqimap_mailbox_select($imapConnection, $mailbox);
 
 if ($composenew) {
