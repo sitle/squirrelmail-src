@@ -1,12 +1,14 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR Free Software Foundation, Inc.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2005-08-11 19:10+0300\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2005-09-04 01:18+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -15,15 +17,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 msgid "Address Book"
-msgstr ""
-
-msgid "All"
-msgstr ""
-
-msgid "To"
-msgstr ""
-
-msgid "Cc"
 msgstr ""
 
 msgid "Name"
@@ -38,16 +31,16 @@ msgstr ""
 msgid "Source"
 msgstr ""
 
+msgid "To"
+msgstr ""
+
+msgid "Cc"
+msgstr ""
+
 msgid "Bcc"
 msgstr ""
 
-msgid "Use Addresses"
-msgstr ""
-
-msgid "Cancel"
-msgstr ""
-
-msgid "Address Book Search"
+msgid "No persons matching your search were found"
 msgstr ""
 
 msgid "Search for"
@@ -65,20 +58,29 @@ msgstr ""
 msgid "List all"
 msgstr ""
 
-#, c-format
+msgid "Close"
+msgstr ""
+
+#, php-format
 msgid "Unable to list addresses from %s"
 msgstr ""
 
 msgid "Your search failed with the following error(s)"
 msgstr ""
 
-msgid "No persons matching your search were found"
+msgid "All"
+msgstr ""
+
+msgid "Use Addresses"
+msgstr ""
+
+msgid "Cancel"
+msgstr ""
+
+msgid "Address Book Search"
 msgstr ""
 
 msgid "Return"
-msgstr ""
-
-msgid "Close"
 msgstr ""
 
 msgid "Nickname"
@@ -126,11 +128,11 @@ msgstr ""
 msgid "Delete selected"
 msgstr ""
 
-#, c-format
+#, php-format
 msgid "Add to %s"
 msgstr ""
 
-#, c-format
+#, php-format
 msgid "%s wrote:"
 msgstr ""
 
@@ -140,7 +142,7 @@ msgstr ""
 msgid "who"
 msgstr ""
 
-#, c-format
+#, php-format
 msgid "On %s, %s wrote:"
 msgstr ""
 
@@ -183,6 +185,11 @@ msgstr ""
 msgid "Delete selected attachments"
 msgstr ""
 
+msgid ""
+"Because PHP file uploads are turned off, you can not attach files to this "
+"message. Please see your system administrator for details."
+msgstr ""
+
 msgid "Priority"
 msgstr ""
 
@@ -216,33 +223,11 @@ msgstr ""
 msgid "You have not filled in the \"To:\" field."
 msgstr ""
 
-#, c-format
+#, php-format
 msgid "Error: Draft folder %s does not exist."
 msgstr ""
 
 msgid "Server replied:"
-msgstr ""
-
-msgid "Illegal folder name. Please select a different name."
-msgstr ""
-
-msgid "Click here to go back"
-msgstr ""
-
-msgid "You have not selected a folder to delete. Please do so."
-msgstr ""
-
-msgid "Delete Folder"
-msgstr ""
-
-#, c-format
-msgid "Are you sure you want to delete %s?"
-msgstr ""
-
-msgid "Yes"
-msgstr ""
-
-msgid "No"
 msgstr ""
 
 msgid "Folders"
@@ -296,6 +281,9 @@ msgstr ""
 msgid "No folders found"
 msgstr ""
 
+msgid "Delete Folder"
+msgstr ""
+
 msgid "Delete"
 msgstr ""
 
@@ -312,6 +300,25 @@ msgid "No folders were found to subscribe to!"
 msgstr ""
 
 msgid "Subscribe to:"
+msgstr ""
+
+msgid "Illegal folder name. Please select a different name."
+msgstr ""
+
+msgid "Click here to go back"
+msgstr ""
+
+msgid "You have not selected a folder to delete. Please do so."
+msgstr ""
+
+#, php-format
+msgid "Are you sure you want to delete %s?"
+msgstr ""
+
+msgid "Yes"
+msgstr ""
+
+msgid "No"
 msgstr ""
 
 msgid "You have not selected a folder to rename. Please do so."
@@ -333,8 +340,8 @@ msgid "Help"
 msgstr ""
 
 msgid ""
-"The help has not been translated to selected language. It will be displayed "
-"in English instead."
+"The help has not been translated to the selected language. It will be "
+"displayed in English instead."
 msgstr ""
 
 msgid "Some or all of the help documents are not present!"
@@ -376,18 +383,18 @@ msgstr ""
 msgid "Login"
 msgstr ""
 
-#, c-format
+#, php-format
 msgid "%s Logo"
 msgstr ""
 
-#, c-format
+#, php-format
 msgid "SquirrelMail version %s"
 msgstr ""
 
 msgid "By the SquirrelMail Project Team"
 msgstr ""
 
-#, c-format
+#, php-format
 msgid "%s Login"
 msgstr ""
 
@@ -400,10 +407,62 @@ msgstr ""
 msgid "No messages were selected."
 msgstr ""
 
-msgid "Options"
+msgid "Personal Information"
+msgstr ""
+
+msgid "Display Preferences"
 msgstr ""
 
 msgid "Message Highlighting"
+msgstr ""
+
+msgid "Folder Preferences"
+msgstr ""
+
+msgid "Index Order"
+msgstr ""
+
+msgid "Options"
+msgstr ""
+
+msgid "Error(s) occurred while saving your options"
+msgstr ""
+
+msgid "Some of your preference changes were not applied."
+msgstr ""
+
+msgid "Successfully Saved Options"
+msgstr ""
+
+msgid "Refresh Folder List"
+msgstr ""
+
+msgid "Refresh Page"
+msgstr ""
+
+msgid ""
+"This contains personal information about yourself such as your name, your "
+"email address, etc."
+msgstr ""
+
+msgid ""
+"You can change the way that SquirrelMail looks and displays information to "
+"you, such as the colors, the language, and other settings."
+msgstr ""
+
+msgid ""
+"Based upon given criteria, incoming messages can have different background "
+"colors in the message list. This helps to easily distinguish who the "
+"messages are from, especially for mailing lists."
+msgstr ""
+
+msgid ""
+"These settings change the way your folders are displayed and manipulated."
+msgstr ""
+
+msgid ""
+"The order of the message index can be rearranged and changed to contain the "
+"headers in any order you want."
 msgstr ""
 
 msgid "New"
@@ -490,7 +549,7 @@ msgstr ""
 msgid "Default Identity"
 msgstr ""
 
-#, c-format
+#, php-format
 msgid "Alternate Identity %d"
 msgstr ""
 
@@ -516,9 +575,6 @@ msgid "Make Default"
 msgstr ""
 
 msgid "Move Up"
-msgstr ""
-
-msgid "Index Order"
 msgstr ""
 
 msgid "Checkbox"
@@ -548,55 +604,6 @@ msgstr ""
 msgid "Return to options page"
 msgstr ""
 
-msgid "Personal Information"
-msgstr ""
-
-msgid "Display Preferences"
-msgstr ""
-
-msgid "Folder Preferences"
-msgstr ""
-
-msgid "Error(s) occurred while saving your options"
-msgstr ""
-
-msgid "Some of your preference changes were not applied."
-msgstr ""
-
-msgid "Successfully Saved Options"
-msgstr ""
-
-msgid "Refresh Folder List"
-msgstr ""
-
-msgid "Refresh Page"
-msgstr ""
-
-msgid ""
-"This contains personal information about yourself such as your name, your "
-"email address, etc."
-msgstr ""
-
-msgid ""
-"You can change the way that SquirrelMail looks and displays information to "
-"you, such as the colors, the language, and other settings."
-msgstr ""
-
-msgid ""
-"Based upon given criteria, incoming messages can have different background "
-"colors in the message list. This helps to easily distinguish who the "
-"messages are from, especially for mailing lists."
-msgstr ""
-
-msgid ""
-"These settings change the way your folders are displayed and manipulated."
-msgstr ""
-
-msgid ""
-"The order of the message index can be rearranged and changed to contain the "
-"headers in any order you want."
-msgstr ""
-
 msgid "Message not printable"
 msgstr ""
 
@@ -621,7 +628,7 @@ msgstr ""
 msgid "Sent"
 msgstr ""
 
-#, c-format
+#, php-format
 msgid "Was displayed on %s"
 msgstr ""
 
@@ -741,7 +748,7 @@ msgstr ""
 msgid "Viewing a Business Card"
 msgstr ""
 
-#, c-format
+#, php-format
 msgid ""
 "vCard Version %s is not supported. Some information might not be converted "
 "correctly."
@@ -796,7 +803,7 @@ msgid ""
 "Could not include PEAR database functions required for the database backend."
 msgstr ""
 
-#, c-format
+#, php-format
 msgid "Is PEAR installed, and is the include path set correctly to find %s?"
 msgstr ""
 
@@ -806,18 +813,18 @@ msgstr ""
 msgid "Personal address book"
 msgstr ""
 
-#, c-format
+#, php-format
 msgid "Database error: %s"
 msgstr ""
 
 msgid "Addressbook is read-only"
 msgstr ""
 
-#, c-format
+#, php-format
 msgid "User \"%s\" already exists"
 msgstr ""
 
-#, c-format
+#, php-format
 msgid "User \"%s\" does not exist"
 msgstr ""
 
@@ -845,7 +852,7 @@ msgstr ""
 msgid "Error initializing addressbook database."
 msgstr ""
 
-#, c-format
+#, php-format
 msgid "Error opening file %s"
 msgstr ""
 
@@ -855,7 +862,7 @@ msgstr ""
 msgid "Error initializing global addressbook."
 msgstr ""
 
-#, c-format
+#, php-format
 msgid "Error initializing LDAP server %s:"
 msgstr ""
 
@@ -1012,42 +1019,42 @@ msgstr ""
 msgid "D, H:i"
 msgstr ""
 
-#, c-format
+#, php-format
 msgid "Preference database error (%s). Exiting abnormally"
 msgstr ""
 
-#, c-format
+#, php-format
 msgid "Click here to return to %s"
 msgstr ""
 
 msgid "Go to the login page"
 msgstr ""
 
-#, c-format
+#, php-format
 msgid ""
 "Preference file, %s, does not exist. Log out, and log back in to create a "
 "default preference file."
 msgstr ""
 
-#, c-format
+#, php-format
 msgid ""
 "Preference file, %s, could not be opened. Contact your system administrator "
 "to resolve this issue."
 msgstr ""
 
-#, c-format
+#, php-format
 msgid ""
 "Preference file, %s, could not be written. Contact your system administrator "
 "to resolve this issue."
 msgstr ""
 
-#, c-format
+#, php-format
 msgid ""
 "Preference file, %s, could not be copied from temporary file, %s. Contact "
 "your system administrator to resolve this issue."
 msgstr ""
 
-#, c-format
+#, php-format
 msgid "Error opening %s"
 msgstr ""
 
@@ -1057,26 +1064,26 @@ msgstr ""
 msgid "Could not create initial preference file!"
 msgstr ""
 
-#, c-format
+#, php-format
 msgid "%s should be writable by user %s"
 msgstr ""
 
 msgid "Signature is too big."
 msgstr ""
 
-#, c-format
+#, php-format
 msgid ""
 "Signature file, %s, could not be opened. Contact your system administrator "
 "to resolve this issue."
 msgstr ""
 
-#, c-format
+#, php-format
 msgid ""
 "Signature file, %s, could not be written. Contact your system administrator "
 "to resolve this issue."
 msgstr ""
 
-#, c-format
+#, php-format
 msgid ""
 "Signature file, %s, could not be copied from temporary file, %s. Contact "
 "your system administrator to resolve this issue."
@@ -1114,7 +1121,7 @@ msgstr ""
 msgid "ERROR: Unknown IMAP response."
 msgstr ""
 
-#, c-format
+#, php-format
 msgid "Error connecting to IMAP server: %s."
 msgstr ""
 
@@ -1127,11 +1134,11 @@ msgstr ""
 msgid "Also, the use of TLS may allow SquirrelMail to login."
 msgstr ""
 
-#, c-format
+#, php-format
 msgid "Bad request: %s"
 msgstr ""
 
-#, c-format
+#, php-format
 msgid "Unknown error: %s"
 msgstr ""
 
@@ -1221,11 +1228,11 @@ msgstr ""
 msgid "Select All"
 msgstr ""
 
-#, c-format
+#, php-format
 msgid "Viewing Messages: %s to %s (%s total)"
 msgstr ""
 
-#, c-format
+#, php-format
 msgid "Viewing Message: %s (%s total)"
 msgstr ""
 
@@ -1273,7 +1280,7 @@ msgstr ""
 msgid "This external link will open in a new window"
 msgstr ""
 
-#, c-format
+#, php-format
 msgid "Option Type '%s' Not Found"
 msgstr ""
 
@@ -1283,7 +1290,7 @@ msgstr ""
 msgid "Compose"
 msgstr ""
 
-#, c-format
+#, php-format
 msgid "Error creating directory %s."
 msgstr ""
 
@@ -2040,7 +2047,7 @@ msgstr ""
 msgid "Plugins"
 msgstr ""
 
-#, c-format
+#, php-format
 msgid "Plugin directory could not be found: %s"
 msgstr ""
 
@@ -2069,13 +2076,13 @@ msgid ""
 "for any common problems."
 msgstr ""
 
-#, c-format
+#, php-format
 msgid ""
 "Make sure that you are running the most recent copy of %s. You are currently "
 "using version %s."
 msgstr ""
 
-#, c-format
+#, php-format
 msgid ""
 "Check to see if your bug is already listed in the %sBug List%s on "
 "SourceForge. If it is, we already know about it and are trying to fix it."
@@ -2087,7 +2094,7 @@ msgid ""
 "view a specific message, keep that message around so maybe we can see it."
 msgstr ""
 
-#, c-format
+#, php-format
 msgid ""
 "If there were warnings displayed above, try to resolve them yourself. Read "
 "the guides in the %s directory where SquirrelMail was installed."
@@ -2129,14 +2136,14 @@ msgstr ""
 msgid "Show button in toolbar"
 msgstr ""
 
-#, c-format
-msgid "Could not write calendar file %s"
-msgstr ""
-
 msgid "TODAY"
 msgstr ""
 
 msgid "Go"
+msgstr ""
+
+#, php-format
+msgid "Could not write calendar file %s"
 msgstr ""
 
 msgid "l, F j Y"
@@ -2430,7 +2437,7 @@ msgstr ""
 msgid "Contains:"
 msgstr ""
 
-#, c-format
+#, php-format
 msgid "If %s contains %s then move to %s"
 msgstr ""
 
@@ -2459,7 +2466,7 @@ msgstr ""
 msgid "Spam Filtering"
 msgstr ""
 
-#, c-format
+#, php-format
 msgid "WARNING! Tell the administrator to set the %s variable."
 msgstr ""
 
@@ -2486,14 +2493,14 @@ msgid ""
 "scanned."
 msgstr ""
 
-#, c-format
+#, php-format
 msgid "Spam is sent to %s."
 msgstr ""
 
 msgid "not set yet"
 msgstr ""
 
-#, c-format
+#, php-format
 msgid "Spam scan is limited to %s."
 msgstr ""
 
@@ -2503,7 +2510,7 @@ msgstr ""
 msgid "OFF"
 msgstr ""
 
-#, c-format
+#, php-format
 msgid "%s is not found."
 msgstr ""
 
@@ -2528,25 +2535,25 @@ msgid ""
 "configuration. Custom command strings can be used."
 msgstr ""
 
-#, c-format
+#, php-format
 msgid ""
 "This will send a message to %s requesting help for this list. You will "
 "receive an emailed response at the address below."
 msgstr ""
 
-#, c-format
+#, php-format
 msgid ""
 "This will send a message to %s requesting that you will be subscribed to "
 "this list. You will be subscribed with the address below."
 msgstr ""
 
-#, c-format
+#, php-format
 msgid ""
 "This will send a message to %s requesting that you will be unsubscribed from "
 "this list. It will try to unsubscribe the adress below."
 msgstr ""
 
-#, c-format
+#, php-format
 msgid "Unknown action: %s"
 msgstr ""
 
@@ -2694,7 +2701,7 @@ msgstr ""
 msgid "Login OK: Inbox EMPTY"
 msgstr ""
 
-#, c-format
+#, php-format
 msgid "Login OK: Inbox contains %s messages"
 msgstr ""
 
@@ -2737,7 +2744,7 @@ msgstr ""
 msgid "Message appended to mailbox"
 msgstr ""
 
-#, c-format
+#, php-format
 msgid "Message %d deleted from remote server!"
 msgstr ""
 
@@ -2867,10 +2874,24 @@ msgstr ""
 msgid "View Message details"
 msgstr ""
 
+msgid "New Mail"
+msgstr ""
+
+msgid "SquirrelMail Notice:"
+msgstr ""
+
+#, php-format
+msgid "You have %s new message"
+msgstr ""
+
+#, php-format
+msgid "You have %s new messages"
+msgstr ""
+
 msgid "New Mail Notification"
 msgstr ""
 
-#, c-format
+#, php-format
 msgid ""
 "The %s option will check ALL of your folders for unseen mail, not just the "
 "inbox for notification."
@@ -2879,7 +2900,7 @@ msgstr ""
 msgid "Check all boxes, not just INBOX"
 msgstr ""
 
-#, c-format
+#, php-format
 msgid ""
 "Selecting the %s option will enable the showing of a popup window when "
 "unseen mail is in your folders (requires JavaScript)."
@@ -2888,7 +2909,7 @@ msgstr ""
 msgid "Show popup window on new mail"
 msgstr ""
 
-#, c-format
+#, php-format
 msgid ""
 "Use the %s option to only check for messages that are recent. Recent "
 "messages are those that have just recently showed up and have not been "
@@ -2899,7 +2920,7 @@ msgstr ""
 msgid "Count only messages that are RECENT"
 msgstr ""
 
-#, c-format
+#, php-format
 msgid ""
 "Selecting the %s option will change the title in some browsers to let you "
 "know when you have new mail (requires JavaScript, and only works in IE but "
@@ -2910,7 +2931,7 @@ msgstr ""
 msgid "Change title on supported browsers"
 msgstr ""
 
-#, c-format
+#, php-format
 msgid ""
 "Select %s to turn on playing a media file when unseen mail is in your "
 "folders. When enabled, you can specify the media file to play in the "
@@ -2920,7 +2941,7 @@ msgstr ""
 msgid "Enable Media Playing"
 msgstr ""
 
-#, c-format
+#, php-format
 msgid ""
 "Select from the list of %s the media file to play when new mail arrives. If "
 "no file is specified, %s, no sound will be used."
@@ -2941,20 +2962,6 @@ msgstr ""
 msgid "Current File:"
 msgstr ""
 
-msgid "New Mail"
-msgstr ""
-
-msgid "SquirrelMail Notice:"
-msgstr ""
-
-#, c-format
-msgid "You have %s new message"
-msgstr ""
-
-#, c-format
-msgid "You have %s new messages"
-msgstr ""
-
 msgid "NewMail Options"
 msgstr ""
 
@@ -2963,11 +2970,11 @@ msgid ""
 "when new mail arrives."
 msgstr ""
 
-#, c-format
+#, php-format
 msgid "%s New Messages"
 msgstr ""
 
-#, c-format
+#, php-format
 msgid "%s New Message"
 msgstr ""
 
@@ -3051,7 +3058,7 @@ msgid ""
 "the spam and helps in letting the proper people know about the abuse."
 msgstr ""
 
-#, c-format
+#, php-format
 msgid ""
 "To use it, you must get a SpamCop authorization code. There is a free %ssign "
 "up page%s so you can use SpamCop."
@@ -3060,7 +3067,7 @@ msgstr ""
 msgid "Before you sign up, be warned"
 msgstr ""
 
-#, c-format
+#, php-format
 msgid ""
 "Some users have reported that the email addresses used with SpamCop find "
 "their way onto spam lists. To be safe, you can just create an email "
@@ -3130,7 +3137,7 @@ msgstr ""
 msgid "More information"
 msgstr ""
 
-#, c-format
+#, php-format
 msgid ""
 "For more information about SpamCop, it's services, spam in general, and many "
 "related topics, try reading through SpamCop's %sHelp and Feedback%s section."
@@ -3214,22 +3221,22 @@ msgstr ""
 msgid "Cute."
 msgstr ""
 
-#, c-format
+#, php-format
 msgid "Could not run the spellchecker command (%s)."
 msgstr ""
 
 msgid "Error while writing to pipe."
 msgstr ""
 
-#, c-format
+#, php-format
 msgid "Could not open temporary file '%s'."
 msgstr ""
 
-#, c-format
+#, php-format
 msgid "Error while writing to temporary file '%s'."
 msgstr ""
 
-#, c-format
+#, php-format
 msgid "I tried to execute '%s', but it returned:"
 msgstr ""
 
@@ -3248,7 +3255,7 @@ msgstr ""
 msgid "SquirrelSpell Results"
 msgstr ""
 
-#, c-format
+#, php-format
 msgid "Found %s errors"
 msgstr ""
 
@@ -3315,6 +3322,21 @@ msgstr ""
 msgid "No errors found"
 msgstr ""
 
+msgid ""
+"Your personal dictionary has been encrypted and is now stored in an "
+"encrypted format."
+msgstr ""
+
+msgid ""
+"Your personal dictionary has been decrypted and is now stored as plain text."
+msgstr ""
+
+msgid "No action requested."
+msgstr ""
+
+msgid "Personal Dictionary Crypto Settings"
+msgstr ""
+
 msgid "Your personal dictionary was erased."
 msgstr ""
 
@@ -3346,21 +3368,6 @@ msgstr ""
 msgid "Dictionary re-encrypted"
 msgstr ""
 
-msgid ""
-"Your personal dictionary has been encrypted and is now stored in an "
-"encrypted format."
-msgstr ""
-
-msgid ""
-"Your personal dictionary has been decrypted and is now stored as plain text."
-msgstr ""
-
-msgid "No action requested."
-msgstr ""
-
-msgid "Personal Dictionary Crypto Settings"
-msgstr ""
-
 msgid "Personal Dictionary"
 msgstr ""
 
@@ -3370,7 +3377,7 @@ msgstr ""
 msgid "Please check any words you wish to delete from your dictionary."
 msgstr ""
 
-#, c-format
+#, php-format
 msgid "%s dictionary"
 msgstr ""
 
@@ -3441,7 +3448,7 @@ msgid ""
 "Please encrypt my personal dictionary and store it in an encrypted format."
 msgstr ""
 
-#, c-format
+#, php-format
 msgid "Deleting the following entries from %s dictionary:"
 msgstr ""
 
@@ -3465,11 +3472,11 @@ msgstr ""
 msgid "SquirrelSpell Initiating"
 msgstr ""
 
-#, c-format
+#, php-format
 msgid "Settings adjusted to: %s with %s as default dictionary."
 msgstr ""
 
-#, c-format
+#, php-format
 msgid "Using %s dictionary (system default) for spellcheck."
 msgstr ""
 
@@ -3520,7 +3527,7 @@ msgstr ""
 msgid "Maximum of 150 words translated, powered by Systran"
 msgstr ""
 
-#, c-format
+#, php-format
 msgid "Number of supported language pairs: %s"
 msgstr ""
 
@@ -3530,7 +3537,7 @@ msgstr ""
 msgid "No known limits, powered by Translation Experts' InterTran"
 msgstr ""
 
-#, c-format
+#, php-format
 msgid "Number of supported languages: %s"
 msgstr ""
 
@@ -3574,7 +3581,7 @@ msgid ""
 "language?"
 msgstr ""
 
-#, c-format
+#, php-format
 msgid "%s to %s"
 msgstr ""
 
