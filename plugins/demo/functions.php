@@ -73,18 +73,26 @@ function demo_login_form_do() {
 /**
  * Main function attached to options_identities_process hook.
  *
- * Hook is broken in 1.4.5.
+ * Hook is not available in 1.4.5.
  */
 function demo_options_identities_process_do(&$args) {
     global $demo_id, $data_dir, $username;
-    // TODO: check sm_print_r($args). Why do we need it? It does not provide
-    // enough information about processed id and plugin must use own hacks to
-    // detect id.
 
-    if (sqgetGlobalVar('demo_submit',$demo_submit,SQ_POST) &&
-        is_array($demo_submit) && count($demo_submit)==1) {
-        // process own buttons in form submission
-        $demo_id = (int) key($demo_submit);
+    if (count($args)==3) {
+        // SquirrelMail 1.4.6+ and 1.5.1+
+        if ($args[1]=='demo_submit') {
+            $demo_id = (int) $args[2];
+            setPref($data_dir, $username, 'demo_id', $demo_id);
+            // FIXME: count number of hook calls.
+        } elseif ($args[1]=='save' && sqGetGlobalVar('demo_id_select',$demo_id_number,SQ_POST)) {
+            // FIXME: count number of hook calls.
+            $demo_id = (int) $demo_id_number;
+            setPref($data_dir, $username, 'demo_id', $demo_id);
+        }
+    } elseif (sqgetGlobalVar('smaction',$smaction,SQ_POST) &&
+        is_array($smaction) && isset($smaction['demo_submit'])) {
+        // process own buttons in form submission (1.4.4 or older and 1.5.0)
+        $demo_id = (int) key($smaction['demo_submit']);
         setPref($data_dir,$username,'demo_id',$demo_id);
     } elseif (sqgetGlobalVar('update',$tmp,SQ_POST) && 
         sqGetGlobalVar('demo_id_select',$demo_id_number,SQ_POST)) {
@@ -228,7 +236,7 @@ function demo_options_identities_buttons_do(&$args) {
         bindtextdomain('demo',SM_PATH . 'locale');
         textdomain('demo');
 
-        $ret.= '<input type="submit" name="demo_submit['.$id.']" value="'._("Mark as Demo ID").'" />';
+        $ret.= '<input type="submit" name="smaction[demo_submit]['.$id.']" value="'._("Mark as Demo ID").'" />';
 
         // revert gettext domain
         bindtextdomain('squirrelmail',SM_PATH . 'locale');
