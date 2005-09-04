@@ -17,7 +17,7 @@ if [ -z "$1" ]; then
 fi
 
 WORKDIR=../locales
-LOCALEDIR=$WORKDIR/$1
+LOCALEDIR=$WORKDIR/locale/$1
 
 if [ ! -d $LOCALEDIR ]; then
  # lessee if it's been renamed.
