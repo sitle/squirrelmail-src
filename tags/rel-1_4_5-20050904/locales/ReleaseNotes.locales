@@ -1,0 +1,67 @@
+SquirrelMail 1.4.5 locales
+
+Current translation status is:
+-----------------------------------
+Brazilian Portuguese (pt_BR) 100.00
+Dutch (nl_NL)                100.00
+Lithuanian (lt_LT)           100.00
+Norwegian Nynorsk (nn_NO)    100.00
+Swedish (sv_SE)              100.00
+Russian (ru_RU)               99.91
+Faroese (fo_FO)               99.02
+Finnish (fi_FI)               96.33
+French (fr_FR)                95.53
+Bahasa Indonesia (id_ID)      94.90
+Serbian (sr_YU)               94.90
+Greek (el_GR)                 94.19
+German (de_DE)                93.29
+Norwegian Bokmal (nb_NO)      89.98
+Hungarian (hu_HU)             83.90
+Slovak (sk_SK)                83.90
+Bengali (bn_IN)               83.45
+Italian (it_IT)               82.83
+Turkish (tr_TR)               82.47
+Spanish (es_ES)               82.20
+Czech (cs_CZ)                 80.05
+Japanese (ja_JP)              79.70
+Slovenian (sl_SI)             79.16
+Polish (pl_PL)                78.89
+Bahasa Melayu (ms_MY)         78.18
+Icelandic (is_IS)             76.39
+Bulgarian (bg_BG)             76.21
+Korean (ko_KR)                75.67
+Arabic (ar)                   73.35
+Croatian (hr_HR)              73.08
+Danish (da_DK)                72.99
+Uighur (ug)                   70.21
+Basque (eu_ES)                69.95
+Farsi (fa_IR)                 67.89
+Catalan (ca_ES)               67.26
+Romanian (ro_RO)              67.08
+Welsh (cy_GB)                 67.08
+Chinese Simplified (zh_CN)    65.47
+Chinese Traditional (zh_TW)   61.18
+Hebrew (he_IL)                61.18
+Portuguese (pt_PT)            54.11
+British (en_GB)                2.33
+-----------------------------------
+
+Main changes made in releases are:
+2005-09-04
+ - Updated Dutch, Finnish, Norwegian Nynorsk and Swedish translations.
+ - Fixed msgfmt -c errors in translations and added -c option to
+   msgfmt calls in compilation scripts (#1252843).
+
+2005-07-13 (1.4.5 release)
+ - Updated Brazilian Portuguese, Faroese, Lithuanian, Russian and Swedish 
+   translations.
+ - Removed unmaintained Estonian translation.
+
+2005-06-16 (1.4.5rc1 release)
+ - Updated Brazilian Portuguese, Lithuanian, Serbian, Swedish and Uighur 
+   translations.
+
+2005-06-08 (branch point)
+ - Branched from HEAD.
+ - Removed translations that are available only in 1.5.1cvs.
+ - Removed 1.5.1cvs strings from squirrelmail.pot.

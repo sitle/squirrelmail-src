@@ -1,0 +1,191 @@
+# translation of ldapquery.po to Deutsch
+# Squirrelmail ldapquery plugin
+# German translation
+# Copyright (c) 2004-2005 The SquirrelMail Project Team
+# This file is distributed under the same license as the plugin's package.
+# $Id$
+# Ferdie Ferdsen <ferdie@despam.de>, 2004.
+# Ralf Hildebrandt <Ralf.Hildebrandt@charite.de>, 2005.
+msgid ""
+msgstr ""
+"Project-Id-Version: ldapquery\n"
+"POT-Creation-Date: 2004-10-23 19:40+0300\n"
+"PO-Revision-Date: 2005-01-12 16:38GMT+1\n"
+"Last-Translator: Ralf Hildebrandt <Ralf.Hildebrandt@charite.de>\n"
+"Language-Team: Deutsch <DE@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=ISO-8859-1\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.9.1\n"
+
+msgid "No records found"
+msgstr "Keine Einträge gefunden"
+
+msgid "User DN:"
+msgstr "User DN:"
+
+msgid "Password:"
+msgstr "Passwort:"
+
+msgid "Search For:"
+msgstr "Suche nach:"
+
+msgid "By:"
+msgstr "Nach:"
+
+msgid "Contains"
+msgstr "Enthält"
+
+msgid "Is"
+msgstr "ist"
+
+msgid "Sort By:"
+msgstr "Sortiere nach:"
+
+msgid "Search"
+msgstr "Suche"
+
+msgid "Search Results"
+msgstr "Suchergebnisse"
+
+#, c-format
+msgid "Could not connect to LDAP server %s"
+msgstr "Konnte keine Verbindung zum LDAP Server %s herstellen"
+
+msgid "Unable to bind to LDAP server"
+msgstr "Konnte kein bin() mit dem LDAP Server herstellen"
+
+msgid "Nothing found!"
+msgstr "Keine Einträge gefunden!"
+
+#, c-format
+msgid "output type is %s"
+msgstr "Ausgabetyp ist %s"
+
+#, c-format
+msgid "output sorted by %s"
+msgstr "Ausgabe sortiert nach %s"
+
+msgid "Options - Directory Preferences"
+msgstr "Optionen - Verzeichnis Voreinstellungen"
+
+msgid "Output types can be:"
+msgstr "Ausgabetypen können sein:"
+
+msgid "One Table"
+msgstr "Eine Tabelle"
+
+msgid ""
+"One big table with one row per record found and each selected attribute as a "
+"separate column."
+msgstr "Eine große Tabelle mit einer Zeile pro gefundenem Eintrag und jedem gewählten Attribut als eine separate Spalte."
+
+msgid "Multiple Tables"
+msgstr "Mehrere Tabellen"
+
+msgid ""
+"One table per record found with 2 columns for each table. One column "
+"contains attribute names and the 2nd column shows values for each "
+"attribute.  This format is best if you have many attributes selected or if "
+"the values for some of the attributes you have selected can be very long "
+"with no spaces (like labeledurl)."
+msgstr "Eine Tabelle pro gefundenem Eintag mit 2 Spalten für jede Tabelle. Eine Spalte enthät die Attributnamen und die 2. Spalte zeigt die Werte für jedes Attribut. Dieses Format ist am besten geeignet, wenn Sie viele Attribute gewählt haben oder wenn die Werte für einige der Attribute sehr lang sind und keine Leerzeichen enthalten (wie z.B. labeledurl)."
+
+msgid "Select Output Type:"
+msgstr "Wäjlen Sie den Ausgabetyp:"
+
+msgid "Select Displayed Fields"
+msgstr "Wählen Sie die angezeigten Felder"
+
+msgid "Submit"
+msgstr "Absenden"
+
+msgid "Directory"
+msgstr "Verzeichnis"
+
+msgid "Directory Preferences"
+msgstr "Verzeichnis Einstellungen"
+
+msgid ""
+"These settings control what type of output you will see when you use the "
+"Directory link to search Directory Services."
+msgstr "Diese Einstellungen bestimmen welche Art von Ausgabe Sie sehen, wenn Sie den \"Verzeichnis\" Link benutzen um den Verzeichnisdienst zu durchsuchen."
+
+#~ msgid "Common Name"
+#~ msgstr "Allgemeiner Name"
+
+#~ msgid "Department"
+#~ msgstr "Abteilung"
+
+#~ msgid "Description"
+#~ msgstr "Beschreibung"
+
+#~ msgid "Title"
+#~ msgstr "Titel"
+
+#~ msgid "Email Address"
+#~ msgstr "E-Mail-Adresse"
+
+#~ msgid "Phone"
+#~ msgstr "Telefon"
+
+#~ msgid "Home Phone"
+#~ msgstr "Telefon (privat)"
+
+#~ msgid "Fax"
+#~ msgstr "Fax"
+
+#~ msgid "State"
+#~ msgstr "Bundesland"
+
+#~ msgid "Work Address"
+#~ msgstr "Geschäftsadresse"
+
+#~ msgid "Home Address"
+#~ msgstr "Privatadresse"
+
+#~ msgid "URL"
+#~ msgstr "URL"
+
+#~ msgid "People"
+#~ msgstr "Personen"
+
+#~ msgid "Any"
+#~ msgstr "Beliebig"
+
+#~ msgid "You have to define at least one search term."
+#~ msgstr "Sie müssen mindestens einen Suchbegriff angeben."
+
+#~ msgid "Directory Service"
+#~ msgstr "Verzeichnis Dienst"
+
+#~ msgid "Criteria"
+#~ msgstr "Kriterien"
+
+#~ msgid "and"
+#~ msgstr "und"
+
+#~ msgid "Add More..."
+#~ msgstr "Mehr hinfzufügen..."
+
+#~ msgid "Warning: Too many results were found, a partial list follows."
+#~ msgstr ""
+#~ "Warnung: Zu viele Ergebnisse wurden gefunden, Sie sehen nur eine "
+#~ "Teilliste."
+
+#~ msgid "You may redefine your search to get more specific results."
+#~ msgstr ""
+#~ "Bitte verfeinern Sie ihre Suche um passendere Ergebnisse zu erhalten."
+
+#~ msgid "Options"
+#~ msgstr "Einstellungen"
+
+#~ msgid "Type of Output"
+#~ msgstr "Ausgabetyp"
+
+#~ msgid "Fields to display"
+#~ msgstr "Felder, die angezeigt werden sollen"
+
+#~ msgid "Directory preferences saved"
+#~ msgstr "Verzeichniseinstellungen wurden gespeichert"
+
