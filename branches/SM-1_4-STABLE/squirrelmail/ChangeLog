@@ -38,6 +38,9 @@ Version 1.4.6 - CVS
     CAN-2005-1769 patches.
   - Fixed compose form redirection in spamcop plugin.
   - "Toggle all" pointless when folder list empty (#1267079).
+  - Readded options_identity_process and options_identity_renumber hooks
+    broken by CAN-2005-2095 fixes.
+  - Removed duplicate generic_header hook call in src/right_main.php (#1269189).
 
 Version 1.4.5 - 13 July 2005
 ----------------------------
@@ -56,9 +59,6 @@ Version 1.4.5 - 13 July 2005
     of all POST values. [CAN-2005-2095]
   - Moved imap_logout call in view_header.php to the end of the script after
     displayPageheader is called.
-  - Readded options_identity_process and options_identity_renumber hooks
-    broken by CAN-2005-2095 fixes.
-  - Removed duplicate generic_header hook call in src/right_main.php (#1269189).
 
 Version 1.4.5 Release Candidate 1 - 15 June 2005
 ------------------------------------------------
