@@ -41,6 +41,8 @@ Version 1.4.6 - CVS
   - Readded options_identity_process and options_identity_renumber hooks
     broken by CAN-2005-2095 fixes.
   - Removed duplicate generic_header hook call in src/right_main.php (#1269189).
+  - Focus on compose screen no longer shifts automatically if user has manually
+    focused somewhere herself.
 
 Version 1.4.5 - 13 July 2005
 ----------------------------

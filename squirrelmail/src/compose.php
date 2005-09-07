@@ -949,7 +949,13 @@ function showInputForm ($session, $values=false) {
         $username, $data_dir, $identity, $draft_id, $delete_draft,
         $mailprio, $default_use_mdn, $mdn_user_support, $compose_new_win,
         $saved_draft, $mail_sent, $sig_first, $edit_as_new, $action,
-        $username, $compose_messages, $composesession, $default_charset;
+        $username, $compose_messages, $composesession, $default_charset,
+        $javascript_on;
+
+    if ($javascript_on)
+        $onfocus = ' onfocus="alreadyFocused=true;"';
+    else
+        $onfocus = '';
 
     $composeMessage = $compose_messages[$session];
     if ($values) {
@@ -1065,29 +1071,29 @@ function showInputForm ($session, $values=false) {
         html_tag( 'td', '', 'right', $color[4], 'width="10%"' ) .
         _("To") . ':</td>' . "\n" .
         html_tag( 'td', '', 'left', $color[4], 'width="90%"' ) .
-        addInput('send_to', $send_to, 60). '<br />' . "\n" .
+        substr(addInput('send_to', $send_to, 60), 0, -2). $onfocus . ' /><br />' . "\n" .
         '      </td>' . "\n" .
         '   </tr>' . "\n" .
         '   <tr>' . "\n" .
         html_tag( 'td', '', 'right', $color[4] ) .
         _("Cc") . ':</td>' . "\n" .
         html_tag( 'td', '', 'left', $color[4] ) .
-        addInput('send_to_cc', $send_to_cc, 60). '<br />' . "\n" .
+        substr(addInput('send_to_cc', $send_to_cc, 60), 0, -2). $onfocus . ' /><br />' . "\n" .
         '      </td>' . "\n" .
         '   </tr>' . "\n" .
         '   <tr>' . "\n" .
         html_tag( 'td', '', 'right', $color[4] ) .
         _("Bcc") . ':</td>' . "\n" .
         html_tag( 'td', '', 'left', $color[4] ) .
-        addInput('send_to_bcc', $send_to_bcc, 60).'<br />' . "\n" .
+        substr(addInput('send_to_bcc', $send_to_bcc, 60), 0, -2). $onfocus . ' /><br />' . "\n" .
         '      </td>' . "\n" .
         '   </tr>' . "\n" .
         '   <tr>' . "\n" .
         html_tag( 'td', '', 'right', $color[4] ) .
         _("Subject") . ':</td>' . "\n" .
         html_tag( 'td', '', 'left', $color[4] ) . "\n";
-    echo '         '.addInput('subject', $subject, 60).
-        '      </td>' . "\n" .
+    echo '         '.substr(addInput('subject', $subject, 60), 0, -2). $onfocus .
+        ' />      </td>' . "\n" .
         '   </tr>' . "\n\n";
 
     if ($location_of_buttons == 'between') {
@@ -1099,13 +1105,13 @@ function showInputForm ($session, $values=false) {
         echo '   <tr>' . "\n" .
             '      <td bgcolor="' . $color[0] . '" colspan="2" align="center">' . "\n" .
             '         <textarea name="body" id="body" rows="' . (int)$editor_height .
-            '" cols="' . (int)$editor_size . '" wrap="virtual">';
+            '" cols="' . (int)$editor_size . '" wrap="virtual"' . $onfocus . '>';
     }
     else {
         echo '   <tr>' . "\n" .
             '      <td bgcolor="' . $color[4] . '" colspan="2">' . "\n" .
             '         &nbsp;&nbsp;<textarea name="body" id="body" rows="' . (int)$editor_height .
-            '" cols="' . (int)$editor_size . '" wrap="virtual">';
+            '" cols="' . (int)$editor_size . '" wrap="virtual"' . $onfocus . '>';
     }
 
     if ($use_signature == true && $newmail == true && !isset($from_htmladdr_search)) {

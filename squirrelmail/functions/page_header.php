@@ -159,7 +159,9 @@ function displayPageHeader($color, $mailbox, $xtra='', $session=false) {
         case 'src/compose.php':
             $js = '<script language="JavaScript" type="text/javascript">' .
              "\n<!--\n" .
-             "function checkForm() {\n";
+             "var alreadyFocused = false;\n" .
+             "function checkForm() {\n" .
+             "\n    if (alreadyFocused) return;\n";
 
             global $action, $reply_focus;
             if (strpos($action, 'reply') !== FALSE && $reply_focus)
@@ -334,7 +336,9 @@ function compose_Header($color, $mailbox) {
     default:
         $js = '<script language="JavaScript" type="text/javascript">' .
              "\n<!--\n" .
-             "function checkForm() {\n";
+             "var alreadyFocused = false;\n" .
+             "function checkForm() {\n" .
+             "\n    if (alreadyFocused) return;\n";
 
             global $action, $reply_focus;
             if (strpos($action, 'reply') !== FALSE && $reply_focus)
