@@ -11,7 +11,7 @@
  * @license http://opensource.org/licenses/gpl-license.php GNU Public License
  * @version $Id$
  * @package plugins
- * @subpackage abook_take
+ * @subpackage delete_move_next
  */
 
 header('Location: ../index.php');
