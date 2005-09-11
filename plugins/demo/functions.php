@@ -82,6 +82,8 @@ function demo_login_form_do() {
 function demo_options_identities_process_do(&$args) {
     global $demo_id, $data_dir, $username;
 
+    // sm_print_r($args);
+
     if (count($args)==3) {
         // SquirrelMail 1.4.6+ and 1.5.1+
         if ($args[1]=='demo_submit') {
@@ -92,6 +94,17 @@ function demo_options_identities_process_do(&$args) {
             // FIXME: count number of hook calls.
             $demo_id = (int) $demo_id_number;
             setPref($data_dir, $username, 'demo_id', $demo_id);
+        } elseif ($args[1]=='delete') {
+            $deleted_id = (int) $args[2];
+            if ($demo_id == $deleted_id) {
+                // demo id is deleted
+                $demo_id = SMPREF_NONE;
+                removePref($data_dir,$username,'demo_id');
+            } elseif ($demo_id > $deleted_id) {
+                // demo id is renumbered (-1)
+                $demo_id = $demo_id - 1;
+                setPref($data_dir,$username,'demo_id',$demo_id);
+            }
         }
     } elseif (sqgetGlobalVar('smaction',$smaction,SQ_POST) &&
         is_array($smaction) && isset($smaction['demo_submit'])) {
@@ -139,6 +152,8 @@ function demo_options_identities_top_do() {
 function demo_options_identities_renumber_do(&$args) {
     global $demo_id, $data_dir, $username;
 
+    // sm_print_r($args);
+
     // from id
     $from_id = $args[1];
 
@@ -155,14 +170,16 @@ function demo_options_identities_renumber_do(&$args) {
             if ((check_sm_version(1,5,1) ||
                 (check_sm_version(1,4,5) && ! check_sm_version(1,5,0))) &&
                 $demo_id < $from_id) {
-                $flip_id = $demo_id++;
+                $flip_id = $demo_id + 1;
             }
         }
 
-        if ($demo_id == $to_id) {
-            $flip_id = $from_id;
-        } elseif ($demo_id == $from_id) {
-            $flip_id = $to_id;
+        if (!isset($flip_id)) {
+            if ($demo_id == $to_id) {
+                $flip_id = $from_id;
+            } elseif ($demo_id == $from_id) {
+                $flip_id = $to_id;
+            }
         }
 
         if (isset($flip_id)) {
