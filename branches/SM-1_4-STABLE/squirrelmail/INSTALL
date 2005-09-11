@@ -211,11 +211,12 @@ c. Setting up SquirrelMail
      http://sourceforge.net/project/showfiles.php?group_id=311&package_id=110388
 
   Each translation contains an install script that copies the required files
-  into their appropriate locations. If you can't run that script, you can extract
-  the contents of a translation package into your SquirrelMail directory.
+  into their appropriate locations. If you can't run that script, you can
+  extract the contents of a translation package into your SquirrelMail
+  directory.
 
   NOTE No.1: *-src.tar.gz, *-src.tar.bz2 and *-src.zip archives do not contain
-  compiled translation files. You will need to run the `compilelocales` script
+  compiled translation files. You will need to run the "compilelocales" script
   in order to get all gettext binary translations.
 
   NOTE No.2: You might need to restart your webserver before using translations.
