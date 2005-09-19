@@ -37,7 +37,7 @@ Document version: $Revision$
 
 <sect>SquirrelMail overview
 <p>
-SquirrelMail is a standards-based webmail package written in PHP4. It includes
+SquirrelMail is a standards-based webmail package written in PHP. It includes
 built-in pure PHP support for the IMAP and SMTP protocols, and all pages render
 in pure HTML 4.0 (with no JavaScript required) for maximum compatibility across
 browsers. It has very few requirements and is very easy to configure and
@@ -51,7 +51,7 @@ client, including strong MIME support, address books, and folder manipulation.
   <item>UNIX/Linux or Windows (UNIX/Linux version may be more functional)
   <item>IMAP4rev1 server (e.g. uw-imap, courier-imap, cyrus-imap, hMailServer,
     Binc IMAP, CommuniGate, MS Exchange Server, MercuryMail 32, Dovecot)
-  <item>Web server with PHP4 installed (for example <url
+  <item>Web server with PHP installed (for example <url
     url="http://httpd.apache.org/" name="Apache httpd">)
   <item>You need at least PHP 4.1.0.
   <item>Perl installed on the system. (If you don't have Perl, SquirrelMail will
@@ -130,13 +130,13 @@ squirrelmail/
 </verb></tscreen>
 
 <tt/class/ directory stores various classes used with mime messages, email
-delivery, localications and other interface functions.
+delivery, localizations and other interface functions.
 
 <tt/config/ directory stores SquirrelMail configuration files and configuration
 utility. <tt/conf.pl/ script is perl based utility used to manage SquirrelMail
 configuration. <tt/config_default.php/ file stores default configuration
 values. <tt/config.php/ file stores current configuration. <tt/config_local.php/
-file can store local site configuration overrides and configration options that
+file can store local site configuration overrides and configuration options that
 are not supported by configuration utility. <tt/default_pref/ file stores <ref
 id="default_pref" name="default configuration"> that is used when user's
 preference file does not exist. <tt/default_pref/ file was stored in data
@@ -273,9 +273,9 @@ You can find SquirrelMail package on <url url="http://www.squirrelmail.org"
 name="SquirrelMail site">. PHP can be found on <url url="http://www.php.net"
 name="PHP site">.
 
-<sect2>Install webserver and PHP4 (at least 4.1.0).
+<sect2>Install webserver and PHP (at least 4.1.0).
 <p>
-SquirrelMail needs webserver with php4 support. Check <url
+SquirrelMail needs webserver with PHP support. Check <url
 url="http://www.php.net/manual/en/install.php" name="PHP install manual"> for
 information about supported web servers and install procedures.
 
@@ -969,6 +969,25 @@ data.
 You <bf>must</bf> set primary keys correctly. If keys are not set correctly,
 database entries might be duplicated when users change their preferences.
 
+<sect2>Oversized field values
+<p>
+Database fields have size limits. Preference table example sets 128 
+character limit to owner field, 64 character limit to preference key 
+field and 64KB (database BLOB field size) limit to value field.
+
+If interface tries to insert data without checking field limits, it
+can cause data loss or database errors. Table information functions
+provided by Pear DB libraries are not accurate and some database 
+backends don't support them. Since 1.5.1 SquirrelMail provides
+configuration options that set allowed field sizes.
+
+If you see oversized field errors in your error logs - check your 
+database structure. Issue can be solved by increasing database field 
+sizes.
+
+If you want to get more debugging information - check setKey() function 
+in dbPrefs class. Class is stored in functions/db_prefs.php
+
 <sect1>Using more than one IMAP server
 <p>
 SquirrelMail is designed to work with one IMAP server. If you want to use same
@@ -1290,43 +1309,49 @@ translation. If SquirrelMail has to display email written in other charset,
 interface uses special decoding functions that convert email to html codes that
 can display foreign symbols in selected character set.
 
-Stock SquirrelMail 1.4.4 installation supports following charset decoding
+Stock SquirrelMail installation supports following charset decoding
 functions:
 <itemize>
-  <item>cp1250 (windows-1250)
-  <item>cp1251 (windows-1251)
-  <item>cp1252 (windows-1252)
-  <item>cp1253 (windows-1253)
-  <item>cp1254 (windows-1254)
-  <item>cp1255 (windows-1255)
-  <item>cp1256 (windows-1256)
-  <item>cp1257 (windows-1257)
-  <item>cp1258 (windows-1258)
-  <item>cp855 (ibm855)
-  <item>cp866 (ibm866)
-  <item>iso-8859-1
-  <item>iso-8859-2
-  <item>iso-8859-3
-  <item>iso-8859-4
-  <item>iso-8859-5
-  <item>iso-8859-6
-  <item>iso-8859-7
-  <item>iso-8859-8
-  <item>iso-8859-9
-  <item>iso-8859-10
-  <item>iso-8859-11
-  <item>iso-8859-13
-  <item>iso-8859-14
-  <item>iso-8859-15
-  <item>iso-8859-16
-  <item>iso-ir-111
-  <item>koi8-r
-  <item>koi8-u
-  <item>ns-4551_1
-  <item>tis-620
-  <item>us-ascii
-  <item>utf-8
+  <item>cp1250 (windows-1250) - since 1.4.3 and 1.5.0
+  <item>cp1251 (windows-1251) - since 1.2.1
+  <item>cp1252 (windows-1252) - since 1.4.3 and 1.5.0
+  <item>cp1253 (windows-1253) - since 1.2.11 and 1.4.0
+  <item>cp1254 (windows-1254) - since 1.2.10 and 1.4.0
+  <item>cp1255 (windows-1255) - since 1.4.3 and 1.5.0
+  <item>cp1256 (windows-1256) - since 1.4.3 and 1.5.0
+  <item>cp1257 (windows-1257) - since 1.2.10 and 1.4.0
+  <item>cp1258 (windows-1258) - since 1.4.3 and 1.5.0
+  <item>cp855 (ibm855) - since 1.4.3 and 1.5.0
+  <item>cp866 (ibm866) - since 1.4.3 and 1.5.0
+  <item>iso-8859-1 - since 1.0
+  <item>iso-8859-2 - since 1.0
+  <item>iso-8859-3 - since 1.4.3 and 1.5.0
+  <item>iso-8859-4 - since 1.2.10 and 1.3.2
+  <item>iso-8859-5 - since 1.2.11 and 1.4.0
+  <item>iso-8859-6 - since 1.4.3 and 1.5.0
+  <item>iso-8859-7 - since 1.0
+  <item>iso-8859-8 - since 1.4.3 and 1.5.0
+  <item>iso-8859-9 - since 1.2.10 and 1.4.0
+  <item>iso-8859-10 - since 1.4.3 and 1.5.0
+  <item>iso-8859-11 - since 1.4.3 and 1.5.0
+  <item>iso-8859-13 - since 1.2.10 and 1.3.2
+  <item>iso-8859-14 - since 1.4.3 and 1.5.0
+  <item>iso-8859-15 - since 1.0
+  <item>iso-8859-16 - since 1.4.3 and 1.5.0
+  <item>iso-ir-111 - since 1.4.3 and 1.5.0
+  <item>koi8-r - since 1.2.1
+  <item>koi8-u - since 1.2.11 and 1.4.1
+  <item>ns-4551_1 - since 1.0
+  <item>tis-620 - since 1.4.3 and 1.5.0
+  <item>us-ascii - since 1.4.4
+  <item>utf-8 - two and three byte characters are supported since 1.2.11 and
+  1.4.0. Four byte characters are supported since 1.4.4 and 1.5.1. Five and six
+  byte character decoding is available since 1.4.4 and 1.5.1, but not enabled
+  by default.
 </itemize>
+
+Decoding functions might break in some SquirrelMail versions, if PHP
+mbstring.func_overload setting is enabled.
 
 big-5, euc-kr and gb2312 characters can be displayed by Chinese and Korean
 translations that use those character sets. Japanese translation can display
@@ -1334,7 +1359,9 @@ iso-2022-jp, euc-jp and shiftjis character sets. Other Eastern characters will
 be displayed correctly only when character codes match big-5, euc-kr or gb2312
 character sets.
 
-Other character sets can be decoded with special decoding functions.
+Other character sets can be decoded with special decoding functions. These
+functions are loaded automatically since 1.4.4 and 1.5.1, if appropriate files
+are present in functions/decode directory.
 
 <sect2>Message composition
 <p>
@@ -1879,7 +1906,54 @@ Comments:
   <item>IMAP server supports server side sorting and threading.
 </itemize>
 
-Site URL: <url url="http://www.dovecot.org" name="http://www.dovecot.org">
+<sect1>bincimap preset
+<p>
+Preset is used with Binc IMAP server. Available since SquirrelMail 1.5.1. 
+Due to available storage backend configuration options it is impossible 
+to create single preset, which covers all setups.
+
+<sect2>Default (1.2.13) configuration with Maildir++ depot and / delimiter
+<p>
+<itemize>
+  <item>imap_server_type = bincimap (is used to handle INBOX in folder management)
+  <item>default_folder_prefix = INBOX/
+  <item>trash_folder = Trash
+  <item>sent_folder = Sent
+  <item>draft_folder = Drafts
+  <item>show_prefix_option = false
+  <item>default_sub_of_inbox = false
+  <item>show_contain_subfolders_option = false
+  <item>optional_delimiter = / (can be set to 'detect')
+  <item>delete_folder = true
+  <item>force_username_lowercase = false (depends on checkpassword)
+</itemize>
+
+<sect2>Default (1.3.4) configuration with IMAPdir depot - same as dovecot ?
+<p>
+<itemize>
+  <item>imap_server_type = bincimap
+  <item>default_folder_prefix = none (is set to empty string)
+  <item>trash_folder = Trash
+  <item>sent_folder = Sent
+  <item>draft_folder = Drafts
+  <item>show_prefix_option = false
+  <item>default_sub_of_inbox = false
+  <item>show_contain_subfolders_option = false
+  <item>optional_delimiter = / (can be set to 'detect')
+  <item>delete_folder = true
+  <item>force_username_lowercase = false (depends on checkpassword)
+</itemize>
+
+<sect2>Configuration with Maildir++ depot and . delimiter
+<p>
+Use courier preset.
+
+<sect2>Comments
+<p>
+<itemize>
+  <item>IMAP server does not support server side sorting and threading.
+  <item>Plain text logins are disabled by default.
+</itemize>
 
 <sect>Links
 <p>
@@ -1933,5 +2007,7 @@ List of sites and projects related to SquirrelMail
   <item><url url="http://www.courier-mta.org" name="Courier">
   <item><url url="http://asg.web.cmu.edu/cyrus/" name="Cyrus">
   <item><url url="http://www.washington.edu/imap/" name="UW IMAP">
+  <item><url url="http://www.bincimap.org" name="Binc IMAP">
+  <item><url url="http://www.dovecot.org" name="Dovecot">
 </itemize>
 </article>
