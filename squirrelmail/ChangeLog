@@ -44,6 +44,8 @@ Version 1.4.6 - CVS
   - Focus on compose screen no longer shifts automatically if user has manually
     focused somewhere herself.
   - Fixed placement of abook_init hook.
+  - Fixed IMAP search command in filters plugin. Command was breaking
+    sqimap_mailbox_exists() check. Reported by Daniel Watts.
 
 Version 1.4.5 - 13 July 2005
 ----------------------------
