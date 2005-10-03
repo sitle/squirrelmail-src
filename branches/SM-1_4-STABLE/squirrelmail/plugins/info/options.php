@@ -32,7 +32,7 @@ $mailbox = 'INBOX';
  *
  * prevent use of plugin if it is not enabled
  */
-if (! is_plugin_enabled('info')) {
+if (! info_is_plugin_enabled('info')) {
     echo '<p align="center"><big>'.
         _("Plugin is disabled.").
         '</big></p></body></html>';
