@@ -46,6 +46,7 @@ Version 1.4.6 - CVS
   - Fixed placement of abook_init hook.
   - Fixed IMAP search command in filters plugin. Command was breaking
     sqimap_mailbox_exists() check. Reported by Daniel Watts.
+  - Solved function conflict between compatibility and info plugins.
 
 Version 1.4.5 - 13 July 2005
 ----------------------------
