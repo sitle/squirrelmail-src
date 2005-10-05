@@ -56,7 +56,7 @@ function print_response($response) {
 function info_is_plugin_enabled($plugin_name) {
     global $plugins;
 
-    if (! isset($plugins) || ! is_array($plugins) || empty($plugins))
+    if (empty($plugins) || ! is_array($plugins))
         return false;
     
     if ( in_array($plugin_name,$plugins) ) {
