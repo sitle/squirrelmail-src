@@ -1,0 +1,8 @@
+# watch control file for uscan
+
+# Compulsory line, this is a version 2 file
+version=2
+
+# Check downloads page on SquirrelMail site 
+# <Webpage URL> <string match>
+http://www.squirrelmail.org/download.php squirrelmail-decode-(.*)\.tar\.gz

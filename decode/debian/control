@@ -1,0 +1,18 @@
+Source: squirrelmail-decode
+Section: web
+Priority: optional
+Maintainer: Tomas Kuliavas <tokul@users.sourceforge.net>
+Build-Depends: debhelper (>= 4.0.0)
+Standards-Version: 3.6.1
+
+Package: squirrelmail-decode
+Architecture: all
+Depends: squirrelmail (>= 1.4.4)
+Description: SquirrelMail decoding functions
+ This package provides extra character decoding functions 
+ for SquirrelMail webmail interface. Functions are used 
+ to display message encoded in various foreign character sets.
+ .
+ Current package provides support of x-mac-* and some Eastern
+ character sets.
+
