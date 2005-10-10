@@ -51,6 +51,8 @@ Version 1.4.6 - CVS
   - Added character set conversion to html message parts and html
     attachments with character set information (#1258925). Original patch
     by Peter Draganov (#1195232).
+  - Fixed decoding of quoted-printable text in decodeBody function.
+    Reported by João Carlos Mendes Luís.
 
 Version 1.4.5 - 13 July 2005
 ----------------------------
