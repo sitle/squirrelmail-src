@@ -350,6 +350,7 @@ function formatBody($imap_stream, $message, $color, $wrap_at, $ent_num, $id, $ma
                         $body_message->header->getParameter('charset'));
             } else {
                 $body = magicHTML($body, $id, $message, $mailbox);
+                $body = charset_decode($body_message->header->getParameter('charset'),$body,false,true);
             }
         } else {
             translateText($body, $wrap_at,
