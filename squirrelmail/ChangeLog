@@ -47,6 +47,10 @@ Version 1.4.6 - CVS
   - Fixed IMAP search command in filters plugin. Command was breaking
     sqimap_mailbox_exists() check. Reported by Daniel Watts.
   - Solved function conflict between compatibility and info plugins.
+  - Added PHP register_globals check to configuration test utility.
+  - Added character set conversion to html message parts and html
+    attachments with character set information (#1258925). Original patch
+    by Peter Draganov (#1195232).
 
 Version 1.4.5 - 13 July 2005
 ----------------------------
