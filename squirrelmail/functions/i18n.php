@@ -52,8 +52,24 @@ function sq_setlocale($category,$locale) {
     return $ret;
 }
 
-/* Decodes a string to the internal encoding from the given charset */
-function charset_decode ($charset, $string, $force_decode=false) {
+/**
+ * Converts string from given charset to charset, that can be displayed by user translation.
+ *
+ * Function by default returns html encoded strings, if translation uses different encoding.
+ * If Japanese translation is used - function returns string converted to euc-jp
+ * If $charset is not supported - function returns unconverted string.
+ *
+ * sanitizing of html tags is also done by this function.
+ *
+ * @param string $charset
+ * @param string $string Text to be decoded
+ * @param boolean $force_decode converts string to html without $charset!=$default_charset check.
+ * Argument is available since 1.5.1 and 1.4.5.
+ * @param boolean $save_html disables htmlspecialchars() in order to preserve 
+ *  html formating. Use with care. Available since 1.5.1 and 1.4.6
+ * @return string decoded string
+ */
+function charset_decode ($charset, $string, $force_decode=false, $save_html=false) {
     global $languages, $squirrelmail_language, $default_charset;
 
     if (isset($languages[$squirrelmail_language]['XTRA_CODE']) &&
@@ -62,8 +78,7 @@ function charset_decode ($charset, $string, $force_decode=false) {
     }
 
     /* All HTML special characters are 7 bit and can be replaced first */
-
-    $string = htmlspecialchars ($string);
+    if (! $save_html) $string = htmlspecialchars ($string);
     $charset = strtolower($charset);
 
     set_my_charset() ;
