@@ -313,6 +313,7 @@ $default_use_javascript_addr_book = 'false' if (! $default_use_javascript_addr_b
 
 # Added in 1.4.4
 $lossy_encoding = 'false'               if ( !$lossy_encoding );
+$addrbook_global_dsn = ''               if ( !$addrbook_global_dsn );
 $addrbook_global_table = 'global_abook' if ( !$addrbook_global_table );
 $addrbook_global_writeable = 'false'    if ( !$addrbook_global_writeable );
 $addrbook_global_listing = 'false'      if ( !$addrbook_global_listing );

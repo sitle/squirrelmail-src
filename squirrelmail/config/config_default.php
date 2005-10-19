@@ -774,6 +774,19 @@ $theme[43]['NAME'] = 'Simple Purple';
  */
 $default_use_javascript_addr_book = false;
 
+/**
+ * Shared filebased address book
+ * @global string $abook_global_file
+ * @since 1.5.1 and 1.4.4
+ */
+$abook_global_file = '';
+
+/**
+ * Writing into shared address book control
+ * @global bool $abook_global_file_writeable
+ * @since 1.5.1 and 1.4.4
+ */
+$abook_global_file_writeable = false;
 
 /**
  * MOTD
@@ -820,6 +833,32 @@ $prefs_table = 'userprefs';
 $prefs_key_field = 'prefkey';
 $prefs_user_field = 'user';
 $prefs_val_field = 'prefval';
+
+/*** Global sql database options ***/
+/**
+ * DSN of global address book database
+ * @global string $addrbook_global_dsn
+ * @since 1.5.1 and 1.4.4
+ */
+$addrbook_global_dsn = '';
+/**
+ * Table used for global database address book
+ * @global string $addrbook_global_table
+ * @since 1.5.1 and 1.4.4
+ */
+$addrbook_global_table = 'global_abook';
+/**
+ * Control writing into global database address book
+ * @global boolean $addrbook_global_writeable
+ * @since 1.5.1 and 1.4.4
+ */
+$addrbook_global_writeable = false;
+/**
+ * Control listing of global database address book
+ * @global boolean $addrbook_global_listing
+ * @since 1.5.1 and 1.4.4
+ */
+$addrbook_global_listing = false;
 
 /*** Language settings ***/
 /**
