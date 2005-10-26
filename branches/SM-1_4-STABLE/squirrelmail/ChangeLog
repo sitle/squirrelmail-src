@@ -35,11 +35,11 @@ Version 1.4.6 - CVS
     function caused E_NOTICE warnings in PHP 4.4.0. Reported by Cor
     Bosman.
   - Fixed address book file and database backend error messages broken by
-    CAN-2005-1769 patches.
+    CVE-2005-1769 patches.
   - Fixed compose form redirection in spamcop plugin.
   - "Toggle all" pointless when folder list empty (#1267079).
   - Readded options_identity_process and options_identity_renumber hooks
-    broken by CAN-2005-2095 fixes.
+    broken by CVE-2005-2095 fixes.
   - Removed duplicate generic_header hook call in src/right_main.php (#1269189).
   - Focus on compose screen no longer shifts automatically if user has manually
     focused somewhere herself.
@@ -70,7 +70,7 @@ Version 1.4.5 - 13 July 2005
   - Allowed use of wildcards in LDAP address book search expressions. Issue
     is specific to 1.4.5cvs and not present in older versions.
   - Security: Rewrite advanced identity handling to remove call to extraction
-    of all POST values. [CAN-2005-2095]
+    of all POST values. [CVE-2005-2095]
   - Moved imap_logout call in view_header.php to the end of the script after
     displayPageheader is called.
 
@@ -194,7 +194,7 @@ Version 1.4.5 Release Candidate 1 - 15 June 2005
   - Disallow access to the administrator plugin screens when the plugin is
     not enabled in the config.
   - Security: fix several cross site scripting (XSS) attacks. Thanks go to
-    Martijn Brinkers for finding a lot of these. [CAN-2005-1769]
+    Martijn Brinkers for finding a lot of these. [CVE-2005-1769]
 
 Version 1.4.4 - 21 January 2005
 -------------------------------
@@ -210,14 +210,14 @@ Version 1.4.4 - 21 January 2005
     which was introduced in 1.4.4-RC1 (#1076733).
   - Disabled unmaintained Thai translation.
   - Security: Added hook for Preferences Backend to resolve potential
-    insecure file inclusions. [CAN-2005-0075]
+    insecure file inclusions. [CVE-2005-0075]
   - Set up language before outputing errors in auth.php and signout.php
     to make them appear in the correct language.
   - Security: Fix potential file inclusion issues in src/webmail.php.
-    [CAN-2005-0103]
+    [CVE-2005-0103]
   - Fixed minor bug in DMN plugin that caused it to not correctly set
     lastTargetMailbox.
-  - Security: Fix possible XSS issues in src/webmail.php. [CAN-2005-0104]
+  - Security: Fix possible XSS issues in src/webmail.php. [CVE-2005-0104]
   - Correct undefined variable usage in src/webmail.php.
 
 Version 1.4.4 RC1 - 31 December 2004
@@ -277,7 +277,7 @@ Version 1.4.4 RC1 - 31 December 2004
     rules/20_head_tests.cf.
   - When replying to message with a " in the subject, the " was a replaced with a '.
   - Added Bengali translation support.
-  - Security: Fixed XSS exploit in decodeHeader function. [CAN-2004-1036]
+  - Security: Fixed XSS exploit in decodeHeader function. [CVE-2004-1036]
   - Fixed error output in SquirrelSpell plugin (patch courtesy David Boone).
   - Fixed bug in IMAP read routines that treated "0" as false instead of
     a string (patch courtesy Maurice Makaay).
@@ -355,7 +355,7 @@ Version 1.4.3-RC1 - 10 May 2004
   - New hook function: boolean_hook_function()  Used for true/false hooks.
   - Fixed special_mailbox hook to allow more than one hooked plugin (#870365).
   - Added new reply citation to include date and author.
-  - Security: Fix some XSS issues. [CAN-2004-0519, CAN-2004-0520]
+  - Security: Fix some XSS issues. [CVE-2004-0519, CVE-2004-0520]
   - Norwegian Bokmal translation uses nb_NO.
   - Improve display of some unparsable/absent dates (#891354).
   - Added non-anonymous LDAP bind and bind protocol patches from devel.
@@ -383,7 +383,7 @@ Version 1.4.3-RC1 - 10 May 2004
   - Use Special Folder Color config option works again (#931956).
   - In POP3-class, be more liberal regarding RFC-incompliant POP3-servers.
   - Security: fix SQL injection vulnerability in addressbook.
-    [CAN-2004-0521]
+    [CVE-2004-0521]
 
 Version 1.4.2 - 1 October 2003
 ------------------------------
@@ -922,7 +922,7 @@ Version 1.0.6 -- April 19, 2001
 Version 1.0.5 -- April 17, 2001
 -------------------------------
   - MAJOR security issues addressed.  Please upgrade as soon as possible.
-    [CAN-2001-1159]
+    [CVE-2001-1159]
   - Downloading attachments should work better due to a tip by Ray Black III.
   - Fixed bug with drop-down folder list not containing INBOX
   - Added Swedish help files Teemu Junnila <teejun@vallcom.com>
