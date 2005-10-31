@@ -1,9 +1,9 @@
 <?php
 /**
- * decode/euc_kr.php
+ * SquirrelMail GB18030 decoding functions
  *
- * This file contains euc-kr decoding function that is needed to read
- * euc-kr encoded mails in non-euc-kr locale.
+ * This file contains gb18030 decoding function that is needed to read
+ * gb18030 encoded mails in non-gb18030 locale.
  *
  * @copyright (c) 2005 The SquirrelMail Project Team
  * @license http://opensource.org/licenses/gpl-license.php GNU Public License
@@ -13,21 +13,23 @@
  */
 
 /**
- * Decode euc-kr encoded string
- * @param string $string euc-kr string
+ * Decode gb18030 encoded string
+ * @param string $string gb18030 string
  * @return string $string decoded string
  */
-function charset_decode_euc_kr ($string) {
+function charset_decode_gb18030 ($string) {
     // global $aggressive_decoding;
 
     // don't do decoding when there are no 8bit symbols
-    if (! sq_is8bit($string,'euc-kr'))
+    if (! sq_is8bit($string,'gb18030'))
         return $string;
 
     // this is CPU intensive task. Use recode functions if they are available.
     if (function_exists('recode_string')) {
+        // undo htmlspecial chars
         $string=str_replace(array('&amp;','&quot;','&lt;','&gt;'),array('&','"','<','>'),$string);
-        return recode_string("euc-kr..html",$string);
+
+        return recode_string("gb18030..html",$string);
     }
 
     /*
@@ -36,9 +38,19 @@ function charset_decode_euc_kr ($string) {
      */
     if (function_exists('iconv') && file_exists(SM_PATH . 'functions/decode/utf_8.php') ) {
         include_once(SM_PATH . 'functions/decode/utf_8.php');
-        $string = iconv('euc-kr','utf-8',$string);
+        $string = iconv('gb18030','utf-8',$string);
         return charset_decode_utf_8($string);
     }
 
+    // try mbstring
+    if (function_exists('mbstring_convert_encoding') && 
+        function_exists('sq_mb_list_encodings') &&
+        check_php_version(4,3,0) &&
+        in_array('gb18030',sq_mb_list_encodings())) {
+        return mbstring_convert_encoding($string,'HTML-ENTITIES','GB18030');
+    }
+
+    // pure php decoding is not implemented.
     return $string;
+}
 ?>
