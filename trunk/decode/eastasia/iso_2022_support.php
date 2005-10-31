@@ -45,7 +45,7 @@
  * Bogus function for iso-2022-support charset
  */
 function charset_decode_iso_2022_support($string) {
-  return _("Unsupported charset");
+  return 'Unsupported charset';
 }
       
 /**
@@ -70,7 +70,8 @@ function get_iso_2022_symbol($string,$index,$enc_table) {
 }
 
 /**
- *
+ * @param string $enc_table iso-2022 encoding table
+ * @return integer number of bytes used by characters in given encoding table
  */
 function get_iso_2022_symbolsize($enc_table) {
     switch ($enc_table) {

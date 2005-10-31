@@ -49,6 +49,10 @@ function charset_decode_euc_jp($string) {
     if ($squirrelmail_language=='ja_JP')
         return $string;
 
+    // don't do decoding when there are no 8bit symbols
+    if (! sq_is8bit($string,'euc-jp'))
+        return $string;
+
     // this is CPU intensive task. Use recode functions if they are available. 
     if (function_exists('recode_string')) {
         $string=str_replace(array('&amp;','&quot;','&lt;','&gt;'),array('&','"','<','>'),$string);

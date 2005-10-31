@@ -11,14 +11,6 @@
  * @subpackage eastasia
  */
 
-/** @ignore */
-if (! defined('SM_PATH')) define('SM_PATH','../../');
-
-/**
- * Include common iso-2022-xx functions
- */
-include_once(SM_PATH . 'functions/decode/iso_2022_support.php');
-
 /**
  * Converts iso-2022-kr texts
  * @param string $string iso-2022-kr encoded string
@@ -48,6 +40,11 @@ function charset_decode_iso_2022_kr ($string) {
     // aggressive decoding disabled
     if (! isset($aggressive_decoding) || ! $aggressive_decoding )
         return htmlspecialchars($string);
+
+    /**
+     * Include common iso-2022-xx functions
+     */
+    include_once(SM_PATH . 'functions/decode/iso_2022_support.php');
 
     $index=0;
     $ret='';

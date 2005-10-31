@@ -51,6 +51,16 @@ function charset_decode_gb2312 ($string) {
         return recode_string("gb2312..html",$string);
     }
 
+    /*
+     * iconv does not support html target, but internal utf-8 decoding is faster 
+     * than pure php implementation. 
+     */
+    if (function_exists('iconv') && file_exists(SM_PATH . 'functions/decode/utf_8.php') ) {
+        include_once(SM_PATH . 'functions/decode/utf_8.php');
+        $string = iconv('gb2312','utf-8',$string);
+        return charset_decode_utf_8($string);
+    }
+
     // try mbstring
     // TODO: check sanitizing of html special chars.
     if (function_exists('mbstring_convert_encoding') && 
