@@ -178,7 +178,8 @@ function load_optpage_data_display() {
         'caption' => _("Length of From/To Field (0 for full)"),
         'type'    => SMOPT_TYPE_INTEGER,
         'refresh' => SMOPT_REFRESH_NONE,
-        'size'    => SMOPT_SIZE_TINY
+        'size'    => SMOPT_SIZE_TINY,
+        'initial_value' => 55
     );
 
     $optvals[SMOPT_GRP_MAILBOX][] = array(
@@ -186,7 +187,8 @@ function load_optpage_data_display() {
         'caption' => _("Length of Subject Field (0 for full)"),
         'type'    => SMOPT_TYPE_INTEGER,
         'refresh' => SMOPT_REFRESH_NONE,
-        'size'    => SMOPT_SIZE_TINY
+        'size'    => SMOPT_SIZE_TINY,
+        'initial_value' => 55
     );
 
     /*** Load the General Options into the array ***/
