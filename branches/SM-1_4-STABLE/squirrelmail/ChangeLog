@@ -55,6 +55,11 @@ Version 1.4.6 - CVS
     Reported by João Carlos Mendes Luís.
   - Added CR trimming to SquirrelSpell plugin in order to fix problems on
     Windows systems.
+  - Backported truncateWithEntities function.
+  - Backported user definable truncation widths on subject and sender
+    fields.
+  - Load default value for INTERNALDATE sorting to be ON to match initial
+    preference page if user has not set anything.
 
 Version 1.4.5 - 13 July 2005
 ----------------------------
