@@ -37,8 +37,8 @@ function charset_decode_iso_2022_kr ($string) {
         return charset_decode_utf_8($string);
     }
 
-    // aggressive decoding disabled
-    if (! isset($aggressive_decoding) || ! $aggressive_decoding )
+    // aggressive decoding disabled. iso-2022-kr is not supported by iso_2022_support.php
+    //    if (! isset($aggressive_decoding) || ! $aggressive_decoding )
         return htmlspecialchars($string);
 
     /**

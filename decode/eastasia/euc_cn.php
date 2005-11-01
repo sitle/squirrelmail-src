@@ -43,11 +43,11 @@ function charset_decode_euc_cn ($string) {
     }
 
     // try mbstring
-    if (function_exists('mbstring_convert_encoding') && 
+    if (function_exists('mb_convert_encoding') && 
         function_exists('sq_mb_list_encodings') &&
         check_php_version(4,3,0) &&
         in_array('euc-cn',sq_mb_list_encodings())) {
-        return mbstring_convert_encoding($string,'HTML-ENTITIES','EUC-CN');
+        return mb_convert_encoding($string,'HTML-ENTITIES','EUC-CN');
     }
 
     // pure php decoding is not implemented.

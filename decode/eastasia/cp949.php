@@ -50,6 +50,23 @@ function charset_decode_cp949 ($string) {
         return recode_string("cp949..html",$string);
     }
 
+    /*
+     * iconv does not support html target, but internal utf-8 decoding is faster 
+     * than pure php implementation. 
+     */
+    if (function_exists('iconv') && file_exists(SM_PATH . 'functions/decode/utf_8.php') ) {
+        include_once(SM_PATH . 'functions/decode/utf_8.php');
+        $string = iconv('cp949','utf-8',$string);
+        return charset_decode_utf_8($string);
+    }
+
+    // try mbstring
+    if (function_exists('mb_convert_encoding') && 
+        function_exists('sq_mb_list_encodings') &&
+        check_php_version(4,3,0) &&
+        in_array('uhc',sq_mb_list_encodings())) {
+        return mb_convert_encoding($string,'HTML-ENTITIES','UHC');
+    }
 
     if (!$aggressive_decoding) return $string;
 
