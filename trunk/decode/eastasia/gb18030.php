@@ -42,13 +42,7 @@ function charset_decode_gb18030 ($string) {
         return charset_decode_utf_8($string);
     }
 
-    // try mbstring
-    if (function_exists('mbstring_convert_encoding') && 
-        function_exists('sq_mb_list_encodings') &&
-        check_php_version(4,3,0) &&
-        in_array('gb18030',sq_mb_list_encodings())) {
-        return mbstring_convert_encoding($string,'HTML-ENTITIES','GB18030');
-    }
+    // mbstring does not support gb18030
 
     // pure php decoding is not implemented.
     return $string;

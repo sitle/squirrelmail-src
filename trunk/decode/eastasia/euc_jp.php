@@ -59,13 +59,23 @@ function charset_decode_euc_jp($string) {
         return recode_string("euc-jp..html",$string);
     }
 
+    /**
+     * iconv does not support html target, but internal utf-8 decoding is 
+     * faster than pure php implementation.
+     */
+    if (function_exists('iconv') && file_exists(SM_PATH . 'functions/decode/utf_8.php') ) {
+        include_once(SM_PATH . 'functions/decode/utf_8.php');
+        $string = iconv('euc-jp','utf-8',$string);
+        return charset_decode_utf_8($string);
+    }
+
     // try mbstring
     // TODO: check sanitizing of html special chars.
-    if (function_exists('mbstring_convert_encoding') && 
+    if (function_exists('mb_convert_encoding') && 
         function_exists('sq_mb_list_encodings') &&
         check_php_version(4,3,0) &&
         in_array('euc-jp',sq_mb_list_encodings())) {
-        return mbstring_convert_encoding($string,'HTML-ENTITIES','EUC-JP');
+        return mb_convert_encoding($string,'HTML-ENTITIES','EUC-JP');
     }
 
     if (!$aggressive_decoding) return $string;

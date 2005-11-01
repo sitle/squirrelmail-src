@@ -17,7 +17,7 @@
  * @return string html encoded text
  */
 function charset_decode_iso_2022_jp ($string) {
-    global $squirrelmail_language;
+    global $squirrelmail_language, $aggressive_decoding;
 
     // ja_JP uses own functions
     if ($squirrelmail_language=='ja_JP')
@@ -40,15 +40,6 @@ function charset_decode_iso_2022_jp ($string) {
         // redo htmlspecial chars
         $string = htmlspecialchars($string);
         return charset_decode_utf_8($string);
-    }
-
-    // try mbstring
-    // TODO: check sanitizing of html special chars.
-    if (function_exists('mbstring_convert_encoding') && 
-        function_exists('sq_mb_list_encodings') &&
-        check_php_version(4,3,0) &&
-        in_array('iso-2022-jp',sq_mb_list_encodings())) {
-        return mbstring_convert_encoding($string,'HTML-ENTITIES','ISO-2022-JP');
     }
 
     // aggressive decoding disabled

@@ -40,5 +40,14 @@ function charset_decode_euc_kr ($string) {
         return charset_decode_utf_8($string);
     }
 
+    // try mbstring
+    if (function_exists('mb_convert_encoding') && 
+        function_exists('sq_mb_list_encodings') &&
+        check_php_version(4,3,0) &&
+        in_array('euc-kr',sq_mb_list_encodings())) {
+        return mb_convert_encoding($string,'HTML-ENTITIES','EUC-KR');
+    }
+
     return $string;
+}
 ?>
