@@ -142,7 +142,7 @@ function sqUnWordWrap(&$body) {
  * @return string  Trimmed string
  */
 function truncateWithEntities($s, $iTrimAt) {
-    global $languages, $squirrelmail_languages;
+    global $languages, $squirrelmail_language;
 
     $ent_strlen = strlen($s);
     if (($iTrimAt <= 0) || ($ent_strlen <= $iTrimAt))
