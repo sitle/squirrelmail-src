@@ -516,7 +516,7 @@ function sqimap_get_small_header_list($imap_stream, $msg_list, $show_num=false) 
         $messages["$msg_list[$i]"] = array();
     }
 
-    $internaldate = getPref($data_dir, $username, 'internal_date_sort');
+    $internaldate = getPref($data_dir, $username, 'internal_date_sort', SMPREF_ON);
     if ($internaldate) {
         $query = "FETCH $msgs_str (FLAGS UID RFC822.SIZE INTERNALDATE BODY.PEEK[HEADER.FIELDS (Date To Cc From Subject X-Priority Importance Priority Content-Type)])";
     } else {

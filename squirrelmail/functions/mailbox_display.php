@@ -52,7 +52,10 @@ function printMessageInfo($imapConnection, $t, $not_last=true, $key, $mailbox,
            $thread_sort_messages, /* thread sorting on/off */
            $server_sort_order, /* sort value when using server-sorting */
            $row_count,
-           $allow_server_sort; /* enable/disable server-side sorting */
+           $allow_server_sort, /* enable/disable server-side sorting */
+           $truncate_subject,
+           $truncate_sender;
+
     $color_string = $color[4];
 
     if ($GLOBALS['alt_index_colors']) {
@@ -195,8 +198,8 @@ function printMessageInfo($imapConnection, $t, $not_last=true, $key, $mailbox,
     $checked = ($checkall == 1) ? ' CHECKED' : '';
     $col = 0;
     $msg['SUBJECT'] = decodeHeader($msg['SUBJECT']);
-    $subject = processSubject($msg['SUBJECT'], $indent_array[$msg['ID']]);
-    $subject = str_replace('&nbsp;',' ',$subject);
+//    $subject = processSubject($msg['SUBJECT'], $indent_array[$msg['ID']]);
+    $subject = truncateWithEntities(str_replace('&nbsp;',' ',$msg['SUBJECT']), $truncate_subject);
     if (sizeof($index_order)) {
         foreach ($index_order as $index_order_part) {
             switch ($index_order_part) {
@@ -210,7 +213,7 @@ function printMessageInfo($imapConnection, $t, $not_last=true, $key, $mailbox,
                 $from_xtra = '';
                 $from_xtra = 'title="' . $senderFrom . '"';
                 echo html_tag( 'td',
-                               $italic . $bold . $flag . $fontstr . $senderName .
+                               $italic . $bold . $flag . $fontstr . truncateWithEntities($senderName, $truncate_sender) .
                                $fontstr_end . $flag_end . $bold_end . $italic_end,
                                'left',
                                $hlt_color, $from_xtra );

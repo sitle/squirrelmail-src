@@ -135,6 +135,54 @@ function sqUnWordWrap(&$body) {
 }
 
 /**
+ * Truncates a string and take care of html encoded characters
+ *
+ * @param string  $s string to truncate
+ * @param int $iTrimAt Trim at nn characters
+ * @return string  Trimmed string
+ */
+function truncateWithEntities($s, $iTrimAt) {
+    global $languages, $squirrelmail_languages;
+
+    $ent_strlen = strlen($s);
+    if (($iTrimAt <= 0) || ($ent_strlen <= $iTrimAt))
+        return $s;
+
+
+    if (isset($languages[$squirrelmail_language]['XTRA_CODE']) &&
+        function_exists($languages[$squirrelmail_language]['XTRA_CODE'])) {
+            return $languages[$squirrelmail_language]['XTRA_CODE']('strimwidth', $s, $iTrimAt);
+    } else {
+        /*
+         * see if this is entities-encoded string
+         * If so, Iterate through the whole string, find out
+         * the real number of characters, and if more
+         * than $iTrimAt, substr with an updated trim value.
+         */
+        $trim_val = $iTrimAt;
+        $ent_offset = 0;
+        $ent_loc = 0;
+        while ( $ent_loc < $trim_val && (($ent_loc = strpos($s, '&', $ent_offset)) !== false) &&
+                (($ent_loc_end = strpos($s, ';', $ent_loc+3)) !== false) ) {
+            $trim_val += ($ent_loc_end-$ent_loc);
+            $ent_offset  = $ent_loc_end+1;
+        }
+
+        if (($trim_val > $iTrimAt) && ($ent_strlen > $trim_val) && (strpos($s,';',$trim_val) < ($trim_val + 6))) {
+            $i = strpos($s,';',$trim_val);
+            if ($i !== false) {
+                $trim_val = strpos($s,';',$trim_val)+1;
+            }
+        }
+        // only print '...' when we're actually dropping part of the subject
+        if ($ent_strlen <= $trim_val)
+            return $s;
+    }
+
+    return substr_replace($s, '...', $trim_val);
+}
+
+/**
  * If $haystack is a full mailbox name and $needle is the mailbox
  * separator character, returns the last part of the mailbox name.
  *
