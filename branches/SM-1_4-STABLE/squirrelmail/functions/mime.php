@@ -563,7 +563,7 @@ function decodeBody($body, $encoding) {
         /**
          * quoted_printable_decode() function is broken in older
          * php versions. Text with \r\n decoding was fixed only
-         * in php 4.3.0. Minimal code requirement 4.0.4 + 
+         * in php 4.3.0. Minimal code requirement 4.0.4 +
          * str_replace("\r\n", "\n", $body); call.
          */
         $body = quoted_printable_decode($body);
@@ -1481,39 +1481,46 @@ function sq_fixstyle($body, $pos, $message, $id, $mailbox){
     while (preg_match("/url\s*\(\s*[\'\"]?([^:]+):(.*)?[\'\"]?\s*\)/si", $content, $matches)) {
         $sProto = strtolower($matches[1]);
         switch ($sProto) {
-    /**
-     * Fix url('https*://.*) declarations but only if $view_unsafe_images
-     * is false.
-     */
-           case 'https':
-           case 'http':
-    if (!$view_unsafe_images){
-                 $sExpr = "/url\s*\(\s*([\'\"])\s*$sProto*:.*?([\'\"])\s*\)/si";
-                 $content = preg_replace($sExpr, "u\0r\0l(\\1$secremoveimg\\2)", $content);
-    }
-             break;
-    /**
-     * Fix urls that refer to cid:
-     */
-           case 'cid':
-             $cidurl = 'cid:'. $matches[2];
-        $httpurl = sq_cid2http($message, $id, $cidurl, $mailbox);
-        $content = preg_replace("|url\s*\(\s*$cidurl\s*\)|si",
-                                 "u\0r\0l($httpurl)", $content);
-             break;
-           default:
-             /**
-              * replace url with protocol other then the white list
-              * http,https and cid by an empty string.
-              */
-             $content = preg_replace("/url\s*\(\s*[\'\"]?([^:]+):(.*)?[\'\"]?\s*\)/si",
+            /**
+             * Fix url('https*://.*) declarations but only if $view_unsafe_images
+             * is false.
+             */
+            case 'https':
+            case 'http':
+                if (!$view_unsafe_images){
+
+                    $sExpr = "/url\s*\(\s*[\'\"]?\s*$sProto*:.*[\'\"]?\s*\)/si";
+                    $content = preg_replace($sExpr, "u\0r\0l(\\1$secremoveimg\\2)", $content);
+
+                } else {
+                    $content = preg_replace('/url/i',"u\0r\0l",$content);
+                }
+                break;
+
+            /**
+             * Fix urls that refer to cid:
+             */
+            case 'cid':
+                $cidurl = 'cid:'. $matches[2];
+                $httpurl = sq_cid2http($message, $id, $cidurl, $mailbox);
+                // escape parentheses that can modify the regular expression
+                $cidurl = str_replace(array('(',')'),array('\\(','\\)'),$cidurl);
+                $content = preg_replace("|url\s*\(\s*$cidurl\s*\)|si",
+                                        "u\0r\0l($httpurl)", $content);
+                break;
+            default:
+                /**
+                 * replace url with protocol other then the white list
+                 * http,https and cid by an empty string.
+                 */
+                $content = preg_replace("/url\s*\(\s*[\'\"]?([^:]+):(.*)?[\'\"]?\s*\)/si",
                                  "", $content);
-             break;
+                break;
+        }
+        break;
     }
-         break;
-     }
-     // remove NUL
-     $content = str_replace("\0", "", $content);
+    // remove NUL
+    $content = str_replace("\0", "", $content);
 
     /**
      * Remove any backslashes, entities, and extraneous whitespace.
