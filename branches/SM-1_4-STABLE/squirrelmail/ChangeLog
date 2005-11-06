@@ -63,6 +63,8 @@ Version 1.4.6 - CVS
   - E_NOTICE and unlink error message if user hits delete multiple times
     before compose page has reloaded.
   - Undefined variable in view_header.
+  - Undefined index offset in read_body when trying to calculate next/prev
+    links for attached messages.
 
 Version 1.4.5 - 13 July 2005
 ----------------------------
