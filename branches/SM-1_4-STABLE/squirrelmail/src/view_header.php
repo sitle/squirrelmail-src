@@ -29,6 +29,9 @@ function parse_viewheader($imapConnection,$id, $passed_ent_id) {
     global $uid_support;
 
     $header_full = array();
+    $header_output = array();
+
+
     if (!$passed_ent_id) {
         $read=sqimap_run_command ($imapConnection, "FETCH $id BODY[HEADER]", 
                               true, $a, $b, $uid_support);
@@ -38,6 +41,7 @@ function parse_viewheader($imapConnection,$id, $passed_ent_id) {
                               true, $a, $b, $uid_support);
     }    
     $cnum = 0;
+
     for ($i=1; $i < count($read); $i++) {
         $line = htmlspecialchars($read[$i]);
         switch (true) {
@@ -61,6 +65,7 @@ function parse_viewheader($imapConnection,$id, $passed_ent_id) {
                 break;
         }
     }
+
     for ($i=0; $i < count($second); $i = $j) {
         $f = (isset($first[$i]) ? $first[$i] : '');
         $s = (isset($second[$i]) ? nl2br($second[$i]) : ''); 
