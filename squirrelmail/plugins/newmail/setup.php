@@ -27,8 +27,17 @@
  * @subpackage new_mail
  */
 
-include_once(SM_PATH . 'functions/display_messages.php');
-
+/**
+ * Checks if mailbox contains new messages.
+ *
+ * @param stream $imapConnection
+ * @param string $mailbox FIXME: option is not used
+ * @param string $real_box unformated mailbox name
+ * @param string $delimeter FIXME: option is not used
+ * @param string $unseen FIXME: option is not used
+ * @param integer $total_new number of new messages
+ * @return bool true, if there are new messages
+ */
 function CheckNewMailboxSound($imapConnection, $mailbox, $real_box, $delimeter, $unseen, &$total_new) {
     global $folder_prefix, $trash_folder, $sent_folder,
         $color, $move_to_sent, $move_to_trash,
@@ -150,6 +159,8 @@ function newmail_plugin() {
         $newmail_media, $newmail_enable, $newmail_popup,
         $newmail_recent, $newmail_changetitle, $imapConnection, $PHP_SELF;
 
+    include_once(SM_PATH . 'functions/display_messages.php');
+
     if ($newmail_enable == 'on' ||
         $newmail_popup == 'on' ||
         $newmail_changetitle) {
@@ -221,6 +232,7 @@ function newmail_plugin() {
         }
 
         if ($totalNew > 0 && $newmail_enable == 'on' && $newmail_media != '' ) {
+            $newmail_media=sqm_baseuri().'plugins/newmail/sounds/'.basename($newmail_media);
             echo '<embed src="'.htmlspecialchars($newmail_media)
                 ."\" hidden=\"true\" autostart=\"true\" width=\"2\" height=\"2\">\n";
         }
