@@ -70,6 +70,8 @@ Version 1.4.6 - CVS
     charsets. Fix requires PHP with mbstring support. If mbstring support
     is not present or character set is not supported by mbstring
     extension, fixes are not applied.
+  - Rebuild URL to sound file in newmail plugin when sound file is played
+    (#1233530).
 
 Version 1.4.5 - 13 July 2005
 ----------------------------
