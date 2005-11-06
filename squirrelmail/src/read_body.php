@@ -591,7 +591,7 @@ function formatMenubar($mailbox, $passed_id, $passed_ent_id, $message, $mbx_resp
         }
 
         $prev_link = _("Previous");
-        if($entities[$passed_ent_id] > 1) {
+        if (!empty($entities[$passed_ent_id]) && ($entities[$passed_ent_id] > 1)) {
             $prev_ent_id = $entity_count[$entities[$passed_ent_id] - 1];
             $prev_link   = '<a href="'
                          . set_url_var($PHP_SELF, 'passed_ent_id', $prev_ent_id)
@@ -599,7 +599,7 @@ function formatMenubar($mailbox, $passed_id, $passed_ent_id, $message, $mbx_resp
         }
 
         $next_link = _("Next");
-        if($entities[$passed_ent_id] < $c) {
+        if (!empty($entities[$passed_ent_id]) && ($entities[$passed_ent_id] < $c)) {
             $next_ent_id = $entity_count[$entities[$passed_ent_id] + 1];
             $next_link   = '<a href="'
                          . set_url_var($PHP_SELF, 'passed_ent_id', $next_ent_id)
