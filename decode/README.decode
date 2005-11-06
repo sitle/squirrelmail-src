@@ -1,8 +1,8 @@
-This module contains extra decoding functions.
+This package contains extra decoding functions.
 
 Functions are enabled by copying files to SquirrelMail's 
 functions/decode/ directory. Requires SM 1.5.1 or SM 1.4.4.
 
 Some functions might need $aggressive_decoding option set to true,
-if php install does not have faster recode functions or html-entities
-support in mbstring.
+if php install does not have faster recode or iconv functions or 
+html-entities support in mbstring.
