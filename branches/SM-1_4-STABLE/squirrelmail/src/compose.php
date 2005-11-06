@@ -410,10 +410,10 @@ if ($send) {
             if( $line <> '-- ' ) {
                 $line = rtrim($line);
             }
-            if (strlen($line) <= $editor_size + 1) {
+            if (sq_strlen($line, $default_charset) <= $editor_size + 1) {
                 $newBody .= $line . "\n";
             } else {
-                sqWordWrap($line, $editor_size);
+                sqWordWrap($line, $editor_size, $default_charset);
                 $newBody .= $line . "\n";
 
             }
@@ -757,7 +757,7 @@ function newMail ($mailbox='', $passed_id='', $passed_ent_id='', $action='', $se
                 $body = '';
                 for ($i=0; $i < $cnt; $i++) {
                     if (!ereg("^[>\\s]*$", $body_ary[$i])  || !$body_ary[$i]) {
-                        sqWordWrap($body_ary[$i], $editor_size );
+                        sqWordWrap($body_ary[$i], $editor_size, $default_charset );
                         $body .= $body_ary[$i] . "\n";
                     }
                     unset($body_ary[$i]);
@@ -811,7 +811,6 @@ function newMail ($mailbox='', $passed_id='', $passed_ent_id='', $action='', $se
                 }
                 $send_to = decodeHeader($send_to,false,false,true);
                 $subject = decodeHeader($orig_header->subject,false,false,true);
-//                $subject = str_replace('"', '&quot;', $subject);
                 $subject = trim($subject);
                 if (substr(strtolower($subject), 0, 3) != 're:') {
                     $subject = 'Re: ' . $subject;
@@ -823,7 +822,7 @@ function newMail ($mailbox='', $passed_id='', $passed_ent_id='', $action='', $se
                 $body = '';
                 $cnt = count($rewrap_body);
                 for ($i=0;$i<$cnt;$i++) {
-                    sqWordWrap($rewrap_body[$i], ($editor_size));
+                    sqWordWrap($rewrap_body[$i], $editor_size, $default_charset);
                     if (preg_match("/^(>+)/", $rewrap_body[$i], $matches)) {
                         $gt = $matches[1];
                         $body .= $body_quote . str_replace("\n", "\n" . $body_quote

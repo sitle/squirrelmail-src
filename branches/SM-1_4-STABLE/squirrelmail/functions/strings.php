@@ -42,7 +42,7 @@ require_once(SM_PATH . 'functions/global.php');
  * Specifically, &#039 comes up as 5 characters instead of 1.
  * This should not add newlines to the end of lines.
  */
-function sqWordWrap(&$line, $wrap) {
+function sqWordWrap(&$line, $wrap, $charset=null) {
     global $languages, $squirrelmail_language;
 
     if (isset($languages[$squirrelmail_language]['XTRA_CODE']) &&
@@ -67,9 +67,9 @@ function sqWordWrap(&$line, $wrap) {
     while ($i < count($words)) {
         /* Force one word to be on a line (minimum) */
         $line .= $words[$i];
-        $line_len = strlen($beginning_spaces) + strlen($words[$i]) + 2;
+        $line_len = strlen($beginning_spaces) + sq_strlen($words[$i],$charset) + 2;
         if (isset($words[$i + 1]))
-            $line_len += strlen($words[$i + 1]);
+            $line_len += sq_strlen($words[$i + 1],$charset);
         $i ++;
 
         /* Add more words (as long as they fit) */
@@ -77,7 +77,7 @@ function sqWordWrap(&$line, $wrap) {
             $line .= ' ' . $words[$i];
             $i++;
             if (isset($words[$i]))
-                $line_len += strlen($words[$i]) + 1;
+                $line_len += sq_strlen($words[$i],$charset) + 1;
             else
                 $line_len += 1;
         }
@@ -668,7 +668,7 @@ function sq_fwrite($fp, $string) {
  * @param string $string tested string
  * @param string $charset charset used in a string
  * @return bool true if 8bit symbols are detected
- * @since 1.4.4
+ * @since 1.5.1 and 1.4.4
  */
 function sq_is8bit($string,$charset='') {
     global $default_charset;
@@ -688,6 +688,140 @@ function sq_is8bit($string,$charset='') {
         $needle='/[\200-\237]|\240|[\241-\377]/';
     }
     return preg_match("$needle",$string);
+}
+
+/**
+ * Function returns number of characters in string.
+ *
+ * Returned number might be different from number of bytes in string,
+ * if $charset is multibyte charset. Detection depends on mbstring
+ * functions. If mbstring does not support tested multibyte charset,
+ * vanilla string length function is used.
+ * @param string $str string
+ * @param string $charset charset
+ * @since 1.5.1 and 1.4.6
+ * @return integer number of characters in string
+ */
+function sq_strlen($str, $charset=null){
+    // default option
+    if (is_null($charset)) return strlen($str);
+
+    // lowercase charset name
+    $charset=strtolower($charset);
+
+    // use automatic charset detection, if function call asks for it
+    if ($charset=='auto') {
+        global $default_charset;
+        set_my_charset();
+        $charset=$default_charset;
+    }
+
+    // Use mbstring only with listed charsets
+    $aList_of_mb_charsets=array('utf-8','big5','gb2312','gb18030','euc-jp','euc-cn','euc-tw','euc-kr');
+
+    // calculate string length according to charset
+    if (in_array($charset,$aList_of_mb_charsets) && in_array($charset,sq_mb_list_encodings())) {
+        $real_length = mb_strlen($str,$charset);
+    } else {
+        // own strlen detection code is removed because missing strpos,
+        // strtoupper and substr implementations break string wrapping.
+        $real_length=strlen($str);
+    }
+    return $real_length;
+}
+
+/**
+ * Replacement of mb_list_encodings function
+ *
+ * This function provides replacement for function that is available only
+ * in php 5.x. Function does not test all mbstring encodings. Only the ones
+ * that might be used in SM translations.
+ *
+ * Supported strings are stored in session in order to reduce number of
+ * mb_internal_encoding function calls.
+ *
+ * If mb_list_encodings() function is present, code uses it. Main difference
+ * from original function behaviour - array values are lowercased in order to
+ * simplify use of returned array in in_array() checks.
+ *
+ * If you want to test all mbstring encodings - fill $list_of_encodings
+ * array.
+ * @return array list of encodings supported by php mbstring extension
+ * @since 1.5.1 and 1.4.6
+ */
+function sq_mb_list_encodings() {
+    // check if mbstring extension is present
+    if (! function_exists('mb_internal_encoding'))
+        return array();
+
+    // php 5+ function
+    if (function_exists('mb_list_encodings')) {
+        $ret = mb_list_encodings();
+        array_walk($ret,'sq_lowercase_array_vals');
+        return $ret;
+    }
+
+    // don't try to test encodings, if they are already stored in session
+    if (sqgetGlobalVar('mb_supported_encodings',$mb_supported_encodings,SQ_SESSION))
+        return $mb_supported_encodings;
+
+    // save original encoding
+    $orig_encoding=mb_internal_encoding();
+
+    $list_of_encoding=array(
+        'pass',
+        'auto',
+        'ascii',
+        'jis',
+        'utf-8',
+        'sjis',
+        'euc-jp',
+        'iso-8859-1',
+        'iso-8859-2',
+        'iso-8859-7',
+        'iso-8859-9',
+        'iso-8859-15',
+        'koi8-r',
+        'koi8-u',
+        'big5',
+        'gb2312',
+        'gb18030',
+        'windows-1251',
+        'windows-1255',
+        'windows-1256',
+        'tis-620',
+        'iso-2022-jp',
+        'euc-cn',
+        'euc-kr',
+        'euc-tw',
+        'uhc',
+        'utf7-imap');
+
+    $supported_encodings=array();
+
+    foreach ($list_of_encoding as $encoding) {
+        // try setting encodings. suppress warning messages
+        if (@mb_internal_encoding($encoding))
+            $supported_encodings[]=$encoding;
+    }
+
+    // restore original encoding
+    mb_internal_encoding($orig_encoding);
+
+    // register list in session
+    sqsession_register($supported_encodings,'mb_supported_encodings');
+
+    return $supported_encodings;
+}
+
+/**
+ * Callback function used to lowercase array values.
+ * @param string $val array value
+ * @param mixed $key array key
+ * @since 1.5.1 and 1.4.6
+ */
+function sq_lowercase_array_vals(&$val,$key) {
+    $val = strtolower($val);
 }
 
 $PHP_SELF = php_self();

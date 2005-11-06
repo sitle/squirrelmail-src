@@ -253,7 +253,7 @@ function translateText(&$body, $wrap_at, $charset) {
     for ($i=0; $i < count($body_ary); $i++) {
         $line = $body_ary[$i];
         if (strlen($line) - 2 >= $wrap_at) {
-            sqWordWrap($line, $wrap_at);
+            sqWordWrap($line, $wrap_at, $charset);
         }
         $line = charset_decode($charset, $line);
         $line = str_replace("\t", '        ', $line);
@@ -716,6 +716,19 @@ function encodeHeader ($string) {
         return  $languages[$squirrelmail_language]['XTRA_CODE']('encodeheader', $string);
     }
 
+    // Use B encoding for multibyte charsets
+    $mb_charsets = array('utf-8','big5','gb2313','euc-kr');
+    if (in_array($default_charset,$mb_charsets) &&
+        in_array($default_charset,sq_mb_list_encodings()) &&
+        sq_is8bit($string)) {
+        return encodeHeaderBase64($string,$default_charset);
+    } elseif (in_array($default_charset,$mb_charsets) &&
+              sq_is8bit($string) &&
+              ! in_array($default_charset,sq_mb_list_encodings())) {
+        // Add E_USER_NOTICE error here (can cause 'Cannot add header information' warning in compose.php)
+        // trigger_error('encodeHeader: Multibyte character set unsupported by mbstring extension.',E_USER_NOTICE);
+    }
+
     // Encode only if the string contains 8-bit characters or =?
     $j = strlen($string);
     $max_l = 75 - strlen($default_charset) - 7;
@@ -827,6 +840,96 @@ function encodeHeader ($string) {
         $string = implode('',$aRet);
     }
     return $string;
+}
+
+/**
+ * Encodes string according to rfc2047 B encoding header formating rules
+ *
+ * It is recommended way to encode headers with character sets that store 
+ * symbols in more than one byte.
+ *
+ * Function requires mbstring support. If required mbstring functions are missing,
+ * function returns false and sets E_USER_WARNING level error message.
+ *
+ * Minimal requirements - php 4.0.6 with mbstring extension. Please note, 
+ * that mbstring functions will generate E_WARNING errors, if unsupported 
+ * character set is used. mb_encode_mimeheader function provided by php
+ * mbstring extension is not used in order to get better control of header
+ * encoding.
+ *
+ * Used php code functions - function_exists(), trigger_error(), strlen() 
+ * (is used with charset names and base64 strings). Used php mbstring 
+ * functions - mb_strlen and mb_substr.
+ *
+ * Related documents: rfc 2045 (BASE64 encoding), rfc 2047 (mime header 
+ * encoding), rfc 2822 (header folding)
+ *
+ * @param string $string header string that must be encoded
+ * @param string $charset character set. Must be supported by mbstring extension. 
+ * Use sq_mb_list_encodings() to detect supported charsets.
+ * @return string string encoded according to rfc2047 B encoding formating rules
+ * @since 1.5.1 and 1.4.6
+ */
+function encodeHeaderBase64($string,$charset) {
+    /**
+     * Check mbstring function requirements.
+     */
+    if (! function_exists('mb_strlen') ||
+        ! function_exists('mb_substr')) {
+        // set E_USER_WARNING
+        trigger_error('encodeHeaderBase64: Required mbstring functions are missing.',E_USER_WARNING);
+        // return false
+        return false;
+    }
+
+    // initial return array
+    $aRet = array();
+
+    /**
+     * header length = 75 symbols max (same as in encodeHeader)
+     * remove $charset length
+     * remove =? ? ?= (5 chars)
+     * remove 2 more chars (\r\n ?)
+     */
+    $iMaxLength = 75 - strlen($charset) - 7;
+
+    // set first character position
+    $iStartCharNum = 0;
+
+    // loop through all characters. count characters and not bytes.
+    for ($iCharNum=1; $iCharNum<=mb_strlen($string,$charset); $iCharNum++) {
+        // encode string from starting character to current character.
+        $encoded_string = base64_encode(mb_substr($string,$iStartCharNum,$iCharNum-$iStartCharNum,$charset));
+
+        // Check encoded string length
+        if(strlen($encoded_string)>$iMaxLength) {
+            // if string exceeds max length, reduce number of encoded characters and add encoded string part to array
+            $aRet[] = base64_encode(mb_substr($string,$iStartCharNum,$iCharNum-$iStartCharNum-1,$charset));
+
+            // set new starting character
+            $iStartCharNum = $iCharNum-1;
+
+            // encode last char (in case it is last character in string)
+            $encoded_string = base64_encode(mb_substr($string,$iStartCharNum,$iCharNum-$iStartCharNum,$charset));
+        } // if string is shorter than max length - add next character
+    }
+
+    // add last encoded string to array
+    $aRet[] = $encoded_string;
+
+    // set initial return string
+    $sRet = '';
+
+    // loop through encoded strings
+    foreach($aRet as $string) {
+        // TODO: Do we want to control EOL (end-of-line) marker
+        if ($sRet!='') $sRet.= " ";
+
+        // add header tags and encoded string to return string
+        $sRet.= '=?'.$charset.'?B?'.$string.'?=';
+    }
+
+    return $sRet;
 }
 
 /* This function trys to locate the entity_id of a specific mime element */
