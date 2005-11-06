@@ -298,7 +298,7 @@ function translateText(&$body, $wrap_at, $charset) {
  * everything needed, including HTML Tags, Attachments at the
  * bottom, etc.
  */
-function formatBody($imap_stream, $message, $color, $wrap_at, $ent_num, $id, $mailbox='INBOX') {
+function formatBody($imap_stream, $message, $color, $wrap_at, $ent_num, $id, $mailbox='INBOX',$clean=false) {
     /* This if statement checks for the entity to show as the
      * primary message. To add more of them, just put them in the
      * order that is their priority.
@@ -355,6 +355,11 @@ function formatBody($imap_stream, $message, $color, $wrap_at, $ent_num, $id, $ma
         } else {
             translateText($body, $wrap_at,
                     $body_message->header->getParameter('charset'));
+        }
+
+        // if this is the clean display (i.e. printer friendly), stop here.
+        if ( $clean ) {
+            return $body;
         }
 
         $link = 'passed_id=' . $id . '&amp;ent_id='.$ent_num.

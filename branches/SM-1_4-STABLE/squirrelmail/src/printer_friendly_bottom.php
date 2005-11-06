@@ -71,7 +71,7 @@ if ($show_html_default == 1) {
 $body = '';
 if ($ent_ar[0] != '') {
   for ($i = 0; $i < count($ent_ar); $i++) {
-     $body .= formatBody($imapConnection, $message, $color, $wrap_at, $ent_ar[$i], $passed_id, $mailbox);
+     $body .= formatBody($imapConnection, $message, $color, $wrap_at, $ent_ar[$i], $passed_id, $mailbox, true);
      $body .= '<hr noshade size="1" />';
   }
   $hookResults = do_hook('message_body', $body);

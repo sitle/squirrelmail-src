@@ -59,7 +59,7 @@ function translate_read_form() {
     $body = '';
     if ($trans_ar[0] != '') {
         for ($i = 0; $i < count($trans_ar); $i++) {
-            $body .= formatBody($imapConnection, $message, $color, $wrap_at, $trans_ar[$i], $passed_id, $mailbox);
+            $body .= formatBody($imapConnection, $message, $color, $wrap_at, $trans_ar[$i], $passed_id, $mailbox, true);
         }
         $hookResults = do_hook('message_body', $body);
         $body = $hookResults[1];
@@ -68,11 +68,6 @@ function translate_read_form() {
     }
 
     $new_body = $body;
-    $pos = strpos($new_body,
-                  '">'. _("Download this as a file") . '</a></center><br /></small>');
-    if (is_int($pos)) {
-        $new_body = substr($new_body, 0, $pos);
-    }
 
     $trans = get_html_translation_table(HTML_ENTITIES);
     $trans[' '] = '&nbsp;';
