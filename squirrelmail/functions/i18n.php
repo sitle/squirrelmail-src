@@ -16,6 +16,9 @@
  * @subpackage i18n
  */
 
+/** @ignore */
+if (!defined('SM_PATH')) define('SM_PATH','../');
+
 /** Everything uses global.php... */
 require_once(SM_PATH . 'functions/global.php');
 
@@ -164,8 +167,11 @@ function charset_convert($in_charset,$string,$out_charset,$htmlencode=true) {
 /**
  * Makes charset name suitable for decoding cycles
  *
+ * ks_c_5601_1987, x-euc-* and x-windows-* charsets are supported
+ * since 1.5.1/1.4.6
  * @param string $charset Name of charset
  * @return string $charset Adjusted name of charset
+ * @since 1.5.1 and 1.4.4
  */
 function fixcharset($charset) {
     /* remove minus and characters that might be used in paths from charset
@@ -173,6 +179,12 @@ function fixcharset($charset) {
      */
     $charset=preg_replace("/[-:.\/\\\]/",'_',$charset);
 
+    // OE ks_c_5601_1987 > cp949 
+    $charset=str_replace('ks_c_5601_1987','cp949',$charset);
+    // Moz x-euc-tw > euc-tw
+    $charset=str_replace('x_euc','euc',$charset);
+    // Moz x-windows-949 > cp949
+    $charset=str_replace('x_windows_','cp',$charset);
     // windows-125x and cp125x charsets
     $charset=str_replace('windows_','cp',$charset);
 
