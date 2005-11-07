@@ -231,7 +231,7 @@ function newmail_plugin() {
                 "</script>\n";
         }
 
-        if ($totalNew > 0 && $newmail_enable == 'on' && $newmail_media != '' ) {
+        if ($totalNew > 0 && $newmail_enable == 'on' && $newmail_media != '' && $newmail_media != '(none)') {
             $newmail_media=sqm_baseuri().'plugins/newmail/sounds/'.basename($newmail_media);
             echo '<embed src="'.htmlspecialchars($newmail_media)
                 ."\" hidden=\"true\" autostart=\"true\" width=\"2\" height=\"2\">\n";
