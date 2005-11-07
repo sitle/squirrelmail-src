@@ -107,6 +107,9 @@ $cc = decodeHeader($cc);
 $from = decodeHeader($from);
 $subject = decodeHeader($subject);
 
+// load attachments
+$attachments = pf_show_attachments($message,$ent_ar,$mailbox,$passed_id);
+
 // --end display setup--
 
 
@@ -141,9 +144,24 @@ echo '<body text="#000000" bgcolor="#FFFFFF" link="#000000" vlink="#000000" alin
      /* body */
      echo html_tag( 'tr',
          html_tag( 'td', '<hr noshade size="1" /><br />' . "\n" . $body, 'left', '', 'colspan="2"' )
-     ) . "\n" .
+                    ) . "\n";
 
-     '</table>' . "\n" .
+     if (! empty($attachments)) {
+         // attachments title
+         echo html_tag( 'tr',
+             html_tag( 'td','<b>'._("Attachments:").'</b>', 'left', '', 'colspan="2"' )
+         ) . "\n" ;
+         // list of attachments
+         echo html_tag( 'tr',
+             html_tag( 'td',$attachments, 'left', '', 'colspan="2"' )
+         ) . "\n" ;
+         // add separator line
+         echo html_tag( 'tr',
+             html_tag( 'td', '<hr style="height: 1px;" />', 'left', '', 'colspan="2"' )
+         ) . "\n" ;
+     }
+
+     echo '</table>' . "\n" .
      '</body></html>';
 
 /* --end browser output-- */
@@ -193,6 +211,83 @@ function pf_clean_string ( $unclean_string, $num_leading_spaces ) {
 
     return $clean_string;
 } /* end pf_clean_string() function */
+
+/**
+ * Displays attachment information
+ *
+ * Stripped version of formatAttachments() function from functions/mime.php.
+ * @param object $message SquirrelMail message object
+ * @param array $exclude_id message parts that are not attachments.
+ * @param string $mailbox mailbox name
+ * @param integer $id message id
+ * @since 1.5.1 and 1.4.6
+ * @return string html formated attachment information.
+ */
+function pf_show_attachments($message, $exclude_id, $mailbox, $id) {
+    global $where, $what, $startMessage, $color, $passed_ent_id;
+
+    $att_ar = $message->getAttachments($exclude_id);
+
+    if (!count($att_ar)) return '';
+
+    $attachments = '';
+
+    $urlMailbox = urlencode($mailbox);
+
+    foreach ($att_ar as $att) {
+        $ent = $att->entity_id;
+        $header = $att->header;
+        $type0 = strtolower($header->type0);
+        $type1 = strtolower($header->type1);
+        $name = '';
+
+        if ($type0 =='message' && $type1 == 'rfc822') {
+            $rfc822_header = $att->rfc822_header;
+            $filename = $rfc822_header->subject;
+            if (trim( $filename ) == '') {
+                $filename = 'untitled-[' . $ent . ']' ;
+            }
+            $from_o = $rfc822_header->from;
+            if (is_object($from_o)) {
+                $from_name = decodeHeader($from_o->getAddress(true));
+            } else {
+                $from_name = _("Unknown sender");
+            }
+            $description = '<tr>'.
+                html_tag( 'td',_("From:"), 'right') .
+                html_tag( 'td',$from_name, 'left') .
+                '</tr>';
+        } else {
+            $filename = $att->getFilename();
+            if ($header->description) {
+                $description = '<tr>'.
+                    html_tag( 'td',_("Info:"), 'right') .
+                    html_tag( 'td',decodeHeader($header->description), 'left') .
+                    '</tr>';
+            } else {
+                $description = '';
+            }
+        }
+
+        $display_filename = $filename;
+
+        // TODO: maybe make it nicer?
+        $attachments .= '<table cellpadding="0" cellspacing="0" border="1"><tr><th colspan="2">'.decodeHeader($display_filename).'</th></tr>' .
+            '<tr border="0">'.
+            html_tag( 'td',_("Size:"), 'right') .
+            html_tag( 'td',show_readable_size($header->size), 'left') .
+            '</tr><tr>' .
+            html_tag( 'td',_("Type:"), 'right') .
+            html_tag( 'td',htmlspecialchars($type0).'/'.htmlspecialchars($type1), 'left') . 
+            '</tr>';
+        if (! empty($description)) {
+            $attachments .= $description;
+        }
+        $attachments .= "</table>\n";
+    }
+    return $attachments;
+}
+
 
 /* --end pf-specific functions */
 ?>
