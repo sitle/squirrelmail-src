@@ -44,6 +44,9 @@ sqgetGlobalVar('oldnick',   $oldnick,   SQ_POST);
 sqgetGlobalVar('backend',   $backend,   SQ_POST);
 sqgetGlobalVar('doedit',    $doedit,    SQ_POST);
 
+/* Get sorting order */
+$abook_sort_order = get_abook_sort();
+
 /**
  * Make an input field
  * @param string $label
@@ -388,10 +391,18 @@ if ($showaddrlist) {
                     html_tag( 'table', '', 'center', '', 'border="0" cellpadding="1" cellspacing="0" width="90%"' ) .
                     html_tag( 'tr', "\n" .
                             html_tag( 'th', '&nbsp;', 'left', '', 'width="1%"' ) .
-                            html_tag( 'th', _("Nickname"), 'left', '', 'width="1%"' ) .
-                            html_tag( 'th', _("Name"), 'left', '', 'width="1%"' ) .
-                            html_tag( 'th', _("E-mail"), 'left', '', 'width="1%"' ) .
-                            html_tag( 'th', _("Info"), 'left', '', 'width="1%"' ),
+                            html_tag( 'th', _("Nickname") . 
+                                      show_abook_sort_button($abook_sort_order, _("sort by nickname"), 0, 1),
+                                      'left', '', 'width="1%"' ) .
+                            html_tag( 'th', _("Name") .
+                                      show_abook_sort_button($abook_sort_order, _("sort by name"), 2, 3),
+                                      'left', '', 'width="1%"' ) .
+                            html_tag( 'th', _("E-mail").
+                                      show_abook_sort_button($abook_sort_order, _("sort by email"), 4, 5),
+                                      'left', '', 'width="1%"' ) .
+                            html_tag( 'th', _("Info").
+                                      show_abook_sort_button($abook_sort_order, _("sort by info"), 6, 7),
+                                      'left', '', 'width="1%"' ),
                             '', $color[9] ) . "\n";
 
                 $line = 0;
