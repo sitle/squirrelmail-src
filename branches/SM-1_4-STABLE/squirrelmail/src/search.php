@@ -197,10 +197,15 @@ function save_recent($save_index, $username, $data_dir) {
 }
 
 function printSearchMessages($msgs,$mailbox, $cnt, $imapConnection, $where, $what, $usecache = false, $newsort = false) {
-    global $sort, $color;
+    global $sort, $color, $allow_server_sort, $allow_server_thread;
     
     if ($cnt > 0) {
-        $msort = calc_msort($msgs, $sort);
+        if ((!empty($allow_server_sort) && $allow_server_sort) || (!empty($allow_server_thread) && $allow_server_thread)) {
+            $msort = $msgs;
+        } else {
+            $msort = calc_msort($msgs, $sort);
+        }
+
         if ( $mailbox == 'INBOX' ) {
             $showbox = _("INBOX");
         } else {

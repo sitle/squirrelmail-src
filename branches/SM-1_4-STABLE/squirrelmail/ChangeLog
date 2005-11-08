@@ -97,6 +97,9 @@ Version 1.4.5 - 13 July 2005
     of all POST values. [CVE-2005-2095]
   - Moved imap_logout call in view_header.php to the end of the script after
     displayPageheader is called.
+  - If server side sorting was enabled, and the user had a non-default sort
+    enabled, and issued a search, the search would attempt to resort the
+	results and generate an E_ALL error.
 
 Version 1.4.5 Release Candidate 1 - 15 June 2005
 ------------------------------------------------
