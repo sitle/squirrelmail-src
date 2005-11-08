@@ -209,7 +209,7 @@ echo '</select>';
 <tr><td colspan="2" align="center">
 <?php
 echo '<input name="addaddr[email]" type="hidden" value="' .
-        htmlspecialchars($vcard_nice['email;internet']) . '" />' .
+        htmlspecialchars(!empty($vcard_nice['email;internet'])?$vcard_nice['email;internet']:'') . '" />' .
      '<input name="addaddr[firstname]" type="hidden" value="' .
         $vcard_safe['firstname'] . '" />' .
      '<input name="addaddr[lastname]" type="hidden" value="' .
