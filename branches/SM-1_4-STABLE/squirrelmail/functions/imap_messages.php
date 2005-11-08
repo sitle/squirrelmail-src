@@ -533,6 +533,8 @@ function sqimap_get_small_header_list($imap_stream, $msg_list, $show_num=false) 
         $messageid = '<>';
         $type = array('','');
         $cc = $to = $inrepto = '';
+        $size = 0;
+
         // use unset because we do isset below
         unset($date);
 
