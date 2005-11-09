@@ -3,46 +3,136 @@
 /**
  * Rfc822Header.class.php
  *
- * Copyright (c) 2003-2005 The SquirrelMail Project Team
- * Licensed under the GNU GPL. For full terms see the file COPYING.
+ * This file contains functions needed to handle headers in mime messages.
  *
- * This contains functions needed to handle mime messages.
- *
- * $Id$
+ * @copyright &copy; 2003-2005 The SquirrelMail Project Team
+ * @license http://opensource.org/licenses/gpl-license.php GNU Public License
+ * @version $Id$
+ * @package squirrelmail
+ * @subpackage mime
+ * @since 1.3.2
  */
 
-/*
- * rdc822_header class
+/**
+ * MIME header class
  * input: header_string or array
+ * You must call parseHeader() function after creating object in order to fill object's
+ * parameters.
+ * @todo FIXME: there is no constructor function and class should ignore all input args.
+ * @package squirrelmail
+ * @subpackage mime
+ * @since 1.3.0
  */
 class Rfc822Header {
-    var $date = -1,
-        $subject = '',
-        $from = array(),
-        $sender = '',
-        $reply_to = array(),
-        $mail_followup_to = array(),
-        $to = array(),
-        $cc = array(),
-        $bcc = array(),
-        $in_reply_to = '',
-        $message_id = '',
-        $references = '',
-        $mime = false,
-        $content_type = '',
-        $disposition = '',
-        $xmailer = '',
-        $priority = 3,
-        $dnt = '',
-        $encoding = '',
-        $mlist = array(),
-        $more_headers = array(); /* only needed for constructing headers
-                                    in smtp.php */
+    /**
+     * Date header
+     * @var mixed
+     */
+    var $date = -1;
+    /**
+     * Subject header
+     * @var string
+     */
+    var $subject = '';
+    /**
+     * From header
+     * @var array
+     */
+    var $from = array();
+    /**
+     * @var mixed
+     */
+    var $sender = '';
+    /**
+     * Reply-To header
+     * @var array
+     */
+    var $reply_to = array();
+    /**
+     * Mail-Followup-To header
+     * @var array
+     */
+    var $mail_followup_to = array();
+    /**
+     * To header
+     * @var array
+     */
+    var $to = array();
+    /**
+     * Cc header
+     * @var array
+     */
+    var $cc = array();
+    /**
+     * Bcc header
+     * @var array
+     */
+    var $bcc = array();
+    /**
+     * In-reply-to header
+     * @var string
+     */
+    var $in_reply_to = '';
+    /**
+     * Message-ID header
+     * @var string
+     */
+    var $message_id = '';
+    /**
+     * References header
+     * @var string
+     */
+    var $references = '';
+    /**
+     * @var mixed
+     */
+    var $mime = false;
+    /**
+     * @var mixed
+     */
+    var $content_type = '';
+    /**
+     * @var mixed
+     */
+    var $disposition = '';
+    /**
+     * X-Mailer header
+     * @var string
+     */
+    var $xmailer = '';
+    /**
+     * Priority header
+     * @var integer
+     */
+    var $priority = 3;
+    /**
+     * @var mixed
+     */
+    var $dnt = '';
+    /**
+     * @var mixed
+     */
+    var $encoding = '';
+    /**
+     * @var mixed
+     */
+    var $mlist = array();
+    /**
+     * Extra header
+     * only needed for constructing headers in delivery class
+     * @var array
+     */
+    var $more_headers = array();
+
+    /**
+     * @param mixed $hdr string or array with message headers
+     */
     function parseHeader($hdr) {
         if (is_array($hdr)) {
             $hdr = implode('', $hdr);
         }
         /* First we replace \r\n by \n and unfold the header */
+        /* FIXME: unfolding header with multiple spaces "\n( +)" */
         $hdr = trim(str_replace(array("\r\n", "\n\t", "\n "),array("\n", ' ', ' '), $hdr));
 
         /* Now we can make a new header array with */
@@ -63,6 +153,10 @@ class Rfc822Header {
         }
     }
 
+    /**
+     * @param string $value
+     * @return string
+     */
     function stripComments($value) {
         $result = '';
         $cnt = strlen($value);
@@ -105,6 +199,11 @@ class Rfc822Header {
         return $result;
     }
 
+    /**
+     * Parse header field according to field type
+     * @param string $field field name
+     * @param string $value field value
+     */
     function parseField($field, $value) {
         $field = strtolower($field);
         switch($field) {
@@ -182,11 +281,11 @@ class Rfc822Header {
                 $this->mlist('post', $value);
                 break;
             case 'list-reply':
-                $value = $this->stripComments($value);            
+                $value = $this->stripComments($value);
                 $this->mlist('reply', $value);
                 break;
             case 'list-subscribe':
-                $value = $this->stripComments($value);            
+                $value = $this->stripComments($value);
                 $this->mlist('subscribe', $value);
                 break;
             case 'list-unsubscribe':
@@ -214,6 +313,10 @@ class Rfc822Header {
         }
     }
 
+    /**
+     * @param string $address
+     * @return array
+     */
     function getAddressTokens($address) {
         $aTokens = array();
         $aAddress = array();
@@ -339,6 +442,14 @@ class Rfc822Header {
         }
         return $aTokens;
     }
+
+    /**
+     * @param array $aStack
+     * @param array $aComment
+     * @param string $sEmail
+     * @param string $sGroup
+     * @return object AddressStructure object
+     */
     function createAddressObject(&$aStack,&$aComment,&$sEmail,$sGroup='') {
         //$aStack=explode(' ',implode('',$aStack));
         if (!$sEmail) {
@@ -348,7 +459,7 @@ class Rfc822Header {
         }
         if (count($aStack)) {
             $sPersonal = trim(implode('',$aStack));
-        } else { 
+        } else {
             $sPersonal = '';
         }
         if (!$sPersonal && count($aComment)) {
@@ -375,21 +486,8 @@ class Rfc822Header {
         return $oAddr;
     }
 
-    /*
-     * parseAddress: recursive function for parsing address strings and store 
-     *               them in an address stucture object.
-     *               input: $address = string
-     *                      $ar      = boolean (return array instead of only the
-     *                                 first element)
-     *                      $addr_ar = array with parsed addresses // obsolete
-     *                      $group   = string // obsolete
-     *                      $host    = string (default domainname in case of 
-     *                                 addresses without a domainname)
-     *                      $lookup  = callback function (for lookup address
-     *                                 strings which are probably nicks
-     *                                 (without @ ) ) 
-     *               output: array with addressstructure objects or only one
-     *                       address_structure object.
+    /**
+     * recursive function for parsing address strings and storing them in an address stucture object.
      *  personal name: encoded: =?charset?Q|B?string?=
      *                 quoted:  "string"
      *                 normal:  string
@@ -397,8 +495,14 @@ class Rfc822Header {
      *               : mailbox@host
      *  This function is also used for validating addresses returned from compose
      *  That's also the reason that the function became a little bit huge
+     * @param string $address
+     * @param boolean $ar return array instead of only the first element
+     * @param array $addr_ar (obsolete) array with parsed addresses
+     * @param string $group (obsolete)
+     * @param string $host default domainname in case of addresses without a domainname
+     * @param string $lookup (since) callback function for lookup of address strings which are probably nicks (without @)
+     * @return mixed array with AddressStructure objects or only one address_structure object.
      */
-
     function parseAddress($address,$ar=false,$aAddress=array(),$sGroup='',$sHost='',$lookup=false) {
         $aTokens = $this->getAddressTokens($address);
         $sPersonal = $sEmail = $sComment = $sGroup = '';
@@ -410,7 +514,7 @@ class Rfc822Header {
             case '=':
             case '"':
             case ' ':
-                $aStack[] = $sToken; 
+                $aStack[] = $sToken;
                 break;
             case '(':
                 $aComment[] = substr($sToken,1,-1);
@@ -421,7 +525,7 @@ class Rfc822Header {
                     $oAddr = end($aAddress);
                     if(!$oAddr || ((isset($oAddr)) && !$oAddr->mailbox && !$oAddr->personal)) {
                         $sEmail = $sGroup . ':;';
-                    } 
+                    }
                     $aAddress[] = $this->createAddressObject($aStack,$aComment,$sEmail,$sGroup);
                     $sGroup = '';
                     $aStack = $aComment = array();
@@ -430,7 +534,7 @@ class Rfc822Header {
             case ',':
                 $aAddress[] = $this->createAddressObject($aStack,$aComment,$sEmail,$sGroup);
                 break;
-            case ':': 
+            case ':':
                 $sGroup = trim(implode(' ',$aStack));
                 $sGroup = preg_replace('/\s+/',' ',$sGroup);
                 $aStack = array();
@@ -440,7 +544,7 @@ class Rfc822Header {
                break;
             case '>':
                /* skip */
-               break; 
+               break;
             default: $aStack[] = $sToken; break;
             }
         }
@@ -484,30 +588,34 @@ class Rfc822Header {
           if (!$aAddrBookAddress && $oAddr->mailbox) {
               $aProcessedAddress[] = $oAddr;
           } else {
-              $aProcessedAddress = array_merge($aProcessedAddress,$aAddrBookAddress); 
+              $aProcessedAddress = array_merge($aProcessedAddress,$aAddrBookAddress);
           }
         }
-        if ($ar) { 
+        if ($ar) {
             return $aProcessedAddress;
         } else {
             return $aProcessedAddress[0];
         }
-    } 
+    }
 
     /**
      * Normalise the different Priority headers into a uniform value,
      * namely that of the X-Priority header (1, 3, 5). Supports:
-     * Prioirty, X-Priority, Importance.
+     * Priority, X-Priority, Importance.
      * X-MS-Mail-Priority is not parsed because it always coincides
      * with one of the other headers.
      *
      * NOTE: this is actually a duplicate from the function in
      * functions/imap_messages. I'm not sure if it's ok here to call
      * that function?
+     * @param string $sValue literal priority name
+     * @return integer
      */
     function parsePriority($sValue) {
+        // don't use function call inside array_shift.
         $aValue = split('/\w/',trim($sValue));
         $value = strtolower(array_shift($aValue));
+
         if ( is_numeric($value) ) {
             return $value;
         }
@@ -520,6 +628,9 @@ class Rfc822Header {
         return 3;
     }
 
+    /**
+     * @param string $value content type header
+     */
     function parseContentType($value) {
         $pos = strpos($value, ';');
         $props = '';
@@ -539,9 +650,13 @@ class Rfc822Header {
         }
         $this->content_type = $content_type;
     }
-    
-    /* RFC2184 */
-    function processParameters($aParameters) { 
+
+    /**
+     * RFC2184
+     * @param array $aParameters
+     * @return array
+     */
+    function processParameters($aParameters) {
         $aResults = array();
         $aCharset = array();
         // handle multiline parameters
@@ -565,13 +680,21 @@ class Rfc822Header {
             $value = substr($value,strlen($charset)+1);
             $language = substr($value,0,strpos($value,"'"));
             $value = substr($value,strlen($charset)+1);
-            // FIX ME What's the status of charset decode with language information ????
+            /* FIXME: What's the status of charset decode with language information ????
+             * Maybe language information contains only ascii text and charset_decode() 
+             * only runs htmlspecialchars() on it. If it contains 8bit information, you 
+             * get html encoded text in charset used by selected translation.
+             */
             $value = charset_decode($charset,$value);
             $aResults[$key] = $value;
         }
-        return $aResults;    
+        return $aResults;
     }
 
+    /**
+     * @param string $value
+     * @return array
+     */
     function parseProperties($value) {
         $propArray = explode(';', $value);
         $propResultArray = array();
@@ -590,6 +713,10 @@ class Rfc822Header {
         return $this->processParameters($propResultArray);
     }
 
+    /**
+     * Fills disposition object in rfc822Header object
+     * @param string $value
+     */
     function parseDisposition($value) {
         $pos = strpos($value, ';');
         $props = '';
@@ -605,6 +732,11 @@ class Rfc822Header {
         $this->disposition = $disp;
     }
 
+    /**
+     * Fills mlist array keys in rfc822Header object 
+     * @param string $field
+     * @param string $value
+     */
     function mlist($field, $value) {
         $res_a = array();
         $value_a = explode(',', $value);
@@ -622,11 +754,14 @@ class Rfc822Header {
         $this->mlist[$field] = $res_a;
     }
 
-    /*
-     * function to get the addres strings out of the header.
-     * Arguments: string or array of strings !
+    /**
+     * function to get the address strings out of the header.
      * example1: header->getAddr_s('to').
      * example2: header->getAddr_s(array('to', 'cc', 'bcc'))
+     * @param mixed $arr string or array of strings
+     * @param string $separator
+     * @param boolean $encoded (since 1.4.0) return encoded or plain text addresses
+     * @return string
      */
     function getAddr_s($arr, $separator = ',',$encoded=false) {
         $s = '';
@@ -664,6 +799,13 @@ class Rfc822Header {
         return $s;
     }
 
+    /**
+     * function to get the array of addresses out of the header.
+     * @param mixed $arg string or array of strings
+     * @param array $excl_arr array of excluded email addresses
+     * @param array $arr array of added email addresses
+     * @return array
+     */
     function getAddr_a($arg, $excl_arr = array(), $arr = array()) {
         if (is_array($arg)) {
             foreach($arg as $argument) {
@@ -698,7 +840,13 @@ class Rfc822Header {
         }
         return $arr;
     }
-    
+
+    /**
+     * @param mixed $address array or string
+     * @param boolean $recurs
+     * @return mixed array, boolean
+     * @since 1.3.2
+     */
     function findAddress($address, $recurs = false) {
         $result = false;
         if (is_array($address)) {
@@ -713,7 +861,7 @@ class Rfc822Header {
                         $result = $i;
                     }
                 }
-                ++$i;        
+                ++$i;
             }
         } else {
             if (!is_array($this->cc)) $this->cc = array();
@@ -733,7 +881,7 @@ class Rfc822Header {
                     }
                 }
             }
-             foreach ($this->cc as $cc) {
+            foreach ($this->cc as $cc) {
                 if ($cc->host == $srch_addr->host) {
                     if ($cc->mailbox == $srch_addr->mailbox) {
                         $results[] = $srch_addr;
@@ -753,12 +901,18 @@ class Rfc822Header {
                 return true;
             } else {
                 return false;
-            }        
+            }
         }
         //exit;
         return $result;
     }
 
+    /**
+     * @param string $type0 media type
+     * @param string $type1 media subtype
+     * @return array media properties
+     * @todo check use of media type arguments
+     */
     function getContentType($type0, $type1) {
         $type0 = $this->content_type->type0;
         $type1 = $this->content_type->type1;

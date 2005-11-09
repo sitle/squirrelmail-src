@@ -3,14 +3,19 @@
 /**
  * mime.class
  *
- * Copyright (c) 2003-2005 The SquirrelMail Project Team
- * Licensed under the GNU GPL. For full terms see the file COPYING.
+ * This file loads classes needed to handle mime messages.
  *
- * This contains functions needed to handle mime messages.
- *
- * $Id$
+ * @copyright &copy; 2003-2005 The SquirrelMail Project Team
+ * @license http://opensource.org/licenses/gpl-license.php GNU Public License
+ * @version $Id$
+ * @package squirrelmail
+ * @subpackage mime
  */
 
+/** @ignore */
+if (! defined('SM_PATH')) define('SM_PATH','../');
+
+/** Load in the entire MIME system */
 require_once(SM_PATH . 'class/mime/Rfc822Header.class.php');
 require_once(SM_PATH . 'class/mime/MessageHeader.class.php');
 require_once(SM_PATH . 'class/mime/AddressStructure.class.php');

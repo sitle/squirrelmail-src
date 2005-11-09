@@ -3,44 +3,95 @@
 /**
  * MessageHeader.class.php
  *
- * Copyright (c) 2003-2005 The SquirrelMail Project Team
- * Licensed under the GNU GPL. For full terms see the file COPYING.
+ * This file contains functions needed to handle headers in mime messages.
  *
- * This contains functions needed to handle mime messages.
- *
- * $Id$
+ * @copyright &copy; 2003-2005 The SquirrelMail Project Team
+ * @license http://opensource.org/licenses/gpl-license.php GNU Public License
+ * @version $Id$
+ * @package squirrelmail
+ * @subpackage mime
+ * @since 1.3.2
  */
 
+/**
+ * Message header class
+ * Class contains all variables available in a bodystructure
+ * entity like described in rfc2060
+ * It was called msg_header in 1.3.0 and 1.3.1.
+ * @package squirrelmail
+ * @subpackage mime
+ * @since 1.3.2
+ */
 class MessageHeader {
-    /** msg_header contains all variables available in a bodystructure **/
-    /** entity like described in rfc2060                               **/
-
-    var $type0 = '',
-        $type1 = '',
-        $parameters = array(),
-        $id = 0,
-        $description = '',
-        $encoding='',
-        $size = 0,
-        $md5='',
-        $disposition = '',
-        $language='';
-
-    /*
-     * returns addres_list of supplied argument
-     * arguments: array('to', 'from', ...) or just a string like 'to'.
-     * result: string: address1, addres2, ....
+    /**
+     * Media type
+     * @var string
      */
+    var $type0 = '';
+    /**
+     * Media subtype
+     * @var string
+     */
+    var $type1 = '';
+    /**
+     * Content type parameters
+     * @var array
+     */
+    var $parameters = array();
+    /**
+     * @var mixed
+     */
+    var $id = 0;
+    /**
+     * @var string
+     */
+    var $description = '';
+    /**
+     * @var string
+     */
+    var $encoding='';
+    /**
+     * Message size
+     * @var integer
+     */
+    var $size = 0;
+    /**
+     * @var string
+     */
+    var $md5='';
+    /**
+     * @var mixed
+     */
+    var $disposition = '';
+    /**
+     * @var mixed
+     */
+    var $language='';
 
+    /**
+     * Sets header variable
+     * @param string $var
+     * @param mixed $value
+     */
     function setVar($var, $value) {
         $this->{$var} = $value;
     }
 
+    /**
+     * Gets parameter value from $parameters array
+     * @param string $p
+     * @return mixed
+     */
     function getParameter($p) {
         $value = strtolower($p);
         return (isset($this->parameters[$p]) ? $this->parameters[$p] : '');
     }
 
+    /**
+     * Sets parameter value in $parameters array
+     * @param string $parameter
+     * @param mixed $value
+     */
     function setParameter($parameter, $value) {
         $this->parameters[strtolower($parameter)] = $value;
     }
