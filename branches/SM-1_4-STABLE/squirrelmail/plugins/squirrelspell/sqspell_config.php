@@ -22,6 +22,9 @@ sqgetGlobalVar('username', $username, SQ_SESSION);
  *
  * $SQSPELL_APP = array( 'English' => 'ispell -a',
  *                     'Spanish' => 'ispell -d spanish -a' );
+ * You can replace ispell with aspell keeping the same commandline:
+ * $SQSPELL_APP = array( 'English' => 'aspell -a',
+ *                     'Spanish' => 'aspell -d spanish -a' );
  */
 $SQSPELL_APP = array('English' => 'ispell -a',
 			'Spanish' => 'ispell -d spanish -a');
