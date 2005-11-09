@@ -3210,16 +3210,23 @@ sub set_defaults {
     $continue = 0;
     while ( $continue != 1 ) {
         print "Please select your IMAP server:\n";
-        print "    cyrus       = Cyrus IMAP server\n";
-        print "    uw          = University of Washington's IMAP server\n";
-        print "    exchange    = Microsoft Exchange IMAP server\n";
+        print "    bincimap    = Binc IMAP server\n";
         print "    courier     = Courier IMAP server\n";
-        print "    macosx      = Mac OS X Mailserver\n";
+        print "    cyrus       = Cyrus IMAP server\n";
+        print "    dovecot     = Dovecot Secure IMAP server\n";
+        print "    exchange    = Microsoft Exchange IMAP server\n";
         print "    hmailserver = hMailServer\n";
+        print "    macosx      = Mac OS X Mailserver\n";
+        print "    mercury32   = Mercury/32\n";
+        print "    uw          = University of Washington's IMAP server\n";
+        print "\n";
         print "    quit        = Do not change anything\n";
         print "Command >> ";
         $server = <STDIN>;
         $server =~ s/[\r|\n]//g;
+
+        # variable is used to display additional messages.
+        $message = "";
 
         print "\n";
         if ( $server eq "cyrus" ) {
@@ -3302,8 +3309,55 @@ sub set_defaults {
             $optional_delimiter             = "detect";
             $allow_charset_search           = false;
             $disp_default_folder_prefix     = $default_folder_prefix;
-	    $delete_folder                  = false;
-	    $force_username_lowercase       = false;
+            $delete_folder                  = false;
+            $force_username_lowercase       = false;
+
+            $continue = 1;
+        } elsif ( $server eq "mercury32" ) {
+            $imap_server_type               = "mercury32";
+            $default_folder_prefix          = "";
+            $trash_folder                   = "Trash";
+            $sent_folder                    = "Sent";
+            $draft_folder                   = "Drafts";
+            $show_prefix_option             = false;
+            $default_sub_of_inbox           = true;
+            $show_contain_subfolders_option = true;
+            $optional_delimiter             = "detect";
+            $delete_folder                  = true;
+            $force_username_lowercase       = true;
+
+            $continue = 1;
+        } elsif ( $server eq "dovecot" ) {
+            $imap_server_type               = "dovecot";
+            $default_folder_prefix          = "";
+            $trash_folder                   = "Trash";
+            $sent_folder                    = "Sent";
+            $draft_folder                   = "Drafts";
+            $show_prefix_option             = false;
+            $default_sub_of_inbox           = false;
+            $show_contain_subfolders_option = false;
+            $delete_folder                  = false;
+            $force_username_lowercase       = true;
+            $optional_delimiter             = "detect";
+            $disp_default_folder_prefix     = "<none>";
+
+            $continue = 1;
+        } elsif ( $server eq "bincimap" ) {
+            $imap_server_type               = "bincimap";
+            $default_folder_prefix          = "INBOX/";
+            $trash_folder                   = "Trash";
+            $sent_folder                    = "Sent";
+            $draft_folder                   = "Drafts";
+            $show_prefix_option             = false;
+            $default_sub_of_inbox           = false;
+            $show_contain_subfolders_option = false;
+            $delete_folder                  = true;
+            $force_username_lowercase       = false;
+            $optional_delimiter             = "detect";
+            $disp_default_folder_prefix     = $default_folder_prefix;
+
+            # Default folder prefix depends on used depot.
+            $message = "\nIf you use IMAPdir depot, you must set default folder prefix to empty string.\n";
 
             $continue = 1;
         } elsif ( $server eq "quit" ) {
@@ -3324,6 +3378,8 @@ sub set_defaults {
         print "show_contain_subfolders_option = $show_contain_subfolders_option\n";
         print "            optional_delimiter = $optional_delimiter\n";
         print "                 delete_folder = $delete_folder\n";
+
+        print "$message";
     }
     print "\nPress any key to continue...";
     $tmp = <STDIN>;
