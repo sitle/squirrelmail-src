@@ -1,19 +1,17 @@
 <?php
+
 /**
  * Deliver.class.php
- *
- * Copyright (c) 1999-2005 The SquirrelMail Project Team
- * Licensed under the GNU GPL. For full terms see the file COPYING.
  *
  * This contains all the functions needed to send messages through
  * a delivery backend.
  *
- * $Id$
- *
- * @author  Marc Groot Koerkamp
+ * @author Marc Groot Koerkamp
+ * @copyright &copy; 1999-2005 The SquirrelMail Project Team
+ * @license http://opensource.org/licenses/gpl-license.php GNU Public License
+ * @version $Id$
  * @package squirrelmail
  */
-
 
 /**
  * Deliver Class - called to actually deliver the message
@@ -79,7 +77,7 @@ class Deliver {
             if (strpos($boundary,'_part_')) {
                 $boundary = substr($boundary,0,strpos($boundary,'_part_'));
 
-            // the next four lines use strrev to reverse any nested boundaries 
+            // the next four lines use strrev to reverse any nested boundaries
             // because RFC 2046 (5.1.1) says that if a line starts with the outer
             // boundary string (doesn't matter what the line ends with), that
             // can be considered a match for the outer boundary; thus the nested
@@ -179,8 +177,8 @@ class Deliver {
                 $encoded = '';
                 while ($tmp = fread($file, 570)) {
                     $body_part = chunk_split(base64_encode($tmp));
-                    // Up to 4.3.10 chunk_split always appends a newline, 
-                    // while in 4.3.11 it doesn't if the string to split 
+                    // Up to 4.3.10 chunk_split always appends a newline,
+                    // while in 4.3.11 it doesn't if the string to split
                     // is shorter than the chunk length.
                     if( substr($body_part, -1 , 1 ) != "\n" )
                         $body_part .= "\n";
@@ -429,7 +427,7 @@ class Deliver {
          * webmail installation does not prevent changes in user's email address.
          * See SquirrelMail bug tracker #847107 for more details about it.
          */
-        if (isset($encode_header_key) && 
+        if (isset($encode_header_key) &&
             trim($encode_header_key)!='') {
             // use encoded headers, if encryption key is set and not empty
             $header[] = 'X-Squirrel-UserHash: '.OneTimePadEncrypt($username,base64_encode($encode_header_key)).$rn;
@@ -447,7 +445,7 @@ class Deliver {
 
         /* Insert the rest of the header fields */
         $header[] = 'Message-ID: '. $message_id . $rn;
-        if (is_object($reply_rfc822_header) && 
+        if (is_object($reply_rfc822_header) &&
             isset($reply_rfc822_header->message_id) &&
             $reply_rfc822_header->message_id) {
             //if ($reply_rfc822_header->message_id) {
@@ -466,7 +464,7 @@ class Deliver {
 
         $header[] = 'From: '. $rfc822_header->getAddr_s('from',",$rn ",true) . $rn;
 
-        /* RFC2822 if from contains more then 1 address */
+        // RFC2822 if from contains more then 1 address
         if (count($rfc822_header->from) > 1) {
             $header[] = 'Sender: '. $rfc822_header->getAddr_s('sender',',',true) . $rn;
         }
@@ -517,14 +515,14 @@ class Deliver {
             switch($rfc822_header->priority)
             {
             case 1:
-            $header[] = 'X-Priority: 1 (Highest)'.$rn;
-            $header[] = 'Importance: High'. $rn; break;
+                $header[] = 'X-Priority: 1 (Highest)'.$rn;
+                $header[] = 'Importance: High'. $rn; break;
             case 3:
-            $header[] = 'X-Priority: 3 (Normal)'.$rn;
-            $header[] = 'Importance: Normal'. $rn; break;
+                $header[] = 'X-Priority: 3 (Normal)'.$rn;
+                $header[] = 'Importance: Normal'. $rn; break;
             case 5:
-            $header[] = 'X-Priority: 5 (Lowest)'.$rn;
-            $header[] = 'Importance: Low'. $rn; break;
+                $header[] = 'X-Priority: 5 (Lowest)'.$rn;
+                $header[] = 'Importance: Low'. $rn; break;
             default: break;
             }
         }
@@ -744,7 +742,7 @@ class Deliver {
      * Function is used to convert ipv4 and ipv6 addresses to hex strings.
      * It removes all delimiter symbols from ip addresses, converts decimal
      * ipv4 numbers to hex and pads strings in order to present full length
-     * address. ipv4 addresses are represented as 8 byte strings, ipv6 addresses 
+     * address. ipv4 addresses are represented as 8 byte strings, ipv6 addresses
      * are represented as 32 byte string.
      *
      * If function fails to detect address format, it returns unprocessed string.
@@ -800,5 +798,4 @@ class Deliver {
     }
 }
 
-// vim: et ts=4
 ?>

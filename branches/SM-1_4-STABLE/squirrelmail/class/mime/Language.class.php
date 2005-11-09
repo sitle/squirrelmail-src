@@ -3,18 +3,37 @@
 /**
  * Language.class.php
  *
- * Copyright (c) 2003-2005 The SquirrelMail Project Team
- * Licensed under the GNU GPL. For full terms see the file COPYING.
+ * This file should contain class needed to handle Language properties in 
+ * mime messages. I suspect that it is RFC2231
  *
- * This contains functions needed to handle mime messages.
- *
- * $Id$
+ * @copyright &copy; 2003-2005 The SquirrelMail Project Team
+ * @license http://opensource.org/licenses/gpl-license.php GNU Public License
+ * @version $Id$
+ * @package squirrelmail
+ * @subpackage mime
+ * @since 1.3.2
  */
 
+/**
+ * Class that can be used to handle language properties in MIME headers.
+ *
+ * @package squirrelmail
+ * @subpackage mime
+ * @since 1.3.0
+ */
 class Language {
+    /**
+     * Class constructor
+     * @param mixed $name
+     */
     function Language($name) {
-       $this->name = $name;
-       $this->properties = array();
+        /** @var mixed */
+        $this->name = $name;
+        /**
+         * Language properties
+         * @var array 
+         */
+        $this->properties = array();
     }
 }
 

@@ -1,23 +1,23 @@
 <?php
+
 /**
-* Deliver_SMTP.class.php
-*
-* Copyright (c) 1999-2005 The SquirrelMail Project Team
-* Licensed under the GNU GPL. For full terms see the file COPYING.
-*
-* Delivery backend for the Deliver class.
-*
-* $Id$
-* @package squirrelmail
-*/
+ * Deliver_SMTP.class.php
+ *
+ * Delivery backend for the Deliver class.
+ *
+ * @copyright &copy; 1999-2005 The SquirrelMail Project Team
+ * @license http://opensource.org/licenses/gpl-license.php GNU Public License
+ * @version $Id$
+ * @package squirrelmail
+ */
 
 /** This of course depends upon Deliver */
 require_once(SM_PATH . 'class/deliver/Deliver.class.php');
 
 /**
-* Deliver messages using SMTP
-* @package squirrelmail
-*/
+ * Deliver messages using SMTP
+ * @package squirrelmail
+ */
 class Deliver_SMTP extends Deliver {
 
     function preWriteToStream(&$s) {
@@ -26,18 +26,18 @@ class Deliver_SMTP extends Deliver {
             $s = str_replace("\n.","\n..",$s);
         }
     }
-    
+
     // TODO merge 1.5.1 changes regarding system wide pop username
 
     function initStream($message, $domain, $length=0, $host='', $port='', $user='', $pass='', $authpop=false) {
         global $use_smtp_tls,$smtp_auth_mech,$username,$key,$onetimepad;
-    
+
         if ($authpop) {
             $this->authPop($host, '', $username, $pass);
         }
-    
+
         $rfc822_header = $message->rfc822_header;
-        
+
         $from = $rfc822_header->from[0];
         $to =   $rfc822_header->to;
         $cc =   $rfc822_header->cc;
@@ -45,20 +45,20 @@ class Deliver_SMTP extends Deliver {
         $content_type  = $rfc822_header->content_type;
 
         // MAIL FROM: <from address> MUST be empty in cae of MDN (RFC2298)
-        if ($content_type->type0 == 'multipart' && 
+        if ($content_type->type0 == 'multipart' &&
             $content_type->type1 == 'report' &&
             isset($content_type->properties['report-type']) &&
             $content_type->properties['report-type']=='disposition-notification') {
             $from->host = '';
             $from->mailbox = '';
-        } 
-            
+        }
+
         if (($use_smtp_tls == true) and (check_php_version(4,3)) and (extension_loaded('openssl'))) {
             $stream = fsockopen('tls://' . $host, $port, $errorNumber, $errorString);
         } else {
             $stream = fsockopen($host, $port, $errorNumber, $errorString);
         }
-    
+
         if (!$stream) {
             $this->dlv_msg = $errorString;
             $this->dlv_ret_nr = $errorNumber;
@@ -68,11 +68,11 @@ class Deliver_SMTP extends Deliver {
         if ($this->errorCheck($tmp, $stream)) {
             return(0);
         }
-    
-        /* 
-        * If $_SERVER['HTTP_HOST'] is set, use that in our HELO to the SMTP
-        * server.  This should fix the DNS issues some people have had 
-        */
+
+        /*
+         * If $_SERVER['HTTP_HOST'] is set, use that in our HELO to the SMTP
+         * server.  This should fix the DNS issues some people have had
+         */
         if (sqgetGlobalVar('HTTP_HOST', $HTTP_HOST, SQ_SERVER)) { // HTTP_HOST is set
             // optionally trim off port number
             if($p = strrpos($HTTP_HOST, ':')) {
@@ -82,12 +82,12 @@ class Deliver_SMTP extends Deliver {
         } else { // For some reason, HTTP_HOST is not set - revert to old behavior
             $helohost = $domain;
         }
-        
+
         /* Lets introduce ourselves */
         fputs($stream, "EHLO $helohost\r\n");
         $tmp = fgets($stream,1024);
         if ($this->errorCheck($tmp,$stream)) {
-            // fall back to HELO if EHLO is n ot supported
+            // fall back to HELO if EHLO is not supported
             if ($this->dlv_ret_nr == '500') {
                 fputs($stream, "HELO $helohost\r\n");
                 $tmp = fgets($stream,1024);
@@ -98,7 +98,7 @@ class Deliver_SMTP extends Deliver {
                 return(0);
             }
         }
-    
+
         if (( $smtp_auth_mech == 'cram-md5') or ( $smtp_auth_mech == 'digest-md5' )) {
             // Doing some form of non-plain auth
             if ($smtp_auth_mech == 'cram-md5') {
@@ -106,35 +106,35 @@ class Deliver_SMTP extends Deliver {
             } elseif ($smtp_auth_mech == 'digest-md5') {
                 fputs($stream, "AUTH DIGEST-MD5\r\n");
             }
-        
+
             $tmp = fgets($stream,1024);
-            
+
             if ($this->errorCheck($tmp,$stream)) {
                 return(0);
             }
-            
+
             // At this point, $tmp should hold "334 <challenge string>"
             $chall = substr($tmp,4);
-            // Depending on mechanism, generate response string 
+            // Depending on mechanism, generate response string
             if ($smtp_auth_mech == 'cram-md5') {
                 $response = cram_md5_response($username,$pass,$chall);
             } elseif ($smtp_auth_mech == 'digest-md5') {
                 $response = digest_md5_response($username,$pass,$chall,'smtp',$host);
             }
             fputs($stream, $response);
-            
+
             // Let's see what the server had to say about that
             $tmp = fgets($stream,1024);
             if ($this->errorCheck($tmp,$stream)) {
                 return(0);
             }
-            
+
             // CRAM-MD5 is done at this point.  If DIGEST-MD5, there's a bit more to go
             if ($smtp_auth_mech == 'digest-md5') {
                 // $tmp contains rspauth, but I don't store that yet. (No need yet)
                 fputs($stream,"\r\n");
                 $tmp = fgets($stream,1024);
-                
+
                 if ($this->errorCheck($tmp,$stream)) {
                 return(0);
                 }
@@ -147,7 +147,7 @@ class Deliver_SMTP extends Deliver {
             // The LOGIN method
             fputs($stream, "AUTH LOGIN\r\n");
             $tmp = fgets($stream, 1024);
-        
+
             if ($this->errorCheck($tmp, $stream)) {
                 return(0);
             }
@@ -156,7 +156,7 @@ class Deliver_SMTP extends Deliver {
             if ($this->errorCheck($tmp, $stream)) {
                 return(0);
             }
-        
+
             fputs($stream, base64_encode($pass) . "\r\n");
             $tmp = fgets($stream, 1024);
             if ($this->errorCheck($tmp, $stream)) {
@@ -165,16 +165,16 @@ class Deliver_SMTP extends Deliver {
         } elseif ($smtp_auth_mech == "plain") {
             /* SASL Plain */
             $auth = base64_encode("$user\0$user\0$pass");
-                        
+
             $query = "AUTH PLAIN\r\n";
             fputs($stream, $query);
             $read=fgets($stream, 1024);
-        
+
             if (substr($read,0,3) == '334') { // OK so far..
                 fputs($stream, "$auth\r\n");
                 $read = fgets($stream, 1024);
             }
-                        
+
             $results=explode(" ",$read,3);
             $response=$results[1];
             $message=$results[2];
@@ -186,16 +186,16 @@ class Deliver_SMTP extends Deliver {
                 return(0);
             }
         }
-        
+
         /* Ok, who is sending the message? */
-        $fromaddress = ($from->mailbox && $from->host) ? 
+        $fromaddress = ($from->mailbox && $from->host) ?
             $from->mailbox.'@'.$from->host : '';
         fputs($stream, 'MAIL FROM:<'.$fromaddress.">\r\n");
         $tmp = fgets($stream, 1024);
         if ($this->errorCheck($tmp, $stream)) {
             return(0);
         }
-    
+
         /* send who the recipients are */
         for ($i = 0, $cnt = count($to); $i < $cnt; $i++) {
             if (!$to[$i]->host) $to[$i]->host = $domain;
@@ -207,8 +207,8 @@ class Deliver_SMTP extends Deliver {
                 }
             }
         }
-        
-        for ($i = 0, $cnt = count($cc); $i < $cnt; $i++) {	
+
+        for ($i = 0, $cnt = count($cc); $i < $cnt; $i++) {
             if (!$cc[$i]->host) $cc[$i]->host = $domain;
             if ($cc[$i]->mailbox) {
                 fputs($stream, 'RCPT TO:<'.$cc[$i]->mailbox.'@'.$cc[$i]->host.">\r\n");
@@ -218,7 +218,7 @@ class Deliver_SMTP extends Deliver {
                 }
             }
         }
-    
+
         for ($i = 0, $cnt = count($bcc); $i < $cnt; $i++) {
             if (!$bcc[$i]->host) $bcc[$i]->host = $domain;
             if ($bcc[$i]->mailbox) {
@@ -237,7 +237,7 @@ class Deliver_SMTP extends Deliver {
         }
         return $stream;
     }
-    
+
     function finalizeStream($stream) {
         fputs($stream, "\r\n.\r\n"); /* end the DATA part */
         $tmp = fgets($stream, 1024);
@@ -249,7 +249,7 @@ class Deliver_SMTP extends Deliver {
         fclose($stream);
         return true;
     }
-    
+
     /* check if an SMTP reply is an error and set an error message) */
     function errorCheck($line, $smtpConnection) {
 
@@ -288,7 +288,7 @@ class Deliver_SMTP extends Deliver {
         case '503': $message = _("Bad sequence of commands");
             break;
         case '504': $message = _("Command parameter not implemented");
-            break;    
+            break;
         case '530': $message = _("Authentication required");
             break;
         case '534': $message = _("Authentication mechanism is too weak");
@@ -316,7 +316,7 @@ class Deliver_SMTP extends Deliver {
 
         return true;
     }
-    
+
     function authPop($pop_server='', $pop_port='', $user, $pass) {
         if (!$pop_port) {
             $pop_port = 110;
