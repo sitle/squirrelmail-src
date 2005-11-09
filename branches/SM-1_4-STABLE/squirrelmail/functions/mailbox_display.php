@@ -698,8 +698,6 @@ function mail_message_listing_beginning ($imapConnection,
 		  '<input type="hidden" name="mailbox" value="'.htmlspecialchars($mailbox).'">' . "\n" .
 		  '<input type="hidden" name="startMessage" value="'.htmlspecialchars($start_msg).'">' . "\n";
 
-//    $moveURL = "move_messages.php?msg=$msg&amp;mailbox=$urlMailbox"
-//             . "&amp;startMessage=$start_msg";
     /*
      * This is the beginning of the message list table.
      * It wraps around all messages
@@ -707,7 +705,7 @@ function mail_message_listing_beginning ($imapConnection,
     $safe_name = preg_replace("/[^0-9A-Za-z_]/", '_', $mailbox);
     $form_name = "FormMsgs" . $safe_name;
     echo '<form name="' . $form_name . '" method="post" action="move_messages.php">' ."\n"
-	. $moveFields . "\n";
+        . $moveFields . "\n";
 
     if (!empty($paginator) && !empty($msg_cnt_str)) {
 
