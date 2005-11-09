@@ -184,7 +184,7 @@ echo "</p>\n";
       <table align="center" border="0">
         <tr>
           <td>
-            <?php echo _("This bug involves"); ?>: <select name="send_to">
+            <?php echo _("This bug involves:"); ?> <select name="send_to">
               <option value="squirrelmail-users@lists.sourceforge.net"><?php
                   echo _("the general program"); ?></option>
               <option value="squirrelmail-plugins@lists.sourceforge.net"><?php
