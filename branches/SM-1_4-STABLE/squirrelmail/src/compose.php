@@ -1075,28 +1075,28 @@ function showInputForm ($session, $values=false) {
         html_tag( 'td', '', 'right', $color[4], 'width="10%"' ) .
         _("To") . ':</td>' . "\n" .
         html_tag( 'td', '', 'left', $color[4], 'width="90%"' ) .
-        substr(addInput('send_to', $send_to, 60), 0, -2). $onfocus . ' /><br />' . "\n" .
+        substr(addInput('send_to', $send_to, 60), 0, -3). $onfocus . ' /><br />' . "\n" .
         '      </td>' . "\n" .
         '   </tr>' . "\n" .
         '   <tr>' . "\n" .
         html_tag( 'td', '', 'right', $color[4] ) .
         _("Cc") . ':</td>' . "\n" .
         html_tag( 'td', '', 'left', $color[4] ) .
-        substr(addInput('send_to_cc', $send_to_cc, 60), 0, -2). $onfocus . ' /><br />' . "\n" .
+        substr(addInput('send_to_cc', $send_to_cc, 60), 0, -3). $onfocus . ' /><br />' . "\n" .
         '      </td>' . "\n" .
         '   </tr>' . "\n" .
         '   <tr>' . "\n" .
         html_tag( 'td', '', 'right', $color[4] ) .
         _("Bcc") . ':</td>' . "\n" .
         html_tag( 'td', '', 'left', $color[4] ) .
-        substr(addInput('send_to_bcc', $send_to_bcc, 60), 0, -2). $onfocus . ' /><br />' . "\n" .
+        substr(addInput('send_to_bcc', $send_to_bcc, 60), 0, -3). $onfocus . ' /><br />' . "\n" .
         '      </td>' . "\n" .
         '   </tr>' . "\n" .
         '   <tr>' . "\n" .
         html_tag( 'td', '', 'right', $color[4] ) .
         _("Subject") . ':</td>' . "\n" .
         html_tag( 'td', '', 'left', $color[4] ) . "\n";
-    echo '         '.substr(addInput('subject', $subject, 60), 0, -2). $onfocus .
+    echo '         '.substr(addInput('subject', $subject, 60), 0, -3). $onfocus .
         ' />      </td>' . "\n" .
         '   </tr>' . "\n\n";
 
