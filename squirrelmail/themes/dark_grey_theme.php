@@ -3,22 +3,23 @@
 /**
  * dark_grey_theme.php
  *    Name:   Dark Grey
- *    Author: Justin Miller
  *    Date:   July 24, 2000
  *
- * Copyright (c) 2000-2005 The SquirrelMail Project Team
- * Licensed under the GNU GPL. For full terms see the file COPYING.
- *
- * $Id$
+ * @author Justin Miller
+ * @copyright &copy; 2000-2005 The SquirrelMail Project Team
+ * @license http://opensource.org/licenses/gpl-license.php GNU Public License
+ * @version $Id$
+ * @package squirrelmail
+ * @subpackage themes
  */
 
 global $color;
-$color[0]   = '#B2B2B2'; // (gray)           TitleBar
+$color[0]   = '#b2b2b2'; // (gray)           TitleBar
 $color[1]   = '#800000'; // (red)
-$color[2]   = '#CC0000'; // (light red)      Warning/Error Messages
+$color[2]   = '#cc0000'; // (light red)      Warning/Error Messages
 $color[3]   = '#929292'; // (light gray)     Left Bar Background
-$color[4]   = '#FFFFFF'; // (white)          Normal Background
-$color[5]   = '#C0C0C0'; // (lighter grey)   Table Headers
+$color[4]   = '#ffffff'; // (white)          Normal Background
+$color[5]   = '#c0c0c0'; // (lighter grey)   Table Headers
 $color[6]   = '#000000'; // (black)          Text on left bar
 $color[7]   = '#303030'; // (dark gray)      Links
 $color[8]   = '#000000'; // (black)          Normal text

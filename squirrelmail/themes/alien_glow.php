@@ -1,22 +1,27 @@
 <?php
-   /** 
-	Author:       Todd Hammer <thammer@rtccom.com>
-	Name:		  Alien Glow Theme
-	Date:         May 2, 2002
-	Theme Name:   "Alien Glow Color Scheme"
 
-    **/
+/**
+ * Name: Alien Glow Theme
+ * Date: May 2, 2002
+ *
+ * @author Todd Hammer <thammer at rtccom.com>
+ * @copyright &copy; 2002-2005 The SquirrelMail Project Team
+ * @license http://opensource.org/licenses/gpl-license.php GNU Public License
+ * @version $Id$
+ * @package squirrelmail
+ * @subpackage themes
+ */
 
-    $color[0]   = "#19881A"; //      TitleBar
-    $color[1]   = "#800000"; // 
-    $color[2]   = "#CC0000"; //      Warning/Error Messages
+    $color[0]   = "#19881a"; //      TitleBar
+    $color[1]   = "#800000"; //
+    $color[2]   = "#cc0000"; //      Warning/Error Messages
     $color[3]   = "#000000"; //      Left Bar Background
     $color[4]   = "#000000"; //      Normal Background
-    $color[5]   = "#0A6C11"; //      Table Headers
-    $color[6]   = "#4CC748"; //      Text on left bar
-    #$color[7]   = "#706C44"; //     Links
+    $color[5]   = "#0a6c11"; //      Table Headers
+    $color[6]   = "#4cc748"; //      Text on left bar
+    #$color[7]   = "#706c44"; //     Links
     $color[7]   = "#ffffff"; //      Normal text
-    $color[8]   = "#61FF5C"; //      Links
+    $color[8]   = "#61ff5c"; //      Links
     $color[9]   = "#157316"; //      Darker version of #0
     $color[10]  = "#105611"; //      Darker version of #9
     $color[11]  = "#ffffff"; //      Special Folders color
