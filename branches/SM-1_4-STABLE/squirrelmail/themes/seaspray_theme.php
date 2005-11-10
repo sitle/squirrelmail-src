@@ -1,31 +1,30 @@
 <?php
 
 /**
- * seaspray_theme.php
- *    Name:    Sea Spray Theme
- *    Author:  Luke Ehresman
- *    Date:    March 3, 2000
- *    Comment: 
+ * Name:    Sea Spray Theme
+ * Date:    March 3, 2000
  *
- * Copyright (c) 2000-2005 The SquirrelMail Project Team
- * Licensed under the GNU GPL. For full terms see the file COPYING.
- *
- * $Id$
+ * @author Luke Ehresman
+ * @copyright &copy; 2000-2005 The SquirrelMail Project Team
+ * @license http://opensource.org/licenses/gpl-license.php GNU Public License
+ * @version $Id$
+ * @package squirrelmail
+ * @subpackage themes
  */
 
 global $color;
-$color[0]   = '#7CA4A4'; 
+$color[0]   = '#7ca4a4';
 $color[1]   = '#800000';
-$color[2]   = '#CC0000';
+$color[2]   = '#cc0000';
 $color[3]   = '#588080';
-$color[4]   = '#DCFFFF';
-$color[5]   = '#98C0C0';
+$color[4]   = '#dcffff';
+$color[5]   = '#98c0c0';
 $color[6]   = '#000000';
 $color[7]   = '#184040';
 $color[8]   = '#000000';
-$color[9]   = '#78A0A0';
+$color[9]   = '#78a0a0';
 $color[10]  = '#386060';
-$color[11]  = '#FFFFB0';
-$color[15]  = '#B0FFFF';
+$color[11]  = '#ffffb0';
+$color[15]  = '#b0ffff';
 
 ?>
