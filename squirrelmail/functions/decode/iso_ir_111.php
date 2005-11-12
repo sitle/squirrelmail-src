@@ -1,36 +1,34 @@
 <?php
+
 /**
  * decode/iso-ir-111.php
  *
- * Copyright (c) 2003-2005 The SquirrelMail Project Team
- * Licensed under the GNU GPL. For full terms see the file COPYING.
- *
  * This file contains iso-ir-111 decoding function that is needed to read
  * iso-ir-111 encoded mails in non-iso-ir-111 locale.
- * 
+ *
  * Original data taken from:
  *  http://crl.nmsu.edu/~mleisher/csets/ISOIR111.TXT
  *
- * Original ID: Id: ISOIR111.TXT,v 1.2 1999/08/23 18:34:15 mleisher Exp 
+ * Original ID: Id: ISOIR111.TXT,v 1.2 1999/08/23 18:34:15 mleisher Exp
  *   Name:             ISO IR 111/ECMA Cyrillic to Unicode 2.1 mapping table.
- * Typed in by hand from 
+ * Typed in by hand from
  *    http://www.fingertipsoft.com/ref/cyrillic/charsets.html
  * Author: Mark Leisher <mleisher@crl.nmsu.edu>
  * Date: 05 March 1998
  *
  * Original copyright:
  * Copyright 1999 Computing Research Labs, New Mexico State University
- * 
+ *
  * Permission is hereby granted, free of charge, to any person obtaining a
  * copy of this software and associated documentation files (the ""Software""),
  * to deal in the Software without restriction, including without limitation
  * the rights to use, copy, modify, merge, publish, distribute, sublicense,
  * and/or sell copies of the Software, and to permit persons to whom the
  * Software is furnished to do so, subject to the following conditions:
- * 
+ *
  * The above copyright notice and this permission notice shall be included in
  * all copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED ""AS IS"", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.  IN NO EVENT SHALL
@@ -39,6 +37,8 @@
  * OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR
  * THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  *
+ * @copyright &copy; 2003-2005 The SquirrelMail Project Team
+ * @license http://opensource.org/licenses/gpl-license.php GNU Public License
  * @version $Id$
  * @package squirrelmail
  * @subpackage decode

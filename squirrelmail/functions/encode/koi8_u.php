@@ -1,12 +1,14 @@
 <?php
+
 /**
  * koi8-u encoding functions
  *
  * takes a string of unicode entities and converts it to a koi8-u encoded string
  * Unsupported characters are replaced with ?.
  *
+ * @copyright &copy; 2004-2005 The SquirrelMail Project Team
+ * @license http://opensource.org/licenses/gpl-license.php GNU Public License
  * @version $Id$
- * @copyright Copyright &copy; 2004-2005 The SquirrelMail Project Team
  * @package squirrelmail
  * @subpackage encode
  */
@@ -30,7 +32,7 @@ function charset_encode_koi8_u ($string) {
  * Return koi8-u symbol when unicode character number is provided
  *
  * This function is used internally by charset_encode_koi8_u
- * function. It might be unavailable to other squirrelmail functions.
+ * function. It might be unavailable to other SquirrelMail functions.
  * Don't use it or make sure, that functions/encode/koi8_u.php is
  * included.
  *

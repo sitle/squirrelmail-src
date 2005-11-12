@@ -1,4 +1,5 @@
 <?php
+
 /**
  * utf-8 encoding functions
  *
@@ -9,8 +10,9 @@
  * Original code is taken from www.php.net manual comments
  * Original author: ronen at greyzone dot com
  *
+ * @copyright &copy; 2004-2005 The SquirrelMail Project Team
+ * @license http://opensource.org/licenses/gpl-license.php GNU Public License
  * @version $Id$
- * @copyright Copyright &copy; 2004-2005 The SquirrelMail Project Team
  * @package squirrelmail
  * @subpackage encode
  */
@@ -21,7 +23,6 @@
  * @return string utf-8 encoded text
  */
 function charset_encode_utf_8 ($string) {
-
    // don't run encoding function, if there is no encoded characters
    if (! preg_match("'&#[0-9]+;'",$string) ) return $string;
 
@@ -35,7 +36,7 @@ function charset_encode_utf_8 ($string) {
  * Return utf8 symbol when unicode character number is provided
  *
  * This function is used internally by charset_encode_utf_8
- * function. It might be unavailable to other squirrelmail functions.
+ * function. It might be unavailable to other SquirrelMail functions.
  * Don't use it or make sure, that functions/encode/utf_8.php is
  * included.
  *
