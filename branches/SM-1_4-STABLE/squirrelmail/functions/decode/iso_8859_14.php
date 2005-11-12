@@ -1,13 +1,11 @@
 <?php
+
 /**
  * decode/iso8859-14.php
  *
- * Copyright (c) 2003-2005 The SquirrelMail Project Team
- * Licensed under the GNU GPL. For full terms see the file COPYING.
- *
  * This file contains iso-8859-14 decoding function that is needed to read
  * iso-8859-14 encoded mails in non-iso-8859-14 locale.
- * 
+ *
  * Original data taken from:
  *  ftp://ftp.unicode.org/Public/MAPPINGS/ISO8859/8859-14.TXT
  *
@@ -36,6 +34,8 @@
  *  internal or external distribution as long as this notice remains
  *  attached.
  *
+ * @copyright &copy; 2003-2005 The SquirrelMail Project Team
+ * @license http://opensource.org/licenses/gpl-license.php GNU Public License
  * @version $Id$
  * @package squirrelmail
  * @subpackage decode
@@ -44,7 +44,7 @@
 /**
  * Decode iso8859-14 encoded string
  * @param string $string Encoded string
- * @return string $string Decoded string 
+ * @return string $string Decoded string
  */
 function charset_decode_iso_8859_14 ($string) {
     // don't do decoding when there are no 8bit symbols
