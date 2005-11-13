@@ -3,11 +3,10 @@
 /**
  * options_display.php
  *
- * Copyright (c) 1999-2005 The SquirrelMail Project Team
- * Licensed under the GNU GPL. For full terms see the file COPYING.
- *
  * Displays all optinos about display preferences
  *
+ * @copyright &copy; 1999-2005 The SquirrelMail Project Team
+ * @license http://opensource.org/licenses/gpl-license.php GNU Public License
  * @version $Id$
  * @package squirrelmail
  */
@@ -93,6 +92,7 @@ function load_optpage_data_display() {
             $language_values[$lang_key] = $lang_attributes['NAME'];
         }
     }
+
     asort($language_values);
     $language_values =
         array_merge(array('' => _("Default")), $language_values);
@@ -116,7 +116,6 @@ function load_optpage_data_display() {
                            SMPREF_JS_ON         => _("Always"),
                            SMPREF_JS_OFF        => _("Never"))
     );
-
 
     if ($optmode != 'submit')
        $onLoadScript = 'document.forms[0].new_js_autodetect_results.value = \'' . SMPREF_JS_ON . '\'';
@@ -375,10 +374,14 @@ function load_optpage_data_display() {
 /** Define any specialized save functions for this option page. ***/
 /******************************************************************/
 
+/**
+ * This function saves a new theme setting.
+ * It updates the theme array.
+ */
 function save_option_theme($option) {
     global $theme;
 
-    // Do checking to make sure $new_theme is in the array.
+    /* Do checking to make sure $new_theme is in the array. */
     $theme_in_array = false;
     for ($i = 0; $i < count($theme); ++$i) {
         if ($theme[$i]['PATH'] == $option->new_value) {
@@ -391,7 +394,7 @@ function save_option_theme($option) {
         $option->new_value = '';
     }
 
-    // Save the option like normal.
+    /* Save the option like normal. */
     save_option($option);
 }
 

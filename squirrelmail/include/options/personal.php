@@ -3,11 +3,10 @@
 /**
  * options_personal.php
  *
- * Copyright (c) 1999-2005 The SquirrelMail Project Team
- * Licensed under the GNU GPL. For full terms see the file COPYING.
- *
  * Displays all options relating to personal information
  *
+ * @copyright &copy; 1999-2005 The SquirrelMail Project Team
+ * @license http://opensource.org/licenses/gpl-license.php GNU Public License
  * @version $Id$
  * @package squirrelmail
  */
@@ -85,7 +84,7 @@ function load_optpage_data_personal() {
     if ($edit_identity) {
         $optvals[SMOPT_GRP_CONTACT][] = array(
             'name'    => 'email_address',
-            'caption' => _("Email Address"),
+            'caption' => _("E-mail Address"),
             'type'    => SMOPT_TYPE_STRING,
             'refresh' => SMOPT_REFRESH_NONE,
             'size'    => SMOPT_SIZE_HUGE
@@ -93,7 +92,7 @@ function load_optpage_data_personal() {
     } else {
         $optvals[SMOPT_GRP_CONTACT][] = array(
             'name'    => 'email_address',
-            'caption' => _("Email Address"),
+            'caption' => _("E-mail Address"),
             'type'    => SMOPT_TYPE_COMMENT,
             'refresh' => SMOPT_REFRESH_NONE,
             'comment' => $email_address
@@ -130,13 +129,15 @@ function load_optpage_data_personal() {
             'comment' =>  $identities_link_value
         );
     }
-    
+
     if ( $tzChangeAllowed ) {
         $TZ_ARRAY[SMPREF_NONE] = _("Same as server");
         $tzfile = SM_PATH . 'locale/timezones.cfg';
         if ((!is_readable($tzfile)) or (!$fd = fopen($tzfile,'r'))) {
             $message = _("Error opening timezone config, contact administrator.");
         }
+
+        // TODO: make error user friendly
         if (isset($message)) {
             plain_error_message($message, $color);
             exit;
@@ -161,7 +162,7 @@ function load_optpage_data_personal() {
             'posvals' => $TZ_ARRAY
         );
     }
-    
+
     /*** Load the Reply Citation Options into the array ***/
     $optgrps[SMOPT_GRP_REPLY] = _("Reply Citation Options");
     $optvals[SMOPT_GRP_REPLY] = array();
