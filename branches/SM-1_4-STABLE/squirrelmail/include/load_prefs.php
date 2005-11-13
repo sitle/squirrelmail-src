@@ -243,7 +243,7 @@ $date_format = getPref($data_dir, $username, 'date_format', 3);
 $hour_format = getPref($data_dir, $username, 'hour_format', SMPREF_TIME_12HR);
 
 /*  compose in new window setting */
-$compose_new_win = getPref($data_dir, $username, 'compose_new_win', SMPREF_OFF);
+$compose_new_win = getPref($data_dir, $username, 'compose_new_win', 0);
 $compose_height = getPref($data_dir, $username, 'compose_height', 550);
 $compose_width = getPref($data_dir, $username, 'compose_width', 640);
 
