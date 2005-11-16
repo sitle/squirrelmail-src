@@ -303,9 +303,9 @@ function sqsession_destroy() {
 
     global $base_uri;
 
-    if (isset($_COOKIE[session_name()])) setcookie(session_name(), '', time() - 3600, $base_uri);
-    if (isset($_COOKIE['username'])) setcookie('username','',time() - 3600,$base_uri);
-    if (isset($_COOKIE['key'])) setcookie('key','',time() - 3600,$base_uri);
+    if (isset($_COOKIE[session_name()])) setcookie(session_name(), '', 0, $base_uri);
+    if (isset($_COOKIE['username'])) setcookie('username', '', 0, $base_uri);
+    if (isset($_COOKIE['key'])) setcookie('key', '', 0, $base_uri);
 
     $sessid = session_id();
     if (!empty( $sessid )) {
