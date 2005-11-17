@@ -15,9 +15,10 @@
 /**
  * Decode euc-cn encoded string
  * @param string $string euc-cn string
+ * @param boolean $save_html don't html encode special characters if true
  * @return string $string decoded string
  */
-function charset_decode_euc_cn ($string) {
+function charset_decode_euc_cn ($string,$save_html) {
     // global $aggressive_decoding;
 
     // don't do decoding when there are no 8bit symbols
@@ -26,10 +27,17 @@ function charset_decode_euc_cn ($string) {
 
     // this is CPU intensive task. Use recode functions if they are available.
     if (function_exists('recode_string')) {
-        // undo htmlspecial chars
-        $string=str_replace(array('&amp;','&quot;','&lt;','&gt;'),array('&','"','<','>'),$string);
+        // if string is already sanitized, undo htmlspecial chars
+        if (! $save_html)
+            $string=str_replace(array('&amp;','&quot;','&lt;','&gt;'),array('&','"','<','>'),$string);
 
-        return recode_string("euc-cn..html",$string);
+        $string = recode_string("euc-cn..html",$string);
+
+        // if string sanitizing is not needed, undo htmlspecialchars applied by recode.
+        if ($save_html)
+            $string=str_replace(array('&amp;','&quot;','&lt;','&gt;'),array('&','"','<','>'),$string);
+
+        return $string;
     }
 
     /**
