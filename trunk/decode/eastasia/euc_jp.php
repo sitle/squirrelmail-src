@@ -40,9 +40,10 @@
 /**
  * Decode euc-jp encoded string
  * @param string $string Encoded string
+ * @param boolean $save_html don't html encode special characters if true
  * @return string $string Decoded string
-*/
-function charset_decode_euc_jp($string) {
+ */
+function charset_decode_euc_jp($string,$save_html=false) {
     global $aggressive_decoding, $squirrelmail_language;
 
     // ja_JP uses own functions
@@ -55,8 +56,17 @@ function charset_decode_euc_jp($string) {
 
     // this is CPU intensive task. Use recode functions if they are available. 
     if (function_exists('recode_string')) {
-        $string=str_replace(array('&amp;','&quot;','&lt;','&gt;'),array('&','"','<','>'),$string);
-        return recode_string("euc-jp..html",$string);
+        // if string is already sanitized, undo htmlspecial chars
+        if (! $save_html)
+            $string=str_replace(array('&amp;','&quot;','&lt;','&gt;'),array('&','"','<','>'),$string);
+
+        $string = recode_string("euc-jp..html",$string);
+
+        // if string sanitizing is not needed, undo htmlspecialchars applied by recode.
+        if ($save_html)
+            $string=str_replace(array('&amp;','&quot;','&lt;','&gt;'),array('&','"','<','>'),$string);
+
+        return $string;
     }
 
     /**

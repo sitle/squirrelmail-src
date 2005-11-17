@@ -40,15 +40,25 @@
 /**
  * Decode big5 encoded string
  * @param string $string big5 string
+ * @param boolean $save_html don't html encode special characters if true
  * @return string $string decoded string
  */
-function charset_decode_big5 ($string) {
+function charset_decode_big5 ($string, $save_html=false) {
     global $aggressive_decoding;
 
     // this is CPU intensive task. Use recode functions if they are available. 
     if (function_exists('recode_string')) {
-        $string=str_replace(array('&amp;','&quot;','&lt;','&gt;'),array('&','"','<','>'),$string);
-        return recode_string("big5..html",$string);
+        // if string is already sanitized, undo htmlspecial chars
+        if (! $save_html)
+            $string=str_replace(array('&amp;','&quot;','&lt;','&gt;'),array('&','"','<','>'),$string);
+
+        $string = recode_string("big5..html",$string);
+
+        // if string sanitizing is not needed, undo htmlspecialchars applied by recode.
+        if ($save_html)
+            $string=str_replace(array('&amp;','&quot;','&lt;','&gt;'),array('&','"','<','>'),$string);
+
+        return $string;
     }
 
     /*

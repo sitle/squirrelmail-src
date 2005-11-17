@@ -15,9 +15,10 @@
 /**
  * Decode gb18030 encoded string
  * @param string $string gb18030 string
+ * @param boolean $save_html don't html encode special characters if true
  * @return string $string decoded string
  */
-function charset_decode_gb18030 ($string) {
+function charset_decode_gb18030 ($string, $save_html=false) {
     // global $aggressive_decoding;
 
     // don't do decoding when there are no 8bit symbols
@@ -26,10 +27,16 @@ function charset_decode_gb18030 ($string) {
 
     // this is CPU intensive task. Use recode functions if they are available.
     if (function_exists('recode_string')) {
-        // undo htmlspecial chars
-        $string=str_replace(array('&amp;','&quot;','&lt;','&gt;'),array('&','"','<','>'),$string);
+        // if string is already sanitized, undo htmlspecial chars
+        if (! $save_html)
+            $string=str_replace(array('&amp;','&quot;','&lt;','&gt;'),array('&',    '"',     '<',   '>'),$string);
 
-        return recode_string("gb18030..html",$string);
+        $string = recode_string("gb18030..html",$string);
+        // if string sanitizing is not needed, undo htmlspecialchars applied by recode.
+        if ($save_html)
+            $string=str_replace(array('&amp;','&quot;','&lt;','&gt;'),array('&',    '"',     '<',   '>'),$string);
+
+        return $string;
     }
 
     /*
