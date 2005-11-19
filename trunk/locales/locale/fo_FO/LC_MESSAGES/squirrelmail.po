@@ -1,24 +1,34 @@
 # translation of squirrelmail.po to Faroese
 # Faroese Language Translation
+#
 # Copyright (C) 2003, 2004, 2005 Free Software Foundation, Inc.
 # Danial Olsen <danial@com-data.fo>, 2003, 2004, 2005.
-# $Id$
 msgid ""
 msgstr ""
-"Project-Id-Version: squirrelmail HEAD\n"
+"Project-Id-Version: squirrelmail\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-04-16 19:47+0200\n"
-"PO-Revision-Date: 2005-06-28 01:14+0100\n"
-"Last-Translator: Danial Olsen <danial@com-data.fo>\n"
-"Language-Team: Faroese\n"
+"POT-Creation-Date: 2005-11-12 16:42+0200\n"
+"PO-Revision-Date: 2005-11-18 01:54+0000\n"
+"Last-Translator: Dánial Olsen <danial@com-data.fo>\n"
+"Language-Team: Faroese <squirrelmail-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=ISO-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.10.1\n"
+"Exp $\n"
+"X-Generator: KBabel 1.11\n"
 "Plural-Forms:  nplurals=2; plural=(n != 1);\n"
 
 msgid "Address Book"
 msgstr "Adressubók"
+
+msgid "All"
+msgstr "Alt"
+
+msgid "To"
+msgstr "Til"
+
+msgid "Cc"
+msgstr "Cc"
 
 msgid "Name"
 msgstr "Navn"
@@ -32,17 +42,17 @@ msgstr "Upplýsingar"
 msgid "Source"
 msgstr "Kelda"
 
-msgid "To"
-msgstr "Til"
-
-msgid "Cc"
-msgstr "Cc"
-
 msgid "Bcc"
 msgstr "Bcc"
 
-msgid "No persons matching your search were found"
-msgstr "Ongir persónar funnir sambært tíni leiting"
+msgid "Use Addresses"
+msgstr "Brúka Adressur"
+
+msgid "Cancel"
+msgstr "Ógilda"
+
+msgid "Address Book Search"
+msgstr "Leiting í Adressubók"
 
 msgid "Search for"
 msgstr "Leita eftir"
@@ -59,30 +69,21 @@ msgstr "Leita"
 msgid "List all"
 msgstr "Vís alt"
 
-msgid "Close"
-msgstr "Lat aftur"
-
-#, php-format
+#, c-format
 msgid "Unable to list addresses from %s"
 msgstr "Kann ikki vísa adressur frá %s"
 
 msgid "Your search failed with the following error(s)"
 msgstr "Feilur í leiting við hesum villum"
 
-msgid "All"
-msgstr "Alt"
-
-msgid "Use Addresses"
-msgstr "Brúka Adressur"
-
-msgid "Cancel"
-msgstr "Ógilda"
-
-msgid "Address Book Search"
-msgstr "Leiting í Adressubók"
+msgid "No persons matching your search were found"
+msgstr "Ongir persónar funnir sambært tíni leiting"
 
 msgid "Return"
 msgstr "Aftur"
+
+msgid "Close"
+msgstr "Lat aftur"
 
 msgid "Nickname"
 msgstr "Dulnevni"
@@ -129,11 +130,23 @@ msgstr "Rætta valda"
 msgid "Delete selected"
 msgstr "Strika valda"
 
-#, php-format
+msgid "sort by nickname"
+msgstr "skil eftir dulnevni"
+
+msgid "sort by name"
+msgstr "skil eftir navni"
+
+msgid "sort by email"
+msgstr "skil eftir t-posti"
+
+msgid "sort by info"
+msgstr "skil eftir upplýsingum"
+
+#, c-format
 msgid "Add to %s"
 msgstr "Legg afturat %s"
 
-#, php-format
+#, c-format
 msgid "%s wrote:"
 msgstr "%s skrivaði:"
 
@@ -143,7 +156,7 @@ msgstr "sitat"
 msgid "who"
 msgstr "hvør"
 
-#, php-format
+#, c-format
 msgid "On %s, %s wrote:"
 msgstr "Tann %s, skrivaði %s:"
 
@@ -186,6 +199,13 @@ msgstr "Legg afturat"
 msgid "Delete selected attachments"
 msgstr "Strika valdu viðfestingar"
 
+msgid ""
+"Because PHP file uploads are turned off, you can not attach files to this "
+"message. Please see your system administrator for details."
+msgstr ""
+"Av tí at PHP uppsendingar eru sløktar, kanst tú ikki viðfesta fílir til tíni "
+"boð. Tosa við skipanarumsitaran fyri nærri upplýsingar."
+
 msgid "Priority"
 msgstr "Raðfesting"
 
@@ -219,12 +239,34 @@ msgstr "Goym Kladdu"
 msgid "You have not filled in the \"To:\" field."
 msgstr "Tú hevur ikki útfylt \"Til:\" teigin."
 
-#, php-format
+#, c-format
 msgid "Error: Draft folder %s does not exist."
 msgstr "Villa: Kladduskjáttan %s finst ikki."
 
 msgid "Server replied:"
 msgstr "Verturin svaraði:"
+
+msgid "Illegal folder name. Please select a different name."
+msgstr "Óloyviligt skjáttunavn. Vinarliga vel eitt annað navn."
+
+msgid "Click here to go back"
+msgstr "Trýst her fyri at venda aftur"
+
+msgid "You have not selected a folder to delete. Please do so."
+msgstr "Tú hevur ikki valt eina skjáttu at strika. Vinarliga ger tað."
+
+msgid "Delete Folder"
+msgstr "Strika skjáttu"
+
+#, c-format
+msgid "Are you sure you want to delete %s?"
+msgstr "Ert tú vís(ur) í, at tú vilt strika %s?"
+
+msgid "Yes"
+msgstr "Ja"
+
+msgid "No"
+msgstr "Nei"
 
 msgid "Folders"
 msgstr "Skjáttur"
@@ -277,9 +319,6 @@ msgstr "Rætta navn"
 msgid "No folders found"
 msgstr "Ongar skjáttur funnar"
 
-msgid "Delete Folder"
-msgstr "Strika skjáttu"
-
 msgid "Delete"
 msgstr "Strika"
 
@@ -297,25 +336,6 @@ msgstr "Ongar skjáttur vórðu funnar at tekna hald til!"
 
 msgid "Subscribe to:"
 msgstr "Tekna hald til:"
-
-msgid "Illegal folder name. Please select a different name."
-msgstr "Óloyviligt skjáttunavn. Vinarliga vel eitt annað navn."
-
-msgid "Click here to go back"
-msgstr "Trýst her fyri at venda aftur"
-
-msgid "You have not selected a folder to delete. Please do so."
-msgstr "Tú hevur ikki valt eina skjáttu at strika. Vinarliga ger tað."
-
-#, php-format
-msgid "Are you sure you want to delete %s?"
-msgstr "Ert tú vís(ur) í, at tú vilt strika %s?"
-
-msgid "Yes"
-msgstr "Ja"
-
-msgid "No"
-msgstr "Nei"
 
 msgid "You have not selected a folder to rename. Please do so."
 msgstr "Tú hevur ikki valt eina skjáttu at broyta navn á. Vinarliga ger tað."
@@ -335,11 +355,12 @@ msgstr "Villa: Hjálpifíla er ikki í røttum sniði!"
 msgid "Help"
 msgstr "Hjálp"
 
-#, php-format
 msgid ""
-"The help has not been translated to %s. It will be displayed in English "
-"instead."
-msgstr "Hjálpin er ikki umsett til %s. Hon verður víst á enskum ístaðin."
+"The help has not been translated to the selected language. It will be "
+"displayed in English instead."
+msgstr ""
+"Hjálpin er ikki umsett til tað valda málið. Hon verður víst á enskum "
+"í staðin."
 
 msgid "Some or all of the help documents are not present!"
 msgstr "Nakrar ella allar hjálpifílirnar eru ikki til staðar!"
@@ -371,21 +392,27 @@ msgstr "INBOX"
 msgid "Purge"
 msgstr "Tøm"
 
+msgid "Last Refresh"
+msgstr "Seinasta endurlesing"
+
+msgid "Check mail"
+msgstr "Kanna post"
+
 msgid "Login"
 msgstr "Logga inn"
 
-#, php-format
+#, c-format
 msgid "%s Logo"
 msgstr "%s búmerki"
 
-#, php-format
+#, c-format
 msgid "SquirrelMail version %s"
 msgstr "SquirrelMail slepping %s"
 
 msgid "By the SquirrelMail Project Team"
 msgstr "Av SquirrelMail menningarliðinum"
 
-#, php-format
+#, c-format
 msgid "%s Login"
 msgstr "Logga inn %s"
 
@@ -398,71 +425,11 @@ msgstr "Loyniorð:"
 msgid "No messages were selected."
 msgstr "Onki boð varð valt."
 
-msgid "Personal Information"
-msgstr "Persónligir upplýsingar"
-
-msgid "Display Preferences"
-msgstr "Snið uppsetingar"
-
-msgid "Message Highlighting"
-msgstr "Merkja boð"
-
-msgid "Folder Preferences"
-msgstr "Skjáttu uppsetingar"
-
-msgid "Index Order"
-msgstr "Raðfylgja á skrá"
-
 msgid "Options"
 msgstr "Valmøguleikar"
 
-msgid "Error(s) occurred while saving your options"
-msgstr "Har hendi ein villa, tá tínir valmøguleikar blivu goymdir"
-
-msgid "Some of your preference changes were not applied."
-msgstr "Nakrar av tínum uppsetingarbroytingum vórðu ikki settar í gildi."
-
-msgid "Successfully Saved Options"
-msgstr "Valmøguleikar eru goymdir"
-
-msgid "Refresh Folder List"
-msgstr "Endurles skjáttulista"
-
-msgid "Refresh Page"
-msgstr "Endurles síðu"
-
-msgid ""
-"This contains personal information about yourself such as your name, your "
-"email address, etc."
-msgstr ""
-"Hetta inniheldur tínar persónligu upplýsingar, so sum títt navn, tína t-post "
-"adressu osv."
-
-msgid ""
-"You can change the way that SquirrelMail looks and displays information to "
-"you, such as the colors, the language, and other settings."
-msgstr ""
-"Tú kanst broyta mátan sum SquirrelMail vísir tær upplýsingar, sosum litir, "
-"mál o.a."
-
-msgid ""
-"Based upon given criteria, incoming messages can have different background "
-"colors in the message list. This helps to easily distinguish who the "
-"messages are from, especially for mailing lists."
-msgstr ""
-"Grundað á givnar upplýsingar, kunnu innkomandi boð hava ymiskar "
-"bakgrundslitir í boðskránni. Hetta ger tað lættari at skina á hvørjum boðini "
-"eru frá, serliga fyri mailing-listar."
-
-msgid "These settings change the way your folders are displayed and manipulated."
-msgstr "Hesar uppsetingarnar broyta mátan, tínar skjáttur verða vístar."
-
-msgid ""
-"The order of the message index can be rearranged and changed to contain the "
-"headers in any order you want."
-msgstr ""
-"Raðfylgjan á teigum í boðskránni kann verða broytt, so frágreiðingar verða "
-"vístar, í tí raðfylgju tú ynskir."
+msgid "Message Highlighting"
+msgstr "Merkja boð"
 
 msgid "New"
 msgstr "Nýtt"
@@ -545,21 +512,21 @@ msgstr "Ex: 63aa7f"
 msgid "Matches"
 msgstr "Sambæringar"
 
-#, php-format
-msgid "Alternate Identity %d"
-msgstr "Annar samleiki %d"
-
-msgid "Advanced Identities"
-msgstr "Framkomnir samleikar"
-
 msgid "Default Identity"
 msgstr "Sjálvsettur samleiki"
+
+#, c-format
+msgid "Alternate Identity %d"
+msgstr "Annar samleiki %d"
 
 msgid "Add a New Identity"
 msgstr "Legg samleika afturat"
 
+msgid "Advanced Identities"
+msgstr "Framkomnir samleikar"
+
 msgid "Full Name"
-msgstr "Fult navn"
+msgstr "Fulla navn"
 
 msgid "E-Mail Address"
 msgstr "T-post adressa"
@@ -575,6 +542,9 @@ msgstr "Ger sjálvsett"
 
 msgid "Move Up"
 msgstr "Flyt upp"
+
+msgid "Index Order"
+msgstr "Raðfylgja á skrá"
 
 msgid "Checkbox"
 msgstr "Valteigur"
@@ -606,8 +576,80 @@ msgstr "strika"
 msgid "Return to options page"
 msgstr "Aftur til valmøguleikar"
 
+msgid "Personal Information"
+msgstr "Persónligir upplýsingar"
+
+msgid "Display Preferences"
+msgstr "Snið uppsetingar"
+
+msgid "Folder Preferences"
+msgstr "Skjáttu uppsetingar"
+
+msgid "Error(s) occurred while saving your options"
+msgstr "Har hendi ein villa, tá tínir valmøguleikar blivu goymdir"
+
+msgid "Some of your preference changes were not applied."
+msgstr "Nakrar av tínum uppsetingarbroytingum vórðu ikki settar í gildi."
+
+msgid "Successfully Saved Options"
+msgstr "Valmøguleikar eru goymdir"
+
+msgid "Refresh Folder List"
+msgstr "Endurles skjáttulista"
+
+msgid "Refresh Page"
+msgstr "Endurles síðu"
+
+msgid ""
+"This contains personal information about yourself such as your name, your "
+"email address, etc."
+msgstr ""
+"Hetta inniheldur tínar persónligu upplýsingar, so sum títt navn, tína t-post "
+"adressu osv."
+
+msgid ""
+"You can change the way that SquirrelMail looks and displays information to "
+"you, such as the colors, the language, and other settings."
+msgstr ""
+"Tú kanst broyta mátan sum SquirrelMail vísir tær upplýsingar, sosum litir, "
+"mál o.a."
+
+msgid ""
+"Based upon given criteria, incoming messages can have different background "
+"colors in the message list. This helps to easily distinguish who the "
+"messages are from, especially for mailing lists."
+msgstr ""
+"Grundað á givnar upplýsingar, kunnu innkomandi boð hava ymiskar "
+"bakgrundslitir í boðskránni. Hetta ger tað lættari at skina á hvørjum boðini "
+"eru frá, serliga fyri mailing-listar."
+
+msgid "These settings change the way your folders are displayed and manipulated."
+msgstr "Hesar uppsetingarnar broyta mátan, tínar skjáttur verða vístar."
+
+msgid ""
+"The order of the message index can be rearranged and changed to contain the "
+"headers in any order you want."
+msgstr ""
+"Raðfylgjan á teigum í boðskránni kann verða broytt, so frágreiðingar verða "
+"vístar, í tí raðfylgju tú ynskir."
+
 msgid "Message not printable"
 msgstr "Boð kann ikki prentast"
+
+msgid "Attachments:"
+msgstr "Viðfestar fílir:"
+
+msgid "Unknown sender"
+msgstr "Ókendur sendari"
+
+msgid "Info:"
+msgstr "Upplýsingar:"
+
+msgid "Size:"
+msgstr "Stødd:"
+
+msgid "Type:"
+msgstr "Slag:"
 
 msgid "Invalid URL"
 msgstr "Ógildug slóð"
@@ -630,7 +672,7 @@ msgstr "Tíni boð"
 msgid "Sent"
 msgstr "Sent"
 
-#, php-format
+#, c-format
 msgid "Was displayed on %s"
 msgstr "Var víst á %s"
 
@@ -639,9 +681,6 @@ msgstr "færri"
 
 msgid "more"
 msgstr "fleiri"
-
-msgid "Unknown sender"
-msgstr "Ókendur sendari"
 
 msgid "Mailer"
 msgstr "Post-forrit"
@@ -752,7 +791,7 @@ msgstr "Trýst her fyri at logga inn aftur"
 msgid "Viewing a Business Card"
 msgstr "Vísi eitt Business Card"
 
-#, php-format
+#, c-format
 msgid ""
 "vCard Version %s is not supported. Some information might not be converted "
 "correctly."
@@ -810,7 +849,7 @@ msgstr ""
 "Kundi ikki taka PEAR dátugrunnfunkur við ið eru kravdar av \"backend\" "
 "dátugrunninum."
 
-#, php-format
+#, c-format
 msgid "Is PEAR installed, and is the include path set correctly to find %s?"
 msgstr "Er PEAR lagt inn? Og er \"include path\" rætt uppsettur til at finna %s?"
 
@@ -820,20 +859,20 @@ msgstr "Vinarliga set teg í samband við umsitaran og greið frá um hesa villu."
 msgid "Personal address book"
 msgstr "Persónlig adressubók"
 
-#, php-format
+#, c-format
 msgid "Database error: %s"
 msgstr "Villa í dátugrunni: %s"
 
 msgid "Addressbook is read-only"
 msgstr "Adressubók kann bert lesast"
 
-#, php-format
-msgid "User '%s' already exist"
-msgstr "Brúkarin '%s' er longu stovnaður"
+#, c-format
+msgid "User \"%s\" already exists"
+msgstr "Brúkarin \"%s\" finst longu"
 
-#, php-format
-msgid "User '%s' does not exist"
-msgstr "Brúkarin '%s' er ikki stovnaður"
+#, c-format
+msgid "User \"%s\" does not exist"
+msgstr "Brúkarin \"%s\" finst ikki"
 
 msgid "Not a file name"
 msgstr "Ikki eitt fílunavn"
@@ -859,7 +898,7 @@ msgstr "Feilur í skriving til adressubók"
 msgid "Error initializing addressbook database."
 msgstr "Ein villa hendi undir innlesing av adressubók dátugrunni."
 
-#, php-format
+#, c-format
 msgid "Error opening file %s"
 msgstr "Ein villa hendi undir innlesing av fílu %s"
 
@@ -869,9 +908,12 @@ msgstr "Alheims adressubók"
 msgid "Error initializing global addressbook."
 msgstr "Ein villa hendi undir innlesing av alheims adressubók."
 
-#, php-format
+#, c-format
 msgid "Error initializing LDAP server %s:"
 msgstr "Villa í LDAP verti %s:"
+
+msgid "Click here to change the sorting of the address list"
+msgstr "Trýst her fyri at broyta skiljingina av adressulistanum"
 
 msgid "Invalid input data"
 msgstr "Ógildugt innlesingar dáta"
@@ -1026,18 +1068,18 @@ msgstr "D, g:i a"
 msgid "D, H:i"
 msgstr "D, H:i"
 
-#, php-format
+#, c-format
 msgid "Preference database error (%s). Exiting abnormally"
 msgstr "Villa í forvalda dátugrunni (%s). Endi óvanliga"
 
-#, php-format
+#, c-format
 msgid "Click here to return to %s"
 msgstr "Trýst her fyri at venda aftur til %s"
 
 msgid "Go to the login page"
 msgstr "Far til innloggingar síðu"
 
-#, php-format
+#, c-format
 msgid ""
 "Preference file, %s, does not exist. Log out, and log back in to create a "
 "default preference file."
@@ -1045,19 +1087,19 @@ msgstr ""
 "Forvald fíla, %s, finst ikki. Logga út og inn aftur fyri at stovna eina "
 "sjálvsetta forvalda fílu."
 
-#, php-format
+#, c-format
 msgid ""
 "Preference file, %s, could not be opened. Contact your system administrator "
 "to resolve this issue."
 msgstr "Forvald fíla, %s, kundi ikki opnast. Set teg í samband við umsitaran."
 
-#, php-format
+#, c-format
 msgid ""
 "Preference file, %s, could not be written. Contact your system administrator "
 "to resolve this issue."
 msgstr "Forvald fíla, %s, kundi ikki goymast. Set teg í samband við umsitaran."
 
-#, php-format
+#, c-format
 msgid ""
 "Preference file, %s, could not be copied from temporary file, %s. Contact "
 "your system administrator to resolve this issue."
@@ -1065,7 +1107,7 @@ msgstr ""
 "Forvald fíla, %s, kundi ikki avritast frá fyribils fílu, %s. Set teg í "
 "samband við umsitaran fyri at loysa trupulleikan."
 
-#, php-format
+#, c-format
 msgid "Error opening %s"
 msgstr "Fekk ikki opnað %s"
 
@@ -1075,26 +1117,26 @@ msgstr "Sjálvsett forvald fíla varð ikki funnin, ella kundi ikki lesast!"
 msgid "Could not create initial preference file!"
 msgstr "Kundi ikki stovna uppruna forvalda fílu!"
 
-#, php-format
+#, c-format
 msgid "%s should be writable by user %s"
 msgstr "%s skuldi kunna skrivast til av brúkaranum %s"
 
 msgid "Signature is too big."
 msgstr "Undirskrift er ov stór."
 
-#, php-format
+#, c-format
 msgid ""
 "Signature file, %s, could not be opened. Contact your system administrator "
 "to resolve this issue."
 msgstr "Undirskriftafíla, %s, kundi ikki opnast. Set teg í samband við umsitaran."
 
-#, php-format
+#, c-format
 msgid ""
 "Signature file, %s, could not be written. Contact your system administrator "
 "to resolve this issue."
 msgstr "Undirskriftafíla, %s, kundi ikki goymast. Set teg í samband við umsitaran."
 
-#, php-format
+#, c-format
 msgid ""
 "Signature file, %s, could not be copied from temporary file, %s. Contact "
 "your system administrator to resolve this issue."
@@ -1103,11 +1145,11 @@ msgstr ""
 "samband við umsitaran."
 
 msgid ""
-"You need to have php4 installed with the multibyte string function enabled "
+"You need to have PHP installed with the multibyte string function enabled "
 "(using configure option --enable-mbstring)."
 msgstr ""
-"Tú mást hava php4 innlagt við \"multibyte string\" funkuni gildaðari "
-"(nýt \"configure\" møguleikanum --enable-mbstring)."
+"Tú mást hava PHP innlagt við \"multibyte string\" funkuni gildaðari (nýt "
+"\"configure\" møguleikan --enable-mbstring)."
 
 msgid "ERROR: No available IMAP stream."
 msgstr "VILLA: Ongin fríur IMAP streymur."
@@ -1136,7 +1178,7 @@ msgstr "VILLA: IMAP verturin sleit sambandið."
 msgid "ERROR: Unknown IMAP response."
 msgstr "VILLA: Ókent IMAP svar."
 
-#, php-format
+#, c-format
 msgid "Error connecting to IMAP server: %s."
 msgstr "Fekk ikki samband við IMAP vert: %s."
 
@@ -1149,11 +1191,11 @@ msgstr "Við at brúka \"CRAM-MD5\" ella \"DIGEST-MD5\" virkar heimiling møguliga.
 msgid "Also, the use of TLS may allow SquirrelMail to login."
 msgstr "Eisini, TLS nýtsla kann loyva Squirrelmail at logga inn."
 
-#, php-format
+#, c-format
 msgid "Bad request: %s"
 msgstr "Vánalig umbøn: %s"
 
-#, php-format
+#, c-format
 msgid "Unknown error: %s"
 msgstr "Ókend villa: %s"
 
@@ -1245,11 +1287,11 @@ msgstr "Frável øll"
 msgid "Select All"
 msgstr "Vel øll"
 
-#, php-format
+#, c-format
 msgid "Viewing Messages: %s to %s (%s total)"
 msgstr "Vísi boð: %s til %s (%s tilsamans) "
 
-#, php-format
+#, c-format
 msgid "Viewing Message: %s (%s total)"
 msgstr "Vísi boð: %s (%s tilsamans)"
 
@@ -1262,8 +1304,8 @@ msgstr "Vís øll"
 msgid "SquirrelMail could not decode the bodystructure of the message"
 msgstr "SquirrelMail kundi ikki týða innihaldsbygnaðin á boðnum"
 
-msgid "the provided bodystructure by your imap-server"
-msgstr "tann veitti innihaldsbygnaðurin frá imap-vertinum"
+msgid "The bodystructure provided by your IMAP server:"
+msgstr "Tann veitti innihaldsbygnaðurin frá IMAP-vertinum:"
 
 msgid ""
 "Body retrieval error. The reason for this is most probably that the message "
@@ -1299,7 +1341,7 @@ msgstr "sec_remove_fo_FO.png"
 msgid "This external link will open in a new window"
 msgstr "Hendan slóð opnar eitt nýtt vindeyga"
 
-#, php-format
+#, c-format
 msgid "Option Type '%s' Not Found"
 msgstr "Valmøguleiki '%s' ikki funnin"
 
@@ -1309,7 +1351,7 @@ msgstr "Núverandi skjátta"
 msgid "Compose"
 msgstr "Skriva"
 
-#, php-format
+#, c-format
 msgid "Error creating directory %s."
 msgstr "Ein villa hendi tá fíluskrá %s skuldi stovnast."
 
@@ -1425,6 +1467,12 @@ msgstr "Tal av síðum at vísa í mesta lagi"
 
 msgid "Always Show Full Date"
 msgstr "Vís altíð fulla dagfesting"
+
+msgid "Length of From/To Field (0 for full)"
+msgstr "Long av Frá/Til teigi (0 fyri fulla)"
+
+msgid "Length of Subject Field (0 for full)"
+msgstr "Longd av Evni teigi (0 fyri fulla)"
 
 msgid "Message Display and Composition"
 msgstr "Boðvísing og -skriving"
@@ -1703,13 +1751,13 @@ msgid "Quote Who XML"
 msgstr "Sitat hvør XML"
 
 msgid "User-Defined"
-msgstr "Brúkara-uppsett"
+msgstr "Brúkara uppsett"
 
 msgid "User-Defined Citation Start"
-msgstr "Brúkara-Uppsett sitat byrjan"
+msgstr "Brúkara uppsett byrjan á sitati"
 
 msgid "User-Defined Citation End"
-msgstr "Brúkara-Uppsett sitat endi"
+msgstr "Brúkarauppsett endi á sitati"
 
 msgid "Signature Options"
 msgstr "Valmøguleikar av undirskrift"
@@ -1801,6 +1849,9 @@ msgstr "Mac OS X postvertur"
 msgid "hMailServer IMAP server"
 msgstr "hMailServer IMAP vertur"
 
+msgid "Binc IMAP server"
+msgstr "Binc IMAP vertur"
+
 msgid "Not one of the above servers"
 msgstr "Ongin av vertunum omanfyri"
 
@@ -1852,8 +1903,11 @@ msgstr "Login (plain text)"
 msgid "POP3 Before SMTP?"
 msgstr "POP3 áðrenn SMTP?"
 
+msgid "Header Encryption Key"
+msgstr "Bronglingarlykil til høvur"
+
 msgid "Invert Time"
-msgstr "Venda tíð"
+msgstr "Vend tíð"
 
 msgid "Folders Defaults"
 msgstr "Skjáttu sjálvsetingar"
@@ -1913,10 +1967,10 @@ msgid "Temp Directory"
 msgstr "Fyribils fíluskrá"
 
 msgid "Hash Level"
-msgstr "Hash stig"
+msgstr "\"Hash\" stig"
 
 msgid "Hash Disabled"
-msgstr "Hash sløkt"
+msgstr "\"Hash\" sløkt"
 
 msgid "Moderate"
 msgstr "Hóvligt"
@@ -1931,7 +1985,7 @@ msgid "Usernames in Lowercase"
 msgstr "Brúkaranøvn við smáum"
 
 msgid "Allow use of priority"
-msgstr "Loyv brúk av raðfesting"
+msgstr "Loyv brúki av raðfesting"
 
 msgid "Hide SM attributions"
 msgstr "Goym SM eginleikar"
@@ -1943,7 +1997,13 @@ msgid "Allow editing of identities"
 msgstr "Loyvt at broyta samleikar"
 
 msgid "Allow editing of full name"
-msgstr "Loyvt at broyta fult navn"
+msgstr "Loyvt at broyta fulla navn"
+
+msgid "Remove username from headers"
+msgstr "Strika brúkaranavn frá boðhøvdi"
+
+msgid "Used only when identities can't be modified"
+msgstr "Verður bert nýtt, tá samleikar ikki kunnu broytast"
 
 msgid "Use server-side sorting"
 msgstr "Brúka vertsskiljing"
@@ -1970,7 +2030,7 @@ msgid "Address book DSN"
 msgstr "\"DSN\" hjá adressubók"
 
 msgid "Address book table"
-msgstr "\"Table\" hjá adressubók"
+msgstr "Tabell hjá adressubók"
 
 msgid "Preferences DSN"
 msgstr "Valmøguleika \"DSN\""
@@ -2062,7 +2122,7 @@ msgstr "Leið til tema"
 msgid "Plugins"
 msgstr "Plugin"
 
-#, php-format
+#, c-format
 msgid "Plugin directory could not be found: %s"
 msgstr "Plugin skjátta varð ikki funnin: %s"
 
@@ -2095,13 +2155,13 @@ msgstr ""
 "Áðrenn tú sendir tína feilfráboðan, vinarliga kanna hesa eftirlitsskránna "
 "fyri allar vanligar trupulleikar."
 
-#, php-format
+#, c-format
 msgid ""
 "Make sure that you are running the most recent copy of %s. You are currently "
 "using version %s."
 msgstr "Tryggja tær, at tú nýtir nýggjastu útgávuna av %s. Tú nýtir nú slepping %s."
 
-#, php-format
+#, c-format
 msgid ""
 "Check to see if your bug is already listed in the %sBug List%s on "
 "SourceForge. If it is, we already know about it and are trying to fix it."
@@ -2119,7 +2179,7 @@ msgstr ""
 "hendir, tá tú vísir eini ávís boð, goym so hetta boðið, so vit møguliga "
 "kunnu síggja tað."
 
-#, php-format
+#, c-format
 msgid ""
 "If there were warnings displayed above, try to resolve them yourself. Read "
 "the guides in the %s directory where SquirrelMail was installed."
@@ -2136,10 +2196,10 @@ msgid ""
 msgstr ""
 "Við at trýsta á knøttin niðanfyri, byrjar tú eini nýggj boð til mennararnar "
 "av SquirrelMail. Hetta vil innihalda nógvar upplýsingar um tína "
-"stýrisskipan, tín kagara, hvussu SquirrelMail er uppsett og tín IMAP "
-"vert. Tú verður eisini spurd(ur) um upplýsingar. Útfyll bert ovasta part. "
-"Um tú hevur hug, kanst tú hyggja eftir restina av boðnum, fyri at vita hvat "
-"annað verður sent."
+"stýrisskipan, tín kagara, hvussu SquirrelMail er uppsett og tín IMAP vert. "
+"Tú verður eisini spurd(ur) um upplýsingar. Útfyll bert ovasta part. Um tú "
+"hevur hug, kanst tú hyggja eftir restina av boðnum, fyri at vita hvat annað "
+"verður sent."
 
 msgid ""
 "Please make sure to fill out as much information as you possibly can to give "
@@ -2152,8 +2212,8 @@ msgstr ""
 "verður ikki sjálvvirkin løgd afturat feilskránni á SourceForge; men onkur ið "
 "móttekur títt boð, kann leggja tað afturat fyri teg."
 
-msgid "This bug involves"
-msgstr "Hesin feilur umfatar"
+msgid "This bug involves:"
+msgstr "Hesin feilur umfatar:"
 
 msgid "the general program"
 msgstr "høvuðsforritið"
@@ -2168,20 +2228,20 @@ msgid "Bug"
 msgstr "Feilur"
 
 msgid "Bug Reports:"
-msgstr "Feil fráboðanir: "
+msgstr "Feilfráboðanir:"
 
 msgid "Show button in toolbar"
 msgstr "Vís knøtt í tólkassa"
+
+#, c-format
+msgid "Could not write calendar file %s"
+msgstr "Kundi ikki goyma álmanakkafílu %s"
 
 msgid "TODAY"
 msgstr "Í DAG"
 
 msgid "Go"
 msgstr "Far"
-
-#, php-format
-msgid "Could not write calendar file %s"
-msgstr "Kundi ikki goyma álmanakkafílu %s"
 
 msgid "l, F j Y"
 msgstr "l, j F Y"
@@ -2331,9 +2391,9 @@ msgid ""
 "account and send spam directly from there."
 msgstr ""
 "HANDILSVØRA - Brúkarar ið ringja upp, verða ofta síðlaðir frá, tí teir skulu "
-"brúka t-post vertirnar hjá sínum alnetveitara at senda t-post við.  Spammarar "
-"fáa sum oftast eina konto til uppringt samband og senda spam beinleiðis "
-"haðani."
+"brúka t-post vertirnar hjá sínum alnetveitara at senda t-post við.  "
+"Spammarar fáa sum oftast eina konto til uppringt samband og senda spam "
+"beinleiðis haðani."
 
 msgid "COMMERCIAL - RBL+ Blackhole entries."
 msgstr "HANDILSVØRA - RBL+ Blackhole entries"
@@ -2512,7 +2572,7 @@ msgstr "Høvd"
 msgid "Contains:"
 msgstr "Inniheldur:"
 
-#, php-format
+#, c-format
 msgid "If %s contains %s then move to %s"
 msgstr "Um %s inniheldur %s flyt síðan til %s"
 
@@ -2546,7 +2606,7 @@ msgstr "Tú mást velja ein kanningarhátt."
 msgid "Spam Filtering"
 msgstr "Spam filtrering"
 
-#, php-format
+#, c-format
 msgid "WARNING! Tell the administrator to set the %s variable."
 msgstr "ÁVARING! Bið umsitaran at seta %s brigdilin."
 
@@ -2582,14 +2642,14 @@ msgstr ""
 "kanna ólisin boð. Á tann hátt verða tíni nýggju spam filtur sett í gildi, og "
 "spammið tú ikki fangaði við gomlu filtrunum, verður kannað."
 
-#, php-format
+#, c-format
 msgid "Spam is sent to %s."
 msgstr "Spam verður sent til %s."
 
 msgid "not set yet"
 msgstr "ikki sett enn"
 
-#, php-format
+#, c-format
 msgid "Spam scan is limited to %s."
 msgstr "Spam kanning er avmarkað til %s."
 
@@ -2599,7 +2659,7 @@ msgstr "TIL"
 msgid "OFF"
 msgstr "FRÁ"
 
-#, php-format
+#, c-format
 msgid "%s is not found."
 msgstr "%s er ikki funnið."
 
@@ -2627,10 +2687,7 @@ msgstr ""
 "Hesar royndir brúka SquirrelMail IMAP stýriboðini og tína núverandi "
 "SquirrelMail uppseting. Tillagaði stýriboð kunnu brúkast."
 
-msgid "Mailinglist"
-msgstr "Mailinglisti"
-
-#, php-format
+#, c-format
 msgid ""
 "This will send a message to %s requesting help for this list. You will "
 "receive an emailed response at the address below."
@@ -2638,7 +2695,7 @@ msgstr ""
 "Hetta sendir eini boð til %s við umbøn um hjálp fyri hendan listan. Tú "
 "móttekur eitt t-post svar á adressuni niðanfyri."
 
-#, php-format
+#, c-format
 msgid ""
 "This will send a message to %s requesting that you will be subscribed to "
 "this list. You will be subscribed with the address below."
@@ -2646,13 +2703,20 @@ msgstr ""
 "Hetta sendir eini boð til %s við umbøn um tekning av haldi fyri hendan "
 "listan. Hald verður teknað við adressuni niðanfyri."
 
-#, php-format
+#, c-format
 msgid ""
 "This will send a message to %s requesting that you will be unsubscribed from "
 "this list. It will try to unsubscribe the adress below."
 msgstr ""
 "Hetta sendir eini boð til %s við umbøn um frátekning av haldi fyri hendan "
 "listan. Hald verður fráteknað við adressuni niðanfyri."
+
+#, c-format
+msgid "Unknown action: %s"
+msgstr "Ókend gerð: %s"
+
+msgid "Mailinglist"
+msgstr "Mailinglisti"
 
 msgid "Send Mail"
 msgstr "Send post"
@@ -2795,7 +2859,7 @@ msgstr "Login OK: Ongi nýggj boð"
 msgid "Login OK: Inbox EMPTY"
 msgstr "Login OK: Inbox er TÓM"
 
-#, php-format
+#, c-format
 msgid "Login OK: Inbox contains %s messages"
 msgstr "Login OK: Inbox inniheldur %s boð"
 
@@ -2838,7 +2902,7 @@ msgstr "Loggi út úr IMAP"
 msgid "Message appended to mailbox"
 msgstr "Boð løgd afturat postkassa"
 
-#, php-format
+#, c-format
 msgid "Message %d deleted from remote server!"
 msgstr "Boð %d eru strikaði á fjarverti!"
 
@@ -2974,26 +3038,10 @@ msgstr "Goym boð"
 msgid "View Message details"
 msgstr "Vís boð útgreinað"
 
-msgid "New Mail"
-msgstr "Nýggjan post"
-
-msgid "SquirrelMail Notice:"
-msgstr "SquirrelMail fráboðan:"
-
-#, php-format
-msgid "You have %s new message"
-msgid_plural "You have %s new messages"
-msgstr[0] "Tú hevur %s nýggj boð"
-msgstr[1] "Tú hevur %s nýtt boð"
-
-#, php-format
-msgid "You have %s new messages"
-msgstr "Tú hevur %s nýggj boð"
-
 msgid "New Mail Notification"
 msgstr "Fráboðan um nýggjan post"
 
-#, php-format
+#, c-format
 msgid ""
 "The %s option will check ALL of your folders for unseen mail, not just the "
 "inbox for notification."
@@ -3004,7 +3052,7 @@ msgstr ""
 msgid "Check all boxes, not just INBOX"
 msgstr "Kanna allar skjáttur, ikki bert INBOX"
 
-#, php-format
+#, c-format
 msgid ""
 "Selecting the %s option will enable the showing of a popup window when "
 "unseen mail is in your folders (requires JavaScript)."
@@ -3015,7 +3063,7 @@ msgstr ""
 msgid "Show popup window on new mail"
 msgstr "Vís popup vindeygað, tá nýggjur postur kemur"
 
-#, php-format
+#, c-format
 msgid ""
 "Use the %s option to only check for messages that are recent. Recent "
 "messages are those that have just recently showed up and have not been "
@@ -3029,7 +3077,7 @@ msgstr ""
 msgid "Count only messages that are RECENT"
 msgstr "Tel bert boð, sum eru NÝGGJ"
 
-#, php-format
+#, c-format
 msgid ""
 "Selecting the %s option will change the title in some browsers to let you "
 "know when you have new mail (requires JavaScript, and only works in IE but "
@@ -3044,20 +3092,20 @@ msgstr ""
 msgid "Change title on supported browsers"
 msgstr "Broyt heiti á kagarum, ið duga tað"
 
-#, php-format
+#, c-format
 msgid ""
 "Select %s to turn on playing a media file when unseen mail is in your "
 "folders. When enabled, you can specify the media file to play in the "
 "provided file box."
 msgstr ""
-"Vel %s, fyri at gera tað møguligt at spæla eina miðlafílu, tá ósæddur "
-"postur er í tínum skjáttum. Tá tað er gildað, kanst tú, í fílteiginum, "
-"velja hvørja fílu tú vilt spæla."
+"Vel %s, fyri at gera tað møguligt at spæla eina miðlafílu, tá ósæddur postur "
+"er í tínum skjáttum. Tá tað er gildað, kanst tú, í fílteiginum, velja hvørja "
+"fílu tú vilt spæla."
 
 msgid "Enable Media Playing"
 msgstr "Ger tað møguligt at spæla miðlar"
 
-#, php-format
+#, c-format
 msgid ""
 "Select from the list of %s the media file to play when new mail arrives. If "
 "no file is specified, %s, no sound will be used."
@@ -3080,6 +3128,22 @@ msgstr "Royn"
 msgid "Current File:"
 msgstr "Núverandi fíla:"
 
+msgid "New Mail"
+msgstr "Nýggjan post"
+
+msgid "SquirrelMail Notice:"
+msgstr "SquirrelMail fráboðan:"
+
+#, c-format
+msgid "You have %s new message"
+msgid_plural "You have %s new messages"
+msgstr[0] "Tú hevur %s nýggj boð"
+msgstr[1] "Tú hevur %s nýtt boð"
+
+#, c-format
+msgid "You have %s new messages"
+msgstr "Tú hevur %s nýggj boð"
+
 msgid "NewMail Options"
 msgstr "Nýggjur postur"
 
@@ -3090,11 +3154,11 @@ msgstr ""
 "Hetta er uppsetingin til at spæla ljóð, og/ella at vísa popup vindeygu, tá "
 "nýggjur postur kemur."
 
-#, php-format
+#, c-format
 msgid "%s New Messages"
 msgstr "%s nýggj boð"
 
-#, php-format
+#, c-format
 msgid "%s New Message"
 msgid_plural "%s New Messages"
 msgstr[0] "%s nýggj boð"
@@ -3182,7 +3246,7 @@ msgstr ""
 "SpamCop er ein ókeypis tænasta, sum hjálpir við at finna veruligu kelduna "
 "til spammið og hjálpir við at boða røttu viðkomandi frá misnýtsluni."
 
-#, php-format
+#, c-format
 msgid ""
 "To use it, you must get a SpamCop authorization code. There is a free %ssign "
 "up page%s so you can use SpamCop."
@@ -3193,7 +3257,7 @@ msgstr ""
 msgid "Before you sign up, be warned"
 msgstr "Legg til merkis áðrenn tú meldar teg til"
 
-#, php-format
+#, c-format
 msgid ""
 "Some users have reported that the email addresses used with SpamCop find "
 "their way onto spam lists. To be safe, you can just create an email "
@@ -3225,9 +3289,9 @@ msgstr ""
 "góðkenningar kodu, mást tú gilda hetta plugin við at klikkja á slóðina "
 "omanfyri. Tá tað er gildað, kanst tú arbeiða sum vanligt. Kemur tú fram á "
 "eini spam boð í tínum postkassa, kanst tú lesa tey. Á høgru síðu, ovaliga "
-"har boðini eru víst, sært tú eina leinkju til spam fráboðan. Tá tú klikkir "
+"har boðini eru víst, sært tú eina leinkju til spamfráboðan. Tá tú klikkir "
 "her, kemur tú til eina síðu, har tú skalt vátta fráboðanina. Váttanin av "
-"spam fráboðanini inniber ymiskt, alt eftir hvør fráboðanarhátturin er."
+"spamfráboðanini inniber ymiskt, alt eftir hvør fráboðanarhátturin er."
 
 msgid "Email-based reporting"
 msgstr "T-post grundað fráboðan"
@@ -3292,12 +3356,13 @@ msgid ""
 msgstr ""
 "Møguleikin fyri tænastuslagi loyvir at velja hvørja SpamCop tænastu tú "
 "brúkar. Tænastur fyri limir brúka aðrar net fráboðanarumsøknir og vísa ikki "
-"lýsingar og líknandi. Tú kanst keypa hesar tænastur, um tú vilt stuðla SpamCop."
+"lýsingar og líknandi. Tú kanst keypa hesar tænastur, um tú vilt stuðla "
+"SpamCop."
 
 msgid "More information"
 msgstr "Fleiri upplýsingar"
 
-#, php-format
+#, c-format
 msgid ""
 "For more information about SpamCop, it's services, spam in general, and many "
 "related topics, try reading through SpamCop's %sHelp and Feedback%s section."
@@ -3399,22 +3464,22 @@ msgstr "Villa í avkryptering av orðabók"
 msgid "Cute."
 msgstr "Søtt."
 
-#, php-format
+#, c-format
 msgid "Could not run the spellchecker command (%s)."
 msgstr "Kundi ikki koyra rættstavarastýriboð (%s)."
 
 msgid "Error while writing to pipe."
 msgstr "Ein villa hendi, tá skrivað varð til \"pipe\"."
 
-#, php-format
+#, c-format
 msgid "Could not open temporary file '%s'."
 msgstr "Kundi ikki opna fyribilsfílu '%s'."
 
-#, php-format
+#, c-format
 msgid "Error while writing to temporary file '%s'."
 msgstr "Ein villa hendi, tá skrivað varð til fyribilsfílu '%s'."
 
-#, php-format
+#, c-format
 msgid "I tried to execute '%s', but it returned:"
 msgstr "Eg royndi at koyra '%s', men fekk svarið:"
 
@@ -3433,7 +3498,7 @@ msgstr "Persónlig orðabók verður goymd... Bíða við."
 msgid "SquirrelSpell Results"
 msgstr "SquirrelSpell úrslit"
 
-#, php-format
+#, c-format
 msgid "Found %s errors"
 msgstr "Fann %s villur"
 
@@ -3500,17 +3565,6 @@ msgstr "Rættstavarin er ikki liðugur. Vilt tú lata aftur uttan at goyma broyting
 msgid "No errors found"
 msgstr "Ongar villur funnar"
 
-msgid ""
-"Your personal dictionary has been encrypted and is now stored in an "
-"encrypted format."
-msgstr "Tín persónliga orðabók er nú krypterað og er nú goymd í krypteraðum sniði."
-
-msgid "Your personal dictionary has been decrypted and is now stored as plain text."
-msgstr "Tín persónliga orðabók er nú avkrypterað og er nú goymd í vanligum teksti."
-
-msgid "Personal Dictionary Crypto Settings"
-msgstr "Persónlig orðabók - Krypteringsuppsetingar"
-
 msgid "Your personal dictionary was erased."
 msgstr "Tín persónliga orðabók er strikað."
 
@@ -3549,6 +3603,20 @@ msgstr ""
 msgid "Dictionary re-encrypted"
 msgstr "Orðabók endurkrypterað"
 
+msgid ""
+"Your personal dictionary has been encrypted and is now stored in an "
+"encrypted format."
+msgstr "Tín persónliga orðabók er nú krypterað og er nú goymd í krypteraðum sniði."
+
+msgid "Your personal dictionary has been decrypted and is now stored as plain text."
+msgstr "Tín persónliga orðabók er nú avkrypterað og er nú goymd í vanligum teksti."
+
+msgid "No action requested."
+msgstr "Ongin gerð umbiðin."
+
+msgid "Personal Dictionary Crypto Settings"
+msgstr "Persónlig orðabók - Krypteringsuppsetingar"
+
 msgid "Personal Dictionary"
 msgstr "Persónlig orðabók"
 
@@ -3558,7 +3626,7 @@ msgstr "Ongi orð í tíni persónligu orðabók."
 msgid "Please check any words you wish to delete from your dictionary."
 msgstr "Vel tey orðini, ið tú ætlar at strika úr tíni orðabók."
 
-#, php-format
+#, c-format
 msgid "%s dictionary"
 msgstr "%s orðabók"
 
@@ -3594,8 +3662,8 @@ msgid ""
 "the password you use to access your mailbox, making it hard for anyone to "
 "see what is stored in your personal dictionary."
 msgstr ""
-"Hetta hjálpir við at verja tín samleika um netpostskipanin verður álopin, "
-"og tín persónliga orðabók verður stolin. Sum nú er, er hon krypterað við "
+"Hetta hjálpir við at verja tín samleika um netpostskipanin verður álopin, og "
+"tín persónliga orðabók verður stolin. Sum nú er, er hon krypterað við "
 "loyniorðinum tú nýtir til postkassan. Hetta ger tað trupult hjá nøkrum at "
 "síggja tað, sum er goymt í tíni persónligu orðabók."
 
@@ -3627,8 +3695,9 @@ msgid ""
 msgstr ""
 "Tú eigur møguliga at kryptera tína persónligu orðabók fyri at verja tín "
 "samleika, um netpostskipanin verður álopin og tín persónliga orðabókafíla "
-"verður stolin. Tá hon er krypterað, sær innihaldið bronglað út, og hon er trupul "
-"at avkryptera uttan at kenna rætta lykilin (sum er loyniorðið til tín postkassa)."
+"verður stolin. Tá hon er krypterað, sær innihaldið bronglað út, og hon er "
+"trupul at avkryptera uttan at kenna rætta lykilin (sum er loyniorðið til tín "
+"postkassa)."
 
 msgid ""
 "If you decide to encrypt your personal dictionary, you must remember that it "
@@ -3649,7 +3718,7 @@ msgstr ""
 msgid "Please encrypt my personal dictionary and store it in an encrypted format."
 msgstr "Kryptera mína persónligu orðabók og goym hana í krypteraðum sniði."
 
-#, php-format
+#, c-format
 msgid "Deleting the following entries from %s dictionary:"
 msgstr "Striki fylgjandi innlegg frá %s orðabókini:"
 
@@ -3673,11 +3742,11 @@ msgstr "Vel hvørja orðabók tú ætlar at nýta til at rættstava hesi boðini:"
 msgid "SquirrelSpell Initiating"
 msgstr "SquirrelSpell byrjar"
 
-#, php-format
+#, c-format
 msgid "Settings adjusted to: %s with %s as default dictionary."
 msgstr "Uppsetingar broyttar til: %s við %s sum sjálvsett orðabók."
 
-#, php-format
+#, c-format
 msgid "Using %s dictionary (system default) for spellcheck."
 msgstr "Brúki %s orðabók (sjálvsett av skipan) til rættstaving."
 
@@ -3710,8 +3779,8 @@ msgstr "Uppset altjóða orðabøkur"
 msgid "Encrypt or decrypt your personal dictionary"
 msgstr "Kryptera ella avkryptera tína persónligu orðabók"
 
-msgid "not available"
-msgstr "ikki tøkt"
+msgid "Personal dictionary encryption options are not available"
+msgstr "Krypteringsmøguleikar fyri persónligu orðabókina eru ikki til taks"
 
 msgid "SquirrelSpell Options Menu"
 msgstr "SquirrelSpell valmøguleikar"
@@ -3728,7 +3797,7 @@ msgstr "Tínir servaramøguleikar eru hesir:"
 msgid "Maximum of 150 words translated, powered by Systran"
 msgstr "Í mesta lagi 150 orð umsett, rikin av Systran"
 
-#, php-format
+#, c-format
 msgid "Number of supported language pairs: %s"
 msgstr "Tal av stuðlaðum málpørum: %s"
 
@@ -3738,7 +3807,7 @@ msgstr "Ongar kendar avmarkingar, rikin av Systran"
 msgid "No known limits, powered by Translation Experts' InterTran"
 msgstr "Ongar kendar avmarkingar, rikin av Translation Experts InterTran"
 
-#, php-format
+#, c-format
 msgid "Number of supported languages: %s"
 msgstr "Tal av stuðlaðum málum: %s"
 
@@ -3782,7 +3851,7 @@ msgid ""
 "language?"
 msgstr "Hvør umsetari skal nýtast, tá tú fært boð í øðrum máli?"
 
-#, php-format
+#, c-format
 msgid "%s to %s"
 msgstr "%s til %s"
 
@@ -3900,46 +3969,48 @@ msgstr "Mál til nýtaramót"
 msgid "Translation direction"
 msgstr "Umsetingarleið"
 
-#, php-format
+#, c-format
 msgid "About SquirrelMail %s"
 msgstr "Um SquirrelMail %s"
 
 msgid ""
 "SquirrelMail is the name of the program that provides access to your email "
 "via the web."
-msgstr "SquirrelMail er navnið á forritinum, ið gevur tær atgongd til tín t-post á alnetinum."
+msgstr ""
+"SquirrelMail er navnið á forritinum, ið gevur tær atgongd til tín t-post á "
+"alnetinum."
 
-#, php-format
+#, c-format
 msgid ""
 "If you have questions about or problems with your mail account, passwords, "
 "abuse etc, please refer to your system administrator or provider%s."
 msgstr ""
-"Hevur tú spurningar ella trupulleikar við tínum t-posti, loyniorði, misnýtslu "
-"osv., vinarliga set teg í samband við tín umsitara ella veitara%s."
+"Hevur tú spurningar ella trupulleikar við tínum t-posti, loyniorði, "
+"misnýtslu osv., vinarliga set teg í samband við tín umsitara ella veitara%s."
 
-#, php-format
+#, c-format
 msgid ""
 "They can assist you adequately with these issues. The SquirrelMail Project "
 "Team cannot help you with that. The %shelp system%s provides answers to "
 "frequently asked questions."
 msgstr ""
 "Tey kunnu hjálpa tær nóg væl við hesum trupulleikum. SquirrelMail "
-"menningarliðið fær ikki hjálpt tær við hasum. %sHjálpiskipanin%s svarar "
-"teim mest vanliga spurdu spurningunum."
+"menningarliðið fær ikki hjálpt tær við hasum. %sHjálpiskipanin%s svarar teim "
+"mest vanliga spurdu spurningunum."
 
-#, php-format
+#, c-format
 msgid ""
 "SquirrelMail is a feature rich, standards compliant webmail application "
 "written in PHP. It was made by a group of volunteers united in the "
 "SquirrelMail Project Team and is released as open source, free software "
 "under the %sGNU General Public License%s."
 msgstr ""
-"SquirrelMail er ein netpostskipan skrivað í PHP, við nógvum møguleikum "
-"og sum fylgir standardunum. Hon varð gjørd av sjálvbodnum, ið samlaðust "
-"sum SquirrelMail menningarliðið. Skipanin verður latin út sum opin "
-"kelda, fríur ritbúnaður undir %sGNU General Public License%s."
+"SquirrelMail er ein netpostskipan skrivað í PHP, við nógvum møguleikum og "
+"sum fylgir standardunum. Hon varð gjørd av sjálvbodnum, ið samlaðust sum "
+"SquirrelMail menningarliðið. Skipanin verður latin út sum opin kelda, fríur "
+"ritbúnaður undir %sGNU General Public License%s."
 
-#, php-format
+#, c-format
 msgid ""
 "For more information about SquirrelMail and the SquirrelMail Project Team, "
 "see %sthe SquirrelMail website%s."
@@ -3950,7 +4021,7 @@ msgstr ""
 msgid "System information"
 msgstr "Upplýsingar um skipan"
 
-#, php-format
+#, c-format
 msgid "You are using SquirrelMail version: %s"
 msgstr "Tú brúkar SquirrelMail slepping: %s"
 
@@ -3960,27 +4031,11 @@ msgstr "Umsitarin hevur innlagt hesi plugin:"
 msgid "none installed"
 msgstr "onki innlagt"
 
-msgid "sort by nickname"
-msgstr "skil eftir dulnevni"
-
-msgid "sort by name"
-msgstr "skil eftir navni"
-
-msgid "sort by email"
-msgstr "skil eftir t-posti"
-
-msgid "sort by info"
-msgstr "skil eftir upplýsingum"
+msgid "Nothing to search"
+msgstr "Onki at leita"
 
 msgid "Add to address book"
 msgstr "Legg afturat adressubók"
-
-msgid ""
-"Because PHP file uploads are turned off, you can not attach files to this "
-"message. Please see your system administrator for details."
-msgstr ""
-"Av tí at PHP uppsendingar eru sløktar, kanst tú ikki viðfesta fílir til tíni "
-"boð. Tosa við skipanarumsitaran fyri nærri upplýsingar."
 
 msgid "No folders were found to unsubscribe from."
 msgstr "Ongar skjáttur vórðu funnar at strika hald frá."
@@ -3988,17 +4043,14 @@ msgstr "Ongar skjáttur vórðu funnar at strika hald frá."
 msgid "No folders were found to subscribe to."
 msgstr "Ongar skjáttur vórðu funnar at tekna hald til."
 
-msgid "Last Refresh"
-msgstr "Seinasta endurlesing"
-
-msgid "Check mail"
-msgstr "Kanna post"
-
 msgid "Save folder tree"
 msgstr "Goym skjáttutræ"
 
 msgid "SquirrelMail Webmail Application"
 msgstr "SquirrelMail netpostskipan"
+
+msgid "Received"
+msgstr "Móttikið"
 
 msgid "Compose Preferences"
 msgstr "Uppsetingar til nýggj boð"
@@ -4009,9 +4061,6 @@ msgid ""
 msgstr ""
 "Stýr uppseting, háttin nýggj boð verða skrivaði, aftursvar og hvussu boð "
 "verða send víðari."
-
-msgid "Received"
-msgstr "Móttikið"
 
 msgid "As Attachment"
 msgstr "Sum viðfest fíla"
@@ -4166,13 +4215,10 @@ msgstr "Skjáttulisti"
 msgid "PHP install does not have LDAP support."
 msgstr "Innlagda PHP stuðlar ikki LDAP."
 
-msgid "Click here to change the sorting of the address list"
-msgstr "Trýst her fyri at broyta skiljingina av adressulistanum"
-
 msgid "Illegal folder name."
 msgstr "Skjáttunavn er ikki loyvt."
 
-#, php-format
+#, c-format
 msgid "The name may not contain any of the following: %s"
 msgstr "Navnið má ikki innihalda nakað av fylgjandi teknum: %s"
 
@@ -4205,8 +4251,8 @@ msgid ""
 "Your mailbox is not located at this server. Try a different server or "
 "consult your system administrator"
 msgstr ""
-"Tín postkassi finst ikki á hesum servaranum. Royn ein annan servara "
-"ella set teg í samband við tín netumsitara."
+"Tín postkassi finst ikki á hesum servaranum. Royn ein annan servara ella set "
+"teg í samband við tín netumsitara."
 
 msgid "Unknown recipient"
 msgstr "Ókendur móttakari"
@@ -4219,6 +4265,29 @@ msgstr "Vel"
 
 msgid "Undelete"
 msgstr "Ógilda striking"
+
+msgid "Viewing HTML formatted email"
+msgstr "Vísi boð í HTML sniði"
+
+msgid "unavailable"
+msgstr "ikki tøk"
+
+msgid "Terminating SquirrelMail due to a fatal error"
+msgstr "SquirrelMail sløknar vegna álvarsama villu"
+
+msgid ""
+"Run \"configure\", choose option 4 (General options) and set option 10 "
+"(Allow server thread sort to false)."
+msgstr ""
+"Koyr \"configure\", vel møguleika 4 (General options) og set møguleika "
+"10 (Allow server thread sort til \"false\")."
+
+msgid ""
+"Run \"configure\", choose option 4 (General options) and set option 11 "
+"(Allow server-side sorting to false)."
+msgstr ""
+"Koyr \"configure\", vel møguleika 4 (General options) og set møguleika "
+"11 (Allow server side sorting til \"false\")."
 
 msgid "General Message Composition"
 msgstr "Høvuðsboðskriving"
@@ -4241,14 +4310,11 @@ msgstr "Vís Vel / Frável knøttar"
 msgid "Use Compact Page Selector"
 msgstr "Nýt tættan síðuveljara"
 
-msgid "Length of From/To Field (0 for full)"
-msgstr "Long av Frá/Til teigi (0 fyri fulla)"
-
-msgid "Length of Subject Field (0 for full)"
-msgstr "Longd av Evni teigi (0 fyri fulla)"
-
 msgid "Message Display Options"
 msgstr "Boðvísingarmøguleikar"
+
+msgid "Height of inline frame"
+msgstr "Hædd á innara ramma"
 
 msgid "Show 'Delete & Prev/Next' Links"
 msgstr "Vís 'Strika & Fyrra/Næsta' leinkjur"
@@ -4256,7 +4322,7 @@ msgstr "Vís 'Strika & Fyrra/Næsta' leinkjur"
 msgid "Save Replies with Original Message"
 msgstr "Goym svar við uppruna boði"
 
-#, php-format
+#, c-format
 msgid "%d Minute"
 msgid_plural "%d Minutes"
 msgstr[0] "%d minutti"
@@ -4265,11 +4331,14 @@ msgstr[1] "Minutt"
 msgid "Show only subscribed folders"
 msgstr "Vís bert skjáttur, ið hald er teknað til"
 
+msgid "E-mail Address"
+msgstr "T-post adressa"
+
 msgid "XP"
 msgstr "XP"
 
-msgid "Hide SquirrelMail Header"
-msgstr "Goym SquirrelMail høvd"
+msgid "Mercury/32 IMAP server"
+msgstr "Mercury/32 IMAP vertur"
 
 msgid "Search functions"
 msgstr "Leitimøguleikar"
@@ -4283,11 +4352,32 @@ msgstr "Bert framkomin leiting"
 msgid "Both search functions"
 msgstr "Báðir leitimøguleikar"
 
+msgid "Time Zone Configuration"
+msgstr "Uppseting av tíðarøki"
+
+msgid "Standard GNU C time zones"
+msgstr "Standard GNU C tíðarøki"
+
+msgid "Strict time zones"
+msgstr "Strong tíðarøki"
+
+msgid "Custom GNU C time zones"
+msgstr "Tillagaði GNU C tíðarøki"
+
+msgid "Custom strict time zones"
+msgstr "Tillagaði strong tíðarøki"
+
+msgid "Size of username field"
+msgstr "Stødd á teigi til brúkaranavn"
+
+msgid "Size of key field"
+msgstr "Stødd á teigi til lykil"
+
+msgid "Size of value field"
+msgstr "Stødd á teigi til virði"
+
 msgid "Show alternative language names"
 msgstr "Vís onnur málnøvn"
-
-msgid "Available languages"
-msgstr "Mál til staðar"
 
 msgid "Enable aggressive decoding"
 msgstr "Gilda \"aggressive decoding\""
@@ -4301,6 +4391,9 @@ msgstr "Nýt framkomnan træskjáttulista"
 msgid "Use icons"
 msgstr "Nýt ímyndir"
 
+msgid "Use inline frames with HTML mails"
+msgstr "Nýt innanhýsis rammur við HTML posti"
+
 msgid "Use PHP recode functions"
 msgstr "Nýt PHP \"recode\" funkur"
 
@@ -4313,83 +4406,11 @@ msgstr "Loyv fjarroynd av uppseting"
 msgid "Show System Specifications"
 msgstr "Vís frágreiðing um skipan"
 
-msgid "Search Mailing List Archives"
-msgstr "Leita í mailing-listasøvnum"
+msgid "my email account"
+msgstr "mín t-post konta"
 
-msgid "Search SourceForge Bugtracker"
-msgstr "Leita á SourceForge Bugtracker"
-
-msgid "Search for words:"
-msgstr "Leita eftir orðum:"
-
-msgid "Written by:"
-msgstr "Skrivað av:"
-
-msgid "Email addresses only"
-msgstr "Bert t-post adressur"
-
-msgid "Mailing list:"
-msgstr "Mailing-listi:"
-
-msgid "SquirrelMail users list"
-msgstr "Listi yvir SquirrelMail brúkarar"
-
-msgid "SquirrelMail plugins list"
-msgstr "Listi yvir SquirrelMail plugin"
-
-msgid "SquirrelMail developers list"
-msgstr "Listi yvir SquirrelMail mennarar"
-
-msgid "SquirrelMail internationalization list"
-msgstr "SquirrelMail umsetingarlisti"
-
-msgid "Sort by:"
-msgstr "Skil eftir:"
-
-msgid "Relevance"
-msgstr "Viðkomandi"
-
-msgid "Search Archives"
-msgstr "Leita í savni"
-
-msgid "Reset Form"
-msgstr "Nullstilla umsøkn"
-
-msgid "Summary keyword:"
-msgstr "Samanlagt lyklaorð:"
-
-msgid "Sort By:"
-msgstr "Skil eftir:"
-
-msgid "ID"
-msgstr "ID"
-
-msgid "Summary"
-msgstr "Samandráttur"
-
-msgid "Open Date"
-msgstr "Opnað tann"
-
-msgid "Close Date"
-msgstr "Stongt tann"
-
-msgid "Submitter"
-msgstr "Sendari"
-
-msgid "Assignee"
-msgstr "Tillutað"
-
-msgid "Order:"
-msgstr "Raðfylgja:"
-
-msgid "Ascending"
-msgstr "Hækkandi"
-
-msgid "Descending"
-msgstr "Lækkandi"
-
-msgid "Search Bugtracker"
-msgstr "Leita í \"Bugtracker\""
+msgid "Bug Reports"
+msgstr "Feilfráboðanir"
 
 msgid "You must type in a new password."
 msgstr "Tú mást skriva eitt nýtt loyniorð."
@@ -4406,7 +4427,7 @@ msgstr "Tú mást skriva títt núverandi loyniorð."
 msgid "Your current password is not correct."
 msgstr "Títt núverandi loyniorð er skeivt."
 
-#, php-format
+#, c-format
 msgid "Your new password should be %s to %s characters long."
 msgstr "Títt nýggja loyniorð má verða %s til %s stavir til longdar."
 
@@ -4437,11 +4458,11 @@ msgstr "Núverandi uppseting krevur stuðul fyri LDAP í PHP."
 msgid "Plugin is not configured correctly."
 msgstr "Plugin er ikki rætt uppsett."
 
-#, php-format
+#, c-format
 msgid "Setting of LDAP connection option %s to value %s failed."
 msgstr "Feilur í broyting av LDAP sambandsmøguleika %s til virði %s."
 
-#, php-format
+#, c-format
 msgid "Incorrect LDAP connection option: %s"
 msgstr "Skeivur LDAP sambandsmøguleiki: %s"
 
@@ -4451,7 +4472,7 @@ msgstr "Núverandi PHP LDAP víðkan loyvir ikki nýtslu av funkuni ldap_set_option(
 msgid "Unable to use TLS."
 msgstr "Fái ikki brúkt TLS."
 
-#, php-format
+#, c-format
 msgid "Error: %s"
 msgstr "Villa: %s"
 
@@ -4461,7 +4482,7 @@ msgstr "Fái ikki brúkt LDAP TLS í verandi uppseting."
 msgid "Unable to bind to LDAP server."
 msgstr "Fái ikki bundi til LDAP vert."
 
-#, php-format
+#, c-format
 msgid "Server replied: %s"
 msgstr "Vertur svaraði: %s"
 
@@ -4472,9 +4493,7 @@ msgid "Unable to rebind to LDAP server."
 msgstr "Fái ikki endurbundið til LDAP vert."
 
 msgid "LDAP server uses different attribute to store user's password."
-msgstr ""
-"LDAP verturin brúkar aðrar eginleikar til at goyma loyniorðini "
-"hjá brúkara."
+msgstr "LDAP verturin brúkar aðrar eginleikar til at goyma loyniorðini hjá brúkara."
 
 msgid "Unable to connect to LDAP server."
 msgstr "Fái ikki samband við LDAP vert."
@@ -4491,12 +4510,12 @@ msgstr "Fleiri brúkara id funnin, ið samsvara."
 msgid "ldap_get_dn error."
 msgstr "ldap_get_dn villa."
 
-#, php-format
+#, c-format
 msgid "Unsupported crypto: %s"
 msgstr "Ikki stuðlað \"crypto\": %s"
 
-msgid "PHP mhash extension is missing."
-msgstr "PHP mhash víðkanin manglar."
+msgid "PHP mhash extension is missing or does not support selected crypto."
+msgstr "PHP mhash víðkanin manglar ella valda \"crypto\" er ikki stuðlað."
 
 msgid "System crypt library doesn't support standard DES crypt."
 msgstr "Skipan stuðlar ikki vanligt DES crypt."
@@ -4556,6 +4575,59 @@ msgstr "Brúkari er loggaður inn fleiri ferðir, kann ikki broyta loyniorð."
 msgid "Password change was not successful!"
 msgstr "Broyting av loyniorð eydnaðist ikki!"
 
+msgid ""
+"Plugin is unable to use PHP Pear DB libraries. PHP Pear includes must be "
+"available in your PHP include_path setting."
+msgstr ""
+"Plugin fær ikki brúkt PHP Pear DB \"libraries\". PHP Pear \"includes\" "
+"mugu finnast í tínari PHP \"include_path\" uppseting."
+
+msgid "Required change password backend configuration options are missing."
+msgstr "Kravdar uppsetingar til loyniorð \"backend\" mangla."
+
+#, c-format
+msgid "Connection error: %s"
+msgstr "Villa í sambandi: %s"
+
+#, c-format
+msgid "Invalid table name: %s"
+msgstr "Ógildugt tabellnavn: %s"
+
+msgid "User table is empty."
+msgstr "Brúkaratabell er tóm."
+
+msgid "Invalid uid field."
+msgstr "Ógildugur uid teigur."
+
+msgid "Invalid password field"
+msgstr "Ógildugur loyniorð teigur"
+
+msgid "Invalid domain field"
+msgstr "Ógildugur \"domain\" teigur"
+
+#, c-format
+msgid "Query failed: %s"
+msgstr "Villa í fyrispurningi: %s"
+
+msgid "Unable to find user in user table."
+msgstr "Finni ikki brúkara í brúkaratabell."
+
+msgid "Too many matches found in user table."
+msgstr "Ov nógvar leitingar, ið samsvara, vórðu funnar í brúkaratabell."
+
+msgid "Unable to detect password crypto algorithm."
+msgstr "Finni ikki loyniorð \"crypto\" algoritmu til loyniorð.."
+
+msgid "Unable to encrypt new password."
+msgstr "Fái ikki krypterað nýggja loyniorðið."
+
+#, c-format
+msgid "Unable to set new password: %s"
+msgstr "Fái ikki sett nýggja loyniorðið: %s"
+
+msgid "Unable to use digest-md5 crypto."
+msgstr "Fái ikki brúkt digest-md5 \"crypto\"."
+
 msgid "Closing Connection"
 msgstr "Slíti samband"
 
@@ -4574,7 +4646,7 @@ msgstr "Ógildug ella oyðiløgd vmail.inc fíla."
 msgid "Invalid user."
 msgstr "Skeivur brúkari."
 
-#Tómt ella tøm ?
+# Tómt ella tøm ?
 msgid "Empty domain"
 msgstr "Tøm domain"
 
@@ -4597,11 +4669,12 @@ msgid ""
 "executed in order. The default values are simple IMAP commands using your "
 "default_charset and folder_prefix from SquirrelMail when needed."
 msgstr ""
-"Vel IMAP stýriboðini tú vilt koyra. Flestu stýriboðini krevja at ein postkassi "
-"er valdur, so val stýriboðið longu er uppsett. Tú kanst strika øll stýriboðini og "
-"royna tíni egnu IMAP stýriboð. Stýriboðini verða koyrd í raðfylgju. Tey "
-"sjálvsettu virðini eru einkul IMAP stýriboð, ið brúka \"default_charset\" og "
-"skjáttufortekn frá SquirrelMail, tú brúk er fyri teimum."
+"Vel IMAP stýriboðini tú vilt koyra. Flestu stýriboðini krevja at ein "
+"postkassi er valdur, so val stýriboðið longu er uppsett. Tú kanst strika øll "
+"stýriboðini og royna tíni egnu IMAP stýriboð. Stýriboðini verða koyrd í "
+"raðfylgju. Tey sjálvsettu virðini eru einkul IMAP stýriboð, ið brúka "
+"\"default_charset\" og skjáttufortekn frá SquirrelMail, tú brúk er fyri "
+"teimum."
 
 msgid ""
 "NOTE: These commands are live, any changes made will effect your current "
@@ -4622,13 +4695,16 @@ msgstr "IMAP stýriboð"
 msgid "Request:"
 msgstr "Umbøn:"
 
+msgid "Authentication failed "
+msgstr "Feilur í heimildarkanning "
+
 msgid "No POP3 servers configured yet."
 msgstr "Ongir POP3 vertar uppsettir enn."
 
 msgid "Click here to go to the options page."
 msgstr "Trýst her fyri at fara til síðu við valmøguleikum."
 
-#, php-format
+#, c-format
 msgid "Login OK: Inbox contains %s message"
 msgid_plural "Login OK: Inbox contains %s messages"
 msgstr[0] "Login í lagi: Inbox inniheldur %s boð"
@@ -4655,12 +4731,23 @@ msgstr "Uppsend miðlafílu:"
 msgid "Uploaded Media File:"
 msgstr "Uppsend miðlafíla:"
 
-msgid "unavailable"
-msgstr "ikki tøk"
-
-#, php-format
+#, c-format
 msgid "Media file %s will be removed, if you upload other media file."
 msgstr "Miðlafíla %s verður strikað, um tú sendir eina aðra miðlafílu upp."
+
+msgid "Warning"
+msgstr "Ávaring"
+
+msgid "There are some restrictions in Sent Subfolder options."
+msgstr ""
+"Tað eru nakrar avmarkingar í valmøguleikunum í Sent "
+"undirskjáttu."
+
+msgid "Sent Subfolders plugin is misconfigured."
+msgstr "Plugin til Sent undirskjáttur er skeivt uppsett."
+
+msgid "Save emails submitted to SpamCop:"
+msgstr "Goym t-postar, ið verða sendir til SpamCop:"
 
 msgid "Spam Service Type:"
 msgstr "Spam tænastuslag:"
@@ -4676,6 +4763,27 @@ msgstr "Goym tænastuslag"
 
 msgid "SpamCop reporting"
 msgstr "SpamCop fráboðan"
+
+#, c-format
+msgid ""
+"Your %s dictionary is encrypted with password that differs from your current "
+"password."
+msgstr ""
+"Tín %s orðabók er krypterað við einum loyniorði, ið er øðrvísi enn títt "
+"núverandi loyniorð."
+
+msgid "Invalid SquirrelSpell module."
+msgstr "Ógildug SquirrelSpell sereind."
+
+#, c-format
+msgid "Found %d error"
+msgid_plural "Found %d errors"
+msgstr[0] "Fann %d villur"
+msgstr[1] ""
+
+#, c-format
+msgid "Using %s dictionary for spellcheck."
+msgstr "Brúki %s orðabók til rættstaving."
 
 msgid "Translation Theme:"
 msgstr "Umsetingartema:"
@@ -4704,6 +4812,33 @@ msgstr "Tá skrivað verður:"
 
 msgid "Not yet functional, currently does nothing"
 msgstr "Virkar ikki enn, ger onki sum nú er"
+
+msgid "D"
+msgstr "D"
+
+msgid "F"
+msgstr "F"
+
+msgid "SquirrelMail notice messages"
+msgstr "SquirrelMail fráboðanir"
+
+msgid "Category:"
+msgstr "Slag:"
+
+msgid "Tip:"
+msgstr "Ábending:"
+
+msgid "More info:"
+msgstr "Fleiri upplýsingar:"
+
+msgid "Message Flags"
+msgstr "Boð merkingar"
+
+msgid "Attachment"
+msgstr "Viðfesting"
+
+msgid "Click here to change the sorting of the message list"
+msgstr "Trýst her fyri at broyta skiljingina av boðlistanum"
 
 msgid "Delivery error report"
 msgstr "Frágreiðing um skeiva sending"
