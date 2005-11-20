@@ -14,19 +14,27 @@
 /**
  * Converts iso-2022-cn texts
  * @param string $string iso-2022-cn encoded string
+ * @param boolean $save_html don't html encode special characters if true
  * @return string html encoded text
  */
-function charset_decode_iso_2022_cn ($string) {
+function charset_decode_iso_2022_cn ($string, $save_html=false) {
     global $aggressive_decoding;
 
     // undo htmlspecial chars (they can break iso-2022-cn)
-    $string=str_replace(array('&amp;','&quot;','&lt;','&gt;'),array('&','"','<','>'),$string);
+    if (! $save_html)
+        $string=str_replace(array('&amp;','&quot;','&lt;','&gt;'),array('&','"','<','>'),$string);
 
     // recode
     // this is CPU intensive task. Use recode functions if they are available. 
     if (function_exists('recode_string')) {
         // recode includes htmlspecialchars sanitizing
-        return recode_string("iso-2022-cn..html",$string);
+        $string = recode_string("iso-2022-cn..html",$string);
+
+        // if string sanitizing is not needed, undo htmlspecialchars applied by recode.
+        if ($save_html)
+            $string=str_replace(array('&amp;','&quot;','&lt;','&gt;'),array('&','"','<','>'),$string);
+
+        return $string;
     }
 
     // iconv does not support html target, but internal utf-8 decoding is faster than iso-2022-cn.
@@ -34,7 +42,7 @@ function charset_decode_iso_2022_cn ($string) {
         include_once(SM_PATH . 'functions/decode/utf_8.php');
         $string = iconv('iso-2022-cn','utf-8',$string);
         // redo htmlspecial chars
-        $string = htmlspecialchars($string);
+        if (! $save_html) $string = htmlspecialchars($string);
         return charset_decode_utf_8($string);
     }
 

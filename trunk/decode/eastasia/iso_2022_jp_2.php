@@ -14,22 +14,30 @@
 /**
  * Converts iso-2022-jp-2 texts
  * @param string $string iso-2022-jp-2 encoded string
+ * @param boolean $save_html don't html encode special characters if true
  * @return string html encoded text
  */
-function charset_decode_iso_2022_jp_2 ($string) {
+function charset_decode_iso_2022_jp_2 ($string, $save_html=false) {
     global $squirrelmail_language, $aggressive_decoding;
     
     // ja_JP uses own functions
     if ($squirrelmail_language=='ja_JP')
         return $string;
 
-    // undo htmlspecial chars (they can break iso-2022-jp-2)    
-    $string=str_replace(array('&amp;','&quot;','&lt;','&gt;'),array('&','"','<','>'),$string);
+    // undo htmlspecial chars (they can break iso-2022-jp-2)
+    if (! $save_html)
+        $string=str_replace(array('&amp;','&quot;','&lt;','&gt;'),array('&','"','<','>'),$string);
 
     // recode
     // this is CPU intensive task. Use recode functions if they are available.
     if (function_exists('recode_string')) {
-        return recode_string("iso-2022-jp-2..html",$string);
+        $string = recode_string("iso-2022-jp-2..html",$string);
+
+        // if string sanitizing is not needed, undo htmlspecialchars applied by recode.
+        if ($save_html)
+            $string=str_replace(array('&amp;','&quot;','&lt;','&gt;'),array('&','"','<','>'),$string);
+
+        return $string;
     }
     
     // iconv does not support html target, but internal utf-8 decoding is faster than iso-2022-jp-2.
@@ -37,7 +45,7 @@ function charset_decode_iso_2022_jp_2 ($string) {
         include_once(SM_PATH . 'functions/decode/utf_8.php');
         $string = iconv('iso-2022-jp-2','utf-8',$string);
         // redo htmlspecial chars
-        $string = htmlspecialchars($string);
+        if (! $save_html) $string = htmlspecialchars($string);
         return charset_decode_utf_8($string);
     }
 
