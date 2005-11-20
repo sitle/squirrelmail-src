@@ -91,13 +91,14 @@ function charset_decode ($charset, $string, $force_decode=false, $save_html=fals
         return $string;
 
     /* controls cpu and memory intensive decoding cycles */
+    global $aggressive_decoding;
     $aggressive_decoding = false;
 
     $decode=fixcharset($charset);
     $decodefile=SM_PATH . 'functions/decode/' . $decode . '.php';
     if (file_exists($decodefile)) {
       include_once($decodefile);
-      $ret = call_user_func('charset_decode_'.$decode, $string);
+      $ret = call_user_func('charset_decode_'.$decode, $string, $save_html);
     } else {
       $ret = $string;
     }
