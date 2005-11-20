@@ -2,8 +2,10 @@
 * SquirrelMail Extra Decoding Library
 **************************************
 
-1.1cvs
- - Removed debian/ packaging files.
+1.1 (2005-11-20)
+ - Removed Debian packaging files.
+ - Fixed html decoding in Eastern functions that use recode and 
+   decoding of iso-2022 html emails.
 
 1.0 (2005-11-06)
  - Updated release notes, bumped up version number and released 
