@@ -1,9 +1,7 @@
 /**********************************************************
- * Release Notes: SquirrelMail Extra Decoding Library 1.0 *
- * 2005-11-06                                             *
+ * Release Notes: SquirrelMail Extra Decoding Library 1.1 *
+ * 2005-11-20                                             *
  **********************************************************/
-
-This is the first stable package of SquirrelMail Extra Decoding Library.
 
 SquirrelMail decoding functions are used to display and convert messages 
 encoded in different character sets. Extra decoding library provides support 
@@ -12,6 +10,9 @@ sets. Current release supports Big5, Windows-874 (cp874, Thai), Windows-949
 (UHC, Korean), EUC-CN, EUC-JP, EUC-KR, EUC-TW, GB18030, GB2312, ISO-2022-CN, 
 ISO-2022-JP, ISO-2022-JP-2, ISO-2022-KR, Shift_JIS and various x-mac-* 
 character sets.
+
+This library version fixes html decoding issues in SquirrelMail 1.5.1 and 
+1.4.6.
 
 Extra decoding library can be used in SquirrelMail 1.4.4 or newer. It depends 
 on sq_is8bit() function. In order to optimize decoding of Eastern character 
