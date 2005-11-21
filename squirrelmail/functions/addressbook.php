@@ -422,7 +422,7 @@ class AddressBook {
             if (is_array($res)) {
                return $res;
             } else {
-               $this->error = $backend->error;
+               $this->error = $this->backends[$bnum]->error;
                return false;
             }
         }
