@@ -94,7 +94,9 @@ Version 1.4.6 - CVS
   - Prevent right_frame to be set to '//www.example.com'.
   - Make cookies destroy code use epoch of 5 seconds into the past.
   - Added new compose_send_after hook.
-
+  - Properly clean up temporary attachment files when saving as Draft
+    (#1358407).
+      
 Version 1.4.5 - 13 July 2005
 ----------------------------
   - Update COPYING with new address of the FSF.

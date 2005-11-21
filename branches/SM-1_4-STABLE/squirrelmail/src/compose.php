@@ -1575,6 +1575,7 @@ function deliverMessage($composeMessage, $draft=false) {
             sqimap_append_done ($imap_stream, $draft_folder);
             sqimap_logout($imap_stream);
             unset ($imap_deliver);
+            ClearAttachments($composeMessage);
             return $length;
         } else {
             $msg  = '<br />'.sprintf(_("Error: Draft folder %s does not exist."), $draft_folder);
