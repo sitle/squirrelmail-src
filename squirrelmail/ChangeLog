@@ -95,7 +95,7 @@ Version 1.4.6 - CVS
   - Make cookies destroy code use epoch of 5 seconds into the past.
   - Added new compose_send_after hook.
   - Properly clean up temporary attachment files when saving as Draft
-    (#1358407).
+    (#1358407) and fix removal of lingering attachments on signout.
       
 Version 1.4.5 - 13 July 2005
 ----------------------------
