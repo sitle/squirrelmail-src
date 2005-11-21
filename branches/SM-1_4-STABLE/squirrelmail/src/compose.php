@@ -543,10 +543,7 @@ elseif (isset($sigappend)) {
         foreach($delete as $index) {
 
             if (!empty($composeMessage->entities) && isset($composeMessage->entities[$index])) {
-               $attached_file = $composeMessage->entities[$index]->att_local_name;
-                if (file_exists($attached_file)) {
-                  unlink ($attached_file);
-                }
+                $composeMessage->entities[$index]->purgeAttachments();
                 unset ($composeMessage->entities[$index]);
             }
         }
@@ -704,7 +701,6 @@ function newMail ($mailbox='', $passed_id='', $passed_ent_id='', $action='', $se
         } else {
             $mailprio = '';
         }
-        //ClearAttachments($session);
 
         $identity = '';
         $idents = getPref($data_dir, $username, 'identities');
@@ -1377,18 +1373,6 @@ function saveAttachedFiles($session) {
     sqsession_register($compose_messages , 'compose_messages');
 }
 
-function ClearAttachments($composeMessage) {
-    if ($composeMessage->att_local_name) {
-        $attached_file = $composeMessage->att_local_name;
-        if (file_exists($attached_file)) {
-            unlink($attached_file);
-        }
-    }
-    for ($i=0, $entCount=count($composeMessage->entities);$i< $entCount; ++$i) {
-        ClearAttachments($composeMessage->entities[$i]);
-    }
-}
-
 /* parse values like 8M and 2k into bytes */
 function getByteSize($ini_size) {
 
@@ -1575,7 +1559,7 @@ function deliverMessage($composeMessage, $draft=false) {
             sqimap_append_done ($imap_stream, $draft_folder);
             sqimap_logout($imap_stream);
             unset ($imap_deliver);
-            ClearAttachments($composeMessage);
+            $composeMessage->purgeAttachments();
             return $length;
         } else {
             $msg  = '<br />'.sprintf(_("Error: Draft folder %s does not exist."), $draft_folder);
@@ -1627,7 +1611,7 @@ function deliverMessage($composeMessage, $draft=false) {
             unset ($imap_deliver);
         }
         global $passed_id, $mailbox, $action;
-        ClearAttachments($composeMessage);
+        $composeMessage->purgeAttachments();
         if ($action == 'reply' || $action == 'reply_all') {
             sqimap_mailbox_select ($imap_stream, $mailbox);
             sqimap_messages_flag ($imap_stream, $passed_id, $passed_id, 'Answered', false);
