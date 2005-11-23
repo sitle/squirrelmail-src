@@ -110,7 +110,7 @@ foreach ($vcard_nice as $k => $v) {
 $ShowValues = array(
     'fn' =>             _("Name"),
     'title' =>          _("Title"),
-    'email;internet' => _("Email"),
+    'email;internet' => _("E-mail"),
     'url' =>            _("Web Page"),
     'org' =>            _("Organization / Department"),
     'adr' =>            _("Address"),
@@ -149,7 +149,7 @@ echo '</table>' .
      '<tr>' .
      '<td bgcolor="' . $color[0] . '">' .
      '<b><center>' .
-     _("Add to Addressbook") .
+     _("Add to address book") .
      '</td></tr>' .
      '<tr><td align="center">' .
      '<form action="../src/addressbook.php" method="post" name="f_add">' .
@@ -215,7 +215,7 @@ echo '<input name="addaddr[email]" type="hidden" value="' .
      '<input name="addaddr[lastname]" type="hidden" value="' .
         $vcard_safe['lastname'] . '" />' .
      '<input type="submit" name="addaddr[SUBMIT]" ' .
-        'value="'._("Add to Address Book").'" />';
+        'value="'._("Add to address book").'" />';
 
 ?>
 </td></tr>
