@@ -1,0 +1,24 @@
+Date: $Date$
+
+Debian Sarge (glibc 2.3.2, php 4.3.10, GNU Gettext 0.14.4)
+
+ru_RU.UTF-8 and fr_FR setlocale() calls. Does not depend on putenv() calls.
+Depends on system locale. Returns false on failed setlocale() call and locale
+string on successful.
+
+File open order
+---------------
+setlocale with charset
+* ru_RU.UTF-8/LC_MESSAGES/test.mo
+* ru_RU.utf8/LC_MESSAGES/test.mo
+* ru_RU/LC_MESSAGES/test.mo
+* ru.UTF-8/LC_MESSAGES/test.mo
+* ru.utf8/LC_MESSAGES/test.mo
+* ru/LC_MESSAGES/test.mo
+
+setlocale without charset
+* fr_FR/LC_MESSAGES/test.mo
+* fr/LC_MESSAGES/test.mo
+
+Supported locales are listed in /usr/share/i18n/SUPPORTED. Locales can be 
+compiled with localedef, locale-gen or dpkg-reconfigure locales
