@@ -888,7 +888,7 @@ function sqimap_status_messages ($imap_stream, $mailbox) {
  * Saves a message to a given folder -- used for saving sent messages
  */
 function sqimap_append ($imap_stream, $sent_folder, $length) {
-    fputs ($imap_stream, sqimap_session_id() . " APPEND \"$sent_folder\" (\\Seen) \{$length}\r\n");
+    fputs ($imap_stream, sqimap_session_id() . " APPEND \"$sent_folder\" (\\Seen) {".$length."}\r\n");
     $tmp = fgets ($imap_stream, 1024);
     sqimap_append_checkresponse($tmp, $sent_folder);
 }
