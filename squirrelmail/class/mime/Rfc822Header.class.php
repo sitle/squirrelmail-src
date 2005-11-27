@@ -148,7 +148,7 @@ class Rfc822Header {
                 }
             }
         }
-        if ($this->content_type == '') {
+        if (!is_object($this->content_type)) {
             $this->parseContentType('text/plain; charset=us-ascii');
         }
     }
