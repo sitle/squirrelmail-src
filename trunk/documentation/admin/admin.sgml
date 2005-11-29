@@ -68,6 +68,7 @@ client, including strong MIME support, address books, and folder manipulation.
   <item>Japanese language support: PHP must be compiled with the
     <tt/--enable-mbstring/ option for SquirrelMail to read and write Japanese
     emails. Each user must also set their language option to Japanese.
+  <item>PHP XML extension is required, if digest-md5 authentication is used.
 </itemize>
 
 <sect2>Preferred configuration:
@@ -1359,7 +1360,7 @@ iso-2022-jp, euc-jp and shiftjis character sets. Other Eastern characters will
 be displayed correctly only when character codes match big-5, euc-kr or gb2312
 character sets.
 
-Other character sets can be decoded with special decoding functions. These
+Other character sets can be decoded with extra decoding library functions. These
 functions are loaded automatically since 1.4.4 and 1.5.1, if appropriate files
 are present in functions/decode directory.
 
@@ -1456,19 +1457,82 @@ installation.
 
 <sect1>Main SquirrelMail attack vectors
 <p>
-XSS and user level crackers
+SquirrelMail is webmail interface written in PHP. Webmail interface could be
+attacked through specifically crafted emails, interface programming mistakes
+and user information hijacking. It can be used to send unsolicited email
+messages from hijacked or abused email account.
 
-<sect1>HTTP vs HTTPS
-<p>
-About web traffic encryption
+In order to prevent crafted email exploits SquirrelMail uses special <url
+ url="http://linux.duke.edu/projects/mini/htmlfilter/" name="htmlfilter">
+library to filter dangerous html code and prevents loading of remote web
+data. Htmlfilter code needs constant updates because crackers discover various
+design problems in web browser and can try exploiting them in webmail
+interfaces. If you want to be safe, make sure that you are running latest
+secured web browser version and SquirrelMail scripts are not outdated.
+
+Interface programming mistakes usually can exploited only by authenticated
+user. They can lead to hijacking of other users' data or executing scripts with
+webserver user privileges. SquirrelMail developers are trying to prevent such
+exploits. If you find some way to security of SquirrelMail scripts, inform about
+it SquirrelMail developers.
+
+User's login information can be hijacked in communications between IMAP and web
+servers, session and data storage facilities on web server, communications
+between web server and web browser and with tracking tools on user's machine.
+
+In order to track emails sent through webmail interface SquirrelMail automatically
+adds own Received: headers with sender's IP address, detected information about
+used proxies and used username. This information can be hidden by encrypting it.
+Webmail administrators can completely remove username and address information by
+editing <tt>class/deliver/Deliver.class.php</tt> file. You should not remove
+user information from email headers unless you make sure that you can retrieve
+information with other tools or user forging is not possible in your
+SquirrelMail setup. SquirrelMail developers don't support interface that removes
+user information and should not be blamed when such interface is abused.
 
 <sect1>IMAP vs IMAPS
 <p>
-Information about sniffing local interface.
+Information about secure IMAP and sniffing local interface.
+
+<sect1>HTTP vs HTTPS
+<p>
+SquirrelMail interface consists of dynamically generated HTML pages. These pages
+are transfered to user's browser using HTTP protocol. HTTP protocol does not
+have any built-in encryption functions. Information is transfered in plain
+text. HTTP traffic contains login passwords and any information viewed or
+entered in browser.
+
+If you want to secure web traffic, you should use HTTP protocol with SSL
+encryption. Check your web server documentation about SSL support.
+
+If you have SquirrelMail install in unsecured HTTP and secured HTTPS servers,
+SquirrelMail secure_login and show_ssl_link plugins can be used to warn users
+insecure connection and provide redirection to secured server.
+
+In Apache webserver redirection can be implemented with Redirect directives and
+mod_rewrite module. For example:
+
+<tscreen><verb>
+# Redirect /squirrelmail link to secured server
+RedirectPermanent /squirrelmail https://secured.example.org/squirrelmail
+</verb></tscreen>
+
+HTTP over SSL communications prevent "man in the middle" attacks between user's
+machine and webmail server. SSL encryption makes it difficult to sniff web
+traffic. Use of signed SSL certificates might prevent hostname spoofing
+attacks.
+
+<sect1>Session data security
+<p>
+Information about OTP and other information stored in session.
 
 <sect1>Data directory security
 <p>
 About data directory security.
+
+<sect1>Keyloggers
+<p>
+vkeyboard plugin.
 
 <sect>FAQ
 <p>
