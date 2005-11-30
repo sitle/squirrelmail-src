@@ -1517,6 +1517,13 @@ mod_rewrite module. For example:
 RedirectPermanent /squirrelmail https://secured.example.org/squirrelmail
 </verb></tscreen>
 
+<tscreen><verb>
+# simple mod_rewrite example
+RewriteEngine on
+RewriteCond  %{HTTPS} off
+RewriteRule  ^webmail/(.*)  https://secured.example.org/$1 [L,R]
+</verb></tscreen>
+
 HTTP over SSL communications prevent "man in the middle" attacks between user's
 machine and webmail server. SSL encryption makes it difficult to sniff web
 traffic. Use of signed SSL certificates might prevent hostname spoofing
