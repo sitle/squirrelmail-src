@@ -77,9 +77,25 @@ $header = "<script language=\"JavaScript\" type=\"text/javascript\">\n" .
           "// -->\n".
           "</script>\n";
 $custom_css = 'none';
+
+// Load default theme if possible
+if (@file_exists($theme[$theme_default]['PATH']))
+   @include ($theme[$theme_default]['PATH']);
+
+if (! isset($color) || ! is_array($color)) {
+    // Add default color theme, if theme loading fails
+    $color = array();
+    $color[0]  = '#dcdcdc';  /* light gray    TitleBar               */
+    $color[1]  = '#800000';  /* red                                  */
+    $color[2]  = '#cc0000';  /* light red     Warning/Error Messages */
+    $color[4]  = '#ffffff';  /* white         Normal Background      */
+    $color[7]  = '#0000cc';  /* blue          Links                  */
+    $color[8]  = '#000000';  /* black         Normal text            */
+}
+
 displayHtmlHeader( "$org_name - " . _("Login"), $header, FALSE );
 
-echo '<body text="#000000" bgcolor="#FFFFFF" link="#0000CC" vlink="#0000CC" alink="#0000CC" onload="squirrelmail_loginpage_onload();">' .
+echo "<body text=\"$color[8]\" bgcolor=\"$color[4]\" link=\"$color[7]\" vlink=\"$color[7]\" alink=\"$color[7]\" onLoad=\"squirrelmail_loginpage_onload();\">" .
      "\n" . addForm('redirect.php', 'post');
 
 $username_form_name = 'login_username';
@@ -123,7 +139,7 @@ echo html_tag( 'table',
                 html_tag( 'tr',
                     html_tag( 'td',
                         '<b>' . sprintf (_("%s Login"), $org_name) . "</b>\n",
-                    'center', '#DCDCDC' )
+                    'center', $color[0] )
                 ) .
                 html_tag( 'tr',
                     html_tag( 'td',  "\n" .
@@ -147,18 +163,18 @@ echo html_tag( 'table',
 				    addHidden('just_logged_in', '1'),
                                 'left', '', 'width="*"' )
                             ) ,
-                        'center', '#ffffff', 'border="0" width="100%"' ) ,
-                    'left', '#FFFFFF' )
+                        'center', $color[4], 'border="0" width="100%"' ) ,
+                    'left',$color[4] )
                 ) . 
                 html_tag( 'tr',
                     html_tag( 'td',
                         '<center>'. addSubmit(_("Login")) .'</center>',
                     'left' )
                 ),
-            '', '#ffffff', 'border="0" width="350"' ) . '</center>',
+            '', $color[4], 'border="0" width="350"' ) . '</center>',
         'center' )
     ) ,
-'', '#ffffff', 'border="0" cellspacing="0" cellpadding="0" width="100%"' );
+'', $color[4], 'border="0" cellspacing="0" cellpadding="0" width="100%"' );
 do_hook('login_form');
 echo '</form>' . "\n";
 
