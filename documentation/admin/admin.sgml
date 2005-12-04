@@ -1507,7 +1507,7 @@ encryption. Check your web server documentation about SSL support.
 
 If you have SquirrelMail install in unsecured HTTP and secured HTTPS servers,
 SquirrelMail secure_login and show_ssl_link plugins can be used to warn users
-insecure connection and provide redirection to secured server.
+about insecure connection and provide redirection to secured server.
 
 In Apache webserver redirection can be implemented with Redirect directives and
 mod_rewrite module. For example:
