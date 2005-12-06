@@ -178,27 +178,29 @@ function _($str) {
         $gettext_php_translateStrings[$str] = $str;
         return $str;
     }
-    
-    /* Look for a string that is very close to the one we want
-       Very computationally expensive */
-    $oldPercent = 0;
-    $oldStr = '';
-    $newPercent = 0;
-    foreach ($gettext_php_translateStrings as $k => $v) {
-        similar_text($str, $k, $newPercent);
-        if ($newPercent > $oldPercent) {
-            $oldStr = $v;
-            $oldPercent = $newPercent;
+
+    /* don't do fuzzy matching for strings with sprintf() formating */
+    if (! preg_match('/\%[\%bcdeufFosxX]/',$str)) {
+        /* Look for a string that is very close to the one we want
+         * Very computationally expensive */
+        $oldPercent = 0;
+        $oldStr = '';
+        $newPercent = 0;
+        foreach ($gettext_php_translateStrings as $k => $v) {
+            similar_text($str, $k, $newPercent);
+            if ($newPercent > $oldPercent) {
+                $oldStr = $v;
+                $oldPercent = $newPercent;
+            }
+        }
+        /* Require 80% match or better
+         * Adjust to suit your needs */
+        if ($oldPercent > 80) {
+            /* Remember this so we don't need to search again */
+            $gettext_php_translateStrings[$str] = $oldStr;
+            return $oldStr;
         }
     }
-    /* Require 80% match or better
-       Adjust to suit your needs */
-    if ($oldPercent > 80) {
-        /* Remember this so we don't need to search again */
-        $gettext_php_translateStrings[$str] = $oldStr;
-        return $oldStr;
-    }
-    
     /* Remember this so we don't need to search again */
     $gettext_php_translateStrings[$str] = $str;
     return $str;
