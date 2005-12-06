@@ -103,6 +103,10 @@ Version 1.4.6 - CVS
     in PHP 5.1.
   - Login and login error pages use default theme colors (#1366050).
   - Add doc/security.txt with some hints for a more secure installation.
+  - Suppressed fsockopen() warnings when interface is configured to use TLS on
+    plain SMTP port. Reported by Nicolas Mailhot.
+  - Disabled fuzzy matching of sprintf() formated strings in internal
+    gettext implementation (#1341089).
   
 Version 1.4.5 - 13 July 2005
 ----------------------------
