@@ -62,8 +62,8 @@ class Deliver_SMTP extends Deliver {
         if (!$stream) {
             $this->dlv_msg = $errorString;
             $this->dlv_ret_nr = $errorNumber;
-            // TODO: add some human readable error message. 
-            $this->dlv_server_msg = '';
+            // TODO: gettext it.
+            $this->dlv_server_msg = "Can't open SMTP stream.";
             return(0);
         }
         $tmp = fgets($stream, 1024);
