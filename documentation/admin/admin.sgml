@@ -1459,22 +1459,28 @@ Used terms:
 <descrip>
   <tag/TLS - Transport Layer Security/
   Transport Layer Security is cryptographic protocol which provides secure
-  communications on the Internet. It is successor to SSL v.3.0 protocol. TLS
-  v.1.0 protocol is refined in RFC 2246.
+  communications on the Internet. It is successor to SSL v.3.0 protocol. The
+  term "SSL" ofter applies to both TLS and SSL protocols. The differences
+  between this protocol and SSL 3.0 are not dramatic, but they are significant
+  enough that TLS 1.0 and SSL 3.0 do not interoperate (although TLS 1.0 does
+  incorporate a mechanism by which a TLS implementation can back down to SSL
+  3.0). TLS v.1.0 protocol is refined in RFC 2246.
 
   <tag/SSL - Secure Sockets Layer/
   Secure Sockets Layer is cryptographic protocol which provides secure
   communications on the Internet. Protocol runs on layers beneath application
   protocols such as HTTP, SMTP and NNTP and above the TCP transport protocol,
-  which forms part of the TCP/IP protocol suite. SSL v.3.0 protocol is defined
+  which forms part of the TCP/IP protocol suite. SSL v.3.0 protocol is refined
   by Netscape Corporation. <url url="http://wp.netscape.com/eng/ssl3/"
   name="http://wp.netscape.com/eng/ssl3/">
 
   <tag/STARTTLS/
-  STARTTLS is special extension to standard plain text protocols. STARTTLS
-  extensions offer a way to upgrade to TLS from a plaintext connection, rather
-  than use a separate port for encrypted communications. SMTP STARTTLS extension
-  is defined in RFC 2487. IMAP STARTTLS extension is defined in RFC 2595.
+  STARTTLS is special extension to standard plain text communication
+  protocols. STARTTLS extensions offer a way to upgrade to TLS from a plaintext
+  connection, rather than use a separate port for encrypted communications. SMTP
+  STARTTLS extension is refined in RFC 2487. IMAP STARTTLS extension is refined
+  in RFC 2595. The Internet Engineering Task Force recommends use of STARTTLS
+  instead of a separate port for encrypted communications.
 </descrip>
 
 <sect1>Main SquirrelMail attack vectors
