@@ -254,17 +254,6 @@ function sqm_baseuri(){
     return $base_uri;
 }
 
-function error_message($message, $mailbox, $sort, $startMessage, $color) {
-    $urlMailbox = urlencode($mailbox);
-    $string = '<tr><td align="center">' . $message . '</td></tr>'.
-              '<tr><td align="center">'.
-              '<a href="'.sqm_baseuri()."src/right_main.php?sort=$sort&amp;startMessage=$startMessage&amp;mailbox=$urlMailbox\">".
-              sprintf (_("Click here to return to %s"),
-                  imap_utf7_decode_local($mailbox)).
-              '</a></td></tr>';
-    error_box($string, $color);
-}
-
 /**
  * get_location
  *
