@@ -1455,6 +1455,28 @@ comments that explain how to do that without configuration utility.
 This chapter should discuss some security aspects of your SquirrelMail
 installation.
 
+Used terms:
+<descrip>
+  <tag/TLS - Transport Layer Security/
+  Transport Layer Security is cryptographic protocol which provides secure
+  communications on the Internet. It is successor to SSL v.3.0 protocol. TLS
+  v.1.0 protocol is refined in RFC 2246.
+
+  <tag/SSL - Secure Sockets Layer/
+  Secure Sockets Layer is cryptographic protocol which provides secure
+  communications on the Internet. Protocol runs on layers beneath application
+  protocols such as HTTP, SMTP and NNTP and above the TCP transport protocol,
+  which forms part of the TCP/IP protocol suite. SSL v.3.0 protocol is defined
+  by Netscape Corporation. <url url="http://wp.netscape.com/eng/ssl3/"
+  name="http://wp.netscape.com/eng/ssl3/">
+
+  <tag/STARTTLS/
+  STARTTLS is special extension to standard plain text protocols. STARTTLS
+  extensions offer a way to upgrade to TLS from a plaintext connection, rather
+  than use a separate port for encrypted communications. SMTP STARTTLS extension
+  is defined in RFC 2487. IMAP STARTTLS extension is defined in RFC 2595.
+</descrip>
+
 <sect1>Main SquirrelMail attack vectors
 <p>
 SquirrelMail is webmail interface written in PHP. Webmail interface could be
