@@ -16,6 +16,9 @@
 require_once(SM_PATH . 'functions/global.php');
 require_once(SM_PATH . 'functions/plugin.php');
 
+/** include this for error messages */
+include_once(SM_PATH . 'functions/display_messages.php');
+
 sqgetGlobalVar('prefs_cache', $prefs_cache, SQ_SESSION );
 sqgetGlobalVar('prefs_are_cached', $prefs_are_cached, SQ_SESSION );
 

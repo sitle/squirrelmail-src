@@ -12,9 +12,6 @@
  * @package squirrelmail
  */
 
-/** include this for error messages */
-include_once(SM_PATH . 'functions/display_messages.php');
-
 /**
  * Check the preferences into the session cache.
  */
