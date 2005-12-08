@@ -108,7 +108,9 @@ Version 1.4.6 - CVS
   - Disabled fuzzy matching of sprintf() formated strings in internal
     gettext implementation (#1341089).
   - Moved inclusion of display_messages.php out of backend-dependent location
-  - Moved sqm_baseuri() into more centralized location (strings.php)
+  - Moved sqm_baseuri() into more centralized location (strings.php).
+  - Back-ported code change to only filter undeleted emails.
+
   
 Version 1.4.5 - 13 July 2005
 ----------------------------
