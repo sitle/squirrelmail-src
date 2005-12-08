@@ -185,6 +185,28 @@ function start_filters() {
     sqgetGlobalVar('username', $username, SQ_SESSION);
     sqgetGlobalVar('key',      $key,      SQ_COOKIE);
 
+
+    $filters = load_filters();
+
+    // No point running spam filters if there aren't any to run //
+    if ($AllowSpamFilters) {
+        $spamfilters = load_spam_filters();
+
+        $AllowSpamFilters = false;
+        foreach($spamfilters as $filterkey=>$value) {
+            if ($value['enabled'] == 'yes') {
+                $AllowSpamFilters = true;
+                break;
+            }
+        }
+    }
+
+    // No user filters, and no spam filters, no need to continue //
+    if (!$AllowSpamFilters && empty($filters)) {
+        return;
+    }
+
+
     // Detect if we have already connected to IMAP or not.
     // Also check if we are forced to use a separate IMAP connection
     if ((!isset($imap_stream) && !isset($imapConnection)) ||
