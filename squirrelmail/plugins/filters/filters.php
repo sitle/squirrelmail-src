@@ -276,6 +276,8 @@ function filter_search_and_delete($imap, $where, $what, $where_to, $user_scan,
         $category = 'ALL';
     }
 
+    $category .= ' UNDELETED';
+
     if ($allow_charset_search &&
         isset($languages[$squirrelmail_language]['CHARSET']) &&
         $languages[$squirrelmail_language]['CHARSET']) {
