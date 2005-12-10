@@ -1562,7 +1562,8 @@ function deliverMessage($composeMessage, $draft=false) {
             $composeMessage->purgeAttachments();
             return $length;
         } else {
-            $msg  = '<br />'.sprintf(_("Error: Draft folder %s does not exist."), $draft_folder);
+            $msg  = '<br />'.sprintf(_("Error: Draft folder %s does not exist."),
+                htmlspecialchars($draft_folder));
             plain_error_message($msg, $color);
             return false;
         }
