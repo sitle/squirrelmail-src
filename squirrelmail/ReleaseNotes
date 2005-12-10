@@ -1,7 +1,7 @@
 /*****************************************************************
- * Release Notes: SquirrelMail 1.4.5                             *
- * The "Squishy Squirrel" Release                                *
- *    June 2005                                                  *
+ * Release Notes: SquirrelMail 1.4.6 Release Candidate 1         *
+ * The "???" Release                                             *
+ * 10 December 2005                                              *
  *****************************************************************/
 
 In this edition of SquirrelMail Release Notes:
@@ -16,25 +16,14 @@ In this edition of SquirrelMail Release Notes:
 All about this release
 ======================
 
-This 1.4.5 release is a maintentance release, featuring:
+This 1.4.6rc1 is a Release Candidate: a testing version released to the
+public to make sure it's stable enough to become 1.4.6.
+
+This release addresses the following problems since 1.4.5:
 - Security fixes (see below)
 - A lot of bugfixes
 - Stability and interoperability enhancements
-
-
-Security Issues
-===============
-
-A couple of different Cross Site Scripting issues were discovered
-and fixed in this release. Thanks go to Martijn Brinkers who helped
-us a great deal in uncovering these. They are referenced under CVE
-number CAN-2005-1769.
-
-A different vulnerability has been found in the identities options
-page that would in some circumstances allow for modifying other
-people's preferences and possible cross site scripting. Thanks to
-James Bercegay from GulfTech Security Research for finding this
-issue, which is referenced as CAN-2005-2095.
+(see ChangeLog for a full list)
 
 
 Locales / Translations / Charsets
