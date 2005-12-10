@@ -101,21 +101,7 @@ $tzChangeAllowed = (!ini_get('safe_mode')) ||
 
 if ( $timeZone != SMPREF_NONE && ($timeZone != "")
     && $tzChangeAllowed ) {
-
-    // get time zone key, if strict or custom strict timezones are used
-    if (isset($time_zone_type) && 
-        ($time_zone_type == 1 || $time_zone_type == 3)) {
-        /* load time zone functions */
-        require_once(SM_PATH . 'include/timezones.php');
-        $realTimeZone = sq_get_tz_key($timeZone);
-    } else {
-        $realTimeZone = $timeZone;
-    }
-
-    // set time zone
-    if ($realTimeZone) {
-        putenv("TZ=".$realTimeZone);
-    }
+    putenv("TZ=".$timeZone);
 }
 
 ?>

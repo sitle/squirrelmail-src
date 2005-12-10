@@ -1,10 +1,10 @@
 <?php
-
 /**
  * abook_local_file.php
  *
- * @copyright &copy; 1999-2005 The SquirrelMail Project Team
- * @license http://opensource.org/licenses/gpl-license.php GNU Public License
+ * Copyright (c) 1999-2005 The SquirrelMail Project Team
+ * Licensed under the GNU GPL. For full terms see the file COPYING.
+ *
  * @version $Id$
  * @package squirrelmail
  * @subpackage addressbook
@@ -26,7 +26,6 @@
  *                checking file permissions.
  * ? writeable => allow writing into address book. Used only when
  *                detect_writeable is set to false.
- * ? listing   => enable/disable listing
  *</pre>
  * NOTE. This class should not be used directly. Use the
  *       "AddressBook" class instead.
@@ -72,11 +71,6 @@ class abook_local_file extends addressbook_backend {
      */
     var $writeable = false;
     /**
-     * controls listing of address book
-     * @var bool
-     */
-    var $listing = true;
-    /**
      * Umask of the file
      * @var string
      */
@@ -118,9 +112,6 @@ class abook_local_file extends addressbook_backend {
             }
             if(!empty($param['writeable'])) {
                 $this->writeable = $param['writeable'];
-            }
-            if(isset($param['listing'])) {
-                $this->listing = $param['listing'];
             }
 
             $this->open(true);
@@ -259,10 +250,6 @@ class abook_local_file extends addressbook_backend {
         /* To be replaced by advanded search expression parsing */
         if(is_array($expr)) { return; }
 
-        // don't allow wide search when listing is disabled.
-        if ($expr=='*' && ! $this->listing)
-            return array();
-
         /* Make regexp from glob'ed expression
          * May want to quote other special characters like (, ), -, [, ], etc. */
         $expr = str_replace('?', '.', $expr);
@@ -328,11 +315,6 @@ class abook_local_file extends addressbook_backend {
      */
     function list_addr() {
         $res = array();
-
-        if(isset($this->listing) && !$this->listing) {
-            return array();
-        }
-
         $this->open();
         @rewind($this->filehandle);
 
@@ -362,7 +344,7 @@ class abook_local_file extends addressbook_backend {
         $ret = $this->lookup($userdata['nickname']);
         if(!empty($ret)) {
             // i18n: don't use html formating in translation
-            return $this->set_error(sprintf(_("User \"%s\" already exists"),$ret['nickname']));
+            return $this->set_error(sprintf(_("User \"%s\" already exists"), $ret['nickname']));
         }
 
         /* Here is the data to write */
@@ -455,7 +437,7 @@ class abook_local_file extends addressbook_backend {
         $ret = $this->lookup($alias);
         if(empty($ret)) {
             // i18n: don't use html formating in translation
-            return $this->set_error(sprintf(_("User \"%s\" does not exist"),$alias));
+            return $this->set_error(sprintf(_("User \"%s\" does not exist"), $alias));
         }
 
         /* Lock the file to make sure we're the only process working

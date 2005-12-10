@@ -1,11 +1,26 @@
 <?php
-
 /**
  * Message and Spam Filter Plugin - Filtering Options
  *
- * @copyright &copy; 1999-2005 The SquirrelMail Project Team
- * @license http://opensource.org/licenses/gpl-license.php GNU Public License
+ * This plugin filters your inbox into different folders based upon given
+ * criteria. It is most useful for people who are subscibed to mailing lists
+ * to help organize their messages.  The argument stands that filtering is
+ * not the place of the client, which is why this has been made a plugin for
+ * SquirrelMail.  You may be better off using products such as Sieve or
+ * Procmail to do your filtering so it happens even when SquirrelMail isn't
+ * running.
+ *
+ * If you need help with this, or see improvements that can be made, please
+ * email me directly at the address above.  I definately welcome suggestions
+ * and comments.  This plugin, as is the case with all SquirrelMail plugins,
+ * is not directly supported by the developers.  Please come to me off the
+ * mailing list if you have trouble with it.
+ *
+ * Also view plugins/README.plugins for more information.
+ *
  * @version $Id$
+ * @copyright (c) 1999-2005 The SquirrelMail Project Team
+ * @license http://opensource.org/licenses/gpl-license.php GNU Public License
  * @package plugins
  * @subpackage filters
  */
@@ -18,8 +33,14 @@ define('SM_PATH','../../');
 
 /* SquirrelMail required files. */
 require_once(SM_PATH . 'include/validate.php');
-include_once(SM_PATH . 'functions/imap.php');
-include_once(SM_PATH . 'plugins/filters/filters.php');
+require_once(SM_PATH . 'functions/page_header.php');
+require_once(SM_PATH . 'functions/imap.php');
+require_once(SM_PATH . 'functions/imap_mailbox.php');
+require_once(SM_PATH . 'include/load_prefs.php');
+require_once(SM_PATH . 'functions/forms.php');
+require_once(SM_PATH . 'plugins/filters/filters.php');
+
+global $AllowSpamFilters;
 
 displayPageHeader($color, 'None');
 
@@ -73,7 +94,7 @@ if (sqgetGlobalVar('filter_submit',$filter_submit,SQ_POST)) {
             $action = 'edit';
         }
         if ($action != 'edit') {
-        setPref($data_dir, $username, 'filter'.$theid, $filter_where.','.$filter_what.','.$filter_folder);
+            setPref($data_dir, $username, 'filter'.$theid, $filter_where.','.$filter_what.','.$filter_folder);
         }
         $filters[$theid]['where'] = $filter_where;
         $filters[$theid]['what'] = $filter_what;
@@ -107,17 +128,17 @@ if (sqgetGlobalVar('filter_submit',$filter_submit,SQ_POST)) {
         '<center>'.
         html_tag( 'table', '', '', '', 'border="0" cellpadding="2" cellspacing="0"' ) .
             html_tag( 'tr' ) .
-                html_tag( 'th', _("What to Scan:"), 'right', '', 'style="white-space: nowrap;"' ) .
+                html_tag( 'th', _("What to Scan:"), 'right', '', 'nowrap' ) .
                 html_tag( 'td', '', 'left' ) .
             '<select name="filters_user_scan_set">'.
             '<option value=""';
     if ($filters_user_scan == '') {
-        echo ' selected="selected"';
+        echo ' selected';
     }
     echo '>' . _("All messages") . '</option>'.
             '<option value="new"';
     if ($filters_user_scan == 'new') {
-        echo ' selected="selected"';
+        echo ' selected';
     }
     echo '>' . _("Only unread messages") . '</option>' .
             '</select>'.
@@ -156,29 +177,23 @@ if (sqgetGlobalVar('filter_submit',$filter_submit,SQ_POST)) {
 
         $L = isset($filters[$theid]['where']);
 
-        $sel = (($L && $filters[$theid]['where'] == 'From')?' selected="selected"':'');
-        echo "<option value=\"From\"$sel>" . _("From") . '</option>';
+        $sel = (($L && $filters[$theid]['where'] == 'From')?'selected':'');
+        echo "<option value=\"From\" $sel>" . _("From") . '</option>';
 
-        $sel = (($L && $filters[$theid]['where'] == 'To')?' selected="selected"':'');
-        echo "<option value=\"To\"$sel>" . _("To") . '</option>';
+        $sel = (($L && $filters[$theid]['where'] == 'To')?'selected':'');
+        echo "<option value=\"To\" $sel>" . _("To") . '</option>';
 
-        $sel = (($L && $filters[$theid]['where'] == 'Cc')?' selected="selected"':'');
-        echo "<option value=\"Cc\"$sel>" . _("Cc") . '</option>';
+        $sel = (($L && $filters[$theid]['where'] == 'Cc')?'selected':'');
+        echo "<option value=\"Cc\" $sel>" . _("Cc") . '</option>';
 
-        $sel = (($L && $filters[$theid]['where'] == 'To or Cc')?' selected="selected"':'');
-        echo "<option value=\"To or Cc\"$sel>" . _("To or Cc") . '</option>';
+        $sel = (($L && $filters[$theid]['where'] == 'To or Cc')?'selected':'');
+        echo "<option value=\"To or Cc\" $sel>" . _("To or Cc") . '</option>';
 
-        $sel = (($L && $filters[$theid]['where'] == 'Subject')?' selected="selected"':'');
-        echo "<option value=\"Subject\"$sel>" . _("Subject") . '</option>';
+        $sel = (($L && $filters[$theid]['where'] == 'Subject')?'selected':'');
+        echo "<option value=\"Subject\" $sel>" . _("Subject") . '</option>';
 
-        $sel = (($L && $filters[$theid]['where'] == 'Message Body')?' selected="selected"':'');
-        echo "<option value=\"Message Body\"$sel>" . _("Message Body") . '</option>';
-
-        $sel = (($L && $filters[$theid]['where'] == 'Header and Body')?' selected="selected"':'');
-        echo "<option value=\"Header and Body\"$sel>" . _("Header and Body") . '</option>';
-
-        $sel = (($L && $filters[$theid]['where'] == 'Header')?' selected="selected"':'');
-        echo "<option value=\"Header\"$sel>" . _("Header") . '</option>';
+        $sel = (($L && $filters[$theid]['where'] == 'Header')?'selected':'');
+        echo "<option value=\"Header\" $sel>" . _("Header") . '</option>';
 
         echo         '</select>'.
                 '</td>'.

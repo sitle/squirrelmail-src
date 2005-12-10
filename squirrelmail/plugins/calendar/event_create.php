@@ -3,19 +3,14 @@
 /**
  * event_create.php
  *
+ * Copyright (c) 2002-2005 The SquirrelMail Project Team
+ * Licensed under the GNU GPL. For full terms see the file COPYING.
+ *
  * Originally contrubuted by Michal Szczotka <michal@tuxy.org>
  *
  * functions to create a event for calendar.
  *
- * @copyright &copy; 2002-2005 The SquirrelMail Project Team
- * @license http://opensource.org/licenses/gpl-license.php GNU Public License
- * @version $Id$
- * @package plugins
- * @subpackage calendar
- */
-
-/**
- * @ignore
+ * $Id$
  */
 define('SM_PATH','../../');
 
@@ -33,38 +28,26 @@ require_once(SM_PATH . 'include/load_prefs.php');
 require_once(SM_PATH . 'functions/html.php');
 
 /* get globals */
-
-// undo rg = on effects
-if (isset($month)) unset($month);
-if (isset($year))  unset($year);
-if (isset($day))  unset($day);
-if (isset($hour))  unset($hour);
-if (isset($minute))  unset($minute);
-if (isset($event_hour))  unset($event_hour);
-if (isset($event_minute))  unset($event_minute);
-if (isset($event_length))  unset($event_length);
-if (isset($event_priority))  unset($event_priority);
-
-
-if (isset($_GET['year']) && is_numeric($_GET['year'])) {
-    $year = $_GET['year'];
-}
-elseif (isset($_POST['year']) && is_numeric($_POST['year'])) {
+unset($year, $month, $day, $hour, $event_hour, $event_minute,
+    $event_length, $event_priority);
+if (isset($_POST['year']) && is_numeric($_POST['year'])) {
     $year = $_POST['year'];
 }
-if (isset($_GET['month']) && is_numeric($_GET['month'])) {
-    $month = $_GET['month'];
+elseif (isset($_GET['year']) && is_numeric($_GET['year'])) {
+    $year = $_GET['year'];
 }
-elseif (isset($_POST['month']) && is_numeric($_POST['month'])) {
+if (isset($_POST['month']) && is_numeric($_POST['month'])) {
     $month = $_POST['month'];
 }
-if (isset($_GET['day']) && is_numeric($_GET['day'])) {
-    $day = $_GET['day'];
+elseif (isset($_GET['month']) && is_numeric($_GET['month'])) {
+    $month = $_GET['month'];
 }
-elseif (isset($_POST['day']) && is_numeric($_POST['day'])) {
+if (isset($_POST['day']) && is_numeric($_POST['day'])) {
     $day = $_POST['day'];
 }
-
+elseif (isset($_GET['day']) && is_numeric($_GET['day'])) {
+    $day = $_GET['day'];
+}
 if (isset($_POST['hour']) && is_numeric($_POST['hour'])) {
     $hour = $_POST['hour'];
 }
@@ -98,52 +81,52 @@ if (isset($_POST['send'])) {
 function show_event_form() {
     global $color, $editor_size, $year, $day, $month, $hour;
 
-    echo "\n<form name=\"eventscreate\" action=\"event_create.php\" method=\"post\">\n".
-         "      <input type=\"hidden\" name=\"year\" value=\"$year\" />\n".
-         "      <input type=\"hidden\" name=\"month\" value=\"$month\" />\n".
-         "      <input type=\"hidden\" name=\"day\" value=\"$day\" />\n".
+    echo "\n<FORM name=eventscreate action=\"event_create.php\" METHOD=POST >\n".
+         "      <INPUT TYPE=hidden NAME=\"year\" VALUE=\"$year\">\n".
+         "      <INPUT TYPE=hidden NAME=\"month\" VALUE=\"$month\">\n".
+         "      <INPUT TYPE=hidden NAME=\"day\" VALUE=\"$day\">\n".
          html_tag( 'tr' ) .
          html_tag( 'td', _("Start time:"), 'right', $color[4] ) . "\n" .
          html_tag( 'td', '', 'left', $color[4] ) . "\n" .
-         "      <select name=\"event_hour\">\n";
+         "      <SELECT NAME=\"event_hour\">\n";
     select_option_hour($hour);
-    echo "      </select>\n" .
+    echo "      </SELECT>\n" .
          "      &nbsp;:&nbsp;\n" .
-         "      <select name=\"event_minute\">\n";
+         "      <SELECT NAME=\"event_minute\">\n";
     select_option_minute("00");
-    echo "      </select>\n".
+    echo "      </SELECT>\n".
          "      </td></tr>\n".
          html_tag( 'tr' ) .
          html_tag( 'td', _("Length:"), 'right', $color[4] ) . "\n" .
          html_tag( 'td', '', 'left', $color[4] ) . "\n" .
-         "      <select name=\"event_length\">\n";
+         "      <SELECT NAME=\"event_length\">\n";
     select_option_length("0");
-    echo "      </select>\n".
+    echo "      </SELECT>\n".
          "      </td></tr>\n".
          html_tag( 'tr' ) .
          html_tag( 'td', _("Priority:"), 'right', $color[4] ) . "\n" .
          html_tag( 'td', '', 'left', $color[4] ) . "\n" .
-         "      <select name=\"event_priority\">\n";
+         "      <SELECT NAME=\"event_priority\">\n";
     select_option_priority("0");
-    echo "      </select>\n".
+    echo "      </SELECT>\n".
          "      </td></tr>\n".
          html_tag( 'tr' ) .
          html_tag( 'td', _("Title:"), 'right', $color[4] ) . "\n" .
          html_tag( 'td', '', 'left', $color[4] ) . "\n" .
-         "      <input type=\"text\" name=\"event_title\" value=\"\" size=\"30\" maxlength=\"50\" /><br />\n".
+         "      <INPUT TYPE=text NAME=\"event_title\" VALUE=\"\" SIZE=30 MAXLENGTH=50><BR>\n".
          "      </td></tr>\n".
          html_tag( 'tr',
              html_tag( 'td',
-                 "<textarea name=\"event_text\" rows=\"5\" cols=\"$editor_size\" wrap=\"hard\"></textarea>" ,
+                 "<TEXTAREA NAME=\"event_text\" ROWS=5 COLS=\"$editor_size\" WRAP=HARD></TEXTAREA>" ,
              'left', $color[4], 'colspan="2"' )
          ) ."\n" .
          html_tag( 'tr',
              html_tag( 'td',
-                 '<input type="submit" name="send" value="' .
-                 _("Set Event") . '" />' ,
+                 "<INPUT TYPE=SUBMIT NAME=send VALUE=\"" .
+                 _("Set Event") . "\">" ,
              'left', $color[4], 'colspan="2"' )
          ) ."\n";
-    echo "</form>\n";
+    echo "</FORM>\n";
 }
 
 
@@ -192,7 +175,7 @@ if(!isset($event_text)){
     writecalendardata();
     echo html_tag( 'table',
                 html_tag( 'tr',
-                    html_tag( 'th', _("Event Has been added!") . "<br />\n", '', $color[4], 'colspan="2"' )
+                    html_tag( 'th', _("Event Has been added!") . "<br>\n", '', $color[4], 'colspan="2"' )
                 ) .
                 html_tag( 'tr',
                     html_tag( 'td', _("Date:"), 'right', $color[4] ) . "\n" .

@@ -1,15 +1,14 @@
 <?php
-
 /**
  * Administrator Plugin - Options Page
  *
  * This script creates separate page, that allows to review and modify
  * SquirrelMail configuration file.
  *
- * @author Philippe Mingo
- * @copyright &copy; 1999-2005 The SquirrelMail Project Team
- * @license http://opensource.org/licenses/gpl-license.php GNU Public License
  * @version $Id$
+ * @author Philippe Mingo
+ * @copyright (c) 1999-2005 The SquirrelMail Project Team
+ * @license http://opensource.org/licenses/gpl-license.php GNU Public License
  * @package plugins
  * @subpackage administrator
  */
@@ -28,7 +27,6 @@ function parseConfig( $cfg_file ) {
     $mode = '';
     $l = count( $cfg );
     $modifier = FALSE;
-    $arraykey = 0;
 
     for ($i=0;$i<$l;$i++) {
         $line = trim( $cfg[$i] );
@@ -50,11 +48,6 @@ function parseConfig( $cfg_file ) {
                     $mode = '=';
                 } else {
                     $key .= $line{$j};
-                    // FIXME: this is only pour workaround for plugins[] array.
-                    if ($line{$j}=='[' && $line{($j+1)}==']') {
-                        $key .= $arraykey;
-                        $arraykey++;
-                    }
                 }
                 break;
             case ';':
@@ -152,31 +145,31 @@ function parseConfig( $cfg_file ) {
  *    '/absolute/path/logo.gif'   --> /absolute/path/logo.gif
  *    'http://whatever/'          --> http://whatever
  *  Note removal of quotes in returned value
- *
+ *  
  * @param string $old_path path that has to be converted
  * @return string new path
  * @access private
  */
 function change_to_rel_path($old_path) {
-    $new_path = str_replace("SM_PATH . '", "../", $old_path);
+    $new_path = str_replace("SM_PATH . '", "../", $old_path); 
     $new_path = str_replace("../config/","", $new_path);
     $new_path = str_replace("'","", $new_path);
     return $new_path;
 }
 
 /**
- * Change relative path (relative to config dir) to
+ * Change relative path (relative to config dir) to 
  *  internal SM_PATH, i.e.:
  *     empty_string            --> ''
  *     ../images/logo.gif      --> SM_PATH . 'images/logo.gif'
  *     images/logo.gif         --> SM_PATH . 'config/images/logo.gif'
  *     /absolute/path/logo.gif --> '/absolute/path/logo.gif'
  *     http://whatever/        --> 'http://whatever'
- *
+ *  
  * @param string $old_path path that has to be converted
  * @return string new path
  * @access private
-*/
+*/     
 function change_to_sm_path($old_path) {
     if ( $old_path === '' || $old_path == "''" ) {
         return "''";
@@ -185,15 +178,15 @@ function change_to_sm_path($old_path) {
     } elseif ( preg_match("/^(\$|SM_PATH)/", $old_path) ) {
         return $old_path;
     }
-
+   
     $new_path = '';
     $rel_path = explode("../", $old_path);
     if ( count($rel_path) > 2 ) {
-        // Since we're relative to the config dir,
+        // Since we're relative to the config dir, 
         // more than 1 ../ puts us OUTSIDE the SM tree.
         // get full path to config.php, then pop the filename
         $abs_path = explode('/', realpath (SM_PATH . 'config/config.php'));
-        array_pop ($abs_path);
+        array_pop ($abs_path); 
         foreach ( $rel_path as $subdir ) {
             if ( $subdir === '' ) {
                 array_pop ($abs_path);
@@ -209,9 +202,9 @@ function change_to_sm_path($old_path) {
         // we're within the SM tree, prepend SM_PATH
         $new_path = str_replace('../',"SM_PATH . '", $old_path . "'");
     } else {
-        // Last, if it's a relative path without a .. prefix,
+        // Last, if it's a relative path without a .. prefix, 
         // we're somewhere within the config dir, so prepend
-        //  SM_PATH . 'config/
+        //  SM_PATH . 'config/  
         $new_path = "SM_PATH . 'config/" . $old_path . "'";
     }
     return $new_path;
@@ -225,7 +218,6 @@ define('SM_PATH','../../');
 
 /* SquirrelMail required files. */
 require_once(SM_PATH . 'include/validate.php');
-require_once(SM_PATH . 'functions/imap.php');
 require_once(SM_PATH . 'plugins/administrator/defines.php');
 require_once(SM_PATH . 'plugins/administrator/auth.php');
 
@@ -258,8 +250,7 @@ $colapse = array( 'Titles' => 'off',
                   'Group7' => getPref($data_dir, $username, 'adm_Group7', 'on' ),
                   'Group8' => getPref($data_dir, $username, 'adm_Group8', 'on' ),
                   'Group9' => getPref($data_dir, $username, 'adm_Group9', 'on' ),
-                  'Group10' => getPref($data_dir, $username, 'adm_Group10', 'on' ),
-                  'Group11' => getPref($data_dir, $username, 'adm_Group11', 'on' ) );
+                  'Group10' => getPref($data_dir, $username, 'adm_Group10', 'on' ) );
 
 /* look in $_GET array for 'switch' */
 if ( sqgetGlobalVar('switch', $switch, SQ_GET) ) {
@@ -462,9 +453,8 @@ foreach ( $newcfg as $k => $v ) {
             break;
         case SMOPT_TYPE_PATH:
             if (  sqgetGlobalVar($e, $new_v, SQ_POST) ) {
-                // FIXME: fix use of $data_dir in $attachment_dir
-                $v = change_to_sm_path($new_v);
-                $newcfg[$k] = $v;
+               $v = change_to_sm_path($new_v);
+               $newcfg[$k] = $v;
             }
             if ( $v == "''" && isset( $defcfg[$k]['default'] ) ) {
                $v = change_to_sm_path($defcfg[$k]['default']);
@@ -551,7 +541,7 @@ if ( $colapse['Group8'] == 'off' ) {
 
         /* Lets get the plugins that are active */
         $plugins = array();
-        if ( sqgetGlobalVar('plg', $v, SQ_POST) ) {
+        if (  sqgetGlobalVar('plg', $v, SQ_POST) ) {
             foreach ( $op_plugin as $plg ) {
                 if (  sqgetGlobalVar("plgs_$plg", $v2, SQ_POST) && $v2 == 'on' ) {
                     $plugins[] = $plg;
@@ -627,7 +617,6 @@ if ( $fp = @fopen( $cfgfile, 'w' ) ) {
                 $v = str_replace( 'array(', "array(\n\t", $v );
                 $v = str_replace( "',", "',\n\t", $v );
             }
-            /* FIXME: add elseif that reverts plugins[#] to plugins[] */
             fwrite( $fp, "$k = $v;\n" );
         }
     }

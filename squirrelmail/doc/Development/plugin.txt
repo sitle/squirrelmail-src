@@ -304,16 +304,14 @@ but may be out of date soon thereafter.  You never know.  ;-)
 &% options_identities_renumber   functions/identity.php          do_hook
   special_mailbox                functions/imap_mailbox.php      hook_func
 % rename_or_delete_folder        functions/imap_mailbox.php      hook_func
+  msg_envelope                   functions/mailbox_display.php   do_hook
   mailbox_index_before           functions/mailbox_display.php   do_hook
   mailbox_form_before            functions/mailbox_display.php   do_hook
   mailbox_index_after            functions/mailbox_display.php   do_hook
   check_handleAsSent_result      functions/mailbox_display.php   do_hook
   subject_link                   functions/mailbox_display.php   concat_hook
-  mailbox_display_buttons        functions/mailbox_display.php   do_hook
-  mailbox_display_button_action  functions/mailbox_display.php   hook_func
   message_body                   functions/mime.php              do_hook
 ^ attachment $type0/$type1       functions/mime.php              do_hook
-  attachments_bottom             functions/mime.php              hook_func
   decode_body                    functions/mime.php              hook_func
   generic_header                 functions/page_header.php       do_hook
   menuline                       functions/page_header.php       do_hook
@@ -321,7 +319,7 @@ but may be out of date soon thereafter.  You never know.  ;-)
   loading_prefs                  include/load_prefs.php          do_hook
   addrbook_html_search_below     src/addrbook_search_html.php    do_hook
   addressbook_bottom             src/addressbook.php             do_hook
-! compose_form                   src/compose.php                 do_hook
+  compose_form                   src/compose.php                 do_hook
   compose_bottom                 src/compose.php                 do_hook
   compose_button_row             src/compose.php                 do_hook
   compose_send                   src/compose.php                 do_hook
@@ -335,9 +333,9 @@ but may be out of date soon thereafter.  You never know.  ;-)
   left_main_after                src/left_main.php               do_hook
   login_cookie                   src/login.php                   do_hook
   login_top                      src/login.php                   do_hook
-  login_form                     src/login.php                   concat_hook
-    (was do_hook before 1.5.1)
+  login_form                     src/login.php                   do_hook
   login_bottom                   src/login.php                   do_hook
+  move_before_move               src/move_messages.php           do_hook
 * optpage_set_loadinfo           src/options.php                 do_hook
 * optpage_loadhook_personal      src/options.php                 do_hook
 * optpage_loadhook_display       src/options.php                 do_hook
@@ -366,11 +364,13 @@ but may be out of date soon thereafter.  You never know.  ;-)
 & options_identities_buttons     src/options_identities.php      concat_hook
   message_body                   src/printer_friendly_bottom.php do_hook
   read_body_header               src/read_body.php               do_hook
-  read_body_menu_top             src/read_body.php               hook_func
+  read_body_menu_top             src/read_body.php               concat_hook
   read_body_menu_bottom          src/read_body.php               do_hook
   read_body_header_right         src/read_body.php               do_hook
+  html_top                       src/read_body.php               do_hook
   read_body_top                  src/read_body.php               do_hook
   read_body_bottom               src/read_body.php               do_hook
+  html_bottom                    src/read_body.php               do_hook
   login_before                   src/redirect.php                do_hook
   login_verified                 src/redirect.php                do_hook
   right_main_after_header        src/right_main.php              do_hook
@@ -390,7 +390,6 @@ O info_bottom                    plugins/info/options.php        do_hook
 ^ = Special attachments hook (see below)
 * = Special options hooks (see below)
 O = Optional hook provided by a particular plugin
-! = See below for notes about working with the compose page's <form> tag
 
 
 (#) Called With
@@ -399,35 +398,6 @@ Each hook is called using the hook type specified in the list above:
    do_hook       do_hook()
    hook_func     do_hook_function()
    concat_hook   concat_hook_function()
-
-
-(!) Compose Form
-----------------
-The compose_form hook allows plugins to insert their own code into 
-the form tag for the main message composition HTML form.  Usually
-plugins will want to insert some kind of code in an onsubmit event
-handler.  In order to allow more than one plugin to do so, all plugins
-using this hook to add some onsubmit code need to add that code (without
-the enclosing attribute name and quotes) as a new array entry to the 
-global $compose_onsubmit array.  The code should use "return false"
-if the plugin has found a reason to stop form submission, otherwise,
-it should DO NOTHING (that is, please do not use "return true", as that
-will prevent other plugins from using the onsubmit handler).  SquirrelMail
-itself will insert a final "return true".  All onsubmit code will be
-enclosed in double quotes by SquirrelMail, so plugins need to quote 
-accordingly if needed.  For example:
-
-   global $compose_onsubmit;
-   $compose_onsubmit[] = ' if (somevar == \'no\') return false; ';
-
-Note the escaped single quotes.  If you use double quotes, they would have
-to be escaped as such:
-
-   global $compose_onsubmit;
-   $compose_onsubmit[] = ' if (somevar == \'no\') { alert(\\"Sorry\\"); return false; }';
-
-Any other form tag additions by a plugin (beside onsubmit event code) can 
-currently be echoed directly to the browser.
 
 
 (&) Identity Hooks
@@ -554,14 +524,9 @@ To set up links for actions, you assign them like this:
 
   $Args[1]['<plugin_name>']['href'] = 'URL to link to';
   $Args[1]['<plugin_name>']['text'] = _("What to display");
-  $Args[1]['<plugin_name>']['extra'] = 'extra stuff, such as an <img ...> tag';
 
 Note: _("What to display") is explained in the section about
 internationalization.
-
-You can leave the 'text' empty and put an image tag in 'extra' to show an
-image-only link for the attachment, or do the opposite (leave 'extra' empty)
-to display a text-only link.
 
 It's also possible to specify a hook as "attachment type0/*",
 for example "attachment text/*". This hook will be executed whenever there's
@@ -724,9 +689,6 @@ for you.  This is the preferred method of building options lists going forward.
                         setting in the user's preferences
          caption        The text that prefaces this setting on the preferences
                         page
-         trailing_text  Text that follows a text input or select list input on
-                        the preferences page (useful for indicating units,
-                        meanings of special values, etc.)
          type           The type of INPUT element, which should be one of:
                            SMOPT_TYPE_STRING     String/text input
                            SMOPT_TYPE_STRLIST    Select list input
@@ -774,12 +736,6 @@ for you.  This is the preferred method of building options lists going forward.
                         or other code to the user input
          post_script    You may specify some script (usually Javascript) that
                         will be placed after (outside of) the INPUT tag.
-         htmlencoded    disables html sanitizing. WARNING - don't use it, if user
-                        input is possible in option or use own sanitizing functions.
-                        Currently works only with SMOPT_TYPE_STRLIST.
-         folder_filter  Controls folder list limits in SMOPT_TYPE_FLDRLIST widget.
-                        See $flag argument in sqimap_mailbox_option_list()
-                        function. Available since 1.5.1.
 
       Note that you do not have to create a whole new section on the options
       page if you merely want to add a simple input item or two to an options
@@ -1275,41 +1231,6 @@ files.
       same as the domain you bound in step 2 above and everything else works
       automatically.  In SquirrelMail, go to Options -> Display Preferences
       and change your Language setting to see the translations in action!
-
-
-
-Documenting the Code (Optional)
--------------------------------
-
-If you wish, you can use phpdoc (Javadoc-style) comments, when documenting your
-code.
-
-If you follow the standards that are followed between SquirrelMail core &
-plugin developers, the resulted documentation can be included with the rest of
-the SquirrelMail code & API documentation. Specifically, in the page-level
-docblock, declare the package to be 'plugins', and the subpackage to be the
-name of your plugin. For instance:
-
-/**
- * demo.php
- *
- * Copyright (c) 2005 My Name <my-email-address>
- * Licensed under the GNU GPL. For full terms see the file COPYING.
- *
- * @package plugins
- * @subpackage demo
- */
-
-The rest is up to you. Try to follow some common sense and document what is
-really needed. Documenting the code properly can be a big help not only to
-yourself, but to those who will take a look at your code, fix the bugs and even
-improve it, in the true open-source spirit that SquirrelMail was built upon.
-
-For more information about phpdocumentor and how to write proper-tagged
-comments, you are directed at:
-
-http://phpdocu.sourceforge.net/
-
 
 
 PLUGIN STANDARDS AND REQUIREMENTS

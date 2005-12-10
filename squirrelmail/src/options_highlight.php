@@ -3,13 +3,13 @@
 /**
  * options_highlight.php
  *
+ * Copyright (c) 1999-2005 The SquirrelMail Project Team
+ * Licensed under the GNU GPL. For full terms see the file COPYING.
+ *
  * Displays message highlighting options
  *
- * @copyright &copy; 1999-2005 The SquirrelMail Project Team
- * @license http://opensource.org/licenses/gpl-license.php GNU Public License
  * @version $Id$
  * @package squirrelmail
- * @subpackage prefs
  */
 
 /**
@@ -20,12 +20,12 @@ define('SM_PATH','../');
 
 /* SquirrelMail required files. */
 require_once(SM_PATH . 'include/validate.php');
-include_once(SM_PATH . 'functions/display_messages.php');
-include_once(SM_PATH . 'functions/imap.php');
-include_once(SM_PATH . 'functions/plugin.php');
-include_once(SM_PATH . 'functions/strings.php');
-include_once(SM_PATH . 'functions/html.php');
-include_once(SM_PATH . 'functions/forms.php');
+require_once(SM_PATH . 'functions/display_messages.php');
+require_once(SM_PATH . 'functions/imap.php');
+require_once(SM_PATH . 'functions/plugin.php');
+require_once(SM_PATH . 'functions/strings.php');
+require_once(SM_PATH . 'functions/html.php');
+require_once(SM_PATH . 'functions/forms.php');
 
 /* get globals */
 sqGetGlobalVar('action', $action);
@@ -38,7 +38,7 @@ sqGetGlobalVar('match_type', $match_type);
 sqGetGlobalVar('value', $value);
 
 /* end of get globals */
-
+ 
 function oh_opt( $val, $sel, $tit ) {
     echo "<option value=\"$val\"";
     if ( $sel )
@@ -86,7 +86,7 @@ if (isset($theid) && ($action == 'delete') ||
 
     setPref($data_dir, $username, 'hililist', serialize($message_highlight_list));
 
-    header( 'Location: ' .get_location(). '/options_highlight.php' );
+    header( 'Location: options_highlight.php' );
     exit;
 } else if ($action == 'save') {
 
@@ -100,11 +100,11 @@ if (isset($theid) && ($action == 'delete') ||
     $value = str_replace(',', ' ', $value);
 
     if(isset($theid)) {
-        $message_highlight_list[$theid] =
+        $message_highlight_list[$theid] = 
             array( 'name' => $identname, 'color' => $newcolor,
                    'value' => $value, 'match_type' => $match_type );
     } else {
-        $message_highlight_list[] =
+        $message_highlight_list[] = 
             array( 'name' => $identname, 'color' => $newcolor,
                    'value' => $value, 'match_type' => $match_type );
     }
@@ -119,7 +119,7 @@ html_tag( 'table', "\n" .
         html_tag( 'td', '<center><b>' . _("Options") . ' - ' . _("Message Highlighting") . '</b></center>', 'left')
     ),
     'center', $color[9], 'width="95%" border="0" cellpadding="1" cellspacing="0"' ) . "<br />\n" .
-html_tag( 'table', '', '', '', 'width="100%" border="0" cellpadding="1" cellspacing="0"' ) .
+html_tag( 'table', '', '', '', 'width="100%" border="0" cellpadding="1" cellspacing="0"' ) . 
      html_tag( 'tr' ) . "\n" .
          html_tag( 'td', '', 'left' );
 
@@ -163,7 +163,7 @@ if ($mhl_count > 0) {
         echo html_tag( 'tr',
                     html_tag( 'td',
                         $links,
-                    'left', $color[4], 'width="20%" style="white-space: nowrap;"' ) .
+                    'left', $color[4], 'width="20%" nowrap' ) .
                     html_tag( 'td',
                         htmlspecialchars($message_highlight_list[$i]['name']) ,
                     'left' ) .
@@ -361,14 +361,14 @@ if ($action == 'edit' || $action == 'add') {
     else if ($selected_choose == '')
         $selected_input = TRUE;
 
-    echo addForm('options_highlight.php', 'post', 'f').
+    echo addForm('options_highlight.php', 'POST', 'f').
          addHidden('action', 'save');
     if($action == 'edit') {
         echo addHidden('theid', (isset($theid)?$theid:''));
     }
     echo html_tag( 'table', '', 'center', '', 'width="80%" cellpadding="3" cellspacing="0" border="0"' ) . "\n";
     echo html_tag( 'tr', '', '', $color[0] ) . "\n";
-    echo html_tag( 'td', '', 'right', '', 'style="white-space: nowrap;"' ) . "<b>\n";
+    echo html_tag( 'td', '', 'right', '', 'nowrap' ) . "<b>\n";
     echo _("Identifying name") . ":";
     echo '      </b></td>' . "\n";
     echo html_tag( 'td', '', 'left' ) . "\n";
@@ -464,6 +464,5 @@ if ($action == 'edit' || $action == 'add') {
     echo "</form>\n";
 }
 do_hook('options_highlight_bottom');
-
 ?>
 </table></body></html>

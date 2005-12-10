@@ -6,7 +6,7 @@
  * top frame of printer_friendly_main.php
  * displays some javascript buttons for printing & closing
  *
- * @copyright &copy; 1999-2005 The SquirrelMail Project Team
+ * @copyright (c) 1999-2005 The SquirrelMail Project Team
  * @license http://opensource.org/licenses/gpl-license.php GNU Public License
  * @version $Id$
  * @package squirrelmail
@@ -34,11 +34,12 @@ displayHtmlHeader( _("Printer Friendly"),
 
 echo '<body text="'.$color[8].'" bgcolor="'.$color[3].'" link="'.$color[7].'" vlink="'.$color[7].'" alink="'.$color[7]."\">\n" .
      html_tag( 'div',
+         '<b>'.
          '<form>'.
          '<input type="button" value="' . _("Print") . '" onclick="printPopup()" /> '.
          '<input type="button" value="' . _("Close") . '" onclick="window.parent.close()" />'.
-         '</form>',
+         '</form>'.
+         '</b>',
      'right' );
-
 ?>
 </body></html>

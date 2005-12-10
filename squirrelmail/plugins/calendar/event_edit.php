@@ -3,18 +3,15 @@
 /**
  * event_edit.php
  *
+ * Copyright (c) 2002-2005 The SquirrelMail Project Team
+ * Licensed under the GNU GPL. For full terms see the file COPYING.
+ *
  * Originally contrubuted by Michal Szczotka <michal@tuxy.org>
  *
  * Functions to edit an event.
  *
- * @copyright &copy; 2002-2005 The SquirrelMail Project Team
- * @license http://opensource.org/licenses/gpl-license.php GNU Public License
- * @version $Id$
- * @package plugins
- * @subpackage calendar
+ * $Id$
  */
-
-/** @ignore */
 define('SM_PATH','../../');
 
 /* Calender plugin required files. */
@@ -32,25 +29,11 @@ require_once(SM_PATH . 'functions/html.php');
 
 
 /* get globals */
-
-// undo rg = on effects
-if (isset($month)) unset($month);
-if (isset($year))  unset($year);
-if (isset($day))  unset($day);
-if (isset($hour))  unset($hour);
-if (isset($minute))  unset($minute);
-if (isset($event_year))  unset($event_year);
-if (isset($event_month))  unset($event_month);
-if (isset($event_day))  unset($event_day);
-if (isset($event_hour))  unset($event_hour);
-if (isset($event_minute))  unset($event_minute);
-if (isset($event_length))  unset($event_length);
-if (isset($event_priority))  unset($event_priority);
-
+unset($event_year, $event_month, $event_day, $event_hour, $event_minute,
+    $event_length, $event_priority, $year, $month, $day, $hour, $minute);
 if (isset($_POST['updated'])) {
     $updated = $_POST['updated'];
 }
-
 if (isset($_POST['event_year']) && is_numeric($_POST['event_year'])) {
     $event_year = $_POST['event_year'];
 }
@@ -84,25 +67,28 @@ if (isset($_POST['event_priority']) && is_numeric($_POST['event_priority'])) {
 if (isset($_POST['confirmed'])) {
     $confirmed = $_POST['confirmed'];
 }
-
 if (isset($_POST['year']) && is_numeric($_POST['year'])) {
     $year = $_POST['year'];
-} elseif (isset($_GET['year']) && is_numeric($_GET['year'])) {
+}
+elseif (isset($_GET['year']) && is_numeric($_GET['year'])) {
     $year = $_GET['year'];
 }
 if (isset($_POST['month']) && is_numeric($_POST['month'])) {
     $month = $_POST['month'];
-} elseif (isset($_GET['month']) && is_numeric($_GET['month'])) {
+}
+elseif (isset($_GET['month']) && is_numeric($_GET['month'])) {
     $month = $_GET['month'];
 }
 if (isset($_POST['day']) && is_numeric($_POST['day'])) {
     $day = $_POST['day'];
-} elseif (isset($_GET['day']) && is_numeric($_GET['day'])) {
+}
+elseif (isset($_GET['day']) && is_numeric($_GET['day'])) {
     $day = $_GET['day'];
 }
 if (isset($_POST['hour']) && is_numeric($_POST['hour'])) {
     $hour = $_POST['hour'];
-} elseif (isset($_GET['hour']) && is_numeric($_GET['hour'])) {
+}
+elseif (isset($_GET['hour']) && is_numeric($_GET['hour'])) {
     $hour = $_GET['hour'];
 }
 if (isset($_POST['minute']) && is_numeric($_POST['minute'])) {
@@ -114,71 +100,71 @@ elseif (isset($_GET['minute']) && is_numeric($_GET['minute'])) {
 /* got 'em */
 
 // update event info
-function update_event_form() {
+function show_event_form() {
     global $color, $editor_size, $year, $day, $month, $hour, $minute, $calendardata;
 
     $tmparray = $calendardata["$month$day$year"]["$hour$minute"];
-    echo "\n<form name=\"eventupdate\" action=\"event_edit.php\" method=\"post\">\n".
-         "      <input type=\"hidden\" name=\"year\" value=\"$year\" />\n".
-         "      <input type=\"hidden\" name=\"month\" value=\"$month\" />\n".
-         "      <input type=\"hidden\" name=\"day\" value=\"$day\" />\n".
-         "      <input type=\"hidden\" name=\"hour\" value=\"$hour\" />\n".
-         "      <input type=\"hidden\" name=\"minute\" value=\"$minute\" />\n".
-         "      <input type=\"hidden\" name=\"updated\" value=\"yes\" />\n".
+    echo "\n<FORM name=eventupdate action=\"event_edit.php\" METHOD=POST >\n".
+         "      <INPUT TYPE=hidden NAME=\"year\" VALUE=\"$year\">\n".
+         "      <INPUT TYPE=hidden NAME=\"month\" VALUE=\"$month\">\n".
+         "      <INPUT TYPE=hidden NAME=\"day\" VALUE=\"$day\">\n".
+         "      <INPUT TYPE=hidden NAME=\"hour\" VALUE=\"$hour\">\n".
+         "      <INPUT TYPE=hidden NAME=\"minute\" VALUE=\"$minute\">\n".
+         "      <INPUT TYPE=hidden NAME=\"updated\" VALUE=\"yes\">\n".
          html_tag( 'tr' ) .
          html_tag( 'td', _("Date:"), 'right', $color[4] ) . "\n" .
          html_tag( 'td', '', 'left', $color[4] ) .
-         "      <select name=\"event_year\">\n";
+         "      <SELECT NAME=\"event_year\">\n";
     select_option_year($year);
-    echo "      </select>\n" .
+    echo "      </SELECT>\n" .
          "      &nbsp;&nbsp;\n" .
-         "      <select name=\"event_month\">\n";
+         "      <SELECT NAME=\"event_month\">\n";
     select_option_month($month);
-    echo "      </select>\n".
+    echo "      </SELECT>\n".
          "      &nbsp;&nbsp;\n".
-         "      <select name=\"event_day\">\n";
+         "      <SELECT NAME=\"event_day\">\n";
     select_option_day($day);
-    echo "      </select>\n".
+    echo "      </SELECT>\n".
          "      </td></tr>\n".
          html_tag( 'tr' ) .
          html_tag( 'td', _("Time:"), 'right', $color[4] ) . "\n" .
          html_tag( 'td', '', 'left', $color[4] ) .
-         "      <select name=\"event_hour\">\n";
+         "      <SELECT NAME=\"event_hour\">\n";
     select_option_hour($hour);
-    echo "      </select>\n".
+    echo "      </SELECT>\n".
          "      &nbsp;:&nbsp;\n".
-         "      <select name=\"event_minute\">\n";
+         "      <SELECT NAME=\"event_minute\">\n";
     select_option_minute($minute);
-    echo "      </select>\n".
+    echo "      </SELECT>\n".
          "      </td></tr>\n".
          html_tag( 'tr' ) .
          html_tag( 'td', _("Length:"), 'right', $color[4] ) . "\n" .
          html_tag( 'td', '', 'left', $color[4] ) .
-         "      <select name=\"event_length\">\n";
+         "      <SELECT NAME=\"event_length\">\n";
     select_option_length($tmparray['length']);
-    echo "      </select>\n".
+    echo "      </SELECT>\n".
          "      </td></tr>\n".
          html_tag( 'tr' ) .
          html_tag( 'td', _("Priority:"), 'right', $color[4] ) . "\n" .
          html_tag( 'td', '', 'left', $color[4] ) .
-         "      <select name=\"event_priority\">\n";
+         "      <SELECT NAME=\"event_priority\">\n";
     select_option_priority($tmparray['priority']);
-    echo "      </select>\n".
+    echo "      </SELECT>\n".
          "      </td></tr>\n".
          html_tag( 'tr' ) .
          html_tag( 'td', _("Title:"), 'right', $color[4] ) . "\n" .
          html_tag( 'td', '', 'left', $color[4] ) .
-         "      <input type=\"text\" name=\"event_title\" value=\"$tmparray[title]\" size=\"30\" maxlenght=\"50\" /><br />\n".
+         "      <INPUT TYPE=text NAME=\"event_title\" VALUE=\"$tmparray[title]\" SIZE=30 MAXLENGTH=50><BR>\n".
          "      </td></tr>\n".
          html_tag( 'td',
-             "      <textarea name=\"event_text\" rows=\"5\" cols=\"$editor_size\" wrap=\"hard\">$tmparray[message]</textarea>\n" ,
+             "      <TEXTAREA NAME=\"event_text\" ROWS=5 COLS=\"$editor_size\" WRAP=HARD>$tmparray[message]</TEXTAREA>\n" ,
          'left', $color[4], 'colspan="2"' ) .
          '</tr>' . html_tag( 'tr' ) .
          html_tag( 'td',
-             '<input type="submit" name="send" value="' .
-             _("Update Event") . "\" />\n" ,
+             "<INPUT TYPE=SUBMIT NAME=send VALUE=\"" .
+             _("Update Event") . "\">\n" ,
          'left', $color[4], 'colspan="2"' ) .
-         "</tr></form>\n";
+         "</tr></FORM>\n";
 }
 
 // self explenatory
@@ -189,7 +175,7 @@ function confirm_update() {
 
     echo html_tag( 'table',
                 html_tag( 'tr',
-                    html_tag( 'th', _("Do you really want to change this event from:") . "<br />\n", '', $color[4], 'colspan="2"' ) ."\n"
+                    html_tag( 'th', _("Do you really want to change this event from:") . "<br>\n", '', $color[4], 'colspan="2"' ) ."\n"
                 ) .
                 html_tag( 'tr',
                     html_tag( 'td', _("Date:") , 'right', $color[4] ) ."\n" .
@@ -212,7 +198,7 @@ function confirm_update() {
                     html_tag( 'td', $tmparray['message'] , 'left', $color[4] ) ."\n"
                 ) .
                 html_tag( 'tr',
-                    html_tag( 'th', _("to:") . "<br />\n", '', $color[4], 'colspan="2"' ) ."\n"
+                    html_tag( 'th', _("to:") . "<br>\n", '', $color[4], 'colspan="2"' ) ."\n"
                 ) .
 
                 html_tag( 'tr',
@@ -237,33 +223,33 @@ function confirm_update() {
                 ) .
                 html_tag( 'tr',
                     html_tag( 'td',
-                        "    <form name=\"updateevent\" method=\"post\" action=\"$calself\">\n".
-                        "       <input type=\"hidden\" name=\"year\" value=\"$year\" />\n".
-                        "       <input type=\"hidden\" name=\"month\" value=\"$month\" />\n".
-                        "       <input type=\"hidden\" name=\"day\" value=\"$day\" />\n".
-                        "       <input type=\"hidden\" name=\"hour\" value=\"$hour\" />\n".
-                        "       <input type=\"hidden\" name=\"minute\" value=\"$minute\" />\n".
-                        "       <input type=\"hidden\" name=\"event_year\" value=\"$event_year\" />\n".
-                        "       <input type=\"hidden\" name=\"event_month\" value=\"$event_month\" />\n".
-                        "       <input type=\"hidden\" name=\"event_day\" value=\"$event_day\" />\n".
-                        "       <input type=\"hidden\" name=\"event_hour\" value=\"$event_hour\" />\n".
-                        "       <input type=\"hidden\" name=\"event_minute\" value=\"$event_minute\" />\n".
-                        "       <input type=\"hidden\" name=\"event_priority\" value=\"$event_priority\" />\n".
-                        "       <input type=\"hidden\" name=\"event_length\" value=\"$event_length\" />\n".
-                        "       <input type=\"hidden\" name=\"event_title\" value=\"$event_title\" />\n".
-                        "       <input type=\"hidden\" name=\"event_text\" value=\"$event_text\" />\n".
-                        "       <input type=\"hidden\" name=\"updated\" value=\"yes\" />\n".
-                        "       <input type=\"hidden\" name=\"confirmed\" value=\"yes\" />\n".
-                        '       <input type="submit" value="' . _("Yes") . "\" />\n".
-                        "    </form>\n" ,
+                        "    <FORM NAME=\"updateevent\" METHOD=POST ACTION=\"$calself\">\n".
+                        "       <INPUT TYPE=HIDDEN NAME=\"year\" VALUE=\"$year\">\n".
+                        "       <INPUT TYPE=HIDDEN NAME=\"month\" VALUE=\"$month\">\n".
+                        "       <INPUT TYPE=HIDDEN NAME=\"day\" VALUE=\"$day\">\n".
+                        "       <INPUT TYPE=HIDDEN NAME=\"hour\" VALUE=\"$hour\">\n".
+                        "       <INPUT TYPE=HIDDEN NAME=\"minute\" VALUE=\"$minute\">\n".
+                        "       <INPUT TYPE=HIDDEN NAME=\"event_year\" VALUE=\"$event_year\">\n".
+                        "       <INPUT TYPE=HIDDEN NAME=\"event_month\" VALUE=\"$event_month\">\n".
+                        "       <INPUT TYPE=HIDDEN NAME=\"event_day\" VALUE=\"$event_day\">\n".
+                        "       <INPUT TYPE=HIDDEN NAME=\"event_hour\" VALUE=\"$event_hour\">\n".
+                        "       <INPUT TYPE=HIDDEN NAME=\"event_minute\" VALUE=\"$event_minute\">\n".
+                        "       <INPUT TYPE=HIDDEN NAME=\"event_priority\" VALUE=\"$event_priority\">\n".
+                        "       <INPUT TYPE=HIDDEN NAME=\"event_length\" VALUE=\"$event_length\">\n".
+                        "       <INPUT TYPE=HIDDEN NAME=\"event_title\" VALUE=\"$event_title\">\n".
+                        "       <INPUT TYPE=HIDDEN NAME=\"event_text\" VALUE=\"$event_text\">\n".
+                        "       <INPUT TYPE=hidden NAME=\"updated\" VALUE=\"yes\">\n".
+                        "       <INPUT TYPE=HIDDEN NAME=\"confirmed\" VALUE=\"yes\">\n".
+                        '       <INPUT TYPE=SUBMIT VALUE="' . _("Yes") . "\">\n".
+                        "    </FORM>\n" ,
                     'right', $color[4] ) ."\n" .
                     html_tag( 'td',
-                        "    <form name=\"nodelevent\" method=\"post\" action=\"day.php\">\n".
-                        "       <input type=\"hidden\" name=\"year\" value=\"$year\" />\n".
-                        "       <input type=\"hidden\" name=\"month\" value=\"$month\" />\n".
-                        "       <input type=\"hidden\" name=\"day\" value=\"$day\" />\n".
-                        '       <input type="submit" value="' . _("No") . "\" />\n".
-                        "    </form>\n" ,
+                        "    <FORM NAME=\"nodelevent\" METHOD=POST ACTION=\"day.php\">\n".
+                        "       <INPUT TYPE=HIDDEN NAME=\"year\" VALUE=\"$year\">\n".
+                        "       <INPUT TYPE=HIDDEN NAME=\"month\" VALUE=\"$month\">\n".
+                        "       <INPUT TYPE=HIDDEN NAME=\"day\" VALUE=\"$day\">\n".
+                        '       <INPUT TYPE=SUBMIT VALUE="' . _("No") . "\">\n".
+                        "    </FORM>\n" ,
                     'left', $color[4] ) ."\n"
                 ) ,
             '', $color[0], 'border="0" cellpadding="2" cellspacing="1"' );
@@ -298,7 +284,7 @@ echo html_tag( 'tr', '', '', $color[0] ) .
 if (!isset($updated)){
     //get changes to event
     readcalendardata();
-    update_event_form();
+    show_event_form();
 } else {
     if (!isset($confirmed)){
         //confirm changes
@@ -315,7 +301,7 @@ if (!isset($updated)){
                 ) . "\n";
         echo html_tag( 'tr',
                    html_tag( 'td',
-                       "<a href=\"day.php?year=$year&amp;month=$month&amp;day=$day\">" .
+                       "<a href=\"day.php?year=$year&amp;month=$month&amp;day=$day\">" . 
                        _("Day View") ."</a>",
                    'left' )
                 ) . "\n";

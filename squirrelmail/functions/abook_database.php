@@ -1,10 +1,10 @@
 <?php
-
 /**
  * abook_database.php
  *
- * @copyright &copy; 1999-2005 The SquirrelMail Project Team
- * @license http://opensource.org/licenses/gpl-license.php GNU Public License
+ * Copyright (c) 1999-2005 The SquirrelMail Project Team
+ * Licensed under the GNU GPL. For full terms see the file COPYING.
+ *
  * @version $Id$
  * @package squirrelmail
  * @subpackage addressbook
@@ -190,10 +190,6 @@ class abook_database extends addressbook_backend {
             return;
         }
 
-        // don't allow wide search when listing is disabled.
-        if ($expr=='*' && ! $this->listing)
-            return array();
-
         /* Make regexp from glob'ed expression  */
         $expr = str_replace('?', '_', $expr);
         $expr = str_replace('*', '%', $expr);
@@ -317,7 +313,7 @@ class abook_database extends addressbook_backend {
         /* See if user exist already */
         $ret = $this->lookup($userdata['nickname']);
         if (!empty($ret)) {
-            return $this->set_error(sprintf(_("User \"%s\" already exists"),$ret['nickname']));
+            return $this->set_error(sprintf(_("User \"%s\" already exists"), $ret['nickname']));
         }
 
         /* Create query */
@@ -397,7 +393,7 @@ class abook_database extends addressbook_backend {
          /* See if user exist */
         $ret = $this->lookup($alias);
         if (empty($ret)) {
-            return $this->set_error(sprintf(_("User \"%s\" does not exist"),$alias));
+            return $this->set_error(sprintf(_("User \"%s\" does not exist"), $alias));
         }
 
         /* Create query */

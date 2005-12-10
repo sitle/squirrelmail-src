@@ -3,13 +3,13 @@
 /**
  * addrbook_popup.php
  *
+ * Copyright (c) 1999-2005 The SquirrelMail Project Team
+ * Licensed under the GNU GPL. For full terms see the file COPYING.
+ *
  * Frameset for the JavaScript version of the address book.
  *
- * @copyright &copy; 1999-2005 The SquirrelMail Project Team
- * @license http://opensource.org/licenses/gpl-license.php GNU Public License
  * @version $Id$
  * @package squirrelmail
- * @subpackage addressbook
  */
 
 /**
@@ -21,7 +21,7 @@ define('SM_PATH','../');
 /** SquirrelMail required files. */
 require_once(SM_PATH . 'include/validate.php');
 require_once(SM_PATH . 'functions/addressbook.php');
-
+   
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN">
 

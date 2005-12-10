@@ -1,23 +1,16 @@
 <?php
-
 /**
  * Administrator plugin - Option definitions
  *
- * @author Philippe Mingo
- * @copyright &copy; 1999-2005 The SquirrelMail Project Team
- * @license http://opensource.org/licenses/gpl-license.php GNU Public License
  * @version $Id$
+ * @author Philippe Mingo
+ * @copyright (c) 1999-2005 The SquirrelMail Project Team
+ * @license http://opensource.org/licenses/gpl-license.php GNU Public License
  * @package plugins
  * @subpackage administrator
  */
 
-/** @ignore */
-if (!defined('SM_PATH')) define('SM_PATH','../../');
-
-/**
- * Load SquirrelMail SMPREF constants for default_unseen_notify and 
- * default_unseen_type variables.
- */
+/** */
 require_once( SM_PATH . 'functions/constants.php' );
 
 /* Define constants for the various option types. */
@@ -38,7 +31,7 @@ define('SMOPT_TYPE_LDAP', 12);
 define('SMOPT_TYPE_EXTERNAL', 32);
 define('SMOPT_TYPE_PATH',33);
 
-global $languages, $version;
+global $languages;
 
 $language_values = array( );
 foreach ($languages as $lang_key => $lang_attributes) {
@@ -113,7 +106,6 @@ $defcfg = array( '$config_version' => array( 'name' => _("Config File Version"),
                                                                    'courier' => _("Courier IMAP server"),
                                                                    'macosx' => _("Mac OS X Mailserver"),
                                                                    'hmailserver' => _("hMailServer IMAP server"),
-                                                                   'mercury32' => _("Mercury/32 IMAP server"),
                                                                    'bincimap' => _("Binc IMAP server"),
                                                                    'other' => _("Not one of the above servers") ) ),
                  '$optional_delimiter' => array( 'name' => _("IMAP Folder Delimiter"),
@@ -137,9 +129,6 @@ $defcfg = array( '$config_version' => array( 'name' => _("Config File Version"),
                  '$sendmail_path' => array( 'name' => _("Sendmail Path"),
                                             'type' => SMOPT_TYPE_STRING,
                                             'size' => 40 ),
-                 '$sendmail_args' => array( 'name' => _("Sendmail Arguments"),
-                                            'type' => SMOPT_TYPE_STRING,
-                                            'size' => 40 ),
                  '$smtpServerAddress' => array( 'name' => _("SMTP Server Address"),
                                                 'type' => SMOPT_TYPE_STRING,
                                                 'size' => 40 ),
@@ -160,7 +149,7 @@ $defcfg = array( '$config_version' => array( 'name' => _("Config File Version"),
                                               'type' => SMOPT_TYPE_BOOLEAN,
                                               'default' => false ),
                  '$encode_header_key' => array( 'name' => _("Header Encryption Key"),
-                                          'type' => SMOPT_TYPE_STRING ),
+                                                'type' => SMOPT_TYPE_STRING ),
                  '$invert_time' => array( 'name' => _("Invert Time"),
                                           'type' => SMOPT_TYPE_BOOLEAN ),
                  /* --------------------------------------------------------*/
@@ -255,28 +244,18 @@ $defcfg = array( '$config_version' => array( 'name' => _("Config File Version"),
                  '$allow_charset_search' => array( 'name' => _("Allow server charset search"),
                                                    'type' => SMOPT_TYPE_BOOLEAN,
                                                    'default' => false ),
-                 '$allow_advanced_search' => array( 'name' => _("Search functions"),
-                                                    'type' => SMOPT_TYPE_NUMLIST,
-                                                    'posvals' => array( 0 => _("Only basic search"),
-                                                                        1 => _("Only advanced search"),
-                                                                        2 => _("Both search functions") ),
-                                                    'default' => 0 ),
+                 '$uid_support' => array( 'name' => _("UID support"),
+                                          'type' => SMOPT_TYPE_BOOLEAN,
+                                          'default' => false ),
                  '$session_name' => array( 'name' => _("PHP session name"),
                                            'type' => SMOPT_TYPE_HIDDEN ),
-                 '$time_zone_type' => array( 'name' => _("Time Zone Configuration"),
-                                             'type' => SMOPT_TYPE_NUMLIST,
-                                             'posvals' => array( 0 => _("Standard GNU C time zones"),
-                                                                 1 => _("Strict time zones"),
-                                                                 2 => _("Custom GNU C time zones"),
-                                                                 3 => _("Custom strict time zones")),
-                                             'default' => 0 ),
                  /* --------------------------------------------------------*/
                  'Group5' => array( 'name' => _("Message of the Day"),
                                     'type' => SMOPT_TYPE_TITLE ),
                  '$motd' => array( 'name' => _("Message of the Day"),
                                    'type' => SMOPT_TYPE_TEXTAREA,
                                    'size' => 40 ),
-                 /* ---- Database settings ---- */
+                 /* --------------------------------------------------------*/
                  'Group6' => array( 'name' => _("Database"),
                                     'type' => SMOPT_TYPE_TITLE ),
                  '$addrbook_dsn' => array( 'name' => _("Address book DSN"),
@@ -297,20 +276,14 @@ $defcfg = array( '$config_version' => array( 'name' => _("Config File Version"),
                                               'type' => SMOPT_TYPE_STRING,
                                               'size' => 40,
                                               'default' => 'user' ),
-                 '$prefs_user_size' => array( 'name' => _("Size of username field"),
-                                              'type' => SMOPT_TYPE_INTEGER ),
                  '$prefs_key_field' => array('name' => _("Preferences key field"),
                                              'type' => SMOPT_TYPE_STRING,
                                              'size' => 40,
                                              'default' => 'prefkey' ),
-                 '$prefs_key_size' => array( 'name' => _("Size of key field"),
-                                             'type' => SMOPT_TYPE_INTEGER ),
                  '$prefs_val_field' => array('name' => _("Preferences value field"),
                                              'type' => SMOPT_TYPE_STRING,
                                              'size' => 40,
                                              'default' => 'prefval' ),
-                 '$prefs_val_size' => array( 'name' => _("Size of value field"),
-                                             'type' => SMOPT_TYPE_INTEGER ),
                  '$addrbook_global_dsn' => array( 'name' => _("Global address book DSN"),
                                            'type' => SMOPT_TYPE_STRING,
                                            'size' => 40 ),
@@ -346,38 +319,17 @@ $defcfg = array( '$config_version' => array( 'name' => _("Config File Version"),
                                                                   'windows-1255' => 'windows-1255',
                                                                   'windows-1256' => 'windows-1256',
                                                                   'iso-2022-jp' => 'iso-2022-jp' ) ),
-                 '$show_alternative_names'  => array( 'name' => _("Show alternative language names"),
-                                                      'type' => SMOPT_TYPE_BOOLEAN ),
-                 '$aggressive_decoding'  => array( 'name' => _("Enable aggressive decoding"),
-                                                 'type' => SMOPT_TYPE_BOOLEAN ),
-                 '$lossy_encoding'  => array( 'name' => _("Enable lossy encoding"),
-                                                 'type' => SMOPT_TYPE_BOOLEAN ),
-                 /* ---- Tweaks ---- */
-                 'Group10' => array( 'name' => _("Tweaks"),
-                                     'type' => SMOPT_TYPE_TITLE ),
-                 '$advanced_tree'  => array( 'name' => _("Use advanced tree folder listing"),
-                                             'type' => SMOPT_TYPE_BOOLEAN ),
-                 '$use_icons'  => array( 'name' => _("Use icons"),
-                                         'type' => SMOPT_TYPE_BOOLEAN ),
-                 '$use_iframe' => array( 'name' => _("Use inline frames with HTML mails"),
-                                         'type' => SMOPT_TYPE_BOOLEAN ),
-                 '$use_php_recode'  => array( 'name' => _("Use PHP recode functions"),
-                                              'type' => SMOPT_TYPE_BOOLEAN ),
-                 '$use_php_iconv'  => array( 'name' => _("Use PHP iconv functions"),
-                                             'type' => SMOPT_TYPE_BOOLEAN ),
-                 '$allow_remote_configtest' => array( 'name' => _("Allow remote configuration test"),
-                                                      'type' => SMOPT_TYPE_BOOLEAN ),
+                  '$lossy_encoding'  => array( 'name' => _("Enable lossy encoding"),
+                                               'type' => SMOPT_TYPE_BOOLEAN ),
                  /* ---- Settings of address books ---- */
-                 'Group11' => array( 'name' => _("Address Books"),
+                 'Group10' => array( 'name' => _("Address Books"),
                                      'type' => SMOPT_TYPE_TITLE ),
                  '$default_use_javascript_addr_book' => array( 'name' => _("Default Javascript Addressbook"),
                                                   'type' => SMOPT_TYPE_BOOLEAN ),
-                 '$abook_global_file'           => array( 'name' => _("Global address book file"),
-                                                          'type' => SMOPT_TYPE_STRING ),
+                 '$abook_global_file' => array( 'name' => _("Global address book file"),
+                                                  'type' => SMOPT_TYPE_STRING ),
                  '$abook_global_file_writeable' => array( 'name' => _("Allow writing into global address book file"),
-                                                          'type' => SMOPT_TYPE_BOOLEAN ),
-                 '$abook_global_file_listing'   => array( 'name' => _("Allow listing of global address book"),
-                                                          'type' => SMOPT_TYPE_BOOLEAN ),
+                                                  'type' => SMOPT_TYPE_BOOLEAN ),
                  /* --------------------------------------------------------*/
                  'Group7' => array( 'name' => _("Themes"),
                                     'type' => SMOPT_TYPE_TITLE ),
@@ -388,6 +340,7 @@ $defcfg = array( '$config_version' => array( 'name' => _("Config File Version"),
                                             'type' => SMOPT_TYPE_INTEGER,
                                             'default' => 0,
                                             'comment' => _("Use index number of theme") ),
+                 /* ---- Group8 is for plugins ---- */
                  /* --------------------------------------------------------*/
                  '$config_use_color' => array( 'name' => '',
                                                'type' => SMOPT_TYPE_HIDDEN ),

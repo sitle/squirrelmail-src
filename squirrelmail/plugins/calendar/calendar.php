@@ -3,19 +3,15 @@
 /**
  * calendar.php
  *
+ * Copyright (c) 2002-2005 The SquirrelMail Project Team
+ * Licensed under the GNU GPL. For full terms see the file COPYING.
+ *
  * Originally contrubuted by Michal Szczotka <michal@tuxy.org>
  *
  * Displays the main calendar page (month view).
  *
- * @copyright &copy; 2002-2005 The SquirrelMail Project Team
- * @license http://opensource.org/licenses/gpl-license.php GNU Public License
- * @version $Id$
- * @package plugins
- * @subpackage calendar
+ * $Id$
  */
-
-/**
-*/
 define('SM_PATH','../../');
 
 /* Calender plugin required files. */
@@ -32,11 +28,7 @@ require_once(SM_PATH . 'include/load_prefs.php');
 require_once(SM_PATH . 'functions/html.php');
 
 /* get globals */
-
-// undo rg = on effects
-if (isset($month)) unset($month);
-if (isset($year))  unset($year);
-
+unset($month, $year);
 if (isset($_GET['month']) && is_numeric($_GET['month'])) {
     $month = $_GET['month'];
 }
@@ -53,7 +45,7 @@ if (isset($_POST['month']) && is_numeric($_POST['month'])) {
 
 //display upper part of month calendar view
 function startcalendar() {
-    global $year, $month, $color;
+    global $year, $month, $day, $color;
 
     $prev_date = mktime(0, 0, 0, $month - 1, 1, $year);
     $act_date  = mktime(0, 0, 0, $month, 1, $year);
@@ -99,7 +91,7 @@ function startcalendar() {
 
 //main logic for month view of calendar
 function drawmonthview() {
-    global $year, $month, $color, $calendardata, $todayis;
+    global $year, $month, $day, $color, $calendardata, $todayis;
 
     $aday = 1 - date('w', mktime(0, 0, 0, $month, 1, $year));
     $days_in_month = date('t', mktime(0, 0, 0, $month, 1, $year));
@@ -112,7 +104,7 @@ function drawmonthview() {
             if ( $aday <= $days_in_month && $aday > 0){
                 echo html_tag( 'td', '', 'left', $color[4], 'height="50" valign="top"' ) ."\n".
                      html_tag( 'div', '', 'right' );
-                echo(($cdate==$todayis) ? '<font size="-1" color="'.$color[1].'">[ ' . _("TODAY") . " ] " : '<font size="-1">');
+                echo(($cdate==$todayis) ? "<font size=-1 color=$color[1]>[ " . _("TODAY") . " ] " : "<font size=-1>");
                 echo "<a href=day.php?year=$year&amp;month=$month&amp;day=";
                 echo(($aday<10) ? "0" : "");
                 echo "$aday>$aday</a></font></div>";
@@ -125,7 +117,7 @@ function drawmonthview() {
                 while ($calfoo = each($calendardata[$cdate])) {
                     $calbar = $calendardata[$cdate][$calfoo['key']];
                     $title = '['. $calfoo['key']. '] ' .$calbar['message'];
-                    echo ($calbar['priority']==1) ? "<a href=\"#\" style=\"text-decoration:none; color: $color[1]\" title=\"$title\">$calbar[title]</a><br />\n" : "<a href=\"#\" style=\"text-decoration:none; color: $color[6]\" title=\"$title\">$calbar[title]</a><br />\n";
+                    echo ($calbar['priority']==1) ? "<a href=\"#\" style=\"text-decoration:none; color: $color[1]\" title=\"$title\">$calbar[title]</a><br>\n" : "<a href=\"#\" style=\"text-decoration:none; color: $color[6]\" title=\"$title\">$calbar[title]</a><br>\n";
                     $i=$i+1;
                     if($i==2){
                         break;
@@ -145,17 +137,17 @@ function endcalendar() {
 
     echo html_tag( 'tr' ) ."\n" .
            html_tag( 'td', '', 'left', '', 'colspan="7"' ) ."\n" .
-         "          <form name=\"caljump\" action=\"calendar.php\" method=\"post\">\n".
-         "          <select name=\"year\">\n";
+         "          <FORM NAME=caljump ACTION=\"calendar.php\" METHOD=POST>\n".
+         "          <SELECT NAME=\"year\">\n";
     select_option_year($year);
-    echo "          </select>\n".
-         "          <select name=\"month\">\n";
+    echo "          </SELECT>\n".
+         "          <SELECT NAME=\"month\">\n";
     select_option_month($month);
-    echo "          </select>\n".
-         '          <input type="submit" value="' . _("Go") . "\" />\n".
-         "          </form>\n".
-         "          </td></tr>\n".
-         "</table></td></tr></table>\n";
+    echo "          </SELECT>\n".
+         '         <INPUT TYPE=SUBMIT VALUE="' . _("Go") . "\">\n".
+         "          </FORM>\n".
+         "          </TD></TR>\n".
+         "</TABLE></TD></TR></TABLE>\n";
 }
 
 

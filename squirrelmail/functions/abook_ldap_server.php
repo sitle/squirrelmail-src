@@ -1,19 +1,12 @@
 <?php
-
 /**
  * abook_ldap_server.php
  *
+ * Copyright (c) 1999-2005 The SquirrelMail Project Team
+ * Licensed under the GNU GPL. For full terms see the file COPYING.
+ *
  * Address book backend for LDAP server
  *
- * LDAP filtering code by Tim Bell
- *   <bhat at users.sourceforge.net> (#539534)
- * ADS limit_scope code by Michael Brown
- *   <mcb30 at users.sourceforge.net> (#1035454)
- * StartTLS code by John Lane
- *   <starfry at users.sourceforge.net> (#1197703)
- *
- * @copyright &copy; 1999-2005 The SquirrelMail Project Team
- * @license http://opensource.org/licenses/gpl-license.php GNU Public License
  * @version $Id$
  * @package squirrelmail
  * @subpackage addressbook
@@ -23,9 +16,7 @@
  * Address book backend for LDAP server
  *
  * An array with the following elements must be passed to
- * the class constructor (elements marked ? are optional)
- *
- * Main settings:
+ * the class constructor (elements marked ? are optional):
  * <pre>
  *    host      => LDAP server hostname/IP-address
  *    base      => LDAP server root (base dn). Empty string allowed.
@@ -39,14 +30,6 @@
  *  ? binddn    => LDAP Bind DN.
  *  ? bindpw    => LDAP Bind Password.
  *  ? protocol  => LDAP Bind protocol.
- * </pre>
- * Advanced settings:
- * <pre>
- *  ? filter    => Filter expression to limit ldap searches
- *  ? limit_scope => Limits scope to base DN (Specific to Win2k3 ADS).
- *  ? listing   => Controls listing of LDAP directory.
- *  ? search_tree => Controls subtree or one level search.
- *  ? starttls  => Controls use of StartTLS on LDAP connections
  * </pre>
  * NOTE. This class should not be used directly. Use the
  *       "AddressBook" class instead.
@@ -97,11 +80,6 @@ class abook_ldap_server extends addressbook_backend {
      */
     var $maxrows = 250;
     /**
-     * @var string ldap filter
-     * @since 1.5.1
-     */
-    var $filter = '';
-    /**
      * @var integer timeout of LDAP operations (in seconds)
      */
     var $timeout = 30;
@@ -120,28 +98,6 @@ class abook_ldap_server extends addressbook_backend {
      * @since 1.5.0 and 1.4.3
      */
     var $protocol = '';
-    /**
-     * @var boolean limits scope to base dn
-     * @since 1.5.1
-     */
-    var $limit_scope = false;
-    /**
-     * @var boolean controls listing of directory
-     * @since 1.5.1
-     */
-    var $listing = false;
-    /**
-     * @var boolean controls ldap search type.
-     * only first level entries are displayed if set to false
-     * @since 1.5.1
-     */
-    var $search_tree = true;
-    /**
-     * @var boolean controls use of StartTLS on ldap 
-     * connections. Requires php 4.2+ and protocol >= 3
-     * @since 1.5.1
-     */
-    var $starttls = false;
 
     /**
      * Constructor. Connects to database
@@ -149,61 +105,41 @@ class abook_ldap_server extends addressbook_backend {
      */
     function abook_ldap_server($param) {
         if(!function_exists('ldap_connect')) {
-            $this->set_error(_("PHP install does not have LDAP support."));
+            $this->set_error('LDAP support missing from PHP');
             return;
         }
         if(is_array($param)) {
             $this->server = $param['host'];
             $this->basedn = $param['base'];
-
-            if(!empty($param['port']))
+            if(!empty($param['port'])) {
                 $this->port = $param['port'];
-
-            if(!empty($param['charset']))
+            }
+            if(!empty($param['charset'])) {
                 $this->charset = strtolower($param['charset']);
-
-            if(isset($param['maxrows']))
+            }
+            if(isset($param['maxrows'])) {
                 $this->maxrows = $param['maxrows'];
-
-            if(isset($param['timeout']))
+            }
+            if(isset($param['timeout'])) {
                 $this->timeout = $param['timeout'];
-
-            if(isset($param['binddn']))
+            }
+            if(isset($param['binddn'])) {
                 $this->binddn = $param['binddn'];
-
-            if(isset($param['bindpw']))
+            }
+            if(isset($param['bindpw'])) {
                 $this->bindpw = $param['bindpw'];
-
-            if(isset($param['protocol']))
-                $this->protocol = (int) $param['protocol'];
-
-            if(isset($param['filter']))
-                $this->filter = trim($param['filter']);
-
-            if(isset($param['limit_scope']))
-                $this->limit_scope = (bool) $param['limit_scope'];
-
-            if(isset($param['listing']))
-                $this->listing = (bool) $param['listing'];
-
-            if(isset($param['search_tree']))
-                $this->search_tree = (bool) $param['search_tree'];
-
-            if(isset($param['starttls']))
-                $this->starttls = (bool) $param['starttls'];
-
+            }
+            if(isset($param['protocol'])) {
+                $this->protocol = $param['protocol'];
+            }
             if(empty($param['name'])) {
                 $this->sname = 'LDAP: ' . $param['host'];
-            } else {
+            }
+            else {
                 $this->sname = $param['name'];
             }
 
-            /*
-             * don't open LDAP server on addressbook_init(),
-             * open ldap connection only on search. Speeds up
-             * addressbook_init() call.
-             */
-            // $this->open(true);
+            $this->open(true);
         } else {
             $this->set_error('Invalid argument to constructor');
         }
@@ -224,72 +160,39 @@ class abook_ldap_server extends addressbook_backend {
         }
 
         $this->linkid = @ldap_connect($this->server, $this->port);
-        /**
-         * check if connection was successful
-         * It does not work with OpenLDAP 2.x libraries. Connect error will be 
-         * displayed only on ldap command that tries to make connection 
-         * (ldap_start_tls or ldap_bind). 
-         */
         if(!$this->linkid) {
-            return $this->set_error($this->ldap_error('ldap_connect failed'));
+            if(function_exists('ldap_error')) {
+                return $this->set_error(ldap_error($this->linkid));
+            } else {
+                return $this->set_error('ldap_connect failed');
+            }
         }
 
         if(!empty($this->protocol)) {
-            // make sure that ldap_set_option() is available before using it
-            if(! function_exists('ldap_set_option') ||
-               !@ldap_set_option($this->linkid, LDAP_OPT_PROTOCOL_VERSION, $this->protocol)) {
-                return $this->set_error('unable to set ldap protocol number');
+            if(!@ldap_set_option($this->linkid, LDAP_OPT_PROTOCOL_VERSION, $this->protocol)) {
+                if(function_exists('ldap_error')) {
+                    return $this->set_error(ldap_error($this->linkid));
+                } else {
+                    return $this->set_error('ldap_set_option failed');
+                }
             }
         }
 
-        /**
-         * http://www.php.net/ldap-start-tls
-         * Check if v3 or newer protocol is used,
-         * check if ldap_start_tls function is available.
-         * Silently ignore setting, if these requirements are not satisfied.
-         * Break with error message if somebody tries to start TLS on
-         * ldaps or socket connection.
-         */
-        if($this->starttls && 
-           !empty($this->protocol) && $this->protocol >= 3 &&
-           function_exists('ldap_start_tls') ) {
-            // make sure that $this->server is not ldaps:// or ldapi:// URL.
-            if (preg_match("/^ldap[si]:\/\/.+/i",$this->server)) {
-                return $this->set_error("you can't enable starttls on ldaps and ldapi connections.");
-            }
-            
-            // try starting tls
-            if (! @ldap_start_tls($this->linkid)) {
-                // set error if call fails
-                return $this->set_error($this->ldap_error('ldap_start_tls failed'));
-            }
-        }
-
-        if(!empty($this->limit_scope) && $this->limit_scope) {
-            if(empty($this->protocol) || intval($this->protocol) < 3) {
-                return $this->set_error('limit_scope requires protocol >= 3');
-            }
-            // See http://msdn.microsoft.com/library/en-us/ldap/ldap/ldap_server_domain_scope_oid.asp
-            $ctrl = array ( "oid" => "1.2.840.113556.1.4.1339", "iscritical" => TRUE );
-            /*
-             * Option is set only during connection.
-             * It does not cause immediate errors with OpenLDAP 2.x libraries.
-             */
-            if(! function_exists('ldap_set_option') ||
-               !@ldap_set_option($this->linkid, LDAP_OPT_SERVER_CONTROLS, array($ctrl))) {
-                return $this->set_error($this->ldap_error('limit domain scope failed'));
-            }
-        }
-
-        // authenticated bind
         if(!empty($this->binddn)) {
             if(!@ldap_bind($this->linkid, $this->binddn, $this->bindpw)) {
-                return $this->set_error($this->ldap_error('authenticated ldap_bind failed'));
-            }
+                if(function_exists('ldap_error')) {
+                    return $this->set_error(ldap_error($this->linkid));
+                } else {
+                    return $this->set_error('authenticated ldap_bind failed');
+                }
+              }
         } else {
-            // anonymous bind
             if(!@ldap_bind($this->linkid)) {
-                return $this->set_error($this->ldap_error('anonymous ldap_bind failed'));
+                if(function_exists('ldap_error')) {
+                    return $this->set_error(ldap_error($this->linkid));
+                } else {
+                    return $this->set_error('anonymous ldap_bind failed');
+                }
             }
         }
 
@@ -299,9 +202,9 @@ class abook_ldap_server extends addressbook_backend {
     }
 
     /**
-     * Encode string to the charset used by this LDAP server
-     * @param string string that has to be encoded
-     * @return string encoded string
+     * Converts string to the charset used by LDAP server
+     * @param string string that has to be converted
+     * @return string converted string
      */
     function charset_encode($str) {
         global $default_charset;
@@ -313,11 +216,11 @@ class abook_ldap_server extends addressbook_backend {
     }
 
     /**
-     * Decode from charset used by this LDAP server to charset used by translation
+     * Convert from charset used by LDAP server to charset used by translation
      *
-     * Uses SquirrelMail charset_decode functions
-     * @param string string that has to be decoded
-     * @return string decoded string
+     * Output must be sanitized.
+     * @param string string that has to be converted
+     * @return string converted string
      */
     function charset_decode($str) {
         global $default_charset;
@@ -346,36 +249,48 @@ class abook_ldap_server extends addressbook_backend {
         return str_replace(array_keys($sanitized),array_values($sanitized),$string);
     }
 
+    /* ========================== Public ======================== */
+
     /**
-     * Search LDAP server.
-     *
-     * Warning: You must make sure that ldap query is correctly formated and 
-     * sanitize use of special ldap keywords.
-     * @param string $expression ldap query
-     * @return array search results (false on error)
-     * @since 1.5.1
+     * Search the LDAP server
+     * @param string $expr search expression
+     * @return array search results
      */
-    function ldap_search($expression) {
+    function search($expr) {
+        /* To be replaced by advanded search expression parsing */
+        if(is_array($expr)) return false;
+
+        /* Encode the expression */
+        $expr = $this->charset_encode($expr);
+
+        /*
+         * allow use of one asterisk in search. 
+         * Don't allow any ldap special chars if search is different
+         */
+        if($expr!='*') {
+            $expr = '*' . $this->ldapspecialchars($expr) . '*';
+            /* Undo sanitizing of * symbol */
+            $expr = str_replace('\2a','*',$expr);
+        }
+        $expression = "cn=$expr";
+
         /* Make sure connection is there */
         if(!$this->open()) {
             return false;
         }
 
-        if ($this->search_tree) {
-            // ldap_search - search subtree
-            $sret = @ldap_search($this->linkid, $this->basedn, $expression,
-                array('dn', 'o', 'ou', 'sn', 'givenname', 'cn', 'mail'),
-                0, $this->maxrows, $this->timeout);
-        } else {
-            // ldap_list - search one level
-            $sret = @ldap_list($this->linkid, $this->basedn, $expression,
-                array('dn', 'o', 'ou', 'sn', 'givenname', 'cn', 'mail'),
-                0, $this->maxrows, $this->timeout);
-        }
+        $sret = @ldap_search($this->linkid, $this->basedn, $expression,
+            array('dn', 'o', 'ou', 'sn', 'givenname', 'cn', 'mail'),
+            0, $this->maxrows, $this->timeout);
 
-        /* Return error if search failed */
+        /* Should get error from server using the ldap_error() function,
+         * but it only exist in the PHP LDAP documentation. */
         if(!$sret) {
-            return $this->set_error($this->ldap_error('ldap_search failed'));
+            if(function_exists('ldap_error')) {
+                return $this->set_error(ldap_error($this->linkid));
+            } else {
+                return $this->set_error('ldap_search failed');
+            }
         }
 
         if(@ldap_count_entries($this->linkid, $sret) <= 0) {
@@ -390,17 +305,8 @@ class abook_ldap_server extends addressbook_backend {
             $row = $res[$i];
 
             /* Extract data common for all e-mail addresses
-             * of an object. Use only the first name */      
+             * of an object. Use only the first name */
             $nickname = $this->charset_decode($row['dn']);
-
-            /**
-             * calculate length of basedn and remove it from nickname
-             * ignore whitespaces between RDNs
-             * Nicknames are shorter and still unique
-             */ 
-            $basedn_len=strlen(preg_replace('/,\s*/',',',trim($this->basedn)));
-            $nickname=substr(preg_replace('/,\s*/',',',$nickname),0,(-1 - $basedn_len));
-
             $fullname = $this->charset_decode($row['cn'][0]);
 
             if(!empty($row['ou'][0])) {
@@ -452,87 +358,22 @@ class abook_ldap_server extends addressbook_backend {
 
         ldap_free_result($sret);
         return $ret;
-    }
-
-    /**
-     * Get error from LDAP resource if possible
-     *
-     * Should get error from server using the ldap_errno() and ldap_err2str() functions
-     * @param string $sError error message used when ldap error functions 
-     * and connection resource are unavailable
-     * @return string error message
-     * @since 1.5.1
-     */
-    function ldap_error($sError) {
-        // it is possible that function_exists() tests are not needed
-        if(function_exists('ldap_err2str') && 
-           function_exists('ldap_errno') && 
-           is_resource($this->linkid)) {
-            return ldap_err2str(ldap_errno($this->linkid));
-            // return ldap_error($this->linkid);
-        } else {
-            return $sError;
-        }
-    }
-
-    /* ========================== Public ======================== */
-
-    /**
-     * Search the LDAP server
-     * @param string $expr search expression
-     * @return array search results
-     */
-    function search($expr) {
-        /* To be replaced by advanded search expression parsing */
-        if(is_array($expr)) return false;
-
-        // don't allow wide search when listing is disabled.
-        if ($expr=='*' && ! $this->listing) {
-            return array();
-        } elseif ($expr=='*') {
-            // allow use of wildcard when listing is enabled.
-            $expression = '(cn=*)';
-        } else {
-            /* Convert search from user's charset to the one used in ldap */
-            $expr = $this->charset_encode($expr);
-
-            /* Make sure that search does not contain ldap special chars */
-            $expression = '(cn=*' . $this->ldapspecialchars($expr) . '*)';
-
-            /* Undo sanitizing of * symbol */
-            $expression = str_replace('\2a','*',$expression);
-            /* TODO: implement any single character (?) matching */
-        }
-
-        /* Add search filtering */
-        if ($this->filter!='')
-            $expression = '(&' . $this->filter . $expression . ')';
-
-        /* Use internal search function and return search results */
-        return $this->ldap_search($expression);
-    }
+    } /* end search() */
 
 
     /**
      * List all entries present in LDAP server
      *
-     * maxrows setting might limit list of returned entries.
+     * If you run a tiny LDAP server and you want the "List All" button
+     * to show EVERYONE, disable first return call and enable the second one.
+     * Remember that maxrows setting might limit list of returned entries.
+     *
      * Careful with this -- it could get quite large for big sites.
      * @return array all entries in ldap server
      */
      function list_addr() {
-         if (! $this->listing)
-             return array();
-
-         /* set wide search expression */
-         $expression = '(cn=*)';
-
-         /* add filtering */
-         if ($this->filter!='')
-             $expression = '(&' . $this->filter . $expression .')';
-
-         /* use internal search function and return search results */
-         return $this->ldap_search($expression);
+         return array();
+         // return $this->search('*');
      }
 }
 ?>

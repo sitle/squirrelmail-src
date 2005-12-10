@@ -1,26 +1,21 @@
-<?php
+<?php 
 
-/**
- * mail_fetch/class.POP3.php
- *
- * Copyright (c) 1999 CDI (cdi@thewebmasters.net) All Rights Reserved
- * Modified by Philippe Mingo 2001 mingo@rotedic.com
- * An RFC 1939 compliant wrapper class for the POP3 protocol.
- *
- * POP3 class
- *
- * @copyright &copy; 1999-2005 The SquirrelMail Project Team
- * @license http://opensource.org/licenses/gpl-license.php GNU Public License
- * @version $Id$
- * @package plugins
- * @subpackage mail_fetch
- */
+   /**
+    * mail_fetch/setup.php
+    *
+    * Copyright (c) 1999-2005 The SquirrelMail Project Team
+    *
+    * Copyright (c) 1999 CDI (cdi@thewebmasters.net) All Rights Reserved
+    * Modified by Philippe Mingo 2001 mingo@rotedic.com
+    * An RFC 1939 compliant wrapper class for the POP3 protocol.
+    *
+    * Licensed under the GNU GPL. For full terms see the file COPYING.
+    *
+    * pop3 class
+    *
+    * $Id$
+    */
 
-/**
- * This is the POP3 class - DOCUMENT ME
- * @package plugins
- * @subpackage mail_fetch
- */
 class POP3 {
     var $ERROR      = '';       //  Error string.
 
@@ -78,8 +73,8 @@ class POP3 {
         //  port defaults to 110. Returns true on success, false on fail
 
         // If MAILSERVER is set, override $server with it's value
-
-        if (!isset($port) || !$port) {$port = 110;}
+	
+	if (!isset($port) || !$port) {$port = 110;}
         if(!empty($this->MAILSERVER))
             $server = $this->MAILSERVER;
 

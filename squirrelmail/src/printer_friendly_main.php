@@ -3,7 +3,7 @@
 /**
  * printer_friendly frameset
  *
- * @copyright &copy; 1999-2005 The SquirrelMail Project Team
+ * @copyright (c) 1999-2005 The SquirrelMail Project Team
  * @license http://opensource.org/licenses/gpl-license.php GNU Public License
  * @version $Id$
  * @package squirrelmail
@@ -40,6 +40,5 @@ if ( ! sqgetGlobalVar('mailbox',$mailbox,SQ_GET) ||
         . '" name="bottom_frame" frameborder="0" />' . "\n";
     echo "</frameset>\n";
 }
-
 ?>
 </html>

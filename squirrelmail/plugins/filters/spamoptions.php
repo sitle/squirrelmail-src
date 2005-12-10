@@ -1,11 +1,26 @@
 <?php
-
 /**
  * Message and Spam Filter Plugin - Spam Options
  *
- * @copyright &copy; 1999-2005 The SquirrelMail Project Team
- * @license http://opensource.org/licenses/gpl-license.php GNU Public License
+ * This plugin filters your inbox into different folders based upon given
+ * criteria.  It is most useful for people who are subscibed to mailing lists
+ * to help organize their messages.  The argument stands that filtering is
+ * not the place of the client, which is why this has been made a plugin for
+ * SquirrelMail.  You may be better off using products such as Sieve or
+ * Procmail to do your filtering so it happens even when SquirrelMail isn't
+ * running.
+ *
+ * If you need help with this, or see improvements that can be made, please
+ * email me directly at the address above.  I definately welcome suggestions
+ * and comments.  This plugin, as is the case with all SquirrelMail plugins,
+ * is not directly supported by the developers.  Please come to me off the
+ * mailing list if you have trouble with it.
+ *
+ * Also view plugins/README.plugins for more information.
+ *
  * @version $Id$
+ * @copyright (c) 1999-2005 The SquirrelMail Project Team
+ * @license http://opensource.org/licenses/gpl-license.php GNU Public License
  * @package plugins
  * @subpackage filters
  */
@@ -18,8 +33,12 @@ define('SM_PATH','../../');
 
 /* SquirrelMail required files. */
 require_once(SM_PATH . 'include/validate.php');
-include_once(SM_PATH . 'functions/imap.php');
-include_once(SM_PATH . 'plugins/filters/filters.php');
+require_once(SM_PATH . 'functions/page_header.php');
+require_once(SM_PATH . 'functions/imap.php');
+require_once(SM_PATH . 'include/load_prefs.php');
+require_once(SM_PATH . 'functions/html.php');
+require_once(SM_PATH . 'plugins/filters/filters.php');
+global $AllowSpamFilters;
 
 /* get globals */
 sqgetGlobalVar('username', $username, SQ_SESSION);
@@ -35,20 +54,20 @@ displayPageHeader($color, 'None');
 if (sqgetGlobalVar('spam_submit',$spam_submit,SQ_POST)) {
     $spam_filters = load_spam_filters();
 
-    // setting spam folder
+    // setting spam folder    
     sqgetGlobalVar('filters_spam_folder_set',$filters_spam_folder_set,SQ_POST);
     if (isset($filters_spam_folder_set)) {
         setPref($data_dir, $username, 'filters_spam_folder', $filters_spam_folder_set);
     } else {
-        echo _("You must select a spam folder.");
+	echo _("You must select a spam folder.");
     }
 
     // setting scan type
     sqgetGlobalVar('filters_spam_scan_set',$filters_spam_scan_set,SQ_POST);
     if (isset($filters_spam_scan_set)) {
-        setPref($data_dir, $username, 'filters_spam_scan', $filters_spam_scan_set);
+	setPref($data_dir, $username, 'filters_spam_scan', $filters_spam_scan_set);
     } else {
-        echo _("You must select a scan type.");
+	echo _("You must select a scan type.");
     }
 
     foreach ($spam_filters as $Key => $Value) {
@@ -99,7 +118,7 @@ if (isset($action) && $action == 'spam') {
         '<center>'.
         html_tag( 'table', '', '', '', 'width="85%" border="0" cellpadding="2" cellspacing="0"' ) .
             html_tag( 'tr' ) .
-                html_tag( 'th', _("Move spam to:"), 'right', '', 'style="white-space: nowrap;"' ) .
+                html_tag( 'th', _("Move spam to:"), 'right', '', 'nowrap' ) .
                 html_tag( 'td', '', 'left' ) .
                     '<select name="filters_spam_folder_set">';
 
@@ -117,7 +136,7 @@ if (isset($action) && $action == 'spam') {
             'left' )
         ) .
         html_tag( 'tr' ) .
-            html_tag( 'th', _("What to Scan:"), 'right', '', 'style="white-space: nowrap;"' ) .
+            html_tag( 'th', _("What to Scan:"), 'right', '', 'nowrap' ) .
             html_tag( 'td' ) .
             '<select name="filters_spam_scan_set">'.
             '<option value=""';
@@ -144,7 +163,7 @@ if (isset($action) && $action == 'spam') {
 
     foreach ($spam_filters as $Key => $Value) {
         echo html_tag( 'tr' ) .
-                   html_tag( 'th', $Key, 'right', '', 'style="white-space: nowrap;"' ) ."\n" .
+                   html_tag( 'th', $Key, 'right', '', 'nowrap' ) ."\n" .
                    html_tag( 'td' ) .
             '<input type="checkbox" name="' .
             $spam_filters[$Key]['prefname'] .
@@ -198,7 +217,7 @@ if (isset($action) && $action == 'spam') {
             echo _("OFF");
         }
 
-        echo '</th>' .
+        echo '</th>' . 
                html_tag( 'td', '&nbsp;-&nbsp;', 'left' ) .
                html_tag( 'td', '', 'left' );
 

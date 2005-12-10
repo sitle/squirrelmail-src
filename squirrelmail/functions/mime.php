@@ -3,11 +3,12 @@
 /**
  * mime.php
  *
+ * Copyright (c) 1999-2005 The SquirrelMail Project Team
+ * Licensed under the GNU GPL. For full terms see the file COPYING.
+ *
  * This contains the functions necessary to detect and decode MIME
  * messages.
  *
- * @copyright &copy; 1999-2005 The SquirrelMail Project Team
- * @license http://opensource.org/licenses/gpl-license.php GNU Public License
  * @version $Id$
  * @package squirrelmail
  */
@@ -15,8 +16,6 @@
 /** The typical includes... */
 require_once(SM_PATH . 'functions/imap.php');
 require_once(SM_PATH . 'functions/attachment_common.php');
-/** add sqm_baseuri()*/
-include_once(SM_PATH . 'functions/display_messages.php');
 
 /* -------------------------------------------------------------------------- */
 /* MIME DECODING                                                              */
@@ -41,9 +40,11 @@ function mime_structure ($bodystructure, $flags=array()) {
         global $color, $mailbox;
         /* removed urldecode because $_GET is auto urldecoded ??? */
         displayPageHeader( $color, $mailbox );
+        echo "<body text=\"$color[8]\" bgcolor=\"$color[4]\" link=\"$color[7]\" vlink=\"$color[7]\" alink=\"$color[7]\">\n\n" .
+         '<center>';
         $errormessage  = _("SquirrelMail could not decode the bodystructure of the message");
         $errormessage .= '<br />'._("The bodystructure provided by your IMAP server:").'<br /><br />';
-        $errormessage .= '<pre>' . htmlspecialchars($read) . '</pre>';
+        $errormessage .= '<table><tr><td>' . htmlspecialchars($read) . '</td></tr></table>';
         plain_error_message( $errormessage, $color );
         echo '</body></html>';
         exit;
@@ -98,6 +99,7 @@ function mime_structure ($bodystructure, $flags=array()) {
  */
 
 function mime_fetch_body($imap_stream, $id, $ent_id=1, $fetch_size=0) {
+    global $uid_support;
     /* Do a bit of error correction.  If we couldn't find the entity id, just guess
      * that it is the first one.  That is usually the case anyway.
      */
@@ -110,7 +112,7 @@ function mime_fetch_body($imap_stream, $id, $ent_id=1, $fetch_size=0) {
 
     if ($fetch_size!=0) $cmd .= "<0.$fetch_size>";
 
-    $data = sqimap_run_command ($imap_stream, $cmd, true, $response, $message, TRUE);
+    $data = sqimap_run_command ($imap_stream, $cmd, true, $response, $message, $uid_support);
     do {
         $topline = trim(array_shift($data));
     } while($topline && ($topline[0] == '*') && !preg_match('/\* [0-9]+ FETCH.*/i', $topline)) ;
@@ -122,7 +124,7 @@ function mime_fetch_body($imap_stream, $id, $ent_id=1, $fetch_size=0) {
          * in order to parse html messages. Let's get them here.
          */
 //        if ($ret{0} == '<') {
-//            $data = sqimap_run_command ($imap_stream, "FETCH $id BODY[$ent_id.MIME]", true, $response, $message, TRUE);
+//            $data = sqimap_run_command ($imap_stream, "FETCH $id BODY[$ent_id.MIME]", true, $response, $message, $uid_support);
 //        }
     } else if (ereg('"([^"]*)"', $topline, $regs)) {
         $ret = $regs[1];
@@ -149,7 +151,7 @@ function mime_fetch_body($imap_stream, $id, $ent_id=1, $fetch_size=0) {
             '<tr><td><b>' . _("FETCH line:") . "</td><td>$topline</td></tr>" .
             "</table><br /></tt></font><hr />";
 
-        $data = sqimap_run_command ($imap_stream, "FETCH $passed_id BODY[]", true, $response, $message, TRUE);
+        $data = sqimap_run_command ($imap_stream, "FETCH $passed_id BODY[]", true, $response, $message, $uid_support);
         array_shift($data);
         $wholemessage = implode('', $data);
 
@@ -158,7 +160,8 @@ function mime_fetch_body($imap_stream, $id, $ent_id=1, $fetch_size=0) {
     return $ret;
 }
 
-function mime_print_body_lines ($imap_stream, $id, $ent_id=1, $encoding, $rStream='php://stdout') {
+function mime_print_body_lines ($imap_stream, $id, $ent_id=1, $encoding) {
+    global $uid_support;
 
     /* Don't kill the connection if the browser is over a dialup
      * and it would take over 30 seconds to download it.
@@ -176,31 +179,11 @@ function mime_print_body_lines ($imap_stream, $id, $ent_id=1, $encoding, $rStrea
         } else {
             $query = "FETCH $id BODY[$ent_id]";
         }
-        sqimap_run_command($imap_stream,$query,true,$response,$message,TRUE,'sqimap_base64_decode',$rStream,true);
+        sqimap_run_command($imap_stream,$query,true,$response,$message,$uid_support,'sqimap_base64_decode','php://stdout',true);
     } else {
         $body = mime_fetch_body ($imap_stream, $id, $ent_id);
-        if (is_resource($rStream)) {
-            fputs($rStream,decodeBody($body,$encoding));
-        } else {
-            echo decodeBody($body, $encoding);
-        }
+        echo decodeBody($body, $encoding);
     }
-
-    /*
-       TODO, use the same method for quoted printable.
-       However, I assume that quoted printable attachments aren't that large
-       so the performancegain / memory usage drop will be minimal.
-       If we decide to add that then we need to adapt sqimap_fread because
-       we need to split te result on \n and fread doesn't stop at \n. That
-       means we also should provide $results from sqimap_fread (by ref) to
-       te function and set $no_return to false. The $filter function for
-       quoted printable should handle unsetting of $results.
-     */
-    /*
-       TODO 2: find out how we write to the output stream php://stdout. fwrite
-       doesn't work because 'php://stdout isn't a stream.
-     */
-
     return;
 }
 
@@ -314,30 +297,15 @@ function translateText(&$body, $wrap_at, $charset) {
  * be displayed as the actual message in the HTML. It contains
  * everything needed, including HTML Tags, Attachments at the
  * bottom, etc.
- *
- * Since 1.2.0 function uses message_body hook.
- * Till 1.3.0 function included output of formatAttachments().
- *
- * @param resource $imap_stream imap connection resource
- * @param object $message squirrelmail message object
- * @param array $color squirrelmail color theme array
- * @param integer $wrap_at number of characters per line
- * @param string $ent_num (since 1.3.0) message part id
- * @param integer $id (since 1.3.0) message id
- * @param string $mailbox (since 1.3.0) imap folder name
- * @param boolean $clean (since 1.5.1) Do not output stuff that's irrelevant for the printable version.
- * @return string html formated message text
  */
-function formatBody($imap_stream, $message, $color, $wrap_at, $ent_num, $id, $mailbox='INBOX', $clean=FALSE) {
+function formatBody($imap_stream, $message, $color, $wrap_at, $ent_num, $id, $mailbox='INBOX',$clean=false) {
     /* This if statement checks for the entity to show as the
      * primary message. To add more of them, just put them in the
      * order that is their priority.
      */
-    global $startMessage, $languages, $squirrelmail_language,
-           $show_html_default, $sort, $has_unsafe_images, $passed_ent_id, $use_iframe,$iframe_height;
-
-    // workaround for not updated config.php
-    if (! isset($use_iframe)) $use_iframe = false;
+    global $startMessage, $username, $key, $imapServerAddress, $imapPort,
+           $show_html_default, $sort, $has_unsafe_images, $passed_ent_id;
+    global $languages, $squirrelmail_language;
 
     if( !sqgetGlobalVar('view_unsafe_images', $view_unsafe_images, SQ_GET) ) {
         $view_unsafe_images = false;
@@ -352,9 +320,9 @@ function formatBody($imap_stream, $message, $color, $wrap_at, $ent_num, $id, $ma
         $body = decodeBody($body, $body_message->header->encoding);
 
         if (isset($languages[$squirrelmail_language]['XTRA_CODE']) &&
-                function_exists($languages[$squirrelmail_language]['XTRA_CODE'] . '_decode')) {
+                function_exists($languages[$squirrelmail_language]['XTRA_CODE'])) {
             if (mb_detect_encoding($body) != 'ASCII') {
-                $body = call_user_func($languages[$squirrelmail_language]['XTRA_CODE'] . '_decode',$body);
+                $body = $languages[$squirrelmail_language]['XTRA_CODE']('decode', $body);
             }
         }
         $hookResults = do_hook("message_body", $body);
@@ -380,59 +348,8 @@ function formatBody($imap_stream, $message, $color, $wrap_at, $ent_num, $id, $ma
                 $body = trim($body);
                 translateText($body, $wrap_at,
                         $body_message->header->getParameter('charset'));
-            } elseif ($use_iframe && ! $clean) {
-                // $clean is used to remove iframe in printable view.
-
-                /**
-                 * If we don't add html message between iframe tags,
-                 * we must detect unsafe images and modify $has_unsafe_images.
-                 */
-                $html_body = magicHTML($body, $id, $message, $mailbox);
-                // Convert character set in order to display html mails in different character set
-                $html_body = charset_decode($body_message->header->getParameter('charset'),$html_body,false,true);
-
-                // creating iframe url
-                $iframeurl=sqm_baseuri().'src/view_html.php?'
-                    . 'mailbox=' . $urlmailbox
-                    . '&amp;passed_id=' . $id
-                    . '&amp;ent_id=' . $ent_num
-                    . '&amp;view_unsafe_images=' . (int) $view_unsafe_images;
-
-                // adding warning message
-                $body = html_tag('div',_("Viewing HTML formatted email"),'center');
-
-                /**
-                 * height can't be set to 100%, because it does not work as expected when
-                 * iframe is inside the table. Browsers do not create full height objects
-                 * even when iframe is not nested. Maybe there is some way to get full size
-                 * with CSS. Tested in firefox 1.02 and opera 7.53
-                 *
-                 * width="100%" does not work as expected, when table width is not set (automatic)
-                 *
-                 * tokul: I think <iframe> are safer sandbox than <object>. Objects might
-                 * need special handling for IE and IE6SP2.
-                 */
-                $body.= "<div><iframe name=\"message_frame\" width=\"100%\" height=\"$iframe_height\" src=\"$iframeurl\""
-                    .' frameborder="1" marginwidth="0" marginheight="0" scrolling="auto">' . "\n";
-
-                // Message for browsers without iframe support
-                //$body.= _("Your browser does not support inline frames.
-                // You can view HTML formated message by following below link.");
-                //$body.= "<br /><a href=\"$iframeurl\">"._("View HTML Message")."</a>";
-
-                // if browser can't render iframe, it renders html message.
-                $body.= $html_body;
-
-                // close iframe
-                $body.="</iframe></div>\n";
             } else {
-                // old way of html rendering
                 $body = magicHTML($body, $id, $message, $mailbox);
-                /**
-                 * convert character set. charset_decode does not remove html special chars
-                 * applied by magicHTML functions and does not sanitize them second time if
-                 * fourth argument is true.
-                 */
                 $body = charset_decode($body_message->header->getParameter('charset'),$body,false,true);
             }
         } else {
@@ -471,23 +388,10 @@ function formatBody($imap_stream, $message, $color, $wrap_at, $ent_num, $id, $ma
     return $body;
 }
 
-/**
- * Displays attachment links and information
- *
- * Since 1.3.0 function is not included in formatBody() call.
- *
- * Since 1.0.2 uses attachment $type0/$type1 hook.
- * Since 1.2.5 uses attachment $type0/* hook.
- * Since 1.5.0 uses attachments_bottom hook.
- *
- * @param object $message SquirrelMail message object
- * @param array $exclude_id message parts that are not attachments.
- * @param string $mailbox mailbox name
- * @param integer $id message id
- * @return string html formated attachment information.
- */
+
 function formatAttachments($message, $exclude_id, $mailbox, $id) {
     global $where, $what, $startMessage, $color, $passed_ent_id;
+    static $ShownHTML = 0;
 
     $att_ar = $message->getAttachments($exclude_id);
 
@@ -504,10 +408,11 @@ function formatAttachments($message, $exclude_id, $mailbox, $id) {
         $type1 = strtolower($header->type1);
         $name = '';
         $links['download link']['text'] = _("Download");
-        $links['download link']['href'] = sqm_baseuri() .
+        $links['download link']['href'] = SM_PATH .
             "src/download.php?absolute_dl=true&amp;passed_id=$id&amp;mailbox=$urlMailbox&amp;ent_id=$ent";
+        $ImageURL = '';
         if ($type0 =='message' && $type1 == 'rfc822') {
-            $default_page = sqm_baseuri() . 'src/read_body.php';
+            $default_page = SM_PATH . 'src/read_body.php';
             $rfc822_header = $att->rfc822_header;
             $filename = $rfc822_header->subject;
             if (trim( $filename ) == '') {
@@ -515,14 +420,43 @@ function formatAttachments($message, $exclude_id, $mailbox, $id) {
             }
             $from_o = $rfc822_header->from;
             if (is_object($from_o)) {
-                $from_name = decodeHeader($from_o->getAddress(false));
+                $from_name = $from_o->getAddress(false);
             } else {
                 $from_name = _("Unknown sender");
             }
+            $from_name = decodeHeader(($from_name));
             $description = $from_name;
         } else {
-            $default_page = sqm_baseuri() . 'src/download.php';
-            $filename = $att->getFilename();
+            $default_page = SM_PATH . 'src/download.php';
+            if (is_object($header->disposition)) {
+                $filename = $header->disposition->getProperty('filename');
+                if (trim($filename) == '') {
+                    $name = decodeHeader($header->disposition->getProperty('name'));
+                    if (trim($name) == '') {
+                        $name = $header->getParameter('name');
+                        if(trim($name) == '') {
+                            if (trim( $header->id ) == '') {
+                                $filename = 'untitled-[' . $ent . ']' ;
+                            } else {
+                                $filename = 'cid: ' . $header->id;
+                            }
+                        } else {
+                            $filename = $name;
+                        }
+                    } else {
+                        $filename = $name;
+                    }
+                }
+            } else {
+                $filename = $header->getParameter('name');
+                if (!trim($filename)) {
+                    if (trim( $header->id ) == '') {
+                        $filename = 'untitled-[' . $ent . ']' ;
+                    } else {
+                        $filename = 'cid: ' . $header->id;
+                    }
+                }
+            }
             if ($header->description) {
                 $description = decodeHeader($header->description);
             } else {
@@ -540,7 +474,7 @@ function formatAttachments($message, $exclude_id, $mailbox, $id) {
             . "&amp;passed_id=$id&amp;mailbox=$urlMailbox"
             . '&amp;ent_id='.$ent.$passed_ent_id_link;
         if ($where && $what) {
-            $defaultlink .= '&amp;where='. urlencode($where).'&amp;what='.urlencode($what);
+           $defaultlink .= '&amp;where='. urlencode($where).'&amp;what='.urlencode($what);
         }
 
         /* This executes the attachment hook with a specific MIME-type.
@@ -575,17 +509,11 @@ function formatAttachments($message, $exclude_id, $mailbox, $id) {
             } else {
                 $attachments .= '&nbsp;&nbsp;|&nbsp;&nbsp;';
             }
-            $attachments .= '<a href="' . $val['href'] . '">'
-                . (isset($val['text']) && !empty($val['text']) ? $val['text'] : '')
-                . (isset($val['extra']) && !empty($val['extra']) ? $val['extra'] : '')
-                . '</a>';
+            $attachments .= '<a href="' . $val['href'] . '">' .  $val['text'] . '</a>';
         }
         unset($links);
         $attachments .= "</td></tr>\n";
     }
-    $attachmentadd = do_hook_function('attachments_bottom',$attachments);
-    if ($attachmentadd != '')
-        $attachments = $attachmentadd;
     return $attachments;
 }
 
@@ -631,9 +559,7 @@ function decodeBody($body, $encoding) {
 
     $encoding_handler = do_hook_function('decode_body', $encoding);
 
-
     // plugins get first shot at decoding the body
-    //
     if (!empty($encoding_handler) && function_exists($encoding_handler)) {
         $body = $encoding_handler('decode', $body);
 
@@ -660,12 +586,6 @@ function decodeBody($body, $encoding) {
  * This functions decode strings that is encoded according to
  * RFC1522 (MIME Part Two: Message Header Extensions for Non-ASCII Text).
  * Patched by Christian Schmidt <christian@ostenfeld.dk>  23/03/2002
- *
- * @param string $string header string that has to be made readable
- * @param boolean $utfencode change message in order to be readable on user's charset. defaults to true
- * @param boolean $htmlsave preserve spaces and sanitize html special characters. defaults to true
- * @param boolean $decide decide if string can be utfencoded. defaults to false
- * @return string decoded header string
  */
 function decodeHeader ($string, $utfencode=true,$htmlsave=true,$decide=false) {
     global $languages, $squirrelmail_language,$default_charset;
@@ -674,14 +594,14 @@ function decodeHeader ($string, $utfencode=true,$htmlsave=true,$decide=false) {
     }
 
     if (isset($languages[$squirrelmail_language]['XTRA_CODE']) &&
-            function_exists($languages[$squirrelmail_language]['XTRA_CODE'] . '_decodeheader')) {
-        $string = call_user_func($languages[$squirrelmail_language]['XTRA_CODE'] . '_decodeheader', $string);
+            function_exists($languages[$squirrelmail_language]['XTRA_CODE'])) {
+        $string = $languages[$squirrelmail_language]['XTRA_CODE']('decodeheader', $string);
         // Do we need to return at this point?
         // return $string;
     }
     $i = 0;
     $iLastMatch = -2;
-    $encoded = true;
+    $encoded = false;
 
     $aString = explode(' ',$string);
     $ret = '';
@@ -716,50 +636,40 @@ function decodeHeader ($string, $utfencode=true,$htmlsave=true,$decide=false) {
 
             /* decide about valid decoding */
             if ($decide && is_conversion_safe($res[2])) {
-                $utfencode=true;
                 $can_be_encoded=true;
             } else {
                 $can_be_encoded=false;
             }
+
             switch ($encoding)
             {
                 case 'B':
                     $replace = base64_decode($res[4]);
-                    if ($utfencode) {
-                        if ($can_be_encoded) {
-                            /* convert string to different charset,
-                             * if functions asks for it (usually in compose)
-                             */
-                            $ret .= charset_convert($res[2],$replace,$default_charset);
-                        } else {
-                            // convert string to html codes in order to display it
-                            $ret .= charset_decode($res[2],$replace);
-                        }
-                    } else {
-                        if ($htmlsave) {
-                            $replace = htmlspecialchars($replace);
-                        }
-                        $ret.= $replace;
+                    if ($can_be_encoded) {
+                        // string is converted from one charset to another and sanitized
+                        $replace =  charset_convert($res[2],$replace,$default_charset);
+                    } elseif ($utfencode) {
+                        // string is converted to htmlentities and sanitized
+                        $replace = charset_decode($res[2],$replace);
+                    } elseif ($htmlsave) {
+                        // string is not converted, but still sanitized
+                        $replace = htmlspecialchars($replace);
                     }
+                    $ret.= $replace;
                     break;
                 case 'Q':
                     $replace = str_replace('_', ' ', $res[4]);
                     $replace = preg_replace('/=([0-9a-f]{2})/ie', 'chr(hexdec("\1"))',
                             $replace);
-                    if ($utfencode) {
-                        if ($can_be_encoded) {
-                            /* convert string to different charset,
-                             * if functions asks for it (usually in compose)
-                             */
-                            $replace = charset_convert($res[2], $replace,$default_charset);
-                        } else {
-                            // convert string to html codes in order to display it
-                            $replace = charset_decode($res[2], $replace);
-                        }
-                    } else {
-                        if ($htmlsave) {
-                            $replace = htmlspecialchars($replace);
-                        }
+                    if ($can_be_encoded) {
+                        // string is converted from one charset to another and sanitized
+                        $replace = charset_convert($res[2], $replace,$default_charset);
+                    } elseif ($utfencode) {
+                        // string is converted to html entities and sanitized
+                        $replace = charset_decode($res[2], $replace);
+                    } elseif ($htmlsave) {
+                        // string is not converted, but still sanizited
+                        $replace = htmlspecialchars($replace);
                     }
                     $ret .= $replace;
                     break;
@@ -797,29 +707,18 @@ function decodeHeader ($string, $utfencode=true,$htmlsave=true,$decide=false) {
 }
 
 /**
- * Encodes header
+ * Encodes header as quoted-printable
  *
- * Function uses XTRA_CODE _encodeheader function, if such function exists.
- *
- * Function uses Q encoding by default and encodes a string according to RFC
- * 1522 for use in headers if it contains 8-bit characters or anything that
- * looks like it should be encoded.
- *
- * Function switches to B encoding and encodeHeaderBase64() function, if
- * string is 8bit and multibyte character set supported by mbstring extension
- * is used. It can cause E_USER_NOTICE errors, if interface is used with
- * multibyte character set unsupported by mbstring extension.
- *
- * @param string $string header string, that has to be encoded
- * @return string quoted-printable encoded string
- * @todo make $mb_charsets system wide constant
+ * Encode a string according to RFC 1522 for use in headers if it
+ * contains 8-bit characters or anything that looks like it should
+ * be encoded.
  */
 function encodeHeader ($string) {
     global $default_charset, $languages, $squirrelmail_language;
 
     if (isset($languages[$squirrelmail_language]['XTRA_CODE']) &&
-            function_exists($languages[$squirrelmail_language]['XTRA_CODE'] . '_encodeheader')) {
-        return  call_user_func($languages[$squirrelmail_language]['XTRA_CODE'] . '_encodeheader', $string);
+            function_exists($languages[$squirrelmail_language]['XTRA_CODE'])) {
+        return  $languages[$squirrelmail_language]['XTRA_CODE']('encodeheader', $string);
     }
 
     // Use B encoding for multibyte charsets
@@ -951,34 +850,30 @@ function encodeHeader ($string) {
 /**
  * Encodes string according to rfc2047 B encoding header formating rules
  *
- * It is recommended way to encode headers with character sets that store
+ * It is recommended way to encode headers with character sets that store 
  * symbols in more than one byte.
  *
  * Function requires mbstring support. If required mbstring functions are missing,
  * function returns false and sets E_USER_WARNING level error message.
  *
- * Minimal requirements - php 4.0.6 with mbstring extension. Please note,
- * that mbstring functions will generate E_WARNING errors, if unsupported
+ * Minimal requirements - php 4.0.6 with mbstring extension. Please note, 
+ * that mbstring functions will generate E_WARNING errors, if unsupported 
  * character set is used. mb_encode_mimeheader function provided by php
  * mbstring extension is not used in order to get better control of header
  * encoding.
  *
- * Used php code functions - function_exists(), trigger_error(), strlen()
- * (is used with charset names and base64 strings). Used php mbstring
+ * Used php code functions - function_exists(), trigger_error(), strlen() 
+ * (is used with charset names and base64 strings). Used php mbstring 
  * functions - mb_strlen and mb_substr.
  *
- * Related documents: rfc 2045 (BASE64 encoding), rfc 2047 (mime header
+ * Related documents: rfc 2045 (BASE64 encoding), rfc 2047 (mime header 
  * encoding), rfc 2822 (header folding)
  *
  * @param string $string header string that must be encoded
- * @param string $charset character set. Must be supported by mbstring extension.
+ * @param string $charset character set. Must be supported by mbstring extension. 
  * Use sq_mb_list_encodings() to detect supported charsets.
  * @return string string encoded according to rfc2047 B encoding formating rules
- * @since 1.5.1
- * @todo First header line can be wrapped to $iMaxLength - $HeaderFieldLength - 1
- * @todo Do we want to control max length of header?
- * @todo Do we want to control EOL (end-of-line) marker?
- * @todo Do we want to translate error message?
+ * @since 1.5.1 and 1.4.6
  */
 function encodeHeaderBase64($string,$charset) {
     /**
@@ -1678,21 +1573,18 @@ function sq_fixstyle($body, $pos, $message, $id, $mailbox){
     $newpos = $ret[0] + strlen($ret[2]);
     $content = $ret[1];
     /**
-    * First look for general BODY style declaration, which would be
-    * like so:
-    * body {background: blah-blah}
-    * and change it to .bodyclass so we can just assign it to a <div>
-    */
+     * First look for general BODY style declaration, which would be
+     * like so:
+     * body {background: blah-blah}
+     * and change it to .bodyclass so we can just assign it to a <div>
+     */
     $content = preg_replace("|body(\s*\{.*?\})|si", ".bodyclass\\1", $content);
     $secremoveimg = '../images/' . _("sec_remove_eng.png");
     /**
-    * Fix url('blah') declarations.
-    */
-    //   $content = preg_replace("|url\s*\(\s*([\'\"])\s*\S+script\s*:.*?([\'\"])\s*\)|si",
-    //                           "url(\\1$secremoveimg\\2)", $content);
+     * Fix url('blah') declarations.
+     */
     // remove NUL
     $content = str_replace("\0", "", $content);
-
     // NB I insert NUL characters to keep to avoid an infinite loop. They are removed after the loop.
     while (preg_match("/url\s*\(\s*[\'\"]?([^:]+):(.*)?[\'\"]?\s*\)/si", $content, $matches)) {
         $sProto = strtolower($matches[1]);
@@ -1712,6 +1604,7 @@ function sq_fixstyle($body, $pos, $message, $id, $mailbox){
                     $content = preg_replace('/url/i',"u\0r\0l",$content);
                 }
                 break;
+
             /**
              * Fix urls that refer to cid:
              */
@@ -1732,24 +1625,26 @@ function sq_fixstyle($body, $pos, $message, $id, $mailbox){
                                  "", $content);
                 break;
         }
+        break;
     }
     // remove NUL
     $content = str_replace("\0", "", $content);
-   /**
-    * Remove any backslashes, entities, and extraneous whitespace.
-    */
-    $contentTemp = $content;
-    sq_defang($contentTemp);
-    sq_unspace($contentTemp);
+
+    /**
+     * Remove any backslashes, entities, and extraneous whitespace.
+     */
+     $contentTemp = $content;
+     sq_defang($contentTemp);
+     sq_unspace($contentTemp);
 
     /**
      * Fix stupid css declarations which lead to vulnerabilities
      * in IE.
      */
     $match   = Array('/expression/i',
-                    '/behaviou*r/i',
-                    '/binding/i',
-                    '/include-source/i');
+                     '/behaviou*r/i',
+                     '/binding/i',
+                     '/include-source/i');
     $replace = Array('idiocy', 'idiocy', 'idiocy', 'idiocy');
     $contentNew = preg_replace($match, $replace, $contentTemp);
     if ($contentNew !== $contentTemp) {
@@ -1788,8 +1683,8 @@ function sq_cid2http($message, $id, $cidurl, $mailbox){
     $cidurl = preg_replace($match_str, $str_rep, $cidurl);
 
     $linkurl = find_ent_id($cidurl, $message);
-    /* in case of non-save cid links $httpurl should be replaced by a sort of
-       unsave link image */
+    /* in case of non-safe cid links $httpurl should be replaced by a sort of
+       unsafe link image */
     $httpurl = '';
 
     /**
@@ -1838,8 +1733,8 @@ function sq_cid2http($message, $id, $cidurl, $mailbox){
 function sq_body2div($attary, $mailbox, $message, $id){
     $me = 'sq_body2div';
     $divattary = Array('class' => "'bodyclass'");
+    $bgcolor = '#ffffff';
     $text = '#000000';
-    $has_bgc_stl = $has_txt_stl = false;
     $styledef = '';
     if (is_array($attary) && sizeof($attary) > 0){
         foreach ($attary as $attname=>$attvalue){
@@ -1851,19 +1746,12 @@ function sq_body2div($attary, $mailbox, $message, $id){
                     $styledef .= "background-image: url('$attvalue'); ";
                     break;
                 case 'bgcolor':
-                    $has_bgc_stl = true;
                     $styledef .= "background-color: $attvalue; ";
                     break;
                 case 'text':
-                    $has_txt_stl = true;
                     $styledef .= "color: $attvalue; ";
                     break;
             }
-        }
-        // Outlook defines a white bgcolor and no text color. This can lead to
-        // white text on a white bg with certain themes.
-        if ($has_bgc_stl && !$has_txt_stl) {
-            $styledef .= "color: $text; ";
         }
         if (strlen($styledef) > 0){
             $divattary{"style"} = "\"$styledef\"";
@@ -2052,18 +1940,9 @@ function sq_sanitize($body,
  *
  * @param  $body  the body of the message
  * @param  $id    the id of the message
-
- * @param  $message
- * @param  $mailbox
- * @param  boolean $take_mailto_links When TRUE, converts mailto: links
- *                                    into internal SM compose links
- *                                    (optional; default = TRUE)
  * @return        a string with html safe to display in the browser.
  */
-function magicHTML($body, $id, $message, $mailbox = 'INBOX', $take_mailto_links =true) {
-
-    require_once(SM_PATH . 'functions/url_parser.php');  // for $MailTo_PReg_Match
-
+function magicHTML($body, $id, $message, $mailbox = 'INBOX') {
     global $attachment_common_show_images, $view_unsafe_images,
            $has_unsafe_images;
     /**
@@ -2129,7 +2008,7 @@ function magicHTML($body, $id, $message, $mailbox = 'INBOX', $take_mailto_links 
                     Array(
                         "\\1$secremoveimg\\2",
                         "\\1$secremoveimg\\2",
-                        "\\1$secremoveimg\\2",
+                        "\\1$secremoveimg\\2"
                         )
                     ),
                 "/^href|action/i" =>
@@ -2211,59 +2090,6 @@ function magicHTML($body, $id, $message, $mailbox = 'INBOX', $take_mailto_links 
     if (preg_match("|$secremoveimg|i", $trusted)){
         $has_unsafe_images = true;
     }
-
-    // we want to parse mailto's in HTML output, change to SM compose links
-    // this is a modified version of code from url_parser.php... but Marc is
-    // right: we need a better filtering implementation; adding this randomly
-    // here is not a great solution
-    //
-    if ($take_mailto_links) {
-        // parseUrl($trusted);   // this even parses URLs inside of tags... too aggressive
-        global $MailTo_PReg_Match;
-        $MailTo_PReg_Match = '/mailto:' . substr($MailTo_PReg_Match, 1);
-        if ((preg_match_all($MailTo_PReg_Match, $trusted, $regs)) && ($regs[0][0] != '')) {
-            foreach ($regs[0] as $i => $mailto_before) {
-                $mailto_params = $regs[10][$i];
-                // get rid of any tailing quote since we have to add send_to to the end
-                //
-                if (substr($mailto_before, strlen($mailto_before) - 1) == '"')
-                    $mailto_before = substr($mailto_before, 0, strlen($mailto_before) - 1);
-                if (substr($mailto_params, strlen($mailto_params) - 1) == '"')
-                    $mailto_params = substr($mailto_params, 0, strlen($mailto_params) - 1);
-
-                if ($regs[1][$i]) {    //if there is an email addr before '?', we need to merge it with the params
-                    $to = 'to=' . $regs[1][$i];
-                    if (strpos($mailto_params, 'to=') > -1)    //already a 'to='
-                        $mailto_params = str_replace('to=', $to . '%2C%20', $mailto_params);
-                    else {
-                        if ($mailto_params)    //already some params, append to them
-                            $mailto_params .= '&amp;' . $to;
-                        else
-                            $mailto_params .= '?' . $to;
-                    }
-                }
-
-                $url_str = preg_replace(array('/to=/i', '/(?<!b)cc=/i', '/bcc=/i'), array('send_to=', 'send_to_cc=', 'send_to_bcc='), $mailto_params);
-
-                // we'll already have target=_blank, no need to allow comp_in_new
-                // here (which would be a lot more work anyway)
-                //
-                global $compose_new_win;
-                $temp_comp_in_new = $compose_new_win;
-                $compose_new_win = 0;
-                $comp_uri = makeComposeLink('src/compose.php' . $url_str, $mailto_before);
-                $compose_new_win = $temp_comp_in_new;
-
-                // remove <a href=" and anything after the next quote (we only
-                // need the uri, not the link HTML) in compose uri
-                //
-                $comp_uri = substr($comp_uri, 9);
-                $comp_uri = substr($comp_uri, 0, strpos($comp_uri, '"', 1));
-                $trusted = str_replace($mailto_before, $comp_uri, $trusted);
-            }
-        }
-    }
-
     return $trusted;
 }
 
@@ -2298,11 +2124,11 @@ function SendDownloadHeaders($type0, $type1, $filename, $force, $filesize=0) {
     }
 
     if (isset($languages[$squirrelmail_language]['XTRA_CODE']) &&
-            function_exists($languages[$squirrelmail_language]['XTRA_CODE'] . '_downloadfilename')) {
+            function_exists($languages[$squirrelmail_language]['XTRA_CODE'])) {
         $filename =
-            call_user_func($languages[$squirrelmail_language]['XTRA_CODE'] . '_downloadfilename', $filename, $HTTP_USER_AGENT);
+            $languages[$squirrelmail_language]['XTRA_CODE']('downloadfilename', $filename, $HTTP_USER_AGENT);
     } else {
-        $filename = ereg_replace('[\\/:\*\?"<>\|;]', '_', str_replace('&nbsp;', ' ', $filename));
+        $filename = ereg_replace('[\\/:\*\?"<>\|;]', '_', str_replace('&#32;', ' ', $filename));
     }
 
     // A Pox on Microsoft and it's Internet Explorer!

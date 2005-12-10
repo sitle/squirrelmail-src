@@ -3,12 +3,13 @@
 /**
  * view_text.php -- Displays the main frameset
  *
+ * Copyright (c) 1999-2005 The SquirrelMail Project Team
+ * Licensed under the GNU GPL. For full terms see the file COPYING.
+ *
  * Who knows what this file does. However PUT IT HERE DID NOT PUT
  * A SINGLE FREAKING COMMENT IN! Whoever is responsible for this,
  * be very ashamed.
  *
- * @copyright &copy; 1999-2005 The SquirrelMail Project Team
- * @license http://opensource.org/licenses/gpl-license.php GNU Public License
  * @version $Id$
  * @package squirrelmail
  */
@@ -29,22 +30,27 @@ require_once(SM_PATH . 'functions/html.php');
 sqgetGlobalVar('key',        $key,          SQ_COOKIE);
 sqgetGlobalVar('username',   $username,     SQ_SESSION);
 sqgetGlobalVar('onetimepad', $onetimepad,   SQ_SESSION);
-sqgetGlobalVar('messages',   $messages,     SQ_SESSION);
-sqgetGlobalVar('mailbox',    $mailbox,      SQ_GET);
-sqgetGlobalVar('ent_id',     $ent_id,       SQ_GET);
-sqgetGlobalVar('passed_ent_id', $passed_ent_id, SQ_GET);
+sqgetGlobalVar('delimiter',  $delimiter,    SQ_SESSION);
 sqgetGlobalVar('QUERY_STRING', $QUERY_STRING, SQ_SERVER);
-if (sqgetGlobalVar('passed_id', $temp, SQ_GET)) {
-    $passed_id = (int) $temp;
+sqgetGlobalVar('messages', $messages);
+sqgetGlobalVar('passed_id', $passed_id, SQ_GET);
+
+if ( sqgetGlobalVar('mailbox', $temp, SQ_GET) ) {
+  $mailbox = $temp;
 }
+if ( !sqgetGlobalVar('ent_id', $ent_id, SQ_GET) ) {
+  $ent_id = '';
+}
+if ( !sqgetGlobalVar('passed_ent_id', $passed_ent_id, SQ_GET) ) {
+  $passed_ent_id = '';
+} 
+
+
 
 $imapConnection = sqimap_login($username, $key, $imapServerAddress, $imapPort, 0);
 $mbx_response = sqimap_mailbox_select($imapConnection, $mailbox);
 
 $message = &$messages[$mbx_response['UIDVALIDITY']][$passed_id];
-if (!is_object($message)) {
-    $message = sqimap_get_message($imapConnection, $passed_id, $mailbox);
-}
 $message_ent = $message->getEntity($ent_id);
 if ($passed_ent_id) {
     $message = &$message->getEntity($passed_ent_id);
@@ -63,9 +69,9 @@ $body = mime_fetch_body($imapConnection, $passed_id, $ent_id);
 $body = decodeBody($body, $encoding);
 
 if (isset($languages[$squirrelmail_language]['XTRA_CODE']) &&
-    function_exists($languages[$squirrelmail_language]['XTRA_CODE'].'_decode')) {
+    function_exists($languages[$squirrelmail_language]['XTRA_CODE'])) {
     if (mb_detect_encoding($body) != 'ASCII') {
-        $body = call_user_func($languages[$squirrelmail_language]['XTRA_CODE'] . '_decode', $body);
+        $body = $languages[$squirrelmail_language]['XTRA_CODE']('decode', $body);
     }
 }
 

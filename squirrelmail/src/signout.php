@@ -3,10 +3,11 @@
 /**
  * signout.php -- cleans up session and logs the user out
  *
+ * Copyright (c) 1999-2005 The SquirrelMail Project Team
+ * Licensed under the GNU GPL. For full terms see the file COPYING.
+ *
  *  Cleans up after the user. Resets cookies and terminates session.
  *
- * @copyright &copy; 1999-2005 The SquirrelMail Project Team
- * @license http://opensource.org/licenses/gpl-license.php GNU Public License
  * @version $Id$
  * @package squirrelmail
  */
@@ -25,8 +26,7 @@ require_once(SM_PATH . 'functions/html.php');
 
 /* Erase any lingering attachments */
 sqgetGlobalVar('compose_messages',  $compose_messages,  SQ_SESSION);
-
-if (!empty($compose_message) && is_array($compose_messages)) {
+if (!empty($compose_messages) && is_array($compose_messages)) {
     foreach($compose_messages as $composeMessage) {
         $composeMessage->purgeAttachments();
     }
@@ -59,6 +59,7 @@ set_up_language($squirrelmail_language, true, true);
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
+   <meta name="robots" content="noindex,nofollow">
 <?php
     if ($theme_css != '') {
 ?>
@@ -66,7 +67,6 @@ set_up_language($squirrelmail_language, true, true);
 <?php
     }
 ?>
-   <meta name="robots" content="noindex,nofollow">
    <title><?php echo $org_title . ' - ' . _("Signout"); ?></title>
 </head>
 <body text="<?php echo $color[8]; ?>" bgcolor="<?php echo $color[4]; ?>"
@@ -79,19 +79,18 @@ echo
 html_tag( 'table',
     html_tag( 'tr',
          html_tag( 'th', _("Sign Out"), 'center' ) ,
-    '', $color[0] ) .
+    '', $color[0], 'width="100%"' ) .
     $plugin_message .
     html_tag( 'tr',
          html_tag( 'td', _("You have been successfully signed out.") .
              '<br /><a href="login.php" target="' . $frame_top . '">' .
              _("Click here to log back in.") . '</a><br />' ,
          'center' ) ,
-    '', $color[4] ) .
+    '', $color[4], 'width="100%"' ) .
     html_tag( 'tr',
          html_tag( 'td', '<br />', 'center' ) ,
-    '', $color[0] ) ,
-'center', $color[4], 'width="50%" cellpadding="2" cellspacing="0" border="0"' )
-
+    '', $color[0], 'width="100%"' ) ,
+'center', $color[4], 'width="50%" cols="1" cellpadding="2" cellspacing="0" border="0"' )
 ?>
 </body>
 </html>
