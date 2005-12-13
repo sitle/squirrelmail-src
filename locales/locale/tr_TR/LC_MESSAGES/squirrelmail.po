@@ -1,14 +1,14 @@
 # Turkish SquirrelMail Translation.
 # Copyright (c) 2004-2005 SquirrelMail Project Team
-# Kerem Erkan <kerem.erkan@hacettepe.edu.tr>, 2004
+# Kerem Erkan <kerem.erkan@basari.com.tr>, 2004
 # $Id$
 msgid ""
 msgstr ""
-"Project-Id-Version: squirrelmail 1.5.0\n"
+"Project-Id-Version: squirrelmail HEAD\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2005-04-16 19:47+0200\n"
 "PO-Revision-Date: 2003-01-03 02:53+0200\n"
-"Last-Translator: Kerem Erkan <kerem.erkan@hacettepe.edu.tr>\n"
+"Last-Translator: Kerem Erkan <kerem.erkan@basari.com.tr>\n"
 "Language-Team: Turkish <squirrelmail-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=ISO-8859-9\n"
@@ -119,7 +119,7 @@ msgid "ERROR"
 msgstr "HATA"
 
 msgid "Please select address that you want to edit"
-msgstr ""
+msgstr "Lütfen düzenlemek istediðiniz adresi seçin"
 
 msgid "Add address"
 msgstr "Adres ekle"
@@ -136,7 +136,7 @@ msgstr "Þuraya ekle: %s"
 
 #, php-format
 msgid "%s wrote:"
-msgstr ""
+msgstr "%s yazmýþ:"
 
 msgid "quote"
 msgstr "alýntý"
@@ -146,7 +146,7 @@ msgstr "kim"
 
 #, php-format
 msgid "On %s, %s wrote:"
-msgstr ""
+msgstr "%s tarihinde, %s yazmýþ:"
 
 msgid "Subject"
 msgstr "Konu"
@@ -427,10 +427,10 @@ msgid "Options"
 msgstr "Seçenekler"
 
 msgid "Error(s) occurred while saving your options"
-msgstr ""
+msgstr "Seçenekleriniz kaydedilirken hata(lar) oluþtu"
 
 msgid "Some of your preference changes were not applied."
-msgstr ""
+msgstr "Tercih deðiþikliklerinizin bazýlarý uygulanmadý."
 
 msgid "Successfully Saved Options"
 msgstr "Seçenekler Baþarýyla Kaydedildi"
@@ -624,7 +624,7 @@ msgid "Message not printable"
 msgstr "Mesaj yazdýrýlabilir deðil"
 
 msgid "Invalid URL"
-msgstr ""
+msgstr "Geçersiz URL"
 
 msgid "Printer Friendly"
 msgstr "Yazýcý Dostu"
@@ -749,7 +749,7 @@ msgid "Body"
 msgstr "Düzenle"
 
 msgid "Everywhere"
-msgstr ""
+msgstr "Her yerde"
 
 msgid "No Messages Found"
 msgstr "Hiç Mesaj Bulunamadý"
@@ -775,6 +775,8 @@ msgid ""
 "vCard Version %s is not supported. Some information might not be converted "
 "correctly."
 msgstr ""
+"vCard Sürümü %s desteklenmiyor. Bilgilerin bir kýsmý düzgün þekilde "
+"çevrilmeyebilir."
 
 msgid "Title"
 msgstr "Baþlýk"
@@ -824,11 +826,11 @@ msgstr "Bir yazý eklentisi görüntüleniyor"
 
 msgid ""
 "Could not include PEAR database functions required for the database backend."
-msgstr ""
+msgstr "Veritabaný sunucu uygulamasý için gerekli PEAR veritabaný fonksiyonlarý içerilemedi."
 
 #, php-format
 msgid "Is PEAR installed, and is the include path set correctly to find %s?"
-msgstr ""
+msgstr "PEAR yüklü mü ve include yolu %s bulmak için düzgün olarak ayarlanmýþ mý?"
 
 msgid "Please contact your system administrator and report this error."
 msgstr "Lütfen sistem yöneticinize bu hatayý bildirin."
@@ -1136,6 +1138,8 @@ msgid ""
 "You need to have php4 installed with the multibyte string function enabled "
 "(using configure option --enable-mbstring)."
 msgstr ""
+"php4 yüklemenizde multibyte dizi fonksiyonunun etkin olmasý gereklidir "
+"(configure seçeneði olarak --enable-mbstring verin)."
 
 #, fuzzy
 msgid "ERROR: No available IMAP stream."
@@ -1177,13 +1181,13 @@ msgid "Error connecting to IMAP server: %s."
 msgstr "IMAP sunucusuna baðlantýda hata oluþtu: %s."
 
 msgid "The IMAP server is reporting that plain text logins are disabled."
-msgstr ""
+msgstr "IMAP sunucusu düz yazý giriþlerin devre dýþý býrakýldýðýný söylüyor."
 
 msgid "Using CRAM-MD5 or DIGEST-MD5 authentication instead may work."
-msgstr ""
+msgstr "Bunun yerine CRAM-MD5 veya DIGEST-MD5 kimlik doðrulamasý kullanmak iþe yarayabilir."
 
 msgid "Also, the use of TLS may allow SquirrelMail to login."
-msgstr ""
+msgstr "Ayrýca, TLS kullanýmý da SquirrelMail'in giriþ yapmasýna izin verebilir."
 
 #, php-format
 msgid "Bad request: %s"
@@ -1656,7 +1660,7 @@ msgid "International date and time"
 msgstr "Uluslararasý Sözlük Ekle"
 
 msgid "American date and time"
-msgstr ""
+msgstr "Amerikan tarih ve saati"
 
 #, fuzzy
 msgid "European date and time"
@@ -1754,7 +1758,7 @@ msgid "AUTHOR Wrote"
 msgstr "YAZAN dedi ki"
 
 msgid "On DATE, AUTHOR Wrote"
-msgstr ""
+msgstr "ÞU TARÝHTE, GÖNDERÝCÝ Yazmýþ"
 
 msgid "Quote Who XML"
 msgstr "XML Ýle Alýntý"
@@ -1854,7 +1858,7 @@ msgid "Courier IMAP server"
 msgstr "Courier IMAP sunucusu"
 
 msgid "Mac OS X Mailserver"
-msgstr ""
+msgstr "Mac OS X Posta sunucusu"
 
 #, fuzzy
 msgid "hMailServer IMAP server"
@@ -1887,7 +1891,7 @@ msgid "Use Sendmail Binary"
 msgstr "Sendmail kullan"
 
 msgid "Choose &quot;no&quot; for SMTP"
-msgstr ""
+msgstr "SMTP için &quot;hayýr&quot; seçin"
 
 msgid "Sendmail Path"
 msgstr "Sendmail Yolu"
@@ -1905,10 +1909,10 @@ msgid "SMTP Authentication Type"
 msgstr "SMTP Doðrulama Tipi"
 
 msgid "No SMTP auth"
-msgstr ""
+msgstr "SMTP doðrulama yok"
 
 msgid "Login (plain text)"
-msgstr ""
+msgstr "Login (düz yazý)"
 
 msgid "POP3 Before SMTP?"
 msgstr "SMTP'den Önce POP3"
@@ -2016,7 +2020,7 @@ msgid "Allow server charset search"
 msgstr "Sunucu karakter seti aramasýna izin ver"
 
 msgid "UID support"
-msgstr ""
+msgstr "UID desteði"
 
 msgid "PHP session name"
 msgstr "PHP oturum ismi"
@@ -2070,7 +2074,7 @@ msgid "Default Charset"
 msgstr "Varsayýlan Karakter Seti"
 
 msgid "Enable lossy encoding"
-msgstr ""
+msgstr "Kayýplý kodlamayý etkinleþtir"
 
 #, fuzzy
 msgid "Address Books"
@@ -2131,7 +2135,7 @@ msgstr "Eklentiler (Plugins)"
 
 #, php-format
 msgid "Plugin directory could not be found: %s"
-msgstr ""
+msgstr "Eklenti (Plugin) dizini bulunamadý: %s"
 
 msgid "Change Settings"
 msgstr "Ayarlarý deðiþtir"
@@ -2369,17 +2373,17 @@ msgid "Move to:"
 msgstr "Klasöre Taþý:"
 
 msgid "Delete/Move/Next Buttons:"
-msgstr ""
+msgstr "Sil/Taþý/Sonraki Düðmeleri:"
 
 msgid "Display at top"
-msgstr ""
+msgstr "Üstte göster"
 
 #, fuzzy
 msgid "with move option"
 msgstr "Saat Dilimi Seçenekleri"
 
 msgid "Display at bottom"
-msgstr ""
+msgstr "Altta göster"
 
 msgid ""
 "COMMERCIAL - This list contains servers that are verified spam senders. It "
@@ -3024,7 +3028,7 @@ msgid "Undefined Function"
 msgstr "Tanýmlanmamýþ Ýþlem"
 
 msgid "The function you requested is unknown."
-msgstr ""
+msgstr "Ýstediðiniz fonksiyon bilinmiyor."
 
 msgid "Fetch"
 msgstr "Al"
@@ -3049,17 +3053,17 @@ msgid "Message Details"
 msgstr "Mesaj Ayrýntýlarý"
 
 msgid "Bodystructure"
-msgstr ""
+msgstr "Gövde yapýsý"
 
 #, fuzzy
 msgid "Entity"
 msgstr "Düzenle"
 
 msgid "Content-Type"
-msgstr ""
+msgstr "Content-Type"
 
 msgid "Encoding"
-msgstr ""
+msgstr "Encoding"
 
 #, fuzzy
 msgid "RFC822 Message body"
@@ -3279,7 +3283,7 @@ msgid "Save ID"
 msgstr "Kaydet"
 
 msgid "About SpamCop"
-msgstr ""
+msgstr "SpamCop Hakkýnda"
 
 msgid ""
 "SpamCop is a free service that greatly assists in finding the true source of "
@@ -3298,7 +3302,7 @@ msgstr ""
 "\">kayýt sayfasý</a> bulunmaktadýr."
 
 msgid "Before you sign up, be warned"
-msgstr ""
+msgstr "Üye olmadan önce, bilmeniz gerekir"
 
 #, fuzzy, php-format
 msgid ""
@@ -3400,7 +3404,7 @@ msgstr ""
 
 #, fuzzy
 msgid "SpamCop service type"
-msgstr "SpamCop Servis Türü"
+msgstr "SpamCop servis türü"
 
 #, fuzzy
 msgid ""
@@ -3454,7 +3458,7 @@ msgstr ""
 "kurallarýna uyacaðýnýzý kabul edersiniz."
 
 msgid "Cancel / Done"
-msgstr ""
+msgstr "Vazgeç / Bitti"
 
 #, fuzzy
 msgid "Send Spam Report"
@@ -3528,10 +3532,10 @@ msgstr "Sevimli."
 
 #, php-format
 msgid "Could not run the spellchecker command (%s)."
-msgstr ""
+msgstr "Yazým kontrol komutu çalýþtýrýlamadý (%s)."
 
 msgid "Error while writing to pipe."
-msgstr ""
+msgstr "Pipe içine yazarken hata oluþtu."
 
 #, fuzzy, php-format
 msgid "Could not open temporary file '%s'."
@@ -3539,7 +3543,7 @@ msgstr "Veri dosyasý kilitlenemedi"
 
 #, php-format
 msgid "Error while writing to temporary file '%s'."
-msgstr ""
+msgstr "Geçici '%s' dosyasýna yazarken hata oluþtu."
 
 #, php-format
 msgid "I tried to execute '%s', but it returned:"
@@ -3941,13 +3945,13 @@ msgid "%s to %s"
 msgstr "%s dilinden %s diline"
 
 msgid "Chinese, Simplified"
-msgstr ""
+msgstr "Cince, Basitleþtirilmiþ"
 
 msgid "English"
 msgstr "Ýngilizce"
 
 msgid "Chinese, Traditional"
-msgstr ""
+msgstr "Çince, Geleneksel"
 
 msgid "Dutch"
 msgstr "Hollandaca"
@@ -4062,12 +4066,16 @@ msgid ""
 "SquirrelMail is the name of the program that provides access to your email "
 "via the web."
 msgstr ""
+"SquirrelMail e-posta kutunuza web üzerinden eriþim saðlayan programýn "
+"adýdýr."
 
 #, php-format
 msgid ""
 "If you have questions about or problems with your mail account, passwords, "
 "abuse etc, please refer to your system administrator or provider%s."
 msgstr ""
+"E-posta hesabýnýz, þifreler, kötü kullaným vb. ile ilgili soru veya probleminiz "
+"varsa lütfen sistem yöneticiniz veya servis saðlayýcýnýza baþvurun%s."
 
 #, php-format
 msgid ""
@@ -4075,6 +4083,9 @@ msgid ""
 "Team cannot help you with that. The %shelp system%s provides answers to "
 "frequently asked questions."
 msgstr ""
+"Bu sorunlarla ilgili size gerekli yardýmý yapabilirler. SquirrelMail Proje Takýmý "
+"size bu konularda yardým edemez. %sYardým sistemi%s sýkça sorulan sorular "
+"için cevaplar içerir."
 
 #, php-format
 msgid ""
@@ -4083,12 +4094,18 @@ msgid ""
 "SquirrelMail Project Team and is released as open source, free software "
 "under the %sGNU General Public License%s."
 msgstr ""
+"SquirrelMail birçok özelliðe sahip, standartlara uyan ve PHP ile yazýlmýþ "
+"bir web e-posta programýdýr. SquirrelMail Proje Takýmý içinde birleþmiþ "
+"gönüllüler tarafýndan yazýlýr ve açýk kaynaklý, bedava bir yazýlým olarak "
+"%sGNU General Public License%s altýnda sunulur."
 
 #, php-format
 msgid ""
 "For more information about SquirrelMail and the SquirrelMail Project Team, "
 "see %sthe SquirrelMail website%s."
 msgstr ""
+"SquirrelMail ve SquirrelMail Proje Takýmý ile ilgili daha fazla bilgi için "
+"%sSquirrelMail web sitesini%s ziyaret edebilirsiniz."
 
 #, fuzzy
 msgid "System information"
@@ -4099,23 +4116,23 @@ msgid "You are using SquirrelMail version: %s"
 msgstr "SquirrelMail sürüm %s"
 
 msgid "The administrator installed the following plugins:"
-msgstr ""
+msgstr "Yönetici aþaðýdaki eklentileri (plugin) yükledi:"
 
 msgid "none installed"
-msgstr ""
+msgstr "yüklü eklenti yok"
 
 msgid "sort by nickname"
-msgstr ""
+msgstr "rumuza göre sýrala"
 
 #, fuzzy
 msgid "sort by name"
 msgstr "Soyadý"
 
 msgid "sort by email"
-msgstr ""
+msgstr "e-postaya göre sýrala"
 
 msgid "sort by info"
-msgstr ""
+msgstr "bilgiye göre sýrala"
 
 msgid "Add to address book"
 msgstr "Adres defterine ekle"
@@ -4124,6 +4141,8 @@ msgid ""
 "Because PHP file uploads are turned off, you can not attach files to this "
 "message. Please see your system administrator for details."
 msgstr ""
+"PHP dosya gönderimleri kapalý olduðu için bu mesaja dosya ekleyemezsiniz. "
+"Ayrýntýlar için lütfen sistem yöneticinize baþvurun."
 
 #, fuzzy
 msgid "No folders were found to unsubscribe from."
@@ -4155,6 +4174,8 @@ msgid ""
 "Control the behaviour and layout of writing new mail messages, replying to "
 "and forwarding messages."
 msgstr ""
+"Yeni mesaj yazýmý, mesajlarýn iletimi ve yanýtlanmasýnýn davranýþ ve "
+"planlamasýný kontrol et."
 
 #, fuzzy
 msgid "Received"
@@ -4328,7 +4349,7 @@ msgstr "(Geçersiz tarih)"
 
 #, php-format
 msgid "The name may not contain any of the following: %s"
-msgstr ""
+msgstr "Ýsim þunlarýn hiçbirini içeremez: %s"
 
 #, fuzzy
 msgid "Please select a different name."
@@ -4344,7 +4365,7 @@ msgstr "Adlandýracak herhangi bir klasör seçmediniz."
 
 #, fuzzy
 msgid "Possible reason:"
-msgstr "Muhtemel neden : "
+msgstr "Olasý neden:"
 
 #, fuzzy
 msgid "ERROR: Bad function call."
@@ -4357,18 +4378,22 @@ msgid ""
 "TLS is enabled, but this version of PHP does not support TLS sockets, or is "
 "missing the openssl extension."
 msgstr ""
+"TLS etkin fakat PHP'nin bu sürümü TLS soketleri desteklemiyor veya gerekli "
+"openssl eklentisi yüklü deðil."
 
 msgid ""
 "Your mailbox is not located at this server. Try a different server or "
 "consult your system administrator"
 msgstr ""
+"Posta kutunuz bu sunucuda deðil. Baþka bir sunucu deneyin veya sistem "
+"yöneticinize baþvurun"
 
 #, fuzzy
 msgid "Unknown recipient"
 msgstr "Bilinmeyen yanýt"
 
 msgid "Unflag"
-msgstr ""
+msgstr "Bayraðý kaldýr"
 
 #, fuzzy
 msgid "Flag"
@@ -4390,13 +4415,13 @@ msgid "Strip signature when replying"
 msgstr "Cevap verirken imzayý sil"
 
 msgid "Enable Fancy Row Mouseover Highlighting"
-msgstr ""
+msgstr "Süslü Satýr MouseOver Highlight'ý etkinleþtir"
 
 msgid "Message Flags Icon Theme"
-msgstr ""
+msgstr "Mesaj Bayraklarý Ýkon Temasý"
 
 msgid "Show Flag / Unflag Buttons"
-msgstr ""
+msgstr "Bayrak koy / Bayraðý kaldýr Düðmelerini Göster"
 
 #, fuzzy
 msgid "Use Compact Page Selector"
@@ -4426,10 +4451,10 @@ msgstr[0] "Dakika"
 msgstr[1] "Dakika"
 
 msgid "Show only subscribed folders"
-msgstr ""
+msgstr "Sadece ekli klasörleri göster"
 
 msgid "XP"
-msgstr ""
+msgstr "XP"
 
 #, fuzzy
 msgid "Hide SquirrelMail Header"
@@ -4440,10 +4465,10 @@ msgid "Search functions"
 msgstr "Ara"
 
 msgid "Only basic search"
-msgstr ""
+msgstr "Sadece basit arama"
 
 msgid "Only advanced search"
-msgstr ""
+msgstr "Sadece geliþmiþ arama"
 
 #, fuzzy
 msgid "Both search functions"
@@ -4478,24 +4503,24 @@ msgid "Use PHP iconv functions"
 msgstr "Php iconv iþlevlerini kullan"
 
 msgid "Allow remote configuration test"
-msgstr ""
+msgstr "Uzaktan yapýlandýrma testine izin ver"
 
 msgid "Show System Specifications"
-msgstr ""
+msgstr "Sistem Bilgilerini Göster"
 
 #, fuzzy
 msgid "Search Mailing List Archives"
 msgstr "Liste Arþivleri"
 
 msgid "Search SourceForge Bugtracker"
-msgstr ""
+msgstr "SourceForge Bugtracker'da Ara"
 
 #, fuzzy
 msgid "Search for words:"
 msgstr "Ara"
 
 msgid "Written by:"
-msgstr ""
+msgstr "Yazan:"
 
 #, fuzzy
 msgid "Email addresses only"
@@ -4526,7 +4551,7 @@ msgid "Sort by:"
 msgstr "Port:"
 
 msgid "Relevance"
-msgstr ""
+msgstr "Ýlgililik"
 
 #, fuzzy
 msgid "Search Archives"
@@ -4537,14 +4562,14 @@ msgid "Reset Form"
 msgstr "Klasörü Sil"
 
 msgid "Summary keyword:"
-msgstr ""
+msgstr "Özet anahtar sözcüðü:"
 
 #, fuzzy
 msgid "Sort By:"
 msgstr "Gönderen"
 
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 #, fuzzy
 msgid "Summary"
@@ -4563,33 +4588,33 @@ msgid "Submitter"
 msgstr "Tamam"
 
 msgid "Assignee"
-msgstr ""
+msgstr "Tahsis edilen"
 
 #, fuzzy
 msgid "Order:"
 msgstr "Diðer:"
 
 msgid "Ascending"
-msgstr ""
+msgstr "Artarak"
 
 msgid "Descending"
-msgstr ""
+msgstr "Azalarak"
 
 #, fuzzy
 msgid "Search Bugtracker"
 msgstr "Arama Kriteri"
 
 msgid "You must type in a new password."
-msgstr ""
+msgstr "Yeni bir þifre yazmalýsýnýz."
 
 msgid "You must also type in your new password in the verify box."
-msgstr ""
+msgstr "Þifrenizi doðrulama kutusuna da yazmalýsýnýz."
 
 msgid "Your new password does not match the verify password."
-msgstr ""
+msgstr "Yeni þifreniz doðrulama þifresiyle uyuþmuyor."
 
 msgid "You must type in your current password."
-msgstr ""
+msgstr "Þu andaki þifrenizi yazmalýsýnýz."
 
 #, fuzzy
 msgid "Your current password is not correct."
@@ -4597,7 +4622,7 @@ msgstr "Bilinmeyen kullanýcý veya þifre hatasý."
 
 #, php-format
 msgid "Your new password should be %s to %s characters long."
-msgstr ""
+msgstr "Yeni þifreniz %s ila %s karakter arasý olmalýdýr."
 
 #, fuzzy
 msgid "Your new password contains invalid characters."
@@ -4620,29 +4645,29 @@ msgid "Verify New Password:"
 msgstr "Þifre:"
 
 msgid "Use this to change your email password."
-msgstr ""
+msgstr "Bunu e-posta þifrenizi deðiþtirmek için kullanýn."
 
 #, fuzzy
 msgid "User's Password"
 msgstr "Þifre:"
 
 msgid "Current configuration requires LDAP support in PHP."
-msgstr ""
+msgstr "Þu andaki yapýlandýrma PHP içinde LDAP desteði gerektirmektedir."
 
 msgid "Plugin is not configured correctly."
-msgstr ""
+msgstr "Eklenti düzgün yapýlandýrýlmamýþ."
 
 #, php-format
 msgid "Setting of LDAP connection option %s to value %s failed."
-msgstr ""
+msgstr "LDAP baðlantý seçeneði %s, %s deðerine ayarlanamadý."
 
 #, php-format
 msgid "Incorrect LDAP connection option: %s"
-msgstr ""
+msgstr "Hatalý LDAP baðlantý seçeneði: %s"
 
 msgid ""
 "Current PHP LDAP extension does not allow use of ldap_set_option() function."
-msgstr ""
+msgstr "Þu andaki PHP LDAP eklentisi ldap_set_option() fonsiyonunun kullanýmýna izin vermiyor."
 
 #, fuzzy
 msgid "Unable to use TLS."
@@ -4653,124 +4678,124 @@ msgid "Error: %s"
 msgstr "Hata "
 
 msgid "Unable to use LDAP TLS in current setup."
-msgstr ""
+msgstr "Þu andaki yapýda LDAP TLS kullanýlamýyor."
 
 msgid "Unable to bind to LDAP server."
-msgstr ""
+msgstr "LDAP sunucusuna baðlanýlamadý."
 
 #, fuzzy, php-format
 msgid "Server replied: %s"
 msgstr "Sunucu yanýtý: "
 
 msgid "Unable to find user's password attribute."
-msgstr ""
+msgstr "Kullanýcýnýn þifre niteliði bulunamadý."
 
 msgid "Unable to rebind to LDAP server."
-msgstr ""
+msgstr "LDAP sunucusuna tekrar baðlanýlamadý."
 
 msgid "LDAP server uses different attribute to store user's password."
-msgstr ""
+msgstr "LDAP sunucusu kullanýcý þifresini saklamak için farklý bir nitelik kullanýyor."
 
 #, fuzzy
 msgid "Unable to connect to LDAP server."
 msgstr "Sunucuya baðlantý yok"
 
 msgid "Unable to find user's DN."
-msgstr ""
+msgstr "Kullanýcýnýn DN bilgisi bulunamadý."
 
 #, fuzzy
 msgid "Search error."
 msgstr "Ara"
 
 msgid "Multiple userid matches found."
-msgstr ""
+msgstr "Birden fazla userid eþlemesi bulundu."
 
 msgid "ldap_get_dn error."
-msgstr ""
+msgstr "ldap_get_dn hatasý."
 
 #, php-format
 msgid "Unsupported crypto: %s"
-msgstr ""
+msgstr "Desteklenmeyen þifreleme: %s"
 
 msgid "PHP mhash extension is missing."
-msgstr ""
+msgstr "PHP mhash eklentisi eksik."
 
 msgid "System crypt library doesn't support standard DES crypt."
-msgstr ""
+msgstr "Sistem crypt kütüphanesi standart DES þifrelemeyi desteklemiyor."
 
 msgid "System crypt library doesn't have MD5 support."
-msgstr ""
+msgstr "Sistem crypt kütüphanesi MD5 desteði içermiyor."
 
 msgid "System crypt library doesn't support extended DES crypt."
-msgstr ""
+msgstr "Sistem crypt kütüphanesi uzatýlmýþ DES þifrelemeyi desteklemiyor."
 
 msgid "System crypt library doesn't have Blowfish support."
-msgstr ""
+msgstr "Sistem crypt kütüphanesi BlowFish desteði içermiyor."
 
 #, fuzzy
 msgid "unknown"
 msgstr "Bilinmeyen tarih"
 
 msgid "Unable to validate user's password."
-msgstr ""
+msgstr "Kullanýcý þifresi doðrulanamadý."
 
 msgid "Blowfish is not supported by webserver's system crypt library."
-msgstr ""
+msgstr "Blowfish web sunucusunun sistem crypt kütüphanesi tarafýndan desteklenmiyor."
 
 msgid "MD5 is not supported by webserver's system crypt library."
-msgstr ""
+msgstr "MD5 web sunucusunun sistem crypt kütüphanesi tarafýndan desteklenmiyor."
 
 msgid ""
 "Extended DES crypt is not supported by webserver's system crypt library."
-msgstr ""
+msgstr "Uzatýlmýþ DES þifrelemesi web sunucusunun sistem crypt kütüphanesi tarafýndan desteklenmiyor."
 
 msgid ""
 "Standard DES crypt is not supported by webserver's system crypt library."
-msgstr ""
+msgstr "Standart DES þifrelemesi web sunucusunun sistem crypt kütüphanesi tarafýndan desteklenmiyor."
 
 msgid "PHP Curl extension is NOT available! Unable to change password!"
-msgstr ""
+msgstr "PHP Curl eklentisi bulunamadý! Þifre deðiþtirilemiyor!"
 
 msgid "Cannot change password! (Is user 'Self Configurable User' ?) (401)"
-msgstr ""
+msgstr "Þifre deðiþtirilemedi! (Kullanýcý 'Kendi yapýlandýrmasýný yapabiliyor mu?') (401)"
 
 #, fuzzy
 msgid "Cannot change password!"
 msgstr "Bu kelimeyi deðiþtir"
 
 msgid "Cannot connect to Database Server, please try later!"
-msgstr ""
+msgstr "Veritabaný Sunucusuna baðlanýlamadý, lütfen daha sonra tekrar deneyin!"
 
 msgid "Database not found on server"
-msgstr ""
+msgstr "Veritabaný sunucuda bulunamadý"
 
 msgid "SQL call failed, try again later."
-msgstr ""
+msgstr "SQL çaðrýsý baþarýsýz, lütfen daha sonra tekrar deneyin."
 
 msgid "Duplicate login entries detected, cannot change password!"
-msgstr ""
+msgstr "Birden çok giriþ bilgisi bulundu, þifre deðiþtirilemiyor!"
 
 msgid "Password change was not successful!"
-msgstr ""
+msgstr "Þifre deðiþimi baþarýsýz oldu!"
 
 msgid "Closing Connection"
-msgstr ""
+msgstr "Baðlantý Kapatýlýyor"
 
 #, fuzzy
 msgid "Connecting to Password Server"
 msgstr "Sunucuya baðlantý yok"
 
 msgid "No valid backend defined."
-msgstr ""
+msgstr "Geçerli sunucu uygulamasý tanýmlanmamýþ."
 
 msgid "Incorrent path to vmail.inc file."
-msgstr ""
+msgstr "vmail.inc dosyasý için yanlýþ yol."
 
 msgid "Invalid or corrupted vmail.inc file."
-msgstr ""
+msgstr "Geçersiz veya bozuk vmail.inc dosyasý."
 
 msgid "Invalid user."
-msgstr ""
+msgstr "Geçersiz kullanýcý."
 
 #, fuzzy
 msgid "Empty domain"
@@ -4785,7 +4810,7 @@ msgid "Empty username"
 msgstr "Kullanýcý Adý:"
 
 msgid "Empty new password"
-msgstr ""
+msgstr "Boþ yeni þifre"
 
 #, fuzzy
 msgid "Server Capability response:"
@@ -4798,11 +4823,18 @@ msgid ""
 "executed in order. The default values are simple IMAP commands using your "
 "default_charset and folder_prefix from SquirrelMail when needed."
 msgstr ""
+"Çalýþtýrmak istediðiniz IMAP komutlarýný seçin. Çoðu komut seçili bir posta "
+"kutusu gerektirir, bu nedenle select komutu zaten ayarlandý. Tüm komutlarý "
+"silip kendi IMAP komut dizilerinizi deneyebilirsiniz. Komutlar sýrayla "
+"çalýþtýrýlýr. Varsayýlan deðerler SquirrelMail'den gerektiðinde default_charset "
+"ve folder_prefix ile basit IMAP komutlarýdýr."
 
 msgid ""
 "NOTE: These commands are live, any changes made will effect your current "
 "email account."
 msgstr ""
+"NOTE: Bu komutlar canlý komutlardýr, yapýlan deðiþiklikler þu andaki e-posta "
+"hesabýnýzý etkileyecektir."
 
 #, fuzzy
 msgid "Select"
@@ -4837,24 +4869,24 @@ msgid "Width of popup window:"
 msgstr "Yazým Penceresinin Geniþliði"
 
 msgid "If set to 0, reverts to default value"
-msgstr ""
+msgstr "0 olarak ayarlanýrsa, varsayýlan deðere döner"
 
 #, fuzzy
 msgid "Height of popup window:"
 msgstr "Yazým Penceresinin Yüksekliði"
 
 msgid "uploaded media file"
-msgstr ""
+msgstr "yüklenen medya dosyasý"
 
 #, fuzzy
 msgid "none"
 msgstr "(hiçbiri)"
 
 msgid "Upload Media File:"
-msgstr ""
+msgstr "Medya Dosyasý Yükle:"
 
 msgid "Uploaded Media File:"
-msgstr ""
+msgstr "Yüklenen Medya Dosyasý:"
 
 #, fuzzy
 msgid "unavailable"
@@ -4862,7 +4894,7 @@ msgstr "kullanýlýr deðil"
 
 #, php-format
 msgid "Media file %s will be removed, if you upload other media file."
-msgstr ""
+msgstr "Medya dosyasý %s, baþka bir medya dosyasý yüklerseniz silinecek."
 
 msgid "Spam Service Type:"
 msgstr "Spam Servis Türü:"
@@ -4889,6 +4921,7 @@ msgid ""
 "Selected translation engine is disabled. Please update your translation "
 "preferences."
 msgstr ""
+"Seçilen çeviri motoru devre dýþý. Lütfen çeviri tercihlerinizi güncelleyin."
 
 #, fuzzy
 msgid "Translation Preferences"
@@ -4904,7 +4937,7 @@ msgstr ""
 "desteklenir."
 
 msgid "Transliterate unknown words:"
-msgstr ""
+msgstr "Bilinmeyen sözcükleri transliterate et:"
 
 msgid "When composing:"
 msgstr "Mesaj yazarken:"
@@ -4919,7 +4952,7 @@ msgid "Undelivered Message Headers"
 msgstr "Daðýtýlmayan Mesaj Baþlýklarý"
 
 msgid "This image has been removed for security reasons"
-msgstr ""
+msgstr "Bu resim güvenlik nedenleriyle kaldýrýlmýþtýr"
 
 #~ msgid "Unknown error"
 #~ msgstr "Bilinmeyen hata"
