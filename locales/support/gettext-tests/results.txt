@@ -1,6 +1,8 @@
 Date: $Date$
 
+**********************************************************
 Debian Sarge (glibc 2.3.2, php 4.3.10, GNU Gettext 0.14.4)
+**********************************************************
 
 ru_RU.UTF-8 and fr_FR setlocale() calls. Does not depend on putenv() calls.
 Depends on system locale. Returns false on failed setlocale() call and locale
@@ -22,3 +24,84 @@ setlocale without charset
 
 Supported locales are listed in /usr/share/i18n/SUPPORTED. Locales can be 
 compiled with localedef, locale-gen or dpkg-reconfigure locales
+
+***************
+OpenBSD 3.8 x86
+***************
+
+Stock gettext version 0.10.40.
+
+Depends on putenv() calls, setlocale call returns string instead of expected 
+boolean false. String contains slash limited list of all locale vars. Older 
+OpenBSD versions (3.5) return false on setlocale call. CLI 
+segfaults, when compiled with stock gettext libraries. Does not segfault with 
+GNU Gettext 0.14.3.
+
+File open order
+---------------
+putenv with charset
+* ru_RU.UTF-8/LC_MESSAGES/test.mo
+* ru_RU.utf8/LC_MESSAGES/test.mo
+* ru_RU/LC_MESSAGES/test.mo
+* ru.UTF-8/LC_MESSAGES/test.mo
+* ru.utf8/LC_MESSAGES/test.mo
+* ru/LC_MESSAGES/test.mo
+
+putenv without charset
+* ru_RU/LC_MESSAGES/test.mo
+* ru/LC_MESSAGES/test.mo
+
+ktrace
+------
+ktrace ~/openbsd1/bin/php gettext.php
+X-Powered-By: PHP/5.1.2-dev
+Content-type: text/html
+
+string(21) "C/ru_RU.UTF-8/C/C/C/C"
+Segmentation fault (core dumped)
+
+kdump
+-----
+ 13866 php      NAMI  "/home/users/t/to/tokul/src/test/ru_RU/LC_MESSAGES/test.mo"
+ 13866 php      RET   open -1 errno 2 No such file or directory
+ 13866 php      CALL  open(0x7f2dd440,0,0)
+ 13866 php      NAMI  "/home/users/t/to/tokul/src/test/ru/LC_MESSAGES/test.mo"
+ 13866 php      RET   open 3
+ 13866 php      CALL  sigprocmask(0x1,0xffffffff)
+ 13866 php      RET   sigprocmask 0
+ 13866 php      CALL  mprotect(0x2f8ee000,0x1000,0x3)
+ 13866 php      RET   mprotect 0
+ 13866 php      CALL  mprotect(0x2f8ee000,0x1000,0x1)
+ 13866 php      RET   mprotect 0
+ 13866 php      CALL  sigprocmask(0x3,0)
+ 13866 php      RET   sigprocmask -65793/0xfffefeff
+ 13866 php      CALL  fstat(0x3,0xcfbeaf78)
+ 13866 php      RET   fstat 0
+ 13866 php      CALL  sigprocmask(0x1,0xffffffff)
+ 13866 php      RET   sigprocmask 0
+ 13866 php      CALL  mprotect(0x2f8ee000,0x1000,0x3)
+ 13866 php      RET   mprotect 0
+ 13866 php      CALL  mprotect(0x2f8ee000,0x1000,0x1)
+ 13866 php      RET   mprotect 0
+ 13866 php      CALL  sigprocmask(0x3,0)
+ 13866 php      RET   sigprocmask -65793/0xfffefeff
+ 13866 php      CALL  mmap(0,0x4395ef38,0x1,0x2,0x3,0,0,0)
+ 13866 php      RET   mmap -1 errno 12 Cannot allocate memory
+ 13866 php      CALL  mmap(0,0x4395f000,0x3,0x1002,0xffffffff,0,0,0)
+ 13866 php      RET   mmap -1 errno 12 Cannot allocate memory
+ 13866 php      PSIG  SIGSEGV SIG_DFL code 1 addr=0x3e3df trapno=1
+ 13866 php      NAMI  "php.core"
+
+*************
+SunOS 2.9 x86
+*************
+
+If compiled with Sun Gettext, depends on system locales.
+
+Available locales - http://developers.sun.com/dev/gadc/techtips/sol9_locale_pkgs/
+
+File open order
+---------------
+Sun Gettext, fr_CA.ISO8859-1 setlocale call
+* fr_CA.ISO8859-1/LC_MESSAGES/test.mo
+
