@@ -7,7 +7,8 @@ You should check which .mo files are opened.
 Available system call tracing utilities
 ---------------------------------------
 Linux   - strace ('strace -o test.log php gettext.php' command)
-OpenBSD - ktrace
+OpenBSD - ktrace ('ktrace php gettext.php' command, debug output analized with 
+          kdump)
 Solaris - truss ('truss -o test.log php gettext.php' command)
 
 Situations that should be checked

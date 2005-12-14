@@ -2,6 +2,10 @@
 /**
  * Gettext test script.
  *
+ * If script is executed in SquirrelMail top directory, it can output 
+ * translated string when locale is working correctly. If you want to test 
+ * script in PHP safe_mode = on environment, disable all putenv calls.
+ *
  * @copyright &copy; 2005 The SquirrelMail Project Team
  * @license http://opensource.org/licenses/gpl-license.php GNU Public License
  * @version $Id$
@@ -9,29 +13,29 @@
  */
 
 /** set gettext domain */
-bindtextdomain('test','./');
-textdomain('test');
+bindtextdomain('squirrelmail','./locale/');
+textdomain('squirrelmail');
 
 /** set gettext codeset for php 4.2+ */
 if (function_exists('bind_textdomain_codeset')) {
-    bind_textdomain_codeset ('test', 'utf-8' );
+    bind_textdomain_codeset ('squirrelmail', 'utf-8' );
 }
 
-/** set locale */
-setlocale(LC_ALL, 'ru_RU.UTF-8');
+/** set locale and show returned value */
+var_dump(setlocale(LC_ALL, 'ru_RU.UTF-8'));
 
 /** set environment vars */
-//putenv('LC_ALL=ru_RU.UTF-8');
+putenv('LC_ALL=ru_RU.UTF-8');
 //putenv('LANG=ru_RU.UTF-8');
 //putenv('LANGUAGE=ru_RU.UTF-8');
-//putenv('LC_NUMERIC=C');
+putenv('LC_NUMERIC=C');
 //putenv('LC_CTYPE=C');
 
-/** float workarounds */
+/** float workarounds (SM 1.4.5+) */
 setlocale(LC_NUMERIC, 'C');
 
-/** character conversion workarounds for Turkish */
+/** character conversion workarounds for Turkish (SM 1.4.5+) */
 //setlocale(LC_CTYPE,'C');
 
-echo _('Test')."\n";
+echo _('Addresses')."\n";
 ?>
