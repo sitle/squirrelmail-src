@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: squirrelmail\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2005-04-16 19:47+0200\n"
-"PO-Revision-Date: 2005-12-14 10:46+0100\n"
+"PO-Revision-Date: 2005-12-14 14:58+0100\n"
 "Last-Translator: Alex Lemaresquier <alex@lemaresquier.org>\n"
 "Language-Team: French <squirrelmail-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -18,6 +18,15 @@ msgstr ""
 
 msgid "Address Book"
 msgstr "Carnet d'adresses"
+
+msgid "All"
+msgstr "Tout"
+
+msgid "To"
+msgstr "À"
+
+msgid "Cc"
+msgstr "Copie à"
 
 msgid "Name"
 msgstr "Nom"
@@ -31,17 +40,17 @@ msgstr "Info"
 msgid "Source"
 msgstr "Source"
 
-msgid "To"
-msgstr "À"
-
-msgid "Cc"
-msgstr "Copie à"
-
 msgid "Bcc"
 msgstr "Copie cachée à"
 
-msgid "No persons matching your search were found"
-msgstr "Aucune personne trouvée"
+msgid "Use Addresses"
+msgstr "Utiliser les adresses"
+
+msgid "Cancel"
+msgstr "Annuler"
+
+msgid "Address Book Search"
+msgstr "Rechercher dans le carnet d'adresses"
 
 msgid "Search for"
 msgstr "Rechercher"
@@ -58,30 +67,21 @@ msgstr "Rechercher"
 msgid "List all"
 msgstr "Tout afficher"
 
-msgid "Close"
-msgstr "Fermer"
-
-#, php-format
+#, c-format
 msgid "Unable to list addresses from %s"
 msgstr "Impossible d'afficher les adresses à partir de %s"
 
 msgid "Your search failed with the following error(s)"
 msgstr "Votre recherche a échoué avec les erreurs suivantes"
 
-msgid "All"
-msgstr "Tout"
-
-msgid "Use Addresses"
-msgstr "Utiliser les adresses"
-
-msgid "Cancel"
-msgstr "Annuler"
-
-msgid "Address Book Search"
-msgstr "Rechercher dans le carnet d'adresses"
+msgid "No persons matching your search were found"
+msgstr "Aucune personne trouvée"
 
 msgid "Return"
 msgstr "Retour"
+
+msgid "Close"
+msgstr "Fermer"
 
 msgid "Nickname"
 msgstr "Surnom&nbsp;"
@@ -128,11 +128,23 @@ msgstr "Éditer la sélection"
 msgid "Delete selected"
 msgstr "Supprimer la sélection"
 
-#, php-format
+msgid "sort by nickname"
+msgstr "trier par surnom"
+
+msgid "sort by name"
+msgstr "trier par nom"
+
+msgid "sort by email"
+msgstr "trier par email"
+
+msgid "sort by info"
+msgstr "trier par info"
+
+#, c-format
 msgid "Add to %s"
 msgstr "Ajouter à&nbsp;: %s"
 
-#, php-format
+#, c-format
 msgid "%s wrote:"
 msgstr "%s a écrit :"
 
@@ -145,7 +157,7 @@ msgid "who"
 msgstr "de"
 
 # Attention, pas HTML
-#, php-format
+#, c-format
 msgid "On %s, %s wrote:"
 msgstr "Le %s, %s a écrit :"
 
@@ -188,6 +200,9 @@ msgstr "Ajouter"
 msgid "Delete selected attachments"
 msgstr "Supprimer les pièces jointes sélectionnées"
 
+msgid "Because PHP file uploads are turned off, you can not attach files to this message. Please see your system administrator for details."
+msgstr "Vous ne pouvez pas ajouter de pièces jointes à ce message, car les envois de fichier via PHP sont interdits. Merci de vous adresser à votre administrateur système pour plus de détails."
+
 msgid "Priority"
 msgstr "Priorité&nbsp;"
 
@@ -223,12 +238,34 @@ msgstr "Enregistrer le brouillon"
 msgid "You have not filled in the \"To:\" field."
 msgstr "Vous n'avez pas rempli le champ «&nbsp;À&nbsp;:&nbsp;»."
 
-#, php-format
+#, c-format
 msgid "Error: Draft folder %s does not exist."
 msgstr "Erreur : Le dossier de brouillons %s n'existe pas."
 
 msgid "Server replied:"
 msgstr "Le serveur a répondu&nbsp;: "
+
+msgid "Illegal folder name. Please select a different name."
+msgstr "Nom de dossier non autorisé. Choisissez un autre nom."
+
+msgid "Click here to go back"
+msgstr "Cliquez ici pour revenir en arrière"
+
+msgid "You have not selected a folder to delete. Please do so."
+msgstr "Vous n'avez pas choisi le dossier à supprimer. Sélectionnez un dossier pour le supprimer."
+
+msgid "Delete Folder"
+msgstr "Supprimer un dossier"
+
+#, c-format
+msgid "Are you sure you want to delete %s?"
+msgstr "Voulez-vous vraiment effacer %s&nbsp;?"
+
+msgid "Yes"
+msgstr "Oui"
+
+msgid "No"
+msgstr "Non"
 
 msgid "Folders"
 msgstr "Dossiers"
@@ -281,9 +318,6 @@ msgstr "Renommer"
 msgid "No folders found"
 msgstr "Aucun dossier trouvé"
 
-msgid "Delete Folder"
-msgstr "Supprimer un dossier"
-
 msgid "Delete"
 msgstr "Supprimer"
 
@@ -301,25 +335,6 @@ msgstr "Aucun dossier n'a été trouvé pour l'abonnement&nbsp;!"
 
 msgid "Subscribe to:"
 msgstr "S'abonner à&nbsp;:"
-
-msgid "Illegal folder name. Please select a different name."
-msgstr "Nom de dossier non autorisé. Choisissez un autre nom."
-
-msgid "Click here to go back"
-msgstr "Cliquez ici pour revenir en arrière"
-
-msgid "You have not selected a folder to delete. Please do so."
-msgstr "Vous n'avez pas choisi le dossier à supprimer. Sélectionnez un dossier pour le supprimer."
-
-#, php-format
-msgid "Are you sure you want to delete %s?"
-msgstr "Voulez-vous vraiment effacer %s&nbsp;?"
-
-msgid "Yes"
-msgstr "Oui"
-
-msgid "No"
-msgstr "Non"
 
 msgid "You have not selected a folder to rename. Please do so."
 msgstr "Vous n'avez pas sélectionné de dossier à renommer. Sélectionnez un dossier pour le renommer."
@@ -339,9 +354,8 @@ msgstr "ERREUR&nbsp;: Les fichiers d'aides ne sont pas au bon format&nbsp;!"
 msgid "Help"
 msgstr "Aide"
 
-#, php-format
-msgid "The help has not been translated to %s. It will be displayed in English instead."
-msgstr "Cette aide n'a pas été traduite en %s. Elle sera affichée en anglais. "
+msgid "The help has not been translated to the selected language. It will be displayed in English instead."
+msgstr "Cette aide n'a pas été traduite dans la langue sélectionnée. Elle sera affichée en anglais à la place."
 
 msgid "Some or all of the help documents are not present!"
 msgstr "Certains documents de l'aide sont absents&nbsp;!"
@@ -373,21 +387,27 @@ msgstr "Boîte de réception"
 msgid "Purge"
 msgstr "Vider"
 
+msgid "Last Refresh"
+msgstr "Mise à jour&nbsp;"
+
+msgid "Check mail"
+msgstr "Récupérer le courrier"
+
 msgid "Login"
 msgstr "Accès Messagerie"
 
-#, php-format
+#, c-format
 msgid "%s Logo"
 msgstr "Logo %s"
 
-#, php-format
+#, c-format
 msgid "SquirrelMail version %s"
 msgstr "SquirrelMail version %s"
 
 msgid "By the SquirrelMail Project Team"
 msgstr "Par l'Equipe du Projet SquirrelMail"
 
-#, php-format
+#, c-format
 msgid "%s Login"
 msgstr "Messagerie %s"
 
@@ -400,55 +420,11 @@ msgstr "Mot de passe&nbsp;:"
 msgid "No messages were selected."
 msgstr "Aucun message n'a été sélectionné."
 
-msgid "Personal Information"
-msgstr "Informations personnelles"
-
-msgid "Display Preferences"
-msgstr "Préférences d'affichage"
-
-msgid "Message Highlighting"
-msgstr "Mise en valeur des messages"
-
-msgid "Folder Preferences"
-msgstr "Préférences des dossiers"
-
-msgid "Index Order"
-msgstr "Ordre de l'index"
-
 msgid "Options"
 msgstr "Options"
 
-msgid "Error(s) occurred while saving your options"
-msgstr "Une ou des erreurs se sont produites pendant l'enregistrement de vos options"
-
-msgid "Some of your preference changes were not applied."
-msgstr "Certains changements de vos préférences n'ont pas été effectués."
-
-# Espace insecable a la fin car suivi d'un : dans le code.
-# un %s serait le bienvenu.
-msgid "Successfully Saved Options"
-msgstr "Options sauvegardées&nbsp;"
-
-msgid "Refresh Folder List"
-msgstr "Rafraîchir la liste des dossiers"
-
-msgid "Refresh Page"
-msgstr "Rafraîchir"
-
-msgid "This contains personal information about yourself such as your name, your email address, etc."
-msgstr "Contient les informations vous concernant telles que votre nom, votre adresse électronique, etc."
-
-msgid "You can change the way that SquirrelMail looks and displays information to you, such as the colors, the language, and other settings."
-msgstr "Vous pouvez changer l'apparence de SquirrelMail en modifiant les couleurs, la langue ou d'autres paramètres."
-
-msgid "Based upon given criteria, incoming messages can have different background colors in the message list. This helps to easily distinguish who the messages are from, especially for mailing lists."
-msgstr "En fonction de critères configurables, les messages entrants peuvent avoir des couleurs différentes dans la liste des messages. Ceci aide à distinguer plus facilement les expéditeurs des messages, en particulier pour les listes de diffusion."
-
-msgid "These settings change the way your folders are displayed and manipulated."
-msgstr "Ces paramètres modifient la façon dont vos dossiers sont affichés et utilisés."
-
-msgid "The order of the message index can be rearranged and changed to contain the headers in any order you want."
-msgstr "L'ordre de l'index des messages peut être modifié pour afficher les en-têtes dans l'ordre que vous préférez."
+msgid "Message Highlighting"
+msgstr "Mise en valeur des messages"
 
 msgid "New"
 msgstr "Nouveau"
@@ -531,18 +507,18 @@ msgstr "Ex&nbsp;: 63aa7f"
 msgid "Matches"
 msgstr "contient"
 
-#, php-format
-msgid "Alternate Identity %d"
-msgstr "Identité alternative %d"
-
-msgid "Advanced Identities"
-msgstr "Identités avancées"
-
 msgid "Default Identity"
 msgstr "Identité par défaut"
 
+#, c-format
+msgid "Alternate Identity %d"
+msgstr "Identité alternative %d"
+
 msgid "Add a New Identity"
 msgstr "Ajouter une nouvelle identité"
+
+msgid "Advanced Identities"
+msgstr "Identités avancées"
 
 msgid "Full Name"
 msgstr "Nom complet&nbsp;"
@@ -561,6 +537,9 @@ msgstr "Identité par défaut"
 
 msgid "Move Up"
 msgstr "Remonter"
+
+msgid "Index Order"
+msgstr "Ordre de l'index"
 
 msgid "Checkbox"
 msgstr "Case à cocher"
@@ -586,8 +565,64 @@ msgstr "enlever"
 msgid "Return to options page"
 msgstr "Retourner à la page des options"
 
+msgid "Personal Information"
+msgstr "Informations personnelles"
+
+msgid "Display Preferences"
+msgstr "Préférences d'affichage"
+
+msgid "Folder Preferences"
+msgstr "Préférences des dossiers"
+
+msgid "Error(s) occurred while saving your options"
+msgstr "Une ou des erreurs se sont produites pendant l'enregistrement de vos options"
+
+msgid "Some of your preference changes were not applied."
+msgstr "Certains changements de vos préférences n'ont pas été effectués."
+
+# Espace insecable a la fin car suivi d'un : dans le code.
+# un %s serait le bienvenu.
+msgid "Successfully Saved Options"
+msgstr "Options sauvegardées&nbsp;"
+
+msgid "Refresh Folder List"
+msgstr "Rafraîchir la liste des dossiers"
+
+msgid "Refresh Page"
+msgstr "Rafraîchir"
+
+msgid "This contains personal information about yourself such as your name, your email address, etc."
+msgstr "Contient les informations vous concernant telles que votre nom, votre adresse électronique, etc."
+
+msgid "You can change the way that SquirrelMail looks and displays information to you, such as the colors, the language, and other settings."
+msgstr "Vous pouvez changer l'apparence de SquirrelMail en modifiant les couleurs, la langue ou d'autres paramètres."
+
+msgid "Based upon given criteria, incoming messages can have different background colors in the message list. This helps to easily distinguish who the messages are from, especially for mailing lists."
+msgstr "En fonction de critères configurables, les messages entrants peuvent avoir des couleurs différentes dans la liste des messages. Ceci aide à distinguer plus facilement les expéditeurs des messages, en particulier pour les listes de diffusion."
+
+msgid "These settings change the way your folders are displayed and manipulated."
+msgstr "Ces paramètres modifient la façon dont vos dossiers sont affichés et utilisés."
+
+msgid "The order of the message index can be rearranged and changed to contain the headers in any order you want."
+msgstr "L'ordre de l'index des messages peut être modifié pour afficher les en-têtes dans l'ordre que vous préférez."
+
 msgid "Message not printable"
 msgstr "Message non imprimable"
+
+msgid "Attachments:"
+msgstr "Pièces jointes&nbsp;:"
+
+msgid "Unknown sender"
+msgstr "Expéditeur inconnu"
+
+msgid "Info:"
+msgstr "Info&nbsp;:"
+
+msgid "Size:"
+msgstr "Taille&nbsp;:"
+
+msgid "Type:"
+msgstr "Type&nbsp;:"
 
 msgid "Invalid URL"
 msgstr "URL invalide"
@@ -611,7 +646,7 @@ msgstr "Votre message"
 msgid "Sent"
 msgstr "Envoyé le"
 
-#, php-format
+#, c-format
 msgid "Was displayed on %s"
 msgstr "a été vu le %s."
 
@@ -620,9 +655,6 @@ msgstr "moins"
 
 msgid "more"
 msgstr "plus"
-
-msgid "Unknown sender"
-msgstr "Expéditeur inconnu"
 
 msgid "Mailer"
 msgstr "Messagerie&nbsp;"
@@ -730,15 +762,12 @@ msgstr "Cliquez ici pour vous reconnecter."
 msgid "Viewing a Business Card"
 msgstr "Voir une carte de visite"
 
-#, php-format
+#, c-format
 msgid "vCard Version %s is not supported. Some information might not be converted correctly."
 msgstr "La version %s de vCard n'est pas gérée. Certaines informations pourraient ne pas être converties correctement."
 
 msgid "Title"
 msgstr "Titre"
-
-msgid "Email"
-msgstr "Adresse électronique"
 
 msgid "Web Page"
 msgstr "Site Web"
@@ -764,14 +793,11 @@ msgstr "Fax"
 msgid "Note"
 msgstr "Note"
 
-msgid "Add to Addressbook"
+msgid "Add to address book"
 msgstr "Ajouter au carnet d'adresses"
 
 msgid "Title & Org. / Dept."
 msgstr "Position, entreprise / dép."
-
-msgid "Add to Address Book"
-msgstr "Ajouter au carnet d'adresses"
 
 msgid "Viewing Full Header"
 msgstr "En-tête complet"
@@ -782,7 +808,7 @@ msgstr "Voir un fichier texte joint"
 msgid "Could not include PEAR database functions required for the database backend."
 msgstr "Impossible d'inclure les fonctions de base de données PEAR nécessaires au 'backend' en base de données"
 
-#, php-format
+#, c-format
 msgid "Is PEAR installed, and is the include path set correctly to find %s?"
 msgstr "PEAR est-il installé, et le chemin d'include permet-il de trouver %s ?"
 
@@ -792,19 +818,19 @@ msgstr "Contactez votre administrateur pour obtenir de l'aide."
 msgid "Personal address book"
 msgstr "Carnet d'adresses personnel"
 
-#, php-format
+#, c-format
 msgid "Database error: %s"
 msgstr "Erreur de la base de données&nbsp;: %s"
 
 msgid "Addressbook is read-only"
 msgstr "Le carnet d'adresses n'est pas modifiable"
 
-#, php-format
-msgid "User '%s' already exist"
+#, c-format
+msgid "User \"%s\" already exists"
 msgstr "L'utilisateur «&nbsp;%s&nbsp;» existe déjà."
 
-#, php-format
-msgid "User '%s' does not exist"
+#, c-format
+msgid "User \"%s\" does not exist"
 msgstr "L'utilisateur «&nbsp;%s&nbsp;» n'existe pas."
 
 msgid "Not a file name"
@@ -831,7 +857,7 @@ msgstr "L'écriture dans le carnet d'adresses a échouée."
 msgid "Error initializing addressbook database."
 msgstr "Erreur lors de l'initialisation de la base de données du carnet d'adresses."
 
-#, php-format
+#, c-format
 msgid "Error opening file %s"
 msgstr "Impossible d'ouvrir le fichier %s"
 
@@ -841,9 +867,12 @@ msgstr "Carnet d'adresses global"
 msgid "Error initializing global addressbook."
 msgstr "Erreur lors de l'initialisation du carnet d'adresses global."
 
-#, php-format
+#, c-format
 msgid "Error initializing LDAP server %s:"
 msgstr "Erreur lors de l'initialisation du serveur LDAP %s&nbsp;:"
+
+msgid "Click here to change the sorting of the address list"
+msgstr "Cliquer ici pour changer le classement de la liste d'adresses"
 
 msgid "Invalid input data"
 msgstr "Données saisies incorrectes"
@@ -998,34 +1027,34 @@ msgstr "D, G:i"
 msgid "D, H:i"
 msgstr "D, H:i"
 
-#, php-format
+#, c-format
 msgid "Preference database error (%s). Exiting abnormally"
 msgstr "Erreur du fichier de préférences (%s). Sortie inattendue."
 
-#, php-format
+#, c-format
 msgid "Click here to return to %s"
 msgstr "Cliquez ici pour retourner à %s."
 
 msgid "Go to the login page"
 msgstr "Retourner à la page d'accès."
 
-#, php-format
+#, c-format
 msgid "Preference file, %s, does not exist. Log out, and log back in to create a default preference file."
 msgstr "Le fichier de préférences %s n'existe pas. Fermez la session, puis reconnectez vous pour créer un fichier de préférences par défaut."
 
-#, php-format
+#, c-format
 msgid "Preference file, %s, could not be opened. Contact your system administrator to resolve this issue."
 msgstr "Le fichier de préférences %s n'a pu être ouvert. Contactez votre administrateur pour la résolution de ce problème."
 
-#, php-format
+#, c-format
 msgid "Preference file, %s, could not be written. Contact your system administrator to resolve this issue."
 msgstr "Le fichier de préférences %s n'a pu être écrit. Contactez votre administrateur pour la résolution de ce problème."
 
-#, php-format
+#, c-format
 msgid "Preference file, %s, could not be copied from temporary file, %s. Contact your system administrator to resolve this issue."
 msgstr "Le fichier de préférences %s n'a pu être copié depuis le fichier temporaire %s. Contactez votre administrateur pour la résolution de ce problème."
 
-#, php-format
+#, c-format
 msgid "Error opening %s"
 msgstr "Erreur à l'ouverture de %s."
 
@@ -1035,27 +1064,27 @@ msgstr "Fichier de préférences par défaut absent ou inaccessible en lecture&nbsp
 msgid "Could not create initial preference file!"
 msgstr "Impossible de créer le fichier de préférences&nbsp;!"
 
-#, php-format
+#, c-format
 msgid "%s should be writable by user %s"
 msgstr "%s devrait être accessible en écriture par l'utilisateur %s"
 
 msgid "Signature is too big."
 msgstr "Signature trop grosse."
 
-#, php-format
+#, c-format
 msgid "Signature file, %s, could not be opened. Contact your system administrator to resolve this issue."
 msgstr "Le fichier de signature %s ne peut être ouvert. Contactez votre administrateur pour la résolution de ce problème."
 
-#, php-format
+#, c-format
 msgid "Signature file, %s, could not be written. Contact your system administrator to resolve this issue."
 msgstr "Le fichier de signature %s ne peut être écrit. Contactez votre administrateur pour la résolution de ce problème."
 
-#, php-format
+#, c-format
 msgid "Signature file, %s, could not be copied from temporary file, %s. Contact your system administrator to resolve this issue."
 msgstr "Le fichier de signature %s n'a pas pu être copié depuis le fichier temporaire %s. Contactez votre administrateur pour la résolution de ce problème."
 
-msgid "You need to have php4 installed with the multibyte string function enabled (using configure option --enable-mbstring)."
-msgstr "Vous devez avoir installé php4 avec la gestion des caractères multi-octets (option de configuration --with-mbstring)."
+msgid "You need to have PHP installed with the multibyte string function enabled (using configure option --enable-mbstring)."
+msgstr "Vous devez avoir PHP installé avec la gestion des caractères multi-octets activée (option --enable-mbstring de configure)."
 
 msgid "ERROR: No available IMAP stream."
 msgstr "ERREUR&nbsp;: Aucun flux IMAP disponible."
@@ -1084,7 +1113,7 @@ msgstr "ERREUR&nbsp;: Le serveur IMAP a interrompu la connexion."
 msgid "ERROR: Unknown IMAP response."
 msgstr "ERREUR&nbsp;: Réponse IMAP inconnue."
 
-#, php-format
+#, c-format
 msgid "Error connecting to IMAP server: %s."
 msgstr "Erreur lors de la connexion au serveur IMAP %s."
 
@@ -1097,11 +1126,11 @@ msgstr "Choisir l'authentification CRAM-MD5 ou DIGEST-MD5 pourrait fonctionner."
 msgid "Also, the use of TLS may allow SquirrelMail to login."
 msgstr "Par ailleurs, TLS peut permettre à SquirrelMail de se connecter."
 
-#, php-format
+#, c-format
 msgid "Bad request: %s"
 msgstr "Requête invalide&nbsp;: %s"
 
-#, php-format
+#, c-format
 msgid "Unknown error: %s"
 msgstr "Erreur inconnue&nbsp;: %s"
 
@@ -1187,11 +1216,11 @@ msgstr "Enlever la sélection"
 msgid "Select All"
 msgstr "Sélectionner tout"
 
-#, php-format
+#, c-format
 msgid "Viewing Messages: %s to %s (%s total)"
 msgstr "Messages %s à %s (%s au total)"
 
-#, php-format
+#, c-format
 msgid "Viewing Message: %s (%s total)"
 msgstr "Message %s (%s au total)"
 
@@ -1204,8 +1233,8 @@ msgstr "Tout afficher"
 msgid "SquirrelMail could not decode the bodystructure of the message"
 msgstr "Squirrelmail ne comprend pas la structure du message"
 
-msgid "the provided bodystructure by your imap-server"
-msgstr "la structure de message fournie par votre serveur imap"
+msgid "The bodystructure provided by your IMAP server:"
+msgstr "La structure du corps du message transmise par votre serveur IMAP&nbsp;:"
 
 msgid "Body retrieval error. The reason for this is most probably that the message is malformed."
 msgstr "Erreur à la récupération du corps du message. La cause la plus probable est que le messages est mal formé."
@@ -1237,7 +1266,7 @@ msgstr "sec_remove_fr_FR.png"
 msgid "This external link will open in a new window"
 msgstr "Ce lien vers un site externe s'ouvrira dans une nouvelle fenêtre "
 
-#, php-format
+#, c-format
 msgid "Option Type '%s' Not Found"
 msgstr "Le type d'option «&nbsp;%s&nbsp;» n'existe pas."
 
@@ -1247,7 +1276,7 @@ msgstr "Dossier courant&nbsp;"
 msgid "Compose"
 msgstr "Composer"
 
-#, php-format
+#, c-format
 msgid "Error creating directory %s."
 msgstr "Erreur lors de la création du répertoire %s."
 
@@ -1361,6 +1390,12 @@ msgstr "Nombre maximum de pages à afficher&nbsp;"
 
 msgid "Always Show Full Date"
 msgstr "Afficher la date complète du message&nbsp;"
+
+msgid "Length of From/To Field (0 for full)"
+msgstr "Abbréger le champ «&nbsp;De&nbsp;» / «&nbsp;À&nbsp;» à (0 pour ne pas abbréger)&nbsp;"
+
+msgid "Length of Subject Field (0 for full)"
+msgstr "Abbréger le champ «&nbsp;Objet&nbsp;» à (0 pour ne pas abbréger)&nbsp;"
 
 msgid "Message Display and Composition"
 msgstr "Affichage et composition des messages"
@@ -1596,7 +1631,7 @@ msgstr "Délimité&nbsp;: "
 msgid "Name and Address Options"
 msgstr "Noms et adresses"
 
-msgid "Email Address"
+msgid "E-mail Address"
 msgstr "Adresse électronique&nbsp;"
 
 msgid "Edit Advanced Identities"
@@ -1739,6 +1774,9 @@ msgstr "Serveur de mail Mac OS X"
 msgid "hMailServer IMAP server"
 msgstr "Serveur IMAP hMailServer"
 
+msgid "Binc IMAP server"
+msgstr "Serveur IMAP Binc"
+
 msgid "Not one of the above servers"
 msgstr "Aucun des serveurs précédents"
 
@@ -1789,6 +1827,9 @@ msgstr "Login (en clair)"
 
 msgid "POP3 Before SMTP?"
 msgstr "POP3 avant SMTP&nbsp;?"
+
+msgid "Header Encryption Key"
+msgstr "Clé de cryptage pour l'en-tête des messages"
 
 msgid "Invert Time"
 msgstr "Inverser le temps"
@@ -1882,6 +1923,12 @@ msgstr "Autoriser les modifications d'identité"
 
 msgid "Allow editing of full name"
 msgstr "Autoriser la modification du nom"
+
+msgid "Remove username from headers"
+msgstr "Ne pas indiquer l'identifiant de l'utilisateur dans les en-têtes des messages"
+
+msgid "Used only when identities can't be modified"
+msgstr "Utilisé uniquement quand les identités ne sont pas modifiables"
 
 msgid "Use server-side sorting"
 msgstr "Utiliser le tri des messages du serveur"
@@ -1991,7 +2038,7 @@ msgstr "Emplacement du thème"
 msgid "Plugins"
 msgstr "Extensions (<i>plugins</i>)"
 
-#, php-format
+#, c-format
 msgid "Plugin directory could not be found: %s"
 msgstr "Le dossier Plugin est introuvable : %s"
 
@@ -2016,18 +2063,18 @@ msgstr "Envoyer un rapport d'erreur"
 msgid "Before you send your bug report, please make sure to check this checklist for any common problems."
 msgstr "Avant d'envoyer un rapport d'erreur, vérifiez cette liste de problèmes courants."
 
-#, php-format
+#, c-format
 msgid "Make sure that you are running the most recent copy of %s. You are currently using version %s."
 msgstr "Assurez-vous d'utiliser la version la plus récente de %s. Vous utilisez actuellement la version %s."
 
-#, php-format
+#, c-format
 msgid "Check to see if your bug is already listed in the %sBug List%s on SourceForge. If it is, we already know about it and are trying to fix it."
 msgstr "Vérifiez si votre bug est déjà répertorié dans la %sliste de bugs%s sur SourceForge. Si tel est le cas, nous le connaissons déjà et nous occupons de le corriger."
 
 msgid "Try to make sure that you can repeat it. If the bug happens sporatically, try to document what you did when it happened. If it always occurs when you view a specific message, keep that message around so maybe we can see it."
 msgstr "Assurez-vous de pouvoir le reproduire. Si le bug se produit sporadiquement, essayez de documenter ce que vous faisiez lorsqu'il s'est produit.S'il se produit systématiquement en visualisant un message particulier, gardez ce message afin que nous puissions le consulter."
 
-#, php-format
+#, c-format
 msgid "If there were warnings displayed above, try to resolve them yourself. Read the guides in the %s directory where SquirrelMail was installed."
 msgstr "Si des avertissements se sont affichés précédemment, essayez de les résoudre vous-même. Lisez les manuels du dossier %s à l'endroit où SquirrelMail a été installé."
 
@@ -2037,8 +2084,8 @@ msgstr "En appuyant sur le bouton ci-dessous vous enverrez un email aux développ
 msgid "Please make sure to fill out as much information as you possibly can to give everyone a good chance of finding and removing the bug. Submitting your bug like this will not have it automatically added to the bug list on SourceForge, but someone who gets your message may add it for you."
 msgstr "Assurez-vous de fournir autant d'informations que possible afin de donner le maximum de possiblités à chacun de trouver et corriger le bug. Soumettre un bug de cette manière ne l'ajoutera pas automatiquement à la liste de bugs sur SourceForge, mais quelqu'un d'autre pourra le lire et l'ajouter pour vous."
 
-msgid "This bug involves"
-msgstr "Ce bug concerne"
+msgid "This bug involves:"
+msgstr "Ce bug concerne&nbsp;:"
 
 msgid "the general program"
 msgstr "le programme général"
@@ -2058,6 +2105,10 @@ msgstr "Rapports d'erreur&nbsp;:"
 msgid "Show button in toolbar"
 msgstr "Afficher le bouton dans la barre d'outils"
 
+#, c-format
+msgid "Could not write calendar file %s"
+msgstr "Impossible d'écrire le fichier calendrier %s"
+
 msgid "TODAY"
 msgstr "Aujourd'hui"
 
@@ -2065,10 +2116,6 @@ msgstr "Aujourd'hui"
 # traductions differentes.
 msgid "Go"
 msgstr "Go"
-
-#, php-format
-msgid "Could not write calendar file %s"
-msgstr "Impossible d'écrire le fichier calendrier %s"
 
 msgid "l, F j Y"
 msgstr "D j F Y"
@@ -2329,7 +2376,7 @@ msgstr "En-tête"
 msgid "Contains:"
 msgstr "Contient&nbsp;:"
 
-#, php-format
+#, c-format
 msgid "If %s contains %s then move to %s"
 msgstr "Si %s contient %s alors le déplacer vers %s"
 
@@ -2354,7 +2401,7 @@ msgstr "Vous devez choisir un type de recherche."
 msgid "Spam Filtering"
 msgstr "Filtrage des publicités"
 
-#, php-format
+#, c-format
 msgid "WARNING! Tell the administrator to set the %s variable."
 msgstr "ATTENTION&nbsp;! Veuillez avertir l'administrateur de Squirrelmail de bien vouloir configurer la variable %s."
 
@@ -2370,14 +2417,14 @@ msgstr "Messages non lus uniquement"
 msgid "The more messages scanned, the longer it takes. It's recommended to scan unread messages only. If a change to the filters is made, it's recommended to set it to scan all messages, then go view the INBOX, then come back and set it to scan unread messages only. That way, the new spam filters will be applied and even the spam you didn't catch with the old filters will be scanned."
 msgstr "Plus vous analysez de messages, plus longue est la recherche. Nous vous suggérons de n'analyser que les nouveaux messages. Si vous changez vos filtres, choisissez <i>Tous les messages</i>, allez dans votre Boîte de réception puis revenez pour sélectionner <i>Messages non lus uniquement</i>. De cette manière, vos nouveaux filtres de spam seront appliqués et le spam qui n'avait pas été reconnu par vos anciens filtres sera recherché à nouveau."
 
-#, php-format
+#, c-format
 msgid "Spam is sent to %s."
 msgstr "Le Spam est envoyé à %s."
 
 msgid "not set yet"
 msgstr "[<i>non établi</i>]"
 
-#, php-format
+#, c-format
 msgid "Spam scan is limited to %s."
 msgstr "Limiter la recherche de Spam à %s."
 
@@ -2387,7 +2434,7 @@ msgstr "ACTIVÉ"
 msgid "OFF"
 msgstr "DÉSACTIVÉ"
 
-#, php-format
+#, c-format
 msgid "%s is not found."
 msgstr "%s n'existe pas."
 
@@ -2409,20 +2456,24 @@ msgstr "Description du serveur IMAP"
 msgid "Run some test IMAP commands, displaying both the command and the result. These tests use the SquirrelMail IMAP commands and your current SquirrelMail configuration. Custom command strings can be used."
 msgstr "Exécute quelques commandes IMAP de test en affichant à la fois la commande et son résultat. Ces tests utilisent les commandes IMAP ainsi que votre configuration actuelle de Squirrelmail. Vous pouvez aussi saisir vos propres commandes."
 
-msgid "Mailinglist"
-msgstr "Listes de discussion"
-
-#, php-format
+#, c-format
 msgid "This will send a message to %s requesting help for this list. You will receive an emailed response at the address below."
 msgstr "Envoyer une demande d'aide à %s pour cette liste. Vous recevrez une réponse à l'adresse ci-dessous."
 
-#, php-format
+#, c-format
 msgid "This will send a message to %s requesting that you will be subscribed to this list. You will be subscribed with the address below."
 msgstr "Envoyer une demande d'abonnement à cette liste à %s. Vous serez inscrit avec l'adresse suivante."
 
-#, php-format
+#, c-format
 msgid "This will send a message to %s requesting that you will be unsubscribed from this list. It will try to unsubscribe the adress below."
 msgstr "Envoyer une demande de désabonnement à cette liste à %s. L'adresse suivante sera indiquée pour la demande de désabonnement."
+
+#, c-format
+msgid "Unknown action: %s"
+msgstr "Action inconnue&nbsp;: %s"
+
+msgid "Mailinglist"
+msgstr "Listes de discussion"
 
 msgid "Send Mail"
 msgstr "Envoyer le message"
@@ -2465,9 +2516,6 @@ msgstr "Mot de passe POP3&nbsp;: "
 
 msgid "No password submitted"
 msgstr "mot de passe non renseigné"
-
-msgid "authentication failed "
-msgstr "l'authentification a échouée"
 
 msgid "POP3 apop:"
 msgstr "POP3 apop&nbsp;: "
@@ -2566,7 +2614,7 @@ msgstr "Connexion réussie&nbsp;: Pas de nouveaux messages"
 msgid "Login OK: Inbox EMPTY"
 msgstr "Connexion réussie&nbsp;: la boite de réception est vide. "
 
-#, php-format
+#, c-format
 msgid "Login OK: Inbox contains %s messages"
 msgstr "Connexion réussie&nbsp;: votre Boîte de réception contient %s messages"
 
@@ -2609,7 +2657,7 @@ msgstr "Déconnexion du serveur IMAP"
 msgid "Message appended to mailbox"
 msgstr "Message ajouté à la boite aux lettres"
 
-#, php-format
+#, c-format
 msgid "Message %d deleted from remote server!"
 msgstr "Message %d supprimé du serveur distant&nbsp;!"
 
@@ -2733,61 +2781,45 @@ msgstr "Enregistrer le message"
 msgid "View Message details"
 msgstr "Voir le message complet"
 
-msgid "New Mail"
-msgstr "Nouveau message"
-
-msgid "SquirrelMail Notice:"
-msgstr "Annonce SquirrelMail&nbsp;:"
-
-#, php-format
-msgid "You have %s new message"
-msgid_plural "You have %s new messages"
-msgstr[0] "%s nouveau message"
-msgstr[1] "%s nouveaux messages"
-
-#, php-format
-msgid "You have %s new messages"
-msgstr "Vous avez %s nouveaux messages"
-
 msgid "New Mail Notification"
 msgstr "Notification de nouveaux messages"
 
-#, php-format
+#, c-format
 msgid "The %s option will check ALL of your folders for unseen mail, not just the inbox for notification."
 msgstr "L'option %s permet de rechercher les messages non lus dans TOUS les dossiers, pas seulement dans votre Boîte de réception."
 
 msgid "Check all boxes, not just INBOX"
 msgstr "Vérifier tous les dossiers"
 
-#, php-format
+#, c-format
 msgid "Selecting the %s option will enable the showing of a popup window when unseen mail is in your folders (requires JavaScript)."
 msgstr "Sélectionner l'option %s pour activer l'affichage d'une fenêtre vous avertissant de l'arrivée de nouveaux messages (nécessite Javascript)."
 
 msgid "Show popup window on new mail"
 msgstr "Fenêtre d'alerte à l'arrivée de nouveaux courriers"
 
-#, php-format
+#, c-format
 msgid "Use the %s option to only check for messages that are recent. Recent messages are those that have just recently showed up and have not been \"viewed\" or checked yet. This can prevent being continuously annoyed by sounds or popups for unseen mail."
 msgstr "Utilisez l'option %s pour ne vérifier que les messages récents, c'est-à-dire ceux qui n'ont pas encore été vus ni identifiés. Cette option évite d'être importuné par les alertes sonores ou les fenêtres d'alerte pour des courriers non lus."
 
 msgid "Count only messages that are RECENT"
 msgstr "Vérifier uniquement les messages récents"
 
-#, php-format
+#, c-format
 msgid "Selecting the %s option will change the title in some browsers to let you know when you have new mail (requires JavaScript, and only works in IE but you won't see errors with other browsers). This will always tell you if you have new mail, even if you have %s enabled."
 msgstr "L'option %s permet de changer le titre dans certains navigateurs pour annoncer les nouveaux messages (nécessite Javascript et ne fonctionne qu'avec IE, les autres navigateurs n'affichent pas de message d'erreur). Cette option vous signalera toujours la présence de nouveaux messages, même si vous avez activé l'option %s."
 
 msgid "Change title on supported browsers"
 msgstr "Changer le titre si le navigateur le permet"
 
-#, php-format
+#, c-format
 msgid "Select %s to turn on playing a media file when unseen mail is in your folders. When enabled, you can specify the media file to play in the provided file box."
 msgstr "Sélectionnez %s pour activer la lecture d'un fichier de son lorsque des messages non lus se trouvent dans vos dossiers. Une fois activée, vous pouvez spécifier le fichier son à lire."
 
 msgid "Enable Media Playing"
 msgstr "Activer la séquence sonore"
 
-#, php-format
+#, c-format
 msgid "Select from the list of %s the media file to play when new mail arrives. If no file is specified, %s, no sound will be used."
 msgstr "Sélectionnez, dans la liste des %s, la séquence sonore à jouer quand un nouveau courrier arrive. Si aucun fichier n'est sélectionné, %s, aucun son ne sera utilisé."
 
@@ -2806,17 +2838,33 @@ msgstr "Essayer"
 msgid "Current File:"
 msgstr "Fichier actuel&nbsp;:"
 
+msgid "New Mail"
+msgstr "Nouveau message"
+
+msgid "SquirrelMail Notice:"
+msgstr "Annonce SquirrelMail&nbsp;:"
+
+#, c-format
+msgid "You have %s new message"
+msgid_plural "You have %s new messages"
+msgstr[0] "%s nouveau message"
+msgstr[1] "%s nouveaux messages"
+
+#, c-format
+msgid "You have %s new messages"
+msgstr "Vous avez %s nouveaux messages"
+
 msgid "NewMail Options"
 msgstr "Options de notification des nouveaux messages"
 
 msgid "This configures settings for playing sounds and/or showing popup windows when new mail arrives."
 msgstr "Configuration de la séquence sonore et de la fenêtre d'alerte qui annoncent l'arrivée d'un nouveau message."
 
-#, php-format
+#, c-format
 msgid "%s New Messages"
 msgstr "%s nouveaux messages"
 
-#, php-format
+#, c-format
 msgid "%s New Message"
 msgid_plural "%s New Messages"
 msgstr[0] "%s nouveau message"
@@ -2900,14 +2948,14 @@ msgstr "A propos de SpamCop"
 msgid "SpamCop is a free service that greatly assists in finding the true source of the spam and helps in letting the proper people know about the abuse."
 msgstr "SpamCop est un service gratuit qui aide à trouver la véritable source du Spam et signaler l'abus aux personnes concernées."
 
-#, php-format
+#, c-format
 msgid "To use it, you must get a SpamCop authorization code. There is a free %ssign up page%s so you can use SpamCop."
 msgstr "Pour l'utiliser, vous devez avoir un code d'autorisation de SpamCop. Il existe une %spage d'enregistrement%s gratuite pour vous permettre d'utiliser SpamCop."
 
 msgid "Before you sign up, be warned"
 msgstr "Avant de souscrire, vous devez être averti"
 
-#, php-format
+#, c-format
 msgid "Some users have reported that the email addresses used with SpamCop find their way onto spam lists. To be safe, you can just create an email forwarding account and have all SpamCop reports get sent to there. Also, if it gets flooded with spam, you can then just delete that account with no worries about losing your real email address. Just go create an email forwarder somewhere (%s has a %slist of places%s) so that messages from system administrators and what not can be sent to you."
 msgstr "Certains utilisateurs ont signalé que des adresses email utilisées avec SpamCop se retrouvent sur des listes de Spam. Par sécurité, vous pouvez juste créer une adresse email d'envoi pour tous les rapports destinés à SpamCop. Ainsi, si elle se retrouve submergée de Spams, vous pouvez juste la supprimer sans perdre votre adresse email réelle. Allez simplement créer un email d'envoi quelque part (%s possède une %sliste de services%s) afin que les messages des administrateurs système et autres vous soient envoyés."
 
@@ -2941,7 +2989,7 @@ msgstr "L'option Type de service permet de choisir quels services de SpamCop vou
 msgid "More information"
 msgstr "Plus d'information"
 
-#, php-format
+#, c-format
 msgid "For more information about SpamCop, it's services, spam in general, and many related topics, try reading through SpamCop's %sHelp and Feedback%s section."
 msgstr "Pour plus d'information à propos de SpamCop, ses services, du Spam en général, et de nombreux sujets relatifs, référez-vous à la section %sHelp and Feedback%s de SpamCop."
 
@@ -3005,22 +3053,22 @@ msgstr "Erreur lors du déchiffrage du dictionnaire"
 msgid "Cute."
 msgstr "Arrêt."
 
-#, php-format
+#, c-format
 msgid "Could not run the spellchecker command (%s)."
 msgstr "Erreur de lancement de la commande du vérificateur orthographique (%s)."
 
 msgid "Error while writing to pipe."
 msgstr "Erreur d'écriture dans le 'pipe' de communication."
 
-#, php-format
+#, c-format
 msgid "Could not open temporary file '%s'."
 msgstr "Impossible d'ouvrir le fichier temporaire '%s'."
 
-#, php-format
+#, c-format
 msgid "Error while writing to temporary file '%s'."
 msgstr "Erreur d'écriture dans le fichier temporaire '%s'."
 
-#, php-format
+#, c-format
 msgid "I tried to execute '%s', but it returned:"
 msgstr "J'ai exécuté «&nbsp;%s&nbsp;» mais la commande m'a retourné&nbsp;:"
 
@@ -3039,7 +3087,7 @@ msgstr "Enregistrement de votre dictionnaire personnel... Merci de patienter."
 msgid "SquirrelSpell Results"
 msgstr "Résultats de la correction orthographique"
 
-#, php-format
+#, c-format
 msgid "Found %s errors"
 msgstr "%s erreurs trouvées"
 
@@ -3106,15 +3154,6 @@ msgstr "La correction n'est pas terminée. Voulez-vous réellement arrêter et igno
 msgid "No errors found"
 msgstr "Pas d'erreurs"
 
-msgid "Your personal dictionary has been encrypted and is now stored in an encrypted format."
-msgstr "Votre dictionnaire personnel a été et restera stocké chiffré."
-
-msgid "Your personal dictionary has been decrypted and is now stored as plain text."
-msgstr "Votre dictionnaire personnel a été et restera stocké déchiffré."
-
-msgid "Personal Dictionary Crypto Settings"
-msgstr "Données de chiffrage du dictionnaire personnel"
-
 msgid "Your personal dictionary was erased."
 msgstr "Votre dictionnaire personnel a été supprimé."
 
@@ -3139,6 +3178,18 @@ msgstr "Votre dictionnaire personnel a été rechiffré avec succès. Veuillez ferme
 msgid "Dictionary re-encrypted"
 msgstr "Dictionnaire rechiffré"
 
+msgid "Your personal dictionary has been encrypted and is now stored in an encrypted format."
+msgstr "Votre dictionnaire personnel a été et restera stocké chiffré."
+
+msgid "Your personal dictionary has been decrypted and is now stored as plain text."
+msgstr "Votre dictionnaire personnel a été et restera stocké déchiffré."
+
+msgid "No action requested."
+msgstr "Aucune action demandée."
+
+msgid "Personal Dictionary Crypto Settings"
+msgstr "Données de chiffrage du dictionnaire personnel"
+
 msgid "Personal Dictionary"
 msgstr "Dictionnaire personnel"
 
@@ -3148,7 +3199,7 @@ msgstr "Pas de mot dans votre dictionnaire personnel"
 msgid "Please check any words you wish to delete from your dictionary."
 msgstr "Cochez les mots que vous souhaitez effacer de votre dictionnaire."
 
-#, php-format
+#, c-format
 msgid "%s dictionary"
 msgstr "dictionnaire %s"
 
@@ -3194,7 +3245,7 @@ msgstr "Si vous décidez de chiffrer votre dictionnaire personnel, il sera lié à 
 msgid "Please encrypt my personal dictionary and store it in an encrypted format."
 msgstr "Chiffrez mon dictionnaire personnel et conservez-le dans un format protégé."
 
-#, php-format
+#, c-format
 msgid "Deleting the following entries from %s dictionary:"
 msgstr "Effacement des entrées suivantes du dictionnaire %s&nbsp;: "
 
@@ -3216,11 +3267,11 @@ msgstr "Choisissez le dictionnaire que vous souhaitez utiliser pour corriger ce 
 msgid "SquirrelSpell Initiating"
 msgstr "Initialisation du correcteur"
 
-#, php-format
+#, c-format
 msgid "Settings adjusted to: %s with %s as default dictionary."
 msgstr "Paramètres choisis&nbsp;: %s avec %s comme dictionnaire par défaut."
 
-#, php-format
+#, c-format
 msgid "Using %s dictionary (system default) for spellcheck."
 msgstr "Utilisation du dictionnaire %s (valeur système) pour corriger."
 
@@ -3251,8 +3302,8 @@ msgstr "Options des dictionnaires"
 msgid "Encrypt or decrypt your personal dictionary"
 msgstr "Chiffrer ou déchiffrer votre dictionnaire personnel"
 
-msgid "not available"
-msgstr "non disponible"
+msgid "Personal dictionary encryption options are not available"
+msgstr "Les options de chiffrage du dictionnaire personnel ne sont pas disponibles"
 
 msgid "SquirrelSpell Options Menu"
 msgstr "Menu des options du correcteur"
@@ -3269,7 +3320,7 @@ msgstr "Voici les options de votre serveur&nbsp;:"
 msgid "Maximum of 150 words translated, powered by Systran"
 msgstr "Un maximum de 150 mots traduits, service fourni par Systran"
 
-#, php-format
+#, c-format
 msgid "Number of supported language pairs: %s"
 msgstr "Nombre de paires de langues&nbsp;: %s"
 
@@ -3279,7 +3330,7 @@ msgstr "Pas de limitation connue, service fourni par Systran"
 msgid "No known limits, powered by Translation Experts' InterTran"
 msgstr "Pas de limitation connue, service fourni par Translation Experts's InterTran"
 
-#, php-format
+#, c-format
 msgid "Number of supported languages: %s"
 msgstr "Nombre de langues supportées&nbsp;: %s"
 
@@ -3319,7 +3370,7 @@ msgstr "Options de traduction"
 msgid "Which translator should be used when you get messages in a different language?"
 msgstr "Quel traducteur doit être utilisé lorsque vous recevez des messages dans une autre langue&nbsp;?"
 
-#, php-format
+#, c-format
 msgid "%s to %s"
 msgstr "%s vers %s"
 
@@ -3437,33 +3488,33 @@ msgstr "Langue de l'interface"
 msgid "Translation direction"
 msgstr "Sens de la traduction"
 
-#, php-format
+#, c-format
 msgid "About SquirrelMail %s"
 msgstr "A propos de SquirrelMail %s"
 
 msgid "SquirrelMail is the name of the program that provides access to your email via the web."
 msgstr "SquirrelMail est le nom du programme qui vous donne accès à votre messagerie via le web."
 
-#, php-format
+#, c-format
 msgid "If you have questions about or problems with your mail account, passwords, abuse etc, please refer to your system administrator or provider%s."
 msgstr "Si vous avez des questions sur ou des problèmes avec vos compte de messagerie, mots de passe, messages abusifs, etc... merci de vous adresser à votre administrateur système ou à votre fournisseur%s."
 
-#, php-format
+#, c-format
 msgid "They can assist you adequately with these issues. The SquirrelMail Project Team cannot help you with that. The %shelp system%s provides answers to frequently asked questions."
 msgstr "Ils pourront vous aider efficacement sur ces questions. L'Equipe du Projet SquirrelMail ne peut vous aider pour celles-ci. Le %ssystème d'aide%s fournit des réponses aux questions les plus fréquemment posées."
 
-#, php-format
+#, c-format
 msgid "SquirrelMail is a feature rich, standards compliant webmail application written in PHP. It was made by a group of volunteers united in the SquirrelMail Project Team and is released as open source, free software under the %sGNU General Public License%s."
 msgstr "SquirrelMail est une application de messagerie web écrite en PHP, comprenant de nombreuses fonctionnalités et conforme aux standards. Elle est développée par un groupe de volontaires regroupés dans l'Equipe du Projet SquirrelMail et est fournie comme logiciel libre avec ses sources sous la licence %sGNU General Public License%s."
 
-#, php-format
+#, c-format
 msgid "For more information about SquirrelMail and the SquirrelMail Project Team, see %sthe SquirrelMail website%s."
 msgstr "Pour plus d'information à propos de SquirrelMail et de l'Equipe du Projet SquirrelMail, consultez %sle site web de SquirrelMail%s."
 
 msgid "System information"
 msgstr "Information système"
 
-#, php-format
+#, c-format
 msgid "You are using SquirrelMail version: %s"
 msgstr "Vous utilisez SquirrelMail version : %s"
 
@@ -3473,23 +3524,8 @@ msgstr "L'administrateur a installé les plugins suivants&nbsp;:"
 msgid "none installed"
 msgstr "aucun installé"
 
-msgid "sort by nickname"
-msgstr "trier par surnom"
-
-msgid "sort by name"
-msgstr "trier par nom"
-
-msgid "sort by email"
-msgstr "trier par email"
-
-msgid "sort by info"
-msgstr "trier par info"
-
-msgid "Add to address book"
-msgstr "Ajouter au carnet d'adresses"
-
-msgid "Because PHP file uploads are turned off, you can not attach files to this message. Please see your system administrator for details."
-msgstr "Vous ne pouvez pas ajouter de pièces jointes à ce message, car les envois de fichier via PHP sont interdits. Merci de vous adresser à votre administrateur système pour plus de détails."
+msgid "Nothing to search"
+msgstr "Rien à chercher"
 
 msgid "No folders were found to unsubscribe from."
 msgstr "Aucun dossier n'a été trouvé pour le désabonnement."
@@ -3497,26 +3533,20 @@ msgstr "Aucun dossier n'a été trouvé pour le désabonnement."
 msgid "No folders were found to subscribe to."
 msgstr "Aucun dossier n'a été trouvé pour l'abonnement."
 
-msgid "Last Refresh"
-msgstr "Mise à jour&nbsp;"
-
-msgid "Check mail"
-msgstr "Récupérer le courrier"
-
 msgid "Save folder tree"
 msgstr "Enregistrer l'arborescence"
 
 msgid "SquirrelMail Webmail Application"
 msgstr "Application de messagerie web SquirrelMail"
 
+msgid "Received"
+msgstr "Reçu"
+
 msgid "Compose Preferences"
 msgstr "Préférences de composition"
 
 msgid "Control the behaviour and layout of writing new mail messages, replying to and forwarding messages."
 msgstr "Contrôle le comportement et la présentation de la composition de nouveaux messages, d'une réponse ou du transfert d'un message."
-
-msgid "Received"
-msgstr "Reçu"
 
 msgid "As Attachment"
 msgstr "en pièce jointe"
@@ -3679,13 +3709,10 @@ msgstr "Liste des dossiers"
 msgid "PHP install does not have LDAP support."
 msgstr "L'installation de PHP ne contient pas le support LDAP."
 
-msgid "Click here to change the sorting of the address list"
-msgstr "Cliquer ici pour changer le classement de la liste d'adresses"
-
 msgid "Illegal folder name."
 msgstr "Nom de dossier interdit."
 
-#, php-format
+#, c-format
 msgid "The name may not contain any of the following: %s"
 msgstr "Le nom ne peut contenir aucun des caractères suivants&nbsp;: %s"
 
@@ -3725,6 +3752,21 @@ msgstr "Marquer"
 msgid "Undelete"
 msgstr "Récupérer"
 
+msgid "Viewing HTML formatted email"
+msgstr "Vue du message en HTML"
+
+msgid "unavailable"
+msgstr "non disponible"
+
+msgid "Terminating SquirrelMail due to a fatal error"
+msgstr "Erreur fatale. SquirrelMail va se terminer."
+
+msgid "Run \"configure\", choose option 4 (General options) and set option 10 (Allow server thread sort to false)."
+msgstr "Lancer \"configure\", choisir l'option 4 ('General options') et mettre l'option 10 ('Allow server thread sort' à 'false')."
+
+msgid "Run \"configure\", choose option 4 (General options) and set option 11 (Allow server-side sorting to false)."
+msgstr "Lancer \"configure\", choisir l'option 4 ('General options') et mettre l'option 11 ('Allow server-side sorting' à 'false')."
+
 msgid "General Message Composition"
 msgstr "Composition des messages"
 
@@ -3746,14 +3788,11 @@ msgstr "Afficher les boutons 'Marquer' / 'Démarquer'&nbsp;"
 msgid "Use Compact Page Selector"
 msgstr "Utiliser le sélecteur de pages compact&nbsp;"
 
-msgid "Length of From/To Field (0 for full)"
-msgstr "Abbréger le champ «&nbsp;De&nbsp;» / «&nbsp;À&nbsp;» à (0 pour ne pas abbréger)&nbsp;"
-
-msgid "Length of Subject Field (0 for full)"
-msgstr "Abbréger le champ «&nbsp;Objet&nbsp;» à (0 pour ne pas abbréger)&nbsp;"
-
 msgid "Message Display Options"
 msgstr "Options d'affichage des messages"
+
+msgid "Height of inline frame"
+msgstr "Hauteur de la frame intégrée ('inline frame')"
 
 msgid "Show 'Delete & Prev/Next' Links"
 msgstr "Afficher les liens 'Supprimer et précédent / suivant'&nbsp;"
@@ -3761,7 +3800,7 @@ msgstr "Afficher les liens 'Supprimer et précédent / suivant'&nbsp;"
 msgid "Save Replies with Original Message"
 msgstr "Enregistrer les réponses dans le dossier du message original&nbsp;"
 
-#, php-format
+#, c-format
 msgid "%d Minute"
 msgid_plural "%d Minutes"
 msgstr[0] "Minute"
@@ -3773,8 +3812,8 @@ msgstr "Montrer seulement les dossiers auxquels vous êtes abonné"
 msgid "XP"
 msgstr "XP"
 
-msgid "Hide SquirrelMail Header"
-msgstr "Cacher l'en-tête SquirrelMail"
+msgid "Mercury/32 IMAP server"
+msgstr "Serveur IMAP Mercury/32"
 
 msgid "Search functions"
 msgstr "Fonctions de recherche"
@@ -3788,11 +3827,32 @@ msgstr "Recherche avancée seulement"
 msgid "Both search functions"
 msgstr "Les deux fonctions de recherche"
 
+msgid "Time Zone Configuration"
+msgstr "Configuration du fuseau horaire"
+
+msgid "Standard GNU C time zones"
+msgstr "Fuseaux horaires GNU C standards"
+
+msgid "Strict time zones"
+msgstr "Fuseaux horaires stricts"
+
+msgid "Custom GNU C time zones"
+msgstr "Fuseaux horaires GNU C personnalisés"
+
+msgid "Custom strict time zones"
+msgstr "Fuseaux horaires stricts personnalisés"
+
+msgid "Size of username field"
+msgstr "Taille du champ 'identifiant' ('username')"
+
+msgid "Size of key field"
+msgstr "Taille du champ 'clé' ('key')"
+
+msgid "Size of value field"
+msgstr "Taille du champ 'valeur' ('value')"
+
 msgid "Show alternative language names"
 msgstr "Montrer les noms de langues alternatifs"
-
-msgid "Available languages"
-msgstr "Langues disponibles"
 
 msgid "Enable aggressive decoding"
 msgstr "Utiliser un décodage 'lourd'"
@@ -3806,6 +3866,9 @@ msgstr "Liste des dossiers avancée"
 msgid "Use icons"
 msgstr "Utiliser des icônes"
 
+msgid "Use inline frames with HTML mails"
+msgstr "Utiliser des frames intégrées ('inline frames') dans les messages au format HTML"
+
 msgid "Use PHP recode functions"
 msgstr "Utiliser les fonctions 'recode' de php"
 
@@ -3818,83 +3881,11 @@ msgstr "Autoriser la configuration le test de la configuration à distance"
 msgid "Show System Specifications"
 msgstr "Afficher les informations du système"
 
-msgid "Search Mailing List Archives"
-msgstr "Rechercher dans les archives de la liste"
+msgid "my email account"
+msgstr "mon compte de messagerie"
 
-msgid "Search SourceForge Bugtracker"
-msgstr "Rechercher dans le répertoire de bugs sur Sourceforge"
-
-msgid "Search for words:"
-msgstr "Rechercher les mots suivants&nbsp;:"
-
-msgid "Written by:"
-msgstr "Ecrit par&nbsp;:"
-
-msgid "Email addresses only"
-msgstr "Adresses email seulement"
-
-msgid "Mailing list:"
-msgstr "Liste de discussion&nbsp;:"
-
-msgid "SquirrelMail users list"
-msgstr "Liste consacrée aux utilisateurs de SquirrelMail"
-
-msgid "SquirrelMail plugins list"
-msgstr "Liste consacrée aux plugins de SquirrelMail"
-
-msgid "SquirrelMail developers list"
-msgstr "Liste consacrée aux développeurs de SquirrelMail"
-
-msgid "SquirrelMail internationalization list"
-msgstr "Liste consacrée à l'internationalisation de SquirrelMail"
-
-msgid "Sort by:"
-msgstr "Trier par&nbsp;:"
-
-msgid "Relevance"
-msgstr "Correspondance"
-
-msgid "Search Archives"
-msgstr "Rechercher dans les archives"
-
-msgid "Reset Form"
-msgstr "Réinitialiser le formulaire"
-
-msgid "Summary keyword:"
-msgstr "Mot-clé du résumé&nbsp;:"
-
-msgid "Sort By:"
-msgstr "Trier par&nbsp;:"
-
-msgid "ID"
-msgstr "ID"
-
-msgid "Summary"
-msgstr "Résumé"
-
-msgid "Open Date"
-msgstr "Date d''ouverture"
-
-msgid "Close Date"
-msgstr "Date de fermeture"
-
-msgid "Submitter"
-msgstr "Soumettant"
-
-msgid "Assignee"
-msgstr "Assigné"
-
-msgid "Order:"
-msgstr "Ordre&nbsp;:"
-
-msgid "Ascending"
-msgstr "Ascendant"
-
-msgid "Descending"
-msgstr "Descendant"
-
-msgid "Search Bugtracker"
-msgstr "Rechercher le répertoire de bugs"
+msgid "Bug Reports"
+msgstr "Rapports d'erreur"
 
 msgid "You must type in a new password."
 msgstr "Vous devez saisir un nouveau mot de passe."
@@ -3911,7 +3902,7 @@ msgstr "Vous devez saisir votre mot de passe actuel."
 msgid "Your current password is not correct."
 msgstr "Votre mot de passe actuel est incorrect."
 
-#, php-format
+#, c-format
 msgid "Your new password should be %s to %s characters long."
 msgstr "Votre mot de passe doit être compris entre %s et %s caractères."
 
@@ -3942,11 +3933,11 @@ msgstr "La configuration actuelle requiert le support LDAP dans PHP."
 msgid "Plugin is not configured correctly."
 msgstr "Le plugin n'est pas configuré correctement."
 
-#, php-format
+#, c-format
 msgid "Setting of LDAP connection option %s to value %s failed."
 msgstr "L'affectation de l'option de connexion LDAP %s  à la valeur %s a échoué."
 
-#, php-format
+#, c-format
 msgid "Incorrect LDAP connection option: %s"
 msgstr "Option de connexion LDAP incorrecte : %s"
 
@@ -3956,7 +3947,7 @@ msgstr "L'extension LDAP actuelle de PHP n'autorise pas l'utilisation de la fonc
 msgid "Unable to use TLS."
 msgstr "Impossible d'utiliser TLS."
 
-#, php-format
+#, c-format
 msgid "Error: %s"
 msgstr "Erreur : %s"
 
@@ -3966,7 +3957,7 @@ msgstr "Impossible d'utiliser le TLS LDAP dans la configuration actuelle."
 msgid "Unable to bind to LDAP server."
 msgstr "Impossible de se connecter (bind) au serveur LDAP."
 
-#, php-format
+#, c-format
 msgid "Server replied: %s"
 msgstr "Le serveur a répondu&nbsp;: %s"
 
@@ -3994,12 +3985,12 @@ msgstr "Plusieurs userids similaires trouvés."
 msgid "ldap_get_dn error."
 msgstr "Erreur ldap_get_dn ."
 
-#, php-format
+#, c-format
 msgid "Unsupported crypto: %s"
 msgstr "Crypto non gérée : %s"
 
-msgid "PHP mhash extension is missing."
-msgstr "L'extension mhash de PHP est manquante."
+msgid "PHP mhash extension is missing or does not support selected crypto."
+msgstr "L'extension mhash de PHP est manquante ou ne gère pas l'algorithme de cryptage sélectionné."
 
 msgid "System crypt library doesn't support standard DES crypt."
 msgstr "La librairie crypt système ne gère pas l'algorithme de cryptage DES standard."
@@ -4054,6 +4045,55 @@ msgstr "Doublons de login détectés, impossible de changer le mot de passe&nbsp;!
 
 msgid "Password change was not successful!"
 msgstr "Le mot de passe n'a pu être changé&nbsp;!"
+
+msgid "Plugin is unable to use PHP Pear DB libraries. PHP Pear includes must be available in your PHP include_path setting."
+msgstr "Le plugin ne peut pas utiliser les librairies de PHP 'Pear DB'. Les fichiers à inclure de PHP 'Pear' doivent être disponibles dans votre paramètre de configuration PHP 'include_path'."
+
+msgid "Required change password backend configuration options are missing."
+msgstr "Des options obligatoires de la configuration du 'backend' de changement de mot de passe sont absentes."
+
+#, c-format
+msgid "Connection error: %s"
+msgstr "Erreur de connexion&nbsp;: %s"
+
+#, c-format
+msgid "Invalid table name: %s"
+msgstr "Nom de table invalide&nbsp;: %s"
+
+msgid "User table is empty."
+msgstr "La table d'utilisateurs est vide."
+
+msgid "Invalid uid field."
+msgstr "Champ 'UID' invalide."
+
+msgid "Invalid password field"
+msgstr "Champ 'mot de passe' invalide"
+
+msgid "Invalid domain field"
+msgstr "Champ 'domaine' invalide"
+
+#, c-format
+msgid "Query failed: %s"
+msgstr "La requête a échoué&nbsp;: %s"
+
+msgid "Unable to find user in user table."
+msgstr "Impossible de trouver l'utilisateur dans la table des utilisateurs."
+
+msgid "Too many matches found in user table."
+msgstr "Trop de correspondances trouvées dans la table d'utilisateurs."
+
+msgid "Unable to detect password crypto algorithm."
+msgstr "Impossible de détecter l'algorithme de cryptage des mots de passe."
+
+msgid "Unable to encrypt new password."
+msgstr "Impossible de crypter le nouveau mot de passe."
+
+#, c-format
+msgid "Unable to set new password: %s"
+msgstr "Impossible de valider le nouveau mot de passe&nbsp;: %s"
+
+msgid "Unable to use digest-md5 crypto."
+msgstr "Impossible d'utiliser l'algorithme de cryptage digest-md5."
 
 msgid "Closing Connection"
 msgstr "Fermeture de la connexion"
@@ -4112,7 +4152,7 @@ msgstr "Aucun serveur POP3 configuré."
 msgid "Click here to go to the options page."
 msgstr "Cliquez ici pour aller à la page d'options."
 
-#, php-format
+#, c-format
 msgid "Login OK: Inbox contains %s message"
 msgid_plural "Login OK: Inbox contains %s messages"
 msgstr[0] "Connexion réussie&nbsp;: votre Boîte de réception contient %s message"
@@ -4139,12 +4179,21 @@ msgstr "Envoyer le fichier de media&nbsp;:"
 msgid "Uploaded Media File:"
 msgstr "Fichier de media envoyé&nbsp;:"
 
-msgid "unavailable"
-msgstr "non disponible"
-
-#, php-format
+#, c-format
 msgid "Media file %s will be removed, if you upload other media file."
 msgstr "Le fichier de media %s sera enlevé si vous envoyez un autre fichier de media."
+
+msgid "Warning"
+msgstr "Attention"
+
+msgid "There are some restrictions in Sent Subfolder options."
+msgstr "Il y a quelques restrictions dans les options de 'Sous-dossier de Courrier envoyé'."
+
+msgid "Sent Subfolders plugin is misconfigured."
+msgstr "Le plugin Sent Subfolders est mal configuré."
+
+msgid "Save emails submitted to SpamCop:"
+msgstr "Sauvegarder les messages soumis à SpamCop&nbsp;:"
 
 msgid "Spam Service Type:"
 msgstr "Type de service anti-Spam :"
@@ -4160,6 +4209,23 @@ msgstr "Enregistrer le type de service"
 
 msgid "SpamCop reporting"
 msgstr "Signalement à SpamCop"
+
+#, c-format
+msgid "Your %s dictionary is encrypted with password that differs from your current password."
+msgstr "Votre dictionnaire %s est crypté avec un mot de passe différent de votre mot de passe actuel."
+
+msgid "Invalid SquirrelSpell module."
+msgstr "Module SquirrelSpell invalide."
+
+#, c-format
+msgid "Found %d error"
+msgid_plural "Found %d errors"
+msgstr[0] "%d erreur trouvée"
+msgstr[1] "%d erreurs trouvées"
+
+#, c-format
+msgid "Using %s dictionary for spellcheck."
+msgstr "Utilisation du dictionnaire %s pour la correction orthographique."
 
 msgid "Translation Theme:"
 msgstr "Thème de traduction&nbsp;:"
@@ -4185,6 +4251,33 @@ msgstr "Lors de la composition&nbsp;:"
 msgid "Not yet functional, currently does nothing"
 msgstr "Pas encore fonctionnel, ne fait rien pour le moment"
 
+msgid "D"
+msgstr "S"
+
+msgid "F"
+msgstr "T"
+
+msgid "SquirrelMail notice messages"
+msgstr "Remarques de SquirrelMail"
+
+msgid "Category:"
+msgstr "Catégorie&nbsp;:"
+
+msgid "Tip:"
+msgstr "Astuce&nbsp;:"
+
+msgid "More info:"
+msgstr "Plus d'information&nbsp;:"
+
+msgid "Message Flags"
+msgstr "Drapeaux du message"
+
+msgid "Attachment"
+msgstr "Pièce jointe"
+
+msgid "Click here to change the sorting of the message list"
+msgstr "Cliquer ici pour changer le classement des messages"
+
 msgid "Delivery error report"
 msgstr "Rapport d'erreur de transmission"
 
@@ -4194,19 +4287,10 @@ msgstr "En-têtes du message non délivré"
 msgid "This image has been removed for security reasons"
 msgstr "Cette image n'est pas affichée par mesure de sécurité"
 
-msgid "Unknown error"
-msgstr "Erreur inconnue"
-
-msgid "Click here to change the sorting of the message list"
-msgstr "Cliquer ici pour changer le classement des messages"
-
 msgid "Show recipient name if the message is from your default identity"
 msgstr ""
 "Afficher le nom du destinataire si le message provient de votre identité "
 "par défaut&nbsp;"
-
-msgid "Use old folder listing functions"
-msgstr "Ancien mode d'affichage de la liste des dossiers"
 
 msgid "The imap server failed to handle threading."
 msgstr "Le serveur imap n'a pas pu gérer les fils de discussion."
@@ -4214,9 +4298,6 @@ msgstr "Le serveur imap n'a pas pu gérer les fils de discussion."
 msgid "Click here to unset thread view for this mailbox and start again."
 msgstr ""
 "Cliquez ici pour recommencer sans la visualisation par fil de discussion."
-
-msgid "Please report this to the system administrator."
-msgstr "Merci de l'indiquer à votre administrateur."
 
 msgid "Folder List Display Format"
 msgstr "Affichage de la liste des dossiers&nbsp;"
