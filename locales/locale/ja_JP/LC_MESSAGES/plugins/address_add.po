@@ -1,63 +1,52 @@
-# Squirrelmail Address Add plugin
-# Japanese translation
-# Copyright (c) 2003-2005 SquirrelMail Project Team
+# Japanese (ja_JP) address_add translation (SquirrelMail plugin)
+# This file is distributed under the same license as the SquirrelMail package.
 # Jimmy Conner <jimmy@advcs.org>, 2003.
-# $Id$
+# Andre Nicholson <andre@neo-anime.org>, 2005.
 msgid ""
 msgstr ""
-"Project-Id-Version: address_add 1.9\n"
-"PO-Revision-Date: 2003-03-08 15:12-0800\n"
-"Last-Translator: Jimmy Conner <jimmy@advcs.org>\n"
-"Language-Team: Plugin Developer\n"
+"Project-Id-Version: 1.9\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2005-10-24 22:03+0300\n"
+"PO-Revision-Date: 2005-12-15 20:58-0500\n"
+"Last-Translator: Andre Nicholson <andre@neo-anime.org>\n"
+"Language-Team: Japanese <squirrelmail-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=euc-jp\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: showlink.php:18
-msgid "Add"
-msgstr "追加"
-
-#, showlink.php:16
-msgid "Add to Addressbook"
-msgstr "アドレスの追加"
-
-#, add.php
-msgid "Personal address book"
-msgstr "パーソナルアドレス帳"
-
-#, add.php
-msgid "Global address book"
-msgstr "全アドレス帳"
-
-#, c-format add.php:74
+#, c-format
 msgid "Add to %s"
 msgstr "%s に追加"
 
-#: add.php:80
 msgid "Nickname"
 msgstr "ニックネーム"
 
-#: add.php:81
 msgid "Must be unique"
-msgstr "重複しないようにしてください"
+msgstr "独特が必要です"
 
-#: add.php:83
 msgid "E-mail address"
-msgstr ""
+msgstr "メールアドレス"
 
-#: add.php:89
 msgid "First name"
 msgstr "名"
 
-#: add.php:93
 msgid "Last name"
 msgstr "姓"
 
-#: add.php:97
 msgid "Additional info"
-msgstr "その他の情報"
+msgstr "追加情報"
 
-#: add.php:101
 msgid "Add address"
-msgstr "アドレスの追加"
+msgstr "アドレスを追加"
 
+msgid "Add to Addressbook"
+msgstr "アドレス帳に追加"
+
+msgid "Add"
+msgstr "追加"
+
+#~ msgid "Personal address book"
+#~ msgstr "個人アドレス帳"
+
+#~ msgid "Global address book"
+#~ msgstr "共通アドレス帳"
