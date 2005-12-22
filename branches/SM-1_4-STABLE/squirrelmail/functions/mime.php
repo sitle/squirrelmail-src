@@ -1641,11 +1641,12 @@ function sq_fixstyle($body, $pos, $message, $id, $mailbox){
      * Fix stupid css declarations which lead to vulnerabilities
      * in IE.
      */
-    $match   = Array('/expression/i',
+    $match   = Array('/\/\*.*\*\//',
+                     '/expression/i',
                      '/behaviou*r/i',
                      '/binding/i',
                      '/include-source/i');
-    $replace = Array('idiocy', 'idiocy', 'idiocy', 'idiocy');
+    $replace = Array('', 'idiocy', 'idiocy', 'idiocy', 'idiocy');
     $contentNew = preg_replace($match, $replace, $contentTemp);
     if ($contentNew !== $contentTemp) {
         // insecure css declarations are used. From now on we don't care
@@ -2027,6 +2028,7 @@ function magicHTML($body, $id, $message, $mailbox = 'INBOX') {
         "/^style/i" =>
             Array(
                 Array(
+                    "/\/\*.*\*\//",
                     "/expression/i",
                     "/binding/i",
                     "/behaviou*r/i",
@@ -2038,6 +2040,7 @@ function magicHTML($body, $id, $message, $mailbox = 'INBOX') {
                     "/(.*)\s*:\s*url\s*\(\s*([\'\"]*)\s*\S+script\s*:.*([\'\"]*)\s*\)/si"
                     ),
                 Array(
+                    "",
                     "idiocy",
                     "idiocy",
                     "idiocy",
