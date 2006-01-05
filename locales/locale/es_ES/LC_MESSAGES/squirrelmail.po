@@ -6,14 +6,15 @@
 # $Id$
 msgid ""
 msgstr ""
-"Project-Id-Version: SquirrelMail v1.4.6\n"
+"Project-Id-Version: SquirrelMail 1.4.6\n"
+"Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2005-11-23 19:14+0200\n"
-"PO-Revision-Date: 2005-12-30 06:20+0100\n"
+"PO-Revision-Date: 2006-01-04 09:36+0100\n"
 "Last-Translator: Fernando Gozalo <fgozalo@csi.uned.es>\n"
 "Language-Team: Spanish <squirrelmail-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=ISO-8859-15\n"
-"Content-Transfer-Encoding: 8bit\n"
+"Content-Type: text/plain; charset=ISO-8859-1\n"
+"Content-Transfer-Encoding: 8bit"
 
 msgid "Address Book"
 msgstr "Libreta de direcciones"
@@ -127,20 +128,17 @@ msgstr "Editar seleccionado"
 msgid "Delete selected"
 msgstr "Borrar seleccionado"
 
-#, fuzzy
 msgid "sort by nickname"
-msgstr "ordenar por nombre"
+msgstr "ordenar por apodo"
 
 msgid "sort by name"
 msgstr "ordenar por nombre"
 
-#, fuzzy
 msgid "sort by email"
-msgstr "ordenar por nombre"
+msgstr "ordenar por dirección de correo"
 
-#, fuzzy
 msgid "sort by info"
-msgstr "ordenar por nombre"
+msgstr "ordenar por información"
 
 #, c-format
 msgid "Add to %s"
@@ -203,6 +201,9 @@ msgid ""
 "Because PHP file uploads are turned off, you can not attach files to this "
 "message. Please see your system administrator for details."
 msgstr ""
+"No puede adjuntar archivos al mensaje porque PHP tiene desactivada la opción "
+"para subir archivos. Para más detalles contacte con el administrador del "
+"sistema."
 
 msgid "Priority"
 msgstr "Prioridad"
@@ -353,12 +354,12 @@ msgstr "ERROR: ¡Los ficheros de la ayuda no están en el formato correcto!"
 msgid "Help"
 msgstr "Ayuda"
 
-#, fuzzy
 msgid ""
 "The help has not been translated to the selected language. It will be "
 "displayed in English instead."
 msgstr ""
-"La ayuda no ha sido traducida al %s. Por lo tanto será mostrada en Inglés "
+"La ayuda no ha sido traducida al idioma seleccionado. Por lo tanto será "
+"mostrada en Inglés "
 
 msgid "Some or all of the help documents are not present!"
 msgstr "Algunos o todos los documentos de ayuda no fueron encontrados"
@@ -637,24 +638,20 @@ msgstr ""
 msgid "Message not printable"
 msgstr "Este mensaje no puede imprimirse"
 
-#, fuzzy
 msgid "Attachments:"
-msgstr "Ficheros adjuntos"
+msgstr "Ficheros adjuntos:"
 
 msgid "Unknown sender"
 msgstr "Remitente desconocido"
 
-#, fuzzy
 msgid "Info:"
-msgstr "Información"
+msgstr "Información:"
 
-#, fuzzy
 msgid "Size:"
-msgstr "Tamaño"
+msgstr "Tamaño:"
 
-#, fuzzy
 msgid "Type:"
-msgstr "Hora:"
+msgstr "Tipo:"
 
 msgid "Invalid URL"
 msgstr "URL no válida"
@@ -864,13 +861,13 @@ msgstr "Error en base de datos: %s"
 msgid "Addressbook is read-only"
 msgstr "La libreta de direcciones es de sólo lectura"
 
-#, fuzzy, c-format
+#, c-format
 msgid "User \"%s\" already exists"
-msgstr "El usuario %s ya existe"
+msgstr "El usuario \"%s\" ya existe"
 
-#, fuzzy, c-format
+#, c-format
 msgid "User \"%s\" does not exist"
-msgstr "El usuario %s no existe"
+msgstr "El usuario \"%s\" no existe"
 
 msgid "Not a file name"
 msgstr "No es un nombre de archivo"
@@ -1150,13 +1147,12 @@ msgstr ""
 "El fichero de firmas %s no pudo copiarse desde el fichero temporal %s. "
 "Contacte con su administrador y comuníquele este error."
 
-#, fuzzy
 msgid ""
 "You need to have PHP installed with the multibyte string function enabled "
 "(using configure option --enable-mbstring)."
 msgstr ""
-"Error de sistema. Avise al administrador que necesita una versión de php con "
-"la opción multibyte activada (--with-mbstring)."
+"Necesita tener instalado PHP con la función de cadenas multibyte activada "
+"(usando la opción de configuración --enable-mbstring)."
 
 msgid "ERROR: No available IMAP stream."
 msgstr "ERROR: No hay ningún canal IMAP disponible."
@@ -1715,7 +1711,6 @@ msgstr "Delimitado:"
 msgid "Name and Address Options"
 msgstr "Opciones de nombre y dirección"
 
-#, fuzzy
 msgid "E-mail Address"
 msgstr "Dirección de correo electrónico"
 
@@ -1858,9 +1853,8 @@ msgstr "Mac OS X Mailserver"
 msgid "hMailServer IMAP server"
 msgstr "Servidor IMAP hMailServer"
 
-#, fuzzy
 msgid "Binc IMAP server"
-msgstr "Abriendo el IMAP"
+msgstr "Servidor Binc IMAP"
 
 msgid "Not one of the above servers"
 msgstr "Ninguno de los anteriores"
@@ -2228,9 +2222,8 @@ msgstr ""
 "será añadido automáticamente a la lista de errores de SourceForge, pero "
 "alguien que reciba este reporte podría hacerlo."
 
-#, fuzzy
 msgid "This bug involves:"
-msgstr "Este error involucra"
+msgstr "Este error involucra:"
 
 msgid "the general program"
 msgstr "el programa general"
@@ -4007,47 +4000,36 @@ msgstr "Cabeceras de mensaje no entregado"
 msgid "This image has been removed for security reasons"
 msgstr "Esta imagen ha sido eliminada por motivos de seguridad"
 
-#~ msgid "Email"
-#~ msgstr "Correo electrónico"
-
-#~ msgid "Add to Addressbook"
-#~ msgstr "Añadir a la agenda"
-
-#~ msgid "Add to Address Book"
-#~ msgstr "Añadir a la agenda"
-
-#~ msgid "authentication failed "
-#~ msgstr "falló la autenticación"
-
-#~ msgid "not available"
-#~ msgstr "no disponible"
-
 #~ msgid "About SquirrelMail %s"
 #~ msgstr "Acerca de SquirrelMail %s"
 
 #~ msgid "System information"
-#~ msgstr "Información del sistema"
+#~ msgstr "InformaciÃ³n del sistema"
 
 #~ msgid "You are using SquirrelMail version: %s"
-#~ msgstr "Esta usando SquirrelMail versión: %s"
+#~ msgstr "Esta usando SquirrelMail versiÃ³n: %s"
+
+#, fuzzy
+#~ msgid "Nothing to search"
+#~ msgstr "Â¡Nada que borrar!"
 
 #~ msgid "No folders were found to unsubscribe from."
-#~ msgstr "¡No existen carpetas de las que darse de baja!"
+#~ msgstr "Â¡No existen carpetas de las que darse de baja!"
 
 #~ msgid "No folders were found to subscribe to."
-#~ msgstr "¡No hay carpetas a las que suscribirse!"
+#~ msgstr "Â¡No hay carpetas a las que suscribirse!"
 
 #~ msgid "Save folder tree"
-#~ msgstr "Guardar árbol de carpetas"
+#~ msgstr "Guardar Ã¡rbol de carpetas"
 
 #~ msgid "SquirrelMail Webmail Application"
-#~ msgstr "Aplicación webmail SquirrelMail"
-
-#~ msgid "Compose Preferences"
-#~ msgstr "Preferencias de composición"
+#~ msgstr "AplicaciÃ³n webmail SquirrelMail"
 
 #~ msgid "Received"
 #~ msgstr "Recibido"
+
+#~ msgid "Compose Preferences"
+#~ msgstr "Preferencias de composiciÃ³n"
 
 #~ msgid "As Attachment"
 #~ msgstr "Como adjunto"
@@ -4056,19 +4038,19 @@ msgstr "Esta imagen ha sido eliminada por motivos de seguridad"
 #~ msgstr "Saltarse la papelera"
 
 #~ msgid "Please enter something to search for"
-#~ msgstr "Por favor introduzca un criterio de búsqueda"
+#~ msgstr "Por favor introduzca un criterio de bÃºsqueda"
 
 #~ msgid "There must be at least one criteria to search for"
-#~ msgstr "Tiene que haber al menos un criterio de búsqueda"
+#~ msgstr "Tiene que haber al menos un criterio de bÃºsqueda"
 
 #~ msgid "Error in criteria argument"
 #~ msgstr "Error en argumentos del criterio"
 
 #~ msgid "(Illegal date)"
-#~ msgstr "(Fecha errónea)"
+#~ msgstr "(Fecha errÃ³nea)"
 
 #~ msgid "(Wrong date)"
-#~ msgstr "(Fecha errónea)"
+#~ msgstr "(Fecha errÃ³nea)"
 
 #~ msgid "In"
 #~ msgstr "En"
@@ -4077,7 +4059,7 @@ msgstr "Esta imagen ha sido eliminada por motivos de seguridad"
 #~ msgstr "(Falta argumento)"
 
 #~ msgid "(Spurious argument)"
-#~ msgstr "(Agrumento erróneo)"
+#~ msgstr "(Agrumento errÃ³neo)"
 
 #~ msgid "Fold"
 #~ msgstr "Cerrar"
@@ -4086,22 +4068,22 @@ msgstr "Esta imagen ha sido eliminada por motivos de seguridad"
 #~ msgstr "Abrir"
 
 #~ msgid "Saved Searches"
-#~ msgstr "Búsquedas almacenadas"
+#~ msgstr "BÃºsquedas almacenadas"
 
 #~ msgid "Missing"
 #~ msgstr "Falta"
 
 #~ msgid "Exclude Criteria:"
-#~ msgstr "Criterio de exclusión:"
+#~ msgstr "Criterio de exclusiÃ³n:"
 
 #~ msgid "Search Criteria"
-#~ msgstr "Criterio de búsqueda"
+#~ msgstr "Criterio de bÃºsqueda"
 
 #~ msgid "Add New Criteria"
 #~ msgstr "Agregar criterio nuevo"
 
 #~ msgid "Remove Excluded Criteria"
-#~ msgstr "Eliminar criterio de exclusión"
+#~ msgstr "Eliminar criterio de exclusiÃ³n"
 
 #~ msgid "Remove All Criteria"
 #~ msgstr "Eliminar todos los criterios"
@@ -4137,7 +4119,7 @@ msgstr "Esta imagen ha sido eliminada por motivos de seguridad"
 #~ msgstr "Palabra clave"
 
 #~ msgid "Larger Than"
-#~ msgstr "Más grande que"
+#~ msgstr "MÃ¡s grande que"
 
 #~ msgid "Old"
 #~ msgstr "Viejo"
@@ -4164,7 +4146,7 @@ msgstr "Esta imagen ha sido eliminada por motivos de seguridad"
 #~ msgstr "Desde"
 
 #~ msgid "Smaller Than"
-#~ msgstr "Más pequeño que"
+#~ msgstr "MÃ¡s pequeÃ±o que"
 
 #~ msgid "Subject Contains"
 #~ msgstr "El asunto contiene"
@@ -4188,10 +4170,10 @@ msgstr "Esta imagen ha sido eliminada por motivos de seguridad"
 #~ msgstr "O"
 
 #~ msgid "Standard search"
-#~ msgstr "Búsqueda estándar"
+#~ msgstr "BÃºsqueda estÃ¡ndar"
 
 #~ msgid "Advanced search"
-#~ msgstr "Búsqueda avanzada"
+#~ msgstr "BÃºsqueda avanzada"
 
 #~ msgid "Folder List"
 #~ msgstr "Lista de carpetas"
@@ -4209,7 +4191,7 @@ msgstr "Esta imagen ha sido eliminada por motivos de seguridad"
 #~ msgstr "Por favor, seleccione una carpeta para desubscribirse."
 
 #~ msgid "ERROR: Bad function call."
-#~ msgstr "ERROR: Llamada incorrecta de función."
+#~ msgstr "ERROR: Llamada incorrecta de funciÃ³n."
 
 #~ msgid "Reason:"
 #~ msgstr "Motivo:"
@@ -4217,14 +4199,22 @@ msgstr "Esta imagen ha sido eliminada por motivos de seguridad"
 #~ msgid "Unknown recipient"
 #~ msgstr "Destinatario desconocido"
 
+#, fuzzy
+#~ msgid "Unflag"
+#~ msgstr "Abrir"
+
 #~ msgid "Flag"
 #~ msgstr "Indicador"
 
 #~ msgid "Undelete"
 #~ msgstr "Recuperar"
 
+#, fuzzy
+#~ msgid "unavailable"
+#~ msgstr "no disponible"
+
 #~ msgid "General Message Composition"
-#~ msgstr "Composición general de mensajes"
+#~ msgstr "ComposiciÃ³n general de mensajes"
 
 #~ msgid "Replying and Forwarding Messages"
 #~ msgstr "Responder y reenviar mensajes"
@@ -4236,37 +4226,62 @@ msgstr "Esta imagen ha sido eliminada por motivos de seguridad"
 #~ msgstr "Activar paginador"
 
 #~ msgid "Message Display Options"
-#~ msgstr "Opciones generales de visualización"
+#~ msgstr "Opciones generales de visualizaciÃ³n"
 
 #~ msgid "Save Replies with Original Message"
 #~ msgstr "Guardar respuestas con el mensaje original"
 
+#, fuzzy
 #~ msgid "%d Minute"
-#~ msgstr "%d Minuto"
+#~ msgid_plural "%d Minutes"
+#~ msgstr[0] "%d Minuto"
+#~ msgstr[1] "%d Minuto"
 
-#~ msgid "Hide SquirrelMail Header"
-#~ msgstr "Ocultar cabecera de SquirrelMail"
+#, fuzzy
+#~ msgid "Mercury/32 IMAP server"
+#~ msgstr "Servidor IMAP Cyrus"
 
 #~ msgid "Search functions"
-#~ msgstr "Funciones de búsqueda"
+#~ msgstr "Funciones de bÃºsqueda"
+
+#, fuzzy
+#~ msgid "Only advanced search"
+#~ msgstr "BÃºsqueda avanzada"
 
 #~ msgid "Both search functions"
-#~ msgstr "Ambas funciones de búsqueda"
+#~ msgstr "Ambas funciones de bÃºsqueda"
+
+#, fuzzy
+#~ msgid "Time Zone Configuration"
+#~ msgstr "Verificar configuraciÃ³n"
+
+#, fuzzy
+#~ msgid "Strict time zones"
+#~ msgstr "Hora inicial:"
+
+#, fuzzy
+#~ msgid "Size of username field"
+#~ msgstr "Preferencias del campo de usuario"
+
+#, fuzzy
+#~ msgid "Size of key field"
+#~ msgstr "Preferencias del campo clave"
+
+#, fuzzy
+#~ msgid "Size of value field"
+#~ msgstr "Preferencias de campos de valor"
 
 #~ msgid "Show alternative language names"
 #~ msgstr "Mostrar nombre de idiomas opcionales"
 
-#~ msgid "Available languages"
-#~ msgstr "Idiomas disponibles"
-
 #~ msgid "Enable aggressive decoding"
-#~ msgstr "Usar decodificación agresiva"
+#~ msgstr "Usar decodificaciÃ³n agresiva"
 
 #~ msgid "Tweaks"
 #~ msgstr "Tweaks"
 
 #~ msgid "Use advanced tree folder listing"
-#~ msgstr "Usar listado de árbol de carpetas avanzado"
+#~ msgstr "Usar listado de Ã¡rbol de carpetas avanzado"
 
 #~ msgid "Use icons"
 #~ msgstr "Use iconos"
@@ -4277,14 +4292,285 @@ msgstr "Esta imagen ha sido eliminada por motivos de seguridad"
 #~ msgid "Use PHP iconv functions"
 #~ msgstr "Usar funciones iconv de PHP"
 
+#, fuzzy
+#~ msgid "Allow remote configuration test"
+#~ msgstr "Verificar configuraciÃ³n"
+
+#, fuzzy
+#~ msgid "Show System Specifications"
+#~ msgstr "InformaciÃ³n del sistema"
+
+#, fuzzy
+#~ msgid "Bug Reports"
+#~ msgstr "Informe de errores:"
+
+#, fuzzy
+#~ msgid "Your new password does not match the verify password."
+#~ msgstr "Su nueva contraseÃ±a contiene caracteres no vÃ¡lidos."
+
+#~ msgid "Your current password is not correct."
+#~ msgstr "Su contraseÃ±a actual no es correcta."
+
+#, fuzzy
+#~ msgid "Your new password should be %s to %s characters long."
+#~ msgstr "Su nueva contraseÃ±a contiene caracteres no vÃ¡lidos."
+
+#~ msgid "Your new password contains invalid characters."
+#~ msgstr "Su nueva contraseÃ±a contiene caracteres no vÃ¡lidos."
+
+#~ msgid "Change Password"
+#~ msgstr "Cambiar contraseÃ±a"
+
+#~ msgid "Current Password:"
+#~ msgstr "ContraseÃ±a actual:"
+
+#~ msgid "New Password:"
+#~ msgstr "ContraseÃ±a nueva:"
+
+#~ msgid "Verify New Password:"
+#~ msgstr "Repita contraseÃ±a nueva:"
+
+#~ msgid "User's Password"
+#~ msgstr "ContraseÃ±a del usuario:"
+
+#~ msgid "Unable to use TLS."
+#~ msgstr "Incapaz de usar TLS"
+
+#~ msgid "Error: %s"
+#~ msgstr "Error: %s"
+
+#, fuzzy
+#~ msgid "Unable to use LDAP TLS in current setup."
+#~ msgstr "Incapaz de usar TLS"
+
+#, fuzzy
+#~ msgid "Unable to bind to LDAP server."
+#~ msgstr "Incapaz de conectar con el servidor LDAP."
+
+#~ msgid "Server replied: %s"
+#~ msgstr "Respuesta del servidor: %s"
+
+#, fuzzy
+#~ msgid "Unable to rebind to LDAP server."
+#~ msgstr "Incapaz de conectar con el servidor LDAP."
+
+#~ msgid "Unable to connect to LDAP server."
+#~ msgstr "Incapaz de conectar con el servidor LDAP."
+
+#, fuzzy
+#~ msgid "Unable to find user's DN."
+#~ msgstr "Incapaz de usar TLS"
+
+#~ msgid "Search error."
+#~ msgstr "Buscar error."
+
+#~ msgid "unknown"
+#~ msgstr "desconocido"
+
+#~ msgid "Cannot change password!"
+#~ msgstr "Â¡No puedo cambiar la contraseÃ±a!"
+
+#, fuzzy
+#~ msgid "Connection error: %s"
+#~ msgstr "Error desconocido: %s"
+
+#, fuzzy
+#~ msgid "Invalid uid field."
+#~ msgstr "Ingreso de datos invÃ¡lido"
+
+#, fuzzy
+#~ msgid "Invalid password field"
+#~ msgstr "No se ha mandado la contraseÃ±a"
+
+#, fuzzy
+#~ msgid "Invalid domain field"
+#~ msgstr "Ingreso de datos invÃ¡lido"
+
+#, fuzzy
+#~ msgid "Query failed: %s"
+#~ msgstr "FallÃ³ el borrado:"
+
+#, fuzzy
+#~ msgid "Unable to set new password: %s"
+#~ msgstr "Imposible listar direcciones desde %s"
+
+#, fuzzy
+#~ msgid "Unable to use digest-md5 crypto."
+#~ msgstr "Incapaz de usar TLS"
+
+#~ msgid "Connecting to Password Server"
+#~ msgstr "Conectando con el servidor de claves"
+
+#, fuzzy
+#~ msgid "Invalid user."
+#~ msgstr "URL no vÃ¡lida"
+
+#~ msgid "Empty domain"
+#~ msgstr "Dominio vacÃ­o"
+
+#~ msgid "Empty domain password"
+#~ msgstr "ContraseÃ±a de dominio vacÃ­a"
+
+#~ msgid "Empty username"
+#~ msgstr "Nombre de usuario vacÃ­o"
+
+#, fuzzy
+#~ msgid "Empty new password"
+#~ msgstr "ContraseÃ±a de dominio vacÃ­a"
+
+#~ msgid "Server Capability response:"
+#~ msgstr "Respuesta de capacidad del servidor:"
+
+#, fuzzy
+#~ msgid "Select"
+#~ msgstr "Seleccionar todos"
+
+#, fuzzy
+#~ msgid "Test Name"
+#~ msgstr "Nombre del tema"
+
+#, fuzzy
+#~ msgid "IMAP command string"
+#~ msgstr "Cadena de comandos vacÃ­a"
+
+#, fuzzy
+#~ msgid "Request:"
+#~ msgstr "solicitada"
+
+#, fuzzy
+#~ msgid "No POP3 servers configured yet."
+#~ msgstr "No se ha especificado un servidor"
+
+#, fuzzy
+#~ msgid "Click here to go to the options page."
+#~ msgstr "Pulse aquÃ­ para volver a ingresar"
+
+#, fuzzy
+#~ msgid "Login OK: Inbox contains %s message"
+#~ msgid_plural "Login OK: Inbox contains %s messages"
+#~ msgstr[0] "AutenticaciÃ³n correcta: el buzÃ³n contiene %s mensajes"
+#~ msgstr[1] "AutenticaciÃ³n correcta: el buzÃ³n contiene %s mensajes"
+
+#, fuzzy
+#~ msgid "Width of popup window:"
+#~ msgstr "Anchura de la ventana de composiciÃ³n"
+
+#, fuzzy
+#~ msgid "Height of popup window:"
+#~ msgstr "Alto de la ventana de composiciÃ³n"
+
+#, fuzzy
+#~ msgid "none"
+#~ msgstr "(ninguno)"
+
+#, fuzzy
+#~ msgid "Warning"
+#~ msgstr "AtenciÃ³n, "
+
+#, fuzzy
+#~ msgid "Sent Subfolders plugin is misconfigured."
+#~ msgstr "SquirrelSpell no estÃ¡ bien configurado."
+
+#, fuzzy
+#~ msgid "Spam Service Type:"
+#~ msgstr "Tipo de servicio de SpamCop"
+
+#, fuzzy
+#~ msgid "Free reporting"
+#~ msgstr "Reporte por web"
+
+#, fuzzy
+#~ msgid "Save Service Type"
+#~ msgstr "Tipo de servicio de SpamCop"
+
+#, fuzzy
+#~ msgid "SpamCop reporting"
+#~ msgstr "NotificaciÃ³n SPAM"
+
+#, fuzzy
+#~ msgid "Invalid SquirrelSpell module."
+#~ msgstr "Resultados de SquirrelSpell"
+
+#, fuzzy
+#~ msgid "Found %d error"
+#~ msgid_plural "Found %d errors"
+#~ msgstr[0] "Localizados %s errores"
+#~ msgstr[1] "Localizados %s errores"
+
+#, fuzzy
+#~ msgid "Using %s dictionary for spellcheck."
+#~ msgstr "Usando el diccionario por omisiÃ³n %s para comprobar la ortografÃ­a."
+
+#, fuzzy
+#~ msgid "Translation Theme:"
+#~ msgstr "DirecciÃ³n de traducciÃ³n"
+
+#, fuzzy
+#~ msgid "Translation Preferences"
+#~ msgstr "Opciones de la entidad"
+
+#, fuzzy
+#~ msgid "Maximum of 25 kilobytes translated, powered by Systran"
+#~ msgstr "Un mÃ¡ximo de 150 palabras traducidas, motor de Systran"
+
+#, fuzzy
+#~ msgid "No known limits, powered by GPLTrans (free, open source)"
+#~ msgstr "No hay lÃ­mites conocidos, motor de Systran"
+
+#, fuzzy
+#~ msgid "When composing:"
+#~ msgstr "Leyendo:"
+
+#, fuzzy
+#~ msgid "SquirrelMail notice messages"
+#~ msgstr "Aviso de SquirrelMail:"
+
+#, fuzzy
+#~ msgid "Tip:"
+#~ msgstr "Hora:"
+
+#, fuzzy
+#~ msgid "More info:"
+#~ msgstr "MÃ¡s informaciÃ³n"
+
+#, fuzzy
+#~ msgid "Message Flags"
+#~ msgstr "Filtros de mensajes"
+
+#, fuzzy
+#~ msgid "Attachment"
+#~ msgstr "Ficheros adjuntos"
+
+#, fuzzy
+#~ msgid "Click here to change the sorting of the message list"
+#~ msgstr "Pulse aquÃ­ para cambiar el orden de la lista de direcciones"
+
+#~ msgid "Email"
+#~ msgstr "Correo electrÃ³nico"
+
+#~ msgid "Add to Addressbook"
+#~ msgstr "AÃ±adir a la agenda"
+
+#~ msgid "Add to Address Book"
+#~ msgstr "AÃ±adir a la agenda"
+
+#~ msgid "authentication failed "
+#~ msgstr "fallÃ³ la autenticaciÃ³n"
+
+#~ msgid "Hide SquirrelMail Header"
+#~ msgstr "Ocultar cabecera de SquirrelMail"
+
+#~ msgid "Available languages"
+#~ msgstr "Idiomas disponibles"
+
 #~ msgid "Search Mailing List Archives"
-#~ msgstr "Buscar en los archivos de listas de distribución"
+#~ msgstr "Buscar en los archivos de listas de distribuciÃ³n"
 
 #~ msgid "Search for words:"
 #~ msgstr "Buscar por"
 
 #~ msgid "Email addresses only"
-#~ msgstr "Sólo direcciones de correo electrónico"
+#~ msgstr "SÃ³lo direcciones de correo electrÃ³nico"
 
 #~ msgid "Mailing list:"
 #~ msgstr "Lista de correo:"
@@ -4299,7 +4585,7 @@ msgstr "Esta imagen ha sido eliminada por motivos de seguridad"
 #~ msgstr "Lista de desarrolladores de SquirrelMail"
 
 #~ msgid "SquirrelMail internationalization list"
-#~ msgstr "Lista de internacionalización de SquirrelMail"
+#~ msgstr "Lista de internacionalizaciÃ³n de SquirrelMail"
 
 #~ msgid "Sort by:"
 #~ msgstr "Ordenar por:"
@@ -4330,60 +4616,3 @@ msgstr "Esta imagen ha sido eliminada por motivos de seguridad"
 
 #~ msgid "Search Bugtracker"
 #~ msgstr "Buscar en el listado de errores"
-
-#~ msgid "Your current password is not correct."
-#~ msgstr "Su contraseña actual no es correcta."
-
-#~ msgid "Your new password contains invalid characters."
-#~ msgstr "Su nueva contraseña contiene caracteres no válidos."
-
-#~ msgid "Change Password"
-#~ msgstr "Cambiar contraseña"
-
-#~ msgid "Current Password:"
-#~ msgstr "Contraseña actual:"
-
-#~ msgid "New Password:"
-#~ msgstr "Contraseña nueva:"
-
-#~ msgid "Verify New Password:"
-#~ msgstr "Repita contraseña nueva:"
-
-#~ msgid "User's Password"
-#~ msgstr "Contraseña del usuario:"
-
-#~ msgid "Unable to use TLS."
-#~ msgstr "Incapaz de usar TLS"
-
-#~ msgid "Error: %s"
-#~ msgstr "Error: %s"
-
-#~ msgid "Server replied: %s"
-#~ msgstr "Respuesta del servidor: %s"
-
-#~ msgid "Unable to connect to LDAP server."
-#~ msgstr "Incapaz de conectar con el servidor LDAP."
-
-#~ msgid "Search error."
-#~ msgstr "Buscar error."
-
-#~ msgid "unknown"
-#~ msgstr "desconocido"
-
-#~ msgid "Cannot change password!"
-#~ msgstr "¡No puedo cambiar la contraseña!"
-
-#~ msgid "Connecting to Password Server"
-#~ msgstr "Conectando con el servidor de claves"
-
-#~ msgid "Empty domain"
-#~ msgstr "Dominio vacío"
-
-#~ msgid "Empty domain password"
-#~ msgstr "Contraseña de dominio vacía"
-
-#~ msgid "Empty username"
-#~ msgstr "Nombre de usuario vacío"
-
-#~ msgid "Server Capability response:"
-#~ msgstr "Respuesta de capacidad del servidor:"
