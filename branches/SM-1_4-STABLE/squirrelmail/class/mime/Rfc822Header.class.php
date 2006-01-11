@@ -671,6 +671,8 @@ class Rfc822Header {
                 } else {
                     $aResults[$sKey] .= $value;
                 }
+            } else {
+                $aResults[$key] = $value;
             }
         }
         foreach ($aCharset as $key) {
