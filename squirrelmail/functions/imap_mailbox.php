@@ -526,7 +526,7 @@ function sqimap_mailbox_list($imap_stream, $force=false) {
         global $data_dir, $username, $list_special_folders_first,
                $folder_prefix, $trash_folder, $sent_folder, $draft_folder,
                $move_to_trash, $move_to_sent, $save_as_draft,
-               $delimiter, $noselect_fix_enable, $default_sub_of_inbox;
+               $delimiter, $noselect_fix_enable;
         $inbox_in_list = false;
         $inbox_subscribed = false;
 
@@ -638,21 +638,6 @@ function sqimap_mailbox_list($imap_stream, $force=false) {
             }
         }
 
-        /**
-         * If folders are not subfolders of INBOX, inbox subfolders must be added
-         * before special folders. IMAP servers: Dovecot, hMailServer
-         */
-        if (! $default_sub_of_inbox) {
-            /* Find INBOX's children */
-            for($k = 0; $k < $cnt; ++$k) {
-                if (!$used[$k] && isBoxBelow(strtolower($boxesall[$k]['unformatted']), 'inbox') &&
-                    strtolower($boxesall[$k]['unformatted']) != 'inbox') {
-                    $boxesnew[] = $boxesall[$k];
-                    $used[$k] = true;
-                }
-            }
-        }
-
         /* List special folders and their subfolders, if requested. */
         if ($list_special_folders_first) {
             for($k = 0; $k < $cnt; ++$k) {
@@ -663,19 +648,16 @@ function sqimap_mailbox_list($imap_stream, $force=false) {
             }
         }
 
-        /**
-         * If folders are only under INBOX,
-         */
-        if ($default_sub_of_inbox) {
-            /* Find INBOX's children */
-            for($k = 0; $k < $cnt; ++$k) {
-                if (!$used[$k] && isBoxBelow(strtolower($boxesall[$k]['unformatted']), 'inbox') &&
-                    strtolower($boxesall[$k]['unformatted']) != 'inbox') {
-                    $boxesnew[] = $boxesall[$k];
-                    $used[$k] = true;
-                }
+
+        /* Find INBOX's children */
+        for($k = 0; $k < $cnt; ++$k) {
+            if (!$used[$k] && isBoxBelow(strtolower($boxesall[$k]['unformatted']), 'inbox') &&
+                strtolower($boxesall[$k]['unformatted']) != 'inbox') {
+                $boxesnew[] = $boxesall[$k];
+                $used[$k] = true;
             }
         }
+
 
         /* Rest of the folders */
         for($k = 0; $k < $cnt; $k++) {
