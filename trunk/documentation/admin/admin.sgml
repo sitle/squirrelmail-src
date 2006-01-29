@@ -665,6 +665,8 @@ and install separate translation packages.
 <p>
 Index Order options are not preserved.
 
+SquirrelSpell user dictionaries are not preserved.
+
 <sect1>Recheck new install
 <p>
 Login into new SquirrelMail install and check if everything is working.
@@ -739,8 +741,8 @@ specific settings.
 
 <sect1>Authentication
 <p>
-Prior to SquirrelMail 1.3.3, only plain text logins for IMAP and SMTP were
-supported.  With the release of SquirrelMail 1.3.3, support for the
+Prior to SquirrelMail 1.4.0, only plain text logins for IMAP and SMTP were
+supported.  With the release of SquirrelMail 1.4.0, support for the
 CRAM-MD5 and DIGEST-MD5 authentication mechanisms has been added. It is possible
 to use different methods for both IMAP and SMTP. Unless the administrator
 changes the authentication methods, SquirrelMail will default to the "classic"
@@ -750,10 +752,11 @@ plain text methods.
 <p>
 <verb>
 CRAM/DIGEST-MD5
-* SquirrelMail 1.3.3 or higher
+* SquirrelMail 1.4.0 or higher
 * If you have the mhash extension to PHP, it will automatically
   be used, which may help performance on heavily loaded servers.
   ** NOTE: mhash is optional and no longer a requirement **
+* PHP XML extension needed for digest-md5 authentication.
 </verb>
 
 <sect2>POP before SMTP
@@ -777,18 +780,27 @@ other SMTP server.
 
 <sect1>StartTLS, IMAPS, SSMTP
 <p>
-Since 1.3.3 version SquirrelMail is able to connect to IMAP and SMTP servers
-that use TLS.
+Since 1.4.0 version SquirrelMail is able to connect to IMAP and SMTP servers
+that use TLS. Since 1.5.1 version SquirrelMail is able to connect to IMAP and
+SMTP servers that use STARTTLS.
 
-<sect2>Requirements
+<sect2>TLS requirements
 <p>
 <itemize>
-  <item>SquirrelMail 1.3.3 or higher
+  <item>SquirrelMail 1.4.0 or higher
   <item>PHP 4.3.0 or higher
-  <item>The "STARTTLS" command is NOT supported.  The server you wish to use TLS
-  on must have a dedicated port listening for TLS connections.
+  <item>The server you wish to use TLS on must have a dedicated port listening
+  for TLS connections.
   <item>If you use PHP 4.3.x, OpenSSL support must be compiled staticly. See
   PHP bug <url url="http://bugs.php.net/bug.php?id=29934" name="#29934">.
+</itemize>
+
+<sect2>STARTTLS requirements
+<p>
+<itemize>
+  <item>SquirrelMail 1.5.1 or higher
+  <item>PHP 5.1.0 or higher with stream_socket_enable_crypto() function support.
+  <item>IMAP or SMTP server with STARTTLS extension support.
 </itemize>
 
 TLS can be enabled in SquirrelMail configuration utility, <tt>"Server settings"</tt>
@@ -800,10 +812,10 @@ that updates SMTP settings, enable TLS in <tt>"Secure SMTP (TLS)"</tt> option an
 set secure SMTP port in <tt>"SMTP Port"</tt> option. Secure SMTP servers use tcp 465
 port by default.
 
-Some IMAP and SMTP servers support STARTTLS protocol (<ref id="rfc"
-name="rfc2595 and rfc2487">), which allows to start TLS encryption on existing
-plaintext connection. Current SquirrelMail TLS implementation can't use such
-feature.
+STARTTLS extensions are enabled by selecting use of them in <tt>"Secure IMAP
+(TLS)"</tt> or <tt>"Secure SMTP (TLS)"</tt> selection menu. These extensions
+work by enabling encryption on plain text service ports. IMAP and SMTP ports
+should be set to standard plain text IMAP and SMTP ports.
 
 Note: There is no point in using TLS if your IMAP server is localhost. You need
 root to sniff the loopback interface, and if you don't trust root, or an attacker
