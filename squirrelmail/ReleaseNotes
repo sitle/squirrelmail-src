@@ -1,7 +1,7 @@
 /*****************************************************************
- * Release Notes: SquirrelMail 1.4.6 Release Candidate 1         *
+ * Release Notes: SquirrelMail 1.4.6                             *
  * The "???" Release                                             *
- * 10 December 2005                                              *
+ *  2006                                              *
  *****************************************************************/
 
 In this edition of SquirrelMail Release Notes:
@@ -38,6 +38,26 @@ to install.
 That release also introduced a backport of the new Character set
 decoding functions from the development branch, vastly increasing the
 number of supported character sets and decoding performance.
+
+Security issues
+===============
+
+This release addresses three different security issues found since
+the release of 1.4.5:
+
+- In webmail.php, the right_frame parameter was not properly sanitized
+  to deal with very lenient browsers, which allowed for cross site
+  scripting or frame replacing. [CVE-2006-0188]
+
+- In the MagicHTML function, some very obscure constructs were discovered
+  to be exploitable: 'u\rl' was interpreted as 'url' (privacy concern), and 
+  comments could be inside keywords (allows for cross site scripting). Both
+  only affect Internet Explorer users. Found by Martijn Brinkers and
+  Scott Hughes. [CVE-2006-0195]
+
+- The function sqimap_mailbox_select did not strip newlines from the mailbox
+  parameter, and thereby allowed for IMAP command injection. Found by
+  Vicente Aguilera. [CVE-2006-0377]
 
 
 Major updates
