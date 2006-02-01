@@ -1,14 +1,13 @@
 # Swedish (sv_SE) SquirrelMail Translation
 # Copyright (c) 1999-2005 The SquirrelMail Project Team
 # Johan Fernberger <johan@fernberger.com>, 2002.
-# Fredrik Jervfors <sqm_admin@fimbul.net>, 2004-2005.
+# Fredrik Jervfors <sqm_admin@fimbul.net>, 2004-2006.
 # $Id$
 msgid ""
 msgstr ""
 "Project-Id-Version: SquirrelMail HEAD\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-11-23 19:19+0200\n"
-"PO-Revision-Date: 2005-12-27 14:47+0100\n"
+"POT-Creation-Date: 2006-02-01 10:31+0100\n"
+"PO-Revision-Date: 2006-02-01 12:22+0100\n"
 "Last-Translator: Fredrik Jervfors <sqm_admin@fimbul.net>\n"
 "Language-Team: Swedish <squirrelmail-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -4248,8 +4247,26 @@ msgid ""
 "TLS is enabled, but this version of PHP does not support TLS sockets, or is "
 "missing the openssl extension."
 msgstr ""
-"TLS är aktiverat, men denna version av PHP stödjer inte TLS-uttag, eller "
+"TLS är aktiverat, men denna version av PHP stödjer inte TLS-socklar, eller "
 "saknar OpenSSL-utbyggnaden."
+
+msgid ""
+"IMAP STARTTLS is enabled in SquirrelMail configuration, but used IMAP server "
+"does not support STARTTLS."
+msgstr ""
+"IMAP STARTTLS är aktiverat i SquirrelMails konfiguration, men den valda IMAP-"
+"servern stödjer inte STARTTLS."
+
+msgid "Unable to start TLS."
+msgstr "Kunde inte starta TLS."
+
+msgid ""
+"IMAP STARTTLS is enabled in SquirrelMail configuration, but used PHP version "
+"does not support functions that allow to enable encryption on open socket."
+msgstr ""
+"IMAP STARTTLS är aktiverat i SquirrelMails konfiguration, men den PHP-"
+"version som används stödjer inte funktioner som tillåter kryptering över "
+"öppna socklar."
 
 msgid ""
 "Your mailbox is not located at this server. Try a different server or "
@@ -4279,6 +4296,41 @@ msgstr "inte tillgänglig"
 msgid "Terminating SquirrelMail due to a fatal error"
 msgstr "SquirrelMail avslutas på grund av ett fatalt fel"
 
+msgid "Email delivery error"
+msgstr "E-postleveransfel"
+
+#, php-format
+msgid "Can't execute command '%s'."
+msgstr "Kan inte exekvera kommandot '%s'."
+
+msgid ""
+"Secure SMTP (TLS) is enabled in SquirrelMail configuration, but used PHP "
+"version does not support it."
+msgstr ""
+"Säker SMTP (TLS) är aktiverat i SquirrelMails konfiguration, men den PHP-"
+"version som används saknar stöd för detta."
+
+msgid "Can't open SMTP stream."
+msgstr "Kan inte öppna SMTP-strömmen."
+
+msgid "TLS session is already activated."
+msgstr "TLS-sessionen är redan aktiverad."
+
+msgid ""
+"SMTP STARTTLS is enabled in SquirrelMail configuration, but used SMTP server "
+"does not support it"
+msgstr ""
+"SMTP STARTTLS är aktiverat i SquirrelMails konfiguration, men den valda SMTP-"
+"servern stödjer inte STARTTLS."
+
+msgid ""
+"SMTP STARTTLS is enabled in SquirrelMail configuration, but used PHP version "
+"does not support functions that allow to enable encryption on open socket."
+msgstr ""
+"SMTP STARTTLS är aktiverat i SquirrelMails konfiguration, men den PHP-"
+"version som används stödjer inte funktioner som tillåter kryptering över "
+"öppna socklar."
+
 msgid ""
 "Run \"configure\", choose option 4 (General options) and set option 10 "
 "(Allow server thread sort to false)."
@@ -4301,6 +4353,21 @@ msgstr "Besvara och vidarebefordra brev"
 
 msgid "Strip signature when replying"
 msgstr "Avlägsna brevfot vid svar"
+
+msgid "Template"
+msgstr "Mall"
+
+msgid "Default font style"
+msgstr "Förvald typsnittstyp"
+
+msgid "Font style"
+msgstr "Typsnittstyp"
+
+msgid "Font size"
+msgstr "Typsnittsstorlek"
+
+msgid "Default font size"
+msgstr "Förvald typsnittsstorlek"
 
 msgid "Enable Fancy Row Mouseover Highlighting"
 msgstr "Aktivera dokumentlinjal"
@@ -4340,6 +4407,31 @@ msgstr "XP"
 
 msgid "Mercury/32 IMAP server"
 msgstr "Mercury/32 IMAP-server"
+
+msgid "IMAP Connection Security"
+msgstr "Anslutningssäkerhet för IMAP-servern"
+
+msgid "Plain text connection"
+msgstr "Klartextanslutning"
+
+msgid "Secure IMAP (TLS) connection"
+msgstr "Säker IMAP-anslutning (TLS)"
+
+msgid "IMAP STARTTLS connection"
+msgstr "IMAP STARTTLS-anslutning"
+
+msgid ""
+"Requires higher PHP version and special functions. See SquirrelMail "
+"documentation."
+msgstr ""
+"Kräver högre PHP-version och speciella funktioner. Se SquirrelMails "
+"dokumentation."
+
+msgid "Sendmail Arguments"
+msgstr "Sendmailparametrar"
+
+msgid "SMTP Connection Security"
+msgstr "Anslutningssäkerhet för SMTP-servern"
 
 msgid "Search functions"
 msgstr "Sökfunktioner"
@@ -4412,6 +4504,9 @@ msgstr "mitt e-postkonto"
 
 msgid "Bug Reports"
 msgstr "Felrapporter"
+
+msgid "m/d/Y"
+msgstr "Y-m-d"
 
 msgid "You must type in a new password."
 msgstr "Du måste ange ditt nya lösenord."
@@ -4704,6 +4799,19 @@ msgstr "IMAP-kommando"
 msgid "Request:"
 msgstr "Begäran:"
 
+msgid "Execution time:"
+msgstr "Exekveringstid:"
+
+#, php-format
+msgid "%s ms"
+msgstr "%s ms"
+
+msgid "Error"
+msgstr "Fel"
+
+msgid "Command failed"
+msgstr "Kommandot misslyckades"
+
 msgid "No POP3 servers configured yet."
 msgstr "Inga POP3-servrar är konfigurerade."
 
@@ -4711,10 +4819,25 @@ msgid "Click here to go to the options page."
 msgstr "Tillbaka till inställningar"
 
 #, php-format
+msgid "Fetching from %s"
+msgstr "Hämtar från %s"
+
+#, php-format
 msgid "Login OK: Inbox contains %s message"
 msgid_plural "Login OK: Inbox contains %s messages"
 msgstr[0] "Inloggning OK: Inkorgen innehåller %s brev"
 msgstr[1] "Inloggning OK: Inkorgen innehåller %s brev"
+
+#, php-format
+msgid "Fetching message %s."
+msgstr "Hämtar brev %s."
+
+#, php-format
+msgid "Refetching message %s."
+msgstr "Återhämtar brev %s."
+
+msgid "Warning:"
+msgstr "Varning:"
 
 msgid "Width of popup window:"
 msgstr "Bredd på redigeringsfönstret:"
