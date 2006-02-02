@@ -1,6 +1,8 @@
 <!doctype linuxdoc system>
 <!--
- Copyright (c) 2005 The SquirrelMail Project Team
+ $Id$
+
+ Copyright (c) 2005-2006 The SquirrelMail Project Team
  This file is part of SquirrelMail webmail interface documentation.
 
  SquirrelMail is free software; you can redistribute it and/or modify
@@ -15,7 +17,8 @@
 
  You should have received a copy of the GNU General Public License
  along with SquirrelMail; if not, write to the Free Software
- Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
+ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
+ 02110-1301, USA
 -->
 <article>
 
@@ -27,7 +30,7 @@ by the SquirrelMail Project Team:
 <date>$Date$
 <abstract>
 This document provides information about SquirrelMail webmail interface
-install procedures.
+installation and configuration procedures.
 </abstract>
 
 <toc>
@@ -75,8 +78,8 @@ client, including strong MIME support, address books, and folder manipulation.
 <p>
 <itemize>
   <item>PHP with gettext and mbstring support. Without gettext you lose in
-    performance. mbstring is actually required if you want a good i18n webmail
-    system.
+    performance. mbstring is actually required if you want a good internationalised
+    webmail system.
   <item>IMAP server that supports sort and thread IMAP extensions. Without these
     extensions you lose in performance.
   <item>IMAP server should support Unicode. Courier IMAP must be compiled with
@@ -95,13 +98,13 @@ client, including strong MIME support, address books, and folder manipulation.
 
 <sect>Quick Start Guide
 <p>
-SquirrelMail can be downloaded from SquirrelMail site or provided by your OS
-packager. It is configured with conf.pl utility, that is stored in <tt/config/
-directory. You must configure SquirrelMail before using it. SquirrelMail can be
-used by accessing it in web browser just like any other files and scripts
-stored on your web server.
+SquirrelMail can be downloaded from the SquirrelMail website or provided by your OS
+packager. It is configured with the conf.pl utility, that is stored in
+the <tt/config/ directory. You must configure SquirrelMail before using it.
+SquirrelMail can be used by accessing it in web browser just like any other files
+and scripts stored on your web server.
 
-If you want to install SquirrelMail, check chapters about SquirrelMail
+If you want to install SquirrelMail, check the chapters about SquirrelMail
 installation.
 
 <sect1>Directory layout
@@ -134,59 +137,61 @@ squirrelmail/
 delivery, localizations and other interface functions.
 
 <tt/config/ directory stores SquirrelMail configuration files and configuration
-utility. <tt/conf.pl/ script is perl based utility used to manage SquirrelMail
-configuration. <tt/config_default.php/ file stores default configuration
-values. <tt/config.php/ file stores current configuration. <tt/config_local.php/
-file can store local site configuration overrides and configuration options that
-are not supported by configuration utility. <tt/default_pref/ file stores <ref
-id="default_pref" name="default configuration"> that is used when user's
-preference file does not exist. <tt/default_pref/ file was stored in data
-directory before SquirrelMail 1.5.1.
+utility. <tt/conf.pl/ script is a perl based utility used to manage SquirrelMail
+configuration. The <tt/config_default.php/ file stores default configuration
+values. The <tt/config.php/ file stores current configuration. The file 
+<tt/config_local.php/ can store local site configuration overrides and
+configuration options that are not supported by configuration utility.
+<tt/default_pref/ stores <ref
+id="default_pref" name="default user preferences"> that are used when a new
+user logs in for the first time. <tt/default_pref/ file was stored in the
+<tt/data/ directory before SquirrelMail 1.5.1.
 
-<tt/contrib/ directory stores files that provide extra features to SquirrelMail
-package, but are not used directly in webmail interface.
+The <tt/contrib/ directory stores files that provide extra features to SquirrelMail
+package, but are not used directly in the webmail interface.
 
-<tt/data/ directory is default location for SquirrelMail users' preference
+The <tt/data/ directory is default location for SquirrelMail users' preference
 files. You should move that directory outside of web tree or make sure that it
-can't be accessed by external user.
+can't be accessed by external users. This directory is not packaged anymore
+since SquirrelMail 1.5.1.
 
-<tt/doc/ directory stores some documentation about SquirrelMail.
+The <tt/doc/ directory stores some documentation about SquirrelMail.
 
-<tt/functions/ directory stores SquirrelMail function files. <tt/decode/
+<tt/functions/ directory stores SquirrelMail function files. The <tt/decode/
 subdirectory stores charset decoding functions that are used to read emails
-encoded in different charsets. <tt/encode/ directory stores charset encoding
+encoded in different charsets. The <tt/encode/ directory stores charset encoding
 functions that are used to convert emails to charset used in interface when
 user replies or forwards email written in different charset.
 
-<tt/help/ directory stores SquirrelMail help files. Information from these files
-is displayed when user clicks on Help link in SquirrelMail menu line. Help files
+Under <tt/help/ are SquirrelMail help files. Information from these files
+is displayed when a user clicks on Help link in SquirrelMail menu line. Help files
 use XML formating. They can be translated into different languages.
 
-<tt/images/ directory stores various image files that can be used in interface.
+The <tt/images/ directory stores various image files that can be used in interface.
 
-<tt/locale/ directory stores SquirrelMail translations. User can select
-preferred translation in SquirrelMail Display Options.
+The <tt/locale/ directory stores SquirrelMail translations. A user can select
+their preferred translation in SquirrelMail Display Options.
 
-<tt/plugins/ directory stores plugins that can be used to extend interface
-functionality. Plugins are controlled in SquirrelMail configuration
+The <tt/plugins/ directory stores plugins that can be used to extend interface
+functionality. Plugins are controlled through the SquirrelMail configuration
 utility. Some plugins might use own configuration files or functions provided by
-other plugins. See README and INSTALL files in plugin's directory.
+other plugins. See README and INSTALL files in each plugin's directory.
 
-<tt/po/ directory stores scripts that are used to work with SquirrelMail
+The <tt/po/ directory stores scripts that are used to work with SquirrelMail
 translation files. <tt/xgetpo/ script extracts translatable strings from
 SquirrelMail script. <tt/mergepo/ script combines default strings with selected
 translation. <tt/compilepo/ script compiles selected translation. These scripts
 are usually used only by SquirrelMail translators.
 
-<tt/src/ directory stores scripts that are used when user uses webmail
-interface.
+The <tt/src/ directory stores scripts that are used when user accesses the
+webmail interface.
 
-<tt/templates/ directory stores template files that can be used in SquirrelMail
-1.5.1 and later versions.
+The <tt/templates/ directory stores template files that can be used in
+SquirrelMail 1.5.1 and later versions.
 
-<tt/themes/ directory stores SquirrelMail <ref id="themes"
-name="themes">. <tt/css/ subdirectory stores style sheet files available to end
-user.
+The <tt/themes/ directory stores SquirrelMail <ref id="themes"
+name="colour themes">, and the <tt/css/ subdirectory stores style
+sheet files available to end user.
 
 <sect1>User data storage
 <p>
