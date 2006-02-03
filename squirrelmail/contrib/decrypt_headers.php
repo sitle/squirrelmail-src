@@ -1,8 +1,9 @@
 <?php
+
 /**
  * Script provides form to decode encrypted header information.
  *
- * Copyright (c) 2005 The SquirrelMail Project Team
+ * Copyright (c) 2005-2006 The SquirrelMail Project Team
  * This file is part of SquirrelMail webmail interface.
  *
  * SquirrelMail is free software; you can redistribute it and/or modify
