@@ -3,7 +3,7 @@
 /**
  * webmail.php -- Displays the main frameset
  *
- * Copyright (c) 1999-2005 The SquirrelMail Project Team
+ * Copyright (c) 1999-2006 The SquirrelMail Project Team
  * Licensed under the GNU GPL. For full terms see the file COPYING.
  *
  * This file generates the main frameset. The files that are
