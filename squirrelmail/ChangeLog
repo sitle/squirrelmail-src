@@ -14,6 +14,7 @@ Version 1.4.6 - CVS
   - Security: Fix possible cross site scripting through the right_main
     parameter of webmail.php. This now uses a whitelist of acceptable
     values. [CVE-2006-0188]
+  - Removed invalid STARTTLS check from configtest.php script.
 
 Version 1.4.6 Release Candidate 1 - 10 December 2005
 ----------------------------------------------------

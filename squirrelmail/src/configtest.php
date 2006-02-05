@@ -295,10 +295,6 @@ if($imap_auth_mech == 'login' && stristr($capline, 'LOGINDISABLED') !== FALSE) {
         'Try enabling another authentication mechanism like CRAM-MD5, DIGEST-MD5 or TLS-encryption '.
         'in the SquirrelMail configuration.', FALSE);
 }
-if($use_imap_tls && stristr($capline, 'STARTTLS') === FALSE) {
-    do_err('You have enabled TLS encryption in the config, but the server does not '.
-        'report STARTTLS capability. TLS is probably not supported.', FALSE);
-}
 
 /** OK, close connection */
 fputs($stream, "A002 LOGOUT\r\n");
