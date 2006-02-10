@@ -732,6 +732,11 @@ $languages['ja_JP']['CHARSET'] = 'iso-2022-jp';
 $languages['ja_JP']['XTRA_CODE'] = 'japanese_charset_xtra';
 $languages['ja']['ALIAS']      = 'ja_JP';
 
+$languages['ka']['NAME']       = 'Georgian';
+$languages['ka']['CHARSET']    = 'utf-8';
+$languages['ka']['LOCALE']     = array('ka_GE.UTF-8','ka_GE','ka');
+$languages['ka_GE']['ALIAS']   = 'ka';
+
 $languages['ko_KR']['NAME']    = 'Korean';
 $languages['ko_KR']['CHARSET'] = 'euc-KR';
 // Function does not provide all needed options
