@@ -1,7 +1,5 @@
-# Italian translation of shared_calendars plugin.
-# Copyright (c) 2006 The SquirrelMail Project Team
-# This file is distributed under the same license as 
-# the shared_calendars package.
+# Shared Calendars Italian translation.
+# Copyright (C) 2006 The SquirrelMail Project Team
 # Rocco Scappatura <rocsca@sttspa.it>, 2006.
 # $Id$
 msgid ""
@@ -105,7 +103,7 @@ msgid "Years"
 msgstr "Anni"
 
 msgid "Start time:"
-msgstr "Data iniziale:"
+msgstr "Inizio:"
 
 msgid "Length:"
 msgstr "Durata:"
@@ -120,7 +118,7 @@ msgid "Set Event"
 msgstr "Imposta Evento"
 
 msgid "l, F j Y"
-msgstr ""
+msgstr "l, j F Y"
 
 msgid "Event Has been added!"
 msgstr "L'evento è stato inserito!"
@@ -226,11 +224,11 @@ msgstr "%s settimana/e"
 
 #, c-format
 msgid "%sam"
-msgstr ""
+msgstr "%sam"
 
 #, c-format
 msgid "%spm"
-msgstr ""
+msgstr "%spm"
 
 msgid "Could not load external calendar"
 msgstr "Non è possibile caricare il calendario"
@@ -263,7 +261,7 @@ msgstr "Impossibile trovare il vecchio calendario personale: %s"
 
 #, c-format
 msgid "Successfully merged calendar into \"%s\""
-msgstr "Caricato calendario in \"%s\""
+msgstr "Caricato calendario in '%s'"
 
 msgid ""
 "You already have a calendar with the same ID.  Are you sure you don't want "
@@ -273,7 +271,7 @@ msgstr ""
 "sincronizzare il calendario che si sta caricando?"
 
 msgid "..."
-msgstr ""
+msgstr "..."
 
 msgid "Must have domain information"
 msgstr "Si deve disporre delle informazioni di dominio"
@@ -288,36 +286,38 @@ msgid ""
 "Overall end of recurrence for recurring events must come after end of "
 "initial occurrence"
 msgstr ""
+"La fine della ricorrenza per gli eventi ricorrenti deve essere "
+"deve venire dopo la fine della occorrenza iniziale"
 
 msgid "Must specify valid recurrence interval"
-msgstr ""
+msgstr "Si deve specificare un intervallo di ricorrenza valido"
 
 msgid "Event must have a summary/title"
-msgstr ""
+msgstr "Gli eventi devono avere un titolo"
 
 msgid "Must specify valid event priority"
-msgstr ""
+msgstr "Si deve specificare una priorità valida"
 
 msgid "Event must have a valid start date/time"
-msgstr ""
+msgstr "Gli eventi devono avere una data/ora di inizio validi"
 
 msgid "Event must have a valid end date/time"
-msgstr ""
+msgstr "Gli eventi devono avere una data/ora di fine validi"
 
 msgid "End date/time must come after start date and time"
-msgstr ""
+msgstr "La data/ora di fine deve venire dopo la data/ora di inizio"
 
 msgid "At least one parent calendar must be given"
-msgstr ""
+msgstr "Deve essere definito almeno un calendario padre"
 
 msgid "Event must have a creator"
-msgstr ""
+msgstr "L'evento deve avere un creatore"
 
 msgid "Event must have a creation date"
-msgstr ""
+msgstr "L'evento deve avere una data di creazione"
 
 msgid "Event must have at least one owner"
-msgstr ""
+msgstr "L'evento deve avere almeno un proprietario"
 
 msgid "Error:"
 msgstr "Errore:"
@@ -357,7 +357,7 @@ msgid ""
 msgstr ""
 "I calendari <b>condivisi</b> possono essere assegnati agli utenti con accesso di sola"
 " lettura o di lettura/scrittura. Per gestire gli accessi ad un calendario condiviso"
-" si usi il pulsante \"Utenti\"."
+" si usi il pulsante 'Utenti'."
 
 msgid ""
 "<b>Public</b> calendars are available to all users in addition to their "
@@ -648,7 +648,7 @@ msgid "Create Event"
 msgstr "Creazione evento"
 
 msgid "Summary:"
-msgstr "Evento:"
+msgstr "Titolo:"
 
 msgid "Start:"
 msgstr "Inizio:"
