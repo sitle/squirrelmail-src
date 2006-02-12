@@ -1,0 +1,106 @@
+# German translation of SquirrelMail expire plugin.
+# Copyright (c) 2005-2006 The SquirrelMail Project Team
+# This file is distributed under the same license as the SquirrelMail package.
+# Florian Daeumling <jam@qv90.de>, 2006.
+# $Id$
+msgid ""
+msgstr ""
+"Project-Id-Version: expire 1.2\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2006-02-06 14:53+0100\n"
+"PO-Revision-Date: 2005-09-06 23:35+0200\n"
+"Last-Translator: Florian Daeumling <jam@qv90.de>\n"
+"Language-Team: German <squirrelmail-i18n@lists.sourceforge.net>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=ISO-8859-1\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: functions.php:20
+#, php-format
+msgid "ERROR (%s): Can't load config file"
+msgstr "FEHLER (%s): Kann Konfigurations-Datei nicht laden"
+
+#: functions.php:41
+msgid "Cannot create option directory!"
+msgstr "Kann Optionsverzeichnis nicht erstellen!"
+
+#: functions.php:42 functions.php:49 functions.php:55 functions.php:81
+#: functions.php:166 functions.php:172 functions.php:215
+msgid "Please contact system administrator."
+msgstr "Bitte kontaktieren Sie den Systemadministrator."
+
+#: functions.php:48
+msgid "Cannot create option file!"
+msgstr "Kann Optionen nicht speichern!"
+
+#: functions.php:54 functions.php:171
+msgid "Cannot create temporary file!"
+msgstr "Kann temporäre Datei nicht erstellen!"
+
+#: functions.php:80 functions.php:165
+msgid "Cannot read option file!"
+msgstr "Kann Optionen nicht lesen!"
+
+#: functions.php:96
+msgid "Expiration"
+msgstr "Automatisches löschen von E-Mails"
+
+#: functions.php:102 functions.php:121
+msgid "Expire emails in folder"
+msgstr "Lösche E-Mails in Ordner"
+
+#: functions.php:104 functions.php:123
+msgid "Select a folder"
+msgstr "Wähle einen Ordner"
+
+#: functions.php:108
+msgid "after"
+msgstr "nach"
+
+#: functions.php:110
+msgid "days"
+msgstr "Tagen"
+
+#: functions.php:114
+msgid "Define"
+msgstr "Setzen"
+
+#: functions.php:126
+#, php-format
+msgid "%s after %s days"
+msgstr "%s nach %s Tagen"
+
+#: functions.php:131
+msgid "Delete"
+msgstr "Löschen"
+
+#: functions.php:139
+msgid "Error"
+msgstr "Fehler"
+
+#: functions.php:183
+#, php-format
+msgid "Expiration modified successfully for folder %s."
+msgstr "Optionen für Ordner %s erfolgreich geändert."
+
+#: functions.php:196
+#, php-format
+msgid "Expiration deleted successfully for folder %s."
+msgstr "Optionen für Ordner %s erfolgreich gelöscht."
+
+#: functions.php:205
+#, php-format
+msgid "Expiration set successfully for folder %s."
+msgstr "Optionen für Ordner %s erfolgreich gespeichert."
+
+#: functions.php:214
+msgid "Cannot replace option file!"
+msgstr "Kann Optionen nicht schreiben!"
+
+#: options.php:27
+msgid "You have not selected a folder."
+msgstr "Sie haben keinen Ordner ausgewählt."
+
+#: options.php:38
+msgid "You have not entered a valid number of days."
+msgstr "Die Angabe der Tage ist ungültig."
