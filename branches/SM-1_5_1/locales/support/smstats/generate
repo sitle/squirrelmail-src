@@ -1,0 +1,107 @@
+#!/bin/sh
+##########################
+# Configuration vars
+SM_CVSPATH='/home/tomas/smstats/cvs/'
+SM_STATSPATH='/home/tomas/smstats/scripts/'
+SM_WORKPATH='/home/tomas/smstats/work/'
+SM_SITEPATH='/home/tomas/smstats/www/'
+SM_WORKSITEPATH='/home/tomas/smstats/workwww/'
+SM_BRANCHES='HEAD SM-1_4_5'
+CVSROOT=':pserver:anonymous@cvs.sourceforge.net:/cvsroot/squirrelmail'
+CVSFLAGS='-Q -z3'
+# End of configuration vars
+###########################
+
+export CVSROOT
+
+#PATH=$PATH:/usr/local/bin:/usr/bin:/bin
+#export PATH
+DATE=`date +%Y%m%d`
+
+
+for BRANCH in $SM_BRANCHES; do
+  # Create branch if it does not exist
+  if [ ! -d ${SM_CVSPATH}${BRANCH}/locales ]; then
+    mkdir -p ${SM_CVSPATH}${BRANCH}
+    cd ${SM_CVSPATH}${BRANCH}
+    cvs ${CVSFLAGS} co -r ${BRANCH} locales
+  fi
+
+  # Update local CVS copy 
+  cd ${SM_CVSPATH}${BRANCH}/locales
+  cvs ${CVSFLAGS} up -Pd
+
+  # Clean work directory
+  if [ -d ${SM_WORKPATH}${BRANCH} ]; then
+    rm -rf ${SM_WORKPATH}${BRANCH}
+  fi
+
+  # Copy CVS to working directory
+  mkdir -p ${SM_WORKPATH}${BRANCH}
+  rsync -r -q --exclude *CVS/ ${SM_CVSPATH}${BRANCH}/locales ${SM_WORKPATH}${BRANCH}
+
+  # Merge all branches
+  cd ${SM_WORKPATH}${BRANCH}/locales
+  ./mergeall >/dev/null 2>/dev/null
+
+  # Grab stats
+  cd ${SM_STATSPATH}
+  ./grab-stats.php ${BRANCH}
+  ./html-stats.php ${BRANCH}
+  #./history-stats.php ${BRANCH}
+done
+
+# Compile HEAD locales
+cd ${SM_WORKPATH}/HEAD/locales
+./compilelocales
+
+# Pack HEAD locales
+cd ..
+tar -cf locales-${DATE}.tar locales
+bzip2 locales-${DATE}.tar
+
+# move snapshot to data directory
+if [ -d ${SM_WORKSITEPATH}data ]; then
+  rm ${SM_WORKSITEPATH}data/locales*
+fi
+
+if [ ! -d ${SM_WORKSITEPATH}data ]; then
+  mkdir -p ${SM_WORKSITEPATH}data
+fi
+
+mv locales-${DATE}.tar.bz2 ${SM_WORKSITEPATH}data/
+
+# clean files
+rm -rf ${SM_WORKSITEPATH}files/*
+rm ${SM_WORKSITEPATH}plugin-tracker.txt
+rm ${SM_WORKSITEPATH}ChangeLog.locales
+
+# create file directories
+for BRANCH in $SM_BRANCHES; do
+  mkdir -p ${SM_WORKSITEPATH}files/${BRANCH}/locales/
+  # copy new files
+  cp -r ${SM_WORKPATH}${BRANCH}/locales/locale ${SM_WORKSITEPATH}files/${BRANCH}/locales/
+  cp -r ${SM_WORKPATH}${BRANCH}/locales/po ${SM_WORKSITEPATH}files/${BRANCH}/locales/
+done
+
+cp ${SM_WORKPATH}HEAD/locales/doc/plugin-tracker.txt ${SM_WORKSITEPATH}plugin-tracker.txt
+cp ${SM_WORKPATH}HEAD/locales/ChangeLog.locales ${SM_WORKSITEPATH}ChangeLog.locales
+
+
+# clean mo files
+rm ${SM_WORKSITEPATH}files/HEAD/locales/locale/*/LC_MESSAGES/*.mo
+rm ${SM_WORKSITEPATH}files/HEAD/locales/locale/*/LC_MESSAGES/plugins/*.mo
+rm ${SM_WORKSITEPATH}files/HEAD/locales/locale/*/LC_MESSAGES/extra/*.mo
+
+# gzip all .po files
+for BRANCH in $SM_BRANCHES; do
+  gzip ${SM_WORKSITEPATH}files/${BRANCH}/locales/locale/*/LC_MESSAGES/*.po
+  gzip ${SM_WORKSITEPATH}files/${BRANCH}/locales/locale/*/LC_MESSAGES/plugins/*.po
+  gzip ${SM_WORKSITEPATH}files/${BRANCH}/locales/locale/*/LC_MESSAGES/extra/*.po
+  gzip ${SM_WORKSITEPATH}files/${BRANCH}/locales/po/*.pot
+done
+
+# sync generated files with main www directory
+rsync ${SM_WORKSITEPATH}. \
+    ${SM_SITEPATH} -r -q --delete --links \
+    --exclude *.bak$ --delete-excluded
