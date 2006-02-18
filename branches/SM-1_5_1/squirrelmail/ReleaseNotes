@@ -70,9 +70,12 @@ of text chapters. Thanks to Justus Pendleton.
 Added code for advanced searching in messages. Now it's possible to switch
 between normal search and advanced search.
 
-Main SquirrelMail code implements view_as_html and folder_settings plugin 
-features. These plugins should not be used in SquirrelMail 1.5.1.
+Main SquirrelMail code implements view_as_html, msg_flags and folder_settings
+plugin features. These plugins should not be used in SquirrelMail 1.5.1.
 
+SquirrelMail translations are loaded from locale/*/setup.php files. If files
+are not present or only one translation (en_US) is available, translation 
+selection options are not displayed to end user.
 
 Security Updates
 ================
