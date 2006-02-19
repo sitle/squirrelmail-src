@@ -19,14 +19,14 @@ if (!defined('SM_PATH')) define('SM_PATH','../');
  * SquirrelMail version number -- DO NOT CHANGE
  */
 global $version;
-$version = '1.5.2 [CVS]';
+$version = '1.5.1';
 
 /**
  * SquirrelMail internal version number -- DO NOT CHANGE
  * $sm_internal_version = array (release, major, minor)
  */
 global $SQM_INTERNAL_VERSION;
-$SQM_INTERNAL_VERSION = array(1,5,2);
+$SQM_INTERNAL_VERSION = array(1,5,1);
 
 /**
  * There can be a circular issue with includes, where the $version string is
@@ -494,6 +494,7 @@ function readShortMailboxName($haystack, $needle) {
  */
 function sqm_baseuri(){
     global $base_uri, $PHP_SELF;
+
     /**
      * If it is in the session, just return it.
      */

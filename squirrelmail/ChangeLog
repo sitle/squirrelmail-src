@@ -2,11 +2,8 @@
 *** SquirrelMail Devel Series 1.5 ***
 *************************************
 
-Version 1.5.2 CVS
-  -
-	
-Version 1.5.1 (branched on 2006-02-12)
---------------------------------------
+Version 1.5.1 -- 19 February 2006
+--------------------
   - New reply citation to include date and author.
   - Security: Fix some possible XSS bugs.
   - Norwegian Bokmal translation uses nb_NO.
@@ -561,6 +558,7 @@ Version 1.5.1 (branched on 2006-02-12)
   - Rewrite of thread parsing code in order to improve performance.
   - Adapted message squisher function to gain performance.
   - Fixed bug #1093360, skip untagged NO responses in APPEND query.
+   
 
 Version 1.5.0 - 2 February 2004
 -------------------------------
