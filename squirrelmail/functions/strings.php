@@ -19,7 +19,7 @@ if (!defined('SM_PATH')) define('SM_PATH','../');
  * SquirrelMail version number -- DO NOT CHANGE
  */
 global $version;
-$version = '1.5.1 [CVS]';
+$version = '1.5.1';
 
 /**
  * SquirrelMail internal version number -- DO NOT CHANGE
@@ -494,6 +494,7 @@ function readShortMailboxName($haystack, $needle) {
  */
 function sqm_baseuri(){
     global $base_uri, $PHP_SELF;
+
     /**
      * If it is in the session, just return it.
      */
