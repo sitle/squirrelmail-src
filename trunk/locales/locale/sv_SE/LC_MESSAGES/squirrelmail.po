@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: SquirrelMail HEAD\n"
-"POT-Creation-Date: 2006-02-01 10:31+0100\n"
-"PO-Revision-Date: 2006-02-01 12:22+0100\n"
+"POT-Creation-Date: 2006-02-21 05:46+0100\n"
+"PO-Revision-Date: 2006-02-21 06:55+0100\n"
 "Last-Translator: Fredrik Jervfors <sqm_admin@fimbul.net>\n"
 "Language-Team: Swedish <squirrelmail-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -1207,7 +1207,7 @@ msgstr "Lösning:"
 msgid ""
 "Remove unneccessary messages from your folder and start with your Trash "
 "folder."
-msgstr "Kasta onödiga brev fån mappen och börja med din papperskorg."
+msgstr "Kasta onödiga brev. Börja med brev i din papperskorg."
 
 msgid "(no subject)"
 msgstr "(ärende saknas)"
@@ -4065,6 +4065,12 @@ msgid ""
 "and forwarding messages."
 msgstr "Hur brev skrivs, besvaras och vidarebefordras."
 
+msgid "View as plain text"
+msgstr "Visa som ren text"
+
+msgid "View as HTML"
+msgstr "Visa som HTML"
+
 msgid "As Attachment"
 msgstr "som bilaga"
 
@@ -4293,6 +4299,9 @@ msgstr "Visar HTML-formaterat brev"
 msgid "unavailable"
 msgstr "inte tillgänglig"
 
+msgid "Error"
+msgstr "Fel"
+
 msgid "Terminating SquirrelMail due to a fatal error"
 msgstr "SquirrelMail avslutas på grund av ett fatalt fel"
 
@@ -4333,17 +4342,47 @@ msgstr ""
 
 msgid ""
 "Run \"configure\", choose option 4 (General options) and set option 10 "
-"(Allow server thread sort to false)."
+"(Disable server thread sort) to true)."
 msgstr ""
-"Kör \"configure\", välj \"4. General Options\" och därefter \"10. Allow "
-"server thread sort\"."
+"Kör \"configure\", välj \"4. General Options\" och sätt \"10. Disable server "
+"thread sort\" till \"true\"."
 
 msgid ""
 "Run \"configure\", choose option 4 (General options) and set option 11 "
-"(Allow server-side sorting to false)."
+"(Disable server-side sorting) to true."
 msgstr ""
-"Kör \"configure\", välj \"4. General Options\" och därefter \"11. Allow "
-"server-side sorting\"."
+"Kör \"configure\", välj \"4. General Options\" och sätt \"11. Disable server-"
+"side sorting\" till \"true\"."
+
+msgid "Your used charset is not supported by your IMAP server."
+msgstr "IMAP-servern stödjer inte den valda teckenuppsättningen."
+
+msgid ""
+"Run \"configure\", choose option 4 (General options) and set option 12 "
+"(Allow server charset search) to false) or choose option 10 (Language "
+"settings) and set option 2 (Default charset) to a charset supported by your "
+"IMAP server."
+msgstr ""
+"Kör \"configure\", välj \"4. General Options\" och sätt \"12. Allow server "
+"charset search\" till \"true\", eller välj \"10. Language settings\" och "
+"sätt \"2. Default Charset\" till en teckenuppsättning som stödjs av IMAP-"
+"servern."
+
+msgid "Out of quota error."
+msgstr "Kvoten är överskriden."
+
+msgid ""
+"An error occured when SquirrelMail appended a message to the mailbox as "
+"listed in this message."
+msgstr ""
+"Ett fel uppstod när SquirrelMail försökte lägga till ett brev i den mapp som "
+"anges i felmeddelandet."
+
+msgid "Your IMAP server returned an error."
+msgstr "IMAP-servern returnerade ett fel."
+
+msgid "IMAP server closed the connection."
+msgstr "IMAP-servern stängde förbindelsen."
 
 msgid "General Message Composition"
 msgstr "Allmänt"
@@ -4369,11 +4408,11 @@ msgstr "Typsnittsstorlek"
 msgid "Default font size"
 msgstr "Förvald typsnittsstorlek"
 
+msgid "Icon Theme"
+msgstr "Tema för ikoner"
+
 msgid "Enable Fancy Row Mouseover Highlighting"
 msgstr "Aktivera dokumentlinjal"
-
-msgid "Message Flags Icon Theme"
-msgstr "Tema för brevikoner"
 
 msgid "Show Flag / Unflag Buttons"
 msgstr "Visa knapparna &quot;Markera&quot; och &quot;Avmarkera&quot;"
@@ -4401,6 +4440,9 @@ msgstr[1] "%d minuter"
 
 msgid "Show only subscribed folders"
 msgstr "Visa endast aktiverade mappar"
+
+msgid "Template Default"
+msgstr "Förvald mall"
 
 msgid "XP"
 msgstr "XP"
@@ -4432,6 +4474,12 @@ msgstr "Sendmailparametrar"
 
 msgid "SMTP Connection Security"
 msgstr "Anslutningssäkerhet för SMTP-servern"
+
+msgid "Disable server-side sorting"
+msgstr "Inaktivera sortering på server-sidan"
+
+msgid "Disable server-side thread sorting"
+msgstr "Inaktivera korrespondensvyer"
 
 msgid "Search functions"
 msgstr "Sökfunktioner"
@@ -4495,6 +4543,15 @@ msgstr "Använd PHP:s iconv-funktioner"
 
 msgid "Allow remote configuration test"
 msgstr "Tillåt fjärrtest av konfigureringen"
+
+msgid "Templates"
+msgstr "Mallar"
+
+msgid "Default font set"
+msgstr "Förvalt typsnitt"
+
+msgid "Default template"
+msgstr "Förvald mall"
 
 msgid "Show System Specifications"
 msgstr "Visa systemspecifikationerna"
@@ -4806,9 +4863,6 @@ msgstr "Exekveringstid:"
 msgid "%s ms"
 msgstr "%s ms"
 
-msgid "Error"
-msgstr "Fel"
-
 msgid "Command failed"
 msgstr "Kommandot misslyckades"
 
@@ -4838,6 +4892,13 @@ msgstr "Återhämtar brev %s."
 
 msgid "Warning:"
 msgstr "Varning:"
+
+msgid ""
+"The NewMail plugin will follow the Folder Preferences option &quot;Enable "
+"Unread Message Notification&quot;"
+msgstr ""
+"Aviseringen vid nyinkomna brev följer mappinställningen &quot;Avisering av "
+"olästa brev&quot;"
 
 msgid "Width of popup window:"
 msgstr "Bredd på redigeringsfönstret:"
