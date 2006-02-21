@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: SquirrelMail HEAD\n"
-"POT-Creation-Date: 2006-02-01 10:31+0100\n"
+"POT-Creation-Date: 2006-02-21 06:50+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <squirrelmail-i18n@lists.sourceforge.net>\n"
@@ -144,6 +144,7 @@ msgstr ""
 msgid "Add to %s"
 msgstr ""
 
+#. * To translators: %s is for author's name
 #, php-format
 msgid "%s wrote:"
 msgstr ""
@@ -154,6 +155,13 @@ msgstr ""
 msgid "who"
 msgstr ""
 
+#. * To translators:
+#. *  first %s is for date string, second %s is for author's name. Date uses
+#. *  formating from "D, F j, Y g:i a" and "D, F j, Y H:i" translations.
+#. * Example string:
+#. *  "On Sat, December 24, 2004 23:59, Santa wrote:"
+#. * If you have to put author's name in front of date string, check comments about
+#. * argument swapping at http://www.php.net/sprintf
 #, php-format
 msgid "On %s, %s wrote:"
 msgstr ""
@@ -838,10 +846,12 @@ msgstr ""
 msgid "Addressbook is read-only"
 msgstr ""
 
+#. i18n: don't use html formating in translation
 #, php-format
 msgid "User \"%s\" already exists"
 msgstr ""
 
+#. i18n: don't use html formating in translation
 #, php-format
 msgid "User \"%s\" does not exist"
 msgstr ""
@@ -3739,12 +3749,14 @@ msgid ""
 "via the web."
 msgstr ""
 
+#. i18n: %s displays org_name variable value enclosed in () or empty string.
 #, php-format
 msgid ""
 "If you have questions about or problems with your mail account, passwords, "
 "abuse etc, please refer to your system administrator or provider%s."
 msgstr ""
 
+#. i18n: %s tags are used in order to remove html URL attributes from translation
 #, php-format
 msgid ""
 "They can assist you adequately with these issues. The SquirrelMail Project "
@@ -3752,6 +3764,7 @@ msgid ""
 "frequently asked questions."
 msgstr ""
 
+#. i18n: %s tags are used in order to remove html URL attributes from translation
 #, php-format
 msgid ""
 "SquirrelMail is a feature rich, standards compliant webmail application "
@@ -3760,6 +3773,7 @@ msgid ""
 "under the %sGNU General Public License%s."
 msgstr ""
 
+#. i18n: %s tags are used in order to remove html URL attributes from translation
 #, php-format
 msgid ""
 "For more information about SquirrelMail and the SquirrelMail Project Team, "
@@ -3803,6 +3817,12 @@ msgstr ""
 msgid ""
 "Control the behaviour and layout of writing new mail messages, replying to "
 "and forwarding messages."
+msgstr ""
+
+msgid "View as plain text"
+msgstr ""
+
+msgid "View as HTML"
 msgstr ""
 
 msgid "As Attachment"
@@ -4024,6 +4044,9 @@ msgstr ""
 msgid "unavailable"
 msgstr ""
 
+msgid "Error"
+msgstr ""
+
 msgid "Terminating SquirrelMail due to a fatal error"
 msgstr ""
 
@@ -4057,12 +4080,36 @@ msgstr ""
 
 msgid ""
 "Run \"configure\", choose option 4 (General options) and set option 10 "
-"(Allow server thread sort to false)."
+"(Disable server thread sort) to true)."
 msgstr ""
 
 msgid ""
 "Run \"configure\", choose option 4 (General options) and set option 11 "
-"(Allow server-side sorting to false)."
+"(Disable server-side sorting) to true."
+msgstr ""
+
+msgid "Your used charset is not supported by your IMAP server."
+msgstr ""
+
+msgid ""
+"Run \"configure\", choose option 4 (General options) and set option 12 "
+"(Allow server charset search) to false) or choose option 10 (Language "
+"settings) and set option 2 (Default charset) to a charset supported by your "
+"IMAP server."
+msgstr ""
+
+msgid "Out of quota error."
+msgstr ""
+
+msgid ""
+"An error occured when SquirrelMail appended a message to the mailbox as "
+"listed in this message."
+msgstr ""
+
+msgid "Your IMAP server returned an error."
+msgstr ""
+
+msgid "IMAP server closed the connection."
 msgstr ""
 
 msgid "General Message Composition"
@@ -4089,10 +4136,10 @@ msgstr ""
 msgid "Default font size"
 msgstr ""
 
-msgid "Enable Fancy Row Mouseover Highlighting"
+msgid "Icon Theme"
 msgstr ""
 
-msgid "Message Flags Icon Theme"
+msgid "Enable Fancy Row Mouseover Highlighting"
 msgstr ""
 
 msgid "Show Flag / Unflag Buttons"
@@ -4122,6 +4169,9 @@ msgstr[1] ""
 msgid "Show only subscribed folders"
 msgstr ""
 
+msgid "Template Default"
+msgstr ""
+
 msgid "XP"
 msgstr ""
 
@@ -4149,6 +4199,12 @@ msgid "Sendmail Arguments"
 msgstr ""
 
 msgid "SMTP Connection Security"
+msgstr ""
+
+msgid "Disable server-side sorting"
+msgstr ""
+
+msgid "Disable server-side thread sorting"
 msgstr ""
 
 msgid "Search functions"
@@ -4214,6 +4270,15 @@ msgstr ""
 msgid "Allow remote configuration test"
 msgstr ""
 
+msgid "Templates"
+msgstr ""
+
+msgid "Default font set"
+msgstr ""
+
+msgid "Default template"
+msgstr ""
+
 msgid "Show System Specifications"
 msgstr ""
 
@@ -4263,6 +4328,7 @@ msgstr ""
 msgid "Use this to change your email password."
 msgstr ""
 
+#. i18n: is displayed after "Successfully Saved Options:"
 msgid "User's Password"
 msgstr ""
 
@@ -4504,9 +4570,6 @@ msgstr ""
 msgid "%s ms"
 msgstr ""
 
-msgid "Error"
-msgstr ""
-
 msgid "Command failed"
 msgstr ""
 
@@ -4535,6 +4598,11 @@ msgid "Refetching message %s."
 msgstr ""
 
 msgid "Warning:"
+msgstr ""
+
+msgid ""
+"The NewMail plugin will follow the Folder Preferences option &quot;Enable "
+"Unread Message Notification&quot;"
 msgstr ""
 
 msgid "Width of popup window:"
