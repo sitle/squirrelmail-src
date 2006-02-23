@@ -3,8 +3,23 @@
 /**
  * Script provides form to decode encrypted header information.
  *
- * @copyright &copy; 2005-2006 The SquirrelMail Project Team
- * @license http://opensource.org/licenses/gpl-license.php GNU Public License
+ * Copyright (c) 2005-2006 The SquirrelMail Project Team
+ * This file is part of SquirrelMail webmail interface.
+ *
+ * SquirrelMail is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * SquirrelMail is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with SquirrelMail; if not, write to the Free Software
+ * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+ *
  * @version $Id$
  * @package squirrelmail
  */
@@ -53,8 +68,7 @@ function hex2ip($hex) {
 /** create page headers */
 header('Content-Type: text/html');
 
-echo '<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"'."\n"
-    .'  "http://www.w3.org/TR/1999/REC-html401-19991224/loose.dtd">'
+echo '<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">'
     ."\n<head>\n<meta name=\"robots\" content=\"noindex,nofollow\">\n"
     ."</head><body>";
 

@@ -3,31 +3,27 @@
 /**
  * identity.php
  *
+ * Copyright (c) 1999-2006 The SquirrelMail Project Team
+ * Licensed under the GNU GPL. For full terms see the file COPYING.
+ *
  * This contains utility functions for dealing with multiple identities
  *
- * @copyright &copy; 1999-2006 The SquirrelMail Project Team
- * @license http://opensource.org/licenses/gpl-license.php GNU Public License
  * @version $Id$
  * @package squirrelmail
- * @since 1.4.2
  */
 
-/** Used to simplify includes
- * @ignore
- */
+/** Used to simplify includes */
 if (!defined('SM_PATH')) {
     define('SM_PATH','../');
 }
 
-/** preference and signature functions */
 include_once(SM_PATH . 'include/load_prefs.php');
 
 /**
- * Returns an array of all the identities.
- * Array is keyed: full_name, reply_to, email_address, index, signature
- * @return array full_name,reply_to,email_address,index,signature
- * @since 1.4.2
- */
+* Returns an array of all the identities.
+* Array is keyed: full_name, reply_to, email_address, index, signature
+* @return array full_name,reply_to,email_address,index,signature
+*/
 function get_identities() {
 
     global $username, $data_dir, $domain;
@@ -67,7 +63,6 @@ function get_identities() {
  * Function to save the identities array
  *
  * @param  array     $identities     Array of identities
- * @since 1.5.1 and 1.4.5
  */
 function save_identities($identities) {
 
@@ -117,7 +112,6 @@ function save_identities($identities) {
  * @param   int         $id             Identity to modify
  * @param   string      $action         Action to perform
  * @return  array
- * @since 1.5.1 and 1.4.5
  */
 function sqfixidentities( $identities, $id, $action ) {
 
@@ -210,7 +204,6 @@ function sqfixidentities( $identities, $id, $action ) {
  *
  * @param   array   $identity   Identitiy Array
  * @return  boolean
- * @since 1.5.1 and 1.4.5
  */
 function empty_identity($ident) {
     if (empty($ident['full_name']) && empty($ident['email_address']) && empty($ident['signature']) && empty($ident['reply_to'])) {

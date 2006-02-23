@@ -98,13 +98,6 @@ function load_optpage_data_folder() {
         'save'    => 'save_option_sent_folder'
     );
 
-    $optvals[SMOPT_GRP_SPCFOLDER][] = array(
-        'name'    => 'save_reply_with_orig',
-        'caption' => _("Save Replies with Original Message"),
-        'type'    => SMOPT_TYPE_BOOLEAN,
-        'refresh' => SMOPT_REFRESH_FOLDERLIST
-    );
-
     /*** Load the General Options into the array ***/
     $optgrps[SMOPT_GRP_FOLDERLIST] = _("Folder List Options");
     $optvals[SMOPT_GRP_FOLDERLIST] = array();
@@ -130,12 +123,15 @@ function load_optpage_data_folder() {
         'posvals' => $left_size_values
     );
 
+    $minute_str = _("Minutes");
     $left_refresh_values = array(SMPREF_NONE => _("Never"));
     foreach (array(30,60,120,180,300,600,1200) as $lr_val) {
         if ($lr_val < 60) {
             $left_refresh_values[$lr_val] = "$lr_val " . _("Seconds");
+        } else if ($lr_val == 60) {
+            $left_refresh_values[$lr_val] = "1 " . _("Minute");
         } else {
-            $left_refresh_values[$lr_val] = sprintf(ngettext("%d Minute","%d Minutes",($lr_val/60)),($lr_val/60));
+            $left_refresh_values[$lr_val] = ($lr_val/60) . " $minute_str";
         }
     }
     $optvals[SMOPT_GRP_FOLDERLIST][] = array(
@@ -195,6 +191,15 @@ function load_optpage_data_folder() {
     );
 
     $optvals[SMOPT_GRP_FOLDERLIST][] = array(
+        'name'    => 'hour_format',
+        'caption' => _("Hour Format"),
+        'type'    => SMOPT_TYPE_STRLIST,
+        'refresh' => SMOPT_REFRESH_FOLDERLIST,
+        'posvals' => array(SMPREF_TIME_12HR => _("12-hour clock"),
+                           SMPREF_TIME_24HR => _("24-hour clock"))
+    );
+
+    $optvals[SMOPT_GRP_FOLDERLIST][] = array(
         'name'    => 'search_memory',
         'caption' => _("Memory Search"),
         'type'    => SMOPT_TYPE_STRLIST,
@@ -211,12 +216,6 @@ function load_optpage_data_folder() {
                             9 => '9')
     );
 
-    $optvals[SMOPT_GRP_FOLDERLIST][] = array(
-        'name'    => 'show_only_subscribed_folders',
-        'caption' => _("Show only subscribed folders"),
-        'type'    => SMOPT_TYPE_BOOLEAN,
-        'refresh' => SMOPT_REFRESH_FOLDERLIST
-    );
 
     /*** Load the General Options into the array ***/
     $optgrps[SMOPT_GRP_FOLDERSELECT] = _("Folder Selection Options");

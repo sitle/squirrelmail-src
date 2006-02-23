@@ -3,11 +3,12 @@
 /**
  * empty_trash.php
  *
+ * Copyright (c) 1999-2006 The SquirrelMail Project Team
+ * Licensed under the GNU GPL. For full terms see the file COPYING.
+ *
  * Handles deleting messages from the trash folder without
  * deleting subfolders.
  *
- * @copyright &copy; 1999-2006 The SquirrelMail Project Team
- * @license http://opensource.org/licenses/gpl-license.php GNU Public License
  * @version $Id$
  * @package squirrelmail
  */
@@ -34,6 +35,8 @@ sqgetGlobalVar('onetimepad', $onetimepad, SQ_SESSION);
 /* finished globals */
 
 $imap_stream = sqimap_login($username, $key, $imapServerAddress, $imapPort, 0);
+
+sqimap_mailbox_list($imap_stream);
 
 $mailbox = $trash_folder;
 $boxes = sqimap_mailbox_list($imap_stream);
@@ -67,14 +70,13 @@ for ($i = 0; $i < $numboxes; $i++) {
 
 // now lets go through the tree and delete the folders
 walkTreeInPreOrderEmptyTrash(0, $imap_stream, $foldersTree);
-// update mailbox cache
-$mailboxes=sqimap_get_mailboxes($imap_stream,true,$show_only_subscribed_folders);
 sqimap_logout($imap_stream);
 
 // close session properly before redirecting
 session_write_close();
 
 $location = get_location();
-header ("Location: $location/left_main.php");
+// force_refresh = 1 in case trash contains deleted mailboxes
+header ("Location: $location/left_main.php?force_refresh=1");
 
 ?>

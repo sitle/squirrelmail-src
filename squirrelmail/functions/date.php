@@ -3,13 +3,14 @@
 /**
  * date.php
  *
+ * Copyright (c) 1999-2006 The SquirrelMail Project Team
+ * Licensed under the GNU GPL. For full terms see the file COPYING.
+ *
  * Takes a date and parses it into a usable format.  The form that a
  * date SHOULD arrive in is:
  *       <Tue,> 29 Jun 1999 09:52:11 -0500 (EDT)
  * (as specified in RFC 822) -- 'Tue' is optional
  *
- * @copyright &copy; 1999-2006 The SquirrelMail Project Team
- * @license http://opensource.org/licenses/gpl-license.php GNU Public License
  * @version $Id$
  * @package squirrelmail
  * @subpackage date
@@ -89,7 +90,7 @@ function getGMTSeconds($stamp, $tzc) {
     if ($neg) $iTzc = -1 * (int) $iTzc;
     /* stamp in gmt */
     $stamp -= $iTzc;
-    /* now find what the server is at */
+    /** now find what the server is at **/
     $current = date('Z', time());
     /* stamp in local timezone */
     $stamp += $current;
@@ -289,9 +290,9 @@ function date_intl( $date_format, $stamp ) {
     $aParts = explode('#',$ret);
     $ret = str_replace(array('$1','$4','$2','$3',), array(getDayAbrv($aParts[0]),
                                                           getMonthAbrv($aParts[1]),
-                                                          getMonthName($aParts[1]),
-                                                          getDayName($aParts[0])),
-                                                          $aParts[2]);
+                   				          getMonthName($aParts[1]),
+						          getDayName($aParts[0])),
+						          $aParts[2]);
     return( $ret );
 }
 
@@ -390,18 +391,18 @@ function getDateString( $stamp ) {
  * @return int the timestamp calculated from the header
  */
 function getTimeStamp($dateParts) {
-    /* $dateParts[0] == <day of week>   Mon, Tue, Wed
-     * $dateParts[1] == <day of month>  23
-     * $dateParts[2] == <month>         Jan, Feb, Mar
-     * $dateParts[3] == <year>          1999
-     * $dateParts[4] == <time>          18:54:23 (HH:MM:SS)
-     * $dateParts[5] == <from GMT>      +0100
-     * $dateParts[6] == <zone>          (EDT)
-     *
-     * NOTE:  In RFC 822, it states that <day of week> is optional.
-     *        In that case, dateParts[0] would be the <day of month>
-     *        and everything would be bumped up one.
-     */
+    /** $dateParts[0] == <day of week>   Mon, Tue, Wed
+    ** $dateParts[1] == <day of month>  23
+    ** $dateParts[2] == <month>         Jan, Feb, Mar
+    ** $dateParts[3] == <year>          1999
+    ** $dateParts[4] == <time>          18:54:23 (HH:MM:SS)
+    ** $dateParts[5] == <from GMT>      +0100
+    ** $dateParts[6] == <zone>          (EDT)
+    **
+    ** NOTE:  In RFC 822, it states that <day of week> is optional.
+    **        In that case, dateParts[0] would be the <day of month>
+    **        and everything would be bumped up one.
+    **/
 
     /*
      * Simply check to see if the first element in the dateParts
@@ -410,15 +411,6 @@ function getTimeStamp($dateParts) {
      */
      if (count($dateParts) <2) {
         return -1;
-     } else if (count($dateParts) ==3) {
-        if (substr_count($dateParts[0],'-') == 2 &&
-            substr_count($dateParts[1],':') == 2) {
-            //  dd-Month-yyyy 23:19:05 +0200
-            //  redefine the date
-            $aDate = explode('-',$dateParts[0]);
-            $newDate = array($aDate[0],$aDate[1],$aDate[2],$dateParts[1],$dateParts[2]);
-            $dateParts = $newDate;
-        }
      }
 
     /* remove day of week */
@@ -445,7 +437,7 @@ function getTimeStamp($dateParts) {
 }
 
 /* I use this function for profiling. Should never be called in
-   actual versions of SquirrelMail released to public. */
+   actual versions of squirrelmail released to public. */
 /*
    function getmicrotime() {
       $mtime = microtime();

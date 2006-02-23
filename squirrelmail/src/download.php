@@ -3,11 +3,12 @@
 /**
  * download.php
  *
+ * Copyright (c) 1999-2006 The SquirrelMail Project Team
+ * Licensed under the GNU GPL. For full terms see the file COPYING.
+ *
  * Handles attachment downloads to the users computer.
  * Also allows displaying of attachments when possible.
  *
- * @copyright &copy; 1999-2006 The SquirrelMail Project Team
- * @license http://opensource.org/licenses/gpl-license.php GNU Public License
  * @version $Id$
  * @package squirrelmail
  */
@@ -30,7 +31,6 @@ header('Cache-Control: cache');
 sqgetGlobalVar('key',        $key,          SQ_COOKIE);
 sqgetGlobalVar('username',   $username,     SQ_SESSION);
 sqgetGlobalVar('onetimepad', $onetimepad,   SQ_SESSION);
-sqgetGlobalVar('mailbox_cache',$mailbox_cache,SQ_SESSION);
 sqgetGlobalVar('messages',   $messages,     SQ_SESSION);
 sqgetGlobalVar('mailbox',    $mailbox,      SQ_GET);
 sqgetGlobalVar('ent_id',     $ent_id,       SQ_GET);
@@ -38,35 +38,23 @@ sqgetGlobalVar('absolute_dl',$absolute_dl,  SQ_GET);
 if ( sqgetGlobalVar('passed_id', $temp, SQ_GET) ) {
     $passed_id = (int) $temp;
 }
-if (!sqgetGlobalVar('account', $account, SQ_GET) ) {
-    $account = 0;
-}
 
 global $default_charset;
 set_my_charset();
 
 /* end globals */
 
+global $uid_support;
+
 $imapConnection = sqimap_login($username, $key, $imapServerAddress, $imapPort, 0);
-$aMailbox = sqm_api_mailbox_select($imapConnection, $account, $mailbox,array(),array());
+$mbx_response =  sqimap_mailbox_select($imapConnection, $mailbox);
 
-if (isset($aMailbox['MSG_HEADERS'][$passed_id]['MESSAGE_OBJECT']) &&
-    is_object($aMailbox['MSG_HEADERS'][$passed_id]['MESSAGE_OBJECT']) ) {
-    $message = $aMailbox['MSG_HEADERS'][$passed_id]['MESSAGE_OBJECT'];
-} else {
-   $message = sqimap_get_message($imapConnection, $passed_id, $mailbox);
-   $aMailbox['MSG_HEADERS'][$passed_id]['MESSAGE_OBJECT'] = $message;
+$message = $messages[$mbx_response['UIDVALIDITY']]["$passed_id"];
+if (!is_object($message)) {
+    $message = sqimap_get_message($imapConnection,$passed_id, $mailbox);
 }
-
-//$mbx_response =  sqimap_mailbox_select($imapConnection, $mailbox);
-
-//$message = &$messages[$mbx_response['UIDVALIDITY']]["$passed_id"];
-//if (!is_object($message)) {
-//    $message = sqimap_get_message($imapConnection,$passed_id, $mailbox);
-//}
 $subject = $message->rfc822_header->subject;
 if ($ent_id) {
-    // replace message with message part, if message part is requested.
     $message = $message->getEntity($ent_id);
     $header = $message->header;
 
@@ -146,7 +134,7 @@ if (strlen($filename) < 1) {
  *    most likely display the attachment inline inside the browser.
  *      And finally, the third one will be used by default.  If it
  *    is displayable (text or html), it will load them up in a text
- *    viewer (built in to SquirrelMail).  Otherwise, it sets the
+ *    viewer (built in to squirrelmail).  Otherwise, it sets the
  *    content-type as application/octet-stream
  */
 if (isset($absolute_dl) && $absolute_dl) {
@@ -157,7 +145,4 @@ if (isset($absolute_dl) && $absolute_dl) {
 /* be aware that any warning caused by download.php will corrupt the
  * attachment in case of ERROR reporting = E_ALL and the output is the screen */
 mime_print_body_lines ($imapConnection, $passed_id, $ent_id, $encoding);
-$mailbox_cache[$aMailbox['NAME']] = $aMailbox;
-sqsession_register($mailbox_cache,'mailbox_cache');
-
 ?>

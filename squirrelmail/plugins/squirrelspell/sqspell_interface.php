@@ -1,16 +1,16 @@
 <?php
-
 /**
  * sqspell_interface.php
  *
  * Main wrapper for the pop-up.
  *
+ * Copyright (c) 1999-2006 The SquirrelMail Project Team
+ * Licensed under the GNU GPL. For full terms see the file COPYING.
+ *
  * This is a main wrapper for the pop-up window interface of
  * SquirrelSpell.
  *
- * @author Konstantin Riabitsev <icon at duke.edu>
- * @copyright &copy; 1999-2006 The SquirrelMail Project Team
- * @license http://opensource.org/licenses/gpl-license.php GNU Public License
+ * @author Konstantin Riabitsev <icon@duke.edu>
  * @version $Id$
  * @package plugins
  * @subpackage squirrelspell
@@ -32,24 +32,28 @@ define('SM_PATH','../../');
 
 /* SquirrelMail required files. */
 require_once(SM_PATH . 'include/validate.php');
-include_once(SM_PATH . 'functions/display_messages.php');
-include_once(SM_PATH . $SQSPELL_DIR . 'sqspell_functions.php');
+require_once(SM_PATH . 'include/load_prefs.php');
+require_once(SM_PATH . $SQSPELL_DIR . 'sqspell_config.php');
+require_once(SM_PATH . $SQSPELL_DIR . 'sqspell_functions.php');
 
 /**
  * $MOD is the name of the module to invoke.
  * If $MOD is unspecified, assign "init" to it. Else check for
  * security breach attempts.
  */
-if(! sqgetGlobalVar('MOD',$MOD,SQ_FORM)) {
-    $MOD = 'init';
+if(isset($_POST['MOD'])) {
+    $MOD = $_POST['MOD'];
+} elseif (isset($_GET['MOD'])) {
+    $MOD = $_GET['MOD'];
 }
-sqspell_ckMOD($MOD);
 
-/* Load the stuff already. */
-if (file_exists(SM_PATH . $SQSPELL_DIR . "modules/$MOD.mod")) {
-    require_once(SM_PATH . $SQSPELL_DIR . "modules/$MOD.mod");
+if (!isset($MOD) || !$MOD){
+    $MOD='init';
 } else {
-    error_box(_("Invalid SquirrelSpell module."),$color);
-    echo '</body></html>';
+    sqspell_ckMOD($MOD);
 }
+
+/* Include the module. */
+require_once(SM_PATH . $SQSPELL_DIR . "modules/$MOD.mod");
+
 ?>

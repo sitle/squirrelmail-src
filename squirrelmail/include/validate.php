@@ -38,9 +38,10 @@ unset($theme);
 $theme=array();
 
 /* SquirrelMail required files. */
-include_once(SM_PATH . 'class/mime.class.php');
-include_once(SM_PATH . 'functions/global.php');
-include_once(SM_PATH . 'functions/strings.php');
+require_once(SM_PATH . 'class/mime.class.php');
+require_once(SM_PATH . 'functions/global.php');
+require_once(SM_PATH . 'functions/strings.php');
+require_once(SM_PATH . 'config/config.php');
 
 /* set the name of the session cookie */
 if(isset($session_name) && $session_name) {
@@ -51,8 +52,8 @@ if(isset($session_name) && $session_name) {
 
 sqsession_is_active();
 
-include_once(SM_PATH . 'functions/i18n.php');
-include_once(SM_PATH . 'functions/auth.php');
+require_once(SM_PATH . 'functions/i18n.php');
+require_once(SM_PATH . 'functions/auth.php');
 
 is_logged_in();
 
@@ -78,10 +79,9 @@ if (isset($send)
     }
 }
 
-include_once(SM_PATH . 'functions/page_header.php');
-include_once(SM_PATH . 'functions/prefs.php');
-include_once(SM_PATH . 'config/config.php');
-include_once(SM_PATH . 'include/load_prefs.php');
+require_once(SM_PATH . 'include/load_prefs.php');
+require_once(SM_PATH . 'functions/page_header.php');
+require_once(SM_PATH . 'functions/prefs.php');
 
 /* Set up the language (i18n.php was included by auth.php). */
 global $username, $data_dir;
@@ -101,45 +101,7 @@ $tzChangeAllowed = (!ini_get('safe_mode')) ||
 
 if ( $timeZone != SMPREF_NONE && ($timeZone != "")
     && $tzChangeAllowed ) {
-
-    // get time zone key, if strict or custom strict timezones are used
-    if (isset($time_zone_type) &&
-        ($time_zone_type == 1 || $time_zone_type == 3)) {
-        /* load time zone functions */
-        require_once(SM_PATH . 'include/timezones.php');
-        $realTimeZone = sq_get_tz_key($timeZone);
-    } else {
-        $realTimeZone = $timeZone;
-    }
-
-    // set time zone
-    if ($realTimeZone) {
-        putenv("TZ=".$realTimeZone);
-    }
-}
-
-/* temporary sm_init section */
-
-include_once(SM_PATH . 'class/template/template.class.php');
-include_once(SM_PATH . 'class/error.class.php');
-/*
- * Initialize the template object
- */
-global $sTplDir;
-$oTemplate = new Template($sTplDir);
-
-/*
- * Initialize our custom error handler object
- */
-$oErrorHandler = new ErrorHandler($oTemplate,'error_message.tpl');
-
-/*
- * Activate custom error handling
- */
-if (version_compare(PHP_VERSION, "4.3.0", ">=")) {
-    $oldErrorHandler = set_error_handler(array($oErrorHandler, 'SquirrelMailErrorhandler'));
-} else {
-    $oldErrorHandler = set_error_handler('SquirrelMailErrorhandler');
+    putenv("TZ=".$timeZone);
 }
 
 ?>

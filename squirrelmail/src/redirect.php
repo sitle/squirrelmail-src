@@ -1,15 +1,17 @@
 <?php
 
 /**
- * Prevents users from reposting their form data after a successful logout.
- *
- * Derived from webmail.php by Ralf Kraudelt <kraude@wiwi.uni-rostock.de>
- *
- * @copyright &copy; 1999-2006 The SquirrelMail Project Team
- * @license http://opensource.org/licenses/gpl-license.php GNU Public License
- * @version $Id$
- * @package squirrelmail
- */
+* redirect.php
+* Derived from webmail.php by Ralf Kraudelt <kraude@wiwi.uni-rostock.de>
+*
+* Copyright (c) 1999-2006 The SquirrelMail Project Team
+* Licensed under the GNU GPL. For full terms see the file COPYING.
+*
+* Prevents users from reposting their form data after a successful logout.
+*
+* @version $Id$
+* @package squirrelmail
+*/
 
 /**
  * Path for SquirrelMail required files.
@@ -47,18 +49,21 @@ sqsession_register ($base_uri, 'base_uri');
 /* get globals we me need */
 sqGetGlobalVar('login_username', $login_username);
 sqGetGlobalVar('secretkey', $secretkey);
+sqGetGlobalVar('js_autodetect_results', $js_autodetect_results);
 if(!sqGetGlobalVar('squirrelmail_language', $squirrelmail_language) || $squirrelmail_language == '') {
     $squirrelmail_language = $squirrelmail_default_language;
 }
+
 if (!sqgetGlobalVar('mailto', $mailto)) {
     $mailto = '';
 }
+
 
 /* end of get globals */
 
 set_up_language($squirrelmail_language, true);
 /* Refresh the language cookie. */
-sqsetcookie('squirrelmail_language', $squirrelmail_language, time()+2592000,
+setcookie('squirrelmail_language', $squirrelmail_language, time()+2592000,
           $base_uri);
 
 if (!isset($login_username)) {
@@ -85,19 +90,6 @@ if (!sqsession_is_registered('user_is_logged_in')) {
     $imapConnection = sqimap_login($login_username, $key, $imapServerAddress, $imapPort, 0);
 
     $sqimap_capabilities = sqimap_capability($imapConnection);
-
-    /* Server side sorting control */
-    if (isset($sqimap_capabilities['SORT']) && $sqimap_capabilities['SORT'] == true &&
-        isset($disable_server_sort) && $disable_server_sort) {
-        unset($sqimap_capabilities['SORT']);
-    }
-
-    /* Thread sort control */
-    if (isset($sqimap_capabilities['THREAD']) && $sqimap_capabilities['THREAD'] == true &&
-        isset($disable_thread_sort) && $disable_thread_sort) {
-        unset($sqimap_capabilities['THREAD']);
-    }
-
     sqsession_register($sqimap_capabilities, 'sqimap_capabilities');
     $delimiter = sqimap_get_delimiter ($imapConnection);
 
@@ -106,7 +98,7 @@ if (!sqsession_is_registered('user_is_logged_in')) {
 
     $username = $login_username;
     sqsession_register ($username, 'username');
-    sqsetcookie('key', $key, false, $base_uri);
+    setcookie('key', $key, 0, $base_uri);
     do_hook ('login_verified');
 
 }
@@ -133,27 +125,44 @@ if ( sqgetGlobalVar('HTTP_ACCEPT', $http_accept, SQ_SERVER) &&
 }
 
 /* Complete autodetection of Javascript. */
-checkForJavascript();
+$javascript_setting = getPref
+    ($data_dir, $username, 'javascript_setting', SMPREF_JS_AUTODETECT);
+$js_autodetect_results = (isset($js_autodetect_results) ?
+    $js_autodetect_results : SMPREF_JS_OFF);
+/* See if it's set to "Always on" */
+$js_pref = SMPREF_JS_ON;
+if ($javascript_setting != SMPREF_JS_ON){
+    if ($javascript_setting == SMPREF_JS_AUTODETECT) {
+        if ($js_autodetect_results == SMPREF_JS_OFF) {
+            $js_pref = SMPREF_JS_OFF;
+        }
+    } else {
+        $js_pref = SMPREF_JS_OFF;
+    }
+}
+/* Update the prefs */
+setPref($data_dir, $username, 'javascript_on', $js_pref);
 
 /* Compute the URL to forward the user to. */
-$redirect_url = $location . '/webmail.php';
+$redirect_url = 'webmail.php';
 
 if ( sqgetGlobalVar('session_expired_location', $session_expired_location, SQ_SESSION) ) {
     sqsession_unregister('session_expired_location');
     $compose_new_win = getPref($data_dir, $username, 'compose_new_win', 0);
     if ($compose_new_win) {
-        // do not prefix $location here because $session_expired_location is set to PHP_SELF
-        // of the last page
         $redirect_url = $session_expired_location;
     } elseif ( strpos($session_expired_location, 'webmail.php') === FALSE ) {
-        $redirect_url = $location.'/webmail.php?right_frame='.urldecode($session_expired_location);
+        $redirect_url = 'webmail.php?right_frame='.urldecode($session_expired_location);
     }
     unset($session_expired_location);
 }
+
 if($mailto != '') {
     $redirect_url  = $location . '/webmail.php?right_frame=compose.php&mailto=';
     $redirect_url .= urlencode($mailto);
 }
+
+
 
 /* Write session data and send them off to the appropriate page. */
 session_write_close();

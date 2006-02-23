@@ -3,10 +3,11 @@
 /**
  * help.php
  *
+ * Copyright (c) 1999-2006 The SquirrelMail Project Team
+ * Licensed under the GNU GPL. For full terms see the file COPYING.
+ *
  * Displays help for the user
  *
- * @copyright &copy; 1999-2006 The SquirrelMail Project Team
- * @license http://opensource.org/licenses/gpl-license.php GNU Public License
  * @version $Id$
  * @package squirrelmail
  */
@@ -18,7 +19,7 @@
 define('SM_PATH','../');
 
 /* SquirrelMail required files. */
-include_once(SM_PATH . 'include/validate.php');
+require_once(SM_PATH . 'include/validate.php');
 require_once(SM_PATH . 'functions/global.php');
 require_once(SM_PATH . 'functions/display_messages.php');
 
@@ -101,7 +102,7 @@ function get_info($doc, $pos) {
 
 echo html_tag( 'table',
         html_tag( 'tr',
-            html_tag( 'td','<div style="text-align: center;"><b>' . _("Help") .'</b></div>', 'center', $color[0] )
+            html_tag( 'td','<center><b>' . _("Help") .'</b></center>', 'center', $color[0] )
         ) ,
     'center', '', 'width="95%" cellpadding="1" cellspacing="2" border="0"' );
 
@@ -118,9 +119,9 @@ if (!isset($squirrelmail_language)) {
 if (file_exists("../help/$squirrelmail_language")) {
     $user_language = $squirrelmail_language;
 } else if (file_exists('../help/en_US')) {
-    echo "<div style=\"text-align: center;\"><font color=\"$color[2]\">"
+    echo "<center><font color=\"$color[2]\">"
         ._("The help has not been translated to the selected language. It will be displayed in English instead.");
-    echo '</font></div><br />';
+    echo '</font></center><br />';
     $user_language = 'en_US';
 } else {
     error_box( _("Some or all of the help documents are not present!"), $color );
@@ -153,7 +154,7 @@ if ( $chapter == 0 || !isset( $helpdir[$chapter-1] ) ) {
     echo html_tag( 'table', '', 'center', '', 'cellpadding="0" cellspacing="0" border="0"' ) .
          html_tag( 'tr' ) .
          html_tag( 'td' ) .
-         '<div style="text-align: center;"><b>' . _("Table of Contents") . '</b></div><br />';
+         '<center><b>' . _("Table of Contents") . '</b></center><br />';
     echo html_tag( 'ol' );
     for ($i=0, $cnt = count($helpdir); $i < $cnt; $i++) {
         $doc = file("../help/$user_language/$helpdir[$i]");
@@ -167,7 +168,7 @@ if ( $chapter == 0 || !isset( $helpdir[$chapter-1] ) ) {
 } else {
     $doc = file("../help/$user_language/" . $helpdir[$chapter-1]);
     $help_info = get_info($doc, 0);
-    echo '<div style="text-align: center;"><small>';
+    echo '<center><small>';
     if ($chapter <= 1){
         echo '<font color="' . $color[9] . '">' . _("Previous")
              . '</font> | ';
@@ -182,7 +183,7 @@ if ( $chapter == 0 || !isset( $helpdir[$chapter-1] ) ) {
         echo ' | <a href="../src/help.php?chapter=' . ($chapter+1)
              . '">' . _("Next") . '</a>';
     }
-    echo '</small></div><br />';
+    echo '</small></center><br />';
 
     echo '<font size="5"><b>' . $chapter . ' - ' . $help_info[0]
          . '</b></font><br /><br />';
@@ -202,7 +203,7 @@ if ( $chapter == 0 || !isset( $helpdir[$chapter-1] ) ) {
         $n = $help_info[3];
     }
 
-    echo '<br /><div style="text-align: center;"><a href="#pagetop">' . _("Top") . '</a></div>';
+    echo '<br /><center><a href="#pagetop">' . _("Top") . '</a></center>';
 }
 
 do_hook('help_bottom');
@@ -212,7 +213,4 @@ echo html_tag( 'tr',
         );
 
 ?>
-</table>
-<?php
-$oTemplate->display('footer.tpl');
-?>
+</table></body></html>
