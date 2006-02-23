@@ -171,7 +171,7 @@ if ($mhl_count > 0) {
                         $match_type . ' = ' .
                         htmlspecialchars($message_highlight_list[$i]['value']) ,
                     'left' ) ,
-                '', $message_highlight_list[$i]['color'] ) . "\n";
+                '', '#' . $message_highlight_list[$i]['color'] ) . "\n";
     }
     echo "</table>\n".
         "<br />\n";
@@ -424,7 +424,7 @@ if ($action == 'edit' || $action == 'add') {
         $gridindex = "$y,$x";
         $gridcolor = $new_color_list[$gridindex];
         echo html_tag( 'td', addRadioBox('color_type', ($gridcolor == $current_color), '#'.$gridcolor),
-            'left', $gridcolor, 'colspan="2"' );
+            'left', '#' . $gridcolor, 'colspan="2"' );
         }
         echo "</tr>\n";
     }
