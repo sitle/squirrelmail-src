@@ -1586,7 +1586,7 @@ function sq_fixstyle($body, $pos, $message, $id, $mailbox){
     // remove NUL
     $content = str_replace("\0", "", $content);
     // translate ur\l and variations into url (IE parses that)
-    $content = preg_replace("/(\\\\)?u(\\\\)?r(\\\\)?l(\\\\)?/",'url', $content);
+    $content = preg_replace("/(\\\\)?u(\\\\)?r(\\\\)?l(\\\\)?/i",'url', $content);
     // NB I insert NUL characters to keep to avoid an infinite loop. They are removed after the loop.
     while (preg_match("/url\s*\(\s*[\'\"]?([^:]+):(.*)?[\'\"]?\s*\)/si", $content, $matches)) {
         $sProto = strtolower($matches[1]);
