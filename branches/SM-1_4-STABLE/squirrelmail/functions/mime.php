@@ -2049,7 +2049,7 @@ function magicHTML($body, $id, $message, $mailbox = 'INBOX') {
                     "idiocy",
                     "idiocy",
                     "",
-                    "idiocy",
+                    "url",
                     "url(\\1#\\1)",
                     "url(\\1#\\1)",
                     "url(\\1#\\1)",
