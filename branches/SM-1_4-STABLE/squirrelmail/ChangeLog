@@ -4,13 +4,14 @@
 
 Version 1.4.6 - CVS
 -------------------
-  - Security: MagicHTML fix for comments in styles which allowed
-    for cross site scripting when using Internet Explorer (reported
-    by Scott Hughes) [CVE-2006-0195].
+  - Security: MagicHTML fix for comments in styles (reported
+    by Scott Hughes) and parsing of u\rl (reported by
+    Martijn Brinkers) which allowed for cross site scripting
+    when using Internet Explorer [CVE-2006-0195].
   - Multi-line encoded headers were being deleted (#1394667).
   - Security: Prohibit IMAP injection attempts (reported by Vicente
     Aguilera) [CVE-2006-0377].
-  - Handle unsollicited responses inside SORT responses properly.
+  - Handle unsolicited responses inside SORT responses properly.
   - Security: Fix possible cross site scripting through the right_main
     parameter of webmail.php. This now uses a whitelist of acceptable
     values. [CVE-2006-0188]
