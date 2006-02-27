@@ -118,6 +118,52 @@ included and the function squirrelmail_plugin_init_plugin_name() is
 called with no parameters.  That function is where the plugin may
 register itself against any hooks it wishes to take advantage of.
 
+<sect1>Writing plugins
+<p>
+All plugins must contain a file called setup.php and must include a
+function called squirrelmail_plugin_init_plugin_name() therein. Since
+including numerous plugins can slow SquirrelMail performance
+considerably, the setup.php file should contain little else. Any
+functions that are registered against plugin hooks should do little
+more than call another function in a different file.
+
+Any other files used by the plugin should also be placed in the
+plugin directory (or subdirectory thereof) and should contain the
+bulk of the plugin logic.
+
+The function squirrelmail_plugin_init_plugin_name() is called to
+initalize a plugin. This function could look something like this (if
+the plugin was named "demo" and resided in the directory plugins/demo/):
+
+<tscreen><verb>
+function squirrelmail_plugin_init_demo () {
+   global $squirrelmail_plugin_hooks;
+
+   $squirrelmail_plugin_hooks['generic_header']['demo'] = 'plugin_demo_header';
+   $squirrelmail_plugin_hooks['menuline']['demo'] = 'plugin_demo_menuline';
+}
+</verb></tscreen>
+
+Please note that as of SquirrelMail 1.5.0, this function will no longer
+be called at run time and will instead be called only once at configure-
+time.  Thus, the inclusion of any dynamic code (anything except hook
+registration) here is strongly discouraged.
+
+In this example, the "demo" plugin should also have two other functions
+in its setup.php file called plugin_demo_header() and plugin_demo_menuline().
+The first of these might look something like this:
+<tscreen><verb>
+function plugin_demo_header()
+{
+   include_once(SM_PATH . 'plugins/demo/functions.php');
+   plugin_demo_header_do();
+}
+</verb></tscreen>
+
+The function called plugin_demo_header_do() would be in the file called
+functions.php in the demo plugin directory and would contain the plugin's
+core logic for the "generic_header" hook.
+
 <sect1>Hooks
 <p>
 Hooks, when executed, are called with differing parameters and may or may
@@ -196,8 +242,6 @@ TODO: reduce list of hooks by grouping them into separate chapters.
   error_box                      functions/display_messages.php  concat_hook
   get_pref_override              functions/file_prefs.php        hook_func
   get_pref                       functions/file_prefs.php        hook_func
-& options_identities_process     functions/identity.php          do_hook
-&% options_identities_renumber   functions/identity.php          do_hook
   special_mailbox                functions/imap_mailbox.php      hook_func
 % rename_or_delete_folder        functions/imap_mailbox.php      hook_func
   folder_status (since 1.5.1)    functions/imap_mailbox.php      hook_func
@@ -260,8 +304,6 @@ TODO: reduce list of hooks by grouping them into separate chapters.
 * options_order_bottom           src/options.php                 do_hook
 * options_highlight_bottom       src/options_highlight.php       do_hook
 & options_identities_top         src/options_identities.php      do_hook
-& options_identities_table       src/options_identities.php      concat_hook
-& options_identities_buttons     src/options_identities.php      concat_hook
   message_body                   src/printer_friendly_bottom.php do_hook
   read_body_header               src/read_body.php               do_hook
   read_body_menu_top             src/read_body.php               hook_func
@@ -293,6 +335,186 @@ object that represents configured address books. Hook is executed after
 initiation of local address book backends (file and DB based ones) and before
 remote (LDAP) backend init. Second abook_init argument stores address book
 object, third argument stores return value of <tt/$abook-&gt;add_backend/ method.
+
+<sect2>Identity Hooks
+<p>
+This set of hooks allows to add plugin options to SquirrelMail identity
+preferences.
+
+<descrip>
+  <tag/options_identities_process/
+   This hook is called at the top of the Identities page, which is
+   most useful when the user has changed any identity settings - this
+   is where you'll want to save any custom information you are keeping
+   for each identity or catch any custom submit buttons that you may
+   have added to the identities page.  The arguments to this hook are:
+
+   <tscreen><verb>
+    (SquirrelMail 1.4.4 or older and 1.5.0)
+      [0] = hook name (always "options_identities_process")
+      [1] = should I run the SaveUpdateFunction() (alterable)
+   </verb></tscreen>
+
+   Obviously, set the second array element to 1/true if you want to
+   trigger SaveUpdateFunction() after the hook is finished - by default,
+   it will not be called.
+
+   <tscreen><verb>
+    (SquirrelMail 1.4.6+ or 1.5.1+)
+      [0] = hook name (always "options_identities_process")
+      [1] = action (hook is used only in 'update' action and any custom 
+            action added to form with option_identities_table and 
+            option_identities_buttons hooks)
+      [2] = processed identity number
+   </verb></tscreen>
+
+   Hook is not available in SquirrelMail 1.4.5.
+
+  <tag/options_identities_renumber/
+   This hook is called when one of the identities is being renumbered,
+   such as if the user had three identities and deletes the second -
+   this hook would be called with an array that looks like this:
+   ('options_identities_renumber', 2, 1).  The arguments to this hook
+   are:
+
+   <tscreen><verb>
+      [0] = hook name (always "options_identities_renumber")
+      [1] = being renumbered from ('default' or 1 through (# idents) - 1)
+      [2] = being renumbered to ('default' or 1 through (# idents) - 1)
+   </verb></tscreen>
+
+   Hook is not available in SquirrelMail 1.4.5. Renumbering order differs
+   in 1.4.5+ and 1.5.1+.
+
+  <tag/options_identities_table/
+   This hook allows you to insert additional rows into the table that
+   holds each identity.  The arguments to this hook are:
+
+   <tscreen><verb>
+      [0] = additional html attributes applied to table row.
+            use it like this in your plugin:
+               <tr "<?php echo $args[0]; ?>">
+      [1] = is this an empty section (the one at the end of the list)?
+      [2] = what is the 'post' value? (ident # or empty string if default)
+   </verb></tscreen>
+
+   You need to return any HTML you would like to add to the table.
+   You could add a table row with code similar to this:
+
+   <tscreen><verb>
+      function demo_identities_table(&ero;$args) {
+         return '<tr bgcolor="' . $args[0] . '"><td>&ero;nbsp;&etago;td><td>'
+              . 'YOUR CODE HERE' . '&etago;td>&etago;tr>' . "\n";
+      }
+   </verb></tscreen>
+
+   First hook argument was modified in 1.4.5/1.5.1. In SquirrelMail 1.4.1-1.4.4 
+   and 1.5.0 argument contains only background color. You should use 
+   <tt>&lt;tr bgcolor="&lt;?php echo $args[0]; ?&gt;"&gt;</tt> in these SquirrelMail versions.
+
+   <tag/options_identities_buttons/
+   This hook allows you to add a button (or other HTML) to the row of
+   buttons under each identity.  The arguments to this hook are:
+
+   <tscreen><verb>
+      [0] = is this an empty section (the one at the end of the list)?
+      [1] = what is the 'post' value? (ident # or empty string if default)
+   </verb></tscreen>
+
+   You need to return any HTML you would like to add here.  You could add
+   a button with code similar to this:
+
+   <tscreen><verb>
+      function demo_identities_button(&ero;$args) {
+         return '<input type="submit" name="demo_button_' . $args[1]
+              . '" value="Press Me" />';
+      }
+   </verb></tscreen>
+
+   Input element should use 'smaction[action_name][identity_no]' value in 
+   'name' attribute, if you want to process your button actions in
+   SquirrelMail 1.4.6+ and 1.5.1+ options_identity_process hook.
+</descrip>
+
+See sample implementation of identity hooks in SquirrelMail demo plugin.
+
+<tscreen><verb>
+  cvs -d:pserver:anonymous@cvs.sourceforge.net:/cvsroot/squirrelmail \
+    co plugins/demo
+</verb></tscreen>
+
+<sect2>Attachment Hooks
+<p>
+When a message has attachments, this hook is called with the MIME types.  For
+instance, a .zip file hook is "attachment application/x-zip".  The hook should
+probably show a link to do a specific action, such as "Verify" or "View" for a
+.zip file.  Thus, to register your plugin for .zip attachments, you'd do this
+in setup.php (assuming your plugin is called "demo"):
+
+<tscreen><verb>
+   $squirrelmail_plugin_hooks['attachment application/x-zip']['demo']
+      = 'demo_handle_zip_attachment';
+</verb></tscreen>
+
+This is a breakdown of the data passed in the array to the hook that is called:
+<tscreen><verb>
+  [0] = Hook's name ('attachment text/plain')
+  [1] = Array of links of actions (see below) (alterable)
+  [2] = Used for returning to mail message (startMessage)
+  [3] = Used for finding message to display (id)
+  [4] = Mailbox name, urlencode()'d (urlMailbox)
+  [5] = Entity ID inside mail message (ent)
+  [6] = Default URL to go to when filename is clicked on (alterable)
+  [7] = Filename that is displayed for the attachment
+  [8] = Sent if message was found from a search (where)
+  [9] = Sent if message was found from a search (what)
+</verb></tscreen>
+
+To set up links for actions, you assign them like this:
+<tscreen><verb>
+  $Args[1]['<plugin_name>']['href'] = 'URL to link to';
+  $Args[1]['<plugin_name>']['text'] = _("What to display");
+  $Args[1]['<plugin_name>']['extra'] = 'extra stuff, such as an <img ...> tag';
+</verb></tscreen>
+
+Note: _("What to display") is explained in the section about
+internationalization.
+
+You can leave the 'text' empty and put an image tag in 'extra' to show an
+image-only link for the attachment, or do the opposite (leave 'extra' empty)
+to display a text-only link.
+
+It's also possible to specify a hook as "attachment type0/*",
+for example "attachment text/*". This hook will be executed whenever there's
+no more specific rule available for that type.
+
+Putting all this together, the demo_handle_zip_attachment() function should
+look like this (note the argument being passed):
+<tscreen><verb>
+   function demo_handle_zip_attachment(&$Args)
+   {
+      include_once(SM_PATH . 'plugins/demo/functions.php');
+      demo_handle_zip_attachment_do($Args);
+   }
+</verb></tscreen>
+
+And the demo_handle_zip_attachment_do() function in the
+plugins/demo/functions.php file would typically (but not necessarily)
+display a custom link:
+
+<tscreen><verb>
+   function demo_handle_zip_attachment_do(&ero;$Args)
+   {
+      $Args[1]['demo']['href'] = SM_PATH . 'plugins/demo/zip_handler.php?'
+         . 'passed_id=' . $Args[3] . '&ero;mailbox=' . $Args[4]
+         . '&ero;passed_ent_id=' . $Args[5];
+      $Args[1]['demo']['text'] = _("Show zip contents");
+   }
+</verb></tscreen>
+
+The file plugins/demo/zip_handler.php can now do whatever it needs with the
+attachment (note that this will hand information about how to retrieve the
+source message from the IMAP server as GET varibles).
 
 <sect>Internationalization
 <p>
