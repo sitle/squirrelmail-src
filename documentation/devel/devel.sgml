@@ -1,7 +1,7 @@
 <!doctype linuxdoc system>
 <!--
  $Id$
- 
+
  Copyright (c) 2005-2006 The SquirrelMail Project Team
  This file is part of SquirrelMail webmail interface documentation.
 
@@ -12,7 +12,7 @@
 
  SquirrelMail is distributed in the hope that it will be useful,
  but WITHOUT ANY WARRANTY; without even the implied warranty of
- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  GNU General Public License for more details.
 
  You should have received a copy of the GNU General Public License
@@ -38,11 +38,11 @@ Document version: $Revision$
 
 <sect>SquirrelMail overview
 <p>
-SquirrelMail is a standards-based webmail package written in PHP4. It includes 
+SquirrelMail is a standards-based webmail package written in PHP4. It includes
 built-in pure PHP support for the IMAP and SMTP protocols, and all pages render
 in pure HTML 4.0 (with no JavaScript required) for maximum compatibility across
-browsers. It has very few requirements and is very easy to configure and 
-install. SquirrelMail has all the functionality you would want from an email 
+browsers. It has very few requirements and is very easy to configure and
+install. SquirrelMail has all the functionality you would want from an email
 client, including strong MIME support, address books, and folder manipulation.
 
 <sect>General guidelines
@@ -57,9 +57,9 @@ Import wiki page
 <p>
 Information about SM_PATH constant
 
-<sect1>includes/validate.php
+<sect1><tt>includes/validate.php</tt>
 <p>
-Information about files included by validate.php
+Information about files included by <tt>validate.php</tt>
 
 <sect1>Compatibility
 <p>
@@ -67,7 +67,17 @@ Information about compatibility plugin.
 
 <sect>Developing plugins
 <p>
-This section should provide information about plugin development.
+In addition to this document, please check out the SquirrelMail
+development FAQ for more information. Also, help writing plugins
+is easily obtained by posting to the squirrelmail-plugins mailing
+list.
+
+Useful links:
+<itemize>
+<item><url url="http://www.squirrelmail.org/wiki/DeveloperFAQ" name="FAQ">
+<item><url url="http://www.squirrelmail.org/wiki/DevelopingPlugins" name="Plugin Development wiki">
+<item><url url="http://www.squirrelmail.org/wiki/MailingLists" name="SquirrelMail mailing lists">
+</itemize>
 
 <sect1>The plugin architecture
 <p>
@@ -93,37 +103,37 @@ translations will be provided.
 <sect2>The Implementation
 <p>
 The plugin jumping off point in the main SquirrelMail code is in the
-file functions/plugin.php.  In places where hooks are made available,
-they are executed by calling the function do_hook('hookname').  The
-do_hook function then traverses the array
-$squirrelmail_plugin_hooks['hookname'] and executes all the functions
-that are named in that array.  Those functions are placed there when
-plugins register themselves with SquirrelMail as discussed below.  A
+file <tt>functions/plugin.php</tt>. In places where hooks are made available,
+they are executed by calling the function <tt>do_hook('hookname')</tt>. The
+<tt>do_hook</tt> function then traverses the array
+<tt>$squirrelmail_plugin_hooks['hookname']</tt> and executes all the functions
+that are named in that array. Those functions are placed there when
+plugins register themselves with SquirrelMail as discussed below. A
 plugin may add its own internal functions to this array under any
 hook name provided by the SquirrelMail developers.
 
-A plugin must reside in a subdirectory in the plugins/ directory. The
+A plugin must reside in a subdirectory in the <tt>plugins/</tt> directory. The
 name of the subdirectory is considered to be the name of the plugin.
 (The plugin will not function correctly if this is not the case.)
 
-To start using a plugin, its name must be added to the $plugins array
-in config.php like this:
+To start using a plugin, its name must be added to the <tt>$plugins</tt> array
+in <tt>config.php</tt> like this:
 
 <tscreen><verb>
-   $plugins[0] = 'plugin_name';
+$plugins[0] = 'plugin_name';
 </verb></tscreen>
 
-When a plugin is registered, the file plugins/plugin_name/setup.php is
-included and the function squirrelmail_plugin_init_plugin_name() is
-called with no parameters.  That function is where the plugin may
+When a plugin is registered, the file <tt>plugins/plugin_name/setup.php</tt> is
+included and the function <tt>squirrelmail_plugin_init_plugin_name()</tt> is
+called with no parameters. That function is where the plugin may
 register itself against any hooks it wishes to take advantage of.
 
 <sect1>Writing plugins
 <p>
-All plugins must contain a file called setup.php and must include a
-function called squirrelmail_plugin_init_plugin_name() therein. Since
+All plugins must contain a file called <tt>setup.php</tt> and must include a
+function called <tt>squirrelmail_plugin_init_plugin_name()</tt> therein. Since
 including numerous plugins can slow SquirrelMail performance
-considerably, the setup.php file should contain little else. Any
+considerably, the <tt>setup.php</tt> file should contain little else. Any
 functions that are registered against plugin hooks should do little
 more than call another function in a different file.
 
@@ -131,9 +141,9 @@ Any other files used by the plugin should also be placed in the
 plugin directory (or subdirectory thereof) and should contain the
 bulk of the plugin logic.
 
-The function squirrelmail_plugin_init_plugin_name() is called to
+The function <tt>squirrelmail_plugin_init_plugin_name()</tt> is called to
 initalize a plugin. This function could look something like this (if
-the plugin was named "demo" and resided in the directory plugins/demo/):
+the plugin was named "demo" and resided in the directory <tt>plugins/demo/</tt>):
 
 <tscreen><verb>
 function squirrelmail_plugin_init_demo () {
@@ -145,12 +155,12 @@ function squirrelmail_plugin_init_demo () {
 </verb></tscreen>
 
 Please note that as of SquirrelMail 1.5.0, this function will no longer
-be called at run time and will instead be called only once at configure-
-time.  Thus, the inclusion of any dynamic code (anything except hook
+be called at run time and will instead be called only once at configuration
+time. Thus, the inclusion of any dynamic code (anything except hook
 registration) here is strongly discouraged.
 
 In this example, the "demo" plugin should also have two other functions
-in its setup.php file called plugin_demo_header() and plugin_demo_menuline().
+in its <tt>setup.php</tt> file called <tt>plugin_demo_header()</tt> and <tt>plugin_demo_menuline()</tt>.
 The first of these might look something like this:
 <tscreen><verb>
 function plugin_demo_header()
@@ -160,19 +170,19 @@ function plugin_demo_header()
 }
 </verb></tscreen>
 
-The function called plugin_demo_header_do() would be in the file called
-functions.php in the demo plugin directory and would contain the plugin's
-core logic for the "generic_header" hook.
+The function called <tt>plugin_demo_header_do()</tt> would be in the file called
+<tt>functions.php</tt> in the <tt>demo</tt> plugin directory and would contain the plugin's
+core logic for the <tt>generic_header</tt> hook.
 
 <sect1>Hooks
 <p>
 Hooks, when executed, are called with differing parameters and may or may
 not take return values, all depending on the type of hook being called and
-the context in which it is being used.  On the source side (where the hook
+the context in which it is being used. On the source side (where the hook
 call originates), all hooks have at least one parameter, which is the
-name of the hook.  After that, things get complicated.
+name of the hook. After that, things get complicated.
 
-<sect2>Hook Types:  Parameters and Return Values
+<sect2>Hook Types: Parameters and Return Values
 <p>
 SquirrelMail uses four hook functions. do_hook(), do_hook_function(),
 concat_hook_function() and boolean_hook_function().
@@ -190,13 +200,13 @@ parameters that may have been included in the actual hook call in the source.
 Modify parameters with care!
 
 do_hook_function() was intended to be the main hook type used when the
-source needs to get something back from your plugin.  It is somewhat
+source needs to get something back from your plugin. It is somewhat
 limited in that it will only use the value returned from the LAST
-plugin registered against the hook.  The source for this hook might
+plugin registered against the hook. The source for this hook might
 use the return value for internal purposes, or might expect you to
 provide text or HTML to be sent to the client browser (you'll have to
 look at its use in context to understand how you should return values
-here).  The parameters that your hook function gets will be anything
+here). The parameters that your hook function gets will be anything
 you see AFTER the hook name in the actual hook call in the source.
 These cannot be changed in the same way that the do_hook parameters
 can be.
@@ -207,20 +217,20 @@ order to do so, the return value is assumed to be a string, which is just piled
 on top of whatever it got from the other plugins working on the same
 hook. Again, you'll have to inspect the source code to see how such data is put
 to use, but most of the time, it is used to create a string of HTML to be
-inserted into the output page.  The parameters that your hook function will get
+inserted into the output page. The parameters that your hook function will get
 are the same as for the do_hook_function; they are anything AFTER the hook name
 in the actual hook call in the source.
 
 boolean_hook_function() was introduced in SquirrelMail 1.x.x. It provides
-plugins options to "vote" for some action.  What that action is is entirely
-dependent on how the hook is used in the source (look for yourself).  Plugins
+plugins options to "vote" for some action. What that action is is entirely
+dependent on how the hook is used in the source (look for yourself). Plugins
 make their "vote" by returning boolean TRUE or FALSE values. This hook may be
 configured to "tally votes" in one of three ways. This configuration is done
 with the third parameter in the hook call in the source:
 <itemize>
-  <item>&gt; 0  --  Any one or more TRUEs will override any FALSEs
-  <item>&lt; 0  --  Any one or more FALSEs will override any TRUEs
-  <item>= 0  --  Majority wins.  Ties are broken in this case with the last
+  <item>&gt; 0 -- Any one or more TRUEs will override any FALSEs
+  <item>&lt; 0 -- Any one or more FALSEs will override any TRUEs
+  <item>= 0 -- Majority wins. Ties are broken in this case with the last
   parameter in the hook call in the source.
 </itemize>
 
@@ -347,7 +357,7 @@ preferences.
    most useful when the user has changed any identity settings - this
    is where you'll want to save any custom information you are keeping
    for each identity or catch any custom submit buttons that you may
-   have added to the identities page.  The arguments to this hook are:
+   have added to the identities page. The arguments to this hook are:
 
    <tscreen><verb>
     (SquirrelMail 1.4.4 or older and 1.5.0)
@@ -362,8 +372,8 @@ preferences.
    <tscreen><verb>
     (SquirrelMail 1.4.6+ or 1.5.1+)
       [0] = hook name (always "options_identities_process")
-      [1] = action (hook is used only in 'update' action and any custom 
-            action added to form with option_identities_table and 
+      [1] = action (hook is used only in 'update' action and any custom
+            action added to form with option_identities_table and
             option_identities_buttons hooks)
       [2] = processed identity number
    </verb></tscreen>
@@ -374,7 +384,7 @@ preferences.
    This hook is called when one of the identities is being renumbered,
    such as if the user had three identities and deletes the second -
    this hook would be called with an array that looks like this:
-   ('options_identities_renumber', 2, 1).  The arguments to this hook
+   ('options_identities_renumber', 2, 1). The arguments to this hook
    are:
 
    <tscreen><verb>
@@ -388,7 +398,7 @@ preferences.
 
   <tag/options_identities_table/
    This hook allows you to insert additional rows into the table that
-   holds each identity.  The arguments to this hook are:
+   holds each identity. The arguments to this hook are:
 
    <tscreen><verb>
       [0] = additional html attributes applied to table row.
@@ -408,20 +418,20 @@ preferences.
       }
    </verb></tscreen>
 
-   First hook argument was modified in 1.4.5/1.5.1. In SquirrelMail 1.4.1-1.4.4 
-   and 1.5.0 argument contains only background color. You should use 
+   First hook argument was modified in 1.4.5/1.5.1. In SquirrelMail 1.4.1-1.4.4
+   and 1.5.0 argument contains only background color. You should use
    <tt>&lt;tr bgcolor="&lt;?php echo $args[0]; ?&gt;"&gt;</tt> in these SquirrelMail versions.
 
    <tag/options_identities_buttons/
    This hook allows you to add a button (or other HTML) to the row of
-   buttons under each identity.  The arguments to this hook are:
+   buttons under each identity. The arguments to this hook are:
 
    <tscreen><verb>
       [0] = is this an empty section (the one at the end of the list)?
       [1] = what is the 'post' value? (ident # or empty string if default)
    </verb></tscreen>
 
-   You need to return any HTML you would like to add here.  You could add
+   You need to return any HTML you would like to add here. You could add
    a button with code similar to this:
 
    <tscreen><verb>
@@ -431,7 +441,7 @@ preferences.
       }
    </verb></tscreen>
 
-   Input element should use 'smaction[action_name][identity_no]' value in 
+   Input element should use 'smaction[action_name][identity_no]' value in
    'name' attribute, if you want to process your button actions in
    SquirrelMail 1.4.6+ and 1.5.1+ options_identity_process hook.
 </descrip>
@@ -445,11 +455,11 @@ See sample implementation of identity hooks in SquirrelMail demo plugin.
 
 <sect2>Attachment Hooks
 <p>
-When a message has attachments, this hook is called with the MIME types.  For
-instance, a .zip file hook is "attachment application/x-zip".  The hook should
+When a message has attachments, this hook is called with the MIME types. For
+instance, a .zip file hook is "attachment application/x-zip". The hook should
 probably show a link to do a specific action, such as "Verify" or "View" for a
-.zip file.  Thus, to register your plugin for .zip attachments, you'd do this
-in setup.php (assuming your plugin is called "demo"):
+.zip file. Thus, to register your plugin for .zip attachments, you'd do this
+in <tt>setup.php</tt> (assuming your plugin is called "demo"):
 
 <tscreen><verb>
    $squirrelmail_plugin_hooks['attachment application/x-zip']['demo']
@@ -457,6 +467,7 @@ in setup.php (assuming your plugin is called "demo"):
 </verb></tscreen>
 
 This is a breakdown of the data passed in the array to the hook that is called:
+
 <tscreen><verb>
   [0] = Hook's name ('attachment text/plain')
   [1] = Array of links of actions (see below) (alterable)
@@ -488,8 +499,9 @@ It's also possible to specify a hook as "attachment type0/*",
 for example "attachment text/*". This hook will be executed whenever there's
 no more specific rule available for that type.
 
-Putting all this together, the demo_handle_zip_attachment() function should
+Putting all this together, the <tt>demo_handle_zip_attachment()</tt> function should
 look like this (note the argument being passed):
+
 <tscreen><verb>
    function demo_handle_zip_attachment(&$Args)
    {
@@ -498,8 +510,8 @@ look like this (note the argument being passed):
    }
 </verb></tscreen>
 
-And the demo_handle_zip_attachment_do() function in the
-plugins/demo/functions.php file would typically (but not necessarily)
+And the <tt>demo_handle_zip_attachment_do()</tt> function in the
+<tt>plugins/demo/functions.php</tt> file would typically (but not necessarily)
 display a custom link:
 
 <tscreen><verb>
@@ -600,7 +612,7 @@ Charset totals:
 <p>
 $languages array is stored in functions/i18n.php and defines translations
 that are enabled in SquirrelMail. Since SquirrelMail 1.5.1 functions/i18n.php
-stores only English entry. Other languages are loaded automatically from 
+stores only English entry. Other languages are loaded automatically from
 locale/&lt;language_code&gt;/setup.php files.
 
 Format of array:
@@ -621,11 +633,11 @@ Possible array key names:
   <tag/ALTNAME/ Native translation name. Any 8bit symbols must be html encoded.
               Name is visible when $show_alternative_names is enabled.
   <tag/LOCALE/ Full locale name (in xx_XX.charset format or other format required
-              by php gettext functions). From 1.4.4/1.5.1 'value' can contain
-              array. If php version is older than 4.3.0, system uses only first
-              locale name listed in array. First locale name must be compatible 
+              by PHP gettext functions). From 1.4.4/1.5.1 'value' can contain
+              array. If PHP version is older than 4.3.0, system uses only first
+              locale name listed in array. First locale name must be compatible
               with FreeBSD system locale names.
-  <tag/DIR/ Text direction. Used to define Right-to-Left languages. Possible 
+  <tag/DIR/ Text direction. Used to define Right-to-Left languages. Possible
               values 'rtl' or 'ltr'. If undefined - defaults to 'ltr'.
   <tag/XTRA_CODE/ translation uses special functions. (see chapter about XTRA_CODE functions)
 </descrip>
@@ -681,8 +693,8 @@ question marks. utf-8 decoding function does not enable decoding of five and six
 byte utf-8 symbols by default (code is commented) and replaces all incorrectly
 formated 8bit symbols with question marks.
 
-Some decoding functions might require php recode extension or php 4.3+ mbstring
-extension. If your php installation does not support them, you might be using 
+Some decoding functions might require PHP recode extension or PHP 4.3+ mbstring
+extension. If your PHP installation does not support them, you might be using
 slower and cpu/memory intensive functions.
 
 <sect1>IMAP folder names
@@ -690,8 +702,8 @@ slower and cpu/memory intensive functions.
 IMAP folder names use UTF7-IMAP charset. Folder names that are stored in
 conf.pl must be encoded in UTF7-IMAP charset. SquirrelMail uses internal
 functions that convert folder names from/to utf7-imap charset. By default those
-functions work with iso-8859-1 charset. Other charsets are supported only 
-when php mbstring extension supports them.
+functions work with iso-8859-1 charset. Other charsets are supported only
+when PHP mbstring extension supports them.
 
 TODO: write independent implementation of charset to utf7-imap conversion.
 
@@ -699,21 +711,21 @@ TODO: write independent implementation of charset to utf7-imap conversion.
 <p>
 Since v.1.5.1 SquirrelMail includes support of plural forms. It allows to use
 correct translation forms with numbers. For example. "We have %s squirrel on
-the roof." and "We have %s squirrels on the roof." can be written in one 
+the roof." and "We have %s squirrels on the roof." can be written in one
 function call without checking actual number for squirrels. Gettext functions
 also deal with non English languages that might use different word forms for
 two, five, ten or more units.
 
-Support is provided by ngettext functions that exist in php gettext extension 
-from php 4.2.0 and by ngettext function replacements from php-gettext classes 
+Support is provided by ngettext functions that exist in PHP gettext extension
+from PHP 4.2.0 and by ngettext function replacements from php-gettext classes
 (http://savannah.nongnu.org/projects/php-gettext). In order to use it correctly
-when php gettext extension does not have ngettext support, SquirrelMail uses
+when PHP gettext extension does not have ngettext support, SquirrelMail uses
 bindtextdomain and textdomain wrappers that load missing functions.
 
-If plugins want to use ngettext functions without increasing php requirements
-to 4.2.0 with gettext support, they should require SquirrelMail 1.5.1, use 
-sq_bindtextdomain function instead of bindtextdomain and use sq_textdomain 
-function instead of textdomain function. If SquirrelMail wrapper functions 
+If plugins want to use ngettext functions without increasing PHP requirements
+to 4.2.0 with gettext support, they should require SquirrelMail 1.5.1, use
+sq_bindtextdomain function instead of bindtextdomain and use sq_textdomain
+function instead of textdomain function. If SquirrelMail wrapper functions
 are used, there is no need to issue sq_bindtextdomain when plugins reverts to
 SquirrelMail domain.
 
@@ -729,11 +741,11 @@ Environment is setup automatically when include/validate.php is loaded.
 SquirrelMail gets interface language from three places:
  a) user preference. It is set in Options -> Display Preferences -> Language.
     preference uses language key. If user's preferences are not available (user
-    is not logged in), system tries to extract language value from 
+    is not logged in), system tries to extract language value from
     'squirrelmail_language' cookie.
- b) default SquirrelMail language that is set in configuration 
+ b) default SquirrelMail language that is set in configuration
     ($squirrelmail_default_language variable).
- c) preferred language setting provided by browser. It is used only when default 
+ c) preferred language setting provided by browser. It is used only when default
     SquirrelMail language is set to empty string
 
 If language information is not available, SquirrelMail falls back to US English
@@ -741,21 +753,21 @@ translation.
 
 <sect1>Time zones
 <p>
-If php install allows modifying environment variable TZ, SquirrelMail allows
+If the PHP install allows modifying environment variable TZ, SquirrelMail allows
 end users to select different time zone in their preferences. It can be set in
 Options -> Personal Information -> Your current timezone. Time zone is
 setup automatically when include/validate.php is loaded.
 
-If TZ variable can't be modified (php is running is safe mode and variable 
-is not listed in php safe_mode_allowed_env_vars), user's time zone options are
+If TZ variable can't be modified (PHP is running is safe mode and variable
+is not listed in PHP safe_mode_allowed_env_vars), user's time zone options are
 not visible and interface use default webserver's time zone.
 
-SquirrelMail 1.5.0 and older store list of available time zones in 
-<tt>locale/timezones.cfg</tt>. Since 1.5.1 standard times zones are moved to 
+SquirrelMail 1.5.0 and older store list of available time zones in
+<tt>locale/timezones.cfg</tt>. Since 1.5.1 standard times zones are moved to
 <tt>include/timezones/standard.php</tt> and time zone handling differs from older
 SquirrelMail versions. Time zone configuration is controlled in SquirrelMail
 configuration utility (<tt/conf.pl/), 4. General Options &gt; 15. Time zone
-configuration menu option. Administrator can select standard, strict, custom 
+configuration menu option. Administrator can select standard, strict, custom
 and custom strict time zone handling.
 
 Standard handling does not differ from previous SquirrelMail versions and
@@ -843,15 +855,15 @@ savings specific to selected geographical location. Strict time zones might
 provide inaccurate or outdated time zone settings.
 
 If modifications in TZ environment are visible in your webserver's logs (time
-offset is changed), make sure that you can reproduce such behavior in latest php
-version and report bug to php developers. Issue can be fixed by blocking use of
-time zone (php safe mode and TZ is not listed in safe_mode_allowed_env_vars
-setting or forced_prefs plugin) or by attaching special php script with 
-putenv('TZ=some time zone') call in php auto_append_file setting (suggestion is
+offset is changed), make sure that you can reproduce such behavior in latest PHP
+version and report bug to PHP developers. Issue can be fixed by blocking use of
+time zone (PHP safe mode and TZ is not listed in safe_mode_allowed_env_vars
+setting or forced_prefs plugin) or by attaching special PHP script with
+putenv('TZ=some time zone') call in PHP auto_append_file setting (suggestion is
 not tested and you might have to fix all SquirrelMail exit calls).
 
 Please note, that use of auto_append_file provides only temporally workaround
-and does not fix your php setup. Script that runs as unprivileged user, should
+and does not fix your PHP setup. Script that runs as unprivileged user, should
 be unable to affect webserver's logging system.
 
 <sect1>htmlspecialchars vs htmlentities
@@ -867,7 +879,7 @@ iso-8859-1 symbols. Other charsets use same 8bit ranges to store different
 symbols.
 
 htmlspecialchars() sanitizes only three, four or five 7bit symbols
-(&amp;, &dquot;, ', &lt; and &gt;). htmlspecialchars() breaks only 
+(&amp;, &dquot;, ', &lt; and &gt;). htmlspecialchars() breaks only
 <url url="http://en.wikipedia.org/wiki/ISO_2022" name="ISO-2022">
 charsets and html encoded strings.
 
@@ -879,11 +891,11 @@ PHP v.4.1.0 and list of supported charsets is limited. Fallback charset is same
 good old and dangerous ISO-8859-1.
 
 Differences between two functions can be examined in <url
-url="http://www.php.net/get-html-translation-table" 
+url="http://www.php.net/get-html-translation-table"
 name="get_html_translation_table()"> function.
 
 If SquirrelMail charset decoding functions are used, they should apply
-htmlspecialchars to decoded string automatically. Second use of 
+htmlspecialchars to decoded string automatically. Second use of
 htmlspecialchars() might break decoded strings.
 
 <sect>Links
