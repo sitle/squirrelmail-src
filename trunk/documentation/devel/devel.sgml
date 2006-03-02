@@ -608,7 +608,7 @@ Charset totals:
   <item>euc-kr       = 1
 </itemize>
 
-<sect1>The <tt>$languages array</tt>
+<sect1>The <tt>$languages</tt> array
 <p>
 The <tt>$languages</tt> array is stored in <tt>functions/i18n.php</tt> and defines translations
 that are enabled in SquirrelMail. Since SquirrelMail 1.5.1 <tt>functions/i18n.php</tt>
@@ -869,7 +869,7 @@ be unable to affect webserver's logging system.
 <p>
 PHP provides <url
 url="http://www.php.net/htmlspecialchars" name="htmlspecialchars()"> and <url
-url="http://www.php.net/htmlentities" name="htmlentities()"> functions for html string
+url="http://www.php.net/htmlentities" name="htmlentities()"> functions for HTML string
 sanitizing. If developers want to sanitize HTML formating symbols, they should
 use <tt>htmlspecialchars()</tt> and avoid using <tt>htmlentities()</tt>.
 
@@ -894,7 +894,7 @@ url="http://www.php.net/get-html-translation-table"
 name="get_html_translation_table()"> function.
 
 If SquirrelMail charset decoding functions are used, they should apply
-htmlspecialchars to decoded string automatically. Second use of
+<tt>htmlspecialchars()</tt> to decoded string automatically. Second use of
 <tt>htmlspecialchars()</tt> might break decoded strings.
 
 <sect>Links
