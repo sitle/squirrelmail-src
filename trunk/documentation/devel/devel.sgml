@@ -187,7 +187,7 @@ name of the hook. After that, things get complicated.
 SquirrelMail uses four hook functions. do_hook(), do_hook_function(),
 concat_hook_function() and boolean_hook_function().
 
-do_hook() function is simple function that allows to inject custom html or
+do_hook() function is simple function that allows to inject custom HTML or
 override default interface data. Function does not pass any data and doesn't ask
 for anything back. A limited number of do_hook calls do pass some extra
 parameters, in which case your plugin may modify the given data if you do so by
@@ -401,7 +401,7 @@ preferences.
    holds each identity. The arguments to this hook are:
 
    <tscreen><verb>
-      [0] = additional html attributes applied to table row.
+      [0] = additional HTML attributes applied to table row.
             use it like this in your plugin:
                <tr "<?php echo $args[0]; ?>">
       [1] = is this an empty section (the one at the end of the list)?
@@ -535,7 +535,7 @@ provide information about some aspects of implementation.
 
 <sect1>Supported languages
 <p>
-Valid language codes are (<em>List depends on SquirrelMail version</em>):
+Valid language codes are (<em>list depends on SquirrelMail version</em>):
 <itemize>
   <item>ar    - Arabic, windows-1256 charset
   <item>bg_BG - Bulgarian, windows-1251 charset
@@ -608,12 +608,12 @@ Charset totals:
   <item>euc-kr       = 1
 </itemize>
 
-<sect1>$languages array
+<sect1>The <tt>$languages array</tt>
 <p>
-$languages array is stored in functions/i18n.php and defines translations
-that are enabled in SquirrelMail. Since SquirrelMail 1.5.1 functions/i18n.php
+The <tt>$languages</tt> array is stored in <tt>functions/i18n.php</tt> and defines translations
+that are enabled in SquirrelMail. Since SquirrelMail 1.5.1 <tt>functions/i18n.php</tt>
 stores only English entry. Other languages are loaded automatically from
-locale/&lt;language_code&gt;/setup.php files.
+<tt>locale/&lt;language_code&gt;/setup.php</tt> files.
 
 Format of array:
 <tscreen><verb>
@@ -622,15 +622,15 @@ Format of array:
 
 Possible array key names:
 <descrip>
-  <tag/NAME/ Translation name in English. Any 8bit symbols must be html encoded.
+  <tag/NAME/ Translation name in English. Any 8bit symbols must be HTML encoded.
   <tag/CHARSET/ Charset used by translation
   <tag/ALIAS/ 'language_code' should contain short language name
-              (iso-639). 'value' should contain name of other 'language_code'
+              (ISO-639). 'value' should contain name of other 'language_code'
               that defines translation with NAME and CHARSET keys.
               Entry links short language form with long form (language+country).
               See: http://www.loc.gov/standards/iso639-2/langhome.html and
               http://www.iso.org/iso/en/prods-services/iso3166ma/02iso-3166-code-lists/list-en1.html
-  <tag/ALTNAME/ Native translation name. Any 8bit symbols must be html encoded.
+  <tag/ALTNAME/ Native translation name. Any 8bit symbols must be HTML encoded.
               Name is visible when $show_alternative_names is enabled.
   <tag/LOCALE/ Full locale name (in xx_XX.charset format or other format required
               by PHP gettext functions). From 1.4.4/1.5.1 'value' can contain
@@ -650,38 +650,38 @@ optional.
 XTRA_CODE functions provide way to change interface behavior, when translation
 requires special handling of some SquirrelMail functions. Functions are enabled
 by setting XTRA_CODE option in $languages array and including appropriate
-functions in functions/i18n.php. First part of function name is word listed in
+functions in <tt>functions/i18n.php</tt>. First part of function name is word listed in
 $languages['language_code']['XTRA_CODE'] value. Second part is one of special
 keywords. Possible keywords:
 <descrip>
- <tag/_decode/ Used in src/compose.php, src/i18n.php, src/view_text.php, functions/mime.php
-Requires mbstring support
+ <tag/_decode/ Used in <tt>src/compose.php</tt>, <tt>src/i18n.php</tt>, <tt>src/view_text.php</tt>, and <tt>functions/mime.php</tt>.
+Requires mbstring support.
 
- <tag/_encode/ Used in src/compose.php, src/read_body.php
+ <tag/_encode/ Used in <tt>src/compose.php</tt>, and <tt>src/read_body.php</tt>.
 
- <tag/_encodeheader/ Used in functions/mime.php. Should accept one string
+ <tag/_encodeheader/ Used in <tt>functions/mime.php</tt>. Should accept one string
  argument and return correctly encoded MIME header string.
 
- <tag/_decodeheader/ Used in functions/mime.php. Returning function
+ <tag/_decodeheader/ Used in <tt>functions/mime.php</tt>. Returning function
 
- <tag/_downloadfilename/ Used in functions/mime.php
+ <tag/_downloadfilename/ Used in <tt>functions/mime.php</tt>.
 
- <tag/_utf7_imap_encode/ Used in functions/imap_utf7_local.php. Returning function
+ <tag/_utf7_imap_encode/ Used in <tt>functions/imap_utf7_local.php</tt>. Returning function
 
- <tag/_utf7_imap_decode/ Used in functions/imap_utf7_local.php. Returning function
+ <tag/_utf7_imap_decode/ Used in <tt>functions/imap_utf7_local.php</tt>. Returning function
 
- <tag/_strimwidth/ Used in functions/mailbox_display.php. Returning function
+ <tag/_strimwidth/ Used in <tt>functions/mailbox_display.php</tt>. Returning function
 
- <tag/_wordwrap/ Used in functions/strings.php (sqWordWrap)
+ <tag/_wordwrap/ Used in <tt>functions/strings.php</tt> (sqWordWrap).
 </descrip>
 
 <sect1>Display of different charsets
 <p>
-When SquirrelMail generates html pages, it uses charset defined in translation
+When SquirrelMail generates HTML pages, it uses charset defined in translation
 selected by end user. Interface can display emails encoded in different
 charsets. In order to display characters that might be unsupported by user's
 charset, SquirrelMail uses decoding functions that convert non us-ascii symbols
-into html entities. All decoding functions are stored in functions/decode/
+into HTML entities. All decoding functions are stored in functions/decode/
 directory.
 
 By default SquirrelMail includes decoding functions that support iso-8859-x,
@@ -689,8 +689,8 @@ windows-125x, utf-8, us-ascii, koi8-r, koi8-u, tis-620, ns-4551_1, iso-ir-111,
 cp855 and cp866 charsets. Other decoding functions are distributed in separate
 packages. Separate packaging of decoding functions is supported from
 SquirrelMail 1.4.4 and 1.5.0. us-ascii decoding replaces all 8bit symbols with
-question marks. utf-8 decoding function does not enable decoding of five and six
-byte utf-8 symbols by default (code is commented) and replaces all incorrectly
+question marks. UTF-8 decoding function does not enable decoding of five and six
+byte UTF-8 symbols by default (code is commented) and replaces all incorrectly
 formated 8bit symbols with question marks.
 
 Some decoding functions might require PHP recode extension or PHP 4.3+ mbstring
@@ -701,15 +701,15 @@ slower and cpu/memory intensive functions.
 <p>
 IMAP folder names use UTF7-IMAP charset. Folder names that are stored in
 conf.pl must be encoded in UTF7-IMAP charset. SquirrelMail uses internal
-functions that convert folder names from/to utf7-imap charset. By default those
-functions work with iso-8859-1 charset. Other charsets are supported only
+functions that convert folder names from/to UTF7-IMAP charset. By default those
+functions work with ISO-8859-1 charset. Other charsets are supported only
 when PHP mbstring extension supports them.
 
-TODO: write independent implementation of charset to utf7-imap conversion.
+TODO: write independent implementation of charset to UTF7-IMAP conversion.
 
 <sect1>Plural forms
 <p>
-Since v.1.5.1 SquirrelMail includes support of plural forms. It allows to use
+Since 1.5.1 SquirrelMail includes support of plural forms. It allows to use
 correct translation forms with numbers. For example. "We have %s squirrel on
 the roof." and "We have %s squirrels on the roof." can be written in one
 function call without checking actual number for squirrels. Gettext functions
@@ -732,11 +732,10 @@ SquirrelMail domain.
 More information about ngettext and plural forms can be found at:
 http://www.gnu.org/software/gettext/manual/html_chapter/gettext_10.html#SEC150
 
-
 <sect1>Language setup
 <p>
-SquirrelMail uses set_up_language() function to setup language environment.
-Environment is setup automatically when include/validate.php is loaded.
+SquirrelMail uses <tt>set_up_language()</tt> function to setup language environment.
+Environment is setup automatically when <tt>include/validate.php</tt> is loaded.
 
 SquirrelMail gets interface language from three places:
  a) user preference. It is set in Options -> Display Preferences -> Language.
@@ -756,7 +755,7 @@ translation.
 If the PHP install allows modifying environment variable TZ, SquirrelMail allows
 end users to select different time zone in their preferences. It can be set in
 Options -> Personal Information -> Your current timezone. Time zone is
-setup automatically when include/validate.php is loaded.
+setup automatically when <tt>include/validate.php</tt> is loaded.
 
 If TZ variable can't be modified (PHP is running is safe mode and variable
 is not listed in PHP safe_mode_allowed_env_vars), user's time zone options are
@@ -866,27 +865,27 @@ Please note, that use of auto_append_file provides only temporally workaround
 and does not fix your PHP setup. Script that runs as unprivileged user, should
 be unable to affect webserver's logging system.
 
-<sect1>htmlspecialchars vs htmlentities
+<sect1><tt>htmlspecialchars()</tt> vs <tt>htmlentities()</tt>
 <p>
 PHP provides <url
 url="http://www.php.net/htmlspecialchars" name="htmlspecialchars()"> and <url
 url="http://www.php.net/htmlentities" name="htmlentities()"> functions for html string
-sanitizing. If developers want to sanitize html formating symbols, they should
-use htmlspecialchars() and avoid using htmlentities().
+sanitizing. If developers want to sanitize HTML formating symbols, they should
+use <tt>htmlspecialchars()</tt> and avoid using <tt>htmlentities()</tt>.
 
-htmlentities() by default uses iso-8859-1 charset. It sanitizes 8bit
-iso-8859-1 symbols. Other charsets use same 8bit ranges to store different
+<tt>htmlentities()</tt> by default uses ISO-8859-1 charset. It sanitizes 8bit
+ISO-8859-1 symbols. Other charsets use same 8bit ranges to store different
 symbols.
 
-htmlspecialchars() sanitizes only three, four or five 7bit symbols
-(&amp;, &dquot;, ', &lt; and &gt;). htmlspecialchars() breaks only
+<tt>htmlspecialchars()</tt> sanitizes only three, four or five 7bit symbols
+(&amp;, &dquot;, ', &lt; and &gt;). <tt>htmlspecialchars()</tt> breaks only
 <url url="http://en.wikipedia.org/wiki/ISO_2022" name="ISO-2022">
-charsets and html encoded strings.
+charsets and HTML encoded strings.
 
 ISO-2022 charsets use 7bit ranges to store different symbols. Used
-encoding table depends on escape sequences present in iso-2022 text.
+encoding table depends on escape sequences present in ISO-2022 text.
 
-charset option is added to htmlentities() and htmlspecialchars() only in
+charset option is added to <tt>htmlentities()</tt> and <tt>htmlspecialchars()</tt> only in
 PHP v.4.1.0 and list of supported charsets is limited. Fallback charset is same
 good old and dangerous ISO-8859-1.
 
@@ -896,7 +895,7 @@ name="get_html_translation_table()"> function.
 
 If SquirrelMail charset decoding functions are used, they should apply
 htmlspecialchars to decoded string automatically. Second use of
-htmlspecialchars() might break decoded strings.
+<tt>htmlspecialchars()</tt> might break decoded strings.
 
 <sect>Links
 <p>
