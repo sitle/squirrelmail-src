@@ -1,20 +1,21 @@
 # translation of html_mail.po to Nynorsk
 # This file is distributed under the same license as the html_mail plugin.
-# Copyright (c) 2005 The Squirrelmail Project Team
-# Ola Ketil Siqveland <olaketil@hotmail.com>, 2005
+# Copyright (c) 2005-2006 The Squirrelmail Project Team
+# Ola Ketil Siqveland <olaketil@hotmail.com>, 2005-2006.
 # $Id$
 msgid ""
 msgstr ""
-"Project-Id-Version: html_mail\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-06-15 01:34-0700\n"
-"PO-Revision-Date: 2005-08-03 10:23+0200\n"
+"Project-Id-Version: html_mail 2.3\n"
+"POT-Creation-Date: 2005-10-24 21:00+0300\n"
+"PO-Revision-Date: 2006-03-03 23:57+0100\n"
 "Last-Translator: Ola Ketil Siqveland <olaketil@hotmail.com>\n"
 "Language-Team: Nynorsk <nn@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=ISO-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.0.1\n"
+
+msgid "ERROR (%s): can't load config file"
+msgstr "FEIL (%s) kan ikkje laste inn oppsettfila"
 
 msgid "HTML"
 msgstr "HTML"
@@ -32,7 +33,6 @@ msgstr "Rein tekst"
 msgid "Compose in HTML"
 msgstr "Skriv i HTML"
 
-#, c-format
 msgid ""
 "FATAL: HTML_Mail plugin must come AFTER %s in plugins array.  Please modify "
 "plugin order using conf.pl or by editing config/config.php"
