@@ -1,108 +1,130 @@
-# translation of change_mysqlpass.po to Nynorsk
-# This file is distributed under the same license as the PACKAGE package.
-# Copyright (c) 2004-2005 SquirrelMail Project Team
-# Ola Ketil Siqveland <olaketil@hotmail.com>, 2004.
+# translation of change_sqlpass.po to Nynorsk
+# This file is distributed under the same license as the SquirrelMail package.
+# Copyright (c) 2004-2006 SquirrelMail Project Team
+# Ola Ketil Siqveland <olaketil@hotmail.com>, 2004-2006.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: change_mysqlpass\n"
-"POT-Creation-Date: 2002-10-24 22:19-0700\n"
-"PO-Revision-Date: 2004-02-04 21:23+0100\n"
+"Project-Id-Version: change_sqlpass 3.3\n"
+"POT-Creation-Date: 2005-11-11 23:06-0800\n"
+"PO-Revision-Date: 2006-03-03 23:53+0100\n"
 "Last-Translator: Ola Ketil Siqveland <olaketil@hotmail.com>\n"
 "Language-Team: Nynorsk <nn@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=ISO-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.0.2\n"
 
-#: setup.php:208
-msgid "Password change cancelled."
-msgstr "Passord endring annullert."
+msgid "Could not find Pear DB library"
+msgstr "Kan ikkje finna Pear DB biblioteket"
 
-#: setup.php:208
-msgid "Your password has NOT been changed."
-msgstr "Passordet ditt er IKKJE endra."
+msgid "Could not make database connection"
+msgstr "Kan ikkje kople til databasen"
 
-#: setup.php:211
-msgid "Password changed successfully."
-msgstr "Vellukka passord endring."
+#, php-format
+msgid "DATABASE ERROR: could not lookup force change password flag: %s"
+msgstr "DATABASE FEIL: kan ikkje slå opp endra passord flag: %s"
 
-#: setup.php:208
-msgid "Please use your new password to log in from now on."
-msgstr "Bruk nytt passord til innlogging frå nå av."
+#, php-format
+msgid ""
+"Force change password query result is: %s<br />Query was: %s<br /><br />"
+msgstr ""
+"Tvungen bytte av passord resultat er %s <br/> Spørsmålet var: %s<br/><br/>"
 
-#: options.php:143
 msgid "Change Password"
 msgstr "Endra passord"
 
-#: options.php:143
-msgid "Secure"
-msgstr "Trygg"
+msgid "Use this to change your email password."
+msgstr "Bruk denne for å endra epostpassordet."
 
-#: options.php:170
+msgid ""
+"Password changed successfully.<br />Please use your new password to log in "
+"from now on."
+msgstr ""
+"Vellukka endring av passord.<br/>Bruk nytt passord til innlogging frå nå av."
+
+msgid "Password change cancelled.<br />Your password has NOT been changed."
+msgstr "Passordet endring avbroten.<br/> Passordet er ikkje endra."
+
+msgid ""
+"Periodically, we ask that you change your password.  This is done to help "
+"maintain good security for your email account."
+msgstr ""
+"Med jamne mellomrom, spør ein om ein skal endra passord. Dette er gjort til "
+"hjelp for å halda eit sikkert epostsystem."
+
+msgid "Change Password - Secure"
+msgstr "Endra passord - trygt"
+
 msgid "Old Password"
 msgstr "Gammalt passord"
 
-#: options.php:174
 msgid "New Password"
 msgstr "Nytt passord"
 
-#: options.php:178
 msgid "Verify New Password"
 msgstr "Stadfest nytt passord"
 
-#: options.php:184
-msgid "Submit"
-msgstr "Send"
-
-#: options.php:189
 msgid "Cancel"
 msgstr "Avbryt"
 
-#: options.php:227
-msgid "You must type in your old password."
-msgstr "skriv inn gammalt passord."
+#, php-format
+msgid "DATABASE ERROR: could not lookup salt: %s"
+msgstr "DATABASE FEIL: Kan ikkje finna salt: %s"
 
-#: options.php:229
-msgid "You must type in a new password."
-msgstr "Skriv in nytt passord."
+#, php-format
+msgid "Password query result is: %s<br />Query was: %s<br /><br />"
+msgstr "Passord oppslag resultat: %s<br/> Oppslag var %s<br/><br/>"
 
-#: options.php:232
-msgid "You must also type in your new password in the verify box."
-msgstr "Skriv inn nytt passord i kontroll boksen."
+msgid "You must type in your old password"
+msgstr "Skriv inn gammalt passord."
 
-#: options.php:235
-msgid "Your new password does not match the verify password."
-msgstr "Nytt passord og kontroll passord er ikkje like."
-
-#: options.php:237
-msgid "Your old password is not correct."
+msgid "Your old password is not correct"
 msgstr "Gammalt passord er ikkje korrekt."
 
-#: options.php:240
-msgid "Your new password must be different than your old password."
+#, php-format
+msgid "DATABASE ERROR: could not lookup old password: %s"
+msgstr "DATABASE FEIL: Kan ikkje slåopp gamalt passord: %s"
+
+msgid "Your old password does not match"
+msgstr "Gammalt passord er passar ikkje"
+
+msgid "You must type in a new password"
+msgstr "Skriv in eit nytt passord."
+
+#, php-format
+msgid "Your new password is too short.  It must be at least %s characters long"
+msgstr "Nytt passord er for kort. Det må minst vera %s karakterar langt"
+
+#, php-format
+msgid ""
+"Your new password is too long.  It must be no more than %s characters long"
+msgstr "Nytt passord er for langt. Det må ikkje vera lengre enn %s teikn"
+
+msgid "Please include at least one digit in your new password"
+msgstr "Ha med minst eit siffer i ditt nye passord"
+
+msgid "Please include at least one upper-case letter in your new password"
+msgstr "Ha med minst ein stor bokstav i ditt nye passord"
+
+msgid "Please include at least one lower-case letter in your new password"
+msgstr "Ha med minst ein liten bokstav i ditt nye passord"
+
+msgid ""
+"Please include at least one non-alphanumeric character (such as @, - or _) "
+"in your new password"
+msgstr ""
+"Ha med minst ein ikkje alfanummerisk teikn (slik som @, - eller _) i ditt "
+"nye passord"
+
+msgid "You must also type in your new password in the verify box"
+msgstr "Må altid skriva inn nytt passord i kontroll boksen."
+
+msgid "Your new password does not match the verify password"
+msgstr "Nytt passord og kontroll passord er ikkje like."
+
+msgid "Your new password must be different than your old password"
 msgstr "Nytt passord må vera forskjelleg frå gammalt passord."
 
-#: options.php:294
-msgid "Cannot connect to Database Server, please try later!"
-msgstr "Kan ikkje kopla til database tenar, prøv seinare!"
-
-#: options.php:299
-msgid "Database not found on server"
-msgstr "Database fins ikkje på tenar"
-
-#: options.php:364
-msgid "SQL call failed, try again later."
-msgstr "SQL misslukka, prøv seinare."
-
-#: options.php:379 options.php:386
-msgid "Strange, your old password does not match the database... rejecting."
-msgstr "Merkeleg, gammalt passord passar ikkje med databasen....forkast"
-
-#: options.php:391
-msgid "Duplicate login entries detected, cannot change password!"
-msgstr "Fant dupliserte innloggings oppføringar, kan ikkje endra passordet!"
-
-#: options.php:468
-msgid "Password change was not successful!"
-msgstr "Passord endringa feilet!"
+#, php-format
+msgid "DATABASE ERROR: could not update password: %s"
+msgstr "DATABASE FEIL: kan ikkje opdatera passordet: %s"

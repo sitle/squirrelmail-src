@@ -1,23 +1,42 @@
 # translation of amavisnewsql.po to Nynorsk
-# This file is distributed under the same license as the PACKAGE package.
+# This file is distributed under the same license as the SquirrelMail package.
 # Copyright (c) 2004-2005 SquirrelMail Project Team
-# Ola Ketil Siqveland <olaketil@hotmail.com>, 2004
+# Ola Ketil Siqveland <olaketil@hotmail.com>, 2004-2006.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: amavisnewsql\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-04-16 16:20+0300\n"
-"PO-Revision-Date: 2004-06-15 07:51+0200\n"
+"Project-Id-Version: amavisnewsql 0.8.0\n"
+"POT-Creation-Date: 2005-07-26 20:04+0300\n"
+"PO-Revision-Date: 2006-03-03 23:33+0100\n"
 "Last-Translator: Ola Ketil Siqveland <olaketil@hotmail.com>\n"
 "Language-Team: Nynorsk <nn@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=ISO-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.0.1\n"
 
-msgid "Edit Address"
-msgstr "Rediger adressa"
+msgid "Never"
+msgstr "Aldri"
+
+msgid "Week Days"
+msgstr "Vekedagar"
+
+msgid "Weekly"
+msgstr "I veka"
+
+msgid "Monthly"
+msgstr "Kvar månad"
+
+msgid "Daily"
+msgstr "Dagleg"
+
+msgid " Days"
+msgstr " Dagar"
+
+msgid "Quarantine"
+msgstr "Karantene"
+
+msgid "Reject"
+msgstr "Nekt mottak"
 
 msgid "Add New Address"
 msgstr "Legg til ny adresse"
@@ -43,6 +62,9 @@ msgstr "koplett del før domene"
 msgid "domain only including the "
 msgstr "bare domene inkluderer"
 
+msgid "Whitelist Everyone In Your Address Book"
+msgstr "Kvitliste Alle i adresseboka"
+
 msgid "Type:"
 msgstr "Type:"
 
@@ -54,12 +76,6 @@ msgstr "Svarteliste"
 
 msgid "Priority:"
 msgstr "Prioritet:"
-
-msgid "Whitelist Everyone In Your Address Book"
-msgstr "Kvitliste Alle i adresseboka"
-
-msgid "Global White/Black Lists"
-msgstr "Global Kvit/Svart-liste"
 
 msgid "Address"
 msgstr "Adresse"
@@ -93,12 +109,6 @@ msgstr "Action"
 
 msgid "No Personal Addresses Defined"
 msgstr "Inga personlege adresser definert"
-
-msgid "Edit"
-msgstr "Rediger"
-
-msgid "Delete"
-msgstr "Slett"
 
 msgid "Description"
 msgstr "Skildring"
@@ -153,12 +163,6 @@ msgstr "Noverande:"
 msgid "Week Days (Default)"
 msgstr "Veke dagar (standard)"
 
-msgid "Never"
-msgstr "Aldri"
-
-msgid "Daily"
-msgstr "Dagleg"
-
 msgid "Weekly (Friday)"
 msgstr "Kvar veke (Fredag)"
 
@@ -190,6 +194,19 @@ msgstr "20 dagar"
 
 msgid "30 Days"
 msgstr "30 dagar"
+
+msgid ""
+"Should messages be quarantined or rejected when reaching the higher Score "
+"Level?"
+msgstr ""
+"Skal melding i karantene eller nekta mottaking når ein når eit høgt "
+"poengnivå?"
+
+msgid "Use Quarantine"
+msgstr "Bruk karantene"
+
+msgid "Reject High Scoring Email"
+msgstr "Nekt å motta epost med høgt poengnivå"
 
 msgid "Set Quarantine Policy"
 msgstr "Vel karantene reglar"
@@ -253,9 +270,6 @@ msgstr ""
 "stoppa. Når eigendefinert kvitliste aukar kan ein justera desse to nivåa for "
 "å merke og blokkera meir søppel."
 
-msgid "No Messages in Quarantine"
-msgstr "Inga melding i karantene"
-
 msgid "Select Action"
 msgstr "Vel handling"
 
@@ -274,11 +288,11 @@ msgstr "Send"
 msgid "Messages hilighted in RED likely contain viruses!"
 msgstr "Meldingar merkert i RAUD kan henda inneheld virus!"
 
-msgid "Toggle All"
-msgstr "Slå av/på alt"
-
 msgid "Spam Assassin Settings"
 msgstr "Spam Assassin oppsett"
+
+msgid "No Messages in Quarantine"
+msgstr "Inga melding i karantene"
 
 msgid "From"
 msgstr "Frå"
@@ -292,6 +306,12 @@ msgstr "Emne"
 msgid "Score"
 msgstr "Poeng"
 
+msgid "Next"
+msgstr "Neste"
+
+msgid "Previous"
+msgstr "Forrige"
+
 msgid "Whitelist Sender"
 msgstr "Kvitliste avsendar"
 
@@ -302,5 +322,5 @@ msgstr ""
 "Her kan du definera ei eigen kvit/svare-liste og tilpassa søppel poeng "
 "reglane."
 
-msgid "[Quarantine]"
-msgstr "[Karantene]"
+msgid "[Quarantine] "
+msgstr "[Karantene] "
