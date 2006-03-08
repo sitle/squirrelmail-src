@@ -8,6 +8,8 @@ Version 1.4.7 - CVS
   - Security: Possible cookie theft in src/redirect.php if
     register_globals is enabled, and malicous site is running
 	in same domain.
+  - Issue loading options page always loaded the prefs 
+    initial_value on display, instead of the users' value.
 
 Version 1.4.6 - 23 February 2006
 --------------------------------
