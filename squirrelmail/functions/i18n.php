@@ -834,11 +834,11 @@ $languages['zh_CN']['CHARSET'] = 'gb2312';
 $languages['zh_CN']['LOCALE']  = 'zh_CN.GB2312';
 $languages['cn']['ALIAS']      = 'zh_CN';
 
-/*
 $languages['uk_UA']['NAME']    = 'Ukrainian';
-$languages['uk_UA']['CHARSET'] = 'koi8-u';
+$languages['uk_UA']['CHARSET'] = 'utf-8';
+$languages['uk_UA']['LOCALE']  = array('uk_UA.UTF-8','uk_UA','uk');
 $languages['uk']['ALIAS'] = 'uk_UA';
-*/
+
 /*
 $languages['vi_VN']['NAME']    = 'Vietnamese';
 $languages['vi_VN']['CHARSET'] = 'utf-8';
