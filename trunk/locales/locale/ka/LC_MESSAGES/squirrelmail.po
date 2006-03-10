@@ -5,11 +5,11 @@
 # $Id$
 msgid ""
 msgstr ""
-"Project-Id-Version: SquirrelMail 1.4.5\n"
+"Project-Id-Version: squirrelmail 1.4.5\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2005-06-05 00:27+0200\n"
-"PO-Revision-Date: 2006-02-09 23:26+0400\n"
-"Last-Translator: თამუნია <tamuniach@gmail.com>\n"
+"PO-Revision-Date: 2006-02-13 16:14+0400\n"
+"Last-Translator: თამუნა <tamuniach@gmail.com>\n"
 "Language-Team: Georgian <squirrelmail-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
@@ -17,7 +17,7 @@ msgstr ""
 "X-Poedit-Country: GEORGIA\n"
 
 msgid "Address Book"
-msgstr "წიგნაკი"
+msgstr "მისამართთა წიგნაკი"
 
 msgid "Name"
 msgstr "სახელი"
@@ -50,7 +50,7 @@ msgid "in"
 msgstr "-"
 
 msgid "All address books"
-msgstr "ყველა წიგნაკი"
+msgstr "ყველა მისამართთა წიგნაკი"
 
 msgid "Search"
 msgstr "ძებნა"
@@ -78,7 +78,7 @@ msgid "Cancel"
 msgstr "გაუქმება"
 
 msgid "Address Book Search"
-msgstr "ძიება წიგნაკში"
+msgstr "ძიება მისამართთა წიგნაკში"
 
 msgid "Return"
 msgstr "დაბრუნება"
@@ -1055,7 +1055,7 @@ msgid "You need to have php4 installed with the multibyte string function enable
 msgstr "თქვენ გჭირდებათ php4 ინსტალაცია მრავალბაიტიან სტრიქონული ფუნქციებით (კონფიგურაციის პარამეტრების გამოყენებით --enable-mbstring)."
 
 msgid "ERROR: No available IMAP stream."
-msgstr "შეცდომა: IMAP ნაკადი ხელმიუწვდომელია."
+msgstr "შეცდომა: IMAP ნაკადი მიუწვდომელია."
 
 msgid "ERROR: Connection dropped by IMAP server."
 msgstr "შეცდომა: კავშირი შეწყდა IMAP სერვერის მიერ."
@@ -1086,10 +1086,10 @@ msgid "Error connecting to IMAP server: %s."
 msgstr "შეცდომა IMAP სერვერთან დაკავშირებისას: %s."
 
 msgid "The IMAP server is reporting that plain text logins are disabled."
-msgstr "IMAP სერვერი გატყობინებთ, რომ ჩვეულებრივი ტექსტით შესვლა არის გამორთული."
+msgstr "IMAP სერვერი გატყობინებთ, რომ ჩვეულებრივი ტექსტით შესვლა გამორთულია."
 
 msgid "Using CRAM-MD5 or DIGEST-MD5 authentication instead may work."
-msgstr "შესაძლოა იმუშაოს CRAM-MD5 ან DIGEST-MD5 ავთენტურობის დადგენამ."
+msgstr "შესაძლოა იმუშავოს CRAM-MD5 ან DIGEST-MD5 ავთენტურობის დადგენამ."
 
 msgid "Also, the use of TLS may allow SquirrelMail to login."
 msgstr "აგრეთვე, SquirrelMail- ით შესვლა შესაძლოა მოხდეს TLS-ის გამოყენებითაც."
@@ -1201,7 +1201,7 @@ msgid "SquirrelMail could not decode the bodystructure of the message"
 msgstr "SquirrelMail-ს არ შეუძლია შეტყობინების სხეულის სტრუქტურის გაშიფვრა"
 
 msgid "The bodystructure provided by your IMAP server:"
-msgstr "სხეულის სტრუქტურამ უზრუნველყოფილია თქვენი IMAP სერვერის მიერ:"
+msgstr "სხეულის სტრუქტურა უზრუნველყოფილია თქვენი IMAP სერვერის მიერ:"
 
 msgid "Body retrieval error. The reason for this is most probably that the message is malformed."
 msgstr "სხეულის კითხვის  შეცდომა. ყველაზე ალბათური მიზეზია, რომ  წერილი მცდარი ფორმატისაა."
@@ -1228,7 +1228,7 @@ msgid "Download"
 msgstr "ჩამოტვირთვა"
 
 msgid "sec_remove_eng.png"
-msgstr ""
+msgstr "sec_remove_eng.png"
 
 msgid "This external link will open in a new window"
 msgstr "ეს გარე ბმული ახალ ფანჯარაში გაიხსნება"
@@ -1248,25 +1248,25 @@ msgid "Error creating directory %s."
 msgstr "შეცდომა %s დირექტორიის შექმნისას."
 
 msgid "Could not create hashed directory structure!"
-msgstr "შეუძლებელია დაჭრილი ფოლდერის სტრუქტურის შექმნა!"
+msgstr "ფოლდერის დანაწილებული სტრუქტურის შექმნა ვერ მოხერხდა!"
 
 msgid "Service not available, closing channel"
-msgstr "სერვისი მიუწვდომელია, მიმდინარეობს არხის დახურვა"
+msgstr "სერვისი მიუწვდომელია, არხი იხურება"
 
 msgid "A password transition is needed"
-msgstr "პაროლის გადასვლა საჭიროებს"
+msgstr "საჭიროა პაროლის გარდაქმნა"
 
 msgid "Requested mail action not taken: mailbox unavailable"
-msgstr "მოთხოვნილი ფოსტის მოქმედება არ არის მიღებული: საფოსტი ყუთი მოიწვდომელია"
+msgstr "ფოსტის  მოთხოვნილი  მოქმედება მიუღებელია: საფოსტო ყუთი მიუწვდომელია"
 
 msgid "Requested action aborted: error in processing"
-msgstr "მოთხოვნილი მოქმედება შეწყვეტილია: პროცესის დროს შეცდომაა"
+msgstr "მოთხოვნილი ქმედება შეწყდა:დამუშავების შეცდომა"
 
 msgid "Requested action not taken: insufficient system storage"
-msgstr "მოთხოვნილი მოქმედება არ არის მიღებული: სისტემის არასაკმარისი მოცულობა"
+msgstr "მოთხოვნილი ქმედება არ შედგა: სისტემის არასაკმარისი მოცულობა"
 
 msgid "Temporary authentication failure"
-msgstr "დროებითმა ავთენტურობამ მარცხი განიცადა"
+msgstr "დროებითი ავთენტიფიკაცია ვერ მოხერხდა"
 
 msgid "Syntax error; command not recognized"
 msgstr "სინტაქსის შეცდომა; ბრძანება ვერ იქნა ამოცნობილი"
@@ -1275,52 +1275,52 @@ msgid "Syntax error in parameters or arguments"
 msgstr "სინტაქსის შეცდომა პარამეტრებში ან არგუმენტებში"
 
 msgid "Command not implemented"
-msgstr "ბრძანება არ არის შესრულებული"
+msgstr "ბრძანება არ რეალიზებულა"
 
 msgid "Bad sequence of commands"
 msgstr "ბრძანებების ცუდი თანმიმდევრობა"
 
 msgid "Command parameter not implemented"
-msgstr "ბრძანების პარამეტრი არ არის შესრულებული"
+msgstr "ბრძანების პარამეტრი არ რეალიზებულა"
 
 msgid "Authentication required"
-msgstr "ავთენტურობა მოთხოვნილია"
+msgstr "საჭიროა ავთენტიფიკაცია"
 
 msgid "Authentication mechanism is too weak"
 msgstr "ავთენტურობის მექანიზმი არის ძალიან სუსტი"
 
 msgid "Authentication failed"
-msgstr "ავთენტურობის დადგემან განიცადა მარცხი"
+msgstr "ავთენტურობის დადგენა ვერ მოხერხდა"
 
 msgid "Encryption required for requested authentication mechanism"
-msgstr "დაშიფვრა მოითხოვს მოთხოვნილი ავთენტურობის მექანიზმს"
+msgstr "მოთხოვნილი ავთენტურობის მექანიზმი დაშიფვრას მოითხოვს "
 
 msgid "Requested action not taken: mailbox unavailable"
-msgstr "მოთხოვნილი მოქმედება არ არის მიღებული: საფოსტო ყუთი მიუწვდომელია"
+msgstr "მოთხოვნილი ქმედება ვერ შედგა: საფოსტო ყუთი მიუწვდომელია"
 
 msgid "User not local; please try forwarding"
-msgstr "მომხმარებელი არ არის ადგილობრივი; გთხოვთ, სცადეთ გადაგზავნით"
+msgstr "მომხმარებელი არა ადგილობრივია; გთხოვთ, სცადოთ გადაგზავნა"
 
 msgid "Requested mail action aborted: exceeding storage allocation"
-msgstr "მოთხოვნილი ფოსტის მოქმედება შეწყვეტილია: მიმდინარეობს მეხსიერების მდებარეობის გაფართოება"
+msgstr "მოთხოვნილი საფოსტო ქმედება შეწყდა: მიმდინარეობს მეხსიერების მდებარეობის გაფართოება"
 
 msgid "Requested action not taken: mailbox name not allowed"
-msgstr "მოთხოვნილი მოქმედება არ არის მიღებული: საფოსტო ყუთის სახელი არ არის ნება დართული"
+msgstr "მოთხოვნილი მოქმედება არ შედგა: საფოსტო ყუთის სახელი მიუღებელია"
 
 msgid "Transaction failed"
-msgstr "ტრანზაქციამ მარცხი განიცადა"
+msgstr "ტრანზაქცია არ შედგა"
 
 msgid "Unknown response"
-msgstr "უცნობი გამოხმაურება"
+msgstr "უცნობი პასუხი"
 
 msgid "General Display Options"
-msgstr "ეკრანის გენერალური პარამეტრები"
+msgstr "ეკრანის ძირითადი პარამეტრები"
 
 msgid "Theme"
 msgstr "თემა"
 
 msgid "Default"
-msgstr "ნაგულისხმევად"
+msgstr "ნაგულისხმები"
 
 msgid "Custom Stylesheet"
 msgstr "მორგებული სტილების ცხრილი"
@@ -1329,10 +1329,10 @@ msgid "Language"
 msgstr "ენა"
 
 msgid "Use Javascript"
-msgstr "გამოიყენე Javascript"
+msgstr "Javascript-ის გამოყენება"
 
 msgid "Autodetect"
-msgstr "ავტომატური აღმოჩენა"
+msgstr "თვითამოცნობა"
 
 msgid "Always"
 msgstr "ყოველთვის"
@@ -1344,7 +1344,7 @@ msgid "Mailbox Display Options"
 msgstr "საფოსტო ყუთის ეკრანული პარამეტრები"
 
 msgid "Number of Messages per Page"
-msgstr "თვითოეულ გვერდზე შეტყობინებების რაოდენობა"
+msgstr "შეტყობინებების რაოდენობა თვითოეულ გვერდზე"
 
 msgid "Enable Alternating Row Colors"
 msgstr "სტრიქონის ალტერნატიული ფერების ჩართვა"
@@ -1356,7 +1356,7 @@ msgid "Maximum Number of Pages to Show"
 msgstr "საჩვენებელი გვერდების მახსიმალური რაოდენობა"
 
 msgid "Always Show Full Date"
-msgstr "ყოველთვის აჩვენე სრული თარიღი"
+msgstr "ყოველთვის სრული თარიღის ჩვენება"
 
 msgid "Message Display and Composition"
 msgstr "შეტყობინების ასახვა და შექმნა"
@@ -1374,31 +1374,31 @@ msgid "Location of Buttons when Composing"
 msgstr "ღილაკების მდებარეობა შექმნის პერიოდში"
 
 msgid "Before headers"
-msgstr "სათაურებამდე"
+msgstr "თავსართებამდე"
 
 msgid "Between headers and message body"
-msgstr "შეტყობინების ტანსა და სათაურებს შორის"
+msgstr "შეტყობინების სხეულსა და თავსართებს შორის"
 
 msgid "After message body"
 msgstr "შეტყობინების ტანის შემდეგ"
 
 msgid "Addressbook Display Format"
-msgstr "მისამართთა წიგნის ფორმატი"
+msgstr "მისამართთა წიგნაკის ჩვენების ფორმატი"
 
 msgid "Javascript"
-msgstr "Javascript"
+msgstr "Javascript-ი"
 
 msgid "HTML"
 msgstr "HTML"
 
 msgid "Show HTML Version by Default"
-msgstr "აჩვენე HTML ვერსია ნაგულისხმევად"
+msgstr "ნაგულისხმებად HTML ვერსიის ჩვენება"
 
 msgid "Enable Forward as Attachment"
-msgstr "გადაგზავნის ჩართვა, როგორც დანართი"
+msgstr "გადაგზავნის დანართად ჩართვა"
 
 msgid "Include CCs when Forwarding Messages"
-msgstr "შეტყობინების გადაგზავნისას შეიცავდეს CCs"
+msgstr "შეტყობინების გადაგზავნისას CC-ების თანდართვა"
 
 msgid "Include Me in CC when I Reply All"
 msgstr "ყველაზე პასუხისას ასლში მეც შემიცავდეს"
@@ -1407,16 +1407,16 @@ msgid "Enable Mailer Display"
 msgstr "გამგზავნის ჩვენების ჩართვა"
 
 msgid "Display Attached Images with Message"
-msgstr "შეტყობინებასთან ერთად დართული ნახატების ჩვენება"
+msgstr "შეტყობინებაში თანდართული ნახატების ჩვენება"
 
 msgid "Enable Printer Friendly Clean Display"
-msgstr "მეგობრული პრინტერის წმენდის ასახვის ჩართვა"
+msgstr "ბეჭდვის ვერსიის ჩვენება"
 
 msgid "Enable Mail Delivery Notification"
-msgstr "შეტყობინების მისვლის გაფრთხილების ჩართვა"
+msgstr "ფოსტის მისვლის შეტყობინების ჩართვა"
 
 msgid "Compose Messages in New Window"
-msgstr "შეტყობინებების შექმნა ახალ ფანჯარაში"
+msgstr "შეტყობინებების ახალ ფანჯარაში შექმნა"
 
 msgid "Width of Compose Window"
 msgstr "შექმნის ფანჯრის სიგანე"
@@ -1428,7 +1428,7 @@ msgid "Append Signature before Reply/Forward Text"
 msgstr "ხელმოწერის დამატება ტექსტის პასუხამდე/გაგზავნამდე"
 
 msgid "Prefix for Original Message when Replying"
-msgstr "ძირითადი შეტყობინების პრეფიქსი პასუხის მიწერის დროს"
+msgstr "ძირითადი შეტყობინების პრეფიქსი პასუხისას"
 
 msgid "Cursor Position when Replying"
 msgstr "კურსორის პოზიცია პასუხის მიწერის პერიოდში"
@@ -1437,40 +1437,40 @@ msgid "To: field"
 msgstr "ვის: ველი"
 
 msgid "Focus in body"
-msgstr "ტანზე ფოკუსის გადაცემა"
+msgstr "ფოკუსის სხეულზე გადატანა"
 
 msgid "Select body"
-msgstr "ტანის არჩევა"
+msgstr "სხეულის არჩევა"
 
 msgid "No focus"
 msgstr "ფოკუსის გარეშე"
 
 msgid "Sort by Received Date"
-msgstr "დალაგება შემოსული თარიღის მოხედვით"
+msgstr "დალაგება შემოსვლის თარიღით"
 
 msgid "Enable Thread Sort by References Header"
 msgstr "ნაკადური დალაგების ჩართვა სათაურის პარამეტრების მიერ"
 
 msgid "Special Folder Options"
-msgstr "განსაკუთრებული ფოლდერის პარამეტრები"
+msgstr "ფოლდერის სპეციალური პარამეტრები"
 
 msgid "Folder Path"
-msgstr "ფოლდერის მდებარეობა"
+msgstr "ფოლდერის გეზი"
 
 msgid "Do not use Trash"
-msgstr "არ გამოიყენოთ სანაგვე"
+msgstr "ურნის გამოყენების გარეშე"
 
 msgid "Trash Folder"
-msgstr "ფოლდერის გადაგდება სანაგვეში"
+msgstr "ურნის ფოლდერი"
 
 msgid "Do not use Drafts"
-msgstr "არ გამოიყენო მონახაზები"
+msgstr "მონახაზების გამოყენების გარეშე"
 
 msgid "Draft Folder"
-msgstr "მონახაზი"
+msgstr "მონახაზების ფოლდერი"
 
 msgid "Do not use Sent"
-msgstr "არ გამოიყენო გაგზავნილი"
+msgstr "გაგზავნილების გამოყენების გარეშე"
 
 msgid "Sent Folder"
 msgstr "გაგზავნილი"
@@ -1482,10 +1482,10 @@ msgid "Location of Folder List"
 msgstr "ფოლდერის სიის მდებარეობა"
 
 msgid "Left"
-msgstr "მარცხენა"
+msgstr "მარცხნივ"
 
 msgid "Right"
-msgstr "მარჯვენა"
+msgstr "მარჯვნივ"
 
 msgid "pixels"
 msgstr "პიქსელები"
@@ -1494,10 +1494,10 @@ msgid "Width of Folder List"
 msgstr "ფოლდერის სიის სიგანე"
 
 msgid "Minutes"
-msgstr "წუთები"
+msgstr "წუთი"
 
 msgid "Seconds"
-msgstr "წამები"
+msgstr "წამი"
 
 msgid "Minute"
 msgstr "წუთი"
@@ -2123,7 +2123,7 @@ msgid "Update Event"
 msgstr "მოვლენის განახლება"
 
 msgid "Do you really want to change this event from:"
-msgstr "თქვენ ნამდვილად გსურტ ამ მოვლენის ცვლილება:"
+msgstr "თქვენ ნამდვილად გსურთ ამ მოვლენის ცვლილება:"
 
 msgid "to:"
 msgstr "ვის:"
@@ -2198,109 +2198,109 @@ msgid "Display at bottom"
 msgstr "ასახე ქვევიდან"
 
 msgid "COMMERCIAL - This list contains servers that are verified spam senders. It is a pretty reliable list to scan spam from."
-msgstr "კომერციული - ეს სია შეიცავს სერვერებს, რომლებიც ავლენენ სპამის გამომგზავნელებს. იგი არის მშვენიერი საშუალება სპამის სკანირებისთვის."
+msgstr "კომერციული -   სია შეიცავს სერვერებს, რომლებიც სპამის გამომგზავნებს ამოწმებენ. ეს სპამის მეთვალყურეთა საკმაოდ დიდი სიაა."
 
 msgid "COMMERCIAL - Servers that are configured (or misconfigured) to allow spam to be relayed through their system will be banned with this. Another good one to use."
-msgstr "კომერციული - სერვერები, რომლებიც დაკონფიგურირებულები (ან ცუდად დაკონფიგურირებულები) არიან ისე რომ სპამს რთავენ ნებას მათ სისტემაში დაყოვნებისა, იქნება ამის შედეგად აკრძალული. სხვა კარგი გამოსავალი არის მათი გამოყენება."
+msgstr "კომერციული -   სერვერები რომლებიც გამართულია (ან არაა გამართული) იმისათვის რომ აკრძალოს სპამის  გაცვლა სისტემის გავლით. კიდევ ერთი კარგი საშუალება."
 
 msgid "COMMERCIAL - Dial-up users are often filtered out since they should use their ISP's mail servers to send mail. Spammers typically get a dial-up account and send spam directly from there."
-msgstr "კომერციული - სატელეფონო შეერთების მომხმარებლები ხშირად იფილტრებიან სანამ გამოიყენებენ მათ ISP-ს ელფოსტის სერვერებს წერილის გასაგზავნად. სპამერები იღებენ სატელეფონო შეერთების ანგარიშს და აგზავნიან სპამს სწორედ მისგან."
+msgstr "კომერციული -   სატელეფონო ხაზის მომხმარებლები ხშირად იფილტრება რადგან ფოსტის გასაგზავნად მათ პროვაიდერის საფოსტო სერვერი უნდა გამოიყენონ.  ჩვეულებრივ სპამის გამავრცელებლები იგებენ ანგარიშს და სპამს პირდაპირ მასზე აგზავნიან."
 
 msgid "COMMERCIAL - RBL+ Blackhole entries."
-msgstr "კომერციული  - RBL+ Blackhole შესატანები."
+msgstr "კომერციული  - RBL+ Blackhole ელემენტები."
 
 msgid "COMMERCIAL - RBL+ OpenRelay entries."
-msgstr "კომერციული - RBL+ OpenRelay შესატანები."
+msgstr "კომერციული - RBL+ OpenRelay ელემენტები."
 
 msgid "COMMERCIAL - RBL+ Dial-up entries."
-msgstr "კომერციული - RBL+ სატელეფონო შეერთების შესატანები."
+msgstr "კომერციული - RBL+ Dial-up ელემენტები."
 
 msgid "FREE - ORDB was born when ORBS went off the air. It seems to have fewer false positives than ORBS did though."
-msgstr "თავისუფალი - ORDB was born when ORBS went off the air. It seems to have fewer false positives than ORBS did though."
+msgstr "უფასო - ORDB was born when ORBS went off the air. It seems to have fewer false positives than ORBS did though."
 
 msgid "FREE - Five-Ten-sg.com - Direct SPAM sources."
-msgstr "თავისუფალი - Five-Ten-sg.com - Direct SPAM sources."
+msgstr "უფასო - Five-Ten-sg.com - პირდაპირი SPAM წყაროები."
 
 msgid "FREE - Five-Ten-sg.com - Dial-up lists - includes some DSL IPs."
-msgstr "თავისუფალი - Five-Ten-sg.com - Dial-up lists - includes some DSL IPs."
+msgstr "უფასო - Five-Ten-sg.com - Dial-up სიები - შეიცავს ძოგიერთ DSL IP-ებს."
 
 msgid "FREE - Five-Ten-sg.com - Bulk mailers that do not use confirmed opt-in."
-msgstr "თავისუფალი - Five-Ten-sg.com - Bulk mailers that do not use confirmed opt-in."
+msgstr "უფასო - Five-Ten-sg.com - ჯგუფური ფოსტის არაოფიციალური გამომგზავნები."
 
 msgid "FREE - Five-Ten-sg.com - Other misc. servers."
-msgstr "თავისუფალი - Five-Ten-sg.com - Other misc. servers."
+msgstr "უფასო - Five-Ten-sg.com - სხვა სერვერები."
 
 msgid "FREE - Five-Ten-sg.com - Single Stage servers."
-msgstr "თავისუფალი - Five-Ten-sg.com - Single Stage servers."
+msgstr "უფასო - Five-Ten-sg.com - Single Stage სერვერები."
 
 msgid "FREE - Five-Ten-sg.com - SPAM Support servers."
-msgstr "თავისუფალი - Five-Ten-sg.com - SPAM Support servers."
+msgstr "უფასო - Five-Ten-sg.com - SPAM მხარდამჭერი სერვერები."
 
 msgid "FREE - Five-Ten-sg.com - Web Form IPs."
-msgstr "თავისუფალი - Five-Ten-sg.com - Web Form IPs."
+msgstr "უფასო - Five-Ten-sg.com - Web Form IP-ები."
 
 msgid "FREE - Dorkslayers appears to include only really bad open relays outside the US to avoid being sued. Interestingly enough, their website recommends you NOT use their service."
-msgstr "თავისუფალი - Dorkslayers appears to include only really bad open relays outside the US to avoid being sued. Interestingly enough, their website recommends you NOT use their service."
+msgstr "უფასო - Dorkslayers appears to include only really bad open relays outside the US to avoid being sued. Interestingly enough, their website recommends you NOT use their service."
 
 msgid "FREE - SPAMhaus - A list of well-known SPAM sources."
-msgstr "თავისუფალი - SPAMhaus - A list of well-known SPAM sources."
+msgstr "უფასო - SPAMhaus - A list of well-known SPAM sources."
 
 msgid "FREE, for now - SpamCop - An interesting solution that lists servers that have a very high spam to legit email ratio (85 percent or more)."
-msgstr "თავისუფალი, for now - SpamCop - An interesting solution that lists servers that have a very high spam to legit email ratio (85 percent or more)."
+msgstr "უფასო, for now - SpamCop - An interesting solution that lists servers that have a very high spam to legit email ratio (85 percent or more)."
 
 msgid "FREE - dev.null.dk - I don't have any detailed info on this list."
-msgstr "თავისუფალი - dev.null.dk - I don't have any detailed info on this list."
+msgstr "უფასო - dev.null.dk - I don't have any detailed info on this list."
 
 msgid "FREE - visi.com - Relay Stop List. Very conservative OpenRelay List."
-msgstr "თავისუფალი - visi.com - Relay Stop List. Very conservative OpenRelay List."
+msgstr "უფასო - visi.com - Relay Stop List. Very conservative OpenRelay List."
 
 msgid "FREE - ahbl.org Open Relays - Another list of Open Relays."
-msgstr "თავისუფალი - ahbl.org Open Relays - Another list of Open Relays."
+msgstr "უფასო - ahbl.org Open Relays - Another list of Open Relays."
 
 msgid "FREE - ahbl.org SPAM Source - List of Direct SPAM Sources."
-msgstr "თავისუფალი - ahbl.org SPAM Source - List of Direct SPAM Sources."
+msgstr "უფასო - ahbl.org SPAM Source - List of Direct SPAM Sources."
 
 msgid "FREE - ahbl.org SPAM ISPs - List of SPAM-friendly ISPs."
-msgstr "თავისუფალი - ahbl.org SPAM ISPs - List of SPAM-friendly ISPs."
+msgstr "უფასო - ahbl.org SPAM ISPs - List of SPAM-friendly ISPs."
 
 msgid "FREE - Leadmon DUL - Another list of Dial-up or otherwise dynamically assigned IPs."
-msgstr "თავისუფალი - Leadmon DUL - Another list of Dial-up or otherwise dynamically assigned IPs."
+msgstr "უფასო - Leadmon DUL - Another list of Dial-up or otherwise dynamically assigned IPs."
 
 msgid "FREE - Leadmon SPAM Source - List of IPs Leadmon.net has received SPAM directly from."
-msgstr "თავისუფალი - Leadmon SPAM Source - List of IPs Leadmon.net has received SPAM directly from."
+msgstr "უფასო - Leadmon SPAM Source - List of IPs Leadmon.net has received SPAM directly from."
 
 msgid "FREE - Leadmon Bulk Mailers - Bulk mailers that do not require confirmed opt-in or that have allowed known spammers to become clients and abuse their services."
-msgstr "თავისუფალი - Leadmon Bulk Mailers - Bulk mailers that do not require confirmed opt-in or that have allowed known spammers to become clients and abuse their services."
+msgstr "უფასო - Leadmon Bulk Mailers - Bulk mailers that do not require confirmed opt-in or that have allowed known spammers to become clients and abuse their services."
 
 msgid "FREE - Leadmon Open Relays - Single Stage Open Relays that are not listed on other active RBLs."
-msgstr "თავისუფალი - Leadmon Open Relays - Single Stage Open Relays that are not listed on other active RBLs."
+msgstr "უფასო - Leadmon Open Relays - Single Stage Open Relays that are not listed on other active RBLs."
 
 msgid "FREE - Leadmon Multi-stage - Multi-Stage Open Relays that are not listed on other active RBLs and that have sent SPAM to Leadmon.net."
-msgstr "თავისუფალი - Leadmon Multi-stage - Multi-Stage Open Relays that are not listed on other active RBLs and that have sent SPAM to Leadmon.net."
+msgstr "უფასო - Leadmon Multi-stage - Multi-Stage Open Relays that are not listed on other active RBLs and that have sent SPAM to Leadmon.net."
 
 msgid "FREE - Leadmon SpamBlock - Sites on this listing have sent Leadmon.net direct SPAM from IPs in netblocks where the entire block has no DNS mappings. It's a list of BLOCKS of IPs being used by people who have SPAMmed Leadmon.net."
-msgstr "თავისუფალი - Leadmon SpamBlock - Sites on this listing have sent Leadmon.net direct SPAM from IPs in netblocks where the entire block has no DNS mappings. It's a list of BLOCKS of IPs being used by people who have SPAMmed Leadmon.net."
+msgstr "უფასო - Leadmon SpamBlock - Sites on this listing have sent Leadmon.net direct SPAM from IPs in netblocks where the entire block has no DNS mappings. It's a list of BLOCKS of IPs being used by people who have SPAMmed Leadmon.net."
 
 msgid "FREE, for now - Not Just Another Blacklist - Both Open Relays and Direct SPAM Sources."
-msgstr "თავისუფალი, დღეისთვის - არა მხოლოდ სხვა შავი სია - ორივე, ღია გადაცემა და მიმართული SPAM წყაროები."
+msgstr "უფასო, დღეისთვის - არა მხოლოდ სხვა შავი სია - ორივე, ღია გადაცემა და მიმართული SPAM წყაროები."
 
 msgid "FREE, for now - Not Just Another Blacklist - Dial-up IPs."
-msgstr "თავისუფალი, დღეისთვის - არა მხოლოდ სხვა შავი სია - სატელეფონოშეერთება IP."
+msgstr "უფასო, დღეისთვის - არა მხოლოდ სხვა შავი სია - სატელეფონოშეერთება IP."
 
 msgid "FREE - Distributed Sender Boycott List - Confirmed Relays"
-msgstr "თავისუფალი - Distributed Sender Boycott List - Confirmed Relays"
+msgstr "უფასო - Distributed Sender Boycott List - Confirmed Relays"
 
 msgid "FREE - Distributed Sender Boycott List - Confirmed Multi-stage Relays"
-msgstr "თავისუფალი - Distributed Sender Boycott List - Confirmed Multi-stage Relays"
+msgstr "უფასო - Distributed Sender Boycott List - Confirmed Multi-stage Relays"
 
 msgid "FREE - Distributed Sender Boycott List - UN-Confirmed Relays"
-msgstr "თავისუფალი - Distributed Sender Boycott List - UN-Confirmed Relays"
+msgstr "უფასო - Distributed Sender Boycott List - UN-Confirmed Relays"
 
 msgid "WARNING! You must enter something to search for."
-msgstr "გაფრთხილება! ძიებისთვის თქვენ უნდა შეიტანოთ რაღაც."
+msgstr "გაფრთხილება! ძიებისთვის რაიმე უნდა მიუთითოთ."
 
 msgid "WARNING! Header filters should be of the format &quot;Header: value&quot;"
-msgstr "გაფრთხილება! სათაურის ფილტრები უნდა იყოს &quot; ფორმატის სათაური: მნიშვნელობა&quot;"
+msgstr "გაფრთხილება! სათაურის ფილტრები უნდა იყოს &quot; თავსართი: მნიშვნელობა&quot; ფორმატი."
 
 msgid "Saved Scan type"
 msgstr "სკანირების ტიპი შენახულია"
@@ -2315,7 +2315,7 @@ msgid "All messages"
 msgstr "ყველა შეტყობინება"
 
 msgid "Only unread messages"
-msgstr "მხოლოდ წაუკითხავი შეტყობინებები"
+msgstr "მხოლოდ წასაკითხი შეტყობინებები"
 
 msgid "Save"
 msgstr "შენახვა"
@@ -2324,32 +2324,32 @@ msgid "Match:"
 msgstr "თანხვედრა:"
 
 msgid "Header"
-msgstr "სათაური"
+msgstr "თავსართი"
 
 msgid "Contains:"
 msgstr "შეიცავს:"
 
 #, c-format
 msgid "If %s contains %s then move to %s"
-msgstr "თუ %s შეიცავს %s მაშინ გადააადგილე %s"
+msgstr "თუ %s შეიცავს %s მაშინ გადატანა - %s"
 
 msgid "Message Filters"
 msgstr "შეტყობინების ფილტრები"
 
 msgid "Filtering enables messages with different criteria to be automatically filtered into different folders for easier organization."
-msgstr "ფილტრაცია შეტყობინებებს აძლევს სხვადასხვა კრიტერიუმებით იყოს ავტომატურად გაფილტრული განსხვავებულ ფოლდერებში მარტივი ორგანიზაციისათვის."
+msgstr "წერილების სხვადასხვა კრიტერიუმებით გაფილტვრა მათ დასაჯგუფებლად სხვადასხვა დასტებში   ავტომატური გადატანის შესაძლებლობას იძლევა."
 
 msgid "SPAM Filters"
 msgstr "SPAM ფილტრები"
 
 msgid "SPAM filters allow you to select from various DNS based blacklists to detect junk email in your INBOX and move it to another folder (like Trash)."
-msgstr "სპამის ფილტრები ნებას გრთავენ აირჩიოთ სხვადასხვა DNS-ზე დაფუძნებული შავისიები თქვენს შემოსულ წერილებში ძველი წერილების გამოსავლენად და მათ გადასაგზავნად სხვა ფოლდერში (როგორც წაშლილი)."
+msgstr "SPAM ფილტრები საშუალებას გაძლევთ აირჩიოთ DNS დაფუძნებული შავი სიები უსარგებლო ელფოსტის ამოსაცნობად და შემოსული ფოლდერიდან მათი სხვა ფოლდერებში გადასატანად (როგორიცაა ურნა)."
 
 msgid "You must select a spam folder."
-msgstr "თქვენ უნდა აირჩიოთ სპამ ფოლდერი."
+msgstr "უნდა აირჩიოთ სპამის ფოლდერი."
 
 msgid "You must select a scan type."
-msgstr "თქვენ უნდა აირჩიოთ სკანირების ტიპი."
+msgstr "უნდა აირჩიოთ სკანირების ტიპი."
 
 msgid "Spam Filtering"
 msgstr "მიმდინარეობს სპამის ფილტრაცია"
@@ -2359,27 +2359,27 @@ msgid "WARNING! Tell the administrator to set the %s variable."
 msgstr "გაფრთხილება! %s ხვლადის დასაყენებლად უამბეთ ადმინისტრატორს."
 
 msgid "Move spam to:"
-msgstr "სპამის გადაადგილება:"
+msgstr "სპამის გადატანა:"
 
 msgid "Moving spam directly to the trash may not be a good idea at first, since messages from friends and mailing lists might accidentally be marked as spam. Whatever folder you set this to, make sure that it gets cleaned out periodically, so that you don't have an excessively large mailbox hanging around."
 msgstr "სპამის პირდაპირ წაშლილებში გადაგზავნისას, პირველ მიმართებაში შეიძლება არ იყოს კარგი იდეა, მანამდე სანამ მეგობრებისგან მოსული შეტყობინებები და წერილთა სიები შემთხვევით არ იქნება მონიშნული როგორც სპამი. რომელ ფოლდერსაც არ აირჩევთ ამისათვის, დარწმუნდით, რომ იგი გასუფთავდება პერიოდულად, ასე რომ თქვენ არ დაგჭირდებათ დიდი საფოსტო ყუთი."
 
 msgid "Unread messages only"
-msgstr "მხოლოდ წაუკითხავი შეტყობინებები"
+msgstr "მხოლოდ წასაკითხი შეტყობინებები"
 
 msgid "The more messages scanned, the longer it takes. It's recommended to scan unread messages only. If a change to the filters is made, it's recommended to set it to scan all messages, then go view the INBOX, then come back and set it to scan unread messages only. That way, the new spam filters will be applied and even the spam you didn't catch with the old filters will be scanned."
 msgstr "The more messages scanned, the longer it takes. It's recommended to scan unread messages only. If a change to the filters is made, it's recommended to set it to scan all messages, then go view the INBOX, then come back and set it to scan unread messages only. That way, the new spam filters will be applied and even the spam you didn't catch with the old filters will be scanned."
 
 #, c-format
 msgid "Spam is sent to %s."
-msgstr "სპამი გაგზავნილია %sსთან."
+msgstr "სპამი გაეგზავნა - %s."
 
 msgid "not set yet"
-msgstr "ჯერ არ არის დაყენებული"
+msgstr "ჯერ არ მითითებულა"
 
 #, c-format
 msgid "Spam scan is limited to %s."
-msgstr "სპამის სკანირება შეზღუდულია %sში."
+msgstr "სპამის სკანირება შეზღუდულია - %s."
 
 msgid "ON"
 msgstr "ჩართვა"
@@ -2389,7 +2389,7 @@ msgstr "გამორთვა"
 
 #, c-format
 msgid "%s is not found."
-msgstr "%s ვერ იპოვნა."
+msgstr "%s ვერ მოიძებნა."
 
 msgid "Today's Fortune"
 msgstr "დღევანდელი წარმატება"
@@ -2404,7 +2404,7 @@ msgid "Plugin is disabled."
 msgstr "ფლაგინები გამორთულია."
 
 msgid "IMAP server information"
-msgstr "IMAP სერვერის ინფორმაცია"
+msgstr "IMAP სერვერის მონაცემები"
 
 msgid "Run some test IMAP commands, displaying both the command and the result. These tests use the SquirrelMail IMAP commands and your current SquirrelMail configuration. Custom command strings can be used."
 msgstr "Run some test IMAP commands, displaying both the command and the result. These tests use the SquirrelMail IMAP commands and your current SquirrelMail configuration. Custom command strings can be used."
@@ -2428,25 +2428,25 @@ msgid "Send Mail"
 msgstr "ფოსტის გაგზავნა"
 
 msgid "Post to List"
-msgstr "სიაში გაგზავნა"
+msgstr "ჯგუფში გაგზავნა"
 
 msgid "Reply to List"
-msgstr "პასუხი სიაში"
+msgstr "პასუხი ჯგუფს"
 
 msgid "List Archives"
-msgstr "არქივის სია"
+msgstr "არქივების სია"
 
 msgid "Contact Listowner"
-msgstr "დაუკავშირდით სიის მფლობელს"
+msgstr "დაკავშირება ჯგუფის მფლობელთან"
 
 msgid "Mailing List"
-msgstr "გაგზავნილების სია"
+msgstr "დაგზავნის სია"
 
 msgid "POP3 connect:"
 msgstr "POP3 კავშირი:"
 
 msgid "No server specified"
-msgstr "არ არის სერვერი განსაზღვრული"
+msgstr "სერვერი არ მითითებულა"
 
 msgid "Error "
 msgstr "შეცდომა"
@@ -2455,19 +2455,19 @@ msgid "POP3 user:"
 msgstr "POP3 მომხმარებელი:"
 
 msgid "no login ID submitted"
-msgstr "არ არის შესასვლელი აიდი შეთანხმებული"
+msgstr "შესვლის კოდი არ გაგზავნილა"
 
 msgid "connection not established"
-msgstr "კავშირი არ არის დაყენებული"
+msgstr "კავშირი არ დამყარებულა"
 
 msgid "POP3 pass:"
-msgstr "POP3 გაგზავნა:"
+msgstr "POP3 პაროლი:"
 
 msgid "No password submitted"
-msgstr "არ არის პაროლი შეთანხმებული"
+msgstr "პაროლი არ გაგზავნილა"
 
 msgid "authentication failed "
-msgstr "ავთენტურობის დადგენამ განიცადა მარცხი"
+msgstr "ავთენტიფიკაცია ვერ მოხერხდა"
 
 msgid "POP3 apop:"
 msgstr "POP3 apop:"
@@ -2476,16 +2476,16 @@ msgid "No connection to server"
 msgstr "სერვერთან კავშირი არ არის"
 
 msgid "No login ID submitted"
-msgstr "არ არის შესასვლელი აიდი შეთანხმებული"
+msgstr "შესვლის კოდი არ მითითებულა"
 
 msgid "No server banner"
-msgstr "არ არის სერვერის ბანერი"
+msgstr "სერვერი ფირნიშის გარეშე"
 
 msgid "abort"
 msgstr "შეწყვეტა"
 
 msgid "apop authentication failed"
-msgstr "apop ავთენტურობის დადგენამ განიცადა მარცხი"
+msgstr "apop ავთენტიფიკაცია არ შედგა"
 
 msgid "POP3 login:"
 msgstr "POP3 შესვლა:"
@@ -2494,10 +2494,10 @@ msgid "POP3 top:"
 msgstr "POP3 ზევით:"
 
 msgid "POP3 pop_list:"
-msgstr "POP3 პოპ_სია:"
+msgstr "POP3 ჩამოშლადი სია:"
 
 msgid "Premature end of list"
-msgstr "სიის ადრეული ბოლო"
+msgstr "სიის ნააადრევი დასრულება"
 
 msgid "POP3 get:"
 msgstr "POP3 მიღება:"
@@ -2506,16 +2506,16 @@ msgid "POP3 last:"
 msgstr "POP3 ბოლო:"
 
 msgid "POP3 reset:"
-msgstr "POP3 საწყისი პარამეტრები:"
+msgstr "POP3 აღდგენა:"
 
 msgid "POP3 send_cmd:"
 msgstr "POP3 send_cmd:"
 
 msgid "Empty command string"
-msgstr "ცარიელი ბრძანების სტრიქონი"
+msgstr "ბრძანების ცარიელი სტრიქონი"
 
 msgid "POP3 quit:"
-msgstr "POP3 დასასრული:"
+msgstr "POP3 დასრულება:"
 
 msgid "connection does not exist"
 msgstr "კავშირი არ არსებობს"
@@ -2527,25 +2527,25 @@ msgid "POP3 delete:"
 msgstr "POP3 წაშლა:"
 
 msgid "No msg number submitted"
-msgstr "არ არის შეტყობნების რიცხვი შეთანხმებული"
+msgstr "შეტყობნებათა რაოდენობა არ გაგზავნილა"
 
 msgid "Command failed "
-msgstr "ბძანებამ განიცადა მარცხი"
+msgstr "ბძანება ვერ განხორციელდა"
 
 msgid "Remote POP server Fetching Mail"
-msgstr "დისტანციური POP სერვერის არჩევითი ფოსტა"
+msgstr "დისტანციური POP სერვერის ფოსტის არჩევა"
 
 msgid "Select Server:"
 msgstr "სერვერის არჩევა:"
 
 msgid "Password for"
-msgstr "პაროლი"
+msgstr "პაროლი -"
 
 msgid "Fetch Mail"
-msgstr "არჩევადი ფოსტა"
+msgstr "ფოსტის არჩევა"
 
 msgid "Fetching from "
-msgstr "არჩევა"
+msgstr "არჩევა -"
 
 msgid "Oops, "
 msgstr "უკაცრავად,"
@@ -2557,20 +2557,20 @@ msgid "Opening POP server"
 msgstr "მიმდინარეობს POP სერვერის გახსნა"
 
 msgid "Login Failed:"
-msgstr "შესვამ განიცადა მარცხი:"
+msgstr "შესვა ვერ მოხერხდა"
 
 msgid "Login OK: No new messages"
-msgstr "შესვლა OK: არ არის ახალი შეტყობინებები"
+msgstr "შესვლა OK: ახალი შეტყობინებები არაა"
 
 msgid "Login OK: Inbox EMPTY"
-msgstr "შესვლა OK: შემომავალი ცარიელია"
+msgstr "შესვლა OK: შემოსული ცარიელია"
 
 #, c-format
 msgid "Login OK: Inbox contains %s messages"
-msgstr "შესვლა OK: შემომავალი შეიცავს %s შეტყობინებებს"
+msgstr "შესვლა OK: შემოსული შეიცავს %s შეტყობინებას"
 
 msgid "Fetching UIDL..."
-msgstr "მიმდინარეობს UIDL ამორჩევა..."
+msgstr "მიმდინარეობს UIDL არჩევა..."
 
 msgid "Server does not support UIDL."
 msgstr "სერვერი მხარს არ უჭერს UIDL-ს."
@@ -2588,13 +2588,13 @@ msgid "Server error. Disconnect"
 msgstr "სერვერის შეცდომა. გათიშულია"
 
 msgid "Reconnect from dead connection"
-msgstr "დაკავშირება მკვდარი კავშირიდან"
+msgstr "დაკავშირება გათიშული კავშირიდან"
 
 msgid "Saving UIDL"
 msgstr "მიმდინარეობს UIDL შენახვა"
 
 msgid "Refetching message "
-msgstr "მიმდინარეობს შეტყობინების თავიდან ამორჩევა"
+msgstr "მიმდინარეობს შეტყობინების ხელახლა არჩევა"
 
 msgid "Error Appending Message!"
 msgstr "შეცდომა შეტყობინების დამატებისას!"
@@ -2619,10 +2619,10 @@ msgid "Remote POP server settings"
 msgstr "დისტანციური POP სერვერის პარამეტრები"
 
 msgid "You should be aware that the encryption used to store your password is not perfectly secure. However, if you are using pop, there is inherently no encryption anyway. Additionally, the encryption that we do to save it on the server can be undone by a hacker reading the source to this file."
-msgstr "You should be aware that the encryption used to store your password is not perfectly secure. However, if you are using pop, there is inherently no encryption anyway. Additionally, the encryption that we do to save it on the server can be undone by a hacker reading the source to this file."
+msgstr "უნდა იცოდეთ, რომ თქვენი პაროლის შესანახად გამოყენებული დაშიფვრა სრულად უსაფრთხო არაა. However, if you are using pop, there is inherently no encryption anyway. Additionally, the encryption that we do to save it on the server can be undone by a hacker reading the source to this file."
 
 msgid "If you leave password empty, it will be asked when you fetch mail."
-msgstr "თუ თქვენ დატოვებთ პაროლს ცარიელს, იგი გკითხავთ ფოსტის ამორჩევის დროს."
+msgstr "თუ თქვენს პაროლს ცარიელს დატოვებთ, იგი მოგეთხოვებათ ფოსტის ამორჩევის დროს."
 
 msgid "Encrypt passwords (informative only)"
 msgstr "პაროლის დაშიფვრა (მხოლოდ ინფორმაციული)"
@@ -2637,13 +2637,13 @@ msgid "Port:"
 msgstr "პორტი:"
 
 msgid "Alias:"
-msgstr "მეტსახელი:"
+msgstr "ფსევდონიმი:"
 
 msgid "Username:"
 msgstr "გვარი:"
 
 msgid "Store in Folder:"
-msgstr "ფოლდერში ჩაწერილი:"
+msgstr "შენახვა ფოლდერში:"
 
 msgid "Leave mail on server"
 msgstr "ფოსტის სერვერზე დატოვება"
@@ -2661,7 +2661,7 @@ msgid "Server Name:"
 msgstr "სერვერის სახელი:"
 
 msgid "Modify"
-msgstr "ცვლილება"
+msgstr "შეცვლა"
 
 msgid "No servers known."
 msgstr "არ არის ცნობილი სერვერები."
@@ -2676,10 +2676,10 @@ msgid "Selected Server:"
 msgstr "არჩეული სერვერი:"
 
 msgid "Confirm delete of selected server?"
-msgstr "არჩეული სერვერის დასტური წაშლაზე?"
+msgstr "დადასტურდეს არჩეული სერვერის წაშლა?"
 
 msgid "Confirm Delete"
-msgstr "დასტური წაშლაზე"
+msgstr "წაშლის დასტური"
 
 msgid "Leave Mail on Server"
 msgstr "ფოსტის სერვერზე დატოვება"
@@ -2697,22 +2697,22 @@ msgid "Warning, "
 msgstr "გაფრთხილება"
 
 msgid "Mail Fetch Result:"
-msgstr "ფოსტის შედეგი:"
+msgstr "ფოსტის არჩევის შედეგი:"
 
 msgid "POP3 Fetch Mail"
-msgstr "POP3 ფოსტა"
+msgstr "POP3 ფოსტის არჩევა"
 
 msgid "This configures settings for downloading email from a POP3 mailbox to your account on this server."
-msgstr "This configures settings for downloading email from a POP3 mailbox to your account on this server."
+msgstr "აქ მიეთითება POP3 საფოსტო ყუთიდან ამ სერვერის თქვეს ანგარიშზე ელფოსტის ჩამოტვირთვის პარამეტრები."
 
 msgid "Message Details"
 msgstr "შეტყობინების დეტალები"
 
 msgid "Bodystructure"
-msgstr "ტანის სტრუქტურა"
+msgstr "სხეულის სტრუქტურა"
 
 msgid "Entity"
-msgstr "ლოგიკური ობიექტი"
+msgstr "ობიექტი"
 
 msgid "Content-Type"
 msgstr "შიგთავსის ტიპი"
@@ -2721,7 +2721,7 @@ msgid "Encoding"
 msgstr "კოდირება"
 
 msgid "RFC822 Message body"
-msgstr "RFC822 შეტყობინების ტანი"
+msgstr "RFC822 შეტყობინების სხეული"
 
 msgid "Close Window"
 msgstr "ფანჯრის დახურვა"
@@ -2736,7 +2736,7 @@ msgid "New Mail"
 msgstr "ახალი ფოსტა"
 
 msgid "SquirrelMail Notice:"
-msgstr "SquirrelMail ცნობა"
+msgstr "SquirrelMail შენიშვნა"
 
 #, c-format
 msgid "You have %s new message"
@@ -2744,26 +2744,26 @@ msgstr "თქვენ გაქვთ %s ახალი შეტყობი
 
 #, c-format
 msgid "You have %s new messages"
-msgstr "თქვენ გაქვთ %s ახალი შეტყობინებები"
+msgstr "თქვენ გაქვთ %s ახალი შეტყობინება"
 
 msgid "New Mail Notification"
 msgstr "გაფრთხილება ახალ წერილზე"
 
 #, c-format
 msgid "The %s option will check ALL of your folders for unseen mail, not just the inbox for notification."
-msgstr "%s პარამეტრი შეამოწმებს თქვენს ყველა ფოლდერს უხილავი ფისტისგან, არა მხოლოდ შემომავალს."
+msgstr "%s პარამეტრი შეამოწმებს თქვენს ყველა ფოლდერის უხილავ ფოსტას და არა მხოლოდ შემოსულ ფოლდერს."
 
 #, c-format
 msgid "Check all boxes, not just INBOX"
-msgstr "ყველა ყუთის შემოწმება გარდა შემომავალისა"
+msgstr "ყველა ყუთის შემოწმება გარდა შემოსულისა"
 
 #, c-format
 msgid "Selecting the %s option will enable the showing of a popup window when unseen mail is in your folders (requires JavaScript)."
-msgstr "Selecting the %s option will enable the showing of a popup window when unseen mail is in your folders (requires JavaScript)."
+msgstr "%s პარამეტრის შერჩევა თქვენს ფოლდერებში უხილავი ფოსტის არსებობისას ჩამოშლადი სარკმლის გამოყენების შესაძლებლობას მოგცემთ (საჭიროებს JavaScript-ს)."
 
 #, c-format
 msgid "Show popup window on new mail"
-msgstr "ახალ ფოსტაზე მოძრავი ფანჯრის ჩვენება"
+msgstr "ახალ ფოსტაზე ჩამოშლადი სარკმლის ჩვენება"
 
 #, c-format
 msgid "Use the %s option to only check for messages that are recent. Recent messages are those that have just recently showed up and have not been \"viewed\" or checked yet. This can prevent being continuously annoyed by sounds or popups for unseen mail."
@@ -2779,7 +2779,7 @@ msgstr "Selecting the %s option will change the title in some browsers to let yo
 
 #, c-format
 msgid "Change title on supported browsers"
-msgstr "მხარდაჭერილ ბროუზერებზე სათაურის ცვლილება"
+msgstr "სათაურის შეცვლა მხარდაჭერილ ბრაუზერებზე"
 
 #, c-format
 msgid "Select %s to turn on playing a media file when unseen mail is in your folders. When enabled, you can specify the media file to play in the provided file box."
@@ -2791,7 +2791,7 @@ msgstr "მედიის დაკვრის ჩართვა"
 
 #, c-format
 msgid "Select from the list of %s the media file to play when new mail arrives. If no file is specified, %s, no sound will be used."
-msgstr "ახალი შეტყობინების მოსვლის დროს მედია ფაილის დასაკრავად ამოირჩიეთ %s სიიდან. თუ არ არის ფაილი განსაზღვრული %s, ხმა არ იქნება გამოყენებული."
+msgstr "ახალი შეტყობინების მოსვლის გასახმოვანებლად აირჩიეთ მედია ფაილი %s სიიდან. თუ ფაილი არ მითითებულა, %s, ხმა არ გამოიყენება."
 
 #, c-format
 msgid "Select server file"
@@ -2813,11 +2813,11 @@ msgid "NewMail Options"
 msgstr "ახალი ფოსტის პარამეტრები"
 
 msgid "This configures settings for playing sounds and/or showing popup windows when new mail arrives."
-msgstr "ეს დააკონფიგურირებს პაამეტრებს ხმის დაკვრაში და/ან მოძრავი ფანჯრის ასახვაში ახალი შეტყობინების მოსვლის დროს."
+msgstr "ახალი შეტყობინების მოსვლის დროს ეს დააკონფიგურირებს გახმოვანების და/ან ჩამოშლადი სარკმლის პარამეტრებს."
 
 #, c-format
 msgid "%s New Messages"
-msgstr "%s ახალი შეტყობინებები"
+msgstr "%s ახალი შეტყობინება"
 
 #, c-format
 msgid "%s New Message"
@@ -2827,16 +2827,16 @@ msgid "Test Sound"
 msgstr "ხმის ტესტი"
 
 msgid "No sound specified"
-msgstr "არ არის ხმა განსაზღვრული"
+msgstr "ხმა არ მითითებულა"
 
 msgid "Loading the sound..."
 msgstr "მიმდინარეობს ხმის ჩატვირთვა..."
 
 msgid "Sent Subfolders Options"
-msgstr "გაგზავნილი ქვეფოლდერების პარამეტრები"
+msgstr "გასული ქვეფოლდერების პარამეტრები"
 
 msgid "Use Sent Subfolders"
-msgstr "გაგზავნილი ქვეფოლდერების გამოყენება"
+msgstr "გასული ქვეფოლდერების გამოყენება"
 
 msgid "Monthly"
 msgstr "თვიურად"
@@ -2848,7 +2848,7 @@ msgid "Yearly"
 msgstr "ყოველწლიურად"
 
 msgid "Base Sent Folder"
-msgstr "გაგზავნილ ფოლდერზე დაფუძნებული"
+msgstr "ძირეული გასული ფოლდერი"
 
 msgid "Enabled"
 msgstr "ჩართულია"
@@ -2863,10 +2863,10 @@ msgid "Spam reporting"
 msgstr "სპამის ანგარიში"
 
 msgid "SpamCop link is:"
-msgstr "SpamCop-ის ბმული არის:"
+msgstr "SpamCop-ის ბმულია:"
 
 msgid "Delete spam when reported:"
-msgstr "ანგარიშის მოხსენიების შემდგომ სპამის წაშლა:"
+msgstr "სპამის წაშლა ანგარიშის შემდეგ:"
 
 msgid "Only works with email-based reporting"
 msgstr "მუშაობს მხოლოდ ელფოსტაზე დაფუძნებულ ანგარიშებზე"
@@ -2878,7 +2878,7 @@ msgid "Quick email-based reporting"
 msgstr "სწრაფ ელფოსტაზე დაფუძნებული ანგარიში"
 
 msgid "Thorough email-based reporting"
-msgstr "სრულ ელფოსტაზე დაფუძნებული ანგარიში"
+msgstr "სრულ ელფოსტაზე დაფუძნებული დეტალური ანგარიში"
 
 msgid "Web-based form"
 msgstr "ვებზე დაფუძნებული ფორმა"
@@ -2887,7 +2887,7 @@ msgid "Save Method"
 msgstr "მეთოდის შენახვა"
 
 msgid "Your SpamCop authorization code:"
-msgstr "თწვენი SpamCop-ის ავთენტურობის დადგენის კოდი:"
+msgstr "თქვენი SpamCop-ის ავთენტურობის კოდი:"
 
 msgid "see below"
 msgstr "იხილეთ ქვემოთ"
@@ -2947,7 +2947,7 @@ msgid "For more information about SpamCop, it's services, spam in general, and m
 msgstr "For more information about SpamCop, it's services, spam in general, and many related topics, try reading through SpamCop's %sHelp and Feedback%s section."
 
 msgid "Report as Spam"
-msgstr "ანგარიში როგორც სპამი"
+msgstr "სპამად მითითება"
 
 msgid "SpamCop - Spam Reporting"
 msgstr "SpamCop - Spam Reporting"
@@ -2959,22 +2959,22 @@ msgid "Sending this spam report will give you back a reply with URLs that you ca
 msgstr "Sending this spam report will give you back a reply with URLs that you can click on to properly report this spam message to the proper authorities. This is a free service. By pressing the \"Send Spam Report\" button, you agree to follow SpamCop's rules/terms of service/etc."
 
 msgid "Cancel / Done"
-msgstr "უარყოფა / დასრულებულია"
+msgstr "გაუქმება / მზადაა"
 
 msgid "Send Spam Report"
 msgstr "სპამ ანგარიშის გაგზავნა"
 
 msgid "SpellChecker Options"
-msgstr "ლექსიკის შემოწმების პარამეტრები"
+msgstr "მართლწერის შემოწმების პარამეტრები"
 
 msgid "Here you may set up how your personal dictionary is stored, edit it, or choose which languages should be available to you when spell-checking."
-msgstr "აქ თქვენ შეგიძლიათ დააყენოთ როგორ ჩაიწეროს თქვენი პერსონალური ლექსიკონი, შეცვალოთ იგი ან აირჩიოთ რა ენაზე იყოს ხელმისაწვდომი ლექსიკის შემოწმების დროს."
+msgstr "აქ თქვენ შეგიძლიათ მიუთითოთ როგორ ჩაიწეროს თქვენი პერსონალური ლექსიკონი, შეცვალოთ იგი ან აირჩიოთ თუ რა ენები იყოს ხელმისაწვდომი მართლწერის შემოწმებისას."
 
 msgid "Check Spelling"
 msgstr "ლექსიკის შემოწმება"
 
 msgid "Back to &quot;SpellChecker Options&quot; page"
-msgstr "უკან &quot;ლექსიკის შემოწმების პარამეტრების&quot; გვერდზე"
+msgstr "უკან &quot;მართლწერის შემოწმების პარამეტრების&quot; გვერდზე"
 
 msgid "ATTENTION:"
 msgstr "ყურადღება:"
@@ -2983,22 +2983,22 @@ msgid "SquirrelSpell was unable to decrypt your personal dictionary. This is mos
 msgstr "SquirrelSpell was unable to decrypt your personal dictionary. This is most likely due to the fact that you have changed your mailbox password. In order to proceed, you will have to supply your old password so that SquirrelSpell can decrypt your personal dictionary. It will be re-encrypted with your new password after this. If you haven't encrypted your dictionary, then it got mangled and is no longer valid. You will have to delete it and start anew. This is also true if you don't remember your old password -- without it, the encrypted data is no longer accessible."
 
 msgid "Delete my dictionary and start a new one"
-msgstr "ჩემი ლექსიკონის წაშლა და ახალის გაშვება"
+msgstr "ჩემი ლექსიკონის წაშლა და ახლის დაწყება"
 
 msgid "Decrypt my dictionary with my old password:"
 msgstr "ჩემი ლექსიკონის გაშიფვრა ძველი პაროლით:"
 
 msgid "Proceed"
-msgstr "გაგრძელდეს"
+msgstr "გაგრძელება"
 
 msgid "You must make a choice"
-msgstr "თქვენ უნდა გააკეთოთ არცევანი"
+msgstr "თქვენ უნდა გააკეთოთ არჩევანი"
 
 msgid "You can either delete your dictionary or type in the old password. Not both."
-msgstr "თქვენ აგრეთვე შეგიძლიათ წაშალოთ თქვენი ლექსიკონი ან ძველი პაროლის ტიპი. და არა ორივე."
+msgstr "თქვენ შეგიძლიათ ან წაშალოთ თქვენი ლექსიკონი ან ძველი პაროლი მიუთითოთ. არა ორივე."
 
 msgid "This will delete your personal dictionary file. Proceed?"
-msgstr "ეს წაშლის თქვენი პერსონალური ლექსიკონის ფაილს. გაგრძელდეს?"
+msgstr "ეს წაშლის თქვენი პერსონალური ლექსიკონის ფაილს. გავაგრძელო?"
 
 msgid "Error Decrypting Dictionary"
 msgstr "ლექსიკონის გაშიფვრის დროს მოხდენილი შეცდომა"
@@ -3105,7 +3105,7 @@ msgid "The spellcheck is not finished. Really close and discard changes?"
 msgstr "ლექსიკის შემოწმება არ დასრულებულა. ნამდვილად დაიხუროს და ცვლილებები გაუქმდეს?"
 
 msgid "No errors found"
-msgstr "შეცომები არ არის ნაპოვნი"
+msgstr "შეცდომები არ არის ნაპოვნი"
 
 msgid "Your personal dictionary has been encrypted and is now stored in an encrypted format."
 msgstr "თქვენი პერსონალური ლექსიკონი გაიშიფრა და ჩაიწერა დაშფრულ ფორმატში."
@@ -3141,7 +3141,7 @@ msgid "Your personal dictionary was re-encrypted successfully. Please close this
 msgstr "თქვენი პერსონალური ლექსიკონი წარმატებიტ იქნა თავიდან დაშიფრული. გთხოვთ, დახურეთ ეს ფანჯარა და დააწკაპუნეთ \"ლექსიკის შემოწმება\" ღილაკზე, რათა დაიწყოს თქვენი ლექსიკის შემოწმება თავიდან."
 
 msgid "Dictionary re-encrypted"
-msgstr "ლექსიკონი თავიდან არის დაშიფრული"
+msgstr "ლექსიკონი თავიდან დაიშიფრა"
 
 msgid "Personal Dictionary"
 msgstr "პერსონალური ლექსიკონი"
@@ -3150,14 +3150,14 @@ msgid "No words in your personal dictionary."
 msgstr "არ არის სიტყვები თქვენს პერსონალურ ლექსიკონში."
 
 msgid "Please check any words you wish to delete from your dictionary."
-msgstr "გთხოვთ, შეამოწმეთ ის სიტყვები, რომლებიც გსურთ, რომ წაშალოთ თქვენი ლექსიკონიდან."
+msgstr "გთხოვთ, შეამოწმოთ სიტყვები, რომელთა წაშლაც გსურთ თქვენი ლექსიკონიდან."
 
 #, c-format
 msgid "%s dictionary"
 msgstr "%s ლექსიკონი"
 
 msgid "Delete checked words"
-msgstr "ჩემოწმებული სიტყვების წაშლა"
+msgstr "შემოწმებული სიტყვების წაშლა"
 
 msgid "Edit your Personal Dictionary"
 msgstr "თქვენი პერსონალური დირექტორიის რედაქტირება"
@@ -3178,35 +3178,35 @@ msgid "This helps protect your privacy in case the web-mail system gets compromi
 msgstr "ეს გეხმარებათ თქვენი პირადი ინფორმაციის დაცვაში იმ შემთხვევაში როცა ვებ-ფოსტის სისტემა კონფლიქტშია და თქვენი პერსონალური ლექსიკონი სრულდება მოპარვით. იგი მიმდინარედ იშიფრება იმ პაროლთან ერთად, რომელსაც თქვენ იყენებთ თქვენს საფოსტო ყუთში შესასვლელად. სხვისთვის თქვენს პერსონალურ ლექსიკონში ჩაწერილი ინფორმაციის ნახვა ხდება ძნელი."
 
 msgid "If you forget your password, your personal dictionary will become unaccessible, since it can no longer be decrypted. If you change your mailbox password, SquirrelSpell will recognize it and prompt you for your old password in order to re-encrypt the dictionary with a new key."
-msgstr "თუ თქვენ დაგავიწყდათ თქვენი პაროლი, თქვენი პერსონალური ლექსიკონი იქნება მიუწვდომელი, იქიდან მოყოლებული იგი აღარ გაიშიფრება. თუ თქვენ შეცვალეთ თქვენი საფოსტო ყუთის პაროლი, SquirrelSpell იცნობს მას და შეგახსენებთ თქვენი ძველი პაროლისთვის ბრძანებაზე ლექსიკონის თავიდან დაშიფვრაზე ახალი გასაღებით."
+msgstr "თუ თქვენი პაროლი დაგავიწყდათ , თქვენი პერსონალური ლექსიკონი მიუწვდომელი იქნება, ამის შემდგომ მას ვეღარ გაშიფრავთ. თუ თქვენი საფოსტო ყუთის პაროლს შეცვლით , SquirrelSpell იცნობს მას და მოგთხოვთ ძველ პაროლს ახალი კოდით ლექსიკონის თავიდან დასაშიფრად."
 
 msgid "Please decrypt my personal dictionary and store it in a clear-text format."
-msgstr "გთხოვთ, გაშიფრეთ ჩემი პერსონალური ლექსიკონი და ჩაწერეთ იგი სუფთა ტექსტურ ფორმატში."
+msgstr "გთხოვთ, გაშიფროთ ჩემი პერსონალური ლექსიკონი და ჩაწეროთ იგი სუფთა ტექსტურ ფორმატში."
 
 msgid "Change crypto settings"
-msgstr "შიფრაციის პარამეტრების ცვლილება"
+msgstr "შიფრის პარამეტრების შეცვლა"
 
 msgid "Your personal dictionary is currently not encrypted."
-msgstr "თქვენი პერსონალური ლექსიკონი არის დაუშიფრავი."
+msgstr "თქვენი პერსონალური ლექსიკონი დაუშიფრავია."
 
 msgid "You may wish to encrypt your personal dictionary to protect your privacy in case the webmail system gets compromized and your personal dictionary file gets stolen. When encrypted, the file's contents look garbled and are hard to decrypt without knowing the correct key (which is your mailbox password)."
-msgstr "თქვენ შეიძლება თქვენი საიდუმლოს დასაცავად მოისურვოთ თქვენი პერსონალური ლექსიკონის გაშიფვრა იმ შემთხვევაში, როცა ვებფოსტის სისტემა იძლევა შეთანხმებას და თქვენი პერსონალური ლექსიკონის ფაილი ხდება მოპარული. დაშიფვრის დროს, ფაილის შიგთავსი გამოიყურება დაზიანებულად და რთულია მისი დაშიფვრა სწორი გასაღების ცოდნის გარეშე (რომელიც არის თქვენი საფოსტო ყუთის პაროლი)."
+msgstr "შესაძლოა თქვენი პირადი ლექსიკონის დაშიფვრა მოისურვოთ იმ შემთხვევიათვის ვებ ფოსტის სისტემის უსაფრთხოების დარღვევისა და თქვენი პირადი ლექსიკონის ფაილის მოპარვის საფრთხის შემთხვევაში. დაშიფრული ფაილის შიგთავსი არეულია და შესაბამისი (თქვენი ფოსტის პაროლი) კოდის გარეშე მისი გაშიფვრა რთულია."
 
 msgid "If you decide to encrypt your personal dictionary, you must remember that it gets &quot;hashed&quot; with your mailbox password. If you forget your mailbox password and the administrator changes it to a new value, your personal dictionary will become useless and will have to be created anew. However, if you or your system administrator change your mailbox password but you still have the old password at hand, you will be able to enter the old key to re-encrypt the dictionary with the new value."
-msgstr "თუ თქვენ გადაწყვიტეთ გაშიფროთ თქვენი პერსონალური ლექსიკონი, თქვენ უნდა გახსოვდეთ, რომ იგი იძლევა &quot;hashed&quot; თქვენს საფოსტო ყუთის პაროლთან ერთად. თუ თქვენ დაგავიწყდათ თქვენი საფოსტო ყუთის პაროლი და ადმინისტრატორი ცვლის მას ახალ მნიშვნელობად, თქვენი პერსონალური ლექსიკონი გახდება გამოუყენებელი და შეიქმნება ახალი.  თუმცა, თუ თქვენ ან თქვენი სისტემური ადმინისტრატორი შეცვლის თქვენს საფოსტო ყუთის პაროლს, მაგრამ თქვენ ისევ გექნებათ ძველი პაროლი, თქვენ შეგეძლებათ შეიყვანოთ ძველი პაროლი და და თავიდან გაშიფროთ ლექსიკონი ახალი მნიშვნელობით."
+msgstr "თუ თქვენ თქვენი პერსონალური ლექსიკონის დაშიფვრა გადაწყვიტეთ, უნდა გახსოვდეთ, რომ იგი იღებს &quot;hashed&quot; თქვენი საფოსტო ყუთის პაროლთან ერთად. თუ თქვენ დაგავიწყდათ თქვენი საფოსტო ყუთის პაროლი და ადმინისტრატორი მას ახალ მნიშვნელობას ანიჭებს, თქვენი პერსონალური ლექსიკონი ვერ გამოიყენება და შეიქმნება ახალი.  თუმცა, თუ თქვენ ან თქვენი სისტემური ადმინისტრატორი შეცვლის თქვენს საფოსტო ყუთის პაროლს, მაგრამ თქვენ ისევ გექნებათ ძველი პაროლი, თქვენ შეგეძლებათ შეიყვანოთ ძველი პაროლი და და თავიდან გაშიფროთ ლექსიკონი ახალი მნიშვნელობით."
 
 msgid "Please encrypt my personal dictionary and store it in an encrypted format."
-msgstr "გთხოვთ, დაშიფრეთ ჩემი პერსონალური ლექსიკონი და ჩაწერეთ იგი დაშიფრულ ფორმატში."
+msgstr "გთხოვთ, დაშიფროთ ჩემი პერსონალური ლექსიკონი და ჩაწეროთ იგი დაშიფრულ ფორმატში."
 
 #, c-format
 msgid "Deleting the following entries from %s dictionary:"
-msgstr "მიმდინარეობს %s ლექსიკონიდან მიმდინარე შენატანების წაშლა:"
+msgstr "მიმდინარეობს %s ლექსიკონიდან შემდეგი ჩანაწერების წაშლა:"
 
 msgid "All done!"
-msgstr "ყველაფერი დასრულდა!"
+msgstr "ყველაფერი შესრულდა!"
 
 msgid "Personal Dictionary Updated"
-msgstr "პერსონალური დირექტორია განახლებულია"
+msgstr "პერსონალური დირექტორია განახლდა"
 
 msgid "No changes requested."
 msgstr "ცვლილებები არ მოთხოვნილა."
@@ -3215,14 +3215,14 @@ msgid "Please wait, communicating with the server..."
 msgstr "გთხოვთ მოიცადოთ, მიმდინარეობს სერვერთან დაკავშირება..."
 
 msgid "Please choose which dictionary you would like to use to spellcheck this message:"
-msgstr "გთხოვთ, აირჩიეთ რომელი ლექსიკონით გსურთ ამ შეტყობინების მართლწერის შემოწმება:"
+msgstr "გთხოვთ, აირჩიოთ თუ რომელი ლექსიკონით გსურთ ამ შეტყობინების მართლწერის შემოწმება:"
 
 msgid "SquirrelSpell Initiating"
 msgstr "მიმდინარეობს SquirrelSpell გააქტივება"
 
 #, c-format
 msgid "Settings adjusted to: %s with %s as default dictionary."
-msgstr "პპარამეტრების მორგება: %s - %s ნაგულისხმებ ლექსიკონთან ერთად."
+msgstr "პარამეტრების მორგება: %s - %s ნაგულისხმებ ლექსიკონთან ერთად."
 
 #, c-format
 msgid "Using %s dictionary (system default) for spellcheck."
@@ -3232,10 +3232,10 @@ msgid "International Dictionaries Preferences Updated"
 msgstr "საერთაშორისო ლექსიკონების პარამეტრები განახლებულია"
 
 msgid "Please check any available international dictionaries which you would like to use when spellchecking:"
-msgstr "გთხოვთ, შეამოწმეთ არსებული საერთაშორისო ლექსიკონები, რომლებიც გსურთ, რომ გამოყენებული იქნას ლექსიკის შემოწმების დროს:"
+msgstr "გთხოვთ, შეამოწმეთ არსებული საერთაშორისო ლექსიკონები, რომელთა გამოყენებაც გსურთ მართლწერის შესამოწმებლად:"
 
 msgid "Make this dictionary my default selection:"
-msgstr "ამ დირექტორიის ჩემი ნაგულისხმევ არჩევანად გარდაქმნა:"
+msgstr "ამ დირექტორიის ჩემი ნაგულისხმებ არჩევნად მითითება:"
 
 msgid "Make these changes"
 msgstr "ამ ცვლილებების შეტანა"
@@ -3244,13 +3244,13 @@ msgid "Add International Dictionaries"
 msgstr "საერთაშორისო ლექსიკონების დამატება"
 
 msgid "Please choose which options you wish to set up:"
-msgstr "გთხოვთ, აირჩიოთ რომელი პარამეტრები გსურთ, რომ დააყენოთ:"
+msgstr "გთხოვთ, აირჩიოთ რომელი პარამეტრების მითითება გსურთ:"
 
 msgid "Edit your personal dictionary"
 msgstr "თქვენი პერსონალური ლექსიკონის რედაქტირება"
 
 msgid "Set up international dictionaries"
-msgstr "საერთაშორისო ლექსიკონების ჩადგმა"
+msgstr "საერთაშორისო ლექსიკონების დაყენება"
 
 msgid "Encrypt or decrypt your personal dictionary"
 msgstr "თქვენი პერსონალური ლექსიკონის გაშიფვრა ან დაშიფვრა"
@@ -3265,33 +3265,33 @@ msgid "Translator"
 msgstr "თარჯიმანი"
 
 msgid "Saved Translation Options"
-msgstr "თარგმანის პარამეტრები შენახულია"
+msgstr "თარგმანის შენახული პარამეტრები"
 
 msgid "Your server options are as follows:"
 msgstr "თქვენი სერვერის პარამეტრები იგივეა რაც მიმდინარე:"
 
 msgid "Maximum of 150 words translated, powered by Systran"
-msgstr "მაქსიმუმ 150 სიტყვა არის გადათარგმნილი, შექმნილია Systran მიერ"
+msgstr "მაქსიმუმ 150 სიტყვა ითარგმნება, მხარდაჭერა - Systran"
 
 #, c-format
 msgid "Number of supported language pairs: %s"
-msgstr "მხარდაჭერილი წყვილი ენების რიცხვი: %s"
+msgstr "ენების მხარდაჭერილ წყვილთა რაოდენობა: %s"
 
 msgid "No known limits, powered by Systran"
-msgstr "არ არის უცნობი საზღვრები, შექმნილია Systran მიერ"
+msgstr "შეუზღუდავია, მხარდაჭერა - Systran"
 
 msgid "No known limits, powered by Translation Experts' InterTran"
-msgstr "არ არის უცნობი საზღვრები, შექმნილია Translation Experts' InterTran მიერ"
+msgstr "შეუზღუდავია, მხარდაჭერა - Translation Experts' InterTran"
 
 #, c-format
 msgid "Number of supported languages: %s"
-msgstr "მხარდაჭერილი ენების რიცხვი: %s"
+msgstr "მხარდაჭერის ენების რაოდენობა: %s"
 
 msgid "Hellenic translations, no known limits, powered by Systran"
-msgstr "ბერძნული თარგმანები, არ არის უცნობი საზღვრები, შექმნილია Systran მიერ"
+msgstr "ბერძნული თარგმანები, შეუზღუდავია, მხარდაჭერა - Systran"
 
 msgid "Russian translations, maximum of 500 characters translated"
-msgstr "რუსული თარგმანები, მაქსიმუმ 500 სიმბოლოა გადათარგმნილი"
+msgstr "რუსული თარგმანები, მაქსიმუმ 500 სიმბოლო ითარგმნა"
 
 msgid "You also decide if you want the translation box displayed, and where it will be located."
 msgstr "გადაწყვიტეთ თუ გსურთ თარგმანის სარკმლის ჩვენება და მათი განთავსება."
