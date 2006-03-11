@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: SquirrelMail HEAD\n"
-"POT-Creation-Date: 2006-02-21 05:46+0100\n"
-"PO-Revision-Date: 2006-02-21 06:55+0100\n"
+"POT-Creation-Date: 2006-03-11 21:01+0100\n"
+"PO-Revision-Date: 2006-03-11 21:32+0100\n"
 "Last-Translator: Fredrik Jervfors <sqm_admin@fimbul.net>\n"
 "Language-Team: Swedish <squirrelmail-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -3065,7 +3065,7 @@ msgstr ""
 "(kräver JavaScript)."
 
 msgid "Show popup window on new mail"
-msgstr "Visa popup vid nya brev"
+msgstr "Visa en dialogruta när nya brev inkommer"
 
 #, php-format
 msgid ""
@@ -3153,8 +3153,7 @@ msgid ""
 "This configures settings for playing sounds and/or showing popup windows "
 "when new mail arrives."
 msgstr ""
-"Aviseringen består av ett ljud och/eller ett popup-fönster när nya brev "
-"inkommer."
+"Aviseringen består av ett ljud och/eller en dialogruta när nya brev inkommer."
 
 #, php-format
 msgid "%s New Messages"
@@ -4048,9 +4047,6 @@ msgstr "Inga mappar att avaktivera."
 msgid "No folders were found to subscribe to."
 msgstr "Inga mappar att aktivera."
 
-msgid "Save folder tree"
-msgstr "Spara mappstruktur"
-
 msgid "SquirrelMail Webmail Application"
 msgstr "SquirrelMail - en webbpostklient"
 
@@ -4900,14 +4896,29 @@ msgstr ""
 "Aviseringen vid nyinkomna brev följer mappinställningen &quot;Avisering av "
 "olästa brev&quot;"
 
+msgid "Follow folder preferences"
+msgstr "[enligt förval för mappar]"
+
+msgid "All folders"
+msgstr "Alla mappar"
+
+msgid "Special folders"
+msgstr "Särskilda mappar"
+
+msgid "Regular folders"
+msgstr "Vanliga mappar"
+
+msgid "Check for new messages in:"
+msgstr "Avisera inkomna brev i:"
+
 msgid "Width of popup window:"
-msgstr "Bredd på redigeringsfönstret:"
+msgstr "Bredd på dialogrutan:"
 
 msgid "If set to 0, reverts to default value"
 msgstr "Ange 0 för att använda det förinställda värdet"
 
 msgid "Height of popup window:"
-msgstr "Höjd på redigeringsfönstret:"
+msgstr "Höjd på dialogrutan:"
 
 msgid "uploaded media file"
 msgstr "uppladdad mediafil"
@@ -4924,6 +4935,10 @@ msgstr "Uppladdad mediafil:"
 #, php-format
 msgid "Media file %s will be removed, if you upload other media file."
 msgstr "Mediafilen %s kommer att tas bort om en annan mediafil laddas upp."
+
+#, php-format
+msgid "%s notice:"
+msgstr "Avisering från %s:"
 
 msgid "Warning"
 msgstr "Varning"
