@@ -915,7 +915,7 @@ function sqimap_append_checkresponse($response, $folder) {
                   $reason . "<br />\n";
            if (preg_match("/(.*)(quota)(.*)$/i", $reason, $regs)) {
               $string .= _("Solution:") . ' ' .
-            _("Remove unneccessary messages from your folder and start with your Trash folder.")
+            _("Remove unneccessary messages from your folders. Start with your Trash folder.")
               ."<br />\n";
            }
            $string .= "</font>\n";
