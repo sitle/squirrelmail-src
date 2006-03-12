@@ -1298,6 +1298,8 @@ sub command113 {
     print "If you're familiar with SSL, you get the idea.\n";
     print "To use this feature, your " . $service . " server must offer TLS\n";
     print "capability, plus PHP 4.3.x with OpenSSL support.\n";
+    print "Note that the 'STARTTLS' command is not supported; the server must\n";
+    print "have a dedicated port listening for TLS connections.\n";
     print "\nIf your " . $service . " server is localhost, you can safely disable this.\n";
     print "If it is remote, you may wish to seriously consider enabling this.\n";
     print "Enable TLS (y/n) [$WHT";
