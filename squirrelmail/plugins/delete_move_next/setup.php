@@ -184,15 +184,15 @@ function delete_move_next_read($currloc) {
                  "<td bgcolor=\"$color[9]\" width=\"100%\" align=center><small>";
 
         if ($prev > 0){
-            echo "<a href=\"read_body.php?passed_id=$prev_if_del&amp;mailbox=$urlMailbox&amp;sort=$sort&amp;startMessage=$startMessage&amp;show_more=0&amp;delete_id=$passed_id\">" . _("Delete & Prev") . "</a>" . "&nbsp;|&nbsp;\n";
+            echo "<a href=\"read_body.php?passed_id=$prev_if_del&amp;mailbox=$urlMailbox&amp;sort=$sort&amp;startMessage=$startMessage&amp;show_more=0&amp;delete_id=$passed_id\">" . _("Delete &amp; Prev") . "</a>" . "&nbsp;|&nbsp;\n";
         }
         else {
-            echo _("Delete & Prev") . "&nbsp;|&nbsp;";
+            echo _("Delete &amp; Prev") . "&nbsp;|&nbsp;";
         }
         if ($next > 0){
-            echo "<a href=\"read_body.php?passed_id=$next_if_del&amp;mailbox=$urlMailbox&amp;sort=$sort&amp;startMessage=$startMessage&amp;show_more=0&amp;delete_id=$passed_id\">" . _("Delete & Next") . "</a>\n";
+            echo "<a href=\"read_body.php?passed_id=$next_if_del&amp;mailbox=$urlMailbox&amp;sort=$sort&amp;startMessage=$startMessage&amp;show_more=0&amp;delete_id=$passed_id\">" . _("Delete &amp; Next") . "</a>\n";
         } else {
-            echo _("Delete & Next");
+            echo _("Delete &amp; Next");
         }
         echo '</small></td></tr>';
 
