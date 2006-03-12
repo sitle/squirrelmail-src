@@ -181,7 +181,7 @@ if (isset($vcard_nice['org'])) {
 if (isset($vcard_nice['title'])) {
     echo '<option value="' . htmlspecialchars($vcard_nice['title']) .
         '; ' . htmlspecialchars($vcard_nice['org']) .
-        '">' . _("Title & Org. / Dept.") . "</option>\n";
+        '">' . _("Title &amp; Org. / Dept.") . "</option>\n";
 }
 if (isset($vcard_nice['tel;work'])) {
     echo '<option value="' . htmlspecialchars($vcard_nice['tel;work']) .
