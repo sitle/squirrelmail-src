@@ -24,7 +24,7 @@ LANG=en_US.ISO8859-1
 export LC_ALL LANG
 
 # set common gettext options
-XGETTEXT_OPTIONS="--keyword=_ -keyword=N_ --keyword=ngettext:1,2 --default-domain=squirrelmail --no-location --add-comments" ;
+XGETTEXT_OPTIONS="--keyword=_ -keyword=N_ --keyword=ngettext:1,2 --default-domain=squirrelmail" ;
 
 # Allows extraction with file names
 if [ ! $SM_DEBUG ] ; then
