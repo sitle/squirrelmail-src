@@ -113,7 +113,7 @@ function sqimap_get_sort_order($imap_stream, $sort, $mbxresponse) {
             $uids = sqimap_run_command_list ($imap_stream, $query, true, $response, $message, true);
             if (isset($uids[0])) {
                 for ($i=0,$iCnt=count($uids);$i<$iCnt;++$i) {
-                    for ($j = 0, $jCnt=count($uids[$i]);$j<$iCnt;++$j) {
+                    for ($j = 0, $jCnt=count($uids[$i]);$j<$jCnt;++$j) {
                         if (preg_match("/^\* SEARCH (.+)$/", $uids[$i][$j], $regs)) {
                             $server_sort_array += preg_split("/ /", trim($regs[1]));
                         }
@@ -152,7 +152,7 @@ function sqimap_get_sort_order($imap_stream, $sort, $mbxresponse) {
     }
     if (isset($sort_test[0])) {
       for ($i=0,$iCnt=count($sort_test);$i<$iCnt;++$i) {
-        for ($j = 0, $jCnt=count($sort_test[$i]);$j<$iCnt;++$j) {
+        for ($j = 0, $jCnt=count($sort_test[$i]);$j<$jCnt;++$j) {
             if (preg_match("/^\* SORT (.+)$/", $sort_test[$i][$j], $regs)) {
                 $server_sort_array += preg_split("/ /", trim($regs[1]));
             }
