@@ -1,4 +1,4 @@
-# translation of squirrelmail.po into Russian
+# Translation of squirrelmail.pot into Russian
 # Copyright (c) 1999-2005 The SquirrelMail Project Team
 # $Id$
 # Konstantin Riabitsev <squirrelmail-i18n@mricon.com>, 2001.
@@ -8,18 +8,26 @@ msgid ""
 msgstr ""
 "Project-Id-Version: squirrelmail\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-04-16 19:47+0200\n"
-"PO-Revision-Date: 2005-04-30 18:11-0400\n"
-"Last-Translator: Gregory Mokhin <mok@kde.ru>\n"
+"POT-Creation-Date: 2005-11-23 19:14+0200\n"
+"PO-Revision-Date: 2005-12-15 08:54-0400\n"
+"Last-Translator: Gregory Mokhin <mokhin@gmail.com>\n"
 "Language-Team: Russian <kde-russian@lists.kde.ru>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.10\n"
-"Plural-Forms:  nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 msgid "Address Book"
 msgstr "Адресная книга"
+
+msgid "All"
+msgstr "Все"
+
+msgid "To"
+msgstr "Кому"
+
+msgid "Cc"
+msgstr "Копия"
 
 msgid "Name"
 msgstr "Имя"
@@ -33,17 +41,17 @@ msgstr "Комментарий"
 msgid "Source"
 msgstr "Исходный формат"
 
-msgid "To"
-msgstr "Кому"
-
-msgid "Cc"
-msgstr "Копия"
-
 msgid "Bcc"
 msgstr "BCC"
 
-msgid "No persons matching your search were found"
-msgstr "По заданным условиям поиска ничего не найдено"
+msgid "Use Addresses"
+msgstr "Использовать адреса"
+
+msgid "Cancel"
+msgstr "Отмена"
+
+msgid "Address Book Search"
+msgstr "Поиск в адресной книге"
 
 msgid "Search for"
 msgstr "Искать"
@@ -60,30 +68,21 @@ msgstr "Поиск"
 msgid "List all"
 msgstr "Показать все"
 
-msgid "Close"
-msgstr "Закрыть"
-
-#, php-format
+#, c-format
 msgid "Unable to list addresses from %s"
 msgstr "Ошибка доступа к адресам в %s"
 
 msgid "Your search failed with the following error(s)"
 msgstr "Поиск не завершен по следующим причинам"
 
-msgid "All"
-msgstr "Все"
-
-msgid "Use Addresses"
-msgstr "Использовать адреса"
-
-msgid "Cancel"
-msgstr "Отмена"
-
-msgid "Address Book Search"
-msgstr "Поиск в адресной книге"
+msgid "No persons matching your search were found"
+msgstr "По заданным условиям поиска ничего не найдено"
 
 msgid "Return"
 msgstr "Вернуться"
+
+msgid "Close"
+msgstr "Закрыть"
 
 msgid "Nickname"
 msgstr "Псевдоним"
@@ -130,11 +129,23 @@ msgstr "Изменить выбранные"
 msgid "Delete selected"
 msgstr "Удалить выбранные"
 
-#, php-format
+msgid "sort by nickname"
+msgstr "сортировать по псевдонимам"
+
+msgid "sort by name"
+msgstr "сортировать по имени"
+
+msgid "sort by email"
+msgstr "сортировать по адресу"
+
+msgid "sort by info"
+msgstr "сортировать по данным"
+
+#, c-format
 msgid "Add to %s"
 msgstr "Добавить в %s"
 
-#, php-format
+#, c-format
 msgid "%s wrote:"
 msgstr "%s пишет:"
 
@@ -144,7 +155,7 @@ msgstr "цитата"
 msgid "who"
 msgstr "от"
 
-#, php-format
+#, c-format
 msgid "On %s, %s wrote:"
 msgstr "В письме от %s %s пишет:"
 
@@ -187,6 +198,9 @@ msgstr "Добавить"
 msgid "Delete selected attachments"
 msgstr "Удалить выбранные вложения"
 
+msgid "Because PHP file uploads are turned off, you can not attach files to this message. Please see your system administrator for details."
+msgstr "Загрузка файлов на сервер запрещена в параметрах PHP. Вложить файл в сообщение невозможно. Обратитесь к системному администратору."
+
 msgid "Priority"
 msgstr "Срочность"
 
@@ -220,12 +234,34 @@ msgstr "Сохранить черновик"
 msgid "You have not filled in the \"To:\" field."
 msgstr "Не указан адресат в поле \"Кому:\"."
 
-#, php-format
+#, c-format
 msgid "Error: Draft folder %s does not exist."
 msgstr "Ошибка: Папка для черновиков %s не существует."
 
 msgid "Server replied:"
 msgstr "Ответ сервера:"
+
+msgid "Illegal folder name. Please select a different name."
+msgstr "Недопустимое имя папки. Укажите другое имя."
+
+msgid "Click here to go back"
+msgstr "Нажмите здесь, чтобы вернуться назад"
+
+msgid "You have not selected a folder to delete. Please do so."
+msgstr "Сначала выберите папку для удаления."
+
+msgid "Delete Folder"
+msgstr "Удалить папку"
+
+#, c-format
+msgid "Are you sure you want to delete %s?"
+msgstr "Удалить %s?"
+
+msgid "Yes"
+msgstr "Да"
+
+msgid "No"
+msgstr "Нет"
 
 msgid "Folders"
 msgstr "Папки"
@@ -278,9 +314,6 @@ msgstr "Переименовать"
 msgid "No folders found"
 msgstr "Папки не найдены"
 
-msgid "Delete Folder"
-msgstr "Удалить папку"
-
 msgid "Delete"
 msgstr "Удалить"
 
@@ -298,25 +331,6 @@ msgstr "При попытке подписаться не найдено пап�
 
 msgid "Subscribe to:"
 msgstr "Подписаться на:"
-
-msgid "Illegal folder name. Please select a different name."
-msgstr "Недопустимое имя папки. Укажите другое имя."
-
-msgid "Click here to go back"
-msgstr "Нажмите здесь, чтобы вернуться назад"
-
-msgid "You have not selected a folder to delete. Please do so."
-msgstr "Сначала выберите папку для удаления."
-
-#, php-format
-msgid "Are you sure you want to delete %s?"
-msgstr "Удалить %s?"
-
-msgid "Yes"
-msgstr "Да"
-
-msgid "No"
-msgstr "Нет"
 
 msgid "You have not selected a folder to rename. Please do so."
 msgstr "Сначала выберите папку для переименования."
@@ -336,11 +350,8 @@ msgstr "ОШИБКА: неверный формат файлов справки.
 msgid "Help"
 msgstr "Справка"
 
-#, php-format
-msgid ""
-"The help has not been translated to %s. It will be displayed in English "
-"instead."
-msgstr "Справка не была переведена на %s. Она будет доступна лишь по-английски."
+msgid "The help has not been translated to the selected language. It will be displayed in English instead."
+msgstr "Справка не была переведена на выбранный язык. Она будет доступна только по-английски."
 
 msgid "Some or all of the help documents are not present!"
 msgstr "Некоторые из файлов справки не найдены."
@@ -372,21 +383,27 @@ msgstr "Входящие"
 msgid "Purge"
 msgstr "Очистить"
 
+msgid "Last Refresh"
+msgstr "Обновлено"
+
+msgid "Check mail"
+msgstr "Проверить почту"
+
 msgid "Login"
 msgstr "Логин"
 
-#, php-format
+#, c-format
 msgid "%s Logo"
 msgstr "Логотип %s"
 
-#, php-format
+#, c-format
 msgid "SquirrelMail version %s"
 msgstr "SquirrelMail - версия %s"
 
 msgid "By the SquirrelMail Project Team"
 msgstr "Группа разработчиков SquirrelMail"
 
-#, php-format
+#, c-format
 msgid "%s Login"
 msgstr "Вход в %s"
 
@@ -399,67 +416,11 @@ msgstr "Пароль:"
 msgid "No messages were selected."
 msgstr "Нет выбранных сообщений."
 
-msgid "Personal Information"
-msgstr "Личные сведения"
-
-msgid "Display Preferences"
-msgstr "Внешний вид"
-
-msgid "Message Highlighting"
-msgstr "Подсветка сообщений"
-
-msgid "Folder Preferences"
-msgstr "Папки"
-
-msgid "Index Order"
-msgstr "Порядок индексации"
-
 msgid "Options"
 msgstr "Настройка"
 
-msgid "Error(s) occurred while saving your options"
-msgstr "Ошибка при сохранении параметров"
-
-msgid "Some of your preference changes were not applied."
-msgstr "Некоторые из внесенных изменений не вступили в силу."
-
-msgid "Successfully Saved Options"
-msgstr "Параметры были сохранены"
-
-msgid "Refresh Folder List"
-msgstr "обновить список папок"
-
-msgid "Refresh Page"
-msgstr "Обновить страницу"
-
-msgid ""
-"This contains personal information about yourself such as your name, your "
-"email address, etc."
-msgstr "Укажите сведения о себе: имя, фамилию, адрес электронной почты и т. д."
-
-msgid ""
-"You can change the way that SquirrelMail looks and displays information to "
-"you, such as the colors, the language, and other settings."
-msgstr ""
-"Здесь можно настроить, как SquirrelMail выглядит в вашем браузере - изменить "
-"цвета, язык и прочие параметры отображения."
-
-msgid ""
-"Based upon given criteria, incoming messages can have different background "
-"colors in the message list. This helps to easily distinguish who the "
-"messages are from, especially for mailing lists."
-msgstr ""
-"Сообщения в вашем ящике могут подсвечиваться разными цветами согласно "
-"выбранным условиям. Это позволяет с легкостью отличать важные сообщения от "
-"прочих, особенно при наличии списков рассылки."
-
-msgid "These settings change the way your folders are displayed and manipulated."
-msgstr "Здесь можно настроить параметры различных папок."
-
-msgid ""
-"The order of the message index can be rearranged and changed to contain the "
-"headers in any order you want."
-msgstr "Здесь можно настроить расположение заголовков в таблице сообщений."
+msgid "Message Highlighting"
+msgstr "Подсветка сообщений"
 
 msgid "New"
 msgstr "Новое правило"
@@ -542,18 +503,18 @@ msgstr "Пример: 63aa7f"
 msgid "Matches"
 msgstr "Искать совпадения в"
 
-#, php-format
-msgid "Alternate Identity %d"
-msgstr "Альтернативный профиль %d"
-
-msgid "Advanced Identities"
-msgstr "Дополнительные профили"
-
 msgid "Default Identity"
 msgstr "Профиль по умолчанию"
 
+#, c-format
+msgid "Alternate Identity %d"
+msgstr "Альтернативный профиль %d"
+
 msgid "Add a New Identity"
 msgstr "Добавить новый профиль"
+
+msgid "Advanced Identities"
+msgstr "Дополнительные профили"
 
 msgid "Full Name"
 msgstr "Имя"
@@ -573,6 +534,9 @@ msgstr "Использовать по умолчанию"
 msgid "Move Up"
 msgstr "Переместить выше"
 
+msgid "Index Order"
+msgstr "Порядок индексации"
+
 msgid "Checkbox"
 msgstr "Маркер"
 
@@ -582,13 +546,8 @@ msgstr "Флажки"
 msgid "Size"
 msgstr "Размер"
 
-msgid ""
-"The index order is the order that the columns are arranged in the message "
-"index. You can add, remove, and move columns around to customize them to fit "
-"your needs."
-msgstr ""
-"Порядок индексации - это порядок, в котором сообщения отображаются в папке. "
-"Столбцы можно добавлять, удалять или перемещать по своему усмотрению."
+msgid "The index order is the order that the columns are arranged in the message index. You can add, remove, and move columns around to customize them to fit your needs."
+msgstr "Порядок индексации - это порядок, в котором сообщения отображаются в папке. Столбцы можно добавлять, удалять или перемещать по своему усмотрению."
 
 msgid "up"
 msgstr "выше"
@@ -602,8 +561,62 @@ msgstr "удалить"
 msgid "Return to options page"
 msgstr "Вернуться к настройке"
 
+msgid "Personal Information"
+msgstr "Личные сведения"
+
+msgid "Display Preferences"
+msgstr "Внешний вид"
+
+msgid "Folder Preferences"
+msgstr "Папки"
+
+msgid "Error(s) occurred while saving your options"
+msgstr "Ошибка при сохранении параметров"
+
+msgid "Some of your preference changes were not applied."
+msgstr "Некоторые из внесенных изменений не вступили в силу."
+
+msgid "Successfully Saved Options"
+msgstr "Параметры были сохранены"
+
+msgid "Refresh Folder List"
+msgstr "обновить список папок"
+
+msgid "Refresh Page"
+msgstr "Обновить страницу"
+
+msgid "This contains personal information about yourself such as your name, your email address, etc."
+msgstr "Укажите сведения о себе: имя, фамилию, адрес электронной почты и т. д."
+
+msgid "You can change the way that SquirrelMail looks and displays information to you, such as the colors, the language, and other settings."
+msgstr "Здесь можно настроить, как SquirrelMail выглядит в вашем браузере - изменить цвета, язык и прочие параметры отображения."
+
+msgid "Based upon given criteria, incoming messages can have different background colors in the message list. This helps to easily distinguish who the messages are from, especially for mailing lists."
+msgstr "Сообщения в вашем ящике могут подсвечиваться разными цветами согласно выбранным условиям. Это позволяет с легкостью отличать важные сообщения от прочих, особенно при наличии списков рассылки."
+
+msgid "These settings change the way your folders are displayed and manipulated."
+msgstr "Здесь можно настроить параметры различных папок."
+
+msgid "The order of the message index can be rearranged and changed to contain the headers in any order you want."
+msgstr "Здесь можно настроить расположение заголовков в таблице сообщений."
+
 msgid "Message not printable"
 msgstr "Непечатаемое сообщение"
+
+msgid "Attachments:"
+msgstr "Вложения:"
+
+msgid "Unknown sender"
+msgstr "Неизвестный отправитель"
+
+msgid "Info:"
+msgstr "Комментарий:"
+
+msgid "Size:"
+msgstr "Размер:"
+
+msgid "Type:"
+msgstr "Тип:"
 
 msgid "Invalid URL"
 msgstr "Неверный URL"
@@ -626,7 +639,7 @@ msgstr "Ваше сообщение"
 msgid "Sent"
 msgstr "Отправлено"
 
-#, php-format
+#, c-format
 msgid "Was displayed on %s"
 msgstr "Просмотрено %s"
 
@@ -635,9 +648,6 @@ msgstr "меньше"
 
 msgid "more"
 msgstr "больше"
-
-msgid "Unknown sender"
-msgstr "Неизвестный отправитель"
 
 msgid "Mailer"
 msgstr "Почтовая программа"
@@ -651,12 +661,8 @@ msgstr "отправлено"
 msgid "requested"
 msgstr "запрошено"
 
-msgid ""
-"The message sender has requested a response to indicate that you have read "
-"this message. Would you like to send a receipt?"
-msgstr ""
-"Автор этого сообщения запросил уведомление о прочтении. Отправить "
-"уведомление?"
+msgid "The message sender has requested a response to indicate that you have read this message. Would you like to send a receipt?"
+msgstr "Автор этого сообщения запросил уведомление о прочтении. Отправить уведомление?"
 
 msgid "Send read receipt now"
 msgstr "Отправить уведомление немедленно"
@@ -748,19 +754,12 @@ msgstr "Нажмите здесь, чтобы начать новый сеанс
 msgid "Viewing a Business Card"
 msgstr "Просмотр визитки"
 
-#, php-format
-msgid ""
-"vCard Version %s is not supported. Some information might not be converted "
-"correctly."
-msgstr ""
-"Версия vCard %s не поддерживается. Возможно, часть сведений была "
-"преобразована с ошибками."
+#, c-format
+msgid "vCard Version %s is not supported. Some information might not be converted correctly."
+msgstr "Версия vCard %s не поддерживается. Возможно, часть сведений была преобразована с ошибками."
 
 msgid "Title"
 msgstr "Должность"
-
-msgid "Email"
-msgstr "Эл. почта"
 
 msgid "Web Page"
 msgstr "Веб-страница"
@@ -786,14 +785,11 @@ msgstr "Факс"
 msgid "Note"
 msgstr "Заметка"
 
-msgid "Add to Addressbook"
+msgid "Add to address book"
 msgstr "Добавить в адресную книгу"
 
 msgid "Title & Org. / Dept."
 msgstr "Должность и компания / Отдел"
-
-msgid "Add to Address Book"
-msgstr "Добавить в адресную книгу"
 
 msgid "Viewing Full Header"
 msgstr "Просмотр всех заголовков сообщения"
@@ -804,7 +800,7 @@ msgstr "Просмотр текстового вложения"
 msgid "Could not include PEAR database functions required for the database backend."
 msgstr "Не удалось подключить функции PEAR для работы с сервером баз данных."
 
-#, php-format
+#, c-format
 msgid "Is PEAR installed, and is the include path set correctly to find %s?"
 msgstr "Проверьте, установлен ли PEAR и верно ли указан путь поиска %s."
 
@@ -814,20 +810,20 @@ msgstr "Свяжитесь с системным администратором.
 msgid "Personal address book"
 msgstr "Адреса"
 
-#, php-format
+#, c-format
 msgid "Database error: %s"
 msgstr "Ошибка базы данных: %s"
 
 msgid "Addressbook is read-only"
 msgstr "Адресная книга доступна только для чтения"
 
-#, php-format
-msgid "User '%s' already exist"
-msgstr "Пользователь '%s' уже существует"
+#, c-format
+msgid "User \"%s\" already exists"
+msgstr "Пользователь \"%s\" уже существует"
 
-#, php-format
-msgid "User '%s' does not exist"
-msgstr "Пользователь '%s' не существует"
+#, c-format
+msgid "User \"%s\" does not exist"
+msgstr "Пользователь \"%s\" не существует"
 
 msgid "Not a file name"
 msgstr "Указано не имя файла"
@@ -853,7 +849,7 @@ msgstr "Запись в адресную книгу не выполнена"
 msgid "Error initializing addressbook database."
 msgstr "Ошибка при инициализации базы данных адресов."
 
-#, php-format
+#, c-format
 msgid "Error opening file %s"
 msgstr "Ошибка при открытии файла %s"
 
@@ -863,9 +859,12 @@ msgstr "Общая адресная книга"
 msgid "Error initializing global addressbook."
 msgstr "Ошибка при инициализации общей адресной книги."
 
-#, php-format
+#, c-format
 msgid "Error initializing LDAP server %s:"
 msgstr "Ошибка при инициализации сервера LDAP %s:"
+
+msgid "Click here to change the sorting of the address list"
+msgstr "Нажмите здесь, чтобы изменить порядок сортировки адресов"
 
 msgid "Invalid input data"
 msgstr "Недопустимые входные данные"
@@ -1020,48 +1019,34 @@ msgstr "D, H:i"
 msgid "D, H:i"
 msgstr "D, H:i"
 
-#, php-format
+#, c-format
 msgid "Preference database error (%s). Exiting abnormally"
 msgstr "Ошибка базы данных параметров (%s). Завершение работы."
 
-#, php-format
+#, c-format
 msgid "Click here to return to %s"
 msgstr "Нажмите здесь, чтобы вернуться в %s"
 
 msgid "Go to the login page"
 msgstr "Перейти к входной странице"
 
-#, php-format
-msgid ""
-"Preference file, %s, does not exist. Log out, and log back in to create a "
-"default preference file."
-msgstr ""
-"Файл параметров %s не существует. Закончите сеанс и снова войдите в систему, "
-"чтобы создать этот файл."
+#, c-format
+msgid "Preference file, %s, does not exist. Log out, and log back in to create a default preference file."
+msgstr "Файл параметров %s не существует. Закончите сеанс и снова войдите в систему, чтобы создать этот файл."
 
-#, php-format
-msgid ""
-"Preference file, %s, could not be opened. Contact your system administrator "
-"to resolve this issue."
+#, c-format
+msgid "Preference file, %s, could not be opened. Contact your system administrator to resolve this issue."
 msgstr "Не удаётся открыть файл параметров %s. Свяжитесь с системным администратором."
 
-#, php-format
-msgid ""
-"Preference file, %s, could not be written. Contact your system administrator "
-"to resolve this issue."
-msgstr ""
-"Не удаётся записать файл параметров %s. Свяжитесь с системным "
-"администратором."
+#, c-format
+msgid "Preference file, %s, could not be written. Contact your system administrator to resolve this issue."
+msgstr "Не удаётся записать файл параметров %s. Свяжитесь с системным администратором."
 
-#, php-format
-msgid ""
-"Preference file, %s, could not be copied from temporary file, %s. Contact "
-"your system administrator to resolve this issue."
-msgstr ""
-"Не удаётся скопировать файл параметров %s из временного файла %s. Свяжитесь "
-"с системным администратором."
+#, c-format
+msgid "Preference file, %s, could not be copied from temporary file, %s. Contact your system administrator to resolve this issue."
+msgstr "Не удаётся скопировать файл параметров %s из временного файла %s. Свяжитесь с системным администратором."
 
-#, php-format
+#, c-format
 msgid "Error opening %s"
 msgstr "Ошибка при открытии %s"
 
@@ -1071,39 +1056,27 @@ msgstr "Файл параметров по умолчанию не найден 
 msgid "Could not create initial preference file!"
 msgstr "Ошибка при попытке создания файла параметров."
 
-#, php-format
+#, c-format
 msgid "%s should be writable by user %s"
 msgstr "%s требует права доступа для %s"
 
 msgid "Signature is too big."
 msgstr "Подпись слишком велика."
 
-#, php-format
-msgid ""
-"Signature file, %s, could not be opened. Contact your system administrator "
-"to resolve this issue."
+#, c-format
+msgid "Signature file, %s, could not be opened. Contact your system administrator to resolve this issue."
 msgstr "Не удаётся открыть файл подписи %s. Свяжитесь с системным администратором."
 
-#, php-format
-msgid ""
-"Signature file, %s, could not be written. Contact your system administrator "
-"to resolve this issue."
+#, c-format
+msgid "Signature file, %s, could not be written. Contact your system administrator to resolve this issue."
 msgstr "Не удаётся записать в файл подписи %s. Свяжитесь с системным администратором."
 
-#, php-format
-msgid ""
-"Signature file, %s, could not be copied from temporary file, %s. Contact "
-"your system administrator to resolve this issue."
-msgstr ""
-"Не удаётся скопировать файл подписи %s из временного файла %s. Свяжитесь с "
-"системным администратором."
+#, c-format
+msgid "Signature file, %s, could not be copied from temporary file, %s. Contact your system administrator to resolve this issue."
+msgstr "Не удаётся скопировать файл подписи %s из временного файла %s. Свяжитесь с системным администратором."
 
-msgid ""
-"You need to have php4 installed with the multibyte string function enabled "
-"(using configure option --enable-mbstring)."
-msgstr ""
-"Требуется установка PHP с поддержкой модуля многобайтных строк (с опцией "
-"configure --with-mbstring)."
+msgid "You need to have PHP installed with the multibyte string function enabled (using configure option --enable-mbstring)."
+msgstr "Требуется установка PHP с поддержкой модуля многобайтных строк (с опцией configure --enable-mbstring)."
 
 msgid "ERROR: No available IMAP stream."
 msgstr "ОШИБКА: Данные IMAP недоступны."
@@ -1132,7 +1105,7 @@ msgstr "ОШИБКА: Сервер IMAP закрыл соединение."
 msgid "ERROR: Unknown IMAP response."
 msgstr "ОШИБКА: Неизвестный ответ сервера IMAP."
 
-#, php-format
+#, c-format
 msgid "Error connecting to IMAP server: %s."
 msgstr "Ошибка при соединении с сервером IMAP: %s."
 
@@ -1145,11 +1118,11 @@ msgstr "Попробуйте указать механизм идентифик�
 msgid "Also, the use of TLS may allow SquirrelMail to login."
 msgstr "Возможно, TLS также будет работать."
 
-#, php-format
+#, c-format
 msgid "Bad request: %s"
 msgstr "Недопустимый запрос: %s"
 
-#, php-format
+#, c-format
 msgid "Unknown error: %s"
 msgstr "Неизвестная ошибка: %s"
 
@@ -1165,9 +1138,7 @@ msgstr "ОШИБКА: Сообщение не может быть помещен
 msgid "Solution:"
 msgstr "Подсказка:"
 
-msgid ""
-"Remove unneccessary messages from your folder and start with your Trash "
-"folder."
+msgid "Remove unneccessary messages from your folder and start with your Trash folder."
 msgstr "Удалите ненужные сообщения из папки и начните работу из папки корзины."
 
 msgid "(no subject)"
@@ -1182,14 +1153,8 @@ msgstr "Неизвестный ответ сервера IMAP:"
 msgid "The server couldn't find the message you requested."
 msgstr "Запрошенное сообщение не найдено сервером."
 
-msgid ""
-"Most probably your message list was out of date and the message has been "
-"moved away or deleted (perhaps by another program accessing the same "
-"mailbox)."
-msgstr ""
-"Возможно, список сообщений устарел, а само сообщение было перемещено или "
-"удалено (например, другой программой, имеющей доступ к данному почтовому "
-"ящику)."
+msgid "Most probably your message list was out of date and the message has been moved away or deleted (perhaps by another program accessing the same mailbox)."
+msgstr "Возможно, список сообщений устарел, а само сообщение было перемещено или удалено (например, другой программой, имеющей доступ к данному почтовому ящику)."
 
 msgid "Unknown date"
 msgstr "Неизвестная дата"
@@ -1234,19 +1199,19 @@ msgid "Thread View"
 msgstr "Сортировать по темам"
 
 msgid "Toggle All"
-msgstr "Выбрать все"
+msgstr "Переключить все"
 
 msgid "Unselect All"
-msgstr "Снять выбор со всех"
+msgstr "Ни одного"
 
 msgid "Select All"
 msgstr "Выбрать все"
 
-#, php-format
+#, c-format
 msgid "Viewing Messages: %s to %s (%s total)"
 msgstr "Просмотр сообщений: от %s до %s (%s всего)"
 
-#, php-format
+#, c-format
 msgid "Viewing Message: %s (%s total)"
 msgstr "Просмотр сообщения: %s (%s всего)"
 
@@ -1259,15 +1224,11 @@ msgstr "Показать все"
 msgid "SquirrelMail could not decode the bodystructure of the message"
 msgstr "Не удается раскодировать структуру тела сообщения."
 
-msgid "the provided bodystructure by your imap-server"
-msgstr "структура тела сообщения на сервере"
+msgid "The bodystructure provided by your IMAP server:"
+msgstr "Структура тела сообщения на сервере IMAP:"
 
-msgid ""
-"Body retrieval error. The reason for this is most probably that the message "
-"is malformed."
-msgstr ""
-"Ошибка при попытке получить тело сообщения. Вероятная причина: недопустимый "
-"формат сообщения."
+msgid "Body retrieval error. The reason for this is most probably that the message is malformed."
+msgstr "Ошибка при попытке получить тело сообщения. Вероятная причина: недопустимый формат сообщения."
 
 msgid "Command:"
 msgstr "Команда:"
@@ -1296,7 +1257,7 @@ msgstr "sec_remove_ru_RU.png"
 msgid "This external link will open in a new window"
 msgstr "Внешняя ссылка будет открыта в новом окне"
 
-#, php-format
+#, c-format
 msgid "Option Type '%s' Not Found"
 msgstr "Параметр '%s' не найден"
 
@@ -1306,7 +1267,7 @@ msgstr "Текущая папка"
 msgid "Compose"
 msgstr "Новое"
 
-#, php-format
+#, c-format
 msgid "Error creating directory %s."
 msgstr "Ошибка при создании каталога %s."
 
@@ -1421,6 +1382,12 @@ msgstr "Максимальное количество страниц"
 msgid "Always Show Full Date"
 msgstr "Показывать полную дату"
 
+msgid "Length of From/To Field (0 for full)"
+msgstr "Длина полей От и Кому (0 - без ограничений)"
+
+msgid "Length of Subject Field (0 for full)"
+msgstr "Длина поля Тема (0 - без ограничений)"
+
 msgid "Message Display and Composition"
 msgstr "Составление сообщения"
 
@@ -1461,10 +1428,10 @@ msgid "Enable Forward as Attachment"
 msgstr "Включить перенаправление вложением"
 
 msgid "Include CCs when Forwarding Messages"
-msgstr "Также отправлять адресатам, указанным в поле \"Копия\""
+msgstr "Также отправлять адресатам, указанным в поле Копия"
 
 msgid "Include Me in CC when I Reply All"
-msgstr "Добавлять свой адрес в поле \"Копия:\" при ответе всем"
+msgstr "Добавлять свой адрес в поле Копия: при ответе всем"
 
 msgid "Enable Mailer Display"
 msgstr "Показывать почтовую программу"
@@ -1515,7 +1482,7 @@ msgid "Enable Thread Sort by References Header"
 msgstr "Сортировка по темам сообщений"
 
 msgid "Special Folder Options"
-msgstr "Настройка специальных папок"
+msgstr "Служебные папки"
 
 msgid "Folder Path"
 msgstr "Путь к папкам"
@@ -1533,7 +1500,7 @@ msgid "Draft Folder"
 msgstr "Папка для черновиков (Drafts)"
 
 msgid "Do not use Sent"
-msgstr "Не копировать сообщения в папку Sent"
+msgstr "Не копировать сообщения в папку Отправленные"
 
 msgid "Sent Folder"
 msgstr "Папка для отправленных (Sent)"
@@ -1575,7 +1542,7 @@ msgid "No Notification"
 msgstr "Выключить"
 
 msgid "Only INBOX"
-msgstr "Только для папки INBOX"
+msgstr "Только для папки Входящие"
 
 msgid "Unread Message Notification Type"
 msgstr "Вид сообщения о непрочитанных сообщениях"
@@ -1653,9 +1620,9 @@ msgid "Delimited:"
 msgstr "С ограничителем:"
 
 msgid "Name and Address Options"
-msgstr "Настройка имени и адреса"
+msgstr "Имя и адрес"
 
-msgid "Email Address"
+msgid "E-mail Address"
 msgstr "Адрес эл. почты"
 
 msgid "Edit Advanced Identities"
@@ -1671,10 +1638,10 @@ msgid "Same as server"
 msgstr "Как на сервере"
 
 msgid "Error opening timezone config, contact administrator."
-msgstr "Ошибка при определении временной зоны. Свяжитесь с системным администратором."
+msgstr "Ошибка при определении часового пояса. Обратитесь к системному администратору."
 
 msgid "Timezone Options"
-msgstr "Временные пояса"
+msgstr "Часовые пояса"
 
 msgid "Your current timezone"
 msgstr "Текущая зона"
@@ -1710,10 +1677,10 @@ msgid "Signature Options"
 msgstr "Подпись"
 
 msgid "Use Signature"
-msgstr "Использовать подпись"
+msgstr "Добавлять подпись"
 
 msgid "Prefix Signature with '-- ' Line"
-msgstr "Предварять подпись чертой '-- '?"
+msgstr "Предварять подпись чертой '-- '"
 
 msgid "Take Address"
 msgstr "Запомнить адрес"
@@ -1794,7 +1761,10 @@ msgid "Mac OS X Mailserver"
 msgstr "Mac OS X Mailserver"
 
 msgid "hMailServer IMAP server"
-msgstr "Сервер IMAP hMailServer"
+msgstr "hMailServer"
+
+msgid "Binc IMAP server"
+msgstr "Binc IMAP"
 
 msgid "Not one of the above servers"
 msgstr "Другой сервер"
@@ -1847,6 +1817,9 @@ msgstr "Login (обычный текст)"
 msgid "POP3 Before SMTP?"
 msgstr "POP3 перед SMTP?"
 
+msgid "Header Encryption Key"
+msgstr "Ключ шифрования заголовка"
+
 msgid "Invert Time"
 msgstr "Использовать обратный формат для времени"
 
@@ -1863,7 +1836,7 @@ msgid "By default, move to trash"
 msgstr "По умолчанию перемещать в корзину"
 
 msgid "By default, move to sent"
-msgstr "По умолчанию перемещать в папку \"Отправленные\""
+msgstr "По умолчанию перемещать в папку Отправленные"
 
 msgid "By default, save as draft"
 msgstr "По умолчанию сохранять как черновик"
@@ -1940,6 +1913,12 @@ msgstr "Разрешить изменение профиля"
 msgid "Allow editing of full name"
 msgstr "Разрешить изменение полного имени"
 
+msgid "Remove username from headers"
+msgstr "Удалять имя пользователя из заголовков"
+
+msgid "Used only when identities can't be modified"
+msgstr "Используется только при невозможности изменения профилей"
+
 msgid "Use server-side sorting"
 msgstr "Использовать сортировку на сервере"
 
@@ -2004,7 +1983,7 @@ msgid "Default Charset"
 msgstr "Кодировка по умолчанию"
 
 msgid "Enable lossy encoding"
-msgstr "Включить кодирование с потерями символов"
+msgstr "Включить кодирование с подстановкой символов"
 
 msgid "Address Books"
 msgstr "Адресные книги"
@@ -2022,7 +2001,7 @@ msgid "Themes"
 msgstr "Темы"
 
 msgid "Style Sheet URL (css)"
-msgstr "URL страницы с css-стилями"
+msgstr "Адрес страницы с css-стилями"
 
 msgid "Default theme"
 msgstr "Тема по умолчанию"
@@ -2033,19 +2012,10 @@ msgstr "Использовать номер индекса темы"
 msgid "Configuration Administrator"
 msgstr "Администратор настройки"
 
-msgid ""
-"Note: it is recommended that you configure your system using conf.pl, and "
-"not this plugin. conf.pl contains additional information regarding the "
-"purpose of variables and appropriate values, as well as additional "
-"verification steps."
-msgstr ""
-"Примечание: рекомендуется использовать conf.pl вместо этого модуля. В conf."
-"pl входит дополнительная информация о назначении переменных и их возможных "
-"значениях, а также процедуры проверки."
+msgid "Note: it is recommended that you configure your system using conf.pl, and not this plugin. conf.pl contains additional information regarding the purpose of variables and appropriate values, as well as additional verification steps."
+msgstr "Примечание: рекомендуется использовать conf.pl вместо этого модуля. В conf.pl входит дополнительная информация о назначении переменных и их возможных значениях, а также процедуры проверки."
 
-msgid ""
-"Run or consult conf.pl should you run into difficulty with your "
-"configuration."
+msgid "Run or consult conf.pl should you run into difficulty with your configuration."
 msgstr "При возникновении проблем с настройкой запустите conf.pl."
 
 msgid "Theme Name"
@@ -2057,7 +2027,7 @@ msgstr "Расположение темы"
 msgid "Plugins"
 msgstr "Модули"
 
-#, php-format
+#, c-format
 msgid "Plugin directory could not be found: %s"
 msgstr "Каталог с модулями не найден: %s"
 
@@ -2073,79 +2043,38 @@ msgstr "Файл конфигурации недоступен. Проверьт
 msgid "Administration"
 msgstr "Администрирование"
 
-msgid ""
-"This module allows administrators to manage SquirrelMail main configuration "
-"remotely."
+msgid "This module allows administrators to manage SquirrelMail main configuration remotely."
 msgstr "Этот модуль позволяет администраторам изменять параметры SquirrelMail."
 
 msgid "Submit a Bug Report"
 msgstr "Отправить сообщение об ошибке"
 
-msgid ""
-"Before you send your bug report, please make sure to check this checklist "
-"for any common problems."
+msgid "Before you send your bug report, please make sure to check this checklist for any common problems."
 msgstr "Перед отправкой сообщения об ошибке прочитайте следующую информацию."
 
-#, php-format
-msgid ""
-"Make sure that you are running the most recent copy of %s. You are currently "
-"using version %s."
-msgstr ""
-"Убедитесь, что установлена последняя версия %s. Текущая используемая версия "
-"- %s."
+#, c-format
+msgid "Make sure that you are running the most recent copy of %s. You are currently using version %s."
+msgstr "Убедитесь, что установлена последняя версия %s. Текущая используемая версия - %s."
 
-#, php-format
-msgid ""
-"Check to see if your bug is already listed in the %sBug List%s on "
-"SourceForge. If it is, we already know about it and are trying to fix it."
-msgstr ""
-"Проверьте, не входит ли уже эта ошибка в %sСписок ошибок%s на SourceForge. "
-"Если да, то над ее исправлением уже ведется работа."
+#, c-format
+msgid "Check to see if your bug is already listed in the %sBug List%s on SourceForge. If it is, we already know about it and are trying to fix it."
+msgstr "Проверьте, не входит ли уже эта ошибка в %sСписок ошибок%s на SourceForge. Если да, то над ее исправлением уже ведется работа."
 
-msgid ""
-"Try to make sure that you can repeat it. If the bug happens sporatically, "
-"try to document what you did when it happened. If it always occurs when you "
-"view a specific message, keep that message around so maybe we can see it."
-msgstr ""
-"Проверьте, возникает ли эта ошибка регулярно. Если она возникает от случая к "
-"случаю, запишите, в какой ситуации она возникла. Если она всегда возникает "
-"при просмотре конкретного сообщения, сохраните это сообщение, чтобы передать "
-"его разработчикам, если в этом возникнет необходимость."
+msgid "Try to make sure that you can repeat it. If the bug happens sporatically, try to document what you did when it happened. If it always occurs when you view a specific message, keep that message around so maybe we can see it."
+msgstr "Проверьте, возникает ли эта ошибка регулярно. Если она возникает от случая к случаю, запишите, в какой ситуации она возникла. Если она всегда возникает при просмотре конкретного сообщения, сохраните это сообщение, чтобы передать его разработчикам, если в этом возникнет необходимость."
 
-#, php-format
-msgid ""
-"If there were warnings displayed above, try to resolve them yourself. Read "
-"the guides in the %s directory where SquirrelMail was installed."
-msgstr ""
-"Если на странице показаны предупреждения, сначала попробуйте устранить эти "
-"предупреждения. Прочитайте руководство в каталоге %s установки SquirrelMail."
+#, c-format
+msgid "If there were warnings displayed above, try to resolve them yourself. Read the guides in the %s directory where SquirrelMail was installed."
+msgstr "Если на странице показаны предупреждения, сначала попробуйте устранить эти предупреждения. Прочитайте руководство в каталоге %s установки SquirrelMail."
 
-msgid ""
-"Pressing the button below will start a mail message to the developers of "
-"SquirrelMail that will contain a lot of information about your system, your "
-"browser, how SquirrelMail is set up, and your IMAP server. It will also "
-"prompt you for information. Just fill out the sections at the top. If you "
-"like, you can scroll down in the message to see what else is being sent."
-msgstr ""
-"При нажатии кнопки программа начнет составление сообщения, которое будет "
-"отправлено разработчикам SquirrelMail. В него войдут подробные сведения о "
-"системе, версии браузера, параметрах SquirrelMail и сервера IMAP. Какие-то "
-"сведения будут запрошены у вас. Заполните поля вверху страницы и пролистайте "
-"ее до конца, чтобы просмотреть всю отправляемую информацию."
+msgid "Pressing the button below will start a mail message to the developers of SquirrelMail that will contain a lot of information about your system, your browser, how SquirrelMail is set up, and your IMAP server. It will also prompt you for information. Just fill out the sections at the top. If you like, you can scroll down in the message to see what else is being sent."
+msgstr "При нажатии кнопки программа начнет составление сообщения, которое будет отправлено разработчикам SquirrelMail. В него войдут подробные сведения о системе, версии браузера, параметрах SquirrelMail и сервера IMAP. Какие-то сведения будут запрошены у вас. Заполните поля вверху страницы и пролистайте ее до конца, чтобы просмотреть всю отправляемую информацию."
 
-msgid ""
-"Please make sure to fill out as much information as you possibly can to give "
-"everyone a good chance of finding and removing the bug. Submitting your bug "
-"like this will not have it automatically added to the bug list on "
-"SourceForge, but someone who gets your message may add it for you."
-msgstr ""
-"Чем более подробную информацию вы укажете, тем легче будет найти и исправить "
-"ошибку. При отправке сообщения оно не будет добавлено в список ошибок на "
-"SourceForge, но сначала его просмотрят разработчики, и они сами добавят туда "
-"эту ошибку, если это потребуется."
+msgid "Please make sure to fill out as much information as you possibly can to give everyone a good chance of finding and removing the bug. Submitting your bug like this will not have it automatically added to the bug list on SourceForge, but someone who gets your message may add it for you."
+msgstr "Чем более подробную информацию вы укажете, тем легче будет найти и исправить ошибку. При отправке сообщения оно не будет добавлено в список ошибок на SourceForge, но сначала его просмотрят разработчики, и они сами добавят туда эту ошибку, если это потребуется."
 
-msgid "This bug involves"
-msgstr "Ошибка относится к"
+msgid "This bug involves:"
+msgstr "Ошибка относится к:"
 
 msgid "the general program"
 msgstr "программе в целом"
@@ -2165,15 +2094,15 @@ msgstr "Отправка сообщения об ошибках:"
 msgid "Show button in toolbar"
 msgstr "Показывать кнопку в меню"
 
+#, c-format
+msgid "Could not write calendar file %s"
+msgstr "Ошибка при записи файла календаря %s"
+
 msgid "TODAY"
 msgstr "СЕГОДНЯ"
 
 msgid "Go"
 msgstr "Дальше"
-
-#, php-format
-msgid "Could not write calendar file %s"
-msgstr "Ошибка при записи файла календаря %s"
 
 msgid "l, F j Y"
 msgstr "l, F j Y"
@@ -2254,19 +2183,19 @@ msgid "1 hr."
 msgstr "1 час"
 
 msgid "1.5 hr."
-msgstr "1.5 часа"
+msgstr "1,5 часа"
 
 msgid "2 hr."
 msgstr "2 часа"
 
 msgid "2.5 hr."
-msgstr "2.5 часа"
+msgstr "2,5 часа"
 
 msgid "3 hr."
 msgstr "3 часа"
 
 msgid "3.5 hr."
-msgstr "3.5 часа"
+msgstr "3,5 часа"
 
 msgid "4 hr."
 msgstr "4 часа"
@@ -2301,29 +2230,14 @@ msgstr "с опцией перемещения в другую папку"
 msgid "Display at bottom"
 msgstr "показывать внизу"
 
-msgid ""
-"COMMERCIAL - This list contains servers that are verified spam senders. It "
-"is a pretty reliable list to scan spam from."
-msgstr ""
-"ПЛАТНО - этот список содержит почтовые сервера, которые известны как "
-"используемые для рассылки спама, и его рекомендуется использовать."
+msgid "COMMERCIAL - This list contains servers that are verified spam senders. It is a pretty reliable list to scan spam from."
+msgstr "ПЛАТНО - этот список содержит почтовые сервера, которые известны как используемые для рассылки спама, и его рекомендуется использовать."
 
-msgid ""
-"COMMERCIAL - Servers that are configured (or misconfigured) to allow spam to "
-"be relayed through their system will be banned with this. Another good one "
-"to use."
-msgstr ""
-"ПЛАТНО - Почтовые сервера, которые открыты для пересылки спама или неверно "
-"настроены (mail relays). Также хороший список."
+msgid "COMMERCIAL - Servers that are configured (or misconfigured) to allow spam to be relayed through their system will be banned with this. Another good one to use."
+msgstr "ПЛАТНО - Почтовые сервера, которые открыты для пересылки спама или неверно настроены (mail relays). Также хороший список."
 
-msgid ""
-"COMMERCIAL - Dial-up users are often filtered out since they should use "
-"their ISP's mail servers to send mail. Spammers typically get a dial-up "
-"account and send spam directly from there."
-msgstr ""
-"ПЛАТНО - некоторые рассыльщики дозваниваются до своих провайдеров по модему "
-"для рассылки спама. Этот список фильтрует пользователей, которые не "
-"используют почтовые сервера провайдеров для отсылки сообщений."
+msgid "COMMERCIAL - Dial-up users are often filtered out since they should use their ISP's mail servers to send mail. Spammers typically get a dial-up account and send spam directly from there."
+msgstr "ПЛАТНО - некоторые рассыльщики дозваниваются до своих провайдеров по модему для рассылки спама. Этот список фильтрует пользователей, которые не используют почтовые сервера провайдеров для отсылки сообщений."
 
 msgid "COMMERCIAL - RBL+ Blackhole entries."
 msgstr "ПЛАТНО - RBL+ черный список спаммеров"
@@ -2334,25 +2248,17 @@ msgstr "ПЛАТНО - RBL+ OpenRelay список серверов пересы
 msgid "COMMERCIAL - RBL+ Dial-up entries."
 msgstr "ПЛАТНО - RBL+ список модемных спаммеров."
 
-msgid ""
-"FREE - ORDB was born when ORBS went off the air. It seems to have fewer "
-"false positives than ORBS did though."
-msgstr ""
-"БЕСПЛАТНО - ORDB - это замена ушедшему в небытие серверу ORBS. Иногда "
-"работает даже лучше ORBS."
+msgid "FREE - ORDB was born when ORBS went off the air. It seems to have fewer false positives than ORBS did though."
+msgstr "БЕСПЛАТНО - ORDB - это замена ушедшему в небытие серверу ORBS. Иногда работает даже лучше ORBS."
 
 msgid "FREE - Five-Ten-sg.com - Direct SPAM sources."
 msgstr "БЕСПЛАТНО - Five-Ten-sg.com - список серверов, рассылающих спам."
 
 msgid "FREE - Five-Ten-sg.com - Dial-up lists - includes some DSL IPs."
-msgstr ""
-"БЕСПЛАТНО - Five-Ten-sg.com - список спам-серверов дозвона, включая "
-"некоторые адреса IP на DSL."
+msgstr "БЕСПЛАТНО - Five-Ten-sg.com - список спам-серверов дозвона, включая некоторые адреса IP на DSL."
 
 msgid "FREE - Five-Ten-sg.com - Bulk mailers that do not use confirmed opt-in."
-msgstr ""
-"БЕСПЛАТНО - Five-Ten-sg.com - cервера рассылки, которые подписывают, не "
-"спрашивая разрешения."
+msgstr "БЕСПЛАТНО - Five-Ten-sg.com - cервера рассылки, которые подписывают, не спрашивая разрешения."
 
 msgid "FREE - Five-Ten-sg.com - Other misc. servers."
 msgstr "БЕСПЛАТНО - Five-Ten-sg.com - прочие сервера, имеющие отношение к спаму."
@@ -2364,28 +2270,16 @@ msgid "FREE - Five-Ten-sg.com - SPAM Support servers."
 msgstr "БЕСПЛАТНО - Five-Ten-sg.com - серверы, поддерживающие рассылки спама."
 
 msgid "FREE - Five-Ten-sg.com - Web Form IPs."
-msgstr ""
-"БЕСПЛАТНО - Five-Ten-sg.com - Содержит список IP-адресов, на которых "
-"действуют веб-формы."
+msgstr "БЕСПЛАТНО - Five-Ten-sg.com - Содержит список IP-адресов, на которых действуют веб-формы."
 
-msgid ""
-"FREE - Dorkslayers appears to include only really bad open relays outside "
-"the US to avoid being sued. Interestingly enough, their website recommends "
-"you NOT use their service."
-msgstr ""
-"БЕСПЛАТНО - Dorkslayers предоставляют список основных спам-серверов и "
-"открытых пересыльщиков за пределами США. На своем сайте они не рекомендуют "
-"пользоваться их фильтрами."
+msgid "FREE - Dorkslayers appears to include only really bad open relays outside the US to avoid being sued. Interestingly enough, their website recommends you NOT use their service."
+msgstr "БЕСПЛАТНО - Dorkslayers предоставляют список основных спам-серверов и открытых пересыльщиков за пределами США. На своем сайте они не рекомендуют пользоваться их фильтрами."
 
 msgid "FREE - SPAMhaus - A list of well-known SPAM sources."
 msgstr "FREE - SPAMhaus - список общеизвестных источников спама."
 
-msgid ""
-"FREE, for now - SpamCop - An interesting solution that lists servers that "
-"have a very high spam to legit email ratio (85 percent or more)."
-msgstr ""
-"БЕСПЛАТНО (на настоящий момент) - SpamCop - фильтруется большинство "
-"серверов, через которые спаммеры пытаются рассылать письма."
+msgid "FREE, for now - SpamCop - An interesting solution that lists servers that have a very high spam to legit email ratio (85 percent or more)."
+msgstr "БЕСПЛАТНО (на настоящий момент) - SpamCop - фильтруется большинство серверов, через которые спаммеры пытаются рассылать письма."
 
 msgid "FREE - dev.null.dk - I don't have any detailed info on this list."
 msgstr "БЕСПЛАТНО - dev.null.dk - недостаточно информации."
@@ -2402,57 +2296,26 @@ msgstr "БЕСПЛАТНО - ahbl.com SPAM Source - список рассыль�
 msgid "FREE - ahbl.org SPAM ISPs - List of SPAM-friendly ISPs."
 msgstr "БЕСПЛАТНО - ahbl.com SPAM ISP - список провайдеров, поддерживающих спам."
 
-msgid ""
-"FREE - Leadmon DUL - Another list of Dial-up or otherwise dynamically "
-"assigned IPs."
-msgstr ""
-"БЕСПЛАТНО - Leadmon DUL - Еще один список диалапщиков и прочих динамически "
-"назначаемых адресов."
+msgid "FREE - Leadmon DUL - Another list of Dial-up or otherwise dynamically assigned IPs."
+msgstr "БЕСПЛАТНО - Leadmon DUL - Еще один список диалапщиков и прочих динамически назначаемых адресов."
 
-msgid ""
-"FREE - Leadmon SPAM Source - List of IPs Leadmon.net has received SPAM "
-"directly from."
-msgstr ""
-"БЕСПЛАТНО - Leadmon SPAM Source - Список IP-адресов, с которых Leadmon.net "
-"получал спам."
+msgid "FREE - Leadmon SPAM Source - List of IPs Leadmon.net has received SPAM directly from."
+msgstr "БЕСПЛАТНО - Leadmon SPAM Source - Список IP-адресов, с которых Leadmon.net получал спам."
 
-msgid ""
-"FREE - Leadmon Bulk Mailers - Bulk mailers that do not require confirmed opt-"
-"in or that have allowed known spammers to become clients and abuse their "
-"services."
-msgstr ""
-"БЕСПЛАТНО - Leadmon Bulk Mailers - Серверы, отсылающие массовые сообщения "
-"без согласия на то подписчиков."
+msgid "FREE - Leadmon Bulk Mailers - Bulk mailers that do not require confirmed opt-in or that have allowed known spammers to become clients and abuse their services."
+msgstr "БЕСПЛАТНО - Leadmon Bulk Mailers - Серверы, отсылающие массовые сообщения без согласия на то подписчиков."
 
-msgid ""
-"FREE - Leadmon Open Relays - Single Stage Open Relays that are not listed on "
-"other active RBLs."
-msgstr ""
-"БЕСПЛАТНО - Leadmon Open Relays - Список серверов пересылки, которые не "
-"указаны на прочих спам-фильтрах."
+msgid "FREE - Leadmon Open Relays - Single Stage Open Relays that are not listed on other active RBLs."
+msgstr "БЕСПЛАТНО - Leadmon Open Relays - Список серверов пересылки, которые не указаны на прочих спам-фильтрах."
 
-msgid ""
-"FREE - Leadmon Multi-stage - Multi-Stage Open Relays that are not listed on "
-"other active RBLs and that have sent SPAM to Leadmon.net."
-msgstr ""
-"БЕСПЛАТНО - Leadmon Multi-stage - Еще один список открытых серверов, "
-"рассылающих спам."
+msgid "FREE - Leadmon Multi-stage - Multi-Stage Open Relays that are not listed on other active RBLs and that have sent SPAM to Leadmon.net."
+msgstr "БЕСПЛАТНО - Leadmon Multi-stage - Еще один список открытых серверов, рассылающих спам."
 
-msgid ""
-"FREE - Leadmon SpamBlock - Sites on this listing have sent Leadmon.net "
-"direct SPAM from IPs in netblocks where the entire block has no DNS "
-"mappings. It's a list of BLOCKS of IPs being used by people who have SPAMmed "
-"Leadmon.net."
-msgstr ""
-"БЕСПЛАТНО - Leadmon SpamBlock - список блоков IP-адресов, отправивших спам "
-"на Leadmon.net."
+msgid "FREE - Leadmon SpamBlock - Sites on this listing have sent Leadmon.net direct SPAM from IPs in netblocks where the entire block has no DNS mappings. It's a list of BLOCKS of IPs being used by people who have SPAMmed Leadmon.net."
+msgstr "БЕСПЛАТНО - Leadmon SpamBlock - список блоков IP-адресов, отправивших спам на Leadmon.net."
 
-msgid ""
-"FREE, for now - Not Just Another Blacklist - Both Open Relays and Direct "
-"SPAM Sources."
-msgstr ""
-"БЕСПЛАТНО (пока) - Not Just Another Blacklist - список как рассыльщиков, так "
-"и пересыльщиков спама."
+msgid "FREE, for now - Not Just Another Blacklist - Both Open Relays and Direct SPAM Sources."
+msgstr "БЕСПЛАТНО (пока) - Not Just Another Blacklist - список как рассыльщиков, так и пересыльщиков спама."
 
 msgid "FREE, for now - Not Just Another Blacklist - Dial-up IPs."
 msgstr "БЕСПЛАТНО - Not Just Another Blacklist - Диалап-адреса, рассылающие спам."
@@ -2470,9 +2333,7 @@ msgid "WARNING! You must enter something to search for."
 msgstr "Предупреждение: Введите строку для поиска."
 
 msgid "WARNING! Header filters should be of the format &quot;Header: value&quot;"
-msgstr ""
-"Предупреждение: фильтры заголовков должны иметь формат &quot;Заголовок: "
-"значение&quot;"
+msgstr "Предупреждение: фильтры заголовков должны иметь формат &quot;Заголовок: значение&quot;"
 
 msgid "Saved Scan type"
 msgstr "Параметры проверки сообщений успешно сохранены"
@@ -2501,31 +2362,21 @@ msgstr "Заголовок"
 msgid "Contains:"
 msgstr "Содержит:"
 
-#, php-format
+#, c-format
 msgid "If %s contains %s then move to %s"
 msgstr "Если %s содержит %s, то переместить сообщение в папку %s"
 
 msgid "Message Filters"
 msgstr "Фильтры сообщений"
 
-msgid ""
-"Filtering enables messages with different criteria to be automatically "
-"filtered into different folders for easier organization."
-msgstr ""
-"Фильтры сообщений служат для обеспечения удобной работы с сообщениями. "
-"Сообщения, совпадающие с теми или иными условиями, будут автоматически "
-"перемещаться в соответствующие папки."
+msgid "Filtering enables messages with different criteria to be automatically filtered into different folders for easier organization."
+msgstr "Фильтры сообщений служат для обеспечения удобной работы с сообщениями. Сообщения, совпадающие с теми или иными условиями, будут автоматически перемещаться в соответствующие папки."
 
 msgid "SPAM Filters"
-msgstr "СПАМ-фильтры"
+msgstr "Фильтры спама"
 
-msgid ""
-"SPAM filters allow you to select from various DNS based blacklists to detect "
-"junk email in your INBOX and move it to another folder (like Trash)."
-msgstr ""
-"СПАМ-фильтры используют услуги специальных серверов для распознавания спама "
-"и позволяют автоматически перемещать эти сообщения в разные папки (например, "
-"в корзину)."
+msgid "SPAM filters allow you to select from various DNS based blacklists to detect junk email in your INBOX and move it to another folder (like Trash)."
+msgstr "Фильтры спама используют услуги специальных серверов для распознавания спама и позволяют автоматически перемещать эти сообщения в разные папки (например, в корзину)."
 
 msgid "You must select a spam folder."
 msgstr "Выберите папку для спама."
@@ -2536,53 +2387,30 @@ msgstr "Выберите тип проверки."
 msgid "Spam Filtering"
 msgstr "СПАМ-фильтры"
 
-#, php-format
+#, c-format
 msgid "WARNING! Tell the administrator to set the %s variable."
 msgstr "ВНИМАНИЕ! Попросите администратора настроить переменную %s."
 
 msgid "Move spam to:"
 msgstr "Перемещать спам в:"
 
-msgid ""
-"Moving spam directly to the trash may not be a good idea at first, since "
-"messages from friends and mailing lists might accidentally be marked as "
-"spam. Whatever folder you set this to, make sure that it gets cleaned out "
-"periodically, so that you don't have an excessively large mailbox hanging "
-"around."
-msgstr ""
-"Не стоит перемещать весь спам сразу в корзину, хоть это и соблазнительно, "
-"потому что иногда спам-сервера ошибаются и помечают обычные сообщения как "
-"спам. Лучше отвести специальную папку для этого рода сообщений и время от "
-"времени её просматривать на случай, если туда попадёт неверно "
-"отфильтрованное сообщение."
+msgid "Moving spam directly to the trash may not be a good idea at first, since messages from friends and mailing lists might accidentally be marked as spam. Whatever folder you set this to, make sure that it gets cleaned out periodically, so that you don't have an excessively large mailbox hanging around."
+msgstr "Не стоит перемещать весь спам сразу в корзину, хоть это и соблазнительно, потому что иногда спам-сервера ошибаются и помечают обычные сообщения как спам. Лучше отвести специальную папку для этого рода сообщений и время от времени её просматривать на случай, если туда попадёт неверно отфильтрованное сообщение."
 
 msgid "Unread messages only"
 msgstr "Только новые сообщения"
 
-msgid ""
-"The more messages scanned, the longer it takes. It's recommended to scan "
-"unread messages only. If a change to the filters is made, it's recommended "
-"to set it to scan all messages, then go view the INBOX, then come back and "
-"set it to scan unread messages only. That way, the new spam filters will be "
-"applied and even the spam you didn't catch with the old filters will be "
-"scanned."
-msgstr ""
-"Чем больше сообщений вы сканируете, тем дольше это занимает времени. Лучше "
-"настроить фильтры так, чтобы они сканировали только новые сообщения. Если вы "
-"только что поменяли параметры фильтров и хотите обработать все старые "
-"сообщения, то выберите опцию \"сканировать все сообщения\", затем вернитесь "
-"в папку INBOX. Все старые сообщения будут отфильтрованы заново. После этого "
-"поменяйте опцию обратно на \"сканировать только непрочитанные\", чтобы "
-"тратить меньше времени при открытии папки."
+msgid "The more messages scanned, the longer it takes. It's recommended to scan unread messages only. If a change to the filters is made, it's recommended to set it to scan all messages, then go view the INBOX, then come back and set it to scan unread messages only. That way, the new spam filters will be applied and even the spam you didn't catch with the old filters will be scanned."
+msgstr "Чем больше сообщений вы сканируете, тем дольше это занимает времени. Лучше настроить фильтры так, чтобы они сканировали только новые сообщения. Если вы только что поменяли параметры фильтров и хотите обработать все старые сообщения, то выберите опцию \"сканировать все сообщения\", затем вернитесь в папку INBOX. Все старые сообщения будут отфильтрованы заново. После этого поменяйте опцию обратно на \"сканировать только непрочитанные\", чтобы тратить меньше времени при открытии папки."
 
-#, php-format
+#, c-format
 msgid "Spam is sent to %s."
 msgstr "Пересылать спам в %s."
 
 msgid "not set yet"
 msgstr "не настроено"
 
-#, php-format
+#, c-format
 msgid "Spam scan is limited to %s."
 msgstr "Проверять на спам %s."
 
@@ -2592,7 +2420,7 @@ msgstr "Вкл"
 msgid "OFF"
 msgstr "Выкл"
 
-#, php-format
+#, c-format
 msgid "%s is not found."
 msgstr "%s не найден."
 
@@ -2611,41 +2439,27 @@ msgstr "Модуль выключен."
 msgid "IMAP server information"
 msgstr "Сведения о сервере IMAP"
 
-msgid ""
-"Run some test IMAP commands, displaying both the command and the result. "
-"These tests use the SquirrelMail IMAP commands and your current SquirrelMail "
-"configuration. Custom command strings can be used."
-msgstr ""
-"Выполнение некоторых команд IMAP, с выводом как самих команд, так и "
-"результата их работы. В тестах используются команды IMAP SquirrelMail и "
-"текущие параметры SquirrelMail. Можно использовать и другие команды."
+msgid "Run some test IMAP commands, displaying both the command and the result. These tests use the SquirrelMail IMAP commands and your current SquirrelMail configuration. Custom command strings can be used."
+msgstr "Выполнение некоторых команд IMAP, с выводом как самих команд, так и результата их работы. В тестах используются команды IMAP SquirrelMail и текущие параметры SquirrelMail. Можно использовать и другие команды."
+
+#, c-format
+msgid "This will send a message to %s requesting help for this list. You will receive an emailed response at the address below."
+msgstr "Отправка письма по адресу %s с просьбой прислать инструкции по работе с данным списком рассылки. Ответ придет на указанный ниже адрес."
+
+#, c-format
+msgid "This will send a message to %s requesting that you will be subscribed to this list. You will be subscribed with the address below."
+msgstr "Отправка письма по адресу %s с запросом на подписку на данную рассылку. Для рассылки будет использоваться адрес, указанный ниже."
+
+#, c-format
+msgid "This will send a message to %s requesting that you will be unsubscribed from this list. It will try to unsubscribe the adress below."
+msgstr "Отправка письма по адресу %s с запросом на удаление вашего адреса из рассылки. Для этого будет использован адрес, указанный ниже."
+
+#, c-format
+msgid "Unknown action: %s"
+msgstr "Неизвестное действие: %s"
 
 msgid "Mailinglist"
 msgstr "Список рассылки"
-
-#, php-format
-msgid ""
-"This will send a message to %s requesting help for this list. You will "
-"receive an emailed response at the address below."
-msgstr ""
-"Отправка письма по адресу %s с просьбой прислать инструкции по работе с "
-"данным списком рассылки. Ответ придет на указанный ниже адрес."
-
-#, php-format
-msgid ""
-"This will send a message to %s requesting that you will be subscribed to "
-"this list. You will be subscribed with the address below."
-msgstr ""
-"Отправка письма по адресу %s с запросом на подписку на данную рассылку. Для "
-"рассылки будет использоваться адрес, указанный ниже."
-
-#, php-format
-msgid ""
-"This will send a message to %s requesting that you will be unsubscribed from "
-"this list. It will try to unsubscribe the adress below."
-msgstr ""
-"Отправка письма по адресу %s с запросом на удаление вашего адреса из "
-"рассылки. Для этого будет использован адрес, указанный ниже."
 
 msgid "Send Mail"
 msgstr "Отправить сообщение"
@@ -2688,9 +2502,6 @@ msgstr "Пароль POP3:"
 
 msgid "No password submitted"
 msgstr "пароль не указан"
-
-msgid "authentication failed "
-msgstr "ошибка входа "
 
 msgid "POP3 apop:"
 msgstr "POP3 apop:"
@@ -2765,7 +2576,7 @@ msgid "Password for"
 msgstr "Пароль для"
 
 msgid "Fetch Mail"
-msgstr "Загрузить почту"
+msgstr "Забрать почту"
 
 msgid "Fetching from "
 msgstr "Загрузка почты из"
@@ -2788,7 +2599,7 @@ msgstr "Вход на сервер: нет новых сообщений"
 msgid "Login OK: Inbox EMPTY"
 msgstr "Вход на сервер: ящик пуст"
 
-#, php-format
+#, c-format
 msgid "Login OK: Inbox contains %s messages"
 msgstr "Вход на сервер. Всего сообщений: %s"
 
@@ -2823,7 +2634,7 @@ msgid "Error Appending Message!"
 msgstr "Ошибка при записи сообщения!"
 
 msgid "Closing POP"
-msgstr "Закрытие POP-сеанса"
+msgstr "Закрытие сеанса POP"
 
 msgid "Logging out from IMAP"
 msgstr "Отключение от IMAP"
@@ -2831,7 +2642,7 @@ msgstr "Отключение от IMAP"
 msgid "Message appended to mailbox"
 msgstr "Сообщение добавлено в папку"
 
-#, php-format
+#, c-format
 msgid "Message %d deleted from remote server!"
 msgstr "Сообщение %d удалено с сервера."
 
@@ -2841,16 +2652,8 @@ msgstr "Сообщение не было удалено:"
 msgid "Remote POP server settings"
 msgstr "Параметры сервера POP"
 
-msgid ""
-"You should be aware that the encryption used to store your password is not "
-"perfectly secure. However, if you are using pop, there is inherently no "
-"encryption anyway. Additionally, the encryption that we do to save it on the "
-"server can be undone by a hacker reading the source to this file."
-msgstr ""
-"Cохраняя пароль на сервере, имейте в виду, что он будет сохранен в слабо "
-"зашифрованном виде (впрочем, при использовании POP пароль и так не "
-"зашифрован, когда он путешествует по сети). Ключ, используемый для "
-"сохранения вашего пароля, может быть легко подобран любым хакером."
+msgid "You should be aware that the encryption used to store your password is not perfectly secure. However, if you are using pop, there is inherently no encryption anyway. Additionally, the encryption that we do to save it on the server can be undone by a hacker reading the source to this file."
+msgstr "Cохраняя пароль на сервере, имейте в виду, что он будет сохранен в слабо зашифрованном виде (впрочем, при использовании POP пароль и так не зашифрован, когда он путешествует по сети). Ключ, используемый для сохранения вашего пароля, может быть легко подобран хакером."
 
 msgid "If you leave password empty, it will be asked when you fetch mail."
 msgstr "Если не указать пароль, то он будет запрашиваться всякий раз."
@@ -2933,9 +2736,7 @@ msgstr "Результаты загрузки почты:"
 msgid "POP3 Fetch Mail"
 msgstr "Ящики POP3"
 
-msgid ""
-"This configures settings for downloading email from a POP3 mailbox to your "
-"account on this server."
+msgid "This configures settings for downloading email from a POP3 mailbox to your account on this server."
 msgstr "Параметры загрузки почты по POP3 с другого сервера."
 
 msgid "Message Details"
@@ -2965,95 +2766,47 @@ msgstr "Сохранить сообщение"
 msgid "View Message details"
 msgstr "Просмотреть сведения о сообщении"
 
-msgid "New Mail"
-msgstr "Новая почта"
-
-msgid "SquirrelMail Notice:"
-msgstr "Сообщение от SquirrelMail:"
-
-#, php-format
-msgid "You have %s new message"
-msgid_plural "You have %s new messages"
-msgstr[0] "%s новое сообщение"
-msgstr[1] "%s новых сообщения"
-msgstr[2] "%s новых сообщений"
-
-#, php-format
-msgid "You have %s new messages"
-msgstr "Новых сообщений: %s"
-
 msgid "New Mail Notification"
 msgstr "Оповещение о новых сообщениях"
 
-#, php-format
-msgid ""
-"The %s option will check ALL of your folders for unseen mail, not just the "
-"inbox for notification."
-msgstr ""
-"В режиме %s вы будете узнавать о приходе новых сообщений в любую папку, а не "
-"только во \"Входящие\"."
+#, c-format
+msgid "The %s option will check ALL of your folders for unseen mail, not just the inbox for notification."
+msgstr "В режиме %s вы будете узнавать о приходе новых сообщений в любую папку, а не только во Входящие."
 
 msgid "Check all boxes, not just INBOX"
-msgstr "Проверять все папки, а не только \"Входящие\""
+msgstr "Проверять все папки, а не только Входящие"
 
-#, php-format
-msgid ""
-"Selecting the %s option will enable the showing of a popup window when "
-"unseen mail is in your folders (requires JavaScript)."
-msgstr ""
-"При выборе опции %s будет открываться новое окно, если пришла новая почта "
-"(требуется JavaScript)."
+#, c-format
+msgid "Selecting the %s option will enable the showing of a popup window when unseen mail is in your folders (requires JavaScript)."
+msgstr "При выборе опции %s будет открываться новое окно, если пришла новая почта (требуется JavaScript)."
 
 msgid "Show popup window on new mail"
 msgstr "Показывать всплывающее окно при приходе почты"
 
-#, php-format
-msgid ""
-"Use the %s option to only check for messages that are recent. Recent "
-"messages are those that have just recently showed up and have not been "
-"\"viewed\" or checked yet. This can prevent being continuously annoyed by "
-"sounds or popups for unseen mail."
-msgstr ""
-"Опция %s позволяет ограничиться только новыми сообщениями, иначе будут "
-"приходить извещения об общем количестве непрочитанных сообщений, что может "
-"быстро надоесть."
+#, c-format
+msgid "Use the %s option to only check for messages that are recent. Recent messages are those that have just recently showed up and have not been \"viewed\" or checked yet. This can prevent being continuously annoyed by sounds or popups for unseen mail."
+msgstr "Опция %s позволяет ограничиться только новыми сообщениями, иначе будут приходить извещения об общем количестве непрочитанных сообщений, что может быстро надоесть."
 
 msgid "Count only messages that are RECENT"
 msgstr "Только новые сообщения"
 
-#, php-format
-msgid ""
-"Selecting the %s option will change the title in some browsers to let you "
-"know when you have new mail (requires JavaScript, and only works in IE but "
-"you won't see errors with other browsers). This will always tell you if you "
-"have new mail, even if you have %s enabled."
-msgstr ""
-"Опция %s будет менять заголовок браузера при приходе новой почты (требует "
-"поддержки JavaScript и работает только в IE). Будет показываться общее "
-"количество непрочитанных сообщений, даже если выбрана опция %s."
+#, c-format
+msgid "Selecting the %s option will change the title in some browsers to let you know when you have new mail (requires JavaScript, and only works in IE but you won't see errors with other browsers). This will always tell you if you have new mail, even if you have %s enabled."
+msgstr "Опция %s будет менять заголовок браузера при приходе новой почты (требует поддержки JavaScript и работает только в IE, но не приведет к ошибке и в других браузерах). Будет показываться общее количество непрочитанных сообщений, даже если выбрана опция %s."
 
 msgid "Change title on supported browsers"
 msgstr "Изменять заголовок окна браузера."
 
-#, php-format
-msgid ""
-"Select %s to turn on playing a media file when unseen mail is in your "
-"folders. When enabled, you can specify the media file to play in the "
-"provided file box."
-msgstr ""
-"Выберите опцию %s, чтобы при приходе новой почты воспроизводился звук. Можно "
-"указать, какой звук при этом использовать."
+#, c-format
+msgid "Select %s to turn on playing a media file when unseen mail is in your folders. When enabled, you can specify the media file to play in the provided file box."
+msgstr "Выберите опцию %s, чтобы при приходе новой почты воспроизводился звук. Можно указать, какой звук при этом использовать."
 
 msgid "Enable Media Playing"
 msgstr "Проигрывать звук"
 
-#, php-format
-msgid ""
-"Select from the list of %s the media file to play when new mail arrives. If "
-"no file is specified, %s, no sound will be used."
-msgstr ""
-"Выберите из списка \"%s\", каким звуком оповещать о приходе новой почте. "
-"Если ни один файл не выбран (опция \"%s\"), звук не будет проигрываться."
+#, c-format
+msgid "Select from the list of %s the media file to play when new mail arrives. If no file is specified, %s, no sound will be used."
+msgstr "Выберите из списка \"%s\", каким звуком оповещать о приходе новой почте. Если ни один файл не выбран (опция \"%s\"), звук не будет проигрываться."
 
 msgid "Select server file"
 msgstr "Выбрать файл на сервере"
@@ -3070,24 +2823,33 @@ msgstr "Тест"
 msgid "Current File:"
 msgstr "Выбран файл:"
 
+msgid "New Mail"
+msgstr "Новая почта"
+
+msgid "SquirrelMail Notice:"
+msgstr "Сообщение от SquirrelMail:"
+
+#, c-format
+msgid "You have %s new message"
+msgstr "%s новое сообщение"
+
+#, c-format
+msgid "You have %s new messages"
+msgstr "Новых сообщений: %s"
+
 msgid "NewMail Options"
 msgstr "Настройка извещений"
 
-msgid ""
-"This configures settings for playing sounds and/or showing popup windows "
-"when new mail arrives."
+msgid "This configures settings for playing sounds and/or showing popup windows when new mail arrives."
 msgstr "Здесь можно настроить тип извещений о приходе новых сообщений."
 
-#, php-format
+#, c-format
 msgid "%s New Messages"
 msgstr "Новых сообщений: %s"
 
-#, php-format
+#, c-format
 msgid "%s New Message"
-msgid_plural "%s New Messages"
-msgstr[0] "%s новое сообщение"
-msgstr[1] "%s новых сообщения"
-msgstr[2] "%s новых сообщений"
+msgstr "%s новое сообщение"
 
 msgid "Test Sound"
 msgstr "Проверить звук"
@@ -3164,132 +2926,53 @@ msgstr "Сохранить ID"
 msgid "About SpamCop"
 msgstr "О сервисе SpamCop"
 
-msgid ""
-"SpamCop is a free service that greatly assists in finding the true source of "
-"the spam and helps in letting the proper people know about the abuse."
-msgstr ""
-"SpamCop - это бесплатная служба выявления подлинных источников спама и "
-"борьбы с рассыльщиками спама."
+msgid "SpamCop is a free service that greatly assists in finding the true source of the spam and helps in letting the proper people know about the abuse."
+msgstr "SpamCop - это бесплатная служба выявления подлинных источников спама и борьбы с рассыльщиками спама."
 
-#, php-format
-msgid ""
-"To use it, you must get a SpamCop authorization code. There is a free %ssign "
-"up page%s so you can use SpamCop."
-msgstr ""
-"Для того чтобы использовать SpamCop, требуется получить код пользователя. "
-"Регистрация пользователей осуществляется бесплатно на %sстранице регистрации%"
-"s SpamCop."
+#, c-format
+msgid "To use it, you must get a SpamCop authorization code. There is a free %ssign up page%s so you can use SpamCop."
+msgstr "Для того чтобы использовать SpamCop, требуется получить код пользователя. Регистрация пользователей осуществляется бесплатно на %sстранице регистрации%s SpamCop."
 
 msgid "Before you sign up, be warned"
-msgstr "Прежде чем регистрироваться, прочитайте следующую информацию."
+msgstr "Прежде чем зарегистрироваться, прочитайте следующую информацию."
 
-#, php-format
-msgid ""
-"Some users have reported that the email addresses used with SpamCop find "
-"their way onto spam lists. To be safe, you can just create an email "
-"forwarding account and have all SpamCop reports get sent to there. Also, if "
-"it gets flooded with spam, you can then just delete that account with no "
-"worries about losing your real email address. Just go create an email "
-"forwarder somewhere (%s has a %slist of places%s) so that messages from "
-"system administrators and what not can be sent to you."
-msgstr ""
-"Некоторые пользователи сообщают, что адреса зарегистрированных пользователей "
-"SpamCop становятся известными рассыльщикам спама. Во избежание любых "
-"неприятностей заведите себе почтовый адрес, который будет использоваться "
-"только для пересылки писем, и получайте все отчеты SpamCop только на этот "
-"адрес. Если на него будет приходить слишком много спама, его можно будет "
-"закрыть, сохранив свой настоящий почтовый адрес. Итак, прежде всего создайте "
-"ящик для пересылки таких писем. Зайдите на %s, чтобы ознакомиться со %"
-"sсписком таких служб%s."
+#, c-format
+msgid "Some users have reported that the email addresses used with SpamCop find their way onto spam lists. To be safe, you can just create an email forwarding account and have all SpamCop reports get sent to there. Also, if it gets flooded with spam, you can then just delete that account with no worries about losing your real email address. Just go create an email forwarder somewhere (%s has a %slist of places%s) so that messages from system administrators and what not can be sent to you."
+msgstr "Некоторые пользователи сообщают, что адреса зарегистрированных пользователей SpamCop становятся известными рассыльщикам спама. Во избежание любых неприятностей заведите себе почтовый адрес, который будет использоваться только для пересылки писем, и получайте все отчеты SpamCop только на этот адрес. Если на него будет приходить слишком много спама, его можно будет закрыть, сохранив свой настоящий почтовый адрес. Итак, прежде всего создайте ящик для пересылки таких писем. Зайдите на %s, чтобы ознакомиться со %sсписком таких служб%s."
 
-msgid ""
-"Once you have signed up with SpamCop and have received your SpamCop "
-"authorization code, you need to enable this plugin by clicking the link "
-"above. Once enabled, you go about your normal life. If you encounter a spam "
-"message in your mailbox, just view it. On the right-hand side, near the top "
-"of where the message is displayed, you will see a link to report this "
-"message as spam. Clicking on it brings you to a confirmation page. "
-"Confirming that you want the spam report sent will do different things with "
-"different reporting methods."
-msgstr ""
-"Зарегистрировавшись в SpamCop и получив код пользователя SpamCop, включите "
-"модуль, щелкнув на ссылке вверху. После этого можно работать обычным "
-"образом. При получении спама откройте его. Справа от текста письма будет "
-"показана ссылка, которая служит для отправки сообщений о спаме. При щелчке "
-"на ссылке откроется диалог подтверждения. Если вы подтверждаете отправку "
-"сообщения о спаме, то следующие действия зависят от того, какой метод "
-"отправки отчетов о спаме используется."
+msgid "Once you have signed up with SpamCop and have received your SpamCop authorization code, you need to enable this plugin by clicking the link above. Once enabled, you go about your normal life. If you encounter a spam message in your mailbox, just view it. On the right-hand side, near the top of where the message is displayed, you will see a link to report this message as spam. Clicking on it brings you to a confirmation page. Confirming that you want the spam report sent will do different things with different reporting methods."
+msgstr "Зарегистрировавшись в SpamCop и получив код пользователя SpamCop, включите модуль, щелкнув на ссылке вверху. После этого можно работать обычным образом. При получении спама откройте его. Справа от текста письма будет показана ссылка, которая служит для отправки сообщений о спаме. При щелчке на ссылке откроется диалог подтверждения. Если вы подтверждаете отправку сообщения о спаме, то следующие действия зависят от того, какой метод отправки отчетов о спаме используется."
 
 msgid "Email-based reporting"
-msgstr "По электронной почте"
+msgstr "По эл. почте"
 
-msgid ""
-"Pressing the button forwards the message to the SpamCop service and will "
-"optionally delete the message. From there, you just need to go to your INBOX "
-"and quite soon a message should appear from SpamCop. (It gets sent to the "
-"account you registered with, so make sure that your mail forwarder works!) "
-"Open it up, click on the appropriate link at the top, and a new browser "
-"window will open."
-msgstr ""
-"При нажатии этой кнопки сообщение будет переслано в SpamCop и удалено (если "
-"это указано). Вернитесь в папку Входящие. Скорее всего, там уже будет "
-"сообщение от службы SpamCop, которое было отправлено на зарегистрированный "
-"адрес (если это адрес пересылки, проверьте, что он работает). Откройте "
-"сообщение и щелкните на ссылке вверху письма. Откроется новое окно браузера."
+msgid "Pressing the button forwards the message to the SpamCop service and will optionally delete the message. From there, you just need to go to your INBOX and quite soon a message should appear from SpamCop. (It gets sent to the account you registered with, so make sure that your mail forwarder works!) Open it up, click on the appropriate link at the top, and a new browser window will open."
+msgstr "При нажатии этой кнопки сообщение будет переслано в SpamCop и удалено (если это указано). Вернитесь в папку Входящие. Скорее всего, там уже будет сообщение от службы SpamCop, которое было отправлено на зарегистрированный адрес (если это адрес пересылки, проверьте, что он работает). Откройте сообщение и щелкните на ссылке вверху письма. Откроется новое окно браузера."
 
-msgid ""
-"Currently, the quick reporting just forwards the request to the thorough "
-"reporting. Also, it appears that this is for members (non-free) only. "
-"Hopefully this will change soon."
-msgstr ""
-"В настоящее время сообщения без подробностей только перенаправляют на "
-"сообщения с подробностями. Кроме того, по-видимому, это не бесплатный сервис."
+msgid "Currently, the quick reporting just forwards the request to the thorough reporting. Also, it appears that this is for members (non-free) only. Hopefully this will change soon."
+msgstr "В настоящее время сообщения без подробностей только перенаправляют на сообщения с подробностями. Кроме того, по-видимому, это не бесплатный сервис."
 
 msgid "Web-based reporting"
 msgstr "Форма веб-страницы"
 
-msgid ""
-"When you press the button on the confirmation page, this will pop open a new "
-"browser window and the SpamCop service should appear inside. The message "
-"will not be deleted (working on that part), but you won't need to wait for a "
-"response email to start the spam reporting."
-msgstr ""
-"При нажатии кнопки подтверждения откроется новое окно браузера на странице "
-"службы SpamCop. В этом окне можно сразу отправить отчет о спаме."
+msgid "When you press the button on the confirmation page, this will pop open a new browser window and the SpamCop service should appear inside. The message will not be deleted (working on that part), but you won't need to wait for a response email to start the spam reporting."
+msgstr "При нажатии кнопки подтверждения откроется новое окно браузера на странице службы SpamCop. В этом окне можно сразу отправить отчет о спаме."
 
-msgid ""
-"The SpamCop service will display information as it finds it, so scroll down "
-"until you see a form button. It might pause a little while it is looking up "
-"information, so be a little patient. Read what it says, and submit the spam. "
-"Close the browser window. Press Cancel or click on the appropriate mail "
-"folder to see messages and/or delete the spam."
-msgstr ""
-"Работа службы SpamCop занимает какое-то время. Пролистайте страницу и "
-"найдите кнопку отправки формы. Прочитайте информацию и отправьте сообщение. "
-"После этого вернитесь к работе с почтой и удалите спам."
+msgid "The SpamCop service will display information as it finds it, so scroll down until you see a form button. It might pause a little while it is looking up information, so be a little patient. Read what it says, and submit the spam. Close the browser window. Press Cancel or click on the appropriate mail folder to see messages and/or delete the spam."
+msgstr "Работа службы SpamCop занимает какое-то время. Пролистайте страницу и найдите кнопку отправки формы. Прочитайте информацию и отправьте сообщение. После этого вернитесь к работе с почтой и удалите спам."
 
 msgid "SpamCop service type"
 msgstr "Тип службы SpamCop"
 
-msgid ""
-"Service type option allows selecting which SpamCop services you are using. "
-"Member services use different web reporting forms and does not display nags. "
-"You can purchase these services, if you want to support SpamCop."
-msgstr ""
-"Выберите тип службы SpamCop. Зарегистрированные пользователи работают с "
-"более удобными формами отправки сообщений. Если вы хотите поддержать "
-"SpamCop, воспользуйтесь платным сервисом."
+msgid "Service type option allows selecting which SpamCop services you are using. Member services use different web reporting forms and does not display nags. You can purchase these services, if you want to support SpamCop."
+msgstr "Выберите тип службы SpamCop. Зарегистрированные пользователи работают с более удобными формами отправки сообщений. Если вы хотите поддержать SpamCop, воспользуйтесь платным сервисом."
 
 msgid "More information"
 msgstr "Дополнительная информация"
 
-#, php-format
-msgid ""
-"For more information about SpamCop, it's services, spam in general, and many "
-"related topics, try reading through SpamCop's %sHelp and Feedback%s section."
-msgstr ""
-"Подробнее о SpamCop и его службах, о спаме в целом и многом другом "
-"прочитатйте на веб-сайте SpamCop в разделе %sHelp and Feedback%s."
+#, c-format
+msgid "For more information about SpamCop, it's services, spam in general, and many related topics, try reading through SpamCop's %sHelp and Feedback%s section."
+msgstr "Подробнее о SpamCop и его службах, о спаме в целом и многом другом прочитатйте на веб-сайте SpamCop в разделе %sHelp and Feedback%s."
 
 msgid "Report as Spam"
 msgstr "Сообщить о спаме"
@@ -3297,25 +2980,11 @@ msgstr "Сообщить о спаме"
 msgid "SpamCop - Spam Reporting"
 msgstr "SpamCop - служба борьбы со спамом"
 
-msgid ""
-"Help fight the battle against unsolicited email. SpamCop reads the spam "
-"email and determines the correct addresses to send complaints to. Quite "
-"fast, really smart, and easy to use."
-msgstr ""
-"Борьба с рекламными письмами.  SpamCop читает заголовки сообщений и "
-"определяет, куда перенаправлять сообщения о спаме.  Быстро, удобно и "
-"правильно."
+msgid "Help fight the battle against unsolicited email. SpamCop reads the spam email and determines the correct addresses to send complaints to. Quite fast, really smart, and easy to use."
+msgstr "Борьба с рекламными письмами.  SpamCop читает заголовки сообщений и определяет, куда перенаправлять сообщения о спаме.  Быстро, удобно и правильно."
 
-msgid ""
-"Sending this spam report will give you back a reply with URLs that you can "
-"click on to properly report this spam message to the proper authorities. "
-"This is a free service. By pressing the \"Send Spam Report\" button, you "
-"agree to follow SpamCop's rules/terms of service/etc."
-msgstr ""
-"При отправке отчета о спаме будет прислан ответ со ссылкой, на которой нужно "
-"будет щелкнуть, чтобы подтвердить отправку сообщения о спаме. Это бесплатная "
-"служба. Нажимая кнопку \"Сообщить о спаме\", вы подтверждаете свое согласие "
-"с условиями использования службы SpamCop."
+msgid "Sending this spam report will give you back a reply with URLs that you can click on to properly report this spam message to the proper authorities. This is a free service. By pressing the \"Send Spam Report\" button, you agree to follow SpamCop's rules/terms of service/etc."
+msgstr "При отправке отчета о спаме будет прислан ответ со ссылкой, на которой нужно будет щелкнуть, чтобы подтвердить отправку сообщения о спаме. Это бесплатная служба. Нажимая кнопку \"Сообщить о спаме\", вы подтверждаете свое согласие с условиями использования службы SpamCop."
 
 msgid "Cancel / Done"
 msgstr "Отмена / Готово"
@@ -3324,42 +2993,22 @@ msgid "Send Spam Report"
 msgstr "Сообщить о спаме"
 
 msgid "SpellChecker Options"
-msgstr "Параметры проверки правописания"
+msgstr "Проверка орфографии"
 
-msgid ""
-"Here you may set up how your personal dictionary is stored, edit it, or "
-"choose which languages should be available to you when spell-checking."
-msgstr ""
-"Здесь вы можете настроить функции проверки правописания: настроить ваш "
-"личный словарик, или указать, какие языки сделать доступными при проверке."
+msgid "Here you may set up how your personal dictionary is stored, edit it, or choose which languages should be available to you when spell-checking."
+msgstr "Здесь можно указать, как хранить ваш личный словарик, дополнить его или указать, какие языки сделать доступными при проверке орфографии."
 
 msgid "Check Spelling"
-msgstr "Проверить правописание"
+msgstr "Проверить орфографию"
 
 msgid "Back to &quot;SpellChecker Options&quot; page"
-msgstr "Вернуться к &quot;Параметрам проверки правописания&quot;"
+msgstr "Вернуться на страницу &quot;Проверка орфографии&quot;"
 
 msgid "ATTENTION:"
 msgstr "Внимание:"
 
-msgid ""
-"SquirrelSpell was unable to decrypt your personal dictionary. This is most "
-"likely due to the fact that you have changed your mailbox password. In order "
-"to proceed, you will have to supply your old password so that SquirrelSpell "
-"can decrypt your personal dictionary. It will be re-encrypted with your new "
-"password after this. If you haven't encrypted your dictionary, then it got "
-"mangled and is no longer valid. You will have to delete it and start anew. "
-"This is also true if you don't remember your old password -- without it, the "
-"encrypted data is no longer accessible."
-msgstr ""
-"Система проверки правописания SquirrelSpell не смогла открыть ваш личный "
-"словарь. Скорее всего это произошло из-за того, что вы сменили пароль. Для "
-"того чтобы восстановить и расшифровать словарь, необходимо ввести старый "
-"пароль. После этого словарь будет зашифрован заново с помощью нового пароля. "
-"Если вы не зашифровывали словарь, значит что-то случилось с файлом, и "
-"система не в состоянии его прочитать. В этом случае словарь придется удалить "
-"и создать заново. Также придется поступить, если старый пароль утерян - без "
-"него расшифровать словарь невозможно."
+msgid "SquirrelSpell was unable to decrypt your personal dictionary. This is most likely due to the fact that you have changed your mailbox password. In order to proceed, you will have to supply your old password so that SquirrelSpell can decrypt your personal dictionary. It will be re-encrypted with your new password after this. If you haven't encrypted your dictionary, then it got mangled and is no longer valid. You will have to delete it and start anew. This is also true if you don't remember your old password -- without it, the encrypted data is no longer accessible."
+msgstr "Системе проверки орфографии SquirrelSpell не удалось открыть личный словарь. Скорее всего это произошло из-за того, что вы сменили пароль. Для того чтобы восстановить и расшифровать словарь, необходимо ввести старый пароль. После этого словарь будет зашифрован заново с помощью нового пароля. Если вы не зашифровывали словарь, то файл может быть поврежден, и система не в состоянии его прочитать. В этом случае словарь придется удалить и создать заново. То же самое придется сделать, если старый пароль утерян - без него расшифровать словарь невозможно."
 
 msgid "Delete my dictionary and start a new one"
 msgstr "Удалить личный словарь и начать новый"
@@ -3371,15 +3020,13 @@ msgid "Proceed"
 msgstr "Далее"
 
 msgid "You must make a choice"
-msgstr "Пожалуйста, сделайте выбор"
+msgstr "Выберите вариант"
 
 msgid "You can either delete your dictionary or type in the old password. Not both."
-msgstr ""
-"Можно удалить старый словарь или ввести пароль для расшифровки, но не и то, "
-"и другое одновременно."
+msgstr "Можно удалить старый словарь или ввести прежний пароль, но не и то, и другое одновременно."
 
 msgid "This will delete your personal dictionary file. Proceed?"
-msgstr "Это действие удалит ваш личный словарь. Продолжить?"
+msgstr "Ваш личный словарь будет удален. Продолжить?"
 
 msgid "Error Decrypting Dictionary"
 msgstr "Ошибка при расшифровке словаря"
@@ -3387,22 +3034,22 @@ msgstr "Ошибка при расшифровке словаря"
 msgid "Cute."
 msgstr "Готово."
 
-#, php-format
+#, c-format
 msgid "Could not run the spellchecker command (%s)."
 msgstr "Не удается запустить команду проверки орфографии (%s)."
 
 msgid "Error while writing to pipe."
 msgstr "Ошибка записи в канал."
 
-#, php-format
+#, c-format
 msgid "Could not open temporary file '%s'."
 msgstr "Не удается открыть временный файл %s"
 
-#, php-format
+#, c-format
 msgid "Error while writing to temporary file '%s'."
 msgstr "Не удается записать в временный файл %s"
 
-#, php-format
+#, c-format
 msgid "I tried to execute '%s', but it returned:"
 msgstr "При попытке выполнить '%s' получен результат:"
 
@@ -3421,7 +3068,7 @@ msgstr "Запись личного словаря на диск. Подожди
 msgid "SquirrelSpell Results"
 msgstr "Результаты проверки"
 
-#, php-format
+#, c-format
 msgid "Found %s errors"
 msgstr "Найдено ошибок: %s"
 
@@ -3488,53 +3135,41 @@ msgstr "Проверка правописания не закончена. За�
 msgid "No errors found"
 msgstr "Ошибок не найдено"
 
-msgid ""
-"Your personal dictionary has been encrypted and is now stored in an "
-"encrypted format."
-msgstr "Личный словарь был зашифрован и теперь хранится в закодированном виде."
-
-msgid "Your personal dictionary has been decrypted and is now stored as plain text."
-msgstr "Личный словарь был расшифрован и теперь хранится в незашифрованном виде."
-
-msgid "Personal Dictionary Crypto Settings"
-msgstr "Параметры защиты личного словаря"
-
 msgid "Your personal dictionary was erased."
 msgstr "Личный словарь был удален."
 
 msgid "Dictionary Erased"
 msgstr "Словарь удален"
 
-msgid ""
-"Your personal dictionary was erased. Please close this window and click "
-"\"Check Spelling\" button again to start your spellcheck over."
-msgstr ""
-"Личный словарь был удален. Закройте это окно и нажмите \"Проверка "
-"правописания\" снова, чтобы закончить проверку."
+msgid "Your personal dictionary was erased. Please close this window and click \"Check Spelling\" button again to start your spellcheck over."
+msgstr "Личный словарь был удален. Закройте это окно и нажмите \"Проверка правописания\" снова, чтобы закончить проверку."
 
 msgid "Close this Window"
 msgstr "Закрыть окно"
 
-msgid ""
-"Your personal dictionary was re-encrypted successfully. Now return to the "
-"&quot;SpellChecker options&quot; menu and make your selection again."
-msgstr ""
-"Личный словарь был зашифрован новым паролем. Вернитесь на страницу с &quot;"
-"Параметрами проверки правописания&quot; и выберите его ещё раз."
+msgid "Your personal dictionary was re-encrypted successfully. Now return to the &quot;SpellChecker options&quot; menu and make your selection again."
+msgstr "Личный словарь был зашифрован новым паролем. Вернитесь на страницу с &quot;Параметрами проверки правописания&quot; и выберите его ещё раз."
 
 msgid "Successful re-encryption"
 msgstr "Повторное шифрование выполнено успешно"
 
-msgid ""
-"Your personal dictionary was re-encrypted successfully. Please close this "
-"window and click \"Check Spelling\" button again to start your spellcheck "
-"over."
-msgstr ""
-"Личный словарь был успешно защищен новым паролем. Закройте это окно и "
-"нажмите кнопку \"Проверить правописание\" снова, чтобы возобновить проверку."
+msgid "Your personal dictionary was re-encrypted successfully. Please close this window and click \"Check Spelling\" button again to start your spellcheck over."
+msgstr "Личный словарь был успешно защищен новым паролем. Закройте это окно и нажмите кнопку \"Проверить правописание\" снова, чтобы возобновить проверку."
 
 msgid "Dictionary re-encrypted"
 msgstr "Словарь защищен"
+
+msgid "Your personal dictionary has been encrypted and is now stored in an encrypted format."
+msgstr "Личный словарь был зашифрован и теперь хранится в закодированном виде."
+
+msgid "Your personal dictionary has been decrypted and is now stored as plain text."
+msgstr "Личный словарь был расшифрован и теперь хранится в незашифрованном виде."
+
+msgid "No action requested."
+msgstr "Никаких действий выполнять не требуется."
+
+msgid "Personal Dictionary Crypto Settings"
+msgstr "Параметры защиты личного словаря"
 
 msgid "Personal Dictionary"
 msgstr "Личный словарь"
@@ -3545,7 +3180,7 @@ msgstr "В личном словаре нет записей."
 msgid "Please check any words you wish to delete from your dictionary."
 msgstr "Отметьте слова, которые требуется удалить из словаря."
 
-#, php-format
+#, c-format
 msgid "%s dictionary"
 msgstr "Словарь %s"
 
@@ -3558,44 +3193,20 @@ msgstr "Редактировать личный словарь"
 msgid "Please make your selection first."
 msgstr "Сначала выберите опцию."
 
-msgid ""
-"This will encrypt your personal dictionary and store it in an encrypted "
-"format. Proceed?"
-msgstr ""
-"Личный словарь будет защищен паролем и сохранен на диске в зашифрованом "
-"формате. Продолжить?"
+msgid "This will encrypt your personal dictionary and store it in an encrypted format. Proceed?"
+msgstr "Личный словарь будет защищен паролем и сохранен на диске в зашифрованом формате. Продолжить?"
 
-msgid ""
-"This will decrypt your personal dictionary and store it in a plain text "
-"format. Proceed?"
-msgstr ""
-"Личный словарь будет не защищен паролем и сохранен на диске в незашифрованом "
-"формате. Продолжить?"
+msgid "This will decrypt your personal dictionary and store it in a plain text format. Proceed?"
+msgstr "Личный словарь будет не защищен паролем и сохранен на диске в незашифрованом формате. Продолжить?"
 
 msgid "Your personal dictionary is currently encrypted."
 msgstr "Личный словарь зашифрован."
 
-msgid ""
-"This helps protect your privacy in case the web-mail system gets compromized "
-"and your personal dictionary ends up stolen. It is currently encrypted with "
-"the password you use to access your mailbox, making it hard for anyone to "
-"see what is stored in your personal dictionary."
-msgstr ""
-"Шифрование личного словаря служит для его защиты при взломе сервера и "
-"несанкционированном доступе к информации. Словарь будет зашифрован с помощью "
-"пароля, используемого для доступа к почте, и прочитать его посторонним будет "
-"сложно."
+msgid "This helps protect your privacy in case the web-mail system gets compromized and your personal dictionary ends up stolen. It is currently encrypted with the password you use to access your mailbox, making it hard for anyone to see what is stored in your personal dictionary."
+msgstr "Шифрование личного словаря служит для его защиты при взломе сервера и несанкционированном доступе к информации. Словарь будет зашифрован с помощью пароля, используемого для доступа к почте, и прочитать его посторонним будет сложно."
 
-msgid ""
-"If you forget your password, your personal dictionary will become "
-"unaccessible, since it can no longer be decrypted. If you change your "
-"mailbox password, SquirrelSpell will recognize it and prompt you for your "
-"old password in order to re-encrypt the dictionary with a new key."
-msgstr ""
-"Если вы забудете пароль, то словарь станет недоступным, поскольку его нельзя "
-"будет более расшифровать. Если почтовый пароль был изменен, то SquirrelSpell "
-"обнаружит эту ситуацию и предложит ввести старый пароль, чтобы расшифровать "
-"словарь и вновь его зашифровать с помощью нового пароля."
+msgid "If you forget your password, your personal dictionary will become unaccessible, since it can no longer be decrypted. If you change your mailbox password, SquirrelSpell will recognize it and prompt you for your old password in order to re-encrypt the dictionary with a new key."
+msgstr "Если вы забудете пароль, то словарь станет недоступным, поскольку его нельзя будет более расшифровать. Если почтовый пароль был изменен, то SquirrelSpell обнаружит эту ситуацию и предложит ввести старый пароль, чтобы расшифровать словарь и вновь его зашифровать с помощью нового пароля."
 
 msgid "Please decrypt my personal dictionary and store it in a clear-text format."
 msgstr "Расшифровать личный словарь и хранить его в незашифрованном виде."
@@ -3606,36 +3217,16 @@ msgstr "Изменить параметры защиты"
 msgid "Your personal dictionary is currently not encrypted."
 msgstr "Личный словарь незашифрован."
 
-msgid ""
-"You may wish to encrypt your personal dictionary to protect your privacy in "
-"case the webmail system gets compromized and your personal dictionary file "
-"gets stolen. When encrypted, the file's contents look garbled and are hard "
-"to decrypt without knowing the correct key (which is your mailbox password)."
-msgstr ""
-"Если это необходимо, можно зашифровать словарь. Шифрование личного словаря "
-"служит для его защиты при взломе сервера и несанкционированном доступе к "
-"информации. Словарь зашифрован с помощью пароля, используемого для доступа к "
-"почте, и прочитать его посторонним будет сложно."
+msgid "You may wish to encrypt your personal dictionary to protect your privacy in case the webmail system gets compromized and your personal dictionary file gets stolen. When encrypted, the file's contents look garbled and are hard to decrypt without knowing the correct key (which is your mailbox password)."
+msgstr "Если это необходимо, можно зашифровать словарь. Шифрование личного словаря служит для его защиты при взломе сервера и несанкционированном доступе к информации. Словарь зашифрован с помощью пароля, используемого для доступа к почте, и прочитать его посторонним будет сложно."
 
-msgid ""
-"If you decide to encrypt your personal dictionary, you must remember that it "
-"gets &quot;hashed&quot; with your mailbox password. If you forget your "
-"mailbox password and the administrator changes it to a new value, your "
-"personal dictionary will become useless and will have to be created anew. "
-"However, if you or your system administrator change your mailbox password "
-"but you still have the old password at hand, you will be able to enter the "
-"old key to re-encrypt the dictionary with the new value."
-msgstr ""
-"Если вы решите зашифровать словарь, то должны помнить, что он &quot;"
-"кодируется&quot; вашим почтовым паролем.  Если вы забудете почтовый пароль "
-"или администратор сменит его на новый, то личный словарь будет утерян, и его "
-"придется начать заново. В случае если вы смените пароль, но будете помнить "
-"старый, то можно будет перекодировать словарь с новым паролем."
+msgid "If you decide to encrypt your personal dictionary, you must remember that it gets &quot;hashed&quot; with your mailbox password. If you forget your mailbox password and the administrator changes it to a new value, your personal dictionary will become useless and will have to be created anew. However, if you or your system administrator change your mailbox password but you still have the old password at hand, you will be able to enter the old key to re-encrypt the dictionary with the new value."
+msgstr "Если вы решите зашифровать словарь, то должны помнить, что он &quot;кодируется&quot; вашим почтовым паролем.  Если вы забудете почтовый пароль или администратор сменит его на новый, то личный словарь будет утерян, и его придется начать заново. В случае если вы смените пароль, но будете помнить старый, то можно будет перекодировать словарь с новым паролем."
 
 msgid "Please encrypt my personal dictionary and store it in an encrypted format."
 msgstr "Защитить словарь и хранить его в зашифрованном виде."
 
-#, php-format
+#, c-format
 msgid "Deleting the following entries from %s dictionary:"
 msgstr "Удаление следующих слов из словаря %s"
 
@@ -3651,31 +3242,25 @@ msgstr "Никаких изменений не запрошено."
 msgid "Please wait, communicating with the server..."
 msgstr "Соединение с сервером. Подождите..."
 
-msgid ""
-"Please choose which dictionary you would like to use to spellcheck this "
-"message:"
+msgid "Please choose which dictionary you would like to use to spellcheck this message:"
 msgstr "Выберите, какой словарь использовать для проверки этого сообщения:"
 
 msgid "SquirrelSpell Initiating"
 msgstr "Инициализация системы проверки правописания"
 
-#, php-format
+#, c-format
 msgid "Settings adjusted to: %s with %s as default dictionary."
 msgstr "Параметры изменены: будет использоваться %s и словарь %s по умолчанию."
 
-#, php-format
+#, c-format
 msgid "Using %s dictionary (system default) for spellcheck."
 msgstr "Используется словарь %s (системный по умолчанию)."
 
 msgid "International Dictionaries Preferences Updated"
 msgstr "Параметры иностранных словарей обновлены"
 
-msgid ""
-"Please check any available international dictionaries which you would like "
-"to use when spellchecking:"
-msgstr ""
-"Выберите любые из доступных словарей, которые требуется использовать при "
-"проверке правописания:"
+msgid "Please check any available international dictionaries which you would like to use when spellchecking:"
+msgstr "Выберите любые из доступных словарей, которые требуется использовать при проверке правописания:"
 
 msgid "Make this dictionary my default selection:"
 msgstr "Использовать этот словарь по умолчанию:"
@@ -3698,8 +3283,8 @@ msgstr "Настроить иностранные словари"
 msgid "Encrypt or decrypt your personal dictionary"
 msgstr "Зашифровать или расшифровать личный словарь"
 
-msgid "not available"
-msgstr "недоступно"
+msgid "Personal dictionary encryption options are not available"
+msgstr "Параметры защиты личного словаря недоступны"
 
 msgid "SquirrelSpell Options Menu"
 msgstr "Настройка системы правописания"
@@ -3716,7 +3301,7 @@ msgstr "Параметры серверов:"
 msgid "Maximum of 150 words translated, powered by Systran"
 msgstr "Максимум 150 слов, система Systran"
 
-#, php-format
+#, c-format
 msgid "Number of supported language pairs: %s"
 msgstr "Число поддерживаемых языковых пар: %s"
 
@@ -3726,7 +3311,7 @@ msgstr "Без ограничений, система Systran"
 msgid "No known limits, powered by Translation Experts' InterTran"
 msgstr "Без ограничений, система Translation Experts' InterTran"
 
-#, php-format
+#, c-format
 msgid "Number of supported languages: %s"
 msgstr "Число поддерживаемых языков: %s"
 
@@ -3736,9 +3321,7 @@ msgstr "Греческие переводы, без ограничений, си
 msgid "Russian translations, maximum of 500 characters translated"
 msgstr "Русские переводы, максимум 500 символов"
 
-msgid ""
-"You also decide if you want the translation box displayed, and where it will "
-"be located."
+msgid "You also decide if you want the translation box displayed, and where it will be located."
 msgstr "Показ/скрытие окна перевода и его размещение на странице."
 
 msgid "Select your translator:"
@@ -3765,12 +3348,10 @@ msgstr "Переводить внутри интерфейса SquirrelMail"
 msgid "Translation Options"
 msgstr "Параметры перевода"
 
-msgid ""
-"Which translator should be used when you get messages in a different "
-"language?"
+msgid "Which translator should be used when you get messages in a different language?"
 msgstr "Какой переводчик использовать, когда приходит сообщение на другом языке?"
 
-#, php-format
+#, c-format
 msgid "%s to %s"
 msgstr "%s на %s"
 
@@ -3888,798 +3469,6 @@ msgstr "Язык интерфейса"
 msgid "Translation direction"
 msgstr "Направление перевода"
 
-#, php-format
-msgid "About SquirrelMail %s"
-msgstr "О SquirrelMail, версия %s"
-
-msgid ""
-"SquirrelMail is the name of the program that provides access to your email "
-"via the web."
-msgstr ""
-"SquirrelMail - это название программы, с помощью которой вы работаете со "
-"своей почтой в браузере."
-
-#, php-format
-msgid ""
-"If you have questions about or problems with your mail account, passwords, "
-"abuse etc, please refer to your system administrator or provider%s."
-msgstr "Вопросы о своей учетной записи почты, паролях, злоупотреблениях и пр. адресуйте своему системному администратору или провайдеру%s."
-
-#, php-format
-msgid ""
-"They can assist you adequately with these issues. The SquirrelMail Project "
-"Team cannot help you with that. The %shelp system%s provides answers to "
-"frequently asked questions."
-msgstr "Именно они должны этим заниматься. Разработчики SquirrelMail не могут помочь с этим. Ответы на многие вопросы приведены в %sсправочной системе%s."
-
-#, php-format
-msgid ""
-"SquirrelMail is a feature rich, standards compliant webmail application "
-"written in PHP. It was made by a group of volunteers united in the "
-"SquirrelMail Project Team and is released as open source, free software "
-"under the %sGNU General Public License%s."
-msgstr ""
-"SquirrelMail - это полнофункциональный и отвечающий стандартам пакет веб-почты, написанный на PHP. Группа разработчиков "
-"SquirrelMail развивает этот проект программного обеспечения с открытыми исходными кодами и выпускает его на условиях лицензии %sGNU General Public License%s."
-
-#, php-format
-msgid ""
-"For more information about SquirrelMail and the SquirrelMail Project Team, "
-"see %sthe SquirrelMail website%s."
-msgstr ""
-"Дополнительная инофрмация о SquirrelMail и разработчиках проекта "
-"доступна на %sсайте SquirrelMail%s."
-
-msgid "System information"
-msgstr "Сведения о системе"
-
-#, php-format
-msgid "You are using SquirrelMail version: %s"
-msgstr "Версия SquirrelMail - %s"
-
-msgid "The administrator installed the following plugins:"
-msgstr "Администратор включил следующие модули:"
-
-msgid "none installed"
-msgstr "нет"
-
-msgid "sort by nickname"
-msgstr "сортировать по псевдонимам"
-
-msgid "sort by name"
-msgstr "сортировать по имени"
-
-msgid "sort by email"
-msgstr "сортировать по адресу"
-
-msgid "sort by info"
-msgstr "сортировать по данным"
-
-msgid "Add to address book"
-msgstr "Добавить в адресную книгу"
-
-msgid ""
-"Because PHP file uploads are turned off, you can not attach files to this "
-"message. Please see your system administrator for details."
-msgstr ""
-"Загрузка файлов на сервер запрещена в параметрах PHP. Вложить файл в "
-"сообщение невозможно. Обратитесь к системному администратору."
-
-msgid "No folders were found to unsubscribe from."
-msgstr "Нет подписанных папок."
-
-msgid "No folders were found to subscribe to."
-msgstr "Нет папок, на которые можно подписаться."
-
-msgid "Last Refresh"
-msgstr "Обновлено"
-
-msgid "Check mail"
-msgstr "Проверить почту"
-
-msgid "Save folder tree"
-msgstr "Сохранить дерево папок"
-
-msgid "SquirrelMail Webmail Application"
-msgstr "Веб-почта SquirrelMail"
-
-msgid "Compose Preferences"
-msgstr "Составление сообщений"
-
-msgid ""
-"Control the behaviour and layout of writing new mail messages, replying to "
-"and forwarding messages."
-msgstr ""
-"Здесь настраивается внешний вид и макет новых сообщений, ответы и пересылка "
-"писем."
-
-msgid "Received"
-msgstr "Получено"
-
-msgid "As Attachment"
-msgstr "вложением"
-
-msgid "Bypass Trash"
-msgstr "не в Корзину"
-
-msgid "Please enter something to search for"
-msgstr "Введите строку для поиска"
-
-msgid "There must be at least one criteria to search for"
-msgstr "Следует указать хотя бы один критерий поиска"
-
-msgid "Error in criteria argument"
-msgstr "Ошибка в аргументах критерия"
-
-msgid "(Illegal date)"
-msgstr "(недопустимая дата)"
-
-msgid "(Wrong date)"
-msgstr "(неверная дата)"
-
-msgid "In"
-msgstr "Искать в&nbsp; "
-
-msgid "(Missing argument)"
-msgstr "(отсутствует аргумент)"
-
-msgid "(Spurious argument)"
-msgstr "(избыточный аргумент)"
-
-msgid "Fold"
-msgstr "Свернуть"
-
-msgid "Unfold"
-msgstr "Развернуть"
-
-msgid "Saved Searches"
-msgstr "Хронология запросов"
-
-msgid "Missing"
-msgstr "Отсутствует"
-
-msgid "and&nbsp;subfolders:"
-msgstr "и&nbsp;подпапках:"
-
-msgid "Exclude Criteria:"
-msgstr "Исключающие критерии:"
-
-msgid "Search Criteria"
-msgstr "Критерии поиска"
-
-msgid "Add New Criteria"
-msgstr "Добавить критерии"
-
-msgid "Remove Excluded Criteria"
-msgstr "Удалить исключающие"
-
-msgid "Remove All Criteria"
-msgstr "Удалить все критерии"
-
-msgid "Not"
-msgstr "НЕ"
-
-msgid "Answered"
-msgstr "Отвеченные"
-
-msgid "Before"
-msgstr "До"
-
-msgid "Message Body"
-msgstr "Тело сообщений"
-
-msgid "Deleted"
-msgstr "Удаленные"
-
-msgid "Draft"
-msgstr "Черновики"
-
-msgid "Flagged"
-msgstr "Отмеченные"
-
-msgid "Sent By"
-msgstr "Отправленные"
-
-msgid "Header Field"
-msgstr "Заголовок"
-
-msgid "Keyword"
-msgstr "Ключевое слово"
-
-msgid "Larger Than"
-msgstr "Больше чем"
-
-msgid "Old"
-msgstr "Устаревшие"
-
-msgid "On"
-msgstr "Дата"
-
-msgid "Recent"
-msgstr "Недавние"
-
-msgid "Seen"
-msgstr "Просмотренные"
-
-msgid "Sent Before"
-msgstr "Отправленные до"
-
-msgid "Sent On"
-msgstr "Отправленные тогда-то"
-
-msgid "Sent Since"
-msgstr "Отправленные после"
-
-msgid "Since"
-msgstr "После"
-
-msgid "Smaller Than"
-msgstr "Меньше чем"
-
-msgid "Subject Contains"
-msgstr "Тема содержит"
-
-msgid "Header and Body"
-msgstr "Заголовок и тело"
-
-msgid "Sent To"
-msgstr "Отправленные кому"
-
-msgid "And In"
-msgstr "и в"
-
-msgid "Or In"
-msgstr "или в"
-
-msgid "And"
-msgstr "И"
-
-msgid "Or"
-msgstr "ИЛИ"
-
-msgid "Standard search"
-msgstr "Простой поиск"
-
-msgid "Advanced search"
-msgstr "Расширенный поиск"
-
-msgid "Folder List"
-msgstr "Список папок"
-
-msgid "PHP install does not have LDAP support."
-msgstr "В PHP отсутствует поддержка LDAP."
-
-msgid "Click here to change the sorting of the address list"
-msgstr "Нажмите здесь, чтобы изменить порядок сортировки адресов"
-
-msgid "Illegal folder name."
-msgstr "Недопустимое имя папки."
-
-#, php-format
-msgid "The name may not contain any of the following: %s"
-msgstr "Следующие символы недопустимы в имени: %s"
-
-msgid "Please select a different name."
-msgstr "Укажите другое имя."
-
-msgid "You have not selected a folder to subscribe. Please do so."
-msgstr "Сначала выберите папку, на которую нужно подписаться."
-
-msgid "You have not selected a folder to unsubscribe. Please do so."
-msgstr "Сначала выберите уже подписанную папку."
-
-msgid "Possible reason:"
-msgstr "Возможная причина:"
-
-msgid "ERROR: Bad function call."
-msgstr "ОШИБКА: Неверный вызов функции."
-
-msgid "Reason:"
-msgstr "Причина:"
-
-msgid ""
-"TLS is enabled, but this version of PHP does not support TLS sockets, or is "
-"missing the openssl extension."
-msgstr ""
-"TLS включен, но либо данная версия PHP не поддерживает сокеты TLS, либо не "
-"включен модуль openssl."
-
-msgid ""
-"Your mailbox is not located at this server. Try a different server or "
-"consult your system administrator"
-msgstr "Почтовый ящик не найден на этом сервере. Укажите другой сервер или обратитесь к системному администратору."
-
-msgid "Unknown recipient"
-msgstr "Неизвестный адресат"
-
-msgid "Unflag"
-msgstr "Снять отметку"
-
-msgid "Flag"
-msgstr "Отметить"
-
-msgid "Undelete"
-msgstr "Отменить удаление"
-
-msgid "General Message Composition"
-msgstr "Параметры нового сообщения"
-
-msgid "Replying and Forwarding Messages"
-msgstr "Ответы и пересылка"
-
-msgid "Strip signature when replying"
-msgstr "Удалять подпись в ответах"
-
-msgid "Enable Fancy Row Mouseover Highlighting"
-msgstr "Подсвечивать строки при наведении мыши"
-
-msgid "Message Flags Icon Theme"
-msgstr "Тема значков отметок сообщений"
-
-msgid "Show Flag / Unflag Buttons"
-msgstr "Показать кнопки отметки / снятия"
-
-msgid "Use Compact Page Selector"
-msgstr "Использовать компактный выбор страницы"
-
-msgid "Length of From/To Field (0 for full)"
-msgstr "Длина полей От и Кому (0 - без ограничений)"
-
-msgid "Length of Subject Field (0 for full)"
-msgstr "Длина поля Тема (0 - без ограничений)"
-
-msgid "Message Display Options"
-msgstr "Параметры показа сообщений"
-
-msgid "Show 'Delete & Prev/Next' Links"
-msgstr "Показать ссылки 'Удалить и назад / далее'"
-
-msgid "Save Replies with Original Message"
-msgstr "Сохранять ответы вместе с исходным сообщением"
-
-#, php-format
-msgid "%d Minute"
-msgid_plural "%d Minutes"
-msgstr[0] "%d минута"
-msgstr[1] "%d минуты"
-msgstr[2] "%d минут"
-
-msgid "Show only subscribed folders"
-msgstr "Показать только подписанные папки"
-
-msgid "XP"
-msgstr "XP"
-
-msgid "Hide SquirrelMail Header"
-msgstr "Скрыть заголовок SquirrelMail"
-
-msgid "Search functions"
-msgstr "Возможности поиска"
-
-msgid "Only basic search"
-msgstr "Только простой поиск"
-
-msgid "Only advanced search"
-msgstr "Только расширенный поиск"
-
-msgid "Both search functions"
-msgstr "Оба вида поиска"
-
-msgid "Show alternative language names"
-msgstr "Показывать альтернативные названия языков"
-
-msgid "Available languages"
-msgstr "Доступные языки"
-
-msgid "Enable aggressive decoding"
-msgstr "Включить быстрое декодирование"
-
-msgid "Tweaks"
-msgstr "Специальные возможности"
-
-msgid "Use advanced tree folder listing"
-msgstr "Использовать новый вид списка папок"
-
-msgid "Use icons"
-msgstr "Использовать значки"
-
-msgid "Use PHP recode functions"
-msgstr "Использовать функцию recode PHP"
-
-msgid "Use PHP iconv functions"
-msgstr "Использовать функцию iconv PHP"
-
-msgid "Allow remote configuration test"
-msgstr "Разрешить проверку конфигурации по сети"
-
-msgid "Show System Specifications"
-msgstr "Показать сведения о системе"
-
-msgid "Search Mailing List Archives"
-msgstr "Поиск в архивах рассылок"
-
-msgid "Search SourceForge Bugtracker"
-msgstr "Поиск в SourceForge Bugtracker"
-
-msgid "Search for words:"
-msgstr "Искать слова:"
-
-msgid "Written by:"
-msgstr "Написано:"
-
-msgid "Email addresses only"
-msgstr "Только эл. адреса"
-
-msgid "Mailing list:"
-msgstr "Список рассылки:"
-
-msgid "SquirrelMail users list"
-msgstr "Рассылка пользователей SquirrelMail"
-
-msgid "SquirrelMail plugins list"
-msgstr "Рассылка модулей SquirrelMail"
-
-msgid "SquirrelMail developers list"
-msgstr "Рассылка разработчиков SquirrelMail"
-
-msgid "SquirrelMail internationalization list"
-msgstr "Рассылка локализации SquirrelMail"
-
-msgid "Sort by:"
-msgstr "Сортировать по:"
-
-msgid "Relevance"
-msgstr "Значимости"
-
-msgid "Search Archives"
-msgstr "Поиск в архивах"
-
-msgid "Reset Form"
-msgstr "Сбросить форму"
-
-msgid "Summary keyword:"
-msgstr "Ключевое слово:"
-
-msgid "Sort By:"
-msgstr "Сортировать по:"
-
-msgid "ID"
-msgstr "Номеру"
-
-msgid "Summary"
-msgstr "Краткому содержанию"
-
-msgid "Open Date"
-msgstr "Дате открытия"
-
-msgid "Close Date"
-msgstr "Дате закрытия"
-
-msgid "Submitter"
-msgstr "Автору"
-
-msgid "Assignee"
-msgstr "Ответственному"
-
-msgid "Order:"
-msgstr "Порядок:"
-
-msgid "Ascending"
-msgstr "По возрастанию"
-
-msgid "Descending"
-msgstr "По убыванию"
-
-msgid "Search Bugtracker"
-msgstr "Поиск в Bugtracker"
-
-msgid "You must type in a new password."
-msgstr "Введите новый пароль."
-
-msgid "You must also type in your new password in the verify box."
-msgstr "Введите новый пароль в поле повтора пароля."
-
-msgid "Your new password does not match the verify password."
-msgstr "Пароли не совпадают."
-
-msgid "You must type in your current password."
-msgstr "Введите текущий пароль."
-
-msgid "Your current password is not correct."
-msgstr "Текущий пароль введен неверно."
-
-#, php-format
-msgid "Your new password should be %s to %s characters long."
-msgstr "Новый пароль содержать от %s до %s символов."
-
-msgid "Your new password contains invalid characters."
-msgstr "Новый пароль содержит недопустимые символы."
-
-msgid "Change Password"
-msgstr "Изменить пароль"
-
-msgid "Current Password:"
-msgstr "Текущий пароль:"
-
-msgid "New Password:"
-msgstr "Новый пароль:"
-
-msgid "Verify New Password:"
-msgstr "Новый пароль (повторно):"
-
-msgid "Use this to change your email password."
-msgstr "Здесь можно изменить пароль электронной почты."
-
-msgid "User's Password"
-msgstr "Пароль"
-
-msgid "Current configuration requires LDAP support in PHP."
-msgstr "Текущая конфигурация требует поддержки LDAP в PHP."
-
-msgid "Plugin is not configured correctly."
-msgstr "Модуль работает с ошибками."
-
-#, php-format
-msgid "Setting of LDAP connection option %s to value %s failed."
-msgstr "Не удалось задать опцию LDAP %s равной %s. "
-
-#, php-format
-msgid "Incorrect LDAP connection option: %s"
-msgstr "Недопустимая опция соединения LDAP: %s"
-
-msgid "Current PHP LDAP extension does not allow use of ldap_set_option() function."
-msgstr ""
-"В данной версии PHP расширение LDAP не допускает вызов функции "
-"ldap_set_option()."
-
-msgid "Unable to use TLS."
-msgstr "Не удается работать с TLS."
-
-#, php-format
-msgid "Error: %s"
-msgstr "Ошибка: %s"
-
-msgid "Unable to use LDAP TLS in current setup."
-msgstr "В текущей конфигурации TLS для LDAP не поддерживается."
-
-msgid "Unable to bind to LDAP server."
-msgstr "Не удается связаться с сервером LDAP."
-
-#, php-format
-msgid "Server replied: %s"
-msgstr "Ответ сервера: %s"
-
-msgid "Unable to find user's password attribute."
-msgstr "Атрибут пользовательского пароля не найден."
-
-msgid "Unable to rebind to LDAP server."
-msgstr "Не удается повторно связаться с сервером LDAP."
-
-msgid "LDAP server uses different attribute to store user's password."
-msgstr "Сервер LDAP использует другой атрибут для хранения пользовательского пароля."
-
-msgid "Unable to connect to LDAP server."
-msgstr "Подключение к серверу LDAP не выполнено."
-
-msgid "Unable to find user's DN."
-msgstr "Не удается найти DN пользователя."
-
-msgid "Search error."
-msgstr "Ошибка поиска."
-
-msgid "Multiple userid matches found."
-msgstr "Найдено несколько совпадающих userid."
-
-msgid "ldap_get_dn error."
-msgstr "Ошибка ldap_get_dn."
-
-#, php-format
-msgid "Unsupported crypto: %s"
-msgstr "Неизвестный шифр: %s"
-
-msgid "PHP mhash extension is missing."
-msgstr "Отсутствует расширение PHP mhash."
-
-msgid "System crypt library doesn't support standard DES crypt."
-msgstr "Библиотека crypt не поддерживает стандартный шифр DES."
-
-msgid "System crypt library doesn't have MD5 support."
-msgstr "Библиотека crypt не поддерживает шифр MD5."
-
-msgid "System crypt library doesn't support extended DES crypt."
-msgstr "Библиотека crypt не поддерживает расширенный шифр DES."
-
-msgid "System crypt library doesn't have Blowfish support."
-msgstr "Библиотека crypt не поддерживает шифр Blowfish."
-
-msgid "unknown"
-msgstr "неизв."
-
-msgid "Unable to validate user's password."
-msgstr "Не удается проверить пароль пользователя."
-
-msgid "Blowfish is not supported by webserver's system crypt library."
-msgstr "Blowfish не поддерживается библиотекой шифрования веб-сервера."
-
-msgid "MD5 is not supported by webserver's system crypt library."
-msgstr "MD5 не поддерживается библиотекой шифрования веб-сервера."
-
-msgid "Extended DES crypt is not supported by webserver's system crypt library."
-msgstr "Расширенный DES не поддерживается библиотекой шифрования веб-сервера."
-
-msgid "Standard DES crypt is not supported by webserver's system crypt library."
-msgstr "Стандартный DES не поддерживается библиотекой шифрования веб-сервера."
-
-msgid "PHP Curl extension is NOT available! Unable to change password!"
-msgstr "Модуль curl PHP не найден. Изменение пароля невозможно."
-
-msgid "Cannot change password! (Is user 'Self Configurable User' ?) (401)"
-msgstr "Не удается изменить пароль. Проверьте, разрешено ли это. (401)"
-
-msgid "Cannot change password!"
-msgstr "Пароль не был изменен."
-
-msgid "Cannot connect to Database Server, please try later!"
-msgstr "Не удалось соединиться с сервером базы данных. Попробуйте еще раз."
-
-msgid "Database not found on server"
-msgstr "Не найдена база данных на сервере"
-
-msgid "SQL call failed, try again later."
-msgstr "Ошибка запроса SQL. Повторите попытку позже."
-
-msgid "Duplicate login entries detected, cannot change password!"
-msgstr "Пароль не был изменен. Найдены совпадающие имена пользователей."
-
-msgid "Password change was not successful!"
-msgstr "Пароль не был изменен."
-
-msgid "Closing Connection"
-msgstr "Закрытие соединения"
-
-msgid "Connecting to Password Server"
-msgstr "Подключение к серверу паролей"
-
-msgid "No valid backend defined."
-msgstr "Не указана базовая программа."
-
-msgid "Incorrent path to vmail.inc file."
-msgstr "Неверный путь к файлу vmail.inc."
-
-msgid "Invalid or corrupted vmail.inc file."
-msgstr "Файл vmail.inc поврежден."
-
-msgid "Invalid user."
-msgstr "Недопустимый пользователь."
-
-msgid "Empty domain"
-msgstr "Пустой домен"
-
-msgid "Empty domain password"
-msgstr "Пустой пароль домена"
-
-msgid "Empty username"
-msgstr "Пустое имя пользователя"
-
-msgid "Empty new password"
-msgstr "Пустой пароль"
-
-msgid "Server Capability response:"
-msgstr "Возможности сервера:"
-
-msgid ""
-"Select the IMAP commands you would like to run. Most commands require a "
-"selected mailbox so the select command is already setup. You can clear all "
-"the commands and test your own IMAP command strings. The commands are "
-"executed in order. The default values are simple IMAP commands using your "
-"default_charset and folder_prefix from SquirrelMail when needed."
-msgstr ""
-"Выберите команды IMAP, которые требуется запустить. Для большинства команд "
-"требуется выбранный почтовый ящик, поэтому команда select уже указана. Можно "
-"очистить поле ввода и ввести свои команды IMAP. Команды будут выполняться в "
-"указанном порядке. Команды по умолчанию - это стандартные команды IMAP, "
-"использующие кодировку по умолчанию и префикс папок SquirrelMail, где это "
-"необходимо."
-
-msgid ""
-"NOTE: These commands are live, any changes made will effect your current "
-"email account."
-msgstr "Предупреждение: Эти команды будут выполняться именно с вашим почтовым ящиком."
-
-msgid "Select"
-msgstr "Select"
-
-msgid "Test Name"
-msgstr "Имя теста"
-
-msgid "IMAP command string"
-msgstr "Команда IMAP"
-
-msgid "Request:"
-msgstr "Запрос:"
-
-msgid "No POP3 servers configured yet."
-msgstr "Серверы POP3 не настроены."
-
-msgid "Click here to go to the options page."
-msgstr "Нажмите здесь, чтобы перейти на страницу параметров."
-
-#, php-format
-msgid "Login OK: Inbox contains %s message"
-msgid_plural "Login OK: Inbox contains %s messages"
-msgstr[0] "Вход на сервер. Всего сообщений: %s"
-msgstr[1] "Вход на сервер. Всего сообщений: %s"
-msgstr[2] "Вход на сервер. Всего сообщений: %s"
-
-msgid "Width of popup window:"
-msgstr "Ширина всплывающего окна:"
-
-msgid "If set to 0, reverts to default value"
-msgstr "Если равна 0, используется значение по умолчанию"
-
-msgid "Height of popup window:"
-msgstr "Высота всплывающего окна:"
-
-msgid "uploaded media file"
-msgstr "загруженный звуковой файл:"
-
-msgid "none"
-msgstr "(нет)"
-
-msgid "Upload Media File:"
-msgstr "Загрузить звуковой файл:"
-
-msgid "Uploaded Media File:"
-msgstr "Загруженный звуковой файл:"
-
-msgid "unavailable"
-msgstr "н/д"
-
-#, php-format
-msgid "Media file %s will be removed, if you upload other media file."
-msgstr "Если загрузить новый звуковой файл, %s будет удален."
-
-msgid "Spam Service Type:"
-msgstr "Тип службы борьбы со спамом:"
-
-msgid "Free reporting"
-msgstr "Бесплатно"
-
-msgid "Member services"
-msgstr "Требуется регистрация"
-
-msgid "Save Service Type"
-msgstr "Сохранить тип службы"
-
-msgid "SpamCop reporting"
-msgstr "Отчет SpamCop"
-
-msgid "Translation Theme:"
-msgstr "Тема перевода:"
-
-msgid ""
-"Selected translation engine is disabled. Please update your translation "
-"preferences."
-msgstr "Выбранная система перевода выключена. Обновите параметры перевода."
-
-msgid "Translation Preferences"
-msgstr "Параметры перевода"
-
-msgid "Maximum of 25 kilobytes translated, powered by Systran"
-msgstr "Максимум 25 кбайт, система Systran"
-
-msgid "No known limits, powered by GPLTrans (free, open source)"
-msgstr "Без ограничений, система GPLTrans (открытый код)"
-
-msgid "Transliterate unknown words:"
-msgstr "Заменять незнакомые слова транслитерацией:"
-
-msgid "When composing:"
-msgstr "При написании:"
-
-msgid "Not yet functional, currently does nothing"
-msgstr "Данная функция еще не реализована"
-
 msgid "Delivery error report"
 msgstr "Сообщение об ошибке при доставке"
 
@@ -4688,4 +3477,545 @@ msgstr "Заголовки недоставленного сообщения"
 
 msgid "This image has been removed for security reasons"
 msgstr "Небезопасные изображения не показаны."
+
+#~ msgid "Email"
+#~ msgstr "Эл. почта"
+#~ msgid "Add to Addressbook"
+#~ msgstr "Добавить в адресную книгу"
+#~ msgid "Add to Address Book"
+#~ msgstr "Добавить в адресную книгу"
+#~ msgid "authentication failed "
+#~ msgstr "ошибка входа "
+#~ msgid "not available"
+#~ msgstr "недоступно"
+#~ msgid "About SquirrelMail %s"
+#~ msgstr "О SquirrelMail, версия %s"
+#~ msgid ""
+#~ "SquirrelMail is the name of the program that provides access to your "
+#~ "email via the web."
+#~ msgstr ""
+#~ "SquirrelMail - это название программы, с помощью которой вы работаете со "
+#~ "своей почтой в браузере."
+#~ msgid ""
+#~ "If you have questions about or problems with your mail account, "
+#~ "passwords, abuse etc, please refer to your system administrator or "
+#~ "provider%s."
+#~ msgstr ""
+#~ "Вопросы о своей учетной записи почты, паролях, злоупотреблениях и пр. "
+#~ "адресуйте своему системному администратору или провайдеру%s."
+#~ msgid ""
+#~ "They can assist you adequately with these issues. The SquirrelMail "
+#~ "Project Team cannot help you with that. The %shelp system%s provides "
+#~ "answers to frequently asked questions."
+#~ msgstr ""
+#~ "Именно они должны этим заниматься. Разработчики SquirrelMail не могут "
+#~ "помочь с этим. Ответы на многие вопросы приведены в %sсправочной системе%"
+#~ "s."
+#~ msgid ""
+#~ "SquirrelMail is a feature rich, standards compliant webmail application "
+#~ "written in PHP. It was made by a group of volunteers united in the "
+#~ "SquirrelMail Project Team and is released as open source, free software "
+#~ "under the %sGNU General Public License%s."
+#~ msgstr ""
+#~ "SquirrelMail - это полнофункциональный и отвечающий стандартам пакет веб-"
+#~ "почты, написанный на PHP. Группа разработчиков SquirrelMail развивает "
+#~ "этот проект программного обеспечения с открытыми исходными кодами и "
+#~ "выпускает его на условиях лицензии %sGNU General Public License%s."
+#~ msgid ""
+#~ "For more information about SquirrelMail and the SquirrelMail Project "
+#~ "Team, see %sthe SquirrelMail website%s."
+#~ msgstr ""
+#~ "Дополнительная инофрмация о SquirrelMail и разработчиках проекта доступна "
+#~ "на %sсайте SquirrelMail%s."
+#~ msgid "System information"
+#~ msgstr "Сведения о системе"
+#~ msgid "You are using SquirrelMail version: %s"
+#~ msgstr "Версия SquirrelMail - %s"
+#~ msgid "The administrator installed the following plugins:"
+#~ msgstr "Администратор включил следующие модули:"
+#~ msgid "none installed"
+#~ msgstr "нет"
+#~ msgid "No folders were found to unsubscribe from."
+#~ msgstr "Нет подписанных папок."
+#~ msgid "No folders were found to subscribe to."
+#~ msgstr "Нет папок, на которые можно подписаться."
+#~ msgid "Save folder tree"
+#~ msgstr "Сохранить дерево папок"
+#~ msgid "SquirrelMail Webmail Application"
+#~ msgstr "Веб-почта SquirrelMail"
+#~ msgid "Compose Preferences"
+#~ msgstr "Составление сообщений"
+#~ msgid ""
+#~ "Control the behaviour and layout of writing new mail messages, replying "
+#~ "to and forwarding messages."
+#~ msgstr ""
+#~ "Здесь настраивается внешний вид и макет новых сообщений, ответы и "
+#~ "пересылка писем."
+#~ msgid "Received"
+#~ msgstr "Получено"
+#~ msgid "As Attachment"
+#~ msgstr "вложением"
+#~ msgid "Bypass Trash"
+#~ msgstr "не в Корзину"
+#~ msgid "Please enter something to search for"
+#~ msgstr "Введите строку для поиска"
+#~ msgid "There must be at least one criteria to search for"
+#~ msgstr "Следует указать хотя бы один критерий поиска"
+#~ msgid "Error in criteria argument"
+#~ msgstr "Ошибка в аргументах критерия"
+#~ msgid "(Illegal date)"
+#~ msgstr "(недопустимая дата)"
+#~ msgid "(Wrong date)"
+#~ msgstr "(неверная дата)"
+#~ msgid "In"
+#~ msgstr "Искать в&nbsp; "
+#~ msgid "(Missing argument)"
+#~ msgstr "(отсутствует аргумент)"
+#~ msgid "(Spurious argument)"
+#~ msgstr "(избыточный аргумент)"
+#~ msgid "Fold"
+#~ msgstr "Свернуть"
+#~ msgid "Unfold"
+#~ msgstr "Развернуть"
+#~ msgid "Saved Searches"
+#~ msgstr "Хронология запросов"
+#~ msgid "Missing"
+#~ msgstr "Отсутствует"
+#~ msgid "and&nbsp;subfolders:"
+#~ msgstr "и&nbsp;подпапках:"
+#~ msgid "Exclude Criteria:"
+#~ msgstr "Исключающие критерии:"
+#~ msgid "Search Criteria"
+#~ msgstr "Критерии поиска"
+#~ msgid "Add New Criteria"
+#~ msgstr "Добавить критерии"
+#~ msgid "Remove Excluded Criteria"
+#~ msgstr "Удалить исключающие"
+#~ msgid "Remove All Criteria"
+#~ msgstr "Удалить все критерии"
+#~ msgid "Not"
+#~ msgstr "НЕ"
+#~ msgid "Answered"
+#~ msgstr "Отвеченные"
+#~ msgid "Before"
+#~ msgstr "До"
+#~ msgid "Message Body"
+#~ msgstr "Тело сообщений"
+#~ msgid "Deleted"
+#~ msgstr "Удаленные"
+#~ msgid "Draft"
+#~ msgstr "Черновики"
+#~ msgid "Flagged"
+#~ msgstr "Отмеченные"
+#~ msgid "Sent By"
+#~ msgstr "Отправленные"
+#~ msgid "Header Field"
+#~ msgstr "Заголовок"
+#~ msgid "Keyword"
+#~ msgstr "Ключевое слово"
+#~ msgid "Larger Than"
+#~ msgstr "Больше чем"
+#~ msgid "Old"
+#~ msgstr "Устаревшие"
+#~ msgid "On"
+#~ msgstr "Дата"
+#~ msgid "Recent"
+#~ msgstr "Недавние"
+#~ msgid "Seen"
+#~ msgstr "Просмотренные"
+#~ msgid "Sent Before"
+#~ msgstr "Отправленные до"
+#~ msgid "Sent On"
+#~ msgstr "Отправленные тогда-то"
+#~ msgid "Sent Since"
+#~ msgstr "Отправленные после"
+#~ msgid "Since"
+#~ msgstr "После"
+#~ msgid "Smaller Than"
+#~ msgstr "Меньше чем"
+#~ msgid "Subject Contains"
+#~ msgstr "Тема содержит"
+#~ msgid "Header and Body"
+#~ msgstr "Заголовок и тело"
+#~ msgid "Sent To"
+#~ msgstr "Отправленные кому"
+#~ msgid "And In"
+#~ msgstr "и в"
+#~ msgid "Or In"
+#~ msgstr "или в"
+#~ msgid "And"
+#~ msgstr "И"
+#~ msgid "Or"
+#~ msgstr "ИЛИ"
+#~ msgid "Standard search"
+#~ msgstr "Простой поиск"
+#~ msgid "Advanced search"
+#~ msgstr "Расширенный поиск"
+#~ msgid "Folder List"
+#~ msgstr "Список папок"
+#~ msgid "PHP install does not have LDAP support."
+#~ msgstr "В PHP отсутствует поддержка LDAP."
+#~ msgid "Illegal folder name."
+#~ msgstr "Недопустимое имя папки."
+#~ msgid "The name may not contain any of the following: %s"
+#~ msgstr "Следующие символы недопустимы в имени: %s"
+#~ msgid "Please select a different name."
+#~ msgstr "Укажите другое имя."
+#~ msgid "You have not selected a folder to subscribe. Please do so."
+#~ msgstr "Сначала выберите папку, на которую нужно подписаться."
+#~ msgid "You have not selected a folder to unsubscribe. Please do so."
+#~ msgstr "Сначала выберите уже подписанную папку."
+#~ msgid "Possible reason:"
+#~ msgstr "Возможная причина:"
+#~ msgid "ERROR: Bad function call."
+#~ msgstr "ОШИБКА: Неверный вызов функции."
+#~ msgid "Reason:"
+#~ msgstr "Причина:"
+#~ msgid ""
+#~ "TLS is enabled, but this version of PHP does not support TLS sockets, or "
+#~ "is missing the openssl extension."
+#~ msgstr ""
+#~ "TLS включен, но либо данная версия PHP не поддерживает сокеты TLS, либо "
+#~ "не включен модуль openssl."
+#~ msgid ""
+#~ "Your mailbox is not located at this server. Try a different server or "
+#~ "consult your system administrator"
+#~ msgstr ""
+#~ "Почтовый ящик не найден на этом сервере. Укажите другой сервер или "
+#~ "обратитесь к системному администратору."
+#~ msgid "Unknown recipient"
+#~ msgstr "Неизвестный адресат"
+#~ msgid "Unflag"
+#~ msgstr "Снять отметку"
+#~ msgid "Flag"
+#~ msgstr "Отметить"
+#~ msgid "Undelete"
+#~ msgstr "Отменить удаление"
+#~ msgid "General Message Composition"
+#~ msgstr "Параметры нового сообщения"
+#~ msgid "Replying and Forwarding Messages"
+#~ msgstr "Ответы и пересылка"
+#~ msgid "Strip signature when replying"
+#~ msgstr "Удалять подпись в ответах"
+#~ msgid "Enable Fancy Row Mouseover Highlighting"
+#~ msgstr "Подсвечивать строки при наведении мыши"
+#~ msgid "Message Flags Icon Theme"
+#~ msgstr "Тема значков отметок сообщений"
+#~ msgid "Show Flag / Unflag Buttons"
+#~ msgstr "Показать кнопки отметки / снятия"
+#~ msgid "Use Compact Page Selector"
+#~ msgstr "Использовать компактный выбор страницы"
+#~ msgid "Message Display Options"
+#~ msgstr "Параметры показа сообщений"
+#~ msgid "Show 'Delete & Prev/Next' Links"
+#~ msgstr "Показать ссылки 'Удалить и назад / далее'"
+#~ msgid "Save Replies with Original Message"
+#~ msgstr "Сохранять ответы вместе с исходным сообщением"
+#~ msgid "%d Minute"
+#~ msgid_plural "%d Minutes"
+#~ msgstr[0] "%d минута"
+#~ msgstr[1] "%d минуты"
+#~ msgstr[2] "%d минут"
+#~ msgid "Show only subscribed folders"
+#~ msgstr "Показать только подписанные папки"
+#~ msgid "XP"
+#~ msgstr "XP"
+#~ msgid "Hide SquirrelMail Header"
+#~ msgstr "Скрыть заголовок SquirrelMail"
+#~ msgid "Search functions"
+#~ msgstr "Возможности поиска"
+#~ msgid "Only basic search"
+#~ msgstr "Только простой поиск"
+#~ msgid "Only advanced search"
+#~ msgstr "Только расширенный поиск"
+#~ msgid "Both search functions"
+#~ msgstr "Оба вида поиска"
+#~ msgid "Show alternative language names"
+#~ msgstr "Показывать альтернативные названия языков"
+#~ msgid "Available languages"
+#~ msgstr "Доступные языки"
+#~ msgid "Enable aggressive decoding"
+#~ msgstr "Включить быстрое декодирование"
+#~ msgid "Tweaks"
+#~ msgstr "Специальные возможности"
+#~ msgid "Use advanced tree folder listing"
+#~ msgstr "Использовать новый вид списка папок"
+#~ msgid "Use icons"
+#~ msgstr "Использовать значки"
+#~ msgid "Use PHP recode functions"
+#~ msgstr "Использовать функцию recode PHP"
+#~ msgid "Use PHP iconv functions"
+#~ msgstr "Использовать функцию iconv PHP"
+#~ msgid "Allow remote configuration test"
+#~ msgstr "Разрешить проверку конфигурации по сети"
+#~ msgid "Show System Specifications"
+#~ msgstr "Показать сведения о системе"
+#~ msgid "Search Mailing List Archives"
+#~ msgstr "Поиск в архивах рассылок"
+#~ msgid "Search SourceForge Bugtracker"
+#~ msgstr "Поиск в SourceForge Bugtracker"
+#~ msgid "Search for words:"
+#~ msgstr "Искать слова:"
+#~ msgid "Written by:"
+#~ msgstr "Написано:"
+#~ msgid "Email addresses only"
+#~ msgstr "Только эл. адреса"
+#~ msgid "Mailing list:"
+#~ msgstr "Список рассылки:"
+#~ msgid "SquirrelMail users list"
+#~ msgstr "Рассылка пользователей SquirrelMail"
+#~ msgid "SquirrelMail plugins list"
+#~ msgstr "Рассылка модулей SquirrelMail"
+#~ msgid "SquirrelMail developers list"
+#~ msgstr "Рассылка разработчиков SquirrelMail"
+#~ msgid "SquirrelMail internationalization list"
+#~ msgstr "Рассылка локализации SquirrelMail"
+#~ msgid "Sort by:"
+#~ msgstr "Сортировать по:"
+#~ msgid "Relevance"
+#~ msgstr "Значимости"
+#~ msgid "Search Archives"
+#~ msgstr "Поиск в архивах"
+#~ msgid "Reset Form"
+#~ msgstr "Сбросить форму"
+#~ msgid "Summary keyword:"
+#~ msgstr "Ключевое слово:"
+#~ msgid "Sort By:"
+#~ msgstr "Сортировать по:"
+#~ msgid "ID"
+#~ msgstr "Номеру"
+#~ msgid "Summary"
+#~ msgstr "Краткому содержанию"
+#~ msgid "Open Date"
+#~ msgstr "Дате открытия"
+#~ msgid "Close Date"
+#~ msgstr "Дате закрытия"
+#~ msgid "Submitter"
+#~ msgstr "Автору"
+#~ msgid "Assignee"
+#~ msgstr "Ответственному"
+#~ msgid "Order:"
+#~ msgstr "Порядок:"
+#~ msgid "Ascending"
+#~ msgstr "По возрастанию"
+#~ msgid "Descending"
+#~ msgstr "По убыванию"
+#~ msgid "Search Bugtracker"
+#~ msgstr "Поиск в Bugtracker"
+#~ msgid "You must type in a new password."
+#~ msgstr "Введите новый пароль."
+#~ msgid "You must also type in your new password in the verify box."
+#~ msgstr "Введите новый пароль в поле повтора пароля."
+#~ msgid "Your new password does not match the verify password."
+#~ msgstr "Пароли не совпадают."
+#~ msgid "You must type in your current password."
+#~ msgstr "Введите текущий пароль."
+#~ msgid "Your current password is not correct."
+#~ msgstr "Текущий пароль введен неверно."
+#~ msgid "Your new password should be %s to %s characters long."
+#~ msgstr "Новый пароль содержать от %s до %s символов."
+#~ msgid "Your new password contains invalid characters."
+#~ msgstr "Новый пароль содержит недопустимые символы."
+#~ msgid "Change Password"
+#~ msgstr "Изменить пароль"
+#~ msgid "Current Password:"
+#~ msgstr "Текущий пароль:"
+#~ msgid "New Password:"
+#~ msgstr "Новый пароль:"
+#~ msgid "Verify New Password:"
+#~ msgstr "Новый пароль (повторно):"
+#~ msgid "Use this to change your email password."
+#~ msgstr "Здесь можно изменить пароль электронной почты."
+#~ msgid "User's Password"
+#~ msgstr "Пароль"
+#~ msgid "Current configuration requires LDAP support in PHP."
+#~ msgstr "Текущая конфигурация требует поддержки LDAP в PHP."
+#~ msgid "Plugin is not configured correctly."
+#~ msgstr "Модуль работает с ошибками."
+#~ msgid "Setting of LDAP connection option %s to value %s failed."
+#~ msgstr "Не удалось задать опцию LDAP %s равной %s. "
+#~ msgid "Incorrect LDAP connection option: %s"
+#~ msgstr "Недопустимая опция соединения LDAP: %s"
+#~ msgid ""
+#~ "Current PHP LDAP extension does not allow use of ldap_set_option() "
+#~ "function."
+#~ msgstr ""
+#~ "В данной версии PHP расширение LDAP не допускает вызов функции "
+#~ "ldap_set_option()."
+#~ msgid "Unable to use TLS."
+#~ msgstr "Не удается работать с TLS."
+#~ msgid "Error: %s"
+#~ msgstr "Ошибка: %s"
+#~ msgid "Unable to use LDAP TLS in current setup."
+#~ msgstr "В текущей конфигурации TLS для LDAP не поддерживается."
+#~ msgid "Unable to bind to LDAP server."
+#~ msgstr "Не удается связаться с сервером LDAP."
+#~ msgid "Server replied: %s"
+#~ msgstr "Ответ сервера: %s"
+#~ msgid "Unable to find user's password attribute."
+#~ msgstr "Атрибут пользовательского пароля не найден."
+#~ msgid "Unable to rebind to LDAP server."
+#~ msgstr "Не удается повторно связаться с сервером LDAP."
+#~ msgid "LDAP server uses different attribute to store user's password."
+#~ msgstr ""
+#~ "Сервер LDAP использует другой атрибут для хранения пользовательского "
+#~ "пароля."
+#~ msgid "Unable to connect to LDAP server."
+#~ msgstr "Подключение к серверу LDAP не выполнено."
+#~ msgid "Unable to find user's DN."
+#~ msgstr "Не удается найти DN пользователя."
+#~ msgid "Search error."
+#~ msgstr "Ошибка поиска."
+#~ msgid "Multiple userid matches found."
+#~ msgstr "Найдено несколько совпадающих userid."
+#~ msgid "ldap_get_dn error."
+#~ msgstr "Ошибка ldap_get_dn."
+#~ msgid "Unsupported crypto: %s"
+#~ msgstr "Неизвестный шифр: %s"
+#~ msgid "PHP mhash extension is missing."
+#~ msgstr "Отсутствует расширение PHP mhash."
+#~ msgid "System crypt library doesn't support standard DES crypt."
+#~ msgstr "Библиотека crypt не поддерживает стандартный шифр DES."
+#~ msgid "System crypt library doesn't have MD5 support."
+#~ msgstr "Библиотека crypt не поддерживает шифр MD5."
+#~ msgid "System crypt library doesn't support extended DES crypt."
+#~ msgstr "Библиотека crypt не поддерживает расширенный шифр DES."
+#~ msgid "System crypt library doesn't have Blowfish support."
+#~ msgstr "Библиотека crypt не поддерживает шифр Blowfish."
+#~ msgid "unknown"
+#~ msgstr "неизв."
+#~ msgid "Unable to validate user's password."
+#~ msgstr "Не удается проверить пароль пользователя."
+#~ msgid "Blowfish is not supported by webserver's system crypt library."
+#~ msgstr "Blowfish не поддерживается библиотекой шифрования веб-сервера."
+#~ msgid "MD5 is not supported by webserver's system crypt library."
+#~ msgstr "MD5 не поддерживается библиотекой шифрования веб-сервера."
+#~ msgid ""
+#~ "Extended DES crypt is not supported by webserver's system crypt library."
+#~ msgstr ""
+#~ "Расширенный DES не поддерживается библиотекой шифрования веб-сервера."
+#~ msgid ""
+#~ "Standard DES crypt is not supported by webserver's system crypt library."
+#~ msgstr ""
+#~ "Стандартный DES не поддерживается библиотекой шифрования веб-сервера."
+#~ msgid "PHP Curl extension is NOT available! Unable to change password!"
+#~ msgstr "Модуль curl PHP не найден. Изменение пароля невозможно."
+#~ msgid "Cannot change password! (Is user 'Self Configurable User' ?) (401)"
+#~ msgstr "Не удается изменить пароль. Проверьте, разрешено ли это. (401)"
+#~ msgid "Cannot change password!"
+#~ msgstr "Пароль не был изменен."
+#~ msgid "Cannot connect to Database Server, please try later!"
+#~ msgstr "Не удалось соединиться с сервером базы данных. Попробуйте еще раз."
+#~ msgid "Database not found on server"
+#~ msgstr "Не найдена база данных на сервере"
+#~ msgid "SQL call failed, try again later."
+#~ msgstr "Ошибка запроса SQL. Повторите попытку позже."
+#~ msgid "Duplicate login entries detected, cannot change password!"
+#~ msgstr "Пароль не был изменен. Найдены совпадающие имена пользователей."
+#~ msgid "Password change was not successful!"
+#~ msgstr "Пароль не был изменен."
+#~ msgid "Closing Connection"
+#~ msgstr "Закрытие соединения"
+#~ msgid "Connecting to Password Server"
+#~ msgstr "Подключение к серверу паролей"
+#~ msgid "No valid backend defined."
+#~ msgstr "Не указана базовая программа."
+#~ msgid "Incorrent path to vmail.inc file."
+#~ msgstr "Неверный путь к файлу vmail.inc."
+#~ msgid "Invalid or corrupted vmail.inc file."
+#~ msgstr "Файл vmail.inc поврежден."
+#~ msgid "Invalid user."
+#~ msgstr "Недопустимый пользователь."
+#~ msgid "Empty domain"
+#~ msgstr "Пустой домен"
+#~ msgid "Empty domain password"
+#~ msgstr "Пустой пароль домена"
+#~ msgid "Empty username"
+#~ msgstr "Пустое имя пользователя"
+#~ msgid "Empty new password"
+#~ msgstr "Пустой пароль"
+#~ msgid "Server Capability response:"
+#~ msgstr "Возможности сервера:"
+#~ msgid ""
+#~ "Select the IMAP commands you would like to run. Most commands require a "
+#~ "selected mailbox so the select command is already setup. You can clear "
+#~ "all the commands and test your own IMAP command strings. The commands are "
+#~ "executed in order. The default values are simple IMAP commands using your "
+#~ "default_charset and folder_prefix from SquirrelMail when needed."
+#~ msgstr ""
+#~ "Выберите команды IMAP, которые требуется запустить. Для большинства "
+#~ "команд требуется выбранный почтовый ящик, поэтому команда select уже "
+#~ "указана. Можно очистить поле ввода и ввести свои команды IMAP. Команды "
+#~ "будут выполняться в указанном порядке. Команды по умолчанию - это "
+#~ "стандартные команды IMAP, использующие кодировку по умолчанию и префикс "
+#~ "папок SquirrelMail, где это необходимо."
+#~ msgid ""
+#~ "NOTE: These commands are live, any changes made will effect your current "
+#~ "email account."
+#~ msgstr ""
+#~ "Предупреждение: Эти команды будут выполняться именно с вашим почтовым "
+#~ "ящиком."
+#~ msgid "Select"
+#~ msgstr "Select"
+#~ msgid "Test Name"
+#~ msgstr "Имя теста"
+#~ msgid "IMAP command string"
+#~ msgstr "Команда IMAP"
+#~ msgid "Request:"
+#~ msgstr "Запрос:"
+#~ msgid "No POP3 servers configured yet."
+#~ msgstr "Серверы POP3 не настроены."
+#~ msgid "Click here to go to the options page."
+#~ msgstr "Нажмите здесь, чтобы перейти на страницу параметров."
+#~ msgid "Login OK: Inbox contains %s message"
+#~ msgid_plural "Login OK: Inbox contains %s messages"
+#~ msgstr[0] "Вход на сервер. Всего сообщений: %s"
+#~ msgstr[1] "Вход на сервер. Всего сообщений: %s"
+#~ msgstr[2] "Вход на сервер. Всего сообщений: %s"
+#~ msgid "Width of popup window:"
+#~ msgstr "Ширина всплывающего окна:"
+#~ msgid "If set to 0, reverts to default value"
+#~ msgstr "Если равна 0, используется значение по умолчанию"
+#~ msgid "Height of popup window:"
+#~ msgstr "Высота всплывающего окна:"
+#~ msgid "uploaded media file"
+#~ msgstr "загруженный звуковой файл:"
+#~ msgid "none"
+#~ msgstr "(нет)"
+#~ msgid "Upload Media File:"
+#~ msgstr "Загрузить звуковой файл:"
+#~ msgid "Uploaded Media File:"
+#~ msgstr "Загруженный звуковой файл:"
+#~ msgid "unavailable"
+#~ msgstr "н/д"
+#~ msgid "Media file %s will be removed, if you upload other media file."
+#~ msgstr "Если загрузить новый звуковой файл, %s будет удален."
+#~ msgid "Spam Service Type:"
+#~ msgstr "Тип службы борьбы со спамом:"
+#~ msgid "Free reporting"
+#~ msgstr "Бесплатно"
+#~ msgid "Member services"
+#~ msgstr "Требуется регистрация"
+#~ msgid "Save Service Type"
+#~ msgstr "Сохранить тип службы"
+#~ msgid "SpamCop reporting"
+#~ msgstr "Отчет SpamCop"
+#~ msgid "Translation Theme:"
+#~ msgstr "Тема перевода:"
+#~ msgid ""
+#~ "Selected translation engine is disabled. Please update your translation "
+#~ "preferences."
+#~ msgstr "Выбранная система перевода выключена. Обновите параметры перевода."
+#~ msgid "Translation Preferences"
+#~ msgstr "Параметры перевода"
+#~ msgid "Maximum of 25 kilobytes translated, powered by Systran"
+#~ msgstr "Максимум 25 кбайт, система Systran"
+#~ msgid "No known limits, powered by GPLTrans (free, open source)"
+#~ msgstr "Без ограничений, система GPLTrans (открытый код)"
+#~ msgid "Transliterate unknown words:"
+#~ msgstr "Заменять незнакомые слова транслитерацией:"
+#~ msgid "When composing:"
+#~ msgstr "При написании:"
+#~ msgid "Not yet functional, currently does nothing"
+#~ msgstr "Данная функция еще не реализована"
 
