@@ -1,13 +1,12 @@
 <?php
 
 /**
- * addressbook.php
+ * functions/addressbook.php - Functions and classes for the addressbook system
  *
- * Copyright (c) 1999-2006 The SquirrelMail Project Team
- * Licensed under the GNU GPL. For full terms see the file COPYING.
+ * Functions require SM_PATH and support of forms.php functions
  *
- * Functions and classes for the addressbook system.
- *
+ * @copyright &copy; 1999-2006 The SquirrelMail Project Team
+ * @license http://opensource.org/licenses/gpl-license.php GNU Public License
  * @version $Id$
  * @package squirrelmail
  * @subpackage addressbook

@@ -3,12 +3,11 @@
 /**
  * mailbox_display.php
  *
- * Copyright (c) 1999-2006 The SquirrelMail Project Team
- * Licensed under the GNU GPL. For full terms see the file COPYING.
- *
  * This contains functions that display mailbox information, such as the
  * table row that has sender, date, subject, etc...
  *
+ * @copyright &copy; 1999-2006 The SquirrelMail Project Team
+ * @license http://opensource.org/licenses/gpl-license.php GNU Public License
  * @version $Id$
  * @package squirrelmail
  */

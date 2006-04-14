@@ -1,18 +1,17 @@
 <?php
+
 /**
  * SquirrelMail internal gettext functions
  *
- * Copyright (c) 1999-2006 The SquirrelMail Project Team
- * Licensed under the GNU GPL. For full terms see the file COPYING.
- *
- * Alternate to the system's built-in gettext.
- * relies on .po files (can't read .mo easily).
- * Uses the session for caching (speed increase)
- * Possible use in other PHP scripts?  The only SM-specific thing is
- *   $sm_language, I think
+ * Alternate to the system's built-in gettext. Relies on .po files (can't read
+ * .mo easily). Uses the session for caching (speed increase). Possible use in
+ * other PHP scripts? The only SM-specific thing is $sm_language, I think.
  *
  * @link http://www.php.net/gettext Original php gettext manual
+ * @copyright &copy; 1999-2006 The SquirrelMail Project Team
+ * @license http://opensource.org/licenses/gpl-license.php GNU Public License
  * @version $Id$
+ * @since 1.1.2
  * @package squirrelmail
  * @subpackage i18n
  */

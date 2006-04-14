@@ -1,16 +1,20 @@
 <?php
+
 /**
- * forms.php
- *
- * Copyright (c) 2004-2006 The SquirrelMail Project Team
- * Licensed under the GNU GPL. For full terms see the file COPYING.
+ * forms.php - html form functions
  *
  * Functions to build HTML forms in a safe and consistent manner.
  * All name, value attributes are htmlentitied.
  *
+ * @link http://www.section508.gov/ Section 508
+ * @link http://www.w3.org/WAI/ Web Accessibility Initiative (WAI)
+ * @link http://www.w3.org/TR/html4/ W3.org HTML 4.01 form specs
+ * @copyright &copy; 2004-2006 The SquirrelMail Project Team
+ * @license http://opensource.org/licenses/gpl-license.php GNU Public License
  * @version $Id$
  * @package squirrelmail
  * @subpackage forms
+ * @since 1.4.3 and 1.5.1
  */
 
 /**

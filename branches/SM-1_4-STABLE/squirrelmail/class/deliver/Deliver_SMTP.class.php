@@ -3,7 +3,7 @@
 /**
  * Deliver_SMTP.class.php
  *
- * Delivery backend for the Deliver class.
+ * SMTP delivery backend for the Deliver class.
  *
  * @copyright &copy; 1999-2006 The SquirrelMail Project Team
  * @license http://opensource.org/licenses/gpl-license.php GNU Public License

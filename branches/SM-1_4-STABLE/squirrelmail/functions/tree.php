@@ -3,12 +3,11 @@
 /**
  * tree.php
  *
- * Copyright (c) 1999-2006 The SquirrelMail Project Team
- * Licensed under the GNU GPL. For full terms see the file COPYING.
+ * This file provides functions to walk trees of folders, for
+ * instance to delete a whole tree.
  *
- * This code provides various string manipulation functions that are
- * used by the rest of the Squirrelmail code.
- *
+ * @copyright &copy; 1999-2006 The SquirrelMail Project Team
+ * @license http://opensource.org/licenses/gpl-license.php GNU Public License
  * @version $Id$
  * @package squirrelmail
  */
