@@ -8,11 +8,11 @@ Version 1.4.7 - CVS
   - Security: Possible cookie theft in src/redirect.php if
     register_globals is enabled, and malicous site is running
     in same domain.
-  - Issue loading options page always loaded the prefs 
+  - Fixed that loading the options page always loaded the prefs
     initial_value on display, instead of the users' value.
   - Enabled Ukrainian translation after updates by Serhij Dubyk.
   - Fixed from address in case of MDN receipts (patch from Dimitar Pashev).
-  - Correct variable typo, causing Bogus sequence in FETCH errors.
+  - Correct variable typo, causing Bogus sequence in FETCH errors (#1460338).
   - Reduce references header in a smart way to avoid "header too long"
     errors from SMTP servers in really long threads (#1167754, #1465342).
 
