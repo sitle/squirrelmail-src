@@ -13,6 +13,8 @@ Version 1.4.7 - CVS
   - Enabled Ukrainian translation after updates by Serhij Dubyk.
   - Fixed from address in case of MDN receipts (patch from Dimitar Pashev).
   - Correct variable typo, causing Bogus sequence in FETCH errors.
+  - Reduce references header in a smart way to avoid "header too long"
+    errors from SMTP servers in really long threads (#1167754, #1465342).
 
 Version 1.4.6 - 23 February 2006
 --------------------------------
