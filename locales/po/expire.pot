@@ -6,8 +6,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: expire 1.2.1\n"
-"POT-Creation-Date: 2006-02-12 10:24+0200\n"
+"Project-Id-Version: expire 1.3\n"
+"Report-Msgid-Bugs-To: Florian Daeumling <jam@qv90.de>\n"
+"POT-Creation-Date: 2006-04-14 18:15+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <squirrelmail-i18n@lists.sourceforge.net>\n"
@@ -24,8 +25,8 @@ msgstr ""
 msgid "Cannot create option directory!"
 msgstr ""
 
-#: functions.php:42 functions.php:49 functions.php:55 functions.php:81
-#: functions.php:166 functions.php:172 functions.php:215
+#: functions.php:42 functions.php:49 functions.php:55 functions.php:173
+#: functions.php:179 functions.php:222
 msgid "Please contact system administrator."
 msgstr ""
 
@@ -33,67 +34,71 @@ msgstr ""
 msgid "Cannot create option file!"
 msgstr ""
 
-#: functions.php:54 functions.php:171
+#: functions.php:54 functions.php:178
 msgid "Cannot create temporary file!"
 msgstr ""
 
-#: functions.php:80 functions.php:165
-msgid "Cannot read option file!"
-msgstr ""
-
-#: functions.php:96
+#: functions.php:92
 msgid "Expiration"
 msgstr ""
 
-#: functions.php:102 functions.php:121
+#: functions.php:98 functions.php:117
 msgid "Expire emails in folder"
 msgstr ""
 
-#: functions.php:104 functions.php:123
+#: functions.php:100 functions.php:119
 msgid "Select a folder"
 msgstr ""
 
-#: functions.php:108
+#: functions.php:104
 msgid "after"
 msgstr ""
 
-#: functions.php:110
+#: functions.php:106
 msgid "days"
 msgstr ""
 
-#: functions.php:114
+#: functions.php:110
 msgid "Define"
 msgstr ""
 
-#: functions.php:126
+#: functions.php:122
 #, php-format
 msgid "%s after %s days"
 msgstr ""
 
-#: functions.php:131
+#: functions.php:127
 msgid "Delete"
 msgstr ""
 
-#: functions.php:139
+#: functions.php:135
 msgid "Error"
 msgstr ""
 
-#: functions.php:183
+#: functions.php:160
+msgid "This folder definition cannot be modified"
+msgstr ""
+
+#: functions.php:172
+msgid "Cannot read option file!"
+msgstr ""
+
+#: functions.php:190
 #, php-format
 msgid "Expiration modified successfully for folder %s."
 msgstr ""
 
-#: functions.php:196
+#: functions.php:203
 #, php-format
 msgid "Expiration deleted successfully for folder %s."
 msgstr ""
 
-#: functions.php:205
+#: functions.php:212
 #, php-format
 msgid "Expiration set successfully for folder %s."
 msgstr ""
 
-#: functions.php:214
+#: functions.php:221
 msgid "Cannot replace option file!"
 msgstr ""
 
