@@ -6,14 +6,70 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: ldapquery 2.0\n"
-"POT-Creation-Date: 2005-03-17 19:32+0200\n"
+"Project-Id-Version: ldapquery 2.1\n"
+"Report-Msgid-Bugs-To: Tomas Kuliavas <tokul@users.sourceforge.net>\n"
+"POT-Creation-Date: 2006-03-26 17:23+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <squirrelmail-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
+
+#: addressbook.php:64
+msgid "Personal address book is not available."
+msgstr ""
+
+#. checked email field
+#: addressbook.php:71
+msgid "Email address is not set or empty."
+msgstr ""
+
+#. checked both name fields
+#: addressbook.php:74
+msgid "Name is not set or empty."
+msgstr ""
+
+#: addressbook.php:80
+#, php-format
+msgid "Nickname %s is already in use."
+msgstr ""
+
+#: addressbook.php:82
+msgid "Can't create address book entry."
+msgstr ""
+
+#: addressbook.php:94
+msgid "Nickname: "
+msgstr ""
+
+#: addressbook.php:97
+msgid "First name: "
+msgstr ""
+
+#: addressbook.php:100
+msgid "Last name: "
+msgstr ""
+
+#: addressbook.php:103
+msgid "E-mail: "
+msgstr ""
+
+#: addressbook.php:106
+msgid "Info: "
+msgstr ""
+
+#: addressbook.php:109
+msgid "Add address"
+msgstr ""
+
+#: addressbook.php:113
+msgid "Address book entry is saved."
+msgstr ""
+
+#: addressbook.php:120
+msgid "Return to search results"
+msgstr ""
 
 #: class.schema.php:43
 #, php-format
@@ -29,79 +85,95 @@ msgstr ""
 msgid "Any"
 msgstr ""
 
-#: functions.php:86
+#: functions.php:97
 msgid "Directory"
 msgstr ""
 
-#: functions.php:105 functions.php:150
+#: functions.php:116 functions.php:161
 msgid "Directory Preferences"
 msgstr ""
 
-#: functions.php:107
+#: functions.php:118
 msgid ""
 "These settings control what type of output you will see when you use the "
 "Directory link to search Directory Services."
 msgstr ""
 
-#: functions.php:270 functions.php:339
+#: functions.php:281 functions.php:350
 msgid "No records found"
 msgstr ""
 
-#: functions.php:532
+#: functions.php:553
 msgid "Save"
 msgstr ""
 
-#: functions.php:534
+#: functions.php:555
 msgid "Add to address book"
 msgstr ""
 
+#: functions.php:577
+msgid "Plugin requires PHP with LDAP support."
+msgstr ""
+
+#: functions.php:579
+msgid "LDAP address books are not configured in SquirrelMail configuration."
+msgstr ""
+
 #. Get the userdn to authenticate with
-#: ldapquery.php:47
+#: ldapquery.php:59
 msgid "User DN:"
 msgstr ""
 
 #. Get the user password
-#: ldapquery.php:51
+#: ldapquery.php:63
 msgid "Password:"
 msgstr ""
 
 #. Get the objectclass the user wants to search for
-#: ldapquery.php:57
+#: ldapquery.php:69
 msgid "Search For:"
 msgstr ""
 
 #. Get the attribute the user wants to search by
-#: ldapquery.php:69
+#: ldapquery.php:81
 msgid "Where:"
 msgstr ""
 
-#: ldapquery.php:94 ldapquery.php:96
+#: ldapquery.php:106 ldapquery.php:108
 msgid "Contains"
 msgstr ""
 
-#: ldapquery.php:98 ldapquery.php:100
+#: ldapquery.php:110 ldapquery.php:112
 msgid "Is"
 msgstr ""
 
 #. Sort By menu
-#: ldapquery.php:109
+#: ldapquery.php:121
 msgid "Sort By:"
 msgstr ""
 
-#: ldapquery.php:124
+#: ldapquery.php:136
+msgid "Search in:"
+msgstr ""
+
+#: ldapquery.php:141
+msgid "All LDAP address books"
+msgstr ""
+
+#: ldapquery.php:158
 msgid "Search"
 msgstr ""
 
-#: ldapquery.php:131
+#: ldapquery.php:165
 msgid "Search Results"
 msgstr ""
 
-#: ldapquery.php:135
+#: ldapquery.php:169
 #, php-format
 msgid "Comparetype is %s"
 msgstr ""
 
-#: ldapquery.php:155
+#: ldapquery.php:189
 #, php-format
 msgid "QUERY is %s"
 msgstr ""
@@ -111,57 +183,57 @@ msgstr ""
 #. * Example output "Querying: ldap-server-address on port some-port with base ldap-base-dn"
 #. * See http://www.php.net/sprintf if you want to rearrange order of arguments
 #.
-#: ldapquery.php:189
+#: ldapquery.php:227
 #, php-format
 msgid "Querying: %s on port %d with base %s"
 msgstr ""
 
-#: ldapquery.php:196
+#: ldapquery.php:234
 #, php-format
 msgid "Could not connect to LDAP server %s"
 msgstr ""
 
-#: ldapquery.php:206 ldapquery.php:211 ldapquery.php:216
+#: ldapquery.php:244 ldapquery.php:249 ldapquery.php:254
 msgid "Unable to bind to LDAP server"
 msgstr ""
 
-#: ldapquery.php:228
+#: ldapquery.php:266
 msgid "Nothing found!"
 msgstr ""
 
-#: ldapquery.php:236
+#: ldapquery.php:274
 #, php-format
 msgid "output type is %s"
 msgstr ""
 
-#: ldapquery.php:237
+#: ldapquery.php:275
 #, php-format
 msgid "output sorted by %s"
 msgstr ""
 
-#: options.php:35
+#: options.php:43
 msgid "Options - Directory Preferences"
 msgstr ""
 
-#: options.php:41
+#: options.php:49
 msgid "Output types can be:"
 msgstr ""
 
-#: options.php:44 options.php:54
+#: options.php:52 options.php:62
 msgid "One Table"
 msgstr ""
 
-#: options.php:45
+#: options.php:53
 msgid ""
 "One big table with one row per record found and each selected attribute as a "
 "separate column."
 msgstr ""
 
-#: options.php:46 options.php:55
+#: options.php:54 options.php:63
 msgid "Multiple Tables"
 msgstr ""
 
-#: options.php:47
+#: options.php:55
 msgid ""
 "One table per record found with 2 columns for each table. One column "
 "contains attribute names and the 2nd column shows values for each "
@@ -170,15 +242,15 @@ msgid ""
 "with no spaces (like labeledurl)."
 msgstr ""
 
-#: options.php:52
+#: options.php:60
 msgid "Select Output Type:"
 msgstr ""
 
-#: options.php:60
+#: options.php:68
 msgid "Select Displayed Fields"
 msgstr ""
 
-#: options.php:68
+#: options.php:76
 msgid "Submit"
 msgstr ""
 
