@@ -1078,7 +1078,7 @@ PHP mhash functions. If PHP mhash extension is not present, interface uses own
 hmac_md5 implementation.
 
 In some cases SquirrelMail can take advantage of PHP recode or iconv
-functions. These functions can be used to speedup decoding of Eastern charsets.
+functions. These functions can be used to speedup decoding of CJK charsets.
 
 <sect1>IMAP server extensions
 <p>
@@ -1089,9 +1089,16 @@ script.
 Options can be enabled in SquirrelMail configuration utility:
 <tscreen><verb>
 4. General Options
-  11. Allow server thread sort: false (default) &gt; true
   12. Allow server-side sorting: false (default) &gt; true
 </verb></tscreen>
+
+SquirrelMail also allows to turn on server side threading support. This option 
+allows end users to use threaded sorting. Threaded sorting requires more system
+resources and you should enable it only if you want to provide such option to
+end users.
+
+SquirrelMail 1.5.1 and newer versions automatically turn on server side sorting
+if SORT or THREAD extension is declared in IMAP CAPABILITY response.
 
 Server side sorting can cause problems in SquirrelMail only when IMAP server
 does not support charset used by selected SquirrelMail translation. SquirrelMail
