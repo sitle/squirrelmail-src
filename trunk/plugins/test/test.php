@@ -16,11 +16,11 @@ if (file_exists('../../include/init.php')) {
     define('SM_PATH', '../../');
     include_once(SM_PATH . 'include/validate.php');
 } else {
-    // TODO: check sm 1.2.x
-    include_once('../../src/validate.php');
+    chdir('..');
+    include_once('../src/validate.php');
 }
 
-displayPageHeader('Tests',$color);
+displayPageHeader($color,'none');
 ?>
 <p><a href="decodeheader.php">decodeHeader() test</a></p>
 </body></html>

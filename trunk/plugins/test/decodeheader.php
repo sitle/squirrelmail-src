@@ -18,11 +18,12 @@ if (file_exists('../../include/init.php')) {
     include_once(SM_PATH . 'include/validate.php');
     include_once(SM_PATH . 'functions/mime.php');
 } else {
-    // TODO: test with sm 1.2.x
-    include_once('../../src/validate.php');
+    chdir('..');
+    include_once('../src/validate.php');
+    include_once('../functions/mime.php');
 }
 
-displayPageHeader('decodeHeader',$color);
+displayPageHeader($color,'none');
 
 $header = array("< &  \xC3", // plain text
                 '=?iso-8859-1?Q?=3C_&__=C3?=', // Q encoding
