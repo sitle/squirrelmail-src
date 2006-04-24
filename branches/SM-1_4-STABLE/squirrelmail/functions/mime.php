@@ -645,8 +645,8 @@ function decodeHeader ($string, $utfencode=true,$htmlsave=true,$decide=false) {
                 case 'B':
                     $replace = base64_decode($res[4]);
                     if ($can_be_encoded) {
-                        // string is converted from one charset to another and sanitized
-                        $replace =  charset_convert($res[2],$replace,$default_charset);
+                        // string is converted from one charset to another. sanitizing depends on $htmlsave
+                        $replace =  charset_convert($res[2],$replace,$default_charset,$htmlsave);
                     } elseif ($utfencode) {
                         // string is converted to htmlentities and sanitized
                         $replace = charset_decode($res[2],$replace);
@@ -661,8 +661,8 @@ function decodeHeader ($string, $utfencode=true,$htmlsave=true,$decide=false) {
                     $replace = preg_replace('/=([0-9a-f]{2})/ie', 'chr(hexdec("\1"))',
                             $replace);
                     if ($can_be_encoded) {
-                        // string is converted from one charset to another and sanitized
-                        $replace = charset_convert($res[2], $replace,$default_charset);
+                        // string is converted from one charset to another. sanitizing depends on $htmlsave
+                        $replace = charset_convert($res[2], $replace,$default_charset,$htmlsave);
                     } elseif ($utfencode) {
                         // string is converted to html entities and sanitized
                         $replace = charset_decode($res[2], $replace);
