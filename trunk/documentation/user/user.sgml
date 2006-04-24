@@ -39,11 +39,11 @@ Document version: $Revision$
 
 <sect>SquirrelMail overview
 <p>
-SquirrelMail is a standards-based webmail package written in PHP4. It includes 
+SquirrelMail is a standards-based webmail package written in PHP4. It includes
 built-in pure PHP support for the IMAP and SMTP protocols, and all pages render
 in pure HTML 4.0 (with no JavaScript required) for maximum compatibility across
-browsers. It has very few requirements and is very easy to configure and 
-install. SquirrelMail has all the functionality you would want from an email 
+browsers. It has very few requirements and is very easy to configure and
+install. SquirrelMail has all the functionality you would want from an email
 client, including strong MIME support, address books, and folder manipulation.
 
 <sect>Using SquirrelMail
@@ -63,27 +63,27 @@ Chances are you have been directed here for one of the following reasons.
   <item>You are an ISP investigating spam levels.
 </itemize>
 
-If either of the above apply, chances are you have been caught in the latest
-attempts at spam to fool anti-spam measures. A lot of spam has forged
-headers. This means that they take pretend values, and substitute them to ill
-effect. For example, replacing the From: address with your email address (or a
-made up email). This can also apply to the other headers as well. This is
-leading to cases of SquirrelMail being accused of sending spam, or our servers
-being hacked. Rest assured, our servers are safe. In actual fact, we don't run
-any servers at SquirrelMail.org. We do not even run mail services here, just
-supplying our own software on a hosted service from 
-<url url="http://sourceforge.net" name="SourceForge">.
+If either of the above applies, chances are you have been caught in the latest
+attempts at spam to fool anti-spam measures. A lot of spam has forged headers.
+This means that they take pretend values, and substitute them to ill effect.
+For example, replacing the from address with your email address (or a made up
+address). This can also apply to the other headers as well. This is leading to
+cases of SquirrelMail being accused of sending spam, or our servers being
+hacked. Rest assured -- our servers are safe. In actual fact, we don't run any
+servers at SquirrelMail.org. We do not even run mail services here, just
+supplying our own software on a hosted service from <url
+url="http://sourceforge.net" name="SourceForge">.
 
 So you may be wondering why all this mail is coming from us? Well to be honest
 it isn't. Some people have developed software that pretends to be our software,
-and is producing a lot of noise on the Internet containing such
-information. This is leading people to think our software is unsafe, or is
-acting as a spam service.
+and is producing a lot of noise on the Internet containing such information.
+This is leading people to think our software is unsafe, or is acting as a spam
+service.
 
 <em>So why am I getting these emails?</em>
 
 Well the truth of the matter is that somebody guessed your email. This isn't
-uncommon if you have email addresses like bob@myhost.com. The spammers just
+uncommon if you have email addresses like bob@example.com. The spammers just
 randomly pick domains, and randomly generate emails from that domain to send
 mail from. All we can suggest is you delete them, or contact the correct
 authorities (usually your service provider should be able to help).
@@ -92,15 +92,15 @@ authorities (usually your service provider should be able to help).
 
 Unfortunately there isn't much we can do. Because spam is such a problem on the
 Internet, the best thing we can do is educate people into the real facts. Below
-are some basic ideas on how to detect where these forged emails are coming
-from. While this isn't easy for most people, it gets easier with practise. There
-is always your service provider, they should be able to help you.
+are some basic ideas on how to detect where these forged emails are coming from.
+While this isn't easy for most people, it gets easier with practice. There is
+always your service provider, they should be able to help you.
 
 <em>Okay, so what is the secret? How do I find out who is doing this?</em>
 
-Honestly, you cannot find out the exactly person that is sending it, but you can
+Honestly, you cannot find out the exact person that is sending it, but you can
 find out what the address (IP Address), and what service provider the mail was
-sent via. Below is an example of the headers from a forged email: 
+sent via. Below is an example of the headers from a forged email:
 
 <tscreen><verb>
 Return-path: <bob@example.com>
@@ -126,12 +126,12 @@ Importance: Normal
 </verb></tscreen>
 
 This looks like the headers of some ordinary email, even down to the
-SquirrelMail versions. However there is a couple of mistakes. The first being it
-really wasn't sent from SquirrelMail by a user bob@example.com. To trace the
+SquirrelMail versions. However there are a couple of mistakes. The first being
+it really wasn't sent from SquirrelMail by a user bob@example.com. To trace the
 source of an email, you start at the bottom Received: line, and work upwards. In
 this case, it says the email was sent from the IP 5.6.7.8 using the SquirrelMail
 account bob@example.com on the domain randomdomainname.com. When SquirrelMail
-really writes these headers, the randomdomainname.com is the actual webserver
+really writes these headers, the randomdomainname.com is the actual web server
 address. The first thing to do is verify if this is in fact a real SquirrelMail
 email. The quickest way is to validate the domain name. Using <url
 url="http://www.internic.net/whois.html" name="InterNic"> it is possible to
@@ -147,9 +147,9 @@ name="GeekTools">, we can find out where the IP address belongs, which service
 provider is the owner of the IP, and in most cases, who to contact in case of
 abuse. In this example, we'll say the owner is homeagainisp.com, and they have
 an abuse contact email. At which point, you can forward your email as an
-attachment to the listed email address for the abuse contact. For clariety, 
-and to save them the confusion of what you went through, reference this URL too,
-so they can have a clue what is really going on. 
+attachment to the listed email address for the abuse contact. For clarity, and
+to save them the confusion of what you went through, reference this URL too, so
+they can have a clue what is really going on.
 
 For another clue on the message being forged, view the Message-Id: header. In
 this case it is <6pr9Lv.squirrel@5.6.7.8>. This is not a valid SquirrelMail
@@ -161,14 +161,14 @@ Message-Id. A valid Message-Id header looks something like this:
 
 This is another easy way to spot a forged message.
 
-We do hope to stop this barrage of spam, unfortunately it is difficult to do, and
-miss-identification doesn't help. This page was created in the hopes of
+We do hope to stop this barrage of spam, unfortunately it is difficult to do,
+and miss-identification doesn't help. This page was created in the hopes of
 educating everybody into the background of this spam issue, and we hope it
 helps.
 
 <em>There are mistakes, or I have suggestions, where can I send them?</em>
 
-The <url url="http://lists.sourceforge.net/mailman/listinfo/squirrelmail-users" 
+The <url url="http://lists.sourceforge.net/mailman/listinfo/squirrelmail-users"
 name="SquirrelMail users mailing list"> is often the best place to submit this
 kind of information/requests.
 
