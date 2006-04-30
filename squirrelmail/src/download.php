@@ -121,6 +121,15 @@ if (strlen($filename) < 1) {
     $filename = $filename . '.' . $suffix;
 }
 
+/**
+ * Close session in order to prevent script locking on larger 
+ * downloads. SendDownloadHeaders() and mime_print_body_lines() 
+ * don't write information to session. mime_print_body_lines() 
+ * call duration depends on size of attachment and script can 
+ * cause interface lockups, if session is not closed.
+ */
+session_write_close();
+
 /*
  * Note:
  *    The following sections display the attachment in different
