@@ -24,7 +24,8 @@
 define('SM_PATH','../../');
 
 require_once(SM_PATH . 'include/validate.php');
-
+/* load sqimap_get_user_server() */
+include_once(SM_PATH . 'functions/imap_general.php');
 // loading form functions
 require_once(SM_PATH . 'functions/forms.php');
 
@@ -92,6 +93,17 @@ if (isset($ldap_server) && $ldap_server[0] && ! extension_loaded('ldap')) {
 
 $body = "\nMy IMAP server information:\n" .
             "  Server type:  $imap_server_type\n";
+
+/* check imap server's mapping */
+$imapServerAddress = sqimap_get_user_server($imapServerAddress, $username);
+
+/*
+ * add tls:// prefix, if tls is used.
+ * No need to check for openssl.
+ * User can't use SquirrelMail if this part is misconfigured
+ */
+if ($use_imap_tls == true) $imapServerAddress = 'tls://' . $imapServerAddress;
+
 $imap_stream = fsockopen ($imapServerAddress, $imapPort, $error_number, $error_string);
 $server_info = fgets ($imap_stream, 1024);
 if ($imap_stream) {
