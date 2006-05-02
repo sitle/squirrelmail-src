@@ -530,6 +530,23 @@ The file plugins/demo/zip_handler.php can now do whatever it needs with the
 attachment (note that this will hand information about how to retrieve the
 source message from the IMAP server as GET varibles).
 
+<sect2>Hook for configuration testing
+<p>
+SquirrelMail has configtest.php script which can be used to test SquirrelMail
+configuration. Since SquirrelMail 1.5.2 configtest script includes 'configtest' 
+hook. Hook uses boolean hook function call. Plugins that are attached to this
+hook should return boolean true, if they detect some error in plugin's 
+configuration. Verbose messages can be printed with <tt/do_err('error
+message',false)/ function call or with any standard PHP inline output function.
+
+configtest script is executed in anonymous, unauthenticated
+environment. username and password information is not available. Only limited
+set of functions is loaded. do_err() function is a special configtest script
+function, which is used to print error messages. If plugin uses do_err()
+function, it is recommended to set second function argument to false even on
+fatal error. Configuration testing will stop with fatal error, if hook call
+returns boolean true.
+
 <sect>Internationalization
 <p>
 This chapter should explain how SquirrelMail internationalization works and
