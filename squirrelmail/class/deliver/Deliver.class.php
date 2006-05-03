@@ -746,13 +746,6 @@ class Deliver {
     }
 
     /**
-     * Callback function to trim whitespace from a value, to be used in array_walk
-     */
-    function trim_value ( &$value ) {
-        $value = trim($value);
-    }
-
-    /**
      * Converts ip address to hexadecimal string
      *
      * Function is used to convert ipv4 and ipv6 addresses to hex strings.
