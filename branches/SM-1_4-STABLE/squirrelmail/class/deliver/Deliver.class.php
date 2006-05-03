@@ -736,7 +736,7 @@ class Deliver {
         $aReferences[] = $message_id;
 
         // sanitize the array: trim whitespace, remove dupes
-        array_walk($aReferences, 'trim_value');
+        array_walk($aReferences, 'sq_trim_value');
         $aReferences = array_unique($aReferences);
 
         while ( count($aReferences) > 4 && strlen(implode(' ', $aReferences)) >= 986 ) {

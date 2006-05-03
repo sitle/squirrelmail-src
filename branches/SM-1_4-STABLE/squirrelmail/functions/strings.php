@@ -850,7 +850,7 @@ function sq_lowercase_array_vals(&$val,$key) {
  * @param string $value value to trim
  * @since 1.5.2 and 1.4.7
  */
-function trim_value ( &$value ) {
+function sq_trim_value ( &$value ) {
     $value = trim($value);
 }
 
