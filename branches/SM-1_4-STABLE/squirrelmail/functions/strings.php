@@ -845,5 +845,15 @@ function sq_lowercase_array_vals(&$val,$key) {
     $val = strtolower($val);
 }
 
+/**
+ * Callback function to trim whitespace from a value, to be used in array_walk
+ * @param string $value value to trim
+ * @since 1.5.2 and 1.4.7
+ */
+function trim_value ( &$value ) {
+    $value = trim($value);
+}
+
+
 $PHP_SELF = php_self();
 ?>
