@@ -976,9 +976,6 @@ sub command14 {
 
 # sendmail_path
 sub command15 {
-    if ( $sendmail_path[0] !~ /./ ) {
-        $sendmail_path = "/usr/sbin/sendmail";
-    }
     print "Specify where the sendmail executable is located.  Usually /usr/sbin/sendmail\n";
     print "[$WHT$sendmail_path$NRM]: $WHT";
     $new_sendmail_path = <STDIN>;
