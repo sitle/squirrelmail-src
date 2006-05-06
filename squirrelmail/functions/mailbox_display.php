@@ -747,7 +747,7 @@ function mail_message_listing_beginning ($imapConnection,
 
     if (!$auto_expunge) {
         echo getButton('SUBMIT', 'expungeButton',_("Expunge"))
-             .'&nbsp;' . _("mailbox") . "\n";
+             ."&nbsp;\n";
     }
 
     echo getButton('SUBMIT', 'markRead',_("Read"));
