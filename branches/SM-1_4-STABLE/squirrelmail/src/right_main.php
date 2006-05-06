@@ -219,9 +219,10 @@ if ($use_mailbox_cache && sqsession_is_registered('msgs')) {
 
     $numMessages = sqimap_get_num_messages ($imapConnection, $mailbox);
 
+    // set 8th argument to false in order to make sure that cache is not used.
     showMessagesForMailbox($imapConnection, $mailbox, $numMessages,
                            $startMessage, $sort, $color, $show_num,
-                           $use_mailbox_cache);
+                           false);
 
     if (sqsession_is_registered('msgs') && isset($msgs)) {
         sqsession_register($msgs, 'msgs');

@@ -139,6 +139,9 @@ $location = set_url_var($location,'composenew',0,false);
 $location = set_url_var($location,'composesession',0,false);
 $location = set_url_var($location,'session',0,false);
 
+// make sure that cache is not used
+$location = set_url_var($location,'use_mailbox_cache',0,false);
+
 /* remember changes to mailbox setting */
 if (!isset($lastTargetMailbox)) {
     $lastTargetMailbox = 'INBOX';
@@ -217,7 +220,6 @@ if(isset($expungeButton)) {
         $exception = true;
     }
 } else {    // Move messages
-
     if (count($id)) {
         sqimap_msgs_list_copy($imapConnection,$id,$targetMailbox);
         if ($auto_expunge) {
