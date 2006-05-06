@@ -1,57 +1,44 @@
 <?php
 
 /**
- * day.php
- *
- * Copyright (c) 2002-2006 The SquirrelMail Project Team
- * Licensed under the GNU GPL. For full terms see the file COPYING.
- *
- * Originally contrubuted by Michal Szczotka <michal@tuxy.org>
- *
  * Displays the day page (day view).
  *
- * $Id$
+ * @copyright &copy; 2002-2006 The SquirrelMail Project Team
+ * @license http://opensource.org/licenses/gpl-license.php GNU Public License
+ * @version $Id$
+ * @package plugins
+ * @subpackage calendar
  */
 
+/** @ignore */
 define('SM_PATH','../../');
 
-/* Calender plugin required files. */
-require_once(SM_PATH . 'plugins/calendar/calendar_data.php');
-require_once(SM_PATH . 'plugins/calendar/functions.php');
-
 /* SquirrelMail required files. */
-require_once(SM_PATH . 'include/validate.php');
-require_once(SM_PATH . 'functions/strings.php');
-require_once(SM_PATH . 'functions/date.php');
-require_once(SM_PATH . 'config/config.php');
-require_once(SM_PATH . 'functions/page_header.php');
-require_once(SM_PATH . 'include/load_prefs.php');
-require_once(SM_PATH . 'functions/html.php');
+include_once(SM_PATH . 'include/validate.php');
+/* date_intl() */
+include_once(SM_PATH . 'functions/date.php');
+
+/* Calendar plugin required files. */
+include_once(SM_PATH . 'plugins/calendar/calendar_data.php');
+include_once(SM_PATH . 'plugins/calendar/functions.php');
 
 /* get globals */
-unset($year, $month, $day);
-if (isset($_GET['year']) && is_numeric($_GET['year'])) {
-    $year = $_GET['year'];
+if (! sqGetGlobalVar('year',$year,SQ_FORM) || ! is_numeric($year)) {
+    unset($year);
 }
-elseif (isset($_POST['year']) && is_numeric($_POST['year'])) {
-    $year = $_POST['year'];
+if (! sqGetGlobalVar('month',$month,SQ_FORM) || ! is_numeric($month)) {
+    unset($month);
 }
-if (isset($_GET['month']) && is_numeric($_GET['month'])) {
-    $month = $_GET['month'];
+if (! sqGetGlobalVar('day',$day,SQ_FORM) || ! is_numeric($day)) {
+    unset($day);
 }
-elseif (isset($_POST['month']) && is_numeric($_POST['month'])) {
-    $month = $_POST['month'];
-}
-if (isset($_GET['day']) && is_numeric($_GET['day'])) {
-    $day = $_GET['day'];
-}
-elseif (isset($_POST['day']) && is_numeric($_POST['day'])) {
-    $day = $_POST['day'];
-}
-
 /* got 'em */
 
-//displays head of day calendar view
+/**
+ * displays head of day calendar view
+ * @return void
+ * @access private
+ */
 function day_header() {
     global $color, $month, $day, $year, $prev_year, $prev_month, $prev_day,
            $prev_date, $next_month, $next_day, $next_year, $next_date;
@@ -59,7 +46,7 @@ function day_header() {
     echo html_tag( 'tr', '', '', $color[0] ) . "\n".
                 html_tag( 'td', '', 'left' ) .
                     html_tag( 'table', '', '', $color[0], 'width="100%" border="0" cellpadding="2" cellspacing="1"' ) ."\n" .
-                        html_tag( 'tr', 
+                        html_tag( 'tr',
                             html_tag( 'th',
                                 "<a href=\"day.php?year=$prev_year&amp;month=$prev_month&amp;day=$prev_day\">&lt;&nbsp;".
                                 date_intl('D',$prev_date)."</a>",
@@ -73,7 +60,11 @@ function day_header() {
                         );
 }
 
-//events for specific day  are inserted into "daily" array
+/**
+ * events for specific day  are inserted into "daily" array
+ * @return void
+ * @access private
+ */
 function initialize_events() {
     global $daily_events, $calendardata, $month, $day, $year;
 
@@ -95,7 +86,11 @@ function initialize_events() {
     }
 }
 
-//main loop for displaying daily events
+/**
+ * main loop for displaying daily events
+ * @return void
+ * @access private
+ */
 function display_events() {
     global $daily_events, $month, $day, $year, $color;
 
@@ -115,7 +110,8 @@ function display_events() {
                        html_tag( 'td', $ehour . ':' . $eminute, 'left' ) .
                        html_tag( 'td', '&nbsp;', 'left' ) .
                        html_tag( 'td',
-                           "<font size=\"-1\"><a href=\"event_create.php?year=$year&amp;month=$month&amp;day=$day&amp;hour=".substr($calfoo['key'],0,2)."\">".
+                           "<font size=\"-1\"><a href=\"event_create.php?year=$year&amp;month=$month&amp;day=$day&amp;hour="
+                           .substr($calfoo['key'],0,2)."\">".
                            _("ADD") . "</a></font>" ,
                        'center' ) ,
                    '', $color[$eo]);
@@ -123,28 +119,32 @@ function display_events() {
         } else {
             $calbar=$calfoo['value'];
             if ($calbar['length']!=0){
-                $elength = '-'.date('H:i',mktime($ehour,$eminute+$calbar['length'],0,1,1,0));
+                $elength = '-'.date_intl(_("H:i"),mktime($ehour,$eminute+$calbar['length'],0,1,1,0));
             } else {
                 $elength='';
             }
             echo html_tag( 'tr', '', '', $color[$eo] ) .
-                        html_tag( 'td', $ehour . ':' . $eminute . $elength, 'left' ) .
+                        html_tag( 'td', date_intl(_("H:i"),mktime($ehour,$eminute,0,1,1,0)) . $elength, 'left' ) .
                         html_tag( 'td', '', 'left' ) . '[';
-                            echo ($calbar['priority']==1) ? "<font color=\"$color[1]\">$calbar[title]</font>" : "$calbar[title]";
-                            echo"] $calbar[message]&nbsp;" .
+                            echo ($calbar['priority']==1) ? 
+                                "<font color=\"$color[1]\">".htmlspecialchars($calbar['title']).'</font>' : 
+                                htmlspecialchars($calbar['title']);
+                            echo'] <div style="margin-left:10px">'.nl2br(htmlspecialchars($calbar['message'])).'</div>' .
                         html_tag( 'td',
                             "<font size=\"-1\"><nobr>\n" .
-                            "<a href=\"event_edit.php?year=$year&amp;month=$month&amp;day=$day&amp;hour=".substr($calfoo['key'],0,2)."&amp;minute=".substr($calfoo['key'],2,2)."\">".
+                            "<a href=\"event_edit.php?year=$year&amp;month=$month&amp;day=$day&amp;hour=".
+                            substr($calfoo['key'],0,2)."&amp;minute=".substr($calfoo['key'],2,2)."\">".
                             _("EDIT") . "</a>&nbsp;|&nbsp;\n" .
-                            "<a href=\"event_delete.php?dyear=$year&amp;dmonth=$month&amp;dday=$day&amp;dhour=".substr($calfoo['key'],0,2)."&amp;dminute=".substr($calfoo['key'],2,2)."&amp;year=$year&amp;month=$month&amp;day=$day\">" .
+                            "<a href=\"event_delete.php?dyear=$year&amp;dmonth=$month&amp;dday=$day&amp;dhour=".
+                            substr($calfoo['key'],0,2)."&amp;dminute=".substr($calfoo['key'],2,2).
+                            "&amp;year=$year&amp;month=$month&amp;day=$day\">" .
                             _("DEL") . '</a>' .
                             "</nobr></font>\n" ,
                         'center' );
+        }
     }
 }
-
-
-}
+/* end of day functions */
 
 if ($month <= 0){
     $month = date( 'm');

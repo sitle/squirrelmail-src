@@ -1,132 +1,109 @@
 <?php
 
 /**
- * event_create.php
- *
- * Copyright (c) 2002-2006 The SquirrelMail Project Team
- * Licensed under the GNU GPL. For full terms see the file COPYING.
- *
- * Originally contrubuted by Michal Szczotka <michal@tuxy.org>
- *
  * functions to create a event for calendar.
  *
- * $Id$
+ * @copyright &copy; 2002-2006 The SquirrelMail Project Team
+ * @license http://opensource.org/licenses/gpl-license.php GNU Public License
+ * @version $Id$
+ * @package plugins
+ * @subpackage calendar
  */
+
+/** @ignore */
 define('SM_PATH','../../');
 
-/* Calender plugin required files. */
-require_once(SM_PATH . 'plugins/calendar/calendar_data.php');
-require_once(SM_PATH . 'plugins/calendar/functions.php');
-
 /* SquirrelMail required files. */
-require_once(SM_PATH . 'include/validate.php');
-require_once(SM_PATH . 'functions/strings.php');
-require_once(SM_PATH . 'functions/date.php');
-require_once(SM_PATH . 'config/config.php');
-require_once(SM_PATH . 'functions/page_header.php');
-require_once(SM_PATH . 'include/load_prefs.php');
-require_once(SM_PATH . 'functions/html.php');
+include_once(SM_PATH . 'include/validate.php');
+/* date_intl() */
+include_once(SM_PATH . 'functions/date.php');
+
+/* Calendar plugin required files. */
+include_once(SM_PATH . 'plugins/calendar/calendar_data.php');
+include_once(SM_PATH . 'plugins/calendar/functions.php');
 
 /* get globals */
-unset($year, $month, $day, $hour, $event_hour, $event_minute,
-    $event_length, $event_priority);
-if (isset($_POST['year']) && is_numeric($_POST['year'])) {
-    $year = $_POST['year'];
+if (! sqGetGlobalVar('year',$year,SQ_FORM) || ! is_numeric($year)) {
+    unset($year);
 }
-elseif (isset($_GET['year']) && is_numeric($_GET['year'])) {
-    $year = $_GET['year'];
+if (! sqGetGlobalVar('month',$month,SQ_FORM) || ! is_numeric($month)) {
+    unset($month);
 }
-if (isset($_POST['month']) && is_numeric($_POST['month'])) {
-    $month = $_POST['month'];
+if (! sqGetGlobalVar('day',$day,SQ_FORM) || ! is_numeric($day)) {
+    unset($day);
 }
-elseif (isset($_GET['month']) && is_numeric($_GET['month'])) {
-    $month = $_GET['month'];
+if (! sqGetGlobalVar('hour',$hour,SQ_FORM) || ! is_numeric($hour)) {
+    unset($hour);
 }
-if (isset($_POST['day']) && is_numeric($_POST['day'])) {
-    $day = $_POST['day'];
+if (! sqGetGlobalVar('event_hour',$event_hour,SQ_POST) || ! is_numeric($event_hour)) {
+    unset($event_hour);
 }
-elseif (isset($_GET['day']) && is_numeric($_GET['day'])) {
-    $day = $_GET['day'];
+if (! sqGetGlobalVar('event_minute',$event_minute,SQ_POST) || ! is_numeric($event_minute)) {
+    unset($event_minute);
 }
-if (isset($_POST['hour']) && is_numeric($_POST['hour'])) {
-    $hour = $_POST['hour'];
+if (! sqGetGlobalVar('event_length',$event_length,SQ_POST) || ! is_numeric($event_length)) {
+    unset($event_length);
 }
-elseif (isset($_GET['hour']) && is_numeric($_GET['hour'])) {
-    $hour = $_GET['hour'];
+if (! sqGetGlobalVar('event_priority',$event_priority,SQ_POST) || ! is_numeric($event_priority)) {
+    unset($event_priority);
 }
-if (isset($_POST['event_hour']) && is_numeric($_POST['event_hour'])) {
-    $event_hour = $_POST['event_hour'];
-}
-if (isset($_POST['event_minute']) && is_numeric($_POST['event_minute'])) {
-    $event_minute = $_POST['event_minute'];
-}
-if (isset($_POST['event_length']) && is_numeric($_POST['event_length'])) {
-    $event_length = $_POST['event_length'];
-}
-if (isset($_POST['event_priority']) && is_numeric($_POST['event_priority'])) {
-    $event_priority = $_POST['event_priority'];
-}
-if (isset($_POST['event_title'])) {
-    $event_title = $_POST['event_title'];
-}
-if (isset($_POST['event_text'])) {
-    $event_text = $_POST['event_text'];
-}
-if (isset($_POST['send'])) {
-    $send = $_POST['send'];
-}
+
+sqGetGlobalVar('event_title',$event_title,SQ_POST);
+sqGetGlobalVar('event_text',$event_text,SQ_POST);
+sqGetGlobalVar('send',$send,SQ_POST);
+
 /* got 'em */
 
 //main form to gather event info
 function show_event_form() {
     global $color, $editor_size, $year, $day, $month, $hour;
 
-    echo "\n<FORM name=eventscreate action=\"event_create.php\" METHOD=POST >\n".
-         "      <INPUT TYPE=hidden NAME=\"year\" VALUE=\"$year\">\n".
-         "      <INPUT TYPE=hidden NAME=\"month\" VALUE=\"$month\">\n".
-         "      <INPUT TYPE=hidden NAME=\"day\" VALUE=\"$day\">\n".
+    echo "\n<form name=\"eventscreate\" action=\"event_create.php\" method=\"post\">\n".
+         "      <input type=\"hidden\" name=\"year\" value=\"$year\" />\n".
+         "      <input type=\"hidden\" name=\"month\" value=\"$month\" />\n".
+         "      <input type=\"hidden\" name=\"day\" value=\"$day\" />\n".
          html_tag( 'tr' ) .
          html_tag( 'td', _("Start time:"), 'right', $color[4] ) . "\n" .
          html_tag( 'td', '', 'left', $color[4] ) . "\n" .
-         "      <SELECT NAME=\"event_hour\">\n";
+         "      <select name=\"event_hour\">\n";
     select_option_hour($hour);
-    echo "      </SELECT>\n" .
+    echo "      </select>\n" .
          "      &nbsp;:&nbsp;\n" .
-         "      <SELECT NAME=\"event_minute\">\n";
+         "      <select name=\"event_minute\">\n";
     select_option_minute("00");
-    echo "      </SELECT>\n".
+    echo "      </select>\n".
          "      </td></tr>\n".
          html_tag( 'tr' ) .
          html_tag( 'td', _("Length:"), 'right', $color[4] ) . "\n" .
          html_tag( 'td', '', 'left', $color[4] ) . "\n" .
-         "      <SELECT NAME=\"event_length\">\n";
+         "      <select name=\"event_length\">\n";
     select_option_length("0");
-    echo "      </SELECT>\n".
+    echo "      </select>\n".
          "      </td></tr>\n".
          html_tag( 'tr' ) .
          html_tag( 'td', _("Priority:"), 'right', $color[4] ) . "\n" .
          html_tag( 'td', '', 'left', $color[4] ) . "\n" .
-         "      <SELECT NAME=\"event_priority\">\n";
+         "      <select name=\"event_priority\">\n";
     select_option_priority("0");
-    echo "      </SELECT>\n".
+    echo "      </select>\n".
          "      </td></tr>\n".
          html_tag( 'tr' ) .
          html_tag( 'td', _("Title:"), 'right', $color[4] ) . "\n" .
          html_tag( 'td', '', 'left', $color[4] ) . "\n" .
-         "      <INPUT TYPE=text NAME=\"event_title\" VALUE=\"\" SIZE=30 MAXLENGTH=50><BR>\n".
+         "      <input type=\"text\" name=\"event_title\" value=\"\" size=\"30\" maxlength=\"50\" /><br />\n".
          "      </td></tr>\n".
          html_tag( 'tr',
              html_tag( 'td',
-                 "<TEXTAREA NAME=\"event_text\" ROWS=5 COLS=\"$editor_size\" WRAP=HARD></TEXTAREA>" ,
+                 "<textarea name=\"event_text\" rows=\"5\" cols=\"$editor_size\" wrap=\"hard\"></textarea>" ,
              'left', $color[4], 'colspan="2"' )
          ) ."\n" .
          html_tag( 'tr',
              html_tag( 'td',
-                 "<INPUT TYPE=SUBMIT NAME=send VALUE=\"" .
-                 _("Set Event") . "\">" ,
+                 '<input type="submit" name="send" value="' .
+                 _("Set Event") . '" />' ,
              'left', $color[4], 'colspan="2"' )
          ) ."\n";
-    echo "</FORM>\n";
+    echo "</form>\n";
 }
 
 
@@ -161,29 +138,25 @@ if(!isset($event_text)){
     show_event_form();
 } else {
     readcalendardata();
-    //make sure that event text is fittting in one line
-    $event_text=nl2br($event_text);
-    $event_text=ereg_replace ("\n", "", $event_text);
-    $event_text=ereg_replace ("\r", "", $event_text);
     $calendardata["$month$day$year"]["$event_hour$event_minute"] =
-    array( 'length' => $event_length,
+    array( 'length'   => $event_length,
            'priority' => $event_priority,
-           'title' => $event_title,
-           'message' => $event_text,
+           'title'    => $event_title,
+           'message'  => $event_text,
            'reminder' => '' );
     //save
     writecalendardata();
     echo html_tag( 'table',
                 html_tag( 'tr',
-                    html_tag( 'th', _("Event Has been added!") . "<br>\n", '', $color[4], 'colspan="2"' )
+                    html_tag( 'th', _("Event Has been added!") . "<br />\n", '', $color[4], 'colspan="2"' )
                 ) .
                 html_tag( 'tr',
                     html_tag( 'td', _("Date:"), 'right', $color[4] ) . "\n" .
-                    html_tag( 'td', $month .'/'.$day.'/'.$year, 'left', $color[4] ) . "\n"
+                    html_tag( 'td', date_intl(_("m/d/Y"),mktime(0,0,0,$month,$day,$year)), 'left', $color[4] ) . "\n"
                 ) .
                 html_tag( 'tr',
                     html_tag( 'td', _("Time:"), 'right', $color[4] ) . "\n" .
-                    html_tag( 'td', $event_hour.':'.$event_minute, 'left', $color[4] ) . "\n"
+                    html_tag( 'td', date_intl(_("H:i"),mktime($event_hour,$event_minute,0,$month,$day,$year)), 'left', $color[4] ) . "\n"
                 ) .
                 html_tag( 'tr',
                     html_tag( 'td', _("Title:"), 'right', $color[4] ) . "\n" .
@@ -191,7 +164,7 @@ if(!isset($event_text)){
                 ) .
                 html_tag( 'tr',
                     html_tag( 'td', _("Message:"), 'right', $color[4] ) . "\n" .
-                    html_tag( 'td', htmlspecialchars($event_text,ENT_NOQUOTES), 'left', $color[4] ) . "\n"
+                    html_tag( 'td', nl2br(htmlspecialchars($event_text,ENT_NOQUOTES)), 'left', $color[4] ) . "\n"
                 ) .
                 html_tag( 'tr',
                     html_tag( 'td',
