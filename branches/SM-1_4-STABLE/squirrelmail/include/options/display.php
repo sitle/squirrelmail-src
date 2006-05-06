@@ -321,7 +321,7 @@ function load_optpage_data_display() {
 
     $optvals[SMOPT_GRP_MESSAGE][] = array(
         'name'    => 'sig_first',
-        'caption' => _("Append Signature before Reply/Forward Text"),
+        'caption' => _("Prepend Signature before Reply/Forward Text"),
         'type'    => SMOPT_TYPE_BOOLEAN,
         'refresh' => SMOPT_REFRESH_NONE
     );
