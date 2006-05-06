@@ -34,6 +34,7 @@ Version 1.4.7 - CVS
   - Fixed some mailbox caching issues, when messages are deleted or moved 
     not in first mailbox page. Fixed use of mailbox cache in right_main.php 
     (#1304408).
+  - Stop URL parsing, if 8bit symbols or HTML entities are detected (#1356798).
 
 Version 1.4.6 - 23 February 2006
 --------------------------------
