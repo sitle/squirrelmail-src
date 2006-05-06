@@ -1,51 +1,43 @@
 <?php
 
 /**
- * calendar.php
- *
- * Copyright (c) 2002-2006 The SquirrelMail Project Team
- * Licensed under the GNU GPL. For full terms see the file COPYING.
- *
- * Originally contrubuted by Michal Szczotka <michal@tuxy.org>
- *
  * Displays the main calendar page (month view).
  *
- * $Id$
+ * @copyright &copy; 2002-2006 The SquirrelMail Project Team
+ * @license http://opensource.org/licenses/gpl-license.php GNU Public License
+ * @version $Id$
+ * @package plugins
+ * @subpackage calendar
  */
+
+/** @ignore */
 define('SM_PATH','../../');
 
-/* Calender plugin required files. */
-require_once(SM_PATH . 'plugins/calendar/calendar_data.php');
-require_once(SM_PATH . 'plugins/calendar/functions.php');
-
 /* SquirrelMail required files. */
-require_once(SM_PATH . 'include/validate.php');
-require_once(SM_PATH . 'functions/strings.php');
-require_once(SM_PATH . 'functions/date.php');
-require_once(SM_PATH . 'config/config.php');
-require_once(SM_PATH . 'functions/page_header.php');
-require_once(SM_PATH . 'include/load_prefs.php');
-require_once(SM_PATH . 'functions/html.php');
+include_once(SM_PATH . 'include/validate.php');
+/* load date_intl() */
+include_once(SM_PATH . 'functions/date.php');
+
+/* Calendar plugin required files. */
+include_once(SM_PATH . 'plugins/calendar/calendar_data.php');
+include_once(SM_PATH . 'plugins/calendar/functions.php');
 
 /* get globals */
-unset($month, $year);
-if (isset($_GET['month']) && is_numeric($_GET['month'])) {
-    $month = $_GET['month'];
+if (! sqgetGlobalVar('month',$month,SQ_FORM) || ! is_numeric($month)) {
+    unset($month);
 }
-if (isset($_GET['year']) && is_numeric($_GET['year'])) {
-    $year = $_GET['year'];
-}
-if (isset($_POST['year']) && is_numeric($_POST['year'])) {
-    $year = $_POST['year'];
-}
-if (isset($_POST['month']) && is_numeric($_POST['month'])) {
-    $month = $_POST['month'];
+if (! sqgetGlobalVar('year',$year,SQ_FORM) || ! is_numeric($year)) {
+    unset($year);
 }
 /* got 'em */
 
-//display upper part of month calendar view
+/**
+ * display upper part of month calendar view
+ * @return void
+ * @access private
+ */
 function startcalendar() {
-    global $year, $month, $day, $color;
+    global $year, $month, $color;
 
     $prev_date = mktime(0, 0, 0, $month - 1, 1, $year);
     $act_date  = mktime(0, 0, 0, $month, 1, $year);
@@ -89,9 +81,13 @@ function startcalendar() {
            '', $color[0] ) ."\n";
 }
 
-//main logic for month view of calendar
+/**
+ * main logic for month view of calendar
+ * @return void
+ * @access private
+ */
 function drawmonthview() {
-    global $year, $month, $day, $color, $calendardata, $todayis;
+    global $year, $month, $color, $calendardata, $todayis;
 
     $aday = 1 - date('w', mktime(0, 0, 0, $month, 1, $year));
     $days_in_month = date('t', mktime(0, 0, 0, $month, 1, $year));
@@ -104,7 +100,7 @@ function drawmonthview() {
             if ( $aday <= $days_in_month && $aday > 0){
                 echo html_tag( 'td', '', 'left', $color[4], 'height="50" valign="top"' ) ."\n".
                      html_tag( 'div', '', 'right' );
-                echo(($cdate==$todayis) ? "<font size=-1 color=$color[1]>[ " . _("TODAY") . " ] " : "<font size=-1>");
+                echo(($cdate==$todayis) ? '<font size="-1" color="'.$color[1].'">[ ' . _("TODAY") . " ] " : '<font size="-1">');
                 echo "<a href=day.php?year=$year&amp;month=$month&amp;day=";
                 echo(($aday<10) ? "0" : "");
                 echo "$aday>$aday</a></font></div>";
@@ -116,8 +112,13 @@ function drawmonthview() {
                 $i=0;
                 while ($calfoo = each($calendardata[$cdate])) {
                     $calbar = $calendardata[$cdate][$calfoo['key']];
-                    $title = '['. $calfoo['key']. '] ' .$calbar['message'];
-                    echo ($calbar['priority']==1) ? "<a href=\"#\" style=\"text-decoration:none; color: $color[1]\" title=\"$title\">$calbar[title]</a><br>\n" : "<a href=\"#\" style=\"text-decoration:none; color: $color[6]\" title=\"$title\">$calbar[title]</a><br>\n";
+                    // FIXME: how to display multiline task
+                    $title = '['. $calfoo['key']. '] ' .
+                        str_replace(array("\r","\n"),array(' ',' '),htmlspecialchars($calbar['message']));
+                    // FIXME: link to nowhere
+                    echo "<a href=\"#\" style=\"text-decoration:none; color: "
+                        .($calbar['priority']==1 ? $color[1] : $color[6])
+                        ."\" title=\"$title\">".htmlspecialchars($calbar['title'])."</a><br />\n";
                     $i=$i+1;
                     if($i==2){
                         break;
@@ -131,23 +132,27 @@ function drawmonthview() {
     }
 }
 
-//end of monthly view and form to jump to any month and year
+/**
+ * end of monthly view and form to jump to any month and year
+ * @return void
+ * @access private
+ */
 function endcalendar() {
     global $year, $month, $day, $color;
 
     echo html_tag( 'tr' ) ."\n" .
            html_tag( 'td', '', 'left', '', 'colspan="7"' ) ."\n" .
-         "          <FORM NAME=caljump ACTION=\"calendar.php\" METHOD=POST>\n".
-         "          <SELECT NAME=\"year\">\n";
+         "          <form name=\"caljump\" action=\"calendar.php\" method=\"post\">\n".
+         "          <select name=\"year\">\n";
     select_option_year($year);
-    echo "          </SELECT>\n".
-         "          <SELECT NAME=\"month\">\n";
+    echo "          </select>\n".
+         "          <select name=\"month\">\n";
     select_option_month($month);
-    echo "          </SELECT>\n".
-         '         <INPUT TYPE=SUBMIT VALUE="' . _("Go") . "\">\n".
-         "          </FORM>\n".
-         "          </TD></TR>\n".
-         "</TABLE></TD></TR></TABLE>\n";
+    echo "          </select>\n".
+         '          <input type="submit" value="' . _("Go") . "\" />\n".
+         "          </form>\n".
+         "          </td></tr>\n".
+         "</table></td></tr></table>\n";
 }
 
 
