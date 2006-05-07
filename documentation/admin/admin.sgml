@@ -1542,9 +1542,60 @@ information with other tools or user forging is not possible in your
 SquirrelMail setup. SquirrelMail developers don't support interface that removes
 user information and should not be blamed when such interface is abused.
 
-<sect1>IMAP vs IMAPS
+<sect1>Securing the connection to your IMAP server
 <p>
-Information about secure IMAP and sniffing local interface.
+
+SquirrelMail provides the option to connect to a remote IMAP server over 
+an encrypted connection: Transport Layer Security (TLS and STARTTLS),
+or to connect with only encrypted user credentials (CRAM-MD5 and DIGEST-MD5).
+
+Note: There is no point in using TLS if your IMAP server is localhost. You need
+root to sniff the loopback interface, and if you don't trust root, or an attacker
+already has root, the game is over.  You've got a lot more to worry about beyond
+having the loopback interface sniffed.
+
+<sect2>Requirements
+<p>
+
+<sect3>CRAM/DIGEST-MD5
+<p>
+<itemize>
+  <item> Digest-MD5 authentication needs PHP XML extension.
+  <item> If you have the mhash extension to PHP, it will automatically
+    be used, which may help performance on heavily loaded servers.
+  <item> IMAP server support for these methods.
+</itemize>
+
+<sect3>TLS
+<p>
+<itemize>
+  <item> PHP 4.3.0 or higher (Check Release Notes for PHP 4.3.x information)
+  <item> The server you wish to use TLS on must have a dedicated port listening for
+    TLS connections. (ie. port 993 for IMAP, 465 for SMTP).
+  <item>  If you use PHP 4.3.x, OpenSSL support must be compiled staticly. See
+    PHP bug #29934.
+</itemize>
+
+<sect3>STARTTLS
+<p>
+<itemize>
+  <item>SquirrelMail 1.5.1 or higher
+  <item>PHP 5.1.0rc1 or higher (stream_socket_enable_crypto() function)
+  <item>Server with STARTTLS extension support
+</itemize>
+
+<sect2> Configuration
+<p>
+All configuration is done using conf.pl, under main menu option #2.
+conf.pl can now attempt to detect which mechanisms your servers support.
+You must have set the host and port before attempting to detect, or you
+may get inaccurate results, or a long wait while the connection times out.
+
+<sect2> Known Issues
+<p>
+DIGEST-MD5 has three different methods of operation. (qop options "auth",
+"auth-int" and "auth-conf").  This implementation currently supports "auth"
+only.  Work is being done to add the other two modes.
 
 <sect1>HTTP vs HTTPS
 <p>
