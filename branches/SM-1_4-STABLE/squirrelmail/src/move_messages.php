@@ -221,18 +221,21 @@ if(isset($expungeButton)) {
     }
 } else {    // Move messages
     if (count($id)) {
-        sqimap_msgs_list_copy($imapConnection,$id,$targetMailbox);
-        if ($auto_expunge) {
-            $cnt = sqimap_mailbox_expunge($imapConnection, $mailbox, true);
-        } else {
-            $cnt = 0;
-        }
-
-        if (($startMessage+$cnt-1) >= $mbx_response['EXISTS']) {
-            if ($startMessage > $show_num) {
-                $location = set_url_var($location,'startMessage',$startMessage-$show_num, false);
+        // move messages only when target mailbox is not the same as source mailbox
+        if ($mailbox!=$targetMailbox) {
+            sqimap_msgs_list_copy($imapConnection,$id,$targetMailbox);
+            if ($auto_expunge) {
+                $cnt = sqimap_mailbox_expunge($imapConnection, $mailbox, true);
             } else {
-                $location = set_url_var($location,'startMessage',1, false);
+                $cnt = 0;
+            }
+
+            if (($startMessage+$cnt-1) >= $mbx_response['EXISTS']) {
+                if ($startMessage > $show_num) {
+                    $location = set_url_var($location,'startMessage',$startMessage-$show_num, false);
+                } else {
+                    $location = set_url_var($location,'startMessage',1, false);
+                }
             }
         }
     } else {
