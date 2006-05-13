@@ -15,7 +15,10 @@
 
 
 /**
- * Copy a set of messages ($id) to another mailbox ($mailbox)
+ * Moves a set of messages ($id) to another mailbox ($mailbox)
+ * WARNING: function name does not match performed operation.
+ * Function performs message copy and flags existing messages 
+ * as deleted
  */
 function sqimap_msgs_list_copy($imap_stream, $id, $mailbox) {
     global $uid_support;
