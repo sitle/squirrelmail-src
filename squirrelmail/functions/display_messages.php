@@ -23,7 +23,7 @@ function error_message($message, $mailbox, $sort, $startMessage, $color) {
               '<tr><td align="center">'.
               '<a href="'.sqm_baseuri()."src/right_main.php?sort=$sort&amp;startMessage=$startMessage&amp;mailbox=$urlMailbox\">".
               sprintf (_("Click here to return to %s"),
-                  imap_utf7_decode_local($mailbox)).
+                  htmlspecialchars(imap_utf7_decode_local($mailbox))).
               '</a></td></tr>';
     error_box($string, $color);
 }
