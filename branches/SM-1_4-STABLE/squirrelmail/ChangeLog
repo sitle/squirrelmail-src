@@ -38,7 +38,7 @@ Version 1.4.7 - CVS
   - Improve recovery when EHLO not supported on legacy SMTP servers
     (#1031455).
   - Don't move messages when target mailbox matches source mailbox (#1409453).
-  - Sanitized IMAP folder name in error_message() function.
+  - Sanitized IMAP folder names in error_message() function and filters plugin.
 
 Version 1.4.6 - 23 February 2006
 --------------------------------
