@@ -265,7 +265,7 @@ if (sqgetGlobalVar('filter_submit',$filter_submit,SQ_POST)) {
         printf( _("If %s contains %s then move to %s"),
             '<b>'.$filters[$i]['where'].'</b>',
             '<b>'.$filters[$i]['what'].'</b>',
-            '<b>'.imap_utf7_decode_local($fdr).'</b>');
+            '<b>'.htmlspecialchars(imap_utf7_decode_local($fdr)).'</b>');
         echo '</td></tr>';
 
     }
