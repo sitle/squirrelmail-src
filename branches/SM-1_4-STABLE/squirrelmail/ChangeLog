@@ -42,6 +42,8 @@ Version 1.4.7 - CVS
   - Take X-Forwarded-Host HTTP header in consideration when constructing
     base_uri for redirects; reduces problems with transparent proxies
     (#1488590).
+  - Don't use trailing delimiter when sqimap_mailbox_create() subscribes
+    newly created mailbox.
 
 Version 1.4.6 - 23 February 2006
 --------------------------------
