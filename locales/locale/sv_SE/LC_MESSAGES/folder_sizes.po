@@ -1,27 +1,48 @@
 # Swedish (sv_SE) folder_sizes Translation (SquirrelMail plugin)
-# Copyright (c) 1999-2005 The SquirrelMail Project Team
+# Copyright (c) 1999-2006 The SquirrelMail Project Team
 # This file is distributed under the same license as the SquirrelMail package.
-# Fredrik Jervfors <sqm_admin@fimbul.net>, 2004-2005.
+# Fredrik Jervfors <sqm_admin@fimbul.net>, 2004-2006.
 # $Id$
 msgid ""
 msgstr ""
-"Project-Id-Version: folder_sizes\n"
-"POT-Creation-Date: 2003-11-08 11:58+0200\n"
+"Project-Id-Version: folder_sizes 1.5\n"
+"Report-Msgid-Bugs-To: The SquirrelMail Internationalization List "
+"<squirrelmail-i18n@lists.sourceforge.net>\n"
+"POT-Creation-Date: 2006-05-01 10:34+0300\n"
 "PO-Revision-Date: 2004-12-08 23:24+0100\n"
 "Last-Translator: Fredrik Jervfors <sqm_admin@fimbul.net>\n"
 "Language-Team: Swedish <squirrelmail-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=ISO-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
 
 msgid "Folder Sizes"
 msgstr "Mappstorlekar"
 
+msgid "Folder Sizes Options"
+msgstr "Mappstorlekar"
+
+msgid "Show link under folder list"
+msgstr "Visa länk under mapplistan"
+
+msgid "Show button instead of link"
+msgstr "Visa knapp istället för länk"
+
+msgid "Show block on folders page"
+msgstr "Visa på sidan Mappar"
+
+msgid "Show subtotals"
+msgstr "Visa delsummor"
+
+#, php-format
+msgid "%d Folder"
+msgid_plural "%d Folders"
+msgstr[0] "%d mapp"
+msgstr[1] "%d mappar"
+
 msgid "Folder"
 msgstr "Mapp"
-
-msgid "Folders"
-msgstr "Mappar"
 
 msgid "Count"
 msgstr "Antal"
@@ -31,15 +52,3 @@ msgstr "Olästa"
 
 msgid "Size"
 msgstr "Storlek"
-
-msgid "Show Folder Sizes:"
-msgstr "Visa mapparnas storlek:"
-
-msgid "As link under folder list"
-msgstr "Som länk under mapplistan"
-
-msgid "On Folders page"
-msgstr "På sidan Mappar"
-
-msgid "With subtotals"
-msgstr "Med delsummor"
