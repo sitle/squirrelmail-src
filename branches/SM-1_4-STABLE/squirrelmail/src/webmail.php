@@ -20,6 +20,7 @@
 define('SM_PATH','../');
 
 /* SquirrelMail required files. */
+require_once(SM_PATH . 'functions/global.php');
 require_once(SM_PATH . 'functions/strings.php');
 require_once(SM_PATH . 'config/config.php');
 require_once(SM_PATH . 'functions/prefs.php');
@@ -27,7 +28,6 @@ require_once(SM_PATH . 'functions/imap.php');
 require_once(SM_PATH . 'functions/plugin.php');
 require_once(SM_PATH . 'functions/i18n.php');
 require_once(SM_PATH . 'functions/auth.php');
-require_once(SM_PATH . 'functions/global.php');
 
 if (!function_exists('sqm_baseuri')){
     require_once(SM_PATH . 'functions/display_messages.php');
