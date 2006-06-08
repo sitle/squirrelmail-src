@@ -48,7 +48,8 @@ Version 1.4.7 - CVS
   - Security: Local file inclusion in functions/plugin.php with
     register_globals enabled, and magic_quotes disabled (reported by Denix
     Solutions).
-
+  - Add note to conf.pl / config_default.php to warn users that set
+    sensitive passwords in that file to properly secure it.
 
 Version 1.4.6 - 23 February 2006
 --------------------------------

@@ -10,6 +10,11 @@
  * conf.pl if at all possible.  That is the easiest and cleanest way
  * to configure.
  *
+ * Note on SECURITY: some options require putting a password in this file.
+ * Please make sure that you adapt its permissions appropriately to avoid
+ * passwords being leaked to e.g. other system users. Take extra care when
+ * the webserver is shared with untrusted users.
+ *
  * @copyright &copy; 2000-2006 The SquirrelMail Project Team
  * @license http://opensource.org/licenses/gpl-license.php GNU Public License
  * @version $Id$
@@ -786,6 +791,9 @@ $theme[51]['NAME'] = 'Turquoise';
  *       'name' => 'Netcenter Member Directory',
  *       'base' => 'ou=member_directory,o=netcenter.com'
  *   ); 
+ *
+ *   NOTE: please see security note at the top of this file when
+ *   entering a password.
  */
 // Add your ldap server options here
 
@@ -849,6 +857,9 @@ $motd = "";
  *   The DSN is in the format: mysql://user:pass@hostname/dbname
  *   The table is the name of the table to use within the
  *   specified database.
+ *
+ *   NOTE: please see security note at the top of this file when
+ *   entering a password.
  */
 $addrbook_dsn = '';
 $addrbook_table = 'address';
