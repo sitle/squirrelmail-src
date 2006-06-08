@@ -937,6 +937,10 @@ administration plugin. The DSN should look something like:
 See <url url="http://pear.php.net/manual/en/package.database.db.php"
 name="PHP Pear DB manual"> for more details about DSN syntax.
 
+When including a sensitive password in your DSN, please make sure
+that you tighten the permissions on config.php accordingly, so
+untrusted users can't read it.
+
 Global address book uses same table format as the one used for personal
 address book. You can even use same table, if you don't have user named
 'global'.
@@ -976,6 +980,10 @@ utility or via the administration plugin. The DSN should look something like:
  mysql://squirreluser:sqpassword@localhost/squirrelmail or
  pgsql://squirreluser:sqpassword@localhost/squirrelmail
 </verb></tscreen>
+
+When including a sensitive password in your DSN, please make sure
+that you tighten the permissions on config.php accordingly, so
+untrusted users can't read it.
 
 Once configuration settings are saved, users' personal preferences will be
 stored in a database. Some SquirrelMail plugins are designed to use different
