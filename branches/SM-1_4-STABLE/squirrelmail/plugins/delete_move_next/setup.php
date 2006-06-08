@@ -179,9 +179,9 @@ function delete_move_next_read($currloc) {
         /* Base is illegal within documents 
         * $location = get_location();
         * echo "<base href=\"$location/\">" . */
-        echo '<table cellspacing=0 width="100%" border=0 cellpadding=2>'.
+        echo '<table cellspacing="0" width="100%" border="0" cellpadding="2">'.
              '<tr>'.
-                 "<td bgcolor=\"$color[9]\" width=\"100%\" align=center><small>";
+                 "<td bgcolor=\"$color[9]\" width=\"100%\" align=\"center\"><small>";
 
         if ($prev > 0){
             echo "<a href=\"read_body.php?passed_id=$prev_if_del&amp;mailbox=$urlMailbox&amp;sort=$sort&amp;startMessage=$startMessage&amp;show_more=0&amp;delete_id=$passed_id\">" . _("Delete &amp; Prev") . "</a>" . "&nbsp;|&nbsp;\n";

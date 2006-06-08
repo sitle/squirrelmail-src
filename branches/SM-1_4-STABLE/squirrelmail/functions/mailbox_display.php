@@ -114,7 +114,7 @@ function printMessageInfo($imapConnection, $t, $not_last=true, $key, $mailbox,
         }
     }
     $senderName = str_replace('&nbsp;',' ',$senderName);
-    echo html_tag( 'tr','','','','VALIGN="top"') . "\n";
+    echo html_tag( 'tr','','','','valign="top"') . "\n";
 
     if (isset($msg['FLAG_FLAGGED']) && ($msg['FLAG_FLAGGED'] == true)) {
         $flag = "<font color=\"$color[2]\">";
@@ -299,8 +299,8 @@ function printMessageInfo($imapConnection, $t, $not_last=true, $key, $mailbox,
         }
     }
     if ($not_last) {
-        echo '</tr>' . "\n" . '<tr><td COLSPAN="' . $col . '" BGCOLOR="' .
-             $color[0] . '" HEIGHT="1"></td></tr>' . "\n";
+        echo '</tr>' . "\n" . '<tr><td colspan="' . $col . '" bgcolor="' .
+             $color[0] . '" height="1"></td></tr>' . "\n";
     } else {
         echo '</tr>'."\n";
     }
@@ -510,7 +510,7 @@ function showMessagesForMailbox($imapConnection, $mailbox, $num_msgs,
                                   $msg_cnt_str, $paginator_str, $start_msg);
     echo '</td></tr>';
     /* line between the button area and the list */
-    echo '<tr><td HEIGHT="5" BGCOLOR="'.$color[4].'"></td></tr>';
+    echo '<tr><td height="5" bgcolor="'.$color[4].'"></td></tr>';
 
     echo '<tr><td>';
     echo '    <table width="100%" cellpadding="1" cellspacing="0" align="center"'.' border="0" bgcolor="'.$color[9].'">';
@@ -613,10 +613,10 @@ function displayMessageArray($imapConnection, $num_msgs, $start_msg,
     /* if there's no messages in this folder */
         echo html_tag( 'tr',
                 html_tag( 'td',
-                          "<BR><b>" . _("THIS FOLDER IS EMPTY") . "</b><BR>&nbsp;",
+                          "<br><b>" . _("THIS FOLDER IS EMPTY") . "</b><br>&nbsp;",
                           'center',
                           $color[4],
-                          'COLSPAN="' . count($index_order) . '"'
+                          'colspan="' . count($index_order) . '"'
                 )
         );
     } elseif ($start_msg == $end_msg) {
@@ -722,7 +722,7 @@ function mail_message_listing_beginning ($imapConnection,
 	    , '', '', 'border="0" width="100%" cellpadding="1"  cellspacing="0"' );
     }
 	/* line between header and button area */
-        echo '</td></tr><tr><td HEIGHT="5" BGCOLOR="'.$color[4].'"></td></tr>';
+        echo '</td></tr><tr><td height="5" bgcolor="'.$color[4].'"></td></tr>';
 
         echo '<tr><td>';
         echo html_tag( 'tr' ) . "\n"
@@ -761,9 +761,9 @@ function mail_message_listing_beginning ($imapConnection,
 
 //    $location = urlencode($location);
 
-    echo '<INPUT TYPE="HIDDEN" NAME="location" VALUE="'.$location.'">';
-    echo "</TD>\n"
-         . "   </TR>\n";
+    echo '<input type="hidden" name="location" value="'.$location.'">';
+    echo "</td>\n"
+         . "   </tr>\n";
 
     /* draws thread sorting links */
     if ($allow_thread_sort == TRUE) {
@@ -784,7 +784,7 @@ function mail_message_listing_beginning ($imapConnection,
                  , '', '', '' );
     }
 
-    echo "</TABLE></td></tr></table></td></tr>\n";
+    echo "</table></td></tr></table></td></tr>\n";
 
     do_hook('mailbox_form_before');
 
@@ -801,7 +801,7 @@ function mail_message_listing_beginning ($imapConnection,
 function mail_message_listing_end($num_msgs, $paginator_str, $msg_cnt_str, $color) {
   if ($num_msgs) {
     /* space between list and footer */
-    echo '<tr><td HEIGHT="5" BGCOLOR="'.$color[4].'" COLSPAN="1">';
+    echo '<tr><td height="5" bgcolor="'.$color[4].'" colspan="1">';
 
     echo '</td></tr><tr><td>';
     echo html_tag( 'table',
@@ -821,7 +821,7 @@ function mail_message_listing_end($num_msgs, $paginator_str, $msg_cnt_str, $colo
     /* End of message-list table */
 
     do_hook('mailbox_index_after');
-    echo "</FORM>\n";
+    echo "</form>\n";
 }
 
 function printHeader($mailbox, $sort, $color, $showsort=true) {
@@ -906,8 +906,8 @@ function ShowSortButton($sort, $mailbox, $Up, $Down ) {
     /* Now that we have everything figured out, show the actual button. */
     echo ' <a href="' . $source_url .'?newsort=' . $which
          . '&amp;startMessage=1&amp;mailbox=' . urlencode($mailbox)
-         . '"><IMG SRC="../images/' . $img
-         . '" BORDER=0 WIDTH=12 HEIGHT=10 ALT="sort"></a>';
+         . '"><img src="../images/' . $img
+         . '" border="0" width="12" height="10" alt="sort"></a>';
 }
 
 function get_selectall_link($start_msg, $sort) {
@@ -989,9 +989,9 @@ function get_msgcnt_str($start_msg, $end_msg, $num_msgs) {
 function get_paginator_link($box, $start_msg, $use, $text) {
     global $PHP_SELF;
 
-    $result = "<A HREF=\"right_main.php?use_mailbox_cache=$use"
+    $result = "<a href=\"right_main.php?use_mailbox_cache=$use"
             . "&amp;startMessage=$start_msg&amp;mailbox=$box\" "
-            . ">$text</A>";
+            . ">$text</a>";
     return ($result);
 /*
     if (preg_match('/^(.+)\?.+$/',$PHP_SELF,$regs)) {
@@ -1052,9 +1052,9 @@ function get_paginator_str($box, $start_msg, $end_msg, $num_msgs,
         $nxt_str = get_paginator_link($box, $next_grp, $use, _("Next"));
     } else if (($next_grp > $num_msgs) && ($prev_grp >= 0)) {
         $prv_str = get_paginator_link($box, $prev_grp, $use, _("Previous"));
-        $nxt_str = "<FONT COLOR=\"$color[9]\">"._("Next")."</FONT>\n";
+        $nxt_str = "<font color=\"$color[9]\">"._("Next")."</font>\n";
     } else if (($next_grp <= $num_msgs) && ($prev_grp < 0)) {
-        $prv_str = "<FONT COLOR=\"$color[9]\">"._("Previous") . '</FONT>';
+        $prv_str = "<font color=\"$color[9]\">"._("Previous") . '</font>';
         $nxt_str = get_paginator_link($box, $next_grp, $use, _("Next"));
     }
 
@@ -1173,16 +1173,16 @@ function get_paginator_str($box, $start_msg, $end_msg, $num_msgs,
             }
         }
     } else if ($PG_SHOWNUM == 999999) {
-        $pg_str = "<A HREF=\"right_main.php?PG_SHOWALL=0"
+        $pg_str = "<a href=\"right_main.php?PG_SHOWALL=0"
                 . "&amp;use_mailbox_cache=$use&amp;startMessage=1&amp;mailbox=$box\" "
-                . ">" ._("Paginate") . '</A>' . $spc;
+                . ">" ._("Paginate") . '</a>' . $spc;
     }
 
     /* If necessary, compute the 'show all' string. */
     if (($prv_str != '') || ($nxt_str != '')) {
-        $all_str = "<A HREF=\"right_main.php?PG_SHOWALL=1"
+        $all_str = "<a href=\"right_main.php?PG_SHOWALL=1"
                  . "&amp;use_mailbox_cache=$use&amp;startMessage=1&amp;mailbox=$box\" "
-                 . ">" . _("Show All") . '</A>';
+                 . ">" . _("Show All") . '</a>';
     }
 
     /* Last but not least, get the value for the toggle all link. */
@@ -1271,11 +1271,11 @@ function getMbxList($imapConnection) {
     global $lastTargetMailbox;
     echo  '         <small>&nbsp;<tt><select name="targetMailbox">';
     echo sqimap_mailbox_option_list($imapConnection, array(strtolower($lastTargetMailbox)) );
-    echo '         </SELECT></TT>&nbsp;';
+    echo '         </select></tt>&nbsp;';
 }
 
 function getButton($type, $name, $value) {
-    return '<INPUT TYPE="'.$type.'" NAME="'.$name.'" VALUE="'.$value . '">';
+    return '<input type="'.$type.'" name="'.$name.'" value="'.$value . '">';
 }
 
 function getSmallStringCell($string, $align) {
