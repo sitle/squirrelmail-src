@@ -175,7 +175,7 @@ kind of information/requests.
 <sect1>Why are pictures in my HTML e-mails replaced with ugly warning signs?
 
 <sect2>"This image has been removed for security reasons."
-
+<p>
 There are two kinds of images that come with your HTML e-mail: the ones that
 come attached with the e-mail itself, and others that link to remote sites.
 Images that are linked to remote sites are considered "unsafe" for the
@@ -190,7 +190,7 @@ following reasons:
 Let's look at these issues in more detail:
 
 <sect2> Validating your e-mail address
-
+<p>
 Spammers can (and do) include specially-crafted image tags that include a "web
 bug" (usually a 1 pixel transparant image) used to validate that your e-mail
 address is a live one and that you actually read e-mail sent to this address.
