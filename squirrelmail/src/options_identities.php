@@ -26,6 +26,12 @@ include_once(SM_PATH . 'functions/display_messages.php');
 include_once(SM_PATH . 'functions/html.php');
 include_once(SM_PATH . 'functions/identity.php');
 
+/* make sure that page is not available when $edit_identity is false */
+if (!$edit_identity) {
+    error_box(_("Editing identities is disabled."),$color);
+    die('</body></html>');
+}
+
 if (!sqgetGlobalVar('identities', $identities, SQ_SESSION)) {
     $identities = get_identities();
 }
