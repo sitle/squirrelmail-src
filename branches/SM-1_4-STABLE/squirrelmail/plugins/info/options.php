@@ -1,4 +1,4 @@
-<?PHP
+<?php
 
 /* options page for IMAP info plugin 
  * Copyright (c) 1999-2006 The SquirrelMail Project Team
@@ -69,25 +69,26 @@ $list = array (
                'TEST_8',
                'TEST_9');
 
-print "<BR><CENTER><B>IMAP server information</B></CENTER><BR>\n";
-print "<CENTER><TABLE BGCOLOR=".$color[3]." WIDTH=\"100%\" BORDER=1 CELLPADDING=2><TR><TD BGCOLOR=".$color[3]."><BR>\n";
-print "<CENTER><TABLE WIDTH=\"95%\" BORDER=1 BGCOLOR=".$color[3].">\n";
-print "<TR><TD BGCOLOR=".$color[4]."><B>Server Capability response:</B><BR>\n";
+print "<br><center><b>IMAP server information</b></center><br>\n";
+print "<center><table bgcolor=\"".$color[3]."\" width=\"100%\" border=\"1\" cellpadding=\"2\"><tr><td bgcolor=".$color[3]."><br>\n";
+print "<center><table width=\"95%\" border=\"1\" bgcolor=\"".$color[3]."\">\n";
+print "<tr><td bgcolor=\"".$color[4]."\"><b>Server Capability response:</b><br>\n";
 
 foreach($caps_array[0] as $value) {
     print htmlspecialchars($value);
 }
 
-print "</TD></TR><TR><TD>\n";
+print "</td></tr><tr><td>\n";
 
 if (!isset($submit) || $submit == 'default') {
-    print "<br><small><font color=".$color[6].">Select the IMAP commands you would like to run.
+    print "<br><font color=".$color[6]."><small>Select the IMAP commands you would like to run.
         Most commands require a selected mailbox so the SELECT-command is already setup.
         You can clear all the commands and test your own IMAP command strings. The
         commands are executed in order. The default values are simple IMAP commands using
         your default_charset and folder_prefix from SquirrelMail when needed.<br><br>
-        <b><center>NOTE: These commands are live, any changes made will effect your current
-        email account.</b></center></font></small><br>\n";
+        </small></font><center><font color=".$color[6]."><small><b>NOTE: These commands
+        are live, any changes made will effect your current
+        email account.</b></small></font></center><br>\n";
     if (!isset($submit)) {
         $submit = '';
     }
@@ -97,7 +98,7 @@ else {
           'default_charset = ' . htmlspecialchars($default_charset) . "\n";
 }
 
-print "<BR></TD></TR></TABLE></CENTER><BR>\n";
+print "<br></td></tr></table></center><br>\n";
 
 
 if ($submit == 'submit') {
@@ -127,25 +128,25 @@ elseif (!$submit || $submit == 'default')  {
         'TEST_9' => "");
 }
 
-print "<FORM ACTION=\"options.php\" METHOD=POST>\n";
-print "<CENTER><TABLE BORDER=1>\n";
-print "<TR><TH>Select</TH><TH>Test Name</TH><TH>IMAP command string</TH>\n";
-print "</TR><TR><TD>\n";
+print "<form action=\"options.php\" method=\"post\">\n";
+print "<center><table border=\"1\">\n";
+print "<tr><th>Select</th><th>Test Name</th><th>IMAP command string</th>\n";
+print "</tr><tr><td>\n";
 
 foreach($type as $index=>$value) {
-    print "</TD></TR><TR><TD WIDTH=\"10%\"><INPUT TYPE=CHECKBOX VALUE=1 NAME=CHECK_$index";
+    print "</td></tr><tr><td width=\"10%\"><input type=\"checkbox\" value=\"1\" name=\"CHECK_$index\"";
     if ($index == 'TEST_0' && ($submit == 'default' || $submit == '')) {
-        print " CHECKED";
+        print " checked";
     }
     $check = "CHECK_".$index;
     if (isset($$check) && $submit != 'clear' && $submit != 'default') {
-        print " CHECKED";
+        print " checked";
     }
-    print "></TD><TD WIDTH=\"30%\">$index</TD><TD WIDTH=\"60%\">\n";
+    print "></td><td width=\"30%\">$index</td><td width=\"60%\">\n";
     print addInput($index, $value, 60);
 }
 
-print "</TD></TR></TABLE></CENTER><BR>\n";
+print "</td></tr></table></center><br>\n";
 print "<center>".
 addSubmit('submit','submit').
 addSubmit('clear','submit').
@@ -163,19 +164,19 @@ if ($submit == 'submit') {
         }
     }
     for ($i=0;$i<count($tests);$i++) {
-        print "<CENTER><TABLE WIDTH=\"95%\" BORDER=0 BGCOLOR=".$color[4].">\n";
-        print "<TR><TD><B>".$tests[$i]."</B></TD><TR>";
-        print "<TR><TD><SMALL><B><FONT COLOR=".$color[7].
-              ">Request:</FONT></SMALL></B></TD></TR>\n";
+        print "<center><table width=\"95%\" border=\"0\" bgcolor=\"".$color[4]."\">\n";
+        print "<tr><td><b>".$tests[$i]."</b></td></tr>";
+        print "<tr><td><font color=\"".$color[7]."\"><small><b>".
+              "Request:</b></small></font></td></tr>\n";
         $response = imap_test($imap_stream, $type[$tests[$i]]);
-        print "<TR><TD><SMALL><B><FONT COLOR=".$color[7].
-              ">Response:</FONT></SMALL></B></TD></TR>\n";
-        print "<TR><TD>";
+        print "<tr><td><font color=\"".$color[7]."\"><small><b>".
+              "Response:</b></small></font></td></tr>\n";
+        print "<tr><td>";
         print_response($response);
-        print "</TD><TR></TABLE></CENTER><BR>\n";
+        print "</td></tr></table></center><br>\n";
     }
 }
-    print "</TD></TR></TABLE></CENTER></BODY></HTML>";
+    print "</form></td></tr></table></center></body></html>";
     sqimap_logout($imap_stream);
     do_hook('info_bottom');
 ?>
