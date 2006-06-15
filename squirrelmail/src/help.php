@@ -122,6 +122,7 @@ if (file_exists("../help/$squirrelmail_language")) {
     $user_language = 'en_US';
 } else {
     error_box( _("Help is not available. Please contact your system administrator for assistance."), $color );
+    echo '</td></tr></table>';
     exit;
 }
 
@@ -180,6 +181,7 @@ if ( $chapter == 0 || !isset( $helpdir[$chapter-1] ) ) {
     echo html_tag( 'ol' );
 
     // Write the TOC chapters.
+    // FIXME: HTML code is not compliant.
     for ($i=0, $cnt = count($toc); $i < $cnt; $i++) {
         echo '<li><a href="../src/help.php?chapter=' . $toc[$i][0]. '">' .
             $toc[$i][1] . '</a>' . html_tag( 'ul', $toc[$i][2] );
@@ -244,7 +246,7 @@ if ( $chapter == 0 || !isset( $helpdir[$chapter-1] ) ) {
             $section++;
             $help_info = get_info($doc, $n);
             echo "<b>$chapter.$section - $help_info[0]</b>" .
-                html_tag( 'ul', $help_info[1] );
+                $help_info[1];
             $n = $help_info[3];
         }
 
