@@ -1,0 +1,82 @@
+#!/bin/sh
+
+# **
+# ** This script merges global POT to locale PO files.
+# ** It creates a backup of the old PO file as squirrelmail.po.bak
+# ** and puts the merged version in squirrelmail.po
+# **
+# ** Usage:   mergepo <locale id> [translation]
+# ** Examples: mergepo es_ES 
+# **           mergepo es_ES squirrelmail
+# **           mergepo es_ES view_as_html
+# **
+# ** translation is optional. It defines which pot used when merging.
+# ** variable defaults to squirrelmail.
+# **
+# ** Philipe Mingo <mingo@rotedic.com>
+# ** Konstantin Riabitsev <icon@duke.edu>
+# **
+# **  $Id$
+
+if [ -z "$1" ]; then
+ echo "USAGE: mergepo [localename]"
+ exit 1
+fi
+
+if [ -z "$2" ]; then
+ string="squirrelmail"
+else
+ if [ -f po/${2}.pot ]; then
+    string=$2
+ else
+  if [ -f po/plugins/${2}.pot ]; then
+     string='plugins/'$2
+  else
+   if [ -f po/extra/${2}.pot ]; then
+       string='extra/'$2
+   else
+    echo "ERROR: No such template in po directory"
+    exit 1
+   fi
+  fi
+ fi
+fi
+
+WORKDIR=./locale
+LOCALEDIR=$WORKDIR/$1
+
+if [ ! -d $LOCALEDIR ]; then
+ # lessee if it's been renamed.
+ DCOUNT=`find $WORKDIR/ -name $1* | wc -l` 
+ if [ $DCOUNT -eq 1 ]; then 
+  # aha
+  LOCALEDIR=`find $WORKDIR/ -name $1*`
+ elif [ $DCOUNT -gt 1 ]; then
+  # err out
+  echo "More than one locale matching this name found:"
+  find $WORKDIR/ -name $1*
+  echo "You have to be more specific."
+  exit 1
+ fi
+fi
+
+if [ -f $LOCALEDIR/LC_MESSAGES/${string}.po ]; then
+    echo "Merging $LOCALEDIR/LC_MESSAGES/${string}.po"
+    mv $LOCALEDIR/LC_MESSAGES/${string}.po \
+     $LOCALEDIR/LC_MESSAGES/${string}.po.bak
+    msgmerge $LOCALEDIR/LC_MESSAGES/${string}.po.bak po/${string}.pot > \
+     $LOCALEDIR/LC_MESSAGES/${string}.po
+
+# msgmerge will split long lines, such as the RCS Id line. If it did split
+# it, join the pieces back together.
+ed -s $LOCALEDIR/LC_MESSAGES/${string}.po << END
+/^"Project-Id-Version:/v/\\n"$/j\\
+s/""//
+wq
+END
+
+    echo "Old po file renamed to ${string}.po.bak"
+else
+    echo "Created new $LOCALEDIR/LC_MESSAGES/${string}.po"
+    cp po/${string}.pot $LOCALEDIR/LC_MESSAGES/${string}.po
+fi 

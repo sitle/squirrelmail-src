@@ -1,0 +1,697 @@
+# avelsieve translation to Italian.
+# 'avelsieve' is Copyright (C) 2002-2004 Alexandros Vellis
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: avelsieve 0.9.8\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2004-01-22 16:55+0200\n"
+"PO-Revision-Date: 2003-12-29 23:00+0100\n"
+"Last-Translator: Alessandro Dalvit <adalvit@katamail.com>\n"
+"Language-Team: Italian <it@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=ISO-8859-1\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#, fuzzy
+msgid "You have to define at least one header match text."
+msgstr "Devi definire almeno una stringa di corrispondenza per l'intestazione."
+
+msgid "You have not defined the name for the new folder."
+msgstr "Non hai definito il nome della nuova cartella."
+
+msgid "Please try again."
+msgstr "Prova di nuovo, per favore."
+
+msgid "Illegal folder name.  Please select a different name"
+msgstr "Nome di cartella non consentito. Seleziona un altro nome"
+
+msgid "Add New Rule"
+msgstr "Aggiungi Nuova Regola"
+
+msgid "New Rule Wizard - Step"
+msgstr "Guida Nuove Regole - Passo"
+
+msgid "of"
+msgstr "di"
+
+msgid "Rule Type"
+msgstr "Tipo di Regola"
+
+msgid "Condition"
+msgstr "Condizione"
+
+msgid "Action"
+msgstr "Azione"
+
+msgid "Confirmation"
+msgstr "Conferma"
+
+msgid ""
+"<p>You have chosen to keep every mail. This is the default action anyway, so "
+"you might want to start over with a rule that makes more sense. Select &quot;"
+"finished&quot; to save this rule nonetheless.</p>"
+msgstr ""
+"<p>Hai scelto di tenere ogni mail. Questa, ad ogni modo, &egrave; "
+"l'azionepredefinita, quindi potresti voler ricomiciare con una regola "
+"piùsignificativa. Selezione &quot;finito&quot; per salvare questa regola "
+"comunque.</p>"
+
+msgid ""
+"Please use the buttons on the bottom instead of your browser's reload, back "
+"and forward buttons, to build a rule."
+msgstr ""
+"Per costruire una regola utilizza i bottoni in basso anzich&acute; ipulsanti "
+"aggiorna, indietro e avanti del tuo browser."
+
+msgid "Clear this Form"
+msgstr "Ripulisci il Modulo"
+
+msgid "Start Over"
+msgstr "Ricomincia"
+
+msgid "Cancel"
+msgstr "Annulla"
+
+msgid "Add SPAM Rule"
+msgstr "Aggiungi Regola di SPAM"
+
+msgid "Move back to step"
+msgstr "Torna al passo"
+
+msgid "Finished"
+msgstr "Finito"
+
+msgid "Move on to step"
+msgstr "Avanti al passo"
+
+msgid "None"
+msgstr ""
+
+msgid "What kind of rule would you like to add?"
+msgstr "Che tipo di regola vorresti aggiungere?"
+
+msgid ""
+"The rule will trigger if the following addresses appear anywhere in the "
+"message's headers:"
+msgstr ""
+"La regola scatter&agrave; se gli indirizzi seguenti compaiono da "
+"qualsiasiparte nelle intestazioni del messaggio:"
+
+msgid "AND (Every item must match)"
+msgstr "AND (Ogni elemento deve corrispondere)"
+
+msgid "OR (Either item will match)"
+msgstr "OR (Qualsiasi elemento pu&ograve corrispondere)"
+
+msgid "The condition for the following rules is:"
+msgstr "La condizione per le regole seguenti &egrave;:"
+
+msgid "The header "
+msgstr "L'intestazione "
+
+msgid "Less..."
+msgstr "Di meno..."
+
+msgid "More..."
+msgstr "Di pi&ugrave;..."
+
+msgid "This rule will trigger if message is"
+msgstr "Questa regola scatter&agrave; se il messaggio &egrave;"
+
+msgid "bigger"
+msgstr "pi&ugrave; grande"
+
+msgid "smaller"
+msgstr "pi&ugrave; piccolo"
+
+msgid "than"
+msgstr "di"
+
+msgid "KB (kilobytes)"
+msgstr ""
+
+msgid "MB (megabytes)"
+msgstr ""
+
+msgid ""
+"The following action will be applied to <strong>all</strong> incoming "
+"messages that do not match any of the previous rules."
+msgstr ""
+"L'azione seguente sar&agrave; compiuta per <strong>tutti</strong> imessaggi "
+"in arrivo che non corrispondono a nessuna delle regole precedenti."
+
+msgid ""
+"This rule will trigger upon the occurrence of one or more strings in the "
+"body of an e-mail message. "
+msgstr ""
+"La regola scatter&agrave; all'occorrenza di una o pi&ugrave; stringhenel "
+"corpo di un messaggio. "
+
+msgid "Choose what to do when this rule triggers, from one of the following:"
+msgstr "Scegli cosa fare quando la regola scatta, da una delle seguenti:"
+
+msgid "Keep (Default action)"
+msgstr "Tieni (Azione predefinita)"
+
+#, fuzzy
+msgid "Discard Silently"
+msgstr "Scarta Silenziosamente"
+
+msgid "Reject, sending this excuse to the sender:"
+msgstr "Rifiuta, mandando queste scuse al mittente:"
+
+msgid "Please do not send me large attachments."
+msgstr "Per favore non mandarmi grossi allegati."
+
+msgid "Redirect to the following email address:"
+msgstr "Redirezione al seguente indirizzo:"
+
+msgid "someone@example.org"
+msgstr "qualcuno@esempio.org"
+
+msgid "Keep a local copy as well."
+msgstr ""
+
+msgid "Move message into"
+msgstr "Sposta messaggio in"
+
+msgid "the existing folder"
+msgstr "la cartella esistente"
+
+msgid "a new folder, named"
+msgstr "una nuova cartella, chiamata"
+
+msgid "created as a subfolder of"
+msgstr "creata come sottocartella di"
+
+msgid "Also keep copy in INBOX, marked as deleted."
+msgstr "Tieni anche una copia in INBOX, marcata come eliminata."
+
+msgid "Vacation"
+msgstr "Assenza"
+
+msgid ""
+"The notice will be sent only once to each person that sends you mail, and "
+"will not be sent to a mailing list address."
+msgstr ""
+"L'avviso verr&agrave; spedito solo una volta a ciascuna persona cheti manda "
+"un messaggio, e comunque non a indirizzi di mailing list."
+
+msgid "Addresses: Only reply if sent to these addresses:"
+msgstr "Indirizzi: Rispondi solo se spedita a questi indirizzi:"
+
+msgid "Days: Reply message will be resent after"
+msgstr "Giorni: I messaggi di risposta saranno rispediti dopo"
+
+msgid "days"
+msgstr "giorni"
+
+msgid "Use the following message:"
+msgstr "Utilizza il seguente messaggio:"
+
+msgid ""
+"This is an automated reply; I am away and will not be able to reply to you "
+"immediately."
+msgstr ""
+"Questa &egrave; una risposta automatica; sono assente e non potr&ograve;"
+"risponderti subito."
+
+msgid "I will get back to you as soon as I return."
+msgstr "Ti risponder&ograve; al mio ritorno."
+
+msgid "Additional Actions"
+msgstr "Azioni Aggiuntive"
+
+msgid "STOP"
+msgstr ""
+
+msgid "If this rule matches, do not check any rules after it."
+msgstr ""
+"Se questa regola corrisponde, non controllare altre regole dopo di essa."
+
+msgid "Notify me, using the following method:"
+msgstr "Avvertimi, utilizzando il metodo seguente:"
+
+msgid "Notification ID"
+msgstr "ID di Notifica"
+
+msgid "Destination"
+msgstr "Destinazione"
+
+msgid "Message"
+msgstr "Messaggio"
+
+msgid "Help: Valid variables are:"
+msgstr "Aiuto: Le variabili valide sono:"
+
+msgid "Your new rule states:"
+msgstr "La tua nuova regola afferma:"
+
+#, fuzzy
+msgid ""
+"If this is what you wanted, select Finished. You can also start over or "
+"cancel adding a rule altogether."
+msgstr ""
+"Se questo &egrave; ci&ograve; che volevi, seleziona Finito. Puoi "
+"semprericominciare o tornare indietro a modificare qualcosa."
+
+msgid "Configure Anti-SPAM Protection"
+msgstr "Configura Protezione Anti-SPAM"
+
+msgid ""
+"All incoming mail is checked for unsolicited commercial content (SPAM) and "
+"marked accordingly. This special rule allows you to configure what to do "
+"with such messages once they arrive to your Inbox."
+msgstr ""
+"Tutta la posta in ingresso viene controllata per contenuti commercialinon "
+"richiesti (SPAM) e marcata di conseguenza. Questa regola specialeti permette "
+"di configurare cosa fare con tali messaggi una volta che arrivano alla tua "
+"casella."
+
+#, php-format
+msgid ""
+"Select %s to add the predefined rule, or select the advanced SPAM filter to "
+"customize the rule."
+msgstr ""
+"Seleziona %s per aggiungere la regola predefinita, o seleziona ilfiltro anti-"
+"SPAM avanzato per personalizzarla."
+
+msgid "Add Spam Rule"
+msgstr "Aggiungi Regola di Spam"
+
+msgid "Advanced Spam Filter..."
+msgstr "Filtro Spam Avanzato..."
+
+msgid "Target Score"
+msgstr "Punteggio Limite"
+
+#, php-format
+msgid ""
+"Messages with SPAM-Score higher than the target value, the maximum value "
+"being %s, will be considered SPAM."
+msgstr ""
+"I messaggi con punteggio SPAM-Score pi&ugrave; alto del valore limite(dove "
+"il valore massimo &egrave; %s), saranno considerati SPAM"
+
+msgid "SPAM Lists to check against"
+msgstr "Lista SPAM con cui controllare"
+
+msgid "Error Encountered"
+msgstr "Errori Verificatisi"
+
+msgid "For <strong>ALL</strong> incoming messages; "
+msgstr "Per <strong>TUTTI</strong> i messaggi in arrivo; "
+
+msgid ""
+"All messages considered as <strong>SPAM</strong> (unsolicited commercial "
+"messages)"
+msgstr ""
+"Tutti i messaggi considerati <strong>SPAM</strong> (messaggi commercialinon "
+"richiesti)"
+
+msgid "matching the Spam List(s):"
+msgstr "che corrispondono alla Lista/e di Spam:"
+
+#, php-format
+msgid "and with score greater than %s"
+msgstr "e il cui punteggio &egrave; maggiore di %s"
+
+msgid "will be"
+msgstr "saranno"
+
+msgid "stored in the Junk Folder."
+msgstr "conservati nella cartella Junk (robaccia)."
+
+msgid "stored in the Trash Folder."
+msgstr "conservati nella cartella Trash."
+
+msgid "discarded."
+msgstr "scartati."
+
+msgid "If"
+msgstr "Se"
+
+msgid "<em>any</em> of the following mail headers match: "
+msgstr "<em>uno qualsiasi</em> delle seguenti intestazioni corrisponde: "
+
+msgid "<em>all</em> of the following mail headers match: "
+msgstr "<em>tutte</em> le seguenti intestazioni corrispondono: "
+
+msgid "the header"
+msgstr "l'intestazione"
+
+msgid "is"
+msgstr "&egrave;"
+
+msgid "is not"
+msgstr "non &egrave;"
+
+msgid "contains"
+msgstr "contiene"
+
+msgid "does not contain"
+msgstr "non contiene"
+
+msgid "matches"
+msgstr "corrisponde"
+
+msgid "does not match"
+msgstr "non corrisponde"
+
+msgid "is greater than"
+msgstr "&egrave; pi&ugrave; grande di"
+
+msgid "is greater or equal to"
+msgstr "&egrave; pi&ugrave; grande o uguale a"
+
+msgid "is lower than"
+msgstr "&egrave; pi&ugrave; piccola di"
+
+msgid "is lower or equal to"
+msgstr "&egrave; pi&ugrave; piccola o uguale a"
+
+msgid "is equal to"
+msgstr "&egrave; uguale a"
+
+msgid "is not equal to"
+msgstr "non &egrave; uguale a"
+
+msgid "matches the regural expression"
+msgstr "corrisponde all'espressione regolare"
+
+msgid "does not match the regural expression"
+msgstr "non corrisponde all'espressione regolare"
+
+msgid "exists"
+msgstr "esiste"
+
+msgid "does not exist"
+msgstr "non esiste"
+
+msgid "the size of the message is"
+msgstr "la dimensione del messaggio &egrave;"
+
+msgid " bigger"
+msgstr " pi&ugrave; grande"
+
+msgid " smaller"
+msgstr " pi&ugrave; piccola"
+
+msgid "then"
+msgstr "allora"
+
+msgid "<em>keep</em> it."
+msgstr "<em>tienilo</em>."
+
+msgid "<em>discard</em> it."
+msgstr "<em>scartalo</em>."
+
+msgid "<em>reject</em> it, sending this excuse back to the sender:"
+msgstr "<em>rifiutalo</em>, mandando le scuse al mittente:"
+
+msgid "<em>redirect</em> it to the email address"
+msgstr "<em>redirezionalo</em> all'indirizzo"
+
+msgid "<em>file</em> it into the folder <strong>"
+msgstr "<em>inseriscilo</em> nella cartella <strong>"
+
+msgid "reply with this vacation message: "
+msgstr "rispondi con questo messaggio di assenza: "
+
+msgid "Also keep a local copy."
+msgstr ""
+
+msgid " Also keep a copy in INBOX, marked as deleted."
+msgstr " Tieni anche una copia in INBOX, marcata come eliminata."
+
+msgid " Also notify using the method"
+msgstr "Avvisami usando il metodo"
+
+msgid "with"
+msgstr "con"
+
+msgid "priority and the message"
+msgstr "priorit&agrave; e il messaggio"
+
+msgid " Then <strong>STOP</strong> processing rules."
+msgstr " Quindi, <strong>SMETTI</strong> di processare regole."
+
+msgid "Address Match"
+msgstr "Corrispondenza Indirizzo"
+
+msgid ""
+"Perform an action depending on email addresses appearing in message headers."
+msgstr ""
+"Adotta un'azione a seconda degli indirizzi che compaiono nelle intestazioni "
+"del messaggio."
+
+msgid "Header Match"
+msgstr "Corrispondenza Intestazione"
+
+msgid ""
+"Perform an action on messages matching a specified header (From, To etc.)."
+msgstr ""
+"Adotta un'azione sui messaggi di cui corrisponde una intestazionespecifica "
+"(From, To, ecc.)"
+
+msgid "Size"
+msgstr "Dimensione"
+
+msgid "Perform an action on messages depending on their size."
+msgstr "Adotta un'azione sui messaggi a seconda della loro dimensione."
+
+msgid "All Messages"
+msgstr "Tutti i Messaggi"
+
+msgid "Perform an action on <strong>all</strong> incoming messages."
+msgstr "Adotta un'azione su <strong>tutti</strong> i messaggi in arrivo."
+
+msgid "Body Match"
+msgstr "Corrispondenza Corpo"
+
+msgid "Perform an action on messages depending on their content (body text)."
+msgstr "Adotta un'azione sui messaggi a seconda del contenuto del corpo."
+
+msgid "wildcard"
+msgstr ""
+
+msgid "regexp"
+msgstr ""
+
+msgid "verbose"
+msgstr "dettagliato"
+
+msgid "terse"
+msgstr "conciso"
+
+msgid "Mobile Phone Message (SMS)"
+msgstr "Messaggio sul Cellulare (SMS)"
+
+msgid "Email notification"
+msgstr "Avviso via Email"
+
+msgid "Notification via Zephyr"
+msgstr "Avviso via Zephyr"
+
+msgid "Notification via ICQ"
+msgstr "Avviso via ICQ"
+
+msgid "Low"
+msgstr "Bassa"
+
+msgid "Normal"
+msgstr "Normale"
+
+msgid "High"
+msgstr "Alta"
+
+msgid "Delete"
+msgstr "Elimina"
+
+msgid "Edit"
+msgstr "Modifica"
+
+msgid "Duplicate"
+msgstr "Duplica"
+
+msgid "Move Up"
+msgstr "Sposta su"
+
+msgid "Move to Top"
+msgstr "Sposta in cima"
+
+msgid "Move Down"
+msgstr "Sposta gi&ugrave;"
+
+msgid "Move to Bottom"
+msgstr "Sposta in fondo"
+
+msgid "Junk Folder"
+msgstr "Cartella Junk"
+
+#, php-format
+msgid ""
+"Store SPAM message in your Junk Folder. Messages older than %s days will be "
+"deleted automatically."
+msgstr ""
+"Conserva i messaggi di SPAM nella Cartella Junk (robaccia). I messaggi "
+"pi&ugrave; vecchi di %s giorni verranno eliminati automaticamente."
+
+msgid "Note that you can set the number of days in Folder Preferences."
+msgstr ""
+
+msgid "Trash Folder"
+msgstr "Cestino"
+
+msgid ""
+"Store SPAM message in your Trash Folder. You will have to purge the folder "
+"yourself."
+msgstr ""
+"Conserva i messaggi di SPAM nel Cestino. Dovrai svuotare la cartella da te."
+
+msgid "Discard"
+msgstr "Scarta"
+
+msgid ""
+"Discard SPAM message. You will get no indication that the message ever "
+"arrived."
+msgstr ""
+"Scarta i messaggi di SPAM. Non avrai indicazioni che il messaggio siamai "
+"arrivato."
+
+msgid "Editing Mail Filtering Rule"
+msgstr "Modifica Regole di Filtraggio Posta"
+
+msgid "Apply Changes"
+msgstr "Applica i Cambiamenti"
+
+msgid "Message Filters"
+msgstr "Filtri Messaggi"
+
+msgid ""
+"Server-Side mail filtering enables you to add criteria in order to "
+"automatically forward, delete or place a given message into a folder."
+msgstr ""
+"Il filtraggio su lato server ti consente di aggiungere criteri perinoltrare, "
+"eliminare o mettere un messaggio in una cartella."
+
+msgid "Filters"
+msgstr "Filtri"
+
+msgid "Could not log on to timsieved daemon on your IMAP server"
+msgstr "Non ho potuto accedere al demone timsieved sul tuo server IMAP"
+
+msgid "Please contact your administrator."
+msgstr "Contatta il tuo amministratore."
+
+msgid "Could not set active script on your IMAP server"
+msgstr "Impossibile impostare lo script attivo sul tuo server IMAP"
+
+msgid "Unable to load script to server."
+msgstr "Impossibile caricare lo script sul server."
+
+msgid "Server responded with:"
+msgstr "Il server ha risposto con:"
+
+msgid "Test for Forged Header"
+msgstr ""
+
+msgid "Current Mail Filtering Rules"
+msgstr "Regole Filtraggio Mail Attuali"
+
+msgid "No Filtering Rules Defined Yet"
+msgstr "Nessuna Regola di Filtraggio Definita"
+
+msgid "Could not get SIEVE script from your IMAP server"
+msgstr "Impossibile prelevare gli script SIEVE dal tuo server IMAP"
+
+msgid "(Probably the script is size null)."
+msgstr "(Probabilmente la dimensione dello script &egrave; nulla)."
+
+msgid "All your rules have been deleted"
+msgstr "Tutte le tue regole sono state cancellate"
+
+#, fuzzy
+msgid "Really delete this rule?"
+msgstr "Eliminata con successo la regola #"
+
+msgid "Delete Selected"
+msgstr "Elimina Selezionate"
+
+msgid "Server-Side Mail Filtering"
+msgstr "Filtraggio Mail lato Server"
+
+msgid ""
+"Here you can add or delete filtering rules for your email account. These "
+"filters will always apply to your incoming mail, wherever you check your "
+"email."
+msgstr ""
+"Qui puoi aggiungere o eliminare regole di filtraggio per la tua posta.Questi "
+"filtri verranno sempre applicati alla tua posta in ingresso, daqualsiasi "
+"posto tu la controlli."
+
+msgid ""
+"You don't have any rules yet. Feel free to add any with the button &quot;Add "
+"a New Rule&quot;. When you are done, please select &quot;Save Changes&quot; "
+"to get back to the main options screen."
+msgstr ""
+"Non hai ancora alcuna regola. Aggiungine quante ne vuoi col pulsante&quot;"
+"Aggiungi una Nuova Regola&quot;. Quando hai finito, seleziona&quot;Salva "
+"Cambiamenti&quot; per tornare alla schermata delle opzioniprincipale."
+
+msgid ""
+"When you are done with editing, <strong>remember to select &quot;Save "
+"Changes&quot;</strong> to activate your changes!"
+msgstr ""
+"Quando hai finito le modifiche <strong> ricordati di selezionare&quot;Salva "
+"Cambiamenti&quot;</strong> per attivarli!"
+
+msgid "Successfully added new rule."
+msgstr "Nuova regola aggiunta con successo."
+
+msgid "Successfully updated rule #"
+msgstr "Aggiornata con successo la regola #"
+
+msgid "Successfully deleted rules #"
+msgstr "Eliminata con successo la regola #"
+
+msgid "Successfully deleted rule #"
+msgstr "Eliminata con successo la regola #"
+
+msgid "The following table summarizes your current mail filtering rules."
+msgstr "La tabela seguente riassume le tue regole di filtraggio attuali."
+
+msgid "No"
+msgstr ""
+
+msgid "Description of Rule"
+msgstr "Descrizione della Regola"
+
+msgid "Display as:"
+msgstr "Mostra come:"
+
+msgid "Options"
+msgstr "Opzioni"
+
+msgid "Add a New Rule"
+msgstr "Aggiungi Nuova Regola"
+
+msgid ""
+"When you are done, please click the button below to return to your webmail."
+msgstr ""
+"Quando hai finito, premi il bottone sotto per tornare alla tua webmail."
+
+msgid "Save Changes"
+msgstr "Salva Cambiamenti"
+
+msgid "Created:"
+msgstr "Creata:"
+
+msgid "Last modified:"
+msgstr "Ultima modifica:"
+
+#~ msgid "in order to save your rules."
+#~ msgstr "per salvare le tue regole."
