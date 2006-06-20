@@ -622,7 +622,7 @@ function formatMenubar($mailbox, $passed_id, $passed_ent_id, $message, $mbx_resp
 }
 
 function formatToolbar($mailbox, $passed_id, $passed_ent_id, $message, $color) {
-    global $base_uri, $where, $what;
+    global $base_uri, $where, $what, $download_and_unsafe_link;
 
     $urlMailbox = urlencode($mailbox);
     $urlPassed_id = urlencode($passed_id);
@@ -649,6 +649,12 @@ function formatToolbar($mailbox, $passed_id, $passed_ent_id, $message, $color) {
     $s .= '&nbsp;|&nbsp;' .
           printer_friendly_link($mailbox, $passed_id, $passed_ent_id, $color);
     echo $s;
+
+    /* Output the download and/or unsafe images link/-s, if any. */
+    if ($download_and_unsafe_link) {
+        echo $download_and_unsafe_link;
+    }
+
     do_hook("read_body_header_right");
     $s = "</small></td>\n" .
          "</tr>\n";
