@@ -302,9 +302,10 @@ function formatBody($imap_stream, $message, $color, $wrap_at, $ent_num, $id, $ma
      * primary message. To add more of them, just put them in the
      * order that is their priority.
      */
-    global $startMessage, $username, $key, $imapServerAddress, $imapPort,
-           $show_html_default, $sort, $has_unsafe_images, $passed_ent_id;
-    global $languages, $squirrelmail_language;
+    global $startMessage, $languages, $squirrelmail_language,
+           $show_html_default, $sort, $has_unsafe_images, $passed_ent_id,
+           $username, $key, $imapServerAddress, $imapPort,
+           $download_and_unsafe_link;
 
     if( !sqgetGlobalVar('view_unsafe_images', $view_unsafe_images, SQ_GET) ) {
         $view_unsafe_images = false;
@@ -361,13 +362,15 @@ function formatBody($imap_stream, $message, $color, $wrap_at, $ent_num, $id, $ma
             return $body;
         }
 
+        $download_and_unsafe_link = '';
+
         $link = 'passed_id=' . $id . '&amp;ent_id='.$ent_num.
             '&amp;mailbox=' . $urlmailbox .'&amp;sort=' . $sort .
             '&amp;startMessage=' . $startMessage . '&amp;show_more=0';
         if (isset($passed_ent_id)) {
             $link .= '&amp;passed_ent_id='.$passed_ent_id;
         }
-        $body .= '<center><small><a href="download.php?absolute_dl=true&amp;' .
+        $download_and_unsafe_link .= '&nbsp;|&nbsp;<a href="download.php?absolute_dl=true&amp;' .
             $link . '">' . _("Download this as a file") .  '</a>';
         if ($view_unsafe_images) {
             $text = _("Hide Unsafe Images");
@@ -380,9 +383,8 @@ function formatBody($imap_stream, $message, $color, $wrap_at, $ent_num, $id, $ma
             }
         }
         if($text != '') {
-            $body .= '&nbsp;|&nbsp;<a href="read_body.php?' . $link . '">' . $text . '</a>';
+            $download_and_unsafe_link .= '&nbsp;|&nbsp;<a href="read_body.php?' . $link . '">' . $text . '</a>';
         }
-        $body .= '</small></center><br />' . "\n";
     }
     return $body;
 }
