@@ -1,112 +1,136 @@
 # Lithuanian translation of 
-# SquirrelMail's Change MySQL password plugin.
+# SquirrelMail change_sqlpass plugin.
 # Copyright (C) 2003 Free Software Foundation, Inc
+# Copyright (C) 2006 The SquirrelMail Project Team
 # Tomas Kuliavas <tokul@users.sourceforge.net>, 2003.
+# Tomas Kuliavas <tokul@users.sourceforge.net>, 2006.
+# $Id$
+# 
 msgid ""
 msgstr ""
-"Project-Id-Version: $Id: change_mysqlpass.po,v 1.1 2003/09/13 08:24:59 tokul "
-"Exp $\n"
-"POT-Creation-Date: 2002-10-24 22:19-0700\n"
-"PO-Revision-Date: 2003-09-13 11:23+0300\n"
+"Project-Id-Version: change_sqlpass 3.3\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2006-05-28 11:18+0200\n"
+"PO-Revision-Date: 2006-06-21 08:57+0300\n"
 "Last-Translator: Tomas Kuliavas <tokul@users.sourceforge.net>\n"
 "Language-Team: Lithuanian <squirrelmail-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
+"Content-Transfer-Encoding: 8bit"
 
-#: setup.php:208
-msgid "Password change cancelled."
-msgstr "Slaptažodžio keitimas atšauktas."
+msgid "Could not find Pear DB library"
+msgstr "Nepavyko įkelti Pear DB bibliotekos"
 
-#: setup.php:208
-msgid "Your password has NOT been changed."
-msgstr "Jūsų slaptažodis nebuvo pakeistas."
+msgid "Could not make database connection"
+msgstr "Nepavyko prisijungti prie duomenų bazės"
 
-#: setup.php:211
-msgid "Password changed successfully."
-msgstr "Slaptažodis buvo sėkmingai pakeistas."
+#, php-format
+msgid "DATABASE ERROR: could not lookup force change password flag: %s"
+msgstr "DUOMENŲ BAZĖS KLAIDA: nepavyko nustatyti priverstinio slaptažodžio keitimo žymės: %s"
 
-#: setup.php:208
-msgid "Please use your new password to log in from now on."
-msgstr "Nuo šiol prisijungimo metu naudokite savo naująjį slaptažodį."
+#, php-format
+msgid ""
+"Force change password query result is: %s<br />Query was: %s<br /><br />"
+msgstr ""
+"Priverstinio slaptažodžio keitimo užklausos rezultatas: %s<br />Naudota užklausa: %s<br /><br />"
 
-#: options.php:143
 msgid "Change Password"
 msgstr "Pakeisti slaptažodį"
 
-#: options.php:143
-msgid "Secure"
-msgstr "Saugus"
+msgid "Use this to change your email password."
+msgstr "Čia Jūs galite pasikeisti naudojamą pašto slaptažodį."
 
-#: options.php:170
+msgid ""
+"Password changed successfully.<br />Please use your new password to log in "
+"from now on."
+msgstr "Slaptažodis sėkmingai pakeistas.<br />Nuo šiol prisijungimo metu naudokite naująjį slaptažodį."
+
+msgid "Password change cancelled.<br />Your password has NOT been changed."
+msgstr "Slaptažodžio pakeitimas atšauktas.<br />Jūsų slaptažodis nebuvo pakeistas."
+
+msgid ""
+"Periodically, we ask that you change your password.  This is done to help "
+"maintain good security for your email account."
+msgstr "Sistema periodiškai prašo Jūsų pakeisti slaptažodį. Tai yra daroma siekiant"
+"pagerinti Jūsų pašto sąskaitos saugumą."
+
+msgid "Change Password - Secure"
+msgstr "Slaptažodžio keitimas - Saugus"
+
 msgid "Old Password"
 msgstr "Senas slaptažodis"
 
-#: options.php:174
 msgid "New Password"
 msgstr "Naujas slaptažodis"
 
-#: options.php:178
 msgid "Verify New Password"
 msgstr "Patvirtinkite naują slaptažodį"
 
-#: options.php:184
 msgid "Submit"
 msgstr "Keisti"
 
-#: options.php:189
 msgid "Cancel"
 msgstr "Atšaukti"
 
-#: options.php:227
-msgid "You must type in your old password."
-msgstr "Jūs turite įvesti savo senąjį slaptažodį."
+#, php-format
+msgid "DATABASE ERROR: could not lookup salt: %s"
+msgstr "DUOMENŲ BAZĖS KLAIDA: nepavyko nustatyti kodavimo simbolių: %s"
 
-#: options.php:229
-msgid "You must type in a new password."
-msgstr "Jūs turite įvesti naująjį slaptažodį."
+#, php-format
+msgid "Password query result is: %s<br />Query was: %s<br /><br />"
+msgstr "Slaptažodžio užklausos rezultatas: %s<br />Naudota užklausa: %s<br /><br />"
 
-#: options.php:232
-msgid "You must also type in your new password in the verify box."
-msgstr "Jūs turi dar kartą įvesti slaptažodį patvirtinimo laukelyje."
+msgid "You must type in your old password"
+msgstr "Jūs turite įvesti savo senąjį slaptažodį"
 
-#: options.php:235
-msgid "Your new password does not match the verify password."
-msgstr ""
-"Jūsų naujasis slaptažodis nesutampa su slaptažodžio įvestu patvirtinimo "
-"laukelyje."
+msgid "Your old password is not correct"
+msgstr "Jūsų senasis slaptažodis yra neteisingas"
 
-#: options.php:237
-msgid "Your old password is not correct."
-msgstr "Jūsų senasis slaptažodis yra neteisingas."
+#, php-format
+msgid "DATABASE ERROR: could not lookup old password: %s"
+msgstr "DUOMENŲ BAZĖS KLAIDA: nepavyko aptikti senojo slaptažodžio: %s"
 
-#: options.php:240
-msgid "Your new password must be different than your old password."
-msgstr "Naujasis slaptažodis turi skirtis nuo senojo."
+msgid "Your old password does not match"
+msgstr "Jūsų senasis slaptažodis yra neteisingas"
 
-#: options.php:294
-msgid "Cannot connect to Database Server, please try later!"
-msgstr "Nepavyko prisijungti prie duomenų bazės serverio, bandykite vėliau!"
+msgid "You must type in a new password"
+msgstr "Jūs turite įvesti naują slaptažodį"
 
-#: options.php:299
-msgid "Database not found on server"
-msgstr "Serveryje nerasta reikiama duomenų bazė"
+#, php-format
+msgid "Your new password is too short.  It must be at least %s characters long"
+msgstr "Naujasis slaptažodis yra per trumpas. Slaptažodį turi sudaryti bent %s simboliai"
 
-#: options.php:364
-msgid "SQL call failed, try again later."
-msgstr "SQL komanda nepavyko, bandykite vėliau."
+#, php-format
+msgid ""
+"Your new password is too long.  It must be no more than %s characters long"
+msgstr "Naujasis slaptažodis yra per ilgas. Slaptažodis turi neviršyti %s simbolių"
 
-#: options.php:379 options.php:386
-msgid "Strange, your old password does not match the database... rejecting."
-msgstr ""
-"Keista, jūsų senasis slaptažodis neatitinka saugomi duomenų bazėje..."
-"Operacija atšaukta."
+msgid "Please include at least one digit in your new password"
+msgstr "Naujame slaptažodyje turi būti bent vienas skaitmuo"
 
-#: options.php:391
-msgid "Duplicate login entries detected, cannot change password!"
-msgstr ""
-"Aptikta sutampanti prisijungimo informacija, negalima pakeisti slaptažodžio!"
+msgid "Please include at least one upper-case letter in your new password"
+msgstr "Naujame slaptažodyje turi būti bent viena didžioji raidė"
 
-#: options.php:468
-msgid "Password change was not successful!"
-msgstr "Slaptažodžio pakeitimas buvo nesėkmingas!"
+msgid "Please include at least one lower-case letter in your new password"
+msgstr "Naujame slaptažodyje turi būti bent viena mažoji raidė"
+
+msgid ""
+"Please include at least one non-alphanumeric character (such as @, - or _) "
+"in your new password"
+msgstr "Naujame slaptažodyje turi būti bent vienas ne raidinis ar skaitmeninis simbolis."
+"Pvz.: @ arba _."
+
+msgid "You must also type in your new password in the verify box"
+msgstr "Jūs turite dar kartą įvesti slaptažodį patvirtinimo laukelyje"
+
+msgid "Your new password does not match the verify password"
+msgstr "Naujasis slaptažodis nesutampa su slaptažodžiu įvestu patvirtinimo "
+"laukelyje"
+
+msgid "Your new password must be different than your old password"
+msgstr "Jūsų naujasis slaptažodis turi skirtis nuo senojo"
+
+#, php-format
+msgid "DATABASE ERROR: could not update password: %s"
+msgstr "DUOMENŲ BAZĖS KLAIDA: nepavyko atnaujinti slaptažodžio: %s"
+
