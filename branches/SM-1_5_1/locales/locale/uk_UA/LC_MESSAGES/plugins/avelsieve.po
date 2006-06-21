@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2004-04-01 20:12+0300\n"
-"PO-Revision-Date: 2006-03-07 16:51+0200\n"
+"PO-Revision-Date: 2006-04-19 10:48+0200\n"
 "Last-Translator: Serhij Dubyk <dubyk@library.lviv.ua>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -29,8 +29,8 @@ msgstr "Ім'я нової теки не вказане."
 msgid "Please try again."
 msgstr "Спробуйте ще раз."
 
-msgid "Illegal folder name.  Please select а different name"
-msgstr "Неприпустиме ім'я теки. Вкажіть інше ім'я."
+msgid "Illegal folder name.  Please select a different name"
+msgstr "Неприпустиме ім'я теки. Вкажіть інше ім'я"
 
 msgid "Add New Rule"
 msgstr "Створити правило"
@@ -53,10 +53,12 @@ msgstr "Дія"
 msgid "Confirmation"
 msgstr "Підтвердження"
 
-msgid "<p>you have chosen to keep every mail. This is the default action anyway, so you might want to start over with а rule that makes more sense. Select &quot;finished&quot; to save this rule nonetheless.</p>"
+#, fuzzy
+msgid "<p>You have chosen to keep every mail. This is the default action anyway, so you might want to start over with a rule that makes more sense. Select &quot;finished&quot; to save this rule nonetheless.</p>"
 msgstr "<p>вибрано правило збереження всієї пошти. Це - дія за умовчанням, і можливо, слід почати спочатку і створити змістовніше правило. Виберіть &quot;Готово&quot;, щоб зберегти це правило, не дивлячись ні на що.</p>"
 
-msgid "Please use the buttons on the bottom instead of your browser's reload, back and forward buttons, to build а rule."
+#, fuzzy
+msgid "Please use the buttons on the bottom instead of your browser's reload, back and forward buttons, to build a rule."
 msgstr "Для створення правила використовуйте кнопки в нижній частині сторінки, але не кнопки браузера Відновити, Назад і вперед."
 
 msgid "Clear this Form"
@@ -155,7 +157,8 @@ msgstr "Перенаправити на наступну адресу:"
 msgid "someone@example.org"
 msgstr "someone@example.org"
 
-msgid "Keep а local сміттю as well."
+#, fuzzy
+msgid "Keep a local copy as well."
 msgstr "Зберігати локальну копію."
 
 msgid "Move message into"
@@ -164,19 +167,22 @@ msgstr "Перемістити повідомлення"
 msgid "the existing folder"
 msgstr "існуючу теку"
 
-msgid "а new folder, named"
+#, fuzzy
+msgid "a new folder, named"
 msgstr "нову теку "
 
-msgid "created as а subfolder of"
-msgstr " створену в теці "
+msgid "created as a subfolder of"
+msgstr " створену у підтеці "
 
-msgid "Also keep сміттю in INBOX, marked as deleted."
+#, fuzzy
+msgid "Also keep copy in INBOX, marked as deleted."
 msgstr "Також зберегти копію у ВХІДНИХ (INBOX) і відзначити як видалене."
 
 msgid "Vacation"
 msgstr "Відпустка"
 
-msgid "The notice will be sent only once to each person that sends you mail, and will not be sent to а mailing list address."
+#, fuzzy
+msgid "The notice will be sent only once to each person that sends you mail, and will not be sent to a mailing list address."
 msgstr "Повідомлення буде відправлено тільки один раз кожному кореспондентові і не відправлятиметься в списки розсилки."
 
 msgid "Addresses: Only reply if sent to these addresses:"
@@ -224,10 +230,12 @@ msgstr "Довідка: Допустимі значення:"
 msgid "Your new rule states:"
 msgstr "Нове правило:"
 
-msgid "If this is what you wanted, select Finished. You can also start over or cancel adding а rule altogether."
+#, fuzzy
+msgid "If this is what you wanted, select Finished. You can also start over or cancel adding a rule altogether."
 msgstr "Натисніть Готово, щоб зберегти це правило. Можна почати наново або взагалі відмовитися від додавання цього правила."
 
-msgid "Configure ANTI-SPAM Protection"
+#, fuzzy
+msgid "Configure Anti-SPAM Protection"
 msgstr "Налаштувати захист від спаму"
 
 msgid "All incoming mail is checked for unsolicited commercial content (SPAM) and marked accordingly. This special rule allows you to configure what to do with such messages once they arrive to your Inbox."
@@ -246,8 +254,8 @@ msgstr "Додаткові фільтри спаму..."
 msgid "Target Score"
 msgstr "Цільові бали"
 
-#, php-format
-msgid "Messages with Spam-score higher than the target value, the maximum value being %s, will be considered SPAM."
+#, fuzzy, php-format
+msgid "Messages with SPAM-Score higher than the target value, the maximum value being %s, will be considered SPAM."
 msgstr "Повідомлення з балами Spam-score вище певного порогу, максимальне значення якого складає %s, вважатимуться спамом."
 
 msgid "SPAM Lists to check against"
@@ -313,10 +321,12 @@ msgstr "існує"
 msgid "does not exist"
 msgstr "не існує"
 
-msgid "For <strong>all</strong> incoming messages; "
+#, fuzzy
+msgid "For <strong>ALL</strong> incoming messages; "
 msgstr "Для <strong>всіх<strong> вхідних повідомлень; "
 
-msgid "All messages considered as <strong>spam</strong> (unsolicited commercial messages)"
+#, fuzzy
+msgid "All messages considered as <strong>SPAM</strong> (unsolicited commercial messages)"
 msgstr "Всі повідомлення, відмічені як <strong>спам</strong> (рекламні листи)"
 
 msgid "unless"
@@ -386,10 +396,12 @@ msgstr "<em>зберегти</em> у теці <strong>"
 msgid "reply with this vacation message: "
 msgstr "відповісти цим повідомленням:"
 
-msgid "Also keep а local сміттю."
+#, fuzzy
+msgid "Also keep a local copy."
 msgstr "Зберегти локальну копію."
 
-msgid " Also keep а сміттю in INBOX, marked as deleted."
+#, fuzzy
+msgid " Also keep a copy in INBOX, marked as deleted."
 msgstr " Також зберегти копію в INBOX і відзначити як видалене."
 
 msgid " Also notify using the method"
@@ -401,7 +413,8 @@ msgstr "з "
 msgid "priority and the message"
 msgstr "терміновість і повідомлення"
 
-msgid " Then <strong>stop</strong> processing rules."
+#, fuzzy
+msgid " Then <strong>STOP</strong> processing rules."
 msgstr " Потім <strong>завершити<strong> обробку правил."
 
 msgid "Address Match"
@@ -413,7 +426,8 @@ msgstr "Виконати дію залежно від адрес в заголо
 msgid "Header Match"
 msgstr "Збіг заголовків"
 
-msgid "Perform an action on messages matching а specified header (From, To etc.)."
+#, fuzzy
+msgid "Perform an action on messages matching a specified header (From, To etc.)."
 msgstr "Виконати дію за наслідками аналізу заголовків повідомлення"
 
 msgid "Size"
@@ -516,7 +530,8 @@ msgstr "Змінити правило фільтрації"
 msgid "Message Filters"
 msgstr "Фільтри повідомлень"
 
-msgid "Server-side mail filtering enables you to add criteria in order to automatically forward, delete or place а given message into а folder."
+#, fuzzy
+msgid "Server-Side mail filtering enables you to add criteria in order to automatically forward, delete or place a given message into a folder."
 msgstr "Фільтрація пошти на сервері дозволяє вказати критерії, відповідно до якими дане повідомлення буде автоматично перенаправлено, видалене або поміщено в конкретну теку."
 
 msgid "Filters"
@@ -561,13 +576,15 @@ msgstr "Видалити правило?"
 msgid "Delete Selected"
 msgstr "Видалити вибрані"
 
-msgid "Server-side Mail Filtering"
+#, fuzzy
+msgid "Server-Side Mail Filtering"
 msgstr "Фільтрація пошти на сервері"
 
 msgid "Here you can add or delete filtering rules for your email account. These filters will always apply to your incoming mail, wherever you check your email."
 msgstr "Тут можна вказати правила фільтрації для вхідної пошти. Фільтри будуть застосовуватися до всієї вхідної пошти всякий раз при перевірці пошти."
 
-msgid "You don't have any rules yet. Feel free to add any with the button &quot;Add а New Rule&quot;. When you are done, please select &quot;Save Changes&quot; to get back to the main options screen."
+#, fuzzy
+msgid "You don't have any rules yet. Feel free to add any with the button &quot;Add a New Rule&quot;. When you are done, please select &quot;Save Changes&quot; to get back to the main options screen."
 msgstr "Поки не створено жодне правило. Правила можна додати за допомогою кнопки &quot;Створити правило&quot;. Закінчивши створення правила, натисніть кнопку &quot;Зберегти зміни&quot; для повернення на основну сторінку настройки."
 
 msgid "When you are done with editing, <strong>remember to select &quot;Save Changes&quot;</strong> to activate your changes!"
@@ -600,8 +617,8 @@ msgstr "Показати як:"
 msgid "Options"
 msgstr "Параметри"
 
-msgid "Add а New Rule"
-msgstr "Створити правило"
+msgid "Add a New Rule"
+msgstr "Додати нове правило"
 
 msgid "When you are done, please click the button below to return to your webmail."
 msgstr "Закінчивши створення правила, натисніть цю кнопку, щоб повернутися до роботи з поштою."
