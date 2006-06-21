@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: sasql\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2005-03-29 08:36-0700\n"
-"PO-Revision-Date: 2006-03-07 16:30+0200\n"
+"PO-Revision-Date: 2006-04-19 10:41+0200\n"
 "Last-Translator: Serhij Dubyk <dubyk@library.lviv.ua>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -20,9 +20,8 @@ msgstr ""
 "X-Poedit-SourceCharset: utf-8\n"
 
 #: dspam.inc.php:82
-#, fuzzy
 msgid "DSPAM Settings"
-msgstr "Параметры dspam"
+msgstr "Параметры DSPAM "
 
 #: dspam.inc.php:89
 msgid "Warning"
@@ -125,7 +124,7 @@ msgstr "Оновлення"
 
 #: move_to.php:98
 msgid "No messages were selected."
-msgstr ""
+msgstr "Ніякі повідомлення не були вибрані."
 
 #: purge.inc.php:30
 msgid "Purge"
@@ -159,51 +158,51 @@ msgstr ""
 
 #: sa_opts-dist.php:22
 msgid "0 - Very Aggressive"
-msgstr ""
+msgstr "0 - дуже агресивний"
 
 #: sa_opts-dist.php:23
 msgid "1"
-msgstr ""
+msgstr "1"
 
 #: sa_opts-dist.php:24
 msgid "2 - Aggressive"
-msgstr ""
+msgstr "2 - агресивний"
 
 #: sa_opts-dist.php:25
 msgid "3"
-msgstr ""
+msgstr "3"
 
 #: sa_opts-dist.php:26
 msgid "4"
-msgstr ""
+msgstr "4"
 
 #: sa_opts-dist.php:27
 msgid "5 - Recommended"
-msgstr ""
+msgstr "5 - рекомендований"
 
 #: sa_opts-dist.php:28
 msgid "6"
-msgstr ""
+msgstr "6"
 
 #: sa_opts-dist.php:29
 msgid "7"
-msgstr ""
+msgstr "7"
 
 #: sa_opts-dist.php:30
 msgid "8 - Lenient"
-msgstr ""
+msgstr "8 - поблажливий"
 
 #: sa_opts-dist.php:31
 msgid "9"
-msgstr ""
+msgstr "9"
 
 #: sa_opts-dist.php:32
 msgid "10 - Very Lenient"
-msgstr ""
+msgstr "10 - дуже поблажливий"
 
 #: sa_opts-dist.php:33
 msgid "Don't Filter"
-msgstr ""
+msgstr "Не фільтрувати"
 
 #. NOTE: The ordering here is a little odd to allow some inclusion of
 #. other option names.
@@ -286,7 +285,7 @@ msgstr ""
 #. ok_languages
 #: sa_opts-dist.php:105
 msgid "Acceptable Languages"
-msgstr ""
+msgstr "Прийнятні мови"
 
 #: sa_opts-dist.php:106
 msgid "Select all the languages you expect to receive e-mail in."
@@ -872,25 +871,4 @@ msgstr "Параметри"
 #: sasql_wblist.php:53
 msgid "Error: Missing option."
 msgstr "Параметр не вказаний."
-
-#~ msgid "Use dspam"
-#~ msgstr "Использовать dspam"
-#~ msgid "Purge $spam_folder Folder"
-#~ msgstr "Очистить папку $spam_folder"
-#~ msgid "sasql_DBConnect Database error: %s"
-#~ msgstr "Ошибка базы данных sasql_DBConnect: %s"
-#~ msgid "sasql_ReadWBList Database error: $s"
-#~ msgstr "Ошибка базы данных sasql_ReadWBList: $s"
-#~ msgid "sasql_ReadPrefs Database error: %s"
-#~ msgstr "Ошибка базы данных sasql_ReadPrefs: %s"
-#~ msgid "sasql_UpdatePref Database error: %s"
-#~ msgstr "Ошибка базы данных sasql_UpdatePref: %s"
-#~ msgid "sasql_UpdatePref_multiple Database error: %s"
-#~ msgstr "Ошибка базы данных sasql_UpdatePref_multiple: %s"
-#~ msgid "sasql_GetPref Database error: $s"
-#~ msgstr "Ошибка базы данных sasql_GetPref: $s"
-#~ msgid "Spam Filter Configuration"
-#~ msgstr "Параметры защиты от спама"
-#~ msgid "Description"
-#~ msgstr "Описание"
 
