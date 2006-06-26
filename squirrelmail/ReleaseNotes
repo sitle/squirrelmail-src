@@ -1,7 +1,7 @@
 /*****************************************************************
- * Release Notes: SquirrelMail 1.4.6                             *
- * The "Thoroughly Prepared" Release                             *
- * 23 February 2006                                              *
+ * Release Notes: SquirrelMail 1.4.7                             *
+ * The "" Release                             *
+ * ????? 2006                                              *
  *****************************************************************/
 
 In this edition of SquirrelMail Release Notes:
@@ -16,12 +16,11 @@ In this edition of SquirrelMail Release Notes:
 All about this release
 ======================
 
-This version, 1.4.6 is a maintenance release, addressing
-the following problems since 1.4.5:
-- Security fixes (see below)
-- A lot of bugfixes
-- Stability and interoperability enhancements,
-  especially compatibility with the most recent PHP releases
+This version, 1.4.7 is a maintenance release, addressing
+the following problems since 1.4.6:
+- Minor security fixes (see below)
+- A lot of bugfixes (see ChangeLog)
+- Added support for Ukrainian and some added teams
 (see ChangeLog for a full list)
 
 
@@ -42,22 +41,20 @@ number of supported character sets and decoding performance.
 Security issues
 ===============
 
-This release addresses three different security issues found since
-the release of 1.4.5:
+This release addresses two different security issues found since
+the release of 1.4.6, which we consider to be of minor severity,
+but they have of course been fixed:
 
-- In webmail.php, the right_frame parameter was not properly sanitized
-  to deal with very lenient browsers, which allowed for cross site
-  scripting or frame replacing. [CVE-2006-0188]
+- It was possible to include a local file through functions/plugin.php with
+  register_globals enabled, and magic_quotes disabled. However, running with
+  register_globals enabled is completely unnecessary and a well-known security
+  hazzard. We've now changed the code such that when register_globals is enabled,
+  all globals are deregistered. Reported by Denix Solutions, thanks!
 
-- In the MagicHTML function, some very obscure constructs were discovered
-  to be exploitable: 'u\rl' was interpreted as 'url' (privacy concern), and 
-  comments could be inside keywords (allows for cross site scripting). Both
-  only affect Internet Explorer users. Found by Martijn Brinkers and
-  Scott Hughes. [CVE-2006-0195]
-
-- The function sqimap_mailbox_select did not strip newlines from the mailbox
-  parameter, and thereby allowed for IMAP command injection. Found by
-  Vicente Aguilera. [CVE-2006-0377]
+- It was possible to steal a cookie of a user that ran on the same base domain.
+  Since this setup is already inherently insecure we don't think the impact is
+  big, but the code was of course fixed to also incorporate the path to
+  SquirrelMail.
 
 
 Major updates
