@@ -213,7 +213,8 @@ function printSearchMessages($msgs,$mailbox, $cnt, $imapConnection, $where, $wha
         } else {
             $showbox = imap_utf7_decode_local($mailbox);
         }
-        echo html_tag( 'div', '<b><big>' . _("Folder:") . ' '. $showbox.'</big></b>','center') . "\n";
+        echo html_tag( 'div', '<b><big>' . _("Folder:") . ' '. 
+            htmlspecialchars($showbox) .'</big></b>','center') . "\n";
 
         $msg_cnt_str = get_msgcnt_str(1, $cnt, $cnt);
         $toggle_all = get_selectall_link(1, $sort);
