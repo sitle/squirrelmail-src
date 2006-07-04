@@ -115,6 +115,10 @@ administration plugin. The DSN should look something like:
  mysql://squirreluser:sqpassword@localhost/squirrelmail or
  pgsql://squirreluser:sqpassword@localhost/squirrelmail
 
+Note that when using the above PostgreSQL schema, you also need to change
+the prefs_user_field variable in config.php from the default 'user' to
+'username'.
+
 From now on all users' personal preferences will be stored in a
 database.
 
